@@ -34739,5 +34739,374 @@
         "working": "$D = \\{2, 4, 6, 8, 10, 12, 14\\}$, so $n(D) = 7$."
       }
     ]
+  },
+  "m302-1-1-b": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 2: Set-Builder Notation",
+    "duration": 307,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the notation",
+        "t": 26.467
+      },
+      {
+        "title": "Three sets of numbers",
+        "t": 77.064
+      },
+      {
+        "title": "Listing the elements",
+        "t": 130.953
+      },
+      {
+        "title": "Watch out",
+        "t": 185.166
+      },
+      {
+        "title": "Your turn",
+        "t": 234.01
+      },
+      {
+        "title": "Summary",
+        "t": 275.985
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1-b:q",
+        "t": 247.972,
+        "prompt": "List the elements of $\\{x \\mid -2 < x \\le 2,\\ x \\in I\\}$.",
+        "choices": [
+          "$\\{-1, 0, 1, 2\\}$",
+          "$\\{-2, -1, 0, 1, 2\\}$",
+          "$\\{-2, -1, 0, 1\\}$",
+          "$\\{1, 2\\}$"
+        ],
+        "answer": 0,
+        "working": "$-2 < x$ leaves out $-2$, and $x \\le 2$ includes $2$. The integers between are $-1, 0, 1, 2$."
+      }
+    ]
+  },
+  "m302-1-1-c": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 3: Finite, Infinite and Empty Sets",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Finite and infinite sets",
+        "t": 22.053
+      },
+      {
+        "title": "Always another fraction",
+        "t": 60.926
+      },
+      {
+        "title": "The empty set",
+        "t": 96.287
+      },
+      {
+        "title": "Empty or not?",
+        "t": 126.266
+      },
+      {
+        "title": "Watch out",
+        "t": 166.175
+      },
+      {
+        "title": "Your turn",
+        "t": 208.467
+      },
+      {
+        "title": "Summary",
+        "t": 237.872
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1-c:q",
+        "t": 213.459,
+        "prompt": "Which set is empty?",
+        "choices": [
+          "$\\{0\\}$",
+          "the set of even prime numbers",
+          "$\\{x \\mid x > 5,\\ x \\in N\\}$",
+          "the set of natural numbers less than $1$"
+        ],
+        "answer": 3,
+        "working": "The natural numbers start at $1$, so none of them is less than $1$. The other sets contain $0$, $2$ and $6, 7, 8, \\ldots$"
+      }
+    ]
+  },
+  "m302-1-1-d": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 4: The Universal Set and Subsets",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The universal set and subsets",
+        "t": 19.48
+      },
+      {
+        "title": "Disjoint sets",
+        "t": 59.947
+      },
+      {
+        "title": "Subsets and disjoint sets",
+        "t": 79.054
+      },
+      {
+        "title": "What the diagram shows",
+        "t": 126.787
+      },
+      {
+        "title": "Two facts about subsets",
+        "t": 154.983
+      },
+      {
+        "title": "Your turn",
+        "t": 186.354
+      },
+      {
+        "title": "Summary",
+        "t": 220.814
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1-d:q",
+        "t": 199.799,
+        "prompt": "Let $U = \\{1, 2, 3, \\ldots, 10\\}$, $P = \\{2, 3, 5, 7\\}$ and $Q = \\{3, 5\\}$. Which statement is true?",
+        "choices": [
+          "$P \\subset Q$",
+          "$Q \\subset P$",
+          "$P$ and $Q$ are disjoint",
+          "$2 \\in Q$"
+        ],
+        "answer": 1,
+        "working": "Both elements of $Q$, $3$ and $5$, are in $P$, so $Q \\subset P$. But $2 \\in P$ and $2 \\notin Q$, so $P$ is not a subset of $Q$."
+      }
+    ]
+  },
+  "m302-1-1-e": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 5: Counting Subsets",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "All the subsets",
+        "t": 25.479
+      },
+      {
+        "title": "In or out",
+        "t": 72.86
+      },
+      {
+        "title": "The rule",
+        "t": 131.65
+      },
+      {
+        "title": "Watch out",
+        "t": 171.759
+      },
+      {
+        "title": "Your turn",
+        "t": 194.561
+      },
+      {
+        "title": "Summary",
+        "t": 234.331
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1-e:q",
+        "t": 208.057,
+        "prompt": "A pizza shop offers 4 toppings. A pizza can have any number of them, from none to all 4. How many different choices of toppings are there?",
+        "choices": [
+          "$4$",
+          "$8$",
+          "$16$",
+          "$14$"
+        ],
+        "answer": 2,
+        "working": "Each topping is on or off: $2 \\times 2 \\times 2 \\times 2 = 2^4 = 16$, counting the plain pizza and the pizza with all four."
+      }
+    ]
+  },
+  "m302-1-2": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 1: Union and Intersection",
+    "duration": 298,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Union and intersection",
+        "t": 28.694
+      },
+      {
+        "title": "A Venn diagram",
+        "t": 91.92
+      },
+      {
+        "title": "Reading the diagram",
+        "t": 146.069
+      },
+      {
+        "title": "Watch out",
+        "t": 189.893
+      },
+      {
+        "title": "Your turn",
+        "t": 227.589
+      },
+      {
+        "title": "Summary",
+        "t": 264.553
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2:q",
+        "t": 243.323,
+        "prompt": "Let $U = \\{1, 2, 3, \\ldots, 10\\}$, $P = \\{1, 2, 3, 4, 5\\}$ and $Q = \\{2, 4, 6, 8, 10\\}$. Find $P \\cap Q$.",
+        "choices": [
+          "$\\{1, 2, 3, 4, 5, 6, 8, 10\\}$",
+          "$\\{1, 3, 5\\}$",
+          "$\\{6, 8, 10\\}$",
+          "$\\{2, 4\\}$"
+        ],
+        "answer": 3,
+        "working": "The intersection holds the elements in **both** sets. Only 2 and 4 are in $P$ and in $Q$."
+      }
+    ]
+  },
+  "m302-1-2-b": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 2: Complement and Difference",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The complement",
+        "t": 19.993
+      },
+      {
+        "title": "The difference",
+        "t": 82.475
+      },
+      {
+        "title": "Outside both circles",
+        "t": 109.749
+      },
+      {
+        "title": "Watch out",
+        "t": 147.919
+      },
+      {
+        "title": "Read the symbols as words",
+        "t": 176.048
+      },
+      {
+        "title": "Your turn",
+        "t": 203.592
+      },
+      {
+        "title": "Summary",
+        "t": 241.853
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2-b:q",
+        "t": 218.926,
+        "prompt": "Let $U = \\{1, 2, 3, \\ldots, 10\\}$, $P = \\{1, 2, 3, 4, 5\\}$ and $Q = \\{2, 4, 6, 8, 10\\}$. Find $Q \\setminus P$.",
+        "choices": [
+          "$\\{6, 8, 10\\}$",
+          "$\\{1, 3, 5\\}$",
+          "$\\{2, 4\\}$",
+          "$\\{7, 9\\}$"
+        ],
+        "answer": 0,
+        "working": "$Q \\setminus P$ is in $Q$ but not in $P$: remove $2$ and $4$ from $Q$, leaving $\\{6, 8, 10\\}$."
+      }
+    ]
+  },
+  "m302-1-2-c": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 3: Counting with Two Sets",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subtract the overlap",
+        "t": 22.035
+      },
+      {
+        "title": "Hockey and soccer",
+        "t": 75.097
+      },
+      {
+        "title": "Check with a Venn diagram",
+        "t": 119.741
+      },
+      {
+        "title": "Watch out",
+        "t": 166.073
+      },
+      {
+        "title": "Your turn",
+        "t": 205.214
+      },
+      {
+        "title": "Summary",
+        "t": 246.498
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2-c:q",
+        "t": 218.931,
+        "prompt": "In a class of 30 students, 17 have a dog, 12 have a cat and 5 have both. How many students have neither a dog nor a cat?",
+        "choices": [
+          "$1$",
+          "$6$",
+          "$19$",
+          "$24$"
+        ],
+        "answer": 1,
+        "working": "$n(D \\cup C) = 17 + 12 - 5 = 24$, so $30 - 24 = 6$ have neither."
+      }
+    ]
   }
 }
