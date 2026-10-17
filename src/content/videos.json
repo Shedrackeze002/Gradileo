@@ -34743,7 +34743,7 @@
   "m302-1-1-b": {
     "lessonId": "m302-1-1",
     "title": "Sets and Subsets, Part 2: Set-Builder Notation",
-    "duration": 307,
+    "duration": 309,
     "voice": "af_heart",
     "chapters": [
       {
@@ -36015,7 +36015,7 @@
   "m302-2-3-d": {
     "lessonId": "m302-2-3",
     "title": "Permutations with Repetition and Restrictions, Part 4: Alternating Patterns",
-    "duration": 240,
+    "duration": 250,
     "voice": "af_heart",
     "chapters": [
       {
@@ -36024,33 +36024,33 @@
       },
       {
         "title": "The patterns",
-        "t": 20.069
+        "t": 21.071
       },
       {
         "title": "Arrange each group",
-        "t": 53.636
+        "t": 58.2
       },
       {
         "title": "One more of one group",
-        "t": 95.736
+        "t": 101.493
       },
       {
         "title": "Watch out",
-        "t": 133.545
+        "t": 142.173
       },
       {
         "title": "Your turn",
-        "t": 162.021
+        "t": 171.077
       },
       {
         "title": "Summary",
-        "t": 208.502
+        "t": 217.558
       }
     ],
     "cues": [
       {
         "id": "m302-2-3-d:q",
-        "t": 174.208,
+        "t": 183.264,
         "prompt": "Four adults and four children sit in a row of 8 seats, alternating adult and child. How many seatings are possible?",
         "choices": [
           "$576$",
@@ -36219,7 +36219,7 @@
   "m302-2-4-d": {
     "lessonId": "m302-2-4",
     "title": "Combinations, Part 4: Cases and “At Least”",
-    "duration": 277,
+    "duration": 279,
     "voice": "af_heart",
     "chapters": [
       {
@@ -36248,14 +36248,14 @@
       },
       {
         "title": "Summary",
-        "t": 248.103
+        "t": 250.094
       }
     ],
     "cues": [
       {
         "id": "m302-2-4-d:q",
-        "t": 216.74,
-        "prompt": "A team of 3 is chosen from 6 girls and 4 boys. How many teams include at least one boy?",
+        "t": 217.855,
+        "prompt": "A committee of 3 is chosen from 6 students and 4 teachers. How many committees include at least one teacher?",
         "choices": [
           "$120$",
           "$20$",
@@ -36263,7 +36263,7 @@
           "$100$"
         ],
         "answer": 3,
-        "working": "All teams: ${}_{10}C_{3} = 120$. No boys: ${}_{6}C_{3} = 20$. At least one boy: $120 - 20 = 100$."
+        "working": "All committees: ${}_{10}C_{3} = 120$. No teachers: ${}_{6}C_{3} = 20$. At least one teacher: $120 - 20 = 100$."
       }
     ]
   },
@@ -36484,6 +36484,120 @@
         ],
         "answer": 2,
         "working": "All: $7! = 5040$. Favourable: $1 \\times 1 \\times 5! = 120$. $P = \\dfrac{120}{5040} = \\dfrac{1}{42}$."
+      }
+    ]
+  },
+  "m302-3-2-b": {
+    "lessonId": "m302-3-2",
+    "title": "Probability Using Counting Methods, Part 2: Choosing Groups",
+    "duration": 337,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Order matters or not?",
+        "t": 22.652
+      },
+      {
+        "title": "A random committee",
+        "t": 60.857
+      },
+      {
+        "title": "Exactly two in Grade 12",
+        "t": 106.381
+      },
+      {
+        "title": "A standard deck",
+        "t": 154.523
+      },
+      {
+        "title": "Two hearts",
+        "t": 181.391
+      },
+      {
+        "title": "Watch out",
+        "t": 225.704
+      },
+      {
+        "title": "Your turn",
+        "t": 263.659
+      },
+      {
+        "title": "Summary",
+        "t": 309.697
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-2-b:q",
+        "t": 277.888,
+        "prompt": "A bag holds 5 red and 7 blue marbles. Three marbles are drawn at random, all at once. What is the probability that all three are red?",
+        "choices": [
+          "$\\dfrac{1}{22}$",
+          "$\\dfrac{3}{11}$",
+          "$\\dfrac{1}{132}$",
+          "$\\dfrac{5}{12}$"
+        ],
+        "answer": 0,
+        "working": "${}_{5}C_{3} = 10$ and ${}_{12}C_{3} = 220$, so $P = \\dfrac{10}{220} = \\dfrac{1}{22}$."
+      }
+    ]
+  },
+  "m302-3-2-c": {
+    "lessonId": "m302-3-2",
+    "title": "Probability Using Counting Methods, Part 3: At Least One",
+    "duration": 305,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "None, or at least one",
+        "t": 23.42
+      },
+      {
+        "title": "At least one Grade 12 student",
+        "t": 50.818
+      },
+      {
+        "title": "Check the long way",
+        "t": 103.593
+      },
+      {
+        "title": "At least one six",
+        "t": 155.269
+      },
+      {
+        "title": "Watch out",
+        "t": 206.881
+      },
+      {
+        "title": "Your turn",
+        "t": 239.431
+      },
+      {
+        "title": "Summary",
+        "t": 281.866
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-2-c:q",
+        "t": 251.76,
+        "prompt": "Three students are chosen at random from 5 boys and 4 girls. What is the probability that at least one girl is chosen?",
+        "choices": [
+          "$\\dfrac{5}{42}$",
+          "$\\dfrac{1}{21}$",
+          "$\\dfrac{20}{21}$",
+          "$\\dfrac{37}{42}$"
+        ],
+        "answer": 3,
+        "working": "No girls: ${}_{5}C_{3} = 10$ of ${}_{9}C_{3} = 84$, so $P(\\text{none}) = \\dfrac{10}{84} = \\dfrac{5}{42}$ and $P(\\text{at least one}) = 1 - \\dfrac{5}{42} = \\dfrac{37}{42}$."
       }
     ]
   }
