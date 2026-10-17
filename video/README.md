@@ -208,7 +208,7 @@ Lessons learned while scripting (the script check does not catch these):
 - Break long maths over several lines (or narrow `leftWidth`) so it fits its column; give a
   crowded figure its own scene.
 - The voice blurs a few phrases into other words: "In proofs" (heard as "Improves"), "Congruent
-  figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "halve" ("have"), "Rewrite"
+  figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "halve" ("have"), "boy" ("buy" or "by", whatever the spelling: use other groups, such as teachers and students), "Rewrite"
   at the start of a sentence ("We're right") and the name Rhea ("Rhea takes" came out "retakes";
   Maya is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword

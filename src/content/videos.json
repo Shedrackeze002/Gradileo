@@ -36215,5 +36215,276 @@
         "working": "Teachers: ${}_{5}C_{2} = 10$. Students: ${}_{8}C_{2} = 28$. Together: $10 \\times 28 = 280$."
       }
     ]
+  },
+  "m302-2-4-d": {
+    "lessonId": "m302-2-4",
+    "title": "Combinations, Part 4: Cases and “At Least”",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Toppings",
+        "t": 22.574
+      },
+      {
+        "title": "At least one teen",
+        "t": 74.814
+      },
+      {
+        "title": "Checking by cases",
+        "t": 115.772
+      },
+      {
+        "title": "Watch out",
+        "t": 159.959
+      },
+      {
+        "title": "Your turn",
+        "t": 205.882
+      },
+      {
+        "title": "Summary",
+        "t": 248.103
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-4-d:q",
+        "t": 216.74,
+        "prompt": "A team of 3 is chosen from 6 girls and 4 boys. How many teams include at least one boy?",
+        "choices": [
+          "$120$",
+          "$20$",
+          "$144$",
+          "$100$"
+        ],
+        "answer": 3,
+        "working": "All teams: ${}_{10}C_{3} = 120$. No boys: ${}_{6}C_{3} = 20$. At least one boy: $120 - 20 = 100$."
+      }
+    ]
+  },
+  "m302-3-1": {
+    "lessonId": "m302-3-1",
+    "title": "Odds and Probability, Part 1: Odds in Favour and Against",
+    "duration": 335,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Probability",
+        "t": 26.831
+      },
+      {
+        "title": "Drawing a marble",
+        "t": 57.178
+      },
+      {
+        "title": "Odds",
+        "t": 111.623
+      },
+      {
+        "title": "Odds with marbles",
+        "t": 150.927
+      },
+      {
+        "title": "Probability or odds?",
+        "t": 186.591
+      },
+      {
+        "title": "Watch out",
+        "t": 227.183
+      },
+      {
+        "title": "Your turn",
+        "t": 261.756
+      },
+      {
+        "title": "Summary",
+        "t": 300.551
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-1:q",
+        "t": 274.268,
+        "prompt": "A spinner has 8 equal sections: 3 are green and 5 are yellow. What are the odds in favour of landing on green?",
+        "choices": [
+          "$3 : 8$",
+          "$3 : 5$",
+          "$5 : 3$",
+          "$5 : 8$"
+        ],
+        "answer": 1,
+        "working": "Favourable: 3 green sections. Unfavourable: 5 yellow sections. The odds in favour of green are $3 : 5$."
+      }
+    ]
+  },
+  "m302-3-1-b": {
+    "lessonId": "m302-3-1",
+    "title": "Odds and Probability, Part 2: Converting Odds and Probability",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From odds to probability",
+        "t": 29.325
+      },
+      {
+        "title": "A hockey game",
+        "t": 65.356
+      },
+      {
+        "title": "From probability to odds",
+        "t": 113.875
+      },
+      {
+        "title": "A chance of snow",
+        "t": 140.569
+      },
+      {
+        "title": "Watch out",
+        "t": 182.441
+      },
+      {
+        "title": "Your turn",
+        "t": 214.251
+      },
+      {
+        "title": "Summary",
+        "t": 252.801
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-1-b:q",
+        "t": 225.289,
+        "prompt": "The odds in favour of a team winning its next game are $4 : 7$. What is the probability that it wins?",
+        "choices": [
+          "$\\dfrac{4}{7}$",
+          "$\\dfrac{7}{11}$",
+          "$\\dfrac{3}{7}$",
+          "$\\dfrac{4}{11}$"
+        ],
+        "answer": 3,
+        "working": "4 favourable outcomes for every 7 unfavourable ones make $4 + 7 = 11$ in all, so $P(\\text{win}) = \\dfrac{4}{11}$."
+      }
+    ]
+  },
+  "m302-3-1-c": {
+    "lessonId": "m302-3-1",
+    "title": "Odds and Probability, Part 3: Solving Problems with Odds",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Finding a count",
+        "t": 20.721
+      },
+      {
+        "title": "Where probabilities come from",
+        "t": 81.835
+      },
+      {
+        "title": "A volleyball season",
+        "t": 112.125
+      },
+      {
+        "title": "Watch out",
+        "t": 153.272
+      },
+      {
+        "title": "Your turn",
+        "t": 188.983
+      },
+      {
+        "title": "Summary",
+        "t": 230.391
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-1-c:q",
+        "t": 201.27,
+        "prompt": "A bag holds 40 tiles. The odds in favour of drawing a blue tile are $3 : 5$. How many blue tiles are in the bag?",
+        "choices": [
+          "$15$",
+          "$24$",
+          "$25$",
+          "$3$"
+        ],
+        "answer": 0,
+        "working": "$P(\\text{blue}) = \\dfrac{3}{3 + 5} = \\dfrac{3}{8}$, and $40 \\times \\dfrac{3}{8} = 15$ blue tiles."
+      }
+    ]
+  },
+  "m302-3-2": {
+    "lessonId": "m302-3-2",
+    "title": "Probability Using Counting Methods, Part 1: Arrangements",
+    "duration": 333,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Count both parts",
+        "t": 24.249
+      },
+      {
+        "title": "Lining up for a photo",
+        "t": 58.553
+      },
+      {
+        "title": "Sitting together",
+        "t": 116.611
+      },
+      {
+        "title": "Repeated letters",
+        "t": 169.932
+      },
+      {
+        "title": "Watch out",
+        "t": 224.371
+      },
+      {
+        "title": "Your turn",
+        "t": 249.309
+      },
+      {
+        "title": "Summary",
+        "t": 297.789
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-2:q",
+        "t": 264.135,
+        "prompt": "Seven runners, including Lena and Tom, are given lanes 1 to 7 at random. What is the probability that Lena gets lane 1 and Tom gets lane 2?",
+        "choices": [
+          "$\\dfrac{1}{7}$",
+          "$\\dfrac{2}{7}$",
+          "$\\dfrac{1}{42}$",
+          "$\\dfrac{1}{21}$"
+        ],
+        "answer": 2,
+        "working": "All: $7! = 5040$. Favourable: $1 \\times 1 \\times 5! = 120$. $P = \\dfrac{120}{5040} = \\dfrac{1}{42}$."
+      }
+    ]
   }
 }

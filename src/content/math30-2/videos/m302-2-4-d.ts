@@ -88,15 +88,15 @@ const video: Explainer = {
         {
           kind: 'try',
           id: 'q',
-          prompt: 'A team of 3 is chosen from 6 girls and 4 boys. How many teams include at least one boy?',
+          prompt: 'A committee of 3 is chosen from 6 students and 4 teachers. How many committees include at least one teacher?',
           choices: ['$120$', '$20$', '$144$', '$100$'],
           answer: 3,
-          working: 'All teams: ${}_{10}C_{3} = 120$. No boys: ${}_{6}C_{3} = 20$. At least one boy: $120 - 20 = 100$.',
+          working: 'All committees: ${}_{10}C_{3} = 120$. No teachers: ${}_{6}C_{3} = 20$. At least one teacher: $120 - 20 = 100$.',
         },
       ],
       lines: [
-        { say: 'Your turn. A team of three is chosen from six girls and four boys. How many teams include at least one boy? Pause the video and try it.', show: 'q', wait: 6 },
-        { say: 'The answer is D, one hundred. All the teams: ten C three is 120. Teams with no boys: six C three is twenty. One hundred and twenty minus twenty is one hundred. Choice C, 144, picks one boy first and then any two others, which counts teams with two or three boys more than once.', show: 'q.answer' },
+        { say: 'Your turn. A committee of three is chosen from six students and four teachers. How many committees include at least one teacher? Pause the video and try it.', show: 'q', wait: 6 },
+        { say: 'The answer is D, one hundred. All the committees: ten C three is 120. Committees with no teachers: six C three is twenty. One hundred and twenty minus twenty is one hundred. Choice C, 144, picks one teacher first and then any two others, which counts committees with two or three teachers more than once.', show: 'q.answer' },
       ],
     },
     {
