@@ -86,7 +86,7 @@ const video: Explainer = {
       lines: [
         { say: 'Two dice are rolled. What is the probability that the sum is seven, or that doubles are rolled?', show: 'p' },
         { say: 'The grid shows all thirty-six outcomes, with the sum of the two dice in each cell.', show: ['dice.grid', 'dice.heads', 'dice.sums'] },
-        { say: 'A sum of seven happens six ways: one and six, two and five, three and four, and the same pairs the other way round.', show: ['dice.seven', 'm.0'], focus: ['dice.seven', 'm.0'] },
+        { say: 'A sum of seven happens six ways: a one and a six, a two and a five, a three and a four, and the same pairs the other way round.', show: ['dice.seven', 'm.0'], focus: ['dice.seven', 'm.0'] },
         { say: 'Doubles also happen six ways: one and one, two and two, and so on, up to six and six.', show: ['dice.doubles', 'm.1'], focus: ['dice.doubles', 'm.1'] },
         { say: 'Can one roll be both? Doubles always have an even sum, and seven is odd. So no outcome is in both events, and they are mutually exclusive. In the grid, the two diagonals never meet.', focus: ['dice.seven', 'dice.doubles'] },
         { say: 'So the probability is six thirty-sixths plus six thirty-sixths, which is twelve thirty-sixths, or one third.', show: 'm.2', focus: 'm.2' },
