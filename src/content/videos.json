@@ -35540,5 +35540,162 @@
         "working": "$26 \\times 26 \\times 10 \\times 10 \\times 10 = 676 \\times 1000 = 676\\,000$."
       }
     ]
+  },
+  "m302-2-1-c": {
+    "lessonId": "m302-2-1",
+    "title": "The Fundamental Counting Principle, Part 3: Add or Multiply?",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "And or or?",
+        "t": 23.158
+      },
+      {
+        "title": "A breakfast deal",
+        "t": 52.776
+      },
+      {
+        "title": "Watch out",
+        "t": 92.754
+      },
+      {
+        "title": "Two dice",
+        "t": 126.178
+      },
+      {
+        "title": "Order matters with two dice",
+        "t": 188.435
+      },
+      {
+        "title": "Your turn",
+        "t": 213.989
+      },
+      {
+        "title": "Summary",
+        "t": 258.022
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-1-c:q",
+        "t": 227.995,
+        "prompt": "A school lunch is one meal and one juice. There are 4 hot meals, 3 cold meals and 2 kinds of juice. How many different lunches are possible?",
+        "choices": [
+          "$24$",
+          "$9$",
+          "$12$",
+          "$14$"
+        ],
+        "answer": 3,
+        "working": "A meal is hot **or** cold: $4 + 3 = 7$. A lunch is a meal **and** a juice: $7 \\times 2 = 14$."
+      }
+    ]
+  },
+  "m302-2-1-d": {
+    "lessonId": "m302-2-1",
+    "title": "The Fundamental Counting Principle, Part 4: Counting What You Do Not Want",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "All the codes",
+        "t": 21.866
+      },
+      {
+        "title": "Subtract the codes with none",
+        "t": 59.179
+      },
+      {
+        "title": "Why it works",
+        "t": 96.358
+      },
+      {
+        "title": "Watch out",
+        "t": 132.164
+      },
+      {
+        "title": "Your turn",
+        "t": 175.677
+      },
+      {
+        "title": "Summary",
+        "t": 223.037
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-1-d:q",
+        "t": 188.54,
+        "prompt": "A 3-digit lock code uses the digits 0 to 9, and digits may repeat. How many codes contain at least one 7?",
+        "choices": [
+          "$271$",
+          "$300$",
+          "$729$",
+          "$1000$"
+        ],
+        "answer": 0,
+        "working": "All codes: $10^3 = 1000$. Codes with no 7: each digit has 9 choices, $9^3 = 729$. At least one 7: $1000 - 729 = 271$."
+      }
+    ]
+  },
+  "m302-2-2": {
+    "lessonId": "m302-2-2",
+    "title": "Permutations, Part 1: Factorial Notation",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Photos on a wall",
+        "t": 28.67
+      },
+      {
+        "title": "Factorial notation",
+        "t": 66.744
+      },
+      {
+        "title": "A factorial fraction",
+        "t": 121.061
+      },
+      {
+        "title": "Watch out",
+        "t": 158.248
+      },
+      {
+        "title": "Your turn",
+        "t": 201.795
+      },
+      {
+        "title": "Summary",
+        "t": 237.96
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-2:q",
+        "t": 208.995,
+        "prompt": "Evaluate $\\dfrac{6!}{3!}$.",
+        "choices": [
+          "$2$",
+          "$120$",
+          "$6$",
+          "$720$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{6!}{3!} = \\dfrac{6 \\times 5 \\times 4 \\times 3!}{3!} = 6 \\times 5 \\times 4 = 120$."
+      }
+    ]
   }
 }
