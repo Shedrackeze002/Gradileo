@@ -37087,5 +37087,170 @@
         "working": "$3x - 12 = 3(x - 4)$ and $16 - x^2 = (4 - x)(4 + x) = -(x - 4)(x + 4)$, so the expression is $\\dfrac{3(x - 4)}{-(x - 4)(x + 4)} = -\\dfrac{3}{x + 4}$."
       }
     ]
+  },
+  "m302-4-2": {
+    "lessonId": "m302-4-2",
+    "title": "Operations on Rational Expressions, Part 1: Multiplying and Dividing",
+    "duration": 341,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Multiplying",
+        "t": 24.528
+      },
+      {
+        "title": "A product",
+        "t": 68.641
+      },
+      {
+        "title": "Factored or expanded?",
+        "t": 122.696
+      },
+      {
+        "title": "Dividing",
+        "t": 144.009
+      },
+      {
+        "title": "A quotient",
+        "t": 172.488
+      },
+      {
+        "title": "Watch out",
+        "t": 239.255
+      },
+      {
+        "title": "Your turn",
+        "t": 270.268
+      },
+      {
+        "title": "Summary",
+        "t": 311.857
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-2:q",
+        "t": 281.036,
+        "prompt": "Simplify $\\dfrac{5x}{x + 2} \\times \\dfrac{x^2 - 4}{10x^2}$, where $x \\ne -2, \\ 0$.",
+        "choices": [
+          "$\\dfrac{x + 2}{2x}$",
+          "$2x(x - 2)$",
+          "$\\dfrac{x - 2}{2}$",
+          "$\\dfrac{x - 2}{2x}$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{5x}{x + 2} \\times \\dfrac{(x - 2)(x + 2)}{10x^2}$: divide out $x + 2$, and $\\dfrac{5x}{10x^2} = \\dfrac{1}{2x}$, leaving $\\dfrac{x - 2}{2x}$."
+      }
+    ]
+  },
+  "m302-4-2-b": {
+    "lessonId": "m302-4-2",
+    "title": "Operations on Rational Expressions, Part 2: Adding and Subtracting",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The lowest common denominator",
+        "t": 26.334
+      },
+      {
+        "title": "Different powers of x",
+        "t": 70.113
+      },
+      {
+        "title": "Subtracting a binomial numerator",
+        "t": 131.102
+      },
+      {
+        "title": "Watch out",
+        "t": 189.128
+      },
+      {
+        "title": "Your turn",
+        "t": 219.862
+      },
+      {
+        "title": "Summary",
+        "t": 260.843
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-2-b:q",
+        "t": 227.754,
+        "prompt": "Simplify $\\dfrac{2}{3x} + \\dfrac{1}{x^2}$, where $x \\ne 0$.",
+        "choices": [
+          "$\\dfrac{3}{3x + x^2}$",
+          "$\\dfrac{2x + 3}{3x^2}$",
+          "$\\dfrac{2x + 1}{3x^2}$",
+          "$\\dfrac{3}{3x^2}$"
+        ],
+        "answer": 1,
+        "working": "The LCD is $3x^2$: $\\dfrac{2}{3x} \\cdot \\dfrac{x}{x} + \\dfrac{1}{x^2} \\cdot \\dfrac{3}{3} = \\dfrac{2x}{3x^2} + \\dfrac{3}{3x^2} = \\dfrac{2x + 3}{3x^2}$."
+      }
+    ]
+  },
+  "m302-4-2-c": {
+    "lessonId": "m302-4-2",
+    "title": "Operations on Rational Expressions, Part 3: Binomial Denominators",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Building the LCD",
+        "t": 26.649
+      },
+      {
+        "title": "Two binomials",
+        "t": 64.075
+      },
+      {
+        "title": "A shared factor",
+        "t": 132.176
+      },
+      {
+        "title": "Simplify at the end",
+        "t": 196.398
+      },
+      {
+        "title": "Watch out",
+        "t": 243.035
+      },
+      {
+        "title": "Your turn",
+        "t": 270.486
+      },
+      {
+        "title": "Summary",
+        "t": 311.478
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-2-c:q",
+        "t": 279.433,
+        "prompt": "Simplify $\\dfrac{3}{x - 1} + \\dfrac{2}{x + 4}$, where $x \\ne -4, \\ 1$.",
+        "choices": [
+          "$\\dfrac{5x + 10}{(x - 1)(x + 4)}$",
+          "$\\dfrac{5}{2x + 3}$",
+          "$\\dfrac{5x + 14}{(x - 1)(x + 4)}$",
+          "$\\dfrac{5x + 11}{(x - 1)(x + 4)}$"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{3(x + 4) + 2(x - 1)}{(x - 1)(x + 4)} = \\dfrac{3x + 12 + 2x - 2}{(x - 1)(x + 4)} = \\dfrac{5x + 10}{(x - 1)(x + 4)}$"
+      }
+    ]
   }
 }
