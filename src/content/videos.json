@@ -36604,7 +36604,7 @@
   "m302-3-3": {
     "lessonId": "m302-3-3",
     "title": "Mutually Exclusive Events, Part 1: Adding Probabilities",
-    "duration": 311,
+    "duration": 312,
     "voice": "af_heart",
     "chapters": [
       {
@@ -36633,21 +36633,21 @@
       },
       {
         "title": "Watch out",
-        "t": 207.773
+        "t": 208.598
       },
       {
         "title": "Your turn",
-        "t": 245.958
+        "t": 246.783
       },
       {
         "title": "Summary",
-        "t": 285.585
+        "t": 286.41
       }
     ],
     "cues": [
       {
         "id": "m302-3-3:q",
-        "t": 260.36,
+        "t": 261.185,
         "prompt": "A bag holds 3 red, 5 green and 4 yellow marbles. One marble is drawn at random. What is the probability that it is red or yellow?",
         "choices": [
           "$\\dfrac{1}{12}$",
@@ -37250,6 +37250,324 @@
         ],
         "answer": 0,
         "working": "$\\dfrac{3(x + 4) + 2(x - 1)}{(x - 1)(x + 4)} = \\dfrac{3x + 12 + 2x - 2}{(x - 1)(x + 4)} = \\dfrac{5x + 10}{(x - 1)(x + 4)}$"
+      }
+    ]
+  },
+  "m302-4-3": {
+    "lessonId": "m302-4-3",
+    "title": "Rational Equations, Part 1: Clearing the Fractions",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 24.506
+      },
+      {
+        "title": "Monomial denominators",
+        "t": 68.935
+      },
+      {
+        "title": "A proportion",
+        "t": 121.661
+      },
+      {
+        "title": "Watch out",
+        "t": 181.893
+      },
+      {
+        "title": "Your turn",
+        "t": 217.56
+      },
+      {
+        "title": "Summary",
+        "t": 258.574
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-3:q",
+        "t": 226.509,
+        "prompt": "Solve $\\dfrac{5}{x} - \\dfrac{1}{3x} = \\dfrac{7}{6}$.",
+        "choices": [
+          "$x = 6$",
+          "$x = \\dfrac{1}{4}$",
+          "$x = 4$",
+          "$x = \\dfrac{29}{7}$"
+        ],
+        "answer": 2,
+        "working": "$x \\ne 0$. Multiply every term by $6x$: $30 - 2 = 7x$, so $x = 4$. Check: $\\dfrac{5}{4} - \\dfrac{1}{12} = \\dfrac{14}{12} = \\dfrac{7}{6}$ ✓"
+      }
+    ]
+  },
+  "m302-4-3-b": {
+    "lessonId": "m302-4-3",
+    "title": "Rational Equations, Part 2: Extraneous Roots",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Extraneous roots",
+        "t": 21.227
+      },
+      {
+        "title": "No solution",
+        "t": 57.756
+      },
+      {
+        "title": "One root survives",
+        "t": 106.185
+      },
+      {
+        "title": "Reject and check",
+        "t": 170.248
+      },
+      {
+        "title": "Watch out",
+        "t": 211.722
+      },
+      {
+        "title": "Your turn",
+        "t": 239.149
+      },
+      {
+        "title": "Summary",
+        "t": 279.901
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-3-b:q",
+        "t": 248.187,
+        "prompt": "Solve $\\dfrac{x^2}{x - 2} = \\dfrac{4}{x - 2}$.",
+        "choices": [
+          "$x = 2$",
+          "$x = -2$",
+          "$x = 2$ or $x = -2$",
+          "No solution"
+        ],
+        "answer": 1,
+        "working": "$x \\ne 2$. Multiply by $x - 2$: $x^2 = 4$, so $x = \\pm 2$. $x = 2$ is non-permissible, so it is extraneous. Check $x = -2$: $\\dfrac{4}{-4} = -1 = \\dfrac{4}{-4}$ ✓"
+      }
+    ]
+  },
+  "m302-4-3-c": {
+    "lessonId": "m302-4-3",
+    "title": "Rational Equations, Part 3: Working Together",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Work as a rate",
+        "t": 21.534
+      },
+      {
+        "title": "Setting up the equation",
+        "t": 61.111
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 122.868
+      },
+      {
+        "title": "Watch out",
+        "t": 153.567
+      },
+      {
+        "title": "Your turn",
+        "t": 181.838
+      },
+      {
+        "title": "Summary",
+        "t": 227.849
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-3-c:q",
+        "t": 195.374,
+        "prompt": "One pump can empty a flooded basement in 4 h, and a second pump can empty it in 12 h. How long do the two pumps take together?",
+        "choices": [
+          "$8$ h",
+          "$16$ h",
+          "$\\dfrac{1}{3}$ h",
+          "$3$ h"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{1}{4} + \\dfrac{1}{12} = \\dfrac{1}{t}$. Multiply by $12t$: $3t + t = 12$, so $t = 3$ h."
+      }
+    ]
+  },
+  "m302-4-3-d": {
+    "lessonId": "m302-4-3",
+    "title": "Rational Equations, Part 4: Travel and Average Cost",
+    "duration": 326,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Time from distance and speed",
+        "t": 28.001
+      },
+      {
+        "title": "Equal travel times",
+        "t": 72.539
+      },
+      {
+        "title": "Average cost",
+        "t": 130.723
+      },
+      {
+        "title": "Watch out",
+        "t": 203.091
+      },
+      {
+        "title": "Your turn",
+        "t": 240.732
+      },
+      {
+        "title": "Summary",
+        "t": 298.503
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-3-d:q",
+        "t": 262.404,
+        "prompt": "A boat travels 36 km downstream in the same time it travels 24 km upstream. The current adds 3 km/h to its speed going downstream and takes 3 km/h away going upstream. What is the boat’s speed in still water?",
+        "choices": [
+          "$15$ km/h",
+          "$12$ km/h",
+          "$-15$ km/h",
+          "$18$ km/h"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{36}{b + 3} = \\dfrac{24}{b - 3}$, so $36(b - 3) = 24(b + 3)$, $36b - 108 = 24b + 72$, $12b = 180$ and $b = 15$ km/h."
+      }
+    ]
+  },
+  "m302-5-1": {
+    "lessonId": "m302-5-1",
+    "title": "Characteristics of Polynomial Functions, Part 1: Degree and Leading Coefficient",
+    "duration": 353,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polynomial functions",
+        "t": 25.67
+      },
+      {
+        "title": "Degree and names",
+        "t": 99.977
+      },
+      {
+        "title": "Three shapes",
+        "t": 155.133
+      },
+      {
+        "title": "Reading an equation",
+        "t": 191.041
+      },
+      {
+        "title": "Watch out",
+        "t": 243.078
+      },
+      {
+        "title": "Your turn",
+        "t": 271.337
+      },
+      {
+        "title": "Summary",
+        "t": 314.308
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-1:q",
+        "t": 283.802,
+        "prompt": "State the degree, the leading coefficient and the constant term of $y = 6 + 4x^2 - x^3$.",
+        "choices": [
+          "Degree $2$, leading coefficient $4$, constant term $6$",
+          "Degree $3$, leading coefficient $-1$, constant term $6$",
+          "Degree $3$, leading coefficient $6$, constant term $4$",
+          "Degree $3$, leading coefficient $1$, constant term $6$"
+        ],
+        "answer": 1,
+        "working": "From the highest power down, $y = -x^3 + 4x^2 + 6$. The degree is $3$, the coefficient of $-x^3$ is $-1$, and the constant term is $6$."
+      }
+    ]
+  },
+  "m302-5-1-b": {
+    "lessonId": "m302-5-1",
+    "title": "Characteristics of Polynomial Functions, Part 2: End Behaviour",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quadrants",
+        "t": 22.036
+      },
+      {
+        "title": "The leading term wins",
+        "t": 66.431
+      },
+      {
+        "title": "Four cases",
+        "t": 123.243
+      },
+      {
+        "title": "From the equation",
+        "t": 181.84
+      },
+      {
+        "title": "Watch out",
+        "t": 228.678
+      },
+      {
+        "title": "Your turn",
+        "t": 263.442
+      },
+      {
+        "title": "Summary",
+        "t": 303.073
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-1-b:q",
+        "t": 273.734,
+        "prompt": "Describe the end behaviour of $y = 5 - 2x + 3x^2$.",
+        "choices": [
+          "Quadrant III to quadrant I",
+          "Quadrant II to quadrant IV",
+          "Quadrant III to quadrant IV",
+          "Quadrant II to quadrant I"
+        ],
+        "answer": 3,
+        "working": "The leading term is $3x^2$. The degree is even, so both ends go the same way, and the leading coefficient $3$ is positive, so both ends go up."
       }
     ]
   }
