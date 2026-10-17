@@ -35108,5 +35108,437 @@
         "working": "$n(D \\cup C) = 17 + 12 - 5 = 24$, so $30 - 24 = 6$ have neither."
       }
     ]
+  },
+  "m302-1-2-d": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 4: Three Sets",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Eight regions",
+        "t": 19.809
+      },
+      {
+        "title": "A science survey",
+        "t": 60.182
+      },
+      {
+        "title": "Start in the centre",
+        "t": 99.133
+      },
+      {
+        "title": "One course only",
+        "t": 136.124
+      },
+      {
+        "title": "None of the three",
+        "t": 172.791
+      },
+      {
+        "title": "Watch out",
+        "t": 200.948
+      },
+      {
+        "title": "Your turn",
+        "t": 235.452
+      },
+      {
+        "title": "Summary",
+        "t": 288.365
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2-d:q",
+        "t": 255.138,
+        "prompt": "Of 50 students, 20 take art, 25 take music and 15 take drama. Of these, 7 take art and music, 5 take art and drama, 6 take music and drama, and 3 take all three. How many take only art?",
+        "choices": [
+          "$8$",
+          "$17$",
+          "$14$",
+          "$11$"
+        ],
+        "answer": 3,
+        "working": "Art and music only: $7 - 3 = 4$. Art and drama only: $5 - 3 = 2$. Only art: $20 - 4 - 2 - 3 = 11$."
+      }
+    ]
+  },
+  "m302-1-2-e": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 5: Naming Shaded Regions",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Symbols as words",
+        "t": 21.274
+      },
+      {
+        "title": "A region of two sets",
+        "t": 59.04
+      },
+      {
+        "title": "A region of three sets",
+        "t": 84.314
+      },
+      {
+        "title": "Another region",
+        "t": 126.537
+      },
+      {
+        "title": "Watch out",
+        "t": 157.831
+      },
+      {
+        "title": "Your turn",
+        "t": 192.402
+      },
+      {
+        "title": "Summary",
+        "t": 231.444
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2-e:q",
+        "t": 204.005,
+        "prompt": "A region of a Venn diagram is inside $B$ and inside $C$, but outside $A$. Which notation names it?",
+        "choices": [
+          "$A \\cap B \\cap C$",
+          "$(B \\cup C) \\setminus A$",
+          "$(B \\cap C) \\setminus A$",
+          "$(B \\cap C) \\cup A$"
+        ],
+        "answer": 2,
+        "working": "Inside $B$ and $C$: $B \\cap C$. But not in $A$: $(B \\cap C) \\setminus A$."
+      }
+    ]
+  },
+  "m302-1-3": {
+    "lessonId": "m302-1-3",
+    "title": "Conditional Statements, Part 1: If–Then Statements",
+    "duration": 308,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Conditional statements",
+        "t": 28.827
+      },
+      {
+        "title": "When is it false?",
+        "t": 60.214
+      },
+      {
+        "title": "Is it true?",
+        "t": 106.605
+      },
+      {
+        "title": "A true statement in a Venn diagram",
+        "t": 156.089
+      },
+      {
+        "title": "Watch out",
+        "t": 196.691
+      },
+      {
+        "title": "Your turn",
+        "t": 237.862
+      },
+      {
+        "title": "Summary",
+        "t": 277.887
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-3:q",
+        "t": 248.785,
+        "prompt": "Which number is a counterexample to “If a number is a multiple of 3, then it is odd”?",
+        "choices": [
+          "$6$",
+          "$9$",
+          "$7$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "$6$ is a multiple of $3$ (the hypothesis is true) and $6$ is even (the conclusion is false)."
+      }
+    ]
+  },
+  "m302-1-3-b": {
+    "lessonId": "m302-1-3",
+    "title": "Conditional Statements, Part 2: The Converse",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The converse",
+        "t": 18.882
+      },
+      {
+        "title": "Dogs and mammals",
+        "t": 39.552
+      },
+      {
+        "title": "An example with numbers",
+        "t": 87.615
+      },
+      {
+        "title": "Watch out",
+        "t": 122.408
+      },
+      {
+        "title": "Your turn",
+        "t": 157.845
+      },
+      {
+        "title": "Summary",
+        "t": 199.746
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-3-b:q",
+        "t": 171.678,
+        "prompt": "The statement “If a number is a multiple of 6, then it is a multiple of 3” is true. Which number is a counterexample to its **converse**?",
+        "choices": [
+          "$12$",
+          "$9$",
+          "$6$",
+          "$4$"
+        ],
+        "answer": 1,
+        "working": "The converse is “If a number is a multiple of 3, then it is a multiple of 6.” $9$ is a multiple of $3$ but not of $6$."
+      }
+    ]
+  },
+  "m302-1-3-c": {
+    "lessonId": "m302-1-3",
+    "title": "Conditional Statements, Part 3: The Inverse and the Contrapositive",
+    "duration": 303,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Negating a statement",
+        "t": 20.289
+      },
+      {
+        "title": "All four forms",
+        "t": 54.628
+      },
+      {
+        "title": "Why they agree",
+        "t": 114.679
+      },
+      {
+        "title": "Writing the contrapositive",
+        "t": 169.446
+      },
+      {
+        "title": "Watch out",
+        "t": 206.918
+      },
+      {
+        "title": "Your turn",
+        "t": 241.334
+      },
+      {
+        "title": "Summary",
+        "t": 274.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-3-c:q",
+        "t": 249.645,
+        "prompt": "What is the contrapositive of “If it is snowing, then it is cold”?",
+        "choices": [
+          "If it is cold, then it is snowing.",
+          "If it is not snowing, then it is not cold.",
+          "If it is snowing, then it is not cold.",
+          "If it is not cold, then it is not snowing."
+        ],
+        "answer": 3,
+        "working": "Switch the parts and negate both: “If it is not cold, then it is not snowing.”"
+      }
+    ]
+  },
+  "m302-1-3-d": {
+    "lessonId": "m302-1-3",
+    "title": "Conditional Statements, Part 4: Biconditional Statements",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "If and only if",
+        "t": 24.064
+      },
+      {
+        "title": "A true biconditional",
+        "t": 60.313
+      },
+      {
+        "title": "A false biconditional",
+        "t": 108.674
+      },
+      {
+        "title": "Definitions",
+        "t": 146.275
+      },
+      {
+        "title": "Watch out",
+        "t": 176.772
+      },
+      {
+        "title": "Your turn",
+        "t": 203.398
+      },
+      {
+        "title": "Summary",
+        "t": 238.673
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-3-d:q",
+        "t": 209.013,
+        "prompt": "Which biconditional is true?",
+        "choices": [
+          "An angle is a right angle if and only if it measures $90^\\circ$.",
+          "A number is odd if and only if it is prime.",
+          "A shape is a rectangle if and only if it has four sides.",
+          "A number is positive if and only if it is greater than $1$."
+        ],
+        "answer": 0,
+        "working": "A is true both ways. B fails both ways: $9$ is odd but not prime, and $2$ is prime but not odd. C fails one way: a kite has four sides. D fails one way: $0.5$ is positive but not greater than $1$."
+      }
+    ]
+  },
+  "m302-2-1": {
+    "lessonId": "m302-2-1",
+    "title": "The Fundamental Counting Principle, Part 1: Tree Diagrams and Organized Lists",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A tree diagram",
+        "t": 27.036
+      },
+      {
+        "title": "An organized list",
+        "t": 82.498
+      },
+      {
+        "title": "Adding a third choice",
+        "t": 122.182
+      },
+      {
+        "title": "Watch out",
+        "t": 158.868
+      },
+      {
+        "title": "Your turn",
+        "t": 190.111
+      },
+      {
+        "title": "Summary",
+        "t": 230.786
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-1:q",
+        "t": 206.114,
+        "prompt": "A sandwich comes on white, brown or rye bread, with a filling of ham, turkey, egg or cheese. How many different sandwiches with one bread and one filling are possible?",
+        "choices": [
+          "$7$",
+          "$4$",
+          "$12$",
+          "$24$"
+        ],
+        "answer": 2,
+        "working": "Each of the 3 breads splits into 4 fillings: $3 \\times 4 = 12$ branches."
+      }
+    ]
+  },
+  "m302-2-1-b": {
+    "lessonId": "m302-2-1",
+    "title": "The Fundamental Counting Principle, Part 2: Multiplying the Choices",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The counting principle",
+        "t": 20.894
+      },
+      {
+        "title": "A video game character",
+        "t": 61.321
+      },
+      {
+        "title": "Guessing on a quiz",
+        "t": 97.892
+      },
+      {
+        "title": "Watch out",
+        "t": 134.872
+      },
+      {
+        "title": "Your turn",
+        "t": 165.598
+      },
+      {
+        "title": "Summary",
+        "t": 208.446
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-1-b:q",
+        "t": 180.069,
+        "prompt": "A product code has 2 letters (A to Z) followed by 3 digits (0 to 9). Letters and digits may repeat. How many codes are possible?",
+        "choices": [
+          "$82$",
+          "$676\\,000$",
+          "$52\\,000$",
+          "$1\\,757\\,600$"
+        ],
+        "answer": 1,
+        "working": "$26 \\times 26 \\times 10 \\times 10 \\times 10 = 676 \\times 1000 = 676\\,000$."
+      }
+    ]
   }
 }

@@ -113,7 +113,7 @@ const video: Explainer = {
       lines: [
         { say: 'Let’s sum up. Set-builder notation is read: the set of all x such that, followed by the condition.', show: 'sum.0' },
         { say: 'The natural numbers start at one, the whole numbers start at zero, and the integers include the negatives too.', show: 'sum.1' },
-        { say: 'Less than and greater than leave an endpoint out, while the symbols with a line under them include it. In part three, we meet sets that are finite, infinite and empty. See you there!', show: 'sum.2' },
+        { say: 'The symbols less than and greater than do not include the endpoint, while the symbols with a line under them include it. In part three, we meet sets that are finite, infinite and empty. See you there!', show: 'sum.2' },
       ],
     },
   ],
