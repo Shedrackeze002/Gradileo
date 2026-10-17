@@ -35697,5 +35697,523 @@
         "working": "$\\dfrac{6!}{3!} = \\dfrac{6 \\times 5 \\times 4 \\times 3!}{3!} = 6 \\times 5 \\times 4 = 120$."
       }
     ]
+  },
+  "m302-2-2-b": {
+    "lessonId": "m302-2-2",
+    "title": "Permutations, Part 2: Arranging Some of the Objects",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The opening set",
+        "t": 20.552
+      },
+      {
+        "title": "Permutations",
+        "t": 60.398
+      },
+      {
+        "title": "Gold, silver and bronze",
+        "t": 109.391
+      },
+      {
+        "title": "Watch out",
+        "t": 160.237
+      },
+      {
+        "title": "Your turn",
+        "t": 202.666
+      },
+      {
+        "title": "Summary",
+        "t": 245.679
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-2-b:q",
+        "t": 217.807,
+        "prompt": "A club with 12 members elects a president, a vice-president and a secretary. No one may hold two jobs. In how many ways can the three jobs be filled?",
+        "choices": [
+          "$36$",
+          "$220$",
+          "$1320$",
+          "$1728$"
+        ],
+        "answer": 2,
+        "working": "The jobs are different, so order matters: ${}_{12}P_{3} = 12 \\times 11 \\times 10 = 1320$."
+      }
+    ]
+  },
+  "m302-2-2-c": {
+    "lessonId": "m302-2-2",
+    "title": "Permutations, Part 3: Choosing the Right Model",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Digits may repeat",
+        "t": 24.3
+      },
+      {
+        "title": "No repeats",
+        "t": 58.271
+      },
+      {
+        "title": "Every digit once",
+        "t": 84.192
+      },
+      {
+        "title": "The three models",
+        "t": 121.199
+      },
+      {
+        "title": "Watch out",
+        "t": 160.875
+      },
+      {
+        "title": "Your turn",
+        "t": 187.841
+      },
+      {
+        "title": "Summary",
+        "t": 226.143
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-2-c:q",
+        "t": 201.144,
+        "prompt": "A playlist plays 5 different songs, chosen from 20, in order, with no song played twice. Which expression counts the playlists?",
+        "choices": [
+          "${}_{20}P_{5}$",
+          "$20^5$",
+          "$20!$",
+          "$5!$"
+        ],
+        "answer": 0,
+        "working": "Order matters, no song repeats, and only 5 of the 20 songs are used: ${}_{20}P_{5} = 20 \\times 19 \\times 18 \\times 17 \\times 16$."
+      }
+    ]
+  },
+  "m302-2-2-d": {
+    "lessonId": "m302-2-2",
+    "title": "Permutations, Part 4: Working Backwards",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How many projects?",
+        "t": 20.129
+      },
+      {
+        "title": "Solving the quadratic",
+        "t": 73.053
+      },
+      {
+        "title": "More than a thousand orders",
+        "t": 116.454
+      },
+      {
+        "title": "Factorials grow fast",
+        "t": 158.405
+      },
+      {
+        "title": "Watch out",
+        "t": 193.649
+      },
+      {
+        "title": "Your turn",
+        "t": 223.782
+      },
+      {
+        "title": "Summary",
+        "t": 258.643
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-2-d:q",
+        "t": 235.644,
+        "prompt": "There are 56 ways to award a first prize and a second prize to the people in a contest. How many people entered?",
+        "choices": [
+          "$7$",
+          "$28$",
+          "$56$",
+          "$8$"
+        ],
+        "answer": 3,
+        "working": "$n(n - 1) = 56$, and $8 \\times 7 = 56$, so $n = 8$. (The other root, $n = -7$, is rejected.)"
+      }
+    ]
+  },
+  "m302-2-3": {
+    "lessonId": "m302-2-3",
+    "title": "Permutations with Repetition and Restrictions, Part 1: Identical Objects",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A, A and B",
+        "t": 25.802
+      },
+      {
+        "title": "The formula",
+        "t": 80.09
+      },
+      {
+        "title": "Signal flags",
+        "t": 120.355
+      },
+      {
+        "title": "Watch out",
+        "t": 175.406
+      },
+      {
+        "title": "Your turn",
+        "t": 201.6
+      },
+      {
+        "title": "Summary",
+        "t": 243.765
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-3:q",
+        "t": 213.206,
+        "prompt": "How many different arrangements of the letters in the word LETTER are there?",
+        "choices": [
+          "$720$",
+          "$360$",
+          "$180$",
+          "$90$"
+        ],
+        "answer": 2,
+        "working": "LETTER has 6 letters, with two E’s and two T’s: $\\dfrac{6!}{2!\\,2!} = \\dfrac{720}{4} = 180$."
+      }
+    ]
+  },
+  "m302-2-3-b": {
+    "lessonId": "m302-2-3",
+    "title": "Permutations with Repetition and Restrictions, Part 2: Fixed Positions",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The captain in the middle",
+        "t": 19.672
+      },
+      {
+        "title": "At either end",
+        "t": 59.709
+      },
+      {
+        "title": "Why the rule goes first",
+        "t": 103.612
+      },
+      {
+        "title": "Watch out",
+        "t": 142.5
+      },
+      {
+        "title": "Your turn",
+        "t": 168.091
+      },
+      {
+        "title": "Summary",
+        "t": 209.922
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-3-b:q",
+        "t": 180.491,
+        "prompt": "Seven students line up for a photo. Ana must stand at the left end and Ben at the right end. How many line-ups are possible?",
+        "choices": [
+          "$5040$",
+          "$120$",
+          "$240$",
+          "$720$"
+        ],
+        "answer": 1,
+        "working": "Ana and Ben each have 1 spot. The other 5 students fill the middle 5 spots: $1 \\times 1 \\times 5! = 120$."
+      }
+    ]
+  },
+  "m302-2-3-c": {
+    "lessonId": "m302-2-3",
+    "title": "Permutations with Repetition and Restrictions, Part 3: Together or Apart",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Together: one unit",
+        "t": 21.728
+      },
+      {
+        "title": "Apart: subtract",
+        "t": 65.856
+      },
+      {
+        "title": "Identical objects in a unit",
+        "t": 104.541
+      },
+      {
+        "title": "Watch out",
+        "t": 162.948
+      },
+      {
+        "title": "Your turn",
+        "t": 194.619
+      },
+      {
+        "title": "Summary",
+        "t": 232.772
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-3-c:q",
+        "t": 206.359,
+        "prompt": "Five friends sit in a row of 5 seats. Two of them, Sam and Leo, must sit together. How many seatings are possible?",
+        "choices": [
+          "$48$",
+          "$24$",
+          "$72$",
+          "$120$"
+        ],
+        "answer": 0,
+        "working": "Sam and Leo form one unit, so there are 4 units: $4! = 24$. Inside the unit they can swap: $24 \\times 2 = 48$."
+      }
+    ]
+  },
+  "m302-2-3-d": {
+    "lessonId": "m302-2-3",
+    "title": "Permutations with Repetition and Restrictions, Part 4: Alternating Patterns",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The patterns",
+        "t": 20.069
+      },
+      {
+        "title": "Arrange each group",
+        "t": 53.636
+      },
+      {
+        "title": "One more of one group",
+        "t": 95.736
+      },
+      {
+        "title": "Watch out",
+        "t": 133.545
+      },
+      {
+        "title": "Your turn",
+        "t": 162.021
+      },
+      {
+        "title": "Summary",
+        "t": 208.502
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-3-d:q",
+        "t": 174.208,
+        "prompt": "Four adults and four children sit in a row of 8 seats, alternating adult and child. How many seatings are possible?",
+        "choices": [
+          "$576$",
+          "$40\\,320$",
+          "$48$",
+          "$1152$"
+        ],
+        "answer": 3,
+        "working": "Two patterns (start with an adult or a child). Each: $4! \\times 4! = 24 \\times 24 = 576$. Total: $2 \\times 576 = 1152$."
+      }
+    ]
+  },
+  "m302-2-4": {
+    "lessonId": "m302-2-4",
+    "title": "Combinations, Part 1: Does Order Matter?",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Permutation or combination?",
+        "t": 30.79
+      },
+      {
+        "title": "The swap test",
+        "t": 99.879
+      },
+      {
+        "title": "More examples",
+        "t": 146.603
+      },
+      {
+        "title": "Watch out",
+        "t": 176.213
+      },
+      {
+        "title": "Your turn",
+        "t": 203.526
+      },
+      {
+        "title": "Summary",
+        "t": 233.508
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-4:q",
+        "t": 209.851,
+        "prompt": "Which situation is a combination?",
+        "choices": [
+          "Ranking your top 3 movies",
+          "Picking 3 people for a committee",
+          "Setting a 3-digit lock code",
+          "Choosing a captain and an assistant captain"
+        ],
+        "answer": 1,
+        "working": "Swapping two committee members gives the same committee, so order does not matter. Swapping in the other three changes the result."
+      }
+    ]
+  },
+  "m302-2-4-b": {
+    "lessonId": "m302-2-4",
+    "title": "Combinations, Part 2: Counting Combinations",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pairs from four friends",
+        "t": 21.574
+      },
+      {
+        "title": "Divide by r factorial",
+        "t": 58.208
+      },
+      {
+        "title": "Inviting friends",
+        "t": 108.815
+      },
+      {
+        "title": "Watch out",
+        "t": 152.483
+      },
+      {
+        "title": "Your turn",
+        "t": 189.034
+      },
+      {
+        "title": "Summary",
+        "t": 231.888
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-4-b:q",
+        "t": 202.658,
+        "prompt": "A teacher chooses 4 of 10 students to present on the first day. The order of the presentations does not matter. How many groups are possible?",
+        "choices": [
+          "$5040$",
+          "$40$",
+          "$210$",
+          "$24$"
+        ],
+        "answer": 2,
+        "working": "${}_{10}C_{4} = \\dfrac{10 \\times 9 \\times 8 \\times 7}{4 \\times 3 \\times 2 \\times 1} = \\dfrac{5040}{24} = 210$."
+      }
+    ]
+  },
+  "m302-2-4-c": {
+    "lessonId": "m302-2-4",
+    "title": "Combinations, Part 3: Choosing from Several Groups",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A talent show act",
+        "t": 21.299
+      },
+      {
+        "title": "A deck of cards",
+        "t": 68.36
+      },
+      {
+        "title": "A pair",
+        "t": 105.207
+      },
+      {
+        "title": "Watch out",
+        "t": 150.976
+      },
+      {
+        "title": "Your turn",
+        "t": 176.513
+      },
+      {
+        "title": "Summary",
+        "t": 217.73
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-4-c:q",
+        "t": 186.699,
+        "prompt": "A committee needs 2 of 5 teachers and 2 of 8 students. How many committees are possible?",
+        "choices": [
+          "$280$",
+          "$38$",
+          "$715$",
+          "$1120$"
+        ],
+        "answer": 0,
+        "working": "Teachers: ${}_{5}C_{2} = 10$. Students: ${}_{8}C_{2} = 28$. Together: $10 \\times 28 = 280$."
+      }
+    ]
   }
 }
