@@ -65,6 +65,11 @@ Words the voice gets wrong are respelled for it in `speechText` (`src/video/word
 is voiced as "bi-weekly", "deci" as "dessy", "break-even" as "break even" (it came out "Bray-Keevan"), "cosecant" as "co-secant" (it came out "co-second"), "GST", "HST" and "EI" letter by letter (the voice often made "GST" sound like "GSD", and "EI" like "I"), hyphenated sizes ("eight-by-twelve") as
 separate words, and a lone letter with 's ("Route B's", which came out "Route B to Cast") by the
 letter's name ("Bee's"); the captions keep the script's spelling. Add a word there when a check finds one.
+Kokoro voices at most about 510 phonemes at once and silently drops the rest, which a long line
+full of decimals can pass (a 60-word answer line lost its last five words). `narrate.ts` counts each
+line's phonemes with Kokoro's own tokenizer and voices a longer line in parts of whole sentences,
+joined with a sentence's pause; a single sentence too long to voice stops the build. Whisper hears
+30 seconds at a time, so the check transcribes a longer line in overlapping windows.
 After each build, listen to the lines that `pronunciation.txt` marks CHECK.
 
 ## Writing a script

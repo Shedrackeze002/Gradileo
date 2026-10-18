@@ -39097,5 +39097,680 @@
         "working": "Angle: $0.0172(200) - 1.39 = 2.05$, and in radian mode $\\sin(2.05) = 0.8873\\ldots$, so $L(200) = 5.07(0.8873\\ldots) + 12.16 = 16.65\\ldots \\approx 16.7$ h."
       }
     ]
+  },
+  "m302-7-2-c": {
+    "lessonId": "m302-7-2",
+    "title": "Modelling Data with Sinusoidal Functions, Part 3: Interpolating and Extrapolating",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Water level at a dock",
+        "t": 17.958
+      },
+      {
+        "title": "Measured and model",
+        "t": 54.902
+      },
+      {
+        "title": "Estimating at 2:30 p.m.",
+        "t": 94.169
+      },
+      {
+        "title": "Extrapolation",
+        "t": 154.621
+      },
+      {
+        "title": "Your turn",
+        "t": 199.318
+      },
+      {
+        "title": "Summary",
+        "t": 253.639
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-2-c:q",
+        "t": 215.323,
+        "prompt": "The model $h(t) = 2.85\\sin(0.506t - 1.21) + 4.62$ was made from data for $0 \\le t \\le 24$ hours after midnight. Estimate the water level at 10:00 p.m. Is this interpolation or extrapolation?",
+        "choices": [
+          "$3.26$ m, extrapolation",
+          "$5.11$ m, interpolation",
+          "$3.26$ m, interpolation",
+          "$5.11$ m, extrapolation"
+        ],
+        "answer": 2,
+        "working": "10:00 p.m. is $t = 22$. The angle is $0.506(22) - 1.21 = 9.922$, and $\\sin(9.922) = -0.4769\\ldots$, so $h = 2.85(-0.4769\\ldots) + 4.62 = 3.26$ m. $t = 22$ is inside $0 \\le t \\le 24$: interpolation."
+      }
+    ]
+  },
+  "m302-7-2-d": {
+    "lessonId": "m302-7-2",
+    "title": "Modelling Data with Sinusoidal Functions, Part 4: When Is the Maximum?",
+    "duration": 399,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where sine is greatest",
+        "t": 24.502
+      },
+      {
+        "title": "The longest day",
+        "t": 69.713
+      },
+      {
+        "title": "The shortest day",
+        "t": 125.134
+      },
+      {
+        "title": "The top of the wheel",
+        "t": 163.336
+      },
+      {
+        "title": "Before the data start",
+        "t": 228.006
+      },
+      {
+        "title": "Check with a graph",
+        "t": 275.12
+      },
+      {
+        "title": "Your turn",
+        "t": 308.125
+      },
+      {
+        "title": "Summary",
+        "t": 365.048
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-2-d:q",
+        "t": 329.696,
+        "prompt": "The water level at a dock is $h(t) = 2.85\\sin(0.506t - 1.21) + 4.62$, in metres, $t$ hours after midnight. When is the first high tide after midnight?",
+        "choices": [
+          "$t \\approx 5.50$",
+          "$t \\approx 0.71$",
+          "$t \\approx 11.70$",
+          "$t \\approx 12.42$"
+        ],
+        "answer": 0,
+        "working": "High tide is the maximum: $0.506t - 1.21 = \\dfrac{\\pi}{2}$, so $t = \\dfrac{\\pi/2 + 1.21}{0.506} = 5.49\\ldots \\approx 5.50$, about 5:30 a.m."
+      }
+    ]
+  },
+  "m302-8-1": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 1: Problem-Solving Strategies",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a strategy?",
+        "t": 26.912
+      },
+      {
+        "title": "A number riddle",
+        "t": 74.411
+      },
+      {
+        "title": "Check every clue",
+        "t": 130.25
+      },
+      {
+        "title": "Another way: algebra",
+        "t": 157.741
+      },
+      {
+        "title": "Your turn",
+        "t": 195.291
+      },
+      {
+        "title": "Summary",
+        "t": 233.844
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1:q",
+        "t": 208.256,
+        "prompt": "I am a two-digit number. The sum of my digits is $9$, and my ones digit is $5$ more than my tens digit. What number am I?",
+        "choices": [
+          "$72$",
+          "$27$",
+          "$36$",
+          "$18$"
+        ],
+        "answer": 1,
+        "working": "The two-digit numbers with a digit sum of $9$ are $18, 27, 36, 45, 54, 63, 72, 81$ and $90$. Only $27$ has a ones digit $5$ more than its tens digit: $7 = 2 + 5$."
+      }
+    ]
+  },
+  "m302-8-1-b": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 2: Magic Squares",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a magic square?",
+        "t": 20.918
+      },
+      {
+        "title": "The magic sum",
+        "t": 45.251
+      },
+      {
+        "title": "Finding x",
+        "t": 65.149
+      },
+      {
+        "title": "Completing the square",
+        "t": 103.762
+      },
+      {
+        "title": "Your turn",
+        "t": 155.552
+      },
+      {
+        "title": "Summary",
+        "t": 199.427
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-b:q",
+        "t": 169.064,
+        "prompt": "In a 3 by 3 magic square, the top row is $4$, $9$ and $8$, and the centre is $7$. What number goes in the bottom-right corner?",
+        "choices": [
+          "$6$",
+          "$9$",
+          "$12$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "The magic sum is $4 + 9 + 8 = 21$. The bottom-right corner is on the diagonal through the top-left corner and the centre: $4 + 7 + x = 21$, so $x = 10$."
+      }
+    ]
+  },
+  "m302-8-1-c": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 3: Sudoku",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rules",
+        "t": 18.633
+      },
+      {
+        "title": "Cell B1",
+        "t": 51.636
+      },
+      {
+        "title": "One cell at a time",
+        "t": 70.593
+      },
+      {
+        "title": "Watch out",
+        "t": 121.257
+      },
+      {
+        "title": "Your turn",
+        "t": 154.182
+      },
+      {
+        "title": "Summary",
+        "t": 193.143
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-c:q",
+        "t": 170.939,
+        "prompt": "In a 4 by 4 Sudoku, row 2 contains $3$ and $1$, and its two empty cells are A2 and D2. Column D already contains a $2$. What digit goes in D2?",
+        "choices": [
+          "$2$",
+          "$1$",
+          "$4$",
+          "$3$"
+        ],
+        "answer": 2,
+        "working": "Row 2 is missing $2$ and $4$. Column D already has a $2$, so D2 cannot be $2$: D2 $= 4$ (and then A2 $= 2$)."
+      }
+    ]
+  },
+  "m302-8-1-d": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 4: Logic Puzzles",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The puzzle",
+        "t": 19.455
+      },
+      {
+        "title": "Set up a grid",
+        "t": 44.337
+      },
+      {
+        "title": "Clue by clue",
+        "t": 67.639
+      },
+      {
+        "title": "Check every clue",
+        "t": 116.006
+      },
+      {
+        "title": "Your turn",
+        "t": 148.398
+      },
+      {
+        "title": "Summary",
+        "t": 189.386
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-d:q",
+        "t": 164.385,
+        "prompt": "Dev, Emma and Farah each own a different pet: a cat, a dog or a fish. Emma does not own the dog or the fish. Farah does not own the dog. Who owns the fish?",
+        "choices": [
+          "Dev",
+          "Emma",
+          "There is not enough information",
+          "Farah"
+        ],
+        "answer": 3,
+        "working": "Emma owns neither the dog nor the fish, so Emma owns the cat. The dog is not Emma’s or Farah’s, so Dev owns the dog. That leaves the fish for Farah."
+      }
+    ]
+  },
+  "m302-8-1-e": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 5: Finding a Winning Strategy",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The game",
+        "t": 15.989
+      },
+      {
+        "title": "Work backward",
+        "t": 43.573
+      },
+      {
+        "title": "Rounds of four",
+        "t": 108.599
+      },
+      {
+        "title": "From fifteen",
+        "t": 133.089
+      },
+      {
+        "title": "A sample game",
+        "t": 145.59
+      },
+      {
+        "title": "Your turn",
+        "t": 171.909
+      },
+      {
+        "title": "Summary",
+        "t": 206.516
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-e:q",
+        "t": 181.981,
+        "prompt": "In the same game (take $1$, $2$ or $3$ counters; whoever takes the last counter wins), the pile starts with $22$ counters. How many should the first player take?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "The first player cannot win"
+        ],
+        "answer": 1,
+        "working": "$22 = 20 + 2$, and $20$ is a multiple of $4$. Take $2$ to leave $20$, then make each round total $4$."
+      }
+    ]
+  },
+  "m302-8-1-f": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 6: A Systematic Search",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The puzzle",
+        "t": 20.583
+      },
+      {
+        "title": "Keeping track",
+        "t": 55.255
+      },
+      {
+        "title": "Six steps",
+        "t": 84.277
+      },
+      {
+        "title": "Why it works",
+        "t": 135.795
+      },
+      {
+        "title": "Your turn",
+        "t": 168.899
+      },
+      {
+        "title": "Summary",
+        "t": 219.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-f:q",
+        "t": 191.327,
+        "prompt": "Start with an empty 3 L jug and an empty 5 L jug. Fill the 3 L jug and pour it into the 5 L jug. Fill the 3 L jug again, and pour it into the 5 L jug until the 5 L jug is full. How much water is left in the 3 L jug?",
+        "choices": [
+          "$1$ L",
+          "$0$ L",
+          "$2$ L",
+          "$3$ L"
+        ],
+        "answer": 0,
+        "working": "The states are $(3, 0)$, $(0, 3)$, $(3, 3)$, $(1, 5)$. The 5 L jug had room for only $2$ L more, so $3 - 2 = 1$ L is left."
+      }
+    ]
+  },
+  "m302-8-2": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 1: Choosing a Research Question",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The stages of a project",
+        "t": 27.003
+      },
+      {
+        "title": "A good research question",
+        "t": 77.245
+      },
+      {
+        "title": "Improving a question",
+        "t": 109.465
+      },
+      {
+        "title": "From topic to question",
+        "t": 166.322
+      },
+      {
+        "title": "Your turn",
+        "t": 207.799
+      },
+      {
+        "title": "Summary",
+        "t": 240.307
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2:q",
+        "t": 213.688,
+        "prompt": "Which research question is best?",
+        "choices": [
+          "Are trucks expensive?",
+          "What do people think of trucks?",
+          "For used pickup trucks advertised on one website this month, how is the asking price related to the age of the truck?",
+          "How has the value of every vehicle in the world changed since cars were invented?"
+        ],
+        "answer": 2,
+        "working": "It is specific (used pickup trucks on one website this month), measurable (price and age are numbers) and realistic (the listings can be collected in a few hours)."
+      }
+    ]
+  },
+  "m302-8-2-b": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 2: Collecting Data",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Primary and secondary data",
+        "t": 19.812
+      },
+      {
+        "title": "Quantitative and qualitative",
+        "t": 57.702
+      },
+      {
+        "title": "Populations and samples",
+        "t": 91.297
+      },
+      {
+        "title": "Why random?",
+        "t": 124.658
+      },
+      {
+        "title": "Your turn",
+        "t": 167.714
+      },
+      {
+        "title": "Summary",
+        "t": 204.068
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-b:q",
+        "t": 180.397,
+        "prompt": "A student uses a table of average monthly temperatures from a national weather service’s website. What kind of data is this?",
+        "choices": [
+          "Primary and qualitative",
+          "Secondary and quantitative",
+          "Primary and quantitative",
+          "Secondary and qualitative"
+        ],
+        "answer": 1,
+        "working": "The weather service collected the data, not the student, so they are secondary. Temperatures are numbers, so they are quantitative."
+      }
+    ]
+  },
+  "m302-8-2-c": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 3: Spotting Bias",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is bias?",
+        "t": 19.292
+      },
+      {
+        "title": "Four kinds of bias",
+        "t": 39.859
+      },
+      {
+        "title": "An arena survey",
+        "t": 91.447
+      },
+      {
+        "title": "Watch out",
+        "t": 127.025
+      },
+      {
+        "title": "Your turn",
+        "t": 159.982
+      },
+      {
+        "title": "Summary",
+        "t": 193.378
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-c:q",
+        "t": 171.544,
+        "prompt": "A survey asks: “Do you agree that our excellent mayor deserves a second term?” What kind of bias is most likely?",
+        "choices": [
+          "Sampling bias",
+          "Non-response bias",
+          "Measurement bias",
+          "Response bias"
+        ],
+        "answer": 3,
+        "working": "Calling the mayor “excellent” pushes people toward agreeing: the wording of the question biases the answers."
+      }
+    ]
+  },
+  "m302-8-2-d": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 4: Choosing Graphs and Averages",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing a display",
+        "t": 19.213
+      },
+      {
+        "title": "A scatter plot",
+        "t": 65.657
+      },
+      {
+        "title": "Mean or median?",
+        "t": 105.933
+      },
+      {
+        "title": "On a number line",
+        "t": 164.445
+      },
+      {
+        "title": "Your turn",
+        "t": 198.005
+      },
+      {
+        "title": "Summary",
+        "t": 241.997
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-d:q",
+        "t": 214.416,
+        "prompt": "The times, in minutes, that seven students take to get to school are $8$, $10$, $11$, $12$, $14$, $15$ and $75$. Which value best represents a typical time?",
+        "choices": [
+          "The median, $12$ minutes",
+          "The mean, about $20.7$ minutes",
+          "The mean, $12$ minutes",
+          "The median, $14$ minutes"
+        ],
+        "answer": 0,
+        "working": "The mean is $\\dfrac{145}{7} \\approx 20.7$, longer than six of the seven times, because the outlier $75$ pulls it up. The median, the 4th of the 7 ordered times, is $12$."
+      }
+    ]
+  },
+  "m302-8-2-e": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 5: Evaluating Claims",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four questions",
+        "t": 20.257
+      },
+      {
+        "title": "Correlation or cause?",
+        "t": 64.742
+      },
+      {
+        "title": "Margin of error",
+        "t": 103.53
+      },
+      {
+        "title": "Your own project",
+        "t": 155.181
+      },
+      {
+        "title": "Your turn",
+        "t": 187.835
+      },
+      {
+        "title": "Summary",
+        "t": 234.261
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-e:q",
+        "t": 205.936,
+        "prompt": "A poll finds that $41\\%$ of voters support a plan, with a margin of error of $3$ percentage points, $19$ times out of $20$. Which range likely contains the percent for all voters?",
+        "choices": [
+          "$41\\%$ to $44\\%$",
+          "$39.77\\%$ to $42.23\\%$",
+          "$38\\%$ to $44\\%$",
+          "$35\\%$ to $47\\%$"
+        ],
+        "answer": 2,
+        "working": "A margin of error of $3$ percentage points goes both ways: $41 - 3 = 38$ and $41 + 3 = 44$."
+      }
+    ]
   }
 }
