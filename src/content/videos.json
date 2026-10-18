@@ -37570,5 +37570,480 @@
         "working": "The leading term is $3x^2$. The degree is even, so both ends go the same way, and the leading coefficient $3$ is positive, so both ends go up."
       }
     ]
+  },
+  "m302-5-1-c": {
+    "lessonId": "m302-5-1",
+    "title": "Characteristics of Polynomial Functions, Part 3: Intercepts and Turning Points",
+    "duration": 377,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Intercepts",
+        "t": 22.244
+      },
+      {
+        "title": "A cubic in factored form",
+        "t": 69.893
+      },
+      {
+        "title": "Turning points",
+        "t": 118.939
+      },
+      {
+        "title": "What is possible",
+        "t": 164.057
+      },
+      {
+        "title": "Three cubics",
+        "t": 203.072
+      },
+      {
+        "title": "Touching the axis",
+        "t": 235.497
+      },
+      {
+        "title": "Your turn",
+        "t": 291.522
+      },
+      {
+        "title": "Summary",
+        "t": 335.608
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-1-c:q",
+        "t": 304.436,
+        "prompt": "Find the $x$-intercepts and the $y$-intercept of $y = (x - 2)(x + 1)(x + 4)$.",
+        "choices": [
+          "$x$-intercepts $2$, $-1$, $-4$; $y$-intercept $-8$",
+          "$x$-intercepts $-2$, $1$, $4$; $y$-intercept $-8$",
+          "$x$-intercepts $2$, $-1$, $-4$; $y$-intercept $8$",
+          "$x$-intercepts $-2$, $1$, $4$; $y$-intercept $8$"
+        ],
+        "answer": 0,
+        "working": "Each factor is zero when $x = 2$, $x = -1$ or $x = -4$. At $x = 0$: $(0 - 2)(0 + 1)(0 + 4) = -8$."
+      }
+    ]
+  },
+  "m302-5-1-d": {
+    "lessonId": "m302-5-1",
+    "title": "Characteristics of Polynomial Functions, Part 4: Domain, Range and Matching Graphs",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Domain",
+        "t": 24.598
+      },
+      {
+        "title": "Range of a cubic",
+        "t": 69.69
+      },
+      {
+        "title": "Range of a quadratic",
+        "t": 110.125
+      },
+      {
+        "title": "Three clues",
+        "t": 163.58
+      },
+      {
+        "title": "Matching a graph",
+        "t": 189.952
+      },
+      {
+        "title": "Your turn",
+        "t": 242.45
+      },
+      {
+        "title": "Summary",
+        "t": 280.928
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-1-d:q",
+        "t": 252.291,
+        "prompt": "State the range of $y = 2(x + 3)^2 - 5$.",
+        "choices": [
+          "$\\{y \\mid y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\le -5,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\ge -5,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\ge -3,\\ y \\in \\mathbb{R}\\}$"
+        ],
+        "answer": 2,
+        "working": "The vertex is $(-3, -5)$ and $a = 2 > 0$, so the parabola opens up and $-5$ is its minimum value."
+      }
+    ]
+  },
+  "m302-5-2": {
+    "lessonId": "m302-5-2",
+    "title": "Modelling Data with Polynomial Functions, Part 1: Choosing a Type of Model",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Regression",
+        "t": 23.889
+      },
+      {
+        "title": "Count the turns",
+        "t": 63.554
+      },
+      {
+        "title": "Fuel use and speed",
+        "t": 110.471
+      },
+      {
+        "title": "Watch out",
+        "t": 164.261
+      },
+      {
+        "title": "Your turn",
+        "t": 206.738
+      },
+      {
+        "title": "Summary",
+        "t": 242.284
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-2:q",
+        "t": 219.323,
+        "prompt": "A scatter plot of a shop’s weekly sales rises, then falls, then rises again. Which type of regression suits the data?",
+        "choices": [
+          "Linear",
+          "Quadratic",
+          "Linear, because the sales end higher than they start",
+          "Cubic"
+        ],
+        "answer": 3,
+        "working": "The pattern changes direction twice (up, down, up), so it has two turning points: a cubic model."
+      }
+    ]
+  },
+  "m302-5-2-b": {
+    "lessonId": "m302-5-2",
+    "title": "Modelling Data with Polynomial Functions, Part 2: Interpolating and Extrapolating",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inside or outside",
+        "t": 19.65
+      },
+      {
+        "title": "Iced drinks",
+        "t": 45.154
+      },
+      {
+        "title": "Outside the data",
+        "t": 101.673
+      },
+      {
+        "title": "What the slope means",
+        "t": 149.469
+      },
+      {
+        "title": "Keep every digit",
+        "t": 182.517
+      },
+      {
+        "title": "Your turn",
+        "t": 235.096
+      },
+      {
+        "title": "Summary",
+        "t": 279.704
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-2-b:q",
+        "t": 252.224,
+        "prompt": "Data for $x$ from $10$ to $50$ give the linear model $y = 2.5x + 12$. Estimate $y$ when $x = 30$. Is this interpolation or extrapolation?",
+        "choices": [
+          "$87$; extrapolation",
+          "$87$; interpolation",
+          "$75$; interpolation",
+          "$435$; interpolation"
+        ],
+        "answer": 1,
+        "working": "$y = 2.5(30) + 12 = 75 + 12 = 87$. Since $30$ is between $10$ and $50$, inside the data, this is interpolation."
+      }
+    ]
+  },
+  "m302-5-2-c": {
+    "lessonId": "m302-5-2",
+    "title": "Modelling Data with Polynomial Functions, Part 3: Using Quadratic and Cubic Models",
+    "duration": 330,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The vertex",
+        "t": 22.923
+      },
+      {
+        "title": "Reaching a value",
+        "t": 96.898
+      },
+      {
+        "title": "A cubic model",
+        "t": 170.196
+      },
+      {
+        "title": "Your turn",
+        "t": 245.365
+      },
+      {
+        "title": "Summary",
+        "t": 296.81
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-2-c:q",
+        "t": 264.918,
+        "prompt": "A ball’s height, in metres, $x$ seconds after it is thrown is modelled by $y = -4.9x^2 + 19.6x + 2$. When does it reach its maximum height, and what is that height?",
+        "choices": [
+          "After $2$ s, at $2$ m",
+          "After $-2$ s, at $-56.8$ m",
+          "After $2$ s, at $21.6$ m",
+          "After $4$ s, at $2$ m"
+        ],
+        "answer": 2,
+        "working": "$x = -\\dfrac{19.6}{2(-4.9)} = 2$, and $y = -4.9(2)^2 + 19.6(2) + 2 = -19.6 + 39.2 + 2 = 21.6$."
+      }
+    ]
+  },
+  "m302-5-2-d": {
+    "lessonId": "m302-5-2",
+    "title": "Modelling Data with Polynomial Functions, Part 4: Is the Prediction Reasonable?",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Only the data it came from",
+        "t": 15.303
+      },
+      {
+        "title": "Players after two years",
+        "t": 41.242
+      },
+      {
+        "title": "A thrown ball",
+        "t": 107.608
+      },
+      {
+        "title": "Watch out",
+        "t": 163.451
+      },
+      {
+        "title": "Your turn",
+        "t": 200.097
+      },
+      {
+        "title": "Summary",
+        "t": 246.795
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-2-d:q",
+        "t": 219.577,
+        "prompt": "A model for the number of fish in a pond, from data for years $0$ to $6$, is $y = -15x^2 + 90x + 400$. For year $10$ it gives $y = -200$. What does this tell you?",
+        "choices": [
+          "The prediction is not reasonable: year 10 is far outside the data.",
+          "The pond will have 200 fewer fish than at the start.",
+          "The model must be wrong for years 0 to 6 as well.",
+          "The prediction is reasonable, because the model fits the data."
+        ],
+        "answer": 0,
+        "working": "A pond cannot hold a negative number of fish. Year $10$ is outside the data (years $0$ to $6$), so this extrapolation uses the model where it does not apply."
+      }
+    ]
+  },
+  "m302-6-1": {
+    "lessonId": "m302-6-1",
+    "title": "Exponential Functions, Part 1: Growth or Decay",
+    "duration": 330,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding or multiplying",
+        "t": 27.223
+      },
+      {
+        "title": "Exponential functions",
+        "t": 63.375
+      },
+      {
+        "title": "Growth and decay",
+        "t": 113.517
+      },
+      {
+        "title": "Which is it?",
+        "t": 166.368
+      },
+      {
+        "title": "Watch out",
+        "t": 222.336
+      },
+      {
+        "title": "Your turn",
+        "t": 257.579
+      },
+      {
+        "title": "Summary",
+        "t": 292.361
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-1:q",
+        "t": 264.127,
+        "prompt": "Which function shows exponential decay?",
+        "choices": [
+          "$y = 0.4(2.5)^x$",
+          "$y = 3(1.2)^x$",
+          "$y = 6(0.9)^x$",
+          "$y = 0.9(1.1)^x$"
+        ],
+        "answer": 2,
+        "working": "Only $y = 6(0.9)^x$ has a base between $0$ and $1$. The other bases, $2.5$, $1.2$ and $1.1$, are greater than $1$, so those functions show growth."
+      }
+    ]
+  },
+  "m302-6-1-b": {
+    "lessonId": "m302-6-1",
+    "title": "Exponential Functions, Part 2: Features of the Graph",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Halving forever",
+        "t": 23.946
+      },
+      {
+        "title": "The features",
+        "t": 62.128
+      },
+      {
+        "title": "Every exponential graph",
+        "t": 125.706
+      },
+      {
+        "title": "Watch out",
+        "t": 167.541
+      },
+      {
+        "title": "Your turn",
+        "t": 189.306
+      },
+      {
+        "title": "Summary",
+        "t": 228.292
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-1-b:q",
+        "t": 197.718,
+        "prompt": "State the range of $y = 5(3)^x$.",
+        "choices": [
+          "$\\{y \\mid y > 0,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\ge 0,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\ge 5,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\in \\mathbb{R}\\}$"
+        ],
+        "answer": 0,
+        "working": "Every $y$-value is positive, and the graph approaches the asymptote $y = 0$ without reaching it. Values less than $5$ occur when $x < 0$, for example $y = 5(3)^{-1} = \\frac{5}{3}$."
+      }
+    ]
+  },
+  "m302-6-1-c": {
+    "lessonId": "m302-6-1",
+    "title": "Exponential Functions, Part 3: Finding the Equation from a Table or a Graph",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A constant ratio",
+        "t": 21.358
+      },
+      {
+        "title": "From a table",
+        "t": 60.633
+      },
+      {
+        "title": "From a graph",
+        "t": 107.677
+      },
+      {
+        "title": "Ratio or difference?",
+        "t": 146.132
+      },
+      {
+        "title": "Your turn",
+        "t": 192.227
+      },
+      {
+        "title": "Summary",
+        "t": 233.127
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-1-c:q",
+        "t": 205.948,
+        "prompt": "An exponential function has $y = 80, 40, 20, 10$ at $x = 0, 1, 2, 3$. Which equation fits?",
+        "choices": [
+          "$y = 80(2)^x$",
+          "$y = 0.5(80)^x$",
+          "$y = 80 - 20x$",
+          "$y = 80\\left(\\frac{1}{2}\\right)^x$"
+        ],
+        "answer": 3,
+        "working": "At $x = 0$, $y = 80$, so $a = 80$. $\\dfrac{40}{80} = \\dfrac{20}{40} = \\dfrac{10}{20} = \\dfrac{1}{2}$, so $b = \\frac{1}{2}$."
+      }
+    ]
   }
 }
