@@ -38618,5 +38618,56 @@
         "working": "$\\dfrac{t}{h} = \\dfrac{15}{5} = 3$ half-lives, so $A = 200\\left(\\frac{1}{2}\\right)^3 = \\dfrac{200}{8} = 25$ mg."
       }
     ]
+  },
+  "m302-6-4-c": {
+    "lessonId": "m302-6-4",
+    "title": "Modelling with Exponential and Logarithmic Functions, Part 3: Using a Regression Equation",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exponential regression",
+        "t": 24.658
+      },
+      {
+        "title": "Inside the data",
+        "t": 77.291
+      },
+      {
+        "title": "Outside the data",
+        "t": 119.95
+      },
+      {
+        "title": "Logarithmic regression",
+        "t": 158.914
+      },
+      {
+        "title": "Your turn",
+        "t": 220.802
+      },
+      {
+        "title": "Summary",
+        "t": 283.453
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-4-c:q",
+        "t": 246.532,
+        "prompt": "A town’s population is modelled by $y = 4500(1.025)^x$, where $x$ is the number of years since the data began. The data cover 10 years. Estimate the population at $x = 4$, and say whether this is interpolation or extrapolation.",
+        "choices": [
+          "$4950$; interpolation",
+          "$4967$; extrapolation",
+          "$4967$; interpolation",
+          "$18\\,450$; interpolation"
+        ],
+        "answer": 2,
+        "working": "$y = 4500(1.025)^4 = 4500(1.10381\\ldots) = 4967.15\\ldots$, about $4967$. Since $4$ is inside the $10$ years of data, this is interpolation."
+      }
+    ]
   }
 }
