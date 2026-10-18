@@ -5098,6 +5098,320 @@
       }
     ]
   },
+  "m31-2-2-d": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 4: Why sin θ / θ Approaches 1",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three areas",
+        "t": 25.167
+      },
+      {
+        "title": "Nested areas",
+        "t": 79.878
+      },
+      {
+        "title": "The squeeze",
+        "t": 108.946
+      },
+      {
+        "title": "Squeezed to one",
+        "t": 148.642
+      },
+      {
+        "title": "Your turn",
+        "t": 204.429
+      },
+      {
+        "title": "Summary",
+        "t": 242.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2-d:q",
+        "t": 213.244,
+        "prompt": "For $0 < \\theta < \\dfrac{\\pi}{2}$, which inequality is true?",
+        "choices": [
+          "$\\sin\\theta \\le \\tan\\theta \\le \\theta$",
+          "$\\sin\\theta \\le \\theta \\le \\tan\\theta$",
+          "$\\theta \\le \\sin\\theta \\le \\tan\\theta$",
+          "$\\tan\\theta \\le \\theta \\le \\sin\\theta$"
+        ],
+        "answer": 1,
+        "working": "The small triangle (area $\\dfrac{1}{2}\\sin\\theta$) fits inside the sector (area $\\dfrac{1}{2}\\theta$), which fits inside the big triangle (area $\\dfrac{1}{2}\\tan\\theta$)."
+      }
+    ]
+  },
+  "m31-2-2-e": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 5: Using the Limit of sin θ / θ",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Any angle that approaches 0",
+        "t": 23.156
+      },
+      {
+        "title": "Adjusting the angle",
+        "t": 60.081
+      },
+      {
+        "title": "Two sines",
+        "t": 112.775
+      },
+      {
+        "title": "Watch out",
+        "t": 159.218
+      },
+      {
+        "title": "Your turn",
+        "t": 195.064
+      },
+      {
+        "title": "Summary",
+        "t": 232.461
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2-e:q",
+        "t": 204.661,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 0} \\frac{\\sin 6x}{2x}$.",
+        "choices": [
+          "$6$",
+          "$\\dfrac{1}{3}$",
+          "$\\sin 3$",
+          "$3$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{\\sin 6x}{2x} = \\dfrac{6}{2} \\cdot \\dfrac{\\sin 6x}{6x} \\to 3(1) = 3$"
+      }
+    ]
+  },
+  "m31-2-3": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 1: Limits at Infinity",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dividing by huge numbers",
+        "t": 21.468
+      },
+      {
+        "title": "Horizontal asymptotes",
+        "t": 76.78
+      },
+      {
+        "title": "Equal degrees",
+        "t": 116.242
+      },
+      {
+        "title": "A lower-degree numerator",
+        "t": 173.397
+      },
+      {
+        "title": "Your turn",
+        "t": 222.235
+      },
+      {
+        "title": "Summary",
+        "t": 263.605
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3:q",
+        "t": 234.245,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to \\infty} \\frac{6x^2 + 1}{3x^2 - 4}$.",
+        "choices": [
+          "$2$",
+          "It does not exist.",
+          "$0$",
+          "$-\\dfrac{1}{4}$"
+        ],
+        "answer": 0,
+        "working": "Divide every term by $x^2$: $\\dfrac{6 + \\frac{1}{x^2}}{3 - \\frac{4}{x^2}} \\to \\dfrac{6}{3} = 2$."
+      }
+    ]
+  },
+  "m31-2-3-b": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 2: Comparing Degrees",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The leading terms win",
+        "t": 19.572
+      },
+      {
+        "title": "Three cases",
+        "t": 55.383
+      },
+      {
+        "title": "A higher-degree numerator",
+        "t": 96.665
+      },
+      {
+        "title": "Infinity is not a number",
+        "t": 160.737
+      },
+      {
+        "title": "Your turn",
+        "t": 186.016
+      },
+      {
+        "title": "Summary",
+        "t": 219.483
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3-b:q",
+        "t": 194.407,
+        "prompt": "Which function has the horizontal asymptote $y = 3$?",
+        "choices": [
+          "$y = \\dfrac{3x^2 + 1}{x^3 - 2}$",
+          "$y = \\dfrac{3x^3 + x}{x^2 + 5}$",
+          "$y = \\dfrac{6x^2 - x}{2x^2 + 9}$",
+          "$y = \\dfrac{3x + 1}{x^2 + 3x}$"
+        ],
+        "answer": 2,
+        "working": "Only C has equal degrees, and its leading coefficients give $\\dfrac{6}{2} = 3$. A and D have a lower degree on top (limit $0$); B has a higher degree on top (no horizontal asymptote)."
+      }
+    ]
+  },
+  "m31-2-3-c": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 3: Square Roots at Negative Infinity",
+    "duration": 296,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The square root of x squared",
+        "t": 19.956
+      },
+      {
+        "title": "Signs first",
+        "t": 65.947
+      },
+      {
+        "title": "Dividing by x",
+        "t": 101.295
+      },
+      {
+        "title": "Check with a table",
+        "t": 157.385
+      },
+      {
+        "title": "Watch out",
+        "t": 185.242
+      },
+      {
+        "title": "Your turn",
+        "t": 224.404
+      },
+      {
+        "title": "Summary",
+        "t": 265.462
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3-c:q",
+        "t": 237.171,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to -\\infty} \\frac{\\sqrt{4x^2 + 3}}{x + 1}$.",
+        "choices": [
+          "$2$",
+          "$-2$",
+          "$4$",
+          "$0$"
+        ],
+        "answer": 1,
+        "working": "For $x < 0$, $x = -\\sqrt{x^2}$. Dividing by $x$: $\\dfrac{-\\sqrt{4 + \\frac{3}{x^2}}}{1 + \\frac{1}{x}} \\to -\\sqrt{4} = -2$."
+      }
+    ]
+  },
+  "m31-2-3-d": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 4: Infinite Limits",
+    "duration": 328,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Values without bound",
+        "t": 18.542
+      },
+      {
+        "title": "Infinite limits",
+        "t": 72.623
+      },
+      {
+        "title": "Using signs",
+        "t": 120.823
+      },
+      {
+        "title": "A squared denominator",
+        "t": 181.633
+      },
+      {
+        "title": "Watch out",
+        "t": 219.073
+      },
+      {
+        "title": "Your turn",
+        "t": 251.982
+      },
+      {
+        "title": "Summary",
+        "t": 290.061
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3-d:q",
+        "t": 262.384,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 5^+} \\frac{2x}{5 - x}$.",
+        "choices": [
+          "$\\infty$",
+          "$0$",
+          "$10$",
+          "$-\\infty$"
+        ],
+        "answer": 3,
+        "working": "The top approaches $10$ (positive). For $x$ just above $5$, $5 - x$ is a small negative number. Positive ÷ small negative is large and negative: $-\\infty$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
