@@ -44260,5 +44260,60 @@
         "working": "Contribution: $140 - 25 = 115$. $1{,}800 \\div 115 = 15.65\\ldots$, so round up: 16 details."
       }
     ]
+  },
+  "m303-8-3-d": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 4: Is the Business Viable?",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Viable",
+        "t": 20.073
+      },
+      {
+        "title": "An income statement",
+        "t": 50.5
+      },
+      {
+        "title": "Profit and margin",
+        "t": 91.602
+      },
+      {
+        "title": "What the margin means",
+        "t": 152.347
+      },
+      {
+        "title": "Watch out",
+        "t": 181.848
+      },
+      {
+        "title": "Your turn",
+        "t": 207.442
+      },
+      {
+        "title": "Summary",
+        "t": 254.116
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3-d:q",
+        "t": 222.023,
+        "prompt": "A bakery stall had sales of \\$4,800 in a month and expenses of \\$3,360. What is its profit margin?",
+        "choices": [
+          "$70.0\\%$",
+          "$30.0\\%$",
+          "$42.9\\%$",
+          "$14.4\\%$"
+        ],
+        "answer": 1,
+        "working": "Profit: $4{,}800 - 3{,}360 = 1{,}440$. Profit margin: $\\dfrac{1{,}440}{4{,}800} \\times 100\\% = 30.0\\%$."
+      }
+    ]
   }
 }
