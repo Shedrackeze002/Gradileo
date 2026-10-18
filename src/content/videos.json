@@ -40682,5 +40682,119 @@
         "working": "$\\angle F = 180^\\circ - 48^\\circ - 57^\\circ = 75^\\circ$, across from $PQ = 20$. $QF$ is across from $\\angle P = 48^\\circ$, so $QF \\approx 15.4\\text{ km}$."
       }
     ]
+  },
+  "m303-2-3-c": {
+    "lessonId": "m303-2-3",
+    "title": "Solving Problems with Oblique Triangles, Part 3: Turns and Angles of Elevation",
+    "duration": 368,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Turns",
+        "t": 24.707
+      },
+      {
+        "title": "A survey boat",
+        "t": 62.435
+      },
+      {
+        "title": "Watch out",
+        "t": 136.16
+      },
+      {
+        "title": "Angles of elevation",
+        "t": 171.682
+      },
+      {
+        "title": "The height of the tower",
+        "t": 219.273
+      },
+      {
+        "title": "Your turn",
+        "t": 289.236
+      },
+      {
+        "title": "Summary",
+        "t": 332.081
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-3-c:q",
+        "t": 303.894,
+        "prompt": "A hiker walks $6\\text{ km}$, turns $35^\\circ$ to the left, and walks $4\\text{ km}$. Which equation gives the distance $d$ back to the start?",
+        "choices": [
+          "$d^2 = 6^2 + 4^2 - 2(6)(4)\\cos 145^\\circ$",
+          "$d^2 = 6^2 + 4^2 - 2(6)(4)\\cos 35^\\circ$",
+          "$d^2 = 6^2 + 4^2$",
+          "$\\dfrac{d}{\\sin 145^\\circ} = \\dfrac{6}{\\sin 35^\\circ}$"
+        ],
+        "answer": 0,
+        "working": "The inside angle is $180^\\circ - 35^\\circ = 145^\\circ$, between the two known sides, so use the cosine law: $d \\approx 9.6\\text{ km}$."
+      }
+    ]
+  },
+  "m303-3-1": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 1: Angles in Triangles",
+    "duration": 378,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The angle sum",
+        "t": 27.74
+      },
+      {
+        "title": "Finding the third angle",
+        "t": 97.43
+      },
+      {
+        "title": "Isosceles triangles",
+        "t": 136.496
+      },
+      {
+        "title": "Equilateral triangles",
+        "t": 170.219
+      },
+      {
+        "title": "A gable roof truss",
+        "t": 200.936
+      },
+      {
+        "title": "Which angles are equal?",
+        "t": 264.364
+      },
+      {
+        "title": "Your turn",
+        "t": 305.911
+      },
+      {
+        "title": "Summary",
+        "t": 345.397
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1:q",
+        "t": 317.718,
+        "prompt": "An isosceles triangle has two base angles of $52^\\circ$. What is the angle between its two equal sides?",
+        "choices": [
+          "$128^\\circ$",
+          "$76^\\circ$",
+          "$64^\\circ$",
+          "$38^\\circ$"
+        ],
+        "answer": 1,
+        "working": "The base angles together make $52^\\circ + 52^\\circ = 104^\\circ$, so the third angle is $180^\\circ - 104^\\circ = 76^\\circ$."
+      }
+    ]
   }
 }
