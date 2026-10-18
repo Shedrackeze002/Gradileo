@@ -40796,5 +40796,492 @@
         "working": "The base angles together make $52^\\circ + 52^\\circ = 104^\\circ$, so the third angle is $180^\\circ - 104^\\circ = 76^\\circ$."
       }
     ]
+  },
+  "m303-3-1-b": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 2: The Quadrilateral Family",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The angle sum",
+        "t": 24.212
+      },
+      {
+        "title": "A missing angle",
+        "t": 69.892
+      },
+      {
+        "title": "Parallelograms",
+        "t": 102.907
+      },
+      {
+        "title": "Trapezoids and kites",
+        "t": 152.41
+      },
+      {
+        "title": "How they fit together",
+        "t": 191.894
+      },
+      {
+        "title": "Watch out",
+        "t": 226.163
+      },
+      {
+        "title": "Your turn",
+        "t": 260.23
+      },
+      {
+        "title": "Summary",
+        "t": 299.842
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1-b:q",
+        "t": 273.746,
+        "prompt": "A quadrilateral has exactly one pair of parallel sides, and its two non-parallel sides are equal. What is its most specific name?",
+        "choices": [
+          "Parallelogram",
+          "Kite",
+          "Trapezoid",
+          "Isosceles trapezoid"
+        ],
+        "answer": 3,
+        "working": "Exactly one pair of parallel sides makes it a trapezoid, and equal non-parallel sides make it an **isosceles** trapezoid. A parallelogram needs two pairs of parallel sides."
+      }
+    ]
+  },
+  "m303-3-1-c": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 3: Parallelograms",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sides and angles",
+        "t": 21.436
+      },
+      {
+        "title": "Consecutive angles",
+        "t": 55.391
+      },
+      {
+        "title": "One angle gives all four",
+        "t": 108.733
+      },
+      {
+        "title": "The diagonals",
+        "t": 157.98
+      },
+      {
+        "title": "Watch out",
+        "t": 196.497
+      },
+      {
+        "title": "Your turn",
+        "t": 227.785
+      },
+      {
+        "title": "Summary",
+        "t": 266.814
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1-c:q",
+        "t": 239.219,
+        "prompt": "$PQRS$ is a parallelogram with $\\angle P = 107^\\circ$. What is $\\angle Q$?",
+        "choices": [
+          "$73^\\circ$",
+          "$107^\\circ$",
+          "$253^\\circ$",
+          "$83^\\circ$"
+        ],
+        "answer": 0,
+        "working": "$\\angle Q$ is next to $\\angle P$, so they add to $180^\\circ$: $\\angle Q = 180^\\circ - 107^\\circ = 73^\\circ$."
+      }
+    ]
+  },
+  "m303-3-1-d": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 4: Diagonals of Rectangles and Rhombuses",
+    "duration": 317,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rectangles",
+        "t": 23.726
+      },
+      {
+        "title": "Squaring a frame",
+        "t": 54.211
+      },
+      {
+        "title": "Rhombuses",
+        "t": 110.402
+      },
+      {
+        "title": "Angles in a rhombus",
+        "t": 146.522
+      },
+      {
+        "title": "Watch out",
+        "t": 201.856
+      },
+      {
+        "title": "Your turn",
+        "t": 241.707
+      },
+      {
+        "title": "Summary",
+        "t": 288.335
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1-d:q",
+        "t": 255.198,
+        "prompt": "$ABCD$ is a rhombus with $\\angle ABC = 70^\\circ$. Its diagonals meet at $E$. What is $\\angle BAE$?",
+        "choices": [
+          "$35^\\circ$",
+          "$110^\\circ$",
+          "$55^\\circ$",
+          "$90^\\circ$"
+        ],
+        "answer": 2,
+        "working": "Diagonal $BD$ bisects $\\angle B$: $\\angle ABE = 35^\\circ$. The diagonals are perpendicular: $\\angle AEB = 90^\\circ$. So $\\angle BAE = 180^\\circ - 90^\\circ - 35^\\circ = 55^\\circ$."
+      }
+    ]
+  },
+  "m303-3-1-e": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 5: Trapezoids and Kites",
+    "duration": 354,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trapezoids",
+        "t": 20.13
+      },
+      {
+        "title": "A trapezoid-shaped panel",
+        "t": 62.047
+      },
+      {
+        "title": "Isosceles trapezoids",
+        "t": 111.258
+      },
+      {
+        "title": "Kites",
+        "t": 156.319
+      },
+      {
+        "title": "A kite-shaped tile",
+        "t": 198.558
+      },
+      {
+        "title": "Watch out",
+        "t": 253.567
+      },
+      {
+        "title": "Your turn",
+        "t": 277.344
+      },
+      {
+        "title": "Summary",
+        "t": 325.542
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1-e:q",
+        "t": 293.898,
+        "prompt": "In kite $KLMN$, $KL = KN$ and $ML = MN$. If $\\angle K = 90^\\circ$ and $\\angle M = 56^\\circ$, what is $\\angle L$?",
+        "choices": [
+          "$214^\\circ$",
+          "$56^\\circ$",
+          "$124^\\circ$",
+          "$107^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$\\angle L = \\angle N$, so $2\\angle L = 360^\\circ - 90^\\circ - 56^\\circ = 214^\\circ$ and $\\angle L = 107^\\circ$."
+      }
+    ]
+  },
+  "m303-3-2": {
+    "lessonId": "m303-3-2",
+    "title": "Angles in Regular Polygons, Part 1: The Interior Angle Sum",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polygons",
+        "t": 23.867
+      },
+      {
+        "title": "Splitting into triangles",
+        "t": 63.641
+      },
+      {
+        "title": "More polygons",
+        "t": 117.816
+      },
+      {
+        "title": "The rule",
+        "t": 141.225
+      },
+      {
+        "title": "Check with a triangle",
+        "t": 190.966
+      },
+      {
+        "title": "Your turn",
+        "t": 235.052
+      },
+      {
+        "title": "Summary",
+        "t": 273.742
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-2:q",
+        "t": 244.657,
+        "prompt": "A convex polygon has 9 sides. What is the sum of its interior angles?",
+        "choices": [
+          "$1620^\\circ$",
+          "$1260^\\circ$",
+          "$1440^\\circ$",
+          "$140^\\circ$"
+        ],
+        "answer": 1,
+        "working": "$180^\\circ(9 - 2) = 180^\\circ \\times 7 = 1260^\\circ$. $1620^\\circ$ is $180^\\circ \\times 9$, which forgets to subtract 2."
+      }
+    ]
+  },
+  "m303-3-2-b": {
+    "lessonId": "m303-3-2",
+    "title": "Angles in Regular Polygons, Part 2: Interior Angles of Regular Polygons",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Regular polygons",
+        "t": 20.866
+      },
+      {
+        "title": "A hex nut",
+        "t": 58.354
+      },
+      {
+        "title": "More regular polygons",
+        "t": 100.179
+      },
+      {
+        "title": "Watch out",
+        "t": 149.796
+      },
+      {
+        "title": "Your turn",
+        "t": 187.289
+      },
+      {
+        "title": "Summary",
+        "t": 228.349
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-2-b:q",
+        "t": 195.917,
+        "prompt": "What is each interior angle of a regular decagon (10 sides)?",
+        "choices": [
+          "$36^\\circ$",
+          "$160^\\circ$",
+          "$144^\\circ$",
+          "$1440^\\circ$"
+        ],
+        "answer": 2,
+        "working": "Angle sum: $180^\\circ(10 - 2) = 1440^\\circ$. Each angle: $1440^\\circ \\div 10 = 144^\\circ$."
+      }
+    ]
+  },
+  "m303-3-2-c": {
+    "lessonId": "m303-3-2",
+    "title": "Angles in Regular Polygons, Part 3: Exterior Angles",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an exterior angle is",
+        "t": 24.686
+      },
+      {
+        "title": "Walking round a polygon",
+        "t": 59.385
+      },
+      {
+        "title": "An octagonal sign",
+        "t": 116.514
+      },
+      {
+        "title": "Watch out",
+        "t": 175.334
+      },
+      {
+        "title": "Your turn",
+        "t": 216.847
+      },
+      {
+        "title": "Summary",
+        "t": 252.195
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-2-c:q",
+        "t": 225.4,
+        "prompt": "What is each exterior angle of a regular polygon with 12 sides?",
+        "choices": [
+          "$30^\\circ$",
+          "$150^\\circ$",
+          "$1800^\\circ$",
+          "$15^\\circ$"
+        ],
+        "answer": 0,
+        "working": "The exterior angles add to $360^\\circ$, so each one is $360^\\circ \\div 12 = 30^\\circ$. (Each interior angle is $180^\\circ - 30^\\circ = 150^\\circ$.)"
+      }
+    ]
+  },
+  "m303-3-2-d": {
+    "lessonId": "m303-3-2",
+    "title": "Angles in Regular Polygons, Part 4: Finding the Number of Sides",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From an exterior angle",
+        "t": 21.99
+      },
+      {
+        "title": "From an interior angle",
+        "t": 59.268
+      },
+      {
+        "title": "From the angle sum",
+        "t": 104.717
+      },
+      {
+        "title": "Is n a whole number?",
+        "t": 142.283
+      },
+      {
+        "title": "Your turn",
+        "t": 193.325
+      },
+      {
+        "title": "Summary",
+        "t": 234.016
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-2-d:q",
+        "t": 204.903,
+        "prompt": "Each interior angle of a regular polygon is $165^\\circ$. How many sides does it have?",
+        "choices": [
+          "$12$",
+          "$15$",
+          "$22$",
+          "$24$"
+        ],
+        "answer": 3,
+        "working": "Exterior angle: $180^\\circ - 165^\\circ = 15^\\circ$. Number of sides: $360^\\circ \\div 15^\\circ = 24$."
+      }
+    ]
+  },
+  "m303-3-3": {
+    "lessonId": "m303-3-3",
+    "title": "Problems with Polygons, Part 1: Perimeters and Corner Angles",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two things to know",
+        "t": 24.79
+      },
+      {
+        "title": "A hexagonal sandbox",
+        "t": 57.996
+      },
+      {
+        "title": "A pentagonal garden bed",
+        "t": 101.568
+      },
+      {
+        "title": "Working backwards",
+        "t": 137.515
+      },
+      {
+        "title": "Your turn",
+        "t": 170.703
+      },
+      {
+        "title": "Summary",
+        "t": 214.132
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-3:q",
+        "t": 185.01,
+        "prompt": "A table top is a regular octagon with sides of $0.4\\text{ m}$. How much trim goes around its edge, and what angle is each corner?",
+        "choices": [
+          "$3.2\\text{ m}$ and $45^\\circ$",
+          "$2.4\\text{ m}$ and $135^\\circ$",
+          "$3.2\\text{ m}$ and $135^\\circ$",
+          "$1.6\\text{ m}$ and $135^\\circ$"
+        ],
+        "answer": 2,
+        "working": "Perimeter: $8 \\times 0.4 = 3.2\\text{ m}$. Corner angle: $\\dfrac{180^\\circ(8 - 2)}{8} = \\dfrac{1080^\\circ}{8} = 135^\\circ$."
+      }
+    ]
   }
 }
