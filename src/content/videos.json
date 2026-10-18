@@ -5412,6 +5412,61 @@
       }
     ]
   },
+  "m31-2-3-e": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 5: Holes and Asymptotes Together",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Factor first",
+        "t": 21.482
+      },
+      {
+        "title": "The hole",
+        "t": 72.659
+      },
+      {
+        "title": "The vertical asymptote",
+        "t": 108.762
+      },
+      {
+        "title": "The horizontal asymptote",
+        "t": 156.97
+      },
+      {
+        "title": "The whole picture",
+        "t": 187.191
+      },
+      {
+        "title": "Your turn",
+        "t": 213.349
+      },
+      {
+        "title": "Summary",
+        "t": 266.451
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3-e:q",
+        "t": 226.26,
+        "prompt": "Describe the hole and asymptotes of $f(x) = \\dfrac{x^2 - x - 2}{x^2 - 1}$.",
+        "choices": [
+          "hole $(-1, 1.5)$; $x = 1$; $y = 1$",
+          "$x = 1$ and $x = -1$; $y = 1$",
+          "hole $(-1, 1.5)$; $x = 1$; $y = 0$",
+          "hole $(1, -0.5)$; $x = -1$; $y = 1$"
+        ],
+        "answer": 0,
+        "working": "$f(x) = \\dfrac{(x - 2)(x + 1)}{(x - 1)(x + 1)} = \\dfrac{x - 2}{x - 1}$ for $x \\ne -1$. Hole at $x = -1$: $\\dfrac{-3}{-2} = 1.5$. Vertical asymptote $x = 1$. Equal degrees: $y = \\dfrac{1}{1} = 1$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
