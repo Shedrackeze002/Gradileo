@@ -39772,5 +39772,56 @@
         "working": "A margin of error of $3$ percentage points goes both ways: $41 - 3 = 38$ and $41 + 3 = 44$."
       }
     ]
+  },
+  "m302-8-2-f": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 6: Misleading Graphs",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A dramatic rise?",
+        "t": 18.952
+      },
+      {
+        "title": "The real change",
+        "t": 60.977
+      },
+      {
+        "title": "An honest graph",
+        "t": 91.409
+      },
+      {
+        "title": "Presenting your project",
+        "t": 126.18
+      },
+      {
+        "title": "Your turn",
+        "t": 171.976
+      },
+      {
+        "title": "Summary",
+        "t": 221.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-f:q",
+        "t": 188.414,
+        "prompt": "The vertical axis of a bar graph starts at $40$. The bars show $45$ and $50$. How many times as tall does the second bar look, and what is the actual percent increase?",
+        "choices": [
+          "$2$ times as tall; $10\\%$",
+          "$2$ times as tall; about $11.1\\%$",
+          "About $1.1$ times as tall; about $11.1\\%$",
+          "$2$ times as tall; $100\\%$"
+        ],
+        "answer": 1,
+        "working": "Above the axis, the bars show $50 - 40 = 10$ and $45 - 40 = 5$, so the second looks $2$ times as tall. The actual increase is $\\dfrac{50 - 45}{45} \\times 100 \\approx 11.1\\%$."
+      }
+    ]
   }
 }
