@@ -4941,6 +4941,163 @@
       }
     ]
   },
+  "m31-2-2": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 1: Direct Substitution",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The limit laws",
+        "t": 21.085
+      },
+      {
+        "title": "Direct substitution",
+        "t": 52.306
+      },
+      {
+        "title": "Substitute when you can",
+        "t": 98.721
+      },
+      {
+        "title": "Check the denominator first",
+        "t": 145.199
+      },
+      {
+        "title": "Your turn",
+        "t": 178.233
+      },
+      {
+        "title": "Summary",
+        "t": 211.701
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2:q",
+        "t": 188.801,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 3} \\frac{x^2 + 1}{2x - 1}$.",
+        "choices": [
+          "$\\dfrac{1}{2}$",
+          "$10$",
+          "It does not exist.",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "The denominator at $x = 3$ is $2(3) - 1 = 5 \\ne 0$, so substitute: $\\dfrac{3^2 + 1}{5} = \\dfrac{10}{5} = 2$."
+      }
+    ]
+  },
+  "m31-2-2-b": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 2: Factor and Cancel",
+    "duration": 323,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An indeterminate form",
+        "t": 23.151
+      },
+      {
+        "title": "Factor and cancel",
+        "t": 69.738
+      },
+      {
+        "title": "Two trinomials",
+        "t": 129.133
+      },
+      {
+        "title": "Combining fractions first",
+        "t": 173.849
+      },
+      {
+        "title": "Watch out",
+        "t": 223.462
+      },
+      {
+        "title": "Your turn",
+        "t": 250.409
+      },
+      {
+        "title": "Summary",
+        "t": 288.7
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2-b:q",
+        "t": 261.626,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to -1} \\frac{x^2 - 1}{x + 1}$.",
+        "choices": [
+          "$0$",
+          "It does not exist.",
+          "$-2$",
+          "$2$"
+        ],
+        "answer": 2,
+        "working": "Substituting gives $0/0$. Factor: $\\dfrac{(x - 1)(x + 1)}{x + 1} = x - 1$ for $x \\ne -1$, so the limit is $-1 - 1 = -2$."
+      }
+    ]
+  },
+  "m31-2-2-c": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 3: Rationalizing",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A square root",
+        "t": 21.957
+      },
+      {
+        "title": "The conjugate",
+        "t": 64.651
+      },
+      {
+        "title": "Multiplying by the conjugate",
+        "t": 105.318
+      },
+      {
+        "title": "Leave the denominator factored",
+        "t": 153.528
+      },
+      {
+        "title": "Your turn",
+        "t": 179.369
+      },
+      {
+        "title": "Summary",
+        "t": 219.145
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2-c:q",
+        "t": 190.609,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 4} \\frac{\\sqrt{x} - 2}{x - 4}$.",
+        "choices": [
+          "$\\dfrac{1}{4}$",
+          "$4$",
+          "$0$",
+          "$\\dfrac{1}{2}$"
+        ],
+        "answer": 0,
+        "working": "Multiply by $\\dfrac{\\sqrt{x} + 2}{\\sqrt{x} + 2}$: $\\dfrac{x - 4}{(x - 4)(\\sqrt{x} + 2)} = \\dfrac{1}{\\sqrt{x} + 2}$, so the limit is $\\dfrac{1}{2 + 2} = \\dfrac{1}{4}$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
