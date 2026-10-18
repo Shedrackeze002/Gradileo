@@ -6417,6 +6417,57 @@
       }
     ]
   },
+  "m31-4-1-b": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 2: Why the Power Rule Works",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A fourth power",
+        "t": 20.044
+      },
+      {
+        "title": "The term that survives",
+        "t": 79.133
+      },
+      {
+        "title": "Any whole number",
+        "t": 127.409
+      },
+      {
+        "title": "Watch out",
+        "t": 201.036
+      },
+      {
+        "title": "Your turn",
+        "t": 229.535
+      },
+      {
+        "title": "Summary",
+        "t": 271.858
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1-b:q",
+        "t": 246.9,
+        "prompt": "In $(x + h)^5 = x^5 + 5x^4h + 10x^3h^2 + 10x^2h^3 + 5xh^4 + h^5$, which term gives the derivative of $x^5$, after you subtract $x^5$, divide by $h$ and let $h \\to 0$?",
+        "choices": [
+          "$x^5$",
+          "$10x^3h^2$",
+          "$5x^4h$",
+          "$h^5$"
+        ],
+        "answer": 2,
+        "working": "Subtracting $x^5$ removes the first term. After dividing by $h$, only $5x^4h$ loses all of its $h$, becoming $5x^4$; every other term still contains $h$ and approaches $0$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
