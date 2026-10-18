@@ -5165,29 +5165,29 @@
       },
       {
         "title": "Adjusting the angle",
-        "t": 60.081
+        "t": 60.301
       },
       {
         "title": "Two sines",
-        "t": 112.775
+        "t": 112.995
       },
       {
         "title": "Watch out",
-        "t": 159.218
+        "t": 159.438
       },
       {
         "title": "Your turn",
-        "t": 195.064
+        "t": 195.284
       },
       {
         "title": "Summary",
-        "t": 232.461
+        "t": 232.681
       }
     ],
     "cues": [
       {
         "id": "m31-2-2-e:q",
-        "t": 204.661,
+        "t": 204.881,
         "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 0} \\frac{\\sin 6x}{2x}$.",
         "choices": [
           "$6$",
