@@ -39823,5 +39823,60 @@
         "working": "Above the axis, the bars show $50 - 40 = 10$ and $45 - 40 = 5$, so the second looks $2$ times as tall. The actual increase is $\\dfrac{50 - 45}{45} \\times 100 \\approx 11.1\\%$."
       }
     ]
+  },
+  "m303-1-1": {
+    "lessonId": "m303-1-1",
+    "title": "Precision and Accuracy, Part 1: The Precision of an Instrument",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Precision",
+        "t": 30.515
+      },
+      {
+        "title": "A metric ruler",
+        "t": 62.237
+      },
+      {
+        "title": "Tapes and calipers",
+        "t": 102.832
+      },
+      {
+        "title": "An imperial ruler",
+        "t": 151.2
+      },
+      {
+        "title": "A smaller unit, more digits",
+        "t": 188.932
+      },
+      {
+        "title": "Your turn",
+        "t": 223.38
+      },
+      {
+        "title": "Summary",
+        "t": 257.941
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-1:q",
+        "t": 233.645,
+        "prompt": "A tape measure has $8$ equal spaces between each pair of inch marks. What is its precision?",
+        "choices": [
+          "$\\tfrac{1}{16}$ in",
+          "$\\tfrac{1}{8}$ in",
+          "$8$ in",
+          "$\\tfrac{1}{9}$ in"
+        ],
+        "answer": 1,
+        "working": "Eight equal spaces fill one inch, so each space, the smallest unit, is $\\tfrac{1}{8}$ in."
+      }
+    ]
   }
 }
