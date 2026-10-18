@@ -39929,5 +39929,56 @@
         "working": "$12.46\\text{ cm}$ is to the nearest $0.01\\text{ cm} = 0.1\\text{ mm}$. The others are to the nearest $1\\text{ mm}$, $10\\text{ mm}$ and $1\\text{ mm}$."
       }
     ]
+  },
+  "m303-1-1-c": {
+    "lessonId": "m303-1-1",
+    "title": "Precision and Accuracy, Part 3: Accuracy",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Accuracy",
+        "t": 21.718
+      },
+      {
+        "title": "Checking two calipers",
+        "t": 56.655
+      },
+      {
+        "title": "Precise, but not accurate",
+        "t": 114.328
+      },
+      {
+        "title": "Precise and accurate",
+        "t": 156.49
+      },
+      {
+        "title": "Your turn",
+        "t": 188.382
+      },
+      {
+        "title": "Summary",
+        "t": 226.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-1-c:q",
+        "t": 199.997,
+        "prompt": "A gauge block is exactly $50.00\\text{ mm}$ long. Which reading of it is the most accurate?",
+        "choices": [
+          "$50.02\\text{ mm}$",
+          "$49.95\\text{ mm}$",
+          "$50.1\\text{ mm}$",
+          "$49.9\\text{ mm}$"
+        ],
+        "answer": 0,
+        "working": "The differences from $50.00$ are $0.02$, $0.05$, $0.1$ and $0.1\\text{ mm}$. The smallest difference, $0.02\\text{ mm}$, is the most accurate."
+      }
+    ]
   }
 }
