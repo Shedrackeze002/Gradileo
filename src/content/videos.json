@@ -41546,5 +41546,260 @@
         "working": "The point is $1 - (-2) = 3$ units below the line, so its image is 3 units above it: $y = 1 + 3 = 4$. Rule: $2(1) - (-2) = 4$. The image is $(5, 4)$."
       }
     ]
+  },
+  "m303-4-1-c": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 3: Rotations about the Origin",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotations",
+        "t": 21.405
+      },
+      {
+        "title": "Rules for the origin",
+        "t": 65.442
+      },
+      {
+        "title": "A quarter turn of a tile",
+        "t": 122.774
+      },
+      {
+        "title": "Watch out",
+        "t": 189.464
+      },
+      {
+        "title": "Your turn",
+        "t": 232.76
+      },
+      {
+        "title": "Summary",
+        "t": 269.604
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1-c:q",
+        "t": 244.502,
+        "prompt": "The point $(4, 3)$ is rotated $90^\\circ$ counterclockwise about the origin. Where is its image?",
+        "choices": [
+          "$(3, -4)$",
+          "$(-3, 4)$",
+          "$(-4, -3)$",
+          "$(4, -3)$"
+        ],
+        "answer": 1,
+        "working": "A $90^\\circ$ counterclockwise turn uses $(x, y) \\to (-y, x)$, so $(4, 3) \\to (-3, 4)$, in quadrant II."
+      }
+    ]
+  },
+  "m303-4-1-d": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 4: Describing a Transformation",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two questions",
+        "t": 22.128
+      },
+      {
+        "title": "Is it flipped?",
+        "t": 66.342
+      },
+      {
+        "title": "A patio slab",
+        "t": 108.926
+      },
+      {
+        "title": "Working backwards",
+        "t": 174.12
+      },
+      {
+        "title": "Your turn",
+        "t": 221.611
+      },
+      {
+        "title": "Summary",
+        "t": 264.593
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1-d:q",
+        "t": 239.132,
+        "prompt": "A triangle is transformed so that $A(1, 2) \\to A'(2, -1)$ and $B(4, 2) \\to B'(2, -4)$. Which transformation is it?",
+        "choices": [
+          "A reflection in the $x$-axis",
+          "A rotation of $90^\\circ$ counterclockwise about the origin",
+          "A rotation of $90^\\circ$ clockwise about the origin",
+          "A translation"
+        ],
+        "answer": 2,
+        "working": "Both pairs follow $(x, y) \\to (y, -x)$: $(1, 2) \\to (2, -1)$ and $(4, 2) \\to (2, -4)$. That is a $90^\\circ$ clockwise rotation about the origin."
+      }
+    ]
+  },
+  "m303-4-1-e": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 5: Two Transformations in a Row",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One step at a time",
+        "t": 19.68
+      },
+      {
+        "title": "A two-step tile pattern",
+        "t": 39.801
+      },
+      {
+        "title": "Turn, then slide",
+        "t": 80.264
+      },
+      {
+        "title": "Slide, then turn",
+        "t": 111.995
+      },
+      {
+        "title": "Your turn",
+        "t": 145.887
+      },
+      {
+        "title": "Summary",
+        "t": 184.169
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1-e:q",
+        "t": 159.008,
+        "prompt": "The point $Q(1, 4)$ is translated 3 units right, and then the image is reflected in the $x$-axis. Where does it end up?",
+        "choices": [
+          "$(4, -4)$",
+          "$(-4, 4)$",
+          "$(4, 4)$",
+          "$(1, -4)$"
+        ],
+        "answer": 0,
+        "working": "Translate 3 right: $(1, 4) \\to (4, 4)$. Reflect in the $x$-axis: $(4, 4) \\to (4, -4)$."
+      }
+    ]
+  },
+  "m303-4-2": {
+    "lessonId": "m303-4-2",
+    "title": "Dilations, Part 1: What a Dilation Does",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dilations",
+        "t": 25.141
+      },
+      {
+        "title": "Enlarging a logo",
+        "t": 64.011
+      },
+      {
+        "title": "A reduction",
+        "t": 123.078
+      },
+      {
+        "title": "Watch out",
+        "t": 156.085
+      },
+      {
+        "title": "Your turn",
+        "t": 179.751
+      },
+      {
+        "title": "Summary",
+        "t": 215.64
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-2:q",
+        "t": 192.136,
+        "prompt": "The point $(6, -9)$ is dilated about the origin by a scale factor of $\\tfrac{1}{3}$. Where is its image?",
+        "choices": [
+          "$(18, -27)$",
+          "$(3, -6)$",
+          "$(2, -9)$",
+          "$(2, -3)$"
+        ],
+        "answer": 3,
+        "working": "Multiply both coordinates by $\\tfrac{1}{3}$: $\\left(\\tfrac{1}{3} \\times 6,\\ \\tfrac{1}{3} \\times (-9)\\right) = (2, -3)$."
+      }
+    ]
+  },
+  "m303-4-2-b": {
+    "lessonId": "m303-4-2",
+    "title": "Dilations, Part 2: Finding the Scale Factor",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 20.64
+      },
+      {
+        "title": "A logo for a banner",
+        "t": 44.76
+      },
+      {
+        "title": "A reduction",
+        "t": 79.117
+      },
+      {
+        "title": "Watch out",
+        "t": 110.827
+      },
+      {
+        "title": "Your turn",
+        "t": 145.802
+      },
+      {
+        "title": "Summary",
+        "t": 184.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-2-b:q",
+        "t": 157.192,
+        "prompt": "A photo $20\\text{ cm}$ wide is printed $16\\text{ cm}$ wide. What is the scale factor of the print?",
+        "choices": [
+          "$1.25$",
+          "$0.8$",
+          "$4$",
+          "$0.2$"
+        ],
+        "answer": 1,
+        "working": "$k = \\dfrac{\\text{image}}{\\text{original}} = \\dfrac{16}{20} = 0.8$. Since $0.8 < 1$, the print is a reduction."
+      }
+    ]
   }
 }
