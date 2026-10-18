@@ -6468,6 +6468,316 @@
       }
     ]
   },
+  "m31-4-1-c": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 3: Constant Multiples and Sums",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two rules",
+        "t": 20.97
+      },
+      {
+        "title": "Why they work",
+        "t": 57.169
+      },
+      {
+        "title": "A polynomial",
+        "t": 95.607
+      },
+      {
+        "title": "Notation",
+        "t": 146.153
+      },
+      {
+        "title": "Watch out",
+        "t": 172.973
+      },
+      {
+        "title": "Your turn",
+        "t": 207.306
+      },
+      {
+        "title": "Summary",
+        "t": 245.099
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1-c:q",
+        "t": 219.947,
+        "prompt": "Find $f'(x)$ for $f(x) = 3x^4 - 5x^2 + 2x - 8$.",
+        "choices": [
+          "$12x^3 - 10x$",
+          "$12x^3 - 10x + 2$",
+          "$4x^3 - 2x + 1$",
+          "$12x^3 - 10x - 6$"
+        ],
+        "answer": 1,
+        "working": "$f'(x) = 3\\left(4x^3\\right) - 5(2x) + 2(1) - 0 = 12x^3 - 10x + 2$."
+      }
+    ]
+  },
+  "m31-4-1-d": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 4: Roots and Reciprocals",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rewrite first",
+        "t": 21.522
+      },
+      {
+        "title": "Rewrite, differentiate, tidy up",
+        "t": 61.096
+      },
+      {
+        "title": "Divide first",
+        "t": 119.088
+      },
+      {
+        "title": "Watch out",
+        "t": 180.022
+      },
+      {
+        "title": "Your turn",
+        "t": 219.433
+      },
+      {
+        "title": "Summary",
+        "t": 254.847
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1-d:q",
+        "t": 226.601,
+        "prompt": "Differentiate $y = \\dfrac{2}{x^{2}}$.",
+        "choices": [
+          "$\\dfrac{1}{x}$",
+          "$-\\dfrac{4}{x}$",
+          "$-\\dfrac{2}{x^{3}}$",
+          "$-\\dfrac{4}{x^{3}}$"
+        ],
+        "answer": 3,
+        "working": "Rewrite: $y = 2x^{-2}$. Then $\\dfrac{dy}{dx} = 2(-2)x^{-3} = -4x^{-3} = -\\dfrac{4}{x^{3}}$."
+      }
+    ]
+  },
+  "m31-4-1-e": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 5: Tangent Slopes and Velocity",
+    "duration": 297,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Horizontal tangents",
+        "t": 21.47
+      },
+      {
+        "title": "Velocity",
+        "t": 87.066
+      },
+      {
+        "title": "When it stops rising",
+        "t": 164.472
+      },
+      {
+        "title": "Watch out",
+        "t": 198.222
+      },
+      {
+        "title": "Your turn",
+        "t": 227.658
+      },
+      {
+        "title": "Summary",
+        "t": 266.996
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1-e:q",
+        "t": 239.9,
+        "prompt": "Find the $x$-values where the graph of $f(x) = x^{3} - 12x$ has a horizontal tangent.",
+        "choices": [
+          "$x = 4$",
+          "$x = -2$ and $x = 2$",
+          "$x = 0$",
+          "$x = -2\\sqrt{3}$, $0$ and $2\\sqrt{3}$"
+        ],
+        "answer": 1,
+        "working": "$f'(x) = 3x^{2} - 12 = 0$, so $x^{2} = 4$ and $x = \\pm 2$."
+      }
+    ]
+  },
+  "m31-4-2": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 1: The Product Rule",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Not factor by factor",
+        "t": 17.58
+      },
+      {
+        "title": "The product rule",
+        "t": 47.141
+      },
+      {
+        "title": "A growing rectangle",
+        "t": 92.759
+      },
+      {
+        "title": "The proof",
+        "t": 162.46
+      },
+      {
+        "title": "Your turn",
+        "t": 224.266
+      },
+      {
+        "title": "Summary",
+        "t": 265.623
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2:q",
+        "t": 235.86,
+        "prompt": "Let $u = x^3$ and $v = x^2$. Use the product rule to find the derivative of $uv$.",
+        "choices": [
+          "$6x^3$",
+          "$3x^2 + 2x$",
+          "$x^5$",
+          "$5x^4$"
+        ],
+        "answer": 3,
+        "working": "$u' = 3x^2$ and $v' = 2x$, so $(uv)' = 3x^2 \\cdot x^2 + x^3 \\cdot 2x = 3x^4 + 2x^4 = 5x^4$, which matches the power rule for $x^5$."
+      }
+    ]
+  },
+  "m31-4-2-b": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 2: Using the Product Rule",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Name the parts",
+        "t": 22.651
+      },
+      {
+        "title": "Check by expanding",
+        "t": 71.526
+      },
+      {
+        "title": "Watch out",
+        "t": 104.594
+      },
+      {
+        "title": "A product with a root",
+        "t": 129.6
+      },
+      {
+        "title": "Your turn",
+        "t": 186.305
+      },
+      {
+        "title": "Summary",
+        "t": 225.389
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2-b:q",
+        "t": 197.695,
+        "prompt": "Use the product rule to differentiate $f(x) = (x + 4)(3x - 2)$.",
+        "choices": [
+          "$6x + 10$",
+          "$3$",
+          "$6x + 14$",
+          "$3x^{2} + 10x - 8$"
+        ],
+        "answer": 0,
+        "working": "$u = x + 4$, $u' = 1$, $v = 3x - 2$, $v' = 3$. So $f'(x) = 1(3x - 2) + (x + 4)(3) = 3x - 2 + 3x + 12 = 6x + 10$."
+      }
+    ]
+  },
+  "m31-4-2-c": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 3: The Quotient Rule",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The quotient rule",
+        "t": 21.366
+      },
+      {
+        "title": "Where it comes from",
+        "t": 62.053
+      },
+      {
+        "title": "A quotient of linear functions",
+        "t": 101.909
+      },
+      {
+        "title": "Watch out",
+        "t": 164.244
+      },
+      {
+        "title": "Your turn",
+        "t": 204.474
+      },
+      {
+        "title": "Summary",
+        "t": 240.99
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2-c:q",
+        "t": 212.569,
+        "prompt": "Differentiate $f(x) = \\dfrac{x}{x + 2}$.",
+        "choices": [
+          "$\\dfrac{-2}{(x + 2)^{2}}$",
+          "$1$",
+          "$\\dfrac{2}{(x + 2)^{2}}$",
+          "$\\dfrac{2x + 2}{(x + 2)^{2}}$"
+        ],
+        "answer": 2,
+        "working": "$u = x$, $u' = 1$, $v = x + 2$, $v' = 1$. So $f'(x) = \\dfrac{1(x + 2) - x(1)}{(x + 2)^{2}} = \\dfrac{2}{(x + 2)^{2}}$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
