@@ -42512,5 +42512,386 @@
         "working": "$s = 3.5(6) + 52 = 21 + 52 = 73$. Since $6$ hours is between $2$ and $10$ hours, inside the data, this is interpolation."
       }
     ]
+  },
+  "m303-5-3-d": {
+    "lessonId": "m303-5-3",
+    "title": "Interpolating and Extrapolating, Part 4: When Is Extrapolation Reasonable?",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two questions",
+        "t": 20.146
+      },
+      {
+        "title": "A growing calf",
+        "t": 57.94
+      },
+      {
+        "title": "Is it reasonable?",
+        "t": 94.603
+      },
+      {
+        "title": "Is the answer possible?",
+        "t": 131.615
+      },
+      {
+        "title": "Watch out",
+        "t": 170.165
+      },
+      {
+        "title": "Your turn",
+        "t": 212.249
+      },
+      {
+        "title": "Summary",
+        "t": 256.038
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-3-d:q",
+        "t": 229.289,
+        "prompt": "A puppy gained about $0.5$ kg a week in its first $12$ weeks, from $1$ kg at birth, so $M = 0.5w + 1$. Which prediction is most reasonable?",
+        "choices": [
+          "At $520$ weeks: $261$ kg",
+          "At $14$ weeks: $8$ kg",
+          "At $200$ weeks: $101$ kg",
+          "At $-4$ weeks: $-1$ kg"
+        ],
+        "answer": 1,
+        "working": "$14$ weeks is just past the data, so the puppy is still growing in much the same way: $0.5(14) + 1 = 8$ kg. The others go far beyond the data or give an impossible answer."
+      }
+    ]
+  },
+  "m303-6-1": {
+    "lessonId": "m303-6-1",
+    "title": "Mean, Median and Mode, Part 1: The Mean",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central tendency",
+        "t": 23.144
+      },
+      {
+        "title": "The mean",
+        "t": 46.074
+      },
+      {
+        "title": "Furnace calls",
+        "t": 64.037
+      },
+      {
+        "title": "Sharing out equally",
+        "t": 103.984
+      },
+      {
+        "title": "Estimating totals",
+        "t": 140.219
+      },
+      {
+        "title": "Not always a data value",
+        "t": 176.024
+      },
+      {
+        "title": "Your turn",
+        "t": 209.051
+      },
+      {
+        "title": "Summary",
+        "t": 251.74
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-1:q",
+        "t": 223.687,
+        "prompt": "A café sold $42, 38, 51, 45$ and $49$ muffins on five days. What is the mean number of muffins sold per day?",
+        "choices": [
+          "$45$",
+          "$56.25$",
+          "$13$",
+          "$225$"
+        ],
+        "answer": 0,
+        "working": "Sum: $42 + 38 + 51 + 45 + 49 = 225$. Mean: $225 \\div 5 = 45$ muffins a day."
+      }
+    ]
+  },
+  "m303-6-1-b": {
+    "lessonId": "m303-6-1",
+    "title": "Mean, Median and Mode, Part 2: The Median and the Mode",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Median and mode",
+        "t": 20.578
+      },
+      {
+        "title": "Waiting for tires",
+        "t": 50.296
+      },
+      {
+        "title": "The median",
+        "t": 82.965
+      },
+      {
+        "title": "The mode",
+        "t": 118.444
+      },
+      {
+        "title": "An odd number of values",
+        "t": 152.44
+      },
+      {
+        "title": "Watch out",
+        "t": 175.641
+      },
+      {
+        "title": "Your turn",
+        "t": 201.773
+      },
+      {
+        "title": "Summary",
+        "t": 242.897
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-1-b:q",
+        "t": 211.245,
+        "prompt": "Find the median of $14, 9, 21, 9, 17, 12$.",
+        "choices": [
+          "$9$",
+          "$15$",
+          "$13$",
+          "$12$"
+        ],
+        "answer": 2,
+        "working": "In order: $9, 9, 12, 14, 17, 21$. With $6$ values, the median is halfway between the third and fourth values: $(12 + 14) \\div 2 = 13$."
+      }
+    ]
+  },
+  "m303-6-1-c": {
+    "lessonId": "m303-6-1",
+    "title": "Mean, Median and Mode, Part 3: Outliers and Choosing a Measure",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Outliers",
+        "t": 23.678
+      },
+      {
+        "title": "Hours worked",
+        "t": 38.622
+      },
+      {
+        "title": "Mean or median?",
+        "t": 71.946
+      },
+      {
+        "title": "Pulled by the outlier",
+        "t": 118.745
+      },
+      {
+        "title": "Choosing a measure",
+        "t": 155.151
+      },
+      {
+        "title": "Your turn",
+        "t": 190.155
+      },
+      {
+        "title": "Summary",
+        "t": 238.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-1-c:q",
+        "t": 208.058,
+        "prompt": "Five homes on a street sold for $310, 295, 320, 305$ and $1200$ thousand dollars. Which measure best describes a typical price?",
+        "choices": [
+          "Mean: $486$ thousand",
+          "Median: $310$ thousand",
+          "Mode: there is none",
+          "Median: $320$ thousand"
+        ],
+        "answer": 1,
+        "working": "The $1200$ is an outlier. It pulls the mean up to $2430 \\div 5 = 486$. In order, $295, 305, 310, 320, 1200$: the median, $310$, sits among the typical prices."
+      }
+    ]
+  },
+  "m303-6-1-d": {
+    "lessonId": "m303-6-1",
+    "title": "Mean, Median and Mode, Part 4: Finding a Missing Value",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Work with totals",
+        "t": 18.999
+      },
+      {
+        "title": "The last module exam",
+        "t": 37.332
+      },
+      {
+        "title": "Check",
+        "t": 94.814
+      },
+      {
+        "title": "Watch out",
+        "t": 120.914
+      },
+      {
+        "title": "Your turn",
+        "t": 163.26
+      },
+      {
+        "title": "Summary",
+        "t": 206.566
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-1-d:q",
+        "t": 179.39,
+        "prompt": "A salesperson needs a mean of at least $20$ sales a week over $4$ weeks. The first $3$ weeks had $18, 23$ and $15$ sales. How many sales are needed in week $4$?",
+        "choices": [
+          "$20$",
+          "$19$",
+          "$56$",
+          "$24$"
+        ],
+        "answer": 3,
+        "working": "Total needed: $20 \\times 4 = 80$. So far: $18 + 23 + 15 = 56$. Week $4$: $80 - 56 = 24$ sales."
+      }
+    ]
+  },
+  "m303-6-2": {
+    "lessonId": "m303-6-2",
+    "title": "Weighted and Trimmed Means, Part 1: Weighted Means for Course Marks",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Weighted mean",
+        "t": 20.922
+      },
+      {
+        "title": "A final mark",
+        "t": 54.7
+      },
+      {
+        "title": "Why no dividing?",
+        "t": 124.45
+      },
+      {
+        "title": "Watch out",
+        "t": 153.542
+      },
+      {
+        "title": "Your turn",
+        "t": 195.561
+      },
+      {
+        "title": "Summary",
+        "t": 240.373
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-2:q",
+        "t": 211.796,
+        "prompt": "A course counts homework $40\\%$ and the final exam $60\\%$. A student has $90\\%$ on homework and $70\\%$ on the exam. What is the final mark?",
+        "choices": [
+          "$80\\%$",
+          "$78\\%$",
+          "$82\\%$",
+          "$39\\%$"
+        ],
+        "answer": 1,
+        "working": "$0.40(90) + 0.60(70) = 36 + 42 = 78$, so the final mark is $78\\%$."
+      }
+    ]
+  },
+  "m303-6-2-b": {
+    "lessonId": "m303-6-2",
+    "title": "Weighted and Trimmed Means, Part 2: Weighted Means with Quantities",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quantities as weights",
+        "t": 21.246
+      },
+      {
+        "title": "A framer’s studs",
+        "t": 43.636
+      },
+      {
+        "title": "Pulled toward the bigger group",
+        "t": 96.477
+      },
+      {
+        "title": "Counting twice",
+        "t": 139.623
+      },
+      {
+        "title": "Your turn",
+        "t": 190.989
+      },
+      {
+        "title": "Summary",
+        "t": 242.157
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-2-b:q",
+        "t": 207.055,
+        "prompt": "A café bought $30$ kg of coffee at \\$12.50 per kg and $20$ kg at \\$15.00 per kg. What was the mean price per kilogram?",
+        "choices": [
+          "\\$13.75",
+          "\\$27.50",
+          "\\$14.00",
+          "\\$13.50"
+        ],
+        "answer": 3,
+        "working": "Total cost: $30(12.50) + 20(15.00) = 375 + 300 = 675$ dollars, for $50$ kg. Mean price: $675 \\div 50 = 13.50$ dollars per kg."
+      }
+    ]
   }
 }
