@@ -38567,7 +38567,7 @@
   "m302-6-4-b": {
     "lessonId": "m302-6-4",
     "title": "Modelling with Exponential and Logarithmic Functions, Part 2: Growth, Depreciation and Half-Life",
-    "duration": 316,
+    "duration": 317,
     "voice": "af_heart",
     "chapters": [
       {
@@ -38576,37 +38576,37 @@
       },
       {
         "title": "Three models",
-        "t": 26.136
+        "t": 26.686
       },
       {
         "title": "A medical tracer",
-        "t": 98.092
+        "t": 98.642
       },
       {
         "title": "After 15 hours",
-        "t": 133.86
+        "t": 134.41
       },
       {
         "title": "When will 5 mg remain?",
-        "t": 166.866
+        "t": 167.416
       },
       {
         "title": "Watch out",
-        "t": 215.89
+        "t": 216.44
       },
       {
         "title": "Your turn",
-        "t": 242.543
+        "t": 243.093
       },
       {
         "title": "Summary",
-        "t": 281.267
+        "t": 282.444
       }
     ],
     "cues": [
       {
         "id": "m302-6-4-b:q",
-        "t": 253.567,
+        "t": 254.117,
         "prompt": "A 200 mg sample has a half-life of 5 days, so $A = 200\\left(\\frac{1}{2}\\right)^{t/5}$. How much remains after 15 days?",
         "choices": [
           "$25$ mg",
