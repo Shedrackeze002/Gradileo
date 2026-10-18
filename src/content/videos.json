@@ -42893,5 +42893,492 @@
         "working": "Total cost: $30(12.50) + 20(15.00) = 375 + 300 = 675$ dollars, for $50$ kg. Mean price: $675 \\div 50 = 13.50$ dollars per kg."
       }
     ]
+  },
+  "m303-6-2-c": {
+    "lessonId": "m303-6-2",
+    "title": "Weighted and Trimmed Means, Part 3: Trimmed Means",
+    "duration": 307,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trimmed mean",
+        "t": 22.586
+      },
+      {
+        "title": "Judges’ scores",
+        "t": 52.857
+      },
+      {
+        "title": "Ten parcels",
+        "t": 94.875
+      },
+      {
+        "title": "Trim 10% from each end",
+        "t": 129.131
+      },
+      {
+        "title": "Which is typical?",
+        "t": 170.925
+      },
+      {
+        "title": "Watch out",
+        "t": 197.067
+      },
+      {
+        "title": "Your turn",
+        "t": 231.875
+      },
+      {
+        "title": "Summary",
+        "t": 276.109
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-2-c:q",
+        "t": 246.757,
+        "prompt": "Eight judges give the scores $5, 9, 7, 8, 8, 10, 7, 9$. The highest and the lowest scores are dropped. What is the trimmed mean?",
+        "choices": [
+          "$8$",
+          "$7.9$",
+          "$9.6$",
+          "$7.6$"
+        ],
+        "answer": 0,
+        "working": "In order: $5, 7, 7, 8, 8, 9, 9, 10$. Drop $5$ and $10$: $7 + 7 + 8 + 8 + 9 + 9 = 48$, and $48 \\div 6 = 8$."
+      }
+    ]
+  },
+  "m303-6-2-d": {
+    "lessonId": "m303-6-2",
+    "title": "Weighted and Trimmed Means, Part 4: The Mark You Need on a Final Exam",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backwards",
+        "t": 16.751
+      },
+      {
+        "title": "What does Sofia need?",
+        "t": 33.325
+      },
+      {
+        "title": "Check",
+        "t": 123.509
+      },
+      {
+        "title": "Watch out",
+        "t": 153.062
+      },
+      {
+        "title": "Your turn",
+        "t": 188.105
+      },
+      {
+        "title": "Summary",
+        "t": 244.826
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-2-d:q",
+        "t": 208.088,
+        "prompt": "Labs count $30\\%$, tests $30\\%$ and the final exam $40\\%$. A student has $80\\%$ on labs and $70\\%$ on tests, and wants a final mark of $80\\%$. What mark is needed on the exam?",
+        "choices": [
+          "$35\\%$",
+          "$80\\%$",
+          "$87.5\\%$",
+          "$90\\%$"
+        ],
+        "answer": 2,
+        "working": "$0.30(80) + 0.30(70) + 0.40x = 80$, so $45 + 0.40x = 80$, $0.40x = 35$ and $x = 35 \\div 0.40 = 87.5$."
+      }
+    ]
+  },
+  "m303-6-3": {
+    "lessonId": "m303-6-3",
+    "title": "Percentiles, Part 1: What a Percentile Means",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percentiles",
+        "t": 26.809
+      },
+      {
+        "title": "A wage survey",
+        "t": 67.769
+      },
+      {
+        "title": "From 0 to 100",
+        "t": 110.127
+      },
+      {
+        "title": "A growth chart",
+        "t": 134.755
+      },
+      {
+        "title": "Watch out",
+        "t": 175.212
+      },
+      {
+        "title": "Your turn",
+        "t": 204.506
+      },
+      {
+        "title": "Summary",
+        "t": 243.343
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-3:q",
+        "t": 214.698,
+        "prompt": "In a wage survey, a carpenter’s wage is at the $70$th percentile. What does this mean?",
+        "choices": [
+          "It is $70\\%$ of the highest wage",
+          "About $70\\%$ of carpenters earn more",
+          "About $30\\%$ earn the same or less",
+          "About $70\\%$ earn the same or less"
+        ],
+        "answer": 3,
+        "working": "At the $70$th percentile, about $70\\%$ of the carpenters in the survey earn the same or less, and about $30\\%$ earn more."
+      }
+    ]
+  },
+  "m303-6-3-b": {
+    "lessonId": "m303-6-3",
+    "title": "Percentiles, Part 2: The Percentile Rank Formula",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The formula",
+        "t": 17.657
+      },
+      {
+        "title": "A safety test",
+        "t": 56.405
+      },
+      {
+        "title": "Watch out",
+        "t": 116.797
+      },
+      {
+        "title": "From a frequency table",
+        "t": 144.829
+      },
+      {
+        "title": "Your turn",
+        "t": 202.389
+      },
+      {
+        "title": "Summary",
+        "t": 241.655
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-3-b:q",
+        "t": 215.797,
+        "prompt": "In a class of $25$, $16$ students scored lower than Ben, and $3$ others had the same score as Ben. What is Ben’s percentile rank?",
+        "choices": [
+          "$72$",
+          "$70$",
+          "$64$",
+          "$76$"
+        ],
+        "answer": 0,
+        "working": "$b = 16$, $e = 3 + 1 = 4$, $n = 25$: $PR = \\dfrac{16 + 0.5(4)}{25} \\times 100 = \\dfrac{18}{25} \\times 100 = 72$."
+      }
+    ]
+  },
+  "m303-6-3-c": {
+    "lessonId": "m303-6-3",
+    "title": "Percentiles, Part 3: The Value at a Percentile",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The method",
+        "t": 21.221
+      },
+      {
+        "title": "A pipeline crew",
+        "t": 56.64
+      },
+      {
+        "title": "The 25th percentile",
+        "t": 82.437
+      },
+      {
+        "title": "The 90th percentile",
+        "t": 115.625
+      },
+      {
+        "title": "Watch out",
+        "t": 148.638
+      },
+      {
+        "title": "Your turn",
+        "t": 171.947
+      },
+      {
+        "title": "Summary",
+        "t": 220.443
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-3-c:q",
+        "t": 188.227,
+        "prompt": "Twelve values in order: $3, 5, 6, 8, 9, 11, 12, 14, 15, 17, 18, 20$. Find the $75$th percentile.",
+        "choices": [
+          "$15$",
+          "$17$",
+          "$16$",
+          "$14.5$"
+        ],
+        "answer": 2,
+        "working": "$R = 0.75 \\times 12 = 9$, a whole number, so use the mean of the $9$th and $10$th values: $(15 + 17) \\div 2 = 16$."
+      }
+    ]
+  },
+  "m303-6-3-d": {
+    "lessonId": "m303-6-3",
+    "title": "Percentiles, Part 4: Comparing Percentile Ranks",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Different groups",
+        "t": 17.639
+      },
+      {
+        "title": "Two classes",
+        "t": 40.485
+      },
+      {
+        "title": "Two percentile ranks",
+        "t": 88.26
+      },
+      {
+        "title": "Who did better?",
+        "t": 123.418
+      },
+      {
+        "title": "Watch out",
+        "t": 149.061
+      },
+      {
+        "title": "Your turn",
+        "t": 170.987
+      },
+      {
+        "title": "Summary",
+        "t": 222.625
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-3-d:q",
+        "t": 190.893,
+        "prompt": "Maya scored $68$ in a group of $25$: $18$ scored lower, and no one else had that score. Leo scored $74$ in a group of $40$: $25$ scored lower, and $1$ other had that score. Who did better compared with their own group?",
+        "choices": [
+          "Leo, with the higher score",
+          "Maya: PR $74$ against $65$",
+          "Leo: PR $74$ against $65$",
+          "Neither: the ranks are equal"
+        ],
+        "answer": 1,
+        "working": "Maya: $\\dfrac{18 + 0.5(1)}{25} \\times 100 = 74$. Leo: $\\dfrac{25 + 0.5(2)}{40} \\times 100 = 65$. Maya has the higher percentile rank."
+      }
+    ]
+  },
+  "m303-7-1": {
+    "lessonId": "m303-7-1",
+    "title": "Probability and Odds, Part 1: Probability as a Fraction, Decimal and Percent",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What probability means",
+        "t": 26.338
+      },
+      {
+        "title": "From impossible to certain",
+        "t": 64.154
+      },
+      {
+        "title": "Spark plugs",
+        "t": 99.782
+      },
+      {
+        "title": "The complement",
+        "t": 159.75
+      },
+      {
+        "title": "Check your answer",
+        "t": 203.243
+      },
+      {
+        "title": "Your turn",
+        "t": 231.291
+      },
+      {
+        "title": "Summary",
+        "t": 273.119
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-1:q",
+        "t": 245.337,
+        "prompt": "A carton of 24 eggs holds 3 cracked eggs. One egg is taken at random. What is the probability that it is cracked, as a percent?",
+        "choices": [
+          "$3\\%$",
+          "$8\\%$",
+          "$12.5\\%$",
+          "$87.5\\%$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{3}{24} = \\dfrac{1}{8} = 0.125 = 12.5\\%$. The probability that the egg is not cracked is $1 - 0.125 = 0.875$, or $87.5\\%$."
+      }
+    ]
+  },
+  "m303-7-1-b": {
+    "lessonId": "m303-7-1",
+    "title": "Probability and Odds, Part 2: Odds in Favour and Against",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Odds",
+        "t": 24.415
+      },
+      {
+        "title": "Burnt-out bulbs",
+        "t": 65.739
+      },
+      {
+        "title": "A raffle",
+        "t": 108.445
+      },
+      {
+        "title": "Odds or probability?",
+        "t": 161.629
+      },
+      {
+        "title": "Watch out",
+        "t": 199.72
+      },
+      {
+        "title": "Your turn",
+        "t": 234.842
+      },
+      {
+        "title": "Summary",
+        "t": 274.228
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-1-b:q",
+        "t": 247.562,
+        "prompt": "A bag holds 30 tiles, and 5 of them are red. One tile is drawn at random. What are the odds against drawing a red tile?",
+        "choices": [
+          "$5 : 1$",
+          "$1 : 5$",
+          "$1 : 6$",
+          "$6 : 1$"
+        ],
+        "answer": 0,
+        "working": "Favourable: 5 red tiles. Unfavourable: $30 - 5 = 25$. The odds against are $25 : 5 = 5 : 1$."
+      }
+    ]
+  },
+  "m303-7-1-c": {
+    "lessonId": "m303-7-1",
+    "title": "Probability and Odds, Part 3: Converting Odds and Probability",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The key idea",
+        "t": 22.474
+      },
+      {
+        "title": "From odds to probability",
+        "t": 59.43
+      },
+      {
+        "title": "From probability to odds",
+        "t": 103.324
+      },
+      {
+        "title": "Watch out",
+        "t": 144.296
+      },
+      {
+        "title": "Your turn",
+        "t": 170.404
+      },
+      {
+        "title": "Summary",
+        "t": 207
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-1-c:q",
+        "t": 181.542,
+        "prompt": "The odds in favour of a seed sprouting are $4 : 1$. What is the probability that it sprouts, as a percent?",
+        "choices": [
+          "$20\\%$",
+          "$25\\%$",
+          "$40\\%$",
+          "$80\\%$"
+        ],
+        "answer": 3,
+        "working": "4 favourable outcomes for every 1 unfavourable one make $4 + 1 = 5$ in all, so $P(\\text{sprouts}) = \\dfrac{4}{5} = 80\\%$."
+      }
+    ]
   }
 }
