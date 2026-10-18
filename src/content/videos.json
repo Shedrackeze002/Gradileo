@@ -39980,5 +39980,311 @@
         "working": "The differences from $50.00$ are $0.02$, $0.05$, $0.1$ and $0.1\\text{ mm}$. The smallest difference, $0.02\\text{ mm}$, is the most accurate."
       }
     ]
+  },
+  "m303-1-1-d": {
+    "lessonId": "m303-1-1",
+    "title": "Precision and Accuracy, Part 4: Percent Error",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same error, different sizes",
+        "t": 23.603
+      },
+      {
+        "title": "Percent error",
+        "t": 61.538
+      },
+      {
+        "title": "Bracket or beam?",
+        "t": 91.693
+      },
+      {
+        "title": "Divide by the true value",
+        "t": 171.217
+      },
+      {
+        "title": "Your turn",
+        "t": 202.819
+      },
+      {
+        "title": "Summary",
+        "t": 245.065
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-1-d:q",
+        "t": 215.086,
+        "prompt": "A test mass of exactly $250\\text{ g}$ reads $252\\text{ g}$ on a scale. What is the percent error?",
+        "choices": [
+          "$2\\%$",
+          "$0.79\\%$",
+          "$0.8\\%$",
+          "$8\\%$"
+        ],
+        "answer": 2,
+        "working": "Error $= 252 - 250 = 2\\text{ g}$, and $\\dfrac{2}{250} \\times 100\\% = 0.8\\%$."
+      }
+    ]
+  },
+  "m303-1-2": {
+    "lessonId": "m303-1-2",
+    "title": "Uncertainty and Tolerance, Part 1: Uncertainty",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Half the smallest unit",
+        "t": 21.389
+      },
+      {
+        "title": "The range of a reading",
+        "t": 47.408
+      },
+      {
+        "title": "Imperial units",
+        "t": 122.191
+      },
+      {
+        "title": "From precision to uncertainty",
+        "t": 169.366
+      },
+      {
+        "title": "Your turn",
+        "t": 212.15
+      },
+      {
+        "title": "Summary",
+        "t": 258.924
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-2:q",
+        "t": 227.316,
+        "prompt": "A digital scale shows grams to one decimal place, and a bag of flour reads $452.3\\text{ g}$. Between what values is its true mass?",
+        "choices": [
+          "$452.2\\text{ g}$ and $452.4\\text{ g}$",
+          "$451.8\\text{ g}$ and $452.8\\text{ g}$",
+          "$452.3\\text{ g}$ and $452.35\\text{ g}$",
+          "$452.25\\text{ g}$ and $452.35\\text{ g}$"
+        ],
+        "answer": 3,
+        "working": "The smallest unit is $0.1\\text{ g}$, so the uncertainty is $\\pm 0.05\\text{ g}$: $452.3 - 0.05 = 452.25$ and $452.3 + 0.05 = 452.35$."
+      }
+    ]
+  },
+  "m303-1-2-b": {
+    "lessonId": "m303-1-2",
+    "title": "Uncertainty and Tolerance, Part 2: Tolerance",
+    "duration": 317,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Nominal value and tolerance",
+        "t": 23.354
+      },
+      {
+        "title": "Machining a shaft",
+        "t": 69.27
+      },
+      {
+        "title": "Check both limits",
+        "t": 152.184
+      },
+      {
+        "title": "From limits to a specification",
+        "t": 174.655
+      },
+      {
+        "title": "Your turn",
+        "t": 239.94
+      },
+      {
+        "title": "Summary",
+        "t": 285.387
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-2-b:q",
+        "t": 250.863,
+        "prompt": "A pipe must be $150 \\pm 2\\text{ mm}$ long. Which length is **not** acceptable?",
+        "choices": [
+          "$148.5\\text{ mm}$",
+          "$152.4\\text{ mm}$",
+          "$151.9\\text{ mm}$",
+          "$149.2\\text{ mm}$"
+        ],
+        "answer": 1,
+        "working": "Least: $150 - 2 = 148\\text{ mm}$. Greatest: $150 + 2 = 152\\text{ mm}$. Only $152.4\\text{ mm}$ is outside the limits: it is too long."
+      }
+    ]
+  },
+  "m303-1-2-c": {
+    "lessonId": "m303-1-2",
+    "title": "Uncertainty and Tolerance, Part 3: Unequal and Percent Tolerances",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An unequal tolerance",
+        "t": 20.017
+      },
+      {
+        "title": "A bushing",
+        "t": 48.978
+      },
+      {
+        "title": "A percent tolerance",
+        "t": 105.725
+      },
+      {
+        "title": "Watch out",
+        "t": 170.619
+      },
+      {
+        "title": "Your turn",
+        "t": 215.813
+      },
+      {
+        "title": "Summary",
+        "t": 259.264
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-2-c:q",
+        "t": 229.389,
+        "prompt": "A bag of fertilizer is labelled $20\\text{ kg}$, with a tolerance of $\\pm 2\\%$. What is the least acceptable mass?",
+        "choices": [
+          "$18\\text{ kg}$",
+          "$19.8\\text{ kg}$",
+          "$19.6\\text{ kg}$",
+          "$20.4\\text{ kg}$"
+        ],
+        "answer": 2,
+        "working": "$2\\%$ of $20$ is $0.02 \\times 20 = 0.4\\text{ kg}$, so the least mass is $20 - 0.4 = 19.6\\text{ kg}$."
+      }
+    ]
+  },
+  "m303-1-2-d": {
+    "lessonId": "m303-1-2",
+    "title": "Uncertainty and Tolerance, Part 4: Tolerance Stacking and Clearance",
+    "duration": 335,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sizes add, tolerances add",
+        "t": 19.161
+      },
+      {
+        "title": "Three spacers on a bolt",
+        "t": 42.779
+      },
+      {
+        "title": "Clearance",
+        "t": 130.405
+      },
+      {
+        "title": "Watch out",
+        "t": 215.909
+      },
+      {
+        "title": "Your turn",
+        "t": 252.378
+      },
+      {
+        "title": "Summary",
+        "t": 304.251
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-2-d:q",
+        "t": 271.419,
+        "prompt": "Two blocks, $45.0 \\pm 0.2\\text{ mm}$ and $30.0 \\pm 0.1\\text{ mm}$, are placed end to end. What is the greatest possible total length?",
+        "choices": [
+          "$75.3\\text{ mm}$",
+          "$75.2\\text{ mm}$",
+          "$74.7\\text{ mm}$",
+          "$75.0\\text{ mm}$"
+        ],
+        "answer": 0,
+        "working": "Nominal total: $45.0 + 30.0 = 75.0\\text{ mm}$. Tolerances add: $0.2 + 0.1 = 0.3\\text{ mm}$. Greatest: $75.0 + 0.3 = 75.3\\text{ mm}$."
+      }
+    ]
+  },
+  "m303-2-1": {
+    "lessonId": "m303-2-1",
+    "title": "The Sine Law, Part 1: Oblique Triangles and Matching Pairs",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Oblique triangles",
+        "t": 26.1
+      },
+      {
+        "title": "Naming the sides",
+        "t": 63.872
+      },
+      {
+        "title": "Matching pairs",
+        "t": 97.025
+      },
+      {
+        "title": "Biggest across from biggest",
+        "t": 127.041
+      },
+      {
+        "title": "Your turn",
+        "t": 174.149
+      },
+      {
+        "title": "Summary",
+        "t": 215.008
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-1:q",
+        "t": 189.509,
+        "prompt": "In $\\triangle PQR$, $\\angle P = 40^\\circ$, $\\angle Q = 75^\\circ$ and $\\angle R = 65^\\circ$. Which side is the longest?",
+        "choices": [
+          "side $p$",
+          "side $r$",
+          "side $q$",
+          "You cannot tell without a side length."
+        ],
+        "answer": 2,
+        "working": "The largest angle is $\\angle Q = 75^\\circ$, so the longest side is the one across from it: side $q$."
+      }
+    ]
   }
 }
