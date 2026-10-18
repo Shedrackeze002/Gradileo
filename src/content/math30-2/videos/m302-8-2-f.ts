@@ -75,7 +75,7 @@ const video: Explainer = {
       lines: [
         { say: 'To find the real change, divide the increase by the starting value: the new value minus the old, over the old, times 100.', show: 'm.0', focus: 'm.0' },
         { say: '96 minus 92 is four, and four divided by 92, times 100, is about 4.3 percent.', show: 'm.1', focus: 'm.1' },
-        { say: 'So sales rose by only about 4.3 percent: a small increase, made to look huge.', show: 'key' },
+        { say: 'So sales rose by only about 4.3 percent: a small increase, made to seem huge.', show: 'key' },
       ],
     },
     {
