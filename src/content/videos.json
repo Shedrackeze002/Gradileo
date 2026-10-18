@@ -42343,5 +42343,174 @@
         "working": "$6g + 20 = 2g + 44$, so $4g = 24$ and $g = 6$. Both plans cost $6(6) + 20 = 56$ dollars."
       }
     ]
+  },
+  "m303-5-3": {
+    "lessonId": "m303-5-3",
+    "title": "Interpolating and Extrapolating, Part 1: Interpolation and Extrapolation",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of estimate",
+        "t": 24.829
+      },
+      {
+        "title": "Skid steer bills",
+        "t": 47.943
+      },
+      {
+        "title": "A 3-hour rental",
+        "t": 81.786
+      },
+      {
+        "title": "Beyond the data",
+        "t": 131.851
+      },
+      {
+        "title": "Which is safer?",
+        "t": 171.958
+      },
+      {
+        "title": "Your turn",
+        "t": 200.062
+      },
+      {
+        "title": "Summary",
+        "t": 238.262
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-3:q",
+        "t": 211.174,
+        "prompt": "A tree’s height was measured every year from age $10$ to age $40$. Which estimate is an interpolation?",
+        "choices": [
+          "Its height at age $50$",
+          "Its height at age $5$",
+          "Its height at age $25$",
+          "Its height when planted, at age $0$"
+        ],
+        "answer": 2,
+        "working": "Age $25$ is between $10$ and $40$, inside the data, so the estimate is an interpolation. The other three ages are outside the data."
+      }
+    ]
+  },
+  "m303-5-3-b": {
+    "lessonId": "m303-5-3",
+    "title": "Interpolating and Extrapolating, Part 2: Extrapolating with the Rate or the Equation",
+    "duration": 382,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A bigger concrete order",
+        "t": 21.093
+      },
+      {
+        "title": "Keep adding the rate",
+        "t": 51.711
+      },
+      {
+        "title": "Check with the equation",
+        "t": 95.019
+      },
+      {
+        "title": "When will it run dry?",
+        "t": 150.309
+      },
+      {
+        "title": "Rounding for a budget",
+        "t": 192.467
+      },
+      {
+        "title": "Rounding for a goal",
+        "t": 246.522
+      },
+      {
+        "title": "Your turn",
+        "t": 306.636
+      },
+      {
+        "title": "Summary",
+        "t": 353.736
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-3-b:q",
+        "t": 321.451,
+        "prompt": "A print shop charges $C = 0.12p + 15$ dollars for $p$ pages. You have \\$40. How many pages can you print?",
+        "choices": [
+          "$208$ pages",
+          "$209$ pages",
+          "$333$ pages",
+          "$125$ pages"
+        ],
+        "answer": 0,
+        "working": "$40 = 0.12p + 15$, so $25 = 0.12p$ and $p \\approx 208.3$. A budget means rounding down: $208$ pages cost \\$39.96, but $209$ pages cost \\$40.08."
+      }
+    ]
+  },
+  "m303-5-3-c": {
+    "lessonId": "m303-5-3",
+    "title": "Interpolating and Extrapolating, Part 3: Lines of Best Fit",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Real data",
+        "t": 20.595
+      },
+      {
+        "title": "Tomato plants",
+        "t": 45.269
+      },
+      {
+        "title": "At 5.5 weeks",
+        "t": 82.309
+      },
+      {
+        "title": "What the numbers mean",
+        "t": 117.409
+      },
+      {
+        "title": "Reaching 40 cm",
+        "t": 161.477
+      },
+      {
+        "title": "Your turn",
+        "t": 193.359
+      },
+      {
+        "title": "Summary",
+        "t": 242.021
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-3-c:q",
+        "t": 213.996,
+        "prompt": "For students who studied from $2$ to $10$ hours, the line of best fit is $s = 3.5h + 52$, where $s$ is the test score. Estimate the score for $6$ hours of study. Is this interpolation or extrapolation?",
+        "choices": [
+          "$73$; extrapolation",
+          "$21$; interpolation",
+          "$58$; interpolation",
+          "$73$; interpolation"
+        ],
+        "answer": 3,
+        "working": "$s = 3.5(6) + 52 = 21 + 52 = 73$. Since $6$ hours is between $2$ and $10$ hours, inside the data, this is interpolation."
+      }
+    ]
   }
 }
