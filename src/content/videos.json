@@ -38622,7 +38622,7 @@
   "m302-6-4-c": {
     "lessonId": "m302-6-4",
     "title": "Modelling with Exponential and Logarithmic Functions, Part 3: Using a Regression Equation",
-    "duration": 316,
+    "duration": 321,
     "voice": "af_heart",
     "chapters": [
       {
@@ -38651,7 +38651,7 @@
       },
       {
         "title": "Summary",
-        "t": 283.453
+        "t": 288.666
       }
     ],
     "cues": [
@@ -39050,7 +39050,7 @@
   "m302-7-2-b": {
     "lessonId": "m302-7-2",
     "title": "Modelling Data with Sinusoidal Functions, Part 2: Making Predictions in Radian Mode",
-    "duration": 277,
+    "duration": 281,
     "voice": "af_heart",
     "chapters": [
       {
@@ -39079,7 +39079,7 @@
       },
       {
         "title": "Summary",
-        "t": 241.447
+        "t": 246.23
       }
     ],
     "cues": [
@@ -39101,7 +39101,7 @@
   "m302-7-2-c": {
     "lessonId": "m302-7-2",
     "title": "Modelling Data with Sinusoidal Functions, Part 3: Interpolating and Extrapolating",
-    "duration": 286,
+    "duration": 290,
     "voice": "af_heart",
     "chapters": [
       {
@@ -39130,7 +39130,7 @@
       },
       {
         "title": "Summary",
-        "t": 253.639
+        "t": 257.726
       }
     ],
     "cues": [
@@ -39793,25 +39793,25 @@
       },
       {
         "title": "An honest graph",
-        "t": 91.409
+        "t": 91.63
       },
       {
         "title": "Presenting your project",
-        "t": 126.18
+        "t": 126.401
       },
       {
         "title": "Your turn",
-        "t": 171.976
+        "t": 172.197
       },
       {
         "title": "Summary",
-        "t": 221.091
+        "t": 221.312
       }
     ],
     "cues": [
       {
         "id": "m302-8-2-f:q",
-        "t": 188.414,
+        "t": 188.635,
         "prompt": "The vertical axis of a bar graph starts at $40$. The bars show $45$ and $50$. How many times as tall does the second bar look, and what is the actual percent increase?",
         "choices": [
           "$2$ times as tall; $10\\%$",
