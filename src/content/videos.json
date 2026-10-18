@@ -43816,5 +43816,449 @@
         "working": "Losing 20% means keeping 80%: $42{,}000 \\times 0.80^2 = 42{,}000 \\times 0.64 = 26{,}880.00$."
       }
     ]
+  },
+  "m303-8-1-d": {
+    "lessonId": "m303-8-1",
+    "title": "Buying a Vehicle, Part 4: Operating Costs",
+    "duration": 337,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Operating costs",
+        "t": 20.196
+      },
+      {
+        "title": "Litres per 100 kilometres",
+        "t": 46.088
+      },
+      {
+        "title": "Fuel for a month",
+        "t": 79.943
+      },
+      {
+        "title": "A year of operating costs",
+        "t": 135.513
+      },
+      {
+        "title": "The real monthly cost",
+        "t": 191.155
+      },
+      {
+        "title": "Watch out",
+        "t": 227.094
+      },
+      {
+        "title": "Your turn",
+        "t": 256.639
+      },
+      {
+        "title": "Summary",
+        "t": 304.969
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-1-d:q",
+        "t": 272.919,
+        "prompt": "A car uses 7.5 L/100 km, and fuel costs \\$1.60 per litre. What does the fuel cost for a 640 km trip?",
+        "choices": [
+          "\\$48.00",
+          "\\$76.80",
+          "\\$7,680.00",
+          "\\$12.00"
+        ],
+        "answer": 1,
+        "working": "$640 \\div 100 = 6.4$, so $6.4 \\times 7.5 = 48$ L, and $48 \\times 1.60 = 76.80$. The fuel costs \\$76.80."
+      }
+    ]
+  },
+  "m303-8-2": {
+    "lessonId": "m303-8-2",
+    "title": "Leasing and Leasing to Buy, Part 1: How a Lease Works",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A long-term rental",
+        "t": 20.484
+      },
+      {
+        "title": "The total cost",
+        "t": 64.97
+      },
+      {
+        "title": "A three-year lease",
+        "t": 79.533
+      },
+      {
+        "title": "What it costs each month",
+        "t": 135.69
+      },
+      {
+        "title": "Watch out",
+        "t": 169.451
+      },
+      {
+        "title": "Your turn",
+        "t": 195.014
+      },
+      {
+        "title": "Summary",
+        "t": 247.892
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-2:q",
+        "t": 215.006,
+        "prompt": "A lease costs \\$389.50 a month for 48 months, including tax, with \\$1,500 down and a \\$450 acquisition fee. What is the total cost of the lease?",
+        "choices": [
+          "\\$20,646.00",
+          "\\$18,696.00",
+          "\\$20,196.00",
+          "\\$2,339.50"
+        ],
+        "answer": 0,
+        "working": "$389.50 \\times 48 = 18{,}696.00$, and $18{,}696.00 + 1{,}500 + 450 = 20{,}646.00$."
+      }
+    ]
+  },
+  "m303-8-2-b": {
+    "lessonId": "m303-8-2",
+    "title": "Leasing and Leasing to Buy, Part 2: Kilometre Allowances",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The kilometre allowance",
+        "t": 19.601
+      },
+      {
+        "title": "Driving too much",
+        "t": 51.01
+      },
+      {
+        "title": "The new total",
+        "t": 108.302
+      },
+      {
+        "title": "Watch out",
+        "t": 148.739
+      },
+      {
+        "title": "Your turn",
+        "t": 182.703
+      },
+      {
+        "title": "Summary",
+        "t": 234.124
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-2-b:q",
+        "t": 202.741,
+        "prompt": "A 4-year lease allows 18,000 km a year and charges \\$0.12 for each kilometre over. At the end, the odometer shows 79,500 km. What is the excess kilometre charge?",
+        "choices": [
+          "\\$7,380.00",
+          "\\$9,540.00",
+          "\\$900.00",
+          "\\$90.00"
+        ],
+        "answer": 2,
+        "working": "Allowance: $18{,}000 \\times 4 = 72{,}000$ km. Over: $79{,}500 - 72{,}000 = 7{,}500$ km. Charge: $7{,}500 \\times 0.12 = 900.00$."
+      }
+    ]
+  },
+  "m303-8-2-c": {
+    "lessonId": "m303-8-2",
+    "title": "Leasing and Leasing to Buy, Part 3: Leasing to Buy",
+    "duration": 297,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Residual value",
+        "t": 17.922
+      },
+      {
+        "title": "Keeping the SUV",
+        "t": 48.804
+      },
+      {
+        "title": "Compared with paying cash",
+        "t": 96.547
+      },
+      {
+        "title": "Why lease to buy?",
+        "t": 155.88
+      },
+      {
+        "title": "Watch out",
+        "t": 184.805
+      },
+      {
+        "title": "Your turn",
+        "t": 214.925
+      },
+      {
+        "title": "Summary",
+        "t": 268.273
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-2-c:q",
+        "t": 234.583,
+        "prompt": "A lease cost \\$17,250.00 in total. At the end, the buyout price is \\$15,400, plus a sales tax of 5%. What is the total cost to own the vehicle?",
+        "choices": [
+          "\\$32,650.00",
+          "\\$16,170.00",
+          "\\$34,282.50",
+          "\\$33,420.00"
+        ],
+        "answer": 3,
+        "working": "Buyout with tax: $15{,}400 \\times 1.05 = 16{,}170.00$. Total cost to own: $17{,}250.00 + 16{,}170.00 = 33{,}420.00$."
+      }
+    ]
+  },
+  "m303-8-2-d": {
+    "lessonId": "m303-8-2",
+    "title": "Leasing and Leasing to Buy, Part 4: Buy or Lease?",
+    "duration": 339,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Leasing and buying",
+        "t": 20.889
+      },
+      {
+        "title": "Buying instead",
+        "t": 64.575
+      },
+      {
+        "title": "Comparing the totals",
+        "t": 154.127
+      },
+      {
+        "title": "Watch out",
+        "t": 205.318
+      },
+      {
+        "title": "Which suits you?",
+        "t": 230.926
+      },
+      {
+        "title": "Your turn",
+        "t": 255.835
+      },
+      {
+        "title": "Summary",
+        "t": 307.972
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-2-d:q",
+        "t": 277.094,
+        "prompt": "Over 4 years, buying a car costs \\$31,200 in all, and the car will then be worth \\$12,500. Leasing the same car for 4 years costs \\$20,400 in all. Which costs less, and by how much?",
+        "choices": [
+          "Leasing, by \\$10,800",
+          "Buying, by \\$1,700",
+          "Leasing, by \\$1,700",
+          "Buying, by \\$12,500"
+        ],
+        "answer": 1,
+        "working": "Net cost of buying: $31{,}200 - 12{,}500 = 18{,}700$. Leasing: $20{,}400$. Buying costs $20{,}400 - 18{,}700 = 1{,}700$ less."
+      }
+    ]
+  },
+  "m303-8-3": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 1: Fixed and Variable Costs",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of cost",
+        "t": 24.973
+      },
+      {
+        "title": "A quick test",
+        "t": 58.351
+      },
+      {
+        "title": "Four businesses",
+        "t": 91.558
+      },
+      {
+        "title": "A food truck’s costs",
+        "t": 139.592
+      },
+      {
+        "title": "Watch out",
+        "t": 208.341
+      },
+      {
+        "title": "Your turn",
+        "t": 234.201
+      },
+      {
+        "title": "Summary",
+        "t": 264.678
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3:q",
+        "t": 242.697,
+        "prompt": "A lawn care business has these costs. Which one is a **variable** cost?",
+        "choices": [
+          "Liability insurance",
+          "The mower loan payment",
+          "The phone bill",
+          "Gas for the mowers"
+        ],
+        "answer": 3,
+        "working": "More lawns mean more mowing, so more gas: gas for the mowers is variable. The insurance, the mower loan and the phone bill stay the same however many lawns are cut."
+      }
+    ]
+  },
+  "m303-8-3-b": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 2: Revenue, Total Costs and Profit",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Revenue and profit",
+        "t": 19.403
+      },
+      {
+        "title": "A month for the food truck",
+        "t": 50.998
+      },
+      {
+        "title": "Where the money went",
+        "t": 118.049
+      },
+      {
+        "title": "A month with a loss",
+        "t": 147.013
+      },
+      {
+        "title": "Watch out",
+        "t": 191.131
+      },
+      {
+        "title": "Your turn",
+        "t": 227.669
+      },
+      {
+        "title": "Summary",
+        "t": 281.46
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3-b:q",
+        "t": 246.932,
+        "prompt": "A candle stall has fixed costs of \\$600 a month. Each candle costs \\$3.50 to make and sells for \\$12. In one month, 150 candles are sold. What is the profit?",
+        "choices": [
+          "\\$675.00",
+          "\\$1,275.00",
+          "\\$1,200.00",
+          "\\$1,800.00"
+        ],
+        "answer": 0,
+        "working": "Revenue: $12 \\times 150 = 1{,}800$. Total costs: $600 + 3.50 \\times 150 = 600 + 525 = 1{,}125$. Profit: $1{,}800 - 1{,}125 = 675.00$."
+      }
+    ]
+  },
+  "m303-8-3-c": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 3: The Break-Even Point",
+    "duration": 357,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Contribution",
+        "t": 16.305
+      },
+      {
+        "title": "The break-even point",
+        "t": 62.399
+      },
+      {
+        "title": "Nia’s break-even point",
+        "t": 94.685
+      },
+      {
+        "title": "On a graph",
+        "t": 147.378
+      },
+      {
+        "title": "Watch out",
+        "t": 200.64
+      },
+      {
+        "title": "A break-even price",
+        "t": 228.285
+      },
+      {
+        "title": "Your turn",
+        "t": 275.135
+      },
+      {
+        "title": "Summary",
+        "t": 326.239
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3-c:q",
+        "t": 294.759,
+        "prompt": "A detailing business has fixed costs of \\$1,800 a month. Each detail costs \\$25 in supplies and sells for \\$140. How many details must be sold each month to break even?",
+        "choices": [
+          "$15$",
+          "$13$",
+          "$16$",
+          "$72$"
+        ],
+        "answer": 2,
+        "working": "Contribution: $140 - 25 = 115$. $1{,}800 \\div 115 = 15.65\\ldots$, so round up: 16 details."
+      }
+    ]
   }
 }
