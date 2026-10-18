@@ -27,6 +27,8 @@ const load = pipeline as unknown as (task: 'automatic-speech-recognition', model
 
 export async function transcribe(pcm: Pcm): Promise<string> {
   asr ??= load('automatic-speech-recognition', 'onnx-community/whisper-base.en', { dtype: 'fp32' });
-  const r = await (await asr)(to16k(pcm));
+  const audio = to16k(pcm);
+  // Whisper hears 30 seconds at a time, so a longer line is heard in overlapping windows.
+  const r = await (await asr)(audio, audio.length > 30 * 16000 ? { chunk_length_s: 30, stride_length_s: 5 } : undefined);
   return (Array.isArray(r) ? r[0].text : r.text).trim();
 }

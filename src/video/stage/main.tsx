@@ -8,7 +8,7 @@ import '@fontsource-variable/inter';
 import '@fontsource-variable/lexend';
 import 'katex/dist/katex.min.css';
 import './stage.css';
-import { courseOfLesson, lessonById } from '@engine/curriculum/index.ts';
+import { courseOfLesson, lessonById, unitById } from '@engine/curriculum/index.ts';
 import type { Explainer } from '../script.ts';
 import { stateAt, type Timeline } from '../timeline.ts';
 import { fullScene, Stage, Thumbnail } from './Stage.tsx';
@@ -36,10 +36,19 @@ async function script(id: string): Promise<Explainer> {
   return (await modules[path]()).default;
 }
 
+/** Courses whose videos were made before they named the topic first: they keep their course label. */
+const COURSE_LABELS = new Set(['math-10c', 'math-10-3', 'math-10-4', 'math-20-1', 'math-20-2', 'math-20-3', 'math-20-4', 'math-30-1']);
+
+/**
+ * The header and thumbnail label. Gradileo is for learners in every English-speaking country, so
+ * from Math 30-2 on it names the unit's topic ("Probability"), not the Alberta course and lesson.
+ */
 function labelOf(x: Explainer): string {
   const lesson = lessonById(x.lessonId);
   const course = courseOfLesson(x.lessonId);
-  return lesson && course ? `${course.shortTitle} · Lesson ${lesson.number}` : x.lessonId;
+  if (!lesson || !course) return x.lessonId;
+  if (COURSE_LABELS.has(course.id)) return `${course.shortTitle} · Lesson ${lesson.number}`;
+  return unitById(lesson.unitId)?.title ?? lesson.title;
 }
 
 const settle = async () => {

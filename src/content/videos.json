@@ -34688,5 +34688,5140 @@
         "working": "The 3rd term is $t_{2 + 1}$, so $k = 2$: $t_3 = {}_{5}C_{2}\\,x^{3}(2)^{2} = 10 \\times x^3 \\times 4 = 40x^3$."
       }
     ]
+  },
+  "m302-1-1": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 1: Sets and Elements",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sets and elements",
+        "t": 26.704
+      },
+      {
+        "title": "Three ways to describe a set",
+        "t": 90.675
+      },
+      {
+        "title": "Listing and counting",
+        "t": 145.794
+      },
+      {
+        "title": "Watch out",
+        "t": 186.267
+      },
+      {
+        "title": "Your turn",
+        "t": 219.352
+      },
+      {
+        "title": "Summary",
+        "t": 253.869
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1:q",
+        "t": 228.676,
+        "prompt": "Let $D$ be the set of even numbers between 1 and 15. Find $n(D)$.",
+        "choices": [
+          "$15$",
+          "$8$",
+          "$7$",
+          "$6$"
+        ],
+        "answer": 2,
+        "working": "$D = \\{2, 4, 6, 8, 10, 12, 14\\}$, so $n(D) = 7$."
+      }
+    ]
+  },
+  "m302-1-1-b": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 2: Set-Builder Notation",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the notation",
+        "t": 26.467
+      },
+      {
+        "title": "Three sets of numbers",
+        "t": 77.064
+      },
+      {
+        "title": "Listing the elements",
+        "t": 130.953
+      },
+      {
+        "title": "Watch out",
+        "t": 185.166
+      },
+      {
+        "title": "Your turn",
+        "t": 234.01
+      },
+      {
+        "title": "Summary",
+        "t": 275.985
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1-b:q",
+        "t": 247.972,
+        "prompt": "List the elements of $\\{x \\mid -2 < x \\le 2,\\ x \\in I\\}$.",
+        "choices": [
+          "$\\{-1, 0, 1, 2\\}$",
+          "$\\{-2, -1, 0, 1, 2\\}$",
+          "$\\{-2, -1, 0, 1\\}$",
+          "$\\{1, 2\\}$"
+        ],
+        "answer": 0,
+        "working": "$-2 < x$ leaves out $-2$, and $x \\le 2$ includes $2$. The integers between are $-1, 0, 1, 2$."
+      }
+    ]
+  },
+  "m302-1-1-c": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 3: Finite, Infinite and Empty Sets",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Finite and infinite sets",
+        "t": 22.053
+      },
+      {
+        "title": "Always another fraction",
+        "t": 60.926
+      },
+      {
+        "title": "The empty set",
+        "t": 96.287
+      },
+      {
+        "title": "Empty or not?",
+        "t": 126.266
+      },
+      {
+        "title": "Watch out",
+        "t": 166.175
+      },
+      {
+        "title": "Your turn",
+        "t": 208.467
+      },
+      {
+        "title": "Summary",
+        "t": 237.872
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1-c:q",
+        "t": 213.459,
+        "prompt": "Which set is empty?",
+        "choices": [
+          "$\\{0\\}$",
+          "the set of even prime numbers",
+          "$\\{x \\mid x > 5,\\ x \\in N\\}$",
+          "the set of natural numbers less than $1$"
+        ],
+        "answer": 3,
+        "working": "The natural numbers start at $1$, so none of them is less than $1$. The other sets contain $0$, $2$ and $6, 7, 8, \\ldots$"
+      }
+    ]
+  },
+  "m302-1-1-d": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 4: The Universal Set and Subsets",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The universal set and subsets",
+        "t": 19.48
+      },
+      {
+        "title": "Disjoint sets",
+        "t": 59.947
+      },
+      {
+        "title": "Subsets and disjoint sets",
+        "t": 79.054
+      },
+      {
+        "title": "What the diagram shows",
+        "t": 126.787
+      },
+      {
+        "title": "Two facts about subsets",
+        "t": 154.983
+      },
+      {
+        "title": "Your turn",
+        "t": 186.354
+      },
+      {
+        "title": "Summary",
+        "t": 220.814
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1-d:q",
+        "t": 199.799,
+        "prompt": "Let $U = \\{1, 2, 3, \\ldots, 10\\}$, $P = \\{2, 3, 5, 7\\}$ and $Q = \\{3, 5\\}$. Which statement is true?",
+        "choices": [
+          "$P \\subset Q$",
+          "$Q \\subset P$",
+          "$P$ and $Q$ are disjoint",
+          "$2 \\in Q$"
+        ],
+        "answer": 1,
+        "working": "Both elements of $Q$, $3$ and $5$, are in $P$, so $Q \\subset P$. But $2 \\in P$ and $2 \\notin Q$, so $P$ is not a subset of $Q$."
+      }
+    ]
+  },
+  "m302-1-1-e": {
+    "lessonId": "m302-1-1",
+    "title": "Sets and Subsets, Part 5: Counting Subsets",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "All the subsets",
+        "t": 25.479
+      },
+      {
+        "title": "In or out",
+        "t": 72.86
+      },
+      {
+        "title": "The rule",
+        "t": 131.65
+      },
+      {
+        "title": "Watch out",
+        "t": 171.759
+      },
+      {
+        "title": "Your turn",
+        "t": 194.561
+      },
+      {
+        "title": "Summary",
+        "t": 234.331
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-1-e:q",
+        "t": 208.057,
+        "prompt": "A pizza shop offers 4 toppings. A pizza can have any number of them, from none to all 4. How many different choices of toppings are there?",
+        "choices": [
+          "$4$",
+          "$8$",
+          "$16$",
+          "$14$"
+        ],
+        "answer": 2,
+        "working": "Each topping is on or off: $2 \\times 2 \\times 2 \\times 2 = 2^4 = 16$, counting the plain pizza and the pizza with all four."
+      }
+    ]
+  },
+  "m302-1-2": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 1: Union and Intersection",
+    "duration": 298,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Union and intersection",
+        "t": 28.694
+      },
+      {
+        "title": "A Venn diagram",
+        "t": 91.92
+      },
+      {
+        "title": "Reading the diagram",
+        "t": 146.069
+      },
+      {
+        "title": "Watch out",
+        "t": 189.893
+      },
+      {
+        "title": "Your turn",
+        "t": 227.589
+      },
+      {
+        "title": "Summary",
+        "t": 264.553
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2:q",
+        "t": 243.323,
+        "prompt": "Let $U = \\{1, 2, 3, \\ldots, 10\\}$, $P = \\{1, 2, 3, 4, 5\\}$ and $Q = \\{2, 4, 6, 8, 10\\}$. Find $P \\cap Q$.",
+        "choices": [
+          "$\\{1, 2, 3, 4, 5, 6, 8, 10\\}$",
+          "$\\{1, 3, 5\\}$",
+          "$\\{6, 8, 10\\}$",
+          "$\\{2, 4\\}$"
+        ],
+        "answer": 3,
+        "working": "The intersection holds the elements in **both** sets. Only 2 and 4 are in $P$ and in $Q$."
+      }
+    ]
+  },
+  "m302-1-2-b": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 2: Complement and Difference",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The complement",
+        "t": 19.993
+      },
+      {
+        "title": "The difference",
+        "t": 82.475
+      },
+      {
+        "title": "Outside both circles",
+        "t": 109.749
+      },
+      {
+        "title": "Watch out",
+        "t": 147.919
+      },
+      {
+        "title": "Read the symbols as words",
+        "t": 176.048
+      },
+      {
+        "title": "Your turn",
+        "t": 203.592
+      },
+      {
+        "title": "Summary",
+        "t": 241.853
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2-b:q",
+        "t": 218.926,
+        "prompt": "Let $U = \\{1, 2, 3, \\ldots, 10\\}$, $P = \\{1, 2, 3, 4, 5\\}$ and $Q = \\{2, 4, 6, 8, 10\\}$. Find $Q \\setminus P$.",
+        "choices": [
+          "$\\{6, 8, 10\\}$",
+          "$\\{1, 3, 5\\}$",
+          "$\\{2, 4\\}$",
+          "$\\{7, 9\\}$"
+        ],
+        "answer": 0,
+        "working": "$Q \\setminus P$ is in $Q$ but not in $P$: remove $2$ and $4$ from $Q$, leaving $\\{6, 8, 10\\}$."
+      }
+    ]
+  },
+  "m302-1-2-c": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 3: Counting with Two Sets",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subtract the overlap",
+        "t": 22.035
+      },
+      {
+        "title": "Hockey and soccer",
+        "t": 75.097
+      },
+      {
+        "title": "Check with a Venn diagram",
+        "t": 119.741
+      },
+      {
+        "title": "Watch out",
+        "t": 166.073
+      },
+      {
+        "title": "Your turn",
+        "t": 205.214
+      },
+      {
+        "title": "Summary",
+        "t": 246.498
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2-c:q",
+        "t": 218.931,
+        "prompt": "In a class of 30 students, 17 have a dog, 12 have a cat and 5 have both. How many students have neither a dog nor a cat?",
+        "choices": [
+          "$1$",
+          "$6$",
+          "$19$",
+          "$24$"
+        ],
+        "answer": 1,
+        "working": "$n(D \\cup C) = 17 + 12 - 5 = 24$, so $30 - 24 = 6$ have neither."
+      }
+    ]
+  },
+  "m302-1-2-d": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 4: Three Sets",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Eight regions",
+        "t": 19.809
+      },
+      {
+        "title": "A science survey",
+        "t": 60.182
+      },
+      {
+        "title": "Start in the centre",
+        "t": 99.133
+      },
+      {
+        "title": "One course only",
+        "t": 136.124
+      },
+      {
+        "title": "None of the three",
+        "t": 172.791
+      },
+      {
+        "title": "Watch out",
+        "t": 200.948
+      },
+      {
+        "title": "Your turn",
+        "t": 235.452
+      },
+      {
+        "title": "Summary",
+        "t": 288.365
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2-d:q",
+        "t": 255.138,
+        "prompt": "Of 50 students, 20 take art, 25 take music and 15 take drama. Of these, 7 take art and music, 5 take art and drama, 6 take music and drama, and 3 take all three. How many take only art?",
+        "choices": [
+          "$8$",
+          "$17$",
+          "$14$",
+          "$11$"
+        ],
+        "answer": 3,
+        "working": "Art and music only: $7 - 3 = 4$. Art and drama only: $5 - 3 = 2$. Only art: $20 - 4 - 2 - 3 = 11$."
+      }
+    ]
+  },
+  "m302-1-2-e": {
+    "lessonId": "m302-1-2",
+    "title": "Venn Diagrams and Set Operations, Part 5: Naming Shaded Regions",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Symbols as words",
+        "t": 21.274
+      },
+      {
+        "title": "A region of two sets",
+        "t": 59.04
+      },
+      {
+        "title": "A region of three sets",
+        "t": 84.314
+      },
+      {
+        "title": "Another region",
+        "t": 126.537
+      },
+      {
+        "title": "Watch out",
+        "t": 157.831
+      },
+      {
+        "title": "Your turn",
+        "t": 192.402
+      },
+      {
+        "title": "Summary",
+        "t": 231.444
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-2-e:q",
+        "t": 204.005,
+        "prompt": "A region of a Venn diagram is inside $B$ and inside $C$, but outside $A$. Which notation names it?",
+        "choices": [
+          "$A \\cap B \\cap C$",
+          "$(B \\cup C) \\setminus A$",
+          "$(B \\cap C) \\setminus A$",
+          "$(B \\cap C) \\cup A$"
+        ],
+        "answer": 2,
+        "working": "Inside $B$ and $C$: $B \\cap C$. But not in $A$: $(B \\cap C) \\setminus A$."
+      }
+    ]
+  },
+  "m302-1-3": {
+    "lessonId": "m302-1-3",
+    "title": "Conditional Statements, Part 1: If–Then Statements",
+    "duration": 308,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Conditional statements",
+        "t": 28.827
+      },
+      {
+        "title": "When is it false?",
+        "t": 60.214
+      },
+      {
+        "title": "Is it true?",
+        "t": 106.605
+      },
+      {
+        "title": "A true statement in a Venn diagram",
+        "t": 156.089
+      },
+      {
+        "title": "Watch out",
+        "t": 196.691
+      },
+      {
+        "title": "Your turn",
+        "t": 237.862
+      },
+      {
+        "title": "Summary",
+        "t": 277.887
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-3:q",
+        "t": 248.785,
+        "prompt": "Which number is a counterexample to “If a number is a multiple of 3, then it is odd”?",
+        "choices": [
+          "$6$",
+          "$9$",
+          "$7$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "$6$ is a multiple of $3$ (the hypothesis is true) and $6$ is even (the conclusion is false)."
+      }
+    ]
+  },
+  "m302-1-3-b": {
+    "lessonId": "m302-1-3",
+    "title": "Conditional Statements, Part 2: The Converse",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The converse",
+        "t": 18.882
+      },
+      {
+        "title": "Dogs and mammals",
+        "t": 39.552
+      },
+      {
+        "title": "An example with numbers",
+        "t": 87.615
+      },
+      {
+        "title": "Watch out",
+        "t": 122.408
+      },
+      {
+        "title": "Your turn",
+        "t": 157.845
+      },
+      {
+        "title": "Summary",
+        "t": 199.746
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-3-b:q",
+        "t": 171.678,
+        "prompt": "The statement “If a number is a multiple of 6, then it is a multiple of 3” is true. Which number is a counterexample to its **converse**?",
+        "choices": [
+          "$12$",
+          "$9$",
+          "$6$",
+          "$4$"
+        ],
+        "answer": 1,
+        "working": "The converse is “If a number is a multiple of 3, then it is a multiple of 6.” $9$ is a multiple of $3$ but not of $6$."
+      }
+    ]
+  },
+  "m302-1-3-c": {
+    "lessonId": "m302-1-3",
+    "title": "Conditional Statements, Part 3: The Inverse and the Contrapositive",
+    "duration": 303,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Negating a statement",
+        "t": 20.289
+      },
+      {
+        "title": "All four forms",
+        "t": 54.628
+      },
+      {
+        "title": "Why they agree",
+        "t": 114.679
+      },
+      {
+        "title": "Writing the contrapositive",
+        "t": 169.446
+      },
+      {
+        "title": "Watch out",
+        "t": 206.918
+      },
+      {
+        "title": "Your turn",
+        "t": 241.334
+      },
+      {
+        "title": "Summary",
+        "t": 274.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-3-c:q",
+        "t": 249.645,
+        "prompt": "What is the contrapositive of “If it is snowing, then it is cold”?",
+        "choices": [
+          "If it is cold, then it is snowing.",
+          "If it is not snowing, then it is not cold.",
+          "If it is snowing, then it is not cold.",
+          "If it is not cold, then it is not snowing."
+        ],
+        "answer": 3,
+        "working": "Switch the parts and negate both: “If it is not cold, then it is not snowing.”"
+      }
+    ]
+  },
+  "m302-1-3-d": {
+    "lessonId": "m302-1-3",
+    "title": "Conditional Statements, Part 4: Biconditional Statements",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "If and only if",
+        "t": 24.064
+      },
+      {
+        "title": "A true biconditional",
+        "t": 60.313
+      },
+      {
+        "title": "A false biconditional",
+        "t": 108.674
+      },
+      {
+        "title": "Definitions",
+        "t": 146.275
+      },
+      {
+        "title": "Watch out",
+        "t": 176.772
+      },
+      {
+        "title": "Your turn",
+        "t": 203.398
+      },
+      {
+        "title": "Summary",
+        "t": 238.673
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-1-3-d:q",
+        "t": 209.013,
+        "prompt": "Which biconditional is true?",
+        "choices": [
+          "An angle is a right angle if and only if it measures $90^\\circ$.",
+          "A number is odd if and only if it is prime.",
+          "A shape is a rectangle if and only if it has four sides.",
+          "A number is positive if and only if it is greater than $1$."
+        ],
+        "answer": 0,
+        "working": "A is true both ways. B fails both ways: $9$ is odd but not prime, and $2$ is prime but not odd. C fails one way: a kite has four sides. D fails one way: $0.5$ is positive but not greater than $1$."
+      }
+    ]
+  },
+  "m302-2-1": {
+    "lessonId": "m302-2-1",
+    "title": "The Fundamental Counting Principle, Part 1: Tree Diagrams and Organized Lists",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A tree diagram",
+        "t": 27.036
+      },
+      {
+        "title": "An organized list",
+        "t": 82.498
+      },
+      {
+        "title": "Adding a third choice",
+        "t": 122.182
+      },
+      {
+        "title": "Watch out",
+        "t": 158.868
+      },
+      {
+        "title": "Your turn",
+        "t": 190.111
+      },
+      {
+        "title": "Summary",
+        "t": 230.786
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-1:q",
+        "t": 206.114,
+        "prompt": "A sandwich comes on white, brown or rye bread, with a filling of ham, turkey, egg or cheese. How many different sandwiches with one bread and one filling are possible?",
+        "choices": [
+          "$7$",
+          "$4$",
+          "$12$",
+          "$24$"
+        ],
+        "answer": 2,
+        "working": "Each of the 3 breads splits into 4 fillings: $3 \\times 4 = 12$ branches."
+      }
+    ]
+  },
+  "m302-2-1-b": {
+    "lessonId": "m302-2-1",
+    "title": "The Fundamental Counting Principle, Part 2: Multiplying the Choices",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The counting principle",
+        "t": 20.894
+      },
+      {
+        "title": "A video game character",
+        "t": 61.321
+      },
+      {
+        "title": "Guessing on a quiz",
+        "t": 97.892
+      },
+      {
+        "title": "Watch out",
+        "t": 134.872
+      },
+      {
+        "title": "Your turn",
+        "t": 165.598
+      },
+      {
+        "title": "Summary",
+        "t": 208.446
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-1-b:q",
+        "t": 180.069,
+        "prompt": "A product code has 2 letters (A to Z) followed by 3 digits (0 to 9). Letters and digits may repeat. How many codes are possible?",
+        "choices": [
+          "$82$",
+          "$676\\,000$",
+          "$52\\,000$",
+          "$1\\,757\\,600$"
+        ],
+        "answer": 1,
+        "working": "$26 \\times 26 \\times 10 \\times 10 \\times 10 = 676 \\times 1000 = 676\\,000$."
+      }
+    ]
+  },
+  "m302-2-1-c": {
+    "lessonId": "m302-2-1",
+    "title": "The Fundamental Counting Principle, Part 3: Add or Multiply?",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "And or or?",
+        "t": 23.158
+      },
+      {
+        "title": "A breakfast deal",
+        "t": 52.776
+      },
+      {
+        "title": "Watch out",
+        "t": 92.754
+      },
+      {
+        "title": "Two dice",
+        "t": 126.178
+      },
+      {
+        "title": "Order matters with two dice",
+        "t": 188.435
+      },
+      {
+        "title": "Your turn",
+        "t": 213.989
+      },
+      {
+        "title": "Summary",
+        "t": 258.022
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-1-c:q",
+        "t": 227.995,
+        "prompt": "A school lunch is one meal and one juice. There are 4 hot meals, 3 cold meals and 2 kinds of juice. How many different lunches are possible?",
+        "choices": [
+          "$24$",
+          "$9$",
+          "$12$",
+          "$14$"
+        ],
+        "answer": 3,
+        "working": "A meal is hot **or** cold: $4 + 3 = 7$. A lunch is a meal **and** a juice: $7 \\times 2 = 14$."
+      }
+    ]
+  },
+  "m302-2-1-d": {
+    "lessonId": "m302-2-1",
+    "title": "The Fundamental Counting Principle, Part 4: Counting What You Do Not Want",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "All the codes",
+        "t": 21.866
+      },
+      {
+        "title": "Subtract the codes with none",
+        "t": 59.179
+      },
+      {
+        "title": "Why it works",
+        "t": 96.358
+      },
+      {
+        "title": "Watch out",
+        "t": 132.164
+      },
+      {
+        "title": "Your turn",
+        "t": 175.677
+      },
+      {
+        "title": "Summary",
+        "t": 223.037
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-1-d:q",
+        "t": 188.54,
+        "prompt": "A 3-digit lock code uses the digits 0 to 9, and digits may repeat. How many codes contain at least one 7?",
+        "choices": [
+          "$271$",
+          "$300$",
+          "$729$",
+          "$1000$"
+        ],
+        "answer": 0,
+        "working": "All codes: $10^3 = 1000$. Codes with no 7: each digit has 9 choices, $9^3 = 729$. At least one 7: $1000 - 729 = 271$."
+      }
+    ]
+  },
+  "m302-2-2": {
+    "lessonId": "m302-2-2",
+    "title": "Permutations, Part 1: Factorial Notation",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Photos on a wall",
+        "t": 28.67
+      },
+      {
+        "title": "Factorial notation",
+        "t": 66.744
+      },
+      {
+        "title": "A factorial fraction",
+        "t": 121.061
+      },
+      {
+        "title": "Watch out",
+        "t": 158.248
+      },
+      {
+        "title": "Your turn",
+        "t": 201.795
+      },
+      {
+        "title": "Summary",
+        "t": 237.96
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-2:q",
+        "t": 208.995,
+        "prompt": "Evaluate $\\dfrac{6!}{3!}$.",
+        "choices": [
+          "$2$",
+          "$120$",
+          "$6$",
+          "$720$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{6!}{3!} = \\dfrac{6 \\times 5 \\times 4 \\times 3!}{3!} = 6 \\times 5 \\times 4 = 120$."
+      }
+    ]
+  },
+  "m302-2-2-b": {
+    "lessonId": "m302-2-2",
+    "title": "Permutations, Part 2: Arranging Some of the Objects",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The opening set",
+        "t": 20.552
+      },
+      {
+        "title": "Permutations",
+        "t": 60.398
+      },
+      {
+        "title": "Gold, silver and bronze",
+        "t": 109.391
+      },
+      {
+        "title": "Watch out",
+        "t": 160.237
+      },
+      {
+        "title": "Your turn",
+        "t": 202.666
+      },
+      {
+        "title": "Summary",
+        "t": 245.679
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-2-b:q",
+        "t": 217.807,
+        "prompt": "A club with 12 members elects a president, a vice-president and a secretary. No one may hold two jobs. In how many ways can the three jobs be filled?",
+        "choices": [
+          "$36$",
+          "$220$",
+          "$1320$",
+          "$1728$"
+        ],
+        "answer": 2,
+        "working": "The jobs are different, so order matters: ${}_{12}P_{3} = 12 \\times 11 \\times 10 = 1320$."
+      }
+    ]
+  },
+  "m302-2-2-c": {
+    "lessonId": "m302-2-2",
+    "title": "Permutations, Part 3: Choosing the Right Model",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Digits may repeat",
+        "t": 24.3
+      },
+      {
+        "title": "No repeats",
+        "t": 58.271
+      },
+      {
+        "title": "Every digit once",
+        "t": 84.192
+      },
+      {
+        "title": "The three models",
+        "t": 121.199
+      },
+      {
+        "title": "Watch out",
+        "t": 160.875
+      },
+      {
+        "title": "Your turn",
+        "t": 187.841
+      },
+      {
+        "title": "Summary",
+        "t": 226.143
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-2-c:q",
+        "t": 201.144,
+        "prompt": "A playlist plays 5 different songs, chosen from 20, in order, with no song played twice. Which expression counts the playlists?",
+        "choices": [
+          "${}_{20}P_{5}$",
+          "$20^5$",
+          "$20!$",
+          "$5!$"
+        ],
+        "answer": 0,
+        "working": "Order matters, no song repeats, and only 5 of the 20 songs are used: ${}_{20}P_{5} = 20 \\times 19 \\times 18 \\times 17 \\times 16$."
+      }
+    ]
+  },
+  "m302-2-2-d": {
+    "lessonId": "m302-2-2",
+    "title": "Permutations, Part 4: Working Backwards",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How many projects?",
+        "t": 20.129
+      },
+      {
+        "title": "Solving the quadratic",
+        "t": 73.053
+      },
+      {
+        "title": "More than a thousand orders",
+        "t": 116.454
+      },
+      {
+        "title": "Factorials grow fast",
+        "t": 158.405
+      },
+      {
+        "title": "Watch out",
+        "t": 193.649
+      },
+      {
+        "title": "Your turn",
+        "t": 223.782
+      },
+      {
+        "title": "Summary",
+        "t": 258.643
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-2-d:q",
+        "t": 235.644,
+        "prompt": "There are 56 ways to award a first prize and a second prize to the people in a contest. How many people entered?",
+        "choices": [
+          "$7$",
+          "$28$",
+          "$56$",
+          "$8$"
+        ],
+        "answer": 3,
+        "working": "$n(n - 1) = 56$, and $8 \\times 7 = 56$, so $n = 8$. (The other root, $n = -7$, is rejected.)"
+      }
+    ]
+  },
+  "m302-2-3": {
+    "lessonId": "m302-2-3",
+    "title": "Permutations with Repetition and Restrictions, Part 1: Identical Objects",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A, A and B",
+        "t": 25.802
+      },
+      {
+        "title": "The formula",
+        "t": 80.09
+      },
+      {
+        "title": "Signal flags",
+        "t": 120.355
+      },
+      {
+        "title": "Watch out",
+        "t": 175.406
+      },
+      {
+        "title": "Your turn",
+        "t": 201.6
+      },
+      {
+        "title": "Summary",
+        "t": 243.765
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-3:q",
+        "t": 213.206,
+        "prompt": "How many different arrangements of the letters in the word LETTER are there?",
+        "choices": [
+          "$720$",
+          "$360$",
+          "$180$",
+          "$90$"
+        ],
+        "answer": 2,
+        "working": "LETTER has 6 letters, with two E’s and two T’s: $\\dfrac{6!}{2!\\,2!} = \\dfrac{720}{4} = 180$."
+      }
+    ]
+  },
+  "m302-2-3-b": {
+    "lessonId": "m302-2-3",
+    "title": "Permutations with Repetition and Restrictions, Part 2: Fixed Positions",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The captain in the middle",
+        "t": 19.672
+      },
+      {
+        "title": "At either end",
+        "t": 59.709
+      },
+      {
+        "title": "Why the rule goes first",
+        "t": 103.612
+      },
+      {
+        "title": "Watch out",
+        "t": 142.5
+      },
+      {
+        "title": "Your turn",
+        "t": 168.091
+      },
+      {
+        "title": "Summary",
+        "t": 209.922
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-3-b:q",
+        "t": 180.491,
+        "prompt": "Seven students line up for a photo. Ana must stand at the left end and Ben at the right end. How many line-ups are possible?",
+        "choices": [
+          "$5040$",
+          "$120$",
+          "$240$",
+          "$720$"
+        ],
+        "answer": 1,
+        "working": "Ana and Ben each have 1 spot. The other 5 students fill the middle 5 spots: $1 \\times 1 \\times 5! = 120$."
+      }
+    ]
+  },
+  "m302-2-3-c": {
+    "lessonId": "m302-2-3",
+    "title": "Permutations with Repetition and Restrictions, Part 3: Together or Apart",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Together: one unit",
+        "t": 21.728
+      },
+      {
+        "title": "Apart: subtract",
+        "t": 65.856
+      },
+      {
+        "title": "Identical objects in a unit",
+        "t": 104.541
+      },
+      {
+        "title": "Watch out",
+        "t": 162.948
+      },
+      {
+        "title": "Your turn",
+        "t": 194.619
+      },
+      {
+        "title": "Summary",
+        "t": 232.772
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-3-c:q",
+        "t": 206.359,
+        "prompt": "Five friends sit in a row of 5 seats. Two of them, Sam and Leo, must sit together. How many seatings are possible?",
+        "choices": [
+          "$48$",
+          "$24$",
+          "$72$",
+          "$120$"
+        ],
+        "answer": 0,
+        "working": "Sam and Leo form one unit, so there are 4 units: $4! = 24$. Inside the unit they can swap: $24 \\times 2 = 48$."
+      }
+    ]
+  },
+  "m302-2-3-d": {
+    "lessonId": "m302-2-3",
+    "title": "Permutations with Repetition and Restrictions, Part 4: Alternating Patterns",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The patterns",
+        "t": 21.071
+      },
+      {
+        "title": "Arrange each group",
+        "t": 58.2
+      },
+      {
+        "title": "One more of one group",
+        "t": 101.493
+      },
+      {
+        "title": "Watch out",
+        "t": 142.173
+      },
+      {
+        "title": "Your turn",
+        "t": 171.077
+      },
+      {
+        "title": "Summary",
+        "t": 217.558
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-3-d:q",
+        "t": 183.264,
+        "prompt": "Four adults and four children sit in a row of 8 seats, alternating adult and child. How many seatings are possible?",
+        "choices": [
+          "$576$",
+          "$40\\,320$",
+          "$48$",
+          "$1152$"
+        ],
+        "answer": 3,
+        "working": "Two patterns (start with an adult or a child). Each: $4! \\times 4! = 24 \\times 24 = 576$. Total: $2 \\times 576 = 1152$."
+      }
+    ]
+  },
+  "m302-2-4": {
+    "lessonId": "m302-2-4",
+    "title": "Combinations, Part 1: Does Order Matter?",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Permutation or combination?",
+        "t": 30.79
+      },
+      {
+        "title": "The swap test",
+        "t": 99.879
+      },
+      {
+        "title": "More examples",
+        "t": 146.603
+      },
+      {
+        "title": "Watch out",
+        "t": 176.213
+      },
+      {
+        "title": "Your turn",
+        "t": 203.526
+      },
+      {
+        "title": "Summary",
+        "t": 233.508
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-4:q",
+        "t": 209.851,
+        "prompt": "Which situation is a combination?",
+        "choices": [
+          "Ranking your top 3 movies",
+          "Picking 3 people for a committee",
+          "Setting a 3-digit lock code",
+          "Choosing a captain and an assistant captain"
+        ],
+        "answer": 1,
+        "working": "Swapping two committee members gives the same committee, so order does not matter. Swapping in the other three changes the result."
+      }
+    ]
+  },
+  "m302-2-4-b": {
+    "lessonId": "m302-2-4",
+    "title": "Combinations, Part 2: Counting Combinations",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pairs from four friends",
+        "t": 21.574
+      },
+      {
+        "title": "Divide by r factorial",
+        "t": 58.208
+      },
+      {
+        "title": "Inviting friends",
+        "t": 108.815
+      },
+      {
+        "title": "Watch out",
+        "t": 152.483
+      },
+      {
+        "title": "Your turn",
+        "t": 189.034
+      },
+      {
+        "title": "Summary",
+        "t": 231.888
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-4-b:q",
+        "t": 202.658,
+        "prompt": "A teacher chooses 4 of 10 students to present on the first day. The order of the presentations does not matter. How many groups are possible?",
+        "choices": [
+          "$5040$",
+          "$40$",
+          "$210$",
+          "$24$"
+        ],
+        "answer": 2,
+        "working": "${}_{10}C_{4} = \\dfrac{10 \\times 9 \\times 8 \\times 7}{4 \\times 3 \\times 2 \\times 1} = \\dfrac{5040}{24} = 210$."
+      }
+    ]
+  },
+  "m302-2-4-c": {
+    "lessonId": "m302-2-4",
+    "title": "Combinations, Part 3: Choosing from Several Groups",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A talent show act",
+        "t": 21.299
+      },
+      {
+        "title": "A deck of cards",
+        "t": 68.36
+      },
+      {
+        "title": "A pair",
+        "t": 105.207
+      },
+      {
+        "title": "Watch out",
+        "t": 150.976
+      },
+      {
+        "title": "Your turn",
+        "t": 176.513
+      },
+      {
+        "title": "Summary",
+        "t": 217.73
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-4-c:q",
+        "t": 186.699,
+        "prompt": "A committee needs 2 of 5 teachers and 2 of 8 students. How many committees are possible?",
+        "choices": [
+          "$280$",
+          "$38$",
+          "$715$",
+          "$1120$"
+        ],
+        "answer": 0,
+        "working": "Teachers: ${}_{5}C_{2} = 10$. Students: ${}_{8}C_{2} = 28$. Together: $10 \\times 28 = 280$."
+      }
+    ]
+  },
+  "m302-2-4-d": {
+    "lessonId": "m302-2-4",
+    "title": "Combinations, Part 4: Cases and “At Least”",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Toppings",
+        "t": 22.574
+      },
+      {
+        "title": "At least one teen",
+        "t": 74.814
+      },
+      {
+        "title": "Checking by cases",
+        "t": 115.772
+      },
+      {
+        "title": "Watch out",
+        "t": 159.959
+      },
+      {
+        "title": "Your turn",
+        "t": 205.882
+      },
+      {
+        "title": "Summary",
+        "t": 250.094
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-2-4-d:q",
+        "t": 217.855,
+        "prompt": "A committee of 3 is chosen from 6 students and 4 teachers. How many committees include at least one teacher?",
+        "choices": [
+          "$120$",
+          "$20$",
+          "$144$",
+          "$100$"
+        ],
+        "answer": 3,
+        "working": "All committees: ${}_{10}C_{3} = 120$. No teachers: ${}_{6}C_{3} = 20$. At least one teacher: $120 - 20 = 100$."
+      }
+    ]
+  },
+  "m302-3-1": {
+    "lessonId": "m302-3-1",
+    "title": "Odds and Probability, Part 1: Odds in Favour and Against",
+    "duration": 335,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Probability",
+        "t": 26.831
+      },
+      {
+        "title": "Drawing a marble",
+        "t": 57.178
+      },
+      {
+        "title": "Odds",
+        "t": 111.623
+      },
+      {
+        "title": "Odds with marbles",
+        "t": 150.927
+      },
+      {
+        "title": "Probability or odds?",
+        "t": 186.591
+      },
+      {
+        "title": "Watch out",
+        "t": 227.183
+      },
+      {
+        "title": "Your turn",
+        "t": 261.756
+      },
+      {
+        "title": "Summary",
+        "t": 300.551
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-1:q",
+        "t": 274.268,
+        "prompt": "A spinner has 8 equal sections: 3 are green and 5 are yellow. What are the odds in favour of landing on green?",
+        "choices": [
+          "$3 : 8$",
+          "$3 : 5$",
+          "$5 : 3$",
+          "$5 : 8$"
+        ],
+        "answer": 1,
+        "working": "Favourable: 3 green sections. Unfavourable: 5 yellow sections. The odds in favour of green are $3 : 5$."
+      }
+    ]
+  },
+  "m302-3-1-b": {
+    "lessonId": "m302-3-1",
+    "title": "Odds and Probability, Part 2: Converting Odds and Probability",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From odds to probability",
+        "t": 29.325
+      },
+      {
+        "title": "A hockey game",
+        "t": 65.356
+      },
+      {
+        "title": "From probability to odds",
+        "t": 113.875
+      },
+      {
+        "title": "A chance of snow",
+        "t": 140.569
+      },
+      {
+        "title": "Watch out",
+        "t": 182.441
+      },
+      {
+        "title": "Your turn",
+        "t": 214.251
+      },
+      {
+        "title": "Summary",
+        "t": 252.801
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-1-b:q",
+        "t": 225.289,
+        "prompt": "The odds in favour of a team winning its next game are $4 : 7$. What is the probability that it wins?",
+        "choices": [
+          "$\\dfrac{4}{7}$",
+          "$\\dfrac{7}{11}$",
+          "$\\dfrac{3}{7}$",
+          "$\\dfrac{4}{11}$"
+        ],
+        "answer": 3,
+        "working": "4 favourable outcomes for every 7 unfavourable ones make $4 + 7 = 11$ in all, so $P(\\text{win}) = \\dfrac{4}{11}$."
+      }
+    ]
+  },
+  "m302-3-1-c": {
+    "lessonId": "m302-3-1",
+    "title": "Odds and Probability, Part 3: Solving Problems with Odds",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Finding a count",
+        "t": 20.721
+      },
+      {
+        "title": "Where probabilities come from",
+        "t": 81.835
+      },
+      {
+        "title": "A volleyball season",
+        "t": 112.125
+      },
+      {
+        "title": "Watch out",
+        "t": 153.272
+      },
+      {
+        "title": "Your turn",
+        "t": 188.983
+      },
+      {
+        "title": "Summary",
+        "t": 230.391
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-1-c:q",
+        "t": 201.27,
+        "prompt": "A bag holds 40 tiles. The odds in favour of drawing a blue tile are $3 : 5$. How many blue tiles are in the bag?",
+        "choices": [
+          "$15$",
+          "$24$",
+          "$25$",
+          "$3$"
+        ],
+        "answer": 0,
+        "working": "$P(\\text{blue}) = \\dfrac{3}{3 + 5} = \\dfrac{3}{8}$, and $40 \\times \\dfrac{3}{8} = 15$ blue tiles."
+      }
+    ]
+  },
+  "m302-3-2": {
+    "lessonId": "m302-3-2",
+    "title": "Probability Using Counting Methods, Part 1: Arrangements",
+    "duration": 333,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Count both parts",
+        "t": 24.249
+      },
+      {
+        "title": "Lining up for a photo",
+        "t": 58.553
+      },
+      {
+        "title": "Sitting together",
+        "t": 116.611
+      },
+      {
+        "title": "Repeated letters",
+        "t": 169.932
+      },
+      {
+        "title": "Watch out",
+        "t": 224.371
+      },
+      {
+        "title": "Your turn",
+        "t": 249.309
+      },
+      {
+        "title": "Summary",
+        "t": 297.789
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-2:q",
+        "t": 264.135,
+        "prompt": "Seven runners, including Lena and Tom, are given lanes 1 to 7 at random. What is the probability that Lena gets lane 1 and Tom gets lane 2?",
+        "choices": [
+          "$\\dfrac{1}{7}$",
+          "$\\dfrac{2}{7}$",
+          "$\\dfrac{1}{42}$",
+          "$\\dfrac{1}{21}$"
+        ],
+        "answer": 2,
+        "working": "All: $7! = 5040$. Favourable: $1 \\times 1 \\times 5! = 120$. $P = \\dfrac{120}{5040} = \\dfrac{1}{42}$."
+      }
+    ]
+  },
+  "m302-3-2-b": {
+    "lessonId": "m302-3-2",
+    "title": "Probability Using Counting Methods, Part 2: Choosing Groups",
+    "duration": 337,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Order matters or not?",
+        "t": 22.652
+      },
+      {
+        "title": "A random committee",
+        "t": 60.857
+      },
+      {
+        "title": "Exactly two in Grade 12",
+        "t": 106.381
+      },
+      {
+        "title": "A standard deck",
+        "t": 154.523
+      },
+      {
+        "title": "Two hearts",
+        "t": 181.391
+      },
+      {
+        "title": "Watch out",
+        "t": 225.704
+      },
+      {
+        "title": "Your turn",
+        "t": 263.659
+      },
+      {
+        "title": "Summary",
+        "t": 309.697
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-2-b:q",
+        "t": 277.888,
+        "prompt": "A bag holds 5 red and 7 blue marbles. Three marbles are drawn at random, all at once. What is the probability that all three are red?",
+        "choices": [
+          "$\\dfrac{1}{22}$",
+          "$\\dfrac{3}{11}$",
+          "$\\dfrac{1}{132}$",
+          "$\\dfrac{5}{12}$"
+        ],
+        "answer": 0,
+        "working": "${}_{5}C_{3} = 10$ and ${}_{12}C_{3} = 220$, so $P = \\dfrac{10}{220} = \\dfrac{1}{22}$."
+      }
+    ]
+  },
+  "m302-3-2-c": {
+    "lessonId": "m302-3-2",
+    "title": "Probability Using Counting Methods, Part 3: At Least One",
+    "duration": 305,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "None, or at least one",
+        "t": 23.42
+      },
+      {
+        "title": "At least one Grade 12 student",
+        "t": 50.818
+      },
+      {
+        "title": "Check the long way",
+        "t": 103.593
+      },
+      {
+        "title": "At least one six",
+        "t": 155.269
+      },
+      {
+        "title": "Watch out",
+        "t": 206.881
+      },
+      {
+        "title": "Your turn",
+        "t": 239.431
+      },
+      {
+        "title": "Summary",
+        "t": 281.866
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-2-c:q",
+        "t": 251.76,
+        "prompt": "Three students are chosen at random from 5 boys and 4 girls. What is the probability that at least one girl is chosen?",
+        "choices": [
+          "$\\dfrac{5}{42}$",
+          "$\\dfrac{1}{21}$",
+          "$\\dfrac{20}{21}$",
+          "$\\dfrac{37}{42}$"
+        ],
+        "answer": 3,
+        "working": "No girls: ${}_{5}C_{3} = 10$ of ${}_{9}C_{3} = 84$, so $P(\\text{none}) = \\dfrac{10}{84} = \\dfrac{5}{42}$ and $P(\\text{at least one}) = 1 - \\dfrac{5}{42} = \\dfrac{37}{42}$."
+      }
+    ]
+  },
+  "m302-3-3": {
+    "lessonId": "m302-3-3",
+    "title": "Mutually Exclusive Events, Part 1: Adding Probabilities",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mutually exclusive events",
+        "t": 28.428
+      },
+      {
+        "title": "Can they happen together?",
+        "t": 62.126
+      },
+      {
+        "title": "Adding probabilities",
+        "t": 90.361
+      },
+      {
+        "title": "A king or a queen",
+        "t": 120.138
+      },
+      {
+        "title": "Two dice",
+        "t": 153.15
+      },
+      {
+        "title": "Watch out",
+        "t": 208.598
+      },
+      {
+        "title": "Your turn",
+        "t": 246.783
+      },
+      {
+        "title": "Summary",
+        "t": 286.41
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-3:q",
+        "t": 261.185,
+        "prompt": "A bag holds 3 red, 5 green and 4 yellow marbles. One marble is drawn at random. What is the probability that it is red or yellow?",
+        "choices": [
+          "$\\dfrac{1}{12}$",
+          "$\\dfrac{7}{12}$",
+          "$\\dfrac{5}{12}$",
+          "$\\dfrac{7}{24}$"
+        ],
+        "answer": 1,
+        "working": "No marble is both red and yellow, so $P(\\text{red or yellow}) = \\dfrac{3}{12} + \\dfrac{4}{12} = \\dfrac{7}{12}$."
+      }
+    ]
+  },
+  "m302-3-3-b": {
+    "lessonId": "m302-3-3",
+    "title": "Mutually Exclusive Events, Part 2: Events That Overlap",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting twice",
+        "t": 22.109
+      },
+      {
+        "title": "The general addition rule",
+        "t": 64.477
+      },
+      {
+        "title": "A heart or a face card",
+        "t": 106.761
+      },
+      {
+        "title": "Watch out",
+        "t": 154.374
+      },
+      {
+        "title": "Your turn",
+        "t": 189.375
+      },
+      {
+        "title": "Summary",
+        "t": 229.766
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-3-b:q",
+        "t": 199.771,
+        "prompt": "One card is drawn from a standard deck of 52. What is the probability that it is a king or a club?",
+        "choices": [
+          "$\\dfrac{17}{52}$",
+          "$\\dfrac{1}{52}$",
+          "$\\dfrac{4}{13}$",
+          "$\\dfrac{1}{4}$"
+        ],
+        "answer": 2,
+        "working": "$P(\\text{king or club}) = \\dfrac{4}{52} + \\dfrac{13}{52} - \\dfrac{1}{52} = \\dfrac{16}{52} = \\dfrac{4}{13}$. The king of clubs is in both events."
+      }
+    ]
+  },
+  "m302-3-3-c": {
+    "lessonId": "m302-3-3",
+    "title": "Mutually Exclusive Events, Part 3: Both, and Neither",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four parts",
+        "t": 22.761
+      },
+      {
+        "title": "Sport and music",
+        "t": 57.483
+      },
+      {
+        "title": "Check with a Venn diagram",
+        "t": 125.146
+      },
+      {
+        "title": "Watch out",
+        "t": 180.277
+      },
+      {
+        "title": "Your turn",
+        "t": 216.208
+      },
+      {
+        "title": "Summary",
+        "t": 270.869
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-3-c:q",
+        "t": 236.037,
+        "prompt": "For a student in a class, $P(\\text{cat}) = 0.4$, $P(\\text{dog}) = 0.5$ and $P(\\text{cat and dog}) = 0.2$. What is the probability that a student has neither pet?",
+        "choices": [
+          "$0.1$",
+          "$0.7$",
+          "$0.9$",
+          "$0.3$"
+        ],
+        "answer": 3,
+        "working": "$P(\\text{cat or dog}) = 0.4 + 0.5 - 0.2 = 0.7$, so $P(\\text{neither}) = 1 - 0.7 = 0.3$."
+      }
+    ]
+  },
+  "m302-3-4": {
+    "lessonId": "m302-3-4",
+    "title": "Independent and Dependent Events, Part 1: Independent Events",
+    "duration": 310,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Independent events",
+        "t": 25.316
+      },
+      {
+        "title": "A coin and a die",
+        "t": 45.59
+      },
+      {
+        "title": "With replacement",
+        "t": 83.085
+      },
+      {
+        "title": "Free throws",
+        "t": 121.874
+      },
+      {
+        "title": "Watch out",
+        "t": 192.091
+      },
+      {
+        "title": "Your turn",
+        "t": 233.829
+      },
+      {
+        "title": "Summary",
+        "t": 280.193
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-4:q",
+        "t": 247.934,
+        "prompt": "A spinner has 4 equal sections, and one of them is red. It is spun 3 times. What is the probability that it lands on red at least once?",
+        "choices": [
+          "$\\dfrac{37}{64}$",
+          "$\\dfrac{27}{64}$",
+          "$\\dfrac{3}{4}$",
+          "$\\dfrac{1}{64}$"
+        ],
+        "answer": 0,
+        "working": "$P(\\text{not red}) = \\dfrac{3}{4}$, so $P(\\text{no red}) = \\left(\\dfrac{3}{4}\\right)^3 = \\dfrac{27}{64}$ and $P(\\text{at least one red}) = 1 - \\dfrac{27}{64} = \\dfrac{37}{64}$."
+      }
+    ]
+  },
+  "m302-3-4-b": {
+    "lessonId": "m302-3-4",
+    "title": "Independent and Dependent Events, Part 2: Dependent Events",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dependent events",
+        "t": 26.504
+      },
+      {
+        "title": "Without replacement",
+        "t": 61.619
+      },
+      {
+        "title": "A tree diagram",
+        "t": 106.078
+      },
+      {
+        "title": "Watch out",
+        "t": 181.06
+      },
+      {
+        "title": "Your turn",
+        "t": 209.641
+      },
+      {
+        "title": "Summary",
+        "t": 257.373
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-4-b:q",
+        "t": 223.773,
+        "prompt": "A box holds 4 green and 6 yellow pens. Two pens are taken at random, without replacement. What is the probability that both are green?",
+        "choices": [
+          "$\\dfrac{4}{25}$",
+          "$\\dfrac{3}{10}$",
+          "$\\dfrac{2}{15}$",
+          "$\\dfrac{4}{15}$"
+        ],
+        "answer": 2,
+        "working": "$P(\\text{both green}) = \\dfrac{4}{10} \\times \\dfrac{3}{9} = \\dfrac{12}{90} = \\dfrac{2}{15}$."
+      }
+    ]
+  },
+  "m302-3-4-c": {
+    "lessonId": "m302-3-4",
+    "title": "Independent and Dependent Events, Part 3: Conditional Probability from a Table",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Given that",
+        "t": 21.97
+      },
+      {
+        "title": "Part-time jobs",
+        "t": 57.024
+      },
+      {
+        "title": "Are they independent?",
+        "t": 113.854
+      },
+      {
+        "title": "Watch out",
+        "t": 176.971
+      },
+      {
+        "title": "Your turn",
+        "t": 212.227
+      },
+      {
+        "title": "Summary",
+        "t": 262.588
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-3-4-c:q",
+        "t": 230.703,
+        "prompt": "Of 120 students, 66 have no job. Of those 66, 42 are in Grade 11. Given that a student has no job, what is the probability that the student is in Grade 11?",
+        "choices": [
+          "$\\dfrac{7}{20}$",
+          "$\\dfrac{7}{11}$",
+          "$\\dfrac{7}{10}$",
+          "$\\dfrac{11}{20}$"
+        ],
+        "answer": 1,
+        "working": "Use only the 66 students with no job: $P(\\text{Grade 11} \\mid \\text{no job}) = \\dfrac{42}{66} = \\dfrac{7}{11}$."
+      }
+    ]
+  },
+  "m302-4-1": {
+    "lessonId": "m302-4-1",
+    "title": "Equivalent Rational Expressions, Part 1: Non-Permissible Values",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rational expressions",
+        "t": 25.724
+      },
+      {
+        "title": "Dividing by zero",
+        "t": 58.952
+      },
+      {
+        "title": "Non-permissible values",
+        "t": 107.066
+      },
+      {
+        "title": "Three denominators",
+        "t": 145.316
+      },
+      {
+        "title": "Watch out",
+        "t": 209.319
+      },
+      {
+        "title": "Your turn",
+        "t": 243.186
+      },
+      {
+        "title": "Summary",
+        "t": 283.149
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-1:q",
+        "t": 252.778,
+        "prompt": "What are the non-permissible values of $\\dfrac{x + 3}{x^2 - 9}$?",
+        "choices": [
+          "$x \\ne -3$",
+          "$x \\ne 9$",
+          "$x \\ne 3$",
+          "$x \\ne -3, \\ 3$"
+        ],
+        "answer": 3,
+        "working": "$x^2 - 9 = (x - 3)(x + 3)$, which is $0$ when $x = 3$ or $x = -3$. So $x \\ne -3, \\ 3$."
+      }
+    ]
+  },
+  "m302-4-1-b": {
+    "lessonId": "m302-4-1",
+    "title": "Equivalent Rational Expressions, Part 2: Simplifying",
+    "duration": 362,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Simplest form",
+        "t": 25.186
+      },
+      {
+        "title": "Monomial over monomial",
+        "t": 50.13
+      },
+      {
+        "title": "Two variables",
+        "t": 110.945
+      },
+      {
+        "title": "Factor first",
+        "t": 145.285
+      },
+      {
+        "title": "A restriction that stays",
+        "t": 200.41
+      },
+      {
+        "title": "Watch out",
+        "t": 247.319
+      },
+      {
+        "title": "Your turn",
+        "t": 283.974
+      },
+      {
+        "title": "Summary",
+        "t": 325.882
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-1-b:q",
+        "t": 293.071,
+        "prompt": "Simplify $\\dfrac{x^2 - 49}{2x - 14}$.",
+        "choices": [
+          "$\\dfrac{x + 7}{2}$, $x \\ne 7$",
+          "$\\dfrac{x^2 - 7}{2}$, $x \\ne 7$",
+          "$\\dfrac{x + 7}{2}$, no restrictions",
+          "$\\dfrac{x - 7}{2}$, $x \\ne -7$"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{(x - 7)(x + 7)}{2(x - 7)}$, so $x \\ne 7$, and dividing out $x - 7$ leaves $\\dfrac{x + 7}{2}$."
+      }
+    ]
+  },
+  "m302-4-1-c": {
+    "lessonId": "m302-4-1",
+    "title": "Equivalent Rational Expressions, Part 3: Equivalent Forms and Opposites",
+    "duration": 313,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equivalent expressions",
+        "t": 28.445
+      },
+      {
+        "title": "A missing numerator",
+        "t": 56.202
+      },
+      {
+        "title": "Opposites",
+        "t": 105.962
+      },
+      {
+        "title": "Opposite factors",
+        "t": 158.476
+      },
+      {
+        "title": "Watch out",
+        "t": 215.559
+      },
+      {
+        "title": "Your turn",
+        "t": 241.805
+      },
+      {
+        "title": "Summary",
+        "t": 285.041
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-1-c:q",
+        "t": 250.569,
+        "prompt": "Simplify $\\dfrac{3x - 12}{16 - x^2}$, where $x \\ne -4, \\ 4$.",
+        "choices": [
+          "$\\dfrac{3}{x + 4}$",
+          "$\\dfrac{3}{4 - x}$",
+          "$-\\dfrac{3}{x + 4}$",
+          "$-\\dfrac{3}{x - 4}$"
+        ],
+        "answer": 2,
+        "working": "$3x - 12 = 3(x - 4)$ and $16 - x^2 = (4 - x)(4 + x) = -(x - 4)(x + 4)$, so the expression is $\\dfrac{3(x - 4)}{-(x - 4)(x + 4)} = -\\dfrac{3}{x + 4}$."
+      }
+    ]
+  },
+  "m302-4-2": {
+    "lessonId": "m302-4-2",
+    "title": "Operations on Rational Expressions, Part 1: Multiplying and Dividing",
+    "duration": 341,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Multiplying",
+        "t": 24.528
+      },
+      {
+        "title": "A product",
+        "t": 68.641
+      },
+      {
+        "title": "Factored or expanded?",
+        "t": 122.696
+      },
+      {
+        "title": "Dividing",
+        "t": 144.009
+      },
+      {
+        "title": "A quotient",
+        "t": 172.488
+      },
+      {
+        "title": "Watch out",
+        "t": 239.255
+      },
+      {
+        "title": "Your turn",
+        "t": 270.268
+      },
+      {
+        "title": "Summary",
+        "t": 311.857
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-2:q",
+        "t": 281.036,
+        "prompt": "Simplify $\\dfrac{5x}{x + 2} \\times \\dfrac{x^2 - 4}{10x^2}$, where $x \\ne -2, \\ 0$.",
+        "choices": [
+          "$\\dfrac{x + 2}{2x}$",
+          "$2x(x - 2)$",
+          "$\\dfrac{x - 2}{2}$",
+          "$\\dfrac{x - 2}{2x}$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{5x}{x + 2} \\times \\dfrac{(x - 2)(x + 2)}{10x^2}$: divide out $x + 2$, and $\\dfrac{5x}{10x^2} = \\dfrac{1}{2x}$, leaving $\\dfrac{x - 2}{2x}$."
+      }
+    ]
+  },
+  "m302-4-2-b": {
+    "lessonId": "m302-4-2",
+    "title": "Operations on Rational Expressions, Part 2: Adding and Subtracting",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The lowest common denominator",
+        "t": 26.334
+      },
+      {
+        "title": "Different powers of x",
+        "t": 70.113
+      },
+      {
+        "title": "Subtracting a binomial numerator",
+        "t": 131.102
+      },
+      {
+        "title": "Watch out",
+        "t": 189.128
+      },
+      {
+        "title": "Your turn",
+        "t": 219.862
+      },
+      {
+        "title": "Summary",
+        "t": 260.843
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-2-b:q",
+        "t": 227.754,
+        "prompt": "Simplify $\\dfrac{2}{3x} + \\dfrac{1}{x^2}$, where $x \\ne 0$.",
+        "choices": [
+          "$\\dfrac{3}{3x + x^2}$",
+          "$\\dfrac{2x + 3}{3x^2}$",
+          "$\\dfrac{2x + 1}{3x^2}$",
+          "$\\dfrac{3}{3x^2}$"
+        ],
+        "answer": 1,
+        "working": "The LCD is $3x^2$: $\\dfrac{2}{3x} \\cdot \\dfrac{x}{x} + \\dfrac{1}{x^2} \\cdot \\dfrac{3}{3} = \\dfrac{2x}{3x^2} + \\dfrac{3}{3x^2} = \\dfrac{2x + 3}{3x^2}$."
+      }
+    ]
+  },
+  "m302-4-2-c": {
+    "lessonId": "m302-4-2",
+    "title": "Operations on Rational Expressions, Part 3: Binomial Denominators",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Building the LCD",
+        "t": 26.649
+      },
+      {
+        "title": "Two binomials",
+        "t": 64.075
+      },
+      {
+        "title": "A shared factor",
+        "t": 132.176
+      },
+      {
+        "title": "Simplify at the end",
+        "t": 196.398
+      },
+      {
+        "title": "Watch out",
+        "t": 243.035
+      },
+      {
+        "title": "Your turn",
+        "t": 270.486
+      },
+      {
+        "title": "Summary",
+        "t": 311.478
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-2-c:q",
+        "t": 279.433,
+        "prompt": "Simplify $\\dfrac{3}{x - 1} + \\dfrac{2}{x + 4}$, where $x \\ne -4, \\ 1$.",
+        "choices": [
+          "$\\dfrac{5x + 10}{(x - 1)(x + 4)}$",
+          "$\\dfrac{5}{2x + 3}$",
+          "$\\dfrac{5x + 14}{(x - 1)(x + 4)}$",
+          "$\\dfrac{5x + 11}{(x - 1)(x + 4)}$"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{3(x + 4) + 2(x - 1)}{(x - 1)(x + 4)} = \\dfrac{3x + 12 + 2x - 2}{(x - 1)(x + 4)} = \\dfrac{5x + 10}{(x - 1)(x + 4)}$"
+      }
+    ]
+  },
+  "m302-4-3": {
+    "lessonId": "m302-4-3",
+    "title": "Rational Equations, Part 1: Clearing the Fractions",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 24.506
+      },
+      {
+        "title": "Monomial denominators",
+        "t": 68.935
+      },
+      {
+        "title": "A proportion",
+        "t": 121.661
+      },
+      {
+        "title": "Watch out",
+        "t": 181.893
+      },
+      {
+        "title": "Your turn",
+        "t": 217.56
+      },
+      {
+        "title": "Summary",
+        "t": 258.574
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-3:q",
+        "t": 226.509,
+        "prompt": "Solve $\\dfrac{5}{x} - \\dfrac{1}{3x} = \\dfrac{7}{6}$.",
+        "choices": [
+          "$x = 6$",
+          "$x = \\dfrac{1}{4}$",
+          "$x = 4$",
+          "$x = \\dfrac{29}{7}$"
+        ],
+        "answer": 2,
+        "working": "$x \\ne 0$. Multiply every term by $6x$: $30 - 2 = 7x$, so $x = 4$. Check: $\\dfrac{5}{4} - \\dfrac{1}{12} = \\dfrac{14}{12} = \\dfrac{7}{6}$ ✓"
+      }
+    ]
+  },
+  "m302-4-3-b": {
+    "lessonId": "m302-4-3",
+    "title": "Rational Equations, Part 2: Extraneous Roots",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Extraneous roots",
+        "t": 21.227
+      },
+      {
+        "title": "No solution",
+        "t": 57.756
+      },
+      {
+        "title": "One root survives",
+        "t": 106.185
+      },
+      {
+        "title": "Reject and check",
+        "t": 170.248
+      },
+      {
+        "title": "Watch out",
+        "t": 211.722
+      },
+      {
+        "title": "Your turn",
+        "t": 239.149
+      },
+      {
+        "title": "Summary",
+        "t": 279.901
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-3-b:q",
+        "t": 248.187,
+        "prompt": "Solve $\\dfrac{x^2}{x - 2} = \\dfrac{4}{x - 2}$.",
+        "choices": [
+          "$x = 2$",
+          "$x = -2$",
+          "$x = 2$ or $x = -2$",
+          "No solution"
+        ],
+        "answer": 1,
+        "working": "$x \\ne 2$. Multiply by $x - 2$: $x^2 = 4$, so $x = \\pm 2$. $x = 2$ is non-permissible, so it is extraneous. Check $x = -2$: $\\dfrac{4}{-4} = -1 = \\dfrac{4}{-4}$ ✓"
+      }
+    ]
+  },
+  "m302-4-3-c": {
+    "lessonId": "m302-4-3",
+    "title": "Rational Equations, Part 3: Working Together",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Work as a rate",
+        "t": 21.534
+      },
+      {
+        "title": "Setting up the equation",
+        "t": 61.111
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 122.868
+      },
+      {
+        "title": "Watch out",
+        "t": 153.567
+      },
+      {
+        "title": "Your turn",
+        "t": 181.838
+      },
+      {
+        "title": "Summary",
+        "t": 227.849
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-3-c:q",
+        "t": 195.374,
+        "prompt": "One pump can empty a flooded basement in 4 h, and a second pump can empty it in 12 h. How long do the two pumps take together?",
+        "choices": [
+          "$8$ h",
+          "$16$ h",
+          "$\\dfrac{1}{3}$ h",
+          "$3$ h"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{1}{4} + \\dfrac{1}{12} = \\dfrac{1}{t}$. Multiply by $12t$: $3t + t = 12$, so $t = 3$ h."
+      }
+    ]
+  },
+  "m302-4-3-d": {
+    "lessonId": "m302-4-3",
+    "title": "Rational Equations, Part 4: Travel and Average Cost",
+    "duration": 326,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Time from distance and speed",
+        "t": 28.001
+      },
+      {
+        "title": "Equal travel times",
+        "t": 72.539
+      },
+      {
+        "title": "Average cost",
+        "t": 130.723
+      },
+      {
+        "title": "Watch out",
+        "t": 203.091
+      },
+      {
+        "title": "Your turn",
+        "t": 240.732
+      },
+      {
+        "title": "Summary",
+        "t": 298.503
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-4-3-d:q",
+        "t": 262.404,
+        "prompt": "A boat travels 36 km downstream in the same time it travels 24 km upstream. The current adds 3 km/h to its speed going downstream and takes 3 km/h away going upstream. What is the boat’s speed in still water?",
+        "choices": [
+          "$15$ km/h",
+          "$12$ km/h",
+          "$-15$ km/h",
+          "$18$ km/h"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{36}{b + 3} = \\dfrac{24}{b - 3}$, so $36(b - 3) = 24(b + 3)$, $36b - 108 = 24b + 72$, $12b = 180$ and $b = 15$ km/h."
+      }
+    ]
+  },
+  "m302-5-1": {
+    "lessonId": "m302-5-1",
+    "title": "Characteristics of Polynomial Functions, Part 1: Degree and Leading Coefficient",
+    "duration": 353,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polynomial functions",
+        "t": 25.67
+      },
+      {
+        "title": "Degree and names",
+        "t": 99.977
+      },
+      {
+        "title": "Three shapes",
+        "t": 155.133
+      },
+      {
+        "title": "Reading an equation",
+        "t": 191.041
+      },
+      {
+        "title": "Watch out",
+        "t": 243.078
+      },
+      {
+        "title": "Your turn",
+        "t": 271.337
+      },
+      {
+        "title": "Summary",
+        "t": 314.308
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-1:q",
+        "t": 283.802,
+        "prompt": "State the degree, the leading coefficient and the constant term of $y = 6 + 4x^2 - x^3$.",
+        "choices": [
+          "Degree $2$, leading coefficient $4$, constant term $6$",
+          "Degree $3$, leading coefficient $-1$, constant term $6$",
+          "Degree $3$, leading coefficient $6$, constant term $4$",
+          "Degree $3$, leading coefficient $1$, constant term $6$"
+        ],
+        "answer": 1,
+        "working": "From the highest power down, $y = -x^3 + 4x^2 + 6$. The degree is $3$, the coefficient of $-x^3$ is $-1$, and the constant term is $6$."
+      }
+    ]
+  },
+  "m302-5-1-b": {
+    "lessonId": "m302-5-1",
+    "title": "Characteristics of Polynomial Functions, Part 2: End Behaviour",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quadrants",
+        "t": 22.036
+      },
+      {
+        "title": "The leading term wins",
+        "t": 66.431
+      },
+      {
+        "title": "Four cases",
+        "t": 123.243
+      },
+      {
+        "title": "From the equation",
+        "t": 181.84
+      },
+      {
+        "title": "Watch out",
+        "t": 228.678
+      },
+      {
+        "title": "Your turn",
+        "t": 263.442
+      },
+      {
+        "title": "Summary",
+        "t": 303.073
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-1-b:q",
+        "t": 273.734,
+        "prompt": "Describe the end behaviour of $y = 5 - 2x + 3x^2$.",
+        "choices": [
+          "Quadrant III to quadrant I",
+          "Quadrant II to quadrant IV",
+          "Quadrant III to quadrant IV",
+          "Quadrant II to quadrant I"
+        ],
+        "answer": 3,
+        "working": "The leading term is $3x^2$. The degree is even, so both ends go the same way, and the leading coefficient $3$ is positive, so both ends go up."
+      }
+    ]
+  },
+  "m302-5-1-c": {
+    "lessonId": "m302-5-1",
+    "title": "Characteristics of Polynomial Functions, Part 3: Intercepts and Turning Points",
+    "duration": 377,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Intercepts",
+        "t": 22.244
+      },
+      {
+        "title": "A cubic in factored form",
+        "t": 69.893
+      },
+      {
+        "title": "Turning points",
+        "t": 118.939
+      },
+      {
+        "title": "What is possible",
+        "t": 164.057
+      },
+      {
+        "title": "Three cubics",
+        "t": 203.072
+      },
+      {
+        "title": "Touching the axis",
+        "t": 235.497
+      },
+      {
+        "title": "Your turn",
+        "t": 291.522
+      },
+      {
+        "title": "Summary",
+        "t": 335.608
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-1-c:q",
+        "t": 304.436,
+        "prompt": "Find the $x$-intercepts and the $y$-intercept of $y = (x - 2)(x + 1)(x + 4)$.",
+        "choices": [
+          "$x$-intercepts $2$, $-1$, $-4$; $y$-intercept $-8$",
+          "$x$-intercepts $-2$, $1$, $4$; $y$-intercept $-8$",
+          "$x$-intercepts $2$, $-1$, $-4$; $y$-intercept $8$",
+          "$x$-intercepts $-2$, $1$, $4$; $y$-intercept $8$"
+        ],
+        "answer": 0,
+        "working": "Each factor is zero when $x = 2$, $x = -1$ or $x = -4$. At $x = 0$: $(0 - 2)(0 + 1)(0 + 4) = -8$."
+      }
+    ]
+  },
+  "m302-5-1-d": {
+    "lessonId": "m302-5-1",
+    "title": "Characteristics of Polynomial Functions, Part 4: Domain, Range and Matching Graphs",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Domain",
+        "t": 24.598
+      },
+      {
+        "title": "Range of a cubic",
+        "t": 69.69
+      },
+      {
+        "title": "Range of a quadratic",
+        "t": 110.125
+      },
+      {
+        "title": "Three clues",
+        "t": 163.58
+      },
+      {
+        "title": "Matching a graph",
+        "t": 189.952
+      },
+      {
+        "title": "Your turn",
+        "t": 242.45
+      },
+      {
+        "title": "Summary",
+        "t": 280.928
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-1-d:q",
+        "t": 252.291,
+        "prompt": "State the range of $y = 2(x + 3)^2 - 5$.",
+        "choices": [
+          "$\\{y \\mid y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\le -5,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\ge -5,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\ge -3,\\ y \\in \\mathbb{R}\\}$"
+        ],
+        "answer": 2,
+        "working": "The vertex is $(-3, -5)$ and $a = 2 > 0$, so the parabola opens up and $-5$ is its minimum value."
+      }
+    ]
+  },
+  "m302-5-2": {
+    "lessonId": "m302-5-2",
+    "title": "Modelling Data with Polynomial Functions, Part 1: Choosing a Type of Model",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Regression",
+        "t": 23.889
+      },
+      {
+        "title": "Count the turns",
+        "t": 63.554
+      },
+      {
+        "title": "Fuel use and speed",
+        "t": 110.471
+      },
+      {
+        "title": "Watch out",
+        "t": 164.261
+      },
+      {
+        "title": "Your turn",
+        "t": 206.738
+      },
+      {
+        "title": "Summary",
+        "t": 242.284
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-2:q",
+        "t": 219.323,
+        "prompt": "A scatter plot of a shop’s weekly sales rises, then falls, then rises again. Which type of regression suits the data?",
+        "choices": [
+          "Linear",
+          "Quadratic",
+          "Linear, because the sales end higher than they start",
+          "Cubic"
+        ],
+        "answer": 3,
+        "working": "The pattern changes direction twice (up, down, up), so it has two turning points: a cubic model."
+      }
+    ]
+  },
+  "m302-5-2-b": {
+    "lessonId": "m302-5-2",
+    "title": "Modelling Data with Polynomial Functions, Part 2: Interpolating and Extrapolating",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inside or outside",
+        "t": 19.65
+      },
+      {
+        "title": "Iced drinks",
+        "t": 45.154
+      },
+      {
+        "title": "Outside the data",
+        "t": 101.673
+      },
+      {
+        "title": "What the slope means",
+        "t": 149.469
+      },
+      {
+        "title": "Keep every digit",
+        "t": 182.517
+      },
+      {
+        "title": "Your turn",
+        "t": 235.096
+      },
+      {
+        "title": "Summary",
+        "t": 279.704
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-2-b:q",
+        "t": 252.224,
+        "prompt": "Data for $x$ from $10$ to $50$ give the linear model $y = 2.5x + 12$. Estimate $y$ when $x = 30$. Is this interpolation or extrapolation?",
+        "choices": [
+          "$87$; extrapolation",
+          "$87$; interpolation",
+          "$75$; interpolation",
+          "$435$; interpolation"
+        ],
+        "answer": 1,
+        "working": "$y = 2.5(30) + 12 = 75 + 12 = 87$. Since $30$ is between $10$ and $50$, inside the data, this is interpolation."
+      }
+    ]
+  },
+  "m302-5-2-c": {
+    "lessonId": "m302-5-2",
+    "title": "Modelling Data with Polynomial Functions, Part 3: Using Quadratic and Cubic Models",
+    "duration": 330,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The vertex",
+        "t": 22.923
+      },
+      {
+        "title": "Reaching a value",
+        "t": 96.898
+      },
+      {
+        "title": "A cubic model",
+        "t": 170.196
+      },
+      {
+        "title": "Your turn",
+        "t": 245.365
+      },
+      {
+        "title": "Summary",
+        "t": 296.81
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-2-c:q",
+        "t": 264.918,
+        "prompt": "A ball’s height, in metres, $x$ seconds after it is thrown is modelled by $y = -4.9x^2 + 19.6x + 2$. When does it reach its maximum height, and what is that height?",
+        "choices": [
+          "After $2$ s, at $2$ m",
+          "After $-2$ s, at $-56.8$ m",
+          "After $2$ s, at $21.6$ m",
+          "After $4$ s, at $2$ m"
+        ],
+        "answer": 2,
+        "working": "$x = -\\dfrac{19.6}{2(-4.9)} = 2$, and $y = -4.9(2)^2 + 19.6(2) + 2 = -19.6 + 39.2 + 2 = 21.6$."
+      }
+    ]
+  },
+  "m302-5-2-d": {
+    "lessonId": "m302-5-2",
+    "title": "Modelling Data with Polynomial Functions, Part 4: Is the Prediction Reasonable?",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Only the data it came from",
+        "t": 15.303
+      },
+      {
+        "title": "Players after two years",
+        "t": 41.242
+      },
+      {
+        "title": "A thrown ball",
+        "t": 107.608
+      },
+      {
+        "title": "Watch out",
+        "t": 163.451
+      },
+      {
+        "title": "Your turn",
+        "t": 200.097
+      },
+      {
+        "title": "Summary",
+        "t": 246.795
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-5-2-d:q",
+        "t": 219.577,
+        "prompt": "A model for the number of fish in a pond, from data for years $0$ to $6$, is $y = -15x^2 + 90x + 400$. For year $10$ it gives $y = -200$. What does this tell you?",
+        "choices": [
+          "The prediction is not reasonable: year 10 is far outside the data.",
+          "The pond will have 200 fewer fish than at the start.",
+          "The model must be wrong for years 0 to 6 as well.",
+          "The prediction is reasonable, because the model fits the data."
+        ],
+        "answer": 0,
+        "working": "A pond cannot hold a negative number of fish. Year $10$ is outside the data (years $0$ to $6$), so this extrapolation uses the model where it does not apply."
+      }
+    ]
+  },
+  "m302-6-1": {
+    "lessonId": "m302-6-1",
+    "title": "Exponential Functions, Part 1: Growth or Decay",
+    "duration": 330,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding or multiplying",
+        "t": 27.223
+      },
+      {
+        "title": "Exponential functions",
+        "t": 63.375
+      },
+      {
+        "title": "Growth and decay",
+        "t": 113.517
+      },
+      {
+        "title": "Which is it?",
+        "t": 166.368
+      },
+      {
+        "title": "Watch out",
+        "t": 222.336
+      },
+      {
+        "title": "Your turn",
+        "t": 257.579
+      },
+      {
+        "title": "Summary",
+        "t": 292.361
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-1:q",
+        "t": 264.127,
+        "prompt": "Which function shows exponential decay?",
+        "choices": [
+          "$y = 0.4(2.5)^x$",
+          "$y = 3(1.2)^x$",
+          "$y = 6(0.9)^x$",
+          "$y = 0.9(1.1)^x$"
+        ],
+        "answer": 2,
+        "working": "Only $y = 6(0.9)^x$ has a base between $0$ and $1$. The other bases, $2.5$, $1.2$ and $1.1$, are greater than $1$, so those functions show growth."
+      }
+    ]
+  },
+  "m302-6-1-b": {
+    "lessonId": "m302-6-1",
+    "title": "Exponential Functions, Part 2: Features of the Graph",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Halving forever",
+        "t": 23.946
+      },
+      {
+        "title": "The features",
+        "t": 62.128
+      },
+      {
+        "title": "Every exponential graph",
+        "t": 125.706
+      },
+      {
+        "title": "Watch out",
+        "t": 167.541
+      },
+      {
+        "title": "Your turn",
+        "t": 189.306
+      },
+      {
+        "title": "Summary",
+        "t": 228.292
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-1-b:q",
+        "t": 197.718,
+        "prompt": "State the range of $y = 5(3)^x$.",
+        "choices": [
+          "$\\{y \\mid y > 0,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\ge 0,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\ge 5,\\ y \\in \\mathbb{R}\\}$",
+          "$\\{y \\mid y \\in \\mathbb{R}\\}$"
+        ],
+        "answer": 0,
+        "working": "Every $y$-value is positive, and the graph approaches the asymptote $y = 0$ without reaching it. Values less than $5$ occur when $x < 0$, for example $y = 5(3)^{-1} = \\frac{5}{3}$."
+      }
+    ]
+  },
+  "m302-6-1-c": {
+    "lessonId": "m302-6-1",
+    "title": "Exponential Functions, Part 3: Finding the Equation from a Table or a Graph",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A constant ratio",
+        "t": 21.358
+      },
+      {
+        "title": "From a table",
+        "t": 60.633
+      },
+      {
+        "title": "From a graph",
+        "t": 107.677
+      },
+      {
+        "title": "Ratio or difference?",
+        "t": 146.132
+      },
+      {
+        "title": "Your turn",
+        "t": 192.227
+      },
+      {
+        "title": "Summary",
+        "t": 233.127
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-1-c:q",
+        "t": 205.948,
+        "prompt": "An exponential function has $y = 80, 40, 20, 10$ at $x = 0, 1, 2, 3$. Which equation fits?",
+        "choices": [
+          "$y = 80(2)^x$",
+          "$y = 0.5(80)^x$",
+          "$y = 80 - 20x$",
+          "$y = 80\\left(\\frac{1}{2}\\right)^x$"
+        ],
+        "answer": 3,
+        "working": "At $x = 0$, $y = 80$, so $a = 80$. $\\dfrac{40}{80} = \\dfrac{20}{40} = \\dfrac{10}{20} = \\dfrac{1}{2}$, so $b = \\frac{1}{2}$."
+      }
+    ]
+  },
+  "m302-6-1-d": {
+    "lessonId": "m302-6-1",
+    "title": "Exponential Functions, Part 4: Exponential Models in Context",
+    "duration": 315,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent rates",
+        "t": 22.591
+      },
+      {
+        "title": "Reading the base",
+        "t": 80.752
+      },
+      {
+        "title": "A truck loses value",
+        "t": 128.673
+      },
+      {
+        "title": "Watch out",
+        "t": 203.638
+      },
+      {
+        "title": "Your turn",
+        "t": 233.369
+      },
+      {
+        "title": "Summary",
+        "t": 281.388
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-1-d:q",
+        "t": 249.794,
+        "prompt": "A town’s population is modelled by $P = 12\\,000(1.03)^t$, where $t$ is the number of years from now. Which statement is true?",
+        "choices": [
+          "The population grows by 103% each year.",
+          "The population starts at 12,000 and grows by 3% each year.",
+          "The population falls by 3% each year.",
+          "The population grows by 1.03 people each year."
+        ],
+        "answer": 1,
+        "working": "$1.03 = 1 + 0.03$, so the population is multiplied by $1.03$ each year: growth of 3%. The initial value is $12\\,000$."
+      }
+    ]
+  },
+  "m302-6-2": {
+    "lessonId": "m302-6-2",
+    "title": "Solving Exponential Equations, Part 1: Equations with a Common Base",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal powers",
+        "t": 20.567
+      },
+      {
+        "title": "One side is a power",
+        "t": 65.823
+      },
+      {
+        "title": "Both bases change",
+        "t": 106.358
+      },
+      {
+        "title": "Watch out",
+        "t": 176.513
+      },
+      {
+        "title": "Your turn",
+        "t": 205.395
+      },
+      {
+        "title": "Summary",
+        "t": 244.847
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-2:q",
+        "t": 213.734,
+        "prompt": "Solve $4^{x + 1} = 8^{x}$.",
+        "choices": [
+          "$x = 2$",
+          "$x = 1$",
+          "$x = -2$",
+          "$x = \\frac{1}{2}$"
+        ],
+        "answer": 0,
+        "working": "$4 = 2^2$ and $8 = 2^3$, so $2^{2x + 2} = 2^{3x}$. Then $2x + 2 = 3x$ and $x = 2$. Check: $4^3 = 64 = 8^2$."
+      }
+    ]
+  },
+  "m302-6-2-b": {
+    "lessonId": "m302-6-2",
+    "title": "Solving Exponential Equations, Part 2: Reciprocals and Coefficients",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Negative exponents",
+        "t": 20.576
+      },
+      {
+        "title": "A reciprocal base",
+        "t": 57.818
+      },
+      {
+        "title": "A coefficient",
+        "t": 99.259
+      },
+      {
+        "title": "Watch out",
+        "t": 130.584
+      },
+      {
+        "title": "Your turn",
+        "t": 159.221
+      },
+      {
+        "title": "Summary",
+        "t": 196.888
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-2-b:q",
+        "t": 167.586,
+        "prompt": "Solve $3\\left(\\frac{1}{2}\\right)^{x} = 24$.",
+        "choices": [
+          "$x = 3$",
+          "$x = 8$",
+          "$x = -3$",
+          "$x = 4$"
+        ],
+        "answer": 2,
+        "working": "Divide by $3$: $\\left(\\frac{1}{2}\\right)^{x} = 8$. Since $\\frac{1}{2} = 2^{-1}$ and $8 = 2^3$, $2^{-x} = 2^{3}$, so $-x = 3$ and $x = -3$."
+      }
+    ]
+  },
+  "m302-6-2-c": {
+    "lessonId": "m302-6-2",
+    "title": "Solving Exponential Equations, Part 3: Solving with Logarithms",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "No common base",
+        "t": 18.911
+      },
+      {
+        "title": "Take the log of both sides",
+        "t": 58.889
+      },
+      {
+        "title": "On a graph",
+        "t": 117.046
+      },
+      {
+        "title": "A decay equation",
+        "t": 151.088
+      },
+      {
+        "title": "Watch out",
+        "t": 203.848
+      },
+      {
+        "title": "Your turn",
+        "t": 233.378
+      },
+      {
+        "title": "Summary",
+        "t": 273.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-2-c:q",
+        "t": 241.668,
+        "prompt": "Solve $6^{x} = 40$ to the nearest hundredth.",
+        "choices": [
+          "$x \\approx 0.82$",
+          "$x \\approx 2.06$",
+          "$x \\approx 6.67$",
+          "$x \\approx 0.49$"
+        ],
+        "answer": 1,
+        "working": "$x\\log 6 = \\log 40$, so $x = \\dfrac{\\log 40}{\\log 6} = \\dfrac{1.60206\\ldots}{0.77815\\ldots} \\approx 2.06$. Check: $6^2 = 36$, a little less than $40$."
+      }
+    ]
+  },
+  "m302-6-2-d": {
+    "lessonId": "m302-6-2",
+    "title": "Solving Exponential Equations, Part 4: An Expression in the Exponent",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Brackets matter",
+        "t": 21.871
+      },
+      {
+        "title": "Check with technology",
+        "t": 78.143
+      },
+      {
+        "title": "Another example",
+        "t": 114.001
+      },
+      {
+        "title": "Watch out",
+        "t": 166.908
+      },
+      {
+        "title": "Your turn",
+        "t": 203.746
+      },
+      {
+        "title": "Summary",
+        "t": 245.933
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-2-d:q",
+        "t": 213.565,
+        "prompt": "Solve $3^{2x - 1} = 50$ to the nearest hundredth.",
+        "choices": [
+          "$x \\approx 1.28$",
+          "$x \\approx 3.56$",
+          "$x \\approx 1.09$",
+          "$x \\approx 2.28$"
+        ],
+        "answer": 3,
+        "working": "$(2x - 1)\\log 3 = \\log 50$, so $2x - 1 = \\dfrac{\\log 50}{\\log 3} = 3.5609\\ldots$, $2x = 4.5609\\ldots$ and $x = 2.2804\\ldots \\approx 2.28$."
+      }
+    ]
+  },
+  "m302-6-3": {
+    "lessonId": "m302-6-3",
+    "title": "Logarithms and the Laws of Logarithms, Part 1: What a Logarithm Is",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Logarithms",
+        "t": 25.002
+      },
+      {
+        "title": "Two forms",
+        "t": 69.814
+      },
+      {
+        "title": "Evaluating",
+        "t": 115.132
+      },
+      {
+        "title": "Watch out",
+        "t": 172.977
+      },
+      {
+        "title": "Your turn",
+        "t": 213.945
+      },
+      {
+        "title": "Summary",
+        "t": 248.939
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-3:q",
+        "t": 220.485,
+        "prompt": "Evaluate $\\log_2 \\frac{1}{8}$.",
+        "choices": [
+          "$3$",
+          "$-3$",
+          "$\\frac{1}{3}$",
+          "$-\\frac{1}{3}$"
+        ],
+        "answer": 1,
+        "working": "$2^{-3} = \\dfrac{1}{2^3} = \\dfrac{1}{8}$, so $\\log_2 \\frac{1}{8} = -3$."
+      }
+    ]
+  },
+  "m302-6-3-b": {
+    "lessonId": "m302-6-3",
+    "title": "Logarithms and the Laws of Logarithms, Part 2: Estimating, Change of Base and Solving",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Estimating",
+        "t": 22.728
+      },
+      {
+        "title": "Change of base",
+        "t": 50.175
+      },
+      {
+        "title": "Solving",
+        "t": 106.963
+      },
+      {
+        "title": "Watch out",
+        "t": 156.612
+      },
+      {
+        "title": "Your turn",
+        "t": 182.79
+      },
+      {
+        "title": "Summary",
+        "t": 216.957
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-3-b:q",
+        "t": 189.963,
+        "prompt": "Solve $\\log_x 81 = 4$.",
+        "choices": [
+          "$x = 81^4$",
+          "$x = \\frac{81}{4}$",
+          "$x = 9$",
+          "$x = 3$"
+        ],
+        "answer": 3,
+        "working": "In exponential form, $x^4 = 81$. Since $3^4 = 81$, $x = 3$."
+      }
+    ]
+  },
+  "m302-6-3-c": {
+    "lessonId": "m302-6-3",
+    "title": "Logarithms and the Laws of Logarithms, Part 3: The Laws of Logarithms",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exponents become logarithms",
+        "t": 20.729
+      },
+      {
+        "title": "The three laws",
+        "t": 61.043
+      },
+      {
+        "title": "Combine, then evaluate",
+        "t": 115.823
+      },
+      {
+        "title": "Watch out",
+        "t": 181.101
+      },
+      {
+        "title": "Your turn",
+        "t": 219.578
+      },
+      {
+        "title": "Summary",
+        "t": 255.298
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-3-c:q",
+        "t": 228.889,
+        "prompt": "Evaluate $\\log_3 6 + \\log_3 4.5$.",
+        "choices": [
+          "$3$",
+          "$\\log_3 10.5$",
+          "$27$",
+          "$2$"
+        ],
+        "answer": 0,
+        "working": "Product law: $\\log_3 (6 \\times 4.5) = \\log_3 27 = 3$, because $3^3 = 27$."
+      }
+    ]
+  },
+  "m302-6-3-d": {
+    "lessonId": "m302-6-3",
+    "title": "Logarithms and the Laws of Logarithms, Part 4: Combining, Expanding and Solving",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Both directions",
+        "t": 21.835
+      },
+      {
+        "title": "A single logarithm",
+        "t": 39.361
+      },
+      {
+        "title": "Known values",
+        "t": 80.388
+      },
+      {
+        "title": "Solving with a law",
+        "t": 134.488
+      },
+      {
+        "title": "Your turn",
+        "t": 187.804
+      },
+      {
+        "title": "Summary",
+        "t": 225.185
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-3-d:q",
+        "t": 196.716,
+        "prompt": "Solve $\\log_2 x + \\log_2 5 = 4$.",
+        "choices": [
+          "$x = 11$",
+          "$x = 80$",
+          "$x = \\frac{16}{5}$",
+          "$x = \\frac{4}{5}$"
+        ],
+        "answer": 2,
+        "working": "Product law: $\\log_2 5x = 4$, so $5x = 2^4 = 16$ and $x = \\frac{16}{5}$, which is positive."
+      }
+    ]
+  },
+  "m302-6-4": {
+    "lessonId": "m302-6-4",
+    "title": "Modelling with Exponential and Logarithmic Functions, Part 1: Compound Interest",
+    "duration": 427,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The formula",
+        "t": 25.737
+      },
+      {
+        "title": "Compounding periods",
+        "t": 88.299
+      },
+      {
+        "title": "Monthly compounding",
+        "t": 145.511
+      },
+      {
+        "title": "How long to double?",
+        "t": 221.205
+      },
+      {
+        "title": "Watch out",
+        "t": 302.834
+      },
+      {
+        "title": "Your turn",
+        "t": 342.27
+      },
+      {
+        "title": "Summary",
+        "t": 386.828
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-4:q",
+        "t": 355.828,
+        "prompt": "\\$2000 is invested at 6% per year, compounded quarterly, for 5 years. Which expression gives the final amount, in dollars?",
+        "choices": [
+          "$2000(1.06)^{5}$",
+          "$2000(1.06)^{20}$",
+          "$2000(1.015)^{5}$",
+          "$2000(1.015)^{20}$"
+        ],
+        "answer": 3,
+        "working": "Quarterly is 4 times a year: $i = \\dfrac{0.06}{4} = 0.015$ and $n = 4 \\times 5 = 20$. So $A = 2000(1.015)^{20} \\approx 2693.71$."
+      }
+    ]
+  },
+  "m302-6-4-b": {
+    "lessonId": "m302-6-4",
+    "title": "Modelling with Exponential and Logarithmic Functions, Part 2: Growth, Depreciation and Half-Life",
+    "duration": 317,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three models",
+        "t": 26.686
+      },
+      {
+        "title": "A medical tracer",
+        "t": 98.642
+      },
+      {
+        "title": "After 15 hours",
+        "t": 134.41
+      },
+      {
+        "title": "When will 5 mg remain?",
+        "t": 167.416
+      },
+      {
+        "title": "Watch out",
+        "t": 216.44
+      },
+      {
+        "title": "Your turn",
+        "t": 243.093
+      },
+      {
+        "title": "Summary",
+        "t": 282.444
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-4-b:q",
+        "t": 254.117,
+        "prompt": "A 200 mg sample has a half-life of 5 days, so $A = 200\\left(\\frac{1}{2}\\right)^{t/5}$. How much remains after 15 days?",
+        "choices": [
+          "$25$ mg",
+          "$66.7$ mg",
+          "$0.006$ mg",
+          "$100$ mg"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{t}{h} = \\dfrac{15}{5} = 3$ half-lives, so $A = 200\\left(\\frac{1}{2}\\right)^3 = \\dfrac{200}{8} = 25$ mg."
+      }
+    ]
+  },
+  "m302-6-4-c": {
+    "lessonId": "m302-6-4",
+    "title": "Modelling with Exponential and Logarithmic Functions, Part 3: Using a Regression Equation",
+    "duration": 321,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exponential regression",
+        "t": 24.658
+      },
+      {
+        "title": "Inside the data",
+        "t": 77.291
+      },
+      {
+        "title": "Outside the data",
+        "t": 119.95
+      },
+      {
+        "title": "Logarithmic regression",
+        "t": 158.914
+      },
+      {
+        "title": "Your turn",
+        "t": 220.802
+      },
+      {
+        "title": "Summary",
+        "t": 288.666
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-4-c:q",
+        "t": 246.532,
+        "prompt": "A town’s population is modelled by $y = 4500(1.025)^x$, where $x$ is the number of years since the data began. The data cover 10 years. Estimate the population at $x = 4$, and say whether this is interpolation or extrapolation.",
+        "choices": [
+          "$4950$; interpolation",
+          "$4967$; extrapolation",
+          "$4967$; interpolation",
+          "$18\\,450$; interpolation"
+        ],
+        "answer": 2,
+        "working": "$y = 4500(1.025)^4 = 4500(1.10381\\ldots) = 4967.15\\ldots$, about $4967$. Since $4$ is inside the $10$ years of data, this is interpolation."
+      }
+    ]
+  },
+  "m302-6-4-d": {
+    "lessonId": "m302-6-4",
+    "title": "Modelling with Exponential and Logarithmic Functions, Part 4: Logarithmic Scales",
+    "duration": 328,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Steps of ten",
+        "t": 25.647
+      },
+      {
+        "title": "Three scales",
+        "t": 65.077
+      },
+      {
+        "title": "Acidity",
+        "t": 111.09
+      },
+      {
+        "title": "Comparing earthquakes",
+        "t": 145.206
+      },
+      {
+        "title": "Two speakers",
+        "t": 184.239
+      },
+      {
+        "title": "Watch out",
+        "t": 224.397
+      },
+      {
+        "title": "Your turn",
+        "t": 253.403
+      },
+      {
+        "title": "Summary",
+        "t": 292.346
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-4-d:q",
+        "t": 265.338,
+        "prompt": "Using $\\dfrac{I_1}{I_2} = 10^{M_1 - M_2}$, how many times as intense is a magnitude 7.2 earthquake as a magnitude 5.2 earthquake?",
+        "choices": [
+          "$2$",
+          "$100$",
+          "$1.38$",
+          "$20$"
+        ],
+        "answer": 1,
+        "working": "$M_1 - M_2 = 7.2 - 5.2 = 2$, so $\\dfrac{I_1}{I_2} = 10^{2} = 100$."
+      }
+    ]
+  },
+  "m302-7-1": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 1: Periodic Functions",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A Ferris wheel",
+        "t": 27.485
+      },
+      {
+        "title": "Periodic functions",
+        "t": 79.02
+      },
+      {
+        "title": "A swing that slows down",
+        "t": 120.642
+      },
+      {
+        "title": "Sinusoidal functions",
+        "t": 156.37
+      },
+      {
+        "title": "Your turn",
+        "t": 215.53
+      },
+      {
+        "title": "Summary",
+        "t": 246.279
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1:q",
+        "t": 221.982,
+        "prompt": "Which of these quantities is periodic?",
+        "choices": [
+          "The temperature of a cup of tea as it cools",
+          "The height of the tip of a fan blade spinning at a steady speed",
+          "The height of a ball that bounces a little lower each time",
+          "The amount of money in a savings account that earns interest"
+        ],
+        "answer": 1,
+        "working": "The fan blade turns at a steady speed, so its tip repeats exactly the same heights on every turn. Each bounce of the ball is lower than the last, so no cycle repeats exactly."
+      }
+    ]
+  },
+  "m302-7-1-b": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 2: Reading a Sinusoidal Graph",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Maximum and minimum",
+        "t": 24.153
+      },
+      {
+        "title": "The midline",
+        "t": 65.04
+      },
+      {
+        "title": "The amplitude",
+        "t": 98.386
+      },
+      {
+        "title": "The period",
+        "t": 130.819
+      },
+      {
+        "title": "Watch out",
+        "t": 181.824
+      },
+      {
+        "title": "Your turn",
+        "t": 209.195
+      },
+      {
+        "title": "Summary",
+        "t": 250.219
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1-b:q",
+        "t": 221.976,
+        "prompt": "A sinusoidal graph has a maximum value of $10$ and a minimum value of $-2$. What are its midline and amplitude?",
+        "choices": [
+          "Midline $y = 6$, amplitude $4$",
+          "Midline $y = 4$, amplitude $12$",
+          "Midline $y = 6$, amplitude $12$",
+          "Midline $y = 4$, amplitude $6$"
+        ],
+        "answer": 3,
+        "working": "Midline: $y = \\dfrac{10 + (-2)}{2} = \\dfrac{8}{2} = 4$. Amplitude: $\\dfrac{10 - (-2)}{2} = \\dfrac{12}{2} = 6$."
+      }
+    ]
+  },
+  "m302-7-1-c": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 3: Features from the Equation",
+    "duration": 341,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The general form",
+        "t": 22.687
+      },
+      {
+        "title": "Checking with a graph",
+        "t": 68.353
+      },
+      {
+        "title": "Flips and slides",
+        "t": 104.578
+      },
+      {
+        "title": "An example",
+        "t": 167.11
+      },
+      {
+        "title": "Range and y-intercept",
+        "t": 203.081
+      },
+      {
+        "title": "Your turn",
+        "t": 251.141
+      },
+      {
+        "title": "Summary",
+        "t": 298.557
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1-c:q",
+        "t": 262.503,
+        "prompt": "For $y = -5\\sin(4x) + 2$, with $x$ in degrees, which statement is correct?",
+        "choices": [
+          "Amplitude $5$, period $90^\\circ$, range $-3 \\le y \\le 7$",
+          "Amplitude $-5$, period $90^\\circ$, range $-3 \\le y \\le 7$",
+          "Amplitude $5$, period $1{,}440^\\circ$, range $-3 \\le y \\le 7$",
+          "Amplitude $5$, period $90^\\circ$, range $-7 \\le y \\le 3$"
+        ],
+        "answer": 0,
+        "working": "Amplitude $|{-5}| = 5$; period $\\dfrac{360^\\circ}{4} = 90^\\circ$; midline $y = 2$, so the range runs from $2 - 5 = -3$ to $2 + 5 = 7$."
+      }
+    ]
+  },
+  "m302-7-1-d": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 4: The Period in Degrees and Radians",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What b does",
+        "t": 24.535
+      },
+      {
+        "title": "Watch out",
+        "t": 79.11
+      },
+      {
+        "title": "Radians",
+        "t": 122.89
+      },
+      {
+        "title": "The period in radians",
+        "t": 167.298
+      },
+      {
+        "title": "Your turn",
+        "t": 214.838
+      },
+      {
+        "title": "Summary",
+        "t": 249.412
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1-d:q",
+        "t": 225.249,
+        "prompt": "With $x$ in radians, what is the period of $y = 5\\cos(6x) + 1$?",
+        "choices": [
+          "$12\\pi$",
+          "$\\dfrac{\\pi}{6}$",
+          "$\\dfrac{\\pi}{3}$",
+          "$3\\pi$"
+        ],
+        "answer": 2,
+        "working": "The period is $\\dfrac{2\\pi}{b} = \\dfrac{2\\pi}{6} = \\dfrac{\\pi}{3}$. A larger $b$ gives a shorter period, so the answer must be less than $2\\pi$."
+      }
+    ]
+  },
+  "m302-7-1-e": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 5: Sinusoidal Situations",
+    "duration": 340,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Features in context",
+        "t": 25.062
+      },
+      {
+        "title": "High and low tide",
+        "t": 68.729
+      },
+      {
+        "title": "Sketch the frame",
+        "t": 135
+      },
+      {
+        "title": "A Ferris wheel",
+        "t": 200.37
+      },
+      {
+        "title": "Your turn",
+        "t": 263.747
+      },
+      {
+        "title": "Summary",
+        "t": 303.449
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1-e:q",
+        "t": 279.819,
+        "prompt": "A Ferris wheel has a diameter of $30$ m. Riders board $3$ m above the ground, and one rotation takes $80$ s. What is the midline of a rider’s height?",
+        "choices": [
+          "$y = 15$",
+          "$y = 18$",
+          "$y = 33$",
+          "$y = 16.5$"
+        ],
+        "answer": 1,
+        "working": "The radius is $15$ m, so the centre of the wheel is $3 + 15 = 18$ m above the ground. Check: the maximum is $3 + 30 = 33$ and $\\dfrac{33 + 3}{2} = 18$."
+      }
+    ]
+  },
+  "m302-7-2": {
+    "lessonId": "m302-7-2",
+    "title": "Modelling Data with Sinusoidal Functions, Part 1: Reading a Regression Equation",
+    "duration": 334,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sinusoidal regression",
+        "t": 28.359
+      },
+      {
+        "title": "Daylight data",
+        "t": 61.264
+      },
+      {
+        "title": "Longest and shortest",
+        "t": 115.543
+      },
+      {
+        "title": "The period",
+        "t": 162.846
+      },
+      {
+        "title": "What the numbers mean",
+        "t": 197.613
+      },
+      {
+        "title": "Your turn",
+        "t": 240.555
+      },
+      {
+        "title": "Summary",
+        "t": 297.146
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-2:q",
+        "t": 262.42,
+        "prompt": "A model of the average temperature in a city in month $m$ is $T(m) = 11.2\\sin(0.524m - 1.83) + 3.4$, in °C. What are the highest temperature and the period?",
+        "choices": [
+          "$14.6^\\circ\\text{C}$, about $12$ months",
+          "$14.6^\\circ\\text{C}$, about $3.3$ months",
+          "$11.2^\\circ\\text{C}$, about $12$ months",
+          "$7.8^\\circ\\text{C}$, about $12$ months"
+        ],
+        "answer": 0,
+        "working": "Maximum $= d + a = 3.4 + 11.2 = 14.6$. Period $= \\dfrac{2\\pi}{0.524} = 11.99\\ldots \\approx 12$ months: one year."
+      }
+    ]
+  },
+  "m302-7-2-b": {
+    "lessonId": "m302-7-2",
+    "title": "Modelling Data with Sinusoidal Functions, Part 2: Making Predictions in Radian Mode",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Interpolation and extrapolation",
+        "t": 19.463
+      },
+      {
+        "title": "Daylight on April 10",
+        "t": 65.044
+      },
+      {
+        "title": "On the graph",
+        "t": 120.917
+      },
+      {
+        "title": "Radian mode",
+        "t": 146.251
+      },
+      {
+        "title": "Your turn",
+        "t": 195.912
+      },
+      {
+        "title": "Summary",
+        "t": 246.23
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-2-b:q",
+        "t": 204.458,
+        "prompt": "Use $L(n) = 5.07\\sin(0.0172n - 1.39) + 12.16$ to estimate the hours of daylight on day $200$.",
+        "choices": [
+          "$12.3$ h",
+          "$17.2$ h",
+          "$7.7$ h",
+          "$16.7$ h"
+        ],
+        "answer": 3,
+        "working": "Angle: $0.0172(200) - 1.39 = 2.05$, and in radian mode $\\sin(2.05) = 0.8873\\ldots$, so $L(200) = 5.07(0.8873\\ldots) + 12.16 = 16.65\\ldots \\approx 16.7$ h."
+      }
+    ]
+  },
+  "m302-7-2-c": {
+    "lessonId": "m302-7-2",
+    "title": "Modelling Data with Sinusoidal Functions, Part 3: Interpolating and Extrapolating",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Water level at a dock",
+        "t": 17.958
+      },
+      {
+        "title": "Measured and model",
+        "t": 54.902
+      },
+      {
+        "title": "Estimating at 2:30 p.m.",
+        "t": 94.169
+      },
+      {
+        "title": "Extrapolation",
+        "t": 154.621
+      },
+      {
+        "title": "Your turn",
+        "t": 199.318
+      },
+      {
+        "title": "Summary",
+        "t": 257.726
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-2-c:q",
+        "t": 215.323,
+        "prompt": "The model $h(t) = 2.85\\sin(0.506t - 1.21) + 4.62$ was made from data for $0 \\le t \\le 24$ hours after midnight. Estimate the water level at 10:00 p.m. Is this interpolation or extrapolation?",
+        "choices": [
+          "$3.26$ m, extrapolation",
+          "$5.11$ m, interpolation",
+          "$3.26$ m, interpolation",
+          "$5.11$ m, extrapolation"
+        ],
+        "answer": 2,
+        "working": "10:00 p.m. is $t = 22$. The angle is $0.506(22) - 1.21 = 9.922$, and $\\sin(9.922) = -0.4769\\ldots$, so $h = 2.85(-0.4769\\ldots) + 4.62 = 3.26$ m. $t = 22$ is inside $0 \\le t \\le 24$: interpolation."
+      }
+    ]
+  },
+  "m302-7-2-d": {
+    "lessonId": "m302-7-2",
+    "title": "Modelling Data with Sinusoidal Functions, Part 4: When Is the Maximum?",
+    "duration": 399,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where sine is greatest",
+        "t": 24.502
+      },
+      {
+        "title": "The longest day",
+        "t": 69.713
+      },
+      {
+        "title": "The shortest day",
+        "t": 125.134
+      },
+      {
+        "title": "The top of the wheel",
+        "t": 163.336
+      },
+      {
+        "title": "Before the data start",
+        "t": 228.006
+      },
+      {
+        "title": "Check with a graph",
+        "t": 275.12
+      },
+      {
+        "title": "Your turn",
+        "t": 308.125
+      },
+      {
+        "title": "Summary",
+        "t": 365.048
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-2-d:q",
+        "t": 329.696,
+        "prompt": "The water level at a dock is $h(t) = 2.85\\sin(0.506t - 1.21) + 4.62$, in metres, $t$ hours after midnight. When is the first high tide after midnight?",
+        "choices": [
+          "$t \\approx 5.50$",
+          "$t \\approx 0.71$",
+          "$t \\approx 11.70$",
+          "$t \\approx 12.42$"
+        ],
+        "answer": 0,
+        "working": "High tide is the maximum: $0.506t - 1.21 = \\dfrac{\\pi}{2}$, so $t = \\dfrac{\\pi/2 + 1.21}{0.506} = 5.49\\ldots \\approx 5.50$, about 5:30 a.m."
+      }
+    ]
+  },
+  "m302-8-1": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 1: Problem-Solving Strategies",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a strategy?",
+        "t": 26.912
+      },
+      {
+        "title": "A number riddle",
+        "t": 74.411
+      },
+      {
+        "title": "Check every clue",
+        "t": 130.25
+      },
+      {
+        "title": "Another way: algebra",
+        "t": 157.741
+      },
+      {
+        "title": "Your turn",
+        "t": 195.291
+      },
+      {
+        "title": "Summary",
+        "t": 233.844
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1:q",
+        "t": 208.256,
+        "prompt": "I am a two-digit number. The sum of my digits is $9$, and my ones digit is $5$ more than my tens digit. What number am I?",
+        "choices": [
+          "$72$",
+          "$27$",
+          "$36$",
+          "$18$"
+        ],
+        "answer": 1,
+        "working": "The two-digit numbers with a digit sum of $9$ are $18, 27, 36, 45, 54, 63, 72, 81$ and $90$. Only $27$ has a ones digit $5$ more than its tens digit: $7 = 2 + 5$."
+      }
+    ]
+  },
+  "m302-8-1-b": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 2: Magic Squares",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a magic square?",
+        "t": 20.918
+      },
+      {
+        "title": "The magic sum",
+        "t": 45.251
+      },
+      {
+        "title": "Finding x",
+        "t": 65.149
+      },
+      {
+        "title": "Completing the square",
+        "t": 103.762
+      },
+      {
+        "title": "Your turn",
+        "t": 155.552
+      },
+      {
+        "title": "Summary",
+        "t": 199.427
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-b:q",
+        "t": 169.064,
+        "prompt": "In a 3 by 3 magic square, the top row is $4$, $9$ and $8$, and the centre is $7$. What number goes in the bottom-right corner?",
+        "choices": [
+          "$6$",
+          "$9$",
+          "$12$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "The magic sum is $4 + 9 + 8 = 21$. The bottom-right corner is on the diagonal through the top-left corner and the centre: $4 + 7 + x = 21$, so $x = 10$."
+      }
+    ]
+  },
+  "m302-8-1-c": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 3: Sudoku",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rules",
+        "t": 18.633
+      },
+      {
+        "title": "Cell B1",
+        "t": 51.636
+      },
+      {
+        "title": "One cell at a time",
+        "t": 70.593
+      },
+      {
+        "title": "Watch out",
+        "t": 121.257
+      },
+      {
+        "title": "Your turn",
+        "t": 154.182
+      },
+      {
+        "title": "Summary",
+        "t": 193.143
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-c:q",
+        "t": 170.939,
+        "prompt": "In a 4 by 4 Sudoku, row 2 contains $3$ and $1$, and its two empty cells are A2 and D2. Column D already contains a $2$. What digit goes in D2?",
+        "choices": [
+          "$2$",
+          "$1$",
+          "$4$",
+          "$3$"
+        ],
+        "answer": 2,
+        "working": "Row 2 is missing $2$ and $4$. Column D already has a $2$, so D2 cannot be $2$: D2 $= 4$ (and then A2 $= 2$)."
+      }
+    ]
+  },
+  "m302-8-1-d": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 4: Logic Puzzles",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The puzzle",
+        "t": 19.455
+      },
+      {
+        "title": "Set up a grid",
+        "t": 44.337
+      },
+      {
+        "title": "Clue by clue",
+        "t": 67.639
+      },
+      {
+        "title": "Check every clue",
+        "t": 116.006
+      },
+      {
+        "title": "Your turn",
+        "t": 148.398
+      },
+      {
+        "title": "Summary",
+        "t": 189.386
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-d:q",
+        "t": 164.385,
+        "prompt": "Dev, Emma and Farah each own a different pet: a cat, a dog or a fish. Emma does not own the dog or the fish. Farah does not own the dog. Who owns the fish?",
+        "choices": [
+          "Dev",
+          "Emma",
+          "There is not enough information",
+          "Farah"
+        ],
+        "answer": 3,
+        "working": "Emma owns neither the dog nor the fish, so Emma owns the cat. The dog is not Emma’s or Farah’s, so Dev owns the dog. That leaves the fish for Farah."
+      }
+    ]
+  },
+  "m302-8-1-e": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 5: Finding a Winning Strategy",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The game",
+        "t": 15.989
+      },
+      {
+        "title": "Work backward",
+        "t": 43.573
+      },
+      {
+        "title": "Rounds of four",
+        "t": 108.599
+      },
+      {
+        "title": "From fifteen",
+        "t": 133.089
+      },
+      {
+        "title": "A sample game",
+        "t": 145.59
+      },
+      {
+        "title": "Your turn",
+        "t": 171.909
+      },
+      {
+        "title": "Summary",
+        "t": 206.516
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-e:q",
+        "t": 181.981,
+        "prompt": "In the same game (take $1$, $2$ or $3$ counters; whoever takes the last counter wins), the pile starts with $22$ counters. How many should the first player take?",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "The first player cannot win"
+        ],
+        "answer": 1,
+        "working": "$22 = 20 + 2$, and $20$ is a multiple of $4$. Take $2$ to leave $20$, then make each round total $4$."
+      }
+    ]
+  },
+  "m302-8-1-f": {
+    "lessonId": "m302-8-1",
+    "title": "Puzzles and Games, Part 6: A Systematic Search",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The puzzle",
+        "t": 20.583
+      },
+      {
+        "title": "Keeping track",
+        "t": 55.255
+      },
+      {
+        "title": "Six steps",
+        "t": 84.277
+      },
+      {
+        "title": "Why it works",
+        "t": 135.795
+      },
+      {
+        "title": "Your turn",
+        "t": 168.899
+      },
+      {
+        "title": "Summary",
+        "t": 219.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-1-f:q",
+        "t": 191.327,
+        "prompt": "Start with an empty 3 L jug and an empty 5 L jug. Fill the 3 L jug and pour it into the 5 L jug. Fill the 3 L jug again, and pour it into the 5 L jug until the 5 L jug is full. How much water is left in the 3 L jug?",
+        "choices": [
+          "$1$ L",
+          "$0$ L",
+          "$2$ L",
+          "$3$ L"
+        ],
+        "answer": 0,
+        "working": "The states are $(3, 0)$, $(0, 3)$, $(3, 3)$, $(1, 5)$. The 5 L jug had room for only $2$ L more, so $3 - 2 = 1$ L is left."
+      }
+    ]
+  },
+  "m302-8-2": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 1: Choosing a Research Question",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The stages of a project",
+        "t": 27.003
+      },
+      {
+        "title": "A good research question",
+        "t": 77.245
+      },
+      {
+        "title": "Improving a question",
+        "t": 109.465
+      },
+      {
+        "title": "From topic to question",
+        "t": 166.322
+      },
+      {
+        "title": "Your turn",
+        "t": 207.799
+      },
+      {
+        "title": "Summary",
+        "t": 240.307
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2:q",
+        "t": 213.688,
+        "prompt": "Which research question is best?",
+        "choices": [
+          "Are trucks expensive?",
+          "What do people think of trucks?",
+          "For used pickup trucks advertised on one website this month, how is the asking price related to the age of the truck?",
+          "How has the value of every vehicle in the world changed since cars were invented?"
+        ],
+        "answer": 2,
+        "working": "It is specific (used pickup trucks on one website this month), measurable (price and age are numbers) and realistic (the listings can be collected in a few hours)."
+      }
+    ]
+  },
+  "m302-8-2-b": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 2: Collecting Data",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Primary and secondary data",
+        "t": 19.812
+      },
+      {
+        "title": "Quantitative and qualitative",
+        "t": 57.702
+      },
+      {
+        "title": "Populations and samples",
+        "t": 91.297
+      },
+      {
+        "title": "Why random?",
+        "t": 124.658
+      },
+      {
+        "title": "Your turn",
+        "t": 167.714
+      },
+      {
+        "title": "Summary",
+        "t": 204.068
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-b:q",
+        "t": 180.397,
+        "prompt": "A student uses a table of average monthly temperatures from a national weather service’s website. What kind of data is this?",
+        "choices": [
+          "Primary and qualitative",
+          "Secondary and quantitative",
+          "Primary and quantitative",
+          "Secondary and qualitative"
+        ],
+        "answer": 1,
+        "working": "The weather service collected the data, not the student, so they are secondary. Temperatures are numbers, so they are quantitative."
+      }
+    ]
+  },
+  "m302-8-2-c": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 3: Spotting Bias",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is bias?",
+        "t": 19.292
+      },
+      {
+        "title": "Four kinds of bias",
+        "t": 39.859
+      },
+      {
+        "title": "An arena survey",
+        "t": 91.447
+      },
+      {
+        "title": "Watch out",
+        "t": 127.025
+      },
+      {
+        "title": "Your turn",
+        "t": 159.982
+      },
+      {
+        "title": "Summary",
+        "t": 193.378
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-c:q",
+        "t": 171.544,
+        "prompt": "A survey asks: “Do you agree that our excellent mayor deserves a second term?” What kind of bias is most likely?",
+        "choices": [
+          "Sampling bias",
+          "Non-response bias",
+          "Measurement bias",
+          "Response bias"
+        ],
+        "answer": 3,
+        "working": "Calling the mayor “excellent” pushes people toward agreeing: the wording of the question biases the answers."
+      }
+    ]
+  },
+  "m302-8-2-d": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 4: Choosing Graphs and Averages",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing a display",
+        "t": 19.213
+      },
+      {
+        "title": "A scatter plot",
+        "t": 65.657
+      },
+      {
+        "title": "Mean or median?",
+        "t": 105.933
+      },
+      {
+        "title": "On a number line",
+        "t": 164.445
+      },
+      {
+        "title": "Your turn",
+        "t": 198.005
+      },
+      {
+        "title": "Summary",
+        "t": 241.997
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-d:q",
+        "t": 214.416,
+        "prompt": "The times, in minutes, that seven students take to get to school are $8$, $10$, $11$, $12$, $14$, $15$ and $75$. Which value best represents a typical time?",
+        "choices": [
+          "The median, $12$ minutes",
+          "The mean, about $20.7$ minutes",
+          "The mean, $12$ minutes",
+          "The median, $14$ minutes"
+        ],
+        "answer": 0,
+        "working": "The mean is $\\dfrac{145}{7} \\approx 20.7$, longer than six of the seven times, because the outlier $75$ pulls it up. The median, the 4th of the 7 ordered times, is $12$."
+      }
+    ]
+  },
+  "m302-8-2-e": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 5: Evaluating Claims",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four questions",
+        "t": 20.257
+      },
+      {
+        "title": "Correlation or cause?",
+        "t": 64.742
+      },
+      {
+        "title": "Margin of error",
+        "t": 103.53
+      },
+      {
+        "title": "Your own project",
+        "t": 155.181
+      },
+      {
+        "title": "Your turn",
+        "t": 187.835
+      },
+      {
+        "title": "Summary",
+        "t": 234.261
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-e:q",
+        "t": 205.936,
+        "prompt": "A poll finds that $41\\%$ of voters support a plan, with a margin of error of $3$ percentage points, $19$ times out of $20$. Which range likely contains the percent for all voters?",
+        "choices": [
+          "$41\\%$ to $44\\%$",
+          "$39.77\\%$ to $42.23\\%$",
+          "$38\\%$ to $44\\%$",
+          "$35\\%$ to $47\\%$"
+        ],
+        "answer": 2,
+        "working": "A margin of error of $3$ percentage points goes both ways: $41 - 3 = 38$ and $41 + 3 = 44$."
+      }
+    ]
+  },
+  "m302-8-2-f": {
+    "lessonId": "m302-8-2",
+    "title": "The Mathematics Research Project, Part 6: Misleading Graphs",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A dramatic rise?",
+        "t": 18.952
+      },
+      {
+        "title": "The real change",
+        "t": 60.977
+      },
+      {
+        "title": "An honest graph",
+        "t": 91.63
+      },
+      {
+        "title": "Presenting your project",
+        "t": 126.401
+      },
+      {
+        "title": "Your turn",
+        "t": 172.197
+      },
+      {
+        "title": "Summary",
+        "t": 221.312
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-8-2-f:q",
+        "t": 188.635,
+        "prompt": "The vertical axis of a bar graph starts at $40$. The bars show $45$ and $50$. How many times as tall does the second bar look, and what is the actual percent increase?",
+        "choices": [
+          "$2$ times as tall; $10\\%$",
+          "$2$ times as tall; about $11.1\\%$",
+          "About $1.1$ times as tall; about $11.1\\%$",
+          "$2$ times as tall; $100\\%$"
+        ],
+        "answer": 1,
+        "working": "Above the axis, the bars show $50 - 40 = 10$ and $45 - 40 = 5$, so the second looks $2$ times as tall. The actual increase is $\\dfrac{50 - 45}{45} \\times 100 \\approx 11.1\\%$."
+      }
+    ]
   }
 }

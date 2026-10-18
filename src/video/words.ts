@@ -23,14 +23,17 @@ export function speechText(say: string): string {
     // so the letter is spelled as it sounds. A is already "Eh" above.
     .replace(/\b([B-Z])(?=[’']s\b)/g, (l) => LETTER_NAMES[l]);
   // Words the voice gets wrong, respelled as they sound ("biweekly" comes out "boy-weekly", "deci"
-  // as "Desai", "break-even" as "Bray-Keevan", "cosecant" as "co-second", "GST" often as "GSD", "EI" as
-  // "I"), and sizes like "eight-by-twelve", which run together, said as separate words.
+  // as "Desai", "break-even" as "Bray-Keevan", "cosecant" as "co-second", "Aisha" as "Ah-shah",
+  // "Kwame" as "Quam", "GST" often as "GSD", "EI" as "I"), and sizes like "eight-by-twelve", which
+  // run together, said as separate words.
   return words
     .replace(/\b(GST|HST|EI)\b/g, (m) => m.split('').join(' '))
     .replace(/\b([Bb])iweekly\b/g, '$1i-weekly')
     .replace(/\b([Bb])reak-even\b/g, '$1reak even')
     .replace(/\b([Dd])eci\b/g, '$1essy')
     .replace(/\b([Cc])osecant/g, '$1o-secant')
+    .replace(/\bAisha\b/g, 'Ayesha')
+    .replace(/\bKwame\b/g, 'Kwahmay')
     .replace(/(\w)-by-(\w)/g, '$1 by $2');
 }
 

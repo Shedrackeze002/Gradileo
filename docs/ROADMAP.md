@@ -316,7 +316,17 @@ items ship or decisions change.
      Drive leads with the topic; `video/tools/youtube-update.ts` renames the videos on the channel.
      Next: run it on the 16 Math 10C videos already on YouTube, from a session that sees the new
      variables.
-   - Next: script and render the other courses in order (Math 30-2, 30-3, 31, 5, 6, 7, 8 and 9),
+   - Built: Math 30-2, all 97 videos at the calm pace (3:40 to 7:07, about 7.8 hours in all), the
+     first course with topic-first title cards and no Alberta place names in the narration,
+     rendered unit by unit and uploaded to Drive (checked: Drive holds every file of all 97). The
+     check found a limit in the voice: Kokoro voices at most about 510 phonemes at once and drops
+     the rest, so three long answer lines full of decimals lost their last words. A line that long
+     is now voiced in parts of whole sentences (`video/lib/narrate.ts`); a scan of all 16,062 lines
+     in every course found only those three, so no earlier video was affected. "Aisha" and
+     "Kwame" got respellings; "halves" (heard as "has"), "made to look huge" ("made to a huge")
+     and a few lines in Units 1 to 3 were reworded, and the videos already made were made again
+     and replaced in Drive. Every Math 10 to 30-2 course is rendered and in Drive (803 videos).
+   - Next: script and render the other courses in order (Math 30-3, 31, 5, 6, 7, 8 and 9),
      explaining each lesson as simply as possible, with parts split by idea.
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with

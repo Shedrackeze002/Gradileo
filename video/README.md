@@ -65,6 +65,11 @@ Words the voice gets wrong are respelled for it in `speechText` (`src/video/word
 is voiced as "bi-weekly", "deci" as "dessy", "break-even" as "break even" (it came out "Bray-Keevan"), "cosecant" as "co-secant" (it came out "co-second"), "GST", "HST" and "EI" letter by letter (the voice often made "GST" sound like "GSD", and "EI" like "I"), hyphenated sizes ("eight-by-twelve") as
 separate words, and a lone letter with 's ("Route B's", which came out "Route B to Cast") by the
 letter's name ("Bee's"); the captions keep the script's spelling. Add a word there when a check finds one.
+Kokoro voices at most about 510 phonemes at once and silently drops the rest, which a long line
+full of decimals can pass (a 60-word answer line lost its last five words). `narrate.ts` counts each
+line's phonemes with Kokoro's own tokenizer and voices a longer line in parts of whole sentences,
+joined with a sentence's pause; a single sentence too long to voice stops the build. Whisper hears
+30 seconds at a time, so the check transcribes a longer line in overlapping windows.
 After each build, listen to the lines that `pronunciation.txt` marks CHECK.
 
 ## Writing a script
@@ -143,8 +148,9 @@ See `src/video/script.ts` for every element and option. In short:
 - Gradileo is for learners in every English-speaking country, not only Alberta. From Math 30-2
   on, the title scene's kicker names the topic, not the Alberta course: the unit's title and the
   part, `kicker: 'Trigonometric Identities · Part 2'` (Math 10C to 30-1 keep
-  `'Math 30-1 · Lesson 6.2 · Part 2'`). Say "this lesson" or "the next part", never a course name
-  or lesson number, in the narration.
+  `'Math 30-1 · Lesson 6.2 · Part 2'`). The header on every frame and the thumbnail's label name
+  the unit too (`labelOf` in `src/video/stage/main.tsx`). Say "this lesson" or "the next part",
+  never a course name or lesson number, in the narration.
 - Colours have fixed meanings: `[[theta:…]]`, `[[opp:…]]`, `[[adj:…]]` and `[[hyp:…]]` in text,
   `\thc{}`, `\opp{}`, `\adj{}` and `\hyp{}` in maths (θ yellow, opposite orange, adjacent blue,
   hypotenuse pink). Colour is never the only cue: sides are always named too.
@@ -207,9 +213,10 @@ Lessons learned while scripting (the script check does not catch these):
 - Break long maths over several lines (or narrow `leftWidth`) so it fits its column; give a
   crowded figure its own scene.
 - The voice blurs a few phrases into other words: "In proofs" (heard as "Improves"), "Congruent
-  figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "Rewrite"
+  figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "halve" ("have"), "made to look huge" ("made to a huge"; "made to seem huge" is clear), "boy" ("buy" or "by", whatever the spelling: use other groups, such as teachers and students), "Rewrite"
   at the start of a sentence ("We're right") and the name Rhea ("Rhea takes" came out "retakes";
-  Maya is clear). When a key term is blurred, reword
+  Maya is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
+  equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
   the line ("Figures that are congruent…") and check it with `video/tools/hear.ts`.
 - Use `\dfrac` for fractions in Math 20-4 maths lines, and state every rate, tax or rule inside
   the question (see `CLAUDE.md`).
