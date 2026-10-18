@@ -41283,5 +41283,268 @@
         "working": "Perimeter: $8 \\times 0.4 = 3.2\\text{ m}$. Corner angle: $\\dfrac{180^\\circ(8 - 2)}{8} = \\dfrac{1080^\\circ}{8} = 135^\\circ$."
       }
     ]
+  },
+  "m303-3-3-b": {
+    "lessonId": "m303-3-3",
+    "title": "Problems with Polygons, Part 2: Mitre Cuts",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mitre joints",
+        "t": 20.429
+      },
+      {
+        "title": "The saw setting",
+        "t": 56.54
+      },
+      {
+        "title": "One piece",
+        "t": 97.075
+      },
+      {
+        "title": "Picture frames and mirrors",
+        "t": 129.944
+      },
+      {
+        "title": "Watch out",
+        "t": 164.109
+      },
+      {
+        "title": "Your turn",
+        "t": 201.793
+      },
+      {
+        "title": "Summary",
+        "t": 237.541
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-3-b:q",
+        "t": 212.35,
+        "prompt": "What mitre saw setting is needed for a frame shaped like a regular hexagon (6 sides)?",
+        "choices": [
+          "$60^\\circ$",
+          "$30^\\circ$",
+          "$120^\\circ$",
+          "$15^\\circ$"
+        ],
+        "answer": 1,
+        "working": "Mitre angle $= \\dfrac{180^\\circ}{n} = \\dfrac{180^\\circ}{6} = 30^\\circ$, half of the $60^\\circ$ exterior angle."
+      }
+    ]
+  },
+  "m303-3-3-c": {
+    "lessonId": "m303-3-3",
+    "title": "Problems with Polygons, Part 3: Central Angles",
+    "duration": 303,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central angles",
+        "t": 19.809
+      },
+      {
+        "title": "Isosceles triangles",
+        "t": 54.448
+      },
+      {
+        "title": "An octagonal gazebo floor",
+        "t": 83.444
+      },
+      {
+        "title": "Central and exterior angles",
+        "t": 147.157
+      },
+      {
+        "title": "Watch out",
+        "t": 191.04
+      },
+      {
+        "title": "Your turn",
+        "t": 222.268
+      },
+      {
+        "title": "Summary",
+        "t": 269.482
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-3-c:q",
+        "t": 238.549,
+        "prompt": "A table top is a regular pentagon made of 5 identical triangular pieces that meet at the centre. What angle does each piece have at each of its outside corners?",
+        "choices": [
+          "$54^\\circ$",
+          "$72^\\circ$",
+          "$108^\\circ$",
+          "$36^\\circ$"
+        ],
+        "answer": 0,
+        "working": "Central angle: $360^\\circ \\div 5 = 72^\\circ$. Each outside angle: $\\dfrac{180^\\circ - 72^\\circ}{2} = 54^\\circ$. Check: $2 \\times 54^\\circ = 108^\\circ$, a pentagon’s interior angle."
+      }
+    ]
+  },
+  "m303-3-3-d": {
+    "lessonId": "m303-3-3",
+    "title": "Problems with Polygons, Part 4: Tiling with Regular Polygons",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 21.24
+      },
+      {
+        "title": "Tiles that work alone",
+        "t": 45.945
+      },
+      {
+        "title": "Pentagons leave a gap",
+        "t": 89.538
+      },
+      {
+        "title": "Octagons and squares",
+        "t": 129.821
+      },
+      {
+        "title": "Your turn",
+        "t": 174.249
+      },
+      {
+        "title": "Summary",
+        "t": 214.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-3-d:q",
+        "t": 189.408,
+        "prompt": "Each angle of a regular 12-sided polygon is $150^\\circ$. Two of them meet at a corner. Which regular polygon fills the gap that is left?",
+        "choices": [
+          "A square",
+          "A regular hexagon",
+          "An equilateral triangle",
+          "A regular pentagon"
+        ],
+        "answer": 2,
+        "working": "$360^\\circ - 2(150^\\circ) = 60^\\circ$. A regular polygon with $60^\\circ$ angles is an equilateral triangle."
+      }
+    ]
+  },
+  "m303-4-1": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 1: Translations",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Transformations and images",
+        "t": 27.339
+      },
+      {
+        "title": "Mapping notation",
+        "t": 67.105
+      },
+      {
+        "title": "Moving a part on a cutting table",
+        "t": 105.443
+      },
+      {
+        "title": "Watch out",
+        "t": 181.108
+      },
+      {
+        "title": "Your turn",
+        "t": 212.998
+      },
+      {
+        "title": "Summary",
+        "t": 251.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1:q",
+        "t": 225.917,
+        "prompt": "The point $P(-2, 3)$ is translated 4 units right and 5 units down. Where is its image $P'$?",
+        "choices": [
+          "$(2, 8)$",
+          "$(-6, -2)$",
+          "$(-6, 8)$",
+          "$(2, -2)$"
+        ],
+        "answer": 3,
+        "working": "The rule is $(x, y) \\to (x + 4,\\ y - 5)$, so $(-2, 3) \\to (-2 + 4,\\ 3 - 5) = (2, -2)$."
+      }
+    ]
+  },
+  "m303-4-1-b": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 2: Reflections",
+    "duration": 308,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reflections",
+        "t": 19.81
+      },
+      {
+        "title": "Rules for reflections",
+        "t": 69.375
+      },
+      {
+        "title": "A logo in a window line",
+        "t": 134.325
+      },
+      {
+        "title": "Reflecting in the axes",
+        "t": 188.324
+      },
+      {
+        "title": "Your turn",
+        "t": 229.314
+      },
+      {
+        "title": "Summary",
+        "t": 267.867
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1-b:q",
+        "t": 240.978,
+        "prompt": "The point $(5, -2)$ is reflected in the horizontal line $y = 1$. Where is its image?",
+        "choices": [
+          "$(5, 4)$",
+          "$(-3, -2)$",
+          "$(5, 2)$",
+          "$(-5, -2)$"
+        ],
+        "answer": 0,
+        "working": "The point is $1 - (-2) = 3$ units below the line, so its image is 3 units above it: $y = 1 + 3 = 4$. Rule: $2(1) - (-2) = 4$. The image is $(5, 4)$."
+      }
+    ]
   }
 }
