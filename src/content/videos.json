@@ -5883,6 +5883,57 @@
       }
     ]
   },
+  "m31-3-1-d": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 4: The Tangent Line",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Shrinking the interval",
+        "t": 24.509
+      },
+      {
+        "title": "Using h",
+        "t": 96.165
+      },
+      {
+        "title": "The tangent line",
+        "t": 142.723
+      },
+      {
+        "title": "Average and instantaneous",
+        "t": 177.298
+      },
+      {
+        "title": "Your turn",
+        "t": 212.956
+      },
+      {
+        "title": "Summary",
+        "t": 263.241
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-d:q",
+        "t": 237.34,
+        "prompt": "For $f(x) = x^2$, the secant lines from $P(2, 4)$ to the points at $x = 2.1$, $2.01$ and $2.001$ have slopes $4.1$, $4.01$ and $4.001$. What is the slope of the tangent line at $P$?",
+        "choices": [
+          "$4.001$",
+          "$4.1$",
+          "$4$",
+          "$2$"
+        ],
+        "answer": 2,
+        "working": "As $Q$ moves toward $P$, the secant slopes $4.1$, $4.01$, $4.001$ approach $4$, so the tangent line at $P$ has slope $4$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
