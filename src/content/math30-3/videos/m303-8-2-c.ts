@@ -83,12 +83,12 @@ const video: Explainer = {
       chapter: 'Compared with paying cash',
       layout: 'center',
       main: [
-        { kind: 'text', id: 'p', size: 'md', md: 'The SUV’s price at the start was \\$33,995, plus a sales tax of 5%.' },
+        { kind: 'text', id: 'p', size: 'md', md: 'At the start, the SUV cost \\$33,995, plus a sales tax of 5%.' },
         { kind: 'math', id: 'm', size: 'md', lines: ['\\text{cash: } 33{,}995 \\times 1.05 = 35{,}694.75', '\\text{difference: } 40{,}160.00 - 35{,}694.75 = 4{,}465.25'] },
         compare('cmp'),
       ],
       lines: [
-        { say: 'How does that compare with paying cash at the start? The SUV’s price at the start was 33,995 dollars, plus a sales tax of five percent.', show: 'p' },
+        { say: 'How does that compare with paying cash at the start? At the start, the SUV cost 33,995 dollars, plus a sales tax of five percent.', show: 'p' },
         { say: 'Paying cash would have cost 33,995 times 1.05, which is 35,694 dollars and 75 cents.', show: ['m.0', 'cmp.cash-price', 'cmp.cash-title'], focus: 'm.0' },
         { say: 'Leasing and then buying cost 40,160. The difference is 40,160 minus 35,694.75, which is 4,465 dollars and 25 cents.', show: ['m.1', 'cmp.lb-lease', 'cmp.lb-buy', 'cmp.lb-title', 'cmp.lb-total', 'cmp.cash-diff'], focus: ['m.1', 'cmp.cash-diff'] },
         { say: 'So leasing to buy costs 4,465.25 more than paying cash. The extra is the cost of spreading the payments out over time.' },
