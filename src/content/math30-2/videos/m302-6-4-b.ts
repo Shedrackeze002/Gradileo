@@ -30,7 +30,7 @@ const video: Explainer = {
       layout: 'center',
       main: [{ kind: 'title', id: 'title', kicker: 'Exponents and Logarithms · Part 2', title: 'Growth, Depreciation and Half-Life', subtitle: 'The same factor in every time step' }],
       lines: [
-        { say: 'A town grows by two percent a year. A car loses twelve percent of its value a year. A medicine in the blood halves every six hours. All three multiply by the same factor in each time step.', show: 'title' },
+        { say: 'A town grows by two percent a year. A car loses twelve percent of its value a year. A medicine in the blood drops by half every six hours. All three multiply by the same factor in each time step.', show: 'title' },
         { say: 'In this video, you will meet the models for growth, depreciation and half-life, and use a half-life model to answer two questions.' },
       ],
     },
@@ -121,7 +121,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Your turn. A 200 milligram sample has a half-life of five days. How much remains after 15 days? Pause the video and try it.', show: 'q', wait: 6 },
-        { say: 'The answer is A. Fifteen days is fifteen over five, which is three half-lives. So the sample halves three times: 200, 100, 50, then 25 milligrams. Choice C uses fifteen as the exponent, as if fifteen half-lives had passed.', show: 'q.answer' },
+        { say: 'The answer is A. Fifteen days is fifteen over five, which is three half-lives. So the sample is cut in half three times: 200, 100, 50, then 25 milligrams. Choice C uses fifteen as the exponent, as if fifteen half-lives had passed.', show: 'q.answer' },
       ],
     },
     {

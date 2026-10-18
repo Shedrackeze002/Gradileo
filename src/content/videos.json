@@ -38669,5 +38669,327 @@
         "working": "$y = 4500(1.025)^4 = 4500(1.10381\\ldots) = 4967.15\\ldots$, about $4967$. Since $4$ is inside the $10$ years of data, this is interpolation."
       }
     ]
+  },
+  "m302-6-4-d": {
+    "lessonId": "m302-6-4",
+    "title": "Modelling with Exponential and Logarithmic Functions, Part 4: Logarithmic Scales",
+    "duration": 328,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Steps of ten",
+        "t": 25.647
+      },
+      {
+        "title": "Three scales",
+        "t": 65.077
+      },
+      {
+        "title": "Acidity",
+        "t": 111.09
+      },
+      {
+        "title": "Comparing earthquakes",
+        "t": 145.206
+      },
+      {
+        "title": "Two speakers",
+        "t": 184.239
+      },
+      {
+        "title": "Watch out",
+        "t": 224.397
+      },
+      {
+        "title": "Your turn",
+        "t": 253.403
+      },
+      {
+        "title": "Summary",
+        "t": 292.346
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-4-d:q",
+        "t": 265.338,
+        "prompt": "Using $\\dfrac{I_1}{I_2} = 10^{M_1 - M_2}$, how many times as intense is a magnitude 7.2 earthquake as a magnitude 5.2 earthquake?",
+        "choices": [
+          "$2$",
+          "$100$",
+          "$1.38$",
+          "$20$"
+        ],
+        "answer": 1,
+        "working": "$M_1 - M_2 = 7.2 - 5.2 = 2$, so $\\dfrac{I_1}{I_2} = 10^{2} = 100$."
+      }
+    ]
+  },
+  "m302-7-1": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 1: Periodic Functions",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A Ferris wheel",
+        "t": 27.485
+      },
+      {
+        "title": "Periodic functions",
+        "t": 79.02
+      },
+      {
+        "title": "A swing that slows down",
+        "t": 120.642
+      },
+      {
+        "title": "Sinusoidal functions",
+        "t": 156.37
+      },
+      {
+        "title": "Your turn",
+        "t": 215.53
+      },
+      {
+        "title": "Summary",
+        "t": 246.279
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1:q",
+        "t": 221.982,
+        "prompt": "Which of these quantities is periodic?",
+        "choices": [
+          "The temperature of a cup of tea as it cools",
+          "The height of the tip of a fan blade spinning at a steady speed",
+          "The height of a ball that bounces a little lower each time",
+          "The amount of money in a savings account that earns interest"
+        ],
+        "answer": 1,
+        "working": "The fan blade turns at a steady speed, so its tip repeats exactly the same heights on every turn. Each bounce of the ball is lower than the last, so no cycle repeats exactly."
+      }
+    ]
+  },
+  "m302-7-1-b": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 2: Reading a Sinusoidal Graph",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Maximum and minimum",
+        "t": 24.153
+      },
+      {
+        "title": "The midline",
+        "t": 65.04
+      },
+      {
+        "title": "The amplitude",
+        "t": 98.386
+      },
+      {
+        "title": "The period",
+        "t": 130.819
+      },
+      {
+        "title": "Watch out",
+        "t": 181.824
+      },
+      {
+        "title": "Your turn",
+        "t": 209.195
+      },
+      {
+        "title": "Summary",
+        "t": 250.219
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1-b:q",
+        "t": 221.976,
+        "prompt": "A sinusoidal graph has a maximum value of $10$ and a minimum value of $-2$. What are its midline and amplitude?",
+        "choices": [
+          "Midline $y = 6$, amplitude $4$",
+          "Midline $y = 4$, amplitude $12$",
+          "Midline $y = 6$, amplitude $12$",
+          "Midline $y = 4$, amplitude $6$"
+        ],
+        "answer": 3,
+        "working": "Midline: $y = \\dfrac{10 + (-2)}{2} = \\dfrac{8}{2} = 4$. Amplitude: $\\dfrac{10 - (-2)}{2} = \\dfrac{12}{2} = 6$."
+      }
+    ]
+  },
+  "m302-7-1-c": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 3: Features from the Equation",
+    "duration": 341,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The general form",
+        "t": 22.687
+      },
+      {
+        "title": "Checking with a graph",
+        "t": 68.353
+      },
+      {
+        "title": "Flips and slides",
+        "t": 104.578
+      },
+      {
+        "title": "An example",
+        "t": 167.11
+      },
+      {
+        "title": "Range and y-intercept",
+        "t": 203.081
+      },
+      {
+        "title": "Your turn",
+        "t": 251.141
+      },
+      {
+        "title": "Summary",
+        "t": 298.557
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1-c:q",
+        "t": 262.503,
+        "prompt": "For $y = -5\\sin(4x) + 2$, with $x$ in degrees, which statement is correct?",
+        "choices": [
+          "Amplitude $5$, period $90^\\circ$, range $-3 \\le y \\le 7$",
+          "Amplitude $-5$, period $90^\\circ$, range $-3 \\le y \\le 7$",
+          "Amplitude $5$, period $1{,}440^\\circ$, range $-3 \\le y \\le 7$",
+          "Amplitude $5$, period $90^\\circ$, range $-7 \\le y \\le 3$"
+        ],
+        "answer": 0,
+        "working": "Amplitude $|{-5}| = 5$; period $\\dfrac{360^\\circ}{4} = 90^\\circ$; midline $y = 2$, so the range runs from $2 - 5 = -3$ to $2 + 5 = 7$."
+      }
+    ]
+  },
+  "m302-7-1-d": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 4: The Period in Degrees and Radians",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What b does",
+        "t": 24.535
+      },
+      {
+        "title": "Watch out",
+        "t": 79.11
+      },
+      {
+        "title": "Radians",
+        "t": 122.89
+      },
+      {
+        "title": "The period in radians",
+        "t": 167.298
+      },
+      {
+        "title": "Your turn",
+        "t": 214.838
+      },
+      {
+        "title": "Summary",
+        "t": 249.412
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1-d:q",
+        "t": 225.249,
+        "prompt": "With $x$ in radians, what is the period of $y = 5\\cos(6x) + 1$?",
+        "choices": [
+          "$12\\pi$",
+          "$\\dfrac{\\pi}{6}$",
+          "$\\dfrac{\\pi}{3}$",
+          "$3\\pi$"
+        ],
+        "answer": 2,
+        "working": "The period is $\\dfrac{2\\pi}{b} = \\dfrac{2\\pi}{6} = \\dfrac{\\pi}{3}$. A larger $b$ gives a shorter period, so the answer must be less than $2\\pi$."
+      }
+    ]
+  },
+  "m302-7-1-e": {
+    "lessonId": "m302-7-1",
+    "title": "Periodic Behaviour and Sinusoidal Functions, Part 5: Sinusoidal Situations",
+    "duration": 340,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Features in context",
+        "t": 25.062
+      },
+      {
+        "title": "High and low tide",
+        "t": 68.729
+      },
+      {
+        "title": "Sketch the frame",
+        "t": 135
+      },
+      {
+        "title": "A Ferris wheel",
+        "t": 200.37
+      },
+      {
+        "title": "Your turn",
+        "t": 263.747
+      },
+      {
+        "title": "Summary",
+        "t": 303.449
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-1-e:q",
+        "t": 279.819,
+        "prompt": "A Ferris wheel has a diameter of $30$ m. Riders board $3$ m above the ground, and one rotation takes $80$ s. What is the midline of a rider’s height?",
+        "choices": [
+          "$y = 15$",
+          "$y = 18$",
+          "$y = 33$",
+          "$y = 16.5$"
+        ],
+        "answer": 1,
+        "working": "The radius is $15$ m, so the centre of the wheel is $3 + 15 = 18$ m above the ground. Check: the maximum is $3 + 30 = 33$ and $\\dfrac{33 + 3}{2} = 18$."
+      }
+    ]
   }
 }
