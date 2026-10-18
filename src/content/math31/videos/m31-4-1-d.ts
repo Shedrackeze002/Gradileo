@@ -87,7 +87,7 @@ const video: Explainer = {
       lines: [
         { say: 'A common mistake is to differentiate the bottom of a fraction: to say that one over x cubed has derivative one over three x squared.', show: ['oops', 'm.0'], focus: 'm.0' },
         { say: 'That is wrong. Rewrite first: one over x cubed is x to the power negative three. Its derivative is negative three x to the negative four, which is negative three over x to the fourth.', show: 'm.1', focus: 'm.1' },
-        { say: 'Watch the coefficients too. One over two x squared is one half times x to the negative two, because the two is on the bottom. It is not two x to the negative two.' },
+        { say: 'Watch the coefficients as well. One over two x squared is one half times x to the negative two, because the two is on the bottom. It is not two x to the negative two.' },
       ],
     },
     {

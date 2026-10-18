@@ -112,7 +112,7 @@ const video: Explainer = {
         { say: 'Back to the field. The diagram is drawn, and the objective is "A" equals x y. Now use the constraint. Two x plus y equals 600, so y equals 600 minus two x.', show: ['f', 'm.0'], focus: ['f.top', 'm.0'] },
         { say: 'Put that into the area. "A" of x equals x times, 600 minus two x.', show: 'm.1', focus: 'm.1' },
         { say: 'Multiply out: "A" of x equals 600 x, minus two x squared. Now the area depends on x alone.', show: 'm.2', focus: 'm.2' },
-        { say: 'What is the domain? Both sides must be positive. x must be more than zero, and y, which is 600 minus two x, must be more than zero too, so x is less than 300.', show: 'm.3', focus: 'm.3' },
+        { say: 'What is the domain? Both sides must be positive. x must be more than zero, and y, which is 600 minus two x, must be more than zero as well, so x is less than 300.', show: 'm.3', focus: 'm.3' },
       ],
     },
     {
@@ -138,7 +138,7 @@ const video: Explainer = {
         { kind: 'callout', id: 'ans', tone: 'key', title: 'Answer', md: 'The field should be $150$ m by $300$ m, with the long side along the river. Its area is $45{,}000$ m².' },
       ],
       lines: [
-        { say: 'The question asked for the dimensions, so find y too. y equals 600 minus two times 150, which is 300.', show: 'm.0', focus: 'm.0' },
+        { say: 'The question asked for the dimensions, so find y as well. y equals 600 minus two times 150, which is 300.', show: 'm.0', focus: 'm.0' },
         { say: 'The largest area is 150 times 300: 45,000 square metres, the best value from our table.', show: 'm.1', focus: 'm.1' },
         { say: 'Answer in words, with units. The field should be 150 metres by 300 metres, with the long side along the river.', show: 'ans' },
       ],

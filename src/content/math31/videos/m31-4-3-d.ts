@@ -113,7 +113,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Your turn. Differentiate f of x equals x times two x plus one, cubed, and factor the answer. Pause the video and try it.', show: 'q', wait: 6 },
-        { say: 'The answer is B. u prime v is two x plus one, cubed, and u v prime is x times six times two x plus one, squared. Factor out two x plus one, squared, to get two x plus one, plus six x: eight x plus one. Choice D forgets the derivative of the inside, two.', show: 'q.answer' },
+        { say: 'The answer is B. u prime v is two x plus one, cubed, and u v prime is x times six times two x plus one, squared. Factor out two x plus one, squared, to get two x plus one, plus six x: eight x plus one. Choice D forgets to multiply by two, the derivative of the inside.', show: 'q.answer' },
       ],
     },
     {

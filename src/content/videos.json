@@ -6884,6 +6884,312 @@
       }
     ]
   },
+  "m31-4-3": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 1: Rates That Multiply",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Linked gears",
+        "t": 23.452
+      },
+      {
+        "title": "Inside and outside",
+        "t": 66.252
+      },
+      {
+        "title": "The chain rule",
+        "t": 110.572
+      },
+      {
+        "title": "Why it works",
+        "t": 154.076
+      },
+      {
+        "title": "Your turn",
+        "t": 204.479
+      },
+      {
+        "title": "Summary",
+        "t": 243.424
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3:q",
+        "t": 218.77,
+        "prompt": "If $y$ changes $5$ times as fast as $u$, and $u$ changes $4$ times as fast as $x$, how many times as fast as $x$ does $y$ change?",
+        "choices": [
+          "$9$",
+          "$1.25$",
+          "$20$",
+          "$5$"
+        ],
+        "answer": 2,
+        "working": "Rates of change multiply: $\\dfrac{dy}{dx} = \\dfrac{dy}{du}\\cdot\\dfrac{du}{dx} = 5 \\times 4 = 20$."
+      }
+    ]
+  },
+  "m31-4-3-b": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 2: Using the Chain Rule",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A power of a polynomial",
+        "t": 22.025
+      },
+      {
+        "title": "A tenth power",
+        "t": 71.698
+      },
+      {
+        "title": "A check",
+        "t": 105.816
+      },
+      {
+        "title": "Watch out",
+        "t": 139.579
+      },
+      {
+        "title": "Your turn",
+        "t": 177.883
+      },
+      {
+        "title": "Summary",
+        "t": 212.663
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-b:q",
+        "t": 186.176,
+        "prompt": "Differentiate $y = (x^{2} - 5)^{3}$.",
+        "choices": [
+          "$3(x^{2} - 5)^{2}$",
+          "$6x(x^{2} - 5)^{2}$",
+          "$3(2x)^{2}$",
+          "$6x(x^{2} - 5)^{3}$"
+        ],
+        "answer": 1,
+        "working": "Outside: $3(x^{2} - 5)^{2}$. Inside: $\\dfrac{d}{dx}(x^{2} - 5) = 2x$. So $\\dfrac{dy}{dx} = 3(x^{2} - 5)^{2}\\cdot 2x = 6x(x^{2} - 5)^{2}$."
+      }
+    ]
+  },
+  "m31-4-3-c": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 3: Roots and Reciprocals of Functions",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The general power rule",
+        "t": 19.225
+      },
+      {
+        "title": "A root",
+        "t": 51.253
+      },
+      {
+        "title": "A reciprocal",
+        "t": 106.155
+      },
+      {
+        "title": "Chain rule or quotient rule?",
+        "t": 148.186
+      },
+      {
+        "title": "Watch out",
+        "t": 181.339
+      },
+      {
+        "title": "Your turn",
+        "t": 204.786
+      },
+      {
+        "title": "Summary",
+        "t": 242.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-c:q",
+        "t": 213.204,
+        "prompt": "Differentiate $y = \\sqrt{4x + 1}$.",
+        "choices": [
+          "$\\dfrac{1}{2\\sqrt{4x + 1}}$",
+          "$\\dfrac{4}{\\sqrt{4x + 1}}$",
+          "$\\dfrac{2}{\\sqrt{4x + 1}}$",
+          "$2\\sqrt{4x + 1}$"
+        ],
+        "answer": 2,
+        "working": "$y = (4x + 1)^{1/2}$, so $\\dfrac{dy}{dx} = \\tfrac{1}{2}(4x + 1)^{-1/2}\\cdot 4 = \\dfrac{2}{\\sqrt{4x + 1}}$."
+      }
+    ]
+  },
+  "m31-4-3-d": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 4: Combining the Rules",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is it as a whole?",
+        "t": 19.421
+      },
+      {
+        "title": "A product with a chain inside",
+        "t": 62.799
+      },
+      {
+        "title": "Factoring the answer",
+        "t": 113.186
+      },
+      {
+        "title": "Watch out",
+        "t": 165.719
+      },
+      {
+        "title": "Your turn",
+        "t": 198.86
+      },
+      {
+        "title": "Summary",
+        "t": 239.846
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-d:q",
+        "t": 209.548,
+        "prompt": "Differentiate $f(x) = x(2x + 1)^{3}$ and factor the answer.",
+        "choices": [
+          "$3(2x + 1)^{2}$",
+          "$(2x + 1)^{2}(8x + 1)$",
+          "$6x(2x + 1)^{2}$",
+          "$(2x + 1)^{2}(5x + 1)$"
+        ],
+        "answer": 1,
+        "working": "$u = x$, $u' = 1$, $v = (2x + 1)^{3}$, $v' = 3(2x + 1)^{2}\\cdot 2 = 6(2x + 1)^{2}$. So $f'(x) = (2x + 1)^{3} + 6x(2x + 1)^{2} = (2x + 1)^{2}\\left[(2x + 1) + 6x\\right] = (2x + 1)^{2}(8x + 1)$."
+      }
+    ]
+  },
+  "m31-4-3-e": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 5: Using a Table of Values",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where to read the outside",
+        "t": 23.091
+      },
+      {
+        "title": "Find h′(1)",
+        "t": 59.47
+      },
+      {
+        "title": "Watch out",
+        "t": 105.999
+      },
+      {
+        "title": "Your turn",
+        "t": 128.197
+      },
+      {
+        "title": "Summary",
+        "t": 173.557
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-e:q",
+        "t": 144.403,
+        "prompt": "From the table, $g(1) = 4$, $g'(1) = 5$, $g(4) = 2$ and $g'(4) = 4$. If $k(x) = g(g(x))$, find $k'(1)$.",
+        "choices": [
+          "$25$",
+          "$4$",
+          "$9$",
+          "$20$"
+        ],
+        "answer": 3,
+        "working": "$k'(1) = g'(g(1))\\cdot g'(1) = g'(4)\\cdot g'(1) = (4)(5) = 20$."
+      }
+    ]
+  },
+  "m31-4-3-f": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 6: Nested Functions and Applications",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three layers",
+        "t": 23.638
+      },
+      {
+        "title": "Multiply the layers",
+        "t": 66.81
+      },
+      {
+        "title": "Watch out",
+        "t": 102.504
+      },
+      {
+        "title": "The speed of sound",
+        "t": 125.985
+      },
+      {
+        "title": "Your turn",
+        "t": 201.707
+      },
+      {
+        "title": "Summary",
+        "t": 243.695
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-f:q",
+        "t": 216.444,
+        "prompt": "Using the model $v(T) = 20\\sqrt{T + 273}$ m/s, with $v'(T) = \\dfrac{10}{\\sqrt{T + 273}}$, find $v'(127)$.",
+        "choices": [
+          "$0.5$ m/s per °C",
+          "$20$ m/s per °C",
+          "$0.025$ m/s per °C",
+          "$1$ m/s per °C"
+        ],
+        "answer": 0,
+        "working": "$v'(127) = \\dfrac{10}{\\sqrt{127 + 273}} = \\dfrac{10}{\\sqrt{400}} = \\dfrac{10}{20} = 0.5$ m/s per °C."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",

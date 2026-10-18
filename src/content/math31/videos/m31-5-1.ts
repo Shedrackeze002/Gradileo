@@ -23,7 +23,7 @@ const video: Explainer = {
       main: [{ kind: 'title', id: 'title', kicker: 'Transcendental Functions and Implicit Differentiation · Part 1', title: 'Derivatives of Sine and Cosine', subtitle: 'The slope of a wave' }],
       lines: [
         { say: 'Tides, springs, sound waves and alternating current all rise and fall in a repeating pattern, and they are modelled with sine and cosine.', show: 'title' },
-        { say: 'To find how fast they change, we need the derivatives of the trigonometric functions. In this video, you will see why the derivative of sine x is cosine x, and find the derivative of cosine x too.' },
+        { say: 'To find how fast they change, we need the derivatives of the trigonometric functions. In this video, you will see why the derivative of sine x is cosine x, and find the derivative of cosine x as well.' },
       ],
     },
     {
