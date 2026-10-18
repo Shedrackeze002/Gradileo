@@ -4191,6 +4191,222 @@
       }
     ]
   },
+  "m31-1-1": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 1: Composite Functions",
+    "duration": 356,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One after the other",
+        "t": 26.175
+      },
+      {
+        "title": "Evaluating a composition",
+        "t": 74.474
+      },
+      {
+        "title": "The other order",
+        "t": 109.152
+      },
+      {
+        "title": "A formula for the composite",
+        "t": 146.759
+      },
+      {
+        "title": "The other formula",
+        "t": 193.419
+      },
+      {
+        "title": "Watch out",
+        "t": 240.677
+      },
+      {
+        "title": "Your turn",
+        "t": 277.228
+      },
+      {
+        "title": "Summary",
+        "t": 316.633
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1:q",
+        "t": 289.817,
+        "prompt": "Let $f(x) = 3x + 1$ and $g(x) = x^2 - 2$. Find $(f \\circ g)(3)$.",
+        "choices": [
+          "$98$",
+          "$22$",
+          "$70$",
+          "$17$"
+        ],
+        "answer": 1,
+        "working": "Inside first: $g(3) = 3^2 - 2 = 7$. Then $f(7) = 3(7) + 1 = 22$."
+      }
+    ]
+  },
+  "m31-1-1-b": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 2: Inside and Outside",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What would you calculate first?",
+        "t": 22.994
+      },
+      {
+        "title": "The inner and outer functions",
+        "t": 60.042
+      },
+      {
+        "title": "Two more examples",
+        "t": 92.604
+      },
+      {
+        "title": "Why it matters",
+        "t": 135.664
+      },
+      {
+        "title": "Your turn",
+        "t": 163.449
+      },
+      {
+        "title": "Summary",
+        "t": 198.856
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1-b:q",
+        "t": 173.438,
+        "prompt": "Write $H(x) = (5x - 2)^3$ as $f(g(x))$.",
+        "choices": [
+          "$f(x) = 5x - 2,\\ g(x) = x^3$",
+          "$f(x) = x^3,\\ g(x) = 5x$",
+          "$f(x) = \\sqrt[3]{x},\\ g(x) = 5x - 2$",
+          "$f(x) = x^3,\\ g(x) = 5x - 2$"
+        ],
+        "answer": 3,
+        "working": "You would calculate $5x - 2$ first, so $g(x) = 5x - 2$. Then you cube it, so $f(x) = x^3$. Check: $f(g(x)) = (5x - 2)^3$."
+      }
+    ]
+  },
+  "m31-1-1-c": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 3: The Domain of a Composite Function",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Both steps must work",
+        "t": 23.722
+      },
+      {
+        "title": "A square root",
+        "t": 55.346
+      },
+      {
+        "title": "Two restrictions",
+        "t": 119.935
+      },
+      {
+        "title": "Watch out",
+        "t": 178.46
+      },
+      {
+        "title": "Your turn",
+        "t": 220.518
+      },
+      {
+        "title": "Summary",
+        "t": 261.356
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1-c:q",
+        "t": 233.527,
+        "prompt": "Let $f(x) = \\sqrt{x}$ and $g(x) = 8 - 2x$. Find the domain of $f \\circ g$.",
+        "choices": [
+          "$x \\le 4$",
+          "$x \\ge 4$",
+          "$x \\ge 0$",
+          "$x \\le 8$"
+        ],
+        "answer": 0,
+        "working": "$(f \\circ g)(x) = \\sqrt{8 - 2x}$ needs $8 - 2x \\ge 0$, so $8 \\ge 2x$, and $x \\le 4$."
+      }
+    ]
+  },
+  "m31-1-1-d": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 4: The Difference Quotient",
+    "duration": 322,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Slope between two points",
+        "t": 26.89
+      },
+      {
+        "title": "Points x and x + h",
+        "t": 68.854
+      },
+      {
+        "title": "The difference quotient",
+        "t": 102.857
+      },
+      {
+        "title": "Expanding f(x + h)",
+        "t": 152.85
+      },
+      {
+        "title": "Subtract, factor and cancel",
+        "t": 195.721
+      },
+      {
+        "title": "Your turn",
+        "t": 248.166
+      },
+      {
+        "title": "Summary",
+        "t": 288.035
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1-d:q",
+        "t": 257.77,
+        "prompt": "Simplify the difference quotient $\\dfrac{f(x + h) - f(x)}{h}$ for $f(x) = x^2 + 5x$.",
+        "choices": [
+          "$2x + 5$",
+          "$2x + h$",
+          "$2x + h + 5$",
+          "$h + 5$"
+        ],
+        "answer": 2,
+        "working": "Subtracting $f(x)$ leaves $2xh + h^2 + 5h = h(2x + h + 5)$. Divide by $h$: $2x + h + 5$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
