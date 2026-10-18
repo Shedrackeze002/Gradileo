@@ -43435,5 +43435,386 @@
         "working": "$4\\% = 0.04$, and $0.04 \\times 650 = 26$ parcels."
       }
     ]
+  },
+  "m303-7-2": {
+    "lessonId": "m303-7-2",
+    "title": "Probability of Combined Events, Part 1: Mutually Exclusive Events",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cannot happen together",
+        "t": 28.141
+      },
+      {
+        "title": "A parts bin",
+        "t": 69.622
+      },
+      {
+        "title": "Why adding works",
+        "t": 121.676
+      },
+      {
+        "title": "Watch out",
+        "t": 153.231
+      },
+      {
+        "title": "Your turn",
+        "t": 187.479
+      },
+      {
+        "title": "Summary",
+        "t": 228.496
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-2:q",
+        "t": 202.108,
+        "prompt": "A jar holds 15 red, 9 blue and 6 green buttons. One button is taken at random. What is the probability that it is blue or green?",
+        "choices": [
+          "$\\dfrac{3}{10}$",
+          "$\\dfrac{1}{5}$",
+          "$\\dfrac{3}{50}$",
+          "$\\dfrac{1}{2}$"
+        ],
+        "answer": 3,
+        "working": "There are $15 + 9 + 6 = 30$ buttons. Blue and green are mutually exclusive, so $\\dfrac{9}{30} + \\dfrac{6}{30} = \\dfrac{15}{30} = \\dfrac{1}{2}$."
+      }
+    ]
+  },
+  "m303-7-2-b": {
+    "lessonId": "m303-7-2",
+    "title": "Probability of Combined Events, Part 2: Independent Events",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Independent events",
+        "t": 24.599
+      },
+      {
+        "title": "A game at a fair",
+        "t": 57.997
+      },
+      {
+        "title": "Why multiplying works",
+        "t": 97.72
+      },
+      {
+        "title": "Two days of rain",
+        "t": 128.829
+      },
+      {
+        "title": "Watch out",
+        "t": 193.374
+      },
+      {
+        "title": "Your turn",
+        "t": 227.058
+      },
+      {
+        "title": "Summary",
+        "t": 277.538
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-2-b:q",
+        "t": 246.757,
+        "prompt": "One machine makes bolts, and 10% of them are too short. Another machine makes nuts, and 5% of them are cracked. One bolt and one nut are picked at random. What is the probability that the bolt is too short **and** the nut is cracked?",
+        "choices": [
+          "$15\\%$",
+          "$5\\%$",
+          "$0.5\\%$",
+          "$50\\%$"
+        ],
+        "answer": 2,
+        "working": "The machines are independent, so $0.10 \\times 0.05 = 0.005 = 0.5\\%$."
+      }
+    ]
+  },
+  "m303-7-2-c": {
+    "lessonId": "m303-7-2",
+    "title": "Probability of Combined Events, Part 3: Dependent Events",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dependent events",
+        "t": 21.247
+      },
+      {
+        "title": "Blown fuses",
+        "t": 54.618
+      },
+      {
+        "title": "The second fuse",
+        "t": 82.007
+      },
+      {
+        "title": "With replacement",
+        "t": 122.913
+      },
+      {
+        "title": "Watch out",
+        "t": 163.013
+      },
+      {
+        "title": "Your turn",
+        "t": 192.944
+      },
+      {
+        "title": "Summary",
+        "t": 237.697
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-2-c:q",
+        "t": 208.015,
+        "prompt": "A drawer holds 8 batteries, and 2 of them are dead. Two batteries are taken, one after the other, without putting the first back. What is the probability that both are dead?",
+        "choices": [
+          "$\\dfrac{1}{28}$",
+          "$\\dfrac{1}{16}$",
+          "$\\dfrac{1}{14}$",
+          "$\\dfrac{1}{4}$"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{2}{8} \\times \\dfrac{1}{7} = \\dfrac{2}{56} = \\dfrac{1}{28}$. After one dead battery is taken, 1 of the 7 left is dead."
+      }
+    ]
+  },
+  "m303-7-2-d": {
+    "lessonId": "m303-7-2",
+    "title": "Probability of Combined Events, Part 4: At Least One and Exactly One",
+    "duration": 343,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two key ideas",
+        "t": 22.18
+      },
+      {
+        "title": "Quality control",
+        "t": 54.275
+      },
+      {
+        "title": "Rain on exactly one day",
+        "t": 125.056
+      },
+      {
+        "title": "A matching pair",
+        "t": 188.336
+      },
+      {
+        "title": "Watch out",
+        "t": 235.072
+      },
+      {
+        "title": "Your turn",
+        "t": 269.712
+      },
+      {
+        "title": "Summary",
+        "t": 311.953
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-2-d:q",
+        "t": 283.875,
+        "prompt": "A player makes 70% of free throws, and each shot is independent. The player takes 2 shots. What is the probability of making **exactly one**?",
+        "choices": [
+          "$21\\%$",
+          "$42\\%$",
+          "$49\\%$",
+          "$91\\%$"
+        ],
+        "answer": 1,
+        "working": "Make then miss: $0.7 \\times 0.3 = 0.21$. Miss then make: $0.3 \\times 0.7 = 0.21$. Exactly one: $0.21 + 0.21 = 0.42 = 42\\%$."
+      }
+    ]
+  },
+  "m303-8-1": {
+    "lessonId": "m303-8-1",
+    "title": "Buying a Vehicle, Part 1: The Price with Tax and Fees",
+    "duration": 330,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tax on the price and the fees",
+        "t": 29.047
+      },
+      {
+        "title": "Why 1.05?",
+        "t": 64.992
+      },
+      {
+        "title": "A used truck",
+        "t": 105.733
+      },
+      {
+        "title": "The tax on its own",
+        "t": 159.361
+      },
+      {
+        "title": "Watch out",
+        "t": 209.918
+      },
+      {
+        "title": "Your turn",
+        "t": 244.429
+      },
+      {
+        "title": "Summary",
+        "t": 295.789
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-1:q",
+        "t": 262.914,
+        "prompt": "A used car costs \\$15,600, plus a \\$350 documentation fee. A sales tax of 5% is charged on the price and the fee. What is the total price?",
+        "choices": [
+          "\\$16,730.00",
+          "\\$797.50",
+          "\\$16,747.50",
+          "\\$15,950.00"
+        ],
+        "answer": 2,
+        "working": "$15{,}600 + 350 = 15{,}950$, and $15{,}950 \\times 1.05 = 16{,}747.50$, so the total price is \\$16,747.50."
+      }
+    ]
+  },
+  "m303-8-1-b": {
+    "lessonId": "m303-8-1",
+    "title": "Buying a Vehicle, Part 2: Down Payment and Finance Charge",
+    "duration": 321,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Borrowing to buy",
+        "t": 21.953
+      },
+      {
+        "title": "Owen’s loan",
+        "t": 58.295
+      },
+      {
+        "title": "The finance charge",
+        "t": 121.49
+      },
+      {
+        "title": "Paying less interest",
+        "t": 192.579
+      },
+      {
+        "title": "Watch out",
+        "t": 213.256
+      },
+      {
+        "title": "Your turn",
+        "t": 232.833
+      },
+      {
+        "title": "Summary",
+        "t": 293.034
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-1-b:q",
+        "t": 251.872,
+        "prompt": "A car’s total price is \\$18,900.00. The buyer pays \\$2,500 down and makes 36 monthly payments of \\$498.50. What is the finance charge?",
+        "choices": [
+          "\\$1,546.00",
+          "\\$17,946.00",
+          "\\$954.00",
+          "\\$20,446.00"
+        ],
+        "answer": 0,
+        "working": "Amount financed: $18{,}900 - 2{,}500 = 16{,}400$. Payments: $498.50 \\times 36 = 17{,}946.00$. Finance charge: $17{,}946.00 - 16{,}400 = 1{,}546.00$."
+      }
+    ]
+  },
+  "m303-8-1-c": {
+    "lessonId": "m303-8-1",
+    "title": "Buying a Vehicle, Part 3: Depreciation",
+    "duration": 334,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Depreciation",
+        "t": 20.066
+      },
+      {
+        "title": "A new SUV",
+        "t": 52.304
+      },
+      {
+        "title": "In one step",
+        "t": 120.433
+      },
+      {
+        "title": "Each loss is smaller",
+        "t": 175.096
+      },
+      {
+        "title": "Watch out",
+        "t": 219.765
+      },
+      {
+        "title": "Your turn",
+        "t": 254.793
+      },
+      {
+        "title": "Summary",
+        "t": 299.092
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-1-c:q",
+        "t": 268.006,
+        "prompt": "A truck costs \\$42,000. Suppose it loses 20% of its value each year. What is it worth after 2 years?",
+        "choices": [
+          "\\$25,200.00",
+          "\\$8,400.00",
+          "\\$33,600.00",
+          "\\$26,880.00"
+        ],
+        "answer": 3,
+        "working": "Losing 20% means keeping 80%: $42{,}000 \\times 0.80^2 = 42{,}000 \\times 0.64 = 26{,}880.00$."
+      }
+    ]
   }
 }
