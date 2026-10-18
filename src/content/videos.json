@@ -39823,5 +39823,4984 @@
         "working": "Above the axis, the bars show $50 - 40 = 10$ and $45 - 40 = 5$, so the second looks $2$ times as tall. The actual increase is $\\dfrac{50 - 45}{45} \\times 100 \\approx 11.1\\%$."
       }
     ]
+  },
+  "m303-1-1": {
+    "lessonId": "m303-1-1",
+    "title": "Precision and Accuracy, Part 1: The Precision of an Instrument",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Precision",
+        "t": 30.515
+      },
+      {
+        "title": "A metric ruler",
+        "t": 62.237
+      },
+      {
+        "title": "Tapes and calipers",
+        "t": 102.832
+      },
+      {
+        "title": "An imperial ruler",
+        "t": 151.2
+      },
+      {
+        "title": "A smaller unit, more digits",
+        "t": 188.932
+      },
+      {
+        "title": "Your turn",
+        "t": 223.38
+      },
+      {
+        "title": "Summary",
+        "t": 257.941
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-1:q",
+        "t": 233.645,
+        "prompt": "A tape measure has $8$ equal spaces between each pair of inch marks. What is its precision?",
+        "choices": [
+          "$\\tfrac{1}{16}$ in",
+          "$\\tfrac{1}{8}$ in",
+          "$8$ in",
+          "$\\tfrac{1}{9}$ in"
+        ],
+        "answer": 1,
+        "working": "Eight equal spaces fill one inch, so each space, the smallest unit, is $\\tfrac{1}{8}$ in."
+      }
+    ]
+  },
+  "m303-1-1-b": {
+    "lessonId": "m303-1-1",
+    "title": "Precision and Accuracy, Part 2: The Precision of a Measurement",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The last digit",
+        "t": 21.08
+      },
+      {
+        "title": "A recorded zero",
+        "t": 70.43
+      },
+      {
+        "title": "Watch out",
+        "t": 114.975
+      },
+      {
+        "title": "Different units",
+        "t": 157.499
+      },
+      {
+        "title": "Your turn",
+        "t": 221.957
+      },
+      {
+        "title": "Summary",
+        "t": 258.87
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-1-b:q",
+        "t": 228.97,
+        "prompt": "Which measurement is the most precise?",
+        "choices": [
+          "$12.5\\text{ cm}$",
+          "$1.26\\text{ m}$",
+          "$124\\text{ mm}$",
+          "$12.46\\text{ cm}$"
+        ],
+        "answer": 3,
+        "working": "$12.46\\text{ cm}$ is to the nearest $0.01\\text{ cm} = 0.1\\text{ mm}$. The others are to the nearest $1\\text{ mm}$, $10\\text{ mm}$ and $1\\text{ mm}$."
+      }
+    ]
+  },
+  "m303-1-1-c": {
+    "lessonId": "m303-1-1",
+    "title": "Precision and Accuracy, Part 3: Accuracy",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Accuracy",
+        "t": 21.718
+      },
+      {
+        "title": "Checking two calipers",
+        "t": 56.655
+      },
+      {
+        "title": "Precise, but not accurate",
+        "t": 114.328
+      },
+      {
+        "title": "Precise and accurate",
+        "t": 156.49
+      },
+      {
+        "title": "Your turn",
+        "t": 188.382
+      },
+      {
+        "title": "Summary",
+        "t": 226.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-1-c:q",
+        "t": 199.997,
+        "prompt": "A gauge block is exactly $50.00\\text{ mm}$ long. Which reading of it is the most accurate?",
+        "choices": [
+          "$50.02\\text{ mm}$",
+          "$49.95\\text{ mm}$",
+          "$50.1\\text{ mm}$",
+          "$49.9\\text{ mm}$"
+        ],
+        "answer": 0,
+        "working": "The differences from $50.00$ are $0.02$, $0.05$, $0.1$ and $0.1\\text{ mm}$. The smallest difference, $0.02\\text{ mm}$, is the most accurate."
+      }
+    ]
+  },
+  "m303-1-1-d": {
+    "lessonId": "m303-1-1",
+    "title": "Precision and Accuracy, Part 4: Percent Error",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same error, different sizes",
+        "t": 23.603
+      },
+      {
+        "title": "Percent error",
+        "t": 61.538
+      },
+      {
+        "title": "Bracket or beam?",
+        "t": 91.693
+      },
+      {
+        "title": "Divide by the true value",
+        "t": 171.217
+      },
+      {
+        "title": "Your turn",
+        "t": 202.819
+      },
+      {
+        "title": "Summary",
+        "t": 245.065
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-1-d:q",
+        "t": 215.086,
+        "prompt": "A test mass of exactly $250\\text{ g}$ reads $252\\text{ g}$ on a scale. What is the percent error?",
+        "choices": [
+          "$2\\%$",
+          "$0.79\\%$",
+          "$0.8\\%$",
+          "$8\\%$"
+        ],
+        "answer": 2,
+        "working": "Error $= 252 - 250 = 2\\text{ g}$, and $\\dfrac{2}{250} \\times 100\\% = 0.8\\%$."
+      }
+    ]
+  },
+  "m303-1-2": {
+    "lessonId": "m303-1-2",
+    "title": "Uncertainty and Tolerance, Part 1: Uncertainty",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Half the smallest unit",
+        "t": 21.389
+      },
+      {
+        "title": "The range of a reading",
+        "t": 47.408
+      },
+      {
+        "title": "Imperial units",
+        "t": 122.191
+      },
+      {
+        "title": "From precision to uncertainty",
+        "t": 169.366
+      },
+      {
+        "title": "Your turn",
+        "t": 212.15
+      },
+      {
+        "title": "Summary",
+        "t": 258.924
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-2:q",
+        "t": 227.316,
+        "prompt": "A digital scale shows grams to one decimal place, and a bag of flour reads $452.3\\text{ g}$. Between what values is its true mass?",
+        "choices": [
+          "$452.2\\text{ g}$ and $452.4\\text{ g}$",
+          "$451.8\\text{ g}$ and $452.8\\text{ g}$",
+          "$452.3\\text{ g}$ and $452.35\\text{ g}$",
+          "$452.25\\text{ g}$ and $452.35\\text{ g}$"
+        ],
+        "answer": 3,
+        "working": "The smallest unit is $0.1\\text{ g}$, so the uncertainty is $\\pm 0.05\\text{ g}$: $452.3 - 0.05 = 452.25$ and $452.3 + 0.05 = 452.35$."
+      }
+    ]
+  },
+  "m303-1-2-b": {
+    "lessonId": "m303-1-2",
+    "title": "Uncertainty and Tolerance, Part 2: Tolerance",
+    "duration": 317,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Nominal value and tolerance",
+        "t": 23.354
+      },
+      {
+        "title": "Machining a shaft",
+        "t": 69.27
+      },
+      {
+        "title": "Check both limits",
+        "t": 152.184
+      },
+      {
+        "title": "From limits to a specification",
+        "t": 174.655
+      },
+      {
+        "title": "Your turn",
+        "t": 239.94
+      },
+      {
+        "title": "Summary",
+        "t": 285.387
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-2-b:q",
+        "t": 250.863,
+        "prompt": "A pipe must be $150 \\pm 2\\text{ mm}$ long. Which length is **not** acceptable?",
+        "choices": [
+          "$148.5\\text{ mm}$",
+          "$152.4\\text{ mm}$",
+          "$151.9\\text{ mm}$",
+          "$149.2\\text{ mm}$"
+        ],
+        "answer": 1,
+        "working": "Least: $150 - 2 = 148\\text{ mm}$. Greatest: $150 + 2 = 152\\text{ mm}$. Only $152.4\\text{ mm}$ is outside the limits: it is too long."
+      }
+    ]
+  },
+  "m303-1-2-c": {
+    "lessonId": "m303-1-2",
+    "title": "Uncertainty and Tolerance, Part 3: Unequal and Percent Tolerances",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An unequal tolerance",
+        "t": 20.017
+      },
+      {
+        "title": "A bushing",
+        "t": 48.978
+      },
+      {
+        "title": "A percent tolerance",
+        "t": 105.725
+      },
+      {
+        "title": "Watch out",
+        "t": 170.619
+      },
+      {
+        "title": "Your turn",
+        "t": 215.813
+      },
+      {
+        "title": "Summary",
+        "t": 259.264
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-2-c:q",
+        "t": 229.389,
+        "prompt": "A bag of fertilizer is labelled $20\\text{ kg}$, with a tolerance of $\\pm 2\\%$. What is the least acceptable mass?",
+        "choices": [
+          "$18\\text{ kg}$",
+          "$19.8\\text{ kg}$",
+          "$19.6\\text{ kg}$",
+          "$20.4\\text{ kg}$"
+        ],
+        "answer": 2,
+        "working": "$2\\%$ of $20$ is $0.02 \\times 20 = 0.4\\text{ kg}$, so the least mass is $20 - 0.4 = 19.6\\text{ kg}$."
+      }
+    ]
+  },
+  "m303-1-2-d": {
+    "lessonId": "m303-1-2",
+    "title": "Uncertainty and Tolerance, Part 4: Tolerance Stacking and Clearance",
+    "duration": 335,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sizes add, tolerances add",
+        "t": 19.161
+      },
+      {
+        "title": "Three spacers on a bolt",
+        "t": 42.779
+      },
+      {
+        "title": "Clearance",
+        "t": 130.405
+      },
+      {
+        "title": "Watch out",
+        "t": 215.909
+      },
+      {
+        "title": "Your turn",
+        "t": 252.378
+      },
+      {
+        "title": "Summary",
+        "t": 304.251
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-2-d:q",
+        "t": 271.419,
+        "prompt": "Two blocks, $45.0 \\pm 0.2\\text{ mm}$ and $30.0 \\pm 0.1\\text{ mm}$, are placed end to end. What is the greatest possible total length?",
+        "choices": [
+          "$75.3\\text{ mm}$",
+          "$75.2\\text{ mm}$",
+          "$74.7\\text{ mm}$",
+          "$75.0\\text{ mm}$"
+        ],
+        "answer": 0,
+        "working": "Nominal total: $45.0 + 30.0 = 75.0\\text{ mm}$. Tolerances add: $0.2 + 0.1 = 0.3\\text{ mm}$. Greatest: $75.0 + 0.3 = 75.3\\text{ mm}$."
+      }
+    ]
+  },
+  "m303-2-1": {
+    "lessonId": "m303-2-1",
+    "title": "The Sine Law, Part 1: Oblique Triangles and Matching Pairs",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Oblique triangles",
+        "t": 26.1
+      },
+      {
+        "title": "Naming the sides",
+        "t": 63.872
+      },
+      {
+        "title": "Matching pairs",
+        "t": 97.025
+      },
+      {
+        "title": "Biggest across from biggest",
+        "t": 127.041
+      },
+      {
+        "title": "Your turn",
+        "t": 174.149
+      },
+      {
+        "title": "Summary",
+        "t": 215.008
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-1:q",
+        "t": 189.509,
+        "prompt": "In $\\triangle PQR$, $\\angle P = 40^\\circ$, $\\angle Q = 75^\\circ$ and $\\angle R = 65^\\circ$. Which side is the longest?",
+        "choices": [
+          "side $p$",
+          "side $r$",
+          "side $q$",
+          "You cannot tell without a side length."
+        ],
+        "answer": 2,
+        "working": "The largest angle is $\\angle Q = 75^\\circ$, so the longest side is the one across from it: side $q$."
+      }
+    ]
+  },
+  "m303-2-1-b": {
+    "lessonId": "m303-2-1",
+    "title": "The Sine Law, Part 2: The Law and Why It Works",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why it works",
+        "t": 20.455
+      },
+      {
+        "title": "The sine law",
+        "t": 85.146
+      },
+      {
+        "title": "Using the law",
+        "t": 113.459
+      },
+      {
+        "title": "Watch out",
+        "t": 146.793
+      },
+      {
+        "title": "Your turn",
+        "t": 186.105
+      },
+      {
+        "title": "Summary",
+        "t": 224.404
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-1-b:q",
+        "t": 202.181,
+        "prompt": "In $\\triangle ABC$, $\\angle A = 50^\\circ$, $\\angle B = 65^\\circ$ and $a = 12\\text{ cm}$. Which equation can find side $b$?",
+        "choices": [
+          "$\\dfrac{b}{\\sin 65^\\circ} = \\dfrac{12}{\\sin 50^\\circ}$",
+          "$\\dfrac{b}{\\sin 50^\\circ} = \\dfrac{12}{\\sin 65^\\circ}$",
+          "$\\dfrac{\\sin 65^\\circ}{b} = \\dfrac{12}{\\sin 50^\\circ}$",
+          "$b = 12\\sin 65^\\circ$"
+        ],
+        "answer": 0,
+        "working": "Side $a = 12$ pairs with $\\angle A = 50^\\circ$, and side $b$ pairs with $\\angle B = 65^\\circ$. With the sides on top, $\\dfrac{b}{\\sin 65^\\circ} = \\dfrac{12}{\\sin 50^\\circ}$."
+      }
+    ]
+  },
+  "m303-2-1-c": {
+    "lessonId": "m303-2-1",
+    "title": "The Sine Law, Part 3: Finding a Side",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two angles and a side",
+        "t": 21.632
+      },
+      {
+        "title": "Use the angle sum first",
+        "t": 95.298
+      },
+      {
+        "title": "Watch out",
+        "t": 177.681
+      },
+      {
+        "title": "Your turn",
+        "t": 207.553
+      },
+      {
+        "title": "Summary",
+        "t": 255.187
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-1-c:q",
+        "t": 225.073,
+        "prompt": "In $\\triangle XYZ$, $\\angle X = 35^\\circ$, $\\angle Y = 80^\\circ$ and $x = 9.0\\text{ m}$. Find side $y$, to the nearest tenth of a metre.",
+        "choices": [
+          "$5.2\\text{ m}$",
+          "$8.9\\text{ m}$",
+          "$14.2\\text{ m}$",
+          "$15.5\\text{ m}$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{y}{\\sin 80^\\circ} = \\dfrac{9.0}{\\sin 35^\\circ}$, so $y = \\dfrac{9.0\\sin 80^\\circ}{\\sin 35^\\circ} \\approx 15.5\\text{ m}$."
+      }
+    ]
+  },
+  "m303-2-1-d": {
+    "lessonId": "m303-2-1",
+    "title": "The Sine Law, Part 4: Finding an Angle",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sines on top",
+        "t": 20.995
+      },
+      {
+        "title": "Finishing the triangle",
+        "t": 96.901
+      },
+      {
+        "title": "Why there is only one answer",
+        "t": 160.856
+      },
+      {
+        "title": "Your turn",
+        "t": 204.931
+      },
+      {
+        "title": "Summary",
+        "t": 249.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-1-d:q",
+        "t": 221.333,
+        "prompt": "In $\\triangle ABC$, $a = 10\\text{ cm}$, $b = 7\\text{ cm}$ and $\\angle A = 80^\\circ$. Find $\\angle B$, to the nearest tenth of a degree.",
+        "choices": [
+          "$44.4^\\circ$",
+          "$43.6^\\circ$",
+          "$136.4^\\circ$",
+          "$0.7^\\circ$"
+        ],
+        "answer": 1,
+        "working": "$\\sin B = \\dfrac{7\\sin 80^\\circ}{10} \\approx 0.6894$, so $\\angle B = \\sin^{-1}(0.6894) \\approx 43.6^\\circ$."
+      }
+    ]
+  },
+  "m303-2-2": {
+    "lessonId": "m303-2-2",
+    "title": "The Cosine Law, Part 1: Finding a Side",
+    "duration": 320,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "When to use it",
+        "t": 24.185
+      },
+      {
+        "title": "The cosine law",
+        "t": 54.961
+      },
+      {
+        "title": "A Pythagorean link",
+        "t": 100.709
+      },
+      {
+        "title": "Finding a side",
+        "t": 132.958
+      },
+      {
+        "title": "Watch out",
+        "t": 207.416
+      },
+      {
+        "title": "Your turn",
+        "t": 244.787
+      },
+      {
+        "title": "Summary",
+        "t": 287.199
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-2:q",
+        "t": 260.765,
+        "prompt": "In $\\triangle PQR$, $q = 7\\text{ m}$, $r = 10\\text{ m}$ and $\\angle P = 40^\\circ$. Find side $p$, to the nearest tenth of a metre.",
+        "choices": [
+          "$12.2\\text{ m}$",
+          "$2.6\\text{ m}$",
+          "$6.5\\text{ m}$",
+          "$41.8\\text{ m}$"
+        ],
+        "answer": 2,
+        "working": "$p^2 = 7^2 + 10^2 - 2(7)(10)\\cos 40^\\circ \\approx 149 - 107.25 = 41.75$, so $p \\approx \\sqrt{41.75} \\approx 6.5\\text{ m}$."
+      }
+    ]
+  },
+  "m303-2-2-b": {
+    "lessonId": "m303-2-2",
+    "title": "The Cosine Law, Part 2: An Obtuse Contained Angle",
+    "duration": 321,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Negative cosines",
+        "t": 23.173
+      },
+      {
+        "title": "A wider angle, a longer side",
+        "t": 68.888
+      },
+      {
+        "title": "An obtuse contained angle",
+        "t": 102.198
+      },
+      {
+        "title": "Watch out",
+        "t": 197.034
+      },
+      {
+        "title": "Your turn",
+        "t": 242.873
+      },
+      {
+        "title": "Summary",
+        "t": 294.147
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-2-b:q",
+        "t": 260.263,
+        "prompt": "In $\\triangle DEF$, $d = 5\\text{ cm}$, $e = 8\\text{ cm}$ and $\\angle F = 130^\\circ$. Find side $f$, to the nearest tenth of a centimetre.",
+        "choices": [
+          "$11.9\\text{ cm}$",
+          "$6.1\\text{ cm}$",
+          "$9.4\\text{ cm}$",
+          "$140.4\\text{ cm}$"
+        ],
+        "answer": 0,
+        "working": "$f^2 = 5^2 + 8^2 - 2(5)(8)\\cos 130^\\circ \\approx 89 + 51.42 = 140.42$, so $f \\approx 11.9\\text{ cm}$."
+      }
+    ]
+  },
+  "m303-2-2-c": {
+    "lessonId": "m303-2-2",
+    "title": "The Cosine Law, Part 3: Finding an Angle",
+    "duration": 322,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rearranging the law",
+        "t": 23.136
+      },
+      {
+        "title": "Three sides",
+        "t": 74.329
+      },
+      {
+        "title": "The largest angle",
+        "t": 139.843
+      },
+      {
+        "title": "A negative cosine means obtuse",
+        "t": 195.003
+      },
+      {
+        "title": "Your turn",
+        "t": 240.987
+      },
+      {
+        "title": "Summary",
+        "t": 286.669
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-2-c:q",
+        "t": 254.318,
+        "prompt": "A triangle has sides of $5\\text{ m}$, $7\\text{ m}$ and $10\\text{ m}$. What is its largest angle, to the nearest tenth of a degree?",
+        "choices": [
+          "$68.2^\\circ$",
+          "$27.7^\\circ$",
+          "$40.5^\\circ$",
+          "$111.8^\\circ$"
+        ],
+        "answer": 3,
+        "working": "The largest angle is opposite $10\\text{ m}$: $\\cos\\theta = \\dfrac{5^2 + 7^2 - 10^2}{2(5)(7)} = \\dfrac{-26}{70} \\approx -0.3714$, so $\\theta \\approx 111.8^\\circ$."
+      }
+    ]
+  },
+  "m303-2-3": {
+    "lessonId": "m303-2-3",
+    "title": "Solving Problems with Oblique Triangles, Part 1: Choosing a Law",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which law?",
+        "t": 25.084
+      },
+      {
+        "title": "A roof truss",
+        "t": 67.634
+      },
+      {
+        "title": "Watch out",
+        "t": 117.153
+      },
+      {
+        "title": "A plan for workplace problems",
+        "t": 148.376
+      },
+      {
+        "title": "Your turn",
+        "t": 188.957
+      },
+      {
+        "title": "Summary",
+        "t": 224.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-3:q",
+        "t": 203.065,
+        "prompt": "A surveyor knows all three sides of a triangular lot: $42\\text{ m}$, $55\\text{ m}$ and $61\\text{ m}$. Which law finds one of its angles?",
+        "choices": [
+          "The sine law",
+          "The cosine law",
+          "SOH CAH TOA",
+          "The angle sum"
+        ],
+        "answer": 1,
+        "working": "Three sides and no angles: there is no matching pair, so use the cosine law."
+      }
+    ]
+  },
+  "m303-2-3-b": {
+    "lessonId": "m303-2-3",
+    "title": "Solving Problems with Oblique Triangles, Part 2: A Truss and Two Lookout Towers",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The bottom chord of a truss",
+        "t": 18.961
+      },
+      {
+        "title": "Two fire lookout towers",
+        "t": 120.509
+      },
+      {
+        "title": "Your turn",
+        "t": 219.527
+      },
+      {
+        "title": "Summary",
+        "t": 267.949
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-3-b:q",
+        "t": 236.382,
+        "prompt": "Lookout towers $P$ and $Q$ are $20\\text{ km}$ apart. A fire $F$ makes $\\angle P = 48^\\circ$ and $\\angle Q = 57^\\circ$. Which equation finds $QF$?",
+        "choices": [
+          "$\\dfrac{QF}{\\sin 57^\\circ} = \\dfrac{20}{\\sin 75^\\circ}$",
+          "$\\dfrac{QF}{\\sin 48^\\circ} = \\dfrac{20}{\\sin 57^\\circ}$",
+          "$\\dfrac{QF}{\\sin 48^\\circ} = \\dfrac{20}{\\sin 75^\\circ}$",
+          "$\\dfrac{QF}{\\sin 75^\\circ} = \\dfrac{20}{\\sin 48^\\circ}$"
+        ],
+        "answer": 2,
+        "working": "$\\angle F = 180^\\circ - 48^\\circ - 57^\\circ = 75^\\circ$, across from $PQ = 20$. $QF$ is across from $\\angle P = 48^\\circ$, so $QF \\approx 15.4\\text{ km}$."
+      }
+    ]
+  },
+  "m303-2-3-c": {
+    "lessonId": "m303-2-3",
+    "title": "Solving Problems with Oblique Triangles, Part 3: Turns and Angles of Elevation",
+    "duration": 368,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Turns",
+        "t": 24.707
+      },
+      {
+        "title": "A survey boat",
+        "t": 62.435
+      },
+      {
+        "title": "Watch out",
+        "t": 136.16
+      },
+      {
+        "title": "Angles of elevation",
+        "t": 171.682
+      },
+      {
+        "title": "The height of the tower",
+        "t": 219.273
+      },
+      {
+        "title": "Your turn",
+        "t": 289.236
+      },
+      {
+        "title": "Summary",
+        "t": 332.081
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-3-c:q",
+        "t": 303.894,
+        "prompt": "A hiker walks $6\\text{ km}$, turns $35^\\circ$ to the left, and walks $4\\text{ km}$. Which equation gives the distance $d$ back to the start?",
+        "choices": [
+          "$d^2 = 6^2 + 4^2 - 2(6)(4)\\cos 145^\\circ$",
+          "$d^2 = 6^2 + 4^2 - 2(6)(4)\\cos 35^\\circ$",
+          "$d^2 = 6^2 + 4^2$",
+          "$\\dfrac{d}{\\sin 145^\\circ} = \\dfrac{6}{\\sin 35^\\circ}$"
+        ],
+        "answer": 0,
+        "working": "The inside angle is $180^\\circ - 35^\\circ = 145^\\circ$, between the two known sides, so use the cosine law: $d \\approx 9.6\\text{ km}$."
+      }
+    ]
+  },
+  "m303-3-1": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 1: Angles in Triangles",
+    "duration": 378,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The angle sum",
+        "t": 27.74
+      },
+      {
+        "title": "Finding the third angle",
+        "t": 97.43
+      },
+      {
+        "title": "Isosceles triangles",
+        "t": 136.496
+      },
+      {
+        "title": "Equilateral triangles",
+        "t": 170.219
+      },
+      {
+        "title": "A gable roof truss",
+        "t": 200.936
+      },
+      {
+        "title": "Which angles are equal?",
+        "t": 264.364
+      },
+      {
+        "title": "Your turn",
+        "t": 305.911
+      },
+      {
+        "title": "Summary",
+        "t": 345.397
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1:q",
+        "t": 317.718,
+        "prompt": "An isosceles triangle has two base angles of $52^\\circ$. What is the angle between its two equal sides?",
+        "choices": [
+          "$128^\\circ$",
+          "$76^\\circ$",
+          "$64^\\circ$",
+          "$38^\\circ$"
+        ],
+        "answer": 1,
+        "working": "The base angles together make $52^\\circ + 52^\\circ = 104^\\circ$, so the third angle is $180^\\circ - 104^\\circ = 76^\\circ$."
+      }
+    ]
+  },
+  "m303-3-1-b": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 2: The Quadrilateral Family",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The angle sum",
+        "t": 24.212
+      },
+      {
+        "title": "A missing angle",
+        "t": 69.892
+      },
+      {
+        "title": "Parallelograms",
+        "t": 102.907
+      },
+      {
+        "title": "Trapezoids and kites",
+        "t": 152.41
+      },
+      {
+        "title": "How they fit together",
+        "t": 191.894
+      },
+      {
+        "title": "Watch out",
+        "t": 226.163
+      },
+      {
+        "title": "Your turn",
+        "t": 260.23
+      },
+      {
+        "title": "Summary",
+        "t": 299.842
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1-b:q",
+        "t": 273.746,
+        "prompt": "A quadrilateral has exactly one pair of parallel sides, and its two non-parallel sides are equal. What is its most specific name?",
+        "choices": [
+          "Parallelogram",
+          "Kite",
+          "Trapezoid",
+          "Isosceles trapezoid"
+        ],
+        "answer": 3,
+        "working": "Exactly one pair of parallel sides makes it a trapezoid, and equal non-parallel sides make it an **isosceles** trapezoid. A parallelogram needs two pairs of parallel sides."
+      }
+    ]
+  },
+  "m303-3-1-c": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 3: Parallelograms",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sides and angles",
+        "t": 21.436
+      },
+      {
+        "title": "Consecutive angles",
+        "t": 55.391
+      },
+      {
+        "title": "One angle gives all four",
+        "t": 108.733
+      },
+      {
+        "title": "The diagonals",
+        "t": 157.98
+      },
+      {
+        "title": "Watch out",
+        "t": 196.497
+      },
+      {
+        "title": "Your turn",
+        "t": 227.785
+      },
+      {
+        "title": "Summary",
+        "t": 266.814
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1-c:q",
+        "t": 239.219,
+        "prompt": "$PQRS$ is a parallelogram with $\\angle P = 107^\\circ$. What is $\\angle Q$?",
+        "choices": [
+          "$73^\\circ$",
+          "$107^\\circ$",
+          "$253^\\circ$",
+          "$83^\\circ$"
+        ],
+        "answer": 0,
+        "working": "$\\angle Q$ is next to $\\angle P$, so they add to $180^\\circ$: $\\angle Q = 180^\\circ - 107^\\circ = 73^\\circ$."
+      }
+    ]
+  },
+  "m303-3-1-d": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 4: Diagonals of Rectangles and Rhombuses",
+    "duration": 317,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rectangles",
+        "t": 23.726
+      },
+      {
+        "title": "Squaring a frame",
+        "t": 54.211
+      },
+      {
+        "title": "Rhombuses",
+        "t": 110.402
+      },
+      {
+        "title": "Angles in a rhombus",
+        "t": 146.522
+      },
+      {
+        "title": "Watch out",
+        "t": 201.856
+      },
+      {
+        "title": "Your turn",
+        "t": 241.707
+      },
+      {
+        "title": "Summary",
+        "t": 288.335
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1-d:q",
+        "t": 255.198,
+        "prompt": "$ABCD$ is a rhombus with $\\angle ABC = 70^\\circ$. Its diagonals meet at $E$. What is $\\angle BAE$?",
+        "choices": [
+          "$35^\\circ$",
+          "$110^\\circ$",
+          "$55^\\circ$",
+          "$90^\\circ$"
+        ],
+        "answer": 2,
+        "working": "Diagonal $BD$ bisects $\\angle B$: $\\angle ABE = 35^\\circ$. The diagonals are perpendicular: $\\angle AEB = 90^\\circ$. So $\\angle BAE = 180^\\circ - 90^\\circ - 35^\\circ = 55^\\circ$."
+      }
+    ]
+  },
+  "m303-3-1-e": {
+    "lessonId": "m303-3-1",
+    "title": "Properties of Triangles and Quadrilaterals, Part 5: Trapezoids and Kites",
+    "duration": 354,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trapezoids",
+        "t": 20.13
+      },
+      {
+        "title": "A trapezoid-shaped panel",
+        "t": 62.047
+      },
+      {
+        "title": "Isosceles trapezoids",
+        "t": 111.258
+      },
+      {
+        "title": "Kites",
+        "t": 156.319
+      },
+      {
+        "title": "A kite-shaped tile",
+        "t": 198.558
+      },
+      {
+        "title": "Watch out",
+        "t": 253.567
+      },
+      {
+        "title": "Your turn",
+        "t": 277.344
+      },
+      {
+        "title": "Summary",
+        "t": 325.542
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-1-e:q",
+        "t": 293.898,
+        "prompt": "In kite $KLMN$, $KL = KN$ and $ML = MN$. If $\\angle K = 90^\\circ$ and $\\angle M = 56^\\circ$, what is $\\angle L$?",
+        "choices": [
+          "$214^\\circ$",
+          "$56^\\circ$",
+          "$124^\\circ$",
+          "$107^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$\\angle L = \\angle N$, so $2\\angle L = 360^\\circ - 90^\\circ - 56^\\circ = 214^\\circ$ and $\\angle L = 107^\\circ$."
+      }
+    ]
+  },
+  "m303-3-2": {
+    "lessonId": "m303-3-2",
+    "title": "Angles in Regular Polygons, Part 1: The Interior Angle Sum",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polygons",
+        "t": 23.867
+      },
+      {
+        "title": "Splitting into triangles",
+        "t": 63.641
+      },
+      {
+        "title": "More polygons",
+        "t": 117.816
+      },
+      {
+        "title": "The rule",
+        "t": 141.225
+      },
+      {
+        "title": "Check with a triangle",
+        "t": 190.966
+      },
+      {
+        "title": "Your turn",
+        "t": 235.052
+      },
+      {
+        "title": "Summary",
+        "t": 273.742
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-2:q",
+        "t": 244.657,
+        "prompt": "A convex polygon has 9 sides. What is the sum of its interior angles?",
+        "choices": [
+          "$1620^\\circ$",
+          "$1260^\\circ$",
+          "$1440^\\circ$",
+          "$140^\\circ$"
+        ],
+        "answer": 1,
+        "working": "$180^\\circ(9 - 2) = 180^\\circ \\times 7 = 1260^\\circ$. $1620^\\circ$ is $180^\\circ \\times 9$, which forgets to subtract 2."
+      }
+    ]
+  },
+  "m303-3-2-b": {
+    "lessonId": "m303-3-2",
+    "title": "Angles in Regular Polygons, Part 2: Interior Angles of Regular Polygons",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Regular polygons",
+        "t": 20.866
+      },
+      {
+        "title": "A hex nut",
+        "t": 58.354
+      },
+      {
+        "title": "More regular polygons",
+        "t": 100.179
+      },
+      {
+        "title": "Watch out",
+        "t": 149.796
+      },
+      {
+        "title": "Your turn",
+        "t": 187.289
+      },
+      {
+        "title": "Summary",
+        "t": 228.349
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-2-b:q",
+        "t": 195.917,
+        "prompt": "What is each interior angle of a regular decagon (10 sides)?",
+        "choices": [
+          "$36^\\circ$",
+          "$160^\\circ$",
+          "$144^\\circ$",
+          "$1440^\\circ$"
+        ],
+        "answer": 2,
+        "working": "Angle sum: $180^\\circ(10 - 2) = 1440^\\circ$. Each angle: $1440^\\circ \\div 10 = 144^\\circ$."
+      }
+    ]
+  },
+  "m303-3-2-c": {
+    "lessonId": "m303-3-2",
+    "title": "Angles in Regular Polygons, Part 3: Exterior Angles",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an exterior angle is",
+        "t": 24.686
+      },
+      {
+        "title": "Walking round a polygon",
+        "t": 59.385
+      },
+      {
+        "title": "An octagonal sign",
+        "t": 116.514
+      },
+      {
+        "title": "Watch out",
+        "t": 175.334
+      },
+      {
+        "title": "Your turn",
+        "t": 216.847
+      },
+      {
+        "title": "Summary",
+        "t": 252.195
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-2-c:q",
+        "t": 225.4,
+        "prompt": "What is each exterior angle of a regular polygon with 12 sides?",
+        "choices": [
+          "$30^\\circ$",
+          "$150^\\circ$",
+          "$1800^\\circ$",
+          "$15^\\circ$"
+        ],
+        "answer": 0,
+        "working": "The exterior angles add to $360^\\circ$, so each one is $360^\\circ \\div 12 = 30^\\circ$. (Each interior angle is $180^\\circ - 30^\\circ = 150^\\circ$.)"
+      }
+    ]
+  },
+  "m303-3-2-d": {
+    "lessonId": "m303-3-2",
+    "title": "Angles in Regular Polygons, Part 4: Finding the Number of Sides",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From an exterior angle",
+        "t": 21.99
+      },
+      {
+        "title": "From an interior angle",
+        "t": 59.268
+      },
+      {
+        "title": "From the angle sum",
+        "t": 104.717
+      },
+      {
+        "title": "Is n a whole number?",
+        "t": 142.283
+      },
+      {
+        "title": "Your turn",
+        "t": 193.325
+      },
+      {
+        "title": "Summary",
+        "t": 234.016
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-2-d:q",
+        "t": 204.903,
+        "prompt": "Each interior angle of a regular polygon is $165^\\circ$. How many sides does it have?",
+        "choices": [
+          "$12$",
+          "$15$",
+          "$22$",
+          "$24$"
+        ],
+        "answer": 3,
+        "working": "Exterior angle: $180^\\circ - 165^\\circ = 15^\\circ$. Number of sides: $360^\\circ \\div 15^\\circ = 24$."
+      }
+    ]
+  },
+  "m303-3-3": {
+    "lessonId": "m303-3-3",
+    "title": "Problems with Polygons, Part 1: Perimeters and Corner Angles",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two things to know",
+        "t": 24.79
+      },
+      {
+        "title": "A hexagonal sandbox",
+        "t": 57.996
+      },
+      {
+        "title": "A pentagonal garden bed",
+        "t": 101.568
+      },
+      {
+        "title": "Working backwards",
+        "t": 137.515
+      },
+      {
+        "title": "Your turn",
+        "t": 170.703
+      },
+      {
+        "title": "Summary",
+        "t": 214.132
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-3:q",
+        "t": 185.01,
+        "prompt": "A table top is a regular octagon with sides of $0.4\\text{ m}$. How much trim goes around its edge, and what angle is each corner?",
+        "choices": [
+          "$3.2\\text{ m}$ and $45^\\circ$",
+          "$2.4\\text{ m}$ and $135^\\circ$",
+          "$3.2\\text{ m}$ and $135^\\circ$",
+          "$1.6\\text{ m}$ and $135^\\circ$"
+        ],
+        "answer": 2,
+        "working": "Perimeter: $8 \\times 0.4 = 3.2\\text{ m}$. Corner angle: $\\dfrac{180^\\circ(8 - 2)}{8} = \\dfrac{1080^\\circ}{8} = 135^\\circ$."
+      }
+    ]
+  },
+  "m303-3-3-b": {
+    "lessonId": "m303-3-3",
+    "title": "Problems with Polygons, Part 2: Mitre Cuts",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mitre joints",
+        "t": 20.429
+      },
+      {
+        "title": "The saw setting",
+        "t": 56.54
+      },
+      {
+        "title": "One piece",
+        "t": 97.075
+      },
+      {
+        "title": "Picture frames and mirrors",
+        "t": 129.944
+      },
+      {
+        "title": "Watch out",
+        "t": 164.109
+      },
+      {
+        "title": "Your turn",
+        "t": 201.793
+      },
+      {
+        "title": "Summary",
+        "t": 237.541
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-3-b:q",
+        "t": 212.35,
+        "prompt": "What mitre saw setting is needed for a frame shaped like a regular hexagon (6 sides)?",
+        "choices": [
+          "$60^\\circ$",
+          "$30^\\circ$",
+          "$120^\\circ$",
+          "$15^\\circ$"
+        ],
+        "answer": 1,
+        "working": "Mitre angle $= \\dfrac{180^\\circ}{n} = \\dfrac{180^\\circ}{6} = 30^\\circ$, half of the $60^\\circ$ exterior angle."
+      }
+    ]
+  },
+  "m303-3-3-c": {
+    "lessonId": "m303-3-3",
+    "title": "Problems with Polygons, Part 3: Central Angles",
+    "duration": 303,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central angles",
+        "t": 19.809
+      },
+      {
+        "title": "Isosceles triangles",
+        "t": 54.448
+      },
+      {
+        "title": "An octagonal gazebo floor",
+        "t": 83.444
+      },
+      {
+        "title": "Central and exterior angles",
+        "t": 147.157
+      },
+      {
+        "title": "Watch out",
+        "t": 191.04
+      },
+      {
+        "title": "Your turn",
+        "t": 222.268
+      },
+      {
+        "title": "Summary",
+        "t": 269.482
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-3-c:q",
+        "t": 238.549,
+        "prompt": "A table top is a regular pentagon made of 5 identical triangular pieces that meet at the centre. What angle does each piece have at each of its outside corners?",
+        "choices": [
+          "$54^\\circ$",
+          "$72^\\circ$",
+          "$108^\\circ$",
+          "$36^\\circ$"
+        ],
+        "answer": 0,
+        "working": "Central angle: $360^\\circ \\div 5 = 72^\\circ$. Each outside angle: $\\dfrac{180^\\circ - 72^\\circ}{2} = 54^\\circ$. Check: $2 \\times 54^\\circ = 108^\\circ$, a pentagon’s interior angle."
+      }
+    ]
+  },
+  "m303-3-3-d": {
+    "lessonId": "m303-3-3",
+    "title": "Problems with Polygons, Part 4: Tiling with Regular Polygons",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 21.24
+      },
+      {
+        "title": "Tiles that work alone",
+        "t": 45.945
+      },
+      {
+        "title": "Pentagons leave a gap",
+        "t": 89.538
+      },
+      {
+        "title": "Octagons and squares",
+        "t": 129.821
+      },
+      {
+        "title": "Your turn",
+        "t": 174.249
+      },
+      {
+        "title": "Summary",
+        "t": 214.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-3-3-d:q",
+        "t": 189.408,
+        "prompt": "Each angle of a regular 12-sided polygon is $150^\\circ$. Two of them meet at a corner. Which regular polygon fills the gap that is left?",
+        "choices": [
+          "A square",
+          "A regular hexagon",
+          "An equilateral triangle",
+          "A regular pentagon"
+        ],
+        "answer": 2,
+        "working": "$360^\\circ - 2(150^\\circ) = 60^\\circ$. A regular polygon with $60^\\circ$ angles is an equilateral triangle."
+      }
+    ]
+  },
+  "m303-4-1": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 1: Translations",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Transformations and images",
+        "t": 27.339
+      },
+      {
+        "title": "Mapping notation",
+        "t": 67.105
+      },
+      {
+        "title": "Moving a part on a cutting table",
+        "t": 105.443
+      },
+      {
+        "title": "Watch out",
+        "t": 181.108
+      },
+      {
+        "title": "Your turn",
+        "t": 212.998
+      },
+      {
+        "title": "Summary",
+        "t": 251.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1:q",
+        "t": 225.917,
+        "prompt": "The point $P(-2, 3)$ is translated 4 units right and 5 units down. Where is its image $P'$?",
+        "choices": [
+          "$(2, 8)$",
+          "$(-6, -2)$",
+          "$(-6, 8)$",
+          "$(2, -2)$"
+        ],
+        "answer": 3,
+        "working": "The rule is $(x, y) \\to (x + 4,\\ y - 5)$, so $(-2, 3) \\to (-2 + 4,\\ 3 - 5) = (2, -2)$."
+      }
+    ]
+  },
+  "m303-4-1-b": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 2: Reflections",
+    "duration": 308,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reflections",
+        "t": 19.81
+      },
+      {
+        "title": "Rules for reflections",
+        "t": 69.375
+      },
+      {
+        "title": "A logo in a window line",
+        "t": 134.325
+      },
+      {
+        "title": "Reflecting in the axes",
+        "t": 188.324
+      },
+      {
+        "title": "Your turn",
+        "t": 229.314
+      },
+      {
+        "title": "Summary",
+        "t": 267.867
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1-b:q",
+        "t": 240.978,
+        "prompt": "The point $(5, -2)$ is reflected in the horizontal line $y = 1$. Where is its image?",
+        "choices": [
+          "$(5, 4)$",
+          "$(-3, -2)$",
+          "$(5, 2)$",
+          "$(-5, -2)$"
+        ],
+        "answer": 0,
+        "working": "The point is $1 - (-2) = 3$ units below the line, so its image is 3 units above it: $y = 1 + 3 = 4$. Rule: $2(1) - (-2) = 4$. The image is $(5, 4)$."
+      }
+    ]
+  },
+  "m303-4-1-c": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 3: Rotations about the Origin",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotations",
+        "t": 21.405
+      },
+      {
+        "title": "Rules for the origin",
+        "t": 65.442
+      },
+      {
+        "title": "A quarter turn of a tile",
+        "t": 122.774
+      },
+      {
+        "title": "Watch out",
+        "t": 189.464
+      },
+      {
+        "title": "Your turn",
+        "t": 232.76
+      },
+      {
+        "title": "Summary",
+        "t": 269.604
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1-c:q",
+        "t": 244.502,
+        "prompt": "The point $(4, 3)$ is rotated $90^\\circ$ counterclockwise about the origin. Where is its image?",
+        "choices": [
+          "$(3, -4)$",
+          "$(-3, 4)$",
+          "$(-4, -3)$",
+          "$(4, -3)$"
+        ],
+        "answer": 1,
+        "working": "A $90^\\circ$ counterclockwise turn uses $(x, y) \\to (-y, x)$, so $(4, 3) \\to (-3, 4)$, in quadrant II."
+      }
+    ]
+  },
+  "m303-4-1-d": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 4: Describing a Transformation",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two questions",
+        "t": 22.128
+      },
+      {
+        "title": "Is it flipped?",
+        "t": 66.342
+      },
+      {
+        "title": "A patio slab",
+        "t": 108.926
+      },
+      {
+        "title": "Working backwards",
+        "t": 174.12
+      },
+      {
+        "title": "Your turn",
+        "t": 221.611
+      },
+      {
+        "title": "Summary",
+        "t": 264.593
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1-d:q",
+        "t": 239.132,
+        "prompt": "A triangle is transformed so that $A(1, 2) \\to A'(2, -1)$ and $B(4, 2) \\to B'(2, -4)$. Which transformation is it?",
+        "choices": [
+          "A reflection in the $x$-axis",
+          "A rotation of $90^\\circ$ counterclockwise about the origin",
+          "A rotation of $90^\\circ$ clockwise about the origin",
+          "A translation"
+        ],
+        "answer": 2,
+        "working": "Both pairs follow $(x, y) \\to (y, -x)$: $(1, 2) \\to (2, -1)$ and $(4, 2) \\to (2, -4)$. That is a $90^\\circ$ clockwise rotation about the origin."
+      }
+    ]
+  },
+  "m303-4-1-e": {
+    "lessonId": "m303-4-1",
+    "title": "Translations, Reflections and Rotations, Part 5: Two Transformations in a Row",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One step at a time",
+        "t": 19.68
+      },
+      {
+        "title": "A two-step tile pattern",
+        "t": 39.801
+      },
+      {
+        "title": "Turn, then slide",
+        "t": 80.264
+      },
+      {
+        "title": "Slide, then turn",
+        "t": 111.995
+      },
+      {
+        "title": "Your turn",
+        "t": 145.887
+      },
+      {
+        "title": "Summary",
+        "t": 184.169
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-1-e:q",
+        "t": 159.008,
+        "prompt": "The point $Q(1, 4)$ is translated 3 units right, and then the image is reflected in the $x$-axis. Where does it end up?",
+        "choices": [
+          "$(4, -4)$",
+          "$(-4, 4)$",
+          "$(4, 4)$",
+          "$(1, -4)$"
+        ],
+        "answer": 0,
+        "working": "Translate 3 right: $(1, 4) \\to (4, 4)$. Reflect in the $x$-axis: $(4, 4) \\to (4, -4)$."
+      }
+    ]
+  },
+  "m303-4-2": {
+    "lessonId": "m303-4-2",
+    "title": "Dilations, Part 1: What a Dilation Does",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dilations",
+        "t": 25.141
+      },
+      {
+        "title": "Enlarging a logo",
+        "t": 64.011
+      },
+      {
+        "title": "A reduction",
+        "t": 123.078
+      },
+      {
+        "title": "Watch out",
+        "t": 156.085
+      },
+      {
+        "title": "Your turn",
+        "t": 179.751
+      },
+      {
+        "title": "Summary",
+        "t": 215.64
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-2:q",
+        "t": 192.136,
+        "prompt": "The point $(6, -9)$ is dilated about the origin by a scale factor of $\\tfrac{1}{3}$. Where is its image?",
+        "choices": [
+          "$(18, -27)$",
+          "$(3, -6)$",
+          "$(2, -9)$",
+          "$(2, -3)$"
+        ],
+        "answer": 3,
+        "working": "Multiply both coordinates by $\\tfrac{1}{3}$: $\\left(\\tfrac{1}{3} \\times 6,\\ \\tfrac{1}{3} \\times (-9)\\right) = (2, -3)$."
+      }
+    ]
+  },
+  "m303-4-2-b": {
+    "lessonId": "m303-4-2",
+    "title": "Dilations, Part 2: Finding the Scale Factor",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 20.64
+      },
+      {
+        "title": "A logo for a banner",
+        "t": 44.76
+      },
+      {
+        "title": "A reduction",
+        "t": 79.117
+      },
+      {
+        "title": "Watch out",
+        "t": 110.827
+      },
+      {
+        "title": "Your turn",
+        "t": 145.802
+      },
+      {
+        "title": "Summary",
+        "t": 184.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-2-b:q",
+        "t": 157.192,
+        "prompt": "A photo $20\\text{ cm}$ wide is printed $16\\text{ cm}$ wide. What is the scale factor of the print?",
+        "choices": [
+          "$1.25$",
+          "$0.8$",
+          "$4$",
+          "$0.2$"
+        ],
+        "answer": 1,
+        "working": "$k = \\dfrac{\\text{image}}{\\text{original}} = \\dfrac{16}{20} = 0.8$. Since $0.8 < 1$, the print is a reduction."
+      }
+    ]
+  },
+  "m303-4-2-c": {
+    "lessonId": "m303-4-2",
+    "title": "Dilations, Part 3: Perimeter and Area after a Dilation",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Perimeter",
+        "t": 21.891
+      },
+      {
+        "title": "Area",
+        "t": 43.214
+      },
+      {
+        "title": "Enlarging a quilt block",
+        "t": 99.128
+      },
+      {
+        "title": "Watch out",
+        "t": 157.089
+      },
+      {
+        "title": "From two areas to k",
+        "t": 188.111
+      },
+      {
+        "title": "Your turn",
+        "t": 221.379
+      },
+      {
+        "title": "Summary",
+        "t": 259.19
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-2-c:q",
+        "t": 233.657,
+        "prompt": "A rectangle with an area of $12\\text{ m}^2$ is dilated by a scale factor of $3$. What is the area of the image?",
+        "choices": [
+          "$36\\text{ m}^2$",
+          "$144\\text{ m}^2$",
+          "$108\\text{ m}^2$",
+          "$24\\text{ m}^2$"
+        ],
+        "answer": 2,
+        "working": "Area is multiplied by $k^2 = 3^2 = 9$: $9 \\times 12 = 108\\text{ m}^2$."
+      }
+    ]
+  },
+  "m303-4-2-d": {
+    "lessonId": "m303-4-2",
+    "title": "Dilations, Part 4: Scale Drawings and Scale Models",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a scale means",
+        "t": 22.82
+      },
+      {
+        "title": "Area from a floor plan",
+        "t": 58.1
+      },
+      {
+        "title": "Convert the lengths first",
+        "t": 108.432
+      },
+      {
+        "title": "A scale model",
+        "t": 151.148
+      },
+      {
+        "title": "Your turn",
+        "t": 186.522
+      },
+      {
+        "title": "Summary",
+        "t": 234.51
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-2-d:q",
+        "t": 200.898,
+        "prompt": "A plan is drawn at a scale of $1 : 100$. A room on the plan is $4\\text{ cm}$ by $3\\text{ cm}$. What is the real area of the room?",
+        "choices": [
+          "$12\\text{ m}^2$",
+          "$0.12\\text{ m}^2$",
+          "$1.2\\text{ m}^2$",
+          "$120\\text{ m}^2$"
+        ],
+        "answer": 0,
+        "working": "Real lengths: $4 \\times 100 = 400\\text{ cm} = 4\\text{ m}$ and $3 \\times 100 = 300\\text{ cm} = 3\\text{ m}$. Area: $4 \\times 3 = 12\\text{ m}^2$."
+      }
+    ]
+  },
+  "m303-5-1": {
+    "lessonId": "m303-5-1",
+    "title": "Patterns, Tables and Graphs, Part 1: Linear Patterns in Tables",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Linear relations",
+        "t": 30.106
+      },
+      {
+        "title": "Renting a skid steer",
+        "t": 62.283
+      },
+      {
+        "title": "A straight line",
+        "t": 118.22
+      },
+      {
+        "title": "Watch out",
+        "t": 158.135
+      },
+      {
+        "title": "Not every table is linear",
+        "t": 185.846
+      },
+      {
+        "title": "Your turn",
+        "t": 217.502
+      },
+      {
+        "title": "Summary",
+        "t": 255.689
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-1:q",
+        "t": 227.963,
+        "prompt": "For $x = 0, 1, 2, 3$, which list of $y$-values makes a linear relation?",
+        "choices": [
+          "$4, 6, 9, 13$",
+          "$20, 17, 14, 11$",
+          "$1, 2, 4, 8$",
+          "$3, 6, 9, 15$"
+        ],
+        "answer": 1,
+        "working": "In B, $y$ changes by $-3$ every time $x$ goes up by $1$, so the changes are equal: linear. In D, the changes are $3, 3, 6$."
+      }
+    ]
+  },
+  "m303-5-1-b": {
+    "lessonId": "m303-5-1",
+    "title": "Patterns, Tables and Graphs, Part 2: Rate of Change and Initial Value",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rate of change",
+        "t": 23.144
+      },
+      {
+        "title": "Initial value",
+        "t": 47.45
+      },
+      {
+        "title": "The skid steer again",
+        "t": 64.996
+      },
+      {
+        "title": "Diesel in a tractor",
+        "t": 92.635
+      },
+      {
+        "title": "Watch out",
+        "t": 151.964
+      },
+      {
+        "title": "Your turn",
+        "t": 189.558
+      },
+      {
+        "title": "Summary",
+        "t": 236.154
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-1-b:q",
+        "t": 208.322,
+        "prompt": "A tank is being filled. At $0, 5, 10$ and $15$ minutes, it holds $120, 220, 320$ and $420$ litres. Find the rate of change and the initial value.",
+        "choices": [
+          "$100$ L per minute; $120$ L",
+          "$20$ L per minute; $0$ L",
+          "$5$ L per minute; $120$ L",
+          "$20$ L per minute; $120$ L"
+        ],
+        "answer": 3,
+        "working": "The water goes up $100$ L every $5$ minutes: $\\dfrac{100}{5} = 20$ L per minute. At $0$ minutes, the tank holds $120$ L."
+      }
+    ]
+  },
+  "m303-5-1-c": {
+    "lessonId": "m303-5-1",
+    "title": "Patterns, Tables and Graphs, Part 3: Reading a Graph",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rise over run",
+        "t": 20.406
+      },
+      {
+        "title": "A phone bill",
+        "t": 48.768
+      },
+      {
+        "title": "The rate of change",
+        "t": 82.862
+      },
+      {
+        "title": "The initial value",
+        "t": 120.551
+      },
+      {
+        "title": "Pick points far apart",
+        "t": 160.573
+      },
+      {
+        "title": "Your turn",
+        "t": 192.75
+      },
+      {
+        "title": "Summary",
+        "t": 244.142
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-1-c:q",
+        "t": 213.281,
+        "prompt": "A graph of a gym’s total fees passes through $(0, 40)$ and $(6, 130)$, where $x$ is the number of months and $y$ is the total cost in dollars. Find the rate of change and the initial value.",
+        "choices": [
+          "\\$15 per month; \\$40",
+          "\\$21.67 per month; \\$0",
+          "\\$90 per month; \\$40",
+          "\\$15 per month; \\$130"
+        ],
+        "answer": 0,
+        "working": "Rise: $130 - 40 = 90$. Run: $6 - 0 = 6$. Rate: $\\dfrac{90}{6} = 15$ dollars per month. The line crosses the vertical axis at $40$, so the initial value is \\$40."
+      }
+    ]
+  },
+  "m303-5-1-d": {
+    "lessonId": "m303-5-1",
+    "title": "Patterns, Tables and Graphs, Part 4: Working Back to the Initial Value",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two facts",
+        "t": 22.51
+      },
+      {
+        "title": "The rate first",
+        "t": 52.453
+      },
+      {
+        "title": "Back to zero",
+        "t": 87.215
+      },
+      {
+        "title": "Check",
+        "t": 132.891
+      },
+      {
+        "title": "Watch out",
+        "t": 169.146
+      },
+      {
+        "title": "Your turn",
+        "t": 204.524
+      },
+      {
+        "title": "Summary",
+        "t": 253.911
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-1-d:q",
+        "t": 221.66,
+        "prompt": "An electrician charges \\$150 for a $2$-hour job and \\$270 for a $5$-hour job. The cost is linear. What is the initial value (the call-out fee)?",
+        "choices": [
+          "\\$40",
+          "\\$75",
+          "\\$70",
+          "\\$54"
+        ],
+        "answer": 2,
+        "working": "Rate: $\\dfrac{270 - 150}{5 - 2} = \\dfrac{120}{3} = 40$ dollars per hour. Two hours cost $2 \\times 40 = 80$, so the fee is $150 - 80 = 70$ dollars."
+      }
+    ]
+  },
+  "m303-5-2": {
+    "lessonId": "m303-5-2",
+    "title": "Writing Linear Equations, Part 1: The Equation y = mx + b",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "y = mx + b",
+        "t": 24.26
+      },
+      {
+        "title": "A plumber’s bill",
+        "t": 63.504
+      },
+      {
+        "title": "Watch out",
+        "t": 114.033
+      },
+      {
+        "title": "When the amount goes down",
+        "t": 147.454
+      },
+      {
+        "title": "Your turn",
+        "t": 196.913
+      },
+      {
+        "title": "Summary",
+        "t": 236.564
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-2:q",
+        "t": 211.071,
+        "prompt": "A gym charges a \\$49 joining fee plus \\$32 per month. Which equation gives the total cost $C$, in dollars, for $n$ months?",
+        "choices": [
+          "$C = 49n + 32$",
+          "$C = 81n$",
+          "$C = 32n - 49$",
+          "$C = 32n + 49$"
+        ],
+        "answer": 3,
+        "working": "The \\$32 is charged for each month, so it multiplies $n$: $m = 32$. The \\$49 fee is charged once, at the start: $b = 49$."
+      }
+    ]
+  },
+  "m303-5-2-b": {
+    "lessonId": "m303-5-2",
+    "title": "Writing Linear Equations, Part 2: Using an Equation",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of question",
+        "t": 17.8
+      },
+      {
+        "title": "A phone bill",
+        "t": 40.783
+      },
+      {
+        "title": "How many packages?",
+        "t": 81.963
+      },
+      {
+        "title": "Undo in reverse order",
+        "t": 145.444
+      },
+      {
+        "title": "Watch out",
+        "t": 181.781
+      },
+      {
+        "title": "Your turn",
+        "t": 219.248
+      },
+      {
+        "title": "Summary",
+        "t": 264.289
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-2-b:q",
+        "t": 234.354,
+        "prompt": "A rental van costs $C = 0.35d + 59$ dollars for $d$ kilometres. How far can you drive for \\$108?",
+        "choices": [
+          "$249.6$ km",
+          "$140$ km",
+          "$96.8$ km",
+          "$308.6$ km"
+        ],
+        "answer": 1,
+        "working": "$108 = 0.35d + 59$. Subtract $59$: $49 = 0.35d$. Divide by $0.35$: $d = 140$ km."
+      }
+    ]
+  },
+  "m303-5-2-c": {
+    "lessonId": "m303-5-2",
+    "title": "Writing Linear Equations, Part 3: Equations from Tables and Two Facts",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The method",
+        "t": 18.17
+      },
+      {
+        "title": "Draining a tank",
+        "t": 45.921
+      },
+      {
+        "title": "Watch out",
+        "t": 95.985
+      },
+      {
+        "title": "Celsius and Fahrenheit",
+        "t": 129.12
+      },
+      {
+        "title": "Converting 25°C",
+        "t": 185.211
+      },
+      {
+        "title": "Your turn",
+        "t": 212.196
+      },
+      {
+        "title": "Summary",
+        "t": 259.95
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-2-c:q",
+        "t": 229.762,
+        "prompt": "A candle is $24$ cm tall when it is lit. After $3$ hours, it is $16.5$ cm tall. Its height is linear. Which equation gives its height $h$, in centimetres, after $t$ hours?",
+        "choices": [
+          "$h = 24 + 2.5t$",
+          "$h = 16.5 - 2.5t$",
+          "$h = 24 - 2.5t$",
+          "$h = 24 - 7.5t$"
+        ],
+        "answer": 2,
+        "working": "$m = \\dfrac{16.5 - 24}{3 - 0} = \\dfrac{-7.5}{3} = -2.5$ cm per hour, and $b = 24$, the height when lit. So $h = 24 - 2.5t$."
+      }
+    ]
+  },
+  "m303-5-2-d": {
+    "lessonId": "m303-5-2",
+    "title": "Writing Linear Equations, Part 4: Comparing Two Offers",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two rental shops",
+        "t": 23.301
+      },
+      {
+        "title": "When they cost the same",
+        "t": 53.03
+      },
+      {
+        "title": "On a graph",
+        "t": 100.913
+      },
+      {
+        "title": "Eight hours",
+        "t": 144.561
+      },
+      {
+        "title": "Short or long jobs",
+        "t": 176.392
+      },
+      {
+        "title": "Your turn",
+        "t": 204.763
+      },
+      {
+        "title": "Summary",
+        "t": 252.039
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-2-d:q",
+        "t": 222.606,
+        "prompt": "Plan A costs \\$20 a month plus \\$6 per GB of data. Plan B costs \\$44 a month plus \\$2 per GB. For how many GB do the plans cost the same?",
+        "choices": [
+          "$6$ GB",
+          "$4$ GB",
+          "$24$ GB",
+          "$16$ GB"
+        ],
+        "answer": 0,
+        "working": "$6g + 20 = 2g + 44$, so $4g = 24$ and $g = 6$. Both plans cost $6(6) + 20 = 56$ dollars."
+      }
+    ]
+  },
+  "m303-5-3": {
+    "lessonId": "m303-5-3",
+    "title": "Interpolating and Extrapolating, Part 1: Interpolation and Extrapolation",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of estimate",
+        "t": 24.829
+      },
+      {
+        "title": "Skid steer bills",
+        "t": 47.943
+      },
+      {
+        "title": "A 3-hour rental",
+        "t": 81.786
+      },
+      {
+        "title": "Beyond the data",
+        "t": 131.851
+      },
+      {
+        "title": "Which is safer?",
+        "t": 171.958
+      },
+      {
+        "title": "Your turn",
+        "t": 200.062
+      },
+      {
+        "title": "Summary",
+        "t": 238.262
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-3:q",
+        "t": 211.174,
+        "prompt": "A tree’s height was measured every year from age $10$ to age $40$. Which estimate is an interpolation?",
+        "choices": [
+          "Its height at age $50$",
+          "Its height at age $5$",
+          "Its height at age $25$",
+          "Its height when planted, at age $0$"
+        ],
+        "answer": 2,
+        "working": "Age $25$ is between $10$ and $40$, inside the data, so the estimate is an interpolation. The other three ages are outside the data."
+      }
+    ]
+  },
+  "m303-5-3-b": {
+    "lessonId": "m303-5-3",
+    "title": "Interpolating and Extrapolating, Part 2: Extrapolating with the Rate or the Equation",
+    "duration": 382,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A bigger concrete order",
+        "t": 21.093
+      },
+      {
+        "title": "Keep adding the rate",
+        "t": 51.711
+      },
+      {
+        "title": "Check with the equation",
+        "t": 95.019
+      },
+      {
+        "title": "When will it run dry?",
+        "t": 150.309
+      },
+      {
+        "title": "Rounding for a budget",
+        "t": 192.467
+      },
+      {
+        "title": "Rounding for a goal",
+        "t": 246.522
+      },
+      {
+        "title": "Your turn",
+        "t": 306.636
+      },
+      {
+        "title": "Summary",
+        "t": 353.736
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-3-b:q",
+        "t": 321.451,
+        "prompt": "A print shop charges $C = 0.12p + 15$ dollars for $p$ pages. You have \\$40. How many pages can you print?",
+        "choices": [
+          "$208$ pages",
+          "$209$ pages",
+          "$333$ pages",
+          "$125$ pages"
+        ],
+        "answer": 0,
+        "working": "$40 = 0.12p + 15$, so $25 = 0.12p$ and $p \\approx 208.3$. A budget means rounding down: $208$ pages cost \\$39.96, but $209$ pages cost \\$40.08."
+      }
+    ]
+  },
+  "m303-5-3-c": {
+    "lessonId": "m303-5-3",
+    "title": "Interpolating and Extrapolating, Part 3: Lines of Best Fit",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Real data",
+        "t": 20.595
+      },
+      {
+        "title": "Tomato plants",
+        "t": 45.269
+      },
+      {
+        "title": "At 5.5 weeks",
+        "t": 82.309
+      },
+      {
+        "title": "What the numbers mean",
+        "t": 117.409
+      },
+      {
+        "title": "Reaching 40 cm",
+        "t": 161.477
+      },
+      {
+        "title": "Your turn",
+        "t": 193.359
+      },
+      {
+        "title": "Summary",
+        "t": 242.021
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-3-c:q",
+        "t": 213.996,
+        "prompt": "For students who studied from $2$ to $10$ hours, the line of best fit is $s = 3.5h + 52$, where $s$ is the test score. Estimate the score for $6$ hours of study. Is this interpolation or extrapolation?",
+        "choices": [
+          "$73$; extrapolation",
+          "$21$; interpolation",
+          "$58$; interpolation",
+          "$73$; interpolation"
+        ],
+        "answer": 3,
+        "working": "$s = 3.5(6) + 52 = 21 + 52 = 73$. Since $6$ hours is between $2$ and $10$ hours, inside the data, this is interpolation."
+      }
+    ]
+  },
+  "m303-5-3-d": {
+    "lessonId": "m303-5-3",
+    "title": "Interpolating and Extrapolating, Part 4: When Is Extrapolation Reasonable?",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two questions",
+        "t": 20.146
+      },
+      {
+        "title": "A growing calf",
+        "t": 57.94
+      },
+      {
+        "title": "Is it reasonable?",
+        "t": 94.603
+      },
+      {
+        "title": "Is the answer possible?",
+        "t": 131.615
+      },
+      {
+        "title": "Watch out",
+        "t": 170.165
+      },
+      {
+        "title": "Your turn",
+        "t": 212.249
+      },
+      {
+        "title": "Summary",
+        "t": 256.038
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-3-d:q",
+        "t": 229.289,
+        "prompt": "A puppy gained about $0.5$ kg a week in its first $12$ weeks, from $1$ kg at birth, so $M = 0.5w + 1$. Which prediction is most reasonable?",
+        "choices": [
+          "At $520$ weeks: $261$ kg",
+          "At $14$ weeks: $8$ kg",
+          "At $200$ weeks: $101$ kg",
+          "At $-4$ weeks: $-1$ kg"
+        ],
+        "answer": 1,
+        "working": "$14$ weeks is just past the data, so the puppy is still growing in much the same way: $0.5(14) + 1 = 8$ kg. The others go far beyond the data or give an impossible answer."
+      }
+    ]
+  },
+  "m303-6-1": {
+    "lessonId": "m303-6-1",
+    "title": "Mean, Median and Mode, Part 1: The Mean",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central tendency",
+        "t": 23.144
+      },
+      {
+        "title": "The mean",
+        "t": 46.074
+      },
+      {
+        "title": "Furnace calls",
+        "t": 64.037
+      },
+      {
+        "title": "Sharing out equally",
+        "t": 103.984
+      },
+      {
+        "title": "Estimating totals",
+        "t": 140.219
+      },
+      {
+        "title": "Not always a data value",
+        "t": 176.024
+      },
+      {
+        "title": "Your turn",
+        "t": 209.051
+      },
+      {
+        "title": "Summary",
+        "t": 251.74
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-1:q",
+        "t": 223.687,
+        "prompt": "A café sold $42, 38, 51, 45$ and $49$ muffins on five days. What is the mean number of muffins sold per day?",
+        "choices": [
+          "$45$",
+          "$56.25$",
+          "$13$",
+          "$225$"
+        ],
+        "answer": 0,
+        "working": "Sum: $42 + 38 + 51 + 45 + 49 = 225$. Mean: $225 \\div 5 = 45$ muffins a day."
+      }
+    ]
+  },
+  "m303-6-1-b": {
+    "lessonId": "m303-6-1",
+    "title": "Mean, Median and Mode, Part 2: The Median and the Mode",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Median and mode",
+        "t": 20.578
+      },
+      {
+        "title": "Waiting for tires",
+        "t": 50.296
+      },
+      {
+        "title": "The median",
+        "t": 82.965
+      },
+      {
+        "title": "The mode",
+        "t": 118.444
+      },
+      {
+        "title": "An odd number of values",
+        "t": 152.44
+      },
+      {
+        "title": "Watch out",
+        "t": 175.641
+      },
+      {
+        "title": "Your turn",
+        "t": 201.773
+      },
+      {
+        "title": "Summary",
+        "t": 242.897
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-1-b:q",
+        "t": 211.245,
+        "prompt": "Find the median of $14, 9, 21, 9, 17, 12$.",
+        "choices": [
+          "$9$",
+          "$15$",
+          "$13$",
+          "$12$"
+        ],
+        "answer": 2,
+        "working": "In order: $9, 9, 12, 14, 17, 21$. With $6$ values, the median is halfway between the third and fourth values: $(12 + 14) \\div 2 = 13$."
+      }
+    ]
+  },
+  "m303-6-1-c": {
+    "lessonId": "m303-6-1",
+    "title": "Mean, Median and Mode, Part 3: Outliers and Choosing a Measure",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Outliers",
+        "t": 23.678
+      },
+      {
+        "title": "Hours worked",
+        "t": 38.622
+      },
+      {
+        "title": "Mean or median?",
+        "t": 71.946
+      },
+      {
+        "title": "Pulled by the outlier",
+        "t": 118.745
+      },
+      {
+        "title": "Choosing a measure",
+        "t": 155.151
+      },
+      {
+        "title": "Your turn",
+        "t": 190.155
+      },
+      {
+        "title": "Summary",
+        "t": 238.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-1-c:q",
+        "t": 208.058,
+        "prompt": "Five homes on a street sold for $310, 295, 320, 305$ and $1200$ thousand dollars. Which measure best describes a typical price?",
+        "choices": [
+          "Mean: $486$ thousand",
+          "Median: $310$ thousand",
+          "Mode: there is none",
+          "Median: $320$ thousand"
+        ],
+        "answer": 1,
+        "working": "The $1200$ is an outlier. It pulls the mean up to $2430 \\div 5 = 486$. In order, $295, 305, 310, 320, 1200$: the median, $310$, sits among the typical prices."
+      }
+    ]
+  },
+  "m303-6-1-d": {
+    "lessonId": "m303-6-1",
+    "title": "Mean, Median and Mode, Part 4: Finding a Missing Value",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Work with totals",
+        "t": 18.999
+      },
+      {
+        "title": "The last module exam",
+        "t": 37.332
+      },
+      {
+        "title": "Check",
+        "t": 94.814
+      },
+      {
+        "title": "Watch out",
+        "t": 120.914
+      },
+      {
+        "title": "Your turn",
+        "t": 163.26
+      },
+      {
+        "title": "Summary",
+        "t": 206.566
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-1-d:q",
+        "t": 179.39,
+        "prompt": "A salesperson needs a mean of at least $20$ sales a week over $4$ weeks. The first $3$ weeks had $18, 23$ and $15$ sales. How many sales are needed in week $4$?",
+        "choices": [
+          "$20$",
+          "$19$",
+          "$56$",
+          "$24$"
+        ],
+        "answer": 3,
+        "working": "Total needed: $20 \\times 4 = 80$. So far: $18 + 23 + 15 = 56$. Week $4$: $80 - 56 = 24$ sales."
+      }
+    ]
+  },
+  "m303-6-2": {
+    "lessonId": "m303-6-2",
+    "title": "Weighted and Trimmed Means, Part 1: Weighted Means for Course Marks",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Weighted mean",
+        "t": 20.922
+      },
+      {
+        "title": "A final mark",
+        "t": 54.7
+      },
+      {
+        "title": "Why no dividing?",
+        "t": 124.45
+      },
+      {
+        "title": "Watch out",
+        "t": 153.542
+      },
+      {
+        "title": "Your turn",
+        "t": 195.561
+      },
+      {
+        "title": "Summary",
+        "t": 240.373
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-2:q",
+        "t": 211.796,
+        "prompt": "A course counts homework $40\\%$ and the final exam $60\\%$. A student has $90\\%$ on homework and $70\\%$ on the exam. What is the final mark?",
+        "choices": [
+          "$80\\%$",
+          "$78\\%$",
+          "$82\\%$",
+          "$39\\%$"
+        ],
+        "answer": 1,
+        "working": "$0.40(90) + 0.60(70) = 36 + 42 = 78$, so the final mark is $78\\%$."
+      }
+    ]
+  },
+  "m303-6-2-b": {
+    "lessonId": "m303-6-2",
+    "title": "Weighted and Trimmed Means, Part 2: Weighted Means with Quantities",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quantities as weights",
+        "t": 21.246
+      },
+      {
+        "title": "A framer’s studs",
+        "t": 43.636
+      },
+      {
+        "title": "Pulled toward the bigger group",
+        "t": 96.477
+      },
+      {
+        "title": "Counting twice",
+        "t": 139.623
+      },
+      {
+        "title": "Your turn",
+        "t": 190.989
+      },
+      {
+        "title": "Summary",
+        "t": 242.157
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-2-b:q",
+        "t": 207.055,
+        "prompt": "A café bought $30$ kg of coffee at \\$12.50 per kg and $20$ kg at \\$15.00 per kg. What was the mean price per kilogram?",
+        "choices": [
+          "\\$13.75",
+          "\\$27.50",
+          "\\$14.00",
+          "\\$13.50"
+        ],
+        "answer": 3,
+        "working": "Total cost: $30(12.50) + 20(15.00) = 375 + 300 = 675$ dollars, for $50$ kg. Mean price: $675 \\div 50 = 13.50$ dollars per kg."
+      }
+    ]
+  },
+  "m303-6-2-c": {
+    "lessonId": "m303-6-2",
+    "title": "Weighted and Trimmed Means, Part 3: Trimmed Means",
+    "duration": 307,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trimmed mean",
+        "t": 22.586
+      },
+      {
+        "title": "Judges’ scores",
+        "t": 52.857
+      },
+      {
+        "title": "Ten parcels",
+        "t": 94.875
+      },
+      {
+        "title": "Trim 10% from each end",
+        "t": 129.131
+      },
+      {
+        "title": "Which is typical?",
+        "t": 170.925
+      },
+      {
+        "title": "Watch out",
+        "t": 197.067
+      },
+      {
+        "title": "Your turn",
+        "t": 231.875
+      },
+      {
+        "title": "Summary",
+        "t": 276.109
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-2-c:q",
+        "t": 246.757,
+        "prompt": "Eight judges give the scores $5, 9, 7, 8, 8, 10, 7, 9$. The highest and the lowest scores are dropped. What is the trimmed mean?",
+        "choices": [
+          "$8$",
+          "$7.9$",
+          "$9.6$",
+          "$7.6$"
+        ],
+        "answer": 0,
+        "working": "In order: $5, 7, 7, 8, 8, 9, 9, 10$. Drop $5$ and $10$: $7 + 7 + 8 + 8 + 9 + 9 = 48$, and $48 \\div 6 = 8$."
+      }
+    ]
+  },
+  "m303-6-2-d": {
+    "lessonId": "m303-6-2",
+    "title": "Weighted and Trimmed Means, Part 4: The Mark You Need on a Final Exam",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backwards",
+        "t": 16.751
+      },
+      {
+        "title": "What does Sofia need?",
+        "t": 33.325
+      },
+      {
+        "title": "Check",
+        "t": 123.509
+      },
+      {
+        "title": "Watch out",
+        "t": 153.062
+      },
+      {
+        "title": "Your turn",
+        "t": 188.105
+      },
+      {
+        "title": "Summary",
+        "t": 244.826
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-2-d:q",
+        "t": 208.088,
+        "prompt": "Labs count $30\\%$, tests $30\\%$ and the final exam $40\\%$. A student has $80\\%$ on labs and $70\\%$ on tests, and wants a final mark of $80\\%$. What mark is needed on the exam?",
+        "choices": [
+          "$35\\%$",
+          "$80\\%$",
+          "$87.5\\%$",
+          "$90\\%$"
+        ],
+        "answer": 2,
+        "working": "$0.30(80) + 0.30(70) + 0.40x = 80$, so $45 + 0.40x = 80$, $0.40x = 35$ and $x = 35 \\div 0.40 = 87.5$."
+      }
+    ]
+  },
+  "m303-6-3": {
+    "lessonId": "m303-6-3",
+    "title": "Percentiles, Part 1: What a Percentile Means",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percentiles",
+        "t": 26.809
+      },
+      {
+        "title": "A wage survey",
+        "t": 67.769
+      },
+      {
+        "title": "From 0 to 100",
+        "t": 110.127
+      },
+      {
+        "title": "A growth chart",
+        "t": 134.755
+      },
+      {
+        "title": "Watch out",
+        "t": 175.212
+      },
+      {
+        "title": "Your turn",
+        "t": 204.506
+      },
+      {
+        "title": "Summary",
+        "t": 243.343
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-3:q",
+        "t": 214.698,
+        "prompt": "In a wage survey, a carpenter’s wage is at the $70$th percentile. What does this mean?",
+        "choices": [
+          "It is $70\\%$ of the highest wage",
+          "About $70\\%$ of carpenters earn more",
+          "About $30\\%$ earn the same or less",
+          "About $70\\%$ earn the same or less"
+        ],
+        "answer": 3,
+        "working": "At the $70$th percentile, about $70\\%$ of the carpenters in the survey earn the same or less, and about $30\\%$ earn more."
+      }
+    ]
+  },
+  "m303-6-3-b": {
+    "lessonId": "m303-6-3",
+    "title": "Percentiles, Part 2: The Percentile Rank Formula",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The formula",
+        "t": 17.657
+      },
+      {
+        "title": "A safety test",
+        "t": 56.405
+      },
+      {
+        "title": "Watch out",
+        "t": 116.797
+      },
+      {
+        "title": "From a frequency table",
+        "t": 144.829
+      },
+      {
+        "title": "Your turn",
+        "t": 202.389
+      },
+      {
+        "title": "Summary",
+        "t": 241.655
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-3-b:q",
+        "t": 215.797,
+        "prompt": "In a class of $25$, $16$ students scored lower than Ben, and $3$ others had the same score as Ben. What is Ben’s percentile rank?",
+        "choices": [
+          "$72$",
+          "$70$",
+          "$64$",
+          "$76$"
+        ],
+        "answer": 0,
+        "working": "$b = 16$, $e = 3 + 1 = 4$, $n = 25$: $PR = \\dfrac{16 + 0.5(4)}{25} \\times 100 = \\dfrac{18}{25} \\times 100 = 72$."
+      }
+    ]
+  },
+  "m303-6-3-c": {
+    "lessonId": "m303-6-3",
+    "title": "Percentiles, Part 3: The Value at a Percentile",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The method",
+        "t": 21.221
+      },
+      {
+        "title": "A pipeline crew",
+        "t": 56.64
+      },
+      {
+        "title": "The 25th percentile",
+        "t": 82.437
+      },
+      {
+        "title": "The 90th percentile",
+        "t": 115.625
+      },
+      {
+        "title": "Watch out",
+        "t": 148.638
+      },
+      {
+        "title": "Your turn",
+        "t": 171.947
+      },
+      {
+        "title": "Summary",
+        "t": 220.443
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-3-c:q",
+        "t": 188.227,
+        "prompt": "Twelve values in order: $3, 5, 6, 8, 9, 11, 12, 14, 15, 17, 18, 20$. Find the $75$th percentile.",
+        "choices": [
+          "$15$",
+          "$17$",
+          "$16$",
+          "$14.5$"
+        ],
+        "answer": 2,
+        "working": "$R = 0.75 \\times 12 = 9$, a whole number, so use the mean of the $9$th and $10$th values: $(15 + 17) \\div 2 = 16$."
+      }
+    ]
+  },
+  "m303-6-3-d": {
+    "lessonId": "m303-6-3",
+    "title": "Percentiles, Part 4: Comparing Percentile Ranks",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Different groups",
+        "t": 17.639
+      },
+      {
+        "title": "Two classes",
+        "t": 40.485
+      },
+      {
+        "title": "Two percentile ranks",
+        "t": 88.26
+      },
+      {
+        "title": "Who did better?",
+        "t": 123.418
+      },
+      {
+        "title": "Watch out",
+        "t": 149.061
+      },
+      {
+        "title": "Your turn",
+        "t": 170.987
+      },
+      {
+        "title": "Summary",
+        "t": 222.625
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-6-3-d:q",
+        "t": 190.893,
+        "prompt": "Maya scored $68$ in a group of $25$: $18$ scored lower, and no one else had that score. Leo scored $74$ in a group of $40$: $25$ scored lower, and $1$ other had that score. Who did better compared with their own group?",
+        "choices": [
+          "Leo, with the higher score",
+          "Maya: PR $74$ against $65$",
+          "Leo: PR $74$ against $65$",
+          "Neither: the ranks are equal"
+        ],
+        "answer": 1,
+        "working": "Maya: $\\dfrac{18 + 0.5(1)}{25} \\times 100 = 74$. Leo: $\\dfrac{25 + 0.5(2)}{40} \\times 100 = 65$. Maya has the higher percentile rank."
+      }
+    ]
+  },
+  "m303-7-1": {
+    "lessonId": "m303-7-1",
+    "title": "Probability and Odds, Part 1: Probability as a Fraction, Decimal and Percent",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What probability means",
+        "t": 26.338
+      },
+      {
+        "title": "From impossible to certain",
+        "t": 64.154
+      },
+      {
+        "title": "Spark plugs",
+        "t": 99.782
+      },
+      {
+        "title": "The complement",
+        "t": 159.75
+      },
+      {
+        "title": "Check your answer",
+        "t": 203.243
+      },
+      {
+        "title": "Your turn",
+        "t": 231.291
+      },
+      {
+        "title": "Summary",
+        "t": 273.119
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-1:q",
+        "t": 245.337,
+        "prompt": "A carton of 24 eggs holds 3 cracked eggs. One egg is taken at random. What is the probability that it is cracked, as a percent?",
+        "choices": [
+          "$3\\%$",
+          "$8\\%$",
+          "$12.5\\%$",
+          "$87.5\\%$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{3}{24} = \\dfrac{1}{8} = 0.125 = 12.5\\%$. The probability that the egg is not cracked is $1 - 0.125 = 0.875$, or $87.5\\%$."
+      }
+    ]
+  },
+  "m303-7-1-b": {
+    "lessonId": "m303-7-1",
+    "title": "Probability and Odds, Part 2: Odds in Favour and Against",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Odds",
+        "t": 24.415
+      },
+      {
+        "title": "Burnt-out bulbs",
+        "t": 65.739
+      },
+      {
+        "title": "A raffle",
+        "t": 108.445
+      },
+      {
+        "title": "Odds or probability?",
+        "t": 161.629
+      },
+      {
+        "title": "Watch out",
+        "t": 199.72
+      },
+      {
+        "title": "Your turn",
+        "t": 234.842
+      },
+      {
+        "title": "Summary",
+        "t": 274.228
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-1-b:q",
+        "t": 247.562,
+        "prompt": "A bag holds 30 tiles, and 5 of them are red. One tile is drawn at random. What are the odds against drawing a red tile?",
+        "choices": [
+          "$5 : 1$",
+          "$1 : 5$",
+          "$1 : 6$",
+          "$6 : 1$"
+        ],
+        "answer": 0,
+        "working": "Favourable: 5 red tiles. Unfavourable: $30 - 5 = 25$. The odds against are $25 : 5 = 5 : 1$."
+      }
+    ]
+  },
+  "m303-7-1-c": {
+    "lessonId": "m303-7-1",
+    "title": "Probability and Odds, Part 3: Converting Odds and Probability",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The key idea",
+        "t": 22.474
+      },
+      {
+        "title": "From odds to probability",
+        "t": 59.43
+      },
+      {
+        "title": "From probability to odds",
+        "t": 103.324
+      },
+      {
+        "title": "Watch out",
+        "t": 144.296
+      },
+      {
+        "title": "Your turn",
+        "t": 170.404
+      },
+      {
+        "title": "Summary",
+        "t": 207
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-1-c:q",
+        "t": 181.542,
+        "prompt": "The odds in favour of a seed sprouting are $4 : 1$. What is the probability that it sprouts, as a percent?",
+        "choices": [
+          "$20\\%$",
+          "$25\\%$",
+          "$40\\%$",
+          "$80\\%$"
+        ],
+        "answer": 3,
+        "working": "4 favourable outcomes for every 1 unfavourable one make $4 + 1 = 5$ in all, so $P(\\text{sprouts}) = \\dfrac{4}{5} = 80\\%$."
+      }
+    ]
+  },
+  "m303-7-1-d": {
+    "lessonId": "m303-7-1",
+    "title": "Probability and Odds, Part 4: Expected Outcomes and Judging Claims",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The expected number",
+        "t": 23.636
+      },
+      {
+        "title": "Welds to redo",
+        "t": 61.907
+      },
+      {
+        "title": "Is tails due?",
+        "t": 107.835
+      },
+      {
+        "title": "Was the forecast wrong?",
+        "t": 138.583
+      },
+      {
+        "title": "Two more claims",
+        "t": 170.434
+      },
+      {
+        "title": "Your turn",
+        "t": 224.911
+      },
+      {
+        "title": "Summary",
+        "t": 270.334
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-1-d:q",
+        "t": 239.625,
+        "prompt": "From past records, 4% of the parcels a courier delivers arrive late. How many of the next 650 parcels would you expect to arrive late?",
+        "choices": [
+          "$260$",
+          "$26$",
+          "$2.6$",
+          "$624$"
+        ],
+        "answer": 1,
+        "working": "$4\\% = 0.04$, and $0.04 \\times 650 = 26$ parcels."
+      }
+    ]
+  },
+  "m303-7-2": {
+    "lessonId": "m303-7-2",
+    "title": "Probability of Combined Events, Part 1: Mutually Exclusive Events",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cannot happen together",
+        "t": 28.141
+      },
+      {
+        "title": "A parts bin",
+        "t": 69.622
+      },
+      {
+        "title": "Why adding works",
+        "t": 121.676
+      },
+      {
+        "title": "Watch out",
+        "t": 153.231
+      },
+      {
+        "title": "Your turn",
+        "t": 187.479
+      },
+      {
+        "title": "Summary",
+        "t": 228.496
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-2:q",
+        "t": 202.108,
+        "prompt": "A jar holds 15 red, 9 blue and 6 green buttons. One button is taken at random. What is the probability that it is blue or green?",
+        "choices": [
+          "$\\dfrac{3}{10}$",
+          "$\\dfrac{1}{5}$",
+          "$\\dfrac{3}{50}$",
+          "$\\dfrac{1}{2}$"
+        ],
+        "answer": 3,
+        "working": "There are $15 + 9 + 6 = 30$ buttons. Blue and green are mutually exclusive, so $\\dfrac{9}{30} + \\dfrac{6}{30} = \\dfrac{15}{30} = \\dfrac{1}{2}$."
+      }
+    ]
+  },
+  "m303-7-2-b": {
+    "lessonId": "m303-7-2",
+    "title": "Probability of Combined Events, Part 2: Independent Events",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Independent events",
+        "t": 24.599
+      },
+      {
+        "title": "A game at a fair",
+        "t": 57.997
+      },
+      {
+        "title": "Why multiplying works",
+        "t": 97.72
+      },
+      {
+        "title": "Two days of rain",
+        "t": 128.829
+      },
+      {
+        "title": "Watch out",
+        "t": 193.374
+      },
+      {
+        "title": "Your turn",
+        "t": 227.058
+      },
+      {
+        "title": "Summary",
+        "t": 277.538
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-2-b:q",
+        "t": 246.757,
+        "prompt": "One machine makes bolts, and 10% of them are too short. Another machine makes nuts, and 5% of them are cracked. One bolt and one nut are picked at random. What is the probability that the bolt is too short **and** the nut is cracked?",
+        "choices": [
+          "$15\\%$",
+          "$5\\%$",
+          "$0.5\\%$",
+          "$50\\%$"
+        ],
+        "answer": 2,
+        "working": "The machines are independent, so $0.10 \\times 0.05 = 0.005 = 0.5\\%$."
+      }
+    ]
+  },
+  "m303-7-2-c": {
+    "lessonId": "m303-7-2",
+    "title": "Probability of Combined Events, Part 3: Dependent Events",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dependent events",
+        "t": 21.247
+      },
+      {
+        "title": "Blown fuses",
+        "t": 54.618
+      },
+      {
+        "title": "The second fuse",
+        "t": 82.007
+      },
+      {
+        "title": "With replacement",
+        "t": 122.913
+      },
+      {
+        "title": "Watch out",
+        "t": 163.013
+      },
+      {
+        "title": "Your turn",
+        "t": 192.944
+      },
+      {
+        "title": "Summary",
+        "t": 237.697
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-2-c:q",
+        "t": 208.015,
+        "prompt": "A drawer holds 8 batteries, and 2 of them are dead. Two batteries are taken, one after the other, without putting the first back. What is the probability that both are dead?",
+        "choices": [
+          "$\\dfrac{1}{28}$",
+          "$\\dfrac{1}{16}$",
+          "$\\dfrac{1}{14}$",
+          "$\\dfrac{1}{4}$"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{2}{8} \\times \\dfrac{1}{7} = \\dfrac{2}{56} = \\dfrac{1}{28}$. After one dead battery is taken, 1 of the 7 left is dead."
+      }
+    ]
+  },
+  "m303-7-2-d": {
+    "lessonId": "m303-7-2",
+    "title": "Probability of Combined Events, Part 4: At Least One and Exactly One",
+    "duration": 343,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two key ideas",
+        "t": 22.18
+      },
+      {
+        "title": "Quality control",
+        "t": 54.275
+      },
+      {
+        "title": "Rain on exactly one day",
+        "t": 125.056
+      },
+      {
+        "title": "A matching pair",
+        "t": 188.336
+      },
+      {
+        "title": "Watch out",
+        "t": 235.072
+      },
+      {
+        "title": "Your turn",
+        "t": 269.712
+      },
+      {
+        "title": "Summary",
+        "t": 311.953
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-2-d:q",
+        "t": 283.875,
+        "prompt": "A player makes 70% of free throws, and each shot is independent. The player takes 2 shots. What is the probability of making **exactly one**?",
+        "choices": [
+          "$21\\%$",
+          "$42\\%$",
+          "$49\\%$",
+          "$91\\%$"
+        ],
+        "answer": 1,
+        "working": "Make then miss: $0.7 \\times 0.3 = 0.21$. Miss then make: $0.3 \\times 0.7 = 0.21$. Exactly one: $0.21 + 0.21 = 0.42 = 42\\%$."
+      }
+    ]
+  },
+  "m303-8-1": {
+    "lessonId": "m303-8-1",
+    "title": "Buying a Vehicle, Part 1: The Price with Tax and Fees",
+    "duration": 330,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tax on the price and the fees",
+        "t": 29.047
+      },
+      {
+        "title": "Why 1.05?",
+        "t": 64.992
+      },
+      {
+        "title": "A used truck",
+        "t": 105.733
+      },
+      {
+        "title": "The tax on its own",
+        "t": 159.361
+      },
+      {
+        "title": "Watch out",
+        "t": 209.918
+      },
+      {
+        "title": "Your turn",
+        "t": 244.429
+      },
+      {
+        "title": "Summary",
+        "t": 295.789
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-1:q",
+        "t": 262.914,
+        "prompt": "A used car costs \\$15,600, plus a \\$350 documentation fee. A sales tax of 5% is charged on the price and the fee. What is the total price?",
+        "choices": [
+          "\\$16,730.00",
+          "\\$797.50",
+          "\\$16,747.50",
+          "\\$15,950.00"
+        ],
+        "answer": 2,
+        "working": "$15{,}600 + 350 = 15{,}950$, and $15{,}950 \\times 1.05 = 16{,}747.50$, so the total price is \\$16,747.50."
+      }
+    ]
+  },
+  "m303-8-1-b": {
+    "lessonId": "m303-8-1",
+    "title": "Buying a Vehicle, Part 2: Down Payment and Finance Charge",
+    "duration": 321,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Borrowing to buy",
+        "t": 21.953
+      },
+      {
+        "title": "Owen’s loan",
+        "t": 58.295
+      },
+      {
+        "title": "The finance charge",
+        "t": 121.49
+      },
+      {
+        "title": "Paying less interest",
+        "t": 192.579
+      },
+      {
+        "title": "Watch out",
+        "t": 213.256
+      },
+      {
+        "title": "Your turn",
+        "t": 232.833
+      },
+      {
+        "title": "Summary",
+        "t": 293.034
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-1-b:q",
+        "t": 251.872,
+        "prompt": "A car’s total price is \\$18,900.00. The buyer pays \\$2,500 down and makes 36 monthly payments of \\$498.50. What is the finance charge?",
+        "choices": [
+          "\\$1,546.00",
+          "\\$17,946.00",
+          "\\$954.00",
+          "\\$20,446.00"
+        ],
+        "answer": 0,
+        "working": "Amount financed: $18{,}900 - 2{,}500 = 16{,}400$. Payments: $498.50 \\times 36 = 17{,}946.00$. Finance charge: $17{,}946.00 - 16{,}400 = 1{,}546.00$."
+      }
+    ]
+  },
+  "m303-8-1-c": {
+    "lessonId": "m303-8-1",
+    "title": "Buying a Vehicle, Part 3: Depreciation",
+    "duration": 334,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Depreciation",
+        "t": 20.066
+      },
+      {
+        "title": "A new SUV",
+        "t": 52.304
+      },
+      {
+        "title": "In one step",
+        "t": 120.433
+      },
+      {
+        "title": "Each loss is smaller",
+        "t": 175.096
+      },
+      {
+        "title": "Watch out",
+        "t": 219.765
+      },
+      {
+        "title": "Your turn",
+        "t": 254.793
+      },
+      {
+        "title": "Summary",
+        "t": 299.092
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-1-c:q",
+        "t": 268.006,
+        "prompt": "A truck costs \\$42,000. Suppose it loses 20% of its value each year. What is it worth after 2 years?",
+        "choices": [
+          "\\$25,200.00",
+          "\\$8,400.00",
+          "\\$33,600.00",
+          "\\$26,880.00"
+        ],
+        "answer": 3,
+        "working": "Losing 20% means keeping 80%: $42{,}000 \\times 0.80^2 = 42{,}000 \\times 0.64 = 26{,}880.00$."
+      }
+    ]
+  },
+  "m303-8-1-d": {
+    "lessonId": "m303-8-1",
+    "title": "Buying a Vehicle, Part 4: Operating Costs",
+    "duration": 337,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Operating costs",
+        "t": 20.196
+      },
+      {
+        "title": "Litres per 100 kilometres",
+        "t": 46.088
+      },
+      {
+        "title": "Fuel for a month",
+        "t": 79.943
+      },
+      {
+        "title": "A year of operating costs",
+        "t": 135.513
+      },
+      {
+        "title": "The real monthly cost",
+        "t": 191.155
+      },
+      {
+        "title": "Watch out",
+        "t": 227.094
+      },
+      {
+        "title": "Your turn",
+        "t": 256.639
+      },
+      {
+        "title": "Summary",
+        "t": 304.969
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-1-d:q",
+        "t": 272.919,
+        "prompt": "A car uses 7.5 L/100 km, and fuel costs \\$1.60 per litre. What does the fuel cost for a 640 km trip?",
+        "choices": [
+          "\\$48.00",
+          "\\$76.80",
+          "\\$7,680.00",
+          "\\$12.00"
+        ],
+        "answer": 1,
+        "working": "$640 \\div 100 = 6.4$, so $6.4 \\times 7.5 = 48$ L, and $48 \\times 1.60 = 76.80$. The fuel costs \\$76.80."
+      }
+    ]
+  },
+  "m303-8-2": {
+    "lessonId": "m303-8-2",
+    "title": "Leasing and Leasing to Buy, Part 1: How a Lease Works",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A long-term rental",
+        "t": 20.484
+      },
+      {
+        "title": "The total cost",
+        "t": 64.97
+      },
+      {
+        "title": "A three-year lease",
+        "t": 79.533
+      },
+      {
+        "title": "What it costs each month",
+        "t": 135.69
+      },
+      {
+        "title": "Watch out",
+        "t": 169.451
+      },
+      {
+        "title": "Your turn",
+        "t": 195.014
+      },
+      {
+        "title": "Summary",
+        "t": 247.892
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-2:q",
+        "t": 215.006,
+        "prompt": "A lease costs \\$389.50 a month for 48 months, including tax, with \\$1,500 down and a \\$450 acquisition fee. What is the total cost of the lease?",
+        "choices": [
+          "\\$20,646.00",
+          "\\$18,696.00",
+          "\\$20,196.00",
+          "\\$2,339.50"
+        ],
+        "answer": 0,
+        "working": "$389.50 \\times 48 = 18{,}696.00$, and $18{,}696.00 + 1{,}500 + 450 = 20{,}646.00$."
+      }
+    ]
+  },
+  "m303-8-2-b": {
+    "lessonId": "m303-8-2",
+    "title": "Leasing and Leasing to Buy, Part 2: Kilometre Allowances",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The kilometre allowance",
+        "t": 19.601
+      },
+      {
+        "title": "Driving too much",
+        "t": 51.01
+      },
+      {
+        "title": "The new total",
+        "t": 108.302
+      },
+      {
+        "title": "Watch out",
+        "t": 148.739
+      },
+      {
+        "title": "Your turn",
+        "t": 182.703
+      },
+      {
+        "title": "Summary",
+        "t": 234.124
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-2-b:q",
+        "t": 202.741,
+        "prompt": "A 4-year lease allows 18,000 km a year and charges \\$0.12 for each kilometre over. At the end, the odometer shows 79,500 km. What is the excess kilometre charge?",
+        "choices": [
+          "\\$7,380.00",
+          "\\$9,540.00",
+          "\\$900.00",
+          "\\$90.00"
+        ],
+        "answer": 2,
+        "working": "Allowance: $18{,}000 \\times 4 = 72{,}000$ km. Over: $79{,}500 - 72{,}000 = 7{,}500$ km. Charge: $7{,}500 \\times 0.12 = 900.00$."
+      }
+    ]
+  },
+  "m303-8-2-c": {
+    "lessonId": "m303-8-2",
+    "title": "Leasing and Leasing to Buy, Part 3: Leasing to Buy",
+    "duration": 297,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Residual value",
+        "t": 17.922
+      },
+      {
+        "title": "Keeping the SUV",
+        "t": 48.804
+      },
+      {
+        "title": "Compared with paying cash",
+        "t": 96.547
+      },
+      {
+        "title": "Why lease to buy?",
+        "t": 156.181
+      },
+      {
+        "title": "Watch out",
+        "t": 185.106
+      },
+      {
+        "title": "Your turn",
+        "t": 215.226
+      },
+      {
+        "title": "Summary",
+        "t": 268.574
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-2-c:q",
+        "t": 234.884,
+        "prompt": "A lease cost \\$17,250.00 in total. At the end, the buyout price is \\$15,400, plus a sales tax of 5%. What is the total cost to own the vehicle?",
+        "choices": [
+          "\\$32,650.00",
+          "\\$16,170.00",
+          "\\$34,282.50",
+          "\\$33,420.00"
+        ],
+        "answer": 3,
+        "working": "Buyout with tax: $15{,}400 \\times 1.05 = 16{,}170.00$. Total cost to own: $17{,}250.00 + 16{,}170.00 = 33{,}420.00$."
+      }
+    ]
+  },
+  "m303-8-2-d": {
+    "lessonId": "m303-8-2",
+    "title": "Leasing and Leasing to Buy, Part 4: Buy or Lease?",
+    "duration": 339,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Leasing and buying",
+        "t": 20.889
+      },
+      {
+        "title": "Buying instead",
+        "t": 64.575
+      },
+      {
+        "title": "Comparing the totals",
+        "t": 154.127
+      },
+      {
+        "title": "Watch out",
+        "t": 205.318
+      },
+      {
+        "title": "Which suits you?",
+        "t": 230.926
+      },
+      {
+        "title": "Your turn",
+        "t": 255.835
+      },
+      {
+        "title": "Summary",
+        "t": 307.972
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-2-d:q",
+        "t": 277.094,
+        "prompt": "Over 4 years, buying a car costs \\$31,200 in all, and the car will then be worth \\$12,500. Leasing the same car for 4 years costs \\$20,400 in all. Which costs less, and by how much?",
+        "choices": [
+          "Leasing, by \\$10,800",
+          "Buying, by \\$1,700",
+          "Leasing, by \\$1,700",
+          "Buying, by \\$12,500"
+        ],
+        "answer": 1,
+        "working": "Net cost of buying: $31{,}200 - 12{,}500 = 18{,}700$. Leasing: $20{,}400$. Buying costs $20{,}400 - 18{,}700 = 1{,}700$ less."
+      }
+    ]
+  },
+  "m303-8-3": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 1: Fixed and Variable Costs",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of cost",
+        "t": 24.973
+      },
+      {
+        "title": "A quick test",
+        "t": 58.351
+      },
+      {
+        "title": "Four businesses",
+        "t": 91.558
+      },
+      {
+        "title": "A food truck’s costs",
+        "t": 139.592
+      },
+      {
+        "title": "Watch out",
+        "t": 208.341
+      },
+      {
+        "title": "Your turn",
+        "t": 234.201
+      },
+      {
+        "title": "Summary",
+        "t": 264.678
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3:q",
+        "t": 242.697,
+        "prompt": "A lawn care business has these costs. Which one is a **variable** cost?",
+        "choices": [
+          "Liability insurance",
+          "The mower loan payment",
+          "The phone bill",
+          "Gas for the mowers"
+        ],
+        "answer": 3,
+        "working": "More lawns mean more mowing, so more gas: gas for the mowers is variable. The insurance, the mower loan and the phone bill stay the same however many lawns are cut."
+      }
+    ]
+  },
+  "m303-8-3-b": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 2: Revenue, Total Costs and Profit",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Revenue and profit",
+        "t": 19.403
+      },
+      {
+        "title": "A month for the food truck",
+        "t": 50.998
+      },
+      {
+        "title": "Where the money went",
+        "t": 118.049
+      },
+      {
+        "title": "A month with a loss",
+        "t": 147.013
+      },
+      {
+        "title": "Watch out",
+        "t": 191.131
+      },
+      {
+        "title": "Your turn",
+        "t": 227.669
+      },
+      {
+        "title": "Summary",
+        "t": 281.46
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3-b:q",
+        "t": 246.932,
+        "prompt": "A candle stall has fixed costs of \\$600 a month. Each candle costs \\$3.50 to make and sells for \\$12. In one month, 150 candles are sold. What is the profit?",
+        "choices": [
+          "\\$675.00",
+          "\\$1,275.00",
+          "\\$1,200.00",
+          "\\$1,800.00"
+        ],
+        "answer": 0,
+        "working": "Revenue: $12 \\times 150 = 1{,}800$. Total costs: $600 + 3.50 \\times 150 = 600 + 525 = 1{,}125$. Profit: $1{,}800 - 1{,}125 = 675.00$."
+      }
+    ]
+  },
+  "m303-8-3-c": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 3: The Break-Even Point",
+    "duration": 357,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Contribution",
+        "t": 16.305
+      },
+      {
+        "title": "The break-even point",
+        "t": 62.399
+      },
+      {
+        "title": "Nia’s break-even point",
+        "t": 94.685
+      },
+      {
+        "title": "On a graph",
+        "t": 147.378
+      },
+      {
+        "title": "Watch out",
+        "t": 200.64
+      },
+      {
+        "title": "A break-even price",
+        "t": 228.285
+      },
+      {
+        "title": "Your turn",
+        "t": 275.135
+      },
+      {
+        "title": "Summary",
+        "t": 326.239
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3-c:q",
+        "t": 294.759,
+        "prompt": "A detailing business has fixed costs of \\$1,800 a month. Each detail costs \\$25 in supplies and sells for \\$140. How many details must be sold each month to break even?",
+        "choices": [
+          "$15$",
+          "$13$",
+          "$16$",
+          "$72$"
+        ],
+        "answer": 2,
+        "working": "Contribution: $140 - 25 = 115$. $1{,}800 \\div 115 = 15.65\\ldots$, so round up: 16 details."
+      }
+    ]
+  },
+  "m303-8-3-d": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 4: Is the Business Viable?",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Viable",
+        "t": 20.073
+      },
+      {
+        "title": "An income statement",
+        "t": 50.5
+      },
+      {
+        "title": "Profit and margin",
+        "t": 91.602
+      },
+      {
+        "title": "What the margin means",
+        "t": 152.347
+      },
+      {
+        "title": "Watch out",
+        "t": 181.848
+      },
+      {
+        "title": "Your turn",
+        "t": 207.442
+      },
+      {
+        "title": "Summary",
+        "t": 254.116
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3-d:q",
+        "t": 222.023,
+        "prompt": "A bakery stall had sales of \\$4,800 in a month and expenses of \\$3,360. What is its profit margin?",
+        "choices": [
+          "$70.0\\%$",
+          "$30.0\\%$",
+          "$42.9\\%$",
+          "$14.4\\%$"
+        ],
+        "answer": 1,
+        "working": "Profit: $4{,}800 - 3{,}360 = 1{,}440$. Profit margin: $\\dfrac{1{,}440}{4{,}800} \\times 100\\% = 30.0\\%$."
+      }
+    ]
+  },
+  "m303-8-3-e": {
+    "lessonId": "m303-8-3",
+    "title": "Small Business: Expenses, Sales and Profit, Part 5: Changing the Price and Profit Goals",
+    "duration": 324,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A higher price",
+        "t": 23.42
+      },
+      {
+        "title": "Fewer customers",
+        "t": 70.532
+      },
+      {
+        "title": "Profit for a goal",
+        "t": 132.844
+      },
+      {
+        "title": "A profit of 3,000 dollars",
+        "t": 157.483
+      },
+      {
+        "title": "Watch out",
+        "t": 218.898
+      },
+      {
+        "title": "Your turn",
+        "t": 247.139
+      },
+      {
+        "title": "Summary",
+        "t": 296.571
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-8-3-e:q",
+        "t": 265.426,
+        "prompt": "A business has fixed costs of \\$1,200 a month, and each item it sells has a contribution of \\$6. How many items must it sell to make a profit of \\$1,500 in a month?",
+        "choices": [
+          "$450$",
+          "$250$",
+          "$200$",
+          "$50$"
+        ],
+        "answer": 0,
+        "working": "$(1{,}200 + 1{,}500) \\div 6 = 2{,}700 \\div 6 = 450$ items."
+      }
+    ]
+  },
+  "m303-9-1": {
+    "lessonId": "m303-9-1",
+    "title": "Logic Puzzles and Games, Part 1: Number Puzzles",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a strategy?",
+        "t": 26.306
+      },
+      {
+        "title": "Number pyramids",
+        "t": 57.243
+      },
+      {
+        "title": "A pyramid that needs algebra",
+        "t": 104.387
+      },
+      {
+        "title": "Check",
+        "t": 157.713
+      },
+      {
+        "title": "Watch out",
+        "t": 178.177
+      },
+      {
+        "title": "Your turn",
+        "t": 204.39
+      },
+      {
+        "title": "Summary",
+        "t": 246.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-9-1:q",
+        "t": 220.182,
+        "prompt": "In a number pyramid, each brick is the sum of the two below it. The bottom row is $4$, $?$, $7$, and the top brick is $31$. What is the missing number?",
+        "choices": [
+          "$20$",
+          "$8$",
+          "$12$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "$(4 + x) + (x + 7) = 31$, so $2x + 11 = 31$, $2x = 20$ and $x = 10$. Check: $14 + 17 = 31$."
+      }
+    ]
+  },
+  "m303-9-1-b": {
+    "lessonId": "m303-9-1",
+    "title": "Logic Puzzles and Games, Part 2: Sudoku",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rules",
+        "t": 24.75
+      },
+      {
+        "title": "Two moves",
+        "t": 60.776
+      },
+      {
+        "title": "Only one number fits",
+        "t": 98.58
+      },
+      {
+        "title": "Only one cell fits",
+        "t": 120.277
+      },
+      {
+        "title": "Finishing the puzzle",
+        "t": 149.682
+      },
+      {
+        "title": "Your turn",
+        "t": 189.981
+      },
+      {
+        "title": "Summary",
+        "t": 230.489
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-9-1-b:q",
+        "t": 206.51,
+        "prompt": "In a 4 × 4 Sudoku, one row holds $2$, $4$ and two empty cells. The column of the first empty cell already has a $1$. Which number goes in the first empty cell?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$2$",
+          "$4$"
+        ],
+        "answer": 1,
+        "working": "The row is missing $1$ and $3$. The first empty cell’s column already has a $1$, so the first empty cell holds $3$ (and the second holds $1$)."
+      }
+    ]
+  },
+  "m303-9-1-c": {
+    "lessonId": "m303-9-1",
+    "title": "Logic Puzzles and Games, Part 3: KenKen",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rules",
+        "t": 20.836
+      },
+      {
+        "title": "Cages made one way",
+        "t": 65.997
+      },
+      {
+        "title": "A small KenKen",
+        "t": 101.325
+      },
+      {
+        "title": "Check with a cage",
+        "t": 136.3
+      },
+      {
+        "title": "Finishing the puzzle",
+        "t": 164.15
+      },
+      {
+        "title": "Your turn",
+        "t": 203.307
+      },
+      {
+        "title": "Summary",
+        "t": 233.283
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-9-1-c:q",
+        "t": 214.395,
+        "prompt": "In a 4 × 4 KenKen, using the numbers $1$ to $4$, which two-cell cage can be made **only one way**?",
+        "choices": [
+          "$5+$",
+          "$1-$",
+          "$7+$",
+          "$2\\div$"
+        ],
+        "answer": 2,
+        "working": "$7+$ can only be $3 + 4$. But $5+$ can be $1 + 4$ or $2 + 3$; $1-$ can be $2 - 1$, $3 - 2$ or $4 - 3$; and $2\\div$ can be $2 \\div 1$ or $4 \\div 2$."
+      }
+    ]
+  },
+  "m303-9-1-d": {
+    "lessonId": "m303-9-1",
+    "title": "Logic Puzzles and Games, Part 4: Logic Grids",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The puzzle",
+        "t": 19.313
+      },
+      {
+        "title": "Set up a grid",
+        "t": 42.117
+      },
+      {
+        "title": "Clue by clue",
+        "t": 67.892
+      },
+      {
+        "title": "Check every clue",
+        "t": 113.121
+      },
+      {
+        "title": "Watch out",
+        "t": 135.288
+      },
+      {
+        "title": "Your turn",
+        "t": 165.281
+      },
+      {
+        "title": "Summary",
+        "t": 208.403
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-9-1-d:q",
+        "t": 182.265,
+        "prompt": "Jin, Kate and Omar each drive a different vehicle: a truck, a van or a car. Kate does not drive the van or the car. Omar does not drive the van. Who drives the car?",
+        "choices": [
+          "Omar",
+          "Jin",
+          "Kate",
+          "There is not enough information"
+        ],
+        "answer": 0,
+        "working": "Kate drives neither the van nor the car, so Kate drives the truck. The van is not Kate’s or Omar’s, so Jin drives the van. That leaves the car for Omar."
+      }
+    ]
+  },
+  "m303-9-1-e": {
+    "lessonId": "m303-9-1",
+    "title": "Logic Puzzles and Games, Part 5: Weighing Puzzles",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The puzzle",
+        "t": 22.304
+      },
+      {
+        "title": "Three outcomes",
+        "t": 47.086
+      },
+      {
+        "title": "The first weighing",
+        "t": 72.221
+      },
+      {
+        "title": "The second and third weighings",
+        "t": 103.967
+      },
+      {
+        "title": "Why three groups?",
+        "t": 136.834
+      },
+      {
+        "title": "Watch out",
+        "t": 177.456
+      },
+      {
+        "title": "Your turn",
+        "t": 215.312
+      },
+      {
+        "title": "Summary",
+        "t": 251.902
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-9-1-e:q",
+        "t": 227.141,
+        "prompt": "One of 9 coins is lighter than the others. What is the fewest number of weighings on a balance scale that is sure to find it?",
+        "choices": [
+          "$4$",
+          "$3$",
+          "$2$",
+          "$1$"
+        ],
+        "answer": 2,
+        "working": "$9 = 3^2$. Weigh 3 against 3 with 3 left off: the light coin is in one group of 3. Then weigh 1 against 1 with 1 left off."
+      }
+    ]
+  },
+  "m303-9-1-f": {
+    "lessonId": "m303-9-1",
+    "title": "Logic Puzzles and Games, Part 6: Crossing Puzzles",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The puzzle",
+        "t": 21.903
+      },
+      {
+        "title": "Keeping track",
+        "t": 55.436
+      },
+      {
+        "title": "The pattern",
+        "t": 100.097
+      },
+      {
+        "title": "Count the trips back",
+        "t": 135.292
+      },
+      {
+        "title": "Your turn",
+        "t": 162.067
+      },
+      {
+        "title": "Summary",
+        "t": 206.436
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-9-1-f:q",
+        "t": 178.674,
+        "prompt": "Two adults and two children must cross a river. The boat carries two children or one adult, never an adult with a child. What is the fewest number of crossings that gets everyone across?",
+        "choices": [
+          "$5$",
+          "$7$",
+          "$8$",
+          "$9$"
+        ],
+        "answer": 3,
+        "working": "Each adult takes the four-crossing pattern (both children over, one back, the adult over, the other child back): $4 + 4 = 8$. Then the two children cross together: $8 + 1 = 9$."
+      }
+    ]
+  },
+  "m303-9-1-g": {
+    "lessonId": "m303-9-1",
+    "title": "Logic Puzzles and Games, Part 7: Take-Away Games",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The game",
+        "t": 20.908
+      },
+      {
+        "title": "Work backward",
+        "t": 42.365
+      },
+      {
+        "title": "The winning move",
+        "t": 96.737
+      },
+      {
+        "title": "Unusual moves",
+        "t": 129.566
+      },
+      {
+        "title": "Your turn",
+        "t": 191.315
+      },
+      {
+        "title": "Summary",
+        "t": 230.302
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-9-1-g:q",
+        "t": 205.935,
+        "prompt": "Players take $1$, $2$ or $3$ counters a turn, and whoever takes the last counter wins. There are $15$ counters, and it is your turn. How many should you take?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$2$",
+          "It does not matter"
+        ],
+        "answer": 1,
+        "working": "Leave a multiple of 4: $15 - 3 = 12$. Then take $4$ minus whatever your opponent takes."
+      }
+    ]
+  },
+  "m303-9-1-h": {
+    "lessonId": "m303-9-1",
+    "title": "Logic Puzzles and Games, Part 8: Tic-Tac-Toe",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Win, block, fork",
+        "t": 18.602
+      },
+      {
+        "title": "Win or block",
+        "t": 48.424
+      },
+      {
+        "title": "Making a fork",
+        "t": 77.616
+      },
+      {
+        "title": "Watch out",
+        "t": 119.56
+      },
+      {
+        "title": "Your turn",
+        "t": 140.779
+      },
+      {
+        "title": "Summary",
+        "t": 175.499
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-9-1-h:q",
+        "t": 154.362,
+        "prompt": "In tic-tac-toe, it is your turn. You cannot win on this move, but your opponent has two in a row with the third square empty. What should you do?",
+        "choices": [
+          "Block the third square",
+          "Make a fork",
+          "Take a corner",
+          "Take the centre"
+        ],
+        "answer": 0,
+        "working": "Win first, then block, then fork. You cannot win, so block: otherwise your opponent completes the row on the next turn."
+      }
+    ]
   }
 }
