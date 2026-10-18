@@ -38991,5 +38991,111 @@
         "working": "The radius is $15$ m, so the centre of the wheel is $3 + 15 = 18$ m above the ground. Check: the maximum is $3 + 30 = 33$ and $\\dfrac{33 + 3}{2} = 18$."
       }
     ]
+  },
+  "m302-7-2": {
+    "lessonId": "m302-7-2",
+    "title": "Modelling Data with Sinusoidal Functions, Part 1: Reading a Regression Equation",
+    "duration": 334,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sinusoidal regression",
+        "t": 28.359
+      },
+      {
+        "title": "Daylight data",
+        "t": 61.264
+      },
+      {
+        "title": "Longest and shortest",
+        "t": 115.543
+      },
+      {
+        "title": "The period",
+        "t": 162.846
+      },
+      {
+        "title": "What the numbers mean",
+        "t": 197.613
+      },
+      {
+        "title": "Your turn",
+        "t": 240.555
+      },
+      {
+        "title": "Summary",
+        "t": 297.146
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-2:q",
+        "t": 262.42,
+        "prompt": "A model of the average temperature in a city in month $m$ is $T(m) = 11.2\\sin(0.524m - 1.83) + 3.4$, in °C. What are the highest temperature and the period?",
+        "choices": [
+          "$14.6^\\circ\\text{C}$, about $12$ months",
+          "$14.6^\\circ\\text{C}$, about $3.3$ months",
+          "$11.2^\\circ\\text{C}$, about $12$ months",
+          "$7.8^\\circ\\text{C}$, about $12$ months"
+        ],
+        "answer": 0,
+        "working": "Maximum $= d + a = 3.4 + 11.2 = 14.6$. Period $= \\dfrac{2\\pi}{0.524} = 11.99\\ldots \\approx 12$ months: one year."
+      }
+    ]
+  },
+  "m302-7-2-b": {
+    "lessonId": "m302-7-2",
+    "title": "Modelling Data with Sinusoidal Functions, Part 2: Making Predictions in Radian Mode",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Interpolation and extrapolation",
+        "t": 19.463
+      },
+      {
+        "title": "Daylight on April 10",
+        "t": 65.044
+      },
+      {
+        "title": "On the graph",
+        "t": 120.917
+      },
+      {
+        "title": "Radian mode",
+        "t": 146.251
+      },
+      {
+        "title": "Your turn",
+        "t": 195.912
+      },
+      {
+        "title": "Summary",
+        "t": 241.447
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-7-2-b:q",
+        "t": 204.458,
+        "prompt": "Use $L(n) = 5.07\\sin(0.0172n - 1.39) + 12.16$ to estimate the hours of daylight on day $200$.",
+        "choices": [
+          "$12.3$ h",
+          "$17.2$ h",
+          "$7.7$ h",
+          "$16.7$ h"
+        ],
+        "answer": 3,
+        "working": "Angle: $0.0172(200) - 1.39 = 2.05$, and in radian mode $\\sin(2.05) = 0.8873\\ldots$, so $L(200) = 5.07(0.8873\\ldots) + 12.16 = 16.65\\ldots \\approx 16.7$ h."
+      }
+    ]
   }
 }
