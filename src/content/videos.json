@@ -41801,5 +41801,547 @@
         "working": "$k = \\dfrac{\\text{image}}{\\text{original}} = \\dfrac{16}{20} = 0.8$. Since $0.8 < 1$, the print is a reduction."
       }
     ]
+  },
+  "m303-4-2-c": {
+    "lessonId": "m303-4-2",
+    "title": "Dilations, Part 3: Perimeter and Area after a Dilation",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Perimeter",
+        "t": 21.891
+      },
+      {
+        "title": "Area",
+        "t": 43.214
+      },
+      {
+        "title": "Enlarging a quilt block",
+        "t": 99.128
+      },
+      {
+        "title": "Watch out",
+        "t": 157.089
+      },
+      {
+        "title": "From two areas to k",
+        "t": 188.111
+      },
+      {
+        "title": "Your turn",
+        "t": 221.379
+      },
+      {
+        "title": "Summary",
+        "t": 259.19
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-2-c:q",
+        "t": 233.657,
+        "prompt": "A rectangle with an area of $12\\text{ m}^2$ is dilated by a scale factor of $3$. What is the area of the image?",
+        "choices": [
+          "$36\\text{ m}^2$",
+          "$144\\text{ m}^2$",
+          "$108\\text{ m}^2$",
+          "$24\\text{ m}^2$"
+        ],
+        "answer": 2,
+        "working": "Area is multiplied by $k^2 = 3^2 = 9$: $9 \\times 12 = 108\\text{ m}^2$."
+      }
+    ]
+  },
+  "m303-4-2-d": {
+    "lessonId": "m303-4-2",
+    "title": "Dilations, Part 4: Scale Drawings and Scale Models",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a scale means",
+        "t": 22.82
+      },
+      {
+        "title": "Area from a floor plan",
+        "t": 58.1
+      },
+      {
+        "title": "Convert the lengths first",
+        "t": 108.432
+      },
+      {
+        "title": "A scale model",
+        "t": 151.148
+      },
+      {
+        "title": "Your turn",
+        "t": 186.522
+      },
+      {
+        "title": "Summary",
+        "t": 234.51
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-4-2-d:q",
+        "t": 200.898,
+        "prompt": "A plan is drawn at a scale of $1 : 100$. A room on the plan is $4\\text{ cm}$ by $3\\text{ cm}$. What is the real area of the room?",
+        "choices": [
+          "$12\\text{ m}^2$",
+          "$0.12\\text{ m}^2$",
+          "$1.2\\text{ m}^2$",
+          "$120\\text{ m}^2$"
+        ],
+        "answer": 0,
+        "working": "Real lengths: $4 \\times 100 = 400\\text{ cm} = 4\\text{ m}$ and $3 \\times 100 = 300\\text{ cm} = 3\\text{ m}$. Area: $4 \\times 3 = 12\\text{ m}^2$."
+      }
+    ]
+  },
+  "m303-5-1": {
+    "lessonId": "m303-5-1",
+    "title": "Patterns, Tables and Graphs, Part 1: Linear Patterns in Tables",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Linear relations",
+        "t": 30.106
+      },
+      {
+        "title": "Renting a skid steer",
+        "t": 62.283
+      },
+      {
+        "title": "A straight line",
+        "t": 118.22
+      },
+      {
+        "title": "Watch out",
+        "t": 158.135
+      },
+      {
+        "title": "Not every table is linear",
+        "t": 185.846
+      },
+      {
+        "title": "Your turn",
+        "t": 217.502
+      },
+      {
+        "title": "Summary",
+        "t": 255.689
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-1:q",
+        "t": 227.963,
+        "prompt": "For $x = 0, 1, 2, 3$, which list of $y$-values makes a linear relation?",
+        "choices": [
+          "$4, 6, 9, 13$",
+          "$20, 17, 14, 11$",
+          "$1, 2, 4, 8$",
+          "$3, 6, 9, 15$"
+        ],
+        "answer": 1,
+        "working": "In B, $y$ changes by $-3$ every time $x$ goes up by $1$, so the changes are equal: linear. In D, the changes are $3, 3, 6$."
+      }
+    ]
+  },
+  "m303-5-1-b": {
+    "lessonId": "m303-5-1",
+    "title": "Patterns, Tables and Graphs, Part 2: Rate of Change and Initial Value",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rate of change",
+        "t": 23.144
+      },
+      {
+        "title": "Initial value",
+        "t": 47.45
+      },
+      {
+        "title": "The skid steer again",
+        "t": 64.996
+      },
+      {
+        "title": "Diesel in a tractor",
+        "t": 92.635
+      },
+      {
+        "title": "Watch out",
+        "t": 151.964
+      },
+      {
+        "title": "Your turn",
+        "t": 189.558
+      },
+      {
+        "title": "Summary",
+        "t": 236.154
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-1-b:q",
+        "t": 208.322,
+        "prompt": "A tank is being filled. At $0, 5, 10$ and $15$ minutes, it holds $120, 220, 320$ and $420$ litres. Find the rate of change and the initial value.",
+        "choices": [
+          "$100$ L per minute; $120$ L",
+          "$20$ L per minute; $0$ L",
+          "$5$ L per minute; $120$ L",
+          "$20$ L per minute; $120$ L"
+        ],
+        "answer": 3,
+        "working": "The water goes up $100$ L every $5$ minutes: $\\dfrac{100}{5} = 20$ L per minute. At $0$ minutes, the tank holds $120$ L."
+      }
+    ]
+  },
+  "m303-5-1-c": {
+    "lessonId": "m303-5-1",
+    "title": "Patterns, Tables and Graphs, Part 3: Reading a Graph",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rise over run",
+        "t": 20.406
+      },
+      {
+        "title": "A phone bill",
+        "t": 48.768
+      },
+      {
+        "title": "The rate of change",
+        "t": 82.862
+      },
+      {
+        "title": "The initial value",
+        "t": 120.551
+      },
+      {
+        "title": "Pick points far apart",
+        "t": 160.573
+      },
+      {
+        "title": "Your turn",
+        "t": 192.75
+      },
+      {
+        "title": "Summary",
+        "t": 244.142
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-1-c:q",
+        "t": 213.281,
+        "prompt": "A graph of a gym’s total fees passes through $(0, 40)$ and $(6, 130)$, where $x$ is the number of months and $y$ is the total cost in dollars. Find the rate of change and the initial value.",
+        "choices": [
+          "\\$15 per month; \\$40",
+          "\\$21.67 per month; \\$0",
+          "\\$90 per month; \\$40",
+          "\\$15 per month; \\$130"
+        ],
+        "answer": 0,
+        "working": "Rise: $130 - 40 = 90$. Run: $6 - 0 = 6$. Rate: $\\dfrac{90}{6} = 15$ dollars per month. The line crosses the vertical axis at $40$, so the initial value is \\$40."
+      }
+    ]
+  },
+  "m303-5-1-d": {
+    "lessonId": "m303-5-1",
+    "title": "Patterns, Tables and Graphs, Part 4: Working Back to the Initial Value",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two facts",
+        "t": 22.51
+      },
+      {
+        "title": "The rate first",
+        "t": 52.453
+      },
+      {
+        "title": "Back to zero",
+        "t": 87.215
+      },
+      {
+        "title": "Check",
+        "t": 132.891
+      },
+      {
+        "title": "Watch out",
+        "t": 169.146
+      },
+      {
+        "title": "Your turn",
+        "t": 204.524
+      },
+      {
+        "title": "Summary",
+        "t": 253.911
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-1-d:q",
+        "t": 221.66,
+        "prompt": "An electrician charges \\$150 for a $2$-hour job and \\$270 for a $5$-hour job. The cost is linear. What is the initial value (the call-out fee)?",
+        "choices": [
+          "\\$40",
+          "\\$75",
+          "\\$70",
+          "\\$54"
+        ],
+        "answer": 2,
+        "working": "Rate: $\\dfrac{270 - 150}{5 - 2} = \\dfrac{120}{3} = 40$ dollars per hour. Two hours cost $2 \\times 40 = 80$, so the fee is $150 - 80 = 70$ dollars."
+      }
+    ]
+  },
+  "m303-5-2": {
+    "lessonId": "m303-5-2",
+    "title": "Writing Linear Equations, Part 1: The Equation y = mx + b",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "y = mx + b",
+        "t": 24.26
+      },
+      {
+        "title": "A plumber’s bill",
+        "t": 63.504
+      },
+      {
+        "title": "Watch out",
+        "t": 114.033
+      },
+      {
+        "title": "When the amount goes down",
+        "t": 147.454
+      },
+      {
+        "title": "Your turn",
+        "t": 196.913
+      },
+      {
+        "title": "Summary",
+        "t": 236.564
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-2:q",
+        "t": 211.071,
+        "prompt": "A gym charges a \\$49 joining fee plus \\$32 per month. Which equation gives the total cost $C$, in dollars, for $n$ months?",
+        "choices": [
+          "$C = 49n + 32$",
+          "$C = 81n$",
+          "$C = 32n - 49$",
+          "$C = 32n + 49$"
+        ],
+        "answer": 3,
+        "working": "The \\$32 is charged for each month, so it multiplies $n$: $m = 32$. The \\$49 fee is charged once, at the start: $b = 49$."
+      }
+    ]
+  },
+  "m303-5-2-b": {
+    "lessonId": "m303-5-2",
+    "title": "Writing Linear Equations, Part 2: Using an Equation",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of question",
+        "t": 17.8
+      },
+      {
+        "title": "A phone bill",
+        "t": 40.783
+      },
+      {
+        "title": "How many packages?",
+        "t": 81.963
+      },
+      {
+        "title": "Undo in reverse order",
+        "t": 145.444
+      },
+      {
+        "title": "Watch out",
+        "t": 181.781
+      },
+      {
+        "title": "Your turn",
+        "t": 219.248
+      },
+      {
+        "title": "Summary",
+        "t": 264.289
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-2-b:q",
+        "t": 234.354,
+        "prompt": "A rental van costs $C = 0.35d + 59$ dollars for $d$ kilometres. How far can you drive for \\$108?",
+        "choices": [
+          "$249.6$ km",
+          "$140$ km",
+          "$96.8$ km",
+          "$308.6$ km"
+        ],
+        "answer": 1,
+        "working": "$108 = 0.35d + 59$. Subtract $59$: $49 = 0.35d$. Divide by $0.35$: $d = 140$ km."
+      }
+    ]
+  },
+  "m303-5-2-c": {
+    "lessonId": "m303-5-2",
+    "title": "Writing Linear Equations, Part 3: Equations from Tables and Two Facts",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The method",
+        "t": 18.17
+      },
+      {
+        "title": "Draining a tank",
+        "t": 45.921
+      },
+      {
+        "title": "Watch out",
+        "t": 95.985
+      },
+      {
+        "title": "Celsius and Fahrenheit",
+        "t": 129.12
+      },
+      {
+        "title": "Converting 25°C",
+        "t": 185.211
+      },
+      {
+        "title": "Your turn",
+        "t": 212.196
+      },
+      {
+        "title": "Summary",
+        "t": 259.95
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-2-c:q",
+        "t": 229.762,
+        "prompt": "A candle is $24$ cm tall when it is lit. After $3$ hours, it is $16.5$ cm tall. Its height is linear. Which equation gives its height $h$, in centimetres, after $t$ hours?",
+        "choices": [
+          "$h = 24 + 2.5t$",
+          "$h = 16.5 - 2.5t$",
+          "$h = 24 - 2.5t$",
+          "$h = 24 - 7.5t$"
+        ],
+        "answer": 2,
+        "working": "$m = \\dfrac{16.5 - 24}{3 - 0} = \\dfrac{-7.5}{3} = -2.5$ cm per hour, and $b = 24$, the height when lit. So $h = 24 - 2.5t$."
+      }
+    ]
+  },
+  "m303-5-2-d": {
+    "lessonId": "m303-5-2",
+    "title": "Writing Linear Equations, Part 4: Comparing Two Offers",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two rental shops",
+        "t": 23.301
+      },
+      {
+        "title": "When they cost the same",
+        "t": 53.03
+      },
+      {
+        "title": "On a graph",
+        "t": 100.913
+      },
+      {
+        "title": "Eight hours",
+        "t": 144.561
+      },
+      {
+        "title": "Short or long jobs",
+        "t": 176.392
+      },
+      {
+        "title": "Your turn",
+        "t": 204.763
+      },
+      {
+        "title": "Summary",
+        "t": 252.039
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-5-2-d:q",
+        "t": 222.606,
+        "prompt": "Plan A costs \\$20 a month plus \\$6 per GB of data. Plan B costs \\$44 a month plus \\$2 per GB. For how many GB do the plans cost the same?",
+        "choices": [
+          "$6$ GB",
+          "$4$ GB",
+          "$24$ GB",
+          "$16$ GB"
+        ],
+        "answer": 0,
+        "working": "$6g + 20 = 2g + 44$, so $4g = 24$ and $g = 6$. Both plans cost $6(6) + 20 = 56$ dollars."
+      }
+    ]
   }
 }
