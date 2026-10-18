@@ -24,7 +24,7 @@ const video: Explainer = {
       lines: [
         { say: 'Here is the special limit: the limit as theta approaches zero of sine theta over theta is one.', show: 'm.0', focus: 'm.0' },
         { say: 'The letter theta is just a name. The limit works for any angle that approaches zero, as long as the denominator is exactly the same angle as the one inside the sine.', show: 'm.1', focus: 'm.1' },
-        { say: 'For example, as x approaches zero, five x approaches zero too. So sine five x, over five x, approaches one. But sine five x over plain x does not match yet.' },
+        { say: 'For example, as x approaches zero, five x approaches zero as well. So sine five x, over five x, approaches one. But sine five x over plain x does not match yet.' },
       ],
     },
     {

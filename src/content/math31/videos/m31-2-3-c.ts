@@ -57,7 +57,7 @@ const video: Explainer = {
         { say: 'For the top, we want to move the x inside the square root. Since x is negative, replace x with negative the square root of x squared.', show: 'm.1', focus: 'm.1' },
         { say: 'Now both are square roots, so they combine into one: negative the square root of nine x squared plus one, over x squared. That simplifies to negative the square root of nine plus one over x squared.', show: 'm.2', focus: 'm.2' },
         { say: 'As x approaches negative infinity, one over x squared and five over x both approach zero. That leaves negative the square root of nine, over two, which is negative three halves.', show: 'm.3', focus: 'm.3' },
-        { say: 'It is negative, just as the signs predicted.' },
+        { say: 'The answer is negative, just as the signs predicted.' },
       ],
     },
     {

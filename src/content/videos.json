@@ -5467,6 +5467,422 @@
       }
     ]
   },
+  "m31-2-4": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 1: What Continuity Means",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Without lifting your pencil",
+        "t": 25.297
+      },
+      {
+        "title": "Three conditions",
+        "t": 54.469
+      },
+      {
+        "title": "A continuous point",
+        "t": 92.952
+      },
+      {
+        "title": "Three ways to fail",
+        "t": 123.665
+      },
+      {
+        "title": "Your turn",
+        "t": 174.111
+      },
+      {
+        "title": "Summary",
+        "t": 214.127
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4:q",
+        "t": 189.548,
+        "prompt": "For a function $f$, $\\displaystyle\\lim_{x \\to 4} f(x) = 7$ and $f(4) = 3$. Which condition of continuity fails at $x = 4$?",
+        "choices": [
+          "1: $f(4)$ is not defined.",
+          "2: the limit does not exist.",
+          "3: the limit does not equal $f(4)$.",
+          "None: $f$ is continuous at $x = 4$."
+        ],
+        "answer": 2,
+        "working": "$f(4) = 3$ is defined, and the limit, $7$, exists. But $7 \\ne 3$, so condition 3 fails."
+      }
+    ]
+  },
+  "m31-2-4-b": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 2: Types of Discontinuity",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three types",
+        "t": 17.062
+      },
+      {
+        "title": "Reading a graph",
+        "t": 51.755
+      },
+      {
+        "title": "Why removable?",
+        "t": 114.056
+      },
+      {
+        "title": "Your turn",
+        "t": 146.342
+      },
+      {
+        "title": "Summary",
+        "t": 183.747
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4-b:q",
+        "t": 159.825,
+        "prompt": "At $x = 5$, $\\displaystyle\\lim_{x \\to 5^-} f(x) = 2$, $\\displaystyle\\lim_{x \\to 5^+} f(x) = 2$, and $f(5)$ is undefined. What type of discontinuity is this?",
+        "choices": [
+          "jump",
+          "removable",
+          "infinite",
+          "none: $f$ is continuous at $x = 5$"
+        ],
+        "answer": 1,
+        "working": "Both one-sided limits are $2$, so the limit exists. But $f(5)$ is undefined, so there is a hole: a removable discontinuity."
+      }
+    ]
+  },
+  "m31-2-4-c": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 3: Continuity of Familiar Functions",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Continuous on their domains",
+        "t": 20.128
+      },
+      {
+        "title": "A rational function",
+        "t": 76.783
+      },
+      {
+        "title": "On the graph",
+        "t": 133.481
+      },
+      {
+        "title": "Watch out",
+        "t": 155.516
+      },
+      {
+        "title": "Your turn",
+        "t": 177.9
+      },
+      {
+        "title": "Summary",
+        "t": 216.922
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4-c:q",
+        "t": 187.962,
+        "prompt": "Where is $f(x) = \\dfrac{x + 1}{x^2 - 1}$ discontinuous?",
+        "choices": [
+          "only at $x = 1$",
+          "only at $x = -1$",
+          "nowhere",
+          "at $x = -1$ (removable) and $x = 1$ (infinite)"
+        ],
+        "answer": 3,
+        "working": "$x^2 - 1 = (x - 1)(x + 1)$ is zero at $x = \\pm 1$. At $x = -1$ the factor $x + 1$ cancels: a hole. At $x = 1$ the top is $2 \\ne 0$: a vertical asymptote."
+      }
+    ]
+  },
+  "m31-2-4-d": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 4: Piecewise Functions",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Only the breaks matter",
+        "t": 19.008
+      },
+      {
+        "title": "Checking a break",
+        "t": 49.257
+      },
+      {
+        "title": "Finding k",
+        "t": 100.642
+      },
+      {
+        "title": "Filling a hole",
+        "t": 160.08
+      },
+      {
+        "title": "Your turn",
+        "t": 202.132
+      },
+      {
+        "title": "Summary",
+        "t": 244.461
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4-d:q",
+        "t": 217.342,
+        "prompt": "Find $k$ so that $f(x) = \\begin{cases} x + k, & x < 3 \\\\ 2x - 1, & x \\ge 3 \\end{cases}$ is continuous.",
+        "choices": [
+          "$k = 2$",
+          "$k = 5$",
+          "$k = 8$",
+          "$k = -2$"
+        ],
+        "answer": 0,
+        "working": "The left piece approaches $3 + k$; the right piece gives $f(3) = 2(3) - 1 = 5$. So $3 + k = 5$, and $k = 2$."
+      }
+    ]
+  },
+  "m31-2-4-e": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 5: The Intermediate Value Theorem",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Continuous on an interval",
+        "t": 26.907
+      },
+      {
+        "title": "The theorem",
+        "t": 50.461
+      },
+      {
+        "title": "Locating a root",
+        "t": 89.686
+      },
+      {
+        "title": "Why continuity matters",
+        "t": 145.652
+      },
+      {
+        "title": "Your turn",
+        "t": 179.725
+      },
+      {
+        "title": "Summary",
+        "t": 222.523
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4-e:q",
+        "t": 195.627,
+        "prompt": "For $f(x) = x^3 - 4x + 1$, on which interval does the Intermediate Value Theorem guarantee a solution of $f(x) = 0$?",
+        "choices": [
+          "between $2$ and $3$",
+          "between $-1$ and $0$",
+          "between $1$ and $2$",
+          "between $3$ and $4$"
+        ],
+        "answer": 2,
+        "working": "$f(1) = 1 - 4 + 1 = -2$ and $f(2) = 8 - 8 + 1 = 1$ have opposite signs. In the other choices, both ends are positive: $f(2) = 1, f(3) = 16$; $f(-1) = 4, f(0) = 1$; $f(3) = 16, f(4) = 49$."
+      }
+    ]
+  },
+  "m31-3-1": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 1: Average Rate of Change",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Average speed",
+        "t": 24.638
+      },
+      {
+        "title": "The definition",
+        "t": 65.932
+      },
+      {
+        "title": "From a table",
+        "t": 108.357
+      },
+      {
+        "title": "Units",
+        "t": 155.426
+      },
+      {
+        "title": "A negative rate",
+        "t": 187.497
+      },
+      {
+        "title": "Watch out",
+        "t": 230.469
+      },
+      {
+        "title": "Your turn",
+        "t": 260.112
+      },
+      {
+        "title": "Summary",
+        "t": 306.329
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1:q",
+        "t": 277.675,
+        "prompt": "A bathtub holds $150$ L of water $2$ minutes after the plug is pulled, and $70$ L after $7$ minutes. Find the average rate of change of the volume over this time.",
+        "choices": [
+          "$16$ L/min",
+          "$-16$ L/min",
+          "$-80$ L/min",
+          "$-\\tfrac{1}{16}$ min/L"
+        ],
+        "answer": 1,
+        "working": "Change in volume: $70 - 150 = -80$ L. Change in time: $7 - 2 = 5$ min. Rate: $\\dfrac{-80}{5} = -16$ L/min."
+      }
+    ]
+  },
+  "m31-3-1-b": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 2: Secant Lines",
+    "duration": 325,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "On a graph",
+        "t": 18.85
+      },
+      {
+        "title": "Secant lines",
+        "t": 67.066
+      },
+      {
+        "title": "From a formula",
+        "t": 103.717
+      },
+      {
+        "title": "Another interval",
+        "t": 170.592
+      },
+      {
+        "title": "Watch out",
+        "t": 213.151
+      },
+      {
+        "title": "Your turn",
+        "t": 250.454
+      },
+      {
+        "title": "Summary",
+        "t": 289.455
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-b:q",
+        "t": 261.976,
+        "prompt": "Find the average rate of change of $g(x) = x^2 + 2x$ on the interval $[1, 3]$.",
+        "choices": [
+          "$12$",
+          "$7.5$",
+          "$\\tfrac{1}{6}$",
+          "$6$"
+        ],
+        "answer": 3,
+        "working": "$g(3) = 9 + 6 = 15$ and $g(1) = 1 + 2 = 3$, so the average rate of change is $\\dfrac{15 - 3}{3 - 1} = \\dfrac{12}{2} = 6$."
+      }
+    ]
+  },
+  "m31-3-1-c": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 3: Average Velocity",
+    "duration": 313,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Position and velocity",
+        "t": 23.994
+      },
+      {
+        "title": "A ball thrown upward",
+        "t": 77.896
+      },
+      {
+        "title": "Rising, then falling",
+        "t": 129.81
+      },
+      {
+        "title": "Watch out",
+        "t": 184.157
+      },
+      {
+        "title": "Your turn",
+        "t": 224.173
+      },
+      {
+        "title": "Summary",
+        "t": 278.546
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-c:q",
+        "t": 242.758,
+        "prompt": "A stone is dropped from a ledge. Its height after $t$ seconds is $h(t) = 30 - 4.9t^2$ metres. Find its average velocity from $t = 1$ to $t = 2$.",
+        "choices": [
+          "$-14.7$ m/s",
+          "$14.7$ m/s",
+          "$-4.9$ m/s",
+          "$17.75$ m/s"
+        ],
+        "answer": 0,
+        "working": "$h(1) = 30 - 4.9 = 25.1$ and $h(2) = 30 - 19.6 = 10.4$, so the average velocity is $\\dfrac{10.4 - 25.1}{2 - 1} = -14.7$ m/s."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",

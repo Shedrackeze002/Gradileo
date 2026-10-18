@@ -81,7 +81,7 @@ const video: Explainer = {
       lines: [
         { say: 'Why does it work? A small change in x, delta x, causes a change in u, delta u, which causes a change in y, delta y.', show: 'm.0', focus: 'm.0' },
         { say: 'When delta u is not zero, delta y over delta x equals delta y over delta u, times delta u over delta x. The two delta u terms cancel, as with ordinary fractions.' },
-        { say: 'As delta x approaches zero, delta u approaches zero too. So the three ratios approach d y by d x, d y by d u, and d u by d x.', show: ['m.1', 'm.2'], focus: 'm.2' },
+        { say: 'As delta x approaches zero, delta u approaches zero as well. So the three ratios approach d y by d x, d y by d u, and d u by d x.', show: ['m.1', 'm.2'], focus: 'm.2' },
         { say: 'This is the idea of the proof. A complete proof also has to handle the case where delta u is zero, but the result is the same.', show: 't' },
       ],
     },
