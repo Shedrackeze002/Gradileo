@@ -4407,6 +4407,489 @@
       }
     ]
   },
+  "m31-1-1-e": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 5: The Difference Quotient of a Fraction",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A common denominator",
+        "t": 24.224
+      },
+      {
+        "title": "Divide by h",
+        "t": 81.076
+      },
+      {
+        "title": "Check with a graph",
+        "t": 110.772
+      },
+      {
+        "title": "Watch out",
+        "t": 152.611
+      },
+      {
+        "title": "Your turn",
+        "t": 204.314
+      },
+      {
+        "title": "Summary",
+        "t": 242.332
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1-e:q",
+        "t": 213.255,
+        "prompt": "Simplify the difference quotient for $f(x) = \\dfrac{2}{x}$.",
+        "choices": [
+          "$\\dfrac{2}{x(x + h)}$",
+          "$\\dfrac{-2}{x(x + h)}$",
+          "$\\dfrac{-2}{x^2}$",
+          "$\\dfrac{-2h}{x(x + h)}$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{2}{x + h} - \\dfrac{2}{x} = \\dfrac{2x - 2(x + h)}{x(x + h)} = \\dfrac{-2h}{x(x + h)}$. Divide by $h$: $\\dfrac{-2}{x(x + h)}$."
+      }
+    ]
+  },
+  "m31-1-2": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 1: The Natural Logarithm",
+    "duration": 350,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The number e",
+        "t": 22.289
+      },
+      {
+        "title": "The natural logarithm",
+        "t": 75.439
+      },
+      {
+        "title": "The laws of logarithms",
+        "t": 139.549
+      },
+      {
+        "title": "Using the laws",
+        "t": 188.039
+      },
+      {
+        "title": "Watch out",
+        "t": 225.625
+      },
+      {
+        "title": "Your turn",
+        "t": 274.809
+      },
+      {
+        "title": "Summary",
+        "t": 317.201
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2:q",
+        "t": 289.839,
+        "prompt": "Given $\\ln a = 4$ and $\\ln b = 1.5$, evaluate $\\ln\\left(\\dfrac{a^2}{b^3}\\right)$.",
+        "choices": [
+          "$3.5$",
+          "$6.5$",
+          "$12.5$",
+          "$1.78$"
+        ],
+        "answer": 0,
+        "working": "$\\ln\\left(\\dfrac{a^2}{b^3}\\right) = 2\\ln a - 3\\ln b = 2(4) - 3(1.5) = 8 - 4.5 = 3.5$"
+      }
+    ]
+  },
+  "m31-1-2-b": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 2: Solving Equations with e and ln",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An exponential equation",
+        "t": 22.44
+      },
+      {
+        "title": "A logarithmic equation",
+        "t": 81.766
+      },
+      {
+        "title": "A quadratic in disguise",
+        "t": 150.223
+      },
+      {
+        "title": "Your turn",
+        "t": 216.277
+      },
+      {
+        "title": "Summary",
+        "t": 255.68
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2-b:q",
+        "t": 226.791,
+        "prompt": "Solve $2e^{3x} + 1 = 9$. Round to the nearest thousandth.",
+        "choices": [
+          "$x \\approx 0.693$",
+          "$x \\approx 4.159$",
+          "$x \\approx 0.501$",
+          "$x \\approx 0.462$"
+        ],
+        "answer": 3,
+        "working": "$2e^{3x} = 8$, so $e^{3x} = 4$. Then $3x = \\ln 4$, and $x = \\dfrac{\\ln 4}{3} \\approx 0.462$."
+      }
+    ]
+  },
+  "m31-1-2-c": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 3: Radians and Exact Values",
+    "duration": 358,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a radian is",
+        "t": 27.311
+      },
+      {
+        "title": "Converting",
+        "t": 77.736
+      },
+      {
+        "title": "Why radians?",
+        "t": 124.579
+      },
+      {
+        "title": "Reference angles",
+        "t": 157.014
+      },
+      {
+        "title": "Cosine of 5π/6",
+        "t": 209.581
+      },
+      {
+        "title": "Sine of 7π/4",
+        "t": 248.734
+      },
+      {
+        "title": "Your turn",
+        "t": 282.635
+      },
+      {
+        "title": "Summary",
+        "t": 319.904
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2-c:q",
+        "t": 290.427,
+        "prompt": "Find the exact value of $\\sin\\dfrac{4\\pi}{3}$.",
+        "choices": [
+          "$\\dfrac{\\sqrt{3}}{2}$",
+          "$-\\dfrac{1}{2}$",
+          "$-\\dfrac{\\sqrt{3}}{2}$",
+          "$\\dfrac{1}{2}$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{4\\pi}{3}$ is in quadrant III, with reference angle $\\dfrac{4\\pi}{3} - \\pi = \\dfrac{\\pi}{3}$. Sine is negative there, so $\\sin\\dfrac{4\\pi}{3} = -\\sin\\dfrac{\\pi}{3} = -\\dfrac{\\sqrt{3}}{2}$."
+      }
+    ]
+  },
+  "m31-1-2-d": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 4: Identities You Will Use",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quotient and reciprocal",
+        "t": 23.965
+      },
+      {
+        "title": "The Pythagorean identity",
+        "t": 59.84
+      },
+      {
+        "title": "Double-angle identities",
+        "t": 108.344
+      },
+      {
+        "title": "Simplifying with identities",
+        "t": 148.508
+      },
+      {
+        "title": "Watch out",
+        "t": 206.393
+      },
+      {
+        "title": "Your turn",
+        "t": 237.911
+      },
+      {
+        "title": "Summary",
+        "t": 270.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2-d:q",
+        "t": 245.511,
+        "prompt": "Simplify $\\dfrac{\\sin 2x}{2\\cos x}$.",
+        "choices": [
+          "$\\sin x$",
+          "$\\tan x$",
+          "$\\cos x$",
+          "$\\sin^2 x$"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{\\sin 2x}{2\\cos x} = \\dfrac{2\\sin x \\cos x}{2\\cos x} = \\sin x$"
+      }
+    ]
+  },
+  "m31-1-2-e": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 5: Solving Trigonometric Equations",
+    "duration": 352,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The method",
+        "t": 22.702
+      },
+      {
+        "title": "A linear equation",
+        "t": 52.416
+      },
+      {
+        "title": "On the graph",
+        "t": 98.338
+      },
+      {
+        "title": "A quadratic equation",
+        "t": 130.577
+      },
+      {
+        "title": "Using a double-angle identity",
+        "t": 193.171
+      },
+      {
+        "title": "Watch out",
+        "t": 241.506
+      },
+      {
+        "title": "Your turn",
+        "t": 276.725
+      },
+      {
+        "title": "Summary",
+        "t": 317.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2-e:q",
+        "t": 287.488,
+        "prompt": "Solve $2\\cos x - \\sqrt{3} = 0$ for $0 \\le x < 2\\pi$.",
+        "choices": [
+          "$x = \\dfrac{\\pi}{6},\\ \\dfrac{5\\pi}{6}$",
+          "$x = \\dfrac{\\pi}{6},\\ \\dfrac{11\\pi}{6}$",
+          "$x = \\dfrac{\\pi}{3},\\ \\dfrac{5\\pi}{3}$",
+          "$x = \\dfrac{5\\pi}{6},\\ \\dfrac{7\\pi}{6}$"
+        ],
+        "answer": 1,
+        "working": "$\\cos x = \\dfrac{\\sqrt{3}}{2}$, so the reference angle is $\\dfrac{\\pi}{6}$. Cosine is positive in quadrants I and IV: $x = \\dfrac{\\pi}{6}$ and $x = 2\\pi - \\dfrac{\\pi}{6} = \\dfrac{11\\pi}{6}$."
+      }
+    ]
+  },
+  "m31-2-1": {
+    "lessonId": "m31-2-1",
+    "title": "Limits from Graphs and Tables, Part 1: The Idea of a Limit",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Closing in",
+        "t": 22.125
+      },
+      {
+        "title": "What a limit means",
+        "t": 81.62
+      },
+      {
+        "title": "A hole and a separate dot",
+        "t": 115.111
+      },
+      {
+        "title": "Watch out",
+        "t": 164.43
+      },
+      {
+        "title": "Your turn",
+        "t": 203.78
+      },
+      {
+        "title": "Summary",
+        "t": 248.701
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-1:q",
+        "t": 223.985,
+        "prompt": "The graph of $y = g(x)$ heads toward a hollow circle at $(2, 5)$ from both sides, and has a solid dot at $(2, 1)$. Find $\\displaystyle\\lim_{x \\to 2} g(x)$ and $g(2)$.",
+        "choices": [
+          "limit $1$, $g(2) = 5$",
+          "limit $5$, $g(2) = 5$",
+          "limit $5$, $g(2) = 1$",
+          "no limit, $g(2) = 1$"
+        ],
+        "answer": 2,
+        "working": "Both sides head toward the height of the hollow circle, so $\\displaystyle\\lim_{x \\to 2} g(x) = 5$. The solid dot gives the value: $g(2) = 1$."
+      }
+    ]
+  },
+  "m31-2-1-b": {
+    "lessonId": "m31-2-1",
+    "title": "Limits from Graphs and Tables, Part 2: One-Sided Limits",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two different heights",
+        "t": 20.637
+      },
+      {
+        "title": "One-sided limits",
+        "t": 59.063
+      },
+      {
+        "title": "Reading the jump",
+        "t": 93.132
+      },
+      {
+        "title": "Does the limit exist?",
+        "t": 124.599
+      },
+      {
+        "title": "An open circle still counts",
+        "t": 168.042
+      },
+      {
+        "title": "Your turn",
+        "t": 190.776
+      },
+      {
+        "title": "Summary",
+        "t": 231.54
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-1-b:q",
+        "t": 209.136,
+        "prompt": "For a function $h$, $\\displaystyle\\lim_{x \\to 3^-} h(x) = 2$, $\\displaystyle\\lim_{x \\to 3^+} h(x) = 2$ and $h(3) = 5$. Find $\\displaystyle\\lim_{x \\to 3} h(x)$.",
+        "choices": [
+          "$5$",
+          "It does not exist.",
+          "$3$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "Both one-sided limits equal $2$, so the two-sided limit is $2$. The value $h(3) = 5$ does not affect the limit."
+      }
+    ]
+  },
+  "m31-2-1-c": {
+    "lessonId": "m31-2-1",
+    "title": "Limits from Graphs and Tables, Part 3: When a Limit Does Not Exist",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways to fail",
+        "t": 21.528
+      },
+      {
+        "title": "A jump",
+        "t": 51.196
+      },
+      {
+        "title": "Unbounded values",
+        "t": 109.846
+      },
+      {
+        "title": "Oscillation",
+        "t": 157.754
+      },
+      {
+        "title": "Your turn",
+        "t": 186.51
+      },
+      {
+        "title": "Summary",
+        "t": 227.577
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-1-c:q",
+        "t": 199.653,
+        "prompt": "For $f(x) = \\dfrac{|x - 2|}{x - 2}$, find $\\displaystyle\\lim_{x \\to 2} f(x)$.",
+        "choices": [
+          "$1$",
+          "It does not exist.",
+          "$-1$",
+          "$0$"
+        ],
+        "answer": 1,
+        "working": "For $x < 2$, $x - 2$ is negative, so $f(x) = -1$. For $x > 2$, $f(x) = 1$. The one-sided limits differ, so the limit does not exist."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
