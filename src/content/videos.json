@@ -38045,5 +38045,56 @@
         "working": "At $x = 0$, $y = 80$, so $a = 80$. $\\dfrac{40}{80} = \\dfrac{20}{40} = \\dfrac{10}{20} = \\dfrac{1}{2}$, so $b = \\frac{1}{2}$."
       }
     ]
+  },
+  "m302-6-1-d": {
+    "lessonId": "m302-6-1",
+    "title": "Exponential Functions, Part 4: Exponential Models in Context",
+    "duration": 315,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent rates",
+        "t": 22.591
+      },
+      {
+        "title": "Reading the base",
+        "t": 80.752
+      },
+      {
+        "title": "A truck loses value",
+        "t": 128.673
+      },
+      {
+        "title": "Watch out",
+        "t": 203.638
+      },
+      {
+        "title": "Your turn",
+        "t": 233.369
+      },
+      {
+        "title": "Summary",
+        "t": 281.388
+      }
+    ],
+    "cues": [
+      {
+        "id": "m302-6-1-d:q",
+        "t": 249.794,
+        "prompt": "A town’s population is modelled by $P = 12\\,000(1.03)^t$, where $t$ is the number of years from now. Which statement is true?",
+        "choices": [
+          "The population grows by 103% each year.",
+          "The population starts at 12,000 and grows by 3% each year.",
+          "The population falls by 3% each year.",
+          "The population grows by 1.03 people each year."
+        ],
+        "answer": 1,
+        "working": "$1.03 = 1 + 0.03$, so the population is multiplied by $1.03$ each year: growth of 3%. The initial value is $12\\,000$."
+      }
+    ]
   }
 }
