@@ -5305,7 +5305,7 @@
   "m31-2-3-c": {
     "lessonId": "m31-2-3",
     "title": "Limits at Infinity and Asymptotes, Part 3: Square Roots at Negative Infinity",
-    "duration": 296,
+    "duration": 297,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5326,25 +5326,25 @@
       },
       {
         "title": "Check with a table",
-        "t": 157.385
+        "t": 157.867
       },
       {
         "title": "Watch out",
-        "t": 185.242
+        "t": 185.724
       },
       {
         "title": "Your turn",
-        "t": 224.404
+        "t": 224.886
       },
       {
         "title": "Summary",
-        "t": 265.462
+        "t": 265.944
       }
     ],
     "cues": [
       {
         "id": "m31-2-3-c:q",
-        "t": 237.171,
+        "t": 237.653,
         "prompt": "Evaluate $\\displaystyle\\lim_{x \\to -\\infty} \\frac{\\sqrt{4x^2 + 3}}{x + 1}$.",
         "choices": [
           "$2$",
@@ -6775,6 +6775,112 @@
         ],
         "answer": 2,
         "working": "$u = x$, $u' = 1$, $v = x + 2$, $v' = 1$. So $f'(x) = \\dfrac{1(x + 2) - x(1)}{(x + 2)^{2}} = \\dfrac{2}{(x + 2)^{2}}$."
+      }
+    ]
+  },
+  "m31-4-2-d": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 4: Using a Table of Values",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the table",
+        "t": 22.673
+      },
+      {
+        "title": "A product",
+        "t": 57.667
+      },
+      {
+        "title": "A quotient",
+        "t": 97.824
+      },
+      {
+        "title": "Watch out",
+        "t": 138.651
+      },
+      {
+        "title": "Your turn",
+        "t": 166.612
+      },
+      {
+        "title": "Summary",
+        "t": 213.356
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2-d:q",
+        "t": 186.86,
+        "prompt": "From the table, $f(1) = 2$, $f'(1) = 4$, $g(1) = -3$ and $g'(1) = 1$. If $h(x) = f(x)g(x)$, find $h'(1)$.",
+        "choices": [
+          "$4$",
+          "$-12$",
+          "$14$",
+          "$-10$"
+        ],
+        "answer": 3,
+        "working": "$h'(1) = f'(1)g(1) + f(1)g'(1) = (4)(-3) + (2)(1) = -12 + 2 = -10$."
+      }
+    ]
+  },
+  "m31-4-2-e": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 5: Horizontal Tangents and Rates",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The derivative",
+        "t": 23.451
+      },
+      {
+        "title": "Where it is zero",
+        "t": 71.164
+      },
+      {
+        "title": "Watch out",
+        "t": 126.331
+      },
+      {
+        "title": "A medication",
+        "t": 151.619
+      },
+      {
+        "title": "Rising, then falling",
+        "t": 197.517
+      },
+      {
+        "title": "Your turn",
+        "t": 247.279
+      },
+      {
+        "title": "Summary",
+        "t": 288.915
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2-e:q",
+        "t": 262.943,
+        "prompt": "For $C(t) = \\dfrac{50t}{t^{2} + 4}$, the derivative is $C'(t) = \\dfrac{50(4 - t^{2})}{(t^{2} + 4)^{2}}$. At what time $t > 0$ does the concentration stop rising?",
+        "choices": [
+          "$t = 2$ h",
+          "$t = 4$ h",
+          "$t = 0$ h",
+          "$t = 1$ h"
+        ],
+        "answer": 0,
+        "working": "It stops rising when $C'(t) = 0$, so when the numerator is zero: $4 - t^{2} = 0$, $t^{2} = 4$, and $t = 2$ h (since $t > 0$)."
       }
     ]
   },
