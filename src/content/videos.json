@@ -5934,6 +5934,489 @@
       }
     ]
   },
+  "m31-3-1-e": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 5: Estimating a Tangent’s Slope",
+    "duration": 359,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The question",
+        "t": 20.957
+      },
+      {
+        "title": "One small step",
+        "t": 48.036
+      },
+      {
+        "title": "A table of values",
+        "t": 111.705
+      },
+      {
+        "title": "Exactly, with algebra",
+        "t": 162.318
+      },
+      {
+        "title": "The tangent line",
+        "t": 220.41
+      },
+      {
+        "title": "Watch out",
+        "t": 241.984
+      },
+      {
+        "title": "Your turn",
+        "t": 276.027
+      },
+      {
+        "title": "Summary",
+        "t": 321.485
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-e:q",
+        "t": 291.913,
+        "prompt": "Simplify $\\dfrac{(5 + h)^2 - 25}{h}$, then find the slope of the tangent to $f(x) = x^2$ at $x = 5$.",
+        "choices": [
+          "$25$",
+          "$5$",
+          "$10 + h$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{25 + 10h + h^2 - 25}{h} = \\dfrac{10h + h^2}{h} = 10 + h$, and $10 + h \\to 10$ as $h \\to 0$."
+      }
+    ]
+  },
+  "m31-3-1-f": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 6: Instantaneous Velocity",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A falling stone",
+        "t": 22.165
+      },
+      {
+        "title": "Average velocities",
+        "t": 62.524
+      },
+      {
+        "title": "Exactly, with algebra",
+        "t": 117.72
+      },
+      {
+        "title": "On the graph",
+        "t": 198.691
+      },
+      {
+        "title": "Watch out",
+        "t": 230.371
+      },
+      {
+        "title": "Your turn",
+        "t": 264.108
+      },
+      {
+        "title": "Summary",
+        "t": 311.934
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-f:q",
+        "t": 285.721,
+        "prompt": "A stone falls $s(t) = 4.9t^2$ metres in $t$ seconds. Its average velocity on $[1, 1 + h]$ simplifies to $9.8 + 4.9h$. What is its velocity at $t = 1$ s?",
+        "choices": [
+          "$4.9$ m/s",
+          "$9.8$ m/s",
+          "$14.7$ m/s",
+          "$19.6$ m/s"
+        ],
+        "answer": 1,
+        "working": "As $h \\to 0$, $9.8 + 4.9h \\to 9.8$, so the velocity at $t = 1$ s is $9.8$ m/s."
+      }
+    ]
+  },
+  "m31-3-2": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 1: The Derivative Function",
+    "duration": 332,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Every point at once",
+        "t": 21.857
+      },
+      {
+        "title": "Slopes everywhere",
+        "t": 68.493
+      },
+      {
+        "title": "The derivative",
+        "t": 108.384
+      },
+      {
+        "title": "Notation",
+        "t": 161.046
+      },
+      {
+        "title": "First principles",
+        "t": 203.654
+      },
+      {
+        "title": "Your turn",
+        "t": 249.86
+      },
+      {
+        "title": "Summary",
+        "t": 290.916
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2:q",
+        "t": 266.37,
+        "prompt": "For $f(x) = x^2$, the derivative is $f'(x) = 2x$. What is the slope of the tangent to $y = x^2$ at $x = -3$?",
+        "choices": [
+          "$9$",
+          "$6$",
+          "$-6$",
+          "$-9$"
+        ],
+        "answer": 2,
+        "working": "The slope of the tangent at $x = -3$ is $f'(-3) = 2(-3) = -6$."
+      }
+    ]
+  },
+  "m31-3-2-b": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 2: A Quadratic",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Steps 1 and 2",
+        "t": 24.629
+      },
+      {
+        "title": "Steps 3 and 4",
+        "t": 85.663
+      },
+      {
+        "title": "A function and its derivative",
+        "t": 132.748
+      },
+      {
+        "title": "Watch out",
+        "t": 184.986
+      },
+      {
+        "title": "Your turn",
+        "t": 224.204
+      },
+      {
+        "title": "Summary",
+        "t": 264.454
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-b:q",
+        "t": 235.148,
+        "prompt": "Find $f'(x)$ from first principles for $f(x) = x^2 + 6x$.",
+        "choices": [
+          "$2x + 6$",
+          "$2x + 6 + h$",
+          "$x^2 + 6$",
+          "$2x$"
+        ],
+        "answer": 0,
+        "working": "$f(x + h) - f(x) = x^2 + 2xh + h^2 + 6x + 6h - (x^2 + 6x) = 2xh + h^2 + 6h$. Divide by $h$: $2x + h + 6$. Let $h \\to 0$: $f'(x) = 2x + 6$."
+      }
+    ]
+  },
+  "m31-3-2-c": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 3: A Cubic",
+    "duration": 297,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expanding",
+        "t": 21.709
+      },
+      {
+        "title": "The four steps",
+        "t": 65.425
+      },
+      {
+        "title": "On the graph",
+        "t": 102.516
+      },
+      {
+        "title": "A pattern",
+        "t": 144.83
+      },
+      {
+        "title": "Watch out",
+        "t": 185.175
+      },
+      {
+        "title": "Your turn",
+        "t": 217.605
+      },
+      {
+        "title": "Summary",
+        "t": 258.265
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-c:q",
+        "t": 227.875,
+        "prompt": "Use first principles to find $f'(x)$ for $f(x) = 2x^3$.",
+        "choices": [
+          "$2x^2$",
+          "$3x^2$",
+          "$6x^2$",
+          "$6x^3$"
+        ],
+        "answer": 2,
+        "working": "$2(x + h)^3 - 2x^3 = 6x^2h + 6xh^2 + 2h^3$. Divide by $h$: $6x^2 + 6xh + 2h^2$. Let $h \\to 0$: $f'(x) = 6x^2$."
+      }
+    ]
+  },
+  "m31-3-2-d": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 4: Interpreting the Derivative",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Units and sign",
+        "t": 22.31
+      },
+      {
+        "title": "A draining tank",
+        "t": 58.039
+      },
+      {
+        "title": "Marginal cost",
+        "t": 106.588
+      },
+      {
+        "title": "Watch out",
+        "t": 150.213
+      },
+      {
+        "title": "Your turn",
+        "t": 189.482
+      },
+      {
+        "title": "Summary",
+        "t": 228.075
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-d:q",
+        "t": 204.508,
+        "prompt": "$T(t)$ is the temperature of a cup of coffee, in °C, $t$ minutes after it is poured, and $T'(5) = -3$. What does this mean?",
+        "choices": [
+          "Five minutes after it is poured, the coffee is cooling at $3$ °C per minute.",
+          "The coffee is at $-3$ °C after five minutes.",
+          "The coffee cooled by $3$ °C during the first five minutes.",
+          "Five minutes after it is poured, the coffee is warming at $3$ °C per minute."
+        ],
+        "answer": 0,
+        "working": "The units of $T'$ are °C per minute, and the value is negative, so the temperature is decreasing at $3$ °C per minute at $t = 5$."
+      }
+    ]
+  },
+  "m31-3-2-e": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 5: Reciprocals and Square Roots",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A reciprocal",
+        "t": 22.35
+      },
+      {
+        "title": "A tangent to the curve",
+        "t": 83.899
+      },
+      {
+        "title": "A square root",
+        "t": 129.558
+      },
+      {
+        "title": "The same methods",
+        "t": 198.244
+      },
+      {
+        "title": "Your turn",
+        "t": 230.481
+      },
+      {
+        "title": "Summary",
+        "t": 265.614
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-e:q",
+        "t": 245.212,
+        "prompt": "The derivative of $f(x) = \\dfrac{1}{x}$ is $f'(x) = -\\dfrac{1}{x^2}$. What is the slope of the tangent to $y = \\dfrac{1}{x}$ at $x = 2$?",
+        "choices": [
+          "$\\tfrac{1}{2}$",
+          "$-\\tfrac{1}{2}$",
+          "$\\tfrac{1}{4}$",
+          "$-\\tfrac{1}{4}$"
+        ],
+        "answer": 3,
+        "working": "$f'(2) = -\\dfrac{1}{2^2} = -\\dfrac{1}{4}$."
+      }
+    ]
+  },
+  "m31-3-2-f": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 6: Where There Is No Derivative",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A corner",
+        "t": 21.278
+      },
+      {
+        "title": "A vertical tangent",
+        "t": 82.107
+      },
+      {
+        "title": "Three kinds of failure",
+        "t": 130.468
+      },
+      {
+        "title": "Watch out",
+        "t": 175.254
+      },
+      {
+        "title": "Your turn",
+        "t": 200.663
+      },
+      {
+        "title": "Summary",
+        "t": 233.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-f:q",
+        "t": 208.139,
+        "prompt": "Which function is **not** differentiable at $x = 0$?",
+        "choices": [
+          "$y = x^2 + 1$",
+          "$y = |x|$",
+          "$y = x^3$",
+          "$y = 3x - 2$"
+        ],
+        "answer": 1,
+        "working": "The graph of $y = |x|$ has a corner at $x = 0$: the slopes from the left and the right are $-1$ and $1$, so no single tangent exists. The other graphs are smooth there."
+      }
+    ]
+  },
+  "m31-4-1": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 1: The Power Rule",
+    "duration": 298,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pattern",
+        "t": 20.057
+      },
+      {
+        "title": "The power rule",
+        "t": 77.693
+      },
+      {
+        "title": "Two special cases",
+        "t": 108.974
+      },
+      {
+        "title": "Single powers",
+        "t": 143.955
+      },
+      {
+        "title": "Watch out",
+        "t": 205.487
+      },
+      {
+        "title": "Your turn",
+        "t": 233.677
+      },
+      {
+        "title": "Summary",
+        "t": 269.248
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1:q",
+        "t": 240.568,
+        "prompt": "Differentiate $x^{-5}$.",
+        "choices": [
+          "$-5x^{-6}$",
+          "$-5x^{-4}$",
+          "$5x^{-6}$",
+          "$-4x^{-6}$"
+        ],
+        "answer": 0,
+        "working": "Bring $-5$ down and subtract $1$ from the exponent: $-5 - 1 = -6$, so the derivative is $-5x^{-6} = -\\dfrac{5}{x^6}$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
