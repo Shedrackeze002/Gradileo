@@ -4890,6 +4890,57 @@
       }
     ]
   },
+  "m31-2-1-d": {
+    "lessonId": "m31-2-1",
+    "title": "Limits from Graphs and Tables, Part 4: Estimating Limits from Tables",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substitution gives 0/0",
+        "t": 18.54
+      },
+      {
+        "title": "A table of values",
+        "t": 51.237
+      },
+      {
+        "title": "The graph",
+        "t": 103.745
+      },
+      {
+        "title": "Tables can mislead",
+        "t": 137.263
+      },
+      {
+        "title": "Your turn",
+        "t": 198.023
+      },
+      {
+        "title": "Summary",
+        "t": 245.706
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-1-d:q",
+        "t": 216.731,
+        "prompt": "Use $x = -0.001$ and $x = 0.001$ to estimate $\\displaystyle\\lim_{x \\to 0} \\frac{e^x - 1}{x}$.",
+        "choices": [
+          "$1$",
+          "$0$",
+          "It does not exist, because it gives $0/0$.",
+          "$e \\approx 2.718$"
+        ],
+        "answer": 0,
+        "working": "At $x = -0.001$: $\\dfrac{e^{-0.001} - 1}{-0.001} \\approx 0.9995$. At $x = 0.001$: $\\dfrac{e^{0.001} - 1}{0.001} \\approx 1.0005$. Both sides close in on $1$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
