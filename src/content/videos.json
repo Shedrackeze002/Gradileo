@@ -43380,5 +43380,60 @@
         "working": "4 favourable outcomes for every 1 unfavourable one make $4 + 1 = 5$ in all, so $P(\\text{sprouts}) = \\dfrac{4}{5} = 80\\%$."
       }
     ]
+  },
+  "m303-7-1-d": {
+    "lessonId": "m303-7-1",
+    "title": "Probability and Odds, Part 4: Expected Outcomes and Judging Claims",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The expected number",
+        "t": 23.636
+      },
+      {
+        "title": "Welds to redo",
+        "t": 61.907
+      },
+      {
+        "title": "Is tails due?",
+        "t": 107.835
+      },
+      {
+        "title": "Was the forecast wrong?",
+        "t": 138.583
+      },
+      {
+        "title": "Two more claims",
+        "t": 170.434
+      },
+      {
+        "title": "Your turn",
+        "t": 224.911
+      },
+      {
+        "title": "Summary",
+        "t": 270.334
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-7-1-d:q",
+        "t": 239.625,
+        "prompt": "From past records, 4% of the parcels a courier delivers arrive late. How many of the next 650 parcels would you expect to arrive late?",
+        "choices": [
+          "$260$",
+          "$26$",
+          "$2.6$",
+          "$624$"
+        ],
+        "answer": 1,
+        "working": "$4\\% = 0.04$, and $0.04 \\times 650 = 26$ parcels."
+      }
+    ]
   }
 }
