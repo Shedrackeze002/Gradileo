@@ -44006,25 +44006,25 @@
       },
       {
         "title": "Why lease to buy?",
-        "t": 155.88
+        "t": 156.181
       },
       {
         "title": "Watch out",
-        "t": 184.805
+        "t": 185.106
       },
       {
         "title": "Your turn",
-        "t": 214.925
+        "t": 215.226
       },
       {
         "title": "Summary",
-        "t": 268.273
+        "t": 268.574
       }
     ],
     "cues": [
       {
         "id": "m303-8-2-c:q",
-        "t": 234.583,
+        "t": 234.884,
         "prompt": "A lease cost \\$17,250.00 in total. At the end, the buyout price is \\$15,400, plus a sales tax of 5%. What is the total cost to own the vehicle?",
         "choices": [
           "\\$32,650.00",
