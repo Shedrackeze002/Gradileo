@@ -326,8 +326,17 @@ items ship or decisions change.
      "Kwame" got respellings; "halves" (heard as "has"), "made to look huge" ("made to a huge")
      and a few lines in Units 1 to 3 were reworded, and the videos already made were made again
      and replaced in Drive. Every Math 10 to 30-2 course is rendered and in Drive (803 videos).
-   - Next: script and render the other courses in order (Math 30-3, 31, 5, 6, 7, 8 and 9),
-     explaining each lesson as simply as possible, with parts split by idea.
+   - Built: Math 30-3, all 93 videos at the calm pace (3:18 to 6:22, about 7.4 hours in all),
+     topic-first, in neutral settings (no Alberta places, and a tax is "a sales tax of 5%" stated
+     in the question), rendered unit by unit and uploaded to Drive (checked: Drive holds every file
+     of all 93). Four helpers wrote the scripts unit by unit; every answer, figure and puzzle was
+     checked before rendering. The check found one real slip: "SUV's" was read as the word "suvs",
+     so that line now says "the SUV cost" and the video was made again. Newly found blurs ("A
+     lease" at the start of a sentence, "a Sudoku", "Maya leases", acronyms with 's, the names
+     Zainab and Luis) are listed in `video/README.md`. Every Math 10 to 30 course is rendered and
+     in Drive (896 videos).
+   - Next: script and render the other courses in order (Math 31, 5, 6, 7, 8 and 9), explaining
+     each lesson as simply as possible, with parts split by idea.
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with
    Claude coordinating: preparing each week's posts, keeping the schedule and reporting. It runs
