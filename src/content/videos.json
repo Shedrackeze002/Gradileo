@@ -39878,5 +39878,56 @@
         "working": "Eight equal spaces fill one inch, so each space, the smallest unit, is $\\tfrac{1}{8}$ in."
       }
     ]
+  },
+  "m303-1-1-b": {
+    "lessonId": "m303-1-1",
+    "title": "Precision and Accuracy, Part 2: The Precision of a Measurement",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The last digit",
+        "t": 21.08
+      },
+      {
+        "title": "A recorded zero",
+        "t": 70.43
+      },
+      {
+        "title": "Watch out",
+        "t": 114.975
+      },
+      {
+        "title": "Different units",
+        "t": 157.499
+      },
+      {
+        "title": "Your turn",
+        "t": 221.957
+      },
+      {
+        "title": "Summary",
+        "t": 258.87
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-1-1-b:q",
+        "t": 228.97,
+        "prompt": "Which measurement is the most precise?",
+        "choices": [
+          "$12.5\\text{ cm}$",
+          "$1.26\\text{ m}$",
+          "$124\\text{ mm}$",
+          "$12.46\\text{ cm}$"
+        ],
+        "answer": 3,
+        "working": "$12.46\\text{ cm}$ is to the nearest $0.01\\text{ cm} = 0.1\\text{ mm}$. The others are to the nearest $1\\text{ mm}$, $10\\text{ mm}$ and $1\\text{ mm}$."
+      }
+    ]
   }
 }
