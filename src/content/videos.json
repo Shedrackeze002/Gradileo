@@ -40286,5 +40286,401 @@
         "working": "The largest angle is $\\angle Q = 75^\\circ$, so the longest side is the one across from it: side $q$."
       }
     ]
+  },
+  "m303-2-1-b": {
+    "lessonId": "m303-2-1",
+    "title": "The Sine Law, Part 2: The Law and Why It Works",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why it works",
+        "t": 20.455
+      },
+      {
+        "title": "The sine law",
+        "t": 85.146
+      },
+      {
+        "title": "Using the law",
+        "t": 113.459
+      },
+      {
+        "title": "Watch out",
+        "t": 146.793
+      },
+      {
+        "title": "Your turn",
+        "t": 186.105
+      },
+      {
+        "title": "Summary",
+        "t": 224.404
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-1-b:q",
+        "t": 202.181,
+        "prompt": "In $\\triangle ABC$, $\\angle A = 50^\\circ$, $\\angle B = 65^\\circ$ and $a = 12\\text{ cm}$. Which equation can find side $b$?",
+        "choices": [
+          "$\\dfrac{b}{\\sin 65^\\circ} = \\dfrac{12}{\\sin 50^\\circ}$",
+          "$\\dfrac{b}{\\sin 50^\\circ} = \\dfrac{12}{\\sin 65^\\circ}$",
+          "$\\dfrac{\\sin 65^\\circ}{b} = \\dfrac{12}{\\sin 50^\\circ}$",
+          "$b = 12\\sin 65^\\circ$"
+        ],
+        "answer": 0,
+        "working": "Side $a = 12$ pairs with $\\angle A = 50^\\circ$, and side $b$ pairs with $\\angle B = 65^\\circ$. With the sides on top, $\\dfrac{b}{\\sin 65^\\circ} = \\dfrac{12}{\\sin 50^\\circ}$."
+      }
+    ]
+  },
+  "m303-2-1-c": {
+    "lessonId": "m303-2-1",
+    "title": "The Sine Law, Part 3: Finding a Side",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two angles and a side",
+        "t": 21.632
+      },
+      {
+        "title": "Use the angle sum first",
+        "t": 95.298
+      },
+      {
+        "title": "Watch out",
+        "t": 177.681
+      },
+      {
+        "title": "Your turn",
+        "t": 207.553
+      },
+      {
+        "title": "Summary",
+        "t": 255.187
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-1-c:q",
+        "t": 225.073,
+        "prompt": "In $\\triangle XYZ$, $\\angle X = 35^\\circ$, $\\angle Y = 80^\\circ$ and $x = 9.0\\text{ m}$. Find side $y$, to the nearest tenth of a metre.",
+        "choices": [
+          "$5.2\\text{ m}$",
+          "$8.9\\text{ m}$",
+          "$14.2\\text{ m}$",
+          "$15.5\\text{ m}$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{y}{\\sin 80^\\circ} = \\dfrac{9.0}{\\sin 35^\\circ}$, so $y = \\dfrac{9.0\\sin 80^\\circ}{\\sin 35^\\circ} \\approx 15.5\\text{ m}$."
+      }
+    ]
+  },
+  "m303-2-1-d": {
+    "lessonId": "m303-2-1",
+    "title": "The Sine Law, Part 4: Finding an Angle",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sines on top",
+        "t": 20.995
+      },
+      {
+        "title": "Finishing the triangle",
+        "t": 96.901
+      },
+      {
+        "title": "Why there is only one answer",
+        "t": 160.856
+      },
+      {
+        "title": "Your turn",
+        "t": 204.931
+      },
+      {
+        "title": "Summary",
+        "t": 249.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-1-d:q",
+        "t": 221.333,
+        "prompt": "In $\\triangle ABC$, $a = 10\\text{ cm}$, $b = 7\\text{ cm}$ and $\\angle A = 80^\\circ$. Find $\\angle B$, to the nearest tenth of a degree.",
+        "choices": [
+          "$44.4^\\circ$",
+          "$43.6^\\circ$",
+          "$136.4^\\circ$",
+          "$0.7^\\circ$"
+        ],
+        "answer": 1,
+        "working": "$\\sin B = \\dfrac{7\\sin 80^\\circ}{10} \\approx 0.6894$, so $\\angle B = \\sin^{-1}(0.6894) \\approx 43.6^\\circ$."
+      }
+    ]
+  },
+  "m303-2-2": {
+    "lessonId": "m303-2-2",
+    "title": "The Cosine Law, Part 1: Finding a Side",
+    "duration": 320,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "When to use it",
+        "t": 24.185
+      },
+      {
+        "title": "The cosine law",
+        "t": 54.961
+      },
+      {
+        "title": "A Pythagorean link",
+        "t": 100.709
+      },
+      {
+        "title": "Finding a side",
+        "t": 132.958
+      },
+      {
+        "title": "Watch out",
+        "t": 207.416
+      },
+      {
+        "title": "Your turn",
+        "t": 244.787
+      },
+      {
+        "title": "Summary",
+        "t": 287.199
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-2:q",
+        "t": 260.765,
+        "prompt": "In $\\triangle PQR$, $q = 7\\text{ m}$, $r = 10\\text{ m}$ and $\\angle P = 40^\\circ$. Find side $p$, to the nearest tenth of a metre.",
+        "choices": [
+          "$12.2\\text{ m}$",
+          "$2.6\\text{ m}$",
+          "$6.5\\text{ m}$",
+          "$41.8\\text{ m}$"
+        ],
+        "answer": 2,
+        "working": "$p^2 = 7^2 + 10^2 - 2(7)(10)\\cos 40^\\circ \\approx 149 - 107.25 = 41.75$, so $p \\approx \\sqrt{41.75} \\approx 6.5\\text{ m}$."
+      }
+    ]
+  },
+  "m303-2-2-b": {
+    "lessonId": "m303-2-2",
+    "title": "The Cosine Law, Part 2: An Obtuse Contained Angle",
+    "duration": 321,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Negative cosines",
+        "t": 23.173
+      },
+      {
+        "title": "A wider angle, a longer side",
+        "t": 68.888
+      },
+      {
+        "title": "An obtuse contained angle",
+        "t": 102.198
+      },
+      {
+        "title": "Watch out",
+        "t": 197.034
+      },
+      {
+        "title": "Your turn",
+        "t": 242.873
+      },
+      {
+        "title": "Summary",
+        "t": 294.147
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-2-b:q",
+        "t": 260.263,
+        "prompt": "In $\\triangle DEF$, $d = 5\\text{ cm}$, $e = 8\\text{ cm}$ and $\\angle F = 130^\\circ$. Find side $f$, to the nearest tenth of a centimetre.",
+        "choices": [
+          "$11.9\\text{ cm}$",
+          "$6.1\\text{ cm}$",
+          "$9.4\\text{ cm}$",
+          "$140.4\\text{ cm}$"
+        ],
+        "answer": 0,
+        "working": "$f^2 = 5^2 + 8^2 - 2(5)(8)\\cos 130^\\circ \\approx 89 + 51.42 = 140.42$, so $f \\approx 11.9\\text{ cm}$."
+      }
+    ]
+  },
+  "m303-2-2-c": {
+    "lessonId": "m303-2-2",
+    "title": "The Cosine Law, Part 3: Finding an Angle",
+    "duration": 322,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rearranging the law",
+        "t": 23.136
+      },
+      {
+        "title": "Three sides",
+        "t": 74.329
+      },
+      {
+        "title": "The largest angle",
+        "t": 139.843
+      },
+      {
+        "title": "A negative cosine means obtuse",
+        "t": 195.003
+      },
+      {
+        "title": "Your turn",
+        "t": 240.987
+      },
+      {
+        "title": "Summary",
+        "t": 286.669
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-2-c:q",
+        "t": 254.318,
+        "prompt": "A triangle has sides of $5\\text{ m}$, $7\\text{ m}$ and $10\\text{ m}$. What is its largest angle, to the nearest tenth of a degree?",
+        "choices": [
+          "$68.2^\\circ$",
+          "$27.7^\\circ$",
+          "$40.5^\\circ$",
+          "$111.8^\\circ$"
+        ],
+        "answer": 3,
+        "working": "The largest angle is opposite $10\\text{ m}$: $\\cos\\theta = \\dfrac{5^2 + 7^2 - 10^2}{2(5)(7)} = \\dfrac{-26}{70} \\approx -0.3714$, so $\\theta \\approx 111.8^\\circ$."
+      }
+    ]
+  },
+  "m303-2-3": {
+    "lessonId": "m303-2-3",
+    "title": "Solving Problems with Oblique Triangles, Part 1: Choosing a Law",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which law?",
+        "t": 25.084
+      },
+      {
+        "title": "A roof truss",
+        "t": 67.634
+      },
+      {
+        "title": "Watch out",
+        "t": 117.153
+      },
+      {
+        "title": "A plan for workplace problems",
+        "t": 148.376
+      },
+      {
+        "title": "Your turn",
+        "t": 188.957
+      },
+      {
+        "title": "Summary",
+        "t": 224.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-3:q",
+        "t": 203.065,
+        "prompt": "A surveyor knows all three sides of a triangular lot: $42\\text{ m}$, $55\\text{ m}$ and $61\\text{ m}$. Which law finds one of its angles?",
+        "choices": [
+          "The sine law",
+          "The cosine law",
+          "SOH CAH TOA",
+          "The angle sum"
+        ],
+        "answer": 1,
+        "working": "Three sides and no angles: there is no matching pair, so use the cosine law."
+      }
+    ]
+  },
+  "m303-2-3-b": {
+    "lessonId": "m303-2-3",
+    "title": "Solving Problems with Oblique Triangles, Part 2: A Truss and Two Lookout Towers",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The bottom chord of a truss",
+        "t": 18.961
+      },
+      {
+        "title": "Two fire lookout towers",
+        "t": 120.509
+      },
+      {
+        "title": "Your turn",
+        "t": 219.527
+      },
+      {
+        "title": "Summary",
+        "t": 267.949
+      }
+    ],
+    "cues": [
+      {
+        "id": "m303-2-3-b:q",
+        "t": 236.382,
+        "prompt": "Lookout towers $P$ and $Q$ are $20\\text{ km}$ apart. A fire $F$ makes $\\angle P = 48^\\circ$ and $\\angle Q = 57^\\circ$. Which equation finds $QF$?",
+        "choices": [
+          "$\\dfrac{QF}{\\sin 57^\\circ} = \\dfrac{20}{\\sin 75^\\circ}$",
+          "$\\dfrac{QF}{\\sin 48^\\circ} = \\dfrac{20}{\\sin 57^\\circ}$",
+          "$\\dfrac{QF}{\\sin 48^\\circ} = \\dfrac{20}{\\sin 75^\\circ}$",
+          "$\\dfrac{QF}{\\sin 75^\\circ} = \\dfrac{20}{\\sin 48^\\circ}$"
+        ],
+        "answer": 2,
+        "working": "$\\angle F = 180^\\circ - 48^\\circ - 57^\\circ = 75^\\circ$, across from $PQ = 20$. $QF$ is across from $\\angle P = 48^\\circ$, so $QF \\approx 15.4\\text{ km}$."
+      }
+    ]
   }
 }
