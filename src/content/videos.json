@@ -2980,6 +2980,61 @@
       }
     ]
   },
+  "m5-7-3-b": {
+    "lessonId": "m5-7-3",
+    "title": "Solving Equations, Part 2: Undoing Multiplying and Dividing",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six bags",
+        "t": 18.822
+      },
+      {
+        "title": "Undo multiplying",
+        "t": 53.46
+      },
+      {
+        "title": "Undo dividing",
+        "t": 83.429
+      },
+      {
+        "title": "Undo subtracting",
+        "t": 110.996
+      },
+      {
+        "title": "Undo with the inverse",
+        "t": 134.766
+      },
+      {
+        "title": "Your turn",
+        "t": 166.88
+      },
+      {
+        "title": "Summary",
+        "t": 197.054
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-3-b:q",
+        "t": 173.345,
+        "prompt": "Solve $8p = 56$.",
+        "choices": [
+          "$p = 448$",
+          "$p = 48$",
+          "$p = 7$",
+          "$p = 64$"
+        ],
+        "answer": 2,
+        "working": "$8p$ means $8 \\times p$, so divide both sides by $8$: $p = 56 \\div 8 = 7$. Check: $8 \\times 7 = 56$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
