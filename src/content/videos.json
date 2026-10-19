@@ -914,6 +914,324 @@
       }
     ]
   },
+  "m5-3-1-b": {
+    "lessonId": "m5-3-1",
+    "title": "Divisibility Tests, Part 2: The Tests for 2 and 5",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Multiples",
+        "t": 20.3
+      },
+      {
+        "title": "Even and odd",
+        "t": 62.36
+      },
+      {
+        "title": "The tests",
+        "t": 91.825
+      },
+      {
+        "title": "Using the tests",
+        "t": 126.906
+      },
+      {
+        "title": "Watch out",
+        "t": 171.708
+      },
+      {
+        "title": "Your turn",
+        "t": 197.745
+      },
+      {
+        "title": "Summary",
+        "t": 233.992
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-1-b:q",
+        "t": 204.89,
+        "prompt": "Which number is divisible by **both** $2$ and $5$?",
+        "choices": [
+          "$480$",
+          "$345$",
+          "$552$",
+          "$205$"
+        ],
+        "answer": 0,
+        "working": "To be divisible by $2$, the last digit must be even. To be divisible by $5$, it must be $0$ or $5$. Only $0$ is both, and $480$ ends in $0$."
+      }
+    ]
+  },
+  "m5-3-1-c": {
+    "lessonId": "m5-3-1",
+    "title": "Divisibility Tests, Part 3: The Test for 3",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The last digit does not help",
+        "t": 15.981
+      },
+      {
+        "title": "The digit sum",
+        "t": 48.456
+      },
+      {
+        "title": "Using the test",
+        "t": 78.404
+      },
+      {
+        "title": "Watch out",
+        "t": 122.261
+      },
+      {
+        "title": "Your turn",
+        "t": 148.135
+      },
+      {
+        "title": "Summary",
+        "t": 180.751
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-1-c:q",
+        "t": 154.358,
+        "prompt": "Which number is divisible by $3$?",
+        "choices": [
+          "$124$",
+          "$233$",
+          "$413$",
+          "$252$"
+        ],
+        "answer": 3,
+        "working": "Digit sums: $1 + 2 + 4 = 7$, $2 + 3 + 3 = 8$, $4 + 1 + 3 = 8$ and $2 + 5 + 2 = 9$. Only $9$ is in the $3$ times table, so $252$ is divisible by $3$ ($252 \\div 3 = 84$)."
+      }
+    ]
+  },
+  "m5-3-1-d": {
+    "lessonId": "m5-3-1",
+    "title": "Divisibility Tests, Part 4: Other Numbers, and Zero",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divide to check",
+        "t": 19.399
+      },
+      {
+        "title": "What division asks",
+        "t": 56.427
+      },
+      {
+        "title": "Dividing by zero",
+        "t": 87.873
+      },
+      {
+        "title": "Zero divided by a number",
+        "t": 126.316
+      },
+      {
+        "title": "Division by zero",
+        "t": 152.033
+      },
+      {
+        "title": "Your turn",
+        "t": 170.575
+      },
+      {
+        "title": "Summary",
+        "t": 198.465
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-1-d:q",
+        "t": 176.274,
+        "prompt": "Which of these is **not** possible?",
+        "choices": [
+          "$0 \\div 5$",
+          "$5 \\div 0$",
+          "$5 \\div 5$",
+          "$0 \\div 1$"
+        ],
+        "answer": 1,
+        "working": "$5 \\div 0$ would need a number that times $0$ gives $5$, and no number does. The others are possible: $0 \\div 5 = 0$, $5 \\div 5 = 1$ and $0 \\div 1 = 0$."
+      }
+    ]
+  },
+  "m5-3-2": {
+    "lessonId": "m5-3-2",
+    "title": "Finding Factors, Part 1: Factors and Factor Pairs",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Factors",
+        "t": 18.4
+      },
+      {
+        "title": "Twelve in equal rows",
+        "t": 50.733
+      },
+      {
+        "title": "Factor pairs",
+        "t": 76.025
+      },
+      {
+        "title": "A missing partner",
+        "t": 111.296
+      },
+      {
+        "title": "One and the number itself",
+        "t": 133.973
+      },
+      {
+        "title": "Your turn",
+        "t": 157.023
+      },
+      {
+        "title": "Summary",
+        "t": 188.09
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-2:q",
+        "t": 165.175,
+        "prompt": "$6 \\times \\square = 42$. What is the missing factor?",
+        "choices": [
+          "$6$",
+          "$36$",
+          "$48$",
+          "$7$"
+        ],
+        "answer": 3,
+        "working": "Divide: $\\square = 42 \\div 6 = 7$. Check: $6 \\times 7 = 42$. So $6$ and $7$ are a factor pair of $42$."
+      }
+    ]
+  },
+  "m5-3-2-b": {
+    "lessonId": "m5-3-2",
+    "title": "Finding Factors, Part 2: Finding All the Factors",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The method",
+        "t": 17.77
+      },
+      {
+        "title": "All the factors of 48",
+        "t": 44.13
+      },
+      {
+        "title": "When to stop",
+        "t": 133.621
+      },
+      {
+        "title": "Watch out",
+        "t": 165.093
+      },
+      {
+        "title": "Your turn",
+        "t": 189.313
+      },
+      {
+        "title": "Summary",
+        "t": 218.051
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-2-b:q",
+        "t": 195.841,
+        "prompt": "Which list shows **all** the factors of $30$?",
+        "choices": [
+          "$1, 2, 3, 5, 6, 10, 15, 30$",
+          "$1, 2, 3, 5, 6$",
+          "$2, 3, 5, 6, 10, 15$",
+          "$1, 3, 5, 10, 30$"
+        ],
+        "answer": 0,
+        "working": "Pairs: $1 \\times 30$, $2 \\times 15$, $3 \\times 10$, $5 \\times 6$. $4$ is not a factor. Since $6 \\times 6 = 36$ is bigger than $30$, stop. The factors are $1, 2, 3, 5, 6, 10, 15, 30$."
+      }
+    ]
+  },
+  "m5-3-2-c": {
+    "lessonId": "m5-3-2",
+    "title": "Finding Factors, Part 3: Factors in Problems",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal rows",
+        "t": 17.23
+      },
+      {
+        "title": "Rows of chairs",
+        "t": 46.573
+      },
+      {
+        "title": "Watch out",
+        "t": 114.617
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 144.921
+      },
+      {
+        "title": "Your turn",
+        "t": 173.02
+      },
+      {
+        "title": "Summary",
+        "t": 208.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-2-c:q",
+        "t": 184.687,
+        "prompt": "A baker puts $20$ muffins in equal rows with none left over. Which could **not** be the number of muffins in a row?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$6$",
+          "$10$"
+        ],
+        "answer": 2,
+        "working": "The number in a row must be a factor of $20$: $1, 2, 4, 5, 10$ or $20$. $6$ is not a factor, because $20 \\div 6 = 3$ R $2$."
+      }
+    ]
+  },
   "m5-4-1": {
     "lessonId": "m5-4-1",
     "title": "Multiplying with the Standard Algorithm, Part 1: Multiplying by a One-Digit Number",
@@ -1614,6 +1932,61 @@
         ],
         "answer": 0,
         "working": "Each space is $\\tfrac{1}{3}$, so $5$ spaces is $\\tfrac{5}{3}$. Three spaces reach $1$, and two more go past it: $1\\tfrac{2}{3}$."
+      }
+    ]
+  },
+  "m5-5-1-e": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 5: Comparing with Benchmarks",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Benchmarks",
+        "t": 15.645
+      },
+      {
+        "title": "Look at the numbers",
+        "t": 58.208
+      },
+      {
+        "title": "Compare with one half",
+        "t": 92.584
+      },
+      {
+        "title": "Watch out",
+        "t": 125.778
+      },
+      {
+        "title": "Two more",
+        "t": 147.653
+      },
+      {
+        "title": "Your turn",
+        "t": 170.806
+      },
+      {
+        "title": "Summary",
+        "t": 204.834
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1-e:q",
+        "t": 178.222,
+        "prompt": "Which fraction is greater than $\\dfrac{1}{2}$ but less than $1$?",
+        "choices": [
+          "$\\dfrac{3}{8}$",
+          "$\\dfrac{6}{12}$",
+          "$\\dfrac{9}{8}$",
+          "$\\dfrac{5}{6}$"
+        ],
+        "answer": 3,
+        "working": "$2 \\times 5 = 10$, which is more than $6$, so $\\tfrac{5}{6} > \\tfrac{1}{2}$. And $5 < 6$, so $\\tfrac{5}{6} < 1$."
       }
     ]
   },
