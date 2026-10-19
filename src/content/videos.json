@@ -3569,6 +3569,57 @@
       }
     ]
   },
+  "m5-9-1-b": {
+    "lessonId": "m5-9-1",
+    "title": "Points on a Coordinate Grid, Part 2: Plotting a Point",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 19.219
+      },
+      {
+        "title": "Plotting a point",
+        "t": 47.742
+      },
+      {
+        "title": "Points on the axes",
+        "t": 86.804
+      },
+      {
+        "title": "A treasure map",
+        "t": 127.19
+      },
+      {
+        "title": "Your turn",
+        "t": 164.571
+      },
+      {
+        "title": "Summary",
+        "t": 194.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-1-b:q",
+        "t": 171.807,
+        "prompt": "Which point is on the **horizontal** axis?",
+        "choices": [
+          "$(0,\\ 3)$",
+          "$(4,\\ 4)$",
+          "$(2,\\ 9)$",
+          "$(6,\\ 0)$"
+        ],
+        "answer": 3,
+        "working": "Its second number is $0$: go $6$ across and do not move up, so $(6,\\ 0)$ sits on the horizontal axis."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
