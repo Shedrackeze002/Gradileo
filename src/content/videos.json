@@ -3620,6 +3620,57 @@
       }
     ]
   },
+  "m5-9-1-c": {
+    "lessonId": "m5-9-1",
+    "title": "Points on a Coordinate Grid, Part 3: Moving Between Points",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From A to B",
+        "t": 21.733
+      },
+      {
+        "title": "Which number changes?",
+        "t": 61.627
+      },
+      {
+        "title": "Going back",
+        "t": 90.446
+      },
+      {
+        "title": "Planning a path",
+        "t": 122.722
+      },
+      {
+        "title": "Your turn",
+        "t": 163.101
+      },
+      {
+        "title": "Summary",
+        "t": 200.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-1-c:q",
+        "t": 173.411,
+        "prompt": "Point $M$ is at $(3,\\ 8)$. You move $4$ units right, then $5$ units down. Where do you land?",
+        "choices": [
+          "$(7,\\ 3)$",
+          "$(7,\\ 13)$",
+          "$(8,\\ 4)$",
+          "$(4,\\ 5)$"
+        ],
+        "answer": 0,
+        "working": "Right adds to the first number: $3 + 4 = 7$. Down subtracts from the second number: $8 - 5 = 3$. You land at $(7,\\ 3)$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
