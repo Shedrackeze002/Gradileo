@@ -321,6 +321,281 @@
       }
     ]
   },
+  "m5-4-3": {
+    "lessonId": "m5-4-3",
+    "title": "Solving Multiplication and Division Problems, Part 1: Multiply or Divide?",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Putting groups together",
+        "t": 18.557
+      },
+      {
+        "title": "Sharing and grouping",
+        "t": 43.354
+      },
+      {
+        "title": "How to decide",
+        "t": 84.199
+      },
+      {
+        "title": "Boxes of markers",
+        "t": 111.506
+      },
+      {
+        "title": "Check with an estimate",
+        "t": 177.707
+      },
+      {
+        "title": "Your turn",
+        "t": 201.744
+      },
+      {
+        "title": "Summary",
+        "t": 245.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-3:q",
+        "t": 216.424,
+        "prompt": "A baker puts $144$ muffins into boxes. Each box holds $6$ muffins. Which number sentence finds how many boxes the baker fills?",
+        "choices": [
+          "$144 \\times 6$",
+          "$144 + 6$",
+          "$144 - 6$",
+          "$144 \\div 6$"
+        ],
+        "answer": 3,
+        "working": "The total ($144$) and the size of each group ($6$) are known. To find how many groups fit, divide: $144 \\div 6 = 24$ boxes."
+      }
+    ]
+  },
+  "m5-4-3-b": {
+    "lessonId": "m5-4-3",
+    "title": "Solving Multiplication and Division Problems, Part 2: What to Do with a Remainder",
+    "duration": 296,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divide 157 by 8",
+        "t": 27.666
+      },
+      {
+        "title": "Vans: round up",
+        "t": 74.084
+      },
+      {
+        "title": "Cookies: drop it or use it",
+        "t": 121.573
+      },
+      {
+        "title": "The question decides",
+        "t": 169.054
+      },
+      {
+        "title": "Watch out",
+        "t": 202.761
+      },
+      {
+        "title": "Your turn",
+        "t": 223.408
+      },
+      {
+        "title": "Summary",
+        "t": 261.921
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-3-b:q",
+        "t": 234.951,
+        "prompt": "A teacher has $75$ stickers. Each student gets exactly $4$ stickers. How many students get stickers?",
+        "choices": [
+          "$19$ students",
+          "$3$ students",
+          "$18$ students",
+          "$20$ students"
+        ],
+        "answer": 2,
+        "working": "$75 \\div 4 = 18$ R $3$. Eighteen students get $4$ stickers each. The $3$ stickers left are not enough for another student, so drop the remainder: $18$ students."
+      }
+    ]
+  },
+  "m5-4-3-c": {
+    "lessonId": "m5-4-3",
+    "title": "Solving Multiplication and Division Problems, Part 3: Two-Step Problems",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Buses for skating",
+        "t": 15.374
+      },
+      {
+        "title": "Step 1: the students",
+        "t": 42.282
+      },
+      {
+        "title": "Step 2: the buses",
+        "t": 74.673
+      },
+      {
+        "title": "What the remainder means",
+        "t": 117.202
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 137.165
+      },
+      {
+        "title": "Another two-step problem",
+        "t": 172.244
+      },
+      {
+        "title": "Your turn",
+        "t": 219.111
+      },
+      {
+        "title": "Summary",
+        "t": 261.1
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-3-c:q",
+        "t": 231.045,
+        "prompt": "$5$ classes of $26$ students go to a museum. Each van holds $9$ students. How many vans are needed?",
+        "choices": [
+          "$15$ vans",
+          "$14$ vans",
+          "$4$ vans",
+          "$16$ vans"
+        ],
+        "answer": 0,
+        "working": "Students: $26 \\times 5 = 130$. Vans: $130 \\div 9 = 14$ R $4$. The $4$ students left still need a seat, so round up: $15$ vans."
+      }
+    ]
+  },
+  "m5-5-1": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 1: Fractions Greater Than One",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts of a fraction",
+        "t": 21.161
+      },
+      {
+        "title": "Counting by fourths",
+        "t": 58.559
+      },
+      {
+        "title": "Improper fractions",
+        "t": 104.27
+      },
+      {
+        "title": "Whole numbers as fractions",
+        "t": 134.448
+      },
+      {
+        "title": "Counting by thirds",
+        "t": 161.085
+      },
+      {
+        "title": "Your turn",
+        "t": 199.755
+      },
+      {
+        "title": "Summary",
+        "t": 227.308
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1:q",
+        "t": 206.101,
+        "prompt": "Which fraction is equal to $3$ wholes?",
+        "choices": [
+          "$\\dfrac{3}{4}$",
+          "$\\dfrac{12}{4}$",
+          "$\\dfrac{4}{3}$",
+          "$\\dfrac{7}{4}$"
+        ],
+        "answer": 1,
+        "working": "Each whole is $\\tfrac{4}{4}$, so $3$ wholes are $3 \\times 4 = 12$ fourths: $\\tfrac{12}{4}$."
+      }
+    ]
+  },
+  "m5-5-1-b": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 2: Writing a Mixed Number",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mixed numbers",
+        "t": 19.155
+      },
+      {
+        "title": "Divide to find the wholes",
+        "t": 52.583
+      },
+      {
+        "title": "Keep the denominator",
+        "t": 92.423
+      },
+      {
+        "title": "Another one",
+        "t": 127.843
+      },
+      {
+        "title": "Your turn",
+        "t": 155.697
+      },
+      {
+        "title": "Summary",
+        "t": 187.453
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1-b:q",
+        "t": 162.171,
+        "prompt": "Write $\\dfrac{19}{6}$ as a mixed number.",
+        "choices": [
+          "$3\\dfrac{1}{3}$",
+          "$1\\dfrac{3}{6}$",
+          "$6\\dfrac{1}{3}$",
+          "$3\\dfrac{1}{6}$"
+        ],
+        "answer": 3,
+        "working": "$19 \\div 6 = 3$ R $1$: $3$ wholes and $1$ sixth left over, so $\\tfrac{19}{6} = 3\\tfrac{1}{6}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
