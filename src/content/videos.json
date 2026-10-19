@@ -7410,6 +7410,720 @@
       }
     ]
   },
+  "m31-5-2": {
+    "lessonId": "m31-5-2",
+    "title": "Derivatives of Exponential and Logarithmic Functions, Part 1: The Number e",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The slope of a to the x",
+        "t": 27.222
+      },
+      {
+        "title": "Estimating the constant",
+        "t": 77.22
+      },
+      {
+        "title": "The number e",
+        "t": 120.392
+      },
+      {
+        "title": "Slope equals height",
+        "t": 143.228
+      },
+      {
+        "title": "With the chain rule",
+        "t": 180.173
+      },
+      {
+        "title": "Your turn",
+        "t": 242.162
+      },
+      {
+        "title": "Summary",
+        "t": 274.791
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-2:q",
+        "t": 250.428,
+        "prompt": "Differentiate $y = e^{5x^{2}}$.",
+        "choices": [
+          "$e^{10x}$",
+          "$5x^{2}e^{5x^{2} - 1}$",
+          "$10xe^{10x}$",
+          "$10xe^{5x^{2}}$"
+        ],
+        "answer": 3,
+        "working": "The power is $5x^{2}$, with derivative $10x$: $\\dfrac{dy}{dx} = e^{5x^{2}}\\cdot 10x = 10xe^{5x^{2}}$."
+      }
+    ]
+  },
+  "m31-5-2-b": {
+    "lessonId": "m31-5-2",
+    "title": "Derivatives of Exponential and Logarithmic Functions, Part 2: Other Bases",
+    "duration": 315,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rewrite with e",
+        "t": 25.995
+      },
+      {
+        "title": "The rule",
+        "t": 77.967
+      },
+      {
+        "title": "Two examples",
+        "t": 116.057
+      },
+      {
+        "title": "Watch out",
+        "t": 152.783
+      },
+      {
+        "title": "A growing balance",
+        "t": 192.369
+      },
+      {
+        "title": "Your turn",
+        "t": 249.01
+      },
+      {
+        "title": "Summary",
+        "t": 280.593
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-2-b:q",
+        "t": 256.571,
+        "prompt": "Differentiate $y = 2^{3x}$.",
+        "choices": [
+          "$3x\\cdot 2^{3x - 1}$",
+          "$3\\ln 2\\cdot 2^{3x}$",
+          "$2^{3x}\\ln 2$",
+          "$3\\cdot 2^{3x}$"
+        ],
+        "answer": 1,
+        "working": "The power is $3x$, with derivative $3$: $\\dfrac{dy}{dx} = 2^{3x}\\ln 2\\cdot 3 = 3\\ln 2\\cdot 2^{3x}$."
+      }
+    ]
+  },
+  "m31-5-2-c": {
+    "lessonId": "m31-5-2",
+    "title": "Derivatives of Exponential and Logarithmic Functions, Part 3: Logarithmic Functions",
+    "duration": 324,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The derivative of ln x",
+        "t": 20.837
+      },
+      {
+        "title": "On the graph",
+        "t": 65.533
+      },
+      {
+        "title": "Three rules",
+        "t": 104.744
+      },
+      {
+        "title": "Expand first",
+        "t": 145.83
+      },
+      {
+        "title": "Watch out",
+        "t": 206.958
+      },
+      {
+        "title": "Your turn",
+        "t": 247.076
+      },
+      {
+        "title": "Summary",
+        "t": 284.836
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-2-c:q",
+        "t": 257.618,
+        "prompt": "Differentiate $y = \\ln\\left(x^{4}(3x - 2)\\right)$.",
+        "choices": [
+          "$\\dfrac{4}{x} + \\dfrac{1}{3x - 2}$",
+          "$\\dfrac{1}{x^{4}(3x - 2)}$",
+          "$\\dfrac{4}{x} + \\dfrac{3}{3x - 2}$",
+          "$\\dfrac{1}{x^{4}} + \\dfrac{3}{3x - 2}$"
+        ],
+        "answer": 2,
+        "working": "Expand: $y = 4\\ln x + \\ln(3x - 2)$, so $\\dfrac{dy}{dx} = \\dfrac{4}{x} + \\dfrac{3}{3x - 2}$."
+      }
+    ]
+  },
+  "m31-5-2-d": {
+    "lessonId": "m31-5-2",
+    "title": "Derivatives of Exponential and Logarithmic Functions, Part 4: Products, Quotients and Growth",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A product",
+        "t": 22.142
+      },
+      {
+        "title": "A quotient",
+        "t": 52.918
+      },
+      {
+        "title": "A growing town",
+        "t": 86.516
+      },
+      {
+        "title": "Never zero",
+        "t": 149.046
+      },
+      {
+        "title": "Your turn",
+        "t": 198.462
+      },
+      {
+        "title": "Summary",
+        "t": 244.082
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-2-d:q",
+        "t": 208.369,
+        "prompt": "Where does $f(x) = xe^{-2x}$ have a horizontal tangent?",
+        "choices": [
+          "$x = \\dfrac{1}{2}$",
+          "$x = 1$",
+          "$x = 0$",
+          "$x = -\\dfrac{1}{2}$"
+        ],
+        "answer": 0,
+        "working": "$f'(x) = e^{-2x} - 2xe^{-2x} = e^{-2x}(1 - 2x)$. Since $e^{-2x} > 0$, $f'(x) = 0$ only when $1 - 2x = 0$: $x = \\dfrac{1}{2}$."
+      }
+    ]
+  },
+  "m31-5-3": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 1: Implicit Differentiation",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Defined implicitly",
+        "t": 27.788
+      },
+      {
+        "title": "The method",
+        "t": 81.231
+      },
+      {
+        "title": "A circle",
+        "t": 124.67
+      },
+      {
+        "title": "On the graph",
+        "t": 175.051
+      },
+      {
+        "title": "Your turn",
+        "t": 211.92
+      },
+      {
+        "title": "Summary",
+        "t": 252.96
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3:q",
+        "t": 222.998,
+        "prompt": "Find the slope of the tangent to $4x^{2} + y^{2} = 8$ at the point $(1, 2)$.",
+        "choices": [
+          "$-\\dfrac{1}{2}$",
+          "$2$",
+          "$-2$",
+          "$-8$"
+        ],
+        "answer": 2,
+        "working": "$8x + 2y\\dfrac{dy}{dx} = 0$, so $\\dfrac{dy}{dx} = -\\dfrac{4x}{y}$. At $(1, 2)$: $-\\dfrac{4}{2} = -2$."
+      }
+    ]
+  },
+  "m31-5-3-b": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 2: Products and Mixed Terms",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The product rule",
+        "t": 22.071
+      },
+      {
+        "title": "A tilted ellipse",
+        "t": 47.921
+      },
+      {
+        "title": "On the graph",
+        "t": 111.955
+      },
+      {
+        "title": "Watch out",
+        "t": 130.348
+      },
+      {
+        "title": "Any functions",
+        "t": 164.88
+      },
+      {
+        "title": "Your turn",
+        "t": 213.493
+      },
+      {
+        "title": "Summary",
+        "t": 256.143
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3-b:q",
+        "t": 224.214,
+        "prompt": "Find the slope of the tangent to $xy + y^{2} = 6$ at the point $(1, 2)$.",
+        "choices": [
+          "$-\\dfrac{2}{5}$",
+          "$-\\dfrac{1}{2}$",
+          "$-\\dfrac{5}{2}$",
+          "$-6$"
+        ],
+        "answer": 0,
+        "working": "$y + x\\dfrac{dy}{dx} + 2y\\dfrac{dy}{dx} = 0$, so $\\dfrac{dy}{dx} = -\\dfrac{y}{x + 2y}$. At $(1, 2)$: $-\\dfrac{2}{1 + 4} = -\\dfrac{2}{5}$."
+      }
+    ]
+  },
+  "m31-5-3-c": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 3: Higher Derivatives",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The second derivative",
+        "t": 19.155
+      },
+      {
+        "title": "Again and again",
+        "t": 57.557
+      },
+      {
+        "title": "Acceleration",
+        "t": 101.064
+      },
+      {
+        "title": "Simplify first",
+        "t": 153.401
+      },
+      {
+        "title": "Your turn",
+        "t": 192.991
+      },
+      {
+        "title": "Summary",
+        "t": 231.115
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3-c:q",
+        "t": 204.733,
+        "prompt": "For $f(x) = 2x^{3} - 5x^{2} + x$, find $f''(1)$.",
+        "choices": [
+          "$-3$",
+          "$12$",
+          "$-2$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "$f'(x) = 6x^{2} - 10x + 1$ and $f''(x) = 12x - 10$, so $f''(1) = 12 - 10 = 2$."
+      }
+    ]
+  },
+  "m31-5-3-d": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 4: Patterns in Derivatives",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The derivatives of sine",
+        "t": 18.107
+      },
+      {
+        "title": "The 27th derivative",
+        "t": 55.932
+      },
+      {
+        "title": "Powers of two",
+        "t": 99.572
+      },
+      {
+        "title": "Your turn",
+        "t": 138.167
+      },
+      {
+        "title": "Summary",
+        "t": 176.907
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3-d:q",
+        "t": 145.307,
+        "prompt": "Find the 50th derivative of $\\cos x$.",
+        "choices": [
+          "$\\cos x$",
+          "$-\\cos x$",
+          "$-\\sin x$",
+          "$\\sin x$"
+        ],
+        "answer": 1,
+        "working": "The derivatives of $\\cos x$ are $-\\sin x$, $-\\cos x$, $\\sin x$, $\\cos x$, repeating every $4$. $50 = 4(12) + 2$, so the 50th derivative equals the 2nd: $-\\cos x$."
+      }
+    ]
+  },
+  "m31-5-3-e": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 5: Second Derivatives Implicitly",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Differentiate again",
+        "t": 25.237
+      },
+      {
+        "title": "Use the equation",
+        "t": 77.183
+      },
+      {
+        "title": "What it means",
+        "t": 105.306
+      },
+      {
+        "title": "Your turn",
+        "t": 158.175
+      },
+      {
+        "title": "Summary",
+        "t": 204.037
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3-e:q",
+        "t": 168.538,
+        "prompt": "For $y^{2} = x$, find $\\dfrac{d^{2}y}{dx^{2}}$ at the point $(4, 2)$.",
+        "choices": [
+          "$-\\dfrac{1}{32}$",
+          "$\\dfrac{1}{4}$",
+          "$-\\dfrac{1}{8}$",
+          "$\\dfrac{1}{32}$"
+        ],
+        "answer": 0,
+        "working": "$2yy' = 1$, so $y' = \\dfrac{1}{2y}$. Then $y'' = -\\dfrac{1}{2y^{2}}\\,y' = -\\dfrac{1}{2y^{2}}\\cdot\\dfrac{1}{2y} = -\\dfrac{1}{4y^{3}}$. At $y = 2$: $-\\dfrac{1}{32}$."
+      }
+    ]
+  },
+  "m31-6-1": {
+    "lessonId": "m31-6-1",
+    "title": "Tangent Lines and Linear Approximation, Part 1: The Tangent Line",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Zooming in",
+        "t": 18.398
+      },
+      {
+        "title": "The equation",
+        "t": 53.102
+      },
+      {
+        "title": "A cubic",
+        "t": 79.271
+      },
+      {
+        "title": "Watch out",
+        "t": 129.907
+      },
+      {
+        "title": "Your turn",
+        "t": 160.887
+      },
+      {
+        "title": "Summary",
+        "t": 207.827
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-1:q",
+        "t": 172.772,
+        "prompt": "Find an equation of the tangent line to $f(x) = x^{2} + 3x$ at $x = 1$.",
+        "choices": [
+          "$y = 5x + 4$",
+          "$y = 4x$",
+          "$y = 5x - 1$",
+          "$y = (2x + 3)(x - 1) + 4$"
+        ],
+        "answer": 2,
+        "working": "$f(1) = 4$ and $f'(x) = 2x + 3$, so $f'(1) = 5$. Then $y - 4 = 5(x - 1)$, so $y = 5x - 1$."
+      }
+    ]
+  },
+  "m31-6-1-b": {
+    "lessonId": "m31-6-1",
+    "title": "Tangent Lines and Linear Approximation, Part 2: Normal Lines",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The normal line",
+        "t": 19.358
+      },
+      {
+        "title": "Tangent and normal",
+        "t": 43.611
+      },
+      {
+        "title": "A horizontal tangent",
+        "t": 98.25
+      },
+      {
+        "title": "Your turn",
+        "t": 127.078
+      },
+      {
+        "title": "Summary",
+        "t": 168.361
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-1-b:q",
+        "t": 137.173,
+        "prompt": "Find an equation of the normal line to $y = x^{2}$ at $x = 1$.",
+        "choices": [
+          "$y = 2x - 1$",
+          "$y = -\\dfrac{1}{2}x + \\dfrac{3}{2}$",
+          "$y = \\dfrac{1}{2}x + \\dfrac{1}{2}$",
+          "$y = -2x + 3$"
+        ],
+        "answer": 1,
+        "working": "The point is $(1, 1)$ and the tangent slope is $2x = 2$. The normal slope is $-\\dfrac{1}{2}$: $y - 1 = -\\dfrac{1}{2}(x - 1)$, so $y = -\\dfrac{1}{2}x + \\dfrac{3}{2}$."
+      }
+    ]
+  },
+  "m31-6-1-c": {
+    "lessonId": "m31-6-1",
+    "title": "Tangent Lines and Linear Approximation, Part 3: Horizontal and Parallel Tangents",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Horizontal tangents",
+        "t": 23.669
+      },
+      {
+        "title": "A parallel tangent",
+        "t": 84.633
+      },
+      {
+        "title": "Rewrite the line first",
+        "t": 125.009
+      },
+      {
+        "title": "Your turn",
+        "t": 161.867
+      },
+      {
+        "title": "Summary",
+        "t": 200.465
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-1-c:q",
+        "t": 174.29,
+        "prompt": "At what point is the tangent to $y = x^{2} - 6x$ parallel to the line $y = 2x + 5$?",
+        "choices": [
+          "$(3, -9)$",
+          "$(4, 13)$",
+          "$(2, -8)$",
+          "$(4, -8)$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{dy}{dx} = 2x - 6 = 2$, so $x = 4$, and $y = 16 - 24 = -8$."
+      }
+    ]
+  },
+  "m31-6-1-d": {
+    "lessonId": "m31-6-1",
+    "title": "Tangent Lines and Linear Approximation, Part 4: Linear Approximation",
+    "duration": 327,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The linearization",
+        "t": 22.883
+      },
+      {
+        "title": "Estimating a square root",
+        "t": 56.81
+      },
+      {
+        "title": "On the graph",
+        "t": 114.388
+      },
+      {
+        "title": "Estimating a change",
+        "t": 159.814
+      },
+      {
+        "title": "Watch out",
+        "t": 208.599
+      },
+      {
+        "title": "Your turn",
+        "t": 250.358
+      },
+      {
+        "title": "Summary",
+        "t": 289.928
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-1-d:q",
+        "t": 260.774,
+        "prompt": "Use a linear approximation at $a = 49$ to estimate $\\sqrt{50}$.",
+        "choices": [
+          "$7.5$",
+          "$7.071$",
+          "$7.143$",
+          "$7.010$"
+        ],
+        "answer": 1,
+        "working": "$f(49) = 7$ and $f'(49) = \\dfrac{1}{2\\sqrt{49}} = \\dfrac{1}{14}$, so $L(50) = 7 + \\dfrac{1}{14}(1) \\approx 7.071$."
+      }
+    ]
+  },
+  "m31-6-2": {
+    "lessonId": "m31-6-2",
+    "title": "Increasing, Decreasing and Extreme Values, Part 1: Increasing and Decreasing",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A hiking trail",
+        "t": 22.679
+      },
+      {
+        "title": "The test",
+        "t": 54.163
+      },
+      {
+        "title": "A parabola",
+        "t": 98.541
+      },
+      {
+        "title": "Your turn",
+        "t": 144.247
+      },
+      {
+        "title": "Summary",
+        "t": 182.536
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-2:q",
+        "t": 153.556,
+        "prompt": "On what interval is $f(x) = 8x - x^{2}$ increasing?",
+        "choices": [
+          "$(4, \\infty)$",
+          "$(-\\infty, 16)$",
+          "$(0, 8)$",
+          "$(-\\infty, 4)$"
+        ],
+        "answer": 3,
+        "working": "$f'(x) = 8 - 2x$, which is positive when $x < 4$. So $f$ is increasing on $(-\\infty, 4)$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",

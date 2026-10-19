@@ -54,9 +54,9 @@ const video: Explainer = {
       lines: [
         { say: 'Find the slope of the tangent to x squared plus x y plus y squared equals seven, at the point at one, two. First, check that the point is on the curve: one plus two plus four is seven.', show: 'm.0', focus: 'm.0' },
         { say: 'Differentiate each term. x squared gives two x. x y gives y plus x d y by d x, by the product rule. y squared gives two y d y by d x. And seven gives zero.', show: 'm.1', focus: 'm.1' },
-        { say: 'Collect the terms with d y by d x on the left, and move the others to the right. Factoring out d y by d x leaves x plus two y, times d y by d x, equals negative two x plus y.', show: 'm.2', focus: 'm.2' },
-        { say: 'Divide: d y by d x equals negative two x plus y, over x plus two y.', show: 'm.3', focus: 'm.3' },
-        { say: 'At the point at one, two, that is negative two plus two, over one plus four: negative four fifths.', show: 'm.4', focus: 'm.4' },
+        { say: 'Collect the terms with d y by d x on the left, and move the others to the right. Factoring out d y by d x leaves x plus two y, times d y by d x, equals the negative of two x plus y.', show: 'm.2', focus: 'm.2' },
+        { say: 'Divide: d y by d x equals the negative of two x plus y, all over x plus two y.', show: 'm.3', focus: 'm.3' },
+        { say: 'At the point at one, two, that is the negative of two plus two, all over one plus four. That is negative four fifths.', show: 'm.4', focus: 'm.4' },
       ],
     },
     {
