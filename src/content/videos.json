@@ -4843,6 +4843,53 @@
       }
     ]
   },
+  "m5-12-2": {
+    "lessonId": "m5-12-2",
+    "title": "Collecting and Displaying Data, Part 1: Survey Questions",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of questions",
+        "t": 19.117
+      },
+      {
+        "title": "Sorting into categories",
+        "t": 67.573
+      },
+      {
+        "title": "Choosing a survey question",
+        "t": 103.748
+      },
+      {
+        "title": "Your turn",
+        "t": 150.554
+      },
+      {
+        "title": "Summary",
+        "t": 178.445
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-2:q",
+        "t": 157.052,
+        "prompt": "Which of these is a **closed-list** question?",
+        "choices": [
+          "What is your favourite animal?",
+          "Which pet would you like best: a cat, a dog, a fish or a rabbit?",
+          "What did you do on the weekend?",
+          "What is your favourite song?"
+        ],
+        "answer": 1,
+        "working": "It gives a list of answers to choose from. The other questions let people give any answer."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
