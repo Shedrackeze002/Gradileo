@@ -4208,6 +4208,53 @@
       }
     ]
   },
+  "m5-10-2-e": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 5: Shapes Made of Rectangles",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An L-shaped room",
+        "t": 17.258
+      },
+      {
+        "title": "Split and add",
+        "t": 51.13
+      },
+      {
+        "title": "Another way to check",
+        "t": 89.494
+      },
+      {
+        "title": "Your turn",
+        "t": 125.265
+      },
+      {
+        "title": "Summary",
+        "t": 164.486
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2-e:q",
+        "t": 140.495,
+        "prompt": "An L-shaped garden is split into two rectangles. One is $5\\text{ m}$ by $4\\text{ m}$, and the other is $3\\text{ m}$ by $2\\text{ m}$. What is the area of the garden?",
+        "choices": [
+          "$14\\text{ m}^2$",
+          "$20\\text{ m}^2$",
+          "$26\\text{ m}^2$",
+          "$120\\text{ m}^2$"
+        ],
+        "answer": 2,
+        "working": "$5 \\times 4 = 20$ and $3 \\times 2 = 6$. Add: $20 + 6 = 26\\text{ m}^2$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

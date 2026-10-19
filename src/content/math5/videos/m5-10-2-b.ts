@@ -46,7 +46,7 @@ const video: Explainer = {
         { say: 'A rectangular paper banner has an area of one hundred and fifty-six square centimetres. It is six centimetres wide. How long is it?', show: ['ban.shape', 'ban.bottom', 'ban.left', 'ban.area'] },
         { say: 'The length times six is one hundred and fifty-six. So the length is one hundred and fifty-six divided by six.', show: ['m.0', 'm.1'], focus: ['m.0', 'm.1'] },
         { say: 'Let’s divide in friendly chunks. Six times twenty is one hundred and twenty. That leaves one hundred and fifty-six minus one hundred and twenty, which is thirty-six.', show: ['m.2', 'm.3'], focus: ['m.2', 'm.3'] },
-        { say: 'And six times six is thirty-six. So we used twenty sixes, and then six more sixes.', show: 'm.4', focus: 'm.4' },
+        { say: 'And six times six is thirty-six. So we used twenty groups of six, and then six more groups of six.', show: 'm.4', focus: 'm.4' },
         { say: 'Twenty plus six is twenty-six. So one hundred and fifty-six divided by six is twenty-six, and the banner is twenty-six centimetres long.', show: 'm.5', focus: 'm.5' },
       ],
     },
@@ -94,7 +94,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Let’s sum up. To find a missing side, divide the area by the side you know.', show: 'sum.0' },
-        { say: 'If the numbers are big, divide in friendly chunks, like twenty sixes and six more.', show: 'sum.1' },
+        { say: 'If the numbers are big, divide in friendly chunks, like twenty groups of six and six more groups.', show: 'sum.1' },
         { say: 'And check by multiplying: you should get the area back. In the next part, you will meet perimeter. See you there!', show: 'sum.2' },
       ],
     },
