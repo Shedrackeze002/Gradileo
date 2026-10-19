@@ -2752,6 +2752,124 @@
       }
     ]
   },
+  "m5-7-2": {
+    "lessonId": "m5-7-2",
+    "title": "Algebraic Expressions, Part 1: Variables",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Variables",
+        "t": 22.567
+      },
+      {
+        "title": "Algebraic expressions",
+        "t": 55.071
+      },
+      {
+        "title": "Writing a product",
+        "t": 83.314
+      },
+      {
+        "title": "Writing a quotient",
+        "t": 123.473
+      },
+      {
+        "title": "Write it the algebra way",
+        "t": 151.408
+      },
+      {
+        "title": "Watch out",
+        "t": 177.603
+      },
+      {
+        "title": "Your turn",
+        "t": 200.042
+      },
+      {
+        "title": "Summary",
+        "t": 231.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-2:q",
+        "t": 207.844,
+        "prompt": "Write $p + p + p + p$ the algebra way.",
+        "choices": [
+          "$4 + p$",
+          "$p4$",
+          "$\\dfrac{p}{4}$",
+          "$4p$"
+        ],
+        "answer": 3,
+        "working": "Adding $p$ four times is $4 \\times p$, written with the number first and no $\\times$ sign: $4p$."
+      }
+    ]
+  },
+  "m5-7-2-b": {
+    "lessonId": "m5-7-2",
+    "title": "Algebraic Expressions, Part 2: Terms and Writing Expressions",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Terms",
+        "t": 17.428
+      },
+      {
+        "title": "Coefficients and constants",
+        "t": 43.323
+      },
+      {
+        "title": "Name the parts",
+        "t": 70.78
+      },
+      {
+        "title": "Word clues",
+        "t": 94.18
+      },
+      {
+        "title": "Tickets and parking",
+        "t": 118.814
+      },
+      {
+        "title": "Sharing crackers",
+        "t": 158.189
+      },
+      {
+        "title": "Your turn",
+        "t": 188.582
+      },
+      {
+        "title": "Summary",
+        "t": 229.924
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-2-b:q",
+        "t": 203.943,
+        "prompt": "Pens cost \\$3 each, and a pencil case costs \\$7. Which expression gives the total cost, in dollars, of $p$ pens and one pencil case?",
+        "choices": [
+          "$7p + 3$",
+          "$3 + p + 7$",
+          "$3p + 7$",
+          "$\\dfrac{p}{3} + 7$"
+        ],
+        "answer": 2,
+        "working": "“Each” means multiply: $p$ pens cost $3p$ dollars. The case is paid once, so it is the constant term: $3p + 7$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
