@@ -4404,6 +4404,53 @@
       }
     ]
   },
+  "m5-11-1-d": {
+    "lessonId": "m5-11-1",
+    "title": "Arithmetic Sequences in Tables and Graphs, Part 4: A Straight Line",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Steps on the graph",
+        "t": 19.624
+      },
+      {
+        "title": "Checking your work",
+        "t": 62.615
+      },
+      {
+        "title": "Going past the graph",
+        "t": 91.22
+      },
+      {
+        "title": "Your turn",
+        "t": 132.812
+      },
+      {
+        "title": "Summary",
+        "t": 173.685
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-1-d:q",
+        "t": 146.918,
+        "prompt": "A graph shows the points $(1,\\ 4)$, $(2,\\ 6)$, $(3,\\ 8)$ and $(4,\\ 10)$. If the pattern continues, what is the term at position $6$?",
+        "choices": [
+          "$14$",
+          "$12$",
+          "$16$",
+          "$6$"
+        ],
+        "answer": 0,
+        "working": "The terms go up by $2$: position $5$ is $10 + 2 = 12$, and position $6$ is $12 + 2 = 14$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
