@@ -2044,7 +2044,7 @@
   "m5-5-2-b": {
     "lessonId": "m5-5-2",
     "title": "Adding and Subtracting Fractions, Part 2: With a Common Denominator",
-    "duration": 248,
+    "duration": 249,
     "voice": "af_heart",
     "chapters": [
       {
@@ -2053,41 +2053,41 @@
       },
       {
         "title": "A common denominator",
-        "t": 16.372
+        "t": 16.621
       },
       {
         "title": "Adding",
-        "t": 34.378
+        "t": 34.627
       },
       {
         "title": "Watch out",
-        "t": 73.021
+        "t": 74.038
       },
       {
         "title": "Subtracting",
-        "t": 104.615
+        "t": 105.632
       },
       {
         "title": "Improper fractions",
-        "t": 127.289
+        "t": 128.306
       },
       {
         "title": "Any order",
-        "t": 171.823
+        "t": 172.84
       },
       {
         "title": "Your turn",
-        "t": 187.872
+        "t": 188.889
       },
       {
         "title": "Summary",
-        "t": 218.529
+        "t": 219.546
       }
     ],
     "cues": [
       {
         "id": "m5-5-2-b:q",
-        "t": 194.138,
+        "t": 195.155,
         "prompt": "Find $\\dfrac{4}{9} + \\dfrac{3}{9}$.",
         "choices": [
           "$\\dfrac{7}{18}$",
