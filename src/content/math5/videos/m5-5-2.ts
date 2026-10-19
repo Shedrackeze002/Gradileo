@@ -14,7 +14,7 @@ const video: Explainer = {
       layout: 'center',
       main: [{ kind: 'title', id: 'title', kicker: 'Fractions · Part 1', title: 'Unit Fractions', subtitle: 'Every fraction is made of equal pieces' }],
       lines: [
-        { say: 'Kateri ate two eighths of a pizza. Her brother ate three eighths of the same pizza. How much did they eat together?', show: 'title' },
+        { say: 'Kateri eats two eighths of a pizza. Her brother eats three eighths of the same pizza. How much do they eat together?', show: 'title' },
         { say: 'When the pieces are the same size, adding and subtracting fractions is just counting pieces. In this video, you will see how every fraction is built from equal pieces called unit fractions.' },
       ],
     },
@@ -58,7 +58,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'You can also split five eighths into two parts. Here, two of the pieces are purple, and three are orange.', show: ['split.frame', 'split.shade'] },
-        { say: 'Two eighths plus three eighths make five eighths. That is how much pizza Kateri and her brother ate together!', show: 'm.0', focus: 'm.0' },
+        { say: 'Two eighths plus three eighths make five eighths. That is how much pizza Kateri and her brother eat together!', show: 'm.0', focus: 'm.0' },
         { say: 'There are other ways to split it as well. One eighth plus four eighths also makes five eighths.', show: 'm.1', focus: 'm.1' },
       ],
     },

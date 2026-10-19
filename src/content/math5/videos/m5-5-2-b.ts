@@ -14,7 +14,7 @@ const video: Explainer = {
       layout: 'center',
       main: [{ kind: 'title', id: 'title', kicker: 'Fractions · Part 2', title: 'With a Common Denominator', subtitle: 'Add the numerators, keep the denominator' }],
       lines: [
-        { say: 'Back to Kateri’s pizza. Kateri ate two eighths, and her brother ate three eighths. Now we are ready to add them.', show: 'title' },
+        { say: 'Back to Kateri’s pizza. Kateri eats two eighths, and her brother eats three eighths. Now we are ready to add them.', show: 'title' },
         { say: 'In this video, you will add and subtract fractions that have the same denominator.' },
       ],
     },
@@ -40,10 +40,10 @@ const video: Explainer = {
         { kind: 'callout', id: 'key', tone: 'key', title: 'Same denominator', md: 'Add or subtract the **numerators** to count the pieces. The **denominator stays the same**, because the size of the pieces does not change.' },
       ],
       lines: [
-        { say: 'Here is the pizza, cut into eight equal slices. Kateri ate two eighths: two purple slices.', show: ['pz.rim', 'pz.s0', 'pz.s1'] },
-        { say: 'Her brother ate three eighths: three orange slices.', show: ['pz.s2', 'pz.s3', 'pz.s4'] },
+        { say: 'Here is the pizza, cut into eight equal slices. Kateri eats two eighths: two purple slices.', show: ['pz.rim', 'pz.s0', 'pz.s1'] },
+        { say: 'Her brother eats three eighths: three orange slices.', show: ['pz.s2', 'pz.s3', 'pz.s4'] },
         { say: 'Count the slices together. Two eighths plus three eighths is five eighths, just like two apples plus three apples is five apples.', show: 'm.0', focus: ['m.0', 'pz.shade'] },
-        { say: 'So with a common denominator, add the numerators to count the pieces. The denominator stays the same, because the size of the pieces does not change. They ate five eighths of the pizza.', show: 'key' },
+        { say: 'So with a common denominator, add the numerators to count the pieces. The denominator stays the same, because the size of the pieces does not change. Together they eat five eighths of the pizza.', show: 'key' },
       ],
     },
     {

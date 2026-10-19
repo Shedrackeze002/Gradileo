@@ -49,7 +49,7 @@ const video: Explainer = {
         { say: 'Keep counting, on the second pizza. Five fourths.', show: 'pz.b-s0', focus: 'pz.b-s0' },
         { say: 'Six fourths.', show: 'pz.b-s1', focus: 'pz.b-s1' },
         { say: 'Seven fourths.', show: ['pz.b-s2', 'm.1'], focus: ['pz.b-s2', 'm.1'] },
-        { say: 'So the family ate seven fourths of a pizza. That is more than one whole: one whole pizza, and three slices more.', focus: ['pz.a-shade', 'pz.b-shade'] },
+        { say: 'So the family eats seven fourths of a pizza. That is more than one whole: one whole pizza, and three slices more.', focus: ['pz.a-shade', 'pz.b-shade'] },
       ],
     },
     {

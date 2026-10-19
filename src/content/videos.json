@@ -1990,6 +1990,489 @@
       }
     ]
   },
+  "m5-5-2": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 1: Unit Fractions",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unit fractions",
+        "t": 24.398
+      },
+      {
+        "title": "Five eighths",
+        "t": 50.217
+      },
+      {
+        "title": "Splitting a fraction",
+        "t": 88.547
+      },
+      {
+        "title": "A missing numerator",
+        "t": 114.044
+      },
+      {
+        "title": "Your turn",
+        "t": 141.799
+      },
+      {
+        "title": "Summary",
+        "t": 174.579
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2:q",
+        "t": 151.215,
+        "prompt": "Find the missing numerator: $\\dfrac{5}{6} = \\dfrac{2}{6} + \\dfrac{?}{6}$",
+        "choices": [
+          "$7$",
+          "$3$",
+          "$4$",
+          "$2$"
+        ],
+        "answer": 1,
+        "working": "$\\tfrac{5}{6}$ is $5$ sixths and $\\tfrac{2}{6}$ is $2$ of them. $5 - 2 = 3$, so $\\tfrac{5}{6} = \\tfrac{2}{6} + \\tfrac{3}{6}$."
+      }
+    ]
+  },
+  "m5-5-2-b": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 2: With a Common Denominator",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A common denominator",
+        "t": 16.372
+      },
+      {
+        "title": "Adding",
+        "t": 34.378
+      },
+      {
+        "title": "Watch out",
+        "t": 73.021
+      },
+      {
+        "title": "Subtracting",
+        "t": 104.615
+      },
+      {
+        "title": "Improper fractions",
+        "t": 127.289
+      },
+      {
+        "title": "Any order",
+        "t": 171.823
+      },
+      {
+        "title": "Your turn",
+        "t": 187.872
+      },
+      {
+        "title": "Summary",
+        "t": 218.529
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2-b:q",
+        "t": 194.138,
+        "prompt": "Find $\\dfrac{4}{9} + \\dfrac{3}{9}$.",
+        "choices": [
+          "$\\dfrac{7}{18}$",
+          "$\\dfrac{1}{9}$",
+          "$\\dfrac{7}{9}$",
+          "$\\dfrac{12}{9}$"
+        ],
+        "answer": 2,
+        "working": "Both fractions count ninths. Add the numerators, $4 + 3 = 7$, and keep the denominator: $\\tfrac{7}{9}$."
+      }
+    ]
+  },
+  "m5-5-2-c": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 3: Adding Mixed Numbers",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The picture",
+        "t": 17.825
+      },
+      {
+        "title": "Way 1: wholes and parts",
+        "t": 51.924
+      },
+      {
+        "title": "Way 2: improper fractions",
+        "t": 85.759
+      },
+      {
+        "title": "Which way?",
+        "t": 126.128
+      },
+      {
+        "title": "Your turn",
+        "t": 155.994
+      },
+      {
+        "title": "Summary",
+        "t": 192.783
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2-c:q",
+        "t": 163.412,
+        "prompt": "Find $3\\dfrac{2}{6} + 1\\dfrac{5}{6}$.",
+        "choices": [
+          "$4\\dfrac{7}{12}$",
+          "$4\\dfrac{1}{6}$",
+          "$5\\dfrac{5}{6}$",
+          "$5\\dfrac{1}{6}$"
+        ],
+        "answer": 3,
+        "working": "Wholes: $3 + 1 = 4$. Parts: $\\tfrac{2}{6} + \\tfrac{5}{6} = \\tfrac{7}{6} = 1\\tfrac{1}{6}$. Together: $4 + 1\\tfrac{1}{6} = 5\\tfrac{1}{6}$."
+      }
+    ]
+  },
+  "m5-5-2-d": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 4: Subtracting Mixed Numbers",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Not enough fifths",
+        "t": 20.363
+      },
+      {
+        "title": "Way 1: regroup",
+        "t": 46.719
+      },
+      {
+        "title": "Way 2: improper fractions",
+        "t": 91.881
+      },
+      {
+        "title": "Watch out",
+        "t": 130.281
+      },
+      {
+        "title": "Which way is easier?",
+        "t": 167.297
+      },
+      {
+        "title": "Your turn",
+        "t": 183.762
+      },
+      {
+        "title": "Summary",
+        "t": 219.893
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2-d:q",
+        "t": 191.468,
+        "prompt": "Find $4\\dfrac{1}{4} - 2\\dfrac{3}{4}$.",
+        "choices": [
+          "$1\\dfrac{2}{4}$",
+          "$2\\dfrac{2}{4}$",
+          "$1\\dfrac{1}{4}$",
+          "$2\\dfrac{3}{4}$"
+        ],
+        "answer": 0,
+        "working": "Regroup: $4\\tfrac{1}{4} = 3 + \\tfrac{5}{4}$. Wholes: $3 - 2 = 1$. Parts: $\\tfrac{5}{4} - \\tfrac{3}{4} = \\tfrac{2}{4}$. So the answer is $1\\tfrac{2}{4}$."
+      }
+    ]
+  },
+  "m5-5-2-e": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 5: Solving Fraction Problems",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 17.998
+      },
+      {
+        "title": "A hiking trail",
+        "t": 43.334
+      },
+      {
+        "title": "Solve and check",
+        "t": 80.23
+      },
+      {
+        "title": "Two steps in the kitchen",
+        "t": 118.327
+      },
+      {
+        "title": "Your turn",
+        "t": 170.159
+      },
+      {
+        "title": "Summary",
+        "t": 210.144
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2-e:q",
+        "t": 182.241,
+        "prompt": "A ribbon is $3\\dfrac{7}{10}$ m long. Mia cuts off $1\\dfrac{4}{10}$ m. How much ribbon is left?",
+        "choices": [
+          "$5\\dfrac{1}{10}$ m",
+          "$2\\dfrac{3}{10}$ m",
+          "$1\\dfrac{3}{10}$ m",
+          "$2\\dfrac{4}{10}$ m"
+        ],
+        "answer": 1,
+        "working": "Cutting off leaves less, so subtract. Wholes: $3 - 1 = 2$. Parts: $\\tfrac{7}{10} - \\tfrac{4}{10} = \\tfrac{3}{10}$. So $2\\tfrac{3}{10}$ m is left."
+      }
+    ]
+  },
+  "m5-6-1": {
+    "lessonId": "m5-6-1",
+    "title": "Ratios, Part 1: What Is a Ratio?",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting the marbles",
+        "t": 21.151
+      },
+      {
+        "title": "What is a ratio?",
+        "t": 45.144
+      },
+      {
+        "title": "Order matters",
+        "t": 80.618
+      },
+      {
+        "title": "A garden bed",
+        "t": 111.949
+      },
+      {
+        "title": "Watch out",
+        "t": 147.605
+      },
+      {
+        "title": "Your turn",
+        "t": 175.852
+      },
+      {
+        "title": "Summary",
+        "t": 208.449
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-1:q",
+        "t": 186.896,
+        "prompt": "A pencil case has $6$ pencils and $5$ erasers. What is the ratio of **erasers to pencils**?",
+        "choices": [
+          "$6 : 5$",
+          "$5 : 6$",
+          "$5 : 11$",
+          "$11 : 6$"
+        ],
+        "answer": 1,
+        "working": "Erasers come first in the words, so their number comes first: $5$ erasers to $6$ pencils is $5 : 6$."
+      }
+    ]
+  },
+  "m5-6-1-b": {
+    "lessonId": "m5-6-1",
+    "title": "Ratios, Part 2: Part-Part and Part-Whole Ratios",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts and the whole",
+        "t": 19.821
+      },
+      {
+        "title": "Part-part ratios",
+        "t": 43.846
+      },
+      {
+        "title": "Part-whole ratios",
+        "t": 63.304
+      },
+      {
+        "title": "A chess club",
+        "t": 96.627
+      },
+      {
+        "title": "Watch out",
+        "t": 135.432
+      },
+      {
+        "title": "Your turn",
+        "t": 160.03
+      },
+      {
+        "title": "Summary",
+        "t": 193.519
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-1-b:q",
+        "t": 170.613,
+        "prompt": "A pet shop has $6$ cats and $9$ dogs. What is the part-whole ratio of **cats to all the pets**?",
+        "choices": [
+          "$6 : 9$",
+          "$9 : 15$",
+          "$15 : 6$",
+          "$6 : 15$"
+        ],
+        "answer": 3,
+        "working": "The whole is $6 + 9 = 15$ pets. Cats to all the pets is $6 : 15$."
+      }
+    ]
+  },
+  "m5-6-1-c": {
+    "lessonId": "m5-6-1",
+    "title": "Ratios, Part 3: More Parts, and Amounts You Measure",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of fruit",
+        "t": 22.005
+      },
+      {
+        "title": "Pears to all the fruit",
+        "t": 39.779
+      },
+      {
+        "title": "Not bananas to bananas",
+        "t": 69.242
+      },
+      {
+        "title": "A punch recipe",
+        "t": 97.622
+      },
+      {
+        "title": "Name the parts",
+        "t": 128.432
+      },
+      {
+        "title": "Your turn",
+        "t": 148.732
+      },
+      {
+        "title": "Summary",
+        "t": 183.857
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-1-c:q",
+        "t": 161.505,
+        "prompt": "A jar has $5$ red beads, $4$ green beads and $3$ yellow beads. What is the ratio of **green beads to all the beads**?",
+        "choices": [
+          "$4 : 12$",
+          "$4 : 8$",
+          "$12 : 4$",
+          "$4 : 5$"
+        ],
+        "answer": 0,
+        "working": "The whole is $5 + 4 + 3 = 12$ beads. Green to all the beads is $4 : 12$."
+      }
+    ]
+  },
+  "m5-6-2": {
+    "lessonId": "m5-6-2",
+    "title": "Ratios, Fractions, Decimals and Percentages, Part 1: Percent Means Out of 100",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a percentage?",
+        "t": 20.1
+      },
+      {
+        "title": "A hundred grid",
+        "t": 43.465
+      },
+      {
+        "title": "One grid, four ways",
+        "t": 70.495
+      },
+      {
+        "title": "Half, all and a few",
+        "t": 107.649
+      },
+      {
+        "title": "Your turn",
+        "t": 140.627
+      },
+      {
+        "title": "Summary",
+        "t": 182.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-2:q",
+        "t": 155.458,
+        "prompt": "A grid has $100$ squares, and $48$ are shaded. Which row shows the shaded part as a ratio, a fraction, a decimal and a percentage?",
+        "choices": [
+          "$100 : 48,\\ \\dfrac{100}{48},\\ 0.48,\\ 48\\%$",
+          "$48 : 100,\\ \\dfrac{48}{100},\\ 4.8,\\ 48\\%$",
+          "$48 : 100,\\ \\dfrac{48}{100},\\ 0.48,\\ 48\\%$",
+          "$48 : 52,\\ \\dfrac{48}{100},\\ 0.48,\\ 48\\%$"
+        ],
+        "answer": 2,
+        "working": "$48$ out of $100$: the ratio $48 : 100$, the fraction $\\dfrac{48}{100}$, $48$ hundredths is $0.48$, and $48\\%$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
