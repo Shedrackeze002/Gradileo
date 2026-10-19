@@ -4502,6 +4502,57 @@
       }
     ]
   },
+  "m5-11-2-b": {
+    "lessonId": "m5-11-2",
+    "title": "Rules and Missing Terms, Part 2: Writing an Expression",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Variables",
+        "t": 18.364
+      },
+      {
+        "title": "What 4n means",
+        "t": 50.74
+      },
+      {
+        "title": "From a rule to an expression",
+        "t": 82.142
+      },
+      {
+        "title": "Checking with a table",
+        "t": 109.786
+      },
+      {
+        "title": "Your turn",
+        "t": 137.806
+      },
+      {
+        "title": "Summary",
+        "t": 166.27
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-2-b:q",
+        "t": 146.479,
+        "prompt": "Which expression matches the rule $\\text{term} = \\text{position} + 7$?",
+        "choices": [
+          "$n + 7$",
+          "$7n$",
+          "$n - 7$",
+          "$7$"
+        ],
+        "answer": 0,
+        "working": "Replace the word position with $n$: $n + 7$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
