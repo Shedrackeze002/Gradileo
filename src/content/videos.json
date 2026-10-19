@@ -4749,6 +4749,53 @@
       }
     ]
   },
+  "m5-12-1-c": {
+    "lessonId": "m5-12-1",
+    "title": "Frequency and the Mode, Part 3: One Mode, Two Modes or None",
+    "duration": 164,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three cases",
+        "t": 16.777
+      },
+      {
+        "title": "Two modes",
+        "t": 53.486
+      },
+      {
+        "title": "No mode",
+        "t": 83.231
+      },
+      {
+        "title": "Your turn",
+        "t": 105.34
+      },
+      {
+        "title": "Summary",
+        "t": 138.906
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-1-c:q",
+        "t": 117.127,
+        "prompt": "Votes for a team colour: Red $6$, Blue $9$, Green $9$, Yellow $3$. What is the mode?",
+        "choices": [
+          "Blue and Green",
+          "Blue",
+          "No mode",
+          "$9$"
+        ],
+        "answer": 0,
+        "working": "The greatest frequency is $9$, and two colours have it: Blue and Green. There are two modes."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
