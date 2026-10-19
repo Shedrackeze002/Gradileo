@@ -1,4 +1,173 @@
 {
+  "m5-1-1": {
+    "lessonId": "m5-1-1",
+    "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Digits",
+        "t": 21.193
+      },
+      {
+        "title": "Ten times as much",
+        "t": 61.044
+      },
+      {
+        "title": "The place value chart",
+        "t": 101.461
+      },
+      {
+        "title": "Groups of three",
+        "t": 131.569
+      },
+      {
+        "title": "The value of a digit",
+        "t": 149.692
+      },
+      {
+        "title": "Watch out",
+        "t": 183.691
+      },
+      {
+        "title": "Your turn",
+        "t": 215.059
+      },
+      {
+        "title": "Summary",
+        "t": 250.153
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-1:q",
+        "t": 226.073,
+        "prompt": "What is the value of the $3$ in $6\\,831\\,425$?",
+        "choices": [
+          "$3000$",
+          "$30\\,000$",
+          "$300\\,000$",
+          "$3$"
+        ],
+        "answer": 1,
+        "working": "Count from the ones: ones, tens, hundreds, thousands, ten thousands. The $3$ is in the ten thousands place, so it is worth $3 \\times 10\\,000 = 30\\,000$."
+      }
+    ]
+  },
+  "m5-1-1-b": {
+    "lessonId": "m5-1-1",
+    "title": "Place Value to Millions and Thousandths, Part 2: Tenths, Hundredths and Thousandths",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The decimal point",
+        "t": 21.021
+      },
+      {
+        "title": "Parts of a whole",
+        "t": 46.94
+      },
+      {
+        "title": "A mirror around the ones",
+        "t": 98.005
+      },
+      {
+        "title": "The value of a decimal digit",
+        "t": 136.352
+      },
+      {
+        "title": "Tens or tenths?",
+        "t": 172.049
+      },
+      {
+        "title": "Your turn",
+        "t": 208.168
+      },
+      {
+        "title": "Summary",
+        "t": 242.299
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-1-b:q",
+        "t": 216.313,
+        "prompt": "What is the value of the $9$ in $41.239$?",
+        "choices": [
+          "$0.9$",
+          "$900$",
+          "$0.09$",
+          "$0.009$"
+        ],
+        "answer": 3,
+        "working": "The $9$ is the third digit after the decimal point, so it is in the thousandths place. It is worth $9 \\times 0.001 = 0.009$."
+      }
+    ]
+  },
+  "m5-1-1-c": {
+    "lessonId": "m5-1-1",
+    "title": "Place Value to Millions and Thousandths, Part 3: Numbers in Words and Numerals",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Groups of three",
+        "t": 20.385
+      },
+      {
+        "title": "From numerals to words",
+        "t": 48.278
+      },
+      {
+        "title": "Decimals in words",
+        "t": 93.706
+      },
+      {
+        "title": "From words to numerals",
+        "t": 121.855
+      },
+      {
+        "title": "Watch out",
+        "t": 158.84
+      },
+      {
+        "title": "Your turn",
+        "t": 186.621
+      },
+      {
+        "title": "Summary",
+        "t": 218.627
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-1-c:q",
+        "t": 193.962,
+        "prompt": "Write “seven and sixty-two thousandths” with digits.",
+        "choices": [
+          "$7.062$",
+          "$7.62$",
+          "$762$",
+          "$7.602$"
+        ],
+        "answer": 0,
+        "working": "Thousandths needs three places after the point. The $2$ goes in the thousandths place and the $6$ in the hundredths, so the tenths get a $0$: $7.062$."
+      }
+    ]
+  },
   "m5-4-1": {
     "lessonId": "m5-4-1",
     "title": "Multiplying with the Standard Algorithm, Part 1: Multiplying by a One-Digit Number",
