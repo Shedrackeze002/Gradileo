@@ -2642,6 +2642,61 @@
       }
     ]
   },
+  "m5-7-1-b": {
+    "lessonId": "m5-7-1",
+    "title": "Order of Operations with Parentheses, Part 2: More Steps After the Parentheses",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The order",
+        "t": 17.848
+      },
+      {
+        "title": "Multiply, then add",
+        "t": 40.405
+      },
+      {
+        "title": "Divide, then subtract",
+        "t": 74.109
+      },
+      {
+        "title": "Watch out",
+        "t": 104.98
+      },
+      {
+        "title": "One more together",
+        "t": 132.534
+      },
+      {
+        "title": "Your turn",
+        "t": 164.76
+      },
+      {
+        "title": "Summary",
+        "t": 201.998
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-1-b:q",
+        "t": 173.405,
+        "prompt": "Evaluate $3 \\times (10 - 4) + 2$.",
+        "choices": [
+          "$24$",
+          "$28$",
+          "$20$",
+          "$14$"
+        ],
+        "answer": 2,
+        "working": "Parentheses first: $10 - 4 = 6$. Then multiply: $3 \\times 6 = 18$. Then add: $18 + 2 = 20$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
