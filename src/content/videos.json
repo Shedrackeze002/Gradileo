@@ -4067,6 +4067,53 @@
       }
     ]
   },
+  "m5-10-2-b": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 2: Finding a Missing Side",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backwards",
+        "t": 19.226
+      },
+      {
+        "title": "A paper banner",
+        "t": 61.593
+      },
+      {
+        "title": "Check by multiplying",
+        "t": 115.02
+      },
+      {
+        "title": "Your turn",
+        "t": 146.563
+      },
+      {
+        "title": "Summary",
+        "t": 181.705
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2-b:q",
+        "t": 158.776,
+        "prompt": "A rectangular poster has an area of $72\\text{ cm}^2$. It is $8\\text{ cm}$ wide. How long is it?",
+        "choices": [
+          "$64\\text{ cm}$",
+          "$9\\text{ cm}$",
+          "$576\\text{ cm}$",
+          "$80\\text{ cm}$"
+        ],
+        "answer": 1,
+        "working": "Length $= 72 \\div 8 = 9$, so it is $9\\text{ cm}$ long. Check: $9 \\times 8 = 72$ ✓"
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
