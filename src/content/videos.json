@@ -4114,6 +4114,53 @@
       }
     ]
   },
+  "m5-10-2-c": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 3: Perimeter and Area",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Perimeter",
+        "t": 19.984
+      },
+      {
+        "title": "A patio",
+        "t": 59.549
+      },
+      {
+        "title": "Fence or grass?",
+        "t": 104.685
+      },
+      {
+        "title": "Your turn",
+        "t": 140.165
+      },
+      {
+        "title": "Summary",
+        "t": 173.946
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2-c:q",
+        "t": 150.586,
+        "prompt": "A rectangular picture is $6\\text{ cm}$ long and $4\\text{ cm}$ wide. What is its **perimeter**?",
+        "choices": [
+          "$24\\text{ cm}^2$",
+          "$10\\text{ cm}$",
+          "$24\\text{ cm}$",
+          "$20\\text{ cm}$"
+        ],
+        "answer": 3,
+        "working": "Add all four sides: $6 + 4 + 6 + 4 = 20$, so the perimeter is $20\\text{ cm}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
