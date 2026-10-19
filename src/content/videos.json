@@ -274,6 +274,57 @@
       }
     ]
   },
+  "m5-1-2-b": {
+    "lessonId": "m5-1-2",
+    "title": "Comparing, Ordering and Rounding, Part 2: Decimals on a Number Line",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Jumps of one hundredth",
+        "t": 19.803
+      },
+      {
+        "title": "Between",
+        "t": 69.846
+      },
+      {
+        "title": "A decimal in between",
+        "t": 91.262
+      },
+      {
+        "title": "Zooming in",
+        "t": 133.575
+      },
+      {
+        "title": "Your turn",
+        "t": 166.812
+      },
+      {
+        "title": "Summary",
+        "t": 204.807
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-2-b:q",
+        "t": 174.851,
+        "prompt": "Which number is between $5.6$ and $5.7$?",
+        "choices": [
+          "$5.07$",
+          "$5.75$",
+          "$6.5$",
+          "$5.63$"
+        ],
+        "answer": 3,
+        "working": "Write the numbers as $5.60$ and $5.70$. Any number from $5.61$ to $5.69$ is between them, so $5.63$ is."
+      }
+    ]
+  },
   "m5-4-1": {
     "lessonId": "m5-4-1",
     "title": "Multiplying with the Standard Algorithm, Part 1: Multiplying by a One-Digit Number",
