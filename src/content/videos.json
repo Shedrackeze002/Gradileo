@@ -3090,6 +3090,57 @@
       }
     ]
   },
+  "m5-7-3-d": {
+    "lessonId": "m5-7-3",
+    "title": "Solving Equations, Part 4: Solving Problems with Equations",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 15.525
+      },
+      {
+        "title": "Stickers",
+        "t": 41.448
+      },
+      {
+        "title": "Museum tickets",
+        "t": 91.517
+      },
+      {
+        "title": "Check and answer",
+        "t": 144.423
+      },
+      {
+        "title": "Your turn",
+        "t": 172.247
+      },
+      {
+        "title": "Summary",
+        "t": 213.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-3-d:q",
+        "t": 186.46,
+        "prompt": "Noah buys $3$ books that each cost the same, and a bookmark for \\$2. Noah pays \\$26 in all. How much does one book cost?",
+        "choices": [
+          "\\$8",
+          "\\$24",
+          "\\$28",
+          "\\$6"
+        ],
+        "answer": 0,
+        "working": "Let $b$ be the cost of one book: $3b + 2 = 26$. Subtract $2$: $3b = 24$. Divide by $3$: $b = 8$. Check: $3 \\times 8 + 2 = 26$. One book costs \\$8."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
