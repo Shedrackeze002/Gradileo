@@ -4702,6 +4702,53 @@
       }
     ]
   },
+  "m5-12-1-b": {
+    "lessonId": "m5-12-1",
+    "title": "Frequency and the Mode, Part 2: The Mode",
+    "duration": 162,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The mode",
+        "t": 16.988
+      },
+      {
+        "title": "Reading a bar graph",
+        "t": 44.754
+      },
+      {
+        "title": "Watch out",
+        "t": 80.328
+      },
+      {
+        "title": "Your turn",
+        "t": 107.001
+      },
+      {
+        "title": "Summary",
+        "t": 137.937
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-1-b:q",
+        "t": 119.194,
+        "prompt": "A class voted for a class pet: Fish $5$, Hamster $8$, Rabbit $6$, Bird $2$. What is the mode?",
+        "choices": [
+          "$8$",
+          "Fish",
+          "Hamster",
+          "Rabbit"
+        ],
+        "answer": 2,
+        "working": "Hamster has the greatest frequency, $8$, so the mode is Hamster."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
