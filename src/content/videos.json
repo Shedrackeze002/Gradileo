@@ -2473,6 +2473,65 @@
       }
     ]
   },
+  "m5-6-2-b": {
+    "lessonId": "m5-6-2",
+    "title": "Ratios, Fractions, Decimals and Percentages, Part 2: Making the Whole 100",
+    "duration": 304,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four ways to show the same thing",
+        "t": 16.739
+      },
+      {
+        "title": "Seven out of ten",
+        "t": 49.384
+      },
+      {
+        "title": "Watch out",
+        "t": 97.959
+      },
+      {
+        "title": "Friendly wholes",
+        "t": 122.071
+      },
+      {
+        "title": "A class survey",
+        "t": 158.248
+      },
+      {
+        "title": "Quarters",
+        "t": 211.135
+      },
+      {
+        "title": "Your turn",
+        "t": 238.556
+      },
+      {
+        "title": "Summary",
+        "t": 275.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-2-b:q",
+        "t": 251.77,
+        "prompt": "A spelling test has $25$ words. Sam spells $21$ of them correctly. What percentage of the words does Sam spell correctly?",
+        "choices": [
+          "$21\\%$",
+          "$84\\%$",
+          "$42\\%$",
+          "$16\\%$"
+        ],
+        "answer": 1,
+        "working": "$25 \\times 4 = 100$, so multiply the part by $4$ as well: $\\dfrac{21}{25} = \\dfrac{84}{100} = 84\\%$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
