@@ -3973,6 +3973,53 @@
       }
     ]
   },
+  "m5-10-1-d": {
+    "lessonId": "m5-10-1",
+    "title": "Units of Area, Part 4: Estimating Area",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Benchmarks",
+        "t": 19.999
+      },
+      {
+        "title": "Whole and half squares",
+        "t": 57.43
+      },
+      {
+        "title": "A quick check",
+        "t": 103.888
+      },
+      {
+        "title": "Your turn",
+        "t": 131.727
+      },
+      {
+        "title": "Summary",
+        "t": 165.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-1-d:q",
+        "t": 142.664,
+        "prompt": "On centimetre grid paper, a shape covers $9$ whole squares and $6$ half squares. What is its area?",
+        "choices": [
+          "$12\\text{ cm}^2$",
+          "$15\\text{ cm}^2$",
+          "$18\\text{ cm}^2$",
+          "$21\\text{ cm}^2$"
+        ],
+        "answer": 0,
+        "working": "$6$ halves make $6 \\div 2 = 3$ whole squares, so the area is $9 + 3 = 12\\text{ cm}^2$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
