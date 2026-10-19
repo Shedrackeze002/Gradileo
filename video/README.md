@@ -213,11 +213,14 @@ Lessons learned while scripting (the script check does not catch these):
 - Break long maths over several lines (or narrow `leftWidth`) so it fits its column; give a
   crowded figure its own scene.
 - The voice blurs a few phrases into other words: "In proofs" (heard as "Improves"), "Congruent
-  figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "halve" ("have"), "made to look huge" ("made to a huge"; "made to seem huge" is clear), "A lease" at the start of a sentence ("Elise"; "A vehicle lease" or "Every lease" is clear), "a Sudoku" ("pseudo-ku"; "Sudoku puzzles" or "In Sudoku" is clear), "Maya leases" ("Maya Lisa's"), an acronym with 's ("SUV's" is read as the word "suvs"; "the SUV cost" is clear), the names Zainab ("Zaina") and Luis ("Lewis"), "boy" ("buy" or "by", whatever the spelling: use other groups, such as teachers and students), "Rewrite"
+  figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "halve" ("have"), "made to look huge" ("made to a huge"; "made to seem huge" is clear), "A lease" at the start of a sentence ("Elise"; "A vehicle lease" or "Every lease" is clear), "a Sudoku" ("pseudo-ku"; "Sudoku puzzles" or "In Sudoku" is clear), "Maya leases" ("Maya Lisa's"), "is x itself" before more words ("is exit self"; "is just the value of x" is clear), "antidifferentiate" after a full stop or a comma ("and to differentiate", the opposite; "find the antiderivative" is clear), "The sign is wrong" next to "sine" (sign and sine sound the same; "is missing a negative" is clear), "its slices are" ("it slices our"; "each slice is" is clear), an acronym with 's ("SUV's" is read as the word "suvs"; "the SUV cost" is clear), "too" after a letter, a number or "zero" ("approaches zero too" is heard as "zero two", "find y too" as "y2", and ", two." at the end of a line as "too"; "as well" is clear), a short line that opens "It is negative" ("Air is negative"; "The answer is negative" is clear), the names Zainab ("Zaina") and Luis ("Lewis"), "boy" ("buy" or "by", whatever the spelling: use other groups, such as teachers and students), "Rewrite"
   at the start of a sentence ("We're right") and the name Rhea ("Rhea takes" came out "retakes";
   Maya is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
   the line ("Figures that are congruent…") and check it with `video/tools/hear.ts`.
+- Say a minus sign in front of a bracket or a whole fraction as "the negative of" (or "negative,"
+  then the bracket, then "all over"): "negative two plus two, over one plus four" sounds like zero
+  over five, while the screen shows −(2 + 2)/(1 + 4).
 - Use `\dfrac` for fractions in Math 20-4 maths lines, and state every rate, tax or rule inside
   the question (see `CLAUDE.md`).
 

@@ -335,8 +335,19 @@ items ship or decisions change.
      lease" at the start of a sentence, "a Sudoku", "Maya leases", acronyms with 's, the names
      Zainab and Luis) are listed in `video/README.md`. Every Math 10 to 30 course is rendered and
      in Drive (896 videos).
-   - Next: script and render the other courses in order (Math 31, 5, 6, 7, 8 and 9), explaining
-     each lesson as simply as possible, with parts split by idea.
+   - Built: Math 31, all 117 videos at the calm pace (3:21 to 7:26, about 9.5 hours in all),
+     topic-first and in neutral settings, rendered unit by unit and uploaded to Drive (checked:
+     Drive holds every file of all 117). Four helpers wrote the scripts unit by unit; every answer,
+     figure and graph was checked before rendering. The listening check found a handful of lines
+     the voice blurred, and reading them found one where the spoken maths did not match the screen
+     ("negative two plus two, over one plus four" for −(2 + 2)/(1 + 4)). Those lines were reworded
+     and their videos made again: "too" after a number or letter (heard as "two"), "It is negative"
+     on its own ("Air is negative"), "is x itself" ("exit self"), "antidifferentiate" ("and to
+     differentiate"), "The sign is wrong" beside "sine", and "its slices are" ("it slices our").
+     All are listed in `video/README.md`, with a rule for voicing a minus sign in front of a bracket
+     or fraction. Every Math 10 to 31 course is rendered and in Drive (1,013 videos).
+   - Next: script and render Math 5, 6, 7, 8 and 9 in order, explaining each lesson as simply as
+     possible, with parts split by idea.
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with
    Claude coordinating: preparing each week's posts, keeping the schedule and reporting. It runs

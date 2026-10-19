@@ -4191,6 +4191,6121 @@
       }
     ]
   },
+  "m31-1-1": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 1: Composite Functions",
+    "duration": 356,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One after the other",
+        "t": 26.175
+      },
+      {
+        "title": "Evaluating a composition",
+        "t": 74.474
+      },
+      {
+        "title": "The other order",
+        "t": 109.152
+      },
+      {
+        "title": "A formula for the composite",
+        "t": 146.759
+      },
+      {
+        "title": "The other formula",
+        "t": 193.419
+      },
+      {
+        "title": "Watch out",
+        "t": 240.677
+      },
+      {
+        "title": "Your turn",
+        "t": 277.228
+      },
+      {
+        "title": "Summary",
+        "t": 316.633
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1:q",
+        "t": 289.817,
+        "prompt": "Let $f(x) = 3x + 1$ and $g(x) = x^2 - 2$. Find $(f \\circ g)(3)$.",
+        "choices": [
+          "$98$",
+          "$22$",
+          "$70$",
+          "$17$"
+        ],
+        "answer": 1,
+        "working": "Inside first: $g(3) = 3^2 - 2 = 7$. Then $f(7) = 3(7) + 1 = 22$."
+      }
+    ]
+  },
+  "m31-1-1-b": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 2: Inside and Outside",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What would you calculate first?",
+        "t": 22.994
+      },
+      {
+        "title": "The inner and outer functions",
+        "t": 60.042
+      },
+      {
+        "title": "Two more examples",
+        "t": 92.604
+      },
+      {
+        "title": "Why it matters",
+        "t": 135.664
+      },
+      {
+        "title": "Your turn",
+        "t": 163.449
+      },
+      {
+        "title": "Summary",
+        "t": 198.856
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1-b:q",
+        "t": 173.438,
+        "prompt": "Write $H(x) = (5x - 2)^3$ as $f(g(x))$.",
+        "choices": [
+          "$f(x) = 5x - 2,\\ g(x) = x^3$",
+          "$f(x) = x^3,\\ g(x) = 5x$",
+          "$f(x) = \\sqrt[3]{x},\\ g(x) = 5x - 2$",
+          "$f(x) = x^3,\\ g(x) = 5x - 2$"
+        ],
+        "answer": 3,
+        "working": "You would calculate $5x - 2$ first, so $g(x) = 5x - 2$. Then you cube it, so $f(x) = x^3$. Check: $f(g(x)) = (5x - 2)^3$."
+      }
+    ]
+  },
+  "m31-1-1-c": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 3: The Domain of a Composite Function",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Both steps must work",
+        "t": 23.722
+      },
+      {
+        "title": "A square root",
+        "t": 55.346
+      },
+      {
+        "title": "Two restrictions",
+        "t": 119.935
+      },
+      {
+        "title": "Watch out",
+        "t": 178.46
+      },
+      {
+        "title": "Your turn",
+        "t": 220.518
+      },
+      {
+        "title": "Summary",
+        "t": 261.356
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1-c:q",
+        "t": 233.527,
+        "prompt": "Let $f(x) = \\sqrt{x}$ and $g(x) = 8 - 2x$. Find the domain of $f \\circ g$.",
+        "choices": [
+          "$x \\le 4$",
+          "$x \\ge 4$",
+          "$x \\ge 0$",
+          "$x \\le 8$"
+        ],
+        "answer": 0,
+        "working": "$(f \\circ g)(x) = \\sqrt{8 - 2x}$ needs $8 - 2x \\ge 0$, so $8 \\ge 2x$, and $x \\le 4$."
+      }
+    ]
+  },
+  "m31-1-1-d": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 4: The Difference Quotient",
+    "duration": 322,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Slope between two points",
+        "t": 26.89
+      },
+      {
+        "title": "Points x and x + h",
+        "t": 68.854
+      },
+      {
+        "title": "The difference quotient",
+        "t": 102.857
+      },
+      {
+        "title": "Expanding f(x + h)",
+        "t": 152.85
+      },
+      {
+        "title": "Subtract, factor and cancel",
+        "t": 195.721
+      },
+      {
+        "title": "Your turn",
+        "t": 248.166
+      },
+      {
+        "title": "Summary",
+        "t": 288.035
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1-d:q",
+        "t": 257.77,
+        "prompt": "Simplify the difference quotient $\\dfrac{f(x + h) - f(x)}{h}$ for $f(x) = x^2 + 5x$.",
+        "choices": [
+          "$2x + 5$",
+          "$2x + h$",
+          "$2x + h + 5$",
+          "$h + 5$"
+        ],
+        "answer": 2,
+        "working": "Subtracting $f(x)$ leaves $2xh + h^2 + 5h = h(2x + h + 5)$. Divide by $h$: $2x + h + 5$."
+      }
+    ]
+  },
+  "m31-1-1-e": {
+    "lessonId": "m31-1-1",
+    "title": "Functions for Calculus, Part 5: The Difference Quotient of a Fraction",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A common denominator",
+        "t": 24.224
+      },
+      {
+        "title": "Divide by h",
+        "t": 81.076
+      },
+      {
+        "title": "Check with a graph",
+        "t": 110.772
+      },
+      {
+        "title": "Watch out",
+        "t": 152.611
+      },
+      {
+        "title": "Your turn",
+        "t": 204.314
+      },
+      {
+        "title": "Summary",
+        "t": 242.332
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-1-e:q",
+        "t": 213.255,
+        "prompt": "Simplify the difference quotient for $f(x) = \\dfrac{2}{x}$.",
+        "choices": [
+          "$\\dfrac{2}{x(x + h)}$",
+          "$\\dfrac{-2}{x(x + h)}$",
+          "$\\dfrac{-2}{x^2}$",
+          "$\\dfrac{-2h}{x(x + h)}$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{2}{x + h} - \\dfrac{2}{x} = \\dfrac{2x - 2(x + h)}{x(x + h)} = \\dfrac{-2h}{x(x + h)}$. Divide by $h$: $\\dfrac{-2}{x(x + h)}$."
+      }
+    ]
+  },
+  "m31-1-2": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 1: The Natural Logarithm",
+    "duration": 350,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The number e",
+        "t": 22.289
+      },
+      {
+        "title": "The natural logarithm",
+        "t": 75.439
+      },
+      {
+        "title": "The laws of logarithms",
+        "t": 139.549
+      },
+      {
+        "title": "Using the laws",
+        "t": 188.039
+      },
+      {
+        "title": "Watch out",
+        "t": 225.625
+      },
+      {
+        "title": "Your turn",
+        "t": 274.809
+      },
+      {
+        "title": "Summary",
+        "t": 317.201
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2:q",
+        "t": 289.839,
+        "prompt": "Given $\\ln a = 4$ and $\\ln b = 1.5$, evaluate $\\ln\\left(\\dfrac{a^2}{b^3}\\right)$.",
+        "choices": [
+          "$3.5$",
+          "$6.5$",
+          "$12.5$",
+          "$1.78$"
+        ],
+        "answer": 0,
+        "working": "$\\ln\\left(\\dfrac{a^2}{b^3}\\right) = 2\\ln a - 3\\ln b = 2(4) - 3(1.5) = 8 - 4.5 = 3.5$"
+      }
+    ]
+  },
+  "m31-1-2-b": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 2: Solving Equations with e and ln",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An exponential equation",
+        "t": 22.44
+      },
+      {
+        "title": "A logarithmic equation",
+        "t": 81.766
+      },
+      {
+        "title": "A quadratic in disguise",
+        "t": 150.223
+      },
+      {
+        "title": "Your turn",
+        "t": 216.277
+      },
+      {
+        "title": "Summary",
+        "t": 255.68
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2-b:q",
+        "t": 226.791,
+        "prompt": "Solve $2e^{3x} + 1 = 9$. Round to the nearest thousandth.",
+        "choices": [
+          "$x \\approx 0.693$",
+          "$x \\approx 4.159$",
+          "$x \\approx 0.501$",
+          "$x \\approx 0.462$"
+        ],
+        "answer": 3,
+        "working": "$2e^{3x} = 8$, so $e^{3x} = 4$. Then $3x = \\ln 4$, and $x = \\dfrac{\\ln 4}{3} \\approx 0.462$."
+      }
+    ]
+  },
+  "m31-1-2-c": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 3: Radians and Exact Values",
+    "duration": 358,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a radian is",
+        "t": 27.311
+      },
+      {
+        "title": "Converting",
+        "t": 77.736
+      },
+      {
+        "title": "Why radians?",
+        "t": 124.579
+      },
+      {
+        "title": "Reference angles",
+        "t": 157.014
+      },
+      {
+        "title": "Cosine of 5π/6",
+        "t": 209.581
+      },
+      {
+        "title": "Sine of 7π/4",
+        "t": 248.734
+      },
+      {
+        "title": "Your turn",
+        "t": 282.635
+      },
+      {
+        "title": "Summary",
+        "t": 319.904
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2-c:q",
+        "t": 290.427,
+        "prompt": "Find the exact value of $\\sin\\dfrac{4\\pi}{3}$.",
+        "choices": [
+          "$\\dfrac{\\sqrt{3}}{2}$",
+          "$-\\dfrac{1}{2}$",
+          "$-\\dfrac{\\sqrt{3}}{2}$",
+          "$\\dfrac{1}{2}$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{4\\pi}{3}$ is in quadrant III, with reference angle $\\dfrac{4\\pi}{3} - \\pi = \\dfrac{\\pi}{3}$. Sine is negative there, so $\\sin\\dfrac{4\\pi}{3} = -\\sin\\dfrac{\\pi}{3} = -\\dfrac{\\sqrt{3}}{2}$."
+      }
+    ]
+  },
+  "m31-1-2-d": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 4: Identities You Will Use",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quotient and reciprocal",
+        "t": 23.965
+      },
+      {
+        "title": "The Pythagorean identity",
+        "t": 59.84
+      },
+      {
+        "title": "Double-angle identities",
+        "t": 108.344
+      },
+      {
+        "title": "Simplifying with identities",
+        "t": 148.508
+      },
+      {
+        "title": "Watch out",
+        "t": 206.393
+      },
+      {
+        "title": "Your turn",
+        "t": 237.911
+      },
+      {
+        "title": "Summary",
+        "t": 270.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2-d:q",
+        "t": 245.511,
+        "prompt": "Simplify $\\dfrac{\\sin 2x}{2\\cos x}$.",
+        "choices": [
+          "$\\sin x$",
+          "$\\tan x$",
+          "$\\cos x$",
+          "$\\sin^2 x$"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{\\sin 2x}{2\\cos x} = \\dfrac{2\\sin x \\cos x}{2\\cos x} = \\sin x$"
+      }
+    ]
+  },
+  "m31-1-2-e": {
+    "lessonId": "m31-1-2",
+    "title": "Trigonometry and Logarithms for Calculus, Part 5: Solving Trigonometric Equations",
+    "duration": 352,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The method",
+        "t": 22.702
+      },
+      {
+        "title": "A linear equation",
+        "t": 52.416
+      },
+      {
+        "title": "On the graph",
+        "t": 98.338
+      },
+      {
+        "title": "A quadratic equation",
+        "t": 130.577
+      },
+      {
+        "title": "Using a double-angle identity",
+        "t": 193.171
+      },
+      {
+        "title": "Watch out",
+        "t": 241.506
+      },
+      {
+        "title": "Your turn",
+        "t": 276.725
+      },
+      {
+        "title": "Summary",
+        "t": 317.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-1-2-e:q",
+        "t": 287.488,
+        "prompt": "Solve $2\\cos x - \\sqrt{3} = 0$ for $0 \\le x < 2\\pi$.",
+        "choices": [
+          "$x = \\dfrac{\\pi}{6},\\ \\dfrac{5\\pi}{6}$",
+          "$x = \\dfrac{\\pi}{6},\\ \\dfrac{11\\pi}{6}$",
+          "$x = \\dfrac{\\pi}{3},\\ \\dfrac{5\\pi}{3}$",
+          "$x = \\dfrac{5\\pi}{6},\\ \\dfrac{7\\pi}{6}$"
+        ],
+        "answer": 1,
+        "working": "$\\cos x = \\dfrac{\\sqrt{3}}{2}$, so the reference angle is $\\dfrac{\\pi}{6}$. Cosine is positive in quadrants I and IV: $x = \\dfrac{\\pi}{6}$ and $x = 2\\pi - \\dfrac{\\pi}{6} = \\dfrac{11\\pi}{6}$."
+      }
+    ]
+  },
+  "m31-2-1": {
+    "lessonId": "m31-2-1",
+    "title": "Limits from Graphs and Tables, Part 1: The Idea of a Limit",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Closing in",
+        "t": 22.125
+      },
+      {
+        "title": "What a limit means",
+        "t": 81.62
+      },
+      {
+        "title": "A hole and a separate dot",
+        "t": 115.111
+      },
+      {
+        "title": "Watch out",
+        "t": 164.43
+      },
+      {
+        "title": "Your turn",
+        "t": 203.78
+      },
+      {
+        "title": "Summary",
+        "t": 248.701
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-1:q",
+        "t": 223.985,
+        "prompt": "The graph of $y = g(x)$ heads toward a hollow circle at $(2, 5)$ from both sides, and has a solid dot at $(2, 1)$. Find $\\displaystyle\\lim_{x \\to 2} g(x)$ and $g(2)$.",
+        "choices": [
+          "limit $1$, $g(2) = 5$",
+          "limit $5$, $g(2) = 5$",
+          "limit $5$, $g(2) = 1$",
+          "no limit, $g(2) = 1$"
+        ],
+        "answer": 2,
+        "working": "Both sides head toward the height of the hollow circle, so $\\displaystyle\\lim_{x \\to 2} g(x) = 5$. The solid dot gives the value: $g(2) = 1$."
+      }
+    ]
+  },
+  "m31-2-1-b": {
+    "lessonId": "m31-2-1",
+    "title": "Limits from Graphs and Tables, Part 2: One-Sided Limits",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two different heights",
+        "t": 20.637
+      },
+      {
+        "title": "One-sided limits",
+        "t": 59.063
+      },
+      {
+        "title": "Reading the jump",
+        "t": 93.132
+      },
+      {
+        "title": "Does the limit exist?",
+        "t": 124.599
+      },
+      {
+        "title": "An open circle still counts",
+        "t": 168.042
+      },
+      {
+        "title": "Your turn",
+        "t": 190.776
+      },
+      {
+        "title": "Summary",
+        "t": 231.54
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-1-b:q",
+        "t": 209.136,
+        "prompt": "For a function $h$, $\\displaystyle\\lim_{x \\to 3^-} h(x) = 2$, $\\displaystyle\\lim_{x \\to 3^+} h(x) = 2$ and $h(3) = 5$. Find $\\displaystyle\\lim_{x \\to 3} h(x)$.",
+        "choices": [
+          "$5$",
+          "It does not exist.",
+          "$3$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "Both one-sided limits equal $2$, so the two-sided limit is $2$. The value $h(3) = 5$ does not affect the limit."
+      }
+    ]
+  },
+  "m31-2-1-c": {
+    "lessonId": "m31-2-1",
+    "title": "Limits from Graphs and Tables, Part 3: When a Limit Does Not Exist",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways to fail",
+        "t": 21.528
+      },
+      {
+        "title": "A jump",
+        "t": 51.196
+      },
+      {
+        "title": "Unbounded values",
+        "t": 109.846
+      },
+      {
+        "title": "Oscillation",
+        "t": 157.754
+      },
+      {
+        "title": "Your turn",
+        "t": 186.51
+      },
+      {
+        "title": "Summary",
+        "t": 227.577
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-1-c:q",
+        "t": 199.653,
+        "prompt": "For $f(x) = \\dfrac{|x - 2|}{x - 2}$, find $\\displaystyle\\lim_{x \\to 2} f(x)$.",
+        "choices": [
+          "$1$",
+          "It does not exist.",
+          "$-1$",
+          "$0$"
+        ],
+        "answer": 1,
+        "working": "For $x < 2$, $x - 2$ is negative, so $f(x) = -1$. For $x > 2$, $f(x) = 1$. The one-sided limits differ, so the limit does not exist."
+      }
+    ]
+  },
+  "m31-2-1-d": {
+    "lessonId": "m31-2-1",
+    "title": "Limits from Graphs and Tables, Part 4: Estimating Limits from Tables",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substitution gives 0/0",
+        "t": 18.54
+      },
+      {
+        "title": "A table of values",
+        "t": 51.237
+      },
+      {
+        "title": "The graph",
+        "t": 103.745
+      },
+      {
+        "title": "Tables can mislead",
+        "t": 137.263
+      },
+      {
+        "title": "Your turn",
+        "t": 198.023
+      },
+      {
+        "title": "Summary",
+        "t": 245.706
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-1-d:q",
+        "t": 216.731,
+        "prompt": "Use $x = -0.001$ and $x = 0.001$ to estimate $\\displaystyle\\lim_{x \\to 0} \\frac{e^x - 1}{x}$.",
+        "choices": [
+          "$1$",
+          "$0$",
+          "It does not exist, because it gives $0/0$.",
+          "$e \\approx 2.718$"
+        ],
+        "answer": 0,
+        "working": "At $x = -0.001$: $\\dfrac{e^{-0.001} - 1}{-0.001} \\approx 0.9995$. At $x = 0.001$: $\\dfrac{e^{0.001} - 1}{0.001} \\approx 1.0005$. Both sides close in on $1$."
+      }
+    ]
+  },
+  "m31-2-2": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 1: Direct Substitution",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The limit laws",
+        "t": 21.085
+      },
+      {
+        "title": "Direct substitution",
+        "t": 52.306
+      },
+      {
+        "title": "Substitute when you can",
+        "t": 98.721
+      },
+      {
+        "title": "Check the denominator first",
+        "t": 145.199
+      },
+      {
+        "title": "Your turn",
+        "t": 178.233
+      },
+      {
+        "title": "Summary",
+        "t": 211.701
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2:q",
+        "t": 188.801,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 3} \\frac{x^2 + 1}{2x - 1}$.",
+        "choices": [
+          "$\\dfrac{1}{2}$",
+          "$10$",
+          "It does not exist.",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "The denominator at $x = 3$ is $2(3) - 1 = 5 \\ne 0$, so substitute: $\\dfrac{3^2 + 1}{5} = \\dfrac{10}{5} = 2$."
+      }
+    ]
+  },
+  "m31-2-2-b": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 2: Factor and Cancel",
+    "duration": 323,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An indeterminate form",
+        "t": 23.151
+      },
+      {
+        "title": "Factor and cancel",
+        "t": 69.738
+      },
+      {
+        "title": "Two trinomials",
+        "t": 129.133
+      },
+      {
+        "title": "Combining fractions first",
+        "t": 173.849
+      },
+      {
+        "title": "Watch out",
+        "t": 223.462
+      },
+      {
+        "title": "Your turn",
+        "t": 250.409
+      },
+      {
+        "title": "Summary",
+        "t": 288.7
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2-b:q",
+        "t": 261.626,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to -1} \\frac{x^2 - 1}{x + 1}$.",
+        "choices": [
+          "$0$",
+          "It does not exist.",
+          "$-2$",
+          "$2$"
+        ],
+        "answer": 2,
+        "working": "Substituting gives $0/0$. Factor: $\\dfrac{(x - 1)(x + 1)}{x + 1} = x - 1$ for $x \\ne -1$, so the limit is $-1 - 1 = -2$."
+      }
+    ]
+  },
+  "m31-2-2-c": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 3: Rationalizing",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A square root",
+        "t": 21.957
+      },
+      {
+        "title": "The conjugate",
+        "t": 64.651
+      },
+      {
+        "title": "Multiplying by the conjugate",
+        "t": 105.318
+      },
+      {
+        "title": "Leave the denominator factored",
+        "t": 153.528
+      },
+      {
+        "title": "Your turn",
+        "t": 179.369
+      },
+      {
+        "title": "Summary",
+        "t": 219.145
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2-c:q",
+        "t": 190.609,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 4} \\frac{\\sqrt{x} - 2}{x - 4}$.",
+        "choices": [
+          "$\\dfrac{1}{4}$",
+          "$4$",
+          "$0$",
+          "$\\dfrac{1}{2}$"
+        ],
+        "answer": 0,
+        "working": "Multiply by $\\dfrac{\\sqrt{x} + 2}{\\sqrt{x} + 2}$: $\\dfrac{x - 4}{(x - 4)(\\sqrt{x} + 2)} = \\dfrac{1}{\\sqrt{x} + 2}$, so the limit is $\\dfrac{1}{2 + 2} = \\dfrac{1}{4}$."
+      }
+    ]
+  },
+  "m31-2-2-d": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 4: Why sin θ / θ Approaches 1",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three areas",
+        "t": 25.167
+      },
+      {
+        "title": "Nested areas",
+        "t": 79.878
+      },
+      {
+        "title": "The squeeze",
+        "t": 108.946
+      },
+      {
+        "title": "Squeezed to one",
+        "t": 148.642
+      },
+      {
+        "title": "Your turn",
+        "t": 204.429
+      },
+      {
+        "title": "Summary",
+        "t": 242.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2-d:q",
+        "t": 213.244,
+        "prompt": "For $0 < \\theta < \\dfrac{\\pi}{2}$, which inequality is true?",
+        "choices": [
+          "$\\sin\\theta \\le \\tan\\theta \\le \\theta$",
+          "$\\sin\\theta \\le \\theta \\le \\tan\\theta$",
+          "$\\theta \\le \\sin\\theta \\le \\tan\\theta$",
+          "$\\tan\\theta \\le \\theta \\le \\sin\\theta$"
+        ],
+        "answer": 1,
+        "working": "The small triangle (area $\\dfrac{1}{2}\\sin\\theta$) fits inside the sector (area $\\dfrac{1}{2}\\theta$), which fits inside the big triangle (area $\\dfrac{1}{2}\\tan\\theta$)."
+      }
+    ]
+  },
+  "m31-2-2-e": {
+    "lessonId": "m31-2-2",
+    "title": "Evaluating Limits Algebraically, Part 5: Using the Limit of sin θ / θ",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Any angle that approaches 0",
+        "t": 23.156
+      },
+      {
+        "title": "Adjusting the angle",
+        "t": 60.301
+      },
+      {
+        "title": "Two sines",
+        "t": 112.995
+      },
+      {
+        "title": "Watch out",
+        "t": 159.438
+      },
+      {
+        "title": "Your turn",
+        "t": 195.284
+      },
+      {
+        "title": "Summary",
+        "t": 232.681
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-2-e:q",
+        "t": 204.881,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 0} \\frac{\\sin 6x}{2x}$.",
+        "choices": [
+          "$6$",
+          "$\\dfrac{1}{3}$",
+          "$\\sin 3$",
+          "$3$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{\\sin 6x}{2x} = \\dfrac{6}{2} \\cdot \\dfrac{\\sin 6x}{6x} \\to 3(1) = 3$"
+      }
+    ]
+  },
+  "m31-2-3": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 1: Limits at Infinity",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dividing by huge numbers",
+        "t": 21.468
+      },
+      {
+        "title": "Horizontal asymptotes",
+        "t": 76.78
+      },
+      {
+        "title": "Equal degrees",
+        "t": 116.242
+      },
+      {
+        "title": "A lower-degree numerator",
+        "t": 173.397
+      },
+      {
+        "title": "Your turn",
+        "t": 222.235
+      },
+      {
+        "title": "Summary",
+        "t": 263.605
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3:q",
+        "t": 234.245,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to \\infty} \\frac{6x^2 + 1}{3x^2 - 4}$.",
+        "choices": [
+          "$2$",
+          "It does not exist.",
+          "$0$",
+          "$-\\dfrac{1}{4}$"
+        ],
+        "answer": 0,
+        "working": "Divide every term by $x^2$: $\\dfrac{6 + \\frac{1}{x^2}}{3 - \\frac{4}{x^2}} \\to \\dfrac{6}{3} = 2$."
+      }
+    ]
+  },
+  "m31-2-3-b": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 2: Comparing Degrees",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The leading terms win",
+        "t": 19.572
+      },
+      {
+        "title": "Three cases",
+        "t": 55.383
+      },
+      {
+        "title": "A higher-degree numerator",
+        "t": 96.665
+      },
+      {
+        "title": "Infinity is not a number",
+        "t": 160.737
+      },
+      {
+        "title": "Your turn",
+        "t": 186.016
+      },
+      {
+        "title": "Summary",
+        "t": 219.483
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3-b:q",
+        "t": 194.407,
+        "prompt": "Which function has the horizontal asymptote $y = 3$?",
+        "choices": [
+          "$y = \\dfrac{3x^2 + 1}{x^3 - 2}$",
+          "$y = \\dfrac{3x^3 + x}{x^2 + 5}$",
+          "$y = \\dfrac{6x^2 - x}{2x^2 + 9}$",
+          "$y = \\dfrac{3x + 1}{x^2 + 3x}$"
+        ],
+        "answer": 2,
+        "working": "Only C has equal degrees, and its leading coefficients give $\\dfrac{6}{2} = 3$. A and D have a lower degree on top (limit $0$); B has a higher degree on top (no horizontal asymptote)."
+      }
+    ]
+  },
+  "m31-2-3-c": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 3: Square Roots at Negative Infinity",
+    "duration": 297,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The square root of x squared",
+        "t": 19.956
+      },
+      {
+        "title": "Signs first",
+        "t": 65.947
+      },
+      {
+        "title": "Dividing by x",
+        "t": 101.295
+      },
+      {
+        "title": "Check with a table",
+        "t": 157.867
+      },
+      {
+        "title": "Watch out",
+        "t": 185.724
+      },
+      {
+        "title": "Your turn",
+        "t": 224.886
+      },
+      {
+        "title": "Summary",
+        "t": 265.944
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3-c:q",
+        "t": 237.653,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to -\\infty} \\frac{\\sqrt{4x^2 + 3}}{x + 1}$.",
+        "choices": [
+          "$2$",
+          "$-2$",
+          "$4$",
+          "$0$"
+        ],
+        "answer": 1,
+        "working": "For $x < 0$, $x = -\\sqrt{x^2}$. Dividing by $x$: $\\dfrac{-\\sqrt{4 + \\frac{3}{x^2}}}{1 + \\frac{1}{x}} \\to -\\sqrt{4} = -2$."
+      }
+    ]
+  },
+  "m31-2-3-d": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 4: Infinite Limits",
+    "duration": 328,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Values without bound",
+        "t": 18.542
+      },
+      {
+        "title": "Infinite limits",
+        "t": 72.623
+      },
+      {
+        "title": "Using signs",
+        "t": 120.823
+      },
+      {
+        "title": "A squared denominator",
+        "t": 181.633
+      },
+      {
+        "title": "Watch out",
+        "t": 219.073
+      },
+      {
+        "title": "Your turn",
+        "t": 251.982
+      },
+      {
+        "title": "Summary",
+        "t": 290.061
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3-d:q",
+        "t": 262.384,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 5^+} \\frac{2x}{5 - x}$.",
+        "choices": [
+          "$\\infty$",
+          "$0$",
+          "$10$",
+          "$-\\infty$"
+        ],
+        "answer": 3,
+        "working": "The top approaches $10$ (positive). For $x$ just above $5$, $5 - x$ is a small negative number. Positive ÷ small negative is large and negative: $-\\infty$."
+      }
+    ]
+  },
+  "m31-2-3-e": {
+    "lessonId": "m31-2-3",
+    "title": "Limits at Infinity and Asymptotes, Part 5: Holes and Asymptotes Together",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Factor first",
+        "t": 21.482
+      },
+      {
+        "title": "The hole",
+        "t": 72.659
+      },
+      {
+        "title": "The vertical asymptote",
+        "t": 108.762
+      },
+      {
+        "title": "The horizontal asymptote",
+        "t": 156.97
+      },
+      {
+        "title": "The whole picture",
+        "t": 187.191
+      },
+      {
+        "title": "Your turn",
+        "t": 213.349
+      },
+      {
+        "title": "Summary",
+        "t": 266.451
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-3-e:q",
+        "t": 226.26,
+        "prompt": "Describe the hole and asymptotes of $f(x) = \\dfrac{x^2 - x - 2}{x^2 - 1}$.",
+        "choices": [
+          "hole $(-1, 1.5)$; $x = 1$; $y = 1$",
+          "$x = 1$ and $x = -1$; $y = 1$",
+          "hole $(-1, 1.5)$; $x = 1$; $y = 0$",
+          "hole $(1, -0.5)$; $x = -1$; $y = 1$"
+        ],
+        "answer": 0,
+        "working": "$f(x) = \\dfrac{(x - 2)(x + 1)}{(x - 1)(x + 1)} = \\dfrac{x - 2}{x - 1}$ for $x \\ne -1$. Hole at $x = -1$: $\\dfrac{-3}{-2} = 1.5$. Vertical asymptote $x = 1$. Equal degrees: $y = \\dfrac{1}{1} = 1$."
+      }
+    ]
+  },
+  "m31-2-4": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 1: What Continuity Means",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Without lifting your pencil",
+        "t": 25.297
+      },
+      {
+        "title": "Three conditions",
+        "t": 54.469
+      },
+      {
+        "title": "A continuous point",
+        "t": 92.952
+      },
+      {
+        "title": "Three ways to fail",
+        "t": 123.665
+      },
+      {
+        "title": "Your turn",
+        "t": 174.111
+      },
+      {
+        "title": "Summary",
+        "t": 214.127
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4:q",
+        "t": 189.548,
+        "prompt": "For a function $f$, $\\displaystyle\\lim_{x \\to 4} f(x) = 7$ and $f(4) = 3$. Which condition of continuity fails at $x = 4$?",
+        "choices": [
+          "1: $f(4)$ is not defined.",
+          "2: the limit does not exist.",
+          "3: the limit does not equal $f(4)$.",
+          "None: $f$ is continuous at $x = 4$."
+        ],
+        "answer": 2,
+        "working": "$f(4) = 3$ is defined, and the limit, $7$, exists. But $7 \\ne 3$, so condition 3 fails."
+      }
+    ]
+  },
+  "m31-2-4-b": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 2: Types of Discontinuity",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three types",
+        "t": 17.062
+      },
+      {
+        "title": "Reading a graph",
+        "t": 51.755
+      },
+      {
+        "title": "Why removable?",
+        "t": 114.056
+      },
+      {
+        "title": "Your turn",
+        "t": 146.342
+      },
+      {
+        "title": "Summary",
+        "t": 183.747
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4-b:q",
+        "t": 159.825,
+        "prompt": "At $x = 5$, $\\displaystyle\\lim_{x \\to 5^-} f(x) = 2$, $\\displaystyle\\lim_{x \\to 5^+} f(x) = 2$, and $f(5)$ is undefined. What type of discontinuity is this?",
+        "choices": [
+          "jump",
+          "removable",
+          "infinite",
+          "none: $f$ is continuous at $x = 5$"
+        ],
+        "answer": 1,
+        "working": "Both one-sided limits are $2$, so the limit exists. But $f(5)$ is undefined, so there is a hole: a removable discontinuity."
+      }
+    ]
+  },
+  "m31-2-4-c": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 3: Continuity of Familiar Functions",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Continuous on their domains",
+        "t": 20.128
+      },
+      {
+        "title": "A rational function",
+        "t": 76.783
+      },
+      {
+        "title": "On the graph",
+        "t": 133.481
+      },
+      {
+        "title": "Watch out",
+        "t": 155.516
+      },
+      {
+        "title": "Your turn",
+        "t": 177.9
+      },
+      {
+        "title": "Summary",
+        "t": 216.922
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4-c:q",
+        "t": 187.962,
+        "prompt": "Where is $f(x) = \\dfrac{x + 1}{x^2 - 1}$ discontinuous?",
+        "choices": [
+          "only at $x = 1$",
+          "only at $x = -1$",
+          "nowhere",
+          "at $x = -1$ (removable) and $x = 1$ (infinite)"
+        ],
+        "answer": 3,
+        "working": "$x^2 - 1 = (x - 1)(x + 1)$ is zero at $x = \\pm 1$. At $x = -1$ the factor $x + 1$ cancels: a hole. At $x = 1$ the top is $2 \\ne 0$: a vertical asymptote."
+      }
+    ]
+  },
+  "m31-2-4-d": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 4: Piecewise Functions",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Only the breaks matter",
+        "t": 19.008
+      },
+      {
+        "title": "Checking a break",
+        "t": 49.257
+      },
+      {
+        "title": "Finding k",
+        "t": 100.642
+      },
+      {
+        "title": "Filling a hole",
+        "t": 160.08
+      },
+      {
+        "title": "Your turn",
+        "t": 202.132
+      },
+      {
+        "title": "Summary",
+        "t": 244.461
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4-d:q",
+        "t": 217.342,
+        "prompt": "Find $k$ so that $f(x) = \\begin{cases} x + k, & x < 3 \\\\ 2x - 1, & x \\ge 3 \\end{cases}$ is continuous.",
+        "choices": [
+          "$k = 2$",
+          "$k = 5$",
+          "$k = 8$",
+          "$k = -2$"
+        ],
+        "answer": 0,
+        "working": "The left piece approaches $3 + k$; the right piece gives $f(3) = 2(3) - 1 = 5$. So $3 + k = 5$, and $k = 2$."
+      }
+    ]
+  },
+  "m31-2-4-e": {
+    "lessonId": "m31-2-4",
+    "title": "Continuity, Part 5: The Intermediate Value Theorem",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Continuous on an interval",
+        "t": 26.907
+      },
+      {
+        "title": "The theorem",
+        "t": 50.461
+      },
+      {
+        "title": "Locating a root",
+        "t": 89.686
+      },
+      {
+        "title": "Why continuity matters",
+        "t": 145.652
+      },
+      {
+        "title": "Your turn",
+        "t": 179.725
+      },
+      {
+        "title": "Summary",
+        "t": 222.523
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-2-4-e:q",
+        "t": 195.627,
+        "prompt": "For $f(x) = x^3 - 4x + 1$, on which interval does the Intermediate Value Theorem guarantee a solution of $f(x) = 0$?",
+        "choices": [
+          "between $2$ and $3$",
+          "between $-1$ and $0$",
+          "between $1$ and $2$",
+          "between $3$ and $4$"
+        ],
+        "answer": 2,
+        "working": "$f(1) = 1 - 4 + 1 = -2$ and $f(2) = 8 - 8 + 1 = 1$ have opposite signs. In the other choices, both ends are positive: $f(2) = 1, f(3) = 16$; $f(-1) = 4, f(0) = 1$; $f(3) = 16, f(4) = 49$."
+      }
+    ]
+  },
+  "m31-3-1": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 1: Average Rate of Change",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Average speed",
+        "t": 24.638
+      },
+      {
+        "title": "The definition",
+        "t": 65.932
+      },
+      {
+        "title": "From a table",
+        "t": 108.357
+      },
+      {
+        "title": "Units",
+        "t": 155.426
+      },
+      {
+        "title": "A negative rate",
+        "t": 187.497
+      },
+      {
+        "title": "Watch out",
+        "t": 230.469
+      },
+      {
+        "title": "Your turn",
+        "t": 260.112
+      },
+      {
+        "title": "Summary",
+        "t": 306.329
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1:q",
+        "t": 277.675,
+        "prompt": "A bathtub holds $150$ L of water $2$ minutes after the plug is pulled, and $70$ L after $7$ minutes. Find the average rate of change of the volume over this time.",
+        "choices": [
+          "$16$ L/min",
+          "$-16$ L/min",
+          "$-80$ L/min",
+          "$-\\tfrac{1}{16}$ min/L"
+        ],
+        "answer": 1,
+        "working": "Change in volume: $70 - 150 = -80$ L. Change in time: $7 - 2 = 5$ min. Rate: $\\dfrac{-80}{5} = -16$ L/min."
+      }
+    ]
+  },
+  "m31-3-1-b": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 2: Secant Lines",
+    "duration": 325,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "On a graph",
+        "t": 18.85
+      },
+      {
+        "title": "Secant lines",
+        "t": 67.066
+      },
+      {
+        "title": "From a formula",
+        "t": 103.717
+      },
+      {
+        "title": "Another interval",
+        "t": 170.592
+      },
+      {
+        "title": "Watch out",
+        "t": 213.151
+      },
+      {
+        "title": "Your turn",
+        "t": 250.454
+      },
+      {
+        "title": "Summary",
+        "t": 289.455
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-b:q",
+        "t": 261.976,
+        "prompt": "Find the average rate of change of $g(x) = x^2 + 2x$ on the interval $[1, 3]$.",
+        "choices": [
+          "$12$",
+          "$7.5$",
+          "$\\tfrac{1}{6}$",
+          "$6$"
+        ],
+        "answer": 3,
+        "working": "$g(3) = 9 + 6 = 15$ and $g(1) = 1 + 2 = 3$, so the average rate of change is $\\dfrac{15 - 3}{3 - 1} = \\dfrac{12}{2} = 6$."
+      }
+    ]
+  },
+  "m31-3-1-c": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 3: Average Velocity",
+    "duration": 313,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Position and velocity",
+        "t": 23.994
+      },
+      {
+        "title": "A ball thrown upward",
+        "t": 77.896
+      },
+      {
+        "title": "Rising, then falling",
+        "t": 129.81
+      },
+      {
+        "title": "Watch out",
+        "t": 184.157
+      },
+      {
+        "title": "Your turn",
+        "t": 224.173
+      },
+      {
+        "title": "Summary",
+        "t": 278.546
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-c:q",
+        "t": 242.758,
+        "prompt": "A stone is dropped from a ledge. Its height after $t$ seconds is $h(t) = 30 - 4.9t^2$ metres. Find its average velocity from $t = 1$ to $t = 2$.",
+        "choices": [
+          "$-14.7$ m/s",
+          "$14.7$ m/s",
+          "$-4.9$ m/s",
+          "$17.75$ m/s"
+        ],
+        "answer": 0,
+        "working": "$h(1) = 30 - 4.9 = 25.1$ and $h(2) = 30 - 19.6 = 10.4$, so the average velocity is $\\dfrac{10.4 - 25.1}{2 - 1} = -14.7$ m/s."
+      }
+    ]
+  },
+  "m31-3-1-d": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 4: The Tangent Line",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Shrinking the interval",
+        "t": 24.509
+      },
+      {
+        "title": "Using h",
+        "t": 96.165
+      },
+      {
+        "title": "The tangent line",
+        "t": 142.723
+      },
+      {
+        "title": "Average and instantaneous",
+        "t": 177.298
+      },
+      {
+        "title": "Your turn",
+        "t": 212.956
+      },
+      {
+        "title": "Summary",
+        "t": 263.241
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-d:q",
+        "t": 237.34,
+        "prompt": "For $f(x) = x^2$, the secant lines from $P(2, 4)$ to the points at $x = 2.1$, $2.01$ and $2.001$ have slopes $4.1$, $4.01$ and $4.001$. What is the slope of the tangent line at $P$?",
+        "choices": [
+          "$4.001$",
+          "$4.1$",
+          "$4$",
+          "$2$"
+        ],
+        "answer": 2,
+        "working": "As $Q$ moves toward $P$, the secant slopes $4.1$, $4.01$, $4.001$ approach $4$, so the tangent line at $P$ has slope $4$."
+      }
+    ]
+  },
+  "m31-3-1-e": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 5: Estimating a Tangent’s Slope",
+    "duration": 359,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The question",
+        "t": 20.957
+      },
+      {
+        "title": "One small step",
+        "t": 48.036
+      },
+      {
+        "title": "A table of values",
+        "t": 111.705
+      },
+      {
+        "title": "Exactly, with algebra",
+        "t": 162.318
+      },
+      {
+        "title": "The tangent line",
+        "t": 220.41
+      },
+      {
+        "title": "Watch out",
+        "t": 241.984
+      },
+      {
+        "title": "Your turn",
+        "t": 276.027
+      },
+      {
+        "title": "Summary",
+        "t": 321.485
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-e:q",
+        "t": 291.913,
+        "prompt": "Simplify $\\dfrac{(5 + h)^2 - 25}{h}$, then find the slope of the tangent to $f(x) = x^2$ at $x = 5$.",
+        "choices": [
+          "$25$",
+          "$5$",
+          "$10 + h$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{25 + 10h + h^2 - 25}{h} = \\dfrac{10h + h^2}{h} = 10 + h$, and $10 + h \\to 10$ as $h \\to 0$."
+      }
+    ]
+  },
+  "m31-3-1-f": {
+    "lessonId": "m31-3-1",
+    "title": "Rates of Change and Tangent Lines, Part 6: Instantaneous Velocity",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A falling stone",
+        "t": 22.165
+      },
+      {
+        "title": "Average velocities",
+        "t": 62.524
+      },
+      {
+        "title": "Exactly, with algebra",
+        "t": 117.72
+      },
+      {
+        "title": "On the graph",
+        "t": 198.691
+      },
+      {
+        "title": "Watch out",
+        "t": 230.371
+      },
+      {
+        "title": "Your turn",
+        "t": 264.108
+      },
+      {
+        "title": "Summary",
+        "t": 311.934
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-1-f:q",
+        "t": 285.721,
+        "prompt": "A stone falls $s(t) = 4.9t^2$ metres in $t$ seconds. Its average velocity on $[1, 1 + h]$ simplifies to $9.8 + 4.9h$. What is its velocity at $t = 1$ s?",
+        "choices": [
+          "$4.9$ m/s",
+          "$9.8$ m/s",
+          "$14.7$ m/s",
+          "$19.6$ m/s"
+        ],
+        "answer": 1,
+        "working": "As $h \\to 0$, $9.8 + 4.9h \\to 9.8$, so the velocity at $t = 1$ s is $9.8$ m/s."
+      }
+    ]
+  },
+  "m31-3-2": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 1: The Derivative Function",
+    "duration": 332,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Every point at once",
+        "t": 21.857
+      },
+      {
+        "title": "Slopes everywhere",
+        "t": 68.493
+      },
+      {
+        "title": "The derivative",
+        "t": 108.384
+      },
+      {
+        "title": "Notation",
+        "t": 161.046
+      },
+      {
+        "title": "First principles",
+        "t": 203.654
+      },
+      {
+        "title": "Your turn",
+        "t": 249.86
+      },
+      {
+        "title": "Summary",
+        "t": 290.916
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2:q",
+        "t": 266.37,
+        "prompt": "For $f(x) = x^2$, the derivative is $f'(x) = 2x$. What is the slope of the tangent to $y = x^2$ at $x = -3$?",
+        "choices": [
+          "$9$",
+          "$6$",
+          "$-6$",
+          "$-9$"
+        ],
+        "answer": 2,
+        "working": "The slope of the tangent at $x = -3$ is $f'(-3) = 2(-3) = -6$."
+      }
+    ]
+  },
+  "m31-3-2-b": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 2: A Quadratic",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Steps 1 and 2",
+        "t": 24.629
+      },
+      {
+        "title": "Steps 3 and 4",
+        "t": 85.663
+      },
+      {
+        "title": "A function and its derivative",
+        "t": 132.748
+      },
+      {
+        "title": "Watch out",
+        "t": 184.986
+      },
+      {
+        "title": "Your turn",
+        "t": 224.204
+      },
+      {
+        "title": "Summary",
+        "t": 264.454
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-b:q",
+        "t": 235.148,
+        "prompt": "Find $f'(x)$ from first principles for $f(x) = x^2 + 6x$.",
+        "choices": [
+          "$2x + 6$",
+          "$2x + 6 + h$",
+          "$x^2 + 6$",
+          "$2x$"
+        ],
+        "answer": 0,
+        "working": "$f(x + h) - f(x) = x^2 + 2xh + h^2 + 6x + 6h - (x^2 + 6x) = 2xh + h^2 + 6h$. Divide by $h$: $2x + h + 6$. Let $h \\to 0$: $f'(x) = 2x + 6$."
+      }
+    ]
+  },
+  "m31-3-2-c": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 3: A Cubic",
+    "duration": 297,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expanding",
+        "t": 21.709
+      },
+      {
+        "title": "The four steps",
+        "t": 65.425
+      },
+      {
+        "title": "On the graph",
+        "t": 102.516
+      },
+      {
+        "title": "A pattern",
+        "t": 144.83
+      },
+      {
+        "title": "Watch out",
+        "t": 185.175
+      },
+      {
+        "title": "Your turn",
+        "t": 217.605
+      },
+      {
+        "title": "Summary",
+        "t": 258.265
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-c:q",
+        "t": 227.875,
+        "prompt": "Use first principles to find $f'(x)$ for $f(x) = 2x^3$.",
+        "choices": [
+          "$2x^2$",
+          "$3x^2$",
+          "$6x^2$",
+          "$6x^3$"
+        ],
+        "answer": 2,
+        "working": "$2(x + h)^3 - 2x^3 = 6x^2h + 6xh^2 + 2h^3$. Divide by $h$: $6x^2 + 6xh + 2h^2$. Let $h \\to 0$: $f'(x) = 6x^2$."
+      }
+    ]
+  },
+  "m31-3-2-d": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 4: Interpreting the Derivative",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Units and sign",
+        "t": 22.31
+      },
+      {
+        "title": "A draining tank",
+        "t": 58.039
+      },
+      {
+        "title": "Marginal cost",
+        "t": 106.588
+      },
+      {
+        "title": "Watch out",
+        "t": 150.213
+      },
+      {
+        "title": "Your turn",
+        "t": 189.482
+      },
+      {
+        "title": "Summary",
+        "t": 228.075
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-d:q",
+        "t": 204.508,
+        "prompt": "$T(t)$ is the temperature of a cup of coffee, in °C, $t$ minutes after it is poured, and $T'(5) = -3$. What does this mean?",
+        "choices": [
+          "Five minutes after it is poured, the coffee is cooling at $3$ °C per minute.",
+          "The coffee is at $-3$ °C after five minutes.",
+          "The coffee cooled by $3$ °C during the first five minutes.",
+          "Five minutes after it is poured, the coffee is warming at $3$ °C per minute."
+        ],
+        "answer": 0,
+        "working": "The units of $T'$ are °C per minute, and the value is negative, so the temperature is decreasing at $3$ °C per minute at $t = 5$."
+      }
+    ]
+  },
+  "m31-3-2-e": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 5: Reciprocals and Square Roots",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A reciprocal",
+        "t": 22.35
+      },
+      {
+        "title": "A tangent to the curve",
+        "t": 83.899
+      },
+      {
+        "title": "A square root",
+        "t": 129.558
+      },
+      {
+        "title": "The same methods",
+        "t": 198.244
+      },
+      {
+        "title": "Your turn",
+        "t": 230.481
+      },
+      {
+        "title": "Summary",
+        "t": 265.614
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-e:q",
+        "t": 245.212,
+        "prompt": "The derivative of $f(x) = \\dfrac{1}{x}$ is $f'(x) = -\\dfrac{1}{x^2}$. What is the slope of the tangent to $y = \\dfrac{1}{x}$ at $x = 2$?",
+        "choices": [
+          "$\\tfrac{1}{2}$",
+          "$-\\tfrac{1}{2}$",
+          "$\\tfrac{1}{4}$",
+          "$-\\tfrac{1}{4}$"
+        ],
+        "answer": 3,
+        "working": "$f'(2) = -\\dfrac{1}{2^2} = -\\dfrac{1}{4}$."
+      }
+    ]
+  },
+  "m31-3-2-f": {
+    "lessonId": "m31-3-2",
+    "title": "The Derivative from First Principles, Part 6: Where There Is No Derivative",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A corner",
+        "t": 21.278
+      },
+      {
+        "title": "A vertical tangent",
+        "t": 82.107
+      },
+      {
+        "title": "Three kinds of failure",
+        "t": 130.468
+      },
+      {
+        "title": "Watch out",
+        "t": 175.254
+      },
+      {
+        "title": "Your turn",
+        "t": 200.663
+      },
+      {
+        "title": "Summary",
+        "t": 233.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-3-2-f:q",
+        "t": 208.139,
+        "prompt": "Which function is **not** differentiable at $x = 0$?",
+        "choices": [
+          "$y = x^2 + 1$",
+          "$y = |x|$",
+          "$y = x^3$",
+          "$y = 3x - 2$"
+        ],
+        "answer": 1,
+        "working": "The graph of $y = |x|$ has a corner at $x = 0$: the slopes from the left and the right are $-1$ and $1$, so no single tangent exists. The other graphs are smooth there."
+      }
+    ]
+  },
+  "m31-4-1": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 1: The Power Rule",
+    "duration": 298,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pattern",
+        "t": 20.057
+      },
+      {
+        "title": "The power rule",
+        "t": 77.693
+      },
+      {
+        "title": "Two special cases",
+        "t": 108.974
+      },
+      {
+        "title": "Single powers",
+        "t": 143.955
+      },
+      {
+        "title": "Watch out",
+        "t": 205.487
+      },
+      {
+        "title": "Your turn",
+        "t": 233.677
+      },
+      {
+        "title": "Summary",
+        "t": 269.248
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1:q",
+        "t": 240.568,
+        "prompt": "Differentiate $x^{-5}$.",
+        "choices": [
+          "$-5x^{-6}$",
+          "$-5x^{-4}$",
+          "$5x^{-6}$",
+          "$-4x^{-6}$"
+        ],
+        "answer": 0,
+        "working": "Bring $-5$ down and subtract $1$ from the exponent: $-5 - 1 = -6$, so the derivative is $-5x^{-6} = -\\dfrac{5}{x^6}$."
+      }
+    ]
+  },
+  "m31-4-1-b": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 2: Why the Power Rule Works",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A fourth power",
+        "t": 20.044
+      },
+      {
+        "title": "The term that survives",
+        "t": 79.133
+      },
+      {
+        "title": "Any whole number",
+        "t": 127.409
+      },
+      {
+        "title": "Watch out",
+        "t": 201.036
+      },
+      {
+        "title": "Your turn",
+        "t": 229.535
+      },
+      {
+        "title": "Summary",
+        "t": 271.858
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1-b:q",
+        "t": 246.9,
+        "prompt": "In $(x + h)^5 = x^5 + 5x^4h + 10x^3h^2 + 10x^2h^3 + 5xh^4 + h^5$, which term gives the derivative of $x^5$, after you subtract $x^5$, divide by $h$ and let $h \\to 0$?",
+        "choices": [
+          "$x^5$",
+          "$10x^3h^2$",
+          "$5x^4h$",
+          "$h^5$"
+        ],
+        "answer": 2,
+        "working": "Subtracting $x^5$ removes the first term. After dividing by $h$, only $5x^4h$ loses all of its $h$, becoming $5x^4$; every other term still contains $h$ and approaches $0$."
+      }
+    ]
+  },
+  "m31-4-1-c": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 3: Constant Multiples and Sums",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two rules",
+        "t": 20.97
+      },
+      {
+        "title": "Why they work",
+        "t": 57.169
+      },
+      {
+        "title": "A polynomial",
+        "t": 95.607
+      },
+      {
+        "title": "Notation",
+        "t": 146.153
+      },
+      {
+        "title": "Watch out",
+        "t": 172.973
+      },
+      {
+        "title": "Your turn",
+        "t": 207.306
+      },
+      {
+        "title": "Summary",
+        "t": 245.099
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1-c:q",
+        "t": 219.947,
+        "prompt": "Find $f'(x)$ for $f(x) = 3x^4 - 5x^2 + 2x - 8$.",
+        "choices": [
+          "$12x^3 - 10x$",
+          "$12x^3 - 10x + 2$",
+          "$4x^3 - 2x + 1$",
+          "$12x^3 - 10x - 6$"
+        ],
+        "answer": 1,
+        "working": "$f'(x) = 3\\left(4x^3\\right) - 5(2x) + 2(1) - 0 = 12x^3 - 10x + 2$."
+      }
+    ]
+  },
+  "m31-4-1-d": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 4: Roots and Reciprocals",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rewrite first",
+        "t": 21.522
+      },
+      {
+        "title": "Rewrite, differentiate, tidy up",
+        "t": 61.096
+      },
+      {
+        "title": "Divide first",
+        "t": 119.088
+      },
+      {
+        "title": "Watch out",
+        "t": 180.022
+      },
+      {
+        "title": "Your turn",
+        "t": 219.744
+      },
+      {
+        "title": "Summary",
+        "t": 255.158
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1-d:q",
+        "t": 226.912,
+        "prompt": "Differentiate $y = \\dfrac{2}{x^{2}}$.",
+        "choices": [
+          "$\\dfrac{1}{x}$",
+          "$-\\dfrac{4}{x}$",
+          "$-\\dfrac{2}{x^{3}}$",
+          "$-\\dfrac{4}{x^{3}}$"
+        ],
+        "answer": 3,
+        "working": "Rewrite: $y = 2x^{-2}$. Then $\\dfrac{dy}{dx} = 2(-2)x^{-3} = -4x^{-3} = -\\dfrac{4}{x^{3}}$."
+      }
+    ]
+  },
+  "m31-4-1-e": {
+    "lessonId": "m31-4-1",
+    "title": "The Power, Constant and Sum Rules, Part 5: Tangent Slopes and Velocity",
+    "duration": 297,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Horizontal tangents",
+        "t": 21.47
+      },
+      {
+        "title": "Velocity",
+        "t": 87.066
+      },
+      {
+        "title": "When it stops rising",
+        "t": 164.472
+      },
+      {
+        "title": "Watch out",
+        "t": 198.222
+      },
+      {
+        "title": "Your turn",
+        "t": 227.658
+      },
+      {
+        "title": "Summary",
+        "t": 266.996
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-1-e:q",
+        "t": 239.9,
+        "prompt": "Find the $x$-values where the graph of $f(x) = x^{3} - 12x$ has a horizontal tangent.",
+        "choices": [
+          "$x = 4$",
+          "$x = -2$ and $x = 2$",
+          "$x = 0$",
+          "$x = -2\\sqrt{3}$, $0$ and $2\\sqrt{3}$"
+        ],
+        "answer": 1,
+        "working": "$f'(x) = 3x^{2} - 12 = 0$, so $x^{2} = 4$ and $x = \\pm 2$."
+      }
+    ]
+  },
+  "m31-4-2": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 1: The Product Rule",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Not factor by factor",
+        "t": 17.58
+      },
+      {
+        "title": "The product rule",
+        "t": 47.141
+      },
+      {
+        "title": "A growing rectangle",
+        "t": 92.759
+      },
+      {
+        "title": "The proof",
+        "t": 162.46
+      },
+      {
+        "title": "Your turn",
+        "t": 224.266
+      },
+      {
+        "title": "Summary",
+        "t": 265.623
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2:q",
+        "t": 235.86,
+        "prompt": "Let $u = x^3$ and $v = x^2$. Use the product rule to find the derivative of $uv$.",
+        "choices": [
+          "$6x^3$",
+          "$3x^2 + 2x$",
+          "$x^5$",
+          "$5x^4$"
+        ],
+        "answer": 3,
+        "working": "$u' = 3x^2$ and $v' = 2x$, so $(uv)' = 3x^2 \\cdot x^2 + x^3 \\cdot 2x = 3x^4 + 2x^4 = 5x^4$, which matches the power rule for $x^5$."
+      }
+    ]
+  },
+  "m31-4-2-b": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 2: Using the Product Rule",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Name the parts",
+        "t": 22.651
+      },
+      {
+        "title": "Check by expanding",
+        "t": 71.526
+      },
+      {
+        "title": "Watch out",
+        "t": 104.594
+      },
+      {
+        "title": "A product with a root",
+        "t": 129.6
+      },
+      {
+        "title": "Your turn",
+        "t": 186.305
+      },
+      {
+        "title": "Summary",
+        "t": 225.389
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2-b:q",
+        "t": 197.695,
+        "prompt": "Use the product rule to differentiate $f(x) = (x + 4)(3x - 2)$.",
+        "choices": [
+          "$6x + 10$",
+          "$3$",
+          "$6x + 14$",
+          "$3x^{2} + 10x - 8$"
+        ],
+        "answer": 0,
+        "working": "$u = x + 4$, $u' = 1$, $v = 3x - 2$, $v' = 3$. So $f'(x) = 1(3x - 2) + (x + 4)(3) = 3x - 2 + 3x + 12 = 6x + 10$."
+      }
+    ]
+  },
+  "m31-4-2-c": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 3: The Quotient Rule",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The quotient rule",
+        "t": 21.366
+      },
+      {
+        "title": "Where it comes from",
+        "t": 62.053
+      },
+      {
+        "title": "A quotient of linear functions",
+        "t": 101.909
+      },
+      {
+        "title": "Watch out",
+        "t": 164.244
+      },
+      {
+        "title": "Your turn",
+        "t": 204.474
+      },
+      {
+        "title": "Summary",
+        "t": 240.99
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2-c:q",
+        "t": 212.569,
+        "prompt": "Differentiate $f(x) = \\dfrac{x}{x + 2}$.",
+        "choices": [
+          "$\\dfrac{-2}{(x + 2)^{2}}$",
+          "$1$",
+          "$\\dfrac{2}{(x + 2)^{2}}$",
+          "$\\dfrac{2x + 2}{(x + 2)^{2}}$"
+        ],
+        "answer": 2,
+        "working": "$u = x$, $u' = 1$, $v = x + 2$, $v' = 1$. So $f'(x) = \\dfrac{1(x + 2) - x(1)}{(x + 2)^{2}} = \\dfrac{2}{(x + 2)^{2}}$."
+      }
+    ]
+  },
+  "m31-4-2-d": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 4: Using a Table of Values",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the table",
+        "t": 22.673
+      },
+      {
+        "title": "A product",
+        "t": 57.667
+      },
+      {
+        "title": "A quotient",
+        "t": 97.824
+      },
+      {
+        "title": "Watch out",
+        "t": 138.651
+      },
+      {
+        "title": "Your turn",
+        "t": 166.612
+      },
+      {
+        "title": "Summary",
+        "t": 213.356
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2-d:q",
+        "t": 186.86,
+        "prompt": "From the table, $f(1) = 2$, $f'(1) = 4$, $g(1) = -3$ and $g'(1) = 1$. If $h(x) = f(x)g(x)$, find $h'(1)$.",
+        "choices": [
+          "$4$",
+          "$-12$",
+          "$14$",
+          "$-10$"
+        ],
+        "answer": 3,
+        "working": "$h'(1) = f'(1)g(1) + f(1)g'(1) = (4)(-3) + (2)(1) = -12 + 2 = -10$."
+      }
+    ]
+  },
+  "m31-4-2-e": {
+    "lessonId": "m31-4-2",
+    "title": "The Product and Quotient Rules, Part 5: Horizontal Tangents and Rates",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The derivative",
+        "t": 23.451
+      },
+      {
+        "title": "Where it is zero",
+        "t": 71.164
+      },
+      {
+        "title": "Watch out",
+        "t": 126.331
+      },
+      {
+        "title": "A medication",
+        "t": 151.619
+      },
+      {
+        "title": "Rising, then falling",
+        "t": 197.517
+      },
+      {
+        "title": "Your turn",
+        "t": 247.279
+      },
+      {
+        "title": "Summary",
+        "t": 288.915
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-2-e:q",
+        "t": 262.943,
+        "prompt": "For $C(t) = \\dfrac{50t}{t^{2} + 4}$, the derivative is $C'(t) = \\dfrac{50(4 - t^{2})}{(t^{2} + 4)^{2}}$. At what time $t > 0$ does the concentration stop rising?",
+        "choices": [
+          "$t = 2$ h",
+          "$t = 4$ h",
+          "$t = 0$ h",
+          "$t = 1$ h"
+        ],
+        "answer": 0,
+        "working": "It stops rising when $C'(t) = 0$, so when the numerator is zero: $4 - t^{2} = 0$, $t^{2} = 4$, and $t = 2$ h (since $t > 0$)."
+      }
+    ]
+  },
+  "m31-4-3": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 1: Rates That Multiply",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Linked gears",
+        "t": 23.452
+      },
+      {
+        "title": "Inside and outside",
+        "t": 66.252
+      },
+      {
+        "title": "The chain rule",
+        "t": 110.572
+      },
+      {
+        "title": "Why it works",
+        "t": 154.076
+      },
+      {
+        "title": "Your turn",
+        "t": 204.479
+      },
+      {
+        "title": "Summary",
+        "t": 243.424
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3:q",
+        "t": 218.77,
+        "prompt": "If $y$ changes $5$ times as fast as $u$, and $u$ changes $4$ times as fast as $x$, how many times as fast as $x$ does $y$ change?",
+        "choices": [
+          "$9$",
+          "$1.25$",
+          "$20$",
+          "$5$"
+        ],
+        "answer": 2,
+        "working": "Rates of change multiply: $\\dfrac{dy}{dx} = \\dfrac{dy}{du}\\cdot\\dfrac{du}{dx} = 5 \\times 4 = 20$."
+      }
+    ]
+  },
+  "m31-4-3-b": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 2: Using the Chain Rule",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A power of a polynomial",
+        "t": 22.025
+      },
+      {
+        "title": "A tenth power",
+        "t": 71.698
+      },
+      {
+        "title": "A check",
+        "t": 105.816
+      },
+      {
+        "title": "Watch out",
+        "t": 139.579
+      },
+      {
+        "title": "Your turn",
+        "t": 177.883
+      },
+      {
+        "title": "Summary",
+        "t": 212.663
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-b:q",
+        "t": 186.176,
+        "prompt": "Differentiate $y = (x^{2} - 5)^{3}$.",
+        "choices": [
+          "$3(x^{2} - 5)^{2}$",
+          "$6x(x^{2} - 5)^{2}$",
+          "$3(2x)^{2}$",
+          "$6x(x^{2} - 5)^{3}$"
+        ],
+        "answer": 1,
+        "working": "Outside: $3(x^{2} - 5)^{2}$. Inside: $\\dfrac{d}{dx}(x^{2} - 5) = 2x$. So $\\dfrac{dy}{dx} = 3(x^{2} - 5)^{2}\\cdot 2x = 6x(x^{2} - 5)^{2}$."
+      }
+    ]
+  },
+  "m31-4-3-c": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 3: Roots and Reciprocals of Functions",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The general power rule",
+        "t": 19.225
+      },
+      {
+        "title": "A root",
+        "t": 51.253
+      },
+      {
+        "title": "A reciprocal",
+        "t": 106.155
+      },
+      {
+        "title": "Chain rule or quotient rule?",
+        "t": 148.186
+      },
+      {
+        "title": "Watch out",
+        "t": 181.339
+      },
+      {
+        "title": "Your turn",
+        "t": 204.786
+      },
+      {
+        "title": "Summary",
+        "t": 242.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-c:q",
+        "t": 213.204,
+        "prompt": "Differentiate $y = \\sqrt{4x + 1}$.",
+        "choices": [
+          "$\\dfrac{1}{2\\sqrt{4x + 1}}$",
+          "$\\dfrac{4}{\\sqrt{4x + 1}}$",
+          "$\\dfrac{2}{\\sqrt{4x + 1}}$",
+          "$2\\sqrt{4x + 1}$"
+        ],
+        "answer": 2,
+        "working": "$y = (4x + 1)^{1/2}$, so $\\dfrac{dy}{dx} = \\tfrac{1}{2}(4x + 1)^{-1/2}\\cdot 4 = \\dfrac{2}{\\sqrt{4x + 1}}$."
+      }
+    ]
+  },
+  "m31-4-3-d": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 4: Combining the Rules",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is it as a whole?",
+        "t": 19.421
+      },
+      {
+        "title": "A product with a chain inside",
+        "t": 62.799
+      },
+      {
+        "title": "Factoring the answer",
+        "t": 113.186
+      },
+      {
+        "title": "Watch out",
+        "t": 165.719
+      },
+      {
+        "title": "Your turn",
+        "t": 198.86
+      },
+      {
+        "title": "Summary",
+        "t": 241.052
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-d:q",
+        "t": 209.548,
+        "prompt": "Differentiate $f(x) = x(2x + 1)^{3}$ and factor the answer.",
+        "choices": [
+          "$3(2x + 1)^{2}$",
+          "$(2x + 1)^{2}(8x + 1)$",
+          "$6x(2x + 1)^{2}$",
+          "$(2x + 1)^{2}(5x + 1)$"
+        ],
+        "answer": 1,
+        "working": "$u = x$, $u' = 1$, $v = (2x + 1)^{3}$, $v' = 3(2x + 1)^{2}\\cdot 2 = 6(2x + 1)^{2}$. So $f'(x) = (2x + 1)^{3} + 6x(2x + 1)^{2} = (2x + 1)^{2}\\left[(2x + 1) + 6x\\right] = (2x + 1)^{2}(8x + 1)$."
+      }
+    ]
+  },
+  "m31-4-3-e": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 5: Using a Table of Values",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where to read the outside",
+        "t": 23.091
+      },
+      {
+        "title": "Find h′(1)",
+        "t": 59.47
+      },
+      {
+        "title": "Watch out",
+        "t": 105.999
+      },
+      {
+        "title": "Your turn",
+        "t": 128.197
+      },
+      {
+        "title": "Summary",
+        "t": 173.557
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-e:q",
+        "t": 144.403,
+        "prompt": "From the table, $g(1) = 4$, $g'(1) = 5$, $g(4) = 2$ and $g'(4) = 4$. If $k(x) = g(g(x))$, find $k'(1)$.",
+        "choices": [
+          "$25$",
+          "$4$",
+          "$9$",
+          "$20$"
+        ],
+        "answer": 3,
+        "working": "$k'(1) = g'(g(1))\\cdot g'(1) = g'(4)\\cdot g'(1) = (4)(5) = 20$."
+      }
+    ]
+  },
+  "m31-4-3-f": {
+    "lessonId": "m31-4-3",
+    "title": "The Chain Rule, Part 6: Nested Functions and Applications",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three layers",
+        "t": 23.638
+      },
+      {
+        "title": "Multiply the layers",
+        "t": 66.81
+      },
+      {
+        "title": "Watch out",
+        "t": 102.504
+      },
+      {
+        "title": "The speed of sound",
+        "t": 125.985
+      },
+      {
+        "title": "Your turn",
+        "t": 201.707
+      },
+      {
+        "title": "Summary",
+        "t": 243.695
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-4-3-f:q",
+        "t": 216.444,
+        "prompt": "Using the model $v(T) = 20\\sqrt{T + 273}$ m/s, with $v'(T) = \\dfrac{10}{\\sqrt{T + 273}}$, find $v'(127)$.",
+        "choices": [
+          "$0.5$ m/s per °C",
+          "$20$ m/s per °C",
+          "$0.025$ m/s per °C",
+          "$1$ m/s per °C"
+        ],
+        "answer": 0,
+        "working": "$v'(127) = \\dfrac{10}{\\sqrt{127 + 273}} = \\dfrac{10}{\\sqrt{400}} = \\dfrac{10}{20} = 0.5$ m/s per °C."
+      }
+    ]
+  },
+  "m31-5-1": {
+    "lessonId": "m31-5-1",
+    "title": "Derivatives of Trigonometric Functions, Part 1: Sine and Cosine",
+    "duration": 446,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The slope of the sine curve",
+        "t": 28.436
+      },
+      {
+        "title": "Two special limits",
+        "t": 95.858
+      },
+      {
+        "title": "Why the slope is cosine",
+        "t": 160.866
+      },
+      {
+        "title": "The derivative of cosine",
+        "t": 217.626
+      },
+      {
+        "title": "Watch out",
+        "t": 264.031
+      },
+      {
+        "title": "An exact value",
+        "t": 304.751
+      },
+      {
+        "title": "Your turn",
+        "t": 362.891
+      },
+      {
+        "title": "Summary",
+        "t": 404.915
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-1:q",
+        "t": 374.092,
+        "prompt": "For $f(x) = 6\\cos x + 2\\sin x$, find $f'\\left(\\tfrac{\\pi}{6}\\right)$.",
+        "choices": [
+          "$3 + \\sqrt{3}$",
+          "$-3 + \\sqrt{3}$",
+          "$3\\sqrt{3} + 1$",
+          "$-3\\sqrt{3} + 1$"
+        ],
+        "answer": 1,
+        "working": "$f'(x) = -6\\sin x + 2\\cos x$, so $f'\\left(\\tfrac{\\pi}{6}\\right) = -6\\left(\\tfrac{1}{2}\\right) + 2\\left(\\tfrac{\\sqrt{3}}{2}\\right) = -3 + \\sqrt{3}$."
+      }
+    ]
+  },
+  "m31-5-1-b": {
+    "lessonId": "m31-5-1",
+    "title": "Derivatives of Trigonometric Functions, Part 2: The Six Derivatives",
+    "duration": 344,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tangent",
+        "t": 22.871
+      },
+      {
+        "title": "The tangent graph",
+        "t": 74.055
+      },
+      {
+        "title": "Secant",
+        "t": 123.494
+      },
+      {
+        "title": "All six",
+        "t": 171.784
+      },
+      {
+        "title": "Term by term",
+        "t": 228.084
+      },
+      {
+        "title": "Your turn",
+        "t": 264.684
+      },
+      {
+        "title": "Summary",
+        "t": 304.921
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-1-b:q",
+        "t": 274.171,
+        "prompt": "Differentiate $y = 5\\tan x - 2\\csc x$.",
+        "choices": [
+          "$5\\sec^{2} x - 2\\csc x\\cot x$",
+          "$5\\sec x\\tan x + 2\\csc x\\cot x$",
+          "$-5\\csc^{2} x + 2\\csc x\\cot x$",
+          "$5\\sec^{2} x + 2\\csc x\\cot x$"
+        ],
+        "answer": 3,
+        "working": "$(\\tan x)' = \\sec^{2} x$ and $(\\csc x)' = -\\csc x\\cot x$, so $\\dfrac{dy}{dx} = 5\\sec^{2} x - 2(-\\csc x\\cot x) = 5\\sec^{2} x + 2\\csc x\\cot x$."
+      }
+    ]
+  },
+  "m31-5-1-c": {
+    "lessonId": "m31-5-1",
+    "title": "Derivatives of Trigonometric Functions, Part 3: With the Other Rules",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The chain rule",
+        "t": 22.02
+      },
+      {
+        "title": "A power of sine",
+        "t": 78.803
+      },
+      {
+        "title": "Watch out",
+        "t": 113.119
+      },
+      {
+        "title": "The product rule",
+        "t": 148.191
+      },
+      {
+        "title": "The quotient rule",
+        "t": 181.75
+      },
+      {
+        "title": "Your turn",
+        "t": 235.659
+      },
+      {
+        "title": "Summary",
+        "t": 273.982
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-1-c:q",
+        "t": 243.402,
+        "prompt": "Differentiate $y = \\cos(4x^{2})$.",
+        "choices": [
+          "$-8x\\sin(4x^{2})$",
+          "$8x\\sin(4x^{2})$",
+          "$-\\sin(8x)$",
+          "$-\\sin(4x^{2})$"
+        ],
+        "answer": 0,
+        "working": "The outside is cosine and the inside is $4x^{2}$: $\\dfrac{dy}{dx} = -\\sin(4x^{2})\\cdot 8x = -8x\\sin(4x^{2})$."
+      }
+    ]
+  },
+  "m31-5-1-d": {
+    "lessonId": "m31-5-1",
+    "title": "Derivatives of Trigonometric Functions, Part 4: Applications",
+    "duration": 304,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Horizontal tangents",
+        "t": 17.763
+      },
+      {
+        "title": "On the graph",
+        "t": 74.354
+      },
+      {
+        "title": "A mass on a spring",
+        "t": 113.477
+      },
+      {
+        "title": "Reading the velocity",
+        "t": 180.115
+      },
+      {
+        "title": "Your turn",
+        "t": 227.305
+      },
+      {
+        "title": "Summary",
+        "t": 270.393
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-1-d:q",
+        "t": 241.457,
+        "prompt": "Find all $x$ in $0 \\le x < 2\\pi$ where $f(x) = x - 2\\sin x$ has a horizontal tangent.",
+        "choices": [
+          "$x = \\dfrac{\\pi}{6}$ and $x = \\dfrac{5\\pi}{6}$",
+          "$x = \\dfrac{\\pi}{3}$ and $x = \\dfrac{2\\pi}{3}$",
+          "$x = \\dfrac{\\pi}{3}$ and $x = \\dfrac{5\\pi}{3}$",
+          "$x = \\dfrac{2\\pi}{3}$ and $x = \\dfrac{4\\pi}{3}$"
+        ],
+        "answer": 2,
+        "working": "$f'(x) = 1 - 2\\cos x = 0$, so $\\cos x = \\frac{1}{2}$. Cosine is positive in quadrants I and IV: $x = \\frac{\\pi}{3}$ or $x = \\frac{5\\pi}{3}$."
+      }
+    ]
+  },
+  "m31-5-2": {
+    "lessonId": "m31-5-2",
+    "title": "Derivatives of Exponential and Logarithmic Functions, Part 1: The Number e",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The slope of a to the x",
+        "t": 27.222
+      },
+      {
+        "title": "Estimating the constant",
+        "t": 77.22
+      },
+      {
+        "title": "The number e",
+        "t": 120.392
+      },
+      {
+        "title": "Slope equals height",
+        "t": 143.228
+      },
+      {
+        "title": "With the chain rule",
+        "t": 180.173
+      },
+      {
+        "title": "Your turn",
+        "t": 242.162
+      },
+      {
+        "title": "Summary",
+        "t": 274.791
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-2:q",
+        "t": 250.428,
+        "prompt": "Differentiate $y = e^{5x^{2}}$.",
+        "choices": [
+          "$e^{10x}$",
+          "$5x^{2}e^{5x^{2} - 1}$",
+          "$10xe^{10x}$",
+          "$10xe^{5x^{2}}$"
+        ],
+        "answer": 3,
+        "working": "The power is $5x^{2}$, with derivative $10x$: $\\dfrac{dy}{dx} = e^{5x^{2}}\\cdot 10x = 10xe^{5x^{2}}$."
+      }
+    ]
+  },
+  "m31-5-2-b": {
+    "lessonId": "m31-5-2",
+    "title": "Derivatives of Exponential and Logarithmic Functions, Part 2: Other Bases",
+    "duration": 315,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rewrite with e",
+        "t": 25.995
+      },
+      {
+        "title": "The rule",
+        "t": 77.967
+      },
+      {
+        "title": "Two examples",
+        "t": 116.057
+      },
+      {
+        "title": "Watch out",
+        "t": 152.783
+      },
+      {
+        "title": "A growing balance",
+        "t": 192.369
+      },
+      {
+        "title": "Your turn",
+        "t": 249.01
+      },
+      {
+        "title": "Summary",
+        "t": 280.593
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-2-b:q",
+        "t": 256.571,
+        "prompt": "Differentiate $y = 2^{3x}$.",
+        "choices": [
+          "$3x\\cdot 2^{3x - 1}$",
+          "$3\\ln 2\\cdot 2^{3x}$",
+          "$2^{3x}\\ln 2$",
+          "$3\\cdot 2^{3x}$"
+        ],
+        "answer": 1,
+        "working": "The power is $3x$, with derivative $3$: $\\dfrac{dy}{dx} = 2^{3x}\\ln 2\\cdot 3 = 3\\ln 2\\cdot 2^{3x}$."
+      }
+    ]
+  },
+  "m31-5-2-c": {
+    "lessonId": "m31-5-2",
+    "title": "Derivatives of Exponential and Logarithmic Functions, Part 3: Logarithmic Functions",
+    "duration": 324,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The derivative of ln x",
+        "t": 20.837
+      },
+      {
+        "title": "On the graph",
+        "t": 65.533
+      },
+      {
+        "title": "Three rules",
+        "t": 104.744
+      },
+      {
+        "title": "Expand first",
+        "t": 145.83
+      },
+      {
+        "title": "Watch out",
+        "t": 206.958
+      },
+      {
+        "title": "Your turn",
+        "t": 247.076
+      },
+      {
+        "title": "Summary",
+        "t": 284.836
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-2-c:q",
+        "t": 257.618,
+        "prompt": "Differentiate $y = \\ln\\left(x^{4}(3x - 2)\\right)$.",
+        "choices": [
+          "$\\dfrac{4}{x} + \\dfrac{1}{3x - 2}$",
+          "$\\dfrac{1}{x^{4}(3x - 2)}$",
+          "$\\dfrac{4}{x} + \\dfrac{3}{3x - 2}$",
+          "$\\dfrac{1}{x^{4}} + \\dfrac{3}{3x - 2}$"
+        ],
+        "answer": 2,
+        "working": "Expand: $y = 4\\ln x + \\ln(3x - 2)$, so $\\dfrac{dy}{dx} = \\dfrac{4}{x} + \\dfrac{3}{3x - 2}$."
+      }
+    ]
+  },
+  "m31-5-2-d": {
+    "lessonId": "m31-5-2",
+    "title": "Derivatives of Exponential and Logarithmic Functions, Part 4: Products, Quotients and Growth",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A product",
+        "t": 22.142
+      },
+      {
+        "title": "A quotient",
+        "t": 52.918
+      },
+      {
+        "title": "A growing town",
+        "t": 86.516
+      },
+      {
+        "title": "Never zero",
+        "t": 149.046
+      },
+      {
+        "title": "Your turn",
+        "t": 198.462
+      },
+      {
+        "title": "Summary",
+        "t": 244.082
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-2-d:q",
+        "t": 208.369,
+        "prompt": "Where does $f(x) = xe^{-2x}$ have a horizontal tangent?",
+        "choices": [
+          "$x = \\dfrac{1}{2}$",
+          "$x = 1$",
+          "$x = 0$",
+          "$x = -\\dfrac{1}{2}$"
+        ],
+        "answer": 0,
+        "working": "$f'(x) = e^{-2x} - 2xe^{-2x} = e^{-2x}(1 - 2x)$. Since $e^{-2x} > 0$, $f'(x) = 0$ only when $1 - 2x = 0$: $x = \\dfrac{1}{2}$."
+      }
+    ]
+  },
+  "m31-5-3": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 1: Implicit Differentiation",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Defined implicitly",
+        "t": 27.788
+      },
+      {
+        "title": "The method",
+        "t": 81.231
+      },
+      {
+        "title": "A circle",
+        "t": 124.67
+      },
+      {
+        "title": "On the graph",
+        "t": 175.051
+      },
+      {
+        "title": "Your turn",
+        "t": 211.92
+      },
+      {
+        "title": "Summary",
+        "t": 252.96
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3:q",
+        "t": 222.998,
+        "prompt": "Find the slope of the tangent to $4x^{2} + y^{2} = 8$ at the point $(1, 2)$.",
+        "choices": [
+          "$-\\dfrac{1}{2}$",
+          "$2$",
+          "$-2$",
+          "$-8$"
+        ],
+        "answer": 2,
+        "working": "$8x + 2y\\dfrac{dy}{dx} = 0$, so $\\dfrac{dy}{dx} = -\\dfrac{4x}{y}$. At $(1, 2)$: $-\\dfrac{4}{2} = -2$."
+      }
+    ]
+  },
+  "m31-5-3-b": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 2: Products and Mixed Terms",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The product rule",
+        "t": 22.071
+      },
+      {
+        "title": "A tilted ellipse",
+        "t": 47.921
+      },
+      {
+        "title": "On the graph",
+        "t": 113.985
+      },
+      {
+        "title": "Watch out",
+        "t": 132.378
+      },
+      {
+        "title": "Any functions",
+        "t": 166.91
+      },
+      {
+        "title": "Your turn",
+        "t": 215.523
+      },
+      {
+        "title": "Summary",
+        "t": 258.173
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3-b:q",
+        "t": 226.244,
+        "prompt": "Find the slope of the tangent to $xy + y^{2} = 6$ at the point $(1, 2)$.",
+        "choices": [
+          "$-\\dfrac{2}{5}$",
+          "$-\\dfrac{1}{2}$",
+          "$-\\dfrac{5}{2}$",
+          "$-6$"
+        ],
+        "answer": 0,
+        "working": "$y + x\\dfrac{dy}{dx} + 2y\\dfrac{dy}{dx} = 0$, so $\\dfrac{dy}{dx} = -\\dfrac{y}{x + 2y}$. At $(1, 2)$: $-\\dfrac{2}{1 + 4} = -\\dfrac{2}{5}$."
+      }
+    ]
+  },
+  "m31-5-3-c": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 3: Higher Derivatives",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The second derivative",
+        "t": 19.155
+      },
+      {
+        "title": "Again and again",
+        "t": 57.557
+      },
+      {
+        "title": "Acceleration",
+        "t": 101.064
+      },
+      {
+        "title": "Simplify first",
+        "t": 153.401
+      },
+      {
+        "title": "Your turn",
+        "t": 192.991
+      },
+      {
+        "title": "Summary",
+        "t": 231.115
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3-c:q",
+        "t": 204.733,
+        "prompt": "For $f(x) = 2x^{3} - 5x^{2} + x$, find $f''(1)$.",
+        "choices": [
+          "$-3$",
+          "$12$",
+          "$-2$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "$f'(x) = 6x^{2} - 10x + 1$ and $f''(x) = 12x - 10$, so $f''(1) = 12 - 10 = 2$."
+      }
+    ]
+  },
+  "m31-5-3-d": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 4: Patterns in Derivatives",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The derivatives of sine",
+        "t": 18.107
+      },
+      {
+        "title": "The 27th derivative",
+        "t": 55.932
+      },
+      {
+        "title": "Powers of two",
+        "t": 99.572
+      },
+      {
+        "title": "Your turn",
+        "t": 138.167
+      },
+      {
+        "title": "Summary",
+        "t": 176.907
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3-d:q",
+        "t": 145.307,
+        "prompt": "Find the 50th derivative of $\\cos x$.",
+        "choices": [
+          "$\\cos x$",
+          "$-\\cos x$",
+          "$-\\sin x$",
+          "$\\sin x$"
+        ],
+        "answer": 1,
+        "working": "The derivatives of $\\cos x$ are $-\\sin x$, $-\\cos x$, $\\sin x$, $\\cos x$, repeating every $4$. $50 = 4(12) + 2$, so the 50th derivative equals the 2nd: $-\\cos x$."
+      }
+    ]
+  },
+  "m31-5-3-e": {
+    "lessonId": "m31-5-3",
+    "title": "Implicit Differentiation and Higher Derivatives, Part 5: Second Derivatives Implicitly",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Differentiate again",
+        "t": 25.237
+      },
+      {
+        "title": "Use the equation",
+        "t": 77.183
+      },
+      {
+        "title": "What it means",
+        "t": 105.306
+      },
+      {
+        "title": "Your turn",
+        "t": 158.175
+      },
+      {
+        "title": "Summary",
+        "t": 204.037
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-5-3-e:q",
+        "t": 168.538,
+        "prompt": "For $y^{2} = x$, find $\\dfrac{d^{2}y}{dx^{2}}$ at the point $(4, 2)$.",
+        "choices": [
+          "$-\\dfrac{1}{32}$",
+          "$\\dfrac{1}{4}$",
+          "$-\\dfrac{1}{8}$",
+          "$\\dfrac{1}{32}$"
+        ],
+        "answer": 0,
+        "working": "$2yy' = 1$, so $y' = \\dfrac{1}{2y}$. Then $y'' = -\\dfrac{1}{2y^{2}}\\,y' = -\\dfrac{1}{2y^{2}}\\cdot\\dfrac{1}{2y} = -\\dfrac{1}{4y^{3}}$. At $y = 2$: $-\\dfrac{1}{32}$."
+      }
+    ]
+  },
+  "m31-6-1": {
+    "lessonId": "m31-6-1",
+    "title": "Tangent Lines and Linear Approximation, Part 1: The Tangent Line",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Zooming in",
+        "t": 18.398
+      },
+      {
+        "title": "The equation",
+        "t": 53.102
+      },
+      {
+        "title": "A cubic",
+        "t": 79.271
+      },
+      {
+        "title": "Watch out",
+        "t": 129.907
+      },
+      {
+        "title": "Your turn",
+        "t": 160.887
+      },
+      {
+        "title": "Summary",
+        "t": 207.827
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-1:q",
+        "t": 172.772,
+        "prompt": "Find an equation of the tangent line to $f(x) = x^{2} + 3x$ at $x = 1$.",
+        "choices": [
+          "$y = 5x + 4$",
+          "$y = 4x$",
+          "$y = 5x - 1$",
+          "$y = (2x + 3)(x - 1) + 4$"
+        ],
+        "answer": 2,
+        "working": "$f(1) = 4$ and $f'(x) = 2x + 3$, so $f'(1) = 5$. Then $y - 4 = 5(x - 1)$, so $y = 5x - 1$."
+      }
+    ]
+  },
+  "m31-6-1-b": {
+    "lessonId": "m31-6-1",
+    "title": "Tangent Lines and Linear Approximation, Part 2: Normal Lines",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The normal line",
+        "t": 19.358
+      },
+      {
+        "title": "Tangent and normal",
+        "t": 43.611
+      },
+      {
+        "title": "A horizontal tangent",
+        "t": 98.25
+      },
+      {
+        "title": "Your turn",
+        "t": 127.078
+      },
+      {
+        "title": "Summary",
+        "t": 168.361
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-1-b:q",
+        "t": 137.173,
+        "prompt": "Find an equation of the normal line to $y = x^{2}$ at $x = 1$.",
+        "choices": [
+          "$y = 2x - 1$",
+          "$y = -\\dfrac{1}{2}x + \\dfrac{3}{2}$",
+          "$y = \\dfrac{1}{2}x + \\dfrac{1}{2}$",
+          "$y = -2x + 3$"
+        ],
+        "answer": 1,
+        "working": "The point is $(1, 1)$ and the tangent slope is $2x = 2$. The normal slope is $-\\dfrac{1}{2}$: $y - 1 = -\\dfrac{1}{2}(x - 1)$, so $y = -\\dfrac{1}{2}x + \\dfrac{3}{2}$."
+      }
+    ]
+  },
+  "m31-6-1-c": {
+    "lessonId": "m31-6-1",
+    "title": "Tangent Lines and Linear Approximation, Part 3: Horizontal and Parallel Tangents",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Horizontal tangents",
+        "t": 23.669
+      },
+      {
+        "title": "A parallel tangent",
+        "t": 84.633
+      },
+      {
+        "title": "Rewrite the line first",
+        "t": 125.009
+      },
+      {
+        "title": "Your turn",
+        "t": 161.867
+      },
+      {
+        "title": "Summary",
+        "t": 200.465
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-1-c:q",
+        "t": 174.29,
+        "prompt": "At what point is the tangent to $y = x^{2} - 6x$ parallel to the line $y = 2x + 5$?",
+        "choices": [
+          "$(3, -9)$",
+          "$(4, 13)$",
+          "$(2, -8)$",
+          "$(4, -8)$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{dy}{dx} = 2x - 6 = 2$, so $x = 4$, and $y = 16 - 24 = -8$."
+      }
+    ]
+  },
+  "m31-6-1-d": {
+    "lessonId": "m31-6-1",
+    "title": "Tangent Lines and Linear Approximation, Part 4: Linear Approximation",
+    "duration": 327,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The linearization",
+        "t": 22.883
+      },
+      {
+        "title": "Estimating a square root",
+        "t": 56.81
+      },
+      {
+        "title": "On the graph",
+        "t": 114.388
+      },
+      {
+        "title": "Estimating a change",
+        "t": 159.814
+      },
+      {
+        "title": "Watch out",
+        "t": 208.599
+      },
+      {
+        "title": "Your turn",
+        "t": 250.358
+      },
+      {
+        "title": "Summary",
+        "t": 289.928
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-1-d:q",
+        "t": 260.774,
+        "prompt": "Use a linear approximation at $a = 49$ to estimate $\\sqrt{50}$.",
+        "choices": [
+          "$7.5$",
+          "$7.071$",
+          "$7.143$",
+          "$7.010$"
+        ],
+        "answer": 1,
+        "working": "$f(49) = 7$ and $f'(49) = \\dfrac{1}{2\\sqrt{49}} = \\dfrac{1}{14}$, so $L(50) = 7 + \\dfrac{1}{14}(1) \\approx 7.071$."
+      }
+    ]
+  },
+  "m31-6-2": {
+    "lessonId": "m31-6-2",
+    "title": "Increasing, Decreasing and Extreme Values, Part 1: Increasing and Decreasing",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A hiking trail",
+        "t": 22.679
+      },
+      {
+        "title": "The test",
+        "t": 54.163
+      },
+      {
+        "title": "A parabola",
+        "t": 98.541
+      },
+      {
+        "title": "Your turn",
+        "t": 144.247
+      },
+      {
+        "title": "Summary",
+        "t": 182.536
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-2:q",
+        "t": 153.556,
+        "prompt": "On what interval is $f(x) = 8x - x^{2}$ increasing?",
+        "choices": [
+          "$(4, \\infty)$",
+          "$(-\\infty, 16)$",
+          "$(0, 8)$",
+          "$(-\\infty, 4)$"
+        ],
+        "answer": 3,
+        "working": "$f'(x) = 8 - 2x$, which is positive when $x < 4$. So $f$ is increasing on $(-\\infty, 4)$."
+      }
+    ]
+  },
+  "m31-6-2-b": {
+    "lessonId": "m31-6-2",
+    "title": "Increasing, Decreasing and Extreme Values, Part 2: Critical Numbers",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Critical numbers",
+        "t": 22.186
+      },
+      {
+        "title": "A polynomial",
+        "t": 58.054
+      },
+      {
+        "title": "A sharp point",
+        "t": 98.495
+      },
+      {
+        "title": "Watch out",
+        "t": 142.25
+      },
+      {
+        "title": "Your turn",
+        "t": 175.27
+      },
+      {
+        "title": "Summary",
+        "t": 212.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-2-b:q",
+        "t": 185.713,
+        "prompt": "Find the critical numbers of $f(x) = x^{3} - 12x + 5$.",
+        "choices": [
+          "$-2$ and $2$",
+          "$2$ only",
+          "$-2\\sqrt{3}$ and $2\\sqrt{3}$",
+          "$0$ and $12$"
+        ],
+        "answer": 0,
+        "working": "$f'(x) = 3x^{2} - 12 = 3(x^{2} - 4) = 3(x + 2)(x - 2)$, which is $0$ at $x = \\pm 2$ and exists everywhere."
+      }
+    ]
+  },
+  "m31-6-2-c": {
+    "lessonId": "m31-6-2",
+    "title": "Increasing, Decreasing and Extreme Values, Part 3: The First Derivative Test",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Local maximum and minimum",
+        "t": 21.106
+      },
+      {
+        "title": "A sign chart",
+        "t": 68.579
+      },
+      {
+        "title": "No sign change",
+        "t": 145.529
+      },
+      {
+        "title": "Reading the graph of f′",
+        "t": 178.997
+      },
+      {
+        "title": "Your turn",
+        "t": 214.884
+      },
+      {
+        "title": "Summary",
+        "t": 261.147
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-2-c:q",
+        "t": 225.723,
+        "prompt": "Which point is a local maximum of $f(x) = x^{3} - 12x + 5$?",
+        "choices": [
+          "$(2, -11)$",
+          "$(0, 5)$",
+          "$(-2, 21)$",
+          "$(2, 21)$"
+        ],
+        "answer": 2,
+        "working": "$f'(x) = 3(x + 2)(x - 2)$ changes from $+$ to $-$ at $x = -2$, so $f$ has a local maximum $f(-2) = -8 + 24 + 5 = 21$."
+      }
+    ]
+  },
+  "m31-6-2-d": {
+    "lessonId": "m31-6-2",
+    "title": "Increasing, Decreasing and Extreme Values, Part 4: Absolute Extrema",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Absolute extrema",
+        "t": 20.105
+      },
+      {
+        "title": "The closed interval method",
+        "t": 55.682
+      },
+      {
+        "title": "On a closed interval",
+        "t": 83.455
+      },
+      {
+        "title": "Watch out",
+        "t": 147.995
+      },
+      {
+        "title": "Your turn",
+        "t": 196.37
+      },
+      {
+        "title": "Summary",
+        "t": 243.82
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-2-d:q",
+        "t": 211.406,
+        "prompt": "Find the absolute maximum value of $f(x) = x^{3} - 12x + 5$ on $[-3, 5]$.",
+        "choices": [
+          "$21$",
+          "$14$",
+          "$-11$",
+          "$70$"
+        ],
+        "answer": 3,
+        "working": "The critical numbers $-2$ and $2$ are in the interval. $f(-3) = 14$, $f(-2) = 21$, $f(2) = -11$ and $f(5) = 70$, so the absolute maximum is $70$, at $x = 5$."
+      }
+    ]
+  },
+  "m31-6-3": {
+    "lessonId": "m31-6-3",
+    "title": "Concavity and Curve Sketching, Part 1: Concavity",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two ways to bend",
+        "t": 18.758
+      },
+      {
+        "title": "The second derivative",
+        "t": 58.537
+      },
+      {
+        "title": "Intervals of concavity",
+        "t": 90.261
+      },
+      {
+        "title": "Your turn",
+        "t": 134.539
+      },
+      {
+        "title": "Summary",
+        "t": 174.342
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-3:q",
+        "t": 145.382,
+        "prompt": "On what interval is $f(x) = x^{3} + 3x^{2} - 1$ concave up?",
+        "choices": [
+          "$(-1, \\infty)$",
+          "$(-\\infty, -1)$",
+          "$(-2, 0)$",
+          "$(0, \\infty)$"
+        ],
+        "answer": 0,
+        "working": "$f'(x) = 3x^{2} + 6x$ and $f''(x) = 6x + 6$, which is positive when $x > -1$."
+      }
+    ]
+  },
+  "m31-6-3-b": {
+    "lessonId": "m31-6-3",
+    "title": "Concavity and Curve Sketching, Part 2: Points of Inflection",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Point of inflection",
+        "t": 19.957
+      },
+      {
+        "title": "Two points of inflection",
+        "t": 62.558
+      },
+      {
+        "title": "Watch out",
+        "t": 122.05
+      },
+      {
+        "title": "Your turn",
+        "t": 158.477
+      },
+      {
+        "title": "Summary",
+        "t": 200.162
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-3-b:q",
+        "t": 169.271,
+        "prompt": "Find the point of inflection of $f(x) = x^{3} - 6x^{2} + 5$.",
+        "choices": [
+          "$(0, 5)$",
+          "$(4, -27)$",
+          "$(2, -11)$",
+          "$(2, 0)$"
+        ],
+        "answer": 2,
+        "working": "$f''(x) = 6x - 12$ is $0$ at $x = 2$ and changes from $-$ to $+$ there. $f(2) = 8 - 24 + 5 = -11$."
+      }
+    ]
+  },
+  "m31-6-3-c": {
+    "lessonId": "m31-6-3",
+    "title": "Concavity and Curve Sketching, Part 3: The Second Derivative Test",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The idea",
+        "t": 19.523
+      },
+      {
+        "title": "The test",
+        "t": 51.153
+      },
+      {
+        "title": "Classifying critical numbers",
+        "t": 88.161
+      },
+      {
+        "title": "When the test fails",
+        "t": 152.409
+      },
+      {
+        "title": "Your turn",
+        "t": 189.718
+      },
+      {
+        "title": "Summary",
+        "t": 233.93
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-3-c:q",
+        "t": 203.555,
+        "prompt": "$f(x) = x^{3} - 27x$ has critical numbers $-3$ and $3$. What does the second derivative test say?",
+        "choices": [
+          "A local minimum at $-3$ and a local maximum at $3$",
+          "A local maximum at $-3$ and a local minimum at $3$",
+          "Local minima at both",
+          "The test gives no information"
+        ],
+        "answer": 1,
+        "working": "$f''(x) = 6x$. $f''(-3) = -18 < 0$, a local maximum; $f''(3) = 18 > 0$, a local minimum."
+      }
+    ]
+  },
+  "m31-6-3-d": {
+    "lessonId": "m31-6-3",
+    "title": "Concavity and Curve Sketching, Part 4: Curve Sketching",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The steps",
+        "t": 22.021
+      },
+      {
+        "title": "Intercepts",
+        "t": 60.044
+      },
+      {
+        "title": "Two sign charts",
+        "t": 92.635
+      },
+      {
+        "title": "The sketch",
+        "t": 148.446
+      },
+      {
+        "title": "Watch out",
+        "t": 202.06
+      },
+      {
+        "title": "Your turn",
+        "t": 235.06
+      },
+      {
+        "title": "Summary",
+        "t": 272.611
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-3-d:q",
+        "t": 246.35,
+        "prompt": "Which describes $f(x) = x^{3} - 3x$ on the interval $(-1, 0)$?",
+        "choices": [
+          "Decreasing and concave down",
+          "Decreasing and concave up",
+          "Increasing and concave down",
+          "Increasing and concave up"
+        ],
+        "answer": 0,
+        "working": "On $(-1, 0)$, $f'(x) = 3(x + 1)(x - 1) < 0$, so $f$ is decreasing, and $f''(x) = 6x < 0$, so $f$ is concave down."
+      }
+    ]
+  },
+  "m31-6-4": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 1: Velocity and Acceleration",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Position",
+        "t": 26.741
+      },
+      {
+        "title": "Velocity and acceleration",
+        "t": 68.473
+      },
+      {
+        "title": "At an instant",
+        "t": 109.198
+      },
+      {
+        "title": "Your turn",
+        "t": 157.577
+      },
+      {
+        "title": "Summary",
+        "t": 204.533
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4:q",
+        "t": 175.635,
+        "prompt": "A particle has position $s(t) = 2t^{3} - 9t^{2} + 12t$ metres after $t$ seconds. Find its velocity and acceleration at $t = 3$.",
+        "choices": [
+          "$v = 9$ m/s, $a = 12$ m/s²",
+          "$v = 18$ m/s, $a = 12$ m/s²",
+          "$v = 12$ m/s, $a = 18$ m/s²",
+          "$v = -12$ m/s, $a = 18$ m/s²"
+        ],
+        "answer": 2,
+        "working": "$v(t) = 6t^{2} - 18t + 12$, so $v(3) = 54 - 54 + 12 = 12$ m/s. $a(t) = 12t - 18$, so $a(3) = 36 - 18 = 18$ m/s²."
+      }
+    ]
+  },
+  "m31-6-4-b": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 2: Direction of Motion",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The sign of the velocity",
+        "t": 21.131
+      },
+      {
+        "title": "When does it turn around?",
+        "t": 58.563
+      },
+      {
+        "title": "Seeing the motion",
+        "t": 107.924
+      },
+      {
+        "title": "Your turn",
+        "t": 146.77
+      },
+      {
+        "title": "Summary",
+        "t": 190.83
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4-b:q",
+        "t": 162.156,
+        "prompt": "A particle has position $s(t) = t^{2} - 8t + 3$ metres after $t$ seconds, for $t \\ge 0$. When is it moving in the negative direction?",
+        "choices": [
+          "$t > 4$",
+          "Only at $t = 4$",
+          "$0 < t < 8$",
+          "$0 \\le t < 4$"
+        ],
+        "answer": 3,
+        "working": "$v(t) = 2t - 8$, which is negative when $t < 4$. So the particle moves in the negative direction for $0 \\le t < 4$."
+      }
+    ]
+  },
+  "m31-6-4-c": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 3: Rising and Falling",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A ball thrown upward",
+        "t": 24.377
+      },
+      {
+        "title": "Up, stop, down",
+        "t": 86.536
+      },
+      {
+        "title": "Hitting the water",
+        "t": 125.215
+      },
+      {
+        "title": "Your turn",
+        "t": 180.547
+      },
+      {
+        "title": "Summary",
+        "t": 230.032
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4-c:q",
+        "t": 197.28,
+        "prompt": "A ball thrown upward has height $h(t) = 2 + 24.5t - 4.9t^{2}$ metres after $t$ seconds. When is it highest, and how high is it then?",
+        "choices": [
+          "At $t = 5$ s, $2$ m",
+          "At $t = 2.5$ s, $32.625$ m",
+          "At $t = 2.5$ s, $63.25$ m",
+          "At $t = 2$ s, $31.4$ m"
+        ],
+        "answer": 1,
+        "working": "$v(t) = 24.5 - 9.8t = 0$ at $t = 2.5$ s, and $h(2.5) = 2 + 61.25 - 30.625 = 32.625$ m."
+      }
+    ]
+  },
+  "m31-6-4-d": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 4: Speeding Up or Slowing Down",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same sign or opposite",
+        "t": 24.045
+      },
+      {
+        "title": "Comparing sign charts",
+        "t": 62.859
+      },
+      {
+        "title": "Watch out",
+        "t": 118.338
+      },
+      {
+        "title": "Your turn",
+        "t": 149.456
+      },
+      {
+        "title": "Summary",
+        "t": 193.715
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4-d:q",
+        "t": 164.045,
+        "prompt": "A particle has position $s(t) = t^{3} - 6t^{2} + 9t$ metres after $t$ seconds, for $t \\ge 0$. When is it speeding up?",
+        "choices": [
+          "$(1, 2) \\cup (3, \\infty)$",
+          "$(2, \\infty)$",
+          "$[0, 1) \\cup (2, 3)$",
+          "$(3, \\infty)$ only"
+        ],
+        "answer": 0,
+        "working": "$v(t) = 3(t - 1)(t - 3)$ and $a(t) = 6(t - 2)$. Both are negative on $(1, 2)$ and both positive on $(3, \\infty)$."
+      }
+    ]
+  },
+  "m31-6-4-e": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 5: Displacement and Total Distance",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two different measures",
+        "t": 21.662
+      },
+      {
+        "title": "Out and back",
+        "t": 50.768
+      },
+      {
+        "title": "The answer",
+        "t": 104.19
+      },
+      {
+        "title": "Your turn",
+        "t": 145.28
+      },
+      {
+        "title": "Summary",
+        "t": 195.218
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4-e:q",
+        "t": 162.62,
+        "prompt": "A particle has position $s(t) = t^{2} - 8t + 3$ metres after $t$ seconds. Find its displacement and the total distance it travels from $t = 0$ to $t = 6$.",
+        "choices": [
+          "Displacement $12$ m, distance $20$ m",
+          "Displacement $-12$ m, distance $12$ m",
+          "Displacement $-12$ m, distance $20$ m",
+          "Displacement $-9$ m, distance $20$ m"
+        ],
+        "answer": 2,
+        "working": "It turns around when $v(t) = 2t - 8 = 0$, at $t = 4$. $s(0) = 3$, $s(4) = -13$, $s(6) = -9$. Displacement: $-9 - 3 = -12$ m. Distance: $16 + 4 = 20$ m."
+      }
+    ]
+  },
+  "m31-7-1": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 1: The Strategy and a Fence by a River",
+    "duration": 407,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Try a few",
+        "t": 35.929
+      },
+      {
+        "title": "Objective and constraint",
+        "t": 100.278
+      },
+      {
+        "title": "A strategy",
+        "t": 143.2
+      },
+      {
+        "title": "One variable",
+        "t": 186.106
+      },
+      {
+        "title": "Find the maximum",
+        "t": 234.471
+      },
+      {
+        "title": "Answer the question",
+        "t": 278.738
+      },
+      {
+        "title": "Your turn",
+        "t": 311.132
+      },
+      {
+        "title": "Summary",
+        "t": 370.916
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1:q",
+        "t": 326.384,
+        "prompt": "There is $240$ m of fencing for a rectangular field beside a straight river, with no fence along the river. What is the largest area it can enclose?",
+        "choices": [
+          "$3{,}600$ m²",
+          "$7{,}200$ m²",
+          "$14{,}400$ m²",
+          "$6{,}400$ m²"
+        ],
+        "answer": 1,
+        "working": "$2x + y = 240$, so $A(x) = x(240 - 2x) = 240x - 2x^2$. $A'(x) = 240 - 4x = 0$ gives $x = 60$, so $y = 120$ and $A = 60 \\times 120 = 7{,}200$ m²."
+      }
+    ]
+  },
+  "m31-7-1-b": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 2: Verifying a Maximum and the Largest Box",
+    "duration": 411,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways to verify",
+        "t": 24.438
+      },
+      {
+        "title": "Folding a box",
+        "t": 91.843
+      },
+      {
+        "title": "The volume",
+        "t": 129.852
+      },
+      {
+        "title": "Critical numbers",
+        "t": 191.897
+      },
+      {
+        "title": "Compare with the endpoints",
+        "t": 240.085
+      },
+      {
+        "title": "Watch out",
+        "t": 286.69
+      },
+      {
+        "title": "Your turn",
+        "t": 322.163
+      },
+      {
+        "title": "Summary",
+        "t": 381.033
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1-b:q",
+        "t": 338.144,
+        "prompt": "An open box is folded from a $12$ cm by $12$ cm sheet by cutting a square of side $x$ cm from each corner. What size of square gives the largest volume?",
+        "choices": [
+          "$3$ cm",
+          "$6$ cm",
+          "$4$ cm",
+          "$2$ cm"
+        ],
+        "answer": 3,
+        "working": "$V(x) = x(12 - 2x)^2$ for $0 < x < 6$, and $V'(x) = 12(x - 2)(x - 6)$. Only $x = 2$ is in the domain, and $V(2) = 2(8)(8) = 128$ cm³."
+      }
+    ]
+  },
+  "m31-7-1-c": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 3: Revenue and the Best Price",
+    "duration": 358,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Revenue and profit",
+        "t": 22.853
+      },
+      {
+        "title": "Setting a fee",
+        "t": 49.45
+      },
+      {
+        "title": "The revenue function",
+        "t": 105.048
+      },
+      {
+        "title": "Find the maximum",
+        "t": 167.241
+      },
+      {
+        "title": "Answer the question",
+        "t": 213.653
+      },
+      {
+        "title": "Watch out",
+        "t": 247.172
+      },
+      {
+        "title": "Your turn",
+        "t": 269.638
+      },
+      {
+        "title": "Summary",
+        "t": 325.155
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1-c:q",
+        "t": 286.001,
+        "prompt": "A theatre sells $400$ tickets a night at \\$20 each. For every \\$1 increase in price, $10$ fewer tickets are sold. What ticket price brings in the most revenue?",
+        "choices": [
+          "\\$30",
+          "\\$10",
+          "\\$25",
+          "\\$40"
+        ],
+        "answer": 0,
+        "working": "With $x$ increases of \\$1, $R(x) = (20 + x)(400 - 10x) = 8{,}000 + 200x - 10x^2$. $R'(x) = 200 - 20x = 0$ gives $x = 10$: a price of \\$30, with $300$ tickets sold, for \\$9,000."
+      }
+    ]
+  },
+  "m31-7-1-d": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 4: The Can That Uses the Least Metal",
+    "duration": 324,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The problem",
+        "t": 22.179
+      },
+      {
+        "title": "The metal",
+        "t": 51.41
+      },
+      {
+        "title": "One variable",
+        "t": 86.984
+      },
+      {
+        "title": "Find the minimum",
+        "t": 125.607
+      },
+      {
+        "title": "The height",
+        "t": 190.683
+      },
+      {
+        "title": "Your turn",
+        "t": 236.352
+      },
+      {
+        "title": "Summary",
+        "t": 289.095
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1-d:q",
+        "t": 247.733,
+        "prompt": "A closed cylindrical can must hold $1{,}000$ cm³. Which radius uses the least metal?",
+        "choices": [
+          "$2.71$ cm",
+          "$6.83$ cm",
+          "$5.42$ cm",
+          "$10.84$ cm"
+        ],
+        "answer": 2,
+        "working": "$S(r) = 2\\pi r^2 + \\dfrac{2{,}000}{r}$, so $S'(r) = 4\\pi r - \\dfrac{2{,}000}{r^2} = 0$ gives $r^3 = \\dfrac{500}{\\pi}$ and $r \\approx 5.42$ cm. The height is $2r \\approx 10.84$ cm."
+      }
+    ]
+  },
+  "m31-7-1-e": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 5: Shortest Distance and Fastest Route",
+    "duration": 412,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Minimize the square",
+        "t": 22.079
+      },
+      {
+        "title": "The closest point",
+        "t": 56.157
+      },
+      {
+        "title": "Swim, then run",
+        "t": 130.333
+      },
+      {
+        "title": "The time",
+        "t": 189.541
+      },
+      {
+        "title": "Check the endpoints",
+        "t": 259.236
+      },
+      {
+        "title": "Your turn",
+        "t": 332.21
+      },
+      {
+        "title": "Summary",
+        "t": 378.004
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1-e:q",
+        "t": 342.078,
+        "prompt": "Which point on the curve $y = \\sqrt{x}$ is closest to the point $(5, 0)$?",
+        "choices": [
+          "$(5, \\sqrt{5})$",
+          "$(4, 2)$",
+          "$(2.5, \\sqrt{2.5})$",
+          "$(4.5, \\sqrt{4.5})$"
+        ],
+        "answer": 3,
+        "working": "$D^2 = (x - 5)^2 + x$, so $2(x - 5) + 1 = 0$ and $x = 4.5$. There $D^2 = 0.25 + 4.5 = 4.75$, less than the $5$ at $x = 4$ or $x = 5$."
+      }
+    ]
+  },
+  "m31-7-2": {
+    "lessonId": "m31-7-2",
+    "title": "Related Rates, Part 1: Rates Linked by an Equation",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Everything depends on time",
+        "t": 35.338
+      },
+      {
+        "title": "Related rates",
+        "t": 84.441
+      },
+      {
+        "title": "A spreading ripple",
+        "t": 114.118
+      },
+      {
+        "title": "Why two pi r?",
+        "t": 177.761
+      },
+      {
+        "title": "Your turn",
+        "t": 232.34
+      },
+      {
+        "title": "Summary",
+        "t": 279.923
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-2:q",
+        "t": 245.416,
+        "prompt": "The radius of a circular oil spill grows at $2$ m/min. How fast is its area growing when the radius is $40$ m?",
+        "choices": [
+          "$80\\pi$ m²/min",
+          "$160\\pi$ m²/min",
+          "$1{,}600\\pi$ m²/min",
+          "$4\\pi$ m²/min"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{dA}{dt} = 2\\pi r\\,\\dfrac{dr}{dt} = 2\\pi(40)(2) = 160\\pi \\approx 503$ m²/min."
+      }
+    ]
+  },
+  "m31-7-2-b": {
+    "lessonId": "m31-7-2",
+    "title": "Related Rates, Part 2: A Strategy and a Sliding Ladder",
+    "duration": 358,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A strategy",
+        "t": 22.726
+      },
+      {
+        "title": "A sliding ladder",
+        "t": 68.47
+      },
+      {
+        "title": "Differentiate, then substitute",
+        "t": 127.803
+      },
+      {
+        "title": "Answer in words",
+        "t": 186.879
+      },
+      {
+        "title": "Watch out",
+        "t": 224.824
+      },
+      {
+        "title": "Your turn",
+        "t": 265.619
+      },
+      {
+        "title": "Summary",
+        "t": 326.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-2-b:q",
+        "t": 282.264,
+        "prompt": "A $13$ m ladder leans against a wall. Its foot slides away from the wall at $1$ m/s. How fast is the top sliding down when the foot is $5$ m from the wall?",
+        "choices": [
+          "$2.4$ m/s",
+          "$0$ m/s",
+          "$\\dfrac{5}{12} \\approx 0.42$ m/s",
+          "$1$ m/s"
+        ],
+        "answer": 2,
+        "working": "$x^2 + y^2 = 169$, so $2x\\dfrac{dx}{dt} + 2y\\dfrac{dy}{dt} = 0$. At $x = 5$, $y = 12$: $10 + 24\\dfrac{dy}{dt} = 0$, so $\\dfrac{dy}{dt} = -\\dfrac{5}{12}$."
+      }
+    ]
+  },
+  "m31-7-2-c": {
+    "lessonId": "m31-7-2",
+    "title": "Related Rates, Part 3: Similar Triangles, a Shadow and a Tank",
+    "duration": 389,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A lengthening shadow",
+        "t": 23.446
+      },
+      {
+        "title": "Similar triangles",
+        "t": 61.092
+      },
+      {
+        "title": "The answer",
+        "t": 128.362
+      },
+      {
+        "title": "Filling a conical tank",
+        "t": 155.354
+      },
+      {
+        "title": "Eliminate, then differentiate",
+        "t": 212.68
+      },
+      {
+        "title": "Your turn",
+        "t": 282.008
+      },
+      {
+        "title": "Summary",
+        "t": 349.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-2-c:q",
+        "t": 300.76,
+        "prompt": "A conical tank, vertex down, has a top radius of $3$ m and a height of $6$ m. Water flows in at $4$ m³/min. How fast is the level rising when the water is $2$ m deep?",
+        "choices": [
+          "$\\dfrac{4}{\\pi}$ m/min",
+          "$\\dfrac{1}{4\\pi}$ m/min",
+          "$\\dfrac{2}{\\pi}$ m/min",
+          "$\\pi$ m/min"
+        ],
+        "answer": 0,
+        "working": "$r = \\dfrac{h}{2}$, so $V = \\dfrac{\\pi}{12}h^3$ and $\\dfrac{dV}{dt} = \\dfrac{\\pi}{4}h^2\\dfrac{dh}{dt}$. Then $4 = \\dfrac{\\pi}{4}(4)\\dfrac{dh}{dt}$, so $\\dfrac{dh}{dt} = \\dfrac{4}{\\pi} \\approx 1.27$ m/min."
+      }
+    ]
+  },
+  "m31-7-2-d": {
+    "lessonId": "m31-7-2",
+    "title": "Related Rates, Part 4: Moving Cars and Changing Angles",
+    "duration": 391,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cars moving apart",
+        "t": 25.516
+      },
+      {
+        "title": "Differentiate and substitute",
+        "t": 72.912
+      },
+      {
+        "title": "Toward the intersection",
+        "t": 123.828
+      },
+      {
+        "title": "A rising balloon",
+        "t": 155.893
+      },
+      {
+        "title": "How fast the angle changes",
+        "t": 198.364
+      },
+      {
+        "title": "Watch out",
+        "t": 263.984
+      },
+      {
+        "title": "Your turn",
+        "t": 295.212
+      },
+      {
+        "title": "Summary",
+        "t": 356.487
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-2-d:q",
+        "t": 315.037,
+        "prompt": "Car A is $6$ km north of an intersection, driving **toward** it at $50$ km/h. Car B is $8$ km east, driving away at $60$ km/h. How is the distance between them changing?",
+        "choices": [
+          "Increasing at $78$ km/h",
+          "Decreasing at $18$ km/h",
+          "Increasing at $18$ km/h",
+          "Increasing at $110$ km/h"
+        ],
+        "answer": 2,
+        "working": "$10\\dfrac{dD}{dt} = 6(-50) + 8(60) = -300 + 480 = 180$, so $\\dfrac{dD}{dt} = 18$ km/h, positive: the distance is increasing."
+      }
+    ]
+  },
+  "m31-8-1": {
+    "lessonId": "m31-8-1",
+    "title": "Antiderivatives, Part 1: Undoing a Derivative",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backwards",
+        "t": 32.714
+      },
+      {
+        "title": "Antiderivatives",
+        "t": 78.659
+      },
+      {
+        "title": "A family of curves",
+        "t": 133.783
+      },
+      {
+        "title": "Always check",
+        "t": 189.976
+      },
+      {
+        "title": "Your turn",
+        "t": 224.837
+      },
+      {
+        "title": "Summary",
+        "t": 264.036
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-1:q",
+        "t": 232.457,
+        "prompt": "Which function is an antiderivative of $3x^2$?",
+        "choices": [
+          "$6x$",
+          "$x^3 + 3x$",
+          "$3x^3$",
+          "$x^3 - 7$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{d}{dx}\\left(x^3 - 7\\right) = 3x^2$. The others differentiate to $6$, $3x^2 + 3$ and $9x^2$."
+      }
+    ]
+  },
+  "m31-8-1-b": {
+    "lessonId": "m31-8-1",
+    "title": "Antiderivatives, Part 2: The Power Rule in Reverse",
+    "duration": 354,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Raise the power, divide",
+        "t": 23.783
+      },
+      {
+        "title": "Constants and sums",
+        "t": 81.507
+      },
+      {
+        "title": "A polynomial",
+        "t": 105.359
+      },
+      {
+        "title": "Roots and negative powers",
+        "t": 160.594
+      },
+      {
+        "title": "Watch out",
+        "t": 225.841
+      },
+      {
+        "title": "Your turn",
+        "t": 269.453
+      },
+      {
+        "title": "Summary",
+        "t": 317.779
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-1-b:q",
+        "t": 278.409,
+        "prompt": "Find $\\displaystyle\\int (4x^3 - 6x + 2)\\,dx$.",
+        "choices": [
+          "$12x^2 - 6 + C$",
+          "$x^4 - 3x^2 + 2x + C$",
+          "$4x^4 - 6x^2 + 2x + C$",
+          "$x^4 - 3x^2 + C$"
+        ],
+        "answer": 1,
+        "working": "$4\\cdot\\dfrac{x^4}{4} = x^4$, $-6\\cdot\\dfrac{x^2}{2} = -3x^2$ and $\\int 2\\,dx = 2x$. Check: $\\dfrac{d}{dx}\\left(x^4 - 3x^2 + 2x\\right) = 4x^3 - 6x + 2$."
+      }
+    ]
+  },
+  "m31-8-1-c": {
+    "lessonId": "m31-8-1",
+    "title": "Antiderivatives, Part 3: Trigonometric, Exponential and 1/x",
+    "duration": 321,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Read the rules backwards",
+        "t": 18.553
+      },
+      {
+        "title": "One over x",
+        "t": 62.666
+      },
+      {
+        "title": "Mixed terms",
+        "t": 111.5
+      },
+      {
+        "title": "Rewrite first",
+        "t": 157.215
+      },
+      {
+        "title": "Watch out",
+        "t": 199.038
+      },
+      {
+        "title": "Your turn",
+        "t": 234.037
+      },
+      {
+        "title": "Summary",
+        "t": 278.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-1-c:q",
+        "t": 243.701,
+        "prompt": "Find $\\displaystyle\\int \\left(2\\sin x + \\frac{3}{x}\\right)dx$ for $x > 0$.",
+        "choices": [
+          "$-2\\cos x + 3\\ln x + C$",
+          "$2\\cos x + 3\\ln x + C$",
+          "$-2\\cos x - \\dfrac{3}{x^2} + C$",
+          "$2\\cos x - \\dfrac{3}{x^2} + C$"
+        ],
+        "answer": 0,
+        "working": "$\\int 2\\sin x\\,dx = -2\\cos x$ and $\\int \\dfrac{3}{x}\\,dx = 3\\ln x$. Check: $\\dfrac{d}{dx}\\left(-2\\cos x + 3\\ln x\\right) = 2\\sin x + \\dfrac{3}{x}$."
+      }
+    ]
+  },
+  "m31-8-1-d": {
+    "lessonId": "m31-8-1",
+    "title": "Antiderivatives, Part 4: Initial-Value Problems and Motion",
+    "duration": 310,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One value pins down C",
+        "t": 22.058
+      },
+      {
+        "title": "Using an initial condition",
+        "t": 46.704
+      },
+      {
+        "title": "From acceleration to position",
+        "t": 106.402
+      },
+      {
+        "title": "A ball thrown upward",
+        "t": 141.206
+      },
+      {
+        "title": "Your turn",
+        "t": 232.153
+      },
+      {
+        "title": "Summary",
+        "t": 277.611
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-1-d:q",
+        "t": 244.139,
+        "prompt": "Find $f(x)$ given $f'(x) = 6x^2 + 2$ and $f(1) = 9$.",
+        "choices": [
+          "$2x^3 + 2x + 9$",
+          "$12x + 5$",
+          "$6x^3 + 2x + 1$",
+          "$2x^3 + 2x + 5$"
+        ],
+        "answer": 3,
+        "working": "$f(x) = 2x^3 + 2x + C$, and $f(1) = 2 + 2 + C = 9$, so $C = 5$."
+      }
+    ]
+  },
+  "m31-8-2": {
+    "lessonId": "m31-8-2",
+    "title": "Riemann Sums and Area, Part 1: Left and Right Sums",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Area under a rate graph",
+        "t": 22.823
+      },
+      {
+        "title": "Riemann sums",
+        "t": 68.839
+      },
+      {
+        "title": "A left sum",
+        "t": 120.836
+      },
+      {
+        "title": "A right sum",
+        "t": 191.745
+      },
+      {
+        "title": "Watch out",
+        "t": 240.045
+      },
+      {
+        "title": "Your turn",
+        "t": 268.406
+      },
+      {
+        "title": "Summary",
+        "t": 311.042
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-2:q",
+        "t": 280.418,
+        "prompt": "Estimate the area under $f(x) = x^2$ on $[0, 4]$ with a **right** sum and $n = 4$.",
+        "choices": [
+          "$30$",
+          "$14$",
+          "$21.3$",
+          "$60$"
+        ],
+        "answer": 0,
+        "working": "$\\Delta x = 1$, and the right ends $1, 2, 3, 4$ give heights $1, 4, 9, 16$: $R_4 = 1(1 + 4 + 9 + 16) = 30$."
+      }
+    ]
+  },
+  "m31-8-2-b": {
+    "lessonId": "m31-8-2",
+    "title": "Riemann Sums and Area, Part 2: Midpoints and the Definite Integral",
+    "duration": 314,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Midpoint sums",
+        "t": 23.19
+      },
+      {
+        "title": "Too high or too low?",
+        "t": 92.597
+      },
+      {
+        "title": "Thinner rectangles",
+        "t": 135.193
+      },
+      {
+        "title": "The definite integral",
+        "t": 183.272
+      },
+      {
+        "title": "Your turn",
+        "t": 235.24
+      },
+      {
+        "title": "Summary",
+        "t": 276.377
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-2-b:q",
+        "t": 245.451,
+        "prompt": "For $f(x) = 9 - x^2$ on $[0, 3]$, which statement is true?",
+        "choices": [
+          "$L_n$ is an underestimate and $R_n$ an overestimate.",
+          "Both $L_n$ and $R_n$ are overestimates.",
+          "$L_n$ is an overestimate and $R_n$ an underestimate.",
+          "Both $L_n$ and $R_n$ are underestimates."
+        ],
+        "answer": 2,
+        "working": "On $[0, 3]$, $f$ decreases from $9$ to $0$, so each left end is the highest point of its subinterval and each right end the lowest."
+      }
+    ]
+  },
+  "m31-8-2-c": {
+    "lessonId": "m31-8-2",
+    "title": "Riemann Sums and Area, Part 3: Sums from Data",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Measured rates",
+        "t": 22.367
+      },
+      {
+        "title": "A left sum",
+        "t": 49.77
+      },
+      {
+        "title": "A right sum",
+        "t": 81.189
+      },
+      {
+        "title": "Units",
+        "t": 115.303
+      },
+      {
+        "title": "Your turn",
+        "t": 141.808
+      },
+      {
+        "title": "Summary",
+        "t": 199.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-2-c:q",
+        "t": 160.661,
+        "prompt": "Water flows into a tank at $40$, $36$, $30$, $22$ and $12$ L/min, measured at $t = 0$, $5$, $10$, $15$ and $20$ min. Estimate the water added in the $20$ minutes with a **left** sum.",
+        "choices": [
+          "$500$ L",
+          "$640$ L",
+          "$700$ L",
+          "$128$ L"
+        ],
+        "answer": 1,
+        "working": "$\\Delta t = 5$, so $L_4 = 5(40 + 36 + 30 + 22) = 5(128) = 640$ L. The rate is decreasing, so this is an overestimate."
+      }
+    ]
+  },
+  "m31-8-3": {
+    "lessonId": "m31-8-3",
+    "title": "The Fundamental Theorem of Calculus, Part 1: Net Area and the Theorem",
+    "duration": 361,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Net area",
+        "t": 34.059
+      },
+      {
+        "title": "The theorem",
+        "t": 100.305
+      },
+      {
+        "title": "Why it works",
+        "t": 137.985
+      },
+      {
+        "title": "Using the theorem",
+        "t": 203.108
+      },
+      {
+        "title": "Back to the rectangles",
+        "t": 243.332
+      },
+      {
+        "title": "Your turn",
+        "t": 279.305
+      },
+      {
+        "title": "Summary",
+        "t": 318.252
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-3:q",
+        "t": 288.341,
+        "prompt": "Evaluate $\\displaystyle\\int_1^3 (2x + 1)\\,dx$.",
+        "choices": [
+          "$10$",
+          "$12$",
+          "$14$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "$F(x) = x^2 + x$, so $F(3) - F(1) = 12 - 2 = 10$."
+      }
+    ]
+  },
+  "m31-8-3-b": {
+    "lessonId": "m31-8-3",
+    "title": "The Fundamental Theorem of Calculus, Part 2: Evaluating and Properties",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Under a sine arch",
+        "t": 22.42
+      },
+      {
+        "title": "One over x",
+        "t": 70.607
+      },
+      {
+        "title": "Watch out",
+        "t": 99.881
+      },
+      {
+        "title": "Properties",
+        "t": 142.68
+      },
+      {
+        "title": "Using the properties",
+        "t": 186.053
+      },
+      {
+        "title": "Your turn",
+        "t": 234.883
+      },
+      {
+        "title": "Summary",
+        "t": 283.302
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-3-b:q",
+        "t": 248.774,
+        "prompt": "Given $\\int_0^5 f(x)\\,dx = 8$ and $\\int_0^2 f(x)\\,dx = 3$, find $\\int_5^2 f(x)\\,dx$.",
+        "choices": [
+          "$5$",
+          "$11$",
+          "$-11$",
+          "$-5$"
+        ],
+        "answer": 3,
+        "working": "$\\int_2^5 f(x)\\,dx = 8 - 3 = 5$, and reversing the limits changes the sign: $\\int_5^2 f(x)\\,dx = -5$."
+      }
+    ]
+  },
+  "m31-8-3-c": {
+    "lessonId": "m31-8-3",
+    "title": "The Fundamental Theorem of Calculus, Part 3: Net Area, Total Area and Average Value",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Net area or total area",
+        "t": 24.342
+      },
+      {
+        "title": "Displacement and distance",
+        "t": 98.19
+      },
+      {
+        "title": "Average value",
+        "t": 138.137
+      },
+      {
+        "title": "Average velocity",
+        "t": 183.796
+      },
+      {
+        "title": "Your turn",
+        "t": 227.721
+      },
+      {
+        "title": "Summary",
+        "t": 271.296
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-3-c:q",
+        "t": 237.615,
+        "prompt": "Find the average value of $f(x) = 3x^2$ on $[0, 2]$.",
+        "choices": [
+          "$8$",
+          "$4$",
+          "$6$",
+          "$12$"
+        ],
+        "answer": 1,
+        "working": "$\\int_0^2 3x^2\\,dx = \\Big[x^3\\Big]_0^2 = 8$, and $f_{\\text{avg}} = \\dfrac{8}{2 - 0} = 4$."
+      }
+    ]
+  },
+  "m31-8-4": {
+    "lessonId": "m31-8-4",
+    "title": "Integration by Substitution, Part 1: Reversing the Chain Rule",
+    "duration": 380,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reversing the chain rule",
+        "t": 30.348
+      },
+      {
+        "title": "The substitution rule",
+        "t": 87.479
+      },
+      {
+        "title": "The method",
+        "t": 118.948
+      },
+      {
+        "title": "What to try for u",
+        "t": 156.127
+      },
+      {
+        "title": "Adjusting a constant",
+        "t": 213.224
+      },
+      {
+        "title": "Watch out",
+        "t": 269.34
+      },
+      {
+        "title": "Your turn",
+        "t": 296.749
+      },
+      {
+        "title": "Summary",
+        "t": 343.694
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-4:q",
+        "t": 306.197,
+        "prompt": "Find $\\displaystyle\\int 2x(x^2 + 5)^3\\,dx$.",
+        "choices": [
+          "$\\dfrac{(x^2 + 5)^4}{8} + C$",
+          "$(x^2 + 5)^4 + C$",
+          "$\\dfrac{(x^2 + 5)^4}{4} + C$",
+          "$\\dfrac{x^2(x^2 + 5)^4}{4} + C$"
+        ],
+        "answer": 2,
+        "working": "$u = x^2 + 5$ and $du = 2x\\,dx$, so the integral is $\\int u^3\\,du = \\dfrac{u^4}{4} + C = \\dfrac{(x^2 + 5)^4}{4} + C$."
+      }
+    ]
+  },
+  "m31-8-4-b": {
+    "lessonId": "m31-8-4",
+    "title": "Integration by Substitution, Part 2: Exponentials, Logarithms and Trigonometry",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exponentials",
+        "t": 23.544
+      },
+      {
+        "title": "A logarithm and a sine",
+        "t": 78.89
+      },
+      {
+        "title": "With an initial condition",
+        "t": 142.436
+      },
+      {
+        "title": "Your turn",
+        "t": 204.588
+      },
+      {
+        "title": "Summary",
+        "t": 249.963
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-4-b:q",
+        "t": 212.728,
+        "prompt": "Find $\\displaystyle\\int x^2 e^{x^3}\\,dx$.",
+        "choices": [
+          "$\\dfrac{1}{3}e^{x^3} + C$",
+          "$3e^{x^3} + C$",
+          "$\\dfrac{1}{3}x^3 e^{x^3} + C$",
+          "$e^{x^3} + C$"
+        ],
+        "answer": 0,
+        "working": "$u = x^3$ and $du = 3x^2\\,dx$, so $x^2\\,dx = \\tfrac{1}{3}\\,du$ and the integral is $\\tfrac{1}{3}\\int e^u\\,du = \\tfrac{1}{3}e^{x^3} + C$."
+      }
+    ]
+  },
+  "m31-8-4-c": {
+    "lessonId": "m31-8-4",
+    "title": "Integration by Substitution, Part 3: Definite Integrals and New Limits",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Changing the limits",
+        "t": 21.1
+      },
+      {
+        "title": "Watch out",
+        "t": 88.171
+      },
+      {
+        "title": "Distance from a velocity",
+        "t": 121.525
+      },
+      {
+        "title": "Your turn",
+        "t": 189.715
+      },
+      {
+        "title": "Summary",
+        "t": 240.149
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-4-c:q",
+        "t": 200.829,
+        "prompt": "Evaluate $\\displaystyle\\int_0^2 2x(x^2 + 1)^3\\,dx$.",
+        "choices": [
+          "$4$",
+          "$\\dfrac{625}{4}$",
+          "$156$",
+          "$312$"
+        ],
+        "answer": 2,
+        "working": "$u = x^2 + 1$, $du = 2x\\,dx$; the limits become $1$ and $5$. $\\int_1^5 u^3\\,du = \\Big[\\dfrac{u^4}{4}\\Big]_1^5 = \\dfrac{625 - 1}{4} = 156$."
+      }
+    ]
+  },
+  "m31-9-1": {
+    "lessonId": "m31-9-1",
+    "title": "Area Between Curves, Part 1: Upper Curve Minus Lower Curve",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A thin strip",
+        "t": 24.658
+      },
+      {
+        "title": "Upper minus lower",
+        "t": 77.716
+      },
+      {
+        "title": "Which curve is on top?",
+        "t": 120.951
+      },
+      {
+        "title": "The integral",
+        "t": 165.262
+      },
+      {
+        "title": "Your turn",
+        "t": 207.738
+      },
+      {
+        "title": "Summary",
+        "t": 258.785
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-1:q",
+        "t": 221.773,
+        "prompt": "Find the area of the region between $y = x^2 + 4$ and $y = 2x$ from $x = 0$ to $x = 3$.",
+        "choices": [
+          "$21$",
+          "$30$",
+          "$-12$",
+          "$12$"
+        ],
+        "answer": 3,
+        "working": "$x^2 + 4 - 2x = (x - 1)^2 + 3 > 0$, so the parabola is on top: $\\int_0^3 (x^2 - 2x + 4)\\,dx = \\Big[\\dfrac{x^3}{3} - x^2 + 4x\\Big]_0^3 = 9 - 9 + 12 = 12$."
+      }
+    ]
+  },
+  "m31-9-1-b": {
+    "lessonId": "m31-9-1",
+    "title": "Area Between Curves, Part 2: Finding the Limits",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the curves meet",
+        "t": 22.369
+      },
+      {
+        "title": "Which is on top?",
+        "t": 69.314
+      },
+      {
+        "title": "The area",
+        "t": 96.292
+      },
+      {
+        "title": "Watch out",
+        "t": 141.66
+      },
+      {
+        "title": "Your turn",
+        "t": 169.407
+      },
+      {
+        "title": "Summary",
+        "t": 219.811
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-1-b:q",
+        "t": 180.173,
+        "prompt": "Find the area of the region enclosed by $y = x^2$ and $y = x + 2$.",
+        "choices": [
+          "$-\\dfrac{15}{2}$",
+          "$\\dfrac{9}{2}$",
+          "$-\\dfrac{9}{2}$",
+          "$\\dfrac{10}{3}$"
+        ],
+        "answer": 1,
+        "working": "$x^2 = x + 2$ gives $x = -1$ or $x = 2$, and the line is on top: $\\int_{-1}^{2} (x + 2 - x^2)\\,dx = \\dfrac{10}{3} - \\left(-\\dfrac{7}{6}\\right) = \\dfrac{9}{2}$."
+      }
+    ]
+  },
+  "m31-9-1-c": {
+    "lessonId": "m31-9-1",
+    "title": "Area Between Curves, Part 3: When the Curves Cross",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two regions",
+        "t": 20.719
+      },
+      {
+        "title": "Split at the crossing",
+        "t": 50.582
+      },
+      {
+        "title": "Watch out",
+        "t": 115.833
+      },
+      {
+        "title": "Your turn",
+        "t": 149.473
+      },
+      {
+        "title": "Summary",
+        "t": 197.279
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-1-c:q",
+        "t": 159.634,
+        "prompt": "Find the total area enclosed by $y = x^3$ and $y = 4x$.",
+        "choices": [
+          "$0$",
+          "$4$",
+          "$16$",
+          "$8$"
+        ],
+        "answer": 3,
+        "working": "$x^3 = 4x$ gives $x = -2, 0, 2$. $\\int_0^2 (4x - x^3)\\,dx = 8 - 4 = 4$, and the left region also has area $4$, so the total is $8$."
+      }
+    ]
+  },
+  "m31-9-1-d": {
+    "lessonId": "m31-9-1",
+    "title": "Area Between Curves, Part 4: Integrating with Respect to y",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Horizontal strips",
+        "t": 20.541
+      },
+      {
+        "title": "Limits and the right curve",
+        "t": 69.052
+      },
+      {
+        "title": "The area",
+        "t": 111.711
+      },
+      {
+        "title": "Why not vertical strips?",
+        "t": 152.185
+      },
+      {
+        "title": "Your turn",
+        "t": 191.784
+      },
+      {
+        "title": "Summary",
+        "t": 242.807
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-1-d:q",
+        "t": 201.921,
+        "prompt": "Find the area of the region enclosed by $x = y^2$ and $x = 4$.",
+        "choices": [
+          "$\\dfrac{32}{3}$",
+          "$\\dfrac{16}{3}$",
+          "$16$",
+          "$\\dfrac{64}{3}$"
+        ],
+        "answer": 0,
+        "working": "The curves meet at $y = -2$ and $y = 2$, and $x = 4$ is on the right: $\\int_{-2}^{2} (4 - y^2)\\,dy = \\Big[4y - \\dfrac{y^3}{3}\\Big]_{-2}^{2} = \\dfrac{16}{3} + \\dfrac{16}{3} = \\dfrac{32}{3}$."
+      }
+    ]
+  },
+  "m31-9-2": {
+    "lessonId": "m31-9-2",
+    "title": "Volumes of Revolution, Part 1: Slicing into Discs",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A solid of revolution",
+        "t": 21.376
+      },
+      {
+        "title": "One slice",
+        "t": 59.645
+      },
+      {
+        "title": "The disc method",
+        "t": 100.295
+      },
+      {
+        "title": "A disc integral",
+        "t": 134.3
+      },
+      {
+        "title": "Your turn",
+        "t": 179.921
+      },
+      {
+        "title": "Summary",
+        "t": 228.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-2:q",
+        "t": 192.83,
+        "prompt": "The region under $y = x^2$ from $x = 0$ to $x = 1$ is rotated about the $x$-axis. Find the volume.",
+        "choices": [
+          "$\\dfrac{\\pi}{3}$",
+          "$\\dfrac{1}{5}$",
+          "$\\dfrac{\\pi}{5}$",
+          "$\\dfrac{2\\pi}{5}$"
+        ],
+        "answer": 2,
+        "working": "$V = \\pi\\int_0^1 \\left(x^2\\right)^2 dx = \\pi\\int_0^1 x^4\\,dx = \\pi\\Big[\\dfrac{x^5}{5}\\Big]_0^1 = \\dfrac{\\pi}{5}$."
+      }
+    ]
+  },
+  "m31-9-2-b": {
+    "lessonId": "m31-9-2",
+    "title": "Volumes of Revolution, Part 2: A Cone and a Sphere",
+    "duration": 304,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A cone",
+        "t": 19.254
+      },
+      {
+        "title": "A sphere",
+        "t": 76.909
+      },
+      {
+        "title": "A cone with numbers",
+        "t": 137.591
+      },
+      {
+        "title": "Watch out",
+        "t": 191.309
+      },
+      {
+        "title": "Your turn",
+        "t": 221.664
+      },
+      {
+        "title": "Summary",
+        "t": 274.38
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-2-b:q",
+        "t": 234.55,
+        "prompt": "The region under $y = 3x$ from $x = 0$ to $x = 2$ is rotated about the $x$-axis. Find the volume.",
+        "choices": [
+          "$6\\pi$",
+          "$24\\pi$",
+          "$72\\pi$",
+          "$12\\pi$"
+        ],
+        "answer": 1,
+        "working": "$V = \\pi\\int_0^2 9x^2\\,dx = \\pi\\Big[3x^3\\Big]_0^2 = 24\\pi$. Check: a cone of radius $6$ and height $2$ has $\\tfrac{1}{3}\\pi(36)(2) = 24\\pi$."
+      }
+    ]
+  },
+  "m31-9-2-c": {
+    "lessonId": "m31-9-2",
+    "title": "Volumes of Revolution, Part 3: Rotating About the y-Axis",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Slicing across the y-axis",
+        "t": 23.301
+      },
+      {
+        "title": "Solve for x first",
+        "t": 82.22
+      },
+      {
+        "title": "The same solid",
+        "t": 130.385
+      },
+      {
+        "title": "Your turn",
+        "t": 172.715
+      },
+      {
+        "title": "Summary",
+        "t": 216.836
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-2-c:q",
+        "t": 187.444,
+        "prompt": "The first-quadrant region bounded by $y = x^2$, the $y$-axis and $y = 9$ is rotated about the $y$-axis. Find the volume.",
+        "choices": [
+          "$\\dfrac{81\\pi}{2}$",
+          "$\\dfrac{243\\pi}{5}$",
+          "$18\\pi$",
+          "$81\\pi$"
+        ],
+        "answer": 0,
+        "working": "$x = \\sqrt{y}$, so $V = \\pi\\int_0^9 y\\,dy = \\pi\\Big[\\dfrac{y^2}{2}\\Big]_0^9 = \\dfrac{81\\pi}{2}$."
+      }
+    ]
+  },
+  "m31-9-2-d": {
+    "lessonId": "m31-9-2",
+    "title": "Volumes of Revolution, Part 4: Washers",
+    "duration": 364,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A disc with a hole",
+        "t": 23.738
+      },
+      {
+        "title": "The washer method",
+        "t": 54.801
+      },
+      {
+        "title": "Between two curves",
+        "t": 116.787
+      },
+      {
+        "title": "Watch out",
+        "t": 168.738
+      },
+      {
+        "title": "Another axis",
+        "t": 208.953
+      },
+      {
+        "title": "Your turn",
+        "t": 279.994
+      },
+      {
+        "title": "Summary",
+        "t": 329.736
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-2-d:q",
+        "t": 292.577,
+        "prompt": "The region between $y = 2x$ and $y = x^2$ is rotated about the $x$-axis. Find the volume.",
+        "choices": [
+          "$\\dfrac{16\\pi}{15}$",
+          "$\\dfrac{32\\pi}{3}$",
+          "$\\dfrac{4\\pi}{3}$",
+          "$\\dfrac{64\\pi}{15}$"
+        ],
+        "answer": 3,
+        "working": "They meet at $x = 0$ and $x = 2$, with $R = 2x$ and $r = x^2$: $\\pi\\int_0^2 (4x^2 - x^4)\\,dx = \\pi\\left(\\dfrac{32}{3} - \\dfrac{32}{5}\\right) = \\dfrac{64\\pi}{15}$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
