@@ -4020,6 +4020,53 @@
       }
     ]
   },
+  "m5-10-2": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 1: The Area of a Rectangle",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rows of squares",
+        "t": 17.861
+      },
+      {
+        "title": "The rule",
+        "t": 58.117
+      },
+      {
+        "title": "A community garden",
+        "t": 91.548
+      },
+      {
+        "title": "Your turn",
+        "t": 138.081
+      },
+      {
+        "title": "Summary",
+        "t": 168.971
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2:q",
+        "t": 148.268,
+        "prompt": "A classroom rug is a rectangle $4\\text{ m}$ long and $3\\text{ m}$ wide. What is its area?",
+        "choices": [
+          "$7\\text{ m}^2$",
+          "$14\\text{ m}$",
+          "$12\\text{ m}$",
+          "$12\\text{ m}^2$"
+        ],
+        "answer": 3,
+        "working": "Area $=$ length $\\times$ width $= 4 \\times 3 = 12$, so the area is $12\\text{ m}^2$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
