@@ -4070,7 +4070,7 @@
   "m5-10-2-b": {
     "lessonId": "m5-10-2",
     "title": "Area and Perimeter of Rectangles, Part 2: Finding a Missing Side",
-    "duration": 205,
+    "duration": 207,
     "voice": "af_heart",
     "chapters": [
       {
@@ -4087,21 +4087,21 @@
       },
       {
         "title": "Check by multiplying",
-        "t": 115.02
+        "t": 115.898
       },
       {
         "title": "Your turn",
-        "t": 146.563
+        "t": 147.441
       },
       {
         "title": "Summary",
-        "t": 181.705
+        "t": 182.583
       }
     ],
     "cues": [
       {
         "id": "m5-10-2-b:q",
-        "t": 158.776,
+        "t": 159.654,
         "prompt": "A rectangular poster has an area of $72\\text{ cm}^2$. It is $8\\text{ cm}$ wide. How long is it?",
         "choices": [
           "$64\\text{ cm}$",
