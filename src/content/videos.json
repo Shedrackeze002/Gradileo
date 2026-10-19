@@ -4161,6 +4161,53 @@
       }
     ]
   },
+  "m5-10-2-d": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 4: Same Area, Different Perimeters",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four rectangles",
+        "t": 18.044
+      },
+      {
+        "title": "Comparing perimeters",
+        "t": 58.366
+      },
+      {
+        "title": "The square wins",
+        "t": 98.763
+      },
+      {
+        "title": "Your turn",
+        "t": 153.466
+      },
+      {
+        "title": "Summary",
+        "t": 187.301
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2-d:q",
+        "t": 164.149,
+        "prompt": "Each rectangle has an area of $16\\text{ m}^2$. Which one uses the **least** fencing?",
+        "choices": [
+          "$16\\text{ m}$ by $1\\text{ m}$",
+          "$4\\text{ m}$ by $4\\text{ m}$",
+          "$8\\text{ m}$ by $2\\text{ m}$",
+          "They all use the same."
+        ],
+        "answer": 1,
+        "working": "The perimeters are $34\\text{ m}$, $16\\text{ m}$ and $20\\text{ m}$. The square, $4\\text{ m}$ by $4\\text{ m}$, uses the least."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
