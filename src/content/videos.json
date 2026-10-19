@@ -8665,6 +8665,53 @@
       }
     ]
   },
+  "m31-6-4-e": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 5: Displacement and Total Distance",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two different measures",
+        "t": 21.662
+      },
+      {
+        "title": "Out and back",
+        "t": 50.768
+      },
+      {
+        "title": "The answer",
+        "t": 104.19
+      },
+      {
+        "title": "Your turn",
+        "t": 145.28
+      },
+      {
+        "title": "Summary",
+        "t": 195.218
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4-e:q",
+        "t": 162.62,
+        "prompt": "A particle has position $s(t) = t^{2} - 8t + 3$ metres after $t$ seconds. Find its displacement and the total distance it travels from $t = 0$ to $t = 6$.",
+        "choices": [
+          "Displacement $12$ m, distance $20$ m",
+          "Displacement $-12$ m, distance $12$ m",
+          "Displacement $-12$ m, distance $20$ m",
+          "Displacement $-9$ m, distance $20$ m"
+        ],
+        "answer": 2,
+        "working": "It turns around when $v(t) = 2t - 8 = 0$, at $t = 4$. $s(0) = 3$, $s(4) = -13$, $s(6) = -9$. Displacement: $-9 - 3 = -12$ m. Distance: $16 + 4 = 20$ m."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
