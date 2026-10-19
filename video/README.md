@@ -213,7 +213,7 @@ Lessons learned while scripting (the script check does not catch these):
 - Break long maths over several lines (or narrow `leftWidth`) so it fits its column; give a
   crowded figure its own scene.
 - The voice blurs a few phrases into other words: "In proofs" (heard as "Improves"), "Congruent
-  figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "halve" ("have"), "made to look huge" ("made to a huge"; "made to seem huge" is clear), "A lease" at the start of a sentence ("Elise"; "A vehicle lease" or "Every lease" is clear), "a Sudoku" ("pseudo-ku"; "Sudoku puzzles" or "In Sudoku" is clear), "Maya leases" ("Maya Lisa's"), "is x itself" before more words ("is exit self"; "is just the value of x" is clear), "antidifferentiate" after a full stop or a comma ("and to differentiate", the opposite; "find the antiderivative" is clear), "The sign is wrong" next to "sine" (sign and sine sound the same; "is missing a negative" is clear), "its slices are" ("it slices our"; "each slice is" is clear), an acronym with 's ("SUV's" is read as the word "suvs"; "the SUV cost" is clear), "too" after a letter, a number or "zero" ("approaches zero too" is heard as "zero two", "find y too" as "y2", and ", two." at the end of a line as "too"; "as well" is clear), a short line that opens "It is negative" ("Air is negative"; "The answer is negative" is clear), the names Zainab ("Zaina") and Luis ("Lewis"), "boy" ("buy" or "by", whatever the spelling: use other groups, such as teachers and students), "Rewrite"
+  figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "halve" ("have"), "made to look huge" ("made to a huge"; "made to seem huge" is clear), "A lease" at the start of a sentence ("Elise"; "A vehicle lease" or "Every lease" is clear), "a Sudoku" ("pseudo-ku"; "Sudoku puzzles" or "In Sudoku" is clear), "Maya leases" ("Maya Lisa's"), "is x itself" before more words ("is exit self"; "is just the value of x" is clear), "antidifferentiate" after a full stop or a comma ("and to differentiate", the opposite; "find the antiderivative" is clear), "The sign is wrong" next to "sine" (sign and sine sound the same; "is missing a negative" is clear), "its slices are" ("it slices our"; "each slice is" is clear), "ate" before a number ("ate two eighths" is heard as "eight, two eighths"; "eats" is clear), a count of a number in the plural ("twenty sixes" is heard as "26s"; "twenty groups of six" is clear), an acronym with 's ("SUV's" is read as the word "suvs"; "the SUV cost" is clear), "too" after a letter, a number or "zero" ("approaches zero too" is heard as "zero two", "find y too" as "y2", and ", two." at the end of a line as "too"; "as well" is clear), a short line that opens "It is negative" ("Air is negative"; "The answer is negative" is clear), the names Zainab ("Zaina") and Luis ("Lewis"), "boy" ("buy" or "by", whatever the spelling: use other groups, such as teachers and students), "Rewrite"
   at the start of a sentence ("We're right") and the name Rhea ("Rhea takes" came out "retakes";
   Maya is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
@@ -246,22 +246,50 @@ and replace it in Drive, with no rendering, even for courses already cleared fro
 For videos already on YouTube, `video/tools/youtube-update.ts` brings their title, description
 and tags up to date through the YouTube API (no uploading again). It finds each video's script by
 its title, and by the course in its description when two scripts share a title, and changes only
-what differs; `--dry-run` lists the changes first:
+what differs; `--dry-run` lists the changes first. A title edited by hand on YouTube matches no
+script: name it with `<youtube id>=<video id>` (the admin console's Videos page lists both):
 
     npx tsx video/tools/youtube-update.ts --dry-run
-    npx tsx video/tools/youtube-update.ts
+    npx tsx video/tools/youtube-update.ts CMSCsWap8b0=m10c-1-8
+
+### Uploading to YouTube
+
+`video/tools/youtube-upload.ts` uploads finished videos to the channel in course order: the MP4
+with its title, description and tags (made from the script, as in `youtube.txt`), in Education,
+in English, then `thumbnail.png` and our `captions.srt`, and puts each in its unit's playlist in
+lesson order. It uses the owner's playlist when its title names the course and unit ("Math 10C -
+Unit 1 (Measurements)") and otherwise makes one in that style, and puts each playlist it touches
+back in lesson order if it is out of order (50 units a moved video). That needs the playlist set
+to **Manual** in YouTube Studio; one that sorts itself (by date) takes new videos at the end and
+cannot be reordered. `--limit 0` uploads nothing and only files and orders playlists. It takes each video's files from `video/out/<id>/`, or from its Drive folder when the course has been
+cleared from the session, and skips videos already on the channel (only filing them in their
+playlist if missing), so a run can be repeated. The channel may upload 10 videos a day; the tool
+stops by itself at that limit or the day's quota. `--limit N` uploads at most N, `--private` or
+`--unlisted` holds them back, and `--dry-run` lists what it would upload:
+
+    npx tsx video/tools/youtube-upload.ts --dry-run math-10c
+    npx tsx video/tools/youtube-upload.ts math-10c math-10-3
+
+Each upload prints `<video id> -> https://youtu.be/<youtube id>`. Record it in Gradileo so the
+lesson shows the video: **Admin console → Videos**, or straight into `public.video_links`. Every
+upload declares whether the video is made for kids (YouTube turns off comments and personalised ads
+for those); the course's answer is in `MADE_FOR_KIDS` in the tool, and a course not listed there is
+not uploaded until the owner decides. The owner has said no for every course, Math 5 to Math 31.
 
 ### YouTube API
 
-`youtube-update.ts` signs in with `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET` and
-`YOUTUBE_REFRESH_TOKEN`, set in the environment's settings like the Drive ones (a session started
-after they were added sees them). They come from a Google Cloud project with the YouTube Data
-API v3 enabled, the `youtube.force-ssl` scope on its consent screen (published **In production**,
-or the sign-in lapses after 7 days; it does not need Google's verification, since only the
-channel's own account signs in), and a Web application OAuth client whose refresh token was made
-in the OAuth 2.0 Playground while signed in as the channel. The API allows 10,000 units a day; an
-update costs 50, so about 200 videos a day. Uploading through the API is possible too, but videos
-uploaded by a project Google has not audited stay private.
+The YouTube tools sign in with `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET` and
+`YOUTUBE_REFRESH_TOKEN` (`video/lib/google.ts`), set in the environment's settings like the Drive
+ones (a session started after they were added sees them). They come from a Google Cloud project
+with the YouTube Data API v3 enabled, the `youtube.force-ssl` scope on its consent screen
+(published **In production**, or the sign-in lapses after 7 days; it does not need Google's
+verification, since only the channel's own account signs in), and a Web application OAuth client
+whose refresh token was made in the OAuth 2.0 Playground while signed in as the channel. The API
+allows 10,000 units a day: an update costs 50 (about 200 renames a day), and an upload with its
+thumbnail, captions and playlist place about 600. Uploads through this project come out public
+(checked on 19 October 2026). The channel's own limit of 10 uploads a day binds first.
+
+By hand, the same steps in YouTube Studio:
 
 1. Upload `<id>.mp4` to the Gradileo channel.
 2. Copy the title, description and tags from `youtube.txt`.

@@ -314,8 +314,15 @@ items ship or decisions change.
    - Done (17 October 2026): the owner set up the API and saved `YOUTUBE_CLIENT_ID`,
      `YOUTUBE_CLIENT_SECRET` and `YOUTUBE_REFRESH_TOKEN`; every finished video's YouTube text in
      Drive leads with the topic; `video/tools/youtube-update.ts` renames the videos on the channel.
-     Next: run it on the 16 Math 10C videos already on YouTube, from a session that sees the new
-     variables.
+   - Done (19 October 2026, the owner's priority): the 16 Math 10C videos on YouTube were renamed
+     topic-first through the API, and `video/tools/youtube-upload.ts` now uploads videos with
+     their text, thumbnail and captions, files each in its unit's playlist in lesson order, and
+     the upload is linked in `video_links` so its lesson shows it. Uploads come out public. The
+     first ten (Math 10C lessons 2.1 to 3.1) went up the same day; the channel allows 10 uploads a
+     day, so the rest go up 10 a day, in course order (Math 10C, 10-3, 10-4, 20-1 … 31, then
+     Math 5 to 9 as they are made), on a daily schedule. The owner decided no course is "made for
+     kids". The owner set the Unit 1 and Unit 2 playlists to Manual, and the tool put them in
+     lesson order (it now does this for every playlist a run touches).
    - Built: Math 30-2, all 97 videos at the calm pace (3:40 to 7:07, about 7.8 hours in all), the
      first course with topic-first title cards and no Alberta place names in the narration,
      rendered unit by unit and uploaded to Drive (checked: Drive holds every file of all 97). The
@@ -346,7 +353,17 @@ items ship or decisions change.
      differentiate"), "The sign is wrong" beside "sine", and "its slices are" ("it slices our").
      All are listed in `video/README.md`, with a rule for voicing a minus sign in front of a bracket
      or fraction. Every Math 10 to 31 course is rendered and in Drive (1,013 videos).
-   - Next: script and render Math 5, 6, 7, 8 and 9 in order, explaining each lesson as simply as
+   - Built: Math 5, all 96 videos at the calm pace (2:42 to 6:18, about 6.3 hours in all),
+     explaining each lesson as simply as possible for a Grade 5 learner, with parts split by idea,
+     topic-first and in neutral settings, rendered unit by unit and uploaded to Drive (checked:
+     Drive holds every file of all 96). Four helpers wrote the scripts unit by unit; every answer,
+     figure and puzzle was checked before rendering. The listening check found two phrases the
+     voice blurred, and those videos were made again: "ate" before a number ("ate two eighths" was
+     heard as "eight, two eighths"; now "eats") and a count of a number in the plural ("twenty
+     sixes" was heard as "26s" in the lesson whose answer is 26; now "twenty groups of six"). Both
+     are listed in `video/README.md`. Every course from Math 10 to 31, and Math 5, is rendered and
+     in Drive (1,109 videos).
+   - Next: script and render Math 6, 7, 8 and 9 in order, explaining each lesson as simply as
      possible, with parts split by idea.
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with

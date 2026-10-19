@@ -1,4 +1,5044 @@
 {
+  "m5-1-1": {
+    "lessonId": "m5-1-1",
+    "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Digits",
+        "t": 21.193
+      },
+      {
+        "title": "Ten times as much",
+        "t": 61.044
+      },
+      {
+        "title": "The place value chart",
+        "t": 101.461
+      },
+      {
+        "title": "Groups of three",
+        "t": 131.569
+      },
+      {
+        "title": "The value of a digit",
+        "t": 149.692
+      },
+      {
+        "title": "Watch out",
+        "t": 183.691
+      },
+      {
+        "title": "Your turn",
+        "t": 215.059
+      },
+      {
+        "title": "Summary",
+        "t": 250.153
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-1:q",
+        "t": 226.073,
+        "prompt": "What is the value of the $3$ in $6\\,831\\,425$?",
+        "choices": [
+          "$3000$",
+          "$30\\,000$",
+          "$300\\,000$",
+          "$3$"
+        ],
+        "answer": 1,
+        "working": "Count from the ones: ones, tens, hundreds, thousands, ten thousands. The $3$ is in the ten thousands place, so it is worth $3 \\times 10\\,000 = 30\\,000$."
+      }
+    ]
+  },
+  "m5-1-1-b": {
+    "lessonId": "m5-1-1",
+    "title": "Place Value to Millions and Thousandths, Part 2: Tenths, Hundredths and Thousandths",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The decimal point",
+        "t": 21.021
+      },
+      {
+        "title": "Parts of a whole",
+        "t": 46.94
+      },
+      {
+        "title": "A mirror around the ones",
+        "t": 98.005
+      },
+      {
+        "title": "The value of a decimal digit",
+        "t": 136.352
+      },
+      {
+        "title": "Tens or tenths?",
+        "t": 172.049
+      },
+      {
+        "title": "Your turn",
+        "t": 208.168
+      },
+      {
+        "title": "Summary",
+        "t": 242.299
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-1-b:q",
+        "t": 216.313,
+        "prompt": "What is the value of the $9$ in $41.239$?",
+        "choices": [
+          "$0.9$",
+          "$900$",
+          "$0.09$",
+          "$0.009$"
+        ],
+        "answer": 3,
+        "working": "The $9$ is the third digit after the decimal point, so it is in the thousandths place. It is worth $9 \\times 0.001 = 0.009$."
+      }
+    ]
+  },
+  "m5-1-1-c": {
+    "lessonId": "m5-1-1",
+    "title": "Place Value to Millions and Thousandths, Part 3: Numbers in Words and Numerals",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Groups of three",
+        "t": 20.385
+      },
+      {
+        "title": "From numerals to words",
+        "t": 48.278
+      },
+      {
+        "title": "Decimals in words",
+        "t": 93.706
+      },
+      {
+        "title": "From words to numerals",
+        "t": 121.855
+      },
+      {
+        "title": "Watch out",
+        "t": 158.84
+      },
+      {
+        "title": "Your turn",
+        "t": 186.621
+      },
+      {
+        "title": "Summary",
+        "t": 218.627
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-1-c:q",
+        "t": 193.962,
+        "prompt": "Write “seven and sixty-two thousandths” with digits.",
+        "choices": [
+          "$7.062$",
+          "$7.62$",
+          "$762$",
+          "$7.602$"
+        ],
+        "answer": 0,
+        "working": "Thousandths needs three places after the point. The $2$ goes in the thousandths place and the $6$ in the hundredths, so the tenths get a $0$: $7.062$."
+      }
+    ]
+  },
+  "m5-1-1-d": {
+    "lessonId": "m5-1-1",
+    "title": "Place Value to Millions and Thousandths, Part 4: Zeros at the Right End",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tenths and hundredths",
+        "t": 18.392
+      },
+      {
+        "title": "On a number line",
+        "t": 67.132
+      },
+      {
+        "title": "A zero in the middle",
+        "t": 93.825
+      },
+      {
+        "title": "Same value?",
+        "t": 125.103
+      },
+      {
+        "title": "Prices",
+        "t": 177.209
+      },
+      {
+        "title": "Your turn",
+        "t": 200.655
+      },
+      {
+        "title": "Summary",
+        "t": 237.217
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-1-d:q",
+        "t": 208.936,
+        "prompt": "Which number has the same value as $6.300$?",
+        "choices": [
+          "$6.03$",
+          "$6.003$",
+          "$6.3$",
+          "$63$"
+        ],
+        "answer": 2,
+        "working": "The two zeros are at the right end, so we can drop them: $6.300 = 6.30 = 6.3$."
+      }
+    ]
+  },
+  "m5-1-2": {
+    "lessonId": "m5-1-2",
+    "title": "Comparing, Ordering and Rounding, Part 1: Comparing Numbers",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Comparison symbols",
+        "t": 19.196
+      },
+      {
+        "title": "Compare from the left",
+        "t": 57.273
+      },
+      {
+        "title": "Comparing decimals",
+        "t": 99.843
+      },
+      {
+        "title": "More digits, not bigger",
+        "t": 136.996
+      },
+      {
+        "title": "Your turn",
+        "t": 171.37
+      },
+      {
+        "title": "Summary",
+        "t": 206.55
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-2:q",
+        "t": 180.146,
+        "prompt": "Compare $0.8$ and $0.75$. Which is true?",
+        "choices": [
+          "$0.8 > 0.75$",
+          "$0.8 < 0.75$",
+          "$0.8 = 0.75$",
+          "$0.75 > 0.8$"
+        ],
+        "answer": 0,
+        "working": "Write $0.8$ as $0.80$. The tenths digits are $8$ and $7$, and $8 > 7$, so $0.8 > 0.75$."
+      }
+    ]
+  },
+  "m5-1-2-b": {
+    "lessonId": "m5-1-2",
+    "title": "Comparing, Ordering and Rounding, Part 2: Decimals on a Number Line",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Jumps of one hundredth",
+        "t": 19.803
+      },
+      {
+        "title": "Between",
+        "t": 69.846
+      },
+      {
+        "title": "A decimal in between",
+        "t": 91.262
+      },
+      {
+        "title": "Zooming in",
+        "t": 133.575
+      },
+      {
+        "title": "Your turn",
+        "t": 166.812
+      },
+      {
+        "title": "Summary",
+        "t": 204.807
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-2-b:q",
+        "t": 174.851,
+        "prompt": "Which number is between $5.6$ and $5.7$?",
+        "choices": [
+          "$5.07$",
+          "$5.75$",
+          "$6.5$",
+          "$5.63$"
+        ],
+        "answer": 3,
+        "working": "Write the numbers as $5.60$ and $5.70$. Any number from $5.61$ to $5.69$ is between them, so $5.63$ is."
+      }
+    ]
+  },
+  "m5-1-2-c": {
+    "lessonId": "m5-1-2",
+    "title": "Comparing, Ordering and Rounding, Part 3: Ordering Numbers",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How to order",
+        "t": 15.338
+      },
+      {
+        "title": "The long jumps",
+        "t": 45.108
+      },
+      {
+        "title": "Compare from the left",
+        "t": 91.405
+      },
+      {
+        "title": "Watch out",
+        "t": 150.133
+      },
+      {
+        "title": "Your turn",
+        "t": 178.521
+      },
+      {
+        "title": "Summary",
+        "t": 228.245
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-2-c:q",
+        "t": 190.456,
+        "prompt": "Order $0.5$, $0.55$ and $0.505$ from **greatest to least**.",
+        "choices": [
+          "$0.5,\\ 0.505,\\ 0.55$",
+          "$0.55,\\ 0.505,\\ 0.5$",
+          "$0.505,\\ 0.55,\\ 0.5$",
+          "$0.55,\\ 0.5,\\ 0.505$"
+        ],
+        "answer": 1,
+        "working": "With three decimal places: $0.500$, $0.550$ and $0.505$. The tenths are all $5$. In the hundredths, $5 > 0$, so $0.55$ is the greatest. Then $0.505 > 0.500$."
+      }
+    ]
+  },
+  "m5-1-2-d": {
+    "lessonId": "m5-1-2",
+    "title": "Comparing, Ordering and Rounding, Part 4: Rounding",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What rounding means",
+        "t": 17.208
+      },
+      {
+        "title": "How to round",
+        "t": 55.167
+      },
+      {
+        "title": "The nearest ten thousand",
+        "t": 97.617
+      },
+      {
+        "title": "When a 9 rounds up",
+        "t": 124.221
+      },
+      {
+        "title": "Watch out",
+        "t": 158.395
+      },
+      {
+        "title": "More precise",
+        "t": 191.219
+      },
+      {
+        "title": "Your turn",
+        "t": 228.755
+      },
+      {
+        "title": "Summary",
+        "t": 261.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-2-d:q",
+        "t": 236.029,
+        "prompt": "Round $6.952$ to the nearest tenth.",
+        "choices": [
+          "$6.9$",
+          "$6.95$",
+          "$7.0$",
+          "$7.9$"
+        ],
+        "answer": 2,
+        "working": "The tenths digit is $9$, and the digit to its right is $5$, so round up. Nine tenths and one more tenth make one whole, so $6.952$ rounds to $7.0$."
+      }
+    ]
+  },
+  "m5-2-1": {
+    "lessonId": "m5-2-1",
+    "title": "Adding and Subtracting with Standard Algorithms, Part 1: Adding with the Standard Algorithm",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The standard algorithm",
+        "t": 22.287
+      },
+      {
+        "title": "Regrouping",
+        "t": 40.642
+      },
+      {
+        "title": "The steps",
+        "t": 70.436
+      },
+      {
+        "title": "Adding cans",
+        "t": 97.968
+      },
+      {
+        "title": "Watch out",
+        "t": 159.69
+      },
+      {
+        "title": "Your turn",
+        "t": 190.675
+      },
+      {
+        "title": "Summary",
+        "t": 227.045
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-1:q",
+        "t": 201.009,
+        "prompt": "Find $38\\,546 + 27\\,689$.",
+        "choices": [
+          "$55\\,125$",
+          "$56\\,235$",
+          "$66\\,135$",
+          "$66\\,235$"
+        ],
+        "answer": 3,
+        "working": "Ones: $6 + 9 = 15$, carry $1$. Tens: $1 + 4 + 8 = 13$, carry $1$. Hundreds: $1 + 5 + 6 = 12$, carry $1$. Thousands: $1 + 8 + 7 = 16$, carry $1$. Ten thousands: $1 + 3 + 2 = 6$. The sum is $66\\,235$."
+      }
+    ]
+  },
+  "m5-2-1-b": {
+    "lessonId": "m5-2-1",
+    "title": "Adding and Subtracting with Standard Algorithms, Part 2: Subtracting with the Standard Algorithm",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The steps",
+        "t": 22.167
+      },
+      {
+        "title": "A simple regroup",
+        "t": 46.022
+      },
+      {
+        "title": "Regrouping across zeros",
+        "t": 79.602
+      },
+      {
+        "title": "Watch out",
+        "t": 158.096
+      },
+      {
+        "title": "Check with addition",
+        "t": 186.958
+      },
+      {
+        "title": "Your turn",
+        "t": 213.898
+      },
+      {
+        "title": "Summary",
+        "t": 248.971
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-1-b:q",
+        "t": 222.217,
+        "prompt": "Find $6002 - 2457$.",
+        "choices": [
+          "$3545$",
+          "$4455$",
+          "$3645$",
+          "$4545$"
+        ],
+        "answer": 0,
+        "working": "Regroup across the zeros: the top digits become $5$, $9$, $9$ and $12$. Ones: $12 - 7 = 5$. Tens: $9 - 5 = 4$. Hundreds: $9 - 4 = 5$. Thousands: $5 - 2 = 3$. Check: $3545 + 2457 = 6002$."
+      }
+    ]
+  },
+  "m5-2-1-c": {
+    "lessonId": "m5-2-1",
+    "title": "Adding and Subtracting with Standard Algorithms, Part 3: Adding and Subtracting Decimals",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Line up the points",
+        "t": 21.145
+      },
+      {
+        "title": "Adding decimals",
+        "t": 52.44
+      },
+      {
+        "title": "Subtracting from a whole number",
+        "t": 110.626
+      },
+      {
+        "title": "Watch out",
+        "t": 175.467
+      },
+      {
+        "title": "Your turn",
+        "t": 211.885
+      },
+      {
+        "title": "Summary",
+        "t": 251.031
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-1-c:q",
+        "t": 219.399,
+        "prompt": "Find $7.2 - 3.46$.",
+        "choices": [
+          "$4.26$",
+          "$3.84$",
+          "$3.74$",
+          "$4.74$"
+        ],
+        "answer": 2,
+        "working": "Write $7.2$ as $7.20$ and line up the points. Regroup: the top digits become $6$, $11$ and $10$. Hundredths: $10 - 6 = 4$. Tenths: $11 - 4 = 7$. Ones: $6 - 3 = 3$. The answer is $3.74$."
+      }
+    ]
+  },
+  "m5-2-1-d": {
+    "lessonId": "m5-2-1",
+    "title": "Adding and Subtracting with Standard Algorithms, Part 4: Finding a Missing Number",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undoing",
+        "t": 18.181
+      },
+      {
+        "title": "A missing part",
+        "t": 39.725
+      },
+      {
+        "title": "A missing whole",
+        "t": 68.327
+      },
+      {
+        "title": "What goes in the box?",
+        "t": 96.7
+      },
+      {
+        "title": "Check",
+        "t": 167.857
+      },
+      {
+        "title": "Your turn",
+        "t": 190.968
+      },
+      {
+        "title": "Summary",
+        "t": 231.107
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-1-d:q",
+        "t": 201.006,
+        "prompt": "$\\square - 2.75 = 4.5$. What goes in the box?",
+        "choices": [
+          "$1.75$",
+          "$7.25$",
+          "$3.20$",
+          "$6.25$"
+        ],
+        "answer": 1,
+        "working": "The box is the whole: taking $2.75$ away left $4.5$. Put the parts back together: $4.50 + 2.75 = 7.25$. Check: $7.25 - 2.75 = 4.5$."
+      }
+    ]
+  },
+  "m5-2-2": {
+    "lessonId": "m5-2-2",
+    "title": "Estimating and Solving Problems, Part 1: Estimating Sums and Differences",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is an estimate?",
+        "t": 15.213
+      },
+      {
+        "title": "Round each number",
+        "t": 53.097
+      },
+      {
+        "title": "Add the rounded numbers",
+        "t": 89.865
+      },
+      {
+        "title": "Estimating a difference",
+        "t": 130.621
+      },
+      {
+        "title": "Your turn",
+        "t": 172.78
+      },
+      {
+        "title": "Summary",
+        "t": 212.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-2:q",
+        "t": 185.406,
+        "prompt": "Estimate $6812 + 2345$ by rounding each number to the nearest thousand.",
+        "choices": [
+          "$9000$",
+          "$8000$",
+          "$5000$",
+          "$9157$"
+        ],
+        "answer": 0,
+        "working": "$6812$ rounds to $7000$ and $2345$ rounds to $2000$. The estimate is $7000 + 2000 = 9000$. (The exact sum is $9157$.)"
+      }
+    ]
+  },
+  "m5-2-2-b": {
+    "lessonId": "m5-2-2",
+    "title": "Estimating and Solving Problems, Part 2: Is the Answer Reasonable?",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reasonable",
+        "t": 16.167
+      },
+      {
+        "title": "Checking Diego’s work",
+        "t": 34.417
+      },
+      {
+        "title": "Finding the mistake",
+        "t": 83.044
+      },
+      {
+        "title": "Watch out",
+        "t": 142.124
+      },
+      {
+        "title": "Your turn",
+        "t": 174.169
+      },
+      {
+        "title": "Summary",
+        "t": 228.249
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-2-b:q",
+        "t": 193.418,
+        "prompt": "Maya says $7415 - 3868 = 4547$. Estimate by rounding each number to the nearest thousand. Is Maya’s answer reasonable?",
+        "choices": [
+          "Yes. The estimate is $4000$.",
+          "Yes. The estimate is $11\\,000$.",
+          "No. The estimate is $3000$.",
+          "No. The estimate is $11\\,000$."
+        ],
+        "answer": 2,
+        "working": "$7415 \\approx 7000$ and $3868 \\approx 4000$, so the estimate is $7000 - 4000 = 3000$. $4547$ is far from $3000$, so it is not reasonable. (The exact answer is $3547$.)"
+      }
+    ]
+  },
+  "m5-2-2-c": {
+    "lessonId": "m5-2-2",
+    "title": "Estimating and Solving Problems, Part 3: Problems with Money",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dollars and cents",
+        "t": 16.765
+      },
+      {
+        "title": "Key words",
+        "t": 49.573
+      },
+      {
+        "title": "The total cost",
+        "t": 69.616
+      },
+      {
+        "title": "The change",
+        "t": 118.904
+      },
+      {
+        "title": "Check with an estimate",
+        "t": 172.403
+      },
+      {
+        "title": "Your turn",
+        "t": 200.291
+      },
+      {
+        "title": "Summary",
+        "t": 242.694
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-2-c:q",
+        "t": 215.995,
+        "prompt": "Leo buys a book for \\$7.85 and a pen for \\$2.39. Leo pays with \\$20.00. How much change does Leo get?",
+        "choices": [
+          "\\$10.24",
+          "\\$10.76",
+          "\\$12.15",
+          "\\$9.76"
+        ],
+        "answer": 3,
+        "working": "Total: \\$7.85 + \\$2.39 = \\$10.24. Change: \\$20.00 − \\$10.24 = \\$9.76. Estimate: about \\$20 − \\$10 = \\$10, which is close."
+      }
+    ]
+  },
+  "m5-2-2-d": {
+    "lessonId": "m5-2-2",
+    "title": "Estimating and Solving Problems, Part 4: Problems with Measurements",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A hiking trail",
+        "t": 20.535
+      },
+      {
+        "title": "Step 1: add",
+        "t": 60.013
+      },
+      {
+        "title": "Step 2: subtract",
+        "t": 96.072
+      },
+      {
+        "title": "Check",
+        "t": 161.393
+      },
+      {
+        "title": "Watch out",
+        "t": 190.658
+      },
+      {
+        "title": "Your turn",
+        "t": 210.367
+      },
+      {
+        "title": "Summary",
+        "t": 256.206
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-2-d:q",
+        "t": 224.002,
+        "prompt": "A ribbon is $5$ m long. Ava cuts off $1.25$ m and then $2.4$ m. How much ribbon is left?",
+        "choices": [
+          "$3.65$ m",
+          "$1.35$ m",
+          "$3.51$ m",
+          "$2.35$ m"
+        ],
+        "answer": 1,
+        "working": "Step 1: $1.25 + 2.40 = 3.65$ m cut off. Step 2: $5.00 - 3.65 = 1.35$ m left. Check: $3.65 + 1.35 = 5$."
+      }
+    ]
+  },
+  "m5-3-1": {
+    "lessonId": "m5-3-1",
+    "title": "Divisibility Tests, Part 1: What Divisible Means",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divisible",
+        "t": 16.219
+      },
+      {
+        "title": "Counters in rows",
+        "t": 34.074
+      },
+      {
+        "title": "Divide to check",
+        "t": 75.728
+      },
+      {
+        "title": "Teams of three",
+        "t": 114.671
+      },
+      {
+        "title": "Your turn",
+        "t": 150.021
+      },
+      {
+        "title": "Summary",
+        "t": 180.26
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-1:q",
+        "t": 156.256,
+        "prompt": "Which number is divisible by $6$?",
+        "choices": [
+          "$26$",
+          "$32$",
+          "$42$",
+          "$50$"
+        ],
+        "answer": 2,
+        "working": "$6 \\times 7 = 42$, so $42 \\div 6 = 7$ with remainder $0$. The others leave a remainder of $2$: $26 \\div 6 = 4$ R $2$, $32 \\div 6 = 5$ R $2$ and $50 \\div 6 = 8$ R $2$."
+      }
+    ]
+  },
+  "m5-3-1-b": {
+    "lessonId": "m5-3-1",
+    "title": "Divisibility Tests, Part 2: The Tests for 2 and 5",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Multiples",
+        "t": 20.3
+      },
+      {
+        "title": "Even and odd",
+        "t": 62.36
+      },
+      {
+        "title": "The tests",
+        "t": 91.825
+      },
+      {
+        "title": "Using the tests",
+        "t": 126.906
+      },
+      {
+        "title": "Watch out",
+        "t": 171.708
+      },
+      {
+        "title": "Your turn",
+        "t": 197.745
+      },
+      {
+        "title": "Summary",
+        "t": 233.992
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-1-b:q",
+        "t": 204.89,
+        "prompt": "Which number is divisible by **both** $2$ and $5$?",
+        "choices": [
+          "$480$",
+          "$345$",
+          "$552$",
+          "$205$"
+        ],
+        "answer": 0,
+        "working": "To be divisible by $2$, the last digit must be even. To be divisible by $5$, it must be $0$ or $5$. Only $0$ is both, and $480$ ends in $0$."
+      }
+    ]
+  },
+  "m5-3-1-c": {
+    "lessonId": "m5-3-1",
+    "title": "Divisibility Tests, Part 3: The Test for 3",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The last digit does not help",
+        "t": 15.981
+      },
+      {
+        "title": "The digit sum",
+        "t": 48.456
+      },
+      {
+        "title": "Using the test",
+        "t": 78.404
+      },
+      {
+        "title": "Watch out",
+        "t": 122.261
+      },
+      {
+        "title": "Your turn",
+        "t": 148.135
+      },
+      {
+        "title": "Summary",
+        "t": 180.751
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-1-c:q",
+        "t": 154.358,
+        "prompt": "Which number is divisible by $3$?",
+        "choices": [
+          "$124$",
+          "$233$",
+          "$413$",
+          "$252$"
+        ],
+        "answer": 3,
+        "working": "Digit sums: $1 + 2 + 4 = 7$, $2 + 3 + 3 = 8$, $4 + 1 + 3 = 8$ and $2 + 5 + 2 = 9$. Only $9$ is in the $3$ times table, so $252$ is divisible by $3$ ($252 \\div 3 = 84$)."
+      }
+    ]
+  },
+  "m5-3-1-d": {
+    "lessonId": "m5-3-1",
+    "title": "Divisibility Tests, Part 4: Other Numbers, and Zero",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divide to check",
+        "t": 19.399
+      },
+      {
+        "title": "What division asks",
+        "t": 56.427
+      },
+      {
+        "title": "Dividing by zero",
+        "t": 87.873
+      },
+      {
+        "title": "Zero divided by a number",
+        "t": 126.316
+      },
+      {
+        "title": "Division by zero",
+        "t": 152.033
+      },
+      {
+        "title": "Your turn",
+        "t": 170.575
+      },
+      {
+        "title": "Summary",
+        "t": 198.465
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-1-d:q",
+        "t": 176.274,
+        "prompt": "Which of these is **not** possible?",
+        "choices": [
+          "$0 \\div 5$",
+          "$5 \\div 0$",
+          "$5 \\div 5$",
+          "$0 \\div 1$"
+        ],
+        "answer": 1,
+        "working": "$5 \\div 0$ would need a number that times $0$ gives $5$, and no number does. The others are possible: $0 \\div 5 = 0$, $5 \\div 5 = 1$ and $0 \\div 1 = 0$."
+      }
+    ]
+  },
+  "m5-3-2": {
+    "lessonId": "m5-3-2",
+    "title": "Finding Factors, Part 1: Factors and Factor Pairs",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Factors",
+        "t": 18.4
+      },
+      {
+        "title": "Twelve in equal rows",
+        "t": 50.733
+      },
+      {
+        "title": "Factor pairs",
+        "t": 76.025
+      },
+      {
+        "title": "A missing partner",
+        "t": 111.296
+      },
+      {
+        "title": "One and the number itself",
+        "t": 133.973
+      },
+      {
+        "title": "Your turn",
+        "t": 157.023
+      },
+      {
+        "title": "Summary",
+        "t": 188.09
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-2:q",
+        "t": 165.175,
+        "prompt": "$6 \\times \\square = 42$. What is the missing factor?",
+        "choices": [
+          "$6$",
+          "$36$",
+          "$48$",
+          "$7$"
+        ],
+        "answer": 3,
+        "working": "Divide: $\\square = 42 \\div 6 = 7$. Check: $6 \\times 7 = 42$. So $6$ and $7$ are a factor pair of $42$."
+      }
+    ]
+  },
+  "m5-3-2-b": {
+    "lessonId": "m5-3-2",
+    "title": "Finding Factors, Part 2: Finding All the Factors",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The method",
+        "t": 17.77
+      },
+      {
+        "title": "All the factors of 48",
+        "t": 44.13
+      },
+      {
+        "title": "When to stop",
+        "t": 133.621
+      },
+      {
+        "title": "Watch out",
+        "t": 165.093
+      },
+      {
+        "title": "Your turn",
+        "t": 189.313
+      },
+      {
+        "title": "Summary",
+        "t": 218.051
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-2-b:q",
+        "t": 195.841,
+        "prompt": "Which list shows **all** the factors of $30$?",
+        "choices": [
+          "$1, 2, 3, 5, 6, 10, 15, 30$",
+          "$1, 2, 3, 5, 6$",
+          "$2, 3, 5, 6, 10, 15$",
+          "$1, 3, 5, 10, 30$"
+        ],
+        "answer": 0,
+        "working": "Pairs: $1 \\times 30$, $2 \\times 15$, $3 \\times 10$, $5 \\times 6$. $4$ is not a factor. Since $6 \\times 6 = 36$ is bigger than $30$, stop. The factors are $1, 2, 3, 5, 6, 10, 15, 30$."
+      }
+    ]
+  },
+  "m5-3-2-c": {
+    "lessonId": "m5-3-2",
+    "title": "Finding Factors, Part 3: Factors in Problems",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal rows",
+        "t": 17.23
+      },
+      {
+        "title": "Rows of chairs",
+        "t": 46.573
+      },
+      {
+        "title": "Watch out",
+        "t": 114.617
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 144.921
+      },
+      {
+        "title": "Your turn",
+        "t": 173.02
+      },
+      {
+        "title": "Summary",
+        "t": 208.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-2-c:q",
+        "t": 184.687,
+        "prompt": "A baker puts $20$ muffins in equal rows with none left over. Which could **not** be the number of muffins in a row?",
+        "choices": [
+          "$4$",
+          "$5$",
+          "$6$",
+          "$10$"
+        ],
+        "answer": 2,
+        "working": "The number in a row must be a factor of $20$: $1, 2, 4, 5, 10$ or $20$. $6$ is not a factor, because $20 \\div 6 = 3$ R $2$."
+      }
+    ]
+  },
+  "m5-4-1": {
+    "lessonId": "m5-4-1",
+    "title": "Multiplying with the Standard Algorithm, Part 1: Multiplying by a One-Digit Number",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six groups of 347",
+        "t": 31.247
+      },
+      {
+        "title": "Words to know",
+        "t": 93.206
+      },
+      {
+        "title": "Ones, tens, hundreds",
+        "t": 130.966
+      },
+      {
+        "title": "Watch out",
+        "t": 204.532
+      },
+      {
+        "title": "Your turn",
+        "t": 237.236
+      },
+      {
+        "title": "Summary",
+        "t": 271.303
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-1:q",
+        "t": 243.704,
+        "prompt": "Find $258 \\times 4$.",
+        "choices": [
+          "$802$",
+          "$1032$",
+          "$2022$",
+          "$1132$"
+        ],
+        "answer": 1,
+        "working": "Ones: $4 \\times 8 = 32$, write $2$, carry $3$. Tens: $4 \\times 5 = 20$, plus $3$ is $23$, write $3$, carry $2$. Hundreds: $4 \\times 2 = 8$, plus $2$ is $10$. So $258 \\times 4 = 1032$."
+      }
+    ]
+  },
+  "m5-4-1-b": {
+    "lessonId": "m5-4-1",
+    "title": "Multiplying with the Standard Algorithm, Part 2: Multiplying by a Two-Digit Number",
+    "duration": 378,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Split 26 into 20 and 6",
+        "t": 27.468
+      },
+      {
+        "title": "Partial products",
+        "t": 102.485
+      },
+      {
+        "title": "Multiply by the ones",
+        "t": 130.367
+      },
+      {
+        "title": "Multiply by the tens",
+        "t": 175.362
+      },
+      {
+        "title": "Add the partial products",
+        "t": 228.053
+      },
+      {
+        "title": "Watch out",
+        "t": 267.291
+      },
+      {
+        "title": "Your turn",
+        "t": 304.525
+      },
+      {
+        "title": "Summary",
+        "t": 345.871
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-1-b:q",
+        "t": 311.285,
+        "prompt": "Find $214 \\times 32$.",
+        "choices": [
+          "$1070$",
+          "$6420$",
+          "$6748$",
+          "$6848$"
+        ],
+        "answer": 3,
+        "working": "$214 \\times 2 = 428$ and $214 \\times 30 = 6420$ (a $0$ in the ones place, then $214 \\times 3 = 642$). Add: $428 + 6420 = 6848$."
+      }
+    ]
+  },
+  "m5-4-1-c": {
+    "lessonId": "m5-4-1",
+    "title": "Multiplying with the Standard Algorithm, Part 3: Checking with an Estimate",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Round to the greatest place",
+        "t": 25.001
+      },
+      {
+        "title": "Count the zeros",
+        "t": 74.105
+      },
+      {
+        "title": "Is it reasonable?",
+        "t": 121.339
+      },
+      {
+        "title": "Catching a mistake",
+        "t": 156.291
+      },
+      {
+        "title": "Your turn",
+        "t": 215.429
+      },
+      {
+        "title": "Summary",
+        "t": 252.267
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-1-c:q",
+        "t": 225.777,
+        "prompt": "Estimate $412 \\times 28$ by rounding each number to its greatest place.",
+        "choices": [
+          "$12\\,000$",
+          "$1200$",
+          "$8000$",
+          "$120\\,000$"
+        ],
+        "answer": 0,
+        "working": "$412$ rounds to $400$ and $28$ rounds to $30$. Then $4 \\times 3 = 12$, with three zeros: $400 \\times 30 = 12\\,000$."
+      }
+    ]
+  },
+  "m5-4-2": {
+    "lessonId": "m5-4-2",
+    "title": "Dividing with the Standard Algorithm, Part 1: Words for Division",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Packing apples",
+        "t": 24.149
+      },
+      {
+        "title": "Words for division",
+        "t": 59.08
+      },
+      {
+        "title": "Long division",
+        "t": 94.31
+      },
+      {
+        "title": "Divide 367 by 7",
+        "t": 123.3
+      },
+      {
+        "title": "Your turn",
+        "t": 220.178
+      },
+      {
+        "title": "Summary",
+        "t": 253.095
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-2:q",
+        "t": 226.71,
+        "prompt": "Find $87 \\div 4$.",
+        "choices": [
+          "$20$ R $7$",
+          "$21$ R $1$",
+          "$21$ R $3$",
+          "$22$"
+        ],
+        "answer": 2,
+        "working": "$8 \\div 4 = 2$, write $2$; $8 - 8 = 0$. Bring down the $7$: $4$ goes into $7$ once, $7 - 4 = 3$. So $87 \\div 4 = 21$ R $3$."
+      }
+    ]
+  },
+  "m5-4-2-b": {
+    "lessonId": "m5-4-2",
+    "title": "Dividing with the Standard Algorithm, Part 2: Divide, Multiply, Subtract, Bring Down",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The four steps",
+        "t": 20.965
+      },
+      {
+        "title": "The hundreds",
+        "t": 63.37
+      },
+      {
+        "title": "The tens",
+        "t": 98.867
+      },
+      {
+        "title": "The ones",
+        "t": 126.837
+      },
+      {
+        "title": "Check by multiplying",
+        "t": 159.883
+      },
+      {
+        "title": "Watch out",
+        "t": 205.737
+      },
+      {
+        "title": "Your turn",
+        "t": 240.402
+      },
+      {
+        "title": "Summary",
+        "t": 276.63
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-2-b:q",
+        "t": 247.603,
+        "prompt": "Find $936 \\div 4$.",
+        "choices": [
+          "$233$ R $4$",
+          "$234$",
+          "$214$",
+          "$324$"
+        ],
+        "answer": 1,
+        "working": "$9 \\div 4 = 2$, $9 - 8 = 1$; bring down $3$: $13 \\div 4 = 3$, $13 - 12 = 1$; bring down $6$: $16 \\div 4 = 4$, $16 - 16 = 0$. Check: $4 \\times 234 = 936$."
+      }
+    ]
+  },
+  "m5-4-2-c": {
+    "lessonId": "m5-4-2",
+    "title": "Dividing with the Standard Algorithm, Part 3: Zeros in the Quotient",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divide 618 by 6",
+        "t": 16.929
+      },
+      {
+        "title": "The ones",
+        "t": 70.943
+      },
+      {
+        "title": "Watch out",
+        "t": 106.471
+      },
+      {
+        "title": "Another one",
+        "t": 152.461
+      },
+      {
+        "title": "Your turn",
+        "t": 199.628
+      },
+      {
+        "title": "Summary",
+        "t": 235.85
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-2-c:q",
+        "t": 207.123,
+        "prompt": "Find $721 \\div 7$.",
+        "choices": [
+          "$103$",
+          "$13$",
+          "$130$",
+          "$103$ R $1$"
+        ],
+        "answer": 0,
+        "working": "$7 \\div 7 = 1$. Bring down $2$: $7$ does not go into $2$, so write $0$. Bring down $1$ to make $21$: $21 \\div 7 = 3$. Check: $7 \\times 103 = 721$."
+      }
+    ]
+  },
+  "m5-4-3": {
+    "lessonId": "m5-4-3",
+    "title": "Solving Multiplication and Division Problems, Part 1: Multiply or Divide?",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Putting groups together",
+        "t": 18.557
+      },
+      {
+        "title": "Sharing and grouping",
+        "t": 43.354
+      },
+      {
+        "title": "How to decide",
+        "t": 84.199
+      },
+      {
+        "title": "Boxes of markers",
+        "t": 111.506
+      },
+      {
+        "title": "Check with an estimate",
+        "t": 177.707
+      },
+      {
+        "title": "Your turn",
+        "t": 201.744
+      },
+      {
+        "title": "Summary",
+        "t": 245.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-3:q",
+        "t": 216.424,
+        "prompt": "A baker puts $144$ muffins into boxes. Each box holds $6$ muffins. Which number sentence finds how many boxes the baker fills?",
+        "choices": [
+          "$144 \\times 6$",
+          "$144 + 6$",
+          "$144 - 6$",
+          "$144 \\div 6$"
+        ],
+        "answer": 3,
+        "working": "The total ($144$) and the size of each group ($6$) are known. To find how many groups fit, divide: $144 \\div 6 = 24$ boxes."
+      }
+    ]
+  },
+  "m5-4-3-b": {
+    "lessonId": "m5-4-3",
+    "title": "Solving Multiplication and Division Problems, Part 2: What to Do with a Remainder",
+    "duration": 296,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divide 157 by 8",
+        "t": 27.666
+      },
+      {
+        "title": "Vans: round up",
+        "t": 74.084
+      },
+      {
+        "title": "Cookies: drop it or use it",
+        "t": 121.573
+      },
+      {
+        "title": "The question decides",
+        "t": 169.054
+      },
+      {
+        "title": "Watch out",
+        "t": 202.761
+      },
+      {
+        "title": "Your turn",
+        "t": 223.408
+      },
+      {
+        "title": "Summary",
+        "t": 261.921
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-3-b:q",
+        "t": 234.951,
+        "prompt": "A teacher has $75$ stickers. Each student gets exactly $4$ stickers. How many students get stickers?",
+        "choices": [
+          "$19$ students",
+          "$3$ students",
+          "$18$ students",
+          "$20$ students"
+        ],
+        "answer": 2,
+        "working": "$75 \\div 4 = 18$ R $3$. Eighteen students get $4$ stickers each. The $3$ stickers left are not enough for another student, so drop the remainder: $18$ students."
+      }
+    ]
+  },
+  "m5-4-3-c": {
+    "lessonId": "m5-4-3",
+    "title": "Solving Multiplication and Division Problems, Part 3: Two-Step Problems",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Buses for skating",
+        "t": 15.374
+      },
+      {
+        "title": "Step 1: the students",
+        "t": 42.282
+      },
+      {
+        "title": "Step 2: the buses",
+        "t": 74.673
+      },
+      {
+        "title": "What the remainder means",
+        "t": 117.202
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 137.165
+      },
+      {
+        "title": "Another two-step problem",
+        "t": 172.244
+      },
+      {
+        "title": "Your turn",
+        "t": 219.111
+      },
+      {
+        "title": "Summary",
+        "t": 261.1
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-3-c:q",
+        "t": 231.045,
+        "prompt": "$5$ classes of $26$ students go to a museum. Each van holds $9$ students. How many vans are needed?",
+        "choices": [
+          "$15$ vans",
+          "$14$ vans",
+          "$4$ vans",
+          "$16$ vans"
+        ],
+        "answer": 0,
+        "working": "Students: $26 \\times 5 = 130$. Vans: $130 \\div 9 = 14$ R $4$. The $4$ students left still need a seat, so round up: $15$ vans."
+      }
+    ]
+  },
+  "m5-5-1": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 1: Fractions Greater Than One",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts of a fraction",
+        "t": 21.161
+      },
+      {
+        "title": "Counting by fourths",
+        "t": 58.559
+      },
+      {
+        "title": "Improper fractions",
+        "t": 104.145
+      },
+      {
+        "title": "Whole numbers as fractions",
+        "t": 134.323
+      },
+      {
+        "title": "Counting by thirds",
+        "t": 160.96
+      },
+      {
+        "title": "Your turn",
+        "t": 199.63
+      },
+      {
+        "title": "Summary",
+        "t": 227.183
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1:q",
+        "t": 205.976,
+        "prompt": "Which fraction is equal to $3$ wholes?",
+        "choices": [
+          "$\\dfrac{3}{4}$",
+          "$\\dfrac{12}{4}$",
+          "$\\dfrac{4}{3}$",
+          "$\\dfrac{7}{4}$"
+        ],
+        "answer": 1,
+        "working": "Each whole is $\\tfrac{4}{4}$, so $3$ wholes are $3 \\times 4 = 12$ fourths: $\\tfrac{12}{4}$."
+      }
+    ]
+  },
+  "m5-5-1-b": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 2: Writing a Mixed Number",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mixed numbers",
+        "t": 19.155
+      },
+      {
+        "title": "Divide to find the wholes",
+        "t": 52.583
+      },
+      {
+        "title": "Keep the denominator",
+        "t": 92.423
+      },
+      {
+        "title": "Another one",
+        "t": 127.843
+      },
+      {
+        "title": "Your turn",
+        "t": 155.697
+      },
+      {
+        "title": "Summary",
+        "t": 187.453
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1-b:q",
+        "t": 162.171,
+        "prompt": "Write $\\dfrac{19}{6}$ as a mixed number.",
+        "choices": [
+          "$3\\dfrac{1}{3}$",
+          "$1\\dfrac{3}{6}$",
+          "$6\\dfrac{1}{3}$",
+          "$3\\dfrac{1}{6}$"
+        ],
+        "answer": 3,
+        "working": "$19 \\div 6 = 3$ R $1$: $3$ wholes and $1$ sixth left over, so $\\tfrac{19}{6} = 3\\tfrac{1}{6}$."
+      }
+    ]
+  },
+  "m5-5-1-c": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 3: Writing an Improper Fraction",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three and two fifths",
+        "t": 21.087
+      },
+      {
+        "title": "Multiply, then add",
+        "t": 61.635
+      },
+      {
+        "title": "Check by going back",
+        "t": 87.053
+      },
+      {
+        "title": "Watch out",
+        "t": 107.669
+      },
+      {
+        "title": "Another one",
+        "t": 136.993
+      },
+      {
+        "title": "Your turn",
+        "t": 169.615
+      },
+      {
+        "title": "Summary",
+        "t": 201.13
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1-c:q",
+        "t": 176.824,
+        "prompt": "Write $4\\dfrac{2}{3}$ as an improper fraction.",
+        "choices": [
+          "$\\dfrac{6}{3}$",
+          "$\\dfrac{12}{3}$",
+          "$\\dfrac{14}{3}$",
+          "$\\dfrac{11}{3}$"
+        ],
+        "answer": 2,
+        "working": "$4 \\times 3 = 12$ thirds in the wholes, plus $2$ more: $12 + 2 = 14$. So $4\\tfrac{2}{3} = \\tfrac{14}{3}$."
+      }
+    ]
+  },
+  "m5-5-1-d": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 4: Fractions on a Number Line",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Spaces on the line",
+        "t": 16.045
+      },
+      {
+        "title": "Seven fourths",
+        "t": 49.996
+      },
+      {
+        "title": "Read a point",
+        "t": 87.803
+      },
+      {
+        "title": "Watch out",
+        "t": 110.888
+      },
+      {
+        "title": "Your turn",
+        "t": 138.417
+      },
+      {
+        "title": "Summary",
+        "t": 180.116
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1-d:q",
+        "t": 153.409,
+        "prompt": "A number line goes from $0$ to $2$. Each whole is cut into $3$ equal spaces. A point is $5$ spaces from $0$. Which number is at the point?",
+        "choices": [
+          "$1\\dfrac{2}{3}$",
+          "$\\dfrac{3}{5}$",
+          "$2\\dfrac{1}{3}$",
+          "$1\\dfrac{1}{3}$"
+        ],
+        "answer": 0,
+        "working": "Each space is $\\tfrac{1}{3}$, so $5$ spaces is $\\tfrac{5}{3}$. Three spaces reach $1$, and two more go past it: $1\\tfrac{2}{3}$."
+      }
+    ]
+  },
+  "m5-5-1-e": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 5: Comparing with Benchmarks",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Benchmarks",
+        "t": 15.645
+      },
+      {
+        "title": "Look at the numbers",
+        "t": 58.208
+      },
+      {
+        "title": "Compare with one half",
+        "t": 92.584
+      },
+      {
+        "title": "Watch out",
+        "t": 125.778
+      },
+      {
+        "title": "Two more",
+        "t": 147.653
+      },
+      {
+        "title": "Your turn",
+        "t": 170.806
+      },
+      {
+        "title": "Summary",
+        "t": 204.834
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1-e:q",
+        "t": 178.222,
+        "prompt": "Which fraction is greater than $\\dfrac{1}{2}$ but less than $1$?",
+        "choices": [
+          "$\\dfrac{3}{8}$",
+          "$\\dfrac{6}{12}$",
+          "$\\dfrac{9}{8}$",
+          "$\\dfrac{5}{6}$"
+        ],
+        "answer": 3,
+        "working": "$2 \\times 5 = 10$, which is more than $6$, so $\\tfrac{5}{6} > \\tfrac{1}{2}$. And $5 < 6$, so $\\tfrac{5}{6} < 1$."
+      }
+    ]
+  },
+  "m5-5-2": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 1: Unit Fractions",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unit fractions",
+        "t": 24.378
+      },
+      {
+        "title": "Five eighths",
+        "t": 50.197
+      },
+      {
+        "title": "Splitting a fraction",
+        "t": 88.527
+      },
+      {
+        "title": "A missing numerator",
+        "t": 114.006
+      },
+      {
+        "title": "Your turn",
+        "t": 141.761
+      },
+      {
+        "title": "Summary",
+        "t": 174.541
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2:q",
+        "t": 151.177,
+        "prompt": "Find the missing numerator: $\\dfrac{5}{6} = \\dfrac{2}{6} + \\dfrac{?}{6}$",
+        "choices": [
+          "$7$",
+          "$3$",
+          "$4$",
+          "$2$"
+        ],
+        "answer": 1,
+        "working": "$\\tfrac{5}{6}$ is $5$ sixths and $\\tfrac{2}{6}$ is $2$ of them. $5 - 2 = 3$, so $\\tfrac{5}{6} = \\tfrac{2}{6} + \\tfrac{3}{6}$."
+      }
+    ]
+  },
+  "m5-5-2-b": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 2: With a Common Denominator",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A common denominator",
+        "t": 16.621
+      },
+      {
+        "title": "Adding",
+        "t": 34.627
+      },
+      {
+        "title": "Watch out",
+        "t": 74.038
+      },
+      {
+        "title": "Subtracting",
+        "t": 105.632
+      },
+      {
+        "title": "Improper fractions",
+        "t": 128.306
+      },
+      {
+        "title": "Any order",
+        "t": 172.84
+      },
+      {
+        "title": "Your turn",
+        "t": 188.889
+      },
+      {
+        "title": "Summary",
+        "t": 219.546
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2-b:q",
+        "t": 195.155,
+        "prompt": "Find $\\dfrac{4}{9} + \\dfrac{3}{9}$.",
+        "choices": [
+          "$\\dfrac{7}{18}$",
+          "$\\dfrac{1}{9}$",
+          "$\\dfrac{7}{9}$",
+          "$\\dfrac{12}{9}$"
+        ],
+        "answer": 2,
+        "working": "Both fractions count ninths. Add the numerators, $4 + 3 = 7$, and keep the denominator: $\\tfrac{7}{9}$."
+      }
+    ]
+  },
+  "m5-5-2-c": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 3: Adding Mixed Numbers",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The picture",
+        "t": 17.825
+      },
+      {
+        "title": "Way 1: wholes and parts",
+        "t": 51.924
+      },
+      {
+        "title": "Way 2: improper fractions",
+        "t": 85.759
+      },
+      {
+        "title": "Which way?",
+        "t": 126.128
+      },
+      {
+        "title": "Your turn",
+        "t": 155.994
+      },
+      {
+        "title": "Summary",
+        "t": 192.783
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2-c:q",
+        "t": 163.412,
+        "prompt": "Find $3\\dfrac{2}{6} + 1\\dfrac{5}{6}$.",
+        "choices": [
+          "$4\\dfrac{7}{12}$",
+          "$4\\dfrac{1}{6}$",
+          "$5\\dfrac{5}{6}$",
+          "$5\\dfrac{1}{6}$"
+        ],
+        "answer": 3,
+        "working": "Wholes: $3 + 1 = 4$. Parts: $\\tfrac{2}{6} + \\tfrac{5}{6} = \\tfrac{7}{6} = 1\\tfrac{1}{6}$. Together: $4 + 1\\tfrac{1}{6} = 5\\tfrac{1}{6}$."
+      }
+    ]
+  },
+  "m5-5-2-d": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 4: Subtracting Mixed Numbers",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Not enough fifths",
+        "t": 20.363
+      },
+      {
+        "title": "Way 1: regroup",
+        "t": 46.719
+      },
+      {
+        "title": "Way 2: improper fractions",
+        "t": 91.881
+      },
+      {
+        "title": "Watch out",
+        "t": 130.281
+      },
+      {
+        "title": "Which way is easier?",
+        "t": 167.297
+      },
+      {
+        "title": "Your turn",
+        "t": 183.762
+      },
+      {
+        "title": "Summary",
+        "t": 219.893
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2-d:q",
+        "t": 191.468,
+        "prompt": "Find $4\\dfrac{1}{4} - 2\\dfrac{3}{4}$.",
+        "choices": [
+          "$1\\dfrac{2}{4}$",
+          "$2\\dfrac{2}{4}$",
+          "$1\\dfrac{1}{4}$",
+          "$2\\dfrac{3}{4}$"
+        ],
+        "answer": 0,
+        "working": "Regroup: $4\\tfrac{1}{4} = 3 + \\tfrac{5}{4}$. Wholes: $3 - 2 = 1$. Parts: $\\tfrac{5}{4} - \\tfrac{3}{4} = \\tfrac{2}{4}$. So the answer is $1\\tfrac{2}{4}$."
+      }
+    ]
+  },
+  "m5-5-2-e": {
+    "lessonId": "m5-5-2",
+    "title": "Adding and Subtracting Fractions, Part 5: Solving Fraction Problems",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 17.998
+      },
+      {
+        "title": "A hiking trail",
+        "t": 43.334
+      },
+      {
+        "title": "Solve and check",
+        "t": 80.23
+      },
+      {
+        "title": "Two steps in the kitchen",
+        "t": 118.327
+      },
+      {
+        "title": "Your turn",
+        "t": 170.159
+      },
+      {
+        "title": "Summary",
+        "t": 210.144
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-2-e:q",
+        "t": 182.241,
+        "prompt": "A ribbon is $3\\dfrac{7}{10}$ m long. Mia cuts off $1\\dfrac{4}{10}$ m. How much ribbon is left?",
+        "choices": [
+          "$5\\dfrac{1}{10}$ m",
+          "$2\\dfrac{3}{10}$ m",
+          "$1\\dfrac{3}{10}$ m",
+          "$2\\dfrac{4}{10}$ m"
+        ],
+        "answer": 1,
+        "working": "Cutting off leaves less, so subtract. Wholes: $3 - 1 = 2$. Parts: $\\tfrac{7}{10} - \\tfrac{4}{10} = \\tfrac{3}{10}$. So $2\\tfrac{3}{10}$ m is left."
+      }
+    ]
+  },
+  "m5-6-1": {
+    "lessonId": "m5-6-1",
+    "title": "Ratios, Part 1: What Is a Ratio?",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting the marbles",
+        "t": 21.151
+      },
+      {
+        "title": "What is a ratio?",
+        "t": 45.144
+      },
+      {
+        "title": "Order matters",
+        "t": 80.618
+      },
+      {
+        "title": "A garden bed",
+        "t": 111.949
+      },
+      {
+        "title": "Watch out",
+        "t": 147.605
+      },
+      {
+        "title": "Your turn",
+        "t": 175.852
+      },
+      {
+        "title": "Summary",
+        "t": 208.449
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-1:q",
+        "t": 186.896,
+        "prompt": "A pencil case has $6$ pencils and $5$ erasers. What is the ratio of **erasers to pencils**?",
+        "choices": [
+          "$6 : 5$",
+          "$5 : 6$",
+          "$5 : 11$",
+          "$11 : 6$"
+        ],
+        "answer": 1,
+        "working": "Erasers come first in the words, so their number comes first: $5$ erasers to $6$ pencils is $5 : 6$."
+      }
+    ]
+  },
+  "m5-6-1-b": {
+    "lessonId": "m5-6-1",
+    "title": "Ratios, Part 2: Part-Part and Part-Whole Ratios",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts and the whole",
+        "t": 19.821
+      },
+      {
+        "title": "Part-part ratios",
+        "t": 43.846
+      },
+      {
+        "title": "Part-whole ratios",
+        "t": 63.304
+      },
+      {
+        "title": "A chess club",
+        "t": 96.627
+      },
+      {
+        "title": "Watch out",
+        "t": 135.432
+      },
+      {
+        "title": "Your turn",
+        "t": 160.03
+      },
+      {
+        "title": "Summary",
+        "t": 193.519
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-1-b:q",
+        "t": 170.613,
+        "prompt": "A pet shop has $6$ cats and $9$ dogs. What is the part-whole ratio of **cats to all the pets**?",
+        "choices": [
+          "$6 : 9$",
+          "$9 : 15$",
+          "$15 : 6$",
+          "$6 : 15$"
+        ],
+        "answer": 3,
+        "working": "The whole is $6 + 9 = 15$ pets. Cats to all the pets is $6 : 15$."
+      }
+    ]
+  },
+  "m5-6-1-c": {
+    "lessonId": "m5-6-1",
+    "title": "Ratios, Part 3: More Parts, and Amounts You Measure",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of fruit",
+        "t": 22.005
+      },
+      {
+        "title": "Pears to all the fruit",
+        "t": 39.779
+      },
+      {
+        "title": "Not bananas to bananas",
+        "t": 69.242
+      },
+      {
+        "title": "A punch recipe",
+        "t": 97.622
+      },
+      {
+        "title": "Name the parts",
+        "t": 128.432
+      },
+      {
+        "title": "Your turn",
+        "t": 148.732
+      },
+      {
+        "title": "Summary",
+        "t": 183.857
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-1-c:q",
+        "t": 161.505,
+        "prompt": "A jar has $5$ red beads, $4$ green beads and $3$ yellow beads. What is the ratio of **green beads to all the beads**?",
+        "choices": [
+          "$4 : 12$",
+          "$4 : 8$",
+          "$12 : 4$",
+          "$4 : 5$"
+        ],
+        "answer": 0,
+        "working": "The whole is $5 + 4 + 3 = 12$ beads. Green to all the beads is $4 : 12$."
+      }
+    ]
+  },
+  "m5-6-2": {
+    "lessonId": "m5-6-2",
+    "title": "Ratios, Fractions, Decimals and Percentages, Part 1: Percent Means Out of 100",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a percentage?",
+        "t": 20.1
+      },
+      {
+        "title": "A hundred grid",
+        "t": 43.465
+      },
+      {
+        "title": "One grid, four ways",
+        "t": 70.495
+      },
+      {
+        "title": "Half, all and a few",
+        "t": 107.649
+      },
+      {
+        "title": "Your turn",
+        "t": 140.627
+      },
+      {
+        "title": "Summary",
+        "t": 182.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-2:q",
+        "t": 155.458,
+        "prompt": "A grid has $100$ squares, and $48$ are shaded. Which row shows the shaded part as a ratio, a fraction, a decimal and a percentage?",
+        "choices": [
+          "$100 : 48,\\ \\dfrac{100}{48},\\ 0.48,\\ 48\\%$",
+          "$48 : 100,\\ \\dfrac{48}{100},\\ 4.8,\\ 48\\%$",
+          "$48 : 100,\\ \\dfrac{48}{100},\\ 0.48,\\ 48\\%$",
+          "$48 : 52,\\ \\dfrac{48}{100},\\ 0.48,\\ 48\\%$"
+        ],
+        "answer": 2,
+        "working": "$48$ out of $100$: the ratio $48 : 100$, the fraction $\\dfrac{48}{100}$, $48$ hundredths is $0.48$, and $48\\%$."
+      }
+    ]
+  },
+  "m5-6-2-b": {
+    "lessonId": "m5-6-2",
+    "title": "Ratios, Fractions, Decimals and Percentages, Part 2: Making the Whole 100",
+    "duration": 304,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four ways to show the same thing",
+        "t": 16.739
+      },
+      {
+        "title": "Seven out of ten",
+        "t": 49.384
+      },
+      {
+        "title": "Watch out",
+        "t": 97.959
+      },
+      {
+        "title": "Friendly wholes",
+        "t": 122.071
+      },
+      {
+        "title": "A class survey",
+        "t": 158.248
+      },
+      {
+        "title": "Quarters",
+        "t": 211.135
+      },
+      {
+        "title": "Your turn",
+        "t": 238.556
+      },
+      {
+        "title": "Summary",
+        "t": 275.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-2-b:q",
+        "t": 251.77,
+        "prompt": "A spelling test has $25$ words. Sam spells $21$ of them correctly. What percentage of the words does Sam spell correctly?",
+        "choices": [
+          "$21\\%$",
+          "$84\\%$",
+          "$42\\%$",
+          "$16\\%$"
+        ],
+        "answer": 1,
+        "working": "$25 \\times 4 = 100$, so multiply the part by $4$ as well: $\\dfrac{21}{25} = \\dfrac{84}{100} = 84\\%$."
+      }
+    ]
+  },
+  "m5-6-2-c": {
+    "lessonId": "m5-6-2",
+    "title": "Ratios, Fractions, Decimals and Percentages, Part 3: The Rest of the Whole",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The whole is 100%",
+        "t": 21.036
+      },
+      {
+        "title": "The bus",
+        "t": 56.678
+      },
+      {
+        "title": "The rest walk",
+        "t": 98.583
+      },
+      {
+        "title": "More than two parts",
+        "t": 137.504
+      },
+      {
+        "title": "Your turn",
+        "t": 171.189
+      },
+      {
+        "title": "Summary",
+        "t": 211.253
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-2-c:q",
+        "t": 183.004,
+        "prompt": "In a class of $20$ students, $7$ bring lunch from home. The rest buy lunch at school. What percentage **buy lunch**?",
+        "choices": [
+          "$35\\%$",
+          "$13\\%$",
+          "$70\\%$",
+          "$65\\%$"
+        ],
+        "answer": 3,
+        "working": "Home: $\\dfrac{7}{20} = \\dfrac{35}{100} = 35\\%$. Buy lunch: $100\\% - 35\\% = 65\\%$. Check: $\\dfrac{13}{20} = \\dfrac{65}{100}$."
+      }
+    ]
+  },
+  "m5-7-1": {
+    "lessonId": "m5-7-1",
+    "title": "Order of Operations with Parentheses, Part 1: Which Operation Comes First?",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expressions",
+        "t": 20.822
+      },
+      {
+        "title": "Parentheses",
+        "t": 48.838
+      },
+      {
+        "title": "The order of operations",
+        "t": 73.551
+      },
+      {
+        "title": "Without parentheses",
+        "t": 102.585
+      },
+      {
+        "title": "With parentheses",
+        "t": 127.93
+      },
+      {
+        "title": "Watch out",
+        "t": 167.291
+      },
+      {
+        "title": "Your turn",
+        "t": 190.872
+      },
+      {
+        "title": "Summary",
+        "t": 223.257
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-1:q",
+        "t": 197.324,
+        "prompt": "Evaluate $10 - 2 \\times 3$.",
+        "choices": [
+          "$4$",
+          "$24$",
+          "$14$",
+          "$2$"
+        ],
+        "answer": 0,
+        "working": "There are no parentheses, so multiply first: $2 \\times 3 = 6$. Then subtract: $10 - 6 = 4$."
+      }
+    ]
+  },
+  "m5-7-1-b": {
+    "lessonId": "m5-7-1",
+    "title": "Order of Operations with Parentheses, Part 2: More Steps After the Parentheses",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The order",
+        "t": 17.848
+      },
+      {
+        "title": "Multiply, then add",
+        "t": 40.405
+      },
+      {
+        "title": "Divide, then subtract",
+        "t": 74.109
+      },
+      {
+        "title": "Watch out",
+        "t": 104.98
+      },
+      {
+        "title": "One more together",
+        "t": 132.534
+      },
+      {
+        "title": "Your turn",
+        "t": 164.76
+      },
+      {
+        "title": "Summary",
+        "t": 201.998
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-1-b:q",
+        "t": 173.405,
+        "prompt": "Evaluate $3 \\times (10 - 4) + 2$.",
+        "choices": [
+          "$24$",
+          "$28$",
+          "$20$",
+          "$14$"
+        ],
+        "answer": 2,
+        "working": "Parentheses first: $10 - 4 = 6$. Then multiply: $3 \\times 6 = 18$. Then add: $18 + 2 = 20$."
+      }
+    ]
+  },
+  "m5-7-1-c": {
+    "lessonId": "m5-7-1",
+    "title": "Order of Operations with Parentheses, Part 3: Writing an Expression for a Problem",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Packs of stickers",
+        "t": 16.717
+      },
+      {
+        "title": "The expression",
+        "t": 39.599
+      },
+      {
+        "title": "Forgetting the parentheses",
+        "t": 63.299
+      },
+      {
+        "title": "Money left",
+        "t": 92.889
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 132.723
+      },
+      {
+        "title": "Your turn",
+        "t": 164.427
+      },
+      {
+        "title": "Summary",
+        "t": 200.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-1-c:q",
+        "t": 178.137,
+        "prompt": "Nia gets $3$ bags of fruit. Each bag has $5$ apples and $2$ oranges. Which expression gives the number of pieces of fruit Nia gets?",
+        "choices": [
+          "$3 \\times 5 + 2$",
+          "$3 \\times (5 + 2)$",
+          "$3 + 5 + 2$",
+          "$(3 + 5) \\times 2$"
+        ],
+        "answer": 1,
+        "working": "Each bag has $5 + 2$ pieces of fruit, and there are $3$ bags: $3 \\times (5 + 2) = 3 \\times 7 = 21$."
+      }
+    ]
+  },
+  "m5-7-2": {
+    "lessonId": "m5-7-2",
+    "title": "Algebraic Expressions, Part 1: Variables",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Variables",
+        "t": 22.567
+      },
+      {
+        "title": "Algebraic expressions",
+        "t": 55.071
+      },
+      {
+        "title": "Writing a product",
+        "t": 83.314
+      },
+      {
+        "title": "Writing a quotient",
+        "t": 123.473
+      },
+      {
+        "title": "Write it the algebra way",
+        "t": 151.408
+      },
+      {
+        "title": "Watch out",
+        "t": 177.603
+      },
+      {
+        "title": "Your turn",
+        "t": 200.042
+      },
+      {
+        "title": "Summary",
+        "t": 231.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-2:q",
+        "t": 207.844,
+        "prompt": "Write $p + p + p + p$ the algebra way.",
+        "choices": [
+          "$4 + p$",
+          "$p4$",
+          "$\\dfrac{p}{4}$",
+          "$4p$"
+        ],
+        "answer": 3,
+        "working": "Adding $p$ four times is $4 \\times p$, written with the number first and no $\\times$ sign: $4p$."
+      }
+    ]
+  },
+  "m5-7-2-b": {
+    "lessonId": "m5-7-2",
+    "title": "Algebraic Expressions, Part 2: Terms and Writing Expressions",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Terms",
+        "t": 17.428
+      },
+      {
+        "title": "Coefficients and constants",
+        "t": 43.323
+      },
+      {
+        "title": "Name the parts",
+        "t": 70.78
+      },
+      {
+        "title": "Word clues",
+        "t": 94.18
+      },
+      {
+        "title": "Tickets and parking",
+        "t": 118.814
+      },
+      {
+        "title": "Sharing crackers",
+        "t": 158.189
+      },
+      {
+        "title": "Your turn",
+        "t": 188.582
+      },
+      {
+        "title": "Summary",
+        "t": 229.924
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-2-b:q",
+        "t": 203.943,
+        "prompt": "Pens cost \\$3 each, and a pencil case costs \\$7. Which expression gives the total cost, in dollars, of $p$ pens and one pencil case?",
+        "choices": [
+          "$7p + 3$",
+          "$3 + p + 7$",
+          "$3p + 7$",
+          "$\\dfrac{p}{3} + 7$"
+        ],
+        "answer": 2,
+        "working": "“Each” means multiply: $p$ pens cost $3p$ dollars. The case is paid once, so it is the constant term: $3p + 7$."
+      }
+    ]
+  },
+  "m5-7-2-c": {
+    "lessonId": "m5-7-2",
+    "title": "Algebraic Expressions, Part 3: Evaluating an Expression",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substitute",
+        "t": 18.805
+      },
+      {
+        "title": "Multiply first",
+        "t": 42.072
+      },
+      {
+        "title": "Watch out",
+        "t": 70.926
+      },
+      {
+        "title": "A quotient",
+        "t": 98.347
+      },
+      {
+        "title": "Many values",
+        "t": 124.399
+      },
+      {
+        "title": "Your turn",
+        "t": 155.346
+      },
+      {
+        "title": "Summary",
+        "t": 188.965
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-2-c:q",
+        "t": 163.27,
+        "prompt": "Evaluate $3k + 5$ when $k = 4$.",
+        "choices": [
+          "$17$",
+          "$39$",
+          "$12$",
+          "$27$"
+        ],
+        "answer": 0,
+        "working": "Substitute: $3 \\times 4 + 5$. Multiply first: $12$. Then add: $12 + 5 = 17$."
+      }
+    ]
+  },
+  "m5-7-3": {
+    "lessonId": "m5-7-3",
+    "title": "Solving Equations, Part 1: Keeping the Balance",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equations",
+        "t": 17.821
+      },
+      {
+        "title": "Solutions",
+        "t": 47.924
+      },
+      {
+        "title": "Inverse operations",
+        "t": 73.857
+      },
+      {
+        "title": "Solve by undoing",
+        "t": 104.064
+      },
+      {
+        "title": "Watch out",
+        "t": 146.517
+      },
+      {
+        "title": "Your turn",
+        "t": 171.642
+      },
+      {
+        "title": "Summary",
+        "t": 203.45
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-3:q",
+        "t": 178.31,
+        "prompt": "Solve $n + 9 = 14$.",
+        "choices": [
+          "$n = 23$",
+          "$n = 5$",
+          "$n = 6$",
+          "$n = 14$"
+        ],
+        "answer": 1,
+        "working": "$9$ is added to $n$, so subtract $9$ from both sides: $n = 14 - 9 = 5$. Check: $5 + 9 = 14$."
+      }
+    ]
+  },
+  "m5-7-3-b": {
+    "lessonId": "m5-7-3",
+    "title": "Solving Equations, Part 2: Undoing Multiplying and Dividing",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six bags",
+        "t": 18.822
+      },
+      {
+        "title": "Undo multiplying",
+        "t": 53.46
+      },
+      {
+        "title": "Undo dividing",
+        "t": 83.429
+      },
+      {
+        "title": "Undo subtracting",
+        "t": 110.996
+      },
+      {
+        "title": "Undo with the inverse",
+        "t": 134.766
+      },
+      {
+        "title": "Your turn",
+        "t": 166.88
+      },
+      {
+        "title": "Summary",
+        "t": 197.054
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-3-b:q",
+        "t": 173.345,
+        "prompt": "Solve $8p = 56$.",
+        "choices": [
+          "$p = 448$",
+          "$p = 48$",
+          "$p = 7$",
+          "$p = 64$"
+        ],
+        "answer": 2,
+        "working": "$8p$ means $8 \\times p$, so divide both sides by $8$: $p = 56 \\div 8 = 7$. Check: $8 \\times 7 = 56$."
+      }
+    ]
+  },
+  "m5-7-3-c": {
+    "lessonId": "m5-7-3",
+    "title": "Solving Equations, Part 3: Equations with Two Operations",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bags and marbles",
+        "t": 15.833
+      },
+      {
+        "title": "Reverse order",
+        "t": 41.624
+      },
+      {
+        "title": "Two steps",
+        "t": 79.207
+      },
+      {
+        "title": "A quotient and a subtraction",
+        "t": 124.728
+      },
+      {
+        "title": "Watch out",
+        "t": 163.272
+      },
+      {
+        "title": "Your turn",
+        "t": 193.69
+      },
+      {
+        "title": "Summary",
+        "t": 225.065
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-3-c:q",
+        "t": 200.881,
+        "prompt": "Solve $2n + 5 = 17$.",
+        "choices": [
+          "$n = 11$",
+          "$n = 12$",
+          "$n = 22$",
+          "$n = 6$"
+        ],
+        "answer": 3,
+        "working": "Subtract $5$ from both sides: $2n = 12$. Divide both sides by $2$: $n = 6$. Check: $2 \\times 6 + 5 = 17$."
+      }
+    ]
+  },
+  "m5-7-3-d": {
+    "lessonId": "m5-7-3",
+    "title": "Solving Equations, Part 4: Solving Problems with Equations",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 15.525
+      },
+      {
+        "title": "Stickers",
+        "t": 41.448
+      },
+      {
+        "title": "Museum tickets",
+        "t": 91.517
+      },
+      {
+        "title": "Check and answer",
+        "t": 144.423
+      },
+      {
+        "title": "Your turn",
+        "t": 172.247
+      },
+      {
+        "title": "Summary",
+        "t": 213.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-3-d:q",
+        "t": 186.46,
+        "prompt": "Noah buys $3$ books that each cost the same, and a bookmark for \\$2. Noah pays \\$26 in all. How much does one book cost?",
+        "choices": [
+          "\\$8",
+          "\\$24",
+          "\\$28",
+          "\\$6"
+        ],
+        "answer": 0,
+        "working": "Let $b$ be the cost of one book: $3b + 2 = 26$. Subtract $2$: $3b = 24$. Divide by $3$: $b = 8$. Check: $3 \\times 8 + 2 = 26$. One book costs \\$8."
+      }
+    ]
+  },
+  "m5-8-1": {
+    "lessonId": "m5-8-1",
+    "title": "Line and Rotation Symmetry, Part 1: Lines of Symmetry",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fold a heart",
+        "t": 21.953
+      },
+      {
+        "title": "A rectangle",
+        "t": 57.815
+      },
+      {
+        "title": "The diagonal",
+        "t": 90.891
+      },
+      {
+        "title": "An arrow sign",
+        "t": 126.736
+      },
+      {
+        "title": "Your turn",
+        "t": 158.442
+      },
+      {
+        "title": "Summary",
+        "t": 189.071
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-1:q",
+        "t": 165.884,
+        "prompt": "How many lines of symmetry does a capital letter **T** have?",
+        "choices": [
+          "$0$",
+          "$2$",
+          "$1$",
+          "$4$"
+        ],
+        "answer": 2,
+        "working": "A fold down the middle of the stem makes the two halves of the top bar match. A fold across does not work, because the bar and the stem are different."
+      }
+    ]
+  },
+  "m5-8-1-b": {
+    "lessonId": "m5-8-1",
+    "title": "Line and Rotation Symmetry, Part 2: Rotation Symmetry",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotation symmetry",
+        "t": 16.31
+      },
+      {
+        "title": "Turning a pinwheel",
+        "t": 47.108
+      },
+      {
+        "title": "The order",
+        "t": 86.17
+      },
+      {
+        "title": "Two kinds of symmetry",
+        "t": 106.718
+      },
+      {
+        "title": "Use tracing paper",
+        "t": 136.597
+      },
+      {
+        "title": "Watch out",
+        "t": 159.558
+      },
+      {
+        "title": "Your turn",
+        "t": 188.159
+      },
+      {
+        "title": "Summary",
+        "t": 224.074
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-1-b:q",
+        "t": 205.809,
+        "prompt": "A shape fits exactly on itself after turns of $120^\\circ$, $240^\\circ$ and $360^\\circ$, and at no other turns. What is its order of rotation symmetry?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$2$",
+          "$0$"
+        ],
+        "answer": 1,
+        "working": "It fits $3$ times in one full turn, counting the full turn, so its order is $3$."
+      }
+    ]
+  },
+  "m5-8-1-c": {
+    "lessonId": "m5-8-1",
+    "title": "Line and Rotation Symmetry, Part 3: Central Symmetry",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central symmetry",
+        "t": 16.646
+      },
+      {
+        "title": "A straight line through the centre",
+        "t": 38.758
+      },
+      {
+        "title": "Even orders",
+        "t": 88.028
+      },
+      {
+        "title": "Letters",
+        "t": 129.285
+      },
+      {
+        "title": "Your turn",
+        "t": 156.756
+      },
+      {
+        "title": "Summary",
+        "t": 186.401
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-1-c:q",
+        "t": 163.201,
+        "prompt": "Which of these shapes has central symmetry?",
+        "choices": [
+          "An arrow sign",
+          "A triangle with $3$ equal sides",
+          "A heart",
+          "A rectangle"
+        ],
+        "answer": 3,
+        "working": "A rectangle has order $2$: it fits on itself after a half turn about its centre. The other shapes do not fit after a half turn."
+      }
+    ]
+  },
+  "m5-8-1-d": {
+    "lessonId": "m5-8-1",
+    "title": "Line and Rotation Symmetry, Part 4: Symmetry in Nature and Designs",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "In nature",
+        "t": 19.532
+      },
+      {
+        "title": "In designs",
+        "t": 52.21
+      },
+      {
+        "title": "An eight-pointed star",
+        "t": 85.522
+      },
+      {
+        "title": "A quilt block",
+        "t": 109.26
+      },
+      {
+        "title": "Symmetry in 3-D",
+        "t": 149.439
+      },
+      {
+        "title": "Your turn",
+        "t": 172.352
+      },
+      {
+        "title": "Summary",
+        "t": 204.616
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-1-d:q",
+        "t": 182.508,
+        "prompt": "A sea star has $5$ arms that are all the same. What is its order of rotation symmetry?",
+        "choices": [
+          "$5$",
+          "$1$",
+          "$10$",
+          "$0$"
+        ],
+        "answer": 0,
+        "working": "A turn of one fifth of a full turn moves each arm onto the next arm. It fits $5$ times in a full turn, so the order is $5$."
+      }
+    ]
+  },
+  "m5-8-2": {
+    "lessonId": "m5-8-2",
+    "title": "Symmetry of Polygons, Part 1: Regular Polygons",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polygons",
+        "t": 21.842
+      },
+      {
+        "title": "A regular hexagon",
+        "t": 58.971
+      },
+      {
+        "title": "The pattern",
+        "t": 88.312
+      },
+      {
+        "title": "Sides, lines and turns",
+        "t": 113.116
+      },
+      {
+        "title": "A stop sign",
+        "t": 141.794
+      },
+      {
+        "title": "Your turn",
+        "t": 183.31
+      },
+      {
+        "title": "Summary",
+        "t": 223.28
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-2:q",
+        "t": 195.044,
+        "prompt": "How many lines of symmetry does a regular pentagon have, and what is the smallest turn that makes it fit on itself?",
+        "choices": [
+          "$5$ lines; $60^\\circ$",
+          "$10$ lines; $36^\\circ$",
+          "$5$ lines; $72^\\circ$",
+          "$4$ lines; $90^\\circ$"
+        ],
+        "answer": 2,
+        "working": "A regular pentagon has $5$ sides, so $5$ lines of symmetry and order $5$. The smallest turn is $360^\\circ \\div 5 = 72^\\circ$."
+      }
+    ]
+  },
+  "m5-8-2-b": {
+    "lessonId": "m5-8-2",
+    "title": "Symmetry of Polygons, Part 2: Polygons That Are Not Regular",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A rectangle",
+        "t": 19.266
+      },
+      {
+        "title": "A rhombus",
+        "t": 52.066
+      },
+      {
+        "title": "Watch out",
+        "t": 76.508
+      },
+      {
+        "title": "Triangles",
+        "t": 96.969
+      },
+      {
+        "title": "An isosceles triangle",
+        "t": 128.427
+      },
+      {
+        "title": "Your turn",
+        "t": 156.677
+      },
+      {
+        "title": "Summary",
+        "t": 194.76
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-2-b:q",
+        "t": 168.413,
+        "prompt": "A rectangle is **not** a square. How many lines of symmetry does it have, and what is its order of rotation symmetry?",
+        "choices": [
+          "$4$ lines; order $4$",
+          "$2$ lines; order $4$",
+          "$4$ lines; order $2$",
+          "$2$ lines; order $2$"
+        ],
+        "answer": 3,
+        "working": "Only the fold up and down and the fold across work, so it has $2$ lines. It fits after a half turn and a full turn, so its order is $2$."
+      }
+    ]
+  },
+  "m5-8-2-c": {
+    "lessonId": "m5-8-2",
+    "title": "Symmetry of Polygons, Part 3: Circles, and Sorting Shapes",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A round coaster",
+        "t": 16.937
+      },
+      {
+        "title": "Two questions",
+        "t": 67.331
+      },
+      {
+        "title": "Sorting shapes",
+        "t": 108.178
+      },
+      {
+        "title": "Sorting a parallelogram",
+        "t": 142.491
+      },
+      {
+        "title": "Your turn",
+        "t": 178.498
+      },
+      {
+        "title": "Summary",
+        "t": 210.595
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-2-c:q",
+        "t": 187.042,
+        "prompt": "Which group does a triangle with $3$ equal sides belong to?",
+        "choices": [
+          "Both: lines and rotation",
+          "Lines only",
+          "Rotation only",
+          "Neither"
+        ],
+        "answer": 0,
+        "working": "A triangle with $3$ equal sides is a regular polygon: it has $3$ lines of symmetry and an order of rotation symmetry of $3$. It has both."
+      }
+    ]
+  },
+  "m5-9-1": {
+    "lessonId": "m5-9-1",
+    "title": "Points on a Coordinate Grid, Part 1: Reading a Point",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The coordinate grid",
+        "t": 24.384
+      },
+      {
+        "title": "Coordinates",
+        "t": 75.168
+      },
+      {
+        "title": "Reading a point",
+        "t": 105.925
+      },
+      {
+        "title": "Across, then up",
+        "t": 142.228
+      },
+      {
+        "title": "Your turn",
+        "t": 177.906
+      },
+      {
+        "title": "Summary",
+        "t": 210.435
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-1:q",
+        "t": 188.947,
+        "prompt": "Point $Q$ is $3$ units across and $7$ units up from $(0,\\ 0)$. What are the coordinates of $Q$?",
+        "choices": [
+          "$(7,\\ 3)$",
+          "$(3,\\ 7)$",
+          "$(3,\\ 0)$",
+          "$(0,\\ 7)$"
+        ],
+        "answer": 1,
+        "working": "Across first, then up: $Q$ is at $(3,\\ 7)$."
+      }
+    ]
+  },
+  "m5-9-1-b": {
+    "lessonId": "m5-9-1",
+    "title": "Points on a Coordinate Grid, Part 2: Plotting a Point",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 19.219
+      },
+      {
+        "title": "Plotting a point",
+        "t": 47.742
+      },
+      {
+        "title": "Points on the axes",
+        "t": 86.804
+      },
+      {
+        "title": "A treasure map",
+        "t": 127.19
+      },
+      {
+        "title": "Your turn",
+        "t": 164.571
+      },
+      {
+        "title": "Summary",
+        "t": 194.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-1-b:q",
+        "t": 171.807,
+        "prompt": "Which point is on the **horizontal** axis?",
+        "choices": [
+          "$(0,\\ 3)$",
+          "$(4,\\ 4)$",
+          "$(2,\\ 9)$",
+          "$(6,\\ 0)$"
+        ],
+        "answer": 3,
+        "working": "Its second number is $0$: go $6$ across and do not move up, so $(6,\\ 0)$ sits on the horizontal axis."
+      }
+    ]
+  },
+  "m5-9-1-c": {
+    "lessonId": "m5-9-1",
+    "title": "Points on a Coordinate Grid, Part 3: Moving Between Points",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From A to B",
+        "t": 21.733
+      },
+      {
+        "title": "Which number changes?",
+        "t": 61.627
+      },
+      {
+        "title": "Going back",
+        "t": 90.446
+      },
+      {
+        "title": "Planning a path",
+        "t": 122.722
+      },
+      {
+        "title": "Your turn",
+        "t": 163.101
+      },
+      {
+        "title": "Summary",
+        "t": 200.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-1-c:q",
+        "t": 173.411,
+        "prompt": "Point $M$ is at $(3,\\ 8)$. You move $4$ units right, then $5$ units down. Where do you land?",
+        "choices": [
+          "$(7,\\ 3)$",
+          "$(7,\\ 13)$",
+          "$(8,\\ 4)$",
+          "$(4,\\ 5)$"
+        ],
+        "answer": 0,
+        "working": "Right adds to the first number: $3 + 4 = 7$. Down subtracts from the second number: $8 - 5 = 3$. You land at $(7,\\ 3)$."
+      }
+    ]
+  },
+  "m5-9-2": {
+    "lessonId": "m5-9-2",
+    "title": "Polygons on a Coordinate Grid, Part 1: Naming the Vertices",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a vertex?",
+        "t": 27.42
+      },
+      {
+        "title": "Reading the vertices",
+        "t": 60.206
+      },
+      {
+        "title": "Watch out",
+        "t": 103.838
+      },
+      {
+        "title": "A four-sided shape",
+        "t": 132.938
+      },
+      {
+        "title": "Your turn",
+        "t": 168.179
+      },
+      {
+        "title": "Summary",
+        "t": 206.66
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-2:q",
+        "t": 182.56,
+        "prompt": "Triangle $XYZ$ has vertices $X(2,\\ 3)$, $Y(6,\\ 3)$ and $Z(4,\\ 8)$. Which vertex is the **highest** on the grid?",
+        "choices": [
+          "$X$",
+          "$Y$",
+          "$Z$",
+          "$X$ and $Y$ are equally high, and higher than $Z$"
+        ],
+        "answer": 2,
+        "working": "The second number tells how far up. $Z$ has the greatest second number, $8$, so it is the highest."
+      }
+    ]
+  },
+  "m5-9-2-b": {
+    "lessonId": "m5-9-2",
+    "title": "Polygons on a Coordinate Grid, Part 2: Drawing a Polygon",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 18.381
+      },
+      {
+        "title": "A rectangle",
+        "t": 43.912
+      },
+      {
+        "title": "Out of order",
+        "t": 90.49
+      },
+      {
+        "title": "A triangle",
+        "t": 116.775
+      },
+      {
+        "title": "Your turn",
+        "t": 156.021
+      },
+      {
+        "title": "Summary",
+        "t": 194.769
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-2-b:q",
+        "t": 168.942,
+        "prompt": "You plot $A(2,\\ 2)$, $B(7,\\ 2)$, $C(7,\\ 6)$ and $D(2,\\ 6)$, then join them in order. What shape do you get?",
+        "choices": [
+          "A rectangle $5$ units wide and $4$ units tall",
+          "A rectangle $4$ units wide and $5$ units tall",
+          "A triangle",
+          "A bow-tie"
+        ],
+        "answer": 0,
+        "working": "Joined in order, the four points make a rectangle. It is $7 - 2 = 5$ units wide and $6 - 2 = 4$ units tall."
+      }
+    ]
+  },
+  "m5-9-2-c": {
+    "lessonId": "m5-9-2",
+    "title": "Polygons on a Coordinate Grid, Part 3: The Missing Corner",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rectangles on a grid",
+        "t": 20.191
+      },
+      {
+        "title": "The missing corner",
+        "t": 64.766
+      },
+      {
+        "title": "Building a rectangle",
+        "t": 110.089
+      },
+      {
+        "title": "Your turn",
+        "t": 158.707
+      },
+      {
+        "title": "Summary",
+        "t": 199.993
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-2-c:q",
+        "t": 173.03,
+        "prompt": "Three vertices of a rectangle are $(1,\\ 2)$, $(1,\\ 6)$ and $(8,\\ 6)$. Its sides run along grid lines. Where is the fourth vertex?",
+        "choices": [
+          "$(2,\\ 8)$",
+          "$(6,\\ 1)$",
+          "$(8,\\ 2)$",
+          "$(8,\\ 8)$"
+        ],
+        "answer": 2,
+        "working": "It is straight down from $(8,\\ 6)$, so its first number is $8$. It is straight across from $(1,\\ 2)$, so its second number is $2$. The fourth vertex is $(8,\\ 2)$."
+      }
+    ]
+  },
+  "m5-10-1": {
+    "lessonId": "m5-10-1",
+    "title": "Units of Area, Part 1: What Is Area?",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is area?",
+        "t": 18.994
+      },
+      {
+        "title": "The square centimetre",
+        "t": 55.947
+      },
+      {
+        "title": "Counting squares",
+        "t": 92.882
+      },
+      {
+        "title": "Watch out",
+        "t": 128.514
+      },
+      {
+        "title": "Your turn",
+        "t": 159.222
+      },
+      {
+        "title": "Summary",
+        "t": 195.791
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-1:q",
+        "t": 172.382,
+        "prompt": "Each small square is $1\\text{ cm}^2$. A rectangle on grid paper is covered by $3$ rows of $6$ squares. What is its area?",
+        "choices": [
+          "$9\\text{ cm}^2$",
+          "$18\\text{ cm}^2$",
+          "$18\\text{ cm}$",
+          "$36\\text{ cm}^2$"
+        ],
+        "answer": 1,
+        "working": "$3$ rows of $6$ squares is $6 + 6 + 6 = 18$ squares, so the area is $18\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m5-10-1-b": {
+    "lessonId": "m5-10-1",
+    "title": "Units of Area, Part 2: Square Metres and Square Kilometres",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The square metre",
+        "t": 21.986
+      },
+      {
+        "title": "The square kilometre",
+        "t": 54.527
+      },
+      {
+        "title": "Choosing a unit",
+        "t": 88.033
+      },
+      {
+        "title": "A hockey rink",
+        "t": 124.969
+      },
+      {
+        "title": "Your turn",
+        "t": 158.981
+      },
+      {
+        "title": "Summary",
+        "t": 188.656
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-1-b:q",
+        "t": 165.676,
+        "prompt": "Which unit is best for the area of a city?",
+        "choices": [
+          "$\\text{cm}^2$",
+          "$\\text{m}^2$",
+          "$\\text{cm}$",
+          "$\\text{km}^2$"
+        ],
+        "answer": 3,
+        "working": "A city is a very large place, so square kilometres fit best."
+      }
+    ]
+  },
+  "m5-10-1-c": {
+    "lessonId": "m5-10-1",
+    "title": "Units of Area, Part 3: How the Units Are Related",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inside a square metre",
+        "t": 24.939
+      },
+      {
+        "title": "Watch out",
+        "t": 78.943
+      },
+      {
+        "title": "Square kilometres",
+        "t": 106.448
+      },
+      {
+        "title": "Changing units",
+        "t": 143.013
+      },
+      {
+        "title": "Your turn",
+        "t": 190.184
+      },
+      {
+        "title": "Summary",
+        "t": 226.954
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-1-c:q",
+        "t": 200.037,
+        "prompt": "A garden has an area of $5\\text{ m}^2$. What is its area in square centimetres?",
+        "choices": [
+          "$500\\text{ cm}^2$",
+          "$5\\,000\\text{ cm}^2$",
+          "$50\\,000\\text{ cm}^2$",
+          "$500\\,000\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "Each square metre is $10\\,000\\text{ cm}^2$, so $5 \\times 10\\,000 = 50\\,000\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m5-10-1-d": {
+    "lessonId": "m5-10-1",
+    "title": "Units of Area, Part 4: Estimating Area",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Benchmarks",
+        "t": 19.999
+      },
+      {
+        "title": "Whole and half squares",
+        "t": 57.43
+      },
+      {
+        "title": "A quick check",
+        "t": 103.888
+      },
+      {
+        "title": "Your turn",
+        "t": 131.727
+      },
+      {
+        "title": "Summary",
+        "t": 165.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-1-d:q",
+        "t": 142.664,
+        "prompt": "On centimetre grid paper, a shape covers $9$ whole squares and $6$ half squares. What is its area?",
+        "choices": [
+          "$12\\text{ cm}^2$",
+          "$15\\text{ cm}^2$",
+          "$18\\text{ cm}^2$",
+          "$21\\text{ cm}^2$"
+        ],
+        "answer": 0,
+        "working": "$6$ halves make $6 \\div 2 = 3$ whole squares, so the area is $9 + 3 = 12\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m5-10-2": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 1: The Area of a Rectangle",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rows of squares",
+        "t": 17.861
+      },
+      {
+        "title": "The rule",
+        "t": 58.117
+      },
+      {
+        "title": "A community garden",
+        "t": 91.548
+      },
+      {
+        "title": "Your turn",
+        "t": 138.081
+      },
+      {
+        "title": "Summary",
+        "t": 168.971
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2:q",
+        "t": 148.268,
+        "prompt": "A classroom rug is a rectangle $4\\text{ m}$ long and $3\\text{ m}$ wide. What is its area?",
+        "choices": [
+          "$7\\text{ m}^2$",
+          "$14\\text{ m}$",
+          "$12\\text{ m}$",
+          "$12\\text{ m}^2$"
+        ],
+        "answer": 3,
+        "working": "Area $=$ length $\\times$ width $= 4 \\times 3 = 12$, so the area is $12\\text{ m}^2$."
+      }
+    ]
+  },
+  "m5-10-2-b": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 2: Finding a Missing Side",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backwards",
+        "t": 19.226
+      },
+      {
+        "title": "A paper banner",
+        "t": 61.593
+      },
+      {
+        "title": "Check by multiplying",
+        "t": 115.898
+      },
+      {
+        "title": "Your turn",
+        "t": 147.441
+      },
+      {
+        "title": "Summary",
+        "t": 182.583
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2-b:q",
+        "t": 159.654,
+        "prompt": "A rectangular poster has an area of $72\\text{ cm}^2$. It is $8\\text{ cm}$ wide. How long is it?",
+        "choices": [
+          "$64\\text{ cm}$",
+          "$9\\text{ cm}$",
+          "$576\\text{ cm}$",
+          "$80\\text{ cm}$"
+        ],
+        "answer": 1,
+        "working": "Length $= 72 \\div 8 = 9$, so it is $9\\text{ cm}$ long. Check: $9 \\times 8 = 72$ ✓"
+      }
+    ]
+  },
+  "m5-10-2-c": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 3: Perimeter and Area",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Perimeter",
+        "t": 19.984
+      },
+      {
+        "title": "A patio",
+        "t": 59.549
+      },
+      {
+        "title": "Fence or grass?",
+        "t": 104.685
+      },
+      {
+        "title": "Your turn",
+        "t": 140.165
+      },
+      {
+        "title": "Summary",
+        "t": 173.946
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2-c:q",
+        "t": 150.586,
+        "prompt": "A rectangular picture is $6\\text{ cm}$ long and $4\\text{ cm}$ wide. What is its **perimeter**?",
+        "choices": [
+          "$24\\text{ cm}^2$",
+          "$10\\text{ cm}$",
+          "$24\\text{ cm}$",
+          "$20\\text{ cm}$"
+        ],
+        "answer": 3,
+        "working": "Add all four sides: $6 + 4 + 6 + 4 = 20$, so the perimeter is $20\\text{ cm}$."
+      }
+    ]
+  },
+  "m5-10-2-d": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 4: Same Area, Different Perimeters",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four rectangles",
+        "t": 18.044
+      },
+      {
+        "title": "Comparing perimeters",
+        "t": 58.366
+      },
+      {
+        "title": "The square wins",
+        "t": 98.763
+      },
+      {
+        "title": "Your turn",
+        "t": 153.466
+      },
+      {
+        "title": "Summary",
+        "t": 187.301
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2-d:q",
+        "t": 164.149,
+        "prompt": "Each rectangle has an area of $16\\text{ m}^2$. Which one uses the **least** fencing?",
+        "choices": [
+          "$16\\text{ m}$ by $1\\text{ m}$",
+          "$4\\text{ m}$ by $4\\text{ m}$",
+          "$8\\text{ m}$ by $2\\text{ m}$",
+          "They all use the same."
+        ],
+        "answer": 1,
+        "working": "The perimeters are $34\\text{ m}$, $16\\text{ m}$ and $20\\text{ m}$. The square, $4\\text{ m}$ by $4\\text{ m}$, uses the least."
+      }
+    ]
+  },
+  "m5-10-2-e": {
+    "lessonId": "m5-10-2",
+    "title": "Area and Perimeter of Rectangles, Part 5: Shapes Made of Rectangles",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An L-shaped room",
+        "t": 17.258
+      },
+      {
+        "title": "Split and add",
+        "t": 51.13
+      },
+      {
+        "title": "Another way to check",
+        "t": 89.494
+      },
+      {
+        "title": "Your turn",
+        "t": 125.265
+      },
+      {
+        "title": "Summary",
+        "t": 164.486
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-2-e:q",
+        "t": 140.495,
+        "prompt": "An L-shaped garden is split into two rectangles. One is $5\\text{ m}$ by $4\\text{ m}$, and the other is $3\\text{ m}$ by $2\\text{ m}$. What is the area of the garden?",
+        "choices": [
+          "$14\\text{ m}^2$",
+          "$20\\text{ m}^2$",
+          "$26\\text{ m}^2$",
+          "$120\\text{ m}^2$"
+        ],
+        "answer": 2,
+        "working": "$5 \\times 4 = 20$ and $3 \\times 2 = 6$. Add: $20 + 6 = 26\\text{ m}^2$."
+      }
+    ]
+  },
+  "m5-11-1": {
+    "lessonId": "m5-11-1",
+    "title": "Arithmetic Sequences in Tables and Graphs, Part 1: Positions and Terms",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cup towers",
+        "t": 23.198
+      },
+      {
+        "title": "Sequence, term and position",
+        "t": 58.32
+      },
+      {
+        "title": "Arithmetic sequences",
+        "t": 93.354
+      },
+      {
+        "title": "Finding a term",
+        "t": 124.706
+      },
+      {
+        "title": "Watch out",
+        "t": 149.105
+      },
+      {
+        "title": "Your turn",
+        "t": 177.288
+      },
+      {
+        "title": "Summary",
+        "t": 208.943
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-1:q",
+        "t": 188.329,
+        "prompt": "In the sequence $5,\\ 9,\\ 13,\\ 17,\\ 21,\\ \\ldots$, what is the term at position $4$?",
+        "choices": [
+          "$17$",
+          "$13$",
+          "$21$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "Count from position $1$: $5$, $9$, $13$, $17$. The term at position $4$ is $17$."
+      }
+    ]
+  },
+  "m5-11-1-b": {
+    "lessonId": "m5-11-1",
+    "title": "Arithmetic Sequences in Tables and Graphs, Part 2: Tables of Values",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table of values",
+        "t": 17.264
+      },
+      {
+        "title": "Finding the change",
+        "t": 53.141
+      },
+      {
+        "title": "Going further",
+        "t": 90.551
+      },
+      {
+        "title": "Your turn",
+        "t": 114.279
+      },
+      {
+        "title": "Summary",
+        "t": 154.324
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-1-b:q",
+        "t": 128.771,
+        "prompt": "A table of values has the positions $1,\\ 2,\\ 3,\\ 4,\\ 5$ and the terms $7,\\ 12,\\ ?,\\ 22,\\ 27$. What is the missing term?",
+        "choices": [
+          "$16$",
+          "$17$",
+          "$19$",
+          "$13$"
+        ],
+        "answer": 1,
+        "working": "Each term is $12 - 7 = 5$ more than the one before, so the missing term is $12 + 5 = 17$. Check: $17 + 5 = 22$ ✓"
+      }
+    ]
+  },
+  "m5-11-1-c": {
+    "lessonId": "m5-11-1",
+    "title": "Arithmetic Sequences in Tables and Graphs, Part 3: Points on a Grid",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 17.244
+      },
+      {
+        "title": "Plotting the points",
+        "t": 46.865
+      },
+      {
+        "title": "Watch out",
+        "t": 88.484
+      },
+      {
+        "title": "Your turn",
+        "t": 111.248
+      },
+      {
+        "title": "Summary",
+        "t": 145.649
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-1-c:q",
+        "t": 125.114,
+        "prompt": "The sequence $3,\\ 6,\\ 9,\\ 12,\\ \\ldots$ is plotted as points (position, term). Which point is for position $3$?",
+        "choices": [
+          "$(9,\\ 3)$",
+          "$(3,\\ 3)$",
+          "$(3,\\ 12)$",
+          "$(3,\\ 9)$"
+        ],
+        "answer": 3,
+        "working": "The term at position $3$ is $9$. Position first, term second: $(3,\\ 9)$."
+      }
+    ]
+  },
+  "m5-11-1-d": {
+    "lessonId": "m5-11-1",
+    "title": "Arithmetic Sequences in Tables and Graphs, Part 4: A Straight Line",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Steps on the graph",
+        "t": 19.624
+      },
+      {
+        "title": "Checking your work",
+        "t": 62.615
+      },
+      {
+        "title": "Going past the graph",
+        "t": 91.22
+      },
+      {
+        "title": "Your turn",
+        "t": 132.812
+      },
+      {
+        "title": "Summary",
+        "t": 173.685
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-1-d:q",
+        "t": 146.918,
+        "prompt": "A graph shows the points $(1,\\ 4)$, $(2,\\ 6)$, $(3,\\ 8)$ and $(4,\\ 10)$. If the pattern continues, what is the term at position $6$?",
+        "choices": [
+          "$14$",
+          "$12$",
+          "$16$",
+          "$6$"
+        ],
+        "answer": 0,
+        "working": "The terms go up by $2$: position $5$ is $10 + 2 = 12$, and position $6$ is $12 + 2 = 14$."
+      }
+    ]
+  },
+  "m5-11-2": {
+    "lessonId": "m5-11-2",
+    "title": "Rules and Missing Terms, Part 1: A Rule from Position to Term",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a rule?",
+        "t": 20.711
+      },
+      {
+        "title": "A rule that multiplies",
+        "t": 48.827
+      },
+      {
+        "title": "A rule that adds",
+        "t": 92.936
+      },
+      {
+        "title": "Watch out",
+        "t": 123.343
+      },
+      {
+        "title": "Your turn",
+        "t": 162.076
+      },
+      {
+        "title": "Summary",
+        "t": 199.066
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-2:q",
+        "t": 175.366,
+        "prompt": "A table has the positions $1,\\ 2,\\ 3,\\ 4$ and the terms $5,\\ 10,\\ 15,\\ 20$. Which rule fits every column?",
+        "choices": [
+          "$\\text{term} = \\text{position} + 5$",
+          "$\\text{term} = \\text{position} + 4$",
+          "$\\text{term} = 5 \\times \\text{position}$",
+          "$\\text{term} = 4 \\times \\text{position}$"
+        ],
+        "answer": 2,
+        "working": "$5 = 5 \\times 1$, $10 = 5 \\times 2$, $15 = 5 \\times 3$ and $20 = 5 \\times 4$, so $\\text{term} = 5 \\times \\text{position}$."
+      }
+    ]
+  },
+  "m5-11-2-b": {
+    "lessonId": "m5-11-2",
+    "title": "Rules and Missing Terms, Part 2: Writing an Expression",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Variables",
+        "t": 18.364
+      },
+      {
+        "title": "What 4n means",
+        "t": 50.74
+      },
+      {
+        "title": "From a rule to an expression",
+        "t": 82.142
+      },
+      {
+        "title": "Checking with a table",
+        "t": 109.786
+      },
+      {
+        "title": "Your turn",
+        "t": 137.806
+      },
+      {
+        "title": "Summary",
+        "t": 166.27
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-2-b:q",
+        "t": 146.479,
+        "prompt": "Which expression matches the rule $\\text{term} = \\text{position} + 7$?",
+        "choices": [
+          "$n + 7$",
+          "$7n$",
+          "$n - 7$",
+          "$7$"
+        ],
+        "answer": 0,
+        "working": "Replace the word position with $n$: $n + 7$."
+      }
+    ]
+  },
+  "m5-11-2-c": {
+    "lessonId": "m5-11-2",
+    "title": "Rules and Missing Terms, Part 3: Finding Any Term",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The term at position 25",
+        "t": 15.887
+      },
+      {
+        "title": "Using a table",
+        "t": 54.44
+      },
+      {
+        "title": "Why a rule is faster",
+        "t": 91.686
+      },
+      {
+        "title": "Your turn",
+        "t": 120.861
+      },
+      {
+        "title": "Summary",
+        "t": 151.969
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-2-c:q",
+        "t": 130.842,
+        "prompt": "The expression $6n$ gives the term at position $n$. What is the term at position $12$?",
+        "choices": [
+          "$18$",
+          "$60$",
+          "$72$",
+          "$612$"
+        ],
+        "answer": 2,
+        "working": "Replace $n$ with $12$: $6 \\times 12 = 72$."
+      }
+    ]
+  },
+  "m5-11-2-d": {
+    "lessonId": "m5-11-2",
+    "title": "Rules and Missing Terms, Part 4: Working Forward and Backward",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Spiders and legs",
+        "t": 19.865
+      },
+      {
+        "title": "Working forward",
+        "t": 58.205
+      },
+      {
+        "title": "Working backward",
+        "t": 92.214
+      },
+      {
+        "title": "Undo the rule",
+        "t": 133.69
+      },
+      {
+        "title": "Your turn",
+        "t": 163.84
+      },
+      {
+        "title": "Summary",
+        "t": 198.455
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-2-d:q",
+        "t": 173.982,
+        "prompt": "The terms of a sequence follow the rule $n + 9$. Which position has the term $30$?",
+        "choices": [
+          "$39$",
+          "$21$",
+          "$270$",
+          "$20$"
+        ],
+        "answer": 1,
+        "working": "The rule adds $9$, so subtract $9$ to go back: $30 - 9 = 21$. Check: $21 + 9 = 30$ ✓"
+      }
+    ]
+  },
+  "m5-12-1": {
+    "lessonId": "m5-12-1",
+    "title": "Frequency and the Mode, Part 1: Categories and Frequency",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Categories and frequency",
+        "t": 22.162
+      },
+      {
+        "title": "Making a tally chart",
+        "t": 56.616
+      },
+      {
+        "title": "Counting the marks",
+        "t": 99.712
+      },
+      {
+        "title": "Bundles of five",
+        "t": 130.287
+      },
+      {
+        "title": "Your turn",
+        "t": 158.82
+      },
+      {
+        "title": "Summary",
+        "t": 192.72
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-1:q",
+        "t": 170.605,
+        "prompt": "In a tally chart, the row for Swimming has two bundles of five and three more marks. What is the frequency of Swimming?",
+        "choices": [
+          "$5$",
+          "$3$",
+          "$10$",
+          "$13$"
+        ],
+        "answer": 3,
+        "working": "Count the bundles by fives: $5$, $10$. Then count on the extra marks: $11$, $12$, $13$."
+      }
+    ]
+  },
+  "m5-12-1-b": {
+    "lessonId": "m5-12-1",
+    "title": "Frequency and the Mode, Part 2: The Mode",
+    "duration": 162,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The mode",
+        "t": 16.988
+      },
+      {
+        "title": "Reading a bar graph",
+        "t": 44.754
+      },
+      {
+        "title": "Watch out",
+        "t": 80.328
+      },
+      {
+        "title": "Your turn",
+        "t": 107.001
+      },
+      {
+        "title": "Summary",
+        "t": 137.937
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-1-b:q",
+        "t": 119.194,
+        "prompt": "A class voted for a class pet: Fish $5$, Hamster $8$, Rabbit $6$, Bird $2$. What is the mode?",
+        "choices": [
+          "$8$",
+          "Fish",
+          "Hamster",
+          "Rabbit"
+        ],
+        "answer": 2,
+        "working": "Hamster has the greatest frequency, $8$, so the mode is Hamster."
+      }
+    ]
+  },
+  "m5-12-1-c": {
+    "lessonId": "m5-12-1",
+    "title": "Frequency and the Mode, Part 3: One Mode, Two Modes or None",
+    "duration": 164,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three cases",
+        "t": 16.777
+      },
+      {
+        "title": "Two modes",
+        "t": 53.486
+      },
+      {
+        "title": "No mode",
+        "t": 83.231
+      },
+      {
+        "title": "Your turn",
+        "t": 105.34
+      },
+      {
+        "title": "Summary",
+        "t": 138.906
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-1-c:q",
+        "t": 117.127,
+        "prompt": "Votes for a team colour: Red $6$, Blue $9$, Green $9$, Yellow $3$. What is the mode?",
+        "choices": [
+          "Blue and Green",
+          "Blue",
+          "No mode",
+          "$9$"
+        ],
+        "answer": 0,
+        "working": "The greatest frequency is $9$, and two colours have it: Blue and Green. There are two modes."
+      }
+    ]
+  },
+  "m5-12-1-d": {
+    "lessonId": "m5-12-1",
+    "title": "Frequency and the Mode, Part 4: Using the Mode",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Statistical questions",
+        "t": 18.81
+      },
+      {
+        "title": "Numbers as categories",
+        "t": 54.638
+      },
+      {
+        "title": "Value or frequency?",
+        "t": 97.499
+      },
+      {
+        "title": "Your turn",
+        "t": 127.505
+      },
+      {
+        "title": "Summary",
+        "t": 163.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-1-d:q",
+        "t": 142.809,
+        "prompt": "Students said how many books they read last month: $2,\\ 3,\\ 3,\\ 1,\\ 3,\\ 2,\\ 0,\\ 3,\\ 1,\\ 2$. What is the mode?",
+        "choices": [
+          "$4$ books",
+          "$2$ books",
+          "$10$ books",
+          "$3$ books"
+        ],
+        "answer": 3,
+        "working": "$3$ appears $4$ times, more than any other value ($2$ appears $3$ times, $1$ twice and $0$ once). The mode is $3$ books."
+      }
+    ]
+  },
+  "m5-12-2": {
+    "lessonId": "m5-12-2",
+    "title": "Collecting and Displaying Data, Part 1: Survey Questions",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of questions",
+        "t": 19.117
+      },
+      {
+        "title": "Sorting into categories",
+        "t": 67.573
+      },
+      {
+        "title": "Choosing a survey question",
+        "t": 103.748
+      },
+      {
+        "title": "Your turn",
+        "t": 150.554
+      },
+      {
+        "title": "Summary",
+        "t": 178.445
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-2:q",
+        "t": 157.052,
+        "prompt": "Which of these is a **closed-list** question?",
+        "choices": [
+          "What is your favourite animal?",
+          "Which pet would you like best: a cat, a dog, a fish or a rabbit?",
+          "What did you do on the weekend?",
+          "What is your favourite song?"
+        ],
+        "answer": 1,
+        "working": "It gives a list of answers to choose from. The other questions let people give any answer."
+      }
+    ]
+  },
+  "m5-12-2-b": {
+    "lessonId": "m5-12-2",
+    "title": "Collecting and Displaying Data, Part 2: Frequency Tables",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The answers",
+        "t": 17.222
+      },
+      {
+        "title": "The frequency table",
+        "t": 57.333
+      },
+      {
+        "title": "Why a table helps",
+        "t": 94.056
+      },
+      {
+        "title": "Your turn",
+        "t": 120.144
+      },
+      {
+        "title": "Summary",
+        "t": 154.753
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-2-b:q",
+        "t": 132.157,
+        "prompt": "A frequency table shows: Cats $7$, Dogs $9$, Fish $4$, Birds $5$. How many people answered the survey?",
+        "choices": [
+          "$9$",
+          "$4$",
+          "$25$",
+          "$20$"
+        ],
+        "answer": 2,
+        "working": "The frequencies add up to the number of answers: $7 + 9 + 4 + 5 = 25$."
+      }
+    ]
+  },
+  "m5-12-2-c": {
+    "lessonId": "m5-12-2",
+    "title": "Collecting and Displaying Data, Part 3: Bar Graphs and Dot Plots",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bar graphs",
+        "t": 16.987
+      },
+      {
+        "title": "Dot plots",
+        "t": 63.005
+      },
+      {
+        "title": "Reading a dot plot",
+        "t": 98.86
+      },
+      {
+        "title": "Watch out",
+        "t": 126.281
+      },
+      {
+        "title": "Your turn",
+        "t": 150.979
+      },
+      {
+        "title": "Summary",
+        "t": 187.401
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-2-c:q",
+        "t": 163.17,
+        "prompt": "On a dot plot of the number of brothers and sisters students have, the stack above $3$ has $6$ dots. What does this mean?",
+        "choices": [
+          "$6$ students have $3$ brothers and sisters.",
+          "$3$ students have $6$ brothers and sisters.",
+          "$6$ students have $6$ brothers and sisters.",
+          "$9$ students answered."
+        ],
+        "answer": 0,
+        "working": "The number under the stack, $3$, is the data value. The $6$ dots are the frequency: $6$ students."
+      }
+    ]
+  },
+  "m5-12-2-d": {
+    "lessonId": "m5-12-2",
+    "title": "Collecting and Displaying Data, Part 4: Stem-and-Leaf Plots",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stems and leaves",
+        "t": 19.288
+      },
+      {
+        "title": "Reading the plot",
+        "t": 53.823
+      },
+      {
+        "title": "Answering questions",
+        "t": 103.011
+      },
+      {
+        "title": "Each row is a category",
+        "t": 137.325
+      },
+      {
+        "title": "Your turn",
+        "t": 166.136
+      },
+      {
+        "title": "Summary",
+        "t": 202.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-2-d:q",
+        "t": 178.616,
+        "prompt": "In a stem-and-leaf plot, the row with stem $2$ has the leaves $0\\ \\ 3\\ \\ 3\\ \\ 6$. Which values does this row show?",
+        "choices": [
+          "$0,\\ 3,\\ 3,\\ 6$",
+          "$2,\\ 0,\\ 3,\\ 3,\\ 6$",
+          "$20,\\ 30,\\ 30,\\ 60$",
+          "$20,\\ 23,\\ 23,\\ 26$"
+        ],
+        "answer": 3,
+        "working": "The stem $2$ is the tens digit and each leaf is a ones digit: $20$, $23$, $23$ and $26$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
