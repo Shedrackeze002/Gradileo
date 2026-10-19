@@ -8618,6 +8618,53 @@
       }
     ]
   },
+  "m31-6-4-d": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 4: Speeding Up or Slowing Down",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same sign or opposite",
+        "t": 24.045
+      },
+      {
+        "title": "Comparing sign charts",
+        "t": 62.859
+      },
+      {
+        "title": "Watch out",
+        "t": 118.338
+      },
+      {
+        "title": "Your turn",
+        "t": 149.456
+      },
+      {
+        "title": "Summary",
+        "t": 193.715
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4-d:q",
+        "t": 164.045,
+        "prompt": "A particle has position $s(t) = t^{3} - 6t^{2} + 9t$ metres after $t$ seconds, for $t \\ge 0$. When is it speeding up?",
+        "choices": [
+          "$(1, 2) \\cup (3, \\infty)$",
+          "$(2, \\infty)$",
+          "$[0, 1) \\cup (2, 3)$",
+          "$(3, \\infty)$ only"
+        ],
+        "answer": 0,
+        "working": "$v(t) = 3(t - 1)(t - 3)$ and $a(t) = 6(t - 2)$. Both are negative on $(1, 2)$ and both positive on $(3, \\infty)$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
