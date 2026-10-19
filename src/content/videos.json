@@ -50,6 +50,277 @@
       }
     ]
   },
+  "m5-4-1-b": {
+    "lessonId": "m5-4-1",
+    "title": "Multiplying with the Standard Algorithm, Part 2: Multiplying by a Two-Digit Number",
+    "duration": 378,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Split 26 into 20 and 6",
+        "t": 27.468
+      },
+      {
+        "title": "Partial products",
+        "t": 102.485
+      },
+      {
+        "title": "Multiply by the ones",
+        "t": 130.367
+      },
+      {
+        "title": "Multiply by the tens",
+        "t": 175.362
+      },
+      {
+        "title": "Add the partial products",
+        "t": 228.053
+      },
+      {
+        "title": "Watch out",
+        "t": 267.291
+      },
+      {
+        "title": "Your turn",
+        "t": 304.525
+      },
+      {
+        "title": "Summary",
+        "t": 345.871
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-1-b:q",
+        "t": 311.285,
+        "prompt": "Find $214 \\times 32$.",
+        "choices": [
+          "$1070$",
+          "$6420$",
+          "$6748$",
+          "$6848$"
+        ],
+        "answer": 3,
+        "working": "$214 \\times 2 = 428$ and $214 \\times 30 = 6420$ (a $0$ in the ones place, then $214 \\times 3 = 642$). Add: $428 + 6420 = 6848$."
+      }
+    ]
+  },
+  "m5-4-1-c": {
+    "lessonId": "m5-4-1",
+    "title": "Multiplying with the Standard Algorithm, Part 3: Checking with an Estimate",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Round to the greatest place",
+        "t": 25.001
+      },
+      {
+        "title": "Count the zeros",
+        "t": 74.105
+      },
+      {
+        "title": "Is it reasonable?",
+        "t": 121.339
+      },
+      {
+        "title": "Catching a mistake",
+        "t": 156.291
+      },
+      {
+        "title": "Your turn",
+        "t": 215.429
+      },
+      {
+        "title": "Summary",
+        "t": 252.267
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-1-c:q",
+        "t": 225.777,
+        "prompt": "Estimate $412 \\times 28$ by rounding each number to its greatest place.",
+        "choices": [
+          "$12\\,000$",
+          "$1200$",
+          "$8000$",
+          "$120\\,000$"
+        ],
+        "answer": 0,
+        "working": "$412$ rounds to $400$ and $28$ rounds to $30$. Then $4 \\times 3 = 12$, with three zeros: $400 \\times 30 = 12\\,000$."
+      }
+    ]
+  },
+  "m5-4-2": {
+    "lessonId": "m5-4-2",
+    "title": "Dividing with the Standard Algorithm, Part 1: Words for Division",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Packing apples",
+        "t": 24.149
+      },
+      {
+        "title": "Words for division",
+        "t": 59.08
+      },
+      {
+        "title": "Long division",
+        "t": 94.31
+      },
+      {
+        "title": "Divide 367 by 7",
+        "t": 123.3
+      },
+      {
+        "title": "Your turn",
+        "t": 220.178
+      },
+      {
+        "title": "Summary",
+        "t": 253.095
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-2:q",
+        "t": 226.71,
+        "prompt": "Find $87 \\div 4$.",
+        "choices": [
+          "$20$ R $7$",
+          "$21$ R $1$",
+          "$21$ R $3$",
+          "$22$"
+        ],
+        "answer": 2,
+        "working": "$8 \\div 4 = 2$, write $2$; $8 - 8 = 0$. Bring down the $7$: $4$ goes into $7$ once, $7 - 4 = 3$. So $87 \\div 4 = 21$ R $3$."
+      }
+    ]
+  },
+  "m5-4-2-b": {
+    "lessonId": "m5-4-2",
+    "title": "Dividing with the Standard Algorithm, Part 2: Divide, Multiply, Subtract, Bring Down",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The four steps",
+        "t": 20.965
+      },
+      {
+        "title": "The hundreds",
+        "t": 63.37
+      },
+      {
+        "title": "The tens",
+        "t": 98.867
+      },
+      {
+        "title": "The ones",
+        "t": 126.837
+      },
+      {
+        "title": "Check by multiplying",
+        "t": 159.883
+      },
+      {
+        "title": "Watch out",
+        "t": 205.737
+      },
+      {
+        "title": "Your turn",
+        "t": 240.402
+      },
+      {
+        "title": "Summary",
+        "t": 276.63
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-2-b:q",
+        "t": 247.603,
+        "prompt": "Find $936 \\div 4$.",
+        "choices": [
+          "$233$ R $4$",
+          "$234$",
+          "$214$",
+          "$324$"
+        ],
+        "answer": 1,
+        "working": "$9 \\div 4 = 2$, $9 - 8 = 1$; bring down $3$: $13 \\div 4 = 3$, $13 - 12 = 1$; bring down $6$: $16 \\div 4 = 4$, $16 - 16 = 0$. Check: $4 \\times 234 = 936$."
+      }
+    ]
+  },
+  "m5-4-2-c": {
+    "lessonId": "m5-4-2",
+    "title": "Dividing with the Standard Algorithm, Part 3: Zeros in the Quotient",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divide 618 by 6",
+        "t": 16.929
+      },
+      {
+        "title": "The ones",
+        "t": 70.943
+      },
+      {
+        "title": "Watch out",
+        "t": 106.471
+      },
+      {
+        "title": "Another one",
+        "t": 152.461
+      },
+      {
+        "title": "Your turn",
+        "t": 199.628
+      },
+      {
+        "title": "Summary",
+        "t": 235.85
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-2-c:q",
+        "t": 207.123,
+        "prompt": "Find $721 \\div 7$.",
+        "choices": [
+          "$103$",
+          "$13$",
+          "$130$",
+          "$103$ R $1$"
+        ],
+        "answer": 0,
+        "working": "$7 \\div 7 = 1$. Bring down $2$: $7$ does not go into $2$, so write $0$. Bring down $1$ to make $21$: $21 \\div 7 = 3$. Check: $7 \\times 103 = 721$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
