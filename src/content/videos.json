@@ -9328,7 +9328,7 @@
   "m31-8-1-c": {
     "lessonId": "m31-8-1",
     "title": "Antiderivatives, Part 3: Trigonometric, Exponential and 1/x",
-    "duration": 320,
+    "duration": 321,
     "voice": "af_heart",
     "chapters": [
       {
@@ -9357,17 +9357,17 @@
       },
       {
         "title": "Your turn",
-        "t": 232.569
+        "t": 234.037
       },
       {
         "title": "Summary",
-        "t": 277.393
+        "t": 278.861
       }
     ],
     "cues": [
       {
         "id": "m31-8-1-c:q",
-        "t": 242.233,
+        "t": 243.701,
         "prompt": "Find $\\displaystyle\\int \\left(2\\sin x + \\frac{3}{x}\\right)dx$ for $x > 0$.",
         "choices": [
           "$-2\\cos x + 3\\ln x + C$",
