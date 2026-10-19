@@ -2697,6 +2697,61 @@
       }
     ]
   },
+  "m5-7-1-c": {
+    "lessonId": "m5-7-1",
+    "title": "Order of Operations with Parentheses, Part 3: Writing an Expression for a Problem",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Packs of stickers",
+        "t": 16.717
+      },
+      {
+        "title": "The expression",
+        "t": 39.599
+      },
+      {
+        "title": "Forgetting the parentheses",
+        "t": 63.299
+      },
+      {
+        "title": "Money left",
+        "t": 92.889
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 132.723
+      },
+      {
+        "title": "Your turn",
+        "t": 164.427
+      },
+      {
+        "title": "Summary",
+        "t": 200.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-1-c:q",
+        "t": 178.137,
+        "prompt": "Nia gets $3$ bags of fruit. Each bag has $5$ apples and $2$ oranges. Which expression gives the number of pieces of fruit Nia gets?",
+        "choices": [
+          "$3 \\times 5 + 2$",
+          "$3 \\times (5 + 2)$",
+          "$3 + 5 + 2$",
+          "$(3 + 5) \\times 2$"
+        ],
+        "answer": 1,
+        "working": "Each bag has $5 + 2$ pieces of fruit, and there are $3$ bags: $3 \\times (5 + 2) = 3 \\times 7 = 21$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
