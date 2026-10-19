@@ -8124,6 +8124,57 @@
       }
     ]
   },
+  "m31-6-2-b": {
+    "lessonId": "m31-6-2",
+    "title": "Increasing, Decreasing and Extreme Values, Part 2: Critical Numbers",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Critical numbers",
+        "t": 22.186
+      },
+      {
+        "title": "A polynomial",
+        "t": 58.054
+      },
+      {
+        "title": "A sharp point",
+        "t": 98.495
+      },
+      {
+        "title": "Watch out",
+        "t": 142.25
+      },
+      {
+        "title": "Your turn",
+        "t": 175.27
+      },
+      {
+        "title": "Summary",
+        "t": 212.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-2-b:q",
+        "t": 185.713,
+        "prompt": "Find the critical numbers of $f(x) = x^{3} - 12x + 5$.",
+        "choices": [
+          "$-2$ and $2$",
+          "$2$ only",
+          "$-2\\sqrt{3}$ and $2\\sqrt{3}$",
+          "$0$ and $12$"
+        ],
+        "answer": 0,
+        "working": "$f'(x) = 3x^{2} - 12 = 3(x^{2} - 4) = 3(x + 2)(x - 2)$, which is $0$ at $x = \\pm 2$ and exists everywhere."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
