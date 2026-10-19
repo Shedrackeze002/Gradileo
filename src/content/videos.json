@@ -4255,6 +4255,61 @@
       }
     ]
   },
+  "m5-11-1": {
+    "lessonId": "m5-11-1",
+    "title": "Arithmetic Sequences in Tables and Graphs, Part 1: Positions and Terms",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cup towers",
+        "t": 23.198
+      },
+      {
+        "title": "Sequence, term and position",
+        "t": 58.32
+      },
+      {
+        "title": "Arithmetic sequences",
+        "t": 93.354
+      },
+      {
+        "title": "Finding a term",
+        "t": 124.706
+      },
+      {
+        "title": "Watch out",
+        "t": 149.105
+      },
+      {
+        "title": "Your turn",
+        "t": 177.288
+      },
+      {
+        "title": "Summary",
+        "t": 208.943
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-1:q",
+        "t": 188.329,
+        "prompt": "In the sequence $5,\\ 9,\\ 13,\\ 17,\\ 21,\\ \\ldots$, what is the term at position $4$?",
+        "choices": [
+          "$17$",
+          "$13$",
+          "$21$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "Count from position $1$: $5$, $9$, $13$, $17$. The term at position $4$ is $17$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
