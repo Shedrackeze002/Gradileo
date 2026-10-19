@@ -4357,6 +4357,53 @@
       }
     ]
   },
+  "m5-11-1-c": {
+    "lessonId": "m5-11-1",
+    "title": "Arithmetic Sequences in Tables and Graphs, Part 3: Points on a Grid",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 17.244
+      },
+      {
+        "title": "Plotting the points",
+        "t": 46.865
+      },
+      {
+        "title": "Watch out",
+        "t": 88.484
+      },
+      {
+        "title": "Your turn",
+        "t": 111.248
+      },
+      {
+        "title": "Summary",
+        "t": 145.649
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-1-c:q",
+        "t": 125.114,
+        "prompt": "The sequence $3,\\ 6,\\ 9,\\ 12,\\ \\ldots$ is plotted as points (position, term). Which point is for position $3$?",
+        "choices": [
+          "$(9,\\ 3)$",
+          "$(3,\\ 3)$",
+          "$(3,\\ 12)$",
+          "$(3,\\ 9)$"
+        ],
+        "answer": 3,
+        "working": "The term at position $3$ is $9$. Position first, term second: $(3,\\ 9)$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
