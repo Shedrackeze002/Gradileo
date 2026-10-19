@@ -8175,6 +8175,108 @@
       }
     ]
   },
+  "m31-6-2-c": {
+    "lessonId": "m31-6-2",
+    "title": "Increasing, Decreasing and Extreme Values, Part 3: The First Derivative Test",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Local maximum and minimum",
+        "t": 21.106
+      },
+      {
+        "title": "A sign chart",
+        "t": 68.579
+      },
+      {
+        "title": "No sign change",
+        "t": 145.529
+      },
+      {
+        "title": "Reading the graph of f′",
+        "t": 178.997
+      },
+      {
+        "title": "Your turn",
+        "t": 214.884
+      },
+      {
+        "title": "Summary",
+        "t": 261.147
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-2-c:q",
+        "t": 225.723,
+        "prompt": "Which point is a local maximum of $f(x) = x^{3} - 12x + 5$?",
+        "choices": [
+          "$(2, -11)$",
+          "$(0, 5)$",
+          "$(-2, 21)$",
+          "$(2, 21)$"
+        ],
+        "answer": 2,
+        "working": "$f'(x) = 3(x + 2)(x - 2)$ changes from $+$ to $-$ at $x = -2$, so $f$ has a local maximum $f(-2) = -8 + 24 + 5 = 21$."
+      }
+    ]
+  },
+  "m31-6-2-d": {
+    "lessonId": "m31-6-2",
+    "title": "Increasing, Decreasing and Extreme Values, Part 4: Absolute Extrema",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Absolute extrema",
+        "t": 20.105
+      },
+      {
+        "title": "The closed interval method",
+        "t": 55.682
+      },
+      {
+        "title": "On a closed interval",
+        "t": 83.455
+      },
+      {
+        "title": "Watch out",
+        "t": 147.995
+      },
+      {
+        "title": "Your turn",
+        "t": 196.37
+      },
+      {
+        "title": "Summary",
+        "t": 243.82
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-2-d:q",
+        "t": 211.406,
+        "prompt": "Find the absolute maximum value of $f(x) = x^{3} - 12x + 5$ on $[-3, 5]$.",
+        "choices": [
+          "$21$",
+          "$14$",
+          "$-11$",
+          "$70$"
+        ],
+        "answer": 3,
+        "working": "The critical numbers $-2$ and $2$ are in the interval. $f(-3) = 14$, $f(-2) = 21$, $f(2) = -11$ and $f(5) = 70$, so the absolute maximum is $70$, at $x = 5$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
