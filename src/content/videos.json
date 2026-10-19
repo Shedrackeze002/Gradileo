@@ -4651,6 +4651,57 @@
       }
     ]
   },
+  "m5-12-1": {
+    "lessonId": "m5-12-1",
+    "title": "Frequency and the Mode, Part 1: Categories and Frequency",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Categories and frequency",
+        "t": 22.162
+      },
+      {
+        "title": "Making a tally chart",
+        "t": 56.616
+      },
+      {
+        "title": "Counting the marks",
+        "t": 99.712
+      },
+      {
+        "title": "Bundles of five",
+        "t": 130.287
+      },
+      {
+        "title": "Your turn",
+        "t": 158.82
+      },
+      {
+        "title": "Summary",
+        "t": 192.72
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-1:q",
+        "t": 170.605,
+        "prompt": "In a tally chart, the row for Swimming has two bundles of five and three more marks. What is the frequency of Swimming?",
+        "choices": [
+          "$5$",
+          "$3$",
+          "$10$",
+          "$13$"
+        ],
+        "answer": 3,
+        "working": "Count the bundles by fives: $5$, $10$. Then count on the extra marks: $11$, $12$, $13$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
