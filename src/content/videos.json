@@ -2583,6 +2583,65 @@
       }
     ]
   },
+  "m5-7-1": {
+    "lessonId": "m5-7-1",
+    "title": "Order of Operations with Parentheses, Part 1: Which Operation Comes First?",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expressions",
+        "t": 20.822
+      },
+      {
+        "title": "Parentheses",
+        "t": 48.838
+      },
+      {
+        "title": "The order of operations",
+        "t": 73.551
+      },
+      {
+        "title": "Without parentheses",
+        "t": 102.585
+      },
+      {
+        "title": "With parentheses",
+        "t": 127.93
+      },
+      {
+        "title": "Watch out",
+        "t": 167.291
+      },
+      {
+        "title": "Your turn",
+        "t": 190.872
+      },
+      {
+        "title": "Summary",
+        "t": 223.257
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-1:q",
+        "t": 197.324,
+        "prompt": "Evaluate $10 - 2 \\times 3$.",
+        "choices": [
+          "$4$",
+          "$24$",
+          "$14$",
+          "$2$"
+        ],
+        "answer": 0,
+        "working": "There are no parentheses, so multiply first: $2 \\times 3 = 6$. Then subtract: $10 - 6 = 4$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
