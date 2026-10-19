@@ -3035,6 +3035,61 @@
       }
     ]
   },
+  "m5-7-3-c": {
+    "lessonId": "m5-7-3",
+    "title": "Solving Equations, Part 3: Equations with Two Operations",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bags and marbles",
+        "t": 15.833
+      },
+      {
+        "title": "Reverse order",
+        "t": 41.624
+      },
+      {
+        "title": "Two steps",
+        "t": 79.207
+      },
+      {
+        "title": "A quotient and a subtraction",
+        "t": 124.728
+      },
+      {
+        "title": "Watch out",
+        "t": 163.272
+      },
+      {
+        "title": "Your turn",
+        "t": 193.69
+      },
+      {
+        "title": "Summary",
+        "t": 225.065
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-3-c:q",
+        "t": 200.881,
+        "prompt": "Solve $2n + 5 = 17$.",
+        "choices": [
+          "$n = 11$",
+          "$n = 12$",
+          "$n = 22$",
+          "$n = 6$"
+        ],
+        "answer": 3,
+        "working": "Subtract $5$ from both sides: $2n = 12$. Divide both sides by $2$: $n = 6$. Check: $2 \\times 6 + 5 = 17$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
