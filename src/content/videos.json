@@ -596,6 +596,61 @@
       }
     ]
   },
+  "m5-5-1-c": {
+    "lessonId": "m5-5-1",
+    "title": "Improper Fractions and Mixed Numbers, Part 3: Writing an Improper Fraction",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three and two fifths",
+        "t": 21.087
+      },
+      {
+        "title": "Multiply, then add",
+        "t": 61.635
+      },
+      {
+        "title": "Check by going back",
+        "t": 87.053
+      },
+      {
+        "title": "Watch out",
+        "t": 107.669
+      },
+      {
+        "title": "Another one",
+        "t": 136.993
+      },
+      {
+        "title": "Your turn",
+        "t": 169.615
+      },
+      {
+        "title": "Summary",
+        "t": 201.13
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-5-1-c:q",
+        "t": 176.824,
+        "prompt": "Write $4\\dfrac{2}{3}$ as an improper fraction.",
+        "choices": [
+          "$\\dfrac{6}{3}$",
+          "$\\dfrac{12}{3}$",
+          "$\\dfrac{14}{3}$",
+          "$\\dfrac{11}{3}$"
+        ],
+        "answer": 2,
+        "working": "$4 \\times 3 = 12$ thirds in the wholes, plus $2$ more: $12 + 2 = 14$. So $4\\tfrac{2}{3} = \\tfrac{14}{3}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
