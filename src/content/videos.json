@@ -1,4 +1,55 @@
 {
+  "m5-4-1": {
+    "lessonId": "m5-4-1",
+    "title": "Multiplying with the Standard Algorithm, Part 1: Multiplying by a One-Digit Number",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six groups of 347",
+        "t": 31.247
+      },
+      {
+        "title": "Words to know",
+        "t": 93.206
+      },
+      {
+        "title": "Ones, tens, hundreds",
+        "t": 130.966
+      },
+      {
+        "title": "Watch out",
+        "t": 204.532
+      },
+      {
+        "title": "Your turn",
+        "t": 237.236
+      },
+      {
+        "title": "Summary",
+        "t": 271.303
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-4-1:q",
+        "t": 243.704,
+        "prompt": "Find $258 \\times 4$.",
+        "choices": [
+          "$802$",
+          "$1032$",
+          "$2022$",
+          "$1132$"
+        ],
+        "answer": 1,
+        "working": "Ones: $4 \\times 8 = 32$, write $2$, carry $3$. Tens: $4 \\times 5 = 20$, plus $3$ is $23$, write $3$, carry $2$. Hundreds: $4 \\times 2 = 8$, plus $2$ is $10$. So $258 \\times 4 = 1032$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
