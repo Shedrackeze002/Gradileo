@@ -4310,6 +4310,53 @@
       }
     ]
   },
+  "m5-11-1-b": {
+    "lessonId": "m5-11-1",
+    "title": "Arithmetic Sequences in Tables and Graphs, Part 2: Tables of Values",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table of values",
+        "t": 17.264
+      },
+      {
+        "title": "Finding the change",
+        "t": 53.141
+      },
+      {
+        "title": "Going further",
+        "t": 90.551
+      },
+      {
+        "title": "Your turn",
+        "t": 114.279
+      },
+      {
+        "title": "Summary",
+        "t": 154.324
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-1-b:q",
+        "t": 128.771,
+        "prompt": "A table of values has the positions $1,\\ 2,\\ 3,\\ 4,\\ 5$ and the terms $7,\\ 12,\\ ?,\\ 22,\\ 27$. What is the missing term?",
+        "choices": [
+          "$16$",
+          "$17$",
+          "$19$",
+          "$13$"
+        ],
+        "answer": 1,
+        "working": "Each term is $12 - 7 = 5$ more than the one before, so the missing term is $12 + 5 = 17$. Check: $17 + 5 = 22$ ✓"
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
