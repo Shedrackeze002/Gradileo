@@ -4553,6 +4553,53 @@
       }
     ]
   },
+  "m5-11-2-c": {
+    "lessonId": "m5-11-2",
+    "title": "Rules and Missing Terms, Part 3: Finding Any Term",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The term at position 25",
+        "t": 15.887
+      },
+      {
+        "title": "Using a table",
+        "t": 54.44
+      },
+      {
+        "title": "Why a rule is faster",
+        "t": 91.686
+      },
+      {
+        "title": "Your turn",
+        "t": 120.861
+      },
+      {
+        "title": "Summary",
+        "t": 151.969
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-2-c:q",
+        "t": 130.842,
+        "prompt": "The expression $6n$ gives the term at position $n$. What is the term at position $12$?",
+        "choices": [
+          "$18$",
+          "$60$",
+          "$72$",
+          "$612$"
+        ],
+        "answer": 2,
+        "working": "Replace $n$ with $12$: $6 \\times 12 = 72$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
