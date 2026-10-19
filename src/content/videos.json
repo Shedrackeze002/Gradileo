@@ -2925,6 +2925,61 @@
       }
     ]
   },
+  "m5-7-3": {
+    "lessonId": "m5-7-3",
+    "title": "Solving Equations, Part 1: Keeping the Balance",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equations",
+        "t": 17.821
+      },
+      {
+        "title": "Solutions",
+        "t": 47.924
+      },
+      {
+        "title": "Inverse operations",
+        "t": 73.857
+      },
+      {
+        "title": "Solve by undoing",
+        "t": 104.064
+      },
+      {
+        "title": "Watch out",
+        "t": 146.517
+      },
+      {
+        "title": "Your turn",
+        "t": 171.642
+      },
+      {
+        "title": "Summary",
+        "t": 203.45
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-3:q",
+        "t": 178.31,
+        "prompt": "Solve $n + 9 = 14$.",
+        "choices": [
+          "$n = 23$",
+          "$n = 5$",
+          "$n = 6$",
+          "$n = 14$"
+        ],
+        "answer": 1,
+        "working": "$9$ is added to $n$, so subtract $9$ from both sides: $n = 14 - 9 = 5$. Check: $5 + 9 = 14$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
