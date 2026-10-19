@@ -325,6 +325,57 @@
       }
     ]
   },
+  "m5-1-2-c": {
+    "lessonId": "m5-1-2",
+    "title": "Comparing, Ordering and Rounding, Part 3: Ordering Numbers",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How to order",
+        "t": 15.338
+      },
+      {
+        "title": "The long jumps",
+        "t": 45.108
+      },
+      {
+        "title": "Compare from the left",
+        "t": 91.405
+      },
+      {
+        "title": "Watch out",
+        "t": 150.133
+      },
+      {
+        "title": "Your turn",
+        "t": 178.521
+      },
+      {
+        "title": "Summary",
+        "t": 228.245
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-2-c:q",
+        "t": 190.456,
+        "prompt": "Order $0.5$, $0.55$ and $0.505$ from **greatest to least**.",
+        "choices": [
+          "$0.5,\\ 0.505,\\ 0.55$",
+          "$0.55,\\ 0.505,\\ 0.5$",
+          "$0.505,\\ 0.55,\\ 0.5$",
+          "$0.55,\\ 0.5,\\ 0.505$"
+        ],
+        "answer": 1,
+        "working": "With three decimal places: $0.500$, $0.550$ and $0.505$. The tenths are all $5$. In the hundredths, $5 > 0$, so $0.55$ is the greatest. Then $0.505 > 0.500$."
+      }
+    ]
+  },
   "m5-4-1": {
     "lessonId": "m5-4-1",
     "title": "Multiplying with the Standard Algorithm, Part 1: Multiplying by a One-Digit Number",
