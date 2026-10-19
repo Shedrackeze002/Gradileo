@@ -8712,6 +8712,454 @@
       }
     ]
   },
+  "m31-7-1": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 1: The Strategy and a Fence by a River",
+    "duration": 407,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Try a few",
+        "t": 35.929
+      },
+      {
+        "title": "Objective and constraint",
+        "t": 100.278
+      },
+      {
+        "title": "A strategy",
+        "t": 143.2
+      },
+      {
+        "title": "One variable",
+        "t": 186.106
+      },
+      {
+        "title": "Find the maximum",
+        "t": 234.471
+      },
+      {
+        "title": "Answer the question",
+        "t": 278.738
+      },
+      {
+        "title": "Your turn",
+        "t": 311.132
+      },
+      {
+        "title": "Summary",
+        "t": 370.916
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1:q",
+        "t": 326.384,
+        "prompt": "There is $240$ m of fencing for a rectangular field beside a straight river, with no fence along the river. What is the largest area it can enclose?",
+        "choices": [
+          "$3{,}600$ m²",
+          "$7{,}200$ m²",
+          "$14{,}400$ m²",
+          "$6{,}400$ m²"
+        ],
+        "answer": 1,
+        "working": "$2x + y = 240$, so $A(x) = x(240 - 2x) = 240x - 2x^2$. $A'(x) = 240 - 4x = 0$ gives $x = 60$, so $y = 120$ and $A = 60 \\times 120 = 7{,}200$ m²."
+      }
+    ]
+  },
+  "m31-7-1-b": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 2: Verifying a Maximum and the Largest Box",
+    "duration": 411,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways to verify",
+        "t": 24.438
+      },
+      {
+        "title": "Folding a box",
+        "t": 91.843
+      },
+      {
+        "title": "The volume",
+        "t": 129.852
+      },
+      {
+        "title": "Critical numbers",
+        "t": 191.897
+      },
+      {
+        "title": "Compare with the endpoints",
+        "t": 240.085
+      },
+      {
+        "title": "Watch out",
+        "t": 286.69
+      },
+      {
+        "title": "Your turn",
+        "t": 322.163
+      },
+      {
+        "title": "Summary",
+        "t": 381.033
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1-b:q",
+        "t": 338.144,
+        "prompt": "An open box is folded from a $12$ cm by $12$ cm sheet by cutting a square of side $x$ cm from each corner. What size of square gives the largest volume?",
+        "choices": [
+          "$3$ cm",
+          "$6$ cm",
+          "$4$ cm",
+          "$2$ cm"
+        ],
+        "answer": 3,
+        "working": "$V(x) = x(12 - 2x)^2$ for $0 < x < 6$, and $V'(x) = 12(x - 2)(x - 6)$. Only $x = 2$ is in the domain, and $V(2) = 2(8)(8) = 128$ cm³."
+      }
+    ]
+  },
+  "m31-7-1-c": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 3: Revenue and the Best Price",
+    "duration": 358,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Revenue and profit",
+        "t": 22.853
+      },
+      {
+        "title": "Setting a fee",
+        "t": 49.45
+      },
+      {
+        "title": "The revenue function",
+        "t": 105.048
+      },
+      {
+        "title": "Find the maximum",
+        "t": 167.241
+      },
+      {
+        "title": "Answer the question",
+        "t": 213.653
+      },
+      {
+        "title": "Watch out",
+        "t": 247.172
+      },
+      {
+        "title": "Your turn",
+        "t": 269.638
+      },
+      {
+        "title": "Summary",
+        "t": 324.449
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1-c:q",
+        "t": 286.001,
+        "prompt": "A theatre sells $400$ tickets a night at \\$20 each. For every \\$1 increase in price, $10$ fewer tickets are sold. What ticket price brings in the most revenue?",
+        "choices": [
+          "\\$30",
+          "\\$10",
+          "\\$25",
+          "\\$40"
+        ],
+        "answer": 0,
+        "working": "With $x$ increases of \\$1, $R(x) = (20 + x)(400 - 10x) = 8{,}000 + 200x - 10x^2$. $R'(x) = 200 - 20x = 0$ gives $x = 10$: a price of \\$30, with $300$ tickets sold, for \\$9,000."
+      }
+    ]
+  },
+  "m31-7-1-d": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 4: The Can That Uses the Least Metal",
+    "duration": 324,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The problem",
+        "t": 22.179
+      },
+      {
+        "title": "The metal",
+        "t": 51.41
+      },
+      {
+        "title": "One variable",
+        "t": 86.984
+      },
+      {
+        "title": "Find the minimum",
+        "t": 125.607
+      },
+      {
+        "title": "The height",
+        "t": 190.683
+      },
+      {
+        "title": "Your turn",
+        "t": 236.352
+      },
+      {
+        "title": "Summary",
+        "t": 289.095
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1-d:q",
+        "t": 247.733,
+        "prompt": "A closed cylindrical can must hold $1{,}000$ cm³. Which radius uses the least metal?",
+        "choices": [
+          "$2.71$ cm",
+          "$6.83$ cm",
+          "$5.42$ cm",
+          "$10.84$ cm"
+        ],
+        "answer": 2,
+        "working": "$S(r) = 2\\pi r^2 + \\dfrac{2{,}000}{r}$, so $S'(r) = 4\\pi r - \\dfrac{2{,}000}{r^2} = 0$ gives $r^3 = \\dfrac{500}{\\pi}$ and $r \\approx 5.42$ cm. The height is $2r \\approx 10.84$ cm."
+      }
+    ]
+  },
+  "m31-7-1-e": {
+    "lessonId": "m31-7-1",
+    "title": "Optimization, Part 5: Shortest Distance and Fastest Route",
+    "duration": 412,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Minimize the square",
+        "t": 22.079
+      },
+      {
+        "title": "The closest point",
+        "t": 56.157
+      },
+      {
+        "title": "Swim, then run",
+        "t": 130.333
+      },
+      {
+        "title": "The time",
+        "t": 189.541
+      },
+      {
+        "title": "Check the endpoints",
+        "t": 259.236
+      },
+      {
+        "title": "Your turn",
+        "t": 332.21
+      },
+      {
+        "title": "Summary",
+        "t": 378.004
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-1-e:q",
+        "t": 342.078,
+        "prompt": "Which point on the curve $y = \\sqrt{x}$ is closest to the point $(5, 0)$?",
+        "choices": [
+          "$(5, \\sqrt{5})$",
+          "$(4, 2)$",
+          "$(2.5, \\sqrt{2.5})$",
+          "$(4.5, \\sqrt{4.5})$"
+        ],
+        "answer": 3,
+        "working": "$D^2 = (x - 5)^2 + x$, so $2(x - 5) + 1 = 0$ and $x = 4.5$. There $D^2 = 0.25 + 4.5 = 4.75$, less than the $5$ at $x = 4$ or $x = 5$."
+      }
+    ]
+  },
+  "m31-7-2": {
+    "lessonId": "m31-7-2",
+    "title": "Related Rates, Part 1: Rates Linked by an Equation",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Everything depends on time",
+        "t": 35.338
+      },
+      {
+        "title": "Related rates",
+        "t": 84.441
+      },
+      {
+        "title": "A spreading ripple",
+        "t": 114.118
+      },
+      {
+        "title": "Why two pi r?",
+        "t": 177.761
+      },
+      {
+        "title": "Your turn",
+        "t": 232.34
+      },
+      {
+        "title": "Summary",
+        "t": 279.923
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-2:q",
+        "t": 245.416,
+        "prompt": "The radius of a circular oil spill grows at $2$ m/min. How fast is its area growing when the radius is $40$ m?",
+        "choices": [
+          "$80\\pi$ m²/min",
+          "$160\\pi$ m²/min",
+          "$1{,}600\\pi$ m²/min",
+          "$4\\pi$ m²/min"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{dA}{dt} = 2\\pi r\\,\\dfrac{dr}{dt} = 2\\pi(40)(2) = 160\\pi \\approx 503$ m²/min."
+      }
+    ]
+  },
+  "m31-7-2-b": {
+    "lessonId": "m31-7-2",
+    "title": "Related Rates, Part 2: A Strategy and a Sliding Ladder",
+    "duration": 358,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A strategy",
+        "t": 22.726
+      },
+      {
+        "title": "A sliding ladder",
+        "t": 68.47
+      },
+      {
+        "title": "Differentiate, then substitute",
+        "t": 127.803
+      },
+      {
+        "title": "Answer in words",
+        "t": 186.879
+      },
+      {
+        "title": "Watch out",
+        "t": 224.824
+      },
+      {
+        "title": "Your turn",
+        "t": 265.619
+      },
+      {
+        "title": "Summary",
+        "t": 326.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-2-b:q",
+        "t": 282.264,
+        "prompt": "A $13$ m ladder leans against a wall. Its foot slides away from the wall at $1$ m/s. How fast is the top sliding down when the foot is $5$ m from the wall?",
+        "choices": [
+          "$2.4$ m/s",
+          "$0$ m/s",
+          "$\\dfrac{5}{12} \\approx 0.42$ m/s",
+          "$1$ m/s"
+        ],
+        "answer": 2,
+        "working": "$x^2 + y^2 = 169$, so $2x\\dfrac{dx}{dt} + 2y\\dfrac{dy}{dt} = 0$. At $x = 5$, $y = 12$: $10 + 24\\dfrac{dy}{dt} = 0$, so $\\dfrac{dy}{dt} = -\\dfrac{5}{12}$."
+      }
+    ]
+  },
+  "m31-7-2-c": {
+    "lessonId": "m31-7-2",
+    "title": "Related Rates, Part 3: Similar Triangles, a Shadow and a Tank",
+    "duration": 389,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A lengthening shadow",
+        "t": 23.446
+      },
+      {
+        "title": "Similar triangles",
+        "t": 61.092
+      },
+      {
+        "title": "The answer",
+        "t": 128.362
+      },
+      {
+        "title": "Filling a conical tank",
+        "t": 155.354
+      },
+      {
+        "title": "Eliminate, then differentiate",
+        "t": 212.68
+      },
+      {
+        "title": "Your turn",
+        "t": 282.008
+      },
+      {
+        "title": "Summary",
+        "t": 349.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-2-c:q",
+        "t": 300.76,
+        "prompt": "A conical tank, vertex down, has a top radius of $3$ m and a height of $6$ m. Water flows in at $4$ m³/min. How fast is the level rising when the water is $2$ m deep?",
+        "choices": [
+          "$\\dfrac{4}{\\pi}$ m/min",
+          "$\\dfrac{1}{4\\pi}$ m/min",
+          "$\\dfrac{2}{\\pi}$ m/min",
+          "$\\pi$ m/min"
+        ],
+        "answer": 0,
+        "working": "$r = \\dfrac{h}{2}$, so $V = \\dfrac{\\pi}{12}h^3$ and $\\dfrac{dV}{dt} = \\dfrac{\\pi}{4}h^2\\dfrac{dh}{dt}$. Then $4 = \\dfrac{\\pi}{4}(4)\\dfrac{dh}{dt}$, so $\\dfrac{dh}{dt} = \\dfrac{4}{\\pi} \\approx 1.27$ m/min."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",
