@@ -4451,6 +4451,57 @@
       }
     ]
   },
+  "m5-11-2": {
+    "lessonId": "m5-11-2",
+    "title": "Rules and Missing Terms, Part 1: A Rule from Position to Term",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a rule?",
+        "t": 20.711
+      },
+      {
+        "title": "A rule that multiplies",
+        "t": 48.827
+      },
+      {
+        "title": "A rule that adds",
+        "t": 92.936
+      },
+      {
+        "title": "Watch out",
+        "t": 123.343
+      },
+      {
+        "title": "Your turn",
+        "t": 162.076
+      },
+      {
+        "title": "Summary",
+        "t": 199.066
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-2:q",
+        "t": 175.366,
+        "prompt": "A table has the positions $1,\\ 2,\\ 3,\\ 4$ and the terms $5,\\ 10,\\ 15,\\ 20$. Which rule fits every column?",
+        "choices": [
+          "$\\text{term} = \\text{position} + 5$",
+          "$\\text{term} = \\text{position} + 4$",
+          "$\\text{term} = 5 \\times \\text{position}$",
+          "$\\text{term} = 4 \\times \\text{position}$"
+        ],
+        "answer": 2,
+        "working": "$5 = 5 \\times 1$, $10 = 5 \\times 2$, $15 = 5 \\times 3$ and $20 = 5 \\times 4$, so $\\text{term} = 5 \\times \\text{position}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
