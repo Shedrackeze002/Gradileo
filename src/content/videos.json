@@ -4937,6 +4937,57 @@
       }
     ]
   },
+  "m5-12-2-c": {
+    "lessonId": "m5-12-2",
+    "title": "Collecting and Displaying Data, Part 3: Bar Graphs and Dot Plots",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bar graphs",
+        "t": 16.987
+      },
+      {
+        "title": "Dot plots",
+        "t": 63.005
+      },
+      {
+        "title": "Reading a dot plot",
+        "t": 98.86
+      },
+      {
+        "title": "Watch out",
+        "t": 126.281
+      },
+      {
+        "title": "Your turn",
+        "t": 150.979
+      },
+      {
+        "title": "Summary",
+        "t": 187.401
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-2-c:q",
+        "t": 163.17,
+        "prompt": "On a dot plot of the number of brothers and sisters students have, the stack above $3$ has $6$ dots. What does this mean?",
+        "choices": [
+          "$6$ students have $3$ brothers and sisters.",
+          "$3$ students have $6$ brothers and sisters.",
+          "$6$ students have $6$ brothers and sisters.",
+          "$9$ students answered."
+        ],
+        "answer": 0,
+        "working": "The number under the stack, $3$, is the data value. The $6$ dots are the frequency: $6$ students."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
