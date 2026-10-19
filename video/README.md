@@ -246,22 +246,49 @@ and replace it in Drive, with no rendering, even for courses already cleared fro
 For videos already on YouTube, `video/tools/youtube-update.ts` brings their title, description
 and tags up to date through the YouTube API (no uploading again). It finds each video's script by
 its title, and by the course in its description when two scripts share a title, and changes only
-what differs; `--dry-run` lists the changes first:
+what differs; `--dry-run` lists the changes first. A title edited by hand on YouTube matches no
+script: name it with `<youtube id>=<video id>` (the admin console's Videos page lists both):
 
     npx tsx video/tools/youtube-update.ts --dry-run
-    npx tsx video/tools/youtube-update.ts
+    npx tsx video/tools/youtube-update.ts CMSCsWap8b0=m10c-1-8
+
+### Uploading to YouTube
+
+`video/tools/youtube-upload.ts` uploads finished videos to the channel in course order: the MP4
+with its title, description and tags (made from the script, as in `youtube.txt`), in Education,
+in English, then `thumbnail.png` and our `captions.srt`, and puts each in its unit's playlist in
+lesson order. It uses the owner's playlist when its title names the course and unit ("Math 10C -
+Unit 1 (Measurements)") and otherwise makes one in that style. A playlist set to sort itself (by
+date) takes new videos at the end; set it to **Manual** in YouTube Studio for lesson order. It
+takes each video's files from `video/out/<id>/`, or from its Drive folder when the course has been
+cleared from the session, and skips videos already on the channel (only filing them in their
+playlist if missing), so a run can be repeated. The channel may upload 10 videos a day; the tool
+stops by itself at that limit or the day's quota. `--limit N` uploads at most N, `--private` or
+`--unlisted` holds them back, and `--dry-run` lists what it would upload:
+
+    npx tsx video/tools/youtube-upload.ts --dry-run math-10c
+    npx tsx video/tools/youtube-upload.ts math-10c math-10-3
+
+Each upload prints `<video id> -> https://youtu.be/<youtube id>`. Record it in Gradileo so the
+lesson shows the video: **Admin console → Videos**, or straight into `public.video_links`. Every
+upload declares whether the video is made for kids (YouTube turns off comments and personalised ads
+for those); the course's answer is in `MADE_FOR_KIDS` in the tool, and a course not listed there is
+not uploaded until the owner decides.
 
 ### YouTube API
 
-`youtube-update.ts` signs in with `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET` and
-`YOUTUBE_REFRESH_TOKEN`, set in the environment's settings like the Drive ones (a session started
-after they were added sees them). They come from a Google Cloud project with the YouTube Data
-API v3 enabled, the `youtube.force-ssl` scope on its consent screen (published **In production**,
-or the sign-in lapses after 7 days; it does not need Google's verification, since only the
-channel's own account signs in), and a Web application OAuth client whose refresh token was made
-in the OAuth 2.0 Playground while signed in as the channel. The API allows 10,000 units a day; an
-update costs 50, so about 200 videos a day. Uploading through the API is possible too, but videos
-uploaded by a project Google has not audited stay private.
+The YouTube tools sign in with `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET` and
+`YOUTUBE_REFRESH_TOKEN` (`video/lib/google.ts`), set in the environment's settings like the Drive
+ones (a session started after they were added sees them). They come from a Google Cloud project
+with the YouTube Data API v3 enabled, the `youtube.force-ssl` scope on its consent screen
+(published **In production**, or the sign-in lapses after 7 days; it does not need Google's
+verification, since only the channel's own account signs in), and a Web application OAuth client
+whose refresh token was made in the OAuth 2.0 Playground while signed in as the channel. The API
+allows 10,000 units a day: an update costs 50 (about 200 renames a day), and an upload with its
+thumbnail, captions and playlist place about 600. Uploads through this project come out public
+(checked on 19 October 2026). The channel's own limit of 10 uploads a day binds first.
+
+By hand, the same steps in YouTube Studio:
 
 1. Upload `<id>.mp4` to the Gradileo channel.
 2. Copy the title, description and tags from `youtube.txt`.

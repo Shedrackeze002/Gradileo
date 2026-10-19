@@ -3141,6 +3141,383 @@
       }
     ]
   },
+  "m5-8-1": {
+    "lessonId": "m5-8-1",
+    "title": "Line and Rotation Symmetry, Part 1: Lines of Symmetry",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fold a heart",
+        "t": 21.953
+      },
+      {
+        "title": "A rectangle",
+        "t": 57.815
+      },
+      {
+        "title": "The diagonal",
+        "t": 90.891
+      },
+      {
+        "title": "An arrow sign",
+        "t": 126.736
+      },
+      {
+        "title": "Your turn",
+        "t": 158.442
+      },
+      {
+        "title": "Summary",
+        "t": 189.071
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-1:q",
+        "t": 165.884,
+        "prompt": "How many lines of symmetry does a capital letter **T** have?",
+        "choices": [
+          "$0$",
+          "$2$",
+          "$1$",
+          "$4$"
+        ],
+        "answer": 2,
+        "working": "A fold down the middle of the stem makes the two halves of the top bar match. A fold across does not work, because the bar and the stem are different."
+      }
+    ]
+  },
+  "m5-8-1-b": {
+    "lessonId": "m5-8-1",
+    "title": "Line and Rotation Symmetry, Part 2: Rotation Symmetry",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotation symmetry",
+        "t": 16.31
+      },
+      {
+        "title": "Turning a pinwheel",
+        "t": 47.108
+      },
+      {
+        "title": "The order",
+        "t": 86.17
+      },
+      {
+        "title": "Two kinds of symmetry",
+        "t": 106.718
+      },
+      {
+        "title": "Use tracing paper",
+        "t": 136.597
+      },
+      {
+        "title": "Watch out",
+        "t": 159.558
+      },
+      {
+        "title": "Your turn",
+        "t": 188.159
+      },
+      {
+        "title": "Summary",
+        "t": 224.074
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-1-b:q",
+        "t": 205.809,
+        "prompt": "A shape fits exactly on itself after turns of $120^\\circ$, $240^\\circ$ and $360^\\circ$, and at no other turns. What is its order of rotation symmetry?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$2$",
+          "$0$"
+        ],
+        "answer": 1,
+        "working": "It fits $3$ times in one full turn, counting the full turn, so its order is $3$."
+      }
+    ]
+  },
+  "m5-8-1-c": {
+    "lessonId": "m5-8-1",
+    "title": "Line and Rotation Symmetry, Part 3: Central Symmetry",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central symmetry",
+        "t": 16.646
+      },
+      {
+        "title": "A straight line through the centre",
+        "t": 38.758
+      },
+      {
+        "title": "Even orders",
+        "t": 88.028
+      },
+      {
+        "title": "Letters",
+        "t": 129.285
+      },
+      {
+        "title": "Your turn",
+        "t": 156.756
+      },
+      {
+        "title": "Summary",
+        "t": 186.401
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-1-c:q",
+        "t": 163.201,
+        "prompt": "Which of these shapes has central symmetry?",
+        "choices": [
+          "An arrow sign",
+          "A triangle with $3$ equal sides",
+          "A heart",
+          "A rectangle"
+        ],
+        "answer": 3,
+        "working": "A rectangle has order $2$: it fits on itself after a half turn about its centre. The other shapes do not fit after a half turn."
+      }
+    ]
+  },
+  "m5-8-1-d": {
+    "lessonId": "m5-8-1",
+    "title": "Line and Rotation Symmetry, Part 4: Symmetry in Nature and Designs",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "In nature",
+        "t": 19.532
+      },
+      {
+        "title": "In designs",
+        "t": 52.21
+      },
+      {
+        "title": "An eight-pointed star",
+        "t": 85.522
+      },
+      {
+        "title": "A quilt block",
+        "t": 109.26
+      },
+      {
+        "title": "Symmetry in 3-D",
+        "t": 149.439
+      },
+      {
+        "title": "Your turn",
+        "t": 172.352
+      },
+      {
+        "title": "Summary",
+        "t": 204.616
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-1-d:q",
+        "t": 182.508,
+        "prompt": "A sea star has $5$ arms that are all the same. What is its order of rotation symmetry?",
+        "choices": [
+          "$5$",
+          "$1$",
+          "$10$",
+          "$0$"
+        ],
+        "answer": 0,
+        "working": "A turn of one fifth of a full turn moves each arm onto the next arm. It fits $5$ times in a full turn, so the order is $5$."
+      }
+    ]
+  },
+  "m5-8-2": {
+    "lessonId": "m5-8-2",
+    "title": "Symmetry of Polygons, Part 1: Regular Polygons",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polygons",
+        "t": 21.842
+      },
+      {
+        "title": "A regular hexagon",
+        "t": 58.971
+      },
+      {
+        "title": "The pattern",
+        "t": 88.312
+      },
+      {
+        "title": "Sides, lines and turns",
+        "t": 113.116
+      },
+      {
+        "title": "A stop sign",
+        "t": 141.794
+      },
+      {
+        "title": "Your turn",
+        "t": 183.31
+      },
+      {
+        "title": "Summary",
+        "t": 223.28
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-2:q",
+        "t": 195.044,
+        "prompt": "How many lines of symmetry does a regular pentagon have, and what is the smallest turn that makes it fit on itself?",
+        "choices": [
+          "$5$ lines; $60^\\circ$",
+          "$10$ lines; $36^\\circ$",
+          "$5$ lines; $72^\\circ$",
+          "$4$ lines; $90^\\circ$"
+        ],
+        "answer": 2,
+        "working": "A regular pentagon has $5$ sides, so $5$ lines of symmetry and order $5$. The smallest turn is $360^\\circ \\div 5 = 72^\\circ$."
+      }
+    ]
+  },
+  "m5-8-2-b": {
+    "lessonId": "m5-8-2",
+    "title": "Symmetry of Polygons, Part 2: Polygons That Are Not Regular",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A rectangle",
+        "t": 19.266
+      },
+      {
+        "title": "A rhombus",
+        "t": 52.066
+      },
+      {
+        "title": "Watch out",
+        "t": 76.508
+      },
+      {
+        "title": "Triangles",
+        "t": 96.969
+      },
+      {
+        "title": "An isosceles triangle",
+        "t": 128.427
+      },
+      {
+        "title": "Your turn",
+        "t": 156.677
+      },
+      {
+        "title": "Summary",
+        "t": 194.76
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-2-b:q",
+        "t": 168.413,
+        "prompt": "A rectangle is **not** a square. How many lines of symmetry does it have, and what is its order of rotation symmetry?",
+        "choices": [
+          "$4$ lines; order $4$",
+          "$2$ lines; order $4$",
+          "$4$ lines; order $2$",
+          "$2$ lines; order $2$"
+        ],
+        "answer": 3,
+        "working": "Only the fold up and down and the fold across work, so it has $2$ lines. It fits after a half turn and a full turn, so its order is $2$."
+      }
+    ]
+  },
+  "m5-8-2-c": {
+    "lessonId": "m5-8-2",
+    "title": "Symmetry of Polygons, Part 3: Circles, and Sorting Shapes",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A round coaster",
+        "t": 16.937
+      },
+      {
+        "title": "Two questions",
+        "t": 67.331
+      },
+      {
+        "title": "Sorting shapes",
+        "t": 108.178
+      },
+      {
+        "title": "Sorting a parallelogram",
+        "t": 142.491
+      },
+      {
+        "title": "Your turn",
+        "t": 178.498
+      },
+      {
+        "title": "Summary",
+        "t": 210.595
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-8-2-c:q",
+        "t": 187.042,
+        "prompt": "Which group does a triangle with $3$ equal sides belong to?",
+        "choices": [
+          "Both: lines and rotation",
+          "Lines only",
+          "Rotation only",
+          "Neither"
+        ],
+        "answer": 0,
+        "working": "A triangle with $3$ equal sides is a regular polygon: it has $3$ lines of symmetry and an order of rotation symmetry of $3$. It has both."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

@@ -314,8 +314,16 @@ items ship or decisions change.
    - Done (17 October 2026): the owner set up the API and saved `YOUTUBE_CLIENT_ID`,
      `YOUTUBE_CLIENT_SECRET` and `YOUTUBE_REFRESH_TOKEN`; every finished video's YouTube text in
      Drive leads with the topic; `video/tools/youtube-update.ts` renames the videos on the channel.
-     Next: run it on the 16 Math 10C videos already on YouTube, from a session that sees the new
-     variables.
+   - Done (19 October 2026, the owner's priority): the 16 Math 10C videos on YouTube were renamed
+     topic-first through the API, and `video/tools/youtube-upload.ts` now uploads videos with
+     their text, thumbnail and captions, files each in its unit's playlist in lesson order, and
+     the upload is linked in `video_links` so its lesson shows it. Uploads come out public. The
+     first ten (Math 10C lessons 2.1 to 3.1) went up the same day; the channel allows 10 uploads a
+     day, so the rest go up 10 a day, in course order (Math 10C, 10-3, 10-4, 20-1 … 31), on a
+     daily schedule. Waiting on the owner: whether Math 5 to 9 are "made for kids" on YouTube
+     (comments and personalised ads off); those courses are not uploaded until then. Unit 1 and
+     Unit 2's playlists sort themselves newest first; set them to Manual in YouTube Studio for
+     lesson order.
    - Built: Math 30-2, all 97 videos at the calm pace (3:40 to 7:07, about 7.8 hours in all), the
      first course with topic-first title cards and no Alberta place names in the narration,
      rendered unit by unit and uploaded to Drive (checked: Drive holds every file of all 97). The

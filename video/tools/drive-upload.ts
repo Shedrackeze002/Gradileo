@@ -19,14 +19,11 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { COURSES } from '../../engine/curriculum/index.ts';
-import type { CourseMeta, UnitMeta } from '../../engine/types.ts';
-import { MANIFEST, SCRIPT_FILES, youtubeTextFor } from '../lib/catalog.ts';
+import { MANIFEST, youtubeTextFor } from '../lib/catalog.ts';
+import { find, FOLDER, google, place, ROOT_FOLDER, unitFolder, videoIds, type Place } from '../lib/google.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const OUT = path.join(ROOT, 'video/out');
-const ROOT_FOLDER = 'Gradileo videos';
-const FOLDER = 'application/vnd.google-apps.folder';
 const FILES: [file: (id: string) => string, mime: string][] = [
   [(id) => `${id}.mp4`, 'video/mp4'],
   [() => 'thumbnail.png', 'image/png'],
@@ -34,105 +31,15 @@ const FILES: [file: (id: string) => string, mime: string][] = [
   [() => 'youtube.txt', 'text/plain'],
 ];
 
-interface Planned {
-  id: string;
-  course: CourseMeta;
-  unit: UnitMeta;
-  folder: string;
-}
-
-const SCRIPTS = [...SCRIPT_FILES.keys()];
-
-/** Every video id of a lesson, part 1 first (m104-1-1, m104-1-1-b, m104-1-1-c, …). */
-function lessonVideos(lessonId: string): string[] {
-  return SCRIPTS.filter((id) => id === lessonId || (id.startsWith(`${lessonId}-`) && /^-[b-z]$/.test(id.slice(lessonId.length))))
-    .sort((a, b) => a.length - b.length || a.localeCompare(b));
-}
-
-function unitVideos(unit: UnitMeta): string[] {
-  return unit.lessons.flatMap(lessonVideos);
-}
-
-const unitFolder = (unit: UnitMeta) => `Unit ${unit.number} – ${unit.title}`;
-
-/** Where a video goes: its course, unit and numbered folder. */
-function plan(id: string): Planned {
-  for (const course of COURSES) {
-    for (const unit of course.units) {
-      const ids = unitVideos(unit);
-      const i = ids.indexOf(id);
-      if (i >= 0) return { id, course, unit, folder: `${String(i + 1).padStart(2, '0')}-${id}` };
-    }
-  }
-  throw new Error(`${id}: no script for this video in src/content/*/videos/`);
-}
-
 /**
  * Video ids for the arguments: video ids as given, units and courses as their rendered videos (with
  * --text-only, every video in videos.json).
  */
 function expand(args: string[], textOnly: boolean): string[] {
-  const rendered = (id: string) => (textOnly ? id in MANIFEST : existsSync(path.join(OUT, id, `${id}.mp4`)));
-  const ids: string[] = [];
-  for (const arg of args) {
-    const course = COURSES.find((c) => c.id === arg);
-    const unit = COURSES.flatMap((c) => c.units).find((u) => u.id === arg);
-    if (course) ids.push(...course.units.flatMap(unitVideos).filter(rendered));
-    else if (unit) ids.push(...unitVideos(unit).filter(rendered));
-    else ids.push(arg);
-  }
-  return [...new Set(ids)];
+  return videoIds(args, (id) => (textOnly ? id in MANIFEST : existsSync(path.join(OUT, id, `${id}.mp4`))));
 }
 
-// ---------------------------------------------------------------- Google Drive
-
-let token: { value: string; until: number } | undefined;
-
-async function accessToken(): Promise<string> {
-  if (token && Date.now() < token.until) return token.value;
-  const env = ['GDRIVE_CLIENT_ID', 'GDRIVE_CLIENT_SECRET', 'GDRIVE_REFRESH_TOKEN'];
-  const missing = env.filter((k) => !process.env[k]);
-  if (missing.length) throw new Error(`Set ${missing.join(', ')} (see video/README.md, "Google Drive")`);
-  const res = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    body: new URLSearchParams({
-      client_id: process.env.GDRIVE_CLIENT_ID!,
-      client_secret: process.env.GDRIVE_CLIENT_SECRET!,
-      refresh_token: process.env.GDRIVE_REFRESH_TOKEN!,
-      grant_type: 'refresh_token',
-    }),
-  });
-  const body = (await res.json()) as { access_token?: string; expires_in?: number; error?: string; error_description?: string };
-  if (!res.ok || !body.access_token) {
-    throw new Error(`Google refused the Drive sign-in (${res.status} ${body.error ?? ''}: ${body.error_description ?? ''})`);
-  }
-  token = { value: body.access_token, until: Date.now() + ((body.expires_in ?? 3600) - 300) * 1000 };
-  return token.value;
-}
-
-/** A Drive API call, retried on rate limits and server errors. */
-async function drive(url: string, init: RequestInit = {}): Promise<Response> {
-  for (let attempt = 1; ; attempt++) {
-    const headers = new Headers(init.headers);
-    headers.set('Authorization', `Bearer ${await accessToken()}`);
-    const res = await fetch(url, { ...init, headers });
-    if (res.ok) return res;
-    if (attempt < 4 && (res.status === 429 || res.status >= 500)) {
-      await new Promise((r) => setTimeout(r, 2000 * 2 ** attempt));
-      continue;
-    }
-    throw new Error(`Drive ${init.method ?? 'GET'} ${url.split('?')[0]} failed: ${res.status} ${await res.text()}`);
-  }
-}
-
-const quote = (s: string) => `'${s.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
-
-async function find(name: string, parent: string, folder: boolean) {
-  const q = [`name = ${quote(name)}`, `${quote(parent)} in parents`, 'trashed = false', `mimeType ${folder ? '=' : '!='} '${FOLDER}'`];
-  const url = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(q.join(' and '))}&fields=files(id,md5Checksum)&spaces=drive`;
-  const { files } = (await (await drive(url)).json()) as { files: { id: string; md5Checksum?: string }[] };
-  return files[0];
-}
+const drive = (url: string, init?: RequestInit) => google('GDRIVE', url, init);
 
 const folders = new Map<string, string>();
 
@@ -209,10 +116,10 @@ if (!ids.length) {
 }
 
 let failed = 0;
-const planned: Planned[] = [];
+const planned: Place[] = [];
 for (const id of ids) {
   try {
-    planned.push(plan(id));
+    planned.push(place(id));
   } catch (e) {
     console.error((e as Error).message);
     failed++;
