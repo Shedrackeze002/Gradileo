@@ -353,7 +353,17 @@ items ship or decisions change.
      differentiate"), "The sign is wrong" beside "sine", and "its slices are" ("it slices our").
      All are listed in `video/README.md`, with a rule for voicing a minus sign in front of a bracket
      or fraction. Every Math 10 to 31 course is rendered and in Drive (1,013 videos).
-   - Next: script and render Math 5, 6, 7, 8 and 9 in order, explaining each lesson as simply as
+   - Built: Math 5, all 96 videos at the calm pace (2:42 to 6:18, about 6.3 hours in all),
+     explaining each lesson as simply as possible for a Grade 5 learner, with parts split by idea,
+     topic-first and in neutral settings, rendered unit by unit and uploaded to Drive (checked:
+     Drive holds every file of all 96). Four helpers wrote the scripts unit by unit; every answer,
+     figure and puzzle was checked before rendering. The listening check found two phrases the
+     voice blurred, and those videos were made again: "ate" before a number ("ate two eighths" was
+     heard as "eight, two eighths"; now "eats") and a count of a number in the plural ("twenty
+     sixes" was heard as "26s" in the lesson whose answer is 26; now "twenty groups of six"). Both
+     are listed in `video/README.md`. Every course from Math 10 to 31, and Math 5, is rendered and
+     in Drive (1,109 videos).
+   - Next: script and render Math 6, 7, 8 and 9 in order, explaining each lesson as simply as
      possible, with parts split by idea.
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with

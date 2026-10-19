@@ -4988,6 +4988,57 @@
       }
     ]
   },
+  "m5-12-2-d": {
+    "lessonId": "m5-12-2",
+    "title": "Collecting and Displaying Data, Part 4: Stem-and-Leaf Plots",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stems and leaves",
+        "t": 19.288
+      },
+      {
+        "title": "Reading the plot",
+        "t": 53.823
+      },
+      {
+        "title": "Answering questions",
+        "t": 103.011
+      },
+      {
+        "title": "Each row is a category",
+        "t": 137.325
+      },
+      {
+        "title": "Your turn",
+        "t": 166.136
+      },
+      {
+        "title": "Summary",
+        "t": 202.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-2-d:q",
+        "t": 178.616,
+        "prompt": "In a stem-and-leaf plot, the row with stem $2$ has the leaves $0\\ \\ 3\\ \\ 3\\ \\ 6$. Which values does this row show?",
+        "choices": [
+          "$0,\\ 3,\\ 3,\\ 6$",
+          "$2,\\ 0,\\ 3,\\ 3,\\ 6$",
+          "$20,\\ 30,\\ 30,\\ 60$",
+          "$20,\\ 23,\\ 23,\\ 26$"
+        ],
+        "answer": 3,
+        "working": "The stem $2$ is the tens digit and each leaf is a ones digit: $20$, $23$, $23$ and $26$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
