@@ -9160,6 +9160,595 @@
       }
     ]
   },
+  "m31-7-2-d": {
+    "lessonId": "m31-7-2",
+    "title": "Related Rates, Part 4: Moving Cars and Changing Angles",
+    "duration": 391,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cars moving apart",
+        "t": 25.516
+      },
+      {
+        "title": "Differentiate and substitute",
+        "t": 72.912
+      },
+      {
+        "title": "Toward the intersection",
+        "t": 123.828
+      },
+      {
+        "title": "A rising balloon",
+        "t": 155.893
+      },
+      {
+        "title": "How fast the angle changes",
+        "t": 198.364
+      },
+      {
+        "title": "Watch out",
+        "t": 263.984
+      },
+      {
+        "title": "Your turn",
+        "t": 295.212
+      },
+      {
+        "title": "Summary",
+        "t": 356.487
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-7-2-d:q",
+        "t": 315.037,
+        "prompt": "Car A is $6$ km north of an intersection, driving **toward** it at $50$ km/h. Car B is $8$ km east, driving away at $60$ km/h. How is the distance between them changing?",
+        "choices": [
+          "Increasing at $78$ km/h",
+          "Decreasing at $18$ km/h",
+          "Increasing at $18$ km/h",
+          "Increasing at $110$ km/h"
+        ],
+        "answer": 2,
+        "working": "$10\\dfrac{dD}{dt} = 6(-50) + 8(60) = -300 + 480 = 180$, so $\\dfrac{dD}{dt} = 18$ km/h, positive: the distance is increasing."
+      }
+    ]
+  },
+  "m31-8-1": {
+    "lessonId": "m31-8-1",
+    "title": "Antiderivatives, Part 1: Undoing a Derivative",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backwards",
+        "t": 32.714
+      },
+      {
+        "title": "Antiderivatives",
+        "t": 78.659
+      },
+      {
+        "title": "A family of curves",
+        "t": 133.783
+      },
+      {
+        "title": "Always check",
+        "t": 189.976
+      },
+      {
+        "title": "Your turn",
+        "t": 224.837
+      },
+      {
+        "title": "Summary",
+        "t": 264.036
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-1:q",
+        "t": 232.457,
+        "prompt": "Which function is an antiderivative of $3x^2$?",
+        "choices": [
+          "$6x$",
+          "$x^3 + 3x$",
+          "$3x^3$",
+          "$x^3 - 7$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{d}{dx}\\left(x^3 - 7\\right) = 3x^2$. The others differentiate to $6$, $3x^2 + 3$ and $9x^2$."
+      }
+    ]
+  },
+  "m31-8-1-b": {
+    "lessonId": "m31-8-1",
+    "title": "Antiderivatives, Part 2: The Power Rule in Reverse",
+    "duration": 354,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Raise the power, divide",
+        "t": 23.783
+      },
+      {
+        "title": "Constants and sums",
+        "t": 81.507
+      },
+      {
+        "title": "A polynomial",
+        "t": 105.359
+      },
+      {
+        "title": "Roots and negative powers",
+        "t": 160.594
+      },
+      {
+        "title": "Watch out",
+        "t": 225.841
+      },
+      {
+        "title": "Your turn",
+        "t": 269.453
+      },
+      {
+        "title": "Summary",
+        "t": 317.779
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-1-b:q",
+        "t": 278.409,
+        "prompt": "Find $\\displaystyle\\int (4x^3 - 6x + 2)\\,dx$.",
+        "choices": [
+          "$12x^2 - 6 + C$",
+          "$x^4 - 3x^2 + 2x + C$",
+          "$4x^4 - 6x^2 + 2x + C$",
+          "$x^4 - 3x^2 + C$"
+        ],
+        "answer": 1,
+        "working": "$4\\cdot\\dfrac{x^4}{4} = x^4$, $-6\\cdot\\dfrac{x^2}{2} = -3x^2$ and $\\int 2\\,dx = 2x$. Check: $\\dfrac{d}{dx}\\left(x^4 - 3x^2 + 2x\\right) = 4x^3 - 6x + 2$."
+      }
+    ]
+  },
+  "m31-8-1-c": {
+    "lessonId": "m31-8-1",
+    "title": "Antiderivatives, Part 3: Trigonometric, Exponential and 1/x",
+    "duration": 320,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Read the rules backwards",
+        "t": 18.553
+      },
+      {
+        "title": "One over x",
+        "t": 62.666
+      },
+      {
+        "title": "Mixed terms",
+        "t": 111.5
+      },
+      {
+        "title": "Rewrite first",
+        "t": 157.215
+      },
+      {
+        "title": "Watch out",
+        "t": 199.038
+      },
+      {
+        "title": "Your turn",
+        "t": 232.569
+      },
+      {
+        "title": "Summary",
+        "t": 277.393
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-1-c:q",
+        "t": 242.233,
+        "prompt": "Find $\\displaystyle\\int \\left(2\\sin x + \\frac{3}{x}\\right)dx$ for $x > 0$.",
+        "choices": [
+          "$-2\\cos x + 3\\ln x + C$",
+          "$2\\cos x + 3\\ln x + C$",
+          "$-2\\cos x - \\dfrac{3}{x^2} + C$",
+          "$2\\cos x - \\dfrac{3}{x^2} + C$"
+        ],
+        "answer": 0,
+        "working": "$\\int 2\\sin x\\,dx = -2\\cos x$ and $\\int \\dfrac{3}{x}\\,dx = 3\\ln x$. Check: $\\dfrac{d}{dx}\\left(-2\\cos x + 3\\ln x\\right) = 2\\sin x + \\dfrac{3}{x}$."
+      }
+    ]
+  },
+  "m31-8-1-d": {
+    "lessonId": "m31-8-1",
+    "title": "Antiderivatives, Part 4: Initial-Value Problems and Motion",
+    "duration": 310,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One value pins down C",
+        "t": 22.058
+      },
+      {
+        "title": "Using an initial condition",
+        "t": 46.704
+      },
+      {
+        "title": "From acceleration to position",
+        "t": 106.402
+      },
+      {
+        "title": "A ball thrown upward",
+        "t": 141.206
+      },
+      {
+        "title": "Your turn",
+        "t": 232.153
+      },
+      {
+        "title": "Summary",
+        "t": 277.244
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-1-d:q",
+        "t": 244.139,
+        "prompt": "Find $f(x)$ given $f'(x) = 6x^2 + 2$ and $f(1) = 9$.",
+        "choices": [
+          "$2x^3 + 2x + 9$",
+          "$12x + 5$",
+          "$6x^3 + 2x + 1$",
+          "$2x^3 + 2x + 5$"
+        ],
+        "answer": 3,
+        "working": "$f(x) = 2x^3 + 2x + C$, and $f(1) = 2 + 2 + C = 9$, so $C = 5$."
+      }
+    ]
+  },
+  "m31-8-2": {
+    "lessonId": "m31-8-2",
+    "title": "Riemann Sums and Area, Part 1: Left and Right Sums",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Area under a rate graph",
+        "t": 22.823
+      },
+      {
+        "title": "Riemann sums",
+        "t": 68.839
+      },
+      {
+        "title": "A left sum",
+        "t": 120.836
+      },
+      {
+        "title": "A right sum",
+        "t": 191.745
+      },
+      {
+        "title": "Watch out",
+        "t": 240.045
+      },
+      {
+        "title": "Your turn",
+        "t": 268.406
+      },
+      {
+        "title": "Summary",
+        "t": 311.042
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-2:q",
+        "t": 280.418,
+        "prompt": "Estimate the area under $f(x) = x^2$ on $[0, 4]$ with a **right** sum and $n = 4$.",
+        "choices": [
+          "$30$",
+          "$14$",
+          "$21.3$",
+          "$60$"
+        ],
+        "answer": 0,
+        "working": "$\\Delta x = 1$, and the right ends $1, 2, 3, 4$ give heights $1, 4, 9, 16$: $R_4 = 1(1 + 4 + 9 + 16) = 30$."
+      }
+    ]
+  },
+  "m31-8-2-b": {
+    "lessonId": "m31-8-2",
+    "title": "Riemann Sums and Area, Part 2: Midpoints and the Definite Integral",
+    "duration": 314,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Midpoint sums",
+        "t": 23.19
+      },
+      {
+        "title": "Too high or too low?",
+        "t": 92.597
+      },
+      {
+        "title": "Thinner rectangles",
+        "t": 135.193
+      },
+      {
+        "title": "The definite integral",
+        "t": 183.272
+      },
+      {
+        "title": "Your turn",
+        "t": 235.24
+      },
+      {
+        "title": "Summary",
+        "t": 276.377
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-2-b:q",
+        "t": 245.451,
+        "prompt": "For $f(x) = 9 - x^2$ on $[0, 3]$, which statement is true?",
+        "choices": [
+          "$L_n$ is an underestimate and $R_n$ an overestimate.",
+          "Both $L_n$ and $R_n$ are overestimates.",
+          "$L_n$ is an overestimate and $R_n$ an underestimate.",
+          "Both $L_n$ and $R_n$ are underestimates."
+        ],
+        "answer": 2,
+        "working": "On $[0, 3]$, $f$ decreases from $9$ to $0$, so each left end is the highest point of its subinterval and each right end the lowest."
+      }
+    ]
+  },
+  "m31-8-2-c": {
+    "lessonId": "m31-8-2",
+    "title": "Riemann Sums and Area, Part 3: Sums from Data",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Measured rates",
+        "t": 22.367
+      },
+      {
+        "title": "A left sum",
+        "t": 49.77
+      },
+      {
+        "title": "A right sum",
+        "t": 81.189
+      },
+      {
+        "title": "Units",
+        "t": 115.303
+      },
+      {
+        "title": "Your turn",
+        "t": 141.808
+      },
+      {
+        "title": "Summary",
+        "t": 199.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-2-c:q",
+        "t": 160.661,
+        "prompt": "Water flows into a tank at $40$, $36$, $30$, $22$ and $12$ L/min, measured at $t = 0$, $5$, $10$, $15$ and $20$ min. Estimate the water added in the $20$ minutes with a **left** sum.",
+        "choices": [
+          "$500$ L",
+          "$640$ L",
+          "$700$ L",
+          "$128$ L"
+        ],
+        "answer": 1,
+        "working": "$\\Delta t = 5$, so $L_4 = 5(40 + 36 + 30 + 22) = 5(128) = 640$ L. The rate is decreasing, so this is an overestimate."
+      }
+    ]
+  },
+  "m31-8-3": {
+    "lessonId": "m31-8-3",
+    "title": "The Fundamental Theorem of Calculus, Part 1: Net Area and the Theorem",
+    "duration": 361,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Net area",
+        "t": 34.059
+      },
+      {
+        "title": "The theorem",
+        "t": 100.305
+      },
+      {
+        "title": "Why it works",
+        "t": 137.985
+      },
+      {
+        "title": "Using the theorem",
+        "t": 203.108
+      },
+      {
+        "title": "Back to the rectangles",
+        "t": 243.332
+      },
+      {
+        "title": "Your turn",
+        "t": 279.305
+      },
+      {
+        "title": "Summary",
+        "t": 318.252
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-3:q",
+        "t": 288.341,
+        "prompt": "Evaluate $\\displaystyle\\int_1^3 (2x + 1)\\,dx$.",
+        "choices": [
+          "$10$",
+          "$12$",
+          "$14$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "$F(x) = x^2 + x$, so $F(3) - F(1) = 12 - 2 = 10$."
+      }
+    ]
+  },
+  "m31-8-3-b": {
+    "lessonId": "m31-8-3",
+    "title": "The Fundamental Theorem of Calculus, Part 2: Evaluating and Properties",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Under a sine arch",
+        "t": 22.42
+      },
+      {
+        "title": "One over x",
+        "t": 70.607
+      },
+      {
+        "title": "Watch out",
+        "t": 99.881
+      },
+      {
+        "title": "Properties",
+        "t": 142.68
+      },
+      {
+        "title": "Using the properties",
+        "t": 186.053
+      },
+      {
+        "title": "Your turn",
+        "t": 234.883
+      },
+      {
+        "title": "Summary",
+        "t": 283.302
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-3-b:q",
+        "t": 248.774,
+        "prompt": "Given $\\int_0^5 f(x)\\,dx = 8$ and $\\int_0^2 f(x)\\,dx = 3$, find $\\int_5^2 f(x)\\,dx$.",
+        "choices": [
+          "$5$",
+          "$11$",
+          "$-11$",
+          "$-5$"
+        ],
+        "answer": 3,
+        "working": "$\\int_2^5 f(x)\\,dx = 8 - 3 = 5$, and reversing the limits changes the sign: $\\int_5^2 f(x)\\,dx = -5$."
+      }
+    ]
+  },
+  "m31-8-3-c": {
+    "lessonId": "m31-8-3",
+    "title": "The Fundamental Theorem of Calculus, Part 3: Net Area, Total Area and Average Value",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Net area or total area",
+        "t": 24.342
+      },
+      {
+        "title": "Displacement and distance",
+        "t": 98.19
+      },
+      {
+        "title": "Average value",
+        "t": 138.137
+      },
+      {
+        "title": "Average velocity",
+        "t": 183.796
+      },
+      {
+        "title": "Your turn",
+        "t": 227.721
+      },
+      {
+        "title": "Summary",
+        "t": 271.296
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-3-c:q",
+        "t": 237.615,
+        "prompt": "Find the average value of $f(x) = 3x^2$ on $[0, 2]$.",
+        "choices": [
+          "$8$",
+          "$4$",
+          "$6$",
+          "$12$"
+        ],
+        "answer": 1,
+        "working": "$\\int_0^2 3x^2\\,dx = \\Big[x^3\\Big]_0^2 = 8$, and $f_{\\text{avg}} = \\dfrac{8}{2 - 0} = 4$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",

@@ -137,7 +137,7 @@ const video: Explainer = {
       lines: [
         { say: 'Your turn. A theatre sells 400 tickets a night at twenty dollars each. For every one dollar increase in price, ten fewer tickets are sold. What ticket price brings in the most revenue? Pause the video and try it.', show: 'q', wait: 6 },
         { say: 'The answer is A, 30 dollars. With x increases of one dollar, the revenue is, twenty plus x, times, 400 minus ten x. Its derivative, 200 minus twenty x, is zero when x is ten. So the price is twenty plus ten: 30 dollars, and 300 tickets bring in 9,000 dollars.', show: 'q.answer' },
-        { say: 'Choice B, ten dollars, is x itself: the number of one dollar increases, not the price.' },
+        { say: 'Choice B, ten dollars, is just the value of x: the number of one dollar increases, not the price.' },
       ],
     },
     {
