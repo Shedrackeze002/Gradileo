@@ -6526,7 +6526,7 @@
   "m31-4-1-d": {
     "lessonId": "m31-4-1",
     "title": "The Power, Constant and Sum Rules, Part 4: Roots and Reciprocals",
-    "duration": 283,
+    "duration": 284,
     "voice": "af_heart",
     "chapters": [
       {
@@ -6551,17 +6551,17 @@
       },
       {
         "title": "Your turn",
-        "t": 219.433
+        "t": 219.744
       },
       {
         "title": "Summary",
-        "t": 254.847
+        "t": 255.158
       }
     ],
     "cues": [
       {
         "id": "m31-4-1-d:q",
-        "t": 226.601,
+        "t": 226.912,
         "prompt": "Differentiate $y = \\dfrac{2}{x^{2}}$.",
         "choices": [
           "$\\dfrac{1}{x}$",
@@ -7044,7 +7044,7 @@
   "m31-4-3-d": {
     "lessonId": "m31-4-3",
     "title": "The Chain Rule, Part 4: Combining the Rules",
-    "duration": 267,
+    "duration": 268,
     "voice": "af_heart",
     "chapters": [
       {
@@ -7073,7 +7073,7 @@
       },
       {
         "title": "Summary",
-        "t": 239.846
+        "t": 241.052
       }
     ],
     "cues": [
@@ -7680,7 +7680,7 @@
   "m31-5-3-b": {
     "lessonId": "m31-5-3",
     "title": "Implicit Differentiation and Higher Derivatives, Part 2: Products and Mixed Terms",
-    "duration": 287,
+    "duration": 289,
     "voice": "af_heart",
     "chapters": [
       {
@@ -7697,29 +7697,29 @@
       },
       {
         "title": "On the graph",
-        "t": 111.955
+        "t": 113.985
       },
       {
         "title": "Watch out",
-        "t": 130.348
+        "t": 132.378
       },
       {
         "title": "Any functions",
-        "t": 164.88
+        "t": 166.91
       },
       {
         "title": "Your turn",
-        "t": 213.493
+        "t": 215.523
       },
       {
         "title": "Summary",
-        "t": 256.143
+        "t": 258.173
       }
     ],
     "cues": [
       {
         "id": "m31-5-3-b:q",
-        "t": 224.214,
+        "t": 226.244,
         "prompt": "Find the slope of the tangent to $xy + y^{2} = 6$ at the point $(1, 2)$.",
         "choices": [
           "$-\\dfrac{2}{5}$",
@@ -8274,6 +8274,347 @@
         ],
         "answer": 3,
         "working": "The critical numbers $-2$ and $2$ are in the interval. $f(-3) = 14$, $f(-2) = 21$, $f(2) = -11$ and $f(5) = 70$, so the absolute maximum is $70$, at $x = 5$."
+      }
+    ]
+  },
+  "m31-6-3": {
+    "lessonId": "m31-6-3",
+    "title": "Concavity and Curve Sketching, Part 1: Concavity",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two ways to bend",
+        "t": 18.758
+      },
+      {
+        "title": "The second derivative",
+        "t": 58.537
+      },
+      {
+        "title": "Intervals of concavity",
+        "t": 90.261
+      },
+      {
+        "title": "Your turn",
+        "t": 134.539
+      },
+      {
+        "title": "Summary",
+        "t": 174.342
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-3:q",
+        "t": 145.382,
+        "prompt": "On what interval is $f(x) = x^{3} + 3x^{2} - 1$ concave up?",
+        "choices": [
+          "$(-1, \\infty)$",
+          "$(-\\infty, -1)$",
+          "$(-2, 0)$",
+          "$(0, \\infty)$"
+        ],
+        "answer": 0,
+        "working": "$f'(x) = 3x^{2} + 6x$ and $f''(x) = 6x + 6$, which is positive when $x > -1$."
+      }
+    ]
+  },
+  "m31-6-3-b": {
+    "lessonId": "m31-6-3",
+    "title": "Concavity and Curve Sketching, Part 2: Points of Inflection",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Point of inflection",
+        "t": 19.957
+      },
+      {
+        "title": "Two points of inflection",
+        "t": 62.558
+      },
+      {
+        "title": "Watch out",
+        "t": 122.05
+      },
+      {
+        "title": "Your turn",
+        "t": 158.477
+      },
+      {
+        "title": "Summary",
+        "t": 200.162
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-3-b:q",
+        "t": 169.271,
+        "prompt": "Find the point of inflection of $f(x) = x^{3} - 6x^{2} + 5$.",
+        "choices": [
+          "$(0, 5)$",
+          "$(4, -27)$",
+          "$(2, -11)$",
+          "$(2, 0)$"
+        ],
+        "answer": 2,
+        "working": "$f''(x) = 6x - 12$ is $0$ at $x = 2$ and changes from $-$ to $+$ there. $f(2) = 8 - 24 + 5 = -11$."
+      }
+    ]
+  },
+  "m31-6-3-c": {
+    "lessonId": "m31-6-3",
+    "title": "Concavity and Curve Sketching, Part 3: The Second Derivative Test",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The idea",
+        "t": 19.523
+      },
+      {
+        "title": "The test",
+        "t": 51.153
+      },
+      {
+        "title": "Classifying critical numbers",
+        "t": 88.161
+      },
+      {
+        "title": "When the test fails",
+        "t": 152.409
+      },
+      {
+        "title": "Your turn",
+        "t": 189.718
+      },
+      {
+        "title": "Summary",
+        "t": 233.93
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-3-c:q",
+        "t": 203.555,
+        "prompt": "$f(x) = x^{3} - 27x$ has critical numbers $-3$ and $3$. What does the second derivative test say?",
+        "choices": [
+          "A local minimum at $-3$ and a local maximum at $3$",
+          "A local maximum at $-3$ and a local minimum at $3$",
+          "Local minima at both",
+          "The test gives no information"
+        ],
+        "answer": 1,
+        "working": "$f''(x) = 6x$. $f''(-3) = -18 < 0$, a local maximum; $f''(3) = 18 > 0$, a local minimum."
+      }
+    ]
+  },
+  "m31-6-3-d": {
+    "lessonId": "m31-6-3",
+    "title": "Concavity and Curve Sketching, Part 4: Curve Sketching",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The steps",
+        "t": 22.021
+      },
+      {
+        "title": "Intercepts",
+        "t": 60.044
+      },
+      {
+        "title": "Two sign charts",
+        "t": 92.635
+      },
+      {
+        "title": "The sketch",
+        "t": 148.446
+      },
+      {
+        "title": "Watch out",
+        "t": 202.06
+      },
+      {
+        "title": "Your turn",
+        "t": 235.06
+      },
+      {
+        "title": "Summary",
+        "t": 272.611
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-3-d:q",
+        "t": 246.35,
+        "prompt": "Which describes $f(x) = x^{3} - 3x$ on the interval $(-1, 0)$?",
+        "choices": [
+          "Decreasing and concave down",
+          "Decreasing and concave up",
+          "Increasing and concave down",
+          "Increasing and concave up"
+        ],
+        "answer": 0,
+        "working": "On $(-1, 0)$, $f'(x) = 3(x + 1)(x - 1) < 0$, so $f$ is decreasing, and $f''(x) = 6x < 0$, so $f$ is concave down."
+      }
+    ]
+  },
+  "m31-6-4": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 1: Velocity and Acceleration",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Position",
+        "t": 26.741
+      },
+      {
+        "title": "Velocity and acceleration",
+        "t": 68.473
+      },
+      {
+        "title": "At an instant",
+        "t": 109.198
+      },
+      {
+        "title": "Your turn",
+        "t": 157.577
+      },
+      {
+        "title": "Summary",
+        "t": 204.533
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4:q",
+        "t": 175.635,
+        "prompt": "A particle has position $s(t) = 2t^{3} - 9t^{2} + 12t$ metres after $t$ seconds. Find its velocity and acceleration at $t = 3$.",
+        "choices": [
+          "$v = 9$ m/s, $a = 12$ m/s²",
+          "$v = 18$ m/s, $a = 12$ m/s²",
+          "$v = 12$ m/s, $a = 18$ m/s²",
+          "$v = -12$ m/s, $a = 18$ m/s²"
+        ],
+        "answer": 2,
+        "working": "$v(t) = 6t^{2} - 18t + 12$, so $v(3) = 54 - 54 + 12 = 12$ m/s. $a(t) = 12t - 18$, so $a(3) = 36 - 18 = 18$ m/s²."
+      }
+    ]
+  },
+  "m31-6-4-b": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 2: Direction of Motion",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The sign of the velocity",
+        "t": 21.131
+      },
+      {
+        "title": "When does it turn around?",
+        "t": 58.563
+      },
+      {
+        "title": "Seeing the motion",
+        "t": 107.924
+      },
+      {
+        "title": "Your turn",
+        "t": 146.77
+      },
+      {
+        "title": "Summary",
+        "t": 190.83
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4-b:q",
+        "t": 162.156,
+        "prompt": "A particle has position $s(t) = t^{2} - 8t + 3$ metres after $t$ seconds, for $t \\ge 0$. When is it moving in the negative direction?",
+        "choices": [
+          "$t > 4$",
+          "Only at $t = 4$",
+          "$0 < t < 8$",
+          "$0 \\le t < 4$"
+        ],
+        "answer": 3,
+        "working": "$v(t) = 2t - 8$, which is negative when $t < 4$. So the particle moves in the negative direction for $0 \\le t < 4$."
+      }
+    ]
+  },
+  "m31-6-4-c": {
+    "lessonId": "m31-6-4",
+    "title": "Motion Along a Line, Part 3: Rising and Falling",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A ball thrown upward",
+        "t": 24.377
+      },
+      {
+        "title": "Up, stop, down",
+        "t": 86.536
+      },
+      {
+        "title": "Hitting the water",
+        "t": 125.215
+      },
+      {
+        "title": "Your turn",
+        "t": 180.547
+      },
+      {
+        "title": "Summary",
+        "t": 230.032
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-6-4-c:q",
+        "t": 197.28,
+        "prompt": "A ball thrown upward has height $h(t) = 2 + 24.5t - 4.9t^{2}$ metres after $t$ seconds. When is it highest, and how high is it then?",
+        "choices": [
+          "At $t = 5$ s, $2$ m",
+          "At $t = 2.5$ s, $32.625$ m",
+          "At $t = 2.5$ s, $63.25$ m",
+          "At $t = 2$ s, $31.4$ m"
+        ],
+        "answer": 1,
+        "working": "$v(t) = 24.5 - 9.8t = 0$ at $t = 2.5$ s, and $h(2.5) = 2 + 61.25 - 30.625 = 32.625$ m."
       }
     ]
   },
