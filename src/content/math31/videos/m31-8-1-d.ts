@@ -119,7 +119,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Your turn. Find f of x, given f prime of x equals six x squared plus two, and f of one equals nine. Pause the video and try it.', show: 'q', wait: 6 },
-        { say: 'The answer is D. Antidifferentiate: f of x equals two x cubed, plus two x, plus C. Then f of one is two plus two plus C, which must be nine, so C is five.', show: 'q.answer' },
+        { say: 'The answer is D. Find the antiderivative: f of x equals two x cubed, plus two x, plus C. Then f of one is two plus two plus C, which must be nine, so C is five.', show: 'q.answer' },
         { say: 'Choice A uses C equals nine. But nine is the value of f at x equals one, not at x equals zero, so it is not the constant.' },
       ],
     },
@@ -135,7 +135,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. To solve an initial-value problem, antidifferentiate first, with plus C.', show: 'sum.0' },
+        { say: 'Let’s sum up. To solve an initial-value problem, find the antiderivative first, with plus C.', show: 'sum.0' },
         { say: 'Then substitute the initial condition to find C.', show: 'sum.1' },
         { say: 'Going from acceleration to position takes two antiderivatives, so it needs two conditions.', show: 'sum.2' },
         { say: 'And check that your answer passes through the given point. In the next lesson, we turn to areas under curves, and add up rectangles. See you there!', show: 'sum.3' },

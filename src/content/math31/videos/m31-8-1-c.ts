@@ -92,7 +92,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'A common mistake is the sign of the antiderivative of sine. It is tempting to write that the integral of sine x is cosine x.', show: 'oops' },
-        { say: 'Check it: the derivative of cosine x is negative sine x, not sine x. The sign is wrong.', show: 'm.0', focus: 'm.0' },
+        { say: 'Check it: the derivative of cosine x is negative sine x, not sine x. So cosine x is missing a negative.', show: 'm.0', focus: 'm.0' },
         { say: 'The derivative of negative cosine x is sine x, so the integral of sine x is negative cosine x, plus C. Differentiating your answer catches this every time.', show: 'm.1', focus: 'm.1' },
       ],
     },

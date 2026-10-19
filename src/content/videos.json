@@ -9749,6 +9749,563 @@
       }
     ]
   },
+  "m31-8-4": {
+    "lessonId": "m31-8-4",
+    "title": "Integration by Substitution, Part 1: Reversing the Chain Rule",
+    "duration": 380,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reversing the chain rule",
+        "t": 30.348
+      },
+      {
+        "title": "The substitution rule",
+        "t": 87.479
+      },
+      {
+        "title": "The method",
+        "t": 118.948
+      },
+      {
+        "title": "What to try for u",
+        "t": 156.127
+      },
+      {
+        "title": "Adjusting a constant",
+        "t": 213.224
+      },
+      {
+        "title": "Watch out",
+        "t": 269.34
+      },
+      {
+        "title": "Your turn",
+        "t": 296.749
+      },
+      {
+        "title": "Summary",
+        "t": 343.694
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-4:q",
+        "t": 306.197,
+        "prompt": "Find $\\displaystyle\\int 2x(x^2 + 5)^3\\,dx$.",
+        "choices": [
+          "$\\dfrac{(x^2 + 5)^4}{8} + C$",
+          "$(x^2 + 5)^4 + C$",
+          "$\\dfrac{(x^2 + 5)^4}{4} + C$",
+          "$\\dfrac{x^2(x^2 + 5)^4}{4} + C$"
+        ],
+        "answer": 2,
+        "working": "$u = x^2 + 5$ and $du = 2x\\,dx$, so the integral is $\\int u^3\\,du = \\dfrac{u^4}{4} + C = \\dfrac{(x^2 + 5)^4}{4} + C$."
+      }
+    ]
+  },
+  "m31-8-4-b": {
+    "lessonId": "m31-8-4",
+    "title": "Integration by Substitution, Part 2: Exponentials, Logarithms and Trigonometry",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exponentials",
+        "t": 23.544
+      },
+      {
+        "title": "A logarithm and a sine",
+        "t": 78.89
+      },
+      {
+        "title": "With an initial condition",
+        "t": 142.436
+      },
+      {
+        "title": "Your turn",
+        "t": 204.588
+      },
+      {
+        "title": "Summary",
+        "t": 249.963
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-4-b:q",
+        "t": 212.728,
+        "prompt": "Find $\\displaystyle\\int x^2 e^{x^3}\\,dx$.",
+        "choices": [
+          "$\\dfrac{1}{3}e^{x^3} + C$",
+          "$3e^{x^3} + C$",
+          "$\\dfrac{1}{3}x^3 e^{x^3} + C$",
+          "$e^{x^3} + C$"
+        ],
+        "answer": 0,
+        "working": "$u = x^3$ and $du = 3x^2\\,dx$, so $x^2\\,dx = \\tfrac{1}{3}\\,du$ and the integral is $\\tfrac{1}{3}\\int e^u\\,du = \\tfrac{1}{3}e^{x^3} + C$."
+      }
+    ]
+  },
+  "m31-8-4-c": {
+    "lessonId": "m31-8-4",
+    "title": "Integration by Substitution, Part 3: Definite Integrals and New Limits",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Changing the limits",
+        "t": 21.1
+      },
+      {
+        "title": "Watch out",
+        "t": 88.171
+      },
+      {
+        "title": "Distance from a velocity",
+        "t": 121.525
+      },
+      {
+        "title": "Your turn",
+        "t": 189.715
+      },
+      {
+        "title": "Summary",
+        "t": 240.149
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-8-4-c:q",
+        "t": 200.829,
+        "prompt": "Evaluate $\\displaystyle\\int_0^2 2x(x^2 + 1)^3\\,dx$.",
+        "choices": [
+          "$4$",
+          "$\\dfrac{625}{4}$",
+          "$156$",
+          "$312$"
+        ],
+        "answer": 2,
+        "working": "$u = x^2 + 1$, $du = 2x\\,dx$; the limits become $1$ and $5$. $\\int_1^5 u^3\\,du = \\Big[\\dfrac{u^4}{4}\\Big]_1^5 = \\dfrac{625 - 1}{4} = 156$."
+      }
+    ]
+  },
+  "m31-9-1": {
+    "lessonId": "m31-9-1",
+    "title": "Area Between Curves, Part 1: Upper Curve Minus Lower Curve",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A thin strip",
+        "t": 24.658
+      },
+      {
+        "title": "Upper minus lower",
+        "t": 77.716
+      },
+      {
+        "title": "Which curve is on top?",
+        "t": 120.951
+      },
+      {
+        "title": "The integral",
+        "t": 165.262
+      },
+      {
+        "title": "Your turn",
+        "t": 207.738
+      },
+      {
+        "title": "Summary",
+        "t": 258.785
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-1:q",
+        "t": 221.773,
+        "prompt": "Find the area of the region between $y = x^2 + 4$ and $y = 2x$ from $x = 0$ to $x = 3$.",
+        "choices": [
+          "$21$",
+          "$30$",
+          "$-12$",
+          "$12$"
+        ],
+        "answer": 3,
+        "working": "$x^2 + 4 - 2x = (x - 1)^2 + 3 > 0$, so the parabola is on top: $\\int_0^3 (x^2 - 2x + 4)\\,dx = \\Big[\\dfrac{x^3}{3} - x^2 + 4x\\Big]_0^3 = 9 - 9 + 12 = 12$."
+      }
+    ]
+  },
+  "m31-9-1-b": {
+    "lessonId": "m31-9-1",
+    "title": "Area Between Curves, Part 2: Finding the Limits",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the curves meet",
+        "t": 22.369
+      },
+      {
+        "title": "Which is on top?",
+        "t": 69.314
+      },
+      {
+        "title": "The area",
+        "t": 96.292
+      },
+      {
+        "title": "Watch out",
+        "t": 141.66
+      },
+      {
+        "title": "Your turn",
+        "t": 169.407
+      },
+      {
+        "title": "Summary",
+        "t": 219.811
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-1-b:q",
+        "t": 180.173,
+        "prompt": "Find the area of the region enclosed by $y = x^2$ and $y = x + 2$.",
+        "choices": [
+          "$-\\dfrac{15}{2}$",
+          "$\\dfrac{9}{2}$",
+          "$-\\dfrac{9}{2}$",
+          "$\\dfrac{10}{3}$"
+        ],
+        "answer": 1,
+        "working": "$x^2 = x + 2$ gives $x = -1$ or $x = 2$, and the line is on top: $\\int_{-1}^{2} (x + 2 - x^2)\\,dx = \\dfrac{10}{3} - \\left(-\\dfrac{7}{6}\\right) = \\dfrac{9}{2}$."
+      }
+    ]
+  },
+  "m31-9-1-c": {
+    "lessonId": "m31-9-1",
+    "title": "Area Between Curves, Part 3: When the Curves Cross",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two regions",
+        "t": 20.719
+      },
+      {
+        "title": "Split at the crossing",
+        "t": 50.582
+      },
+      {
+        "title": "Watch out",
+        "t": 115.833
+      },
+      {
+        "title": "Your turn",
+        "t": 149.473
+      },
+      {
+        "title": "Summary",
+        "t": 197.279
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-1-c:q",
+        "t": 159.634,
+        "prompt": "Find the total area enclosed by $y = x^3$ and $y = 4x$.",
+        "choices": [
+          "$0$",
+          "$4$",
+          "$16$",
+          "$8$"
+        ],
+        "answer": 3,
+        "working": "$x^3 = 4x$ gives $x = -2, 0, 2$. $\\int_0^2 (4x - x^3)\\,dx = 8 - 4 = 4$, and the left region also has area $4$, so the total is $8$."
+      }
+    ]
+  },
+  "m31-9-1-d": {
+    "lessonId": "m31-9-1",
+    "title": "Area Between Curves, Part 4: Integrating with Respect to y",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Horizontal strips",
+        "t": 20.541
+      },
+      {
+        "title": "Limits and the right curve",
+        "t": 69.052
+      },
+      {
+        "title": "The area",
+        "t": 111.711
+      },
+      {
+        "title": "Why not vertical strips?",
+        "t": 152.185
+      },
+      {
+        "title": "Your turn",
+        "t": 191.784
+      },
+      {
+        "title": "Summary",
+        "t": 242.807
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-1-d:q",
+        "t": 201.921,
+        "prompt": "Find the area of the region enclosed by $x = y^2$ and $x = 4$.",
+        "choices": [
+          "$\\dfrac{32}{3}$",
+          "$\\dfrac{16}{3}$",
+          "$16$",
+          "$\\dfrac{64}{3}$"
+        ],
+        "answer": 0,
+        "working": "The curves meet at $y = -2$ and $y = 2$, and $x = 4$ is on the right: $\\int_{-2}^{2} (4 - y^2)\\,dy = \\Big[4y - \\dfrac{y^3}{3}\\Big]_{-2}^{2} = \\dfrac{16}{3} + \\dfrac{16}{3} = \\dfrac{32}{3}$."
+      }
+    ]
+  },
+  "m31-9-2": {
+    "lessonId": "m31-9-2",
+    "title": "Volumes of Revolution, Part 1: Slicing into Discs",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A solid of revolution",
+        "t": 21.376
+      },
+      {
+        "title": "One slice",
+        "t": 59.645
+      },
+      {
+        "title": "The disc method",
+        "t": 100.295
+      },
+      {
+        "title": "A disc integral",
+        "t": 134.3
+      },
+      {
+        "title": "Your turn",
+        "t": 179.921
+      },
+      {
+        "title": "Summary",
+        "t": 228.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-2:q",
+        "t": 192.83,
+        "prompt": "The region under $y = x^2$ from $x = 0$ to $x = 1$ is rotated about the $x$-axis. Find the volume.",
+        "choices": [
+          "$\\dfrac{\\pi}{3}$",
+          "$\\dfrac{1}{5}$",
+          "$\\dfrac{\\pi}{5}$",
+          "$\\dfrac{2\\pi}{5}$"
+        ],
+        "answer": 2,
+        "working": "$V = \\pi\\int_0^1 \\left(x^2\\right)^2 dx = \\pi\\int_0^1 x^4\\,dx = \\pi\\Big[\\dfrac{x^5}{5}\\Big]_0^1 = \\dfrac{\\pi}{5}$."
+      }
+    ]
+  },
+  "m31-9-2-b": {
+    "lessonId": "m31-9-2",
+    "title": "Volumes of Revolution, Part 2: A Cone and a Sphere",
+    "duration": 304,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A cone",
+        "t": 19.254
+      },
+      {
+        "title": "A sphere",
+        "t": 76.909
+      },
+      {
+        "title": "A cone with numbers",
+        "t": 137.591
+      },
+      {
+        "title": "Watch out",
+        "t": 191.309
+      },
+      {
+        "title": "Your turn",
+        "t": 221.664
+      },
+      {
+        "title": "Summary",
+        "t": 274.38
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-2-b:q",
+        "t": 234.55,
+        "prompt": "The region under $y = 3x$ from $x = 0$ to $x = 2$ is rotated about the $x$-axis. Find the volume.",
+        "choices": [
+          "$6\\pi$",
+          "$24\\pi$",
+          "$72\\pi$",
+          "$12\\pi$"
+        ],
+        "answer": 1,
+        "working": "$V = \\pi\\int_0^2 9x^2\\,dx = \\pi\\Big[3x^3\\Big]_0^2 = 24\\pi$. Check: a cone of radius $6$ and height $2$ has $\\tfrac{1}{3}\\pi(36)(2) = 24\\pi$."
+      }
+    ]
+  },
+  "m31-9-2-c": {
+    "lessonId": "m31-9-2",
+    "title": "Volumes of Revolution, Part 3: Rotating About the y-Axis",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Slicing across the y-axis",
+        "t": 23.301
+      },
+      {
+        "title": "Solve for x first",
+        "t": 82.22
+      },
+      {
+        "title": "The same solid",
+        "t": 130.385
+      },
+      {
+        "title": "Your turn",
+        "t": 172.715
+      },
+      {
+        "title": "Summary",
+        "t": 216.836
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-2-c:q",
+        "t": 187.444,
+        "prompt": "The first-quadrant region bounded by $y = x^2$, the $y$-axis and $y = 9$ is rotated about the $y$-axis. Find the volume.",
+        "choices": [
+          "$\\dfrac{81\\pi}{2}$",
+          "$\\dfrac{243\\pi}{5}$",
+          "$18\\pi$",
+          "$81\\pi$"
+        ],
+        "answer": 0,
+        "working": "$x = \\sqrt{y}$, so $V = \\pi\\int_0^9 y\\,dy = \\pi\\Big[\\dfrac{y^2}{2}\\Big]_0^9 = \\dfrac{81\\pi}{2}$."
+      }
+    ]
+  },
+  "m31-9-2-d": {
+    "lessonId": "m31-9-2",
+    "title": "Volumes of Revolution, Part 4: Washers",
+    "duration": 364,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A disc with a hole",
+        "t": 23.738
+      },
+      {
+        "title": "The washer method",
+        "t": 54.801
+      },
+      {
+        "title": "Between two curves",
+        "t": 116.787
+      },
+      {
+        "title": "Watch out",
+        "t": 168.738
+      },
+      {
+        "title": "Another axis",
+        "t": 208.953
+      },
+      {
+        "title": "Your turn",
+        "t": 279.994
+      },
+      {
+        "title": "Summary",
+        "t": 329.736
+      }
+    ],
+    "cues": [
+      {
+        "id": "m31-9-2-d:q",
+        "t": 292.577,
+        "prompt": "The region between $y = 2x$ and $y = x^2$ is rotated about the $x$-axis. Find the volume.",
+        "choices": [
+          "$\\dfrac{16\\pi}{15}$",
+          "$\\dfrac{32\\pi}{3}$",
+          "$\\dfrac{4\\pi}{3}$",
+          "$\\dfrac{64\\pi}{15}$"
+        ],
+        "answer": 3,
+        "working": "They meet at $x = 0$ and $x = 2$, with $R = 2x$ and $r = x^2$: $\\pi\\int_0^2 (4x^2 - x^4)\\,dx = \\pi\\left(\\dfrac{32}{3} - \\dfrac{32}{5}\\right) = \\dfrac{64\\pi}{15}$."
+      }
+    ]
+  },
   "m103-1-1": {
     "lessonId": "m103-1-1",
     "title": "Rates and Proportions, Part 1: Ratios, Rates and Unit Rates",

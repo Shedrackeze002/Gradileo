@@ -139,7 +139,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. When a region does not touch the axis, its slices are washers: discs with a hole.', show: 'sum.0' },
+        { say: 'Let’s sum up. When a region does not touch the axis, each slice is a washer: a disc with a hole.', show: 'sum.0' },
         { say: 'The washer method gives the volume as pi times the integral of, R squared minus r squared.', show: 'sum.1' },
         { say: 'Square each radius separately, before you subtract.', show: 'sum.2' },
         { say: 'And about any other line, measure each radius from that line. Give exact answers in terms of pi, or round only at the end. Thanks for watching!', show: 'sum.3' },
