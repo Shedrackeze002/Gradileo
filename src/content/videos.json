@@ -2870,6 +2870,61 @@
       }
     ]
   },
+  "m5-7-2-c": {
+    "lessonId": "m5-7-2",
+    "title": "Algebraic Expressions, Part 3: Evaluating an Expression",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substitute",
+        "t": 18.805
+      },
+      {
+        "title": "Multiply first",
+        "t": 42.072
+      },
+      {
+        "title": "Watch out",
+        "t": 70.926
+      },
+      {
+        "title": "A quotient",
+        "t": 98.347
+      },
+      {
+        "title": "Many values",
+        "t": 124.399
+      },
+      {
+        "title": "Your turn",
+        "t": 155.346
+      },
+      {
+        "title": "Summary",
+        "t": 188.965
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-7-2-c:q",
+        "t": 163.27,
+        "prompt": "Evaluate $3k + 5$ when $k = 4$.",
+        "choices": [
+          "$17$",
+          "$39$",
+          "$12$",
+          "$27$"
+        ],
+        "answer": 0,
+        "working": "Substitute: $3 \\times 4 + 5$. Multiply first: $12$. Then add: $12 + 5 = 17$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
