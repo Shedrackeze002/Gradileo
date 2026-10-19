@@ -319,11 +319,10 @@ items ship or decisions change.
      their text, thumbnail and captions, files each in its unit's playlist in lesson order, and
      the upload is linked in `video_links` so its lesson shows it. Uploads come out public. The
      first ten (Math 10C lessons 2.1 to 3.1) went up the same day; the channel allows 10 uploads a
-     day, so the rest go up 10 a day, in course order (Math 10C, 10-3, 10-4, 20-1 … 31), on a
-     daily schedule. Waiting on the owner: whether Math 5 to 9 are "made for kids" on YouTube
-     (comments and personalised ads off); those courses are not uploaded until then. Unit 1 and
-     Unit 2's playlists sort themselves newest first; set them to Manual in YouTube Studio for
-     lesson order.
+     day, so the rest go up 10 a day, in course order (Math 10C, 10-3, 10-4, 20-1 … 31, then
+     Math 5 to 9 as they are made), on a daily schedule. The owner decided no course is "made for
+     kids". The owner set the Unit 1 and Unit 2 playlists to Manual, and the tool put them in
+     lesson order (it now does this for every playlist a run touches).
    - Built: Math 30-2, all 97 videos at the calm pace (3:40 to 7:07, about 7.8 hours in all), the
      first course with topic-first title cards and no Alberta place names in the narration,
      rendered unit by unit and uploaded to Drive (checked: Drive holds every file of all 97). The

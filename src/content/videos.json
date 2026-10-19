@@ -1743,29 +1743,29 @@
       },
       {
         "title": "Improper fractions",
-        "t": 104.27
+        "t": 104.145
       },
       {
         "title": "Whole numbers as fractions",
-        "t": 134.448
+        "t": 134.323
       },
       {
         "title": "Counting by thirds",
-        "t": 161.085
+        "t": 160.96
       },
       {
         "title": "Your turn",
-        "t": 199.755
+        "t": 199.63
       },
       {
         "title": "Summary",
-        "t": 227.308
+        "t": 227.183
       }
     ],
     "cues": [
       {
         "id": "m5-5-1:q",
-        "t": 206.101,
+        "t": 205.976,
         "prompt": "Which fraction is equal to $3$ wholes?",
         "choices": [
           "$\\dfrac{3}{4}$",
@@ -2002,33 +2002,33 @@
       },
       {
         "title": "Unit fractions",
-        "t": 24.398
+        "t": 24.378
       },
       {
         "title": "Five eighths",
-        "t": 50.217
+        "t": 50.197
       },
       {
         "title": "Splitting a fraction",
-        "t": 88.547
+        "t": 88.527
       },
       {
         "title": "A missing numerator",
-        "t": 114.044
+        "t": 114.006
       },
       {
         "title": "Your turn",
-        "t": 141.799
+        "t": 141.761
       },
       {
         "title": "Summary",
-        "t": 174.579
+        "t": 174.541
       }
     ],
     "cues": [
       {
         "id": "m5-5-2:q",
-        "t": 151.215,
+        "t": 151.177,
         "prompt": "Find the missing numerator: $\\dfrac{5}{6} = \\dfrac{2}{6} + \\dfrac{?}{6}$",
         "choices": [
           "$7$",
@@ -3515,6 +3515,57 @@
         ],
         "answer": 0,
         "working": "A triangle with $3$ equal sides is a regular polygon: it has $3$ lines of symmetry and an order of rotation symmetry of $3$. It has both."
+      }
+    ]
+  },
+  "m5-9-1": {
+    "lessonId": "m5-9-1",
+    "title": "Points on a Coordinate Grid, Part 1: Reading a Point",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The coordinate grid",
+        "t": 24.384
+      },
+      {
+        "title": "Coordinates",
+        "t": 75.168
+      },
+      {
+        "title": "Reading a point",
+        "t": 105.925
+      },
+      {
+        "title": "Across, then up",
+        "t": 142.228
+      },
+      {
+        "title": "Your turn",
+        "t": 177.906
+      },
+      {
+        "title": "Summary",
+        "t": 210.435
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-1:q",
+        "t": 188.947,
+        "prompt": "Point $Q$ is $3$ units across and $7$ units up from $(0,\\ 0)$. What are the coordinates of $Q$?",
+        "choices": [
+          "$(7,\\ 3)$",
+          "$(3,\\ 7)$",
+          "$(3,\\ 0)$",
+          "$(0,\\ 7)$"
+        ],
+        "answer": 1,
+        "working": "Across first, then up: $Q$ is at $(3,\\ 7)$."
       }
     ]
   },

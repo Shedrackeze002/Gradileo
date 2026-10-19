@@ -10,13 +10,12 @@
 //
 // A unit's playlist is the owner's own when its title names the course and unit ("Math 10C - Unit 1
 // (Measurements)", "Maths 10C Unit 2 (Trigonometry)"); otherwise one is made, "Math 10C - Unit 3
-// (Factors and Products)".
+// (Factors and Products)". Each playlist a run touches is then put in lesson order if it is out of
+// order (the playlist must be set to sort manually).
 //
-// Videos are public unless --private or --unlisted is given. Until Google has audited the API
-// project, YouTube keeps every video uploaded through the API private whatever is asked for; the
-// owner applies for the audit (see video/README.md, "YouTube API"). It stops at the day's quota
-// (10,000 units: an upload with captions and a thumbnail costs about 550) or the channel's daily
-// upload limit, and --limit N uploads at most N videos. It prints each upload as
+// Videos are public unless --private or --unlisted is given. It stops at the day's quota (10,000
+// units: an upload with captions, a thumbnail and its playlist place costs about 600) or the
+// channel's daily upload limit, and --limit N uploads at most N videos. It prints each upload as
 // "<video id> -> https://youtu.be/<youtube id>", for the Videos page of the admin console.
 //
 // Signs in with the YOUTUBE_* variables, and the GDRIVE_* ones for videos taken from Drive.
@@ -32,6 +31,7 @@ import {
   insertVideo,
   playlists,
   setThumbnail,
+  sortPlaylist,
   uploads,
   type Playlist,
   type Privacy,
@@ -55,6 +55,11 @@ const MADE_FOR_KIDS: Record<string, boolean> = {
   'math-30-2': false,
   'math-30-3': false,
   'math-31': false,
+  'math-5': false,
+  'math-6': false,
+  'math-7': false,
+  'math-8': false,
+  'math-9': false,
 };
 
 /** A video's MP4, thumbnail and captions, from the session or from Drive. */
@@ -81,6 +86,8 @@ async function files(id: string): Promise<{ from: string; mp4: Buffer; png: Buff
 let lists: Playlist[] | undefined;
 /** YouTube id to video id, for the videos on the channel. */
 const scriptOfYoutube = new Map<string, string>();
+/** The playlists this run has looked at, by playlist id, with their units. */
+const touched = new Map<string, { list: Playlist; unit: UnitMeta }>();
 
 /** The owner's playlist for a unit, found by its title naming the course and unit. */
 async function unitPlaylist(course: CourseMeta, unit: UnitMeta): Promise<Playlist | undefined> {
@@ -98,12 +105,14 @@ async function intoPlaylist(id: string, youtubeId: string, dryRun: boolean): Pro
   const { course, unit } = place(id);
   let list = await unitPlaylist(course, unit);
   const title = `${course.shortTitle} - Unit ${unit.number} (${unit.title})`;
+  if (list) touched.set(list.id, { list, unit });
   if (list?.videos.includes(youtubeId)) return `in "${list.title}"`;
   if (dryRun) return `would go into ${list ? `"${list.title}"` : `a new playlist, "${title}"`}`;
   if (!list) {
     const about = `${unit.title}: ${unit.description}\n\nExplainer videos in lesson order, each with a "Your turn" question to try.\nPractise this topic with instant feedback on Gradileo: https://gradileo.com/`;
     list = await createPlaylist(title, about);
     lists!.push(list);
+    touched.set(list.id, { list, unit });
   }
   const order = unitVideos(unit);
   const mine = order.indexOf(id);
@@ -197,6 +206,22 @@ for (const id of ids) {
     failed++;
   }
 }
+for (const { list, unit } of touched.values()) {
+  const order = unitVideos(unit);
+  const rank = (v: string) => {
+    const at = order.indexOf(scriptOfYoutube.get(v) ?? '');
+    return at < 0 ? Infinity : at;
+  };
+  try {
+    const moved = await sortPlaylist(list, rank, dryRun);
+    if (moved) console.log(`"${list.title}": ${dryRun ? 'would move' : 'moved'} ${moved} into lesson order`);
+  } catch (e) {
+    const err = e as Error;
+    console.error(`"${list.title}": not put in order: ${err.message.slice(0, 200)}`);
+    if (dayIsOver(err)) break;
+  }
+}
+
 const left = ids.filter((id) => !onChannel.has(id)).length - (dryRun ? 0 : done);
 console.log(`${done} ${dryRun ? 'to upload' : 'uploaded'}${failed ? `, ${failed} failed` : ''}; ${left} of ${ids.length} not on YouTube yet`);
 if (failed) process.exit(1);

@@ -258,9 +258,10 @@ script: name it with `<youtube id>=<video id>` (the admin console's Videos page 
 with its title, description and tags (made from the script, as in `youtube.txt`), in Education,
 in English, then `thumbnail.png` and our `captions.srt`, and puts each in its unit's playlist in
 lesson order. It uses the owner's playlist when its title names the course and unit ("Math 10C -
-Unit 1 (Measurements)") and otherwise makes one in that style. A playlist set to sort itself (by
-date) takes new videos at the end; set it to **Manual** in YouTube Studio for lesson order. It
-takes each video's files from `video/out/<id>/`, or from its Drive folder when the course has been
+Unit 1 (Measurements)") and otherwise makes one in that style, and puts each playlist it touches
+back in lesson order if it is out of order (50 units a moved video). That needs the playlist set
+to **Manual** in YouTube Studio; one that sorts itself (by date) takes new videos at the end and
+cannot be reordered. `--limit 0` uploads nothing and only files and orders playlists. It takes each video's files from `video/out/<id>/`, or from its Drive folder when the course has been
 cleared from the session, and skips videos already on the channel (only filing them in their
 playlist if missing), so a run can be repeated. The channel may upload 10 videos a day; the tool
 stops by itself at that limit or the day's quota. `--limit N` uploads at most N, `--private` or
@@ -273,7 +274,7 @@ Each upload prints `<video id> -> https://youtu.be/<youtube id>`. Record it in G
 lesson shows the video: **Admin console → Videos**, or straight into `public.video_links`. Every
 upload declares whether the video is made for kids (YouTube turns off comments and personalised ads
 for those); the course's answer is in `MADE_FOR_KIDS` in the tool, and a course not listed there is
-not uploaded until the owner decides.
+not uploaded until the owner decides. The owner has said no for every course, Math 5 to Math 31.
 
 ### YouTube API
 

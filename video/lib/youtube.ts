@@ -118,23 +118,26 @@ export async function playlists(): Promise<Playlist[]> {
     const list = await youtube<{ items: Array<{ id: string; snippet: { title: string } }>; nextPageToken?: string }>(
       `${API}/playlists?part=snippet&mine=true&maxResults=50${page ? `&pageToken=${page}` : ''}`,
     );
-    for (const p of list.items) out.push({ id: p.id, title: p.snippet.title, videos: await playlistVideos(p.id) });
+    for (const p of list.items) {
+      out.push({ id: p.id, title: p.snippet.title, videos: (await playlistItems(p.id)).map((i) => i.videoId) });
+    }
     page = list.nextPageToken ?? '';
   } while (page);
   return out;
 }
 
-async function playlistVideos(playlistId: string): Promise<string[]> {
-  const ids: string[] = [];
+/** A playlist's entries in order: each entry's own id and its video's id. */
+async function playlistItems(playlistId: string): Promise<Array<{ id: string; videoId: string }>> {
+  const items: Array<{ id: string; videoId: string }> = [];
   let page = '';
   do {
-    const list = await youtube<{ items: Array<{ snippet: { resourceId: { videoId: string } } }>; nextPageToken?: string }>(
+    const list = await youtube<{ items: Array<{ id: string; snippet: { resourceId: { videoId: string } } }>; nextPageToken?: string }>(
       `${API}/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}${page ? `&pageToken=${page}` : ''}`,
     );
-    ids.push(...list.items.map((i) => i.snippet.resourceId.videoId));
+    items.push(...list.items.map((i) => ({ id: i.id, videoId: i.snippet.resourceId.videoId })));
     page = list.nextPageToken ?? '';
   } while (page);
-  return ids;
+  return items;
 }
 
 /** Makes a public playlist and returns it, empty. */
@@ -178,4 +181,36 @@ export async function addToPlaylist(playlist: Playlist, videoId: string, positio
       throw e;
     }
   }
+}
+
+/**
+ * Puts a playlist's videos in order, lowest rank first, moving only the ones out of place (50 units
+ * a move); videos ranked Infinity keep their order after the rest. Only a playlist set to sort
+ * manually can be reordered. Returns how many videos moved, or would move on a dry run.
+ */
+export async function sortPlaylist(playlist: Playlist, rank: (videoId: string) => number, dryRun = false): Promise<number> {
+  const items = await playlistItems(playlist.id);
+  const want = [...items].sort((a, b) => {
+    const [ra, rb] = [rank(a.videoId), rank(b.videoId)];
+    return ra === rb ? 0 : ra < rb ? -1 : 1;
+  });
+  let moved = 0;
+  for (let i = 0; i < want.length; i++) {
+    if (items[i] === want[i]) continue;
+    if (!dryRun) {
+      await youtube(`${API}/playlistItems?part=snippet`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+        body: JSON.stringify({
+          id: want[i].id,
+          snippet: { playlistId: playlist.id, position: i, resourceId: { kind: 'youtube#video', videoId: want[i].videoId } },
+        }),
+      });
+    }
+    items.splice(items.indexOf(want[i]), 1);
+    items.splice(i, 0, want[i]);
+    moved++;
+  }
+  if (!dryRun) playlist.videos = items.map((i) => i.videoId);
+  return moved;
 }
