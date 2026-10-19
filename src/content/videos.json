@@ -3671,6 +3671,308 @@
       }
     ]
   },
+  "m5-9-2": {
+    "lessonId": "m5-9-2",
+    "title": "Polygons on a Coordinate Grid, Part 1: Naming the Vertices",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a vertex?",
+        "t": 27.42
+      },
+      {
+        "title": "Reading the vertices",
+        "t": 60.206
+      },
+      {
+        "title": "Watch out",
+        "t": 103.838
+      },
+      {
+        "title": "A four-sided shape",
+        "t": 132.938
+      },
+      {
+        "title": "Your turn",
+        "t": 168.179
+      },
+      {
+        "title": "Summary",
+        "t": 206.66
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-2:q",
+        "t": 182.56,
+        "prompt": "Triangle $XYZ$ has vertices $X(2,\\ 3)$, $Y(6,\\ 3)$ and $Z(4,\\ 8)$. Which vertex is the **highest** on the grid?",
+        "choices": [
+          "$X$",
+          "$Y$",
+          "$Z$",
+          "$X$ and $Y$ are equally high, and higher than $Z$"
+        ],
+        "answer": 2,
+        "working": "The second number tells how far up. $Z$ has the greatest second number, $8$, so it is the highest."
+      }
+    ]
+  },
+  "m5-9-2-b": {
+    "lessonId": "m5-9-2",
+    "title": "Polygons on a Coordinate Grid, Part 2: Drawing a Polygon",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 18.381
+      },
+      {
+        "title": "A rectangle",
+        "t": 43.912
+      },
+      {
+        "title": "Out of order",
+        "t": 90.49
+      },
+      {
+        "title": "A triangle",
+        "t": 116.775
+      },
+      {
+        "title": "Your turn",
+        "t": 156.021
+      },
+      {
+        "title": "Summary",
+        "t": 194.769
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-2-b:q",
+        "t": 168.942,
+        "prompt": "You plot $A(2,\\ 2)$, $B(7,\\ 2)$, $C(7,\\ 6)$ and $D(2,\\ 6)$, then join them in order. What shape do you get?",
+        "choices": [
+          "A rectangle $5$ units wide and $4$ units tall",
+          "A rectangle $4$ units wide and $5$ units tall",
+          "A triangle",
+          "A bow-tie"
+        ],
+        "answer": 0,
+        "working": "Joined in order, the four points make a rectangle. It is $7 - 2 = 5$ units wide and $6 - 2 = 4$ units tall."
+      }
+    ]
+  },
+  "m5-9-2-c": {
+    "lessonId": "m5-9-2",
+    "title": "Polygons on a Coordinate Grid, Part 3: The Missing Corner",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rectangles on a grid",
+        "t": 20.191
+      },
+      {
+        "title": "The missing corner",
+        "t": 64.766
+      },
+      {
+        "title": "Building a rectangle",
+        "t": 110.089
+      },
+      {
+        "title": "Your turn",
+        "t": 158.707
+      },
+      {
+        "title": "Summary",
+        "t": 199.993
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-9-2-c:q",
+        "t": 173.03,
+        "prompt": "Three vertices of a rectangle are $(1,\\ 2)$, $(1,\\ 6)$ and $(8,\\ 6)$. Its sides run along grid lines. Where is the fourth vertex?",
+        "choices": [
+          "$(2,\\ 8)$",
+          "$(6,\\ 1)$",
+          "$(8,\\ 2)$",
+          "$(8,\\ 8)$"
+        ],
+        "answer": 2,
+        "working": "It is straight down from $(8,\\ 6)$, so its first number is $8$. It is straight across from $(1,\\ 2)$, so its second number is $2$. The fourth vertex is $(8,\\ 2)$."
+      }
+    ]
+  },
+  "m5-10-1": {
+    "lessonId": "m5-10-1",
+    "title": "Units of Area, Part 1: What Is Area?",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is area?",
+        "t": 18.994
+      },
+      {
+        "title": "The square centimetre",
+        "t": 55.947
+      },
+      {
+        "title": "Counting squares",
+        "t": 92.882
+      },
+      {
+        "title": "Watch out",
+        "t": 128.514
+      },
+      {
+        "title": "Your turn",
+        "t": 159.222
+      },
+      {
+        "title": "Summary",
+        "t": 195.791
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-1:q",
+        "t": 172.382,
+        "prompt": "Each small square is $1\\text{ cm}^2$. A rectangle on grid paper is covered by $3$ rows of $6$ squares. What is its area?",
+        "choices": [
+          "$9\\text{ cm}^2$",
+          "$18\\text{ cm}^2$",
+          "$18\\text{ cm}$",
+          "$36\\text{ cm}^2$"
+        ],
+        "answer": 1,
+        "working": "$3$ rows of $6$ squares is $6 + 6 + 6 = 18$ squares, so the area is $18\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m5-10-1-b": {
+    "lessonId": "m5-10-1",
+    "title": "Units of Area, Part 2: Square Metres and Square Kilometres",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The square metre",
+        "t": 21.986
+      },
+      {
+        "title": "The square kilometre",
+        "t": 54.527
+      },
+      {
+        "title": "Choosing a unit",
+        "t": 88.033
+      },
+      {
+        "title": "A hockey rink",
+        "t": 124.969
+      },
+      {
+        "title": "Your turn",
+        "t": 158.981
+      },
+      {
+        "title": "Summary",
+        "t": 188.656
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-1-b:q",
+        "t": 165.676,
+        "prompt": "Which unit is best for the area of a city?",
+        "choices": [
+          "$\\text{cm}^2$",
+          "$\\text{m}^2$",
+          "$\\text{cm}$",
+          "$\\text{km}^2$"
+        ],
+        "answer": 3,
+        "working": "A city is a very large place, so square kilometres fit best."
+      }
+    ]
+  },
+  "m5-10-1-c": {
+    "lessonId": "m5-10-1",
+    "title": "Units of Area, Part 3: How the Units Are Related",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inside a square metre",
+        "t": 24.939
+      },
+      {
+        "title": "Watch out",
+        "t": 78.943
+      },
+      {
+        "title": "Square kilometres",
+        "t": 106.448
+      },
+      {
+        "title": "Changing units",
+        "t": 143.013
+      },
+      {
+        "title": "Your turn",
+        "t": 190.184
+      },
+      {
+        "title": "Summary",
+        "t": 226.954
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-10-1-c:q",
+        "t": 200.037,
+        "prompt": "A garden has an area of $5\\text{ m}^2$. What is its area in square centimetres?",
+        "choices": [
+          "$500\\text{ cm}^2$",
+          "$5\\,000\\text{ cm}^2$",
+          "$50\\,000\\text{ cm}^2$",
+          "$500\\,000\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "Each square metre is $10\\,000\\text{ cm}^2$, so $5 \\times 10\\,000 = 50\\,000\\text{ cm}^2$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
