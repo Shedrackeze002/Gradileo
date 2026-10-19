@@ -376,6 +376,544 @@
       }
     ]
   },
+  "m5-1-2-d": {
+    "lessonId": "m5-1-2",
+    "title": "Comparing, Ordering and Rounding, Part 4: Rounding",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What rounding means",
+        "t": 17.208
+      },
+      {
+        "title": "How to round",
+        "t": 55.167
+      },
+      {
+        "title": "The nearest ten thousand",
+        "t": 97.617
+      },
+      {
+        "title": "When a 9 rounds up",
+        "t": 124.221
+      },
+      {
+        "title": "Watch out",
+        "t": 158.395
+      },
+      {
+        "title": "More precise",
+        "t": 191.219
+      },
+      {
+        "title": "Your turn",
+        "t": 228.755
+      },
+      {
+        "title": "Summary",
+        "t": 261.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-2-d:q",
+        "t": 236.029,
+        "prompt": "Round $6.952$ to the nearest tenth.",
+        "choices": [
+          "$6.9$",
+          "$6.95$",
+          "$7.0$",
+          "$7.9$"
+        ],
+        "answer": 2,
+        "working": "The tenths digit is $9$, and the digit to its right is $5$, so round up. Nine tenths and one more tenth make one whole, so $6.952$ rounds to $7.0$."
+      }
+    ]
+  },
+  "m5-2-1": {
+    "lessonId": "m5-2-1",
+    "title": "Adding and Subtracting with Standard Algorithms, Part 1: Adding with the Standard Algorithm",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The standard algorithm",
+        "t": 22.287
+      },
+      {
+        "title": "Regrouping",
+        "t": 40.642
+      },
+      {
+        "title": "The steps",
+        "t": 70.436
+      },
+      {
+        "title": "Adding cans",
+        "t": 97.968
+      },
+      {
+        "title": "Watch out",
+        "t": 159.69
+      },
+      {
+        "title": "Your turn",
+        "t": 190.675
+      },
+      {
+        "title": "Summary",
+        "t": 227.045
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-1:q",
+        "t": 201.009,
+        "prompt": "Find $38\\,546 + 27\\,689$.",
+        "choices": [
+          "$55\\,125$",
+          "$56\\,235$",
+          "$66\\,135$",
+          "$66\\,235$"
+        ],
+        "answer": 3,
+        "working": "Ones: $6 + 9 = 15$, carry $1$. Tens: $1 + 4 + 8 = 13$, carry $1$. Hundreds: $1 + 5 + 6 = 12$, carry $1$. Thousands: $1 + 8 + 7 = 16$, carry $1$. Ten thousands: $1 + 3 + 2 = 6$. The sum is $66\\,235$."
+      }
+    ]
+  },
+  "m5-2-1-b": {
+    "lessonId": "m5-2-1",
+    "title": "Adding and Subtracting with Standard Algorithms, Part 2: Subtracting with the Standard Algorithm",
+    "duration": 279,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The steps",
+        "t": 22.167
+      },
+      {
+        "title": "A simple regroup",
+        "t": 46.022
+      },
+      {
+        "title": "Regrouping across zeros",
+        "t": 79.602
+      },
+      {
+        "title": "Watch out",
+        "t": 158.096
+      },
+      {
+        "title": "Check with addition",
+        "t": 186.958
+      },
+      {
+        "title": "Your turn",
+        "t": 213.898
+      },
+      {
+        "title": "Summary",
+        "t": 248.971
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-1-b:q",
+        "t": 222.217,
+        "prompt": "Find $6002 - 2457$.",
+        "choices": [
+          "$3545$",
+          "$4455$",
+          "$3645$",
+          "$4545$"
+        ],
+        "answer": 0,
+        "working": "Regroup across the zeros: the top digits become $5$, $9$, $9$ and $12$. Ones: $12 - 7 = 5$. Tens: $9 - 5 = 4$. Hundreds: $9 - 4 = 5$. Thousands: $5 - 2 = 3$. Check: $3545 + 2457 = 6002$."
+      }
+    ]
+  },
+  "m5-2-1-c": {
+    "lessonId": "m5-2-1",
+    "title": "Adding and Subtracting with Standard Algorithms, Part 3: Adding and Subtracting Decimals",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Line up the points",
+        "t": 21.145
+      },
+      {
+        "title": "Adding decimals",
+        "t": 52.44
+      },
+      {
+        "title": "Subtracting from a whole number",
+        "t": 110.626
+      },
+      {
+        "title": "Watch out",
+        "t": 175.467
+      },
+      {
+        "title": "Your turn",
+        "t": 211.885
+      },
+      {
+        "title": "Summary",
+        "t": 251.031
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-1-c:q",
+        "t": 219.399,
+        "prompt": "Find $7.2 - 3.46$.",
+        "choices": [
+          "$4.26$",
+          "$3.84$",
+          "$3.74$",
+          "$4.74$"
+        ],
+        "answer": 2,
+        "working": "Write $7.2$ as $7.20$ and line up the points. Regroup: the top digits become $6$, $11$ and $10$. Hundredths: $10 - 6 = 4$. Tenths: $11 - 4 = 7$. Ones: $6 - 3 = 3$. The answer is $3.74$."
+      }
+    ]
+  },
+  "m5-2-1-d": {
+    "lessonId": "m5-2-1",
+    "title": "Adding and Subtracting with Standard Algorithms, Part 4: Finding a Missing Number",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undoing",
+        "t": 18.181
+      },
+      {
+        "title": "A missing part",
+        "t": 39.725
+      },
+      {
+        "title": "A missing whole",
+        "t": 68.327
+      },
+      {
+        "title": "What goes in the box?",
+        "t": 96.7
+      },
+      {
+        "title": "Check",
+        "t": 167.857
+      },
+      {
+        "title": "Your turn",
+        "t": 190.968
+      },
+      {
+        "title": "Summary",
+        "t": 231.107
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-1-d:q",
+        "t": 201.006,
+        "prompt": "$\\square - 2.75 = 4.5$. What goes in the box?",
+        "choices": [
+          "$1.75$",
+          "$7.25$",
+          "$3.20$",
+          "$6.25$"
+        ],
+        "answer": 1,
+        "working": "The box is the whole: taking $2.75$ away left $4.5$. Put the parts back together: $4.50 + 2.75 = 7.25$. Check: $7.25 - 2.75 = 4.5$."
+      }
+    ]
+  },
+  "m5-2-2": {
+    "lessonId": "m5-2-2",
+    "title": "Estimating and Solving Problems, Part 1: Estimating Sums and Differences",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is an estimate?",
+        "t": 15.213
+      },
+      {
+        "title": "Round each number",
+        "t": 53.097
+      },
+      {
+        "title": "Add the rounded numbers",
+        "t": 89.865
+      },
+      {
+        "title": "Estimating a difference",
+        "t": 130.621
+      },
+      {
+        "title": "Your turn",
+        "t": 172.78
+      },
+      {
+        "title": "Summary",
+        "t": 212.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-2:q",
+        "t": 185.406,
+        "prompt": "Estimate $6812 + 2345$ by rounding each number to the nearest thousand.",
+        "choices": [
+          "$9000$",
+          "$8000$",
+          "$5000$",
+          "$9157$"
+        ],
+        "answer": 0,
+        "working": "$6812$ rounds to $7000$ and $2345$ rounds to $2000$. The estimate is $7000 + 2000 = 9000$. (The exact sum is $9157$.)"
+      }
+    ]
+  },
+  "m5-2-2-b": {
+    "lessonId": "m5-2-2",
+    "title": "Estimating and Solving Problems, Part 2: Is the Answer Reasonable?",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reasonable",
+        "t": 16.167
+      },
+      {
+        "title": "Checking Diego’s work",
+        "t": 34.417
+      },
+      {
+        "title": "Finding the mistake",
+        "t": 83.044
+      },
+      {
+        "title": "Watch out",
+        "t": 142.124
+      },
+      {
+        "title": "Your turn",
+        "t": 174.169
+      },
+      {
+        "title": "Summary",
+        "t": 228.249
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-2-b:q",
+        "t": 193.418,
+        "prompt": "Maya says $7415 - 3868 = 4547$. Estimate by rounding each number to the nearest thousand. Is Maya’s answer reasonable?",
+        "choices": [
+          "Yes. The estimate is $4000$.",
+          "Yes. The estimate is $11\\,000$.",
+          "No. The estimate is $3000$.",
+          "No. The estimate is $11\\,000$."
+        ],
+        "answer": 2,
+        "working": "$7415 \\approx 7000$ and $3868 \\approx 4000$, so the estimate is $7000 - 4000 = 3000$. $4547$ is far from $3000$, so it is not reasonable. (The exact answer is $3547$.)"
+      }
+    ]
+  },
+  "m5-2-2-c": {
+    "lessonId": "m5-2-2",
+    "title": "Estimating and Solving Problems, Part 3: Problems with Money",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dollars and cents",
+        "t": 16.765
+      },
+      {
+        "title": "Key words",
+        "t": 49.573
+      },
+      {
+        "title": "The total cost",
+        "t": 69.616
+      },
+      {
+        "title": "The change",
+        "t": 118.904
+      },
+      {
+        "title": "Check with an estimate",
+        "t": 172.403
+      },
+      {
+        "title": "Your turn",
+        "t": 200.291
+      },
+      {
+        "title": "Summary",
+        "t": 242.694
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-2-c:q",
+        "t": 215.995,
+        "prompt": "Leo buys a book for \\$7.85 and a pen for \\$2.39. Leo pays with \\$20.00. How much change does Leo get?",
+        "choices": [
+          "\\$10.24",
+          "\\$10.76",
+          "\\$12.15",
+          "\\$9.76"
+        ],
+        "answer": 3,
+        "working": "Total: \\$7.85 + \\$2.39 = \\$10.24. Change: \\$20.00 − \\$10.24 = \\$9.76. Estimate: about \\$20 − \\$10 = \\$10, which is close."
+      }
+    ]
+  },
+  "m5-2-2-d": {
+    "lessonId": "m5-2-2",
+    "title": "Estimating and Solving Problems, Part 4: Problems with Measurements",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A hiking trail",
+        "t": 20.535
+      },
+      {
+        "title": "Step 1: add",
+        "t": 60.013
+      },
+      {
+        "title": "Step 2: subtract",
+        "t": 96.072
+      },
+      {
+        "title": "Check",
+        "t": 161.393
+      },
+      {
+        "title": "Watch out",
+        "t": 190.658
+      },
+      {
+        "title": "Your turn",
+        "t": 210.367
+      },
+      {
+        "title": "Summary",
+        "t": 256.206
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-2-2-d:q",
+        "t": 224.002,
+        "prompt": "A ribbon is $5$ m long. Ava cuts off $1.25$ m and then $2.4$ m. How much ribbon is left?",
+        "choices": [
+          "$3.65$ m",
+          "$1.35$ m",
+          "$3.51$ m",
+          "$2.35$ m"
+        ],
+        "answer": 1,
+        "working": "Step 1: $1.25 + 2.40 = 3.65$ m cut off. Step 2: $5.00 - 3.65 = 1.35$ m left. Check: $3.65 + 1.35 = 5$."
+      }
+    ]
+  },
+  "m5-3-1": {
+    "lessonId": "m5-3-1",
+    "title": "Divisibility Tests, Part 1: What Divisible Means",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divisible",
+        "t": 16.219
+      },
+      {
+        "title": "Counters in rows",
+        "t": 34.074
+      },
+      {
+        "title": "Divide to check",
+        "t": 75.728
+      },
+      {
+        "title": "Teams of three",
+        "t": 114.671
+      },
+      {
+        "title": "Your turn",
+        "t": 150.021
+      },
+      {
+        "title": "Summary",
+        "t": 180.26
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-3-1:q",
+        "t": 156.256,
+        "prompt": "Which number is divisible by $6$?",
+        "choices": [
+          "$26$",
+          "$32$",
+          "$42$",
+          "$50$"
+        ],
+        "answer": 2,
+        "working": "$6 \\times 7 = 42$, so $42 \\div 6 = 7$ with remainder $0$. The others leave a remainder of $2$: $26 \\div 6 = 4$ R $2$, $32 \\div 6 = 5$ R $2$ and $50 \\div 6 = 8$ R $2$."
+      }
+    ]
+  },
   "m5-4-1": {
     "lessonId": "m5-4-1",
     "title": "Multiplying with the Standard Algorithm, Part 1: Multiplying by a One-Digit Number",
