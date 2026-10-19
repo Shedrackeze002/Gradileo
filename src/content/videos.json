@@ -4890,6 +4890,53 @@
       }
     ]
   },
+  "m5-12-2-b": {
+    "lessonId": "m5-12-2",
+    "title": "Collecting and Displaying Data, Part 2: Frequency Tables",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The answers",
+        "t": 17.222
+      },
+      {
+        "title": "The frequency table",
+        "t": 57.333
+      },
+      {
+        "title": "Why a table helps",
+        "t": 94.056
+      },
+      {
+        "title": "Your turn",
+        "t": 120.144
+      },
+      {
+        "title": "Summary",
+        "t": 154.753
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-2-b:q",
+        "t": 132.157,
+        "prompt": "A frequency table shows: Cats $7$, Dogs $9$, Fish $4$, Birds $5$. How many people answered the survey?",
+        "choices": [
+          "$9$",
+          "$4$",
+          "$25$",
+          "$20$"
+        ],
+        "answer": 2,
+        "working": "The frequencies add up to the number of answers: $7 + 9 + 4 + 5 = 25$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
