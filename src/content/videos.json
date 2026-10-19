@@ -4796,6 +4796,53 @@
       }
     ]
   },
+  "m5-12-1-d": {
+    "lessonId": "m5-12-1",
+    "title": "Frequency and the Mode, Part 4: Using the Mode",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Statistical questions",
+        "t": 18.81
+      },
+      {
+        "title": "Numbers as categories",
+        "t": 54.638
+      },
+      {
+        "title": "Value or frequency?",
+        "t": 97.499
+      },
+      {
+        "title": "Your turn",
+        "t": 127.505
+      },
+      {
+        "title": "Summary",
+        "t": 163.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-12-1-d:q",
+        "t": 142.809,
+        "prompt": "Students said how many books they read last month: $2,\\ 3,\\ 3,\\ 1,\\ 3,\\ 2,\\ 0,\\ 3,\\ 1,\\ 2$. What is the mode?",
+        "choices": [
+          "$4$ books",
+          "$2$ books",
+          "$10$ books",
+          "$3$ books"
+        ],
+        "answer": 3,
+        "working": "$3$ appears $4$ times, more than any other value ($2$ appears $3$ times, $1$ twice and $0$ once). The mode is $3$ books."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
