@@ -2532,6 +2532,57 @@
       }
     ]
   },
+  "m5-6-2-c": {
+    "lessonId": "m5-6-2",
+    "title": "Ratios, Fractions, Decimals and Percentages, Part 3: The Rest of the Whole",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The whole is 100%",
+        "t": 21.036
+      },
+      {
+        "title": "The bus",
+        "t": 56.678
+      },
+      {
+        "title": "The rest walk",
+        "t": 98.583
+      },
+      {
+        "title": "More than two parts",
+        "t": 137.504
+      },
+      {
+        "title": "Your turn",
+        "t": 171.189
+      },
+      {
+        "title": "Summary",
+        "t": 211.253
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-6-2-c:q",
+        "t": 183.004,
+        "prompt": "In a class of $20$ students, $7$ bring lunch from home. The rest buy lunch at school. What percentage **buy lunch**?",
+        "choices": [
+          "$35\\%$",
+          "$13\\%$",
+          "$70\\%$",
+          "$65\\%$"
+        ],
+        "answer": 3,
+        "working": "Home: $\\dfrac{7}{20} = \\dfrac{35}{100} = 35\\%$. Buy lunch: $100\\% - 35\\% = 65\\%$. Check: $\\dfrac{13}{20} = \\dfrac{65}{100}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
