@@ -4600,6 +4600,57 @@
       }
     ]
   },
+  "m5-11-2-d": {
+    "lessonId": "m5-11-2",
+    "title": "Rules and Missing Terms, Part 4: Working Forward and Backward",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Spiders and legs",
+        "t": 19.865
+      },
+      {
+        "title": "Working forward",
+        "t": 58.205
+      },
+      {
+        "title": "Working backward",
+        "t": 92.214
+      },
+      {
+        "title": "Undo the rule",
+        "t": 133.69
+      },
+      {
+        "title": "Your turn",
+        "t": 163.84
+      },
+      {
+        "title": "Summary",
+        "t": 198.455
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-11-2-d:q",
+        "t": 173.982,
+        "prompt": "The terms of a sequence follow the rule $n + 9$. Which position has the term $30$?",
+        "choices": [
+          "$39$",
+          "$21$",
+          "$270$",
+          "$20$"
+        ],
+        "answer": 1,
+        "working": "The rule adds $9$, so subtract $9$ to go back: $30 - 9 = 21$. Check: $21 + 9 = 30$ ✓"
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
