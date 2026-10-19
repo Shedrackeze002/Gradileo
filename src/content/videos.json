@@ -223,6 +223,57 @@
       }
     ]
   },
+  "m5-1-2": {
+    "lessonId": "m5-1-2",
+    "title": "Comparing, Ordering and Rounding, Part 1: Comparing Numbers",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Comparison symbols",
+        "t": 19.196
+      },
+      {
+        "title": "Compare from the left",
+        "t": 57.273
+      },
+      {
+        "title": "Comparing decimals",
+        "t": 99.843
+      },
+      {
+        "title": "More digits, not bigger",
+        "t": 136.996
+      },
+      {
+        "title": "Your turn",
+        "t": 171.37
+      },
+      {
+        "title": "Summary",
+        "t": 206.55
+      }
+    ],
+    "cues": [
+      {
+        "id": "m5-1-2:q",
+        "t": 180.146,
+        "prompt": "Compare $0.8$ and $0.75$. Which is true?",
+        "choices": [
+          "$0.8 > 0.75$",
+          "$0.8 < 0.75$",
+          "$0.8 = 0.75$",
+          "$0.75 > 0.8$"
+        ],
+        "answer": 0,
+        "working": "Write $0.8$ as $0.80$. The tenths digits are $8$ and $7$, and $8 > 7$, so $0.8 > 0.75$."
+      }
+    ]
+  },
   "m5-4-1": {
     "lessonId": "m5-4-1",
     "title": "Multiplying with the Standard Algorithm, Part 1: Multiplying by a One-Digit Number",
