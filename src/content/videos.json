@@ -5039,6 +5039,65 @@
       }
     ]
   },
+  "m6-1-1": {
+    "lessonId": "m6-1-1",
+    "title": "Negative Numbers and Magnitude, Part 1: Numbers Below Zero",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Above and below zero",
+        "t": 25.437
+      },
+      {
+        "title": "Positive and negative numbers",
+        "t": 62.58
+      },
+      {
+        "title": "Below a starting point",
+        "t": 98.153
+      },
+      {
+        "title": "Matching numbers to situations",
+        "t": 136.613
+      },
+      {
+        "title": "Writing a number",
+        "t": 173.18
+      },
+      {
+        "title": "Watch out",
+        "t": 221.435
+      },
+      {
+        "title": "Your turn",
+        "t": 249.896
+      },
+      {
+        "title": "Summary",
+        "t": 279.652
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-1:q",
+        "t": 257.957,
+        "prompt": "Which of these is described by a **negative** number?",
+        "choices": [
+          "Saving \\$12",
+          "A temperature $6$ degrees below zero",
+          "A bird $30$ m above the ground",
+          "A temperature of $0$ degrees"
+        ],
+        "answer": 1,
+        "working": "“Below zero” means negative: $6$ degrees below zero is $-6$. Saving money and being above the ground are positive, and $0$ is neither positive nor negative."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
