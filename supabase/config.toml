@@ -36,6 +36,9 @@ verify_jwt = false
 [functions.admin-users]
 verify_jwt = false
 
+[functions.ai-tutor]
+verify_jwt = false
+
 # Anyone with a class link may join with a name; the function limits it and checks claims itself.
 [functions.join-class]
 verify_jwt = false
