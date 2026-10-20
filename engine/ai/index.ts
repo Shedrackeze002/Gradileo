@@ -13,6 +13,7 @@ export type { AnalystInput, RawAssignment, RawEvent, RawSubmission } from './con
 export { analyzeClass, analyzeStudent } from './heuristic.ts';
 export { DEFAULT_MODEL, DEFAULT_BASE_URL, minimaxChat } from './minimax.ts';
 export type { MiniMaxConfig } from './minimax.ts';
+export * from './tutor.ts';
 
 export interface InsightResult {
   data: InsightData;

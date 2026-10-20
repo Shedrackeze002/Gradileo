@@ -14,9 +14,9 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "sync:engine": "node scripts/sync-engine.mjs",
-    "functions:deploy": "node scripts/sync-engine.mjs && supabase functions deploy grade-submission ai-agent create-students send-emails admin-users join-class",
+    "functions:deploy": "node scripts/sync-engine.mjs && supabase functions deploy grade-submission ai-agent ai-tutor create-students send-emails admin-users join-class",
     "test:db": "bash scripts/test-db.sh",
-    "functions:check": "node scripts/sync-engine.mjs && cd supabase/functions && npx -y deno@2.1.4 check grade-submission/index.ts ai-agent/index.ts create-students/index.ts send-emails/index.ts admin-users/index.ts join-class/index.ts",
+    "functions:check": "node scripts/sync-engine.mjs && cd supabase/functions && npx -y deno@2.1.4 check grade-submission/index.ts ai-agent/index.ts ai-tutor/index.ts create-students/index.ts send-emails/index.ts admin-users/index.ts join-class/index.ts",
     "db:push": "supabase db push"
   },
   "dependencies": {

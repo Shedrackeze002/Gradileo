@@ -10,7 +10,8 @@ import { freshSeed } from '@engine/rng.ts';
 import { getCourse } from '@engine/curriculum/index.ts';
 import { isQuestionType, type StoredResponse } from '@engine/assemble.ts';
 import type { Integrity } from '@engine/integrity.ts';
-import type { AiConfigStatus, DataApi, SignUpInput } from '../api.ts';
+import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts';
+import { offlineScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
 import type {
   AdminOverview,
   AdminUserFilter,
@@ -758,6 +759,19 @@ export class SupabaseApi implements DataApi {
   async generateInsight(classId: string, studentId: string | null): Promise<Insight> {
     const res = await this.invoke<{ insight: Record<string, unknown> }>('ai-agent', { action: 'generate', classId, studentId });
     return toInsight(res.insight);
+  }
+
+  async tutorScript(lessonId: string, chunk: TutorChunk): Promise<TutorReply<{ script: TutorScript }>> {
+    try {
+      return await this.invoke<TutorReply<{ script: TutorScript }>>('ai-tutor', { action: 'script', lessonId, chunk });
+    } catch {
+      // The tutor keeps teaching with the offline narration when the function is unreachable.
+      return { script: offlineScript(chunk), source: 'offline', model: null };
+    }
+  }
+
+  async askTutor(question: TutorQuestion): Promise<TutorReply<{ answer: TutorAnswer }>> {
+    return this.invoke<TutorReply<{ answer: TutorAnswer }>>('ai-tutor', { action: 'ask', question });
   }
 
   async setActionStatus(insightId: string, actionId: string, status: ProposedAction['status']) {

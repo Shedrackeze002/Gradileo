@@ -79,5 +79,5 @@ jobs:
         with:
           deno-version: v2.x
       - run: node scripts/sync-engine.mjs
-      - run: deno check grade-submission/index.ts ai-agent/index.ts create-students/index.ts send-emails/index.ts admin-users/index.ts join-class/index.ts
+      - run: deno check grade-submission/index.ts ai-agent/index.ts ai-tutor/index.ts create-students/index.ts send-emails/index.ts admin-users/index.ts join-class/index.ts
         working-directory: supabase/functions

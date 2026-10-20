@@ -18,8 +18,8 @@ work authoritatively. This keeps the server and the student's screen in exact ag
                  │  Postgres: tables + row-level security + triggers + RPCs           │
                  │  pg_cron: send_due_reminders() every 5 min, email delivery         │
                  │  Edge Functions (Deno, engine copied in by scripts/sync-engine):   │
-                 │    grade-submission · ai-agent · create-students · send-emails ·   │
-                 │    admin-users                                                     │
+                 │    grade-submission · ai-agent · ai-tutor · create-students ·      │
+                 │    send-emails · admin-users · join-class                          │
                  └──────────────┬───────────────────────────────┬────────────────────┘
                                 │                               │
                          MiniMax chat API                  Resend email API
@@ -38,7 +38,7 @@ work authoritatively. This keeps the server and the student's screen in exact ag
 | `submit.ts` | `validateRefs` and `processSubmission`: the single code path used by the demo and the server. |
 | `reminders.ts` | The reminder rule (mirrored in SQL by `send_due_reminders`). |
 | `actions.ts` | Turns an AI-proposed action into an assignment draft. |
-| `ai/` | Context builders, prompts, MiniMax client, JSON validation and the offline analyst. |
+| `ai/` | Context builders, prompts, MiniMax client, JSON validation and the offline analyst; `tutor.ts` writes what the AI tutor says at each lesson step and its answers to students' questions, with offline versions. |
 
 Every generator is tested: for 60 seeds at each difficulty on every run (`GEN_SEEDS=300 npm test`
 for a deeper sweep), the item's own canonical answer must grade as correct, every item needs hints

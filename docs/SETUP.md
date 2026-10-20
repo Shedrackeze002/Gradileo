@@ -44,7 +44,7 @@ Install the [Supabase CLI](https://supabase.com/docs/guides/local-development/cl
 supabase login
 supabase link --project-ref <project-ref>      # the "abcd…" in https://abcd….supabase.co
 npm run db:push                                 # tables, security policies, reminder schedule
-npm run functions:deploy                        # grade-submission, ai-agent, create-students, send-emails, admin-users
+npm run functions:deploy                        # grade-submission, ai-agent, ai-tutor, create-students, send-emails, admin-users, join-class
 ```
 
 The migration turns on `pg_cron` and schedules `send_due_reminders()` every 5 minutes.
@@ -79,25 +79,29 @@ when they are set (an unset variable is ignored), so a fork can point at its own
 editing files. The deploy stops with an error if the built site would not reach its backend,
 rather than quietly publishing a demo-only site.
 
-### 2.5 Turn on the AI assistant (MiniMax)
+### 2.5 Turn on the AI assistant and AI tutor (MiniMax)
 
-The assistant works without a key using Gradileo's offline analyst. For live analysis with
-MiniMax, set the key as a server secret (it is never sent to browsers):
+The teaching assistant and the students' AI tutor work without a key, using Gradileo's offline
+analyst and narration. For live AI with MiniMax, set the key as a server secret (it is never sent
+to browsers):
 
 ```bash
 supabase secrets set MINIMAX_API_KEY=<your key>
 # Optional:
-supabase secrets set MINIMAX_MODEL=MiniMax-M3.1-Flash-Preview
+supabase secrets set MINIMAX_MODEL=MiniMax-M3.1-Flash         # the default; leave it unset
 supabase secrets set MINIMAX_BASE_URL=https://api.minimax.io     # mainland China: https://api.minimax.cn
 supabase secrets set ALLOWED_ORIGINS=https://<your-username>.github.io
 ```
 
 Notes:
 
-- At the time of writing, MiniMax documents `MiniMax-M3.1-Flash-Preview` as available through its
-  M Plan (Token Plan) subscription. If your key does not include it, set `MINIMAX_MODEL` to a
-  model your key can use. If MiniMax is unreachable, Gradileo falls back to the offline analyst
-  and tells you, so teachers always get a report.
+- Gradileo uses `MiniMax-M3.1-Flash` (generally available since 19 October 2026; it replaced
+  `MiniMax-M3.1-Flash-Preview`). If `MINIMAX_MODEL` is set to the preview, update it or remove it.
+  If your key cannot use the model, set `MINIMAX_MODEL` to one it can. If MiniMax is unreachable,
+  Gradileo falls back to the offline analyst and narration and says so, so teachers always get a
+  report and students always have their tutor.
+- The AI tutor (`ai-tutor`) writes each lesson's narration once and saves it, so later students
+  get it at once; a student may ask it 40 questions an hour (`AI_TUTOR_QUESTIONS_PER_HOUR`).
 - Analyses are limited to 60 per class per hour (`AI_INSIGHTS_PER_HOUR` changes this).
 - To try MiniMax in the **demo**, a teacher can paste a key in *Class settings → AI teaching
   assistant*. That key is stored only in their browser.

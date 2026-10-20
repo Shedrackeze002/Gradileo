@@ -10,7 +10,7 @@ import { skillInfo } from '@engine/curriculum/index.ts';
 import { Markdown } from '@/components/math/Markdown.tsx';
 import { Figure } from '@/components/figures/Figure.tsx';
 import { cn } from '@/lib/cn.ts';
-import { CheckBlock, VideoEmbed } from '../LessonBlocks.tsx';
+import { CheckBlock, VideoEmbed, type CheckDetail } from '../LessonBlocks.tsx';
 import { activityEmbedUrl, fixedSlide, type ItemReveal, type Slide, type SlideExplainer, type SlideItem } from '../slides.ts';
 import { FitContent, SLIDE_H, SLIDE_W } from './fit.tsx';
 
@@ -68,7 +68,7 @@ interface Props {
   editing?: boolean;
   hidden?: ReadonlySet<string>;
   onToggle?: (blockKeys: string[], hide: boolean) => void;
-  onCheckResult?: (correct: boolean) => void;
+  onCheckResult?: (correct: boolean, detail: CheckDetail) => void;
   endActions?: ReactNode;
   /** Wait before the first items build in, so they arrive after the slide transition. */
   enterDelay?: number;

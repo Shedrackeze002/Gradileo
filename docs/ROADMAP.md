@@ -537,10 +537,25 @@ items ship or decisions change.
   made, so make a new one before then and update the secret). The run on 14 October found the
   database up to date (all 13 migrations) and redeployed the five Edge Functions. Merges that
   change `supabase/` or `engine/` now deploy on their own.
-- Self-paced study, next steps: an AI tutor chat inside lessons (explain a step, give a hint,
-  check working) using the same AI provider as the teaching assistant; store placement results on
-  the server (today they stay on the device); let a student leave a self-paced course; and email
-  the AI tutor's weekly summary.
+- AI tutor teaches the lesson (the owner's request, 20 October 2026: "students should be able to
+  click start and the class gets presented to them as if a teacher was anchoring"). Built: every
+  student (self-paced or in a class) can press **Start with your AI tutor** on a lesson or on their
+  home page. The tutor presents the lesson's slides like a teacher: it builds each slide step by
+  step and says what to notice at every step, out loud in the device's own voice (the owner chose
+  the browser voice) with captions on screen; stops at each "Your turn" question, cheers a right
+  answer and helps with a wrong one ("Explain my mistake"); introduces and plays the explainer
+  videos; and answers the student's own questions at any point ("Ask your tutor"). The student can
+  pause, go back, skip, replay, slow it down, choose the voice or turn it off. MiniMax writes the
+  narration for runs of slides through the new `ai-tutor` Edge Function, which saves it
+  (`tutor_scripts`), so each lesson is written once and later students get it at once; without the
+  AI, the tutor reads from the slides. Hourly limits per student; questions are not stored, and no
+  names are sent (privacy policy updated). The AI now uses `MiniMax-M3.1-Flash` (generally available
+  since 19 October 2026). Next: write the narration for every lesson ahead of time with a batch
+  tool, so no student waits for the first one; let the tutor ask its own follow-up question after a
+  wrong answer; a better voice later (our explainer-video voice pre-recorded, or MiniMax's).
+- Self-paced study, next steps: let the AI write the student coach's note on the home page (today
+  it comes from the offline analyst); store placement results on the server (today they stay on
+  the device); let a student leave a self-paced course; and email the AI tutor's weekly summary.
 - Exam mode, next steps: a Safe Exam Browser option for schools that need true lockdown, a
   per-class default for exam mode, and a live view of who is locked during an exam.
 - Lesson edits, next steps: let administrators edit the lesson introduction (before the first

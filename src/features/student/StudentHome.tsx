@@ -157,9 +157,14 @@ export default function StudentHome() {
               <CardBody className="pt-3">
                 <div className="text-xs font-semibold uppercase tracking-wide text-ink-3">Lesson {latestLesson.number}</div>
                 <div className="mt-1 font-semibold">{latestLesson.title}</div>
-                <Button className="mt-4" variant="soft" to={`/s/learn/${latestLesson.id}`}>
-                  Open lesson <ArrowRight className="h-4 w-4" />
-                </Button>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Button to={`/s/learn/${latestLesson.id}/tutor`} icon={<Sparkles className="h-4 w-4" />}>
+                    Start with your AI tutor
+                  </Button>
+                  <Button variant="soft" to={`/s/learn/${latestLesson.id}`}>
+                    Open lesson <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </div>
               </CardBody>
             </Card>
           )}
@@ -214,10 +219,15 @@ function NextLesson({ lesson }: { lesson: NonNullable<ReturnType<typeof lessonBy
       <div className="relative">
         <div className="text-sm text-white/75">Your next lesson · Lesson {lesson.number}</div>
         <h2 className="mt-3 font-display text-2xl font-semibold leading-snug">{lesson.title}</h2>
-        <p className="mt-2 max-w-xl text-white/80">Read the lesson, try its checks, then practise its skills. You move on once you are proficient.</p>
-        <Link to={`/s/learn/${lesson.id}`} className="mt-5 inline-flex h-11 items-center gap-2 rounded-xl bg-white px-5 font-semibold text-spotlight hover:bg-white/90">
-          Open the lesson <ArrowRight className="h-4 w-4" />
-        </Link>
+        <p className="mt-2 max-w-xl text-white/80">Your AI tutor takes you through the lesson step by step, out loud. Try its questions, then practise its skills. You move on once you are proficient.</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Link to={`/s/learn/${lesson.id}/tutor`} className="inline-flex h-11 items-center gap-2 rounded-xl bg-white px-5 font-semibold text-spotlight hover:bg-white/90">
+            <Sparkles className="h-4 w-4" /> Start with your AI tutor
+          </Link>
+          <Link to={`/s/learn/${lesson.id}`} className="inline-flex h-11 items-center gap-2 rounded-xl px-5 font-semibold text-white ring-1 ring-white/40 hover:bg-white/10">
+            Read it myself <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </div>
   );
