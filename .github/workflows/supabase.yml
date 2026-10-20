@@ -83,4 +83,4 @@ jobs:
         if: steps.cfg.outputs.skip != 'true'
         run: |
           node scripts/sync-engine.mjs
-          supabase functions deploy grade-submission ai-agent create-students send-emails admin-users join-class --project-ref "$PROJECT_ID"
+          supabase functions deploy grade-submission ai-agent ai-tutor create-students send-emails admin-users join-class --project-ref "$PROJECT_ID"

@@ -5,6 +5,7 @@ import { getSkill, skillInfo } from '@engine/curriculum/index.ts';
 import { useSkillsReady } from '@/lib/useSkills.ts';
 import { gradeItem, type ItemResult } from '@engine/grade.ts';
 import { freshSeed } from '@engine/rng.ts';
+import { answerMarkdown } from '@engine/answers.ts';
 import type { Difficulty } from '@engine/types.ts';
 import { Markdown } from '@/components/math/Markdown.tsx';
 import { Figure } from '@/components/figures/Figure.tsx';
@@ -98,7 +99,14 @@ export function ExampleBlock({ block, large, presenter }: { block: Extract<Block
 }
 
 /** An embedded, ungraded practice question generated fresh from a skill. */
-export function CheckBlock({ skillId, difficulty, onResult }: { skillId: string; difficulty: Difficulty; onResult?: (correct: boolean) => void }) {
+/** A checked question: its prompt, what the student entered and the expected answer, as Markdown. */
+export interface CheckDetail {
+  prompt: string;
+  answer: string;
+  expected: string;
+}
+
+export function CheckBlock({ skillId, difficulty, onResult }: { skillId: string; difficulty: Difficulty; onResult?: (correct: boolean, detail: CheckDetail) => void }) {
   const loaded = useSkillsReady([skillId]);
   const skill = loaded === 'ready' ? getSkill(skillId) : undefined;
   const [seed, setSeed] = useState(() => freshSeed());
@@ -115,7 +123,11 @@ export function CheckBlock({ skillId, difficulty, onResult }: { skillId: string;
       return;
     }
     setResult(r);
-    onResult?.(r.correct);
+    onResult?.(r.correct, {
+      prompt: item.prompt,
+      answer: responses.filter((x) => x?.trim()).join(' | '),
+      expected: item.parts.map((p) => answerMarkdown(p.answer, p)).join(' | '),
+    });
   };
   const again = () => {
     setSeed(freshSeed());

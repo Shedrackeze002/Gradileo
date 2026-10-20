@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { PlayCircle } from 'lucide-react';
+import { PlayCircle, Sparkles } from 'lucide-react';
 import { skillInfo, lessonById } from '@engine/curriculum/index.ts';
 import { useBoards, useMastery, usePublications, useResources } from '@/data/hooks.ts';
 import { useMe } from '@/features/auth/AuthProvider.tsx';
@@ -28,9 +28,14 @@ export default function StudentLessonPage() {
       resources={(res.data ?? []).filter((r) => r.lessonId === lessonId)}
       boards={(boards.data ?? []).filter((b) => b.shared)}
       headerActions={
-        <Button to={`/s/practice?skills=${meta.skills.join(',')}`} icon={<PlayCircle className="h-4 w-4" />}>
-          Practise this lesson
-        </Button>
+        <>
+          <Button to={`/s/learn/${lessonId}/tutor`} icon={<Sparkles className="h-4 w-4" />}>
+            Start with your AI tutor
+          </Button>
+          <Button variant="soft" to={`/s/practice?skills=${meta.skills.join(',')}`} icon={<PlayCircle className="h-4 w-4" />}>
+            Practise this lesson
+          </Button>
+        </>
       }
       footer={
         <Card>

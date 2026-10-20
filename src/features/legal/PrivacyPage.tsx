@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      updated="October 14, 2026"
+      updated="October 20, 2026"
       intro={
         <>
           <p>
@@ -56,20 +56,27 @@ export default function PrivacyPage() {
           <li>To create and run accounts, classes, lessons, practice, assignments, quizzes and exams.</li>
           <li>To grade work, track mastery of skills, and show students and their teachers how learning is going.</li>
           <li>To send assignment and deadline reminder emails, but only when a teacher turns them on for a class.</li>
-          <li>To run the AI teaching assistant when a teacher asks for an analysis (see section 3).</li>
+          <li>To run the AI teaching assistant when a teacher asks for an analysis, and the AI tutor when a student studies a lesson with it (see section 3).</li>
           <li>To keep Gradileo secure, fix problems, and respond to questions and requests.</li>
         </ul>
         <p>We do not sell personal information, we do not use it for advertising, and we do not build profiles of students for anything other than their learning in Gradileo.</p>
       </Section>
 
-      <Section id="ai" title="3. The AI teaching assistant">
+      <Section id="ai" title="3. The AI teaching assistant and the AI tutor">
         <p>
           When a teacher asks the AI teaching assistant to analyze a class or a student, Gradileo sends the AI model provider (MiniMax) the information the
           analysis needs: the class name, students’ first names and last initials, their progress on skills, recent incorrect answers with the question
           and the expected answer, and assignment titles and scores. We do not send email addresses or surnames. The analysis is shown to the teacher and
           saved with the class.
         </p>
-        <p>The student coach, the course placement check and the self-paced tutor run inside the student’s browser and do not send information to an AI provider.</p>
+        <p>
+          When a student studies a lesson with the AI tutor, Gradileo sends MiniMax the lesson’s slides so it can write what the tutor says. This contains
+          nothing about the student, and the narration is saved and reused for other students. When a student asks the tutor a question, Gradileo sends
+          MiniMax the question, the slide it is about and the last few messages of that conversation. We do not send the student’s name or email address,
+          and we do not keep the questions or answers. Students should not type personal information into a question. The tutor speaks with the voice
+          built into the student’s own device.
+        </p>
+        <p>The student coach and the course placement check run inside the student’s browser and do not send information to an AI provider.</p>
       </Section>
 
       <Section id="share" title="4. Who can see information, and who we share it with">
@@ -90,7 +97,7 @@ export default function PrivacyPage() {
             <strong>Cloudflare</strong>: hosts the Gradileo website and handles email sent to gradileo.com addresses.
           </li>
           <li>
-            <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses, as described in section 3.
+            <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses and the AI tutor, as described in section 3.
           </li>
           <li>
             <strong>Our email delivery provider</strong>: sends reminder emails when a teacher turns them on. It receives the student’s email address and

@@ -15,9 +15,10 @@ import { refSkillIds } from '@/lib/useSkills.ts';
 import { dueReminders } from '@engine/reminders.ts';
 import { draftFromAction } from '@engine/actions.ts';
 import { generateInsight, DEFAULT_MODEL } from '@engine/ai/index.ts';
+import { answerTutorQuestion, normalizeChunk, normalizeQuestion, writeTutorScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
 import type { SkillState } from '@engine/mastery.ts';
 import { exitCount, isLocked, mergeIntegrity, type Integrity } from '@engine/integrity.ts';
-import type { AiConfigStatus, DataApi, SignUpInput } from '../api.ts';
+import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts';
 import type {
   AdminAuditEntry,
   AdminClassRow,
@@ -1365,6 +1366,29 @@ export class DemoApi implements DataApi {
     this.db.insights.push(ins);
     this.persist();
     return ins;
+  }
+
+  /** The tutor's narration, saved for this browser session like the server saves it. */
+  private tutorScripts = new Map<string, TutorReply<{ script: TutorScript }>>();
+
+  async tutorScript(lessonId: string, chunk: TutorChunk): Promise<TutorReply<{ script: TutorScript }>> {
+    await this.ready;
+    this.me();
+    const clean = normalizeChunk(chunk);
+    const key = JSON.stringify([lessonId, this.db.aiModel || DEFAULT_MODEL, clean]);
+    const saved = this.tutorScripts.get(key);
+    if (saved) return saved;
+    const res = await writeTutorScript(clean, this.aiConfig());
+    const reply = { script: res.script, source: res.source, model: res.model };
+    if (res.source === 'minimax') this.tutorScripts.set(key, reply);
+    return reply;
+  }
+
+  async askTutor(question: TutorQuestion): Promise<TutorReply<{ answer: TutorAnswer }>> {
+    await this.ready;
+    this.me();
+    const res = await answerTutorQuestion(normalizeQuestion(question), this.aiConfig());
+    return { answer: res.answer, source: res.source, model: res.model };
   }
 
   async setActionStatus(insightId: string, actionId: string, status: ProposedAction['status']) {

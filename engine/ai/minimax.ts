@@ -7,7 +7,7 @@
 
 export interface MiniMaxConfig {
   apiKey: string;
-  /** Default: MiniMax-M3.1-Flash-Preview */
+  /** Default: MiniMax-M3.1-Flash */
   model?: string;
   /** Default: https://api.minimax.io (international). Mainland China: https://api.minimax.cn */
   baseUrl?: string;
@@ -18,7 +18,7 @@ export interface MiniMaxConfig {
   timeoutMs?: number;
 }
 
-export const DEFAULT_MODEL = 'MiniMax-M3.1-Flash-Preview';
+export const DEFAULT_MODEL = 'MiniMax-M3.1-Flash';
 export const DEFAULT_BASE_URL = 'https://api.minimax.io';
 
 export interface ChatMessage {
@@ -47,7 +47,7 @@ export async function minimaxChat(cfg: MiniMaxConfig, messages: ChatMessage[]): 
         temperature: cfg.temperature ?? 0.4,
         max_completion_tokens: cfg.maxTokens ?? 4000,
         reasoning_effort: cfg.reasoningEffort ?? 'low',
-        // Keep the model's reasoning out of `content` (required for M3.1-Flash-Preview).
+        // Keep the model's reasoning out of `content` (M3.1 Flash always reasons first).
         reasoning_split: true,
       }),
       signal: controller.signal,

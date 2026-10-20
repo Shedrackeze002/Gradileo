@@ -4,6 +4,7 @@
  *  - SupabaseApi: real multi-user backend (Postgres + Auth + Edge Functions + cron).
  */
 import type { Integrity } from '@engine/integrity.ts';
+import type { TutorAnswer, TutorChunk, TutorQuestion, TutorScript } from '@engine/ai/tutor.ts';
 import type {
   AdminAuditEntry,
   AdminClassRow,
@@ -55,6 +56,8 @@ export interface SignUpInput {
   role: Role;
   joinCode?: string;
 }
+
+export type TutorReply<T> = T & { source: 'minimax' | 'offline'; model: string | null };
 
 export interface AiConfigStatus {
   /** Whether live MiniMax analysis is available. */
@@ -188,6 +191,12 @@ export interface DataApi {
   listInsights(classId: string, studentId?: string | null): Promise<Insight[]>;
   generateInsight(classId: string, studentId: string | null): Promise<Insight>;
   setActionStatus(insightId: string, actionId: string, status: ProposedAction['status']): Promise<void>;
+
+  // AI tutor (any signed-in student)
+  /** What the tutor says at each step of a run of a lesson's slides (offline narration if the AI is off). */
+  tutorScript(lessonId: string, chunk: TutorChunk): Promise<TutorReply<{ script: TutorScript }>>;
+  /** The tutor's answer to a student's question about a slide. */
+  askTutor(question: TutorQuestion): Promise<TutorReply<{ answer: TutorAnswer }>>;
 
   /** Demo only: run the scheduler (deadline reminders). Supabase runs this on a cron. */
   runScheduledJobs(): Promise<void>;
