@@ -11951,6 +11951,57 @@
       }
     ]
   },
+  "m7-2-1": {
+    "lessonId": "m7-2-1",
+    "title": "Adding and Subtracting Decimals, Part 1: Estimate, Then Add",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an estimate is",
+        "t": 26.392
+      },
+      {
+        "title": "Estimating a sum",
+        "t": 60.711
+      },
+      {
+        "title": "Line up the decimal points",
+        "t": 95.393
+      },
+      {
+        "title": "Adding 12.6 and 4.75",
+        "t": 135.963
+      },
+      {
+        "title": "Your turn",
+        "t": 186.444
+      },
+      {
+        "title": "Summary",
+        "t": 222.884
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-1:q",
+        "t": 195.424,
+        "prompt": "Calculate $9.4 + 3.68$.",
+        "choices": [
+          "$4.62$",
+          "$13.08$",
+          "$12.08$",
+          "$12.72$"
+        ],
+        "answer": 1,
+        "working": "Estimate: $9 + 4 = 13$. Write $9.4$ as $9.40$ and line up the decimal points: $9.40 + 3.68 = 13.08$, which is close to $13$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
