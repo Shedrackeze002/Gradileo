@@ -5098,6 +5098,807 @@
       }
     ]
   },
+  "m6-1-1-b": {
+    "lessonId": "m6-1-1",
+    "title": "Negative Numbers and Magnitude, Part 2: Horizontal and Vertical Number Lines",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Zero in the middle",
+        "t": 22.17
+      },
+      {
+        "title": "Plotting points",
+        "t": 58.673
+      },
+      {
+        "title": "Standing up",
+        "t": 88.271
+      },
+      {
+        "title": "Reading a thermometer",
+        "t": 121.08
+      },
+      {
+        "title": "Your turn",
+        "t": 158.925
+      },
+      {
+        "title": "Summary",
+        "t": 190.789
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-1-b:q",
+        "t": 168.521,
+        "prompt": "On a vertical number line, a point is $9$ units **below** $0$. Which number is it?",
+        "choices": [
+          "$9$",
+          "$-1$",
+          "$+9$",
+          "$-9$"
+        ],
+        "answer": 3,
+        "working": "Below $0$ means negative, and the point is $9$ units from $0$. So it is $-9$."
+      }
+    ]
+  },
+  "m6-1-1-c": {
+    "lessonId": "m6-1-1",
+    "title": "Negative Numbers and Magnitude, Part 3: Magnitude",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Distance from zero",
+        "t": 19.391
+      },
+      {
+        "title": "Sign and size",
+        "t": 66.967
+      },
+      {
+        "title": "A diver in a lake",
+        "t": 102.505
+      },
+      {
+        "title": "Watch out",
+        "t": 134.688
+      },
+      {
+        "title": "Which is farther from zero?",
+        "t": 161.207
+      },
+      {
+        "title": "Your turn",
+        "t": 188.67
+      },
+      {
+        "title": "Summary",
+        "t": 221.766
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-1-c:q",
+        "t": 199.28,
+        "prompt": "Which number has the **greatest magnitude**?",
+        "choices": [
+          "$-15$",
+          "$9$",
+          "$-6$",
+          "$12$"
+        ],
+        "answer": 0,
+        "working": "The magnitudes are $15$, $9$, $6$ and $12$. The greatest is $15$, so $-15$ is farthest from $0$."
+      }
+    ]
+  },
+  "m6-1-1-d": {
+    "lessonId": "m6-1-1",
+    "title": "Negative Numbers and Magnitude, Part 4: Opposites",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Opposites",
+        "t": 22.305
+      },
+      {
+        "title": "Finding an opposite",
+        "t": 73.918
+      },
+      {
+        "title": "Two opposites",
+        "t": 102.736
+      },
+      {
+        "title": "Opposites in real life",
+        "t": 134.24
+      },
+      {
+        "title": "Your turn",
+        "t": 161.169
+      },
+      {
+        "title": "Summary",
+        "t": 193.283
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-1-d:q",
+        "t": 171.281,
+        "prompt": "Two numbers are opposites. On a number line, they are $16$ units apart. What are the numbers?",
+        "choices": [
+          "$16$ and $-16$",
+          "$0$ and $16$",
+          "$8$ and $-8$",
+          "$4$ and $-4$"
+        ],
+        "answer": 2,
+        "working": "Zero is halfway between opposites. Half of $16$ is $8$, so the numbers are $8$ and $-8$."
+      }
+    ]
+  },
+  "m6-1-2": {
+    "lessonId": "m6-1-2",
+    "title": "Comparing and Ordering Positive and Negative Numbers, Part 1: Integers",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is an integer?",
+        "t": 22.678
+      },
+      {
+        "title": "Is it an integer?",
+        "t": 58.205
+      },
+      {
+        "title": "Forever in both directions",
+        "t": 91.311
+      },
+      {
+        "title": "Counting integers",
+        "t": 130.493
+      },
+      {
+        "title": "Watch out",
+        "t": 161.508
+      },
+      {
+        "title": "Your turn",
+        "t": 184.162
+      },
+      {
+        "title": "Summary",
+        "t": 213.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-2:q",
+        "t": 194.043,
+        "prompt": "How many integers are between $-5$ and $3$? Do not count $-5$ and $3$.",
+        "choices": [
+          "$7$",
+          "$6$",
+          "$8$",
+          "$9$"
+        ],
+        "answer": 0,
+        "working": "They are $-4, -3, -2, -1, 0, 1, 2$: that is $7$ integers."
+      }
+    ]
+  },
+  "m6-1-2-b": {
+    "lessonId": "m6-1-2",
+    "title": "Comparing and Ordering Positive and Negative Numbers, Part 2: Comparing Two Numbers",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Greater to the right",
+        "t": 20.767
+      },
+      {
+        "title": "Symbols",
+        "t": 52.023
+      },
+      {
+        "title": "Comparing two temperatures",
+        "t": 81.387
+      },
+      {
+        "title": "Watch out",
+        "t": 114.1
+      },
+      {
+        "title": "The open side",
+        "t": 142.848
+      },
+      {
+        "title": "Your turn",
+        "t": 174.427
+      },
+      {
+        "title": "Summary",
+        "t": 204.922
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-2-b:q",
+        "t": 179.695,
+        "prompt": "Which statement is **true**?",
+        "choices": [
+          "$-9 > -2$",
+          "$-4 > 1$",
+          "$0 < -3$",
+          "$-7 < -1$"
+        ],
+        "answer": 3,
+        "working": "$-7$ is to the left of $-1$ on the number line, so $-7 < -1$. In each of the others, the open side faces the smaller number."
+      }
+    ]
+  },
+  "m6-1-2-c": {
+    "lessonId": "m6-1-2",
+    "title": "Comparing and Ordering Positive and Negative Numbers, Part 3: Comparing on a Vertical Number Line",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Up is greater",
+        "t": 20.274
+      },
+      {
+        "title": "Which is lower?",
+        "t": 58.035
+      },
+      {
+        "title": "Which place was colder?",
+        "t": 85.728
+      },
+      {
+        "title": "Your turn",
+        "t": 130.195
+      },
+      {
+        "title": "Summary",
+        "t": 166.854
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-2-c:q",
+        "t": 144.454,
+        "prompt": "At noon, four towns had temperatures of $-2^\\circ\\text{C}$, ${-11}^\\circ\\text{C}$, $3^\\circ\\text{C}$ and ${-7}^\\circ\\text{C}$. Which temperature is the coldest?",
+        "choices": [
+          "${-2}^\\circ\\text{C}$",
+          "${-11}^\\circ\\text{C}$",
+          "$3^\\circ\\text{C}$",
+          "${-7}^\\circ\\text{C}$"
+        ],
+        "answer": 1,
+        "working": "The coldest temperature is the lowest on a thermometer. $-11$ is farthest below $0$, so $-11 < -7 < -2 < 3$."
+      }
+    ]
+  },
+  "m6-1-2-d": {
+    "lessonId": "m6-1-2",
+    "title": "Comparing and Ordering Positive and Negative Numbers, Part 4: Ordering Numbers",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Picture the number line",
+        "t": 19.772
+      },
+      {
+        "title": "Least to greatest",
+        "t": 54.412
+      },
+      {
+        "title": "The next integer",
+        "t": 97.363
+      },
+      {
+        "title": "Watch out",
+        "t": 125.728
+      },
+      {
+        "title": "Your turn",
+        "t": 150.722
+      },
+      {
+        "title": "Summary",
+        "t": 187.283
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-2-d:q",
+        "t": 162.163,
+        "prompt": "Order from least to greatest: $3,\\ -4,\\ -10,\\ 0,\\ 7$",
+        "choices": [
+          "$0,\\ 3,\\ -4,\\ 7,\\ -10$",
+          "$-4,\\ -10,\\ 0,\\ 3,\\ 7$",
+          "$-10,\\ -4,\\ 0,\\ 3,\\ 7$",
+          "$7,\\ 3,\\ 0,\\ -4,\\ -10$"
+        ],
+        "answer": 2,
+        "working": "The negative numbers come first, and $-10$ is farther from $0$ than $-4$. Then $0$, then $3$ and $7$."
+      }
+    ]
+  },
+  "m6-1-3": {
+    "lessonId": "m6-1-3",
+    "title": "Sums of Positive and Negative Numbers, Part 1: Zero Pairs",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counters",
+        "t": 27.633
+      },
+      {
+        "title": "A zero pair",
+        "t": 56.677
+      },
+      {
+        "title": "Four plus negative four",
+        "t": 78.915
+      },
+      {
+        "title": "A number plus its opposite",
+        "t": 110.255
+      },
+      {
+        "title": "Zero in many ways",
+        "t": 140.927
+      },
+      {
+        "title": "Your turn",
+        "t": 178.763
+      },
+      {
+        "title": "Summary",
+        "t": 206.669
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-3:q",
+        "t": 184.555,
+        "prompt": "Which sum is equal to $0$?",
+        "choices": [
+          "$6 + 6$",
+          "$-6 + (-6)$",
+          "$6 + (-5)$",
+          "$-6 + 6$"
+        ],
+        "answer": 3,
+        "working": "$-6$ and $6$ are opposites: six negative counters and six positive counters make six zero pairs, so $-6 + 6 = 0$."
+      }
+    ]
+  },
+  "m6-1-3-b": {
+    "lessonId": "m6-1-3",
+    "title": "Sums of Positive and Negative Numbers, Part 2: Two Positives or Two Negatives",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two positives",
+        "t": 17.983
+      },
+      {
+        "title": "Two negatives",
+        "t": 39.75
+      },
+      {
+        "title": "On a number line",
+        "t": 75.735
+      },
+      {
+        "title": "Same signs",
+        "t": 104.578
+      },
+      {
+        "title": "Watch out",
+        "t": 137.126
+      },
+      {
+        "title": "Your turn",
+        "t": 168.192
+      },
+      {
+        "title": "Summary",
+        "t": 199.321
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-3-b:q",
+        "t": 175.063,
+        "prompt": "Find $-6 + (-9)$.",
+        "choices": [
+          "$-15$",
+          "$15$",
+          "$-3$",
+          "$3$"
+        ],
+        "answer": 0,
+        "working": "Six negative counters and nine more negative counters make $15$ negative counters, with no zero pairs. So $-6 + (-9) = -15$."
+      }
+    ]
+  },
+  "m6-1-3-c": {
+    "lessonId": "m6-1-3",
+    "title": "Sums of Positive and Negative Numbers, Part 3: A Positive Plus a Negative",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Look for zero pairs",
+        "t": 19.938
+      },
+      {
+        "title": "Seven plus negative five",
+        "t": 39.168
+      },
+      {
+        "title": "When the negative is bigger",
+        "t": 75.79
+      },
+      {
+        "title": "The sign of the answer",
+        "t": 109.05
+      },
+      {
+        "title": "The temperature rises",
+        "t": 133.906
+      },
+      {
+        "title": "Your turn",
+        "t": 168.969
+      },
+      {
+        "title": "Summary",
+        "t": 203.231
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-3-c:q",
+        "t": 174.98,
+        "prompt": "Find $3 + (-8)$.",
+        "choices": [
+          "$5$",
+          "$11$",
+          "$-5$",
+          "$-11$"
+        ],
+        "answer": 2,
+        "working": "Split $-8$ into $(-3) + (-5)$. Then $3 + (-3) = 0$, so $3 + (-8) = 0 + (-5) = -5$."
+      }
+    ]
+  },
+  "m6-1-3-d": {
+    "lessonId": "m6-1-3",
+    "title": "Sums of Positive and Negative Numbers, Part 4: Writing a Difference as a Sum",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding the opposite",
+        "t": 16.208
+      },
+      {
+        "title": "Five minus eight",
+        "t": 52.413
+      },
+      {
+        "title": "Check on a number line",
+        "t": 84.288
+      },
+      {
+        "title": "Watch out",
+        "t": 106.831
+      },
+      {
+        "title": "One more",
+        "t": 134.894
+      },
+      {
+        "title": "Your turn",
+        "t": 165.182
+      },
+      {
+        "title": "Summary",
+        "t": 195.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-1-3-d:q",
+        "t": 171.78,
+        "prompt": "Which sum is the same as $3 - 10$?",
+        "choices": [
+          "$-3 + 10$",
+          "$3 + (-10)$",
+          "$3 + 10$",
+          "$-3 + (-10)$"
+        ],
+        "answer": 1,
+        "working": "Keep the $3$ and add the opposite of $10$: $3 - 10 = 3 + (-10)$, which is $-7$."
+      }
+    ]
+  },
+  "m6-2-1": {
+    "lessonId": "m6-2-1",
+    "title": "Solving Addition and Subtraction Problems, Part 1: Adding with the Standard Algorithm",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The standard algorithm",
+        "t": 22.583
+      },
+      {
+        "title": "Buying sports gear",
+        "t": 76.524
+      },
+      {
+        "title": "Watch out",
+        "t": 149.307
+      },
+      {
+        "title": "Your turn",
+        "t": 197.106
+      },
+      {
+        "title": "Summary",
+        "t": 232.334
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-1:q",
+        "t": 204.783,
+        "prompt": "Find $15.8 + 7.45$.",
+        "choices": [
+          "$9.03$",
+          "$22.25$",
+          "$23.35$",
+          "$23.25$"
+        ],
+        "answer": 3,
+        "working": "Write $15.8$ as $15.80$ and line up the points. Hundredths: $0 + 5 = 5$. Tenths: $8 + 4 = 12$, write $2$, regroup $1$. Ones: $5 + 7 + 1 = 13$, write $3$, regroup $1$. Tens: $1 + 1 = 2$. The sum is $23.25$."
+      }
+    ]
+  },
+  "m6-2-1-b": {
+    "lessonId": "m6-2-1",
+    "title": "Solving Addition and Subtraction Problems, Part 2: Subtracting with the Standard Algorithm",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subtracting in columns",
+        "t": 20.075
+      },
+      {
+        "title": "Making change",
+        "t": 40.87
+      },
+      {
+        "title": "Check by adding",
+        "t": 117.54
+      },
+      {
+        "title": "Cutting a board",
+        "t": 141.191
+      },
+      {
+        "title": "Subtracting the lengths",
+        "t": 171.868
+      },
+      {
+        "title": "Your turn",
+        "t": 214.307
+      },
+      {
+        "title": "Summary",
+        "t": 255.267
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-1-b:q",
+        "t": 226.669,
+        "prompt": "Nadia pays for a \\$7.36 lunch with a \\$10 bill. How much change does Nadia get?",
+        "choices": [
+          "\\$3.64",
+          "\\$2.64",
+          "\\$2.74",
+          "\\$17.36"
+        ],
+        "answer": 1,
+        "working": "Write \\$10 as \\$10.00. Regroup: $10.00$ is $9$ ones, $9$ tenths and $10$ hundredths. $10.00 - 7.36 = 2.64$. Check: $2.64 + 7.36 = 10.00$."
+      }
+    ]
+  },
+  "m6-2-1-c": {
+    "lessonId": "m6-2-1",
+    "title": "Solving Addition and Subtraction Problems, Part 3: Two-Step Problems",
+    "duration": 326,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Make a plan",
+        "t": 19.253
+      },
+      {
+        "title": "Getting change",
+        "t": 44.885
+      },
+      {
+        "title": "Step 1: the total cost",
+        "t": 81.391
+      },
+      {
+        "title": "Step 2: the change",
+        "t": 110.463
+      },
+      {
+        "title": "Biking a trail",
+        "t": 158.949
+      },
+      {
+        "title": "How much is left?",
+        "t": 202.323
+      },
+      {
+        "title": "Your turn",
+        "t": 256.258
+      },
+      {
+        "title": "Summary",
+        "t": 297.481
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-1-c:q",
+        "t": 272.097,
+        "prompt": "Sam buys a cap for \\$14.75 and socks for \\$6.40. Sam pays with a \\$30 bill. How much change does Sam get?",
+        "choices": [
+          "\\$8.85",
+          "\\$21.15",
+          "\\$9.85",
+          "\\$51.15"
+        ],
+        "answer": 0,
+        "working": "Step 1: $14.75 + 6.40 = 21.15$. Step 2: $30.00 - 21.15 = 8.85$. Check: $8.85 + 21.15 = 30.00$."
+      }
+    ]
+  },
+  "m6-2-2": {
+    "lessonId": "m6-2-2",
+    "title": "Multiplying Decimal and Natural Numbers, Part 1: Multiplying by a Two-Digit Number",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Picture it",
+        "t": 25.455
+      },
+      {
+        "title": "Partial products",
+        "t": 97.1
+      },
+      {
+        "title": "Multiply 347 by 26",
+        "t": 124.308
+      },
+      {
+        "title": "Watch out",
+        "t": 199.581
+      },
+      {
+        "title": "Is it reasonable?",
+        "t": 239.757
+      },
+      {
+        "title": "Your turn",
+        "t": 270.508
+      },
+      {
+        "title": "Summary",
+        "t": 308.233
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-2:q",
+        "t": 277.354,
+        "prompt": "Find $128 \\times 34$.",
+        "choices": [
+          "$896$",
+          "$4252$",
+          "$4352$",
+          "$43\\,520$"
+        ],
+        "answer": 2,
+        "working": "$128 \\times 4 = 512$ and $128 \\times 30 = 3840$. Add the partial products: $512 + 3840 = 4352$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
