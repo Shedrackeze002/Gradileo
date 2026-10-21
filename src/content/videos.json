@@ -12971,6 +12971,481 @@
       }
     ]
   },
+  "m7-3-1-b": {
+    "lessonId": "m7-3-1",
+    "title": "Adding and Subtracting Fractions, Part 2: Lowest Terms",
+    "duration": 310,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same amount",
+        "t": 18.131
+      },
+      {
+        "title": "Lowest terms",
+        "t": 51.722
+      },
+      {
+        "title": "Writing a fraction in lowest terms",
+        "t": 101.777
+      },
+      {
+        "title": "Subtracting tenths",
+        "t": 157.155
+      },
+      {
+        "title": "Answers bigger than 1",
+        "t": 200.266
+      },
+      {
+        "title": "Your turn",
+        "t": 239.292
+      },
+      {
+        "title": "Summary",
+        "t": 276.805
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-1-b:q",
+        "t": 248.356,
+        "prompt": "Find $\\dfrac{5}{12} + \\dfrac{3}{12}$. Write the answer in lowest terms.",
+        "choices": [
+          "$\\dfrac{2}{3}$",
+          "$\\dfrac{8}{12}$",
+          "$\\dfrac{8}{24}$",
+          "$\\dfrac{4}{6}$"
+        ],
+        "answer": 0,
+        "working": "$\\tfrac{5}{12} + \\tfrac{3}{12} = \\tfrac{8}{12}$. Divide $8$ and $12$ by $4$, their greatest common factor: $\\tfrac{8}{12} = \\tfrac{2}{3}$."
+      }
+    ]
+  },
+  "m7-3-1-c": {
+    "lessonId": "m7-3-1",
+    "title": "Adding and Subtracting Fractions, Part 3: Different Denominators",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts of different sizes",
+        "t": 22.628
+      },
+      {
+        "title": "Halves and thirds",
+        "t": 61.089
+      },
+      {
+        "title": "Pizza for two",
+        "t": 110.592
+      },
+      {
+        "title": "Thirds and quarters",
+        "t": 151.952
+      },
+      {
+        "title": "Watch out",
+        "t": 201.801
+      },
+      {
+        "title": "Your turn",
+        "t": 230.574
+      },
+      {
+        "title": "Summary",
+        "t": 263.592
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-1-c:q",
+        "t": 236.616,
+        "prompt": "Find $\\dfrac{1}{2} + \\dfrac{1}{5}$.",
+        "choices": [
+          "$\\dfrac{2}{7}$",
+          "$\\dfrac{2}{10}$",
+          "$\\dfrac{3}{10}$",
+          "$\\dfrac{7}{10}$"
+        ],
+        "answer": 3,
+        "working": "Use $10$: $\\dfrac{1}{2} = \\dfrac{5}{10}$ and $\\dfrac{1}{5} = \\dfrac{2}{10}$, so the sum is $\\dfrac{5}{10} + \\dfrac{2}{10} = \\dfrac{7}{10}$."
+      }
+    ]
+  },
+  "m7-3-1-d": {
+    "lessonId": "m7-3-1",
+    "title": "Adding and Subtracting Fractions, Part 4: The Lowest Common Denominator",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Listing multiples",
+        "t": 20.611
+      },
+      {
+        "title": "Sixths and eighths",
+        "t": 67.876
+      },
+      {
+        "title": "Three fractions",
+        "t": 125.036
+      },
+      {
+        "title": "Your turn",
+        "t": 170.364
+      },
+      {
+        "title": "Summary",
+        "t": 210.061
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-1-d:q",
+        "t": 179.402,
+        "prompt": "Find $\\dfrac{1}{4} + \\dfrac{5}{6}$. Write the answer in lowest terms.",
+        "choices": [
+          "$\\dfrac{6}{10}$",
+          "$\\dfrac{13}{12}$",
+          "$\\dfrac{6}{12}$",
+          "$\\dfrac{26}{24}$"
+        ],
+        "answer": 1,
+        "working": "The lowest common denominator is $12$: $\\dfrac{1}{4} = \\dfrac{3}{12}$ and $\\dfrac{5}{6} = \\dfrac{10}{12}$, so the sum is $\\dfrac{13}{12}$, or $1\\dfrac{1}{12}$."
+      }
+    ]
+  },
+  "m7-3-2": {
+    "lessonId": "m7-3-2",
+    "title": "Adding and Subtracting Mixed Numbers, Part 1: Mixed Numbers and Improper Fractions",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mixed numbers",
+        "t": 22.005
+      },
+      {
+        "title": "Improper fractions",
+        "t": 47.061
+      },
+      {
+        "title": "On a number line",
+        "t": 78.043
+      },
+      {
+        "title": "Mixed number to improper fraction",
+        "t": 112.212
+      },
+      {
+        "title": "Improper fraction to mixed number",
+        "t": 145.456
+      },
+      {
+        "title": "Your turn",
+        "t": 179.414
+      },
+      {
+        "title": "Summary",
+        "t": 208.297
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-2:q",
+        "t": 186.647,
+        "prompt": "Write $3\\dfrac{2}{5}$ as an improper fraction.",
+        "choices": [
+          "$\\dfrac{6}{5}$",
+          "$\\dfrac{32}{5}$",
+          "$\\dfrac{15}{5}$",
+          "$\\dfrac{17}{5}$"
+        ],
+        "answer": 3,
+        "working": "Each whole is $\\dfrac{5}{5}$, so $3$ wholes are $\\dfrac{15}{5}$. Then $\\dfrac{15}{5} + \\dfrac{2}{5} = \\dfrac{17}{5}$. Shortcut: $3 \\times 5 + 2 = 17$."
+      }
+    ]
+  },
+  "m7-3-2-b": {
+    "lessonId": "m7-3-2",
+    "title": "Adding and Subtracting Mixed Numbers, Part 2: Adding Mixed Numbers",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plan",
+        "t": 20.024
+      },
+      {
+        "title": "Flour for bread",
+        "t": 51.513
+      },
+      {
+        "title": "On a number line",
+        "t": 94.67
+      },
+      {
+        "title": "Carrying a whole",
+        "t": 120.681
+      },
+      {
+        "title": "Five quarters",
+        "t": 145.478
+      },
+      {
+        "title": "Check on a number line",
+        "t": 172.541
+      },
+      {
+        "title": "Watch out",
+        "t": 197.361
+      },
+      {
+        "title": "Your turn",
+        "t": 223.432
+      },
+      {
+        "title": "Summary",
+        "t": 257.131
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-2-b:q",
+        "t": 230.582,
+        "prompt": "Find $1\\dfrac{2}{3} + 2\\dfrac{2}{3}$.",
+        "choices": [
+          "$4\\dfrac{1}{3}$",
+          "$3\\dfrac{4}{3}$",
+          "$3\\dfrac{1}{3}$",
+          "$3\\dfrac{4}{6}$"
+        ],
+        "answer": 0,
+        "working": "Wholes: $1 + 2 = 3$. Fractions: $\\dfrac{2}{3} + \\dfrac{2}{3} = \\dfrac{4}{3} = 1\\dfrac{1}{3}$. Carry: $3 + 1\\dfrac{1}{3} = 4\\dfrac{1}{3}$."
+      }
+    ]
+  },
+  "m7-3-2-c": {
+    "lessonId": "m7-3-2",
+    "title": "Adding and Subtracting Mixed Numbers, Part 3: Subtracting Mixed Numbers",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "No regrouping",
+        "t": 19.28
+      },
+      {
+        "title": "When the fraction is too small",
+        "t": 62.06
+      },
+      {
+        "title": "Regrouping in numbers",
+        "t": 115.926
+      },
+      {
+        "title": "Watch out",
+        "t": 151.227
+      },
+      {
+        "title": "Your turn",
+        "t": 187.595
+      },
+      {
+        "title": "Summary",
+        "t": 223.098
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-2-c:q",
+        "t": 195.057,
+        "prompt": "Find $4\\dfrac{1}{5} - 1\\dfrac{3}{5}$.",
+        "choices": [
+          "$3\\dfrac{2}{5}$",
+          "$2\\dfrac{2}{5}$",
+          "$2\\dfrac{3}{5}$",
+          "$5\\dfrac{4}{5}$"
+        ],
+        "answer": 2,
+        "working": "Regroup: $4\\dfrac{1}{5} = 3\\dfrac{6}{5}$. Then $3 - 1 = 2$ and $\\dfrac{6}{5} - \\dfrac{3}{5} = \\dfrac{3}{5}$, so the answer is $2\\dfrac{3}{5}$."
+      }
+    ]
+  },
+  "m7-3-2-d": {
+    "lessonId": "m7-3-2",
+    "title": "Adding and Subtracting Mixed Numbers, Part 4: Harder Regrouping",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subtracting from a whole number",
+        "t": 21.429
+      },
+      {
+        "title": "Check by counting up",
+        "t": 50.745
+      },
+      {
+        "title": "Unlike denominators and regrouping",
+        "t": 76.121
+      },
+      {
+        "title": "Another way: improper fractions",
+        "t": 129.137
+      },
+      {
+        "title": "Your turn",
+        "t": 177.146
+      },
+      {
+        "title": "Summary",
+        "t": 208.795
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-2-d:q",
+        "t": 183.61,
+        "prompt": "Find $5 - 2\\dfrac{3}{8}$.",
+        "choices": [
+          "$3\\dfrac{3}{8}$",
+          "$2\\dfrac{5}{8}$",
+          "$3\\dfrac{5}{8}$",
+          "$2\\dfrac{3}{8}$"
+        ],
+        "answer": 1,
+        "working": "Regroup: $5 = 4\\dfrac{8}{8}$. Then $4 - 2 = 2$ and $\\dfrac{8}{8} - \\dfrac{3}{8} = \\dfrac{5}{8}$, so the answer is $2\\dfrac{5}{8}$."
+      }
+    ]
+  },
+  "m7-3-3": {
+    "lessonId": "m7-3-3",
+    "title": "Solving Fraction Problems, Part 1: Making a Plan",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plan",
+        "t": 17.911
+      },
+      {
+        "title": "Benchmarks",
+        "t": 51.558
+      },
+      {
+        "title": "The walk to the arena",
+        "t": 90.112
+      },
+      {
+        "title": "Watch out",
+        "t": 146.281
+      },
+      {
+        "title": "Your turn",
+        "t": 188.871
+      },
+      {
+        "title": "Summary",
+        "t": 227.519
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-3:q",
+        "t": 200.403,
+        "prompt": "A jug holds $\\dfrac{3}{4}$ L of juice. Sam drinks $\\dfrac{1}{3}$ L. How much juice is left?",
+        "choices": [
+          "$\\dfrac{5}{12}$ L",
+          "$1\\dfrac{1}{12}$ L",
+          "$\\dfrac{1}{6}$ L",
+          "$\\dfrac{1}{2}$ L"
+        ],
+        "answer": 0,
+        "working": "\"Left\" means subtract: $\\dfrac{3}{4} - \\dfrac{1}{3} = \\dfrac{9}{12} - \\dfrac{4}{12} = \\dfrac{5}{12}$ L."
+      }
+    ]
+  },
+  "m7-3-3-b": {
+    "lessonId": "m7-3-3",
+    "title": "Solving Fraction Problems, Part 2: Problems with Mixed Numbers",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "On the trail",
+        "t": 21.678
+      },
+      {
+        "title": "Calculate and check",
+        "t": 61.785
+      },
+      {
+        "title": "Practice time",
+        "t": 109.956
+      },
+      {
+        "title": "Your turn",
+        "t": 168.047
+      },
+      {
+        "title": "Summary",
+        "t": 206.682
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-3-b:q",
+        "t": 179.407,
+        "prompt": "A ribbon is $4\\dfrac{1}{2}$ m long. Lee cuts off $1\\dfrac{2}{3}$ m. How much ribbon is left?",
+        "choices": [
+          "$3\\dfrac{1}{6}$ m",
+          "$6\\dfrac{1}{6}$ m",
+          "$2\\dfrac{1}{6}$ m",
+          "$2\\dfrac{5}{6}$ m"
+        ],
+        "answer": 3,
+        "working": "Subtract: $4\\dfrac{1}{2} - 1\\dfrac{2}{3} = 4\\dfrac{3}{6} - 1\\dfrac{4}{6} = 3\\dfrac{9}{6} - 1\\dfrac{4}{6} = 2\\dfrac{5}{6}$ m."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
