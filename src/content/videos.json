@@ -10107,6 +10107,151 @@
       }
     ]
   },
+  "m6-10-2": {
+    "lessonId": "m6-10-2",
+    "title": "Volume of Rectangular Prisms, Part 1: From Cubes to a Formula",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A box shape",
+        "t": 20.797
+      },
+      {
+        "title": "Layers of cubes",
+        "t": 44.537
+      },
+      {
+        "title": "The formula",
+        "t": 79.096
+      },
+      {
+        "title": "The volume of a brick",
+        "t": 119.418
+      },
+      {
+        "title": "Your turn",
+        "t": 154.257
+      },
+      {
+        "title": "Summary",
+        "t": 187.646
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-2:q",
+        "t": 165.373,
+        "prompt": "A box is $7\\text{ cm}$ long, $2\\text{ cm}$ wide and $3\\text{ cm}$ high. What is its volume?",
+        "choices": [
+          "$12\\text{ cm}^3$",
+          "$42\\text{ cm}^2$",
+          "$42\\text{ cm}^3$",
+          "$14\\text{ cm}^3$"
+        ],
+        "answer": 2,
+        "working": "$V = 7 \\times 2 \\times 3 = 14 \\times 3 = 42$, so the volume is $42\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m6-10-2-b": {
+    "lessonId": "m6-10-2",
+    "title": "Volume of Rectangular Prisms, Part 2: Base Area Times Height",
+    "duration": 181,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A storage shed",
+        "t": 20.17
+      },
+      {
+        "title": "The rule",
+        "t": 56.104
+      },
+      {
+        "title": "A juice box",
+        "t": 84.724
+      },
+      {
+        "title": "Your turn",
+        "t": 117.003
+      },
+      {
+        "title": "Summary",
+        "t": 154.535
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-2-b:q",
+        "t": 129.098,
+        "prompt": "A box has a base with an area of $35\\text{ cm}^2$. It is $4\\text{ cm}$ high. What is its volume?",
+        "choices": [
+          "$39\\text{ cm}^3$",
+          "$140\\text{ cm}^2$",
+          "$70\\text{ cm}^3$",
+          "$140\\text{ cm}^3$"
+        ],
+        "answer": 3,
+        "working": "$V = \\text{area of the base} \\times h = 35 \\times 4 = 140$, so $140\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m6-10-2-c": {
+    "lessonId": "m6-10-2",
+    "title": "Volume of Rectangular Prisms, Part 3: Finding a Missing Dimension",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A missing height",
+        "t": 17.164
+      },
+      {
+        "title": "Watch out",
+        "t": 60.602
+      },
+      {
+        "title": "A missing length",
+        "t": 96.569
+      },
+      {
+        "title": "Your turn",
+        "t": 129.43
+      },
+      {
+        "title": "Summary",
+        "t": 162.834
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-2-c:q",
+        "t": 142.269,
+        "prompt": "A box has a volume of $90\\text{ cm}^3$. It is $5\\text{ cm}$ long and $3\\text{ cm}$ wide. How high is it?",
+        "choices": [
+          "$6\\text{ cm}$",
+          "$18\\text{ cm}$",
+          "$30\\text{ cm}$",
+          "$82\\text{ cm}$"
+        ],
+        "answer": 0,
+        "working": "Base: $5 \\times 3 = 15$. Height: $90 \\div 15 = 6\\text{ cm}$. Check: $5 \\times 3 \\times 6 = 90$ ✓"
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
