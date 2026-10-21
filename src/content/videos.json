@@ -7073,6 +7073,167 @@
       }
     ]
   },
+  "m6-4-1-d": {
+    "lessonId": "m6-4-1",
+    "title": "Fractions as Quotients, Part 4: Fractions as Decimals",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Juice in jugs",
+        "t": 15.847
+      },
+      {
+        "title": "Watch out",
+        "t": 81.241
+      },
+      {
+        "title": "Comparing shares",
+        "t": 126.458
+      },
+      {
+        "title": "Your turn",
+        "t": 184.768
+      },
+      {
+        "title": "Summary",
+        "t": 222.907
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-1-d:q",
+        "t": 194.203,
+        "prompt": "$9$ m of ribbon is cut into $4$ equal pieces. How long is each piece?",
+        "choices": [
+          "$2.25$ m",
+          "$9.4$ m",
+          "$0.44$ m",
+          "$2.5$ m"
+        ],
+        "answer": 0,
+        "working": "$9 \\div 4 = 2$ R $1$. Bring down a zero: $10 \\div 4 = 2$ R $2$. Bring down another: $20 \\div 4 = 5$. So each piece is $2.25$ m."
+      }
+    ]
+  },
+  "m6-4-2": {
+    "lessonId": "m6-4-2",
+    "title": "Adding and Subtracting Fractions, Part 1: Common Denominators",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same-size pieces",
+        "t": 23.244
+      },
+      {
+        "title": "Common denominator",
+        "t": 64.261
+      },
+      {
+        "title": "Different-size pieces",
+        "t": 84.054
+      },
+      {
+        "title": "Equivalent fractions",
+        "t": 109.261
+      },
+      {
+        "title": "Two thirds in twelfths",
+        "t": 153.799
+      },
+      {
+        "title": "Watch out",
+        "t": 177.548
+      },
+      {
+        "title": "Your turn",
+        "t": 202.828
+      },
+      {
+        "title": "Summary",
+        "t": 238.508
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-2:q",
+        "t": 211.822,
+        "prompt": "Which fraction is equal to $\\dfrac{3}{4}$ and has a denominator of $20$?",
+        "choices": [
+          "$\\dfrac{3}{20}$",
+          "$\\dfrac{12}{20}$",
+          "$\\dfrac{7}{20}$",
+          "$\\dfrac{15}{20}$"
+        ],
+        "answer": 3,
+        "working": "$4 \\times 5 = 20$, so multiply the numerator by $5$ as well: $\\tfrac{3}{4} = \\tfrac{3 \\times 5}{4 \\times 5} = \\tfrac{15}{20}$."
+      }
+    ]
+  },
+  "m6-4-2-b": {
+    "lessonId": "m6-4-2",
+    "title": "Adding and Subtracting Fractions, Part 2: Related Denominators",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Related denominators",
+        "t": 18.751
+      },
+      {
+        "title": "Quarters and twelfths",
+        "t": 53.644
+      },
+      {
+        "title": "Lowest terms",
+        "t": 90.444
+      },
+      {
+        "title": "Subtracting",
+        "t": 123.856
+      },
+      {
+        "title": "Watch out",
+        "t": 158.916
+      },
+      {
+        "title": "Your turn",
+        "t": 197.994
+      },
+      {
+        "title": "Summary",
+        "t": 228.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-2-b:q",
+        "t": 204.056,
+        "prompt": "Find $\\dfrac{1}{3} + \\dfrac{4}{9}$.",
+        "choices": [
+          "$\\dfrac{5}{12}$",
+          "$\\dfrac{5}{9}$",
+          "$\\dfrac{7}{9}$",
+          "$\\dfrac{7}{12}$"
+        ],
+        "answer": 2,
+        "working": "$3 \\times 3 = 9$, so $\\tfrac{1}{3} = \\tfrac{3}{9}$. Then $\\tfrac{3}{9} + \\tfrac{4}{9} = \\tfrac{7}{9}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
