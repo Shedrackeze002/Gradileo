@@ -11142,6 +11142,61 @@
       }
     ]
   },
+  "m7-1-1": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 1: What Divisible Means",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sharing into equal groups",
+        "t": 24.233
+      },
+      {
+        "title": "Something left over",
+        "t": 54.008
+      },
+      {
+        "title": "Divisible",
+        "t": 79.943
+      },
+      {
+        "title": "Factors",
+        "t": 112.963
+      },
+      {
+        "title": "Divisibility rules",
+        "t": 155.228
+      },
+      {
+        "title": "Your turn",
+        "t": 204.466
+      },
+      {
+        "title": "Summary",
+        "t": 233.362
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1:q",
+        "t": 211.381,
+        "prompt": "Which of these numbers is a **factor** of $24$?",
+        "choices": [
+          "$5$",
+          "$7$",
+          "$8$",
+          "$9$"
+        ],
+        "answer": 2,
+        "working": "$24 \\div 8 = 3$ with nothing left over, so $8$ is a factor of $24$. $24 \\div 5$ leaves $4$ over, so $5$ is not a factor."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
