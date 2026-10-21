@@ -7819,6 +7819,61 @@
       }
     ]
   },
+  "m6-5-3": {
+    "lessonId": "m6-5-3",
+    "title": "Percent of a Number, Part 1: Percent Means Out of 100",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Out of 100",
+        "t": 15.841
+      },
+      {
+        "title": "A quarter of the grid",
+        "t": 50.966
+      },
+      {
+        "title": "Friendly percents",
+        "t": 82.183
+      },
+      {
+        "title": "25% of 32",
+        "t": 114.137
+      },
+      {
+        "title": "75% of 40",
+        "t": 141.759
+      },
+      {
+        "title": "Your turn",
+        "t": 165.323
+      },
+      {
+        "title": "Summary",
+        "t": 196.552
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-3:q",
+        "t": 171.495,
+        "prompt": "Find $20\\%$ of $45$.",
+        "choices": [
+          "$25$",
+          "$900$",
+          "$9$",
+          "$4.5$"
+        ],
+        "answer": 2,
+        "working": "$20\\% = \\tfrac{1}{5}$, and $\\tfrac15$ of $45$ is $45 \\div 5 = 9$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
