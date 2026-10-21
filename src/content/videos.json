@@ -8879,6 +8879,53 @@
       }
     ]
   },
+  "m6-8-1": {
+    "lessonId": "m6-8-1",
+    "title": "Points and Polygons in the Cartesian Plane, Part 1: Axes and the Origin",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two number lines",
+        "t": 19.116
+      },
+      {
+        "title": "Negative numbers on the axes",
+        "t": 74.484
+      },
+      {
+        "title": "Which axis is which?",
+        "t": 103.152
+      },
+      {
+        "title": "Your turn",
+        "t": 133.259
+      },
+      {
+        "title": "Summary",
+        "t": 163.216
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-1:q",
+        "t": 139.767,
+        "prompt": "Where is $-4$ on the $x$-axis?",
+        "choices": [
+          "$4$ units above the origin",
+          "$4$ units right of the origin",
+          "$4$ units below the origin",
+          "$4$ units left of the origin"
+        ],
+        "answer": 3,
+        "working": "On the $x$-axis, negative numbers are to the left of $0$. So $-4$ is $4$ units left of the origin."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

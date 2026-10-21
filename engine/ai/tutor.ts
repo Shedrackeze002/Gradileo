@@ -236,7 +236,10 @@ export function mathToWords(tex: string): string {
         i = j;
       } else if (['text', 'mathrm', 'textbf', 'mathbf', 'operatorname', 'textit', 'overline', 'overrightarrow', 'vec', 'hat', 'boxed', 'cancel', 'bcancel', 'xcancel'].includes(name)) {
         const [a, j] = group(tex, i);
-        out += name.startsWith('text') || name === 'mathrm' || name === 'operatorname' ? ` ${a} ` : ` ${mathToWords(a)} `;
+        // A unit written in maths ("5\text{ cm}", "\text{in}") is said in full: in maths, "in" is inches.
+        const unit = (name === 'text' || name === 'mathrm') && UNITS[a.trim()];
+        if (unit) out += ` ${/(?:^|\s)(?:1|one)\s*$/.test(out) ? unit[0] : unit[1]} `;
+        else out += name.startsWith('text') || name === 'mathrm' || name === 'operatorname' ? ` ${a} ` : ` ${mathToWords(a)} `;
         i = j;
       } else if (name === '%') out += ' percent ';
       else if (name === '$') out += '$';
@@ -284,6 +287,55 @@ export function mathToWords(tex: string): string {
   return out.replace(/\s+/g, ' ').replace(/ ;/g, ';').trim();
 }
 
+/** Units the voice would read letter by letter ("3 m" as "3 M"), said in full: singular, plural. */
+const UNITS: Record<string, [string, string]> = {
+  mm: ['millimetre', 'millimetres'],
+  cm: ['centimetre', 'centimetres'],
+  m: ['metre', 'metres'],
+  km: ['kilometre', 'kilometres'],
+  mg: ['milligram', 'milligrams'],
+  g: ['gram', 'grams'],
+  kg: ['kilogram', 'kilograms'],
+  mL: ['millilitre', 'millilitres'],
+  ml: ['millilitre', 'millilitres'],
+  L: ['litre', 'litres'],
+  s: ['second', 'seconds'],
+  min: ['minute', 'minutes'],
+  h: ['hour', 'hours'],
+  in: ['inch', 'inches'],
+  ft: ['foot', 'feet'],
+  yd: ['yard', 'yards'],
+  mi: ['mile', 'miles'],
+  lb: ['pound', 'pounds'],
+  oz: ['ounce', 'ounces'],
+  'km/h': ['kilometre per hour', 'kilometres per hour'],
+  'm/s': ['metre per second', 'metres per second'],
+  mph: ['mile per hour', 'miles per hour'],
+};
+const UNIT_WORDS = [...new Set(Object.values(UNITS).flat())].sort((a, b) => b.length - a.length).join('|');
+
+/**
+ * Units in words, for the voice: "3 m" is "3 metres", "−3 °C" and "3 degrees C" are "degrees
+ * Celsius", "12 cm²" and "12 centimetres squared" are "12 square centimetres", "6 ft 4 in" is
+ * "6 feet 4 inches". In prose "in" stays the word "in" ("over 8 in a day"); maths says inches.
+ */
+export function sayUnits(text: string): string {
+  const said = (n: string, abbr: string) => (/^(1|one)$/.test(n) ? UNITS[abbr][0] : UNITS[abbr][1]);
+  return text
+    .replace(/(\d) ?° ?C\b/g, '$1 degrees Celsius')
+    .replace(/(\d) ?° ?F\b/g, '$1 degrees Fahrenheit')
+    .replace(/\bdegrees? C\b/g, 'degrees Celsius')
+    .replace(/\bdegrees? F\b/g, 'degrees Fahrenheit')
+    .replace(/(\d) ?°/g, '$1 degrees')
+    .replace(/\b(\d+) ft (\d+) in\b/g, (_, f: string, i: string) => `${f} ${said(f, 'ft')} ${i} ${said(i, 'in')}`)
+    .replace(/(\d(?:[\d.,]*\d)?) (mm|cm|km|mg|kg|mL|ml|km\/h|m\/s|mph|ft|yd|mi|lb|oz|min|m|g|L|h|s)(²|³)?(?![\w/²³])/g, (_, n: string, abbr: string, power?: string) =>
+      `${n} ${power ? (power === '²' ? 'square ' : 'cubic ') : ''}${said(n, abbr)}`,
+    )
+    .replace(new RegExp(`\\b(${UNIT_WORDS}) squared\\b`, 'g'), 'square $1')
+    .replace(new RegExp(`\\b(${UNIT_WORDS}) cubed\\b`, 'g'), 'cubic $1')
+    .replace(new RegExp(`\\b(${UNIT_WORDS}) over (hour|minute|second)s?\\b`, 'g'), '$1 per $2');
+}
+
 /** What the voice says for working set out in columns, which it cannot read out. */
 export const WORKING = 'Look at how the working is set out.';
 
@@ -309,15 +361,15 @@ export function speakable(md: string): string {
     .replace(/^\s{0,3}>\s?/gm, '')
     .replace(/^\s*(?:[-*+]|\d+[.)])\s+/gm, '')
     .replace(/(\*\*|__|\*|`)/g, '');
-  // "4 572 306" is one number; with its spaces the voice says three.
-  return joinThousands(
+  // "4 572 306" is one number; with its spaces the voice says three. Units are said in full.
+  return sayUnits(joinThousands(
     s
       .split(/\n{2,}/)
       .map((p) => p.replace(/\s+/g, ' ').trim())
       .filter(Boolean)
       .map((p) => (/[.!?:;]$/.test(p) ? p : `${p}.`))
       .join(' '),
-  );
+  ));
 }
 
 // ---------------------------------------------------------------- offline narration
@@ -491,8 +543,8 @@ function cleanBeat(v: unknown): string {
   // A model sometimes starts a line with the step's tag ("[VIDEO] Watch…").
   const t = text(v, 600).replace(/^\[(YOUR TURN|VIDEO|FIGURE)\]\s*/i, '');
   if (t.includes('$') || /[*_#|`]/.test(t)) return speakable(t);
-  if (/\\[a-zA-Z]/.test(t)) return mathToWords(t);
-  return t;
+  if (/\\[a-zA-Z]/.test(t)) return sayUnits(mathToWords(t));
+  return sayUnits(t);
 }
 
 /** What is wrong with lines written for a slide, checked against the slide's own words (tutorCheck.ts); empty when nothing is. */
