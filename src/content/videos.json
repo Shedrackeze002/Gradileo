@@ -10495,6 +10495,261 @@
       }
     ]
   },
+  "m6-11-1-e": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 5: Points on a Graph",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 19.297
+      },
+      {
+        "title": "Plotting the points",
+        "t": 50.398
+      },
+      {
+        "title": "Two ways to show a function",
+        "t": 86.834
+      },
+      {
+        "title": "Watch out",
+        "t": 103.809
+      },
+      {
+        "title": "Your turn",
+        "t": 130.024
+      },
+      {
+        "title": "Summary",
+        "t": 159.107
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1-e:q",
+        "t": 141.298,
+        "prompt": "A row of the bean plant’s table says: $3$ weeks, $13\\text{ cm}$. Which point shows this row on the graph?",
+        "choices": [
+          "$(13,\\ 3)$",
+          "$(3,\\ 13)$",
+          "$(3,\\ 3)$",
+          "$(13,\\ 13)$"
+        ],
+        "answer": 1,
+        "working": "The independent variable (weeks) goes first and the dependent variable (height) second: $(3,\\ 13)$."
+      }
+    ]
+  },
+  "m6-11-2": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 1: From Words to an Equation",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An equation for a function",
+        "t": 18.385
+      },
+      {
+        "title": "A number next to a letter",
+        "t": 50.733
+      },
+      {
+        "title": "Words and equations",
+        "t": 81.879
+      },
+      {
+        "title": "Writing an equation",
+        "t": 104.907
+      },
+      {
+        "title": "Your turn",
+        "t": 130.665
+      },
+      {
+        "title": "Summary",
+        "t": 162.153
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2:q",
+        "t": 140.802,
+        "prompt": "To find $y$, multiply $x$ by $2$, then add $9$. Which equation shows this rule?",
+        "choices": [
+          "$y = 9x + 2$",
+          "$y = x + 11$",
+          "$y = 2x + 9$",
+          "$y = 2 + 9$"
+        ],
+        "answer": 2,
+        "working": "Multiply $x$ by $2$: $2x$. Then add $9$: $y = 2x + 9$."
+      }
+    ]
+  },
+  "m6-11-2-b": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 2: From a Table to an Equation",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Step 1: what to multiply by",
+        "t": 17.459
+      },
+      {
+        "title": "Step 2: what to add",
+        "t": 49.011
+      },
+      {
+        "title": "Check another column",
+        "t": 70.736
+      },
+      {
+        "title": "Watch out",
+        "t": 92.398
+      },
+      {
+        "title": "Your turn",
+        "t": 121.284
+      },
+      {
+        "title": "Summary",
+        "t": 161.424
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2-b:q",
+        "t": 135.47,
+        "prompt": "A table of values has $x = 0,\\ 1,\\ 2,\\ 3$ and $y = 2,\\ 5,\\ 8,\\ 11$. Which equation fits the table?",
+        "choices": [
+          "$y = 3x + 2$",
+          "$y = x + 3$",
+          "$y = 2x + 3$",
+          "$y = 3x$"
+        ],
+        "answer": 0,
+        "working": "$y$ goes up by $3$, so multiply $x$ by $3$. When $x = 0$, $y = 2$, so add $2$: $y = 3x + 2$. Check: $3 \\times 3 + 2 = 11$ ✓"
+      }
+    ]
+  },
+  "m6-11-2-c": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 3: Finding the Dependent Value",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substituting",
+        "t": 16.851
+      },
+      {
+        "title": "Finding y",
+        "t": 43.556
+      },
+      {
+        "title": "The bean plant",
+        "t": 70.195
+      },
+      {
+        "title": "Watch out",
+        "t": 100.732
+      },
+      {
+        "title": "Your turn",
+        "t": 128.273
+      },
+      {
+        "title": "Summary",
+        "t": 156.043
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2-c:q",
+        "t": 137.063,
+        "prompt": "For $y = 6x + 1$, find $y$ when $x = 7$.",
+        "choices": [
+          "$13$",
+          "$48$",
+          "$42$",
+          "$43$"
+        ],
+        "answer": 3,
+        "working": "$y = 6 \\times 7 + 1 = 42 + 1 = 43$."
+      }
+    ]
+  },
+  "m6-11-2-d": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 4: Finding the Independent Value",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three strategies",
+        "t": 16.304
+      },
+      {
+        "title": "Working backwards",
+        "t": 46.041
+      },
+      {
+        "title": "Guess and check",
+        "t": 88.078
+      },
+      {
+        "title": "Extend the table",
+        "t": 123.644
+      },
+      {
+        "title": "Your turn",
+        "t": 158.02
+      },
+      {
+        "title": "Summary",
+        "t": 190.943
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2-d:q",
+        "t": 167.984,
+        "prompt": "For $y = 3x + 2$, which value of $x$ gives $y = 26$?",
+        "choices": [
+          "$80$",
+          "$8$",
+          "$28$",
+          "$24$"
+        ],
+        "answer": 1,
+        "working": "Undo “add 2”: $26 - 2 = 24$. Undo “multiply by 3”: $24 \\div 3 = 8$. Check: $3 \\times 8 + 2 = 26$ ✓"
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
