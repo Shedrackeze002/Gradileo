@@ -245,7 +245,9 @@ videos, so a word fixed for the videos is fixed for the tutor as well. The *Tuto
 runs it for every course and publishes the files; see docs/SETUP.md, section 3.4. To try one
 lesson here: `npx tsx --tsconfig tsconfig.json video/tools/tutor-voice.ts m10c-1-1 --out
 video/out/tutor` (MiniMax writes the lines when `MINIMAX_API_KEY` is set; otherwise the tutor
-reads each step from the slide).
+reads each step from the slide). A slide whose MiniMax lines fail the checks in
+`engine/ai/tutorCheck.ts` (a number the slide does not have, a wrong calculation, "and" inside a
+whole number, a line said one step early or late) is read from the slide, and the log names it.
 
 ## Uploading to YouTube
 

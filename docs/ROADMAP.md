@@ -571,7 +571,16 @@ items ship or decisions change.
   writes the lines; until then the tutor reads each step from the slide, and the next run with the
   key rewrites and re-records those slides. First run (21 October): 13 courses recorded whole; five
   lessons in Math 9, 20-3 and 31 have a long list or calculation the voice could not say in one go,
-  so such lines are now said in pieces and those lessons are recorded on the next run. The site
+  so such lines are now said in pieces and those lessons are recorded on the next run. The owner
+  added `MINIMAX_API_KEY` the same day. A test run on Math 5 showed MiniMax's lines read like a
+  teacher but slip: a dropped "thousandths", "one hundred and three divided by six leaves no
+  remainder" (618 ÷ 6), "and" inside whole numbers (the lessons keep "and" for the decimal point),
+  and in about one slide in ten every line said one step early. So each slide's lines are now
+  checked against the slide (`engine/ai/tutorCheck.ts`) and a slide that fails is read from the
+  slide; the prompt numbers the steps and asks for one beat per numbered step, a few slides per
+  request. The slide's own wording was fixed as well: big numbers written with spaces
+  ("4 572 306") were said as several numbers, and working set out in columns was read out as
+  "array r 4 1 5…"; now a big number is said whole and column working is pointed to. The site
   serves files whole, and Safari only plays sound it can fetch in parts, so the tutor downloads a
   lesson's recording once and plays it from memory. Next: speak the tutor's answers to questions too
   (today they are written in the chat); record approved teacher edits of a lesson; let the tutor

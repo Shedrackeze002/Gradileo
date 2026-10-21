@@ -219,7 +219,9 @@ The AI tutor (`src/features/tutor/TutorMode.tsx`) speaks with the videos' voice,
 time: Kokoro is far too slow to run in a browser (about four times slower than real time).
 `video/tools/tutor-voice.ts` builds each lesson's slides the way the app does for a self-paced
 student (`video/lib/tutor-lessons.ts`), has MiniMax write a line for every step (`writeTutorScript`),
-voices the lines and the tutor's set phrases (`TUTOR_PHRASES`) into one MP3 per lesson, and writes a
+checks each slide's lines against the slide (`engine/ai/tutorCheck.ts`: every number said is on the
+slide, every calculation said is right, no "and" inside a whole number, each line matches its own
+step rather than a neighbour) and reads a slide that fails from the slide itself, voices the lines and the tutor's set phrases (`TUTOR_PHRASES`) into one MP3 per lesson, and writes a
 manifest saying where each line is, keyed by a hash of what each slide shows (`tutorSlideKey`). The
 Tutor voice workflow publishes them per course as release files and the deploy copies them to
 `/tutor/`. The app fetches `tutor/<lessonId>.json` (`src/lib/speech.ts`), plays a line by seeking

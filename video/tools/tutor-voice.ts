@@ -21,7 +21,9 @@ import {
   hash53,
   offlineScript,
   parseTutorVoice,
+  slideProblems,
   TUTOR_PHRASES,
+  TUTOR_PROMPT_VERSION,
   TUTOR_VOICE_VERSION,
   tutorSlideKey,
   writeTutorScript,
@@ -58,14 +60,15 @@ async function writeBeats(lessonId: string, ai: MiniMaxConfig | null, previous: 
   const missing: TutorSlide[] = [];
   for (const s of slides) {
     const key = tutorSlideKey(s);
-    const was = previous?.slides[key];
-    // MiniMax's lines are kept; lines read from the slide cost nothing to make again (and are
-    // written by MiniMax once it is available).
-    if (was?.ai && was.beats.length === s.steps.length) out.set(key, { beats: was.beats, ai: true });
+    const was = previous?.prompt === TUTOR_PROMPT_VERSION ? previous.slides[key] : undefined;
+    // MiniMax's lines are kept while the prompt is the same and they still pass the checks; lines
+    // read from the slide cost nothing to make again (and are written by MiniMax once it can).
+    if (was?.ai && was.beats.length === s.steps.length && !slideProblems(s, title, was.beats).length) out.set(key, { beats: was.beats, ai: true });
     else missing.push(s);
   }
-  // Two requests at a time per lesson, and a pause before trying again, to stay inside MiniMax's limits.
-  const queue = chunkSlides(missing);
+  // A few slides a request, so the model keeps its place from step to step; two requests at a time
+  // per lesson, and a pause before trying again, to stay inside MiniMax's limits.
+  const queue = chunkSlides(missing, 4);
   const next = async (): Promise<void> => {
     const run = queue.shift();
     if (!run) return;
@@ -78,7 +81,12 @@ async function writeBeats(lessonId: string, ai: MiniMaxConfig | null, previous: 
       if (res.source === 'minimax') ((script = res.script), (written = true));
       else console.error(`  ${lessonId}: MiniMax failed (${res.error ?? 'no reason'}), attempt ${attempt + 1}`);
     }
-    run.forEach((s, i) => out.set(tutorSlideKey(s), { beats: script.slides[i].beats, ai: written }));
+    run.forEach((s, i) => {
+      const { beats, rejected } = script.slides[i];
+      // A slide whose lines failed the checks is read from the slide, and written again next time.
+      if (written && rejected) console.error(`  ${lessonId}: "${s.title}" read from the slide (${rejected.join('; ')})`);
+      out.set(tutorSlideKey(s), { beats, ai: written && !rejected });
+    });
     return next();
   };
   await Promise.all([next(), next()]);
@@ -138,7 +146,7 @@ async function record(lessonId: string, beats: Map<string, { beats: string[]; ai
   writeWav(wav, { rate, samples } satisfies Pcm);
   execFileSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-i', wav, '-ac', '1', '-ar', String(rate), '-c:a', 'libmp3lame', '-b:a', BITRATE, path.join(outDir, audio)]);
   rmSync(wav);
-  const voice: TutorVoice = { v: TUTOR_VOICE_VERSION, lessonId, audio, voice: { name: TUTOR_VOICE.name, speed: TUTOR_VOICE.speed }, hash, slides: manifestSlides, phrases };
+  const voice: TutorVoice = { v: TUTOR_VOICE_VERSION, lessonId, audio, voice: { name: TUTOR_VOICE.name, speed: TUTOR_VOICE.speed }, hash, slides: manifestSlides, phrases, prompt: TUTOR_PROMPT_VERSION };
   writeFileSync(path.join(outDir, `${lessonId}.json`), JSON.stringify(voice));
   return voice;
 }
