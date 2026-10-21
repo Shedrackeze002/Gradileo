@@ -9856,6 +9856,57 @@
       }
     ]
   },
+  "m6-9-3-c": {
+    "lessonId": "m6-9-3",
+    "title": "Area of Composite Shapes, Part 3: Taking Away a Part",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A wall with an opening",
+        "t": 16.405
+      },
+      {
+        "title": "The whole, minus the missing part",
+        "t": 45.401
+      },
+      {
+        "title": "A pond in a lawn",
+        "t": 80.166
+      },
+      {
+        "title": "Add or subtract?",
+        "t": 118.528
+      },
+      {
+        "title": "Your turn",
+        "t": 140.225
+      },
+      {
+        "title": "Summary",
+        "t": 185.905
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-3-c:q",
+        "t": 156.028,
+        "prompt": "A rectangular sign is $8\\text{ m}$ long and $5\\text{ m}$ tall. A triangle with a base of $4\\text{ m}$ and a height of $3\\text{ m}$ is cut out of it. What area is left?",
+        "choices": [
+          "$34\\text{ m}^2$",
+          "$46\\text{ m}^2$",
+          "$28\\text{ m}^2$",
+          "$37\\text{ m}^2$"
+        ],
+        "answer": 0,
+        "working": "Whole: $8 \\times 5 = 40$. Triangle: $(4 \\times 3) \\div 2 = 6$. Left: $40 - 6 = 34\\text{ m}^2$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
