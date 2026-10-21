@@ -6178,6 +6178,65 @@
       }
     ]
   },
+  "m6-2-3-d": {
+    "lessonId": "m6-2-3",
+    "title": "Dividing Decimal and Natural Numbers, Part 4: Estimating and Rounding Quotients",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Friendly numbers",
+        "t": 17.756
+      },
+      {
+        "title": "Is it reasonable?",
+        "t": 39.686
+      },
+      {
+        "title": "Finding the quotient",
+        "t": 71.463
+      },
+      {
+        "title": "Rounding a quotient",
+        "t": 115.673
+      },
+      {
+        "title": "Divide to the hundredths",
+        "t": 136.366
+      },
+      {
+        "title": "Round to the nearest tenth",
+        "t": 199.964
+      },
+      {
+        "title": "Your turn",
+        "t": 234.189
+      },
+      {
+        "title": "Summary",
+        "t": 264.472
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-3-d:q",
+        "t": 242.063,
+        "prompt": "Find $58 \\div 7$ to the nearest tenth.",
+        "choices": [
+          "$8.2$",
+          "$8.28$",
+          "$8.4$",
+          "$8.3$"
+        ],
+        "answer": 3,
+        "working": "Divide to the hundredths: $58 \\div 7 = 8.28\\ldots$ The hundredths digit is $8$, which is $5$ or more, so round the tenths up: $8.3$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
