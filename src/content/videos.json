@@ -9907,6 +9907,57 @@
       }
     ]
   },
+  "m6-10-1": {
+    "lessonId": "m6-10-1",
+    "title": "Volume and Cubic Units, Part 1: What Is Volume?",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is volume?",
+        "t": 16.723
+      },
+      {
+        "title": "Measuring with cubes",
+        "t": 46.741
+      },
+      {
+        "title": "Counting cubes",
+        "t": 84.359
+      },
+      {
+        "title": "Same cubes, same volume",
+        "t": 114.45
+      },
+      {
+        "title": "Your turn",
+        "t": 137.985
+      },
+      {
+        "title": "Summary",
+        "t": 170.552
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-1:q",
+        "t": 153.063,
+        "prompt": "A model is four stacks of linking cubes in a row. The stacks have $3$, $2$, $4$ and $1$ cubes, and every cube can be seen. What is the volume of the model?",
+        "choices": [
+          "$4$ cubes",
+          "$24$ cubes",
+          "$10$ cubes",
+          "$9$ cubes"
+        ],
+        "answer": 2,
+        "working": "Add the stacks: $3 + 2 + 4 + 1 = 10$ cubes."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
