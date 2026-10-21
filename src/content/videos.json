@@ -6288,6 +6288,214 @@
       }
     ]
   },
+  "m6-2-4-b": {
+    "lessonId": "m6-2-4",
+    "title": "Multiplication and Division Problems, Part 2: Finding One of Something",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unit price",
+        "t": 18.708
+      },
+      {
+        "title": "Price of one juice box",
+        "t": 49.306
+      },
+      {
+        "title": "Cutting a rope",
+        "t": 100.238
+      },
+      {
+        "title": "Your turn",
+        "t": 153.108
+      },
+      {
+        "title": "Summary",
+        "t": 189.066
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-4-b:q",
+        "t": 162.873,
+        "prompt": "A pack of $8$ pencils costs \\$3.60. What is the unit price?",
+        "choices": [
+          "\\$28.80",
+          "\\$0.45",
+          "\\$4.50",
+          "\\$0.40"
+        ],
+        "answer": 1,
+        "working": "The unit price is the total price divided by the number of items: $3.60 \\div 8 = 0.45$. Check: $0.45 \\times 8 = 3.60$."
+      }
+    ]
+  },
+  "m6-2-4-c": {
+    "lessonId": "m6-2-4",
+    "title": "Multiplication and Division Problems, Part 3: Two-Step Problems",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Make a plan",
+        "t": 18.141
+      },
+      {
+        "title": "Step 1: multiply",
+        "t": 50.691
+      },
+      {
+        "title": "Step 2: subtract",
+        "t": 110.665
+      },
+      {
+        "title": "Sharing a cost",
+        "t": 154.59
+      },
+      {
+        "title": "Your turn",
+        "t": 245.076
+      },
+      {
+        "title": "Summary",
+        "t": 283.463
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-4-c:q",
+        "t": 257.486,
+        "prompt": "Four friends share a \\$25.90 bill equally. How much does each friend pay, to the nearest cent?",
+        "choices": [
+          "\\$6.48",
+          "\\$6.47",
+          "\\$6.40",
+          "\\$103.60"
+        ],
+        "answer": 0,
+        "working": "Divide to the thousandths: $25.90 \\div 4 = 6.475$. The thousandths digit is $5$, so round up: \\$6.48."
+      }
+    ]
+  },
+  "m6-2-4-d": {
+    "lessonId": "m6-2-4",
+    "title": "Multiplication and Division Problems, Part 4: The Better Buy and Remainders",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which is the better buy?",
+        "t": 18.189
+      },
+      {
+        "title": "Compare unit prices",
+        "t": 71.824
+      },
+      {
+        "title": "What a remainder means",
+        "t": 96.83
+      },
+      {
+        "title": "One more box",
+        "t": 136.297
+      },
+      {
+        "title": "Your turn",
+        "t": 171.593
+      },
+      {
+        "title": "Summary",
+        "t": 208.346
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-4-d:q",
+        "t": 182.516,
+        "prompt": "A bus holds $40$ students. $258$ students are going on a trip. How many buses are needed?",
+        "choices": [
+          "$6$",
+          "$6.45$",
+          "$6$ R $18$",
+          "$7$"
+        ],
+        "answer": 3,
+        "working": "$258 \\div 40 = 6$ R $18$. Six buses are full, and the $18$ students left over need one more bus, so $7$ buses are needed."
+      }
+    ]
+  },
+  "m6-3-1": {
+    "lessonId": "m6-3-1",
+    "title": "Prime Factorization, Part 1: Prime and Composite Numbers",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Factors",
+        "t": 18.518
+      },
+      {
+        "title": "Prime numbers",
+        "t": 59.693
+      },
+      {
+        "title": "Composite numbers",
+        "t": 107.35
+      },
+      {
+        "title": "Quick checks",
+        "t": 151.602
+      },
+      {
+        "title": "Is 51 prime?",
+        "t": 200.956
+      },
+      {
+        "title": "Watch out",
+        "t": 245.029
+      },
+      {
+        "title": "Your turn",
+        "t": 285.034
+      },
+      {
+        "title": "Summary",
+        "t": 314.156
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-1:q",
+        "t": 290.132,
+        "prompt": "Which number is **prime**?",
+        "choices": [
+          "$21$",
+          "$39$",
+          "$29$",
+          "$45$"
+        ],
+        "answer": 2,
+        "working": "$29$ has only two factors, $1$ and $29$. The others are composite: $21 = 3 \\times 7$, $39 = 3 \\times 13$ and $45 = 5 \\times 9$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
