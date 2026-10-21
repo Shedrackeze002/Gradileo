@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   answerTutorQuestion,
+  hash53,
   mathToWords,
   normalizeChunk,
   normalizeQuestion,
@@ -8,11 +9,17 @@ import {
   OFFLINE_ANSWER,
   parseAnswer,
   parseScript,
+  parseTutorVoice,
+  PRAISE_PHRASES,
   questionPrompt,
   scriptPrompt,
   speakable,
+  TUTOR_PHRASES,
+  TUTOR_VOICE_VERSION,
+  tutorSlideKey,
   writeTutorScript,
   type TutorChunk,
+  type TutorSlide,
 } from './tutor.ts';
 
 const chunk: TutorChunk = {
@@ -110,5 +117,57 @@ describe("the model's output", () => {
     expect(p.user).toContain('"id":"s0-1"');
     const q = questionPrompt(normalizeQuestion({ question: 'What is the answer?', slideText: 'x' }));
     expect(q.system).toMatch(/don't give the final answer/);
+  });
+});
+
+describe('the recorded voice', () => {
+  const slide = chunk.slides[1];
+  const manifest = {
+    v: TUTOR_VOICE_VERSION,
+    lessonId: 'm6-9-2',
+    audio: 'm6-9-2.abc123.mp3',
+    voice: { name: 'af_heart', speed: 0.85 },
+    hash: 'abc123',
+    slides: {
+      [tutorSlideKey(slide)]: { beats: ['A triangle is half of a parallelogram.', 'So the area is one half of base times height.'], clips: [[0.5, 3.2], [3.7, 7]], ai: true },
+      broken: { beats: ['one'], clips: [] },
+    },
+    phrases: { 'praise-1': [7.5, 9], wrong: [9.5, 9], nonsense: [1, 2] },
+  };
+
+  it('keys a slide by what it shows', () => {
+    const elsewhere: TutorSlide = { ...slide, id: 'another-id' };
+    expect(tutorSlideKey(slide)).toBe(tutorSlideKey(elsewhere));
+    expect(tutorSlideKey(slide)).not.toBe(tutorSlideKey({ ...slide, steps: [...slide.steps, 'More.'] }));
+    expect(tutorSlideKey(slide)).not.toBe(tutorSlideKey({ ...slide, kind: 'summary' }));
+    expect(hash53('abc')).toBe(hash53('abc'));
+    expect(hash53('abc')).not.toBe(hash53('abd'));
+  });
+
+  it('reads a manifest and drops what is malformed', () => {
+    const v = parseTutorVoice(JSON.parse(JSON.stringify(manifest)), 'm6-9-2')!;
+    expect(v.audio).toBe('m6-9-2.abc123.mp3');
+    expect(v.slides[tutorSlideKey(slide)].clips[1]).toEqual([3.7, 7]);
+    expect(v.slides.broken).toBeUndefined();
+    // A clip that ends before it starts, and a phrase the app does not know, are left out.
+    expect(v.phrases).toEqual({ 'praise-1': [7.5, 9] });
+  });
+
+  it('refuses a manifest for another lesson or version, or with an odd file name', () => {
+    expect(parseTutorVoice(manifest, 'm6-9-3')).toBeNull();
+    expect(parseTutorVoice({ ...manifest, v: TUTOR_VOICE_VERSION + 1 }, 'm6-9-2')).toBeNull();
+    expect(parseTutorVoice({ ...manifest, audio: '../secret.mp3' }, 'm6-9-2')).toBeNull();
+    expect(parseTutorVoice('<!doctype html>', 'm6-9-2')).toBeNull();
+    expect(parseTutorVoice(null, 'm6-9-2')).toBeNull();
+  });
+
+  it('has a recorded line for every phrase the tutor uses', () => {
+    for (const p of PRAISE_PHRASES) expect(TUTOR_PHRASES[p]).toMatch(/Let’s keep going\.$/);
+    expect(Object.values(TUTOR_PHRASES).every((t) => t.length > 10 && !/[$\\]/.test(t))).toBe(true);
+  });
+
+  it('welcomes the student with the title said once', () => {
+    const beat = offlineScript({ ...chunk, lessonTitle: 'Area of Triangles.' }).slides[0].beats[0];
+    expect(beat).toContain('Today’s lesson is Area of Triangles. I’m your AI tutor');
   });
 });

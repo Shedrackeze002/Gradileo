@@ -38,7 +38,7 @@ work authoritatively. This keeps the server and the student's screen in exact ag
 | `submit.ts` | `validateRefs` and `processSubmission`: the single code path used by the demo and the server. |
 | `reminders.ts` | The reminder rule (mirrored in SQL by `send_due_reminders`). |
 | `actions.ts` | Turns an AI-proposed action into an assignment draft. |
-| `ai/` | Context builders, prompts, MiniMax client, JSON validation and the offline analyst; `tutor.ts` writes what the AI tutor says at each lesson step and its answers to students' questions, with offline versions. |
+| `ai/` | Context builders, prompts, MiniMax client, JSON validation and the offline analyst; `tutor.ts` writes what the AI tutor says at each lesson step and its answers to students' questions, with offline versions, and defines the manifest of a lesson's recorded voice (`TutorVoice`, keyed by `tutorSlideKey`). |
 
 Every generator is tested: for 60 seeds at each difficulty on every run (`GEN_SEEDS=300 npm test`
 for a deeper sweep), the item's own canonical answer must grade as correct, every item needs hints
@@ -212,6 +212,19 @@ asks the question below the video; the student answers or skips, sees the workin
 carries on. If one check passed several questions (a slow background tab), each is asked in turn
 before the video plays again.
 
+
+### The AI tutor's voice
+
+The AI tutor (`src/features/tutor/TutorMode.tsx`) speaks with the videos' voice, recorded ahead of
+time: Kokoro is far too slow to run in a browser (about four times slower than real time).
+`video/tools/tutor-voice.ts` builds each lesson's slides the way the app does for a self-paced
+student (`video/lib/tutor-lessons.ts`), has MiniMax write a line for every step (`writeTutorScript`),
+voices the lines and the tutor's set phrases (`TUTOR_PHRASES`) into one MP3 per lesson, and writes a
+manifest saying where each line is, keyed by a hash of what each slide shows (`tutorSlideKey`). The
+Tutor voice workflow publishes them per course as release files and the deploy copies them to
+`/tutor/`. The app fetches `tutor/<lessonId>.json` (`src/lib/speech.ts`), plays a line by seeking
+one audio element to it and pausing at its end, and falls back to showing the words for their
+reading time when a slide has no recording (a teacher's own resource, or a slide changed since).
 ## Security model (Supabase)
 
 - **Row-level security on every table.** Teachers see only their own classes and the students

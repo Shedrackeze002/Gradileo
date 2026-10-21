@@ -233,6 +233,17 @@ itself, so make the `Gradileo videos` folder with the tool, not by hand. In a cl
 the variables in the environment's settings (not in the repository, which is public); a session
 started after they were added sees them. The tool never prints their values.
 
+## The AI tutor's voice
+
+The AI tutor speaks with this voice too. `tools/tutor-voice.ts` records the tutor's narration of
+every lesson (what it says at each step of each slide, plus its praise and help) into one MP3 and
+a manifest per lesson, with the same voice, calm pace and respellings (`src/video/words.ts`) as the
+videos, so a word fixed for the videos is fixed for the tutor as well. The *Tutor voice* workflow
+runs it for every course and publishes the files; see docs/SETUP.md, section 3.4. To try one
+lesson here: `npx tsx --tsconfig tsconfig.json video/tools/tutor-voice.ts m10c-1-1 --out
+video/out/tutor` (MiniMax writes the lines when `MINIMAX_API_KEY` is set; otherwise the tutor
+reads each step from the slide).
+
 ## Uploading to YouTube
 
 `youtube.txt` leads with the topic: the title is the video's own title and the brand, and the

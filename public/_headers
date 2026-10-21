@@ -1,0 +1,4 @@
+# Cloudflare serves these headers with the site (wrangler.jsonc).
+# The tutor's recordings are named by their content, so a browser can keep them.
+/tutor/*.mp3
+  Cache-Control: public, max-age=31536000, immutable

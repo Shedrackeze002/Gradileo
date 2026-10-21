@@ -299,7 +299,7 @@ const tag = (step: string, t: string) => step.startsWith(`[${t}]`);
 /** What the tutor says at each step without the AI: the step's own words, with a lead-in. */
 export function offlineBeats(slide: TutorSlide, lessonTitle: string): string[] {
   return slide.steps.map((step, k) => {
-    if (slide.kind === 'title') return `Hi! Today’s lesson is ${speakable(lessonTitle)}. I’m your AI tutor, and we’ll go through it together, one step at a time. You can pause me whenever you like, and ask me a question at any point.`;
+    if (slide.kind === 'title') return `Hi! Today’s lesson is ${speakable(lessonTitle).replace(/[.!?]+$/, '')}. I’m your AI tutor, and we’ll go through it together, one step at a time. You can pause me whenever you like, and ask me a question at any point.`;
     if (slide.kind === 'end') return 'Great work! You’ve finished this lesson. Now practise its skills: each question has hints and a worked solution, and that is how you build mastery.';
     if (tag(step, 'YOUR TURN')) return 'Your turn! Try this question on your own. Take your time, and press Check when you’re ready.';
     if (tag(step, 'VIDEO')) return 'Here’s a short video that explains this part. Press play, and when it’s finished, press Continue.';
@@ -319,6 +319,90 @@ export function offlineBeats(slide: TutorSlide, lessonTitle: string): string[] {
 
 export function offlineScript(chunk: TutorChunk): TutorScript {
   return { slides: chunk.slides.map((s) => ({ id: s.id, beats: offlineBeats(s, chunk.lessonTitle) })) };
+}
+
+// ---------------------------------------------------------------- the recorded voice
+
+/**
+ * The tutor speaks with the explainer videos' voice. Every lesson's narration is recorded ahead of
+ * time (video/tools/tutor-voice.ts) into one audio file, and a manifest says where each line is;
+ * both are served next to the app at `tutor/<lessonId>.json`.
+ */
+export const TUTOR_VOICE_VERSION = 1;
+
+/** What the tutor says that is not about one slide; recorded into every lesson's audio. */
+export const TUTOR_PHRASES = {
+  'praise-1': 'That’s right, well done! Let’s keep going.',
+  'praise-2': 'Yes, that’s correct. Great work! Let’s keep going.',
+  'praise-3': 'Correct! Nicely done. Let’s keep going.',
+  'praise-4': 'Spot on. Well done! Let’s keep going.',
+  wrong: 'Not quite, and that’s okay: mistakes are how we learn. Look at the solution, try another question, or ask me to explain where it went wrong. Press Continue when you’re ready.',
+  answer: 'Good question! I’ve written my answer for you here. Have a read, and ask me again if anything is unclear.',
+} as const;
+export type TutorPhrase = keyof typeof TUTOR_PHRASES;
+export const PRAISE_PHRASES: TutorPhrase[] = ['praise-1', 'praise-2', 'praise-3', 'praise-4'];
+
+/** Where a line is in a lesson's recording: start and end, in seconds. */
+export type Clip = [number, number];
+
+export interface TutorVoiceSlide {
+  /** What the tutor says at each step, as the captions show it. */
+  beats: string[];
+  /** Where each beat is in the recording; null for a step with nothing to say. */
+  clips: Array<Clip | null>;
+  /** Whether MiniMax wrote the beats; false when they were read from the slide instead. */
+  ai: boolean;
+}
+
+export interface TutorVoice {
+  v: number;
+  lessonId: string;
+  /** The recording's file name, in the same folder as the manifest. */
+  audio: string;
+  voice: { name: string; speed: number };
+  /** Changes whenever anything recorded does. */
+  hash: string;
+  /** Keyed by tutorSlideKey, so a slide that changes (or a teacher's own slide) is simply not found. */
+  slides: Record<string, TutorVoiceSlide>;
+  phrases: Partial<Record<TutorPhrase, Clip>>;
+}
+
+/** cyrb53: a 53-bit string hash, the same in the browser and in Node. */
+export function hash53(s: string, seed = 0): string {
+  let h1 = 0xdeadbeef ^ seed;
+  let h2 = 0x41c6ce57 ^ seed;
+  for (let i = 0; i < s.length; i++) {
+    const c = s.charCodeAt(i);
+    h1 = Math.imul(h1 ^ c, 2654435761);
+    h2 = Math.imul(h2 ^ c, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+}
+
+/** A slide's key in a recording; it changes when anything the slide shows does. */
+export function tutorSlideKey(s: Pick<TutorSlide, 'kind' | 'title' | 'steps'>): string {
+  return hash53(JSON.stringify([s.kind, s.title, s.steps]));
+}
+
+const isClip = (c: unknown): c is Clip => Array.isArray(c) && c.length === 2 && c.every((x) => typeof x === 'number' && Number.isFinite(x) && x >= 0) && c[1] > c[0];
+
+/** A manifest fetched from the site, checked; null when it is missing, old or malformed. */
+export function parseTutorVoice(raw: unknown, lessonId: string): TutorVoice | null {
+  const o = (raw ?? {}) as Record<string, unknown>;
+  if (o.v !== TUTOR_VOICE_VERSION || o.lessonId !== lessonId || typeof o.audio !== 'string' || !/^[\w.-]+\.mp3$/.test(o.audio)) return null;
+  if (!o.slides || typeof o.slides !== 'object') return null;
+  const slides: Record<string, TutorVoiceSlide> = {};
+  for (const [key, v] of Object.entries(o.slides as Record<string, unknown>)) {
+    const s = (v ?? {}) as Record<string, unknown>;
+    if (!Array.isArray(s.beats) || !Array.isArray(s.clips) || s.beats.length !== s.clips.length) continue;
+    slides[key] = { beats: s.beats.map((b) => (typeof b === 'string' ? b : '')), clips: s.clips.map((c) => (isClip(c) ? c : null)), ai: s.ai === true };
+  }
+  const phrases: Partial<Record<TutorPhrase, Clip>> = {};
+  for (const [id, c] of Object.entries((o.phrases ?? {}) as Record<string, unknown>)) if (id in TUTOR_PHRASES && isClip(c)) phrases[id as TutorPhrase] = c;
+  const voice = (o.voice ?? {}) as Record<string, unknown>;
+  return { v: TUTOR_VOICE_VERSION, lessonId, audio: o.audio, voice: { name: String(voice.name ?? ''), speed: Number(voice.speed) || 1 }, hash: String(o.hash ?? ''), slides, phrases };
 }
 
 // ---------------------------------------------------------------- prompts

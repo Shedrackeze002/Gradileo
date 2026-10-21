@@ -100,8 +100,11 @@ Notes:
   If your key cannot use the model, set `MINIMAX_MODEL` to one it can. If MiniMax is unreachable,
   Gradileo falls back to the offline analyst and narration and says so, so teachers always get a
   report and students always have their tutor.
-- The AI tutor (`ai-tutor`) writes each lesson's narration once and saves it, so later students
-  get it at once; a student may ask it 40 questions an hour (`AI_TUTOR_QUESTIONS_PER_HOUR`).
+- The AI tutor (`ai-tutor`) writes the narration of any slide that has no recording once and saves
+  it, so later students get it at once; a student may ask it 40 questions an hour
+  (`AI_TUTOR_QUESTIONS_PER_HOUR`).
+- The tutor's recorded voice (section 3.4) is written by MiniMax too, from GitHub Actions: add the
+  same key as the repository secret `MINIMAX_API_KEY`.
 - Analyses are limited to 60 per class per hour (`AI_INSIGHTS_PER_HOUR` changes this).
 - To try MiniMax in the **demo**, a teacher can paste a key in *Class settings → AI teaching
   assistant*. That key is stored only in their browser.
@@ -243,6 +246,29 @@ To add another address such as hello@, add it to `ADDRESSES`; the workflow runs 
 is merged.
 
 ---
+
+### 3.4 The AI tutor's voice
+
+The AI tutor speaks with the explainer videos' voice, recorded ahead of time for every lesson by
+the **Tutor voice** workflow (`.github/workflows/tutor-voice.yml`). It builds each lesson's slides
+as a self-paced student sees them, gets what the tutor says at each step, voices it with Kokoro
+(`video/tools/tutor-voice.ts`, the videos' voice and calm pace) and publishes one MP3 and one
+manifest per lesson as the files of a release per course (`tutor-voice-math10c`, …). The Cloudflare
+deploy copies them into the site at `/tutor/`, and the tutor plays them. A lesson without a
+recording still works: the tutor shows its words on screen.
+
+1. Add the repository secret `MINIMAX_API_KEY` (Settings → Secrets and variables → Actions) so
+   MiniMax writes the tutor's lines; optionally set the repository variables `MINIMAX_MODEL` and
+   `MINIMAX_BASE_URL`. Without the key the tutor reads each step from the slide, and the next run
+   with the key rewrites and re-records those slides.
+2. Run it from **Actions → Tutor voice → Run workflow** (leave the course box empty for every
+   course). Each course records in its own job; a course too long for one run stops cleanly and
+   the next run carries on. After that it runs by itself after a merge that changes lessons, their
+   videos or the tutor, and every night. A lesson whose recording would not change is skipped, and
+   a run that records anything starts a deploy.
+
+To record one lesson on your own computer: `npx tsx --tsconfig tsconfig.json
+video/tools/tutor-voice.ts m10c-1-1 --out video/out/tutor` (after `npm ci` in `video/`).
 
 ## Privacy checklist
 
