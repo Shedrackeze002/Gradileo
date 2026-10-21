@@ -13446,6 +13446,163 @@
       }
     ]
   },
+  "m7-3-3-c": {
+    "lessonId": "m7-3-3",
+    "title": "Solving Fraction Problems, Part 3: Two-Step Problems",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Flowers in the garden",
+        "t": 16.735
+      },
+      {
+        "title": "Watch out",
+        "t": 77.96
+      },
+      {
+        "title": "Is there enough flour?",
+        "t": 101.224
+      },
+      {
+        "title": "Check by adding back",
+        "t": 153.978
+      },
+      {
+        "title": "Your turn",
+        "t": 179.537
+      },
+      {
+        "title": "Summary",
+        "t": 220.711
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-3-c:q",
+        "t": 192.038,
+        "prompt": "Ana spends $\\dfrac{1}{2}$ of a gift card on a bike helmet and $\\dfrac{1}{5}$ of it on a book. What fraction of the gift card is left?",
+        "choices": [
+          "$\\dfrac{7}{10}$",
+          "$\\dfrac{2}{7}$",
+          "$\\dfrac{3}{10}$",
+          "$\\dfrac{1}{3}$"
+        ],
+        "answer": 2,
+        "working": "Step 1: $\\dfrac{1}{2} + \\dfrac{1}{5} = \\dfrac{5}{10} + \\dfrac{2}{10} = \\dfrac{7}{10}$ is spent. Step 2: $\\dfrac{10}{10} - \\dfrac{7}{10} = \\dfrac{3}{10}$ is left."
+      }
+    ]
+  },
+  "m7-4-1": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 1: Integers and Zero Pairs",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Integers",
+        "t": 25.922
+      },
+      {
+        "title": "Opposites",
+        "t": 66.389
+      },
+      {
+        "title": "Signs and brackets",
+        "t": 98.05
+      },
+      {
+        "title": "Counters",
+        "t": 134.188
+      },
+      {
+        "title": "Zero pairs",
+        "t": 163.214
+      },
+      {
+        "title": "Your turn",
+        "t": 209.856
+      },
+      {
+        "title": "Summary",
+        "t": 245.648
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1:q",
+        "t": 220.144,
+        "prompt": "There are $3$ positive counters and $5$ negative counters. How many zero pairs can you make?",
+        "choices": [
+          "$5$",
+          "$3$",
+          "$8$",
+          "$2$"
+        ],
+        "answer": 1,
+        "working": "Each zero pair needs one positive and one negative counter. There are only $3$ positive counters, so you can make $3$ zero pairs, and $2$ negative counters are left over."
+      }
+    ]
+  },
+  "m7-4-1-b": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 2: Adding with Counters",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Positive five plus negative three",
+        "t": 17.945
+      },
+      {
+        "title": "Two negatives",
+        "t": 51.972
+      },
+      {
+        "title": "More negatives",
+        "t": 79.818
+      },
+      {
+        "title": "What the counters show",
+        "t": 115.253
+      },
+      {
+        "title": "Your turn",
+        "t": 145.15
+      },
+      {
+        "title": "Summary",
+        "t": 180.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1-b:q",
+        "t": 153.021,
+        "prompt": "Use counters to find $(-6) + (+2)$.",
+        "choices": [
+          "$+8$",
+          "$-8$",
+          "$+4$",
+          "$-4$"
+        ],
+        "answer": 3,
+        "working": "Six negative and two positive counters make $2$ zero pairs. Remove them: $4$ negative counters are left, so $(-6) + (+2) = -4$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
