@@ -12002,6 +12002,53 @@
       }
     ]
   },
+  "m7-2-1-b": {
+    "lessonId": "m7-2-1",
+    "title": "Adding and Subtracting Decimals, Part 2: Lining Up the Decimal Points",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Watch out",
+        "t": 19.238
+      },
+      {
+        "title": "Same place, same column",
+        "t": 65.867
+      },
+      {
+        "title": "Packing for a camping trip",
+        "t": 96.594
+      },
+      {
+        "title": "Your turn",
+        "t": 179.055
+      },
+      {
+        "title": "Summary",
+        "t": 213.126
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-1-b:q",
+        "t": 189.253,
+        "prompt": "Calculate $3.5 + 0.82 + 1.164$.",
+        "choices": [
+          "$4.484$",
+          "$1.281$",
+          "$5.484$",
+          "$6.484$"
+        ],
+        "answer": 2,
+        "working": "Give each number three decimal places and line up the points: $3.500 + 0.820 + 1.164 = 5.484$. The estimate $4 + 0.8 + 1 = 5.8$ shows it is reasonable."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
