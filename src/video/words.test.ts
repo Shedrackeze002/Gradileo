@@ -7,6 +7,7 @@ describe('normalise', () => {
     expect(normalise('about nine point four cm')).toEqual(['about', '9.4', 'centimetres']);
     expect(normalise('It is 1,200 metres.')).toEqual(['it', 'is', '1200', 'metres']);
     expect(normalise('one hundred')).toEqual(['100']);
+    expect(normalise('The cord bisects the cords.')).toEqual(normalise('The chord bisects the chords.'));
     expect(normalise('three quarters, or five twelfths')).toEqual(normalise('3/4, or 5/12'));
     expect(normalise('eight over six')).toEqual(normalise('8/6'));
   });
@@ -51,6 +52,7 @@ describe('speechText', () => {
     expect(speechText('Jun jumps farther than Junaid in June.')).toBe('Joon jumps farther than Junaid in June.');
     expect(speechText('EI: 0.02 times 960. CPP, EI and tax, not EIS.')).toBe('E I: 0.02 times 960. CPP, E I and tax, not EIS.');
     expect(speechText('An eight-by-twelve print and a two-by-four.')).toBe('An eight by twelve print and a two by four.');
+    expect(speechText('It bisects the chord. Bisect it with the perpendicular bisector.')).toBe('It bi-sects the chord. Bi-sect it with the perpendicular bi-sector.');
   });
 });
 

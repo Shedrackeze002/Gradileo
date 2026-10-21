@@ -228,7 +228,15 @@ Lessons learned while scripting (the script check does not catch these):
   ("the point at six, sixteen" is heard as "six hundred sixteen"; "the point with x equal to six
   and y equal to sixteen" is clear), "Let p be" ("Let PB"; "Let p stand for" is clear), the name
   Kiran ("Curran"; Priya is clear), "Maya counts" ("My accounts"), "pup tent" ("pop tent") and
-  "forty sevenths" ("47th"; "forty over seven" is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
+  "forty sevenths" ("47th"; "forty over seven" is clear), other ordinal fractions with a large
+  top or bottom ("eighteen fiftieths", "sixteen ten-thousandths", "twenty thirds"; "eighteen over
+  fifty" is clear), "points O, P…" ("4.0 P"; "the shape O P T Q" is clear), the names Leah
+  ("Lee"), Jamal ("J-Mall") and Priya before "posts" ("Pre-opposts"), "the letter Z" ("letter C";
+  "the capital letter Z" is clear), a variable before "dollars" ("four g dollars" is heard as
+  "$4"; "in dollars, four g" is clear), "and at a number" ("add a number"), a line that starts
+  with "x is…" ("Axe is"), and "convenience sample" ("convenient sample"; listen to it after
+  rendering). "Bisects" after "chord" came out "by sex": `speechText` now says "bi-sect", and the
+  pronunciation check takes "cord" as "chord". A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
   the line ("Figures that are congruent…") and check it with `video/tools/hear.ts`.
 - Say a minus sign in front of a bracket or a whole fraction as "the negative of" (or "negative,"

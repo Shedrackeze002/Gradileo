@@ -9248,6 +9248,716 @@
       }
     ]
   },
+  "m6-8-3-c": {
+    "lessonId": "m6-8-3",
+    "title": "Rotations, Part 3: Half Turns",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A half turn",
+        "t": 18.052
+      },
+      {
+        "title": "Turning B",
+        "t": 54.975
+      },
+      {
+        "title": "Turning C",
+        "t": 94.443
+      },
+      {
+        "title": "The image",
+        "t": 118.02
+      },
+      {
+        "title": "Your turn",
+        "t": 145.918
+      },
+      {
+        "title": "Summary",
+        "t": 185.612
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-3-c:q",
+        "t": 160.017,
+        "prompt": "A shape has a vertex at $A(1,\\ 1)$ and another at $B(4,\\ 3)$. It is rotated $180^\\circ$ about $A$. Where is $B'$?",
+        "choices": [
+          "$(-4,\\ {-3})$",
+          "$(-2,\\ 3)$",
+          "$(4,\\ {-1})$",
+          "$(-2,\\ {-1})$"
+        ],
+        "answer": 3,
+        "working": "From $A$, $B$ is $3$ units right and $2$ units up. A half turn reverses both: $3$ units left and $2$ units down from $A$, so $B'(-2,\\ {-1})$."
+      }
+    ]
+  },
+  "m6-8-3-d": {
+    "lessonId": "m6-8-3",
+    "title": "Rotations, Part 4: Three Quarter Turns",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A shortcut",
+        "t": 16.69
+      },
+      {
+        "title": "Turning B",
+        "t": 57.59
+      },
+      {
+        "title": "Turning C",
+        "t": 102.355
+      },
+      {
+        "title": "Describing a rotation",
+        "t": 131.666
+      },
+      {
+        "title": "Your turn",
+        "t": 171.999
+      },
+      {
+        "title": "Summary",
+        "t": 213.89
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-3-d:q",
+        "t": 185.89,
+        "prompt": "Side $AB$ points **down** from the centre $A$. After a rotation about $A$, side $AB'$ points **left**. Which describes the rotation?",
+        "choices": [
+          "$90^\\circ$ counterclockwise",
+          "$90^\\circ$ clockwise",
+          "$180^\\circ$",
+          "$270^\\circ$ clockwise"
+        ],
+        "answer": 1,
+        "working": "A clock hand pointing down (at 6) turns clockwise a quarter turn to point left (at 9). So the rotation is $90^\\circ$ clockwise."
+      }
+    ]
+  },
+  "m6-9-1": {
+    "lessonId": "m6-9-1",
+    "title": "Area of a Parallelogram, Part 1: Base and Height",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a parallelogram?",
+        "t": 22.588
+      },
+      {
+        "title": "The base and the height",
+        "t": 70.254
+      },
+      {
+        "title": "The same height everywhere",
+        "t": 116.914
+      },
+      {
+        "title": "Finding the height",
+        "t": 151.936
+      },
+      {
+        "title": "Watch out",
+        "t": 186.298
+      },
+      {
+        "title": "Your turn",
+        "t": 221.329
+      },
+      {
+        "title": "Summary",
+        "t": 261.812
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-1:q",
+        "t": 239.896,
+        "prompt": "A parallelogram has a base of $12\\text{ cm}$ and slanted sides of $7\\text{ cm}$. The distance from the base straight up to the opposite side is $6\\text{ cm}$. What is the height for the $12\\text{ cm}$ base?",
+        "choices": [
+          "$12\\text{ cm}$",
+          "$6\\text{ cm}$",
+          "$7\\text{ cm}$",
+          "$19\\text{ cm}$"
+        ],
+        "answer": 1,
+        "working": "The height is the distance from the base straight up to the opposite side, at a right angle: $6\\text{ cm}$. The slanted side, $7\\text{ cm}$, leans over."
+      }
+    ]
+  },
+  "m6-9-1-b": {
+    "lessonId": "m6-9-1",
+    "title": "Area of a Parallelogram, Part 2: From a Parallelogram to a Rectangle",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cut and slide",
+        "t": 24.462
+      },
+      {
+        "title": "The rule",
+        "t": 76.039
+      },
+      {
+        "title": "Finding the area",
+        "t": 107.983
+      },
+      {
+        "title": "A decimal base",
+        "t": 143.114
+      },
+      {
+        "title": "Your turn",
+        "t": 182.676
+      },
+      {
+        "title": "Summary",
+        "t": 218.108
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-1-b:q",
+        "t": 196.084,
+        "prompt": "A parallelogram has a base of $9\\text{ cm}$, a height of $7\\text{ cm}$ and slanted sides of $8\\text{ cm}$. What is its area?",
+        "choices": [
+          "$72\\text{ cm}^2$",
+          "$16\\text{ cm}^2$",
+          "$63\\text{ cm}$",
+          "$63\\text{ cm}^2$"
+        ],
+        "answer": 3,
+        "working": "$A = b \\times h = 9 \\times 7 = 63$, so the area is $63\\text{ cm}^2$. The slanted side is not used."
+      }
+    ]
+  },
+  "m6-9-1-c": {
+    "lessonId": "m6-9-1",
+    "title": "Area of a Parallelogram, Part 3: Finding a Missing Base or Height",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Multiply and divide",
+        "t": 18.278
+      },
+      {
+        "title": "A missing height",
+        "t": 53.464
+      },
+      {
+        "title": "A missing base",
+        "t": 93.551
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 128.65
+      },
+      {
+        "title": "Your turn",
+        "t": 156.009
+      },
+      {
+        "title": "Summary",
+        "t": 191.637
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-1-c:q",
+        "t": 167.971,
+        "prompt": "A parallelogram has an area of $72\\text{ cm}^2$ and a height of $8\\text{ cm}$. What is its base?",
+        "choices": [
+          "$9\\text{ cm}$",
+          "$64\\text{ cm}$",
+          "$576\\text{ cm}$",
+          "$80\\text{ cm}$"
+        ],
+        "answer": 0,
+        "working": "$72 = b \\times 8$, so $b = 72 \\div 8 = 9$. Check: $9 \\times 8 = 72$ ✓"
+      }
+    ]
+  },
+  "m6-9-1-d": {
+    "lessonId": "m6-9-1",
+    "title": "Area of a Parallelogram, Part 4: Any Side Can Be the Base",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two bases, two heights",
+        "t": 21.224
+      },
+      {
+        "title": "Finding the new height",
+        "t": 82.085
+      },
+      {
+        "title": "Short base, tall height",
+        "t": 120.578
+      },
+      {
+        "title": "Your turn",
+        "t": 150.868
+      },
+      {
+        "title": "Summary",
+        "t": 194.67
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-1-d:q",
+        "t": 168.485,
+        "prompt": "A parallelogram has sides of $12\\text{ cm}$ and $6\\text{ cm}$. With a $12\\text{ cm}$ side as the base, the height is $5\\text{ cm}$. What is the height when a $6\\text{ cm}$ side is the base?",
+        "choices": [
+          "$5\\text{ cm}$",
+          "$2.5\\text{ cm}$",
+          "$10\\text{ cm}$",
+          "$60\\text{ cm}$"
+        ],
+        "answer": 2,
+        "working": "Area $= 12 \\times 5 = 60\\text{ cm}^2$. Then $60 = 6 \\times h$, so $h = 60 \\div 6 = 10\\text{ cm}$."
+      }
+    ]
+  },
+  "m6-9-2": {
+    "lessonId": "m6-9-2",
+    "title": "Area of a Triangle, Part 1: Half of a Parallelogram",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two matching triangles",
+        "t": 20.66
+      },
+      {
+        "title": "Half the area",
+        "t": 60.428
+      },
+      {
+        "title": "The rule",
+        "t": 103.973
+      },
+      {
+        "title": "The area of a sail",
+        "t": 133.268
+      },
+      {
+        "title": "Watch out",
+        "t": 169.069
+      },
+      {
+        "title": "Your turn",
+        "t": 191.825
+      },
+      {
+        "title": "Summary",
+        "t": 226.363
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-2:q",
+        "t": 202.439,
+        "prompt": "A triangle has a base of $12\\text{ cm}$ and a height of $5\\text{ cm}$. What is its area?",
+        "choices": [
+          "$60\\text{ cm}^2$",
+          "$17\\text{ cm}^2$",
+          "$30\\text{ cm}$",
+          "$30\\text{ cm}^2$"
+        ],
+        "answer": 3,
+        "working": "$A = (12 \\times 5) \\div 2 = 60 \\div 2 = 30$, so the area is $30\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m6-9-2-b": {
+    "lessonId": "m6-9-2",
+    "title": "Area of a Triangle, Part 2: The Height of a Triangle",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The height of a triangle",
+        "t": 21.577
+      },
+      {
+        "title": "Three places for the height",
+        "t": 56.044
+      },
+      {
+        "title": "A height outside the triangle",
+        "t": 99.187
+      },
+      {
+        "title": "Watch out",
+        "t": 138.414
+      },
+      {
+        "title": "Your turn",
+        "t": 173.044
+      },
+      {
+        "title": "Summary",
+        "t": 208.282
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-2-b:q",
+        "t": 186.231,
+        "prompt": "A triangle has a base of $9\\text{ cm}$, a height of $8\\text{ cm}$ and a slanted side of $10\\text{ cm}$. What is its area?",
+        "choices": [
+          "$45\\text{ cm}^2$",
+          "$36\\text{ cm}^2$",
+          "$72\\text{ cm}^2$",
+          "$90\\text{ cm}^2$"
+        ],
+        "answer": 1,
+        "working": "$A = (9 \\times 8) \\div 2 = 72 \\div 2 = 36$, so the area is $36\\text{ cm}^2$. The slanted side is not used."
+      }
+    ]
+  },
+  "m6-9-2-c": {
+    "lessonId": "m6-9-2",
+    "title": "Area of a Triangle, Part 3: Finding a Missing Base or Height",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Double, then divide",
+        "t": 15.7
+      },
+      {
+        "title": "A missing height",
+        "t": 48.422
+      },
+      {
+        "title": "A missing base",
+        "t": 87.612
+      },
+      {
+        "title": "Watch out",
+        "t": 118.756
+      },
+      {
+        "title": "Your turn",
+        "t": 150.992
+      },
+      {
+        "title": "Summary",
+        "t": 187.854
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-2-c:q",
+        "t": 162.38,
+        "prompt": "A triangle has an area of $18\\text{ cm}^2$ and a base of $4\\text{ cm}$. What is its height?",
+        "choices": [
+          "$4.5\\text{ cm}$",
+          "$72\\text{ cm}$",
+          "$9\\text{ cm}$",
+          "$14\\text{ cm}$"
+        ],
+        "answer": 2,
+        "working": "Double the area: $18 \\times 2 = 36$. Then $h = 36 \\div 4 = 9\\text{ cm}$. Check: $(4 \\times 9) \\div 2 = 18$ ✓"
+      }
+    ]
+  },
+  "m6-9-2-d": {
+    "lessonId": "m6-9-2",
+    "title": "Area of a Triangle, Part 4: Same Base, Same Height, Same Area",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three triangles",
+        "t": 21.209
+      },
+      {
+        "title": "Which is biggest?",
+        "t": 59.362
+      },
+      {
+        "title": "Why it works",
+        "t": 98.646
+      },
+      {
+        "title": "Your turn",
+        "t": 132.664
+      },
+      {
+        "title": "Summary",
+        "t": 176.419
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-2-d:q",
+        "t": 151.044,
+        "prompt": "Triangle P has a base of $8\\text{ cm}$ and a height of $3\\text{ cm}$. Triangle Q also has a base of $8\\text{ cm}$ and a height of $3\\text{ cm}$, but it leans far to one side. Which is true?",
+        "choices": [
+          "They have the same area, $12\\text{ cm}^2$.",
+          "P has the greater area.",
+          "Q has the greater area.",
+          "They have the same area, $24\\text{ cm}^2$."
+        ],
+        "answer": 0,
+        "working": "Same base and same height, so the same area: $(8 \\times 3) \\div 2 = 12\\text{ cm}^2$ each."
+      }
+    ]
+  },
+  "m6-9-3": {
+    "lessonId": "m6-9-3",
+    "title": "Area of Composite Shapes, Part 1: Split into Simpler Shapes",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Composite shapes",
+        "t": 15.622
+      },
+      {
+        "title": "Split, find each area, add",
+        "t": 44.9
+      },
+      {
+        "title": "The steps",
+        "t": 101.348
+      },
+      {
+        "title": "Your turn",
+        "t": 131.533
+      },
+      {
+        "title": "Summary",
+        "t": 176.822
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-3:q",
+        "t": 148.589,
+        "prompt": "A house shape is a rectangle $6\\text{ m}$ wide and $4\\text{ m}$ tall, with a triangular roof on top. The roof has a base of $6\\text{ m}$ and a height of $2\\text{ m}$. What is the total area?",
+        "choices": [
+          "$36\\text{ m}^2$",
+          "$30\\text{ m}^2$",
+          "$26\\text{ m}^2$",
+          "$48\\text{ m}^2$"
+        ],
+        "answer": 1,
+        "working": "Rectangle: $6 \\times 4 = 24$. Roof: $(6 \\times 2) \\div 2 = 6$. Total: $24 + 6 = 30\\text{ m}^2$."
+      }
+    ]
+  },
+  "m6-9-3-b": {
+    "lessonId": "m6-9-3",
+    "title": "Area of Composite Shapes, Part 2: Many Ways to Split",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The shape",
+        "t": 15.717
+      },
+      {
+        "title": "A parallelogram and a triangle",
+        "t": 39.676
+      },
+      {
+        "title": "Two triangles",
+        "t": 88.81
+      },
+      {
+        "title": "Watch out",
+        "t": 139.789
+      },
+      {
+        "title": "Your turn",
+        "t": 175.388
+      },
+      {
+        "title": "Summary",
+        "t": 223.092
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-3-b:q",
+        "t": 195.727,
+        "prompt": "A shape splits into a parallelogram of $18\\text{ cm}^2$ and a triangle of $9\\text{ cm}^2$. Split another way, it makes two triangles. One of them is $15\\text{ cm}^2$. What is the area of the other triangle?",
+        "choices": [
+          "$9\\text{ cm}^2$",
+          "$15\\text{ cm}^2$",
+          "$27\\text{ cm}^2$",
+          "$12\\text{ cm}^2$"
+        ],
+        "answer": 3,
+        "working": "The total is $18 + 9 = 27\\text{ cm}^2$ either way, so the other triangle is $27 - 15 = 12\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m6-9-3-c": {
+    "lessonId": "m6-9-3",
+    "title": "Area of Composite Shapes, Part 3: Taking Away a Part",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A wall with an opening",
+        "t": 16.405
+      },
+      {
+        "title": "The whole, minus the missing part",
+        "t": 45.401
+      },
+      {
+        "title": "A pond in a lawn",
+        "t": 80.166
+      },
+      {
+        "title": "Add or subtract?",
+        "t": 118.528
+      },
+      {
+        "title": "Your turn",
+        "t": 140.225
+      },
+      {
+        "title": "Summary",
+        "t": 185.905
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-9-3-c:q",
+        "t": 156.028,
+        "prompt": "A rectangular sign is $8\\text{ m}$ long and $5\\text{ m}$ tall. A triangle with a base of $4\\text{ m}$ and a height of $3\\text{ m}$ is cut out of it. What area is left?",
+        "choices": [
+          "$34\\text{ m}^2$",
+          "$46\\text{ m}^2$",
+          "$28\\text{ m}^2$",
+          "$37\\text{ m}^2$"
+        ],
+        "answer": 0,
+        "working": "Whole: $8 \\times 5 = 40$. Triangle: $(4 \\times 3) \\div 2 = 6$. Left: $40 - 6 = 34\\text{ m}^2$."
+      }
+    ]
+  },
+  "m6-10-1": {
+    "lessonId": "m6-10-1",
+    "title": "Volume and Cubic Units, Part 1: What Is Volume?",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is volume?",
+        "t": 16.723
+      },
+      {
+        "title": "Measuring with cubes",
+        "t": 46.741
+      },
+      {
+        "title": "Counting cubes",
+        "t": 84.359
+      },
+      {
+        "title": "Same cubes, same volume",
+        "t": 114.45
+      },
+      {
+        "title": "Your turn",
+        "t": 137.985
+      },
+      {
+        "title": "Summary",
+        "t": 170.552
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-1:q",
+        "t": 153.063,
+        "prompt": "A model is four stacks of linking cubes in a row. The stacks have $3$, $2$, $4$ and $1$ cubes, and every cube can be seen. What is the volume of the model?",
+        "choices": [
+          "$4$ cubes",
+          "$24$ cubes",
+          "$10$ cubes",
+          "$9$ cubes"
+        ],
+        "answer": 2,
+        "working": "Add the stacks: $3 + 2 + 4 + 1 = 10$ cubes."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
