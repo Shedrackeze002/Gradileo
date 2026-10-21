@@ -7980,6 +7980,61 @@
       }
     ]
   },
+  "m6-6-1": {
+    "lessonId": "m6-6-1",
+    "title": "Order of Operations with Powers, Part 1: The Order of Operations",
+    "duration": 332,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two answers?",
+        "t": 21.187
+      },
+      {
+        "title": "The four steps",
+        "t": 70.445
+      },
+      {
+        "title": "Ways to remember",
+        "t": 138.339
+      },
+      {
+        "title": "Left to right",
+        "t": 178.199
+      },
+      {
+        "title": "Putting it together",
+        "t": 230.753
+      },
+      {
+        "title": "Your turn",
+        "t": 268.642
+      },
+      {
+        "title": "Summary",
+        "t": 305.316
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-1:q",
+        "t": 276.665,
+        "prompt": "Evaluate $20 - 6 \\div 2 \\times 3$.",
+        "choices": [
+          "$21$",
+          "$11$",
+          "$19$",
+          "$7$"
+        ],
+        "answer": 1,
+        "working": "There are no parentheses or powers. Divide and multiply from left to right: $6 \\div 2 = 3$ and $3 \\times 3 = 9$. Then $20 - 9 = 11$."
+      }
+    ]
+  },
   "m6-6-1-b": {
     "lessonId": "m6-6-1",
     "title": "Order of Operations with Powers, Part 2: Powers Come Early",
