@@ -69,8 +69,9 @@ jobs:
   record:
     needs: courses
     runs-on: ubuntu-latest
-    # The recording stops between lessons after 300 minutes; the next run carries on.
-    timeout-minutes: 340
+    # The recording stops between lessons after 270 minutes, which leaves time to publish even after
+    # waiting an hour for API calls; the next run carries on.
+    timeout-minutes: 350
     strategy:
       fail-fast: false
       # A few courses at a time, so MiniMax is not asked too much at once.
@@ -110,7 +111,7 @@ jobs:
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL }}
           MINIMAX_BASE_URL: ${{ vars.MINIMAX_BASE_URL }}
-        run: npx tsx --tsconfig tsconfig.json video/tools/tutor-voice.ts "${{ matrix.course }}" --out out --previous previous --minutes 300
+        run: npx tsx --tsconfig tsconfig.json video/tools/tutor-voice.ts "${{ matrix.course }}" --out out --previous previous --minutes 270
       # Publishes what was recorded even when some lessons failed (the run is still marked failed).
       - name: Publish
         id: publish
@@ -119,17 +120,41 @@ jobs:
           shopt -s nullglob
           files=(out/*)
           if [ ${#files[@]} -eq 0 ]; then echo "Nothing new for ${{ matrix.course }}."; exit 0; fi
-          gh release view "$TAG" > /dev/null 2>&1 || gh release create "$TAG" --latest=false --title "Tutor voice: ${{ matrix.course }}" \
+          # The run's token has 1,000 GitHub API calls an hour for the whole repository, and a run that
+          # records every course again needs more. When they run out, wait for the hour to reset and
+          # try again, so a course's recordings are never lost.
+          wait_for_calls() {
+            local remaining reset wait
+            read -r remaining reset < <(gh api rate_limit -q '.resources.core | "\(.remaining) \(.reset)"' || echo "0 0")
+            if [ "$remaining" -lt 20 ]; then
+              wait=$(( reset - $(date +%s) + 10 ))
+              (( wait > 10 )) || wait=10
+              echo "API calls used up; waiting $(( wait / 60 )) minutes for them to reset."
+              sleep "$wait"
+            fi
+          }
+          retry() {
+            for attempt in 1 2 3 4 5; do
+              "$@" && return 0
+              wait_for_calls
+              sleep $(( attempt * 5 ))
+            done
+            return 1
+          }
+          wait_for_calls
+          retry gh release view "$TAG" > /dev/null 2>&1 || gh release create "$TAG" --latest=false --title "Tutor voice: ${{ matrix.course }}" \
             --notes "The AI tutor's recorded narration of each lesson in ${{ matrix.course }}, made by the Tutor voice workflow. The site serves these files at /tutor/."
-          gh release upload "$TAG" out/* --clobber
+          # One file at a time, the recordings before the manifests that name them.
+          for f in out/*.mp3 out/*.json; do retry gh release upload "$TAG" "$f" --clobber; done
           # Remove recordings that no manifest uses any more.
           node -e '
             const fs = require("fs");
             const audio = {};
             for (const dir of ["previous", "out"]) for (const f of fs.readdirSync(dir)) if (f.endsWith(".json")) audio[f] = JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8")).audio;
             fs.writeFileSync("keep.txt", Object.values(audio).join("\n") + "\n");'
-          for name in $(gh release view "$TAG" --json assets -q '.assets[].name' | grep '\.mp3$'); do
-            grep -qx "$name" keep.txt || gh release delete-asset "$TAG" "$name" --yes
+          names=$(retry gh release view "$TAG" --json assets -q '.assets[].name')
+          for name in $(grep '\.mp3$' <<< "$names"); do
+            grep -qx "$name" keep.txt || retry gh release delete-asset "$TAG" "$name" --yes
           done
           echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Mark the course as changed

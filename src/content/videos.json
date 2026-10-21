@@ -9142,6 +9142,112 @@
       }
     ]
   },
+  "m6-8-3": {
+    "lessonId": "m6-8-3",
+    "title": "Rotations, Part 1: Turning About a Vertex",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Turning about a vertex",
+        "t": 16.188
+      },
+      {
+        "title": "Clockwise and counterclockwise",
+        "t": 41.484
+      },
+      {
+        "title": "Turning a direction",
+        "t": 81.907
+      },
+      {
+        "title": "Turning one direction",
+        "t": 136.537
+      },
+      {
+        "title": "Your turn",
+        "t": 167.202
+      },
+      {
+        "title": "Summary",
+        "t": 202.739
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-3:q",
+        "t": 180.001,
+        "prompt": "From vertex $A$, vertex $B$ is $3$ units **down**. After a $90^\\circ$ counterclockwise turn about $A$, where is $B'$?",
+        "choices": [
+          "$3$ units left of $A$",
+          "$3$ units up from $A$",
+          "$3$ units right of $A$",
+          "$3$ units down from $A$"
+        ],
+        "answer": 2,
+        "working": "A clock hand pointing down (at 6) turns counterclockwise a quarter turn to point right (at 3). So $B'$ is $3$ units right of $A$."
+      }
+    ]
+  },
+  "m6-8-3-b": {
+    "lessonId": "m6-8-3",
+    "title": "Rotations, Part 2: Quarter Turns",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The triangle",
+        "t": 18.743
+      },
+      {
+        "title": "Turning B",
+        "t": 45.457
+      },
+      {
+        "title": "Turning C",
+        "t": 72.67
+      },
+      {
+        "title": "The image",
+        "t": 97.044
+      },
+      {
+        "title": "Watch out",
+        "t": 127.647
+      },
+      {
+        "title": "Your turn",
+        "t": 153.35
+      },
+      {
+        "title": "Summary",
+        "t": 190.611
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-3-b:q",
+        "t": 166.686,
+        "prompt": "$A(2,\\ 1)$ and $B(2,\\ 4)$ are vertices of a shape. The shape turns $90^\\circ$ clockwise about $A$. Where is $B'$?",
+        "choices": [
+          "$(5,\\ 1)$",
+          "$(-1,\\ 1)$",
+          "$(2,\\ {-2})$",
+          "$(4,\\ 2)$"
+        ],
+        "answer": 0,
+        "working": "From $A$, $B$ is $3$ units up. Clockwise, up becomes right, so $B'$ is $3$ units right of $A$: $(5,\\ 1)$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
