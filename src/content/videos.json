@@ -6237,6 +6237,57 @@
       }
     ]
   },
+  "m6-2-4": {
+    "lessonId": "m6-2-4",
+    "title": "Multiplication and Division Problems, Part 1: Multiply or Divide?",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal groups",
+        "t": 23.705
+      },
+      {
+        "title": "Sharing equally",
+        "t": 58.245
+      },
+      {
+        "title": "Buying popcorn",
+        "t": 91.462
+      },
+      {
+        "title": "Watch out",
+        "t": 174.797
+      },
+      {
+        "title": "Your turn",
+        "t": 207.138
+      },
+      {
+        "title": "Summary",
+        "t": 249.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-4:q",
+        "t": 217.798,
+        "prompt": "A school buys $24$ notebooks at \\$1.85 each. What is the total cost?",
+        "choices": [
+          "\\$4.44",
+          "\\$444.00",
+          "\\$44.40",
+          "\\$25.85"
+        ],
+        "answer": 2,
+        "working": "Equal groups, find the total: $1.85 \\times 24$. $185 \\times 24 = 740 + 3700 = 4440$, and $1.85$ has $2$ decimal places, so the total is \\$44.40. Estimate: $2 \\times 24 = 48$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
