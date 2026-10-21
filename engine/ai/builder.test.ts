@@ -57,7 +57,7 @@ describe('the AI’s draft', () => {
       { skillId: 'not-a-skill', count: 4, difficulty: 1 },
     ],
     questions: [
-      { format: 'choice', skillId: 'm8-pythagoras-hypotenuse', prompt: 'Which side is the hypotenuse?', choices: ['$AB$', '$BC$', '$AC$', 'None'], correct: 2, solution: 'It is opposite the right angle.' },
+      { format: 'choice', skillId: 'm8-pythagoras-hypotenuse', prompt: 'Which side is the hypotenuse?', choices: ['$AB$', '$BC$', '$AC$', 'None'], correct: 2, solution: 'It is opposite the right angle. Therefore, choice $2$ is correct.' },
       { format: 'short', skillId: 'm8-pythagoras-leg', prompt: 'A ladder…', value: 8, check: 'sqrt(100-36)', solution: '…' },
       { format: 'short', prompt: 'Legs 6 and 8: the hypotenuse?', value: 10, check: '(6^2 + 8^2)^(1/2)', solution: '$\frac{1}{2}$' },
       { format: 'short', prompt: 'Wrong one', value: 12, check: '(6^2 + 8^2)^(1/2)' },
@@ -73,6 +73,8 @@ describe('the AI’s draft', () => {
     expect(draft.custom.map((q) => q.kind)).toEqual(['mc', 'numeric', 'text', 'manual']);
     const mc = draft.custom[0];
     expect(mc.correct).toBe(mc.choices![2].id);
+    // "Choice 2" (an index from 0) would only confuse a student reading the solution.
+    expect(mc.solution).toBe('It is opposite the right angle.');
     expect(draft.custom.every((q) => q.aiWritten)).toBe(true);
     expect(draft.custom[3].points).toBe(3);
     // "sqrt(…)" is not plain arithmetic, the 12 does not match its working, and the essay was not asked for.

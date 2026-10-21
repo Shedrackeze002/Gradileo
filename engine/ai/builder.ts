@@ -193,8 +193,8 @@ export function draftPrompt(req: DraftRequest, ctx: DraftContext): { system: str
 Rules:
 - Exactly ${req.count} questions in all: each generated question counts as one, and each question you write counts as one.
 ${req.formats.includes('generated') ? `- Generated questions: choose skills by their id from the list. Each gives every student fresh numbers and is graded automatically, with hints and a worked solution. Give each chosen skill a count (1 to 6) and a difficulty: 1 easy, 2 medium, 3 hard, or "mixed" (easy to hard). Use generated questions for most routine practice.` : '- Do not use generated questions: write every question yourself.'}
-${own.length ? `- Your own questions, only in these formats: ${own.join(', ')}. Use them for what generated questions cannot do: word problems in a real context, reasoning, explaining, spotting a mistake. Each practises one skill from the list (give its id) and has a worked "solution" in Markdown with maths in $...$.
-  - choice: 4 choices, exactly one correct ("correct" is its index from 0), and wrong choices that come from real mistakes.
+${own.length ? `- Your own questions, only in these formats: ${own.join(', ')} (never any other format). Use them for what generated questions cannot do: word problems in a real context, reasoning, explaining, spotting a mistake. Each practises one skill from the list (give its id) and has a worked "solution" in Markdown with maths in $...$.
+  - choice: 4 choices, exactly one correct ("correct" is its index from 0), and wrong choices that come from real mistakes. The solution explains the reasoning and never names a choice by its number or letter.
   - short: either a single number ("value", and "check": an arithmetic expression with only numbers, + - * / ^ and brackets that computes it, such as "(18 - 6) / 4"), or a word or short phrase ("accepted": every acceptable answer).
   - written: the student explains or shows working; give "points" (2 to 6) and, in "solution", a model answer and how to award the points.` : '- Do not write questions of your own.'}
 - Every number in your questions and answers must be right: work each answer out step by step before you write it.
@@ -270,7 +270,10 @@ export function parseDraft(raw: unknown, req: DraftRequest, ctx: DraftContext, n
     const format = q?.format as DraftFormat;
     if (format === 'generated' || !formats.has(format)) return void dropped.push(`${n}: a format you did not ask for`);
     const prompt = repairLatex(text(q.prompt, 2000));
-    const solution = repairLatex(text(q.solution, 3000));
+    // A choice named by its index ("Therefore, choice $2$ is correct.") means nothing to a student.
+    const solution = repairLatex(text(q.solution, 3000))
+      .replace(/\s*[^.!?]*\b(?:choice|option)\s*\$?\(?[0-9A-D]\)?\$?\s*(?:is|was)\s*(?:the\s*)?correct[^.!?]*[.!?]?/gi, '')
+      .trim();
     if (!prompt) return void dropped.push(`${n}: no question`);
     const skillId = allowed.has(String(q.skillId)) ? String(q.skillId) : undefined;
     const base = { id: newId('q'), prompt, solution: solution || undefined, skillId, aiWritten: true as const };
