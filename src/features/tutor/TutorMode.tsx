@@ -18,7 +18,7 @@ import { api } from '@/data/index.ts';
 import { videosForLesson } from '@/content/videos.ts';
 import { EmptyState, PageSpinner } from '@/components/ui/index.ts';
 import { Markdown } from '@/components/math/Markdown.tsx';
-import { loadTutorVoice, playClip, readAlong, tutorAudioUrl, unlockAudio, type Narration } from '@/lib/speech.ts';
+import { loadTutorAudio, loadTutorVoice, playClip, readAlong, unlockAudio, type Narration } from '@/lib/speech.ts';
 import { getItem, setItem } from '@/lib/storage.ts';
 import { cn } from '@/lib/cn.ts';
 import { useLessonContent } from '../lessons/LessonView.tsx';
@@ -85,19 +85,34 @@ export default function TutorMode() {
       alive = false;
     };
   }, [lessonId]);
-  const audio = useMemo(() => {
-    if (!voice) return null;
-    const a = new Audio(tutorAudioUrl(voice));
-    a.preload = 'auto';
-    return a;
+  // The recording itself, downloaded whole: undefined while it downloads, null without one.
+  const [audio, setAudio] = useState<HTMLAudioElement | null | undefined>(undefined);
+  useEffect(() => {
+    if (!voice) {
+      setAudio(voice === null ? null : undefined);
+      return;
+    }
+    let alive = true;
+    let url: string | null = null;
+    let el: HTMLAudioElement | null = null;
+    setAudio(undefined);
+    void loadTutorAudio(voice).then((u) => {
+      url = u;
+      if (!alive) return u && URL.revokeObjectURL(u);
+      if (u) {
+        el = new Audio(u);
+        el.preload = 'auto';
+      }
+      setAudio(el);
+    });
+    return () => {
+      alive = false;
+      el?.pause();
+      if (url) URL.revokeObjectURL(url);
+    };
   }, [voice]);
-  useEffect(
-    () => () => {
-      audio?.pause();
-      audio?.removeAttribute('src');
-    },
-    [audio],
-  );
+  // Ready to start: the manifest has loaded, and so has its recording (or there is none).
+  const voiceReady = voice === null || (voice !== undefined && audio !== undefined);
   const keys = useMemo(() => tutorSlides.map(tutorSlideKey), [tutorSlides]);
   // A slide the recording does not have (a teacher's own slide, or one changed since) is undefined.
   const recorded = useCallback((ix: number) => voice?.slides[keys[ix]], [voice, keys]);
@@ -374,7 +389,7 @@ export default function TutorMode() {
               </div>
             </div>
           )}
-          {!started && <StartCard title={meta.title} voice={voice} muted={muted} onMuted={setMuted} onStart={() => (audio && unlockAudio(audio), setStarted(true), setPlaying(true))} />}
+          {!started && <StartCard title={meta.title} voice={audio ? voice : voiceReady ? null : undefined} muted={muted} onMuted={setMuted} onStart={() => (audio && unlockAudio(audio), setStarted(true), setPlaying(true))} />}
         </main>
 
         {chatOpen && (

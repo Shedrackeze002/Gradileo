@@ -6237,6 +6237,481 @@
       }
     ]
   },
+  "m6-2-4": {
+    "lessonId": "m6-2-4",
+    "title": "Multiplication and Division Problems, Part 1: Multiply or Divide?",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal groups",
+        "t": 23.705
+      },
+      {
+        "title": "Sharing equally",
+        "t": 58.245
+      },
+      {
+        "title": "Buying popcorn",
+        "t": 91.462
+      },
+      {
+        "title": "Watch out",
+        "t": 174.797
+      },
+      {
+        "title": "Your turn",
+        "t": 207.138
+      },
+      {
+        "title": "Summary",
+        "t": 249.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-4:q",
+        "t": 217.798,
+        "prompt": "A school buys $24$ notebooks at \\$1.85 each. What is the total cost?",
+        "choices": [
+          "\\$4.44",
+          "\\$444.00",
+          "\\$44.40",
+          "\\$25.85"
+        ],
+        "answer": 2,
+        "working": "Equal groups, find the total: $1.85 \\times 24$. $185 \\times 24 = 740 + 3700 = 4440$, and $1.85$ has $2$ decimal places, so the total is \\$44.40. Estimate: $2 \\times 24 = 48$."
+      }
+    ]
+  },
+  "m6-2-4-b": {
+    "lessonId": "m6-2-4",
+    "title": "Multiplication and Division Problems, Part 2: Finding One of Something",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unit price",
+        "t": 18.708
+      },
+      {
+        "title": "Price of one juice box",
+        "t": 49.306
+      },
+      {
+        "title": "Cutting a rope",
+        "t": 100.238
+      },
+      {
+        "title": "Your turn",
+        "t": 153.108
+      },
+      {
+        "title": "Summary",
+        "t": 189.066
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-4-b:q",
+        "t": 162.873,
+        "prompt": "A pack of $8$ pencils costs \\$3.60. What is the unit price?",
+        "choices": [
+          "\\$28.80",
+          "\\$0.45",
+          "\\$4.50",
+          "\\$0.40"
+        ],
+        "answer": 1,
+        "working": "The unit price is the total price divided by the number of items: $3.60 \\div 8 = 0.45$. Check: $0.45 \\times 8 = 3.60$."
+      }
+    ]
+  },
+  "m6-2-4-c": {
+    "lessonId": "m6-2-4",
+    "title": "Multiplication and Division Problems, Part 3: Two-Step Problems",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Make a plan",
+        "t": 18.141
+      },
+      {
+        "title": "Step 1: multiply",
+        "t": 50.691
+      },
+      {
+        "title": "Step 2: subtract",
+        "t": 110.665
+      },
+      {
+        "title": "Sharing a cost",
+        "t": 154.59
+      },
+      {
+        "title": "Your turn",
+        "t": 245.076
+      },
+      {
+        "title": "Summary",
+        "t": 283.463
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-4-c:q",
+        "t": 257.486,
+        "prompt": "Four friends share a \\$25.90 bill equally. How much does each friend pay, to the nearest cent?",
+        "choices": [
+          "\\$6.48",
+          "\\$6.47",
+          "\\$6.40",
+          "\\$103.60"
+        ],
+        "answer": 0,
+        "working": "Divide to the thousandths: $25.90 \\div 4 = 6.475$. The thousandths digit is $5$, so round up: \\$6.48."
+      }
+    ]
+  },
+  "m6-2-4-d": {
+    "lessonId": "m6-2-4",
+    "title": "Multiplication and Division Problems, Part 4: The Better Buy and Remainders",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which is the better buy?",
+        "t": 18.189
+      },
+      {
+        "title": "Compare unit prices",
+        "t": 71.824
+      },
+      {
+        "title": "What a remainder means",
+        "t": 96.83
+      },
+      {
+        "title": "One more box",
+        "t": 136.297
+      },
+      {
+        "title": "Your turn",
+        "t": 171.593
+      },
+      {
+        "title": "Summary",
+        "t": 208.346
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-4-d:q",
+        "t": 182.516,
+        "prompt": "A bus holds $40$ students. $258$ students are going on a trip. How many buses are needed?",
+        "choices": [
+          "$6$",
+          "$6.45$",
+          "$6$ R $18$",
+          "$7$"
+        ],
+        "answer": 3,
+        "working": "$258 \\div 40 = 6$ R $18$. Six buses are full, and the $18$ students left over need one more bus, so $7$ buses are needed."
+      }
+    ]
+  },
+  "m6-3-1": {
+    "lessonId": "m6-3-1",
+    "title": "Prime Factorization, Part 1: Prime and Composite Numbers",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Factors",
+        "t": 18.518
+      },
+      {
+        "title": "Prime numbers",
+        "t": 59.693
+      },
+      {
+        "title": "Composite numbers",
+        "t": 107.35
+      },
+      {
+        "title": "Quick checks",
+        "t": 151.602
+      },
+      {
+        "title": "Is 51 prime?",
+        "t": 200.956
+      },
+      {
+        "title": "Watch out",
+        "t": 245.029
+      },
+      {
+        "title": "Your turn",
+        "t": 285.034
+      },
+      {
+        "title": "Summary",
+        "t": 314.156
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-1:q",
+        "t": 290.132,
+        "prompt": "Which number is **prime**?",
+        "choices": [
+          "$21$",
+          "$39$",
+          "$29$",
+          "$45$"
+        ],
+        "answer": 2,
+        "working": "$29$ has only two factors, $1$ and $29$. The others are composite: $21 = 3 \\times 7$, $39 = 3 \\times 13$ and $45 = 5 \\times 9$."
+      }
+    ]
+  },
+  "m6-3-1-b": {
+    "lessonId": "m6-3-1",
+    "title": "Prime Factorization, Part 2: Factor Trees",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Prime factorization",
+        "t": 15.362
+      },
+      {
+        "title": "Factor trees",
+        "t": 47.496
+      },
+      {
+        "title": "A factor tree for 60",
+        "t": 70.866
+      },
+      {
+        "title": "Another tree for 60",
+        "t": 134.31
+      },
+      {
+        "title": "Watch out",
+        "t": 170.936
+      },
+      {
+        "title": "Your turn",
+        "t": 199.867
+      },
+      {
+        "title": "Summary",
+        "t": 233.534
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-1-b:q",
+        "t": 206.597,
+        "prompt": "What is the prime factorization of $90$?",
+        "choices": [
+          "$2 \\times 3 \\times 3 \\times 5$",
+          "$9 \\times 10$",
+          "$2 \\times 3 \\times 5$",
+          "$3 \\times 3 \\times 10$"
+        ],
+        "answer": 0,
+        "working": "$90 = 9 \\times 10$, then $9 = 3 \\times 3$ and $10 = 2 \\times 5$. So $90 = 2 \\times 3 \\times 3 \\times 5$. Check: $2 \\times 3 \\times 3 \\times 5 = 6 \\times 15 = 90$."
+      }
+    ]
+  },
+  "m6-3-1-c": {
+    "lessonId": "m6-3-1",
+    "title": "Prime Factorization, Part 3: A Product in Many Ways",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Many products for 60",
+        "t": 21.247
+      },
+      {
+        "title": "Grouping factors",
+        "t": 64.863
+      },
+      {
+        "title": "Group to make it easy",
+        "t": 111.991
+      },
+      {
+        "title": "Another friendly pair",
+        "t": 152.222
+      },
+      {
+        "title": "Your turn",
+        "t": 171.289
+      },
+      {
+        "title": "Summary",
+        "t": 206.511
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-1-c:q",
+        "t": 178.432,
+        "prompt": "Find $4 \\times 19 \\times 25$.",
+        "choices": [
+          "$190$",
+          "$475$",
+          "$48$",
+          "$1{,}900$"
+        ],
+        "answer": 3,
+        "working": "Group the friendly pair: $(4 \\times 25) \\times 19 = 100 \\times 19 = 1{,}900$."
+      }
+    ]
+  },
+  "m6-3-2": {
+    "lessonId": "m6-3-2",
+    "title": "Powers, Part 1: Base and Exponent",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A square of tiles",
+        "t": 24.414
+      },
+      {
+        "title": "A cube of blocks",
+        "t": 56.309
+      },
+      {
+        "title": "Powers",
+        "t": 90.705
+      },
+      {
+        "title": "Reading powers",
+        "t": 129.938
+      },
+      {
+        "title": "Writing a power",
+        "t": 159.375
+      },
+      {
+        "title": "Watch out",
+        "t": 190.299
+      },
+      {
+        "title": "Your turn",
+        "t": 220.666
+      },
+      {
+        "title": "Summary",
+        "t": 252.871
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-2:q",
+        "t": 227.733,
+        "prompt": "Write $6 \\times 6 \\times 6$ as a power.",
+        "choices": [
+          "$3^6$",
+          "$6^3$",
+          "$6 \\times 3$",
+          "$6^6$"
+        ],
+        "answer": 1,
+        "working": "The factor that repeats is $6$, so the base is $6$. There are $3$ factors, so the exponent is $3$: $6 \\times 6 \\times 6 = 6^3$."
+      }
+    ]
+  },
+  "m6-3-2-b": {
+    "lessonId": "m6-3-2",
+    "title": "Powers, Part 2: The Value of a Power",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Find the value",
+        "t": 18.229
+      },
+      {
+        "title": "The powers of 2",
+        "t": 62.631
+      },
+      {
+        "title": "Which is greater?",
+        "t": 104.179
+      },
+      {
+        "title": "Watch out",
+        "t": 143.338
+      },
+      {
+        "title": "Your turn",
+        "t": 166.328
+      },
+      {
+        "title": "Summary",
+        "t": 199.281
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-2-b:q",
+        "t": 172.103,
+        "prompt": "What is the value of $4^3$?",
+        "choices": [
+          "$12$",
+          "$7$",
+          "$64$",
+          "$81$"
+        ],
+        "answer": 2,
+        "working": "$4^3 = 4 \\times 4 \\times 4$. $4 \\times 4 = 16$, and $16 \\times 4 = 64$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

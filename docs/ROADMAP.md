@@ -363,7 +363,12 @@ items ship or decisions change.
      sixes" was heard as "26s" in the lesson whose answer is 26; now "twenty groups of six"). Both
      are listed in `video/README.md`. Every course from Math 10 to 31, and Math 5, is rendered and
      in Drive (1,109 videos).
-   - Next: script and render Math 6, 7, 8 and 9 in order, explaining each lesson as simply as
+   - In progress: Math 6, 117 videos. Every script and every Your-turn answer and still was
+     checked, and the videos are rendering unit by unit into Drive (Units 1 and 2 are there).
+   - Scripted: Math 7, 143 videos written by four helpers and checked like Math 6 (four answer
+     lines or figures were corrected, and money is always said in dollars and cents). They render
+     after Math 6.
+   - Next: script and render Math 8 and 9 in order, explaining each lesson as simply as
      possible, with parts split by idea.
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with
@@ -564,7 +569,11 @@ items ship or decisions change.
   It runs after merges that change lessons or the tutor, nightly, and by hand. **Owner:** add the
   repository secret `MINIMAX_API_KEY` (Settings → Secrets and variables → Actions) so MiniMax
   writes the lines; until then the tutor reads each step from the slide, and the next run with the
-  key rewrites and re-records those slides. Next: speak the tutor's answers to questions too
+  key rewrites and re-records those slides. First run (21 October): 13 courses recorded whole; five
+  lessons in Math 9, 20-3 and 31 have a long list or calculation the voice could not say in one go,
+  so such lines are now said in pieces and those lessons are recorded on the next run. The site
+  serves files whole, and Safari only plays sound it can fetch in parts, so the tutor downloads a
+  lesson's recording once and plays it from memory. Next: speak the tutor's answers to questions too
   (today they are written in the chat); record approved teacher edits of a lesson; let the tutor
   ask its own follow-up question after a wrong answer.
 - Self-paced study, next steps: let the AI write the student coach's note on the home page (today

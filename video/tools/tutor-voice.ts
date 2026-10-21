@@ -113,7 +113,7 @@ async function record(lessonId: string, beats: Map<string, { beats: string[]; ai
     if (!said) return null;
     const known = placed.get(said);
     if (known) return known;
-    const { pcm } = await narrate(cache, said, TUTOR_VOICE);
+    const pcm = await voiceLine(cache, said);
     if (pcm.rate !== rate) throw new Error(`Unexpected sample rate ${pcm.rate}`);
     const clip: Clip = [round(at), round(at + pcm.samples.length / rate)];
     pieces.push(pcm.samples, new Float32Array(Math.round(GAP * rate)));
@@ -144,6 +144,44 @@ async function record(lessonId: string, beats: Map<string, { beats: string[]; ai
 }
 
 const round = (x: number) => Math.round(x * 1000) / 1000;
+
+/**
+ * Voices a line. A line read from a slide can be one long sentence (a list of rules, a worked
+ * calculation) that the voice cannot say in one go; it is said in pieces instead, at its clauses,
+ * with a short pause between them.
+ */
+async function voiceLine(cache: string, said: string): Promise<Pcm> {
+  try {
+    return (await narrate(cache, said, TUTOR_VOICE)).pcm;
+  } catch (e) {
+    if (!(e instanceof Error) || !e.message.startsWith('Too long')) throw e;
+  }
+  const clips: Pcm[] = [];
+  for (const piece of splitLong(said)) clips.push((await narrate(cache, piece, TUTOR_VOICE)).pcm);
+  const rate = clips[0].rate;
+  const pause = new Float32Array(Math.round(rate * 0.35));
+  const parts = clips.flatMap((c, i) => (i ? [pause, c.samples] : [c.samples]));
+  const samples = new Float32Array(parts.reduce((n, x) => n + x.length, 0));
+  parts.reduce((k, x) => (samples.set(x, k), k + x.length), 0);
+  return { rate, samples };
+}
+
+/** Pieces of a long line: whole clauses where they fit, else runs of at most `max` words. */
+export function splitLong(text: string, max = 40): string[] {
+  const out: string[] = [];
+  let run: string[] = [];
+  for (const clause of text.split(/(?<=[.;:!?,])\s+/)) {
+    const words = clause.split(/\s+/).filter(Boolean);
+    if (run.length && run.length + words.length > max) {
+      out.push(run.join(' '));
+      run = [];
+    }
+    if (words.length > max) for (let i = 0; i < words.length; i += max) out.push(words.slice(i, i + max).join(' '));
+    else run.push(...words);
+  }
+  if (run.length) out.push(run.join(' '));
+  return out;
+}
 
 async function main() {
   const args = process.argv.slice(2);

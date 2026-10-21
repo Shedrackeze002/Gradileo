@@ -35,6 +35,21 @@ export async function loadTutorVoice(lessonId: string): Promise<TutorVoice | nul
 
 export const tutorAudioUrl = (voice: TutorVoice) => `${base()}tutor/${voice.audio}`;
 
+/**
+ * The lesson's recording, downloaded whole and kept in memory (an object URL), or null if it cannot
+ * be fetched. Safari only plays sound it can fetch in pieces, and the site serves whole files, so
+ * the tutor plays from memory instead; seeking from one line to the next is then instant as well.
+ */
+export async function loadTutorAudio(voice: TutorVoice): Promise<string | null> {
+  try {
+    const res = await fetch(tutorAudioUrl(voice));
+    if (!res.ok) return null;
+    return URL.createObjectURL(await res.blob());
+  } catch {
+    return null;
+  }
+}
+
 /** No voice: the words stay up for as long as reading them takes. */
 export function readAlong(text: string, rate: number): Narration {
   let finish: (read: boolean) => void = () => undefined;
