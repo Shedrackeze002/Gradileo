@@ -17,7 +17,7 @@ const FORMATS: Array<{ format: DraftFormat; label: string; hint: string }> = [
   { format: 'generated', label: 'Generated questions', hint: 'From the course’s question bank: fresh numbers for every student, graded automatically, with hints and worked solutions.' },
   { format: 'choice', label: 'Multiple choice', hint: 'Written by the AI, with wrong choices that come from common mistakes.' },
   { format: 'short', label: 'Short answer', hint: 'Written by the AI: a number or a word, graded automatically. Numeric answers are checked against the AI’s own working.' },
-  { format: 'written', label: 'Written response', hint: 'Students explain or show working; you grade it with the AI’s marking guide.' },
+  { format: 'written', label: 'Written response', hint: 'Students solve it on a canvas or type their working; you grade it with the AI’s marking guide.' },
 ];
 
 const DEFAULT_COUNT: Record<DraftType, number> = { homework: 12, practice: 10, classwork: 10, quiz: 10, exam: 20 };

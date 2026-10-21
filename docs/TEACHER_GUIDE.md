@@ -88,6 +88,11 @@ Without a MiniMax key the built-in offline analyst writes the report, so the fea
 
 ## Grading written answers
 
+Students answer a written response on a canvas or by typing, and can use both. On the canvas they
+write with a pen, a finger or the mouse (a pen's pressure sets the line width, and a resting palm
+is ignored), on squared, lined, dotted or plain paper, with up to four pages and a full-screen
+view. You see their working page by page above anything they typed.
+
 Open **To grade** on the overview, or the assignment's student list. Choose a score for each
 written response, add a comment if you like, then **Return to student** with overall feedback.
 Use **Previous / Next** to move through the class.

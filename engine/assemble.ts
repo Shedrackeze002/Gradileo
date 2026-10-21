@@ -174,6 +174,8 @@ export interface StoredResponse {
   revealed?: boolean;
   timeMs?: number;
   at?: string;
+  /** A written response's working on the answer canvas (encodeCanvas in ink.ts). */
+  canvas?: string;
   /** Manual (teacher) score for 'manual' items, 0..1 */
   manualScore?: number | null;
   /** Teacher comment on this item. */

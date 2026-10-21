@@ -198,7 +198,7 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
 
   if (!item) return <PageSpinner />;
 
-  const answered = (i: number) => (responses[i]?.answers ?? []).some((x) => x && x.trim());
+  const answered = (i: number) => !!responses[i]?.canvas || (responses[i]?.answers ?? []).some((x) => x && x.trim());
   const unanswered = items.filter((_, i) => !answered(i)).length;
   const isManual = item.parts.some((p) => p.answer.kind === 'manual');
 
@@ -308,6 +308,8 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
             item={item}
             responses={resp.answers}
             onChange={(answers) => !checked && update({ answers })}
+            canvas={resp.canvas}
+            onCanvasChange={(canvas) => !checked && update({ canvas })}
             result={instant ? result : result?.parts.some((p) => p.invalid) ? result : null}
             locked={checked}
             showAnswers={checked && !!resp.revealed}

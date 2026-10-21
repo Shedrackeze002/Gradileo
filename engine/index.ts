@@ -10,3 +10,4 @@ export * from './submit.ts';
 export * from './reminders.ts';
 export * from './actions.ts';
 export * from './integrity.ts';
+export * from './ink.ts';

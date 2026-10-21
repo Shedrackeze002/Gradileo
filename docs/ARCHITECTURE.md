@@ -81,11 +81,18 @@ fill the slide (CSS `zoom`, binary search between 0.6 and 1.3); items not yet re
 space, so nothing jumps while a slide builds. Builds and transitions are CSS animations in
 `index.css` (`fx-*`, `tx-*`), switched off by the reduced-motion setting.
 
-The whiteboard (`src/features/whiteboard/`, `src/lib/ink.ts`) stores vector ink in board units,
-so boards look the same on any screen. Pointer Events give one path for pen, mouse and touch:
-pen pressure sets the width, a stylus's eraser end erases, and palm rejection ignores fingers once
-a pen is used, ignores broad contacts, and lets a pen replace a resting hand's stroke. Boards are
-saved to `boards` (teacher-only unless shared with the class).
+The whiteboard (`src/features/whiteboard/`, drawing in `src/lib/ink.ts`, stroke data in
+`engine/ink.ts`) stores vector ink in board units, so boards look the same on any screen. Pointer
+Events give one path for pen, mouse and touch: pen pressure sets the width, a stylus's eraser end
+erases, and palm rejection ignores fingers once a pen is used, ignores broad contacts, and lets a
+pen replace a resting hand's stroke. Boards are saved to `boards` (teacher-only unless shared with
+the class).
+
+Written responses are answered on the same ink (`CanvasAnswer.tsx`), with a Type tab beside the
+canvas. The working is kept in the response's `canvas` field as compact text (`encodeCanvas`:
+whole board units, each point a step from the one before, pressure in tenths; at most four pages
+and 60,000 characters), so it fits in the submission's size limit. `grade-submission` decodes and
+re-encodes it within those limits (`cleanCanvas`) before saving a submitted attempt.
 
 ## Live class questions (`src/features/live/`)
 

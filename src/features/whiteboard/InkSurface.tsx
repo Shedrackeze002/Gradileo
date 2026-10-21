@@ -28,6 +28,8 @@ interface Props {
   onPen?: () => void;
   /** When false the ink is shown but clicks pass through to whatever is underneath. */
   active: boolean;
+  /** Smallest gap between recorded points, in board units (larger keeps saved ink smaller). */
+  pointGap?: number;
   label: string;
   className?: string;
 }
@@ -42,7 +44,7 @@ interface Active {
 
 const PALM_AREA = 45 * 45;
 
-export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, background = 'plain', penOnly, onPen, active, label, className }: Props) {
+export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, background = 'plain', penOnly, onPen, active, pointGap, label, className }: Props) {
   const box = useRef<HTMLDivElement>(null);
   const base = useRef<HTMLCanvasElement>(null);
   const live = useRef<HTMLCanvasElement>(null);
@@ -179,7 +181,7 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
       eraseAt(x, y);
       return;
     }
-    a.builder = new StrokeBuilder(l.mode === 'highlighter' ? 'highlighter' : 'pen', l.color, l.mode === 'highlighter' ? l.size * 1.5 : l.size);
+    a.builder = new StrokeBuilder(l.mode === 'highlighter' ? 'highlighter' : 'pen', l.color, l.mode === 'highlighter' ? l.size * 1.5 : l.size, pointGap);
     a.builder.add(x, y, pointerPressure(e.pointerType, e.pressure));
     cur.current = a;
     drawLive();

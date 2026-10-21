@@ -7,6 +7,7 @@ import { Markdown } from '@/components/math/Markdown.tsx';
 import { MathInput, type MathMode } from '@/components/math/MathInput.tsx';
 import { Figure } from '@/components/figures/Figure.tsx';
 import { cn } from '@/lib/cn.ts';
+import { CanvasAnswer, CanvasAnswerView } from '@/features/whiteboard/CanvasAnswer.tsx';
 import { GraphInput } from './GraphInput.tsx';
 
 export interface QuestionViewProps {
@@ -19,14 +20,20 @@ export interface QuestionViewProps {
   onEnter?: () => void;
   header?: React.ReactNode;
   autoFocus?: boolean;
+  /** A written response's working on the answer canvas (encodeCanvas). */
+  canvas?: string;
+  /** Given where the canvas is saved: written responses can then be solved on a canvas. */
+  onCanvasChange?: (canvas: string | undefined) => void;
 }
 
-export function QuestionView({ item, responses, onChange, result, locked, showAnswers, onEnter, header, autoFocus }: QuestionViewProps) {
+export function QuestionView({ item, responses, onChange, result, locked, showAnswers, onEnter, header, autoFocus, canvas, onCanvasChange }: QuestionViewProps) {
   const set = (i: number, v: string) => {
     const next = item.parts.map((_, j) => responses[j] ?? '');
     next[i] = v;
     onChange(next);
   };
+  // One canvas per question, with its first written part.
+  const canvasPart = item.parts.findIndex((p) => p.answer.kind === 'manual');
   return (
     <div className="space-y-5" data-question="">
       {header}
@@ -52,6 +59,8 @@ export function QuestionView({ item, responses, onChange, result, locked, showAn
             onEnter={onEnter}
             autoFocus={autoFocus && i === 0}
             functions={FUNCTION_COURSES.test(item.skillId)}
+            canvas={i === canvasPart ? canvas : undefined}
+            onCanvas={i === canvasPart ? onCanvasChange : undefined}
           />
         ))}
       </div>
@@ -88,6 +97,8 @@ function PartInput({
   onEnter,
   autoFocus,
   functions,
+  canvas,
+  onCanvas,
 }: {
   part: Part;
   value: string;
@@ -98,6 +109,8 @@ function PartInput({
   onEnter?: () => void;
   autoFocus?: boolean;
   functions?: boolean;
+  canvas?: string;
+  onCanvas?: (canvas: string | undefined) => void;
 }) {
   const spec = part.answer;
   const status = result && !result.invalid ? (result.correct ? 'correct' : 'incorrect') : null;
@@ -147,7 +160,11 @@ function PartInput({
       );
       break;
     case 'manual':
-      input = (
+      input = locked && canvas ? (
+        <CanvasAnswerView text={value} canvas={canvas} />
+      ) : onCanvas && !locked ? (
+        <CanvasAnswer text={value} onText={onChange} canvas={canvas} onCanvas={onCanvas} placeholder="Write your answer. Explain your reasoning in full sentences." />
+      ) : (
         <textarea
           className="input min-h-[140px] leading-relaxed"
           value={value}
