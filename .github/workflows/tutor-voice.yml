@@ -1,0 +1,161 @@
+name: Tutor voice
+
+# Records the AI tutor's narration of every lesson in the explainer videos' voice
+# (video/tools/tutor-voice.ts) and publishes each course's recordings as the files of a release
+# named tutor-voice-<course folder>, for example tutor-voice-math10c. The deploy workflow copies
+# them into the site at /tutor/, where the tutor plays them. When a run records anything new, it
+# starts a deploy.
+#
+# MiniMax writes the tutor's lines when the repository secret MINIMAX_API_KEY is set (the model
+# and address can be changed with the repository variables MINIMAX_MODEL and MINIMAX_BASE_URL).
+# Without the key the tutor reads each step from the slide, and the next run with the key has
+# MiniMax write those slides and records them again.
+#
+# It runs after a merge that changes the lessons, their videos or the tutor; every night, to finish
+# courses that a run's time limit cut short; and by hand (Actions → Tutor voice → Run workflow).
+# A lesson whose recording would not change is skipped.
+
+on:
+  workflow_dispatch:
+    inputs:
+      courses:
+        description: Course folders to record, separated by spaces, such as "math10c math5" (empty for every course)
+        required: false
+        default: ''
+  # Runs the workflow as it is on main and checks out main, never a pull request's own code.
+  pull_request_target:
+    types: [closed]
+    branches: [main]
+    paths:
+      - 'src/content/**'
+      - 'engine/ai/tutor.ts'
+      - 'src/features/lessons/slides.ts'
+      - 'src/features/tutor/tutorSlides.ts'
+      - 'src/video/words.ts'
+      - 'video/lib/narrate.ts'
+      - 'video/lib/tutor-lessons.ts'
+      - 'video/tools/tutor-voice.ts'
+  schedule:
+    - cron: '23 6 * * *'
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: tutor-voice
+  cancel-in-progress: false
+
+jobs:
+  courses:
+    if: github.event_name != 'pull_request_target' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    outputs:
+      list: ${{ steps.list.outputs.list }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - id: list
+        env:
+          WANTED: ${{ github.event.inputs.courses }}
+        run: |
+          list=${WANTED:-$(ls -d engine/curriculum/math*/ | xargs -n1 basename)}
+          for c in $list; do
+            if [[ ! "$c" =~ ^math[0-9a-z-]+$ ]] || [ ! -d "engine/curriculum/$c" ]; then echo "Unknown course folder: $c"; exit 1; fi
+          done
+          echo "list=$(printf '%s\n' $list | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
+
+  record:
+    needs: courses
+    runs-on: ubuntu-latest
+    # The recording stops between lessons after 300 minutes; the next run carries on.
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        course: ${{ fromJson(needs.courses.outputs.list) }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TAG: tutor-voice-${{ matrix.course }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            video/package-lock.json
+      - run: npm ci
+      - run: npm ci
+        working-directory: video
+      - name: Install FFmpeg
+        run: command -v ffmpeg || (sudo apt-get update -q && sudo apt-get install -y -q ffmpeg)
+      - name: Keep the voice model between runs
+        uses: actions/cache@v4
+        with:
+          path: video/.cache/models
+          key: kokoro-82m-v1.0-onnx
+      - name: Get the last recordings' manifests
+        run: |
+          mkdir -p previous out
+          if gh release view "$TAG" > /dev/null 2>&1; then gh release download "$TAG" --pattern '*.json' --dir previous; fi
+      - name: Record
+        env:
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL }}
+          MINIMAX_BASE_URL: ${{ vars.MINIMAX_BASE_URL }}
+        run: npx tsx --tsconfig tsconfig.json video/tools/tutor-voice.ts "${{ matrix.course }}" --out out --previous previous --minutes 300
+      # Publishes what was recorded even when some lessons failed (the run is still marked failed).
+      - name: Publish
+        id: publish
+        if: ${{ !cancelled() }}
+        run: |
+          shopt -s nullglob
+          files=(out/*)
+          if [ ${#files[@]} -eq 0 ]; then echo "Nothing new for ${{ matrix.course }}."; exit 0; fi
+          gh release view "$TAG" > /dev/null 2>&1 || gh release create "$TAG" --latest=false --title "Tutor voice: ${{ matrix.course }}" \
+            --notes "The AI tutor's recorded narration of each lesson in ${{ matrix.course }}, made by the Tutor voice workflow. The site serves these files at /tutor/."
+          gh release upload "$TAG" out/* --clobber
+          # Remove recordings that no manifest uses any more.
+          node -e '
+            const fs = require("fs");
+            const audio = {};
+            for (const dir of ["previous", "out"]) for (const f of fs.readdirSync(dir)) if (f.endsWith(".json")) audio[f] = JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8")).audio;
+            fs.writeFileSync("keep.txt", Object.values(audio).join("\n") + "\n");'
+          for name in $(gh release view "$TAG" --json assets -q '.assets[].name' | grep '\.mp3$'); do
+            grep -qx "$name" keep.txt || gh release delete-asset "$TAG" "$name" --yes
+          done
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Mark the course as changed
+        if: ${{ !cancelled() && steps.publish.outputs.changed == 'true' }}
+        run: echo "${{ matrix.course }}" > changed.txt
+      - if: ${{ !cancelled() && steps.publish.outputs.changed == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: changed-${{ matrix.course }}
+          path: changed.txt
+          retention-days: 1
+
+  deploy:
+    # Puts the new recordings on the site, even when some courses failed.
+    needs: record
+    if: always() && needs.record.result != 'skipped'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        # No course marked as changed means there is nothing to download.
+        continue-on-error: true
+        with:
+          pattern: changed-*
+          path: changed
+          merge-multiple: true
+      - name: Deploy the site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(ls -A changed 2> /dev/null)" ]; then echo "No new recordings."; exit 0; fi
+          gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY" --ref main

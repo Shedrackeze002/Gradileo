@@ -541,18 +541,32 @@ items ship or decisions change.
   click start and the class gets presented to them as if a teacher was anchoring"). Built: every
   student (self-paced or in a class) can press **Start with your AI tutor** on a lesson or on their
   home page. The tutor presents the lesson's slides like a teacher: it builds each slide step by
-  step and says what to notice at every step, out loud in the device's own voice (the owner chose
-  the browser voice) with captions on screen; stops at each "Your turn" question, cheers a right
+  step and says what to notice at every step, out loud with captions on screen; stops at each "Your turn" question, cheers a right
   answer and helps with a wrong one ("Explain my mistake"); introduces and plays the explainer
   videos; and answers the student's own questions at any point ("Ask your tutor"). The student can
-  pause, go back, skip, replay, slow it down, choose the voice or turn it off. MiniMax writes the
+  pause, go back, skip, replay, slow it down or turn the voice off. MiniMax writes the
   narration for runs of slides through the new `ai-tutor` Edge Function, which saves it
   (`tutor_scripts`), so each lesson is written once and later students get it at once; without the
   AI, the tutor reads from the slides. Hourly limits per student; questions are not stored, and no
   names are sent (privacy policy updated). The AI now uses `MiniMax-M3.1-Flash` (generally available
-  since 19 October 2026). Next: write the narration for every lesson ahead of time with a batch
-  tool, so no student waits for the first one; let the tutor ask its own follow-up question after a
-  wrong answer; a better voice later (our explainer-video voice pre-recorded, or MiniMax's).
+  since 19 October 2026).
+- The AI tutor speaks with the explainer videos' voice (the owner, 21 October 2026: the device's
+  voice "is terrible … I prefer the voice in the videos, the pacing, pausing, voice modulation,
+  intonation"). The video voice (Kokoro) runs about four times slower than real time inside a
+  browser (measured), so it is recorded ahead of time instead: the **Tutor voice** workflow
+  (`.github/workflows/tutor-voice.yml`, `video/tools/tutor-voice.ts`) builds every lesson's slides
+  as a self-paced student sees them, has MiniMax write what the tutor says at each step, voices it
+  at the videos' calm pace with their pronunciation fixes, and publishes one MP3 and a manifest per
+  lesson as a release per course; the deploy copies them to gradileo.com/tutor/. The tutor plays
+  each line from the recording (the speed button changes its pace); praise, the "not quite" help
+  and its reply to a question are recorded too. A slide the recording does not have (a teacher's
+  own resource, or a slide changed since) shows its words on screen. The device voice is gone.
+  It runs after merges that change lessons or the tutor, nightly, and by hand. **Owner:** add the
+  repository secret `MINIMAX_API_KEY` (Settings → Secrets and variables → Actions) so MiniMax
+  writes the lines; until then the tutor reads each step from the slide, and the next run with the
+  key rewrites and re-records those slides. Next: speak the tutor's answers to questions too
+  (today they are written in the chat); record approved teacher edits of a lesson; let the tutor
+  ask its own follow-up question after a wrong answer.
 - Self-paced study, next steps: let the AI write the student coach's note on the home page (today
   it comes from the offline analyst); store placement results on the server (today they stay on
   the device); let a student leave a self-paced course; and email the AI tutor's weekly summary.
