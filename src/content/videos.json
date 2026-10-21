@@ -11197,6 +11197,446 @@
       }
     ]
   },
+  "m7-1-1-b": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 2: Rules That Use the Last Digits",
+    "duration": 329,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Every ten shares evenly",
+        "t": 21.484
+      },
+      {
+        "title": "Rules for 2, 5 and 10",
+        "t": 61.411
+      },
+      {
+        "title": "Why the last two digits for 4",
+        "t": 123.411
+      },
+      {
+        "title": "Testing 5316",
+        "t": 179.024
+      },
+      {
+        "title": "Watch out",
+        "t": 236.712
+      },
+      {
+        "title": "Your turn",
+        "t": 268.697
+      },
+      {
+        "title": "Summary",
+        "t": 299.403
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1-b:q",
+        "t": 275.491,
+        "prompt": "Which number is divisible by $4$?",
+        "choices": [
+          "$2516$",
+          "$3418$",
+          "$5730$",
+          "$1126$"
+        ],
+        "answer": 0,
+        "working": "The last two digits of $2516$ make $16 = 4 \\times 4$, so $2516$ is divisible by $4$. The others end in $18$, $30$ and $26$, which are not multiples of $4$."
+      }
+    ]
+  },
+  "m7-1-1-c": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 3: Rules That Use the Digit Sum",
+    "duration": 379,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The digit sum",
+        "t": 22.595
+      },
+      {
+        "title": "Why it works",
+        "t": 64.653
+      },
+      {
+        "title": "The rule for 6",
+        "t": 118.795
+      },
+      {
+        "title": "Testing 4536",
+        "t": 149.646
+      },
+      {
+        "title": "Testing 7341",
+        "t": 191.803
+      },
+      {
+        "title": "Watch out",
+        "t": 236.825
+      },
+      {
+        "title": "A missing digit",
+        "t": 271.495
+      },
+      {
+        "title": "Your turn",
+        "t": 318.42
+      },
+      {
+        "title": "Summary",
+        "t": 349.511
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1-c:q",
+        "t": 325.279,
+        "prompt": "Which number is divisible by $6$?",
+        "choices": [
+          "$412$",
+          "$735$",
+          "$928$",
+          "$654$"
+        ],
+        "answer": 3,
+        "working": "$654$ ends in $4$, so it is even, and its digit sum is $6 + 5 + 4 = 15$, which is divisible by $3$. It passes both tests, so it is divisible by $6$. $735$ passes the test for $3$, but it is odd."
+      }
+    ]
+  },
+  "m7-1-1-d": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 4: Sorting Numbers and Sharing Equally",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A Carroll diagram",
+        "t": 20.994
+      },
+      {
+        "title": "Sorting the numbers",
+        "t": 52.672
+      },
+      {
+        "title": "A Venn diagram",
+        "t": 119.795
+      },
+      {
+        "title": "Teams of nine",
+        "t": 160.045
+      },
+      {
+        "title": "Your turn",
+        "t": 200.999
+      },
+      {
+        "title": "Summary",
+        "t": 237.195
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1-d:q",
+        "t": 212.281,
+        "prompt": "A Carroll diagram sorts numbers by $3$ and by $4$. Where does $222$ go?",
+        "choices": [
+          "Divisible by $3$ and by $4$",
+          "Divisible by $3$, not by $4$",
+          "Divisible by $4$, not by $3$",
+          "Divisible by neither"
+        ],
+        "answer": 1,
+        "working": "The digit sum of $222$ is $6$, which is divisible by $3$. The last two digits make $22$, which is not a multiple of $4$. So $222$ is divisible by $3$ but not by $4$."
+      }
+    ]
+  },
+  "m7-1-1-e": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 5: Why We Cannot Divide by Zero",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Division undoes multiplication",
+        "t": 20.551
+      },
+      {
+        "title": "Trying to divide by zero",
+        "t": 51.857
+      },
+      {
+        "title": "Sharing into zero groups",
+        "t": 92.405
+      },
+      {
+        "title": "Dividing zero is fine",
+        "t": 124.112
+      },
+      {
+        "title": "Watch out",
+        "t": 150.283
+      },
+      {
+        "title": "Your turn",
+        "t": 181.751
+      },
+      {
+        "title": "Summary",
+        "t": 211.114
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1-e:q",
+        "t": 188.196,
+        "prompt": "Which of these has **no** answer?",
+        "choices": [
+          "$0 \\div 8$",
+          "$8 \\div 8$",
+          "$8 \\div 0$",
+          "$0 \\div 1$"
+        ],
+        "answer": 2,
+        "working": "$8 \\div 0$ would need a number that gives $8$ when multiplied by $0$, and there is none. $0 \\div 8 = 0$, because $0 \\times 8 = 0$."
+      }
+    ]
+  },
+  "m7-1-2": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 1: Fractions Are Divisions",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The fraction bar",
+        "t": 29.792
+      },
+      {
+        "title": "Terminating decimals",
+        "t": 58.189
+      },
+      {
+        "title": "An equivalent fraction",
+        "t": 98.843
+      },
+      {
+        "title": "By dividing",
+        "t": 137.519
+      },
+      {
+        "title": "A mixed number",
+        "t": 195.512
+      },
+      {
+        "title": "Your turn",
+        "t": 228.51
+      },
+      {
+        "title": "Summary",
+        "t": 260.926
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2:q",
+        "t": 234.572,
+        "prompt": "Write $\\dfrac{3}{5}$ as a decimal.",
+        "choices": [
+          "$3.5$",
+          "$0.35$",
+          "$0.53$",
+          "$0.6$"
+        ],
+        "answer": 3,
+        "working": "$5 \\times 20 = 100$, so $\\dfrac35 = \\dfrac{60}{100} = 0.6$. Dividing gives the same answer: $3 \\div 5 = 0.6$."
+      }
+    ]
+  },
+  "m7-1-2-b": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 2: Repeating Decimals",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dividing 5 by 11",
+        "t": 15.936
+      },
+      {
+        "title": "Repeating decimals",
+        "t": 85.368
+      },
+      {
+        "title": "Bar notation",
+        "t": 114.605
+      },
+      {
+        "title": "One third",
+        "t": 144.606
+      },
+      {
+        "title": "Rounding instead",
+        "t": 180.783
+      },
+      {
+        "title": "Your turn",
+        "t": 221.695
+      },
+      {
+        "title": "Summary",
+        "t": 252.988
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-b:q",
+        "t": 231.006,
+        "prompt": "Which shows $0.272727\\ldots$ in bar notation?",
+        "choices": [
+          "$0.\\overline{27}$",
+          "$0.2\\overline{7}$",
+          "$0.27$",
+          "$0.\\overline{272}$"
+        ],
+        "answer": 0,
+        "working": "The block $27$ repeats, so both digits go under the bar: $0.\\overline{27}$. $0.2\\overline{7}$ means $0.27777\\ldots$, where only the $7$ repeats."
+      }
+    ]
+  },
+  "m7-1-2-c": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 3: Repeats That Start Later",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One sixth",
+        "t": 20.778
+      },
+      {
+        "title": "Only the 6 goes under the bar",
+        "t": 66.545
+      },
+      {
+        "title": "Watch out",
+        "t": 88.459
+      },
+      {
+        "title": "Patterns worth knowing",
+        "t": 118.435
+      },
+      {
+        "title": "Your turn",
+        "t": 168.947
+      },
+      {
+        "title": "Summary",
+        "t": 200.211
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-c:q",
+        "t": 176.905,
+        "prompt": "Write $\\dfrac{7}{9}$ as a decimal.",
+        "choices": [
+          "$0.79$",
+          "$0.\\overline{7}$",
+          "$0.7\\overline{9}$",
+          "$0.\\overline{79}$"
+        ],
+        "answer": 1,
+        "working": "One ninth is $0.\\overline{1}$ and two ninths is $0.\\overline{2}$: the repeating digit is the numerator. So $\\dfrac79 = 0.777\\ldots = 0.\\overline{7}$."
+      }
+    ]
+  },
+  "m7-1-2-d": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 4: Which Fractions Terminate?",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Prime factors",
+        "t": 18.08
+      },
+      {
+        "title": "The test",
+        "t": 52.126
+      },
+      {
+        "title": "Why it works",
+        "t": 80.899
+      },
+      {
+        "title": "Terminate or repeat?",
+        "t": 128.008
+      },
+      {
+        "title": "Simplify first",
+        "t": 166.583
+      },
+      {
+        "title": "Your turn",
+        "t": 203.065
+      },
+      {
+        "title": "Summary",
+        "t": 233.912
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-d:q",
+        "t": 210.305,
+        "prompt": "Which fraction is a **terminating** decimal?",
+        "choices": [
+          "$\\dfrac{1}{7}$",
+          "$\\dfrac{2}{15}$",
+          "$\\dfrac{6}{15}$",
+          "$\\dfrac{4}{9}$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{6}{15} = \\dfrac{2}{5}$ in lowest terms, and $5$ is the only prime factor of the denominator, so it terminates: $0.4$. $\\dfrac{2}{15}$ is already in lowest terms, and $15 = 3 \\times 5$ has a $3$, so it repeats."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
