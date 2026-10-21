@@ -215,7 +215,12 @@ Lessons learned while scripting (the script check does not catch these):
 - The voice blurs a few phrases into other words: "In proofs" (heard as "Improves"), "Congruent
   figures" ("Congrant"), "prove congruence," ("Congress"), "the rate r" ("the radar"), "halve" ("have"), "made to look huge" ("made to a huge"; "made to seem huge" is clear), "A lease" at the start of a sentence ("Elise"; "A vehicle lease" or "Every lease" is clear), "a Sudoku" ("pseudo-ku"; "Sudoku puzzles" or "In Sudoku" is clear), "Maya leases" ("Maya Lisa's"), "is x itself" before more words ("is exit self"; "is just the value of x" is clear), "antidifferentiate" after a full stop or a comma ("and to differentiate", the opposite; "find the antiderivative" is clear), "The sign is wrong" next to "sine" (sign and sine sound the same; "is missing a negative" is clear), "its slices are" ("it slices our"; "each slice is" is clear), "ate" before a number ("ate two eighths" is heard as "eight, two eighths"; "eats" is clear), a count of a number in the plural ("twenty sixes" is heard as "26s"; "twenty groups of six" is clear), an acronym with 's ("SUV's" is read as the word "suvs"; "the SUV cost" is clear), "too" after a letter, a number or "zero" ("approaches zero too" is heard as "zero two", "find y too" as "y2", and ", two." at the end of a line as "too"; "as well" is clear), a short line that opens "It is negative" ("Air is negative"; "The answer is negative" is clear), the names Zainab ("Zaina") and Luis ("Lewis"), "boy" ("buy" or "by", whatever the spelling: use other groups, such as teachers and students), "Rewrite"
   at the start of a sentence ("We're right") and the name Rhea ("Rhea takes" came out "retakes";
-  Maya is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
+  Maya is clear), the name Aiyana (blurred; Maya is clear), the short money form ("two dollars
+  forty" is unclear; "two dollars and forty cents" is clear) and two numbers after "the point at"
+  ("the point at six, sixteen" is heard as "six hundred sixteen"; "the point with x equal to six
+  and y equal to sixteen" is clear), "Let p be" ("Let PB"; "Let p stand for" is clear), the name
+  Kiran ("Curran"; Priya is clear), "Maya counts" ("My accounts"), "pup tent" ("pop tent") and
+  "forty sevenths" ("47th"; "forty over seven" is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
   the line ("Figures that are congruent…") and check it with `video/tools/hear.ts`.
 - Say a minus sign in front of a bracket or a whole fraction as "the negative of" (or "negative,"
@@ -242,7 +247,9 @@ videos, so a word fixed for the videos is fixed for the tutor as well. The *Tuto
 runs it for every course and publishes the files; see docs/SETUP.md, section 3.4. To try one
 lesson here: `npx tsx --tsconfig tsconfig.json video/tools/tutor-voice.ts m10c-1-1 --out
 video/out/tutor` (MiniMax writes the lines when `MINIMAX_API_KEY` is set; otherwise the tutor
-reads each step from the slide).
+reads each step from the slide). A slide whose MiniMax lines fail the checks in
+`engine/ai/tutorCheck.ts` (a number the slide does not have, a wrong calculation, "and" inside a
+whole number, a line said one step early or late) is read from the slide, and the log names it.
 
 ## Uploading to YouTube
 

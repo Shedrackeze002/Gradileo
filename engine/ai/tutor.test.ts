@@ -13,8 +13,10 @@ import {
   PRAISE_PHRASES,
   questionPrompt,
   scriptPrompt,
+  slideProblems,
   speakable,
   TUTOR_PHRASES,
+  TUTOR_PROMPT_VERSION,
   TUTOR_VOICE_VERSION,
   tutorSlideKey,
   writeTutorScript,
@@ -52,6 +54,14 @@ describe('maths in words', () => {
     expect(speakable('It costs \\$5.')).toBe('It costs $5.');
     expect(speakable('| Side | Length |\n|---|---|\n| a | 3 |')).toBe('Side, Length. a, 3.');
     expect(speakable('First.\n\nSecond')).toBe('First. Second.');
+  });
+
+  it('says a big number as one number, and points at working set out in columns', () => {
+    // With its spaces, "4 572 306" would be said as three numbers.
+    expect(speakable('The chart shows $4\\,572\\,306$ and $70\\,000$.')).toBe('The chart shows 4572306 and 70000.');
+    expect(speakable('$$\\begin{array}{r}4\\,\\overset{1}{5}\\,6 \\\\ +\\ 2\\,3\\,4 \\\\ \\hline 6\\,9\\,0\\end{array}$$')).toBe('Look at how the working is set out.');
+    expect(mathToWords('f(x) = \\begin{cases} x^2 & x < 0 \\\\ 2x & x \\ge 0 \\end{cases}')).toBe('f(x) equals x squared when x is less than 0; 2x when x is greater than or equal to 0');
+    expect(mathToWords('\\overset{4}{\\cancel{5}}\\phantom{0}3')).toBe('5 3');
   });
 });
 
@@ -103,6 +113,16 @@ describe("the model's output", () => {
     expect(() => parseScript({ nothing: true }, chunk)).toThrow();
   });
 
+  it('places numbered beats by their step, and reads a slide from the slide when its lines fail the checks', () => {
+    const numbered = parseScript({ slides: [{ id: 's0-0', beats: [{ n: 2, say: 'So the area is one half of b times h.' }, { n: 1, say: 'A triangle is exactly half of a parallelogram.' }] }] }, chunk);
+    expect(numbered.slides[1]).toEqual({ id: 's0-0', beats: ['A triangle is exactly half of a parallelogram.', 'So the area is one half of b times h.'] });
+    // A number the slide does not have, and a line one step early.
+    const wrong = parseScript({ slides: [{ id: 's0-0', beats: ['A triangle is a third of a parallelogram, about 30 of them.', 'Next we find the area.'] }] }, chunk);
+    expect(wrong.slides[1].beats).toEqual(offlineScript(chunk).slides[1].beats);
+    expect(wrong.slides[1].rejected?.join()).toMatch(/30 is not on the slide.*line 2 is not about its step|line 2 is not about its step.*30 is not on the slide/);
+    expect(slideProblems(chunk.slides[1], chunk.lessonTitle, ['A triangle is half of a parallelogram.', 'So A equals one half b h.'])).toEqual([]);
+  });
+
   it('reads an answer, with spoken words for the voice', () => {
     expect(parseAnswer({ show: 'Use $\\frac{1}{2}bh$.', say: 'Use one half of base times height.' })).toEqual({ show: 'Use $\\frac{1}{2}bh$.', say: 'Use one half of base times height.' });
     expect(parseAnswer({ show: 'Use $\\frac{1}{2}bh$.' }).say).toBe('Use 1 over 2 bh.');
@@ -114,7 +134,10 @@ describe("the model's output", () => {
     expect(p.system).toMatch(/exactly one beat per step/);
     expect(p.system).toMatch(/\[YOUR TURN\][\s\S]*Never give or hint at its answer/);
     expect(p.system).toMatch(/never LaTeX/);
+    expect(p.system).toMatch(/Beat n is said while step n appears/);
+    expect(p.system).toMatch(/Never say "and" inside a whole number/);
     expect(p.user).toContain('"id":"s0-1"');
+    expect(p.user).toContain('{"n":2,"show":"So $A = \\\\frac{1}{2}bh$."}');
     const q = questionPrompt(normalizeQuestion({ question: 'What is the answer?', slideText: 'x' }));
     expect(q.system).toMatch(/don't give the final answer/);
   });
@@ -151,6 +174,8 @@ describe('the recorded voice', () => {
     expect(v.slides.broken).toBeUndefined();
     // A clip that ends before it starts, and a phrase the app does not know, are left out.
     expect(v.phrases).toEqual({ 'praise-1': [7.5, 9] });
+    expect(v.prompt).toBeUndefined();
+    expect(parseTutorVoice({ ...manifest, prompt: TUTOR_PROMPT_VERSION }, 'm6-9-2')?.prompt).toBe(TUTOR_PROMPT_VERSION);
   });
 
   it('refuses a manifest for another lesson or version, or with an odd file name', () => {

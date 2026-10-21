@@ -6,9 +6,10 @@
  */
 import { extractJson } from './parse.ts';
 import { minimaxChat, type MiniMaxConfig } from './minimax.ts';
+import { checkBeats, joinThousands } from './tutorCheck.ts';
 
 /** Bump when the prompt changes, so narration saved under the old prompt is written again. */
-export const TUTOR_PROMPT_VERSION = 1;
+export const TUTOR_PROMPT_VERSION = 2;
 
 export const SLIDE_KINDS = ['title', 'hook', 'content', 'example', 'check', 'summary', 'video', 'link', 'end'] as const;
 export type TutorSlideKind = (typeof SLIDE_KINDS)[number];
@@ -34,7 +35,8 @@ export interface TutorChunk {
 }
 
 export interface TutorScript {
-  slides: Array<{ id: string; beats: string[] }>;
+  /** `rejected` lists what failed the checks (tutorCheck.ts) when a slide's lines were read from the slide instead. */
+  slides: Array<{ id: string; beats: string[]; rejected?: string[] }>;
 }
 
 export interface TutorScriptResult {
@@ -191,6 +193,8 @@ const COMMANDS: Record<string, string> = {
 
 /** LaTeX maths in plain words, for the voice: `\frac{3}{4}x^2` → "3 over 4 x squared". */
 export function mathToWords(tex: string): string {
+  // In cases, "&" separates a value from the condition it holds under.
+  tex = tex.replace(/\\begin\{cases\}([\s\S]*?)\\end\{cases\}/g, (_, body: string) => body.replace(/&/g, ' \\text{when} '));
   let out = '';
   for (let i = 0; i < tex.length; ) {
     const c = tex[i];
@@ -198,7 +202,24 @@ export function mathToWords(tex: string): string {
       const m = /^\\([a-zA-Z]+|.)/.exec(tex.slice(i));
       const name = m?.[1] ?? '';
       i += 1 + name.length;
-      if (name === 'frac' || name === 'dfrac' || name === 'tfrac') {
+      if (name === 'begin' || name === 'end') {
+        // The environment's name ("aligned", "cases") is not said; an array's column spec ({r}) is skipped too.
+        const [env, j] = group(tex, i);
+        i = j;
+        if (name === 'begin' && env === 'array' && tex[i] === '{') i = group(tex, i)[1];
+        out += ' ';
+      } else if (name === 'overset' || name === 'underset' || name === 'stackrel') {
+        // A carried digit written above another is a mark on the working; only the digit below is said.
+        const [, j] = group(tex, i);
+        const [b, k] = group(tex, j);
+        out += ` ${mathToWords(b)} `;
+        i = k;
+      } else if (name === 'phantom' || name === 'hphantom' || name === 'vphantom') {
+        i = group(tex, i)[1];
+        out += ' ';
+      } else if (name === '\\') {
+        out += '; ';
+      } else if (name === 'frac' || name === 'dfrac' || name === 'tfrac') {
         const [a, j] = group(tex, i);
         const [b, k] = group(tex, j);
         out += ` ${mathToWords(a)} over ${mathToWords(b)} `;
@@ -213,7 +234,7 @@ export function mathToWords(tex: string): string {
         const [a, j] = group(tex, i);
         out += ` the ${n === '3' ? 'cube' : n && n !== '2' ? `${n}th` : 'square'} root of ${mathToWords(a)} `;
         i = j;
-      } else if (['text', 'mathrm', 'textbf', 'mathbf', 'operatorname', 'textit', 'overline', 'overrightarrow', 'vec', 'hat', 'boxed'].includes(name)) {
+      } else if (['text', 'mathrm', 'textbf', 'mathbf', 'operatorname', 'textit', 'overline', 'overrightarrow', 'vec', 'hat', 'boxed', 'cancel', 'bcancel', 'xcancel'].includes(name)) {
         const [a, j] = group(tex, i);
         out += name.startsWith('text') || name === 'mathrm' || name === 'operatorname' ? ` ${a} ` : ` ${mathToWords(a)} `;
         i = j;
@@ -260,14 +281,18 @@ export function mathToWords(tex: string): string {
       i++;
     }
   }
-  return out.replace(/\s+/g, ' ').trim();
+  return out.replace(/\s+/g, ' ').replace(/ ;/g, ';').trim();
 }
+
+/** What the voice says for working set out in columns, which it cannot read out. */
+export const WORKING = 'Look at how the working is set out.';
 
 /** Markdown with `$...$` maths as plain words for the voice. */
 export function speakable(md: string): string {
   let s = md.replace(/\r\n/g, '\n');
-  // Maths first, so a `$` for money (written `\$`) is left alone.
-  s = s.replace(/\$\$([\s\S]+?)\$\$/g, (_, m: string) => ` ${mathToWords(m)}. `);
+  // Maths first, so a `$` for money (written `\$`) is left alone. Working set out in columns (an
+  // array: column addition, long division) cannot be read aloud digit by digit, so it is pointed to.
+  s = s.replace(/\$\$([\s\S]+?)\$\$/g, (_, m: string) => (/\\begin\{array\}/.test(m) ? ` ${WORKING} ` : ` ${mathToWords(m)}. `));
   s = s.replace(/(^|[^\\])\$([^$\n]+?)\$/g, (_, pre: string, m: string) => `${pre}${mathToWords(m)}`);
   s = s.replace(/\\\$/g, '$');
   // Tables: a row is read as a list; the line under the header is dropped.
@@ -284,12 +309,15 @@ export function speakable(md: string): string {
     .replace(/^\s{0,3}>\s?/gm, '')
     .replace(/^\s*(?:[-*+]|\d+[.)])\s+/gm, '')
     .replace(/(\*\*|__|\*|`)/g, '');
-  return s
-    .split(/\n{2,}/)
-    .map((p) => p.replace(/\s+/g, ' ').trim())
-    .filter(Boolean)
-    .map((p) => (/[.!?:;]$/.test(p) ? p : `${p}.`))
-    .join(' ');
+  // "4 572 306" is one number; with its spaces the voice says three.
+  return joinThousands(
+    s
+      .split(/\n{2,}/)
+      .map((p) => p.replace(/\s+/g, ' ').trim())
+      .filter(Boolean)
+      .map((p) => (/[.!?:;]$/.test(p) ? p : `${p}.`))
+      .join(' '),
+  );
 }
 
 // ---------------------------------------------------------------- offline narration
@@ -365,6 +393,8 @@ export interface TutorVoice {
   /** Keyed by tutorSlideKey, so a slide that changes (or a teacher's own slide) is simply not found. */
   slides: Record<string, TutorVoiceSlide>;
   phrases: Partial<Record<TutorPhrase, Clip>>;
+  /** The TUTOR_PROMPT_VERSION MiniMax's lines were written with; lines from an older prompt are written again. */
+  prompt?: number;
 }
 
 /** cyrb53: a 53-bit string hash, the same in the browser and in Node. */
@@ -402,7 +432,16 @@ export function parseTutorVoice(raw: unknown, lessonId: string): TutorVoice | nu
   const phrases: Partial<Record<TutorPhrase, Clip>> = {};
   for (const [id, c] of Object.entries((o.phrases ?? {}) as Record<string, unknown>)) if (id in TUTOR_PHRASES && isClip(c)) phrases[id as TutorPhrase] = c;
   const voice = (o.voice ?? {}) as Record<string, unknown>;
-  return { v: TUTOR_VOICE_VERSION, lessonId, audio: o.audio, voice: { name: String(voice.name ?? ''), speed: Number(voice.speed) || 1 }, hash: String(o.hash ?? ''), slides, phrases };
+  return {
+    v: TUTOR_VOICE_VERSION,
+    lessonId,
+    audio: o.audio,
+    voice: { name: String(voice.name ?? ''), speed: Number(voice.speed) || 1 },
+    hash: String(o.hash ?? ''),
+    slides,
+    phrases,
+    ...(typeof o.prompt === 'number' ? { prompt: o.prompt } : {}),
+  };
 }
 
 // ---------------------------------------------------------------- prompts
@@ -412,18 +451,22 @@ const VOICE_RULES = `- Your words are read aloud by a text-to-speech voice. Writ
 
 export function scriptPrompt(chunk: TutorChunk): { system: string; user: string } {
   return {
-    system: `You are a friendly, patient mathematics tutor for school students (about 10 to 18 years old) anywhere in the English-speaking world. You are taking ONE student through a lesson on screen, the way a good teacher presents slides. Each slide shows its content in steps; for every step you write what you SAY while that step appears.
+    system: `You are a friendly, patient mathematics tutor for school students (about 10 to 18 years old) anywhere in the English-speaking world. You are taking ONE student through a lesson on screen, the way a good teacher presents slides. Each slide shows its content in numbered steps; for every step you write what you SAY while that step appears.
 Rules:
 - Talk to the student ("you", "we"), warmly and encouragingly, never patronising.
 - Teach, don't just read: say what the step shows and why it matters, in plain words. One to three short sentences per step (at most 55 words).
-- Use only the facts, numbers and examples on the slides; never invent new ones. In a worked example, explain the reasoning of each step as it appears, and give the answer only when the step shows it.
+- Beat n is said while step n appears, so it is about step n only: never sum up, repeat or run ahead to the next step. In a worked example the first step is the question, so the first beat says what is being asked, before any working.
+- Use only the facts, numbers and examples on the slides; never invent new ones, and never state a calculation or a fact the slide does not show. In a worked example, explain the reasoning of each step as it appears, and give the answer only when the step shows it.
+- Say every number exactly as the slide has it, in full, without rounding or dropping a digit: 5 273.468 is "five thousand two hundred seventy-three and four hundred sixty-eight thousandths" (or "five thousand two hundred seventy-three point four six eight"), never "five thousand two hundred seventy-three and four hundred sixty-eight".
+- Never say "and" inside a whole number: 306 is "three hundred six", not "three hundred and six". "And" is only for the decimal point.
+- Speak in full sentences; never just read out a heading or a label on its own.
 - A step that starts [YOUR TURN] is a question the student answers on screen: invite them to try it on their own and press Check. Never give or hint at its answer.
 - A step that starts [VIDEO] is an explainer video: introduce it in one sentence, then tell them to press play and press Continue when it ends.
 - A step that starts [FIGURE] is a diagram: say what to look at in it.
 - The title slide welcomes the student and says what the lesson is about; the end slide congratulates them and suggests practising the lesson's skills.
 ${VOICE_RULES}
-Output ONLY one JSON object, no prose and no code fences: {"slides":[{"id": string, "beats": [string, ...]}]}, with the slides in the order given, the same ids, and exactly one beat per step.`,
-    user: `Lesson: ${chunk.lessonTitle}${chunk.unit ? `\nUnit: ${chunk.unit}` : ''}\n\nSLIDES:\n${JSON.stringify(chunk.slides.map((s) => ({ id: s.id, kind: s.kind, title: s.title, steps: s.steps })))}`,
+Output ONLY one JSON object, no prose and no code fences: {"slides":[{"id": string, "beats": [{"n": number, "say": string}, ...]}]}, with the slides in the order given, the same ids, and exactly one beat per step, numbered like the steps.`,
+    user: `Lesson: ${chunk.lessonTitle}${chunk.unit ? `\nUnit: ${chunk.unit}` : ''}\n\nSLIDES:\n${JSON.stringify(chunk.slides.map((s) => ({ id: s.id, kind: s.kind, title: s.title, steps: s.steps.map((show, k) => ({ n: k + 1, show })) })))}`,
   };
 }
 
@@ -445,27 +488,47 @@ Output ONLY one JSON object, no prose and no code fences: {"show": string (the a
 
 /** A beat for the voice: anything that still looks like maths or Markdown is put in words. */
 function cleanBeat(v: unknown): string {
-  const t = text(v, 600);
+  // A model sometimes starts a line with the step's tag ("[VIDEO] Watch…").
+  const t = text(v, 600).replace(/^\[(YOUR TURN|VIDEO|FIGURE)\]\s*/i, '');
   if (t.includes('$') || /[*_#|`]/.test(t)) return speakable(t);
   if (/\\[a-zA-Z]/.test(t)) return mathToWords(t);
   return t;
 }
 
-/** The model's script, checked against the slides; any slide or beat it gets wrong comes from the offline narration. */
+/** What is wrong with lines written for a slide, checked against the slide's own words (tutorCheck.ts); empty when nothing is. */
+export function slideProblems(s: TutorSlide, lessonTitle: string, beats: string[]): string[] {
+  return checkBeats([lessonTitle, s.title].map(speakable), s.steps.map(speakable), beats);
+}
+
+/**
+ * The model's script, checked against the slides: a slide it gets wrong (left out, or with a line
+ * that fails the checks in tutorCheck.ts) comes from the offline narration, and a missing beat
+ * from the slide's step.
+ */
 export function parseScript(raw: unknown, chunk: TutorChunk): TutorScript {
   const offline = offlineScript(chunk);
   const got = new Map<string, unknown[]>();
   const list = raw && typeof raw === 'object' && Array.isArray((raw as { slides?: unknown }).slides) ? ((raw as { slides: unknown[] }).slides) : [];
   for (const s of list) {
     const o = (s ?? {}) as Record<string, unknown>;
-    if (typeof o.id === 'string' && Array.isArray(o.beats)) got.set(o.id, o.beats);
+    if (typeof o.id !== 'string' || !Array.isArray(o.beats)) continue;
+    // Beats come as {"n", "say"}, placed by their step number, or as plain strings in order.
+    const beats: unknown[] = [];
+    o.beats.forEach((b, k) => {
+      const n = b && typeof b === 'object' ? Number((b as Record<string, unknown>).n) : NaN;
+      const at = Number.isInteger(n) && n >= 1 && n <= LIMITS.steps ? n - 1 : k;
+      beats[at] = b && typeof b === 'object' ? (b as Record<string, unknown>).say : b;
+    });
+    got.set(o.id, beats);
   }
   if (!got.size) throw new Error('The tutor script had no slides');
   return {
     slides: chunk.slides.map((s, i) => {
-      const beats = got.get(s.id);
+      const written = got.get(s.id);
       const fallback = offline.slides[i].beats;
-      return { id: s.id, beats: s.steps.map((_, k) => (beats && k < beats.length ? cleanBeat(beats[k]) : '') || fallback[k]) };
+      const beats = s.steps.map((_, k) => (written && k < written.length ? cleanBeat(written[k]) : '') || fallback[k]);
+      const rejected = slideProblems(s, chunk.lessonTitle, beats);
+      return rejected.length ? { id: s.id, beats: fallback, rejected } : { id: s.id, beats };
     }),
   };
 }

@@ -6712,6 +6712,1333 @@
       }
     ]
   },
+  "m6-3-2-c": {
+    "lessonId": "m6-3-2",
+    "title": "Powers, Part 3: Powers in a Prime Factorization",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A factor tree for 72",
+        "t": 16.591
+      },
+      {
+        "title": "Write it with powers",
+        "t": 53.692
+      },
+      {
+        "title": "From powers back to the number",
+        "t": 94.952
+      },
+      {
+        "title": "Watch out",
+        "t": 127.639
+      },
+      {
+        "title": "Your turn",
+        "t": 160.721
+      },
+      {
+        "title": "Summary",
+        "t": 195.961
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-2-c:q",
+        "t": 169.065,
+        "prompt": "What is the prime factorization of $48$, written with powers?",
+        "choices": [
+          "$2^4 \\times 3$",
+          "$2^3 \\times 6$",
+          "$4^2 \\times 3$",
+          "$2 \\times 3^4$"
+        ],
+        "answer": 0,
+        "working": "$48 = 2 \\times 2 \\times 2 \\times 2 \\times 3$. Two is a factor $4$ times, so $48 = 2^4 \\times 3$. Check: $16 \\times 3 = 48$."
+      }
+    ]
+  },
+  "m6-3-3": {
+    "lessonId": "m6-3-3",
+    "title": "Common Factors and Divisibility, Part 1: Divisibility by a Prime",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divisible",
+        "t": 17.311
+      },
+      {
+        "title": "Divisible by 5? By 7?",
+        "t": 56.781
+      },
+      {
+        "title": "The rule",
+        "t": 117.168
+      },
+      {
+        "title": "A power and its base",
+        "t": 158.318
+      },
+      {
+        "title": "Your turn",
+        "t": 186.79
+      },
+      {
+        "title": "Summary",
+        "t": 223.158
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-3:q",
+        "t": 196.286,
+        "prompt": "A number is $2 \\times 3^2 \\times 7$. Which prime is it divisible by?",
+        "choices": [
+          "$5$",
+          "$11$",
+          "$13$",
+          "$7$"
+        ],
+        "answer": 3,
+        "working": "$7$ is one of the primes in the factorization, so the number is divisible by $7$. The number is $126$, and $126 \\div 7 = 18$."
+      }
+    ]
+  },
+  "m6-3-3-b": {
+    "lessonId": "m6-3-3",
+    "title": "Common Factors and Divisibility, Part 2: Common Factors",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Common factors",
+        "t": 17.574
+      },
+      {
+        "title": "Using prime factorizations",
+        "t": 50.034
+      },
+      {
+        "title": "Every common factor",
+        "t": 104.676
+      },
+      {
+        "title": "Watch out",
+        "t": 140.566
+      },
+      {
+        "title": "Your turn",
+        "t": 178.745
+      },
+      {
+        "title": "Summary",
+        "t": 212.283
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-3-b:q",
+        "t": 186.172,
+        "prompt": "What is the greatest common factor of $18$ and $30$?",
+        "choices": [
+          "$3$",
+          "$6$",
+          "$90$",
+          "$2$"
+        ],
+        "answer": 1,
+        "working": "$18 = 2 \\times 3 \\times 3$ and $30 = 2 \\times 3 \\times 5$. They share one $2$ and one $3$, so the greatest common factor is $2 \\times 3 = 6$."
+      }
+    ]
+  },
+  "m6-3-3-c": {
+    "lessonId": "m6-3-3",
+    "title": "Common Factors and Divisibility, Part 3: Divisibility by a Composite Number",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 18.772
+      },
+      {
+        "title": "Divisible by 12? By 16?",
+        "t": 47.796
+      },
+      {
+        "title": "A product of two numbers",
+        "t": 116.429
+      },
+      {
+        "title": "Watch out",
+        "t": 161.179
+      },
+      {
+        "title": "Your turn",
+        "t": 194.695
+      },
+      {
+        "title": "Summary",
+        "t": 227.075
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-3-c:q",
+        "t": 205.251,
+        "prompt": "A number is $2 \\times 3^2 \\times 5 \\times 7$. Which number is it divisible by?",
+        "choices": [
+          "$21$",
+          "$4$",
+          "$27$",
+          "$25$"
+        ],
+        "answer": 0,
+        "working": "$21 = 3 \\times 7$, and the number has a $3$ and a $7$. It is not divisible by $4 = 2 \\times 2$ (one $2$), $27 = 3 \\times 3 \\times 3$ (two $3$s) or $25 = 5 \\times 5$ (one $5$). The number is $630$, and $630 \\div 21 = 30$."
+      }
+    ]
+  },
+  "m6-4-1": {
+    "lessonId": "m6-4-1",
+    "title": "Fractions as Quotients, Part 1: Sharing Makes a Fraction",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal sharing",
+        "t": 16.876
+      },
+      {
+        "title": "Three pizzas, four friends",
+        "t": 46.363
+      },
+      {
+        "title": "A share is a quotient",
+        "t": 93.781
+      },
+      {
+        "title": "Two pizzas, three friends",
+        "t": 126.613
+      },
+      {
+        "title": "Watch out",
+        "t": 161.495
+      },
+      {
+        "title": "Your turn",
+        "t": 187.827
+      },
+      {
+        "title": "Summary",
+        "t": 224.278
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-1:q",
+        "t": 197.066,
+        "prompt": "$4$ muffins are shared equally by $5$ friends. How much does each friend get?",
+        "choices": [
+          "$\\dfrac{5}{4}$ of a muffin",
+          "$\\dfrac{1}{5}$ of a muffin",
+          "$\\dfrac{4}{5}$ of a muffin",
+          "$\\dfrac{1}{4}$ of a muffin"
+        ],
+        "answer": 2,
+        "working": "Each friend gets $4 \\div 5 = \\tfrac{4}{5}$ of a muffin: the amount shared, $4$, on top, and the number of shares, $5$, on the bottom."
+      }
+    ]
+  },
+  "m6-4-1-b": {
+    "lessonId": "m6-4-1",
+    "title": "Fractions as Quotients, Part 2: More Than One Way to Share",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Way 1: all quarters",
+        "t": 16.482
+      },
+      {
+        "title": "Way 2: halves and quarters",
+        "t": 33.45
+      },
+      {
+        "title": "More than one whole each",
+        "t": 74.463
+      },
+      {
+        "title": "Equivalent fractions, same share",
+        "t": 123.747
+      },
+      {
+        "title": "Your turn",
+        "t": 158.31
+      },
+      {
+        "title": "Summary",
+        "t": 192.521
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-1-b:q",
+        "t": 168.716,
+        "prompt": "$7$ granola bars are shared equally by $2$ hikers. How many bars does each hiker get?",
+        "choices": [
+          "$\\dfrac{2}{7}$",
+          "$3$",
+          "$2\\dfrac{1}{2}$",
+          "$3\\dfrac{1}{2}$"
+        ],
+        "answer": 3,
+        "working": "$7 \\div 2 = \\tfrac{7}{2}$. $7 \\div 2 = 3$ R $1$, so each hiker gets $3$ whole bars, and the last bar is cut in half: $3\\tfrac{1}{2}$."
+      }
+    ]
+  },
+  "m6-4-1-c": {
+    "lessonId": "m6-4-1",
+    "title": "Fractions as Quotients, Part 3: A Fraction Is a Division",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The fraction bar",
+        "t": 20.263
+      },
+      {
+        "title": "Both directions",
+        "t": 45.884
+      },
+      {
+        "title": "Three quarters as a decimal",
+        "t": 73.863
+      },
+      {
+        "title": "On a number line",
+        "t": 139.176
+      },
+      {
+        "title": "Your turn",
+        "t": 167.191
+      },
+      {
+        "title": "Summary",
+        "t": 199.745
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-1-c:q",
+        "t": 173.072,
+        "prompt": "Write $\\dfrac{2}{5}$ as a decimal.",
+        "choices": [
+          "$2.5$",
+          "$0.4$",
+          "$0.25$",
+          "$5.2$"
+        ],
+        "answer": 1,
+        "working": "Divide the numerator by the denominator: $2 \\div 5$. $5$ does not go into $2$, so write $0$ and a decimal point. Then $20 \\div 5 = 4$, so the answer is $0.4$."
+      }
+    ]
+  },
+  "m6-4-1-d": {
+    "lessonId": "m6-4-1",
+    "title": "Fractions as Quotients, Part 4: Fractions as Decimals",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Juice in jugs",
+        "t": 15.847
+      },
+      {
+        "title": "Watch out",
+        "t": 81.241
+      },
+      {
+        "title": "Comparing shares",
+        "t": 126.458
+      },
+      {
+        "title": "Your turn",
+        "t": 184.768
+      },
+      {
+        "title": "Summary",
+        "t": 222.907
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-1-d:q",
+        "t": 194.203,
+        "prompt": "$9$ m of ribbon is cut into $4$ equal pieces. How long is each piece?",
+        "choices": [
+          "$2.25$ m",
+          "$9.4$ m",
+          "$0.44$ m",
+          "$2.5$ m"
+        ],
+        "answer": 0,
+        "working": "$9 \\div 4 = 2$ R $1$. Bring down a zero: $10 \\div 4 = 2$ R $2$. Bring down another: $20 \\div 4 = 5$. So each piece is $2.25$ m."
+      }
+    ]
+  },
+  "m6-4-2": {
+    "lessonId": "m6-4-2",
+    "title": "Adding and Subtracting Fractions, Part 1: Common Denominators",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same-size pieces",
+        "t": 23.244
+      },
+      {
+        "title": "Common denominator",
+        "t": 64.261
+      },
+      {
+        "title": "Different-size pieces",
+        "t": 84.054
+      },
+      {
+        "title": "Equivalent fractions",
+        "t": 109.261
+      },
+      {
+        "title": "Two thirds in twelfths",
+        "t": 153.799
+      },
+      {
+        "title": "Watch out",
+        "t": 177.548
+      },
+      {
+        "title": "Your turn",
+        "t": 202.828
+      },
+      {
+        "title": "Summary",
+        "t": 238.508
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-2:q",
+        "t": 211.822,
+        "prompt": "Which fraction is equal to $\\dfrac{3}{4}$ and has a denominator of $20$?",
+        "choices": [
+          "$\\dfrac{3}{20}$",
+          "$\\dfrac{12}{20}$",
+          "$\\dfrac{7}{20}$",
+          "$\\dfrac{15}{20}$"
+        ],
+        "answer": 3,
+        "working": "$4 \\times 5 = 20$, so multiply the numerator by $5$ as well: $\\tfrac{3}{4} = \\tfrac{3 \\times 5}{4 \\times 5} = \\tfrac{15}{20}$."
+      }
+    ]
+  },
+  "m6-4-2-b": {
+    "lessonId": "m6-4-2",
+    "title": "Adding and Subtracting Fractions, Part 2: Related Denominators",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Related denominators",
+        "t": 18.751
+      },
+      {
+        "title": "Quarters and twelfths",
+        "t": 53.644
+      },
+      {
+        "title": "Lowest terms",
+        "t": 90.444
+      },
+      {
+        "title": "Subtracting",
+        "t": 123.856
+      },
+      {
+        "title": "Watch out",
+        "t": 158.916
+      },
+      {
+        "title": "Your turn",
+        "t": 197.994
+      },
+      {
+        "title": "Summary",
+        "t": 228.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-2-b:q",
+        "t": 204.056,
+        "prompt": "Find $\\dfrac{1}{3} + \\dfrac{4}{9}$.",
+        "choices": [
+          "$\\dfrac{5}{12}$",
+          "$\\dfrac{5}{9}$",
+          "$\\dfrac{7}{9}$",
+          "$\\dfrac{7}{12}$"
+        ],
+        "answer": 2,
+        "working": "$3 \\times 3 = 9$, so $\\tfrac{1}{3} = \\tfrac{3}{9}$. Then $\\tfrac{3}{9} + \\tfrac{4}{9} = \\tfrac{7}{9}$."
+      }
+    ]
+  },
+  "m6-4-2-c": {
+    "lessonId": "m6-4-2",
+    "title": "Adding and Subtracting Fractions, Part 3: Denominators That Are Not Related",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Multiply the denominators",
+        "t": 18.72
+      },
+      {
+        "title": "Thirds and quarters",
+        "t": 49.769
+      },
+      {
+        "title": "Add the twelfths",
+        "t": 83.73
+      },
+      {
+        "title": "Subtracting",
+        "t": 108.383
+      },
+      {
+        "title": "A sum bigger than 1",
+        "t": 144.93
+      },
+      {
+        "title": "Finish the job",
+        "t": 182.437
+      },
+      {
+        "title": "Your turn",
+        "t": 220.049
+      },
+      {
+        "title": "Summary",
+        "t": 252.884
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-2-c:q",
+        "t": 226.078,
+        "prompt": "Find $\\dfrac{2}{5} + \\dfrac{1}{3}$.",
+        "choices": [
+          "$\\dfrac{3}{8}$",
+          "$\\dfrac{11}{15}$",
+          "$\\dfrac{3}{15}$",
+          "$\\dfrac{7}{15}$"
+        ],
+        "answer": 1,
+        "working": "$5 \\times 3 = 15$. $\\tfrac{2}{5} = \\tfrac{6}{15}$ and $\\tfrac{1}{3} = \\tfrac{5}{15}$, so the sum is $\\tfrac{11}{15}$."
+      }
+    ]
+  },
+  "m6-4-2-d": {
+    "lessonId": "m6-4-2",
+    "title": "Adding and Subtracting Fractions, Part 4: Solving Fraction Problems",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Add or subtract?",
+        "t": 18.405
+      },
+      {
+        "title": "Walking to the library",
+        "t": 48.856
+      },
+      {
+        "title": "The rest of the garden",
+        "t": 111.007
+      },
+      {
+        "title": "Your turn",
+        "t": 153.584
+      },
+      {
+        "title": "Summary",
+        "t": 190.232
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-2-d:q",
+        "t": 164.669,
+        "prompt": "A ribbon is $\\dfrac{5}{6}$ m long. Sam cuts off $\\dfrac{1}{4}$ m. How much ribbon is left?",
+        "choices": [
+          "$1\\dfrac{1}{12}$ m",
+          "$\\dfrac{4}{6}$ m",
+          "$\\dfrac{1}{2}$ m",
+          "$\\dfrac{7}{12}$ m"
+        ],
+        "answer": 3,
+        "working": "“Left” means subtract. $\\tfrac{5}{6} = \\tfrac{10}{12}$ and $\\tfrac{1}{4} = \\tfrac{3}{12}$, so $\\tfrac{10}{12} - \\tfrac{3}{12} = \\tfrac{7}{12}$ m. (With $24$ as the common denominator, $\\tfrac{14}{24} = \\tfrac{7}{12}$.)"
+      }
+    ]
+  },
+  "m6-4-3": {
+    "lessonId": "m6-4-3",
+    "title": "Multiplying Fractions and Natural Numbers, Part 1: Repeated Addition",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four groups of two thirds",
+        "t": 26.138
+      },
+      {
+        "title": "Count the thirds",
+        "t": 60.962
+      },
+      {
+        "title": "The shortcut",
+        "t": 90.995
+      },
+      {
+        "title": "Watch out",
+        "t": 119.378
+      },
+      {
+        "title": "Another one",
+        "t": 152.373
+      },
+      {
+        "title": "Your turn",
+        "t": 178.6
+      },
+      {
+        "title": "Summary",
+        "t": 209.529
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-3:q",
+        "t": 184.69,
+        "prompt": "Find $5 \\times \\dfrac{2}{7}$.",
+        "choices": [
+          "$\\dfrac{10}{7}$",
+          "$\\dfrac{10}{35}$",
+          "$\\dfrac{7}{7}$",
+          "$\\dfrac{2}{35}$"
+        ],
+        "answer": 0,
+        "working": "Multiply the numerator by $5$ and keep the denominator: $\\tfrac{5 \\times 2}{7} = \\tfrac{10}{7}$, which is $1\\tfrac{3}{7}$."
+      }
+    ]
+  },
+  "m6-4-3-b": {
+    "lessonId": "m6-4-3",
+    "title": "Multiplying Fractions and Natural Numbers, Part 2: A Fraction of a Quantity",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unit fractions",
+        "t": 17.077
+      },
+      {
+        "title": "A quarter of twelve",
+        "t": 34.361
+      },
+      {
+        "title": "Three quarters of twenty",
+        "t": 75.931
+      },
+      {
+        "title": "Using the rule",
+        "t": 105.728
+      },
+      {
+        "title": "When it does not divide evenly",
+        "t": 133.613
+      },
+      {
+        "title": "Your turn",
+        "t": 168.737
+      },
+      {
+        "title": "Summary",
+        "t": 196.032
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-3-b:q",
+        "t": 174.261,
+        "prompt": "What is $\\dfrac{2}{3}$ of $18$?",
+        "choices": [
+          "$6$",
+          "$27$",
+          "$12$",
+          "$9$"
+        ],
+        "answer": 2,
+        "working": "One third of $18$ is $18 \\div 3 = 6$, so two thirds is $2 \\times 6 = 12$. Or: $\\tfrac{2 \\times 18}{3} = \\tfrac{36}{3} = 12$."
+      }
+    ]
+  },
+  "m6-4-3-c": {
+    "lessonId": "m6-4-3",
+    "title": "Multiplying Fractions and Natural Numbers, Part 3: Bigger or Smaller?",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bigger or smaller?",
+        "t": 17.351
+      },
+      {
+        "title": "The rule",
+        "t": 51.14
+      },
+      {
+        "title": "Milk for muffins",
+        "t": 77.49
+      },
+      {
+        "title": "Who does not bring a lunch?",
+        "t": 135.598
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 174.391
+      },
+      {
+        "title": "Your turn",
+        "t": 201.504
+      },
+      {
+        "title": "Summary",
+        "t": 239.42
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-3-c:q",
+        "t": 212.397,
+        "prompt": "A recipe uses $\\dfrac{2}{3}$ cup of oats for each batch. How many cups of oats do $6$ batches need?",
+        "choices": [
+          "$\\dfrac{12}{18}$ cup",
+          "$4$ cups",
+          "$9$ cups",
+          "$\\dfrac{2}{18}$ cup"
+        ],
+        "answer": 1,
+        "working": "$6 \\times \\tfrac{2}{3} = \\tfrac{6 \\times 2}{3} = \\tfrac{12}{3} = 4$ cups. Since $\\tfrac23$ is less than $1$, the answer is less than $6$."
+      }
+    ]
+  },
+  "m6-5-1": {
+    "lessonId": "m6-5-1",
+    "title": "Equivalent Ratios and Proportions, Part 1: Ratios and Ratio Tables",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ratios compare quantities",
+        "t": 19.183
+      },
+      {
+        "title": "Order matters",
+        "t": 54.749
+      },
+      {
+        "title": "Repeating the pattern",
+        "t": 84.043
+      },
+      {
+        "title": "Equivalent ratios",
+        "t": 123.743
+      },
+      {
+        "title": "Your turn",
+        "t": 166.796
+      },
+      {
+        "title": "Summary",
+        "t": 204.386
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-1:q",
+        "t": 178.636,
+        "prompt": "A fruit punch uses $3$ cups of juice for every $5$ cups of water. Which ratio is equivalent to $3 : 5$?",
+        "choices": [
+          "$5 : 3$",
+          "$5 : 7$",
+          "$6 : 8$",
+          "$9 : 15$"
+        ],
+        "answer": 3,
+        "working": "Multiply both terms by $3$: $3 \\times 3 = 9$ and $5 \\times 3 = 15$, so $3 : 5 = 9 : 15$."
+      }
+    ]
+  },
+  "m6-5-1-b": {
+    "lessonId": "m6-5-1",
+    "title": "Equivalent Ratios and Proportions, Part 2: Checking Equivalent Ratios",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Simplest form",
+        "t": 16.904
+      },
+      {
+        "title": "Are they equivalent?",
+        "t": 60.191
+      },
+      {
+        "title": "Watch out",
+        "t": 102.411
+      },
+      {
+        "title": "Another check",
+        "t": 140.639
+      },
+      {
+        "title": "Your turn",
+        "t": 169.929
+      },
+      {
+        "title": "Summary",
+        "t": 202.035
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-1-b:q",
+        "t": 176.124,
+        "prompt": "Which pair of ratios is **equivalent**?",
+        "choices": [
+          "$6 : 8$ and $15 : 20$",
+          "$2 : 5$ and $4 : 7$",
+          "$3 : 4$ and $4 : 3$",
+          "$5 : 10$ and $10 : 15$"
+        ],
+        "answer": 0,
+        "working": "$6 : 8$ simplifies to $3 : 4$ (divide by $2$), and $15 : 20$ simplifies to $3 : 4$ (divide by $5$). The others simplify to different ratios."
+      }
+    ]
+  },
+  "m6-5-1-c": {
+    "lessonId": "m6-5-1",
+    "title": "Equivalent Ratios and Proportions, Part 3: Proportions",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Proportion",
+        "t": 18.059
+      },
+      {
+        "title": "Find the missing term",
+        "t": 43.016
+      },
+      {
+        "title": "Check your answer",
+        "t": 82.609
+      },
+      {
+        "title": "Pancakes for a crowd",
+        "t": 100.081
+      },
+      {
+        "title": "Red team and blue team",
+        "t": 136.658
+      },
+      {
+        "title": "Your turn",
+        "t": 176.207
+      },
+      {
+        "title": "Summary",
+        "t": 214.669
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-1-c:q",
+        "t": 187.927,
+        "prompt": "A recipe uses $2$ cups of rice for every $5$ cups of water. How much rice goes with $20$ cups of water?",
+        "choices": [
+          "$17$ cups",
+          "$50$ cups",
+          "$8$ cups",
+          "$10$ cups"
+        ],
+        "answer": 2,
+        "working": "The water goes from $5$ to $20$: $5 \\times 4 = 20$. So the rice goes from $2$ to $2 \\times 4 = 8$ cups."
+      }
+    ]
+  },
+  "m6-5-2": {
+    "lessonId": "m6-5-2",
+    "title": "Rates and Unit Rates, Part 1: Rates and Unit Rates",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a rate?",
+        "t": 19.625
+      },
+      {
+        "title": "A double number line",
+        "t": 50.494
+      },
+      {
+        "title": "Unit rates",
+        "t": 96.699
+      },
+      {
+        "title": "Speed of a train",
+        "t": 119.869
+      },
+      {
+        "title": "Pay per hour",
+        "t": 163.613
+      },
+      {
+        "title": "Your turn",
+        "t": 192.799
+      },
+      {
+        "title": "Summary",
+        "t": 228.376
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-2:q",
+        "t": 202.711,
+        "prompt": "A cyclist rides $45$ km in $3$ h. What is the cyclist’s speed?",
+        "choices": [
+          "$135$ km/h",
+          "$15$ km/h",
+          "$42$ km/h",
+          "$48$ km/h"
+        ],
+        "answer": 1,
+        "working": "Divide both terms by $3$: $45 \\div 3 = 15$ and $3 \\div 3 = 1$. So the speed is $15$ km/h."
+      }
+    ]
+  },
+  "m6-5-2-b": {
+    "lessonId": "m6-5-2",
+    "title": "Rates and Unit Rates, Part 2: Unit Price",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unit price",
+        "t": 14.865
+      },
+      {
+        "title": "Juice boxes",
+        "t": 31.866
+      },
+      {
+        "title": "Check it",
+        "t": 84.443
+      },
+      {
+        "title": "Watch out",
+        "t": 106.965
+      },
+      {
+        "title": "Another unit price",
+        "t": 133.384
+      },
+      {
+        "title": "Your turn",
+        "t": 171.753
+      },
+      {
+        "title": "Summary",
+        "t": 205.06
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-2-b:q",
+        "t": 180.246,
+        "prompt": "A pack of $4$ notebooks costs \\$6.00. What is the unit price?",
+        "choices": [
+          "\\$24.00",
+          "\\$0.67",
+          "\\$2.00",
+          "\\$1.50"
+        ],
+        "answer": 3,
+        "working": "Divide the cost by the number of notebooks: $6.00 \\div 4 = 1.50$, so \\$1.50 per notebook. Check: $1.50 \\times 4 = 6.00$."
+      }
+    ]
+  },
+  "m6-5-2-c": {
+    "lessonId": "m6-5-2",
+    "title": "Rates and Unit Rates, Part 3: Using Unit Rates",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The better buy",
+        "t": 17.891
+      },
+      {
+        "title": "How far in 5 hours?",
+        "t": 61.565
+      },
+      {
+        "title": "Find the one first",
+        "t": 91.94
+      },
+      {
+        "title": "Your turn",
+        "t": 124.172
+      },
+      {
+        "title": "Summary",
+        "t": 167.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-2-c:q",
+        "t": 136.837,
+        "prompt": "Store P sells $5$ pens for \\$4.00. Store Q sells $8$ pens for \\$6.00. Which store has the better buy?",
+        "choices": [
+          "Store Q, at \\$0.75 per pen",
+          "Store P, at \\$0.80 per pen",
+          "Store P, because its pack costs less in all",
+          "Both are the same buy"
+        ],
+        "answer": 0,
+        "working": "Store P: $4.00 \\div 5 = 0.80$, so \\$0.80 per pen. Store Q: $6.00 \\div 8 = 0.75$, so \\$0.75 per pen. \\$0.75 is less, so Store Q has the better buy."
+      }
+    ]
+  },
+  "m6-5-3": {
+    "lessonId": "m6-5-3",
+    "title": "Percent of a Number, Part 1: Percent Means Out of 100",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Out of 100",
+        "t": 15.841
+      },
+      {
+        "title": "A quarter of the grid",
+        "t": 50.966
+      },
+      {
+        "title": "Friendly percents",
+        "t": 82.183
+      },
+      {
+        "title": "25% of 32",
+        "t": 114.137
+      },
+      {
+        "title": "75% of 40",
+        "t": 141.759
+      },
+      {
+        "title": "Your turn",
+        "t": 165.323
+      },
+      {
+        "title": "Summary",
+        "t": 196.552
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-3:q",
+        "t": 171.495,
+        "prompt": "Find $20\\%$ of $45$.",
+        "choices": [
+          "$25$",
+          "$900$",
+          "$9$",
+          "$4.5$"
+        ],
+        "answer": 2,
+        "working": "$20\\% = \\tfrac{1}{5}$, and $\\tfrac15$ of $45$ is $45 \\div 5 = 9$."
+      }
+    ]
+  },
+  "m6-5-3-b": {
+    "lessonId": "m6-5-3",
+    "title": "Percent of a Number, Part 2: Percent as a Proportion",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A percent is a ratio",
+        "t": 16.502
+      },
+      {
+        "title": "Solve the proportion",
+        "t": 48.193
+      },
+      {
+        "title": "On a double number line",
+        "t": 81.221
+      },
+      {
+        "title": "The 10% trick",
+        "t": 113.682
+      },
+      {
+        "title": "A quick rule",
+        "t": 136.715
+      },
+      {
+        "title": "Watch out",
+        "t": 164.366
+      },
+      {
+        "title": "Your turn",
+        "t": 191.213
+      },
+      {
+        "title": "Summary",
+        "t": 220.376
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-3-b:q",
+        "t": 197.004,
+        "prompt": "Find $40\\%$ of $80$.",
+        "choices": [
+          "$2$",
+          "$32$",
+          "$40$",
+          "$320$"
+        ],
+        "answer": 1,
+        "working": "$10\\%$ of $80$ is $8$, so $40\\%$ is $4 \\times 8 = 32$. Or: $40 \\times 80 = 3{,}200$ and $3{,}200 \\div 100 = 32$."
+      }
+    ]
+  },
+  "m6-5-3-c": {
+    "lessonId": "m6-5-3",
+    "title": "Percent of a Number, Part 3: Percent Problems",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A sale",
+        "t": 16.085
+      },
+      {
+        "title": "Walking to school",
+        "t": 65.473
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 112.6
+      },
+      {
+        "title": "Your turn",
+        "t": 141.572
+      },
+      {
+        "title": "Summary",
+        "t": 176.482
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-3-c:q",
+        "t": 151.598,
+        "prompt": "A game costs \\$40. It is on sale for $10\\%$ off. What is the sale price?",
+        "choices": [
+          "\\$4",
+          "\\$30",
+          "\\$44",
+          "\\$36"
+        ],
+        "answer": 3,
+        "working": "$10\\%$ of $40$ is $40 \\div 10 = 4$, so the discount is \\$4. The sale price is $40 - 4 = 36$, so \\$36."
+      }
+    ]
+  },
+  "m6-6-1-b": {
+    "lessonId": "m6-6-1",
+    "title": "Order of Operations with Powers, Part 2: Powers Come Early",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a power means",
+        "t": 16.696
+      },
+      {
+        "title": "Picture a power",
+        "t": 52.605
+      },
+      {
+        "title": "A power and an addition",
+        "t": 83.216
+      },
+      {
+        "title": "A power and a multiplication",
+        "t": 115.057
+      },
+      {
+        "title": "Watch out",
+        "t": 145.753
+      },
+      {
+        "title": "Whose exponent?",
+        "t": 177.303
+      },
+      {
+        "title": "Your turn",
+        "t": 222.427
+      },
+      {
+        "title": "Summary",
+        "t": 256.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-1-b:q",
+        "t": 230.187,
+        "prompt": "Evaluate $2 \\times 3^{2} + 1$.",
+        "choices": [
+          "$37$",
+          "$13$",
+          "$20$",
+          "$19$"
+        ],
+        "answer": 3,
+        "working": "Power first: $3^{2} = 9$. Then multiply: $2 \\times 9 = 18$. Then add: $18 + 1 = 19$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
