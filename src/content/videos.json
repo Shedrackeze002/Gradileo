@@ -6551,6 +6551,116 @@
       }
     ]
   },
+  "m6-3-1-c": {
+    "lessonId": "m6-3-1",
+    "title": "Prime Factorization, Part 3: A Product in Many Ways",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Many products for 60",
+        "t": 21.247
+      },
+      {
+        "title": "Grouping factors",
+        "t": 64.863
+      },
+      {
+        "title": "Group to make it easy",
+        "t": 111.991
+      },
+      {
+        "title": "Another friendly pair",
+        "t": 152.222
+      },
+      {
+        "title": "Your turn",
+        "t": 171.289
+      },
+      {
+        "title": "Summary",
+        "t": 206.511
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-1-c:q",
+        "t": 178.432,
+        "prompt": "Find $4 \\times 19 \\times 25$.",
+        "choices": [
+          "$190$",
+          "$475$",
+          "$48$",
+          "$1{,}900$"
+        ],
+        "answer": 3,
+        "working": "Group the friendly pair: $(4 \\times 25) \\times 19 = 100 \\times 19 = 1{,}900$."
+      }
+    ]
+  },
+  "m6-3-2": {
+    "lessonId": "m6-3-2",
+    "title": "Powers, Part 1: Base and Exponent",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A square of tiles",
+        "t": 24.414
+      },
+      {
+        "title": "A cube of blocks",
+        "t": 56.309
+      },
+      {
+        "title": "Powers",
+        "t": 90.705
+      },
+      {
+        "title": "Reading powers",
+        "t": 129.938
+      },
+      {
+        "title": "Writing a power",
+        "t": 159.375
+      },
+      {
+        "title": "Watch out",
+        "t": 190.299
+      },
+      {
+        "title": "Your turn",
+        "t": 220.666
+      },
+      {
+        "title": "Summary",
+        "t": 252.871
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-2:q",
+        "t": 227.733,
+        "prompt": "Write $6 \\times 6 \\times 6$ as a power.",
+        "choices": [
+          "$3^6$",
+          "$6^3$",
+          "$6 \\times 3$",
+          "$6^6$"
+        ],
+        "answer": 1,
+        "working": "The factor that repeats is $6$, so the base is $6$. There are $3$ factors, so the exponent is $3$: $6 \\times 6 \\times 6 = 6^3$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
