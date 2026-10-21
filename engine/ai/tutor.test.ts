@@ -12,6 +12,7 @@ import {
   parseTutorVoice,
   PRAISE_PHRASES,
   questionPrompt,
+  sayUnits,
   scriptPrompt,
   slideProblems,
   speakable,
@@ -45,7 +46,7 @@ describe('maths in words', () => {
     expect(mathToWords('30^\\circ')).toBe('30 degrees');
     expect(mathToWords('2^{5}')).toBe('2 to the power of 5');
     expect(mathToWords('6 \\times 4 \\div 3')).toBe('6 times 4 divided by 3');
-    expect(mathToWords('\\text{area} = 12\\text{ cm}^2')).toBe('area equals 12 cm squared');
+    expect(mathToWords('\\text{area} = 12\\text{ cm}^2')).toBe('area equals 12 centimetres squared');
   });
 
   it('turns Markdown with maths into sentences', () => {
@@ -62,6 +63,19 @@ describe('maths in words', () => {
     expect(speakable('$$\\begin{array}{r}4\\,\\overset{1}{5}\\,6 \\\\ +\\ 2\\,3\\,4 \\\\ \\hline 6\\,9\\,0\\end{array}$$')).toBe('Look at how the working is set out.');
     expect(mathToWords('f(x) = \\begin{cases} x^2 & x < 0 \\\\ 2x & x \\ge 0 \\end{cases}')).toBe('f(x) equals x squared when x is less than 0; 2x when x is greater than or equal to 0');
     expect(mathToWords('\\overset{4}{\\cancel{5}}\\phantom{0}3')).toBe('5 3');
+  });
+
+  it('says units in full, as the owner heard "3 M" for 3 m and "C" for °C', () => {
+    expect(speakable('It was $-3^\\circ\\text{C}$, with $1\\text{ m}$ of snow on a $12\\text{ m}$ by $7\\text{ m}$ roof: $84\\text{ m}^2$.')).toBe(
+      'It was negative 3 degrees Celsius, with 1 metre of snow on a 12 metres by 7 metres roof: 84 square metres.',
+    );
+    expect(speakable('Rain: $5\\text{ in}$. Speed: $60\\text{ km/h}$ and $\\text{km}/\\text{h}$.')).toBe('Rain: 5 inches. Speed: 60 kilometres per hour and kilometres per hour.');
+    expect(sayUnits('Tariq worked 6 h 45 min at 14 °C. He is 6 ft 1 in tall, and 250 mL is 0.25 L.')).toBe(
+      'Tariq worked 6 hours 45 minutes at 14 degrees Celsius. He is 6 feet 1 inch tall, and 250 millilitres is 0.25 litres.',
+    );
+    // In prose "in" is a word, and in algebra 2m is two times m.
+    expect(sayUnits('Hours over 8 in a day.')).toBe('Hours over 8 in a day.');
+    expect(speakable('Solve $2m + 3 = 7$.')).toBe('Solve 2m plus 3 equals 7.');
   });
 });
 

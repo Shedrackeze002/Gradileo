@@ -596,7 +596,13 @@ items ship or decisions change.
   slide; the prompt numbers the steps and asks for one beat per numbered step, a few slides per
   request. The slide's own wording was fixed as well: big numbers written with spaces
   ("4 572 306") were said as several numbers, and working set out in columns was read out as
-  "array r 4 1 5…"; now a big number is said whole and column working is pointed to. The site
+  "array r 4 1 5…"; now a big number is said whole and column working is pointed to. With the
+  new prompt only 1 line in 556 was said on the wrong step (88 in 952 before). MiniMax drops
+  connections in bursts, so the recorder now sends one request at a time per lesson with longer
+  pauses before trying again, and records four courses at a time; slides it could not write are
+  read from the slide and written on a later run. The owner (21 October: "it is amazing, I love
+  it") heard units read as letters ("-3 C", "3 M"): units are now said in full ("negative 3
+  degrees Celsius", "3 metres", "84 square metres", "60 kilometres per hour"). The site
   serves files whole, and Safari only plays sound it can fetch in parts, so the tutor downloads a
   lesson's recording once and plays it from memory. Next: speak the tutor's answers to questions too
   (today they are written in the chat); record approved teacher edits of a lesson; let the tutor

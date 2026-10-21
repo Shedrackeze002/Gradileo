@@ -21,6 +21,7 @@ import {
   hash53,
   offlineScript,
   parseTutorVoice,
+  sayUnits,
   slideProblems,
   TUTOR_PHRASES,
   TUTOR_PROMPT_VERSION,
@@ -66,8 +67,10 @@ async function writeBeats(lessonId: string, ai: MiniMaxConfig | null, previous: 
     if (was?.ai && was.beats.length === s.steps.length && !slideProblems(s, title, was.beats).length) out.set(key, { beats: was.beats, ai: true });
     else missing.push(s);
   }
-  // A few slides a request, so the model keeps its place from step to step; two requests at a time
-  // per lesson, and a pause before trying again, to stay inside MiniMax's limits.
+  // A few slides a request, so the model keeps its place from step to step; one request at a time
+  // per lesson, and longer and longer pauses before trying again, to ride out MiniMax dropping
+  // connections when it is busy (a slide it never writes is read from the slide, and written by a
+  // later run).
   const queue = chunkSlides(missing, 4);
   const next = async (): Promise<void> => {
     const run = queue.shift();
@@ -75,8 +78,8 @@ async function writeBeats(lessonId: string, ai: MiniMaxConfig | null, previous: 
     const chunk = { lessonTitle: title, unit, slides: run };
     let script = offlineScript(chunk);
     let written = false;
-    for (let attempt = 0; ai && attempt < 3 && !written; attempt++) {
-      if (attempt) await new Promise((r) => setTimeout(r, 15_000 * attempt));
+    for (let attempt = 0; ai && attempt < 5 && !written; attempt++) {
+      if (attempt) await new Promise((r) => setTimeout(r, 20_000 * 2 ** (attempt - 1)));
       const res = await writeTutorScript(chunk, ai);
       if (res.source === 'minimax') ((script = res.script), (written = true));
       else console.error(`  ${lessonId}: MiniMax failed (${res.error ?? 'no reason'}), attempt ${attempt + 1}`);
@@ -89,9 +92,12 @@ async function writeBeats(lessonId: string, ai: MiniMaxConfig | null, previous: 
     });
     return next();
   };
-  await Promise.all([next(), next()]);
+  await next();
   return out;
 }
+
+/** A line as the voice says it: units in full ("3 m" is "3 metres"), then the videos' respellings. */
+const spoken = (line: string) => speechText(sayUnits(line));
 
 /** Records one lesson: every slide's lines in deck order, then the set phrases, with a gap between. */
 async function record(lessonId: string, beats: Map<string, { beats: string[]; ai: boolean }>, outDir: string, cache: string, previous: TutorVoice | null): Promise<TutorVoice | null> {
@@ -104,7 +110,7 @@ async function record(lessonId: string, beats: Map<string, { beats: string[]; ai
       voice: TUTOR_VOICE,
       gap: GAP,
       bitrate: BITRATE,
-      lines: order.map((k) => beats.get(k)!.beats.map(speechText)),
+      lines: order.map((k) => beats.get(k)!.beats.map(spoken)),
       phrases: phraseIds.map((id) => speechText(TUTOR_PHRASES[id])),
     }),
   );
@@ -117,7 +123,7 @@ async function record(lessonId: string, beats: Map<string, { beats: string[]; ai
   // A line said twice in a lesson is recorded once and played from the same place.
   const placed = new Map<string, Clip>();
   const place = async (line: string): Promise<Clip | null> => {
-    const said = speechText(line.trim());
+    const said = spoken(line.trim());
     if (!said) return null;
     const known = placed.get(said);
     if (known) return known;

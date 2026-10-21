@@ -250,6 +250,8 @@ video/out/tutor` (MiniMax writes the lines when `MINIMAX_API_KEY` is set; otherw
 reads each step from the slide). A slide whose MiniMax lines fail the checks in
 `engine/ai/tutorCheck.ts` (a number the slide does not have, a wrong calculation, "and" inside a
 whole number, a line said one step early or late) is read from the slide, and the log names it.
+Units are said in full (`sayUnits` in `engine/ai/tutor.ts`: "3 m" is "3 metres", "−3 °C" is
+"negative 3 degrees Celsius"); inside maths `\text{in}` is inches, but in prose "in" stays a word.
 
 ## Uploading to YouTube
 

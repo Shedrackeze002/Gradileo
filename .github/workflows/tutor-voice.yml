@@ -73,6 +73,8 @@ jobs:
     timeout-minutes: 340
     strategy:
       fail-fast: false
+      # A few courses at a time, so MiniMax is not asked too much at once.
+      max-parallel: 4
       matrix:
         course: ${{ fromJson(needs.courses.outputs.list) }}
     env:

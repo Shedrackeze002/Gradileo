@@ -8204,6 +8204,728 @@
       }
     ]
   },
+  "m6-6-2-b": {
+    "lessonId": "m6-6-2",
+    "title": "Like Terms and Algebraic Properties, Part 2: Combining Like Terms",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four terms",
+        "t": 16.377
+      },
+      {
+        "title": "With subtraction",
+        "t": 59.858
+      },
+      {
+        "title": "Watch out",
+        "t": 97.563
+      },
+      {
+        "title": "Perimeter",
+        "t": 123.136
+      },
+      {
+        "title": "Your turn",
+        "t": 169.178
+      },
+      {
+        "title": "Summary",
+        "t": 202.416
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-2-b:q",
+        "t": 177.43,
+        "prompt": "Simplify $5k + 9 - 2k + 1$.",
+        "choices": [
+          "$7k + 10$",
+          "$3k + 10$",
+          "$13k$",
+          "$3k + 8$"
+        ],
+        "answer": 1,
+        "working": "The $k$ terms: $5k - 2k = 3k$. The constants: $9 + 1 = 10$. So the expression is $3k + 10$."
+      }
+    ]
+  },
+  "m6-6-2-c": {
+    "lessonId": "m6-6-2",
+    "title": "Like Terms and Algebraic Properties, Part 3: Algebraic Properties",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Commutative property",
+        "t": 21.628
+      },
+      {
+        "title": "Associative property",
+        "t": 66.686
+      },
+      {
+        "title": "Distributive property",
+        "t": 116.748
+      },
+      {
+        "title": "Using the properties",
+        "t": 158.302
+      },
+      {
+        "title": "Your turn",
+        "t": 197.712
+      },
+      {
+        "title": "Summary",
+        "t": 229.192
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-2-c:q",
+        "t": 205.88,
+        "prompt": "Which expression is equal to $4(n + 2)$?",
+        "choices": [
+          "$4n + 2$",
+          "$4n + 6$",
+          "$n + 8$",
+          "$4n + 8$"
+        ],
+        "answer": 3,
+        "working": "The $4$ multiplies each term in the sum: $4 \\times n = 4n$ and $4 \\times 2 = 8$. So $4(n + 2) = 4n + 8$."
+      }
+    ]
+  },
+  "m6-6-3": {
+    "lessonId": "m6-6-3",
+    "title": "Solving Equations, Part 1: Equations and Inverse Operations",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equations",
+        "t": 25.377
+      },
+      {
+        "title": "Inverse operations",
+        "t": 61.026
+      },
+      {
+        "title": "Four bags",
+        "t": 96.563
+      },
+      {
+        "title": "Undo the multiplying",
+        "t": 129.142
+      },
+      {
+        "title": "Watch out",
+        "t": 166.155
+      },
+      {
+        "title": "Your turn",
+        "t": 196.478
+      },
+      {
+        "title": "Summary",
+        "t": 231.309
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-3:q",
+        "t": 202.924,
+        "prompt": "Solve $9x = 54$.",
+        "choices": [
+          "$x = 6$",
+          "$x = 45$",
+          "$x = 63$",
+          "$x = 486$"
+        ],
+        "answer": 0,
+        "working": "$9x$ means $9 \\times x$, so divide both sides by $9$: $x = 54 \\div 9 = 6$. Check: $9 \\times 6 = 54$."
+      }
+    ]
+  },
+  "m6-6-3-b": {
+    "lessonId": "m6-6-3",
+    "title": "Solving Equations, Part 2: Two Operations",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "On the balance",
+        "t": 18.538
+      },
+      {
+        "title": "Reverse order",
+        "t": 50.522
+      },
+      {
+        "title": "Check",
+        "t": 94.616
+      },
+      {
+        "title": "Guess and check",
+        "t": 112.932
+      },
+      {
+        "title": "Watch out",
+        "t": 148.19
+      },
+      {
+        "title": "Your turn",
+        "t": 175.998
+      },
+      {
+        "title": "Summary",
+        "t": 212.081
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-3-b:q",
+        "t": 183.016,
+        "prompt": "Solve $4x + 8 = 36$.",
+        "choices": [
+          "$x = 11$",
+          "$x = 1$",
+          "$x = 7$",
+          "$x = 28$"
+        ],
+        "answer": 2,
+        "working": "Subtract $8$ from both sides: $4x = 28$. Divide both sides by $4$: $x = 7$. Check: $4 \\times 7 + 8 = 36$."
+      }
+    ]
+  },
+  "m6-6-3-c": {
+    "lessonId": "m6-6-3",
+    "title": "Solving Equations, Part 3: Simplify Each Side First",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Simplify each side",
+        "t": 17.779
+      },
+      {
+        "title": "Solve",
+        "t": 64.827
+      },
+      {
+        "title": "Check in the first equation",
+        "t": 95.823
+      },
+      {
+        "title": "Watch out",
+        "t": 130.285
+      },
+      {
+        "title": "Your turn",
+        "t": 157.813
+      },
+      {
+        "title": "Summary",
+        "t": 195.206
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-3-c:q",
+        "t": 166.626,
+        "prompt": "Solve $4x + 2x + 3 = 10 + 17$.",
+        "choices": [
+          "$x = 5$",
+          "$x = 3$",
+          "$x = 24$",
+          "$x = 4$"
+        ],
+        "answer": 3,
+        "working": "Simplify each side: $6x + 3 = 27$. Subtract $3$: $6x = 24$. Divide by $6$: $x = 4$."
+      }
+    ]
+  },
+  "m6-6-3-d": {
+    "lessonId": "m6-6-3",
+    "title": "Solving Equations, Part 4: Writing Equations for Problems",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 21.366
+      },
+      {
+        "title": "The class trip",
+        "t": 48.632
+      },
+      {
+        "title": "Solve and check",
+        "t": 81.452
+      },
+      {
+        "title": "Two ages",
+        "t": 130.086
+      },
+      {
+        "title": "Solve the ages",
+        "t": 171.065
+      },
+      {
+        "title": "Your turn",
+        "t": 201.76
+      },
+      {
+        "title": "Summary",
+        "t": 247.735
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-3-d:q",
+        "t": 216.29,
+        "prompt": "Pens cost \\$4 each. Maya buys some pens and one \\$6 notebook, and pays \\$30 in all. How many pens did Maya buy?",
+        "choices": [
+          "$24$",
+          "$6$",
+          "$9$",
+          "$5$"
+        ],
+        "answer": 1,
+        "working": "Let $p$ be the number of pens: $4p + 6 = 30$. Subtract $6$: $4p = 24$. Divide by $4$: $p = 6$. Check: $6$ pens cost \\$24, and $24 + 6 = 30$."
+      }
+    ]
+  },
+  "m6-7-1": {
+    "lessonId": "m6-7-1",
+    "title": "Symmetry Between Shapes, Part 1: Reflections",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reflection",
+        "t": 16.807
+      },
+      {
+        "title": "Checking a reflection",
+        "t": 52.876
+      },
+      {
+        "title": "Drawing a reflection",
+        "t": 107.554
+      },
+      {
+        "title": "Watch out",
+        "t": 152.505
+      },
+      {
+        "title": "Your turn",
+        "t": 190.789
+      },
+      {
+        "title": "Summary",
+        "t": 229.83
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-7-1:q",
+        "t": 202.8,
+        "prompt": "A corner of a shape is $3$ squares to the left of a vertical mirror line. Where is the matching corner of its reflection?",
+        "choices": [
+          "$3$ squares to the left of the line",
+          "$6$ squares to the right of the line",
+          "$3$ squares to the right of the line, at the same height",
+          "$3$ squares above the line"
+        ],
+        "answer": 2,
+        "working": "A reflection keeps each point the same distance from the mirror line, on the other side, at the same height."
+      }
+    ]
+  },
+  "m6-7-1-b": {
+    "lessonId": "m6-7-1",
+    "title": "Symmetry Between Shapes, Part 2: Rotations",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotation",
+        "t": 15.984
+      },
+      {
+        "title": "Quarter and half turns",
+        "t": 44.576
+      },
+      {
+        "title": "Rotation symmetry",
+        "t": 79.496
+      },
+      {
+        "title": "Describing a rotation",
+        "t": 105.253
+      },
+      {
+        "title": "Use tracing paper",
+        "t": 149.265
+      },
+      {
+        "title": "Your turn",
+        "t": 176.985
+      },
+      {
+        "title": "Summary",
+        "t": 214.873
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-7-1-b:q",
+        "t": 191.308,
+        "prompt": "A line from the centre of rotation to a corner points **up**. After the rotation, the line to the matching corner points **right**. Which rotation is it?",
+        "choices": [
+          "A quarter turn clockwise",
+          "A quarter turn counterclockwise",
+          "A half turn",
+          "A reflection"
+        ],
+        "answer": 0,
+        "working": "A clock hand pointing up (at 12) turns clockwise to point right (at 3) in a quarter turn."
+      }
+    ]
+  },
+  "m6-7-1-c": {
+    "lessonId": "m6-7-1",
+    "title": "Symmetry Between Shapes, Part 3: Two Moves in a Row",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One move is not enough",
+        "t": 14.45
+      },
+      {
+        "title": "First move: a flip",
+        "t": 54.988
+      },
+      {
+        "title": "Second move: a turn",
+        "t": 86.839
+      },
+      {
+        "title": "Describe both moves",
+        "t": 126.658
+      },
+      {
+        "title": "Your turn",
+        "t": 162.12
+      },
+      {
+        "title": "Summary",
+        "t": 199.916
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-7-1-c:q",
+        "t": 175.369,
+        "prompt": "Shape 1 is reflected in a line, and then the image is rotated a half turn. Compared with shape 1, the final shape is…",
+        "choices": [
+          "bigger",
+          "smaller",
+          "only slid over, facing the same way",
+          "the same size and shape, but a mirror image"
+        ],
+        "answer": 3,
+        "working": "Reflections and rotations do not change size or shape. The reflection makes a mirror image, and a turn cannot undo a flip."
+      }
+    ]
+  },
+  "m6-7-1-d": {
+    "lessonId": "m6-7-1",
+    "title": "Symmetry Between Shapes, Part 4: Symmetry in Tessellations",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tessellations",
+        "t": 16.363
+      },
+      {
+        "title": "A reflection",
+        "t": 57.349
+      },
+      {
+        "title": "A rotation",
+        "t": 83.115
+      },
+      {
+        "title": "A star of diamonds",
+        "t": 118.135
+      },
+      {
+        "title": "Your turn",
+        "t": 159.934
+      },
+      {
+        "title": "Summary",
+        "t": 195.603
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-7-1-d:q",
+        "t": 172.754,
+        "prompt": "A star is made of $6$ matching diamonds around its centre. What is the smallest turn about the centre that moves every diamond onto the next one?",
+        "choices": [
+          "$45^\\circ$",
+          "$60^\\circ$",
+          "$90^\\circ$",
+          "$6^\\circ$"
+        ],
+        "answer": 1,
+        "working": "Six diamonds share a full turn: $360^\\circ \\div 6 = 60^\\circ$."
+      }
+    ]
+  },
+  "m6-7-2": {
+    "lessonId": "m6-7-2",
+    "title": "Congruent Shapes, Part 1: What Congruent Means",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Congruent",
+        "t": 23.574
+      },
+      {
+        "title": "Shape A",
+        "t": 57.032
+      },
+      {
+        "title": "Shape B",
+        "t": 95.863
+      },
+      {
+        "title": "Watch out",
+        "t": 127.192
+      },
+      {
+        "title": "Your turn",
+        "t": 157.328
+      },
+      {
+        "title": "Summary",
+        "t": 192.926
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-7-2:q",
+        "t": 168.096,
+        "prompt": "A rectangle is $4$ cm long and $2$ cm wide. Which rectangle is congruent to it?",
+        "choices": [
+          "$2$ cm long and $4$ cm wide",
+          "$8$ cm long and $4$ cm wide",
+          "$4$ cm long and $3$ cm wide",
+          "$2$ cm long and $1$ cm wide"
+        ],
+        "answer": 0,
+        "working": "A rectangle $2$ cm long and $4$ cm wide is the same rectangle turned on its side: the same size and the same shape."
+      }
+    ]
+  },
+  "m6-7-2-b": {
+    "lessonId": "m6-7-2",
+    "title": "Congruent Shapes, Part 2: Matching Sides",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Matching sides",
+        "t": 14.326
+      },
+      {
+        "title": "Sort the sides",
+        "t": 48.041
+      },
+      {
+        "title": "Find the missing side",
+        "t": 80.328
+      },
+      {
+        "title": "Watch out",
+        "t": 115.729
+      },
+      {
+        "title": "Your turn",
+        "t": 145.75
+      },
+      {
+        "title": "Summary",
+        "t": 186.118
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-7-2-b:q",
+        "t": 161.68,
+        "prompt": "Two triangles are congruent. One has sides of $6$ cm, $9$ cm and $10$ cm. On the other triangle, the **longest** side is marked ?. How long is it?",
+        "choices": [
+          "$6$ cm",
+          "$9$ cm",
+          "$10$ cm",
+          "$25$ cm"
+        ],
+        "answer": 2,
+        "working": "Matching sides are equal, and the longest side matches the longest side: $10$ cm."
+      }
+    ]
+  },
+  "m6-7-2-c": {
+    "lessonId": "m6-7-2",
+    "title": "Congruent Shapes, Part 3: Symmetry and Congruence",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Symmetry keeps size and shape",
+        "t": 21.138
+      },
+      {
+        "title": "Congruent, but not symmetric",
+        "t": 54.266
+      },
+      {
+        "title": "Describe the pair",
+        "t": 91.239
+      },
+      {
+        "title": "Your turn",
+        "t": 128.906
+      },
+      {
+        "title": "Summary",
+        "t": 168.947
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-7-2-c:q",
+        "t": 139.923,
+        "prompt": "Shape $P$ is an L-shape. Shape $Q$ is shape $P$ slid $4$ squares to the right. Which statement is true?",
+        "choices": [
+          "$P$ and $Q$ are not congruent.",
+          "$P$ and $Q$ are congruent, but not related by one reflection or one rotation.",
+          "$P$ and $Q$ have reflection symmetry.",
+          "$Q$ is bigger than $P$."
+        ],
+        "answer": 1,
+        "working": "Sliding does not change size or shape, so $P$ and $Q$ are congruent. $Q$ faces the same way and is not turned, so no single reflection or rotation maps $P$ onto $Q$."
+      }
+    ]
+  },
+  "m6-8-1": {
+    "lessonId": "m6-8-1",
+    "title": "Points and Polygons in the Cartesian Plane, Part 1: Axes and the Origin",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two number lines",
+        "t": 19.116
+      },
+      {
+        "title": "Negative numbers on the axes",
+        "t": 74.484
+      },
+      {
+        "title": "Which axis is which?",
+        "t": 103.152
+      },
+      {
+        "title": "Your turn",
+        "t": 133.259
+      },
+      {
+        "title": "Summary",
+        "t": 163.216
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-1:q",
+        "t": 139.767,
+        "prompt": "Where is $-4$ on the $x$-axis?",
+        "choices": [
+          "$4$ units above the origin",
+          "$4$ units right of the origin",
+          "$4$ units below the origin",
+          "$4$ units left of the origin"
+        ],
+        "answer": 3,
+        "working": "On the $x$-axis, negative numbers are to the left of $0$. So $-4$ is $4$ units left of the origin."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
