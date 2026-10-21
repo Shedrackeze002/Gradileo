@@ -11142,6 +11142,815 @@
       }
     ]
   },
+  "m7-1-1": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 1: What Divisible Means",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sharing into equal groups",
+        "t": 24.233
+      },
+      {
+        "title": "Something left over",
+        "t": 54.008
+      },
+      {
+        "title": "Divisible",
+        "t": 79.943
+      },
+      {
+        "title": "Factors",
+        "t": 112.963
+      },
+      {
+        "title": "Divisibility rules",
+        "t": 155.228
+      },
+      {
+        "title": "Your turn",
+        "t": 204.466
+      },
+      {
+        "title": "Summary",
+        "t": 233.362
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1:q",
+        "t": 211.381,
+        "prompt": "Which of these numbers is a **factor** of $24$?",
+        "choices": [
+          "$5$",
+          "$7$",
+          "$8$",
+          "$9$"
+        ],
+        "answer": 2,
+        "working": "$24 \\div 8 = 3$ with nothing left over, so $8$ is a factor of $24$. $24 \\div 5$ leaves $4$ over, so $5$ is not a factor."
+      }
+    ]
+  },
+  "m7-1-1-b": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 2: Rules That Use the Last Digits",
+    "duration": 329,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Every ten shares evenly",
+        "t": 21.484
+      },
+      {
+        "title": "Rules for 2, 5 and 10",
+        "t": 61.411
+      },
+      {
+        "title": "Why the last two digits for 4",
+        "t": 123.411
+      },
+      {
+        "title": "Testing 5316",
+        "t": 179.024
+      },
+      {
+        "title": "Watch out",
+        "t": 236.712
+      },
+      {
+        "title": "Your turn",
+        "t": 268.697
+      },
+      {
+        "title": "Summary",
+        "t": 299.403
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1-b:q",
+        "t": 275.491,
+        "prompt": "Which number is divisible by $4$?",
+        "choices": [
+          "$2516$",
+          "$3418$",
+          "$5730$",
+          "$1126$"
+        ],
+        "answer": 0,
+        "working": "The last two digits of $2516$ make $16 = 4 \\times 4$, so $2516$ is divisible by $4$. The others end in $18$, $30$ and $26$, which are not multiples of $4$."
+      }
+    ]
+  },
+  "m7-1-1-c": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 3: Rules That Use the Digit Sum",
+    "duration": 379,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The digit sum",
+        "t": 22.595
+      },
+      {
+        "title": "Why it works",
+        "t": 64.653
+      },
+      {
+        "title": "The rule for 6",
+        "t": 118.795
+      },
+      {
+        "title": "Testing 4536",
+        "t": 149.646
+      },
+      {
+        "title": "Testing 7341",
+        "t": 191.803
+      },
+      {
+        "title": "Watch out",
+        "t": 236.825
+      },
+      {
+        "title": "A missing digit",
+        "t": 271.495
+      },
+      {
+        "title": "Your turn",
+        "t": 318.42
+      },
+      {
+        "title": "Summary",
+        "t": 349.511
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1-c:q",
+        "t": 325.279,
+        "prompt": "Which number is divisible by $6$?",
+        "choices": [
+          "$412$",
+          "$735$",
+          "$928$",
+          "$654$"
+        ],
+        "answer": 3,
+        "working": "$654$ ends in $4$, so it is even, and its digit sum is $6 + 5 + 4 = 15$, which is divisible by $3$. It passes both tests, so it is divisible by $6$. $735$ passes the test for $3$, but it is odd."
+      }
+    ]
+  },
+  "m7-1-1-d": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 4: Sorting Numbers and Sharing Equally",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A Carroll diagram",
+        "t": 20.994
+      },
+      {
+        "title": "Sorting the numbers",
+        "t": 52.672
+      },
+      {
+        "title": "A Venn diagram",
+        "t": 119.795
+      },
+      {
+        "title": "Teams of nine",
+        "t": 160.045
+      },
+      {
+        "title": "Your turn",
+        "t": 200.999
+      },
+      {
+        "title": "Summary",
+        "t": 237.195
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1-d:q",
+        "t": 212.281,
+        "prompt": "A Carroll diagram sorts numbers by $3$ and by $4$. Where does $222$ go?",
+        "choices": [
+          "Divisible by $3$ and by $4$",
+          "Divisible by $3$, not by $4$",
+          "Divisible by $4$, not by $3$",
+          "Divisible by neither"
+        ],
+        "answer": 1,
+        "working": "The digit sum of $222$ is $6$, which is divisible by $3$. The last two digits make $22$, which is not a multiple of $4$. So $222$ is divisible by $3$ but not by $4$."
+      }
+    ]
+  },
+  "m7-1-1-e": {
+    "lessonId": "m7-1-1",
+    "title": "Divisibility Rules, Part 5: Why We Cannot Divide by Zero",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Division undoes multiplication",
+        "t": 20.551
+      },
+      {
+        "title": "Trying to divide by zero",
+        "t": 51.857
+      },
+      {
+        "title": "Sharing into zero groups",
+        "t": 92.405
+      },
+      {
+        "title": "Dividing zero is fine",
+        "t": 124.112
+      },
+      {
+        "title": "Watch out",
+        "t": 150.283
+      },
+      {
+        "title": "Your turn",
+        "t": 181.751
+      },
+      {
+        "title": "Summary",
+        "t": 211.114
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-1-e:q",
+        "t": 188.196,
+        "prompt": "Which of these has **no** answer?",
+        "choices": [
+          "$0 \\div 8$",
+          "$8 \\div 8$",
+          "$8 \\div 0$",
+          "$0 \\div 1$"
+        ],
+        "answer": 2,
+        "working": "$8 \\div 0$ would need a number that gives $8$ when multiplied by $0$, and there is none. $0 \\div 8 = 0$, because $0 \\times 8 = 0$."
+      }
+    ]
+  },
+  "m7-1-2": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 1: Fractions Are Divisions",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The fraction bar",
+        "t": 29.792
+      },
+      {
+        "title": "Terminating decimals",
+        "t": 58.189
+      },
+      {
+        "title": "An equivalent fraction",
+        "t": 98.843
+      },
+      {
+        "title": "By dividing",
+        "t": 137.519
+      },
+      {
+        "title": "A mixed number",
+        "t": 195.512
+      },
+      {
+        "title": "Your turn",
+        "t": 228.51
+      },
+      {
+        "title": "Summary",
+        "t": 260.926
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2:q",
+        "t": 234.572,
+        "prompt": "Write $\\dfrac{3}{5}$ as a decimal.",
+        "choices": [
+          "$3.5$",
+          "$0.35$",
+          "$0.53$",
+          "$0.6$"
+        ],
+        "answer": 3,
+        "working": "$5 \\times 20 = 100$, so $\\dfrac35 = \\dfrac{60}{100} = 0.6$. Dividing gives the same answer: $3 \\div 5 = 0.6$."
+      }
+    ]
+  },
+  "m7-1-2-b": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 2: Repeating Decimals",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dividing 5 by 11",
+        "t": 15.936
+      },
+      {
+        "title": "Repeating decimals",
+        "t": 85.368
+      },
+      {
+        "title": "Bar notation",
+        "t": 114.605
+      },
+      {
+        "title": "One third",
+        "t": 144.606
+      },
+      {
+        "title": "Rounding instead",
+        "t": 180.783
+      },
+      {
+        "title": "Your turn",
+        "t": 221.695
+      },
+      {
+        "title": "Summary",
+        "t": 252.988
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-b:q",
+        "t": 231.006,
+        "prompt": "Which shows $0.272727\\ldots$ in bar notation?",
+        "choices": [
+          "$0.\\overline{27}$",
+          "$0.2\\overline{7}$",
+          "$0.27$",
+          "$0.\\overline{272}$"
+        ],
+        "answer": 0,
+        "working": "The block $27$ repeats, so both digits go under the bar: $0.\\overline{27}$. $0.2\\overline{7}$ means $0.27777\\ldots$, where only the $7$ repeats."
+      }
+    ]
+  },
+  "m7-1-2-c": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 3: Repeats That Start Later",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One sixth",
+        "t": 20.778
+      },
+      {
+        "title": "Only the 6 goes under the bar",
+        "t": 66.545
+      },
+      {
+        "title": "Watch out",
+        "t": 88.459
+      },
+      {
+        "title": "Patterns worth knowing",
+        "t": 118.435
+      },
+      {
+        "title": "Your turn",
+        "t": 168.947
+      },
+      {
+        "title": "Summary",
+        "t": 200.211
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-c:q",
+        "t": 176.905,
+        "prompt": "Write $\\dfrac{7}{9}$ as a decimal.",
+        "choices": [
+          "$0.79$",
+          "$0.\\overline{7}$",
+          "$0.7\\overline{9}$",
+          "$0.\\overline{79}$"
+        ],
+        "answer": 1,
+        "working": "One ninth is $0.\\overline{1}$ and two ninths is $0.\\overline{2}$: the repeating digit is the numerator. So $\\dfrac79 = 0.777\\ldots = 0.\\overline{7}$."
+      }
+    ]
+  },
+  "m7-1-2-d": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 4: Which Fractions Terminate?",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Prime factors",
+        "t": 18.08
+      },
+      {
+        "title": "The test",
+        "t": 52.126
+      },
+      {
+        "title": "Why it works",
+        "t": 80.899
+      },
+      {
+        "title": "Terminate or repeat?",
+        "t": 128.008
+      },
+      {
+        "title": "Simplify first",
+        "t": 166.583
+      },
+      {
+        "title": "Your turn",
+        "t": 203.065
+      },
+      {
+        "title": "Summary",
+        "t": 233.912
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-d:q",
+        "t": 210.305,
+        "prompt": "Which fraction is a **terminating** decimal?",
+        "choices": [
+          "$\\dfrac{1}{7}$",
+          "$\\dfrac{2}{15}$",
+          "$\\dfrac{6}{15}$",
+          "$\\dfrac{4}{9}$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{6}{15} = \\dfrac{2}{5}$ in lowest terms, and $5$ is the only prime factor of the denominator, so it terminates: $0.4$. $\\dfrac{2}{15}$ is already in lowest terms, and $15 = 3 \\times 5$ has a $3$, so it repeats."
+      }
+    ]
+  },
+  "m7-1-2-e": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 5: Terminating Decimals to Fractions",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The last digit gives the denominator",
+        "t": 16.5
+      },
+      {
+        "title": "Simplify",
+        "t": 49.772
+      },
+      {
+        "title": "Writing 0.45",
+        "t": 82.844
+      },
+      {
+        "title": "Writing 0.125",
+        "t": 118.64
+      },
+      {
+        "title": "Your turn",
+        "t": 165.228
+      },
+      {
+        "title": "Summary",
+        "t": 197.502
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-e:q",
+        "t": 173.245,
+        "prompt": "Write $0.24$ as a fraction in lowest terms.",
+        "choices": [
+          "$\\dfrac{6}{25}$",
+          "$\\dfrac{24}{10}$",
+          "$\\dfrac{12}{25}$",
+          "$\\dfrac{24}{1000}$"
+        ],
+        "answer": 0,
+        "working": "The last digit is in the hundredths place, so $0.24 = \\dfrac{24}{100}$. Divide both by $4$: $\\dfrac{6}{25}$."
+      }
+    ]
+  },
+  "m7-1-2-f": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 6: Repeating Decimals to Fractions",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ninths",
+        "t": 18.722
+      },
+      {
+        "title": "The ninety-ninths",
+        "t": 50.636
+      },
+      {
+        "title": "Writing 0.6 repeating",
+        "t": 81.012
+      },
+      {
+        "title": "Writing 0.36 repeating",
+        "t": 109.654
+      },
+      {
+        "title": "Watch out",
+        "t": 143.232
+      },
+      {
+        "title": "Your turn",
+        "t": 170.188
+      },
+      {
+        "title": "Summary",
+        "t": 203.477
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-f:q",
+        "t": 178.994,
+        "prompt": "Write $0.\\overline{27}$ as a fraction in lowest terms.",
+        "choices": [
+          "$\\dfrac{27}{100}$",
+          "$\\dfrac{27}{9}$",
+          "$\\dfrac{9}{11}$",
+          "$\\dfrac{3}{11}$"
+        ],
+        "answer": 3,
+        "working": "A two-digit repeat goes over $99$: $0.\\overline{27} = \\dfrac{27}{99}$. Divide both by $9$: $\\dfrac{3}{11}$. Check: $3 \\div 11 = 0.2727\\ldots$"
+      }
+    ]
+  },
+  "m7-1-3": {
+    "lessonId": "m7-1-3",
+    "title": "Comparing and Ordering Numbers, Part 1: Benchmarks",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a benchmark is",
+        "t": 25.41
+      },
+      {
+        "title": "More or less than one half",
+        "t": 52.011
+      },
+      {
+        "title": "Three eighths or four sevenths?",
+        "t": 82.005
+      },
+      {
+        "title": "Close to one",
+        "t": 118.706
+      },
+      {
+        "title": "Your turn",
+        "t": 157.854
+      },
+      {
+        "title": "Summary",
+        "t": 186.277
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-3:q",
+        "t": 164.762,
+        "prompt": "Which fraction is **greater** than $\\dfrac{1}{2}$?",
+        "choices": [
+          "$\\dfrac{4}{9}$",
+          "$\\dfrac{5}{9}$",
+          "$\\dfrac{3}{7}$",
+          "$\\dfrac{6}{13}$"
+        ],
+        "answer": 1,
+        "working": "Half of $9$ is $4.5$, and $5 > 4.5$, so $\\dfrac59 > \\dfrac12$. In the others, the numerator is less than half of the denominator."
+      }
+    ]
+  },
+  "m7-1-3-b": {
+    "lessonId": "m7-1-3",
+    "title": "Comparing and Ordering Numbers, Part 2: Comparing Decimals",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding zeros at the end",
+        "t": 20.721
+      },
+      {
+        "title": "Compare from left to right",
+        "t": 56.833
+      },
+      {
+        "title": "On a number line",
+        "t": 100.604
+      },
+      {
+        "title": "Watch out",
+        "t": 131.263
+      },
+      {
+        "title": "One more example",
+        "t": 164.636
+      },
+      {
+        "title": "Your turn",
+        "t": 193.827
+      },
+      {
+        "title": "Summary",
+        "t": 221.654
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-3-b:q",
+        "t": 199.968,
+        "prompt": "Which number is the **greatest**?",
+        "choices": [
+          "$0.6$",
+          "$0.59$",
+          "$0.587$",
+          "$0.5999$"
+        ],
+        "answer": 0,
+        "working": "Write each with four decimal places: $0.6000$, $0.5900$, $0.5870$, $0.5999$. Only $0.6$ has $6$ tenths; the others have $5$ tenths."
+      }
+    ]
+  },
+  "m7-1-3-c": {
+    "lessonId": "m7-1-3",
+    "title": "Comparing and Ordering Numbers, Part 3: Fractions and Decimals Together",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same form",
+        "t": 22.042
+      },
+      {
+        "title": "Five eighths and 0.62",
+        "t": 50.893
+      },
+      {
+        "title": "Two thirds and 0.67",
+        "t": 93.223
+      },
+      {
+        "title": "Who jumped farther?",
+        "t": 134.332
+      },
+      {
+        "title": "Your turn",
+        "t": 173.516
+      },
+      {
+        "title": "Summary",
+        "t": 205.63
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-3-c:q",
+        "t": 179.266,
+        "prompt": "Which statement is **true**?",
+        "choices": [
+          "$\\dfrac{3}{4} > 0.8$",
+          "$\\dfrac{1}{3} > 0.34$",
+          "$\\dfrac{7}{8} > 0.86$",
+          "$\\dfrac{2}{5} > 0.45$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac78 = 0.875$, and $0.875 > 0.860$ because $7 > 6$ in the hundredths place. The others are false: $0.75 < 0.8$, $0.333\\ldots < 0.34$ and $0.4 < 0.45$."
+      }
+    ]
+  },
+  "m7-1-3-d": {
+    "lessonId": "m7-1-3",
+    "title": "Comparing and Ordering Numbers, Part 4: Ordering a Set of Numbers",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 20.111
+      },
+      {
+        "title": "Write each as a decimal",
+        "t": 52.896
+      },
+      {
+        "title": "Put them in order",
+        "t": 107.4
+      },
+      {
+        "title": "Check with a number line",
+        "t": 161.772
+      },
+      {
+        "title": "Your turn",
+        "t": 194.015
+      },
+      {
+        "title": "Summary",
+        "t": 223.433
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-3-d:q",
+        "t": 200.76,
+        "prompt": "Which list is in order from **least to greatest**?",
+        "choices": [
+          "$\\dfrac23,\\ 0.65,\\ 0.7,\\ \\dfrac34$",
+          "$0.65,\\ 0.7,\\ \\dfrac23,\\ \\dfrac34$",
+          "$\\dfrac34,\\ 0.7,\\ \\dfrac23,\\ 0.65$",
+          "$0.65,\\ \\dfrac23,\\ 0.7,\\ \\dfrac34$"
+        ],
+        "answer": 3,
+        "working": "As decimals: $\\dfrac23 = 0.666\\ldots$ and $\\dfrac34 = 0.75$. So the order is $0.650 < 0.666\\ldots < 0.700 < 0.750$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
