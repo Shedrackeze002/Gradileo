@@ -7980,6 +7980,65 @@
       }
     ]
   },
+  "m6-6-1-b": {
+    "lessonId": "m6-6-1",
+    "title": "Order of Operations with Powers, Part 2: Powers Come Early",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a power means",
+        "t": 16.696
+      },
+      {
+        "title": "Picture a power",
+        "t": 52.605
+      },
+      {
+        "title": "A power and an addition",
+        "t": 83.216
+      },
+      {
+        "title": "A power and a multiplication",
+        "t": 115.057
+      },
+      {
+        "title": "Watch out",
+        "t": 145.753
+      },
+      {
+        "title": "Whose exponent?",
+        "t": 177.303
+      },
+      {
+        "title": "Your turn",
+        "t": 222.427
+      },
+      {
+        "title": "Summary",
+        "t": 256.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-1-b:q",
+        "t": 230.187,
+        "prompt": "Evaluate $2 \\times 3^{2} + 1$.",
+        "choices": [
+          "$37$",
+          "$13$",
+          "$20$",
+          "$19$"
+        ],
+        "answer": 3,
+        "working": "Power first: $3^{2} = 9$. Then multiply: $2 \\times 9 = 18$. Then add: $18 + 1 = 19$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
