@@ -12508,6 +12508,261 @@
       }
     ]
   },
+  "m7-2-4": {
+    "lessonId": "m7-2-4",
+    "title": "Percents, Fractions and Decimals, Part 1: What a Percent Is",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Out of one hundred",
+        "t": 25.334
+      },
+      {
+        "title": "Percents all around",
+        "t": 57.187
+      },
+      {
+        "title": "Three ways",
+        "t": 85.055
+      },
+      {
+        "title": "Your turn",
+        "t": 130.263
+      },
+      {
+        "title": "Summary",
+        "t": 165.013
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-4:q",
+        "t": 142.099,
+        "prompt": "In a hundred grid, $60$ of the $100$ squares are shaded. What fraction of the grid is shaded, in lowest terms?",
+        "choices": [
+          "$\\dfrac{3}{5}$",
+          "$\\dfrac{6}{100}$",
+          "$\\dfrac{3}{50}$",
+          "$\\dfrac{6}{10}$"
+        ],
+        "answer": 0,
+        "working": "$60\\% = \\dfrac{60}{100}$. Divide both by $20$: $\\dfrac{3}{5}$. $\\dfrac{6}{10}$ has the same value, but it is not in lowest terms."
+      }
+    ]
+  },
+  "m7-2-4-b": {
+    "lessonId": "m7-2-4",
+    "title": "Percents, Fractions and Decimals, Part 2: Percents and Decimals",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent to decimal",
+        "t": 19.158
+      },
+      {
+        "title": "A one-digit percent",
+        "t": 61.166
+      },
+      {
+        "title": "Decimal to percent",
+        "t": 83.343
+      },
+      {
+        "title": "Watching the digits move",
+        "t": 126.074
+      },
+      {
+        "title": "Watch out",
+        "t": 153.678
+      },
+      {
+        "title": "Your turn",
+        "t": 178.991
+      },
+      {
+        "title": "Summary",
+        "t": 208.129
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-4-b:q",
+        "t": 185.838,
+        "prompt": "Write $0.08$ as a percent.",
+        "choices": [
+          "$80\\%$",
+          "$0.8\\%$",
+          "$8\\%$",
+          "$0.08\\%$"
+        ],
+        "answer": 2,
+        "working": "Multiply by $100$, moving the decimal point $2$ places to the right: $0.08 \\times 100 = 8$, so $0.08 = 8\\%$."
+      }
+    ]
+  },
+  "m7-2-4-c": {
+    "lessonId": "m7-2-4",
+    "title": "Percents, Fractions and Decimals, Part 3: Percents and Fractions",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent to fraction",
+        "t": 17.987
+      },
+      {
+        "title": "Fraction to percent: out of 100",
+        "t": 50.811
+      },
+      {
+        "title": "Fraction to percent: divide",
+        "t": 85.317
+      },
+      {
+        "title": "Worth knowing by heart",
+        "t": 124.837
+      },
+      {
+        "title": "Your turn",
+        "t": 160.872
+      },
+      {
+        "title": "Summary",
+        "t": 195.671
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-4-c:q",
+        "t": 167.192,
+        "prompt": "Write $\\dfrac{7}{20}$ as a percent.",
+        "choices": [
+          "$7\\%$",
+          "$35\\%$",
+          "$20\\%$",
+          "$0.35\\%$"
+        ],
+        "answer": 1,
+        "working": "$20 \\times 5 = 100$, so $\\dfrac{7}{20} = \\dfrac{35}{100} = 35\\%$."
+      }
+    ]
+  },
+  "m7-2-4-d": {
+    "lessonId": "m7-2-4",
+    "title": "Percents, Fractions and Decimals, Part 4: Percent of a Number",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways",
+        "t": 16.422
+      },
+      {
+        "title": "A benchmark",
+        "t": 44.61
+      },
+      {
+        "title": "Using 10% and 5%",
+        "t": 72.955
+      },
+      {
+        "title": "With a calculator",
+        "t": 116.723
+      },
+      {
+        "title": "Your turn",
+        "t": 160.377
+      },
+      {
+        "title": "Summary",
+        "t": 187.416
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-4-d:q",
+        "t": 166.269,
+        "prompt": "Find $15\\%$ of $80$.",
+        "choices": [
+          "$15$",
+          "$1.2$",
+          "$8$",
+          "$12$"
+        ],
+        "answer": 3,
+        "working": "$10\\%$ of $80$ is $8$, and $5\\%$ is half of that, $4$. So $15\\%$ of $80$ is $8 + 4 = 12$. Check: $0.15 \\times 80 = 12$."
+      }
+    ]
+  },
+  "m7-2-5": {
+    "lessonId": "m7-2-5",
+    "title": "Solving Percent Problems, Part 1: Discounts",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Discount and sale price",
+        "t": 23.108
+      },
+      {
+        "title": "A hoodie on sale",
+        "t": 61.133
+      },
+      {
+        "title": "Another way",
+        "t": 129.357
+      },
+      {
+        "title": "Watch out",
+        "t": 162.308
+      },
+      {
+        "title": "Your turn",
+        "t": 200.402
+      },
+      {
+        "title": "Summary",
+        "t": 233.827
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-5:q",
+        "t": 210.579,
+        "prompt": "A game costs \\$40. It is on sale for $20\\%$ off. What is the sale price?",
+        "choices": [
+          "\\$32",
+          "\\$8",
+          "\\$48",
+          "\\$20"
+        ],
+        "answer": 0,
+        "working": "Discount: $20\\%$ of $40$ is $0.2 \\times 40 = 8$. Sale price: $40 - 8 = 32$, so \\$32. Or pay $80\\%$: $0.8 \\times 40 = 32$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
