@@ -9248,6 +9248,57 @@
       }
     ]
   },
+  "m6-8-3-c": {
+    "lessonId": "m6-8-3",
+    "title": "Rotations, Part 3: Half Turns",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A half turn",
+        "t": 18.052
+      },
+      {
+        "title": "Turning B",
+        "t": 54.975
+      },
+      {
+        "title": "Turning C",
+        "t": 94.443
+      },
+      {
+        "title": "The image",
+        "t": 118.02
+      },
+      {
+        "title": "Your turn",
+        "t": 145.918
+      },
+      {
+        "title": "Summary",
+        "t": 185.612
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-3-c:q",
+        "t": 160.017,
+        "prompt": "A shape has a vertex at $A(1,\\ 1)$ and another at $B(4,\\ 3)$. It is rotated $180^\\circ$ about $A$. Where is $B'$?",
+        "choices": [
+          "$(-4,\\ {-3})$",
+          "$(-2,\\ 3)$",
+          "$(4,\\ {-1})$",
+          "$(-2,\\ {-1})$"
+        ],
+        "answer": 3,
+        "working": "From $A$, $B$ is $3$ units right and $2$ units up. A half turn reverses both: $3$ units left and $2$ units down from $A$, so $B'(-2,\\ {-1})$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
