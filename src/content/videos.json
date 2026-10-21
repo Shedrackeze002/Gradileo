@@ -7556,6 +7556,167 @@
       }
     ]
   },
+  "m6-5-1-b": {
+    "lessonId": "m6-5-1",
+    "title": "Equivalent Ratios and Proportions, Part 2: Checking Equivalent Ratios",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Simplest form",
+        "t": 16.904
+      },
+      {
+        "title": "Are they equivalent?",
+        "t": 60.191
+      },
+      {
+        "title": "Watch out",
+        "t": 102.411
+      },
+      {
+        "title": "Another check",
+        "t": 140.639
+      },
+      {
+        "title": "Your turn",
+        "t": 169.929
+      },
+      {
+        "title": "Summary",
+        "t": 202.035
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-1-b:q",
+        "t": 176.124,
+        "prompt": "Which pair of ratios is **equivalent**?",
+        "choices": [
+          "$6 : 8$ and $15 : 20$",
+          "$2 : 5$ and $4 : 7$",
+          "$3 : 4$ and $4 : 3$",
+          "$5 : 10$ and $10 : 15$"
+        ],
+        "answer": 0,
+        "working": "$6 : 8$ simplifies to $3 : 4$ (divide by $2$), and $15 : 20$ simplifies to $3 : 4$ (divide by $5$). The others simplify to different ratios."
+      }
+    ]
+  },
+  "m6-5-1-c": {
+    "lessonId": "m6-5-1",
+    "title": "Equivalent Ratios and Proportions, Part 3: Proportions",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Proportion",
+        "t": 18.059
+      },
+      {
+        "title": "Find the missing term",
+        "t": 43.016
+      },
+      {
+        "title": "Check your answer",
+        "t": 82.609
+      },
+      {
+        "title": "Pancakes for a crowd",
+        "t": 100.081
+      },
+      {
+        "title": "Red team and blue team",
+        "t": 136.658
+      },
+      {
+        "title": "Your turn",
+        "t": 176.207
+      },
+      {
+        "title": "Summary",
+        "t": 214.669
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-1-c:q",
+        "t": 187.927,
+        "prompt": "A recipe uses $2$ cups of rice for every $5$ cups of water. How much rice goes with $20$ cups of water?",
+        "choices": [
+          "$17$ cups",
+          "$50$ cups",
+          "$8$ cups",
+          "$10$ cups"
+        ],
+        "answer": 2,
+        "working": "The water goes from $5$ to $20$: $5 \\times 4 = 20$. So the rice goes from $2$ to $2 \\times 4 = 8$ cups."
+      }
+    ]
+  },
+  "m6-5-2": {
+    "lessonId": "m6-5-2",
+    "title": "Rates and Unit Rates, Part 1: Rates and Unit Rates",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a rate?",
+        "t": 19.625
+      },
+      {
+        "title": "A double number line",
+        "t": 50.494
+      },
+      {
+        "title": "Unit rates",
+        "t": 96.699
+      },
+      {
+        "title": "Speed of a train",
+        "t": 119.869
+      },
+      {
+        "title": "Pay per hour",
+        "t": 163.613
+      },
+      {
+        "title": "Your turn",
+        "t": 192.799
+      },
+      {
+        "title": "Summary",
+        "t": 228.376
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-2:q",
+        "t": 202.711,
+        "prompt": "A cyclist rides $45$ km in $3$ h. What is the cyclist’s speed?",
+        "choices": [
+          "$135$ km/h",
+          "$15$ km/h",
+          "$42$ km/h",
+          "$48$ km/h"
+        ],
+        "answer": 1,
+        "working": "Divide both terms by $3$: $45 \\div 3 = 15$ and $3 \\div 3 = 1$. So the speed is $15$ km/h."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
