@@ -12,6 +12,7 @@ import { isQuestionType, type StoredResponse } from '@engine/assemble.ts';
 import type { Integrity } from '@engine/integrity.ts';
 import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts';
 import { offlineScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
+import type { DraftRequest, DraftResult } from '@engine/ai/builder.ts';
 import type {
   AdminOverview,
   AdminUserFilter,
@@ -759,6 +760,10 @@ export class SupabaseApi implements DataApi {
   async generateInsight(classId: string, studentId: string | null): Promise<Insight> {
     const res = await this.invoke<{ insight: Record<string, unknown> }>('ai-agent', { action: 'generate', classId, studentId });
     return toInsight(res.insight);
+  }
+
+  async draftAssignment(classId: string, request: DraftRequest): Promise<DraftResult> {
+    return this.invoke<DraftResult>('ai-agent', { action: 'draft', classId, request });
   }
 
   async tutorScript(lessonId: string, chunk: TutorChunk): Promise<TutorReply<{ script: TutorScript }>> {

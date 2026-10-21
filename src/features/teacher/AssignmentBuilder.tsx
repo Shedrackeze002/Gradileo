@@ -27,9 +27,11 @@ import { VideoEmbed, videoEmbedUrl } from '@/features/lessons/LessonBlocks.tsx';
 import { fmtDateTime, fromLocalInput, toLocalInput } from '@/lib/dates.ts';
 import { uid } from '@/lib/ids.ts';
 import { cn } from '@/lib/cn.ts';
+import type { DraftResult } from '@engine/ai/builder.ts';
 import { TypeIcon } from '../shared/TypeIcon.tsx';
 import { skillLabel } from '../shared/derive.ts';
 import { useClassId } from './shared.tsx';
+import { DraftWithAI, type DraftMode } from './DraftWithAI.tsx';
 
 interface Draft {
   id?: string;
@@ -172,6 +174,25 @@ function validate(d: Draft): string[] {
   return errs;
 }
 
+/** The lessons a draft with AI starts from: those the assignment already covers, else the newest published one. */
+function lessonsInDraft(d: Draft, courseId: string, published: Set<string>): string[] {
+  const covered = [...new Set([...d.content.sections.map((s) => skillInfo(s.skillId)?.lessonId), d.content.lessonId].filter(Boolean) as string[])];
+  if (covered.length) return covered;
+  const newest = [...(getCourse(courseId)?.lessons ?? [])].reverse().find((l) => published.has(l.id));
+  return newest ? [newest.id] : [];
+}
+
+/** Sections with a draft's added: a skill already there gets the extra questions. */
+function mergeSections(a: SkillSection[], b: SkillSection[]): SkillSection[] {
+  const out = a.map((s) => ({ ...s }));
+  for (const s of b) {
+    const same = out.find((x) => x.skillId === s.skillId);
+    if (same) same.count = Math.min(15, same.count + s.count);
+    else out.push({ ...s });
+  }
+  return out;
+}
+
 function questionCount(d: Draft): number {
   return isQuestionType(d.type) ? d.content.sections.reduce((s, x) => s + x.count, 0) + d.content.custom.length : 0;
 }
@@ -200,6 +221,7 @@ export default function AssignmentBuilder() {
   const [draft, setDraft] = useState<Draft | null>(null);
   const [picker, setPicker] = useState(false);
   const [preview, setPreview] = useState(false);
+  const [drafting, setDrafting] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
 
   useEffect(() => {
@@ -227,6 +249,20 @@ export default function AssignmentBuilder() {
     if (isQuestionType(type) && !content.sections.length && !content.custom.length && content.lessonId) content = { ...content, sections: sectionsForLesson(content.lessonId, type) };
     else if (isQuestionType(type)) content = { ...content, sections: content.sections.map((s) => ({ ...s, count: type === 'exam' && s.count === 3 ? 2 : s.count })) };
     setDraft({ ...d, type, content: { ...content, shuffle: type === 'exam' || type === 'quiz' ? true : content.shuffle }, settings: { ...DEFAULT_SETTINGS[type] }, dueAt: d.id ? d.dueAt : defaultDue(type), allowLate: type !== 'exam' });
+  }
+
+  function applyDraft(r: DraftResult, mode: DraftMode) {
+    const x = r.draft;
+    const content = { ...d.content, sections: mode === 'add' ? mergeSections(d.content.sections, x.sections) : x.sections, custom: mode === 'add' ? [...d.content.custom, ...x.custom] : x.custom };
+    const notes = [
+      x.rationale,
+      r.dropped?.length ? `${r.dropped.length} question${r.dropped.length === 1 ? '' : 's'} the AI wrote did not pass the checks and ${r.dropped.length === 1 ? 'was' : 'were'} left out.` : '',
+      r.source === 'offline' && !/not available/.test(x.rationale) ? 'The AI is not available right now, so this draft uses the course’s generated questions only.' : '',
+    ].filter(Boolean);
+    setDraft({ ...d, title: d.title.trim() ? d.title : x.title, instructions: d.instructions.trim() ? d.instructions : x.instructions, content, aiRationale: notes.join(' ') || null });
+    setDrafting(false);
+    const n = content.sections.reduce((t, s) => t + s.count, 0) + content.custom.length;
+    toast({ kind: 'success', title: `Drafted: ${n} question${n === 1 ? '' : 's'}`, body: x.custom.length ? 'Check each question the AI wrote (marked below), preview it as a student, then publish.' : 'Preview it as a student, adjust anything, then publish.' });
   }
 
   async function onSave(andPublish: boolean) {
@@ -302,7 +338,17 @@ export default function AssignmentBuilder() {
           </Card>
 
           <Card>
-            <CardHeader title="2. Content" subtitle={questionType ? 'Generated questions give every student their own numbers, so answers cannot be copied.' : undefined} />
+            <CardHeader
+              title="2. Content"
+              subtitle={questionType ? 'Generated questions give every student their own numbers, so answers cannot be copied.' : undefined}
+              action={
+                questionType ? (
+                  <Button size="sm" icon={<Sparkles className="h-4 w-4" />} onClick={() => setDrafting(true)}>
+                    Draft with AI
+                  </Button>
+                ) : undefined
+              }
+            />
             <CardBody className="space-y-5 pt-4">
               {d.type === 'lesson' && <LessonSelect courseId={course.id} value={d.content.lessonId} onChange={(lessonId) => setContent({ lessonId })} published={published} label="Lesson to read" />}
               {d.type === 'video' && (
@@ -460,6 +506,18 @@ export default function AssignmentBuilder() {
       </div>
       {picker && <SkillPicker courseId={course.id} d={d} setContent={setContent} published={published} onClose={() => setPicker(false)} />}
       {preview && <PreviewModal content={d.content} title={title} onClose={() => setPreview(false)} />}
+      {drafting && (
+        <DraftWithAI
+          classId={classId}
+          courseId={course.id}
+          type={d.type}
+          initialLessons={lessonsInDraft(d, course.id, published)}
+          published={published}
+          hasContent={questionCount(d) > 0}
+          onClose={() => setDrafting(false)}
+          onDraft={applyDraft}
+        />
+      )}
     </div>
   );
 }
@@ -702,7 +760,7 @@ function CustomEditor({ d, setContent }: { d: Draft; setContent: (p: Partial<Ass
   const qs = d.content.custom;
   const offset = d.content.sections.reduce((s, x) => s + x.count, 0);
   const update = (i: number, q: CustomQuestion) => setContent({ custom: qs.map((x, j) => (j === i ? q : x)) });
-  const skillOptions = [...new Set(d.content.sections.map((s) => s.skillId))];
+  const skillOptions = [...new Set([...d.content.sections.map((s) => s.skillId), ...qs.map((q) => q.skillId).filter((s): s is string => !!s)])];
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -740,6 +798,16 @@ function QuestionEditor({ q, number, onChange, onRemove, skillOptions }: { q: Cu
       <div className="flex flex-wrap items-center gap-2">
         <span className="font-semibold">Q{number}</span>
         <Badge tone="brand">{KIND_LABEL[q.kind]}</Badge>
+        {q.aiWritten && (
+          <span className="inline-flex items-center gap-1.5">
+            <Badge tone="warn" icon={<Sparkles className="h-3 w-3" />}>
+              Written by AI: check the answer
+            </Badge>
+            <button type="button" className="text-xs font-semibold text-brand hover:underline" onClick={() => onChange({ ...q, aiWritten: undefined })}>
+              Mark as checked
+            </button>
+          </span>
+        )}
         <div className="ml-auto flex items-center gap-2">
           <label className="flex items-center gap-1.5 text-xs text-ink-3">
             Points

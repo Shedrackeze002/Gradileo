@@ -471,6 +471,22 @@ items ship or decisions change.
      marking guides. The teacher who asked for them previews everything, regenerates or edits
      single questions, and publishes; nothing reaches students without that teacher's approval
      (no administrator review in between).
+   - **Built (21 October 2026, the owner: "it is urgent and I need to use them to create homework
+     for my own students"): "Draft with AI"** in the assignment builder for practice, classwork,
+     homework, quizzes and exams. The teacher chooses the lessons, the number of questions, the
+     difficulty (easier, easy to hard, harder), the kinds of question (generated; multiple choice,
+     short answer and written response written by the AI), whether to focus on what the class finds
+     hard, and any notes, and can replace or add to the questions already there. MiniMax picks
+     skills for the generated questions and writes the others with answers and worked solutions or
+     marking guides (`engine/ai/builder.ts`, the `draft` action of the `ai-agent` function, 30
+     drafts per teacher per hour). Checks before the teacher sees it: skills must be from the
+     chosen lessons, choices complete with one correct, a numeric answer must equal an arithmetic
+     check the model gives, the total is exactly what was asked for; a question that fails is left
+     out and the teacher is told. Questions the AI wrote are marked "Written by AI: check the
+     answer" until the teacher marks them checked. Only lessons, skills and the class's average
+     mastery reach MiniMax, never names. Without MiniMax the draft uses generated questions only.
+   - Next: regenerate one question; "solve it on the canvas" answers; grade written responses
+     with an AI-suggested mark; a time-limit and settings suggestion from the AI.
 7. **AI report cards** (the owner's idea, 15 October 2026). For each student, from their mastery
    and work: how they are doing, strengths, next steps, tips for the student and for parents, and
    feedback. The teacher who asks for it reviews and edits it before it reaches the student or a

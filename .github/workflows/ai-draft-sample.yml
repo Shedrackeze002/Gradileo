@@ -1,0 +1,54 @@
+name: AI draft sample
+
+# Drafts one sample assignment with "Draft with AI" (engine/ai/builder.ts) using the repository
+# secret MINIMAX_API_KEY, and prints it with what the checks left out, so a prompt change can be
+# tried against MiniMax before teachers see it. By hand only: Actions → AI draft sample → Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      course:
+        description: Course id, such as math-8 or math-10c
+        default: math-8
+      lessons:
+        description: Lesson ids, separated by spaces
+        default: m8-1-3 m8-1-4
+      count:
+        description: Number of questions
+        default: '10'
+      formats:
+        description: Kinds of question (generated choice short written), separated by spaces
+        default: generated choice short written
+      type:
+        description: homework, practice, classwork, quiz or exam
+        default: homework
+      notes:
+        description: The teacher's notes (optional)
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Draft
+        env:
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL }}
+          MINIMAX_BASE_URL: ${{ vars.MINIMAX_BASE_URL }}
+          COURSE: ${{ github.event.inputs.course }}
+          LESSONS: ${{ github.event.inputs.lessons }}
+          COUNT: ${{ github.event.inputs.count }}
+          FORMATS: ${{ github.event.inputs.formats }}
+          TYPE: ${{ github.event.inputs.type }}
+          NOTES: ${{ github.event.inputs.notes }}
+        run: npx tsx --tsconfig tsconfig.json scripts/ai-draft-sample.ts

@@ -30,6 +30,8 @@ export interface CustomQuestion {
   solution?: string;
   /** Optional skill tag so custom questions also update mastery. */
   skillId?: string;
+  /** Written by the AI builder (engine/ai/builder.ts): the teacher should check it before publishing. */
+  aiWritten?: boolean;
 }
 
 export interface AssignmentContent {

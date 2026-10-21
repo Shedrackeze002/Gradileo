@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      updated="October 20, 2026"
+      updated="October 21, 2026"
       intro={
         <>
           <p>
@@ -73,8 +73,13 @@ export default function PrivacyPage() {
           When a student studies a lesson with the AI tutor, Gradileo sends MiniMax the lesson’s slides so it can write what the tutor says. This contains
           nothing about the student, and the narration is saved and reused for other students. When a student asks the tutor a question, Gradileo sends
           MiniMax the question, the slide it is about and the last few messages of that conversation. We do not send the student’s name or email address,
-          and we do not keep the questions or answers. Students should not type personal information into a question. The tutor speaks with the voice
-          built into the student’s own device.
+          and we do not keep the questions or answers. Students should not type personal information into a question. The tutor’s voice is recorded
+          ahead of time from the lesson’s slides and played from our website; nothing the student says or types is recorded.
+        </p>
+        <p>
+          When a teacher uses “Draft with AI” to draft an assignment, Gradileo sends MiniMax the lessons and skills chosen, the class’s average progress on
+          each skill and the teacher’s own notes for the draft. This contains no student’s name or individual results. The draft goes only to the teacher,
+          who checks and edits it before any student sees it.
         </p>
         <p>The student coach and the course placement check run inside the student’s browser and do not send information to an AI provider.</p>
       </Section>
@@ -97,7 +102,7 @@ export default function PrivacyPage() {
             <strong>Cloudflare</strong>: hosts the Gradileo website and handles email sent to gradileo.com addresses.
           </li>
           <li>
-            <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses and the AI tutor, as described in section 3.
+            <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses, assignment drafts and the AI tutor, as described in section 3.
           </li>
           <li>
             <strong>Our email delivery provider</strong>: sends reminder emails when a teacher turns them on. It receives the student’s email address and
