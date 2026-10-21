@@ -218,7 +218,9 @@ Lessons learned while scripting (the script check does not catch these):
   Maya is clear), the name Aiyana (blurred; Maya is clear), the short money form ("two dollars
   forty" is unclear; "two dollars and forty cents" is clear) and two numbers after "the point at"
   ("the point at six, sixteen" is heard as "six hundred sixteen"; "the point with x equal to six
-  and y equal to sixteen" is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
+  and y equal to sixteen" is clear), "Let p be" ("Let PB"; "Let p stand for" is clear), the name
+  Kiran ("Curran"; Priya is clear), "Maya counts" ("My accounts"), "pup tent" ("pop tent") and
+  "forty sevenths" ("47th"; "forty over seven" is clear). A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
   the line ("Figures that are congruent…") and check it with `video/tools/hear.ts`.
 - Say a minus sign in front of a bracket or a whole fraction as "the negative of" (or "negative,"
