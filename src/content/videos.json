@@ -11637,6 +11637,112 @@
       }
     ]
   },
+  "m7-1-2-e": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 5: Terminating Decimals to Fractions",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The last digit gives the denominator",
+        "t": 16.5
+      },
+      {
+        "title": "Simplify",
+        "t": 49.772
+      },
+      {
+        "title": "Writing 0.45",
+        "t": 82.844
+      },
+      {
+        "title": "Writing 0.125",
+        "t": 118.64
+      },
+      {
+        "title": "Your turn",
+        "t": 165.228
+      },
+      {
+        "title": "Summary",
+        "t": 197.502
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-e:q",
+        "t": 173.245,
+        "prompt": "Write $0.24$ as a fraction in lowest terms.",
+        "choices": [
+          "$\\dfrac{6}{25}$",
+          "$\\dfrac{24}{10}$",
+          "$\\dfrac{12}{25}$",
+          "$\\dfrac{24}{1000}$"
+        ],
+        "answer": 0,
+        "working": "The last digit is in the hundredths place, so $0.24 = \\dfrac{24}{100}$. Divide both by $4$: $\\dfrac{6}{25}$."
+      }
+    ]
+  },
+  "m7-1-2-f": {
+    "lessonId": "m7-1-2",
+    "title": "Fractions and Decimals, Part 6: Repeating Decimals to Fractions",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ninths",
+        "t": 18.722
+      },
+      {
+        "title": "The ninety-ninths",
+        "t": 50.636
+      },
+      {
+        "title": "Writing 0.6 repeating",
+        "t": 81.012
+      },
+      {
+        "title": "Writing 0.36 repeating",
+        "t": 109.654
+      },
+      {
+        "title": "Watch out",
+        "t": 143.232
+      },
+      {
+        "title": "Your turn",
+        "t": 170.188
+      },
+      {
+        "title": "Summary",
+        "t": 203.477
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-1-2-f:q",
+        "t": 178.994,
+        "prompt": "Write $0.\\overline{27}$ as a fraction in lowest terms.",
+        "choices": [
+          "$\\dfrac{27}{100}$",
+          "$\\dfrac{27}{9}$",
+          "$\\dfrac{9}{11}$",
+          "$\\dfrac{3}{11}$"
+        ],
+        "answer": 3,
+        "working": "A two-digit repeat goes over $99$: $0.\\overline{27} = \\dfrac{27}{99}$. Divide both by $9$: $\\dfrac{3}{11}$. Check: $3 \\div 11 = 0.2727\\ldots$"
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
