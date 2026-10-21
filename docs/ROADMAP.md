@@ -363,11 +363,15 @@ items ship or decisions change.
      sixes" was heard as "26s" in the lesson whose answer is 26; now "twenty groups of six"). Both
      are listed in `video/README.md`. Every course from Math 10 to 31, and Math 5, is rendered and
      in Drive (1,109 videos).
-   - In progress: Math 6, 117 videos. Every script and every Your-turn answer and still was
-     checked, and the videos are rendering unit by unit into Drive (Units 1 to 8 are there).
-   - Scripted: Math 7, 143 videos written by four helpers and checked like Math 6 (four answer
-     lines or figures were corrected, and money is always said in dollars and cents). They render
-     after Math 6.
+   - Built: Math 6, all 117 videos, rendered unit by unit and uploaded to Drive. Every script and
+     every Your-turn answer and still was checked before rendering, and the listening check found
+     nothing to remake (the voice said "twenty-eight out of one hundred" as "twenty-eight of one
+     hundred", which keeps its meaning). One video failed to render once and built cleanly on a
+     second try. Every course from Math 10 to 31, Math 5 and Math 6 is rendered and in Drive
+     (1,226 videos).
+   - In progress: Math 7, 143 videos written by four helpers and checked like Math 6 (four answer
+     lines or figures were corrected, and money is always said in dollars and cents), now
+     rendering unit by unit into Drive.
    - Scripted: Math 8, 129 videos written by five helpers. Every Your-turn answer and every still
      was checked; one question that only made sense inside its video was rewritten to stand on its
      own, the exchange-rate slide was re-spaced so its equation sits inside the margin, and the

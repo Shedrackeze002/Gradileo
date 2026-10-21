@@ -9958,6 +9958,1190 @@
       }
     ]
   },
+  "m6-10-1-b": {
+    "lessonId": "m6-10-1",
+    "title": "Volume and Cubic Units, Part 2: Cubic Centimetres and Cubic Metres",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The cubic centimetre",
+        "t": 20.036
+      },
+      {
+        "title": "The cubic metre",
+        "t": 56.589
+      },
+      {
+        "title": "Choosing a unit",
+        "t": 81.364
+      },
+      {
+        "title": "Watch out",
+        "t": 111.363
+      },
+      {
+        "title": "Your turn",
+        "t": 140.006
+      },
+      {
+        "title": "Summary",
+        "t": 168.798
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-1-b:q",
+        "t": 147.192,
+        "prompt": "Which unit is best for the volume of a juice box?",
+        "choices": [
+          "$\\text{cm}^3$",
+          "$\\text{m}^3$",
+          "$\\text{cm}^2$",
+          "$\\text{cm}$"
+        ],
+        "answer": 0,
+        "working": "A juice box is a small object, so cubic centimetres fit best."
+      }
+    ]
+  },
+  "m6-10-1-c": {
+    "lessonId": "m6-10-1",
+    "title": "Volume and Cubic Units, Part 3: Layers, Rows and Columns",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A prism of cubes",
+        "t": 17.372
+      },
+      {
+        "title": "One layer",
+        "t": 50.003
+      },
+      {
+        "title": "Stack the layers",
+        "t": 76.629
+      },
+      {
+        "title": "The quick way",
+        "t": 106.247
+      },
+      {
+        "title": "Your turn",
+        "t": 132.194
+      },
+      {
+        "title": "Summary",
+        "t": 165.525
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-1-c:q",
+        "t": 144.488,
+        "prompt": "A prism of centimetre cubes has $3$ rows of $5$ cubes in each layer. It is $2$ layers high. What is its volume?",
+        "choices": [
+          "$10\\text{ cm}^3$",
+          "$15\\text{ cm}^3$",
+          "$30\\text{ cm}^2$",
+          "$30\\text{ cm}^3$"
+        ],
+        "answer": 3,
+        "working": "One layer: $3 \\times 5 = 15$ cubes. Two layers: $15 \\times 2 = 30$, so $30\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m6-10-1-d": {
+    "lessonId": "m6-10-1",
+    "title": "Volume and Cubic Units, Part 4: Volume Stays the Same",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The first prism",
+        "t": 17.631
+      },
+      {
+        "title": "A new prism",
+        "t": 39.33
+      },
+      {
+        "title": "Same cubes, same volume",
+        "t": 76.702
+      },
+      {
+        "title": "Your turn",
+        "t": 106.102
+      },
+      {
+        "title": "Summary",
+        "t": 152.683
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-1-d:q",
+        "t": 123.613,
+        "prompt": "Mia builds a prism $4$ cubes long, $3$ cubes wide and $2$ cubes high. Then Mia uses all the cubes to build a new prism $4$ cubes long and $2$ cubes wide. How high is the new prism?",
+        "choices": [
+          "$2$ cubes",
+          "$3$ cubes",
+          "$8$ cubes",
+          "$24$ cubes"
+        ],
+        "answer": 1,
+        "working": "First prism: $4 \\times 3 \\times 2 = 24$ cubes. One layer of the new prism: $4 \\times 2 = 8$ cubes. $24 \\div 8 = 3$, so it is $3$ cubes high."
+      }
+    ]
+  },
+  "m6-10-2": {
+    "lessonId": "m6-10-2",
+    "title": "Volume of Rectangular Prisms, Part 1: From Cubes to a Formula",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A box shape",
+        "t": 20.797
+      },
+      {
+        "title": "Layers of cubes",
+        "t": 44.537
+      },
+      {
+        "title": "The formula",
+        "t": 79.096
+      },
+      {
+        "title": "The volume of a brick",
+        "t": 119.418
+      },
+      {
+        "title": "Your turn",
+        "t": 154.257
+      },
+      {
+        "title": "Summary",
+        "t": 187.646
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-2:q",
+        "t": 165.373,
+        "prompt": "A box is $7\\text{ cm}$ long, $2\\text{ cm}$ wide and $3\\text{ cm}$ high. What is its volume?",
+        "choices": [
+          "$12\\text{ cm}^3$",
+          "$42\\text{ cm}^2$",
+          "$42\\text{ cm}^3$",
+          "$14\\text{ cm}^3$"
+        ],
+        "answer": 2,
+        "working": "$V = 7 \\times 2 \\times 3 = 14 \\times 3 = 42$, so the volume is $42\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m6-10-2-b": {
+    "lessonId": "m6-10-2",
+    "title": "Volume of Rectangular Prisms, Part 2: Base Area Times Height",
+    "duration": 181,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A storage shed",
+        "t": 20.17
+      },
+      {
+        "title": "The rule",
+        "t": 56.104
+      },
+      {
+        "title": "A juice box",
+        "t": 84.724
+      },
+      {
+        "title": "Your turn",
+        "t": 117.003
+      },
+      {
+        "title": "Summary",
+        "t": 154.535
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-2-b:q",
+        "t": 129.098,
+        "prompt": "A box has a base with an area of $35\\text{ cm}^2$. It is $4\\text{ cm}$ high. What is its volume?",
+        "choices": [
+          "$39\\text{ cm}^3$",
+          "$140\\text{ cm}^2$",
+          "$70\\text{ cm}^3$",
+          "$140\\text{ cm}^3$"
+        ],
+        "answer": 3,
+        "working": "$V = \\text{area of the base} \\times h = 35 \\times 4 = 140$, so $140\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m6-10-2-c": {
+    "lessonId": "m6-10-2",
+    "title": "Volume of Rectangular Prisms, Part 3: Finding a Missing Dimension",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A missing height",
+        "t": 17.164
+      },
+      {
+        "title": "Watch out",
+        "t": 60.602
+      },
+      {
+        "title": "A missing length",
+        "t": 96.569
+      },
+      {
+        "title": "Your turn",
+        "t": 129.43
+      },
+      {
+        "title": "Summary",
+        "t": 162.834
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-2-c:q",
+        "t": 142.269,
+        "prompt": "A box has a volume of $90\\text{ cm}^3$. It is $5\\text{ cm}$ long and $3\\text{ cm}$ wide. How high is it?",
+        "choices": [
+          "$6\\text{ cm}$",
+          "$18\\text{ cm}$",
+          "$30\\text{ cm}$",
+          "$82\\text{ cm}$"
+        ],
+        "answer": 0,
+        "working": "Base: $5 \\times 3 = 15$. Height: $90 \\div 15 = 6\\text{ cm}$. Check: $5 \\times 3 \\times 6 = 90$ ✓"
+      }
+    ]
+  },
+  "m6-10-2-d": {
+    "lessonId": "m6-10-2",
+    "title": "Volume of Rectangular Prisms, Part 4: Solving Volume Problems",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An aquarium",
+        "t": 18.719
+      },
+      {
+        "title": "Choose an easy order",
+        "t": 53.438
+      },
+      {
+        "title": "A sandbox",
+        "t": 89.897
+      },
+      {
+        "title": "Your turn",
+        "t": 129.942
+      },
+      {
+        "title": "Summary",
+        "t": 168.278
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-2-d:q",
+        "t": 141.565,
+        "prompt": "A box is $25\\text{ cm}$ long, $10\\text{ cm}$ wide and $4\\text{ cm}$ high. What is its volume?",
+        "choices": [
+          "$39\\text{ cm}^3$",
+          "$100\\text{ cm}^3$",
+          "$1000\\text{ cm}^3$",
+          "$10\\,000\\text{ cm}^3$"
+        ],
+        "answer": 2,
+        "working": "An easy order: $25 \\times 4 = 100$, then $100 \\times 10 = 1000$, so $1000\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m6-11-1": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 1: Two Quantities That Change Together",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A growing bean plant",
+        "t": 15.541
+      },
+      {
+        "title": "Variables",
+        "t": 46.799
+      },
+      {
+        "title": "Functions",
+        "t": 74.383
+      },
+      {
+        "title": "Independent and dependent",
+        "t": 106.301
+      },
+      {
+        "title": "Your turn",
+        "t": 143.805
+      },
+      {
+        "title": "Summary",
+        "t": 175.675
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1:q",
+        "t": 153.724,
+        "prompt": "A cup of hot cocoa cools down as the minutes pass. Which is the **dependent** variable?",
+        "choices": [
+          "The number of minutes",
+          "The temperature of the cocoa",
+          "Both of them",
+          "Neither of them"
+        ],
+        "answer": 1,
+        "working": "The temperature changes because the minutes pass, so the temperature depends on the time. The minutes are the independent variable."
+      }
+    ]
+  },
+  "m6-11-1-b": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 2: Change over Time",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Things that change over time",
+        "t": 19.024
+      },
+      {
+        "title": "Temperature during the day",
+        "t": 52.814
+      },
+      {
+        "title": "Watch out",
+        "t": 96.67
+      },
+      {
+        "title": "One more example",
+        "t": 122.114
+      },
+      {
+        "title": "Your turn",
+        "t": 151.124
+      },
+      {
+        "title": "Summary",
+        "t": 187.909
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1-b:q",
+        "t": 160.646,
+        "prompt": "A runner’s distance from the start is recorded every minute. Which statement is true?",
+        "choices": [
+          "Time is the independent variable, and distance is the dependent variable.",
+          "Distance is the independent variable, and time is the dependent variable.",
+          "Time and distance are both independent variables.",
+          "Neither time nor distance is a variable."
+        ],
+        "answer": 0,
+        "working": "The distance changes because the minutes pass, so the distance depends on the time. Time is the independent variable."
+      }
+    ]
+  },
+  "m6-11-1-c": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 3: The Rule",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A function machine",
+        "t": 17.65
+      },
+      {
+        "title": "Using the rule",
+        "t": 53.81
+      },
+      {
+        "title": "Test the rule",
+        "t": 86.012
+      },
+      {
+        "title": "Your turn",
+        "t": 122.466
+      },
+      {
+        "title": "Summary",
+        "t": 158.31
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1-c:q",
+        "t": 135.054,
+        "prompt": "The bean plant’s rule is: multiply the number of weeks by $3$, then add $4$. How tall is the plant after $6$ weeks?",
+        "choices": [
+          "$13\\text{ cm}$",
+          "$30\\text{ cm}$",
+          "$22\\text{ cm}$",
+          "$18\\text{ cm}$"
+        ],
+        "answer": 2,
+        "working": "$6 \\times 3 = 18$, then $18 + 4 = 22$, so $22\\text{ cm}$."
+      }
+    ]
+  },
+  "m6-11-1-d": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 4: Tables of Values",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table of values",
+        "t": 16.637
+      },
+      {
+        "title": "Checking a row",
+        "t": 54.294
+      },
+      {
+        "title": "Up by three",
+        "t": 84.257
+      },
+      {
+        "title": "Your turn",
+        "t": 123.021
+      },
+      {
+        "title": "Summary",
+        "t": 161.094
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1-d:q",
+        "t": 137.862,
+        "prompt": "Another plant has the rule: multiply the number of weeks, $w$, by $2$, then add $5$ to get its height, $h$. Which row of its table of values is correct?",
+        "choices": [
+          "$w = 3,\\ h = 10$",
+          "$w = 4,\\ h = 18$",
+          "$w = 0,\\ h = 0$",
+          "$w = 6,\\ h = 17$"
+        ],
+        "answer": 3,
+        "working": "$6 \\times 2 + 5 = 12 + 5 = 17$ ✓. The others: $3 \\times 2 + 5 = 11$, $4 \\times 2 + 5 = 13$ and $0 \\times 2 + 5 = 5$."
+      }
+    ]
+  },
+  "m6-11-1-e": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 5: Points on a Graph",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 19.297
+      },
+      {
+        "title": "Plotting the points",
+        "t": 50.398
+      },
+      {
+        "title": "Two ways to show a function",
+        "t": 86.834
+      },
+      {
+        "title": "Watch out",
+        "t": 103.809
+      },
+      {
+        "title": "Your turn",
+        "t": 130.024
+      },
+      {
+        "title": "Summary",
+        "t": 159.107
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1-e:q",
+        "t": 141.298,
+        "prompt": "A row of the bean plant’s table says: $3$ weeks, $13\\text{ cm}$. Which point shows this row on the graph?",
+        "choices": [
+          "$(13,\\ 3)$",
+          "$(3,\\ 13)$",
+          "$(3,\\ 3)$",
+          "$(13,\\ 13)$"
+        ],
+        "answer": 1,
+        "working": "The independent variable (weeks) goes first and the dependent variable (height) second: $(3,\\ 13)$."
+      }
+    ]
+  },
+  "m6-11-2": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 1: From Words to an Equation",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An equation for a function",
+        "t": 18.385
+      },
+      {
+        "title": "A number next to a letter",
+        "t": 50.733
+      },
+      {
+        "title": "Words and equations",
+        "t": 81.879
+      },
+      {
+        "title": "Writing an equation",
+        "t": 104.907
+      },
+      {
+        "title": "Your turn",
+        "t": 130.665
+      },
+      {
+        "title": "Summary",
+        "t": 162.153
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2:q",
+        "t": 140.802,
+        "prompt": "To find $y$, multiply $x$ by $2$, then add $9$. Which equation shows this rule?",
+        "choices": [
+          "$y = 9x + 2$",
+          "$y = x + 11$",
+          "$y = 2x + 9$",
+          "$y = 2 + 9$"
+        ],
+        "answer": 2,
+        "working": "Multiply $x$ by $2$: $2x$. Then add $9$: $y = 2x + 9$."
+      }
+    ]
+  },
+  "m6-11-2-b": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 2: From a Table to an Equation",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Step 1: what to multiply by",
+        "t": 17.459
+      },
+      {
+        "title": "Step 2: what to add",
+        "t": 49.011
+      },
+      {
+        "title": "Check another column",
+        "t": 70.736
+      },
+      {
+        "title": "Watch out",
+        "t": 92.398
+      },
+      {
+        "title": "Your turn",
+        "t": 121.284
+      },
+      {
+        "title": "Summary",
+        "t": 161.424
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2-b:q",
+        "t": 135.47,
+        "prompt": "A table of values has $x = 0,\\ 1,\\ 2,\\ 3$ and $y = 2,\\ 5,\\ 8,\\ 11$. Which equation fits the table?",
+        "choices": [
+          "$y = 3x + 2$",
+          "$y = x + 3$",
+          "$y = 2x + 3$",
+          "$y = 3x$"
+        ],
+        "answer": 0,
+        "working": "$y$ goes up by $3$, so multiply $x$ by $3$. When $x = 0$, $y = 2$, so add $2$: $y = 3x + 2$. Check: $3 \\times 3 + 2 = 11$ ✓"
+      }
+    ]
+  },
+  "m6-11-2-c": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 3: Finding the Dependent Value",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substituting",
+        "t": 16.851
+      },
+      {
+        "title": "Finding y",
+        "t": 43.556
+      },
+      {
+        "title": "The bean plant",
+        "t": 70.195
+      },
+      {
+        "title": "Watch out",
+        "t": 100.732
+      },
+      {
+        "title": "Your turn",
+        "t": 128.273
+      },
+      {
+        "title": "Summary",
+        "t": 156.043
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2-c:q",
+        "t": 137.063,
+        "prompt": "For $y = 6x + 1$, find $y$ when $x = 7$.",
+        "choices": [
+          "$13$",
+          "$48$",
+          "$42$",
+          "$43$"
+        ],
+        "answer": 3,
+        "working": "$y = 6 \\times 7 + 1 = 42 + 1 = 43$."
+      }
+    ]
+  },
+  "m6-11-2-d": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 4: Finding the Independent Value",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three strategies",
+        "t": 16.304
+      },
+      {
+        "title": "Working backwards",
+        "t": 46.041
+      },
+      {
+        "title": "Guess and check",
+        "t": 88.078
+      },
+      {
+        "title": "Extend the table",
+        "t": 123.644
+      },
+      {
+        "title": "Your turn",
+        "t": 158.02
+      },
+      {
+        "title": "Summary",
+        "t": 190.943
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2-d:q",
+        "t": 167.984,
+        "prompt": "For $y = 3x + 2$, which value of $x$ gives $y = 26$?",
+        "choices": [
+          "$80$",
+          "$8$",
+          "$28$",
+          "$24$"
+        ],
+        "answer": 1,
+        "working": "Undo “add 2”: $26 - 2 = 24$. Undo “multiply by 3”: $24 \\div 3 = 8$. Check: $3 \\times 8 + 2 = 26$ ✓"
+      }
+    ]
+  },
+  "m6-11-2-e": {
+    "lessonId": "m6-11-2",
+    "title": "Function Rules and Equations, Part 5: Solving Problems with Equations",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choose the variables",
+        "t": 21.291
+      },
+      {
+        "title": "Write the equation",
+        "t": 56.316
+      },
+      {
+        "title": "Solve it",
+        "t": 93.061
+      },
+      {
+        "title": "The steps",
+        "t": 137.028
+      },
+      {
+        "title": "Your turn",
+        "t": 164.591
+      },
+      {
+        "title": "Summary",
+        "t": 203.362
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-2-e:q",
+        "t": 180.257,
+        "prompt": "Sam has \\$12 and saves \\$4 each week, so Sam’s savings are $s = 4w + 12$. After how many weeks will Sam have \\$40?",
+        "choices": [
+          "$10$ weeks",
+          "$13$ weeks",
+          "$28$ weeks",
+          "$7$ weeks"
+        ],
+        "answer": 3,
+        "working": "$40 = 4w + 12$. Undo “add 12”: $40 - 12 = 28$. Undo “multiply by 4”: $28 \\div 4 = 7$. Check: $4 \\times 7 + 12 = 40$ ✓"
+      }
+    ]
+  },
+  "m6-12-1": {
+    "lessonId": "m6-12-1",
+    "title": "Relative Frequency, Part 1: From Frequency to Relative Frequency",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Frequency",
+        "t": 23.04
+      },
+      {
+        "title": "Relative frequency",
+        "t": 54.173
+      },
+      {
+        "title": "Three out of every eight",
+        "t": 81.702
+      },
+      {
+        "title": "The parts make a whole",
+        "t": 124.464
+      },
+      {
+        "title": "Your turn",
+        "t": 153.104
+      },
+      {
+        "title": "Summary",
+        "t": 187.02
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-12-1:q",
+        "t": 165.521,
+        "prompt": "In the same class of $24$ students, $6$ take the bus. What is the relative frequency of Bus, in lowest terms?",
+        "choices": [
+          "$6$",
+          "$\\dfrac{1}{6}$",
+          "$\\dfrac{1}{4}$",
+          "$\\dfrac{6}{18}$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{6}{24}$: divide the top and bottom by $6$ to get $\\dfrac{1}{4}$."
+      }
+    ]
+  },
+  "m6-12-1-b": {
+    "lessonId": "m6-12-1",
+    "title": "Relative Frequency, Part 2: Fractions, Decimals and Percentages",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Out of one hundred",
+        "t": 18.071
+      },
+      {
+        "title": "Three forms",
+        "t": 51.111
+      },
+      {
+        "title": "A total of fifty",
+        "t": 97.148
+      },
+      {
+        "title": "Watch out",
+        "t": 124.985
+      },
+      {
+        "title": "Your turn",
+        "t": 149.617
+      },
+      {
+        "title": "Summary",
+        "t": 184.205
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-12-1-b:q",
+        "t": 160.385,
+        "prompt": "In a class of $20$ students, $13$ have a pet. Which shows the relative frequency of having a pet?",
+        "choices": [
+          "$\\dfrac{13}{20} = 0.65 = 65\\%$",
+          "$\\dfrac{13}{20} = 0.13 = 13\\%$",
+          "$\\dfrac{13}{20} = 0.2 = 20\\%$",
+          "$\\dfrac{13}{20} = 0.35 = 35\\%$"
+        ],
+        "answer": 0,
+        "working": "$20 \\times 5 = 100$, so $\\dfrac{13}{20} = \\dfrac{65}{100} = 0.65 = 65\\%$."
+      }
+    ]
+  },
+  "m6-12-1-c": {
+    "lessonId": "m6-12-1",
+    "title": "Relative Frequency, Part 3: Comparing Groups of Different Sizes",
+    "duration": 177,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two groups",
+        "t": 18.771
+      },
+      {
+        "title": "Compare the relative frequencies",
+        "t": 48.177
+      },
+      {
+        "title": "Watch out",
+        "t": 87.111
+      },
+      {
+        "title": "Your turn",
+        "t": 113.203
+      },
+      {
+        "title": "Summary",
+        "t": 151.147
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-12-1-c:q",
+        "t": 126.265,
+        "prompt": "In Group P, $9$ of the $20$ students play soccer. In Group Q, $20$ of the $50$ students play soccer. Which is true?",
+        "choices": [
+          "Group Q has the greater part, because $20$ is more than $9$.",
+          "Group P has the greater part: $45\\%$ compared with $40\\%$.",
+          "Both groups have the same part.",
+          "Groups of different sizes cannot be compared."
+        ],
+        "answer": 1,
+        "working": "Group P: $\\tfrac{9}{20} = \\tfrac{45}{100} = 45\\%$. Group Q: $\\tfrac{20}{50} = \\tfrac{40}{100} = 40\\%$. $45\\% > 40\\%$."
+      }
+    ]
+  },
+  "m6-12-2": {
+    "lessonId": "m6-12-2",
+    "title": "Experiments and Likelihood, Part 1: Outcomes and Events",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Outcomes",
+        "t": 18.993
+      },
+      {
+        "title": "A die and a spinner",
+        "t": 44.466
+      },
+      {
+        "title": "Events",
+        "t": 74.097
+      },
+      {
+        "title": "Events on a spinner",
+        "t": 109.159
+      },
+      {
+        "title": "Your turn",
+        "t": 138.888
+      },
+      {
+        "title": "Summary",
+        "t": 165.163
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-12-2:q",
+        "t": 147.901,
+        "prompt": "You roll a six-sided die. Which outcomes make up the event “an odd number”?",
+        "choices": [
+          "$1$, $3$ and $5$",
+          "$2$, $4$ and $6$",
+          "$1$ and $3$",
+          "$5$ and $6$"
+        ],
+        "answer": 0,
+        "working": "The outcomes are $1$ to $6$. The odd ones are $1$, $3$ and $5$."
+      }
+    ]
+  },
+  "m6-12-2-b": {
+    "lessonId": "m6-12-2",
+    "title": "Experiments and Likelihood, Part 2: Predicting Likelihood",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Compare with all the outcomes",
+        "t": 18.955
+      },
+      {
+        "title": "From impossible to certain",
+        "t": 80.448
+      },
+      {
+        "title": "How many times to expect",
+        "t": 111.846
+      },
+      {
+        "title": "Your turn",
+        "t": 153.01
+      },
+      {
+        "title": "Summary",
+        "t": 193.499
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-12-2-b:q",
+        "t": 167.997,
+        "prompt": "A spinner has $4$ equal sections: blue, orange, green and yellow. You spin it $40$ times. About how many times should you expect it to land on blue?",
+        "choices": [
+          "$4$",
+          "$20$",
+          "$36$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "Blue is $1$ of the $4$ equally likely outcomes, so expect it about $40 \\div 4 = 10$ times."
+      }
+    ]
+  },
+  "m6-12-2-c": {
+    "lessonId": "m6-12-2",
+    "title": "Experiments and Likelihood, Part 3: Relative Frequency from an Experiment",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trials",
+        "t": 19.941
+      },
+      {
+        "title": "Tossing a coin",
+        "t": 47.408
+      },
+      {
+        "title": "Close to the prediction",
+        "t": 88.738
+      },
+      {
+        "title": "Your turn",
+        "t": 129.619
+      },
+      {
+        "title": "Summary",
+        "t": 167.942
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-12-2-c:q",
+        "t": 144.587,
+        "prompt": "Maya rolled a six-sided die $50$ times and got a six on $9$ of the rolls. What is the relative frequency of rolling a six, as a percentage?",
+        "choices": [
+          "$9\\%$",
+          "$50\\%$",
+          "$18\\%$",
+          "$41\\%$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{9}{50} = \\dfrac{9 \\times 2}{50 \\times 2} = \\dfrac{18}{100} = 18\\%$."
+      }
+    ]
+  },
+  "m6-12-2-d": {
+    "lessonId": "m6-12-2",
+    "title": "Experiments and Likelihood, Part 4: The Law of Large Numbers",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "More and more trials",
+        "t": 17.252
+      },
+      {
+        "title": "Getting closer",
+        "t": 57.689
+      },
+      {
+        "title": "The law of large numbers",
+        "t": 88.167
+      },
+      {
+        "title": "Your turn",
+        "t": 124.742
+      },
+      {
+        "title": "Summary",
+        "t": 170.547
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-12-2-d:q",
+        "t": 146.369,
+        "prompt": "Two groups toss the same coin. Group P tosses it $20$ times and gets $14$ heads ($70\\%$). Group Q tosses it $400$ times and gets $196$ heads ($49\\%$). Which result is likely to be the better estimate of how likely heads is?",
+        "choices": [
+          "Group P’s, because $70\\%$ is greater.",
+          "Group Q’s, because it used more trials.",
+          "Both are equally good.",
+          "Neither, because neither is exactly $50\\%$."
+        ],
+        "answer": 1,
+        "working": "By the law of large numbers, more trials usually give a better estimate: $400$ trials is far more than $20$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
