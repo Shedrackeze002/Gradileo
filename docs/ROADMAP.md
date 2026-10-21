@@ -364,12 +364,16 @@ items ship or decisions change.
      are listed in `video/README.md`. Every course from Math 10 to 31, and Math 5, is rendered and
      in Drive (1,109 videos).
    - In progress: Math 6, 117 videos. Every script and every Your-turn answer and still was
-     checked, and the videos are rendering unit by unit into Drive (Units 1 and 2 are there).
+     checked, and the videos are rendering unit by unit into Drive (Units 1 to 7 are there).
    - Scripted: Math 7, 143 videos written by four helpers and checked like Math 6 (four answer
      lines or figures were corrected, and money is always said in dollars and cents). They render
      after Math 6.
-   - Next: script and render Math 8 and 9 in order, explaining each lesson as simply as
-     possible, with parts split by idea.
+   - Scripted: Math 8, 129 videos written by five helpers. Every Your-turn answer and every still
+     was checked; one question that only made sense inside its video was rewritten to stand on its
+     own, the exchange-rate slide was re-spaced so its equation sits inside the margin, and the
+     volume in a working-backwards example is now shown as well as said. They render after Math 7.
+   - Next: script and render Math 9, explaining each lesson as simply as possible, with parts
+     split by idea.
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with
    Claude coordinating: preparing each week's posts, keeping the schedule and reporting. It runs

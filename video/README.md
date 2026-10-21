@@ -155,6 +155,14 @@ See `src/video/script.ts` for every element and option. In short:
   `\thc{}`, `\opp{}`, `\adj{}` and `\hyp{}` in maths (θ yellow, opposite orange, adjacent blue,
   hypotenuse pink). Colour is never the only cue: sides are always named too.
 - Check every number in the script; the video shows exactly what the script says.
+- Show every number a problem needs. A value that is only said (the volume a height is worked
+  back from, a rate) is easy to miss, so put it in the question or the first line of the working.
+- A "Your turn" question stands on its own: it can be read and answered without the rest of the
+  video, so it names its shape and numbers instead of pointing at "the box above".
+- Keep everything inside the header's margins (about 84 to 1835 pixels across a 1920-pixel still).
+  Maths is not shrunk to fit its column, so a long line in the right column of a split scene can
+  run past the edge: narrow `leftWidth`, split the line or use a smaller size. A figure squeezed
+  narrower than it would like keeps its text size, so check that its labels still fit their cells.
 
 ## Making a course's videos, step by step
 
