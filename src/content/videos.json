@@ -8926,6 +8926,222 @@
       }
     ]
   },
+  "m6-8-1-b": {
+    "lessonId": "m6-8-1",
+    "title": "Points and Polygons in the Cartesian Plane, Part 2: Ordered Pairs",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 15.723
+      },
+      {
+        "title": "Reading a point",
+        "t": 58.905
+      },
+      {
+        "title": "Order matters",
+        "t": 89.705
+      },
+      {
+        "title": "Locating a point",
+        "t": 119.75
+      },
+      {
+        "title": "Points on the axes",
+        "t": 155.952
+      },
+      {
+        "title": "Your turn",
+        "t": 187.117
+      },
+      {
+        "title": "Summary",
+        "t": 219.862
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-1-b:q",
+        "t": 196.178,
+        "prompt": "Start at the origin. Which moves take you to the point $(-3,\\ 2)$?",
+        "choices": [
+          "$3$ left, then $2$ up",
+          "$3$ right, then $2$ up",
+          "$2$ left, then $3$ up",
+          "$3$ left, then $2$ down"
+        ],
+        "answer": 0,
+        "working": "The $x$-coordinate, $-3$, means $3$ units left. The $y$-coordinate, $2$, means $2$ units up."
+      }
+    ]
+  },
+  "m6-8-1-c": {
+    "lessonId": "m6-8-1",
+    "title": "Points and Polygons in the Cartesian Plane, Part 3: Polygons in the Plane",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Drawing a rectangle",
+        "t": 15.159
+      },
+      {
+        "title": "Sides across an axis",
+        "t": 64.794
+      },
+      {
+        "title": "Perimeter",
+        "t": 110.862
+      },
+      {
+        "title": "Watch out",
+        "t": 141.792
+      },
+      {
+        "title": "Your turn",
+        "t": 168.561
+      },
+      {
+        "title": "Summary",
+        "t": 210.218
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-1-c:q",
+        "t": 184.708,
+        "prompt": "A rectangle has vertices $P(-2,\\ 3)$, $Q(5,\\ 3)$, $R(5,\\ {-1})$ and $S(-2,\\ {-1})$. What is its perimeter, in units?",
+        "choices": [
+          "$14$",
+          "$28$",
+          "$22$",
+          "$11$"
+        ],
+        "answer": 2,
+        "working": "$PQ = 2 + 5 = 7$ and $QR = 3 + 1 = 4$. Perimeter $= 7 + 4 + 7 + 4 = 22$ units."
+      }
+    ]
+  },
+  "m6-8-2": {
+    "lessonId": "m6-8-2",
+    "title": "Translations and Reflections, Part 1: Translations",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Translation",
+        "t": 17.619
+      },
+      {
+        "title": "Translating a vertex",
+        "t": 65.474
+      },
+      {
+        "title": "Every vertex",
+        "t": 96.117
+      },
+      {
+        "title": "Watch out",
+        "t": 131.564
+      },
+      {
+        "title": "Describing a translation",
+        "t": 158.728
+      },
+      {
+        "title": "Your turn",
+        "t": 198.14
+      },
+      {
+        "title": "Summary",
+        "t": 235.893
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-2:q",
+        "t": 209.967,
+        "prompt": "Point $P(2,\\ {-3})$ is translated $4$ units left and $5$ units up. Where is $P'$?",
+        "choices": [
+          "$(6,\\ 2)$",
+          "$(-2,\\ 2)$",
+          "$(-2,\\ {-8})$",
+          "$(7,\\ {-7})$"
+        ],
+        "answer": 1,
+        "working": "Left changes $x$: $2 - 4 = -2$. Up changes $y$: $-3 + 5 = 2$. So $P'(-2,\\ 2)$."
+      }
+    ]
+  },
+  "m6-8-2-b": {
+    "lessonId": "m6-8-2",
+    "title": "Translations and Reflections, Part 2: Reflections in the Axes",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Line of reflection",
+        "t": 16.892
+      },
+      {
+        "title": "In the y-axis",
+        "t": 47.165
+      },
+      {
+        "title": "In the x-axis",
+        "t": 91.638
+      },
+      {
+        "title": "Every vertex",
+        "t": 131.151
+      },
+      {
+        "title": "Watch out",
+        "t": 159.809
+      },
+      {
+        "title": "Your turn",
+        "t": 202.011
+      },
+      {
+        "title": "Summary",
+        "t": 241.007
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-2-b:q",
+        "t": 212.426,
+        "prompt": "Point $Q(-3,\\ 5)$ is reflected in the $x$-axis. Where is $Q'$?",
+        "choices": [
+          "$(3,\\ 5)$",
+          "$(-5,\\ {-3})$",
+          "$(3,\\ {-5})$",
+          "$(-3,\\ {-5})$"
+        ],
+        "answer": 3,
+        "working": "A reflection in the $x$-axis keeps $x$ the same and changes $y$ to its opposite: $Q'(-3,\\ {-5})$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
