@@ -6661,6 +6661,57 @@
       }
     ]
   },
+  "m6-3-2-b": {
+    "lessonId": "m6-3-2",
+    "title": "Powers, Part 2: The Value of a Power",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Find the value",
+        "t": 18.229
+      },
+      {
+        "title": "The powers of 2",
+        "t": 62.631
+      },
+      {
+        "title": "Which is greater?",
+        "t": 104.179
+      },
+      {
+        "title": "Watch out",
+        "t": 143.338
+      },
+      {
+        "title": "Your turn",
+        "t": 166.328
+      },
+      {
+        "title": "Summary",
+        "t": 199.281
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-2-b:q",
+        "t": 172.103,
+        "prompt": "What is the value of $4^3$?",
+        "choices": [
+          "$12$",
+          "$7$",
+          "$64$",
+          "$81$"
+        ],
+        "answer": 2,
+        "working": "$4^3 = 4 \\times 4 \\times 4$. $4 \\times 4 = 16$, and $16 \\times 4 = 64$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
