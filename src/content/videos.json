@@ -5899,6 +5899,285 @@
       }
     ]
   },
+  "m6-2-2-b": {
+    "lessonId": "m6-2-2",
+    "title": "Multiplying Decimal and Natural Numbers, Part 2: Multiplying a Decimal Number",
+    "duration": 379,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 22.905
+      },
+      {
+        "title": "Why it works",
+        "t": 53.792
+      },
+      {
+        "title": "Multiply 4.56 by 23",
+        "t": 98.56
+      },
+      {
+        "title": "Laps of a loop",
+        "t": 189.017
+      },
+      {
+        "title": "With the algorithm",
+        "t": 238.357
+      },
+      {
+        "title": "Watch out",
+        "t": 275.021
+      },
+      {
+        "title": "Your turn",
+        "t": 317.022
+      },
+      {
+        "title": "Summary",
+        "t": 352.5
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-2-b:q",
+        "t": 324.085,
+        "prompt": "Find $3.25 \\times 14$.",
+        "choices": [
+          "$455.0$",
+          "$45.50$",
+          "$4.550$",
+          "$4550$"
+        ],
+        "answer": 1,
+        "working": "$325 \\times 14 = 1300 + 3250 = 4550$. $3.25$ has $2$ decimal places, so $3.25 \\times 14 = 45.50$."
+      }
+    ]
+  },
+  "m6-2-2-c": {
+    "lessonId": "m6-2-2",
+    "title": "Multiplying Decimal and Natural Numbers, Part 3: Is the Answer Reasonable?",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Estimate to check",
+        "t": 16.46
+      },
+      {
+        "title": "Checking a product",
+        "t": 43.639
+      },
+      {
+        "title": "Spot the mistake",
+        "t": 72.307
+      },
+      {
+        "title": "Fixing the product",
+        "t": 105.277
+      },
+      {
+        "title": "Ten times too big or small",
+        "t": 142.106
+      },
+      {
+        "title": "Use a whole-number product",
+        "t": 171.975
+      },
+      {
+        "title": "Your turn",
+        "t": 209.583
+      },
+      {
+        "title": "Summary",
+        "t": 245.59
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-2-c:q",
+        "t": 219.075,
+        "prompt": "Use an estimate to choose the correct product: $5.83 \\times 31$",
+        "choices": [
+          "$1807.3$",
+          "$18.073$",
+          "$18\\,073$",
+          "$180.73$"
+        ],
+        "answer": 3,
+        "working": "Estimate: $5.83$ is about $6$ and $31$ is about $30$, so the product is about $6 \\times 30 = 180$. Only $180.73$ is close. ($583 \\times 31 = 18\\,073$, and $5.83$ has $2$ decimal places.)"
+      }
+    ]
+  },
+  "m6-2-3": {
+    "lessonId": "m6-2-3",
+    "title": "Dividing Decimal and Natural Numbers, Part 1: Long Division",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sharing equally",
+        "t": 21.069
+      },
+      {
+        "title": "Words to know",
+        "t": 35.932
+      },
+      {
+        "title": "Four steps",
+        "t": 64.136
+      },
+      {
+        "title": "Divide 391 by 17",
+        "t": 97.934
+      },
+      {
+        "title": "Check by multiplying",
+        "t": 181.454
+      },
+      {
+        "title": "Your turn",
+        "t": 212.187
+      },
+      {
+        "title": "Summary",
+        "t": 250.419
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-3:q",
+        "t": 219.935,
+        "prompt": "Find $442 \\div 17$.",
+        "choices": [
+          "$26$",
+          "$25$ R $17$",
+          "$206$",
+          "$16$"
+        ],
+        "answer": 0,
+        "working": "$17$ goes into $44$ two times ($34$), leaving $10$. Bring down the $2$: $17$ goes into $102$ six times ($102$), leaving $0$. Check: $26 \\times 17 = 442$."
+      }
+    ]
+  },
+  "m6-2-3-b": {
+    "lessonId": "m6-2-3",
+    "title": "Dividing Decimal and Natural Numbers, Part 2: Dividing a Decimal Number",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rope",
+        "t": 19.538
+      },
+      {
+        "title": "Where the point goes",
+        "t": 52.015
+      },
+      {
+        "title": "Divide 7.82 by 17",
+        "t": 75.562
+      },
+      {
+        "title": "Check",
+        "t": 156.773
+      },
+      {
+        "title": "Watch out",
+        "t": 181.612
+      },
+      {
+        "title": "Your turn",
+        "t": 204.56
+      },
+      {
+        "title": "Summary",
+        "t": 245.753
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-3-b:q",
+        "t": 215.979,
+        "prompt": "A $9.75$ m ribbon is cut into $15$ equal pieces. How long is each piece?",
+        "choices": [
+          "$65$ m",
+          "$6.5$ m",
+          "$0.65$ m",
+          "$0.75$ m"
+        ],
+        "answer": 2,
+        "working": "Put the point above the point in $9.75$. $15$ does not go into $9$, so write $0$. $15$ goes into $97$ six times ($90$), leaving $7$. Bring down the $5$: $15$ goes into $75$ five times. So $9.75 \\div 15 = 0.65$."
+      }
+    ]
+  },
+  "m6-2-3-c": {
+    "lessonId": "m6-2-3",
+    "title": "Dividing Decimal and Natural Numbers, Part 3: Remainders as Decimals",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A remainder",
+        "t": 17.474
+      },
+      {
+        "title": "Keep dividing",
+        "t": 58.127
+      },
+      {
+        "title": "Watch out",
+        "t": 117.34
+      },
+      {
+        "title": "From a remainder to a decimal",
+        "t": 152.184
+      },
+      {
+        "title": "Your turn",
+        "t": 196.913
+      },
+      {
+        "title": "Summary",
+        "t": 234.15
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-2-3-c:q",
+        "t": 206.863,
+        "prompt": "Find $286 \\div 8$. Write the quotient as a decimal number.",
+        "choices": [
+          "$35.75$",
+          "$35.6$",
+          "$35.06$",
+          "$3.575$"
+        ],
+        "answer": 0,
+        "working": "$286 \\div 8 = 35$ R $6$. The remainder is $6$ out of $8$: $\\dfrac{6}{8} = \\dfrac{3}{4} = 0.75$. So $286 \\div 8 = 35.75$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
