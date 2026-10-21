@@ -7717,6 +7717,108 @@
       }
     ]
   },
+  "m6-5-2-b": {
+    "lessonId": "m6-5-2",
+    "title": "Rates and Unit Rates, Part 2: Unit Price",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unit price",
+        "t": 14.865
+      },
+      {
+        "title": "Juice boxes",
+        "t": 31.866
+      },
+      {
+        "title": "Check it",
+        "t": 84.443
+      },
+      {
+        "title": "Watch out",
+        "t": 106.965
+      },
+      {
+        "title": "Another unit price",
+        "t": 133.384
+      },
+      {
+        "title": "Your turn",
+        "t": 171.753
+      },
+      {
+        "title": "Summary",
+        "t": 205.06
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-2-b:q",
+        "t": 180.246,
+        "prompt": "A pack of $4$ notebooks costs \\$6.00. What is the unit price?",
+        "choices": [
+          "\\$24.00",
+          "\\$0.67",
+          "\\$2.00",
+          "\\$1.50"
+        ],
+        "answer": 3,
+        "working": "Divide the cost by the number of notebooks: $6.00 \\div 4 = 1.50$, so \\$1.50 per notebook. Check: $1.50 \\times 4 = 6.00$."
+      }
+    ]
+  },
+  "m6-5-2-c": {
+    "lessonId": "m6-5-2",
+    "title": "Rates and Unit Rates, Part 3: Using Unit Rates",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The better buy",
+        "t": 17.891
+      },
+      {
+        "title": "How far in 5 hours?",
+        "t": 61.565
+      },
+      {
+        "title": "Find the one first",
+        "t": 91.94
+      },
+      {
+        "title": "Your turn",
+        "t": 124.172
+      },
+      {
+        "title": "Summary",
+        "t": 167.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-2-c:q",
+        "t": 136.837,
+        "prompt": "Store P sells $5$ pens for \\$4.00. Store Q sells $8$ pens for \\$6.00. Which store has the better buy?",
+        "choices": [
+          "Store Q, at \\$0.75 per pen",
+          "Store P, at \\$0.80 per pen",
+          "Store P, because its pack costs less in all",
+          "Both are the same buy"
+        ],
+        "answer": 0,
+        "working": "Store P: $4.00 \\div 5 = 0.80$, so \\$0.80 per pen. Store Q: $6.00 \\div 8 = 0.75$, so \\$0.75 per pen. \\$0.75 is less, so Store Q has the better buy."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
