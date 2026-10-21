@@ -6916,6 +6916,163 @@
       }
     ]
   },
+  "m6-4-1": {
+    "lessonId": "m6-4-1",
+    "title": "Fractions as Quotients, Part 1: Sharing Makes a Fraction",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal sharing",
+        "t": 16.876
+      },
+      {
+        "title": "Three pizzas, four friends",
+        "t": 46.363
+      },
+      {
+        "title": "A share is a quotient",
+        "t": 93.781
+      },
+      {
+        "title": "Two pizzas, three friends",
+        "t": 126.613
+      },
+      {
+        "title": "Watch out",
+        "t": 161.495
+      },
+      {
+        "title": "Your turn",
+        "t": 187.827
+      },
+      {
+        "title": "Summary",
+        "t": 224.278
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-1:q",
+        "t": 197.066,
+        "prompt": "$4$ muffins are shared equally by $5$ friends. How much does each friend get?",
+        "choices": [
+          "$\\dfrac{5}{4}$ of a muffin",
+          "$\\dfrac{1}{5}$ of a muffin",
+          "$\\dfrac{4}{5}$ of a muffin",
+          "$\\dfrac{1}{4}$ of a muffin"
+        ],
+        "answer": 2,
+        "working": "Each friend gets $4 \\div 5 = \\tfrac{4}{5}$ of a muffin: the amount shared, $4$, on top, and the number of shares, $5$, on the bottom."
+      }
+    ]
+  },
+  "m6-4-1-b": {
+    "lessonId": "m6-4-1",
+    "title": "Fractions as Quotients, Part 2: More Than One Way to Share",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Way 1: all quarters",
+        "t": 16.482
+      },
+      {
+        "title": "Way 2: halves and quarters",
+        "t": 33.45
+      },
+      {
+        "title": "More than one whole each",
+        "t": 74.463
+      },
+      {
+        "title": "Equivalent fractions, same share",
+        "t": 123.747
+      },
+      {
+        "title": "Your turn",
+        "t": 158.31
+      },
+      {
+        "title": "Summary",
+        "t": 192.521
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-1-b:q",
+        "t": 168.716,
+        "prompt": "$7$ granola bars are shared equally by $2$ hikers. How many bars does each hiker get?",
+        "choices": [
+          "$\\dfrac{2}{7}$",
+          "$3$",
+          "$2\\dfrac{1}{2}$",
+          "$3\\dfrac{1}{2}$"
+        ],
+        "answer": 3,
+        "working": "$7 \\div 2 = \\tfrac{7}{2}$. $7 \\div 2 = 3$ R $1$, so each hiker gets $3$ whole bars, and the last bar is cut in half: $3\\tfrac{1}{2}$."
+      }
+    ]
+  },
+  "m6-4-1-c": {
+    "lessonId": "m6-4-1",
+    "title": "Fractions as Quotients, Part 3: A Fraction Is a Division",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The fraction bar",
+        "t": 20.263
+      },
+      {
+        "title": "Both directions",
+        "t": 45.884
+      },
+      {
+        "title": "Three quarters as a decimal",
+        "t": 73.863
+      },
+      {
+        "title": "On a number line",
+        "t": 139.176
+      },
+      {
+        "title": "Your turn",
+        "t": 167.191
+      },
+      {
+        "title": "Summary",
+        "t": 199.745
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-1-c:q",
+        "t": 173.072,
+        "prompt": "Write $\\dfrac{2}{5}$ as a decimal.",
+        "choices": [
+          "$2.5$",
+          "$0.4$",
+          "$0.25$",
+          "$5.2$"
+        ],
+        "answer": 1,
+        "working": "Divide the numerator by the denominator: $2 \\div 5$. $5$ does not go into $2$, so write $0$ and a decimal point. Then $20 \\div 5 = 4$, so the answer is $0.4$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
