@@ -10252,6 +10252,249 @@
       }
     ]
   },
+  "m6-10-2-d": {
+    "lessonId": "m6-10-2",
+    "title": "Volume of Rectangular Prisms, Part 4: Solving Volume Problems",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An aquarium",
+        "t": 18.719
+      },
+      {
+        "title": "Choose an easy order",
+        "t": 53.438
+      },
+      {
+        "title": "A sandbox",
+        "t": 89.897
+      },
+      {
+        "title": "Your turn",
+        "t": 129.942
+      },
+      {
+        "title": "Summary",
+        "t": 168.278
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-2-d:q",
+        "t": 141.565,
+        "prompt": "A box is $25\\text{ cm}$ long, $10\\text{ cm}$ wide and $4\\text{ cm}$ high. What is its volume?",
+        "choices": [
+          "$39\\text{ cm}^3$",
+          "$100\\text{ cm}^3$",
+          "$1000\\text{ cm}^3$",
+          "$10\\,000\\text{ cm}^3$"
+        ],
+        "answer": 2,
+        "working": "An easy order: $25 \\times 4 = 100$, then $100 \\times 10 = 1000$, so $1000\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m6-11-1": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 1: Two Quantities That Change Together",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A growing bean plant",
+        "t": 15.541
+      },
+      {
+        "title": "Variables",
+        "t": 46.799
+      },
+      {
+        "title": "Functions",
+        "t": 74.383
+      },
+      {
+        "title": "Independent and dependent",
+        "t": 106.301
+      },
+      {
+        "title": "Your turn",
+        "t": 143.805
+      },
+      {
+        "title": "Summary",
+        "t": 175.675
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1:q",
+        "t": 153.724,
+        "prompt": "A cup of hot cocoa cools down as the minutes pass. Which is the **dependent** variable?",
+        "choices": [
+          "The number of minutes",
+          "The temperature of the cocoa",
+          "Both of them",
+          "Neither of them"
+        ],
+        "answer": 1,
+        "working": "The temperature changes because the minutes pass, so the temperature depends on the time. The minutes are the independent variable."
+      }
+    ]
+  },
+  "m6-11-1-b": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 2: Change over Time",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Things that change over time",
+        "t": 19.024
+      },
+      {
+        "title": "Temperature during the day",
+        "t": 52.814
+      },
+      {
+        "title": "Watch out",
+        "t": 96.67
+      },
+      {
+        "title": "One more example",
+        "t": 122.114
+      },
+      {
+        "title": "Your turn",
+        "t": 151.124
+      },
+      {
+        "title": "Summary",
+        "t": 187.909
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1-b:q",
+        "t": 160.646,
+        "prompt": "A runner’s distance from the start is recorded every minute. Which statement is true?",
+        "choices": [
+          "Time is the independent variable, and distance is the dependent variable.",
+          "Distance is the independent variable, and time is the dependent variable.",
+          "Time and distance are both independent variables.",
+          "Neither time nor distance is a variable."
+        ],
+        "answer": 0,
+        "working": "The distance changes because the minutes pass, so the distance depends on the time. Time is the independent variable."
+      }
+    ]
+  },
+  "m6-11-1-c": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 3: The Rule",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A function machine",
+        "t": 17.65
+      },
+      {
+        "title": "Using the rule",
+        "t": 53.81
+      },
+      {
+        "title": "Test the rule",
+        "t": 86.012
+      },
+      {
+        "title": "Your turn",
+        "t": 122.466
+      },
+      {
+        "title": "Summary",
+        "t": 158.31
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1-c:q",
+        "t": 135.054,
+        "prompt": "The bean plant’s rule is: multiply the number of weeks by $3$, then add $4$. How tall is the plant after $6$ weeks?",
+        "choices": [
+          "$13\\text{ cm}$",
+          "$30\\text{ cm}$",
+          "$22\\text{ cm}$",
+          "$18\\text{ cm}$"
+        ],
+        "answer": 2,
+        "working": "$6 \\times 3 = 18$, then $18 + 4 = 22$, so $22\\text{ cm}$."
+      }
+    ]
+  },
+  "m6-11-1-d": {
+    "lessonId": "m6-11-1",
+    "title": "Independent and Dependent Variables, Part 4: Tables of Values",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table of values",
+        "t": 16.637
+      },
+      {
+        "title": "Checking a row",
+        "t": 54.294
+      },
+      {
+        "title": "Up by three",
+        "t": 84.257
+      },
+      {
+        "title": "Your turn",
+        "t": 123.021
+      },
+      {
+        "title": "Summary",
+        "t": 161.094
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-11-1-d:q",
+        "t": 137.862,
+        "prompt": "Another plant has the rule: multiply the number of weeks, $w$, by $2$, then add $5$ to get its height, $h$. Which row of its table of values is correct?",
+        "choices": [
+          "$w = 3,\\ h = 10$",
+          "$w = 4,\\ h = 18$",
+          "$w = 0,\\ h = 0$",
+          "$w = 6,\\ h = 17$"
+        ],
+        "answer": 3,
+        "working": "$6 \\times 2 + 5 = 12 + 5 = 17$ ✓. The others: $3 \\times 2 + 5 = 11$, $4 \\times 2 + 5 = 13$ and $0 \\times 2 + 5 = 5$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
