@@ -9299,6 +9299,57 @@
       }
     ]
   },
+  "m6-8-3-d": {
+    "lessonId": "m6-8-3",
+    "title": "Rotations, Part 4: Three Quarter Turns",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A shortcut",
+        "t": 16.69
+      },
+      {
+        "title": "Turning B",
+        "t": 57.59
+      },
+      {
+        "title": "Turning C",
+        "t": 102.355
+      },
+      {
+        "title": "Describing a rotation",
+        "t": 131.666
+      },
+      {
+        "title": "Your turn",
+        "t": 171.999
+      },
+      {
+        "title": "Summary",
+        "t": 213.89
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-8-3-d:q",
+        "t": 185.89,
+        "prompt": "Side $AB$ points **down** from the centre $A$. After a rotation about $A$, side $AB'$ points **left**. Which describes the rotation?",
+        "choices": [
+          "$90^\\circ$ counterclockwise",
+          "$90^\\circ$ clockwise",
+          "$180^\\circ$",
+          "$270^\\circ$ clockwise"
+        ],
+        "answer": 1,
+        "working": "A clock hand pointing down (at 6) turns clockwise a quarter turn to point left (at 9). So the rotation is $90^\\circ$ clockwise."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
