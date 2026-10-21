@@ -105,7 +105,8 @@ Notes:
   (`AI_TUTOR_QUESTIONS_PER_HOUR`).
 - The tutor's recorded voice (section 3.4) is written by MiniMax too, from GitHub Actions: add the
   same key as the repository secret `MINIMAX_API_KEY`.
-- Analyses are limited to 60 per class per hour (`AI_INSIGHTS_PER_HOUR` changes this).
+- Analyses are limited to 60 per class per hour (`AI_INSIGHTS_PER_HOUR` changes this), and "Draft with
+  AI" in the assignment builder to 30 drafts per teacher per hour (`AI_DRAFTS_PER_HOUR`).
 - To try MiniMax in the **demo**, a teacher can paste a key in *Class settings → AI teaching
   assistant*. That key is stored only in their browser.
 

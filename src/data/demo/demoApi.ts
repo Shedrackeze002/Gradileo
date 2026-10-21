@@ -16,6 +16,7 @@ import { dueReminders } from '@engine/reminders.ts';
 import { draftFromAction } from '@engine/actions.ts';
 import { generateInsight, DEFAULT_MODEL } from '@engine/ai/index.ts';
 import { answerTutorQuestion, normalizeChunk, normalizeQuestion, writeTutorScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
+import { classMastery, draftAssignment, draftContext, normalizeDraftRequest, type DraftRequest, type DraftResult } from '@engine/ai/builder.ts';
 import type { SkillState } from '@engine/mastery.ts';
 import { exitCount, isLocked, mergeIntegrity, type Integrity } from '@engine/integrity.ts';
 import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts';
@@ -1366,6 +1367,15 @@ export class DemoApi implements DataApi {
     this.db.insights.push(ins);
     this.persist();
     return ins;
+  }
+
+  async draftAssignment(classId: string, request: DraftRequest): Promise<DraftResult> {
+    await this.ready;
+    const cls = this.requireTeacherOf(classId);
+    const req = normalizeDraftRequest(request, cls.courseId);
+    const students = new Set(this.db.enrollments.filter((e) => e.classId === classId).map((e) => e.studentId));
+    const mastery = classMastery(this.db.mastery.filter((m) => students.has(m.studentId)));
+    return draftAssignment(req, draftContext(cls.courseId, req.lessonIds, mastery), this.aiConfig(), uid);
   }
 
   /** The tutor's narration, saved for this browser session like the server saves it. */

@@ -38,7 +38,7 @@ work authoritatively. This keeps the server and the student's screen in exact ag
 | `submit.ts` | `validateRefs` and `processSubmission`: the single code path used by the demo and the server. |
 | `reminders.ts` | The reminder rule (mirrored in SQL by `send_due_reminders`). |
 | `actions.ts` | Turns an AI-proposed action into an assignment draft. |
-| `ai/` | Context builders, prompts, MiniMax client, JSON validation and the offline analyst; `tutor.ts` writes what the AI tutor says at each lesson step and its answers to students' questions, with offline versions, and defines the manifest of a lesson's recorded voice (`TutorVoice`, keyed by `tutorSlideKey`). |
+| `ai/` | Context builders, prompts, MiniMax client, JSON validation and the offline analyst; `builder.ts` drafts an assignment for "Draft with AI" in the assignment builder (generated sections plus questions the AI writes, a numeric answer kept only when it matches an arithmetic check the model gives, and an offline draft without MiniMax); `tutor.ts` writes what the AI tutor says at each lesson step and its answers to students' questions, with offline versions, and defines the manifest of a lesson's recorded voice (`TutorVoice`, keyed by `tutorSlideKey`). |
 
 Every generator is tested: for 60 seeds at each difficulty on every run (`GEN_SEEDS=300 npm test`
 for a deeper sweep), the item's own canonical answer must grade as correct, every item needs hints

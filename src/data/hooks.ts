@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useMutation, useQuery, useQueryClient, type QueryClient } from '@tanstack/react-query';
 import { api } from './index.ts';
 import type { Integrity } from '@engine/integrity.ts';
+import type { DraftRequest } from '@engine/ai/builder.ts';
 import type { AdminUserFilter, Assignment, BoardInput, ClassSettings, CourseRequestInput, CourseRequestStatus, LessonEditInput, LessonEditStatus, ItemRef, JoinDecision, LessonPrefs, PlatformSettings, ProposedAction, Resource, StoredResponse } from './types.ts';
 
 export const qk = {
@@ -361,6 +362,10 @@ export function useGenerateInsight(classId: string) {
     mutationFn: (studentId: string | null) => api().generateInsight(classId, studentId),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['insights', classId] }),
   });
+}
+
+export function useDraftAssignment(classId: string) {
+  return useMutation({ mutationFn: (request: DraftRequest) => api().draftAssignment(classId, request) });
 }
 
 export function useSetActionStatus(classId: string) {

@@ -5,6 +5,7 @@
  */
 import type { Integrity } from '@engine/integrity.ts';
 import type { TutorAnswer, TutorChunk, TutorQuestion, TutorScript } from '@engine/ai/tutor.ts';
+import type { DraftRequest, DraftResult } from '@engine/ai/builder.ts';
 import type {
   AdminAuditEntry,
   AdminClassRow,
@@ -191,6 +192,8 @@ export interface DataApi {
   listInsights(classId: string, studentId?: string | null): Promise<Insight[]>;
   generateInsight(classId: string, studentId: string | null): Promise<Insight>;
   setActionStatus(insightId: string, actionId: string, status: ProposedAction['status']): Promise<void>;
+  /** "Draft with AI" in the assignment builder: a draft for the teacher to review (offline if the AI is off). */
+  draftAssignment(classId: string, request: DraftRequest): Promise<DraftResult>;
 
   // AI tutor (any signed-in student)
   /** What the tutor says at each step of a run of a lesson's slides (offline narration if the AI is off). */

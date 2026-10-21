@@ -8039,6 +8039,116 @@
       }
     ]
   },
+  "m6-6-1-c": {
+    "lessonId": "m6-6-1",
+    "title": "Order of Operations with Powers, Part 3: Parentheses Come First",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "With and without parentheses",
+        "t": 16.59
+      },
+      {
+        "title": "Four steps",
+        "t": 67.693
+      },
+      {
+        "title": "A power inside parentheses",
+        "t": 112.909
+      },
+      {
+        "title": "One step at a time",
+        "t": 154.209
+      },
+      {
+        "title": "Your turn",
+        "t": 179.054
+      },
+      {
+        "title": "Summary",
+        "t": 220.192
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-1-c:q",
+        "t": 189.34,
+        "prompt": "Evaluate $3 \\times (4 + 2)^{2} \\div 9$.",
+        "choices": [
+          "$12$",
+          "$36$",
+          "$4$",
+          "$108$"
+        ],
+        "answer": 0,
+        "working": "Parentheses: $4 + 2 = 6$. Power: $6^{2} = 36$. Then left to right: $3 \\times 36 = 108$ and $108 \\div 9 = 12$."
+      }
+    ]
+  },
+  "m6-6-2": {
+    "lessonId": "m6-6-2",
+    "title": "Like Terms and Algebraic Properties, Part 1: Terms and Like Terms",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A bin of marbles",
+        "t": 20.845
+      },
+      {
+        "title": "Terms",
+        "t": 56.525
+      },
+      {
+        "title": "Like terms",
+        "t": 96.794
+      },
+      {
+        "title": "Algebra tiles",
+        "t": 142.671
+      },
+      {
+        "title": "All the tiles",
+        "t": 177.764
+      },
+      {
+        "title": "Watch out",
+        "t": 205.429
+      },
+      {
+        "title": "Your turn",
+        "t": 226.87
+      },
+      {
+        "title": "Summary",
+        "t": 252.333
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-6-2:q",
+        "t": 232.119,
+        "prompt": "Which pair are like terms?",
+        "choices": [
+          "$4y$ and $4$",
+          "$2x$ and $2y$",
+          "$5n$ and $9n$",
+          "$6x$ and $6x^{2}$"
+        ],
+        "answer": 2,
+        "working": "$5n$ and $9n$ have exactly the same variable, $n$. The numbers in front can be different."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
