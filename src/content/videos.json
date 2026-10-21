@@ -6712,6 +6712,57 @@
       }
     ]
   },
+  "m6-3-2-c": {
+    "lessonId": "m6-3-2",
+    "title": "Powers, Part 3: Powers in a Prime Factorization",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A factor tree for 72",
+        "t": 16.591
+      },
+      {
+        "title": "Write it with powers",
+        "t": 53.692
+      },
+      {
+        "title": "From powers back to the number",
+        "t": 94.952
+      },
+      {
+        "title": "Watch out",
+        "t": 127.639
+      },
+      {
+        "title": "Your turn",
+        "t": 160.721
+      },
+      {
+        "title": "Summary",
+        "t": 195.961
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-2-c:q",
+        "t": 169.065,
+        "prompt": "What is the prime factorization of $48$, written with powers?",
+        "choices": [
+          "$2^4 \\times 3$",
+          "$2^3 \\times 6$",
+          "$4^2 \\times 3$",
+          "$2 \\times 3^4$"
+        ],
+        "answer": 0,
+        "working": "$48 = 2 \\times 2 \\times 2 \\times 2 \\times 3$. Two is a factor $4$ times, so $48 = 2^4 \\times 3$. Check: $16 \\times 3 = 48$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
