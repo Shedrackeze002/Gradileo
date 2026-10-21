@@ -12763,6 +12763,214 @@
       }
     ]
   },
+  "m7-2-5-b": {
+    "lessonId": "m7-2-5",
+    "title": "Solving Percent Problems, Part 2: Sales Tax and Tips",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sales tax",
+        "t": 18.161
+      },
+      {
+        "title": "A basketball",
+        "t": 49.543
+      },
+      {
+        "title": "A tip with mental math",
+        "t": 101.069
+      },
+      {
+        "title": "Watch out",
+        "t": 149.828
+      },
+      {
+        "title": "Your turn",
+        "t": 181.989
+      },
+      {
+        "title": "Summary",
+        "t": 220.394
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-5-b:q",
+        "t": 192.403,
+        "prompt": "A meal costs \\$24.00. The family leaves a $15\\%$ tip. What is the total?",
+        "choices": [
+          "\\$3.60",
+          "\\$20.40",
+          "\\$27.60",
+          "\\$39.00"
+        ],
+        "answer": 2,
+        "working": "$10\\%$ of $24$ is $2.40$ and $5\\%$ is $1.20$, so the tip is $3.60$. Total: $24.00 + 3.60 = 27.60$, so \\$27.60."
+      }
+    ]
+  },
+  "m7-2-5-c": {
+    "lessonId": "m7-2-5",
+    "title": "Solving Percent Problems, Part 3: Test Scores",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A score as a percent",
+        "t": 21.453
+      },
+      {
+        "title": "A science test",
+        "t": 42.044
+      },
+      {
+        "title": "Marks and percents side by side",
+        "t": 81.777
+      },
+      {
+        "title": "Making it out of 100",
+        "t": 108.332
+      },
+      {
+        "title": "Comparing two tests",
+        "t": 135.974
+      },
+      {
+        "title": "Your turn",
+        "t": 165.32
+      },
+      {
+        "title": "Summary",
+        "t": 199.54
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-5-c:q",
+        "t": 174.809,
+        "prompt": "Theo got $21$ out of $25$ on a quiz. What is the score as a percent?",
+        "choices": [
+          "$21\\%$",
+          "$84\\%$",
+          "$0.84\\%$",
+          "$75\\%$"
+        ],
+        "answer": 1,
+        "working": "$25 \\times 4 = 100$, so $\\dfrac{21}{25} = \\dfrac{84}{100} = 84\\%$. Or divide: $21 \\div 25 = 0.84$, and $0.84 \\times 100 = 84$."
+      }
+    ]
+  },
+  "m7-2-5-d": {
+    "lessonId": "m7-2-5",
+    "title": "Solving Percent Problems, Part 4: Two Percents in One Problem",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Round after each step",
+        "t": 18.492
+      },
+      {
+        "title": "Step 1: the sale price",
+        "t": 63.964
+      },
+      {
+        "title": "Step 2: add the tax",
+        "t": 101.263
+      },
+      {
+        "title": "Why the order matters",
+        "t": 143.551
+      },
+      {
+        "title": "Your turn",
+        "t": 181.715
+      },
+      {
+        "title": "Summary",
+        "t": 226.174
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-5-d:q",
+        "t": 194.756,
+        "prompt": "Shoes cost \\$50. They are $10\\%$ off, and then a $5\\%$ sales tax is added to the sale price. What is the total?",
+        "choices": [
+          "\\$47.25",
+          "\\$47.50",
+          "\\$45.00",
+          "\\$52.25"
+        ],
+        "answer": 0,
+        "working": "Discount: $10\\%$ of $50$ is $5$, so the sale price is $50 - 5 = 45$. Tax: $5\\%$ of $45$ is $0.05 \\times 45 = 2.25$. Total: $45 + 2.25 = 47.25$, so \\$47.25."
+      }
+    ]
+  },
+  "m7-3-1": {
+    "lessonId": "m7-3-1",
+    "title": "Adding and Subtracting Fractions, Part 1: The Same Denominator",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Numerator and denominator",
+        "t": 23.073
+      },
+      {
+        "title": "Adding eighths",
+        "t": 57.313
+      },
+      {
+        "title": "Subtracting works the same way",
+        "t": 110.565
+      },
+      {
+        "title": "Watch out",
+        "t": 150.995
+      },
+      {
+        "title": "Your turn",
+        "t": 191.248
+      },
+      {
+        "title": "Summary",
+        "t": 221.849
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-1:q",
+        "t": 197.514,
+        "prompt": "Find $\\dfrac{4}{9} + \\dfrac{3}{9}$.",
+        "choices": [
+          "$\\dfrac{7}{18}$",
+          "$\\dfrac{1}{9}$",
+          "$\\dfrac{7}{9}$",
+          "$\\dfrac{12}{9}$"
+        ],
+        "answer": 2,
+        "working": "The denominators are the same, so add the numerators and keep the ninths: $4 + 3 = 7$, so the sum is $\\dfrac{7}{9}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
