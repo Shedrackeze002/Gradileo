@@ -6763,6 +6763,159 @@
       }
     ]
   },
+  "m6-3-3": {
+    "lessonId": "m6-3-3",
+    "title": "Common Factors and Divisibility, Part 1: Divisibility by a Prime",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Divisible",
+        "t": 17.311
+      },
+      {
+        "title": "Divisible by 5? By 7?",
+        "t": 56.781
+      },
+      {
+        "title": "The rule",
+        "t": 117.168
+      },
+      {
+        "title": "A power and its base",
+        "t": 158.318
+      },
+      {
+        "title": "Your turn",
+        "t": 186.79
+      },
+      {
+        "title": "Summary",
+        "t": 223.158
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-3:q",
+        "t": 196.286,
+        "prompt": "A number is $2 \\times 3^2 \\times 7$. Which prime is it divisible by?",
+        "choices": [
+          "$5$",
+          "$11$",
+          "$13$",
+          "$7$"
+        ],
+        "answer": 3,
+        "working": "$7$ is one of the primes in the factorization, so the number is divisible by $7$. The number is $126$, and $126 \\div 7 = 18$."
+      }
+    ]
+  },
+  "m6-3-3-b": {
+    "lessonId": "m6-3-3",
+    "title": "Common Factors and Divisibility, Part 2: Common Factors",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Common factors",
+        "t": 17.574
+      },
+      {
+        "title": "Using prime factorizations",
+        "t": 50.034
+      },
+      {
+        "title": "Every common factor",
+        "t": 104.676
+      },
+      {
+        "title": "Watch out",
+        "t": 140.566
+      },
+      {
+        "title": "Your turn",
+        "t": 178.745
+      },
+      {
+        "title": "Summary",
+        "t": 212.283
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-3-b:q",
+        "t": 186.172,
+        "prompt": "What is the greatest common factor of $18$ and $30$?",
+        "choices": [
+          "$3$",
+          "$6$",
+          "$90$",
+          "$2$"
+        ],
+        "answer": 1,
+        "working": "$18 = 2 \\times 3 \\times 3$ and $30 = 2 \\times 3 \\times 5$. They share one $2$ and one $3$, so the greatest common factor is $2 \\times 3 = 6$."
+      }
+    ]
+  },
+  "m6-3-3-c": {
+    "lessonId": "m6-3-3",
+    "title": "Common Factors and Divisibility, Part 3: Divisibility by a Composite Number",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 18.772
+      },
+      {
+        "title": "Divisible by 12? By 16?",
+        "t": 47.796
+      },
+      {
+        "title": "A product of two numbers",
+        "t": 116.429
+      },
+      {
+        "title": "Watch out",
+        "t": 161.179
+      },
+      {
+        "title": "Your turn",
+        "t": 194.695
+      },
+      {
+        "title": "Summary",
+        "t": 227.075
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-3-c:q",
+        "t": 205.251,
+        "prompt": "A number is $2 \\times 3^2 \\times 5 \\times 7$. Which number is it divisible by?",
+        "choices": [
+          "$21$",
+          "$4$",
+          "$27$",
+          "$25$"
+        ],
+        "answer": 0,
+        "working": "$21 = 3 \\times 7$, and the number has a $3$ and a $7$. It is not divisible by $4 = 2 \\times 2$ (one $2$), $27 = 3 \\times 3 \\times 3$ (two $3$s) or $25 = 5 \\times 5$ (one $5$). The number is $630$, and $630 \\div 21 = 30$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
