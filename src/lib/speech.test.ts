@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { TUTOR_VOICE_VERSION } from '@engine/ai/tutor.ts';
-import { loadTutorVoice, playClip, readAlong, readingSeconds, unlockAudio } from './speech.ts';
+import { loadTutorAudio, loadTutorVoice, playClip, readAlong, readingSeconds, unlockAudio } from './speech.ts';
 
 /** A stand-in for an <audio> element: playing moves currentTime on when the test says so. */
 function fakeAudio(play: () => Promise<void> = () => Promise.resolve()) {
@@ -120,5 +120,25 @@ describe('loading a lesson’s recording', () => {
     expect(await loadTutorVoice('m5-1-1')).toBeNull();
     vi.stubGlobal('fetch', vi.fn(async () => Promise.reject(new Error('offline'))));
     expect(await loadTutorVoice('m5-1-1')).toBeNull();
+  });
+});
+
+describe('downloading a lesson’s recording', () => {
+  afterEach(() => vi.unstubAllGlobals());
+  const voice = { v: TUTOR_VOICE_VERSION, lessonId: 'm5-1-1', audio: 'm5-1-1.x1.mp3', voice: { name: 'af_heart', speed: 0.85 }, hash: 'x1', slides: {}, phrases: {} };
+
+  it('keeps the whole file in memory, so playing needs no partial downloads', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(new Blob([new Uint8Array([1, 2, 3])], { type: 'audio/mpeg' }))));
+    const create = vi.fn(() => 'blob:recording');
+    vi.stubGlobal('URL', Object.assign(URL, { createObjectURL: create }));
+    expect(await loadTutorAudio(voice)).toBe('blob:recording');
+    expect(create).toHaveBeenCalled();
+  });
+
+  it('is null when the file is missing or the network fails', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response('', { status: 404 })));
+    expect(await loadTutorAudio(voice)).toBeNull();
+    vi.stubGlobal('fetch', vi.fn(async () => Promise.reject(new Error('offline'))));
+    expect(await loadTutorAudio(voice)).toBeNull();
   });
 });
