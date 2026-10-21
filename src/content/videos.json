@@ -9958,6 +9958,155 @@
       }
     ]
   },
+  "m6-10-1-b": {
+    "lessonId": "m6-10-1",
+    "title": "Volume and Cubic Units, Part 2: Cubic Centimetres and Cubic Metres",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The cubic centimetre",
+        "t": 20.036
+      },
+      {
+        "title": "The cubic metre",
+        "t": 56.589
+      },
+      {
+        "title": "Choosing a unit",
+        "t": 81.364
+      },
+      {
+        "title": "Watch out",
+        "t": 111.363
+      },
+      {
+        "title": "Your turn",
+        "t": 140.006
+      },
+      {
+        "title": "Summary",
+        "t": 168.798
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-1-b:q",
+        "t": 147.192,
+        "prompt": "Which unit is best for the volume of a juice box?",
+        "choices": [
+          "$\\text{cm}^3$",
+          "$\\text{m}^3$",
+          "$\\text{cm}^2$",
+          "$\\text{cm}$"
+        ],
+        "answer": 0,
+        "working": "A juice box is a small object, so cubic centimetres fit best."
+      }
+    ]
+  },
+  "m6-10-1-c": {
+    "lessonId": "m6-10-1",
+    "title": "Volume and Cubic Units, Part 3: Layers, Rows and Columns",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A prism of cubes",
+        "t": 17.372
+      },
+      {
+        "title": "One layer",
+        "t": 50.003
+      },
+      {
+        "title": "Stack the layers",
+        "t": 76.629
+      },
+      {
+        "title": "The quick way",
+        "t": 106.247
+      },
+      {
+        "title": "Your turn",
+        "t": 132.194
+      },
+      {
+        "title": "Summary",
+        "t": 165.525
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-1-c:q",
+        "t": 144.488,
+        "prompt": "A prism of centimetre cubes has $3$ rows of $5$ cubes in each layer. It is $2$ layers high. What is its volume?",
+        "choices": [
+          "$10\\text{ cm}^3$",
+          "$15\\text{ cm}^3$",
+          "$30\\text{ cm}^2$",
+          "$30\\text{ cm}^3$"
+        ],
+        "answer": 3,
+        "working": "One layer: $3 \\times 5 = 15$ cubes. Two layers: $15 \\times 2 = 30$, so $30\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m6-10-1-d": {
+    "lessonId": "m6-10-1",
+    "title": "Volume and Cubic Units, Part 4: Volume Stays the Same",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The first prism",
+        "t": 17.631
+      },
+      {
+        "title": "A new prism",
+        "t": 39.33
+      },
+      {
+        "title": "Same cubes, same volume",
+        "t": 76.702
+      },
+      {
+        "title": "Your turn",
+        "t": 106.102
+      },
+      {
+        "title": "Summary",
+        "t": 152.683
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-10-1-d:q",
+        "t": 123.613,
+        "prompt": "Mia builds a prism $4$ cubes long, $3$ cubes wide and $2$ cubes high. Then Mia uses all the cubes to build a new prism $4$ cubes long and $2$ cubes wide. How high is the new prism?",
+        "choices": [
+          "$2$ cubes",
+          "$3$ cubes",
+          "$8$ cubes",
+          "$24$ cubes"
+        ],
+        "answer": 1,
+        "working": "First prism: $4 \\times 3 \\times 2 = 24$ cubes. One layer of the new prism: $4 \\times 2 = 8$ cubes. $24 \\div 8 = 3$, so it is $3$ cubes high."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
