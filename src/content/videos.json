@@ -13603,6 +13603,57 @@
       }
     ]
   },
+  "m7-4-1-c": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 3: Adding on a Number Line",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which way to move",
+        "t": 15.829
+      },
+      {
+        "title": "Two negatives",
+        "t": 43.834
+      },
+      {
+        "title": "Different signs",
+        "t": 66.586
+      },
+      {
+        "title": "Adding a positive",
+        "t": 98.673
+      },
+      {
+        "title": "Your turn",
+        "t": 127.773
+      },
+      {
+        "title": "Summary",
+        "t": 161.619
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1-c:q",
+        "t": 135.843,
+        "prompt": "Use a number line to find $(-3) + (+8)$.",
+        "choices": [
+          "$+5$",
+          "$-11$",
+          "$-5$",
+          "$+11$"
+        ],
+        "answer": 0,
+        "working": "Start at $-3$. Adding $+8$ means $8$ steps right: $3$ steps reach $0$, and $5$ more reach $+5$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
