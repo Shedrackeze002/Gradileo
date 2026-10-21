@@ -7234,6 +7234,328 @@
       }
     ]
   },
+  "m6-4-2-c": {
+    "lessonId": "m6-4-2",
+    "title": "Adding and Subtracting Fractions, Part 3: Denominators That Are Not Related",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Multiply the denominators",
+        "t": 18.72
+      },
+      {
+        "title": "Thirds and quarters",
+        "t": 49.769
+      },
+      {
+        "title": "Add the twelfths",
+        "t": 83.73
+      },
+      {
+        "title": "Subtracting",
+        "t": 108.383
+      },
+      {
+        "title": "A sum bigger than 1",
+        "t": 144.93
+      },
+      {
+        "title": "Finish the job",
+        "t": 182.437
+      },
+      {
+        "title": "Your turn",
+        "t": 220.049
+      },
+      {
+        "title": "Summary",
+        "t": 252.884
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-2-c:q",
+        "t": 226.078,
+        "prompt": "Find $\\dfrac{2}{5} + \\dfrac{1}{3}$.",
+        "choices": [
+          "$\\dfrac{3}{8}$",
+          "$\\dfrac{11}{15}$",
+          "$\\dfrac{3}{15}$",
+          "$\\dfrac{7}{15}$"
+        ],
+        "answer": 1,
+        "working": "$5 \\times 3 = 15$. $\\tfrac{2}{5} = \\tfrac{6}{15}$ and $\\tfrac{1}{3} = \\tfrac{5}{15}$, so the sum is $\\tfrac{11}{15}$."
+      }
+    ]
+  },
+  "m6-4-2-d": {
+    "lessonId": "m6-4-2",
+    "title": "Adding and Subtracting Fractions, Part 4: Solving Fraction Problems",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Add or subtract?",
+        "t": 18.405
+      },
+      {
+        "title": "Walking to the library",
+        "t": 48.856
+      },
+      {
+        "title": "The rest of the garden",
+        "t": 111.007
+      },
+      {
+        "title": "Your turn",
+        "t": 153.584
+      },
+      {
+        "title": "Summary",
+        "t": 190.232
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-2-d:q",
+        "t": 164.669,
+        "prompt": "A ribbon is $\\dfrac{5}{6}$ m long. Sam cuts off $\\dfrac{1}{4}$ m. How much ribbon is left?",
+        "choices": [
+          "$1\\dfrac{1}{12}$ m",
+          "$\\dfrac{4}{6}$ m",
+          "$\\dfrac{1}{2}$ m",
+          "$\\dfrac{7}{12}$ m"
+        ],
+        "answer": 3,
+        "working": "“Left” means subtract. $\\tfrac{5}{6} = \\tfrac{10}{12}$ and $\\tfrac{1}{4} = \\tfrac{3}{12}$, so $\\tfrac{10}{12} - \\tfrac{3}{12} = \\tfrac{7}{12}$ m. (With $24$ as the common denominator, $\\tfrac{14}{24} = \\tfrac{7}{12}$.)"
+      }
+    ]
+  },
+  "m6-4-3": {
+    "lessonId": "m6-4-3",
+    "title": "Multiplying Fractions and Natural Numbers, Part 1: Repeated Addition",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four groups of two thirds",
+        "t": 26.138
+      },
+      {
+        "title": "Count the thirds",
+        "t": 60.962
+      },
+      {
+        "title": "The shortcut",
+        "t": 90.995
+      },
+      {
+        "title": "Watch out",
+        "t": 119.378
+      },
+      {
+        "title": "Another one",
+        "t": 152.373
+      },
+      {
+        "title": "Your turn",
+        "t": 178.6
+      },
+      {
+        "title": "Summary",
+        "t": 209.529
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-3:q",
+        "t": 184.69,
+        "prompt": "Find $5 \\times \\dfrac{2}{7}$.",
+        "choices": [
+          "$\\dfrac{10}{7}$",
+          "$\\dfrac{10}{35}$",
+          "$\\dfrac{7}{7}$",
+          "$\\dfrac{2}{35}$"
+        ],
+        "answer": 0,
+        "working": "Multiply the numerator by $5$ and keep the denominator: $\\tfrac{5 \\times 2}{7} = \\tfrac{10}{7}$, which is $1\\tfrac{3}{7}$."
+      }
+    ]
+  },
+  "m6-4-3-b": {
+    "lessonId": "m6-4-3",
+    "title": "Multiplying Fractions and Natural Numbers, Part 2: A Fraction of a Quantity",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unit fractions",
+        "t": 17.077
+      },
+      {
+        "title": "A quarter of twelve",
+        "t": 34.361
+      },
+      {
+        "title": "Three quarters of twenty",
+        "t": 75.931
+      },
+      {
+        "title": "Using the rule",
+        "t": 105.728
+      },
+      {
+        "title": "When it does not divide evenly",
+        "t": 133.613
+      },
+      {
+        "title": "Your turn",
+        "t": 168.737
+      },
+      {
+        "title": "Summary",
+        "t": 196.032
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-3-b:q",
+        "t": 174.261,
+        "prompt": "What is $\\dfrac{2}{3}$ of $18$?",
+        "choices": [
+          "$6$",
+          "$27$",
+          "$12$",
+          "$9$"
+        ],
+        "answer": 2,
+        "working": "One third of $18$ is $18 \\div 3 = 6$, so two thirds is $2 \\times 6 = 12$. Or: $\\tfrac{2 \\times 18}{3} = \\tfrac{36}{3} = 12$."
+      }
+    ]
+  },
+  "m6-4-3-c": {
+    "lessonId": "m6-4-3",
+    "title": "Multiplying Fractions and Natural Numbers, Part 3: Bigger or Smaller?",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bigger or smaller?",
+        "t": 17.351
+      },
+      {
+        "title": "The rule",
+        "t": 51.14
+      },
+      {
+        "title": "Milk for muffins",
+        "t": 77.49
+      },
+      {
+        "title": "Who does not bring a lunch?",
+        "t": 135.598
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 174.391
+      },
+      {
+        "title": "Your turn",
+        "t": 201.504
+      },
+      {
+        "title": "Summary",
+        "t": 239.42
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-4-3-c:q",
+        "t": 212.397,
+        "prompt": "A recipe uses $\\dfrac{2}{3}$ cup of oats for each batch. How many cups of oats do $6$ batches need?",
+        "choices": [
+          "$\\dfrac{12}{18}$ cup",
+          "$4$ cups",
+          "$9$ cups",
+          "$\\dfrac{2}{18}$ cup"
+        ],
+        "answer": 1,
+        "working": "$6 \\times \\tfrac{2}{3} = \\tfrac{6 \\times 2}{3} = \\tfrac{12}{3} = 4$ cups. Since $\\tfrac23$ is less than $1$, the answer is less than $6$."
+      }
+    ]
+  },
+  "m6-5-1": {
+    "lessonId": "m6-5-1",
+    "title": "Equivalent Ratios and Proportions, Part 1: Ratios and Ratio Tables",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ratios compare quantities",
+        "t": 19.183
+      },
+      {
+        "title": "Order matters",
+        "t": 54.749
+      },
+      {
+        "title": "Repeating the pattern",
+        "t": 84.043
+      },
+      {
+        "title": "Equivalent ratios",
+        "t": 123.743
+      },
+      {
+        "title": "Your turn",
+        "t": 166.796
+      },
+      {
+        "title": "Summary",
+        "t": 204.386
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-1:q",
+        "t": 178.636,
+        "prompt": "A fruit punch uses $3$ cups of juice for every $5$ cups of water. Which ratio is equivalent to $3 : 5$?",
+        "choices": [
+          "$5 : 3$",
+          "$5 : 7$",
+          "$6 : 8$",
+          "$9 : 15$"
+        ],
+        "answer": 3,
+        "working": "Multiply both terms by $3$: $3 \\times 3 = 9$ and $5 \\times 3 = 15$, so $3 : 5 = 9 : 15$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
