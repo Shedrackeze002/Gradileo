@@ -6496,6 +6496,61 @@
       }
     ]
   },
+  "m6-3-1-b": {
+    "lessonId": "m6-3-1",
+    "title": "Prime Factorization, Part 2: Factor Trees",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Prime factorization",
+        "t": 15.362
+      },
+      {
+        "title": "Factor trees",
+        "t": 47.496
+      },
+      {
+        "title": "A factor tree for 60",
+        "t": 70.866
+      },
+      {
+        "title": "Another tree for 60",
+        "t": 134.31
+      },
+      {
+        "title": "Watch out",
+        "t": 170.936
+      },
+      {
+        "title": "Your turn",
+        "t": 199.867
+      },
+      {
+        "title": "Summary",
+        "t": 233.534
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-3-1-b:q",
+        "t": 206.597,
+        "prompt": "What is the prime factorization of $90$?",
+        "choices": [
+          "$2 \\times 3 \\times 3 \\times 5$",
+          "$9 \\times 10$",
+          "$2 \\times 3 \\times 5$",
+          "$3 \\times 3 \\times 10$"
+        ],
+        "answer": 0,
+        "working": "$90 = 9 \\times 10$, then $9 = 3 \\times 3$ and $10 = 2 \\times 5$. So $90 = 2 \\times 3 \\times 3 \\times 5$. Check: $2 \\times 3 \\times 3 \\times 5 = 6 \\times 15 = 90$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
