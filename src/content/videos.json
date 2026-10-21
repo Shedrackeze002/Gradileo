@@ -7874,6 +7874,112 @@
       }
     ]
   },
+  "m6-5-3-b": {
+    "lessonId": "m6-5-3",
+    "title": "Percent of a Number, Part 2: Percent as a Proportion",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A percent is a ratio",
+        "t": 16.502
+      },
+      {
+        "title": "Solve the proportion",
+        "t": 48.193
+      },
+      {
+        "title": "On a double number line",
+        "t": 81.221
+      },
+      {
+        "title": "The 10% trick",
+        "t": 113.682
+      },
+      {
+        "title": "A quick rule",
+        "t": 136.715
+      },
+      {
+        "title": "Watch out",
+        "t": 164.366
+      },
+      {
+        "title": "Your turn",
+        "t": 191.213
+      },
+      {
+        "title": "Summary",
+        "t": 220.376
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-3-b:q",
+        "t": 197.004,
+        "prompt": "Find $40\\%$ of $80$.",
+        "choices": [
+          "$2$",
+          "$32$",
+          "$40$",
+          "$320$"
+        ],
+        "answer": 1,
+        "working": "$10\\%$ of $80$ is $8$, so $40\\%$ is $4 \\times 8 = 32$. Or: $40 \\times 80 = 3{,}200$ and $3{,}200 \\div 100 = 32$."
+      }
+    ]
+  },
+  "m6-5-3-c": {
+    "lessonId": "m6-5-3",
+    "title": "Percent of a Number, Part 3: Percent Problems",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A sale",
+        "t": 16.085
+      },
+      {
+        "title": "Walking to school",
+        "t": 65.473
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 112.6
+      },
+      {
+        "title": "Your turn",
+        "t": 141.572
+      },
+      {
+        "title": "Summary",
+        "t": 176.482
+      }
+    ],
+    "cues": [
+      {
+        "id": "m6-5-3-c:q",
+        "t": 151.598,
+        "prompt": "A game costs \\$40. It is on sale for $10\\%$ off. What is the sale price?",
+        "choices": [
+          "\\$4",
+          "\\$30",
+          "\\$44",
+          "\\$36"
+        ],
+        "answer": 3,
+        "working": "$10\\%$ of $40$ is $40 \\div 10 = 4$, so the discount is \\$4. The sale price is $40 - 4 = 36$, so \\$36."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
