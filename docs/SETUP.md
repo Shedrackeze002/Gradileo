@@ -266,7 +266,9 @@ recording still works: the tutor shows its words on screen.
    course). Each course records in its own job; a course too long for one run stops cleanly and
    the next run carries on. After that it runs by itself after a merge that changes lessons, their
    videos or the tutor, and every night. A lesson whose recording would not change is skipped, and
-   a run that records anything starts a deploy.
+   a run that records anything starts a deploy. A run that records every course again can use up
+   GitHub's hourly allowance of API calls; a course then waits for it to reset before publishing,
+   so nothing it recorded is lost.
 
 To record one lesson on your own computer: `npx tsx --tsconfig tsconfig.json
 video/tools/tutor-voice.ts m10c-1-1 --out video/out/tutor` (after `npm ci` in `video/`).
