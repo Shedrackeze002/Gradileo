@@ -24929,6 +24929,155 @@
       }
     ]
   },
+  "m8-10-2-c": {
+    "lessonId": "m8-10-2",
+    "title": "Probability of Independent Events, Part 3: The Multiplication Rule",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 20.02
+      },
+      {
+        "title": "A die and a spinner",
+        "t": 45.288
+      },
+      {
+        "title": "Checking by counting",
+        "t": 95.911
+      },
+      {
+        "title": "Cards put back",
+        "t": 131.867
+      },
+      {
+        "title": "Your turn",
+        "t": 184.901
+      },
+      {
+        "title": "Summary",
+        "t": 220.75
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-2-c:q",
+        "t": 194.853,
+        "prompt": "You roll a die and flip a coin. What is the probability of rolling a $6$ **and** getting heads?",
+        "choices": [
+          "$\\dfrac{1}{8}$",
+          "$\\dfrac{2}{3}$",
+          "$\\dfrac{1}{12}$",
+          "$\\dfrac{1}{6}$"
+        ],
+        "answer": 2,
+        "working": "$P(6) = \\dfrac{1}{6}$ and $P(\\text{heads}) = \\dfrac{1}{2}$. They are independent, so $\\dfrac{1}{6} \\times \\dfrac{1}{2} = \\dfrac{1}{12}$."
+      }
+    ]
+  },
+  "m8-10-2-d": {
+    "lessonId": "m8-10-2",
+    "title": "Probability of Independent Events, Part 4: Both, Neither and At Least One",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rain on both days",
+        "t": 21.58
+      },
+      {
+        "title": "Watch out",
+        "t": 69.93
+      },
+      {
+        "title": "Neither day",
+        "t": 101.658
+      },
+      {
+        "title": "At least one day",
+        "t": 140.074
+      },
+      {
+        "title": "Your turn",
+        "t": 175.174
+      },
+      {
+        "title": "Summary",
+        "t": 219.875
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-2-d:q",
+        "t": 190.405,
+        "prompt": "There is a $20\\%$ chance of snow on Monday and a $50\\%$ chance on Tuesday. The days are independent. What is the probability of snow on **neither** day?",
+        "choices": [
+          "$10\\%$",
+          "$40\\%$",
+          "$70\\%$",
+          "$60\\%$"
+        ],
+        "answer": 1,
+        "working": "No snow on Monday: $80\\%$. No snow on Tuesday: $50\\%$. $0.8 \\times 0.5 = 0.4$, so $40\\%$."
+      }
+    ]
+  },
+  "m8-10-2-e": {
+    "lessonId": "m8-10-2",
+    "title": "Probability of Independent Events, Part 5: Two in a Row and Predictions",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two free throws",
+        "t": 19.595
+      },
+      {
+        "title": "Missing both",
+        "t": 60.06
+      },
+      {
+        "title": "Making predictions",
+        "t": 89.333
+      },
+      {
+        "title": "Your turn",
+        "t": 135.326
+      },
+      {
+        "title": "Summary",
+        "t": 177.818
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-2-e:q",
+        "t": 149.864,
+        "prompt": "A spinner lands on blue with probability $\\dfrac{1}{4}$. You spin it twice, and do that $80$ times. About how many times do you expect blue **both** times?",
+        "choices": [
+          "$20$",
+          "$10$",
+          "$40$",
+          "$5$"
+        ],
+        "answer": 3,
+        "working": "$P(\\text{blue both times}) = \\dfrac{1}{4} \\times \\dfrac{1}{4} = \\dfrac{1}{16}$, and $\\dfrac{1}{16} \\times 80 = 5$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
