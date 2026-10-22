@@ -22392,25 +22392,25 @@
       },
       {
         "title": "Inverse operations",
-        "t": 87.402
+        "t": 87.347
       },
       {
         "title": "Solving 3x = 12",
-        "t": 120.141
+        "t": 120.086
       },
       {
         "title": "Your turn",
-        "t": 162.118
+        "t": 162.196
       },
       {
         "title": "Summary",
-        "t": 195.196
+        "t": 195.274
       }
     ],
     "cues": [
       {
         "id": "m8-7-1:q",
-        "t": 168.682,
+        "t": 168.76,
         "prompt": "Solve $5x = 35$.",
         "choices": [
           "$x = 30$",
@@ -22541,21 +22541,21 @@
       },
       {
         "title": "Watch out",
-        "t": 108.021
+        "t": 108.257
       },
       {
         "title": "Your turn",
-        "t": 138.526
+        "t": 138.762
       },
       {
         "title": "Summary",
-        "t": 177.73
+        "t": 177.966
       }
     ],
     "cues": [
       {
         "id": "m8-7-2:q",
-        "t": 155.014,
+        "t": 155.25,
         "prompt": "A taxi charges \\$4 to start plus \\$2 for each kilometre. A fare is \\$22. Solve $2d + 4 = 22$ to find the distance.",
         "choices": [
           "$d = 13$",
@@ -22682,29 +22682,29 @@
       },
       {
         "title": "The distributive property",
-        "t": 50.93
+        "t": 50.959
       },
       {
         "title": "A negative outside",
-        "t": 79.671
+        "t": 79.7
       },
       {
         "title": "Watch out",
-        "t": 115.382
+        "t": 115.411
       },
       {
         "title": "Your turn",
-        "t": 150.489
+        "t": 150.618
       },
       {
         "title": "Summary",
-        "t": 184.638
+        "t": 184.767
       }
     ],
     "cues": [
       {
         "id": "m8-7-3:q",
-        "t": 158.731,
+        "t": 158.86,
         "prompt": "Expand $-3(x - 4)$.",
         "choices": [
           "$-3x - 4$",
@@ -23218,7 +23218,7 @@
   "m8-8-2-b": {
     "lessonId": "m8-8-2",
     "title": "Nets of Three-Dimensional Objects, Part 2: What Is a Net?",
-    "duration": 206,
+    "duration": 205,
     "voice": "af_heart",
     "chapters": [
       {
@@ -23239,21 +23239,21 @@
       },
       {
         "title": "Read the faces",
-        "t": 111.716
+        "t": 111.628
       },
       {
         "title": "Your turn",
-        "t": 144.504
+        "t": 144.416
       },
       {
         "title": "Summary",
-        "t": 180.464
+        "t": 180.376
       }
     ],
     "cues": [
       {
         "id": "m8-8-2-b:q",
-        "t": 157.339,
+        "t": 157.251,
         "prompt": "A net has one square and four triangles. Each triangle is joined to one side of the square. Which object does it fold into?",
         "choices": [
           "A triangular prism",
@@ -24620,6 +24620,312 @@
         ],
         "answer": 1,
         "working": "The height **changes over time**, so a line graph is best."
+      }
+    ]
+  },
+  "m8-10-1-c": {
+    "lessonId": "m8-10-1",
+    "title": "Critiquing Graphs, Part 3: Giving Reasons",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A survey",
+        "t": 17.628
+      },
+      {
+        "title": "Finding the percents",
+        "t": 38.06
+      },
+      {
+        "title": "Why not a circle graph?",
+        "t": 64.799
+      },
+      {
+        "title": "Watch out",
+        "t": 98.71
+      },
+      {
+        "title": "Your turn",
+        "t": 133.155
+      },
+      {
+        "title": "Summary",
+        "t": 165.352
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-1-c:q",
+        "t": 143.625,
+        "prompt": "A class records each student’s favourite colour. Why is a **line graph** a poor choice for this data?",
+        "choices": [
+          "There are too many colours.",
+          "Colours are numbers.",
+          "A line graph cannot show counts.",
+          "There is nothing between two colours, so the line has no meaning."
+        ],
+        "answer": 3,
+        "working": "The colours are separate categories, not times. A line joining them has no meaning, so a bar graph is a better choice."
+      }
+    ]
+  },
+  "m8-10-1-d": {
+    "lessonId": "m8-10-1",
+    "title": "Critiquing Graphs, Part 4: An Axis That Does Not Start at Zero",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Misleading graphs",
+        "t": 14.19
+      },
+      {
+        "title": "The poster",
+        "t": 40.667
+      },
+      {
+        "title": "Reading the real values",
+        "t": 62.062
+      },
+      {
+        "title": "Why it looks so big",
+        "t": 105.869
+      },
+      {
+        "title": "Drawn fairly",
+        "t": 130.95
+      },
+      {
+        "title": "Your turn",
+        "t": 154.094
+      },
+      {
+        "title": "Summary",
+        "t": 199.463
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-1-d:q",
+        "t": 169.909,
+        "prompt": "The vertical axis of a bar graph starts at $90$. One bar shows $92$ and another shows $96$. About how many times as tall does the second bar **look**?",
+        "choices": [
+          "$3$ times as tall",
+          "about the same height",
+          "$4$ times as tall",
+          "$2$ times as tall"
+        ],
+        "answer": 0,
+        "working": "The bars show only the part above $90$: $92 - 90 = 2$ and $96 - 90 = 6$. Since $6 \\div 2 = 3$, the second bar looks $3$ times as tall, though $96$ is only a little more than $92$."
+      }
+    ]
+  },
+  "m8-10-1-e": {
+    "lessonId": "m8-10-1",
+    "title": "Critiquing Graphs, Part 5: Unequal Intervals and Uneven Scales",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unequal intervals",
+        "t": 17.398
+      },
+      {
+        "title": "Time drawn to scale",
+        "t": 66.695
+      },
+      {
+        "title": "An uneven scale",
+        "t": 88.245
+      },
+      {
+        "title": "An even scale",
+        "t": 120.137
+      },
+      {
+        "title": "Your turn",
+        "t": 139.324
+      },
+      {
+        "title": "Summary",
+        "t": 173.849
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-1-e:q",
+        "t": 152.487,
+        "prompt": "The numbers on the vertical axis of a graph are $0$, $5$, $10$, $20$ and $40$, equally spaced. What is wrong with the graph?",
+        "choices": [
+          "The axis starts at $0$.",
+          "It has too many numbers.",
+          "The steps are not equal, so the scale is uneven.",
+          "Nothing is wrong."
+        ],
+        "answer": 2,
+        "working": "The steps are $5$, $5$, $10$ and $20$, but they are drawn the same size. The numbers on an axis must go up by equal steps."
+      }
+    ]
+  },
+  "m8-10-1-f": {
+    "lessonId": "m8-10-1",
+    "title": "Critiquing Graphs, Part 6: Symbols and Percents That Mislead",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Symbols of different sizes",
+        "t": 18.363
+      },
+      {
+        "title": "Drawn fairly",
+        "t": 48.913
+      },
+      {
+        "title": "A circle graph that does not add up",
+        "t": 63.049
+      },
+      {
+        "title": "Check every graph",
+        "t": 100.012
+      },
+      {
+        "title": "Your turn",
+        "t": 132.381
+      },
+      {
+        "title": "Summary",
+        "t": 172.692
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-1-f:q",
+        "t": 148.428,
+        "prompt": "A circle graph of favourite lunches shows: pizza $45\\%$, tacos $30\\%$, pasta $20\\%$ and salad $15\\%$. What is wrong with it?",
+        "choices": [
+          "Nothing; it is correct.",
+          "The percents add to $110\\%$, not $100\\%$.",
+          "The percents add to $90\\%$, not $100\\%$.",
+          "A circle graph cannot show lunches."
+        ],
+        "answer": 1,
+        "working": "$45 + 30 + 20 + 15 = 110$. The parts of one whole must add to exactly $100\\%$, so the graph cannot be correct."
+      }
+    ]
+  },
+  "m8-10-2": {
+    "lessonId": "m8-10-2",
+    "title": "Probability of Independent Events, Part 1: Independent Events",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Outcomes and events",
+        "t": 22.273
+      },
+      {
+        "title": "Independent events",
+        "t": 67.388
+      },
+      {
+        "title": "Putting it back",
+        "t": 92.07
+      },
+      {
+        "title": "Independent or not?",
+        "t": 138.374
+      },
+      {
+        "title": "Your turn",
+        "t": 170.8
+      },
+      {
+        "title": "Summary",
+        "t": 201.634
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-2:q",
+        "t": 177.019,
+        "prompt": "Which pair of events is **independent**?",
+        "choices": [
+          "Picking a marble, keeping it, then picking another from the same bag",
+          "Drawing two cards from a deck without putting the first one back",
+          "Choosing a class captain, then a vice-captain from the students left",
+          "Rolling a die, then flipping a coin"
+        ],
+        "answer": 3,
+        "working": "The die cannot change the coin, so rolling a die and flipping a coin are independent. In the other three, the first choice changes what is left for the second."
+      }
+    ]
+  },
+  "m8-10-2-b": {
+    "lessonId": "m8-10-2",
+    "title": "Probability of Independent Events, Part 2: Tables and Tree Diagrams",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The question",
+        "t": 14.681
+      },
+      {
+        "title": "An outcome table",
+        "t": 35.413
+      },
+      {
+        "title": "A tree diagram",
+        "t": 72.63
+      },
+      {
+        "title": "Your turn",
+        "t": 127.76
+      },
+      {
+        "title": "Summary",
+        "t": 164.313
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-2-b:q",
+        "t": 137.634,
+        "prompt": "Harpreet flips a coin and spins a spinner with $4$ equal sections: $2$ red, $1$ blue and $1$ green. What is the probability of **tails and blue**?",
+        "choices": [
+          "$\\dfrac{1}{8}$",
+          "$\\dfrac{1}{4}$",
+          "$\\dfrac{3}{4}$",
+          "$\\dfrac{1}{6}$"
+        ],
+        "answer": 0,
+        "working": "Tails is $\\dfrac{1}{2}$ and blue is $\\dfrac{1}{4}$, so $\\dfrac{1}{2} \\times \\dfrac{1}{4} = \\dfrac{1}{8}$. In the table, tails with blue is $1$ of the $8$ outcomes."
       }
     ]
   },
