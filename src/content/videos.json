@@ -23364,6 +23364,253 @@
       }
     ]
   },
+  "m8-8-3": {
+    "lessonId": "m8-8-3",
+    "title": "Surface Area of Prisms, Part 1: What Is Surface Area?",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is surface area?",
+        "t": 22.639
+      },
+      {
+        "title": "Unfold the box",
+        "t": 54.639
+      },
+      {
+        "title": "A shipping box",
+        "t": 88.812
+      },
+      {
+        "title": "Square units",
+        "t": 137.67
+      },
+      {
+        "title": "Your turn",
+        "t": 166.571
+      },
+      {
+        "title": "Summary",
+        "t": 206.566
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-3:q",
+        "t": 178.79,
+        "prompt": "A closed box is $10$ cm long, $5$ cm wide and $4$ cm high. What is its surface area?",
+        "choices": [
+          "$110\\text{ cm}^2$",
+          "$200\\text{ cm}^3$",
+          "$220\\text{ cm}^2$",
+          "$180\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "Top and bottom: $2 \\times 10 \\times 5 = 100$. Front and back: $2 \\times 10 \\times 4 = 80$. Ends: $2 \\times 5 \\times 4 = 40$. Total: $100 + 80 + 40 = 220\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m8-8-3-b": {
+    "lessonId": "m8-8-3",
+    "title": "Surface Area of Prisms, Part 2: A Formula for Rectangular Prisms",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One term for each pair",
+        "t": 16.663
+      },
+      {
+        "title": "A box of crackers",
+        "t": 59.069
+      },
+      {
+        "title": "Counting only three faces",
+        "t": 106.618
+      },
+      {
+        "title": "Your turn",
+        "t": 141.886
+      },
+      {
+        "title": "Summary",
+        "t": 184.1
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-3-b:q",
+        "t": 154.982,
+        "prompt": "A box is $6$ cm long, $5$ cm wide and $3$ cm high. Use $SA = 2lw + 2lh + 2wh$. What is its surface area?",
+        "choices": [
+          "$126\\text{ cm}^2$",
+          "$63\\text{ cm}^2$",
+          "$90\\text{ cm}^2$",
+          "$96\\text{ cm}^2$"
+        ],
+        "answer": 0,
+        "working": "$2lw = 2 \\times 6 \\times 5 = 60$, $2lh = 2 \\times 6 \\times 3 = 36$, $2wh = 2 \\times 5 \\times 3 = 30$. $SA = 60 + 36 + 30 = 126\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m8-8-3-c": {
+    "lessonId": "m8-8-3",
+    "title": "Surface Area of Prisms, Part 3: Triangular Prisms",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A ramp",
+        "t": 20.142
+      },
+      {
+        "title": "Unfold it",
+        "t": 52.921
+      },
+      {
+        "title": "Adding the faces",
+        "t": 78.375
+      },
+      {
+        "title": "Rectangles in one step",
+        "t": 130.261
+      },
+      {
+        "title": "Your turn",
+        "t": 164.091
+      },
+      {
+        "title": "Summary",
+        "t": 212.472
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-3-c:q",
+        "t": 181.269,
+        "prompt": "A triangular prism is $10$ cm long. Each end is a right triangle with legs $3$ cm and $4$ cm and a sloped side of $5$ cm. What is its surface area?",
+        "choices": [
+          "$120\\text{ cm}^2$",
+          "$126\\text{ cm}^2$",
+          "$60\\text{ cm}^2$",
+          "$132\\text{ cm}^2$"
+        ],
+        "answer": 3,
+        "working": "Triangles: $2 \\times \\tfrac{1}{2} \\times 3 \\times 4 = 12$. Rectangles: $(3 + 4 + 5) \\times 10 = 120$. $SA = 12 + 120 = 132\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m8-8-3-d": {
+    "lessonId": "m8-8-3",
+    "title": "Surface Area of Prisms, Part 4: Height or Sloped Side?",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A small tent",
+        "t": 16.673
+      },
+      {
+        "title": "Unfold the tent",
+        "t": 60.696
+      },
+      {
+        "title": "Fabric for the tent",
+        "t": 86.475
+      },
+      {
+        "title": "Height or sloped side?",
+        "t": 134.294
+      },
+      {
+        "title": "Your turn",
+        "t": 173.88
+      },
+      {
+        "title": "Summary",
+        "t": 219.347
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-3-d:q",
+        "t": 192.411,
+        "prompt": "A tent is $3$ m long and has a floor. Each end is a triangle with a base of $1.6$ m, a height of $0.6$ m and sloped sides of $1$ m. How much fabric is used?",
+        "choices": [
+          "$9.36\\text{ m}^2$",
+          "$11.76\\text{ m}^2$",
+          "$6.96\\text{ m}^2$",
+          "$12.72\\text{ m}^2$"
+        ],
+        "answer": 1,
+        "working": "Ends: $2 \\times \\tfrac{1}{2} \\times 1.6 \\times 0.6 = 0.96$. Floor: $1.6 \\times 3 = 4.8$. Sloped sides: $2 \\times 1 \\times 3 = 6$. Total: $0.96 + 4.8 + 6 = 11.76\\text{ m}^2$."
+      }
+    ]
+  },
+  "m8-8-3-e": {
+    "lessonId": "m8-8-3",
+    "title": "Surface Area of Prisms, Part 5: Solving Problems",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which faces count?",
+        "t": 19.195
+      },
+      {
+        "title": "A planter box",
+        "t": 47.345
+      },
+      {
+        "title": "Buying paint",
+        "t": 106.109
+      },
+      {
+        "title": "Your turn",
+        "t": 154.643
+      },
+      {
+        "title": "Summary",
+        "t": 191.847
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-3-e:q",
+        "t": 168.378,
+        "prompt": "An open box with **no top** is $20$ cm long, $10$ cm wide and $10$ cm high. What is the area of its outside?",
+        "choices": [
+          "$800\\text{ cm}^2$",
+          "$1\\,000\\text{ cm}^2$",
+          "$600\\text{ cm}^2$",
+          "$2\\,000\\text{ cm}^2$"
+        ],
+        "answer": 0,
+        "working": "Bottom: $20 \\times 10 = 200$. Front and back: $2 \\times 20 \\times 10 = 400$. Ends: $2 \\times 10 \\times 10 = 200$. Total: $200 + 400 + 200 = 800\\text{ cm}^2$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
