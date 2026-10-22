@@ -26357,7 +26357,7 @@
   "m9-2-4-c": {
     "lessonId": "m9-2-4",
     "title": "Using Exponents to Solve Problems, Part 3: Sharing in Rounds",
-    "duration": 202,
+    "duration": 203,
     "voice": "af_heart",
     "chapters": [
       {
@@ -26374,25 +26374,25 @@
       },
       {
         "title": "How many in total?",
-        "t": 87.328
+        "t": 88.058
       },
       {
         "title": "One round or all of them?",
-        "t": 110.668
+        "t": 111.399
       },
       {
         "title": "Your turn",
-        "t": 131.693
+        "t": 132.424
       },
       {
         "title": "Summary",
-        "t": 176.856
+        "t": 177.587
       }
     ],
     "cues": [
       {
         "id": "m9-2-4-c:q",
-        "t": 145.942,
+        "t": 146.673,
         "prompt": "A message is sent to $2$ people. In each round after that, every person who just got it sends it to $2$ new people. How many **new** people get it in round $5$?",
         "choices": [
           "$10$",
@@ -26714,7 +26714,7 @@
   "m9-3-2-b": {
     "lessonId": "m9-3-2",
     "title": "Adding and Subtracting Rational Numbers, Part 2: Add the Opposite",
-    "duration": 241,
+    "duration": 242,
     "voice": "af_heart",
     "chapters": [
       {
@@ -26735,21 +26735,21 @@
       },
       {
         "title": "Watch out",
-        "t": 146.194
+        "t": 146.492
       },
       {
         "title": "Your turn",
-        "t": 179.34
+        "t": 179.638
       },
       {
         "title": "Summary",
-        "t": 218.413
+        "t": 218.711
       }
     ],
     "cues": [
       {
         "id": "m9-3-2-b:q",
-        "t": 187.757,
+        "t": 188.055,
         "prompt": "Find $-3.6 - (-5.1)$.",
         "choices": [
           "$-8.7$",
