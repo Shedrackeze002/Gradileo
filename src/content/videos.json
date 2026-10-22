@@ -18511,6 +18511,61 @@
       }
     ]
   },
+  "m8-1-1": {
+    "lessonId": "m8-1-1",
+    "title": "Perfect Squares and Square Roots, Part 1: Perfect Squares",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sixteen tiles",
+        "t": 27.827
+      },
+      {
+        "title": "Four squared",
+        "t": 62.85
+      },
+      {
+        "title": "The first twelve",
+        "t": 107.974
+      },
+      {
+        "title": "Is 20 a perfect square?",
+        "t": 145.112
+      },
+      {
+        "title": "Squaring is not doubling",
+        "t": 193.639
+      },
+      {
+        "title": "Your turn",
+        "t": 217.582
+      },
+      {
+        "title": "Summary",
+        "t": 248.125
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-1:q",
+        "t": 223.984,
+        "prompt": "Which of these numbers is a perfect square?",
+        "choices": [
+          "$50$",
+          "$81$",
+          "$18$",
+          "$40$"
+        ],
+        "answer": 1,
+        "working": "$9 \\times 9 = 81$, so $81$ is a perfect square. $50$ is between $49$ and $64$, $40$ is between $36$ and $49$, and $18$ is between $16$ and $25$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
