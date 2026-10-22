@@ -59,7 +59,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Start with numbers. Seven minus three is four. And seven plus negative three is also four. Subtracting a number is the same as adding its opposite.', show: 'm.0' },
-        { say: 'Polynomials work the same way. To subtract a polynomial, add its opposite.' },
+        { say: 'Polynomials work the same way. To subtract a polynomial, you add its opposite.' },
         { say: 'The opposite of a polynomial has the sign of every term changed. The opposite of two x squared, plus four x, minus seven, is negative two x squared, minus four x, plus seven.', show: 'def' },
       ],
     },

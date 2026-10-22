@@ -78,7 +78,7 @@ const video: Explainer = {
         { kind: 'math', id: 'm', size: 'lg', lines: ['8.7 - (-5.5) = 8.7 + 5.5 = 14.2', '-1.2 - 3.4 = -1.2 + (-3.4) = -4.6'] },
       ],
       lines: [
-        { say: 'This works every time. To subtract a number, add its opposite. The opposite of negative five point five is five point five.', show: ['key', 'm.0'], focus: 'm.0' },
+        { say: 'This works every time. To subtract a number, you add its opposite. The opposite of negative five point five is five point five.', show: ['key', 'm.0'], focus: 'm.0' },
         { say: 'It works when you subtract a positive number as well. Negative one point two minus three point four is negative one point two, plus the opposite of three point four, which is negative three point four.', show: 'm.1', focus: 'm.1' },
         { say: 'Now it is an addition with the same signs. Add the sizes and keep the sign: one point two plus three point four is four point six, so the answer is negative four point six.' },
       ],
@@ -130,7 +130,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. To subtract a number, add its opposite.', show: 'sum.0' },
+        { say: 'Let’s sum up. To subtract a number, you add its opposite.', show: 'sum.0' },
         { say: 'It works when you subtract a positive number as well.', show: 'sum.1' },
         { say: 'And change two things: subtract becomes add, and the second number changes its sign. In the next part, you will add and subtract fractions. See you there!', show: 'sum.2' },
       ],

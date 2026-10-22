@@ -83,7 +83,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'In a problem, decide first whether each change is positive or negative.', show: 'b' },
-        { say: 'A rise, a gain or a deposit is a positive change. A deposit is money you put into a bank account.', show: 'b.0', focus: 'b.0' },
+        { say: 'Rises, gains and deposits are positive changes. A deposit is money you put into a bank account.', show: 'b.0', focus: 'b.0' },
         { say: 'A drop, a loss or a payment is a negative change. A payment takes money out of the account.', show: 'b.1', focus: 'b.1' },
         { say: 'So a temperature that rises nine point eight degrees changes by positive nine point eight. A temperature that falls seven point three degrees changes by negative seven point three.', show: 'm.0', focus: 'm.0' },
       ],
@@ -99,7 +99,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'At six in the morning, the temperature in a northern town is negative fourteen point six degrees Celsius. By noon it has risen nine point eight degrees. By nine in the evening, it has fallen seven point three degrees from noon. What is the temperature at nine in the evening?', show: ['q', 'dy.axis', 'dy.six'] },
-        { say: 'A rise is a positive change, so the noon temperature is negative fourteen point six plus nine point eight.', show: 'dy.up', focus: 'dy.up' },
+        { say: 'A temperature rise is a positive change, so the noon temperature is negative fourteen point six plus nine point eight.', show: 'dy.up', focus: 'dy.up' },
         { say: 'The signs are different, so subtract the sizes: fourteen point six minus nine point eight is four point eight. The negative number has the greater size, so at noon it is negative four point eight degrees.', show: ['m.0', 'dy.noon'], focus: ['m.0', 'dy.noon'] },
         { say: 'A fall is a negative change, so the temperature at nine in the evening is negative four point eight plus negative seven point three.', show: 'dy.down', focus: 'dy.down' },
         { say: 'The signs are the same, so add the sizes and keep the sign. At nine in the evening, it is negative twelve point one degrees Celsius.', show: ['m.1', 'm.2', 'dy.nine'], focus: ['m.2', 'dy.nine'] },
@@ -156,7 +156,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. A rise, a gain or a deposit is a positive change.', show: 'sum.0' },
+        { say: 'Let’s sum up. Rises, gains and deposits are positive changes.', show: 'sum.0' },
         { say: 'A drop, a loss or a payment is a negative change.', show: 'sum.1' },
         { say: 'Add the changes one at a time, using the sign rules.', show: 'sum.2' },
         { say: 'And to find how much warmer one temperature is, subtract: warmer minus colder. Next, you will multiply and divide rational numbers. See you there!', show: 'sum.3' },

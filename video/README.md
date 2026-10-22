@@ -238,7 +238,9 @@ Lessons learned while scripting (the script check does not catch these):
   and "use the formula C equals" are clear), "What is the mean?" ("What does the mean"; "Find the
   mean." is clear), the names Ayesha (garbled every time) and Dakota ("Decoder"; Amara is clear), a quick list of pairs
   such as "one and six, two and five" ("1 in 6, 2 in 5"; "one plus six" is clear), "A line graph"
-  ("Align graph"; "Line graphs show…" is clear), "Leo picks a card" ("Leo Pixacard"), and "convenience sample" ("convenient sample"; listen
+  ("Align graph"; "Line graphs show…" is clear), "Leo picks a card" ("Leo Pixacard"),
+  "add its opposite" ("at its opposite"; "you add its opposite" is clear), "A rise, a gain"
+  ("Arise, again"; "Rises, gains…" is clear), and "convenience sample" ("convenient sample"; listen
   to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
   `speechText` now says "lenkths", which helps, but at the end of a long line it can still be heard
