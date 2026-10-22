@@ -26911,6 +26911,618 @@
       }
     ]
   },
+  "m9-3-3": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 1: Signs First",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal jumps",
+        "t": 21.949
+      },
+      {
+        "title": "The sign rules",
+        "t": 72.855
+      },
+      {
+        "title": "Dividing decimals",
+        "t": 113.861
+      },
+      {
+        "title": "Two negatives",
+        "t": 162.617
+      },
+      {
+        "title": "Watch out",
+        "t": 208.167
+      },
+      {
+        "title": "Your turn",
+        "t": 237.212
+      },
+      {
+        "title": "Summary",
+        "t": 270.479
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3:q",
+        "t": 246.243,
+        "prompt": "Find $-2.4 \\div (-0.6)$.",
+        "choices": [
+          "$4$",
+          "$-4$",
+          "$0.4$",
+          "$-0.4$"
+        ],
+        "answer": 0,
+        "working": "Same signs, so the answer is positive. Size: $2.4 \\div 0.6 = 24 \\div 6 = 4$."
+      }
+    ]
+  },
+  "m9-3-3-b": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 2: Multiplying Fractions",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two thirds of three quarters",
+        "t": 20.01
+      },
+      {
+        "title": "Multiply across",
+        "t": 51.808
+      },
+      {
+        "title": "Simplify first",
+        "t": 86.347
+      },
+      {
+        "title": "Two negative fractions",
+        "t": 117.199
+      },
+      {
+        "title": "Your turn",
+        "t": 160.068
+      },
+      {
+        "title": "Summary",
+        "t": 197.563
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3-b:q",
+        "t": 167.98,
+        "prompt": "Find $-\\dfrac{5}{6} \\times \\left(-\\dfrac{3}{10}\\right)$.",
+        "choices": [
+          "$-\\dfrac{1}{4}$",
+          "$\\dfrac{25}{9}$",
+          "$\\dfrac{1}{2}$",
+          "$\\dfrac{1}{4}$"
+        ],
+        "answer": 3,
+        "working": "Same signs, so the product is positive. $\\dfrac{5 \\times 3}{6 \\times 10} = \\dfrac{15}{60} = \\dfrac{1}{4}$."
+      }
+    ]
+  },
+  "m9-3-3-c": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 3: Dividing Fractions",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How many fit?",
+        "t": 18.318
+      },
+      {
+        "title": "Reciprocals",
+        "t": 53.902
+      },
+      {
+        "title": "Dividing negative fractions",
+        "t": 92.383
+      },
+      {
+        "title": "Simplify first",
+        "t": 134.09
+      },
+      {
+        "title": "Watch out",
+        "t": 172.049
+      },
+      {
+        "title": "Your turn",
+        "t": 201.342
+      },
+      {
+        "title": "Summary",
+        "t": 239.219
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3-c:q",
+        "t": 209.027,
+        "prompt": "Find $\\dfrac{5}{8} \\div \\left(-\\dfrac{3}{4}\\right)$.",
+        "choices": [
+          "$-\\dfrac{15}{32}$",
+          "$-\\dfrac{5}{6}$",
+          "$\\dfrac{5}{6}$",
+          "$-\\dfrac{6}{5}$"
+        ],
+        "answer": 1,
+        "working": "Multiply by the reciprocal: $\\dfrac{5}{8} \\times \\left(-\\dfrac{4}{3}\\right) = -\\dfrac{20}{24} = -\\dfrac{5}{6}$. Different signs, so the answer is negative."
+      }
+    ]
+  },
+  "m9-3-3-d": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 4: Mixed Numbers and a Calculator",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Improper fractions first",
+        "t": 20.378
+      },
+      {
+        "title": "Watch out",
+        "t": 62.829
+      },
+      {
+        "title": "Using a calculator",
+        "t": 103.397
+      },
+      {
+        "title": "Your turn",
+        "t": 168.919
+      },
+      {
+        "title": "Summary",
+        "t": 202.671
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3-d:q",
+        "t": 176.844,
+        "prompt": "Find $-2\\tfrac{1}{4} \\times 1\\tfrac{1}{3}$.",
+        "choices": [
+          "$-3$",
+          "$3$",
+          "$-2\\tfrac{1}{12}$",
+          "$-\\dfrac{27}{16}$"
+        ],
+        "answer": 0,
+        "working": "$-\\dfrac{9}{4} \\times \\dfrac{4}{3} = -\\dfrac{36}{12} = -3$. Different signs, so the product is negative."
+      }
+    ]
+  },
+  "m9-3-3-e": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 5: Solving Problems",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A cold front",
+        "t": 23.729
+      },
+      {
+        "title": "Working backwards",
+        "t": 84.366
+      },
+      {
+        "title": "Scaling a recipe",
+        "t": 131.269
+      },
+      {
+        "title": "Your turn",
+        "t": 189.32
+      },
+      {
+        "title": "Summary",
+        "t": 234.201
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3-e:q",
+        "t": 202.984,
+        "prompt": "A diver’s depth changes by $-2.5$ m each minute for $3.5$ minutes. What is the total change in depth?",
+        "choices": [
+          "$8.75$ m",
+          "$-6$ m",
+          "$-1.4$ m",
+          "$-8.75$ m"
+        ],
+        "answer": 3,
+        "working": "$-2.5 \\times 3.5$: different signs, so the product is negative, and $2.5 \\times 3.5 = 8.75$. The change is $-8.75$ m."
+      }
+    ]
+  },
+  "m9-3-4": {
+    "lessonId": "m9-3-4",
+    "title": "Order of Operations with Rational Numbers, Part 1: The Same Order as Before",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The order",
+        "t": 27.182
+      },
+      {
+        "title": "Decimals",
+        "t": 66.332
+      },
+      {
+        "title": "Watch out",
+        "t": 111.205
+      },
+      {
+        "title": "Fractions",
+        "t": 147.474
+      },
+      {
+        "title": "Your turn",
+        "t": 175.697
+      },
+      {
+        "title": "Summary",
+        "t": 215.175
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-4:q",
+        "t": 184.932,
+        "prompt": "Evaluate $1.5 - 2 \\times (-0.4)$.",
+        "choices": [
+          "$0.2$",
+          "$0.7$",
+          "$2.3$",
+          "$-2.3$"
+        ],
+        "answer": 2,
+        "working": "Multiply first: $2 \\times (-0.4) = -0.8$. Then $1.5 - (-0.8) = 1.5 + 0.8 = 2.3$."
+      }
+    ]
+  },
+  "m9-3-4-b": {
+    "lessonId": "m9-3-4",
+    "title": "Order of Operations with Rational Numbers, Part 2: Powers and Negative Numbers",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Squaring a negative",
+        "t": 17.207
+      },
+      {
+        "title": "Watch out",
+        "t": 66.766
+      },
+      {
+        "title": "A squared fraction",
+        "t": 96.444
+      },
+      {
+        "title": "Decimals with a power",
+        "t": 142.988
+      },
+      {
+        "title": "Your turn",
+        "t": 188.194
+      },
+      {
+        "title": "Summary",
+        "t": 233.265
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-4-b:q",
+        "t": 199.338,
+        "prompt": "Evaluate $(-0.3)^{2} + 0.6 \\div (-2)$.",
+        "choices": [
+          "$-0.39$",
+          "$-0.21$",
+          "$0.39$",
+          "$-0.345$"
+        ],
+        "answer": 1,
+        "working": "Exponent: $(-0.3)^{2} = 0.09$. Divide: $0.6 \\div (-2) = -0.3$. Add: $0.09 + (-0.3) = -0.21$."
+      }
+    ]
+  },
+  "m9-3-4-c": {
+    "lessonId": "m9-3-4",
+    "title": "Order of Operations with Rational Numbers, Part 3: Writing One Expression",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The story",
+        "t": 19.037
+      },
+      {
+        "title": "Write the expression",
+        "t": 54.082
+      },
+      {
+        "title": "Evaluate",
+        "t": 84.064
+      },
+      {
+        "title": "Watch out",
+        "t": 125.811
+      },
+      {
+        "title": "Your turn",
+        "t": 171.873
+      },
+      {
+        "title": "Summary",
+        "t": 216.996
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-4-c:q",
+        "t": 187.829,
+        "prompt": "A game card has a balance of \\$30.00. You buy $4$ snacks at \\$3.25 each with the card, then add \\$10.00 to it. What is the new balance?",
+        "choices": [
+          "\\$7.00",
+          "\\$94.50",
+          "\\$53.00",
+          "\\$27.00"
+        ],
+        "answer": 3,
+        "working": "$30.00 - 4 \\times 3.25 + 10.00 = 30.00 - 13.00 + 10.00 = 17.00 + 10.00 = 27.00$. The new balance is \\$27.00."
+      }
+    ]
+  },
+  "m9-3-4-d": {
+    "lessonId": "m9-3-4",
+    "title": "Order of Operations with Rational Numbers, Part 4: Finding the Mean",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is the mean?",
+        "t": 20.33
+      },
+      {
+        "title": "Five low temperatures",
+        "t": 54.508
+      },
+      {
+        "title": "Estimate to check",
+        "t": 102.767
+      },
+      {
+        "title": "Your turn",
+        "t": 145.673
+      },
+      {
+        "title": "Summary",
+        "t": 190.946
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-4-d:q",
+        "t": 162.933,
+        "prompt": "The low temperatures for four days were $-2.5$, $-7.2$, $0.9$ and $-4.4$ degrees Celsius. What was the mean low temperature?",
+        "choices": [
+          "$-3.3^\\circ\\text{C}$",
+          "$-13.2^\\circ\\text{C}$",
+          "$3.3^\\circ\\text{C}$",
+          "$-9.9^\\circ\\text{C}$"
+        ],
+        "answer": 0,
+        "working": "Sum: $-2.5 + (-7.2) + 0.9 + (-4.4) = -13.2$. Mean: $-13.2 \\div 4 = -3.3$."
+      }
+    ]
+  },
+  "m9-4-1": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 1: From a Pattern to an Equation",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Toothpick squares",
+        "t": 20.792
+      },
+      {
+        "title": "Three more each time",
+        "t": 58.058
+      },
+      {
+        "title": "Write the equation",
+        "t": 96.201
+      },
+      {
+        "title": "Linear equations",
+        "t": 137.317
+      },
+      {
+        "title": "Your turn",
+        "t": 174.003
+      },
+      {
+        "title": "Summary",
+        "t": 218.844
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1:q",
+        "t": 189.555,
+        "prompt": "Figures $1$, $2$, $3$ and $4$ of a tile pattern have $5$, $9$, $13$ and $17$ tiles. Which equation gives the number of tiles, $t$, in Figure $n$?",
+        "choices": [
+          "$t = n + 4$",
+          "$t = 5n$",
+          "$t = 4n + 1$",
+          "$t = 4n + 5$"
+        ],
+        "answer": 2,
+        "working": "The pattern adds $4$ each time, so the equation has $4n$. For Figure 1, $4(1) = 4$, but there are $5$ tiles, so add $1$: $t = 4n + 1$."
+      }
+    ]
+  },
+  "m9-4-1-b": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 2: Verifying an Equation",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What verify means",
+        "t": 16.219
+      },
+      {
+        "title": "Check Figure 4",
+        "t": 43.691
+      },
+      {
+        "title": "Every pair",
+        "t": 79.502
+      },
+      {
+        "title": "Watch out",
+        "t": 106.039
+      },
+      {
+        "title": "Your turn",
+        "t": 138.377
+      },
+      {
+        "title": "Summary",
+        "t": 175.366
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1-b:q",
+        "t": 152.04,
+        "prompt": "A table shows $x = 1,\\ 2,\\ 3$ and $y = 5,\\ 8,\\ 11$. Which equation is verified by all three pairs?",
+        "choices": [
+          "$y = 5x$",
+          "$y = 3x + 2$",
+          "$y = 2x + 3$",
+          "$y = x + 4$"
+        ],
+        "answer": 1,
+        "working": "$3(1) + 2 = 5$, $\\ 3(2) + 2 = 8$ and $3(3) + 2 = 11$: all three match. The other equations work for $x = 1$ only."
+      }
+    ]
+  },
+  "m9-4-1-c": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 3: Equations from Situations",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two amounts to look for",
+        "t": 20.567
+      },
+      {
+        "title": "A climbing gym",
+        "t": 46.302
+      },
+      {
+        "title": "Verify for 3 visits",
+        "t": 79.379
+      },
+      {
+        "title": "A rate that is not whole",
+        "t": 102.556
+      },
+      {
+        "title": "Going down",
+        "t": 147.355
+      },
+      {
+        "title": "Your turn",
+        "t": 189.027
+      },
+      {
+        "title": "Summary",
+        "t": 227.278
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1-c:q",
+        "t": 203.964,
+        "prompt": "A bike rental charges a \\$6 fee plus \\$2.50 for each hour. Which equation gives the cost $C$, in dollars, for $h$ hours?",
+        "choices": [
+          "$C = 6 + 2.5h$",
+          "$C = 2.5 + 6h$",
+          "$C = 8.5h$",
+          "$C = 6 - 2.5h$"
+        ],
+        "answer": 0,
+        "working": "The fee, $6$, is the constant, and the rate, $2.5$ dollars an hour, multiplies $h$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
