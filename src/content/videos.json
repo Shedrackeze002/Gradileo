@@ -16764,7 +16764,7 @@
   "m7-9-1": {
     "lessonId": "m7-9-1",
     "title": "The Cartesian Plane, Part 1: The Four Quadrants",
-    "duration": 223,
+    "duration": 226,
     "voice": "af_heart",
     "chapters": [
       {
@@ -16781,25 +16781,25 @@
       },
       {
         "title": "Four quadrants",
-        "t": 96.234
+        "t": 97.393
       },
       {
         "title": "Which quadrant?",
-        "t": 131.294
+        "t": 132.453
       },
       {
         "title": "Your turn",
-        "t": 166.711
+        "t": 167.87
       },
       {
         "title": "Summary",
-        "t": 194.684
+        "t": 195.843
       }
     ],
     "cues": [
       {
         "id": "m7-9-1:q",
-        "t": 175.498,
+        "t": 176.657,
         "prompt": "Which quadrant is to the **left** of the $y$-axis and **below** the $x$-axis?",
         "choices": [
           "Quadrant I",
@@ -17704,6 +17704,759 @@
         ],
         "answer": 3,
         "working": "Total of the first four games: $90 \\times 4 = 360$. Add game five: $360 + 40 = 400$. New mean: $400 \\div 5 = 80$."
+      }
+    ]
+  },
+  "m7-10-3": {
+    "lessonId": "m7-10-3",
+    "title": "Circle Graphs, Part 1: Reading a Circle Graph",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Circle graphs",
+        "t": 20.436
+      },
+      {
+        "title": "How many chose hockey?",
+        "t": 59.176
+      },
+      {
+        "title": "How many more?",
+        "t": 91.274
+      },
+      {
+        "title": "Every sector",
+        "t": 120.005
+      },
+      {
+        "title": "Your turn",
+        "t": 150.934
+      },
+      {
+        "title": "Summary",
+        "t": 188.086
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-3:q",
+        "t": 162.522,
+        "prompt": "In a circle graph of $200$ students, the volleyball sector is $15\\%$. How many students chose volleyball?",
+        "choices": [
+          "$15$",
+          "$3{,}000$",
+          "$30$",
+          "$185$"
+        ],
+        "answer": 2,
+        "working": "$15\\% = 0.15$, and $0.15 \\times 200 = 30$ students."
+      }
+    ]
+  },
+  "m7-10-3-b": {
+    "lessonId": "m7-10-3",
+    "title": "Circle Graphs, Part 2: Finding the Total",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backward",
+        "t": 17.494
+      },
+      {
+        "title": "A picture of the whole",
+        "t": 68.5
+      },
+      {
+        "title": "Another example",
+        "t": 108.357
+      },
+      {
+        "title": "Watch out",
+        "t": 147.88
+      },
+      {
+        "title": "Your turn",
+        "t": 175.904
+      },
+      {
+        "title": "Summary",
+        "t": 212.222
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-3-b:q",
+        "t": 187.075,
+        "prompt": "$24$ students chose swimming. That is $8\\%$ of the students surveyed. How many students were surveyed?",
+        "choices": [
+          "$192$",
+          "$300$",
+          "$32$",
+          "$3$"
+        ],
+        "answer": 1,
+        "working": "$1\\%$ is $24 \\div 8 = 3$ students, so $100\\%$ is $3 \\times 100 = 300$ students. Check: $0.08 \\times 300 = 24$."
+      }
+    ]
+  },
+  "m7-10-3-c": {
+    "lessonId": "m7-10-3",
+    "title": "Circle Graphs, Part 3: Central Angles",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central angles",
+        "t": 14.864
+      },
+      {
+        "title": "A quarter of the circle",
+        "t": 43.482
+      },
+      {
+        "title": "Angles for every sector",
+        "t": 76.474
+      },
+      {
+        "title": "Check the total",
+        "t": 118.054
+      },
+      {
+        "title": "Your turn",
+        "t": 144.873
+      },
+      {
+        "title": "Summary",
+        "t": 180.522
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-3-c:q",
+        "t": 153.486,
+        "prompt": "A sector is $30\\%$ of a circle graph. What is its central angle?",
+        "choices": [
+          "$30^\\circ$",
+          "$120^\\circ$",
+          "$330^\\circ$",
+          "$108^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$0.30 \\times 360^\\circ = 108^\\circ$."
+      }
+    ]
+  },
+  "m7-10-3-d": {
+    "lessonId": "m7-10-3",
+    "title": "Circle Graphs, Part 4: Making a Circle Graph",
+    "duration": 300,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five steps",
+        "t": 15.124
+      },
+      {
+        "title": "The percents",
+        "t": 50.62
+      },
+      {
+        "title": "The central angles",
+        "t": 103.758
+      },
+      {
+        "title": "Drawing the graph",
+        "t": 153.467
+      },
+      {
+        "title": "Watch out",
+        "t": 193.333
+      },
+      {
+        "title": "Your turn",
+        "t": 229.842
+      },
+      {
+        "title": "Summary",
+        "t": 272.79
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-3-d:q",
+        "t": 242.222,
+        "prompt": "In a survey of $40$ students, $14$ chose reading as their favourite hobby. What central angle should the reading sector have?",
+        "choices": [
+          "$126^\\circ$",
+          "$14^\\circ$",
+          "$35^\\circ$",
+          "$140^\\circ$"
+        ],
+        "answer": 0,
+        "working": "$14 \\div 40 = 0.35 = 35\\%$, and $0.35 \\times 360^\\circ = 126^\\circ$."
+      }
+    ]
+  },
+  "m7-11-1": {
+    "lessonId": "m7-11-1",
+    "title": "Expressing Probabilities, Part 1: Outcomes, Events and Probability",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Outcomes and events",
+        "t": 17.843
+      },
+      {
+        "title": "Probability",
+        "t": 59.911
+      },
+      {
+        "title": "Picking a marble",
+        "t": 99.822
+      },
+      {
+        "title": "Impossible and certain",
+        "t": 139.551
+      },
+      {
+        "title": "Your turn",
+        "t": 168.132
+      },
+      {
+        "title": "Summary",
+        "t": 202.747
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-1:q",
+        "t": 180.228,
+        "prompt": "A bag has $4$ red, $1$ blue and $3$ green marbles. You pick one without looking. What is $P(\\text{green})$?",
+        "choices": [
+          "$\\dfrac{3}{5}$",
+          "$\\dfrac{1}{3}$",
+          "$\\dfrac{3}{8}$",
+          "$\\dfrac{3}{4}$"
+        ],
+        "answer": 2,
+        "working": "There are $3$ green marbles out of $4 + 1 + 3 = 8$ marbles, so $P(\\text{green}) = \\dfrac{3}{8}$."
+      }
+    ]
+  },
+  "m7-11-1-b": {
+    "lessonId": "m7-11-1",
+    "title": "Expressing Probabilities, Part 2: Ratio, Fraction and Percent",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways",
+        "t": 20.852
+      },
+      {
+        "title": "Finding the percent",
+        "t": 56.586
+      },
+      {
+        "title": "Letter tiles",
+        "t": 83.69
+      },
+      {
+        "title": "Watch out",
+        "t": 125.245
+      },
+      {
+        "title": "Your turn",
+        "t": 153.684
+      },
+      {
+        "title": "Summary",
+        "t": 192.851
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-1-b:q",
+        "t": 166.072,
+        "prompt": "A spinner has $10$ equal sections: $4$ are red and $6$ are yellow. What is the probability of red, as a percent?",
+        "choices": [
+          "$4\\%$",
+          "$40\\%$",
+          "$66.7\\%$",
+          "$60\\%$"
+        ],
+        "answer": 1,
+        "working": "$P(\\text{red}) = \\dfrac{4}{10}$, and $4 \\div 10 = 0.4 = 40\\%$."
+      }
+    ]
+  },
+  "m7-11-1-c": {
+    "lessonId": "m7-11-1",
+    "title": "Expressing Probabilities, Part 3: Changing Forms",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How the forms connect",
+        "t": 15.777
+      },
+      {
+        "title": "From a percent",
+        "t": 46.395
+      },
+      {
+        "title": "From a ratio",
+        "t": 93.991
+      },
+      {
+        "title": "Rounding a percent",
+        "t": 139.277
+      },
+      {
+        "title": "Your turn",
+        "t": 166.233
+      },
+      {
+        "title": "Summary",
+        "t": 203.247
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-1-c:q",
+        "t": 178.016,
+        "prompt": "The probability of rain tomorrow is $35\\%$. What is this probability as a fraction in lowest terms?",
+        "choices": [
+          "$\\dfrac{7}{20}$",
+          "$\\dfrac{35}{100}$",
+          "$\\dfrac{7}{10}$",
+          "$\\dfrac{3}{5}$"
+        ],
+        "answer": 0,
+        "working": "$35\\% = \\dfrac{35}{100}$. The greatest common factor of $35$ and $100$ is $5$: $\\dfrac{35 \\div 5}{100 \\div 5} = \\dfrac{7}{20}$."
+      }
+    ]
+  },
+  "m7-11-1-d": {
+    "lessonId": "m7-11-1",
+    "title": "Expressing Probabilities, Part 4: Comparing Probabilities",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same form first",
+        "t": 17.81
+      },
+      {
+        "title": "Which game?",
+        "t": 35.965
+      },
+      {
+        "title": "Two bags",
+        "t": 90.151
+      },
+      {
+        "title": "Your turn",
+        "t": 134.804
+      },
+      {
+        "title": "Summary",
+        "t": 170.896
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-1-d:q",
+        "t": 146.047,
+        "prompt": "Which probability is the greatest?",
+        "choices": [
+          "$\\dfrac{3}{5}$",
+          "$13 : 20$",
+          "$68\\%$",
+          "$\\dfrac{7}{10}$"
+        ],
+        "answer": 3,
+        "working": "As percents: $\\dfrac{3}{5} = 60\\%$, $13 : 20 = 65\\%$, $68\\%$, and $\\dfrac{7}{10} = 70\\%$. The greatest is $\\dfrac{7}{10}$."
+      }
+    ]
+  },
+  "m7-11-2": {
+    "lessonId": "m7-11-2",
+    "title": "Sample Spaces for Two Events, Part 1: Sample Spaces",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The sample space",
+        "t": 19.801
+      },
+      {
+        "title": "One spinner",
+        "t": 43.03
+      },
+      {
+        "title": "Two things at once",
+        "t": 66.603
+      },
+      {
+        "title": "Independent events",
+        "t": 95.289
+      },
+      {
+        "title": "Your turn",
+        "t": 137.264
+      },
+      {
+        "title": "Summary",
+        "t": 169.966
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-2:q",
+        "t": 147.907,
+        "prompt": "You flip a coin and roll a six-sided die. Which of these is **one outcome** in the sample space?",
+        "choices": [
+          "heads",
+          "T4",
+          "$7$",
+          "H and T"
+        ],
+        "answer": 1,
+        "working": "Each outcome is a pair: one result for the coin and one for the die. T4 means tails and a $4$."
+      }
+    ]
+  },
+  "m7-11-2-b": {
+    "lessonId": "m7-11-2",
+    "title": "Sample Spaces for Two Events, Part 2: Using a Table",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Building a table",
+        "t": 17.062
+      },
+      {
+        "title": "Counting the outcomes",
+        "t": 56.841
+      },
+      {
+        "title": "Multiply to count",
+        "t": 82.778
+      },
+      {
+        "title": "Watch out",
+        "t": 106.064
+      },
+      {
+        "title": "Your turn",
+        "t": 136.979
+      },
+      {
+        "title": "Summary",
+        "t": 169.731
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-2-b:q",
+        "t": 148.774,
+        "prompt": "You spin a spinner with $3$ equal sections and roll a six-sided die. How many outcomes are in the sample space?",
+        "choices": [
+          "$9$",
+          "$6$",
+          "$18$",
+          "$36$"
+        ],
+        "answer": 2,
+        "working": "Multiply: $3 \\times 6 = 18$ outcomes."
+      }
+    ]
+  },
+  "m7-11-2-c": {
+    "lessonId": "m7-11-2",
+    "title": "Sample Spaces for Two Events, Part 3: Tree Diagrams",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tree diagrams",
+        "t": 17.322
+      },
+      {
+        "title": "A coin and a spinner",
+        "t": 38.346
+      },
+      {
+        "title": "Watch out",
+        "t": 84.819
+      },
+      {
+        "title": "Your turn",
+        "t": 121.033
+      },
+      {
+        "title": "Summary",
+        "t": 152.395
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-2-c:q",
+        "t": 132.012,
+        "prompt": "You flip a large coin and a small coin. How many outcomes in the sample space have **exactly one** head?",
+        "choices": [
+          "$2$",
+          "$1$",
+          "$3$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "The sample space is HH, HT, TH, TT. Exactly one head: HT and TH, which are $2$ outcomes."
+      }
+    ]
+  },
+  "m7-11-2-d": {
+    "lessonId": "m7-11-2",
+    "title": "Sample Spaces for Two Events, Part 4: Counting Outcomes That Fit",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two dice",
+        "t": 15.872
+      },
+      {
+        "title": "A sum of 8",
+        "t": 51.093
+      },
+      {
+        "title": "Order matters",
+        "t": 75.881
+      },
+      {
+        "title": "Other sums",
+        "t": 99.95
+      },
+      {
+        "title": "Your turn",
+        "t": 128.421
+      },
+      {
+        "title": "Summary",
+        "t": 160.603
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-2-d:q",
+        "t": 137.263,
+        "prompt": "You roll a red die and a blue die. How many outcomes have a sum of $10$?",
+        "choices": [
+          "$2$",
+          "$10$",
+          "$36$",
+          "$3$"
+        ],
+        "answer": 3,
+        "working": "A sum of $10$: $(4,\\ 6)$, $(5,\\ 5)$ and $(6,\\ 4)$, which are $3$ outcomes."
+      }
+    ]
+  },
+  "m7-11-3": {
+    "lessonId": "m7-11-3",
+    "title": "Theoretical and Experimental Probability, Part 1: Theoretical Probability",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Theoretical probability",
+        "t": 16.672
+      },
+      {
+        "title": "Heads and an even number",
+        "t": 36.798
+      },
+      {
+        "title": "A sum of 7",
+        "t": 72.717
+      },
+      {
+        "title": "The most likely sum",
+        "t": 109.516
+      },
+      {
+        "title": "Your turn",
+        "t": 134.724
+      },
+      {
+        "title": "Summary",
+        "t": 172.028
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-3:q",
+        "t": 143.146,
+        "prompt": "Two dice are rolled. What is the probability that the sum is $11$?",
+        "choices": [
+          "$\\dfrac{1}{36}$",
+          "$\\dfrac{1}{18}$",
+          "$\\dfrac{1}{11}$",
+          "$\\dfrac{2}{11}$"
+        ],
+        "answer": 1,
+        "working": "A sum of $11$: $(5,\\ 6)$ and $(6,\\ 5)$, so $P = \\dfrac{2}{36} = \\dfrac{1}{18}$."
+      }
+    ]
+  },
+  "m7-11-3-b": {
+    "lessonId": "m7-11-3",
+    "title": "Theoretical and Experimental Probability, Part 2: Fair Games",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fair games",
+        "t": 14.821
+      },
+      {
+        "title": "Even or odd",
+        "t": 33.437
+      },
+      {
+        "title": "An unfair game",
+        "t": 72.68
+      },
+      {
+        "title": "Your turn",
+        "t": 108.163
+      },
+      {
+        "title": "Summary",
+        "t": 151.715
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-3-b:q",
+        "t": 123.143,
+        "prompt": "Ana and Ben roll two dice. Ana scores if the sum is $2$, $3$ or $4$. Ben scores if the sum is $10$, $11$ or $12$. Is the game fair?",
+        "choices": [
+          "No: Ben’s numbers are bigger, so he is more likely to score.",
+          "No: Ana is more likely to score.",
+          "Yes: each player scores on $6$ of the $36$ outcomes.",
+          "It depends on who rolls first."
+        ],
+        "answer": 2,
+        "working": "Sums of $2$, $3$ and $4$: $1 + 2 + 3 = 6$ outcomes. Sums of $10$, $11$ and $12$: $3 + 2 + 1 = 6$ outcomes. Both probabilities are $\\dfrac{6}{36} = \\dfrac{1}{6}$."
+      }
+    ]
+  },
+  "m7-11-3-c": {
+    "lessonId": "m7-11-3",
+    "title": "Theoretical and Experimental Probability, Part 3: Experimental Probability",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Experimental probability",
+        "t": 18.287
+      },
+      {
+        "title": "Flipping two coins",
+        "t": 42.806
+      },
+      {
+        "title": "Compared with theory",
+        "t": 82.697
+      },
+      {
+        "title": "Your turn",
+        "t": 120.612
+      },
+      {
+        "title": "Summary",
+        "t": 155.125
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-3-c:q",
+        "t": 132.452,
+        "prompt": "In Kiona’s $40$ trials, TT happened $8$ times. What is the experimental probability of TT?",
+        "choices": [
+          "$20\\%$",
+          "$25\\%$",
+          "$8\\%$",
+          "$80\\%$"
+        ],
+        "answer": 0,
+        "working": "$P(\\text{TT}) = \\dfrac{8}{40} = \\dfrac{1}{5} = 20\\%$."
       }
     ]
   },
