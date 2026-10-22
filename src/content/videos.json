@@ -15381,7 +15381,7 @@
       },
       {
         "title": "Summary",
-        "t": 213.628
+        "t": 214.162
       }
     ],
     "cues": [
@@ -17374,13 +17374,13 @@
       },
       {
         "title": "Summary",
-        "t": 226.924
+        "t": 226.937
       }
     ],
     "cues": [
       {
         "id": "m7-10-1:q",
-        "t": 203.767,
+        "t": 203.78,
         "prompt": "Lena’s quiz scores were $7$, $9$, $6$, $10$ and $8$. What is the mean?",
         "choices": [
           "$10$",
@@ -17558,41 +17558,41 @@
       },
       {
         "title": "What is an outlier?",
-        "t": 20.769
+        "t": 20.665
       },
       {
         "title": "Spotting the outlier",
-        "t": 48.627
+        "t": 48.379
       },
       {
         "title": "The mean without the outlier",
-        "t": 78.663
+        "t": 78.415
       },
       {
         "title": "The mean with the outlier",
-        "t": 103.227
+        "t": 102.91
       },
       {
         "title": "Up or down",
-        "t": 133.436
+        "t": 133.119
       },
       {
         "title": "Watch out",
-        "t": 160.046
+        "t": 159.729
       },
       {
         "title": "Your turn",
-        "t": 188.202
+        "t": 187.885
       },
       {
         "title": "Summary",
-        "t": 223.83
+        "t": 223.513
       }
     ],
     "cues": [
       {
         "id": "m7-10-2:q",
-        "t": 198.558,
+        "t": 198.241,
         "prompt": "The data are $8$, $9$, $10$, $9$ and $34$. What is the mean **without** the outlier?",
         "choices": [
           "$14$",
@@ -17672,29 +17672,29 @@
       },
       {
         "title": "Reporting a typical value",
-        "t": 57.788
+        "t": 57.735
       },
       {
         "title": "One bad game",
-        "t": 93.571
+        "t": 93.411
       },
       {
         "title": "Watch out",
-        "t": 144.089
+        "t": 143.854
       },
       {
         "title": "Your turn",
-        "t": 170.302
+        "t": 170.067
       },
       {
         "title": "Summary",
-        "t": 209.257
+        "t": 209.119
       }
     ],
     "cues": [
       {
         "id": "m7-10-2-c:q",
-        "t": 181.049,
+        "t": 180.911,
         "prompt": "Mia’s mean score for $4$ games is $90$. In game $5$ she scores $40$. What is her new mean?",
         "choices": [
           "$65$",
@@ -18318,7 +18318,7 @@
   "m7-11-3": {
     "lessonId": "m7-11-3",
     "title": "Theoretical and Experimental Probability, Part 1: Theoretical Probability",
-    "duration": 198,
+    "duration": 199,
     "voice": "af_heart",
     "chapters": [
       {
@@ -18339,21 +18339,21 @@
       },
       {
         "title": "The most likely sum",
-        "t": 109.516
+        "t": 110.622
       },
       {
         "title": "Your turn",
-        "t": 134.724
+        "t": 135.83
       },
       {
         "title": "Summary",
-        "t": 172.028
+        "t": 173.134
       }
     ],
     "cues": [
       {
         "id": "m7-11-3:q",
-        "t": 143.146,
+        "t": 144.252,
         "prompt": "Two dice are rolled. What is the probability that the sum is $11$?",
         "choices": [
           "$\\dfrac{1}{36}$",
