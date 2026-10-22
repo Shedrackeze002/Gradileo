@@ -236,7 +236,7 @@ Lessons learned while scripting (the script check does not catch these):
   "$4"; "in dollars, four g" is clear), "and at a number" ("add a number"), a line that starts
   with "x is…" ("Axe is"), "Let c be" and "use C equals" ("let's see", "you see"; "We let c be"
   and "use the formula C equals" are clear), "What is the mean?" ("What does the mean"; "Find the
-  mean." is clear), the name Ayesha (garbled every time; Amara is clear), a quick list of pairs
+  mean." is clear), the names Ayesha (garbled every time) and Dakota ("Decoder"; Amara is clear), a quick list of pairs
   such as "one and six, two and five" ("1 in 6, 2 in 5"; "one plus six" is clear), and "convenience sample" ("convenient sample"; listen
   to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
