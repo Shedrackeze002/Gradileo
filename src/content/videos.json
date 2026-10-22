@@ -18672,6 +18672,108 @@
       }
     ]
   },
+  "m8-1-1-d": {
+    "lessonId": "m8-1-1",
+    "title": "Perfect Squares and Square Roots, Part 4: Perfect Squares and Prime Factors",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Prime factorization",
+        "t": 20.272
+      },
+      {
+        "title": "Is 324 a perfect square?",
+        "t": 67.152
+      },
+      {
+        "title": "Two identical groups",
+        "t": 98.259
+      },
+      {
+        "title": "Is 72 a perfect square?",
+        "t": 144.644
+      },
+      {
+        "title": "Your turn",
+        "t": 191.055
+      },
+      {
+        "title": "Summary",
+        "t": 227.203
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-1-d:q",
+        "t": 198.945,
+        "prompt": "Which of these numbers is a perfect square?",
+        "choices": [
+          "$2^3 \\times 5^2$",
+          "$2^2 \\times 3^3$",
+          "$2^4 \\times 5^2$",
+          "$3 \\times 7^2$"
+        ],
+        "answer": 2,
+        "working": "In $2^4 \\times 5^2$, every exponent is even, so the primes share into two groups of $2 \\times 2 \\times 5 = 20$: it is $20 \\times 20 = 400$. Each of the others has a prime that appears an odd number of times."
+      }
+    ]
+  },
+  "m8-1-2": {
+    "lessonId": "m8-1-2",
+    "title": "Estimating Square Roots, Part 1: Between Two Whole Numbers",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Non-perfect squares",
+        "t": 25.164
+      },
+      {
+        "title": "Between 6 and 7",
+        "t": 61.031
+      },
+      {
+        "title": "Not half the number",
+        "t": 108.721
+      },
+      {
+        "title": "Closer to 6 or to 7?",
+        "t": 129.936
+      },
+      {
+        "title": "Your turn",
+        "t": 156.527
+      },
+      {
+        "title": "Summary",
+        "t": 191.348
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-2:q",
+        "t": 165.213,
+        "prompt": "Between which two consecutive whole numbers is $\\sqrt{70}$?",
+        "choices": [
+          "$7$ and $8$",
+          "$34$ and $36$",
+          "$6$ and $7$",
+          "$8$ and $9$"
+        ],
+        "answer": 3,
+        "working": "$64 < 70 < 81$, so $\\sqrt{64} < \\sqrt{70} < \\sqrt{81}$, which means $8 < \\sqrt{70} < 9$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
