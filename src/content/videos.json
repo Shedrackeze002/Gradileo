@@ -26252,6 +26252,618 @@
       }
     ]
   },
+  "m9-2-4": {
+    "lessonId": "m9-2-4",
+    "title": "Using Exponents to Solve Problems, Part 1: Area and Volume",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Squares and cubes",
+        "t": 25.604
+      },
+      {
+        "title": "A gift box",
+        "t": 60.508
+      },
+      {
+        "title": "Surface area",
+        "t": 97.972
+      },
+      {
+        "title": "Square and cubic units",
+        "t": 126.485
+      },
+      {
+        "title": "Your turn",
+        "t": 159.085
+      },
+      {
+        "title": "Summary",
+        "t": 195.234
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-4:q",
+        "t": 167.68,
+        "prompt": "A cube has edges of $5\\ \\text{cm}$. What is its surface area?",
+        "choices": [
+          "$150\\text{ cm}^2$",
+          "$125\\text{ cm}^2$",
+          "$30\\text{ cm}^2$",
+          "$900\\text{ cm}^2$"
+        ],
+        "answer": 0,
+        "working": "One face: $5^2 = 25\\text{ cm}^2$. Six faces: $SA = 6 \\times 25 = 150\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m9-2-4-b": {
+    "lessonId": "m9-2-4",
+    "title": "Using Exponents to Solve Problems, Part 2: Doubling",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Doubling again and again",
+        "t": 17.587
+      },
+      {
+        "title": "After two hours",
+        "t": 57.94
+      },
+      {
+        "title": "The rule",
+        "t": 102.327
+      },
+      {
+        "title": "Minutes are not doublings",
+        "t": 131.731
+      },
+      {
+        "title": "Your turn",
+        "t": 156.923
+      },
+      {
+        "title": "Summary",
+        "t": 198.537
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-4-b:q",
+        "t": 168.585,
+        "prompt": "A sample starts with $30$ cells. The number doubles every $15$ minutes. How many cells are there after $1$ hour?",
+        "choices": [
+          "$120$",
+          "$1800$",
+          "$480$",
+          "$960$"
+        ],
+        "answer": 2,
+        "working": "$1$ hour is $60$ minutes, and $60 \\div 15 = 4$ doublings. $30 \\times 2^4 = 30 \\times 16 = 480$."
+      }
+    ]
+  },
+  "m9-2-4-c": {
+    "lessonId": "m9-2-4",
+    "title": "Using Exponents to Solve Problems, Part 3: Sharing in Rounds",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rounds of sharing",
+        "t": 18.773
+      },
+      {
+        "title": "Round four",
+        "t": 56.949
+      },
+      {
+        "title": "How many in total?",
+        "t": 87.328
+      },
+      {
+        "title": "One round or all of them?",
+        "t": 110.668
+      },
+      {
+        "title": "Your turn",
+        "t": 131.693
+      },
+      {
+        "title": "Summary",
+        "t": 176.856
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-4-c:q",
+        "t": 145.942,
+        "prompt": "A message is sent to $2$ people. In each round after that, every person who just got it sends it to $2$ new people. How many **new** people get it in round $5$?",
+        "choices": [
+          "$10$",
+          "$25$",
+          "$62$",
+          "$32$"
+        ],
+        "answer": 3,
+        "working": "Round $n$ reaches $2^n$ new people, so round $5$ reaches $2^5 = 32$."
+      }
+    ]
+  },
+  "m9-2-4-d": {
+    "lessonId": "m9-2-4",
+    "title": "Using Exponents to Solve Problems, Part 4: Folding Paper",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Layers double",
+        "t": 19.635
+      },
+      {
+        "title": "Thicker than 1 cm",
+        "t": 47.959
+      },
+      {
+        "title": "Try powers",
+        "t": 90.871
+      },
+      {
+        "title": "Same units first",
+        "t": 124.322
+      },
+      {
+        "title": "Your turn",
+        "t": 153.49
+      },
+      {
+        "title": "Summary",
+        "t": 194.887
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-4-d:q",
+        "t": 166.47,
+        "prompt": "A sheet of paper is $0.1$ mm thick. What is the least number of folds that makes the stack thicker than $5$ mm?",
+        "choices": [
+          "$5$",
+          "$6$",
+          "$50$",
+          "$7$"
+        ],
+        "answer": 1,
+        "working": "We need $0.1 \\times 2^n > 5$, so $2^n > 50$. $2^5 = 32$ is too small; $2^6 = 64$ is enough: $0.1 \\times 64 = 6.4$ mm."
+      }
+    ]
+  },
+  "m9-3-1": {
+    "lessonId": "m9-3-1",
+    "title": "Comparing and Ordering Rational Numbers, Part 1: What Is a Rational Number?",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One integer over another",
+        "t": 25.865
+      },
+      {
+        "title": "Many kinds of rational numbers",
+        "t": 72.721
+      },
+      {
+        "title": "Where the negative sign goes",
+        "t": 139.738
+      },
+      {
+        "title": "On the number line",
+        "t": 192.969
+      },
+      {
+        "title": "Opposites",
+        "t": 217.112
+      },
+      {
+        "title": "Your turn",
+        "t": 253.193
+      },
+      {
+        "title": "Summary",
+        "t": 280.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-1:q",
+        "t": 260.034,
+        "prompt": "Which number is equal to $-\\dfrac{2}{5}$?",
+        "choices": [
+          "$\\dfrac{-2}{-5}$",
+          "$\\dfrac{2}{-5}$",
+          "$-\\dfrac{5}{2}$",
+          "$\\dfrac{2}{5}$"
+        ],
+        "answer": 1,
+        "working": "The negative sign can sit on the bottom: $\\dfrac{2}{-5} = -\\dfrac{2}{5}$. With two negative signs, $\\dfrac{-2}{-5} = \\dfrac{2}{5}$ is positive."
+      }
+    ]
+  },
+  "m9-3-1-b": {
+    "lessonId": "m9-3-1",
+    "title": "Comparing and Ordering Rational Numbers, Part 2: Comparing Rational Numbers",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Left is less",
+        "t": 20.53
+      },
+      {
+        "title": "Compare as decimals",
+        "t": 63.083
+      },
+      {
+        "title": "Bigger digits, smaller number",
+        "t": 104.076
+      },
+      {
+        "title": "A common denominator",
+        "t": 142.063
+      },
+      {
+        "title": "Which town was colder?",
+        "t": 184.697
+      },
+      {
+        "title": "Your turn",
+        "t": 219.352
+      },
+      {
+        "title": "Summary",
+        "t": 257.722
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-1-b:q",
+        "t": 225.493,
+        "prompt": "Which of these numbers is the greatest?",
+        "choices": [
+          "$-\\dfrac{5}{6}$",
+          "$-0.9$",
+          "$-\\dfrac{7}{8}$",
+          "$-0.8$"
+        ],
+        "answer": 3,
+        "working": "As decimals: $-\\tfrac{5}{6} = -0.833\\ldots$, $-0.9$, $-\\tfrac{7}{8} = -0.875$ and $-0.8$. The greatest is the one closest to $0$: $-0.8$."
+      }
+    ]
+  },
+  "m9-3-1-c": {
+    "lessonId": "m9-3-1",
+    "title": "Comparing and Ordering Rational Numbers, Part 3: Ordering Rational Numbers",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Write each as a decimal",
+        "t": 16.766
+      },
+      {
+        "title": "Close decimals",
+        "t": 64.99
+      },
+      {
+        "title": "Put them in order",
+        "t": 108.671
+      },
+      {
+        "title": "Your turn",
+        "t": 162.27
+      },
+      {
+        "title": "Summary",
+        "t": 209.318
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-1-c:q",
+        "t": 176.61,
+        "prompt": "Order from least to greatest: $-0.5,\\ \\ -\\tfrac{2}{3},\\ \\ 0.25,\\ \\ -\\tfrac{1}{4}$",
+        "choices": [
+          "$-\\tfrac{2}{3},\\ -0.5,\\ -\\tfrac{1}{4},\\ 0.25$",
+          "$-0.5,\\ -\\tfrac{2}{3},\\ -\\tfrac{1}{4},\\ 0.25$",
+          "$-\\tfrac{1}{4},\\ -0.5,\\ -\\tfrac{2}{3},\\ 0.25$",
+          "$0.25,\\ -\\tfrac{1}{4},\\ -0.5,\\ -\\tfrac{2}{3}$"
+        ],
+        "answer": 0,
+        "working": "As decimals: $-0.5$, $-\\tfrac{2}{3} = -0.666\\ldots$, $0.25$ and $-\\tfrac{1}{4} = -0.25$. The negative farthest from $0$ is the least: $-\\tfrac{2}{3},\\ -0.5,\\ -\\tfrac{1}{4},\\ 0.25$."
+      }
+    ]
+  },
+  "m9-3-1-d": {
+    "lessonId": "m9-3-1",
+    "title": "Comparing and Ordering Rational Numbers, Part 4: A Number in Between",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Always room for one more",
+        "t": 18.473
+      },
+      {
+        "title": "The same number of places",
+        "t": 52.102
+      },
+      {
+        "title": "Check",
+        "t": 109.59
+      },
+      {
+        "title": "Your turn",
+        "t": 148.662
+      },
+      {
+        "title": "Summary",
+        "t": 188.784
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-1-d:q",
+        "t": 157.079,
+        "prompt": "Which number is between $-\\dfrac{1}{4}$ and $-\\dfrac{1}{5}$?",
+        "choices": [
+          "$-0.3$",
+          "$-0.18$",
+          "$-0.22$",
+          "$-0.26$"
+        ],
+        "answer": 2,
+        "working": "$-\\tfrac{1}{4} = -0.25$ and $-\\tfrac{1}{5} = -0.20$, and $-0.25 < -0.22 < -0.20$."
+      }
+    ]
+  },
+  "m9-3-2": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 1: Adding Decimals",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding on a number line",
+        "t": 25.577
+      },
+      {
+        "title": "Same signs",
+        "t": 66.104
+      },
+      {
+        "title": "Different signs",
+        "t": 104.536
+      },
+      {
+        "title": "Crossing zero",
+        "t": 149.647
+      },
+      {
+        "title": "Your turn",
+        "t": 191.602
+      },
+      {
+        "title": "Summary",
+        "t": 229.346
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2:q",
+        "t": 199.007,
+        "prompt": "Find $-4.5 + 2.8$.",
+        "choices": [
+          "$-1.7$",
+          "$1.7$",
+          "$-7.3$",
+          "$7.3$"
+        ],
+        "answer": 0,
+        "working": "Different signs: subtract the sizes, $4.5 - 2.8 = 1.7$. $-4.5$ has the greater size, so the sum is $-1.7$."
+      }
+    ]
+  },
+  "m9-3-2-b": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 2: Add the Opposite",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pattern",
+        "t": 20.072
+      },
+      {
+        "title": "Subtracting finds a gap",
+        "t": 63.867
+      },
+      {
+        "title": "Add the opposite",
+        "t": 105.174
+      },
+      {
+        "title": "Watch out",
+        "t": 146.194
+      },
+      {
+        "title": "Your turn",
+        "t": 179.34
+      },
+      {
+        "title": "Summary",
+        "t": 218.413
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2-b:q",
+        "t": 187.757,
+        "prompt": "Find $-3.6 - (-5.1)$.",
+        "choices": [
+          "$-8.7$",
+          "$-1.5$",
+          "$1.5$",
+          "$8.7$"
+        ],
+        "answer": 2,
+        "working": "Add the opposite: $-3.6 + 5.1$. Different signs: $5.1 - 3.6 = 1.5$, and $5.1$ has the greater size, so the answer is $1.5$."
+      }
+    ]
+  },
+  "m9-3-2-c": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 3: Adding and Subtracting Fractions",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pieces of the same size",
+        "t": 21.062
+      },
+      {
+        "title": "Watch out",
+        "t": 56.773
+      },
+      {
+        "title": "Negative plus positive",
+        "t": 88.424
+      },
+      {
+        "title": "Subtracting a negative fraction",
+        "t": 135.695
+      },
+      {
+        "title": "Your turn",
+        "t": 173.755
+      },
+      {
+        "title": "Summary",
+        "t": 208.658
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2-c:q",
+        "t": 180.216,
+        "prompt": "Find $\\dfrac{1}{3} - \\dfrac{5}{6}$.",
+        "choices": [
+          "$\\dfrac{1}{2}$",
+          "$-\\dfrac{4}{9}$",
+          "$\\dfrac{7}{6}$",
+          "$-\\dfrac{1}{2}$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{1}{3} = \\dfrac{2}{6}$, so $\\dfrac{2}{6} - \\dfrac{5}{6} = \\dfrac{2 - 5}{6} = -\\dfrac{3}{6} = -\\dfrac{1}{2}$."
+      }
+    ]
+  },
+  "m9-3-2-d": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 4: Adding Mixed Numbers",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Improper fractions",
+        "t": 16.886
+      },
+      {
+        "title": "The negative covers it all",
+        "t": 49.847
+      },
+      {
+        "title": "Add",
+        "t": 94.982
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 136.545
+      },
+      {
+        "title": "Your turn",
+        "t": 157.337
+      },
+      {
+        "title": "Summary",
+        "t": 191.402
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2-d:q",
+        "t": 165.073,
+        "prompt": "Find $1\\tfrac{1}{2} + \\left(-3\\tfrac{1}{4}\\right)$.",
+        "choices": [
+          "$1\\tfrac{3}{4}$",
+          "$-1\\tfrac{3}{4}$",
+          "$-4\\tfrac{3}{4}$",
+          "$-1\\tfrac{1}{4}$"
+        ],
+        "answer": 1,
+        "working": "$1\\tfrac{1}{2} = \\dfrac{6}{4}$ and $-3\\tfrac{1}{4} = -\\dfrac{13}{4}$, so the sum is $\\dfrac{6 - 13}{4} = -\\dfrac{7}{4} = -1\\tfrac{3}{4}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
