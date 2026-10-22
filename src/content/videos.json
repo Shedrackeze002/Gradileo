@@ -19594,6 +19594,163 @@
       }
     ]
   },
+  "m8-2-2-c": {
+    "lessonId": "m8-2-2",
+    "title": "Percent of a Number, Part 3: Less Than 1% of a Number",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Find 1% first",
+        "t": 16
+      },
+      {
+        "title": "Check with a decimal",
+        "t": 55.339
+      },
+      {
+        "title": "A fraction of a percent",
+        "t": 88.8
+      },
+      {
+        "title": "0.25% is not 25%",
+        "t": 116.376
+      },
+      {
+        "title": "Your turn",
+        "t": 145.876
+      },
+      {
+        "title": "Summary",
+        "t": 174.045
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-2-c:q",
+        "t": 152.917,
+        "prompt": "Find $0.5\\%$ of $800$.",
+        "choices": [
+          "$4$",
+          "$400$",
+          "$40$",
+          "$0.4$"
+        ],
+        "answer": 0,
+        "working": "$1\\%$ of $800$ is $8$, and $0.5\\%$ is half of that: $4$. Or: $0.5\\% = 0.005$, and $0.005 \\times 800 = 4$."
+      }
+    ]
+  },
+  "m8-2-2-d": {
+    "lessonId": "m8-2-2",
+    "title": "Percent of a Number, Part 4: Solving Problems",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Interest on savings",
+        "t": 18.701
+      },
+      {
+        "title": "Finding the interest",
+        "t": 56.711
+      },
+      {
+        "title": "Beating a goal",
+        "t": 88.234
+      },
+      {
+        "title": "How much over?",
+        "t": 123.787
+      },
+      {
+        "title": "Your turn",
+        "t": 165.48
+      },
+      {
+        "title": "Summary",
+        "t": 205.939
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-2-d:q",
+        "t": 178.334,
+        "prompt": "A savings account pays $0.5\\%$ interest per year. How much interest does \\$3,000 earn in one year?",
+        "choices": [
+          "\\$1.50",
+          "\\$15.00",
+          "\\$150.00",
+          "\\$1,500.00"
+        ],
+        "answer": 1,
+        "working": "$0.5\\% = 0.005$, and $0.005 \\times 3{,}000 = 15$, so the interest is \\$15.00. Check: $1\\%$ of \\$3,000 is \\$30, and half of that is \\$15."
+      }
+    ]
+  },
+  "m8-2-3": {
+    "lessonId": "m8-2-3",
+    "title": "Percent Change and Combined Percents, Part 1: Percent Increase and Decrease",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What percent change means",
+        "t": 24.516
+      },
+      {
+        "title": "A chess club grows",
+        "t": 51.243
+      },
+      {
+        "title": "Why it is 25%",
+        "t": 84.345
+      },
+      {
+        "title": "Divide by the original amount",
+        "t": 108.307
+      },
+      {
+        "title": "A percent decrease",
+        "t": 134.583
+      },
+      {
+        "title": "Your turn",
+        "t": 176.71
+      },
+      {
+        "title": "Summary",
+        "t": 211.894
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-3:q",
+        "t": 187.52,
+        "prompt": "A club had $25$ members last year and has $30$ members this year. What is the percent increase?",
+        "choices": [
+          "$5\\%$",
+          "$16.7\\%$",
+          "$20\\%$",
+          "$120\\%$"
+        ],
+        "answer": 2,
+        "working": "The change is $30 - 25 = 5$. Divide by the original amount: $\\dfrac{5}{25} = 0.2 = 20\\%$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
