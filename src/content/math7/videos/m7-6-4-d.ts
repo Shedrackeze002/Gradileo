@@ -130,7 +130,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Your turn. A rectangle has a perimeter of thirty centimetres. It is six centimetres wide. How long is it? Pause the video and try it.', show: 'q', wait: 6 },
-        { say: 'The answer is A, nine centimetres. Two l plus twelve equals thirty, so two l equals eighteen, and l equals nine. Choice B forgets to divide by two: eighteen centimetres is both lengths added together.', show: 'q.answer' },
+        { say: 'The answer is A, nine centimetres. Two l plus twelve equals thirty, so two l equals eighteen, and l equals nine. Choice B forgets to divide by two: eighteen centimetres is the two long sides added together.', show: 'q.answer' },
       ],
     },
     {
