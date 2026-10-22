@@ -17024,6 +17024,689 @@
       }
     ]
   },
+  "m7-9-2-b": {
+    "lessonId": "m7-9-2",
+    "title": "Translations, Part 2: Translating a Shape",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One vertex at a time",
+        "t": 14.465
+      },
+      {
+        "title": "Moving each vertex",
+        "t": 48.183
+      },
+      {
+        "title": "Joining the image",
+        "t": 86.43
+      },
+      {
+        "title": "Watch out",
+        "t": 120.748
+      },
+      {
+        "title": "Your turn",
+        "t": 153.943
+      },
+      {
+        "title": "Summary",
+        "t": 192.148
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-2-b:q",
+        "t": 168.085,
+        "prompt": "Triangle $DEF$ has $D(-3,\\ 2)$, $E(0,\\ 2)$ and $F(-3,\\ 5)$. It is translated $4$ units right and $6$ units down. Where is $F'$?",
+        "choices": [
+          "$(-7,\\ {-1})$",
+          "$(1,\\ 11)$",
+          "$(1,\\ {-1})$",
+          "$(-3,\\ {-1})$"
+        ],
+        "answer": 2,
+        "working": "Right adds to $x$: $-3 + 4 = 1$. Down subtracts from $y$: $5 - 6 = -1$. So $F'(1,\\ {-1})$."
+      }
+    ]
+  },
+  "m7-9-2-c": {
+    "lessonId": "m7-9-2",
+    "title": "Translations, Part 3: Describing a Translation",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Follow one vertex",
+        "t": 14.943
+      },
+      {
+        "title": "Check another vertex",
+        "t": 69.784
+      },
+      {
+        "title": "Two slides in a row",
+        "t": 104.91
+      },
+      {
+        "title": "Watch out",
+        "t": 143.955
+      },
+      {
+        "title": "Your turn",
+        "t": 166.461
+      },
+      {
+        "title": "Summary",
+        "t": 202.949
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-2-c:q",
+        "t": 178.351,
+        "prompt": "Point $G(-2,\\ 4)$ is translated to $G'(3,\\ 1)$. Describe the translation.",
+        "choices": [
+          "$5$ units right and $3$ units down",
+          "$5$ units left and $3$ units up",
+          "$1$ unit right and $3$ units down",
+          "$3$ units right and $5$ units down"
+        ],
+        "answer": 0,
+        "working": "Across: $3 - (-2) = 5$, so $5$ units right. Up or down: $1 - 4 = -3$, so $3$ units down."
+      }
+    ]
+  },
+  "m7-9-3": {
+    "lessonId": "m7-9-3",
+    "title": "Reflections and Rotations, Part 1: Reflections in the Axes",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reflection",
+        "t": 17.826
+      },
+      {
+        "title": "Reflecting in the y-axis",
+        "t": 46.91
+      },
+      {
+        "title": "Watch out",
+        "t": 97.356
+      },
+      {
+        "title": "Reflecting in the x-axis",
+        "t": 124.585
+      },
+      {
+        "title": "The two rules",
+        "t": 166.19
+      },
+      {
+        "title": "Your turn",
+        "t": 209.711
+      },
+      {
+        "title": "Summary",
+        "t": 242.454
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-3:q",
+        "t": 220.075,
+        "prompt": "Point $K(-3,\\ 5)$ is reflected in the $x$-axis. Where is $K'$?",
+        "choices": [
+          "$(3,\\ 5)$",
+          "$(-3,\\ {-5})$",
+          "$(3,\\ {-5})$",
+          "$(5,\\ {-3})$"
+        ],
+        "answer": 1,
+        "working": "A reflection in the $x$-axis keeps $x$ and changes the sign of $y$: $(-3,\\ 5) \\to (-3,\\ {-5})$."
+      }
+    ]
+  },
+  "m7-9-3-b": {
+    "lessonId": "m7-9-3",
+    "title": "Reflections and Rotations, Part 2: Half Turns",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotation",
+        "t": 17.888
+      },
+      {
+        "title": "Turning one point",
+        "t": 55.255
+      },
+      {
+        "title": "A half turn",
+        "t": 92.397
+      },
+      {
+        "title": "Use tracing paper",
+        "t": 134.356
+      },
+      {
+        "title": "Your turn",
+        "t": 162.652
+      },
+      {
+        "title": "Summary",
+        "t": 196.883
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-3-b:q",
+        "t": 174.832,
+        "prompt": "Point $M(-2,\\ 5)$ is rotated $180^\\circ$ about the origin. Where is $M'$?",
+        "choices": [
+          "$(2,\\ {-5})$",
+          "$(-2,\\ {-5})$",
+          "$(2,\\ 5)$",
+          "$(5,\\ {-2})$"
+        ],
+        "answer": 0,
+        "working": "A half turn changes the sign of both coordinates: $(-2,\\ 5) \\to (2,\\ {-5})$."
+      }
+    ]
+  },
+  "m7-9-3-c": {
+    "lessonId": "m7-9-3",
+    "title": "Reflections and Rotations, Part 3: Quarter Turns",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Turning each move",
+        "t": 16.921
+      },
+      {
+        "title": "A quarter turn counterclockwise",
+        "t": 61.718
+      },
+      {
+        "title": "A quarter turn clockwise",
+        "t": 94.423
+      },
+      {
+        "title": "Two hundred seventy degrees",
+        "t": 147.038
+      },
+      {
+        "title": "Watch out",
+        "t": 185.848
+      },
+      {
+        "title": "Your turn",
+        "t": 213.668
+      },
+      {
+        "title": "Summary",
+        "t": 249.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-3-c:q",
+        "t": 225.162,
+        "prompt": "Point $Q(3,\\ 1)$ is rotated $90^\\circ$ **clockwise** about the origin. Where is $Q'$?",
+        "choices": [
+          "$(-1,\\ 3)$",
+          "$(-3,\\ {-1})$",
+          "$(3,\\ {-1})$",
+          "$(1,\\ {-3})$"
+        ],
+        "answer": 3,
+        "working": "$Q$ is $3$ right and $1$ up. Clockwise, $3$ right becomes $3$ down and $1$ up becomes $1$ right. So $Q'(1,\\ {-3})$."
+      }
+    ]
+  },
+  "m7-9-3-d": {
+    "lessonId": "m7-9-3",
+    "title": "Reflections and Rotations, Part 4: Which Transformation?",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Going round the vertices",
+        "t": 20.859
+      },
+      {
+        "title": "A reflection reverses the order",
+        "t": 56.177
+      },
+      {
+        "title": "A rotation keeps the order",
+        "t": 85.826
+      },
+      {
+        "title": "Three questions",
+        "t": 119.185
+      },
+      {
+        "title": "Your turn",
+        "t": 145.726
+      },
+      {
+        "title": "Summary",
+        "t": 180.212
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-3-d:q",
+        "t": 159.413,
+        "prompt": "In triangle $ABC$, the vertices $A \\to B \\to C$ go round **counterclockwise**. In its image, $A' \\to B' \\to C'$ go round **clockwise**. Which transformation was it?",
+        "choices": [
+          "a translation",
+          "a rotation of $90^\\circ$",
+          "a reflection",
+          "a rotation of $180^\\circ$"
+        ],
+        "answer": 2,
+        "working": "The order of the vertices is reversed, so the shape was flipped. Only a reflection flips a shape."
+      }
+    ]
+  },
+  "m7-10-1": {
+    "lessonId": "m7-10-1",
+    "title": "Mean, Median, Mode and Range, Part 1: The Mean",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central tendency",
+        "t": 21.431
+      },
+      {
+        "title": "Levelling out",
+        "t": 44.452
+      },
+      {
+        "title": "The rule",
+        "t": 85.102
+      },
+      {
+        "title": "Rounding the mean",
+        "t": 118.955
+      },
+      {
+        "title": "Watch out",
+        "t": 161.164
+      },
+      {
+        "title": "Your turn",
+        "t": 194.409
+      },
+      {
+        "title": "Summary",
+        "t": 226.924
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-1:q",
+        "t": 203.767,
+        "prompt": "Lena’s quiz scores were $7$, $9$, $6$, $10$ and $8$. What is the mean?",
+        "choices": [
+          "$10$",
+          "$8$",
+          "$4$",
+          "$40$"
+        ],
+        "answer": 1,
+        "working": "Sum: $7 + 9 + 6 + 10 + 8 = 40$. There are $5$ scores: $40 \\div 5 = 8$."
+      }
+    ]
+  },
+  "m7-10-1-b": {
+    "lessonId": "m7-10-1",
+    "title": "Mean, Median, Mode and Range, Part 2: The Median",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The median",
+        "t": 16.4
+      },
+      {
+        "title": "An odd number of values",
+        "t": 35.951
+      },
+      {
+        "title": "An even number of values",
+        "t": 83.055
+      },
+      {
+        "title": "Watch out",
+        "t": 132.268
+      },
+      {
+        "title": "Your turn",
+        "t": 159.239
+      },
+      {
+        "title": "Summary",
+        "t": 190.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-1-b:q",
+        "t": 167.58,
+        "prompt": "Find the median: $9,\\ 4,\\ 15,\\ 7,\\ 12$",
+        "choices": [
+          "$15$",
+          "$11$",
+          "$9.4$",
+          "$9$"
+        ],
+        "answer": 3,
+        "working": "In order: $4,\\ 7,\\ 9,\\ 12,\\ 15$. The middle (3rd) value is $9$."
+      }
+    ]
+  },
+  "m7-10-1-c": {
+    "lessonId": "m7-10-1",
+    "title": "Mean, Median, Mode and Range, Part 3: Mode and Range",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The mode",
+        "t": 18.166
+      },
+      {
+        "title": "No mode, or two modes",
+        "t": 51.138
+      },
+      {
+        "title": "The range",
+        "t": 79.358
+      },
+      {
+        "title": "A missing value",
+        "t": 122.622
+      },
+      {
+        "title": "Your turn",
+        "t": 166.366
+      },
+      {
+        "title": "Summary",
+        "t": 200.666
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-1-c:q",
+        "t": 175.291,
+        "prompt": "Find the range: $-4,\\ 7,\\ 2,\\ {-1},\\ 5$",
+        "choices": [
+          "$11$",
+          "$3$",
+          "$6$",
+          "$-11$"
+        ],
+        "answer": 0,
+        "working": "Greatest $7$, least $-4$: $7 - (-4) = 7 + 4 = 11$."
+      }
+    ]
+  },
+  "m7-10-1-d": {
+    "lessonId": "m7-10-1",
+    "title": "Mean, Median, Mode and Range, Part 4: Choosing the Best Measure",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which measure when?",
+        "t": 15.676
+      },
+      {
+        "title": "Babysitting money",
+        "t": 44.657
+      },
+      {
+        "title": "A shoe store",
+        "t": 108.494
+      },
+      {
+        "title": "When the data are words",
+        "t": 134.987
+      },
+      {
+        "title": "Your turn",
+        "t": 164.215
+      },
+      {
+        "title": "Summary",
+        "t": 205.491
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-1-d:q",
+        "t": 182.023,
+        "prompt": "Five friends ran a race. Their times, in seconds, were $14$, $15$, $16$, $17$ and $52$ (one friend stopped to tie a shoe). Which measure best describes a typical time?",
+        "choices": [
+          "the mean",
+          "the range",
+          "the median",
+          "the greatest value"
+        ],
+        "answer": 2,
+        "working": "$52$ is an outlier. It pulls the mean up to $22.8$ seconds, but the median, $16$ seconds, stays among the typical times."
+      }
+    ]
+  },
+  "m7-10-2": {
+    "lessonId": "m7-10-2",
+    "title": "The Effect of Outliers, Part 1: Outliers and the Mean",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is an outlier?",
+        "t": 20.769
+      },
+      {
+        "title": "Spotting the outlier",
+        "t": 48.627
+      },
+      {
+        "title": "The mean without the outlier",
+        "t": 78.663
+      },
+      {
+        "title": "The mean with the outlier",
+        "t": 103.227
+      },
+      {
+        "title": "Up or down",
+        "t": 133.436
+      },
+      {
+        "title": "Watch out",
+        "t": 160.046
+      },
+      {
+        "title": "Your turn",
+        "t": 188.202
+      },
+      {
+        "title": "Summary",
+        "t": 223.83
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-2:q",
+        "t": 198.558,
+        "prompt": "The data are $8$, $9$, $10$, $9$ and $34$. What is the mean **without** the outlier?",
+        "choices": [
+          "$14$",
+          "$9$",
+          "$7.2$",
+          "$34$"
+        ],
+        "answer": 1,
+        "working": "The outlier is $34$. Without it: $8 + 9 + 10 + 9 = 36$, and $36 \\div 4 = 9$."
+      }
+    ]
+  },
+  "m7-10-2-b": {
+    "lessonId": "m7-10-2",
+    "title": "The Effect of Outliers, Part 2: The Median and the Mode",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six ordinary days",
+        "t": 14.008
+      },
+      {
+        "title": "Adding a short day",
+        "t": 52.263
+      },
+      {
+        "title": "Comparing the measures",
+        "t": 92.121
+      },
+      {
+        "title": "Why the median hardly moves",
+        "t": 122.926
+      },
+      {
+        "title": "Your turn",
+        "t": 157.533
+      },
+      {
+        "title": "Summary",
+        "t": 191.494
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-2-b:q",
+        "t": 169.513,
+        "prompt": "A data set is $5,\\ 6,\\ 6,\\ 7,\\ 8$. The value $40$ is added. Which measure changes the most?",
+        "choices": [
+          "the mean",
+          "the median",
+          "the mode",
+          "none of them"
+        ],
+        "answer": 0,
+        "working": "The mean goes from $32 \\div 5 = 6.4$ to $72 \\div 6 = 12$. The median goes from $6$ to $6.5$, and the mode stays $6$."
+      }
+    ]
+  },
+  "m7-10-2-c": {
+    "lessonId": "m7-10-2",
+    "title": "The Effect of Outliers, Part 3: Keeping or Removing an Outlier",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A mistake or real?",
+        "t": 15.011
+      },
+      {
+        "title": "Reporting a typical value",
+        "t": 57.788
+      },
+      {
+        "title": "One bad game",
+        "t": 93.571
+      },
+      {
+        "title": "Watch out",
+        "t": 144.089
+      },
+      {
+        "title": "Your turn",
+        "t": 170.302
+      },
+      {
+        "title": "Summary",
+        "t": 209.257
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-2-c:q",
+        "t": 181.049,
+        "prompt": "Mia’s mean score for $4$ games is $90$. In game $5$ she scores $40$. What is her new mean?",
+        "choices": [
+          "$65$",
+          "$100$",
+          "$90$",
+          "$80$"
+        ],
+        "answer": 3,
+        "working": "Total of the first four games: $90 \\times 4 = 360$. Add game five: $360 + 40 = 400$. New mean: $400 \\div 5 = 80$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
