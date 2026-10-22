@@ -25078,6 +25078,61 @@
       }
     ]
   },
+  "m9-1-1": {
+    "lessonId": "m9-1-1",
+    "title": "Square Roots of Perfect Squares, Part 1: Squares of Decimals and Fractions",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A hundred small squares",
+        "t": 29.937
+      },
+      {
+        "title": "Perfect squares and square roots",
+        "t": 98.091
+      },
+      {
+        "title": "Twenty-five small squares",
+        "t": 141.401
+      },
+      {
+        "title": "Four ninths",
+        "t": 192.14
+      },
+      {
+        "title": "Check by squaring",
+        "t": 237.152
+      },
+      {
+        "title": "Your turn",
+        "t": 263.227
+      },
+      {
+        "title": "Summary",
+        "t": 303.28
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-1:q",
+        "t": 277.628,
+        "prompt": "A square of area $1$ is cut into $100$ small squares. $64$ of them are shaded as a square. What is $\\sqrt{0.64}$?",
+        "choices": [
+          "$0.32$",
+          "$0.8$",
+          "$0.08$",
+          "$8$"
+        ],
+        "answer": 1,
+        "working": "The shaded square is $8$ small squares wide, and $8$ tenths is $0.8$. Check: $0.8 \\times 0.8 = 0.64$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
