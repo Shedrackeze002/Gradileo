@@ -41,7 +41,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Choose a display that suits the data. A bar graph compares categories, such as the ways students travel to school.', show: 't.0', focus: 't.0' },
-        { say: 'A line graph shows change over time, such as the temperature during a day.', show: 't.1', focus: 't.1' },
+        { say: 'Line graphs show change over time, such as the temperature during a day.', show: 't.1', focus: 't.1' },
         { say: 'And a circle graph shows how one whole is split into parts, such as how a budget is spent.', show: 't.2', focus: 't.2' },
       ],
     },
