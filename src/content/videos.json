@@ -15000,6 +15000,202 @@
       }
     ]
   },
+  "m7-6-3": {
+    "lessonId": "m7-6-3",
+    "title": "Solving One-Step Equations, Part 1: Solutions and Inverse Operations",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solutions",
+        "t": 22.437
+      },
+      {
+        "title": "Inverse operations",
+        "t": 60.653
+      },
+      {
+        "title": "On the balance",
+        "t": 99.692
+      },
+      {
+        "title": "The rule",
+        "t": 133.297
+      },
+      {
+        "title": "Your turn",
+        "t": 165.509
+      },
+      {
+        "title": "Summary",
+        "t": 197.779
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-3:q",
+        "t": 172.955,
+        "prompt": "What is the solution of $x + 6 = 15$?",
+        "choices": [
+          "$x = 21$",
+          "$x = 6$",
+          "$x = 9$",
+          "$x = 15$"
+        ],
+        "answer": 2,
+        "working": "Six is added to $x$, so subtract $6$ from both sides: $x = 15 - 6 = 9$. Check: $9 + 6 = 15$."
+      }
+    ]
+  },
+  "m7-6-3-b": {
+    "lessonId": "m7-6-3",
+    "title": "Solving One-Step Equations, Part 2: Adding and Subtracting Integers",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo adding",
+        "t": 21.145
+      },
+      {
+        "title": "Undo adding a negative",
+        "t": 63.904
+      },
+      {
+        "title": "Undo subtracting",
+        "t": 108.052
+      },
+      {
+        "title": "Watch out",
+        "t": 143.532
+      },
+      {
+        "title": "Your turn",
+        "t": 175.681
+      },
+      {
+        "title": "Summary",
+        "t": 208.104
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-3-b:q",
+        "t": 182.783,
+        "prompt": "Solve $x - 4 = {-10}$.",
+        "choices": [
+          "$x = 6$",
+          "$x = {-14}$",
+          "$x = 14$",
+          "$x = {-6}$"
+        ],
+        "answer": 3,
+        "working": "Four is subtracted from $x$, so add $4$ to both sides: $x = ({-10}) + 4 = {-6}$. Check: $({-6}) - 4 = {-10}$."
+      }
+    ]
+  },
+  "m7-6-3-c": {
+    "lessonId": "m7-6-3",
+    "title": "Solving One-Step Equations, Part 3: Multiplying and Dividing",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo multiplying",
+        "t": 15.954
+      },
+      {
+        "title": "Undo dividing",
+        "t": 58.946
+      },
+      {
+        "title": "Choose the inverse",
+        "t": 98.845
+      },
+      {
+        "title": "Your turn",
+        "t": 127.159
+      },
+      {
+        "title": "Summary",
+        "t": 160.625
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-3-c:q",
+        "t": 133.383,
+        "prompt": "Solve $\\dfrac{x}{5} = 8$.",
+        "choices": [
+          "$x = 40$",
+          "$x = 13$",
+          "$x = 3$",
+          "$x = 1.6$"
+        ],
+        "answer": 0,
+        "working": "$x$ is divided by $5$, so multiply both sides by $5$: $x = 8 \\times 5 = 40$. Check: $40 \\div 5 = 8$."
+      }
+    ]
+  },
+  "m7-6-3-d": {
+    "lessonId": "m7-6-3",
+    "title": "Solving One-Step Equations, Part 4: Equations in Stories",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The temperature at sunrise",
+        "t": 22.566
+      },
+      {
+        "title": "Packs of tape",
+        "t": 72.887
+      },
+      {
+        "title": "Three steps for a story",
+        "t": 117.425
+      },
+      {
+        "title": "Your turn",
+        "t": 141.631
+      },
+      {
+        "title": "Summary",
+        "t": 183.207
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-3-d:q",
+        "t": 157.987,
+        "prompt": "After spending \\$12, Mia has \\$25 left. Let $m$ be the amount Mia had at first, so $m - 12 = 25$. How much did Mia have at first?",
+        "choices": [
+          "\\$13",
+          "\\$300",
+          "\\$37",
+          "\\$2.08"
+        ],
+        "answer": 2,
+        "working": "Twelve is subtracted from $m$, so add $12$ to both sides: $m = 25 + 12 = 37$. Mia had \\$37. Check: $37 - 12 = 25$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
