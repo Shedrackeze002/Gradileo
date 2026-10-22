@@ -22905,6 +22905,465 @@
       }
     ]
   },
+  "m8-7-4-c": {
+    "lessonId": "m8-7-4",
+    "title": "Solving Problems with Equations, Part 3: Sharing and Brackets",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sharing a pizza",
+        "t": 17.674
+      },
+      {
+        "title": "Hockey tickets",
+        "t": 70.804
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 126.666
+      },
+      {
+        "title": "Your turn",
+        "t": 153.639
+      },
+      {
+        "title": "Summary",
+        "t": 194.517
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-7-4-c:q",
+        "t": 168.873,
+        "prompt": "Five friends share the cost of a gift equally, and each also pays \\$2 for a card. Each friend pays \\$9 in total. How much did the gift cost?",
+        "choices": [
+          "\\$55",
+          "\\$45",
+          "\\$35",
+          "\\$7"
+        ],
+        "answer": 2,
+        "working": "Let $g$ be the cost of the gift: $\\dfrac{g}{5} + 2 = 9$, so $\\dfrac{g}{5} = 7$ and $g = 35$. Check: $35 \\div 5 = 7$, and $7 + 2 = 9$."
+      }
+    ]
+  },
+  "m8-8-1": {
+    "lessonId": "m8-8-1",
+    "title": "Views of Three-Dimensional Objects, Part 1: The Front View",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a view?",
+        "t": 24.56
+      },
+      {
+        "title": "Rows and stacks",
+        "t": 65.318
+      },
+      {
+        "title": "Drawing the front view",
+        "t": 108.534
+      },
+      {
+        "title": "Tallest, not total",
+        "t": 166.608
+      },
+      {
+        "title": "Your turn",
+        "t": 198.938
+      },
+      {
+        "title": "Summary",
+        "t": 247.882
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-1:q",
+        "t": 217.44,
+        "prompt": "An object is made of cubes in two rows. The **back** row has stacks of $3$, $1$ and $2$ cubes, from left to right. The **front** row has stacks of $1$, $2$ and $2$ cubes. How high is each column of its front view, from left to right?",
+        "choices": [
+          "$4$, $3$ and $4$ squares",
+          "$3$, $2$ and $2$ squares",
+          "$1$, $2$ and $2$ squares",
+          "$3$, $1$ and $2$ squares"
+        ],
+        "answer": 1,
+        "working": "Use the taller stack in each column. Left: $3$ and $1$, so $3$. Middle: $1$ and $2$, so $2$. Right: $2$ and $2$, so $2$."
+      }
+    ]
+  },
+  "m8-8-1-b": {
+    "lessonId": "m8-8-1",
+    "title": "Views of Three-Dimensional Objects, Part 2: The Top View",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Looking down",
+        "t": 17.99
+      },
+      {
+        "title": "Drawing the top view",
+        "t": 53.386
+      },
+      {
+        "title": "Which way round?",
+        "t": 96.663
+      },
+      {
+        "title": "Two views, two jobs",
+        "t": 129.512
+      },
+      {
+        "title": "Your turn",
+        "t": 154.839
+      },
+      {
+        "title": "Summary",
+        "t": 198.066
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-1-b:q",
+        "t": 169.434,
+        "prompt": "An object has a **front** row of three stacks, each $1$ cube tall. Behind the right end, its **back** row has one stack $3$ cubes tall. What is its top view?",
+        "choices": [
+          "A row of three, with one square **below** its right end",
+          "A row of three, with three squares **above** its right end",
+          "Four squares in a row",
+          "A row of three, with one square **above** its right end"
+        ],
+        "answer": 3,
+        "working": "From above, every stack is one square, however tall. The front row is the bottom row of the drawing: three squares. The back stack is one square above the right end."
+      }
+    ]
+  },
+  "m8-8-1-c": {
+    "lessonId": "m8-8-1",
+    "title": "Views of Three-Dimensional Objects, Part 3: The Side View",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Standing on the right",
+        "t": 16.248
+      },
+      {
+        "title": "Rows become columns",
+        "t": 52.649
+      },
+      {
+        "title": "Which side is which?",
+        "t": 93.448
+      },
+      {
+        "title": "Three views",
+        "t": 124.878
+      },
+      {
+        "title": "Your turn",
+        "t": 150.344
+      },
+      {
+        "title": "Summary",
+        "t": 193.33
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-1-c:q",
+        "t": 166.752,
+        "prompt": "An object has a **front** row of stacks $1$, $1$ and $3$ cubes tall, from left to right, and a **back** row of stacks $2$, $2$ and $2$ cubes tall. How high is each column of its **right side view**, from left to right?",
+        "choices": [
+          "$3$ squares, then $2$ squares",
+          "$2$ squares, then $3$ squares",
+          "$5$ squares, then $6$ squares",
+          "$2$, $2$ and $3$ squares"
+        ],
+        "answer": 0,
+        "working": "From the right, the front row is on the left: its tallest stack is $3$. The back row is on the right: its tallest stack is $2$."
+      }
+    ]
+  },
+  "m8-8-1-d": {
+    "lessonId": "m8-8-1",
+    "title": "Views of Three-Dimensional Objects, Part 4: Counting Cubes and Matching Views",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting the cubes",
+        "t": 17.042
+      },
+      {
+        "title": "How many more?",
+        "t": 57.016
+      },
+      {
+        "title": "From views to an object",
+        "t": 101.19
+      },
+      {
+        "title": "Check every view",
+        "t": 164.682
+      },
+      {
+        "title": "Your turn",
+        "t": 197.88
+      },
+      {
+        "title": "Summary",
+        "t": 246.661
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-1-d:q",
+        "t": 217.065,
+        "prompt": "An object has a **back** row of stacks $2$, $3$ and $1$ cubes tall, and a **front** row of stacks $1$, $2$ and $1$ cubes tall. How many more cubes would make it a rectangular prism $3$ cubes wide, $2$ cubes deep and $3$ cubes high?",
+        "choices": [
+          "$18$",
+          "$10$",
+          "$8$",
+          "$6$"
+        ],
+        "answer": 2,
+        "working": "The object has $2 + 3 + 1 = 6$ and $1 + 2 + 1 = 4$, so $10$ cubes. The prism has $3 \\times 2 \\times 3 = 18$. It needs $18 - 10 = 8$ more."
+      }
+    ]
+  },
+  "m8-8-2": {
+    "lessonId": "m8-8-2",
+    "title": "Nets of Three-Dimensional Objects, Part 1: Faces, Edges and Vertices",
+    "duration": 335,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Faces, edges and vertices",
+        "t": 25.914
+      },
+      {
+        "title": "Prisms and pyramids",
+        "t": 60.847
+      },
+      {
+        "title": "Counting faces",
+        "t": 101.001
+      },
+      {
+        "title": "Counting edges and vertices",
+        "t": 141.469
+      },
+      {
+        "title": "Count the hidden parts",
+        "t": 176.345
+      },
+      {
+        "title": "A pattern",
+        "t": 207.236
+      },
+      {
+        "title": "Your turn",
+        "t": 263.451
+      },
+      {
+        "title": "Summary",
+        "t": 304.537
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-2:q",
+        "t": 276.17,
+        "prompt": "A hexagonal prism has two ends that are hexagons, with $6$ sides each. How many faces, edges and vertices does it have?",
+        "choices": [
+          "$8$ faces, $12$ edges, $18$ vertices",
+          "$6$ faces, $18$ edges, $12$ vertices",
+          "$7$ faces, $12$ edges, $7$ vertices",
+          "$8$ faces, $18$ edges, $12$ vertices"
+        ],
+        "answer": 3,
+        "working": "Faces: $2$ hexagons and $6$ rectangles, $8$. Edges: $6$ on each end and $6$ joining them, $18$. Vertices: $6$ on each end, $12$."
+      }
+    ]
+  },
+  "m8-8-2-b": {
+    "lessonId": "m8-8-2",
+    "title": "Nets of Three-Dimensional Objects, Part 2: What Is a Net?",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a net?",
+        "t": 20.18
+      },
+      {
+        "title": "The net of a box",
+        "t": 45.417
+      },
+      {
+        "title": "Which object?",
+        "t": 83.348
+      },
+      {
+        "title": "Read the faces",
+        "t": 111.716
+      },
+      {
+        "title": "Your turn",
+        "t": 144.504
+      },
+      {
+        "title": "Summary",
+        "t": 180.464
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-2-b:q",
+        "t": 157.339,
+        "prompt": "A net has one square and four triangles. Each triangle is joined to one side of the square. Which object does it fold into?",
+        "choices": [
+          "A triangular prism",
+          "A square pyramid",
+          "A cube",
+          "A rectangular prism"
+        ],
+        "answer": 1,
+        "working": "One square base with triangles all around it: the triangles fold up and meet at a point. That is a square pyramid."
+      }
+    ]
+  },
+  "m8-8-2-c": {
+    "lessonId": "m8-8-2",
+    "title": "Nets of Three-Dimensional Objects, Part 3: Nets of a Cube",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six squares",
+        "t": 18.964
+      },
+      {
+        "title": "A block of four",
+        "t": 53.63
+      },
+      {
+        "title": "Opposite faces",
+        "t": 88.12
+      },
+      {
+        "title": "Your turn",
+        "t": 139.274
+      },
+      {
+        "title": "Summary",
+        "t": 182.883
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-2-c:q",
+        "t": 157.926,
+        "prompt": "A net of a cube has four squares in a row, numbered $1$, $2$, $3$ and $4$ from left to right. Square $5$ is joined above square $2$, and square $6$ is joined below square $3$. Which square is **opposite** square $2$ on the cube?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "answer": 2,
+        "working": "Squares $2$, $3$ and $4$ are in a straight row, so the first and the third, $2$ and $4$, are opposite."
+      }
+    ]
+  },
+  "m8-8-2-d": {
+    "lessonId": "m8-8-2",
+    "title": "Nets of Three-Dimensional Objects, Part 4: Nets of Pyramids and Cylinders",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A square pyramid",
+        "t": 18.087
+      },
+      {
+        "title": "Unrolling a cylinder",
+        "t": 47.419
+      },
+      {
+        "title": "The label on a can",
+        "t": 94.408
+      },
+      {
+        "title": "Both circles on one side",
+        "t": 137.785
+      },
+      {
+        "title": "Your turn",
+        "t": 162.281
+      },
+      {
+        "title": "Summary",
+        "t": 205.724
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-2-d:q",
+        "t": 177.739,
+        "prompt": "A can has a radius of $5$ cm and a height of $12$ cm. Use $3.14$ for $\\pi$. What are the length and width of the rectangle in its net?",
+        "choices": [
+          "$31.4$ cm by $12$ cm",
+          "$15.7$ cm by $12$ cm",
+          "$78.5$ cm by $12$ cm",
+          "$31.4$ cm by $5$ cm"
+        ],
+        "answer": 0,
+        "working": "The length is the circumference: $2 \\times 3.14 \\times 5 = 31.4$ cm. The width is the height: $12$ cm."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
