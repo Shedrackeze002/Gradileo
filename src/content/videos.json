@@ -15616,6 +15616,798 @@
       }
     ]
   },
+  "m7-7-1-e": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 5: Working Backwards",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo multiplying by pi",
+        "t": 17.979
+      },
+      {
+        "title": "A tree trunk",
+        "t": 45.246
+      },
+      {
+        "title": "The radius from the circumference",
+        "t": 96.438
+      },
+      {
+        "title": "Your turn",
+        "t": 133.676
+      },
+      {
+        "title": "Summary",
+        "t": 169.078
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1-e:q",
+        "t": 146.969,
+        "prompt": "A round table has a circumference of $314$ cm. Use $3.14$ for $\\pi$. What is its diameter?",
+        "choices": [
+          "$100$ cm",
+          "$50$ cm",
+          "$985.96$ cm",
+          "$157$ cm"
+        ],
+        "answer": 0,
+        "working": "$d = C \\div \\pi = 314 \\div 3.14 = 100$ cm."
+      }
+    ]
+  },
+  "m7-7-2": {
+    "lessonId": "m7-7-2",
+    "title": "Area of a Parallelogram, Part 1: From a Rectangle to a Parallelogram",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parallelograms",
+        "t": 23.058
+      },
+      {
+        "title": "Cut and slide",
+        "t": 55.459
+      },
+      {
+        "title": "The rule",
+        "t": 108.428
+      },
+      {
+        "title": "A first parallelogram",
+        "t": 139.955
+      },
+      {
+        "title": "Your turn",
+        "t": 170.961
+      },
+      {
+        "title": "Summary",
+        "t": 205.087
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-2:q",
+        "t": 183.758,
+        "prompt": "A parallelogram has a base of $7$ m, a height of $4$ m, and slanted sides of $5$ m. What is its area?",
+        "choices": [
+          "$35\\text{ m}^2$",
+          "$28\\text{ m}^2$",
+          "$11\\text{ m}^2$",
+          "$14\\text{ m}^2$"
+        ],
+        "answer": 1,
+        "working": "$A = bh = 7 \\times 4 = 28$, so the area is $28\\text{ m}^2$. The slanted side is not used."
+      }
+    ]
+  },
+  "m7-7-2-b": {
+    "lessonId": "m7-7-2",
+    "title": "Area of a Parallelogram, Part 2: Base and Height",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Base and height",
+        "t": 20.69
+      },
+      {
+        "title": "The same everywhere",
+        "t": 58.537
+      },
+      {
+        "title": "Ignore the slanted side",
+        "t": 80.567
+      },
+      {
+        "title": "Watch out",
+        "t": 116.256
+      },
+      {
+        "title": "Your turn",
+        "t": 150.779
+      },
+      {
+        "title": "Summary",
+        "t": 186.394
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-2-b:q",
+        "t": 164.294,
+        "prompt": "A parallelogram has a base of $15$ cm, slanted sides of $10$ cm, and a height of $6$ cm. What is its area?",
+        "choices": [
+          "$150\\text{ cm}^2$",
+          "$31\\text{ cm}^2$",
+          "$90\\text{ cm}^2$",
+          "$60\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "$A = bh = 15 \\times 6 = 90$, so the area is $90\\text{ cm}^2$. The slanted side, $10$ cm, is not the height."
+      }
+    ]
+  },
+  "m7-7-2-c": {
+    "lessonId": "m7-7-2",
+    "title": "Area of a Parallelogram, Part 3: When the Height Is Outside",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A very slanted parallelogram",
+        "t": 19.297
+      },
+      {
+        "title": "Still base times height",
+        "t": 49.076
+      },
+      {
+        "title": "Decimal measurements",
+        "t": 93.464
+      },
+      {
+        "title": "Your turn",
+        "t": 138.065
+      },
+      {
+        "title": "Summary",
+        "t": 174.619
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-2-c:q",
+        "t": 154.87,
+        "prompt": "A very slanted parallelogram has a base of $5$ cm and slanted sides of $15$ cm. Its height, drawn outside the shape, is $9$ cm. What is its area?",
+        "choices": [
+          "$45\\text{ cm}^2$",
+          "$75\\text{ cm}^2$",
+          "$22.5\\text{ cm}^2$",
+          "$14\\text{ cm}^2$"
+        ],
+        "answer": 0,
+        "working": "The formula is the same: $A = bh = 5 \\times 9 = 45$, so the area is $45\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m7-7-2-d": {
+    "lessonId": "m7-7-2",
+    "title": "Area of a Parallelogram, Part 4: Working Backwards and Taking Away",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Find the height",
+        "t": 20.119
+      },
+      {
+        "title": "Find the base",
+        "t": 57.963
+      },
+      {
+        "title": "Take away a hole",
+        "t": 86.868
+      },
+      {
+        "title": "Your turn",
+        "t": 132.407
+      },
+      {
+        "title": "Summary",
+        "t": 167.764
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-2-d:q",
+        "t": 144.336,
+        "prompt": "A parallelogram has an area of $56\\text{ cm}^2$ and a height of $7$ cm. What is its base?",
+        "choices": [
+          "$392$ cm",
+          "$49$ cm",
+          "$63$ cm",
+          "$8$ cm"
+        ],
+        "answer": 3,
+        "working": "$56 = b \\times 7$, so $b = 56 \\div 7 = 8$ cm. Check: $8 \\times 7 = 56$."
+      }
+    ]
+  },
+  "m7-7-3": {
+    "lessonId": "m7-7-3",
+    "title": "Area of a Triangle, Part 1: Half of a Parallelogram",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two copies make a parallelogram",
+        "t": 18.767
+      },
+      {
+        "title": "The rule",
+        "t": 61.1
+      },
+      {
+        "title": "A first triangle",
+        "t": 87.134
+      },
+      {
+        "title": "Right triangles",
+        "t": 115.687
+      },
+      {
+        "title": "Your turn",
+        "t": 155.776
+      },
+      {
+        "title": "Summary",
+        "t": 191.387
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-3:q",
+        "t": 166.515,
+        "prompt": "A triangle has a base of $14$ cm and a height of $5$ cm. What is its area?",
+        "choices": [
+          "$70\\text{ cm}^2$",
+          "$19\\text{ cm}^2$",
+          "$35\\text{ cm}^2$",
+          "$17.5\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "$A = bh \\div 2 = 14 \\times 5 \\div 2 = 70 \\div 2 = 35$, so the area is $35\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m7-7-3-b": {
+    "lessonId": "m7-7-3",
+    "title": "Area of a Triangle, Part 2: Height Outside the Triangle",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The height of a triangle",
+        "t": 18.43
+      },
+      {
+        "title": "An obtuse triangle",
+        "t": 43.564
+      },
+      {
+        "title": "Find the area",
+        "t": 83.37
+      },
+      {
+        "title": "Watch out",
+        "t": 122.844
+      },
+      {
+        "title": "Your turn",
+        "t": 147.713
+      },
+      {
+        "title": "Summary",
+        "t": 185.902
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-3-b:q",
+        "t": 164.124,
+        "prompt": "An obtuse triangle has a base of $6$ cm and a slanted side of $13$ cm. Its height, drawn outside the triangle, is $5$ cm. What is its area?",
+        "choices": [
+          "$39\\text{ cm}^2$",
+          "$15\\text{ cm}^2$",
+          "$30\\text{ cm}^2$",
+          "$65\\text{ cm}^2$"
+        ],
+        "answer": 1,
+        "working": "$A = bh \\div 2 = 6 \\times 5 \\div 2 = 30 \\div 2 = 15$, so the area is $15\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m7-7-3-c": {
+    "lessonId": "m7-7-3",
+    "title": "Area of a Triangle, Part 3: Composite Shapes and Missing Heights",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The front of a shed",
+        "t": 18.994
+      },
+      {
+        "title": "Find a missing height",
+        "t": 64.46
+      },
+      {
+        "title": "Double, then divide",
+        "t": 111.269
+      },
+      {
+        "title": "Your turn",
+        "t": 132.623
+      },
+      {
+        "title": "Summary",
+        "t": 166.268
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-3-c:q",
+        "t": 144.137,
+        "prompt": "A triangle has an area of $24\\text{ cm}^2$ and a base of $8$ cm. What is its height?",
+        "choices": [
+          "$3$ cm",
+          "$192$ cm",
+          "$16$ cm",
+          "$6$ cm"
+        ],
+        "answer": 3,
+        "working": "Double the area: $2 \\times 24 = 48$. Divide by the base: $48 \\div 8 = 6$ cm. Check: $8 \\times 6 \\div 2 = 24$."
+      }
+    ]
+  },
+  "m7-7-4": {
+    "lessonId": "m7-7-4",
+    "title": "Area of a Circle, Part 1: From a Circle to a Parallelogram",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cut and rearrange",
+        "t": 20.503
+      },
+      {
+        "title": "Its base and height",
+        "t": 62.144
+      },
+      {
+        "title": "More and more sectors",
+        "t": 96.357
+      },
+      {
+        "title": "The formula",
+        "t": 125.686
+      },
+      {
+        "title": "Your turn",
+        "t": 160.257
+      },
+      {
+        "title": "Summary",
+        "t": 204.872
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-4:q",
+        "t": 176.342,
+        "prompt": "The sectors of a circle with a radius of $5$ cm are lined up into a shape close to a parallelogram. Use $3.14$ for $\\pi$. What are its base and height?",
+        "choices": [
+          "Base $15.7$ cm, height $5$ cm",
+          "Base $31.4$ cm, height $5$ cm",
+          "Base $15.7$ cm, height $10$ cm",
+          "Base $5$ cm, height $5$ cm"
+        ],
+        "answer": 0,
+        "working": "The base is half of the circumference: $\\pi r = 3.14 \\times 5 = 15.7$ cm. The height is the radius: $5$ cm."
+      }
+    ]
+  },
+  "m7-7-4-b": {
+    "lessonId": "m7-7-4",
+    "title": "Area of a Circle, Part 2: Using the Radius",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Squaring the radius",
+        "t": 17.532
+      },
+      {
+        "title": "A circle from its radius",
+        "t": 50.058
+      },
+      {
+        "title": "Area or circumference?",
+        "t": 95.34
+      },
+      {
+        "title": "Your turn",
+        "t": 141.65
+      },
+      {
+        "title": "Summary",
+        "t": 179.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-4-b:q",
+        "t": 152.664,
+        "prompt": "A circle has a radius of $10$ cm. Use $3.14$ for $\\pi$. What is its area?",
+        "choices": [
+          "$62.8\\text{ cm}^2$",
+          "$31.4\\text{ cm}^2$",
+          "$314\\text{ cm}^2$",
+          "$1\\,256\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "$A = \\pi r^2 = 3.14 \\times 10^2 = 3.14 \\times 100 = 314\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m7-7-4-c": {
+    "lessonId": "m7-7-4",
+    "title": "Area of a Circle, Part 3: Given the Diameter",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A trampoline",
+        "t": 21.709
+      },
+      {
+        "title": "Watch out",
+        "t": 68.707
+      },
+      {
+        "title": "Why four times?",
+        "t": 91.191
+      },
+      {
+        "title": "Your turn",
+        "t": 124.867
+      },
+      {
+        "title": "Summary",
+        "t": 163.713
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-4-c:q",
+        "t": 136.129,
+        "prompt": "A round rug has a diameter of $6$ m. Use $3.14$ for $\\pi$. What is its area?",
+        "choices": [
+          "$113.04\\text{ m}^2$",
+          "$28.26\\text{ m}^2$",
+          "$18.84\\text{ m}^2$",
+          "$9.42\\text{ m}^2$"
+        ],
+        "answer": 1,
+        "working": "The radius is $6 \\div 2 = 3$ m. $A = \\pi r^2 = 3.14 \\times 3^2 = 3.14 \\times 9 = 28.26\\text{ m}^2$."
+      }
+    ]
+  },
+  "m7-7-4-d": {
+    "lessonId": "m7-7-4",
+    "title": "Area of a Circle, Part 4: Shapes Made with Circles",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A window",
+        "t": 18.455
+      },
+      {
+        "title": "A deck around a pool",
+        "t": 79.22
+      },
+      {
+        "title": "Add or subtract",
+        "t": 130.286
+      },
+      {
+        "title": "Your turn",
+        "t": 157.055
+      },
+      {
+        "title": "Summary",
+        "t": 204.736
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-4-d:q",
+        "t": 174.463,
+        "prompt": "A round rug with a radius of $2$ m lies on a floor $6$ m long and $5$ m wide. Use $3.14$ for $\\pi$. What area of the floor is **not** covered by the rug?",
+        "choices": [
+          "$17.44\\text{ m}^2$",
+          "$42.56\\text{ m}^2$",
+          "$12.56\\text{ m}^2$",
+          "$23.72\\text{ m}^2$"
+        ],
+        "answer": 0,
+        "working": "Floor: $6 \\times 5 = 30\\text{ m}^2$. Rug: $3.14 \\times 2^2 = 12.56\\text{ m}^2$. Not covered: $30 - 12.56 = 17.44\\text{ m}^2$."
+      }
+    ]
+  },
+  "m7-8-1": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 1: Parallel and Perpendicular",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Line segments",
+        "t": 22.008
+      },
+      {
+        "title": "Parallel",
+        "t": 40.535
+      },
+      {
+        "title": "Perpendicular",
+        "t": 77.318
+      },
+      {
+        "title": "Lines on a rink",
+        "t": 110.178
+      },
+      {
+        "title": "Watch out",
+        "t": 143.257
+      },
+      {
+        "title": "Your turn",
+        "t": 165.832
+      },
+      {
+        "title": "Summary",
+        "t": 192.179
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1:q",
+        "t": 171.366,
+        "prompt": "Which pair is **perpendicular**?",
+        "choices": [
+          "The two rails of a straight train track",
+          "The two long edges of a ruler",
+          "Two lines on a sheet of lined paper",
+          "The bottom edge and a side edge of a door"
+        ],
+        "answer": 3,
+        "working": "The bottom edge and a side edge of a door meet in a square corner, a right angle, so they are perpendicular. The other pairs are parallel."
+      }
+    ]
+  },
+  "m7-8-1-b": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 2: Checking Sides on a Grid",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two rules",
+        "t": 18.806
+      },
+      {
+        "title": "The sides of a trapezoid",
+        "t": 56.034
+      },
+      {
+        "title": "Slanted sides",
+        "t": 108.934
+      },
+      {
+        "title": "Your turn",
+        "t": 150.153
+      },
+      {
+        "title": "Summary",
+        "t": 181.812
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1-b:q",
+        "t": 161.944,
+        "prompt": "On a grid, side $KL$ goes $3$ squares right and $2$ squares up. Which move makes a side **parallel** to $KL$?",
+        "choices": [
+          "$2$ right and $3$ up",
+          "$3$ right and $2$ up",
+          "$3$ right and $2$ down",
+          "$2$ left and $3$ up"
+        ],
+        "answer": 1,
+        "working": "Parallel sides make the same move: $3$ right and $2$ up."
+      }
+    ]
+  },
+  "m7-8-1-c": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 3: Using the Properties",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A missing angle",
+        "t": 19.806
+      },
+      {
+        "title": "Is it parallel?",
+        "t": 62.53
+      },
+      {
+        "title": "Watch out",
+        "t": 105.687
+      },
+      {
+        "title": "Your turn",
+        "t": 130.499
+      },
+      {
+        "title": "Summary",
+        "t": 174.454
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1-c:q",
+        "t": 148.201,
+        "prompt": "$JK \\perp LM$ at point $E$. Ray $EN$ makes a $62^\\circ$ angle with $EJ$, inside the right angle $\\angle JEL$. What is $\\angle NEL$?",
+        "choices": [
+          "$118^\\circ$",
+          "$152^\\circ$",
+          "$28^\\circ$",
+          "$62^\\circ$"
+        ],
+        "answer": 2,
+        "working": "The segments are perpendicular, so $\\angle JEL = 90^\\circ$. Then $\\angle NEL = 90^\\circ - 62^\\circ = 28^\\circ$."
+      }
+    ]
+  },
+  "m7-8-1-d": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 4: Constructing a Perpendicular Segment",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A compass",
+        "t": 20.664
+      },
+      {
+        "title": "Step 1: two arcs from P",
+        "t": 51.137
+      },
+      {
+        "title": "Steps 2 and 3: two crossing arcs",
+        "t": 85.072
+      },
+      {
+        "title": "Step 4: join P and E",
+        "t": 112.886
+      },
+      {
+        "title": "When P is not on the segment",
+        "t": 138.525
+      },
+      {
+        "title": "Check your work",
+        "t": 173.959
+      },
+      {
+        "title": "Your turn",
+        "t": 193.919
+      },
+      {
+        "title": "Summary",
+        "t": 234.082
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1-d:q",
+        "t": 207.905,
+        "prompt": "In step 1, the compass point is on $P$, and two arcs cross $AB$ at $C$ and $D$ without changing the compass. What is true about $C$ and $D$?",
+        "choices": [
+          "$PC = PD$",
+          "$CD$ is perpendicular to $AB$",
+          "$C$ and $D$ are on segment $PE$",
+          "$PC$ is twice as long as $PD$"
+        ],
+        "answer": 0,
+        "working": "The compass opening did not change, so $C$ and $D$ are the same distance from $P$: $PC = PD$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
