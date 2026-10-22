@@ -21638,7 +21638,7 @@
   "m8-5-2": {
     "lessonId": "m8-5-2",
     "title": "Dividing Integers, Part 1: Sharing and Grouping",
-    "duration": 207,
+    "duration": 208,
     "voice": "af_heart",
     "chapters": [
       {
@@ -21655,21 +21655,21 @@
       },
       {
         "title": "Division undoes multiplication",
-        "t": 106.736
+        "t": 107.625
       },
       {
         "title": "Your turn",
-        "t": 138.058
+        "t": 138.947
       },
       {
         "title": "Summary",
-        "t": 172.877
+        "t": 173.766
       }
     ],
     "cues": [
       {
         "id": "m8-5-2:q",
-        "t": 146.221,
+        "t": 147.11,
         "prompt": "Use counters to find $(-15) \\div 5$.",
         "choices": [
           "$3$",
@@ -22177,6 +22177,53 @@
         ],
         "answer": 2,
         "working": "Substitute $t = 6$: $V = 50 - 4(6) = 50 - 24 = 26$, so $26$ L is left."
+      }
+    ]
+  },
+  "m8-6-2": {
+    "lessonId": "m8-6-2",
+    "title": "Graphing and Analyzing Linear Relations, Part 1: Graphing a Linear Relation",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Make a table",
+        "t": 20.405
+      },
+      {
+        "title": "Plot the points",
+        "t": 53.801
+      },
+      {
+        "title": "Draw the line",
+        "t": 100.556
+      },
+      {
+        "title": "Your turn",
+        "t": 129.883
+      },
+      {
+        "title": "Summary",
+        "t": 159.64
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-6-2:q",
+        "t": 137.799,
+        "prompt": "Which point is on the graph of $y = 2x - 1$?",
+        "choices": [
+          "$(3,\\ 7)$",
+          "$(3,\\ 5)$",
+          "$(5,\\ 3)$",
+          "$(0,\\ 1)$"
+        ],
+        "answer": 1,
+        "working": "When $x = 3$, $y = 2(3) - 1 = 6 - 1 = 5$, so the point $(3,\\ 5)$ is on the graph."
       }
     ]
   },
