@@ -25494,6 +25494,662 @@
       }
     ]
   },
+  "m9-1-3-b": {
+    "lessonId": "m9-1-3",
+    "title": "Surface Area of Composite Objects, Part 2: Two Rectangular Prisms",
+    "duration": 335,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the layers touch",
+        "t": 21.094
+      },
+      {
+        "title": "The bottom layer",
+        "t": 67.097
+      },
+      {
+        "title": "The top layer",
+        "t": 113.351
+      },
+      {
+        "title": "Put it together",
+        "t": 152.924
+      },
+      {
+        "title": "Subtracting once",
+        "t": 192.331
+      },
+      {
+        "title": "No icing underneath",
+        "t": 223.341
+      },
+      {
+        "title": "Your turn",
+        "t": 257.248
+      },
+      {
+        "title": "Summary",
+        "t": 305.529
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-3-b:q",
+        "t": 275.234,
+        "prompt": "A box $10$ cm long, $10$ cm wide and $4$ cm high has a cube with edges of $4$ cm glued on top. What is the surface area of the whole object, including the bottom?",
+        "choices": [
+          "$456\\text{ cm}^2$",
+          "$424\\text{ cm}^2$",
+          "$440\\text{ cm}^2$",
+          "$324\\text{ cm}^2$"
+        ],
+        "answer": 1,
+        "working": "Box: $2(100 + 40 + 40) = 360$. Cube: $6 \\times 16 = 96$. Overlap: $4 \\times 4 = 16$. $SA = 360 + 96 - 2 \\times 16 = 424\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m9-1-3-c": {
+    "lessonId": "m9-1-3",
+    "title": "Surface Area of Composite Objects, Part 3: A Cylinder on a Prism",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the parts touch",
+        "t": 19.989
+      },
+      {
+        "title": "The block",
+        "t": 66.776
+      },
+      {
+        "title": "The cylinder",
+        "t": 96.731
+      },
+      {
+        "title": "Put it together",
+        "t": 139.455
+      },
+      {
+        "title": "A shortcut",
+        "t": 175.566
+      },
+      {
+        "title": "Your turn",
+        "t": 211.001
+      },
+      {
+        "title": "Summary",
+        "t": 260.681
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-3-c:q",
+        "t": 229.866,
+        "prompt": "A cylinder with a radius of $2$ cm and a height of $10$ cm stands on a cube with edges of $6$ cm. What is the surface area of the whole object, including the bottom, to the nearest tenth?",
+        "choices": [
+          "$366.8\\text{ cm}^2$",
+          "$354.2\\text{ cm}^2$",
+          "$278.8\\text{ cm}^2$",
+          "$341.7\\text{ cm}^2$"
+        ],
+        "answer": 3,
+        "working": "Cube: $6 \\times 6^2 = 216$. Curved side of the cylinder: $2\\pi(2)(10) \\approx 125.66$. The cylinder’s top replaces the circle it covers, so $SA \\approx 216 + 125.66 \\approx 341.7\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m9-2-1": {
+    "lessonId": "m9-2-1",
+    "title": "Using Exponents to Describe Numbers, Part 1: Base and Exponent",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a power?",
+        "t": 28.636
+      },
+      {
+        "title": "Reading powers",
+        "t": 66.546
+      },
+      {
+        "title": "Squared and cubed",
+        "t": 101.037
+      },
+      {
+        "title": "Writing a power",
+        "t": 138.347
+      },
+      {
+        "title": "Base and exponent swapped",
+        "t": 162.46
+      },
+      {
+        "title": "Your turn",
+        "t": 188.254
+      },
+      {
+        "title": "Summary",
+        "t": 221.804
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-1:q",
+        "t": 196.975,
+        "prompt": "Write $4 \\times 4 \\times 4 \\times 4 \\times 4$ as a power.",
+        "choices": [
+          "$4^5$",
+          "$5^4$",
+          "$4 \\times 5$",
+          "$4^4$"
+        ],
+        "answer": 0,
+        "working": "The factor $4$ is repeated, so the base is $4$. There are $5$ factors, so the exponent is $5$: $4^5$."
+      }
+    ]
+  },
+  "m9-2-1-b": {
+    "lessonId": "m9-2-1",
+    "title": "Using Exponents to Describe Numbers, Part 2: Evaluating Powers",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two to the power of five",
+        "t": 22.53
+      },
+      {
+        "title": "Not a multiplier",
+        "t": 57.43
+      },
+      {
+        "title": "Three to the fourth",
+        "t": 89.632
+      },
+      {
+        "title": "Powers of 10",
+        "t": 121.13
+      },
+      {
+        "title": "Your turn",
+        "t": 147.983
+      },
+      {
+        "title": "Summary",
+        "t": 177.731
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-1-b:q",
+        "t": 153.431,
+        "prompt": "Evaluate $6^3$.",
+        "choices": [
+          "$18$",
+          "$36$",
+          "$216$",
+          "$729$"
+        ],
+        "answer": 2,
+        "working": "$6^3 = 6 \\times 6 \\times 6$. $6 \\times 6 = 36$, and $36 \\times 6 = 216$."
+      }
+    ]
+  },
+  "m9-2-1-c": {
+    "lessonId": "m9-2-1",
+    "title": "Using Exponents to Describe Numbers, Part 3: Negative Bases and Brackets",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "With brackets",
+        "t": 19.989
+      },
+      {
+        "title": "Without brackets",
+        "t": 58.051
+      },
+      {
+        "title": "What is the base?",
+        "t": 84.087
+      },
+      {
+        "title": "Compare them",
+        "t": 118.135
+      },
+      {
+        "title": "Negative three",
+        "t": 155.938
+      },
+      {
+        "title": "Is the minus sign in the base?",
+        "t": 186.831
+      },
+      {
+        "title": "Your turn",
+        "t": 216.44
+      },
+      {
+        "title": "Summary",
+        "t": 248.622
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-1-c:q",
+        "t": 222.929,
+        "prompt": "Evaluate $-4^2$.",
+        "choices": [
+          "$16$",
+          "$8$",
+          "$-8$",
+          "$-16$"
+        ],
+        "answer": 3,
+        "working": "There are no brackets, so the base is $4$: $-4^2 = -(4 \\times 4) = -16$."
+      }
+    ]
+  },
+  "m9-2-1-d": {
+    "lessonId": "m9-2-1",
+    "title": "Using Exponents to Describe Numbers, Part 4: Even and Odd Exponents",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pairs of negatives",
+        "t": 20.028
+      },
+      {
+        "title": "One left over",
+        "t": 54.128
+      },
+      {
+        "title": "Even or odd?",
+        "t": 80.766
+      },
+      {
+        "title": "Predicting the sign",
+        "t": 107.795
+      },
+      {
+        "title": "Check the base first",
+        "t": 144.078
+      },
+      {
+        "title": "Your turn",
+        "t": 166.482
+      },
+      {
+        "title": "Summary",
+        "t": 200.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-1-d:q",
+        "t": 172.719,
+        "prompt": "Which of these has a positive value?",
+        "choices": [
+          "$(-3)^5$",
+          "$(-3)^4$",
+          "$-3^4$",
+          "$-3^5$"
+        ],
+        "answer": 1,
+        "working": "$(-3)^4$ has base $-3$ and an even exponent, so it is positive: $81$. $(-3)^5 = -243$, $-3^4 = -81$ and $-3^5 = -243$."
+      }
+    ]
+  },
+  "m9-2-2": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 1: The Product Law",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exponent laws",
+        "t": 26.336
+      },
+      {
+        "title": "Count the factors",
+        "t": 45.979
+      },
+      {
+        "title": "The product law",
+        "t": 75.523
+      },
+      {
+        "title": "Do not multiply the bases",
+        "t": 114.1
+      },
+      {
+        "title": "Different bases",
+        "t": 150.748
+      },
+      {
+        "title": "Your turn",
+        "t": 179.702
+      },
+      {
+        "title": "Summary",
+        "t": 214.085
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2:q",
+        "t": 188.526,
+        "prompt": "Write $6^5 \\times 6^3$ as a single power.",
+        "choices": [
+          "$6^8$",
+          "$36^8$",
+          "$6^{15}$",
+          "$12^8$"
+        ],
+        "answer": 0,
+        "working": "Same base, so keep the base and add the exponents: $6^5 \\times 6^3 = 6^{5 + 3} = 6^8$."
+      }
+    ]
+  },
+  "m9-2-2-b": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 2: The Quotient Law",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Factors divide out",
+        "t": 16.423
+      },
+      {
+        "title": "The quotient law",
+        "t": 60.891
+      },
+      {
+        "title": "Another example",
+        "t": 97.458
+      },
+      {
+        "title": "Do not divide the exponents",
+        "t": 126.79
+      },
+      {
+        "title": "Your turn",
+        "t": 159.389
+      },
+      {
+        "title": "Summary",
+        "t": 194.798
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2-b:q",
+        "t": 169.057,
+        "prompt": "Write $7^9 \\div 7^3$ as a single power.",
+        "choices": [
+          "$7^3$",
+          "$1^6$",
+          "$7^6$",
+          "$7^{12}$"
+        ],
+        "answer": 2,
+        "working": "Same base, so keep the base and subtract the exponents: $7^9 \\div 7^3 = 7^{9 - 3} = 7^6$."
+      }
+    ]
+  },
+  "m9-2-2-c": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 3: The Zero Exponent",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pattern",
+        "t": 18.635
+      },
+      {
+        "title": "Powers of two",
+        "t": 54.764
+      },
+      {
+        "title": "The quotient law agrees",
+        "t": 77.62
+      },
+      {
+        "title": "The zero exponent",
+        "t": 105.593
+      },
+      {
+        "title": "One, not zero",
+        "t": 138.089
+      },
+      {
+        "title": "Your turn",
+        "t": 159.368
+      },
+      {
+        "title": "Summary",
+        "t": 191.193
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2-c:q",
+        "t": 168.17,
+        "prompt": "Evaluate $4^0 + 7^0$.",
+        "choices": [
+          "$0$",
+          "$2$",
+          "$11$",
+          "$1$"
+        ],
+        "answer": 1,
+        "working": "Each power has an exponent of $0$ and a base that is not $0$, so each is $1$: $4^0 + 7^0 = 1 + 1 = 2$."
+      }
+    ]
+  },
+  "m9-2-2-d": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 4: Powers of Powers, Products and Quotients",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Power of a power",
+        "t": 18.884
+      },
+      {
+        "title": "Power of a product",
+        "t": 53.368
+      },
+      {
+        "title": "Power of a quotient",
+        "t": 92.7
+      },
+      {
+        "title": "All the laws",
+        "t": 121.004
+      },
+      {
+        "title": "Add or multiply?",
+        "t": 158.964
+      },
+      {
+        "title": "Your turn",
+        "t": 188.099
+      },
+      {
+        "title": "Summary",
+        "t": 224.088
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2-d:q",
+        "t": 196.206,
+        "prompt": "Write $\\left(5^3\\right)^4$ as a single power.",
+        "choices": [
+          "$5^7$",
+          "$20^3$",
+          "$5^{81}$",
+          "$5^{12}$"
+        ],
+        "answer": 3,
+        "working": "A power of a power: multiply the exponents. $\\left(5^3\\right)^4 = 5^{3 \\times 4} = 5^{12}$."
+      }
+    ]
+  },
+  "m9-2-2-e": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 5: Simplify, Then Evaluate",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One law at a time",
+        "t": 18.462
+      },
+      {
+        "title": "See the factors",
+        "t": 50.901
+      },
+      {
+        "title": "Why simplify first?",
+        "t": 84.31
+      },
+      {
+        "title": "Three laws at once",
+        "t": 113.577
+      },
+      {
+        "title": "No law for adding",
+        "t": 152.468
+      },
+      {
+        "title": "Your turn",
+        "t": 186.974
+      },
+      {
+        "title": "Summary",
+        "t": 226.613
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2-e:q",
+        "t": 198.093,
+        "prompt": "Evaluate $\\left(3^6 \\times 3^2\\right) \\div 3^5$.",
+        "choices": [
+          "$27$",
+          "$2187$",
+          "$81$",
+          "$9$"
+        ],
+        "answer": 0,
+        "working": "Product law: $3^6 \\times 3^2 = 3^8$. Quotient law: $3^8 \\div 3^5 = 3^3$. Then $3^3 = 27$."
+      }
+    ]
+  },
+  "m9-2-3": {
+    "lessonId": "m9-2-3",
+    "title": "Order of Operations with Powers, Part 1: Powers Before Multiplying",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The order of operations",
+        "t": 23.582
+      },
+      {
+        "title": "Exponents first",
+        "t": 56.733
+      },
+      {
+        "title": "Adding first",
+        "t": 85.824
+      },
+      {
+        "title": "Brackets first",
+        "t": 116.963
+      },
+      {
+        "title": "Your turn",
+        "t": 144.762
+      },
+      {
+        "title": "Summary",
+        "t": 176.691
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-3:q",
+        "t": 151.813,
+        "prompt": "Evaluate $3 + 2^3 \\times 5$.",
+        "choices": [
+          "$55$",
+          "$625$",
+          "$43$",
+          "$33$"
+        ],
+        "answer": 2,
+        "working": "Exponent first: $2^3 = 8$. Multiply: $8 \\times 5 = 40$. Add: $3 + 40 = 43$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
