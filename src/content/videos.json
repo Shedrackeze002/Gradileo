@@ -16408,6 +16408,155 @@
       }
     ]
   },
+  "m7-8-1-e": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 5: Constructing a Parallel Segment",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Set square and ruler",
+        "t": 19.118
+      },
+      {
+        "title": "Why it works",
+        "t": 55.137
+      },
+      {
+        "title": "With two perpendiculars",
+        "t": 75.364
+      },
+      {
+        "title": "Check your work",
+        "t": 116.283
+      },
+      {
+        "title": "Your turn",
+        "t": 135.257
+      },
+      {
+        "title": "Summary",
+        "t": 175.552
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1-e:q",
+        "t": 151.536,
+        "prompt": "You construct two segments perpendicular to $AB$, each $4$ cm long, on the same side of $AB$, and join their ends. Why is the new segment parallel to $AB$?",
+        "choices": [
+          "It is $4$ cm long.",
+          "It is perpendicular to $AB$.",
+          "It crosses $AB$ after $4$ cm.",
+          "It is the same distance, $4$ cm, from $AB$ everywhere."
+        ],
+        "answer": 3,
+        "working": "Both ends of the new segment are $4$ cm from $AB$, measured at right angles, so it is the same distance from $AB$ everywhere: it is parallel to $AB$."
+      }
+    ]
+  },
+  "m7-8-2": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 1: Two Kinds of Bisectors",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The bench and the trees",
+        "t": 22.078
+      },
+      {
+        "title": "Bisect and midpoint",
+        "t": 50.146
+      },
+      {
+        "title": "Angle bisectors",
+        "t": 97.034
+      },
+      {
+        "title": "Watch out",
+        "t": 132.06
+      },
+      {
+        "title": "Your turn",
+        "t": 161.838
+      },
+      {
+        "title": "Summary",
+        "t": 200.714
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2:q",
+        "t": 174.468,
+        "prompt": "Ray $BD$ bisects $\\angle ABC$. $\\angle ABD = 35^\\circ$. How big is $\\angle ABC$?",
+        "choices": [
+          "$17.5^\\circ$",
+          "$70^\\circ$",
+          "$35^\\circ$",
+          "$145^\\circ$"
+        ],
+        "answer": 1,
+        "working": "A bisector makes two equal angles, so $\\angle DBC = 35^\\circ$ as well, and $\\angle ABC = 35^\\circ + 35^\\circ = 70^\\circ$."
+      }
+    ]
+  },
+  "m7-8-2-b": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 2: Midpoints on a Grid",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The whole move",
+        "t": 21.028
+      },
+      {
+        "title": "Half of the move",
+        "t": 46.574
+      },
+      {
+        "title": "Working backward",
+        "t": 79.844
+      },
+      {
+        "title": "Your turn",
+        "t": 119.405
+      },
+      {
+        "title": "Summary",
+        "t": 153.892
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-b:q",
+        "t": 128.912,
+        "prompt": "Find the midpoint of the segment from $P(1, 2)$ to $Q(9, 6)$.",
+        "choices": [
+          "$(4, 2)$",
+          "$(10, 8)$",
+          "$(5, 4)$",
+          "$(8, 4)$"
+        ],
+        "answer": 2,
+        "working": "The move from $P$ to $Q$ is $8$ right and $4$ up. Half of it is $4$ right and $2$ up. From $P$: $(1 + 4, 2 + 2) = (5, 4)$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
