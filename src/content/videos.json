@@ -21533,6 +21533,653 @@
       }
     ]
   },
+  "m8-5-1-c": {
+    "lessonId": "m8-5-1",
+    "title": "Multiplying Integers, Part 3: The Sign Rules",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pattern",
+        "t": 21.016
+      },
+      {
+        "title": "The sign rules",
+        "t": 81.854
+      },
+      {
+        "title": "Using the rules",
+        "t": 118.243
+      },
+      {
+        "title": "Watch out",
+        "t": 156.066
+      },
+      {
+        "title": "Your turn",
+        "t": 187.625
+      },
+      {
+        "title": "Summary",
+        "t": 217.844
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-5-1-c:q",
+        "t": 194.446,
+        "prompt": "Find $(-9) \\times (-4)$.",
+        "choices": [
+          "$36$",
+          "$-36$",
+          "$-13$",
+          "$13$"
+        ],
+        "answer": 0,
+        "working": "$9 \\times 4 = 36$. The signs are the same, so the product is positive: $(-9) \\times (-4) = 36$."
+      }
+    ]
+  },
+  "m8-5-1-d": {
+    "lessonId": "m8-5-1",
+    "title": "Multiplying Integers, Part 4: More Than Two Factors",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two at a time",
+        "t": 19.095
+      },
+      {
+        "title": "Count the negatives",
+        "t": 55.719
+      },
+      {
+        "title": "Brackets side by side",
+        "t": 106.07
+      },
+      {
+        "title": "Putting it together",
+        "t": 142.257
+      },
+      {
+        "title": "Your turn",
+        "t": 182.154
+      },
+      {
+        "title": "Summary",
+        "t": 215.293
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-5-1-d:q",
+        "t": 191.028,
+        "prompt": "Find $(-2)(-3)(-4)$.",
+        "choices": [
+          "$24$",
+          "$-9$",
+          "$-24$",
+          "$9$"
+        ],
+        "answer": 2,
+        "working": "$2 \\times 3 \\times 4 = 24$. There are $3$ negative factors, an odd number, so the product is negative: $-24$."
+      }
+    ]
+  },
+  "m8-5-2": {
+    "lessonId": "m8-5-2",
+    "title": "Dividing Integers, Part 1: Sharing and Grouping",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sharing",
+        "t": 23.156
+      },
+      {
+        "title": "Making groups",
+        "t": 65.01
+      },
+      {
+        "title": "Division undoes multiplication",
+        "t": 106.736
+      },
+      {
+        "title": "Your turn",
+        "t": 138.058
+      },
+      {
+        "title": "Summary",
+        "t": 172.877
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-5-2:q",
+        "t": 146.221,
+        "prompt": "Use counters to find $(-15) \\div 5$.",
+        "choices": [
+          "$3$",
+          "$-10$",
+          "$-20$",
+          "$-3$"
+        ],
+        "answer": 3,
+        "working": "Share $15$ negative counters equally into $5$ groups. Each group gets $3$ negative counters, so $(-15) \\div 5 = -3$. Check: $5 \\times (-3) = -15$."
+      }
+    ]
+  },
+  "m8-5-2-b": {
+    "lessonId": "m8-5-2",
+    "title": "Dividing Integers, Part 2: The Sign Rules for Division",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A related multiplication",
+        "t": 18.972
+      },
+      {
+        "title": "The sign rules",
+        "t": 46.868
+      },
+      {
+        "title": "Fraction bars",
+        "t": 88.154
+      },
+      {
+        "title": "A missing factor",
+        "t": 113.473
+      },
+      {
+        "title": "Watch out",
+        "t": 145.193
+      },
+      {
+        "title": "Your turn",
+        "t": 178.511
+      },
+      {
+        "title": "Summary",
+        "t": 208.799
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-5-2-b:q",
+        "t": 186.221,
+        "prompt": "Find $(-48) \\div (-6)$.",
+        "choices": [
+          "$8$",
+          "$-8$",
+          "$-54$",
+          "$-42$"
+        ],
+        "answer": 0,
+        "working": "$48 \\div 6 = 8$. The signs are the same, so the quotient is positive: $(-48) \\div (-6) = 8$. Check: $(-6) \\times 8 = -48$."
+      }
+    ]
+  },
+  "m8-5-2-c": {
+    "lessonId": "m8-5-2",
+    "title": "Dividing Integers, Part 3: Average Change and the Mean",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Average change",
+        "t": 16.897
+      },
+      {
+        "title": "Change per hour",
+        "t": 34.832
+      },
+      {
+        "title": "The mean",
+        "t": 91.474
+      },
+      {
+        "title": "Where the mean sits",
+        "t": 143.834
+      },
+      {
+        "title": "Your turn",
+        "t": 168.371
+      },
+      {
+        "title": "Summary",
+        "t": 207.911
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-5-2-c:q",
+        "t": 182.457,
+        "prompt": "The low temperatures for four days were $-6^\\circ\\text{C}$, $1^\\circ\\text{C}$, $-9^\\circ\\text{C}$ and $-2^\\circ\\text{C}$. What is the mean low temperature?",
+        "choices": [
+          "$4^\\circ\\text{C}$",
+          "$-4^\\circ\\text{C}$",
+          "$-16^\\circ\\text{C}$",
+          "$-5^\\circ\\text{C}$"
+        ],
+        "answer": 1,
+        "working": "Sum: $(-6) + 1 + (-9) + (-2) = -16$. Mean: $(-16) \\div 4 = -4$, so the mean is $-4^\\circ\\text{C}$."
+      }
+    ]
+  },
+  "m8-5-3": {
+    "lessonId": "m8-5-3",
+    "title": "Order of Operations with Integers, Part 1: Multiply Before You Add",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The order of operations",
+        "t": 21.51
+      },
+      {
+        "title": "Multiply first",
+        "t": 58.805
+      },
+      {
+        "title": "Watch out",
+        "t": 88.791
+      },
+      {
+        "title": "Subtracting a product",
+        "t": 115.621
+      },
+      {
+        "title": "Your turn",
+        "t": 146.822
+      },
+      {
+        "title": "Summary",
+        "t": 180.59
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-5-3:q",
+        "t": 154.123,
+        "prompt": "Evaluate $5 + (-3) \\times 4$.",
+        "choices": [
+          "$8$",
+          "$-17$",
+          "$-7$",
+          "$7$"
+        ],
+        "answer": 2,
+        "working": "Multiply first: $(-3) \\times 4 = -12$. Then add: $5 + (-12) = -7$."
+      }
+    ]
+  },
+  "m8-5-3-b": {
+    "lessonId": "m8-5-3",
+    "title": "Order of Operations with Integers, Part 2: Brackets and Left to Right",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Brackets first",
+        "t": 19.187
+      },
+      {
+        "title": "Left to right",
+        "t": 65.72
+      },
+      {
+        "title": "Watch out",
+        "t": 95.187
+      },
+      {
+        "title": "Fraction bars",
+        "t": 128.289
+      },
+      {
+        "title": "Your turn",
+        "t": 156.668
+      },
+      {
+        "title": "Summary",
+        "t": 193.745
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-5-3-b:q",
+        "t": 167.189,
+        "prompt": "Evaluate $(-20) \\div (-2 - 3) \\times 2$.",
+        "choices": [
+          "$8$",
+          "$2$",
+          "$-8$",
+          "$-2$"
+        ],
+        "answer": 0,
+        "working": "Brackets: $-2 - 3 = -5$. Then from left to right: $(-20) \\div (-5) = 4$, and $4 \\times 2 = 8$."
+      }
+    ]
+  },
+  "m8-5-3-c": {
+    "lessonId": "m8-5-3",
+    "title": "Order of Operations with Integers, Part 3: Solving Problems with Integers",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A contest score",
+        "t": 17.433
+      },
+      {
+        "title": "A changing temperature",
+        "t": 65.771
+      },
+      {
+        "title": "Your turn",
+        "t": 121.24
+      },
+      {
+        "title": "Summary",
+        "t": 164.423
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-5-3-c:q",
+        "t": 137.619,
+        "prompt": "In a quiz, each correct answer scores $+3$ and each wrong answer scores $-1$. Maya has $8$ correct answers and $5$ wrong answers. What is the score?",
+        "choices": [
+          "$29$",
+          "$-29$",
+          "$11$",
+          "$19$"
+        ],
+        "answer": 3,
+        "working": "Score $= 8 \\times 3 + 5 \\times (-1) = 24 + (-5) = 19$."
+      }
+    ]
+  },
+  "m8-6-1": {
+    "lessonId": "m8-6-1",
+    "title": "Linear Relations and Tables of Values, Part 1: Linear Relations",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A growing pattern",
+        "t": 21.822
+      },
+      {
+        "title": "A relation",
+        "t": 56.549
+      },
+      {
+        "title": "A table and a graph",
+        "t": 99.393
+      },
+      {
+        "title": "Linear relations",
+        "t": 126.422
+      },
+      {
+        "title": "Not linear",
+        "t": 148.007
+      },
+      {
+        "title": "Your turn",
+        "t": 179.406
+      },
+      {
+        "title": "Summary",
+        "t": 212.62
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-6-1:q",
+        "t": 190.541,
+        "prompt": "For $x = 0,\\ 1,\\ 2,\\ 3$, which list of $y$-values could come from a linear relation?",
+        "choices": [
+          "$1,\\ 2,\\ 4,\\ 8$",
+          "$0,\\ 1,\\ 4,\\ 9$",
+          "$2,\\ 5,\\ 8,\\ 11$",
+          "$5,\\ 4,\\ 2,\\ 1$"
+        ],
+        "answer": 2,
+        "working": "$2,\\ 5,\\ 8,\\ 11$ goes up by $3$ every time $x$ goes up by $1$. The other lists change by different amounts."
+      }
+    ]
+  },
+  "m8-6-1-b": {
+    "lessonId": "m8-6-1",
+    "title": "Linear Relations and Tables of Values, Part 2: Making a Table of Values",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tables of values",
+        "t": 14.649
+      },
+      {
+        "title": "y = 3x − 2",
+        "t": 40.367
+      },
+      {
+        "title": "Write the multiplication",
+        "t": 91.1
+      },
+      {
+        "title": "One more table",
+        "t": 118.105
+      },
+      {
+        "title": "Your turn",
+        "t": 151.048
+      },
+      {
+        "title": "Summary",
+        "t": 182.668
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-6-1-b:q",
+        "t": 161.587,
+        "prompt": "In a table of values for $y = 2x + 5$, what is $y$ when $x = 3$?",
+        "choices": [
+          "$10$",
+          "$11$",
+          "$28$",
+          "$16$"
+        ],
+        "answer": 1,
+        "working": "Substitute $x = 3$: $y = 2(3) + 5 = 6 + 5 = 11$."
+      }
+    ]
+  },
+  "m8-6-1-c": {
+    "lessonId": "m8-6-1",
+    "title": "Linear Relations and Tables of Values, Part 3: Negative Values of x",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Brackets and signs",
+        "t": 16.217
+      },
+      {
+        "title": "y = −2x − 1",
+        "t": 42.323
+      },
+      {
+        "title": "Watch out",
+        "t": 110.012
+      },
+      {
+        "title": "Your turn",
+        "t": 142.455
+      },
+      {
+        "title": "Summary",
+        "t": 177.559
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-6-1-c:q",
+        "t": 152.649,
+        "prompt": "For $y = -3x + 2$, what is $y$ when $x = -4$?",
+        "choices": [
+          "$-10$",
+          "$-14$",
+          "$10$",
+          "$14$"
+        ],
+        "answer": 3,
+        "working": "Substitute $x = -4$: $y = -3(-4) + 2 = 12 + 2 = 14$."
+      }
+    ]
+  },
+  "m8-6-1-d": {
+    "lessonId": "m8-6-1",
+    "title": "Linear Relations and Tables of Values, Part 4: Describing the Pattern",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Going up",
+        "t": 16.053
+      },
+      {
+        "title": "Going down",
+        "t": 54.864
+      },
+      {
+        "title": "Steps of two",
+        "t": 96.763
+      },
+      {
+        "title": "Your turn",
+        "t": 129.939
+      },
+      {
+        "title": "Summary",
+        "t": 169.081
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-6-1-d:q",
+        "t": 140.829,
+        "prompt": "For $y = -4x + 1$, how does $y$ change each time $x$ goes up by $1$?",
+        "choices": [
+          "It goes down by $4$.",
+          "It goes up by $4$.",
+          "It goes up by $1$.",
+          "It goes down by $1$."
+        ],
+        "answer": 0,
+        "working": "The number that multiplies $x$ is $-4$, so $y$ goes down by $4$. Check: $x = 0$ gives $1$ and $x = 1$ gives $-3$."
+      }
+    ]
+  },
+  "m8-6-1-e": {
+    "lessonId": "m8-6-1",
+    "title": "Linear Relations and Tables of Values, Part 5: Linear Relations in Real Life",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A burning candle",
+        "t": 19.607
+      },
+      {
+        "title": "Describing the candle",
+        "t": 56.291
+      },
+      {
+        "title": "A warm wind",
+        "t": 89.57
+      },
+      {
+        "title": "Your turn",
+        "t": 144.002
+      },
+      {
+        "title": "Summary",
+        "t": 181.165
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-6-1-e:q",
+        "t": 158.91,
+        "prompt": "A tank holds $50$ L of water and drains $4$ L every minute, so $V = 50 - 4t$. How much water is left after $6$ minutes?",
+        "choices": [
+          "$24$ L",
+          "$44$ L",
+          "$26$ L",
+          "$276$ L"
+        ],
+        "answer": 2,
+        "working": "Substitute $t = 6$: $V = 50 - 4(6) = 50 - 24 = 26$, so $26$ L is left."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
