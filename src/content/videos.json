@@ -13654,6 +13654,112 @@
       }
     ]
   },
+  "m7-4-1-d": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 4: Adding with Symbols",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Size and sign",
+        "t": 17.877
+      },
+      {
+        "title": "Same signs",
+        "t": 39.856
+      },
+      {
+        "title": "Different signs",
+        "t": 80.695
+      },
+      {
+        "title": "More positives",
+        "t": 124.864
+      },
+      {
+        "title": "Watch out",
+        "t": 150.167
+      },
+      {
+        "title": "Your turn",
+        "t": 176.368
+      },
+      {
+        "title": "Summary",
+        "t": 212.667
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1-d:q",
+        "t": 183.554,
+        "prompt": "Find $(+13) + (-20)$.",
+        "choices": [
+          "$+33$",
+          "$+7$",
+          "$-7$",
+          "$-33$"
+        ],
+        "answer": 2,
+        "working": "Different signs: subtract the sizes, $20 - 13 = 7$. The bigger size is $20$, which is negative, so the answer is $-7$."
+      }
+    ]
+  },
+  "m7-4-1-e": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 5: Adding Several Integers",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Any order",
+        "t": 21.667
+      },
+      {
+        "title": "Four integers",
+        "t": 51.007
+      },
+      {
+        "title": "Look for opposites",
+        "t": 107.786
+      },
+      {
+        "title": "A day of temperatures",
+        "t": 134.416
+      },
+      {
+        "title": "Your turn",
+        "t": 183.88
+      },
+      {
+        "title": "Summary",
+        "t": 219.071
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1-e:q",
+        "t": 193.458,
+        "prompt": "Find $(-8) + (+5) + (+8) + (-3)$.",
+        "choices": [
+          "$-2$",
+          "$+2$",
+          "$+24$",
+          "$-8$"
+        ],
+        "answer": 1,
+        "working": "$(-8)$ and $(+8)$ are opposites, so they add to $0$. That leaves $(+5) + (-3) = +2$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
