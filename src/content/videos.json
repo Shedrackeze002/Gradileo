@@ -15196,6 +15196,426 @@
       }
     ]
   },
+  "m7-6-4": {
+    "lessonId": "m7-6-4",
+    "title": "Solving Two-Step Equations, Part 1: Undo in Reverse Order",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two things happen to x",
+        "t": 25.122
+      },
+      {
+        "title": "Reverse order",
+        "t": 47.382
+      },
+      {
+        "title": "On the balance",
+        "t": 86.471
+      },
+      {
+        "title": "Check",
+        "t": 114.149
+      },
+      {
+        "title": "Watch out",
+        "t": 133.038
+      },
+      {
+        "title": "Your turn",
+        "t": 163.127
+      },
+      {
+        "title": "Summary",
+        "t": 200.014
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-4:q",
+        "t": 170.2,
+        "prompt": "Solve $5x + 4 = 39$.",
+        "choices": [
+          "$x = 7$",
+          "$x = 8.6$",
+          "$x = 35$",
+          "$x = 43$"
+        ],
+        "answer": 0,
+        "working": "Subtract $4$ from both sides: $5x = 35$. Divide both sides by $5$: $x = 7$. Check: $5(7) + 4 = 39$."
+      }
+    ]
+  },
+  "m7-6-4-b": {
+    "lessonId": "m7-6-4",
+    "title": "Solving Two-Step Equations, Part 2: The Variable on the Right, and Number Puzzles",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The variable on the right",
+        "t": 17.996
+      },
+      {
+        "title": "Think of a number",
+        "t": 73.098
+      },
+      {
+        "title": "Undo the puzzle",
+        "t": 105.606
+      },
+      {
+        "title": "Your turn",
+        "t": 149.361
+      },
+      {
+        "title": "Summary",
+        "t": 187.85
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-4-b:q",
+        "t": 161.362,
+        "prompt": "Priya thinks of a number, multiplies it by $3$, then adds $7$. The result is $31$. What was the number?",
+        "choices": [
+          "$24$",
+          "$38$",
+          "$14$",
+          "$8$"
+        ],
+        "answer": 3,
+        "working": "Let $n$ be the number: $3n + 7 = 31$. Subtract $7$: $3n = 24$. Divide by $3$: $n = 8$. Check: $3 \\times 8 + 7 = 31$."
+      }
+    ]
+  },
+  "m7-6-4-c": {
+    "lessonId": "m7-6-4",
+    "title": "Solving Two-Step Equations, Part 3: Writing Equations for Problems",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three amounts",
+        "t": 22.294
+      },
+      {
+        "title": "A phone bill",
+        "t": 55.228
+      },
+      {
+        "title": "Watch for swapped numbers",
+        "t": 104.805
+      },
+      {
+        "title": "Classes at a gym",
+        "t": 138.324
+      },
+      {
+        "title": "Your turn",
+        "t": 190.611
+      },
+      {
+        "title": "Summary",
+        "t": 234.152
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-4-c:q",
+        "t": 207.62,
+        "prompt": "A bike rental costs \\$5 for a helmet plus \\$4 for each hour. The total was \\$29. Which equation fits the story, and how many hours was the bike rented?",
+        "choices": [
+          "$5h + 4 = 29$, so $5$ hours",
+          "$4h + 5 = 29$, so $6$ hours",
+          "$4h + 5 = 29$, so $24$ hours",
+          "$4h - 5 = 29$, so $8.5$ hours"
+        ],
+        "answer": 1,
+        "working": "\\$4 is for each hour (the coefficient) and \\$5 is paid once (the constant term): $4h + 5 = 29$. Subtract $5$: $4h = 24$. Divide by $4$: $h = 6$ hours."
+      }
+    ]
+  },
+  "m7-6-4-d": {
+    "lessonId": "m7-6-4",
+    "title": "Solving Two-Step Equations, Part 4: Problems That Need a Plan",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fencing a garden",
+        "t": 19.028
+      },
+      {
+        "title": "Solve and check",
+        "t": 60.704
+      },
+      {
+        "title": "Three numbers in a row",
+        "t": 100.138
+      },
+      {
+        "title": "Make a plan",
+        "t": 152.872
+      },
+      {
+        "title": "Your turn",
+        "t": 177.235
+      },
+      {
+        "title": "Summary",
+        "t": 212.23
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-4-d:q",
+        "t": 187.801,
+        "prompt": "A rectangle has a perimeter of $30$ cm. It is $6$ cm wide. How long is it?",
+        "choices": [
+          "$9$ cm",
+          "$18$ cm",
+          "$12$ cm",
+          "$24$ cm"
+        ],
+        "answer": 0,
+        "working": "The perimeter is $2l + 2w$: $2l + 12 = 30$. Subtract $12$: $2l = 18$. Divide by $2$: $l = 9$ cm. Check: $2(9) + 2(6) = 30$."
+      }
+    ]
+  },
+  "m7-7-1": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 1: Radius and Diameter",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The centre",
+        "t": 19.086
+      },
+      {
+        "title": "Radius and diameter",
+        "t": 46.466
+      },
+      {
+        "title": "Two radii make a diameter",
+        "t": 89.868
+      },
+      {
+        "title": "From radius to diameter",
+        "t": 118.573
+      },
+      {
+        "title": "From diameter to radius",
+        "t": 137.961
+      },
+      {
+        "title": "Watch out",
+        "t": 161.818
+      },
+      {
+        "title": "Your turn",
+        "t": 198.452
+      },
+      {
+        "title": "Summary",
+        "t": 230.238
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1:q",
+        "t": 207.185,
+        "prompt": "A pizza has a diameter of $30$ cm. What is its radius?",
+        "choices": [
+          "$60$ cm",
+          "$30$ cm",
+          "$7.5$ cm",
+          "$15$ cm"
+        ],
+        "answer": 3,
+        "working": "The radius is half of the diameter: $r = 30 \\div 2 = 15$ cm."
+      }
+    ]
+  },
+  "m7-7-1-b": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 2: Central Angles",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central angles",
+        "t": 18.537
+      },
+      {
+        "title": "A full turn",
+        "t": 52.042
+      },
+      {
+        "title": "A missing central angle",
+        "t": 89.916
+      },
+      {
+        "title": "Equal slices",
+        "t": 120.113
+      },
+      {
+        "title": "Your turn",
+        "t": 141.695
+      },
+      {
+        "title": "Summary",
+        "t": 181.717
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1-b:q",
+        "t": 153.583,
+        "prompt": "Three central angles of a circle are $90^\\circ$, $125^\\circ$ and $x$. Find $x$.",
+        "choices": [
+          "$35^\\circ$",
+          "$215^\\circ$",
+          "$145^\\circ$",
+          "$235^\\circ$"
+        ],
+        "answer": 2,
+        "working": "The central angles add to $360^\\circ$: $90^\\circ + 125^\\circ = 215^\\circ$, so $x = 360^\\circ - 215^\\circ = 145^\\circ$."
+      }
+    ]
+  },
+  "m7-7-1-c": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 3: Circumference and Pi",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Circumference",
+        "t": 20.688
+      },
+      {
+        "title": "A string around a tin",
+        "t": 46.572
+      },
+      {
+        "title": "Every circle",
+        "t": 83.188
+      },
+      {
+        "title": "Pi",
+        "t": 126.809
+      },
+      {
+        "title": "The formulas",
+        "t": 154.777
+      },
+      {
+        "title": "Your turn",
+        "t": 179.472
+      },
+      {
+        "title": "Summary",
+        "t": 215.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1-c:q",
+        "t": 191.111,
+        "prompt": "A circle has a diameter of $10$ cm. Use $3.14$ for $\\pi$. What is its circumference?",
+        "choices": [
+          "$10$ cm",
+          "$31.4$ cm",
+          "$20$ cm",
+          "$314$ cm"
+        ],
+        "answer": 1,
+        "working": "$C = \\pi d = 3.14 \\times 10 = 31.4$ cm: a little more than three diameters."
+      }
+    ]
+  },
+  "m7-7-1-d": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 4: Finding the Circumference",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Using the diameter",
+        "t": 18.991
+      },
+      {
+        "title": "Using the radius",
+        "t": 63.116
+      },
+      {
+        "title": "Watch out",
+        "t": 102.582
+      },
+      {
+        "title": "Is it reasonable?",
+        "t": 137.384
+      },
+      {
+        "title": "Your turn",
+        "t": 170.445
+      },
+      {
+        "title": "Summary",
+        "t": 208.765
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1-d:q",
+        "t": 182.53,
+        "prompt": "A bicycle wheel has a radius of $30$ cm. Use $3.14$ for $\\pi$. What is its circumference?",
+        "choices": [
+          "$94.2$ cm",
+          "$376.8$ cm",
+          "$33.14$ cm",
+          "$188.4$ cm"
+        ],
+        "answer": 3,
+        "working": "$C = 2\\pi r = 2 \\times 3.14 \\times 30 = 188.4$ cm. Check: the diameter is $60$ cm, and $3 \\times 60 = 180$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
