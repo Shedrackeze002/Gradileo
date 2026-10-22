@@ -18566,6 +18566,112 @@
       }
     ]
   },
+  "m8-1-1-b": {
+    "lessonId": "m8-1-1",
+    "title": "Perfect Squares and Square Roots, Part 2: Square Roots",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Opposite operations",
+        "t": 16.771
+      },
+      {
+        "title": "Square roots you know",
+        "t": 69.55
+      },
+      {
+        "title": "Between 10 and 20",
+        "t": 103.841
+      },
+      {
+        "title": "Try 14 and 16",
+        "t": 145.858
+      },
+      {
+        "title": "A square root is not half",
+        "t": 177.24
+      },
+      {
+        "title": "Your turn",
+        "t": 212.834
+      },
+      {
+        "title": "Summary",
+        "t": 251.07
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-1-b:q",
+        "t": 219.851,
+        "prompt": "Find $\\sqrt{256}$.",
+        "choices": [
+          "$128$",
+          "$14$",
+          "$26$",
+          "$16$"
+        ],
+        "answer": 3,
+        "working": "$10^2 = 100$ and $20^2 = 400$, so $\\sqrt{256}$ is between $10$ and $20$. $256$ ends in $6$, so try $14$ or $16$: $14 \\times 14 = 196$ and $16 \\times 16 = 256$."
+      }
+    ]
+  },
+  "m8-1-1-c": {
+    "lessonId": "m8-1-1",
+    "title": "Perfect Squares and Square Roots, Part 3: Area and Side Length",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Area of a square",
+        "t": 19.457
+      },
+      {
+        "title": "From side to area",
+        "t": 52.913
+      },
+      {
+        "title": "From area to side",
+        "t": 90.178
+      },
+      {
+        "title": "Check your units",
+        "t": 129.739
+      },
+      {
+        "title": "Your turn",
+        "t": 157.564
+      },
+      {
+        "title": "Summary",
+        "t": 194.67
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-1-c:q",
+        "t": 168.543,
+        "prompt": "A square play area has an area of $81\\ \\text{m}^2$. How much fencing goes all the way around it?",
+        "choices": [
+          "$36\\ \\text{m}$",
+          "$9\\ \\text{m}$",
+          "$324\\ \\text{m}$",
+          "$40.5\\ \\text{m}$"
+        ],
+        "answer": 0,
+        "working": "Each side is $\\sqrt{81} = 9\\ \\text{m}$, because $9 \\times 9 = 81$. The fence goes along four sides: $4 \\times 9 = 36\\ \\text{m}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
