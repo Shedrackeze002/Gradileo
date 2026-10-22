@@ -26880,25 +26880,25 @@
       },
       {
         "title": "A day of temperatures",
-        "t": 59.308
+        "t": 58.825
       },
       {
         "title": "How much warmer?",
-        "t": 127.581
+        "t": 127.764
       },
       {
         "title": "Your turn",
-        "t": 178.069
+        "t": 178.252
       },
       {
         "title": "Summary",
-        "t": 227.249
+        "t": 227.432
       }
     ],
     "cues": [
       {
         "id": "m9-3-2-e:q",
-        "t": 197.397,
+        "t": 197.58,
         "prompt": "A bank account has a balance of \\$23.50. A payment of \\$41.75 comes out, then a deposit of \\$12.40 goes in. What is the new balance? (A negative balance means the account owes money.)",
         "choices": [
           "\\$77.65",
@@ -27520,6 +27520,760 @@
         ],
         "answer": 0,
         "working": "The fee, $6$, is the constant, and the rate, $2.5$ dollars an hour, multiplies $h$."
+      }
+    ]
+  },
+  "m9-4-1-d": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 4: Using the Equation",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Far beyond the table",
+        "t": 20.282
+      },
+      {
+        "title": "Working backwards",
+        "t": 51.609
+      },
+      {
+        "title": "Solving the equation",
+        "t": 100.472
+      },
+      {
+        "title": "Verify",
+        "t": 130.696
+      },
+      {
+        "title": "Not every number works",
+        "t": 150.949
+      },
+      {
+        "title": "Your turn",
+        "t": 179.592
+      },
+      {
+        "title": "Summary",
+        "t": 221.052
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1-d:q",
+        "t": 193.38,
+        "prompt": "The equation $t = 4n + 2$ gives the number of tiles, $t$, in Figure $n$ of a pattern. Which figure has $86$ tiles?",
+        "choices": [
+          "Figure $346$",
+          "Figure $22$",
+          "Figure $84$",
+          "Figure $21$"
+        ],
+        "answer": 3,
+        "working": "$86 = 4n + 2$. Subtract $2$: $84 = 4n$. Divide by $4$: $n = 21$. Check: $4(21) + 2 = 86$."
+      }
+    ]
+  },
+  "m9-4-1-e": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 5: When x Goes Up by 2",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table that skips",
+        "t": 16.422
+      },
+      {
+        "title": "The rate for each 1",
+        "t": 39.789
+      },
+      {
+        "title": "The constant",
+        "t": 78.065
+      },
+      {
+        "title": "Verify",
+        "t": 106.374
+      },
+      {
+        "title": "Watch out",
+        "t": 134.924
+      },
+      {
+        "title": "Your turn",
+        "t": 161.463
+      },
+      {
+        "title": "Summary",
+        "t": 203.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1-e:q",
+        "t": 174.674,
+        "prompt": "A table shows $x = 0,\\ 3,\\ 6,\\ 9$ and $y = 4,\\ 6,\\ 8,\\ 10$. Which equation describes it?",
+        "choices": [
+          "$y = 2x + 4$",
+          "$y = \\tfrac{3}{2}x + 4$",
+          "$y = \\tfrac{2}{3}x + 4$",
+          "$y = \\tfrac{2}{3}x$"
+        ],
+        "answer": 2,
+        "working": "When $x$ goes up by $3$, $y$ goes up by $2$, so the rate is $2 \\div 3 = \\tfrac{2}{3}$. When $x = 0$, $y = 4$. Check: $\\tfrac{2}{3}(9) + 4 = 10$."
+      }
+    ]
+  },
+  "m9-4-2": {
+    "lessonId": "m9-4-2",
+    "title": "Graphing Linear Relations, Part 1: Graphing from an Equation",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing x-values",
+        "t": 16.706
+      },
+      {
+        "title": "The table of values",
+        "t": 53.372
+      },
+      {
+        "title": "Plot and draw",
+        "t": 81.91
+      },
+      {
+        "title": "Reading the graph",
+        "t": 108.212
+      },
+      {
+        "title": "Your turn",
+        "t": 137.333
+      },
+      {
+        "title": "Summary",
+        "t": 168.874
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-2:q",
+        "t": 145.848,
+        "prompt": "Which point is on the graph of $y = \\dfrac{3}{4}x - 2$?",
+        "choices": [
+          "$(4,\\ 3)$",
+          "$(8,\\ 4)$",
+          "$(1,\\ 4)$",
+          "$(0,\\ 2)$"
+        ],
+        "answer": 1,
+        "working": "When $x = 8$: $y = \\tfrac{3}{4}(8) - 2 = 6 - 2 = 4$, so $(8,\\ 4)$ is on the graph."
+      }
+    ]
+  },
+  "m9-4-2-b": {
+    "lessonId": "m9-4-2",
+    "title": "Graphing Linear Relations, Part 2: Discrete or Continuous?",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Discrete data",
+        "t": 19.285
+      },
+      {
+        "title": "Continuous data",
+        "t": 62.646
+      },
+      {
+        "title": "Watch out",
+        "t": 105.923
+      },
+      {
+        "title": "Counts and measurements",
+        "t": 134.437
+      },
+      {
+        "title": "Your turn",
+        "t": 156.168
+      },
+      {
+        "title": "Summary",
+        "t": 188.712
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-2-b:q",
+        "t": 163.559,
+        "prompt": "Which of these relations should be graphed as a solid line?",
+        "choices": [
+          "The cost of $n$ concert tickets",
+          "The number of students on $n$ buses",
+          "The number of wheels on $n$ bikes",
+          "The height of water in a tank after $t$ minutes"
+        ],
+        "answer": 3,
+        "working": "Time can take any value, such as $2.5$ minutes, so the height of the water is continuous. Tickets, buses and bikes are counted, so those relations are discrete."
+      }
+    ]
+  },
+  "m9-4-2-c": {
+    "lessonId": "m9-4-2",
+    "title": "Graphing Linear Relations, Part 3: Interpolating",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The data",
+        "t": 17.251
+      },
+      {
+        "title": "Interpolate",
+        "t": 44.038
+      },
+      {
+        "title": "Check with the equation",
+        "t": 74.116
+      },
+      {
+        "title": "Between grid lines",
+        "t": 108.525
+      },
+      {
+        "title": "Your turn",
+        "t": 139.113
+      },
+      {
+        "title": "Summary",
+        "t": 185.353
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-2-c:q",
+        "t": 155.125,
+        "prompt": "A plant grows at a steady rate. It is $2$ cm tall on day $0$, $5$ cm on day $6$ and $8$ cm on day $12$. Interpolate to estimate its height on day $4$.",
+        "choices": [
+          "$4$ cm",
+          "$5$ cm",
+          "$6$ cm",
+          "$2$ cm"
+        ],
+        "answer": 0,
+        "working": "The plant grows $3$ cm in $6$ days, or $0.5$ cm a day, so $h = 0.5d + 2$. On day $4$: $h = 0.5(4) + 2 = 4$ cm."
+      }
+    ]
+  },
+  "m9-4-2-d": {
+    "lessonId": "m9-4-2",
+    "title": "Graphing Linear Relations, Part 4: Extrapolating",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A burning candle",
+        "t": 18.265
+      },
+      {
+        "title": "Extrapolate",
+        "t": 43.555
+      },
+      {
+        "title": "Use the equation",
+        "t": 71.716
+      },
+      {
+        "title": "Be careful",
+        "t": 124.306
+      },
+      {
+        "title": "Your turn",
+        "t": 159.591
+      },
+      {
+        "title": "Summary",
+        "t": 203.227
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-2-d:q",
+        "t": 176.41,
+        "prompt": "A tank holds $36$ L of water and drains at a steady rate. After $2$ minutes, $30$ L are left; after $4$ minutes, $24$ L are left. Extrapolate: when will the tank be empty?",
+        "choices": [
+          "After $6$ minutes",
+          "After $8$ minutes",
+          "After $12$ minutes",
+          "After $18$ minutes"
+        ],
+        "answer": 2,
+        "working": "The water drops $6$ L every $2$ minutes, or $3$ L a minute, so $V = 36 - 3t$. It is empty when $36 - 3t = 0$: $t = 36 \\div 3 = 12$ minutes."
+      }
+    ]
+  },
+  "m9-5-1": {
+    "lessonId": "m9-5-1",
+    "title": "Introduction to Polynomials, Part 1: Terms, Coefficients and Constants",
+    "duration": 353,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Terms",
+        "t": 25.641
+      },
+      {
+        "title": "Coefficients and constants",
+        "t": 65.587
+      },
+      {
+        "title": "Name the parts",
+        "t": 105.128
+      },
+      {
+        "title": "Watch out",
+        "t": 148.593
+      },
+      {
+        "title": "Algebra tiles",
+        "t": 184.223
+      },
+      {
+        "title": "Tiles for a polynomial",
+        "t": 229.072
+      },
+      {
+        "title": "Your turn",
+        "t": 268.393
+      },
+      {
+        "title": "Summary",
+        "t": 308.836
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-1:q",
+        "t": 282.004,
+        "prompt": "For the polynomial $3x^2 - 7x - 2$, which pair gives the coefficient of $x$ and the constant term, in that order?",
+        "choices": [
+          "$7$ and $2$",
+          "$-7$ and $-2$",
+          "$3$ and $-2$",
+          "$-7$ and $2$"
+        ],
+        "answer": 1,
+        "working": "The terms are $3x^2$, $-7x$ and $-2$. Each sign belongs to its term, so the coefficient of $x$ is $-7$ and the constant term is $-2$."
+      }
+    ]
+  },
+  "m9-5-1-b": {
+    "lessonId": "m9-5-1",
+    "title": "Introduction to Polynomials, Part 2: Polynomials and Their Degree",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polynomials",
+        "t": 19.462
+      },
+      {
+        "title": "Degree of a term",
+        "t": 60.442
+      },
+      {
+        "title": "Degree and tiles",
+        "t": 91.172
+      },
+      {
+        "title": "Degree of a polynomial",
+        "t": 114.523
+      },
+      {
+        "title": "Two variables",
+        "t": 152.23
+      },
+      {
+        "title": "Watch out",
+        "t": 185.947
+      },
+      {
+        "title": "Your turn",
+        "t": 221.36
+      },
+      {
+        "title": "Summary",
+        "t": 258.749
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-1-b:q",
+        "t": 230.771,
+        "prompt": "What is the degree of the polynomial $5xy + 3x - 8$?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$5$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "$5xy = 5x^1y^1$ has degree $1 + 1 = 2$, $3x$ has degree $1$ and $-8$ has degree $0$. The highest is $2$."
+      }
+    ]
+  },
+  "m9-5-1-c": {
+    "lessonId": "m9-5-1",
+    "title": "Introduction to Polynomials, Part 3: Monomials, Binomials and Trinomials",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting terms",
+        "t": 18.831
+      },
+      {
+        "title": "Terms as tiles",
+        "t": 53.565
+      },
+      {
+        "title": "Descending order",
+        "t": 84.6
+      },
+      {
+        "title": "Classify and reorder",
+        "t": 118.869
+      },
+      {
+        "title": "Count terms, not signs",
+        "t": 160.136
+      },
+      {
+        "title": "Your turn",
+        "t": 193.322
+      },
+      {
+        "title": "Summary",
+        "t": 228.819
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-1-c:q",
+        "t": 203.008,
+        "prompt": "Write $5 + 3x - x^2$ in descending order and name its type.",
+        "choices": [
+          "$-x^2 + 3x + 5$, a trinomial",
+          "$x^2 + 3x + 5$, a trinomial",
+          "$-x^2 + 3x + 5$, a binomial",
+          "$5 + 3x - x^2$, a monomial"
+        ],
+        "answer": 0,
+        "working": "The terms are $5$, $3x$ and $-x^2$. The $x^2$-term goes first and keeps its sign: $-x^2 + 3x + 5$. It has three terms, so it is a trinomial."
+      }
+    ]
+  },
+  "m9-5-2": {
+    "lessonId": "m9-5-2",
+    "title": "Equivalent Expressions, Part 1: Like Terms",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equivalent expressions",
+        "t": 18.27
+      },
+      {
+        "title": "Like terms",
+        "t": 60.58
+      },
+      {
+        "title": "Like tiles",
+        "t": 103.172
+      },
+      {
+        "title": "Find the like terms",
+        "t": 128.241
+      },
+      {
+        "title": "Watch out",
+        "t": 171.509
+      },
+      {
+        "title": "Your turn",
+        "t": 218.878
+      },
+      {
+        "title": "Summary",
+        "t": 250.62
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-2:q",
+        "t": 224.127,
+        "prompt": "Which pair are like terms?",
+        "choices": [
+          "$5x$ and $5x^2$",
+          "$3xy$ and $3x$",
+          "$-2y^2$ and $7y^2$",
+          "$4$ and $4x$"
+        ],
+        "answer": 2,
+        "working": "Both terms have $y^2$: the same variable to the same exponent. Only the coefficients, $-2$ and $7$, are different."
+      }
+    ]
+  },
+  "m9-5-2-b": {
+    "lessonId": "m9-5-2",
+    "title": "Equivalent Expressions, Part 2: Zero Pairs",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Zero pairs",
+        "t": 19.918
+      },
+      {
+        "title": "Tiles for the polynomial",
+        "t": 54.733
+      },
+      {
+        "title": "Remove the zero pairs",
+        "t": 89.945
+      },
+      {
+        "title": "Check",
+        "t": 132.965
+      },
+      {
+        "title": "Your turn",
+        "t": 165.555
+      },
+      {
+        "title": "Summary",
+        "t": 204.498
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-2-b:q",
+        "t": 176.443,
+        "prompt": "Simplify $5x - 3 - 2x + 1$. Use algebra tiles if you like.",
+        "choices": [
+          "$3x - 2$",
+          "$7x - 4$",
+          "$3x + 2$",
+          "$3x - 4$"
+        ],
+        "answer": 0,
+        "working": "Five $x$-tiles and two negative $x$-tiles make $2$ zero pairs, leaving $3x$. Three negative unit tiles and one unit tile make $1$ zero pair, leaving $-2$."
+      }
+    ]
+  },
+  "m9-5-2-c": {
+    "lessonId": "m9-5-2",
+    "title": "Equivalent Expressions, Part 3: Collecting Like Terms",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 20.509
+      },
+      {
+        "title": "Simplify a polynomial",
+        "t": 56.062
+      },
+      {
+        "title": "Check by substituting",
+        "t": 108.751
+      },
+      {
+        "title": "Two variables",
+        "t": 148.414
+      },
+      {
+        "title": "Watch out",
+        "t": 198.963
+      },
+      {
+        "title": "Your turn",
+        "t": 235.84
+      },
+      {
+        "title": "Summary",
+        "t": 273.21
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-2-c:q",
+        "t": 247.254,
+        "prompt": "Simplify $3x^2 + 4x - 6 - 5x^2 - x + 2$.",
+        "choices": [
+          "$-2x^2 + 5x - 4$",
+          "$8x^2 + 3x - 4$",
+          "$-2x^2 + 3x - 8$",
+          "$-2x^2 + 3x - 4$"
+        ],
+        "answer": 3,
+        "working": "$(3x^2 - 5x^2) + (4x - x) + (-6 + 2) = -2x^2 + 3x - 4$. Check with $x = 1$: $3 + 4 - 6 - 5 - 1 + 2 = -3$ and $-2 + 3 - 4 = -3$."
+      }
+    ]
+  },
+  "m9-5-3": {
+    "lessonId": "m9-5-3",
+    "title": "Adding and Subtracting Polynomials, Part 1: Adding Polynomials",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "With algebra tiles",
+        "t": 27.013
+      },
+      {
+        "title": "Remove the zero pairs",
+        "t": 66.419
+      },
+      {
+        "title": "With symbols",
+        "t": 103.15
+      },
+      {
+        "title": "In columns",
+        "t": 142.815
+      },
+      {
+        "title": "Your turn",
+        "t": 186.972
+      },
+      {
+        "title": "Summary",
+        "t": 226.498
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-3:q",
+        "t": 198.371,
+        "prompt": "Simplify $(x^2 + 4x - 3) + (2x^2 - x - 5)$.",
+        "choices": [
+          "$3x^2 + 5x - 8$",
+          "$3x^2 + 3x - 8$",
+          "$3x^2 + 3x + 2$",
+          "$2x^2 + 3x - 8$"
+        ],
+        "answer": 1,
+        "working": "$(x^2 + 2x^2) + (4x - x) + (-3 - 5) = 3x^2 + 3x - 8$. Check with $x = 1$: $2 + (-4) = -2$ and $3 + 3 - 8 = -2$."
+      }
+    ]
+  },
+  "m9-5-3-b": {
+    "lessonId": "m9-5-3",
+    "title": "Adding and Subtracting Polynomials, Part 2: Subtracting Polynomials",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Add the opposite",
+        "t": 14.9
+      },
+      {
+        "title": "Flip every tile",
+        "t": 49.275
+      },
+      {
+        "title": "Subtract two trinomials",
+        "t": 85.729
+      },
+      {
+        "title": "Watch out",
+        "t": 129.865
+      },
+      {
+        "title": "Check by substituting",
+        "t": 162.658
+      },
+      {
+        "title": "Your turn",
+        "t": 201.858
+      },
+      {
+        "title": "Summary",
+        "t": 240.383
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-3-b:q",
+        "t": 212.946,
+        "prompt": "Simplify $(4x^2 + x - 2) - (x^2 - 3x + 5)$.",
+        "choices": [
+          "$3x^2 - 2x + 3$",
+          "$5x^2 - 2x + 3$",
+          "$3x^2 + 4x - 7$",
+          "$3x^2 + 4x + 3$"
+        ],
+        "answer": 2,
+        "working": "Add the opposite: $4x^2 + x - 2 - x^2 + 3x - 5 = 3x^2 + 4x - 7$. Check with $x = 1$: $3 - 3 = 0$ and $3 + 4 - 7 = 0$."
       }
     ]
   },
