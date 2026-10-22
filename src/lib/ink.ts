@@ -1,35 +1,30 @@
 /**
- * Vector ink for the whiteboard and for drawing on slides.
- *
- * Strokes are stored in board units (a full board is BOARD_W × BOARD_H), so a saved board looks
- * the same on a projector, a laptop and an iPad. Each stroke keeps its points as a flat list of
- * x, y, pressure triples; pressure is 0 to 1 and is 0.5 for a mouse or a finger.
+ * Drawing vector ink for the whiteboard, drawing on slides and canvas answers. The stroke data
+ * (board units, pages, checking saved pages, canvas answers) is in the shared engine, so the
+ * server can check canvas answers with the same code.
  */
+import type { BoardBackground, InkColor, InkTool, Stroke } from '@engine/ink.ts';
 
-export type InkTool = 'pen' | 'highlighter';
-export type InkColor = 'ink' | 'blue' | 'red' | 'green' | 'orange' | 'purple';
-export type BoardBackground = 'plain' | 'grid' | 'lined' | 'dots';
+export {
+  BACKGROUNDS,
+  BOARD_H,
+  BOARD_W,
+  CANVAS_MAX_LENGTH,
+  CANVAS_MAX_PAGES,
+  CANVAS_POINT_GAP,
+  decodeCanvas,
+  encodeCanvas,
+  hasInk,
+  INK_COLORS,
+  parsePages,
+  type BoardBackground,
+  type BoardPage,
+  type InkColor,
+  type InkTool,
+  type Stroke,
+} from '@engine/ink.ts';
 
-export interface Stroke {
-  tool: InkTool;
-  color: InkColor;
-  /** Base width in board units (the width at medium pressure). */
-  size: number;
-  /** x, y, pressure triples in board units. */
-  points: number[];
-}
-
-export interface BoardPage {
-  background: BoardBackground;
-  strokes: Stroke[];
-}
-
-export const BOARD_W = 1600;
-export const BOARD_H = 900;
-export const INK_COLORS: InkColor[] = ['ink', 'blue', 'red', 'green', 'orange', 'purple'];
 export const INK_SIZES = [3, 6, 12];
-export const BACKGROUNDS: BoardBackground[] = ['plain', 'grid', 'lined', 'dots'];
-const TOOLS: InkTool[] = ['pen', 'highlighter'];
 
 /** Stroke colours for a light or a dark surface. `ink` follows the page text colour. */
 export function inkPalette(dark: boolean): Record<InkColor, string> {
@@ -203,37 +198,3 @@ export function inkRedo(doc: InkDoc): InkDoc {
   if (!doc.future.length) return doc;
   return { strokes: doc.future[0], past: [...doc.past, doc.strokes], future: doc.future.slice(1) };
 }
-
-/**
- * Reads saved pages defensively: boards come from storage and the database, so anything that is
- * not a well-formed stroke is dropped rather than trusted.
- */
-export function parsePages(raw: unknown): BoardPage[] {
-  if (!Array.isArray(raw)) return [];
-  const pages: BoardPage[] = [];
-  for (const p of raw.slice(0, 50)) {
-    if (!p || typeof p !== 'object') continue;
-    const page = p as { background?: unknown; strokes?: unknown };
-    const background = BACKGROUNDS.includes(page.background as BoardBackground) ? (page.background as BoardBackground) : 'plain';
-    const strokes: Stroke[] = [];
-    if (Array.isArray(page.strokes)) {
-      for (const s of page.strokes) {
-        if (!s || typeof s !== 'object') continue;
-        const st = s as Partial<Stroke>;
-        const points = Array.isArray(st.points) ? st.points : [];
-        if (!points.length || points.length % 3 !== 0 || !points.every((v) => typeof v === 'number' && Number.isFinite(v))) continue;
-        strokes.push({
-          tool: TOOLS.includes(st.tool as InkTool) ? (st.tool as InkTool) : 'pen',
-          color: INK_COLORS.includes(st.color as InkColor) ? (st.color as InkColor) : 'ink',
-          size: typeof st.size === 'number' && st.size > 0 && st.size <= 60 ? st.size : 6,
-          points,
-        });
-      }
-    }
-    pages.push({ background, strokes });
-  }
-  return pages;
-}
-
-/** Whether a set of pages has any ink at all. */
-export const hasInk = (pages: BoardPage[]) => pages.some((p) => p.strokes.length > 0);

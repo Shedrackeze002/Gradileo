@@ -766,7 +766,7 @@ function CustomEditor({ d, setContent }: { d: Draft; setContent: (p: Partial<Ass
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <div className="label mb-0">Your own questions</div>
-          <div className="text-xs text-ink-3">Optional. Written responses appear in your grading queue.</div>
+          <div className="text-xs text-ink-3">Optional. Students answer written responses on a canvas or by typing, and they appear in your grading queue.</div>
         </div>
         <div className="flex flex-wrap gap-1.5">
           {(Object.keys(KIND_LABEL) as CustomQuestion['kind'][]).map((k) => (
@@ -945,6 +945,7 @@ function PreviewModal({ content, title, onClose }: { content: AssignmentContent;
   const [seed, setSeed] = useState(() => freshSeed());
   const [show, setShow] = useState(false);
   const [resp, setResp] = useState<Record<number, string[]>>({});
+  const [canvases, setCanvases] = useState<Record<number, string | undefined>>({});
   const loaded = useSkillsReady(refSkillIds(content));
   const items = useMemo(() => (loaded === 'ready' ? buildItemRefs(content, seed).map((ref) => itemFromRef(ref, content, 'preview')).filter((x): x is Item => !!x) : []), [content, seed, loaded]);
   return (
@@ -964,6 +965,7 @@ function PreviewModal({ content, title, onClose }: { content: AssignmentContent;
             onClick={() => {
               setSeed(freshSeed());
               setResp({});
+              setCanvases({});
             }}
           >
             Another version
@@ -986,7 +988,15 @@ function PreviewModal({ content, title, onClose }: { content: AssignmentContent;
               <span>{item.skillId === 'custom' ? 'Your question' : skillLabel(item.skillId)}</span>
               {item.difficulty && item.skillId !== 'custom' && <Badge>{['', 'Easy', 'Medium', 'Hard'][item.difficulty]}</Badge>}
             </div>
-            <QuestionView item={item} responses={show ? canonicalResponses(item) : resp[i] ?? []} onChange={(r) => setResp((x) => ({ ...x, [i]: r }))} locked={show} showAnswers={show} />
+            <QuestionView
+              item={item}
+              responses={show ? canonicalResponses(item) : resp[i] ?? []}
+              onChange={(r) => setResp((x) => ({ ...x, [i]: r }))}
+              canvas={canvases[i]}
+              onCanvasChange={(c) => setCanvases((x) => ({ ...x, [i]: c }))}
+              locked={show}
+              showAnswers={show}
+            />
           </div>
         ))}
       </div>

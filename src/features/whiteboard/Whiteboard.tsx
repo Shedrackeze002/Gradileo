@@ -3,14 +3,15 @@
  * the teacher can go back to the slide and return to the same board; boards can be saved to the
  * lesson and opened again in a later class.
  */
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight, FilePlus2, FolderOpen, Grid3x3, Grip, Plus, Rows3, Save, Square, X } from 'lucide-react';
-import { BACKGROUNDS, BOARD_H, BOARD_W, hasInk, inkCommit, inkDoc, inkRedo, inkUndo, type BoardBackground, type BoardPage, type InkDoc } from '@/lib/ink.ts';
+import { BACKGROUNDS, BOARD_W, hasInk, inkCommit, inkDoc, inkRedo, inkUndo, type BoardBackground, type BoardPage, type InkDoc } from '@/lib/ink.ts';
 import type { Board } from '@/data/types.ts';
 import { Button, Menu, MenuItem, useToast } from '@/components/ui/index.ts';
 import { cn } from '@/lib/cn.ts';
 import { InkSurface } from './InkSurface.tsx';
 import { InkToolbar, type InkTools } from './InkToolbar.tsx';
+import { useBoardFit } from './useBoardFit.ts';
 
 interface PageState {
   background: BoardBackground;
@@ -22,25 +23,6 @@ const BG_NAME = { plain: 'Plain', grid: 'Squared', lined: 'Lined', dots: 'Dotted
 
 const blankPage = (background: BoardBackground = 'grid'): PageState => ({ background, doc: inkDoc() });
 const toPages = (pages: PageState[]): BoardPage[] => pages.map((p) => ({ background: p.background, strokes: p.doc.strokes }));
-
-/** Width and height of the largest 16:9 board that fits in the element. */
-function useBoardFit() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ w: 0, h: 0 });
-  useLayoutEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const fit = () => {
-      const w = Math.min(el.clientWidth, (el.clientHeight * BOARD_W) / BOARD_H);
-      setSize({ w: Math.floor(w), h: Math.floor((w * BOARD_H) / BOARD_W) });
-    };
-    fit();
-    const ro = new ResizeObserver(fit);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-  return [ref, size] as const;
-}
 
 export interface WhiteboardProps {
   open: boolean;

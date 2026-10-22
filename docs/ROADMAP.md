@@ -496,8 +496,13 @@ items ship or decisions change.
      out and the teacher is told. Questions the AI wrote are marked "Written by AI: check the
      answer" until the teacher marks them checked. Only lessons, skills and the class's average
      mastery reach MiniMax, never names. Without MiniMax the draft uses generated questions only.
-   - Next: regenerate one question; "solve it on the canvas" answers; grade written responses
-     with an AI-suggested mark; a time-limit and settings suggestion from the AI.
+   - Built: "solve it on the canvas" answers. Every written response (the AI's and the
+     teacher's) opens on a canvas built on the whiteboard's ink, with a Type tab beside it; the
+     working is kept in the response as compact text (`engine/ink.ts`, up to four pages), checked
+     again by `grade-submission`, and shown page by page when the teacher grades and when the
+     student reviews.
+   - Next: regenerate one question; grade written responses with an AI-suggested mark; a
+     time-limit and settings suggestion from the AI.
 7. **AI report cards** (the owner's idea, 15 October 2026). For each student, from their mastery
    and work: how they are doing, strengths, next steps, tips for the student and for parents, and
    feedback. The teacher who asks for it reviews and edits it before it reaches the student or a

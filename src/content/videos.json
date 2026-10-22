@@ -11951,6 +11951,1709 @@
       }
     ]
   },
+  "m7-2-1": {
+    "lessonId": "m7-2-1",
+    "title": "Adding and Subtracting Decimals, Part 1: Estimate, Then Add",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an estimate is",
+        "t": 26.392
+      },
+      {
+        "title": "Estimating a sum",
+        "t": 60.711
+      },
+      {
+        "title": "Line up the decimal points",
+        "t": 95.393
+      },
+      {
+        "title": "Adding 12.6 and 4.75",
+        "t": 135.963
+      },
+      {
+        "title": "Your turn",
+        "t": 186.444
+      },
+      {
+        "title": "Summary",
+        "t": 222.884
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-1:q",
+        "t": 195.424,
+        "prompt": "Calculate $9.4 + 3.68$.",
+        "choices": [
+          "$4.62$",
+          "$13.08$",
+          "$12.08$",
+          "$12.72$"
+        ],
+        "answer": 1,
+        "working": "Estimate: $9 + 4 = 13$. Write $9.4$ as $9.40$ and line up the decimal points: $9.40 + 3.68 = 13.08$, which is close to $13$."
+      }
+    ]
+  },
+  "m7-2-1-b": {
+    "lessonId": "m7-2-1",
+    "title": "Adding and Subtracting Decimals, Part 2: Lining Up the Decimal Points",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Watch out",
+        "t": 19.238
+      },
+      {
+        "title": "Same place, same column",
+        "t": 65.867
+      },
+      {
+        "title": "Packing for a camping trip",
+        "t": 96.594
+      },
+      {
+        "title": "Your turn",
+        "t": 179.055
+      },
+      {
+        "title": "Summary",
+        "t": 213.126
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-1-b:q",
+        "t": 189.253,
+        "prompt": "Calculate $3.5 + 0.82 + 1.164$.",
+        "choices": [
+          "$4.484$",
+          "$1.281$",
+          "$5.484$",
+          "$6.484$"
+        ],
+        "answer": 2,
+        "working": "Give each number three decimal places and line up the points: $3.500 + 0.820 + 1.164 = 5.484$. The estimate $4 + 0.8 + 1 = 5.8$ shows it is reasonable."
+      }
+    ]
+  },
+  "m7-2-1-c": {
+    "lessonId": "m7-2-1",
+    "title": "Adding and Subtracting Decimals, Part 3: Subtracting Decimals",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How to subtract",
+        "t": 17.119
+      },
+      {
+        "title": "A water jug",
+        "t": 50.794
+      },
+      {
+        "title": "Check by adding",
+        "t": 120.755
+      },
+      {
+        "title": "Race times",
+        "t": 141.339
+      },
+      {
+        "title": "Your turn",
+        "t": 198.159
+      },
+      {
+        "title": "Summary",
+        "t": 232.428
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-1-c:q",
+        "t": 209.48,
+        "prompt": "A bottle holds $2$ L of water. Sam drinks $0.65$ L. How much water is left?",
+        "choices": [
+          "$1.35$ L",
+          "$1.45$ L",
+          "$2.65$ L",
+          "$1.65$ L"
+        ],
+        "answer": 0,
+        "working": "Write $2$ as $2.00$ and regroup: $2.00 - 0.65 = 1.35$. Check: $1.35 + 0.65 = 2.00$."
+      }
+    ]
+  },
+  "m7-2-1-d": {
+    "lessonId": "m7-2-1",
+    "title": "Adding and Subtracting Decimals, Part 4: Solving Problems",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Make a plan",
+        "t": 16.82
+      },
+      {
+        "title": "Estimate",
+        "t": 53.588
+      },
+      {
+        "title": "Step 1: the total cost",
+        "t": 76.964
+      },
+      {
+        "title": "Step 2: the money left",
+        "t": 120.299
+      },
+      {
+        "title": "Use the estimate as a check",
+        "t": 169.11
+      },
+      {
+        "title": "Your turn",
+        "t": 191.951
+      },
+      {
+        "title": "Summary",
+        "t": 230.099
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-1-d:q",
+        "t": 206.31,
+        "prompt": "Lena has \\$20 and buys a book for \\$8.45 and a pen for \\$2.30. How much money is left?",
+        "choices": [
+          "\\$10.75",
+          "\\$11.55",
+          "\\$9.75",
+          "\\$9.25"
+        ],
+        "answer": 3,
+        "working": "Total cost: $8.45 + 2.30 = 10.75$. Money left: $20.00 - 10.75 = 9.25$, so \\$9.25. The estimate $20 - (8 + 2) = 10$ is close."
+      }
+    ]
+  },
+  "m7-2-2": {
+    "lessonId": "m7-2-2",
+    "title": "Multiplying and Dividing Decimals, Part 1: Multiplying by a One-Digit Number",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An area model",
+        "t": 27.238
+      },
+      {
+        "title": "A faster way",
+        "t": 63.191
+      },
+      {
+        "title": "Hockey tape",
+        "t": 115.539
+      },
+      {
+        "title": "Your turn",
+        "t": 179.683
+      },
+      {
+        "title": "Summary",
+        "t": 215.139
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-2:q",
+        "t": 188.081,
+        "prompt": "Calculate $7 \\times 1.24$.",
+        "choices": [
+          "$86.8$",
+          "$0.868$",
+          "$8.68$",
+          "$868$"
+        ],
+        "answer": 2,
+        "working": "Estimate: $7 \\times 1 = 7$. Multiply without the decimal point: $7 \\times 124 = 868$. $1.24$ has $2$ decimal places, so the product is $8.68$."
+      }
+    ]
+  },
+  "m7-2-2-b": {
+    "lessonId": "m7-2-2",
+    "title": "Multiplying and Dividing Decimals, Part 2: Multiplying with a Calculator",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "When to use a calculator",
+        "t": 22.788
+      },
+      {
+        "title": "Area of a deck",
+        "t": 49.918
+      },
+      {
+        "title": "Watch out",
+        "t": 94.549
+      },
+      {
+        "title": "Fuel by the litre",
+        "t": 126.102
+      },
+      {
+        "title": "Your turn",
+        "t": 190.851
+      },
+      {
+        "title": "Summary",
+        "t": 223.082
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-2-b:q",
+        "t": 202.186,
+        "prompt": "A rug is $2.4$ m long and $1.85$ m wide. Which area is reasonable?",
+        "choices": [
+          "$0.444\\ \\text{m}^2$",
+          "$4.44\\ \\text{m}^2$",
+          "$44.4\\ \\text{m}^2$",
+          "$444\\ \\text{m}^2$"
+        ],
+        "answer": 1,
+        "working": "Estimate: $2 \\times 2 = 4$. The calculator gives $2.4 \\times 1.85 = 4.44$, which is close to $4$."
+      }
+    ]
+  },
+  "m7-2-2-c": {
+    "lessonId": "m7-2-2",
+    "title": "Multiplying and Dividing Decimals, Part 3: Dividing by a One-Digit Number",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Think in tenths",
+        "t": 18.219
+      },
+      {
+        "title": "Cutting a rope",
+        "t": 46.374
+      },
+      {
+        "title": "Add a zero",
+        "t": 106.369
+      },
+      {
+        "title": "Your turn",
+        "t": 163.508
+      },
+      {
+        "title": "Summary",
+        "t": 200.179
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-2-c:q",
+        "t": 174.969,
+        "prompt": "Four friends share a \\$61.80 pizza bill equally. How much does each person pay?",
+        "choices": [
+          "\\$1.545",
+          "\\$154.50",
+          "\\$15.40",
+          "\\$15.45"
+        ],
+        "answer": 3,
+        "working": "Estimate: $60 \\div 4 = 15$. Divide: $61.80 \\div 4 = 15.45$, with the decimal point straight above. Check: $15.45 \\times 4 = 61.80$."
+      }
+    ]
+  },
+  "m7-2-2-d": {
+    "lessonId": "m7-2-2",
+    "title": "Multiplying and Dividing Decimals, Part 4: Dividing with a Calculator",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Price per kilogram",
+        "t": 20.391
+      },
+      {
+        "title": "Full bottles",
+        "t": 67.34
+      },
+      {
+        "title": "Dividing by less than one",
+        "t": 116.597
+      },
+      {
+        "title": "Your turn",
+        "t": 153.309
+      },
+      {
+        "title": "Summary",
+        "t": 190.417
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-2-d:q",
+        "t": 164.829,
+        "prompt": "Each glass holds $0.3$ L. How many glasses can be filled **completely** from $2$ L of juice?",
+        "choices": [
+          "$6$",
+          "$7$",
+          "$0.6$",
+          "$60$"
+        ],
+        "answer": 0,
+        "working": "$2 \\div 0.3 = 6.666\\ldots$ The $0.666\\ldots$ is not a full glass, so round down: $6$ glasses. Dividing by a number less than $1$ gives an answer bigger than $2$, as expected."
+      }
+    ]
+  },
+  "m7-2-3": {
+    "lessonId": "m7-2-3",
+    "title": "Order of Operations with Decimals, Part 1: The Order of Operations",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two different answers",
+        "t": 28.439
+      },
+      {
+        "title": "A picture of it",
+        "t": 75.797
+      },
+      {
+        "title": "The agreed order",
+        "t": 110.482
+      },
+      {
+        "title": "Multiply before you add",
+        "t": 145.823
+      },
+      {
+        "title": "Watch out",
+        "t": 184.565
+      },
+      {
+        "title": "Your turn",
+        "t": 215.456
+      },
+      {
+        "title": "Summary",
+        "t": 248.46
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-3:q",
+        "t": 223.525,
+        "prompt": "Evaluate $6.4 - 1.2 \\times 2$.",
+        "choices": [
+          "$10.4$",
+          "$4$",
+          "$8.8$",
+          "$5.2$"
+        ],
+        "answer": 1,
+        "working": "Multiply first: $1.2 \\times 2 = 2.4$. Then subtract: $6.4 - 2.4 = 4$."
+      }
+    ]
+  },
+  "m7-2-3-b": {
+    "lessonId": "m7-2-3",
+    "title": "Order of Operations with Decimals, Part 2: Brackets First",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Brackets change the order",
+        "t": 18.056
+      },
+      {
+        "title": "Evaluating with brackets",
+        "t": 46.61
+      },
+      {
+        "title": "Three operations",
+        "t": 73.633
+      },
+      {
+        "title": "Left to right matters",
+        "t": 117.651
+      },
+      {
+        "title": "One step at a time",
+        "t": 144.025
+      },
+      {
+        "title": "Your turn",
+        "t": 167.631
+      },
+      {
+        "title": "Summary",
+        "t": 201.841
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-3-b:q",
+        "t": 178.143,
+        "prompt": "Evaluate $(3.5 + 1.5) \\times 0.4$.",
+        "choices": [
+          "$4.1$",
+          "$20$",
+          "$0.2$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "Brackets first: $3.5 + 1.5 = 5$. Then multiply: $5 \\times 0.4 = 2$."
+      }
+    ]
+  },
+  "m7-2-3-c": {
+    "lessonId": "m7-2-3",
+    "title": "Order of Operations with Decimals, Part 3: Writing an Expression",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "At the snack stand",
+        "t": 17.72
+      },
+      {
+        "title": "Evaluating the expression",
+        "t": 73.371
+      },
+      {
+        "title": "The mean of three jumps",
+        "t": 126.277
+      },
+      {
+        "title": "Watch out",
+        "t": 182.121
+      },
+      {
+        "title": "Your turn",
+        "t": 212.778
+      },
+      {
+        "title": "Summary",
+        "t": 255.085
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-3-c:q",
+        "t": 231.216,
+        "prompt": "Pens cost \\$1.25 each and notebooks cost \\$2.40 each. Ali buys $4$ pens and $2$ notebooks, and pays with a \\$20 bill. Which expression gives the change?",
+        "choices": [
+          "$20 - 4 \\times 1.25 + 2 \\times 2.40$",
+          "$(20 - 4) \\times 1.25 + 2 \\times 2.40$",
+          "$20 - (4 \\times 1.25 + 2 \\times 2.40)$",
+          "$20 - 4 + 2 \\times 1.25 + 2.40$"
+        ],
+        "answer": 2,
+        "working": "The brackets keep the total cost together: $20 - (4 \\times 1.25 + 2 \\times 2.40) = 20 - (5 + 4.80) = 20 - 9.80 = 10.20$, so the change is \\$10.20."
+      }
+    ]
+  },
+  "m7-2-4": {
+    "lessonId": "m7-2-4",
+    "title": "Percents, Fractions and Decimals, Part 1: What a Percent Is",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Out of one hundred",
+        "t": 25.334
+      },
+      {
+        "title": "Percents all around",
+        "t": 57.187
+      },
+      {
+        "title": "Three ways",
+        "t": 85.055
+      },
+      {
+        "title": "Your turn",
+        "t": 130.263
+      },
+      {
+        "title": "Summary",
+        "t": 165.013
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-4:q",
+        "t": 142.099,
+        "prompt": "In a hundred grid, $60$ of the $100$ squares are shaded. What fraction of the grid is shaded, in lowest terms?",
+        "choices": [
+          "$\\dfrac{3}{5}$",
+          "$\\dfrac{6}{100}$",
+          "$\\dfrac{3}{50}$",
+          "$\\dfrac{6}{10}$"
+        ],
+        "answer": 0,
+        "working": "$60\\% = \\dfrac{60}{100}$. Divide both by $20$: $\\dfrac{3}{5}$. $\\dfrac{6}{10}$ has the same value, but it is not in lowest terms."
+      }
+    ]
+  },
+  "m7-2-4-b": {
+    "lessonId": "m7-2-4",
+    "title": "Percents, Fractions and Decimals, Part 2: Percents and Decimals",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent to decimal",
+        "t": 19.158
+      },
+      {
+        "title": "A one-digit percent",
+        "t": 61.166
+      },
+      {
+        "title": "Decimal to percent",
+        "t": 83.343
+      },
+      {
+        "title": "Watching the digits move",
+        "t": 126.074
+      },
+      {
+        "title": "Watch out",
+        "t": 153.678
+      },
+      {
+        "title": "Your turn",
+        "t": 178.991
+      },
+      {
+        "title": "Summary",
+        "t": 208.129
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-4-b:q",
+        "t": 185.838,
+        "prompt": "Write $0.08$ as a percent.",
+        "choices": [
+          "$80\\%$",
+          "$0.8\\%$",
+          "$8\\%$",
+          "$0.08\\%$"
+        ],
+        "answer": 2,
+        "working": "Multiply by $100$, moving the decimal point $2$ places to the right: $0.08 \\times 100 = 8$, so $0.08 = 8\\%$."
+      }
+    ]
+  },
+  "m7-2-4-c": {
+    "lessonId": "m7-2-4",
+    "title": "Percents, Fractions and Decimals, Part 3: Percents and Fractions",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent to fraction",
+        "t": 17.987
+      },
+      {
+        "title": "Fraction to percent: out of 100",
+        "t": 50.811
+      },
+      {
+        "title": "Fraction to percent: divide",
+        "t": 85.317
+      },
+      {
+        "title": "Worth knowing by heart",
+        "t": 124.837
+      },
+      {
+        "title": "Your turn",
+        "t": 160.872
+      },
+      {
+        "title": "Summary",
+        "t": 195.671
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-4-c:q",
+        "t": 167.192,
+        "prompt": "Write $\\dfrac{7}{20}$ as a percent.",
+        "choices": [
+          "$7\\%$",
+          "$35\\%$",
+          "$20\\%$",
+          "$0.35\\%$"
+        ],
+        "answer": 1,
+        "working": "$20 \\times 5 = 100$, so $\\dfrac{7}{20} = \\dfrac{35}{100} = 35\\%$."
+      }
+    ]
+  },
+  "m7-2-4-d": {
+    "lessonId": "m7-2-4",
+    "title": "Percents, Fractions and Decimals, Part 4: Percent of a Number",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways",
+        "t": 16.422
+      },
+      {
+        "title": "A benchmark",
+        "t": 44.61
+      },
+      {
+        "title": "Using 10% and 5%",
+        "t": 72.955
+      },
+      {
+        "title": "With a calculator",
+        "t": 116.723
+      },
+      {
+        "title": "Your turn",
+        "t": 160.377
+      },
+      {
+        "title": "Summary",
+        "t": 187.416
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-4-d:q",
+        "t": 166.269,
+        "prompt": "Find $15\\%$ of $80$.",
+        "choices": [
+          "$15$",
+          "$1.2$",
+          "$8$",
+          "$12$"
+        ],
+        "answer": 3,
+        "working": "$10\\%$ of $80$ is $8$, and $5\\%$ is half of that, $4$. So $15\\%$ of $80$ is $8 + 4 = 12$. Check: $0.15 \\times 80 = 12$."
+      }
+    ]
+  },
+  "m7-2-5": {
+    "lessonId": "m7-2-5",
+    "title": "Solving Percent Problems, Part 1: Discounts",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Discount and sale price",
+        "t": 23.108
+      },
+      {
+        "title": "A hoodie on sale",
+        "t": 61.133
+      },
+      {
+        "title": "Another way",
+        "t": 129.357
+      },
+      {
+        "title": "Watch out",
+        "t": 162.308
+      },
+      {
+        "title": "Your turn",
+        "t": 200.402
+      },
+      {
+        "title": "Summary",
+        "t": 233.827
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-5:q",
+        "t": 210.579,
+        "prompt": "A game costs \\$40. It is on sale for $20\\%$ off. What is the sale price?",
+        "choices": [
+          "\\$32",
+          "\\$8",
+          "\\$48",
+          "\\$20"
+        ],
+        "answer": 0,
+        "working": "Discount: $20\\%$ of $40$ is $0.2 \\times 40 = 8$. Sale price: $40 - 8 = 32$, so \\$32. Or pay $80\\%$: $0.8 \\times 40 = 32$."
+      }
+    ]
+  },
+  "m7-2-5-b": {
+    "lessonId": "m7-2-5",
+    "title": "Solving Percent Problems, Part 2: Sales Tax and Tips",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sales tax",
+        "t": 18.161
+      },
+      {
+        "title": "A basketball",
+        "t": 49.543
+      },
+      {
+        "title": "A tip with mental math",
+        "t": 101.069
+      },
+      {
+        "title": "Watch out",
+        "t": 149.828
+      },
+      {
+        "title": "Your turn",
+        "t": 181.989
+      },
+      {
+        "title": "Summary",
+        "t": 220.394
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-5-b:q",
+        "t": 192.403,
+        "prompt": "A meal costs \\$24.00. The family leaves a $15\\%$ tip. What is the total?",
+        "choices": [
+          "\\$3.60",
+          "\\$20.40",
+          "\\$27.60",
+          "\\$39.00"
+        ],
+        "answer": 2,
+        "working": "$10\\%$ of $24$ is $2.40$ and $5\\%$ is $1.20$, so the tip is $3.60$. Total: $24.00 + 3.60 = 27.60$, so \\$27.60."
+      }
+    ]
+  },
+  "m7-2-5-c": {
+    "lessonId": "m7-2-5",
+    "title": "Solving Percent Problems, Part 3: Test Scores",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A score as a percent",
+        "t": 21.453
+      },
+      {
+        "title": "A science test",
+        "t": 42.044
+      },
+      {
+        "title": "Marks and percents side by side",
+        "t": 81.777
+      },
+      {
+        "title": "Making it out of 100",
+        "t": 108.332
+      },
+      {
+        "title": "Comparing two tests",
+        "t": 135.974
+      },
+      {
+        "title": "Your turn",
+        "t": 165.32
+      },
+      {
+        "title": "Summary",
+        "t": 199.54
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-5-c:q",
+        "t": 174.809,
+        "prompt": "Theo got $21$ out of $25$ on a quiz. What is the score as a percent?",
+        "choices": [
+          "$21\\%$",
+          "$84\\%$",
+          "$0.84\\%$",
+          "$75\\%$"
+        ],
+        "answer": 1,
+        "working": "$25 \\times 4 = 100$, so $\\dfrac{21}{25} = \\dfrac{84}{100} = 84\\%$. Or divide: $21 \\div 25 = 0.84$, and $0.84 \\times 100 = 84$."
+      }
+    ]
+  },
+  "m7-2-5-d": {
+    "lessonId": "m7-2-5",
+    "title": "Solving Percent Problems, Part 4: Two Percents in One Problem",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Round after each step",
+        "t": 18.492
+      },
+      {
+        "title": "Step 1: the sale price",
+        "t": 63.964
+      },
+      {
+        "title": "Step 2: add the tax",
+        "t": 101.263
+      },
+      {
+        "title": "Why the order matters",
+        "t": 143.551
+      },
+      {
+        "title": "Your turn",
+        "t": 181.715
+      },
+      {
+        "title": "Summary",
+        "t": 226.174
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-2-5-d:q",
+        "t": 194.756,
+        "prompt": "Shoes cost \\$50. They are $10\\%$ off, and then a $5\\%$ sales tax is added to the sale price. What is the total?",
+        "choices": [
+          "\\$47.25",
+          "\\$47.50",
+          "\\$45.00",
+          "\\$52.25"
+        ],
+        "answer": 0,
+        "working": "Discount: $10\\%$ of $50$ is $5$, so the sale price is $50 - 5 = 45$. Tax: $5\\%$ of $45$ is $0.05 \\times 45 = 2.25$. Total: $45 + 2.25 = 47.25$, so \\$47.25."
+      }
+    ]
+  },
+  "m7-3-1": {
+    "lessonId": "m7-3-1",
+    "title": "Adding and Subtracting Fractions, Part 1: The Same Denominator",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Numerator and denominator",
+        "t": 23.073
+      },
+      {
+        "title": "Adding eighths",
+        "t": 57.313
+      },
+      {
+        "title": "Subtracting works the same way",
+        "t": 110.565
+      },
+      {
+        "title": "Watch out",
+        "t": 150.995
+      },
+      {
+        "title": "Your turn",
+        "t": 191.248
+      },
+      {
+        "title": "Summary",
+        "t": 221.849
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-1:q",
+        "t": 197.514,
+        "prompt": "Find $\\dfrac{4}{9} + \\dfrac{3}{9}$.",
+        "choices": [
+          "$\\dfrac{7}{18}$",
+          "$\\dfrac{1}{9}$",
+          "$\\dfrac{7}{9}$",
+          "$\\dfrac{12}{9}$"
+        ],
+        "answer": 2,
+        "working": "The denominators are the same, so add the numerators and keep the ninths: $4 + 3 = 7$, so the sum is $\\dfrac{7}{9}$."
+      }
+    ]
+  },
+  "m7-3-1-b": {
+    "lessonId": "m7-3-1",
+    "title": "Adding and Subtracting Fractions, Part 2: Lowest Terms",
+    "duration": 310,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same amount",
+        "t": 18.131
+      },
+      {
+        "title": "Lowest terms",
+        "t": 51.722
+      },
+      {
+        "title": "Writing a fraction in lowest terms",
+        "t": 101.777
+      },
+      {
+        "title": "Subtracting tenths",
+        "t": 157.155
+      },
+      {
+        "title": "Answers bigger than 1",
+        "t": 200.266
+      },
+      {
+        "title": "Your turn",
+        "t": 239.292
+      },
+      {
+        "title": "Summary",
+        "t": 276.805
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-1-b:q",
+        "t": 248.356,
+        "prompt": "Find $\\dfrac{5}{12} + \\dfrac{3}{12}$. Write the answer in lowest terms.",
+        "choices": [
+          "$\\dfrac{2}{3}$",
+          "$\\dfrac{8}{12}$",
+          "$\\dfrac{8}{24}$",
+          "$\\dfrac{4}{6}$"
+        ],
+        "answer": 0,
+        "working": "$\\tfrac{5}{12} + \\tfrac{3}{12} = \\tfrac{8}{12}$. Divide $8$ and $12$ by $4$, their greatest common factor: $\\tfrac{8}{12} = \\tfrac{2}{3}$."
+      }
+    ]
+  },
+  "m7-3-1-c": {
+    "lessonId": "m7-3-1",
+    "title": "Adding and Subtracting Fractions, Part 3: Different Denominators",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts of different sizes",
+        "t": 22.628
+      },
+      {
+        "title": "Halves and thirds",
+        "t": 61.089
+      },
+      {
+        "title": "Pizza for two",
+        "t": 110.592
+      },
+      {
+        "title": "Thirds and quarters",
+        "t": 151.952
+      },
+      {
+        "title": "Watch out",
+        "t": 201.801
+      },
+      {
+        "title": "Your turn",
+        "t": 230.574
+      },
+      {
+        "title": "Summary",
+        "t": 263.592
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-1-c:q",
+        "t": 236.616,
+        "prompt": "Find $\\dfrac{1}{2} + \\dfrac{1}{5}$.",
+        "choices": [
+          "$\\dfrac{2}{7}$",
+          "$\\dfrac{2}{10}$",
+          "$\\dfrac{3}{10}$",
+          "$\\dfrac{7}{10}$"
+        ],
+        "answer": 3,
+        "working": "Use $10$: $\\dfrac{1}{2} = \\dfrac{5}{10}$ and $\\dfrac{1}{5} = \\dfrac{2}{10}$, so the sum is $\\dfrac{5}{10} + \\dfrac{2}{10} = \\dfrac{7}{10}$."
+      }
+    ]
+  },
+  "m7-3-1-d": {
+    "lessonId": "m7-3-1",
+    "title": "Adding and Subtracting Fractions, Part 4: The Lowest Common Denominator",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Listing multiples",
+        "t": 20.611
+      },
+      {
+        "title": "Sixths and eighths",
+        "t": 67.876
+      },
+      {
+        "title": "Three fractions",
+        "t": 125.036
+      },
+      {
+        "title": "Your turn",
+        "t": 170.364
+      },
+      {
+        "title": "Summary",
+        "t": 210.061
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-1-d:q",
+        "t": 179.402,
+        "prompt": "Find $\\dfrac{1}{4} + \\dfrac{5}{6}$. Write the answer in lowest terms.",
+        "choices": [
+          "$\\dfrac{6}{10}$",
+          "$\\dfrac{13}{12}$",
+          "$\\dfrac{6}{12}$",
+          "$\\dfrac{26}{24}$"
+        ],
+        "answer": 1,
+        "working": "The lowest common denominator is $12$: $\\dfrac{1}{4} = \\dfrac{3}{12}$ and $\\dfrac{5}{6} = \\dfrac{10}{12}$, so the sum is $\\dfrac{13}{12}$, or $1\\dfrac{1}{12}$."
+      }
+    ]
+  },
+  "m7-3-2": {
+    "lessonId": "m7-3-2",
+    "title": "Adding and Subtracting Mixed Numbers, Part 1: Mixed Numbers and Improper Fractions",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mixed numbers",
+        "t": 22.005
+      },
+      {
+        "title": "Improper fractions",
+        "t": 47.061
+      },
+      {
+        "title": "On a number line",
+        "t": 78.043
+      },
+      {
+        "title": "Mixed number to improper fraction",
+        "t": 112.212
+      },
+      {
+        "title": "Improper fraction to mixed number",
+        "t": 145.456
+      },
+      {
+        "title": "Your turn",
+        "t": 179.414
+      },
+      {
+        "title": "Summary",
+        "t": 208.297
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-2:q",
+        "t": 186.647,
+        "prompt": "Write $3\\dfrac{2}{5}$ as an improper fraction.",
+        "choices": [
+          "$\\dfrac{6}{5}$",
+          "$\\dfrac{32}{5}$",
+          "$\\dfrac{15}{5}$",
+          "$\\dfrac{17}{5}$"
+        ],
+        "answer": 3,
+        "working": "Each whole is $\\dfrac{5}{5}$, so $3$ wholes are $\\dfrac{15}{5}$. Then $\\dfrac{15}{5} + \\dfrac{2}{5} = \\dfrac{17}{5}$. Shortcut: $3 \\times 5 + 2 = 17$."
+      }
+    ]
+  },
+  "m7-3-2-b": {
+    "lessonId": "m7-3-2",
+    "title": "Adding and Subtracting Mixed Numbers, Part 2: Adding Mixed Numbers",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plan",
+        "t": 20.024
+      },
+      {
+        "title": "Flour for bread",
+        "t": 51.513
+      },
+      {
+        "title": "On a number line",
+        "t": 94.67
+      },
+      {
+        "title": "Carrying a whole",
+        "t": 120.681
+      },
+      {
+        "title": "Five quarters",
+        "t": 145.478
+      },
+      {
+        "title": "Check on a number line",
+        "t": 172.541
+      },
+      {
+        "title": "Watch out",
+        "t": 197.361
+      },
+      {
+        "title": "Your turn",
+        "t": 223.432
+      },
+      {
+        "title": "Summary",
+        "t": 257.131
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-2-b:q",
+        "t": 230.582,
+        "prompt": "Find $1\\dfrac{2}{3} + 2\\dfrac{2}{3}$.",
+        "choices": [
+          "$4\\dfrac{1}{3}$",
+          "$3\\dfrac{4}{3}$",
+          "$3\\dfrac{1}{3}$",
+          "$3\\dfrac{4}{6}$"
+        ],
+        "answer": 0,
+        "working": "Wholes: $1 + 2 = 3$. Fractions: $\\dfrac{2}{3} + \\dfrac{2}{3} = \\dfrac{4}{3} = 1\\dfrac{1}{3}$. Carry: $3 + 1\\dfrac{1}{3} = 4\\dfrac{1}{3}$."
+      }
+    ]
+  },
+  "m7-3-2-c": {
+    "lessonId": "m7-3-2",
+    "title": "Adding and Subtracting Mixed Numbers, Part 3: Subtracting Mixed Numbers",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "No regrouping",
+        "t": 19.28
+      },
+      {
+        "title": "When the fraction is too small",
+        "t": 62.06
+      },
+      {
+        "title": "Regrouping in numbers",
+        "t": 115.926
+      },
+      {
+        "title": "Watch out",
+        "t": 151.227
+      },
+      {
+        "title": "Your turn",
+        "t": 187.595
+      },
+      {
+        "title": "Summary",
+        "t": 223.098
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-2-c:q",
+        "t": 195.057,
+        "prompt": "Find $4\\dfrac{1}{5} - 1\\dfrac{3}{5}$.",
+        "choices": [
+          "$3\\dfrac{2}{5}$",
+          "$2\\dfrac{2}{5}$",
+          "$2\\dfrac{3}{5}$",
+          "$5\\dfrac{4}{5}$"
+        ],
+        "answer": 2,
+        "working": "Regroup: $4\\dfrac{1}{5} = 3\\dfrac{6}{5}$. Then $3 - 1 = 2$ and $\\dfrac{6}{5} - \\dfrac{3}{5} = \\dfrac{3}{5}$, so the answer is $2\\dfrac{3}{5}$."
+      }
+    ]
+  },
+  "m7-3-2-d": {
+    "lessonId": "m7-3-2",
+    "title": "Adding and Subtracting Mixed Numbers, Part 4: Harder Regrouping",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subtracting from a whole number",
+        "t": 21.429
+      },
+      {
+        "title": "Check by counting up",
+        "t": 50.745
+      },
+      {
+        "title": "Unlike denominators and regrouping",
+        "t": 76.121
+      },
+      {
+        "title": "Another way: improper fractions",
+        "t": 129.137
+      },
+      {
+        "title": "Your turn",
+        "t": 177.146
+      },
+      {
+        "title": "Summary",
+        "t": 208.795
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-2-d:q",
+        "t": 183.61,
+        "prompt": "Find $5 - 2\\dfrac{3}{8}$.",
+        "choices": [
+          "$3\\dfrac{3}{8}$",
+          "$2\\dfrac{5}{8}$",
+          "$3\\dfrac{5}{8}$",
+          "$2\\dfrac{3}{8}$"
+        ],
+        "answer": 1,
+        "working": "Regroup: $5 = 4\\dfrac{8}{8}$. Then $4 - 2 = 2$ and $\\dfrac{8}{8} - \\dfrac{3}{8} = \\dfrac{5}{8}$, so the answer is $2\\dfrac{5}{8}$."
+      }
+    ]
+  },
+  "m7-3-3": {
+    "lessonId": "m7-3-3",
+    "title": "Solving Fraction Problems, Part 1: Making a Plan",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plan",
+        "t": 17.911
+      },
+      {
+        "title": "Benchmarks",
+        "t": 51.558
+      },
+      {
+        "title": "The walk to the arena",
+        "t": 90.112
+      },
+      {
+        "title": "Watch out",
+        "t": 146.281
+      },
+      {
+        "title": "Your turn",
+        "t": 188.871
+      },
+      {
+        "title": "Summary",
+        "t": 227.519
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-3:q",
+        "t": 200.403,
+        "prompt": "A jug holds $\\dfrac{3}{4}$ L of juice. Sam drinks $\\dfrac{1}{3}$ L. How much juice is left?",
+        "choices": [
+          "$\\dfrac{5}{12}$ L",
+          "$1\\dfrac{1}{12}$ L",
+          "$\\dfrac{1}{6}$ L",
+          "$\\dfrac{1}{2}$ L"
+        ],
+        "answer": 0,
+        "working": "\"Left\" means subtract: $\\dfrac{3}{4} - \\dfrac{1}{3} = \\dfrac{9}{12} - \\dfrac{4}{12} = \\dfrac{5}{12}$ L."
+      }
+    ]
+  },
+  "m7-3-3-b": {
+    "lessonId": "m7-3-3",
+    "title": "Solving Fraction Problems, Part 2: Problems with Mixed Numbers",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "On the trail",
+        "t": 21.678
+      },
+      {
+        "title": "Calculate and check",
+        "t": 61.785
+      },
+      {
+        "title": "Practice time",
+        "t": 109.956
+      },
+      {
+        "title": "Your turn",
+        "t": 168.047
+      },
+      {
+        "title": "Summary",
+        "t": 206.682
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-3-b:q",
+        "t": 179.407,
+        "prompt": "A ribbon is $4\\dfrac{1}{2}$ m long. Lee cuts off $1\\dfrac{2}{3}$ m. How much ribbon is left?",
+        "choices": [
+          "$3\\dfrac{1}{6}$ m",
+          "$6\\dfrac{1}{6}$ m",
+          "$2\\dfrac{1}{6}$ m",
+          "$2\\dfrac{5}{6}$ m"
+        ],
+        "answer": 3,
+        "working": "Subtract: $4\\dfrac{1}{2} - 1\\dfrac{2}{3} = 4\\dfrac{3}{6} - 1\\dfrac{4}{6} = 3\\dfrac{9}{6} - 1\\dfrac{4}{6} = 2\\dfrac{5}{6}$ m."
+      }
+    ]
+  },
+  "m7-3-3-c": {
+    "lessonId": "m7-3-3",
+    "title": "Solving Fraction Problems, Part 3: Two-Step Problems",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Flowers in the garden",
+        "t": 16.735
+      },
+      {
+        "title": "Watch out",
+        "t": 77.96
+      },
+      {
+        "title": "Is there enough flour?",
+        "t": 101.224
+      },
+      {
+        "title": "Check by adding back",
+        "t": 153.978
+      },
+      {
+        "title": "Your turn",
+        "t": 179.537
+      },
+      {
+        "title": "Summary",
+        "t": 220.711
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-3-3-c:q",
+        "t": 192.038,
+        "prompt": "Ana spends $\\dfrac{1}{2}$ of a gift card on a bike helmet and $\\dfrac{1}{5}$ of it on a book. What fraction of the gift card is left?",
+        "choices": [
+          "$\\dfrac{7}{10}$",
+          "$\\dfrac{2}{7}$",
+          "$\\dfrac{3}{10}$",
+          "$\\dfrac{1}{3}$"
+        ],
+        "answer": 2,
+        "working": "Step 1: $\\dfrac{1}{2} + \\dfrac{1}{5} = \\dfrac{5}{10} + \\dfrac{2}{10} = \\dfrac{7}{10}$ is spent. Step 2: $\\dfrac{10}{10} - \\dfrac{7}{10} = \\dfrac{3}{10}$ is left."
+      }
+    ]
+  },
+  "m7-4-1": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 1: Integers and Zero Pairs",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Integers",
+        "t": 25.922
+      },
+      {
+        "title": "Opposites",
+        "t": 66.389
+      },
+      {
+        "title": "Signs and brackets",
+        "t": 98.05
+      },
+      {
+        "title": "Counters",
+        "t": 134.188
+      },
+      {
+        "title": "Zero pairs",
+        "t": 163.214
+      },
+      {
+        "title": "Your turn",
+        "t": 209.856
+      },
+      {
+        "title": "Summary",
+        "t": 245.648
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1:q",
+        "t": 220.144,
+        "prompt": "There are $3$ positive counters and $5$ negative counters. How many zero pairs can you make?",
+        "choices": [
+          "$5$",
+          "$3$",
+          "$8$",
+          "$2$"
+        ],
+        "answer": 1,
+        "working": "Each zero pair needs one positive and one negative counter. There are only $3$ positive counters, so you can make $3$ zero pairs, and $2$ negative counters are left over."
+      }
+    ]
+  },
+  "m7-4-1-b": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 2: Adding with Counters",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Positive five plus negative three",
+        "t": 17.945
+      },
+      {
+        "title": "Two negatives",
+        "t": 51.972
+      },
+      {
+        "title": "More negatives",
+        "t": 79.818
+      },
+      {
+        "title": "What the counters show",
+        "t": 115.253
+      },
+      {
+        "title": "Your turn",
+        "t": 145.15
+      },
+      {
+        "title": "Summary",
+        "t": 180.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1-b:q",
+        "t": 153.021,
+        "prompt": "Use counters to find $(-6) + (+2)$.",
+        "choices": [
+          "$+8$",
+          "$-8$",
+          "$+4$",
+          "$-4$"
+        ],
+        "answer": 3,
+        "working": "Six negative and two positive counters make $2$ zero pairs. Remove them: $4$ negative counters are left, so $(-6) + (+2) = -4$."
+      }
+    ]
+  },
+  "m7-4-1-c": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 3: Adding on a Number Line",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which way to move",
+        "t": 15.829
+      },
+      {
+        "title": "Two negatives",
+        "t": 43.834
+      },
+      {
+        "title": "Different signs",
+        "t": 66.586
+      },
+      {
+        "title": "Adding a positive",
+        "t": 98.673
+      },
+      {
+        "title": "Your turn",
+        "t": 127.773
+      },
+      {
+        "title": "Summary",
+        "t": 161.619
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1-c:q",
+        "t": 135.843,
+        "prompt": "Use a number line to find $(-3) + (+8)$.",
+        "choices": [
+          "$+5$",
+          "$-11$",
+          "$-5$",
+          "$+11$"
+        ],
+        "answer": 0,
+        "working": "Start at $-3$. Adding $+8$ means $8$ steps right: $3$ steps reach $0$, and $5$ more reach $+5$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

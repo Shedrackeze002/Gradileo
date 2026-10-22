@@ -11,6 +11,7 @@ import { adminClient, getCaller, notify, requireTeacherOf, str, type Caller, typ
 import { aiConfig, loadAnalystInput } from '../_shared/analyst.ts';
 import {
   buildItemRefs,
+  cleanCanvas,
   cleanIntegrity,
   draftFromAction,
   freshSeed,
@@ -106,6 +107,7 @@ function cleanResponses(v: unknown): Record<number, StoredResponse> {
       timeMs: Math.max(0, Math.min(86_400_000, Number(r.timeMs) || 0)),
       at: typeof r.at === 'string' ? r.at.slice(0, 40) : undefined,
       checked: !!r.checked,
+      canvas: cleanCanvas(r.canvas),
       history: Array.isArray(r.history)
         ? r.history.slice(0, 5).map((h: Row) => ({
             ref: h.ref as ItemRef,

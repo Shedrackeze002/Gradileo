@@ -67,7 +67,7 @@ function Rows({ items, responses, content, assignmentId, showSolutions = true, r
             </button>
             {isOpen && (
               <div className="space-y-4 border-t border-line p-4 sm:p-5">
-                <QuestionView item={item} responses={resp.answers ?? []} onChange={() => {}} result={result} locked showAnswers={showSolutions} />
+                <QuestionView item={item} responses={resp.answers ?? []} canvas={resp.canvas} onChange={() => {}} result={result} locked showAnswers={showSolutions} />
                 {resp.comment && (
                   <div className="rounded-xl bg-info-soft px-3 py-2 text-sm text-info-ink">
                     <span className="font-semibold">Teacher comment: </span>
