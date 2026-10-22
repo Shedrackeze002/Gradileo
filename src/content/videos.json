@@ -15326,17 +15326,17 @@
       },
       {
         "title": "Your turn",
-        "t": 190.611
+        "t": 190.625
       },
       {
         "title": "Summary",
-        "t": 234.152
+        "t": 234.166
       }
     ],
     "cues": [
       {
         "id": "m7-6-4-c:q",
-        "t": 207.62,
+        "t": 207.634,
         "prompt": "A bike rental costs \\$5 for a helmet plus \\$4 for each hour. The total was \\$29. Which equation fits the story, and how many hours was the bike rented?",
         "choices": [
           "$5h + 4 = 29$, so $5$ hours",
@@ -15352,7 +15352,7 @@
   "m7-6-4-d": {
     "lessonId": "m7-6-4",
     "title": "Solving Two-Step Equations, Part 4: Problems That Need a Plan",
-    "duration": 242,
+    "duration": 243,
     "voice": "af_heart",
     "chapters": [
       {
@@ -15365,29 +15365,29 @@
       },
       {
         "title": "Solve and check",
-        "t": 60.704
+        "t": 60.779
       },
       {
         "title": "Three numbers in a row",
-        "t": 100.138
+        "t": 100.447
       },
       {
         "title": "Make a plan",
-        "t": 152.872
+        "t": 153.181
       },
       {
         "title": "Your turn",
-        "t": 177.235
+        "t": 177.544
       },
       {
         "title": "Summary",
-        "t": 212.23
+        "t": 212.664
       }
     ],
     "cues": [
       {
         "id": "m7-6-4-d:q",
-        "t": 187.801,
+        "t": 188.11,
         "prompt": "A rectangle has a perimeter of $30$ cm. It is $6$ cm wide. How long is it?",
         "choices": [
           "$9$ cm",
@@ -15568,7 +15568,7 @@
   "m7-7-1-d": {
     "lessonId": "m7-7-1",
     "title": "Radius, Diameter and Circumference, Part 4: Finding the Circumference",
-    "duration": 241,
+    "duration": 246,
     "voice": "af_heart",
     "chapters": [
       {
@@ -15581,29 +15581,29 @@
       },
       {
         "title": "Using the radius",
-        "t": 63.116
+        "t": 64.342
       },
       {
         "title": "Watch out",
-        "t": 102.582
+        "t": 104.655
       },
       {
         "title": "Is it reasonable?",
-        "t": 137.384
+        "t": 140.305
       },
       {
         "title": "Your turn",
-        "t": 170.445
+        "t": 173.366
       },
       {
         "title": "Summary",
-        "t": 208.765
+        "t": 211.686
       }
     ],
     "cues": [
       {
         "id": "m7-7-1-d:q",
-        "t": 182.53,
+        "t": 185.451,
         "prompt": "A bicycle wheel has a radius of $30$ cm. Use $3.14$ for $\\pi$. What is its circumference?",
         "choices": [
           "$94.2$ cm",
@@ -16554,6 +16554,473 @@
         ],
         "answer": 2,
         "working": "The move from $P$ to $Q$ is $8$ right and $4$ up. Half of it is $4$ right and $2$ up. From $P$: $(1 + 4, 2 + 2) = (5, 4)$."
+      }
+    ]
+  },
+  "m7-8-2-c": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 3: Constructing a Perpendicular Bisector",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Steps 1 and 2: arcs from A",
+        "t": 20.976
+      },
+      {
+        "title": "Steps 3 and 4: arcs from B, then join",
+        "t": 47.734
+      },
+      {
+        "title": "Why it works",
+        "t": 80.464
+      },
+      {
+        "title": "Other ways",
+        "t": 109.7
+      },
+      {
+        "title": "Your turn",
+        "t": 149.527
+      },
+      {
+        "title": "Summary",
+        "t": 181.364
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-c:q",
+        "t": 157.382,
+        "prompt": "Why must the compass be opened to **more than half** the length of $AB$?",
+        "choices": [
+          "Otherwise the arcs from $A$ and $B$ do not cross.",
+          "So that the arcs are perpendicular to $AB$.",
+          "So that segment $AB$ gets longer.",
+          "So that the midpoint moves to $A$."
+        ],
+        "answer": 0,
+        "working": "With less than half the length, the arcs from $A$ and from $B$ do not reach each other, so they never cross, and there are no points $C$ and $D$ to join."
+      }
+    ]
+  },
+  "m7-8-2-d": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 4: Constructing an Angle Bisector",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Step 1: an arc from the vertex",
+        "t": 22.437
+      },
+      {
+        "title": "Steps 2 and 3: two crossing arcs",
+        "t": 49.251
+      },
+      {
+        "title": "Step 4: draw the ray",
+        "t": 73.003
+      },
+      {
+        "title": "Other ways",
+        "t": 100.911
+      },
+      {
+        "title": "Your turn",
+        "t": 135.713
+      },
+      {
+        "title": "Summary",
+        "t": 170.008
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-d:q",
+        "t": 147.423,
+        "prompt": "You bisect an angle of $130^\\circ$ with a compass and a ruler. What should each of the two new angles measure?",
+        "choices": [
+          "$260^\\circ$",
+          "$50^\\circ$",
+          "$130^\\circ$",
+          "$65^\\circ$"
+        ],
+        "answer": 3,
+        "working": "A bisector splits the angle into two equal angles, each half of the whole: $130^\\circ \\div 2 = 65^\\circ$."
+      }
+    ]
+  },
+  "m7-8-2-e": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 5: Using Equal Lengths",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same distance from both ends",
+        "t": 18.092
+      },
+      {
+        "title": "The bench",
+        "t": 66.839
+      },
+      {
+        "title": "Perimeter of a triangle",
+        "t": 91.337
+      },
+      {
+        "title": "Using an equation",
+        "t": 144.127
+      },
+      {
+        "title": "Your turn",
+        "t": 183.301
+      },
+      {
+        "title": "Summary",
+        "t": 223.013
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-e:q",
+        "t": 198.903,
+        "prompt": "$P$ is on the perpendicular bisector of $AB$. $PA = 9$ cm and $AB = 10$ cm. What is the perimeter of triangle $PAB$?",
+        "choices": [
+          "$19$ cm",
+          "$23$ cm",
+          "$28$ cm",
+          "$38$ cm"
+        ],
+        "answer": 2,
+        "working": "$PB = PA = 9$ cm, so the perimeter is $9 + 9 + 10 = 28$ cm."
+      }
+    ]
+  },
+  "m7-8-2-f": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 6: Using Equal Angles",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Half of the whole",
+        "t": 21.051
+      },
+      {
+        "title": "Bisecting twice",
+        "t": 42.874
+      },
+      {
+        "title": "Using an equation",
+        "t": 83.85
+      },
+      {
+        "title": "Watch out",
+        "t": 122.792
+      },
+      {
+        "title": "Your turn",
+        "t": 157.053
+      },
+      {
+        "title": "Summary",
+        "t": 201.105
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-f:q",
+        "t": 172.877,
+        "prompt": "$\\angle ABC = 100^\\circ$. Ray $BD$ bisects $\\angle ABC$. Then ray $BE$ bisects $\\angle DBC$. What is $\\angle ABE$?",
+        "choices": [
+          "$50^\\circ$",
+          "$75^\\circ$",
+          "$25^\\circ$",
+          "$100^\\circ$"
+        ],
+        "answer": 1,
+        "working": "$\\angle ABD = \\angle DBC = 100^\\circ \\div 2 = 50^\\circ$. $\\angle DBE = 50^\\circ \\div 2 = 25^\\circ$. $\\angle ABE = 50^\\circ + 25^\\circ = 75^\\circ$."
+      }
+    ]
+  },
+  "m7-9-1": {
+    "lessonId": "m7-9-1",
+    "title": "The Cartesian Plane, Part 1: The Four Quadrants",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The Cartesian plane",
+        "t": 21.938
+      },
+      {
+        "title": "Positive and negative",
+        "t": 63.585
+      },
+      {
+        "title": "Four quadrants",
+        "t": 96.234
+      },
+      {
+        "title": "Which quadrant?",
+        "t": 131.294
+      },
+      {
+        "title": "Your turn",
+        "t": 166.711
+      },
+      {
+        "title": "Summary",
+        "t": 194.684
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-1:q",
+        "t": 175.498,
+        "prompt": "Which quadrant is to the **left** of the $y$-axis and **below** the $x$-axis?",
+        "choices": [
+          "Quadrant I",
+          "Quadrant II",
+          "Quadrant III",
+          "Quadrant IV"
+        ],
+        "answer": 2,
+        "working": "Counterclockwise from the top right: I is top right, II top left, III bottom left and IV bottom right. Left and below is the bottom left, Quadrant III."
+      }
+    ]
+  },
+  "m7-9-1-b": {
+    "lessonId": "m7-9-1",
+    "title": "The Cartesian Plane, Part 2: Plotting and Reading Points",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 14.736
+      },
+      {
+        "title": "Plotting a point",
+        "t": 52.927
+      },
+      {
+        "title": "Across first",
+        "t": 84.853
+      },
+      {
+        "title": "Reading coordinates",
+        "t": 118.881
+      },
+      {
+        "title": "Points on an axis",
+        "t": 169.475
+      },
+      {
+        "title": "Your turn",
+        "t": 199.322
+      },
+      {
+        "title": "Summary",
+        "t": 231.71
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-1-b:q",
+        "t": 209.437,
+        "prompt": "Point $K$ is $4$ units **left** of the origin and $1$ unit **down**. What are its coordinates?",
+        "choices": [
+          "$(-4,\\ {-1})$",
+          "$(-1,\\ {-4})$",
+          "$(4,\\ {-1})$",
+          "$(-4,\\ 1)$"
+        ],
+        "answer": 0,
+        "working": "Left is negative, so $x = -4$. Down is negative, so $y = -1$. The $x$-coordinate comes first: $K(-4,\\ {-1})$."
+      }
+    ]
+  },
+  "m7-9-1-c": {
+    "lessonId": "m7-9-1",
+    "title": "The Cartesian Plane, Part 3: Quadrants and Signs",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why the signs work",
+        "t": 16.119
+      },
+      {
+        "title": "Signs in each quadrant",
+        "t": 46.198
+      },
+      {
+        "title": "Naming the location",
+        "t": 93.063
+      },
+      {
+        "title": "Watch out",
+        "t": 139.846
+      },
+      {
+        "title": "Your turn",
+        "t": 159.84
+      },
+      {
+        "title": "Summary",
+        "t": 188.422
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-1-c:q",
+        "t": 165.655,
+        "prompt": "Which point is in Quadrant III?",
+        "choices": [
+          "$(3,\\ {-4})$",
+          "$(-2,\\ 5)$",
+          "$(0,\\ {-3})$",
+          "$(-6,\\ {-1})$"
+        ],
+        "answer": 3,
+        "working": "In Quadrant III both coordinates are negative. Only $(-6,\\ {-1})$ has $x < 0$ and $y < 0$."
+      }
+    ]
+  },
+  "m7-9-1-d": {
+    "lessonId": "m7-9-1",
+    "title": "The Cartesian Plane, Part 4: Distances and Shapes",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Length across an axis",
+        "t": 17.182
+      },
+      {
+        "title": "Watch out",
+        "t": 57.027
+      },
+      {
+        "title": "The missing corner",
+        "t": 82.196
+      },
+      {
+        "title": "The perimeter",
+        "t": 116.981
+      },
+      {
+        "title": "Your turn",
+        "t": 162.729
+      },
+      {
+        "title": "Summary",
+        "t": 199.643
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-1-d:q",
+        "t": 173.879,
+        "prompt": "How far is it from $P(-5,\\ {-2})$ to $Q(1,\\ {-2})$?",
+        "choices": [
+          "$4$ units",
+          "$6$ units",
+          "$7$ units",
+          "$3$ units"
+        ],
+        "answer": 1,
+        "working": "Both points have $y = -2$, so count across. From $-5$ to $0$ is $5$ units, and from $0$ to $1$ is $1$ unit: $5 + 1 = 6$ units."
+      }
+    ]
+  },
+  "m7-9-2": {
+    "lessonId": "m7-9-2",
+    "title": "Translations, Part 1: Translating a Point",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Transformations and images",
+        "t": 20.536
+      },
+      {
+        "title": "Translation",
+        "t": 45.504
+      },
+      {
+        "title": "How the coordinates change",
+        "t": 78.006
+      },
+      {
+        "title": "Sliding a game piece",
+        "t": 106.061
+      },
+      {
+        "title": "Watch out",
+        "t": 143.187
+      },
+      {
+        "title": "Your turn",
+        "t": 173.938
+      },
+      {
+        "title": "Summary",
+        "t": 212.083
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-2:q",
+        "t": 185.409,
+        "prompt": "Point $M(1,\\ {-2})$ is translated $3$ units **left** and $4$ units **up**. Where is $M'$?",
+        "choices": [
+          "$(4,\\ 2)$",
+          "$(-2,\\ {-6})$",
+          "$(-3,\\ 1)$",
+          "$(-2,\\ 2)$"
+        ],
+        "answer": 3,
+        "working": "Left subtracts from $x$: $1 - 3 = -2$. Up adds to $y$: $-2 + 4 = 2$. So $M'(-2,\\ 2)$."
       }
     ]
   },
