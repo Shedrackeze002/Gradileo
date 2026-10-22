@@ -120,7 +120,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Your turn. Lena’s quiz scores were seven, nine, six, ten and eight. What is the mean? Pause the video and try it.', show: 'q', wait: 7 },
+        { say: 'Your turn. Lena’s quiz scores were seven, nine, six, ten and eight. Find the mean. Pause the video and try it.', show: 'q', wait: 7 },
         { say: 'The answer is B: eight. The scores add to forty, and there are five scores, so forty divided by five is eight. Choice C divides by ten instead of by five, the number of scores.', show: 'q.answer' },
       ],
     },

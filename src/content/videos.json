@@ -13654,6 +13654,4918 @@
       }
     ]
   },
+  "m7-4-1-d": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 4: Adding with Symbols",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Size and sign",
+        "t": 17.877
+      },
+      {
+        "title": "Same signs",
+        "t": 39.856
+      },
+      {
+        "title": "Different signs",
+        "t": 80.695
+      },
+      {
+        "title": "More positives",
+        "t": 124.864
+      },
+      {
+        "title": "Watch out",
+        "t": 150.167
+      },
+      {
+        "title": "Your turn",
+        "t": 176.368
+      },
+      {
+        "title": "Summary",
+        "t": 212.667
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1-d:q",
+        "t": 183.554,
+        "prompt": "Find $(+13) + (-20)$.",
+        "choices": [
+          "$+33$",
+          "$+7$",
+          "$-7$",
+          "$-33$"
+        ],
+        "answer": 2,
+        "working": "Different signs: subtract the sizes, $20 - 13 = 7$. The bigger size is $20$, which is negative, so the answer is $-7$."
+      }
+    ]
+  },
+  "m7-4-1-e": {
+    "lessonId": "m7-4-1",
+    "title": "Adding Integers, Part 5: Adding Several Integers",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Any order",
+        "t": 21.667
+      },
+      {
+        "title": "Four integers",
+        "t": 51.007
+      },
+      {
+        "title": "Look for opposites",
+        "t": 107.786
+      },
+      {
+        "title": "A day of temperatures",
+        "t": 134.416
+      },
+      {
+        "title": "Your turn",
+        "t": 183.88
+      },
+      {
+        "title": "Summary",
+        "t": 219.071
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-1-e:q",
+        "t": 193.458,
+        "prompt": "Find $(-8) + (+5) + (+8) + (-3)$.",
+        "choices": [
+          "$-2$",
+          "$+2$",
+          "$+24$",
+          "$-8$"
+        ],
+        "answer": 1,
+        "working": "$(-8)$ and $(+8)$ are opposites, so they add to $0$. That leaves $(+5) + (-3) = +2$."
+      }
+    ]
+  },
+  "m7-4-2": {
+    "lessonId": "m7-4-2",
+    "title": "Subtracting Integers, Part 1: Subtracting by Taking Away",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Taking away positives",
+        "t": 24.334
+      },
+      {
+        "title": "Taking away negatives",
+        "t": 58.089
+      },
+      {
+        "title": "Taking everything away",
+        "t": 95.485
+      },
+      {
+        "title": "Not enough counters?",
+        "t": 115.755
+      },
+      {
+        "title": "Your turn",
+        "t": 139.318
+      },
+      {
+        "title": "Summary",
+        "t": 170.787
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-2:q",
+        "t": 147.377,
+        "prompt": "Use counters to find $(-9) - (-4)$.",
+        "choices": [
+          "$-5$",
+          "$-13$",
+          "$+5$",
+          "$+13$"
+        ],
+        "answer": 0,
+        "working": "Show $9$ negative counters and take away $4$ negative counters. $5$ negative counters are left, so $(-9) - (-4) = -5$."
+      }
+    ]
+  },
+  "m7-4-2-b": {
+    "lessonId": "m7-4-2",
+    "title": "Subtracting Integers, Part 2: Adding Zero Pairs",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Positive two minus positive five",
+        "t": 16.369
+      },
+      {
+        "title": "Taking away negatives that are not there",
+        "t": 64
+      },
+      {
+        "title": "Negative four minus positive three",
+        "t": 102.146
+      },
+      {
+        "title": "The method",
+        "t": 128.986
+      },
+      {
+        "title": "Your turn",
+        "t": 169.504
+      },
+      {
+        "title": "Summary",
+        "t": 206.736
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-2-b:q",
+        "t": 177.543,
+        "prompt": "Use counters to find $(-1) - (+4)$.",
+        "choices": [
+          "$+3$",
+          "$-3$",
+          "$-5$",
+          "$+5$"
+        ],
+        "answer": 2,
+        "working": "Start with $1$ negative counter. Add $4$ zero pairs, then take away the $4$ positive counters. $5$ negative counters are left, so $(-1) - (+4) = -5$."
+      }
+    ]
+  },
+  "m7-4-2-c": {
+    "lessonId": "m7-4-2",
+    "title": "Subtracting Integers, Part 3: Adding the Opposite",
+    "duration": 339,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Compare the answers",
+        "t": 18.128
+      },
+      {
+        "title": "A pattern",
+        "t": 59.667
+      },
+      {
+        "title": "The rule",
+        "t": 106.904
+      },
+      {
+        "title": "Subtracting a positive",
+        "t": 136.155
+      },
+      {
+        "title": "Subtracting a negative",
+        "t": 168.714
+      },
+      {
+        "title": "How far did it fall?",
+        "t": 203.293
+      },
+      {
+        "title": "Watch out",
+        "t": 245.912
+      },
+      {
+        "title": "Your turn",
+        "t": 272.4
+      },
+      {
+        "title": "Summary",
+        "t": 306.977
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-2-c:q",
+        "t": 279.208,
+        "prompt": "Find $(-5) - (-8)$.",
+        "choices": [
+          "$-13$",
+          "$-3$",
+          "$+13$",
+          "$+3$"
+        ],
+        "answer": 3,
+        "working": "Add the opposite: $(-5) - (-8) = (-5) + (+8)$. Different signs: $8 - 5 = 3$, and there are more positives, so the answer is $+3$."
+      }
+    ]
+  },
+  "m7-4-2-d": {
+    "lessonId": "m7-4-2",
+    "title": "Subtracting Integers, Part 4: Several Steps",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Change every subtraction",
+        "t": 21.587
+      },
+      {
+        "title": "A mix of signs",
+        "t": 68.691
+      },
+      {
+        "title": "Subtracting on a number line",
+        "t": 104.513
+      },
+      {
+        "title": "Your turn",
+        "t": 143.081
+      },
+      {
+        "title": "Summary",
+        "t": 181.268
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-2-d:q",
+        "t": 151.817,
+        "prompt": "Find $(+6) - (-2) - (+10)$.",
+        "choices": [
+          "$-6$",
+          "$-2$",
+          "$+2$",
+          "$+18$"
+        ],
+        "answer": 1,
+        "working": "Add the opposites: $(+6) + (+2) + (-10)$. Positives: $+8$. Then $(+8) + (-10) = -2$."
+      }
+    ]
+  },
+  "m7-4-3": {
+    "lessonId": "m7-4-3",
+    "title": "Solving Integer Problems, Part 1: Writing Integers for Changes",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Up or down",
+        "t": 23.986
+      },
+      {
+        "title": "A cold evening",
+        "t": 64.749
+      },
+      {
+        "title": "Plus-minus",
+        "t": 110.167
+      },
+      {
+        "title": "Your turn",
+        "t": 155.323
+      },
+      {
+        "title": "Summary",
+        "t": 193.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-3:q",
+        "t": 165.508,
+        "prompt": "A submarine is at $-40$ m. It rises $15$ m. Where is it now?",
+        "choices": [
+          "$-55$ m",
+          "$+25$ m",
+          "$-25$ m",
+          "$+55$ m"
+        ],
+        "answer": 2,
+        "working": "A rise is positive: $(-40) + (+15)$. Different signs: $40 - 15 = 25$, and there are more negatives, so it is at $-25$ m."
+      }
+    ]
+  },
+  "m7-4-3-b": {
+    "lessonId": "m7-4-3",
+    "title": "Solving Integer Problems, Part 2: Change and Difference",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Change and difference",
+        "t": 19.82
+      },
+      {
+        "title": "A warm wind",
+        "t": 44.862
+      },
+      {
+        "title": "Count through zero",
+        "t": 88.182
+      },
+      {
+        "title": "Above and below the water",
+        "t": 121.61
+      },
+      {
+        "title": "Your turn",
+        "t": 168.495
+      },
+      {
+        "title": "Summary",
+        "t": 207.492
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-3-b:q",
+        "t": 182.201,
+        "prompt": "Early in the morning it is $-11^\\circ\\text{C}$. At noon it is $+4^\\circ\\text{C}$. By how many degrees did the temperature rise?",
+        "choices": [
+          "$15$ degrees",
+          "$7$ degrees",
+          "$-7$ degrees",
+          "$-15$ degrees"
+        ],
+        "answer": 0,
+        "working": "New $-$ old: $(+4) - (-11) = (+4) + (+11) = +15$. Check: $11$ degrees up to $0$, and $4$ more, makes $15$."
+      }
+    ]
+  },
+  "m7-4-3-c": {
+    "lessonId": "m7-4-3",
+    "title": "Solving Integer Problems, Part 3: Several Changes in a Row",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A bank account",
+        "t": 18.605
+      },
+      {
+        "title": "Check with groups",
+        "t": 96.695
+      },
+      {
+        "title": "Your turn",
+        "t": 134.109
+      },
+      {
+        "title": "Summary",
+        "t": 177.459
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-3-c:q",
+        "t": 148.142,
+        "prompt": "A submarine starts at $-20$ m. It goes down $15$ m, then up $30$ m, then down $5$ m. Where is it now?",
+        "choices": [
+          "$-70$ m",
+          "$+10$ m",
+          "$-30$ m",
+          "$-10$ m"
+        ],
+        "answer": 3,
+        "working": "$(-20) + (-15) = -35$, then $(-35) + (+30) = -5$, then $(-5) + (-5) = -10$. The submarine is at $-10$ m."
+      }
+    ]
+  },
+  "m7-5-1": {
+    "lessonId": "m7-5-1",
+    "title": "Patterns and Linear Relations, Part 1: Patterns and Terms",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Toothpick squares",
+        "t": 19.285
+      },
+      {
+        "title": "Terms and term numbers",
+        "t": 50.07
+      },
+      {
+        "title": "How the pattern grows",
+        "t": 90.366
+      },
+      {
+        "title": "The next terms",
+        "t": 125.128
+      },
+      {
+        "title": "Your turn",
+        "t": 154.786
+      },
+      {
+        "title": "Summary",
+        "t": 191.662
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-1:q",
+        "t": 165.19,
+        "prompt": "The terms of a pattern are $5, 9, 13, 17, \\ldots$ What is term $6$?",
+        "choices": [
+          "$21$",
+          "$25$",
+          "$29$",
+          "$23$"
+        ],
+        "answer": 1,
+        "working": "The terms go up by $4$ each time. Term $5$ is $17 + 4 = 21$, and term $6$ is $21 + 4 = 25$."
+      }
+    ]
+  },
+  "m7-5-1-b": {
+    "lessonId": "m7-5-1",
+    "title": "Patterns and Linear Relations, Part 2: An Expression for a Pattern",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Variables",
+        "t": 16.879
+      },
+      {
+        "title": "Three steps",
+        "t": 43.875
+      },
+      {
+        "title": "Toothpick squares",
+        "t": 66.239
+      },
+      {
+        "title": "Watch out",
+        "t": 124.605
+      },
+      {
+        "title": "A pattern that starts low",
+        "t": 151.505
+      },
+      {
+        "title": "Your turn",
+        "t": 187.623
+      },
+      {
+        "title": "Summary",
+        "t": 226.007
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-1-b:q",
+        "t": 198.987,
+        "prompt": "The terms of a pattern are $7, 11, 15, 19, \\ldots$ Which expression gives term $n$?",
+        "choices": [
+          "$n + 4$",
+          "$4n + 7$",
+          "$4n + 3$",
+          "$3n + 4$"
+        ],
+        "answer": 2,
+        "working": "The terms go up by $4$, so start with $4n$. When $n = 1$, $4n = 4$, but term $1$ is $7$: add $3$. Check $n = 2$: $4(2) + 3 = 11$."
+      }
+    ]
+  },
+  "m7-5-1-c": {
+    "lessonId": "m7-5-1",
+    "title": "Patterns and Linear Relations, Part 3: Linear Relations",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Linear relations",
+        "t": 18.697
+      },
+      {
+        "title": "Chairs around tables",
+        "t": 48.435
+      },
+      {
+        "title": "Finding the expression",
+        "t": 81.877
+      },
+      {
+        "title": "Seeing it in the picture",
+        "t": 108.337
+      },
+      {
+        "title": "Not every pattern is linear",
+        "t": 132.69
+      },
+      {
+        "title": "Your turn",
+        "t": 158.812
+      },
+      {
+        "title": "Summary",
+        "t": 185.424
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-1-c:q",
+        "t": 164.961,
+        "prompt": "Which pattern is a **linear relation**?",
+        "choices": [
+          "$2, 5, 8, 11, \\ldots$",
+          "$1, 2, 4, 8, \\ldots$",
+          "$1, 4, 9, 16, \\ldots$",
+          "$3, 4, 6, 9, \\ldots$"
+        ],
+        "answer": 0,
+        "working": "$2, 5, 8, 11$ goes up by $3$ every time. The others go up by different amounts."
+      }
+    ]
+  },
+  "m7-5-1-d": {
+    "lessonId": "m7-5-1",
+    "title": "Patterns and Linear Relations, Part 4: Using a Relation",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Figure 50",
+        "t": 19.835
+      },
+      {
+        "title": "Working backwards",
+        "t": 59.285
+      },
+      {
+        "title": "Undo in reverse order",
+        "t": 104.484
+      },
+      {
+        "title": "Chairs for a party",
+        "t": 129.308
+      },
+      {
+        "title": "Your turn",
+        "t": 164.612
+      },
+      {
+        "title": "Summary",
+        "t": 200.296
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-1-d:q",
+        "t": 174.93,
+        "prompt": "A pattern has the expression $4n + 2$. Which term number $n$ has the value $50$?",
+        "choices": [
+          "$202$",
+          "$13$",
+          "$48$",
+          "$12$"
+        ],
+        "answer": 3,
+        "working": "Undo in reverse order: $50 - 2 = 48$, then $48 \\div 4 = 12$. Check: $4(12) + 2 = 50$."
+      }
+    ]
+  },
+  "m7-5-2": {
+    "lessonId": "m7-5-2",
+    "title": "Tables of Values and Graphs, Part 1: Making a Table of Values",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Table of values",
+        "t": 23.083
+      },
+      {
+        "title": "A table from a relation",
+        "t": 50.472
+      },
+      {
+        "title": "Concert tickets",
+        "t": 93.269
+      },
+      {
+        "title": "Patterns in the table",
+        "t": 140.625
+      },
+      {
+        "title": "Patterns in the cost",
+        "t": 158.007
+      },
+      {
+        "title": "Your turn",
+        "t": 173.591
+      },
+      {
+        "title": "Summary",
+        "t": 205.596
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-2:q",
+        "t": 182.141,
+        "prompt": "For $y = 3x + 1$, what is $y$ when $x = 4$?",
+        "choices": [
+          "$8$",
+          "$13$",
+          "$15$",
+          "$12$"
+        ],
+        "answer": 1,
+        "working": "Substitute: $y = 3(4) + 1 = 12 + 1 = 13$."
+      }
+    ]
+  },
+  "m7-5-2-b": {
+    "lessonId": "m7-5-2",
+    "title": "Tables of Values and Graphs, Part 2: Working Backwards in a Table",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How many tickets?",
+        "t": 20.031
+      },
+      {
+        "title": "Watch out",
+        "t": 74.388
+      },
+      {
+        "title": "A missing input",
+        "t": 101.494
+      },
+      {
+        "title": "Your turn",
+        "t": 138.433
+      },
+      {
+        "title": "Summary",
+        "t": 176.698
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-2-b:q",
+        "t": 151.459,
+        "prompt": "An order of concert tickets costs \\$60. Use $C = 5n + 10$ to find the number of tickets.",
+        "choices": [
+          "$10$",
+          "$2$",
+          "$14$",
+          "$12$"
+        ],
+        "answer": 0,
+        "working": "Undo in reverse order: $60 - 10 = 50$, then $50 \\div 5 = 10$. Check: $5(10) + 10 = 60$."
+      }
+    ]
+  },
+  "m7-5-2-c": {
+    "lessonId": "m7-5-2",
+    "title": "Tables of Values and Graphs, Part 3: Graphing a Table of Values",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 18.781
+      },
+      {
+        "title": "Plotting the points",
+        "t": 48.331
+      },
+      {
+        "title": "A straight line",
+        "t": 86.447
+      },
+      {
+        "title": "Watch out",
+        "t": 124.371
+      },
+      {
+        "title": "Your turn",
+        "t": 150.449
+      },
+      {
+        "title": "Summary",
+        "t": 180.881
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-2-c:q",
+        "t": 158.397,
+        "prompt": "Which point is on the graph of $y = 2x + 4$?",
+        "choices": [
+          "$(2,\\ 6)$",
+          "$(8,\\ 2)$",
+          "$(6,\\ 16)$",
+          "$(4,\\ 10)$"
+        ],
+        "answer": 2,
+        "working": "When $x = 6$, $y = 2(6) + 4 = 16$, so $(6,\\ 16)$ is on the graph. The others do not fit: for example, when $x = 2$, $y$ is $8$, not $6$."
+      }
+    ]
+  },
+  "m7-5-2-d": {
+    "lessonId": "m7-5-2",
+    "title": "Tables of Values and Graphs, Part 4: Reading a Graph",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ticket graph",
+        "t": 19.7
+      },
+      {
+        "title": "Reading up and across",
+        "t": 59.202
+      },
+      {
+        "title": "Reading across and down",
+        "t": 80.071
+      },
+      {
+        "title": "The price and the fee",
+        "t": 105.395
+      },
+      {
+        "title": "Watch out",
+        "t": 143.744
+      },
+      {
+        "title": "Your turn",
+        "t": 165.574
+      },
+      {
+        "title": "Summary",
+        "t": 203.765
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-2-d:q",
+        "t": 179.238,
+        "prompt": "Concert tickets cost $C = 5n + 10$ dollars for $n$ tickets. Use the graph or the relation: what do $5$ tickets cost?",
+        "choices": [
+          "\\$25",
+          "\\$50",
+          "\\$30",
+          "\\$35"
+        ],
+        "answer": 3,
+        "working": "Go up from $5$ on the horizontal axis to the point, then across: $35$. Check: $5(5) + 10 = 35$."
+      }
+    ]
+  },
+  "m7-6-1": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 1: Variables and Expressions",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working it out",
+        "t": 21.631
+      },
+      {
+        "title": "Variables",
+        "t": 65.456
+      },
+      {
+        "title": "Expressions",
+        "t": 104.834
+      },
+      {
+        "title": "A number next to a letter",
+        "t": 139.552
+      },
+      {
+        "title": "One expression, every question",
+        "t": 174.191
+      },
+      {
+        "title": "Your turn",
+        "t": 211.566
+      },
+      {
+        "title": "Summary",
+        "t": 253.678
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1:q",
+        "t": 227.918,
+        "prompt": "Movie tickets cost \\$9 each, and a bag of popcorn costs \\$5. Which expression gives the total cost, in dollars, of $t$ tickets and one bag of popcorn?",
+        "choices": [
+          "$5t + 9$",
+          "$9t + 5$",
+          "$9 + 5 + t$",
+          "$14t$"
+        ],
+        "answer": 1,
+        "working": "Each ticket costs \\$9, so $t$ tickets cost $9t$ dollars. Add \\$5 once for the popcorn: $9t + 5$."
+      }
+    ]
+  },
+  "m7-6-1-b": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 2: Expressions and Equations",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equations",
+        "t": 22.287
+      },
+      {
+        "title": "Expression or equation?",
+        "t": 59.779
+      },
+      {
+        "title": "Watch out",
+        "t": 96.99
+      },
+      {
+        "title": "Sort them",
+        "t": 127.903
+      },
+      {
+        "title": "Your turn",
+        "t": 159.242
+      },
+      {
+        "title": "Summary",
+        "t": 185.683
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1-b:q",
+        "t": 165.291,
+        "prompt": "Which one is an **equation**?",
+        "choices": [
+          "$4x + 7$",
+          "$9 - 2y$",
+          "$3 \\times 5 + 1$",
+          "$6 + 2 = 8$"
+        ],
+        "answer": 3,
+        "working": "$6 + 2 = 8$ is the only one with an equals sign, so it is the only equation. The others are expressions."
+      }
+    ]
+  },
+  "m7-6-1-c": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 3: Coefficients and Constant Terms",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an expression",
+        "t": 16.815
+      },
+      {
+        "title": "A phone bill",
+        "t": 56.402
+      },
+      {
+        "title": "For each, or once?",
+        "t": 100.746
+      },
+      {
+        "title": "Your turn",
+        "t": 155.292
+      },
+      {
+        "title": "Summary",
+        "t": 194.058
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1-c:q",
+        "t": 170.856,
+        "prompt": "A taxi charges \\$4 to start, plus \\$2 for each kilometre. The cost, in dollars, is $2k + 4$. What is the **coefficient**, and what does it mean?",
+        "choices": [
+          "$2$: the cost of each kilometre",
+          "$4$: the cost of each kilometre",
+          "$2$: the cost to start",
+          "$k$: the number of kilometres"
+        ],
+        "answer": 0,
+        "working": "The coefficient is the number that multiplies the variable: $2$. It is an amount for each one, the cost of each kilometre. The $4$ is the constant term, paid once to start."
+      }
+    ]
+  },
+  "m7-6-1-d": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 4: Evaluating Expressions",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What evaluate means",
+        "t": 25.429
+      },
+      {
+        "title": "One variable",
+        "t": 53.165
+      },
+      {
+        "title": "Brackets",
+        "t": 86.844
+      },
+      {
+        "title": "Watch out",
+        "t": 120.329
+      },
+      {
+        "title": "Your turn",
+        "t": 148.59
+      },
+      {
+        "title": "Summary",
+        "t": 184.359
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1-d:q",
+        "t": 159.249,
+        "prompt": "Evaluate $4(y + 2)$ when $y = 5$.",
+        "choices": [
+          "$22$",
+          "$47$",
+          "$28$",
+          "$11$"
+        ],
+        "answer": 2,
+        "working": "Replace $y$ with $5$: $4(5 + 2)$. Brackets first: $5 + 2 = 7$. Then multiply: $4 \\times 7 = 28$."
+      }
+    ]
+  },
+  "m7-6-1-e": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 5: Formulas with More Than One Variable",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Points in basketball",
+        "t": 22.525
+      },
+      {
+        "title": "One player’s points",
+        "t": 69.314
+      },
+      {
+        "title": "The perimeter of a rectangle",
+        "t": 107.169
+      },
+      {
+        "title": "Your turn",
+        "t": 145.833
+      },
+      {
+        "title": "Summary",
+        "t": 185.763
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1-e:q",
+        "t": 160.773,
+        "prompt": "Use $P = 2t + 3h + f$. A player makes $5$ two-point baskets, $4$ three-point baskets and $2$ free throws. How many points does the player score?",
+        "choices": [
+          "$11$",
+          "$22$",
+          "$25$",
+          "$24$"
+        ],
+        "answer": 3,
+        "working": "$P = 2(5) + 3(4) + 2 = 10 + 12 + 2 = 24$."
+      }
+    ]
+  },
+  "m7-6-2": {
+    "lessonId": "m7-6-2",
+    "title": "Preserving Equality, Part 1: An Equation Is a Balance",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pan balance",
+        "t": 22.86
+      },
+      {
+        "title": "Bags of marbles",
+        "t": 56.732
+      },
+      {
+        "title": "The equals sign",
+        "t": 95.232
+      },
+      {
+        "title": "Write the equation",
+        "t": 122.24
+      },
+      {
+        "title": "Your turn",
+        "t": 149.587
+      },
+      {
+        "title": "Summary",
+        "t": 186.117
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-2:q",
+        "t": 163.65,
+        "prompt": "A level balance has $4$ bags of $x$ marbles and $2$ loose marbles on the left pan, and $14$ marbles on the right pan. Which equation does it show?",
+        "choices": [
+          "$x + 4 + 2 = 14$",
+          "$4x + 2 = 14$",
+          "$2x + 4 = 14$",
+          "$4x = 14 + 2$"
+        ],
+        "answer": 1,
+        "working": "Four bags hold $4x$ marbles, plus $2$ loose marbles: the left side is $4x + 2$. The right side is $14$. So $4x + 2 = 14$."
+      }
+    ]
+  },
+  "m7-6-2-b": {
+    "lessonId": "m7-6-2",
+    "title": "Preserving Equality, Part 2: Preservation of Equality",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Keep it level",
+        "t": 15.241
+      },
+      {
+        "title": "Preservation of equality",
+        "t": 50.568
+      },
+      {
+        "title": "Multiply both sides",
+        "t": 94.136
+      },
+      {
+        "title": "Change the whole side",
+        "t": 138.066
+      },
+      {
+        "title": "Which step keeps the balance?",
+        "t": 175.074
+      },
+      {
+        "title": "Your turn",
+        "t": 218.66
+      },
+      {
+        "title": "Summary",
+        "t": 256.814
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-2-b:q",
+        "t": 230.674,
+        "prompt": "The equation $10 - 4 = 6$ is true. Divide both sides by $2$. Which equation is still true?",
+        "choices": [
+          "$10 - 4 \\div 2 = 6 \\div 2$",
+          "$(10 - 4) \\div 2 = 6$",
+          "$(10 - 4) \\div 2 = 6 \\div 2$",
+          "$10 - 4 = 6 \\div 2$"
+        ],
+        "answer": 2,
+        "working": "Divide the whole left side and the whole right side: $(10 - 4) \\div 2 = 6 \\div 2$, so $3 = 3$."
+      }
+    ]
+  },
+  "m7-6-2-c": {
+    "lessonId": "m7-6-2",
+    "title": "Preserving Equality, Part 3: Using the Balance to Solve",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The balance",
+        "t": 18.295
+      },
+      {
+        "title": "Take away three",
+        "t": 44.981
+      },
+      {
+        "title": "Split into equal groups",
+        "t": 64.793
+      },
+      {
+        "title": "Check",
+        "t": 93.262
+      },
+      {
+        "title": "Another balance",
+        "t": 114.091
+      },
+      {
+        "title": "Your turn",
+        "t": 147.295
+      },
+      {
+        "title": "Summary",
+        "t": 179.193
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-2-c:q",
+        "t": 154.17,
+        "prompt": "Solve $4x + 1 = 13$.",
+        "choices": [
+          "$x = 3$",
+          "$x = 12$",
+          "$x = 3.5$",
+          "$x = 4$"
+        ],
+        "answer": 0,
+        "working": "Take $1$ from both sides: $4x = 12$. Divide both sides by $4$: $x = 3$. Check: $4(3) + 1 = 13$."
+      }
+    ]
+  },
+  "m7-6-2-d": {
+    "lessonId": "m7-6-2",
+    "title": "Preserving Equality, Part 4: Finding a Mistake",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Jun’s solution",
+        "t": 18.744
+      },
+      {
+        "title": "Check the answer",
+        "t": 45.393
+      },
+      {
+        "title": "Find the step",
+        "t": 69.31
+      },
+      {
+        "title": "Fix it",
+        "t": 111.157
+      },
+      {
+        "title": "Substitute to check",
+        "t": 136.387
+      },
+      {
+        "title": "Your turn",
+        "t": 157.99
+      },
+      {
+        "title": "Summary",
+        "t": 198.537
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-2-d:q",
+        "t": 169.221,
+        "prompt": "Leo solved $4x + 8 = 20$. Step 1: $4x + 8 - 8 = 20 - 8$. Step 2: $4x = 20$. Step 3: $\\dfrac{4x}{4} = \\dfrac{20}{4}$. Step 4: $x = 5$. Where is the mistake?",
+        "choices": [
+          "Step 1",
+          "Step 2",
+          "Step 3",
+          "Step 4"
+        ],
+        "answer": 1,
+        "working": "Check: $4(5) + 8 = 28$, not $20$. Step 1 subtracts $8$ from both sides, but in Step 2 the right side is still $20$: it should be $20 - 8 = 12$. Then $4x = 12$ and $x = 3$."
+      }
+    ]
+  },
+  "m7-6-3": {
+    "lessonId": "m7-6-3",
+    "title": "Solving One-Step Equations, Part 1: Solutions and Inverse Operations",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solutions",
+        "t": 22.437
+      },
+      {
+        "title": "Inverse operations",
+        "t": 60.653
+      },
+      {
+        "title": "On the balance",
+        "t": 99.692
+      },
+      {
+        "title": "The rule",
+        "t": 133.297
+      },
+      {
+        "title": "Your turn",
+        "t": 165.509
+      },
+      {
+        "title": "Summary",
+        "t": 197.779
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-3:q",
+        "t": 172.955,
+        "prompt": "What is the solution of $x + 6 = 15$?",
+        "choices": [
+          "$x = 21$",
+          "$x = 6$",
+          "$x = 9$",
+          "$x = 15$"
+        ],
+        "answer": 2,
+        "working": "Six is added to $x$, so subtract $6$ from both sides: $x = 15 - 6 = 9$. Check: $9 + 6 = 15$."
+      }
+    ]
+  },
+  "m7-6-3-b": {
+    "lessonId": "m7-6-3",
+    "title": "Solving One-Step Equations, Part 2: Adding and Subtracting Integers",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo adding",
+        "t": 21.145
+      },
+      {
+        "title": "Undo adding a negative",
+        "t": 63.904
+      },
+      {
+        "title": "Undo subtracting",
+        "t": 108.052
+      },
+      {
+        "title": "Watch out",
+        "t": 143.532
+      },
+      {
+        "title": "Your turn",
+        "t": 175.681
+      },
+      {
+        "title": "Summary",
+        "t": 208.104
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-3-b:q",
+        "t": 182.783,
+        "prompt": "Solve $x - 4 = {-10}$.",
+        "choices": [
+          "$x = 6$",
+          "$x = {-14}$",
+          "$x = 14$",
+          "$x = {-6}$"
+        ],
+        "answer": 3,
+        "working": "Four is subtracted from $x$, so add $4$ to both sides: $x = ({-10}) + 4 = {-6}$. Check: $({-6}) - 4 = {-10}$."
+      }
+    ]
+  },
+  "m7-6-3-c": {
+    "lessonId": "m7-6-3",
+    "title": "Solving One-Step Equations, Part 3: Multiplying and Dividing",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo multiplying",
+        "t": 15.954
+      },
+      {
+        "title": "Undo dividing",
+        "t": 58.946
+      },
+      {
+        "title": "Choose the inverse",
+        "t": 98.845
+      },
+      {
+        "title": "Your turn",
+        "t": 127.159
+      },
+      {
+        "title": "Summary",
+        "t": 160.625
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-3-c:q",
+        "t": 133.383,
+        "prompt": "Solve $\\dfrac{x}{5} = 8$.",
+        "choices": [
+          "$x = 40$",
+          "$x = 13$",
+          "$x = 3$",
+          "$x = 1.6$"
+        ],
+        "answer": 0,
+        "working": "$x$ is divided by $5$, so multiply both sides by $5$: $x = 8 \\times 5 = 40$. Check: $40 \\div 5 = 8$."
+      }
+    ]
+  },
+  "m7-6-3-d": {
+    "lessonId": "m7-6-3",
+    "title": "Solving One-Step Equations, Part 4: Equations in Stories",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The temperature at sunrise",
+        "t": 22.566
+      },
+      {
+        "title": "Packs of tape",
+        "t": 72.887
+      },
+      {
+        "title": "Three steps for a story",
+        "t": 117.425
+      },
+      {
+        "title": "Your turn",
+        "t": 141.631
+      },
+      {
+        "title": "Summary",
+        "t": 183.207
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-3-d:q",
+        "t": 157.987,
+        "prompt": "After spending \\$12, Mia has \\$25 left. Let $m$ be the amount Mia had at first, so $m - 12 = 25$. How much did Mia have at first?",
+        "choices": [
+          "\\$13",
+          "\\$300",
+          "\\$37",
+          "\\$2.08"
+        ],
+        "answer": 2,
+        "working": "Twelve is subtracted from $m$, so add $12$ to both sides: $m = 25 + 12 = 37$. Mia had \\$37. Check: $37 - 12 = 25$."
+      }
+    ]
+  },
+  "m7-6-4": {
+    "lessonId": "m7-6-4",
+    "title": "Solving Two-Step Equations, Part 1: Undo in Reverse Order",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two things happen to x",
+        "t": 25.122
+      },
+      {
+        "title": "Reverse order",
+        "t": 47.382
+      },
+      {
+        "title": "On the balance",
+        "t": 86.471
+      },
+      {
+        "title": "Check",
+        "t": 114.149
+      },
+      {
+        "title": "Watch out",
+        "t": 133.038
+      },
+      {
+        "title": "Your turn",
+        "t": 163.127
+      },
+      {
+        "title": "Summary",
+        "t": 200.014
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-4:q",
+        "t": 170.2,
+        "prompt": "Solve $5x + 4 = 39$.",
+        "choices": [
+          "$x = 7$",
+          "$x = 8.6$",
+          "$x = 35$",
+          "$x = 43$"
+        ],
+        "answer": 0,
+        "working": "Subtract $4$ from both sides: $5x = 35$. Divide both sides by $5$: $x = 7$. Check: $5(7) + 4 = 39$."
+      }
+    ]
+  },
+  "m7-6-4-b": {
+    "lessonId": "m7-6-4",
+    "title": "Solving Two-Step Equations, Part 2: The Variable on the Right, and Number Puzzles",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The variable on the right",
+        "t": 17.996
+      },
+      {
+        "title": "Think of a number",
+        "t": 73.098
+      },
+      {
+        "title": "Undo the puzzle",
+        "t": 105.606
+      },
+      {
+        "title": "Your turn",
+        "t": 149.361
+      },
+      {
+        "title": "Summary",
+        "t": 187.85
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-4-b:q",
+        "t": 161.362,
+        "prompt": "Priya thinks of a number, multiplies it by $3$, then adds $7$. The result is $31$. What was the number?",
+        "choices": [
+          "$24$",
+          "$38$",
+          "$14$",
+          "$8$"
+        ],
+        "answer": 3,
+        "working": "Let $n$ be the number: $3n + 7 = 31$. Subtract $7$: $3n = 24$. Divide by $3$: $n = 8$. Check: $3 \\times 8 + 7 = 31$."
+      }
+    ]
+  },
+  "m7-6-4-c": {
+    "lessonId": "m7-6-4",
+    "title": "Solving Two-Step Equations, Part 3: Writing Equations for Problems",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three amounts",
+        "t": 22.294
+      },
+      {
+        "title": "A phone bill",
+        "t": 55.228
+      },
+      {
+        "title": "Watch for swapped numbers",
+        "t": 104.805
+      },
+      {
+        "title": "Classes at a gym",
+        "t": 138.324
+      },
+      {
+        "title": "Your turn",
+        "t": 190.625
+      },
+      {
+        "title": "Summary",
+        "t": 234.166
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-4-c:q",
+        "t": 207.634,
+        "prompt": "A bike rental costs \\$5 for a helmet plus \\$4 for each hour. The total was \\$29. Which equation fits the story, and how many hours was the bike rented?",
+        "choices": [
+          "$5h + 4 = 29$, so $5$ hours",
+          "$4h + 5 = 29$, so $6$ hours",
+          "$4h + 5 = 29$, so $24$ hours",
+          "$4h - 5 = 29$, so $8.5$ hours"
+        ],
+        "answer": 1,
+        "working": "\\$4 is for each hour (the coefficient) and \\$5 is paid once (the constant term): $4h + 5 = 29$. Subtract $5$: $4h = 24$. Divide by $4$: $h = 6$ hours."
+      }
+    ]
+  },
+  "m7-6-4-d": {
+    "lessonId": "m7-6-4",
+    "title": "Solving Two-Step Equations, Part 4: Problems That Need a Plan",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fencing a garden",
+        "t": 19.028
+      },
+      {
+        "title": "Solve and check",
+        "t": 60.779
+      },
+      {
+        "title": "Three numbers in a row",
+        "t": 100.997
+      },
+      {
+        "title": "Make a plan",
+        "t": 153.731
+      },
+      {
+        "title": "Your turn",
+        "t": 178.094
+      },
+      {
+        "title": "Summary",
+        "t": 214.162
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-4-d:q",
+        "t": 188.66,
+        "prompt": "A rectangle has a perimeter of $30$ cm. It is $6$ cm wide. How long is it?",
+        "choices": [
+          "$9$ cm",
+          "$18$ cm",
+          "$12$ cm",
+          "$24$ cm"
+        ],
+        "answer": 0,
+        "working": "The perimeter is $2l + 2w$: $2l + 12 = 30$. Subtract $12$: $2l = 18$. Divide by $2$: $l = 9$ cm. Check: $2(9) + 2(6) = 30$."
+      }
+    ]
+  },
+  "m7-7-1": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 1: Radius and Diameter",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The centre",
+        "t": 19.086
+      },
+      {
+        "title": "Radius and diameter",
+        "t": 46.466
+      },
+      {
+        "title": "Two radii make a diameter",
+        "t": 89.868
+      },
+      {
+        "title": "From radius to diameter",
+        "t": 118.573
+      },
+      {
+        "title": "From diameter to radius",
+        "t": 137.961
+      },
+      {
+        "title": "Watch out",
+        "t": 161.818
+      },
+      {
+        "title": "Your turn",
+        "t": 198.452
+      },
+      {
+        "title": "Summary",
+        "t": 230.238
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1:q",
+        "t": 207.185,
+        "prompt": "A pizza has a diameter of $30$ cm. What is its radius?",
+        "choices": [
+          "$60$ cm",
+          "$30$ cm",
+          "$7.5$ cm",
+          "$15$ cm"
+        ],
+        "answer": 3,
+        "working": "The radius is half of the diameter: $r = 30 \\div 2 = 15$ cm."
+      }
+    ]
+  },
+  "m7-7-1-b": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 2: Central Angles",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central angles",
+        "t": 18.537
+      },
+      {
+        "title": "A full turn",
+        "t": 52.042
+      },
+      {
+        "title": "A missing central angle",
+        "t": 89.916
+      },
+      {
+        "title": "Equal slices",
+        "t": 120.113
+      },
+      {
+        "title": "Your turn",
+        "t": 141.695
+      },
+      {
+        "title": "Summary",
+        "t": 181.717
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1-b:q",
+        "t": 153.583,
+        "prompt": "Three central angles of a circle are $90^\\circ$, $125^\\circ$ and $x$. Find $x$.",
+        "choices": [
+          "$35^\\circ$",
+          "$215^\\circ$",
+          "$145^\\circ$",
+          "$235^\\circ$"
+        ],
+        "answer": 2,
+        "working": "The central angles add to $360^\\circ$: $90^\\circ + 125^\\circ = 215^\\circ$, so $x = 360^\\circ - 215^\\circ = 145^\\circ$."
+      }
+    ]
+  },
+  "m7-7-1-c": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 3: Circumference and Pi",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Circumference",
+        "t": 20.688
+      },
+      {
+        "title": "A string around a tin",
+        "t": 46.572
+      },
+      {
+        "title": "Every circle",
+        "t": 83.188
+      },
+      {
+        "title": "Pi",
+        "t": 126.809
+      },
+      {
+        "title": "The formulas",
+        "t": 154.777
+      },
+      {
+        "title": "Your turn",
+        "t": 179.472
+      },
+      {
+        "title": "Summary",
+        "t": 215.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1-c:q",
+        "t": 191.111,
+        "prompt": "A circle has a diameter of $10$ cm. Use $3.14$ for $\\pi$. What is its circumference?",
+        "choices": [
+          "$10$ cm",
+          "$31.4$ cm",
+          "$20$ cm",
+          "$314$ cm"
+        ],
+        "answer": 1,
+        "working": "$C = \\pi d = 3.14 \\times 10 = 31.4$ cm: a little more than three diameters."
+      }
+    ]
+  },
+  "m7-7-1-d": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 4: Finding the Circumference",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Using the diameter",
+        "t": 18.991
+      },
+      {
+        "title": "Using the radius",
+        "t": 64.342
+      },
+      {
+        "title": "Watch out",
+        "t": 104.655
+      },
+      {
+        "title": "Is it reasonable?",
+        "t": 140.305
+      },
+      {
+        "title": "Your turn",
+        "t": 173.366
+      },
+      {
+        "title": "Summary",
+        "t": 211.686
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1-d:q",
+        "t": 185.451,
+        "prompt": "A bicycle wheel has a radius of $30$ cm. Use $3.14$ for $\\pi$. What is its circumference?",
+        "choices": [
+          "$94.2$ cm",
+          "$376.8$ cm",
+          "$33.14$ cm",
+          "$188.4$ cm"
+        ],
+        "answer": 3,
+        "working": "$C = 2\\pi r = 2 \\times 3.14 \\times 30 = 188.4$ cm. Check: the diameter is $60$ cm, and $3 \\times 60 = 180$."
+      }
+    ]
+  },
+  "m7-7-1-e": {
+    "lessonId": "m7-7-1",
+    "title": "Radius, Diameter and Circumference, Part 5: Working Backwards",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo multiplying by pi",
+        "t": 17.979
+      },
+      {
+        "title": "A tree trunk",
+        "t": 45.246
+      },
+      {
+        "title": "The radius from the circumference",
+        "t": 96.438
+      },
+      {
+        "title": "Your turn",
+        "t": 133.676
+      },
+      {
+        "title": "Summary",
+        "t": 169.078
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-1-e:q",
+        "t": 146.969,
+        "prompt": "A round table has a circumference of $314$ cm. Use $3.14$ for $\\pi$. What is its diameter?",
+        "choices": [
+          "$100$ cm",
+          "$50$ cm",
+          "$985.96$ cm",
+          "$157$ cm"
+        ],
+        "answer": 0,
+        "working": "$d = C \\div \\pi = 314 \\div 3.14 = 100$ cm."
+      }
+    ]
+  },
+  "m7-7-2": {
+    "lessonId": "m7-7-2",
+    "title": "Area of a Parallelogram, Part 1: From a Rectangle to a Parallelogram",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parallelograms",
+        "t": 23.058
+      },
+      {
+        "title": "Cut and slide",
+        "t": 55.459
+      },
+      {
+        "title": "The rule",
+        "t": 108.428
+      },
+      {
+        "title": "A first parallelogram",
+        "t": 139.955
+      },
+      {
+        "title": "Your turn",
+        "t": 170.961
+      },
+      {
+        "title": "Summary",
+        "t": 205.087
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-2:q",
+        "t": 183.758,
+        "prompt": "A parallelogram has a base of $7$ m, a height of $4$ m, and slanted sides of $5$ m. What is its area?",
+        "choices": [
+          "$35\\text{ m}^2$",
+          "$28\\text{ m}^2$",
+          "$11\\text{ m}^2$",
+          "$14\\text{ m}^2$"
+        ],
+        "answer": 1,
+        "working": "$A = bh = 7 \\times 4 = 28$, so the area is $28\\text{ m}^2$. The slanted side is not used."
+      }
+    ]
+  },
+  "m7-7-2-b": {
+    "lessonId": "m7-7-2",
+    "title": "Area of a Parallelogram, Part 2: Base and Height",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Base and height",
+        "t": 20.69
+      },
+      {
+        "title": "The same everywhere",
+        "t": 58.537
+      },
+      {
+        "title": "Ignore the slanted side",
+        "t": 80.567
+      },
+      {
+        "title": "Watch out",
+        "t": 116.256
+      },
+      {
+        "title": "Your turn",
+        "t": 150.779
+      },
+      {
+        "title": "Summary",
+        "t": 186.394
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-2-b:q",
+        "t": 164.294,
+        "prompt": "A parallelogram has a base of $15$ cm, slanted sides of $10$ cm, and a height of $6$ cm. What is its area?",
+        "choices": [
+          "$150\\text{ cm}^2$",
+          "$31\\text{ cm}^2$",
+          "$90\\text{ cm}^2$",
+          "$60\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "$A = bh = 15 \\times 6 = 90$, so the area is $90\\text{ cm}^2$. The slanted side, $10$ cm, is not the height."
+      }
+    ]
+  },
+  "m7-7-2-c": {
+    "lessonId": "m7-7-2",
+    "title": "Area of a Parallelogram, Part 3: When the Height Is Outside",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A very slanted parallelogram",
+        "t": 19.297
+      },
+      {
+        "title": "Still base times height",
+        "t": 49.076
+      },
+      {
+        "title": "Decimal measurements",
+        "t": 93.464
+      },
+      {
+        "title": "Your turn",
+        "t": 138.065
+      },
+      {
+        "title": "Summary",
+        "t": 174.619
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-2-c:q",
+        "t": 154.87,
+        "prompt": "A very slanted parallelogram has a base of $5$ cm and slanted sides of $15$ cm. Its height, drawn outside the shape, is $9$ cm. What is its area?",
+        "choices": [
+          "$45\\text{ cm}^2$",
+          "$75\\text{ cm}^2$",
+          "$22.5\\text{ cm}^2$",
+          "$14\\text{ cm}^2$"
+        ],
+        "answer": 0,
+        "working": "The formula is the same: $A = bh = 5 \\times 9 = 45$, so the area is $45\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m7-7-2-d": {
+    "lessonId": "m7-7-2",
+    "title": "Area of a Parallelogram, Part 4: Working Backwards and Taking Away",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Find the height",
+        "t": 20.119
+      },
+      {
+        "title": "Find the base",
+        "t": 57.963
+      },
+      {
+        "title": "Take away a hole",
+        "t": 86.868
+      },
+      {
+        "title": "Your turn",
+        "t": 132.407
+      },
+      {
+        "title": "Summary",
+        "t": 167.764
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-2-d:q",
+        "t": 144.336,
+        "prompt": "A parallelogram has an area of $56\\text{ cm}^2$ and a height of $7$ cm. What is its base?",
+        "choices": [
+          "$392$ cm",
+          "$49$ cm",
+          "$63$ cm",
+          "$8$ cm"
+        ],
+        "answer": 3,
+        "working": "$56 = b \\times 7$, so $b = 56 \\div 7 = 8$ cm. Check: $8 \\times 7 = 56$."
+      }
+    ]
+  },
+  "m7-7-3": {
+    "lessonId": "m7-7-3",
+    "title": "Area of a Triangle, Part 1: Half of a Parallelogram",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two copies make a parallelogram",
+        "t": 18.767
+      },
+      {
+        "title": "The rule",
+        "t": 61.1
+      },
+      {
+        "title": "A first triangle",
+        "t": 87.134
+      },
+      {
+        "title": "Right triangles",
+        "t": 115.687
+      },
+      {
+        "title": "Your turn",
+        "t": 155.776
+      },
+      {
+        "title": "Summary",
+        "t": 191.387
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-3:q",
+        "t": 166.515,
+        "prompt": "A triangle has a base of $14$ cm and a height of $5$ cm. What is its area?",
+        "choices": [
+          "$70\\text{ cm}^2$",
+          "$19\\text{ cm}^2$",
+          "$35\\text{ cm}^2$",
+          "$17.5\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "$A = bh \\div 2 = 14 \\times 5 \\div 2 = 70 \\div 2 = 35$, so the area is $35\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m7-7-3-b": {
+    "lessonId": "m7-7-3",
+    "title": "Area of a Triangle, Part 2: Height Outside the Triangle",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The height of a triangle",
+        "t": 18.43
+      },
+      {
+        "title": "An obtuse triangle",
+        "t": 43.564
+      },
+      {
+        "title": "Find the area",
+        "t": 83.37
+      },
+      {
+        "title": "Watch out",
+        "t": 122.844
+      },
+      {
+        "title": "Your turn",
+        "t": 147.713
+      },
+      {
+        "title": "Summary",
+        "t": 185.902
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-3-b:q",
+        "t": 164.124,
+        "prompt": "An obtuse triangle has a base of $6$ cm and a slanted side of $13$ cm. Its height, drawn outside the triangle, is $5$ cm. What is its area?",
+        "choices": [
+          "$39\\text{ cm}^2$",
+          "$15\\text{ cm}^2$",
+          "$30\\text{ cm}^2$",
+          "$65\\text{ cm}^2$"
+        ],
+        "answer": 1,
+        "working": "$A = bh \\div 2 = 6 \\times 5 \\div 2 = 30 \\div 2 = 15$, so the area is $15\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m7-7-3-c": {
+    "lessonId": "m7-7-3",
+    "title": "Area of a Triangle, Part 3: Composite Shapes and Missing Heights",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The front of a shed",
+        "t": 18.994
+      },
+      {
+        "title": "Find a missing height",
+        "t": 64.46
+      },
+      {
+        "title": "Double, then divide",
+        "t": 111.269
+      },
+      {
+        "title": "Your turn",
+        "t": 132.623
+      },
+      {
+        "title": "Summary",
+        "t": 166.268
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-3-c:q",
+        "t": 144.137,
+        "prompt": "A triangle has an area of $24\\text{ cm}^2$ and a base of $8$ cm. What is its height?",
+        "choices": [
+          "$3$ cm",
+          "$192$ cm",
+          "$16$ cm",
+          "$6$ cm"
+        ],
+        "answer": 3,
+        "working": "Double the area: $2 \\times 24 = 48$. Divide by the base: $48 \\div 8 = 6$ cm. Check: $8 \\times 6 \\div 2 = 24$."
+      }
+    ]
+  },
+  "m7-7-4": {
+    "lessonId": "m7-7-4",
+    "title": "Area of a Circle, Part 1: From a Circle to a Parallelogram",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cut and rearrange",
+        "t": 20.503
+      },
+      {
+        "title": "Its base and height",
+        "t": 62.144
+      },
+      {
+        "title": "More and more sectors",
+        "t": 96.357
+      },
+      {
+        "title": "The formula",
+        "t": 125.686
+      },
+      {
+        "title": "Your turn",
+        "t": 160.257
+      },
+      {
+        "title": "Summary",
+        "t": 204.872
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-4:q",
+        "t": 176.342,
+        "prompt": "The sectors of a circle with a radius of $5$ cm are lined up into a shape close to a parallelogram. Use $3.14$ for $\\pi$. What are its base and height?",
+        "choices": [
+          "Base $15.7$ cm, height $5$ cm",
+          "Base $31.4$ cm, height $5$ cm",
+          "Base $15.7$ cm, height $10$ cm",
+          "Base $5$ cm, height $5$ cm"
+        ],
+        "answer": 0,
+        "working": "The base is half of the circumference: $\\pi r = 3.14 \\times 5 = 15.7$ cm. The height is the radius: $5$ cm."
+      }
+    ]
+  },
+  "m7-7-4-b": {
+    "lessonId": "m7-7-4",
+    "title": "Area of a Circle, Part 2: Using the Radius",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Squaring the radius",
+        "t": 17.532
+      },
+      {
+        "title": "A circle from its radius",
+        "t": 50.058
+      },
+      {
+        "title": "Area or circumference?",
+        "t": 95.34
+      },
+      {
+        "title": "Your turn",
+        "t": 141.65
+      },
+      {
+        "title": "Summary",
+        "t": 179.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-4-b:q",
+        "t": 152.664,
+        "prompt": "A circle has a radius of $10$ cm. Use $3.14$ for $\\pi$. What is its area?",
+        "choices": [
+          "$62.8\\text{ cm}^2$",
+          "$31.4\\text{ cm}^2$",
+          "$314\\text{ cm}^2$",
+          "$1\\,256\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "$A = \\pi r^2 = 3.14 \\times 10^2 = 3.14 \\times 100 = 314\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m7-7-4-c": {
+    "lessonId": "m7-7-4",
+    "title": "Area of a Circle, Part 3: Given the Diameter",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A trampoline",
+        "t": 21.709
+      },
+      {
+        "title": "Watch out",
+        "t": 68.707
+      },
+      {
+        "title": "Why four times?",
+        "t": 91.191
+      },
+      {
+        "title": "Your turn",
+        "t": 124.867
+      },
+      {
+        "title": "Summary",
+        "t": 163.713
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-4-c:q",
+        "t": 136.129,
+        "prompt": "A round rug has a diameter of $6$ m. Use $3.14$ for $\\pi$. What is its area?",
+        "choices": [
+          "$113.04\\text{ m}^2$",
+          "$28.26\\text{ m}^2$",
+          "$18.84\\text{ m}^2$",
+          "$9.42\\text{ m}^2$"
+        ],
+        "answer": 1,
+        "working": "The radius is $6 \\div 2 = 3$ m. $A = \\pi r^2 = 3.14 \\times 3^2 = 3.14 \\times 9 = 28.26\\text{ m}^2$."
+      }
+    ]
+  },
+  "m7-7-4-d": {
+    "lessonId": "m7-7-4",
+    "title": "Area of a Circle, Part 4: Shapes Made with Circles",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A window",
+        "t": 18.455
+      },
+      {
+        "title": "A deck around a pool",
+        "t": 79.22
+      },
+      {
+        "title": "Add or subtract",
+        "t": 130.286
+      },
+      {
+        "title": "Your turn",
+        "t": 157.055
+      },
+      {
+        "title": "Summary",
+        "t": 204.736
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-7-4-d:q",
+        "t": 174.463,
+        "prompt": "A round rug with a radius of $2$ m lies on a floor $6$ m long and $5$ m wide. Use $3.14$ for $\\pi$. What area of the floor is **not** covered by the rug?",
+        "choices": [
+          "$17.44\\text{ m}^2$",
+          "$42.56\\text{ m}^2$",
+          "$12.56\\text{ m}^2$",
+          "$23.72\\text{ m}^2$"
+        ],
+        "answer": 0,
+        "working": "Floor: $6 \\times 5 = 30\\text{ m}^2$. Rug: $3.14 \\times 2^2 = 12.56\\text{ m}^2$. Not covered: $30 - 12.56 = 17.44\\text{ m}^2$."
+      }
+    ]
+  },
+  "m7-8-1": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 1: Parallel and Perpendicular",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Line segments",
+        "t": 22.008
+      },
+      {
+        "title": "Parallel",
+        "t": 40.535
+      },
+      {
+        "title": "Perpendicular",
+        "t": 77.318
+      },
+      {
+        "title": "Lines on a rink",
+        "t": 110.178
+      },
+      {
+        "title": "Watch out",
+        "t": 143.257
+      },
+      {
+        "title": "Your turn",
+        "t": 165.832
+      },
+      {
+        "title": "Summary",
+        "t": 192.179
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1:q",
+        "t": 171.366,
+        "prompt": "Which pair is **perpendicular**?",
+        "choices": [
+          "The two rails of a straight train track",
+          "The two long edges of a ruler",
+          "Two lines on a sheet of lined paper",
+          "The bottom edge and a side edge of a door"
+        ],
+        "answer": 3,
+        "working": "The bottom edge and a side edge of a door meet in a square corner, a right angle, so they are perpendicular. The other pairs are parallel."
+      }
+    ]
+  },
+  "m7-8-1-b": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 2: Checking Sides on a Grid",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two rules",
+        "t": 18.806
+      },
+      {
+        "title": "The sides of a trapezoid",
+        "t": 56.034
+      },
+      {
+        "title": "Slanted sides",
+        "t": 108.934
+      },
+      {
+        "title": "Your turn",
+        "t": 150.153
+      },
+      {
+        "title": "Summary",
+        "t": 181.812
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1-b:q",
+        "t": 161.944,
+        "prompt": "On a grid, side $KL$ goes $3$ squares right and $2$ squares up. Which move makes a side **parallel** to $KL$?",
+        "choices": [
+          "$2$ right and $3$ up",
+          "$3$ right and $2$ up",
+          "$3$ right and $2$ down",
+          "$2$ left and $3$ up"
+        ],
+        "answer": 1,
+        "working": "Parallel sides make the same move: $3$ right and $2$ up."
+      }
+    ]
+  },
+  "m7-8-1-c": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 3: Using the Properties",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A missing angle",
+        "t": 19.806
+      },
+      {
+        "title": "Is it parallel?",
+        "t": 62.128
+      },
+      {
+        "title": "Watch out",
+        "t": 105.285
+      },
+      {
+        "title": "Your turn",
+        "t": 130.097
+      },
+      {
+        "title": "Summary",
+        "t": 174.052
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1-c:q",
+        "t": 147.799,
+        "prompt": "$JK \\perp LM$ at point $E$. Ray $EN$ makes a $62^\\circ$ angle with $EJ$, inside the right angle $\\angle JEL$. What is $\\angle NEL$?",
+        "choices": [
+          "$118^\\circ$",
+          "$152^\\circ$",
+          "$28^\\circ$",
+          "$62^\\circ$"
+        ],
+        "answer": 2,
+        "working": "The segments are perpendicular, so $\\angle JEL = 90^\\circ$. Then $\\angle NEL = 90^\\circ - 62^\\circ = 28^\\circ$."
+      }
+    ]
+  },
+  "m7-8-1-d": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 4: Constructing a Perpendicular Segment",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A compass",
+        "t": 20.664
+      },
+      {
+        "title": "Step 1: two arcs from P",
+        "t": 51.137
+      },
+      {
+        "title": "Steps 2 and 3: two crossing arcs",
+        "t": 85.072
+      },
+      {
+        "title": "Step 4: join P and E",
+        "t": 112.886
+      },
+      {
+        "title": "When P is not on the segment",
+        "t": 138.525
+      },
+      {
+        "title": "Check your work",
+        "t": 173.959
+      },
+      {
+        "title": "Your turn",
+        "t": 193.919
+      },
+      {
+        "title": "Summary",
+        "t": 234.082
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1-d:q",
+        "t": 207.905,
+        "prompt": "In step 1, the compass point is on $P$, and two arcs cross $AB$ at $C$ and $D$ without changing the compass. What is true about $C$ and $D$?",
+        "choices": [
+          "$PC = PD$",
+          "$CD$ is perpendicular to $AB$",
+          "$C$ and $D$ are on segment $PE$",
+          "$PC$ is twice as long as $PD$"
+        ],
+        "answer": 0,
+        "working": "The compass opening did not change, so $C$ and $D$ are the same distance from $P$: $PC = PD$."
+      }
+    ]
+  },
+  "m7-8-1-e": {
+    "lessonId": "m7-8-1",
+    "title": "Parallel and Perpendicular Line Segments, Part 5: Constructing a Parallel Segment",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Set square and ruler",
+        "t": 19.118
+      },
+      {
+        "title": "Why it works",
+        "t": 55.137
+      },
+      {
+        "title": "With two perpendiculars",
+        "t": 75.364
+      },
+      {
+        "title": "Check your work",
+        "t": 116.283
+      },
+      {
+        "title": "Your turn",
+        "t": 135.257
+      },
+      {
+        "title": "Summary",
+        "t": 175.552
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-1-e:q",
+        "t": 151.536,
+        "prompt": "You construct two segments perpendicular to $AB$, each $4$ cm long, on the same side of $AB$, and join their ends. Why is the new segment parallel to $AB$?",
+        "choices": [
+          "It is $4$ cm long.",
+          "It is perpendicular to $AB$.",
+          "It crosses $AB$ after $4$ cm.",
+          "It is the same distance, $4$ cm, from $AB$ everywhere."
+        ],
+        "answer": 3,
+        "working": "Both ends of the new segment are $4$ cm from $AB$, measured at right angles, so it is the same distance from $AB$ everywhere: it is parallel to $AB$."
+      }
+    ]
+  },
+  "m7-8-2": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 1: Two Kinds of Bisectors",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The bench and the trees",
+        "t": 22.078
+      },
+      {
+        "title": "Bisect and midpoint",
+        "t": 50.146
+      },
+      {
+        "title": "Angle bisectors",
+        "t": 97.034
+      },
+      {
+        "title": "Watch out",
+        "t": 132.06
+      },
+      {
+        "title": "Your turn",
+        "t": 161.838
+      },
+      {
+        "title": "Summary",
+        "t": 200.714
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2:q",
+        "t": 174.468,
+        "prompt": "Ray $BD$ bisects $\\angle ABC$. $\\angle ABD = 35^\\circ$. How big is $\\angle ABC$?",
+        "choices": [
+          "$17.5^\\circ$",
+          "$70^\\circ$",
+          "$35^\\circ$",
+          "$145^\\circ$"
+        ],
+        "answer": 1,
+        "working": "A bisector makes two equal angles, so $\\angle DBC = 35^\\circ$ as well, and $\\angle ABC = 35^\\circ + 35^\\circ = 70^\\circ$."
+      }
+    ]
+  },
+  "m7-8-2-b": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 2: Midpoints on a Grid",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The whole move",
+        "t": 21.028
+      },
+      {
+        "title": "Half of the move",
+        "t": 46.574
+      },
+      {
+        "title": "Working backward",
+        "t": 79.844
+      },
+      {
+        "title": "Your turn",
+        "t": 119.405
+      },
+      {
+        "title": "Summary",
+        "t": 153.892
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-b:q",
+        "t": 128.912,
+        "prompt": "Find the midpoint of the segment from $P(1, 2)$ to $Q(9, 6)$.",
+        "choices": [
+          "$(4, 2)$",
+          "$(10, 8)$",
+          "$(5, 4)$",
+          "$(8, 4)$"
+        ],
+        "answer": 2,
+        "working": "The move from $P$ to $Q$ is $8$ right and $4$ up. Half of it is $4$ right and $2$ up. From $P$: $(1 + 4, 2 + 2) = (5, 4)$."
+      }
+    ]
+  },
+  "m7-8-2-c": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 3: Constructing a Perpendicular Bisector",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Steps 1 and 2: arcs from A",
+        "t": 20.976
+      },
+      {
+        "title": "Steps 3 and 4: arcs from B, then join",
+        "t": 47.734
+      },
+      {
+        "title": "Why it works",
+        "t": 80.464
+      },
+      {
+        "title": "Other ways",
+        "t": 109.7
+      },
+      {
+        "title": "Your turn",
+        "t": 149.527
+      },
+      {
+        "title": "Summary",
+        "t": 181.364
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-c:q",
+        "t": 157.382,
+        "prompt": "Why must the compass be opened to **more than half** the length of $AB$?",
+        "choices": [
+          "Otherwise the arcs from $A$ and $B$ do not cross.",
+          "So that the arcs are perpendicular to $AB$.",
+          "So that segment $AB$ gets longer.",
+          "So that the midpoint moves to $A$."
+        ],
+        "answer": 0,
+        "working": "With less than half the length, the arcs from $A$ and from $B$ do not reach each other, so they never cross, and there are no points $C$ and $D$ to join."
+      }
+    ]
+  },
+  "m7-8-2-d": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 4: Constructing an Angle Bisector",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Step 1: an arc from the vertex",
+        "t": 22.437
+      },
+      {
+        "title": "Steps 2 and 3: two crossing arcs",
+        "t": 49.251
+      },
+      {
+        "title": "Step 4: draw the ray",
+        "t": 73.003
+      },
+      {
+        "title": "Other ways",
+        "t": 100.911
+      },
+      {
+        "title": "Your turn",
+        "t": 135.713
+      },
+      {
+        "title": "Summary",
+        "t": 170.008
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-d:q",
+        "t": 147.423,
+        "prompt": "You bisect an angle of $130^\\circ$ with a compass and a ruler. What should each of the two new angles measure?",
+        "choices": [
+          "$260^\\circ$",
+          "$50^\\circ$",
+          "$130^\\circ$",
+          "$65^\\circ$"
+        ],
+        "answer": 3,
+        "working": "A bisector splits the angle into two equal angles, each half of the whole: $130^\\circ \\div 2 = 65^\\circ$."
+      }
+    ]
+  },
+  "m7-8-2-e": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 5: Using Equal Lengths",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same distance from both ends",
+        "t": 18.092
+      },
+      {
+        "title": "The bench",
+        "t": 66.839
+      },
+      {
+        "title": "Perimeter of a triangle",
+        "t": 91.337
+      },
+      {
+        "title": "Using an equation",
+        "t": 144.127
+      },
+      {
+        "title": "Your turn",
+        "t": 183.301
+      },
+      {
+        "title": "Summary",
+        "t": 223.013
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-e:q",
+        "t": 198.903,
+        "prompt": "$P$ is on the perpendicular bisector of $AB$. $PA = 9$ cm and $AB = 10$ cm. What is the perimeter of triangle $PAB$?",
+        "choices": [
+          "$19$ cm",
+          "$23$ cm",
+          "$28$ cm",
+          "$38$ cm"
+        ],
+        "answer": 2,
+        "working": "$PB = PA = 9$ cm, so the perimeter is $9 + 9 + 10 = 28$ cm."
+      }
+    ]
+  },
+  "m7-8-2-f": {
+    "lessonId": "m7-8-2",
+    "title": "Perpendicular Bisectors and Angle Bisectors, Part 6: Using Equal Angles",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Half of the whole",
+        "t": 21.051
+      },
+      {
+        "title": "Bisecting twice",
+        "t": 42.874
+      },
+      {
+        "title": "Using an equation",
+        "t": 83.85
+      },
+      {
+        "title": "Watch out",
+        "t": 122.792
+      },
+      {
+        "title": "Your turn",
+        "t": 157.053
+      },
+      {
+        "title": "Summary",
+        "t": 201.105
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-8-2-f:q",
+        "t": 172.877,
+        "prompt": "$\\angle ABC = 100^\\circ$. Ray $BD$ bisects $\\angle ABC$. Then ray $BE$ bisects $\\angle DBC$. What is $\\angle ABE$?",
+        "choices": [
+          "$50^\\circ$",
+          "$75^\\circ$",
+          "$25^\\circ$",
+          "$100^\\circ$"
+        ],
+        "answer": 1,
+        "working": "$\\angle ABD = \\angle DBC = 100^\\circ \\div 2 = 50^\\circ$. $\\angle DBE = 50^\\circ \\div 2 = 25^\\circ$. $\\angle ABE = 50^\\circ + 25^\\circ = 75^\\circ$."
+      }
+    ]
+  },
+  "m7-9-1": {
+    "lessonId": "m7-9-1",
+    "title": "The Cartesian Plane, Part 1: The Four Quadrants",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The Cartesian plane",
+        "t": 21.938
+      },
+      {
+        "title": "Positive and negative",
+        "t": 63.585
+      },
+      {
+        "title": "Four quadrants",
+        "t": 97.393
+      },
+      {
+        "title": "Which quadrant?",
+        "t": 132.453
+      },
+      {
+        "title": "Your turn",
+        "t": 167.87
+      },
+      {
+        "title": "Summary",
+        "t": 195.843
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-1:q",
+        "t": 176.657,
+        "prompt": "Which quadrant is to the **left** of the $y$-axis and **below** the $x$-axis?",
+        "choices": [
+          "Quadrant I",
+          "Quadrant II",
+          "Quadrant III",
+          "Quadrant IV"
+        ],
+        "answer": 2,
+        "working": "Counterclockwise from the top right: I is top right, II top left, III bottom left and IV bottom right. Left and below is the bottom left, Quadrant III."
+      }
+    ]
+  },
+  "m7-9-1-b": {
+    "lessonId": "m7-9-1",
+    "title": "The Cartesian Plane, Part 2: Plotting and Reading Points",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 14.736
+      },
+      {
+        "title": "Plotting a point",
+        "t": 52.927
+      },
+      {
+        "title": "Across first",
+        "t": 84.853
+      },
+      {
+        "title": "Reading coordinates",
+        "t": 118.881
+      },
+      {
+        "title": "Points on an axis",
+        "t": 169.475
+      },
+      {
+        "title": "Your turn",
+        "t": 199.322
+      },
+      {
+        "title": "Summary",
+        "t": 231.71
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-1-b:q",
+        "t": 209.437,
+        "prompt": "Point $K$ is $4$ units **left** of the origin and $1$ unit **down**. What are its coordinates?",
+        "choices": [
+          "$(-4,\\ {-1})$",
+          "$(-1,\\ {-4})$",
+          "$(4,\\ {-1})$",
+          "$(-4,\\ 1)$"
+        ],
+        "answer": 0,
+        "working": "Left is negative, so $x = -4$. Down is negative, so $y = -1$. The $x$-coordinate comes first: $K(-4,\\ {-1})$."
+      }
+    ]
+  },
+  "m7-9-1-c": {
+    "lessonId": "m7-9-1",
+    "title": "The Cartesian Plane, Part 3: Quadrants and Signs",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why the signs work",
+        "t": 16.119
+      },
+      {
+        "title": "Signs in each quadrant",
+        "t": 46.198
+      },
+      {
+        "title": "Naming the location",
+        "t": 93.063
+      },
+      {
+        "title": "Watch out",
+        "t": 139.846
+      },
+      {
+        "title": "Your turn",
+        "t": 159.84
+      },
+      {
+        "title": "Summary",
+        "t": 188.422
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-1-c:q",
+        "t": 165.655,
+        "prompt": "Which point is in Quadrant III?",
+        "choices": [
+          "$(3,\\ {-4})$",
+          "$(-2,\\ 5)$",
+          "$(0,\\ {-3})$",
+          "$(-6,\\ {-1})$"
+        ],
+        "answer": 3,
+        "working": "In Quadrant III both coordinates are negative. Only $(-6,\\ {-1})$ has $x < 0$ and $y < 0$."
+      }
+    ]
+  },
+  "m7-9-1-d": {
+    "lessonId": "m7-9-1",
+    "title": "The Cartesian Plane, Part 4: Distances and Shapes",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Length across an axis",
+        "t": 17.182
+      },
+      {
+        "title": "Watch out",
+        "t": 57.027
+      },
+      {
+        "title": "The missing corner",
+        "t": 82.196
+      },
+      {
+        "title": "The perimeter",
+        "t": 116.981
+      },
+      {
+        "title": "Your turn",
+        "t": 162.729
+      },
+      {
+        "title": "Summary",
+        "t": 199.643
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-1-d:q",
+        "t": 173.879,
+        "prompt": "How far is it from $P(-5,\\ {-2})$ to $Q(1,\\ {-2})$?",
+        "choices": [
+          "$4$ units",
+          "$6$ units",
+          "$7$ units",
+          "$3$ units"
+        ],
+        "answer": 1,
+        "working": "Both points have $y = -2$, so count across. From $-5$ to $0$ is $5$ units, and from $0$ to $1$ is $1$ unit: $5 + 1 = 6$ units."
+      }
+    ]
+  },
+  "m7-9-2": {
+    "lessonId": "m7-9-2",
+    "title": "Translations, Part 1: Translating a Point",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Transformations and images",
+        "t": 20.536
+      },
+      {
+        "title": "Translation",
+        "t": 45.504
+      },
+      {
+        "title": "How the coordinates change",
+        "t": 78.006
+      },
+      {
+        "title": "Sliding a game piece",
+        "t": 106.061
+      },
+      {
+        "title": "Watch out",
+        "t": 143.187
+      },
+      {
+        "title": "Your turn",
+        "t": 173.938
+      },
+      {
+        "title": "Summary",
+        "t": 212.083
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-2:q",
+        "t": 185.409,
+        "prompt": "Point $M(1,\\ {-2})$ is translated $3$ units **left** and $4$ units **up**. Where is $M'$?",
+        "choices": [
+          "$(4,\\ 2)$",
+          "$(-2,\\ {-6})$",
+          "$(-3,\\ 1)$",
+          "$(-2,\\ 2)$"
+        ],
+        "answer": 3,
+        "working": "Left subtracts from $x$: $1 - 3 = -2$. Up adds to $y$: $-2 + 4 = 2$. So $M'(-2,\\ 2)$."
+      }
+    ]
+  },
+  "m7-9-2-b": {
+    "lessonId": "m7-9-2",
+    "title": "Translations, Part 2: Translating a Shape",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One vertex at a time",
+        "t": 14.465
+      },
+      {
+        "title": "Moving each vertex",
+        "t": 48.183
+      },
+      {
+        "title": "Joining the image",
+        "t": 86.43
+      },
+      {
+        "title": "Watch out",
+        "t": 120.748
+      },
+      {
+        "title": "Your turn",
+        "t": 153.943
+      },
+      {
+        "title": "Summary",
+        "t": 192.148
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-2-b:q",
+        "t": 168.085,
+        "prompt": "Triangle $DEF$ has $D(-3,\\ 2)$, $E(0,\\ 2)$ and $F(-3,\\ 5)$. It is translated $4$ units right and $6$ units down. Where is $F'$?",
+        "choices": [
+          "$(-7,\\ {-1})$",
+          "$(1,\\ 11)$",
+          "$(1,\\ {-1})$",
+          "$(-3,\\ {-1})$"
+        ],
+        "answer": 2,
+        "working": "Right adds to $x$: $-3 + 4 = 1$. Down subtracts from $y$: $5 - 6 = -1$. So $F'(1,\\ {-1})$."
+      }
+    ]
+  },
+  "m7-9-2-c": {
+    "lessonId": "m7-9-2",
+    "title": "Translations, Part 3: Describing a Translation",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Follow one vertex",
+        "t": 14.943
+      },
+      {
+        "title": "Check another vertex",
+        "t": 69.784
+      },
+      {
+        "title": "Two slides in a row",
+        "t": 104.91
+      },
+      {
+        "title": "Watch out",
+        "t": 143.955
+      },
+      {
+        "title": "Your turn",
+        "t": 166.461
+      },
+      {
+        "title": "Summary",
+        "t": 202.949
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-2-c:q",
+        "t": 178.351,
+        "prompt": "Point $G(-2,\\ 4)$ is translated to $G'(3,\\ 1)$. Describe the translation.",
+        "choices": [
+          "$5$ units right and $3$ units down",
+          "$5$ units left and $3$ units up",
+          "$1$ unit right and $3$ units down",
+          "$3$ units right and $5$ units down"
+        ],
+        "answer": 0,
+        "working": "Across: $3 - (-2) = 5$, so $5$ units right. Up or down: $1 - 4 = -3$, so $3$ units down."
+      }
+    ]
+  },
+  "m7-9-3": {
+    "lessonId": "m7-9-3",
+    "title": "Reflections and Rotations, Part 1: Reflections in the Axes",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reflection",
+        "t": 17.826
+      },
+      {
+        "title": "Reflecting in the y-axis",
+        "t": 46.91
+      },
+      {
+        "title": "Watch out",
+        "t": 97.356
+      },
+      {
+        "title": "Reflecting in the x-axis",
+        "t": 124.585
+      },
+      {
+        "title": "The two rules",
+        "t": 166.19
+      },
+      {
+        "title": "Your turn",
+        "t": 209.711
+      },
+      {
+        "title": "Summary",
+        "t": 242.454
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-3:q",
+        "t": 220.075,
+        "prompt": "Point $K(-3,\\ 5)$ is reflected in the $x$-axis. Where is $K'$?",
+        "choices": [
+          "$(3,\\ 5)$",
+          "$(-3,\\ {-5})$",
+          "$(3,\\ {-5})$",
+          "$(5,\\ {-3})$"
+        ],
+        "answer": 1,
+        "working": "A reflection in the $x$-axis keeps $x$ and changes the sign of $y$: $(-3,\\ 5) \\to (-3,\\ {-5})$."
+      }
+    ]
+  },
+  "m7-9-3-b": {
+    "lessonId": "m7-9-3",
+    "title": "Reflections and Rotations, Part 2: Half Turns",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotation",
+        "t": 17.888
+      },
+      {
+        "title": "Turning one point",
+        "t": 55.255
+      },
+      {
+        "title": "A half turn",
+        "t": 92.397
+      },
+      {
+        "title": "Use tracing paper",
+        "t": 134.356
+      },
+      {
+        "title": "Your turn",
+        "t": 162.652
+      },
+      {
+        "title": "Summary",
+        "t": 196.883
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-3-b:q",
+        "t": 174.832,
+        "prompt": "Point $M(-2,\\ 5)$ is rotated $180^\\circ$ about the origin. Where is $M'$?",
+        "choices": [
+          "$(2,\\ {-5})$",
+          "$(-2,\\ {-5})$",
+          "$(2,\\ 5)$",
+          "$(5,\\ {-2})$"
+        ],
+        "answer": 0,
+        "working": "A half turn changes the sign of both coordinates: $(-2,\\ 5) \\to (2,\\ {-5})$."
+      }
+    ]
+  },
+  "m7-9-3-c": {
+    "lessonId": "m7-9-3",
+    "title": "Reflections and Rotations, Part 3: Quarter Turns",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Turning each move",
+        "t": 16.921
+      },
+      {
+        "title": "A quarter turn counterclockwise",
+        "t": 61.718
+      },
+      {
+        "title": "A quarter turn clockwise",
+        "t": 94.423
+      },
+      {
+        "title": "Two hundred seventy degrees",
+        "t": 147.038
+      },
+      {
+        "title": "Watch out",
+        "t": 185.848
+      },
+      {
+        "title": "Your turn",
+        "t": 213.668
+      },
+      {
+        "title": "Summary",
+        "t": 249.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-3-c:q",
+        "t": 225.162,
+        "prompt": "Point $Q(3,\\ 1)$ is rotated $90^\\circ$ **clockwise** about the origin. Where is $Q'$?",
+        "choices": [
+          "$(-1,\\ 3)$",
+          "$(-3,\\ {-1})$",
+          "$(3,\\ {-1})$",
+          "$(1,\\ {-3})$"
+        ],
+        "answer": 3,
+        "working": "$Q$ is $3$ right and $1$ up. Clockwise, $3$ right becomes $3$ down and $1$ up becomes $1$ right. So $Q'(1,\\ {-3})$."
+      }
+    ]
+  },
+  "m7-9-3-d": {
+    "lessonId": "m7-9-3",
+    "title": "Reflections and Rotations, Part 4: Which Transformation?",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Going round the vertices",
+        "t": 20.859
+      },
+      {
+        "title": "A reflection reverses the order",
+        "t": 56.177
+      },
+      {
+        "title": "A rotation keeps the order",
+        "t": 85.826
+      },
+      {
+        "title": "Three questions",
+        "t": 119.185
+      },
+      {
+        "title": "Your turn",
+        "t": 145.726
+      },
+      {
+        "title": "Summary",
+        "t": 180.212
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-9-3-d:q",
+        "t": 159.413,
+        "prompt": "In triangle $ABC$, the vertices $A \\to B \\to C$ go round **counterclockwise**. In its image, $A' \\to B' \\to C'$ go round **clockwise**. Which transformation was it?",
+        "choices": [
+          "a translation",
+          "a rotation of $90^\\circ$",
+          "a reflection",
+          "a rotation of $180^\\circ$"
+        ],
+        "answer": 2,
+        "working": "The order of the vertices is reversed, so the shape was flipped. Only a reflection flips a shape."
+      }
+    ]
+  },
+  "m7-10-1": {
+    "lessonId": "m7-10-1",
+    "title": "Mean, Median, Mode and Range, Part 1: The Mean",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central tendency",
+        "t": 21.431
+      },
+      {
+        "title": "Levelling out",
+        "t": 44.452
+      },
+      {
+        "title": "The rule",
+        "t": 85.102
+      },
+      {
+        "title": "Rounding the mean",
+        "t": 118.955
+      },
+      {
+        "title": "Watch out",
+        "t": 161.164
+      },
+      {
+        "title": "Your turn",
+        "t": 194.409
+      },
+      {
+        "title": "Summary",
+        "t": 226.937
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-1:q",
+        "t": 203.78,
+        "prompt": "Lena’s quiz scores were $7$, $9$, $6$, $10$ and $8$. What is the mean?",
+        "choices": [
+          "$10$",
+          "$8$",
+          "$4$",
+          "$40$"
+        ],
+        "answer": 1,
+        "working": "Sum: $7 + 9 + 6 + 10 + 8 = 40$. There are $5$ scores: $40 \\div 5 = 8$."
+      }
+    ]
+  },
+  "m7-10-1-b": {
+    "lessonId": "m7-10-1",
+    "title": "Mean, Median, Mode and Range, Part 2: The Median",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The median",
+        "t": 16.4
+      },
+      {
+        "title": "An odd number of values",
+        "t": 35.951
+      },
+      {
+        "title": "An even number of values",
+        "t": 83.055
+      },
+      {
+        "title": "Watch out",
+        "t": 132.268
+      },
+      {
+        "title": "Your turn",
+        "t": 159.239
+      },
+      {
+        "title": "Summary",
+        "t": 190.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-1-b:q",
+        "t": 167.58,
+        "prompt": "Find the median: $9,\\ 4,\\ 15,\\ 7,\\ 12$",
+        "choices": [
+          "$15$",
+          "$11$",
+          "$9.4$",
+          "$9$"
+        ],
+        "answer": 3,
+        "working": "In order: $4,\\ 7,\\ 9,\\ 12,\\ 15$. The middle (3rd) value is $9$."
+      }
+    ]
+  },
+  "m7-10-1-c": {
+    "lessonId": "m7-10-1",
+    "title": "Mean, Median, Mode and Range, Part 3: Mode and Range",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The mode",
+        "t": 18.166
+      },
+      {
+        "title": "No mode, or two modes",
+        "t": 51.138
+      },
+      {
+        "title": "The range",
+        "t": 79.358
+      },
+      {
+        "title": "A missing value",
+        "t": 122.622
+      },
+      {
+        "title": "Your turn",
+        "t": 166.366
+      },
+      {
+        "title": "Summary",
+        "t": 200.666
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-1-c:q",
+        "t": 175.291,
+        "prompt": "Find the range: $-4,\\ 7,\\ 2,\\ {-1},\\ 5$",
+        "choices": [
+          "$11$",
+          "$3$",
+          "$6$",
+          "$-11$"
+        ],
+        "answer": 0,
+        "working": "Greatest $7$, least $-4$: $7 - (-4) = 7 + 4 = 11$."
+      }
+    ]
+  },
+  "m7-10-1-d": {
+    "lessonId": "m7-10-1",
+    "title": "Mean, Median, Mode and Range, Part 4: Choosing the Best Measure",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which measure when?",
+        "t": 15.676
+      },
+      {
+        "title": "Babysitting money",
+        "t": 44.657
+      },
+      {
+        "title": "A shoe store",
+        "t": 108.494
+      },
+      {
+        "title": "When the data are words",
+        "t": 134.987
+      },
+      {
+        "title": "Your turn",
+        "t": 164.215
+      },
+      {
+        "title": "Summary",
+        "t": 205.491
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-1-d:q",
+        "t": 182.023,
+        "prompt": "Five friends ran a race. Their times, in seconds, were $14$, $15$, $16$, $17$ and $52$ (one friend stopped to tie a shoe). Which measure best describes a typical time?",
+        "choices": [
+          "the mean",
+          "the range",
+          "the median",
+          "the greatest value"
+        ],
+        "answer": 2,
+        "working": "$52$ is an outlier. It pulls the mean up to $22.8$ seconds, but the median, $16$ seconds, stays among the typical times."
+      }
+    ]
+  },
+  "m7-10-2": {
+    "lessonId": "m7-10-2",
+    "title": "The Effect of Outliers, Part 1: Outliers and the Mean",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is an outlier?",
+        "t": 20.665
+      },
+      {
+        "title": "Spotting the outlier",
+        "t": 48.379
+      },
+      {
+        "title": "The mean without the outlier",
+        "t": 78.415
+      },
+      {
+        "title": "The mean with the outlier",
+        "t": 102.91
+      },
+      {
+        "title": "Up or down",
+        "t": 133.119
+      },
+      {
+        "title": "Watch out",
+        "t": 159.729
+      },
+      {
+        "title": "Your turn",
+        "t": 187.885
+      },
+      {
+        "title": "Summary",
+        "t": 223.513
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-2:q",
+        "t": 198.241,
+        "prompt": "The data are $8$, $9$, $10$, $9$ and $34$. What is the mean **without** the outlier?",
+        "choices": [
+          "$14$",
+          "$9$",
+          "$7.2$",
+          "$34$"
+        ],
+        "answer": 1,
+        "working": "The outlier is $34$. Without it: $8 + 9 + 10 + 9 = 36$, and $36 \\div 4 = 9$."
+      }
+    ]
+  },
+  "m7-10-2-b": {
+    "lessonId": "m7-10-2",
+    "title": "The Effect of Outliers, Part 2: The Median and the Mode",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six ordinary days",
+        "t": 14.008
+      },
+      {
+        "title": "Adding a short day",
+        "t": 52.263
+      },
+      {
+        "title": "Comparing the measures",
+        "t": 92.121
+      },
+      {
+        "title": "Why the median hardly moves",
+        "t": 122.926
+      },
+      {
+        "title": "Your turn",
+        "t": 157.533
+      },
+      {
+        "title": "Summary",
+        "t": 191.494
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-2-b:q",
+        "t": 169.513,
+        "prompt": "A data set is $5,\\ 6,\\ 6,\\ 7,\\ 8$. The value $40$ is added. Which measure changes the most?",
+        "choices": [
+          "the mean",
+          "the median",
+          "the mode",
+          "none of them"
+        ],
+        "answer": 0,
+        "working": "The mean goes from $32 \\div 5 = 6.4$ to $72 \\div 6 = 12$. The median goes from $6$ to $6.5$, and the mode stays $6$."
+      }
+    ]
+  },
+  "m7-10-2-c": {
+    "lessonId": "m7-10-2",
+    "title": "The Effect of Outliers, Part 3: Keeping or Removing an Outlier",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A mistake or real?",
+        "t": 15.011
+      },
+      {
+        "title": "Reporting a typical value",
+        "t": 57.735
+      },
+      {
+        "title": "One bad game",
+        "t": 93.411
+      },
+      {
+        "title": "Watch out",
+        "t": 143.854
+      },
+      {
+        "title": "Your turn",
+        "t": 170.067
+      },
+      {
+        "title": "Summary",
+        "t": 209.119
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-2-c:q",
+        "t": 180.911,
+        "prompt": "Mia’s mean score for $4$ games is $90$. In game $5$ she scores $40$. What is her new mean?",
+        "choices": [
+          "$65$",
+          "$100$",
+          "$90$",
+          "$80$"
+        ],
+        "answer": 3,
+        "working": "Total of the first four games: $90 \\times 4 = 360$. Add game five: $360 + 40 = 400$. New mean: $400 \\div 5 = 80$."
+      }
+    ]
+  },
+  "m7-10-3": {
+    "lessonId": "m7-10-3",
+    "title": "Circle Graphs, Part 1: Reading a Circle Graph",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Circle graphs",
+        "t": 20.436
+      },
+      {
+        "title": "How many chose hockey?",
+        "t": 59.176
+      },
+      {
+        "title": "How many more?",
+        "t": 91.274
+      },
+      {
+        "title": "Every sector",
+        "t": 120.005
+      },
+      {
+        "title": "Your turn",
+        "t": 150.934
+      },
+      {
+        "title": "Summary",
+        "t": 188.086
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-3:q",
+        "t": 162.522,
+        "prompt": "In a circle graph of $200$ students, the volleyball sector is $15\\%$. How many students chose volleyball?",
+        "choices": [
+          "$15$",
+          "$3{,}000$",
+          "$30$",
+          "$185$"
+        ],
+        "answer": 2,
+        "working": "$15\\% = 0.15$, and $0.15 \\times 200 = 30$ students."
+      }
+    ]
+  },
+  "m7-10-3-b": {
+    "lessonId": "m7-10-3",
+    "title": "Circle Graphs, Part 2: Finding the Total",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backward",
+        "t": 17.494
+      },
+      {
+        "title": "A picture of the whole",
+        "t": 68.5
+      },
+      {
+        "title": "Another example",
+        "t": 108.357
+      },
+      {
+        "title": "Watch out",
+        "t": 147.88
+      },
+      {
+        "title": "Your turn",
+        "t": 175.904
+      },
+      {
+        "title": "Summary",
+        "t": 212.222
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-3-b:q",
+        "t": 187.075,
+        "prompt": "$24$ students chose swimming. That is $8\\%$ of the students surveyed. How many students were surveyed?",
+        "choices": [
+          "$192$",
+          "$300$",
+          "$32$",
+          "$3$"
+        ],
+        "answer": 1,
+        "working": "$1\\%$ is $24 \\div 8 = 3$ students, so $100\\%$ is $3 \\times 100 = 300$ students. Check: $0.08 \\times 300 = 24$."
+      }
+    ]
+  },
+  "m7-10-3-c": {
+    "lessonId": "m7-10-3",
+    "title": "Circle Graphs, Part 3: Central Angles",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Central angles",
+        "t": 14.864
+      },
+      {
+        "title": "A quarter of the circle",
+        "t": 43.482
+      },
+      {
+        "title": "Angles for every sector",
+        "t": 76.474
+      },
+      {
+        "title": "Check the total",
+        "t": 118.054
+      },
+      {
+        "title": "Your turn",
+        "t": 144.873
+      },
+      {
+        "title": "Summary",
+        "t": 180.522
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-3-c:q",
+        "t": 153.486,
+        "prompt": "A sector is $30\\%$ of a circle graph. What is its central angle?",
+        "choices": [
+          "$30^\\circ$",
+          "$120^\\circ$",
+          "$330^\\circ$",
+          "$108^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$0.30 \\times 360^\\circ = 108^\\circ$."
+      }
+    ]
+  },
+  "m7-10-3-d": {
+    "lessonId": "m7-10-3",
+    "title": "Circle Graphs, Part 4: Making a Circle Graph",
+    "duration": 300,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five steps",
+        "t": 15.124
+      },
+      {
+        "title": "The percents",
+        "t": 50.62
+      },
+      {
+        "title": "The central angles",
+        "t": 103.758
+      },
+      {
+        "title": "Drawing the graph",
+        "t": 153.467
+      },
+      {
+        "title": "Watch out",
+        "t": 193.333
+      },
+      {
+        "title": "Your turn",
+        "t": 229.842
+      },
+      {
+        "title": "Summary",
+        "t": 272.79
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-10-3-d:q",
+        "t": 242.222,
+        "prompt": "In a survey of $40$ students, $14$ chose reading as their favourite hobby. What central angle should the reading sector have?",
+        "choices": [
+          "$126^\\circ$",
+          "$14^\\circ$",
+          "$35^\\circ$",
+          "$140^\\circ$"
+        ],
+        "answer": 0,
+        "working": "$14 \\div 40 = 0.35 = 35\\%$, and $0.35 \\times 360^\\circ = 126^\\circ$."
+      }
+    ]
+  },
+  "m7-11-1": {
+    "lessonId": "m7-11-1",
+    "title": "Expressing Probabilities, Part 1: Outcomes, Events and Probability",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Outcomes and events",
+        "t": 17.843
+      },
+      {
+        "title": "Probability",
+        "t": 59.911
+      },
+      {
+        "title": "Picking a marble",
+        "t": 99.822
+      },
+      {
+        "title": "Impossible and certain",
+        "t": 139.551
+      },
+      {
+        "title": "Your turn",
+        "t": 168.132
+      },
+      {
+        "title": "Summary",
+        "t": 202.747
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-1:q",
+        "t": 180.228,
+        "prompt": "A bag has $4$ red, $1$ blue and $3$ green marbles. You pick one without looking. What is $P(\\text{green})$?",
+        "choices": [
+          "$\\dfrac{3}{5}$",
+          "$\\dfrac{1}{3}$",
+          "$\\dfrac{3}{8}$",
+          "$\\dfrac{3}{4}$"
+        ],
+        "answer": 2,
+        "working": "There are $3$ green marbles out of $4 + 1 + 3 = 8$ marbles, so $P(\\text{green}) = \\dfrac{3}{8}$."
+      }
+    ]
+  },
+  "m7-11-1-b": {
+    "lessonId": "m7-11-1",
+    "title": "Expressing Probabilities, Part 2: Ratio, Fraction and Percent",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways",
+        "t": 20.852
+      },
+      {
+        "title": "Finding the percent",
+        "t": 56.586
+      },
+      {
+        "title": "Letter tiles",
+        "t": 83.69
+      },
+      {
+        "title": "Watch out",
+        "t": 125.245
+      },
+      {
+        "title": "Your turn",
+        "t": 153.684
+      },
+      {
+        "title": "Summary",
+        "t": 192.851
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-1-b:q",
+        "t": 166.072,
+        "prompt": "A spinner has $10$ equal sections: $4$ are red and $6$ are yellow. What is the probability of red, as a percent?",
+        "choices": [
+          "$4\\%$",
+          "$40\\%$",
+          "$66.7\\%$",
+          "$60\\%$"
+        ],
+        "answer": 1,
+        "working": "$P(\\text{red}) = \\dfrac{4}{10}$, and $4 \\div 10 = 0.4 = 40\\%$."
+      }
+    ]
+  },
+  "m7-11-1-c": {
+    "lessonId": "m7-11-1",
+    "title": "Expressing Probabilities, Part 3: Changing Forms",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How the forms connect",
+        "t": 15.777
+      },
+      {
+        "title": "From a percent",
+        "t": 46.395
+      },
+      {
+        "title": "From a ratio",
+        "t": 93.991
+      },
+      {
+        "title": "Rounding a percent",
+        "t": 139.277
+      },
+      {
+        "title": "Your turn",
+        "t": 166.233
+      },
+      {
+        "title": "Summary",
+        "t": 203.247
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-1-c:q",
+        "t": 178.016,
+        "prompt": "The probability of rain tomorrow is $35\\%$. What is this probability as a fraction in lowest terms?",
+        "choices": [
+          "$\\dfrac{7}{20}$",
+          "$\\dfrac{35}{100}$",
+          "$\\dfrac{7}{10}$",
+          "$\\dfrac{3}{5}$"
+        ],
+        "answer": 0,
+        "working": "$35\\% = \\dfrac{35}{100}$. The greatest common factor of $35$ and $100$ is $5$: $\\dfrac{35 \\div 5}{100 \\div 5} = \\dfrac{7}{20}$."
+      }
+    ]
+  },
+  "m7-11-1-d": {
+    "lessonId": "m7-11-1",
+    "title": "Expressing Probabilities, Part 4: Comparing Probabilities",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same form first",
+        "t": 17.81
+      },
+      {
+        "title": "Which game?",
+        "t": 35.965
+      },
+      {
+        "title": "Two bags",
+        "t": 90.151
+      },
+      {
+        "title": "Your turn",
+        "t": 134.804
+      },
+      {
+        "title": "Summary",
+        "t": 170.896
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-1-d:q",
+        "t": 146.047,
+        "prompt": "Which probability is the greatest?",
+        "choices": [
+          "$\\dfrac{3}{5}$",
+          "$13 : 20$",
+          "$68\\%$",
+          "$\\dfrac{7}{10}$"
+        ],
+        "answer": 3,
+        "working": "As percents: $\\dfrac{3}{5} = 60\\%$, $13 : 20 = 65\\%$, $68\\%$, and $\\dfrac{7}{10} = 70\\%$. The greatest is $\\dfrac{7}{10}$."
+      }
+    ]
+  },
+  "m7-11-2": {
+    "lessonId": "m7-11-2",
+    "title": "Sample Spaces for Two Events, Part 1: Sample Spaces",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The sample space",
+        "t": 19.801
+      },
+      {
+        "title": "One spinner",
+        "t": 43.03
+      },
+      {
+        "title": "Two things at once",
+        "t": 66.603
+      },
+      {
+        "title": "Independent events",
+        "t": 95.289
+      },
+      {
+        "title": "Your turn",
+        "t": 137.264
+      },
+      {
+        "title": "Summary",
+        "t": 169.966
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-2:q",
+        "t": 147.907,
+        "prompt": "You flip a coin and roll a six-sided die. Which of these is **one outcome** in the sample space?",
+        "choices": [
+          "heads",
+          "T4",
+          "$7$",
+          "H and T"
+        ],
+        "answer": 1,
+        "working": "Each outcome is a pair: one result for the coin and one for the die. T4 means tails and a $4$."
+      }
+    ]
+  },
+  "m7-11-2-b": {
+    "lessonId": "m7-11-2",
+    "title": "Sample Spaces for Two Events, Part 2: Using a Table",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Building a table",
+        "t": 17.062
+      },
+      {
+        "title": "Counting the outcomes",
+        "t": 56.841
+      },
+      {
+        "title": "Multiply to count",
+        "t": 82.778
+      },
+      {
+        "title": "Watch out",
+        "t": 106.064
+      },
+      {
+        "title": "Your turn",
+        "t": 136.979
+      },
+      {
+        "title": "Summary",
+        "t": 169.731
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-2-b:q",
+        "t": 148.774,
+        "prompt": "You spin a spinner with $3$ equal sections and roll a six-sided die. How many outcomes are in the sample space?",
+        "choices": [
+          "$9$",
+          "$6$",
+          "$18$",
+          "$36$"
+        ],
+        "answer": 2,
+        "working": "Multiply: $3 \\times 6 = 18$ outcomes."
+      }
+    ]
+  },
+  "m7-11-2-c": {
+    "lessonId": "m7-11-2",
+    "title": "Sample Spaces for Two Events, Part 3: Tree Diagrams",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tree diagrams",
+        "t": 17.322
+      },
+      {
+        "title": "A coin and a spinner",
+        "t": 38.346
+      },
+      {
+        "title": "Watch out",
+        "t": 84.819
+      },
+      {
+        "title": "Your turn",
+        "t": 121.033
+      },
+      {
+        "title": "Summary",
+        "t": 152.395
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-2-c:q",
+        "t": 132.012,
+        "prompt": "You flip a large coin and a small coin. How many outcomes in the sample space have **exactly one** head?",
+        "choices": [
+          "$2$",
+          "$1$",
+          "$3$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "The sample space is HH, HT, TH, TT. Exactly one head: HT and TH, which are $2$ outcomes."
+      }
+    ]
+  },
+  "m7-11-2-d": {
+    "lessonId": "m7-11-2",
+    "title": "Sample Spaces for Two Events, Part 4: Counting Outcomes That Fit",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two dice",
+        "t": 15.872
+      },
+      {
+        "title": "A sum of 8",
+        "t": 51.093
+      },
+      {
+        "title": "Order matters",
+        "t": 75.881
+      },
+      {
+        "title": "Other sums",
+        "t": 99.95
+      },
+      {
+        "title": "Your turn",
+        "t": 128.421
+      },
+      {
+        "title": "Summary",
+        "t": 160.603
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-2-d:q",
+        "t": 137.263,
+        "prompt": "You roll a red die and a blue die. How many outcomes have a sum of $10$?",
+        "choices": [
+          "$2$",
+          "$10$",
+          "$36$",
+          "$3$"
+        ],
+        "answer": 3,
+        "working": "A sum of $10$: $(4,\\ 6)$, $(5,\\ 5)$ and $(6,\\ 4)$, which are $3$ outcomes."
+      }
+    ]
+  },
+  "m7-11-3": {
+    "lessonId": "m7-11-3",
+    "title": "Theoretical and Experimental Probability, Part 1: Theoretical Probability",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Theoretical probability",
+        "t": 16.672
+      },
+      {
+        "title": "Heads and an even number",
+        "t": 36.798
+      },
+      {
+        "title": "A sum of 7",
+        "t": 72.717
+      },
+      {
+        "title": "The most likely sum",
+        "t": 110.622
+      },
+      {
+        "title": "Your turn",
+        "t": 135.83
+      },
+      {
+        "title": "Summary",
+        "t": 173.134
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-3:q",
+        "t": 144.252,
+        "prompt": "Two dice are rolled. What is the probability that the sum is $11$?",
+        "choices": [
+          "$\\dfrac{1}{36}$",
+          "$\\dfrac{1}{18}$",
+          "$\\dfrac{1}{11}$",
+          "$\\dfrac{2}{11}$"
+        ],
+        "answer": 1,
+        "working": "A sum of $11$: $(5,\\ 6)$ and $(6,\\ 5)$, so $P = \\dfrac{2}{36} = \\dfrac{1}{18}$."
+      }
+    ]
+  },
+  "m7-11-3-b": {
+    "lessonId": "m7-11-3",
+    "title": "Theoretical and Experimental Probability, Part 2: Fair Games",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fair games",
+        "t": 14.821
+      },
+      {
+        "title": "Even or odd",
+        "t": 33.437
+      },
+      {
+        "title": "An unfair game",
+        "t": 72.68
+      },
+      {
+        "title": "Your turn",
+        "t": 108.163
+      },
+      {
+        "title": "Summary",
+        "t": 151.715
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-3-b:q",
+        "t": 123.143,
+        "prompt": "Ana and Ben roll two dice. Ana scores if the sum is $2$, $3$ or $4$. Ben scores if the sum is $10$, $11$ or $12$. Is the game fair?",
+        "choices": [
+          "No: Ben’s numbers are bigger, so he is more likely to score.",
+          "No: Ana is more likely to score.",
+          "Yes: each player scores on $6$ of the $36$ outcomes.",
+          "It depends on who rolls first."
+        ],
+        "answer": 2,
+        "working": "Sums of $2$, $3$ and $4$: $1 + 2 + 3 = 6$ outcomes. Sums of $10$, $11$ and $12$: $3 + 2 + 1 = 6$ outcomes. Both probabilities are $\\dfrac{6}{36} = \\dfrac{1}{6}$."
+      }
+    ]
+  },
+  "m7-11-3-c": {
+    "lessonId": "m7-11-3",
+    "title": "Theoretical and Experimental Probability, Part 3: Experimental Probability",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Experimental probability",
+        "t": 18.287
+      },
+      {
+        "title": "Flipping two coins",
+        "t": 42.806
+      },
+      {
+        "title": "Compared with theory",
+        "t": 82.697
+      },
+      {
+        "title": "Your turn",
+        "t": 120.612
+      },
+      {
+        "title": "Summary",
+        "t": 155.125
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-3-c:q",
+        "t": 132.452,
+        "prompt": "In Kiona’s $40$ trials, TT happened $8$ times. What is the experimental probability of TT?",
+        "choices": [
+          "$20\\%$",
+          "$25\\%$",
+          "$8\\%$",
+          "$80\\%$"
+        ],
+        "answer": 0,
+        "working": "$P(\\text{TT}) = \\dfrac{8}{40} = \\dfrac{1}{5} = 20\\%$."
+      }
+    ]
+  },
+  "m7-11-3-d": {
+    "lessonId": "m7-11-3",
+    "title": "Theoretical and Experimental Probability, Part 4: More Trials and Predictions",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why results differ",
+        "t": 19.866
+      },
+      {
+        "title": "More trials",
+        "t": 48.015
+      },
+      {
+        "title": "Predicting results",
+        "t": 85.887
+      },
+      {
+        "title": "Watch out",
+        "t": 126.773
+      },
+      {
+        "title": "Your turn",
+        "t": 153.234
+      },
+      {
+        "title": "Summary",
+        "t": 188.336
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-3-d:q",
+        "t": 163.841,
+        "prompt": "You roll one six-sided die $60$ times. About how many times should you expect to roll a $5$?",
+        "choices": [
+          "$5$",
+          "$6$",
+          "$12$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "$P(5) = \\dfrac{1}{6}$, so expect about $\\dfrac{1}{6} \\times 60 = 10$ fives."
+      }
+    ]
+  },
+  "m8-1-1": {
+    "lessonId": "m8-1-1",
+    "title": "Perfect Squares and Square Roots, Part 1: Perfect Squares",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sixteen tiles",
+        "t": 27.827
+      },
+      {
+        "title": "Four squared",
+        "t": 62.85
+      },
+      {
+        "title": "The first twelve",
+        "t": 107.974
+      },
+      {
+        "title": "Is 20 a perfect square?",
+        "t": 145.112
+      },
+      {
+        "title": "Squaring is not doubling",
+        "t": 193.639
+      },
+      {
+        "title": "Your turn",
+        "t": 217.582
+      },
+      {
+        "title": "Summary",
+        "t": 248.125
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-1:q",
+        "t": 223.984,
+        "prompt": "Which of these numbers is a perfect square?",
+        "choices": [
+          "$50$",
+          "$81$",
+          "$18$",
+          "$40$"
+        ],
+        "answer": 1,
+        "working": "$9 \\times 9 = 81$, so $81$ is a perfect square. $50$ is between $49$ and $64$, $40$ is between $36$ and $49$, and $18$ is between $16$ and $25$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

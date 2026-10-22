@@ -91,7 +91,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Here is one more. A gym charges twenty dollars to join, plus eight dollars for each class. Ravi paid sixty-eight dollars in all. How many classes did Ravi take?', show: 'q' },
-        { say: 'Let c be the number of classes. Eight dollars is for each class, so it is the coefficient. Twenty dollars is paid once, so it is the constant term. The equation is eight c plus twenty equals sixty-eight.', show: 'm.0', focus: 'm.0' },
+        { say: 'We let c be the number of classes. Eight dollars is for each class, so it is the coefficient. Twenty dollars is paid once, so it is the constant term. The equation is eight c plus twenty equals sixty-eight.', show: 'm.0', focus: 'm.0' },
         { say: 'Subtract twenty from both sides: eight c equals forty-eight.', show: 'm.1', focus: 'm.1' },
         { say: 'Divide both sides by eight: c equals six.', show: 'm.2', focus: 'm.2' },
         { say: 'Check in the story: six classes at eight dollars cost forty-eight dollars, plus twenty dollars to join is sixty-eight dollars. Ravi took six classes.' },

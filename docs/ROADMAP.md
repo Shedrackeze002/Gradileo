@@ -369,13 +369,21 @@ items ship or decisions change.
      hundred", which keeps its meaning). One video failed to render once and built cleanly on a
      second try. Every course from Math 10 to 31, Math 5 and Math 6 is rendered and in Drive
      (1,226 videos).
-   - In progress: Math 7, 143 videos written by four helpers and checked like Math 6 (four answer
-     lines or figures were corrected, and money is always said in dollars and cents), now
-     rendering unit by unit into Drive.
+   - Built: Math 7, all 143 videos, written by four helpers, checked like Math 6 (four answer
+     lines or figures were corrected, and money is always said in dollars and cents), rendered
+     unit by unit and uploaded to Drive (checked: Drive holds every file of all 143). The
+     listening check found phrases the voice blurred every time, and eleven videos were made again
+     with clearer wording: "lengths" (heard as "links"; `speechText` now says "lenkths", and the
+     end of one long line names the sides), "Let c be" and "use C equals" ("let's see", "you
+     see"), "right and up are positive" ("write an upper"), "A ray, E F" ("Array"), "two
+     endpoints" ("two and points"), "What is the mean?" ("What does the mean"), the name Ayesha
+     (garbled; now Amara, in one Math 9 video too) and dice pairs such as "one and six" ("1 in 6"
+     in a probability lesson; now "one plus six"). Each is listed in `video/README.md`. Every
+     course from Math 10 to 31 and Math 5 to 7 is rendered and in Drive (1,369 videos).
    - Scripted: Math 8, 129 videos written by five helpers. Every Your-turn answer and every still
      was checked; one question that only made sense inside its video was rewritten to stand on its
      own, the exchange-rate slide was re-spaced so its equation sits inside the margin, and the
-     volume in a working-backwards example is now shown as well as said. They render after Math 7.
+     volume in a working-backwards example is now shown as well as said. Rendering now.
    - Scripted: Math 9, 136 videos written by five helpers. Every Your-turn answer and every still
      was checked; two point labels on one graph were moved off the lines they sat on. The voice
      findings went into `video/README.md`, and "bisects" is now respelled for the voice ("a chord

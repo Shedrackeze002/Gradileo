@@ -78,7 +78,7 @@ const video: Explainer = {
         { say: 'Each axis is a number line, so it has positive numbers on one side of zero and negative numbers on the other.', show: base('sg') },
         { say: 'On the x-axis, numbers to the right of the origin are positive. Numbers to the left of the origin are negative.', show: ['sg.right', 'sg.left', 'm.0'], focus: ['sg.right', 'sg.left', 'm.0'] },
         { say: 'On the y-axis, numbers above the origin are positive. Numbers below the origin are negative.', show: ['sg.up', 'sg.down', 'm.1'], focus: ['sg.up', 'sg.down', 'm.1'] },
-        { say: 'So right and up are positive, and left and down are negative.', focus: 'sg' },
+        { say: 'So moving right or up is positive, and moving left or down is negative.', focus: 'sg' },
       ],
     },
     {
@@ -150,7 +150,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Let’s sum up. The x-axis is horizontal and the y-axis is vertical. They cross at the origin, zero, zero.', show: 'sum.0' },
-        { say: 'Right and up are positive. Left and down are negative.', show: 'sum.1' },
+        { say: 'Moving right or up is positive. Moving left or down is negative.', show: 'sum.1' },
         { say: 'The axes make four quadrants, numbered one to four counterclockwise from the top right. In the next part, you will use two numbers to plot and read points. See you there!', show: 'sum.2' },
       ],
     },

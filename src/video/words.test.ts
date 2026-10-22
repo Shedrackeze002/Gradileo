@@ -53,6 +53,7 @@ describe('speechText', () => {
     expect(speechText('EI: 0.02 times 960. CPP, EI and tax, not EIS.')).toBe('E I: 0.02 times 960. CPP, E I and tax, not EIS.');
     expect(speechText('An eight-by-twelve print and a two-by-four.')).toBe('An eight by twelve print and a two by four.');
     expect(speechText('It bisects the chord. Bisect it with the perpendicular bisector.')).toBe('It bi-sects the chord. Bi-sect it with the perpendicular bi-sector.');
+    expect(speechText('Both lengths together. Lengths add, and one length stays.')).toBe('Both lenkths together. Lenkths add, and one length stays.');
   });
 });
 
