@@ -242,7 +242,10 @@ Lessons learned while scripting (the script check does not catch these):
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
   `speechText` now says "lenkths", which helps, but at the end of a long line it can still be heard
   as "links"; there, name the sides ("the two long sides added together"). "Eighty-one" came out
-  "A to 1" in longer lines: `speechText` now drops the hyphen after "eighty", which is clear. A set or point named "A" that starts a sentence before a lowercase word ("A
+  "A to 1" in longer lines: `speechText` now drops the hyphen after "eighty", which is clear. A
+  short line ending in "eighty" ("Find one hundred fifty percent of eighty.") is heard as "AIT";
+  "of the number eighty" is clear. "It is" at the start of a line can come out "Air is" ("It is
+  cut into…"); name the thing instead ("The bar is cut into…"). A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
   the line ("Figures that are congruent…") and check it with `video/tools/hear.ts`.
 - Say a minus sign in front of a bracket or a whole fraction as "the negative of" (or "negative,"
