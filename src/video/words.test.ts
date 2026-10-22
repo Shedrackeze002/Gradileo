@@ -55,6 +55,7 @@ describe('speechText', () => {
     expect(speechText('It bisects the chord. Bisect it with the perpendicular bisector.')).toBe('It bi-sects the chord. Bi-sect it with the perpendicular bi-sector.');
     expect(speechText('Both lengths together. Lengths add, and one length stays.')).toBe('Both lenkths together. Lenkths add, and one length stays.');
     expect(speechText('Eighty-one and eighty-two, but twenty-one and eighty.')).toBe('Eighty one and eighty two, but twenty-one and eighty.');
+    expect(speechText('Two x-tiles, one x-tile and three unit tiles.')).toBe('Two x tiles, one x tile and three unit tiles.');
   });
 });
 
