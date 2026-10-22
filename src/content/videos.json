@@ -23611,6 +23611,755 @@
       }
     ]
   },
+  "m8-8-4": {
+    "lessonId": "m8-8-4",
+    "title": "Surface Area of Cylinders, Part 1: Unrolling a Cylinder",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts of a cylinder",
+        "t": 22.657
+      },
+      {
+        "title": "Unroll it",
+        "t": 56.936
+      },
+      {
+        "title": "Area of the curved surface",
+        "t": 90.091
+      },
+      {
+        "title": "The label on a can",
+        "t": 116.331
+      },
+      {
+        "title": "Your turn",
+        "t": 170.387
+      },
+      {
+        "title": "Summary",
+        "t": 213.953
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-4:q",
+        "t": 186.296,
+        "prompt": "A cardboard tube has **no ends**. It has a radius of $2$ cm and a height of $10$ cm. Use $3.14$ for $\\pi$. How much cardboard does it use?",
+        "choices": [
+          "$62.8\\text{ cm}^2$",
+          "$12.56\\text{ cm}^2$",
+          "$125.6\\text{ cm}^2$",
+          "$150.72\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "The tube is only the curved surface: $2\\pi rh = 2 \\times 3.14 \\times 2 \\times 10 = 125.6\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m8-8-4-b": {
+    "lessonId": "m8-8-4",
+    "title": "Surface Area of Cylinders, Part 2: The Surface Area Formula",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two circles and a rectangle",
+        "t": 18.126
+      },
+      {
+        "title": "A round gift box",
+        "t": 53.673
+      },
+      {
+        "title": "Round once, at the end",
+        "t": 110.281
+      },
+      {
+        "title": "Your turn",
+        "t": 155.638
+      },
+      {
+        "title": "Summary",
+        "t": 199.306
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-4-b:q",
+        "t": 170.15,
+        "prompt": "A closed cylinder has a radius of $5$ cm and a height of $10$ cm. Use $3.14$ for $\\pi$. What is its surface area?",
+        "choices": [
+          "$314\\text{ cm}^2$",
+          "$471\\text{ cm}^2$",
+          "$392.5\\text{ cm}^2$",
+          "$785\\text{ cm}^2$"
+        ],
+        "answer": 1,
+        "working": "Circles: $2 \\times 3.14 \\times 5^2 = 157$. Curved surface: $2 \\times 3.14 \\times 5 \\times 10 = 314$. $SA = 157 + 314 = 471\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m8-8-4-c": {
+    "lessonId": "m8-8-4",
+    "title": "Surface Area of Cylinders, Part 3: Radius or Diameter?",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Radius and diameter",
+        "t": 18.479
+      },
+      {
+        "title": "A hockey puck",
+        "t": 46.245
+      },
+      {
+        "title": "Using the diameter by mistake",
+        "t": 107.385
+      },
+      {
+        "title": "Your turn",
+        "t": 135.447
+      },
+      {
+        "title": "Summary",
+        "t": 176.686
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-4-c:q",
+        "t": 149.56,
+        "prompt": "A closed can has a **diameter** of $10$ cm and a height of $8$ cm. Use $3.14$ for $\\pi$. What is its surface area?",
+        "choices": [
+          "$1\\,130.4\\text{ cm}^2$",
+          "$251.2\\text{ cm}^2$",
+          "$329.7\\text{ cm}^2$",
+          "$408.2\\text{ cm}^2$"
+        ],
+        "answer": 3,
+        "working": "Radius: $10 \\div 2 = 5$ cm. Circles: $2 \\times 3.14 \\times 5^2 = 157$. Curved surface: $2 \\times 3.14 \\times 5 \\times 8 = 251.2$. $SA = 157 + 251.2 = 408.2\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m8-8-4-d": {
+    "lessonId": "m8-8-4",
+    "title": "Surface Area of Cylinders, Part 4: Solving Problems",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which parts count?",
+        "t": 17.596
+      },
+      {
+        "title": "A clay flower pot",
+        "t": 46.611
+      },
+      {
+        "title": "Painting a rain barrel",
+        "t": 102.095
+      },
+      {
+        "title": "Your turn",
+        "t": 152.305
+      },
+      {
+        "title": "Summary",
+        "t": 198.223
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-4-d:q",
+        "t": 171.542,
+        "prompt": "A round swimming pool has a radius of $3$ m and a depth of $1$ m. A liner covers its bottom and its curved side. There is **no top**. Use $3.14$ for $\\pi$. What area does the liner cover?",
+        "choices": [
+          "$47.1\\text{ m}^2$",
+          "$75.36\\text{ m}^2$",
+          "$18.84\\text{ m}^2$",
+          "$28.26\\text{ m}^2$"
+        ],
+        "answer": 0,
+        "working": "Bottom: $3.14 \\times 3^2 = 28.26$. Curved side: $2 \\times 3.14 \\times 3 \\times 1 = 18.84$. Total: $28.26 + 18.84 = 47.1\\text{ m}^2$."
+      }
+    ]
+  },
+  "m8-8-5": {
+    "lessonId": "m8-8-5",
+    "title": "Volume of Prisms and Cylinders, Part 1: Volume of a Rectangular Prism",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is volume?",
+        "t": 19.823
+      },
+      {
+        "title": "Layer by layer",
+        "t": 49.17
+      },
+      {
+        "title": "Base times height",
+        "t": 98.73
+      },
+      {
+        "title": "A shipping box",
+        "t": 130.038
+      },
+      {
+        "title": "Square or cubic units?",
+        "t": 162.884
+      },
+      {
+        "title": "Your turn",
+        "t": 195.831
+      },
+      {
+        "title": "Summary",
+        "t": 234.03
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-5:q",
+        "t": 207.028,
+        "prompt": "A box is $8$ cm long, $5$ cm wide and $3$ cm high. What is its volume?",
+        "choices": [
+          "$16\\text{ cm}^3$",
+          "$40\\text{ cm}^3$",
+          "$158\\text{ cm}^2$",
+          "$120\\text{ cm}^3$"
+        ],
+        "answer": 3,
+        "working": "Area of base: $8 \\times 5 = 40\\text{ cm}^2$. Volume: $40 \\times 3 = 120\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m8-8-5-b": {
+    "lessonId": "m8-8-5",
+    "title": "Volume of Prisms and Cylinders, Part 2: Volume of a Triangular Prism",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The base is the triangle",
+        "t": 20.897
+      },
+      {
+        "title": "Slices of the prism",
+        "t": 57.064
+      },
+      {
+        "title": "The volume of the ramp",
+        "t": 96.19
+      },
+      {
+        "title": "The wrong base",
+        "t": 142.725
+      },
+      {
+        "title": "Your turn",
+        "t": 177.843
+      },
+      {
+        "title": "Summary",
+        "t": 219.798
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-5-b:q",
+        "t": 194.099,
+        "prompt": "Each end of a triangular prism is a triangle with a base of $10$ cm and a height of $6$ cm. The prism is $20$ cm long. What is its volume?",
+        "choices": [
+          "$1\\,200\\text{ cm}^3$",
+          "$36\\text{ cm}^3$",
+          "$600\\text{ cm}^3$",
+          "$30\\text{ cm}^3$"
+        ],
+        "answer": 2,
+        "working": "Area of base: $\\tfrac{1}{2} \\times 10 \\times 6 = 30\\text{ cm}^2$. Volume: $30 \\times 20 = 600\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m8-8-5-c": {
+    "lessonId": "m8-8-5",
+    "title": "Volume of Prisms and Cylinders, Part 3: Capacity and Missing Dimensions",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Capacity",
+        "t": 17.825
+      },
+      {
+        "title": "A fish tank",
+        "t": 55.707
+      },
+      {
+        "title": "Working backwards",
+        "t": 97.262
+      },
+      {
+        "title": "Your turn",
+        "t": 150.964
+      },
+      {
+        "title": "Summary",
+        "t": 191.214
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-5-c:q",
+        "t": 164.399,
+        "prompt": "A box has a volume of $960\\text{ cm}^3$. Its base is $12$ cm by $8$ cm. How high is it?",
+        "choices": [
+          "$80$ cm",
+          "$10$ cm",
+          "$96$ cm",
+          "$48$ cm"
+        ],
+        "answer": 1,
+        "working": "Area of base: $12 \\times 8 = 96\\text{ cm}^2$. Height: $960 \\div 96 = 10$ cm."
+      }
+    ]
+  },
+  "m8-8-5-d": {
+    "lessonId": "m8-8-5",
+    "title": "Volume of Prisms and Cylinders, Part 4: Volume of a Cylinder",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A stack of circles",
+        "t": 18.481
+      },
+      {
+        "title": "A can of soup",
+        "t": 54.068
+      },
+      {
+        "title": "A drinking glass",
+        "t": 96.996
+      },
+      {
+        "title": "Squaring the diameter",
+        "t": 141.675
+      },
+      {
+        "title": "Your turn",
+        "t": 176.287
+      },
+      {
+        "title": "Summary",
+        "t": 219.543
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-5-d:q",
+        "t": 189.749,
+        "prompt": "A cylinder has a **diameter** of $6$ cm and a height of $10$ cm. Use $3.14$ for $\\pi$. What is its volume?",
+        "choices": [
+          "$1\\,130.4\\text{ cm}^3$",
+          "$188.4\\text{ cm}^3$",
+          "$94.2\\text{ cm}^3$",
+          "$282.6\\text{ cm}^3$"
+        ],
+        "answer": 3,
+        "working": "Radius: $6 \\div 2 = 3$ cm. $V = 3.14 \\times 3^2 \\times 10 = 3.14 \\times 9 \\times 10 = 282.6\\text{ cm}^3$."
+      }
+    ]
+  },
+  "m8-8-5-e": {
+    "lessonId": "m8-8-5",
+    "title": "Volume of Prisms and Cylinders, Part 5: Finding a Missing Height",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working backwards",
+        "t": 15.459
+      },
+      {
+        "title": "A water tank",
+        "t": 40.687
+      },
+      {
+        "title": "Check your answer",
+        "t": 101.859
+      },
+      {
+        "title": "Your turn",
+        "t": 142.024
+      },
+      {
+        "title": "Summary",
+        "t": 189.694
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-8-5-e:q",
+        "t": 159.456,
+        "prompt": "A vase shaped like a cylinder holds $1\\,570\\text{ cm}^3$ of water when full. Its radius is $5$ cm. Use $3.14$ for $\\pi$. How tall is it?",
+        "choices": [
+          "$100$ cm",
+          "$62.8$ cm",
+          "$20$ cm",
+          "$10$ cm"
+        ],
+        "answer": 2,
+        "working": "Area of base: $3.14 \\times 5^2 = 78.5\\text{ cm}^2$. Height: $1\\,570 \\div 78.5 = 20$ cm."
+      }
+    ]
+  },
+  "m8-9-1": {
+    "lessonId": "m8-9-1",
+    "title": "Congruent Polygons, Part 1: Same Size, Same Shape",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Congruent shapes",
+        "t": 20.489
+      },
+      {
+        "title": "Corresponding parts",
+        "t": 82.427
+      },
+      {
+        "title": "Marking equal parts",
+        "t": 145.595
+      },
+      {
+        "title": "Your turn",
+        "t": 190.532
+      },
+      {
+        "title": "Summary",
+        "t": 223.031
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-1:q",
+        "t": 198.134,
+        "prompt": "Two polygons are congruent. Which of these **must** be true?",
+        "choices": [
+          "They face the same way on the page.",
+          "Their corresponding angles are equal.",
+          "One is a larger copy of the other.",
+          "Their sides match, but their angles can be different."
+        ],
+        "answer": 1,
+        "working": "Congruent polygons have the same size and the same shape, so **all** corresponding sides and **all** corresponding angles are equal. A congruent copy can be turned or flipped, so it does not have to face the same way."
+      }
+    ]
+  },
+  "m8-9-1-b": {
+    "lessonId": "m8-9-1",
+    "title": "Congruent Polygons, Part 2: Congruence Statements",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Matching order",
+        "t": 18.478
+      },
+      {
+        "title": "Matching sides",
+        "t": 64.846
+      },
+      {
+        "title": "Reading a statement",
+        "t": 102.091
+      },
+      {
+        "title": "Watch out",
+        "t": 162.658
+      },
+      {
+        "title": "Your turn",
+        "t": 195.981
+      },
+      {
+        "title": "Summary",
+        "t": 235.815
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-1-b:q",
+        "t": 208.861,
+        "prompt": "Quadrilateral $ABCD \\cong$ quadrilateral $KNML$. Which side corresponds to $BC$?",
+        "choices": [
+          "$KN$",
+          "$ML$",
+          "$LK$",
+          "$NM$"
+        ],
+        "answer": 3,
+        "working": "Match in order: $A \\leftrightarrow K$, $B \\leftrightarrow N$, $C \\leftrightarrow M$, $D \\leftrightarrow L$. $BC$ joins $B$ and $C$, which match $N$ and $M$, so $BC$ corresponds to $NM$."
+      }
+    ]
+  },
+  "m8-9-1-c": {
+    "lessonId": "m8-9-1",
+    "title": "Congruent Polygons, Part 3: Finding Missing Measures",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Partners are equal",
+        "t": 16.714
+      },
+      {
+        "title": "A quadrilateral",
+        "t": 51.171
+      },
+      {
+        "title": "Copying the measures",
+        "t": 98.456
+      },
+      {
+        "title": "Your turn",
+        "t": 154.358
+      },
+      {
+        "title": "Summary",
+        "t": 201.432
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-1-c:q",
+        "t": 173.895,
+        "prompt": "Quadrilateral $ABCD \\cong$ quadrilateral $WZYX$. $AB = 6$ cm, $BC = 4$ cm, $CD = 3$ cm and $DA = 5$ cm. What is $ZY$?",
+        "choices": [
+          "$4$ cm",
+          "$6$ cm",
+          "$3$ cm",
+          "$5$ cm"
+        ],
+        "answer": 0,
+        "working": "Match in order: $A \\leftrightarrow W$, $B \\leftrightarrow Z$, $C \\leftrightarrow Y$, $D \\leftrightarrow X$. $ZY$ joins the second and third vertices, so it matches $BC = 4$ cm."
+      }
+    ]
+  },
+  "m8-9-1-d": {
+    "lessonId": "m8-9-1",
+    "title": "Congruent Polygons, Part 4: Using Angle Sums",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Angle sums",
+        "t": 15.758
+      },
+      {
+        "title": "Two triangles",
+        "t": 53.526
+      },
+      {
+        "title": "Two quadrilaterals",
+        "t": 116.165
+      },
+      {
+        "title": "One shape first",
+        "t": 181.42
+      },
+      {
+        "title": "Your turn",
+        "t": 205.797
+      },
+      {
+        "title": "Summary",
+        "t": 256.933
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-1-d:q",
+        "t": 221.067,
+        "prompt": "$\\triangle ABC \\cong \\triangle DEF$, $\\angle A = 40^\\circ$ and $\\angle E = 75^\\circ$. What is $\\angle F$?",
+        "choices": [
+          "$75^\\circ$",
+          "$40^\\circ$",
+          "$65^\\circ$",
+          "$115^\\circ$"
+        ],
+        "answer": 2,
+        "working": "$\\angle E$ matches $\\angle B$, so $\\angle B = 75^\\circ$. Then $\\angle C = 180^\\circ - 40^\\circ - 75^\\circ = 65^\\circ$, and $\\angle F$ matches $\\angle C$, so $\\angle F = 65^\\circ$."
+      }
+    ]
+  },
+  "m8-9-1-e": {
+    "lessonId": "m8-9-1",
+    "title": "Congruent Polygons, Part 5: Are Two Polygons Congruent?",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Check everything",
+        "t": 15.462
+      },
+      {
+        "title": "Equal angles are not enough",
+        "t": 44.197
+      },
+      {
+        "title": "Equal sides are not enough",
+        "t": 78.933
+      },
+      {
+        "title": "Comparing every part",
+        "t": 117.427
+      },
+      {
+        "title": "Your turn",
+        "t": 152.435
+      },
+      {
+        "title": "Summary",
+        "t": 193.596
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-1-e:q",
+        "t": 170.294,
+        "prompt": "Two quadrilaterals each have four $90^\\circ$ angles. One has sides of $2$, $6$, $2$ and $6$ cm. The other has sides of $3$, $4$, $3$ and $4$ cm. Are they congruent?",
+        "choices": [
+          "Yes, because all their angles are equal.",
+          "No, because their sides are not equal.",
+          "Yes, because both have four sides.",
+          "No, because their angles are not equal."
+        ],
+        "answer": 1,
+        "working": "Every angle matches, but no side of $2\\text{ cm}$ or $6\\text{ cm}$ matches a side of $3\\text{ cm}$ or $4\\text{ cm}$. Equal angles are not enough, so the quadrilaterals are **not** congruent."
+      }
+    ]
+  },
+  "m8-9-2": {
+    "lessonId": "m8-9-2",
+    "title": "Congruence and Transformations, Part 1: Slides, Flips and Turns",
+    "duration": 315,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Transformations",
+        "t": 21.749
+      },
+      {
+        "title": "Translation",
+        "t": 50.835
+      },
+      {
+        "title": "Reflection",
+        "t": 91.464
+      },
+      {
+        "title": "Rotation",
+        "t": 129.854
+      },
+      {
+        "title": "Images are congruent",
+        "t": 161.864
+      },
+      {
+        "title": "Measures after a slide",
+        "t": 195.52
+      },
+      {
+        "title": "Your turn",
+        "t": 242.634
+      },
+      {
+        "title": "Summary",
+        "t": 283.86
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-2:q",
+        "t": 258.843,
+        "prompt": "Triangle $PQR$ is reflected to triangle $P'Q'R'$. $QR = 5$ units and $\\angle P = 40^\\circ$. Which is true?",
+        "choices": [
+          "$Q'R' = 5$ units and $\\angle P' = 40^\\circ$",
+          "$Q'R' = 5$ units and $\\angle P' = 140^\\circ$",
+          "$Q'R' = 10$ units and $\\angle P' = 40^\\circ$",
+          "You cannot tell without measuring."
+        ],
+        "answer": 0,
+        "working": "A reflection gives a congruent image, so every part keeps its size: $Q'R' = QR = 5$ units and $\\angle P' = \\angle P = 40^\\circ$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
