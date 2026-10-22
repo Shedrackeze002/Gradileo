@@ -13925,6 +13925,559 @@
       }
     ]
   },
+  "m7-4-2-d": {
+    "lessonId": "m7-4-2",
+    "title": "Subtracting Integers, Part 4: Several Steps",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Change every subtraction",
+        "t": 21.587
+      },
+      {
+        "title": "A mix of signs",
+        "t": 68.691
+      },
+      {
+        "title": "Subtracting on a number line",
+        "t": 104.513
+      },
+      {
+        "title": "Your turn",
+        "t": 143.081
+      },
+      {
+        "title": "Summary",
+        "t": 181.268
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-2-d:q",
+        "t": 151.817,
+        "prompt": "Find $(+6) - (-2) - (+10)$.",
+        "choices": [
+          "$-6$",
+          "$-2$",
+          "$+2$",
+          "$+18$"
+        ],
+        "answer": 1,
+        "working": "Add the opposites: $(+6) + (+2) + (-10)$. Positives: $+8$. Then $(+8) + (-10) = -2$."
+      }
+    ]
+  },
+  "m7-4-3": {
+    "lessonId": "m7-4-3",
+    "title": "Solving Integer Problems, Part 1: Writing Integers for Changes",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Up or down",
+        "t": 23.986
+      },
+      {
+        "title": "A cold evening",
+        "t": 64.749
+      },
+      {
+        "title": "Plus-minus",
+        "t": 110.167
+      },
+      {
+        "title": "Your turn",
+        "t": 155.323
+      },
+      {
+        "title": "Summary",
+        "t": 193.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-3:q",
+        "t": 165.508,
+        "prompt": "A submarine is at $-40$ m. It rises $15$ m. Where is it now?",
+        "choices": [
+          "$-55$ m",
+          "$+25$ m",
+          "$-25$ m",
+          "$+55$ m"
+        ],
+        "answer": 2,
+        "working": "A rise is positive: $(-40) + (+15)$. Different signs: $40 - 15 = 25$, and there are more negatives, so it is at $-25$ m."
+      }
+    ]
+  },
+  "m7-4-3-b": {
+    "lessonId": "m7-4-3",
+    "title": "Solving Integer Problems, Part 2: Change and Difference",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Change and difference",
+        "t": 19.82
+      },
+      {
+        "title": "A warm wind",
+        "t": 44.862
+      },
+      {
+        "title": "Count through zero",
+        "t": 88.182
+      },
+      {
+        "title": "Above and below the water",
+        "t": 121.61
+      },
+      {
+        "title": "Your turn",
+        "t": 168.495
+      },
+      {
+        "title": "Summary",
+        "t": 207.492
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-3-b:q",
+        "t": 182.201,
+        "prompt": "Early in the morning it is $-11^\\circ\\text{C}$. At noon it is $+4^\\circ\\text{C}$. By how many degrees did the temperature rise?",
+        "choices": [
+          "$15$ degrees",
+          "$7$ degrees",
+          "$-7$ degrees",
+          "$-15$ degrees"
+        ],
+        "answer": 0,
+        "working": "New $-$ old: $(+4) - (-11) = (+4) + (+11) = +15$. Check: $11$ degrees up to $0$, and $4$ more, makes $15$."
+      }
+    ]
+  },
+  "m7-4-3-c": {
+    "lessonId": "m7-4-3",
+    "title": "Solving Integer Problems, Part 3: Several Changes in a Row",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A bank account",
+        "t": 18.605
+      },
+      {
+        "title": "Check with groups",
+        "t": 96.695
+      },
+      {
+        "title": "Your turn",
+        "t": 134.109
+      },
+      {
+        "title": "Summary",
+        "t": 177.459
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-3-c:q",
+        "t": 148.142,
+        "prompt": "A submarine starts at $-20$ m. It goes down $15$ m, then up $30$ m, then down $5$ m. Where is it now?",
+        "choices": [
+          "$-70$ m",
+          "$+10$ m",
+          "$-30$ m",
+          "$-10$ m"
+        ],
+        "answer": 3,
+        "working": "$(-20) + (-15) = -35$, then $(-35) + (+30) = -5$, then $(-5) + (-5) = -10$. The submarine is at $-10$ m."
+      }
+    ]
+  },
+  "m7-5-1": {
+    "lessonId": "m7-5-1",
+    "title": "Patterns and Linear Relations, Part 1: Patterns and Terms",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Toothpick squares",
+        "t": 19.285
+      },
+      {
+        "title": "Terms and term numbers",
+        "t": 50.07
+      },
+      {
+        "title": "How the pattern grows",
+        "t": 90.366
+      },
+      {
+        "title": "The next terms",
+        "t": 125.128
+      },
+      {
+        "title": "Your turn",
+        "t": 154.786
+      },
+      {
+        "title": "Summary",
+        "t": 191.662
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-1:q",
+        "t": 165.19,
+        "prompt": "The terms of a pattern are $5, 9, 13, 17, \\ldots$ What is term $6$?",
+        "choices": [
+          "$21$",
+          "$25$",
+          "$29$",
+          "$23$"
+        ],
+        "answer": 1,
+        "working": "The terms go up by $4$ each time. Term $5$ is $17 + 4 = 21$, and term $6$ is $21 + 4 = 25$."
+      }
+    ]
+  },
+  "m7-5-1-b": {
+    "lessonId": "m7-5-1",
+    "title": "Patterns and Linear Relations, Part 2: An Expression for a Pattern",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Variables",
+        "t": 16.879
+      },
+      {
+        "title": "Three steps",
+        "t": 43.875
+      },
+      {
+        "title": "Toothpick squares",
+        "t": 66.239
+      },
+      {
+        "title": "Watch out",
+        "t": 124.605
+      },
+      {
+        "title": "A pattern that starts low",
+        "t": 151.505
+      },
+      {
+        "title": "Your turn",
+        "t": 187.623
+      },
+      {
+        "title": "Summary",
+        "t": 226.007
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-1-b:q",
+        "t": 198.987,
+        "prompt": "The terms of a pattern are $7, 11, 15, 19, \\ldots$ Which expression gives term $n$?",
+        "choices": [
+          "$n + 4$",
+          "$4n + 7$",
+          "$4n + 3$",
+          "$3n + 4$"
+        ],
+        "answer": 2,
+        "working": "The terms go up by $4$, so start with $4n$. When $n = 1$, $4n = 4$, but term $1$ is $7$: add $3$. Check $n = 2$: $4(2) + 3 = 11$."
+      }
+    ]
+  },
+  "m7-5-1-c": {
+    "lessonId": "m7-5-1",
+    "title": "Patterns and Linear Relations, Part 3: Linear Relations",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Linear relations",
+        "t": 18.697
+      },
+      {
+        "title": "Chairs around tables",
+        "t": 48.435
+      },
+      {
+        "title": "Finding the expression",
+        "t": 81.877
+      },
+      {
+        "title": "Seeing it in the picture",
+        "t": 108.337
+      },
+      {
+        "title": "Not every pattern is linear",
+        "t": 132.69
+      },
+      {
+        "title": "Your turn",
+        "t": 158.812
+      },
+      {
+        "title": "Summary",
+        "t": 185.424
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-1-c:q",
+        "t": 164.961,
+        "prompt": "Which pattern is a **linear relation**?",
+        "choices": [
+          "$2, 5, 8, 11, \\ldots$",
+          "$1, 2, 4, 8, \\ldots$",
+          "$1, 4, 9, 16, \\ldots$",
+          "$3, 4, 6, 9, \\ldots$"
+        ],
+        "answer": 0,
+        "working": "$2, 5, 8, 11$ goes up by $3$ every time. The others go up by different amounts."
+      }
+    ]
+  },
+  "m7-5-1-d": {
+    "lessonId": "m7-5-1",
+    "title": "Patterns and Linear Relations, Part 4: Using a Relation",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Figure 50",
+        "t": 19.835
+      },
+      {
+        "title": "Working backwards",
+        "t": 59.285
+      },
+      {
+        "title": "Undo in reverse order",
+        "t": 104.484
+      },
+      {
+        "title": "Chairs for a party",
+        "t": 129.308
+      },
+      {
+        "title": "Your turn",
+        "t": 164.612
+      },
+      {
+        "title": "Summary",
+        "t": 200.296
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-1-d:q",
+        "t": 174.93,
+        "prompt": "A pattern has the expression $4n + 2$. Which term number $n$ has the value $50$?",
+        "choices": [
+          "$202$",
+          "$13$",
+          "$48$",
+          "$12$"
+        ],
+        "answer": 3,
+        "working": "Undo in reverse order: $50 - 2 = 48$, then $48 \\div 4 = 12$. Check: $4(12) + 2 = 50$."
+      }
+    ]
+  },
+  "m7-5-2": {
+    "lessonId": "m7-5-2",
+    "title": "Tables of Values and Graphs, Part 1: Making a Table of Values",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Table of values",
+        "t": 23.083
+      },
+      {
+        "title": "A table from a relation",
+        "t": 50.472
+      },
+      {
+        "title": "Concert tickets",
+        "t": 93.269
+      },
+      {
+        "title": "Patterns in the table",
+        "t": 140.625
+      },
+      {
+        "title": "Patterns in the cost",
+        "t": 158.007
+      },
+      {
+        "title": "Your turn",
+        "t": 173.591
+      },
+      {
+        "title": "Summary",
+        "t": 205.596
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-2:q",
+        "t": 182.141,
+        "prompt": "For $y = 3x + 1$, what is $y$ when $x = 4$?",
+        "choices": [
+          "$8$",
+          "$13$",
+          "$15$",
+          "$12$"
+        ],
+        "answer": 1,
+        "working": "Substitute: $y = 3(4) + 1 = 12 + 1 = 13$."
+      }
+    ]
+  },
+  "m7-5-2-b": {
+    "lessonId": "m7-5-2",
+    "title": "Tables of Values and Graphs, Part 2: Working Backwards in a Table",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How many tickets?",
+        "t": 20.031
+      },
+      {
+        "title": "Watch out",
+        "t": 73.761
+      },
+      {
+        "title": "A missing input",
+        "t": 100.867
+      },
+      {
+        "title": "Your turn",
+        "t": 137.806
+      },
+      {
+        "title": "Summary",
+        "t": 175.336
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-2-b:q",
+        "t": 150.097,
+        "prompt": "An order of concert tickets costs \\$60. Use $C = 5n + 10$ to find the number of tickets.",
+        "choices": [
+          "$10$",
+          "$2$",
+          "$14$",
+          "$12$"
+        ],
+        "answer": 0,
+        "working": "Undo in reverse order: $60 - 10 = 50$, then $50 \\div 5 = 10$. Check: $5(10) + 10 = 60$."
+      }
+    ]
+  },
+  "m7-5-2-c": {
+    "lessonId": "m7-5-2",
+    "title": "Tables of Values and Graphs, Part 3: Graphing a Table of Values",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ordered pairs",
+        "t": 18.781
+      },
+      {
+        "title": "Plotting the points",
+        "t": 48.331
+      },
+      {
+        "title": "A straight line",
+        "t": 86.447
+      },
+      {
+        "title": "Watch out",
+        "t": 124.371
+      },
+      {
+        "title": "Your turn",
+        "t": 150.449
+      },
+      {
+        "title": "Summary",
+        "t": 180.881
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-2-c:q",
+        "t": 158.397,
+        "prompt": "Which point is on the graph of $y = 2x + 4$?",
+        "choices": [
+          "$(2,\\ 6)$",
+          "$(8,\\ 2)$",
+          "$(6,\\ 16)$",
+          "$(4,\\ 10)$"
+        ],
+        "answer": 2,
+        "working": "When $x = 6$, $y = 2(6) + 4 = 16$, so $(6,\\ 16)$ is on the graph. The others do not fit: for example, when $x = 2$, $y$ is $8$, not $6$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
