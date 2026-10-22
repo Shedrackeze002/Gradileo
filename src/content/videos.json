@@ -24360,6 +24360,269 @@
       }
     ]
   },
+  "m8-9-2-b": {
+    "lessonId": "m8-9-2",
+    "title": "Congruence and Transformations, Part 2: Which Transformation?",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Going round the vertices",
+        "t": 17.048
+      },
+      {
+        "title": "A flip",
+        "t": 61.099
+      },
+      {
+        "title": "Watch out",
+        "t": 94.723
+      },
+      {
+        "title": "The three tests",
+        "t": 124.592
+      },
+      {
+        "title": "Your turn",
+        "t": 147.442
+      },
+      {
+        "title": "Summary",
+        "t": 187.525
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-2-b:q",
+        "t": 163.198,
+        "prompt": "In triangle $ABC$, the vertices $A \\to B \\to C$ go **clockwise**. In its image $A'B'C'$, they also go **clockwise**, and the image is **turned** to face a new way. Which transformation was used?",
+        "choices": [
+          "a reflection",
+          "a translation",
+          "an enlargement",
+          "a rotation"
+        ],
+        "answer": 3,
+        "working": "The vertices go round the same way, so the shape was not flipped. It is turned to face a new way, so it is a **rotation**."
+      }
+    ]
+  },
+  "m8-9-2-c": {
+    "lessonId": "m8-9-2",
+    "title": "Congruence and Transformations, Part 3: Congruent Shapes on a Grid",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What to compare",
+        "t": 16.45
+      },
+      {
+        "title": "A half turn",
+        "t": 50.976
+      },
+      {
+        "title": "One vertex out of place",
+        "t": 108.499
+      },
+      {
+        "title": "Trace and test",
+        "t": 144.247
+      },
+      {
+        "title": "Your turn",
+        "t": 169.765
+      },
+      {
+        "title": "Summary",
+        "t": 210.338
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-2-c:q",
+        "t": 186.066,
+        "prompt": "On a grid, a slanted side of shape $M$ goes $2$ squares across and $3$ squares up. Shape $N$ is shape $M$ flipped over a **vertical** mirror line. How does the matching side of $N$ go?",
+        "choices": [
+          "$3$ across and $2$ up",
+          "$2$ across and $4$ up",
+          "$2$ across and $3$ up",
+          "$1$ across and $3$ up"
+        ],
+        "answer": 2,
+        "working": "A flip does not change the size of a side. Over a vertical mirror line, the side goes the other way across, but still $2$ squares across and $3$ squares up."
+      }
+    ]
+  },
+  "m8-9-2-d": {
+    "lessonId": "m8-9-2",
+    "title": "Congruence and Transformations, Part 4: Writing a Congruence Statement",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Follow each vertex",
+        "t": 20.916
+      },
+      {
+        "title": "Writing the statement",
+        "t": 45.22
+      },
+      {
+        "title": "Watch out",
+        "t": 75.203
+      },
+      {
+        "title": "Using the statement",
+        "t": 101.783
+      },
+      {
+        "title": "Your turn",
+        "t": 126.635
+      },
+      {
+        "title": "Summary",
+        "t": 170.84
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-9-2-d:q",
+        "t": 143.166,
+        "prompt": "Triangle $DEF$ is turned onto triangle $KLM$. Vertex $D$ lands on $M$, $E$ lands on $K$, and $F$ lands on $L$. Which congruence statement is correct?",
+        "choices": [
+          "$\\triangle DEF \\cong \\triangle MKL$",
+          "$\\triangle DEF \\cong \\triangle KLM$",
+          "$\\triangle DEF \\cong \\triangle MLK$",
+          "$\\triangle DEF \\cong \\triangle LMK$"
+        ],
+        "answer": 0,
+        "working": "Write the images of $D$, $E$ and $F$, in that order: $M$, $K$, $L$. So $\\triangle DEF \\cong \\triangle MKL$."
+      }
+    ]
+  },
+  "m8-10-1": {
+    "lessonId": "m8-10-1",
+    "title": "Critiquing Graphs, Part 1: Four Kinds of Graphs",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bar graph",
+        "t": 26.616
+      },
+      {
+        "title": "Line graph",
+        "t": 54.418
+      },
+      {
+        "title": "Circle graph",
+        "t": 88.853
+      },
+      {
+        "title": "Pictograph",
+        "t": 122.421
+      },
+      {
+        "title": "Four graphs at a glance",
+        "t": 154.115
+      },
+      {
+        "title": "Your turn",
+        "t": 176.255
+      },
+      {
+        "title": "Summary",
+        "t": 203.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-1:q",
+        "t": 184.119,
+        "prompt": "Which kind of graph uses **symbols** and a **key** to compare counts?",
+        "choices": [
+          "a bar graph",
+          "a line graph",
+          "a pictograph",
+          "a circle graph"
+        ],
+        "answer": 2,
+        "working": "A pictograph uses symbols, and its key tells how many items each symbol stands for."
+      }
+    ]
+  },
+  "m8-10-1-b": {
+    "lessonId": "m8-10-1",
+    "title": "Critiquing Graphs, Part 2: Choosing a Graph",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three questions",
+        "t": 13.578
+      },
+      {
+        "title": "Parts of a day",
+        "t": 44.694
+      },
+      {
+        "title": "Goals scored",
+        "t": 74.452
+      },
+      {
+        "title": "A growing puppy",
+        "t": 99.718
+      },
+      {
+        "title": "The answers",
+        "t": 123.607
+      },
+      {
+        "title": "Your turn",
+        "t": 142.945
+      },
+      {
+        "title": "Summary",
+        "t": 172.769
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-10-1-b:q",
+        "t": 152.211,
+        "prompt": "Which graph best shows the height of a sunflower, measured every week for ten weeks?",
+        "choices": [
+          "a circle graph",
+          "a line graph",
+          "a pictograph",
+          "a bar graph"
+        ],
+        "answer": 1,
+        "working": "The height **changes over time**, so a line graph is best."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
