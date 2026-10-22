@@ -25184,6 +25184,57 @@
       }
     ]
   },
+  "m9-1-2-b": {
+    "lessonId": "m9-1-2",
+    "title": "Square Roots of Non-Perfect Squares, Part 2: Using a Calculator",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The square root of 2.7",
+        "t": 16.943
+      },
+      {
+        "title": "A fraction",
+        "t": 67.439
+      },
+      {
+        "title": "Estimate first",
+        "t": 112.756
+      },
+      {
+        "title": "A square patio",
+        "t": 139.584
+      },
+      {
+        "title": "Your turn",
+        "t": 182.774
+      },
+      {
+        "title": "Summary",
+        "t": 222.223
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-2-b:q",
+        "t": 195.312,
+        "prompt": "A square tablecloth has an area of $2.2\\ \\text{m}^2$. How long is each side, to the nearest hundredth of a metre?",
+        "choices": [
+          "$1.10\\text{ m}$",
+          "$1.48\\text{ m}$",
+          "$4.84\\text{ m}$",
+          "$14.83\\text{ m}$"
+        ],
+        "answer": 1,
+        "working": "$1^2 = 1$ and $2^2 = 4$, so the side is between $1$ m and $2$ m. $\\sqrt{2.2} = 1.4832\\ldots \\approx 1.48$ m. Check: $1.48^2 = 2.1904$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
