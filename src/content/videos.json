@@ -15352,7 +15352,7 @@
   "m7-6-4-d": {
     "lessonId": "m7-6-4",
     "title": "Solving Two-Step Equations, Part 4: Problems That Need a Plan",
-    "duration": 243,
+    "duration": 244,
     "voice": "af_heart",
     "chapters": [
       {
@@ -15369,25 +15369,25 @@
       },
       {
         "title": "Three numbers in a row",
-        "t": 100.447
+        "t": 100.997
       },
       {
         "title": "Make a plan",
-        "t": 153.181
+        "t": 153.731
       },
       {
         "title": "Your turn",
-        "t": 177.544
+        "t": 178.094
       },
       {
         "title": "Summary",
-        "t": 212.664
+        "t": 213.628
       }
     ],
     "cues": [
       {
         "id": "m7-6-4-d:q",
-        "t": 188.11,
+        "t": 188.66,
         "prompt": "A rectangle has a perimeter of $30$ cm. It is $6$ cm wide. How long is it?",
         "choices": [
           "$9$ cm",
