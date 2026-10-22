@@ -164,7 +164,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Let’s sum up. A bar graph compares amounts in separate categories.', show: 'sum.0' },
-        { say: 'A line graph shows change over time.', show: 'sum.1' },
+        { say: 'Line graphs show change over time.', show: 'sum.1' },
         { say: 'A circle graph shows the parts of one whole, which add up to one hundred percent.', show: 'sum.2' },
         { say: 'And a pictograph compares counts with symbols and a key. In the next part, you will choose the best graph for a set of data. See you there!', show: 'sum.3' },
       ],

@@ -7,7 +7,7 @@ const boxFig = figure('bx', [box({ l: 4, w: 2, h: 3 })], 420);
 const netFig = (id: string) =>
   figure(id, [boxNet({ l: 2, w: 1, h: 1.5, areas: { front: name('front'), back: name('back'), top: name('top'), bottom: name('bottom'), left: name('end'), right: name('end') } })], 460);
 
-// Dakota's net: three equal rectangles and two equilateral triangles, and the prism it folds into.
+// Amara's net: three equal rectangles and two equilateral triangles, and the prism it folds into.
 const dakota = figure(
   'dk',
   [triangularPrismNet({ a: 1.2, b: 1.2, c: 1.2, l: 2.4 }), triangularPrism({ name: 'p', at: [5, 0.6], b: 1.2, t: 1.04, l: 2.4 })],
@@ -59,7 +59,7 @@ const video: Explainer = {
       layout: 'center',
       main: [dakota],
       lines: [
-        { say: 'Dakota cuts out this net and folds it up. Which 3-D object does it make?', show: ['dk.strip', 'dk.bases'] },
+        { say: 'Amara cuts out this net and folds it up. Which 3-D object does it make?', show: ['dk.strip', 'dk.bases'] },
         { say: 'Count the faces and name their shapes. The net has two triangles, and they are the same size. They will be matching ends.', focus: 'dk.bases' },
         { say: 'The three rectangles wrap around, and join the two ends.', focus: 'dk.strip' },
         { say: 'Two matching triangle ends, joined by rectangles: that is a triangular prism.', show: ['dk.p-shape', 'dk.p-front-face', 'dk.p-side-face'], focus: 'dk.p-shape' },

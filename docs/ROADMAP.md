@@ -380,15 +380,22 @@ items ship or decisions change.
      (garbled; now Amara, in one Math 9 video too) and dice pairs such as "one and six" ("1 in 6"
      in a probability lesson; now "one plus six"). Each is listed in `video/README.md`. Every
      course from Math 10 to 31 and Math 5 to 7 is rendered and in Drive (1,369 videos).
-   - Scripted: Math 8, 129 videos written by five helpers. Every Your-turn answer and every still
+   - Built: Math 8, all 129 videos, written by five helpers. Every Your-turn answer and every still
      was checked; one question that only made sense inside its video was rewritten to stand on its
      own, the exchange-rate slide was re-spaced so its equation sits inside the margin, and the
-     volume in a working-backwards example is now shown as well as said. Rendering now.
+     volume in a working-backwards example is now shown as well as said. Rendered unit by unit and
+     uploaded to Drive (checked: Drive holds every file of all 129). The listening check found
+     phrases the voice blurred every time, and eleven videos were made again: `speechText` now
+     drops the hyphen in "eighty-one" (heard as "A to 1") and "x-tiles" ("x styles"), and the
+     lines with "of eighty." at the end, "It is cut", "a count is positive" ("account"), the name
+     Dakota ("Decoder"; now Amara), "A line graph" ("Align graph") and "Leo picks a card" ("Leo
+     Pixacard") were reworded. Each is listed in `video/README.md`. Every course from Math 10 to
+     31 and Math 5 to 8 is rendered and in Drive (1,498 videos).
    - Scripted: Math 9, 136 videos written by five helpers. Every Your-turn answer and every still
      was checked; two point labels on one graph were moved off the lines they sat on. The voice
      findings went into `video/README.md`, and "bisects" is now respelled for the voice ("a chord
-     bisects the chord" came out "by sex"). They render after Math 8, which completes the videos
-     for every course from Math 5 to Math 31.
+     bisects the chord" came out "by sex"). They complete the videos for every course from Math 5 to
+     Math 31, and are rendering now.
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with
    Claude coordinating: preparing each week's posts, keeping the schedule and reporting. It runs

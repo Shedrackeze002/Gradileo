@@ -60,7 +60,7 @@ const video: Explainer = {
       main: [bar],
       lines: [
         { say: 'Here is a picture of the same problem. The bar is sixty: the whole, or one hundred percent.', show: ['b.p0', 'b.p1', 'b.p2', 'b.p3', 'b.p4', 'b.p5', 'b.p6', 'b.p7', 'b.p8', 'b.p9', 'b.p10', 'b.whole'] },
-        { say: 'It is cut into ten equal pieces. Each piece is ten percent of sixty, which is six.', show: ['b.below0', 'b.below1', 'b.below2', 'b.below5', 'b.below6', 'b.below7', 'b.below8', 'b.below9', 'b.below10'] },
+        { say: 'The bar is cut into ten equal pieces. Each piece is ten percent of sixty, which is six.', show: ['b.below0', 'b.below1', 'b.below2', 'b.below5', 'b.below6', 'b.below7', 'b.below8', 'b.below9', 'b.below10'] },
         { say: 'Thirty-five percent is three pieces, and half of another piece. Three pieces make eighteen, and half a piece is three.', focus: ['b.p0', 'b.p1', 'b.p2', 'b.p3'] },
         { say: 'Eighteen plus three is twenty-one. The picture agrees with the multiplication.', show: 'b.part', focus: 'b.part' },
       ],

@@ -236,12 +236,18 @@ Lessons learned while scripting (the script check does not catch these):
   "$4"; "in dollars, four g" is clear), "and at a number" ("add a number"), a line that starts
   with "x is…" ("Axe is"), "Let c be" and "use C equals" ("let's see", "you see"; "We let c be"
   and "use the formula C equals" are clear), "What is the mean?" ("What does the mean"; "Find the
-  mean." is clear), the name Ayesha (garbled every time; Amara is clear), a quick list of pairs
-  such as "one and six, two and five" ("1 in 6, 2 in 5"; "one plus six" is clear), and "convenience sample" ("convenient sample"; listen
+  mean." is clear), the names Ayesha (garbled every time) and Dakota ("Decoder"; Amara is clear), a quick list of pairs
+  such as "one and six, two and five" ("1 in 6, 2 in 5"; "one plus six" is clear), "A line graph"
+  ("Align graph"; "Line graphs show…" is clear), "Leo picks a card" ("Leo Pixacard"), and "convenience sample" ("convenient sample"; listen
   to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
   `speechText` now says "lenkths", which helps, but at the end of a long line it can still be heard
-  as "links"; there, name the sides ("the two long sides added together"). A set or point named "A" that starts a sentence before a lowercase word ("A
+  as "links"; there, name the sides ("the two long sides added together"). "Eighty-one" came out
+  "A to 1" in longer lines: `speechText` now drops the hyphen after "eighty", which is clear, and in "x-tiles" ("x styles"
+  every time). A
+  short line ending in "eighty" ("Find one hundred fifty percent of eighty.") is heard as "AIT";
+  "of the number eighty" is clear. "It is" at the start of a line can come out "Air is" ("It is
+  cut into…"); name the thing instead ("The bar is cut into…"). A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
   the line ("Figures that are congruent…") and check it with `video/tools/hear.ts`.
 - Say a minus sign in front of a bracket or a whole fraction as "the negative of" (or "negative,"

@@ -94,7 +94,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'A standard deck has fifty-two cards, in four suits: spades, hearts, diamonds and clubs. Each suit has thirteen cards, and one of them is a king.', show: ['dk.grid', 'dk.heads', 'q'] },
-        { say: 'Leo picks a card, puts it back, shuffles, and picks again. What is the probability of a heart, and then a king?' },
+        { say: 'Leo takes one card, puts it back, shuffles, and picks again. What is the probability of a heart, and then a king?' },
         { say: 'Thirteen out of fifty-two cards are hearts. So the probability of a heart is thirteen out of fifty-two, which is one quarter.', show: ['dk.hearts', 'm.0'], focus: ['dk.hearts', 'm.0'] },
         { say: 'Four out of fifty-two cards are kings. So the probability of a king is four out of fifty-two, which is one thirteenth.', show: ['dk.kings', 'm.1'], focus: ['dk.kings', 'm.1'] },
         { say: 'The card is put back, so the deck is the same for both picks, and they are independent. Multiply: one quarter times one thirteenth is one out of fifty-two.', show: 'm.2', focus: 'm.2' },

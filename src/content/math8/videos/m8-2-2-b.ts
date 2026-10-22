@@ -55,7 +55,7 @@ const video: Explainer = {
         { kind: 'math', id: 'm', size: 'lg', lines: ['150\\% = 1.5', '1.5 \\times 80 = 120'] },
       ],
       lines: [
-        { say: 'Find one hundred fifty percent of eighty.', show: 'q' },
+        { say: 'Find one hundred fifty percent of the number eighty.', show: 'q' },
         { say: 'Change the percent to a decimal. One hundred fifty percent is one hundred fifty divided by one hundred, which is one point five.', show: 'm.0', focus: 'm.0' },
         { say: 'Multiply: one point five times eighty is one hundred twenty. One times eighty is eighty, and a half of eighty is forty, so that makes one hundred twenty.', show: 'm.1', focus: 'm.1' },
         { say: 'One hundred twenty is more than eighty, just as it should be.' },
