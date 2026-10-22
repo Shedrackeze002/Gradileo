@@ -25133,6 +25133,57 @@
       }
     ]
   },
+  "m9-1-1-b": {
+    "lessonId": "m9-1-1",
+    "title": "Square Roots of Perfect Squares, Part 2: Square Roots of Fractions",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Nine sixteenths",
+        "t": 18.318
+      },
+      {
+        "title": "Top and bottom",
+        "t": 56.612
+      },
+      {
+        "title": "Lowest terms first",
+        "t": 100.197
+      },
+      {
+        "title": "Root of the top only",
+        "t": 149.615
+      },
+      {
+        "title": "Your turn",
+        "t": 183.038
+      },
+      {
+        "title": "Summary",
+        "t": 219.269
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-1-b:q",
+        "t": 189.754,
+        "prompt": "Find $\\sqrt{\\dfrac{18}{50}}$.",
+        "choices": [
+          "$\\dfrac{9}{25}$",
+          "$\\dfrac{3}{25}$",
+          "$\\dfrac{9}{5}$",
+          "$\\dfrac{3}{5}$"
+        ],
+        "answer": 3,
+        "working": "In lowest terms, $\\dfrac{18}{50} = \\dfrac{9}{25}$. Then $\\sqrt{9} = 3$ and $\\sqrt{25} = 5$, so the square root is $\\dfrac{3}{5}$. Check: $\\left(\\dfrac{3}{5}\\right)^2 = \\dfrac{9}{25} = \\dfrac{18}{50}$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
