@@ -26864,6 +26864,53 @@
       }
     ]
   },
+  "m9-3-2-e": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 5: Solving Problems with Changes",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Positive and negative changes",
+        "t": 20.062
+      },
+      {
+        "title": "A day of temperatures",
+        "t": 59.308
+      },
+      {
+        "title": "How much warmer?",
+        "t": 127.581
+      },
+      {
+        "title": "Your turn",
+        "t": 178.069
+      },
+      {
+        "title": "Summary",
+        "t": 227.249
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2-e:q",
+        "t": 197.397,
+        "prompt": "A bank account has a balance of \\$23.50. A payment of \\$41.75 comes out, then a deposit of \\$12.40 goes in. What is the new balance? (A negative balance means the account owes money.)",
+        "choices": [
+          "\\$77.65",
+          "\\$5.85",
+          "−⁠\\$5.85",
+          "−⁠\\$30.65"
+        ],
+        "answer": 2,
+        "working": "The payment is negative and the deposit is positive: $23.50 + (-41.75) = -18.25$, then $-18.25 + 12.40 = -5.85$. The new balance is −⁠\\$5.85."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
