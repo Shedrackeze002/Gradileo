@@ -77,7 +77,7 @@ const video: Explainer = {
       main: [{ kind: 'math', id: 'm', size: 'lg', lines: ['2l + 10 = 34', '2l = 24', 'l = 12', '\\text{Check: } 2(12) + 2(5) = 24 + 10 = 34 \\;\\checkmark'] }],
       lines: [
         { say: 'Now solve two l plus ten equals thirty-four.', show: 'm.0' },
-        { say: 'Subtract ten from both sides. Thirty-four minus ten is twenty-four, so two l equals twenty-four. Both lengths together are twenty-four metres.', show: 'm.1', focus: 'm.1' },
+        { say: 'Subtract ten from both sides. Thirty-four minus ten is twenty-four, so two l equals twenty-four. Both lengths added together are twenty-four metres.', show: 'm.1', focus: 'm.1' },
         { say: 'Divide both sides by two. Twenty-four divided by two is twelve, so l equals twelve. The garden is twelve metres long.', show: 'm.2', focus: 'm.2' },
         { say: 'Check: two lengths of twelve make twenty-four, two widths of five make ten, and twenty-four plus ten is thirty-four metres of fencing. It works!', show: 'm.3', focus: 'm.3' },
       ],
@@ -130,7 +130,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Your turn. A rectangle has a perimeter of thirty centimetres. It is six centimetres wide. How long is it? Pause the video and try it.', show: 'q', wait: 6 },
-        { say: 'The answer is A, nine centimetres. Two l plus twelve equals thirty, so two l equals eighteen, and l equals nine. Choice B forgets to divide by two: eighteen centimetres is both lengths together.', show: 'q.answer' },
+        { say: 'The answer is A, nine centimetres. Two l plus twelve equals thirty, so two l equals eighteen, and l equals nine. Choice B forgets to divide by two: eighteen centimetres is both lengths added together.', show: 'q.answer' },
       ],
     },
     {

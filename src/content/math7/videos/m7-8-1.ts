@@ -173,7 +173,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. A line segment is the part of a line between two endpoints.', show: 'sum.0' },
+        { say: 'Let’s sum up. A line segment is the part of a line between its two endpoints.', show: 'sum.0' },
         { say: 'Parallel segments are always the same distance apart, and never meet.', show: 'sum.1' },
         { say: 'Perpendicular segments meet at a right angle, ninety degrees. In the next part, you will check for parallel and perpendicular sides on a grid. See you there!', show: 'sum.2' },
       ],

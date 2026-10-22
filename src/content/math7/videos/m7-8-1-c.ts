@@ -97,7 +97,7 @@ const video: Explainer = {
         { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\angle AEC = 90^\\circ', '35^\\circ + x = 90^\\circ', 'x = 90^\\circ - 35^\\circ = 55^\\circ'] },
       ],
       lines: [
-        { say: 'Segment A B is perpendicular to segment C D. They cross at point E. A ray, E F, makes a thirty-five degree angle with E A. Find the angle F E C, marked x.', show: ['q', 'cr.ab', 'cr.cd', 'cr.sq', 'cr.ef', 'cr.A', 'cr.B', 'cr.C', 'cr.D', 'cr.E', 'cr.F', 'cr.a35', 'cr.x'] },
+        { say: 'Segment A B is perpendicular to segment C D. They cross at point E. Ray E F makes a thirty-five degree angle with E A. Find the angle F E C, marked x.', show: ['q', 'cr.ab', 'cr.cd', 'cr.sq', 'cr.ef', 'cr.A', 'cr.B', 'cr.C', 'cr.D', 'cr.E', 'cr.F', 'cr.a35', 'cr.x'] },
         { say: 'A B and C D are perpendicular, so they make right angles. The angle A E C, from E A round to E C, is ninety degrees.', show: 'm.0', focus: 'm.0' },
         { say: 'Ray E F splits that right angle into two parts: thirty-five degrees, and x. Together they make ninety degrees.', show: 'm.1', focus: ['m.1', 'cr.a35', 'cr.x'] },
         { say: 'So x is ninety minus thirty-five, which is fifty-five degrees.', show: 'm.2', focus: 'm.2' },
