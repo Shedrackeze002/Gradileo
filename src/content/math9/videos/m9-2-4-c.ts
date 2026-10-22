@@ -58,7 +58,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'How many new people get the story in round four? Look at the pattern. Round one is three, round two is three squared, and round three is three cubed.', show: ['q', 'm.0'], focus: 'm.0' },
-        { say: 'The exponent matches the round. So round four reaches three to the power of four, which is eighty-one new people.', show: 'm.1', focus: 'm.1' },
+        { say: 'The exponent matches the round. So in round four, the count is three to the power of four, which is eighty-one new people.', show: 'm.1', focus: 'm.1' },
         { say: 'In general, when each person shares with the same number of new people, round n reaches that number to the power of n.', show: 'key' },
       ],
     },
@@ -121,7 +121,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Let’s sum up. When each person shares with three new people, round n reaches three to the power of n new people.', show: 'sum.0' },
-        { say: 'So round four reaches eighty-one new people.', show: 'sum.1' },
+        { say: 'Round four reaches eighty-one new people.', show: 'sum.1' },
         { say: 'And the total after four rounds adds every round: one hundred twenty. In the next part, you will fold paper in half again and again. See you there!', show: 'sum.2' },
       ],
     },
