@@ -26150,6 +26150,108 @@
       }
     ]
   },
+  "m9-2-3-b": {
+    "lessonId": "m9-2-3",
+    "title": "Order of Operations with Powers, Part 2: Negative Numbers and Fraction Bars",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Integers and powers",
+        "t": 19.881
+      },
+      {
+        "title": "A fraction bar",
+        "t": 67.043
+      },
+      {
+        "title": "The base of negative three squared",
+        "t": 100.959
+      },
+      {
+        "title": "On a calculator",
+        "t": 130.36
+      },
+      {
+        "title": "Your turn",
+        "t": 170.828
+      },
+      {
+        "title": "Summary",
+        "t": 214.304
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-3-b:q",
+        "t": 181.43,
+        "prompt": "Evaluate $-2^4 + (-1)^3 \\times 3$.",
+        "choices": [
+          "$13$",
+          "$-13$",
+          "$19$",
+          "$-19$"
+        ],
+        "answer": 3,
+        "working": "Exponents: $-2^4 = -16$ and $(-1)^3 = -1$. Multiply: $-1 \\times 3 = -3$. Add: $-16 + (-3) = -19$."
+      }
+    ]
+  },
+  "m9-2-3-c": {
+    "lessonId": "m9-2-3",
+    "title": "Order of Operations with Powers, Part 3: Finding Errors",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Owen’s solution",
+        "t": 17.894
+      },
+      {
+        "title": "Fix it",
+        "t": 56.811
+      },
+      {
+        "title": "Left to right",
+        "t": 81.15
+      },
+      {
+        "title": "A checklist",
+        "t": 119.104
+      },
+      {
+        "title": "Your turn",
+        "t": 148.829
+      },
+      {
+        "title": "Summary",
+        "t": 195.267
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-3-c:q",
+        "t": 161.567,
+        "prompt": "A student evaluated $2 \\times 3^2 - 4 \\div 2$ like this. Step 1: $= 6^2 - 4 \\div 2$. Step 2: $= 36 - 2$. Step 3: $= 34$. In which step is the first error?",
+        "choices": [
+          "There is no error",
+          "Step 1",
+          "Step 2",
+          "Step 3"
+        ],
+        "answer": 1,
+        "working": "Step 1 multiplies $2 \\times 3$ before working out the power. Exponents come first: $2 \\times 9 - 4 \\div 2 = 18 - 2 = 16$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
