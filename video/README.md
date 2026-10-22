@@ -234,9 +234,11 @@ Lessons learned while scripting (the script check does not catch these):
   ("Lee"), Jamal ("J-Mall") and Priya before "posts" ("Pre-opposts"), "the letter Z" ("letter C";
   "the capital letter Z" is clear), a variable before "dollars" ("four g dollars" is heard as
   "$4"; "in dollars, four g" is clear), "and at a number" ("add a number"), a line that starts
-  with "x is…" ("Axe is"), and "convenience sample" ("convenient sample"; listen to it after
-  rendering). "Bisects" after "chord" came out "by sex": `speechText` now says "bi-sect", and the
-  pronunciation check takes "cord" as "chord". A set or point named "A" that starts a sentence before a lowercase word ("A
+  with "x is…" ("Axe is"), "Let c be" and "use C equals" ("let's see", "you see"; "We let c be"
+  and "use the formula C equals" are clear), and "convenience sample" ("convenient sample"; listen
+  to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
+  "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
+  `speechText` now says "lenkths". A set or point named "A" that starts a sentence before a lowercase word ("A
   equals…") is read as the word "a": write "Set A equals…". When a key term is blurred, reword
   the line ("Figures that are congruent…") and check it with `video/tools/hear.ts`.
 - Say a minus sign in front of a bracket or a whole fraction as "the negative of" (or "negative,"

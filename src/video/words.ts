@@ -25,8 +25,8 @@ export function speechText(say: string): string {
   // Words the voice gets wrong, respelled as they sound ("biweekly" comes out "boy-weekly", "deci"
   // as "Desai", "break-even" as "Bray-Keevan", "cosecant" as "co-second", "Aisha" as "Ah-shah",
   // "Kwame" as "Quam", "Jun" as "John", "GST" often as "GSD", "EI" as "I", "a chord bisects the
-  // chord" as "a cord by sex the cord"), and sizes like "eight-by-twelve", which run together, said
-  // as separate words.
+  // chord" as "a cord by sex the cord", "lengths" as "links"), and sizes like "eight-by-twelve",
+  // which run together, said as separate words.
   return words
     .replace(/\b(GST|HST|EI)\b/g, (m) => m.split('').join(' '))
     .replace(/\b([Bb])iweekly\b/g, '$1i-weekly')
@@ -34,6 +34,7 @@ export function speechText(say: string): string {
     .replace(/\b([Dd])eci\b/g, '$1essy')
     .replace(/\b([Cc])osecant/g, '$1o-secant')
     .replace(/\b([Bb])isect/g, '$1i-sect')
+    .replace(/\b([Ll])engths\b/g, '$1enkths')
     .replace(/\bAisha\b/g, 'Ayesha')
     .replace(/\bKwame\b/g, 'Kwahmay')
     .replace(/\bJun\b/g, 'Joon')

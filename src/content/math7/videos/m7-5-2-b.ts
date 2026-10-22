@@ -58,7 +58,7 @@ const video: Explainer = {
         { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['45 - 10 = 35', '35 \\div 5 = 7', '5(7) + 10 = 45 \\;\\good{\\checkmark}'] },
       ],
       lines: [
-        { say: 'An order costs forty-five dollars. Use C equals five n plus ten to find the number of tickets.', show: 'q' },
+        { say: 'An order costs forty-five dollars. Use the rule C equals five n plus ten to find the number of tickets.', show: 'q' },
         { say: 'Think of the relation as a machine. It multiplies the number of tickets by five, then adds ten. We know the output is forty-five.', show: ['wb.f-frame', 'wb.f-titles', 'wb.f-box0', 'wb.f-box1', 'wb.f-set0'] },
         { say: 'To work backwards, undo the steps in the reverse order. The last step was adding ten, so undo that first.', show: ['wb.b-frame', 'wb.b-titles', 'wb.b-box0', 'wb.b-box1', 'wb.b-set0-in'] },
         { say: 'Undo adding ten by subtracting ten. Forty-five minus ten is thirty-five.', show: ['wb.b-set0-mid0', 'm.0'], focus: ['wb.b-box0', 'm.0'] },
@@ -107,7 +107,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Your turn. An order of concert tickets costs sixty dollars. Use C equals five n plus ten to find the number of tickets. Pause the video and try it.', show: 'q', wait: 6 },
+        { say: 'Your turn. An order of concert tickets costs sixty dollars. Use the rule C equals five n plus ten to find the number of tickets. Pause the video and try it.', show: 'q', wait: 6 },
         { say: 'The answer is A, ten tickets. Subtract ten first: sixty minus ten is fifty. Then divide by five: fifty divided by five is ten. Choice B divides first and subtracts last, which is the wrong order.', show: 'q.answer' },
       ],
     },

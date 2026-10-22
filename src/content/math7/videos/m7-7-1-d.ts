@@ -38,7 +38,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'A circle has a diameter of nine centimetres. Find its circumference, to the nearest tenth of a centimetre. Use the pi key on a calculator.', show: ['q', 'nn.shape', 'nn.centre', 'nn.d'] },
-        { say: 'We know the diameter, so use C equals pi times d. Put nine in place of d: C equals pi times nine.', show: 'm.0', focus: 'm.0' },
+        { say: 'We know the diameter, so use the formula C equals pi times d. Put nine in place of d: C equals pi times nine.', show: 'm.0', focus: 'm.0' },
         { say: 'On a calculator, press the pi key, then times nine. The calculator shows twenty-eight point two seven, and more digits after that.', show: 'calc' },
         { say: 'Round to the nearest tenth. The digit after the tenths place is seven, so round up. The circumference is about twenty-eight point three centimetres.', show: 'a.0', focus: ['a.0', 'nn.outline'] },
       ],
@@ -56,7 +56,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'A hula hoop has a radius of forty centimetres. Find its circumference, to the nearest tenth of a centimetre.', show: ['q', 'hp.shape', 'hp.centre', 'hp.r'] },
-        { say: 'This time we know the radius, so use C equals two times pi times r. Put forty in place of r.', show: 'm.0', focus: 'm.0' },
+        { say: 'This time we know the radius, so use the formula C equals two times pi times r. Put forty in place of r.', show: 'm.0', focus: 'm.0' },
         { say: 'On the calculator: two, times pi, times forty. The calculator shows two hundred fifty-one point three two, and more digits.', show: 'calc' },
         { say: 'The digit after the tenths place is two, so round down. The circumference is about two hundred fifty-one point three centimetres.', show: 'a.0', focus: ['a.0', 'hp.outline'] },
       ],
@@ -71,7 +71,7 @@ const video: Explainer = {
       lines: [
         { say: 'Watch out for this mistake. Some people see the forty, and put it straight into C equals pi times d.', show: 'oops' },
         { say: 'Pi times forty is about one hundred twenty-five point seven centimetres. But forty is the radius, not the diameter. So this answer is only half of the way around the hoop.', show: 'm.0', focus: 'm.0' },
-        { say: 'When you are given the radius, double it first to get the diameter, or use C equals two times pi times r. Then you get the whole distance around.', show: 'm.1', focus: 'm.1' },
+        { say: 'When you are given the radius, double it first to get the diameter, or use the formula C equals two times pi times r. Then you get the whole distance around.', show: 'm.1', focus: 'm.1' },
       ],
     },
     {
@@ -117,8 +117,8 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. When you know the diameter, use C equals pi times d.', show: 'sum.0' },
-        { say: 'When you know the radius, use C equals two times pi times r, or double the radius first.', show: 'sum.1' },
+        { say: 'Let’s sum up. When you know the diameter, use the formula C equals pi times d.', show: 'sum.0' },
+        { say: 'When you know the radius, use the formula C equals two times pi times r, or double the radius first.', show: 'sum.1' },
         { say: 'Use the pi key, and round only at the end.', show: 'sum.2' },
         { say: 'And check that the circumference is a little more than three times the diameter. In the next part, you will work backwards, from the circumference to the diameter. See you there!', show: 'sum.3' },
       ],
