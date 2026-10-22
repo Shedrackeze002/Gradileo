@@ -18569,7 +18569,7 @@
   "m8-1-1-b": {
     "lessonId": "m8-1-1",
     "title": "Perfect Squares and Square Roots, Part 2: Square Roots",
-    "duration": 287,
+    "duration": 288,
     "voice": "af_heart",
     "chapters": [
       {
@@ -18582,33 +18582,33 @@
       },
       {
         "title": "Square roots you know",
-        "t": 69.55
+        "t": 69.64
       },
       {
         "title": "Between 10 and 20",
-        "t": 103.841
+        "t": 103.931
       },
       {
         "title": "Try 14 and 16",
-        "t": 145.858
+        "t": 145.948
       },
       {
         "title": "A square root is not half",
-        "t": 177.24
+        "t": 177.33
       },
       {
         "title": "Your turn",
-        "t": 212.834
+        "t": 212.924
       },
       {
         "title": "Summary",
-        "t": 251.07
+        "t": 251.16
       }
     ],
     "cues": [
       {
         "id": "m8-1-1-b:q",
-        "t": 219.851,
+        "t": 219.941,
         "prompt": "Find $\\sqrt{256}$.",
         "choices": [
           "$128$",
@@ -19748,6 +19748,477 @@
         ],
         "answer": 2,
         "working": "The change is $30 - 25 = 5$. Divide by the original amount: $\\dfrac{5}{25} = 0.2 = 20\\%$."
+      }
+    ]
+  },
+  "m8-2-3-b": {
+    "lessonId": "m8-2-3",
+    "title": "Percent Change and Combined Percents, Part 2: Rounding a Percent Change",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Website visits",
+        "t": 17.517
+      },
+      {
+        "title": "Divide, then round",
+        "t": 53.601
+      },
+      {
+        "title": "On a number line",
+        "t": 93.103
+      },
+      {
+        "title": "A decrease with rounding",
+        "t": 119.815
+      },
+      {
+        "title": "Your turn",
+        "t": 165.298
+      },
+      {
+        "title": "Summary",
+        "t": 210.317
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-3-b:q",
+        "t": 179.878,
+        "prompt": "A video had $150$ views on Monday and $172$ views on Tuesday. What is the percent increase, to the nearest tenth of a percent?",
+        "choices": [
+          "$14.7\\%$",
+          "$12.8\\%$",
+          "$22.0\\%$",
+          "$14.6\\%$"
+        ],
+        "answer": 0,
+        "working": "The change is $172 - 150 = 22$. Divide by the original amount: $\\dfrac{22}{150} \\approx 0.14667 \\approx 14.667\\%$, which rounds to $14.7\\%$."
+      }
+    ]
+  },
+  "m8-2-3-c": {
+    "lessonId": "m8-2-3",
+    "title": "Percent Change and Combined Percents, Part 3: A Discount, Then Sales Tax",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Discount and sales tax",
+        "t": 16.94
+      },
+      {
+        "title": "A jacket on sale",
+        "t": 41.56
+      },
+      {
+        "title": "The total cost",
+        "t": 83.819
+      },
+      {
+        "title": "Round to the nearest cent",
+        "t": 125.171
+      },
+      {
+        "title": "Your turn",
+        "t": 157.199
+      },
+      {
+        "title": "Summary",
+        "t": 201.911
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-3-c:q",
+        "t": 172.572,
+        "prompt": "Shoes have a regular price of \\$60. They are on sale for $20\\%$ off, and a $10\\%$ sales tax is added to the sale price. What is the total cost?",
+        "choices": [
+          "\\$54.00",
+          "\\$48.00",
+          "\\$43.20",
+          "\\$52.80"
+        ],
+        "answer": 3,
+        "working": "Discount: $0.20 \\times 60 = 12$, so the sale price is \\$48. Tax: $0.10 \\times 48 = 4.80$. Total: $48 + 4.80 = 52.80$, so \\$52.80."
+      }
+    ]
+  },
+  "m8-2-3-d": {
+    "lessonId": "m8-2-3",
+    "title": "Percent Change and Combined Percents, Part 4: Two Discounts in a Row",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A game on sale",
+        "t": 17.208
+      },
+      {
+        "title": "The working",
+        "t": 67.149
+      },
+      {
+        "title": "The single discount",
+        "t": 91.194
+      },
+      {
+        "title": "Adding the percents",
+        "t": 118.679
+      },
+      {
+        "title": "Your turn",
+        "t": 149.624
+      },
+      {
+        "title": "Summary",
+        "t": 195.85
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-3-d:q",
+        "t": 163.09,
+        "prompt": "A bike costs \\$200. It is marked $25\\%$ off, then another $20\\%$ off the sale price. What is the final price?",
+        "choices": [
+          "\\$110.00",
+          "\\$90.00",
+          "\\$120.00",
+          "\\$130.00"
+        ],
+        "answer": 2,
+        "working": "After $25\\%$ off: $200 - 0.25 \\times 200 = 200 - 50 = 150$. After another $20\\%$ off: $150 - 0.20 \\times 150 = 150 - 30 = 120$. The final price is \\$120.00."
+      }
+    ]
+  },
+  "m8-2-3-e": {
+    "lessonId": "m8-2-3",
+    "title": "Percent Change and Combined Percents, Part 5: A Percent of a Percent",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sixty percent take the bus",
+        "t": 19.332
+      },
+      {
+        "title": "25% of those",
+        "t": 46.052
+      },
+      {
+        "title": "How many students?",
+        "t": 83.023
+      },
+      {
+        "title": "Multiply the decimals",
+        "t": 114.97
+      },
+      {
+        "title": "Your turn",
+        "t": 137.545
+      },
+      {
+        "title": "Summary",
+        "t": 177.268
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-3-e:q",
+        "t": 151.415,
+        "prompt": "In a class, $40\\%$ of the students play a sport. Of those, $50\\%$ play basketball. What percent of the whole class plays basketball?",
+        "choices": [
+          "$90\\%$",
+          "$20\\%$",
+          "$10\\%$",
+          "$2\\%$"
+        ],
+        "answer": 1,
+        "working": "$50\\%$ of $40\\%$ is $0.5 \\times 0.4 = 0.2$, which is $20\\%$ of the whole class."
+      }
+    ]
+  },
+  "m8-3-1": {
+    "lessonId": "m8-3-1",
+    "title": "Two-Term and Three-Term Ratios, Part 1: What Is a Ratio?",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Comparing with a ratio",
+        "t": 21.778
+      },
+      {
+        "title": "Three ways to write a ratio",
+        "t": 57.482
+      },
+      {
+        "title": "Order matters",
+        "t": 94.339
+      },
+      {
+        "title": "Watch out",
+        "t": 135.373
+      },
+      {
+        "title": "Wins and losses",
+        "t": 168.039
+      },
+      {
+        "title": "Your turn",
+        "t": 198.941
+      },
+      {
+        "title": "Summary",
+        "t": 230.97
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-3-1:q",
+        "t": 209.292,
+        "prompt": "A pencil case holds $7$ pens and $4$ markers. What is the ratio of markers to pens?",
+        "choices": [
+          "$7 : 4$",
+          "$4 : 7$",
+          "$4 : 11$",
+          "$7 : 11$"
+        ],
+        "answer": 1,
+        "working": "Markers are named first, so the number of markers goes first: markers to pens is $4 : 7$."
+      }
+    ]
+  },
+  "m8-3-1-b": {
+    "lessonId": "m8-3-1",
+    "title": "Two-Term and Three-Term Ratios, Part 2: Part-to-Part and Part-to-Whole",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts of a group",
+        "t": 23.693
+      },
+      {
+        "title": "Part to whole",
+        "t": 54.866
+      },
+      {
+        "title": "As a fraction and a percent",
+        "t": 86.983
+      },
+      {
+        "title": "The bus riders",
+        "t": 128.88
+      },
+      {
+        "title": "Watch out",
+        "t": 168.771
+      },
+      {
+        "title": "Your turn",
+        "t": 193.89
+      },
+      {
+        "title": "Summary",
+        "t": 232.104
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-3-1-b:q",
+        "t": 203.845,
+        "prompt": "A fruit bowl has $9$ apples and $11$ oranges. What percent of the fruit are apples?",
+        "choices": [
+          "$9\\%$",
+          "$55\\%$",
+          "$90\\%$",
+          "$45\\%$"
+        ],
+        "answer": 3,
+        "working": "The whole bowl is $9 + 11 = 20$ pieces of fruit. Apples to the whole: $\\tfrac{9}{20} = \\tfrac{45}{100} = 45\\%$."
+      }
+    ]
+  },
+  "m8-3-1-c": {
+    "lessonId": "m8-3-1",
+    "title": "Two-Term and Three-Term Ratios, Part 3: Equivalent Ratios",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "More juice, same taste",
+        "t": 18.316
+      },
+      {
+        "title": "A ratio table",
+        "t": 57.188
+      },
+      {
+        "title": "Find the missing term",
+        "t": 115.937
+      },
+      {
+        "title": "Watch out",
+        "t": 147.731
+      },
+      {
+        "title": "Your turn",
+        "t": 193.284
+      },
+      {
+        "title": "Summary",
+        "t": 225.785
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-3-1-c:q",
+        "t": 200.185,
+        "prompt": "Which ratio is equivalent to $4 : 7$?",
+        "choices": [
+          "$12 : 21$",
+          "$8 : 11$",
+          "$7 : 4$",
+          "$12 : 14$"
+        ],
+        "answer": 0,
+        "working": "Multiply every term by $3$: $4 \\times 3 = 12$ and $7 \\times 3 = 21$, so $4 : 7 = 12 : 21$."
+      }
+    ]
+  },
+  "m8-3-1-d": {
+    "lessonId": "m8-3-1",
+    "title": "Two-Term and Three-Term Ratios, Part 4: Lowest Terms",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal groups",
+        "t": 19.669
+      },
+      {
+        "title": "The greatest common factor",
+        "t": 54.232
+      },
+      {
+        "title": "Keep going",
+        "t": 116.552
+      },
+      {
+        "title": "Another example",
+        "t": 153.239
+      },
+      {
+        "title": "Your turn",
+        "t": 186.32
+      },
+      {
+        "title": "Summary",
+        "t": 222.644
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-3-1-d:q",
+        "t": 193.246,
+        "prompt": "Write $18 : 24$ in lowest terms.",
+        "choices": [
+          "$9 : 12$",
+          "$6 : 8$",
+          "$3 : 4$",
+          "$4 : 3$"
+        ],
+        "answer": 2,
+        "working": "The GCF of $18$ and $24$ is $6$: $18 \\div 6 = 3$ and $24 \\div 6 = 4$, so $18 : 24 = 3 : 4$."
+      }
+    ]
+  },
+  "m8-3-1-e": {
+    "lessonId": "m8-3-1",
+    "title": "Two-Term and Three-Term Ratios, Part 5: Three-Term Ratios",
+    "duration": 290,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three quantities",
+        "t": 19.419
+      },
+      {
+        "title": "Kai’s trail mix",
+        "t": 41.145
+      },
+      {
+        "title": "What fraction is peanuts?",
+        "t": 99.74
+      },
+      {
+        "title": "A bead kit",
+        "t": 132.788
+      },
+      {
+        "title": "Check with the total",
+        "t": 193.356
+      },
+      {
+        "title": "Your turn",
+        "t": 214.598
+      },
+      {
+        "title": "Summary",
+        "t": 256.136
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-3-1-e:q",
+        "t": 228.337,
+        "prompt": "At an animal shelter, the ratio of cats to dogs to rabbits is $3 : 4 : 1$. There are $12$ dogs. How many animals are there in all?",
+        "choices": [
+          "$8$",
+          "$15$",
+          "$36$",
+          "$24$"
+        ],
+        "answer": 3,
+        "working": "$4 \\times 3 = 12$, so the scale factor is $3$: $3 : 4 : 1 = 9 : 12 : 3$. In all, $9 + 12 + 3 = 24$, or $8$ parts $\\times\\ 3 = 24$."
       }
     ]
   },
