@@ -18774,6 +18774,826 @@
       }
     ]
   },
+  "m8-1-2-b": {
+    "lessonId": "m8-1-2",
+    "title": "Estimating Square Roots, Part 2: To One Decimal Place",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How far along?",
+        "t": 17.152
+      },
+      {
+        "title": "Check by squaring",
+        "t": 48.149
+      },
+      {
+        "title": "Estimating the square root of 90",
+        "t": 83.39
+      },
+      {
+        "title": "Which tenth is better?",
+        "t": 117.029
+      },
+      {
+        "title": "Your turn",
+        "t": 150.907
+      },
+      {
+        "title": "Summary",
+        "t": 187.509
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-2-b:q",
+        "t": 158.468,
+        "prompt": "Estimate $\\sqrt{30}$ to one decimal place.",
+        "choices": [
+          "$5.4$",
+          "$5.5$",
+          "$15$",
+          "$6.5$"
+        ],
+        "answer": 1,
+        "working": "$25 < 30 < 36$, so $\\sqrt{30}$ is between $5$ and $6$. Check the tenths: $5.4^2 = 29.16$ and $5.5^2 = 30.25$. $30$ is closer to $30.25$, so $\\sqrt{30} \\approx 5.5$."
+      }
+    ]
+  },
+  "m8-1-2-c": {
+    "lessonId": "m8-1-2",
+    "title": "Estimating Square Roots, Part 3: Square Roots in Problems",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plan",
+        "t": 20.252
+      },
+      {
+        "title": "A square rug",
+        "t": 50.816
+      },
+      {
+        "title": "Check the rug",
+        "t": 86.645
+      },
+      {
+        "title": "Counting square roots",
+        "t": 116.562
+      },
+      {
+        "title": "Your turn",
+        "t": 161.094
+      },
+      {
+        "title": "Summary",
+        "t": 195.481
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-2-c:q",
+        "t": 168.827,
+        "prompt": "How many whole numbers have a square root between $7$ and $8$?",
+        "choices": [
+          "$15$",
+          "$1$",
+          "$14$",
+          "$13$"
+        ],
+        "answer": 2,
+        "working": "$7^2 = 49$ and $8^2 = 64$. The whole numbers between them are $50, 51, \\ldots, 63$: that is $14$ numbers."
+      }
+    ]
+  },
+  "m8-1-3": {
+    "lessonId": "m8-1-3",
+    "title": "The Pythagorean Theorem, Part 1: Legs and the Hypotenuse",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A right triangle",
+        "t": 26.212
+      },
+      {
+        "title": "The hypotenuse can be anywhere",
+        "t": 59.469
+      },
+      {
+        "title": "Right triangles all around",
+        "t": 93.78
+      },
+      {
+        "title": "Your turn",
+        "t": 132.138
+      },
+      {
+        "title": "Summary",
+        "t": 166.708
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-3:q",
+        "t": 142.728,
+        "prompt": "In right triangle $PQR$, the right angle is at $Q$. Which side is the hypotenuse?",
+        "choices": [
+          "$PR$",
+          "$PQ$",
+          "$QR$",
+          "The side that looks most slanted"
+        ],
+        "answer": 0,
+        "working": "The hypotenuse is straight across from the right angle at $Q$, so it is the side that does not touch $Q$: side $PR$. Sides $PQ$ and $QR$ make the right angle, so they are the legs."
+      }
+    ]
+  },
+  "m8-1-3-b": {
+    "lessonId": "m8-1-3",
+    "title": "The Pythagorean Theorem, Part 2: Squares on the Sides",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A square on each side",
+        "t": 18.491
+      },
+      {
+        "title": "The Pythagorean theorem",
+        "t": 63.247
+      },
+      {
+        "title": "Another right triangle",
+        "t": 105.316
+      },
+      {
+        "title": "Your turn",
+        "t": 138.038
+      },
+      {
+        "title": "Summary",
+        "t": 179.501
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-3-b:q",
+        "t": 153.579,
+        "prompt": "The squares on the two legs of a right triangle have areas of $25\\ \\text{cm}^2$ and $144\\ \\text{cm}^2$. What is the area of the square on the hypotenuse?",
+        "choices": [
+          "$119\\ \\text{cm}^2$",
+          "$17\\ \\text{cm}^2$",
+          "$169\\ \\text{cm}^2$",
+          "$13\\ \\text{cm}^2$"
+        ],
+        "answer": 2,
+        "working": "The areas of the squares on the legs add up to the area of the square on the hypotenuse: $25 + 144 = 169\\ \\text{cm}^2$."
+      }
+    ]
+  },
+  "m8-1-3-c": {
+    "lessonId": "m8-1-3",
+    "title": "The Pythagorean Theorem, Part 3: Finding the Hypotenuse",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Legs of 6 and 8",
+        "t": 19.507
+      },
+      {
+        "title": "Three steps",
+        "t": 55.975
+      },
+      {
+        "title": "Rounding the answer",
+        "t": 76.355
+      },
+      {
+        "title": "Does the answer make sense?",
+        "t": 125.511
+      },
+      {
+        "title": "Your turn",
+        "t": 153.328
+      },
+      {
+        "title": "Summary",
+        "t": 190.494
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-3-c:q",
+        "t": 164.843,
+        "prompt": "A right triangle has legs of $7\\ \\text{cm}$ and $24\\ \\text{cm}$. How long is the hypotenuse?",
+        "choices": [
+          "$31\\ \\text{cm}$",
+          "$625\\ \\text{cm}$",
+          "$17\\ \\text{cm}$",
+          "$25\\ \\text{cm}$"
+        ],
+        "answer": 3,
+        "working": "$c^2 = 7^2 + 24^2 = 49 + 576 = 625$, so $c = \\sqrt{625} = 25\\ \\text{cm}$, because $25 \\times 25 = 625$."
+      }
+    ]
+  },
+  "m8-1-3-d": {
+    "lessonId": "m8-1-3",
+    "title": "The Pythagorean Theorem, Part 4: Finding a Leg",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subtract for a leg",
+        "t": 15.895
+      },
+      {
+        "title": "A whole-number leg",
+        "t": 49.996
+      },
+      {
+        "title": "A leg with rounding",
+        "t": 92.555
+      },
+      {
+        "title": "Adding when you should subtract",
+        "t": 137.686
+      },
+      {
+        "title": "Your turn",
+        "t": 174.953
+      },
+      {
+        "title": "Summary",
+        "t": 209.746
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-3-d:q",
+        "t": 186.223,
+        "prompt": "The hypotenuse of a right triangle is $10\\ \\text{m}$ and one leg is $6\\ \\text{m}$. How long is the other leg?",
+        "choices": [
+          "$4\\ \\text{m}$",
+          "$8\\ \\text{m}$",
+          "$11.7\\ \\text{m}$",
+          "$64\\ \\text{m}$"
+        ],
+        "answer": 1,
+        "working": "$x^2 = 10^2 - 6^2 = 100 - 36 = 64$, so $x = \\sqrt{64} = 8\\ \\text{m}$."
+      }
+    ]
+  },
+  "m8-1-4": {
+    "lessonId": "m8-1-4",
+    "title": "Using the Pythagorean Theorem, Part 1: Ladders and Screens",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A plan for problems",
+        "t": 24.801
+      },
+      {
+        "title": "A ladder against a wall",
+        "t": 64.056
+      },
+      {
+        "title": "A TV screen",
+        "t": 119.126
+      },
+      {
+        "title": "Finding the height",
+        "t": 152.66
+      },
+      {
+        "title": "Your turn",
+        "t": 190.483
+      },
+      {
+        "title": "Summary",
+        "t": 233.882
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-4:q",
+        "t": 206.168,
+        "prompt": "A kite string is $25\\ \\text{m}$ long and pulled straight. The kite is straight above a point on the ground $7\\ \\text{m}$ from where the string is tied down. How high is the kite?",
+        "choices": [
+          "$24\\ \\text{m}$",
+          "$26\\ \\text{m}$",
+          "$18\\ \\text{m}$",
+          "$32\\ \\text{m}$"
+        ],
+        "answer": 0,
+        "working": "The string is the hypotenuse and the height is a leg: $h^2 = 25^2 - 7^2 = 625 - 49 = 576$, so $h = \\sqrt{576} = 24\\ \\text{m}$."
+      }
+    ]
+  },
+  "m8-1-4-b": {
+    "lessonId": "m8-1-4",
+    "title": "Using the Pythagorean Theorem, Part 2: Distances on a Grid",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Draw a right triangle",
+        "t": 18.284
+      },
+      {
+        "title": "Count, then calculate",
+        "t": 44.96
+      },
+      {
+        "title": "Another pair of points",
+        "t": 80.95
+      },
+      {
+        "title": "Your turn",
+        "t": 123.548
+      },
+      {
+        "title": "Summary",
+        "t": 164.51
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-4-b:q",
+        "t": 135.545,
+        "prompt": "On a grid, point $N$ is $5$ units to the right of point $M$ and $12$ units above it. How far apart are the points?",
+        "choices": [
+          "$17$ units",
+          "$13$ units",
+          "$169$ units",
+          "$10.9$ units"
+        ],
+        "answer": 1,
+        "working": "The legs are $5$ and $12$: $MN^2 = 5^2 + 12^2 = 25 + 144 = 169$, so $MN = \\sqrt{169} = 13$ units."
+      }
+    ]
+  },
+  "m8-1-4-c": {
+    "lessonId": "m8-1-4",
+    "title": "Using the Pythagorean Theorem, Part 3: Pythagorean Triples",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a triple is",
+        "t": 18.339
+      },
+      {
+        "title": "Common triples",
+        "t": 50.171
+      },
+      {
+        "title": "Multiplying a triple",
+        "t": 90.09
+      },
+      {
+        "title": "Making a new triple",
+        "t": 116.075
+      },
+      {
+        "title": "Triples save time",
+        "t": 155.951
+      },
+      {
+        "title": "Your turn",
+        "t": 193.187
+      },
+      {
+        "title": "Summary",
+        "t": 228.819
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-4-c:q",
+        "t": 200.159,
+        "prompt": "Which set of numbers is a Pythagorean triple?",
+        "choices": [
+          "$4, 5, 6$",
+          "$2, 3, 4$",
+          "$10, 24, 26$",
+          "$5, 6, 7$"
+        ],
+        "answer": 2,
+        "working": "$10, 24, 26$ is $5, 12, 13$ times $2$. Check: $10^2 + 24^2 = 100 + 576 = 676 = 26^2$."
+      }
+    ]
+  },
+  "m8-1-4-d": {
+    "lessonId": "m8-1-4",
+    "title": "Using the Pythagorean Theorem, Part 4: Is It a Right Triangle?",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The theorem in reverse",
+        "t": 20.586
+      },
+      {
+        "title": "Sides of 9, 12 and 15",
+        "t": 45.664
+      },
+      {
+        "title": "Sides of 7, 9 and 11",
+        "t": 82.455
+      },
+      {
+        "title": "Use the longest side as c",
+        "t": 122.53
+      },
+      {
+        "title": "Checking a corner",
+        "t": 159.972
+      },
+      {
+        "title": "Your turn",
+        "t": 190.782
+      },
+      {
+        "title": "Summary",
+        "t": 225.401
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-1-4-d:q",
+        "t": 201.172,
+        "prompt": "A triangle has sides of $8\\ \\text{cm}$, $15\\ \\text{cm}$ and $17\\ \\text{cm}$. Is it a right triangle?",
+        "choices": [
+          "Yes, because $8^2 + 15^2 = 17^2$.",
+          "No, because $8 + 15 \\ne 17$.",
+          "No, because $8^2 + 17^2 \\ne 15^2$.",
+          "Yes, because $17$ is the longest side."
+        ],
+        "answer": 0,
+        "working": "Square the two shorter sides: $8^2 + 15^2 = 64 + 225 = 289$. The longest side: $17^2 = 289$. They are equal, so it is a right triangle."
+      }
+    ]
+  },
+  "m8-2-1": {
+    "lessonId": "m8-2-1",
+    "title": "Percents Greater Than 100% and Less Than 1%, Part 1: More Than One Whole",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One hundred percent is one whole",
+        "t": 26.848
+      },
+      {
+        "title": "One hundred fifty percent",
+        "t": 53.286
+      },
+      {
+        "title": "As a fraction and a decimal",
+        "t": 84.139
+      },
+      {
+        "title": "More than one whole",
+        "t": 113.549
+      },
+      {
+        "title": "Your turn",
+        "t": 145.219
+      },
+      {
+        "title": "Summary",
+        "t": 183.025
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-1:q",
+        "t": 153.137,
+        "prompt": "Which decimal is equal to $175\\%$?",
+        "choices": [
+          "$0.175$",
+          "$17.5$",
+          "$175$",
+          "$1.75$"
+        ],
+        "answer": 3,
+        "working": "$175\\% = \\dfrac{175}{100} = 1.75$: one whole grid and $75$ squares of another. It is more than one whole, so the decimal is more than $1$."
+      }
+    ]
+  },
+  "m8-2-1-b": {
+    "lessonId": "m8-2-1",
+    "title": "Percents Greater Than 100% and Less Than 1%, Part 2: Less Than One Percent",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One percent is one square",
+        "t": 17.747
+      },
+      {
+        "title": "Half of one square",
+        "t": 38.957
+      },
+      {
+        "title": "A quarter of one square",
+        "t": 70.654
+      },
+      {
+        "title": "0.5% is not one half",
+        "t": 93.4
+      },
+      {
+        "title": "Your turn",
+        "t": 118.114
+      },
+      {
+        "title": "Summary",
+        "t": 151.391
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-1-b:q",
+        "t": 124.337,
+        "prompt": "Which is the same as $\\tfrac{1}{2}\\%$?",
+        "choices": [
+          "$0.5\\%$",
+          "$50\\%$",
+          "$2\\%$",
+          "$0.2\\%$"
+        ],
+        "answer": 0,
+        "working": "$\\tfrac{1}{2} = 0.5$, so $\\tfrac{1}{2}\\% = 0.5\\%$: half of one small square of a hundred grid."
+      }
+    ]
+  },
+  "m8-2-1-c": {
+    "lessonId": "m8-2-1",
+    "title": "Percents Greater Than 100% and Less Than 1%, Part 3: Percents as Decimals",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent to decimal",
+        "t": 22.02
+      },
+      {
+        "title": "A percent less than 1%",
+        "t": 72.549
+      },
+      {
+        "title": "A fraction of a percent",
+        "t": 106.269
+      },
+      {
+        "title": "Decimal to percent",
+        "t": 140.575
+      },
+      {
+        "title": "Check the size",
+        "t": 176.256
+      },
+      {
+        "title": "Your turn",
+        "t": 211.473
+      },
+      {
+        "title": "Summary",
+        "t": 244.894
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-1-c:q",
+        "t": 218.456,
+        "prompt": "Write $0.3\\%$ as a decimal.",
+        "choices": [
+          "$0.3$",
+          "$0.03$",
+          "$0.003$",
+          "$30$"
+        ],
+        "answer": 2,
+        "working": "Divide by $100$: $0.3 \\div 100 = 0.003$. It is less than $0.01$, as a percent less than $1\\%$ should be."
+      }
+    ]
+  },
+  "m8-2-1-d": {
+    "lessonId": "m8-2-1",
+    "title": "Percents Greater Than 100% and Less Than 1%, Part 4: Percents as Fractions",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The steps",
+        "t": 20.029
+      },
+      {
+        "title": "More than 100%",
+        "t": 53.99
+      },
+      {
+        "title": "A decimal percent",
+        "t": 98.18
+      },
+      {
+        "title": "A fraction of a percent",
+        "t": 132.001
+      },
+      {
+        "title": "Three ways to write it",
+        "t": 164.589
+      },
+      {
+        "title": "Your turn",
+        "t": 209.866
+      },
+      {
+        "title": "Summary",
+        "t": 244.007
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-1-d:q",
+        "t": 218.008,
+        "prompt": "Write $0.2\\%$ as a fraction in lowest terms.",
+        "choices": [
+          "$\\dfrac{1}{5}$",
+          "$\\dfrac{1}{50}$",
+          "$\\dfrac{2}{100}$",
+          "$\\dfrac{1}{500}$"
+        ],
+        "answer": 3,
+        "working": "$0.2\\% = \\dfrac{0.2}{100} = \\dfrac{2}{1{,}000}$. Divide the top and the bottom by $2$: $\\dfrac{1}{500}$."
+      }
+    ]
+  },
+  "m8-2-2": {
+    "lessonId": "m8-2-2",
+    "title": "Percent of a Number, Part 1: Change to a Decimal, Then Multiply",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent of a number",
+        "t": 24.575
+      },
+      {
+        "title": "A picture of 35% of 60",
+        "t": 63.198
+      },
+      {
+        "title": "Estimate first",
+        "t": 95.105
+      },
+      {
+        "title": "Your turn",
+        "t": 132.23
+      },
+      {
+        "title": "Summary",
+        "t": 164.071
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-2:q",
+        "t": 139.455,
+        "prompt": "Find $15\\%$ of $80$.",
+        "choices": [
+          "$120$",
+          "$12$",
+          "$1.2$",
+          "$65$"
+        ],
+        "answer": 1,
+        "working": "$15\\% = 0.15$, and $0.15 \\times 80 = 12$. Estimate: $10\\%$ of $80$ is $8$ and $20\\%$ is $16$, so $12$ is about right."
+      }
+    ]
+  },
+  "m8-2-2-b": {
+    "lessonId": "m8-2-2",
+    "title": "Percent of a Number, Part 2: More Than 100% of a Number",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "100% is the number itself",
+        "t": 18.802
+      },
+      {
+        "title": "150% of 80",
+        "t": 41.166
+      },
+      {
+        "title": "Check with mental math",
+        "t": 74.511
+      },
+      {
+        "title": "Too small to be right",
+        "t": 102.836
+      },
+      {
+        "title": "250% of 12",
+        "t": 131.813
+      },
+      {
+        "title": "Your turn",
+        "t": 157.228
+      },
+      {
+        "title": "Summary",
+        "t": 194.312
+      }
+    ],
+    "cues": [
+      {
+        "id": "m8-2-2-b:q",
+        "t": 164.04,
+        "prompt": "Find $120\\%$ of $45$.",
+        "choices": [
+          "$5.4$",
+          "$9$",
+          "$540$",
+          "$54$"
+        ],
+        "answer": 3,
+        "working": "$120\\% = 1.2$, and $1.2 \\times 45 = 54$. Check: $100\\%$ of $45$ is $45$ and $20\\%$ of $45$ is $9$, so $45 + 9 = 54$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
