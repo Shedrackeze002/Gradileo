@@ -14478,6 +14478,528 @@
       }
     ]
   },
+  "m7-5-2-d": {
+    "lessonId": "m7-5-2",
+    "title": "Tables of Values and Graphs, Part 4: Reading a Graph",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ticket graph",
+        "t": 19.7
+      },
+      {
+        "title": "Reading up and across",
+        "t": 59.202
+      },
+      {
+        "title": "Reading across and down",
+        "t": 80.071
+      },
+      {
+        "title": "The price and the fee",
+        "t": 105.395
+      },
+      {
+        "title": "Watch out",
+        "t": 143.744
+      },
+      {
+        "title": "Your turn",
+        "t": 165.574
+      },
+      {
+        "title": "Summary",
+        "t": 203.765
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-5-2-d:q",
+        "t": 179.238,
+        "prompt": "Concert tickets cost $C = 5n + 10$ dollars for $n$ tickets. Use the graph or the relation: what do $5$ tickets cost?",
+        "choices": [
+          "\\$25",
+          "\\$50",
+          "\\$30",
+          "\\$35"
+        ],
+        "answer": 3,
+        "working": "Go up from $5$ on the horizontal axis to the point, then across: $35$. Check: $5(5) + 10 = 35$."
+      }
+    ]
+  },
+  "m7-6-1": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 1: Variables and Expressions",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Working it out",
+        "t": 21.631
+      },
+      {
+        "title": "Variables",
+        "t": 65.456
+      },
+      {
+        "title": "Expressions",
+        "t": 104.834
+      },
+      {
+        "title": "A number next to a letter",
+        "t": 139.552
+      },
+      {
+        "title": "One expression, every question",
+        "t": 174.191
+      },
+      {
+        "title": "Your turn",
+        "t": 211.566
+      },
+      {
+        "title": "Summary",
+        "t": 253.678
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1:q",
+        "t": 227.918,
+        "prompt": "Movie tickets cost \\$9 each, and a bag of popcorn costs \\$5. Which expression gives the total cost, in dollars, of $t$ tickets and one bag of popcorn?",
+        "choices": [
+          "$5t + 9$",
+          "$9t + 5$",
+          "$9 + 5 + t$",
+          "$14t$"
+        ],
+        "answer": 1,
+        "working": "Each ticket costs \\$9, so $t$ tickets cost $9t$ dollars. Add \\$5 once for the popcorn: $9t + 5$."
+      }
+    ]
+  },
+  "m7-6-1-b": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 2: Expressions and Equations",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equations",
+        "t": 22.287
+      },
+      {
+        "title": "Expression or equation?",
+        "t": 59.779
+      },
+      {
+        "title": "Watch out",
+        "t": 96.99
+      },
+      {
+        "title": "Sort them",
+        "t": 127.903
+      },
+      {
+        "title": "Your turn",
+        "t": 159.242
+      },
+      {
+        "title": "Summary",
+        "t": 185.683
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1-b:q",
+        "t": 165.291,
+        "prompt": "Which one is an **equation**?",
+        "choices": [
+          "$4x + 7$",
+          "$9 - 2y$",
+          "$3 \\times 5 + 1$",
+          "$6 + 2 = 8$"
+        ],
+        "answer": 3,
+        "working": "$6 + 2 = 8$ is the only one with an equals sign, so it is the only equation. The others are expressions."
+      }
+    ]
+  },
+  "m7-6-1-c": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 3: Coefficients and Constant Terms",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an expression",
+        "t": 16.815
+      },
+      {
+        "title": "A phone bill",
+        "t": 56.402
+      },
+      {
+        "title": "For each, or once?",
+        "t": 100.746
+      },
+      {
+        "title": "Your turn",
+        "t": 155.292
+      },
+      {
+        "title": "Summary",
+        "t": 194.058
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1-c:q",
+        "t": 170.856,
+        "prompt": "A taxi charges \\$4 to start, plus \\$2 for each kilometre. The cost, in dollars, is $2k + 4$. What is the **coefficient**, and what does it mean?",
+        "choices": [
+          "$2$: the cost of each kilometre",
+          "$4$: the cost of each kilometre",
+          "$2$: the cost to start",
+          "$k$: the number of kilometres"
+        ],
+        "answer": 0,
+        "working": "The coefficient is the number that multiplies the variable: $2$. It is an amount for each one, the cost of each kilometre. The $4$ is the constant term, paid once to start."
+      }
+    ]
+  },
+  "m7-6-1-d": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 4: Evaluating Expressions",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What evaluate means",
+        "t": 25.429
+      },
+      {
+        "title": "One variable",
+        "t": 53.165
+      },
+      {
+        "title": "Brackets",
+        "t": 86.844
+      },
+      {
+        "title": "Watch out",
+        "t": 120.329
+      },
+      {
+        "title": "Your turn",
+        "t": 148.59
+      },
+      {
+        "title": "Summary",
+        "t": 184.359
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1-d:q",
+        "t": 159.249,
+        "prompt": "Evaluate $4(y + 2)$ when $y = 5$.",
+        "choices": [
+          "$22$",
+          "$47$",
+          "$28$",
+          "$11$"
+        ],
+        "answer": 2,
+        "working": "Replace $y$ with $5$: $4(5 + 2)$. Brackets first: $5 + 2 = 7$. Then multiply: $4 \\times 7 = 28$."
+      }
+    ]
+  },
+  "m7-6-1-e": {
+    "lessonId": "m7-6-1",
+    "title": "Expressions and Equations, Part 5: Formulas with More Than One Variable",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Points in basketball",
+        "t": 22.525
+      },
+      {
+        "title": "One player’s points",
+        "t": 69.314
+      },
+      {
+        "title": "The perimeter of a rectangle",
+        "t": 107.169
+      },
+      {
+        "title": "Your turn",
+        "t": 145.833
+      },
+      {
+        "title": "Summary",
+        "t": 185.763
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-1-e:q",
+        "t": 160.773,
+        "prompt": "Use $P = 2t + 3h + f$. A player makes $5$ two-point baskets, $4$ three-point baskets and $2$ free throws. How many points does the player score?",
+        "choices": [
+          "$11$",
+          "$22$",
+          "$25$",
+          "$24$"
+        ],
+        "answer": 3,
+        "working": "$P = 2(5) + 3(4) + 2 = 10 + 12 + 2 = 24$."
+      }
+    ]
+  },
+  "m7-6-2": {
+    "lessonId": "m7-6-2",
+    "title": "Preserving Equality, Part 1: An Equation Is a Balance",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pan balance",
+        "t": 22.86
+      },
+      {
+        "title": "Bags of marbles",
+        "t": 56.732
+      },
+      {
+        "title": "The equals sign",
+        "t": 95.232
+      },
+      {
+        "title": "Write the equation",
+        "t": 122.24
+      },
+      {
+        "title": "Your turn",
+        "t": 149.587
+      },
+      {
+        "title": "Summary",
+        "t": 186.117
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-2:q",
+        "t": 163.65,
+        "prompt": "A level balance has $4$ bags of $x$ marbles and $2$ loose marbles on the left pan, and $14$ marbles on the right pan. Which equation does it show?",
+        "choices": [
+          "$x + 4 + 2 = 14$",
+          "$4x + 2 = 14$",
+          "$2x + 4 = 14$",
+          "$4x = 14 + 2$"
+        ],
+        "answer": 1,
+        "working": "Four bags hold $4x$ marbles, plus $2$ loose marbles: the left side is $4x + 2$. The right side is $14$. So $4x + 2 = 14$."
+      }
+    ]
+  },
+  "m7-6-2-b": {
+    "lessonId": "m7-6-2",
+    "title": "Preserving Equality, Part 2: Preservation of Equality",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Keep it level",
+        "t": 15.241
+      },
+      {
+        "title": "Preservation of equality",
+        "t": 50.568
+      },
+      {
+        "title": "Multiply both sides",
+        "t": 94.136
+      },
+      {
+        "title": "Change the whole side",
+        "t": 138.066
+      },
+      {
+        "title": "Which step keeps the balance?",
+        "t": 175.074
+      },
+      {
+        "title": "Your turn",
+        "t": 218.66
+      },
+      {
+        "title": "Summary",
+        "t": 256.814
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-2-b:q",
+        "t": 230.674,
+        "prompt": "The equation $10 - 4 = 6$ is true. Divide both sides by $2$. Which equation is still true?",
+        "choices": [
+          "$10 - 4 \\div 2 = 6 \\div 2$",
+          "$(10 - 4) \\div 2 = 6$",
+          "$(10 - 4) \\div 2 = 6 \\div 2$",
+          "$10 - 4 = 6 \\div 2$"
+        ],
+        "answer": 2,
+        "working": "Divide the whole left side and the whole right side: $(10 - 4) \\div 2 = 6 \\div 2$, so $3 = 3$."
+      }
+    ]
+  },
+  "m7-6-2-c": {
+    "lessonId": "m7-6-2",
+    "title": "Preserving Equality, Part 3: Using the Balance to Solve",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The balance",
+        "t": 18.295
+      },
+      {
+        "title": "Take away three",
+        "t": 44.981
+      },
+      {
+        "title": "Split into equal groups",
+        "t": 64.793
+      },
+      {
+        "title": "Check",
+        "t": 93.262
+      },
+      {
+        "title": "Another balance",
+        "t": 114.091
+      },
+      {
+        "title": "Your turn",
+        "t": 147.295
+      },
+      {
+        "title": "Summary",
+        "t": 179.193
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-2-c:q",
+        "t": 154.17,
+        "prompt": "Solve $4x + 1 = 13$.",
+        "choices": [
+          "$x = 3$",
+          "$x = 12$",
+          "$x = 3.5$",
+          "$x = 4$"
+        ],
+        "answer": 0,
+        "working": "Take $1$ from both sides: $4x = 12$. Divide both sides by $4$: $x = 3$. Check: $4(3) + 1 = 13$."
+      }
+    ]
+  },
+  "m7-6-2-d": {
+    "lessonId": "m7-6-2",
+    "title": "Preserving Equality, Part 4: Finding a Mistake",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Jun’s solution",
+        "t": 18.744
+      },
+      {
+        "title": "Check the answer",
+        "t": 45.393
+      },
+      {
+        "title": "Find the step",
+        "t": 69.31
+      },
+      {
+        "title": "Fix it",
+        "t": 111.157
+      },
+      {
+        "title": "Substitute to check",
+        "t": 136.387
+      },
+      {
+        "title": "Your turn",
+        "t": 157.99
+      },
+      {
+        "title": "Summary",
+        "t": 198.537
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-6-2-d:q",
+        "t": 169.221,
+        "prompt": "Leo solved $4x + 8 = 20$. Step 1: $4x + 8 - 8 = 20 - 8$. Step 2: $4x = 20$. Step 3: $\\dfrac{4x}{4} = \\dfrac{20}{4}$. Step 4: $x = 5$. Where is the mistake?",
+        "choices": [
+          "Step 1",
+          "Step 2",
+          "Step 3",
+          "Step 4"
+        ],
+        "answer": 1,
+        "working": "Check: $4(5) + 8 = 28$, not $20$. Step 1 subtracts $8$ from both sides, but in Step 2 the right side is still $20$: it should be $20 - 8 = 12$. Then $4x = 12$ and $x = 3$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
