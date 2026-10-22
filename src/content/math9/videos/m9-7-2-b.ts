@@ -117,14 +117,14 @@ const video: Explainer = {
       leftWidth: 620,
       left: [drawn('dr')],
       right: [
-        { kind: 'text', id: 'q', size: 'md', md: 'Ayesha draws a $6$ m wall on a plan with a scale of $1 : 40$. How long is the wall on her plan?' },
+        { kind: 'text', id: 'q', size: 'md', md: 'Amara draws a $6$ m wall on a plan with a scale of $1 : 40$. How long is the wall on her plan?' },
         { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['6 \\text{ m} = 600 \\text{ cm}', '600 \\div 40 = 15', '15 \\text{ cm on the plan}'] },
       ],
       lines: [
-        { say: 'Now go the other way. Ayesha draws a six metre wall on a plan with a scale of one to forty. How long is the wall on her plan?', show: ['q', 'dr.lines', 'dr.m1'] },
+        { say: 'Now go the other way. Amara draws a six metre wall on a plan with a scale of one to forty. How long is the wall on her plan?', show: ['q', 'dr.lines', 'dr.m1'] },
         { say: 'Step one: change to the same unit as the plan. The scale compares centimetres with centimetres, so write six metres as six hundred centimetres.', show: ['m.0', 'dr.e-bt', 'dr.e-bottom'], focus: ['m.0', 'dr.e-bottom'] },
         { say: 'Step two: every forty centimetres in real life takes one centimetre on the plan. So divide by forty. Six hundred divided by forty is fifteen.', show: 'm.1', focus: 'm.1' },
-        { say: 'The wall is fifteen centimetres long on Ayesha’s plan.', show: ['m.2', 'dr.e-tt', 'dr.e-top'], focus: ['m.2', 'dr.e-top'] },
+        { say: 'The wall is fifteen centimetres long on Amara’s plan.', show: ['m.2', 'dr.e-tt', 'dr.e-top'], focus: ['m.2', 'dr.e-top'] },
         { say: 'Check by going forward: fifteen times forty is six hundred centimetres, which is six metres. It works.' },
       ],
     },

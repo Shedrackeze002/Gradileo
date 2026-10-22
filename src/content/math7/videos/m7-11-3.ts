@@ -80,7 +80,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Lucas rolls two dice. What is the probability that the sum is seven?', show: [...table('sv'), 'q'] },
-        { say: 'There are thirty-six equally likely outcomes. Count the sevens: one and six, two and five, three and four, four and three, five and two, and six and one. That is six outcomes.', show: ['sv.seven', 'm.0'], focus: ['sv.seven', 'm.0'] },
+        { say: 'There are thirty-six equally likely outcomes. Count the sevens: one plus six, two plus five, three plus four, four plus three, five plus two, and six plus one. That is six outcomes.', show: ['sv.seven', 'm.0'], focus: ['sv.seven', 'm.0'] },
         { say: 'So the probability is six out of thirty-six, which is one sixth.', show: 'm.1', focus: 'm.1' },
         { say: 'As a percent, one divided by six is about zero point one six six seven, so the probability is about seventeen percent.', show: 'm.2', focus: 'm.2' },
       ],

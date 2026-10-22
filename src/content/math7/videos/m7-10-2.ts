@@ -3,7 +3,7 @@ import { figure } from '@/video/solids.ts';
 import { barGraph } from '@/video/charts.ts';
 import { dotLine } from './lib/m7-10-figures.ts';
 
-// Ayesha's walking times, in minutes: 14, 16, 15, 13, 17 and 42.
+// Amara's walking times, in minutes: 14, 16, 15, 13, 17 and 42.
 const TIMES = [14, 16, 15, 13, 17, 42];
 const days = (id: string) =>
   figure(id, [barGraph({ categories: ['1', '2', '3', '4', '5', '6'], values: TIMES, max: 45, step: 5, titles: { x: 'Day', y: 'Minutes' } })]);
@@ -43,7 +43,7 @@ const video: Explainer = {
       layout: 'center',
       main: [{ kind: 'title', id: 'title', kicker: 'Data Analysis · Part 1', title: 'Outliers and the Mean', subtitle: 'One unusual value' }],
       lines: [
-        { say: 'Ayesha usually walks to school in about fifteen minutes. One snowy morning, it took her forty-two minutes.', show: 'title' },
+        { say: 'Amara usually walks to school in about fifteen minutes. One snowy morning, it took her forty-two minutes.', show: 'title' },
         { say: 'That one unusual day can change the typical walking time a lot. In this video, you will see how one unusual value changes the mean.' },
       ],
     },
@@ -54,7 +54,7 @@ const video: Explainer = {
       left: [days('dy')],
       right: [{ kind: 'callout', id: 'def', tone: 'definition', title: 'Outlier', md: 'An **outlier** is a value that is much greater or much less than the rest of the data.' }],
       lines: [
-        { say: 'Here are Ayesha’s walking times for six days: fourteen, sixteen, fifteen, thirteen, seventeen and forty-two minutes.', show: ['dy.scale', ...bars('dy')] },
+        { say: 'Here are Amara’s walking times for six days: fourteen, sixteen, fifteen, thirteen, seventeen and forty-two minutes.', show: ['dy.scale', ...bars('dy')] },
         { say: 'Five of the bars are about the same height. But the bar for day six towers over the rest.', focus: 'dy.b5' },
         { say: 'A value like that is called an outlier. An outlier is a value that is much greater, or much less, than the rest of the data.', show: 'def' },
       ],
@@ -82,7 +82,7 @@ const video: Explainer = {
         { kind: 'math', id: 'm', size: 'md', lines: ['14 + 16 + 15 + 13 + 17 = 75', '75 \\div 5 = 15'] },
       ],
       lines: [
-        { say: 'Let’s find the mean of Ayesha’s times, first without the outlier.', show: ['wo.axis', 'wo.dots'] },
+        { say: 'Let’s find the mean of Amara’s times, first without the outlier.', show: ['wo.axis', 'wo.dots'] },
         { say: 'The five usual times add to seventy-five minutes. There are five of them, so seventy-five divided by five is fifteen.', show: ['m.0', 'm.1'], focus: 'm.1' },
         { say: 'The mean without the outlier is fifteen minutes. It sits right in the middle of the five usual times.', show: 'wo.without', focus: 'wo.without' },
       ],

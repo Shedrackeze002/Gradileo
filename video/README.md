@@ -235,7 +235,8 @@ Lessons learned while scripting (the script check does not catch these):
   "the capital letter Z" is clear), a variable before "dollars" ("four g dollars" is heard as
   "$4"; "in dollars, four g" is clear), "and at a number" ("add a number"), a line that starts
   with "x is…" ("Axe is"), "Let c be" and "use C equals" ("let's see", "you see"; "We let c be"
-  and "use the formula C equals" are clear), and "convenience sample" ("convenient sample"; listen
+  and "use the formula C equals" are clear), "What is the mean?" ("What does the mean"; "Find the
+  mean." is clear), the name Ayesha (garbled every time; Amara is clear), and "convenience sample" ("convenient sample"; listen
   to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
   `speechText` now says "lenkths", which helps, but at the end of a long line it can still be heard
