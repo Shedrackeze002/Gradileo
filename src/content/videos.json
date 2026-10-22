@@ -18460,6 +18460,57 @@
       }
     ]
   },
+  "m7-11-3-d": {
+    "lessonId": "m7-11-3",
+    "title": "Theoretical and Experimental Probability, Part 4: More Trials and Predictions",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why results differ",
+        "t": 19.866
+      },
+      {
+        "title": "More trials",
+        "t": 48.015
+      },
+      {
+        "title": "Predicting results",
+        "t": 85.887
+      },
+      {
+        "title": "Watch out",
+        "t": 126.773
+      },
+      {
+        "title": "Your turn",
+        "t": 153.234
+      },
+      {
+        "title": "Summary",
+        "t": 188.336
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-11-3-d:q",
+        "t": 163.841,
+        "prompt": "You roll one six-sided die $60$ times. About how many times should you expect to roll a $5$?",
+        "choices": [
+          "$5$",
+          "$6$",
+          "$12$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "$P(5) = \\dfrac{1}{6}$, so expect about $\\dfrac{1}{6} \\times 60 = 10$ fives."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
