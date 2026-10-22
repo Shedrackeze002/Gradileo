@@ -13760,6 +13760,171 @@
       }
     ]
   },
+  "m7-4-2": {
+    "lessonId": "m7-4-2",
+    "title": "Subtracting Integers, Part 1: Subtracting by Taking Away",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Taking away positives",
+        "t": 24.334
+      },
+      {
+        "title": "Taking away negatives",
+        "t": 58.089
+      },
+      {
+        "title": "Taking everything away",
+        "t": 95.485
+      },
+      {
+        "title": "Not enough counters?",
+        "t": 115.755
+      },
+      {
+        "title": "Your turn",
+        "t": 139.318
+      },
+      {
+        "title": "Summary",
+        "t": 170.787
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-2:q",
+        "t": 147.377,
+        "prompt": "Use counters to find $(-9) - (-4)$.",
+        "choices": [
+          "$-5$",
+          "$-13$",
+          "$+5$",
+          "$+13$"
+        ],
+        "answer": 0,
+        "working": "Show $9$ negative counters and take away $4$ negative counters. $5$ negative counters are left, so $(-9) - (-4) = -5$."
+      }
+    ]
+  },
+  "m7-4-2-b": {
+    "lessonId": "m7-4-2",
+    "title": "Subtracting Integers, Part 2: Adding Zero Pairs",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Positive two minus positive five",
+        "t": 16.369
+      },
+      {
+        "title": "Taking away negatives that are not there",
+        "t": 64
+      },
+      {
+        "title": "Negative four minus positive three",
+        "t": 102.146
+      },
+      {
+        "title": "The method",
+        "t": 128.986
+      },
+      {
+        "title": "Your turn",
+        "t": 169.504
+      },
+      {
+        "title": "Summary",
+        "t": 206.736
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-2-b:q",
+        "t": 177.543,
+        "prompt": "Use counters to find $(-1) - (+4)$.",
+        "choices": [
+          "$+3$",
+          "$-3$",
+          "$-5$",
+          "$+5$"
+        ],
+        "answer": 2,
+        "working": "Start with $1$ negative counter. Add $4$ zero pairs, then take away the $4$ positive counters. $5$ negative counters are left, so $(-1) - (+4) = -5$."
+      }
+    ]
+  },
+  "m7-4-2-c": {
+    "lessonId": "m7-4-2",
+    "title": "Subtracting Integers, Part 3: Adding the Opposite",
+    "duration": 339,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Compare the answers",
+        "t": 18.128
+      },
+      {
+        "title": "A pattern",
+        "t": 59.667
+      },
+      {
+        "title": "The rule",
+        "t": 106.904
+      },
+      {
+        "title": "Subtracting a positive",
+        "t": 136.155
+      },
+      {
+        "title": "Subtracting a negative",
+        "t": 168.714
+      },
+      {
+        "title": "How far did it fall?",
+        "t": 203.293
+      },
+      {
+        "title": "Watch out",
+        "t": 245.912
+      },
+      {
+        "title": "Your turn",
+        "t": 272.4
+      },
+      {
+        "title": "Summary",
+        "t": 306.977
+      }
+    ],
+    "cues": [
+      {
+        "id": "m7-4-2-c:q",
+        "t": 279.208,
+        "prompt": "Find $(-5) - (-8)$.",
+        "choices": [
+          "$-13$",
+          "$-3$",
+          "$+13$",
+          "$+3$"
+        ],
+        "answer": 3,
+        "working": "Add the opposite: $(-5) - (-8) = (-5) + (+8)$. Different signs: $8 - 5 = 3$, and there are more positives, so the answer is $+3$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
