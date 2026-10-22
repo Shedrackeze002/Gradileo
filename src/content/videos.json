@@ -24932,7 +24932,7 @@
   "m8-10-2-c": {
     "lessonId": "m8-10-2",
     "title": "Probability of Independent Events, Part 3: The Multiplication Rule",
-    "duration": 247,
+    "duration": 248,
     "voice": "af_heart",
     "chapters": [
       {
@@ -24957,17 +24957,17 @@
       },
       {
         "title": "Your turn",
-        "t": 184.901
+        "t": 185.198
       },
       {
         "title": "Summary",
-        "t": 220.75
+        "t": 221.047
       }
     ],
     "cues": [
       {
         "id": "m8-10-2-c:q",
-        "t": 194.853,
+        "t": 195.15,
         "prompt": "You roll a die and flip a coin. What is the probability of rolling a $6$ **and** getting heads?",
         "choices": [
           "$\\dfrac{1}{8}$",
