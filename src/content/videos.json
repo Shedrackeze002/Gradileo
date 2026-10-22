@@ -14383,7 +14383,7 @@
   "m7-5-2-b": {
     "lessonId": "m7-5-2",
     "title": "Tables of Values and Graphs, Part 2: Working Backwards in a Table",
-    "duration": 204,
+    "duration": 205,
     "voice": "af_heart",
     "chapters": [
       {
@@ -14396,25 +14396,25 @@
       },
       {
         "title": "Watch out",
-        "t": 73.761
+        "t": 74.388
       },
       {
         "title": "A missing input",
-        "t": 100.867
+        "t": 101.494
       },
       {
         "title": "Your turn",
-        "t": 137.806
+        "t": 138.433
       },
       {
         "title": "Summary",
-        "t": 175.336
+        "t": 176.698
       }
     ],
     "cues": [
       {
         "id": "m7-5-2-b:q",
-        "t": 150.097,
+        "t": 151.459,
         "prompt": "An order of concert tickets costs \\$60. Use $C = 5n + 10$ to find the number of tickets.",
         "choices": [
           "$10$",
