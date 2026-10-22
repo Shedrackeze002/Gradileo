@@ -19512,21 +19512,21 @@
       },
       {
         "title": "Estimate first",
-        "t": 95.105
+        "t": 95.343
       },
       {
         "title": "Your turn",
-        "t": 132.23
+        "t": 132.468
       },
       {
         "title": "Summary",
-        "t": 164.071
+        "t": 164.309
       }
     ],
     "cues": [
       {
         "id": "m8-2-2:q",
-        "t": 139.455,
+        "t": 139.693,
         "prompt": "Find $15\\%$ of $80$.",
         "choices": [
           "$120$",
@@ -19542,7 +19542,7 @@
   "m8-2-2-b": {
     "lessonId": "m8-2-2",
     "title": "Percent of a Number, Part 2: More Than 100% of a Number",
-    "duration": 226,
+    "duration": 227,
     "voice": "af_heart",
     "chapters": [
       {
@@ -19559,29 +19559,29 @@
       },
       {
         "title": "Check with mental math",
-        "t": 74.511
+        "t": 75.031
       },
       {
         "title": "Too small to be right",
-        "t": 102.836
+        "t": 103.356
       },
       {
         "title": "250% of 12",
-        "t": 131.813
+        "t": 132.334
       },
       {
         "title": "Your turn",
-        "t": 157.228
+        "t": 157.749
       },
       {
         "title": "Summary",
-        "t": 194.312
+        "t": 194.833
       }
     ],
     "cues": [
       {
         "id": "m8-2-2-b:q",
-        "t": 164.04,
+        "t": 164.561,
         "prompt": "Find $120\\%$ of $45$.",
         "choices": [
           "$5.4$",
