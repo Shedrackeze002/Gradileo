@@ -16318,25 +16318,25 @@
       },
       {
         "title": "Is it parallel?",
-        "t": 62.53
+        "t": 62.128
       },
       {
         "title": "Watch out",
-        "t": 105.687
+        "t": 105.285
       },
       {
         "title": "Your turn",
-        "t": 130.499
+        "t": 130.097
       },
       {
         "title": "Summary",
-        "t": 174.454
+        "t": 174.052
       }
     ],
     "cues": [
       {
         "id": "m7-8-1-c:q",
-        "t": 148.201,
+        "t": 147.799,
         "prompt": "$JK \\perp LM$ at point $E$. Ray $EN$ makes a $62^\\circ$ angle with $EJ$, inside the right angle $\\angle JEL$. What is $\\angle NEL$?",
         "choices": [
           "$118^\\circ$",
