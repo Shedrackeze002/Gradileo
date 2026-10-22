@@ -72,7 +72,7 @@ const video: Explainer = {
         { say: 'Start with twelve negative counters. Make a group of four negative counters. That is one group.', show: ['gr.b0', 'gr.n0'], focus: ['gr.b0', 'gr.n0'] },
         { say: 'Here is a second group of four, and a third.', show: ['gr.b1', 'gr.n1', 'gr.b2', 'gr.n2'], focus: ['gr.b1', 'gr.n1', 'gr.b2', 'gr.n2'] },
         { say: 'There are three groups of negative four in negative twelve. So negative twelve divided by negative four equals positive three.', show: 'm.0', focus: 'm.0' },
-        { say: 'This time, the answer counts groups, and a count is positive.' },
+        { say: 'This time, the answer counts groups, and a number of groups is always positive.' },
       ],
     },
     {
