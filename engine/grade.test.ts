@@ -135,6 +135,12 @@ describe('numeric', () => {
     expect(gradePart({ kind: 'numeric', value: 1 / Math.PI }, '1/pi').correct).toBe(true);
     expect(gradePart({ kind: 'numeric', value: 45 }, '45 m').correct).toBe(true);
   });
+  it('accepts the units of chemistry answers', () => {
+    for (const [value, typed] of [[245, '245 kPa'], [245, '245kPa'], [1.25, '1.25 atm'], [760, '760 mm Hg'], [760, '760mmHg'], [298, '298 K'], [298, '298K'], [0.25, '0.25 mol'], [0.25, '0.25 mol/L'], [32, '32.0 g/mol']] as const) {
+      expect(gradePart({ kind: 'numeric', value, decimals: 1 }, typed).correct, typed).toBe(true);
+    }
+    expect(gradePart({ kind: 'numeric', value: 245, decimals: 0 }, '254 kPa').correct).toBe(false);
+  });
 });
 
 describe('lists of numbers', () => {
