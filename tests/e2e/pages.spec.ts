@@ -205,7 +205,19 @@ test('a teacher presents a lesson as slides that build step by step, with a whit
   await page.mouse.move(box.x + 100, box.y + 100);
   await page.mouse.down();
   await page.mouse.move(box.x + 300, box.y + 200, { steps: 8 });
+  // Nothing on the page can be selected while a stroke is drawn, and the lock lifts afterwards.
+  await expect(page.locator('html')).toHaveClass(/ink-drawing/);
   await page.mouse.up();
+  await expect(page.locator('html')).not.toHaveClass(/ink-drawing/);
+  // On an iPad, Safari would select text instead of drawing: the board cancels the pencil's touches.
+  await expect(board).toHaveCSS('user-select', 'none');
+  const cancelled = await canvas.evaluate((c) => {
+    const t = new Touch({ identifier: 1, target: c, clientX: 20, clientY: 20 });
+    const e = new TouchEvent('touchstart', { cancelable: true, bubbles: true, touches: [t], targetTouches: [t], changedTouches: [t] });
+    c.dispatchEvent(e);
+    return e.defaultPrevented;
+  });
+  expect(cancelled).toBe(true);
   await board.getByRole('button', { name: 'Save to lesson' }).click();
   await expect(board.getByRole('button', { name: 'Saved' })).toBeVisible();
   await board.getByRole('button', { name: 'Back to slide' }).click();

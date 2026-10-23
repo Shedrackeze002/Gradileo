@@ -125,10 +125,10 @@ export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave }
   };
 
   return (
-    <div className={cn('fixed inset-0 z-50 flex flex-col bg-canvas', !open && 'hidden')} role="dialog" aria-modal="true" aria-label="Whiteboard">
+    <div className={cn('fixed inset-0 z-50 flex select-none flex-col bg-canvas [-webkit-touch-callout:none]', !open && 'hidden')} role="dialog" aria-modal="true" aria-label="Whiteboard">
       <header className="flex flex-wrap items-center gap-2 border-b border-line bg-surface px-3 py-2">
         {onSave ? (
-          <input value={title} onChange={(e) => (setTitle(e.target.value), setDirty(true))} aria-label="Board name" maxLength={120} className="h-9 min-w-0 flex-1 rounded-lg border border-transparent bg-transparent px-2 text-[15px] font-semibold hover:border-line focus:border-brand-300 focus:outline-none sm:max-w-xs" />
+          <input value={title} onChange={(e) => (setTitle(e.target.value), setDirty(true))} aria-label="Board name" maxLength={120} className="h-9 min-w-0 flex-1 select-text rounded-lg border border-transparent bg-transparent px-2 text-[15px] font-semibold hover:border-line focus:border-brand-300 focus:outline-none sm:max-w-xs" />
         ) : (
           <span className="flex-1 px-2 text-[15px] font-semibold">Whiteboard</span>
         )}
