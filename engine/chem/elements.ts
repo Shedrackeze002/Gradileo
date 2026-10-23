@@ -117,3 +117,29 @@ export function element(symbol: string): Element | undefined {
 export function isElement(symbol: string): boolean {
   return BY_SYMBOL.has(symbol);
 }
+
+/**
+ * Pauling electronegativities to one decimal place, as a chemistry data booklet gives them, for the
+ * elements bonding questions use. Questions state the values they use.
+ */
+export const ELECTRONEGATIVITY: Record<string, number> = {
+  H: 2.2, Li: 1.0, Be: 1.6, B: 2.0, C: 2.6, N: 3.0, O: 3.4, F: 4.0,
+  Na: 0.9, Mg: 1.3, Al: 1.6, Si: 1.9, P: 2.2, S: 2.6, Cl: 3.2,
+  K: 0.8, Ca: 1.0, Ga: 1.8, Ge: 2.0, As: 2.2, Se: 2.6, Br: 3.0,
+  Rb: 0.8, Sr: 1.0, Sn: 2.0, Sb: 2.1, I: 2.7, Cs: 0.8, Ba: 0.9,
+  Fe: 1.8, Cu: 1.9, Zn: 1.7, Ag: 1.9, Pb: 2.3,
+};
+
+/** Valence electrons of a main-group element (its group's last digit, helium 2), or undefined. */
+export function valenceElectrons(symbol: string): number | undefined {
+  return VALENCE[symbol];
+}
+
+const VALENCE: Record<string, number> = {
+  H: 1, He: 2,
+  Li: 1, Be: 2, B: 3, C: 4, N: 5, O: 6, F: 7, Ne: 8,
+  Na: 1, Mg: 2, Al: 3, Si: 4, P: 5, S: 6, Cl: 7, Ar: 8,
+  K: 1, Ca: 2, Ga: 3, Ge: 4, As: 5, Se: 6, Br: 7, Kr: 8,
+  Rb: 1, Sr: 2, In: 3, Sn: 4, Sb: 5, Te: 6, I: 7, Xe: 8,
+  Cs: 1, Ba: 2, Tl: 3, Pb: 4, Bi: 5,
+};

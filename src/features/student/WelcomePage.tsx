@@ -7,7 +7,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, ClipboardCheck, Compass, KeyRound, Sparkles, XCircle } from 'lucide-react';
-import { COURSES, getCourse, getSkill, skillInfo } from '@engine/curriculum/index.ts';
+import { LISTED_COURSES as COURSES, getCourse, getSkill, skillInfo } from '@engine/curriculum/index.ts';
 import { gradeItem } from '@engine/grade.ts';
 import { placementResult, placementSkills, PREREQUISITE, recommendCourse, type Feeling, type PlacementAnswers, type Plan, type PlacementResult } from '@engine/placement.ts';
 import { freshSeed } from '@engine/rng.ts';

@@ -425,4 +425,6 @@ export interface CourseMeta {
   outcomes: Outcome[];
   units: UnitMeta[];
   lessons: LessonMeta[];
+  /** Still being written: it runs everywhere but the course pickers (LISTED_COURSES). */
+  draft?: boolean;
 }
