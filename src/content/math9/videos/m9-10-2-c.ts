@@ -179,7 +179,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. Convenience samples and voluntary response samples are usually biased.', show: 'sum.0' },
+        { say: 'Let’s sum up. Samples chosen for convenience, and voluntary response samples, are usually biased.', show: 'sum.0' },
         { say: 'A representative sample has the same mix of people as the population.', show: 'sum.1' },
         { say: 'Choosing at random is the best way to get a representative sample.', show: 'sum.2' },
         { say: 'And how a sample is chosen matters more than how big it is. In the next part, you will work out how many people to choose from each group in a stratified sample. See you there!', show: 'sum.3' },

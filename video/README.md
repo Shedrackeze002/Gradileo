@@ -246,8 +246,10 @@ Lessons learned while scripting (the script check does not catch these):
   "the same perimeter", is clear), "write an inequality" ("write in an equality"; "write the
   inequality" is clear), "a rider who…" ("a writer"; "a person who…" is clear), "five hundredths" ("500"; "five over one
   hundred" is clear), "only the x-coordinate changes." at the end of a line ("X-Go-ordinate";
-  "the x-coordinate of each point" is clear), and "convenience sample" ("convenient sample"; listen
-  to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
+  "the x-coordinate of each point" is clear), "zero point one five times two hundred forty dollars" ("$0.1, $5,
+  $240"; "Multiply zero point one five by two hundred forty dollars" is clear), and "convenience
+  sample" ("convenient sample" in a short line, or before "and"/"or"; "samples chosen for
+  convenience" is clear). "Bisects" after "chord" came out "by sex": `speechText` now says
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
   `speechText` now says "lenkths", which helps, but at the end of a long line it can still be heard
   as "links"; there, name the sides ("the two long sides added together"). "Eighty-one" came out

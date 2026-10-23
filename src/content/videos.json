@@ -31857,6 +31857,151 @@
       }
     ]
   },
+  "m9-10-4-c": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 3: Predicting with Probability",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expected number",
+        "t": 19.154
+      },
+      {
+        "title": "Planting seeds",
+        "t": 49.14
+      },
+      {
+        "title": "Close, not exact",
+        "t": 95.813
+      },
+      {
+        "title": "Your turn",
+        "t": 136.838
+      },
+      {
+        "title": "Summary",
+        "t": 168.651
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4-c:q",
+        "t": 148.749,
+        "prompt": "The probability that a bus is on time is $0.9$. About how many of its next $40$ trips should be on time?",
+        "choices": [
+          "$36$",
+          "$4$",
+          "$40$",
+          "$9$"
+        ],
+        "answer": 0,
+        "working": "Expected number $= 0.9 \\times 40 = 36$. About $36$ trips should be on time, and about $4$ should be late."
+      }
+    ]
+  },
+  "m9-10-4-d": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 4: Comparing Probabilities",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which brand?",
+        "t": 19.704
+      },
+      {
+        "title": "Find each probability",
+        "t": 54.386
+      },
+      {
+        "title": "Why counts mislead",
+        "t": 93.148
+      },
+      {
+        "title": "Your turn",
+        "t": 120.57
+      },
+      {
+        "title": "Summary",
+        "t": 160.782
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4-d:q",
+        "t": 136.451,
+        "prompt": "Last season, Player A scored on $45$ of $60$ shots, and Player B scored on $52$ of $80$ shots. Which player has the higher probability of scoring?",
+        "choices": [
+          "Player B, because $52$ is more than $45$",
+          "Player B, with $65\\%$",
+          "They have the same probability.",
+          "Player A, with $75\\%$"
+        ],
+        "answer": 3,
+        "working": "Player A: $45 \\div 60 = 0.75 = 75\\%$. Player B: $52 \\div 80 = 0.65 = 65\\%$. Player A has the higher probability."
+      }
+    ]
+  },
+  "m9-10-4-e": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 5: Expected Cost",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The question",
+        "t": 16.481
+      },
+      {
+        "title": "A hundred phones",
+        "t": 45.98
+      },
+      {
+        "title": "Expected cost",
+        "t": 80.683
+      },
+      {
+        "title": "Making the decision",
+        "t": 102.24
+      },
+      {
+        "title": "Your turn",
+        "t": 147.014
+      },
+      {
+        "title": "Summary",
+        "t": 198.521
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4-e:q",
+        "t": 167.194,
+        "prompt": "A \\$30 protection plan for a bike covers a repair that costs \\$150. Suppose the probability of needing that repair is $10\\%$. What is the expected repair cost, and which choice costs less on average?",
+        "choices": [
+          "\\$15; the protection plan costs less on average.",
+          "\\$15; paying for the repair only when needed costs less on average.",
+          "\\$150; the protection plan costs less on average.",
+          "\\$30; the two choices cost the same on average."
+        ],
+        "answer": 1,
+        "working": "Expected cost $= 0.10 \\times 150 = 15$, so \\$15. That is less than the \\$30 plan, so paying for the repair only when needed costs less on average."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
