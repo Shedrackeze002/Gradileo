@@ -110,7 +110,14 @@ function Review() {
               responses={s.responses}
               content={a.data?.content ?? { sections: [], custom: [] }}
               assignmentId={a.data?.id ?? 'practice'}
-              renderExtra={(i) => (a.data ? <ManualGrader key={`${s.id}-${i}`} s={s} a={a.data} index={i} /> : null)}
+              renderExtra={(i) =>
+                a.data ? (
+                  <>
+                    <ManualGrader key={`${s.id}-${i}`} s={s} a={a.data} index={i} />
+                    <MarkOverride key={`${s.id}-${i}-mark`} s={s} a={a.data} index={i} />
+                  </>
+                ) : null
+              }
             />
           )}
         </div>
@@ -250,6 +257,86 @@ function ManualGrader({ s, a, index }: { s: Submission; a: Assignment; index: nu
           }}
         >
           Save grade
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * A teacher's mark for an auto-graded question, in place of the automatic one: for when its answer
+ * key is wrong (a question the teacher or the AI wrote, say) or a right answer was written another way.
+ */
+function MarkOverride({ s, a, index }: { s: Submission; a: Assignment; index: number }) {
+  const item = itemFromRef(s.items[index], a.content, a.id);
+  const resp = s.responses[index];
+  const current = typeof resp?.manualScore === 'number' ? resp.manualScore : null;
+  const [open, setOpen] = useState(current !== null);
+  const [score, setScore] = useState<number | null>(current);
+  const [comment, setComment] = useState(resp?.comment ?? '');
+  const [busy, setBusy] = useState(false);
+  const qc = useQueryClient();
+  const toast = useToast();
+  if (!item || item.parts.some((p) => p.answer.kind === 'manual') || s.status === 'in_progress') return null;
+  const pts = Math.max(1, Math.round(item.points ?? 1));
+
+  const save = async (value: number | null) => {
+    setBusy(true);
+    try {
+      const updated = await api().gradeManual(s.id, index, value, value === null ? undefined : comment.trim() || undefined);
+      qc.setQueryData(qk.submission(s.id), updated);
+      await qc.invalidateQueries({ queryKey: ['submissions'] });
+      toast({ kind: 'success', title: value === null ? 'Automatic mark restored' : 'Mark changed' });
+      if (value === null) {
+        setScore(null);
+        setComment('');
+        setOpen(false);
+      }
+    } catch (e) {
+      toast({ kind: 'error', title: 'Could not save', body: (e as Error).message });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  if (!open)
+    return (
+      <button type="button" onClick={() => setOpen(true)} className="text-sm font-semibold text-brand hover:underline">
+        Change the mark
+      </button>
+    );
+  return (
+    <div className="space-y-3 rounded-xl border border-line bg-surface-2/50 p-4">
+      <div className="text-sm font-semibold">Change the mark</div>
+      <p className="text-sm text-ink-2">The mark you give replaces the automatic one in the score. Use it when the answer key is wrong, or when a right answer was written another way.</p>
+      <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Points">
+        {markSteps(pts).map((p) => (
+          <button
+            key={p}
+            type="button"
+            role="radio"
+            aria-checked={score !== null && Math.abs(score * pts - p) < 1e-6}
+            onClick={() => setScore(p / pts)}
+            className={cn('h-9 min-w-[2.75rem] rounded-lg border px-2 text-sm font-semibold transition', score !== null && Math.abs(score * pts - p) < 1e-6 ? 'border-brand bg-brand text-brand-ink' : 'border-line bg-surface hover:border-line-strong')}
+          >
+            {p}
+          </button>
+        ))}
+        <span className="self-center pl-1 text-sm text-ink-3">/ {pts}</span>
+      </div>
+      <Textarea rows={2} placeholder="Comment for the student (optional), such as why the mark changed" value={comment} onChange={(e) => setComment(e.target.value)} />
+      <div className="flex flex-wrap justify-end gap-2">
+        {current !== null ? (
+          <Button size="sm" variant="ghost" disabled={busy} onClick={() => save(null)}>
+            Use the automatic mark
+          </Button>
+        ) : (
+          <Button size="sm" variant="ghost" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+        )}
+        <Button size="sm" disabled={score === null} loading={busy} onClick={() => score !== null && save(score)}>
+          Save mark
         </Button>
       </div>
     </div>

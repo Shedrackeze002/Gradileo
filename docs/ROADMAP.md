@@ -522,6 +522,15 @@ items ship or decisions change.
      out and the teacher is told. Questions the AI wrote are marked "Written by AI: check the
      answer" until the teacher marks them checked. Only lessons, skills and the class's average
      mastery reach MiniMax, never names. Without MiniMax the draft uses generated questions only.
+   - Fixed (23 October 2026, the owner found a question keyed as $\sin\theta$ that asked for
+     $\tan\theta$, so a right answer was marked wrong): a second, independent solution. After the
+     draft (and after a regenerated question), MiniMax solves every number and choice question it
+     wrote again from the beginning, without the answer it gave; a question whose two answers
+     disagree is left out and the draft is topped up. When the second solution cannot be made,
+     the questions stay and the teacher is told to check their answers. And **Change the mark** in
+     a submission: a teacher can give their own mark on any auto-graded question (a wrong key, or a
+     right answer written another way); it replaces the automatic mark in the score, the student
+     sees that the teacher changed it, and "Use the automatic mark" puts it back.
    - Built: "solve it on the canvas" answers. Every written response (the AI's and the
      teacher's) opens on a canvas built on the whiteboard's ink, with a Type tab beside it; the
      working is kept in the response as compact text (`engine/ink.ts`, up to four pages), checked

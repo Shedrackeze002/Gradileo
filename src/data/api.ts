@@ -179,7 +179,8 @@ export interface DataApi {
   submit(submissionId: string, patch: { responses: Record<number, StoredResponse>; items: ItemRef[]; integrity?: Integrity }): Promise<Submission>;
   /** Teacher: unlock an attempt that exam mode locked; the student may leave it as many times again. */
   unlockAttempt(submissionId: string): Promise<void>;
-  gradeManual(submissionId: string, itemIndex: number, score01: number, comment?: string): Promise<Submission>;
+  /** The teacher's mark on one question, 0..1; null on an auto-graded question restores the automatic mark. */
+  gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string): Promise<Submission>;
   returnSubmission(submissionId: string, feedback: string): Promise<Submission>;
 
   // Mastery & analytics

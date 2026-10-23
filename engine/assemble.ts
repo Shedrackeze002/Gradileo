@@ -177,7 +177,10 @@ export interface StoredResponse {
   at?: string;
   /** A written response's working on the answer canvas (encodeCanvas in ink.ts). */
   canvas?: string;
-  /** Manual (teacher) score for 'manual' items, 0..1 */
+  /**
+   * The teacher's score, 0..1: the grade of a 'manual' item, or, on an auto-graded item, a mark
+   * that replaces the automatic one (when its answer key was wrong, say).
+   */
   manualScore?: number | null;
   /** Teacher comment on this item. */
   comment?: string | null;
@@ -234,6 +237,11 @@ export function gradeSubmission(
       if (ms === undefined || ms === null) pendingManual++;
       earned = (ms ?? 0) * points;
       result = { correct: (ms ?? 0) >= 0.999, score: ms ?? 0, parts: [{ correct: (ms ?? 0) >= 0.999 }] };
+    } else if (typeof resp.manualScore === 'number') {
+      // The teacher changed the automatic mark.
+      const ms = resp.manualScore;
+      earned = ms * points;
+      result = { correct: ms >= 0.999, score: ms, parts: [{ correct: ms >= 0.999 }] };
     } else {
       result = gradeItem(item, resp.answers ?? []);
       earned = result.score * points;

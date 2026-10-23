@@ -34,8 +34,10 @@ function Rows({ items, responses, content, assignmentId, showSolutions = true, r
         const item = itemFromRef(ref, content, assignmentId);
         const resp = responses[i] ?? { answers: [], hintsUsed: 0 };
         const manual = !!item && item.parts.some((p) => p.answer.kind === 'manual');
+        // A teacher's mark on an auto-graded question replaces the automatic one.
+        const overridden = !manual && typeof resp.manualScore === 'number';
         const result = item && !manual ? gradeItem(item, resp.answers ?? []) : null;
-        return { item, resp, result, manual };
+        return { item, resp, result, manual, overridden };
       }),
     [items, responses, content, assignmentId],
   );
@@ -45,11 +47,12 @@ function Rows({ items, responses, content, assignmentId, showSolutions = true, r
   });
   return (
     <div className="space-y-2">
-      {rows.map(({ item, resp, result, manual }, i) => {
+      {rows.map(({ item, resp, result, manual, overridden }, i) => {
         if (!item) return null;
         const isOpen = open === i;
         const ms = resp.manualScore;
-        const status = manual ? (ms === undefined || ms === null ? 'pending' : ms >= 0.999 ? 'right' : ms > 0 ? 'partial' : 'wrong') : result?.correct ? 'right' : result && result.score > 0 ? 'partial' : 'wrong';
+        const marked = (m: number) => (m >= 0.999 ? 'right' : m > 0 ? 'partial' : 'wrong');
+        const status = manual ? (ms === undefined || ms === null ? 'pending' : marked(ms)) : overridden ? marked(ms!) : result?.correct ? 'right' : result && result.score > 0 ? 'partial' : 'wrong';
         return (
           <div key={i} className={cn('overflow-hidden rounded-2xl border bg-surface', isOpen ? 'border-line-strong shadow-card' : 'border-line')}>
             <button type="button" onClick={() => setOpen(isOpen ? null : i)} className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-surface-2/60">
@@ -62,12 +65,17 @@ function Rows({ items, responses, content, assignmentId, showSolutions = true, r
                 </span>
               )}
               {(resp.history?.length ?? 0) > 0 && <span className="hidden text-xs text-ink-3 sm:inline">{resp.history!.length + 1} tries</span>}
-              <span className="text-xs text-ink-3">{status === 'pending' ? 'Needs grading' : manual ? `${Math.round((ms ?? 0) * 100)}%` : result?.correct ? 'Correct' : status === 'partial' ? 'Partly correct' : 'Incorrect'}</span>
+              <span className="text-xs text-ink-3">{status === 'pending' ? 'Needs grading' : manual ? `${Math.round((ms ?? 0) * 100)}%` : `${status === 'right' ? 'Correct' : status === 'partial' ? 'Partly correct' : 'Incorrect'}${overridden ? ' · marked by the teacher' : ''}`}</span>
               <ChevronDown className={cn('h-4 w-4 text-ink-3 transition', isOpen && 'rotate-180')} />
             </button>
             {isOpen && (
               <div className="space-y-4 border-t border-line p-4 sm:p-5">
-                <QuestionView item={item} responses={resp.answers ?? []} canvas={resp.canvas} onChange={() => {}} result={result} locked showAnswers={showSolutions} />
+                <QuestionView item={item} responses={resp.answers ?? []} canvas={resp.canvas} onChange={() => {}} result={overridden ? null : result} locked showAnswers={showSolutions} />
+                {overridden && (
+                  <div className="rounded-xl bg-info-soft px-3 py-2 text-sm text-info-ink">
+                    The teacher changed the mark on this question to {Math.round(ms! * 100)}%{result ? ` (it was marked ${result.correct ? 'correct' : result.score > 0 ? 'partly correct' : 'incorrect'} automatically)` : ''}.
+                  </div>
+                )}
                 {resp.comment && (
                   <div className="rounded-xl bg-info-soft px-3 py-2 text-sm text-info-ink">
                     <span className="font-semibold">Teacher comment: </span>

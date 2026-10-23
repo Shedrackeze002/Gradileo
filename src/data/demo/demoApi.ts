@@ -1244,13 +1244,16 @@ export class DemoApi implements DataApi {
     this.persist();
   }
 
-  async gradeManual(submissionId: string, itemIndex: number, score01: number, comment?: string) {
-    const s = this.db.submissions.find((x) => x.id === submissionId);
-    if (!s) throw new Error('Submission not found.');
-    this.requireTeacherOf(s.classId);
+  async gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string) {
+    const at = this.db.submissions.findIndex((x) => x.id === submissionId);
+    if (at < 0) throw new Error('Submission not found.');
+    this.requireTeacherOf(this.db.submissions[at].classId);
+    // A new submission object, not the stored one changed in place: pages hold the stored object,
+    // and would not see the change.
+    const s = { ...this.db.submissions[at] };
     const a = s.assignmentId ? this.db.assignments.find((x) => x.id === s.assignmentId) : null;
-    s.responses[itemIndex] = { ...(s.responses[itemIndex] ?? { answers: [], hintsUsed: 0 }), manualScore: Math.max(0, Math.min(1, score01)), comment: comment ?? null };
-    // Recompute totals with the engine (manual scores included).
+    s.responses = { ...s.responses, [itemIndex]: { ...(s.responses[itemIndex] ?? { answers: [], hintsUsed: 0 }), manualScore: score01 === null ? null : Math.max(0, Math.min(1, score01)), comment: comment ?? null } };
+    // Recompute totals with the engine (teacher marks included).
     const { gradeSubmission } = await import('@engine/assemble.ts');
     await loadSkills(refSkillIds(a?.content, s.items));
     const g = gradeSubmission(s.items, s.responses, a?.content ?? { sections: [], custom: [] }, a?.id ?? 'practice');
@@ -1259,6 +1262,7 @@ export class DemoApi implements DataApi {
     s.percent = g.percent;
     s.pendingManual = g.pendingManual;
     if (s.status === 'submitted' && g.pendingManual === 0) s.status = 'graded';
+    this.db.submissions[at] = s;
     this.persist();
     return { ...s };
   }
