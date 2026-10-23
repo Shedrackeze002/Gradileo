@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { checkValue, draftAssignment, draftContext, draftPrompt, normalizeDraftRequest, normalizeRegenerateRequest, offlineDraft, parseDraft, parseRegenerated, regenerateQuestion, regeneratePrompt, repairLatex, writtenFormatOf, type DraftRequest, type RegenerateRequest } from './builder.ts';
+import type { CustomQuestion } from '../assemble.ts';
+import { answerCheckPrompt, applyAnswerChecks, checkValue, draftAssignment, draftContext, draftPrompt, normalizeDraftRequest, normalizeRegenerateRequest, offlineDraft, parseDraft, parseRegenerated, regenerateQuestion, regeneratePrompt, repairLatex, writtenFormatOf, type DraftRequest, type RegenerateRequest } from './builder.ts';
 
 const request = (patch: Partial<DraftRequest> = {}): DraftRequest => ({
   type: 'homework',
@@ -172,5 +173,70 @@ describe('regenerating one question', () => {
     const ok = await regenerateQuestion(regen(), ctx, { apiKey: 'k' }, ids);
     expect(ok.question).toMatchObject({ kind: 'text', accepted: ['hypotenuse'] });
     expect(ok.model).toBe('MiniMax-M3.1-Flash');
+  });
+});
+
+describe('a second, independent solution of the AI’s answers', () => {
+  afterEach(() => vi.unstubAllGlobals());
+  /** A MiniMax reply with this JSON as its content. */
+  const reply = (content: unknown) => new Response(JSON.stringify({ model: 'MiniMax-M3.1-Flash', choices: [{ message: { content: JSON.stringify(content) } }] }));
+  const tan: CustomQuestion = { id: 'q1', kind: 'numeric', prompt: 'A right triangle has opposite side 24 and hypotenuse 30. Find $\\tan(\\theta)$ as a decimal.', value: 0.8, tolerance: 0.05, points: 1, aiWritten: true };
+  const mc: CustomQuestion = { id: 'q2', kind: 'mc', prompt: 'Which side is the hypotenuse?', choices: [{ id: 'a', md: '$AB$' }, { id: 'b', md: '$AC$' }], correct: 'b', points: 1, aiWritten: true };
+  const words: CustomQuestion = { id: 'q3', kind: 'text', prompt: 'Name the longest side.', accepted: ['hypotenuse'], points: 1, aiWritten: true };
+
+  it('asks for every number and choice again, without the answers', () => {
+    const p = answerCheckPrompt([tan, mc, words], ctx);
+    expect(p.system).toMatch(/Solve each question yourself, from the beginning/);
+    const user = JSON.parse(p.user);
+    expect(user.questions).toEqual([{ id: 'q1', question: tan.prompt }, { id: 'q2', question: mc.prompt, choices: ['$AB$', '$AC$'] }]);
+    expect(p.user).not.toMatch(/0\.8/);
+  });
+
+  it('leaves out a question whose second solution disagrees, and keeps the rest', () => {
+    // The key worked the tangent as a sine (24 / 30); the second solution finds the adjacent side.
+    const r = applyAnswerChecks([tan, mc, words], { answers: [{ id: 'q1', value: 1.33, check: '24 / (30^2 - 24^2)^0.5' }, { id: 'q2', choice: 1 }] });
+    expect(r.questions.map((q) => q.id)).toEqual(['q2', 'q3']);
+    expect(r.dropped).toEqual(['Question 1: a second, independent solution got 1.3333, not 0.8']);
+    expect(applyAnswerChecks([mc], { answers: [{ id: 'q2', choice: 0 }] }).dropped).toEqual(['Question 1: a second, independent solution chose a different answer']);
+  });
+
+  it('allows for rounding, and keeps a question it could not judge', () => {
+    const rounded = { ...tan, value: 1.33, tolerance: 0.005 };
+    expect(applyAnswerChecks([rounded], { answers: [{ id: 'q1', check: '24 / 18' }] }).questions).toHaveLength(1);
+    const whole = { ...tan, value: 75, tolerance: 1e-6 };
+    expect(applyAnswerChecks([whole], { answers: [{ id: 'q1', value: 74.6 }] }).questions).toHaveLength(1);
+    expect(applyAnswerChecks([tan], { answers: [] }).questions).toHaveLength(1);
+    expect(applyAnswerChecks([tan], 'not json').questions).toHaveLength(1);
+  });
+
+  it('drafts, checks and tops up, and says when the answers could not be checked', async () => {
+    const draft = { title: 'Quiz', instructions: '', rationale: 'r', sections: [{ skillId: 'm8-pythagoras-leg', count: 2, difficulty: 1 }], questions: [{ format: 'short', skillId: 'm8-pythagoras-leg', prompt: 'Legs 6 and 8: the hypotenuse?', value: 14, check: '6 + 8', solution: 's' }] };
+    const fetch = vi.fn().mockResolvedValueOnce(reply(draft)).mockImplementationOnce(async () => {
+      return reply({ answers: [{ id: 'q99', value: 10 }] });
+    });
+    vi.stubGlobal('fetch', fetch);
+    // The second solution answers by the question's id, which the draft gives it.
+    let k = 98;
+    const one = await draftAssignment(request({ count: 3 }), ctx, { apiKey: 'k' }, (prefix) => `${prefix}${++k}`);
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(one.dropped).toEqual(['Question 1: a second, independent solution got 10, not 14']);
+    expect(one.draft.custom).toEqual([]);
+    expect(one.draft.sections.reduce((t, s) => t + s.count, 0)).toBe(3);
+    expect(one.unchecked).toBeUndefined();
+
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValueOnce(reply(draft)).mockResolvedValueOnce(new Response('busy', { status: 503 })));
+    const two = await draftAssignment(request({ count: 3 }), ctx, { apiKey: 'k' }, ids);
+    expect(two.source).toBe('minimax');
+    expect(two.unchecked).toBe(true);
+    expect(two.draft.custom).toHaveLength(1);
+  });
+
+  it('turns down a regenerated question whose second solution disagrees', async () => {
+    const regen: RegenerateRequest = { type: 'homework', format: 'short', skillId: 'm8-pythagoras-leg', lessonIds: ['m8-1-3'], current: '', notes: '' };
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValueOnce(reply({ question: { prompt: 'Legs 6 and 8: the hypotenuse?', value: 14, check: '6 + 8', solution: 's' } })).mockImplementationOnce(async (_url: string, init: RequestInit) => {
+      const id = JSON.parse(JSON.parse(String(init.body)).messages[1].content).questions[0].id;
+      return reply({ answers: [{ id, value: 10, check: '(6^2 + 8^2)^0.5' }] });
+    }));
+    expect((await regenerateQuestion(regen, ctx, { apiKey: 'k' }, ids)).problem).toMatch(/did not pass the checks \(a second, independent solution got 10, not 14\)/);
   });
 });

@@ -267,6 +267,7 @@ export default function AssignmentBuilder() {
     const notes = [
       x.rationale,
       r.dropped?.length ? `${r.dropped.length} question${r.dropped.length === 1 ? '' : 's'} the AI wrote did not pass the checks and ${r.dropped.length === 1 ? 'was' : 'were'} left out.` : '',
+      r.unchecked ? 'The AI could not solve its questions a second time to check their answers, so check each answer it wrote before you publish.' : '',
       r.source === 'offline' && !/not available/.test(x.rationale) ? 'The AI is not available right now, so this draft uses the course’s generated questions only.' : '',
     ].filter(Boolean);
     setDraft({ ...d, title: d.title.trim() ? d.title : x.title, instructions: d.instructions.trim() ? d.instructions : x.instructions, content, aiRationale: notes.join(' ') || null });

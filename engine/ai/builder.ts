@@ -5,8 +5,10 @@
  * generated questions where it can (every student gets fresh numbers, graded by the engine, with
  * hints and worked solutions) and writes its own questions only in the formats the teacher allows,
  * each with its answer and a worked solution or marking guide. A written question's numeric answer
- * must match an arithmetic check the model gives, or it is dropped. The teacher reviews, edits and
- * publishes the draft; nothing reaches students before that. Without MiniMax, or when its answer is
+ * must match an arithmetic check the model gives, or it is dropped; then a second call solves every
+ * question with one right answer again, without seeing the first answer, and a question whose two
+ * answers disagree is dropped too. The teacher reviews, edits and publishes the draft; nothing
+ * reaches students before that. Without MiniMax, or when its answer is
  * unusable, an offline draft spreads the questions over the chosen lessons' skills.
  *
  * Runs in the browser (demo mode) and in the `ai-agent` Edge Function. No student names are sent:
@@ -15,6 +17,7 @@
 import { TYPE_LABEL, type CustomQuestion, type SkillSection } from '../assemble.ts';
 import { getCourse, lessonById, skillInfo } from '../curriculum/index.ts';
 import { evaluate, parseExpr } from '../math/expr.ts';
+import { fmt, roundTo } from '../math/numbers.ts';
 import type { Difficulty } from '../types.ts';
 import { minimaxChat, type MiniMaxConfig } from './minimax.ts';
 import { extractJson } from './parse.ts';
@@ -74,6 +77,8 @@ export interface DraftResult {
   error?: string;
   /** Questions the model wrote that failed the checks and were left out, with the reason. */
   dropped?: string[];
+  /** The second solution could not be made, so the answers of the AI's own questions are unchecked. */
+  unchecked?: boolean;
 }
 
 export const MAX_DRAFT_QUESTIONS = 40;
@@ -262,6 +267,14 @@ function toleranceFor(value: number): number {
 
 /** The model's draft, checked: unknown skills, extra questions and questions that fail their checks are left out. */
 export function parseDraft(raw: unknown, req: DraftRequest, ctx: DraftContext, newId: (prefix: string) => string = defaultId): { draft: AssignmentDraft; dropped: string[] } {
+  const { sections, custom, dropped } = parseDraftParts(raw, req, ctx, newId);
+  // Exactly the number asked for: trim the largest sections or the last questions, or top up the
+  // generated sections when they are allowed.
+  return finishDraft((raw ?? {}) as Record<string, unknown>, sections, custom, dropped, req, ctx);
+}
+
+/** The draft's generated sections and checked questions, before it is trimmed or topped up to size. */
+function parseDraftParts(raw: unknown, req: DraftRequest, ctx: DraftContext, newId: (prefix: string) => string): { sections: SkillSection[]; custom: CustomQuestion[]; dropped: string[] } {
   const o = (raw ?? {}) as Record<string, unknown>;
   const allowed = new Map(ctx.lessons.flatMap((l) => l.skills.map((s) => [s.id, s] as const)));
   const dropped: string[] = [];
@@ -280,10 +293,7 @@ export function parseDraft(raw: unknown, req: DraftRequest, ctx: DraftContext, n
 
   const { custom, dropped: left } = parseQuestions(o.questions, req.formats, allowed, newId);
   dropped.push(...left);
-
-  // Exactly the number asked for: trim the largest sections or the last questions, or top up the
-  // generated sections when they are allowed.
-  return finishDraft(o, sections, custom, dropped, req, ctx);
+  return { sections, custom, dropped };
 }
 
 /** The questions the model wrote, checked: those that fail are left out, with the reason. */
@@ -368,6 +378,75 @@ function defaultId(prefix: string): string {
   return `${prefix}_${Math.random().toString(36).slice(2, 10)}`;
 }
 
+// ---------------------------------------------------------------- a second, independent solution
+
+/** The AI's own questions with one right answer, which a second solution can check: a number or a choice. */
+const checkable = (q: CustomQuestion) => (q.kind === 'numeric' && q.value !== undefined) || (q.kind === 'mc' && !!q.choices?.length);
+
+/**
+ * The model solves its questions again from the beginning, without the answers it gave, so a slip
+ * that its own working repeats (a tangent worked as a sine, say) shows up as a disagreement.
+ */
+export function answerCheckPrompt(questions: CustomQuestion[], ctx: Pick<DraftContext, 'subject' | 'courseTitle'>): { system: string; user: string } {
+  return {
+    system: `You check the answers to questions a ${subjectName(ctx.subject)} teacher will give their class. Solve each question yourself, from the beginning, as a careful student would: work it out step by step before you write the answer, and assume nothing about what the answer should be.
+- A question with "choices": give "choice", the index (from 0) of the one correct choice.
+- Any other question: give "value", the number that answers it, rounded only as the question asks, and "check", an arithmetic expression with only numbers, + - * / ^ and brackets that computes the unrounded answer, writing a square root as ^0.5, such as "24 / (30^2 - 24^2)^0.5".
+Output ONLY one JSON object, no prose and no code fences: {"answers": [{"id": string, "choice"?: number, "value"?: number, "check"?: string}]}`,
+    user: JSON.stringify({
+      course: ctx.courseTitle,
+      questions: questions.filter(checkable).map((q) => ({ id: q.id, question: q.prompt, ...(q.kind === 'mc' ? { choices: q.choices!.map((c) => c.md) } : {}) })),
+    }),
+  };
+}
+
+/** Whether a second solution agrees with the key: within the key's rounding, or 0.5% of it. */
+function agrees(key: number, tolerance: number, v: number): boolean {
+  if (Math.abs(v - key) <= Math.max(tolerance, 0.005 * Math.max(Math.abs(key), Math.abs(v)))) return true;
+  const places = String(key).includes('.') ? String(key).split('.')[1].length : 0;
+  return Math.abs(roundTo(v, places) - key) < 1e-9;
+}
+
+/**
+ * The questions whose second solution agrees with their answer. A question the second solution
+ * skipped stays (it cannot be judged); one it answered differently is left out, with the reason.
+ */
+export function applyAnswerChecks(questions: CustomQuestion[], raw: unknown): { questions: CustomQuestion[]; dropped: string[] } {
+  const list = (raw as { answers?: unknown })?.answers;
+  const answers = new Map((Array.isArray(list) ? (list as Array<Record<string, unknown>>) : []).filter((a) => a && typeof a.id === 'string').map((a) => [a.id as string, a] as const));
+  const kept: CustomQuestion[] = [];
+  const dropped: string[] = [];
+  questions.forEach((q, i) => {
+    const a = answers.get(q.id);
+    if (!a || !checkable(q)) return void kept.push(q);
+    const n = `Question ${i + 1}`;
+    if (q.kind === 'mc') {
+      const choice = Number(a.choice);
+      if (!Number.isInteger(choice) || choice < 0 || choice >= q.choices!.length || q.choices![choice].id === q.correct) return void kept.push(q);
+      return void dropped.push(`${n}: a second, independent solution chose a different answer`);
+    }
+    const seen = [checkValue(text(a.check, 200)), a.value === undefined || a.value === null || a.value === '' ? NaN : Number(a.value)].filter((v): v is number => v !== null && Number.isFinite(v));
+    if (!seen.length || seen.some((v) => agrees(q.value!, q.tolerance ?? 0, v))) return void kept.push(q);
+    dropped.push(`${n}: a second, independent solution got ${fmt(seen[0])}, not ${fmt(q.value!)}`);
+  });
+  return { questions: kept, dropped };
+}
+
+/** The second solution, from MiniMax; when it cannot be made, every question stays and is marked unchecked. */
+async function checkAnswers(questions: CustomQuestion[], ctx: DraftContext, ai: MiniMaxConfig): Promise<{ questions: CustomQuestion[]; dropped: string[]; unchecked?: boolean }> {
+  if (!questions.some(checkable)) return { questions, dropped: [] };
+  try {
+    const p = answerCheckPrompt(questions, ctx);
+    const res = await minimaxChat({ ...ai, maxTokens: 8000, timeoutMs: 90_000, temperature: 0.1 }, [
+      { role: 'system', content: p.system },
+      { role: 'user', content: p.user },
+    ]);
+    return applyAnswerChecks(questions, extractJson(res.content));
+  } catch {
+    return { questions, dropped: [], unchecked: true };
+  }
+}
+
 /** A draft for the teacher: MiniMax when configured, else (or on any failure) the offline draft. */
 export async function draftAssignment(req: DraftRequest, ctx: DraftContext, ai?: MiniMaxConfig | null, newId?: (prefix: string) => string): Promise<DraftResult> {
   if (!ai?.apiKey) return { draft: offlineDraft(req, ctx), source: 'offline', model: null };
@@ -377,8 +456,13 @@ export async function draftAssignment(req: DraftRequest, ctx: DraftContext, ai?:
       { role: 'system', content: p.system },
       { role: 'user', content: p.user },
     ]);
-    const { draft, dropped } = parseDraft(extractJson(res.content), req, ctx, newId);
-    return { draft, source: 'minimax', model: res.model, ...(dropped.length ? { dropped } : {}) };
+    const raw = extractJson(res.content);
+    const parts = parseDraftParts(raw, req, ctx, newId ?? defaultId);
+    const checked = await checkAnswers(parts.custom, ctx, ai);
+    // Questions left out by the second solution are replaced like any other: the draft is topped up.
+    const dropped = [...parts.dropped, ...checked.dropped];
+    const { draft } = finishDraft((raw ?? {}) as Record<string, unknown>, parts.sections, checked.questions, dropped, req, ctx);
+    return { draft, source: 'minimax', model: res.model, ...(dropped.length ? { dropped } : {}), ...(checked.unchecked ? { unchecked: true } : {}) };
   } catch (e) {
     return { draft: offlineDraft(req, ctx), source: 'offline', model: null, error: e instanceof Error ? e.message : String(e) };
   }
@@ -490,6 +574,8 @@ export async function regenerateQuestion(req: RegenerateRequest, ctx: DraftConte
     } catch (e) {
       return { question: null, source: 'minimax', model: res.model, problem: `The AI’s new question did not pass the checks (${(e as Error).message}). Please try again.` };
     }
+    const checked = await checkAnswers([question], ctx, ai);
+    if (checked.dropped.length) return { question: null, source: 'minimax', model: res.model, problem: `The AI’s new question did not pass the checks (${checked.dropped[0].replace(/^Question 1: /, '')}). Please try again.` };
     return { question, source: 'minimax', model: res.model };
   } catch (e) {
     return { question: null, source: 'offline', model: null, problem: 'The AI could not write a new question just now. Please try again.', error: e instanceof Error ? e.message : String(e) };

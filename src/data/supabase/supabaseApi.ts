@@ -678,7 +678,7 @@ export class SupabaseApi implements DataApi {
     fail(error);
   }
 
-  async gradeManual(submissionId: string, itemIndex: number, score01: number, comment?: string) {
+  async gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string) {
     const res = await this.invoke<{ submission: Record<string, unknown> }>('grade-submission', { action: 'manual', submissionId, itemIndex, score: score01, comment });
     return toSubmission(res.submission);
   }

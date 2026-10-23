@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildItemRefs, itemFromRef, type AssignmentContent } from './assemble.ts';
+import { buildItemRefs, gradeSubmission, itemFromRef, type AssignmentContent } from './assemble.ts';
 import { canonicalResponses } from './answers.ts';
 import { processSubmission, validateRefs } from './submit.ts';
 import { dueReminders } from './reminders.ts';
@@ -100,5 +100,21 @@ describe('AI actions to assignments', () => {
   });
   it('returns null for check-ins', () => {
     expect(draftFromAction({ id: 'x', type: 'check_in', title: 't', rationale: 'r', studentIds: ['s1'], skillIds: [], status: 'proposed' })).toBeNull();
+  });
+});
+
+describe('a teacher’s mark on an auto-graded question', () => {
+  // An answer key that worked a tangent as a sine: 24 / 30 instead of 24 / 18.
+  const wrongKey: AssignmentContent = { sections: [], custom: [{ id: 'q1', prompt: 'Opposite 24, hypotenuse 30: find $\\tan\\theta$.', kind: 'numeric', value: 0.8, tolerance: 0.05, points: 2 }] };
+  const refs = [{ custom: 0 }];
+
+  it('replaces the automatic mark, and leaves the automatic mark when there is none', () => {
+    const auto = gradeSubmission(refs, { 0: { answers: ['1.33'], hintsUsed: 0 } }, wrongKey, 'a');
+    expect(auto.score).toBe(0);
+    const changed = gradeSubmission(refs, { 0: { answers: ['1.33'], hintsUsed: 1, manualScore: 1 } }, wrongKey, 'a', { hintPenalty: true });
+    expect(changed).toMatchObject({ score: 2, maxScore: 2, percent: 100, pendingManual: 0 });
+    expect(changed.items[0]).toMatchObject({ manual: false, result: { correct: true } });
+    expect(gradeSubmission(refs, { 0: { answers: ['1.33'], hintsUsed: 0, manualScore: 0.5 } }, wrongKey, 'a').score).toBe(1);
+    expect(gradeSubmission(refs, { 0: { answers: ['1.33'], hintsUsed: 0, manualScore: null } }, wrongKey, 'a').score).toBe(0);
   });
 });
