@@ -5,21 +5,25 @@
  *  - palm rejection: once a pen is in use, fingers are ignored, a broad contact (a palm) is always
  *    ignored, and a pen that lands while a resting hand is "drawing" replaces that stroke;
  *  - coalesced events keep fast pen strokes smooth;
+ *  - the pointer shows a laser dot with a fading trail where the pen, finger or mouse points (a
+ *    hovering pencil or a mouse too), and draws nothing;
  *  - on an iPad, Safari treats a pencil or finger moving over the page as text selection (it
  *    highlights instead of drawing), so the canvas cancels its touch events and the page cannot be
  *    selected while a stroke is drawn.
  */
 import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
-import { drawBackground, drawStroke, drawStrokes, hitStroke, pointerPressure, StrokeBuilder, type BoardBackground, type InkColor, type Stroke } from '@/lib/ink.ts';
+import { drawBackground, drawStroke, drawStrokes, hitStroke, pointerPressure, shapeStroke, StrokeBuilder, type BoardBackground, type InkColor, type ShapeKind, type Stroke } from '@/lib/ink.ts';
 import { cn } from '@/lib/cn.ts';
 import { useInkTheme } from './useInkTheme.ts';
 
-export type InkMode = 'pen' | 'highlighter' | 'eraser';
+export type InkMode = 'pen' | 'highlighter' | 'eraser' | 'shape' | 'pointer';
 
 interface Props {
   strokes: Stroke[];
   onCommit: (strokes: Stroke[]) => void;
   mode: InkMode;
+  /** The shape a drag places in shape mode. */
+  shape?: ShapeKind;
   color: InkColor;
   size: number;
   /** How many board units span the surface's width. */
@@ -43,11 +47,15 @@ interface Active {
   rect: DOMRect;
   builder?: StrokeBuilder;
   erasing?: boolean;
+  /** Where a shape's drag started. */
+  shapeFrom?: readonly [number, number];
 }
 
 const PALM_AREA = 45 * 45;
+/** How long the pointer's trail takes to fade, in milliseconds. */
+const LASER_MS = 650;
 
-export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, background = 'plain', penOnly, onPen, active, pointGap, label, className }: Props) {
+export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color, size, unitsWide, background = 'plain', penOnly, onPen, active, pointGap, label, className }: Props) {
   const box = useRef<HTMLDivElement>(null);
   const base = useRef<HTMLCanvasElement>(null);
   const live = useRef<HTMLCanvasElement>(null);
@@ -58,8 +66,8 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
   const [eraseTick, setEraseTick] = useState(0);
   const frame = useRef(0);
   const clearLive = useRef(false);
-  const latest = useRef({ strokes, onCommit, mode, color, size, penOnly, onPen, palette: theme.palette });
-  latest.current = { strokes, onCommit, mode, color, size, penOnly, onPen, palette: theme.palette };
+  const latest = useRef({ strokes, onCommit, mode, shape, color, size, penOnly, onPen, palette: theme.palette });
+  latest.current = { strokes, onCommit, mode, shape, color, size, penOnly, onPen, palette: theme.palette };
 
   useLayoutEffect(() => {
     const el = box.current;
@@ -104,6 +112,65 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
   }, [strokes, dims, theme, background, unitsWide, eraseTick]);
 
   useEffect(() => () => cancelAnimationFrame(frame.current), []);
+
+  // The pointer: points with the time they were made, faded out frame by frame and never saved.
+  const trail = useRef<Array<{ x: number; y: number; t: number }>>([]);
+  const laserFrame = useRef(0);
+  const runLaser = () => {
+    if (laserFrame.current) return;
+    const tick = () => {
+      laserFrame.current = 0;
+      const now = performance.now();
+      trail.current = trail.current.filter((p) => now - p.t < LASER_MS);
+      const ctx = prepare(live.current);
+      const pts = trail.current;
+      if (!ctx || !pts.length) return;
+      const r = unitsWide * 0.006;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.strokeStyle = LASER;
+      for (let i = 1; i < pts.length; i++) {
+        const fade = 1 - (now - pts[i].t) / LASER_MS;
+        ctx.globalAlpha = Math.max(0, fade) * 0.85;
+        ctx.lineWidth = r * (0.35 + 0.65 * fade);
+        ctx.beginPath();
+        ctx.moveTo(pts[i - 1].x, pts[i - 1].y);
+        ctx.lineTo(pts[i].x, pts[i].y);
+        ctx.stroke();
+      }
+      const last = pts[pts.length - 1];
+      ctx.globalAlpha = Math.max(0, 1 - (now - last.t) / LASER_MS);
+      ctx.shadowColor = LASER;
+      ctx.shadowBlur = 14;
+      ctx.fillStyle = LASER;
+      ctx.beginPath();
+      ctx.arc(last.x, last.y, r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = '#fff5f5';
+      ctx.beginPath();
+      ctx.arc(last.x, last.y, r * 0.4, 0, Math.PI * 2);
+      ctx.fill();
+      laserFrame.current = requestAnimationFrame(tick);
+    };
+    laserFrame.current = requestAnimationFrame(tick);
+  };
+  useEffect(() => () => cancelAnimationFrame(laserFrame.current), []);
+  useEffect(() => {
+    if (mode === 'pointer' && active) return;
+    trail.current = [];
+  }, [mode, active]);
+  /** Points the laser where a pointer event is, unless it is a finger the surface ignores. */
+  const pointAt = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (e.pointerType === 'touch' && (latest.current.penOnly || (e.width > 0 && e.height > 0 && e.width * e.height > PALM_AREA))) return;
+    if (e.pointerType === 'pen') latest.current.onPen?.();
+    const rect = e.currentTarget.getBoundingClientRect();
+    const native = e.nativeEvent;
+    const events = typeof native.getCoalescedEvents === 'function' ? native.getCoalescedEvents() : [];
+    const now = performance.now();
+    for (const ev of events.length ? events : [native]) trail.current.push({ x: (ev.clientX - rect.left) / scale, y: (ev.clientY - rect.top) / scale, t: now });
+    runLaser();
+  };
 
   // Safari on iPad starts text selection (and its magnifier) from touches even with touch-action:
   // none. Cancelling them needs non-passive listeners, which React's touch handlers are not.
@@ -177,6 +244,11 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
   const onDown = (e: ReactPointerEvent<HTMLCanvasElement>) => {
     if (!active) return;
     const l = latest.current;
+    if (l.mode === 'pointer') {
+      e.preventDefault();
+      pointAt(e);
+      return;
+    }
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     if (e.pointerType === 'pen') l.onPen?.();
     if (e.pointerType === 'touch') {
@@ -205,6 +277,13 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
       eraseAt(x, y);
       return;
     }
+    if (l.mode === 'shape') {
+      // A shape follows the drag from where it started; it is drawn when the pen moves.
+      a.builder = new StrokeBuilder('pen', l.color, l.size, pointGap);
+      a.shapeFrom = [x, y];
+      cur.current = a;
+      return;
+    }
     a.builder = new StrokeBuilder(l.mode === 'highlighter' ? 'highlighter' : 'pen', l.color, l.mode === 'highlighter' ? l.size * 1.5 : l.size, pointGap);
     a.builder.add(x, y, pointerPressure(e.pointerType, e.pressure));
     cur.current = a;
@@ -212,9 +291,18 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
   };
 
   const onMove = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (active && latest.current.mode === 'pointer') return pointAt(e);
     const a = cur.current;
     if (!a || a.id !== e.pointerId) return;
     const native = e.nativeEvent;
+    if (a.shapeFrom && a.builder) {
+      const l = latest.current;
+      const [x, y] = toBoard(a, native);
+      const s = shapeStroke(l.shape, l.color, l.size, a.shapeFrom[0], a.shapeFrom[1], x, y);
+      a.builder.stroke.points.splice(0, Infinity, ...(s?.points ?? []));
+      drawLive();
+      return;
+    }
     const events = typeof native.getCoalescedEvents === 'function' ? native.getCoalescedEvents() : [];
     const list = events.length ? events : [native];
     for (const ev of list) {
@@ -236,7 +324,7 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
         ref={live}
         role="img"
         aria-label={label}
-        className={cn('absolute inset-0 h-full w-full', active && (mode === 'eraser' ? 'cursor-cell' : 'cursor-crosshair'))}
+        className={cn('absolute inset-0 h-full w-full', active && (mode === 'eraser' ? 'cursor-cell' : mode === 'pointer' ? 'cursor-none' : 'cursor-crosshair'))}
         style={{ touchAction: active ? 'none' : 'auto' }}
         onPointerDown={onDown}
         onPointerMove={onMove}
@@ -254,3 +342,6 @@ function lockSelection(on: boolean) {
   document.documentElement.classList.toggle('ink-drawing', on);
   if (on) window.getSelection()?.removeAllRanges();
 }
+
+/** The pointer's colour: a laser red that shows on light and dark paper. */
+const LASER = '#ef4444';

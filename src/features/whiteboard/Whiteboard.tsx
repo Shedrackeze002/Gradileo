@@ -76,7 +76,13 @@ export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave }
         if (k === 'p') tools.setMode('pen');
         else if (k === 'h') tools.setMode('highlighter');
         else if (k === 'e') tools.setMode('eraser');
-        else if (e.key === 'Escape') onClose();
+        else if (k === 's') tools.setMode('shape');
+        else if (k === 'l') tools.setMode('pointer');
+        else if (e.key === 'Escape') {
+          // An open shape picker takes Escape for itself.
+          if (document.querySelector('[data-ink-picker]')) return;
+          onClose();
+        }
         else return;
       } else return;
       e.stopPropagation();
@@ -201,6 +207,7 @@ export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave }
                   strokes={page.doc.strokes}
                   onCommit={(strokes) => updatePage((p) => ({ ...p, doc: inkCommit(p.doc, strokes) }))}
                   mode={tools.mode}
+                  shape={tools.shape}
                   color={tools.color}
                   size={tools.size}
                   unitsWide={BOARD_W}

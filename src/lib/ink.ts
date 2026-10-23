@@ -63,6 +63,114 @@ export class StrokeBuilder {
   }
 }
 
+/** Shapes the drawing tools can place by dragging. */
+export type ShapeKind = 'line' | 'arrow' | 'rectangle' | 'square' | 'circle' | 'ellipse' | 'triangle' | 'rightTriangle';
+export const SHAPE_KINDS: ShapeKind[] = ['line', 'arrow', 'rectangle', 'square', 'circle', 'ellipse', 'triangle', 'rightTriangle'];
+export const SHAPE_NAMES: Record<ShapeKind, string> = {
+  line: 'Line',
+  arrow: 'Arrow',
+  rectangle: 'Rectangle',
+  square: 'Square',
+  circle: 'Circle',
+  ellipse: 'Ellipse',
+  triangle: 'Triangle',
+  rightTriangle: 'Right triangle',
+};
+
+type Pt = readonly [number, number];
+
+/**
+ * A polyline as stroke points at a steady pressure. Strokes are drawn as curves through the
+ * midpoints of their points, which would round a shape's corners, so every corner gets a point a
+ * hair before and after it on its two sides: the edges stay straight and the corners sharp. A
+ * closed shape starts and ends halfway along its first side, so every corner is an inside one.
+ */
+function polylinePoints(vertices: Pt[], closed: boolean): number[] {
+  let path: Pt[] = vertices;
+  if (closed) {
+    const [a, b] = vertices;
+    const mid: Pt = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    path = [mid, ...vertices.slice(1), a, mid];
+  }
+  const out: number[] = [];
+  const push = (x: number, y: number) => out.push(r1(x), r1(y), 0.5);
+  path.forEach(([x, y], i) => {
+    if (i === 0 || i === path.length - 1) return push(x, y);
+    const [px, py] = path[i - 1];
+    const [nx, ny] = path[i + 1];
+    const lin = Math.hypot(x - px, y - py);
+    const lout = Math.hypot(nx - x, ny - y);
+    const e = Math.min(0.8, lin / 4, lout / 4);
+    if (lin > 0) push(x - ((x - px) / lin) * e, y - ((y - py) / lin) * e);
+    push(x, y);
+    if (lout > 0) push(x + ((nx - x) / lout) * e, y + ((ny - y) / lout) * e);
+  });
+  return out;
+}
+
+/**
+ * The stroke for a shape dragged from (x0, y0) to (x1, y1), in board units. A shape is ordinary
+ * pen ink, so it saves, erases and undoes like handwriting. Lines and arrows run from the start to
+ * the end of the drag; the other shapes fill the box the drag spans (a square or circle uses its
+ * longer side). Returns null for a drag too small to see.
+ */
+export function shapeStroke(kind: ShapeKind, color: InkColor, size: number, x0: number, y0: number, x1: number, y1: number): Stroke | null {
+  let dx = x1 - x0;
+  let dy = y1 - y0;
+  if (Math.hypot(dx, dy) < 4) return null;
+  if (kind === 'square' || kind === 'circle') {
+    const side = Math.max(Math.abs(dx), Math.abs(dy));
+    dx = (dx < 0 ? -1 : 1) * side;
+    dy = (dy < 0 ? -1 : 1) * side;
+    x1 = x0 + dx;
+    y1 = y0 + dy;
+  }
+  const left = Math.min(x0, x1);
+  const right = Math.max(x0, x1);
+  const top = Math.min(y0, y1);
+  const bottom = Math.max(y0, y1);
+  let points: number[];
+  switch (kind) {
+    case 'line':
+      points = polylinePoints([[x0, y0], [x1, y1]], false);
+      break;
+    case 'arrow': {
+      const len = Math.hypot(dx, dy);
+      const head = Math.min(len * 0.4, Math.max(18, size * 5));
+      const angle = Math.atan2(dy, dx);
+      const wing = (turn: number): Pt => [x1 - head * Math.cos(angle + turn), y1 - head * Math.sin(angle + turn)];
+      points = polylinePoints([[x0, y0], [x1, y1], wing(0.5), [x1, y1], wing(-0.5)], false);
+      break;
+    }
+    case 'rectangle':
+    case 'square':
+      points = polylinePoints([[left, top], [right, top], [right, bottom], [left, bottom]], true);
+      break;
+    case 'triangle':
+      points = polylinePoints([[(left + right) / 2, top], [right, bottom], [left, bottom]], true);
+      break;
+    case 'rightTriangle':
+      // The right angle sits at the start of the drag's column and the end of its row.
+      points = polylinePoints([[x0, y0], [x0, y1], [x1, y1]], true);
+      break;
+    case 'circle':
+    case 'ellipse': {
+      const cx = (left + right) / 2;
+      const cy = (top + bottom) / 2;
+      const rx = (right - left) / 2;
+      const ry = (bottom - top) / 2;
+      const n = Math.min(96, Math.max(24, Math.round((2 * Math.PI * Math.sqrt((rx * rx + ry * ry) / 2)) / 8)));
+      points = [];
+      for (let i = 0; i <= n; i++) {
+        const t = (i / n) * Math.PI * 2;
+        points.push(r1(cx + rx * Math.cos(t)), r1(cy + ry * Math.sin(t)), 0.5);
+      }
+      break;
+    }
+  }
+  return { tool: 'pen', color, size, points };
+}
+
 /** The pressure to record for a pointer event: real pressure for a pen, a steady 0.5 otherwise. */
 export function pointerPressure(pointerType: string, pressure: number): number {
   if (pointerType !== 'pen') return 0.5;
