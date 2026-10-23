@@ -490,10 +490,20 @@ export class SupabaseApi implements DataApi {
     const { data: q, error: qe } = await this.client.from('live_questions').select('class_id').eq('id', questionId).maybeSingle();
     fail(qe);
     if (!q) throw new Error('This question is not for your class.');
-    const { error } = await this.client
-      .from('live_answers')
-      .upsert({ question_id: questionId, class_id: q.class_id, student_id: me, responses: responses.slice(0, 20).map((r) => String(r ?? '').slice(0, 400)), answered_at: new Date().toISOString() });
-    if (error) throw new Error(/row-level security/i.test(error.message) ? 'Your teacher has closed this question.' : error.message);
+    const answer = { responses: responses.slice(0, 20).map((r) => String(r ?? '').slice(0, 400)), answered_at: new Date().toISOString() };
+    const check = (error: { message: string } | null) => {
+      if (error) throw new Error(/row-level security/i.test(error.message) ? 'Your teacher has closed this question.' : error.message);
+    };
+    // Students may change only these two columns of their answer, and an upsert would also rewrite
+    // the row's keys, which the database refuses. So change an answer already sent, or else send one.
+    const change = () => this.client.from('live_answers').update(answer).eq('question_id', questionId).eq('student_id', me).select('question_id');
+    const changed = await change();
+    check(changed.error);
+    if (changed.data?.length) return;
+    let { error } = await this.client.from('live_answers').insert({ question_id: questionId, class_id: q.class_id, student_id: me, ...answer });
+    // The same answer sent twice at once: the other request made the row first.
+    if (error?.code === '23505') ({ error } = await change());
+    check(error);
   }
 
   subscribeLive(classId: string, cb: () => void) {
