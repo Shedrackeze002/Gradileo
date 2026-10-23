@@ -295,7 +295,7 @@ function CourseLabel({ classId, role }: { classId?: string; role: ShellRole }) {
   const { data: classes = [] } = useClasses();
   const student = useStudentClass().cls;
   const cls = role === 'student' ? student : (classes.find((c) => c.id === classId) ?? (classes.length === 1 ? classes[0] : undefined));
-  return <>{(cls && getCourse(cls.courseId)?.title) ?? 'Gradileo Mathematics'}</>;
+  return <>{(cls && getCourse(cls.courseId)?.title) ?? 'Gradileo'}</>;
 }
 
 function AdminBadge() {

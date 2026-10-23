@@ -124,10 +124,12 @@ present mode's settings, for example to prepare at home without the class seeing
 
 ## Self-paced study and course placement (`engine/placement.ts`, `src/features/student/`)
 
-Students who sign up without a class code go to onboarding (`/s/welcome`). They give their
-grade, their plans after high school (from Grade 10), whether they want calculus (Grade 12
-science plans) and how mathematics feels, and `recommendCourse` follows Alberta's course
-sequences to recommend a course, with reasons and alternatives. An optional placement check asks
+Students who sign up without a class code go to onboarding (`/s/welcome`). They choose a
+subject (`SUBJECTS`, the subjects of the listed courses; Mathematics to begin with) and give
+their grade; for mathematics also their plans after high school (from Grade 10), whether they
+want calculus (Grade 12 science plans) and how mathematics feels. `recommendCourse` follows
+Alberta's course sequences to recommend a course, with reasons and alternatives; Chemistry starts
+at Chemistry 20. New classes pick a course from a tab for each subject. An optional placement check asks
 6 questions from the course before (`placementSkills`: the skill each unit builds towards,
 spread across the course), graded in the browser and not saved; `placementResult` says ready,
 ready with review, or start earlier.

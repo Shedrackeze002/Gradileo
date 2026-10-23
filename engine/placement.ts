@@ -1,7 +1,7 @@
 /**
- * Course placement for students who sign up on their own: a recommendation from their grade and
- * plans, following Alberta's mathematics course sequences, and a short placement check on the
- * skills of the course before it.
+ * Course placement for students who sign up on their own: a recommendation from the subject they
+ * choose, their grade and their plans, following Alberta's course sequences, and a short placement
+ * check on the skills of the course before it.
  */
 import { getCourse, lessonById } from './curriculum/index.ts';
 
@@ -9,6 +9,8 @@ export type Plan = 'university-stem' | 'university-other' | 'college-trades' | '
 export type Feeling = 'confident' | 'ok' | 'struggling';
 
 export interface PlacementAnswers {
+  /** The subject to study, as a course names it; Mathematics when not given. */
+  subject?: string;
   /** School grade, 5 to 12. */
   grade: number;
   /** Plans after high school (asked from Grade 10). */
@@ -51,6 +53,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'math-30-2': 'math-20-2',
   'math-30-3': 'math-20-3',
   'math-31': 'math-30-1',
+  'chem-20': null,
 };
 
 const CHECK = 'Programs set their own entrance requirements, so check the ones you are interested in.';
@@ -61,6 +64,11 @@ function rec(courseId: string, reasons: string[], alternatives: CourseChoice[] =
 
 export function recommendCourse(a: PlacementAnswers): Recommendation {
   const g = Math.round(a.grade);
+  if (a.subject === 'Chemistry') {
+    const reasons = ['Chemistry 20 is the first high-school chemistry course: chemical bonding, gases, solutions, acids and bases, and stoichiometry.'];
+    if (g < 11) reasons.push('It is usually taken in Grade 11, after Science 10, so some ideas will be new; the first lessons start from atoms and ions.');
+    return rec('chem-20', reasons);
+  }
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));
     return rec(`math-${grade}`, [`Grade ${grade} Mathematics follows Alberta's program for your grade, so you learn what your class is learning.`]);

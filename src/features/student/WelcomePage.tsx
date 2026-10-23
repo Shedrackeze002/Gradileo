@@ -1,13 +1,13 @@
 /**
- * Onboarding for students who sign up on their own: a few questions about their grade, plans and
- * how mathematics feels, a recommended course following Alberta's course sequences, and an
- * optional placement check on the skills of the course before it. Starting a course opens a
- * self-paced section where the AI acts as tutor.
+ * Onboarding for students who sign up on their own: the subject they want to study, a few
+ * questions about their grade, plans and how mathematics feels, a recommended course following
+ * Alberta's course sequences, and an optional placement check on the skills of the course before
+ * it. Starting a course opens a self-paced section where the AI acts as tutor.
  */
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, ClipboardCheck, Compass, KeyRound, Sparkles, XCircle } from 'lucide-react';
-import { LISTED_COURSES as COURSES, getCourse, getSkill, skillInfo } from '@engine/curriculum/index.ts';
+import { LISTED_COURSES as COURSES, SUBJECTS, getCourse, getSkill, skillInfo } from '@engine/curriculum/index.ts';
 import { gradeItem } from '@engine/grade.ts';
 import { placementResult, placementSkills, PREREQUISITE, recommendCourse, type Feeling, type PlacementAnswers, type Plan, type PlacementResult } from '@engine/placement.ts';
 import { freshSeed } from '@engine/rng.ts';
@@ -34,7 +34,13 @@ const FEELINGS: Array<[Feeling, string]> = [
   ['struggling', 'Hard right now'],
 ];
 
-const GRADES = [...new Set(COURSES.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: COURSES.filter((c) => c.grade === grade) }));
+/** A subject's courses grouped by grade, youngest first. */
+function gradesOf(subject: string) {
+  const courses = COURSES.filter((c) => c.subject === subject);
+  return [...new Set(courses.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: courses.filter((c) => c.grade === grade) }));
+}
+/** The grades a student can say they are in: Grades 5 to 12 for mathematics, 9 to 12 for a senior science. */
+const gradeChoices = (subject: string) => (subject === 'Mathematics' ? [5, 6, 7, 8, 9, 10, 11, 12] : [9, 10, 11, 12]);
 
 const title = (courseId: string | null | undefined) => (courseId ? (getCourse(courseId)?.title ?? courseId) : '');
 
@@ -151,22 +157,41 @@ function Question({ label, children }: { label: string; children: React.ReactNod
 }
 
 function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: (a: PlacementAnswers) => void }) {
+  const [subject, setSubject] = useState(initial?.subject ?? SUBJECTS[0]);
   const [grade, setGrade] = useState<number | null>(initial?.grade ?? null);
   const [plan, setPlan] = useState<Plan | null>(initial?.plan ?? null);
   const [calculus, setCalculus] = useState<boolean | null>(initial?.calculus ?? null);
   const [feeling, setFeeling] = useState<Feeling | null>(initial?.feeling ?? null);
   const [support, setSupport] = useState(initial?.support ?? false);
-  const senior = grade !== null && grade >= 10;
-  const askCalculus = grade === 12 && plan === 'university-stem';
+  // Plans, calculus and how it feels choose between mathematics courses; a science starts at its first course.
+  const maths = subject === 'Mathematics';
+  const grades = gradeChoices(subject);
+  const senior = maths && grade !== null && grade >= 10;
+  const askCalculus = senior && grade === 12 && plan === 'university-stem';
   const askSupport = senior && feeling === 'struggling';
-  const complete = grade !== null && feeling !== null && (!senior || plan !== null) && (!askCalculus || calculus !== null);
+  const complete = grade !== null && (!maths || feeling !== null) && (!senior || plan !== null) && (!askCalculus || calculus !== null);
+  const chooseSubject = (s: string) => {
+    setSubject(s);
+    if (grade !== null && !gradeChoices(s).includes(grade)) setGrade(null);
+  };
 
   return (
     <Card>
       <CardBody className="space-y-7">
+        {SUBJECTS.length > 1 && (
+          <Question label="What do you want to study?">
+            <div className="grid grid-cols-2 gap-2 sm:w-96">
+              {SUBJECTS.map((s) => (
+                <Choice key={s} selected={subject === s} onClick={() => chooseSubject(s)}>
+                  {s}
+                </Choice>
+              ))}
+            </div>
+          </Question>
+        )}
         <Question label="Which grade are you in?">
-          <div className="grid grid-cols-4 gap-2 sm:grid-cols-8">
-            {[5, 6, 7, 8, 9, 10, 11, 12].map((g) => (
+          <div className={cn('grid grid-cols-4 gap-2', grades.length > 4 ? 'sm:grid-cols-8' : 'sm:w-96')}>
+            {grades.map((g) => (
               <Choice key={g} selected={grade === g} onClick={() => setGrade(g)} className="text-center">
                 {g}
               </Choice>
@@ -196,15 +221,17 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
             </div>
           </Question>
         )}
-        <Question label="How does mathematics feel right now?">
-          <div className="grid gap-2 sm:grid-cols-3">
-            {FEELINGS.map(([f, label]) => (
-              <Choice key={f} selected={feeling === f} onClick={() => setFeeling(f)}>
-                {label}
-              </Choice>
-            ))}
-          </div>
-        </Question>
+        {maths && (
+          <Question label="How does mathematics feel right now?">
+            <div className="grid gap-2 sm:grid-cols-3">
+              {FEELINGS.map(([f, label]) => (
+                <Choice key={f} selected={feeling === f} onClick={() => setFeeling(f)}>
+                  {label}
+                </Choice>
+              ))}
+            </div>
+          </Question>
+        )}
         {askSupport && (
           <Checkbox checked={support} onChange={setSupport} label="I would like a course with more support that focuses on everyday mathematics (Knowledge and Employability)" />
         )}
@@ -212,7 +239,7 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
           <Button
             size="lg"
             disabled={!complete}
-            onClick={() => complete && onDone({ grade: grade!, plan: senior ? plan! : undefined, calculus: askCalculus ? calculus! : undefined, feeling: feeling!, support: askSupport && support })}
+            onClick={() => complete && onDone({ subject, grade: grade!, plan: senior ? plan! : undefined, calculus: askCalculus ? calculus! : undefined, feeling: maths ? feeling! : undefined, support: askSupport && support })}
           >
             See my recommendation <ArrowRight className="h-4 w-4" />
           </Button>
@@ -250,6 +277,7 @@ function CourseChoice({ rec, courseId, onPick, onBack, onCheck, onStart, startin
   const course = getCourse(courseId);
   const prerequisite = PREREQUISITE[courseId] ?? null;
   const listed = new Set([rec.courseId, ...rec.alternatives.map((a) => a.courseId)]);
+  const grades = gradesOf(getCourse(rec.courseId)?.subject ?? SUBJECTS[0]);
   return (
     <div className="space-y-6">
       <Card className="border-brand-200 bg-gradient-to-br from-brand-50 to-surface">
@@ -282,7 +310,7 @@ function CourseChoice({ rec, courseId, onPick, onBack, onCheck, onStart, startin
         </button>
         {all && (
           <div className="space-y-2.5 rounded-2xl border border-line bg-surface p-4">
-            {GRADES.map(({ grade, courses }) => (
+            {grades.map(({ grade, courses }) => (
               <section key={grade} aria-label={`Grade ${grade}`} className="flex items-center gap-3">
                 <h3 className="w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-ink-3">Grade {grade}</h3>
                 <div className="flex flex-wrap gap-2">
