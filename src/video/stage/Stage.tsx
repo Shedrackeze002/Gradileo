@@ -1,8 +1,9 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type DiagramEl, type El, type Explainer, type TriangleEl, type SimilarEl } from '../script.ts';
+import { BRAND, type DiagramEl, type El, type Explainer, type ScreenEl, type TriangleEl, type SimilarEl } from '../script.ts';
 import type { ElState, FrameState } from '../timeline.ts';
 import { DiagramView } from './Diagram.tsx';
 import { BulletsView, CalcView, CalloutView, MathView, TableView, TextView, TitleView, TryView } from './elements.tsx';
+import { ScreenView } from './Screen.tsx';
 import { rich, TONES } from './tex.ts';
 import { SimilarView, TriangleView } from './Triangle.tsx';
 
@@ -52,6 +53,9 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <CalcView el={el} st={st} />;
     case 'try':
       return <TryView el={el} st={st} />;
+    case 'screen':
+      // A picture of the app takes all the height it is given.
+      return <ScreenView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={crowded ? 470 : 584} />;
   }
 }
 
@@ -113,7 +117,7 @@ function aspect(d: DiagramEl) {
 }
 
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
   const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
   const title = x.thumbnailTitle ?? x.title;
@@ -129,7 +133,8 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
           <DiagramView el={fig} st={FULL} w={1160} h={280} />
         </div>
       )}
-      <div style={{ position: 'absolute', left: 80, top: 86, width: fig && !wide ? 640 : 1100 }}>
+      {/* A picture of the app is wider than a figure, so the title beside it wraps sooner. */}
+      <div style={{ position: 'absolute', left: 80, top: 86, width: fig?.kind === 'screen' ? 520 : fig && !wide ? 640 : 1100 }}>
         <div className="v-display" style={{ color: TONES.brand, fontSize: 30, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700 }}>
           {label}
         </div>
@@ -137,8 +142,16 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
         <div style={{ height: 10, width: 220, marginTop: 34, borderRadius: 5, background: `linear-gradient(90deg, ${TONES.brand}, ${TONES.adj})` }} />
       </div>
       {fig && !wide && (
-        <div style={{ position: 'absolute', right: 130, top: 110 }}>
-          {fig.kind === 'triangle' ? <TriangleView el={fig} st={FULL} w={500} h={480} labelSize={34} /> : fig.kind === 'diagram' ? <DiagramView el={fig} st={FULL} w={500} h={480} /> : <SimilarView el={fig} st={FULL} w={500} h={480} />}
+        <div style={{ position: 'absolute', right: fig.kind === 'screen' ? 70 : 130, top: fig.kind === 'screen' ? 170 : 110 }}>
+          {fig.kind === 'triangle' ? (
+            <TriangleView el={fig} st={FULL} w={500} h={480} labelSize={34} />
+          ) : fig.kind === 'diagram' ? (
+            <DiagramView el={fig} st={FULL} w={500} h={480} />
+          ) : fig.kind === 'screen' ? (
+            <ScreenView el={fig} st={{ ...FULL, parts: {} }} w={580} h={400} />
+          ) : (
+            <SimilarView el={fig} st={FULL} w={500} h={480} />
+          )}
         </div>
       )}
       <div style={{ position: 'absolute', left: 80, bottom: 60, display: 'flex', alignItems: 'center', gap: 16 }}>

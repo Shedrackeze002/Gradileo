@@ -35,6 +35,8 @@ interface Video {
   title: string;
   summary: string;
   lessonId: string;
+  /** Tags of a video that teaches no lesson (the introduction). */
+  tags?: string[];
 }
 
 export interface YoutubeFields {
@@ -56,7 +58,7 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
     ...(course ? [`Level: ${levelOf(course)}`] : []),
     ...(chapters ? ['', 'Chapters', ...chapters.map((c) => `${clock(c.t)} ${c.title}`)] : []),
     '',
-    `Practise this topic with instant feedback on ${BRAND}: ${SITE}`,
+    lesson ? `Practise this topic with instant feedback on ${BRAND}: ${SITE}` : `Try ${BRAND}: ${SITE}`,
     ...(course && lesson ? ['', 'Curriculum', `Alberta ${course.shortTitle}, lesson ${lesson.number}: ${lesson.title}`] : []),
   ].join('\n');
   const tags = [
@@ -71,6 +73,7 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
     course && (course.grade >= 9 ? 'high school math' : course.grade >= 6 ? 'middle school math' : 'elementary math'),
     'explainer',
     course?.shortTitle,
+    ...(x.tags ?? []),
   ]
     // YouTube splits tags at commas, so a comma inside one ("Decimals, Percents and Money") goes.
     .map((t) => t && safe(t.replace(/,/g, '')))

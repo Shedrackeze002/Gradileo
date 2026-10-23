@@ -223,7 +223,8 @@ async function main() {
         writeFileSync(path.join(dir, 'captions.vtt'), toVtt(cs));
         writeFileSync(path.join(dir, 'captions.srt'), toSrt(cs));
         writeFileSync(path.join(dir, 'youtube.txt'), `${youtubeText(x, youtubeChapters(tl))}\n`);
-        updateManifest(x, tl);
+        // The lesson player lists lessons' videos; a video about Gradileo itself is not one.
+        if (x.lessonId) updateManifest(x, tl);
         if (!flag('no-qa')) await qa(x, tl, clips, path.join(dir, 'pronunciation.txt'));
       }
       await page.close();
