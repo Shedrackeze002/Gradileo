@@ -142,9 +142,13 @@ function stripUnits(s: string): string {
 /** Functions a student must work out rather than type: an exact value is not "sin(5pi/12)". */
 const WORKED_OUT = new Set(['sin', 'cos', 'tan', 'sec', 'csc', 'cot', 'ln', 'log', 'exp']);
 
-export function parseNumber(raw: string, allowExpression: boolean, allowFunctions = false): { value: number; isPlain: boolean } | null {
+export function parseNumber(raw: string, allowExpression: boolean, allowFunctions = false, scientific = false): { value: number; isPlain: boolean } | null {
   let s = stripUnits(raw.replace(/\$/g, '').trim());
   if (!s) return null;
+  if (scientific) {
+    const sci = scientificValue(s);
+    if (sci !== null) return { value: sci, isPlain: true };
+  }
   if (GROUPED.test(s)) s = s.replace(/,/g, '');
   else if (SPACED.test(s)) s = s.replace(/[ \u00a0\u2009\u202f]/g, '');
   const mixed = MIXED.exec(s);
@@ -165,6 +169,17 @@ export function parseNumber(raw: string, allowExpression: boolean, allowFunction
   const value = evaluate(node);
   if (!Number.isFinite(value)) throw new ParseError('That value is undefined.', 0);
   return { value, isPlain: plain };
+}
+
+const SUPERSCRIPT: Record<string, string> = { '⁻': '-', '⁺': '+', '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9' };
+/** Scientific notation: 2.5e-3, 2.5E3, 2.5 x 10^-3, 2.5×10^(-3), 2.5*10^-3, 2.5 · 10⁻³. */
+const SCIENTIFIC = /^([-−]?\d+(?:\.\d+)?)\s*(?:[eE]\s*([-+−]?\d+)|(?:[xX×*·]|\\times)\s*10\s*(?:\^\s*\(?\s*([-+−]?\d+)\s*\)?|([⁻⁺]?[⁰¹²³⁴⁵⁶⁷⁸⁹]+)))$/;
+
+function scientificValue(s: string): number | null {
+  const m = SCIENTIFIC.exec(s);
+  if (!m) return null;
+  const exp = m[2] ?? m[3] ?? [...m[4]].map((c) => SUPERSCRIPT[c]).join('');
+  return Number(m[1].replace('−', '-')) * 10 ** Number(exp.replace('−', '-'));
 }
 
 /** A number, a negative number, or a simple fraction of numbers. */
@@ -191,7 +206,7 @@ function gradeNumeric(spec: Extract<AnswerSpec, { kind: 'numeric' }>, response: 
   }
   if (['undefined', 'undef', 'und', 'dne'].includes(r)) return no();
   const allowExpr = spec.allowExpression ?? spec.decimals === undefined;
-  const parsed = parseNumber(response, allowExpr, spec.allowFunctions);
+  const parsed = parseNumber(response, allowExpr, spec.allowFunctions, spec.scientific);
   if (!parsed) return invalid('Enter an answer.');
   const v = parsed.value;
   if (!numericMatches(spec, v)) return no();
