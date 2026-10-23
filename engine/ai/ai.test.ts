@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { extractJson, validateInsight } from './parse.ts';
+import { subjectName } from './prompt.ts';
 import { generateInsight } from './index.ts';
 import type { AnalystInput } from './context.ts';
 import { emptySkillState } from '../mastery.ts';
@@ -74,5 +75,14 @@ describe('MiniMax request', () => {
     } finally {
       globalThis.fetch = realFetch;
     }
+  });
+});
+
+describe('the subject in the prompts', () => {
+  it('names it in lower case, a language with its capital, and mathematics by default', () => {
+    expect(subjectName('Chemistry')).toBe('chemistry');
+    expect(subjectName('English Language Arts')).toBe('English Language Arts');
+    expect(subjectName(undefined)).toBe('mathematics');
+    expect(subjectName(' ')).toBe('mathematics');
   });
 });

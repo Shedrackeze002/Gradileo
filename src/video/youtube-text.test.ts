@@ -54,6 +54,7 @@ describe('youtubeFields', () => {
     const f = youtubeFields({ title: 'A Math Platform for Students, Teachers and Parents', summary: 'A tour of Gradileo.', lessonId: '', tags: ['AI tutor', 'report cards'] }, chapters);
     expect(f.description).toContain('Try Gradileo: https://gradileo.com/');
     expect(f.description).not.toMatch(/Topic:|Level:|Curriculum|Practise this topic/);
+    expect(f.description).toMatch(/^A tour of Gradileo\.\n\nChapters\n/);
     expect(f.tags).toEqual(['Gradileo', 'math', 'maths', 'explainer', 'AI tutor', 'report cards']);
   });
 

@@ -76,6 +76,8 @@ export interface AssignmentSnapshot {
 export interface StudentContext {
   student: { id: string; name: string };
   courseTitle: string;
+  /** The course's subject ("Mathematics", "Chemistry"); mathematics when missing. */
+  subject?: string;
   taughtLessons: Array<{ id: string; title: string }>;
   skills: SkillSnapshot[];
   recentErrors: ErrorSample[];
@@ -109,6 +111,8 @@ export interface ClassStudentSummary {
 export interface ClassContext {
   className: string;
   courseTitle: string;
+  /** The course's subject ("Mathematics", "Chemistry"); mathematics when missing. */
+  subject?: string;
   studentCount: number;
   taughtLessons: Array<{ id: string; title: string }>;
   skills: ClassSkillAggregate[];

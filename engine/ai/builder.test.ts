@@ -32,6 +32,14 @@ describe('a teacher’s request', () => {
     expect(p.user).toContain('"id":"m8-pythagoras-leg"');
     expect(p.user).toContain('"mastery":0.3');
   });
+
+  it('names the course’s subject', () => {
+    expect(ctx.subject).toBe('Mathematics');
+    expect(draftPrompt(request(), ctx).system).toMatch(/^You help a mathematics teacher/);
+    expect(draftPrompt(request(), { ...ctx, subject: 'Chemistry' }).system).toMatch(/^You help a chemistry teacher/);
+    const one: RegenerateRequest = { type: 'homework', format: 'short', skillId: 'm8-pythagoras-leg', lessonIds: ['m8-1-3'], current: 'A 10 m ladder…', notes: '' };
+    expect(regeneratePrompt(one, { ...ctx, subject: 'Chemistry' }).system).toMatch(/^You help a chemistry teacher/);
+  });
 });
 
 describe('the draft without the AI', () => {

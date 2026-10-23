@@ -4,6 +4,8 @@
  * \thc{…} (θ), \brand{…}, \good{…} and \bad{…} do the same.
  */
 import katex from 'katex';
+// Chemistry in the maths: \ce{H2SO4}.
+import 'katex/contrib/mhchem';
 import { marked } from 'marked';
 
 export const TONES = {

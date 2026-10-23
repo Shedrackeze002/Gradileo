@@ -362,6 +362,13 @@ Math 30-1 (the steps it followed):
    workflow). The server re-grades every submission with the shared engine, so until the
    functions carry the new course, its assignments cannot be started or graded.
 
+A course in another subject (Chemistry and English are planned in `docs/PLAN-CHEMISTRY-ENGLISH.md`)
+follows the same steps. Its `subject` (`'Chemistry'`) is what the AI's instructions name: the
+teaching assistant, the assignment drafts and the report cards speak of a chemistry teacher, not a
+mathematics one (`subjectName` in `engine/ai/prompt.ts`). Chemical formulas and equations are
+written with KaTeX's chemistry extension inside the maths, `$\ce{H2SO4}$` or
+`$\ce{2H2 + O2 -> 2H2O}$`, in lessons, questions and videos alike.
+
 ## Lesson format
 
 ```markdown

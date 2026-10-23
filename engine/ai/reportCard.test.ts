@@ -46,6 +46,11 @@ describe('the prompt', () => {
     expect(p.user).toContain('"teacherNotes":"Very kind to classmates"');
     expect(p.user).not.toContain('Amara');
   });
+
+  it('names the course’s subject in the parents’ tips', () => {
+    expect(reportCardPrompt(ctx, 'Term 1', '').system).toContain('without needing to know the mathematics');
+    expect(reportCardPrompt({ ...ctx, subject: 'Chemistry' }, 'Term 1', '').system).toContain('without needing to know the chemistry');
+  });
 });
 
 describe('the AI’s card', () => {

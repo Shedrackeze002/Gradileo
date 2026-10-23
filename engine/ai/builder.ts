@@ -18,6 +18,7 @@ import { evaluate, parseExpr } from '../math/expr.ts';
 import type { Difficulty } from '../types.ts';
 import { minimaxChat, type MiniMaxConfig } from './minimax.ts';
 import { extractJson } from './parse.ts';
+import { subjectName } from './prompt.ts';
 
 export const DRAFT_TYPES = ['homework', 'practice', 'classwork', 'quiz', 'exam'] as const;
 export type DraftType = (typeof DRAFT_TYPES)[number];
@@ -52,6 +53,8 @@ export interface DraftSkill {
 
 export interface DraftContext {
   courseTitle: string;
+  /** The course's subject ("Mathematics", "Chemistry"); mathematics when missing. */
+  subject?: string;
   lessons: Array<{ id: string; number: string; title: string; skills: DraftSkill[] }>;
 }
 
@@ -117,6 +120,7 @@ export function draftContext(courseId: string, lessonIds: string[], mastery: Rea
   const course = getCourse(courseId);
   return {
     courseTitle: course?.title ?? '',
+    subject: course?.subject,
     lessons: lessonIds.flatMap((id) => {
       const l = lessonById(id);
       if (!l) return [];
@@ -203,7 +207,7 @@ const QUESTION_JSON = `{"format": "choice" | "short" | "written", "skillId": str
 export function draftPrompt(req: DraftRequest, ctx: DraftContext): { system: string; user: string } {
   const own = req.formats.filter((f): f is WrittenFormat => f !== 'generated');
   return {
-    system: `You help a mathematics teacher draft a ${TYPE_LABEL[req.type].toLowerCase()} for their class from the lessons and skills given. The teacher reviews and edits your draft before any student sees it.
+    system: `You help a ${subjectName(ctx.subject)} teacher draft a ${TYPE_LABEL[req.type].toLowerCase()} for their class from the lessons and skills given. The teacher reviews and edits your draft before any student sees it.
 Rules:
 - Exactly ${req.count} questions in all: each generated question counts as one, and each question you write counts as one.
 ${req.formats.includes('generated') ? `- Generated questions: choose skills by their id from the list. Each gives every student fresh numbers and is graded automatically, with hints and a worked solution. Give each chosen skill a count (1 to 6) and a difficulty: 1 easy, 2 medium, 3 hard, or "mixed" (easy to hard). Use generated questions for most routine practice.` : '- Do not use generated questions: write every question yourself.'}
@@ -442,7 +446,7 @@ export function normalizeRegenerateRequest(v: unknown, courseId: string): Regene
 
 export function regeneratePrompt(req: RegenerateRequest, ctx: DraftContext): { system: string; user: string } {
   return {
-    system: `You help a mathematics teacher replace one question in a ${TYPE_LABEL[req.type].toLowerCase()} they are writing. The teacher reviews your question before any student sees it.
+    system: `You help a ${subjectName(ctx.subject)} teacher replace one question in a ${TYPE_LABEL[req.type].toLowerCase()} they are writing. The teacher reviews your question before any student sees it.
 Rules:
 - Write exactly one new question in the format "${req.format}", for ${req.skillId ? `the skill with id "${req.skillId}"` : 'one skill from the list (give its id)'}. It must be clearly different from the question it replaces (a new context or new numbers, not the same question reworded), at about the same difficulty unless the teacher asks otherwise.
 ${FORMAT_RULES[req.format]}${req.format === 'written' && req.points ? ` It is worth ${req.points} points: award them in the solution.` : ''}
