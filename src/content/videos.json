@@ -29928,6 +29928,202 @@
       }
     ]
   },
+  "m9-7-3-c": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 3: Finding a Missing Side",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Using the vertex order",
+        "t": 19.807
+      },
+      {
+        "title": "Going the other way",
+        "t": 92.275
+      },
+      {
+        "title": "Watch out",
+        "t": 137.66
+      },
+      {
+        "title": "Your turn",
+        "t": 176.589
+      },
+      {
+        "title": "Summary",
+        "t": 226.727
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3-c:q",
+        "t": 193.728,
+        "prompt": "$\\triangle PQR \\sim \\triangle XYZ$. $PQ = 4$ cm, $QR = 10$ cm and $XY = 6$ cm. How long is $YZ$?",
+        "choices": [
+          "$15$ cm",
+          "$12$ cm",
+          "$6.67$ cm",
+          "$2.4$ cm"
+        ],
+        "answer": 0,
+        "working": "$PQ$ matches $XY$, so $k = \\dfrac{6}{4} = 1.5$. $QR$ matches $YZ$, so $YZ = 10 \\times 1.5 = 15\\text{ cm}$."
+      }
+    ]
+  },
+  "m9-7-3-d": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 4: Heights from Shadows",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why the triangles are similar",
+        "t": 17.385
+      },
+      {
+        "title": "A tree’s shadow",
+        "t": 77.858
+      },
+      {
+        "title": "Solving for the height",
+        "t": 100.545
+      },
+      {
+        "title": "Using the scale factor",
+        "t": 141.949
+      },
+      {
+        "title": "Your turn",
+        "t": 175.296
+      },
+      {
+        "title": "Summary",
+        "t": 216.79
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3-d:q",
+        "t": 188.865,
+        "prompt": "A $2$ m pole casts a $3$ m shadow. At the same time, a building casts a $27$ m shadow. How tall is the building?",
+        "choices": [
+          "$40.5$ m",
+          "$26$ m",
+          "$18$ m",
+          "$9$ m"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{h}{27} = \\dfrac{2}{3}$, so $h = \\dfrac{2}{3} \\times 27 = 18$ m."
+      }
+    ]
+  },
+  "m9-7-3-e": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 5: The Mirror Method",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How the mirror works",
+        "t": 15.791
+      },
+      {
+        "title": "Finding the height",
+        "t": 61.712
+      },
+      {
+        "title": "Solving the proportion",
+        "t": 88.744
+      },
+      {
+        "title": "Your turn",
+        "t": 133.179
+      },
+      {
+        "title": "Summary",
+        "t": 180.354
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3-e:q",
+        "t": 151.657,
+        "prompt": "Maya’s eyes are $1.6$ m above the ground. Maya stands $2$ m from a mirror on the ground and sees the top of a tree in it. The mirror is $10$ m from the base of the tree. How tall is the tree?",
+        "choices": [
+          "$8$ m",
+          "$12.5$ m",
+          "$9.6$ m",
+          "$3.2$ m"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{h}{10} = \\dfrac{1.6}{2} = 0.8$, so $h = 10 \\times 0.8 = 8$ m."
+      }
+    ]
+  },
+  "m9-8-1": {
+    "lessonId": "m9-8-1",
+    "title": "Chord Properties, Part 1: Parts of a Circle",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The centre and the radius",
+        "t": 22.814
+      },
+      {
+        "title": "The diameter",
+        "t": 59.633
+      },
+      {
+        "title": "Chords",
+        "t": 88.731
+      },
+      {
+        "title": "The longest chord",
+        "t": 125.148
+      },
+      {
+        "title": "Your turn",
+        "t": 157.362
+      },
+      {
+        "title": "Summary",
+        "t": 196.677
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-1:q",
+        "t": 168.043,
+        "prompt": "A circle has a radius of $7$ cm. Which of these could be the length of a chord of the circle?",
+        "choices": [
+          "$15$ cm",
+          "$20$ cm",
+          "$16$ cm",
+          "$12$ cm"
+        ],
+        "answer": 3,
+        "working": "The longest chord is a diameter: $2 \\times 7 = 14$ cm. Only $12$ cm is not longer than $14$ cm."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

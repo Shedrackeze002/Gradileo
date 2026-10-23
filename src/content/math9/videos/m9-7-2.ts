@@ -99,7 +99,7 @@ const video: Explainer = {
       lines: [
         { say: 'Now go the other way, from a real length to the plan. Suppose a wall of the classroom is thirteen metres long. How long is it on the plan?', show: ['wl.paper', 'wl.one', 'wl.key'] },
         { say: 'Every two metres takes one centimetre on the plan. So ask: how many twos are in thirteen? Divide. Thirteen divided by two is six point five.', show: 'm.0', focus: 'm.0' },
-        { say: 'The wall is six point five centimetres long on the plan: a line six and a half squares long.', show: ['wl.w', 'm.1'], focus: ['wl.w', 'm.1'] },
+        { say: 'The wall is six point five centimetres long on the plan, so draw it six and a half squares long.', show: ['wl.w', 'm.1'], focus: ['wl.w', 'm.1'] },
         { say: 'So remember: from the drawing to real life, multiply. From real life to the drawing, divide.' },
       ],
     },
