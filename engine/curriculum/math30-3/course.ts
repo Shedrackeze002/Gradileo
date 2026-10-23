@@ -157,8 +157,8 @@ for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map(
 
 export const MATH30_3: CourseMeta = {
   id: 'math-30-3',
-  title: 'Grade 12 Mathematics (Math 30-3)',
-  shortTitle: 'Math 30-3',
+  title: 'Grade 12 Mathematics: Workplace',
+  shortTitle: 'Math 12 Workplace',
   grade: 12,
   subject: 'Mathematics',
   description: 'Workplace and apprenticeship mathematics for Grade 12: limits of measurement, the sine and cosine laws, polygons, transformations, linear relations, statistics, probability, buying or leasing a vehicle, small business, and puzzles.',

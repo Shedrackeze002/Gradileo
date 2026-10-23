@@ -8,10 +8,12 @@
 // not uploaded again, only put in its playlist if it is missing, so a run can be repeated. A unit or
 // course id stands for every video in videos.json in it.
 //
-// A unit's playlist is the owner's own when its title names the course and unit ("Math 10C - Unit 1
-// (Measurements)", "Maths 10C Unit 2 (Trigonometry)"); otherwise one is made, "Math 10C - Unit 3
-// (Factors and Products)". Each playlist a run touches is then put in lesson order if it is out of
-// order (the playlist must be set to sort manually).
+// A unit's playlist is named for its course and unit, "Math 10 - Unit 3 (Factors and Products)", and
+// is made when missing. A playlist named for the course's first name ("Math 10C - Unit 1
+// (Measurements)", "Maths 10C Unit 2 (Trigonometry)", made before courses were named by grade and
+// stream) is the unit's too, and is renamed the first time a run puts a video in it. Each playlist
+// a run touches is then put in lesson order if it is out of order (the playlist must be set to sort
+// manually).
 //
 // Videos are public unless --private or --unlisted is given. It stops at the day's quota (10,000
 // units: an upload with captions, a thumbnail and its playlist place costs about 600) or the
@@ -22,7 +24,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { CourseMeta, UnitMeta } from '../../engine/types.ts';
-import { MANIFEST, scriptOf, youtubeFieldsFor } from '../lib/catalog.ts';
+import { FIRST_NAME, MANIFEST, scriptOf, youtubeFieldsFor } from '../lib/catalog.ts';
 import { download, find, place, unitVideos, videoFolder, videoIds } from '../lib/google.ts';
 import {
   addToPlaylist,
@@ -30,6 +32,7 @@ import {
   insertCaptions,
   insertVideo,
   playlists,
+  renamePlaylist,
   setThumbnail,
   sortPlaylist,
   uploads,
@@ -89,10 +92,16 @@ const scriptOfYoutube = new Map<string, string>();
 /** The playlists this run has looked at, by playlist id, with their units. */
 const touched = new Map<string, { list: Playlist; unit: UnitMeta }>();
 
-/** The owner's playlist for a unit, found by its title naming the course and unit. */
+/** A unit's playlist title: "Math 10 - Unit 3 (Factors and Products)". */
+const playlistTitle = (course: CourseMeta, unit: UnitMeta) => `${course.shortTitle} - Unit ${unit.number} (${unit.title})`;
+
+/** The playlist for a unit: by its title, or by a title naming the course's first name and the unit. */
 async function unitPlaylist(course: CourseMeta, unit: UnitMeta): Promise<Playlist | undefined> {
   lists ??= await playlists();
-  const code = course.shortTitle.replace(/^Math\s+/, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const mine = lists.find((p) => p.title.startsWith(`${course.shortTitle} - Unit ${unit.number} (`));
+  const first = FIRST_NAME[course.id];
+  if (mine || !first) return mine;
+  const code = first.replace(/^Math\s+/, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const named = new RegExp(`\\bMaths?\\s*${code}\\b.*\\bUnit\\s*${unit.number}\\b`, 'i');
   return lists.find((p) => named.test(p.title));
 }
@@ -104,10 +113,15 @@ async function unitPlaylist(course: CourseMeta, unit: UnitMeta): Promise<Playlis
 async function intoPlaylist(id: string, youtubeId: string, dryRun: boolean): Promise<string> {
   const { course, unit } = place(id);
   let list = await unitPlaylist(course, unit);
-  const title = `${course.shortTitle} - Unit ${unit.number} (${unit.title})`;
+  const title = playlistTitle(course, unit);
   if (list) touched.set(list.id, { list, unit });
-  if (list?.videos.includes(youtubeId)) return `in "${list.title}"`;
-  if (dryRun) return `would go into ${list ? `"${list.title}"` : `a new playlist, "${title}"`}`;
+  const old = list && list.title !== title ? list.title : undefined;
+  if (dryRun) {
+    const where = list ? `"${list.title}"${old ? `, to be renamed "${title}"` : ''}` : `a new playlist, "${title}"`;
+    return `${list?.videos.includes(youtubeId) ? 'in' : 'would go into'} ${where}`;
+  }
+  if (list && old) await renamePlaylist(list, title);
+  if (list?.videos.includes(youtubeId)) return `in "${list.title}"${old ? ` (renamed from "${old}")` : ''}`;
   if (!list) {
     const about = `${unit.title}: ${unit.description}\n\nExplainer videos in lesson order, each with a "Your turn" question to try.\nPractise this topic with instant feedback on Gradileo: https://gradileo.com/`;
     list = await createPlaylist(title, about);

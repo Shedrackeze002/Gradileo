@@ -14,7 +14,7 @@ test('every teacher page loads without errors', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   const pages: Array<[string, string | RegExp]> = [
-    ['/t/c/c_math10a', 'Math 10C'],
+    ['/t/c/c_math10a', 'Math 10'],
     ['/t/c/c_math10a/curriculum', 'Curriculum'],
     ['/t/c/c_math10a/lessons/m10c-2-1', 'The Tangent Ratio'],
     ['/t/c/c_math10a/assignments', 'Assignments'],
@@ -75,15 +75,15 @@ test('students practise a skill with instant feedback', async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test('a teacher creates a Math 10-3 class and teaches from its curriculum', async ({ page }) => {
+test('a teacher creates a Grade 10 Workplace class and teaches from its curriculum', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
-  await page.getByRole('button', { name: /Math 10-3/ }).click();
-  await expect(page.getByLabel('Class name')).toHaveValue('Math 10-3');
+  await page.getByRole('button', { name: /^Grade 10 Mathematics: Workplace/ }).click();
+  await expect(page.getByLabel('Class name')).toHaveValue('Math 10 Workplace');
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
-  await expect(page.getByText('Grade 10 Mathematics (Math 10-3)').first()).toBeVisible();
+  await expect(page.getByText('Grade 10 Mathematics: Workplace').first()).toBeVisible();
   await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
   await expect(page.getByText('Unit Pricing and Currency Exchange').first()).toBeVisible();
   await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/m103-6-3`);
@@ -97,7 +97,7 @@ test('a Grade 11 lesson check takes a list of roots', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
-  await page.getByRole('button', { name: /Math 20-1/ }).click();
+  await page.getByRole('button', { name: /^Grade 11 Mathematics: Pre-calculus/ }).click();
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
   await page.goto(`${page.url().replace(/\/$/, '')}/lessons/m201-4-2`);
@@ -110,11 +110,11 @@ test('a Grade 11 lesson check takes a list of roots', async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test('a Math 31 lesson reads calculus answers', async ({ page }) => {
+test('a Grade 12 Calculus lesson reads calculus answers', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
-  await page.getByRole('button', { name: /Mathematics 31/ }).click();
+  await page.getByRole('button', { name: /^Grade 12 Mathematics: Calculus/ }).click();
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
   await page.goto(`${page.url().replace(/\/$/, '')}/lessons/m31-4-3`);
@@ -160,15 +160,15 @@ test('a Grade 8 lesson draws structures of cubes', async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test('a teacher creates a Knowledge and Employability class and sees its graphs', async ({ page }) => {
+test('a teacher creates a Grade 11 Essentials class and sees its graphs', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
-  await page.getByRole('button', { name: /Mathematics 20-4/ }).click();
-  await expect(page.getByLabel('Class name')).toHaveValue('Math 20-4');
+  await page.getByRole('button', { name: /^Grade 11 Mathematics: Essentials/ }).click();
+  await expect(page.getByLabel('Class name')).toHaveValue('Math 11 Essentials');
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
-  await expect(page.getByText('Knowledge and Employability Mathematics 20-4').first()).toBeVisible();
+  await expect(page.getByText('Grade 11 Mathematics: Essentials').first()).toBeVisible();
   await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
   await expect(page.getByText('Budgeting and Credit').first()).toBeVisible();
   await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/m204-9-1`);
@@ -351,7 +351,7 @@ test('a student signs up without a class code, is placed in a course and studies
   await page.getByRole('button', { name: /University: science/ }).click();
   await page.getByRole('button', { name: 'Okay, with some gaps' }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
-  await expect(page.getByRole('heading', { name: 'Grade 10 Mathematics (Math 10C)' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Grade 10 Mathematics', exact: true })).toBeVisible();
   await expect(page.getByText(/keeps university and college options open/)).toBeVisible();
 
   // The placement check uses Math 9 skills; skipping every question suggests starting earlier.
@@ -359,7 +359,7 @@ test('a student signs up without a class code, is placed in a course and studies
   await expect(page.getByText('Placement check · Math 9')).toBeVisible();
   for (let i = 0; i < 6; i++) await page.getByRole('button', { name: 'I have not learned this yet' }).click();
   await expect(page.getByText('Start earlier')).toBeVisible();
-  await page.getByRole('button', { name: 'Start Math 10C anyway' }).click();
+  await page.getByRole('button', { name: 'Start Math 10 anyway' }).click();
 
   // A self-paced section opens with every lesson, the next one marked, and the skills to review.
   await page.waitForURL(/\/s$/);
@@ -380,10 +380,10 @@ test('a student signs up without a class code, is placed in a course and studies
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await page.getByRole('button', { name: 'Skip the check and start' }).click();
   await page.waitForURL(/\/s$/);
-  await expect(page.getByText('Grade 12 Mathematics (Math 30-1) · Self-paced with your AI tutor')).toBeVisible();
+  await expect(page.getByText('Grade 12 Mathematics: Pre-calculus · Self-paced with your AI tutor')).toBeVisible();
   await page.getByRole('button', { name: 'Switch course' }).first().click();
-  await expect(page.getByRole('button', { name: /^Math 10C.*Self-paced/ })).toBeVisible();
-  await expect(page.getByRole('button', { name: /^Math 30-1.*Self-paced/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Math 10 Self-paced/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Math 12 Pre-calculus.*Self-paced/ })).toBeVisible();
   expect(errors).toEqual([]);
 });
 

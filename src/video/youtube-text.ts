@@ -7,8 +7,8 @@ export const SITE = 'https://gradileo.com/';
 
 /**
  * What a course covers, in words used around the world: Gradileo is for learners in every
- * English-speaking country, so the YouTube text leads with the topic and the level, and the Alberta
- * course is named only as one curriculum the video follows.
+ * English-speaking country, so the YouTube text leads with the topic and the level, and names the
+ * course by its grade and stream.
  */
 const KIND: Record<string, string> = {
   'math-10-3': 'workplace mathematics',
@@ -25,7 +25,7 @@ const KIND: Record<string, string> = {
 
 /** "Grade 12 / Year 13 · pre-calculus": the grade, the year it is in the UK, and the kind of course. */
 export function levelOf(course: CourseMeta): string {
-  return `Grade ${course.grade} / Year ${course.grade + 1} · ${KIND[course.id] ?? 'mathematics'}`;
+  return `Grade ${course.grade} / Year ${course.grade + 1} · ${KIND[course.id] ?? course.subject.toLowerCase()}`;
 }
 
 /** YouTube refuses "<" and ">" in titles, descriptions and tags; the full-width signs look the same. */
@@ -57,7 +57,7 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
     ...(chapters ? ['', 'Chapters', ...chapters.map((c) => `${clock(c.t)} ${c.title}`)] : []),
     '',
     lesson ? `Practise this topic with instant feedback on ${BRAND}: ${SITE}` : `Try ${BRAND}: ${SITE}`,
-    ...(course && lesson ? ['', 'Curriculum', `Alberta ${course.shortTitle}, lesson ${lesson.number}: ${lesson.title}`] : []),
+    ...(course && lesson ? ['', 'Course', `${course.title}, lesson ${lesson.number}: ${lesson.title}`] : []),
   ].join('\n');
   const tags = [
     BRAND,

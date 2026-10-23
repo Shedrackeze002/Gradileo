@@ -288,7 +288,7 @@ const SHOTS: Record<string, Shot> = {
     open: async (p, base) => {
       await signIn(p, base, 'Teacher');
       await p.goto(`${base}t/c/${CLASS}`);
-      await p.getByRole('heading', { name: /Math 10C/ }).first().waitFor();
+      await p.getByRole('heading', { name: /Math 10/ }).first().waitFor();
     },
     spots: {
       stats: (p) => p.getByText('Mastery of taught skills').locator('xpath=ancestor::*[contains(@class,"grid")][1]'),
@@ -563,7 +563,7 @@ const SHOTS: Record<string, Shot> = {
   },
 };
 
-/** Hides what only the demo shows ("Demo mode", the offline analyst's label) and the Alberta tag line. */
+/** Hides what only the demo shows ("Demo mode", the offline analyst's label). */
 async function tidy(p: Page) {
   await p.evaluate(() => {
     for (const el of Array.from(document.querySelectorAll<HTMLElement>('body *'))) {
@@ -572,7 +572,7 @@ async function tidy(p: Page) {
         .map((n) => n.textContent ?? '')
         .join('')
         .trim();
-      if (own === 'Demo mode' || own === 'Offline analyst' || /^Alberta Mathematics/.test(own)) el.style.visibility = 'hidden';
+      if (own === 'Demo mode' || own === 'Offline analyst') el.style.visibility = 'hidden';
     }
   });
 }

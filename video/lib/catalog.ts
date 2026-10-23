@@ -23,6 +23,25 @@ export const SCRIPT_FILES = new Map(
   }),
 );
 
+/**
+ * The courses' names when their videos first went to Drive and YouTube, before courses were named
+ * by grade and stream (23 October 2026). Their Drive folders keep these names, and the playlists
+ * and video descriptions made then use them.
+ */
+export const FIRST_NAME: Record<string, string> = {
+  'math-10c': 'Math 10C',
+  'math-10-3': 'Math 10-3',
+  'math-10-4': 'Math 10-4',
+  'math-20-1': 'Math 20-1',
+  'math-20-2': 'Math 20-2',
+  'math-20-3': 'Math 20-3',
+  'math-20-4': 'Math 20-4',
+  'math-30-1': 'Math 30-1',
+  'math-30-2': 'Math 30-2',
+  'math-30-3': 'Math 30-3',
+  'math-31': 'Math 31',
+};
+
 /** The lesson player's record of every rendered video: its title, lesson, length and chapters. */
 export const MANIFEST = JSON.parse(readFileSync(path.join(CONTENT, 'videos.json'), 'utf8')) as Record<
   string,
@@ -51,16 +70,18 @@ export async function youtubeFieldsFor(id: string): Promise<YoutubeFields> {
 
 /**
  * The script of a video on YouTube, from its title (the part before " | ") and, when two scripts
- * share a title, the course named in its description ("Math 10C · Lesson 1.1" or "Alberta Math
- * 10C, lesson 1.1"). Undefined when none, or more than one, fits.
+ * share a title, the course named in its description ("Grade 10 Mathematics, lesson 1.1", or by its
+ * first name, "Math 10C · Lesson 1.1" or "Alberta Math 10C, lesson 1.1"). Undefined when none, or
+ * more than one, fits.
  */
 export function scriptOf(title: string, description: string): string | undefined {
   const own = title.split(' | ')[0].trim();
   const found = Object.keys(MANIFEST).filter((id) => MANIFEST[id].title === own);
   if (found.length <= 1) return found[0];
   const named = found.filter((id) => {
-    const course = courseOfLesson(MANIFEST[id].lessonId)?.shortTitle;
-    return course && (description.includes(`${course} ·`) || description.includes(`${course},`));
+    const course = courseOfLesson(MANIFEST[id].lessonId);
+    const names = course ? [course.title, course.shortTitle, FIRST_NAME[course.id]].filter(Boolean) : [];
+    return names.some((n) => description.includes(`${n} ·`) || description.includes(`${n},`));
   });
   return named.length === 1 ? named[0] : undefined;
 }

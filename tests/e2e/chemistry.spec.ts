@@ -21,17 +21,17 @@ test('a student writes an ion’s formula, sees it as it will be read, and is ma
   expect(errors).toEqual([]);
 });
 
-test('a teacher makes a Chemistry 20 class from the Chemistry tab and teaches its titration curves', async ({ page }) => {
+test('a teacher makes a Grade 11 Chemistry class from the Chemistry tab and teaches its titration curves', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
-  await expect(page.getByRole('button', { name: /Chemistry 20/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /^Grade 11 Chemistry/ })).toHaveCount(0);
   await page.getByRole('tab', { name: 'Chemistry' }).click();
-  await expect(page.getByRole('button', { name: /Grade 11 Chemistry \(Chemistry 20\)/ })).toBeVisible();
-  await expect(page.getByLabel('Class name')).toHaveValue('Chemistry 20');
+  await expect(page.getByRole('button', { name: /^Grade 11 Chemistry/ })).toBeVisible();
+  await expect(page.getByLabel('Class name')).toHaveValue('Chemistry 11');
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
-  await expect(page.getByText('Grade 11 Chemistry (Chemistry 20)').first()).toBeVisible();
+  await expect(page.getByText('Grade 11 Chemistry').first()).toBeVisible();
   await page.goto(`${page.url().replace(/\/$/, '')}/lessons/c20-4-8`);
   await expect(page.getByRole('heading', { name: 'Titration', exact: true })).toBeVisible();
   await expect(page.locator('svg[role="img"][aria-label*="pH against volume"]').first()).toBeVisible();
@@ -40,7 +40,7 @@ test('a teacher makes a Chemistry 20 class from the Chemistry tab and teaches it
   expect(errors).toEqual([]);
 });
 
-test('a student who chooses chemistry is placed in Chemistry 20', async ({ page }) => {
+test('a student who chooses chemistry is placed in Grade 11 Chemistry', async ({ page }) => {
   const errors = trackErrors(page);
   await page.goto('/signup');
   await page.getByLabel('Full name').fill('Marie Learner');
@@ -55,10 +55,10 @@ test('a student who chooses chemistry is placed in Chemistry 20', async ({ page 
   await expect(page.getByText('How does mathematics feel right now?')).toHaveCount(0);
   await page.getByRole('button', { name: '11', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
-  await expect(page.getByRole('heading', { name: 'Grade 11 Chemistry (Chemistry 20)' })).toBeVisible();
-  await expect(page.getByText('Chemistry 20 is the first course, so there is no placement check.')).toBeVisible();
-  await page.getByRole('button', { name: 'Start Chemistry 20' }).click();
+  await expect(page.getByRole('heading', { name: 'Grade 11 Chemistry', exact: true })).toBeVisible();
+  await expect(page.getByText('Chemistry 11 is the first course, so there is no placement check.')).toBeVisible();
+  await page.getByRole('button', { name: 'Start Chemistry 11' }).click();
   await page.waitForURL(/\/s$/);
-  await expect(page.getByText('Grade 11 Chemistry (Chemistry 20) · Self-paced with your AI tutor')).toBeVisible();
+  await expect(page.getByText('Grade 11 Chemistry · Self-paced with your AI tutor')).toBeVisible();
   expect(errors).toEqual([]);
 });

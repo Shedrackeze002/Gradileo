@@ -184,11 +184,11 @@ for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map(
 
 export const MATH20_4: CourseMeta = {
   id: 'math-20-4',
-  title: 'Knowledge and Employability Mathematics 20-4',
-  shortTitle: 'Math 20-4',
+  title: 'Grade 11 Mathematics: Essentials',
+  shortTitle: 'Math 11 Essentials',
   grade: 11,
   subject: 'Mathematics',
-  description: 'Knowledge and Employability mathematics for work and independent living: number skills, shopping, income, budgeting and credit, formulas and graphs, measurement, area, maps and scale, and data and probability.',
+  description: 'Everyday mathematics for work and independent living, with extra support: number skills, shopping, income, budgeting and credit, formulas and graphs, measurement, area, maps and scale, and data and probability.',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,

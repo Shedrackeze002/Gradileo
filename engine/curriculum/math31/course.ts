@@ -177,8 +177,8 @@ for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map(
 
 export const MATH31: CourseMeta = {
   id: 'math-31',
-  title: 'Grade 12 Mathematics 31 (Calculus)',
-  shortTitle: 'Math 31',
+  title: 'Grade 12 Mathematics: Calculus',
+  shortTitle: 'Math 12 Calculus',
   grade: 12,
   subject: 'Mathematics',
   description: 'Introductory calculus: limits and continuity, the derivative and its rules, derivatives of trigonometric, exponential and logarithmic functions, curve sketching, optimization, related rates and motion, antiderivatives, definite integrals, and areas and volumes.',

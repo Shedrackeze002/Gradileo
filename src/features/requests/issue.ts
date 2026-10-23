@@ -26,7 +26,7 @@ export function courseIssueBody(r: Pick<CourseRequest, 'id' | 'kind' | 'title' |
     '',
     '## Build checklist',
     '',
-    '- [ ] Find the outcomes in Alberta\'s program of studies (LearnAlberta) and decide where the course or topic fits.',
+    '- [ ] Find the outcomes the course or topic needs in a published curriculum, and decide where it fits.',
     '- [ ] Follow "Adding a course" in `docs/ARCHITECTURE.md` and the curriculum rules in `CLAUDE.md`.',
     '- [ ] Lessons with explanations, worked examples, common mistakes and checks; a generator for every skill; run `npm run catalog`.',
     '- [ ] Run every check in `CLAUDE.md`, then redeploy `grade-submission` and `ai-agent` after merging.',

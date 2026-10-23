@@ -24,9 +24,9 @@ describe('youtubeText', () => {
     expect(text).toContain('Chapters\n0:00 Introduction\n1:03 Tips\n2:09 Summary');
   });
 
-  it('names the Alberta course only as a curriculum the video follows', () => {
-    expect(text).toContain('Curriculum\nAlberta Math 10-4, lesson 3.3: Percent in Everyday Life');
-    expect(text).not.toContain('Alberta math');
+  it('names the course by its grade and stream, and no province or course code', () => {
+    expect(text).toContain('Course\nGrade 10 Mathematics: Essentials, lesson 3.3: Percent in Everyday Life');
+    expect(text).not.toMatch(/Alberta|10-4/);
   });
 
   it('keeps commas out of tags, since YouTube splits tags at commas', () => {

@@ -21,7 +21,7 @@ import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { MANIFEST, SCRIPT_FILES, youtubeTextFor } from '../lib/catalog.ts';
-import { find, FOLDER, google, place, ROOT_FOLDER, unitFolder, videoIds } from '../lib/google.ts';
+import { courseFolder, find, FOLDER, google, place, ROOT_FOLDER, unitFolder, videoIds } from '../lib/google.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const OUT = path.join(ROOT, 'video/out');
@@ -130,7 +130,7 @@ const planned: Planned[] = [];
 for (const id of ids) {
   try {
     const p = place(id);
-    planned.push({ id, folders: [p.course.shortTitle, unitFolder(p.unit), p.folder] });
+    planned.push({ id, folders: [courseFolder(p.course), unitFolder(p.unit), p.folder] });
   } catch (e) {
     // A script that is in no unit teaches no lesson.
     if (SCRIPT_FILES.has(id)) planned.push({ id, folders: [ABOUT, id] });

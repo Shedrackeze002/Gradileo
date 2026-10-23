@@ -28,7 +28,7 @@ export function CourseRequestCard({ who, className }: { who: 'student' | 'teache
           <div className="min-w-0 flex-1 basis-60">
             <div className="font-semibold">Can’t find the course or topic you need?</div>
             <p className="mt-0.5 text-sm text-ink-2">
-              {who === 'teacher' ? 'Tell us what your class needs, such as another Alberta course or a topic to add, and we will look at building it.' : 'Tell us what you want to learn, and we will look at adding it to Gradileo.'}
+              {who === 'teacher' ? 'Tell us what your class needs, such as another course or a topic to add, and we will look at building it.' : 'Tell us what you want to learn, and we will look at adding it to Gradileo.'}
             </p>
           </div>
           <Button variant="secondary" onClick={() => setOpen(true)} icon={<Send className="h-4 w-4" />}>

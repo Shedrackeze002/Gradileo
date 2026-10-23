@@ -114,3 +114,27 @@ The owner decided on 23 October 2026:
 
 Texts are only from the public domain or written for Gradileo, since anything else would need
 permission to show and voice.
+
+Later the same day the owner decided:
+
+4. Gradileo is open to learners everywhere, not tied to Alberta, so chemistry runs **Grade 10 →
+   11 → 12** and the courses are named by grade: **Grade 10 Chemistry** (new, built next), **Grade
+   11 Chemistry** (the course built as Chemistry 20) and **Grade 12 Chemistry** (planned above as
+   Chemistry 30). Science 9 and 10 are no longer the way in.
+5. The owner's "Chemistry Basics" slides (Avanti Fellows' Class 11 chemistry slides, following
+   India's NCERT Class 11 book; © Avanti Fellows, with no open licence) are a **reference only**:
+   topics, order and kinds of practice may be drawn from them, but nothing is copied or published.
+
+### Grade 10 Chemistry, about 22 lessons
+
+| Unit | Lessons |
+|---|---|
+| 1. Matter and the particle model | States of matter and the particle model · Pure substances and mixtures · Separating mixtures · Physical and chemical change · Lab safety and hazard symbols |
+| 2. Atoms and the periodic table | Inside the atom: protons, neutrons and electrons · Isotopes and relative atomic mass · Electron shells · The periodic table: groups and periods · Metals, non-metals and the main groups |
+| 3. Bonding, names and formulas | Ions · Ionic bonding, names and formulas · Covalent bonding and molecular names · Properties and bonding |
+| 4. Chemical reactions | Word and symbol equations, conservation of mass · Balancing equations · Types of reaction · Energy in reactions · Rates of reaction |
+| 5. Moles, acids and bases | The mole and molar mass · Moles, mass and particles · Acids, bases and the pH scale · Neutralization |
+
+Questions reuse the Grade 11 generators where they fit (names and formulas, balancing, molar
+mass), at an easier level, and new ones cover atoms, isotopes, shells, the periodic table,
+reaction types, energy and rates.

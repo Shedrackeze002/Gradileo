@@ -170,8 +170,8 @@ for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map(
 
 export const MATH30_2: CourseMeta = {
   id: 'math-30-2',
-  title: 'Grade 12 Mathematics (Math 30-2)',
-  shortTitle: 'Math 30-2',
+  title: 'Grade 12 Mathematics: Foundations',
+  shortTitle: 'Math 12 Foundations',
   grade: 12,
   subject: 'Mathematics',
   description: 'Foundations for Grade 12: set theory and logic, counting and probability, rational expressions and equations, polynomial, exponential, logarithmic and sinusoidal models, puzzles and the research project.',
