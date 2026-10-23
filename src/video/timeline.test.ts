@@ -220,6 +220,20 @@ describe('checkScript', () => {
     expect(checkScript(say('So x is four: the point at four, zero. The point is that it works.'))).toEqual([]);
   });
 
+  it('checks that a line points at a screen’s own spots', () => {
+    const shot: Explainer = {
+      ...script,
+      scenes: [
+        {
+          layout: 'center',
+          main: [{ kind: 'screen', id: 'app', shot: 'student-home', url: 'gradileo.com/s', spots: ['due'] }],
+          lines: [{ say: 'Hi.', show: 'app', focus: 'app.due' }, { say: 'There.', focus: 'app.coach' }],
+        },
+      ],
+    };
+    expect(checkScript(shot)).toEqual(['Scene 1, line 2: screen "app" has no part "coach".']);
+  });
+
   it('checks the points and parts of a diagram', () => {
     const bad: Explainer = {
       ...script,

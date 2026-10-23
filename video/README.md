@@ -164,6 +164,32 @@ See `src/video/script.ts` for every element and option. In short:
   run past the edge: narrow `leftWidth`, split the line or use a smaller size. A figure squeezed
   narrower than it would like keeps its text size, so check that its labels still fit their cells.
 
+## Videos about Gradileo itself
+
+The introduction (`src/content/gradileo/videos/gradileo-intro.ts`) shows the app, not maths. Its
+`screen` elements are pictures of Gradileo in a browser window, taken from the demo:
+
+```bash
+npx tsx video/tools/screens.ts                 # every picture, into video/out/screens/
+npx tsx video/tools/screens.ts teacher-forum   # just these
+npx tsx video/build.ts gradileo-intro
+```
+
+`video/tools/screens.ts` serves the app, signs in as the demo teacher or student, opens each page
+(drafting with AI, a suggested mark and a report card use a stand-in MiniMax, so no key is needed)
+and saves `<shot>.png` at 1280×800 and 2×, with `<shot>.json` saying where each named spot is: a
+button or a panel, found by its label, so a spot follows the page when the design changes. It
+hides the demo's own labels ("Demo mode"). Take the pictures again after the app's design changes.
+
+A `screen` names its shot, the address shown in the window's bar, the part of the page to show
+(`view`, in the page's pixels: leave out the sidebar and top bar so the text is large enough to
+read) and the spots its lines point at. Emphasising a spot rings it and dims the rest of the
+picture (`focus: 'app.due'`); the ring moves on with the emphasis, and `focus: 'app'` clears it.
+A video that teaches no lesson has an empty `lessonId`, a `label` for its header and thumbnail,
+and its own YouTube `tags`; it is not listed in `src/content/videos.json`, which is for the lesson
+player. `video/tools/drive-upload.ts gradileo-intro` puts it in `Gradileo videos/About Gradileo/`. The voice says "Gradileo" as it should (like "Galileo"), but it drops the dot in
+"gradileo.com", so say "gradileo dot com" with the caption written as the address.
+
 ## Making a course's videos, step by step
 
 1. Script each lesson in parts (`src/content/<course>/videos/<id>.ts`, then `<id>-b`, `<id>-c`…),

@@ -577,11 +577,25 @@ items ship or decisions change.
      generators and answer checking; English is mostly reading and written responses, graded by
      the teacher with AI-suggested marks. A plan of courses, levels and units comes to the owner
      before building.
+   - The plan (23 October 2026): `docs/PLAN-CHEMISTRY-ENGLISH.md`: Chemistry 20 and 30, English
+     10, 20 and 30, and what each needs beyond mathematics. Decisions (the owner, 23 October
+     2026): Chemistry 20 and 30 first (Science 9 and 10 later), English as English 10, 20 and 30,
+     and chemistry before English. Next: the platform changes and chemistry typesetting, then
+     Chemistry 20 a unit at a time.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
    - Decision (the owner, 23 October 2026): make it once the AI marks, report cards and class
      forum are built, so it shows them too.
+   - Built (23 October 2026): `gradileo-intro`, a tour of about nine and a half minutes in the
+     explainer style. It covers students (lessons, videos, the AI tutor, practice, progress, canvas
+     answers, the forum), teachers (the class page, adding students, present mode, the whiteboard,
+     live questions, drafting with AI, suggested settings, exam mode, suggested marks, the
+     gradebook, the mastery map, the AI teaching assistant, report cards, the forum), parents (the
+     report card link) and privacy. It shows the app itself: the video stage has a `screen`
+     element, a picture of Gradileo with spots the narration points at, and
+     `video/tools/screens.ts` takes the pictures from the demo. Next: the owner watches it; then
+     it goes to Drive and YouTube.
 
 ## Hosting
 

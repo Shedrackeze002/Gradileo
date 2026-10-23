@@ -184,7 +184,28 @@ export interface DiagramEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl;
+/**
+ * A picture of Gradileo itself in a browser window, for videos about the platform: a shot that
+ * video/tools/screens.ts takes from the demo (video/out/screens/<shot>.png). Its `spots` are parts
+ * of the page that the tool finds by name (a button, a panel); a line emphasises one to ring it and
+ * dim the rest of the picture (focus: "app.draft"), and the ring moves on with the emphasis.
+ */
+export interface ScreenEl {
+  kind: 'screen';
+  id: string;
+  /** The shot's name in video/tools/screens.ts. */
+  shot: string;
+  /** The address in the window's bar, such as "gradileo.com/t/c/…". */
+  url: string;
+  /** The part of the page to show, in the shot's pixels: x, y, width, height. All of it by default. */
+  view?: [number, number, number, number];
+  /** The shot's spots that lines point at. */
+  spots?: string[];
+  /** Height on the stage in pixels; it fills its column otherwise. */
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -218,7 +239,12 @@ export interface Scene {
 export interface Explainer {
   /** The video's id, also its file name: the lesson id, with "-b", "-c"… for further videos. */
   id: string;
+  /** The lesson the video teaches; empty for a video about Gradileo itself (the introduction). */
   lessonId: string;
+  /** The header and thumbnail label of a video that teaches no lesson. */
+  label?: string;
+  /** YouTube tags of a video that teaches no lesson (a lesson's video takes its tags from the lesson). */
+  tags?: string[];
   title: string;
   /** A shorter title for the thumbnail, when the title is long. */
   thumbnailTitle?: string;
@@ -285,6 +311,7 @@ export function checkScript(x: Explainer): string[] {
   x.scenes.forEach((s, si) => {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
+    const screens = new Set<string>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -292,6 +319,11 @@ export function checkScript(x: Explainer): string[] {
         e.lines.forEach((m, mi) => {
           if (LOOSE_MINUS.test(m)) problems.push(`Scene ${si + 1}: maths "${e.id}.${mi}" has a minus after a space or label; write it in braces ({-5}), or it is set as subtraction.`);
         });
+      }
+      if (e.kind === 'screen') {
+        // A screen's parts are its spots.
+        diagrams.set(e.id, new Set(e.spots ?? []));
+        screens.add(e.id);
       }
       if (e.kind !== 'diagram') continue;
       const parts = new Set<string>();
@@ -316,7 +348,7 @@ export function checkScript(x: Explainer): string[] {
       for (const target of [...asList(l.show), ...asList(l.hide), ...asList(l.focus)]) {
         const [el, part] = target.split('.');
         if (!ids.has(el)) problems.push(`Scene ${si + 1}, line ${li + 1}: no element "${target}".`);
-        else if (part !== undefined && diagrams.has(el) && !diagrams.get(el)!.has(part)) problems.push(`Scene ${si + 1}, line ${li + 1}: diagram "${el}" has no part "${part}".`);
+        else if (part !== undefined && diagrams.has(el) && !diagrams.get(el)!.has(part)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${screens.has(el) ? 'screen' : 'diagram'} "${el}" has no part "${part}".`);
       }
     });
   });

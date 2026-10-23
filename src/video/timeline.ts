@@ -43,6 +43,7 @@ export function revealTime(kind: El['kind']): number {
     case 'similar':
       return 0.9;
     case 'diagram':
+    case 'screen':
       return 1;
     case 'math':
       return 0.8;

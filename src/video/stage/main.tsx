@@ -9,8 +9,9 @@ import '@fontsource-variable/lexend';
 import 'katex/dist/katex.min.css';
 import './stage.css';
 import { courseOfLesson, lessonById, unitById } from '@engine/curriculum/index.ts';
-import type { Explainer } from '../script.ts';
+import { sceneElements, type Explainer } from '../script.ts';
 import { stateAt, type Timeline } from '../timeline.ts';
+import { loadShots } from './Screen.tsx';
 import { fullScene, Stage, Thumbnail } from './Stage.tsx';
 
 export interface StageApi {
@@ -33,7 +34,10 @@ const modules = import.meta.glob<{ default: Explainer }>('/src/content/*/videos/
 async function script(id: string): Promise<Explainer> {
   const path = Object.keys(modules).find((k) => k.endsWith(`/videos/${id}.ts`));
   if (!path) throw new Error(`No video script "${id}".`);
-  return (await modules[path]()).default;
+  const x = (await modules[path]()).default;
+  // Pictures of the app are loaded before any frame that shows them.
+  await loadShots(x.scenes.flatMap(sceneElements).flatMap((e) => (e.kind === 'screen' ? [e.shot] : [])));
+  return x;
 }
 
 /** Courses whose videos were made before they named the topic first: they keep their course label. */
@@ -44,6 +48,7 @@ const COURSE_LABELS = new Set(['math-10c', 'math-10-3', 'math-10-4', 'math-20-1'
  * from Math 30-2 on it names the unit's topic ("Probability"), not the Alberta course and lesson.
  */
 function labelOf(x: Explainer): string {
+  if (x.label) return x.label;
   const lesson = lessonById(x.lessonId);
   const course = courseOfLesson(x.lessonId);
   if (!lesson || !course) return x.lessonId;

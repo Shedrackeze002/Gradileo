@@ -50,6 +50,13 @@ describe('youtubeFields', () => {
     expect(text).toContain(`${f.title}\n\nDESCRIPTION\n${f.description}\n\nTAGS\n${f.tags.join(', ')}`);
   });
 
+  it('describes a video about Gradileo itself with its own tags and no course', () => {
+    const f = youtubeFields({ title: 'A Math Platform for Students, Teachers and Parents', summary: 'A tour of Gradileo.', lessonId: '', tags: ['AI tutor', 'report cards'] }, chapters);
+    expect(f.description).toContain('Try Gradileo: https://gradileo.com/');
+    expect(f.description).not.toMatch(/Topic:|Level:|Curriculum|Practise this topic/);
+    expect(f.tags).toEqual(['Gradileo', 'math', 'maths', 'explainer', 'AI tutor', 'report cards']);
+  });
+
   it('swaps the "<" and ">" that YouTube refuses for full-width signs', () => {
     const f = youtubeFields({ ...video, title: 'When x < 2', summary: 'Solve 0° ≤ θ < 360° and |r| > 1.' }, null);
     expect(f.title).toBe('When x ＜ 2 | Gradileo');
