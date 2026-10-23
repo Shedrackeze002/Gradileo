@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CalendarClock, PlayCircle } from 'lucide-react';
+import { CalendarClock, ChevronRight, FileText, PlayCircle } from 'lucide-react';
 import { getCourse, lessonById } from '@engine/curriculum/index.ts';
 import { reviewDue } from '@engine/mastery.ts';
-import { useEvents, useMastery, usePublications } from '@/data/hooks.ts';
+import { useEvents, useMastery, usePublications, useReportCards } from '@/data/hooks.ts';
+import { fmtDate } from '@/lib/dates.ts';
 import { useMe } from '@/features/auth/AuthProvider.tsx';
 import { Button, Card, CardBody, CardHeader, EmptyState, PageHeader, PageSpinner, ProgressRing, Tabs } from '@/components/ui/index.ts';
 import { MasteryBar, MasteryChip, MasteryLegend } from '@/components/mastery/Mastery.tsx';
@@ -18,6 +19,7 @@ export default function ProgressPage() {
   const mastery = useMastery({ studentId: me.id });
   const pubs = usePublications(cls?.id);
   const events = useEvents(cls?.id, me.id, 56);
+  const reports = useReportCards({ studentId: me.id });
   const [view, setView] = useState<'units' | 'outcomes'>('units');
   const map = useMemo(() => masteryMap(mastery.data ?? []), [mastery.data]);
   if (mastery.isLoading) return <PageSpinner />;
@@ -30,6 +32,22 @@ export default function ProgressPage() {
   return (
     <div className="space-y-6">
       <PageHeader title="My progress" subtitle="Mastery grows when you answer correctly without help, across more than one session." />
+      {(reports.data?.length ?? 0) > 0 && (
+        <Card>
+          <CardHeader title="Report cards" subtitle="From your teacher" icon={<FileText className="h-5 w-5" />} />
+          <div className="mt-3 divide-y divide-line border-t border-line">
+            {reports.data!.map((r) => (
+              <Link key={r.id} to={`/s/reports/${r.id}`} className="flex items-center gap-3 px-5 py-3 hover:bg-surface-2/50">
+                <span className="min-w-0 flex-1">
+                  <span className="block font-medium">{r.period || 'Report card'}</span>
+                  {r.sharedAt && <span className="block text-xs text-ink-3">Shared {fmtDate(r.sharedAt)}</span>}
+                </span>
+                <ChevronRight className="h-4 w-4 text-ink-3" />
+              </Link>
+            ))}
+          </div>
+        </Card>
+      )}
       <div className="grid gap-4 lg:grid-cols-[1fr_1.4fr]">
         <Card className="flex items-center gap-5 p-5">
           <ProgressRing value={cm.percent} size={110} stroke={10} sublabel="course" />

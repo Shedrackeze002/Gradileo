@@ -87,6 +87,13 @@ export default function PrivacyPage() {
           student typed and pictures of the student’s working on the answer canvas. We do not send the student’s name or email address, and the
           suggestion is not saved: it is shown only to the teacher, who decides the mark.
         </p>
+        <p>
+          When a teacher asks the AI to draft a student’s report card, Gradileo sends MiniMax the student’s progress on each skill, their scores and
+          the status of their work, a few recent incorrect answers with the question and the expected answer, and the teacher’s notes. We do not send
+          the student’s name or email address. The draft is saved for the teacher, who edits it before sharing it with the student. If the teacher
+          makes a private link for a shared report card, anyone with the link can read that card (with the student’s first name, the class and the
+          teacher’s name) without signing in, until the teacher turns the link off.
+        </p>
         <p>The student coach and the course placement check run inside the student’s browser and do not send information to an AI provider.</p>
       </Section>
 
@@ -108,7 +115,7 @@ export default function PrivacyPage() {
             <strong>Cloudflare</strong>: hosts the Gradileo website and handles email sent to gradileo.com addresses.
           </li>
           <li>
-            <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses, assignment drafts, suggested marks and the AI tutor, as described in section 3.
+            <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses, assignment drafts, suggested marks, report card drafts and the AI tutor, as described in section 3.
           </li>
           <li>
             <strong>Our email delivery provider</strong>: sends reminder emails when a teacher turns them on. It receives the student’s email address and

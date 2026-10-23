@@ -31,6 +31,8 @@ const Gradebook = lazy(() => import('./features/teacher/GradebookPage.tsx'));
 const MasteryMap = lazy(() => import('./features/teacher/MasteryMapPage.tsx'));
 const Insights = lazy(() => import('./features/teacher/InsightsPage.tsx'));
 const ClassSettings = lazy(() => import('./features/teacher/ClassSettingsPage.tsx'));
+const ReportCards = lazy(() => import('./features/teacher/ReportCardsPage.tsx'));
+const ReportCardEditor = lazy(() => import('./features/teacher/ReportCardEditor.tsx'));
 const PresentMode = lazy(() => import('./features/lessons/PresentMode.tsx'));
 
 const StudentHome = lazy(() => import('./features/student/StudentHome.tsx'));
@@ -45,6 +47,8 @@ const Tutor = lazy(() => import('./features/tutor/TutorMode.tsx'));
 const Practice = lazy(() => import('./features/player/PracticeSession.tsx'));
 const Progress = lazy(() => import('./features/student/ProgressPage.tsx'));
 const LiveAnswer = lazy(() => import('./features/live/StudentLive.tsx'));
+const StudentReport = lazy(() => import('./features/reports/StudentReportPage.tsx'));
+const SharedReport = lazy(() => import('./features/reports/SharedReportPage.tsx'));
 
 const AdminOverview = lazy(() => import('./features/admin/AdminOverviewPage.tsx'));
 const AdminUsers = lazy(() => import('./features/admin/AdminUsersPage.tsx'));
@@ -81,6 +85,7 @@ export default function App() {
                   <Route path="/join/:code" element={<JoinWithName />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />
+                  <Route path="/report/:token" element={<SharedReport />} />
 
                   <Route path="/t" element={<RequireRole role="teacher"><AppShell role="teacher" /></RequireRole>}>
                     <Route index element={<TeacherHome />} />
@@ -99,6 +104,8 @@ export default function App() {
                     <Route path="c/:classId/mastery" element={<MasteryMap />} />
                     <Route path="c/:classId/insights" element={<Insights />} />
                     <Route path="c/:classId/settings" element={<ClassSettings />} />
+                    <Route path="c/:classId/reports" element={<ReportCards />} />
+                    <Route path="c/:classId/reports/:reportId" element={<ReportCardEditor />} />
                   </Route>
                   <Route path="/present/:classId/:lessonId" element={<RequireRole role="teacher"><PresentMode /></RequireRole>} />
 
@@ -111,6 +118,7 @@ export default function App() {
                     <Route path="work" element={<Work />} />
                     <Route path="work/:assignmentId" element={<AssignmentIntro />} />
                     <Route path="progress" element={<Progress />} />
+                    <Route path="reports/:reportId" element={<StudentReport />} />
                     <Route path="live" element={<LiveAnswer />} />
                   </Route>
                   <Route path="/s/work/:assignmentId/take" element={<RequireRole role="student"><Player /></RequireRole>} />

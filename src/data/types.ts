@@ -4,6 +4,7 @@ import type { Difficulty, ItemRef } from '@engine/types.ts';
 import type { SkillState } from '@engine/mastery.ts';
 import type { Integrity } from '@engine/integrity.ts';
 import type { InsightData, ProposedAction } from '@engine/ai/types.ts';
+import type { ReportCardContent } from '@engine/ai/reportCard.ts';
 import type { BoardPage } from '@/lib/ink.ts';
 
 export type Role = 'teacher' | 'student';
@@ -348,6 +349,34 @@ export interface Insight {
   model: string | null;
   data: InsightData;
   error?: string | null;
+}
+
+/** A student's report card (engine/ai/reportCard.ts): a draft until the teacher shares it. */
+export interface ReportCard {
+  id: string;
+  classId: string;
+  studentId: string;
+  period: string;
+  content: ReportCardContent;
+  status: 'draft' | 'shared';
+  source: 'minimax' | 'offline';
+  model: string | null;
+  /** The private link's token for parents, or null when the link is off. */
+  shareToken: string | null;
+  createdAt: string;
+  updatedAt: string;
+  sharedAt: string | null;
+}
+
+/** A shared report card read by its private link, without signing in. */
+export interface SharedReportCard {
+  period: string;
+  content: ReportCardContent;
+  sharedAt: string | null;
+  studentName: string;
+  className: string;
+  courseId: string;
+  teacherName: string;
 }
 
 export interface Announcement {
