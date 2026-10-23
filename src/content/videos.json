@@ -30327,7 +30327,7 @@
   "m9-8-2-b": {
     "lessonId": "m9-8-2",
     "title": "Inscribed and Central Angles, Part 2: The Central Angle Is Twice as Big",
-    "duration": 220,
+    "duration": 221,
     "voice": "af_heart",
     "chapters": [
       {
@@ -30344,25 +30344,25 @@
       },
       {
         "title": "From inscribed to central",
-        "t": 89.841
+        "t": 90.355
       },
       {
         "title": "Watch out",
-        "t": 111.184
+        "t": 111.698
       },
       {
         "title": "Your turn",
-        "t": 146.257
+        "t": 146.771
       },
       {
         "title": "Summary",
-        "t": 189.541
+        "t": 190.055
       }
     ],
     "cues": [
       {
         "id": "m9-8-2-b:q",
-        "t": 161.71,
+        "t": 162.224,
         "prompt": "In a circle with centre $O$, the inscribed angle $\\angle ACB = 36^\\circ$. Find the central angle $\\angle AOB$ subtended by the same arc $AB$.",
         "choices": [
           "$18^\\circ$",
@@ -30472,7 +30472,7 @@
   "m9-8-3": {
     "lessonId": "m9-8-3",
     "title": "Tangent Properties, Part 1: A Tangent Meets the Radius",
-    "duration": 193,
+    "duration": 194,
     "voice": "af_heart",
     "chapters": [
       {
@@ -30493,17 +30493,17 @@
       },
       {
         "title": "Your turn",
-        "t": 119.852
+        "t": 120.293
       },
       {
         "title": "Summary",
-        "t": 163.341
+        "t": 163.782
       }
     ],
     "cues": [
       {
         "id": "m9-8-3:q",
-        "t": 133.116,
+        "t": 133.557,
         "prompt": "$PT$ is tangent at $P$ to a circle with centre $O$. $\\angle OTP = 28^\\circ$. Find $\\angle POT$.",
         "choices": [
           "$62^\\circ$",
@@ -30770,7 +30770,7 @@
   "m9-9-1-c": {
     "lessonId": "m9-9-1",
     "title": "Line Symmetry, Part 3: Completing a Shape",
-    "duration": 259,
+    "duration": 260,
     "voice": "af_heart",
     "chapters": [
       {
@@ -31168,6 +31168,692 @@
         ],
         "answer": 0,
         "working": "People leaving the library use it a lot, so they are more likely to want a new one than other residents are. The other plans give every resident a fair chance to be asked."
+      }
+    ]
+  },
+  "m9-10-1-b": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 2: The Use of Language",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Leading questions",
+        "t": 15.956
+      },
+      {
+        "title": "Rewriting a question",
+        "t": 54.712
+      },
+      {
+        "title": "Plain words",
+        "t": 100.085
+      },
+      {
+        "title": "Your turn",
+        "t": 133.748
+      },
+      {
+        "title": "Summary",
+        "t": 162.148
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1-b:q",
+        "t": 139.641,
+        "prompt": "Which survey question is **neutral**?",
+        "choices": [
+          "Don’t you agree that homework is a waste of time?",
+          "Most students think the school day is too long. Do you agree?",
+          "How many hours of sleep did you get last night?",
+          "Do you enjoy the delicious, healthy meals in the cafeteria?"
+        ],
+        "answer": 2,
+        "working": "The sleep question asks for a fact and does not push toward any answer. The others use an opinion, a claim about what most students think, or loaded words (“delicious”, “healthy”)."
+      }
+    ]
+  },
+  "m9-10-1-c": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 3: Ethics, Privacy and Cultural Sensitivity",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three factors",
+        "t": 19.011
+      },
+      {
+        "title": "Three problems",
+        "t": 65.66
+      },
+      {
+        "title": "Names on a sensitive survey",
+        "t": 122.813
+      },
+      {
+        "title": "Your turn",
+        "t": 164.849
+      },
+      {
+        "title": "Summary",
+        "t": 200.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1-c:q",
+        "t": 178.262,
+        "prompt": "A student wants to show that most classmates like one band best, so the student leaves out the votes for every other band. Which factor does this raise?",
+        "choices": [
+          "Privacy",
+          "Ethics",
+          "Timing",
+          "Cost"
+        ],
+        "answer": 1,
+        "working": "Leaving out votes on purpose is dishonest, so it raises **ethics**. No personal information is shared, so it is not a privacy problem."
+      }
+    ]
+  },
+  "m9-10-1-d": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 4: Cost, Time and Timing",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three factors",
+        "t": 19.463
+      },
+      {
+        "title": "Too costly",
+        "t": 52.062
+      },
+      {
+        "title": "Bad timing",
+        "t": 99.214
+      },
+      {
+        "title": "Your turn",
+        "t": 139.266
+      },
+      {
+        "title": "Summary",
+        "t": 178.07
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1-d:q",
+        "t": 155.047,
+        "prompt": "A town surveys residents chosen at random about building a new outdoor pool. The survey is done on the hottest day of the summer. Which factor is the biggest problem?",
+        "choices": [
+          "Timing",
+          "Privacy",
+          "Cultural sensitivity",
+          "Cost"
+        ],
+        "answer": 0,
+        "working": "On the hottest day of the summer, people are more likely to want a pool than on an ordinary day, so **when** the survey is done changes the answers. Choosing residents at random keeps the cost low."
+      }
+    ]
+  },
+  "m9-10-1-e": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 5: Fixing a Plan",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two steps",
+        "t": 20.565
+      },
+      {
+        "title": "The gym survey",
+        "t": 61.001
+      },
+      {
+        "title": "More plans to fix",
+        "t": 99.916
+      },
+      {
+        "title": "Your turn",
+        "t": 145.871
+      },
+      {
+        "title": "Summary",
+        "t": 185.155
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1-e:q",
+        "t": 161.202,
+        "prompt": "A music store wants to know which kind of music teenagers in its city like best. It surveys teenagers as they leave a rock concert. Which change best fixes the plan?",
+        "choices": [
+          "Add more questions to the survey.",
+          "Show the results in a colourful graph.",
+          "Survey twice as many people at the concert.",
+          "Survey teenagers chosen at random from all over the city."
+        ],
+        "answer": 3,
+        "working": "The problem is bias: teenagers leaving a rock concert are much more likely to choose rock. The fix must change **who** is asked, so choose teenagers at random from the whole city."
+      }
+    ]
+  },
+  "m9-10-2": {
+    "lessonId": "m9-10-2",
+    "title": "Populations and Samples, Part 1: Population, Census and Sample",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three key words",
+        "t": 23.52
+      },
+      {
+        "title": "Which one to use",
+        "t": 65.512
+      },
+      {
+        "title": "Census or sample?",
+        "t": 96.937
+      },
+      {
+        "title": "Your turn",
+        "t": 138.484
+      },
+      {
+        "title": "Summary",
+        "t": 170.86
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-2:q",
+        "t": 146.196,
+        "prompt": "Which situation calls for a **sample** rather than a census?",
+        "choices": [
+          "Finding the heights of the $8$ students in a small art club",
+          "Recording the birthday of every player on a team of $15$",
+          "Testing how much weight boxes from a factory can hold before they break",
+          "Checking that each of the $25$ students going on a class trip has a signed form"
+        ],
+        "answer": 2,
+        "working": "Testing a box until it breaks destroys it, so only a sample of boxes can be tested. The other groups are small, and each one needs information about every member."
+      }
+    ]
+  },
+  "m9-10-2-b": {
+    "lessonId": "m9-10-2",
+    "title": "Populations and Samples, Part 2: Four Sampling Methods",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Simple random",
+        "t": 20.369
+      },
+      {
+        "title": "Systematic",
+        "t": 52.455
+      },
+      {
+        "title": "Stratified",
+        "t": 91.925
+      },
+      {
+        "title": "Cluster",
+        "t": 122.809
+      },
+      {
+        "title": "Stratified or cluster?",
+        "t": 152.163
+      },
+      {
+        "title": "Your turn",
+        "t": 171.877
+      },
+      {
+        "title": "Summary",
+        "t": 212.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-2-b:q",
+        "t": 189.206,
+        "prompt": "A coach lists all $120$ members of a sports club in alphabetical order, picks one of the first $10$ names at random, and then chooses every $10$th name after it. Which sampling method is this?",
+        "choices": [
+          "Simple random sample",
+          "Systematic sample",
+          "Stratified sample",
+          "Cluster sample"
+        ],
+        "answer": 1,
+        "working": "The names are chosen from a list at a regular interval, every $10$th name, so it is a **systematic** sample."
+      }
+    ]
+  },
+  "m9-10-2-c": {
+    "lessonId": "m9-10-2",
+    "title": "Populations and Samples, Part 3: Representative Samples",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two easy methods",
+        "t": 18.459
+      },
+      {
+        "title": "Plan A: the cafeteria line",
+        "t": 45.87
+      },
+      {
+        "title": "Plan B: an online poll",
+        "t": 81.146
+      },
+      {
+        "title": "Plan C: at random",
+        "t": 111.555
+      },
+      {
+        "title": "More is not always better",
+        "t": 148.547
+      },
+      {
+        "title": "Your turn",
+        "t": 179.51
+      },
+      {
+        "title": "Summary",
+        "t": 219.221
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-2-c:q",
+        "t": 192.926,
+        "prompt": "A website asks its visitors to vote in an online poll about a new video game, and $5{,}000$ people vote. Which statement is true?",
+        "choices": [
+          "The results are representative, because $5{,}000$ is a large sample.",
+          "It is a simple random sample.",
+          "It is a census of everyone who plays games.",
+          "It is a voluntary response sample, so the results may be biased."
+        ],
+        "answer": 3,
+        "working": "The voters chose themselves, so it is a voluntary response sample. People with strong feelings about the game are more likely to vote, so the results may be biased, however many people vote."
+      }
+    ]
+  },
+  "m9-10-2-d": {
+    "lessonId": "m9-10-2",
+    "title": "Populations and Samples, Part 4: Stratified Samples in Proportion",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same fraction",
+        "t": 14.831
+      },
+      {
+        "title": "A sports club",
+        "t": 35.958
+      },
+      {
+        "title": "Step by step",
+        "t": 56.753
+      },
+      {
+        "title": "Watch out",
+        "t": 106.865
+      },
+      {
+        "title": "Your turn",
+        "t": 131.56
+      },
+      {
+        "title": "Summary",
+        "t": 179.589
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-2-d:q",
+        "t": 151.137,
+        "prompt": "A school has $300$ students who walk, $450$ who take the bus and $150$ who are driven. A stratified sample of $90$ students is chosen in proportion. How many bus riders should be in the sample?",
+        "choices": [
+          "$45$",
+          "$30$",
+          "$15$",
+          "$90$"
+        ],
+        "answer": 0,
+        "working": "The total is $300 + 450 + 150 = 900$, so the sample is $\\frac{90}{900} = \\frac{1}{10}$ of the school. Bus riders: $450 \\times \\frac{1}{10} = 45$."
+      }
+    ]
+  },
+  "m9-10-3": {
+    "lessonId": "m9-10-3",
+    "title": "Developing a Project Plan, Part 1: The Six Steps",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A project plan",
+        "t": 23.334
+      },
+      {
+        "title": "One step at a time",
+        "t": 67.592
+      },
+      {
+        "title": "A sleep project",
+        "t": 82.773
+      },
+      {
+        "title": "Your turn",
+        "t": 137.445
+      },
+      {
+        "title": "Summary",
+        "t": 168.349
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-3:q",
+        "t": 145.798,
+        "prompt": "In a project plan, which step comes **right before** collecting the data?",
+        "choices": [
+          "Analyze the data and draw conclusions.",
+          "Decide on a population or a sample, and choose who will take part.",
+          "Display the data in a graph or table.",
+          "Organize the data."
+        ],
+        "answer": 1,
+        "working": "The steps are: question, method, population or sample, **collect**, organize and display, then conclude. So choosing who will take part comes right before collecting."
+      }
+    ]
+  },
+  "m9-10-3-b": {
+    "lessonId": "m9-10-3",
+    "title": "Developing a Project Plan, Part 2: Writing a Good Question",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A good question",
+        "t": 16.278
+      },
+      {
+        "title": "Choosing a question",
+        "t": 49.569
+      },
+      {
+        "title": "Watch out",
+        "t": 96.832
+      },
+      {
+        "title": "Your turn",
+        "t": 124.065
+      },
+      {
+        "title": "Summary",
+        "t": 156.98
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-3-b:q",
+        "t": 131.682,
+        "prompt": "Which is the best question for a project about exercise?",
+        "choices": [
+          "Do teens these days get enough exercise, or not enough?",
+          "Don’t you agree that video games are making teens lazy and unfit?",
+          "In a typical week, how many hours do students at our school spend exercising outside of class?",
+          "Which kind of exercise does every person in the world like best?"
+        ],
+        "answer": 2,
+        "working": "It names the population (students at our school), says exactly what to measure (hours of exercise in a typical week) and uses neutral words."
+      }
+    ]
+  },
+  "m9-10-3-c": {
+    "lessonId": "m9-10-3",
+    "title": "Developing a Project Plan, Part 3: Choosing a Method",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four methods",
+        "t": 21.052
+      },
+      {
+        "title": "Which method fits?",
+        "t": 61.655
+      },
+      {
+        "title": "Then think about people",
+        "t": 106.767
+      },
+      {
+        "title": "Your turn",
+        "t": 135.624
+      },
+      {
+        "title": "Summary",
+        "t": 172.36
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-3-c:q",
+        "t": 146.447,
+        "prompt": "Which method best fits this question: “Does the amount of sunlight a plant gets change how tall it grows?”",
+        "choices": [
+          "Experiment",
+          "Observation",
+          "Existing records",
+          "Survey"
+        ],
+        "answer": 0,
+        "working": "Give plants different amounts of sunlight, keep everything else the same, and measure their heights: changing one thing to see whether it changes another is an **experiment**."
+      }
+    ]
+  },
+  "m9-10-3-d": {
+    "lessonId": "m9-10-3",
+    "title": "Developing a Project Plan, Part 4: Displaying Data and Drawing Conclusions",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing a display",
+        "t": 17.722
+      },
+      {
+        "title": "Talia’s survey",
+        "t": 41.403
+      },
+      {
+        "title": "From sample to school",
+        "t": 71.987
+      },
+      {
+        "title": "A fair conclusion",
+        "t": 107.382
+      },
+      {
+        "title": "Your turn",
+        "t": 156.794
+      },
+      {
+        "title": "Summary",
+        "t": 196.284
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-3-d:q",
+        "t": 169.306,
+        "prompt": "In a random sample of $50$ of the $800$ students at a school, $12$ said they walk to school. Which conclusion is best?",
+        "choices": [
+          "Exactly $192$ students at the school walk to school.",
+          "About $24\\%$ of all students in the country walk to school.",
+          "Only $12$ students at the school walk to school.",
+          "About $192$ students at the school probably walk to school."
+        ],
+        "answer": 3,
+        "working": "$12 \\div 50 = 0.24 = 24\\%$, and $0.24 \\times 800 = 192$. The sample gives an estimate for this school only, so say “about” and “probably”."
+      }
+    ]
+  },
+  "m9-10-4": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 1: Three Kinds of Probability",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Theoretical",
+        "t": 22.602
+      },
+      {
+        "title": "Experimental",
+        "t": 61.638
+      },
+      {
+        "title": "Subjective",
+        "t": 101.311
+      },
+      {
+        "title": "Which kind?",
+        "t": 130.648
+      },
+      {
+        "title": "Your turn",
+        "t": 153.344
+      },
+      {
+        "title": "Summary",
+        "t": 192.774
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4:q",
+        "t": 169.046,
+        "prompt": "A weather app notes that it rained on $18$ of the last $60$ days that had weather like today, so it gives a $30\\%$ chance of rain tomorrow. Which kind of probability is this?",
+        "choices": [
+          "Theoretical",
+          "Experimental",
+          "Subjective",
+          "It is not a probability, because it is a percent."
+        ],
+        "answer": 1,
+        "working": "The $30\\%$ comes from records of what happened: $18 \\div 60 = 0.3 = 30\\%$. A probability that comes from data is **experimental**."
+      }
+    ]
+  },
+  "m9-10-4-b": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 2: What a Probability Means",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A forecast",
+        "t": 20.031
+      },
+      {
+        "title": "One in five",
+        "t": 56.988
+      },
+      {
+        "title": "Not a promise",
+        "t": 99.886
+      },
+      {
+        "title": "Your turn",
+        "t": 132.021
+      },
+      {
+        "title": "Summary",
+        "t": 169.809
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4-b:q",
+        "t": 142.707,
+        "prompt": "A game says there is a “$1$ in $10$” chance of winning a prize on each play. Which statement is true?",
+        "choices": [
+          "If you play $10$ times, you will win exactly once.",
+          "If you lose $9$ times in a row, you are sure to win on the next play.",
+          "Over a very large number of plays, about $1$ play in every $10$ wins a prize.",
+          "If you play $10$ times and never win, the game must be broken."
+        ],
+        "answer": 2,
+        "working": "A probability describes what happens over many plays. In $10$ plays you could win no times, once, or more than once, and losing $9$ times does not change the chance on the next play."
       }
     ]
   },
