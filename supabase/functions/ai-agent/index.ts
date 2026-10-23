@@ -8,20 +8,23 @@
  *              hourly limit; the teacher saves the draft like any assignment.
  *   regenerate — "Regenerate" on one question in the builder: a new question in the same format and
  *              skill (counted with the drafts' hourly limit).
+ *   report   — a draft report card for one student (engine/ai/reportCard.ts), saved for the
+ *              teacher to edit and share. MiniMax gets the student's skills, work and recent
+ *              mistakes with no name ({name} stands in), or the offline writer drafts it.
  *   mark     — an AI-suggested mark for one written response, for the class's teacher
  *              (engine/ai/marking.ts). MiniMax gets the question, its marking guide, what the student
  *              typed and pictures of their canvas pages (drawn by the teacher's browser), never a
  *              name. Nothing is stored: the teacher chooses the mark.
  *
  * Secrets: MINIMAX_API_KEY (required for live AI), MINIMAX_MODEL, MINIMAX_BASE_URL,
- * AI_DRAFTS_PER_HOUR (default 30), AI_MARKS_PER_HOUR (default 150). Without a key the shared
+ * AI_DRAFTS_PER_HOUR (default 30), AI_MARKS_PER_HOUR (default 150), AI_REPORTS_PER_HOUR (default 120). Without a key the shared
  * offline analyst (and the offline draft) is used, so insights and drafts always work; there is no
  * regenerated question or suggested mark, and the teacher is told why.
  */
 import { HttpError, readJson, serve } from '../_shared/http.ts';
 import { adminClient, getCaller, requireTeacherOf, str, type Db } from '../_shared/db.ts';
 import { aiConfig, loadAnalystInput } from '../_shared/analyst.ts';
-import { classMastery, DEFAULT_MODEL, draftAssignment, draftContext, generateInsight, markRequestFor, normalizeDraftRequest, normalizeRegenerateRequest, regenerateQuestion, suggestMark } from '../_shared/engine/ai/index.ts';
+import { buildStudentContext, classMastery, DEFAULT_MODEL, draftAssignment, draftContext, generateInsight, markRequestFor, normalizeDraftRequest, normalizeRegenerateRequest, regenerateQuestion, suggestMark, writeReportCard } from '../_shared/engine/ai/index.ts';
 import { itemFromRef, type AssignmentContent, type ItemRef } from '../_shared/engine/index.ts';
 // Every course's question generators, for grading any class on the server.
 import '../_shared/engine/curriculum/all.ts';
@@ -29,9 +32,10 @@ import '../_shared/engine/curriculum/all.ts';
 const PER_HOUR = Number(Deno.env.get('AI_INSIGHTS_PER_HOUR') ?? 60);
 const DRAFTS_PER_HOUR = Number(Deno.env.get('AI_DRAFTS_PER_HOUR') ?? 30);
 const MARKS_PER_HOUR = Number(Deno.env.get('AI_MARKS_PER_HOUR') ?? 150);
+const REPORTS_PER_HOUR = Number(Deno.env.get('AI_REPORTS_PER_HOUR') ?? 120);
 
 /** Counts one call towards the caller's hourly limit for `kinds`, or refuses it. */
-async function withinLimit(db: Db, userId: string, kind: 'draft' | 'regenerate' | 'mark', kinds: string[], perHour: number, message: string) {
+async function withinLimit(db: Db, userId: string, kind: 'draft' | 'regenerate' | 'mark' | 'report', kinds: string[], perHour: number, message: string) {
   const since = new Date(Date.now() - 3_600_000).toISOString();
   const { count } = await db.from('tutor_requests').select('id', { count: 'exact', head: true }).eq('user_id', userId).in('kind', kinds).gte('created_at', since);
   if ((count ?? 0) >= perHour) throw new HttpError(429, message);
@@ -81,6 +85,25 @@ serve(async (req) => {
     const { error, ...reply } = await regenerateQuestion(req, draftContext(cls.course_id, req.lessonIds), aiConfig());
     if (error) console.error('regenerate failed', error);
     return reply;
+  }
+
+  if (body.action === 'report') {
+    const classId = str(body.classId, 64);
+    await requireTeacherOf(db, classId, me);
+    const studentId = str(body.studentId, 64);
+    const { data: enrolled } = await db.from('enrollments').select('student_id').eq('class_id', classId).eq('student_id', studentId).maybeSingle();
+    if (!enrolled) throw new HttpError(404, 'That student is not in this class.');
+    await withinLimit(db, me.id, 'report', ['report'], REPORTS_PER_HOUR, 'You have written many report cards this hour. Please try again later.');
+    const input = await loadAnalystInput(db, classId);
+    const res = await writeReportCard(buildStudentContext(input, studentId), { period: str(body.period, 80), notes: str(body.notes, 500) }, aiConfig());
+    if (res.error) console.error('report card fell back to offline', res.error);
+    const { data, error } = await db
+      .from('report_cards')
+      .insert({ class_id: classId, student_id: studentId, period: res.content.period, content: res.content, source: res.source, model: res.model })
+      .select()
+      .single();
+    if (error) throw new Error(error.message);
+    return { reportCard: data };
   }
 
   if (body.action === 'mark') {

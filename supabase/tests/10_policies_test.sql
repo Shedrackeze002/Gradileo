@@ -859,6 +859,66 @@ reset role;
 select _assert(not has_function_privilege('anon', 'public.ask_class_question(uuid, text, boolean)', 'execute'), 'anon cannot ask questions');
 select _assert(not has_function_privilege('anon', 'public.start_presenting(uuid, text)', 'execute'), 'anon cannot present');
 
+-- ---------------------------------------------------------------- report cards
+-- ai-agent (service role) writes a draft; the teacher edits and shares it; the student sees it once
+-- shared, and a parent reads it by its private link until the teacher turns the link off.
+insert into report_cards (class_id, student_id, period, content, source)
+select class_id, '00000000-0000-0000-0000-0000000000b1', 'Term 1', '{"summary":"{name} is doing well."}', 'offline' from ctx;
+create temp table rc as select id from report_cards limit 1;
+grant select on rc to authenticated, anon;
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) from report_cards) = 0, 'a student does not see a draft report card');
+select _fails($$insert into report_cards (class_id, student_id, content, source) select class_id, '00000000-0000-0000-0000-0000000000b1', '{}', 'offline' from ctx$$, 'students cannot write report cards');
+reset role;
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000a2","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) from report_cards) = 0, 'other teachers see no report cards');
+select _fails($$select share_report_card((select id from rc), true)$$, 'other teachers cannot share a report card');
+reset role;
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000a1","role":"authenticated"}', false);
+set role authenticated;
+update report_cards set content = '{"summary":"{name} has grown a lot."}', updated_at = now();
+select _fails($$update report_cards set status = 'shared'$$, 'sharing goes through share_report_card');
+select _fails($$select report_card_link((select id from rc), true)$$, 'no private link before the card is shared');
+select _assert((select status from share_report_card((select id from rc), true)) = 'shared', 'the teacher shares the card');
+create temp table tok as select report_card_link((select id from rc), true) as t;
+select _assert((select char_length(t) from tok) = 64, 'the private link has a long random token');
+select _assert(report_card_link((select id from rc), true) = (select t from tok), 'the link stays the same while it is on');
+reset role;
+grant select on tok to anon, authenticated;
+select _assert((select count(*) from notifications where user_id = '00000000-0000-0000-0000-0000000000b1' and title = 'Your report card is ready') = 1, 'the student is told');
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select content ->> 'summary' from report_cards) = '{name} has grown a lot.', 'the student sees the shared card');
+update report_cards set content = '{"summary":"Top marks"}';
+select _fails($$select share_report_card((select id from rc), false)$$, 'students cannot unshare a card');
+reset role;
+select _assert((select content ->> 'summary' from report_cards) = '{name} has grown a lot.', 'students cannot change their report card');
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b2","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) from report_cards) = 0, 'students do not see classmates'' report cards');
+reset role;
+
+select set_config('request.jwt.claims', '{"role":"anon"}', false);
+set role anon;
+select _assert((select shared_report_card((select t from tok)) ->> 'studentName') = 'Sam', 'a parent reads the card by its link, with the first name only');
+select _assert(shared_report_card(repeat('0', 64)) is null, 'a wrong token reads nothing');
+select _fails($$select count(*) from report_cards$$, 'anon cannot read report cards directly');
+select _fails($$select share_report_card((select id from rc), true)$$, 'anon cannot share report cards');
+reset role;
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000a1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select share_token from share_report_card((select id from rc), false)) is null, 'unsharing ends the private link');
+reset role;
+select _assert(shared_report_card((select t from tok)) is null, 'an ended link reads nothing');
+
 -- ---------------------------------------------------------------- anon
 select set_config('request.jwt.claims', '{"role":"anon"}', false);
 set role anon;

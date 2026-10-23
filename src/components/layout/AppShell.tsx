@@ -8,6 +8,7 @@ import {
   ClipboardList,
   Compass,
   FilePenLine,
+  FileText,
   GraduationCap,
   Grid3x3,
   Home,
@@ -66,6 +67,7 @@ function teacherNav(classId: string | undefined): NavItem[] {
     { to: `${b}/gradebook`, label: 'Gradebook', icon: Table2 },
     { to: `${b}/mastery`, label: 'Mastery map', icon: Grid3x3 },
     { to: `${b}/insights`, label: 'AI insights', icon: Sparkles },
+    { to: `${b}/reports`, label: 'Report cards', icon: FileText },
     { to: `${b}/settings`, label: 'Class settings', icon: Settings },
   ];
 }
@@ -113,7 +115,7 @@ export function AppShell({ role }: { role: ShellRole }) {
     <div className="min-h-screen bg-canvas">
       <NotificationsBridge />
       {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-line bg-surface lg:flex">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-line bg-surface lg:flex print:!hidden">
         <Sidebar role={role} classId={classId} nav={nav} isAdmin={isAdmin} />
       </aside>
       {/* Mobile drawer */}
@@ -128,8 +130,8 @@ export function AppShell({ role }: { role: ShellRole }) {
           </aside>
         </div>
       )}
-      <div className="lg:pl-64">
-        <header className="sticky top-0 z-20 border-b border-line bg-canvas/85 backdrop-blur">
+      <div className="lg:pl-64 print:!pl-0">
+        <header className="sticky top-0 z-20 border-b border-line bg-canvas/85 backdrop-blur print:hidden">
           <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-4 sm:px-6">
             {role !== 'student' && (
               <button type="button" className="rounded-xl p-2 text-ink-2 hover:bg-surface-2 lg:hidden" onClick={() => setDrawer(true)} aria-label="Open menu">
@@ -150,19 +152,19 @@ export function AppShell({ role }: { role: ShellRole }) {
             <UserMenu name={user?.fullName ?? ''} color={user?.avatarColor} email={user?.email ?? ''} onSignOut={user?.nameOnly ? nameOnlySignOut : signOut} role={role} isAdmin={isAdmin} />
           </div>
         </header>
-        <main className={cn('mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8', role === 'student' && 'pb-28 lg:pb-8')}>
+        <main className={cn('mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 print:max-w-none print:p-0', role === 'student' && 'pb-28 lg:pb-8')}>
           {role === 'student' && (
-            <>
+            <div className="print:hidden">
               <LiveBanner />
               <PresentingBanner />
-            </>
+            </div>
           )}
           <Outlet />
         </main>
       </div>
       {/* Student bottom tabs on mobile */}
       {role === 'student' && (
-        <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden" aria-label="Main">
+        <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden print:hidden" aria-label="Main">
           <div className="grid grid-cols-4">
             {STUDENT_NAV.map((n) => (
               <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => cn('flex flex-col items-center gap-0.5 py-2.5 text-[11px] font-medium', isActive ? 'text-brand' : 'text-ink-3')}>

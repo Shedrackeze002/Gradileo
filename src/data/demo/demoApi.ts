@@ -14,7 +14,8 @@ import { Rng } from '@engine/rng.ts';
 import { refSkillIds } from '@/lib/useSkills.ts';
 import { dueReminders } from '@engine/reminders.ts';
 import { draftFromAction } from '@engine/actions.ts';
-import { generateInsight, DEFAULT_MODEL } from '@engine/ai/index.ts';
+import { generateInsight, DEFAULT_MODEL, buildStudentContext } from '@engine/ai/index.ts';
+import { writeReportCard, type ReportCardContent } from '@engine/ai/reportCard.ts';
 import { answerTutorQuestion, normalizeChunk, normalizeQuestion, writeTutorScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
 import { classMastery, draftAssignment, draftContext, normalizeDraftRequest, normalizeRegenerateRequest, regenerateQuestion, type DraftRequest, type DraftResult, type RegenerateRequest, type RegenerateResult } from '@engine/ai/builder.ts';
 import { markRequestFor, suggestMark, type MarkResult } from '@engine/ai/marking.ts';
@@ -47,6 +48,8 @@ import type {
   LessonEditStatus,
   MyJoinRequest,
   Insight,
+  ReportCard,
+  SharedReportCard,
   ItemRef,
   LessonPrefs,
   LiveAnswer,
@@ -1351,6 +1354,97 @@ export class DemoApi implements DataApi {
     return this.db.aiKey
       ? { live: true, model: this.db.aiModel || DEFAULT_MODEL, note: 'Demo mode: calling MiniMax directly from this browser with your key.' }
       : { live: false, model: null, note: 'Demo mode uses Gradileo’s offline analyst. Add a MiniMax key in Settings, or connect Supabase for production AI.' };
+  }
+
+  // ---------------------------------------------------------------- report cards
+
+  private reportCards(): ReportCard[] {
+    this.db.reportCards ??= [];
+    return this.db.reportCards;
+  }
+
+  private teacherCard(id: string): ReportCard {
+    const r = this.reportCards().find((x) => x.id === id);
+    if (!r) throw new Error('That report card was not found.');
+    this.requireTeacherOf(r.classId);
+    return r;
+  }
+
+  async listReportCards(filter: { classId?: string; studentId?: string }): Promise<ReportCard[]> {
+    await this.ready;
+    const me = this.me();
+    const mine = new Set(this.db.classes.filter((c) => c.teacherId === me.id).map((c) => c.id));
+    return this.reportCards()
+      .filter((r) => (mine.has(r.classId) || (r.studentId === me.id && r.status === 'shared')) && (!filter.classId || r.classId === filter.classId) && (!filter.studentId || r.studentId === filter.studentId))
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+      .map((r) => ({ ...r }));
+  }
+
+  async getReportCard(id: string): Promise<ReportCard | null> {
+    return (await this.listReportCards({})).find((r) => r.id === id) ?? null;
+  }
+
+  async writeReportCard(classId: string, studentId: string, opts: { period: string; notes?: string }): Promise<ReportCard> {
+    await this.ready;
+    this.requireTeacherOf(classId);
+    if (!this.db.enrollments.some((e) => e.classId === classId && e.studentId === studentId)) throw new Error('That student is not in this class.');
+    const ctx = buildStudentContext(buildAnalystInput(this.db, classId), studentId);
+    const res = await writeReportCard(ctx, opts, this.aiConfig());
+    const now = nowIso();
+    const r: ReportCard = { id: uid('rc'), classId, studentId, period: res.content.period, content: res.content, status: 'draft', source: res.source, model: res.model, shareToken: null, createdAt: now, updatedAt: now, sharedAt: null };
+    this.reportCards().push(r);
+    this.persist();
+    return { ...r };
+  }
+
+  async saveReportCard(id: string, patch: { period: string; content: ReportCardContent }): Promise<ReportCard> {
+    await this.ready;
+    const r = this.teacherCard(id);
+    r.period = patch.period.slice(0, 80);
+    r.content = patch.content;
+    r.updatedAt = nowIso();
+    this.persist();
+    return { ...r };
+  }
+
+  async shareReportCard(id: string, share: boolean): Promise<ReportCard> {
+    await this.ready;
+    const r = this.teacherCard(id);
+    r.status = share ? 'shared' : 'draft';
+    r.updatedAt = nowIso();
+    if (share) {
+      r.sharedAt = r.updatedAt;
+      const cls = this.db.classes.find((c) => c.id === r.classId)!;
+      this.notify(r.studentId, 'announcement', 'Your report card is ready', `${cls.name}${r.period ? `: ${r.period}` : ''}`, '/s/progress');
+    } else r.shareToken = null;
+    this.persist();
+    return { ...r };
+  }
+
+  async reportCardLink(id: string, on: boolean): Promise<string | null> {
+    await this.ready;
+    const r = this.teacherCard(id);
+    if (on && r.status !== 'shared') throw new Error('Share the report card with the student first.');
+    r.shareToken = on ? (r.shareToken ?? Array.from(crypto.getRandomValues(new Uint8Array(32)), (b) => b.toString(16).padStart(2, '0')).join('')) : null;
+    this.persist();
+    return r.shareToken;
+  }
+
+  async sharedReportCard(token: string): Promise<SharedReportCard | null> {
+    await this.ready;
+    const r = token.length === 64 ? this.reportCards().find((x) => x.shareToken === token && x.status === 'shared') : undefined;
+    if (!r) return null;
+    const cls = this.db.classes.find((c) => c.id === r.classId)!;
+    const student = this.db.users.find((u) => u.id === r.studentId);
+    const teacher = this.db.users.find((u) => u.id === cls.teacherId);
+    return { period: r.period, content: r.content, sharedAt: r.sharedAt, studentName: (student?.fullName ?? 'Student').trim().split(/\s+/)[0], className: cls.name, courseId: cls.courseId, teacherName: teacher?.fullName ?? '' };
+  }
+
+  async deleteReportCard(id: string): Promise<void> {
+    await this.ready;
+    this.teacherCard(id);
+    this.db.reportCards = this.reportCards().filter((r) => r.id !== id);
+    this.persist();
   }
 
   async listInsights(classId: string, studentId?: string | null) {

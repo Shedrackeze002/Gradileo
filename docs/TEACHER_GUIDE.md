@@ -101,6 +101,19 @@ every three days per student); you are notified each time.
 
 Without a MiniMax key the built-in offline analyst writes the report, so the feature always works.
 
+## Report cards
+
+**Report cards** (in the class menu) drafts each student's report card from their mastery and
+work: how they are doing, strengths, next steps, tips for the student and for parents, and your
+comment, with their course progress, skills secure, average score and work handed in. Type the
+period (for example "Term 1") and, if you like, notes for the AI, then press **Write with AI** for
+one student or **Draft for every student**. Open each card to check and edit it; write {name}
+where the student's first name goes. Nothing reaches the student until you press **Share with the
+student**, which shows it on their Progress page and tells them. Once it is shared, **Make a
+private link** gives you a link to send to the student's parents or carers: it shows that card,
+and nothing else, without signing in, until you turn it off. **Print or save as PDF** prints the
+card on its own. The AI sees the student's skills and work, never their name.
+
 ## Grading written answers
 
 Students answer a written response on a canvas or by typing, and can use both. On the canvas they

@@ -16,6 +16,7 @@ export type { MiniMaxConfig } from './minimax.ts';
 export * from './tutor.ts';
 export * from './builder.ts';
 export * from './marking.ts';
+export * from './reportCard.ts';
 
 export interface InsightResult {
   data: InsightData;

@@ -368,6 +368,11 @@ export function useDraftAssignment(classId: string) {
   return useMutation({ mutationFn: (request: DraftRequest) => api().draftAssignment(classId, request) });
 }
 
+export const useReportCards = (f: { classId?: string; studentId?: string }, enabled = true) =>
+  useQuery({ queryKey: ['reportCards', f], queryFn: () => api().listReportCards(f), enabled: enabled && !!(f.classId || f.studentId) });
+export const useReportCard = (id: string | undefined) => useQuery({ queryKey: ['reportCard', id], queryFn: () => api().getReportCard(id!), enabled: !!id });
+export const useSharedReportCard = (token: string | undefined) => useQuery({ queryKey: ['sharedReportCard', token], queryFn: () => api().sharedReportCard(token!), enabled: !!token, retry: false });
+
 export function useRegenerateQuestion(classId: string) {
   return useMutation({ mutationFn: (request: RegenerateRequest) => api().regenerateQuestion(classId, request) });
 }

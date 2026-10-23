@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { CalendarClock, ChevronDown, ChevronRight, ClipboardPlus, Flame, Sparkles, Target, TrendingUp, XCircle } from 'lucide-react';
+import { CalendarClock, ChevronDown, ChevronRight, ClipboardPlus, FileText, Flame, Sparkles, Target, TrendingUp, XCircle } from 'lucide-react';
 import { getCourse, lessonById } from '@engine/curriculum/index.ts';
 import { reviewDue, summarize } from '@engine/mastery.ts';
 import { TYPE_LABEL, isQuestionType } from '@engine/assemble.ts';
-import { useAssignments, useClass, useEvents, useInsights, useMastery, useProfile, usePublications, useSubmissions } from '@/data/hooks.ts';
+import { useAssignments, useClass, useEvents, useInsights, useMastery, useProfile, usePublications, useReportCards, useSubmissions } from '@/data/hooks.ts';
 import { Avatar, Badge, Button, Card, CardBody, CardHeader, EmptyState, PageHeader, PageSpinner, StatTile } from '@/components/ui/index.ts';
 import { MasteryBar, MasteryChip, MasteryLegend } from '@/components/mastery/Mastery.tsx';
 import { WeeklyAccuracyChart } from '@/components/mastery/WeeklyAccuracyChart.tsx';
@@ -35,6 +35,7 @@ export default function StudentProfile() {
   const subs = useSubmissions({ studentId });
   const insights = useInsights(classId, studentId);
   const pubs = usePublications(classId);
+  const reports = useReportCards({ classId, studentId });
   const [openUnit, setOpenUnit] = useState<string | null>(null);
 
   const map = useMemo(() => masteryMap(mastery.data ?? [], studentId), [mastery.data, studentId]);
@@ -80,6 +81,9 @@ export default function StudentProfile() {
         actions={
           <>
             <GenerateButton classId={classId} studentId={studentId} label="Analyse with AI" size="md" />
+            <Button variant="secondary" icon={<FileText className="h-4 w-4" />} to={reports.data?.[0] ? `/t/c/${classId}/reports/${reports.data[0].id}` : `/t/c/${classId}/reports`}>
+              Report card
+            </Button>
             <Button icon={<ClipboardPlus className="h-4 w-4" />} to={`/t/c/${classId}/assignments/new?type=practice&students=${studentId}${weakest.length ? `&skills=${weakest.join(',')}` : ''}`}>
               Assign practice
             </Button>

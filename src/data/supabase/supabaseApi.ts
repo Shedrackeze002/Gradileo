@@ -14,6 +14,7 @@ import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts
 import { offlineScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
 import type { DraftRequest, DraftResult, RegenerateRequest, RegenerateResult } from '@engine/ai/builder.ts';
 import type { MarkResult } from '@engine/ai/marking.ts';
+import type { ReportCardContent } from '@engine/ai/reportCard.ts';
 import type {
   AdminOverview,
   AdminUserFilter,
@@ -33,7 +34,9 @@ import type {
   PlatformSettings,
   Profile,
   ProposedAction,
+  ReportCard,
   Resource,
+  SharedReportCard,
   Board,
   BoardInput,
   LessonPrefs,
@@ -56,6 +59,7 @@ import {
   toLessonEdit,
   toEvent,
   toInsight,
+  toReportCard,
   toMastery,
   toMyJoinRequest,
   toNotification,
@@ -765,6 +769,55 @@ export class SupabaseApi implements DataApi {
 
   async draftAssignment(classId: string, request: DraftRequest): Promise<DraftResult> {
     return this.invoke<DraftResult>('ai-agent', { action: 'draft', classId, request });
+  }
+
+  async listReportCards(filter: { classId?: string; studentId?: string }): Promise<ReportCard[]> {
+    let q = this.client.from('report_cards').select('*');
+    if (filter.classId) q = q.eq('class_id', filter.classId);
+    if (filter.studentId) q = q.eq('student_id', filter.studentId);
+    const { data, error } = await q.order('created_at', { ascending: false }).limit(1000);
+    fail(error);
+    return (data ?? []).map(toReportCard);
+  }
+
+  async getReportCard(id: string): Promise<ReportCard | null> {
+    const { data, error } = await this.client.from('report_cards').select('*').eq('id', id).maybeSingle();
+    fail(error);
+    return data ? toReportCard(data) : null;
+  }
+
+  async writeReportCard(classId: string, studentId: string, opts: { period: string; notes?: string }): Promise<ReportCard> {
+    const res = await this.invoke<{ reportCard: Record<string, unknown> }>('ai-agent', { action: 'report', classId, studentId, period: opts.period, notes: opts.notes ?? '' });
+    return toReportCard(res.reportCard);
+  }
+
+  async saveReportCard(id: string, patch: { period: string; content: ReportCardContent }): Promise<ReportCard> {
+    const { data, error } = await this.client.from('report_cards').update({ period: patch.period, content: patch.content, updated_at: new Date().toISOString() }).eq('id', id).select().single();
+    fail(error);
+    return toReportCard(data);
+  }
+
+  async shareReportCard(id: string, share: boolean): Promise<ReportCard> {
+    const { data, error } = await this.client.rpc('share_report_card', { p_id: id, p_share: share });
+    fail(error);
+    return toReportCard(data);
+  }
+
+  async reportCardLink(id: string, on: boolean): Promise<string | null> {
+    const { data, error } = await this.client.rpc('report_card_link', { p_id: id, p_on: on });
+    fail(error);
+    return (data as string | null) ?? null;
+  }
+
+  async sharedReportCard(token: string): Promise<SharedReportCard | null> {
+    const { data, error } = await this.client.rpc('shared_report_card', { p_token: token });
+    fail(error);
+    return (data as SharedReportCard | null) ?? null;
+  }
+
+  async deleteReportCard(id: string): Promise<void> {
+    const { error } = await this.client.from('report_cards').delete().eq('id', id);
+    fail(error);
   }
 
   async regenerateQuestion(classId: string, request: RegenerateRequest): Promise<RegenerateResult> {

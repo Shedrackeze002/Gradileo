@@ -7,6 +7,7 @@ import type {
   ClassRoom,
   CourseRequest,
   Insight,
+  ReportCard,
   LessonEdit,
   LessonPrefs,
   LiveAnswer,
@@ -74,6 +75,8 @@ export interface DemoDB {
   lessonEdits?: Array<Omit<LessonEdit, 'author'> & { authorId: string }>;
   /** Explainer videos' YouTube ids, by video id (added later). */
   videoLinks?: Record<string, string>;
+  /** Students' report cards (added later). */
+  reportCards?: ReportCard[];
 }
 
 export interface DemoJoinRequest {

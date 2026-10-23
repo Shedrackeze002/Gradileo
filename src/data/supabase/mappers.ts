@@ -14,6 +14,7 @@ import type {
   MyJoinRequest,
   Profile,
   Publication,
+  ReportCard,
   Resource,
   Board,
   LiveAnswer,
@@ -226,6 +227,21 @@ export const toInsight = (r: Row): Insight => ({
   model: r.model,
   data: r.data,
   error: r.error,
+});
+
+export const toReportCard = (r: Row): ReportCard => ({
+  id: r.id,
+  classId: r.class_id,
+  studentId: r.student_id,
+  period: r.period ?? '',
+  content: r.content,
+  status: r.status,
+  source: r.source,
+  model: r.model,
+  shareToken: r.share_token ?? null,
+  createdAt: r.created_at,
+  updatedAt: r.updated_at,
+  sharedAt: r.shared_at,
 });
 
 export const toAnnouncement = (r: Row): Announcement => ({

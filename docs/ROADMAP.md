@@ -545,6 +545,18 @@ items ship or decisions change.
    feedback. The teacher who asks for it reviews and edits it before it reaches the student or a
    parent (not an administrator: the review is the teacher's), and shares it on request as a PDF
    or a private link.
+   - Built (23 October 2026): **Report cards** in the class menu. The AI (MiniMax, or an offline
+     writer from the same data) drafts a card per student, or for every student at once for a
+     period: how they are doing, strengths, next steps, tips for the student and for parents, and
+     the teacher's comment, with numbers taken from the data (course progress, skills secure,
+     average score, work handed in). No name reaches MiniMax: the text uses {name}, filled in when
+     the card is shown. The teacher edits it beside a live preview and shares it: the student
+     sees it on their Progress page and is notified. A shared card can have a private link for a
+     parent (a 64-character random token; it shows that card only, with the student's first
+     name, and ends when the teacher turns it off or unshares the card), and prints on its own as
+     a PDF. Database: `report_cards` with row-level security, `share_report_card`,
+     `report_card_link` and `shared_report_card` (the only function open without signing in);
+     120 cards per teacher an hour.
 8. **Class forum** (the owner's idea, 15 October 2026). Students post questions for their class
    and choose who sees each one: private to the teacher, the whole class, or the whole class
    without their name shown to classmates (the owner agreed, 17 October 2026). The teacher can

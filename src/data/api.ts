@@ -7,6 +7,7 @@ import type { Integrity } from '@engine/integrity.ts';
 import type { TutorAnswer, TutorChunk, TutorQuestion, TutorScript } from '@engine/ai/tutor.ts';
 import type { DraftRequest, DraftResult, RegenerateRequest, RegenerateResult } from '@engine/ai/builder.ts';
 import type { MarkResult } from '@engine/ai/marking.ts';
+import type { ReportCardContent } from '@engine/ai/reportCard.ts';
 import type {
   AdminAuditEntry,
   AdminClassRow,
@@ -41,6 +42,8 @@ import type {
   NewStudentCredential,
   Profile,
   ProposedAction,
+  ReportCard,
+  SharedReportCard,
   Publication,
   Resource,
   Role,
@@ -202,6 +205,21 @@ export interface DataApi {
    * pages as images (the teacher's browser draws them); no name is sent. Nothing is saved.
    */
   suggestMark(submissionId: string, itemIndex: number, pages: string[]): Promise<MarkResult>;
+
+  // Report cards: the AI drafts one for a student, the teacher edits and shares it
+  /** Teachers get their class's cards; a student gets their own shared ones. Newest first. */
+  listReportCards(filter: { classId?: string; studentId?: string }): Promise<ReportCard[]>;
+  getReportCard(id: string): Promise<ReportCard | null>;
+  /** A new draft card for a student, written by the AI (or offline), for the class's teacher. */
+  writeReportCard(classId: string, studentId: string, opts: { period: string; notes?: string }): Promise<ReportCard>;
+  saveReportCard(id: string, patch: { period: string; content: ReportCardContent }): Promise<ReportCard>;
+  /** Shares a card with its student (who is notified), or takes it back to a draft and ends its link. */
+  shareReportCard(id: string, share: boolean): Promise<ReportCard>;
+  /** Turns a shared card's private link for parents on (its token) or off (null). */
+  reportCardLink(id: string, on: boolean): Promise<string | null>;
+  /** A shared card by its private link; works without signing in. */
+  sharedReportCard(token: string): Promise<SharedReportCard | null>;
+  deleteReportCard(id: string): Promise<void>;
 
   // AI tutor (any signed-in student)
   /** What the tutor says at each step of a run of a lesson's slides (offline narration if the AI is off). */
