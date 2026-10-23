@@ -74,7 +74,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'The perimeters are equal, so four times x plus three equals three times two x minus one.', show: 'm.0', focus: 'm.0' },
+        { say: 'The two shapes have the same perimeter, so four times x plus three equals three times two x minus one.', show: 'm.0', focus: 'm.0' },
         { say: 'Expand both sides: four x plus twelve equals six x minus three.', show: 'm.1', focus: 'm.1' },
         { say: 'The right side has the larger coefficient, so subtract four x from both sides: twelve equals two x minus three.', show: 'm.2', focus: 'm.2' },
         { say: 'Add three: fifteen equals two x. Divide by two: x equals seven point five.', show: ['m.3', 'm.4'], focus: 'm.4' },
@@ -139,7 +139,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Let’s sum up. The perimeter of a shape with equal sides is the number of sides times the side length.', show: 'sum.0' },
-        { say: 'Set the two perimeters equal, expand, and solve.', show: 'sum.1' },
+        { say: 'Set one perimeter equal to the other, expand, and solve.', show: 'sum.1' },
         { say: 'Then use x to find what the question asks for.', show: 'sum.2' },
         { say: 'And answer in a sentence, with units. In the next lesson, you will meet inequalities. See you there!', show: 'sum.3' },
       ],

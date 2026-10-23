@@ -242,7 +242,9 @@ Lessons learned while scripting (the script check does not catch these):
   "add its opposite" ("at its opposite"; "you add its opposite" is clear), "A rise, a gain"
   ("Arise, again"; "Rises, gains…" is clear), "rink" with little around it ("A rectangular rink" is
   heard as "ring", "Now the rink:" as "rank"; "an ice rink" and "the area of the rink" are clear),
-  "stays as two terms" ("stays is"; "is left as" is clear), and "convenience sample" ("convenient sample"; listen
+  "stays as two terms" ("stays is"; "is left as" is clear), "perimeters" ("parameters"; the singular,
+  "the same perimeter", is clear), "write an inequality" ("write in an equality"; "write the
+  inequality" is clear), "a rider who…" ("a writer"; "a person who…" is clear), and "convenience sample" ("convenient sample"; listen
   to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
   `speechText` now says "lenkths", which helps, but at the end of a long line it can still be heard

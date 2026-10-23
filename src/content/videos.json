@@ -29199,6 +29199,735 @@
       }
     ]
   },
+  "m9-6-4-c": {
+    "lessonId": "m9-6-4",
+    "title": "Representing Inequalities, Part 3: Writing Inequalities",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 14.828
+      },
+      {
+        "title": "A height rule",
+        "t": 46.398
+      },
+      {
+        "title": "A taxi budget",
+        "t": 96.896
+      },
+      {
+        "title": "Watch out",
+        "t": 144.264
+      },
+      {
+        "title": "Your turn",
+        "t": 178.609
+      },
+      {
+        "title": "Summary",
+        "t": 218.161
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-4-c:q",
+        "t": 194.692,
+        "prompt": "A phone plan costs \\$15 plus \\$2 per GB of data. Sam can spend at most \\$35. Which inequality fits the number of GB, $g$?",
+        "choices": [
+          "$15 + 2g \\le 35$",
+          "$15 + 2g \\ge 35$",
+          "$2 + 15g \\le 35$",
+          "$15 + 2g < 35$"
+        ],
+        "answer": 0,
+        "working": "The cost is $15 + 2g$ dollars. “At most \\$35” means \\$35 or less: $15 + 2g \\le 35$."
+      }
+    ]
+  },
+  "m9-6-5": {
+    "lessonId": "m9-6-5",
+    "title": "Solving Linear Inequalities, Part 1: Solving Like an Equation",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What keeps it true",
+        "t": 21.878
+      },
+      {
+        "title": "Solving 3x − 4 ≥ 11",
+        "t": 62.705
+      },
+      {
+        "title": "Check and graph",
+        "t": 90.71
+      },
+      {
+        "title": "Your turn",
+        "t": 128.161
+      },
+      {
+        "title": "Summary",
+        "t": 163.874
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-5:q",
+        "t": 135.655,
+        "prompt": "Solve $2x + 5 < 17$.",
+        "choices": [
+          "$x > 6$",
+          "$x < 12$",
+          "$x < 6$",
+          "$x < 11$"
+        ],
+        "answer": 2,
+        "working": "Subtract $5$ from both sides: $2x < 12$. Divide by $2$, a positive number, so the sign stays the same: $x < 6$. Check $x = 0$: $5 < 17$ is true."
+      }
+    ]
+  },
+  "m9-6-5-b": {
+    "lessonId": "m9-6-5",
+    "title": "Solving Linear Inequalities, Part 2: Multiplying or Dividing by a Negative",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Numbers first",
+        "t": 18.068
+      },
+      {
+        "title": "The rule",
+        "t": 57.512
+      },
+      {
+        "title": "Solving −2x + 7 < 15",
+        "t": 90.815
+      },
+      {
+        "title": "Check both sides",
+        "t": 127.091
+      },
+      {
+        "title": "Watch out",
+        "t": 154.619
+      },
+      {
+        "title": "Your turn",
+        "t": 187.131
+      },
+      {
+        "title": "Summary",
+        "t": 224.404
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-5-b:q",
+        "t": 195.338,
+        "prompt": "Solve $-3x \\ge 12$.",
+        "choices": [
+          "$x \\ge -4$",
+          "$x \\le -4$",
+          "$x \\ge 4$",
+          "$x \\le 4$"
+        ],
+        "answer": 1,
+        "working": "Divide both sides by $-3$ and reverse the sign: $x \\le -4$. Check $x = -5$: $-3(-5) = 15$, and $15 \\ge 12$ is true."
+      }
+    ]
+  },
+  "m9-6-5-c": {
+    "lessonId": "m9-6-5",
+    "title": "Solving Linear Inequalities, Part 3: Variables on Both Sides",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solving 5 − 2x ≤ 3x + 20",
+        "t": 21.562
+      },
+      {
+        "title": "Check and graph",
+        "t": 62.266
+      },
+      {
+        "title": "Avoid the negative",
+        "t": 101.541
+      },
+      {
+        "title": "Your turn",
+        "t": 148.448
+      },
+      {
+        "title": "Summary",
+        "t": 182.186
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-5-c:q",
+        "t": 156.384,
+        "prompt": "Solve $4 - x > 2x - 8$.",
+        "choices": [
+          "$x > 4$",
+          "$x < -4$",
+          "$x > -4$",
+          "$x < 4$"
+        ],
+        "answer": 3,
+        "working": "Subtract $2x$ and $4$ from both sides: $-3x > -12$. Divide by $-3$ and reverse the sign: $x < 4$. Check $x = 0$: $4 > -8$ is true."
+      }
+    ]
+  },
+  "m9-6-5-d": {
+    "lessonId": "m9-6-5",
+    "title": "Solving Linear Inequalities, Part 4: Solving Problems",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The greatest number",
+        "t": 25.05
+      },
+      {
+        "title": "The least number",
+        "t": 80.227
+      },
+      {
+        "title": "Watch out",
+        "t": 136.919
+      },
+      {
+        "title": "Your turn",
+        "t": 174.681
+      },
+      {
+        "title": "Summary",
+        "t": 216.318
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-5-d:q",
+        "t": 187.254,
+        "prompt": "Lena has \\$40 to spend on notebooks that cost \\$6 each. What is the greatest number of notebooks Lena can buy?",
+        "choices": [
+          "$6$",
+          "$7$",
+          "about $6.67$",
+          "$34$"
+        ],
+        "answer": 0,
+        "working": "With $n$ notebooks, $6n \\le 40$, so $n \\le 6.\\overline{6}$. The number must be whole, so round down: $6$ notebooks cost \\$36. Seven would cost \\$42."
+      }
+    ]
+  },
+  "m9-7-1": {
+    "lessonId": "m9-7-1",
+    "title": "Scale Diagrams and Enlargements, Part 1: The Scale Factor",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same shape, new size",
+        "t": 22.319
+      },
+      {
+        "title": "The scale factor",
+        "t": 82.684
+      },
+      {
+        "title": "Finding a scale factor",
+        "t": 124.97
+      },
+      {
+        "title": "Your turn",
+        "t": 187.593
+      },
+      {
+        "title": "Summary",
+        "t": 225.954
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-1:q",
+        "t": 202.556,
+        "prompt": "One side of a triangle is $8$ cm long. In a scale diagram of the triangle, the matching side is $20$ cm long. What is the scale factor?",
+        "choices": [
+          "$12$",
+          "$2.5$",
+          "$0.4$",
+          "$160$"
+        ],
+        "answer": 1,
+        "working": "$k = \\dfrac{\\text{image}}{\\text{original}} = \\dfrac{20}{8} = 2.5$. The image is the scale diagram, so $20$ goes on top."
+      }
+    ]
+  },
+  "m9-7-1-b": {
+    "lessonId": "m9-7-1",
+    "title": "Scale Diagrams and Enlargements, Part 2: Enlargements and Reductions",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bigger or smaller?",
+        "t": 21.214
+      },
+      {
+        "title": "A sticker that shrinks",
+        "t": 76.578
+      },
+      {
+        "title": "Watch out",
+        "t": 135.504
+      },
+      {
+        "title": "Fractions or decimals",
+        "t": 171.91
+      },
+      {
+        "title": "Your turn",
+        "t": 214.821
+      },
+      {
+        "title": "Summary",
+        "t": 262.15
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-1-b:q",
+        "t": 232.283,
+        "prompt": "A rectangle is $10$ cm by $6$ cm. A scale diagram of it is $4$ cm by $2.4\\text{ cm}$. What is the scale factor, and what kind of scale diagram is it?",
+        "choices": [
+          "$2.5$, an enlargement",
+          "$0.4$, an enlargement",
+          "$2.5$, a reduction",
+          "$0.4$, a reduction"
+        ],
+        "answer": 3,
+        "working": "$k = \\dfrac{4}{10} = 0.4$, and $\\dfrac{2.4}{6} = 0.4$ as well. Since $0.4 < 1$, the scale diagram is a reduction."
+      }
+    ]
+  },
+  "m9-7-1-c": {
+    "lessonId": "m9-7-1",
+    "title": "Scale Diagrams and Enlargements, Part 3: Finding New Lengths",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 16.661
+      },
+      {
+        "title": "A poster becomes a flyer",
+        "t": 63.29
+      },
+      {
+        "title": "Same shape?",
+        "t": 136.971
+      },
+      {
+        "title": "Your turn",
+        "t": 177.565
+      },
+      {
+        "title": "Summary",
+        "t": 220.196
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-1-c:q",
+        "t": 191.993,
+        "prompt": "A photo is $9$ cm by $12$ cm. It is enlarged with a scale factor of $1.5$. What size is the enlarged photo?",
+        "choices": [
+          "$13.5$ cm by $18$ cm",
+          "$10.5$ cm by $13.5$ cm",
+          "$6$ cm by $8$ cm",
+          "$18$ cm by $24$ cm"
+        ],
+        "answer": 0,
+        "working": "$1.5 \\times 9 = 13.5$ and $1.5 \\times 12 = 18$, so the enlarged photo is $13.5$ cm by $18$ cm."
+      }
+    ]
+  },
+  "m9-7-1-d": {
+    "lessonId": "m9-7-1",
+    "title": "Scale Diagrams and Enlargements, Part 4: Working Backward",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo the multiplication",
+        "t": 19.019
+      },
+      {
+        "title": "A model canoe",
+        "t": 55.388
+      },
+      {
+        "title": "Dividing by the scale factor",
+        "t": 90.716
+      },
+      {
+        "title": "Enlarging a photo",
+        "t": 144.894
+      },
+      {
+        "title": "Your turn",
+        "t": 201.673
+      },
+      {
+        "title": "Summary",
+        "t": 245.764
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-1-d:q",
+        "t": 216.274,
+        "prompt": "A model of a bridge is built with a scale factor of $0.02$. The model is $84$ cm long. How long is the real bridge?",
+        "choices": [
+          "$1.68$ cm",
+          "$4.2$ m",
+          "$42$ m",
+          "$420$ m"
+        ],
+        "answer": 2,
+        "working": "Work backward: $84 \\div 0.02 = 4{,}200$ cm, and $4{,}200 \\div 100 = 42$ m."
+      }
+    ]
+  },
+  "m9-7-2": {
+    "lessonId": "m9-7-2",
+    "title": "Scale Diagrams and Maps, Part 1: Reading a Scale",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a scale tells you",
+        "t": 22.111
+      },
+      {
+        "title": "A classroom plan",
+        "t": 58.577
+      },
+      {
+        "title": "From real life to the plan",
+        "t": 114.125
+      },
+      {
+        "title": "Your turn",
+        "t": 153.096
+      },
+      {
+        "title": "Summary",
+        "t": 193.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-2:q",
+        "t": 166.849,
+        "prompt": "On a plan, $1$ cm represents $3$ m. A room is $4.5$ cm long on the plan. How long is the real room?",
+        "choices": [
+          "$1.5$ m",
+          "$7.5$ m",
+          "$135$ m",
+          "$13.5$ m"
+        ],
+        "answer": 3,
+        "working": "Each centimetre stands for $3$ m, so multiply: $4.5 \\times 3 = 13.5$ m."
+      }
+    ]
+  },
+  "m9-7-2-b": {
+    "lessonId": "m9-7-2",
+    "title": "Scale Diagrams and Maps, Part 2: Ratio Scales",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What one to fifty means",
+        "t": 19.384
+      },
+      {
+        "title": "A plan at one to fifty",
+        "t": 69.751
+      },
+      {
+        "title": "Drawing at one to forty",
+        "t": 127.759
+      },
+      {
+        "title": "Your turn",
+        "t": 176.292
+      },
+      {
+        "title": "Summary",
+        "t": 217.477
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-2-b:q",
+        "t": 188.908,
+        "prompt": "A model car is built to a scale of $1 : 24$. The model is $18$ cm long. How long is the real car?",
+        "choices": [
+          "$0.75$ m",
+          "$4.32$ m",
+          "$43.2$ m",
+          "$432$ m"
+        ],
+        "answer": 1,
+        "working": "$18 \\times 24 = 432$ cm, and $432 \\div 100 = 4.32$ m."
+      }
+    ]
+  },
+  "m9-7-2-c": {
+    "lessonId": "m9-7-2",
+    "title": "Scale Diagrams and Maps, Part 3: Map Scales",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One to fifty thousand",
+        "t": 19.421
+      },
+      {
+        "title": "From the map to the trail",
+        "t": 63.924
+      },
+      {
+        "title": "Watch out",
+        "t": 122.72
+      },
+      {
+        "title": "Your turn",
+        "t": 167.173
+      },
+      {
+        "title": "Summary",
+        "t": 210.229
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-2-c:q",
+        "t": 181.119,
+        "prompt": "A map has a scale of $1 : 200\\,000$. Two villages are $6.5$ cm apart on the map. How far apart are they really?",
+        "choices": [
+          "$1.3$ km",
+          "$130$ km",
+          "$13$ km",
+          "$1\\,300\\,000$ km"
+        ],
+        "answer": 2,
+        "working": "$6.5 \\times 200\\,000 = 1\\,300\\,000$ cm, and $1\\,300\\,000 \\div 100\\,000 = 13$ km."
+      }
+    ]
+  },
+  "m9-7-2-d": {
+    "lessonId": "m9-7-2",
+    "title": "Scale Diagrams and Maps, Part 4: Finding the Scale",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The scale of a gym plan",
+        "t": 18.394
+      },
+      {
+        "title": "Fencing a garden",
+        "t": 69.045
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 126.504
+      },
+      {
+        "title": "Your turn",
+        "t": 156.734
+      },
+      {
+        "title": "Summary",
+        "t": 197.964
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-2-d:q",
+        "t": 168.713,
+        "prompt": "A park is $450$ m long. On a map, the park is $9$ cm long. What is the scale of the map?",
+        "choices": [
+          "$1 : 5\\,000$",
+          "$1 : 50$",
+          "$1 : 500$",
+          "$1 : 50\\,000$"
+        ],
+        "answer": 0,
+        "working": "$450$ m $= 45\\,000$ cm, and $45\\,000 \\div 9 = 5\\,000$, so the scale is $1 : 5\\,000$."
+      }
+    ]
+  },
+  "m9-7-3": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 1: What Makes Polygons Similar",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Similar polygons",
+        "t": 21.607
+      },
+      {
+        "title": "Two rectangles",
+        "t": 68.855
+      },
+      {
+        "title": "Naming similar triangles",
+        "t": 124.375
+      },
+      {
+        "title": "Your turn",
+        "t": 180.638
+      },
+      {
+        "title": "Summary",
+        "t": 225.125
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3:q",
+        "t": 191.92,
+        "prompt": "Rectangle P is $8$ cm by $6$ cm. Which rectangle is similar to rectangle P?",
+        "choices": [
+          "$10$ cm by $8$ cm",
+          "$12$ cm by $9$ cm",
+          "$16$ cm by $8$ cm",
+          "$12$ cm by $10$ cm"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{12}{8} = 1.5$ and $\\dfrac{9}{6} = 1.5$: the sides are proportional, and every angle of a rectangle is $90^\\circ$."
+      }
+    ]
+  },
+  "m9-7-3-b": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 2: One Condition Is Not Enough",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal angles, but not similar",
+        "t": 18.515
+      },
+      {
+        "title": "Proportional sides, but not similar",
+        "t": 57.437
+      },
+      {
+        "title": "Watch out",
+        "t": 102.522
+      },
+      {
+        "title": "Triangles are special",
+        "t": 155.518
+      },
+      {
+        "title": "Your turn",
+        "t": 195.618
+      },
+      {
+        "title": "Summary",
+        "t": 231.262
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3-b:q",
+        "t": 201.597,
+        "prompt": "Which pair of shapes **must** be similar?",
+        "choices": [
+          "Two rectangles",
+          "Two rhombuses",
+          "A square and a rectangle",
+          "Two triangles, each with angles of $40^\\circ$, $60^\\circ$ and $80^\\circ$"
+        ],
+        "answer": 3,
+        "working": "For triangles, equal angles are enough: the sides are sure to be proportional. Two rectangles always have equal angles, but their sides may not be proportional."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

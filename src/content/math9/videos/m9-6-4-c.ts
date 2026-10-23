@@ -49,11 +49,11 @@ const video: Explainer = {
         height('ht'),
       ],
       lines: [
-        { say: 'To ride a roller coaster at a summer fair, a rider must be at least one hundred twenty centimetres tall. Write an inequality, and show it on a number line.', show: 'q' },
+        { say: 'To ride a roller coaster at a summer fair, a rider must be at least one hundred twenty centimetres tall. Write the inequality for this rule, and show it on a number line.', show: 'q' },
         { say: 'Step one: let h stand for the height of a rider, in centimetres.', show: 'm.0' },
         { say: 'Step two: the boundary value is one hundred twenty.' },
         { say: 'Step three: at least one hundred twenty means one hundred twenty or more. So the symbol is greater than or equal to: h is greater than or equal to one hundred twenty.', show: 'm.1', focus: 'm.1' },
-        { say: 'On the number line, a rider who is exactly one hundred twenty centimetres tall is allowed, so draw a closed dot at one hundred twenty. Taller riders are allowed as well, so draw an arrow to the right.', show: ['ht.axis', 'ht.dot', 'ht.ray'], focus: ['ht.dot', 'ht.ray'] },
+        { say: 'On the number line, a person who is exactly one hundred twenty centimetres tall is allowed, so draw a closed dot at one hundred twenty. Taller people are allowed as well, so draw an arrow to the right.', show: ['ht.axis', 'ht.dot', 'ht.ray'], focus: ['ht.dot', 'ht.ray'] },
       ],
     },
     {
@@ -119,7 +119,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. To write an inequality, choose a variable, find the boundary, and pick the symbol from the key words.', show: 'sum.0' },
+        { say: 'Let’s sum up. To write the inequality, choose a variable, find the boundary, and pick the symbol from the key words.', show: 'sum.0' },
         { say: 'At least means greater than or equal to. At most, and no more than, mean less than or equal to.', show: 'sum.1' },
         { say: 'One side can be an expression, like a cost.', show: 'sum.2' },
         { say: 'And show it on a number line, with a dot and an arrow. In the next lesson, you will solve inequalities. See you there!', show: 'sum.3' },
