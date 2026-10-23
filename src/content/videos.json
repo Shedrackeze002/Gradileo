@@ -25184,6 +25184,6824 @@
       }
     ]
   },
+  "m9-1-1-c": {
+    "lessonId": "m9-1-1",
+    "title": "Square Roots of Perfect Squares, Part 3: Square Roots of Decimals",
+    "duration": 278,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One point four four",
+        "t": 18.702
+      },
+      {
+        "title": "Over 100 or 10 000",
+        "t": 72.324
+      },
+      {
+        "title": "Count the decimal places",
+        "t": 126.652
+      },
+      {
+        "title": "Not just the digits",
+        "t": 165.704
+      },
+      {
+        "title": "Your turn",
+        "t": 204.412
+      },
+      {
+        "title": "Summary",
+        "t": 243.278
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-1-c:q",
+        "t": 212.484,
+        "prompt": "Find $\\sqrt{0.0016}$.",
+        "choices": [
+          "$0.04$",
+          "$0.4$",
+          "$0.008$",
+          "$0.004$"
+        ],
+        "answer": 0,
+        "working": "$0.0016 = \\dfrac{16}{10\\,000}$, so $\\sqrt{0.0016} = \\dfrac{4}{100} = 0.04$. Check: $0.04 \\times 0.04 = 0.0016$."
+      }
+    ]
+  },
+  "m9-1-1-d": {
+    "lessonId": "m9-1-1",
+    "title": "Square Roots of Perfect Squares, Part 4: Is It a Perfect Square?",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The test",
+        "t": 21.516
+      },
+      {
+        "title": "Testing four numbers",
+        "t": 52.978
+      },
+      {
+        "title": "Same digits, different answer",
+        "t": 111.048
+      },
+      {
+        "title": "A square garden",
+        "t": 144.011
+      },
+      {
+        "title": "Your turn",
+        "t": 192.151
+      },
+      {
+        "title": "Summary",
+        "t": 225.846
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-1-d:q",
+        "t": 198.553,
+        "prompt": "Which of these numbers is a perfect square?",
+        "choices": [
+          "$0.9$",
+          "$1.6$",
+          "$0.81$",
+          "$2.5$"
+        ],
+        "answer": 2,
+        "working": "$0.81 = \\dfrac{81}{100}$, and $81$ and $100$ are both perfect squares: $\\sqrt{0.81} = 0.9$. The others have one decimal place: $0.9 = \\tfrac{9}{10}$, $1.6 = \\tfrac{8}{5}$ and $2.5 = \\tfrac{5}{2}$."
+      }
+    ]
+  },
+  "m9-1-2": {
+    "lessonId": "m9-1-2",
+    "title": "Square Roots of Non-Perfect Squares, Part 1: Estimating with Benchmarks",
+    "duration": 333,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Non-perfect squares",
+        "t": 25.61
+      },
+      {
+        "title": "Between 0.7 and 0.8",
+        "t": 68.17
+      },
+      {
+        "title": "Closer to 0.7",
+        "t": 110.065
+      },
+      {
+        "title": "A larger decimal",
+        "t": 160.429
+      },
+      {
+        "title": "Halving is not square rooting",
+        "t": 207.3
+      },
+      {
+        "title": "Your turn",
+        "t": 259.367
+      },
+      {
+        "title": "Summary",
+        "t": 298.636
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-2:q",
+        "t": 267.392,
+        "prompt": "Which is the best estimate of $\\sqrt{0.2}$?",
+        "choices": [
+          "$0.1$",
+          "$0.04$",
+          "$0.02$",
+          "$0.45$"
+        ],
+        "answer": 3,
+        "working": "$0.4^2 = 0.16$ and $0.5^2 = 0.25$, so $\\sqrt{0.2}$ is between $0.4$ and $0.5$. Check: $0.45^2 = 0.2025$, close to $0.2$."
+      }
+    ]
+  },
+  "m9-1-2-b": {
+    "lessonId": "m9-1-2",
+    "title": "Square Roots of Non-Perfect Squares, Part 2: Using a Calculator",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The square root of 2.7",
+        "t": 16.943
+      },
+      {
+        "title": "A fraction",
+        "t": 67.439
+      },
+      {
+        "title": "Estimate first",
+        "t": 112.756
+      },
+      {
+        "title": "A square patio",
+        "t": 139.584
+      },
+      {
+        "title": "Your turn",
+        "t": 182.774
+      },
+      {
+        "title": "Summary",
+        "t": 222.223
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-2-b:q",
+        "t": 195.312,
+        "prompt": "A square tablecloth has an area of $2.2\\ \\text{m}^2$. How long is each side, to the nearest hundredth of a metre?",
+        "choices": [
+          "$1.10\\text{ m}$",
+          "$1.48\\text{ m}$",
+          "$4.84\\text{ m}$",
+          "$14.83\\text{ m}$"
+        ],
+        "answer": 1,
+        "working": "$1^2 = 1$ and $2^2 = 4$, so the side is between $1$ m and $2$ m. $\\sqrt{2.2} = 1.4832\\ldots \\approx 1.48$ m. Check: $1.48^2 = 2.1904$."
+      }
+    ]
+  },
+  "m9-1-2-c": {
+    "lessonId": "m9-1-2",
+    "title": "Square Roots of Non-Perfect Squares, Part 3: Working Backwards",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Square both values",
+        "t": 16.053
+      },
+      {
+        "title": "Between the squares",
+        "t": 54.395
+      },
+      {
+        "title": "Another example",
+        "t": 89.763
+      },
+      {
+        "title": "Your turn",
+        "t": 137.083
+      },
+      {
+        "title": "Summary",
+        "t": 175.378
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-2-c:q",
+        "t": 145.432,
+        "prompt": "Which number has a square root between $2.1$ and $2.2$?",
+        "choices": [
+          "$4.6$",
+          "$2.15$",
+          "$4.3$",
+          "$4.9$"
+        ],
+        "answer": 0,
+        "working": "$2.1^2 = 4.41$ and $2.2^2 = 4.84$. Only $4.6$ is between $4.41$ and $4.84$: $\\sqrt{4.6} \\approx 2.14$."
+      }
+    ]
+  },
+  "m9-1-3": {
+    "lessonId": "m9-1-3",
+    "title": "Surface Area of Composite Objects, Part 1: Joining Cubes",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Composite objects",
+        "t": 25.879
+      },
+      {
+        "title": "Two cubes",
+        "t": 58.404
+      },
+      {
+        "title": "Four cubes",
+        "t": 93.029
+      },
+      {
+        "title": "Area of the faces",
+        "t": 139.43
+      },
+      {
+        "title": "Forgetting the bottom",
+        "t": 176.947
+      },
+      {
+        "title": "Your turn",
+        "t": 213.875
+      },
+      {
+        "title": "Summary",
+        "t": 261.012
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-3:q",
+        "t": 228.206,
+        "prompt": "Five cubes, each with edges of $3\\ \\text{cm}$, are glued together in a straight row. What is the surface area of the object, including the bottom?",
+        "choices": [
+          "$270\\text{ cm}^2$",
+          "$234\\text{ cm}^2$",
+          "$198\\text{ cm}^2$",
+          "$66\\text{ cm}^2$"
+        ],
+        "answer": 2,
+        "working": "$6 \\times 5 = 30$ faces. The cubes touch in $4$ places, which hide $2 \\times 4 = 8$ faces, leaving $22$. Each face is $3 \\times 3 = 9\\text{ cm}^2$, so $SA = 22 \\times 9 = 198\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m9-1-3-b": {
+    "lessonId": "m9-1-3",
+    "title": "Surface Area of Composite Objects, Part 2: Two Rectangular Prisms",
+    "duration": 335,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the layers touch",
+        "t": 21.094
+      },
+      {
+        "title": "The bottom layer",
+        "t": 67.097
+      },
+      {
+        "title": "The top layer",
+        "t": 113.351
+      },
+      {
+        "title": "Put it together",
+        "t": 152.924
+      },
+      {
+        "title": "Subtracting once",
+        "t": 192.331
+      },
+      {
+        "title": "No icing underneath",
+        "t": 223.341
+      },
+      {
+        "title": "Your turn",
+        "t": 257.248
+      },
+      {
+        "title": "Summary",
+        "t": 305.529
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-3-b:q",
+        "t": 275.234,
+        "prompt": "A box $10$ cm long, $10$ cm wide and $4$ cm high has a cube with edges of $4$ cm glued on top. What is the surface area of the whole object, including the bottom?",
+        "choices": [
+          "$456\\text{ cm}^2$",
+          "$424\\text{ cm}^2$",
+          "$440\\text{ cm}^2$",
+          "$324\\text{ cm}^2$"
+        ],
+        "answer": 1,
+        "working": "Box: $2(100 + 40 + 40) = 360$. Cube: $6 \\times 16 = 96$. Overlap: $4 \\times 4 = 16$. $SA = 360 + 96 - 2 \\times 16 = 424\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m9-1-3-c": {
+    "lessonId": "m9-1-3",
+    "title": "Surface Area of Composite Objects, Part 3: A Cylinder on a Prism",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the parts touch",
+        "t": 19.989
+      },
+      {
+        "title": "The block",
+        "t": 66.776
+      },
+      {
+        "title": "The cylinder",
+        "t": 96.731
+      },
+      {
+        "title": "Put it together",
+        "t": 139.455
+      },
+      {
+        "title": "A shortcut",
+        "t": 175.566
+      },
+      {
+        "title": "Your turn",
+        "t": 211.001
+      },
+      {
+        "title": "Summary",
+        "t": 260.681
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-1-3-c:q",
+        "t": 229.866,
+        "prompt": "A cylinder with a radius of $2$ cm and a height of $10$ cm stands on a cube with edges of $6$ cm. What is the surface area of the whole object, including the bottom, to the nearest tenth?",
+        "choices": [
+          "$366.8\\text{ cm}^2$",
+          "$354.2\\text{ cm}^2$",
+          "$278.8\\text{ cm}^2$",
+          "$341.7\\text{ cm}^2$"
+        ],
+        "answer": 3,
+        "working": "Cube: $6 \\times 6^2 = 216$. Curved side of the cylinder: $2\\pi(2)(10) \\approx 125.66$. The cylinder’s top replaces the circle it covers, so $SA \\approx 216 + 125.66 \\approx 341.7\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m9-2-1": {
+    "lessonId": "m9-2-1",
+    "title": "Using Exponents to Describe Numbers, Part 1: Base and Exponent",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a power?",
+        "t": 28.636
+      },
+      {
+        "title": "Reading powers",
+        "t": 66.546
+      },
+      {
+        "title": "Squared and cubed",
+        "t": 101.037
+      },
+      {
+        "title": "Writing a power",
+        "t": 138.347
+      },
+      {
+        "title": "Base and exponent swapped",
+        "t": 162.46
+      },
+      {
+        "title": "Your turn",
+        "t": 188.254
+      },
+      {
+        "title": "Summary",
+        "t": 221.804
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-1:q",
+        "t": 196.975,
+        "prompt": "Write $4 \\times 4 \\times 4 \\times 4 \\times 4$ as a power.",
+        "choices": [
+          "$4^5$",
+          "$5^4$",
+          "$4 \\times 5$",
+          "$4^4$"
+        ],
+        "answer": 0,
+        "working": "The factor $4$ is repeated, so the base is $4$. There are $5$ factors, so the exponent is $5$: $4^5$."
+      }
+    ]
+  },
+  "m9-2-1-b": {
+    "lessonId": "m9-2-1",
+    "title": "Using Exponents to Describe Numbers, Part 2: Evaluating Powers",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two to the power of five",
+        "t": 22.53
+      },
+      {
+        "title": "Not a multiplier",
+        "t": 57.43
+      },
+      {
+        "title": "Three to the fourth",
+        "t": 89.632
+      },
+      {
+        "title": "Powers of 10",
+        "t": 121.13
+      },
+      {
+        "title": "Your turn",
+        "t": 147.983
+      },
+      {
+        "title": "Summary",
+        "t": 177.731
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-1-b:q",
+        "t": 153.431,
+        "prompt": "Evaluate $6^3$.",
+        "choices": [
+          "$18$",
+          "$36$",
+          "$216$",
+          "$729$"
+        ],
+        "answer": 2,
+        "working": "$6^3 = 6 \\times 6 \\times 6$. $6 \\times 6 = 36$, and $36 \\times 6 = 216$."
+      }
+    ]
+  },
+  "m9-2-1-c": {
+    "lessonId": "m9-2-1",
+    "title": "Using Exponents to Describe Numbers, Part 3: Negative Bases and Brackets",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "With brackets",
+        "t": 19.989
+      },
+      {
+        "title": "Without brackets",
+        "t": 58.051
+      },
+      {
+        "title": "What is the base?",
+        "t": 84.087
+      },
+      {
+        "title": "Compare them",
+        "t": 118.135
+      },
+      {
+        "title": "Negative three",
+        "t": 155.938
+      },
+      {
+        "title": "Is the minus sign in the base?",
+        "t": 186.831
+      },
+      {
+        "title": "Your turn",
+        "t": 216.44
+      },
+      {
+        "title": "Summary",
+        "t": 248.622
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-1-c:q",
+        "t": 222.929,
+        "prompt": "Evaluate $-4^2$.",
+        "choices": [
+          "$16$",
+          "$8$",
+          "$-8$",
+          "$-16$"
+        ],
+        "answer": 3,
+        "working": "There are no brackets, so the base is $4$: $-4^2 = -(4 \\times 4) = -16$."
+      }
+    ]
+  },
+  "m9-2-1-d": {
+    "lessonId": "m9-2-1",
+    "title": "Using Exponents to Describe Numbers, Part 4: Even and Odd Exponents",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pairs of negatives",
+        "t": 20.028
+      },
+      {
+        "title": "One left over",
+        "t": 54.128
+      },
+      {
+        "title": "Even or odd?",
+        "t": 80.766
+      },
+      {
+        "title": "Predicting the sign",
+        "t": 107.795
+      },
+      {
+        "title": "Check the base first",
+        "t": 144.078
+      },
+      {
+        "title": "Your turn",
+        "t": 166.482
+      },
+      {
+        "title": "Summary",
+        "t": 200.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-1-d:q",
+        "t": 172.719,
+        "prompt": "Which of these has a positive value?",
+        "choices": [
+          "$(-3)^5$",
+          "$(-3)^4$",
+          "$-3^4$",
+          "$-3^5$"
+        ],
+        "answer": 1,
+        "working": "$(-3)^4$ has base $-3$ and an even exponent, so it is positive: $81$. $(-3)^5 = -243$, $-3^4 = -81$ and $-3^5 = -243$."
+      }
+    ]
+  },
+  "m9-2-2": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 1: The Product Law",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exponent laws",
+        "t": 26.336
+      },
+      {
+        "title": "Count the factors",
+        "t": 45.979
+      },
+      {
+        "title": "The product law",
+        "t": 75.523
+      },
+      {
+        "title": "Do not multiply the bases",
+        "t": 114.1
+      },
+      {
+        "title": "Different bases",
+        "t": 150.748
+      },
+      {
+        "title": "Your turn",
+        "t": 179.702
+      },
+      {
+        "title": "Summary",
+        "t": 214.085
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2:q",
+        "t": 188.526,
+        "prompt": "Write $6^5 \\times 6^3$ as a single power.",
+        "choices": [
+          "$6^8$",
+          "$36^8$",
+          "$6^{15}$",
+          "$12^8$"
+        ],
+        "answer": 0,
+        "working": "Same base, so keep the base and add the exponents: $6^5 \\times 6^3 = 6^{5 + 3} = 6^8$."
+      }
+    ]
+  },
+  "m9-2-2-b": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 2: The Quotient Law",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Factors divide out",
+        "t": 16.423
+      },
+      {
+        "title": "The quotient law",
+        "t": 60.891
+      },
+      {
+        "title": "Another example",
+        "t": 97.458
+      },
+      {
+        "title": "Do not divide the exponents",
+        "t": 126.79
+      },
+      {
+        "title": "Your turn",
+        "t": 159.389
+      },
+      {
+        "title": "Summary",
+        "t": 194.798
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2-b:q",
+        "t": 169.057,
+        "prompt": "Write $7^9 \\div 7^3$ as a single power.",
+        "choices": [
+          "$7^3$",
+          "$1^6$",
+          "$7^6$",
+          "$7^{12}$"
+        ],
+        "answer": 2,
+        "working": "Same base, so keep the base and subtract the exponents: $7^9 \\div 7^3 = 7^{9 - 3} = 7^6$."
+      }
+    ]
+  },
+  "m9-2-2-c": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 3: The Zero Exponent",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pattern",
+        "t": 18.635
+      },
+      {
+        "title": "Powers of two",
+        "t": 54.764
+      },
+      {
+        "title": "The quotient law agrees",
+        "t": 77.62
+      },
+      {
+        "title": "The zero exponent",
+        "t": 105.593
+      },
+      {
+        "title": "One, not zero",
+        "t": 138.089
+      },
+      {
+        "title": "Your turn",
+        "t": 159.368
+      },
+      {
+        "title": "Summary",
+        "t": 191.193
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2-c:q",
+        "t": 168.17,
+        "prompt": "Evaluate $4^0 + 7^0$.",
+        "choices": [
+          "$0$",
+          "$2$",
+          "$11$",
+          "$1$"
+        ],
+        "answer": 1,
+        "working": "Each power has an exponent of $0$ and a base that is not $0$, so each is $1$: $4^0 + 7^0 = 1 + 1 = 2$."
+      }
+    ]
+  },
+  "m9-2-2-d": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 4: Powers of Powers, Products and Quotients",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Power of a power",
+        "t": 18.884
+      },
+      {
+        "title": "Power of a product",
+        "t": 53.368
+      },
+      {
+        "title": "Power of a quotient",
+        "t": 92.7
+      },
+      {
+        "title": "All the laws",
+        "t": 121.004
+      },
+      {
+        "title": "Add or multiply?",
+        "t": 158.964
+      },
+      {
+        "title": "Your turn",
+        "t": 188.099
+      },
+      {
+        "title": "Summary",
+        "t": 224.088
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2-d:q",
+        "t": 196.206,
+        "prompt": "Write $\\left(5^3\\right)^4$ as a single power.",
+        "choices": [
+          "$5^7$",
+          "$20^3$",
+          "$5^{81}$",
+          "$5^{12}$"
+        ],
+        "answer": 3,
+        "working": "A power of a power: multiply the exponents. $\\left(5^3\\right)^4 = 5^{3 \\times 4} = 5^{12}$."
+      }
+    ]
+  },
+  "m9-2-2-e": {
+    "lessonId": "m9-2-2",
+    "title": "Exponent Laws, Part 5: Simplify, Then Evaluate",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One law at a time",
+        "t": 18.462
+      },
+      {
+        "title": "See the factors",
+        "t": 50.901
+      },
+      {
+        "title": "Why simplify first?",
+        "t": 84.31
+      },
+      {
+        "title": "Three laws at once",
+        "t": 113.577
+      },
+      {
+        "title": "No law for adding",
+        "t": 152.468
+      },
+      {
+        "title": "Your turn",
+        "t": 186.974
+      },
+      {
+        "title": "Summary",
+        "t": 226.613
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-2-e:q",
+        "t": 198.093,
+        "prompt": "Evaluate $\\left(3^6 \\times 3^2\\right) \\div 3^5$.",
+        "choices": [
+          "$27$",
+          "$2187$",
+          "$81$",
+          "$9$"
+        ],
+        "answer": 0,
+        "working": "Product law: $3^6 \\times 3^2 = 3^8$. Quotient law: $3^8 \\div 3^5 = 3^3$. Then $3^3 = 27$."
+      }
+    ]
+  },
+  "m9-2-3": {
+    "lessonId": "m9-2-3",
+    "title": "Order of Operations with Powers, Part 1: Powers Before Multiplying",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The order of operations",
+        "t": 23.582
+      },
+      {
+        "title": "Exponents first",
+        "t": 56.733
+      },
+      {
+        "title": "Adding first",
+        "t": 85.824
+      },
+      {
+        "title": "Brackets first",
+        "t": 116.963
+      },
+      {
+        "title": "Your turn",
+        "t": 144.762
+      },
+      {
+        "title": "Summary",
+        "t": 176.691
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-3:q",
+        "t": 151.813,
+        "prompt": "Evaluate $3 + 2^3 \\times 5$.",
+        "choices": [
+          "$55$",
+          "$625$",
+          "$43$",
+          "$33$"
+        ],
+        "answer": 2,
+        "working": "Exponent first: $2^3 = 8$. Multiply: $8 \\times 5 = 40$. Add: $3 + 40 = 43$."
+      }
+    ]
+  },
+  "m9-2-3-b": {
+    "lessonId": "m9-2-3",
+    "title": "Order of Operations with Powers, Part 2: Negative Numbers and Fraction Bars",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Integers and powers",
+        "t": 19.881
+      },
+      {
+        "title": "A fraction bar",
+        "t": 67.043
+      },
+      {
+        "title": "The base of negative three squared",
+        "t": 100.959
+      },
+      {
+        "title": "On a calculator",
+        "t": 130.36
+      },
+      {
+        "title": "Your turn",
+        "t": 170.828
+      },
+      {
+        "title": "Summary",
+        "t": 214.304
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-3-b:q",
+        "t": 181.43,
+        "prompt": "Evaluate $-2^4 + (-1)^3 \\times 3$.",
+        "choices": [
+          "$13$",
+          "$-13$",
+          "$19$",
+          "$-19$"
+        ],
+        "answer": 3,
+        "working": "Exponents: $-2^4 = -16$ and $(-1)^3 = -1$. Multiply: $-1 \\times 3 = -3$. Add: $-16 + (-3) = -19$."
+      }
+    ]
+  },
+  "m9-2-3-c": {
+    "lessonId": "m9-2-3",
+    "title": "Order of Operations with Powers, Part 3: Finding Errors",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Owen’s solution",
+        "t": 17.894
+      },
+      {
+        "title": "Fix it",
+        "t": 56.811
+      },
+      {
+        "title": "Left to right",
+        "t": 81.15
+      },
+      {
+        "title": "A checklist",
+        "t": 119.104
+      },
+      {
+        "title": "Your turn",
+        "t": 148.829
+      },
+      {
+        "title": "Summary",
+        "t": 195.267
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-3-c:q",
+        "t": 161.567,
+        "prompt": "A student evaluated $2 \\times 3^2 - 4 \\div 2$ like this. Step 1: $= 6^2 - 4 \\div 2$. Step 2: $= 36 - 2$. Step 3: $= 34$. In which step is the first error?",
+        "choices": [
+          "There is no error",
+          "Step 1",
+          "Step 2",
+          "Step 3"
+        ],
+        "answer": 1,
+        "working": "Step 1 multiplies $2 \\times 3$ before working out the power. Exponents come first: $2 \\times 9 - 4 \\div 2 = 18 - 2 = 16$."
+      }
+    ]
+  },
+  "m9-2-4": {
+    "lessonId": "m9-2-4",
+    "title": "Using Exponents to Solve Problems, Part 1: Area and Volume",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Squares and cubes",
+        "t": 25.604
+      },
+      {
+        "title": "A gift box",
+        "t": 60.508
+      },
+      {
+        "title": "Surface area",
+        "t": 97.972
+      },
+      {
+        "title": "Square and cubic units",
+        "t": 126.485
+      },
+      {
+        "title": "Your turn",
+        "t": 159.085
+      },
+      {
+        "title": "Summary",
+        "t": 195.234
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-4:q",
+        "t": 167.68,
+        "prompt": "A cube has edges of $5\\ \\text{cm}$. What is its surface area?",
+        "choices": [
+          "$150\\text{ cm}^2$",
+          "$125\\text{ cm}^2$",
+          "$30\\text{ cm}^2$",
+          "$900\\text{ cm}^2$"
+        ],
+        "answer": 0,
+        "working": "One face: $5^2 = 25\\text{ cm}^2$. Six faces: $SA = 6 \\times 25 = 150\\text{ cm}^2$."
+      }
+    ]
+  },
+  "m9-2-4-b": {
+    "lessonId": "m9-2-4",
+    "title": "Using Exponents to Solve Problems, Part 2: Doubling",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Doubling again and again",
+        "t": 17.587
+      },
+      {
+        "title": "After two hours",
+        "t": 57.94
+      },
+      {
+        "title": "The rule",
+        "t": 102.327
+      },
+      {
+        "title": "Minutes are not doublings",
+        "t": 131.731
+      },
+      {
+        "title": "Your turn",
+        "t": 156.923
+      },
+      {
+        "title": "Summary",
+        "t": 198.537
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-4-b:q",
+        "t": 168.585,
+        "prompt": "A sample starts with $30$ cells. The number doubles every $15$ minutes. How many cells are there after $1$ hour?",
+        "choices": [
+          "$120$",
+          "$1800$",
+          "$480$",
+          "$960$"
+        ],
+        "answer": 2,
+        "working": "$1$ hour is $60$ minutes, and $60 \\div 15 = 4$ doublings. $30 \\times 2^4 = 30 \\times 16 = 480$."
+      }
+    ]
+  },
+  "m9-2-4-c": {
+    "lessonId": "m9-2-4",
+    "title": "Using Exponents to Solve Problems, Part 3: Sharing in Rounds",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rounds of sharing",
+        "t": 18.773
+      },
+      {
+        "title": "Round four",
+        "t": 56.949
+      },
+      {
+        "title": "How many in total?",
+        "t": 88.058
+      },
+      {
+        "title": "One round or all of them?",
+        "t": 111.399
+      },
+      {
+        "title": "Your turn",
+        "t": 132.424
+      },
+      {
+        "title": "Summary",
+        "t": 177.587
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-4-c:q",
+        "t": 146.673,
+        "prompt": "A message is sent to $2$ people. In each round after that, every person who just got it sends it to $2$ new people. How many **new** people get it in round $5$?",
+        "choices": [
+          "$10$",
+          "$25$",
+          "$62$",
+          "$32$"
+        ],
+        "answer": 3,
+        "working": "Round $n$ reaches $2^n$ new people, so round $5$ reaches $2^5 = 32$."
+      }
+    ]
+  },
+  "m9-2-4-d": {
+    "lessonId": "m9-2-4",
+    "title": "Using Exponents to Solve Problems, Part 4: Folding Paper",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Layers double",
+        "t": 19.635
+      },
+      {
+        "title": "Thicker than 1 cm",
+        "t": 47.959
+      },
+      {
+        "title": "Try powers",
+        "t": 90.871
+      },
+      {
+        "title": "Same units first",
+        "t": 124.322
+      },
+      {
+        "title": "Your turn",
+        "t": 153.49
+      },
+      {
+        "title": "Summary",
+        "t": 194.887
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-2-4-d:q",
+        "t": 166.47,
+        "prompt": "A sheet of paper is $0.1$ mm thick. What is the least number of folds that makes the stack thicker than $5$ mm?",
+        "choices": [
+          "$5$",
+          "$6$",
+          "$50$",
+          "$7$"
+        ],
+        "answer": 1,
+        "working": "We need $0.1 \\times 2^n > 5$, so $2^n > 50$. $2^5 = 32$ is too small; $2^6 = 64$ is enough: $0.1 \\times 64 = 6.4$ mm."
+      }
+    ]
+  },
+  "m9-3-1": {
+    "lessonId": "m9-3-1",
+    "title": "Comparing and Ordering Rational Numbers, Part 1: What Is a Rational Number?",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One integer over another",
+        "t": 25.865
+      },
+      {
+        "title": "Many kinds of rational numbers",
+        "t": 72.721
+      },
+      {
+        "title": "Where the negative sign goes",
+        "t": 139.738
+      },
+      {
+        "title": "On the number line",
+        "t": 192.969
+      },
+      {
+        "title": "Opposites",
+        "t": 217.112
+      },
+      {
+        "title": "Your turn",
+        "t": 253.193
+      },
+      {
+        "title": "Summary",
+        "t": 280.65
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-1:q",
+        "t": 260.034,
+        "prompt": "Which number is equal to $-\\dfrac{2}{5}$?",
+        "choices": [
+          "$\\dfrac{-2}{-5}$",
+          "$\\dfrac{2}{-5}$",
+          "$-\\dfrac{5}{2}$",
+          "$\\dfrac{2}{5}$"
+        ],
+        "answer": 1,
+        "working": "The negative sign can sit on the bottom: $\\dfrac{2}{-5} = -\\dfrac{2}{5}$. With two negative signs, $\\dfrac{-2}{-5} = \\dfrac{2}{5}$ is positive."
+      }
+    ]
+  },
+  "m9-3-1-b": {
+    "lessonId": "m9-3-1",
+    "title": "Comparing and Ordering Rational Numbers, Part 2: Comparing Rational Numbers",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Left is less",
+        "t": 20.53
+      },
+      {
+        "title": "Compare as decimals",
+        "t": 63.083
+      },
+      {
+        "title": "Bigger digits, smaller number",
+        "t": 104.076
+      },
+      {
+        "title": "A common denominator",
+        "t": 142.063
+      },
+      {
+        "title": "Which town was colder?",
+        "t": 184.697
+      },
+      {
+        "title": "Your turn",
+        "t": 219.352
+      },
+      {
+        "title": "Summary",
+        "t": 257.722
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-1-b:q",
+        "t": 225.493,
+        "prompt": "Which of these numbers is the greatest?",
+        "choices": [
+          "$-\\dfrac{5}{6}$",
+          "$-0.9$",
+          "$-\\dfrac{7}{8}$",
+          "$-0.8$"
+        ],
+        "answer": 3,
+        "working": "As decimals: $-\\tfrac{5}{6} = -0.833\\ldots$, $-0.9$, $-\\tfrac{7}{8} = -0.875$ and $-0.8$. The greatest is the one closest to $0$: $-0.8$."
+      }
+    ]
+  },
+  "m9-3-1-c": {
+    "lessonId": "m9-3-1",
+    "title": "Comparing and Ordering Rational Numbers, Part 3: Ordering Rational Numbers",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Write each as a decimal",
+        "t": 16.766
+      },
+      {
+        "title": "Close decimals",
+        "t": 64.99
+      },
+      {
+        "title": "Put them in order",
+        "t": 108.671
+      },
+      {
+        "title": "Your turn",
+        "t": 162.27
+      },
+      {
+        "title": "Summary",
+        "t": 209.318
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-1-c:q",
+        "t": 176.61,
+        "prompt": "Order from least to greatest: $-0.5,\\ \\ -\\tfrac{2}{3},\\ \\ 0.25,\\ \\ -\\tfrac{1}{4}$",
+        "choices": [
+          "$-\\tfrac{2}{3},\\ -0.5,\\ -\\tfrac{1}{4},\\ 0.25$",
+          "$-0.5,\\ -\\tfrac{2}{3},\\ -\\tfrac{1}{4},\\ 0.25$",
+          "$-\\tfrac{1}{4},\\ -0.5,\\ -\\tfrac{2}{3},\\ 0.25$",
+          "$0.25,\\ -\\tfrac{1}{4},\\ -0.5,\\ -\\tfrac{2}{3}$"
+        ],
+        "answer": 0,
+        "working": "As decimals: $-0.5$, $-\\tfrac{2}{3} = -0.666\\ldots$, $0.25$ and $-\\tfrac{1}{4} = -0.25$. The negative farthest from $0$ is the least: $-\\tfrac{2}{3},\\ -0.5,\\ -\\tfrac{1}{4},\\ 0.25$."
+      }
+    ]
+  },
+  "m9-3-1-d": {
+    "lessonId": "m9-3-1",
+    "title": "Comparing and Ordering Rational Numbers, Part 4: A Number in Between",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Always room for one more",
+        "t": 18.473
+      },
+      {
+        "title": "The same number of places",
+        "t": 52.102
+      },
+      {
+        "title": "Check",
+        "t": 109.59
+      },
+      {
+        "title": "Your turn",
+        "t": 148.662
+      },
+      {
+        "title": "Summary",
+        "t": 188.784
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-1-d:q",
+        "t": 157.079,
+        "prompt": "Which number is between $-\\dfrac{1}{4}$ and $-\\dfrac{1}{5}$?",
+        "choices": [
+          "$-0.3$",
+          "$-0.18$",
+          "$-0.22$",
+          "$-0.26$"
+        ],
+        "answer": 2,
+        "working": "$-\\tfrac{1}{4} = -0.25$ and $-\\tfrac{1}{5} = -0.20$, and $-0.25 < -0.22 < -0.20$."
+      }
+    ]
+  },
+  "m9-3-2": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 1: Adding Decimals",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding on a number line",
+        "t": 25.577
+      },
+      {
+        "title": "Same signs",
+        "t": 66.104
+      },
+      {
+        "title": "Different signs",
+        "t": 104.536
+      },
+      {
+        "title": "Crossing zero",
+        "t": 149.647
+      },
+      {
+        "title": "Your turn",
+        "t": 191.602
+      },
+      {
+        "title": "Summary",
+        "t": 229.346
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2:q",
+        "t": 199.007,
+        "prompt": "Find $-4.5 + 2.8$.",
+        "choices": [
+          "$-1.7$",
+          "$1.7$",
+          "$-7.3$",
+          "$7.3$"
+        ],
+        "answer": 0,
+        "working": "Different signs: subtract the sizes, $4.5 - 2.8 = 1.7$. $-4.5$ has the greater size, so the sum is $-1.7$."
+      }
+    ]
+  },
+  "m9-3-2-b": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 2: Add the Opposite",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A pattern",
+        "t": 20.072
+      },
+      {
+        "title": "Subtracting finds a gap",
+        "t": 63.867
+      },
+      {
+        "title": "Add the opposite",
+        "t": 105.174
+      },
+      {
+        "title": "Watch out",
+        "t": 146.492
+      },
+      {
+        "title": "Your turn",
+        "t": 179.638
+      },
+      {
+        "title": "Summary",
+        "t": 218.711
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2-b:q",
+        "t": 188.055,
+        "prompt": "Find $-3.6 - (-5.1)$.",
+        "choices": [
+          "$-8.7$",
+          "$-1.5$",
+          "$1.5$",
+          "$8.7$"
+        ],
+        "answer": 2,
+        "working": "Add the opposite: $-3.6 + 5.1$. Different signs: $5.1 - 3.6 = 1.5$, and $5.1$ has the greater size, so the answer is $1.5$."
+      }
+    ]
+  },
+  "m9-3-2-c": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 3: Adding and Subtracting Fractions",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pieces of the same size",
+        "t": 21.062
+      },
+      {
+        "title": "Watch out",
+        "t": 56.773
+      },
+      {
+        "title": "Negative plus positive",
+        "t": 88.424
+      },
+      {
+        "title": "Subtracting a negative fraction",
+        "t": 135.695
+      },
+      {
+        "title": "Your turn",
+        "t": 173.755
+      },
+      {
+        "title": "Summary",
+        "t": 208.658
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2-c:q",
+        "t": 180.216,
+        "prompt": "Find $\\dfrac{1}{3} - \\dfrac{5}{6}$.",
+        "choices": [
+          "$\\dfrac{1}{2}$",
+          "$-\\dfrac{4}{9}$",
+          "$\\dfrac{7}{6}$",
+          "$-\\dfrac{1}{2}$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{1}{3} = \\dfrac{2}{6}$, so $\\dfrac{2}{6} - \\dfrac{5}{6} = \\dfrac{2 - 5}{6} = -\\dfrac{3}{6} = -\\dfrac{1}{2}$."
+      }
+    ]
+  },
+  "m9-3-2-d": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 4: Adding Mixed Numbers",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Improper fractions",
+        "t": 16.886
+      },
+      {
+        "title": "The negative covers it all",
+        "t": 49.847
+      },
+      {
+        "title": "Add",
+        "t": 94.982
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 136.545
+      },
+      {
+        "title": "Your turn",
+        "t": 157.337
+      },
+      {
+        "title": "Summary",
+        "t": 191.402
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2-d:q",
+        "t": 165.073,
+        "prompt": "Find $1\\tfrac{1}{2} + \\left(-3\\tfrac{1}{4}\\right)$.",
+        "choices": [
+          "$1\\tfrac{3}{4}$",
+          "$-1\\tfrac{3}{4}$",
+          "$-4\\tfrac{3}{4}$",
+          "$-1\\tfrac{1}{4}$"
+        ],
+        "answer": 1,
+        "working": "$1\\tfrac{1}{2} = \\dfrac{6}{4}$ and $-3\\tfrac{1}{4} = -\\dfrac{13}{4}$, so the sum is $\\dfrac{6 - 13}{4} = -\\dfrac{7}{4} = -1\\tfrac{3}{4}$."
+      }
+    ]
+  },
+  "m9-3-2-e": {
+    "lessonId": "m9-3-2",
+    "title": "Adding and Subtracting Rational Numbers, Part 5: Solving Problems with Changes",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Positive and negative changes",
+        "t": 20.062
+      },
+      {
+        "title": "A day of temperatures",
+        "t": 58.825
+      },
+      {
+        "title": "How much warmer?",
+        "t": 127.764
+      },
+      {
+        "title": "Your turn",
+        "t": 178.252
+      },
+      {
+        "title": "Summary",
+        "t": 227.432
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-2-e:q",
+        "t": 197.58,
+        "prompt": "A bank account has a balance of \\$23.50. A payment of \\$41.75 comes out, then a deposit of \\$12.40 goes in. What is the new balance? (A negative balance means the account owes money.)",
+        "choices": [
+          "\\$77.65",
+          "\\$5.85",
+          "−⁠\\$5.85",
+          "−⁠\\$30.65"
+        ],
+        "answer": 2,
+        "working": "The payment is negative and the deposit is positive: $23.50 + (-41.75) = -18.25$, then $-18.25 + 12.40 = -5.85$. The new balance is −⁠\\$5.85."
+      }
+    ]
+  },
+  "m9-3-3": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 1: Signs First",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal jumps",
+        "t": 21.949
+      },
+      {
+        "title": "The sign rules",
+        "t": 72.855
+      },
+      {
+        "title": "Dividing decimals",
+        "t": 113.861
+      },
+      {
+        "title": "Two negatives",
+        "t": 162.617
+      },
+      {
+        "title": "Watch out",
+        "t": 208.167
+      },
+      {
+        "title": "Your turn",
+        "t": 237.212
+      },
+      {
+        "title": "Summary",
+        "t": 270.479
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3:q",
+        "t": 246.243,
+        "prompt": "Find $-2.4 \\div (-0.6)$.",
+        "choices": [
+          "$4$",
+          "$-4$",
+          "$0.4$",
+          "$-0.4$"
+        ],
+        "answer": 0,
+        "working": "Same signs, so the answer is positive. Size: $2.4 \\div 0.6 = 24 \\div 6 = 4$."
+      }
+    ]
+  },
+  "m9-3-3-b": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 2: Multiplying Fractions",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two thirds of three quarters",
+        "t": 20.01
+      },
+      {
+        "title": "Multiply across",
+        "t": 51.808
+      },
+      {
+        "title": "Simplify first",
+        "t": 86.347
+      },
+      {
+        "title": "Two negative fractions",
+        "t": 117.199
+      },
+      {
+        "title": "Your turn",
+        "t": 160.068
+      },
+      {
+        "title": "Summary",
+        "t": 197.563
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3-b:q",
+        "t": 167.98,
+        "prompt": "Find $-\\dfrac{5}{6} \\times \\left(-\\dfrac{3}{10}\\right)$.",
+        "choices": [
+          "$-\\dfrac{1}{4}$",
+          "$\\dfrac{25}{9}$",
+          "$\\dfrac{1}{2}$",
+          "$\\dfrac{1}{4}$"
+        ],
+        "answer": 3,
+        "working": "Same signs, so the product is positive. $\\dfrac{5 \\times 3}{6 \\times 10} = \\dfrac{15}{60} = \\dfrac{1}{4}$."
+      }
+    ]
+  },
+  "m9-3-3-c": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 3: Dividing Fractions",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How many fit?",
+        "t": 18.318
+      },
+      {
+        "title": "Reciprocals",
+        "t": 53.902
+      },
+      {
+        "title": "Dividing negative fractions",
+        "t": 92.383
+      },
+      {
+        "title": "Simplify first",
+        "t": 134.09
+      },
+      {
+        "title": "Watch out",
+        "t": 172.049
+      },
+      {
+        "title": "Your turn",
+        "t": 201.342
+      },
+      {
+        "title": "Summary",
+        "t": 239.219
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3-c:q",
+        "t": 209.027,
+        "prompt": "Find $\\dfrac{5}{8} \\div \\left(-\\dfrac{3}{4}\\right)$.",
+        "choices": [
+          "$-\\dfrac{15}{32}$",
+          "$-\\dfrac{5}{6}$",
+          "$\\dfrac{5}{6}$",
+          "$-\\dfrac{6}{5}$"
+        ],
+        "answer": 1,
+        "working": "Multiply by the reciprocal: $\\dfrac{5}{8} \\times \\left(-\\dfrac{4}{3}\\right) = -\\dfrac{20}{24} = -\\dfrac{5}{6}$. Different signs, so the answer is negative."
+      }
+    ]
+  },
+  "m9-3-3-d": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 4: Mixed Numbers and a Calculator",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Improper fractions first",
+        "t": 20.378
+      },
+      {
+        "title": "Watch out",
+        "t": 62.829
+      },
+      {
+        "title": "Using a calculator",
+        "t": 103.397
+      },
+      {
+        "title": "Your turn",
+        "t": 168.919
+      },
+      {
+        "title": "Summary",
+        "t": 202.671
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3-d:q",
+        "t": 176.844,
+        "prompt": "Find $-2\\tfrac{1}{4} \\times 1\\tfrac{1}{3}$.",
+        "choices": [
+          "$-3$",
+          "$3$",
+          "$-2\\tfrac{1}{12}$",
+          "$-\\dfrac{27}{16}$"
+        ],
+        "answer": 0,
+        "working": "$-\\dfrac{9}{4} \\times \\dfrac{4}{3} = -\\dfrac{36}{12} = -3$. Different signs, so the product is negative."
+      }
+    ]
+  },
+  "m9-3-3-e": {
+    "lessonId": "m9-3-3",
+    "title": "Multiplying and Dividing Rational Numbers, Part 5: Solving Problems",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A cold front",
+        "t": 23.729
+      },
+      {
+        "title": "Working backwards",
+        "t": 84.366
+      },
+      {
+        "title": "Scaling a recipe",
+        "t": 131.269
+      },
+      {
+        "title": "Your turn",
+        "t": 189.32
+      },
+      {
+        "title": "Summary",
+        "t": 234.201
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-3-e:q",
+        "t": 202.984,
+        "prompt": "A diver’s depth changes by $-2.5$ m each minute for $3.5$ minutes. What is the total change in depth?",
+        "choices": [
+          "$8.75$ m",
+          "$-6$ m",
+          "$-1.4$ m",
+          "$-8.75$ m"
+        ],
+        "answer": 3,
+        "working": "$-2.5 \\times 3.5$: different signs, so the product is negative, and $2.5 \\times 3.5 = 8.75$. The change is $-8.75$ m."
+      }
+    ]
+  },
+  "m9-3-4": {
+    "lessonId": "m9-3-4",
+    "title": "Order of Operations with Rational Numbers, Part 1: The Same Order as Before",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The order",
+        "t": 27.182
+      },
+      {
+        "title": "Decimals",
+        "t": 66.332
+      },
+      {
+        "title": "Watch out",
+        "t": 111.205
+      },
+      {
+        "title": "Fractions",
+        "t": 147.474
+      },
+      {
+        "title": "Your turn",
+        "t": 175.697
+      },
+      {
+        "title": "Summary",
+        "t": 215.175
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-4:q",
+        "t": 184.932,
+        "prompt": "Evaluate $1.5 - 2 \\times (-0.4)$.",
+        "choices": [
+          "$0.2$",
+          "$0.7$",
+          "$2.3$",
+          "$-2.3$"
+        ],
+        "answer": 2,
+        "working": "Multiply first: $2 \\times (-0.4) = -0.8$. Then $1.5 - (-0.8) = 1.5 + 0.8 = 2.3$."
+      }
+    ]
+  },
+  "m9-3-4-b": {
+    "lessonId": "m9-3-4",
+    "title": "Order of Operations with Rational Numbers, Part 2: Powers and Negative Numbers",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Squaring a negative",
+        "t": 17.207
+      },
+      {
+        "title": "Watch out",
+        "t": 66.766
+      },
+      {
+        "title": "A squared fraction",
+        "t": 96.444
+      },
+      {
+        "title": "Decimals with a power",
+        "t": 142.988
+      },
+      {
+        "title": "Your turn",
+        "t": 188.194
+      },
+      {
+        "title": "Summary",
+        "t": 233.265
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-4-b:q",
+        "t": 199.338,
+        "prompt": "Evaluate $(-0.3)^{2} + 0.6 \\div (-2)$.",
+        "choices": [
+          "$-0.39$",
+          "$-0.21$",
+          "$0.39$",
+          "$-0.345$"
+        ],
+        "answer": 1,
+        "working": "Exponent: $(-0.3)^{2} = 0.09$. Divide: $0.6 \\div (-2) = -0.3$. Add: $0.09 + (-0.3) = -0.21$."
+      }
+    ]
+  },
+  "m9-3-4-c": {
+    "lessonId": "m9-3-4",
+    "title": "Order of Operations with Rational Numbers, Part 3: Writing One Expression",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The story",
+        "t": 19.037
+      },
+      {
+        "title": "Write the expression",
+        "t": 54.082
+      },
+      {
+        "title": "Evaluate",
+        "t": 84.064
+      },
+      {
+        "title": "Watch out",
+        "t": 125.811
+      },
+      {
+        "title": "Your turn",
+        "t": 171.873
+      },
+      {
+        "title": "Summary",
+        "t": 216.996
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-4-c:q",
+        "t": 187.829,
+        "prompt": "A game card has a balance of \\$30.00. You buy $4$ snacks at \\$3.25 each with the card, then add \\$10.00 to it. What is the new balance?",
+        "choices": [
+          "\\$7.00",
+          "\\$94.50",
+          "\\$53.00",
+          "\\$27.00"
+        ],
+        "answer": 3,
+        "working": "$30.00 - 4 \\times 3.25 + 10.00 = 30.00 - 13.00 + 10.00 = 17.00 + 10.00 = 27.00$. The new balance is \\$27.00."
+      }
+    ]
+  },
+  "m9-3-4-d": {
+    "lessonId": "m9-3-4",
+    "title": "Order of Operations with Rational Numbers, Part 4: Finding the Mean",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is the mean?",
+        "t": 20.33
+      },
+      {
+        "title": "Five low temperatures",
+        "t": 54.508
+      },
+      {
+        "title": "Estimate to check",
+        "t": 102.767
+      },
+      {
+        "title": "Your turn",
+        "t": 145.673
+      },
+      {
+        "title": "Summary",
+        "t": 190.946
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-3-4-d:q",
+        "t": 162.933,
+        "prompt": "The low temperatures for four days were $-2.5$, $-7.2$, $0.9$ and $-4.4$ degrees Celsius. What was the mean low temperature?",
+        "choices": [
+          "$-3.3^\\circ\\text{C}$",
+          "$-13.2^\\circ\\text{C}$",
+          "$3.3^\\circ\\text{C}$",
+          "$-9.9^\\circ\\text{C}$"
+        ],
+        "answer": 0,
+        "working": "Sum: $-2.5 + (-7.2) + 0.9 + (-4.4) = -13.2$. Mean: $-13.2 \\div 4 = -3.3$."
+      }
+    ]
+  },
+  "m9-4-1": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 1: From a Pattern to an Equation",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Toothpick squares",
+        "t": 20.792
+      },
+      {
+        "title": "Three more each time",
+        "t": 58.058
+      },
+      {
+        "title": "Write the equation",
+        "t": 96.201
+      },
+      {
+        "title": "Linear equations",
+        "t": 137.317
+      },
+      {
+        "title": "Your turn",
+        "t": 174.003
+      },
+      {
+        "title": "Summary",
+        "t": 218.844
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1:q",
+        "t": 189.555,
+        "prompt": "Figures $1$, $2$, $3$ and $4$ of a tile pattern have $5$, $9$, $13$ and $17$ tiles. Which equation gives the number of tiles, $t$, in Figure $n$?",
+        "choices": [
+          "$t = n + 4$",
+          "$t = 5n$",
+          "$t = 4n + 1$",
+          "$t = 4n + 5$"
+        ],
+        "answer": 2,
+        "working": "The pattern adds $4$ each time, so the equation has $4n$. For Figure 1, $4(1) = 4$, but there are $5$ tiles, so add $1$: $t = 4n + 1$."
+      }
+    ]
+  },
+  "m9-4-1-b": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 2: Verifying an Equation",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What verify means",
+        "t": 16.219
+      },
+      {
+        "title": "Check Figure 4",
+        "t": 43.691
+      },
+      {
+        "title": "Every pair",
+        "t": 79.502
+      },
+      {
+        "title": "Watch out",
+        "t": 106.039
+      },
+      {
+        "title": "Your turn",
+        "t": 138.377
+      },
+      {
+        "title": "Summary",
+        "t": 175.366
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1-b:q",
+        "t": 152.04,
+        "prompt": "A table shows $x = 1,\\ 2,\\ 3$ and $y = 5,\\ 8,\\ 11$. Which equation is verified by all three pairs?",
+        "choices": [
+          "$y = 5x$",
+          "$y = 3x + 2$",
+          "$y = 2x + 3$",
+          "$y = x + 4$"
+        ],
+        "answer": 1,
+        "working": "$3(1) + 2 = 5$, $\\ 3(2) + 2 = 8$ and $3(3) + 2 = 11$: all three match. The other equations work for $x = 1$ only."
+      }
+    ]
+  },
+  "m9-4-1-c": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 3: Equations from Situations",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two amounts to look for",
+        "t": 20.567
+      },
+      {
+        "title": "A climbing gym",
+        "t": 46.302
+      },
+      {
+        "title": "Verify for 3 visits",
+        "t": 79.379
+      },
+      {
+        "title": "A rate that is not whole",
+        "t": 102.556
+      },
+      {
+        "title": "Going down",
+        "t": 147.355
+      },
+      {
+        "title": "Your turn",
+        "t": 189.027
+      },
+      {
+        "title": "Summary",
+        "t": 227.278
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1-c:q",
+        "t": 203.964,
+        "prompt": "A bike rental charges a \\$6 fee plus \\$2.50 for each hour. Which equation gives the cost $C$, in dollars, for $h$ hours?",
+        "choices": [
+          "$C = 6 + 2.5h$",
+          "$C = 2.5 + 6h$",
+          "$C = 8.5h$",
+          "$C = 6 - 2.5h$"
+        ],
+        "answer": 0,
+        "working": "The fee, $6$, is the constant, and the rate, $2.5$ dollars an hour, multiplies $h$."
+      }
+    ]
+  },
+  "m9-4-1-d": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 4: Using the Equation",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Far beyond the table",
+        "t": 20.282
+      },
+      {
+        "title": "Working backwards",
+        "t": 51.609
+      },
+      {
+        "title": "Solving the equation",
+        "t": 100.472
+      },
+      {
+        "title": "Verify",
+        "t": 130.696
+      },
+      {
+        "title": "Not every number works",
+        "t": 150.949
+      },
+      {
+        "title": "Your turn",
+        "t": 179.592
+      },
+      {
+        "title": "Summary",
+        "t": 221.052
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1-d:q",
+        "t": 193.38,
+        "prompt": "The equation $t = 4n + 2$ gives the number of tiles, $t$, in Figure $n$ of a pattern. Which figure has $86$ tiles?",
+        "choices": [
+          "Figure $346$",
+          "Figure $22$",
+          "Figure $84$",
+          "Figure $21$"
+        ],
+        "answer": 3,
+        "working": "$86 = 4n + 2$. Subtract $2$: $84 = 4n$. Divide by $4$: $n = 21$. Check: $4(21) + 2 = 86$."
+      }
+    ]
+  },
+  "m9-4-1-e": {
+    "lessonId": "m9-4-1",
+    "title": "Writing Equations to Describe Patterns, Part 5: When x Goes Up by 2",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table that skips",
+        "t": 16.422
+      },
+      {
+        "title": "The rate for each 1",
+        "t": 39.789
+      },
+      {
+        "title": "The constant",
+        "t": 78.065
+      },
+      {
+        "title": "Verify",
+        "t": 106.374
+      },
+      {
+        "title": "Watch out",
+        "t": 134.924
+      },
+      {
+        "title": "Your turn",
+        "t": 161.463
+      },
+      {
+        "title": "Summary",
+        "t": 203.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-1-e:q",
+        "t": 174.674,
+        "prompt": "A table shows $x = 0,\\ 3,\\ 6,\\ 9$ and $y = 4,\\ 6,\\ 8,\\ 10$. Which equation describes it?",
+        "choices": [
+          "$y = 2x + 4$",
+          "$y = \\tfrac{3}{2}x + 4$",
+          "$y = \\tfrac{2}{3}x + 4$",
+          "$y = \\tfrac{2}{3}x$"
+        ],
+        "answer": 2,
+        "working": "When $x$ goes up by $3$, $y$ goes up by $2$, so the rate is $2 \\div 3 = \\tfrac{2}{3}$. When $x = 0$, $y = 4$. Check: $\\tfrac{2}{3}(9) + 4 = 10$."
+      }
+    ]
+  },
+  "m9-4-2": {
+    "lessonId": "m9-4-2",
+    "title": "Graphing Linear Relations, Part 1: Graphing from an Equation",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing x-values",
+        "t": 16.706
+      },
+      {
+        "title": "The table of values",
+        "t": 53.372
+      },
+      {
+        "title": "Plot and draw",
+        "t": 81.91
+      },
+      {
+        "title": "Reading the graph",
+        "t": 108.212
+      },
+      {
+        "title": "Your turn",
+        "t": 137.333
+      },
+      {
+        "title": "Summary",
+        "t": 168.874
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-2:q",
+        "t": 145.848,
+        "prompt": "Which point is on the graph of $y = \\dfrac{3}{4}x - 2$?",
+        "choices": [
+          "$(4,\\ 3)$",
+          "$(8,\\ 4)$",
+          "$(1,\\ 4)$",
+          "$(0,\\ 2)$"
+        ],
+        "answer": 1,
+        "working": "When $x = 8$: $y = \\tfrac{3}{4}(8) - 2 = 6 - 2 = 4$, so $(8,\\ 4)$ is on the graph."
+      }
+    ]
+  },
+  "m9-4-2-b": {
+    "lessonId": "m9-4-2",
+    "title": "Graphing Linear Relations, Part 2: Discrete or Continuous?",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Discrete data",
+        "t": 19.285
+      },
+      {
+        "title": "Continuous data",
+        "t": 62.646
+      },
+      {
+        "title": "Watch out",
+        "t": 105.923
+      },
+      {
+        "title": "Counts and measurements",
+        "t": 134.437
+      },
+      {
+        "title": "Your turn",
+        "t": 156.168
+      },
+      {
+        "title": "Summary",
+        "t": 188.712
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-2-b:q",
+        "t": 163.559,
+        "prompt": "Which of these relations should be graphed as a solid line?",
+        "choices": [
+          "The cost of $n$ concert tickets",
+          "The number of students on $n$ buses",
+          "The number of wheels on $n$ bikes",
+          "The height of water in a tank after $t$ minutes"
+        ],
+        "answer": 3,
+        "working": "Time can take any value, such as $2.5$ minutes, so the height of the water is continuous. Tickets, buses and bikes are counted, so those relations are discrete."
+      }
+    ]
+  },
+  "m9-4-2-c": {
+    "lessonId": "m9-4-2",
+    "title": "Graphing Linear Relations, Part 3: Interpolating",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The data",
+        "t": 17.251
+      },
+      {
+        "title": "Interpolate",
+        "t": 44.038
+      },
+      {
+        "title": "Check with the equation",
+        "t": 74.116
+      },
+      {
+        "title": "Between grid lines",
+        "t": 108.525
+      },
+      {
+        "title": "Your turn",
+        "t": 139.113
+      },
+      {
+        "title": "Summary",
+        "t": 185.353
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-2-c:q",
+        "t": 155.125,
+        "prompt": "A plant grows at a steady rate. It is $2$ cm tall on day $0$, $5$ cm on day $6$ and $8$ cm on day $12$. Interpolate to estimate its height on day $4$.",
+        "choices": [
+          "$4$ cm",
+          "$5$ cm",
+          "$6$ cm",
+          "$2$ cm"
+        ],
+        "answer": 0,
+        "working": "The plant grows $3$ cm in $6$ days, or $0.5$ cm a day, so $h = 0.5d + 2$. On day $4$: $h = 0.5(4) + 2 = 4$ cm."
+      }
+    ]
+  },
+  "m9-4-2-d": {
+    "lessonId": "m9-4-2",
+    "title": "Graphing Linear Relations, Part 4: Extrapolating",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A burning candle",
+        "t": 18.265
+      },
+      {
+        "title": "Extrapolate",
+        "t": 43.555
+      },
+      {
+        "title": "Use the equation",
+        "t": 71.716
+      },
+      {
+        "title": "Be careful",
+        "t": 124.306
+      },
+      {
+        "title": "Your turn",
+        "t": 159.591
+      },
+      {
+        "title": "Summary",
+        "t": 203.227
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-4-2-d:q",
+        "t": 176.41,
+        "prompt": "A tank holds $36$ L of water and drains at a steady rate. After $2$ minutes, $30$ L are left; after $4$ minutes, $24$ L are left. Extrapolate: when will the tank be empty?",
+        "choices": [
+          "After $6$ minutes",
+          "After $8$ minutes",
+          "After $12$ minutes",
+          "After $18$ minutes"
+        ],
+        "answer": 2,
+        "working": "The water drops $6$ L every $2$ minutes, or $3$ L a minute, so $V = 36 - 3t$. It is empty when $36 - 3t = 0$: $t = 36 \\div 3 = 12$ minutes."
+      }
+    ]
+  },
+  "m9-5-1": {
+    "lessonId": "m9-5-1",
+    "title": "Introduction to Polynomials, Part 1: Terms, Coefficients and Constants",
+    "duration": 353,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Terms",
+        "t": 25.641
+      },
+      {
+        "title": "Coefficients and constants",
+        "t": 65.587
+      },
+      {
+        "title": "Name the parts",
+        "t": 105.128
+      },
+      {
+        "title": "Watch out",
+        "t": 148.593
+      },
+      {
+        "title": "Algebra tiles",
+        "t": 184.223
+      },
+      {
+        "title": "Tiles for a polynomial",
+        "t": 229.072
+      },
+      {
+        "title": "Your turn",
+        "t": 268.393
+      },
+      {
+        "title": "Summary",
+        "t": 308.836
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-1:q",
+        "t": 282.004,
+        "prompt": "For the polynomial $3x^2 - 7x - 2$, which pair gives the coefficient of $x$ and the constant term, in that order?",
+        "choices": [
+          "$7$ and $2$",
+          "$-7$ and $-2$",
+          "$3$ and $-2$",
+          "$-7$ and $2$"
+        ],
+        "answer": 1,
+        "working": "The terms are $3x^2$, $-7x$ and $-2$. Each sign belongs to its term, so the coefficient of $x$ is $-7$ and the constant term is $-2$."
+      }
+    ]
+  },
+  "m9-5-1-b": {
+    "lessonId": "m9-5-1",
+    "title": "Introduction to Polynomials, Part 2: Polynomials and Their Degree",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polynomials",
+        "t": 19.462
+      },
+      {
+        "title": "Degree of a term",
+        "t": 60.442
+      },
+      {
+        "title": "Degree and tiles",
+        "t": 91.172
+      },
+      {
+        "title": "Degree of a polynomial",
+        "t": 114.523
+      },
+      {
+        "title": "Two variables",
+        "t": 152.23
+      },
+      {
+        "title": "Watch out",
+        "t": 185.947
+      },
+      {
+        "title": "Your turn",
+        "t": 221.36
+      },
+      {
+        "title": "Summary",
+        "t": 258.749
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-1-b:q",
+        "t": 230.771,
+        "prompt": "What is the degree of the polynomial $5xy + 3x - 8$?",
+        "choices": [
+          "$1$",
+          "$3$",
+          "$5$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "$5xy = 5x^1y^1$ has degree $1 + 1 = 2$, $3x$ has degree $1$ and $-8$ has degree $0$. The highest is $2$."
+      }
+    ]
+  },
+  "m9-5-1-c": {
+    "lessonId": "m9-5-1",
+    "title": "Introduction to Polynomials, Part 3: Monomials, Binomials and Trinomials",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting terms",
+        "t": 18.831
+      },
+      {
+        "title": "Terms as tiles",
+        "t": 53.565
+      },
+      {
+        "title": "Descending order",
+        "t": 84.6
+      },
+      {
+        "title": "Classify and reorder",
+        "t": 118.869
+      },
+      {
+        "title": "Count terms, not signs",
+        "t": 160.136
+      },
+      {
+        "title": "Your turn",
+        "t": 193.322
+      },
+      {
+        "title": "Summary",
+        "t": 228.819
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-1-c:q",
+        "t": 203.008,
+        "prompt": "Write $5 + 3x - x^2$ in descending order and name its type.",
+        "choices": [
+          "$-x^2 + 3x + 5$, a trinomial",
+          "$x^2 + 3x + 5$, a trinomial",
+          "$-x^2 + 3x + 5$, a binomial",
+          "$5 + 3x - x^2$, a monomial"
+        ],
+        "answer": 0,
+        "working": "The terms are $5$, $3x$ and $-x^2$. The $x^2$-term goes first and keeps its sign: $-x^2 + 3x + 5$. It has three terms, so it is a trinomial."
+      }
+    ]
+  },
+  "m9-5-2": {
+    "lessonId": "m9-5-2",
+    "title": "Equivalent Expressions, Part 1: Like Terms",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equivalent expressions",
+        "t": 18.27
+      },
+      {
+        "title": "Like terms",
+        "t": 60.58
+      },
+      {
+        "title": "Like tiles",
+        "t": 103.172
+      },
+      {
+        "title": "Find the like terms",
+        "t": 128.528
+      },
+      {
+        "title": "Watch out",
+        "t": 171.796
+      },
+      {
+        "title": "Your turn",
+        "t": 219.165
+      },
+      {
+        "title": "Summary",
+        "t": 250.907
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-2:q",
+        "t": 224.414,
+        "prompt": "Which pair are like terms?",
+        "choices": [
+          "$5x$ and $5x^2$",
+          "$3xy$ and $3x$",
+          "$-2y^2$ and $7y^2$",
+          "$4$ and $4x$"
+        ],
+        "answer": 2,
+        "working": "Both terms have $y^2$: the same variable to the same exponent. Only the coefficients, $-2$ and $7$, are different."
+      }
+    ]
+  },
+  "m9-5-2-b": {
+    "lessonId": "m9-5-2",
+    "title": "Equivalent Expressions, Part 2: Zero Pairs",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Zero pairs",
+        "t": 19.918
+      },
+      {
+        "title": "Tiles for the polynomial",
+        "t": 54.733
+      },
+      {
+        "title": "Remove the zero pairs",
+        "t": 89.945
+      },
+      {
+        "title": "Check",
+        "t": 132.965
+      },
+      {
+        "title": "Your turn",
+        "t": 165.555
+      },
+      {
+        "title": "Summary",
+        "t": 204.498
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-2-b:q",
+        "t": 176.443,
+        "prompt": "Simplify $5x - 3 - 2x + 1$. Use algebra tiles if you like.",
+        "choices": [
+          "$3x - 2$",
+          "$7x - 4$",
+          "$3x + 2$",
+          "$3x - 4$"
+        ],
+        "answer": 0,
+        "working": "Five $x$-tiles and two negative $x$-tiles make $2$ zero pairs, leaving $3x$. Three negative unit tiles and one unit tile make $1$ zero pair, leaving $-2$."
+      }
+    ]
+  },
+  "m9-5-2-c": {
+    "lessonId": "m9-5-2",
+    "title": "Equivalent Expressions, Part 3: Collecting Like Terms",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 20.509
+      },
+      {
+        "title": "Simplify a polynomial",
+        "t": 56.062
+      },
+      {
+        "title": "Check by substituting",
+        "t": 108.751
+      },
+      {
+        "title": "Two variables",
+        "t": 148.414
+      },
+      {
+        "title": "Watch out",
+        "t": 198.963
+      },
+      {
+        "title": "Your turn",
+        "t": 235.84
+      },
+      {
+        "title": "Summary",
+        "t": 273.21
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-2-c:q",
+        "t": 247.254,
+        "prompt": "Simplify $3x^2 + 4x - 6 - 5x^2 - x + 2$.",
+        "choices": [
+          "$-2x^2 + 5x - 4$",
+          "$8x^2 + 3x - 4$",
+          "$-2x^2 + 3x - 8$",
+          "$-2x^2 + 3x - 4$"
+        ],
+        "answer": 3,
+        "working": "$(3x^2 - 5x^2) + (4x - x) + (-6 + 2) = -2x^2 + 3x - 4$. Check with $x = 1$: $3 + 4 - 6 - 5 - 1 + 2 = -3$ and $-2 + 3 - 4 = -3$."
+      }
+    ]
+  },
+  "m9-5-3": {
+    "lessonId": "m9-5-3",
+    "title": "Adding and Subtracting Polynomials, Part 1: Adding Polynomials",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "With algebra tiles",
+        "t": 27.013
+      },
+      {
+        "title": "Remove the zero pairs",
+        "t": 66.419
+      },
+      {
+        "title": "With symbols",
+        "t": 103.15
+      },
+      {
+        "title": "In columns",
+        "t": 142.815
+      },
+      {
+        "title": "Your turn",
+        "t": 186.972
+      },
+      {
+        "title": "Summary",
+        "t": 226.498
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-3:q",
+        "t": 198.371,
+        "prompt": "Simplify $(x^2 + 4x - 3) + (2x^2 - x - 5)$.",
+        "choices": [
+          "$3x^2 + 5x - 8$",
+          "$3x^2 + 3x - 8$",
+          "$3x^2 + 3x + 2$",
+          "$2x^2 + 3x - 8$"
+        ],
+        "answer": 1,
+        "working": "$(x^2 + 2x^2) + (4x - x) + (-3 - 5) = 3x^2 + 3x - 8$. Check with $x = 1$: $2 + (-4) = -2$ and $3 + 3 - 8 = -2$."
+      }
+    ]
+  },
+  "m9-5-3-b": {
+    "lessonId": "m9-5-3",
+    "title": "Adding and Subtracting Polynomials, Part 2: Subtracting Polynomials",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Add the opposite",
+        "t": 14.9
+      },
+      {
+        "title": "Flip every tile",
+        "t": 49.275
+      },
+      {
+        "title": "Subtract two trinomials",
+        "t": 85.729
+      },
+      {
+        "title": "Watch out",
+        "t": 129.865
+      },
+      {
+        "title": "Check by substituting",
+        "t": 162.658
+      },
+      {
+        "title": "Your turn",
+        "t": 201.858
+      },
+      {
+        "title": "Summary",
+        "t": 240.383
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-3-b:q",
+        "t": 212.946,
+        "prompt": "Simplify $(4x^2 + x - 2) - (x^2 - 3x + 5)$.",
+        "choices": [
+          "$3x^2 - 2x + 3$",
+          "$5x^2 - 2x + 3$",
+          "$3x^2 + 4x - 7$",
+          "$3x^2 + 4x + 3$"
+        ],
+        "answer": 2,
+        "working": "Add the opposite: $4x^2 + x - 2 - x^2 + 3x - 5 = 3x^2 + 4x - 7$. Check with $x = 1$: $3 - 3 = 0$ and $3 + 4 - 7 = 0$."
+      }
+    ]
+  },
+  "m9-5-3-c": {
+    "lessonId": "m9-5-3",
+    "title": "Adding and Subtracting Polynomials, Part 3: Solving Problems",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Perimeter",
+        "t": 20.791
+      },
+      {
+        "title": "A missing side",
+        "t": 48.387
+      },
+      {
+        "title": "Subtract the known sides",
+        "t": 79.235
+      },
+      {
+        "title": "Check",
+        "t": 119.142
+      },
+      {
+        "title": "Your turn",
+        "t": 157.964
+      },
+      {
+        "title": "Summary",
+        "t": 200.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-3-c:q",
+        "t": 176.59,
+        "prompt": "A triangle has a perimeter of $(5x^2 + 7x + 4)$ m. Two of its sides measure $(2x^2 + x + 1)$ m and $(x^2 + 4x)$ m. What is the third side?",
+        "choices": [
+          "$(8x^2 + 12x + 5)$ m",
+          "$(2x^2 + 4x + 5)$ m",
+          "$(3x^2 + 6x + 3)$ m",
+          "$(2x^2 + 2x + 3)$ m"
+        ],
+        "answer": 3,
+        "working": "Subtract both sides, changing the sign of every term: $5x^2 + 7x + 4 - 2x^2 - x - 1 - x^2 - 4x$, which is $2x^2 + 2x + 3$."
+      }
+    ]
+  },
+  "m9-5-4": {
+    "lessonId": "m9-5-4",
+    "title": "Multiplying and Dividing by a Monomial, Part 1: Multiplying Monomials",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A rectangle of tiles",
+        "t": 28.189
+      },
+      {
+        "title": "The rule",
+        "t": 58.343
+      },
+      {
+        "title": "Products of monomials",
+        "t": 91.676
+      },
+      {
+        "title": "Watch out",
+        "t": 146.27
+      },
+      {
+        "title": "Your turn",
+        "t": 175.945
+      },
+      {
+        "title": "Summary",
+        "t": 208.176
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-4:q",
+        "t": 183.185,
+        "prompt": "Simplify $(-6x)(3x)$.",
+        "choices": [
+          "$-18x^2$",
+          "$18x^2$",
+          "$-18x$",
+          "$-3x^2$"
+        ],
+        "answer": 0,
+        "working": "Coefficients: $(-6)(3) = -18$, because the signs are different. Variables: $x \\cdot x = x^2$. So $(-6x)(3x) = -18x^2$."
+      }
+    ]
+  },
+  "m9-5-4-b": {
+    "lessonId": "m9-5-4",
+    "title": "Multiplying and Dividing by a Monomial, Part 2: The Distributive Property",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The distributive property",
+        "t": 22.963
+      },
+      {
+        "title": "A rectangle of tiles",
+        "t": 53.024
+      },
+      {
+        "title": "Using an area model",
+        "t": 87.932
+      },
+      {
+        "title": "A negative monomial",
+        "t": 136.984
+      },
+      {
+        "title": "Watch out",
+        "t": 172.315
+      },
+      {
+        "title": "Your turn",
+        "t": 202.117
+      },
+      {
+        "title": "Summary",
+        "t": 234.746
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-4-b:q",
+        "t": 209.568,
+        "prompt": "Expand $-2x(x - 4)$.",
+        "choices": [
+          "$-2x^2 - 8x$",
+          "$-2x^2 - 4$",
+          "$-2x^2 + 8x$",
+          "$2x^2 + 8x$"
+        ],
+        "answer": 2,
+        "working": "$(-2x)(x) = -2x^2$ and $(-2x)(-4) = 8x$, because the signs are the same. So $-2x(x - 4) = -2x^2 + 8x$."
+      }
+    ]
+  },
+  "m9-5-4-c": {
+    "lessonId": "m9-5-4",
+    "title": "Multiplying and Dividing by a Monomial, Part 3: Expanding and Simplifying",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two products",
+        "t": 16.252
+      },
+      {
+        "title": "Expand each product",
+        "t": 41.465
+      },
+      {
+        "title": "Collect like terms",
+        "t": 69.699
+      },
+      {
+        "title": "Check",
+        "t": 94.969
+      },
+      {
+        "title": "Watch out",
+        "t": 137.259
+      },
+      {
+        "title": "Your turn",
+        "t": 164.187
+      },
+      {
+        "title": "Summary",
+        "t": 204.221
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-4-c:q",
+        "t": 174.628,
+        "prompt": "Expand and simplify $3(x + 2) - x(x - 5)$.",
+        "choices": [
+          "$-x^2 - 2x + 6$",
+          "$-x^2 + 8x + 6$",
+          "$x^2 + 8x + 6$",
+          "$-x^2 + 8x + 2$"
+        ],
+        "answer": 1,
+        "working": "$3(x + 2) = 3x + 6$ and $-x(x - 5) = -x^2 + 5x$. Together: $3x + 6 - x^2 + 5x = -x^2 + 8x + 6$."
+      }
+    ]
+  },
+  "m9-5-4-d": {
+    "lessonId": "m9-5-4",
+    "title": "Multiplying and Dividing by a Monomial, Part 4: Dividing by a Monomial",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A missing side",
+        "t": 18.479
+      },
+      {
+        "title": "Divide each term",
+        "t": 63.533
+      },
+      {
+        "title": "Dividing by a negative",
+        "t": 115.354
+      },
+      {
+        "title": "Watch out",
+        "t": 165.485
+      },
+      {
+        "title": "Your turn",
+        "t": 191.642
+      },
+      {
+        "title": "Summary",
+        "t": 225.83
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-5-4-d:q",
+        "t": 199.581,
+        "prompt": "Divide $\\dfrac{10x^2 - 15x}{5x}$.",
+        "choices": [
+          "$2x - 15x$",
+          "$2x - 3x$",
+          "$2x + 3$",
+          "$2x - 3$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{10x^2}{5x} = 2x$ and $\\dfrac{-15x}{5x} = -3$. Check: $5x(2x - 3) = 10x^2 - 15x$."
+      }
+    ]
+  },
+  "m9-6-1": {
+    "lessonId": "m9-6-1",
+    "title": "Solving Equations with Variables on Both Sides, Part 1: Keeping the Balance",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An equation is a balance",
+        "t": 24.626
+      },
+      {
+        "title": "Solving 5x = 12 + 2x",
+        "t": 58.429
+      },
+      {
+        "title": "Check",
+        "t": 104.419
+      },
+      {
+        "title": "Your turn",
+        "t": 128.414
+      },
+      {
+        "title": "Summary",
+        "t": 167.674
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-1:q",
+        "t": 135.738,
+        "prompt": "Solve $7x = 15 + 4x$.",
+        "choices": [
+          "$x = 5$",
+          "$x = \\dfrac{15}{11}$",
+          "$x = 3$",
+          "$x = 15$"
+        ],
+        "answer": 0,
+        "working": "Subtract $4x$ from both sides: $3x = 15$. Divide both sides by $3$: $x = 5$. Check: $7(5) = 35$ and $15 + 4(5) = 35$."
+      }
+    ]
+  },
+  "m9-6-1-b": {
+    "lessonId": "m9-6-1",
+    "title": "Solving Equations with Variables on Both Sides, Part 2: Terms on Both Sides",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 19.369
+      },
+      {
+        "title": "Solving 4x − 9 = −2x + 6",
+        "t": 50.407
+      },
+      {
+        "title": "Check",
+        "t": 100.892
+      },
+      {
+        "title": "Watch out",
+        "t": 126.664
+      },
+      {
+        "title": "Choose the side",
+        "t": 158.975
+      },
+      {
+        "title": "Your turn",
+        "t": 191.204
+      },
+      {
+        "title": "Summary",
+        "t": 226.476
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-1-b:q",
+        "t": 199.549,
+        "prompt": "Solve $3x + 4 = -x + 14$.",
+        "choices": [
+          "$x = 5$",
+          "$x = 2.5$",
+          "$x = 4.5$",
+          "$x = -2.5$"
+        ],
+        "answer": 1,
+        "working": "Add $x$ to both sides: $4x + 4 = 14$. Subtract $4$: $4x = 10$. Divide by $4$: $x = 2.5$. Check: $3(2.5) + 4 = 11.5$ and $-2.5 + 14 = 11.5$."
+      }
+    ]
+  },
+  "m9-6-1-c": {
+    "lessonId": "m9-6-1",
+    "title": "Solving Equations with Variables on Both Sides, Part 3: Decimals and Fractions",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Decimal coefficients",
+        "t": 21.753
+      },
+      {
+        "title": "Check, or work in whole numbers",
+        "t": 69.285
+      },
+      {
+        "title": "Clearing fractions",
+        "t": 111.002
+      },
+      {
+        "title": "Finish and check",
+        "t": 166.954
+      },
+      {
+        "title": "Watch out",
+        "t": 208.109
+      },
+      {
+        "title": "Your turn",
+        "t": 238.111
+      },
+      {
+        "title": "Summary",
+        "t": 274.432
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-1-c:q",
+        "t": 247.254,
+        "prompt": "Solve $\\dfrac{1}{2}x + 3 = \\dfrac{1}{4}x + 5$.",
+        "choices": [
+          "$x = 2$",
+          "$x = \\dfrac{1}{2}$",
+          "$x = 8$",
+          "$x = 32$"
+        ],
+        "answer": 2,
+        "working": "Multiply every term by the LCD, $4$: $2x + 12 = x + 20$. Subtract $x$ and $12$: $x = 8$. Check: $4 + 3 = 7$ and $2 + 5 = 7$."
+      }
+    ]
+  },
+  "m9-6-2": {
+    "lessonId": "m9-6-2",
+    "title": "Equations with Brackets and Fractions, Part 1: Expanding First",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expand the brackets",
+        "t": 25.601
+      },
+      {
+        "title": "Solving 3(x − 4) = 18",
+        "t": 58.25
+      },
+      {
+        "title": "Another way",
+        "t": 88.249
+      },
+      {
+        "title": "Watch out",
+        "t": 117.609
+      },
+      {
+        "title": "Your turn",
+        "t": 148.314
+      },
+      {
+        "title": "Summary",
+        "t": 181.318
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-2:q",
+        "t": 155.689,
+        "prompt": "Solve $4(x + 2) = 28$.",
+        "choices": [
+          "$x = 6.5$",
+          "$x = 9$",
+          "$x = 7.5$",
+          "$x = 5$"
+        ],
+        "answer": 3,
+        "working": "Expand: $4x + 8 = 28$. Subtract $8$: $4x = 20$. Divide by $4$: $x = 5$. Check: $4(5 + 2) = 4(7) = 28$."
+      }
+    ]
+  },
+  "m9-6-2-b": {
+    "lessonId": "m9-6-2",
+    "title": "Equations with Brackets and Fractions, Part 2: Brackets on Both Sides",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expand both sides",
+        "t": 21.759
+      },
+      {
+        "title": "Check",
+        "t": 66.864
+      },
+      {
+        "title": "Decimal multipliers",
+        "t": 97.843
+      },
+      {
+        "title": "Check the decimals",
+        "t": 145.894
+      },
+      {
+        "title": "Your turn",
+        "t": 176.155
+      },
+      {
+        "title": "Summary",
+        "t": 212.363
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-2-b:q",
+        "t": 185.028,
+        "prompt": "Solve $2(x + 4) = 3(x - 1)$.",
+        "choices": [
+          "$x = 11$",
+          "$x = 5$",
+          "$x = -11$",
+          "$x = 9$"
+        ],
+        "answer": 0,
+        "working": "Expand: $2x + 8 = 3x - 3$. Subtract $2x$: $8 = x - 3$. Add $3$: $x = 11$. Check: $2(15) = 30$ and $3(10) = 30$."
+      }
+    ]
+  },
+  "m9-6-2-c": {
+    "lessonId": "m9-6-2",
+    "title": "Equations with Brackets and Fractions, Part 3: x Divided by a Number",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo in reverse order",
+        "t": 28.851
+      },
+      {
+        "title": "With the balance steps",
+        "t": 66.138
+      },
+      {
+        "title": "Fractions on both sides",
+        "t": 95.523
+      },
+      {
+        "title": "Check, or clear the fractions",
+        "t": 124.324
+      },
+      {
+        "title": "Your turn",
+        "t": 154.502
+      },
+      {
+        "title": "Summary",
+        "t": 188.488
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-2-c:q",
+        "t": 161.721,
+        "prompt": "Solve $\\dfrac{x}{5} - 2 = 3$.",
+        "choices": [
+          "$x = 5$",
+          "$x = 1$",
+          "$x = 25$",
+          "$x = 17$"
+        ],
+        "answer": 2,
+        "working": "Add $2$ to both sides: $\\dfrac{x}{5} = 5$. Multiply both sides by $5$: $x = 25$. Check: $25 \\div 5 - 2 = 5 - 2 = 3$."
+      }
+    ]
+  },
+  "m9-6-2-d": {
+    "lessonId": "m9-6-2",
+    "title": "Equations with Brackets and Fractions, Part 4: The Variable in the Denominator",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A picture",
+        "t": 25.334
+      },
+      {
+        "title": "Multiply by x",
+        "t": 46.695
+      },
+      {
+        "title": "A negative answer",
+        "t": 81.578
+      },
+      {
+        "title": "Watch out",
+        "t": 112.107
+      },
+      {
+        "title": "Your turn",
+        "t": 143.035
+      },
+      {
+        "title": "Summary",
+        "t": 180.541
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-2-d:q",
+        "t": 150.259,
+        "prompt": "Solve $\\dfrac{15}{x} = -5$.",
+        "choices": [
+          "$x = 3$",
+          "$x = -3$",
+          "$x = -\\dfrac{1}{3}$",
+          "$x = -75$"
+        ],
+        "answer": 1,
+        "working": "Multiply both sides by $x$: $15 = -5x$. Divide both sides by $-5$: $x = -3$. Check: $\\dfrac{15}{-3} = -5$."
+      }
+    ]
+  },
+  "m9-6-3": {
+    "lessonId": "m9-6-3",
+    "title": "Solving Problems with Linear Equations, Part 1: A Plan for Word Problems",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plan",
+        "t": 24.998
+      },
+      {
+        "title": "Two phone plans",
+        "t": 64.965
+      },
+      {
+        "title": "Solve and verify",
+        "t": 111.115
+      },
+      {
+        "title": "A table of costs",
+        "t": 158.929
+      },
+      {
+        "title": "Your turn",
+        "t": 192.11
+      },
+      {
+        "title": "Summary",
+        "t": 238.43
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-3:q",
+        "t": 213.036,
+        "prompt": "Gym A charges a \\$40 joining fee plus \\$25 per month. Gym B charges a \\$100 joining fee plus \\$15 per month. Which equation gives the number of months, $m$, for which the total costs are equal?",
+        "choices": [
+          "$40m + 25 = 100m + 15$",
+          "$40 + 25m = 100 - 15m$",
+          "$40 + 25m = 100 + 15m$",
+          "$65m = 115m$"
+        ],
+        "answer": 2,
+        "working": "Each total is the joining fee plus the monthly price times $m$: $40 + 25m = 100 + 15m$. Then $10m = 60$, so $m = 6$ months, and both cost \\$190."
+      }
+    ]
+  },
+  "m9-6-3-b": {
+    "lessonId": "m9-6-3",
+    "title": "Solving Problems with Linear Equations, Part 2: Comparing Two Options",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two taxi companies",
+        "t": 17.81
+      },
+      {
+        "title": "Solve and verify",
+        "t": 61.816
+      },
+      {
+        "title": "Which option is better?",
+        "t": 111.596
+      },
+      {
+        "title": "Your turn",
+        "t": 150.269
+      },
+      {
+        "title": "Summary",
+        "t": 194.782
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-3-b:q",
+        "t": 167.446,
+        "prompt": "Bike rental A charges \\$10 plus \\$3 per hour. Bike rental B charges \\$4 plus \\$5 per hour. For how many hours do the two rentals cost the same?",
+        "choices": [
+          "$7$ hours",
+          "$1.5$ hours",
+          "$2$ hours",
+          "$3$ hours"
+        ],
+        "answer": 3,
+        "working": "$10 + 3h = 4 + 5h$. Subtract $3h$ and $4$ from both sides: $6 = 2h$, so $h = 3$. Both cost \\$19."
+      }
+    ]
+  },
+  "m9-6-3-c": {
+    "lessonId": "m9-6-3",
+    "title": "Solving Problems with Linear Equations, Part 3: Age Problems",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table of ages",
+        "t": 20.364
+      },
+      {
+        "title": "Write and solve",
+        "t": 59.549
+      },
+      {
+        "title": "Verify and answer",
+        "t": 98.249
+      },
+      {
+        "title": "Your turn",
+        "t": 135.844
+      },
+      {
+        "title": "Summary",
+        "t": 177.612
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-3-c:q",
+        "t": 148.319,
+        "prompt": "Ana is 4 times as old as Ben. In 5 years, Ana will be 3 times as old as Ben. How old is Ben now?",
+        "choices": [
+          "$10$",
+          "$15$",
+          "$0$",
+          "$5$"
+        ],
+        "answer": 0,
+        "working": "Let $b$ be Ben’s age now. Then $4b + 5 = 3(b + 5)$, so $4b + 5 = 3b + 15$ and $b = 10$. Check: now 10 and 40; in 5 years 15 and 45, and $45 = 3 \\times 15$."
+      }
+    ]
+  },
+  "m9-6-3-d": {
+    "lessonId": "m9-6-3",
+    "title": "Solving Problems with Linear Equations, Part 4: Equal Perimeters",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The problem",
+        "t": 17.057
+      },
+      {
+        "title": "Write and solve",
+        "t": 49.865
+      },
+      {
+        "title": "Find the perimeter",
+        "t": 83.01
+      },
+      {
+        "title": "Watch out",
+        "t": 124.216
+      },
+      {
+        "title": "Your turn",
+        "t": 148.008
+      },
+      {
+        "title": "Summary",
+        "t": 194.429
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-3-d:q",
+        "t": 166.418,
+        "prompt": "A regular hexagon (six equal sides) has sides of $(x + 1)$ cm. An equilateral triangle has sides of $(x + 5)$ cm. They have the same perimeter. What is the perimeter?",
+        "choices": [
+          "$3$ cm",
+          "$24$ cm",
+          "$4$ cm",
+          "$18$ cm"
+        ],
+        "answer": 1,
+        "working": "$6(x + 1) = 3(x + 5)$, so $6x + 6 = 3x + 15$, $3x = 9$ and $x = 3$. The hexagon’s side is $4$ cm, so the perimeter is $6 \\times 4 = 24$ cm. The triangle: $3 \\times 8 = 24$ cm."
+      }
+    ]
+  },
+  "m9-6-4": {
+    "lessonId": "m9-6-4",
+    "title": "Representing Inequalities, Part 1: What Is an Inequality?",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inequality symbols",
+        "t": 29.559
+      },
+      {
+        "title": "Reading the symbols",
+        "t": 77.811
+      },
+      {
+        "title": "The solution set",
+        "t": 104.557
+      },
+      {
+        "title": "Is it a solution?",
+        "t": 141.56
+      },
+      {
+        "title": "Your turn",
+        "t": 184.992
+      },
+      {
+        "title": "Summary",
+        "t": 217.073
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-4:q",
+        "t": 194.596,
+        "prompt": "Which of these numbers is a solution of $x \\le -3$?",
+        "choices": [
+          "$0$",
+          "$-2$",
+          "$-3$",
+          "$3$"
+        ],
+        "answer": 2,
+        "working": "$-3 \\le -3$ is true, because $-3 = -3$. The others are all greater than $-3$, so they are not solutions."
+      }
+    ]
+  },
+  "m9-6-4-b": {
+    "lessonId": "m9-6-4",
+    "title": "Representing Inequalities, Part 2: Inequalities on a Number Line",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dot and arrow",
+        "t": 16.946
+      },
+      {
+        "title": "Open or closed",
+        "t": 61.52
+      },
+      {
+        "title": "Read a number line",
+        "t": 100.361
+      },
+      {
+        "title": "Watch out",
+        "t": 129.895
+      },
+      {
+        "title": "Your turn",
+        "t": 164.04
+      },
+      {
+        "title": "Summary",
+        "t": 200.2
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-4-b:q",
+        "t": 174.671,
+        "prompt": "A number line has an **open** dot at $1$ and an arrow pointing **left**. Which inequality does it show?",
+        "choices": [
+          "$x \\le 1$",
+          "$x > 1$",
+          "$x \\ge 1$",
+          "$x < 1$"
+        ],
+        "answer": 3,
+        "working": "The open dot means $1$ is not included, so the symbol is $<$ or $>$. The arrow points left, toward smaller numbers: $x < 1$."
+      }
+    ]
+  },
+  "m9-6-4-c": {
+    "lessonId": "m9-6-4",
+    "title": "Representing Inequalities, Part 3: Writing Inequalities",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 14.828
+      },
+      {
+        "title": "A height rule",
+        "t": 46.398
+      },
+      {
+        "title": "A taxi budget",
+        "t": 97.668
+      },
+      {
+        "title": "Watch out",
+        "t": 145.036
+      },
+      {
+        "title": "Your turn",
+        "t": 179.381
+      },
+      {
+        "title": "Summary",
+        "t": 218.933
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-4-c:q",
+        "t": 195.464,
+        "prompt": "A phone plan costs \\$15 plus \\$2 per GB of data. Sam can spend at most \\$35. Which inequality fits the number of GB, $g$?",
+        "choices": [
+          "$15 + 2g \\le 35$",
+          "$15 + 2g \\ge 35$",
+          "$2 + 15g \\le 35$",
+          "$15 + 2g < 35$"
+        ],
+        "answer": 0,
+        "working": "The cost is $15 + 2g$ dollars. “At most \\$35” means \\$35 or less: $15 + 2g \\le 35$."
+      }
+    ]
+  },
+  "m9-6-5": {
+    "lessonId": "m9-6-5",
+    "title": "Solving Linear Inequalities, Part 1: Solving Like an Equation",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What keeps it true",
+        "t": 21.878
+      },
+      {
+        "title": "Solving 3x − 4 ≥ 11",
+        "t": 62.705
+      },
+      {
+        "title": "Check and graph",
+        "t": 90.71
+      },
+      {
+        "title": "Your turn",
+        "t": 128.161
+      },
+      {
+        "title": "Summary",
+        "t": 163.874
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-5:q",
+        "t": 135.655,
+        "prompt": "Solve $2x + 5 < 17$.",
+        "choices": [
+          "$x > 6$",
+          "$x < 12$",
+          "$x < 6$",
+          "$x < 11$"
+        ],
+        "answer": 2,
+        "working": "Subtract $5$ from both sides: $2x < 12$. Divide by $2$, a positive number, so the sign stays the same: $x < 6$. Check $x = 0$: $5 < 17$ is true."
+      }
+    ]
+  },
+  "m9-6-5-b": {
+    "lessonId": "m9-6-5",
+    "title": "Solving Linear Inequalities, Part 2: Multiplying or Dividing by a Negative",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Numbers first",
+        "t": 18.068
+      },
+      {
+        "title": "The rule",
+        "t": 57.512
+      },
+      {
+        "title": "Solving −2x + 7 < 15",
+        "t": 90.815
+      },
+      {
+        "title": "Check both sides",
+        "t": 127.091
+      },
+      {
+        "title": "Watch out",
+        "t": 154.619
+      },
+      {
+        "title": "Your turn",
+        "t": 187.131
+      },
+      {
+        "title": "Summary",
+        "t": 224.404
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-5-b:q",
+        "t": 195.338,
+        "prompt": "Solve $-3x \\ge 12$.",
+        "choices": [
+          "$x \\ge -4$",
+          "$x \\le -4$",
+          "$x \\ge 4$",
+          "$x \\le 4$"
+        ],
+        "answer": 1,
+        "working": "Divide both sides by $-3$ and reverse the sign: $x \\le -4$. Check $x = -5$: $-3(-5) = 15$, and $15 \\ge 12$ is true."
+      }
+    ]
+  },
+  "m9-6-5-c": {
+    "lessonId": "m9-6-5",
+    "title": "Solving Linear Inequalities, Part 3: Variables on Both Sides",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solving 5 − 2x ≤ 3x + 20",
+        "t": 21.562
+      },
+      {
+        "title": "Check and graph",
+        "t": 62.266
+      },
+      {
+        "title": "Avoid the negative",
+        "t": 101.541
+      },
+      {
+        "title": "Your turn",
+        "t": 148.448
+      },
+      {
+        "title": "Summary",
+        "t": 182.186
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-5-c:q",
+        "t": 156.384,
+        "prompt": "Solve $4 - x > 2x - 8$.",
+        "choices": [
+          "$x > 4$",
+          "$x < -4$",
+          "$x > -4$",
+          "$x < 4$"
+        ],
+        "answer": 3,
+        "working": "Subtract $2x$ and $4$ from both sides: $-3x > -12$. Divide by $-3$ and reverse the sign: $x < 4$. Check $x = 0$: $4 > -8$ is true."
+      }
+    ]
+  },
+  "m9-6-5-d": {
+    "lessonId": "m9-6-5",
+    "title": "Solving Linear Inequalities, Part 4: Solving Problems",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The greatest number",
+        "t": 25.05
+      },
+      {
+        "title": "The least number",
+        "t": 80.227
+      },
+      {
+        "title": "Watch out",
+        "t": 136.919
+      },
+      {
+        "title": "Your turn",
+        "t": 174.681
+      },
+      {
+        "title": "Summary",
+        "t": 216.318
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-5-d:q",
+        "t": 187.254,
+        "prompt": "Lena has \\$40 to spend on notebooks that cost \\$6 each. What is the greatest number of notebooks Lena can buy?",
+        "choices": [
+          "$6$",
+          "$7$",
+          "about $6.67$",
+          "$34$"
+        ],
+        "answer": 0,
+        "working": "With $n$ notebooks, $6n \\le 40$, so $n \\le 6.\\overline{6}$. The number must be whole, so round down: $6$ notebooks cost \\$36. Seven would cost \\$42."
+      }
+    ]
+  },
+  "m9-7-1": {
+    "lessonId": "m9-7-1",
+    "title": "Scale Diagrams and Enlargements, Part 1: The Scale Factor",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same shape, new size",
+        "t": 22.319
+      },
+      {
+        "title": "The scale factor",
+        "t": 82.684
+      },
+      {
+        "title": "Finding a scale factor",
+        "t": 124.97
+      },
+      {
+        "title": "Your turn",
+        "t": 187.593
+      },
+      {
+        "title": "Summary",
+        "t": 225.954
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-1:q",
+        "t": 202.556,
+        "prompt": "One side of a triangle is $8$ cm long. In a scale diagram of the triangle, the matching side is $20$ cm long. What is the scale factor?",
+        "choices": [
+          "$12$",
+          "$2.5$",
+          "$0.4$",
+          "$160$"
+        ],
+        "answer": 1,
+        "working": "$k = \\dfrac{\\text{image}}{\\text{original}} = \\dfrac{20}{8} = 2.5$. The image is the scale diagram, so $20$ goes on top."
+      }
+    ]
+  },
+  "m9-7-1-b": {
+    "lessonId": "m9-7-1",
+    "title": "Scale Diagrams and Enlargements, Part 2: Enlargements and Reductions",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Bigger or smaller?",
+        "t": 21.214
+      },
+      {
+        "title": "A sticker that shrinks",
+        "t": 76.578
+      },
+      {
+        "title": "Watch out",
+        "t": 135.504
+      },
+      {
+        "title": "Fractions or decimals",
+        "t": 171.91
+      },
+      {
+        "title": "Your turn",
+        "t": 214.821
+      },
+      {
+        "title": "Summary",
+        "t": 262.15
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-1-b:q",
+        "t": 232.283,
+        "prompt": "A rectangle is $10$ cm by $6$ cm. A scale diagram of it is $4$ cm by $2.4\\text{ cm}$. What is the scale factor, and what kind of scale diagram is it?",
+        "choices": [
+          "$2.5$, an enlargement",
+          "$0.4$, an enlargement",
+          "$2.5$, a reduction",
+          "$0.4$, a reduction"
+        ],
+        "answer": 3,
+        "working": "$k = \\dfrac{4}{10} = 0.4$, and $\\dfrac{2.4}{6} = 0.4$ as well. Since $0.4 < 1$, the scale diagram is a reduction."
+      }
+    ]
+  },
+  "m9-7-1-c": {
+    "lessonId": "m9-7-1",
+    "title": "Scale Diagrams and Enlargements, Part 3: Finding New Lengths",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 16.661
+      },
+      {
+        "title": "A poster becomes a flyer",
+        "t": 63.29
+      },
+      {
+        "title": "Same shape?",
+        "t": 136.971
+      },
+      {
+        "title": "Your turn",
+        "t": 177.565
+      },
+      {
+        "title": "Summary",
+        "t": 220.196
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-1-c:q",
+        "t": 191.993,
+        "prompt": "A photo is $9$ cm by $12$ cm. It is enlarged with a scale factor of $1.5$. What size is the enlarged photo?",
+        "choices": [
+          "$13.5$ cm by $18$ cm",
+          "$10.5$ cm by $13.5$ cm",
+          "$6$ cm by $8$ cm",
+          "$18$ cm by $24$ cm"
+        ],
+        "answer": 0,
+        "working": "$1.5 \\times 9 = 13.5$ and $1.5 \\times 12 = 18$, so the enlarged photo is $13.5$ cm by $18$ cm."
+      }
+    ]
+  },
+  "m9-7-1-d": {
+    "lessonId": "m9-7-1",
+    "title": "Scale Diagrams and Enlargements, Part 4: Working Backward",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo the multiplication",
+        "t": 19.019
+      },
+      {
+        "title": "A model canoe",
+        "t": 55.388
+      },
+      {
+        "title": "Dividing by the scale factor",
+        "t": 90.716
+      },
+      {
+        "title": "Enlarging a photo",
+        "t": 145.721
+      },
+      {
+        "title": "Your turn",
+        "t": 202.5
+      },
+      {
+        "title": "Summary",
+        "t": 246.591
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-1-d:q",
+        "t": 217.101,
+        "prompt": "A model of a bridge is built with a scale factor of $0.02$. The model is $84$ cm long. How long is the real bridge?",
+        "choices": [
+          "$1.68$ cm",
+          "$4.2$ m",
+          "$42$ m",
+          "$420$ m"
+        ],
+        "answer": 2,
+        "working": "Work backward: $84 \\div 0.02 = 4{,}200$ cm, and $4{,}200 \\div 100 = 42$ m."
+      }
+    ]
+  },
+  "m9-7-2": {
+    "lessonId": "m9-7-2",
+    "title": "Scale Diagrams and Maps, Part 1: Reading a Scale",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a scale tells you",
+        "t": 22.111
+      },
+      {
+        "title": "A classroom plan",
+        "t": 58.577
+      },
+      {
+        "title": "From real life to the plan",
+        "t": 114.125
+      },
+      {
+        "title": "Your turn",
+        "t": 153.19
+      },
+      {
+        "title": "Summary",
+        "t": 193.493
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-2:q",
+        "t": 166.943,
+        "prompt": "On a plan, $1$ cm represents $3$ m. A room is $4.5$ cm long on the plan. How long is the real room?",
+        "choices": [
+          "$1.5$ m",
+          "$7.5$ m",
+          "$135$ m",
+          "$13.5$ m"
+        ],
+        "answer": 3,
+        "working": "Each centimetre stands for $3$ m, so multiply: $4.5 \\times 3 = 13.5$ m."
+      }
+    ]
+  },
+  "m9-7-2-b": {
+    "lessonId": "m9-7-2",
+    "title": "Scale Diagrams and Maps, Part 2: Ratio Scales",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What one to fifty means",
+        "t": 19.384
+      },
+      {
+        "title": "A plan at one to fifty",
+        "t": 69.751
+      },
+      {
+        "title": "Drawing at one to forty",
+        "t": 127.759
+      },
+      {
+        "title": "Your turn",
+        "t": 176.292
+      },
+      {
+        "title": "Summary",
+        "t": 217.477
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-2-b:q",
+        "t": 188.908,
+        "prompt": "A model car is built to a scale of $1 : 24$. The model is $18$ cm long. How long is the real car?",
+        "choices": [
+          "$0.75$ m",
+          "$4.32$ m",
+          "$43.2$ m",
+          "$432$ m"
+        ],
+        "answer": 1,
+        "working": "$18 \\times 24 = 432$ cm, and $432 \\div 100 = 4.32$ m."
+      }
+    ]
+  },
+  "m9-7-2-c": {
+    "lessonId": "m9-7-2",
+    "title": "Scale Diagrams and Maps, Part 3: Map Scales",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One to fifty thousand",
+        "t": 19.421
+      },
+      {
+        "title": "From the map to the trail",
+        "t": 63.924
+      },
+      {
+        "title": "Watch out",
+        "t": 122.72
+      },
+      {
+        "title": "Your turn",
+        "t": 167.173
+      },
+      {
+        "title": "Summary",
+        "t": 210.229
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-2-c:q",
+        "t": 181.119,
+        "prompt": "A map has a scale of $1 : 200\\,000$. Two villages are $6.5$ cm apart on the map. How far apart are they really?",
+        "choices": [
+          "$1.3$ km",
+          "$130$ km",
+          "$13$ km",
+          "$1\\,300\\,000$ km"
+        ],
+        "answer": 2,
+        "working": "$6.5 \\times 200\\,000 = 1\\,300\\,000$ cm, and $1\\,300\\,000 \\div 100\\,000 = 13$ km."
+      }
+    ]
+  },
+  "m9-7-2-d": {
+    "lessonId": "m9-7-2",
+    "title": "Scale Diagrams and Maps, Part 4: Finding the Scale",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The scale of a gym plan",
+        "t": 18.394
+      },
+      {
+        "title": "Fencing a garden",
+        "t": 69.045
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 126.504
+      },
+      {
+        "title": "Your turn",
+        "t": 156.734
+      },
+      {
+        "title": "Summary",
+        "t": 197.964
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-2-d:q",
+        "t": 168.713,
+        "prompt": "A park is $450$ m long. On a map, the park is $9$ cm long. What is the scale of the map?",
+        "choices": [
+          "$1 : 5\\,000$",
+          "$1 : 50$",
+          "$1 : 500$",
+          "$1 : 50\\,000$"
+        ],
+        "answer": 0,
+        "working": "$450$ m $= 45\\,000$ cm, and $45\\,000 \\div 9 = 5\\,000$, so the scale is $1 : 5\\,000$."
+      }
+    ]
+  },
+  "m9-7-3": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 1: What Makes Polygons Similar",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Similar polygons",
+        "t": 21.607
+      },
+      {
+        "title": "Two rectangles",
+        "t": 68.855
+      },
+      {
+        "title": "Naming similar triangles",
+        "t": 124.375
+      },
+      {
+        "title": "Your turn",
+        "t": 180.638
+      },
+      {
+        "title": "Summary",
+        "t": 225.125
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3:q",
+        "t": 191.92,
+        "prompt": "Rectangle P is $8$ cm by $6$ cm. Which rectangle is similar to rectangle P?",
+        "choices": [
+          "$10$ cm by $8$ cm",
+          "$12$ cm by $9$ cm",
+          "$16$ cm by $8$ cm",
+          "$12$ cm by $10$ cm"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{12}{8} = 1.5$ and $\\dfrac{9}{6} = 1.5$: the sides are proportional, and every angle of a rectangle is $90^\\circ$."
+      }
+    ]
+  },
+  "m9-7-3-b": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 2: One Condition Is Not Enough",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal angles, but not similar",
+        "t": 18.515
+      },
+      {
+        "title": "Proportional sides, but not similar",
+        "t": 57.437
+      },
+      {
+        "title": "Watch out",
+        "t": 102.522
+      },
+      {
+        "title": "Triangles are special",
+        "t": 155.518
+      },
+      {
+        "title": "Your turn",
+        "t": 195.618
+      },
+      {
+        "title": "Summary",
+        "t": 231.262
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3-b:q",
+        "t": 201.597,
+        "prompt": "Which pair of shapes **must** be similar?",
+        "choices": [
+          "Two rectangles",
+          "Two rhombuses",
+          "A square and a rectangle",
+          "Two triangles, each with angles of $40^\\circ$, $60^\\circ$ and $80^\\circ$"
+        ],
+        "answer": 3,
+        "working": "For triangles, equal angles are enough: the sides are sure to be proportional. Two rectangles always have equal angles, but their sides may not be proportional."
+      }
+    ]
+  },
+  "m9-7-3-c": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 3: Finding a Missing Side",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Using the vertex order",
+        "t": 19.807
+      },
+      {
+        "title": "Going the other way",
+        "t": 92.275
+      },
+      {
+        "title": "Watch out",
+        "t": 137.66
+      },
+      {
+        "title": "Your turn",
+        "t": 176.589
+      },
+      {
+        "title": "Summary",
+        "t": 226.727
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3-c:q",
+        "t": 193.728,
+        "prompt": "$\\triangle PQR \\sim \\triangle XYZ$. $PQ = 4$ cm, $QR = 10$ cm and $XY = 6$ cm. How long is $YZ$?",
+        "choices": [
+          "$15$ cm",
+          "$12$ cm",
+          "$6.67$ cm",
+          "$2.4$ cm"
+        ],
+        "answer": 0,
+        "working": "$PQ$ matches $XY$, so $k = \\dfrac{6}{4} = 1.5$. $QR$ matches $YZ$, so $YZ = 10 \\times 1.5 = 15\\text{ cm}$."
+      }
+    ]
+  },
+  "m9-7-3-d": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 4: Heights from Shadows",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why the triangles are similar",
+        "t": 17.385
+      },
+      {
+        "title": "A tree’s shadow",
+        "t": 77.858
+      },
+      {
+        "title": "Solving for the height",
+        "t": 100.545
+      },
+      {
+        "title": "Using the scale factor",
+        "t": 141.949
+      },
+      {
+        "title": "Your turn",
+        "t": 175.296
+      },
+      {
+        "title": "Summary",
+        "t": 216.79
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3-d:q",
+        "t": 188.865,
+        "prompt": "A $2$ m pole casts a $3$ m shadow. At the same time, a building casts a $27$ m shadow. How tall is the building?",
+        "choices": [
+          "$40.5$ m",
+          "$26$ m",
+          "$18$ m",
+          "$9$ m"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{h}{27} = \\dfrac{2}{3}$, so $h = \\dfrac{2}{3} \\times 27 = 18$ m."
+      }
+    ]
+  },
+  "m9-7-3-e": {
+    "lessonId": "m9-7-3",
+    "title": "Similar Polygons, Part 5: The Mirror Method",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How the mirror works",
+        "t": 15.791
+      },
+      {
+        "title": "Finding the height",
+        "t": 61.712
+      },
+      {
+        "title": "Solving the proportion",
+        "t": 88.744
+      },
+      {
+        "title": "Your turn",
+        "t": 133.179
+      },
+      {
+        "title": "Summary",
+        "t": 180.354
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-7-3-e:q",
+        "t": 151.657,
+        "prompt": "Maya’s eyes are $1.6$ m above the ground. Maya stands $2$ m from a mirror on the ground and sees the top of a tree in it. The mirror is $10$ m from the base of the tree. How tall is the tree?",
+        "choices": [
+          "$8$ m",
+          "$12.5$ m",
+          "$9.6$ m",
+          "$3.2$ m"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{h}{10} = \\dfrac{1.6}{2} = 0.8$, so $h = 10 \\times 0.8 = 8$ m."
+      }
+    ]
+  },
+  "m9-8-1": {
+    "lessonId": "m9-8-1",
+    "title": "Chord Properties, Part 1: Parts of a Circle",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The centre and the radius",
+        "t": 22.814
+      },
+      {
+        "title": "The diameter",
+        "t": 59.633
+      },
+      {
+        "title": "Chords",
+        "t": 88.731
+      },
+      {
+        "title": "The longest chord",
+        "t": 125.148
+      },
+      {
+        "title": "Your turn",
+        "t": 157.362
+      },
+      {
+        "title": "Summary",
+        "t": 196.677
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-1:q",
+        "t": 168.043,
+        "prompt": "A circle has a radius of $7$ cm. Which of these could be the length of a chord of the circle?",
+        "choices": [
+          "$15$ cm",
+          "$20$ cm",
+          "$16$ cm",
+          "$12$ cm"
+        ],
+        "answer": 3,
+        "working": "The longest chord is a diameter: $2 \\times 7 = 14$ cm. Only $12$ cm is not longer than $14$ cm."
+      }
+    ]
+  },
+  "m9-8-1-b": {
+    "lessonId": "m9-8-1",
+    "title": "Chord Properties, Part 2: The Perpendicular from the Centre",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two words",
+        "t": 16.906
+      },
+      {
+        "title": "The chord property",
+        "t": 40.622
+      },
+      {
+        "title": "Finding a chord",
+        "t": 95.79
+      },
+      {
+        "title": "It works both ways",
+        "t": 126.2
+      },
+      {
+        "title": "Your turn",
+        "t": 172.733
+      },
+      {
+        "title": "Summary",
+        "t": 210.197
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-1-b:q",
+        "t": 186.256,
+        "prompt": "In a circle with centre $O$, $OM$ is perpendicular to the chord $AB$, and $AB = 18$ cm. How long is $AM$?",
+        "choices": [
+          "$36$ cm",
+          "$9$ cm",
+          "$18$ cm",
+          "$6$ cm"
+        ],
+        "answer": 1,
+        "working": "The perpendicular from the centre bisects the chord, so $AM = 18 \\div 2 = 9$ cm."
+      }
+    ]
+  },
+  "m9-8-1-c": {
+    "lessonId": "m9-8-1",
+    "title": "Chord Properties, Part 3: Chords and the Pythagorean Theorem",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The right triangle",
+        "t": 20.664
+      },
+      {
+        "title": "Length of a chord",
+        "t": 76.431
+      },
+      {
+        "title": "Distance from the centre",
+        "t": 137.477
+      },
+      {
+        "title": "Watch out",
+        "t": 175.346
+      },
+      {
+        "title": "Your turn",
+        "t": 213.811
+      },
+      {
+        "title": "Summary",
+        "t": 256.236
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-1-c:q",
+        "t": 226.32,
+        "prompt": "A circle has a radius of $17$ cm. A chord is $8$ cm from the centre. How long is the chord?",
+        "choices": [
+          "$15$ cm",
+          "$18.8$ cm",
+          "$30$ cm",
+          "$9$ cm"
+        ],
+        "answer": 2,
+        "working": "Half the chord is $\\sqrt{17^2 - 8^2} = \\sqrt{289 - 64} = \\sqrt{225} = 15$, so the chord is $2 \\times 15 = 30\\text{ cm}$."
+      }
+    ]
+  },
+  "m9-8-1-d": {
+    "lessonId": "m9-8-1",
+    "title": "Chord Properties, Part 4: Water in a Pipe",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The problem",
+        "t": 19.551
+      },
+      {
+        "title": "Finding the depth",
+        "t": 56.214
+      },
+      {
+        "title": "More than half full?",
+        "t": 122.868
+      },
+      {
+        "title": "Your turn",
+        "t": 154.118
+      },
+      {
+        "title": "Summary",
+        "t": 200.292
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-1-d:q",
+        "t": 169.629,
+        "prompt": "A round pipe has a radius of $10$ cm. The water surface is a chord $16$ cm wide, and the pipe is less than half full. How deep is the water?",
+        "choices": [
+          "$4$ cm",
+          "$6$ cm",
+          "$16$ cm",
+          "$2$ cm"
+        ],
+        "answer": 0,
+        "working": "Half the chord is $8$, so $d = \\sqrt{10^2 - 8^2} = \\sqrt{36} = 6$. The surface is below the centre, so the depth is $10 - 6 = 4$ cm."
+      }
+    ]
+  },
+  "m9-8-2": {
+    "lessonId": "m9-8-2",
+    "title": "Inscribed and Central Angles, Part 1: Arcs and Angles",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Arcs",
+        "t": 24.862
+      },
+      {
+        "title": "Central angles",
+        "t": 51.172
+      },
+      {
+        "title": "Inscribed angles",
+        "t": 75.021
+      },
+      {
+        "title": "Subtended by an arc",
+        "t": 102.153
+      },
+      {
+        "title": "Your turn",
+        "t": 133.772
+      },
+      {
+        "title": "Summary",
+        "t": 167.07
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-2:q",
+        "t": 144.203,
+        "prompt": "Points $A$, $B$ and $C$ are on a circle with centre $O$. Which angle is an **inscribed** angle?",
+        "choices": [
+          "$\\angle AOB$",
+          "$\\angle BOC$",
+          "$\\angle ACB$",
+          "$\\angle AOC$"
+        ],
+        "answer": 2,
+        "working": "The vertex of $\\angle ACB$ is $C$, a point on the circle, and its arms are chords. The others have their vertex at the centre $O$, so they are central angles."
+      }
+    ]
+  },
+  "m9-8-2-b": {
+    "lessonId": "m9-8-2",
+    "title": "Inscribed and Central Angles, Part 2: The Central Angle Is Twice as Big",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The central angle property",
+        "t": 16.618
+      },
+      {
+        "title": "From central to inscribed",
+        "t": 58.883
+      },
+      {
+        "title": "From inscribed to central",
+        "t": 90.355
+      },
+      {
+        "title": "Watch out",
+        "t": 111.698
+      },
+      {
+        "title": "Your turn",
+        "t": 146.771
+      },
+      {
+        "title": "Summary",
+        "t": 190.055
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-2-b:q",
+        "t": 162.224,
+        "prompt": "In a circle with centre $O$, the inscribed angle $\\angle ACB = 36^\\circ$. Find the central angle $\\angle AOB$ subtended by the same arc $AB$.",
+        "choices": [
+          "$18^\\circ$",
+          "$36^\\circ$",
+          "$144^\\circ$",
+          "$72^\\circ$"
+        ],
+        "answer": 3,
+        "working": "The central angle is twice the inscribed angle on the same arc: $\\angle AOB = 2 \\times 36^\\circ = 72^\\circ$."
+      }
+    ]
+  },
+  "m9-8-2-c": {
+    "lessonId": "m9-8-2",
+    "title": "Inscribed and Central Angles, Part 3: Angles on the Same Arc",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The inscribed angle property",
+        "t": 20.639
+      },
+      {
+        "title": "Two angles on arc A B",
+        "t": 65.24
+      },
+      {
+        "title": "Back to the pond",
+        "t": 91.955
+      },
+      {
+        "title": "Your turn",
+        "t": 130.799
+      },
+      {
+        "title": "Summary",
+        "t": 169.779
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-2-c:q",
+        "t": 147.257,
+        "prompt": "$\\angle APB$ and $\\angle AQB$ are inscribed angles subtended by the same arc $AB$. $\\angle APB = 48^\\circ$. Find $\\angle AQB$.",
+        "choices": [
+          "$96^\\circ$",
+          "$48^\\circ$",
+          "$24^\\circ$",
+          "$132^\\circ$"
+        ],
+        "answer": 1,
+        "working": "Inscribed angles subtended by the same arc are equal, so $\\angle AQB = 48^\\circ$."
+      }
+    ]
+  },
+  "m9-8-2-d": {
+    "lessonId": "m9-8-2",
+    "title": "Inscribed and Central Angles, Part 4: Angles in a Semicircle",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The semicircle property",
+        "t": 17.813
+      },
+      {
+        "title": "A right triangle in a circle",
+        "t": 70.976
+      },
+      {
+        "title": "Look for radii",
+        "t": 108.813
+      },
+      {
+        "title": "Your turn",
+        "t": 151.394
+      },
+      {
+        "title": "Summary",
+        "t": 198.327
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-2-d:q",
+        "t": 165.852,
+        "prompt": "$AB$ is a diameter of a circle, and $C$ is another point on the circle. $\\angle ABC = 55^\\circ$. Find $\\angle CAB$.",
+        "choices": [
+          "$55^\\circ$",
+          "$125^\\circ$",
+          "$45^\\circ$",
+          "$35^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$\\angle ACB = 90^\\circ$ (inscribed in a semicircle), so $\\angle CAB = 180^\\circ - 90^\\circ - 55^\\circ = 35^\\circ$."
+      }
+    ]
+  },
+  "m9-8-3": {
+    "lessonId": "m9-8-3",
+    "title": "Tangent Properties, Part 1: A Tangent Meets the Radius",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tangent lines",
+        "t": 19.486
+      },
+      {
+        "title": "The tangent property",
+        "t": 50.758
+      },
+      {
+        "title": "An angle in the triangle",
+        "t": 84.638
+      },
+      {
+        "title": "Your turn",
+        "t": 120.293
+      },
+      {
+        "title": "Summary",
+        "t": 163.782
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-3:q",
+        "t": 133.557,
+        "prompt": "$PT$ is tangent at $P$ to a circle with centre $O$. $\\angle OTP = 28^\\circ$. Find $\\angle POT$.",
+        "choices": [
+          "$62^\\circ$",
+          "$152^\\circ$",
+          "$28^\\circ$",
+          "$90^\\circ$"
+        ],
+        "answer": 0,
+        "working": "$\\angle OPT = 90^\\circ$ (tangent $\\perp$ radius), so $\\angle POT = 180^\\circ - 90^\\circ - 28^\\circ = 62^\\circ$."
+      }
+    ]
+  },
+  "m9-8-3-b": {
+    "lessonId": "m9-8-3",
+    "title": "Tangent Properties, Part 2: Tangents and the Pythagorean Theorem",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The right triangle",
+        "t": 20.744
+      },
+      {
+        "title": "Length of a tangent segment",
+        "t": 58.738
+      },
+      {
+        "title": "Distance to the centre",
+        "t": 104.776
+      },
+      {
+        "title": "Watch out",
+        "t": 138.284
+      },
+      {
+        "title": "Your turn",
+        "t": 187.26
+      },
+      {
+        "title": "Summary",
+        "t": 233.196
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-3-b:q",
+        "t": 203.438,
+        "prompt": "A circle with centre $O$ has a radius of $9$ cm. $PT$ is tangent to the circle at $P$, and $PT = 12$ cm. How far is $T$ from $O$?",
+        "choices": [
+          "$3$ cm",
+          "$7.9$ cm",
+          "$15$ cm",
+          "$21$ cm"
+        ],
+        "answer": 2,
+        "working": "$OT$ is the hypotenuse: $OT^2 = 9^2 + 12^2 = 81 + 144 = 225$, so $OT = \\sqrt{225} = 15\\text{ cm}$."
+      }
+    ]
+  },
+  "m9-8-3-c": {
+    "lessonId": "m9-8-3",
+    "title": "Tangent Properties, Part 3: Two Tangents from One Point",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two tangents",
+        "t": 15.99
+      },
+      {
+        "title": "The angle at the centre",
+        "t": 52.924
+      },
+      {
+        "title": "A shortcut",
+        "t": 99.615
+      },
+      {
+        "title": "Your turn",
+        "t": 125.45
+      },
+      {
+        "title": "Summary",
+        "t": 173.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-3-c:q",
+        "t": 141.817,
+        "prompt": "$TP$ and $TQ$ are tangents to a circle with centre $O$, touching it at $P$ and $Q$. $\\angle POQ = 140^\\circ$. Find $\\angle PTQ$.",
+        "choices": [
+          "$140^\\circ$",
+          "$40^\\circ$",
+          "$220^\\circ$",
+          "$70^\\circ$"
+        ],
+        "answer": 1,
+        "working": "$\\angle OPT = \\angle OQT = 90^\\circ$, so $\\angle PTQ = 360^\\circ - 90^\\circ - 90^\\circ - 140^\\circ = 40^\\circ$."
+      }
+    ]
+  },
+  "m9-8-3-d": {
+    "lessonId": "m9-8-3",
+    "title": "Tangent Properties, Part 4: Equal Tangent Segments",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why they are equal",
+        "t": 15.69
+      },
+      {
+        "title": "Perimeter of the kite",
+        "t": 63.072
+      },
+      {
+        "title": "Your turn",
+        "t": 123.42
+      },
+      {
+        "title": "Summary",
+        "t": 174.844
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-3-d:q",
+        "t": 140.8,
+        "prompt": "$TP$ and $TQ$ are tangents from the point $T$ to a circle with centre $O$ and radius $5$ cm. $OT = 13$ cm. Find the perimeter of $OPTQ$.",
+        "choices": [
+          "$34$ cm",
+          "$36$ cm",
+          "$24$ cm",
+          "$17$ cm"
+        ],
+        "answer": 0,
+        "working": "$TP = TQ = \\sqrt{13^2 - 5^2} = \\sqrt{144} = 12$, so the perimeter is $5 + 12 + 12 + 5 = 34\\text{ cm}$."
+      }
+    ]
+  },
+  "m9-9-1": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 1: Lines of Symmetry",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Line symmetry",
+        "t": 22.985
+      },
+      {
+        "title": "More than one line",
+        "t": 63.484
+      },
+      {
+        "title": "The diagonal",
+        "t": 99.847
+      },
+      {
+        "title": "The letter H",
+        "t": 141.081
+      },
+      {
+        "title": "Your turn",
+        "t": 187.914
+      },
+      {
+        "title": "Summary",
+        "t": 225.757
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1:q",
+        "t": 199.947,
+        "prompt": "A rectangle is $8$ cm long and $5$ cm wide. Which statement about its lines of symmetry is true?",
+        "choices": [
+          "It has $4$: one up and down, one across, and its two diagonals.",
+          "Its two diagonals are its only lines of symmetry.",
+          "It has exactly $2$: one up and down, and one across.",
+          "It has no lines of symmetry."
+        ],
+        "answer": 2,
+        "working": "A fold up and down through the middle and a fold across the middle both make the halves match. A diagonal cuts the rectangle into two equal triangles, but folding along it does not make the corners match, so it is not a line of symmetry."
+      }
+    ]
+  },
+  "m9-9-1-b": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 2: Regular Polygons",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Regular polygons",
+        "t": 20.906
+      },
+      {
+        "title": "An equilateral triangle",
+        "t": 50.355
+      },
+      {
+        "title": "A square",
+        "t": 84.144
+      },
+      {
+        "title": "A regular hexagon",
+        "t": 128.241
+      },
+      {
+        "title": "The rule",
+        "t": 159.058
+      },
+      {
+        "title": "Only regular polygons",
+        "t": 184.617
+      },
+      {
+        "title": "Your turn",
+        "t": 210.369
+      },
+      {
+        "title": "Summary",
+        "t": 242.813
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1-b:q",
+        "t": 221.779,
+        "prompt": "A regular octagon has $8$ equal sides and $8$ equal angles. How many lines of symmetry does it have?",
+        "choices": [
+          "$8$",
+          "$4$",
+          "$16$",
+          "$2$"
+        ],
+        "answer": 0,
+        "working": "A regular polygon with $n$ sides has $n$ lines of symmetry: $4$ lines through opposite corners and $4$ through the middles of opposite sides, $8$ in all."
+      }
+    ]
+  },
+  "m9-9-1-c": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 3: Completing a Shape",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Half a shape",
+        "t": 16.027
+      },
+      {
+        "title": "The image of C",
+        "t": 48.957
+      },
+      {
+        "title": "Completing the shape",
+        "t": 94.017
+      },
+      {
+        "title": "Watch out",
+        "t": 146.339
+      },
+      {
+        "title": "Your turn",
+        "t": 183.356
+      },
+      {
+        "title": "Summary",
+        "t": 227.7
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1-c:q",
+        "t": 198.192,
+        "prompt": "The line $x = 2$ is a line of symmetry of a shape. The point $(-1, 3)$ is on the shape. What is its image in the line $x = 2$?",
+        "choices": [
+          "$(1, 3)$",
+          "$(5, -3)$",
+          "$(2, 3)$",
+          "$(5, 3)$"
+        ],
+        "answer": 3,
+        "working": "The point is $2 - (-1) = 3$ units left of the line, so its image is $3$ units right: $x = 2 + 3 = 5$. The $y$-coordinate stays $3$, so the image is $(5, 3)$."
+      }
+    ]
+  },
+  "m9-9-1-d": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 4: Slanted Lines of Symmetry",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The line y = x",
+        "t": 20.026
+      },
+      {
+        "title": "Reflecting in y = x",
+        "t": 45.688
+      },
+      {
+        "title": "The rule for y = x",
+        "t": 84.514
+      },
+      {
+        "title": "The line y = −x",
+        "t": 123.474
+      },
+      {
+        "title": "Your turn",
+        "t": 174.519
+      },
+      {
+        "title": "Summary",
+        "t": 210.594
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1-d:q",
+        "t": 185.629,
+        "prompt": "What is the image of the point $(5, -1)$ after a reflection in the line $y = x$?",
+        "choices": [
+          "$(1, -5)$",
+          "$(-1, 5)$",
+          "$(-5, 1)$",
+          "$(5, 1)$"
+        ],
+        "answer": 1,
+        "working": "Reflecting in $y = x$ swaps the coordinates: $(5, -1) \\to (-1, 5)$."
+      }
+    ]
+  },
+  "m9-9-1-e": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 5: Symmetry in Designs",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A flower decal",
+        "t": 22.245
+      },
+      {
+        "title": "A pinwheel",
+        "t": 70.483
+      },
+      {
+        "title": "Colours count",
+        "t": 111.306
+      },
+      {
+        "title": "Your turn",
+        "t": 155.374
+      },
+      {
+        "title": "Summary",
+        "t": 201.942
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1-e:q",
+        "t": 174.402,
+        "prompt": "A square tile is cut along both diagonals into $4$ triangles. The top and bottom triangles are red, and the left and right triangles are blue. Counting the colours, how many lines of symmetry does the tile have?",
+        "choices": [
+          "$4$",
+          "$0$",
+          "$2$",
+          "$1$"
+        ],
+        "answer": 2,
+        "working": "A fold up and down and a fold across both put red on red and blue on blue. A fold along a diagonal puts a red triangle onto a blue one, so the diagonals do not count."
+      }
+    ]
+  },
+  "m9-9-2": {
+    "lessonId": "m9-9-2",
+    "title": "Rotation Symmetry, Part 1: Rotation Symmetry and Its Order",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotation symmetry",
+        "t": 21.3
+      },
+      {
+        "title": "Turn by turn",
+        "t": 52.24
+      },
+      {
+        "title": "The order of rotation",
+        "t": 99.987
+      },
+      {
+        "title": "No rotation symmetry",
+        "t": 121.258
+      },
+      {
+        "title": "Watch out",
+        "t": 156.828
+      },
+      {
+        "title": "Your turn",
+        "t": 178.742
+      },
+      {
+        "title": "Summary",
+        "t": 222.609
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-2:q",
+        "t": 197.425,
+        "prompt": "A shape fits onto itself after turns of $72^\\circ$, $144^\\circ$, $216^\\circ$, $288^\\circ$ and $360^\\circ$, and at no other turns. What is its order of rotation?",
+        "choices": [
+          "$4$",
+          "$6$",
+          "$1$",
+          "$5$"
+        ],
+        "answer": 3,
+        "working": "It fits $5$ times in one full turn, counting the full turn once, so its order of rotation is $5$."
+      }
+    ]
+  },
+  "m9-9-2-b": {
+    "lessonId": "m9-9-2",
+    "title": "Rotation Symmetry, Part 2: The Angle of Rotation Symmetry",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The smallest turn",
+        "t": 18.786
+      },
+      {
+        "title": "A hexagon logo",
+        "t": 69.031
+      },
+      {
+        "title": "Turning the logo",
+        "t": 93.921
+      },
+      {
+        "title": "Working backward",
+        "t": 145.199
+      },
+      {
+        "title": "Your turn",
+        "t": 173.092
+      },
+      {
+        "title": "Summary",
+        "t": 207.334
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-2-b:q",
+        "t": 183.755,
+        "prompt": "A design first fits onto itself after a turn of $40^\\circ$. What is its order of rotation?",
+        "choices": [
+          "$9$",
+          "$4$",
+          "$40$",
+          "$8$"
+        ],
+        "answer": 0,
+        "working": "The order is $360^\\circ \\div 40^\\circ = 9$: nine turns of $40^\\circ$ make one full turn."
+      }
+    ]
+  },
+  "m9-9-2-c": {
+    "lessonId": "m9-9-2",
+    "title": "Rotation Symmetry, Part 3: Line, Rotation, Both or Neither",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four kinds",
+        "t": 16.828
+      },
+      {
+        "title": "In a table",
+        "t": 73.961
+      },
+      {
+        "title": "The letter S",
+        "t": 114.866
+      },
+      {
+        "title": "Turning the S",
+        "t": 146.564
+      },
+      {
+        "title": "Your turn",
+        "t": 184.547
+      },
+      {
+        "title": "Summary",
+        "t": 216.015
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-2-c:q",
+        "t": 192.289,
+        "prompt": "Which shape has rotation symmetry but **no** line symmetry?",
+        "choices": [
+          "An isosceles triangle",
+          "A block capital letter Z",
+          "A regular hexagon",
+          "A scalene triangle"
+        ],
+        "answer": 1,
+        "working": "A half turn makes the letter Z fit onto itself, but no fold makes its halves match: rotation symmetry only. The isosceles triangle has line symmetry only, the regular hexagon has both, and the scalene triangle has neither."
+      }
+    ]
+  },
+  "m9-9-2-d": {
+    "lessonId": "m9-9-2",
+    "title": "Rotation Symmetry, Part 4: Designs in Two Colours",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The folds",
+        "t": 20.954
+      },
+      {
+        "title": "The turns",
+        "t": 62.237
+      },
+      {
+        "title": "Two lines mean a turn",
+        "t": 110.804
+      },
+      {
+        "title": "Your turn",
+        "t": 143.267
+      },
+      {
+        "title": "Summary",
+        "t": 190.767
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-2-d:q",
+        "t": 160.629,
+        "prompt": "A decal has $6$ equal petals, evenly spaced round its centre. They alternate in colour: red, blue, red, blue, red, blue. Counting the colours, which describes its symmetry?",
+        "choices": [
+          "$6$ lines of symmetry, rotation symmetry of order $6$",
+          "$3$ lines of symmetry, no rotation symmetry",
+          "No lines of symmetry, rotation symmetry of order $3$",
+          "$3$ lines of symmetry, rotation symmetry of order $3$"
+        ],
+        "answer": 3,
+        "working": "The $3$ folds through opposite petals keep red on red and blue on blue; the folds between petals do not. Turns of $120^\\circ$, $240^\\circ$ and $360^\\circ$ put red on red, but a turn of $60^\\circ$ puts red on blue, so the order is $3$."
+      }
+    ]
+  },
+  "m9-10-1": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 1: Bias",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Seven factors",
+        "t": 24.064
+      },
+      {
+        "title": "What bias means",
+        "t": 53.925
+      },
+      {
+        "title": "A biased survey",
+        "t": 94.151
+      },
+      {
+        "title": "A fair survey",
+        "t": 127.526
+      },
+      {
+        "title": "Your turn",
+        "t": 161.794
+      },
+      {
+        "title": "Summary",
+        "t": 198.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1:q",
+        "t": 173.87,
+        "prompt": "A town wants to know what its residents think about building a new library. Which survey plan would give **biased** results?",
+        "choices": [
+          "Survey only people leaving the old library.",
+          "Survey residents chosen at random from a list of all residents.",
+          "Survey residents chosen at random from every neighbourhood.",
+          "Ask every resident in the town."
+        ],
+        "answer": 0,
+        "working": "People leaving the library use it a lot, so they are more likely to want a new one than other residents are. The other plans give every resident a fair chance to be asked."
+      }
+    ]
+  },
+  "m9-10-1-b": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 2: The Use of Language",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Leading questions",
+        "t": 15.956
+      },
+      {
+        "title": "Rewriting a question",
+        "t": 54.712
+      },
+      {
+        "title": "Plain words",
+        "t": 100.085
+      },
+      {
+        "title": "Your turn",
+        "t": 133.748
+      },
+      {
+        "title": "Summary",
+        "t": 162.148
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1-b:q",
+        "t": 139.641,
+        "prompt": "Which survey question is **neutral**?",
+        "choices": [
+          "Don’t you agree that homework is a waste of time?",
+          "Most students think the school day is too long. Do you agree?",
+          "How many hours of sleep did you get last night?",
+          "Do you enjoy the delicious, healthy meals in the cafeteria?"
+        ],
+        "answer": 2,
+        "working": "The sleep question asks for a fact and does not push toward any answer. The others use an opinion, a claim about what most students think, or loaded words (“delicious”, “healthy”)."
+      }
+    ]
+  },
+  "m9-10-1-c": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 3: Ethics, Privacy and Cultural Sensitivity",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three factors",
+        "t": 19.011
+      },
+      {
+        "title": "Three problems",
+        "t": 65.66
+      },
+      {
+        "title": "Names on a sensitive survey",
+        "t": 122.813
+      },
+      {
+        "title": "Your turn",
+        "t": 164.849
+      },
+      {
+        "title": "Summary",
+        "t": 200.255
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1-c:q",
+        "t": 178.262,
+        "prompt": "A student wants to show that most classmates like one band best, so the student leaves out the votes for every other band. Which factor does this raise?",
+        "choices": [
+          "Privacy",
+          "Ethics",
+          "Timing",
+          "Cost"
+        ],
+        "answer": 1,
+        "working": "Leaving out votes on purpose is dishonest, so it raises **ethics**. No personal information is shared, so it is not a privacy problem."
+      }
+    ]
+  },
+  "m9-10-1-d": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 4: Cost, Time and Timing",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three factors",
+        "t": 19.463
+      },
+      {
+        "title": "Too costly",
+        "t": 52.062
+      },
+      {
+        "title": "Bad timing",
+        "t": 99.214
+      },
+      {
+        "title": "Your turn",
+        "t": 139.266
+      },
+      {
+        "title": "Summary",
+        "t": 178.07
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1-d:q",
+        "t": 155.047,
+        "prompt": "A town surveys residents chosen at random about building a new outdoor pool. The survey is done on the hottest day of the summer. Which factor is the biggest problem?",
+        "choices": [
+          "Timing",
+          "Privacy",
+          "Cultural sensitivity",
+          "Cost"
+        ],
+        "answer": 0,
+        "working": "On the hottest day of the summer, people are more likely to want a pool than on an ordinary day, so **when** the survey is done changes the answers. Choosing residents at random keeps the cost low."
+      }
+    ]
+  },
+  "m9-10-1-e": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 5: Fixing a Plan",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two steps",
+        "t": 20.565
+      },
+      {
+        "title": "The gym survey",
+        "t": 61.001
+      },
+      {
+        "title": "More plans to fix",
+        "t": 99.916
+      },
+      {
+        "title": "Your turn",
+        "t": 145.871
+      },
+      {
+        "title": "Summary",
+        "t": 185.155
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1-e:q",
+        "t": 161.202,
+        "prompt": "A music store wants to know which kind of music teenagers in its city like best. It surveys teenagers as they leave a rock concert. Which change best fixes the plan?",
+        "choices": [
+          "Add more questions to the survey.",
+          "Show the results in a colourful graph.",
+          "Survey twice as many people at the concert.",
+          "Survey teenagers chosen at random from all over the city."
+        ],
+        "answer": 3,
+        "working": "The problem is bias: teenagers leaving a rock concert are much more likely to choose rock. The fix must change **who** is asked, so choose teenagers at random from the whole city."
+      }
+    ]
+  },
+  "m9-10-2": {
+    "lessonId": "m9-10-2",
+    "title": "Populations and Samples, Part 1: Population, Census and Sample",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three key words",
+        "t": 23.52
+      },
+      {
+        "title": "Which one to use",
+        "t": 65.512
+      },
+      {
+        "title": "Census or sample?",
+        "t": 96.937
+      },
+      {
+        "title": "Your turn",
+        "t": 138.484
+      },
+      {
+        "title": "Summary",
+        "t": 170.86
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-2:q",
+        "t": 146.196,
+        "prompt": "Which situation calls for a **sample** rather than a census?",
+        "choices": [
+          "Finding the heights of the $8$ students in a small art club",
+          "Recording the birthday of every player on a team of $15$",
+          "Testing how much weight boxes from a factory can hold before they break",
+          "Checking that each of the $25$ students going on a class trip has a signed form"
+        ],
+        "answer": 2,
+        "working": "Testing a box until it breaks destroys it, so only a sample of boxes can be tested. The other groups are small, and each one needs information about every member."
+      }
+    ]
+  },
+  "m9-10-2-b": {
+    "lessonId": "m9-10-2",
+    "title": "Populations and Samples, Part 2: Four Sampling Methods",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Simple random",
+        "t": 20.369
+      },
+      {
+        "title": "Systematic",
+        "t": 52.455
+      },
+      {
+        "title": "Stratified",
+        "t": 91.925
+      },
+      {
+        "title": "Cluster",
+        "t": 122.809
+      },
+      {
+        "title": "Stratified or cluster?",
+        "t": 152.163
+      },
+      {
+        "title": "Your turn",
+        "t": 171.877
+      },
+      {
+        "title": "Summary",
+        "t": 212.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-2-b:q",
+        "t": 189.206,
+        "prompt": "A coach lists all $120$ members of a sports club in alphabetical order, picks one of the first $10$ names at random, and then chooses every $10$th name after it. Which sampling method is this?",
+        "choices": [
+          "Simple random sample",
+          "Systematic sample",
+          "Stratified sample",
+          "Cluster sample"
+        ],
+        "answer": 1,
+        "working": "The names are chosen from a list at a regular interval, every $10$th name, so it is a **systematic** sample."
+      }
+    ]
+  },
+  "m9-10-2-c": {
+    "lessonId": "m9-10-2",
+    "title": "Populations and Samples, Part 3: Representative Samples",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two easy methods",
+        "t": 18.459
+      },
+      {
+        "title": "Plan A: the cafeteria line",
+        "t": 45.87
+      },
+      {
+        "title": "Plan B: an online poll",
+        "t": 81.146
+      },
+      {
+        "title": "Plan C: at random",
+        "t": 111.555
+      },
+      {
+        "title": "More is not always better",
+        "t": 148.547
+      },
+      {
+        "title": "Your turn",
+        "t": 179.51
+      },
+      {
+        "title": "Summary",
+        "t": 219.221
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-2-c:q",
+        "t": 192.926,
+        "prompt": "A website asks its visitors to vote in an online poll about a new video game, and $5{,}000$ people vote. Which statement is true?",
+        "choices": [
+          "The results are representative, because $5{,}000$ is a large sample.",
+          "It is a simple random sample.",
+          "It is a census of everyone who plays games.",
+          "It is a voluntary response sample, so the results may be biased."
+        ],
+        "answer": 3,
+        "working": "The voters chose themselves, so it is a voluntary response sample. People with strong feelings about the game are more likely to vote, so the results may be biased, however many people vote."
+      }
+    ]
+  },
+  "m9-10-2-d": {
+    "lessonId": "m9-10-2",
+    "title": "Populations and Samples, Part 4: Stratified Samples in Proportion",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same fraction",
+        "t": 14.831
+      },
+      {
+        "title": "A sports club",
+        "t": 35.958
+      },
+      {
+        "title": "Step by step",
+        "t": 56.753
+      },
+      {
+        "title": "Watch out",
+        "t": 106.865
+      },
+      {
+        "title": "Your turn",
+        "t": 131.56
+      },
+      {
+        "title": "Summary",
+        "t": 179.589
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-2-d:q",
+        "t": 151.137,
+        "prompt": "A school has $300$ students who walk, $450$ who take the bus and $150$ who are driven. A stratified sample of $90$ students is chosen in proportion. How many bus riders should be in the sample?",
+        "choices": [
+          "$45$",
+          "$30$",
+          "$15$",
+          "$90$"
+        ],
+        "answer": 0,
+        "working": "The total is $300 + 450 + 150 = 900$, so the sample is $\\frac{90}{900} = \\frac{1}{10}$ of the school. Bus riders: $450 \\times \\frac{1}{10} = 45$."
+      }
+    ]
+  },
+  "m9-10-3": {
+    "lessonId": "m9-10-3",
+    "title": "Developing a Project Plan, Part 1: The Six Steps",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A project plan",
+        "t": 23.334
+      },
+      {
+        "title": "One step at a time",
+        "t": 67.592
+      },
+      {
+        "title": "A sleep project",
+        "t": 82.773
+      },
+      {
+        "title": "Your turn",
+        "t": 137.445
+      },
+      {
+        "title": "Summary",
+        "t": 168.349
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-3:q",
+        "t": 145.798,
+        "prompt": "In a project plan, which step comes **right before** collecting the data?",
+        "choices": [
+          "Analyze the data and draw conclusions.",
+          "Decide on a population or a sample, and choose who will take part.",
+          "Display the data in a graph or table.",
+          "Organize the data."
+        ],
+        "answer": 1,
+        "working": "The steps are: question, method, population or sample, **collect**, organize and display, then conclude. So choosing who will take part comes right before collecting."
+      }
+    ]
+  },
+  "m9-10-3-b": {
+    "lessonId": "m9-10-3",
+    "title": "Developing a Project Plan, Part 2: Writing a Good Question",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A good question",
+        "t": 16.278
+      },
+      {
+        "title": "Choosing a question",
+        "t": 49.569
+      },
+      {
+        "title": "Watch out",
+        "t": 96.832
+      },
+      {
+        "title": "Your turn",
+        "t": 124.065
+      },
+      {
+        "title": "Summary",
+        "t": 156.98
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-3-b:q",
+        "t": 131.682,
+        "prompt": "Which is the best question for a project about exercise?",
+        "choices": [
+          "Do teens these days get enough exercise, or not enough?",
+          "Don’t you agree that video games are making teens lazy and unfit?",
+          "In a typical week, how many hours do students at our school spend exercising outside of class?",
+          "Which kind of exercise does every person in the world like best?"
+        ],
+        "answer": 2,
+        "working": "It names the population (students at our school), says exactly what to measure (hours of exercise in a typical week) and uses neutral words."
+      }
+    ]
+  },
+  "m9-10-3-c": {
+    "lessonId": "m9-10-3",
+    "title": "Developing a Project Plan, Part 3: Choosing a Method",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four methods",
+        "t": 21.052
+      },
+      {
+        "title": "Which method fits?",
+        "t": 61.655
+      },
+      {
+        "title": "Then think about people",
+        "t": 106.767
+      },
+      {
+        "title": "Your turn",
+        "t": 135.624
+      },
+      {
+        "title": "Summary",
+        "t": 172.36
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-3-c:q",
+        "t": 146.447,
+        "prompt": "Which method best fits this question: “Does the amount of sunlight a plant gets change how tall it grows?”",
+        "choices": [
+          "Experiment",
+          "Observation",
+          "Existing records",
+          "Survey"
+        ],
+        "answer": 0,
+        "working": "Give plants different amounts of sunlight, keep everything else the same, and measure their heights: changing one thing to see whether it changes another is an **experiment**."
+      }
+    ]
+  },
+  "m9-10-3-d": {
+    "lessonId": "m9-10-3",
+    "title": "Developing a Project Plan, Part 4: Displaying Data and Drawing Conclusions",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing a display",
+        "t": 17.722
+      },
+      {
+        "title": "Talia’s survey",
+        "t": 41.403
+      },
+      {
+        "title": "From sample to school",
+        "t": 71.987
+      },
+      {
+        "title": "A fair conclusion",
+        "t": 107.382
+      },
+      {
+        "title": "Your turn",
+        "t": 156.794
+      },
+      {
+        "title": "Summary",
+        "t": 196.284
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-3-d:q",
+        "t": 169.306,
+        "prompt": "In a random sample of $50$ of the $800$ students at a school, $12$ said they walk to school. Which conclusion is best?",
+        "choices": [
+          "Exactly $192$ students at the school walk to school.",
+          "About $24\\%$ of all students in the country walk to school.",
+          "Only $12$ students at the school walk to school.",
+          "About $192$ students at the school probably walk to school."
+        ],
+        "answer": 3,
+        "working": "$12 \\div 50 = 0.24 = 24\\%$, and $0.24 \\times 800 = 192$. The sample gives an estimate for this school only, so say “about” and “probably”."
+      }
+    ]
+  },
+  "m9-10-4": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 1: Three Kinds of Probability",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Theoretical",
+        "t": 22.602
+      },
+      {
+        "title": "Experimental",
+        "t": 61.638
+      },
+      {
+        "title": "Subjective",
+        "t": 101.311
+      },
+      {
+        "title": "Which kind?",
+        "t": 130.648
+      },
+      {
+        "title": "Your turn",
+        "t": 153.344
+      },
+      {
+        "title": "Summary",
+        "t": 192.774
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4:q",
+        "t": 169.046,
+        "prompt": "A weather app notes that it rained on $18$ of the last $60$ days that had weather like today, so it gives a $30\\%$ chance of rain tomorrow. Which kind of probability is this?",
+        "choices": [
+          "Theoretical",
+          "Experimental",
+          "Subjective",
+          "It is not a probability, because it is a percent."
+        ],
+        "answer": 1,
+        "working": "The $30\\%$ comes from records of what happened: $18 \\div 60 = 0.3 = 30\\%$. A probability that comes from data is **experimental**."
+      }
+    ]
+  },
+  "m9-10-4-b": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 2: What a Probability Means",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A forecast",
+        "t": 20.031
+      },
+      {
+        "title": "One in five",
+        "t": 56.988
+      },
+      {
+        "title": "Not a promise",
+        "t": 99.886
+      },
+      {
+        "title": "Your turn",
+        "t": 132.021
+      },
+      {
+        "title": "Summary",
+        "t": 169.809
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4-b:q",
+        "t": 142.707,
+        "prompt": "A game says there is a “$1$ in $10$” chance of winning a prize on each play. Which statement is true?",
+        "choices": [
+          "If you play $10$ times, you will win exactly once.",
+          "If you lose $9$ times in a row, you are sure to win on the next play.",
+          "Over a very large number of plays, about $1$ play in every $10$ wins a prize.",
+          "If you play $10$ times and never win, the game must be broken."
+        ],
+        "answer": 2,
+        "working": "A probability describes what happens over many plays. In $10$ plays you could win no times, once, or more than once, and losing $9$ times does not change the chance on the next play."
+      }
+    ]
+  },
+  "m9-10-4-c": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 3: Predicting with Probability",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expected number",
+        "t": 19.154
+      },
+      {
+        "title": "Planting seeds",
+        "t": 49.14
+      },
+      {
+        "title": "Close, not exact",
+        "t": 95.813
+      },
+      {
+        "title": "Your turn",
+        "t": 136.838
+      },
+      {
+        "title": "Summary",
+        "t": 168.651
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4-c:q",
+        "t": 148.749,
+        "prompt": "The probability that a bus is on time is $0.9$. About how many of its next $40$ trips should be on time?",
+        "choices": [
+          "$36$",
+          "$4$",
+          "$40$",
+          "$9$"
+        ],
+        "answer": 0,
+        "working": "Expected number $= 0.9 \\times 40 = 36$. About $36$ trips should be on time, and about $4$ should be late."
+      }
+    ]
+  },
+  "m9-10-4-d": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 4: Comparing Probabilities",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Which brand?",
+        "t": 19.704
+      },
+      {
+        "title": "Find each probability",
+        "t": 54.386
+      },
+      {
+        "title": "Why counts mislead",
+        "t": 93.148
+      },
+      {
+        "title": "Your turn",
+        "t": 120.57
+      },
+      {
+        "title": "Summary",
+        "t": 160.782
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4-d:q",
+        "t": 136.451,
+        "prompt": "Last season, Player A scored on $45$ of $60$ shots, and Player B scored on $52$ of $80$ shots. Which player has the higher probability of scoring?",
+        "choices": [
+          "Player B, because $52$ is more than $45$",
+          "Player B, with $65\\%$",
+          "They have the same probability.",
+          "Player A, with $75\\%$"
+        ],
+        "answer": 3,
+        "working": "Player A: $45 \\div 60 = 0.75 = 75\\%$. Player B: $52 \\div 80 = 0.65 = 65\\%$. Player A has the higher probability."
+      }
+    ]
+  },
+  "m9-10-4-e": {
+    "lessonId": "m9-10-4",
+    "title": "Probability in Society, Part 5: Expected Cost",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The question",
+        "t": 16.481
+      },
+      {
+        "title": "A hundred phones",
+        "t": 45.98
+      },
+      {
+        "title": "Expected cost",
+        "t": 80.683
+      },
+      {
+        "title": "Making the decision",
+        "t": 103.148
+      },
+      {
+        "title": "Your turn",
+        "t": 147.922
+      },
+      {
+        "title": "Summary",
+        "t": 199.429
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-4-e:q",
+        "t": 168.102,
+        "prompt": "A \\$30 protection plan for a bike covers a repair that costs \\$150. Suppose the probability of needing that repair is $10\\%$. What is the expected repair cost, and which choice costs less on average?",
+        "choices": [
+          "\\$15; the protection plan costs less on average.",
+          "\\$15; paying for the repair only when needed costs less on average.",
+          "\\$150; the protection plan costs less on average.",
+          "\\$30; the two choices cost the same on average."
+        ],
+        "answer": 1,
+        "working": "Expected cost $= 0.10 \\times 150 = 15$, so \\$15. That is less than the \\$30 plan, so paying for the repair only when needed costs less on average."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",

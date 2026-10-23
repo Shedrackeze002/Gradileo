@@ -101,7 +101,7 @@ const video: Explainer = {
       lines: [
         { say: 'With algebra tiles, like terms are tiles of the same shape. All the x tiles can be grouped together.', show: [...tileIds('sh', 'x', 3), 'sh.x-cap'], focus: tileIds('sh', 'x', 3) },
         { say: 'But an x tile can never be grouped with an x squared tile. They are different shapes, with different areas.', show: [...tileIds('sh', 's', 2), 'sh.s-cap'], focus: tileIds('sh', 's', 2) },
-        { say: 'So three x plus two x squared stays as two separate terms. It cannot be written as one term.', show: 'key' },
+        { say: 'So three x plus two x squared is left as two separate terms. It cannot be written as one term.', show: 'key' },
       ],
     },
     {

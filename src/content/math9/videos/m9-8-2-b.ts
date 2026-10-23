@@ -68,7 +68,7 @@ const video: Explainer = {
         { say: 'In this circle, angle A O B is one hundred ten degrees. Find x, the inscribed angle A C B.', show: [...everything('ex'), 'q'] },
         { say: 'Step one: both angles have arms that end at A and B, so both are subtended by arc A B.', show: 'm.0', focus: ['m.0', 'ex.arc'] },
         { say: 'Step two: the inscribed angle is half of the central angle. So x is one hundred ten degrees divided by two.', show: 'm.1', focus: 'm.1' },
-        { say: 'x is fifty-five degrees.', show: 'm.2', focus: ['m.2', 'ex.ci'] },
+        { say: 'That means x is fifty-five degrees.', show: 'm.2', focus: ['m.2', 'ex.ci'] },
       ],
     },
     {

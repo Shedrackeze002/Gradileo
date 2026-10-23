@@ -234,12 +234,22 @@ Lessons learned while scripting (the script check does not catch these):
   ("Lee"), Jamal ("J-Mall") and Priya before "posts" ("Pre-opposts"), "the letter Z" ("letter C";
   "the capital letter Z" is clear), a variable before "dollars" ("four g dollars" is heard as
   "$4"; "in dollars, four g" is clear), "and at a number" ("add a number"), a line that starts
-  with "x is…" ("Axe is"), "Let c be" and "use C equals" ("let's see", "you see"; "We let c be"
+  with "x is…" ("Axe is", "Axis", "Access"; "That means x is…" is clear), "Let c be" and "use C equals" ("let's see", "you see"; "We let c be"
   and "use the formula C equals" are clear), "What is the mean?" ("What does the mean"; "Find the
   mean." is clear), the names Ayesha (garbled every time) and Dakota ("Decoder"; Amara is clear), a quick list of pairs
   such as "one and six, two and five" ("1 in 6, 2 in 5"; "one plus six" is clear), "A line graph"
-  ("Align graph"; "Line graphs show…" is clear), "Leo picks a card" ("Leo Pixacard"), and "convenience sample" ("convenient sample"; listen
-  to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
+  ("Align graph"; "Line graphs show…" is clear; the same goes for "…: a line six squares long"), "Leo picks a card" ("Leo Pixacard"),
+  "add its opposite" ("at its opposite"; "you add its opposite" is clear), "A rise, a gain"
+  ("Arise, again"; "Rises, gains…" is clear), "rink" with little around it ("A rectangular rink" is
+  heard as "ring", "Now the rink:" as "rank"; "an ice rink" and "the area of the rink" are clear),
+  "stays as two terms" ("stays is"; "is left as" is clear), "perimeters" ("parameters"; the singular,
+  "the same perimeter", is clear), "write an inequality" ("write in an equality"; "write the
+  inequality" is clear), "a rider who…" ("a writer"; "a person who…" is clear), "five hundredths" ("500"; "five over one
+  hundred" is clear), "only the x-coordinate changes." at the end of a line ("X-Go-ordinate";
+  "the x-coordinate of each point" is clear), "zero point one five times two hundred forty dollars" ("$0.1, $5,
+  $240"; "Multiply zero point one five by two hundred forty dollars" is clear), and "convenience
+  sample" ("convenient sample" in a short line, or before "and"/"or"; "samples chosen for
+  convenience" is clear). "Bisects" after "chord" came out "by sex": `speechText` now says
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
   `speechText` now says "lenkths", which helps, but at the end of a long line it can still be heard
   as "links"; there, name the sides ("the two long sides added together"). "Eighty-one" came out

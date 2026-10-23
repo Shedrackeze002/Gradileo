@@ -67,7 +67,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'There is a quicker way to get the same answer. The expected cost equals the probability times the cost.', show: 'key' },
-        { say: 'Zero point one five times two hundred forty dollars is thirty-six dollars. That is the expected repair cost for one phone, on average.', show: 't' },
+        { say: 'Multiply zero point one five by two hundred forty dollars, and you get thirty-six dollars. That is the expected repair cost for one phone, on average.', show: 't' },
       ],
     },
     {

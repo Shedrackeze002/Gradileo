@@ -109,7 +109,7 @@ const video: Explainer = {
         { say: 'Let’s use it. P T is tangent to the circle at P, and angle P O T is forty degrees. Find x, angle O T P.', show: ['ex.fill', 'ex.outline', 'ex.names', 'ex.nT', 'ex.line', 'ex.pt', 'ex.op', 'ex.ot', 'ex.ao', 'ex.at', 'q'] },
         { say: 'Step one: the tangent is perpendicular to the radius, so angle O P T is ninety degrees.', show: ['ex.rp', 'm.0'], focus: ['ex.rp', 'm.0'] },
         { say: 'Step two: the angles of triangle O P T add to one hundred eighty degrees. So x equals one hundred eighty, minus ninety, minus forty.', show: 'm.1', focus: 'm.1' },
-        { say: 'x is fifty degrees.', show: 'm.2', focus: ['m.2', 'ex.at'] },
+        { say: 'That means x is fifty degrees.', show: 'm.2', focus: ['m.2', 'ex.at'] },
       ],
     },
     {

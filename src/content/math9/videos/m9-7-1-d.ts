@@ -92,7 +92,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'The real length is the model length divided by the scale factor: twenty-six divided by zero point zero five.', show: 'm.0', focus: 'm.0' },
-        { say: 'Zero point zero five is five hundredths, which is the same as one twentieth. So dividing by zero point zero five is the same as multiplying by twenty. Twenty-six times twenty is five hundred twenty.', show: 'm.1', focus: 'm.1' },
+        { say: 'Zero point zero five is five over one hundred, which is the same as one over twenty. So dividing by zero point zero five is the same as multiplying by twenty. Twenty-six times twenty is five hundred twenty.', show: 'm.1', focus: 'm.1' },
         { say: 'The real canoe is five hundred twenty centimetres long. There are one hundred centimetres in a metre, so divide by one hundred: that is five point two metres.', show: ['m.2', 'a'], focus: 'm.2' },
         { say: 'Does that make sense? A canoe about five metres long is a normal size for a real canoe. And the real canoe is twenty times as long as the model, just like the picture shows.' },
       ],

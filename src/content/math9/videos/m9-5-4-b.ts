@@ -77,7 +77,7 @@ const video: Explainer = {
       left: [model1('am')],
       right: [{ kind: 'math', id: 'm', size: 'lg', align: 'left', lines: ['2x(3x - 5)', '2x \\cdot 3x = 6x^2', '2x \\cdot (-5) = -10x', '= 6x^2 - 10x'] }],
       lines: [
-        { say: 'Now the rink: expand two x times three x minus five. Expand means multiply out the brackets.', show: 'm.0' },
+        { say: 'Now for the area of the rink: expand two x times three x minus five. Expand means multiply out the brackets.', show: 'm.0' },
         { say: 'An area model keeps track of the products, without drawing every tile. Put three x and negative five along the top, and two x down the side.', show: ['am.top', 'am.side', 'am.outline', 'am.grid'] },
         { say: 'Multiply two x by the first term: two x times three x is six x squared.', show: ['am.c0-0', 'm.1'], focus: ['am.c0-0', 'm.1'] },
         { say: 'Multiply two x by the second term: two x times negative five is negative ten x.', show: ['am.c0-1', 'm.2'], focus: ['am.c0-1', 'm.2'] },

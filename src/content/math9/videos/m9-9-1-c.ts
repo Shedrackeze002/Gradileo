@@ -174,7 +174,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Let’s sum up. To complete a shape, put each image point the same distance from the line of symmetry, on the other side.', show: 'sum.0' },
-        { say: 'Across an up and down line, only the x-coordinate changes.', show: 'sum.1' },
+        { say: 'Across an up and down line, only the x-coordinate of each point changes.', show: 'sum.1' },
         { say: 'Points on the line of symmetry are their own images.', show: 'sum.2' },
         { say: 'And measure to the line of symmetry, not to the y-axis. In the next part, you will reflect points in slanted lines of symmetry. See you there!', show: 'sum.3' },
       ],
