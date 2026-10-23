@@ -201,13 +201,21 @@
   button:disabled {
     cursor: not-allowed;
   }
-  /* Drawing with a pencil or finger: no text selection, magnifier or callout (iPad Safari). */
+  /* Drawing with a pencil or finger: no text selection, magnifier or callout (iPad Safari). A
+     screen that draws locks the whole page (.ink-lock); a stroke locks it while it is drawn. */
   .ink-surface,
+  .ink-lock,
+  .ink-lock *,
   .ink-drawing,
   .ink-drawing * {
     -webkit-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
+  }
+  .ink-lock :is(input, textarea, [contenteditable='true']),
+  .ink-drawing :is(input, textarea, [contenteditable='true']) {
+    -webkit-user-select: text;
+    user-select: text;
   }
   .ink-surface {
     -webkit-tap-highlight-color: transparent;

@@ -23,6 +23,7 @@ import { inkCommit, inkDoc, inkRedo, inkUndo, type InkDoc } from '@/lib/ink.ts';
 import { getItem, setItem } from '@/lib/storage.ts';
 import { cn } from '@/lib/cn.ts';
 import { InkSurface } from '@/features/whiteboard/InkSurface.tsx';
+import { usePageLock } from '@/features/whiteboard/pageLock.ts';
 import { InkToolbar, useInkTools } from '@/features/whiteboard/InkToolbar.tsx';
 import { Whiteboard } from '@/features/whiteboard/Whiteboard.tsx';
 import { useLessonContent } from './LessonView.tsx';
@@ -178,6 +179,7 @@ export default function PresentMode() {
 
   const [full, setFull] = useState(false);
   const [drawing, setDrawing] = useState(false);
+  usePageLock(drawing);
   const [boardOpen, setBoardOpen] = useState(false);
   const [timerOpen, setTimerOpen] = useState(false);
   const [pickerOpen, setPickerOpen] = useState(false);

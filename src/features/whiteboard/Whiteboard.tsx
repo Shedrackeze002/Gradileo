@@ -10,6 +10,7 @@ import type { Board } from '@/data/types.ts';
 import { Button, Menu, MenuItem, useToast } from '@/components/ui/index.ts';
 import { cn } from '@/lib/cn.ts';
 import { InkSurface } from './InkSurface.tsx';
+import { usePageLock } from './pageLock.ts';
 import { InkToolbar, type InkTools } from './InkToolbar.tsx';
 import { useBoardFit } from './useBoardFit.ts';
 
@@ -42,6 +43,7 @@ export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave }
   const [title, setTitle] = useState(() => `${lessonTitle} board`);
   const [dirty, setDirty] = useState(false);
   const [saving, setSaving] = useState(false);
+  usePageLock(open);
   const [fitRef, fit] = useBoardFit();
   const toast = useToast();
   const page = pages[Math.min(ix, pages.length - 1)];
