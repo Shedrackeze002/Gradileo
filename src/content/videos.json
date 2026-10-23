@@ -31464,7 +31464,7 @@
   "m9-10-2-c": {
     "lessonId": "m9-10-2",
     "title": "Populations and Samples, Part 3: Representative Samples",
-    "duration": 253,
+    "duration": 254,
     "voice": "af_heart",
     "chapters": [
       {
@@ -31975,21 +31975,21 @@
       },
       {
         "title": "Making the decision",
-        "t": 102.24
+        "t": 103.148
       },
       {
         "title": "Your turn",
-        "t": 147.014
+        "t": 147.922
       },
       {
         "title": "Summary",
-        "t": 198.521
+        "t": 199.429
       }
     ],
     "cues": [
       {
         "id": "m9-10-4-e:q",
-        "t": 167.194,
+        "t": 168.102,
         "prompt": "A \\$30 protection plan for a bike covers a repair that costs \\$150. Suppose the probability of needing that repair is $10\\%$. What is the expected repair cost, and which choice costs less on average?",
         "choices": [
           "\\$15; the protection plan costs less on average.",
