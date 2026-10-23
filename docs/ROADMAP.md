@@ -621,8 +621,16 @@ items ship or decisions change.
    - Decision (the owner, 23 October 2026): the owner's "Chemistry Basics" slides (Avanti
      Fellows' Class 11 chemistry slides, following India's NCERT Class 11 book; © Avanti Fellows,
      no open licence) are a reference only. Nothing from them is copied or published.
-   - Next: Grade 10 Chemistry (about 22 lessons in five units). Then the videos for Grades 10 and
-     11, and the AI tutor's recorded voice for chemistry (it reads `\ce{…}` formulas aloud first;
+   - Built (23 October 2026): **Grade 10 Chemistry** (`chem-10`), five units, 23 lessons and 46
+     skills: matter and the particle model (states, mixtures, separating, physical and chemical
+     change, density, hazard pictograms and lab safety), atoms and the periodic table (particles,
+     isotopes and relative atomic mass, 2,8,8 shells, groups and families), bonding, names and
+     formulas (ions, ionic and molecular names, shared pairs, bonding and properties), chemical
+     reactions (word equations, conservation of mass, balancing, types, energy diagrams, rates) and
+     moles, acids and bases (molar mass, Avogadro's number, mole ratios, pH, indicators,
+     neutralization). Sign-up recommends it to students in Grades 9 and 10, and Grade 11 Chemistry
+     now offers a placement check on its skills.
+   - Next: the videos for Grades 10 and 11, and the AI tutor's recorded voice for chemistry (it reads `\ce{…}` formulas aloud first;
      the recording workflow takes only the `math*` course folders until then). Then Grade 12
      Chemistry, then English 10, 20 and 30. The privacy policy and terms still describe Gradileo
      as a mathematics platform; their wording is the owner's to change.

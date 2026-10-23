@@ -336,10 +336,13 @@ reading time when a slide has no recording (a teacher's own resource, or a slide
 
 ## Adding a course
 
-The platform is course-agnostic: every Alberta mathematics course from Grade 5 to Grade 12 (Math 5
-to 9; 10C, 10-3, 10-4; 20-1, 20-2, 20-3, 20-4; 30-1, 30-2, 30-3 and 31) already runs side by side,
-grouped by grade in course pickers. To add a course, for example
-Math 30-1 (the steps it followed):
+The platform is course-agnostic: mathematics from Grade 5 to Grade 12 (Math 5 to 9; Math 10, 10
+Workplace and 10 Essentials; Math 11 Pre-calculus, Foundations, Workplace and Essentials; Math 12
+Pre-calculus, Foundations, Workplace and Calculus) and chemistry in Grades 10 and 11 already run side
+by side, grouped by subject and grade in course pickers. Courses are named by grade and stream, not
+by any one curriculum's codes; their folders and ids keep the codes they were first built under
+(`math30-1` is Math 12 Pre-calculus). To add a course, for example Math 12 Pre-calculus (the steps
+it followed):
 
 1. Create `engine/curriculum/math30-1/course.ts` with outcomes, units and lessons (ids such as
    `m301-1-1`), following `math20-1/course.ts` or `math20-3/course.ts`.

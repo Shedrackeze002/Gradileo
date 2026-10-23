@@ -125,7 +125,7 @@ Later the same day the owner decided:
    India's NCERT Class 11 book; © Avanti Fellows, with no open licence) are a **reference only**:
    topics, order and kinds of practice may be drawn from them, but nothing is copied or published.
 
-### Grade 10 Chemistry, about 22 lessons
+### Grade 10 Chemistry, about 22 lessons (built 23 October 2026: 23 lessons, 46 skills)
 
 | Unit | Lessons |
 |---|---|
