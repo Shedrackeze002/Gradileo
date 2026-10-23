@@ -69,6 +69,8 @@ items ship or decisions change.
      issue link, the docs and the git remote).
 1. **Explainer videos.** Our own animated explainers (MP4 with captions and thumbnails), hosted
    on our YouTube channel and shown in a player that pauses for questions at set times.
+   - Done (23 October 2026): every lesson of every course from Math 5 to Math 31 has its explainer
+     video, 1,634 in all, rendered and in Drive. The daily YouTube uploads carry on (see below).
    - Decision: **every lesson gets its own explainer video**, at least one per lesson and about
      two minutes or longer depending on difficulty; harder lessons (expected mostly in Grades
      9–12) get more than one. They must be high quality and fully explanatory.
@@ -391,11 +393,20 @@ items ship or decisions change.
      Dakota ("Decoder"; now Amara), "A line graph" ("Align graph") and "Leo picks a card" ("Leo
      Pixacard") were reworded. Each is listed in `video/README.md`. Every course from Math 10 to
      31 and Math 5 to 8 is rendered and in Drive (1,498 videos).
-   - Scripted: Math 9, 136 videos written by five helpers. Every Your-turn answer and every still
-     was checked; two point labels on one graph were moved off the lines they sat on. The voice
-     findings went into `video/README.md`, and "bisects" is now respelled for the voice ("a chord
-     bisects the chord" came out "by sex"). They complete the videos for every course from Math 5 to
-     Math 31, and are rendering now.
+   - Built: Math 9, all 136 videos, written by five helpers. Every Your-turn answer and every still
+     was checked; two point labels on one graph were moved off the lines they sat on, and
+     "bisects" is now respelled for the voice ("a chord bisects the chord" came out "by sex").
+     Rendered unit by unit and uploaded to Drive (checked: Drive holds every file of all 136). The
+     listening check found phrases the voice blurred every time, and fifteen videos were made again
+     with clearer wording: "So round four" ("Surround four"), "add its opposite" ("at its
+     opposite"), "A rise, a gain" ("Arise, again"), "rink" ("ring", "rank"), "stays as" ("stays
+     is"), "perimeters" ("parameters"), "Write an inequality" ("Ride in an equality"), "a rider"
+     ("a writer"), "a line six squares long" ("Align"), "five hundredths" ("500"), a short line
+     starting "x is" ("Axis", "Access"), "the x-coordinate" at the end of a line ("X-Go-ordinate"),
+     a money product said as "zero point one five times two hundred forty dollars" ("$0.1, $5") and
+     "convenience samples" ("convenient"). Each is listed in `video/README.md`. With Math 9, every
+     course from Math 5 to Math 31 has an explainer video for every lesson, rendered and in Drive
+     (1,634 videos).
 2. **Social media pages and a posting schedule** (the owner's request, 15 October 2026). Gradileo
    has no social pages yet. Open them, then post three times a week across all of them, with
    Claude coordinating: preparing each week's posts, keeping the schedule and reporting. It runs
