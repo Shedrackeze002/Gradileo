@@ -30375,6 +30375,802 @@
       }
     ]
   },
+  "m9-8-2-c": {
+    "lessonId": "m9-8-2",
+    "title": "Inscribed and Central Angles, Part 3: Angles on the Same Arc",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The inscribed angle property",
+        "t": 20.639
+      },
+      {
+        "title": "Two angles on arc A B",
+        "t": 65.24
+      },
+      {
+        "title": "Back to the pond",
+        "t": 91.955
+      },
+      {
+        "title": "Your turn",
+        "t": 130.799
+      },
+      {
+        "title": "Summary",
+        "t": 169.779
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-2-c:q",
+        "t": 147.257,
+        "prompt": "$\\angle APB$ and $\\angle AQB$ are inscribed angles subtended by the same arc $AB$. $\\angle APB = 48^\\circ$. Find $\\angle AQB$.",
+        "choices": [
+          "$96^\\circ$",
+          "$48^\\circ$",
+          "$24^\\circ$",
+          "$132^\\circ$"
+        ],
+        "answer": 1,
+        "working": "Inscribed angles subtended by the same arc are equal, so $\\angle AQB = 48^\\circ$."
+      }
+    ]
+  },
+  "m9-8-2-d": {
+    "lessonId": "m9-8-2",
+    "title": "Inscribed and Central Angles, Part 4: Angles in a Semicircle",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The semicircle property",
+        "t": 17.813
+      },
+      {
+        "title": "A right triangle in a circle",
+        "t": 70.976
+      },
+      {
+        "title": "Look for radii",
+        "t": 108.813
+      },
+      {
+        "title": "Your turn",
+        "t": 151.394
+      },
+      {
+        "title": "Summary",
+        "t": 198.327
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-2-d:q",
+        "t": 165.852,
+        "prompt": "$AB$ is a diameter of a circle, and $C$ is another point on the circle. $\\angle ABC = 55^\\circ$. Find $\\angle CAB$.",
+        "choices": [
+          "$55^\\circ$",
+          "$125^\\circ$",
+          "$45^\\circ$",
+          "$35^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$\\angle ACB = 90^\\circ$ (inscribed in a semicircle), so $\\angle CAB = 180^\\circ - 90^\\circ - 55^\\circ = 35^\\circ$."
+      }
+    ]
+  },
+  "m9-8-3": {
+    "lessonId": "m9-8-3",
+    "title": "Tangent Properties, Part 1: A Tangent Meets the Radius",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tangent lines",
+        "t": 19.486
+      },
+      {
+        "title": "The tangent property",
+        "t": 50.758
+      },
+      {
+        "title": "An angle in the triangle",
+        "t": 84.638
+      },
+      {
+        "title": "Your turn",
+        "t": 119.852
+      },
+      {
+        "title": "Summary",
+        "t": 163.341
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-3:q",
+        "t": 133.116,
+        "prompt": "$PT$ is tangent at $P$ to a circle with centre $O$. $\\angle OTP = 28^\\circ$. Find $\\angle POT$.",
+        "choices": [
+          "$62^\\circ$",
+          "$152^\\circ$",
+          "$28^\\circ$",
+          "$90^\\circ$"
+        ],
+        "answer": 0,
+        "working": "$\\angle OPT = 90^\\circ$ (tangent $\\perp$ radius), so $\\angle POT = 180^\\circ - 90^\\circ - 28^\\circ = 62^\\circ$."
+      }
+    ]
+  },
+  "m9-8-3-b": {
+    "lessonId": "m9-8-3",
+    "title": "Tangent Properties, Part 2: Tangents and the Pythagorean Theorem",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The right triangle",
+        "t": 20.744
+      },
+      {
+        "title": "Length of a tangent segment",
+        "t": 58.738
+      },
+      {
+        "title": "Distance to the centre",
+        "t": 104.776
+      },
+      {
+        "title": "Watch out",
+        "t": 138.284
+      },
+      {
+        "title": "Your turn",
+        "t": 187.26
+      },
+      {
+        "title": "Summary",
+        "t": 233.196
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-3-b:q",
+        "t": 203.438,
+        "prompt": "A circle with centre $O$ has a radius of $9$ cm. $PT$ is tangent to the circle at $P$, and $PT = 12$ cm. How far is $T$ from $O$?",
+        "choices": [
+          "$3$ cm",
+          "$7.9$ cm",
+          "$15$ cm",
+          "$21$ cm"
+        ],
+        "answer": 2,
+        "working": "$OT$ is the hypotenuse: $OT^2 = 9^2 + 12^2 = 81 + 144 = 225$, so $OT = \\sqrt{225} = 15\\text{ cm}$."
+      }
+    ]
+  },
+  "m9-8-3-c": {
+    "lessonId": "m9-8-3",
+    "title": "Tangent Properties, Part 3: Two Tangents from One Point",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two tangents",
+        "t": 15.99
+      },
+      {
+        "title": "The angle at the centre",
+        "t": 52.924
+      },
+      {
+        "title": "A shortcut",
+        "t": 99.615
+      },
+      {
+        "title": "Your turn",
+        "t": 125.45
+      },
+      {
+        "title": "Summary",
+        "t": 173.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-3-c:q",
+        "t": 141.817,
+        "prompt": "$TP$ and $TQ$ are tangents to a circle with centre $O$, touching it at $P$ and $Q$. $\\angle POQ = 140^\\circ$. Find $\\angle PTQ$.",
+        "choices": [
+          "$140^\\circ$",
+          "$40^\\circ$",
+          "$220^\\circ$",
+          "$70^\\circ$"
+        ],
+        "answer": 1,
+        "working": "$\\angle OPT = \\angle OQT = 90^\\circ$, so $\\angle PTQ = 360^\\circ - 90^\\circ - 90^\\circ - 140^\\circ = 40^\\circ$."
+      }
+    ]
+  },
+  "m9-8-3-d": {
+    "lessonId": "m9-8-3",
+    "title": "Tangent Properties, Part 4: Equal Tangent Segments",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why they are equal",
+        "t": 15.69
+      },
+      {
+        "title": "Perimeter of the kite",
+        "t": 63.072
+      },
+      {
+        "title": "Your turn",
+        "t": 123.42
+      },
+      {
+        "title": "Summary",
+        "t": 174.844
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-3-d:q",
+        "t": 140.8,
+        "prompt": "$TP$ and $TQ$ are tangents from the point $T$ to a circle with centre $O$ and radius $5$ cm. $OT = 13$ cm. Find the perimeter of $OPTQ$.",
+        "choices": [
+          "$34$ cm",
+          "$36$ cm",
+          "$24$ cm",
+          "$17$ cm"
+        ],
+        "answer": 0,
+        "working": "$TP = TQ = \\sqrt{13^2 - 5^2} = \\sqrt{144} = 12$, so the perimeter is $5 + 12 + 12 + 5 = 34\\text{ cm}$."
+      }
+    ]
+  },
+  "m9-9-1": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 1: Lines of Symmetry",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Line symmetry",
+        "t": 22.985
+      },
+      {
+        "title": "More than one line",
+        "t": 63.484
+      },
+      {
+        "title": "The diagonal",
+        "t": 99.847
+      },
+      {
+        "title": "The letter H",
+        "t": 141.081
+      },
+      {
+        "title": "Your turn",
+        "t": 187.914
+      },
+      {
+        "title": "Summary",
+        "t": 225.757
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1:q",
+        "t": 199.947,
+        "prompt": "A rectangle is $8$ cm long and $5$ cm wide. Which statement about its lines of symmetry is true?",
+        "choices": [
+          "It has $4$: one up and down, one across, and its two diagonals.",
+          "Its two diagonals are its only lines of symmetry.",
+          "It has exactly $2$: one up and down, and one across.",
+          "It has no lines of symmetry."
+        ],
+        "answer": 2,
+        "working": "A fold up and down through the middle and a fold across the middle both make the halves match. A diagonal cuts the rectangle into two equal triangles, but folding along it does not make the corners match, so it is not a line of symmetry."
+      }
+    ]
+  },
+  "m9-9-1-b": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 2: Regular Polygons",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Regular polygons",
+        "t": 20.906
+      },
+      {
+        "title": "An equilateral triangle",
+        "t": 50.355
+      },
+      {
+        "title": "A square",
+        "t": 84.144
+      },
+      {
+        "title": "A regular hexagon",
+        "t": 128.241
+      },
+      {
+        "title": "The rule",
+        "t": 159.058
+      },
+      {
+        "title": "Only regular polygons",
+        "t": 184.617
+      },
+      {
+        "title": "Your turn",
+        "t": 210.369
+      },
+      {
+        "title": "Summary",
+        "t": 242.813
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1-b:q",
+        "t": 221.779,
+        "prompt": "A regular octagon has $8$ equal sides and $8$ equal angles. How many lines of symmetry does it have?",
+        "choices": [
+          "$8$",
+          "$4$",
+          "$16$",
+          "$2$"
+        ],
+        "answer": 0,
+        "working": "A regular polygon with $n$ sides has $n$ lines of symmetry: $4$ lines through opposite corners and $4$ through the middles of opposite sides, $8$ in all."
+      }
+    ]
+  },
+  "m9-9-1-c": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 3: Completing a Shape",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Half a shape",
+        "t": 16.027
+      },
+      {
+        "title": "The image of C",
+        "t": 48.957
+      },
+      {
+        "title": "Completing the shape",
+        "t": 94.017
+      },
+      {
+        "title": "Watch out",
+        "t": 146.339
+      },
+      {
+        "title": "Your turn",
+        "t": 183.356
+      },
+      {
+        "title": "Summary",
+        "t": 227.7
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1-c:q",
+        "t": 198.192,
+        "prompt": "The line $x = 2$ is a line of symmetry of a shape. The point $(-1, 3)$ is on the shape. What is its image in the line $x = 2$?",
+        "choices": [
+          "$(1, 3)$",
+          "$(5, -3)$",
+          "$(2, 3)$",
+          "$(5, 3)$"
+        ],
+        "answer": 3,
+        "working": "The point is $2 - (-1) = 3$ units left of the line, so its image is $3$ units right: $x = 2 + 3 = 5$. The $y$-coordinate stays $3$, so the image is $(5, 3)$."
+      }
+    ]
+  },
+  "m9-9-1-d": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 4: Slanted Lines of Symmetry",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The line y = x",
+        "t": 20.026
+      },
+      {
+        "title": "Reflecting in y = x",
+        "t": 45.688
+      },
+      {
+        "title": "The rule for y = x",
+        "t": 84.514
+      },
+      {
+        "title": "The line y = −x",
+        "t": 123.474
+      },
+      {
+        "title": "Your turn",
+        "t": 174.519
+      },
+      {
+        "title": "Summary",
+        "t": 210.594
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1-d:q",
+        "t": 185.629,
+        "prompt": "What is the image of the point $(5, -1)$ after a reflection in the line $y = x$?",
+        "choices": [
+          "$(1, -5)$",
+          "$(-1, 5)$",
+          "$(-5, 1)$",
+          "$(5, 1)$"
+        ],
+        "answer": 1,
+        "working": "Reflecting in $y = x$ swaps the coordinates: $(5, -1) \\to (-1, 5)$."
+      }
+    ]
+  },
+  "m9-9-1-e": {
+    "lessonId": "m9-9-1",
+    "title": "Line Symmetry, Part 5: Symmetry in Designs",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A flower decal",
+        "t": 22.245
+      },
+      {
+        "title": "A pinwheel",
+        "t": 70.483
+      },
+      {
+        "title": "Colours count",
+        "t": 111.306
+      },
+      {
+        "title": "Your turn",
+        "t": 155.374
+      },
+      {
+        "title": "Summary",
+        "t": 201.942
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-1-e:q",
+        "t": 174.402,
+        "prompt": "A square tile is cut along both diagonals into $4$ triangles. The top and bottom triangles are red, and the left and right triangles are blue. Counting the colours, how many lines of symmetry does the tile have?",
+        "choices": [
+          "$4$",
+          "$0$",
+          "$2$",
+          "$1$"
+        ],
+        "answer": 2,
+        "working": "A fold up and down and a fold across both put red on red and blue on blue. A fold along a diagonal puts a red triangle onto a blue one, so the diagonals do not count."
+      }
+    ]
+  },
+  "m9-9-2": {
+    "lessonId": "m9-9-2",
+    "title": "Rotation Symmetry, Part 1: Rotation Symmetry and Its Order",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rotation symmetry",
+        "t": 21.3
+      },
+      {
+        "title": "Turn by turn",
+        "t": 52.24
+      },
+      {
+        "title": "The order of rotation",
+        "t": 99.987
+      },
+      {
+        "title": "No rotation symmetry",
+        "t": 121.258
+      },
+      {
+        "title": "Watch out",
+        "t": 156.828
+      },
+      {
+        "title": "Your turn",
+        "t": 178.742
+      },
+      {
+        "title": "Summary",
+        "t": 222.609
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-2:q",
+        "t": 197.425,
+        "prompt": "A shape fits onto itself after turns of $72^\\circ$, $144^\\circ$, $216^\\circ$, $288^\\circ$ and $360^\\circ$, and at no other turns. What is its order of rotation?",
+        "choices": [
+          "$4$",
+          "$6$",
+          "$1$",
+          "$5$"
+        ],
+        "answer": 3,
+        "working": "It fits $5$ times in one full turn, counting the full turn once, so its order of rotation is $5$."
+      }
+    ]
+  },
+  "m9-9-2-b": {
+    "lessonId": "m9-9-2",
+    "title": "Rotation Symmetry, Part 2: The Angle of Rotation Symmetry",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The smallest turn",
+        "t": 18.786
+      },
+      {
+        "title": "A hexagon logo",
+        "t": 69.031
+      },
+      {
+        "title": "Turning the logo",
+        "t": 93.921
+      },
+      {
+        "title": "Working backward",
+        "t": 145.199
+      },
+      {
+        "title": "Your turn",
+        "t": 173.092
+      },
+      {
+        "title": "Summary",
+        "t": 207.334
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-2-b:q",
+        "t": 183.755,
+        "prompt": "A design first fits onto itself after a turn of $40^\\circ$. What is its order of rotation?",
+        "choices": [
+          "$9$",
+          "$4$",
+          "$40$",
+          "$8$"
+        ],
+        "answer": 0,
+        "working": "The order is $360^\\circ \\div 40^\\circ = 9$: nine turns of $40^\\circ$ make one full turn."
+      }
+    ]
+  },
+  "m9-9-2-c": {
+    "lessonId": "m9-9-2",
+    "title": "Rotation Symmetry, Part 3: Line, Rotation, Both or Neither",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four kinds",
+        "t": 16.828
+      },
+      {
+        "title": "In a table",
+        "t": 73.961
+      },
+      {
+        "title": "The letter S",
+        "t": 114.866
+      },
+      {
+        "title": "Turning the S",
+        "t": 146.564
+      },
+      {
+        "title": "Your turn",
+        "t": 184.547
+      },
+      {
+        "title": "Summary",
+        "t": 216.015
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-2-c:q",
+        "t": 192.289,
+        "prompt": "Which shape has rotation symmetry but **no** line symmetry?",
+        "choices": [
+          "An isosceles triangle",
+          "A block capital letter Z",
+          "A regular hexagon",
+          "A scalene triangle"
+        ],
+        "answer": 1,
+        "working": "A half turn makes the letter Z fit onto itself, but no fold makes its halves match: rotation symmetry only. The isosceles triangle has line symmetry only, the regular hexagon has both, and the scalene triangle has neither."
+      }
+    ]
+  },
+  "m9-9-2-d": {
+    "lessonId": "m9-9-2",
+    "title": "Rotation Symmetry, Part 4: Designs in Two Colours",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The folds",
+        "t": 20.954
+      },
+      {
+        "title": "The turns",
+        "t": 62.237
+      },
+      {
+        "title": "Two lines mean a turn",
+        "t": 110.804
+      },
+      {
+        "title": "Your turn",
+        "t": 143.267
+      },
+      {
+        "title": "Summary",
+        "t": 190.767
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-9-2-d:q",
+        "t": 160.629,
+        "prompt": "A decal has $6$ equal petals, evenly spaced round its centre. They alternate in colour: red, blue, red, blue, red, blue. Counting the colours, which describes its symmetry?",
+        "choices": [
+          "$6$ lines of symmetry, rotation symmetry of order $6$",
+          "$3$ lines of symmetry, no rotation symmetry",
+          "No lines of symmetry, rotation symmetry of order $3$",
+          "$3$ lines of symmetry, rotation symmetry of order $3$"
+        ],
+        "answer": 3,
+        "working": "The $3$ folds through opposite petals keep red on red and blue on blue; the folds between petals do not. Turns of $120^\\circ$, $240^\\circ$ and $360^\\circ$ put red on red, but a turn of $60^\\circ$ puts red on blue, so the order is $3$."
+      }
+    ]
+  },
+  "m9-10-1": {
+    "lessonId": "m9-10-1",
+    "title": "Factors Affecting Data Collection, Part 1: Bias",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Seven factors",
+        "t": 24.064
+      },
+      {
+        "title": "What bias means",
+        "t": 53.925
+      },
+      {
+        "title": "A biased survey",
+        "t": 94.151
+      },
+      {
+        "title": "A fair survey",
+        "t": 127.526
+      },
+      {
+        "title": "Your turn",
+        "t": 161.794
+      },
+      {
+        "title": "Summary",
+        "t": 198.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-10-1:q",
+        "t": 173.87,
+        "prompt": "A town wants to know what its residents think about building a new library. Which survey plan would give **biased** results?",
+        "choices": [
+          "Survey only people leaving the old library.",
+          "Survey residents chosen at random from a list of all residents.",
+          "Survey residents chosen at random from every neighbourhood.",
+          "Ask every resident in the town."
+        ],
+        "answer": 0,
+        "working": "People leaving the library use it a lot, so they are more likely to want a new one than other residents are. The other plans give every resident a fair chance to be asked."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
