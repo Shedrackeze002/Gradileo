@@ -531,6 +531,12 @@ items ship or decisions change.
      a submission: a teacher can give their own mark on any auto-graded question (a wrong key, or a
      right answer written another way); it replaces the automatic mark in the score, the student
      sees that the teacher changed it, and "Use the automatic mark" puts it back.
+   - Fixed (23 October 2026, the owner could not find questions 1 to 5 when editing a
+     30-question assignment): the builder now labels its two kinds of question by number.
+     "Generated questions · Questions 1–5" are the skill questions, which give each student
+     fresh numbers, so they are changed by count and difficulty and seen with Preview. "Your own
+     questions · Questions 6–30" can be edited one by one. Also fixed: the "…" menu on an
+     assignment row now opens over the page instead of under the cards below it.
    - Built: "solve it on the canvas" answers. Every written response (the AI's and the
      teacher's) opens on a canvas built on the whiteboard's ink, with a Type tab beside it; the
      working is kept in the response as compact text (`engine/ink.ts`, up to four pages), checked
