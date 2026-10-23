@@ -11,6 +11,7 @@ import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
 export const OUTCOMES: Outcome[] = [
   { code: '20-A1', strand: 'The Diversity of Matter and Chemical Bonding', text: 'Describe the role of modelling, evidence and theory in explaining and understanding the structure, chemical bonding and properties of ionic compounds.' },
   { code: '20-A2', strand: 'The Diversity of Matter and Chemical Bonding', text: 'Describe the role of modelling, evidence and theory in explaining and understanding the structure, chemical bonding and properties of molecular substances.' },
+  { code: '20-B1', strand: 'Forms of Matter: Gases', text: 'Explain molecular behaviour, using models of the gaseous state of matter.' },
 ];
 
 const L = (
@@ -59,10 +60,41 @@ export const LESSONS: LessonMeta[] = [
     ['c20-imf-type', 'c20-boiling-compare'],
     ['Identify London dispersion forces, dipole–dipole forces and hydrogen bonds', 'Explain differences in boiling points with intermolecular forces'],
     80, ['intermolecular force', 'London dispersion force', 'dipole–dipole force', 'hydrogen bond', 'boiling point']),
+
+  // ---------------- Unit 2: Forms of Matter: Gases ----------------
+  L('c20-2-1', 'c20-u2', '2.1', 'Gases and the Kinetic Molecular Theory', ['20-B1'],
+    ['c20-kmt'],
+    ['Describe the properties of gases', 'State the ideas of the kinetic molecular theory', 'Explain the behaviour of gases with moving particles'],
+    65, ['kinetic molecular theory', 'ideal gas', 'elastic collision', 'kinetic energy', 'diffusion']),
+  L('c20-2-2', 'c20-u2', '2.2', 'Pressure and Temperature', ['20-B1'],
+    ['c20-pressure-units', 'c20-kelvin'],
+    ['Explain gas pressure as particles hitting the walls', 'Convert pressures between kilopascals, atmospheres and millimetres of mercury', 'Convert temperatures between degrees Celsius and kelvins, and explain absolute zero'],
+    70, ['pressure', 'kilopascal', 'atmosphere', 'barometer', 'absolute zero', 'Kelvin scale']),
+  L('c20-2-3', 'c20-u2', '2.3', "Boyle's Law", ['20-B1'],
+    ['c20-boyle'],
+    ['Describe how the volume of a gas depends on its pressure', "Use Boyle's law to find a new volume or pressure"],
+    65, ["Boyle's law", 'inversely proportional']),
+  L('c20-2-4', 'c20-u2', '2.4', "Charles's Law and Gay-Lussac's Law", ['20-B1'],
+    ['c20-charles', 'c20-gay-lussac'],
+    ['Describe how the volume and pressure of a gas depend on its temperature', "Use Charles's law and Gay-Lussac's law with Kelvin temperatures"],
+    75, ["Charles's law", "Gay-Lussac's law", 'directly proportional', 'absolute zero']),
+  L('c20-2-5', 'c20-u2', '2.5', 'The Combined Gas Law', ['20-B1'],
+    ['c20-combined-gas', 'c20-gas-change'],
+    ['Use the combined gas law when pressure, volume and temperature all change', 'Predict how one property of a gas changes when others change'],
+    70, ['combined gas law']),
+  L('c20-2-6', 'c20-u2', '2.6', "Avogadro's Law and Molar Volume", ['20-B1'],
+    ['c20-avogadro', 'c20-molar-volume'],
+    ["Relate the volume of a gas to the amount of gas with Avogadro's law", 'Use the molar volume at STP and SATP to convert between amount, volume and mass'],
+    70, ["Avogadro's law", 'mole', 'molar volume', 'STP', 'SATP']),
+  L('c20-2-7', 'c20-u2', '2.7', 'The Ideal Gas Law', ['20-B1'],
+    ['c20-ideal-gas', 'c20-gas-molar-mass'],
+    ['Use the ideal gas law, PV = nRT, to find any one of its quantities', 'Find the molar mass of a gas and identify it', 'Explain when real gases differ from an ideal gas'],
+    80, ['ideal gas law', 'gas constant', 'real gas']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'c20-u1', number: 1, title: 'The Diversity of Matter and Chemical Bonding', description: 'Atoms and ions, ionic and molecular compounds, electronegativity, Lewis structures, shapes of molecules, polarity and intermolecular forces.', outcomes: ['20-A1', '20-A2'], lessons: [], color: 'emerald' },
+  { id: 'c20-u2', number: 2, title: 'Forms of Matter: Gases', description: 'The kinetic molecular theory, pressure and temperature, and the gas laws: Boyle, Charles, Gay-Lussac, combined, Avogadro and the ideal gas law.', outcomes: ['20-B1'], lessons: [], color: 'sky' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);

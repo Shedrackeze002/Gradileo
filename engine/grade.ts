@@ -126,6 +126,9 @@ function stripUnits(s: string): string {
   // A unit is never the end of a longer word: the "in" of "min" is not inches.
   return s
     .replace(/\s*(?<![a-z])(km\/h|kph|mph|m\/s|km\/l|l\/100\s*km|mpg)\s*$/i, '')
+    // Chemistry: pressure, amount, concentration and molar mass units, and kelvins ("298 K").
+    .replace(/\s*(?<![a-z])(kpa|atm|mm\s*hg|mol\/l|g\/mol|mol)\s*$/i, '')
+    .replace(/(\d)\s*K$/, '$1')
     // A rate written with a slash ("2.50/kg", "18/h"); never maths such as 1/pi.
     .replace(/(\d)\s*\/\s*(?!(?:pi|sqrt|root|cbrt)\b)[a-z]+\s*$/i, '$1')
     .replace(/\s*(?<![a-z])(cm|mm|km|m|in|inches|inch|ft|feet|foot|yd|yards|yard|mi|miles|mile|degrees|deg|°|units?)(\^?[23²³])?\s*$/i, '')
