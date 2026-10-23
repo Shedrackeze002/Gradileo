@@ -5,7 +5,8 @@
  */
 import type { Integrity } from '@engine/integrity.ts';
 import type { TutorAnswer, TutorChunk, TutorQuestion, TutorScript } from '@engine/ai/tutor.ts';
-import type { DraftRequest, DraftResult } from '@engine/ai/builder.ts';
+import type { DraftRequest, DraftResult, RegenerateRequest, RegenerateResult } from '@engine/ai/builder.ts';
+import type { MarkResult } from '@engine/ai/marking.ts';
 import type {
   AdminAuditEntry,
   AdminClassRow,
@@ -194,6 +195,13 @@ export interface DataApi {
   setActionStatus(insightId: string, actionId: string, status: ProposedAction['status']): Promise<void>;
   /** "Draft with AI" in the assignment builder: a draft for the teacher to review (offline if the AI is off). */
   draftAssignment(classId: string, request: DraftRequest): Promise<DraftResult>;
+  /** "Regenerate" on one question in the builder: a new question in the same format and skill. */
+  regenerateQuestion(classId: string, request: RegenerateRequest): Promise<RegenerateResult>;
+  /**
+   * An AI-suggested mark for a written response, for the class's teacher. `pages` are the canvas
+   * pages as images (the teacher's browser draws them); no name is sent. Nothing is saved.
+   */
+  suggestMark(submissionId: string, itemIndex: number, pages: string[]): Promise<MarkResult>;
 
   // AI tutor (any signed-in student)
   /** What the tutor says at each step of a run of a lesson's slides (offline narration if the AI is off). */

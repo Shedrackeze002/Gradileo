@@ -1,13 +1,16 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
-import { CameraOff, ChevronLeft, ChevronRight, Clock, Eye, Lightbulb, Send, ShieldCheck } from 'lucide-react';
+import { CameraOff, ChevronLeft, ChevronRight, Clock, Eye, Lightbulb, Send, ShieldCheck, Sparkles } from 'lucide-react';
 import { isQuestionType, itemFromRef } from '@engine/assemble.ts';
 import { cameraOffCount, exitCount } from '@engine/integrity.ts';
+import { markSteps, type MarkResult } from '@engine/ai/marking.ts';
 import { api } from '@/data/index.ts';
-import { qk, useAssignment, useProfile, useRoster, useSubmission, useSubmissions } from '@/data/hooks.ts';
+import { qk, useAssignment, useProfile, useRoster, useSubmission, useSubmissions, useSuggestMark } from '@/data/hooks.ts';
 import type { Assignment, Submission } from '@/data/types.ts';
 import { Avatar, Badge, Button, Card, CardBody, EmptyState, PageHeader, PageSpinner, Textarea, useToast } from '@/components/ui/index.ts';
+import { Markdown } from '@/components/math/Markdown.tsx';
+import { canvasPageImages } from '@/features/whiteboard/pageImages.ts';
 import { ReviewList } from '@/components/question/ReviewList.tsx';
 import { SkillsGate } from '@/components/SkillsGate.tsx';
 import { refSkillIds } from '@/lib/useSkills.ts';
@@ -195,10 +198,20 @@ function ManualGrader({ s, a, index }: { s: Submission; a: Assignment; index: nu
   const qc = useQueryClient();
   const toast = useToast();
   if (!item || !item.parts.some((p) => p.answer.kind === 'manual')) return null;
-  const pts = item.points ?? 1;
-  const steps = pts <= 4 ? Array.from({ length: pts * 2 + 1 }, (_, i) => i / 2) : Array.from({ length: pts + 1 }, (_, i) => i);
+  const pts = Math.max(1, Math.round(item.points ?? 1));
+  const steps = markSteps(pts);
   return (
     <div className="space-y-3 rounded-xl border border-brand-200 bg-brand-50/40 p-4">
+      <SuggestedMark
+        s={s}
+        index={index}
+        canvas={resp?.canvas}
+        points={pts}
+        onUse={(m) => {
+          setScore(m.points / pts);
+          if (!comment.trim() && m.comment) setComment(m.comment);
+        }}
+      />
       <div className="text-sm font-semibold">Your grade</div>
       <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Points">
         {steps.map((p) => (
@@ -239,6 +252,61 @@ function ManualGrader({ s, a, index }: { s: Submission; a: Assignment; index: nu
           Save grade
         </Button>
       </div>
+    </div>
+  );
+}
+
+const CONFIDENCE = { high: 'High confidence', medium: 'Medium confidence', low: 'Low confidence' } as const;
+
+/** "Suggest a mark": the AI reads the question, the marking guide and the answer (canvas included). */
+function SuggestedMark({ s, index, canvas, points, onUse }: { s: Submission; index: number; canvas?: string; points: number; onUse: (m: { points: number; comment: string }) => void }) {
+  const suggest = useSuggestMark(s.id, index);
+  const [result, setResult] = useState<MarkResult | null>(null);
+  const m = result?.suggestion;
+  return (
+    <div className="space-y-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <Button
+          size="sm"
+          variant="soft"
+          icon={<Sparkles className="h-4 w-4" />}
+          loading={suggest.isPending}
+          onClick={async () => {
+            try {
+              setResult(await suggest.mutateAsync(canvasPageImages(canvas)));
+            } catch {
+              setResult(null);
+            }
+          }}
+        >
+          {suggest.isPending ? 'Reading the answer…' : result ? 'Suggest again' : 'Suggest a mark'}
+        </Button>
+        {!result && !suggest.isPending && <span className="text-xs text-ink-3">The AI reads the answer{canvas ? ' and the working on the canvas' : ''} against the marking guide. You decide the mark.</span>}
+      </div>
+      {suggest.isError && <p className="rounded-lg bg-bad-soft px-3 py-2 text-sm text-bad-ink">{(suggest.error as Error).message || 'Could not suggest a mark. Please try again.'}</p>}
+      {result && !m && result.note && <p className="rounded-lg bg-info-soft px-3 py-2 text-sm text-info-ink">{result.note}</p>}
+      {m && (
+        <div className="space-y-2 rounded-xl border border-line bg-surface p-3 text-sm" aria-label="Suggested mark">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-semibold">
+              Suggested: {m.points} / {points}
+            </span>
+            <Badge tone={m.confidence === 'high' ? 'good' : m.confidence === 'low' ? 'warn' : 'neutral'}>{CONFIDENCE[m.confidence]}</Badge>
+            <Button size="xs" className="ml-auto" onClick={() => onUse(m)}>
+              Use this mark
+            </Button>
+          </div>
+          <Markdown md={m.reasons} sanitize className="text-ink-2" />
+          {m.comment && (
+            <div className="text-ink-3">
+              <span className="font-medium text-ink-2">Comment for the student: </span>
+              {m.comment}
+            </div>
+          )}
+          {result.note && <p className="rounded-lg bg-warn-soft px-3 py-2 text-warn-ink">{result.note}</p>}
+          <p className="text-xs text-ink-3">A suggestion only. Nothing is saved until you choose a mark and press Save grade.</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -21,9 +21,12 @@ export interface MiniMaxConfig {
 export const DEFAULT_MODEL = 'MiniMax-M3.1-Flash';
 export const DEFAULT_BASE_URL = 'https://api.minimax.io';
 
+/** A piece of a message: text, or an image as a data URL (PNG or JPEG) for the model to read. */
+export type ChatPart = { type: 'text'; text: string } | { type: 'image_url'; image_url: { url: string } };
+
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
-  content: string;
+  content: string | ChatPart[];
 }
 
 export interface ChatResult {

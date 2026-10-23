@@ -18,7 +18,7 @@ import { refSkillIds, useSkillsReady } from '@/lib/useSkills.ts';
 import { canonicalResponses } from '@engine/answers.ts';
 import { freshSeed } from '@engine/rng.ts';
 import type { Difficulty, Item } from '@engine/types.ts';
-import { useAssignment, useClass, useMastery, usePublications, usePublishAssignment, useRoster, useSaveAssignment } from '@/data/hooks.ts';
+import { useAssignment, useClass, useMastery, usePublications, usePublishAssignment, useRoster, useSaveAssignment, useSubmissions } from '@/data/hooks.ts';
 import type { Assignment, ClassRoom, Profile, SkillMastery } from '@/data/types.ts';
 import { Avatar, Badge, Button, Card, CardBody, CardHeader, Checkbox, IconButton, Input, Modal, PageHeader, PageSpinner, Select, Switch, Tabs, Textarea, useToast } from '@/components/ui/index.ts';
 import { Markdown } from '@/components/math/Markdown.tsx';
@@ -27,11 +27,13 @@ import { VideoEmbed, videoEmbedUrl } from '@/features/lessons/LessonBlocks.tsx';
 import { fmtDateTime, fromLocalInput, toLocalInput } from '@/lib/dates.ts';
 import { uid } from '@/lib/ids.ts';
 import { cn } from '@/lib/cn.ts';
-import type { DraftResult } from '@engine/ai/builder.ts';
+import { writtenFormatOf, type DraftResult, type DraftType } from '@engine/ai/builder.ts';
+import { adviseSettings, classPace, estimateWork } from '@engine/timing.ts';
 import { TypeIcon } from '../shared/TypeIcon.tsx';
 import { skillLabel } from '../shared/derive.ts';
 import { useClassId } from './shared.tsx';
 import { DraftWithAI, type DraftMode } from './DraftWithAI.tsx';
+import { RegenerateQuestion } from './RegenerateQuestion.tsx';
 
 interface Draft {
   id?: string;
@@ -197,12 +199,16 @@ function questionCount(d: Draft): number {
   return isQuestionType(d.type) ? d.content.sections.reduce((s, x) => s + x.count, 0) + d.content.custom.length : 0;
 }
 
-function estimateMinutes(d: Draft): number {
+function estimateMinutes(d: Draft, pace?: ReadonlyMap<string, number>): number {
   if (d.type === 'lesson') return lessonById(d.content.lessonId ?? '')?.minutes ?? 30;
   if (d.type === 'video') return 10;
   if (d.type === 'reading') return d.content.lessonId ? lessonById(d.content.lessonId)?.minutes ?? 20 : 15;
-  const per = d.type === 'exam' || d.type === 'quiz' ? 3 : 2.5;
-  return Math.max(5, Math.round(questionCount(d) * per));
+  return Math.max(5, estimateWork(d.content, pace).minutes);
+}
+
+/** The lessons an assignment's questions cover (for regenerating a question with no skill of its own). */
+function coveredLessons(content: AssignmentContent): string[] {
+  return [...new Set([...content.sections.map((s) => s.skillId), ...content.custom.map((q) => q.skillId)].map((id) => (id ? skillInfo(id)?.lessonId : undefined)).filter((l): l is string => !!l))];
 }
 
 export default function AssignmentBuilder() {
@@ -222,7 +228,11 @@ export default function AssignmentBuilder() {
   const [picker, setPicker] = useState(false);
   const [preview, setPreview] = useState(false);
   const [drafting, setDrafting] = useState(false);
+  const [advising, setAdvising] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
+  // The class's past attempts, for its own pace on each skill: loaded when settings are suggested.
+  const subs = useSubmissions({ classId }, advising);
+  const pace = useMemo(() => classPace(subs.data ?? []), [subs.data]);
 
   useEffect(() => {
     if (draft) return;
@@ -261,6 +271,7 @@ export default function AssignmentBuilder() {
     ].filter(Boolean);
     setDraft({ ...d, title: d.title.trim() ? d.title : x.title, instructions: d.instructions.trim() ? d.instructions : x.instructions, content, aiRationale: notes.join(' ') || null });
     setDrafting(false);
+    setAdvising(true);
     const n = content.sections.reduce((t, s) => t + s.count, 0) + content.custom.length;
     toast({ kind: 'success', title: `Drafted: ${n} question${n === 1 ? '' : 's'}`, body: x.custom.length ? 'Check each question the AI wrote (marked below), preview it as a student, then publish.' : 'Preview it as a student, adjust anything, then publish.' });
   }
@@ -362,7 +373,7 @@ export default function AssignmentBuilder() {
               {questionType && (
                 <>
                   <SectionsEditor d={d} setContent={setContent} onAdd={() => setPicker(true)} mastery={mastery.data ?? []} roster={roster.data ?? []} published={published} courseId={course.id} />
-                  <CustomEditor d={d} setContent={setContent} />
+                  <CustomEditor d={d} setContent={setContent} classId={classId} />
                 </>
               )}
               <InstructionsEditor value={d.instructions} onChange={(instructions) => set({ instructions })} />
@@ -371,8 +382,28 @@ export default function AssignmentBuilder() {
 
           {questionType && (
             <Card>
-              <CardHeader title="3. How it works" />
+              <CardHeader
+                title="3. How it works"
+                action={
+                  <Button size="sm" variant="soft" icon={<Wand2 className="h-4 w-4" />} onClick={() => setAdvising(true)} disabled={questionCount(d) === 0}>
+                    Suggest settings
+                  </Button>
+                }
+              />
               <CardBody className="grid gap-5 pt-4 md:grid-cols-2">
+                {advising && questionCount(d) > 0 && (
+                  <SettingsAdvicePanel
+                    d={d}
+                    pace={pace}
+                    loading={subs.isLoading}
+                    onApply={(settings, shuffle) => {
+                      setDraft({ ...d, settings: { ...d.settings, ...settings }, content: shuffle === undefined ? d.content : { ...d.content, shuffle } });
+                      setAdvising(false);
+                      toast({ kind: 'success', title: 'Settings updated' });
+                    }}
+                    onClose={() => setAdvising(false)}
+                  />
+                )}
                 <Select label="Feedback" value={d.settings.feedback} onChange={(e) => setSettings({ feedback: e.target.value as AssignmentSettings['feedback'] })} hint="Instant feedback lets students check each answer as they go.">
                   <option value="instant">Instant, after each question</option>
                   <option value="after_submit">After they submit</option>
@@ -463,7 +494,7 @@ export default function AssignmentBuilder() {
             </div>
             <dl className="space-y-2 text-sm">
               {questionType && <Row label="Questions">{questionCount(d)}</Row>}
-              <Row label="About">{estimateMinutes(d)} min</Row>
+              <Row label="About">{estimateMinutes(d, pace)} min</Row>
               <Row label="Due">{d.dueAt ? fmtDateTime(d.dueAt) : 'No due date'}</Row>
               <Row label="For">{d.assignedTo === 'all' ? `Whole class (${roster.data?.length ?? 0})` : `${d.assignedTo.length} student${d.assignedTo.length === 1 ? '' : 's'}`}</Row>
               <Row label="Reminders">{d.reminderHours.length ? [...d.reminderHours].sort((a, b) => b - a).map(hoursLabel).join(', ') : 'Off'}</Row>
@@ -518,6 +549,43 @@ export default function AssignmentBuilder() {
           onDraft={applyDraft}
         />
       )}
+    </div>
+  );
+}
+
+/** "Suggest settings": the working time, and settings that suit the kind of work (engine/timing.ts). */
+function SettingsAdvicePanel({ d, pace, loading, onApply, onClose }: { d: Draft; pace: ReadonlyMap<string, number>; loading: boolean; onApply: (settings: Partial<AssignmentSettings>, shuffle?: boolean) => void; onClose: () => void }) {
+  const advice = adviseSettings(d.type, d.content, d.settings, pace);
+  const changes = Object.keys(advice.settings).length + (advice.shuffle === undefined ? 0 : 1);
+  return (
+    <div className="space-y-2 rounded-xl border border-brand-200 bg-brand-50/50 p-4 text-sm md:col-span-2" aria-label="Suggested settings">
+      <div className="flex items-start gap-2">
+        <Wand2 className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
+        <div className="min-w-0 flex-1">
+          <div className="font-semibold text-brand-800">Suggested settings</div>
+          <p className="text-ink-2">
+            About {advice.minutes} minute{advice.minutes === 1 ? '' : 's'} of work for a typical student{advice.fromClass ? ', from how long this class has taken on these skills before' : ''}{loading ? ' (checking this class’s pace…)' : ''}.
+            {changes === 0 && ` Your settings already suit this ${TYPE_LABEL[d.type].toLowerCase()}.`}
+          </p>
+          {changes > 0 && (
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-ink-2">
+              {advice.reasons.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+      <div className="flex justify-end gap-2">
+        <Button size="sm" variant="ghost" onClick={onClose}>
+          {changes ? 'Not now' : 'Close'}
+        </Button>
+        {changes > 0 && (
+          <Button size="sm" onClick={() => onApply(advice.settings, advice.shuffle)}>
+            Use these settings
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
@@ -756,8 +824,11 @@ function newQuestion(kind: CustomQuestion['kind']): CustomQuestion {
   return base;
 }
 
-function CustomEditor({ d, setContent }: { d: Draft; setContent: (p: Partial<AssignmentContent>) => void }) {
+function CustomEditor({ d, setContent, classId }: { d: Draft; setContent: (p: Partial<AssignmentContent>) => void; classId: string }) {
   const qs = d.content.custom;
+  const [regenerating, setRegenerating] = useState<string | null>(null);
+  const lessons = coveredLessons(d.content);
+  const target = qs.find((q) => q.id === regenerating);
   const offset = d.content.sections.reduce((s, x) => s + x.count, 0);
   const update = (i: number, q: CustomQuestion) => setContent({ custom: qs.map((x, j) => (j === i ? q : x)) });
   const skillOptions = [...new Set([...d.content.sections.map((s) => s.skillId), ...qs.map((q) => q.skillId).filter((s): s is string => !!s)])];
@@ -777,13 +848,34 @@ function CustomEditor({ d, setContent }: { d: Draft; setContent: (p: Partial<Ass
         </div>
       </div>
       {qs.map((q, i) => (
-        <QuestionEditor key={q.id} q={q} number={offset + i + 1} onChange={(nq) => update(i, nq)} onRemove={() => setContent({ custom: qs.filter((_, j) => j !== i) })} skillOptions={skillOptions} />
+        <QuestionEditor
+          key={q.id}
+          q={q}
+          number={offset + i + 1}
+          onChange={(nq) => update(i, nq)}
+          onRemove={() => setContent({ custom: qs.filter((_, j) => j !== i) })}
+          onRegenerate={writtenFormatOf(q) && (q.skillId || lessons.length) ? () => setRegenerating(q.id) : undefined}
+          skillOptions={skillOptions}
+        />
       ))}
+      {target && (
+        <RegenerateQuestion
+          classId={classId}
+          type={d.type as DraftType}
+          question={target}
+          lessonIds={lessons}
+          onClose={() => setRegenerating(null)}
+          onReplace={(nq) => {
+            setContent({ custom: qs.map((x) => (x.id === target.id ? nq : x)) });
+            setRegenerating(null);
+          }}
+        />
+      )}
     </div>
   );
 }
 
-function QuestionEditor({ q, number, onChange, onRemove, skillOptions }: { q: CustomQuestion; number: number; onChange: (q: CustomQuestion) => void; onRemove: () => void; skillOptions: string[] }) {
+function QuestionEditor({ q, number, onChange, onRemove, onRegenerate, skillOptions }: { q: CustomQuestion; number: number; onChange: (q: CustomQuestion) => void; onRemove: () => void; onRegenerate?: () => void; skillOptions: string[] }) {
   const [showSolution, setShowSolution] = useState(!!q.solution);
   const isCorrect = (id: string) => (q.kind === 'mc' ? q.correct === id : Array.isArray(q.correct) && q.correct.includes(id));
   const toggleCorrect = (id: string) => {
@@ -813,6 +905,11 @@ function QuestionEditor({ q, number, onChange, onRemove, skillOptions }: { q: Cu
             Points
             <input type="number" min={1} max={20} className="input h-8 w-16 py-0 text-sm" value={q.points ?? 1} onChange={(e) => onChange({ ...q, points: Math.max(1, Math.min(20, Number(e.target.value) || 1)) })} />
           </label>
+          {onRegenerate && (
+            <Button size="xs" variant="ghost" icon={<RefreshCw className="h-3.5 w-3.5" />} onClick={onRegenerate}>
+              Regenerate
+            </Button>
+          )}
           <IconButton label="Remove question" className="h-8 w-8" onClick={onRemove}>
             <Trash2 className="h-4 w-4" />
           </IconButton>
