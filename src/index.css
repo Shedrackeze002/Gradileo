@@ -201,6 +201,17 @@
   button:disabled {
     cursor: not-allowed;
   }
+  /* Drawing with a pencil or finger: no text selection, magnifier or callout (iPad Safari). */
+  .ink-surface,
+  .ink-drawing,
+  .ink-drawing * {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  .ink-surface {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @layer components {

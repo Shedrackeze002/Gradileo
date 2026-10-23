@@ -4,7 +4,10 @@
  *  - a pen's pressure sets the line width, and its eraser end (or barrel button) erases;
  *  - palm rejection: once a pen is in use, fingers are ignored, a broad contact (a palm) is always
  *    ignored, and a pen that lands while a resting hand is "drawing" replaces that stroke;
- *  - coalesced events keep fast pen strokes smooth.
+ *  - coalesced events keep fast pen strokes smooth;
+ *  - on an iPad, Safari treats a pencil or finger moving over the page as text selection (it
+ *    highlights instead of drawing), so the canvas cancels its touch events and the page cannot be
+ *    selected while a stroke is drawn.
  */
 import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { drawBackground, drawStroke, drawStrokes, hitStroke, pointerPressure, StrokeBuilder, type BoardBackground, type InkColor, type Stroke } from '@/lib/ink.ts';
@@ -102,6 +105,25 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
 
   useEffect(() => () => cancelAnimationFrame(frame.current), []);
 
+  // Safari on iPad starts text selection (and its magnifier) from touches even with touch-action:
+  // none. Cancelling them needs non-passive listeners, which React's touch handlers are not.
+  useEffect(() => {
+    const c = live.current;
+    if (!c || !active) return;
+    const cancel = (e: TouchEvent) => {
+      if (e.cancelable) e.preventDefault();
+    };
+    c.addEventListener('touchstart', cancel, { passive: false });
+    c.addEventListener('touchmove', cancel, { passive: false });
+    return () => {
+      c.removeEventListener('touchstart', cancel);
+      c.removeEventListener('touchmove', cancel);
+    };
+  }, [active]);
+
+  // While a stroke is drawn nothing on the page can be selected, even where the pen strays off the board.
+  useEffect(() => () => lockSelection(false), []);
+
   const drawLive = () => {
     cancelAnimationFrame(frame.current);
     frame.current = requestAnimationFrame(() => {
@@ -129,6 +151,7 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
     const a = cur.current;
     cur.current = null;
     if (!a) return;
+    lockSelection(false);
     const { strokes: now, onCommit: commitFn } = latest.current;
     if (a.erasing) {
       const gone = erased.current;
@@ -171,6 +194,7 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
     } catch {
       /* the pointer may already be gone; the stroke still ends on pointerup */
     }
+    lockSelection(true);
     const a: Active = { id: e.pointerId, type: e.pointerType, rect: e.currentTarget.getBoundingClientRect() };
     const [x, y] = toBoard(a, e);
     // The eraser end of a stylus reports button 5 (buttons bit 32).
@@ -206,7 +230,7 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
   };
 
   return (
-    <div ref={box} className={cn('relative h-full w-full', !active && 'pointer-events-none', className)}>
+    <div ref={box} className={cn('relative h-full w-full', active ? 'ink-surface' : 'pointer-events-none', className)}>
       <canvas ref={base} className="absolute inset-0 h-full w-full" aria-hidden="true" />
       <canvas
         ref={live}
@@ -223,4 +247,10 @@ export function InkSurface({ strokes, onCommit, mode, color, size, unitsWide, ba
       />
     </div>
   );
+}
+
+/** Stop the page's text from being selected (and clear any selection) while a stroke is drawn. */
+function lockSelection(on: boolean) {
+  document.documentElement.classList.toggle('ink-drawing', on);
+  if (on) window.getSelection()?.removeAllRanges();
 }
