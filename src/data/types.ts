@@ -351,6 +351,30 @@ export interface Insight {
   error?: string | null;
 }
 
+/** Who sees a forum question: only the teacher, the whole class, or the class without the author's name. */
+export type ForumVisibility = 'teacher' | 'class' | 'anonymous';
+
+/** A question (topicId null) or a reply in a class's forum, as the reader may see it. */
+export interface ForumPost {
+  id: string;
+  classId: string;
+  topicId: string | null;
+  /** Questions only. */
+  title: string | null;
+  body: string;
+  visibility: ForumVisibility;
+  pinned: boolean;
+  answered: boolean;
+  /** Hidden from the class by the teacher (the teacher and the author still see it). */
+  hidden: boolean;
+  createdAt: string;
+  /** Null when the reader may not know it (a classmate's question posted without a name). */
+  authorId: string | null;
+  authorName: string;
+  authorRole: 'teacher' | 'student';
+  mine: boolean;
+}
+
 /** A student's report card (engine/ai/reportCard.ts): a draft until the teacher shares it. */
 export interface ReportCard {
   id: string;

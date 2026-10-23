@@ -147,6 +147,23 @@ student's note) and the teacher approves, which enrols the student, or declines.
 student is notified. Mastery belongs to the student, so what they studied on their own counts in
 the class straight away.
 
+## Class forum (`src/features/forum/`)
+
+Questions and replies live in `forum_posts`, which has no policies or grants: every read goes
+through `class_forum(class)` and every write through `forum_post`, `forum_moderate` and
+`forum_delete` (security definer). That is what keeps a question posted "without my name"
+anonymous: the function returns no author for it, or for its author's replies under it, to anyone
+but the teacher and the author. Students see classmates as a first name and an initial. The demo
+applies the same rules in `src/data/demo/forum.ts`, and the database tests check them.
+
+## Report cards (`engine/ai/reportCard.ts`, `src/features/reports/`, `src/features/teacher/ReportCard*.tsx`)
+
+`report_cards` holds each card's content (with {name} for the first name) and status; teachers
+read and edit their class's cards, and students their own shared ones, under row-level security.
+`share_report_card` shares or unshares (ending the link), `report_card_link` makes the private
+link's 64-character token, and `shared_report_card(token)` is the only function open without
+signing in. The card prints on its own: the app's menus carry `print:hidden`.
+
 ## Exam mode (`engine/integrity.ts`, `src/features/player/ExamMode.tsx`)
 
 Teachers can turn on exam mode for a quiz or exam. The student reads what it means (and, with

@@ -44,6 +44,8 @@ import type {
   ProposedAction,
   ReportCard,
   SharedReportCard,
+  ForumPost,
+  ForumVisibility,
   Publication,
   Resource,
   Role,
@@ -205,6 +207,16 @@ export interface DataApi {
    * pages as images (the teacher's browser draws them); no name is sent. Nothing is saved.
    */
   suggestMark(submissionId: string, itemIndex: number, pages: string[]): Promise<MarkResult>;
+
+  // Class forum: students' questions and replies; the teacher sees every author and moderates
+  /** The class's forum as the caller may see it, oldest first. */
+  listForum(classId: string): Promise<ForumPost[]>;
+  /** A new question (no topicId, with a title) or a reply; returns its id. */
+  forumPost(input: { classId: string; topicId?: string | null; title?: string; body: string; visibility?: ForumVisibility }): Promise<string>;
+  /** The teacher pins, marks answered or hides a post; a question's author may mark it answered. */
+  moderateForumPost(id: string, patch: { pinned?: boolean; answered?: boolean; hidden?: boolean }): Promise<void>;
+  /** Its author or the teacher removes a post (a question with its replies). */
+  deleteForumPost(id: string): Promise<void>;
 
   // Report cards: the AI drafts one for a student, the teacher edits and shares it
   /** Teachers get their class's cards; a student gets their own shared ones. Newest first. */

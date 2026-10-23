@@ -38,7 +38,9 @@ export default function PrivacyPage() {
         </p>
         <p>
           <strong>Learning information.</strong> Answers to questions, scores, feedback, progress on skills, practice history, whiteboard drawings, answers
-          to live class questions, lesson edit suggestions from teachers, and the results of AI analyses that teachers run. When a teacher turns on exam
+          to live class questions, posts in the class forum, report cards, lesson edit suggestions from teachers, and the results of AI analyses that
+          teachers run. A forum question is seen by the people its author chooses: only the teacher, the whole class, or the whole class without the
+          author’s name (the teacher always sees who wrote it). When a teacher turns on exam
           mode for an assessment, we also record when a student leaves full screen or switches tabs during that assessment.
         </p>
         <p>

@@ -23,6 +23,7 @@ import type {
   Submission,
 } from '../types.ts';
 import { getItem, removeItem, setItem } from '@/lib/storage.ts';
+import type { DemoForumPost } from './forum.ts';
 
 export interface DemoUser extends Profile {
   password: string;
@@ -77,6 +78,8 @@ export interface DemoDB {
   videoLinks?: Record<string, string>;
   /** Students' report cards (added later). */
   reportCards?: ReportCard[];
+  /** Class forums' questions and replies (added later). */
+  forumPosts?: DemoForumPost[];
 }
 
 export interface DemoJoinRequest {

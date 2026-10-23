@@ -33,6 +33,10 @@ const Insights = lazy(() => import('./features/teacher/InsightsPage.tsx'));
 const ClassSettings = lazy(() => import('./features/teacher/ClassSettingsPage.tsx'));
 const ReportCards = lazy(() => import('./features/teacher/ReportCardsPage.tsx'));
 const ReportCardEditor = lazy(() => import('./features/teacher/ReportCardEditor.tsx'));
+const TeacherForum = lazy(() => import('./features/forum/ForumPages.tsx').then((m) => ({ default: m.TeacherForumPage })));
+const TeacherForumTopic = lazy(() => import('./features/forum/ForumPages.tsx').then((m) => ({ default: m.TeacherForumTopicPage })));
+const StudentForum = lazy(() => import('./features/forum/ForumPages.tsx').then((m) => ({ default: m.StudentForumPage })));
+const StudentForumTopic = lazy(() => import('./features/forum/ForumPages.tsx').then((m) => ({ default: m.StudentForumTopicPage })));
 const PresentMode = lazy(() => import('./features/lessons/PresentMode.tsx'));
 
 const StudentHome = lazy(() => import('./features/student/StudentHome.tsx'));
@@ -106,6 +110,8 @@ export default function App() {
                     <Route path="c/:classId/settings" element={<ClassSettings />} />
                     <Route path="c/:classId/reports" element={<ReportCards />} />
                     <Route path="c/:classId/reports/:reportId" element={<ReportCardEditor />} />
+                    <Route path="c/:classId/forum" element={<TeacherForum />} />
+                    <Route path="c/:classId/forum/:topicId" element={<TeacherForumTopic />} />
                   </Route>
                   <Route path="/present/:classId/:lessonId" element={<RequireRole role="teacher"><PresentMode /></RequireRole>} />
 
@@ -119,6 +125,8 @@ export default function App() {
                     <Route path="work/:assignmentId" element={<AssignmentIntro />} />
                     <Route path="progress" element={<Progress />} />
                     <Route path="reports/:reportId" element={<StudentReport />} />
+                    <Route path="forum" element={<StudentForum />} />
+                    <Route path="forum/:topicId" element={<StudentForumTopic />} />
                     <Route path="live" element={<LiveAnswer />} />
                   </Route>
                   <Route path="/s/work/:assignmentId/take" element={<RequireRole role="student"><Player /></RequireRole>} />
