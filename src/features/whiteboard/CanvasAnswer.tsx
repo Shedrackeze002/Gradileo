@@ -130,6 +130,7 @@ export function CanvasAnswer({ text, onText, canvas, onCanvas, placeholder }: Ca
       {/* The canvas stays mounted while the student types, so the board keeps its size and history. */}
       <div className={cn(tab !== 'canvas' && 'hidden', full ? 'flex min-h-0 flex-1 flex-col gap-3' : 'space-y-3')}>
         <InkToolbar
+          pickerSide="bottom"
           className="mx-auto w-fit"
           tools={tools}
           onUndo={() => updatePage((p) => ({ ...p, doc: inkUndo(p.doc) }))}
@@ -146,6 +147,7 @@ export function CanvasAnswer({ text, onText, canvas, onCanvas, placeholder }: Ca
                 strokes={page.doc.strokes}
                 onCommit={(strokes) => updatePage((p) => ({ ...p, doc: inkCommit(p.doc, strokes) }))}
                 mode={tools.mode}
+                shape={tools.shape}
                 color={tools.color}
                 size={tools.size}
                 unitsWide={BOARD_W}

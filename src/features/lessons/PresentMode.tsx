@@ -300,6 +300,8 @@ export default function PresentMode() {
       else if (drawing && lower === 'p') tools.setMode('pen');
       else if (drawing && lower === 'h') tools.setMode('highlighter');
       else if (drawing && lower === 'e') tools.setMode('eraser');
+      else if (drawing && lower === 's') tools.setMode('shape');
+      else if (drawing && lower === 'l') tools.setMode('pointer');
       else if (lower === 'w') setBoardOpen(true);
       else if (lower === 'd') setDrawing((d) => !d);
       else if (lower === 't') setTimerOpen(true);
@@ -535,6 +537,7 @@ export default function PresentMode() {
                   strokes={note.strokes}
                   onCommit={(strokes) => editNote((d) => inkCommit(d, strokes))}
                   mode={tools.mode}
+                  shape={tools.shape}
                   color={tools.color}
                   size={tools.size}
                   unitsWide={SLIDE_W}
