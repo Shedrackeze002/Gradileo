@@ -135,6 +135,16 @@ describe('numeric', () => {
     expect(gradePart({ kind: 'numeric', value: 1 / Math.PI }, '1/pi').correct).toBe(true);
     expect(gradePart({ kind: 'numeric', value: 45 }, '45 m').correct).toBe(true);
   });
+  it('accepts scientific notation only where the answer allows it', () => {
+    const sci = { kind: 'numeric' as const, value: 0.0025, tolerance: 0.00006, allowExpression: true, scientific: true };
+    for (const typed of ['2.5e-3', '2.5E-3', '2.5 x 10^-3', '2.5x10^-3', '2.5×10^-3', '2.5 × 10^(-3)', '2.5*10^-3', '2.5 × 10⁻³', '0.0025', '2.5e-3 mol/L']) {
+      expect(gradePart(sci, typed).correct, typed).toBe(true);
+    }
+    expect(gradePart(sci, '2.5e-4').correct).toBe(false);
+    expect(gradePart({ kind: 'numeric', value: 4.2e5, tolerance: 1, allowExpression: true, scientific: true }, '4.2e5').correct).toBe(true);
+    // A maths answer asking for standard form does not take scientific notation.
+    expect(gradePart({ kind: 'numeric', value: 320000, decimals: 0 }, '3.2 x 10^5').correct).toBe(false);
+  });
   it('accepts the units of chemistry answers', () => {
     for (const [value, typed] of [[245, '245 kPa'], [245, '245kPa'], [1.25, '1.25 atm'], [760, '760 mm Hg'], [760, '760mmHg'], [298, '298 K'], [298, '298K'], [0.25, '0.25 mol'], [0.25, '0.25 mol/L'], [32, '32.0 g/mol']] as const) {
       expect(gradePart({ kind: 'numeric', value, decimals: 1 }, typed).correct, typed).toBe(true);

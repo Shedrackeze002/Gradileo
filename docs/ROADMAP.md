@@ -586,9 +586,9 @@ items ship or decisions change.
      coefficients (PR #78).
    - Chemistry 20 is being written a unit at a time as a draft course (`draft: true`): it runs
      everywhere but the course pickers, so no class can start it until all four units are in.
-     Unit 1, The Diversity of Matter and Chemical Bonding (8 lessons, 18 skills, PR #79), and
-     Unit 2, Forms of Matter: Gases (7 lessons, 12 skills), are built. Next: Unit 3 (solutions,
-     acids and bases), Unit 4 (stoichiometry), then the choice of
+     Unit 1, The Diversity of Matter and Chemical Bonding (8 lessons, 18 skills, PR #79), Unit 2,
+     Forms of Matter: Gases (7 lessons, 12 skills, PR #80), and Unit 3, Matter as Solutions, Acids
+     and Bases (8 lessons, 15 skills), are built. Next: Unit 4 (stoichiometry), then the choice of
      subject in sign-up and course placement, the course's videos, and the AI tutor's recorded voice
      for chemistry (it reads `\ce{…}` formulas aloud first; the recording workflow takes only the
      `math*` course folders until then).

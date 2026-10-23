@@ -12,6 +12,8 @@ export const OUTCOMES: Outcome[] = [
   { code: '20-A1', strand: 'The Diversity of Matter and Chemical Bonding', text: 'Describe the role of modelling, evidence and theory in explaining and understanding the structure, chemical bonding and properties of ionic compounds.' },
   { code: '20-A2', strand: 'The Diversity of Matter and Chemical Bonding', text: 'Describe the role of modelling, evidence and theory in explaining and understanding the structure, chemical bonding and properties of molecular substances.' },
   { code: '20-B1', strand: 'Forms of Matter: Gases', text: 'Explain molecular behaviour, using models of the gaseous state of matter.' },
+  { code: '20-C1', strand: 'Matter as Solutions, Acids and Bases', text: 'Investigate solutions, describing their physical and chemical properties.' },
+  { code: '20-C2', strand: 'Matter as Solutions, Acids and Bases', text: 'Describe acidic and basic solutions qualitatively and quantitatively.' },
 ];
 
 const L = (
@@ -90,11 +92,46 @@ export const LESSONS: LessonMeta[] = [
     ['c20-ideal-gas', 'c20-gas-molar-mass'],
     ['Use the ideal gas law, PV = nRT, to find any one of its quantities', 'Find the molar mass of a gas and identify it', 'Explain when real gases differ from an ideal gas'],
     80, ['ideal gas law', 'gas constant', 'real gas']),
+
+  // ---------------- Unit 3: Matter as Solutions, Acids and Bases ----------------
+  L('c20-3-1', 'c20-u3', '3.1', 'Solutions, Electrolytes and Dissociation', ['20-C1'],
+    ['c20-electrolyte', 'c20-dissociation'],
+    ['Describe solutions, solutes and solvents', 'Tell electrolytes from non-electrolytes, and explain why', 'Write dissociation equations for ionic compounds'],
+    70, ['solution', 'solute', 'solvent', 'aqueous', 'electrolyte', 'non-electrolyte', 'dissociation']),
+  L('c20-3-2', 'c20-u3', '3.2', 'Solubility and Precipitates', ['20-C1'],
+    ['c20-solubility'],
+    ['Describe saturated solutions and solubility', 'Use solubility rules to decide whether an ionic compound dissolves', 'Predict the precipitate that forms when two solutions are mixed'],
+    75, ['solubility', 'saturated', 'unsaturated', 'precipitate']),
+  L('c20-3-3', 'c20-u3', '3.3', 'Percent Concentration and Parts per Million', ['20-C1'],
+    ['c20-percent-conc', 'c20-ppm'],
+    ['Find concentrations as percent by volume, by mass per volume and by mass', 'Use parts per million for very dilute solutions'],
+    70, ['concentration', 'percent by volume', 'percent by mass', 'parts per million']),
+  L('c20-3-4', 'c20-u3', '3.4', 'Molar Concentration', ['20-C1'],
+    ['c20-molar-conc', 'c20-ion-conc'],
+    ['Use c = n/V to find a molar concentration, an amount or a volume', 'Find the mass of solute needed to make a solution', 'Find the concentration of each ion in a solution of an ionic compound'],
+    80, ['molar concentration', 'standard solution', 'volumetric flask']),
+  L('c20-3-5', 'c20-u3', '3.5', 'Dilution', ['20-C1'],
+    ['c20-dilution'],
+    ['Use c1V1 = c2V2 to plan and calculate a dilution', 'Describe how to prepare a solution by dilution'],
+    65, ['dilution', 'stock solution']),
+  L('c20-3-6', 'c20-u3', '3.6', 'Acids, Bases and Neutralisation', ['20-C2'],
+    ['c20-acid-base', 'c20-neutralisation'],
+    ['Describe the properties of acidic, basic and neutral solutions', 'Explain acids and bases with hydronium and hydroxide ions', 'Predict the salt and water made when an acid neutralises a base'],
+    75, ['acid', 'base', 'hydronium ion', 'hydroxide ion', 'indicator', 'neutralisation', 'salt']),
+  L('c20-3-7', 'c20-u3', '3.7', 'pH and pOH', ['20-C2'],
+    ['c20-ph', 'c20-ph-conc', 'c20-ph-scale'],
+    ['Find the pH or pOH from an ion concentration, and the concentration from the pH', 'Explain the logarithmic pH scale'],
+    80, ['pH', 'pOH', 'logarithmic scale']),
+  L('c20-3-8', 'c20-u3', '3.8', 'Strong and Weak Acids and Bases', ['20-C2'],
+    ['c20-strong-weak', 'c20-strong-ph'],
+    ['Tell strong acids from weak acids, and concentrated from strong', 'Find the pH of a solution of a strong acid or a strong base'],
+    70, ['strong acid', 'weak acid', 'strong base', 'ionisation']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'c20-u1', number: 1, title: 'The Diversity of Matter and Chemical Bonding', description: 'Atoms and ions, ionic and molecular compounds, electronegativity, Lewis structures, shapes of molecules, polarity and intermolecular forces.', outcomes: ['20-A1', '20-A2'], lessons: [], color: 'emerald' },
   { id: 'c20-u2', number: 2, title: 'Forms of Matter: Gases', description: 'The kinetic molecular theory, pressure and temperature, and the gas laws: Boyle, Charles, Gay-Lussac, combined, Avogadro and the ideal gas law.', outcomes: ['20-B1'], lessons: [], color: 'sky' },
+  { id: 'c20-u3', number: 3, title: 'Matter as Solutions, Acids and Bases', description: 'Electrolytes and dissociation, solubility, concentration and dilution, acids and bases, pH and pOH, and strong and weak acids.', outcomes: ['20-C1', '20-C2'], lessons: [], color: 'violet' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);

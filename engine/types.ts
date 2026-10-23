@@ -66,6 +66,12 @@ export type AnswerSpec =
       fraction?: 'lowest' | 'mixed';
       /** The answer must be written as a decimal, not a fraction ("Write 3/8 as a decimal"). */
       asDecimal?: boolean;
+      /**
+       * Accept scientific notation as typed on a calculator or keyboard (2.5e-3, 2.5 x 10^-3,
+       * 2.5×10⁻³) as a plain number. For chemistry quantities; off where a question asks for
+       * standard form.
+       */
+      scientific?: boolean;
     }
   | {
       kind: 'numbers';

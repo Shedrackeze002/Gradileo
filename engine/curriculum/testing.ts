@@ -16,7 +16,8 @@ export function checkSkill(s: SkillDef, seeds = Number(process.env.GEN_SEEDS ?? 
         expect(item.solution.length, ctx).toBeGreaterThan(0);
         expect(item.hints.length, ctx).toBeGreaterThan(0);
         const text = JSON.stringify(item);
-        expect(text.includes('NaN'), `${ctx} contains NaN: ${text.slice(0, 400)}`).toBe(false);
+        // A whole word: NaNO3 (sodium nitrate) is a formula, not a leaked NaN.
+        expect(/\bNaN\b/.test(text), `${ctx} contains NaN: ${text.slice(0, 400)}`).toBe(false);
         expect(/\bInfinity\b/.test(text), `${ctx} contains Infinity`).toBe(false);
         // A leaked JavaScript value shows up inside maths ($...$); "undefined" as a word (an undefined slope) is fine.
         const maths = (item.prompt + item.hints.join(' ') + item.solution.join(' ') + (item.answerDisplay ?? '')).match(/\$[^$]*\$/g) ?? [];
