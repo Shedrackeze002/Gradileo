@@ -1,13 +1,26 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { cn } from '@/lib/cn.ts';
 
+/** Space between the trigger and the menu, and between the menu and the edge of the window. */
+const GAP = 8;
+
+/**
+ * A button's drop-down menu. It is drawn over the whole page (in a portal, fixed in place beside
+ * its trigger) so a card that clips its content, or the cards after it, never hide it; it opens
+ * upwards when there is no room below.
+ */
 export function Menu({ trigger, children, align = 'right', className }: { trigger: (open: boolean) => ReactNode; children: (close: () => void) => ReactNode; align?: 'left' | 'right'; className?: string }) {
   const [open, setOpen] = useState(false);
+  const [pos, setPos] = useState<{ top: number; left?: number; right?: number } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const pop = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (!open) return;
     const onDoc = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      if (!ref.current?.contains(t) && !pop.current?.contains(t)) setOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -22,14 +35,46 @@ export function Menu({ trigger, children, align = 'right', className }: { trigge
       document.removeEventListener('keydown', onKey);
     };
   }, [open]);
+
+  // Placed before the browser paints (measured while hidden), and again as the page scrolls or resizes.
+  useLayoutEffect(() => {
+    if (!open) return setPos(null);
+    const place = () => {
+      const r = ref.current?.getBoundingClientRect();
+      if (!r) return;
+      const h = pop.current?.offsetHeight ?? 0;
+      const below = r.bottom + GAP;
+      const top = below + h > window.innerHeight - GAP && r.top - GAP - h >= GAP ? r.top - GAP - h : below;
+      setPos(align === 'right' ? { top, right: Math.max(GAP, window.innerWidth - r.right) } : { top, left: Math.max(GAP, r.left) });
+    };
+    place();
+    window.addEventListener('resize', place);
+    window.addEventListener('scroll', place, true);
+    return () => {
+      window.removeEventListener('resize', place);
+      window.removeEventListener('scroll', place, true);
+    };
+  }, [open, align]);
+
+  // Keyboard users land on the first item: the menu is no longer next to its trigger in the page.
+  useEffect(() => {
+    if (open && pos) pop.current?.querySelector<HTMLElement>('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])')?.focus({ preventScroll: true });
+  }, [open, pos !== null]);
+
   return (
     <div ref={ref} className="relative">
       <div onClick={() => setOpen((o) => !o)}>{trigger(open)}</div>
-      {open && (
-        <div className={cn('absolute z-40 mt-2 min-w-[220px] animate-slide-up rounded-xl border border-line bg-surface p-1.5 shadow-pop', align === 'right' ? 'right-0' : 'left-0', className)}>
-          {children(() => setOpen(false))}
-        </div>
-      )}
+      {open &&
+        createPortal(
+          <div
+            ref={pop}
+            style={{ position: 'fixed', top: pos?.top ?? 0, left: pos?.left, right: pos?.right, visibility: pos ? undefined : 'hidden' }}
+            className={cn('z-[65] max-h-[calc(100vh-16px)] min-w-[220px] animate-slide-up overflow-y-auto rounded-xl border border-line bg-surface p-1.5 shadow-pop', className)}
+          >
+            {children(() => setOpen(false))}
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }

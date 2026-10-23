@@ -671,6 +671,12 @@ function InstructionsEditor({ value, onChange }: { value: string; onChange: (v: 
 
 // ---------------------------------------------------------------- skills
 
+/** "Questions 1–5", "Question 6", or with a prefix "Q1–5", "Q6". */
+function range(from: number, to: number, prefix?: 'Q'): string {
+  const span = to > from ? `${from}–${to}` : `${from}`;
+  return prefix ? `${prefix}${span}` : `${to > from ? 'Questions' : 'Question'} ${span}`;
+}
+
 function classStruggles(mastery: SkillMastery[], published: Set<string>, courseId: string) {
   const course = getCourse(courseId)!;
   const taught = course.lessons.filter((l) => published.has(l.id)).flatMap((l) => l.skills);
@@ -689,10 +695,16 @@ function SectionsEditor({ d, setContent, onAdd, mastery, published, courseId }: 
   const sections = d.content.sections;
   const update = (i: number, patch: Partial<SkillSection>) => setContent({ sections: sections.map((s, j) => (j === i ? { ...s, ...patch } : s)) });
   const struggles = classStruggles(mastery, published, courseId).filter((x) => !sections.some((s) => s.skillId === x.skillId));
+  const total = sections.reduce((t, s) => t + s.count, 0);
+  // Each skill's questions are numbered in order, before the teacher's own questions.
+  const starts = sections.map((_, i) => sections.slice(0, i).reduce((t, s) => t + s.count, 0) + 1);
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <div className="label mb-0">Skills</div>
+      <div className="flex items-center justify-between gap-2">
+        <div>
+          <div className="label mb-0">Generated questions{total > 0 && <span className="font-normal text-ink-3"> · {range(1, total)}</span>}</div>
+          {total > 0 && <div className="text-xs text-ink-3">Each student gets fresh numbers, marked automatically, with hints and worked solutions. Change how many and how hard; their wording comes from the course, so preview the assignment to see them.</div>}
+        </div>
         <Button size="sm" variant="soft" icon={<Plus className="h-4 w-4" />} onClick={onAdd}>
           Add skills
         </Button>
@@ -703,6 +715,7 @@ function SectionsEditor({ d, setContent, onAdd, mastery, published, courseId }: 
         const lesson = skill ? lessonById(skill.lessonId) : undefined;
         return (
           <div key={s.skillId} className="flex flex-wrap items-center gap-3 rounded-xl border border-line px-3 py-2.5">
+            <span className="w-14 shrink-0 text-sm font-semibold tabular-nums text-ink-2">{range(starts[i], starts[i] + s.count - 1, 'Q')}</span>
             <div className="min-w-0 flex-1 basis-48">
               <div className="text-sm font-medium">{skill?.name ?? s.skillId}</div>
               <div className="truncate text-xs text-ink-3">
@@ -837,8 +850,10 @@ function CustomEditor({ d, setContent, classId }: { d: Draft; setContent: (p: Pa
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <div className="label mb-0">Your own questions</div>
-          <div className="text-xs text-ink-3">Optional. Students answer written responses on a canvas or by typing, and they appear in your grading queue.</div>
+          <div className="label mb-0">Your own questions{qs.length > 0 && <span className="font-normal text-ink-3"> · {range(offset + 1, offset + qs.length)}</span>}</div>
+          <div className="text-xs text-ink-3">
+            {offset > 0 && qs.length > 0 && `They come after the generated questions (${range(1, offset).toLowerCase()}, above). `}Optional. Students answer written responses on a canvas or by typing, and they appear in your grading queue.
+          </div>
         </div>
         <div className="flex flex-wrap gap-1.5">
           {(Object.keys(KIND_LABEL) as CustomQuestion['kind'][]).map((k) => (
