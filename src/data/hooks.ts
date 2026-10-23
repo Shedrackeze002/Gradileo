@@ -368,6 +368,9 @@ export function useDraftAssignment(classId: string) {
   return useMutation({ mutationFn: (request: DraftRequest) => api().draftAssignment(classId, request) });
 }
 
+/** The class's forum, refreshed every half minute while it is open. */
+export const useForum = (classId: string | undefined) => useQuery({ queryKey: ['forum', classId], queryFn: () => api().listForum(classId!), enabled: !!classId, refetchInterval: 30_000 });
+
 export const useReportCards = (f: { classId?: string; studentId?: string }, enabled = true) =>
   useQuery({ queryKey: ['reportCards', f], queryFn: () => api().listReportCards(f), enabled: enabled && !!(f.classId || f.studentId) });
 export const useReportCard = (id: string | undefined) => useQuery({ queryKey: ['reportCard', id], queryFn: () => api().getReportCard(id!), enabled: !!id });

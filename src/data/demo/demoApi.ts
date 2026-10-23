@@ -50,6 +50,8 @@ import type {
   Insight,
   ReportCard,
   SharedReportCard,
+  ForumPost,
+  ForumVisibility,
   ItemRef,
   LessonPrefs,
   LiveAnswer,
@@ -69,6 +71,7 @@ import type {
 import { clearDb, DB_KEY, loadDb, saveDb, type DemoDB, type DemoUser } from './db.ts';
 import { buildSeed, DEMO_PASSWORD, DEMO_TEACHER_EMAIL } from './seed.ts';
 import { buildAnalystInput } from './analyst.ts';
+import { forumView, type DemoForumPost } from './forum.ts';
 import { simulatedResponses } from './liveSim.ts';
 import { uid, joinCode as makeJoinCode, friendlyPassword } from '@/lib/ids.ts';
 import { cleanNamePart, sameName } from '@/lib/names.ts';
@@ -1354,6 +1357,86 @@ export class DemoApi implements DataApi {
     return this.db.aiKey
       ? { live: true, model: this.db.aiModel || DEFAULT_MODEL, note: 'Demo mode: calling MiniMax directly from this browser with your key.' }
       : { live: false, model: null, note: 'Demo mode uses Gradileo’s offline analyst. Add a MiniMax key in Settings, or connect Supabase for production AI.' };
+  }
+
+  // ---------------------------------------------------------------- class forum
+
+  private forum(): DemoForumPost[] {
+    this.db.forumPosts ??= [];
+    return this.db.forumPosts;
+  }
+
+  /** The caller may read and post in the class's forum: its teacher or a student in it. */
+  private forumAccess(classId: string): { me: DemoUser; cls: ClassRoom; isTeacher: boolean } {
+    const me = this.me();
+    const cls = this.db.classes.find((c) => c.id === classId);
+    const isTeacher = !!cls && cls.teacherId === me.id;
+    if (!cls || !(isTeacher || this.db.enrollments.some((e) => e.classId === classId && e.studentId === me.id))) throw new Error('You can only use your own class’s forum.');
+    if (!cls.teacherId) throw new Error('This class has no teacher, so it has no forum.');
+    return { me, cls, isTeacher };
+  }
+
+  async listForum(classId: string): Promise<ForumPost[]> {
+    await this.ready;
+    const { me, isTeacher } = this.forumAccess(classId);
+    return forumView(this.forum(), {
+      classId,
+      viewerId: me.id,
+      isTeacher,
+      person: (id) => {
+        const u = this.db.users.find((x) => x.id === id);
+        return { fullName: u?.fullName ?? 'Student', role: u?.role === 'teacher' ? 'teacher' : 'student' };
+      },
+    });
+  }
+
+  async forumPost(input: { classId: string; topicId?: string | null; title?: string; body: string; visibility?: ForumVisibility }): Promise<string> {
+    await this.ready;
+    const { me, cls, isTeacher } = this.forumAccess(input.classId);
+    const body = input.body.trim();
+    const title = (input.title ?? '').trim();
+    if (!body) throw new Error('Write something first.');
+    if (body.length > 4000) throw new Error('Keep your post under 4,000 characters.');
+    if (!isTeacher && this.forum().filter((p) => p.authorId === me.id && Date.now() - new Date(p.createdAt).getTime() < 600_000).length >= 10) throw new Error('You have posted ten times in the last ten minutes. Wait a little before posting again.');
+    const base = { id: uid('fp'), classId: cls.id, authorId: me.id, pinned: false, answered: false, hidden: false, createdAt: nowIso() };
+    if (!input.topicId) {
+      if (!title) throw new Error('Give your question a title.');
+      if (title.length > 120) throw new Error('Keep the title under 120 characters.');
+      const visibility: ForumVisibility = isTeacher ? 'class' : (['teacher', 'class', 'anonymous'] as const).includes(input.visibility as ForumVisibility) ? input.visibility! : 'teacher';
+      this.forum().push({ ...base, topicId: null, title, body, visibility });
+      if (!isTeacher) this.notify(cls.teacherId, 'announcement', 'New question in the forum', title, `/t/c/${cls.id}/forum/${base.id}`);
+      this.persist();
+      return base.id;
+    }
+    const t = this.forum().find((p) => p.id === input.topicId && p.classId === cls.id && !p.topicId);
+    if (!t || !(isTeacher || t.authorId === me.id || (t.visibility !== 'teacher' && !t.hidden))) throw new Error('That question was not found.');
+    this.forum().push({ ...base, topicId: t.id, title: null, body, visibility: t.visibility });
+    if (t.authorId !== me.id) this.notify(t.authorId, 'announcement', 'New reply to your question', t.title ?? '', t.authorId === cls.teacherId ? `/t/c/${cls.id}/forum/${t.id}` : `/s/forum/${t.id}`);
+    if (!isTeacher && t.authorId !== cls.teacherId) this.notify(cls.teacherId, 'announcement', 'New reply in the forum', t.title ?? '', `/t/c/${cls.id}/forum/${t.id}`);
+    this.persist();
+    return base.id;
+  }
+
+  async moderateForumPost(id: string, patch: { pinned?: boolean; answered?: boolean; hidden?: boolean }): Promise<void> {
+    await this.ready;
+    const p = this.forum().find((x) => x.id === id);
+    if (!p) throw new Error('That post was not found.');
+    const { me, isTeacher } = this.forumAccess(p.classId);
+    if (isTeacher) Object.assign(p, Object.fromEntries(Object.entries(patch).filter(([, v]) => v !== undefined)));
+    else if (p.authorId === me.id && !p.topicId && patch.pinned === undefined && patch.hidden === undefined) {
+      if (patch.answered !== undefined) p.answered = patch.answered;
+    } else throw new Error('Only the teacher can do that.');
+    this.persist();
+  }
+
+  async deleteForumPost(id: string): Promise<void> {
+    await this.ready;
+    const p = this.forum().find((x) => x.id === id);
+    if (!p) throw new Error('That post was not found.');
+    const { me, isTeacher } = this.forumAccess(p.classId);
+    if (!isTeacher && p.authorId !== me.id) throw new Error('You can only remove your own posts.');
+    this.db.forumPosts = this.forum().filter((x) => x.id !== id && x.topicId !== id);
+    this.persist();
   }
 
   // ---------------------------------------------------------------- report cards

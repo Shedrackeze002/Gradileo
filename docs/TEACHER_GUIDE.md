@@ -101,6 +101,17 @@ every three days per student); you are notified each time.
 
 Without a MiniMax key the built-in offline analyst writes the report, so the feature always works.
 
+## Class forum
+
+**Forum** (in the class menu, and for students beside Classwork) is where students ask questions
+for the class. Each student chooses who sees a question: **my class**, **my class without my
+name** (only you know it is theirs), or **only my teacher**. Anyone who can see a question can
+reply, and maths can be written in dollar signs. You see every post and who wrote it, and you are
+notified about new questions and students' replies; a student is notified when someone replies to
+their question. You can **pin** a question, **mark it answered** (its author can too), **hide** a
+post from the class (its author still sees it, marked as hidden) or **remove** it. A self-paced
+course has no forum, because there is no teacher to look after it.
+
 ## Report cards
 
 **Report cards** (in the class menu) drafts each student's report card from their mastery and

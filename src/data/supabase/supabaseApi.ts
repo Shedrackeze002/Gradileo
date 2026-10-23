@@ -37,6 +37,8 @@ import type {
   ReportCard,
   Resource,
   SharedReportCard,
+  ForumPost,
+  ForumVisibility,
   Board,
   BoardInput,
   LessonPrefs,
@@ -769,6 +771,43 @@ export class SupabaseApi implements DataApi {
 
   async draftAssignment(classId: string, request: DraftRequest): Promise<DraftResult> {
     return this.invoke<DraftResult>('ai-agent', { action: 'draft', classId, request });
+  }
+
+  async listForum(classId: string): Promise<ForumPost[]> {
+    const { data, error } = await this.client.rpc('class_forum', { p_class_id: classId });
+    fail(error);
+    return ((data ?? []) as Array<Record<string, unknown>>).map((r) => ({
+      id: r.id as string,
+      classId,
+      topicId: (r.topic_id as string | null) ?? null,
+      title: (r.title as string | null) ?? null,
+      body: r.body as string,
+      visibility: r.visibility as ForumVisibility,
+      pinned: !!r.pinned,
+      answered: !!r.answered,
+      hidden: !!r.hidden,
+      createdAt: r.created_at as string,
+      authorId: (r.author_id as string | null) ?? null,
+      authorName: r.author_name as string,
+      authorRole: r.author_role === 'teacher' ? 'teacher' : 'student',
+      mine: !!r.mine,
+    }));
+  }
+
+  async forumPost(input: { classId: string; topicId?: string | null; title?: string; body: string; visibility?: ForumVisibility }): Promise<string> {
+    const { data, error } = await this.client.rpc('forum_post', { p_class_id: input.classId, p_topic_id: input.topicId ?? null, p_title: input.title ?? null, p_body: input.body, p_visibility: input.visibility ?? 'class' });
+    fail(error);
+    return data as string;
+  }
+
+  async moderateForumPost(id: string, patch: { pinned?: boolean; answered?: boolean; hidden?: boolean }): Promise<void> {
+    const { error } = await this.client.rpc('forum_moderate', { p_post_id: id, p_pinned: patch.pinned ?? null, p_answered: patch.answered ?? null, p_hidden: patch.hidden ?? null });
+    fail(error);
+  }
+
+  async deleteForumPost(id: string): Promise<void> {
+    const { error } = await this.client.rpc('forum_delete', { p_post_id: id });
+    fail(error);
   }
 
   async listReportCards(filter: { classId?: string; studentId?: string }): Promise<ReportCard[]> {

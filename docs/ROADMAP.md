@@ -562,6 +562,15 @@ items ship or decisions change.
    without their name shown to classmates (the owner agreed, 17 October 2026). The teacher can
    always see and moderate every post (the students are children), with notifications for new
    posts and replies.
+   - Built (23 October 2026): **Forum** in the class menu and in the student's menu (a fifth tab on
+     phones). A student asks with a title and details (maths in dollar signs) and chooses my class,
+     my class without my name, or only my teacher; anyone who can see a question replies. The
+     teacher sees every post with its author, is notified of new questions and students' replies,
+     and pins, marks answered (the author can too), hides or removes posts; a question's author is
+     notified of replies. Posts are read only through `class_forum()`, so a classmate never gets
+     the author of a question posted without a name (nor that author's replies under it); students
+     see classmates as "Amara O.". Ten posts per student in ten minutes. A self-paced course has
+     no forum (no teacher to moderate it).
 9. **Other subjects**, once mathematics is complete.
    - Decision (the owner, 23 October 2026): **Chemistry and English** come first. Chemistry's
      calculations (moles, concentrations, gas laws, stoichiometry) can reuse the maths engine's

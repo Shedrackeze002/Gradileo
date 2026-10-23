@@ -15,6 +15,7 @@ import {
   Inbox,
   LayoutDashboard,
   LogOut,
+  MessagesSquare,
   Menu as MenuIcon,
   Monitor,
   Moon,
@@ -67,6 +68,7 @@ function teacherNav(classId: string | undefined): NavItem[] {
     { to: `${b}/gradebook`, label: 'Gradebook', icon: Table2 },
     { to: `${b}/mastery`, label: 'Mastery map', icon: Grid3x3 },
     { to: `${b}/insights`, label: 'AI insights', icon: Sparkles },
+    { to: `${b}/forum`, label: 'Forum', icon: MessagesSquare },
     { to: `${b}/reports`, label: 'Report cards', icon: FileText },
     { to: `${b}/settings`, label: 'Class settings', icon: Settings },
   ];
@@ -91,6 +93,7 @@ const STUDENT_NAV: NavItem[] = [
   { to: '/s', label: 'Home', icon: Home, end: true },
   { to: '/s/learn', label: 'Learn', icon: BookOpen },
   { to: '/s/work', label: 'Classwork', icon: ClipboardList },
+  { to: '/s/forum', label: 'Forum', icon: MessagesSquare },
   { to: '/s/progress', label: 'Progress', icon: Target },
 ];
 
@@ -165,7 +168,7 @@ export function AppShell({ role }: { role: ShellRole }) {
       {/* Student bottom tabs on mobile */}
       {role === 'student' && (
         <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden print:hidden" aria-label="Main">
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-5">
             {STUDENT_NAV.map((n) => (
               <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => cn('flex flex-col items-center gap-0.5 py-2.5 text-[11px] font-medium', isActive ? 'text-brand' : 'text-ink-3')}>
                 <n.icon className="h-5 w-5" />

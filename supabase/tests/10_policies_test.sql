@@ -919,6 +919,78 @@ select _assert((select share_token from share_report_card((select id from rc), f
 reset role;
 select _assert(shared_report_card((select t from tok)) is null, 'an ended link reads nothing');
 
+-- ---------------------------------------------------------------- class forum
+-- Sam (b1) and Lee (b2) are in the class. Posts are read only through class_forum(): a question
+-- posted without a name never shows its author to classmates; the teacher sees every author.
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b1","role":"authenticated"}', false);
+set role authenticated;
+create temp table fq as select
+  forum_post((select class_id from ctx), null, 'Why is a negative times a negative positive?', 'I do not get it.', 'anonymous') as anon_q,
+  forum_post((select class_id from ctx), null, 'Can I hand in late?', 'I was ill.', 'teacher') as private_q,
+  forum_post((select class_id from ctx), null, 'Study group?', 'Anyone want to practise together?', 'class') as open_q;
+select _fails($$select count(*) from forum_posts$$, 'students cannot read forum posts directly');
+select _fails($$select forum_post((select class_id from ctx), null, '', 'No title', 'class')$$, 'a question needs a title');
+reset role;
+grant select on fq to authenticated;
+select _assert((select count(*) from notifications where user_id = '00000000-0000-0000-0000-0000000000a1' and title = 'New question in the forum') = 3, 'the teacher hears about every question');
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b2","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) from class_forum((select class_id from ctx)) where topic_id is null) = 2, 'classmates see the class questions, not the private one');
+select _assert((select author_id is null and author_name = 'A classmate' from class_forum((select class_id from ctx)) where id = (select anon_q from fq)), 'a question without a name hides its author from classmates');
+select _assert((select author_name = 'Sam S.' from class_forum((select class_id from ctx)) where id = (select open_q from fq)), 'classmates see a short name on open questions');
+select _fails($$select forum_post((select class_id from ctx), (select private_q from fq), null, 'Me too', 'class')$$, 'classmates cannot reply to a private question');
+create temp table fr as select forum_post((select class_id from ctx), (select anon_q from fq), null, 'Think of it as turning around twice.', 'class') as lee_reply;
+select _fails($$select forum_moderate((select anon_q from fq), true, null, null)$$, 'students cannot pin');
+select _fails($$select forum_delete((select open_q from fq))$$, 'students cannot remove others'' posts');
+reset role;
+grant select on fr to authenticated;
+select _assert((select count(*) from notifications where user_id = '00000000-0000-0000-0000-0000000000b1' and title = 'New reply to your question') = 1, 'the question''s author hears about a reply');
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select mine and author_id = '00000000-0000-0000-0000-0000000000b1' from class_forum((select class_id from ctx)) where id = (select anon_q from fq)), 'the author sees their own question as theirs');
+select forum_post((select class_id from ctx), (select anon_q from fq), null, 'Thanks!', 'class');
+select forum_moderate((select anon_q from fq), null, true, null);
+select _fails($$select forum_moderate((select anon_q from fq), null, null, true)$$, 'students cannot hide posts');
+reset role;
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b2","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) = 1 and bool_and(author_id is null) from class_forum((select class_id from ctx)) where body = 'Thanks!'), 'the anonymous author''s replies stay anonymous');
+select _assert((select answered from class_forum((select class_id from ctx)) where id = (select anon_q from fq)), 'the author marked their question answered');
+reset role;
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000a2","role":"authenticated"}', false);
+set role authenticated;
+select _fails($$select * from class_forum((select class_id from ctx))$$, 'other teachers cannot read the forum');
+reset role;
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000a1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) from class_forum((select class_id from ctx)) where topic_id is null) = 3, 'the teacher sees every question');
+select _assert((select author_id = '00000000-0000-0000-0000-0000000000b1' from class_forum((select class_id from ctx)) where id = (select anon_q from fq)), 'the teacher sees who asked');
+select forum_moderate((select lee_reply from fr), null, null, true);
+select forum_moderate((select open_q from fq), true, null, null);
+select forum_post((select class_id from ctx), (select private_q from fq), null, 'Yes, by Friday.', 'anonymous');
+reset role;
+select _assert((select count(*) from notifications where user_id = '00000000-0000-0000-0000-0000000000a1' and title = 'New reply in the forum') = 2, 'the teacher hears about students'' replies');
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) from class_forum((select class_id from ctx)) where id = (select lee_reply from fr)) = 0, 'a hidden reply disappears for classmates');
+select _assert((select count(*) from class_forum((select class_id from ctx)) where body = 'Yes, by Friday.') = 1, 'the author of a private question sees the teacher''s reply');
+reset role;
+
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b2","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select hidden from class_forum((select class_id from ctx)) where id = (select lee_reply from fr)), 'a student still sees their own hidden reply');
+select _assert((select pinned from class_forum((select class_id from ctx)) where id = (select open_q from fq)), 'the teacher pinned a question');
+select forum_delete((select lee_reply from fr));
+select _assert((select count(*) from class_forum((select class_id from ctx)) where id = (select lee_reply from fr)) = 0, 'students remove their own posts');
+reset role;
+select _assert(not has_function_privilege('anon', 'public.class_forum(uuid)', 'execute'), 'anon cannot read the forum');
+
 -- ---------------------------------------------------------------- anon
 select set_config('request.jwt.claims', '{"role":"anon"}', false);
 set role anon;
