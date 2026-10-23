@@ -3,6 +3,8 @@
  * characters like _ and * inside LaTeX are never mangled.
  */
 import katex from 'katex';
+// Chemistry in the maths: \ce{H2SO4}, \ce{2H2 + O2 -> 2H2O}.
+import 'katex/contrib/mhchem';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 

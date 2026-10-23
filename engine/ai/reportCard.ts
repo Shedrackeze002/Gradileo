@@ -9,6 +9,7 @@
  */
 import { minimaxChat, type MiniMaxConfig } from './minimax.ts';
 import { extractJson } from './parse.ts';
+import { subjectName } from './prompt.ts';
 import type { StudentContext } from './types.ts';
 
 /** The numbers on the card come from the data, never from the AI. */
@@ -132,7 +133,7 @@ Rules:
 - Be honest, specific and kind. Every claim must come from the data: name real skills, scores and habits. Do not invent events, behaviour or effort the data does not show.
 - "summary": two or three sentences on how {name} is doing overall.
 - "strengths": two to four short points. "nextSteps": two to four short, concrete points (name the skills).
-- "studentTips": two or three tips to the student, starting with a verb. "parentTips": two or three practical ways a parent or carer can help at home, without needing to know the mathematics.
+- "studentTips": two or three tips to the student, starting with a verb. "parentTips": two or three practical ways a parent or carer can help at home, without needing to know the ${subjectName(ctx.subject)}.
 - "feedback": two or three warm sentences in the teacher's voice, ending with encouragement.
 - Plain language a parent understands; no jargon such as "pKnown" or "BKT". Write maths in plain words or $...$.
 - Follow the teacher's notes where they fit these rules.

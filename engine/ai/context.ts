@@ -135,6 +135,7 @@ export function buildStudentContext(input: AnalystInput, studentId: string): Stu
   return {
     student,
     courseTitle: getCourse(input.courseId)?.title ?? input.courseId,
+    subject: getCourse(input.courseId)?.subject,
     taughtLessons: input.taughtLessonIds.map((id) => ({ id, title: lessonById(id)?.title ?? id })),
     skills,
     recentErrors,
@@ -215,6 +216,7 @@ export function buildClassContext(input: AnalystInput): ClassContext {
   return {
     className: input.className,
     courseTitle: getCourse(input.courseId)?.title ?? input.courseId,
+    subject: getCourse(input.courseId)?.subject,
     studentCount: input.students.length,
     taughtLessons: input.taughtLessonIds.map((id) => ({ id, title: lessonById(id)?.title ?? id })),
     skills,

@@ -10,3 +10,6 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+/** KaTeX's chemistry extension (\ce{H2SO4}): imported for its effect, it adds \ce and \pu to KaTeX. */
+declare module 'katex/contrib/mhchem';

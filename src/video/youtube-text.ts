@@ -53,9 +53,7 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
   const branded = `${x.title} | ${BRAND}`;
   const description = [
     x.summary,
-    '',
-    ...(unit ? [`Topic: ${unit.title}`] : []),
-    ...(course ? [`Level: ${levelOf(course)}`] : []),
+    ...(unit || course ? ['', ...(unit ? [`Topic: ${unit.title}`] : []), ...(course ? [`Level: ${levelOf(course)}`] : [])] : []),
     ...(chapters ? ['', 'Chapters', ...chapters.map((c) => `${clock(c.t)} ${c.title}`)] : []),
     '',
     lesson ? `Practise this topic with instant feedback on ${BRAND}: ${SITE}` : `Try ${BRAND}: ${SITE}`,

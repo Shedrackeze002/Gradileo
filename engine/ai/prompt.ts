@@ -4,7 +4,16 @@
  */
 import type { ClassContext, StudentContext } from './types.ts';
 
-const SHARED_RULES = `You are Gradileo's teaching assistant: an expert secondary mathematics teacher and learning scientist.
+/**
+ * A course's subject as a prompt names it: "mathematics", "chemistry", and a language such as
+ * "English" with its capital. Mathematics when the course gives none.
+ */
+export function subjectName(subject?: string): string {
+  const s = subject?.trim() || 'Mathematics';
+  return /^(English|French|Spanish)\b/.test(s) ? s : s.toLowerCase();
+}
+
+const sharedRules = (subject?: string) => `You are Gradileo's teaching assistant: an expert secondary ${subjectName(subject)} teacher and learning scientist.
 You analyse real performance data and advise a busy teacher. Follow these rules strictly:
 - Ground every claim in the data provided. Never invent scores, students, skills or events.
 - Refer to skills by their exact skillId from the data. Refer to students by their exact id.
@@ -43,7 +52,7 @@ export function studentPrompt(ctx: StudentContext): { system: string; user: stri
     '"studentNote": string (2-3 encouraging sentences addressed to the student, naming one concrete next step)',
   );
   return {
-    system: `${SHARED_RULES}\n\nReturn JSON with this shape:\n${schema}\n\nLimits: up to 4 items in each list, up to 3 actions. Actions must target only this student (studentIds = ["${ctx.student.id}"]).`,
+    system: `${sharedRules(ctx.subject)}\n\nReturn JSON with this shape:\n${schema}\n\nLimits: up to 4 items in each list, up to 3 actions. Actions must target only this student (studentIds = ["${ctx.student.id}"]).`,
     user: `Analyse this student's progress and recommend next steps for the teacher.\n\nDATA:\n${JSON.stringify(ctx)}`,
   };
 }
@@ -54,7 +63,7 @@ export function classPrompt(ctx: ClassContext): { system: string; user: string }
     '"groups": [{ "name": string, "studentIds": string[], "skillIds": string[], "rationale": string }] (small groups for targeted reteaching),',
   ).replace('STUDENT_NOTE_FIELD', '');
   return {
-    system: `${SHARED_RULES}\n\nReturn JSON with this shape:\n${schema}\n\nLimits: up to 5 items in each list, up to 4 actions, up to 4 groups. Prefer whole-class reteaching when more than 40% of active students struggle with a skill, and small-group practice otherwise. Include at least one "challenge" action for students who have mastered the taught skills, if any.`,
+    system: `${sharedRules(ctx.subject)}\n\nReturn JSON with this shape:\n${schema}\n\nLimits: up to 5 items in each list, up to 4 actions, up to 4 groups. Prefer whole-class reteaching when more than 40% of active students struggle with a skill, and small-group practice otherwise. Include at least one "challenge" action for students who have mastered the taught skills, if any.`,
     user: `Analyse this class and recommend the most valuable next steps for the teacher.\n\nDATA:\n${JSON.stringify(ctx)}`,
   };
 }
