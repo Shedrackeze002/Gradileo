@@ -12,7 +12,8 @@ import { isQuestionType, type StoredResponse } from '@engine/assemble.ts';
 import type { Integrity } from '@engine/integrity.ts';
 import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts';
 import { offlineScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
-import type { DraftRequest, DraftResult } from '@engine/ai/builder.ts';
+import type { DraftRequest, DraftResult, RegenerateRequest, RegenerateResult } from '@engine/ai/builder.ts';
+import type { MarkResult } from '@engine/ai/marking.ts';
 import type {
   AdminOverview,
   AdminUserFilter,
@@ -764,6 +765,14 @@ export class SupabaseApi implements DataApi {
 
   async draftAssignment(classId: string, request: DraftRequest): Promise<DraftResult> {
     return this.invoke<DraftResult>('ai-agent', { action: 'draft', classId, request });
+  }
+
+  async regenerateQuestion(classId: string, request: RegenerateRequest): Promise<RegenerateResult> {
+    return this.invoke<RegenerateResult>('ai-agent', { action: 'regenerate', classId, request });
+  }
+
+  async suggestMark(submissionId: string, itemIndex: number, pages: string[]): Promise<MarkResult> {
+    return this.invoke<MarkResult>('ai-agent', { action: 'mark', submissionId, itemIndex, pages });
   }
 
   async tutorScript(lessonId: string, chunk: TutorChunk): Promise<TutorReply<{ script: TutorScript }>> {

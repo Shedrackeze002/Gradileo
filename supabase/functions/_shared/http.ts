@@ -38,9 +38,9 @@ export function serve(fn: (req: Request) => Promise<unknown>) {
   });
 }
 
-export async function readJson(req: Request): Promise<Record<string, unknown>> {
+export async function readJson(req: Request, maxLength = 1_000_000): Promise<Record<string, unknown>> {
   const text = await req.text();
-  if (text.length > 1_000_000) throw new HttpError(413, 'Request is too large.');
+  if (text.length > maxLength) throw new HttpError(413, 'Request is too large.');
   try {
     const v = text ? JSON.parse(text) : {};
     if (!v || typeof v !== 'object' || Array.isArray(v)) throw new Error();

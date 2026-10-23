@@ -25,6 +25,8 @@ export type DraftType = (typeof DRAFT_TYPES)[number];
 /** Generated: the course's question generators. Choice, short and written: questions the AI writes. */
 export const DRAFT_FORMATS = ['generated', 'choice', 'short', 'written'] as const;
 export type DraftFormat = (typeof DRAFT_FORMATS)[number];
+/** The formats the AI writes itself. */
+export type WrittenFormat = Exclude<DraftFormat, 'generated'>;
 
 export interface DraftRequest {
   type: DraftType;
@@ -186,23 +188,32 @@ export function offlineDraft(req: DraftRequest, ctx: DraftContext): AssignmentDr
 
 // ---------------------------------------------------------------- the prompt
 
+/** How to write each format the AI writes itself (the draft and a regenerated question share them). */
+const FORMAT_RULES: Record<WrittenFormat, string> = {
+  choice: `  - choice: 4 choices, exactly one correct ("correct" is its index from 0), and wrong choices that come from real mistakes. The solution explains the reasoning and never names a choice by its number or letter.`,
+  short: `  - short: either a single number ("value", and "check": an arithmetic expression with only numbers, + - * / ^ and brackets that computes it, such as "(18 - 6) / 4"), or a word or short phrase ("accepted": every acceptable answer).`,
+  written: `  - written: the student explains or shows working; give "points" (2 to 6) and, in "solution", a model answer and how to award the points.`,
+};
+
+const ACCURACY_RULES = `- Every number in your questions and answers must be right: work each answer out step by step before you write it.
+- Questions use Markdown with maths in $...$; write money as \\$4.50 outside the maths. State every rate, price or rule inside the question, never claim a current official figure, and use neutral settings with no real place names. In JSON strings, write every backslash twice (\\\\frac).`;
+
+const QUESTION_JSON = `{"format": "choice" | "short" | "written", "skillId": string, "prompt": string, "choices"?: [string, ...], "correct"?: number, "value"?: number, "check"?: string, "accepted"?: [string, ...], "points"?: number, "solution": string}`;
+
 export function draftPrompt(req: DraftRequest, ctx: DraftContext): { system: string; user: string } {
-  const own = req.formats.filter((f) => f !== 'generated');
+  const own = req.formats.filter((f): f is WrittenFormat => f !== 'generated');
   return {
     system: `You help a mathematics teacher draft a ${TYPE_LABEL[req.type].toLowerCase()} for their class from the lessons and skills given. The teacher reviews and edits your draft before any student sees it.
 Rules:
 - Exactly ${req.count} questions in all: each generated question counts as one, and each question you write counts as one.
 ${req.formats.includes('generated') ? `- Generated questions: choose skills by their id from the list. Each gives every student fresh numbers and is graded automatically, with hints and a worked solution. Give each chosen skill a count (1 to 6) and a difficulty: 1 easy, 2 medium, 3 hard, or "mixed" (easy to hard). Use generated questions for most routine practice.` : '- Do not use generated questions: write every question yourself.'}
 ${own.length ? `- Your own questions, only in these formats: ${own.join(', ')} (never any other format). Use them for what generated questions cannot do: word problems in a real context, reasoning, explaining, spotting a mistake. Each practises one skill from the list (give its id) and has a worked "solution" in Markdown with maths in $...$.
-  - choice: 4 choices, exactly one correct ("correct" is its index from 0), and wrong choices that come from real mistakes. The solution explains the reasoning and never names a choice by its number or letter.
-  - short: either a single number ("value", and "check": an arithmetic expression with only numbers, + - * / ^ and brackets that computes it, such as "(18 - 6) / 4"), or a word or short phrase ("accepted": every acceptable answer).
-  - written: the student explains or shows working; give "points" (2 to 6) and, in "solution", a model answer and how to award the points.` : '- Do not write questions of your own.'}
-- Every number in your questions and answers must be right: work each answer out step by step before you write it.
-- Questions use Markdown with maths in $...$; write money as \\$4.50 outside the maths. State every rate, price or rule inside the question, never claim a current official figure, and use neutral settings with no real place names. In JSON strings, write every backslash twice (\\\\frac).
+${own.map((f) => FORMAT_RULES[f]).join('\n')}` : '- Do not write questions of your own.'}
+${ACCURACY_RULES}
 - Difficulty: ${req.difficulty === 'easier' ? 'mostly easy, some medium' : req.difficulty === 'harder' ? 'mostly medium and hard' : 'a range from easy to hard'}.${req.focusWeak ? '\n- Give more of the questions to the skills with low class mastery (the class\'s average chance of knowing the skill, 0 to 1; null means no data yet).' : ''}
 - Follow the teacher's notes where they fit these rules.
 - "title": short, like "Homework: The Pythagorean Theorem". "instructions": one or two sentences to the students. "rationale": one or two sentences to the teacher about your choices.
-Output ONLY one JSON object, no prose and no code fences: {"title": string, "instructions": string, "rationale": string, "sections": [{"skillId": string, "count": number, "difficulty": 1 | 2 | 3 | "mixed"}], "questions": [{"format": "choice" | "short" | "written", "skillId": string, "prompt": string, "choices"?: [string, ...], "correct"?: number, "value"?: number, "check"?: string, "accepted"?: [string, ...], "points"?: number, "solution": string}]}`,
+Output ONLY one JSON object, no prose and no code fences: {"title": string, "instructions": string, "rationale": string, "sections": [{"skillId": string, "count": number, "difficulty": 1 | 2 | 3 | "mixed"}], "questions": [${QUESTION_JSON}]}`,
     user: JSON.stringify({
       course: ctx.courseTitle,
       kind: TYPE_LABEL[req.type],
@@ -263,9 +274,20 @@ export function parseDraft(raw: unknown, req: DraftRequest, ctx: DraftContext, n
     }
   }
 
+  const { custom, dropped: left } = parseQuestions(o.questions, req.formats, allowed, newId);
+  dropped.push(...left);
+
+  // Exactly the number asked for: trim the largest sections or the last questions, or top up the
+  // generated sections when they are allowed.
+  return finishDraft(o, sections, custom, dropped, req, ctx);
+}
+
+/** The questions the model wrote, checked: those that fail are left out, with the reason. */
+function parseQuestions(raw: unknown, allowedFormats: readonly DraftFormat[], allowed: ReadonlyMap<string, DraftSkill>, newId: (prefix: string) => string): { custom: CustomQuestion[]; dropped: string[] } {
   const custom: CustomQuestion[] = [];
-  const formats = new Set(req.formats);
-  (Array.isArray(o.questions) ? (o.questions as Array<Record<string, unknown>>) : []).forEach((q, i) => {
+  const dropped: string[] = [];
+  const formats = new Set(allowedFormats);
+  (Array.isArray(raw) ? (raw as Array<Record<string, unknown>>) : []).forEach((q, i) => {
     const n = `Question ${i + 1}`;
     const format = q?.format as DraftFormat;
     if (format === 'generated' || !formats.has(format)) return void dropped.push(`${n}: a format you did not ask for`);
@@ -301,9 +323,10 @@ export function parseDraft(raw: unknown, req: DraftRequest, ctx: DraftContext, n
       custom.push({ ...base, kind: 'manual', points });
     }
   });
+  return { custom, dropped };
+}
 
-  // Exactly the number asked for: trim the largest sections or the last questions, or top up the
-  // generated sections when they are allowed.
+function finishDraft(o: Record<string, unknown>, sections: SkillSection[], custom: CustomQuestion[], dropped: string[], req: DraftRequest, ctx: DraftContext): { draft: AssignmentDraft; dropped: string[] } {
   let total = sections.reduce((t, s) => t + s.count, 0) + custom.length;
   const biggest = () => sections.filter((s) => s.count > 1).sort((a, b) => b.count - a.count)[0];
   for (let s = biggest(); total > req.count && s; s = biggest()) {
@@ -354,5 +377,117 @@ export async function draftAssignment(req: DraftRequest, ctx: DraftContext, ai?:
     return { draft, source: 'minimax', model: res.model, ...(dropped.length ? { dropped } : {}) };
   } catch (e) {
     return { draft: offlineDraft(req, ctx), source: 'offline', model: null, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+// ---------------------------------------------------------------- one question again
+
+/** "Regenerate" on one question the AI writes: a new question in the same format, for the same skill. */
+export interface RegenerateRequest {
+  type: DraftType;
+  format: WrittenFormat;
+  /** The skill the question practises, if it has one. */
+  skillId?: string;
+  /** The lessons the new question may draw on: the skill's lesson, else the assignment's. */
+  lessonIds: string[];
+  /** The question being replaced, so the new one is different. */
+  current: string;
+  /** What the teacher wants changed, in their words. */
+  notes: string;
+  /** A written response keeps its points. */
+  points?: number;
+}
+
+export interface RegenerateResult {
+  question: CustomQuestion | null;
+  source: 'minimax' | 'offline';
+  model: string | null;
+  /** Why there is no question, for the teacher. */
+  problem?: string;
+  /** What went wrong with MiniMax, for the server log. */
+  error?: string;
+}
+
+/** The format the AI would write a teacher's question in, or null for one it does not write (select all). */
+export function writtenFormatOf(q: Pick<CustomQuestion, 'kind'>): WrittenFormat | null {
+  return q.kind === 'mc' ? 'choice' : q.kind === 'numeric' || q.kind === 'text' ? 'short' : q.kind === 'manual' ? 'written' : null;
+}
+
+/** Checks a regenerate request sent by a browser against the course; throws when it is unusable. */
+export function normalizeRegenerateRequest(v: unknown, courseId: string): RegenerateRequest {
+  const o = (v ?? {}) as Record<string, unknown>;
+  const course = getCourse(courseId);
+  if (!course) throw new Error('Unknown course.');
+  const inCourse = new Set(course.lessons.map((l) => l.id));
+  const format = (['choice', 'short', 'written'] as const).find((f) => f === o.format);
+  if (!format) throw new Error('This kind of question cannot be regenerated.');
+  const skill = typeof o.skillId === 'string' ? skillInfo(o.skillId) : undefined;
+  const skillId = skill && inCourse.has(skill.lessonId) ? (o.skillId as string) : undefined;
+  // A question that practises a skill draws on that skill's lesson only.
+  const lessonIds = skillId
+    ? [skill!.lessonId]
+    : [...new Set(Array.isArray(o.lessonIds) ? o.lessonIds.filter((x): x is string => typeof x === 'string' && inCourse.has(x)) : [])].slice(0, MAX_LESSONS);
+  if (!lessonIds.length) throw new Error('Link the question to a skill, or add a lesson’s skills to the assignment, so the AI knows what it covers.');
+  const points = Math.round(Number(o.points));
+  return {
+    type: DRAFT_TYPES.includes(o.type as DraftType) ? (o.type as DraftType) : 'homework',
+    format,
+    skillId,
+    lessonIds,
+    current: text(o.current, 2000),
+    notes: text(o.notes, 400),
+    points: format === 'written' && Number.isFinite(points) ? Math.min(10, Math.max(1, points)) : undefined,
+  };
+}
+
+export function regeneratePrompt(req: RegenerateRequest, ctx: DraftContext): { system: string; user: string } {
+  return {
+    system: `You help a mathematics teacher replace one question in a ${TYPE_LABEL[req.type].toLowerCase()} they are writing. The teacher reviews your question before any student sees it.
+Rules:
+- Write exactly one new question in the format "${req.format}", for ${req.skillId ? `the skill with id "${req.skillId}"` : 'one skill from the list (give its id)'}. It must be clearly different from the question it replaces (a new context or new numbers, not the same question reworded), at about the same difficulty unless the teacher asks otherwise.
+${FORMAT_RULES[req.format]}${req.format === 'written' && req.points ? ` It is worth ${req.points} points: award them in the solution.` : ''}
+- Give a worked "solution" in Markdown with maths in $...$.
+${ACCURACY_RULES}
+- Follow the teacher's request where it fits these rules.
+Output ONLY one JSON object, no prose and no code fences: {"question": ${QUESTION_JSON}}`,
+    user: JSON.stringify({
+      course: ctx.courseTitle,
+      kind: TYPE_LABEL[req.type],
+      replace: req.current || undefined,
+      teacher: req.notes || undefined,
+      lessons: ctx.lessons.map((l) => ({ lesson: `${l.number} ${l.title}`, skills: l.skills.filter((s) => !req.skillId || s.id === req.skillId).map((s) => ({ id: s.id, name: s.name, description: s.description })) })),
+    }),
+  };
+}
+
+/** The model's question, checked like a drafted one; throws with the reason when it fails the checks. */
+export function parseRegenerated(raw: unknown, req: RegenerateRequest, ctx: DraftContext, newId: (prefix: string) => string = defaultId): CustomQuestion {
+  const o = (raw ?? {}) as Record<string, unknown>;
+  const q = (o.question ?? (Array.isArray(o.questions) ? o.questions[0] : o)) as Record<string, unknown>;
+  const allowed = new Map(ctx.lessons.flatMap((l) => l.skills.map((s) => [s.id, s] as const)));
+  const { custom, dropped } = parseQuestions([{ ...q, format: req.format }], [req.format], allowed, newId);
+  const question = custom[0];
+  if (!question) throw new Error(dropped[0]?.replace(/^Question 1: /, '') ?? 'no usable question');
+  return { ...question, skillId: req.skillId ?? question.skillId, ...(req.format === 'written' && req.points ? { points: req.points } : {}) };
+}
+
+/** A new question for the teacher from MiniMax; without it there is no new question, and the teacher is told why. */
+export async function regenerateQuestion(req: RegenerateRequest, ctx: DraftContext, ai?: MiniMaxConfig | null, newId?: (prefix: string) => string): Promise<RegenerateResult> {
+  if (!ai?.apiKey) return { question: null, source: 'offline', model: null, problem: 'The AI is not available right now, so the question cannot be regenerated. Edit it yourself, or try again later.' };
+  try {
+    const p = regeneratePrompt(req, ctx);
+    const res = await minimaxChat({ ...ai, maxTokens: 4000, timeoutMs: 90_000, temperature: 0.7 }, [
+      { role: 'system', content: p.system },
+      { role: 'user', content: p.user },
+    ]);
+    let question: CustomQuestion;
+    try {
+      question = parseRegenerated(extractJson(res.content), req, ctx, newId);
+    } catch (e) {
+      return { question: null, source: 'minimax', model: res.model, problem: `The AI’s new question did not pass the checks (${(e as Error).message}). Please try again.` };
+    }
+    return { question, source: 'minimax', model: res.model };
+  } catch (e) {
+    return { question: null, source: 'offline', model: null, problem: 'The AI could not write a new question just now. Please try again.', error: e instanceof Error ? e.message : String(e) };
   }
 }

@@ -49,6 +49,21 @@ Students who have already finished are never reminded.
 Curriculum) builds a test across the whole unit and releases results after the due date.
 Add your own written questions in the builder; they wait for you in the grading queue.
 
+### 6. Drafting with AI
+
+**Draft with AI** in the builder drafts a whole assignment from the lessons you choose: generated
+questions with fresh numbers for every student, and multiple-choice, short-answer and written
+questions the AI writes with answers and marking guides. Questions the AI wrote are marked
+**Written by AI: check the answer** until you mark them checked. Not happy with one? Press
+**Regenerate** on it and, if you like, say what should change ("use a sports context", "make it
+harder"): the AI writes a new question on the same skill in its place.
+
+**Suggest settings** (in "How it works") works out how long the assignment takes a typical
+student, from how long your class has taken on these skills before when there is enough of a
+record, and suggests a time limit for a quiz or exam (half as long again, so slower students can
+finish and check) and the attempts, feedback and hints that suit the kind of work. Nothing changes
+until you press **Use these settings**.
+
 ## Reading the data
 
 - **Overview**: completion rate, work to grade, students who need attention, and the AI summary.
@@ -96,3 +111,9 @@ view. You see their working page by page above anything they typed.
 Open **To grade** on the overview, or the assignment's student list. Choose a score for each
 written response, add a comment if you like, then **Return to student** with overall feedback.
 Use **Previous / Next** to move through the class.
+
+**Suggest a mark** asks the AI to read the answer against the question's marking guide, the
+working on the canvas included. It suggests a mark with its reasons, how sure it is, and a comment
+for the student. **Use this mark** fills them in; nothing is saved until you press **Save grade**,
+so you always decide. The AI sees the question, the guide and the answer, never the student's
+name.

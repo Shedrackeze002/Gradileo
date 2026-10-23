@@ -7,7 +7,7 @@
  * - Grading, mastery, reminders and AI insights use the same engine as production.
  */
 import { freshSeed } from '@engine/rng.ts';
-import { buildItemRefs, DEFAULT_SETTINGS, isQuestionType, TYPE_LABEL, type StoredResponse } from '@engine/assemble.ts';
+import { buildItemRefs, DEFAULT_SETTINGS, isQuestionType, itemFromRef, TYPE_LABEL, type StoredResponse } from '@engine/assemble.ts';
 import { processSubmission, validateRefs } from '@engine/submit.ts';
 import { getCourse, getSkill, loadSkills } from '@engine/curriculum/index.ts';
 import { Rng } from '@engine/rng.ts';
@@ -16,7 +16,8 @@ import { dueReminders } from '@engine/reminders.ts';
 import { draftFromAction } from '@engine/actions.ts';
 import { generateInsight, DEFAULT_MODEL } from '@engine/ai/index.ts';
 import { answerTutorQuestion, normalizeChunk, normalizeQuestion, writeTutorScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
-import { classMastery, draftAssignment, draftContext, normalizeDraftRequest, type DraftRequest, type DraftResult } from '@engine/ai/builder.ts';
+import { classMastery, draftAssignment, draftContext, normalizeDraftRequest, normalizeRegenerateRequest, regenerateQuestion, type DraftRequest, type DraftResult, type RegenerateRequest, type RegenerateResult } from '@engine/ai/builder.ts';
+import { markRequestFor, suggestMark, type MarkResult } from '@engine/ai/marking.ts';
 import type { SkillState } from '@engine/mastery.ts';
 import { exitCount, isLocked, mergeIntegrity, type Integrity } from '@engine/integrity.ts';
 import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts';
@@ -1376,6 +1377,26 @@ export class DemoApi implements DataApi {
     const students = new Set(this.db.enrollments.filter((e) => e.classId === classId).map((e) => e.studentId));
     const mastery = classMastery(this.db.mastery.filter((m) => students.has(m.studentId)));
     return draftAssignment(req, draftContext(cls.courseId, req.lessonIds, mastery), this.aiConfig(), uid);
+  }
+
+  async regenerateQuestion(classId: string, request: RegenerateRequest): Promise<RegenerateResult> {
+    await this.ready;
+    const cls = this.requireTeacherOf(classId);
+    const req = normalizeRegenerateRequest(request, cls.courseId);
+    return regenerateQuestion(req, draftContext(cls.courseId, req.lessonIds), this.aiConfig(), uid);
+  }
+
+  async suggestMark(submissionId: string, itemIndex: number, pages: string[]): Promise<MarkResult> {
+    await this.ready;
+    const s = this.db.submissions.find((x) => x.id === submissionId);
+    if (!s) throw new Error('Submission not found.');
+    this.requireTeacherOf(s.classId);
+    const a = s.assignmentId ? this.db.assignments.find((x) => x.id === s.assignmentId) : null;
+    const ref = s.items[itemIndex];
+    const item = ref ? itemFromRef(ref, a?.content ?? { sections: [], custom: [] }, a?.id ?? 'practice') : null;
+    const req = item ? markRequestFor(item, s.responses[itemIndex], pages) : null;
+    if (!req) throw new Error('That question has no written response.');
+    return suggestMark(req, this.aiConfig());
   }
 
   /** The tutor's narration, saved for this browser session like the server saves it. */

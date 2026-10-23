@@ -527,8 +527,19 @@ items ship or decisions change.
      working is kept in the response as compact text (`engine/ink.ts`, up to four pages), checked
      again by `grade-submission`, and shown page by page when the teacher grades and when the
      student reviews.
-   - Next: regenerate one question; grade written responses with an AI-suggested mark; a
-     time-limit and settings suggestion from the AI.
+   - Built (23 October 2026): **Regenerate** on any question the AI or the teacher wrote (not
+     "select all"): the AI writes a new question in the same format on the same skill, with the
+     teacher's note on what should change, checked like a drafted one and marked for checking.
+     **Suggest a mark** when grading a written response: MiniMax reads the question, its marking
+     guide, the typed answer and pictures of the canvas pages (the owner, 23 October 2026: the
+     working may be sent, with no name), and suggests a mark with its reasons, its confidence and
+     a comment for the student; **Use this mark** fills them in and nothing is saved until the
+     teacher saves the grade. If MiniMax cannot read the pictures, the suggestion comes from the
+     typed answer and says so. **Suggest settings** works out the working time (from the class's
+     own pace on each skill when there is enough of a record) and suggests a time limit for a
+     quiz or exam with half as long again to spare, and the attempts, feedback and hints that suit
+     the kind of work; it opens by itself after a draft. Regenerating counts with the drafts' 30
+     an hour; suggested marks have their own limit (150 an hour).
 7. **AI report cards** (the owner's idea, 15 October 2026). For each student, from their mastery
    and work: how they are doing, strengths, next steps, tips for the student and for parents, and
    feedback. The teacher who asks for it reviews and edits it before it reaches the student or a
@@ -540,9 +551,16 @@ items ship or decisions change.
    always see and moderate every post (the students are children), with notifications for new
    posts and replies.
 9. **Other subjects**, once mathematics is complete.
+   - Decision (the owner, 23 October 2026): **Chemistry and English** come first. Chemistry's
+     calculations (moles, concentrations, gas laws, stoichiometry) can reuse the maths engine's
+     generators and answer checking; English is mostly reading and written responses, graded by
+     the teacher with AI-suggested marks. A plan of courses, levels and units comes to the owner
+     before building.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
+   - Decision (the owner, 23 October 2026): make it once the AI marks, report cards and class
+     forum are built, so it shows them too.
 
 ## Hosting
 

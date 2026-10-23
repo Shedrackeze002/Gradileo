@@ -93,7 +93,8 @@ export function isQuestionType(t: AssignmentType): boolean {
   return t !== 'lesson' && t !== 'video' && t !== 'reading';
 }
 
-function difficultyFor(section: SkillSection, index: number): Difficulty {
+/** The difficulty of a section's question at `index` (an easy-to-hard ramp for mixed sections). */
+export function difficultyFor(section: SkillSection, index: number): Difficulty {
   if (section.difficulty === 'mixed' || section.difficulty === 'adaptive') {
     // Ramp: easy → medium → hard, then cycle medium/hard.
     if (section.count <= 1) return 2;

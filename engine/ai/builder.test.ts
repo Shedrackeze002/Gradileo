@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { checkValue, draftAssignment, draftContext, draftPrompt, normalizeDraftRequest, offlineDraft, parseDraft, repairLatex, type DraftRequest } from './builder.ts';
+import { checkValue, draftAssignment, draftContext, draftPrompt, normalizeDraftRequest, normalizeRegenerateRequest, offlineDraft, parseDraft, parseRegenerated, regenerateQuestion, regeneratePrompt, repairLatex, writtenFormatOf, type DraftRequest, type RegenerateRequest } from './builder.ts';
 
 const request = (patch: Partial<DraftRequest> = {}): DraftRequest => ({
   type: 'homework',
@@ -119,5 +119,50 @@ describe('drafting', () => {
     expect(down.source).toBe('offline');
     expect(down.error).toMatch(/503/);
     expect((await draftAssignment(request(), ctx, null)).source).toBe('offline');
+  });
+});
+
+describe('regenerating one question', () => {
+  afterEach(() => vi.unstubAllGlobals());
+  const regen = (patch: Partial<RegenerateRequest> = {}): RegenerateRequest => ({ type: 'homework', format: 'short', skillId: 'm8-pythagoras-leg', lessonIds: ['m8-1-3'], current: 'A 10 m ladder…', notes: '', ...patch });
+
+  it('keeps to the question’s skill and format, and needs something to draw on', () => {
+    expect(writtenFormatOf({ kind: 'mc' })).toBe('choice');
+    expect(writtenFormatOf({ kind: 'numeric' })).toBe('short');
+    expect(writtenFormatOf({ kind: 'manual' })).toBe('written');
+    expect(writtenFormatOf({ kind: 'multi' })).toBeNull();
+    expect(normalizeRegenerateRequest({ format: 'written', skillId: 'm8-pythagoras-leg', lessonIds: ['m8-2-1'], points: 30, current: 'Old', notes: 'Use a sports context' }, 'math-8')).toEqual({
+      type: 'homework', format: 'written', skillId: 'm8-pythagoras-leg', lessonIds: ['m8-1-3'], current: 'Old', notes: 'Use a sports context', points: 10,
+    });
+    expect(normalizeRegenerateRequest({ format: 'choice', skillId: 'm10c-nope', lessonIds: ['m8-1-3', 'm10c-1-1'] }, 'math-8')).toMatchObject({ skillId: undefined, lessonIds: ['m8-1-3'] });
+    expect(() => normalizeRegenerateRequest({ format: 'multi', lessonIds: ['m8-1-3'] }, 'math-8')).toThrow(/cannot be regenerated/);
+    expect(() => normalizeRegenerateRequest({ format: 'choice', lessonIds: [] }, 'math-8')).toThrow(/Link the question to a skill/);
+  });
+
+  it('asks for a different question on the same skill, with the teacher’s request', () => {
+    const p = regeneratePrompt(regen({ notes: 'Make it harder' }), ctx);
+    expect(p.system).toMatch(/format "short", for the skill with id "m8-pythagoras-leg"/);
+    expect(p.system).toMatch(/clearly different/);
+    expect(p.user).toContain('"replace":"A 10 m ladder…"');
+    expect(p.user).toContain('"teacher":"Make it harder"');
+    expect(p.user).not.toContain('m8-pythagoras-hypotenuse');
+  });
+
+  it('checks the new question like a drafted one, keeping the skill and the points', () => {
+    const q = parseRegenerated({ question: { prompt: 'Legs 6 and 8?', value: 10, check: '(6^2 + 8^2)^(1/2)', solution: 'Ten.' } }, regen(), ctx, ids);
+    expect(q).toMatchObject({ kind: 'numeric', value: 10, skillId: 'm8-pythagoras-leg', aiWritten: true });
+    const w = parseRegenerated({ question: { prompt: 'Explain.', solution: 'Guide', points: 6 } }, regen({ format: 'written', points: 3 }), ctx, ids);
+    expect(w).toMatchObject({ kind: 'manual', points: 3 });
+    expect(() => parseRegenerated({ question: { prompt: 'x', value: 12, check: '2 * 5' } }, regen(), ctx, ids)).toThrow(/does not match its working/);
+  });
+
+  it('says why there is no new question when the AI is off or its question fails', async () => {
+    expect((await regenerateQuestion(regen(), ctx, null)).problem).toMatch(/not available/);
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify({ question: { prompt: 'x', value: 3, check: '1 + 1' } }) } }] }))));
+    expect((await regenerateQuestion(regen(), ctx, { apiKey: 'k' }, ids)).problem).toMatch(/did not pass the checks \(its answer \(3\) does not match its working \(2\)\)/);
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ model: 'MiniMax-M3.1-Flash', choices: [{ message: { content: JSON.stringify({ question: { prompt: 'Find $x$.', accepted: ['hypotenuse'], solution: 's' } }) } }] }))));
+    const ok = await regenerateQuestion(regen(), ctx, { apiKey: 'k' }, ids);
+    expect(ok.question).toMatchObject({ kind: 'text', accepted: ['hypotenuse'] });
+    expect(ok.model).toBe('MiniMax-M3.1-Flash');
   });
 });
