@@ -28034,25 +28034,25 @@
       },
       {
         "title": "Find the like terms",
-        "t": 128.241
+        "t": 128.528
       },
       {
         "title": "Watch out",
-        "t": 171.509
+        "t": 171.796
       },
       {
         "title": "Your turn",
-        "t": 218.878
+        "t": 219.165
       },
       {
         "title": "Summary",
-        "t": 250.62
+        "t": 250.907
       }
     ],
     "cues": [
       {
         "id": "m9-5-2:q",
-        "t": 224.127,
+        "t": 224.414,
         "prompt": "Which pair are like terms?",
         "choices": [
           "$5x$ and $5x^2$",
@@ -28340,33 +28340,33 @@
       },
       {
         "title": "A rectangle of tiles",
-        "t": 27.668
+        "t": 28.189
       },
       {
         "title": "The rule",
-        "t": 57.822
+        "t": 58.343
       },
       {
         "title": "Products of monomials",
-        "t": 91.155
+        "t": 91.676
       },
       {
         "title": "Watch out",
-        "t": 145.749
+        "t": 146.27
       },
       {
         "title": "Your turn",
-        "t": 175.424
+        "t": 175.945
       },
       {
         "title": "Summary",
-        "t": 207.655
+        "t": 208.176
       }
     ],
     "cues": [
       {
         "id": "m9-5-4:q",
-        "t": 182.664,
+        "t": 183.185,
         "prompt": "Simplify $(-6x)(3x)$.",
         "choices": [
           "$-18x^2$",
@@ -28382,7 +28382,7 @@
   "m9-5-4-b": {
     "lessonId": "m9-5-4",
     "title": "Multiplying and Dividing by a Monomial, Part 2: The Distributive Property",
-    "duration": 263,
+    "duration": 264,
     "voice": "af_heart",
     "chapters": [
       {
@@ -28403,25 +28403,25 @@
       },
       {
         "title": "A negative monomial",
-        "t": 135.872
+        "t": 136.984
       },
       {
         "title": "Watch out",
-        "t": 171.203
+        "t": 172.315
       },
       {
         "title": "Your turn",
-        "t": 201.005
+        "t": 202.117
       },
       {
         "title": "Summary",
-        "t": 233.634
+        "t": 234.746
       }
     ],
     "cues": [
       {
         "id": "m9-5-4-b:q",
-        "t": 208.456,
+        "t": 209.568,
         "prompt": "Expand $-2x(x - 4)$.",
         "choices": [
           "$-2x^2 - 8x$",
@@ -29049,7 +29049,7 @@
   "m9-6-3-d": {
     "lessonId": "m9-6-3",
     "title": "Solving Problems with Linear Equations, Part 4: Equal Perimeters",
-    "duration": 220,
+    "duration": 221,
     "voice": "af_heart",
     "chapters": [
       {
@@ -29066,25 +29066,25 @@
       },
       {
         "title": "Find the perimeter",
-        "t": 82.265
+        "t": 83.01
       },
       {
         "title": "Watch out",
-        "t": 123.471
+        "t": 124.216
       },
       {
         "title": "Your turn",
-        "t": 147.263
+        "t": 148.008
       },
       {
         "title": "Summary",
-        "t": 193.684
+        "t": 194.429
       }
     ],
     "cues": [
       {
         "id": "m9-6-3-d:q",
-        "t": 165.673,
+        "t": 166.418,
         "prompt": "A regular hexagon (six equal sides) has sides of $(x + 1)$ cm. An equilateral triangle has sides of $(x + 5)$ cm. They have the same perimeter. What is the perimeter?",
         "choices": [
           "$3$ cm",
@@ -29202,7 +29202,7 @@
   "m9-6-4-c": {
     "lessonId": "m9-6-4",
     "title": "Representing Inequalities, Part 3: Writing Inequalities",
-    "duration": 249,
+    "duration": 250,
     "voice": "af_heart",
     "chapters": [
       {
@@ -29219,25 +29219,25 @@
       },
       {
         "title": "A taxi budget",
-        "t": 96.896
+        "t": 97.668
       },
       {
         "title": "Watch out",
-        "t": 144.264
+        "t": 145.036
       },
       {
         "title": "Your turn",
-        "t": 178.609
+        "t": 179.381
       },
       {
         "title": "Summary",
-        "t": 218.161
+        "t": 218.933
       }
     ],
     "cues": [
       {
         "id": "m9-6-4-c:q",
-        "t": 194.692,
+        "t": 195.464,
         "prompt": "A phone plan costs \\$15 plus \\$2 per GB of data. Sam can spend at most \\$35. Which inequality fits the number of GB, $g$?",
         "choices": [
           "$15 + 2g \\le 35$",
@@ -29594,7 +29594,7 @@
   "m9-7-1-d": {
     "lessonId": "m9-7-1",
     "title": "Scale Diagrams and Enlargements, Part 4: Working Backward",
-    "duration": 276,
+    "duration": 277,
     "voice": "af_heart",
     "chapters": [
       {
@@ -29615,21 +29615,21 @@
       },
       {
         "title": "Enlarging a photo",
-        "t": 144.894
+        "t": 145.721
       },
       {
         "title": "Your turn",
-        "t": 201.673
+        "t": 202.5
       },
       {
         "title": "Summary",
-        "t": 245.764
+        "t": 246.591
       }
     ],
     "cues": [
       {
         "id": "m9-7-1-d:q",
-        "t": 216.274,
+        "t": 217.101,
         "prompt": "A model of a bridge is built with a scale factor of $0.02$. The model is $84$ cm long. How long is the real bridge?",
         "choices": [
           "$1.68$ cm",
@@ -29666,17 +29666,17 @@
       },
       {
         "title": "Your turn",
-        "t": 153.096
+        "t": 153.19
       },
       {
         "title": "Summary",
-        "t": 193.399
+        "t": 193.493
       }
     ],
     "cues": [
       {
         "id": "m9-7-2:q",
-        "t": 166.849,
+        "t": 166.943,
         "prompt": "On a plan, $1$ cm represents $3$ m. A room is $4.5$ cm long on the plan. How long is the real room?",
         "choices": [
           "$1.5$ m",
@@ -30121,6 +30121,257 @@
         ],
         "answer": 3,
         "working": "The longest chord is a diameter: $2 \\times 7 = 14$ cm. Only $12$ cm is not longer than $14$ cm."
+      }
+    ]
+  },
+  "m9-8-1-b": {
+    "lessonId": "m9-8-1",
+    "title": "Chord Properties, Part 2: The Perpendicular from the Centre",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two words",
+        "t": 16.906
+      },
+      {
+        "title": "The chord property",
+        "t": 40.622
+      },
+      {
+        "title": "Finding a chord",
+        "t": 95.79
+      },
+      {
+        "title": "It works both ways",
+        "t": 126.2
+      },
+      {
+        "title": "Your turn",
+        "t": 172.733
+      },
+      {
+        "title": "Summary",
+        "t": 210.197
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-1-b:q",
+        "t": 186.256,
+        "prompt": "In a circle with centre $O$, $OM$ is perpendicular to the chord $AB$, and $AB = 18$ cm. How long is $AM$?",
+        "choices": [
+          "$36$ cm",
+          "$9$ cm",
+          "$18$ cm",
+          "$6$ cm"
+        ],
+        "answer": 1,
+        "working": "The perpendicular from the centre bisects the chord, so $AM = 18 \\div 2 = 9$ cm."
+      }
+    ]
+  },
+  "m9-8-1-c": {
+    "lessonId": "m9-8-1",
+    "title": "Chord Properties, Part 3: Chords and the Pythagorean Theorem",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The right triangle",
+        "t": 20.664
+      },
+      {
+        "title": "Length of a chord",
+        "t": 76.431
+      },
+      {
+        "title": "Distance from the centre",
+        "t": 137.477
+      },
+      {
+        "title": "Watch out",
+        "t": 175.346
+      },
+      {
+        "title": "Your turn",
+        "t": 213.811
+      },
+      {
+        "title": "Summary",
+        "t": 256.236
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-1-c:q",
+        "t": 226.32,
+        "prompt": "A circle has a radius of $17$ cm. A chord is $8$ cm from the centre. How long is the chord?",
+        "choices": [
+          "$15$ cm",
+          "$18.8$ cm",
+          "$30$ cm",
+          "$9$ cm"
+        ],
+        "answer": 2,
+        "working": "Half the chord is $\\sqrt{17^2 - 8^2} = \\sqrt{289 - 64} = \\sqrt{225} = 15$, so the chord is $2 \\times 15 = 30\\text{ cm}$."
+      }
+    ]
+  },
+  "m9-8-1-d": {
+    "lessonId": "m9-8-1",
+    "title": "Chord Properties, Part 4: Water in a Pipe",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The problem",
+        "t": 19.551
+      },
+      {
+        "title": "Finding the depth",
+        "t": 56.214
+      },
+      {
+        "title": "More than half full?",
+        "t": 122.868
+      },
+      {
+        "title": "Your turn",
+        "t": 154.118
+      },
+      {
+        "title": "Summary",
+        "t": 200.292
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-1-d:q",
+        "t": 169.629,
+        "prompt": "A round pipe has a radius of $10$ cm. The water surface is a chord $16$ cm wide, and the pipe is less than half full. How deep is the water?",
+        "choices": [
+          "$4$ cm",
+          "$6$ cm",
+          "$16$ cm",
+          "$2$ cm"
+        ],
+        "answer": 0,
+        "working": "Half the chord is $8$, so $d = \\sqrt{10^2 - 8^2} = \\sqrt{36} = 6$. The surface is below the centre, so the depth is $10 - 6 = 4$ cm."
+      }
+    ]
+  },
+  "m9-8-2": {
+    "lessonId": "m9-8-2",
+    "title": "Inscribed and Central Angles, Part 1: Arcs and Angles",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Arcs",
+        "t": 24.862
+      },
+      {
+        "title": "Central angles",
+        "t": 51.172
+      },
+      {
+        "title": "Inscribed angles",
+        "t": 75.021
+      },
+      {
+        "title": "Subtended by an arc",
+        "t": 102.153
+      },
+      {
+        "title": "Your turn",
+        "t": 133.772
+      },
+      {
+        "title": "Summary",
+        "t": 167.07
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-2:q",
+        "t": 144.203,
+        "prompt": "Points $A$, $B$ and $C$ are on a circle with centre $O$. Which angle is an **inscribed** angle?",
+        "choices": [
+          "$\\angle AOB$",
+          "$\\angle BOC$",
+          "$\\angle ACB$",
+          "$\\angle AOC$"
+        ],
+        "answer": 2,
+        "working": "The vertex of $\\angle ACB$ is $C$, a point on the circle, and its arms are chords. The others have their vertex at the centre $O$, so they are central angles."
+      }
+    ]
+  },
+  "m9-8-2-b": {
+    "lessonId": "m9-8-2",
+    "title": "Inscribed and Central Angles, Part 2: The Central Angle Is Twice as Big",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The central angle property",
+        "t": 16.618
+      },
+      {
+        "title": "From central to inscribed",
+        "t": 58.883
+      },
+      {
+        "title": "From inscribed to central",
+        "t": 89.841
+      },
+      {
+        "title": "Watch out",
+        "t": 111.184
+      },
+      {
+        "title": "Your turn",
+        "t": 146.257
+      },
+      {
+        "title": "Summary",
+        "t": 189.541
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-8-2-b:q",
+        "t": 161.71,
+        "prompt": "In a circle with centre $O$, the inscribed angle $\\angle ACB = 36^\\circ$. Find the central angle $\\angle AOB$ subtended by the same arc $AB$.",
+        "choices": [
+          "$18^\\circ$",
+          "$36^\\circ$",
+          "$144^\\circ$",
+          "$72^\\circ$"
+        ],
+        "answer": 3,
+        "working": "The central angle is twice the inscribed angle on the same arc: $\\angle AOB = 2 \\times 36^\\circ = 72^\\circ$."
       }
     ]
   },
