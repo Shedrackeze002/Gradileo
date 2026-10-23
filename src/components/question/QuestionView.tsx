@@ -9,6 +9,7 @@ import { Figure } from '@/components/figures/Figure.tsx';
 import { cn } from '@/lib/cn.ts';
 import { CanvasAnswer, CanvasAnswerView } from '@/features/whiteboard/CanvasAnswer.tsx';
 import { GraphInput } from './GraphInput.tsx';
+import { CoefficientsInput, FormulaInput } from './ChemInputs.tsx';
 
 export interface QuestionViewProps {
   item: Item;
@@ -177,6 +178,12 @@ function PartInput({
     case 'text':
       input = <input className="input h-12" value={value} disabled={locked} onChange={(e) => onChange(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && onEnter?.()} placeholder={part.placeholder ?? 'Your answer'} />;
       break;
+    case 'formula':
+      input = <FormulaInput value={value} onChange={onChange} disabled={locked} status={status} placeholder={part.placeholder} onEnter={onEnter} autoFocus={autoFocus} />;
+      break;
+    case 'coefficients':
+      input = <CoefficientsInput reactants={spec.reactants} products={spec.products} value={value} onChange={onChange} disabled={locked} status={status} />;
+      break;
     default:
       input = (
         <MathInput
@@ -197,7 +204,7 @@ function PartInput({
   const isChoice = spec.kind === 'mc' || spec.kind === 'multi';
   return (
     <div>
-      {part.label && (isChoice || spec.kind === 'order' || spec.kind.startsWith('graph') || spec.kind === 'manual' || spec.kind === 'text') && (
+      {part.label && (isChoice || spec.kind === 'order' || spec.kind.startsWith('graph') || spec.kind === 'manual' || spec.kind === 'text' || spec.kind === 'formula' || spec.kind === 'coefficients') && (
         <div className="mb-2 font-medium text-ink">
           <Markdown md={part.label} inline />
         </div>

@@ -8,6 +8,7 @@ import { Rng } from '@engine/rng.ts';
 import { buildItemRefs, DEFAULT_SETTINGS, itemFromRef, type AssignmentContent, type AssignmentType, type StoredResponse } from '@engine/assemble.ts';
 import { loadCourseSkills } from '@engine/curriculum/index.ts';
 import { canonicalResponse } from '@engine/answers.ts';
+import { isBalanced } from '@engine/chem/formula.ts';
 import { processSubmission } from '@engine/submit.ts';
 import type { AnswerSpec, Item } from '@engine/types.ts';
 import type { SkillState } from '@engine/mastery.ts';
@@ -94,6 +95,14 @@ function wrongResponse(spec: AnswerSpec, rng: Rng): string {
       return spec.values.length ? spec.values.map((v) => v + 1).join(', ') : '0';
     case 'text':
       return 'not sure';
+    case 'formula':
+      return spec.expected === 'H2O2' ? 'H2O' : 'H2O2';
+    case 'coefficients': {
+      // All 1s, or a 2 first when 1s happen to balance it.
+      const ones = [...spec.reactants, ...spec.products].map(() => 1);
+      if (isBalanced(spec.reactants, spec.products, ones)) ones[0] = 2;
+      return ones.join(',');
+    }
     case 'manual':
       return 'I think the answer is about 12 because I multiplied the sides.';
   }

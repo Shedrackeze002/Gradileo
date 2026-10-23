@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { gradePart } from './grade.ts';
+import { answerMarkdown, canonicalResponse } from './answers.ts';
 import { parseExpr, toLatex, evaluate } from './math/expr.ts';
 import { applyObservation, emptySkillState } from './mastery.ts';
 
@@ -229,5 +230,43 @@ describe('mastery', () => {
     expect(s.level).toBe('proficient');
     s = applyObservation(s, { correct: true, sessionId: 'b', at: new Date().toISOString() });
     expect(s.level).toBe('mastered');
+  });
+});
+
+describe('chemistry answers', () => {
+  const formula = (expected: string, typed: string) => gradePart({ kind: 'formula', expected }, typed);
+  const coefficients = (typed: string) => gradePart({ kind: 'coefficients', reactants: ['H2', 'O2'], products: ['H2O'] }, typed);
+
+  it('grades a formula by its atoms and charge, however the charge is written', () => {
+    expect(formula('Na2SO4', 'Na2SO4').correct).toBe(true);
+    expect(formula('Na2SO4', 'Na₂SO₄').correct).toBe(true);
+    expect(formula('SO4^2-', 'SO42-').correct).toBe(true);
+    expect(formula('SO4^2-', 'SO4 2-').correct).toBe(true);
+    expect(formula('Fe^3+', 'Fe3+').correct).toBe(true);
+    expect(formula('NH4+', 'NH4+').correct).toBe(true);
+    expect(formula('Fe2(SO4)3', 'Fe2(SO4)3').correct).toBe(true);
+    expect(formula('Na2SO4', 'NaSO4').correct).toBe(false);
+  });
+
+  it('says what is wrong with a formula', () => {
+    expect(formula('SO4^2-', 'SO4')).toMatchObject({ correct: false, message: expect.stringMatching(/ion: write its charge/) });
+    expect(formula('SO4^2-', 'SO4^-')).toMatchObject({ correct: false, message: expect.stringMatching(/check the charge/) });
+    expect(formula('NaCl', 'nacl')).toMatchObject({ invalid: true, message: expect.stringMatching(/capital letter/) });
+    expect(formula('NaCl', '')).toMatchObject({ invalid: true });
+  });
+
+  it('grades coefficients that balance in lowest whole numbers, an empty box being 1', () => {
+    expect(coefficients('2,1,2').correct).toBe(true);
+    expect(coefficients('2,,2').correct).toBe(true);
+    expect(coefficients('4,2,4')).toMatchObject({ correct: false, message: expect.stringMatching(/lowest whole numbers/) });
+    expect(coefficients('1,1,1')).toMatchObject({ correct: false, message: expect.stringMatching(/count the O atoms/) });
+    expect(coefficients('2,0,2')).toMatchObject({ invalid: true });
+    expect(coefficients(',,')).toMatchObject({ invalid: true });
+  });
+
+  it('shows the answers', () => {
+    expect(canonicalResponse({ kind: 'coefficients', reactants: ['C3H8', 'O2'], products: ['CO2', 'H2O'] })).toBe('1,5,3,4');
+    expect(answerMarkdown({ kind: 'coefficients', reactants: ['C3H8', 'O2'], products: ['CO2', 'H2O'] })).toBe('$\\ce{C3H8 + 5O2 -> 3CO2 + 4H2O}$');
+    expect(answerMarkdown({ kind: 'formula', expected: 'CuSO4.5H2O' })).toBe('$\\ce{CuSO4*5H2O}$');
   });
 });
