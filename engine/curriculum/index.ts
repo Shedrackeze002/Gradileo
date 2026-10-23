@@ -32,6 +32,9 @@ export const COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C
 /** The courses a class can be made for or a student placed in: every course that is not a draft. */
 export const LISTED_COURSES: CourseMeta[] = COURSES.filter((c) => !c.draft);
 
+/** The subjects of the listed courses, in the order of the courses (Mathematics first). */
+export const SUBJECTS: string[] = [...new Set(LISTED_COURSES.map((c) => c.subject))];
+
 /** Each course's generators, loaded on demand (a separate download per course in the browser). */
 const LOADERS: Record<string, () => Promise<SkillDef[]>> = {
   'math-10c': () => import('./math10c/skills.ts').then((m) => m.MATH10C_SKILLS),

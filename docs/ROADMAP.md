@@ -584,17 +584,21 @@ items ship or decisions change.
      subject in the AI's instructions, is built (PR #77), and so is the chemistry engine: elements,
      formulas, balancing, ions and names, and answers that are a formula or an equation's
      coefficients (PR #78).
-   - Chemistry 20 is being written a unit at a time as a draft course (`draft: true`): it runs
-     everywhere but the course pickers, so no class can start it until all four units are in.
-     Unit 1, The Diversity of Matter and Chemical Bonding (8 lessons, 18 skills, PR #79), Unit 2,
-     Forms of Matter: Gases (7 lessons, 12 skills, PR #80), Unit 3, Matter as Solutions, Acids
-     and Bases (8 lessons, 15 skills, PR #84), and Unit 4, Quantitative Relationships in Chemical
-     Changes (8 lessons, 16 skills: balancing and reaction types, net ionic equations, the mole,
-     gravimetric, gas and solution stoichiometry, limiting reagents, percent yield, titration and
-     titration curves), are built. Next: the choice of subject in sign-up and course placement,
-     then the course leaves draft; the course's videos; and the AI tutor's recorded voice for
-     chemistry (it reads `\ce{…}` formulas aloud first; the recording workflow takes only the
-     `math*` course folders until then).
+   - Chemistry 20 was written a unit at a time as a draft course: Unit 1, The Diversity of Matter
+     and Chemical Bonding (8 lessons, 18 skills, PR #79), Unit 2, Forms of Matter: Gases (7
+     lessons, 12 skills, PR #80), Unit 3, Matter as Solutions, Acids and Bases (8 lessons, 15
+     skills, PR #84), and Unit 4, Quantitative Relationships in Chemical Changes (8 lessons, 16
+     skills: balancing and reaction types, net ionic equations, the mole, gravimetric, gas and
+     solution stoichiometry, limiting reagents, percent yield, titration and titration curves,
+     PR #87).
+   - Built: the choice of subject. Students choose Mathematics or Chemistry on "Find your course"
+     (chemistry asks only for the grade and recommends Chemistry 20), new classes pick a course
+     from a tab for each subject, and the landing page and page title name both subjects.
+     Chemistry 20 is no longer a draft, so teachers and students can start it.
+   - Next: Chemistry 20's videos, and the AI tutor's recorded voice for chemistry (it reads
+     `\ce{…}` formulas aloud first; the recording workflow takes only the `math*` course folders
+     until then). Then Chemistry 30, then English 10, 20 and 30. The privacy policy and terms
+     still describe Gradileo as a mathematics platform; their wording is the owner's to change.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.

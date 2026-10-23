@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getCourse } from './curriculum/index.ts';
+import { getCourse, LISTED_COURSES, SUBJECTS } from './curriculum/index.ts';
 import { PREREQUISITE, placementResult, placementSkills, recommendCourse } from './placement.ts';
 
 describe('course placement', () => {
@@ -20,6 +20,19 @@ describe('course placement', () => {
     expect(recommendCourse({ grade: 12, plan: 'university-stem', calculus: true }).alternatives.map((a) => a.courseId)).toContain('math-31');
     expect(recommendCourse({ grade: 12, plan: 'not-sure' }).courseId).toBe('math-30-2');
     expect(recommendCourse({ grade: 12, plan: 'work' }).courseId).toBe('math-30-3');
+  });
+
+  it('recommends a course in the subject the student chose', () => {
+    expect(SUBJECTS).toEqual(['Mathematics', 'Chemistry']);
+    for (const subject of SUBJECTS)
+      for (const grade of [5, 9, 10, 11, 12]) {
+        const r = recommendCourse({ subject, grade, plan: 'university-stem' });
+        expect(getCourse(r.courseId)?.subject, `${subject} ${grade}`).toBe(subject);
+        expect(LISTED_COURSES.some((c) => c.id === r.courseId)).toBe(true);
+      }
+    expect(recommendCourse({ subject: 'Chemistry', grade: 11 })).toMatchObject({ courseId: 'chem-20', prerequisite: null, alternatives: [] });
+    expect(recommendCourse({ subject: 'Chemistry', grade: 10 }).reasons.join(' ')).toMatch(/usually taken in Grade 11/);
+    expect(recommendCourse({ subject: 'Mathematics', grade: 11, plan: 'university-stem' }).courseId).toBe('math-20-1');
   });
 
   it('only recommends courses that exist, with reasons, and a prerequisite that exists', () => {

@@ -110,7 +110,7 @@ export default function LandingPage() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:pt-20">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-surface px-3 py-1 text-xs font-semibold text-brand-700">
-              <Sparkles className="h-3.5 w-3.5" /> Alberta Mathematics · Grades 5 to 12, every stream
+              <Sparkles className="h-3.5 w-3.5" /> Alberta Mathematics, Grades 5 to 12 · Chemistry 20
             </span>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-[56px]">
               Teach it once. <span className="text-brand">Practise until it sticks.</span> Know who needs help.
@@ -150,7 +150,7 @@ export default function LandingPage() {
 
       <section id="features" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="max-w-2xl">
-          <h2 className="text-3xl font-semibold sm:text-4xl">Everything a math classroom needs, in one place</h2>
+          <h2 className="text-3xl font-semibold sm:text-4xl">Everything a classroom needs, in one place</h2>
           <p className="mt-3 text-lg text-ink-2">Built on what the research says works: mastery learning, worked examples, retrieval practice, spacing, and fast formative feedback.</p>
         </div>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -235,7 +235,7 @@ export default function LandingPage() {
       <footer className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-ink-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <Logo compact />
-          <p>Mastery-based mathematics for teachers and students.</p>
+          <p>Mastery-based mathematics and chemistry for teachers and students.</p>
           <LegalLinks />
         </div>
       </footer>

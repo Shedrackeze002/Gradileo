@@ -2,9 +2,6 @@
  * Chemistry 20 (Alberta), Grade 11. Outcomes follow the Alberta Chemistry 20–30 Program of
  * Studies (2007, updated 2014): four units, each with its general outcomes (20-A1 to 20-D2). The
  * wording is close to the program but still needs a word-for-word check against it.
- *
- * Being written a unit at a time (docs/PLAN-CHEMISTRY-ENGLISH.md): a draft course runs everywhere
- * except the course pickers, so no class can start it until every unit is in.
  */
 import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
 
@@ -183,5 +180,4 @@ export const CHEM20: CourseMeta = {
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
-  draft: true,
 };

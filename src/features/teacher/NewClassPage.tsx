@@ -1,23 +1,27 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Check } from 'lucide-react';
-import { LISTED_COURSES as COURSES } from '@engine/curriculum/index.ts';
+import { LISTED_COURSES as COURSES, SUBJECTS } from '@engine/curriculum/index.ts';
 import { api } from '@/data/index.ts';
 import { useCreateClass } from '@/data/hooks.ts';
-import { Button, Card, CardBody, Checkbox, Input, PageHeader, useToast } from '@/components/ui/index.ts';
+import { Button, Card, CardBody, Checkbox, Input, PageHeader, Tabs, useToast } from '@/components/ui/index.ts';
 import { cn } from '@/lib/cn.ts';
 import { useMe } from '@/features/auth/AuthProvider.tsx';
 import { ApprovalNotice, needsApproval } from './ApprovalNotice.tsx';
 import { CourseRequestCard } from '@/features/requests/CourseRequestCard.tsx';
 
-/** Courses grouped by grade, youngest first. */
-const GRADES = [...new Set(COURSES.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: COURSES.filter((c) => c.grade === grade) }));
+/** A subject's courses grouped by grade, youngest first. */
+function gradesOf(subject: string) {
+  const courses = COURSES.filter((c) => c.subject === subject);
+  return [...new Set(courses.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: courses.filter((c) => c.grade === grade) }));
+}
 
 export default function NewClassPage() {
   const [name, setName] = useState(COURSES[0].shortTitle);
   const [nameEdited, setNameEdited] = useState(false);
   const [section, setSection] = useState('');
   const [courseId, setCourseId] = useState(COURSES[0].id);
+  const [subject, setSubject] = useState(COURSES[0].subject);
   const [publishFirst, setPublishFirst] = useState(true);
   const [joinApproval, setJoinApproval] = useState(true);
   const create = useCreateClass();
@@ -42,6 +46,17 @@ export default function NewClassPage() {
 
   if (needsApproval(me)) return <ApprovalNotice me={me} />;
 
+  const pick = (id: string, title: string) => {
+    setCourseId(id);
+    if (!nameEdited) setName(title);
+  };
+  // Changing the subject selects its first course, so the class is never made for a course out of view.
+  const chooseSubject = (s: string) => {
+    setSubject(s);
+    const first = COURSES.find((c) => c.subject === s)!;
+    pick(first.id, first.shortTitle);
+  };
+
   return (
     <div className="mx-auto max-w-3xl">
       <PageHeader title="Create a class" subtitle="Each class gets its own roster, join code, published lessons and gradebook." back={{ to: '/t?all', label: 'My classes' }} />
@@ -54,8 +69,9 @@ export default function NewClassPage() {
         </Card>
         <div>
           <div className="label">Course</div>
+          {SUBJECTS.length > 1 && <Tabs className="mb-4" value={subject} onChange={chooseSubject} items={SUBJECTS.map((s) => ({ value: s, label: s }))} />}
           <div className="space-y-5">
-            {GRADES.map(({ grade, courses }) => (
+            {gradesOf(subject).map(({ grade, courses }) => (
               <section key={grade} aria-label={`Grade ${grade}`}>
                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-3">Grade {grade}</h3>
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -63,10 +79,7 @@ export default function NewClassPage() {
                     <button
                       key={c.id}
                       type="button"
-                      onClick={() => {
-                        setCourseId(c.id);
-                        if (!nameEdited) setName(c.shortTitle);
-                      }}
+                      onClick={() => pick(c.id, c.shortTitle)}
                       className={cn('card flex items-start gap-3 p-4 text-left transition', courseId === c.id ? 'border-brand ring-2 ring-brand/20' : 'hover:border-line-strong')}
                     >
                       <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
