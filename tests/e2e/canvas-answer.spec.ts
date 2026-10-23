@@ -37,6 +37,8 @@ test('a student solves a written question on the canvas, and the teacher sees th
   await page.getByRole('button', { name: /^Start/ }).click();
   await page.waitForURL(/\/take$/);
   await expect(page.getByRole('tab', { name: 'Solve on the canvas' })).toHaveAttribute('aria-selected', 'true');
+  // A resting palm must not select the question text on an iPad: the page is locked on the canvas tab.
+  await expect(page.locator('html')).toHaveClass(/ink-lock/);
   await page.getByRole('radio', { name: 'Lined paper' }).click();
   await draw(page);
   await expect(page.getByRole('button', { name: 'Undo (Ctrl+Z)' })).toBeEnabled();
@@ -45,6 +47,7 @@ test('a student solves a written question on the canvas, and the teacher sees th
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog', { name: 'Answer canvas' })).toBeHidden();
   await page.getByRole('tab', { name: 'Type' }).click();
+  await expect(page.locator('html')).not.toHaveClass(/ink-lock/);
   await page.getByLabel('Typed answer').fill('They meet again after 60 days.');
   await expect(page.getByText('Your working on the canvas is kept too. Your teacher sees both.')).toBeVisible();
 

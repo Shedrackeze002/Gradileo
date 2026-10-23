@@ -11,6 +11,7 @@ import { Tabs } from '@/components/ui/index.ts';
 import { cn } from '@/lib/cn.ts';
 import { BoardPageCanvas } from './BoardView.tsx';
 import { InkSurface } from './InkSurface.tsx';
+import { usePageLock } from './pageLock.ts';
 import { InkToolbar, useInkTools } from './InkToolbar.tsx';
 import { useBoardFit } from './useBoardFit.ts';
 
@@ -38,6 +39,7 @@ export interface CanvasAnswerProps {
 
 export function CanvasAnswer({ text, onText, canvas, onCanvas, placeholder }: CanvasAnswerProps) {
   const [tab, setTab] = useState<'canvas' | 'type'>(() => (text.trim() && !canvas ? 'type' : 'canvas'));
+  usePageLock(tab === 'canvas');
   const [pages, setPages] = useState(() => fromCanvas(canvas));
   const [ix, setIx] = useState(0);
   const [full, setFull] = useState(false);

@@ -200,6 +200,8 @@ test('a teacher presents a lesson as slides that build step by step, with a whit
   await page.keyboard.press('w');
   const board = page.getByRole('dialog', { name: 'Whiteboard' });
   await expect(board).toBeVisible();
+  // On an iPad a resting palm must not select the page: it is locked while the board is open.
+  await expect(page.locator('html')).toHaveClass(/ink-lock/);
   const canvas = board.getByRole('img', { name: /Whiteboard, page 1/ });
   const box = (await canvas.boundingBox())!;
   await page.mouse.move(box.x + 100, box.y + 100);
@@ -222,6 +224,7 @@ test('a teacher presents a lesson as slides that build step by step, with a whit
   await expect(board.getByRole('button', { name: 'Saved' })).toBeVisible();
   await board.getByRole('button', { name: 'Back to slide' }).click();
   await expect(board).toBeHidden();
+  await expect(page.locator('html')).not.toHaveClass(/ink-lock/);
   await expect(slide).toHaveAttribute('aria-label', /Naming the sides/);
 
   // The slide overview jumps to a "Your turn" slide with the lesson's interactive question.
