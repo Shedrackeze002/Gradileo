@@ -4,6 +4,7 @@ import { fmt, fmtFixed, toFrac, fracText, fracLatex } from './math/numbers.ts';
 import { lineText, generalText, lineSlope, lineYIntercept, slopePointText, evalLineY } from './math/linear.ts';
 import { frac } from './math/numbers.ts';
 import { parseExpr, toLatex } from './math/expr.ts';
+import { balance, ce } from './chem/formula.ts';
 
 /** A response string that the grader will accept for the spec (used for tests and "show answer"). Pass the part so a unit after the box is known. */
 export function canonicalResponse(spec: AnswerSpec, part?: { suffix?: string }): string {
@@ -16,6 +17,10 @@ export function canonicalResponse(spec: AnswerSpec, part?: { suffix?: string }):
       return spec.correctOrder.join(',');
     case 'text':
       return spec.accepted[0];
+    case 'formula':
+      return spec.expected;
+    case 'coefficients':
+      return (balance(spec.reactants, spec.products) ?? []).join(',');
     case 'numeric': {
       if (spec.undefinedValue) return 'undefined';
       if (spec.decimals !== undefined) return fmtFixed(spec.value, spec.decimals);
@@ -175,6 +180,10 @@ export function answerMarkdown(spec: AnswerSpec, part?: { suffix?: string }): st
       return spec.correctOrder.map((id) => spec.items.find((c) => c.id === id)?.md ?? id).join(' , ');
     case 'text':
       return spec.accepted[0];
+    case 'formula':
+      return `$${ce(spec.expected)}$`;
+    case 'coefficients':
+      return `$${equationTex(spec.reactants, spec.products, balance(spec.reactants, spec.products) ?? [])}$`;
     case 'numeric': {
       if (spec.undefinedValue) return 'undefined';
       const unit = spec.unit ? ` ${spec.unit}` : part?.suffix ? ` ${part.suffix}` : '';
@@ -209,4 +218,10 @@ export function answerMarkdown(spec: AnswerSpec, part?: { suffix?: string }): st
     case 'manual':
       return spec.rubric ?? 'Teacher-graded response';
   }
+}
+
+/** An equation in mhchem with its coefficients (a coefficient of 1 is not written): `\ce{2H2 + O2 -> 2H2O}`. */
+export function equationTex(reactants: string[], products: string[], coefficients: number[]): string {
+  const side = (list: string[], from: number) => list.map((f, i) => `${coefficients[from + i] && coefficients[from + i] !== 1 ? coefficients[from + i] : ''}${f.replace(/\./g, '*')}`).join(' + ');
+  return `\\ce{${side(reactants, 0)} -> ${side(products, reactants.length)}}`;
 }

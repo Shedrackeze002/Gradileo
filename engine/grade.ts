@@ -26,6 +26,7 @@ import {
   toPoly,
 } from './math/poly.ts';
 import { approxEqual, gcd, isPrime, radicalSplit } from './math/numbers.ts';
+import { FormulaError, isBalanced, parseFormula, readFormula, sameFormula } from './chem/formula.ts';
 import type { AnswerSpec, ExprForm, Item, Line, LineForm } from './types.ts';
 
 export interface PartResult {
@@ -98,11 +99,15 @@ export function gradePart(spec: AnswerSpec, raw: string): PartResult {
         return gradeGraphLine(spec.line, response);
       case 'graph-points':
         return gradeGraphPoints(spec.points, response);
+      case 'formula':
+        return gradeFormula(spec.expected, response);
+      case 'coefficients':
+        return gradeCoefficients(spec.reactants, spec.products, response);
       case 'manual':
         return response ? { correct: false, message: 'Your teacher will review this response.' } : invalid('Write a response.');
     }
   } catch (e) {
-    if (e instanceof ParseError) return invalid(e.message);
+    if (e instanceof ParseError || e instanceof FormulaError) return invalid(e.message);
     return invalid('We could not read that answer. Check the format.');
   }
 }
@@ -716,4 +721,38 @@ function gradeGraphPoints(points: Array<[number, number]>, response: string): Pa
   const got = new Set(pts.map(key));
   if (want.size === got.size && [...want].every((k) => got.has(k))) return ok();
   return no(got.size !== want.size ? `Plot exactly ${want.size} point${want.size === 1 ? '' : 's'}.` : undefined);
+}
+
+// ---------------------------------------------------------------------------
+// Chemistry
+
+/** A formula is right when one way of reading it has the expected atoms and charge. */
+function gradeFormula(expected: string, response: string): PartResult {
+  if (!response) return invalid('Enter a formula.');
+  const want = parseFormula(expected);
+  const readings = readFormula(response);
+  if (readings.some((f) => sameFormula(f, want))) return ok();
+  const sameAtoms = (f: { atoms: Map<string, number> }) => sameFormula({ atoms: f.atoms, charge: 0 }, { atoms: want.atoms, charge: 0 });
+  if (want.charge && readings.every((f) => f.charge === 0)) return no('This is an ion: write its charge too, such as SO4^2- or Fe^3+.');
+  if (readings.some(sameAtoms)) return no(want.charge ? 'The atoms are right; check the charge.' : 'This compound has no charge.');
+  return no();
+}
+
+/** Coefficients are right when they balance the atoms and the charge in lowest whole numbers. */
+function gradeCoefficients(reactants: string[], products: string[], response: string): PartResult {
+  const n = reactants.length + products.length;
+  const boxes = response.split(',').map((b) => b.trim());
+  if (boxes.length !== n || boxes.every((b) => !b)) return invalid('Fill in the coefficients. Leave a box empty for 1.');
+  if (boxes.some((b) => b && !/^[1-9]\d*$/.test(b))) return invalid('Use whole numbers such as 2 or 3. Leave a box empty for 1.');
+  const k = boxes.map((b) => (b ? Number(b) : 1));
+  if (!isBalanced(reactants, products, k)) {
+    // Name the first element that is off, so the student knows where to look.
+    const species = [...reactants, ...products].map(parseFormula);
+    const count = new Map<string, number>();
+    species.forEach((f, j) => f.atoms.forEach((a, el) => count.set(el, (count.get(el) ?? 0) + a * k[j] * (j < reactants.length ? 1 : -1))));
+    const off = [...count].find(([, v]) => v !== 0)?.[0];
+    return no(off ? `Not balanced yet: count the ${off} atoms on each side.` : 'The atoms balance, but the charges on the two sides do not.');
+  }
+  if (k.reduce((a, v) => gcd(a, v), 0) > 1) return no('Balanced, but use the lowest whole numbers.');
+  return ok();
 }

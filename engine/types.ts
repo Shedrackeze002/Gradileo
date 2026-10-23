@@ -86,6 +86,17 @@ export type AnswerSpec =
   | { kind: 'graph-points'; points: Array<[number, number]>; grid: GridSpec }
   | { kind: 'order'; items: Choice[]; correctOrder: string[] }
   | { kind: 'text'; accepted: string[]; caseSensitive?: boolean }
+  /**
+   * A chemical formula, written as a question writes it (`Na2SO4`, `SO4^2-`, `CuSO4.5H2O`) and
+   * graded by what it is made of: the atoms of each element and the charge, however the student
+   * writes the charge (engine/chem/formula.ts).
+   */
+  | { kind: 'formula'; expected: string }
+  /**
+   * The coefficients that balance an equation, in lowest whole numbers: a box before each formula,
+   * an empty box meaning 1. Graded by whether the atoms and the charge balance.
+   */
+  | { kind: 'coefficients'; reactants: string[]; products: string[] }
   | { kind: 'manual'; rubric?: string; maxPoints?: number };
 
 export interface Part {
