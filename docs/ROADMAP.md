@@ -587,10 +587,13 @@ items ship or decisions change.
    - Chemistry 20 is being written a unit at a time as a draft course (`draft: true`): it runs
      everywhere but the course pickers, so no class can start it until all four units are in.
      Unit 1, The Diversity of Matter and Chemical Bonding (8 lessons, 18 skills, PR #79), Unit 2,
-     Forms of Matter: Gases (7 lessons, 12 skills, PR #80), and Unit 3, Matter as Solutions, Acids
-     and Bases (8 lessons, 15 skills), are built. Next: Unit 4 (stoichiometry), then the choice of
-     subject in sign-up and course placement, the course's videos, and the AI tutor's recorded voice
-     for chemistry (it reads `\ce{…}` formulas aloud first; the recording workflow takes only the
+     Forms of Matter: Gases (7 lessons, 12 skills, PR #80), Unit 3, Matter as Solutions, Acids
+     and Bases (8 lessons, 15 skills, PR #84), and Unit 4, Quantitative Relationships in Chemical
+     Changes (8 lessons, 16 skills: balancing and reaction types, net ionic equations, the mole,
+     gravimetric, gas and solution stoichiometry, limiting reagents, percent yield, titration and
+     titration curves), are built. Next: the choice of subject in sign-up and course placement,
+     then the course leaves draft; the course's videos; and the AI tutor's recorded voice for
+     chemistry (it reads `\ce{…}` formulas aloud first; the recording workflow takes only the
      `math*` course folders until then).
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every

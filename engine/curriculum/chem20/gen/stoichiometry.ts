@@ -8,6 +8,7 @@ import { fixedChoice, mc, multi, numPart, part, roundingPhrase, skill, type GenO
 import { element } from '../../../chem/elements.ts';
 import { balance, ce, parseFormula } from '../../../chem/formula.ts';
 import { ANIONS, CATIONS, ionFormula, ionicFormula, type Ion } from '../../../chem/ions.ts';
+import { fmtFixed } from '../../../math/numbers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, Part, PlaneFigure, SkillDef, TableFigure } from '../../../types.ts';
 
@@ -18,7 +19,7 @@ const q = (v: string | number, unit: string) => `$${v}\\ \\text{${unit}}$`;
 /** Decimal places that keep about three significant figures. */
 const dpFor = (v: number) => (Math.abs(v) >= 100 ? 0 : Math.abs(v) >= 10 ? 1 : Math.abs(v) >= 1 ? 2 : 3);
 /** An answer rounded to about three significant figures, with the rounding said in the prompt. */
-const answer = (v: number, suffix: string, dp = dpFor(v)) => ({ part: numPart(v, { decimals: dp, suffix }), phrase: roundingPhrase(dp), shown: v.toFixed(dp) });
+const answer = (v: number, suffix: string, dp = dpFor(v)) => ({ part: numPart(v, { decimals: dp, suffix }), phrase: roundingPhrase(dp), shown: fmtFixed(v, dp) });
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 const coef = (k: number) => (k === 1 ? '' : `${k}`);
 /** A value rounded to three significant figures, as a question states it. */
@@ -751,7 +752,7 @@ function percentYield(rng: Rng, d: Difficulty): GenOutput {
       parts: [pctPart(p)],
       calculator: true,
       hints: ['$\\text{percent yield} = \\dfrac{\\text{actual yield}}{\\text{theoretical yield}} \\times 100\\%$'],
-      solution: [`$\\dfrac{${sf(actual)}}{${sf(t)}} \\times 100\\% = ${p.toFixed(1)}\\%$`],
+      solution: [`$\\dfrac{${sf(actual)}}{${sf(t)}} \\times 100\\% = ${fmtFixed(p, 1)}\\%$`],
     };
   }
   if (d === 2) {
@@ -762,7 +763,7 @@ function percentYield(rng: Rng, d: Difficulty): GenOutput {
       parts: [{ ...ta.part, label: 'Theoretical yield' }, pctPart(p, 'Percent yield')],
       calculator: true,
       hints: ['The theoretical yield is the mass of product the stoichiometry predicts.', 'Percent yield = actual ÷ theoretical × 100%.'],
-      solution: [...theoSteps, `Theoretical yield: $${w((m / Mi) * y.x.c[j] / y.x.c[i])} \\times ${Mj.toFixed(2)} = ${ta.shown}\\ \\text{g}$`, `Percent yield: $\\dfrac{${sf(actual)}}{${w(theo)}} \\times 100\\% = ${p.toFixed(1)}\\%$`],
+      solution: [...theoSteps, `Theoretical yield: $${w((m / Mi) * y.x.c[j] / y.x.c[i])} \\times ${Mj.toFixed(2)} = ${ta.shown}\\ \\text{g}$`, `Percent yield: $\\dfrac{${sf(actual)}}{${w(theo)}} \\times 100\\% = ${fmtFixed(p, 1)}\\%$`],
     };
   }
   const want = sig(rng.float(2, 60, 2));

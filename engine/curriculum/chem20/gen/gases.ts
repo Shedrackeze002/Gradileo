@@ -6,6 +6,7 @@
 import { mc, numPart, part, roundingPhrase, skill, type GenOutput } from '../../helpers.ts';
 import { element } from '../../../chem/elements.ts';
 import { ce, molarMass, parseFormula } from '../../../chem/formula.ts';
+import { fmtFixed } from '../../../math/numbers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
 
@@ -24,7 +25,7 @@ const q = (v: string | number, unit: string) => `$${v}\\ \\text{${unit}}$`;
 const degC = (v: string | number) => `$${v}^\\circ\\text{C}$`;
 const kelvin = (c: number) => c + ZERO;
 /** An answer rounded to about three significant figures, with the rounding said in the prompt. */
-const answer = (v: number, suffix: string, dp = dpFor(v)) => ({ part: numPart(v, { decimals: dp, suffix }), phrase: roundingPhrase(dp), shown: v.toFixed(dp) });
+const answer = (v: number, suffix: string, dp = dpFor(v)) => ({ part: numPart(v, { decimals: dp, suffix }), phrase: roundingPhrase(dp), shown: fmtFixed(v, dp) });
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 // ---------------------------------------------------------------------------- lesson 2.1: the kinetic molecular theory

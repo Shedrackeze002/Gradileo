@@ -14,6 +14,8 @@ export const OUTCOMES: Outcome[] = [
   { code: '20-B1', strand: 'Forms of Matter: Gases', text: 'Explain molecular behaviour, using models of the gaseous state of matter.' },
   { code: '20-C1', strand: 'Matter as Solutions, Acids and Bases', text: 'Investigate solutions, describing their physical and chemical properties.' },
   { code: '20-C2', strand: 'Matter as Solutions, Acids and Bases', text: 'Describe acidic and basic solutions qualitatively and quantitatively.' },
+  { code: '20-D1', strand: 'Quantitative Relationships in Chemical Changes', text: 'Explain how balanced chemical equations show the quantitative relationships between the reactants and products of a chemical change.' },
+  { code: '20-D2', strand: 'Quantitative Relationships in Chemical Changes', text: 'Use stoichiometry in quantitative analysis.' },
 ];
 
 const L = (
@@ -126,12 +128,47 @@ export const LESSONS: LessonMeta[] = [
     ['c20-strong-weak', 'c20-strong-ph'],
     ['Tell strong acids from weak acids, and concentrated from strong', 'Find the pH of a solution of a strong acid or a strong base'],
     70, ['strong acid', 'weak acid', 'strong base', 'ionisation']),
+
+  // ---------------- Unit 4: Quantitative Relationships in Chemical Changes ----------------
+  L('c20-4-1', 'c20-u4', '4.1', 'Balancing Equations and Types of Reactions', ['20-D1'],
+    ['c20-balance', 'c20-reaction-type'],
+    ['Balance chemical equations with the smallest whole-number coefficients', 'Classify formation, simple decomposition, single replacement, double replacement and combustion reactions', 'Predict the type of a reaction from its reactants'],
+    75, ['reactant', 'product', 'coefficient', 'formation', 'decomposition', 'single replacement', 'double replacement', 'combustion']),
+  L('c20-4-2', 'c20-u4', '4.2', 'Net Ionic Equations', ['20-D1'],
+    ['c20-net-ionic', 'c20-spectator-ions'],
+    ['Write the total ionic equation for a reaction in solution', 'Identify spectator ions and write the net ionic equation'],
+    70, ['total ionic equation', 'net ionic equation', 'spectator ion']),
+  L('c20-4-3', 'c20-u4', '4.3', 'The Mole and Molar Mass', ['20-D2'],
+    ['c20-molar-mass', 'c20-mole-mass', 'c20-particles'],
+    ['Calculate the molar mass of a compound, including a hydrate', 'Convert between mass and amount in moles', "Use Avogadro's number to count molecules and atoms"],
+    75, ['mole', "Avogadro's number", 'molar mass', 'hydrate']),
+  L('c20-4-4', 'c20-u4', '4.4', 'Mole Ratios and Gravimetric Stoichiometry', ['20-D1', '20-D2'],
+    ['c20-mole-ratio', 'c20-gravimetric'],
+    ['Use the coefficients of a balanced equation as a mole ratio', 'Find the mass of a reactant or product from the mass of another'],
+    80, ['stoichiometry', 'mole ratio', 'gravimetric']),
+  L('c20-4-5', 'c20-u4', '4.5', 'Gas and Solution Stoichiometry', ['20-D2'],
+    ['c20-gas-stoich', 'c20-solution-stoich'],
+    ['Relate masses to gas volumes at STP, at SATP and with the ideal gas law', 'Use volumes and concentrations of solutions in stoichiometry'],
+    80, ['molar volume', 'standard solution']),
+  L('c20-4-6', 'c20-u4', '4.6', 'Limiting and Excess Reagents', ['20-D2'],
+    ['c20-limiting', 'c20-limiting-yield'],
+    ['Identify the limiting and the excess reagent', 'Find the amount of product and the excess left over'],
+    75, ['limiting reagent', 'excess reagent']),
+  L('c20-4-7', 'c20-u4', '4.7', 'Percent Yield', ['20-D2'],
+    ['c20-percent-yield'],
+    ['Calculate the theoretical and percent yield of a reaction', 'Explain why the actual yield is usually less than the theoretical yield', 'Plan the mass of reactant needed for a known percent yield'],
+    65, ['theoretical yield', 'actual yield', 'percent yield']),
+  L('c20-4-8', 'c20-u4', '4.8', 'Titration', ['20-D2'],
+    ['c20-titration', 'c20-titration-curve'],
+    ['Describe how a titration is done, and find a concentration from its data', 'Read the equivalence point from a titration curve and choose an indicator', 'Recognise the curves of strong and weak acids and bases'],
+    80, ['titration', 'titrant', 'burette', 'endpoint', 'equivalence point', 'indicator', 'titration curve']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'c20-u1', number: 1, title: 'The Diversity of Matter and Chemical Bonding', description: 'Atoms and ions, ionic and molecular compounds, electronegativity, Lewis structures, shapes of molecules, polarity and intermolecular forces.', outcomes: ['20-A1', '20-A2'], lessons: [], color: 'emerald' },
   { id: 'c20-u2', number: 2, title: 'Forms of Matter: Gases', description: 'The kinetic molecular theory, pressure and temperature, and the gas laws: Boyle, Charles, Gay-Lussac, combined, Avogadro and the ideal gas law.', outcomes: ['20-B1'], lessons: [], color: 'sky' },
   { id: 'c20-u3', number: 3, title: 'Matter as Solutions, Acids and Bases', description: 'Electrolytes and dissociation, solubility, concentration and dilution, acids and bases, pH and pOH, and strong and weak acids.', outcomes: ['20-C1', '20-C2'], lessons: [], color: 'violet' },
+  { id: 'c20-u4', number: 4, title: 'Quantitative Relationships in Chemical Changes', description: 'Balancing equations and types of reactions, net ionic equations, the mole, and stoichiometry: gravimetric, gas and solution, limiting reagents, percent yield and titration.', outcomes: ['20-D1', '20-D2'], lessons: [], color: 'amber' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);

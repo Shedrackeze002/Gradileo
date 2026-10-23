@@ -7,6 +7,7 @@ import { fixedChoice, mc, multi, numPart, part, roundingPhrase, skill, type GenO
 import { element } from '../../../chem/elements.ts';
 import { ce, molarMass, parseFormula } from '../../../chem/formula.ts';
 import { ACIDS, ANIONS, CATIONS, ionFormula, ionicFormula, type Ion } from '../../../chem/ions.ts';
+import { fmtFixed } from '../../../math/numbers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, Part, SkillDef } from '../../../types.ts';
 
@@ -14,7 +15,7 @@ const L = (n: number) => `c20-3-${n}`;
 const $ = (formula: string) => `$${ce(formula)}$`;
 const q = (v: string | number, unit: string) => `$${v}\\ \\text{${unit}}$`;
 const dpFor = (v: number) => (Math.abs(v) >= 100 ? 0 : Math.abs(v) >= 10 ? 1 : Math.abs(v) >= 1 ? 2 : 3);
-const answer = (v: number, suffix: string, dp = dpFor(v)) => ({ part: numPart(v, { decimals: dp, suffix }), phrase: roundingPhrase(dp), shown: v.toFixed(dp) });
+const answer = (v: number, suffix: string, dp = dpFor(v)) => ({ part: numPart(v, { decimals: dp, suffix }), phrase: roundingPhrase(dp), shown: fmtFixed(v, dp) });
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 const cation = (name: string) => CATIONS.find((i) => i.name === name)!;
