@@ -41,7 +41,7 @@ export function FormulaInput({
         aria-label="Formula"
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && onEnter?.()}
-        placeholder={placeholder ?? 'For example Na2SO4, or SO4^2- for an ion'}
+        placeholder={placeholder ?? 'Formula, with ^ before a charge'}
       />
       {shown && (
         <p className="mt-1.5 text-sm text-ink-3" aria-live="polite">

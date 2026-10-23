@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Check } from 'lucide-react';
-import { COURSES } from '@engine/curriculum/index.ts';
+import { LISTED_COURSES as COURSES } from '@engine/curriculum/index.ts';
 import { api } from '@/data/index.ts';
 import { useCreateClass } from '@/data/hooks.ts';
 import { Button, Card, CardBody, Checkbox, Input, PageHeader, useToast } from '@/components/ui/index.ts';

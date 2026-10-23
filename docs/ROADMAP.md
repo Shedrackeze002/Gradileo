@@ -581,7 +581,16 @@ items ship or decisions change.
      10, 20 and 30, and what each needs beyond mathematics. Decisions (the owner, 23 October
      2026): Chemistry 20 and 30 first (Science 9 and 10 later), English as English 10, 20 and 30,
      and chemistry before English. Step 1, chemistry typesetting (`\ce{…}`) and the course's
-     subject in the AI's instructions, is built. Next: Chemistry 20, a unit at a time.
+     subject in the AI's instructions, is built (PR #77), and so is the chemistry engine: elements,
+     formulas, balancing, ions and names, and answers that are a formula or an equation's
+     coefficients (PR #78).
+   - Chemistry 20 is being written a unit at a time as a draft course (`draft: true`): it runs
+     everywhere but the course pickers, so no class can start it until all four units are in.
+     Unit 1, The Diversity of Matter and Chemical Bonding (8 lessons, 18 skills), is built. Next:
+     Unit 2 (gases), Unit 3 (solutions, acids and bases), Unit 4 (stoichiometry), then the choice of
+     subject in sign-up and course placement, the course's videos, and the AI tutor's recorded voice
+     for chemistry (it reads `\ce{…}` formulas aloud first; the recording workflow takes only the
+     `math*` course folders until then).
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
