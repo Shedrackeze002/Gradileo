@@ -8,7 +8,7 @@
  */
 import { COURSES } from '../../engine/curriculum/index.ts';
 import type { CourseMeta, UnitMeta } from '../../engine/types.ts';
-import { SCRIPT_FILES } from './catalog.ts';
+import { FIRST_NAME, SCRIPT_FILES } from './catalog.ts';
 
 export type Service = 'GDRIVE' | 'YOUTUBE';
 const README = { GDRIVE: '"Google Drive"', YOUTUBE: '"YouTube API"' };
@@ -70,6 +70,9 @@ export function unitVideos(unit: UnitMeta): string[] {
   return unit.lessons.flatMap(lessonVideos);
 }
 
+/** A course's folder under Gradileo videos/: its first name, or its short title for a course added since. */
+export const courseFolder = (course: CourseMeta) => FIRST_NAME[course.id] ?? course.shortTitle;
+
 export const unitFolder = (unit: UnitMeta) => `Unit ${unit.number} – ${unit.title}`;
 
 export interface Place {
@@ -118,7 +121,7 @@ export async function find(name: string, parent: string, folder: boolean) {
 /** The Drive folder holding a video's files, or undefined when it was never uploaded. */
 export async function videoFolder(p: Place): Promise<string | undefined> {
   let parent = 'root';
-  for (const name of [ROOT_FOLDER, p.course.shortTitle, unitFolder(p.unit), p.folder]) {
+  for (const name of [ROOT_FOLDER, courseFolder(p.course), unitFolder(p.unit), p.folder]) {
     const found = await find(name, parent, true);
     if (!found) return undefined;
     parent = found.id;

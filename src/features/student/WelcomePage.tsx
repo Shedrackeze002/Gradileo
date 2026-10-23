@@ -1,7 +1,7 @@
 /**
  * Onboarding for students who sign up on their own: the subject they want to study, a few
- * questions about their grade, plans and how mathematics feels, a recommended course following
- * Alberta's course sequences, and an optional placement check on the skills of the course before
+ * questions about their grade, plans and how mathematics feels, a recommended course in the
+ * stream that fits their plans, and an optional placement check on the skills of the course before
  * it. Starting a course opens a self-paced section where the AI acts as tutor.
  */
 import { useMemo, useState } from 'react';
@@ -210,7 +210,7 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
           </Question>
         )}
         {askCalculus && (
-          <Question label="Do you plan to take calculus (Math 31)?">
+          <Question label="Do you plan to take calculus in Grade 12?">
             <div className="grid grid-cols-2 gap-2 sm:w-80">
               <Choice selected={calculus === true} onClick={() => setCalculus(true)}>
                 Yes
@@ -233,7 +233,7 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
           </Question>
         )}
         {askSupport && (
-          <Checkbox checked={support} onChange={setSupport} label="I would like a course with more support that focuses on everyday mathematics (Knowledge and Employability)" />
+          <Checkbox checked={support} onChange={setSupport} label="I would like a course with more support that focuses on everyday mathematics" />
         )}
         <div className="flex justify-end">
           <Button

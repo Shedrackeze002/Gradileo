@@ -214,8 +214,8 @@ for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map(
 
 export const MATH20_1: CourseMeta = {
   id: 'math-20-1',
-  title: 'Grade 11 Mathematics (Math 20-1)',
-  shortTitle: 'Math 20-1',
+  title: 'Grade 11 Mathematics: Pre-calculus',
+  shortTitle: 'Math 11 Pre-calculus',
   grade: 11,
   subject: 'Mathematics',
   description: 'Pre-calculus for Grade 11: sequences and series, trigonometry, quadratic functions and equations, radicals, rational expressions, absolute value and reciprocal functions, systems and inequalities.',

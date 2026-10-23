@@ -40,7 +40,7 @@ export default function LoginPage() {
       {demo && (
         <div className="mb-6 rounded-2xl border border-brand-200 bg-brand-50/70 p-4">
           <div className="text-sm font-semibold text-brand-800">Explore the demo</div>
-          <p className="mt-1 text-sm text-ink-2">A sample Math 10C class with 16 students, real graded work and AI insights. Everything runs in your browser.</p>
+          <p className="mt-1 text-sm text-ink-2">A sample Grade 10 Mathematics class with 16 students, real graded work and AI insights. Everything runs in your browser.</p>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             <Button variant="primary" icon={<Presentation className="h-4 w-4" />} loading={busy === 'teacher'} onClick={() => go(DEMO_TEACHER_EMAIL, DEMO_PASSWORD, 'teacher')}>
               Teacher demo

@@ -139,7 +139,7 @@ const PLAN: PlanItem[] = [
 const PUBLISHED_LESSONS = MATH10C.lessons.filter((l) => ['m10c-u1', 'm10c-u2'].includes(l.unitId) || ['m10c-3-1', 'm10c-3-2', 'm10c-3-3', 'm10c-3-4'].includes(l.id)).map((l) => l.id);
 
 export async function buildSeed(): Promise<DemoDB> {
-  // The demo class takes Math 10C; its sample work is generated and graded with that course's generators.
+  // The demo class takes Grade 10 Mathematics (math-10c); its sample work is generated and graded with that course's generators.
   await loadCourseSkills('math-10c');
   const rng = new Rng(20261010);
   const now = Date.now();
@@ -182,7 +182,7 @@ export async function buildSeed(): Promise<DemoDB> {
         id: classId,
         teacherId: teacher.id,
         kind: 'teacher',
-        name: 'Math 10C',
+        name: 'Math 10',
         section: 'Block A',
         courseId: 'math-10c',
         joinCode: 'MATH10',
@@ -212,7 +212,7 @@ export async function buildSeed(): Promise<DemoDB> {
     notifications: [],
     insights: [],
     announcements: [
-      { id: 'an_1', classId, authorId: teacher.id, title: 'Welcome to Math 10C!', body: 'Every lesson has worked examples and practice with instant feedback. Aim for **mastery**, not just completion — practise until a skill shows *Proficient* or *Mastered*.', createdAt: iso(-38) },
+      { id: 'an_1', classId, authorId: teacher.id, title: 'Welcome to Math 10!', body: 'Every lesson has worked examples and practice with instant feedback. Aim for **mastery**, not just completion — practise until a skill shows *Proficient* or *Mastered*.', createdAt: iso(-38) },
       { id: 'an_2', classId, authorId: teacher.id, title: 'Unit 2 test results are in', body: 'Great effort on the trigonometry test. Check your results and practise any skill below *Proficient* — especially angles of elevation and depression.', createdAt: iso(-3) },
     ],
     reminderLog: [],

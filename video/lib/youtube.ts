@@ -106,6 +106,7 @@ export async function insertCaptions(videoId: string, srt: Buffer): Promise<void
 export interface Playlist {
   id: string;
   title: string;
+  description: string;
   /** The YouTube ids of its videos, in playlist order. */
   videos: string[];
 }
@@ -115,11 +116,11 @@ export async function playlists(): Promise<Playlist[]> {
   const out: Playlist[] = [];
   let page = '';
   do {
-    const list = await youtube<{ items: Array<{ id: string; snippet: { title: string } }>; nextPageToken?: string }>(
+    const list = await youtube<{ items: Array<{ id: string; snippet: { title: string; description: string } }>; nextPageToken?: string }>(
       `${API}/playlists?part=snippet&mine=true&maxResults=50${page ? `&pageToken=${page}` : ''}`,
     );
     for (const p of list.items) {
-      out.push({ id: p.id, title: p.snippet.title, videos: (await playlistItems(p.id)).map((i) => i.videoId) });
+      out.push({ id: p.id, title: p.snippet.title, description: p.snippet.description, videos: (await playlistItems(p.id)).map((i) => i.videoId) });
     }
     page = list.nextPageToken ?? '';
   } while (page);
@@ -147,7 +148,17 @@ export async function createPlaylist(title: string, description: string): Promis
     headers: { 'Content-Type': 'application/json; charset=UTF-8' },
     body: JSON.stringify({ snippet: { title, description, defaultLanguage: 'en' }, status: { privacyStatus: 'public' } }),
   });
-  return { id: p.id, title, videos: [] };
+  return { id: p.id, title, description, videos: [] };
+}
+
+/** Gives a playlist a new title; its description stays as it is. */
+export async function renamePlaylist(playlist: Playlist, title: string): Promise<void> {
+  await youtube(`${API}/playlists?part=snippet`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+    body: JSON.stringify({ id: playlist.id, snippet: { title, description: playlist.description, defaultLanguage: 'en' } }),
+  });
+  playlist.title = title;
 }
 
 /**

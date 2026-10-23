@@ -114,7 +114,7 @@ function RequestItem({ r }: { r: CourseRequest }) {
 
         {declining && (
           <div className="mt-4 space-y-2">
-            <Textarea label="Note to the person who asked (optional)" value={note} onChange={(e) => setNote(e.target.value)} maxLength={1000} rows={2} placeholder="For example: this is covered in Math 30-1, Unit 4." />
+            <Textarea label="Note to the person who asked (optional)" value={note} onChange={(e) => setNote(e.target.value)} maxLength={1000} rows={2} placeholder="For example: this is covered in Math 12 Pre-calculus, Unit 4." />
             <div className="flex gap-2">
               <Button variant="danger" loading={update.isPending} onClick={async () => { await save('declined', { note }, 'Request declined'); setDeclining(false); }}>
                 Decline request

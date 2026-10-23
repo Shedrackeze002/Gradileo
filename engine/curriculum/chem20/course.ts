@@ -172,8 +172,8 @@ for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map(
 
 export const CHEM20: CourseMeta = {
   id: 'chem-20',
-  title: 'Grade 11 Chemistry (Chemistry 20)',
-  shortTitle: 'Chemistry 20',
+  title: 'Grade 11 Chemistry',
+  shortTitle: 'Chemistry 11',
   grade: 11,
   subject: 'Chemistry',
   description: 'Chemistry for Grade 11: chemical bonding and the shapes of molecules, gases, solutions, acids and bases, and quantitative relationships in chemical changes.',

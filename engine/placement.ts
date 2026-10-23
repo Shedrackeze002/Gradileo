@@ -1,6 +1,6 @@
 /**
  * Course placement for students who sign up on their own: a recommendation from the subject they
- * choose, their grade and their plans, following Alberta's course sequences, and a short placement
+ * choose, their grade and their plans, following the courses' streams from Grade 10, and a short placement
  * check on the skills of the course before it.
  */
 import { getCourse, lessonById } from './curriculum/index.ts';
@@ -17,7 +17,7 @@ export interface PlacementAnswers {
   plan?: Plan;
   /** Interested in calculus (asked in Grade 12 for university science plans). */
   calculus?: boolean;
-  /** Has found mathematics very hard and wants extra support (Knowledge and Employability). */
+  /** Has found mathematics very hard and wants extra support (the Essentials stream). */
   support?: boolean;
   feeling?: Feeling;
 }
@@ -65,38 +65,38 @@ function rec(courseId: string, reasons: string[], alternatives: CourseChoice[] =
 export function recommendCourse(a: PlacementAnswers): Recommendation {
   const g = Math.round(a.grade);
   if (a.subject === 'Chemistry') {
-    const reasons = ['Chemistry 20 is the first high-school chemistry course: chemical bonding, gases, solutions, acids and bases, and stoichiometry.'];
-    if (g < 11) reasons.push('It is usually taken in Grade 11, after Science 10, so some ideas will be new; the first lessons start from atoms and ions.');
+    const reasons = ['Grade 11 Chemistry is the first chemistry course: chemical bonding, gases, solutions, acids and bases, and stoichiometry.'];
+    if (g < 11) reasons.push('It is usually taken in Grade 11, so some ideas will be new; the first lessons start from atoms and ions.');
     return rec('chem-20', reasons);
   }
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));
-    return rec(`math-${grade}`, [`Grade ${grade} Mathematics follows Alberta's program for your grade, so you learn what your class is learning.`]);
+    return rec(`math-${grade}`, [`Grade ${grade} Mathematics covers the mathematics of your grade, so you learn what your class is learning.`]);
   }
   const plan = a.plan ?? 'not-sure';
   if (g === 10) {
-    if (a.support) return rec('math-10-4', ['Math 10-4 (Knowledge and Employability) builds everyday mathematics for work and life with extra support.'], [{ courseId: 'math-10-3', why: 'A step up when you feel ready.' }]);
-    if (plan === 'work') return rec('math-10-3', ['Math 10-3 focuses on the mathematics of the workplace and trades: measurement, geometry, money and number sense.'], [{ courseId: 'math-10c', why: 'Keeps university and most college programs open.' }]);
+    if (a.support) return rec('math-10-4', ['Math 10 Essentials builds everyday mathematics for work and life with extra support.'], [{ courseId: 'math-10-3', why: 'A step up when you feel ready.' }]);
+    if (plan === 'work') return rec('math-10-3', ['Math 10 Workplace focuses on the mathematics of the workplace and trades: measurement, geometry, money and number sense.'], [{ courseId: 'math-10c', why: 'Keeps university and most college programs open.' }]);
     if (plan === 'college-trades')
-      return rec('math-10-3', ['Math 10-3 focuses on practical mathematics used in trades and many technical programs.', CHECK], [{ courseId: 'math-10c', why: 'Choose Math 10C if a program you like asks for Math 20-1 or 20-2 later.' }]);
-    return rec('math-10c', ['Math 10C is the common start for both Math 20-1 and Math 20-2, so it keeps university and college options open.', ...(a.feeling === 'struggling' ? ['The placement check shows which Grade 9 skills to review first.'] : [])], [{ courseId: 'math-10-3', why: 'A practical course for the workplace and trades.' }]);
+      return rec('math-10-3', ['Math 10 Workplace focuses on practical mathematics used in trades and many technical programs.', CHECK], [{ courseId: 'math-10c', why: 'Choose Math 10 if a program you like asks for Grade 11 Pre-calculus or Foundations later.' }]);
+    return rec('math-10c', ['Math 10 is the common start for both Grade 11 Pre-calculus and Foundations, so it keeps university and college options open.', ...(a.feeling === 'struggling' ? ['The placement check shows which Grade 9 skills to review first.'] : [])], [{ courseId: 'math-10-3', why: 'A practical course for the workplace and trades.' }]);
   }
   if (g === 11) {
-    if (a.support) return rec('math-20-4', ['Math 20-4 continues Knowledge and Employability mathematics with extra support.'], [{ courseId: 'math-20-3', why: 'A step up when you feel ready.' }]);
-    if (plan === 'university-stem') return rec('math-20-1', ['Math 20-1 leads to Math 30-1 and Math 31, the path usually needed for science, engineering, health and mathematics programs.', CHECK], [{ courseId: 'math-20-2', why: 'If your programs do not need calculus.' }]);
-    if (plan === 'work') return rec('math-20-3', ['Math 20-3 builds workplace mathematics: measurement, geometry, finance and reasoning.'], [{ courseId: 'math-20-2', why: 'Keeps more post-secondary programs open.' }]);
-    if (plan === 'college-trades') return rec('math-20-3', ['Math 20-3 is practical mathematics for trades and many technical programs.', CHECK], [{ courseId: 'math-20-2', why: 'Choose Math 20-2 if a program you like asks for Math 30-2.' }]);
-    return rec('math-20-2', ['Math 20-2 leads to Math 30-2, used by many university and college programs that do not need calculus.', CHECK], [{ courseId: 'math-20-1', why: 'Choose Math 20-1 if you might study science, engineering or health.' }]);
+    if (a.support) return rec('math-20-4', ['Math 11 Essentials continues everyday mathematics with extra support.'], [{ courseId: 'math-20-3', why: 'A step up when you feel ready.' }]);
+    if (plan === 'university-stem') return rec('math-20-1', ['Math 11 Pre-calculus leads to Grade 12 Pre-calculus and Calculus, the path usually needed for science, engineering, health and mathematics programs.', CHECK], [{ courseId: 'math-20-2', why: 'If your programs do not need calculus.' }]);
+    if (plan === 'work') return rec('math-20-3', ['Math 11 Workplace builds workplace mathematics: measurement, geometry, finance and reasoning.'], [{ courseId: 'math-20-2', why: 'Keeps more post-secondary programs open.' }]);
+    if (plan === 'college-trades') return rec('math-20-3', ['Math 11 Workplace is practical mathematics for trades and many technical programs.', CHECK], [{ courseId: 'math-20-2', why: 'Choose Math 11 Foundations if a program you like asks for Grade 12 Foundations.' }]);
+    return rec('math-20-2', ['Math 11 Foundations leads to Grade 12 Foundations, used by many university and college programs that do not need calculus.', CHECK], [{ courseId: 'math-20-1', why: 'Choose Math 11 Pre-calculus if you might study science, engineering or health.' }]);
   }
   // Grade 12 (and anything above).
-  if (a.support) return rec('math-20-4', ['Math 20-4 is the last Knowledge and Employability mathematics course, with extra support.'], [{ courseId: 'math-30-3', why: 'A step up when you feel ready.' }]);
+  if (a.support) return rec('math-20-4', ['Math 11 Essentials is the last Essentials course, with extra support.'], [{ courseId: 'math-30-3', why: 'A step up when you feel ready.' }]);
   if (plan === 'university-stem') {
-    const reasons = ['Math 30-1 is the pre-calculus course usually needed for science, engineering, health and mathematics programs.', CHECK];
-    return a.calculus ? rec('math-30-1', [...reasons, 'Math 31 (calculus) is taken alongside or after Math 30-1.'], [{ courseId: 'math-31', why: 'Calculus, alongside or after Math 30-1.' }]) : rec('math-30-1', reasons, [{ courseId: 'math-30-2', why: 'If your programs do not need calculus.' }]);
+    const reasons = ['Math 12 Pre-calculus is the course usually needed for science, engineering, health and mathematics programs.', CHECK];
+    return a.calculus ? rec('math-30-1', [...reasons, 'Math 12 Calculus is taken alongside or after Math 12 Pre-calculus.'], [{ courseId: 'math-31', why: 'Calculus, alongside or after Math 12 Pre-calculus.' }]) : rec('math-30-1', reasons, [{ courseId: 'math-30-2', why: 'If your programs do not need calculus.' }]);
   }
-  if (plan === 'work') return rec('math-30-3', ['Math 30-3 completes the workplace mathematics sequence.'], [{ courseId: 'math-30-2', why: 'Keeps more post-secondary programs open.' }]);
-  if (plan === 'college-trades') return rec('math-30-3', ['Math 30-3 is practical mathematics for trades and many technical programs.', CHECK], [{ courseId: 'math-30-2', why: 'Choose Math 30-2 if a program you like asks for it.' }]);
-  return rec('math-30-2', ['Math 30-2 is used by many university and college programs that do not need calculus.', CHECK], [{ courseId: 'math-30-1', why: 'Choose Math 30-1 if you might study science, engineering or health.' }]);
+  if (plan === 'work') return rec('math-30-3', ['Math 12 Workplace completes the workplace mathematics sequence.'], [{ courseId: 'math-30-2', why: 'Keeps more post-secondary programs open.' }]);
+  if (plan === 'college-trades') return rec('math-30-3', ['Math 12 Workplace is practical mathematics for trades and many technical programs.', CHECK], [{ courseId: 'math-30-2', why: 'Choose Math 12 Foundations if a program you like asks for it.' }]);
+  return rec('math-30-2', ['Math 12 Foundations is used by many university and college programs that do not need calculus.', CHECK], [{ courseId: 'math-30-1', why: 'Choose Math 12 Pre-calculus if you might study science, engineering or health.' }]);
 }
 
 /**

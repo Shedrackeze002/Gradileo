@@ -610,10 +610,26 @@ items ship or decisions change.
      (chemistry asks only for the grade and recommends Chemistry 20), new classes pick a course
      from a tab for each subject, and the landing page and page title name both subjects.
      Chemistry 20 is no longer a draft, so teachers and students can start it.
-   - Next: Chemistry 20's videos, and the AI tutor's recorded voice for chemistry (it reads
-     `\ce{…}` formulas aloud first; the recording workflow takes only the `math*` course folders
-     until then). Then Chemistry 30, then English 10, 20 and 30. The privacy policy and terms
-     still describe Gradileo as a mathematics platform; their wording is the owner's to change.
+   - Decision (the owner, 23 October 2026): Gradileo is open to learners everywhere and is not
+     tied to Alberta. Chemistry runs **Grade 10 → 11 → 12**, so a new **Grade 10 Chemistry** comes
+     first (plan in `docs/PLAN-CHEMISTRY-ENGLISH.md`), and every course is named by its grade and
+     stream instead of an Alberta code: Math 10, Math 10 Workplace and Math 10 Essentials; Math 11
+     Pre-calculus, Foundations, Workplace and Essentials; Math 12 Pre-calculus, Foundations,
+     Workplace and Calculus; Grade 11 Chemistry. The YouTube text names the course the same way,
+     and old playlists are renamed the first time a video goes into them. Drive folders keep their
+     first names (Math 10C, …) so the uploads still find them.
+   - Decision (the owner, 23 October 2026): the owner's "Chemistry Basics" slides (Avanti
+     Fellows' Class 11 chemistry slides, following India's NCERT Class 11 book; © Avanti Fellows,
+     no open licence) are a reference only. Nothing from them is copied or published.
+   - Next: Grade 10 Chemistry (about 22 lessons in five units). Then the videos for Grades 10 and
+     11, and the AI tutor's recorded voice for chemistry (it reads `\ce{…}` formulas aloud first;
+     the recording workflow takes only the `math*` course folders until then). Then Grade 12
+     Chemistry, then English 10, 20 and 30. The privacy policy and terms still describe Gradileo
+     as a mathematics platform; their wording is the owner's to change.
+   - Also to do: about 100 practice questions and a few lessons are set in Alberta (a farm in
+     Alberta, a road map of Alberta, Alberta's GST). They become places anywhere or no place, with
+     every rate still stated in the question. The rendered videos keep their old course names on
+     screen; new and re-rendered videos use the new names.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
