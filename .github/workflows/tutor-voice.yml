@@ -102,10 +102,15 @@ jobs:
         with:
           path: video/.cache/models
           key: kokoro-82m-v1.0-onnx
+      # The API only lists the files and they download from their public links, which use none of
+      # the run token's 1,000 API calls an hour (a download through the API takes one per file).
       - name: Get the last recordings' manifests
         run: |
           mkdir -p previous out
-          if gh release view "$TAG" > /dev/null 2>&1; then gh release download "$TAG" --pattern '*.json' --dir previous; fi
+          if id=$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$TAG" -q .id 2> /dev/null); then
+            gh api --paginate "repos/$GITHUB_REPOSITORY/releases/$id/assets?per_page=100" -q '.[] | select(.name | endswith(".json")) | .browser_download_url' > manifests.txt
+            xargs -r -P 8 -n 1 curl -fsSL --retry 4 --retry-all-errors -O --output-dir previous < manifests.txt
+          fi
       - name: Record
         env:
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}

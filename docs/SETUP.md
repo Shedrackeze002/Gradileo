@@ -255,7 +255,9 @@ the **Tutor voice** workflow (`.github/workflows/tutor-voice.yml`). It builds ea
 as a self-paced student sees them, gets what the tutor says at each step, voices it with Kokoro
 (`video/tools/tutor-voice.ts`, the videos' voice and calm pace) and publishes one MP3 and one
 manifest per lesson as the files of a release per course (`tutor-voice-math10c`, …). The Cloudflare
-deploy copies them into the site at `/tutor/`, and the tutor plays them. A lesson without a
+deploy copies them into the site at `/tutor/`, and the tutor plays them. Both workflows download the
+files from their public links rather than through the GitHub API, because the run's token has
+1,000 API calls an hour for the whole repository and an API download takes one per file. A lesson without a
 recording still works: the tutor shows its words on screen.
 
 1. Add the repository secret `MINIMAX_API_KEY` (Settings → Secrets and variables → Actions) so
