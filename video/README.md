@@ -240,7 +240,9 @@ Lessons learned while scripting (the script check does not catch these):
   such as "one and six, two and five" ("1 in 6, 2 in 5"; "one plus six" is clear), "A line graph"
   ("Align graph"; "Line graphs show…" is clear), "Leo picks a card" ("Leo Pixacard"),
   "add its opposite" ("at its opposite"; "you add its opposite" is clear), "A rise, a gain"
-  ("Arise, again"; "Rises, gains…" is clear), and "convenience sample" ("convenient sample"; listen
+  ("Arise, again"; "Rises, gains…" is clear), "rink" with little around it ("A rectangular rink" is
+  heard as "ring", "Now the rink:" as "rank"; "an ice rink" and "the area of the rink" are clear),
+  "stays as two terms" ("stays is"; "is left as" is clear), and "convenience sample" ("convenient sample"; listen
   to it after rendering). "Bisects" after "chord" came out "by sex": `speechText` now says
   "bi-sect", and the pronunciation check takes "cord" as "chord". "Lengths" came out "links":
   `speechText` now says "lenkths", which helps, but at the end of a long line it can still be heard

@@ -37,7 +37,7 @@ const video: Explainer = {
       layout: 'center',
       main: [{ kind: 'title', id: 'title', kicker: 'Polynomials · Part 1', title: 'Multiplying Monomials', subtitle: 'Multiply the numbers, then the variables' }],
       lines: [
-        { say: 'A rectangular rink is two x metres wide and three x minus five metres long. What is its area? To answer, you multiply polynomials.', show: 'title' },
+        { say: 'A rectangular ice rink is two x metres wide and three x minus five metres long. What is its area? To answer, you multiply polynomials.', show: 'title' },
         { say: 'In this lesson, you will multiply and divide polynomials by monomials. Remember, a monomial is a polynomial with just one term. In this part, you will multiply one monomial by another.' },
       ],
     },

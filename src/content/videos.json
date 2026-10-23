@@ -28799,6 +28799,406 @@
       }
     ]
   },
+  "m9-6-2-c": {
+    "lessonId": "m9-6-2",
+    "title": "Equations with Brackets and Fractions, Part 3: x Divided by a Number",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undo in reverse order",
+        "t": 28.851
+      },
+      {
+        "title": "With the balance steps",
+        "t": 66.138
+      },
+      {
+        "title": "Fractions on both sides",
+        "t": 95.523
+      },
+      {
+        "title": "Check, or clear the fractions",
+        "t": 124.324
+      },
+      {
+        "title": "Your turn",
+        "t": 154.502
+      },
+      {
+        "title": "Summary",
+        "t": 188.488
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-2-c:q",
+        "t": 161.721,
+        "prompt": "Solve $\\dfrac{x}{5} - 2 = 3$.",
+        "choices": [
+          "$x = 5$",
+          "$x = 1$",
+          "$x = 25$",
+          "$x = 17$"
+        ],
+        "answer": 2,
+        "working": "Add $2$ to both sides: $\\dfrac{x}{5} = 5$. Multiply both sides by $5$: $x = 25$. Check: $25 \\div 5 - 2 = 5 - 2 = 3$."
+      }
+    ]
+  },
+  "m9-6-2-d": {
+    "lessonId": "m9-6-2",
+    "title": "Equations with Brackets and Fractions, Part 4: The Variable in the Denominator",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A picture",
+        "t": 25.334
+      },
+      {
+        "title": "Multiply by x",
+        "t": 46.695
+      },
+      {
+        "title": "A negative answer",
+        "t": 81.578
+      },
+      {
+        "title": "Watch out",
+        "t": 112.107
+      },
+      {
+        "title": "Your turn",
+        "t": 143.035
+      },
+      {
+        "title": "Summary",
+        "t": 180.541
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-2-d:q",
+        "t": 150.259,
+        "prompt": "Solve $\\dfrac{15}{x} = -5$.",
+        "choices": [
+          "$x = 3$",
+          "$x = -3$",
+          "$x = -\\dfrac{1}{3}$",
+          "$x = -75$"
+        ],
+        "answer": 1,
+        "working": "Multiply both sides by $x$: $15 = -5x$. Divide both sides by $-5$: $x = -3$. Check: $\\dfrac{15}{-3} = -5$."
+      }
+    ]
+  },
+  "m9-6-3": {
+    "lessonId": "m9-6-3",
+    "title": "Solving Problems with Linear Equations, Part 1: A Plan for Word Problems",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plan",
+        "t": 24.998
+      },
+      {
+        "title": "Two phone plans",
+        "t": 64.965
+      },
+      {
+        "title": "Solve and verify",
+        "t": 111.115
+      },
+      {
+        "title": "A table of costs",
+        "t": 158.929
+      },
+      {
+        "title": "Your turn",
+        "t": 192.11
+      },
+      {
+        "title": "Summary",
+        "t": 238.43
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-3:q",
+        "t": 213.036,
+        "prompt": "Gym A charges a \\$40 joining fee plus \\$25 per month. Gym B charges a \\$100 joining fee plus \\$15 per month. Which equation gives the number of months, $m$, for which the total costs are equal?",
+        "choices": [
+          "$40m + 25 = 100m + 15$",
+          "$40 + 25m = 100 - 15m$",
+          "$40 + 25m = 100 + 15m$",
+          "$65m = 115m$"
+        ],
+        "answer": 2,
+        "working": "Each total is the joining fee plus the monthly price times $m$: $40 + 25m = 100 + 15m$. Then $10m = 60$, so $m = 6$ months, and both cost \\$190."
+      }
+    ]
+  },
+  "m9-6-3-b": {
+    "lessonId": "m9-6-3",
+    "title": "Solving Problems with Linear Equations, Part 2: Comparing Two Options",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two taxi companies",
+        "t": 17.81
+      },
+      {
+        "title": "Solve and verify",
+        "t": 61.816
+      },
+      {
+        "title": "Which option is better?",
+        "t": 111.596
+      },
+      {
+        "title": "Your turn",
+        "t": 150.269
+      },
+      {
+        "title": "Summary",
+        "t": 194.782
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-3-b:q",
+        "t": 167.446,
+        "prompt": "Bike rental A charges \\$10 plus \\$3 per hour. Bike rental B charges \\$4 plus \\$5 per hour. For how many hours do the two rentals cost the same?",
+        "choices": [
+          "$7$ hours",
+          "$1.5$ hours",
+          "$2$ hours",
+          "$3$ hours"
+        ],
+        "answer": 3,
+        "working": "$10 + 3h = 4 + 5h$. Subtract $3h$ and $4$ from both sides: $6 = 2h$, so $h = 3$. Both cost \\$19."
+      }
+    ]
+  },
+  "m9-6-3-c": {
+    "lessonId": "m9-6-3",
+    "title": "Solving Problems with Linear Equations, Part 3: Age Problems",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table of ages",
+        "t": 20.364
+      },
+      {
+        "title": "Write and solve",
+        "t": 59.549
+      },
+      {
+        "title": "Verify and answer",
+        "t": 98.249
+      },
+      {
+        "title": "Your turn",
+        "t": 135.844
+      },
+      {
+        "title": "Summary",
+        "t": 177.612
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-3-c:q",
+        "t": 148.319,
+        "prompt": "Ana is 4 times as old as Ben. In 5 years, Ana will be 3 times as old as Ben. How old is Ben now?",
+        "choices": [
+          "$10$",
+          "$15$",
+          "$0$",
+          "$5$"
+        ],
+        "answer": 0,
+        "working": "Let $b$ be Ben’s age now. Then $4b + 5 = 3(b + 5)$, so $4b + 5 = 3b + 15$ and $b = 10$. Check: now 10 and 40; in 5 years 15 and 45, and $45 = 3 \\times 15$."
+      }
+    ]
+  },
+  "m9-6-3-d": {
+    "lessonId": "m9-6-3",
+    "title": "Solving Problems with Linear Equations, Part 4: Equal Perimeters",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The problem",
+        "t": 17.057
+      },
+      {
+        "title": "Write and solve",
+        "t": 49.865
+      },
+      {
+        "title": "Find the perimeter",
+        "t": 82.265
+      },
+      {
+        "title": "Watch out",
+        "t": 123.471
+      },
+      {
+        "title": "Your turn",
+        "t": 147.263
+      },
+      {
+        "title": "Summary",
+        "t": 193.684
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-3-d:q",
+        "t": 165.673,
+        "prompt": "A regular hexagon (six equal sides) has sides of $(x + 1)$ cm. An equilateral triangle has sides of $(x + 5)$ cm. They have the same perimeter. What is the perimeter?",
+        "choices": [
+          "$3$ cm",
+          "$24$ cm",
+          "$4$ cm",
+          "$18$ cm"
+        ],
+        "answer": 1,
+        "working": "$6(x + 1) = 3(x + 5)$, so $6x + 6 = 3x + 15$, $3x = 9$ and $x = 3$. The hexagon’s side is $4$ cm, so the perimeter is $6 \\times 4 = 24$ cm. The triangle: $3 \\times 8 = 24$ cm."
+      }
+    ]
+  },
+  "m9-6-4": {
+    "lessonId": "m9-6-4",
+    "title": "Representing Inequalities, Part 1: What Is an Inequality?",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inequality symbols",
+        "t": 29.559
+      },
+      {
+        "title": "Reading the symbols",
+        "t": 77.811
+      },
+      {
+        "title": "The solution set",
+        "t": 104.557
+      },
+      {
+        "title": "Is it a solution?",
+        "t": 141.56
+      },
+      {
+        "title": "Your turn",
+        "t": 184.992
+      },
+      {
+        "title": "Summary",
+        "t": 217.073
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-4:q",
+        "t": 194.596,
+        "prompt": "Which of these numbers is a solution of $x \\le -3$?",
+        "choices": [
+          "$0$",
+          "$-2$",
+          "$-3$",
+          "$3$"
+        ],
+        "answer": 2,
+        "working": "$-3 \\le -3$ is true, because $-3 = -3$. The others are all greater than $-3$, so they are not solutions."
+      }
+    ]
+  },
+  "m9-6-4-b": {
+    "lessonId": "m9-6-4",
+    "title": "Representing Inequalities, Part 2: Inequalities on a Number Line",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dot and arrow",
+        "t": 16.946
+      },
+      {
+        "title": "Open or closed",
+        "t": 61.52
+      },
+      {
+        "title": "Read a number line",
+        "t": 100.361
+      },
+      {
+        "title": "Watch out",
+        "t": 129.895
+      },
+      {
+        "title": "Your turn",
+        "t": 164.04
+      },
+      {
+        "title": "Summary",
+        "t": 200.2
+      }
+    ],
+    "cues": [
+      {
+        "id": "m9-6-4-b:q",
+        "t": 174.671,
+        "prompt": "A number line has an **open** dot at $1$ and an arrow pointing **left**. Which inequality does it show?",
+        "choices": [
+          "$x \\le 1$",
+          "$x > 1$",
+          "$x \\ge 1$",
+          "$x < 1$"
+        ],
+        "answer": 3,
+        "working": "The open dot means $1$ is not included, so the symbol is $<$ or $>$. The arrow points left, toward smaller numbers: $x < 1$."
+      }
+    ]
+  },
   "m10c-1-1": {
     "lessonId": "m10c-1-1",
     "title": "Referents, Estimation and Units, Part 1: Units and Referents",
