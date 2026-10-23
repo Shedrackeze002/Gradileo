@@ -187,7 +187,7 @@ read) and the spots its lines point at. Emphasising a spot rings it and dims the
 picture (`focus: 'app.due'`); the ring moves on with the emphasis, and `focus: 'app'` clears it.
 A video that teaches no lesson has an empty `lessonId`, a `label` for its header and thumbnail,
 and its own YouTube `tags`; it is not listed in `src/content/videos.json`, which is for the lesson
-player. The voice says "Gradileo" as it should (like "Galileo"), but it drops the dot in
+player. `video/tools/drive-upload.ts gradileo-intro` puts it in `Gradileo videos/About Gradileo/`. The voice says "Gradileo" as it should (like "Galileo"), but it drops the dot in
 "gradileo.com", so say "gradileo dot com" with the caption written as the address.
 
 ## Making a course's videos, step by step

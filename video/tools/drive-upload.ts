@@ -2,7 +2,8 @@
 //
 // Uploads rendered videos from video/out/<id>/ to the owner's Google Drive, into
 //   Gradileo videos/<course>/Unit <n> – <title>/<NN>-<id>/
-// with the MP4, thumbnail, captions and YouTube text, the same layout as the upload packs.
+// with the MP4, thumbnail, captions and YouTube text, the same layout as the upload packs. A video
+// that teaches no lesson (the introduction) goes in Gradileo videos/About Gradileo/<id>/.
 // NN is the video's place in its unit, in course order, so it never changes with what is
 // uploaded. A unit id (m104-u1) or course id (math-10-4) stands for every video in it that has
 // been rendered. Files already in Drive with the same contents are skipped, so a run can be repeated.
@@ -19,8 +20,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { MANIFEST, youtubeTextFor } from '../lib/catalog.ts';
-import { find, FOLDER, google, place, ROOT_FOLDER, unitFolder, videoIds, type Place } from '../lib/google.ts';
+import { MANIFEST, SCRIPT_FILES, youtubeTextFor } from '../lib/catalog.ts';
+import { find, FOLDER, google, place, ROOT_FOLDER, unitFolder, videoIds } from '../lib/google.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const OUT = path.join(ROOT, 'video/out');
@@ -115,19 +116,33 @@ if (!ids.length) {
   process.exit(1);
 }
 
+/** A video's folders under Gradileo videos/, its own last. */
+interface Planned {
+  id: string;
+  folders: string[];
+}
+
+/** The folder for videos about Gradileo itself, which belong to no course. */
+const ABOUT = 'About Gradileo';
+
 let failed = 0;
-const planned: Place[] = [];
+const planned: Planned[] = [];
 for (const id of ids) {
   try {
-    planned.push(place(id));
+    const p = place(id);
+    planned.push({ id, folders: [p.course.shortTitle, unitFolder(p.unit), p.folder] });
   } catch (e) {
-    console.error((e as Error).message);
-    failed++;
+    // A script that is in no unit teaches no lesson.
+    if (SCRIPT_FILES.has(id)) planned.push({ id, folders: [ABOUT, id] });
+    else {
+      console.error((e as Error).message);
+      failed++;
+    }
   }
 }
 const unitLinks = new Map<string, string>();
 for (const p of planned) {
-  const where = `${ROOT_FOLDER}/${p.course.shortTitle}/${unitFolder(p.unit)}/${p.folder}`;
+  const where = [ROOT_FOLDER, ...p.folders].join('/');
   const missing = textOnly ? [] : FILES.map(([f]) => f(p.id)).filter((f) => !existsSync(path.join(OUT, p.id, f)));
   if (missing.length) {
     console.error(`${p.id}: not rendered (missing ${missing.join(', ')}); skipped`);
@@ -139,11 +154,12 @@ for (const p of planned) {
     continue;
   }
   try {
-    const root = await ensureFolder(ROOT_FOLDER, 'root');
-    const course = await ensureFolder(p.course.shortTitle, root);
-    const unit = await ensureFolder(unitFolder(p.unit), course);
-    const video = await ensureFolder(p.folder, unit);
-    unitLinks.set(`${p.course.shortTitle}/${unitFolder(p.unit)}`, `https://drive.google.com/drive/folders/${unit}`);
+    let parent = await ensureFolder(ROOT_FOLDER, 'root');
+    const chain: string[] = [];
+    for (const name of p.folders) chain.push((parent = await ensureFolder(name, parent)));
+    const video = parent;
+    // The folder holding the video's own folder: a unit, or About Gradileo.
+    unitLinks.set(p.folders.slice(0, -1).join('/'), `https://drive.google.com/drive/folders/${chain[chain.length - 2]}`);
     const results = [];
     if (textOnly) results.push(`youtube.txt ${await upload(await writeYoutubeText(p.id), 'youtube.txt', 'text/plain', video)}`);
     else for (const [f, mime] of FILES) results.push(`${f(p.id)} ${await upload(path.join(OUT, p.id, f(p.id)), f(p.id), mime, video)}`);

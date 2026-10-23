@@ -176,7 +176,7 @@ const video: Explainer = {
       layout: 'center',
       main: [screen('drafted', 'builder-draft', 't/c/c_math10a/assignments/new', [264, 56, 1004, 544], ['suggested', 'summary'])],
       lines: [
-        { say: 'It explains what it chose and why,', show: 'drafted', focus: 'drafted.suggested' },
+        { say: 'It explains the choices it made,', show: 'drafted', focus: 'drafted.suggested' },
         { say: 'and fills in the rest: the due date, reminders and feedback, which you can change.', focus: 'drafted.summary' },
       ],
     },
@@ -327,7 +327,7 @@ const video: Explainer = {
       lines: [
         { say: 'To see it for yourself, visit gradileo dot com.', caption: 'To see it for yourself, visit gradileo.com.', show: 'site' },
         { say: 'Try the teacher demo or the student demo. There is nothing to sign up for, and it runs in your browser.', focus: 'site.demo' },
-        { say: 'Thank you for watching. Teach it once, and let your students practise until it sticks.', focus: 'site' },
+        { say: 'Thank you for watching. Teach each lesson once, and let your students practise until it sticks.', focus: 'site' },
       ],
     },
   ],
