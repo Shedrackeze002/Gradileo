@@ -60,9 +60,9 @@ jobs:
         env:
           WANTED: ${{ github.event.inputs.courses }}
         run: |
-          list=${WANTED:-$(ls -d engine/curriculum/math*/ | xargs -n1 basename)}
+          list=${WANTED:-$(ls -d engine/curriculum/math*/ engine/curriculum/chem*/ | xargs -n1 basename)}
           for c in $list; do
-            if [[ ! "$c" =~ ^math[0-9a-z-]+$ ]] || [ ! -d "engine/curriculum/$c" ]; then echo "Unknown course folder: $c"; exit 1; fi
+            if [[ ! "$c" =~ ^(math|chem)[0-9a-z-]+$ ]] || [ ! -d "engine/curriculum/$c" ]; then echo "Unknown course folder: $c"; exit 1; fi
           done
           echo "list=$(printf '%s\n' $list | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
 

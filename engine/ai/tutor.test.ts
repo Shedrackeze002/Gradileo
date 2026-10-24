@@ -210,3 +210,19 @@ describe('the recorded voice', () => {
     expect(beat).toContain('Today’s lesson is Area of Triangles. I’m your AI tutor');
   });
 });
+
+describe('chemistry in words', () => {
+  it('reads formulas letter by letter, with charges, states, arrows and isotopes', () => {
+    expect(mathToWords('\\ce{H2O}')).toBe('H 2 O');
+    expect(mathToWords('\\ce{2H2 + O2 -> 2H2O}')).toBe('2 H 2 plus O 2 gives 2 H 2 O');
+    expect(mathToWords('\\ce{SO4^2-}')).toBe('S O 4, 2 minus');
+    expect(mathToWords('\\ce{Ca(OH)2}')).toBe('C A, O H in brackets, 2');
+    expect(mathToWords('\\ce{Zn(s) + CuSO4(aq) -> ZnSO4(aq) + Cu(s)}')).toBe('Z N, solid, plus C U S O 4, aqueous, gives Z N S O 4, aqueous, plus C U, solid');
+    expect(mathToWords('\\ce{^{35}_{17}Cl}')).toBe('chlorine-35');
+    expect(mathToWords('\\ce{^{27}_{13}Al^3+}')).toBe('aluminium-27, 3 plus');
+    expect(mathToWords('\\ce{CH3COOH(aq) + H2O(l) <=> H3O+(aq) + CH3COO-(aq)}')).toBe(
+      'C H 3 C O O H, aqueous, plus H 2 O, liquid, is in equilibrium with H 3 O, plus, aqueous, plus C H 3 C O O, minus, aqueous',
+    );
+    expect(mathToWords('\\ce{O=C=O}')).toBe('O double-bonded to C double-bonded to O');
+  });
+});
