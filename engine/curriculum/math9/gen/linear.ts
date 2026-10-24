@@ -253,7 +253,7 @@ const WORD_CTX: Array<(rng: Rng, name: string) => WordCtx> = [
     const r = rng.pick([18, 20, 25, 30]);
     const g = 10 * rng.int(4, 12);
     return {
-      text: `A community hall in Red Deer charges ${dollars(base)} to rent the hall plus ${dollars(r)} for each guest’s meal. ${name} is planning a party. Let $C$ be the total cost, in dollars, for $g$ guests.`,
+      text: `A community hall in town charges ${dollars(base)} to rent the hall plus ${dollars(r)} for each guest’s meal. ${name} is planning a party. Let $C$ be the total cost, in dollars, for $g$ guests.`,
       yv: 'C', xv: 'g', m: frac(r), b: base, constFirst: true, xAsk: g,
       askText: `What is the total cost for $${g}$ guests?`,
       yPart: (y) => numPart(y, { label: '\\$' }),
@@ -265,7 +265,7 @@ const WORD_CTX: Array<(rng: Rng, name: string) => WordCtx> = [
     const r = rng.pick([frac(1, 4), frac(1, 5)]);
     const k = 20 * rng.int(5, 20);
     return {
-      text: `A car rental costs ${dollars(fee)} for the day plus \\$${val(r).toFixed(2)} for each kilometre driven. ${name}’s family rents a car for a day trip to Drumheller. Let $C$ be the cost, in dollars, for $k$ kilometres.`,
+      text: `A car rental costs ${dollars(fee)} for the day plus \\$${val(r).toFixed(2)} for each kilometre driven. ${name}’s family rents a car for a day trip to a dinosaur museum. Let $C$ be the cost, in dollars, for $k$ kilometres.`,
       yv: 'C', xv: 'k', m: r, b: fee, constFirst: true, xAsk: k,
       askText: `What is the cost if they drive $${k}$ km?`,
       yPart: (y) => numPart(y, { label: '\\$' }),
@@ -277,7 +277,7 @@ const WORD_CTX: Array<(rng: Rng, name: string) => WordCtx> = [
     const r = rng.pick([150, 200, 250, 300]);
     const t = rng.int(2, 5);
     return {
-      text: `${name} starts hiking down from a viewpoint in Kananaskis at an elevation of $${E0}$ m and goes down $${r}$ m each hour. Let $E$ be ${name}’s elevation, in metres, after $t$ hours.`,
+      text: `${name} starts hiking down from a mountain viewpoint at an elevation of $${E0}$ m and goes down $${r}$ m each hour. Let $E$ be ${name}’s elevation, in metres, after $t$ hours.`,
       yv: 'E', xv: 't', m: frac(-r), b: E0, constFirst: true, xAsk: t,
       askText: `What is ${name}’s elevation after $${t}$ hours?`,
       yPart: (y) => numPart(y, { suffix: 'm' }),
@@ -507,8 +507,8 @@ const G_CTX: Array<(rng: Rng, name: string) => GCtx> = [
     const b = 50 * rng.int(1, 4);
     const r = rng.pick([25, 50]);
     return {
-      start: `A hot-air balloon near Airdrie is $${b}$ m above the ground when ${name} starts timing.`,
-      words: `A hot-air balloon near Airdrie is $${b}$ m above the ground when ${name} starts timing. It rises $${r}$ m each minute.`, per: 'per minute',
+      start: `A hot-air balloon over the fields is $${b}$ m above the ground when ${name} starts timing.`,
+      words: `A hot-air balloon over the fields is $${b}$ m above the ground when ${name} starts timing. It rises $${r}$ m each minute.`, per: 'per minute',
       eq: `A = ${r}t + ${b}`, xv: 't', yv: 'A', m: frac(r), b, discrete: false,
       right: 'Continuous: time can be any value, and the balloon rises smoothly, so join the points with a line.',
       wrong: CONT_WRONG('height', 'minutes'),

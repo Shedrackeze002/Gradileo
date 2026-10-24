@@ -72,10 +72,10 @@ const CLASH: Record<Factor, Factor[]> = {
 interface Scenario { f: Factor; text: string; why: string; fix: string }
 
 const SCENARIOS: Scenario[] = [
-  { f: 'bias', text: 'To find out whether people in Grande Prairie want a new hockey arena, a group surveys only fans leaving a hockey game.', why: 'Hockey fans are more likely to want an arena, so the results will favour “yes”.', fix: 'Survey people chosen at random from all over the city.' },
+  { f: 'bias', text: 'To find out whether people in a city want a new hockey arena, a group surveys only fans leaving a hockey game.', why: 'Hockey fans are more likely to want an arena, so the results will favour “yes”.', fix: 'Survey people chosen at random from all over the city.' },
   { f: 'bias', text: 'The student council wants to know which new club students would join. It surveys only the members of the robotics club.', why: 'Robotics club members already like robotics, so the results will favour clubs like theirs.', fix: 'Survey students chosen at random from every grade.' },
   { f: 'bias', text: 'To find out how much time Grade 9 students spend reading for fun, Omar surveys students at the public library on a Saturday.', why: 'Students at the library probably read more than most students.', fix: 'Survey Grade 9 students chosen at random from the school list.' },
-  { f: 'bias', text: 'A gym wants to know if people in Red Deer exercise enough, so it surveys its own members.', why: 'Gym members exercise more than most people, so the results will look too good.', fix: 'Survey residents chosen at random from all over Red Deer.' },
+  { f: 'bias', text: 'A gym wants to know if people in its city exercise enough, so it surveys its own members.', why: 'Gym members exercise more than most people, so the results will look too good.', fix: 'Survey residents chosen at random from all over the city.' },
   { f: 'language', text: 'A survey asks: “Don’t you agree that the cafeteria’s greasy fries should be replaced with healthy salads?”', why: 'The words “greasy”, “healthy” and “Don’t you agree” push people toward one answer.', fix: 'Ask: “Which side would you rather have in the cafeteria: fries or salad?”' },
   { f: 'language', text: 'A survey asks: “Should the town waste money on a new skatepark?”', why: 'The word “waste” pushes people to say no.', fix: 'Ask: “Should the town build a new skatepark? (Yes / No / Not sure)”' },
   { f: 'language', text: 'A survey asks: “Most students want school to start later. Do you agree?”', why: 'Telling people what “most students” think pushes them to agree.', fix: 'Ask: “What time would you like school to start?”' },
@@ -84,10 +84,10 @@ const SCENARIOS: Scenario[] = [
   { f: 'ethics', text: 'For a project, a student changes some of the survey answers so the results support her prediction.', why: 'Changing data is dishonest, so the results cannot be trusted.', fix: 'Report the answers exactly as they were given.' },
   { f: 'ethics', text: 'To study how students react to stress, a group sets off a fake fire alarm and records how younger students react.', why: 'The experiment could frighten or harm people who did not agree to take part.', fix: 'Use a safe method, such as an anonymous survey about stress, that people agree to answer.' },
   { f: 'ethics', text: 'A class tells students they will lose recess if they do not fill in the class survey.', why: 'People are forced to take part, which is unfair.', fix: 'Let students choose freely whether to answer.' },
-  { f: 'cost', text: 'To learn what every Albertan thinks about daylight saving time, a Grade 9 class plans to mail a printed survey with a stamped return envelope to every home in Alberta.', why: 'Printing and postage for every home in the province would cost far more than a class can pay.', fix: 'Survey a random sample of Albertans instead of every home.' },
+  { f: 'cost', text: 'To learn what every adult in the country thinks about daylight saving time, a Grade 9 class plans to mail a printed survey with a stamped return envelope to every home in the country.', why: 'Printing and postage for every home in the country would cost far more than a class can pay.', fix: 'Survey a random sample of adults instead of every home.' },
   { f: 'cost', text: 'To find out how long a brand of phone battery lasts, a student plans to buy $500$ new phones and test them all.', why: 'Buying $500$ phones would cost far too much money.', fix: 'Test a small sample of phones, or use test results the company has already published.' },
   { f: 'cost', text: 'A school club wants to interview every junior hockey coach in Canada in person by flying to each city.', why: 'The plane tickets would cost far too much.', fix: 'Interview a sample of coaches by video call or with an online survey.' },
-  { f: 'time', text: 'A survey asks Calgarians about their favourite outdoor summer activity in the middle of a January cold snap.', why: 'In a cold snap, people may not be thinking about summer, so the timing can change the answers.', fix: 'Do the survey in late spring or summer.' },
+  { f: 'time', text: 'A survey asks the people of a city about their favourite outdoor summer activity in the middle of a January cold snap.', why: 'In a cold snap, people may not be thinking about summer, so the timing can change the answers.', fix: 'Do the survey in late spring or summer.' },
   { f: 'time', text: 'Right after a news story about a school bus accident, a group surveys parents about whether school buses are safe.', why: 'The news story is fresh in people’s minds, so the timing can change the answers.', fix: 'Wait until the news is not so recent, or survey at several different times.' },
   { f: 'time', text: 'A student plans to measure the height of every tree in a provincial park by hand before her project is due next week.', why: 'Measuring every tree would take far longer than one week.', fix: 'Measure a random sample of trees in the park.' },
   { f: 'time', text: 'A survey about whether students like the new school timetable is given on the first morning of school, before anyone has tried it.', why: 'Students have not used the timetable yet, so it is the wrong time to ask.', fix: 'Give the survey after students have used the timetable for a few weeks.' },
@@ -188,8 +188,8 @@ const POP_SAMPLE: Array<{ text: string; r: Reason; why: string }> = [
   { text: 'the allergies of every student going on the Grade 9 overnight camping trip', r: 'every', why: 'Missing even one student’s allergy could be dangerous.' },
   { text: 'whether every parachute packed for a skydiving club’s jumps is safe', r: 'every', why: 'One unsafe parachute could cost a life, so each one must be checked.' },
   { text: 'the favourite breakfast cereal of teenagers in Canada', r: 'large', why: 'There are millions of teenagers in Canada, far too many to ask.' },
-  { text: 'the number of hours of sleep Alberta high school students get on school nights', r: 'large', why: 'There are many thousands of high school students in Alberta.' },
-  { text: 'the opinion of Edmonton voters about a new transit line', r: 'large', why: 'Asking every voter in a large city would take too long and cost too much.' },
+  { text: 'the number of hours of sleep high school students across the country get on school nights', r: 'large', why: 'There are many thousands of high school students in the country.' },
+  { text: 'the opinion of voters in a large city about a new transit line', r: 'large', why: 'Asking every voter in a large city would take too long and cost too much.' },
   { text: 'how long the light bulbs made in a factory last before burning out', r: 'destroy', why: 'A bulb tested until it burns out cannot be sold.' },
   { text: 'whether a batch of $5000$ granola bars from a bakery tastes right', r: 'destroy', why: 'A granola bar that is tasted cannot be sold.' },
   { text: 'how much force it takes to break the hockey sticks made by a company', r: 'destroy', why: 'Each stick tested is broken, so only a few can be tested.' },
@@ -233,7 +233,7 @@ const METHOD_DEF: Record<Method, string> = {
 const METHOD_DESC: Array<{ m: Method; text: string }> = [
   { m: 'random', text: 'The student council puts the names of all $600$ students into a computer and has it choose $60$ names at random.' },
   { m: 'random', text: 'A coach writes each player’s name on a slip of paper, mixes the slips in a hat and draws $5$ names.' },
-  { m: 'systematic', text: 'A grocery store in Lacombe surveys every $20$th customer who walks through the door.' },
+  { m: 'systematic', text: 'A grocery store in a small town surveys every $20$th customer who walks through the door.' },
   { m: 'systematic', text: 'Using the alphabetical school list, Nadia chooses the $3$rd name and then every $8$th name after it.' },
   { m: 'stratified', text: 'A junior high chooses students at random from Grade 7, Grade 8 and Grade 9, with the number from each grade in proportion to the size of that grade.' },
   { m: 'stratified', text: 'A town surveys a random $5\\%$ of the households in each of its neighbourhoods.' },
@@ -264,11 +264,11 @@ function methodName(rng: Rng): Out {
 }
 
 const PLANS: Array<{ goal: string; good: string; bad: string[] }> = [
-  { goal: 'what all the students at a large Calgary high school think of the new cafeteria menu', good: 'Choose $80$ students at random from the list of all students.', bad: ['Ask $80$ students in line at the cafeteria.', 'Put a poll on the school website and use whatever answers come in.', 'Ask every student in the Grade 12 homerooms.'] },
-  { goal: 'how residents of Lethbridge feel about a new bike lane', good: 'Phone $400$ households chosen at random from all parts of the city.', bad: ['Ask $400$ people at a cycling race.', 'Ask readers of a cycling blog to answer an online poll.', 'Ask the $50$ people who live on the street where the bike lane will go.'] },
+  { goal: 'what all the students at a large city high school think of the new cafeteria menu', good: 'Choose $80$ students at random from the list of all students.', bad: ['Ask $80$ students in line at the cafeteria.', 'Put a poll on the school website and use whatever answers come in.', 'Ask every student in the Grade 12 homerooms.'] },
+  { goal: 'how the residents of a city feel about a new bike lane', good: 'Phone $400$ households chosen at random from all parts of the city.', bad: ['Ask $400$ people at a cycling race.', 'Ask readers of a cycling blog to answer an online poll.', 'Ask the $50$ people who live on the street where the bike lane will go.'] },
   { goal: 'which new sport the Grade 7 to 9 students at a junior high want in gym class', good: 'Choose students at random from each grade, in proportion to the size of each grade.', bad: ['Ask the students on the volleyball team.', 'Leave a sheet in the gym for anyone who wants to give an opinion.', 'Ask the first $30$ Grade 9 students who arrive at school.'] },
   { goal: 'how happy customers are with a pizza shop’s delivery', good: 'Call every $10$th customer on the list of all delivery orders from the past month.', bad: ['Ask only the customers who left a comment on the shop’s website.', 'Ask the shop’s own delivery drivers.', 'Ask only the customers who order on Friday night.'] },
-  { goal: 'how many hours a week teens in Alberta spend on screens', good: 'Choose schools at random from all over Alberta, then survey a random sample of students in each one.', bad: ['Survey teens at a video game store.', 'Post a poll on a gaming website.', 'Survey only the students in your own class.'] },
+  { goal: 'how many hours a week teens across the country spend on screens', good: 'Choose schools at random from all over the country, then survey a random sample of students in each one.', bad: ['Survey teens at a video game store.', 'Post a poll on a gaming website.', 'Survey only the students in your own class.'] },
 ];
 
 function planChoice(rng: Rng, name: string): Out {
@@ -301,7 +301,7 @@ function stratified(rng: Rng): Out {
   const n = total / k;
   const i = rng.int(0, 2);
   const j = (i + rng.int(1, 2)) % 3;
-  const school = rng.pick(['Westwood Junior High', 'Northgate School', 'Prairie View School', 'Bow Valley Junior High']);
+  const school = rng.pick(['Westwood Junior High', 'Northgate School', 'Prairie View School', 'Valley View Junior High']);
   return {
     prompt: `${school} has $${sizes[0]}$ Grade 7, $${sizes[1]}$ Grade 8 and $${sizes[2]}$ Grade 9 students. The principal wants a stratified sample of $${n}$ students, with each grade represented in proportion to its size. How many students should be chosen from (a) ${grades[i]} and (b) ${grades[j]}?`,
     parts: [numPart(sizes[i] / k, { label: `(a) ${grades[i]}`, suffix: 'students' }), numPart(sizes[j] / k, { label: `(b) ${grades[j]}`, suffix: 'students' })],
@@ -418,8 +418,8 @@ const CM_QS: Array<{ q: string; m: CollectMethod }> = [
   { q: 'Do bean plants grow taller with $1$, $2$ or $3$ hours of extra light each day?', m: 'experiment' },
   { q: 'How many vehicles pass the school crosswalk between 8:00 and 8:30 a.m.?', m: 'observation' },
   { q: 'What percent of shoppers at a grocery store bring their own bags?', m: 'observation' },
-  { q: 'How has the population of Alberta changed since 1950?', m: 'records' },
-  { q: 'How did the total snowfall in Banff change from 1990 to 2020?', m: 'records' },
+  { q: 'How has the population of our country changed since 1950?', m: 'records' },
+  { q: 'How did the total snowfall in a mountain town change from 1990 to 2020?', m: 'records' },
 ];
 
 function planOrder(rng: Rng, d: Lvl): Out {
@@ -493,7 +493,7 @@ function planConclusion(rng: Rng, name: string): Out {
     figure: { type: 'table', headers: ['How students travel', 'Students'], rows: TRAVEL.map((t, i) => [t, String(counts[i])]) },
     parts: [numPart(pred, { label: '(a) Bus riders', suffix: 'students' }), { label: '(b)', answer: mc(rng, correct, [
       `Exactly $${pred}$ students at the school take the bus.`,
-      `About ${pctTxt}% of all students in Alberta take the bus.`,
+      `About ${pctTxt}% of all students in the country take the bus.`,
       `Most students at the school ${wrongMost === 'Walk' ? 'walk' : wrongMost === 'Bike' ? 'bike' : 'come by car'} to school.`,
     ]) }],
     hints: ['Find the fraction of the sample who take the bus. Apply the same fraction to the whole school.', 'A random sample lets you make a reasonable prediction about this school only, and the prediction is not exact.'],
@@ -563,7 +563,7 @@ function classify(rng: Rng): Out {
   };
 }
 
-const TOWNS = ['Lethbridge', 'Red Deer', 'Fort McMurray', 'Medicine Hat', 'Grande Prairie', 'Cochrane', 'Drumheller'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge'];
 
 function forecast(rng: Rng): Out {
   const p = 10 * rng.pick([2, 3, 6, 7, 8, 9]);
@@ -626,7 +626,7 @@ const EXP_CTX: ExpCtx[] = [
   { text: (p, n) => `The probability that a goalie stops a shot is ${p}. In the next few games she will face $${n}$ shots.`, ask: 'About how many shots should she expect to stop?', unit: 'shots' },
   { text: (p, n) => `The probability that a phone case from a factory has a defect is ${p}. A store orders $${n}$ cases.`, ask: 'About how many cases should the store expect to have a defect?', unit: 'cases' },
   { text: (p, n) => `The probability of winning a small prize at the ring-toss game is ${p}. On fair day, $${n}$ people play.`, ask: 'About how many small prizes should the fair expect to give out?', unit: 'prizes' },
-  { text: (p, n) => `The probability that a flight from Calgary to Vancouver arrives on time is ${p}. An airline flies the route $${n}$ times this month.`, ask: 'About how many on-time arrivals should it expect?', unit: 'flights' },
+  { text: (p, n) => `The probability that a flight between two large cities arrives on time is ${p}. An airline flies the route $${n}$ times this month.`, ask: 'About how many on-time arrivals should it expect?', unit: 'flights' },
 ];
 
 function expected(rng: Rng, d: Lvl): Out {

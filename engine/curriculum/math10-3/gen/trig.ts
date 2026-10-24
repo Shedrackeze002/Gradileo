@@ -31,7 +31,7 @@ const PEOPLE = [
   'Simran', 'Émile', 'Kiona', 'Darnell', 'Rosa', 'Dmitri', 'Hamid', 'Ava', 'Nathan', 'Lucía',
 ];
 
-const TOWNS = ['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Drumheller', 'Camrose', 'Brooks', 'Lloydminster', 'Okotoks', 'Fort McMurray', 'Peace River', 'Wetaskiwin'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Northfield', 'Elmwood'];
 
 const FRIENDLY_ANGLES = [20, 25, 30, 35, 40, 50, 55, 60, 65, 70];
 
@@ -913,7 +913,7 @@ function gradeProblem(rng: Rng): GenOutput {
   );
   const ang = atanD(g / 100);
   return {
-    prompt: `A highway sign in the Rocky Mountains warns truck drivers of ${g === 8 || g === 11 ? 'an' : 'a'} $${g}\\%$ grade. This means the road drops ${qty(g, 'm')} for every ${qty(100, 'm')} of horizontal distance. What angle does the road make with the horizontal, ${angleRound(1)}?`,
+    prompt: `A highway sign on a mountain pass warns truck drivers of ${g === 8 || g === 11 ? 'an' : 'a'} $${g}\\%$ grade. This means the road drops ${qty(g, 'm')} for every ${qty(100, 'm')} of horizontal distance. What angle does the road make with the horizontal, ${angleRound(1)}?`,
     figure: fig(uprightTri(rng), 100, g, labels([['ra', '100\\text{ m}'], ['rb', lbl(g, 'm')]]), { a: '\\theta' }, 'none'),
     parts: [numPart(ang, { decimals: 1, suffix: '°', label: '$\\theta =$' })],
     hints: [`Draw a right triangle with a vertical side of ${qty(g, 'm')} and a horizontal side of ${qty(100, 'm')}.`, `The ${g} m drop is opposite $\\theta$ and the 100 m is adjacent: use $\\tan^{-1}$.`],
@@ -1097,7 +1097,7 @@ function zipline(rng: Rng): GenOutput {
   );
   const { len, drop, ang } = v;
   return {
-    prompt: `A zipline at a summer camp near ${rng.pick(['Canmore', 'Hinton', 'Sylvan Lake', 'Waterton', 'Cold Lake'])} has a straight cable ${qty(len, 'm')} long. The end of the cable is ${qty(drop, 'm')} lower than the start. What angle does the cable make with the horizontal, ${angleRound(1)}? (Ignore any sag in the cable.)`,
+    prompt: `A zipline at a summer camp near ${rng.pick(['Pinewood', 'Lakeside', 'Clearwater', 'Maple Falls', 'Stonebridge'])} has a straight cable ${qty(len, 'm')} long. The end of the cable is ${qty(drop, 'm')} lower than the start. What angle does the cable make with the horizontal, ${angleRound(1)}? (Ignore any sag in the cable.)`,
     figure: fig(uprightTri(rng), Math.sqrt(len ** 2 - drop ** 2), drop, labels([['ab', lbl(len, 'm')], ['rb', lbl(drop, 'm')]]), { a: '\\theta' }, 'none'),
     parts: [numPart(ang, { decimals: 1, suffix: '°', label: '$\\theta =$' })],
     hints: ['The cable is the hypotenuse. The drop is the vertical side, across from the angle with the horizontal.', 'You know the opposite side and the hypotenuse, so use $\\sin^{-1}$.'],

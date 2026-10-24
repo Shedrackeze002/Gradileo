@@ -13,7 +13,7 @@ const NAMES = [
   'Chloé', 'Tariq', 'Olivia', 'Ethan', 'Wei', 'Nadia', 'Darius', 'Talia', 'Malik', 'Simran', 'Jun', 'Isabelle',
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
 ];
-const TOWNS = ['Fort McMurray', 'Grande Prairie', 'Edmonton', 'Red Deer', 'Calgary', 'Lethbridge', 'Medicine Hat', 'Peace River', 'Cold Lake', 'Banff'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure; calculator?: boolean; answerDisplay?: string };
 
@@ -390,7 +390,7 @@ function makePlan(rng: Rng): Plan {
     const diff = rng.pick([10, 15, 20, 25, 30, 40, 50]);
     const rateB = 5 * rng.int(30, 50);
     const baseA = 5 * rng.int(50, 90);
-    return { scene: 'taxi', unit: 'km', units: 'kilometres', v: 'k', ask: 'For what distance do the two taxis charge the same fare?', names: ['Prairie Cabs', 'Chinook Taxi'], baseA, rateA: rateB + diff, baseB: baseA + x * diff, rateB, x };
+    return { scene: 'taxi', unit: 'km', units: 'kilometres', v: 'k', ask: 'For what distance do the two taxis charge the same fare?', names: ['Prairie Cabs', 'Northwind Taxi'], baseA, rateA: rateB + diff, baseB: baseA + x * diff, rateB, x };
   }
   if (kind === 1) {
     const x = rng.int(2, 12);
@@ -404,7 +404,7 @@ function makePlan(rng: Rng): Plan {
     const rateB = 100 * rng.int(4, 8);
     const diff = 100 * rng.int(2, 6);
     const baseA = 500 * rng.int(2, 5);
-    return { scene: 'canoe', unit: 'h', units: 'hours', v: 'h', ask: 'For how many hours do the two companies charge the same amount?', names: ['Bow River Rentals', 'Lakeside Outfitters'], baseA, rateA: rateB + diff, baseB: baseA + x * diff, rateB, x };
+    return { scene: 'canoe', unit: 'h', units: 'hours', v: 'h', ask: 'For how many hours do the two companies charge the same amount?', names: ['River Bend Rentals', 'Lakeside Outfitters'], baseA, rateA: rateB + diff, baseB: baseA + x * diff, rateB, x };
   }
   const x = rng.int(3, 12);
   const rateB = 100 * rng.int(5, 10);
@@ -489,7 +489,7 @@ function savingsOut(rng: Rng, d: Difficulty): Out {
   const s2 = 5 * rng.int(4, 12);
   const s1 = s2 + diff * w;
   const total = s1 + r1 * w;
-  const goal = rng.pick(['a new pair of skates', 'a trip to the West Edmonton Mall', 'a summer camp', 'a new bike']);
+  const goal = rng.pick(['a new pair of skates', 'a trip to an amusement park', 'a summer camp', 'a new bike']);
   const eq = `${s1} + ${r1}w = ${s2} + ${r2}w`;
   const steps = [
     `Let $w$ be the number of weeks. ${n1} has $${s1} + ${r1}w$ dollars and ${n2} has $${s2} + ${r2}w$ dollars.`,
@@ -766,7 +766,7 @@ function modelSituation(rng: Rng): Model {
     const price = rng.int(2, 5);
     const goal = 100 * rng.int(5, 9);
     return {
-      text: `The Grade 9 class has raised \\$${raised} for a trip to Drumheller. They sell cookies for \\$${price} each and need at least \\$${goal} in total. Let $c$ be the number of cookies sold.`,
+      text: `The Grade 9 class has raised \\$${raised} for a trip to a science centre. They sell cookies for \\$${price} each and need at least \\$${goal} in total. Let $c$ be the number of cookies sold.`,
       correct: `${raised} + ${price}c \\ge ${goal}`,
       wrong: [`${raised} + ${price}c \\le ${goal}`, `${raised}c + ${price} \\ge ${goal}`, `${raised} + ${price}c > ${goal}`],
       explain: `The money raised is $${raised} + ${price}c$ dollars, and "at least" means $\\ge$.`,
@@ -1058,7 +1058,7 @@ function budgetProb(rng: Rng, d: Difficulty): Prob {
 }
 
 function scoreProb(rng: Rng, d: Difficulty): Prob {
-  const team = rng.pick(['The Grade 9 volleyball team', 'The school hockey team', 'A soccer club in Red Deer', 'A ringette team in Airdrie']);
+  const team = rng.pick(['The Grade 9 volleyball team', 'The school hockey team', 'A soccer club in town', 'A ringette team in a nearby town']);
   const per = rng.pick([2, 3]);
   const have = d === 1 ? 0 : rng.int(8, 30);
   const need = retry(() => have + rng.int(10, 40), (t) => (t - have) % per !== 0 || rng.chance(0.3));

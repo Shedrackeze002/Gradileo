@@ -150,21 +150,21 @@ interface HourlyJob {
 }
 
 const HOURLY_JOBS: HourlyJob[] = [
-  { job: 'a line cook at a restaurant in Red Deer', lo: 16, hi: 22 },
-  { job: 'an apprentice carpenter in Calgary', lo: 20, hi: 28 },
+  { job: 'a line cook at a downtown restaurant', lo: 16, hi: 22 },
+  { job: 'an apprentice carpenter on a housing site', lo: 20, hi: 28 },
   { job: 'a cashier at a grocery store', lo: 15, hi: 18 },
-  { job: 'a farm hand near Lethbridge', lo: 16, hi: 21 },
+  { job: 'a farm hand on a grain farm', lo: 16, hi: 21 },
   { job: 'a labourer on a pipeline crew', lo: 26, hi: 36 },
   { job: 'a lube technician at an auto shop', lo: 18, hi: 24 },
-  { job: 'a warehouse worker in Edmonton', lo: 17, hi: 23 },
+  { job: 'a warehouse worker at a distribution centre', lo: 17, hi: 23 },
   { job: 'a landscaper', lo: 16, hi: 22 },
   { job: 'a plumber’s helper', lo: 19, hi: 26 },
-  { job: 'a hotel housekeeper in Banff', lo: 16, hi: 20 },
+  { job: 'a hotel housekeeper at a mountain resort', lo: 16, hi: 20 },
   { job: 'a lifeguard at a recreation centre', lo: 16, hi: 21 },
   { job: 'a drywall labourer', lo: 20, hi: 27 },
   { job: 'a floorhand on a drilling rig', lo: 30, hi: 40 },
   { job: 'a tire technician', lo: 18, hi: 25 },
-  { job: 'a dishwasher at a café in Canmore', lo: 15, hi: 18 },
+  { job: 'a dishwasher at a small-town café', lo: 15, hi: 18 },
 ];
 
 /** d1: whole or half dollars; d2: multiples of 10 cents; d3: even cents. Each keeps 1.5 × rate exact to the cent. */
@@ -419,7 +419,7 @@ const SALARY_JOBS = [
   'a dispatcher for a trucking company',
   'a lab technician at a gas plant',
   'a shop supervisor at a fabrication shop',
-  'a property manager in Medicine Hat',
+  'a property manager for a group of apartment buildings',
 ];
 
 const PERIODS = [
@@ -558,14 +558,14 @@ interface SalesJob {
 }
 
 const SALES_JOBS: SalesJob[] = [
-  { who: 'sells new and used trucks at a dealership in Grande Prairie', per: 'month', lo: 80000, hi: 240000, step: 1000 },
-  { who: 'sells furniture at a store in Edmonton', per: 'month', lo: 18000, hi: 60000, step: 500 },
-  { who: 'sells farm equipment in Brooks', per: 'month', lo: 90000, hi: 300000, step: 1000 },
+  { who: 'sells new and used trucks at a dealership', per: 'month', lo: 80000, hi: 240000, step: 1000 },
+  { who: 'sells furniture at a downtown store', per: 'month', lo: 18000, hi: 60000, step: 500 },
+  { who: 'sells farm equipment in a farming town', per: 'month', lo: 90000, hi: 300000, step: 1000 },
   { who: 'sells cell phones and plans at a mall kiosk', per: 'week', lo: 3000, hi: 9000, step: 100 },
-  { who: 'sells hot tubs at a store in Lethbridge', per: 'month', lo: 20000, hi: 80000, step: 500 },
+  { who: 'sells hot tubs at a pool-and-spa store', per: 'month', lo: 20000, hi: 80000, step: 500 },
   { who: 'sells appliances at a home store', per: 'week', lo: 4000, hi: 15000, step: 100 },
-  { who: 'sells RVs and trailers in Medicine Hat', per: 'month', lo: 60000, hi: 200000, step: 1000 },
-  { who: 'sells advertising for a radio station in Fort McMurray', per: 'month', lo: 12000, hi: 45000, step: 500 },
+  { who: 'sells RVs and trailers at a lot by the highway', per: 'month', lo: 60000, hi: 200000, step: 1000 },
+  { who: 'sells advertising for a local radio station', per: 'month', lo: 12000, hi: 45000, step: 500 },
   { who: 'sells work boots and safety gear', per: 'week', lo: 3000, hi: 10000, step: 100 },
 ];
 
@@ -703,12 +703,12 @@ interface PieceJob {
 }
 
 const PIECE_JOBS: PieceJob[] = [
-  { job: 'a tree planter in northern Alberta', verb: 'plants', one: 'tree', many: 'trees', short: 'trees', friendly: [0.1, 0.15, 0.2, 0.25], lo: 0.12, hi: 0.24, step: 0.01, nLo: 800, nHi: 2400, nStep: 50, dayH: 10 },
-  { job: 'a sewing-machine operator at a sports-apparel shop in Calgary', verb: 'sews', one: 'hockey jersey', many: 'hockey jerseys', short: 'jerseys', friendly: [2, 2.5, 3, 4], lo: 2.25, hi: 4.75, step: 0.05, nLo: 25, nHi: 70, nStep: 1, dayH: 8 },
-  { job: 'a flyer carrier in Red Deer', verb: 'delivers', one: 'flyer', many: 'flyers', short: 'flyers', friendly: [0.05, 0.08, 0.1], lo: 0.05, hi: 0.12, step: 0.01, nLo: 300, nHi: 1500, nStep: 25, dayH: 6 },
+  { job: 'a tree planter in a northern forest', verb: 'plants', one: 'tree', many: 'trees', short: 'trees', friendly: [0.1, 0.15, 0.2, 0.25], lo: 0.12, hi: 0.24, step: 0.01, nLo: 800, nHi: 2400, nStep: 50, dayH: 10 },
+  { job: 'a sewing-machine operator at a sports-apparel shop', verb: 'sews', one: 'hockey jersey', many: 'hockey jerseys', short: 'jerseys', friendly: [2, 2.5, 3, 4], lo: 2.25, hi: 4.75, step: 0.05, nLo: 25, nHi: 70, nStep: 1, dayH: 8 },
+  { job: 'a flyer carrier in a suburb', verb: 'delivers', one: 'flyer', many: 'flyers', short: 'flyers', friendly: [0.05, 0.08, 0.1], lo: 0.05, hi: 0.12, step: 0.01, nLo: 300, nHi: 1500, nStep: 25, dayH: 6 },
   { job: 'a berry picker at a saskatoon farm', verb: 'picks', one: 'kilogram of saskatoon berries', many: 'kilograms of saskatoon berries', short: 'kg', friendly: [1, 1.5, 2], lo: 1.1, hi: 2.4, step: 0.05, nLo: 20, nHi: 80, nStep: 1, dayH: 8 },
   { job: 'a roofer', verb: 'shingles', one: 'square of roof (100 square feet)', many: 'squares of roof', short: 'squares', friendly: [30, 35, 40], lo: 28, hi: 46, step: 0.5, nLo: 6, nHi: 20, nStep: 1, dayH: 10 },
-  { job: 'a courier in Airdrie', verb: 'delivers', one: 'parcel', many: 'parcels', short: 'parcels', friendly: [1.5, 2, 2.5], lo: 1.4, hi: 2.9, step: 0.05, nLo: 60, nHi: 180, nStep: 1, dayH: 10 },
+  { job: 'a courier in a growing town', verb: 'delivers', one: 'parcel', many: 'parcels', short: 'parcels', friendly: [1.5, 2, 2.5], lo: 1.4, hi: 2.9, step: 0.05, nLo: 60, nHi: 180, nStep: 1, dayH: 10 },
   { job: 'a drywall hanger', verb: 'hangs', one: 'sheet of drywall', many: 'sheets of drywall', short: 'sheets', friendly: [8, 10, 12], lo: 7.5, hi: 13.5, step: 0.25, nLo: 15, nHi: 50, nStep: 1, dayH: 8 },
   { job: 'a wheel builder at a bike shop', verb: 'builds', one: 'bicycle wheel', many: 'bicycle wheels', short: 'wheels', friendly: [3, 4, 5], lo: 2.75, hi: 5.5, step: 0.05, nLo: 20, nHi: 60, nStep: 1, dayH: 8 },
 ];
@@ -841,12 +841,12 @@ interface Contract {
 const CONTRACTS: Contract[] = [
   { trade: 'painter', task: 'paint the inside of a house', lo: 2400, hi: 6000, hLo: 30, hHi: 70, exp: ['paint and supplies', 'a rented paint sprayer', 'fuel'] },
   { trade: 'landscaper', task: 'build a stone patio', lo: 3000, hi: 9000, hLo: 35, hHi: 80, exp: ['paving stones and gravel', 'a rented plate compactor', 'fuel'] },
-  { trade: 'welder', task: 'build a steel gate for a ranch near Cochrane', lo: 1500, hi: 4000, hLo: 15, hHi: 40, exp: ['steel', 'welding gas and rods', 'fuel'] },
+  { trade: 'welder', task: 'build a steel gate for a cattle ranch', lo: 1500, hi: 4000, hLo: 15, hHi: 40, exp: ['steel', 'welding gas and rods', 'fuel'] },
   { trade: 'electrician', task: 'wire a new detached garage', lo: 2500, hi: 6000, hLo: 20, hHi: 50, exp: ['wire and boxes', 'a breaker panel', 'a permit'] },
   { trade: 'tile setter', task: 'tile a bathroom floor and shower', lo: 2000, hi: 5000, hLo: 20, hHi: 45, exp: ['tile, grout and thinset', 'a rented wet saw', 'fuel'] },
   { trade: 'fence builder', task: 'build a cedar fence around a backyard', lo: 3000, hi: 8000, hLo: 30, hHi: 70, exp: ['lumber and posts', 'concrete', 'a rented post-hole auger'] },
   { trade: 'drywaller', task: 'drywall a basement', lo: 3000, hi: 7000, hLo: 35, hHi: 75, exp: ['drywall sheets', 'mud, tape and screws', 'a dump fee'] },
-  { trade: 'mobile mechanic', task: 'service a fleet of farm trucks near Camrose', lo: 1500, hi: 4500, hLo: 15, hHi: 40, exp: ['oil and filters', 'parts', 'fuel'] },
+  { trade: 'mobile mechanic', task: 'service a fleet of farm trucks', lo: 1500, hi: 4500, hLo: 15, hHi: 40, exp: ['oil and filters', 'parts', 'fuel'] },
   { trade: 'roofer', task: 'reshingle a garage roof', lo: 2000, hi: 5500, hLo: 20, hHi: 45, exp: ['shingles and underlay', 'nails and flashing', 'a disposal bin'] },
 ];
 
@@ -1392,7 +1392,7 @@ const incomeFormula = skill({
       const r = hourlyRate(rng, j, 2);
       const h = rng.int(30, 90) / 2;
       const g = roundTo(r * h, 2);
-      const target = rng.pick(['a used truck', 'new work boots and tools', 'a trip to Jasper', 'college tuition', 'a welding course']);
+      const target = rng.pick(['a used truck', 'new work boots and tools', 'a trip to the mountains', 'college tuition', 'a welding course']);
       return {
         prompt: `${name} works as ${j.job} for ${cash(r)} per hour and is saving ${cash(g)} for ${target}. Use $G = rh$ to find how many hours ${name} must work to earn that amount.`,
         parts: [numPart(h, { suffix: 'h' })],

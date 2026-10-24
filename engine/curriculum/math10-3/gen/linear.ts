@@ -1131,7 +1131,7 @@ const perimeterUnknown = skill({
       const C = retry(() => rng.int(60, 300), (v) => safe(v / Math.PI, 0));
       const dia = C / Math.PI;
       return {
-        prompt: `${name}, an arborist in Hinton, wraps a tape measure once around a lodgepole pine trunk. The circumference is ${Q(C, 'cm')}. What is the diameter of the trunk? Round to the nearest centimetre.`,
+        prompt: `${name}, an arborist in a forestry town, wraps a tape measure once around a lodgepole pine trunk. The circumference is ${Q(C, 'cm')}. What is the diameter of the trunk? Round to the nearest centimetre.`,
         parts: [numPart(dia, { decimals: 0, suffix: 'cm' })],
         hints: ['The distance around the trunk is its circumference: $C = \\pi d$.', 'Rearrange to get $d$ by itself: $d = \\dfrac{C}{\\pi}$.'],
         solution: ['$C = \\pi d$', 'Divide both sides by $\\pi$: $d = \\dfrac{C}{\\pi}$', `$d = \\dfrac{${C}}{\\pi} \\approx ${fmt(dia, 3)}$`, `The trunk is about ${Q(fmtFixed(dia, 0), 'cm')} across.`],
@@ -1421,7 +1421,7 @@ const linearCost = skill({
         }
         const cost = need * price;
         return {
-          prompt: `${name} is fencing a rectangular yard on an acreage near Red Deer. The yard is ${Q(l, 'm')} by ${Q(w, 'm')}, and a gate ${Q(gate, 'm')} wide (priced separately) takes the place of some fence. Fencing costs ${money(price)} per metre. What does the fencing cost, to the nearest cent?`,
+          prompt: `${name} is fencing a rectangular yard on an acreage outside town. The yard is ${Q(l, 'm')} by ${Q(w, 'm')}, and a gate ${Q(gate, 'm')} wide (priced separately) takes the place of some fence. Fencing costs ${money(price)} per metre. What does the fencing cost, to the nearest cent?`,
           parts: [numPart(cost, { decimals: 2, tolerance: 0.011, suffix: 'dollars' })],
           hints: ['Find the perimeter of the yard, then subtract the gate.', 'Multiply the length of fencing by the price per metre.'],
           solution: [

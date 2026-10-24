@@ -60,7 +60,7 @@ const NAMES = [
   'Gurpreet', 'Maya', 'Wyatt', 'Ngozi', 'Carlos', 'Anika',
 ];
 
-const TOWNS = ['Grande Prairie', 'Red Deer', 'Lethbridge', 'Fort McMurray', 'Medicine Hat', 'Peace River', 'Lloydminster', 'Brooks', 'Camrose', 'Canmore', 'Cold Lake', 'High River'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Northfield', 'Elmwood'];
 
 // ---------------------------------------------------------------------------
 // Lesson 3.1 — The SI system
@@ -109,7 +109,7 @@ const REASONABLE: Array<{ thing: string; right: string; wrong: string[] }> = [
   { thing: 'the length of a pickup truck', right: '$5.8\\ \\text{m}$', wrong: ['$5.8\\ \\text{cm}$', '$5.8\\ \\text{km}$', '$58\\ \\text{mm}$'] },
   { thing: 'the thickness of a sheet of plywood', right: '$18\\ \\text{mm}$', wrong: ['$18\\ \\text{cm}$', '$18\\ \\text{m}$', '$1.8\\ \\text{m}$'] },
   { thing: 'the capacity of a can of pop', right: '$355\\ \\text{mL}$', wrong: ['$355\\ \\text{L}$', '$3.55\\ \\text{mL}$', '$35.5\\ \\text{L}$'] },
-  { thing: 'the distance by highway from Red Deer to Calgary', right: '$150\\ \\text{km}$', wrong: ['$150\\ \\text{m}$', '$150\\ \\text{cm}$', '$15\\,000\\ \\text{km}$'] },
+  { thing: 'the highway distance between two cities about a 90-minute drive apart', right: '$150\\ \\text{km}$', wrong: ['$150\\ \\text{m}$', '$150\\ \\text{cm}$', '$15\\,000\\ \\text{km}$'] },
   { thing: 'the mass of the medicine in one pain-relief tablet', right: '$500\\ \\text{mg}$', wrong: ['$500\\ \\text{g}$', '$500\\ \\text{kg}$', '$5\\ \\text{kg}$'] },
   { thing: 'the height of a doorway', right: '$203\\ \\text{cm}$', wrong: ['$203\\ \\text{mm}$', '$203\\ \\text{m}$', '$2.03\\ \\text{km}$'] },
   { thing: 'the mass of a small square bale of hay', right: '$25\\ \\text{kg}$', wrong: ['$25\\ \\text{g}$', '$25\\ \\text{mg}$', '$2.5\\ \\text{g}$'] },
@@ -122,7 +122,7 @@ const REASONABLE: Array<{ thing: string; right: string; wrong: string[] }> = [
 
 const ORDER_SETS = [
   { intro: 'A carpenter has labelled four pieces of trim with these lengths:', base: 'mm', baseName: 'millimetres', units: [{ u: 'mm', f: 1 }, { u: 'cm', f: 10 }, { u: 'm', f: 1000 }], lo: 20, hi: 300, step: 10 },
-  { intro: 'Four hiking trails near Canmore have these lengths:', base: 'm', baseName: 'metres', units: [{ u: 'm', f: 1 }, { u: 'km', f: 1000 }], lo: 30, hi: 400, step: 10 },
+  { intro: 'Four hiking trails near a mountain town have these lengths:', base: 'm', baseName: 'metres', units: [{ u: 'm', f: 1 }, { u: 'km', f: 1000 }], lo: 30, hi: 400, step: 10 },
   { intro: 'Four boxes of fasteners at a hardware store have these masses:', base: 'g', baseName: 'grams', units: [{ u: 'g', f: 1 }, { u: 'kg', f: 1000 }], lo: 8, hi: 120, step: 25 },
   { intro: 'Four containers in a restaurant kitchen hold these amounts:', base: 'mL', baseName: 'millilitres', units: [{ u: 'mL', f: 1 }, { u: 'L', f: 1000 }], lo: 3, hi: 60, step: 50 },
 ];
@@ -273,7 +273,7 @@ const SI_PAIRS: SiPair[] = [
     big: 'km', small: 'm', lvl: 1, d1: [2, 25], d2: { lo: 5, hi: 250, div: 10 }, d2Small: [120, 9800, 10],
     ctx: [
       (q) => `A pipeline crew has laid ${q} of pipe so far this season.`,
-      (q, n) => `${n} grades ${q} of gravel road near Drumheller.`,
+      (q, n) => `${n} grades ${q} of gravel road out in the country.`,
       (q) => `A new barbed-wire fence around a pasture is ${q} long.`,
       (q, n) => `${n} walks ${q} while inspecting a line of power poles.`,
     ],
@@ -904,7 +904,7 @@ const impMassCapacity = skill({
       case 'ton-lb': {
         const t = rng.int(2, 20);
         return {
-          prompt: `${rng.pick([`A US trucking company hauls a load of ${t} tons (short tons) of gravel.`, `A rancher buys ${t} tons (short tons) of hay from a Montana supplier.`, `A US-made front-end loader can lift ${t} tons (short tons).`])} How many pounds is that?`,
+          prompt: `${rng.pick([`A US trucking company hauls a load of ${t} tons (short tons) of gravel.`, `A rancher buys ${t} tons (short tons) of hay from a US supplier.`, `A US-made front-end loader can lift ${t} tons (short tons).`])} How many pounds is that?`,
           parts: [exact(t * 2000, 'lb')],
           hints: [MASS_FACTS, 'Pounds are smaller than tons, so multiply by 2000.'],
           solution: ['$1$ ton $= 2000\\ \\text{lb}$', `$${t} \\times 2000 = ${nm(t * 2000)}$, so that is $${ms(t * 2000, 'lb')}$.`],
@@ -973,7 +973,7 @@ const impMassCapacity = skill({
         const chain = US_CAP.slice(i, j + 1);
         const chainText = chain.slice(0, -1).map((c, k) => `$1$ ${c.one} $= ${c.floz / chain[k + 1].floz}$ ${chain[k + 1].name}`).join(', ');
         return {
-          prompt: `${rng.pick([`A school cafeteria in Montana buys ${usQ(given, from.u)} of milk.`, `A recipe from a US website makes ${usQ(given, from.u)} of lemonade.`, `${n} mixes ${usQ(given, from.u)} of a cleaning solution (US units).`])} How many US ${to.name} is that?`,
+          prompt: `${rng.pick([`A school cafeteria in the United States buys ${usQ(given, from.u)} of milk.`, `A recipe from a US website makes ${usQ(given, from.u)} of lemonade.`, `${n} mixes ${usQ(given, from.u)} of a cleaning solution (US units).`])} How many US ${to.name} is that?`,
           parts: [exact(result, to.u)],
           hints: [US_CAP_FACTS, `First find how many ${small.name} are in one ${big.one}.`],
           solution: [chainText + '.', `So $1$ ${big.one} $= ${f}$ ${small.name}.`, `$${nm(given)} ${down ? '\\times' : '\\div'} ${f} = ${nm(result)}$, so that is ${usQ(result, to.u)}.`],
@@ -1228,7 +1228,7 @@ const usUkCapacity = skill({
         const us = v * 16 * 29.57;
         const diff = imp - us;
         return {
-          prompt: `A pub in London serves drinks in imperial pints. A diner in Montana serves drinks in US pints. How many more millilitres are in $${v}$ imperial ${v === 1 ? 'pint' : 'pints'} than in $${v}$ US ${v === 1 ? 'pint' : 'pints'}, ${roundingPhrase(0)}?\n\nUse $1$ imperial pint $= 20$ imperial fl oz with $1$ imperial fl oz $\\approx 28.41\\ \\text{mL}$, and $1$ US pint $= 16$ US fl oz with $1$ US fl oz $\\approx 29.57\\ \\text{mL}$.`,
+          prompt: `A pub in London serves drinks in imperial pints. A diner in the United States serves drinks in US pints. How many more millilitres are in $${v}$ imperial ${v === 1 ? 'pint' : 'pints'} than in $${v}$ US ${v === 1 ? 'pint' : 'pints'}, ${roundingPhrase(0)}?\n\nUse $1$ imperial pint $= 20$ imperial fl oz with $1$ imperial fl oz $\\approx 28.41\\ \\text{mL}$, and $1$ US pint $= 16$ US fl oz with $1$ US fl oz $\\approx 29.57\\ \\text{mL}$.`,
           parts: [numPart(diff, { decimals: 0, suffix: 'mL' })],
           hints: ['Change each amount to millilitres separately, using its own kind of fluid ounce.', 'Then subtract.'],
           solution: [
@@ -1334,13 +1334,13 @@ const siToImp = skill({
           const made = retry(
             () => {
               const trip = rng.pick([
-                ['Edmonton', 'Jasper', 365],
-                ['Calgary', 'Banff', 128],
-                ['Calgary', 'Lethbridge', 211],
-                ['Edmonton', 'Fort McMurray', 435],
-                ['Red Deer', 'Drumheller', 116],
-                ['Grande Prairie', 'Peace River', 197],
-                ['Medicine Hat', 'Lethbridge', 167],
+                ['Riverton', 'Pinewood', 365],
+                ['Lakeside', 'Maple Falls', 128],
+                ['Lakeside', 'Brookfield', 211],
+                ['Riverton', 'Clearwater', 435],
+                ['Hillcrest', 'Stonebridge', 116],
+                ['Westbury', 'Ashford', 197],
+                ['Northfield', 'Brookfield', 167],
               ] as const);
               return { trip, res: trip[2] * 0.621 };
             },
@@ -1406,7 +1406,7 @@ const siToImp = skill({
         const kg = clean(t * 1000);
         const lb = clean(kg * 2.2);
         return {
-          prompt: `A grain truck leaving a farm near Vegreville carries ${M(t, 't')} (tonnes) of wheat. The buyer in the United States wants the mass in pounds. What is it?\n\nUse $1\\ \\text{t} = 1000\\ \\text{kg}$ and ${F_KG_LB}.`,
+          prompt: `A grain truck leaving a farm carries ${M(t, 't')} (tonnes) of wheat. The buyer in the United States wants the mass in pounds. What is it?\n\nUse $1\\ \\text{t} = 1000\\ \\text{kg}$ and ${F_KG_LB}.`,
           parts: [exact(lb, 'lb')],
           hints: ['Change tonnes to kilograms first.', 'Then multiply the kilograms by 2.2.'],
           solution: [`$${nm(t)} \\times 1000 = ${ms(kg, 'kg')}$`, `$${nm(kg)} \\times 2.2 = ${nm(lb)}$`, `The load is about $${ms(lb, 'lb')}$.`],
@@ -1416,7 +1416,7 @@ const siToImp = skill({
         const kmh = rng.pick([30, 50, 60, 70, 80, 90, 100, 110]);
         const mph = kmh * 0.621;
         return {
-          prompt: `${n} is driving a truck from Alberta into Montana. The speed limit sign on the Alberta side says ${M(kmh, 'km/h')}. What is this speed in miles per hour, ${roundingPhrase(0)}?\n\nUse ${F_KM_MI}.`,
+          prompt: `${n} is driving a truck across a border into a country that uses miles. The speed limit sign just before the border says ${M(kmh, 'km/h')}. What is this speed in miles per hour, ${roundingPhrase(0)}?\n\nUse ${F_KM_MI}.`,
           parts: [numPart(mph, { decimals: 0, suffix: 'mph' })],
           hints: ['Only the distance unit changes. The time unit (hours) stays the same.', 'Multiply the kilometres per hour by 0.621.'],
           solution: [`$${kmh}\\ \\dfrac{\\text{km}}{\\text{h}} \\times \\dfrac{0.621\\ \\text{mi}}{1\\ \\text{km}} = ${nm(mph)}\\ \\dfrac{\\text{mi}}{\\text{h}}$`, `Rounded ${roundingPhrase(0)}, the limit is about $${nf(mph, 0)}$ miles per hour.`],
@@ -1488,7 +1488,7 @@ const impToSi = skill({
           const mi = retry(() => rng.int(2, 30), (x) => clearOf(x * 1.609, 1));
           const km = clean(mi * 1.609);
           return {
-            prompt: `${rng.pick([`A trail in Glacier National Park, Montana, is ${M(mi, 'mi')} long.`, `${n} runs a ${mi}-mile race in Spokane.`, `A US delivery route is ${M(mi, 'mi')} long.`])} How long is that in kilometres, ${roundingPhrase(1)}?\n\nUse ${F_MI_KM}.`,
+            prompt: `${rng.pick([`A trail in a US national park is ${M(mi, 'mi')} long.`, `${n} runs a ${mi}-mile race in an American city.`, `A US delivery route is ${M(mi, 'mi')} long.`])} How long is that in kilometres, ${roundingPhrase(1)}?\n\nUse ${F_MI_KM}.`,
             parts: [numPart(km, { decimals: 1, suffix: 'km' })],
             hints: ['A kilometre is shorter than a mile, so expect a bigger number.', 'Multiply the miles by 1.609, then round.'],
             solution: [`$${mi}\\ \\text{mi} \\times \\dfrac{1.609\\ \\text{km}}{1\\ \\text{mi}} = ${nm(km)}\\ \\text{km}$`, `Rounded ${roundingPhrase(1)}, that is about $${nf(km, 1)}\\ \\text{km}$.`],
@@ -1535,7 +1535,7 @@ const impToSi = skill({
           const mi = retry(() => rng.int(12, 400), (x) => clearOf(x * 1.609, 0));
           const km = mi * 1.609;
           return {
-            prompt: `A US road map shows that ${rng.pick(['Great Falls', 'Billings', 'Missoula', 'Spokane', 'Boise', 'Helena'])} is ${M(mi, 'mi')} from the border crossing. How far is that in kilometres, ${roundingPhrase(0)}?\n\nUse ${F_MI_KM}.`,
+            prompt: `Just past a border crossing, in a country that uses miles, a road sign shows that ${rng.pick(['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Westbury'])} is ${M(mi, 'mi')} away. How far is that in kilometres, ${roundingPhrase(0)}?\n\nUse ${F_MI_KM}.`,
             parts: [numPart(km, { decimals: 0, suffix: 'km' })],
             hints: ['Kilometres are shorter than miles, so expect a bigger number.', 'Multiply by 1.609, then round.'],
             solution: [`$${mi} \\times 1.609 = ${nm(km)}$`, `Rounded ${roundingPhrase(0)}, the distance is about $${nf(km, 0)}\\ \\text{km}$.`],
@@ -1599,7 +1599,7 @@ const impToSi = skill({
         const lb = clean(kg * 2.2);
         const t = kg / 1000;
         return {
-          prompt: `A truck from Montana crosses into Alberta carrying ${M(lb, 'lb')} of ${rng.pick(['lumber', 'canola seed', 'steel pipe', 'cattle feed'])}. The Alberta scale reports mass in tonnes. What is the load in tonnes?\n\nUse ${F_KG_LB} and $1\\ \\text{t} = 1000\\ \\text{kg}$.`,
+          prompt: `A truck from a country that uses pounds crosses the border carrying ${M(lb, 'lb')} of ${rng.pick(['lumber', 'canola seed', 'steel pipe', 'cattle feed'])}. The scale on this side of the border reports mass in tonnes. What is the load in tonnes?\n\nUse ${F_KG_LB} and $1\\ \\text{t} = 1000\\ \\text{kg}$.`,
           parts: [exact(t, 't')],
           hints: ['Change pounds to kilograms first (divide by 2.2).', 'Then change kilograms to tonnes (divide by 1000).'],
           solution: [`$${nm(lb)} \\div 2.2 = ${ms(kg, 'kg')}$`, `$${nm(kg)} \\div 1000 = ${nm(t)}$`, `The load is about $${ms(t, 't')}$ (tonnes).`],
@@ -1622,7 +1622,7 @@ const impToSi = skill({
         const lbs = made.lb + made.oz / 16;
         const kg = lbs / 2.2;
         return {
-          prompt: `A baby born in a US hospital weighs $${lboz(made.lb, made.oz)}$. The family doctor in Alberta records mass in kilograms. What is the baby’s mass, ${roundingPhrase(2)} of a kilogram?\n\nUse $16\\ \\text{oz} = 1\\ \\text{lb}$ and ${F_KG_LB}.`,
+          prompt: `A baby born in a US hospital weighs $${lboz(made.lb, made.oz)}$. The family’s doctor back home records mass in kilograms. What is the baby’s mass, ${roundingPhrase(2)} of a kilogram?\n\nUse $16\\ \\text{oz} = 1\\ \\text{lb}$ and ${F_KG_LB}.`,
           parts: [numPart(kg, { decimals: 2, suffix: 'kg' })],
           hints: ['Change the ounces to a fraction of a pound and add it to the pounds.', 'Then divide the pounds by 2.2.'],
           solution: [`$${made.oz}\\ \\text{oz} = \\tfrac{${made.oz}}{16}\\ \\text{lb} = ${nm(made.oz / 16)}\\ \\text{lb}$, so the baby weighs $${nm(lbs)}\\ \\text{lb}$.`, `$${nm(lbs)} \\div 2.2 \\approx ${nm(kg, 4)}$`, `Rounded ${roundingPhrase(2)}, the baby’s mass is about $${nf(kg, 2)}\\ \\text{kg}$.`],
@@ -1632,7 +1632,7 @@ const impToSi = skill({
         const mph = retry(() => rng.pick([25, 35, 40, 45, 55, 60, 65, 70, 75, 80]), (x) => clearOf(x * 1.609, 0));
         const kmh = mph * 1.609;
         return {
-          prompt: `${n} is driving a rented car in Idaho, where the speed limit is $${mph}$ miles per hour. The car’s speedometer only shows km/h. What speed in km/h matches the limit, ${roundingPhrase(0)}?\n\nUse ${F_MI_KM}.`,
+          prompt: `${n} is driving a rented car in the United States, where the speed limit is $${mph}$ miles per hour. The car’s speedometer only shows km/h. What speed in km/h matches the limit, ${roundingPhrase(0)}?\n\nUse ${F_MI_KM}.`,
           parts: [numPart(kmh, { decimals: 0, suffix: 'km/h' })],
           hints: ['Only the distance unit changes; the hours stay the same.', 'Multiply the miles per hour by 1.609.'],
           solution: [`$${mph}\\ \\dfrac{\\text{mi}}{\\text{h}} \\times \\dfrac{1.609\\ \\text{km}}{1\\ \\text{mi}} = ${nm(kmh)}\\ \\dfrac{\\text{km}}{\\text{h}}$`, `Rounded ${roundingPhrase(0)}, the limit is about $${nf(kmh, 0)}\\ \\text{km/h}$.`],
@@ -1653,7 +1653,7 @@ const toC = (f: number) => (5 / 9) * (f - 32);
 
 const C_CONTEXTS: Array<{ lo: number; hi: number; text: (t: string, n: string, town: string) => string }> = [
   { lo: -35, hi: 35, text: (t, n, town) => `The forecast for ${town} tomorrow is ${t}. ${n}’s cousin in Texas wants to know the temperature in degrees Fahrenheit.` },
-  { lo: 35, hi: 40, text: (t) => `The hot tub at a hotel in Jasper is kept at ${t}. A guest from Ohio asks what that is in degrees Fahrenheit.` },
+  { lo: 35, hi: 40, text: (t) => `The hot tub at a mountain hotel is kept at ${t}. A guest from Ohio asks what that is in degrees Fahrenheit.` },
   { lo: 150, hi: 250, text: (t, n) => `${n}’s recipe says to roast vegetables at ${t}, but the restaurant’s oven is marked in degrees Fahrenheit.` },
   { lo: 80, hi: 110, text: (t, n) => `The coolant in a truck engine that ${n} is servicing is at ${t}. The service manual is from the US and uses degrees Fahrenheit.` },
   { lo: 1, hi: 5, text: (t) => `A walk-in cooler at a grocery store is set to ${t}. The thermostat is an American model that shows degrees Fahrenheit.` },
@@ -1661,7 +1661,7 @@ const C_CONTEXTS: Array<{ lo: number; hi: number; text: (t: string, n: string, t
 ];
 
 const F_CONTEXTS: Array<{ lo: number; hi: number; text: (t: string, n: string) => string }> = [
-  { lo: -20, hi: 100, text: (t, n) => `${n}’s weather app is set to a US city and shows ${t} in Great Falls, Montana.` },
+  { lo: -20, hi: 100, text: (t, n) => `${n}’s weather app is set to a city in the United States and shows ${t} there.` },
   { lo: 300, hi: 450, text: (t) => `An American recipe says to bake at ${t}, but the oven is marked in degrees Celsius.` },
   { lo: 33, hi: 41, text: (t) => `A fridge made for the US market is set to ${t}.` },
   { lo: -10, hi: 5, text: (t) => `A US-made chest freezer is set to ${t}.` },
@@ -1740,7 +1740,7 @@ const tempConvert = skill({
         const dC = b - a;
         const dF = clean(1.8 * dC);
         return {
-          prompt: `A chinook wind blew into ${town}. In a few hours the temperature rose from $${cDeg(a)}$ to $${cDeg(b)}$. By how many Fahrenheit degrees did the temperature rise?`,
+          prompt: `A warm wind blew into ${town}. In a few hours the temperature rose from $${cDeg(a)}$ to $${cDeg(b)}$. By how many Fahrenheit degrees did the temperature rise?`,
           parts: [exact(dF, '°F')],
           hints: ['Find the rise in Celsius degrees first.', 'A change of $1$ Celsius degree is a change of $\\tfrac{9}{5}$ Fahrenheit degrees. Do not add 32 to a change: the 32 only shifts the starting point of the scale.'],
           solution: [`Rise in Celsius: $${nm(b)} - (${nm(a)}) = ${dC}$ Celsius degrees.`, `Each Celsius degree is $\\tfrac{9}{5} = 1.8$ Fahrenheit degrees: $${dC} \\times 1.8 = ${nm(dF)}$.`, `The temperature rose by $${nm(dF)}$ Fahrenheit degrees ($${nm(dF)}^\\circ\\text{F}$).`],
@@ -1749,7 +1749,7 @@ const tempConvert = skill({
       const dF = retry(() => rng.int(10, 60), (x) => x % 9 !== 0);
       const dC = (dF * 5) / 9;
       return {
-        prompt: `Overnight in Browning, Montana, the temperature dropped by $${dF}$ Fahrenheit degrees. By how many Celsius degrees did it drop, ${roundingPhrase(1)}?`,
+        prompt: `Overnight in a small US town, the temperature dropped by $${dF}$ Fahrenheit degrees. By how many Celsius degrees did it drop, ${roundingPhrase(1)}?`,
         parts: [numPart(dC, { decimals: 1, suffix: '°C' })],
         hints: ['This is a change in temperature, not a temperature, so do not subtract 32.', 'A change of $1$ Fahrenheit degree is a change of $\\tfrac{5}{9}$ of a Celsius degree.'],
         solution: [`Each Fahrenheit degree is $\\tfrac{5}{9}$ of a Celsius degree.`, `$\\tfrac{5}{9} \\times ${dF} = ${nm(dC, 3)}$`, `The temperature dropped by about $${nf(dC, 1)}$ Celsius degrees ($${nf(dC, 1)}^\\circ\\text{C}$).`],
@@ -1815,8 +1815,8 @@ const REFERENTS = [
 ];
 
 const REASONABLE_TEMPS: Array<{ thing: string; right: string; wrong: string[] }> = [
-  { thing: 'a hot summer afternoon in Medicine Hat', right: '$33^\\circ\\text{C}$', wrong: ['$33^\\circ\\text{F}$', '$91^\\circ\\text{C}$', '$-5^\\circ\\text{C}$'] },
-  { thing: 'a cold January morning in Edmonton', right: '$-25^\\circ\\text{C}$', wrong: ['$25^\\circ\\text{C}$', '$60^\\circ\\text{F}$', '$-80^\\circ\\text{C}$'] },
+  { thing: 'a hot summer afternoon', right: '$33^\\circ\\text{C}$', wrong: ['$33^\\circ\\text{F}$', '$91^\\circ\\text{C}$', '$-5^\\circ\\text{C}$'] },
+  { thing: 'a cold January morning in a northern city', right: '$-25^\\circ\\text{C}$', wrong: ['$25^\\circ\\text{C}$', '$60^\\circ\\text{F}$', '$-80^\\circ\\text{C}$'] },
   { thing: 'a cup of hot coffee', right: '$70^\\circ\\text{C}$', wrong: ['$70^\\circ\\text{F}$', '$7^\\circ\\text{C}$', '$300^\\circ\\text{C}$'] },
   { thing: 'the inside of a household fridge', right: '$4^\\circ\\text{C}$', wrong: ['$4^\\circ\\text{F}$', '$40^\\circ\\text{C}$', '$-30^\\circ\\text{C}$'] },
   { thing: 'a restaurant’s walk-in freezer', right: '$-18^\\circ\\text{C}$', wrong: ['$18^\\circ\\text{C}$', '$40^\\circ\\text{F}$', '$-80^\\circ\\text{F}$'] },
@@ -1825,7 +1825,7 @@ const REASONABLE_TEMPS: Array<{ thing: string; right: string; wrong: string[] }>
   { thing: 'a comfortable office', right: '$21^\\circ\\text{C}$', wrong: ['$21^\\circ\\text{F}$', '$40^\\circ\\text{C}$', '$5^\\circ\\text{C}$'] },
   { thing: 'a child with a fever', right: '$39^\\circ\\text{C}$', wrong: ['$39^\\circ\\text{F}$', '$102^\\circ\\text{C}$', '$30^\\circ\\text{C}$'] },
   { thing: 'hot asphalt being laid on a new road', right: '$150^\\circ\\text{C}$', wrong: ['$15^\\circ\\text{C}$', '$150^\\circ\\text{F}$', '$1500^\\circ\\text{C}$'] },
-  { thing: 'a pleasant spring day in Calgary', right: '$15^\\circ\\text{C}$', wrong: ['$15^\\circ\\text{F}$', '$45^\\circ\\text{C}$', '$-30^\\circ\\text{C}$'] },
+  { thing: 'a pleasant spring day', right: '$15^\\circ\\text{C}$', wrong: ['$15^\\circ\\text{F}$', '$45^\\circ\\text{C}$', '$-30^\\circ\\text{C}$'] },
   { thing: 'oil in a deep fryer cooking fries', right: '$180^\\circ\\text{C}$', wrong: ['$180^\\circ\\text{F}$', '$18^\\circ\\text{C}$', '$800^\\circ\\text{C}$'] },
 ];
 

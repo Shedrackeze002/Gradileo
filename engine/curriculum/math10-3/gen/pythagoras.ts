@@ -1906,7 +1906,7 @@ const scaleDrawing = skill({
       const drawn = rng.int(3, 25) / 2;
       const actual = drawn * N;
       return {
-        prompt: `On a road map of Alberta, $${ms(1, 'cm')}$ represents $${ms(N, 'km')}$. Two towns are $${ms(drawn, 'cm')}$ apart on the map. What is the actual distance between them?`,
+        prompt: `On a regional road map, $${ms(1, 'cm')}$ represents $${ms(N, 'km')}$. Two towns are $${ms(drawn, 'cm')}$ apart on the map. What is the actual distance between them?`,
         parts: [numPart(actual, { suffix: 'km', label: 'Distance' })],
         hints: [`Each centimetre on the map stands for $${ms(N, 'km')}$.`, 'Multiply the map distance by that number.'],
         solution: [`$${fmt(drawn)} \\times ${N} = ${fmt(actual)}$`, `The towns are $${ms(actual, 'km')}$ apart.`],
@@ -1969,7 +1969,7 @@ const scaleDrawing = skill({
       const drawn = rng.int(15, 150) / 10;
       const km = (drawn * n) / 100000;
       return {
-        prompt: `A topographic map of the Kananaskis area uses a scale of $1:${big(n)}$. A hiking trail measures $${ms(drawn, 'cm')}$ on the map. How long is the trail in real life, in kilometres?`,
+        prompt: `A topographic map of a mountain park uses a scale of $1:${big(n)}$. A hiking trail measures $${ms(drawn, 'cm')}$ on the map. How long is the trail in real life, in kilometres?`,
         parts: [numPart(km, { suffix: 'km', label: 'Length' })],
         hints: [`Multiply by $${big(n)}$ to get the real length in centimetres.`, 'Then convert: $1\\ \\text{km} = 1000\\ \\text{m} = 100\\,000\\ \\text{cm}$.'],
         solution: [
