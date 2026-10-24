@@ -13,7 +13,7 @@ const NAMES = [
   'Kwame', 'Chloé', 'Ravi', 'Sienna', 'Dakota', 'Ethan', 'Leilani', 'Omar', 'Nadia', 'Jaxon', 'Ayesha', 'Wei',
   'Isabelle', 'Kiran', 'Malik', 'Sofia', 'Gurpreet', 'Hiroshi', 'Zara', 'Émile', 'Thandiwe', 'Connor', 'Rosa', 'Tyler',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Airdrie', 'Camrose', 'Brooks', 'Lloydminster'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'];
 
 type Out = GenOutput;
 
@@ -204,10 +204,10 @@ const CTX: Array<(rng: Rng, name: string) => Ctx> = [
     const r = rng.pick([2, 3]);
     const T0 = r === 2 ? -rng.pick([8, 10, 12, 14]) : -rng.pick([9, 12, 15]);
     const town = rng.pick(TOWNS);
-    const words = `At 6 a.m. it was $${T0}^\\circ\\text{C}$ in ${town}. A warm chinook wind made the temperature rise $${r}^\\circ\\text{C}$ every hour.`;
+    const words = `At 6 a.m. it was $${T0}^\\circ\\text{C}$ in ${town}. A warm wind from the mountains made the temperature rise $${r}^\\circ\\text{C}$ every hour.`;
     return {
       words,
-      scene: `One winter morning in ${town}, a warm chinook wind made the temperature rise steadily after 6 a.m.`,
+      scene: `One winter morning in ${town}, a warm wind from the mountains made the temperature rise steadily after 6 a.m.`,
       intro: `${words} The equation $T = ${r}h - ${-T0}$ gives the temperature $T$, in degrees Celsius, $h$ hours after 6 a.m.`,
       xv: 'h', yv: 'T', a: r, b: T0,
       xHead: 'Hours after 6 a.m., $h$', yHead: 'Temperature, $T$ (°C)', xLabel: 'Hours after 6 a.m.', yLabel: 'Temperature (°C)', xMax: 8,

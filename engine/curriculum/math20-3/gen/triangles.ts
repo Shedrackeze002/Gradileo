@@ -13,7 +13,7 @@ const NAMES = [
   'Chloé', 'Tariq', 'Olivia', 'Ethan', 'Wei', 'Nadia', 'Darius', 'Talia', 'Malik', 'Simran', 'Jun', 'Isabelle',
   'Kai', 'Zainab', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas', 'Kiona', 'Tyler', 'Gurpreet', 'Noor',
 ];
-const TOWNS = ['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Camrose', 'Brooks', 'Lloydminster', 'Okotoks', 'Fort McMurray', 'Airdrie', 'Leduc', 'Cold Lake', 'Whitecourt', 'Stettler', 'Drumheller', 'Peace River'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Cedar Hills', 'Oakdale', 'Fernbrook', 'Millbrook', 'Glenview'];
 
 type Unit = 'm' | 'cm' | 'ft' | 'in';
 const UNIT_WORD: Record<Unit, string> = { m: 'metre', cm: 'centimetre', ft: 'foot', in: 'inch' };
@@ -953,7 +953,7 @@ function oppositeTower(rng: Rng): GenOutput {
   const [w1, w2] = rng.sample(NAMES, 2);
   const town = rng.pick(TOWNS);
   const thing = rng.pick([
-    { name: 'a wind turbine tower near Pincher Creek', short: 'tower' },
+    { name: `a wind turbine tower near ${town}`, short: 'tower' },
     { name: `a grain elevator near ${town}`, short: 'elevator' },
     { name: `a communications tower in ${town}`, short: 'tower' },
     { name: `a water tower in ${town}`, short: 'water tower' },
@@ -1107,10 +1107,10 @@ function guyPair(rng: Rng): GenOutput {
 function cliffBoats(rng: Rng): GenOutput {
   const who = rng.pick(NAMES);
   const ctx = rng.pick([
-    { top: 'the top of a cliff above Abraham Lake', base: 'the base of the cliff', objs: 'boats', obj: 'boat', h: [25, 80] },
+    { top: 'the top of a cliff above a mountain lake', base: 'the base of the cliff', objs: 'boats', obj: 'boat', h: [25, 80] },
     { top: 'the deck of a fire lookout tower in the foothills', base: 'the base of the tower', objs: 'campsites', obj: 'campsite', h: [20, 35] },
     { top: `the top of a grain elevator near ${rng.pick(TOWNS)}`, base: 'the base of the elevator', objs: 'grain trucks', obj: 'truck', h: [25, 40] },
-    { top: 'a lookout on a cliff above the Red Deer River in the badlands', base: 'the base of the cliff', objs: 'canoes', obj: 'canoe', h: [30, 90] },
+    { top: 'a lookout on a cliff above a river in the badlands', base: 'the base of the cliff', objs: 'canoes', obj: 'canoe', h: [30, 90] },
   ]);
   const v = retry(
     () => {
@@ -1274,7 +1274,7 @@ function cliffKnownFig(d1: number, d2: number, h: number, A1: number, A2: number
 
 function cliffKnown(rng: Rng): GenOutput {
   const who = rng.pick(NAMES);
-  const lake = rng.pick(['Abraham Lake', 'Lake Minnewanka', 'Sylvan Lake', 'Lac La Biche', 'Pigeon Lake']);
+  const lake = rng.pick(['Clearwater Lake', 'Silver Lake', 'Willow Lake', 'Crane Lake', 'Loon Lake']);
   const v = retry(
     () => {
       const d1 = rng.int(40, 120);

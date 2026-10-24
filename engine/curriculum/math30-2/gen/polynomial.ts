@@ -582,7 +582,7 @@ function whichEquationItem(rng: Rng): GenOutput {
   return whichEquationItem(rng);
 }
 
-const BOX_PLACES = ['Brooks', 'Okotoks', 'Cold Lake', 'Camrose', 'Strathmore', 'Whitecourt', 'High River', 'Vegreville'];
+const BOX_PLACES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury'];
 
 /** d3: the volume of an open-top box, V(x) = x(L − 2x)(W − 2x). */
 function boxItem(rng: Rng): GenOutput {
@@ -679,7 +679,7 @@ const CTXS: ModelCtx[] = [
   {
     deg: 1,
     make: (rng) => [rng.float(5, 40, 1), rng.float(3.5, 6.5, 2)],
-    story: (who) => `${who} works at a café in Lethbridge and recorded the daily high temperature, $x$ (°C), and the number of iced drinks sold, $y$, on summer days with highs from 12°C to 32°C.`,
+    story: (who) => `${who} works at a café in Ashford and recorded the daily high temperature, $x$ (°C), and the number of iced drinks sold, $y$, on summer days with highs from 12°C to 32°C.`,
     xs: { lo: 12, hi: 32, step: 2 },
     xLabel: 'High temperature (°C)',
     yLabel: 'Iced drinks sold',
@@ -723,7 +723,7 @@ const CTXS: ModelCtx[] = [
   {
     deg: 1,
     make: (rng) => [rng.float(8.5, 11, 1), -rng.float(0.36, 0.48, 3)],
-    story: (who) => `${who} tracked a house in Fort McMurray through the heating season: the average outdoor temperature, $x$ (°C), and the natural gas used for heating that day, $y$ (m³), for days from −30°C to 10°C.`,
+    story: (who) => `${who} tracked a house in a northern town through the heating season: the average outdoor temperature, $x$ (°C), and the natural gas used for heating that day, $y$ (m³), for days from −30°C to 10°C.`,
     xs: { lo: -30, hi: 10, step: 4 },
     xLabel: 'Outdoor temperature (°C)',
     yLabel: 'Natural gas used (m³)',
@@ -772,7 +772,7 @@ const CTXS: ModelCtx[] = [
       const a = sig(rng.float(0.0012, 0.0019, 4), 2);
       return [sig(a * v * v + rng.float(5.2, 6.8, 1), 3), sig(-2 * a * v, 3), a];
     },
-    story: (who) => `${who} tested a car on a track near Red Deer, recording the speed, $x$ (km/h), and the fuel consumption, $y$ (L/100 km), at speeds from 40 km/h to 120 km/h.`,
+    story: (who) => `${who} tested a car on a test track, recording the speed, $x$ (km/h), and the fuel consumption, $y$ (L/100 km), at speeds from 40 km/h to 120 km/h.`,
     xs: { lo: 40, hi: 120, step: 8 },
     xLabel: 'Speed (km/h)',
     yLabel: 'Fuel consumption (L/100 km)',
@@ -814,7 +814,7 @@ const CTXS: ModelCtx[] = [
       const a = -sig((rng.int(2400, 3000) - c) / (n * n), 3);
       return [c, sig(-2 * a * n, 4), a];
     },
-    story: (who) => `An agronomist working with ${who}’s family farm near Vegreville tested canola plots with different amounts of nitrogen fertilizer, $x$ (kg/ha), from 0 to 200 kg/ha, and measured the yield, $y$ (kg/ha).`,
+    story: (who) => `An agronomist working with ${who}’s family farm tested canola plots with different amounts of nitrogen fertilizer, $x$ (kg/ha), from 0 to 200 kg/ha, and measured the yield, $y$ (kg/ha).`,
     xs: { lo: 0, hi: 200, step: 20 },
     xLabel: 'Nitrogen (kg/ha)',
     yLabel: 'Canola yield (kg/ha)',
@@ -836,7 +836,7 @@ const CTXS: ModelCtx[] = [
       const P0 = cubicFromTurns(rng.float(0.05, 0.07, 3), rng.float(4, 5.5, 1), rng.float(12, 13.5, 1), rng.float(1.5, 5, 1));
       return [sig(P0[0], 2), sig(P0[1], 3), sig(P0[2], 3), sig(P0[3], 3)];
     },
-    story: (who) => `${who}, a game developer in Calgary, tracked the number of active players, $y$ (thousands), $x$ months after a mobile game launched, for the first 18 months.`,
+    story: (who) => `${who}, a game developer in Brookfield, tracked the number of active players, $y$ (thousands), $x$ months after a mobile game launched, for the first 18 months.`,
     xs: { lo: 0, hi: 18, step: 1 },
     xLabel: 'Months since launch',
     yLabel: 'Active players (thousands)',
@@ -855,7 +855,7 @@ const CTXS: ModelCtx[] = [
       const P0 = cubicFromTurns(-rng.float(0.3, 0.45, 2), rng.float(3, 6, 1), rng.float(18, 22, 1), rng.int(3600, 4800));
       return [sig(P0[0], 4), sig(P0[1], 3), sig(P0[2], 3), sig(P0[3], 2)];
     },
-    story: (who) => `${who} researched the population, $y$, of a small town in northern Alberta from 1990 to 2020, where $x$ is the number of years since 1990.`,
+    story: (who) => `${who} researched the population, $y$, of a small town in the north from 1990 to 2020, where $x$ is the number of years since 1990.`,
     xs: { lo: 0, hi: 30, step: 2 },
     xLabel: 'Years since 1990',
     yLabel: 'Population',
@@ -875,7 +875,7 @@ const CTXS: ModelCtx[] = [
       const P0 = cubicFromTurns(-rng.float(0.025, 0.035, 3), rng.float(2.5, 4, 1), rng.float(11, 13, 1), rng.float(28, 36, 1));
       return [sig(P0[0], 3), sig(P0[1], 3), sig(P0[2], 3), sig(P0[3], 2)];
     },
-    story: (who) => `${who} runs a board game company in Edmonton and tracked the monthly sales of a new game, $y$ (thousands of copies), $x$ months after release, for the first 16 months.`,
+    story: (who) => `${who} runs a board game company in Riverton and tracked the monthly sales of a new game, $y$ (thousands of copies), $x$ months after release, for the first 16 months.`,
     xs: { lo: 0, hi: 16, step: 1 },
     xLabel: 'Months since release',
     yLabel: 'Monthly sales (thousands)',

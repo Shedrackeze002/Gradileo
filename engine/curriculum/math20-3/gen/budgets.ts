@@ -17,9 +17,9 @@ export const NAMES = [
   'Jamal', 'Émilie', 'Wyatt', 'Ayesha', 'Lucas', 'Talia', 'Simran', 'Cole', 'Ngozi', 'Marcus', 'Rosa', 'Ji-woo',
   'Kwame', 'Tanvir', 'Maya', 'Bao', 'Dakota', 'Thanh',
 ];
-export const CITIES = ['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Edmonton', 'Calgary', 'Fort McMurray', 'Airdrie', 'Camrose', 'Brooks', 'Lloydminster', 'Okotoks'];
+export const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Cedar Hills'];
 export const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-export const BANKS = ['Prairie Credit Union', 'Northern Bank', 'Chinook Savings', 'Aspen Valley Credit Union', 'Foothills Trust', 'Parkland Bank'];
+export const BANKS = ['Prairie Credit Union', 'Northern Bank', 'Riverbend Savings', 'Aspen Valley Credit Union', 'Foothills Trust', 'Lakeshore Bank'];
 
 export const poss = (n: string) => `${n}’s`;
 export const isWhole = (x: number) => Math.abs(x - Math.round(x)) < 1e-9;
@@ -80,18 +80,18 @@ export const CENT = 'Answer to the nearest cent.';
 
 interface Job { job: string; lo: number; hi: number }
 const JOBS: Job[] = [
-  { job: 'a cashier at a grocery store in Red Deer', lo: 15, hi: 18 },
-  { job: 'an apprentice electrician in Edmonton', lo: 20, hi: 27 },
-  { job: 'a lube technician in Grande Prairie', lo: 18, hi: 24 },
-  { job: 'a farm hand near Lethbridge', lo: 16, hi: 21 },
-  { job: 'a labourer on a framing crew in Airdrie', lo: 20, hi: 26 },
-  { job: 'a line cook in Canmore', lo: 16, hi: 21 },
-  { job: 'a warehouse worker in Calgary', lo: 17, hi: 23 },
-  { job: 'a floorhand on a drilling rig near Drayton Valley', lo: 30, hi: 40 },
-  { job: 'a parts clerk at a farm equipment dealer in Camrose', lo: 17, hi: 22 },
-  { job: 'a welder’s helper in Fort McMurray', lo: 22, hi: 30 },
-  { job: 'a landscaper in Medicine Hat', lo: 16, hi: 21 },
-  { job: 'a tire technician in Lloydminster', lo: 18, hi: 24 },
+  { job: 'a cashier at a grocery store', lo: 15, hi: 18 },
+  { job: 'an apprentice electrician', lo: 20, hi: 27 },
+  { job: 'a lube technician', lo: 18, hi: 24 },
+  { job: 'a farm hand', lo: 16, hi: 21 },
+  { job: 'a labourer on a framing crew', lo: 20, hi: 26 },
+  { job: 'a line cook at a mountain resort', lo: 16, hi: 21 },
+  { job: 'a warehouse worker', lo: 17, hi: 23 },
+  { job: 'a floorhand on a drilling rig', lo: 30, hi: 40 },
+  { job: 'a parts clerk at a farm equipment dealer', lo: 17, hi: 22 },
+  { job: 'a welder’s helper at a fabrication shop', lo: 22, hi: 30 },
+  { job: 'a landscaper', lo: 16, hi: 21 },
+  { job: 'a tire technician', lo: 18, hi: 24 },
 ];
 
 interface ExpKind { label: string; phrase: string; fixed: boolean; d1: number[]; lo: number; hi: number; style: 'w25' | 'w5' | 'nine' | 'any' }
@@ -442,7 +442,7 @@ function biweekly(rng: Rng): Out {
 
 function housingGuide(rng: Rng): Out {
   const name = rng.pick(NAMES);
-  const city = rng.pick(['Lethbridge', 'Red Deer', 'Grande Prairie', 'Medicine Hat', 'Edmonton', 'Calgary']);
+  const city = rng.pick(['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Westbury']);
   const limit = rng.pick([30, 35]);
   const U = rng.int(8000, 17000) / 100;
   const Ti = rng.int(1800, 3600) / 100;
@@ -524,16 +524,16 @@ const budget = skill({
 // ---------------------------------------------------------------------------
 
 const GOALS = [
-  { what: 'a damage deposit on an apartment in Lethbridge', lo: 800, hi: 1600 },
+  { what: 'a damage deposit on an apartment', lo: 800, hi: 1600 },
   { what: 'a used truck', lo: 3000, hi: 7000 },
   { what: 'a set of winter tires', lo: 600, hi: 1200 },
   { what: 'a welding course', lo: 900, hi: 2400 },
-  { what: 'a trip to Jasper', lo: 600, hi: 1400 },
+  { what: 'a trip to the mountains', lo: 600, hi: 1400 },
   { what: 'an emergency fund', lo: 1000, hi: 2500 },
   { what: 'tools for a carpentry apprenticeship', lo: 700, hi: 1800 },
   { what: 'a used snowmobile', lo: 2500, hi: 6000 },
   { what: 'a new phone', lo: 300, hi: 1200 },
-  { what: 'a concert trip to Edmonton', lo: 300, hi: 900 },
+  { what: 'a concert trip to the city', lo: 300, hi: 900 },
 ];
 const CUTS = ['eating out', 'entertainment', 'clothing', 'streaming and games'];
 
@@ -1054,7 +1054,7 @@ function reconcile2(rng: Rng): Out {
   };
 }
 
-const PAYEES = ['Lethbridge Rentals', 'Prairie Auto Repair', 'Tri-City Plumbing', 'Southside Dental', 'Big Sky Driving School', 'Peace Country Feed Supply', 'Northern Lights Hockey Club', 'Chinook Music Lessons'];
+const PAYEES = ['Riverton Rentals', 'Prairie Auto Repair', 'Tri-City Plumbing', 'Southside Dental', 'Big Sky Driving School', 'Valley Feed Supply', 'Northern Lights Hockey Club', 'Harmony Music Lessons'];
 
 function reconcile3(rng: Rng): Out {
   const name = rng.pick(NAMES);

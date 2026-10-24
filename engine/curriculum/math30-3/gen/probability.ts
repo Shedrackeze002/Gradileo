@@ -36,7 +36,7 @@ const pctText = (v: number, dp = 1) => `${about(v, dp)}${isExact(v, 2) ? fmt(v, 
 const isExact = (v: number, dp: number) => Math.abs(roundTo(v, dp) - v) < 1e-9;
 /** "= 12.5" or "\approx 12.3" for a percent in maths. */
 const pctEq = (v: number, dp = 1) => (isExact(v, 2) ? `= ${fmt(v, 2)}\\%` : `\\approx ${fmtFixed(v, dp)}\\%`);
-const towns = ['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Canmore', 'Drumheller', 'Peace River', 'Cold Lake', 'Olds', 'Hinton', 'Wetaskiwin', 'Taber'];
+const towns = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Cedar Hills'];
 
 // ---------------------------------------------------------------------------
 // 7.1 Probability and odds — m303-probability-odds
@@ -56,32 +56,32 @@ interface CountCtx {
 
 const COUNTS: CountCtx[] = [
   {
-    setup: (_name, n, k) => `A box of ${n} spark plugs delivered to a repair shop in Lloydminster contains ${k} defective plugs. A mechanic takes one plug from the box at random.`,
+    setup: (_name, n, k) => `A box of ${n} spark plugs delivered to a repair shop contains ${k} defective plugs. A mechanic takes one plug from the box at random.`,
     event: () => 'the plug is defective',
     ns: [20, 25, 40, 50, 80, 100], kMax: (n) => Math.max(2, Math.floor(n / 5)),
   },
   {
-    setup: (name, n, k) => `The 4-H beef club in Camrose sold ${numT(n)} raffle tickets for a side of beef. ${name} bought ${k} of them. One ticket is drawn at random.`,
+    setup: (name, n, k) => `The 4-H beef club in town sold ${numT(n)} raffle tickets for a side of beef. ${name} bought ${k} of them. One ticket is drawn at random.`,
     event: (name) => `${name} wins`,
     ns: [100, 125, 200, 250, 400, 500], kMax: () => 10,
   },
   {
-    setup: (_name, n, k) => `A bin at a hardware store in Taber holds ${n} bolts that look alike. ${k} of them are 3/8-inch bolts and the rest are 1/2-inch bolts. An apprentice grabs one without looking.`,
+    setup: (_name, n, k) => `A bin at a hardware store holds ${n} bolts that look alike. ${k} of them are 3/8-inch bolts and the rest are 1/2-inch bolts. An apprentice grabs one without looking.`,
     event: () => 'it is a 3/8-inch bolt',
     ns: [20, 25, 40, 50, 80], kMax: (n) => n - 3,
   },
   {
-    setup: (_name, n, k) => `There are ${n} workers on the day shift at a gas plant near Rocky Mountain House, and ${k} of them are apprentices. One worker’s name is drawn at random for a new safety jacket.`,
+    setup: (_name, n, k) => `There are ${n} workers on the day shift at a gas plant in the foothills, and ${k} of them are apprentices. One worker’s name is drawn at random for a new safety jacket.`,
     event: () => 'the winner is an apprentice',
     ns: [20, 25, 40, 50, 80], kMax: (n) => Math.floor(n / 2),
   },
   {
-    setup: (_name, n, k) => `A shipment of ${n} hard hats arrives at a construction site in Airdrie. ${k} of the hard hats are cracked. The foreman picks one hard hat at random to check.`,
+    setup: (_name, n, k) => `A shipment of ${n} hard hats arrives at a construction site. ${k} of the hard hats are cracked. The foreman picks one hard hat at random to check.`,
     event: () => 'the hard hat is cracked',
     ns: [20, 25, 40, 50, 80, 100], kMax: (n) => Math.max(2, Math.floor(n / 5)),
   },
   {
-    setup: (name, n, k) => `At a fall fair in Olds, a duck pond game has ${n} rubber ducks, and ${k} of them have a prize sticker underneath. ${name} picks one duck without looking.`,
+    setup: (name, n, k) => `At a fall fair, a duck pond game has ${n} rubber ducks, and ${k} of them have a prize sticker underneath. ${name} picks one duck without looking.`,
     event: (name) => `${name} wins a prize`,
     ns: [20, 25, 40, 50], kMax: (n) => Math.floor(n / 2),
   },
@@ -149,23 +149,23 @@ function oddsFromCounts(rng: Rng): Out {
 interface ExpCtx { text: (name: string, p: string, n: string) => string; ask: (name: string) => string; unit: string; ps: number[]; ns: number[] }
 const EXPECT: ExpCtx[] = [
   {
-    text: (name, p, n) => `From past records, ${p} of the welds made by apprentices at a fabrication shop in Nisku need to be redone. ${name} will make ${n} welds this month.`,
+    text: (name, p, n) => `From past records, ${p} of the welds made by apprentices at a fabrication shop need to be redone. ${name} will make ${n} welds this month.`,
     ask: () => 'How many of the welds would you expect to need redoing?', unit: 'welds', ps: [2, 4, 5, 6, 8, 10, 12], ns: [50, 150, 200, 250, 300],
   },
   {
-    text: (_name, p, n) => `A seed company’s tests show that ${p} of its canola seeds germinate (for this question). A farmer near Vegreville plants a test strip of ${n} seeds.`,
+    text: (_name, p, n) => `A seed company’s tests show that ${p} of its canola seeds germinate (for this question). A farmer plants a test strip of ${n} seeds.`,
     ask: () => 'How many seeds would you expect to germinate?', unit: 'seeds', ps: [85, 88, 90, 92, 94, 95, 96], ns: [500, 1000, 1500, 2000, 2500],
   },
   {
-    text: (_name, p, n) => `A hardware store in Brooks finds that ${p} of customers who buy a snow blower also buy an extended warranty. The store expects to sell ${n} snow blowers this winter.`,
+    text: (_name, p, n) => `A hardware store finds that ${p} of customers who buy a snow blower also buy an extended warranty. The store expects to sell ${n} snow blowers this winter.`,
     ask: () => 'How many warranties should the store expect to sell?', unit: 'warranties', ps: [15, 20, 24, 25, 30, 35, 40], ns: [40, 60, 80, 120, 140],
   },
   {
-    text: (_name, p, n) => `At an oil change shop in Leduc, ${p} of the vehicles that come in also need a new air filter. The shop expects ${n} vehicles next month.`,
+    text: (_name, p, n) => `At an oil change shop, ${p} of the vehicles that come in also need a new air filter. The shop expects ${n} vehicles next month.`,
     ask: () => 'How many air filters should the shop expect to sell?', unit: 'air filters', ps: [20, 25, 30, 35, 40, 45], ns: [120, 160, 200, 240, 260, 300],
   },
   {
-    text: (name, p, n) => `${name} plays on a basketball team in Wetaskiwin and makes ${p} of free throws. Suppose ${name} takes ${n} free throws this season.`,
+    text: (name, p, n) => `${name} plays on a high-school basketball team and makes ${p} of free throws. Suppose ${name} takes ${n} free throws this season.`,
     ask: (name) => `How many free throws would you expect ${name} to make?`, unit: 'free throws', ps: [60, 65, 70, 75, 80, 85], ns: [40, 60, 80, 100, 120],
   },
 ];
@@ -191,8 +191,8 @@ interface ProbCtx { text: (p: number, town: string) => string; event: string; ps
 const PROBS: ProbCtx[] = [
   { text: (p, town) => `The forecast for ${town} gives a ${p}% probability of precipitation (rain or snow) tomorrow.`, event: 'precipitation tomorrow', ps: [10, 20, 30, 40, 60, 70, 80, 90] },
   { text: (p) => `A tire maker’s road tests show that ${p}% of its all-season tires last more than 80,000 km.`, event: 'a tire lasting more than 80,000 km', ps: [75, 80, 85, 88, 92, 95, 96] },
-  { text: (p) => `A courier company in Edmonton delivers ${p}% of its parcels on time.`, event: 'a parcel arriving on time', ps: [85, 88, 90, 92, 94, 95, 96] },
-  { text: (p) => `Records at a calving barn near Ponoka show that ${p}% of calvings need help from the rancher.`, event: 'a calving needing help', ps: [5, 8, 10, 12, 15, 20, 25] },
+  { text: (p) => `A courier company in the city delivers ${p}% of its parcels on time.`, event: 'a parcel arriving on time', ps: [85, 88, 90, 92, 94, 95, 96] },
+  { text: (p) => `Records at a calving barn on a cattle ranch show that ${p}% of calvings need help from the rancher.`, event: 'a calving needing help', ps: [5, 8, 10, 12, 15, 20, 25] },
   { text: (p) => `A pipeline company’s inspections show that ${p}% of the welds on a project pass the X-ray test the first time.`, event: 'a weld passing the first time', ps: [65, 70, 75, 80, 85, 90, 95] },
 ];
 
@@ -222,12 +222,12 @@ function probToOdds(rng: Rng): Out {
 
 interface OddsCtx { text: (name: string, o: string) => string; event: (name: string) => string; inFavour: boolean; bigFirst?: boolean }
 const ODDS: OddsCtx[] = [
-  { text: (name, o) => `${name} rides in the bull riding at a rodeo in Ponoka. A commentator gives the odds in favour of ${name} making the 8-second whistle as ${o}.`, event: (name) => `${name} makes the whistle`, inFavour: true },
-  { text: (name, o) => `${poss(name)} curling team from Grande Prairie entered a bonspiel. The odds against the team winning the bonspiel are ${o}.`, event: () => 'the team wins the bonspiel', inFavour: false, bigFirst: true },
+  { text: (name, o) => `${name} rides in the bull riding at a summer rodeo. A commentator gives the odds in favour of ${name} making the 8-second whistle as ${o}.`, event: (name) => `${name} makes the whistle`, inFavour: true },
+  { text: (name, o) => `${poss(name)} curling team from a northern town entered a bonspiel. The odds against the team winning the bonspiel are ${o}.`, event: () => 'the team wins the bonspiel', inFavour: false, bigFirst: true },
   { text: (_n, o) => `A seed supplier says that the odds in favour of one of its wheat seeds germinating are ${o}.`, event: () => 'a seed germinates', inFavour: true, bigFirst: true },
   { text: (_n, o) => `At a chuckwagon race at a summer fair, the odds against the team in the red wagon winning are ${o}.`, event: () => 'the red wagon wins', inFavour: false, bigFirst: true },
-  { text: (name, o) => `${name} is waiting for a part for a tractor repair near Stettler. The dealer says the odds against the part arriving by Friday are ${o}.`, event: () => 'the part arrives by Friday', inFavour: false },
-  { text: (name, o) => `${name} plays goal for a hockey team in Camrose. Based on this season, the odds in favour of ${name} stopping a penalty shot are ${o}.`, event: (name) => `${name} stops the shot`, inFavour: true },
+  { text: (name, o) => `${name} is waiting for a part for a tractor repair on the farm. The dealer says the odds against the part arriving by Friday are ${o}.`, event: () => 'the part arrives by Friday', inFavour: false },
+  { text: (name, o) => `${name} plays goal for a junior hockey team. Based on this season, the odds in favour of ${name} stopping a penalty shot are ${o}.`, event: (name) => `${name} stops the shot`, inFavour: true },
 ];
 
 function oddsToProb(rng: Rng): Out {
@@ -264,37 +264,37 @@ function oddsToProb(rng: Rng): Out {
 interface Claim { claim: (name: string) => string; correct: string; wrong: string[]; why: string }
 const CLAIMS: Claim[] = [
   {
-    claim: (name) => `At a fall fair in Vermilion, a coin has landed heads 6 times in a row. ${name} says tails is now more likely than heads on the next flip.`,
+    claim: (name) => `At a county fair, a coin has landed heads 6 times in a row. ${name} says tails is now more likely than heads on the next flip.`,
     correct: 'The claim is false: each flip is independent, so the probability of tails is still $\\dfrac{1}{2}$.',
     wrong: ['The claim is true: after 6 heads in a row, tails is due.', 'The claim is false: heads is now more likely, because the coin is on a streak.', 'The claim is true: the probability of tails is now $\\dfrac{6}{7}$.'],
     why: 'The coin has no memory. Each flip is independent of the flips before it, so the probability of tails is $\\dfrac{1}{2}$ every time.',
   },
   {
-    claim: (name) => `A raffle poster in Fort Saskatchewan says “1 chance in 500 to win.” ${name} says this means the odds in favour of winning are 1 : 500.`,
+    claim: (name) => `A raffle poster at the community hall says “1 chance in 500 to win.” ${name} says this means the odds in favour of winning are 1 : 500.`,
     correct: 'The claim is false: a probability of $\\dfrac{1}{500}$ means 1 winning ticket and 499 losing tickets, so the odds in favour are 1 : 499.',
     wrong: ['The claim is true: odds and probability mean the same thing.', 'The claim is false: the odds in favour are 500 : 1.', 'The claim is false: the odds in favour are 499 : 1.'],
     why: 'Odds compare favourable with unfavourable outcomes. With 1 winner in 500, there are 499 losers, so the odds in favour are 1 : 499 and the odds against are 499 : 1.',
   },
   {
-    claim: (name) => `The forecast for Jasper gave a 70% probability of rain on Saturday, and it did not rain. ${name} says the forecast was wrong.`,
+    claim: (name) => `The forecast for Pinewood gave a 70% probability of rain on Saturday, and it did not rain. ${name} says the forecast was wrong.`,
     correct: 'The claim is not justified: a 70% chance means rain on about 7 of every 10 days with this forecast, so a dry day can still happen.',
     wrong: ['The claim is true: a 70% chance means it will definitely rain.', 'The claim is true: it should have rained for 70% of the day.', 'The claim is true: any probability over 50% means the event will happen.'],
     why: 'A probability describes what happens in the long run. On about 3 of every 10 days with a 70% forecast, it stays dry.',
   },
   {
-    claim: (name) => `${name} tested 5 batteries from a shipment of 2,000 at a warehouse in Nisku, and 1 was dead. ${name} says exactly 400 batteries in the shipment must be dead.`,
+    claim: (name) => `${name} tested 5 batteries from a shipment of 2,000 at a warehouse, and 1 was dead. ${name} says exactly 400 batteries in the shipment must be dead.`,
     correct: 'The claim is too strong: $\\dfrac{1}{5}$ comes from a very small sample, so 400 is only a rough estimate, and the true number could be quite different.',
     wrong: ['The claim is true: $\\dfrac{1}{5}$ of 2,000 is exactly 400.', 'The claim is false: only 1 battery in the shipment is dead.', 'The claim is false: probability cannot be used for batteries.'],
     why: 'A probability from 5 tests is an experimental estimate. A larger sample gives a better estimate, and even then the expected number is not exact.',
   },
   {
-    claim: (name) => `${name} says the probability that tomorrow’s high in Calgary in January will be above 25°C is $\\dfrac{1}{2}$, because it either will be or it will not.`,
+    claim: (name) => `${name} says the probability that tomorrow’s high in a cold northern town in midwinter will be above 25°C is $\\dfrac{1}{2}$, because it either will be or it will not.`,
     correct: 'The claim is false: the two outcomes are not equally likely, so the probability is not $\\dfrac{1}{2}$ (it is close to 0).',
     wrong: ['The claim is true: there are two outcomes, so each has probability $\\dfrac{1}{2}$.', 'The claim is false: the probability is $\\dfrac{1}{3}$.', 'The claim is true: weather is random, so every outcome is equally likely.'],
-    why: 'Counting outcomes only gives a probability when the outcomes are equally likely. A January high above 25°C in Calgary is very unlikely.',
+    why: 'Counting outcomes only gives a probability when the outcomes are equally likely. A midwinter high above 25°C in a cold northern town is very unlikely.',
   },
   {
-    claim: (name) => `A die is rolled 60 times at a games night in Okotoks. ${name} says there will be exactly 10 sixes, because the probability of a six is $\\dfrac{1}{6}$.`,
+    claim: (name) => `A die is rolled 60 times at a games night. ${name} says there will be exactly 10 sixes, because the probability of a six is $\\dfrac{1}{6}$.`,
     correct: 'The claim is too strong: about 10 sixes is expected, but the actual number will vary, so exactly 10 is not guaranteed.',
     wrong: ['The claim is true: $\\dfrac{1}{6} \\times 60 = 10$, so there will be exactly 10 sixes.', 'The claim is false: you would expect 6 sixes.', 'The claim is false: you would expect 60 sixes.'],
     why: 'Expected number = probability × trials gives $\\dfrac{1}{6} \\times 60 = 10$ sixes on average, but each set of 60 rolls gives a slightly different result.',
@@ -339,9 +339,9 @@ function describe(rng: Rng, style: 'count' | 'oneIn' | 'oddsAgainst' | 'oddsFor'
 function compareChances(rng: Rng): Out {
   const name = rng.pick(NAMES);
   const ctx = rng.pick([
-    { what: 'two raffles at a hockey fundraiser in Sylvan Lake', A: 'Raffle A', B: 'Raffle B' },
-    { what: 'two draws at a trade show in Edmonton', A: 'Draw A', B: 'Draw B' },
-    { what: 'two fundraising raffles for a rodeo in Medicine Hat', A: 'Raffle A', B: 'Raffle B' },
+    { what: 'two raffles at a hockey fundraiser', A: 'Raffle A', B: 'Raffle B' },
+    { what: 'two draws at a trade show', A: 'Draw A', B: 'Draw B' },
+    { what: 'two fundraising raffles for a town rodeo', A: 'Raffle A', B: 'Raffle B' },
   ]);
   const o = retry(
     () => {
@@ -373,11 +373,11 @@ function compareChances(rng: Rng): Out {
 /** Odds are stated as big : small, either against a rare problem or in favour of the usual outcome. */
 interface OddsExp { text: (o: string, n: string) => string; ask: string; unit: string; stated: 'for' | 'against'; usual: string; rare: string; askUsual: boolean }
 const ODDS_EXP: OddsExp[] = [
-  { text: (o, n) => `A supplier in Acheson says the odds against one of its bolts being defective are ${o}. A contractor orders ${n} bolts.`, ask: 'How many defective bolts should the contractor expect?', unit: 'bolts', stated: 'against', usual: 'good bolts', rare: 'defective bolts', askUsual: false },
-  { text: (o, n) => `On a ranch near Hanna, the odds in favour of a calving going without any trouble are ${o}. This spring, ${n} cows will calve.`, ask: 'How many calvings should the rancher expect to need help?', unit: 'calvings', stated: 'for', usual: 'calvings without trouble', rare: 'calvings that need help', askUsual: false },
-  { text: (o, n) => `At a bottling plant in Lethbridge, the odds against a bottle being underfilled are ${o}. The plant fills ${n} bottles in a shift.`, ask: 'How many underfilled bottles should the plant expect in a shift?', unit: 'bottles', stated: 'against', usual: 'full bottles', rare: 'underfilled bottles', askUsual: false },
-  { text: (o, n) => `A greenhouse in Brooks finds that the odds in favour of a tomato seedling surviving transplanting are ${o}. The crew transplants ${n} seedlings.`, ask: 'How many seedlings should the crew expect to survive?', unit: 'seedlings', stated: 'for', usual: 'seedlings that survive', rare: 'seedlings that die', askUsual: true },
-  { text: (o, n) => `A courier company in Calgary says the odds against a parcel being delivered late are ${o}. It delivers ${n} parcels this week.`, ask: 'How many parcels should the company expect to be delivered on time?', unit: 'parcels', stated: 'against', usual: 'parcels on time', rare: 'late parcels', askUsual: true },
+  { text: (o, n) => `A fastener supplier says the odds against one of its bolts being defective are ${o}. A contractor orders ${n} bolts.`, ask: 'How many defective bolts should the contractor expect?', unit: 'bolts', stated: 'against', usual: 'good bolts', rare: 'defective bolts', askUsual: false },
+  { text: (o, n) => `On a cattle ranch, the odds in favour of a calving going without any trouble are ${o}. This spring, ${n} cows will calve.`, ask: 'How many calvings should the rancher expect to need help?', unit: 'calvings', stated: 'for', usual: 'calvings without trouble', rare: 'calvings that need help', askUsual: false },
+  { text: (o, n) => `At a bottling plant, the odds against a bottle being underfilled are ${o}. The plant fills ${n} bottles in a shift.`, ask: 'How many underfilled bottles should the plant expect in a shift?', unit: 'bottles', stated: 'against', usual: 'full bottles', rare: 'underfilled bottles', askUsual: false },
+  { text: (o, n) => `A market-garden greenhouse finds that the odds in favour of a tomato seedling surviving transplanting are ${o}. The crew transplants ${n} seedlings.`, ask: 'How many seedlings should the crew expect to survive?', unit: 'seedlings', stated: 'for', usual: 'seedlings that survive', rare: 'seedlings that die', askUsual: true },
+  { text: (o, n) => `A courier company says the odds against a parcel being delivered late are ${o}. It delivers ${n} parcels this week.`, ask: 'How many parcels should the company expect to be delivered on time?', unit: 'parcels', stated: 'against', usual: 'parcels on time', rare: 'late parcels', askUsual: true },
 ];
 
 function oddsExpected(rng: Rng): Out {
@@ -465,9 +465,9 @@ function simpleGame(rng: Rng, exclude: string[] = []): Simple {
 interface TwoPct { text: (p: number, q: number, town: string) => string; ev: string; ps: number[]; qs: number[] }
 const TWO_PCT: TwoPct[] = [
   { text: (p, q, town) => `The forecast for ${town} gives a ${p}% probability of rain on Saturday and a ${q}% probability of rain on Sunday. Assume the two days are independent.`, ev: 'it rains on both days', ps: [10, 20, 30, 40, 50, 60, 70, 80], qs: [10, 20, 30, 40, 50, 60, 70] },
-  { text: (p, q) => `At a plant in Leduc, ${p}% of the parts from machine A and ${q}% of the parts from machine B are defective. The machines work independently. One part from each machine is checked.`, ev: 'both parts are defective', ps: [2, 4, 5, 6, 10], qs: [2, 3, 5, 8, 10] },
-  { text: (p, q) => `A trucker hauling grain to an elevator near Taber crosses two railway lines. The gates at the first crossing are down ${p}% of the time and the gates at the second are down ${q}% of the time, independently.`, ev: 'the gates are down at both crossings', ps: [10, 15, 20, 25, 30], qs: [10, 20, 30, 40] },
-  { text: (p, q) => `On a canola farm near Camrose, the probability that a field is hit by hail this summer is ${p}%, and the probability that canola prices rise this fall is ${q}%. Assume these events are independent.`, ev: 'the field is hit by hail and prices rise', ps: [5, 10, 15, 20], qs: [30, 40, 50, 60] },
+  { text: (p, q) => `At a manufacturing plant, ${p}% of the parts from machine A and ${q}% of the parts from machine B are defective. The machines work independently. One part from each machine is checked.`, ev: 'both parts are defective', ps: [2, 4, 5, 6, 10], qs: [2, 3, 5, 8, 10] },
+  { text: (p, q) => `A trucker hauling grain to an elevator crosses two railway lines. The gates at the first crossing are down ${p}% of the time and the gates at the second are down ${q}% of the time, independently.`, ev: 'the gates are down at both crossings', ps: [10, 15, 20, 25, 30], qs: [10, 20, 30, 40] },
+  { text: (p, q) => `On a canola farm, the probability that a field is hit by hail this summer is ${p}%, and the probability that canola prices rise this fall is ${q}%. Assume these events are independent.`, ev: 'the field is hit by hail and prices rise', ps: [5, 10, 15, 20], qs: [30, 40, 50, 60] },
 ];
 
 function independentAnd(rng: Rng): Out {
@@ -477,7 +477,7 @@ function independentAnd(rng: Rng): Out {
     const B = simpleGame(rng, [A.kind]);
     const f = frac(A.f.n * B.f.n, A.f.d * B.f.d);
     return {
-      prompt: `In a game at a summer fair in Stony Plain, ${name} will ${A.act} and ${B.act}. ${name} wins a prize for ${A.win} and ${B.win}. What is the probability that ${name} wins? Write it as a fraction in lowest terms.`,
+      prompt: `In a game at a summer fair, ${name} will ${A.act} and ${B.act}. ${name} wins a prize for ${A.win} and ${B.win}. What is the probability that ${name} wins? Write it as a fraction in lowest terms.`,
       figure: A.figure ?? B.figure,
       parts: [fracPart(f)],
       hints: ['One result does not change the chances of the other, so the events are independent.', 'For independent events, $P(A \\text{ and } B) = P(A) \\times P(B)$.'],
@@ -509,22 +509,22 @@ interface Cat { label: string; short: string; lo: number; hi: number }
 interface Bin { text: (counts: string) => string; cats: Cat[]; ask: (a: string, b: string) => string }
 const BINS: Bin[] = [
   {
-    text: (c) => `A parts bin in a shop in Wainwright holds ${c}. An apprentice reaches in and takes one washer without looking.`,
+    text: (c) => `A parts bin in a repair shop holds ${c}. An apprentice reaches in and takes one washer without looking.`,
     cats: [{ label: 'zinc washers', short: 'zinc', lo: 10, hi: 30 }, { label: 'stainless steel washers', short: 'stainless steel', lo: 5, hi: 20 }, { label: 'brass washers', short: 'brass', lo: 4, hi: 15 }, { label: 'nylon washers', short: 'nylon', lo: 3, hi: 12 }],
     ask: (a, b) => `the washer is ${a} or ${b}`,
   },
   {
-    text: (c) => `A drawer in a farm workshop near Vegreville holds ${c}. The farmer grabs one fuse in the dark.`,
+    text: (c) => `A drawer in a farm workshop holds ${c}. The farmer grabs one fuse in the dark.`,
     cats: [{ label: 'fuses rated 10 A', short: '10 A', lo: 4, hi: 15 }, { label: 'fuses rated 15 A', short: '15 A', lo: 5, hi: 18 }, { label: 'fuses rated 20 A', short: '20 A', lo: 3, hi: 12 }, { label: 'fuses rated 30 A', short: '30 A', lo: 2, hi: 10 }],
     ask: (a, b) => `the fuse is rated ${a} or ${b}`,
   },
   {
-    text: (c) => `A bag of seed packets at a garden centre in St. Albert holds ${c}. A customer picks one packet at random as a free sample.`,
+    text: (c) => `A bag of seed packets at a garden centre holds ${c}. A customer picks one packet at random as a free sample.`,
     cats: [{ label: 'carrot packets', short: 'carrot', lo: 8, hi: 20 }, { label: 'bean packets', short: 'bean', lo: 5, hi: 15 }, { label: 'pea packets', short: 'pea', lo: 5, hi: 15 }, { label: 'lettuce packets', short: 'lettuce', lo: 3, hi: 12 }],
     ask: (a, b) => `the packet is ${a} or ${b} seeds`,
   },
   {
-    text: (c) => `The staff parking lot at a gas plant near Caroline has ${c}. One vehicle is chosen at random for a free oil change.`,
+    text: (c) => `The staff parking lot at a gas plant has ${c}. One vehicle is chosen at random for a free oil change.`,
     cats: [{ label: 'pickup trucks', short: 'a pickup truck', lo: 20, hi: 45 }, { label: 'SUVs', short: 'an SUV', lo: 8, hi: 25 }, { label: 'cars', short: 'a car', lo: 5, hi: 20 }, { label: 'vans', short: 'a van', lo: 2, hi: 8 }],
     ask: (a, b) => `the vehicle is ${a} or ${b}`,
   },
@@ -558,11 +558,11 @@ function exclusiveOr(rng: Rng): Out {
 
 interface Draw { text: (n: number, k: number, name: string) => string; both: (name: string) => string; pick: string; ns: number[]; k: (n: number) => [number, number]; raffle?: boolean }
 const DRAWS: Draw[] = [
-  { text: (n, k) => `A box of ${n} fuses in an electrician’s van in Edmonton contains ${k} blown fuses that were put back by mistake.`, both: () => 'both fuses are blown', pick: 'The electrician takes two fuses from the box', ns: [10, 12, 15, 20, 24], k: (n) => [2, Math.floor(n / 3)] },
-  { text: (n, k) => `A framing crew in Airdrie has ${n} workers, and ${k} of them are apprentices.`, both: () => 'both workers are apprentices', pick: 'The supervisor picks two workers at random for a job across town', ns: [8, 9, 10, 12, 14], k: (n) => [2, Math.floor(n / 2)] },
-  { text: (n, k, name) => `A minor hockey team in Lacombe sold ${n} tickets for a draw with two prizes, and ${name} bought ${k} of them.`, both: (name) => `${name} wins both prizes`, pick: 'Two tickets are drawn', ns: [40, 50, 60, 80, 100], k: () => [2, 6], raffle: true },
+  { text: (n, k) => `A box of ${n} fuses in an electrician’s van contains ${k} blown fuses that were put back by mistake.`, both: () => 'both fuses are blown', pick: 'The electrician takes two fuses from the box', ns: [10, 12, 15, 20, 24], k: (n) => [2, Math.floor(n / 3)] },
+  { text: (n, k) => `A framing crew has ${n} workers, and ${k} of them are apprentices.`, both: () => 'both workers are apprentices', pick: 'The supervisor picks two workers at random for a job across town', ns: [8, 9, 10, 12, 14], k: (n) => [2, Math.floor(n / 2)] },
+  { text: (n, k, name) => `A minor hockey team sold ${n} tickets for a draw with two prizes, and ${name} bought ${k} of them.`, both: (name) => `${name} wins both prizes`, pick: 'Two tickets are drawn', ns: [40, 50, 60, 80, 100], k: () => [2, 6], raffle: true },
   { text: (n, k) => `A tray in a farm shop holds ${n} sockets that look alike, and ${k} of them are metric.`, both: () => 'both sockets are metric', pick: 'A mechanic picks two sockets at random', ns: [10, 12, 15, 16, 20], k: (n) => [2, n - 2] },
-  { text: (n, k) => `A flat of ${n} eggs from a farm near Barrhead has ${k} cracked eggs.`, both: () => 'both eggs are cracked', pick: 'A cook takes two eggs at random', ns: [12, 18, 30], k: (n) => [2, Math.floor(n / 4)] },
+  { text: (n, k) => `A flat of ${n} eggs from a family farm has ${k} cracked eggs.`, both: () => 'both eggs are cracked', pick: 'A cook takes two eggs at random', ns: [12, 18, 30], k: (n) => [2, Math.floor(n / 4)] },
 ];
 
 function dependentAnd(rng: Rng): Out {
@@ -598,9 +598,9 @@ function dependentAnd(rng: Rng): Out {
 
 interface Three { text: (ps: number[]) => string; ev: string; one: string; ps: number[] }
 const THREES: Three[] = [
-  { text: (ps) => `A crew in Hinton has a three-day pipeline job over a long weekend. The forecast gives the probability of rain as ${ps[0]}% on Saturday, ${ps[1]}% on Sunday and ${ps[2]}% on Monday. Assume the days are independent.`, ev: 'it stays dry on all three days', one: 'dry', ps: [10, 20, 30, 40, 50, 60] },
-  { text: (ps) => `A delivery driver in Red Deer passes three traffic lights that work independently. The probability of a red light is ${ps[0]}% at the first, ${ps[1]}% at the second and ${ps[2]}% at the third.`, ev: 'the driver gets through all three lights without a red', one: 'not red', ps: [20, 30, 40, 50, 60] },
-  { text: (ps) => `An assembly line in Edmonton has three machines that each can jam, independently. On a given shift, machine A jams with probability ${ps[0]}%, machine B with probability ${ps[1]}% and machine C with probability ${ps[2]}%.`, ev: 'none of the three machines jams during the shift', one: 'no jam', ps: [5, 10, 15, 20, 25] },
+  { text: (ps) => `A crew has a three-day pipeline job over a long weekend. The forecast gives the probability of rain as ${ps[0]}% on Saturday, ${ps[1]}% on Sunday and ${ps[2]}% on Monday. Assume the days are independent.`, ev: 'it stays dry on all three days', one: 'dry', ps: [10, 20, 30, 40, 50, 60] },
+  { text: (ps) => `A delivery driver passes three traffic lights that work independently. The probability of a red light is ${ps[0]}% at the first, ${ps[1]}% at the second and ${ps[2]}% at the third.`, ev: 'the driver gets through all three lights without a red', one: 'not red', ps: [20, 30, 40, 50, 60] },
+  { text: (ps) => `An assembly line has three machines that each can jam, independently. On a given shift, machine A jams with probability ${ps[0]}%, machine B with probability ${ps[1]}% and machine C with probability ${ps[2]}%.`, ev: 'none of the three machines jams during the shift', one: 'no jam', ps: [5, 10, 15, 20, 25] },
 ];
 
 function threeIndependent(rng: Rng): Out {
@@ -623,10 +623,10 @@ function threeIndependent(rng: Rng): Out {
 
 function qualityControl(rng: Rng): Out {
   const ctx = rng.pick([
-    { text: (p: number, m: number) => `A plant in Nisku makes pipe fittings, and ${p}% of the fittings are defective. An inspector picks ${m} fittings at random from a large batch.`, item: 'fittings', bad: 'defective' },
-    { text: (p: number, m: number) => `Records at a tire shop in Red Deer show that ${p}% of the used tires taken in trade have a hidden puncture. The shop checks ${m} tires taken in trade from different customers.`, item: 'tires', bad: 'punctured' },
-    { text: (p: number, m: number) => `A bakery in Camrose finds that ${p}% of its loaves come out underweight. An inspector weighs ${m} loaves chosen at random from a large batch.`, item: 'loaves', bad: 'underweight' },
-    { text: (p: number, m: number) => `A seed cleaning plant near Westlock finds that ${p}% of the seed bags it tests are below the germination standard. A buyer tests ${m} bags chosen at random from a large lot.`, item: 'bags', bad: 'below the standard' },
+    { text: (p: number, m: number) => `A plant makes pipe fittings, and ${p}% of the fittings are defective. An inspector picks ${m} fittings at random from a large batch.`, item: 'fittings', bad: 'defective' },
+    { text: (p: number, m: number) => `Records at a tire shop show that ${p}% of the used tires taken in trade have a hidden puncture. The shop checks ${m} tires taken in trade from different customers.`, item: 'tires', bad: 'punctured' },
+    { text: (p: number, m: number) => `A bakery finds that ${p}% of its loaves come out underweight. An inspector weighs ${m} loaves chosen at random from a large batch.`, item: 'loaves', bad: 'underweight' },
+    { text: (p: number, m: number) => `A seed cleaning plant finds that ${p}% of the seed bags it tests are below the germination standard. A buyer tests ${m} bags chosen at random from a large lot.`, item: 'bags', bad: 'below the standard' },
   ]);
   const p = rng.pick([2, 3, 4, 5, 6, 8, 10, 12, 15]);
   const m = rng.pick([2, 3, 3, 4]);
@@ -657,8 +657,8 @@ function matchingPair(rng: Rng): Out {
   const name = rng.pick(NAMES);
   const ctx = rng.pick([
     { text: (a: number, b: number) => `${name} has ${a} black and ${b} grey work socks loose in a drawer. In the dark before a 5 a.m. shift, ${name} pulls out two socks.`, A: 'black', B: 'grey', ev: 'the two socks match (both black or both grey)' },
-    { text: (a: number, b: number) => `A bucket at a job site in Okotoks holds ${a} long screws and ${b} short screws that look alike from above. A carpenter grabs two screws.`, A: 'long', B: 'short', ev: 'both screws are the same length' },
-    { text: (a: number, b: number) => `A cooler at a ball tournament in Vulcan holds ${a} cans of iced tea and ${b} cans of lemonade. ${name} grabs two cans without looking.`, A: 'iced tea', B: 'lemonade', ev: 'both cans are the same drink' },
+    { text: (a: number, b: number) => `A bucket at a job site holds ${a} long screws and ${b} short screws that look alike from above. A carpenter grabs two screws.`, A: 'long', B: 'short', ev: 'both screws are the same length' },
+    { text: (a: number, b: number) => `A cooler at a ball tournament holds ${a} cans of iced tea and ${b} cans of lemonade. ${name} grabs two cans without looking.`, A: 'iced tea', B: 'lemonade', ev: 'both cans are the same drink' },
   ]);
   const a = rng.int(3, 9);
   const b = rng.int(2, 8);
@@ -736,7 +736,7 @@ function weekendRain(rng: Rng): Out {
 
 function rafflePrizes(rng: Rng): Out {
   const name = rng.pick(NAMES);
-  const org = rng.pick(['A volunteer fire department in Bonnyville', 'A 4-H club in Ponoka', 'A minor hockey association in High River', 'A seniors’ centre in Vermilion']);
+  const org = rng.pick(['A volunteer fire department in a lakeside town', 'A 4-H club in a farming community', 'A minor hockey association in a small town', 'A seniors’ centre in a prairie village']);
   const n = rng.pick([50, 60, 80, 100, 120, 150, 200]);
   const k = rng.int(2, 6);
   const kind = rng.pick(['atLeast', 'firstOnly'] as const);

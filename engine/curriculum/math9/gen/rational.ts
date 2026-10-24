@@ -16,7 +16,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi', 'Mathieu', 'Leila',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat', 'Peace River', 'Cold Lake', 'Jasper', 'Banff', 'High Level'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Northfield', 'Elmwood'];
 
 const T = '\\times';
 const DV = '\\div';
@@ -596,7 +596,7 @@ function accountBalance(rng: Rng): Out {
 }
 
 function waterLevel(rng: Rng): Out {
-  const pond = rng.pick(['a pond on a farm near Lethbridge', 'a dugout on a ranch near Medicine Hat', 'a slough near Red Deer', 'a backyard rain barrel']);
+  const pond = rng.pick(['a pond on a farm', 'a small reservoir on a cattle ranch', 'a marsh at the edge of town', 'a backyard rain barrel']);
   const unit = pond.includes('barrel') ? 'cm' : 'm';
   const months = ['June', 'July', 'August'];
   const cs = retry(
@@ -811,7 +811,7 @@ function shareDebt(rng: Rng): Out {
   const k = rng.int(3, 5);
   const each = rng.int(1200, 4800) / 100;
   const total = clean(each * k);
-  const reason = rng.pick(['a pizza order for a group project', 'renting a campsite at Sylvan Lake', 'tickets to an Oilers game', 'supplies for a school dance']);
+  const reason = rng.pick(['a pizza order for a group project', 'renting a campsite at a lake', 'tickets to a hockey game', 'supplies for a school dance']);
   return {
     prompt: `${names[0]}, ${names[1]} and ${k === 3 ? names[2] : `${k - 2} other friends`} owe a total of ${money(total)} for ${reason}. They split the cost equally. Write the change in each person's money as a rational number. Give your answer to the nearest cent.`,
     parts: [moneyPart(-each)],

@@ -1148,7 +1148,7 @@ function bacteria(rng: Rng): Out {
   );
   const hours = (t * n) / 60;
   const v = n0 * 2 ** n;
-  const where = rng.pick(['A science class grows', 'A lab in Edmonton grows', 'A food-safety inspector tests', 'A biology student grows']);
+  const where = rng.pick(['A science class grows', 'A hospital lab grows', 'A food-safety inspector tests', 'A biology student grows']);
   return {
     prompt: `${where} a sample of bacteria that starts with $${n0}$ ${n0 === 1 ? 'cell' : 'cells'}. The number of cells doubles every $${t}$ minutes. How many cells are there after $${hours}$ ${hours === 1 ? 'hour' : 'hours'}?`,
     parts: [val(v, undefined, 'cells')],
@@ -1166,7 +1166,7 @@ function sharing(rng: Rng): Out {
   const name = rng.pick(NAMES);
   const k = rng.pick([2, 3, 4, 5]);
   const n = retry(() => rng.int(3, 8), (x) => k ** x <= 100000);
-  const what = rng.pick(['a funny video of a dog', 'a story about a school fundraiser', 'a photo of a northern lights display', 'a post about a lost cat in Red Deer', 'a highlight of a hockey goal']);
+  const what = rng.pick(['a funny video of a dog', 'a story about a school fundraiser', 'a photo of a northern lights display', 'a post about a lost cat in the neighbourhood', 'a highlight of a hockey goal']);
   return {
     prompt: `${name} shares ${what} online with $${k}$ friends. In the next round, each of those friends shares it with $${k}$ new people, and so on. In round $1$, $${k}$ people see it, and in round $2$, $${k}^{2} = ${k * k}$ new people see it. How many new people see it in round $${n}$?`,
     parts: [val(k ** n, undefined, 'people')],

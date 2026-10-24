@@ -12,8 +12,8 @@ const PEOPLE = [
   'Amara', 'Jordan', 'Priya', 'Liam', 'Mei', 'Tyler', 'Kiran', 'Noah', 'Aisha', 'Dakota', 'Mateo', 'Sofia', 'Raj', 'Hamid', 'Jasmine',
   'Owen', 'Nadia', 'Wyatt', 'Simran', 'Kai', 'Fatima', 'Lucas', 'Thanh', 'Chloé', 'Darius', 'Leilani', 'Marie-Ève', 'Arjun', 'Rosalie', 'Tanvir',
 ];
-const TOWNS = ['Olds', 'Lacombe', 'Camrose', 'Brooks', 'Vegreville', 'Okotoks', 'Strathmore', 'Cochrane', 'Wetaskiwin', 'Drumheller', 'Hinton', 'Taber'];
-const LAKES = ['Sylvan Lake', 'Pigeon Lake', 'Lac La Biche', 'Gull Lake', 'Lake Newell', 'Cold Lake', 'Wabamun Lake'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Oakdale'];
+const LAKES = ['Stonebridge Lake', 'Lake Ashford', 'Clearwater Lake', 'Pinewood Lake', 'Brookfield Lake', 'Lake Westbury', 'Hillcrest Lake'];
 
 const TRI_NAMES: Array<[string, string, string]> = [
   ['A', 'B', 'C'],
@@ -1889,7 +1889,7 @@ function cosineSideContext(rng: Rng): GenOutput {
     const { v1, v2, time, b1, b2, sameNorth, angle, d1, d2, dist } = data;
     const dir2 = sameNorth ? `$${deg(b2)}$ west of north` : `$${deg(b2)}$ east of south`;
     return {
-      prompt: `Two planes leave the Edmonton airport at the same time. One flies at ${v1} km/h on a heading $${deg(b1)}$ east of north. The other flies at ${v2} km/h on a heading ${dir2}. Assuming straight, level flight at constant speed, how far apart are the planes after ${fmt(time)} h, to the nearest kilometre?`,
+      prompt: `Two planes leave a city airport at the same time. One flies at ${v1} km/h on a heading $${deg(b1)}$ east of north. The other flies at ${v2} km/h on a heading ${dir2}. Assuming straight, level flight at constant speed, how far apart are the planes after ${fmt(time)} h, to the nearest kilometre?`,
       parts: [numPart(dist, { decimals: 0, suffix: 'km', label: 'Distance' })],
       hints: [
         `Find each distance with distance = speed × time. Then sketch both headings from north to find the angle between the paths.`,

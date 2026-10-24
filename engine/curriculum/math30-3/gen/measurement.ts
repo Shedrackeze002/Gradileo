@@ -669,7 +669,7 @@ const TOL: TolCtx[] = [
     five: 'measures five spools',
   },
   {
-    story: (w, n, t) => `At ${w}'s bakery in Red Deer, each loaf of bread must have a mass of ${n} $\\pm$ ${t}.`,
+    story: (w, n, t) => `At ${w}'s bakery, each loaf of bread must have a mass of ${n} $\\pm$ ${t}.`,
     u: 'g',
     nom: [450, 900, 0],
     tols: [5, 10, 15, 20],
@@ -702,7 +702,7 @@ const TOL: TolCtx[] = [
     mult: 0.05,
   },
   {
-    story: (w, n, t) => `${w} is a welder on a pipeline near Grande Prairie. Each pipe end is bevelled at ${n} $\\pm$ ${t}.`,
+    story: (w, n, t) => `${w} is a welder on a pipeline crew. Each pipe end is bevelled at ${n} $\\pm$ ${t}.`,
     u: '°',
     nom: [30, 38, 1],
     tols: [2.5, 2, 1.5],
@@ -713,7 +713,7 @@ const TOL: TolCtx[] = [
     mult: 2.5,
   },
   {
-    story: (w, n, t) => `${w} is calibrating a seed drill on a farm near Vegreville. Seeds must be placed at a depth of ${n} $\\pm$ ${t}.`,
+    story: (w, n, t) => `${w} is calibrating a seed drill on a grain farm. Seeds must be placed at a depth of ${n} $\\pm$ ${t}.`,
     u: 'cm',
     nom: [2, 5, 1],
     tols: [0.5, 0.6, 0.4],
@@ -871,9 +871,9 @@ function percentTol(rng: Rng): GenOutput {
   const who = rng.pick(NAMES);
   const ctx = rng.pick([
     { s: (n: string, p: string) => `${who} is an electrician. A resistor is rated at ${n} with a tolerance of $\\pm${p}\\%$.`, u: 'Ω', ns: [220, 330, 470, 560, 680, 820, 1200, 1500, 2200], ps: [5, 10] },
-    { s: (n: string, p: string) => `${who} sprays a canola field near Lacombe. The sprayer should apply ${n} of mix per hectare, $\\pm${p}\\%$.`, u: 'L', ns: [60, 80, 90, 100, 120, 140], ps: [5, 10, 15] },
+    { s: (n: string, p: string) => `${who} sprays a canola field. The sprayer should apply ${n} of mix per hectare, $\\pm${p}\\%$.`, u: 'L', ns: [60, 80, 90, 100, 120, 140], ps: [5, 10, 15] },
     { s: (n: string, p: string) => `${who} runs a packaging line. Each bag of flour should hold ${n}, $\\pm${p}\\%$.`, u: 'g', ns: [500, 1000, 2500, 4000, 10000], ps: [1, 2, 0.5] },
-    { s: (n: string, p: string) => `${who} checks truck tires at a shop in Medicine Hat. The pressure should be ${n} $\\pm${p}\\%$.`, u: 'kPa', ns: [240, 450, 550, 620, 760], ps: [5, 10] },
+    { s: (n: string, p: string) => `${who} checks truck tires at a tire shop. The pressure should be ${n} $\\pm${p}\\%$.`, u: 'kPa', ns: [240, 450, 550, 620, 760], ps: [5, 10] },
   ]);
   const n = rng.pick(ctx.ns);
   const p = rng.pick(ctx.ps);

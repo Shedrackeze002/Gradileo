@@ -74,18 +74,18 @@ function clipY(pts: Pt[], g: GridSpec): Pt[] {
 // ---------------------------------------------------------------------------
 
 const TABLE_CONTEXTS = [
-  { what: 'The temperature in Lethbridge', q: 'Temperature (°C)', t: 'Hours after 6:00 a.m.', unit: '°C/h', start: [-8, -2, 4, 10], step: [1, 2], inc: [-1, 4], word: 'temperature', span: (a: number, b: number) => `from ${a} to ${b} hours after 6:00 a.m.`, t0: 0 },
-  { what: 'The distance a cyclist has travelled on the Legacy Trail near Canmore', q: 'Distance (km)', t: 'Time (h)', unit: 'km/h', start: [0], step: [1], inc: [12, 26], word: 'distance', span: (a: number, b: number) => `from $t = ${a}$ h to $t = ${b}$ h`, t0: 0 },
+  { what: 'The temperature in Ashford', q: 'Temperature (°C)', t: 'Hours after 6:00 a.m.', unit: '°C/h', start: [-8, -2, 4, 10], step: [1, 2], inc: [-1, 4], word: 'temperature', span: (a: number, b: number) => `from ${a} to ${b} hours after 6:00 a.m.`, t0: 0 },
+  { what: 'The distance a cyclist has travelled on a valley bike trail', q: 'Distance (km)', t: 'Time (h)', unit: 'km/h', start: [0], step: [1], inc: [12, 26], word: 'distance', span: (a: number, b: number) => `from $t = ${a}$ h to $t = ${b}$ h`, t0: 0 },
   { what: 'The volume of water in a rain barrel', q: 'Volume (L)', t: 'Time (min)', unit: 'L/min', start: [20, 35, 50], step: [5, 10], inc: [3, 15], word: 'volume', span: (a: number, b: number) => `from $t = ${a}$ min to $t = ${b}$ min`, t0: 0 },
   { what: 'The height of a sunflower', q: 'Height (cm)', t: 'Week', unit: 'cm/week', start: [8, 12, 15], step: [1, 2], inc: [4, 18], word: 'height', span: (a: number, b: number) => `from week ${a} to week ${b}`, t0: 1 },
-  { what: 'The number of downloads of a new app made in Edmonton', q: 'Downloads (thousands)', t: 'Day', unit: 'thousand/day', start: [0, 2, 5], step: [1, 2], inc: [1, 9], word: 'number of downloads', span: (a: number, b: number) => `from day ${a} to day ${b}`, t0: 1 },
+  { what: 'The number of downloads of a new app', q: 'Downloads (thousands)', t: 'Day', unit: 'thousand/day', start: [0, 2, 5], step: [1, 2], inc: [1, 9], word: 'number of downloads', span: (a: number, b: number) => `from day ${a} to day ${b}`, t0: 1 },
 ];
 
 const MODELS = [
   { name: 'h', what: 'A ball is thrown upward. Its height, in metres, after $t$ seconds is', unit: 'm/s', a: -4.9, b: [12, 14.7, 19.6, 24.5], c: [1, 1.5, 2, 0], word: 'average velocity', t: [0, 0.5, 1, 1.5, 2, 2.5] },
   { name: 'V', what: 'Water drains from a tank. The volume, in litres, after $t$ minutes is', unit: 'L/min', a: 0.5, b: [-20, -24, -30], c: [400, 500, 600], word: 'average rate of change of the volume', t: [0, 2, 4, 5, 6, 10] },
   { name: 'P', what: 'The population of a bacteria culture, in thousands, after $t$ hours is', unit: 'thousand per hour', a: 0.3, b: [2, 4, 5], c: [10, 20, 25], word: 'average rate of change of the population', t: [0, 1, 2, 3, 4, 5, 6] },
-  { name: 's', what: 'A car accelerates from a stop sign in Red Deer. The distance it has travelled, in metres, after $t$ seconds is', unit: 'm/s', a: 1.5, b: [0, 2, 3], c: [0], word: 'average velocity', t: [0, 1, 2, 4, 5, 6] },
+  { name: 's', what: 'A car accelerates from a stop sign. The distance it has travelled, in metres, after $t$ seconds is', unit: 'm/s', a: 1.5, b: [0, 2, 3], c: [0], word: 'average velocity', t: [0, 1, 2, 4, 5, 6] },
 ] as const;
 
 const CALC_FNS: Array<{ tex: string; f: (x: number) => number; a: number[] }> = [
@@ -291,7 +291,7 @@ const avgRate = skill({
         const T = (t: number) => T0 + A * Math.exp(-k * t);
         const v = (T(a + 0.01) - T(a)) / 0.01;
         return {
-          prompt: `A cup of tea cools in a kitchen in Grande Prairie. Its temperature, in degrees Celsius, after $t$ minutes is $T(t) = ${T0} + ${A}e^{-${fmt(k)}t}$. Estimate the instantaneous rate of change of the temperature at $t = ${a}$ min by finding the average rate of change from $t = ${a}$ to $t = ${fmt(a + 0.01)}$. Round to the nearest hundredth.`,
+          prompt: `A cup of tea cools in a kitchen. Its temperature, in degrees Celsius, after $t$ minutes is $T(t) = ${T0} + ${A}e^{-${fmt(k)}t}$. Estimate the instantaneous rate of change of the temperature at $t = ${a}$ min by finding the average rate of change from $t = ${a}$ to $t = ${fmt(a + 0.01)}$. Round to the nearest hundredth.`,
           parts: [numPart(v, { decimals: 2, suffix: '°C/min' })],
           hints: ['Average rate of change $= \\dfrac{T(b) - T(a)}{b - a}$. Keep all the decimals until the end.', 'A negative answer means the tea is cooling.'],
           solution: [
@@ -325,7 +325,7 @@ const avgRate = skill({
       const v = 4.9 * (t1 + T);
       const name = rng.pick(NAMES);
       return {
-        prompt: `${name} drops a stone from a bridge over the North Saskatchewan River. The distance it has fallen, in metres, after $t$ seconds is $d(t) = 4.9t^2$. For what time $T$ is the average velocity from $t = ${t1}$ to $t = T$ equal to $${fmt(v, 2)}$ m/s?`,
+        prompt: `${name} drops a stone from a bridge over a river. The distance it has fallen, in metres, after $t$ seconds is $d(t) = 4.9t^2$. For what time $T$ is the average velocity from $t = ${t1}$ to $t = T$ equal to $${fmt(v, 2)}$ m/s?`,
         parts: [numPart(T, { label: '$T =$', suffix: 's', display: 'decimal' })],
         hints: [`Write the average velocity as $\\dfrac{d(T) - d(${t1})}{T - ${t1}}$ and simplify.`, t1 === 0 ? '$\\dfrac{4.9T^2 - 0}{T} = 4.9T$. Set it equal to the given value.' : 'Factor the difference of squares: $4.9(T^2 - 1) = 4.9(T - 1)(T + 1)$.'],
         solution: [
@@ -478,10 +478,10 @@ function nextStep(rng: Rng, stage: 'expand' | 'cancel' | 'root' | 'recip' | 'fin
 
 const INTERP = [
   { f: 'V', desc: 'the volume of water, in litres, in a hot tub $t$ minutes after the drain is opened', qShort: 'the volume', tU: 'min', vU: 'L', rate: 'L/min', rateWords: 'litres per minute', sign: -1, vals: [8, 12, 15, 20, 25], at: [5, 10, 12, 20] },
-  { f: 'P', desc: 'the population of Airdrie $t$ years after 2020', qShort: 'the population', tU: 'years', vU: 'people', rate: 'people/year', rateWords: 'people per year', sign: 1, vals: [850, 1200, 1500, 1800], at: [2, 3, 4, 5] },
+  { f: 'P', desc: 'the population of Lakeside $t$ years after 2020', qShort: 'the population', tU: 'years', vU: 'people', rate: 'people/year', rateWords: 'people per year', sign: 1, vals: [850, 1200, 1500, 1800], at: [2, 3, 4, 5] },
   { f: 'T', desc: 'the temperature, in degrees Celsius, of a cup of coffee $t$ minutes after it is poured', qShort: 'the temperature', tU: 'min', vU: '°C', rate: '°C/min', rateWords: 'degrees Celsius per minute', sign: -1, vals: [1.5, 2, 2.5, 3.2], at: [4, 6, 10, 15] },
   { f: 'h', desc: 'the height, in metres, of a weather balloon $t$ seconds after it is released', qShort: 'the height', tU: 's', vU: 'm', rate: 'm/s', rateWords: 'metres per second', sign: 1, vals: [3.5, 4, 5.2, 6], at: [10, 20, 30, 45] },
-  { f: 'D', desc: 'the depth of snow, in centimetres, at a ski hill near Jasper $t$ hours after a storm begins', qShort: 'the depth', tU: 'h', vU: 'cm', rate: 'cm/h', rateWords: 'centimetres per hour', sign: 1, vals: [1.5, 2, 2.5, 3], at: [2, 3, 5, 6] },
+  { f: 'D', desc: 'the depth of snow, in centimetres, at a mountain ski hill $t$ hours after a storm begins', qShort: 'the depth', tU: 'h', vU: 'cm', rate: 'cm/h', rateWords: 'centimetres per hour', sign: 1, vals: [1.5, 2, 2.5, 3], at: [2, 3, 5, 6] },
   { f: 'A', desc: 'the amount of a medication, in milligrams, in a patient\u2019s bloodstream $t$ hours after a dose', qShort: 'the amount', tU: 'h', vU: 'mg', rate: 'mg/h', rateWords: 'milligrams per hour', sign: -1, vals: [4, 6, 8, 12], at: [2, 3, 4, 6] },
 ] as const;
 

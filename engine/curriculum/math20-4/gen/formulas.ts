@@ -14,7 +14,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Ananya', 'Nathan', 'Lena', 'Diego', 'Harpreet', 'Noor', 'Jasleen', 'Bao',
 ];
-const CITIES = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 
 const num = (x: number, dp = 4) => fmtGroupTex(x, dp);
 const isWhole = (x: number) => Math.abs(x - Math.round(x)) < 1e-9;
@@ -290,7 +290,7 @@ const FORMULA_3: Gen[] = [
   (rng, name) => {
     const C = -rng.int(8, 35);
     const F = roundTo(1.8 * C + 32, 1);
-    const city = rng.pick(['Fort McMurray', 'Grande Prairie', 'Edmonton', 'Red Deer']);
+    const city = rng.pick(['Ashford', 'Clearwater', 'Riverton', 'Brookfield']);
     return {
       prompt: `It is $${degC(C)}$ on a January morning in ${city}. ${name}’s cousin in Montana asks how cold that is in degrees Fahrenheit. Use the formula $F = 1.8C + 32$ to find out.`,
       parts: [exactPart(F, '°F')],

@@ -407,8 +407,8 @@ const FLIGHTS: Flight[] = [
 const BUSINESSES = [
   { who: 'A food truck', item: 'a burrito', xScale: 1, yScale: 100, period: 'daily ' },
   { who: 'The student council', item: 'a school hoodie', xScale: 5, yScale: 100, period: '' },
-  { who: 'A bike rental shop in Canmore', item: 'a day rental', xScale: 5, yScale: 200, period: 'weekly ' },
-  { who: 'A community theatre in Red Deer', item: 'a ticket', xScale: 2, yScale: 200, period: '' },
+  { who: 'A bike rental shop in a mountain town', item: 'a day rental', xScale: 5, yScale: 200, period: 'weekly ' },
+  { who: 'A community theatre', item: 'a ticket', xScale: 2, yScale: 200, period: '' },
   { who: 'A farmers’ market stall', item: 'a jar of honey', xScale: 1, yScale: 50, period: 'weekly ' },
 ];
 
@@ -791,10 +791,10 @@ const quadMaxMin = skill({
         const C = p * n;
         const R = (p + xs) * (n - k * xs);
         const what = rng.pick([
-          { thing: 'tickets to its fall concert', place: 'A high school band in Lethbridge' },
+          { thing: 'tickets to its fall concert', place: 'A high school band' },
           { thing: 'car washes', place: 'A volleyball team' },
-          { thing: 'plates at its pancake breakfast', place: 'A Stampede committee' },
-          { thing: 'passes to its climbing gym', place: 'A climbing gym in Edmonton' },
+          { thing: 'plates at its pancake breakfast', place: 'A rodeo committee' },
+          { thing: 'passes to its climbing gym', place: 'A downtown climbing gym' },
         ]);
         return {
           prompt: `${what.place} sells ${n} ${what.thing} at ${money(p)} each. For each \\$1 increase in price, it expects to sell ${k} fewer. The revenue, $R$ dollars, after $x$ price increases of \\$1 is modelled by $R = ${stdTex(-k, B, C)}$. How many \\$1 increases give the maximum revenue, and what is the maximum revenue?`,
@@ -839,7 +839,7 @@ const quadMaxMin = skill({
       const cmin = 10 * rng.int(8, 40);
       const b = -2 * a * xs;
       const c = a * xs * xs + cmin;
-      const what = rng.pick(['loaves of bread at a bakery', 'jars of salsa at a small factory', 'bags of feed at a mill near Brooks', 'cases of maple syrup at a packing plant']);
+      const what = rng.pick(['loaves of bread at a bakery', 'jars of salsa at a small factory', 'bags of feed at a feed mill', 'cases of maple syrup at a packing plant']);
       return {
         prompt: `The hourly cost, $C$ dollars, of producing $x$ hundred ${what} is modelled by $C = ${stdTex(a, b, c)}$. How many hundred should be produced each hour to make the cost least, and what is the least hourly cost?`,
         parts: [numPart(xs, { label: 'Hundreds produced' }), numPart(cmin, { label: 'Least cost (\\$)' })],
@@ -880,10 +880,10 @@ const quadMaxMin = skill({
       const B = n - k * p;
       const C = p * n;
       const ctx = rng.pick([
-        { who: 'A theatre company in Medicine Hat', what: 'tickets' },
-        { who: 'A ski hill near Jasper', what: 'lift tickets on a weekday' },
+        { who: 'A local theatre company', what: 'tickets' },
+        { who: 'A mountain ski hill', what: 'lift tickets on a weekday' },
         { who: 'A minor hockey association', what: 'raffle tickets' },
-        { who: 'A science centre in Calgary', what: 'admission passes each day' },
+        { who: 'A city science centre', what: 'admission passes each day' },
       ]);
       return {
         prompt: `${ctx.who} sells ${n} ${ctx.what} at ${money(p)} each. A survey suggests that for every \\$1 increase in price, ${k} fewer will be sold. Let $x$ be the number of \\$1 increases. Write an equation for the revenue, then find the price that gives the maximum revenue and the maximum revenue.`,

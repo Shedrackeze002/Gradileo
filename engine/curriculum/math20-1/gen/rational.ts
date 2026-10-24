@@ -1048,8 +1048,8 @@ const rationalApply = skill({
       const ctx = air
         ? { thing: 'a small plane', withC: 'with the wind', against: 'against the wind', speedName: 'airspeed (its speed in still air)', cName: 'wind speed', unit: 'km/h' }
         : rng.pick([
-            { thing: `${who}’s motorboat on the North Saskatchewan River`, withC: 'downstream', against: 'upstream', speedName: 'speed of the boat in still water', cName: 'speed of the current', unit: 'km/h' },
-            { thing: `${who}’s canoe on the Bow River`, withC: 'downstream', against: 'upstream', speedName: 'speed of the canoe in still water', cName: 'speed of the current', unit: 'km/h' },
+            { thing: `${who}’s motorboat on a wide river`, withC: 'downstream', against: 'upstream', speedName: 'speed of the boat in still water', cName: 'speed of the current', unit: 'km/h' },
+            { thing: `${who}’s canoe on a mountain river`, withC: 'downstream', against: 'upstream', speedName: 'speed of the canoe in still water', cName: 'speed of the current', unit: 'km/h' },
           ]);
       const prompt = askV
         ? `In the same amount of time, ${ctx.thing} travels ${fmt(D1)} km ${ctx.withC} and ${fmt(D2)} km ${ctx.against}. The ${ctx.cName} is ${c} km/h. What is the ${ctx.speedName}?`

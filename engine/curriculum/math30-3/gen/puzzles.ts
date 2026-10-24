@@ -683,33 +683,33 @@ const ATTRS: Attr[] = [
     opts: ['electrician', 'plumber', 'carpenter', 'welder'], ordered: false, head: cap, word: (o) => o,
     is: (n, o) => `${n} is the ${o}`, isNot: (n, o) => `${n} is not the ${o}`, neither: (o, a, b) => `The ${o} is neither ${a} nor ${b}`,
     who: (o) => `Who is the ${o}?`, what: (n) => `What is ${n}’s trade?`, choice: (o) => `The ${o}`,
-    setting: 'are the tradespeople on a house-building crew in Airdrie. Each has a different trade.',
+    setting: 'are the tradespeople on a house-building crew. Each has a different trade.',
   },
   {
     opts: ['red', 'white', 'blue', 'grey'], ordered: false, head: (o) => `${cap(o)} truck`, word: (o) => `the ${o} truck`,
     is: (n, o) => `${n} drives the ${o} truck`, isNot: (n, o) => `${n} does not drive the ${o} truck`, neither: (o, a, b) => `Neither ${a} nor ${b} drives the ${o} truck`,
     who: (o) => `Who drives the ${o} truck?`, what: (n) => `Which truck does ${n} drive?`, choice: (o) => `The ${o} truck`,
-    setting: 'each drive one of the company trucks at a landscaping business in Red Deer. Each drives a different truck.',
+    setting: 'each drive one of the company trucks at a landscaping business. Each drives a different truck.',
   },
   {
     opts: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], ordered: true, head: (o) => o.slice(0, 3), word: (o) => o,
     is: (n, o) => `${n} works on ${o}`, isNot: (n, o) => `${n} does not work on ${o}`, neither: (o, a, b) => `Neither ${a} nor ${b} works on ${o}`,
     before: (a, b) => `${a} works earlier in the week than ${b}`, rightAfter: (a, b) => `${a} works the day right after ${b}`,
     who: (o) => `Who works on ${o}?`, what: (n) => `On which day does ${n} work?`, choice: (o) => o,
-    setting: 'each work one day a week at a farm-supply store in Camrose. Each works a different day.',
+    setting: 'each work one day a week at a farm-supply store. Each works a different day.',
   },
   {
     opts: ['6:00 a.m.', '7:00 a.m.', '8:00 a.m.', '9:00 a.m.'], ordered: true, head: (o) => o.replace(':00', ''), word: (o) => o,
     is: (n, o) => `${n}’s shift starts at ${o}`, isNot: (n, o) => `${n}’s shift does not start at ${o}`, neither: (o, a, b) => `Neither ${a}’s nor ${b}’s shift starts at ${o}`,
     before: (a, b) => `${a} starts earlier than ${b}`, rightAfter: (a, b) => `${a} starts one hour after ${b}`,
     who: (o) => `Whose shift starts at ${o}?`, what: (n) => `When does ${n}’s shift start?`, choice: (o) => o,
-    setting: 'work at a bakery in Lethbridge. Their shifts start at different times.',
+    setting: 'work at a bakery. Their shifts start at different times.',
   },
   {
-    opts: ['Okotoks', 'Cochrane', 'Strathmore', 'Chestermere'], ordered: false, head: (o) => o, word: (o) => o,
+    opts: ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest'], ordered: false, head: (o) => o, word: (o) => o,
     is: (n, o) => `${n} is working in ${o}`, isNot: (n, o) => `${n} is not working in ${o}`, neither: (o, a, b) => `Neither ${a} nor ${b} is working in ${o}`,
     who: (o) => `Who is working in ${o}?`, what: (n) => `Where is ${n} working?`, choice: (o) => o,
-    setting: 'are surveyors for a company in Calgary. Today each is working at a different job site.',
+    setting: 'are surveyors for an engineering company. Today each is working at a different job site.',
   },
 ];
 /** A sentence with its final period. */
@@ -1082,7 +1082,7 @@ function riverItem(rng: Rng): Out {
     const label = people.map((nm, i) => `${nm} ($${masses[i]}\\ \\text{kg}$)`);
     const options = [res.count - 2, res.count + 2, res.count + 4].filter((x) => x >= 3);
     return {
-      prompt: `Four workers on a fishing trip near Lac La Biche must cross a lake in a canoe that holds at most $${capKg}\\ \\text{kg}$: ${andList(label)}. The canoe needs at least one person to paddle it. What is the fewest number of crossings (trips in either direction) to get everyone across?`,
+      prompt: `Four workers on a fishing trip up north must cross a lake in a canoe that holds at most $${capKg}\\ \\text{kg}$: ${andList(label)}. The canoe needs at least one person to paddle it. What is the fewest number of crossings (trips in either direction) to get everyone across?`,
       parts: [{ answer: mc(rng, M(res.count), options.map(M)) }],
       hints: ['After each trip across (except the last), someone has to paddle the canoe back.', 'Let the lightest people do the shuttling, and send heavier people across when they cannot ride together.'],
       solution: [

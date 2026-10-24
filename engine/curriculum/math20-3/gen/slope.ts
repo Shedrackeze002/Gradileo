@@ -13,7 +13,7 @@ const NAMES = [
   'Chloé', 'Tariq', 'Olivia', 'Ethan', 'Wei', 'Nadia', 'Darius', 'Talia', 'Malik', 'Simran', 'Jun', 'Isabelle',
   'Kai', 'Zainab', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas', 'Kiona', 'Tyler', 'Gurpreet', 'Noor',
 ];
-const TOWNS = ['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Camrose', 'Brooks', 'Lloydminster', 'Okotoks', 'Fort McMurray', 'Airdrie', 'Leduc', 'Cold Lake', 'Whitecourt', 'Stettler'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Cedar Hills', 'Oakdale', 'Fernbrook'];
 const PLACES = ['the community hall', 'the public library', 'a dental clinic', 'the curling rink', 'a seniors’ centre', 'the hockey arena', 'the post office', 'a medical clinic'];
 
 type Lvl = 1 | 2 | 3;
@@ -444,9 +444,9 @@ function gradeBasic(rng: Rng): GenOutput {
     const s = rng.chance(0.7) ? rng.int(2, 16) / 100 : rng.pick([25, 35, 45, 55, 65, 75, 85, 95]) / 1000;
     const pct = clean(s * 100);
     const [where, short] = rng.pick([
-      ['a section of highway in the Rocky Mountains', 'highway'],
+      ['a section of mountain highway', 'highway'],
       [`a bike path in ${town}`, 'bike path'],
-      ['a hiking trail in Kananaskis Country', 'trail'],
+      ['a hiking trail in the mountains', 'trail'],
       ['an access road to a well site', 'access road'],
       [`a sidewalk in ${town}`, 'sidewalk'],
     ] as const);
@@ -900,7 +900,7 @@ function rocContext(rng: Rng, d: Lvl, name: string, town: string): Roc {
     };
   }
   const v = rng.pick([80, 85, 90, 95, 100, 105]);
-  const city = rng.pick(['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge']);
+  const city = rng.pick(['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest']);
   const xs = d === 1 ? rng.pick([[1, 2, 3, 4], [2, 3, 4, 5], [1, 3, 5, 7]]) : unevenXs(rng, [0.5, 1, 1.5, 2, 2.5, 3, 4, 4.5, 5]);
   return {
     xHead: 'Time (h)',
@@ -1114,7 +1114,7 @@ function graphContext(rng: Rng, name: string, town: string): Gr {
     const b = rng.pick([0, 0, 50, 100]);
     const top = b + 6 * v;
     const yStep = niceStep(top, [50, 100]);
-    const city = rng.pick(['Edmonton', 'Calgary', 'Red Deer']);
+    const city = rng.pick(['Riverton', 'Lakeside', 'Brookfield']);
     return {
       xLabel: 'Time (h)',
       yLabel: `Distance from ${city} (km)`,
@@ -1148,7 +1148,7 @@ function graphContext(rng: Rng, name: string, town: string): Gr {
     yMin,
     yMax: Math.ceil((E0 + 5 * m) / yStep) * yStep,
     yStep,
-    intro: `${name} hikes up a trail in Kananaskis Country. The graph shows ${name}'s elevation above sea level during the climb.`,
+    intro: `${name} hikes up a mountain trail. The graph shows ${name}'s elevation above sea level during the climb.`,
     meaning: `${name} climbs $${qm(m, 'm')}$ higher each hour.`,
     wrongs: [`${name} takes $${m}$ hours to climb $1\\ \\text{m}$.`, `${name} started at an elevation of $${qm(E0, 'm')}$.`, `${name} walks $${qm(m, 'm')}$ along the trail in total.`],
   };
@@ -1289,7 +1289,7 @@ function segmentGraph(rng: Rng): GenOutput {
         yLabel: 'Elevation (m)',
         unit: 'm/h',
         unitWords: 'metres per hour',
-        intro: `${name} hikes up to a lookout in Kananaskis Country, stops for lunch, then starts back down. The graph shows ${name}'s elevation above sea level.`,
+        intro: `${name} hikes up to a mountain lookout, stops for lunch, then starts back down. The graph shows ${name}'s elevation above sea level.`,
         what: `${name}'s elevation`,
       };
     },
@@ -1699,7 +1699,7 @@ function unitBasic(rng: Rng): GenOutput {
     const v = retry(() => rng.pick([25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]), (v) => !onEdge(v * 1.609, 0));
     const k = v * 1.609;
     return {
-      prompt: `${name} is driving a truck across the border into Montana, where speed limit signs are in miles per hour. One sign shows $${v}\\ \\text{mi/h}$. What is that speed in kilometres per hour, ${roundingPhrase(0)}? Use ${F_MI}.`,
+      prompt: `${name} is driving a truck in the United States, where speed limit signs are in miles per hour. One sign shows $${v}\\ \\text{mi/h}$. What is that speed in kilometres per hour, ${roundingPhrase(0)}? Use ${F_MI}.`,
       parts: [numPart(k, { decimals: 0, suffix: 'km/h' })],
       hints: [UA_HINT, 'A mile is longer than a kilometre, so the number of kilometres per hour is bigger. Multiply by $1.609$.'],
       solution: [`$\\dfrac{${v}\\ \\text{mi}}{1\\ \\text{h}} \\times \\dfrac{1.609\\ \\text{km}}{1\\ \\text{mi}}$. The miles cancel.`, `$${v} \\times 1.609 = ${num(k)}$`, `The speed is about $${fmtFixed(k, 0)}\\ \\text{km/h}$.`],
@@ -1738,7 +1738,7 @@ function unitMid(rng: Rng): GenOutput {
   if (mode === 'msToKmh') {
     const v = rng.chance(0.5) ? rng.int(5, 40) : rng.int(55, 395) / 10;
     const k = clean(v * 3.6);
-    const ctx = rng.pick([`The wind at a wind farm near Pincher Creek is blowing at $${num(v)}\\ \\text{m/s}$.`, `A conveyor moves gravel at $${num(v)}\\ \\text{m/s}$.`, `A sprinter runs at $${num(v)}\\ \\text{m/s}$.`]);
+    const ctx = rng.pick([`The wind at a wind farm is blowing at $${num(v)}\\ \\text{m/s}$.`, `A conveyor moves gravel at $${num(v)}\\ \\text{m/s}$.`, `A sprinter runs at $${num(v)}\\ \\text{m/s}$.`]);
     return {
       prompt: `${v > 15 && ctx.includes('sprinter') ? ctx.replace('A sprinter runs', 'A race car travels') : ctx} What is this speed in kilometres per hour? Use ${F_KMH}.`,
       parts: [exactPart(k, 'km/h')],

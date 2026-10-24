@@ -14,7 +14,7 @@ const NAMES = [
   'Ethan', 'Rajveer', 'Leah', 'Marcus', 'Sofia', 'Hiroshi', 'Zainab', 'Cole', 'Ananya', 'Wyatt', 'Thanh', 'Isabelle', 'Dakota', 'Gurpreet', 'Olumide',
   'Kiona', 'Emeka', 'Hana', 'Diego', 'Maya', 'Arjun',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat', 'Airdrie', 'Camrose', 'Brooks', 'Canmore', 'Lloydminster'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Millbrook'];
 
 const isWhole = (x: number) => Math.abs(x - Math.round(x)) < 1e-9;
 /** Remove floating-point noise from an exact decimal result. */
@@ -505,7 +505,7 @@ function ofWord(rng: Rng): GenOutput {
     const G = rng.pick([800, 1200, 1500, 2000, 2400, 2500, 3000, 3600]);
     const p = rng.pick([105, 110, 115, 120, 125, 130, 135, 140, 150, 160]);
     const raised = (G * p) / 100;
-    const cause = rng.pick(['a class trip to Drumheller', 'new equipment for the school gym', 'the local animal shelter', 'a community garden', 'the food bank']);
+    const cause = rng.pick(['a class trip to a dinosaur museum', 'new equipment for the school gym', 'the local animal shelter', 'a community garden', 'the food bank']);
     return {
       prompt: `The Grade 8 classes set a goal of raising ${tag(G)} for ${cause}. They raised $${pc(p)}$ of their goal. How much did they raise? By how much did they go over their goal? Give each answer ${CENT}.`,
       parts: [moneyPart(raised, 'Raised: \\$'), moneyPart(raised - G, 'Over the goal: \\$')],
@@ -585,7 +585,7 @@ const CHANGE_CTX: ChangeCtx[] = [
   { text: (n, a, b) => `The chess club at ${n}’s school had ${a} members last year and has ${b} members this year.`, noun: 'members', lo: 16, hi: 60 },
   { text: (_n, a, b) => `The Grade 8 food drive collected ${a} cans last year and ${b} cans this year.`, noun: 'cans', lo: 200, hi: 900 },
   { text: (n, a, b) => `${n}’s school website had ${a} visits in September and ${b} visits in October.`, noun: 'visits', lo: 800, hi: 4000 },
-  { text: (_n, a, b) => `A dairy farm near Camrose sold ${a} litres of milk on Monday and ${b} litres on Tuesday.`, noun: 'litres', lo: 400, hi: 2000 },
+  { text: (_n, a, b) => `A dairy farm sold ${a} litres of milk on Monday and ${b} litres on Tuesday.`, noun: 'litres', lo: 400, hi: 2000 },
   { text: (_n, a, b) => `The price of a monthly bus pass changed from ${a} to ${b}.`, noun: 'price', money: true, lo: 40, hi: 120 },
   { text: (_n, a, b) => `The price of a pair of skates changed from ${a} to ${b}.`, noun: 'price', money: true, lo: 80, hi: 300 },
   { text: (_n, a, b) => `A basketball team scored ${a} points in its first game and ${b} points in its second game.`, noun: 'points', lo: 40, hi: 90 },
@@ -843,7 +843,7 @@ function whyNot(rng: Rng): GenOutput {
 
 const GROUPS = [
   { who: 'students at a junior high school', all: 'students', a: 'play on a school sports team', b: 'play on the volleyball team', both: 'play on the volleyball team' },
-  { who: 'fans at a hockey game in Red Deer', all: 'fans', a: 'are cheering for the home team', b: 'are wearing a home team jersey', both: 'are home team fans wearing a jersey' },
+  { who: 'fans at a hockey game', all: 'fans', a: 'are cheering for the home team', b: 'are wearing a home team jersey', both: 'are home team fans wearing a jersey' },
   { who: 'campers at a summer camp', all: 'campers', a: 'signed up for canoeing', b: 'had never paddled before', both: 'signed up for canoeing and had never paddled before' },
   { who: 'students in Grade 8', all: 'students', a: 'have a pet', b: 'have a dog', both: 'have a pet dog' },
   { who: 'customers at a bakery on Saturday', all: 'customers', a: 'bought bread', b: 'bought sourdough bread', both: 'bought sourdough bread' },

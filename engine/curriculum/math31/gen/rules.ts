@@ -1056,7 +1056,7 @@ function appliedProduct(rng: Rng): GenOutput {
       calculator: true,
     };
   }
-  const shop = rng.pick(['A Red Deer bakery', 'A Lethbridge bike shop', 'A Calgary coffee roaster', 'An Edmonton bookstore']);
+  const shop = rng.pick(['A Hillcrest bakery', 'An Ashford bike shop', 'A Brookfield coffee roaster', 'A Riverton bookstore']);
   const N = rng.int(12, 40) * 10;
   const dN = rng.int(2, 15) * 2;
   const p = rng.int(800, 3500) / 100;
@@ -1488,7 +1488,7 @@ function appliedChain(rng: Rng): GenOutput {
       [127, 20],
     ]);
     const rate = 10 / root;
-    const place = rng.pick(['Fort McMurray', 'Medicine Hat', 'Jasper', 'Grande Prairie']);
+    const place = rng.pick(['Clearwater', 'Westbury', 'Stonebridge', 'Pinewood']);
     return {
       prompt: `A physics class in ${place} models the speed of sound in air at a temperature of $T$ °C as $v(T) = 20\\sqrt{T + 273}$ m/s. Find $v'(${T})$, the rate of change of the speed with respect to temperature at $${T}$ °C. Give the answer to the nearest hundredth.`,
       parts: [numPart(rate, { label: `$v'(${T}) =$`, decimals: 2, exact: true, suffix: 'm/s per °C' })],

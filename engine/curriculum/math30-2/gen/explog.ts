@@ -447,7 +447,7 @@ const EXP_CONTEXTS: ExpContext[] = [
   },
   {
     make: (rng) => ({ a: rng.int(8, 40) * 10, b: rng.pick([1.08, 1.1, 1.12, 1.15, 1.18, 1.2, 1.25]) }),
-    text: (n, eq) => `${n} opens a food truck in Edmonton. The number of followers of the truck's social media account $w$ weeks after opening is modelled by $${eq}$.`,
+    text: (n, eq) => `${n} opens a food truck in Riverton. The number of followers of the truck's social media account $w$ weeks after opening is modelled by $${eq}$.`,
     v: 'F', per: 'week', initial: 'Followers at opening', unit: 'followers',
   },
   {
@@ -1454,7 +1454,7 @@ interface HalfCtx {
   A0s: number[];
 }
 const HALF_CTXS: HalfCtx[] = [
-  { text: (A0, h) => `A hospital in Calgary uses a radioactive tracer with a half-life of ${h} hours. A patient is given ${A0} mg of the tracer.`, unit: 'mg', tUnit: 'hours', hs: [6, 8, 12], A0s: [80, 96, 120, 160, 200, 240] },
+  { text: (A0, h) => `A city hospital uses a radioactive tracer with a half-life of ${h} hours. A patient is given ${A0} mg of the tracer.`, unit: 'mg', tUnit: 'hours', hs: [6, 8, 12], A0s: [80, 96, 120, 160, 200, 240] },
   { text: (A0, h) => `Caffeine has a half-life of about ${h} hours in the body of a typical adult. Suppose a student drinks a coffee containing ${A0} mg of caffeine.`, unit: 'mg', tUnit: 'hours', hs: [5, 6], A0s: [80, 120, 160, 200, 240] },
   { text: (A0, h) => `A radioactive isotope used in medicine has a half-life of ${h} days. A lab receives a ${A0} g sample.`, unit: 'g', tUnit: 'days', hs: [8, 14, 30], A0s: [40, 64, 80, 100, 120] },
   { text: (A0, h) => `A medication has a half-life of ${h} hours. A patient takes a ${A0} mg dose.`, unit: 'mg', tUnit: 'hours', hs: [3, 4, 6], A0s: [200, 250, 400, 500, 800] },
@@ -1543,8 +1543,8 @@ interface GrowCtx {
   tUnit: string;
 }
 const GROW_CTXS: GrowCtx[] = [
-  { text: (P0, r) => `A town near Edmonton has a population of ${nx(P0).replace('{,}', ',')} and is growing at ${pct(r)} per year. Assume this rate continues, so the population after $t$ years is $P = P_0(1 + r)^t$, where $P_0$ is the starting population and $r$ is the growth rate as a decimal.`, what: 'the population', rs: [1.8, 2.2, 2.5, 2.8, 3.1, 3.5, 4.2], P0: (rng) => rng.int(40, 300) * 100, tUnit: 'years' },
-  { text: (P0, r) => `A video game studio in Calgary has ${nx(P0).replace('{,}', ',')} players for a new game, and the number of players is growing by ${pct(r)} per month. The number of players after $t$ months is modelled by $P = P_0(1 + r)^t$, where $P_0$ is the starting number and $r$ is the growth rate as a decimal.`, what: 'the number of players', rs: [6, 8, 9.5, 11, 12.5, 15], P0: (rng) => rng.int(20, 90) * 100, tUnit: 'months' },
+  { text: (P0, r) => `A town near a large city has a population of ${nx(P0).replace('{,}', ',')} and is growing at ${pct(r)} per year. Assume this rate continues, so the population after $t$ years is $P = P_0(1 + r)^t$, where $P_0$ is the starting population and $r$ is the growth rate as a decimal.`, what: 'the population', rs: [1.8, 2.2, 2.5, 2.8, 3.1, 3.5, 4.2], P0: (rng) => rng.int(40, 300) * 100, tUnit: 'years' },
+  { text: (P0, r) => `A video game studio in Brookfield has ${nx(P0).replace('{,}', ',')} players for a new game, and the number of players is growing by ${pct(r)} per month. The number of players after $t$ months is modelled by $P = P_0(1 + r)^t$, where $P_0$ is the starting number and $r$ is the growth rate as a decimal.`, what: 'the number of players', rs: [6, 8, 9.5, 11, 12.5, 15], P0: (rng) => rng.int(20, 90) * 100, tUnit: 'months' },
   { text: (P0, r) => `A lake is stocked with ${nx(P0).replace('{,}', ',')} trout. Biologists expect the population to grow by ${pct(r)} per year, so the population after $t$ years is $P = P_0(1 + r)^t$, where $P_0$ is the starting population and $r$ is the growth rate as a decimal.`, what: 'the trout population', rs: [5, 6.5, 8, 9, 12], P0: (rng) => rng.int(8, 40) * 100, tUnit: 'years' },
 ];
 
@@ -1603,7 +1603,7 @@ function modelDepreciation(rng: Rng, d: Difficulty): GenOutput {
   }, (o) => clear(o.V, 2));
   const { V0, r, t, V } = o;
   const name = rng.pick(NAMES);
-  const item = rng.pick(['a used car', 'a new snowmobile', 'a pickup truck', 'a used camper trailer', 'a new quad', 'a delivery van for a bakery in Lethbridge']);
+  const item = rng.pick(['a used car', 'a new snowmobile', 'a pickup truck', 'a used camper trailer', 'a new quad', 'a delivery van for a bakery']);
   const lost = d >= 2;
   const Vr = roundTo(V, 2);
   return {
@@ -1632,7 +1632,7 @@ interface RegCtx {
 }
 const REG_CTXS: RegCtx[] = [
   { text: (eq) => `A student researched the number of public electric-vehicle charging ports in a province from 2016 to 2024. Exponential regression on the data gives $${eq}$, where $x$ is the number of years since 2016 and $y$ is the number of ports.`, a: (rng) => rng.int(150, 450), b: [1.22, 1.26, 1.31, 1.35, 1.38], start: 2016, span: 8, what: 'the number of charging ports', unit: 'ports', dec: 0 },
-  { text: (eq) => `An Alberta craft brewery tracked its online followers from 2018 to 2025. Exponential regression gives $${eq}$, where $x$ is the number of years since 2018 and $y$ is the number of followers.`, a: (rng) => rng.int(400, 1200), b: [1.28, 1.34, 1.41, 1.45, 1.52], start: 2018, span: 7, what: 'the number of followers', unit: 'followers', dec: 0 },
+  { text: (eq) => `A craft brewery tracked its online followers from 2018 to 2025. Exponential regression gives $${eq}$, where $x$ is the number of years since 2018 and $y$ is the number of followers.`, a: (rng) => rng.int(400, 1200), b: [1.28, 1.34, 1.41, 1.45, 1.52], start: 2018, span: 7, what: 'the number of followers', unit: 'followers', dec: 0 },
   { text: (eq) => `A biologist counted the fish in a pond restocking project every year from 2015 to 2023. Exponential regression gives $${eq}$, where $x$ is the number of years since 2015 and $y$ is the number of fish.`, a: (rng) => rng.int(120, 300), b: [1.12, 1.15, 1.18, 1.21], start: 2015, span: 8, what: 'the number of fish', unit: 'fish', dec: 0 },
   { text: (eq) => `A collector recorded the price of a rare hockey card from 2012 to 2024. Exponential regression gives $${eq}$, where $x$ is the number of years since 2012 and $y$ is the price in dollars.`, a: (rng) => rng.int(40, 160), b: [1.09, 1.11, 1.14, 1.17], start: 2012, span: 12, what: 'the price of the card', unit: 'dollars', dec: 0 },
   { text: (eq) => `A researcher measured the mass of mould growing on bread, in milligrams, every day for 8 days. Exponential regression gives $${eq}$, where $x$ is the number of days and $y$ is the mass in milligrams.`, a: (rng) => rng.float(1.5, 6, 2), b: [1.48, 1.55, 1.62, 1.7], start: 0, span: 8, what: 'the mass of the mould', unit: 'mg', dec: 1 },
@@ -1722,7 +1722,7 @@ function modelPresentValue(rng: Rng): GenOutput {
   }, (o) => clear(o.P, 2));
   const { A, r, per, t, P } = o;
   const name = rng.pick(NAMES);
-  const goal = rng.pick(['a down payment on a condo in Red Deer', 'college tuition', 'a used truck', 'a trip to Japan', 'starting a landscaping business']);
+  const goal = rng.pick(['a down payment on a condo', 'college tuition', 'a used truck', 'a trip to Japan', 'starting a landscaping business']);
   const n = per.k * t;
   const iTex = per.k === 1 ? dec(r) : `\\dfrac{${dec(r)}}{${per.k}}`;
   return {
@@ -1749,7 +1749,7 @@ function modelRate(rng: Rng): GenOutput {
     return { P0, t, P, rr };
   }, (o) => clear(o.rr, 1));
   const { P0, t, P, rr } = o;
-  const place = rng.pick(['A town in northern Alberta', 'A suburb of Calgary', 'A First Nations community near Lac La Biche', 'A town in the Peace River region']);
+  const place = rng.pick(['A town in the north', 'A suburb of a large city', 'A First Nations community beside a northern lake', 'A town in a farming region']);
   return {
     prompt: `${place} grew from ${nx(P0).replace('{,}', ',')} people to ${nx(P).replace('{,}', ',')} people in ${t} years. Assume the growth was exponential, following $P = P_0(1 + r)^t$, where $r$ is the annual growth rate as a decimal. What was the annual growth rate, as a percent ${roundingPhrase(1)}?`,
     parts: [numPart(rr, { label: 'Growth rate', suffix: '%', decimals: 1 })],
@@ -1797,7 +1797,7 @@ const RICHTER = 'On the Richter scale, each increase of $1$ in magnitude means t
 const PH = 'The pH of a solution is $\\text{pH} = -\\log[\\text{H}^+]$, where $[\\text{H}^+]$ is the hydrogen ion concentration in moles per litre.';
 const DB = 'The sound level in decibels is $\\beta = 10\\log \\dfrac{I}{I_0}$, where $I$ is the intensity of the sound and $I_0$ is the intensity of the quietest sound a person can hear.';
 
-const QUAKE_PLACES = ['near Banff', 'in northern British Columbia', 'off the coast of Vancouver Island', 'in southern Alberta', 'in the Yukon', 'near Fort St. John', 'off Haida Gwaii', 'in Chile', 'in Japan', 'in New Zealand'];
+const QUAKE_PLACES = ['in Alaska', 'in northern British Columbia', 'off the coast of Vancouver Island', 'in Indonesia', 'in the Yukon', 'near Fort St. John', 'off Haida Gwaii', 'in Chile', 'in Japan', 'in New Zealand'];
 
 function sci(a: number, k: number): string {
   return a === 1 ? `10^{${k}}` : `${fmt(a)} \\times 10^{${k}}`;
@@ -1859,7 +1859,7 @@ function richter(rng: Rng, d: Difficulty): GenOutput {
   };
 }
 
-const PH_THINGS = ['a sample of lake water', 'a cup of black coffee', 'a glass of orange juice', 'a sample of rainwater', 'a cleaning solution', 'a sample of soil water from a farm near Camrose', 'a soft drink', 'a sample of milk'];
+const PH_THINGS = ['a sample of lake water', 'a cup of black coffee', 'a glass of orange juice', 'a sample of rainwater', 'a cleaning solution', 'a sample of soil water from a farm', 'a soft drink', 'a sample of milk'];
 
 function phItem(rng: Rng, d: Difficulty): GenOutput {
   const thing = rng.pick(PH_THINGS);
@@ -1914,7 +1914,7 @@ function phItem(rng: Rng, d: Difficulty): GenOutput {
   }, (o) => clear(o.p1, 2) && o.p1 > 1);
   const { p0, R, p1 } = o;
   return {
-    prompt: `A sample of ${rng.pick(['pond water', 'well water from a farm near Vegreville', 'water from a creek in Kananaskis', 'rainwater'])} has a pH of ${fmt(p0)}. After heavy acid rain, the water is ${R} times as acidic (its hydrogen ion concentration is ${R} times as great). ${PH} What is the new pH, ${roundingPhrase(2)}?`,
+    prompt: `A sample of ${rng.pick(['pond water', 'well water from a farm', 'water from a mountain creek', 'rainwater'])} has a pH of ${fmt(p0)}. After heavy acid rain, the water is ${R} times as acidic (its hydrogen ion concentration is ${R} times as great). ${PH} What is the new pH, ${roundingPhrase(2)}?`,
     parts: [numPart(p1, { label: 'pH', decimals: 2 })],
     calculator: true,
     hints: [`The new concentration is $${R} \\times 10^{-${fmt(p0)}}$.`, `Use the product law: $-\\log(${R} \\times 10^{-${fmt(p0)}}) = -\\log ${R} + ${fmt(p0)}$.`],
@@ -1927,7 +1927,7 @@ function phItem(rng: Rng, d: Difficulty): GenOutput {
   };
 }
 
-const SOUNDS = ['a busy street in downtown Calgary', 'a lawnmower', 'a hockey crowd at a playoff game', 'a vacuum cleaner', 'a rock concert', 'a quiet library', 'a snowblower', 'a chainsaw', 'normal conversation', 'a jet taking off at the Edmonton airport'];
+const SOUNDS = ['a busy street downtown', 'a lawnmower', 'a hockey crowd at a playoff game', 'a vacuum cleaner', 'a rock concert', 'a quiet library', 'a snowblower', 'a chainsaw', 'normal conversation', 'a jet taking off at an airport'];
 
 function dbItem(rng: Rng, d: Difficulty): GenOutput {
   const [s1, s2] = rng.sample(SOUNDS, 2);
@@ -2020,15 +2020,15 @@ interface LnCtx {
 }
 const LN_CTXS: LnCtx[] = [
   {
-    text: (eq) => `A bakery in Red Deer tracks how many pastries a new employee can decorate per hour after $x$ days of training (data for days 1 to 20). Logarithmic regression gives $${eq}$.`,
+    text: (eq) => `A bakery tracks how many pastries a new employee can decorate per hour after $x$ days of training (data for days 1 to 20). Logarithmic regression gives $${eq}$.`,
     a: [8, 14], b: [5, 9], x: [2, 19], xFar: [30, 60], xWord: (x) => `after ${x} days of training`, yWhat: 'the number of pastries per hour', unit: 'pastries per hour',
   },
   {
-    text: (eq) => `An ecology class counts the number of plant species found in sample areas of a prairie near Drumheller, from $1$ to $100$ square metres. Logarithmic regression gives $${eq}$, where $x$ is the area in square metres and $y$ is the number of species.`,
+    text: (eq) => `An ecology class counts the number of plant species found in sample areas of a grassland, from $1$ to $100$ square metres. Logarithmic regression gives $${eq}$, where $x$ is the area in square metres and $y$ is the number of species.`,
     a: [3, 7], b: [3, 6], x: [5, 95], xFar: [200, 500], xWord: (x) => `in an area of ${x} square metres`, yWhat: 'the number of species', unit: 'species',
   },
   {
-    text: (eq) => `A board game designer in Edmonton tracks total sales of a new game for its first 24 months. Logarithmic regression gives $${eq}$, where $x$ is the number of months since release and $y$ is total sales in thousands of games.`,
+    text: (eq) => `A board game designer tracks total sales of a new game for its first 24 months. Logarithmic regression gives $${eq}$, where $x$ is the number of months since release and $y$ is total sales in thousands of games.`,
     a: [2, 6], b: [3, 7], x: [2, 23], xFar: [36, 72], xWord: (x) => `${x} months after release`, yWhat: 'total sales', unit: 'thousand games',
   },
 ];

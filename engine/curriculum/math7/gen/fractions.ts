@@ -16,7 +16,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi', 'Leah', 'Ravi',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Airdrie', 'Camrose'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury'];
 
 const LOWEST = 'Write your answer in lowest terms.';
 const MIXED = 'Write your answer as a mixed number in lowest terms.';
@@ -697,7 +697,7 @@ function problemD2(rng: Rng): Problem {
   if (kind === 'trail') {
     const [a, b] = mixedPair(rng, KM_PAIRS, 1, 7, '-');
     const r = mix('-', a, b, 'Find what is left:');
-    return { ...r, unit: 'km', hints: subHints, prompt: `A hiking trail near Canmore is ${mm(a)} km long. ${A}’s family has hiked ${mm(b)} km of it. How much farther is it to the end of the trail?`, say: (ans) => `It is $${ans}$ km to the end of the trail.` };
+    return { ...r, unit: 'km', hints: subHints, prompt: `A mountain hiking trail is ${mm(a)} km long. ${A}’s family has hiked ${mm(b)} km of it. How much farther is it to the end of the trail?`, say: (ans) => `It is $${ans}$ km to the end of the trail.` };
   }
   if (kind === 'practice') {
     const [a, b] = mixedPair(rng, HOUR_PAIRS, 1, 3, '+');

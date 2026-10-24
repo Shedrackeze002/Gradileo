@@ -14,7 +14,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Ananya', 'Nathan', 'Lena', 'Diego', 'Harpreet', 'Noor', 'Thanh', 'Jasmine',
 ];
-const CITIES = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 const JOBS = ['grocery store', 'coffee shop', 'car wash', 'pizza place', 'garden centre', 'hotel', 'hardware store', 'fast-food restaurant'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure };
@@ -795,7 +795,7 @@ const SITS2: Array<(rng: Rng, name: string) => Sit2> = [
     const b = rng.pick([250, 300, 350, 400]);
     const at = rng.int(18, 30);
     return {
-      text: `A class from ${rng.pick(CITIES)} goes on a trip to a museum in Drumheller. The bus costs ${tag(b)} for the day, and entry costs ${tag(a)} per student.`,
+      text: `A class from ${rng.pick(CITIES)} goes on a trip to a museum in Westbury. The bus costs ${tag(b)} for the day, and entry costs ${tag(a)} per student.`,
       what: `the total cost, in dollars, for $s$ students`,
       v: 's', a, b, at,
       ask: `the total cost for $${at}$ students`,
@@ -1013,12 +1013,12 @@ const FORMULAS: FormulaGen[] = [
       };
     }
     const [from, to, total] = rng.pick([
-      ['Calgary', 'Edmonton', 300],
-      ['Edmonton', 'Grande Prairie', 460],
-      ['Calgary', 'Lethbridge', 210],
-      ['Calgary', 'Medicine Hat', 295],
-      ['Edmonton', 'Fort McMurray', 435],
-      ['Red Deer', 'Lethbridge', 355],
+      ['Lakeside', 'Riverton', 300],
+      ['Riverton', 'Clearwater', 460],
+      ['Lakeside', 'Hillcrest', 210],
+      ['Lakeside', 'Pinewood', 295],
+      ['Riverton', 'Ashford', 435],
+      ['Brookfield', 'Hillcrest', 355],
     ] as const);
     const { s, t } = retry(
       () => ({ s: rng.pick([80, 90, 100, 110]), t: rng.pick([1.5, 2, 2.5, 3]) }),
@@ -1376,7 +1376,7 @@ const TWO_CTX: Array<(rng: Rng, d: Difficulty, name: string) => TwoCtx> = [
     const x = rng.int(15, 32);
     const total = b + a * x;
     return {
-      text: `${name} is planning a class trip to a museum in Drumheller. The bus costs ${tag(b)}, and entry costs ${tag(a)} per student. The total cost is ${tag(total)}. How many students are going?`,
+      text: `${name} is planning a class trip to a museum in Westbury. The bus costs ${tag(b)}, and entry costs ${tag(a)} per student. The total cost is ${tag(total)}. How many students are going?`,
       v: 's', a, b, x, total, money: true, suffix: 'students',
       setup: `Let $s$ be the number of students. The entry price times $s$, plus the bus, equals the total`,
       say: `$${x}$ students are going on the trip.`,
@@ -1492,7 +1492,7 @@ const LINE_CTX: Array<(rng: Rng, name: string) => LineCtx> = [
     const s = rng.pick([50, 80, 100]);
     const veh = rng.pick(['a gravel truck', 'a school bus', 'a delivery van']);
     return {
-      intro: `${name} drives ${veh} on a highway in Alberta. The graph shows the distance travelled over time.`,
+      intro: `${name} drives ${veh} on a highway. The graph shows the distance travelled over time.`,
       xLabel: 'Time (h)', yLabel: 'Distance (km)', xMax: 6, yMax: 6 * s, yStep: s, b: 0, m: s,
       caption: 'Distance travelled', money: false, ySuffix: 'km', xSuffix: 'hours',
       askY: (x) => `How far has ${name} driven after $${x}$ hours?`,

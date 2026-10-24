@@ -293,7 +293,7 @@ function distanceAcross(rng: Rng): GenOutput {
   const ctx = rng.pick([
     { a: "the tent", b: 'the canoe dock', place: 'a campground', origin: 'the camp office' },
     { a: 'the goal', b: 'the bench', place: 'a soccer field', origin: 'the centre spot' },
-    { a: 'the barn', b: 'the well', place: 'a farm in Ponoka County', origin: 'the farmhouse' },
+    { a: 'the barn', b: 'the well', place: 'a farm', origin: 'the farmhouse' },
     { a: 'the swings', b: 'the slide', place: 'a playground', origin: 'the drinking fountain' },
   ]);
   const [first, second] = rng.chance(0.5) ? [P1, P2] : [P2, P1];

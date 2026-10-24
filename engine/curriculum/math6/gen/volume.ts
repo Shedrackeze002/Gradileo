@@ -295,7 +295,7 @@ const PRISM_CTX: Array<[string, (w: string) => string]> = [
   ['cm', (w) => `${w} is building a wooden jewellery box shaped like a rectangular prism.`],
   ['m', () => 'A storage shed is shaped like a right rectangular prism.'],
   ['m', (w) => `${w}'s family rents a storage unit shaped like a rectangular prism.`],
-  ['m', () => 'The inside of a moving truck in Medicine Hat is a rectangular prism.'],
+  ['m', () => 'The inside of a moving truck is a rectangular prism.'],
 ];
 
 const volumePrism = skill({

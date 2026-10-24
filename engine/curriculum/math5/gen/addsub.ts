@@ -13,7 +13,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Airdrie', 'Camrose', 'Okotoks', 'Canmore', 'Brooks', 'Hinton'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Millbrook'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure };
 
@@ -498,7 +498,7 @@ function oneStep(rng: Rng): Problem {
       const a = decNum(rng, 1, da);
       const b = decNum(rng, 1, db);
       return {
-        prompt: `On a hike near ${rng.pick(['Canmore', 'Hinton', 'Jasper', 'Waterton', 'Drumheller'])}, ${name}’s family walked ${m$(a, da)} km before lunch and ${m$(b, db)} km after lunch. How far did they walk in all?`,
+        prompt: `On a hike near ${rng.pick(['Pinewood', 'Maple Falls', 'Stonebridge', 'Clearwater', 'Ashford'])}, ${name}’s family walked ${m$(a, da)} km before lunch and ${m$(b, db)} km after lunch. How far did they walk in all?`,
         steps: [{ nums: [a * 10 ** (dp - da), b * 10 ** (dp - db)], op: '+', why: 'In all means add.' }],
         dp,
         money: false,
@@ -590,7 +590,7 @@ function twoStep(rng: Rng): Problem {
       const d2 = decNum(rng, 1, 3);
       if (d1 * 10 + d2 >= trail * 100) return twoStep(rng);
       return {
-        prompt: `A trail near ${rng.pick(['Canmore', 'Hinton', 'Jasper', 'Waterton'])} is ${m$(trail, 1)} km long. ${name} hiked ${m$(d1, 2)} km on Saturday and ${m$(d2, 3)} km on Sunday. How much of the trail is left to hike?`,
+        prompt: `A trail near ${rng.pick(['Pinewood', 'Maple Falls', 'Stonebridge', 'Clearwater'])} is ${m$(trail, 1)} km long. ${name} hiked ${m$(d1, 2)} km on Saturday and ${m$(d2, 3)} km on Sunday. How much of the trail is left to hike?`,
         steps: [
           { nums: [d1 * 10, d2], op: '+', why: 'First find how far ' + name + ' hiked in all.' },
           { nums: [trail * 100, d1 * 10 + d2], op: '-', why: 'Then subtract that from the length of the trail.' },

@@ -437,7 +437,7 @@ const integerSubtract = skill({
 // 4.3 Solving integer problems
 // ---------------------------------------------------------------------------
 
-const TOWNS = ['Grande Prairie', 'Fort McMurray', 'Edmonton', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Peace River', 'Cold Lake', 'High Level'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Northfield', 'Clearwater'];
 const PLUS_MINUS = 'In hockey, a player’s plus-minus goes up $1$ for each even-strength goal their team scores while they are on the ice, and down $1$ for each even-strength goal the other team scores while they are on the ice.';
 const GOLF = 'In golf, a score is written compared to par: $-2$ means 2 strokes under par and $+3$ means 3 strokes over par. The lower the score, the better.';
 
@@ -505,7 +505,7 @@ function problemD1(rng: Rng): Out {
   const up = rng.chance(0.5);
   const c = up ? rng.int(2, a - 2) : rng.int(2, 6);
   const r = up ? -a + c : -a - c;
-  const lake = rng.pick(['Sylvan Lake', 'Cold Lake', 'Gull Lake', 'Pigeon Lake']);
+  const lake = rng.pick(['Willow Lake', 'Heron Lake', 'Otter Lake', 'Silver Lake']);
   return {
     prompt: `A diver in ${lake} is at $${-a}\\ \\text{m}$, which means $${a}$ m below the surface. She swims ${up ? 'up' : 'down'} $${c}$ m. What integer gives her new position, in metres?`,
     figure: numberLine([{ value: -a, label: 'diver' }, { value: 0, label: 'surface' }]),
@@ -517,16 +517,16 @@ function problemD1(rng: Rng): Out {
 
 function problemD2(rng: Rng): Out {
   const name = rng.pick(NAMES);
-  const kind = rng.pick(['chinook', 'towns', 'cold', 'elevation', 'golf', 'bank', 'hockey'] as const);
+  const kind = rng.pick(['wind', 'towns', 'cold', 'elevation', 'golf', 'bank', 'hockey'] as const);
   const diffSteps = (hi: number, lo: number) => [
     `Difference = higher $-$ lower: $${br(hi)} - ${br(lo)}$`,
     ...subRule(hi, lo),
   ];
-  if (kind === 'chinook') {
+  if (kind === 'wind') {
     const t1 = rng.int(-28, -6);
     const t2 = rng.int(1, 14);
     return {
-      prompt: `A chinook is a warm wind that can blow into southern Alberta in winter. One morning in Calgary the temperature was ${deg(t1)}. After a chinook arrived, it was ${deg(t2)}. By how many degrees did the temperature rise?`,
+      prompt: `In winter, a warm wind can blow down from the mountains. One morning in a town near the mountains, the temperature was ${deg(t1)}. After the warm wind arrived, it was ${deg(t2)}. By how many degrees did the temperature rise?`,
       parts: [intPart(t2 - t1, { suffix: 'degrees' })],
       hints: ['The change is the new temperature minus the old temperature.', `Find $${br(t2)} - ${br(t1)}$. Subtracting a negative is the same as adding a positive.`],
       solution: [`Change = new $-$ old: $${br(t2)} - ${br(t1)}$`, ...subRule(t2, t1), `Check by counting: $${-t1}$ degrees up to $0$, then $${t2}$ more makes $${t2 - t1}$.`, `The temperature rose $${t2 - t1}$ degrees.`],
@@ -726,7 +726,7 @@ function problemD3(rng: Rng): Out {
   );
   const { steps, end } = runSteps(0, ch, labels);
   return {
-    prompt: `${name} goes on a hike in the badlands near Drumheller. Heights are measured from the parking lot, which is at $0$ m. The table shows each change in height on the hike. Where does ${name} finish, compared with the parking lot? Write your answer as an integer.`,
+    prompt: `${name} goes on a hike in the hills. Heights are measured from the parking lot, which is at $0$ m. The table shows each change in height on the hike. Where does ${name} finish, compared with the parking lot? Write your answer as an integer.`,
     figure: { type: 'table', headers: ['Part of the hike', 'Change (m)'], rows: labels.map((l, j) => [l, lab(ch[j])]) },
     parts: [intPart(end, { suffix: 'm' })],
     hints: ['Start at $0$ m and go down the table one row at a time.', 'Add each change. Going down is a negative change.'],

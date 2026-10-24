@@ -14,7 +14,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Kiona', 'Thanh', 'Harpreet', 'Marie-Ève',
 ];
-const CITIES = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat', 'Airdrie', 'Camrose', 'Brooks'];
+const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'];
 
 const sum = (a: number[]) => a.reduce((s, x) => s + x, 0);
 const asc = (a: number[]) => [...a].sort((p, q) => p - q);
@@ -63,13 +63,13 @@ interface StatCtx {
 
 const STATS: StatCtx[] = [
   { intro: (name, n) => `${name}'s hockey team scored these numbers of goals in its last $${n}$ games:`, r1: [0, 7], r2: [0, 9], unit: 'goals', tex: '', noun: 'number of goals per game' },
-  { intro: (name, n) => `${name} plays basketball for a school team in Red Deer. Here are ${name}'s points in the last $${n}$ games:`, r1: [2, 20], r2: [0, 28], unit: 'points', tex: '', noun: 'number of points per game' },
-  { intro: (_n, n) => `Here are the daily high temperatures in Grande Prairie for $${n}$ days in January, in degrees Celsius:`, r1: [-15, -2], r2: [-24, 3], unit: '°C', tex: '^\\circ\\text{C}', noun: 'high temperature' },
+  { intro: (name, n) => `${name} plays basketball for a school team. Here are ${name}'s points in the last $${n}$ games:`, r1: [2, 20], r2: [0, 28], unit: 'points', tex: '', noun: 'number of points per game' },
+  { intro: (_n, n) => `Here are the daily high temperatures in a northern town for $${n}$ days in January, in degrees Celsius:`, r1: [-15, -2], r2: [-24, 3], unit: '°C', tex: '^\\circ\\text{C}', noun: 'high temperature' },
   { intro: (name, n) => `${name} wrote $${n}$ math quizzes. Each quiz was marked out of $20$. The scores were:`, r1: [10, 20], r2: [7, 20], unit: 'marks', tex: '', noun: 'quiz score' },
   { intro: (name, n) => `${name} kept track of the minutes spent on homework each night for $${n}$ nights:`, r1: [15, 60], r2: [10, 75], unit: 'min', tex: '\\ \\text{min}', noun: 'homework time' },
-  { intro: (_n, n) => `$${n}$ students in a gym class in Lethbridge counted how many push-ups they could do in one minute:`, r1: [10, 40], r2: [5, 48], unit: 'push-ups', tex: '', noun: 'number of push-ups' },
-  { intro: (_n, n) => `$${n}$ students in a book club in Medicine Hat recorded how many books they read over the summer:`, r1: [1, 12], r2: [0, 16], unit: 'books', tex: '', noun: 'number of books' },
-  { intro: (_n, n) => `$${n}$ classes at a school in Calgary held a bake sale. The amounts the classes raised were:`, r1: [40, 120], r2: [35, 180], unit: '', tex: '', noun: 'amount raised', money: true },
+  { intro: (_n, n) => `$${n}$ students in a gym class counted how many push-ups they could do in one minute:`, r1: [10, 40], r2: [5, 48], unit: 'push-ups', tex: '', noun: 'number of push-ups' },
+  { intro: (_n, n) => `$${n}$ students in a book club recorded how many books they read over the summer:`, r1: [1, 12], r2: [0, 16], unit: 'books', tex: '', noun: 'number of books' },
+  { intro: (_n, n) => `$${n}$ classes at a school held a bake sale. The amounts the classes raised were:`, r1: [40, 120], r2: [35, 180], unit: '', tex: '', noun: 'amount raised', money: true },
   { intro: (name, n) => `${name} grew $${n}$ sunflowers for a 4-H project. Their heights, in centimetres, were:`, r1: [120, 190], r2: [95, 210], unit: 'cm', tex: '\\ \\text{cm}', noun: 'height' },
 ];
 
@@ -225,10 +225,10 @@ function missingValue(rng: Rng, name: string): GenOutput {
 }
 
 const FREQ_CTX = [
-  { what: 'goals', head: 'Goals in a game', count: 'Number of games', intro: 'The table shows how many goals a hockey team in Airdrie scored in each game of its season.', lo: 0 },
+  { what: 'goals', head: 'Goals in a game', count: 'Number of games', intro: 'The table shows how many goals a hockey team scored in each game of its season.', lo: 0 },
   { what: 'pets', head: 'Number of pets', count: 'Number of students', intro: 'Students in a Grade 7 class said how many pets they have. The table shows the results.', lo: 0 },
   { what: 'siblings', head: 'Number of brothers and sisters', count: 'Number of students', intro: 'Students in a Grade 7 class said how many siblings (brothers and sisters) they have. The table shows the results.', lo: 0 },
-  { what: 'books', head: 'Books borrowed', count: 'Number of students', intro: 'A school library in Camrose recorded how many books each student borrowed last week.', lo: 1 },
+  { what: 'books', head: 'Books borrowed', count: 'Number of students', intro: 'A school library recorded how many books each student borrowed last week.', lo: 1 },
 ];
 
 function frequencyItem(rng: Rng): GenOutput {
@@ -336,15 +336,15 @@ const centralTendency = skill({
 
 const MEASURES = ['Mean', 'Median', 'Mode', 'Range'];
 const SCENARIOS: Array<{ text: (name: string) => string; answer: number; why: string }> = [
-  { text: () => 'A shoe store in Edmonton wants to know which shoe size it sells most often, so it can order more of that size. Which measure should it use?', answer: 2, why: 'The mode is the value that appears most often: the size sold most.' },
+  { text: () => 'A shoe store wants to know which shoe size it sells most often, so it can order more of that size. Which measure should it use?', answer: 2, why: 'The mode is the value that appears most often: the size sold most.' },
   { text: () => 'Students voted for the theme of the school dance: Space, Jungle, Hollywood or Winter. Which measure describes the most popular choice?', answer: 2, why: 'The choices are words, not numbers, so you cannot add them or put them in order. Only the mode works: the choice made most often.' },
-  { text: () => 'A pizza shop in Brooks wants to know which topping customers order most often. Which measure should it use?', answer: 2, why: 'The mode is the value that appears most often. Toppings are not numbers, so the mean and median make no sense here.' },
+  { text: () => 'A pizza shop wants to know which topping customers order most often. Which measure should it use?', answer: 2, why: 'The mode is the value that appears most often. Toppings are not numbers, so the mean and median make no sense here.' },
   { text: (name) => `${name} and four friends put all their savings together, then share the total equally. Which measure tells how much each friend gets?`, answer: 0, why: 'The mean is the sum shared equally among all the values.' },
   { text: () => 'A cycling club rode different distances on 6 days. The coach wants to know how far they would ride each day if the total distance were spread evenly over the 6 days. Which measure should the coach use?', answer: 0, why: 'Spreading a total evenly is exactly what the mean does: sum ÷ number of values.' },
   { text: () => 'A coach wants the score in the middle: half the players scored more and half scored less. Which measure should the coach use?', answer: 1, why: 'The median is the middle value when the data are in order.' },
   { text: () => 'A real-estate report wants a "typical" house price in a town where a few mansions cost far more than all the other houses. Which measure is best?', answer: 1, why: 'The few very expensive houses are outliers. They pull the mean up, but the median stays in the middle of the data.' },
   { text: () => 'A teacher wants to know how spread out the test scores are, from the lowest score to the highest score. Which measure should she use?', answer: 3, why: 'The range is the greatest value minus the least value. It shows the spread.' },
-  { text: () => 'A weather reporter in Fort McMurray wants to say how much the temperature changed between the coldest and the warmest day of the week. Which measure is this?', answer: 3, why: 'The difference between the greatest and least values is the range.' },
+  { text: () => 'A weather reporter wants to say how much the temperature changed between the coldest and the warmest day of the week. Which measure is this?', answer: 3, why: 'The difference between the greatest and least values is the range.' },
 ];
 
 /** Values close together (no repeats) with an optional outlier far above or below. */
@@ -364,10 +364,10 @@ interface SetCtx {
 }
 
 const SET_CTX: SetCtx[] = [
-  { intro: 'Some students at a school in Camrose earned this money babysitting last month:', unit: '', money: true, lo: 40, hi: 70, outHi: 260, what: 'a typical amount earned' },
+  { intro: 'Some students at a school earned this money babysitting last month:', unit: '', money: true, lo: 40, hi: 70, outHi: 260, what: 'a typical amount earned' },
   { intro: 'Here are the numbers of minutes some students spent on homework last night:', unit: 'min', lo: 25, hi: 45, outHi: 150, outLo: 2, what: 'a typical homework time' },
   { intro: 'A team recorded the number of points it scored in each of its basketball games:', unit: 'points', lo: 38, hi: 56, outHi: 98, outLo: 12, what: 'a typical number of points per game' },
-  { intro: 'Here are the prices of the bikes for sale at a sports store in Red Deer:', unit: '', money: true, lo: 180, hi: 320, outHi: 1450, what: 'a typical bike price' },
+  { intro: 'Here are the prices of the bikes for sale at a sports store:', unit: '', money: true, lo: 180, hi: 320, outHi: 1450, what: 'a typical bike price' },
   { intro: 'Here are the numbers of push-ups some students did in one minute:', unit: 'push-ups', lo: 18, hi: 32, outHi: 75, outLo: 2, what: 'a typical number of push-ups' },
   { intro: 'Here are the heights, in centimetres, of the players on a volleyball team:', unit: 'cm', lo: 158, hi: 176, outHi: 205, outLo: 135, what: 'a typical height' },
 ];
@@ -376,8 +376,8 @@ const valText = (c: SetCtx, v: number) => (c.money ? money(v) : `$${fmt(v)}$${c.
 const listText = (c: SetCtx, vs: number[]) => (c.money ? vs.map(money).join(', ') : listTex(vs));
 
 const SIZE_CTX = [
-  { intro: 'A store in Lethbridge sold these hat sizes on Saturday:', item: 'hat', sizes: [6.75, 7, 7.25, 7.5, 7.75] },
-  { intro: 'A sports store in Calgary sold these skate sizes last week:', item: 'skate', sizes: [4, 5, 6, 7, 8, 9] },
+  { intro: 'A store sold these hat sizes on Saturday:', item: 'hat', sizes: [6.75, 7, 7.25, 7.5, 7.75] },
+  { intro: 'A sports store sold these skate sizes last week:', item: 'skate', sizes: [4, 5, 6, 7, 8, 9] },
   { intro: 'A shoe store sold these shoe sizes on Monday:', item: 'shoe', sizes: [5, 5.5, 6, 6.5, 7, 7.5, 8] },
 ];
 
@@ -558,10 +558,10 @@ interface OutCtx {
 
 const OUT_CTX: OutCtx[] = [
   { intro: (name) => `${name} recorded the number of minutes it took to walk to school each day:`, unit: 'min', tex: '\\ \\text{min}', lo: 12, hi: 19, outHi: [38, 45], outLo: [2, 4], noun: 'walking time' },
-  { intro: () => 'A hockey team in Brooks counted the number of shots on goal in each game:', unit: 'shots', tex: '', lo: 22, hi: 34, outHi: [61, 70], outLo: [4, 8], noun: 'number of shots' },
-  { intro: () => 'Here are the daily high temperatures in Calgary for one week in March, in degrees Celsius:', unit: '°C', tex: '^\\circ\\text{C}', lo: 2, hi: 9, outHi: [20, 23], outLo: [-15, -11], noun: 'high temperature' },
+  { intro: () => 'A hockey team counted the number of shots on goal in each game:', unit: 'shots', tex: '', lo: 22, hi: 34, outHi: [61, 70], outLo: [4, 8], noun: 'number of shots' },
+  { intro: () => 'Here are the daily high temperatures in Riverton for one week in March, in degrees Celsius:', unit: '°C', tex: '^\\circ\\text{C}', lo: 2, hi: 9, outHi: [20, 23], outLo: [-15, -11], noun: 'high temperature' },
   { intro: (name) => `${name} recorded the scores on a spelling test for some friends, out of 50:`, unit: 'marks', tex: '', lo: 36, hi: 48, outLo: [9, 14], outHi: [36, 48], noun: 'score' },
-  { intro: () => 'A farm near Ponoka recorded how many eggs its hens laid each day:', unit: 'eggs', tex: '', lo: 40, hi: 52, outHi: [90, 98], outLo: [8, 14], noun: 'number of eggs' },
+  { intro: () => 'A farm recorded how many eggs its hens laid each day:', unit: 'eggs', tex: '', lo: 40, hi: 52, outHi: [90, 98], outLo: [8, 14], noun: 'number of eggs' },
   { intro: (name) => `${name} timed how many seconds it took to solve a puzzle cube in several tries:`, unit: 's', tex: '\\ \\text{s}', lo: 48, hi: 62, outHi: [130, 150], outLo: [12, 16], noun: 'solving time' },
 ];
 
@@ -767,10 +767,10 @@ const GRAPHS: GraphCtx[] = [
   { intro: (t) => `In a survey, $${t}$ students at a school in ${CITIES[t % CITIES.length]} named their favourite sport.`, cats: ['Hockey', 'Soccer', 'Basketball', 'Volleyball', 'Swimming', 'Lacrosse'], ask: (c) => `chose ${lc(c)}`, noun: 'students' },
   { intro: (t) => `$${t}$ people at a community centre voted for their favourite season.`, cats: ['Winter', 'Spring', 'Summer', 'Fall'], ask: (c) => `voted for ${lc(c)}`, noun: 'people' },
   { intro: (t) => `$${t}$ Grade 7 students were asked how they usually get to school.`, cats: ['Bus', 'Walk', 'Car', 'Bike'], ask: (c) => ({ Bus: 'take the bus', Walk: 'walk', Car: 'come by car', Bike: 'ride a bike' })[c] ?? c, noun: 'students' },
-  { intro: (t) => `$${t}$ customers at a pizza shop in Red Deer chose their favourite topping.`, cats: ['Pepperoni', 'Cheese', 'Hawaiian', 'Veggie', 'Mushroom'], ask: (c) => `chose ${c === 'Hawaiian' ? c : lc(c)}`, noun: 'customers' },
+  { intro: (t) => `$${t}$ customers at a pizza shop chose their favourite topping.`, cats: ['Pepperoni', 'Cheese', 'Hawaiian', 'Veggie', 'Mushroom'], ask: (c) => `chose ${c === 'Hawaiian' ? c : lc(c)}`, noun: 'customers' },
   { intro: (t) => `$${t}$ students named their favourite kind of pet.`, cats: ['Dog', 'Cat', 'Fish', 'Bird', 'Hamster'], ask: (c) => `chose a ${lc(c)}`, noun: 'students' },
   { intro: (t) => `$${t}$ students named their favourite subject.`, cats: ['Math', 'Science', 'Art', 'Phys Ed', 'Music'], ask: (c) => `chose ${c === 'Phys Ed' || c === 'Math' ? c : lc(c)}`, noun: 'students' },
-  { intro: (t) => `The Grade 7 classes at a school in Airdrie raised \\$${t} at a fundraiser. The circle graph shows how the money was spent.`, cats: ['Field trip', 'Sports gear', 'Library books', 'Art supplies', 'Charity'], ask: (c) => `was spent on ${lc(c)}`, noun: 'dollars', money: true },
+  { intro: (t) => `The Grade 7 classes at a school raised \\$${t} at a fundraiser. The circle graph shows how the money was spent.`, cats: ['Field trip', 'Sports gear', 'Library books', 'Art supplies', 'Charity'], ask: (c) => `was spent on ${lc(c)}`, noun: 'dollars', money: true },
 ];
 
 /** k percents that add to 100, each at least `min`, as multiples of `step`, all different. */
@@ -884,7 +884,7 @@ const ANGLE_RULE = 'A full circle is $360^\\circ$. The central angle of a sector
 /** `verb` makes "chose skating" or "were grey". */
 const MAKE_CTX: Array<{ intro: (who: string) => string; cats: string[]; noun: string; verb?: string }> = [
   { intro: (who) => `${who} asked students in Grade 7 to name their favourite winter activity.`, cats: ['Skating', 'Skiing', 'Tobogganing', 'Snowboarding', 'Hockey'], noun: 'students' },
-  { intro: (who) => `${who} surveyed people at a farmers' market in Camrose about their favourite fruit.`, cats: ['Apples', 'Strawberries', 'Saskatoons', 'Cherries', 'Raspberries'], noun: 'people' },
+  { intro: (who) => `${who} surveyed people at a farmers' market about their favourite fruit.`, cats: ['Apples', 'Strawberries', 'Saskatoons', 'Cherries', 'Raspberries'], noun: 'people' },
   { intro: (who) => `${who} recorded the colours of the cars in a school parking lot.`, cats: ['White', 'Black', 'Grey', 'Red', 'Blue'], noun: 'cars', verb: 'were' },
   { intro: (who) => `${who} asked campers at a provincial park how they spend most of their time.`, cats: ['Hiking', 'Swimming', 'Fishing', 'Canoeing', 'Biking'], noun: 'campers' },
   { intro: (who) => `${who} surveyed Grade 7 students about their favourite type of music.`, cats: ['Pop', 'Country', 'Hip hop', 'Rock', 'Classical'], noun: 'students' },

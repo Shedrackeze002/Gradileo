@@ -1616,10 +1616,10 @@ function eqNone(rng: Rng): GenOutput {
 function eqPendulum(rng: Rng): GenOutput {
   for (let t = 0; t < 100; t++) {
     const what = rng.pick([
-      { s: 'A playground swing in Lethbridge', obj: 'the swing’s chains', lo: 24, hi: 36 },
+      { s: 'A playground swing', obj: 'the swing’s chains', lo: 24, hi: 36 },
       { s: 'The pendulum of a grandfather clock', obj: 'the pendulum', lo: 16, hi: 22 },
-      { s: 'A wrecking ball hanging from a crane in Calgary', obj: 'the cable', lo: 50, hi: 80 },
-      { s: 'A rope swing over a creek near Canmore', obj: 'the rope', lo: 35, hi: 50 },
+      { s: 'A wrecking ball hanging from a construction crane', obj: 'the cable', lo: 50, hi: 80 },
+      { s: 'A rope swing over a mountain creek', obj: 'the rope', lo: 35, hi: 50 },
     ]);
     const T = rng.int(what.lo, what.hi) / 10;
     const L = 9.8 * (T / (2 * Math.PI)) ** 2;
@@ -1647,7 +1647,7 @@ function eqSkid(rng: Rng): GenOutput {
     const f = rng.pick([0.4, 0.5, 0.6, 0.7, 0.8]);
     const d = (s * s) / (254 * f);
     if (!clearOfBoundary(d, 1)) continue;
-    const place = rng.pick(['near Grande Prairie', 'on Highway 2 near Red Deer', 'in Medicine Hat', 'on a rural road near Camrose', 'in Fort McMurray']);
+    const place = rng.pick(['near a northern town', 'on a divided highway', 'at a city intersection', 'on a rural road', 'on a mountain highway']);
     const name = rng.pick(['Constable Okafor', 'Constable Tremblay', 'An investigator, Priya,', 'Sergeant Whitehorse']);
     return {
       prompt: `Collision investigators use the model $s = \\sqrt{254fd}$, where $s$ is a car's speed in km/h when it starts to skid, $d$ is the length of the skid marks in metres and $f$ is the drag factor of the road. ${name} is reconstructing a collision ${place} on a road with $f = ${f}$. The driver says they were travelling at $${s}$ km/h. How long would the skid marks be at that speed? Answer to the nearest tenth of a metre.`,

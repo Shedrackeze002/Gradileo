@@ -194,7 +194,7 @@ const RATE_CTX: RateCtx[] = [
       const k = rng.pick([2, 4, 5, 10]);
       const total = roundTo(p * k, 2);
       return {
-        prompt: `A farm stand near Taber sells ${art(k)} ${q(k, 'kg')} bag of ${item} for ${tag(total)}. What is the price per kilogram, ${CENT}?`,
+        prompt: `A farm stand by the highway sells ${art(k)} ${q(k, 'kg')} bag of ${item} for ${tag(total)}. What is the price per kilogram, ${CENT}?`,
         parts: [moneyPart(p, 'per kg')],
         hints: [ONE, `Divide the price by the number of kilograms: $${mv(total)} \\div ${k}$.`],
         solution: ['Price per kilogram = total price ÷ number of kilograms.', `$${mv(total)} \\div ${k} = ${mv(p)}$`, `The ${item} cost ${money(p)} per kilogram.`],
@@ -330,7 +330,7 @@ function rateCompare(rng: Rng): Out {
     const win = rA < rB ? 0 : 1;
     const per = `\\ ${tx('L/100 km')}`;
     return {
-      prompt: `A trucking company in Red Deer is comparing two delivery vans. Van A used ${q(LA, 'L')} of diesel to travel ${q(DA, 'km')}. Van B used ${q(LB, 'L')} to travel ${q(DB, 'km')}. Which van uses less fuel per $100\\ ${tx('km')}$, and by how many litres per $100\\ ${tx('km')}$?`,
+      prompt: `A trucking company is comparing two delivery vans. Van A used ${q(LA, 'L')} of diesel to travel ${q(DA, 'km')}. Van B used ${q(LB, 'L')} to travel ${q(DB, 'km')}. Which van uses less fuel per $100\\ ${tx('km')}$, and by how many litres per $100\\ ${tx('km')}$?`,
       parts: [{ label: 'More fuel-efficient', answer: fixedChoice(['Van A', 'Van B'], win) }, exactPart(diff, 'L/100 km', 'Difference')],
       hints: [...hints, 'For each van, find $\\dfrac{\\text{litres} \\times 100}{\\text{km}}$. Fewer litres per 100 km is better.'],
       solution: [
@@ -1010,7 +1010,7 @@ const PC_ITEMS: Array<{ what: string; lo: number; hi: number; step: number; dir?
   { what: 'the price of a sheet of plywood', lo: 30, hi: 80, step: 10 },
   { what: 'the price of an oil change at a garage', lo: 60, hi: 140, step: 20, dir: 'up' },
   { what: 'the price of a composite hockey stick', lo: 100, hi: 300, step: 20 },
-  { what: 'the monthly rent for a basement suite in Red Deer', lo: 900, hi: 1600, step: 100, dir: 'up', maxP: 20 },
+  { what: 'the monthly rent for a basement suite', lo: 900, hi: 1600, step: 100, dir: 'up', maxP: 20 },
   { what: 'the asking price for a used snowmobile', lo: 3000, hi: 9000, step: 500, dir: 'down' },
   { what: 'the value of a used pickup truck', lo: 12000, hi: 30000, step: 1000, dir: 'down' },
   { what: 'the price of a set of winter tires', lo: 600, hi: 1200, step: 100 },
@@ -1116,7 +1116,7 @@ const MARKUP_ITEMS = [
   { what: 'ball cap', lo: 6, hi: 15, store: 'a clothing store' },
   { what: 'tape measure', lo: 8, hi: 20, store: 'a hardware store' },
 ];
-const TOWNS = ['Edmonton', 'Grande Prairie', 'Lethbridge', 'Brooks', 'Fort McMurray', 'Medicine Hat', 'Red Deer', 'Camrose', 'Airdrie'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford'];
 const at = (rng: Rng, store: string) => `${store} in ${rng.pick(TOWNS)}`;
 /** "the hardware store" from "a hardware store" or "an auto parts store". */
 const theStore = (store: string) => store.replace(/^an? /, 'the ');
@@ -1247,15 +1247,15 @@ const TAX_ITEMS = [
 ];
 
 function taxRate(rng: Rng, allowHst: boolean): { r: number; text: string; name: string } {
-  if (!allowHst || rng.chance(0.55)) return { r: 5, text: 'The store is in Alberta. Use a GST rate of 5%.', name: 'GST' };
+  if (!allowHst || rng.chance(0.55)) return { r: 5, text: 'The store adds a sales tax of 5%.', name: 'sales tax' };
   const r = rng.pick([13, 15]);
-  return { r, text: `Suppose the store is in a province that charges ${r}% HST (one tax that combines the GST and a provincial sales tax).`, name: 'HST' };
+  return { r, text: `Suppose the store adds a combined sales tax of ${r}% (a national and a local sales tax charged as one tax).`, name: 'combined sales tax' };
 }
 
 const salesTax = skill({
   id: 'm103-sales-tax',
-  name: 'Sales tax (GST and HST)',
-  description: 'Add GST or HST to find a total price, and work backward from a total to the price before tax.',
+  name: 'Sales tax',
+  description: 'Add a sales tax (such as GST, VAT or HST) to find a total price, and work backward from a total to the price before tax.',
   outcomes: ['N1', 'A1'],
   lessonId: 'm103-1-3',
   calculator: true,
@@ -1267,10 +1267,10 @@ const salesTax = skill({
       const tax = P * 0.05;
       const askTax = rng.chance(0.4);
       return {
-        prompt: `${name} buys a ${it.what} for ${tag(P)} in Calgary. Use a GST rate of 5%. ${askTax ? 'How much GST does ' + name + ' pay' : 'What is the total price including GST'}?`,
+        prompt: `${name} buys a ${it.what} for ${tag(P)}. The store adds a sales tax of 5%. ${askTax ? 'How much sales tax does ' + name + ' pay' : 'What is the total price including the tax'}?`,
         parts: [moneyPart(askTax ? tax : P + tax)],
-        hints: ['GST = 5% of the price $= 0.05 \\times$ price.', askTax ? 'Multiply the price by $0.05$.' : 'Total = price + GST.'],
-        solution: [`GST: $0.05 \\times ${P} = ${mv(tax)}$`, ...(askTax ? [`${name} pays ${money(tax)} in GST.`] : [`Total: $${P} + ${mv(tax)} = ${mv(P + tax)}$`, `The total is ${money(P + tax)}.`])],
+        hints: ['Sales tax = 5% of the price $= 0.05 \\times$ price.', askTax ? 'Multiply the price by $0.05$.' : 'Total = price + sales tax.'],
+        solution: [`Sales tax: $0.05 \\times ${P} = ${mv(tax)}$`, ...(askTax ? [`${name} pays ${money(tax)} in sales tax.`] : [`Total: $${P} + ${mv(tax)} = ${mv(P + tax)}$`, `The total is ${money(P + tax)}.`])],
       };
     }
     if (d === 2) {
@@ -1290,7 +1290,7 @@ const salesTax = skill({
         hints: [two ? 'Add the prices first, then find the tax on the subtotal.' : `Find ${t.r}% of the price.`, `Total = price + tax, or price $\\times ${num(1 + t.r / 100)}$.`],
         solution: [
           ...(two ? [`Subtotal: $${mv(a)} + ${mv(b)} = ${mv(sub)}$`] : []),
-          `${t.name}: $${num(t.r / 100)} \\times ${mv(sub)} ${eq(tax)}$`,
+          `Tax: $${num(t.r / 100)} \\times ${mv(sub)} ${eq(tax)}$`,
           `Total: $${mv(sub)} + ${num(tax)} ${eq(total)}$`,
           `The total cost is ${money(total)}.`,
         ],
@@ -1359,7 +1359,7 @@ const symAmt = (sym: string) => (x: number) => `${sym}${isWhole(x) ? group(Strin
 const wordAmt = (word: string) => (x: number) => `${group(String(Math.round(x)))} ${word}`;
 
 const CURS: Cur[] = [
-  { name: 'US dollars', one: 'US dollar', places: ['Montana', 'Seattle', 'Arizona', 'Hawaii', 'Florida'], perCad: false, lo: 1.3, hi: 1.42, dp: 2, show: symAmt('US\\$'), label: 'US\\$', round: CENT },
+  { name: 'US dollars', one: 'US dollar', places: ['California', 'Seattle', 'Arizona', 'Hawaii', 'Florida'], perCad: false, lo: 1.3, hi: 1.42, dp: 2, show: symAmt('US\\$'), label: 'US\\$', round: CENT },
   { name: 'euros', one: 'euro', places: ['France', 'Italy', 'Germany', 'Spain', 'Portugal'], perCad: false, lo: 1.45, hi: 1.62, dp: 2, show: symAmt('€'), label: '€', round: 'to the nearest cent' },
   { name: 'British pounds', one: 'British pound', places: ['England', 'Scotland', 'Wales'], perCad: false, lo: 1.72, hi: 1.88, dp: 2, show: symAmt('£'), label: '£', round: 'to the nearest penny' },
   { name: 'Mexican pesos', one: 'Mexican peso', places: ['Mexico', 'Puerto Vallarta', 'Cancún'], perCad: true, lo: 12.5, hi: 15.5, dp: 0, show: wordAmt('Mexican pesos'), suffix: 'pesos', round: 'to the nearest peso' },
@@ -1493,7 +1493,7 @@ const currencyConvert = skill({
       };
     }
     const item = rng.pick(['a pair of work boots', 'a cordless impact driver', 'a snowboard', 'a winter parka', 'a set of tire chains']);
-    const town = rng.pick(['Lethbridge', 'Medicine Hat', 'Calgary', 'Red Deer']);
+    const town = rng.pick(['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest']);
     const { U, P } = retry(
       () => {
         const U = roundTo(rng.int(80, 300) + 0.99, 2);
@@ -1505,14 +1505,14 @@ const currencyConvert = skill({
     const save = Math.abs(C - P);
     const usCheaper = C < P;
     return {
-      prompt: `${cap(item)} costs ${usd.show(U)} at a store in Montana and ${money(P)} at a store in ${town}. ${rateText(usd, r, 4)} How much would ${name} save, in Canadian dollars, by buying from the cheaper store? Give your answer ${CENT}. (Ignore taxes and travel costs.)`,
+      prompt: `${cap(item)} costs ${usd.show(U)} at a store in the United States and ${money(P)} at a store in ${town}. ${rateText(usd, r, 4)} How much would ${name} save, in Canadian dollars, by buying from the cheaper store? Give your answer ${CENT}. (Ignore taxes and travel costs.)`,
       parts: [moneyPart(save)],
-      hints: ['Change the Montana price to Canadian dollars so both prices use the same currency.', 'Subtract the smaller price from the larger one.'],
+      hints: ['Change the US price to Canadian dollars so both prices use the same currency.', 'Subtract the smaller price from the larger one.'],
       solution: [
-        `Montana price in CAD: $${mv(U)} \\times ${fmtFixed(r, 4)} ${eq(C)}$`,
-        `Compare: about ${money(C)} in Montana and ${money(P)} in ${town}, so ${usCheaper ? 'Montana' : town} is cheaper.`,
+        `US price in CAD: $${mv(U)} \\times ${fmtFixed(r, 4)} ${eq(C)}$`,
+        `Compare: about ${money(C)} in the United States and ${money(P)} in ${town}, so ${usCheaper ? 'the US store' : `the store in ${town}`} is cheaper.`,
         `Savings: $${usCheaper ? `${mv(P)} - ${num(C)}` : `${num(C)} - ${mv(P)}`} ${eq(save)}$`,
-        `${name} would save about ${money(save)} by buying in ${usCheaper ? 'Montana' : town}.`,
+        `${name} would save about ${money(save)} by buying ${usCheaper ? 'in the United States' : `in ${town}`}.`,
       ],
     };
   },
@@ -1534,7 +1534,7 @@ interface BSCur {
 }
 
 const BS: BSCur[] = [
-  { one: 'US dollar', name: 'US dollars', code: 'USD', label: 'US\\$', places: ['Montana', 'Seattle', 'Arizona', 'Florida'], lo: 1.3, hi: 1.42, show: symAmt('US\\$') },
+  { one: 'US dollar', name: 'US dollars', code: 'USD', label: 'US\\$', places: ['California', 'Seattle', 'Arizona', 'Florida'], lo: 1.3, hi: 1.42, show: symAmt('US\\$') },
   { one: 'euro', name: 'euros', code: 'EUR', label: '€', places: ['France', 'Italy', 'Germany', 'Spain'], lo: 1.45, hi: 1.62, show: symAmt('€') },
   { one: 'British pound', name: 'British pounds', code: 'GBP', label: '£', places: ['England', 'Scotland', 'Wales', 'London'], lo: 1.72, hi: 1.88, show: symAmt('£') },
 ];

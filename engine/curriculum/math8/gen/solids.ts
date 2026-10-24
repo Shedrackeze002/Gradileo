@@ -1107,7 +1107,7 @@ const nets = skill({
             ? [
                 `A new pencil is shaped like a ${p.name}.`,
                 `${who} folds a net with $2$ ${many} and $${p.k}$ rectangles into a ${p.name}.`,
-                `A gazebo at a park in ${rng.pick(['Red Deer', 'Lethbridge', 'Canmore', 'Medicine Hat'])} has a floor and roof shaped like ${many}; the building is a ${p.name}.`,
+                `A gazebo at a park in ${rng.pick(['Riverton', 'Westbury', 'Pinewood', 'Ashford'])} has a floor and roof shaped like ${many}; the building is a ${p.name}.`,
               ]
             : [
                 `${who} folds a net with $1$ ${one} and $${p.k}$ triangles into a ${p.name}.`,
@@ -1667,7 +1667,7 @@ const saCylinder = skill({
       }
       // cost to paint a closed tank
       const c = rng.pick([
-        { thing: 'water tank on a farm near Olds', d: [2, 3.2], h: [2.5, 4] },
+        { thing: 'water tank on a farm', d: [2, 3.2], h: [2.5, 4] },
         { thing: 'grain bin model for a school project', d: [1, 1.6], h: [1.2, 2] },
         { thing: 'rain barrel', d: [0.6, 0.8], h: [0.9, 1.1] },
       ]);

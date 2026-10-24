@@ -384,7 +384,7 @@ function oneStep(rng: Rng): Ctx {
   if (kind <= 2) {
     const c = [
       { a: [12, 48], b: [12, 36], text: (a: number, b: number) => `A school orders $${b}$ boxes of markers. Each box holds $${a}$ markers. How many markers does the school order?`, unit: 'markers' },
-      { a: [125, 450], b: [12, 30], text: (a: number, b: number) => `A greenhouse in Brooks has $${b}$ rows of tomato plants. Each row has $${a}$ plants. How many tomato plants are there?`, unit: 'plants' },
+      { a: [125, 450], b: [12, 30], text: (a: number, b: number) => `A large greenhouse has $${b}$ rows of tomato plants. Each row has $${a}$ plants. How many tomato plants are there?`, unit: 'plants' },
       { a: [14, 29], b: [21, 35], text: (a: number, b: number) => `Tickets to a science centre cost ${money(a)} each. A class of $${b}$ students goes. What is the total cost of the tickets?`, unit: 'dollars' },
       { a: [235, 480], b: [12, 24], text: (a: number, b: number) => `${name} rides a bike $${a}$ km each month. How far does ${name} ride in $${b}$ months?`, unit: 'km' },
     ][kind === 2 ? rng.int(2, 3) : kind];
@@ -418,9 +418,9 @@ function remainderCtx(rng: Rng): Ctx {
   const div = `$${n} ${D} ${k} = ${q}$ R $${r}$`;
   if (kind === 'up') {
     const c = rng.pick([
-      { text: `$${n}$ students are going on a field trip to the Royal Tyrrell Museum. Each van holds $${k}$ students. How many vans are needed?`, unit: 'vans', extra: `The last $${r}$ student${r > 1 ? 's' : ''} still need${r > 1 ? '' : 's'} a van` },
+      { text: `$${n}$ students are going on a field trip to a dinosaur museum. Each van holds $${k}$ students. How many vans are needed?`, unit: 'vans', extra: `The last $${r}$ student${r > 1 ? 's' : ''} still need${r > 1 ? '' : 's'} a van` },
       { text: `A class needs $${n}$ cupcakes for a bake sale. Cupcakes come in boxes of $${k}$. How many boxes must the class buy?`, unit: 'boxes', extra: `With only $${q}$ boxes the class would be $${r}$ cupcake${r > 1 ? 's' : ''} short` },
-      { text: `$${n}$ guests are coming to a community supper in Camrose. Each table seats $${k}$ people. How many tables are needed so everyone has a seat?`, unit: 'tables', extra: `The last $${r}$ guest${r > 1 ? 's' : ''} still need${r > 1 ? '' : 's'} a table` },
+      { text: `$${n}$ guests are coming to a community supper in a small town. Each table seats $${k}$ people. How many tables are needed so everyone has a seat?`, unit: 'tables', extra: `The last $${r}$ guest${r > 1 ? 's' : ''} still need${r > 1 ? '' : 's'} a table` },
     ]);
     return {
       prompt: c.text,
@@ -433,7 +433,7 @@ function remainderCtx(rng: Rng): Ctx {
   if (kind === 'down') {
     const c = rng.pick([
       { text: `${name} shares $${n}$ cookies equally among $${k}$ friends. How many cookies does each friend get? (Cookies are not broken.)`, unit: 'cookies', extra: `Each friend gets $${q}$. The $${r}$ cookie${r > 1 ? 's' : ''} left over cannot be shared equally` },
-      { text: `A farm in Alberta packs $${n}$ eggs into cartons of $${k}$. How many cartons can be filled?`, unit: 'cartons', extra: `Only full cartons count. The $${r}$ egg${r > 1 ? 's' : ''} left over do${r > 1 ? '' : 'es'} not fill a carton` },
+      { text: `A farm packs $${n}$ eggs into cartons of $${k}$. How many cartons can be filled?`, unit: 'cartons', extra: `Only full cartons count. The $${r}$ egg${r > 1 ? 's' : ''} left over do${r > 1 ? '' : 'es'} not fill a carton` },
       { text: `${name} has a ribbon $${n}$ cm long. ${name} cuts pieces that are $${k}$ cm long for a craft. How many pieces can ${name} cut?`, unit: 'pieces', extra: `The $${r}$ cm left over is too short for another piece` },
     ]);
     return {
@@ -470,7 +470,7 @@ function twoStep(rng: Rng): Ctx {
     const k = retry(() => rng.int(6, 9), (x) => total % x !== 0);
     const q = Math.floor(total / k);
     return {
-      prompt: `$${classes}$ classes from a school in Red Deer are going skating. Each class has $${per}$ students. Each bus holds $${k}$ students. How many buses are needed?`,
+      prompt: `$${classes}$ classes from a school are going skating. Each class has $${per}$ students. Each bus holds $${k}$ students. How many buses are needed?`,
       hint: 'First find the number of students. Then divide by the number in each bus.',
       steps: [
         `First, the number of students: $${per} ${T} ${classes}$.`,

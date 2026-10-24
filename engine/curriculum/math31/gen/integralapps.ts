@@ -605,7 +605,7 @@ const areaBetween = skill({
       const zero = () => 0;
       const g = regionGrid([T, zero], -r, r, { y0: -0.5 });
       const fig = areaFigure([{ f: T, tex: `${tn(H)} - ${cf(c)}x^{2}`, color: 'brand' }], g, hatch(zero, T, -r, r, g), (x, y) => x > -r && x < r && y > 0 && y < T(x));
-      const place = rng.pick(['a community hall in Camrose', 'a church in St. Albert', 'a library in Okotoks', 'a museum in Drumheller']);
+      const place = rng.pick(['a community hall in Riverton', 'a church in Hillcrest', 'a library in Ashford', 'a museum in Stonebridge']);
       return {
         prompt: `An arched window in ${place} is the region between the parabola $y = ${tn(H)} - ${cf(c)}x^{2}$ and the $x$-axis, with $x$ and $y$ in metres. Find the area of the glass.${v.note}`,
         figure: fig,
@@ -637,7 +637,7 @@ const areaBetween = skill({
       hatch(B, T, -r, r, g),
       (x, y) => x > -r && x < r && y > B(x) && y < T(x),
     );
-    const who = rng.pick(['A jeweller in Edmonton', 'A sign maker in Red Deer', 'A potter in Canmore', 'A designer in Calgary']);
+    const who = rng.pick(['A jeweller in Riverton', 'A sign maker in Hillcrest', 'A potter in Stonebridge', 'A designer in Brookfield']);
     return {
       prompt: `${who} makes a lens-shaped piece bounded by the curves $y = ${Tt}$ and $y = ${Bt}$, with $x$ and $y$ in centimetres. Find its area.${v.note}`,
       figure: fig,
@@ -1134,7 +1134,7 @@ const volume = skill({
       const xc = Math.sqrt(k * h);
       const f = (x: number) => (x * x) / k;
       const g = niceGrid(-xc * 1.2, xc * 1.2, -0.5, h * 1.2);
-      const who = rng.pick(['A potter in Medicine Hat', 'A glassblower in Canmore', 'A woodturner in Peace River']);
+      const who = rng.pick(['A potter in Westbury', 'A glassblower in Stonebridge', 'A woodturner in Pinewood']);
       return {
         prompt: `${who} makes a bowl whose inside is formed by rotating the curve $y = \\dfrac{x^{2}}{${k}}$, for $0 \\le y \\le ${h}$, about the $y$-axis (measurements in centimetres). How much does the bowl hold, in millilitres? ($1\\text{ cm}^3 = 1$ mL.) Round to the nearest millilitre.`,
         figure: revYFigure(f, `x^{2}/${k}`, xc, h, g),

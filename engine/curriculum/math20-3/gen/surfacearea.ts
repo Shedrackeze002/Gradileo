@@ -77,9 +77,9 @@ export const NAMES = [
   'Rosalie', 'Nathan', 'Ingrid', 'Tanis', 'Mariam',
 ];
 export const TOWNS = [
-  'Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Camrose', 'Lloydminster', 'Brooks', 'Olds',
-  'Airdrie', 'Okotoks', 'Wetaskiwin', 'Vegreville', 'Drumheller', 'Peace River', 'Taber', 'Stettler',
-  'Cold Lake', 'High River', 'Athabasca', 'Westlock',
+  'Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury',
+  'Ashford', 'Clearwater', 'Elmwood', 'Cedar Hills', 'Oakdale', 'Fernbrook', 'Millbrook', 'Glenview',
+  'Birchwood', 'Fairhaven', 'Kingsbury', 'Willowdale',
 ];
 
 // ---------------------------------------------------------------------------

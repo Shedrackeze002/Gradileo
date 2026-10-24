@@ -201,8 +201,8 @@ const RANGE_CTXS: RangeCtx[] = [
   { text: (lo, hi) => `The depth of the water at a dock in Prince Rupert rises and falls with the tides, between $${lo}$ m at low tide and $${hi}$ m at high tide.`, make: (rng) => { const lo = rng.float(0.8, 2.4, 1); return [lo, roundTo(lo + rng.float(3.6, 6.4, 1), 1)]; }, unit: 'm' },
   { text: (lo, hi) => `The height of a seat on a Ferris wheel varies between $${lo}$ m and $${hi}$ m above the ground as the wheel turns.`, make: (rng) => { const lo = rng.int(1, 3); return [lo, lo + 2 * rng.int(6, 15)]; }, unit: 'm' },
   { text: (lo, hi) => `A nurse measures a patient's blood pressure. It rises and falls with each heartbeat, between $${lo}$ mmHg and $${hi}$ mmHg (millimetres of mercury).`, make: (rng) => { const lo = rng.int(70, 85); return [lo, lo + rng.int(35, 50)]; }, unit: 'mmHg' },
-  { text: (lo, hi) => `A buoy bobs up and down on the waves of a lake in Kananaskis. Its height above the lake bottom varies between $${lo}$ m and $${hi}$ m.`, make: (rng) => { const lo = rng.float(4, 7, 1); return [lo, roundTo(lo + rng.float(0.4, 1.8, 1), 1)]; }, unit: 'm' },
-  { text: (lo, hi) => `A weather station near Red Deer recorded average monthly temperatures that vary between $${lo}$°C in the coldest month and $${hi}$°C in the warmest month.`, make: (rng) => { const lo = -rng.float(8, 16, 1); return [lo, roundTo(rng.float(14, 19, 1), 1)]; }, unit: '°C' },
+  { text: (lo, hi) => `A buoy bobs up and down on the waves of a mountain lake. Its height above the lake bottom varies between $${lo}$ m and $${hi}$ m.`, make: (rng) => { const lo = rng.float(4, 7, 1); return [lo, roundTo(lo + rng.float(0.4, 1.8, 1), 1)]; }, unit: 'm' },
+  { text: (lo, hi) => `A weather station near Hillcrest recorded average monthly temperatures that vary between $${lo}$°C in the coldest month and $${hi}$°C in the warmest month.`, make: (rng) => { const lo = -rng.float(8, 16, 1); return [lo, roundTo(rng.float(14, 19, 1), 1)]; }, unit: '°C' },
 ];
 
 function featFromMaxMin(rng: Rng): GenOutput {
@@ -355,7 +355,7 @@ const TIME_CTXS: TimeCtx[] = [
     make: (rng) => { const T = rng.pick([4, 6, 8]); return { M: rng.int(5, 7), A: rng.pick([1, 2]), T, xStep: T / 4, yStep: 1, xMax: 3 * T, shape: rng.pick(['up', 'down', 'max'] as const), t0: 0 }; },
   },
   {
-    intro: () => 'The graph shows the temperature in a greenhouse in Brooks over two days.',
+    intro: () => 'The graph shows the temperature in a greenhouse over two days.',
     xLabel: 'Time (h)', yLabel: 'Temperature (°C)', xUnit: 'h', yUnit: '°C',
     make: (rng) => ({ M: 2 * rng.int(7, 11), A: rng.pick([4, 6, 8]), T: 24, xStep: 3, yStep: 2, xMax: 48, shape: 'max', t0: rng.pick([12, 15]) }),
   },
@@ -574,7 +574,7 @@ function featContext(rng: Rng): GenOutput {
     const h = rng.pick([1, 1.5, 2, 2.5, 3].filter((v) => v < r));
     const T = rng.pick([8, 10, 12, 15, 20, 24]);
     return {
-      prompt: `A water wheel at a heritage park near Edmonton has a radius of $${r}$ m. Its centre is $${fmt(h)}$ m above the surface of the water, and it makes one rotation every $${T}$ s. The height of a paddle tip above the water is a sinusoidal function of time. Determine the maximum height, the minimum height, the amplitude and the period. (A negative height means the paddle is under water.)`,
+      prompt: `A water wheel at a heritage park has a radius of $${r}$ m. Its centre is $${fmt(h)}$ m above the surface of the water, and it makes one rotation every $${T}$ s. The height of a paddle tip above the water is a sinusoidal function of time. Determine the maximum height, the minimum height, the amplitude and the period. (A negative height means the paddle is under water.)`,
       parts: [
         numPart(r + h, { label: 'Maximum height', suffix: 'm', display: 'decimal' }),
         numPart(h - r, { label: 'Minimum height', suffix: 'm', display: 'decimal' }),
@@ -617,7 +617,7 @@ function featContext(rng: Rng): GenOutput {
     const p = rng.pick([1, 1.5, 2, 3]);
     const T = rng.pick([45, 60, 75, 90, 120]);
     return {
-      prompt: `A Ferris wheel at the Calgary Stampede has a diameter of $${D}$ m. Riders board at the bottom, from a platform $${fmt(p)}$ m above the ground, and the wheel makes one rotation every $${T}$ s. Determine the maximum height of a rider, the amplitude, the equation of the midline and the period of the rider's height.`,
+      prompt: `A Ferris wheel at a summer fair has a diameter of $${D}$ m. Riders board at the bottom, from a platform $${fmt(p)}$ m above the ground, and the wheel makes one rotation every $${T}$ s. Determine the maximum height of a rider, the amplitude, the equation of the midline and the period of the rider's height.`,
       parts: [
         numPart(D + p, { label: 'Maximum height', suffix: 'm', display: 'decimal' }),
         numPart(D / 2, { label: 'Amplitude', suffix: 'm' }),
@@ -755,16 +755,16 @@ const timePhrase = (m: Model, dp = m.xDp) => (m.xUnit === 'days' ? 'to the neare
 const uS = (m: Model) => (m.unit === '°C' ? '°C' : ` ${m.unit}`);
 
 const DAYLIGHT: Array<[string, number, number, number]> = [
-  ['Grande Prairie', 5.07, 12.16, 3],
-  ['Edmonton', 4.88, 12.19, 1],
-  ['Calgary', 4.31, 12.18, 1],
-  ['Fort McMurray', 5.62, 12.21, 1],
-  ['Lethbridge', 4.05, 12.17, 1],
-  ['High Level', 6.38, 12.3, 1],
+  ['Pinewood', 5.07, 12.16, 3],
+  ['Riverton', 4.88, 12.19, 1],
+  ['Brookfield', 4.31, 12.18, 1],
+  ['Clearwater', 5.62, 12.21, 1],
+  ['Ashford', 4.05, 12.17, 1],
+  ['Northgate', 6.38, 12.3, 1],
 ];
 const TEMPS: Array<[string, number, number]> = [
-  ['Edmonton', 14.0, 3.5], ['Calgary', 11.8, 4.3], ['Grande Prairie', 14.6, 2.1], ['Fort McMurray', 16.8, 1.0],
-  ['Red Deer', 13.1, 3.2], ['Lethbridge', 11.3, 5.9], ['Medicine Hat', 13.6, 6.1], ['Jasper', 11.6, 3.1],
+  ['Riverton', 14.0, 3.5], ['Brookfield', 11.8, 4.3], ['Pinewood', 14.6, 2.1], ['Clearwater', 16.8, 1.0],
+  ['Hillcrest', 13.1, 3.2], ['Ashford', 11.3, 5.9], ['Westbury', 13.6, 6.1], ['Stonebridge', 11.6, 3.1],
 ];
 
 function makeModel(rng: Rng, kinds: Model['kind'][] = ['tide', 'daylight', 'daylight', 'ferris', 'temp', 'lungs']): Model {
@@ -830,7 +830,7 @@ function makeModel(rng: Rng, kinds: Model['kind'][] = ['tide', 'daylight', 'dayl
     };
   }
   if (kind === 'ferris') {
-    const place = rng.pick(['the Calgary Stampede', 'K-Days in Edmonton', 'a summer fair in Medicine Hat', 'Westerner Days in Red Deer', 'a carnival in Lethbridge']);
+    const place = rng.pick(['a summer rodeo', 'the city exhibition in Riverton', 'a summer fair in Westbury', 'a county fair in Hillcrest', 'a carnival in Ashford']);
     const T = rng.pick([36, 40, 45, 48, 60, 72, 75, 90]);
     const R = rng.int(6, 20);
     const N = rng.int(3, 5);
@@ -1083,7 +1083,7 @@ function modelCompare(rng: Rng): GenOutput {
     const eQ = `L = ${fmt(q[1])}\\sin(0.0172n ${plus(c)}) + ${fmt(q[2])}`;
     const sP = Math.sin(0.0172 * n + c);
     return {
-      prompt: `${name} used sinusoidal regression to model the number of hours of daylight, $L$, on day $n$ of the year ($n = 1$ is January 1) in two Alberta communities:\n\n${p[0]}: $${eP}$\n\n${q[0]}: $${eQ}$\n\nOn ${dateOf(n)} (day $${n}$), how many more hours of daylight does ${p[0]} have than ${q[0]}? Give your answer ${roundingPhrase(1)} of an hour (negative if ${p[0]} has less).`,
+      prompt: `${name} used sinusoidal regression to model the number of hours of daylight, $L$, on day $n$ of the year ($n = 1$ is January 1) in two northern towns:\n\n${p[0]}: $${eP}$\n\n${q[0]}: $${eQ}$\n\nOn ${dateOf(n)} (day $${n}$), how many more hours of daylight does ${p[0]} have than ${q[0]}? Give your answer ${roundingPhrase(1)} of an hour (negative if ${p[0]} has less).`,
       parts: [numPart(diff, { label: 'Difference', suffix: 'h', decimals: 1 })],
       calculator: true,
       hints: [`Evaluate both models at $n = ${n}$ (radian mode).`, `Subtract: ${p[0]} minus ${q[0]}.`],
@@ -1091,7 +1091,7 @@ function modelCompare(rng: Rng): GenOutput {
         `Both models have the same angle: $0.0172(${n}) ${plus(c)} = ${work(0.0172 * n + c)}$, and $\\sin(${work(0.0172 * n + c)}) = ${work(sP)}$.`,
         `${p[0]}: $L = ${fmt(p[1])}(${work(sP)}) + ${fmt(p[2])} = ${work(fP(n))}$ h`,
         `${q[0]}: $L = ${fmt(q[1])}(${work(sP)}) + ${fmt(q[2])} = ${work(fQ(n))}$ h`,
-        `Difference: $${work(fP(n))} - ${work(fQ(n))} = ${work(diff)}$, about $${fmtFixed(diff, 1)}$ h. ${sP > 0 ? `Between the spring and fall equinoxes the community farther north has more daylight.` : `Between the fall and spring equinoxes the community farther north has less daylight.`}`,
+        `Difference: $${work(fP(n))} - ${work(fQ(n))} = ${work(diff)}$, about $${fmtFixed(diff, 1)}$ h. ${sP > 0 ? `Between the spring and fall equinoxes the town farther north (the one with the larger amplitude) has more daylight.` : `Between the fall and spring equinoxes the town farther north (the one with the larger amplitude) has less daylight.`}`,
       ],
     };
   }
@@ -1103,7 +1103,7 @@ function modelCompare(rng: Rng): GenOutput {
   const diff = fP(mo) - fQ(mo);
   const s = Math.sin(0.524 * mo + c);
   return {
-    prompt: `${name} used sinusoidal regression to model the average monthly temperature, $T$ (°C), in month $m$ ($m = 1$ is January) for two Alberta cities:\n\n${p[0]}: $T = ${fmt(p[1])}\\sin(0.524m ${plus(c)}) + ${fmt(p[2])}$\n\n${q[0]}: $T = ${fmt(q[1])}\\sin(0.524m ${plus(c)}) + ${fmt(q[2])}$\n\nAccording to the models, how much warmer is ${p[0]} than ${q[0]} in ${monthName(mo)}? Give your answer ${roundingPhrase(1)} of a degree (negative if ${p[0]} is colder).`,
+    prompt: `${name} used sinusoidal regression to model the average monthly temperature, $T$ (°C), in month $m$ ($m = 1$ is January) for two cities:\n\n${p[0]}: $T = ${fmt(p[1])}\\sin(0.524m ${plus(c)}) + ${fmt(p[2])}$\n\n${q[0]}: $T = ${fmt(q[1])}\\sin(0.524m ${plus(c)}) + ${fmt(q[2])}$\n\nAccording to the models, how much warmer is ${p[0]} than ${q[0]} in ${monthName(mo)}? Give your answer ${roundingPhrase(1)} of a degree (negative if ${p[0]} is colder).`,
     parts: [numPart(diff, { label: 'Difference', suffix: '°C', decimals: 1 })],
     calculator: true,
     hints: [`${monthName(mo)} is $m = ${mo}$. Evaluate both models (radian mode).`, `Subtract: ${p[0]} minus ${q[0]}.`],

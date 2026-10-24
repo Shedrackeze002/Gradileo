@@ -257,7 +257,7 @@ const likeTerms = skill({
       const shape = rng.pick([
         { name: 'triangular garden', sides: 3, unit: 'm' },
         { name: 'triangular pennant for the school hockey team', sides: 3, unit: 'cm' },
-        { name: 'four-sided park in Red Deer', sides: 4, unit: 'm' },
+        { name: 'four-sided park in the city', sides: 4, unit: 'm' },
         { name: 'quadrilateral patio', sides: 4, unit: 'm' },
       ]);
       const sides = retry(

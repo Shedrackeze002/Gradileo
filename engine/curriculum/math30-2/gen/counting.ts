@@ -14,7 +14,7 @@ const NAMES = [
   'Arjun', 'Maëlle', 'Connor', 'Layla', 'Nathaniel', 'Wren', 'Bao', 'Fiona', 'Ibrahim', 'Skye', 'Diego', 'Naomi', 'Kwame', 'Jessie', 'Parveen',
 ];
 
-const PLACES = ['Calgary', 'Edmonton', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Grande Prairie', 'Airdrie', 'Spruce Grove', 'St. Albert', 'Okotoks', 'Camrose', 'Brooks'];
+const PLACES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Elmwood'];
 
 const DECK =
   'A standard deck of 52 playing cards has four suits: hearts and diamonds (red), clubs and spades (black). Each suit has 13 ranks: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q and K. The J, Q and K are face cards.';

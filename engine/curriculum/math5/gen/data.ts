@@ -14,7 +14,7 @@ const NAMES = [
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Ananya', 'Nathan', 'Lena', 'Diego', 'Harpreet', 'Noor',
 ];
 const TEACHERS = ['Ms. Okafor', 'Mr. Dhillon', 'Mme Gagnon', 'Mr. Nguyen', 'Ms. Redcrow', 'Mrs. Kowalski', 'Mr. Haddad', 'Ms. Lafleur'];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Grande Prairie', 'Airdrie', 'Camrose', 'Brooks', 'Okotoks', 'St. Albert', 'Cold Lake'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Millbrook'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure; answerDisplay?: string };
 
@@ -473,10 +473,10 @@ interface StemCtx {
 }
 const STEMS: StemCtx[] = [
   { setup: 'Students counted how many times they could skip rope in one minute.', noun: 'students', lo: 21, hi: 58, val: (v) => `$${v}$ skips`, ask: (c) => `How many students skipped rope ${c} times?`, fewer: 'fewer', suffix: 'skips' },
-  { setup: 'A Grade 5 class recorded the high temperature in Medicine Hat each day for two weeks in July, in degrees Celsius.', noun: 'days', lo: 21, hi: 36, val: (v) => `$${v}^\\circ\\text{C}$`, ask: (c) => `On how many days was the high temperature ${c} degrees Celsius?`, fewer: 'less', suffix: '°C' },
+  { setup: 'A Grade 5 class recorded the high temperature in their town each day for two weeks in July, in degrees Celsius.', noun: 'days', lo: 21, hi: 36, val: (v) => `$${v}^\\circ\\text{C}$`, ask: (c) => `On how many days was the high temperature ${c} degrees Celsius?`, fewer: 'less', suffix: '°C' },
   { setup: 'Students in a Grade 5 class wrote a spelling quiz marked out of $50$.', noun: 'students', lo: 24, hi: 50, val: (v) => `$${v}$ points`, ask: (c) => `How many students scored ${c} points?`, fewer: 'fewer', suffix: 'points' },
   { setup: 'Students grew bean plants in class and measured their heights in centimetres after one month.', noun: 'plants', lo: 12, hi: 45, val: (v) => `$${v}$ cm`, ask: (c) => `How many plants were ${c} cm tall?`, fewer: 'less', suffix: 'cm' },
-  { setup: 'A basketball team in Lethbridge recorded its points in each game of the season.', noun: 'games', lo: 32, hi: 68, val: (v) => `$${v}$ points`, ask: (c) => `In how many games did the team score ${c} points?`, fewer: 'fewer', suffix: 'points' },
+  { setup: 'A local basketball team recorded its points in each game of the season.', noun: 'games', lo: 32, hi: 68, val: (v) => `$${v}$ points`, ask: (c) => `In how many games did the team score ${c} points?`, fewer: 'fewer', suffix: 'points' },
   { setup: 'Students recorded how many minutes they read at home on Monday.', noun: 'students', lo: 15, hi: 55, val: (v) => `$${v}$ minutes`, ask: (c) => `How many students read for ${c} minutes?`, fewer: 'fewer', suffix: 'minutes' },
 ];
 

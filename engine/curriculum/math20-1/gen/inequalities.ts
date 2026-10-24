@@ -247,7 +247,7 @@ function pickContext(rng: Rng): Context {
     ] as Array<[number, number]>);
     const T = rng.pick([960, 1200, 1500, 1800]);
     return {
-      intro: `The drama club at a high school in ${rng.pick(['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat'])} sells adult tickets for \\$${p} and student tickets for \\$${q}. The club needs to raise at least \\$${T}. Let $a$ be the number of adult tickets sold and $s$ the number of student tickets sold.`,
+      intro: `The drama club at a high school in ${rng.pick(['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest'])} sells adult tickets for \\$${p} and student tickets for \\$${q}. The club needs to raise at least \\$${T}. Let $a$ be the number of adult tickets sold and $s$ the number of student tickets sold.`,
       vars: ['a', 's'],
       coef: [p, q],
       total: T,
@@ -298,7 +298,7 @@ function pickContext(rng: Rng): Context {
     ] as Array<[number, number]>);
     const T = rng.pick([600, 900, 1200, 1500]);
     return {
-      intro: `A minor hockey team in ${rng.pick(['Airdrie', 'Camrose', 'Okotoks', 'Brooks'])} sells chocolate bars for \\$${p} each and raffle tickets for \\$${q} each. The team wants to raise more than \\$${T}. Let $b$ be the number of chocolate bars sold and $r$ the number of raffle tickets sold.`,
+      intro: `A minor hockey team in ${rng.pick(['Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury'])} sells chocolate bars for \\$${p} each and raffle tickets for \\$${q} each. The team wants to raise more than \\$${T}. Let $b$ be the number of chocolate bars sold and $r$ the number of raffle tickets sold.`,
       vars: ['b', 'r'],
       coef: [p, q],
       total: T,

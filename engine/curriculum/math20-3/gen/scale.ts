@@ -158,12 +158,12 @@ interface PlanCtx {
 }
 
 const METRIC_PLANS: PlanCtx[] = [
-  { plan: 'the floor plan of a house in Airdrie', part: 'the living-room wall', k: [0.5, 1, 2], n: [50, 100], lo: 3, hi: 8, room: 'Living room' },
-  { plan: 'a blueprint for a detached garage in Spruce Grove', part: 'the back wall of the garage', k: [0.5, 1, 2], n: [50, 100], lo: 5, hi: 9, room: 'Garage' },
-  { plan: 'a plan of a machine shed near Vegreville', part: 'the long wall of the shed', k: [2, 4, 5], n: [200, 250, 500], lo: 15, hi: 40, room: 'Shed' },
-  { plan: 'a landscape plan for a backyard in Lethbridge', part: 'the back fence', k: [1, 2], n: [100, 200], lo: 8, hi: 20, room: 'Yard' },
-  { plan: 'a site plan for a well pad near Drayton Valley', part: 'the access road', k: [5, 10, 20], n: [1000, 2000], lo: 60, hi: 200, room: 'Well pad' },
-  { plan: 'a plan of a restaurant kitchen in Red Deer', part: 'the prep counter', k: [0.5, 1], n: [20, 25, 50], lo: 2, hi: 5, room: 'Kitchen' },
+  { plan: 'the floor plan of a house', part: 'the living-room wall', k: [0.5, 1, 2], n: [50, 100], lo: 3, hi: 8, room: 'Living room' },
+  { plan: 'a blueprint for a detached garage', part: 'the back wall of the garage', k: [0.5, 1, 2], n: [50, 100], lo: 5, hi: 9, room: 'Garage' },
+  { plan: 'a plan of a machine shed on a farm', part: 'the long wall of the shed', k: [2, 4, 5], n: [200, 250, 500], lo: 15, hi: 40, room: 'Shed' },
+  { plan: 'a landscape plan for a backyard', part: 'the back fence', k: [1, 2], n: [100, 200], lo: 8, hi: 20, room: 'Yard' },
+  { plan: 'a site plan for a well pad', part: 'the access road', k: [5, 10, 20], n: [1000, 2000], lo: 60, hi: 200, room: 'Well pad' },
+  { plan: 'a plan of a restaurant kitchen', part: 'the prep counter', k: [0.5, 1], n: [20, 25, 50], lo: 2, hi: 5, room: 'Kitchen' },
 ];
 
 interface ImpCtx {
@@ -174,11 +174,11 @@ interface ImpCtx {
 }
 
 const IMPERIAL_PLANS: ImpCtx[] = [
-  { plan: 'a plan for a backyard deck in Okotoks', part: 'the long side of the deck', lo: 10, hi: 24 },
+  { plan: 'a plan for a backyard deck', part: 'the long side of the deck', lo: 10, hi: 24 },
   { plan: 'a blueprint for a two-car garage', part: 'the side wall', lo: 20, hi: 28 },
   { plan: 'a plan for a tool shed', part: 'the front wall', lo: 8, hi: 16 },
-  { plan: 'a floor plan of a basement suite in Edmonton', part: 'the bedroom wall', lo: 9, hi: 15 },
-  { plan: 'a plan for a horse barn near Cochrane', part: 'the centre aisle', lo: 36, hi: 72 },
+  { plan: 'a floor plan of a basement suite', part: 'the bedroom wall', lo: 9, hi: 15 },
+  { plan: 'a plan for a horse barn', part: 'the centre aisle', lo: 36, hi: 72 },
 ];
 
 /** Architectural scales: inches on the drawing for 1 ft. */
@@ -238,10 +238,10 @@ function lengthD1(rng: Rng, name: string): Out {
 }
 
 const MAPS = [
-  { map: 'A hiking map of Kananaskis Country', what: 'two campsites', n: 50000 },
-  { map: 'A topographic map of the area near Hinton', what: 'two lookout points', n: 50000 },
-  { map: 'A road map of central Alberta', what: 'two towns', n: 250000 },
-  { map: 'A map of a ranch near Pincher Creek', what: 'the two gates', n: 20000 },
+  { map: 'A hiking map of a mountain park', what: 'two campsites', n: 50000 },
+  { map: 'A topographic map of the foothills', what: 'two lookout points', n: 50000 },
+  { map: 'A road map of the region', what: 'two towns', n: 250000 },
+  { map: 'A map of a large cattle ranch', what: 'the two gates', n: 20000 },
   { map: 'A map of the trails in a provincial park', what: 'two trailheads', n: 25000 },
 ];
 
@@ -456,7 +456,7 @@ const AREA_CTX = [
 
 const VOL_CTX = [
   { obj: 'a water tank for a cattle trough', noun: 'water tank', amt: 'holds', of: 'water', u: 'L', range: [40, 400] },
-  { obj: 'a sandbox at a daycare in Calgary', noun: 'sandbox', amt: 'holds', of: 'sand', u: 'L', range: [100, 600] },
+  { obj: 'a sandbox at a daycare', noun: 'sandbox', amt: 'holds', of: 'sand', u: 'L', range: [100, 600] },
   { obj: 'a concrete footing', noun: 'concrete footing', amt: 'uses', of: 'concrete', u: 'm³', range: [0.2, 1.2] },
   { obj: 'a shipping box', noun: 'shipping box', amt: 'holds', of: 'packing', u: 'L', range: [12, 60] },
   { obj: 'a planter box', noun: 'planter box', amt: 'holds', of: 'soil', u: 'L', range: [20, 90] },
@@ -765,10 +765,10 @@ function randomHMap(rng: Rng, R: number, C: number, maxH: number, zeros: boolean
 
 const CUBE_CTX = [
   { who: (n: string) => `${n} builds a structure from linking cubes.`, unit: 'cubes', one: 'cube' },
-  { who: () => 'Cube-shaped boxes are stacked in a warehouse in Nisku.', unit: 'boxes', one: 'box' },
-  { who: () => 'Cube-shaped crates are stacked in a storage yard in Fort McMurray.', unit: 'crates', one: 'crate' },
-  { who: () => 'Wooden blocks are stacked at a daycare in Calgary.', unit: 'blocks', one: 'block' },
-  { who: () => 'Cube-shaped concrete blocks are stacked on a job site in Leduc.', unit: 'blocks', one: 'block' },
+  { who: () => 'Cube-shaped boxes are stacked in a warehouse.', unit: 'boxes', one: 'box' },
+  { who: () => 'Cube-shaped crates are stacked in a storage yard.', unit: 'crates', one: 'crate' },
+  { who: () => 'Wooden blocks are stacked at a daycare.', unit: 'blocks', one: 'block' },
+  { who: () => 'Cube-shaped concrete blocks are stacked on a job site.', unit: 'blocks', one: 'block' },
 ];
 
 const TOP_NOTE = 'The table is a top view: each number tells how many are stacked in that spot, and the front of the stack is at the bottom of the table.';
@@ -1319,7 +1319,7 @@ function explodedD3(rng: Rng, name: string): Out {
     const tax = sub * 0.05;
     const grand = sub + tax;
     return {
-      prompt: `${LIST_INTRO(kit)} A youth group in Wetaskiwin is buying the parts to build $${k}$ ${kit.thing === 'bike wheel' ? 'bike wheels' : `${kit.thing}s`}. Add $5\\%$ GST to the total. What is the total cost, ${CENT}?`,
+      prompt: `${LIST_INTRO(kit)} A youth group is buying the parts to build $${k}$ ${kit.thing === 'bike wheel' ? 'bike wheels' : `${kit.thing}s`}. Add $5\\%$ GST to the total. What is the total cost, ${CENT}?`,
       figure: listTable(ps, true),
       parts: [moneyPart(grand)],
       hints: ['Find the cost of the parts for one, then multiply by the number they are building.', 'GST is $5\\%$ of the cost: multiply by $0.05$ and add it, or multiply the cost by $1.05$.'],
@@ -1355,7 +1355,7 @@ function explodedD3(rng: Rng, name: string): Out {
   );
   const diff = total - kitPrice;
   return {
-    prompt: `${LIST_INTRO(kit)} A hardware store in Brooks sells the complete kit for ${money(kitPrice)}. How much more would it cost to buy all the parts separately at the unit prices shown? Give your answer ${CENT}.`,
+    prompt: `${LIST_INTRO(kit)} A hardware store sells the complete kit for ${money(kitPrice)}. How much more would it cost to buy all the parts separately at the unit prices shown? Give your answer ${CENT}.`,
     figure: listTable(ps, true),
     parts: [moneyPart(diff)],
     hints: ['Find the total cost of the parts: multiply each quantity by its unit price and add.', 'Subtract the price of the complete kit.'],

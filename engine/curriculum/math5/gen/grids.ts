@@ -262,7 +262,7 @@ const MAPS = [
   { place: 'a campground', start: 'the tent', mid: 'the washroom', end: 'the dock' },
   { place: 'a zoo', start: 'the front gate', mid: 'the bison', end: 'the snack bar' },
   { place: 'the schoolyard', start: 'the front door', mid: 'the swings', end: 'the soccer goal' },
-  { place: 'a park in Lethbridge', start: 'the parking lot', mid: 'the pond', end: 'the picnic tables' },
+  { place: 'a city park', start: 'the parking lot', mid: 'the pond', end: 'the picnic tables' },
   { place: 'a farm', start: 'the barn', mid: 'the chicken coop', end: 'the garden' },
   { place: 'a ski hill', start: 'the lodge', mid: 'the chairlift', end: 'the warming hut' },
 ];

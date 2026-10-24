@@ -478,7 +478,7 @@ const IDENTITIES: Array<{ e: string; ans: string; wrong: string[]; why: string[]
 
 const EXP_CONTEXTS = [
   { what: 'The number of bacteria in a culture', q: 'N', unit: 'bacteria', tUnit: 'hours', tShort: 'h', p0: [200, 500, 800, 1000], k: [0.15, 0.2, 0.25, 0.35], growth: true },
-  { what: 'The population of a town near Red Deer', q: 'P', unit: 'people', tUnit: 'years', tShort: 'years', p0: [4000, 6500, 8200, 12000], k: [0.012, 0.018, 0.024, 0.03], growth: true },
+  { what: 'The population of a small town', q: 'P', unit: 'people', tUnit: 'years', tShort: 'years', p0: [4000, 6500, 8200, 12000], k: [0.012, 0.018, 0.024, 0.03], growth: true },
   { what: 'The mass of a radioactive sample, in milligrams,', q: 'm', unit: 'mg', tUnit: 'days', tShort: 'days', p0: [80, 120, 250, 400], k: [-0.05, -0.08, -0.115, -0.2], growth: false },
   { what: 'The temperature difference, in degrees Celsius, between a cooling cup of tea and the room', q: 'D', unit: '°C', tUnit: 'minutes', tShort: 'min', p0: [60, 70, 75], k: [-0.04, -0.06, -0.09], growth: false },
 ] as const;

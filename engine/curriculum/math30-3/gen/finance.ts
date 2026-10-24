@@ -44,7 +44,7 @@ const USED_VEHICLES: Vehicle[] = [
   { desc: 'a used SUV', lo: 14000, hi: 28000, step: 100, l100: [9.0, 11.8] },
   { desc: 'a used work van', lo: 15000, hi: 26000, step: 100, l100: [12.5, 15.5] },
 ];
-const DEALERS = ['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Edmonton', 'Calgary', 'Fort McMurray', 'Airdrie', 'Camrose', 'Lloydminster', 'Okotoks', 'Brooks', 'Spruce Grove', 'Cold Lake'];
+const DEALERS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Cedar Hills', 'Oakdale', 'Fernbrook'];
 const priceOf = (rng: Rng, v: Vehicle) => {
   const p = rng.int(Math.ceil(v.lo / v.step), Math.floor(v.hi / v.step)) * v.step;
   return v.step === 5 && p % 1000 === 0 ? p - 5 : p;
@@ -473,22 +473,22 @@ function leaseToBuy(rng: Rng, d: 2 | 3): Out {
 interface Scenario { who: (name: string) => string; best: 'buy' | 'lease'; reason: string; wrong: string[] }
 const SCENARIOS: Scenario[] = [
   {
-    who: (name) => `${name} is a pipeline inspector based in Grande Prairie who drives about 45,000 km a year on gravel lease roads, and plans to keep the next truck for 8 to 10 years.`,
+    who: (name) => `${name} is a pipeline inspector based in a northern town who drives about 45,000 km a year on gravel lease roads, and plans to keep the next truck for 8 to 10 years.`,
     best: 'buy', reason: 'Buy: a lease would charge for every kilometre over the allowance and for wear and tear, and owning is cheaper when you keep a vehicle a long time.',
     wrong: ['Lease: the monthly payments are lower, so it is always cheaper.', 'Lease: a lease has no limit on kilometres.', 'Buy: buying always has lower monthly payments than leasing.'],
   },
   {
-    who: (name) => `${name} is a sales representative in Calgary who drives about 15,000 km a year in the city, wants low monthly payments, and likes to have a new vehicle under warranty every three years.`,
+    who: (name) => `${name} is a sales representative in a large city who drives about 15,000 km a year in the city, wants low monthly payments, and likes to have a new vehicle under warranty every three years.`,
     best: 'lease', reason: 'Lease: the payments are lower, the vehicle stays under warranty, and the kilometres fit easily inside a normal allowance.',
     wrong: ['Buy: a lease would charge for going over the kilometre allowance.', 'Buy: leasing means paying GST twice.', 'Lease: at the end of a lease you own the vehicle for free.'],
   },
   {
-    who: (name) => `${name} farms near Vegreville, will haul a stock trailer, and wants to add a flat deck and a toolbox to the truck.`,
+    who: (name) => `${name} runs a mixed farm, will haul a stock trailer, and wants to add a flat deck and a toolbox to the truck.`,
     best: 'buy', reason: 'Buy: a leased vehicle must be returned in good condition with no changes, and heavy farm use can bring wear-and-tear charges.',
     wrong: ['Lease: leasing lets you change the vehicle any way you like.', 'Lease: the lease payments would be lower, which is all that matters.', 'Buy: buying means there are no costs after the loan is paid off.'],
   },
   {
-    who: (name) => `${name} has just started a real estate business in Red Deer, has little cash for a down payment, drives about 18,000 km a year, and wants a newer vehicle to drive clients around.`,
+    who: (name) => `${name} has just started a real estate business in a mid-sized city, has little cash for a down payment, drives about 18,000 km a year, and wants a newer vehicle to drive clients around.`,
     best: 'lease', reason: 'Lease: it needs little or no down payment and has lower monthly payments, and the kilometres fit a normal lease allowance.',
     wrong: ['Buy: a loan never needs a down payment.', 'Buy: buying builds no equity, so leasing is worse.', 'Lease: the total cost of leasing is always less than buying.'],
   },
@@ -602,35 +602,35 @@ interface Biz {
 
 const BIZ: Biz[] = [
   {
-    owner: (name) => `${name} runs a food truck in Edmonton that sells loaded perogy bowls`,
+    owner: (name) => `${name} runs a food truck downtown that sells loaded perogy bowls`,
     unit: 'bowl', units: 'bowls', price: [11, 16], pStep: 0.5, vc: [3.2, 5.4], period: 'month', q: [900, 2600],
     fixed: [{ label: 'Truck loan payment', lo: 900, hi: 1600 }, { label: 'Insurance', lo: 180, hi: 320 }, { label: 'Commissary kitchen rent', lo: 600, hi: 1100 }, { label: 'Permits and licences', lo: 80, hi: 200 }, { label: 'Propane', lo: 150, hi: 300 }],
     variable: 'ingredients and packaging',
     classify: { variable: ['Ingredients for each bowl', 'Take-out containers', 'Napkins and forks'], fixed: ['The monthly truck loan payment', 'Insurance for the truck', 'The city business licence', 'Rent for the commissary kitchen'] },
   },
   {
-    owner: (name) => `${name} runs a lawn care business in Red Deer`,
+    owner: (name) => `${name} runs a lawn care business`,
     unit: 'lawn cut', units: 'lawn cuts', price: [40, 65], pStep: 5, vc: [6, 11], period: 'month', q: [90, 260],
     fixed: [{ label: 'Trailer and mower loan payment', lo: 350, hi: 650 }, { label: 'Liability insurance', lo: 90, hi: 180 }, { label: 'Truck payment', lo: 450, hi: 750 }, { label: 'Advertising', lo: 60, hi: 200 }, { label: 'Phone', lo: 55, hi: 95 }],
     variable: 'fuel and trimmer line',
     classify: { variable: ['Gas for the mowers', 'Trimmer line', 'Garbage bags for clippings'], fixed: ['The monthly loan payment on the mower', 'Liability insurance', 'The phone plan', 'Advertising in the local paper'] },
   },
   {
-    owner: (name) => `${name} sells handmade beeswax candles at a farmers’ market in St. Albert`,
+    owner: (name) => `${name} sells handmade beeswax candles at a weekend farmers’ market`,
     unit: 'candle', units: 'candles', price: [14, 28], pStep: 1, vc: [3.5, 7.5], period: 'season', q: [400, 1400],
     fixed: [{ label: 'Market stall fee for the season', lo: 600, hi: 1200 }, { label: 'Liability insurance', lo: 150, hi: 300 }, { label: 'Tent, tables and display', lo: 250, hi: 600 }, { label: 'Moulds and tools', lo: 150, hi: 450 }, { label: 'Card reader and fees', lo: 60, hi: 150 }],
     variable: 'beeswax, wicks and labels',
     classify: { variable: ['Beeswax for each candle', 'Wicks', 'Labels and gift boxes'], fixed: ['The stall fee for the season', 'Liability insurance', 'The tent and tables', 'Candle moulds'] },
   },
   {
-    owner: (name) => `${name} runs a mobile car detailing business in Calgary`,
+    owner: (name) => `${name} runs a mobile car detailing business`,
     unit: 'detail', units: 'details', price: [120, 220], pStep: 5, vc: [18, 34], period: 'month', q: [40, 110],
     fixed: [{ label: 'Van payment', lo: 550, hi: 900 }, { label: 'Insurance', lo: 160, hi: 300 }, { label: 'Equipment loan payment', lo: 150, hi: 350 }, { label: 'Phone and website', lo: 70, hi: 140 }, { label: 'Advertising', lo: 100, hi: 300 }],
     variable: 'cleaning supplies and fuel',
     classify: { variable: ['Soap, wax and cleaning supplies', 'Fuel to drive to each customer', 'Microfibre towels that wear out'], fixed: ['The monthly van payment', 'Insurance', 'The website and phone plan', 'The loan payment on the pressure washer'] },
   },
   {
-    owner: (name) => `${name} makes and sells cutting boards and charcuterie boards at craft fairs in Canmore`,
+    owner: (name) => `${name} makes and sells cutting boards and charcuterie boards at craft fairs in a mountain town`,
     unit: 'board', units: 'boards', price: [35, 85], pStep: 5, vc: [9, 22], period: 'season', q: [150, 500],
     fixed: [{ label: 'Craft fair booth fees', lo: 400, hi: 1100 }, { label: 'Shop rent share', lo: 900, hi: 1800 }, { label: 'Insurance', lo: 150, hi: 300 }, { label: 'Tools', lo: 300, hi: 900 }, { label: 'Display and signs', lo: 120, hi: 350 }],
     variable: 'hardwood, oil and finish',

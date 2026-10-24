@@ -334,7 +334,7 @@ function orderContext(rng: Rng): GenOutput {
     if (!Number.isFinite(dec) || Number.isInteger(dec) || dec * dec < lo || dec * dec > hi || used.has(dec * dec)) continue;
     const ctx = rng.pick([
       { intro: 'Four teams in a design class built ramps for a model-car test. The ramp lengths are', unit: ' m', short: 'shortest', long: 'longest' },
-      { intro: 'A landscaper in Airdrie is comparing four pieces of edging. Their lengths are', unit: ' m', short: 'shortest', long: 'longest' },
+      { intro: 'A landscaper is comparing four pieces of edging. Their lengths are', unit: ' m', short: 'shortest', long: 'longest' },
       { intro: 'Four square photo prints have these side lengths:', unit: ' cm', short: 'smallest', long: 'largest' },
     ]);
     const vals = rng.shuffle([...ms.map((x) => mixedVal(x.k, x.m, ctx.unit)), { md: `$${fmt(dec)}$${ctx.unit}`, key: dec * dec, step: `$${fmt(dec)}^2 = ${fmt(dec * dec)}$, so $${fmt(dec)} = \\sqrt{${fmt(dec * dec)}}$` }]);
@@ -1028,10 +1028,10 @@ function eqFall(rng: Rng): GenOutput {
   for (let i = 0; i < 100; i++) {
     const name = rng.pick(NAMES);
     const ctx = rng.pick([
-      { text: `${name} drops a pebble from a footbridge in Edmonton's river valley. It hits the water`, lo: 12, hi: 25 },
+      { text: `${name} drops a pebble from a footbridge over a river valley. It hits the water`, lo: 12, hi: 25 },
       { text: `${name} drops a tennis ball from the top of a climbing tower. It hits the ground`, lo: 12, hi: 20 },
       { text: `During a physics lab, ${name} drops a ball from a balcony. It hits the floor below`, lo: 11, hi: 18 },
-      { text: 'A roofer in Okotoks accidentally drops a hammer from a roof. It hits the ground', lo: 11, hi: 16 },
+      { text: 'A roofer accidentally drops a hammer from a roof. It hits the ground', lo: 11, hi: 16 },
     ]);
     const t = rng.int(ctx.lo, ctx.hi) / 10;
     const d = 4.9 * t * t;
@@ -1081,7 +1081,7 @@ function eqWave(rng: Rng): GenOutput {
     const s = rng.int(30, 120) / 10;
     const d = (s * s) / 9.8;
     if (!clearOfBoundary(d, 1)) continue;
-    const where = rng.pick(['a lake in Kananaskis', 'Sylvan Lake', 'a wave pool at West Edmonton Mall', 'Lake Louise']);
+    const where = rng.pick(['a mountain lake', 'a large lake', 'a wave pool at an indoor water park', 'a glacier-fed lake']);
     return {
       prompt: `In shallow water, the speed $s$ of a wave, in metres per second, can be modelled by $s = \\sqrt{9.8d}$, where $d$ is the water depth in metres. A wave on ${where} travels at $${fmt(s)}$ m/s. According to the model, how deep is the water? Answer to the nearest tenth of a metre.`,
       parts: [numPart(d, { decimals: 1, suffix: 'm' })],

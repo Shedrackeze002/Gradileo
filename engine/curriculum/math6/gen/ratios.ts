@@ -16,7 +16,7 @@ const NAMES = [
   'Leilani', 'Émilie', 'Tyler', 'Aaliyah', 'Connor', 'Anika', 'Gurpreet', 'Marcus', 'Ayesha', 'Owen',
   'Sienna', 'Jun', 'Malik', 'Harpreet', 'Isabelle', 'Talia', 'Yusuf', 'Rosalie', 'Nathan', 'Tanis',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Airdrie', 'Camrose', 'Canmore', 'Brooks', 'Jasper', 'Banff'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Millbrook'];
 
 const T = '\\times';
 const D = '\\div';
@@ -297,7 +297,7 @@ interface RateCtx {
 
 const RATE_CTX: RateCtx[] = [
   { unit: 'km/h', per: 'hour', text: (t, n) => `A train travels $${t}$ km in $${n}$ h.`, ask: 'What is its speed in kilometres per hour?', ans: (r) => `The speed is $${r}$ km/h.`, rate: [60, 120], count: [2, 5] },
-  { unit: 'km/h', per: 'hour', text: (t, n, name) => `${name} cycles $${t}$ km in $${n}$ h on a trail near Canmore.`, ask: 'What is the speed in kilometres per hour?', ans: (r) => `The speed is $${r}$ km/h.`, rate: [12, 25], count: [2, 4] },
+  { unit: 'km/h', per: 'hour', text: (t, n, name) => `${name} cycles $${t}$ km in $${n}$ h on a forest trail.`, ask: 'What is the speed in kilometres per hour?', ans: (r) => `The speed is $${r}$ km/h.`, rate: [12, 25], count: [2, 4] },
   { unit: '$/h', per: 'hour', text: (t, n, name) => `${name} earns \\$${t} for $${n}$ hours of babysitting.`, ask: 'How much does that pay per hour?', ans: (r) => `That is \\$${r} per hour.`, rate: [8, 15], count: [2, 6] },
   { unit: 'pages/day', per: 'day', text: (t, n, name) => `${name} reads $${t}$ pages in $${n}$ days.`, ask: 'How many pages is that per day?', ans: (r) => `That is $${r}$ pages per day.`, rate: [12, 40], count: [3, 7] },
   { unit: 'L/min', per: 'minute', text: (t, n) => `A hose fills a $${t}$ L pool in $${n}$ minutes.`, ask: 'How many litres flow out of the hose per minute?', ans: (r) => `That is $${r}$ L per minute.`, rate: [8, 20], count: [5, 9] },
@@ -363,9 +363,9 @@ function unitPriceD2(rng: Rng): Out {
 function speedD2(rng: Rng): Out {
   const name = pickName(rng);
   const c = rng.pick([
-    { who: (n: string) => `${n}'s family drives`, from: () => `from ${rng.pick(['Calgary', 'Edmonton'])} to ${rng.pick(['Jasper', 'Banff', 'Lethbridge', 'Red Deer', 'Drumheller'])}`, rate: [70, 100] as [number, number], h: [2, 4] as [number, number] },
-    { who: () => 'A bus travels', from: () => `between two towns in Alberta`, rate: [60, 90] as [number, number], h: [2, 5] as [number, number] },
-    { who: () => 'A small plane flies', from: () => `from ${rng.pick(['High Level', 'Peace River', 'Fort McMurray'])} to Edmonton`, rate: [150, 240] as [number, number], h: [2, 4] as [number, number] },
+    { who: (n: string) => `${n}'s family drives`, from: () => `from ${rng.pick(['Riverton', 'Lakeside'])} to ${rng.pick(['Pinewood', 'Maple Falls', 'Hillcrest', 'Westbury', 'Stonebridge'])}`, rate: [70, 100] as [number, number], h: [2, 4] as [number, number] },
+    { who: () => 'A bus travels', from: () => `between two towns`, rate: [60, 90] as [number, number], h: [2, 5] as [number, number] },
+    { who: () => 'A small plane flies', from: () => `from ${rng.pick(['Northfield', 'Clearwater', 'Ashford'])} to Riverton`, rate: [150, 240] as [number, number], h: [2, 4] as [number, number] },
   ]);
   const r = rng.int(c.rate[0], c.rate[1]);
   const h = rng.int(c.h[0], c.h[1]);

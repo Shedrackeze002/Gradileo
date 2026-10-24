@@ -193,7 +193,7 @@ const MUL_CTX: Array<(rng: Rng, name: string) => Ctx> = [
 const ADD_CTX: Array<(rng: Rng, name: string) => Ctx> = [
   (rng) => {
     const c = rng.int(3, 14);
-    const town = rng.pick(['Canmore', 'Sylvan Lake', 'Cold Lake', 'Waterton', 'Jasper', 'Lac La Biche']);
+    const town = rng.pick(['Pinewood', 'Lakeside', 'Clearwater', 'Maple Falls', 'Stonebridge', 'Willow Lake']);
     return {
       rule: { op: 'add', k: c },
       setup: `Day $1$ of a summer camp near ${town} is July $${c + 1}$. Day $2$ is July $${c + 2}$, and so on.`,

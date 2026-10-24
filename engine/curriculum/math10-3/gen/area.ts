@@ -1574,8 +1574,8 @@ const areaUnits = skill({
       );
       const res = toFt ? v * F : v / F;
       const what = toFt
-        ? rng.pick(['A condo in Edmonton has a floor area of', 'A shop in Red Deer has a floor area of', 'A new house plan shows a main floor area of'])
-        : rng.pick(['A house listing in Lethbridge says the home has', 'A warehouse unit for rent in Calgary has', 'A basement suite has']);
+        ? rng.pick(['A downtown condo has a floor area of', 'A shop on Main Street has a floor area of', 'A new house plan shows a main floor area of'])
+        : rng.pick(['A house listing says the home has', 'A warehouse unit for rent has', 'A basement suite has']);
       return {
         prompt: `${what} ${ar(v, toFt ? 'm' : 'ft')}. Use $1\\ ${sq('m')} \\approx 10.76\\ ${sq('ft')}$ to find the area in ${toFt ? 'square feet' : 'square metres'}, ${sqRound(0, toFt ? 'ft' : 'm')}.`,
         parts: [numPart(res, { decimals: 0, suffix: toFt ? 'ft²' : 'm²' })],

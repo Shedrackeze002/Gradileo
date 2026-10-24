@@ -14,7 +14,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi',
 ];
-const TOWNS = ['Fort McMurray', 'Grande Prairie', 'Edmonton', 'Red Deer', 'Calgary', 'Lethbridge', 'Medicine Hat', 'Peace River', 'Cold Lake'];
+const TOWNS = ['Ashford', 'Clearwater', 'Riverton', 'Brookfield', 'Lakeside', 'Hillcrest', 'Pinewood', 'Stonebridge', 'Westbury'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure };
 
@@ -133,7 +133,7 @@ function compareD1(rng: Rng): Out {
     const i = temps.indexOf(target);
     const order = [...temps].sort((x, y) => x - y);
     return {
-      prompt: `The table shows the temperature in three Alberta towns at 7 a.m. on a January morning. Which town was the ${coldest ? 'coldest' : 'warmest'}?`,
+      prompt: `The table shows the temperature in three towns at 7 a.m. on a January morning. Which town was the ${coldest ? 'coldest' : 'warmest'}?`,
       figure: { type: 'table', headers: ['Town', 'Temperature (°C)'], rows: towns.map((t, j) => [t, `${temps[j]}`]) },
       parts: [{ answer: mc(rng, towns[i], towns.filter((_, j) => j !== i)) }],
       hints: [`${coldest ? 'Colder means lower.' : 'Warmer means higher.'} ${LEFT_LESS}`, NEG_TIP],
@@ -233,7 +233,7 @@ function compareD3(rng: Rng): Out {
     const colder = vals.filter((x) => x < t).sort((a, b) => a - b);
     const count = colder.length;
     return {
-      prompt: `The table shows the low temperature each weekday for one week in Fort McMurray. Which day was the coldest? On how many days was the low colder than ${deg(t)}?`,
+      prompt: `The table shows the low temperature each weekday for one week in a northern town. Which day was the coldest? On how many days was the low colder than ${deg(t)}?`,
       figure: { type: 'table', headers: ['Day', 'Low (°C)'], rows: days.map((d, j) => [d, `${vals[j]}`]) },
       parts: [{ label: 'Coldest day', answer: mc(rng, days[i], [...new Set(others)].map((j) => days[j])) }, numPart(count, { label: 'Number of days', suffix: 'days' })],
       hints: ['The coldest day has the lowest temperature: the number farthest left on a number line.', `Colder than ${deg(t)} means farther left than $${t}$ on a number line.`],
@@ -460,7 +460,7 @@ function changeD1(rng: Rng, name: string): Out {
   const b = up ? rng.int(2, a - 2) : rng.int(2, 6);
   const r = up ? -a + b : -a - b;
   return {
-    prompt: `A diver is $${a}$ m below the surface of Sylvan Lake, at $${-a}\\ \\text{m}$. She swims ${up ? 'up' : 'down'} $${b}$ m. What integer gives her new position?`,
+    prompt: `A diver is $${a}$ m below the surface of a lake, at $${-a}\\ \\text{m}$. She swims ${up ? 'up' : 'down'} $${b}$ m. What integer gives her new position?`,
     figure: numberLine([{ value: -a, label: 'diver' }, { value: 0, label: 'surface' }]),
     parts: [numPart(r, { suffix: 'm' })],
     hints: [`Up means add. Down means subtract.`, `Find $${-a} ${up ? '+' : '-'} ${b}$.`],
@@ -474,10 +474,10 @@ function changeD2(rng: Rng, name: string): Out {
   if (kind === 'rise') {
     const t1 = rng.int(-30, -5);
     const t2 = rng.int(1, 15);
-    const chinook = rng.chance(0.5);
+    const warmWind = rng.chance(0.5);
     return {
-      prompt: chinook
-        ? `A chinook (a warm winter wind) blew into Calgary. The temperature went from ${deg(t1)} to ${deg(t2)}. How many degrees did the temperature rise?`
+      prompt: warmWind
+        ? `A warm winter wind blew into ${town}. The temperature went from ${deg(t1)} to ${deg(t2)}. How many degrees did the temperature rise?`
         : `In ${town}, the temperature was ${deg(t1)} at sunrise and ${deg(t2)} in the afternoon. How many degrees did the temperature rise?`,
       parts: [numPart(t2 - t1, { suffix: 'degrees' })],
       hints: [RISE_HINT, `Rise = higher temperature − lower temperature: $${t2} - ${paren(t1)}$.`],

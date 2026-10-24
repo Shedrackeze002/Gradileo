@@ -116,7 +116,7 @@ export function paraPic(p: Para, labels: { base?: string; height?: string; side?
 /** Contexts with a sensible unit. */
 const PARA_CTX: Array<[string, (w: string) => string]> = [
   ['m', (w) => `${w} is painting a parallelogram on the school playground for a game.`],
-  ['m', () => 'A parking lot in Red Deer has a section shaped like a parallelogram.'],
+  ['m', () => 'A parking lot has a section shaped like a parallelogram.'],
   ['cm', (w) => `${w} cut a parallelogram out of coloured paper for a math poster.`],
   ['m', () => 'A flower bed in a park is shaped like a parallelogram.'],
   ['cm', (w) => `${w} is sewing a quilt patch shaped like a parallelogram.`],
@@ -205,7 +205,7 @@ const areaParallelogram = skill({
     const k = rng.int(3, 9);
     const A = p.b * p.h;
     const thing = rng.pick([
-      { ctx: `${who} is painting parking spaces in a school parking lot in Lethbridge.`, what: 'parking spaces', verb: 'What total area will be painted?', unit: 'm' },
+      { ctx: `${who} is painting parking spaces in a school parking lot.`, what: 'parking spaces', verb: 'What total area will be painted?', unit: 'm' },
       { ctx: `${who} is making a banner from pieces of felt.`, what: 'pieces', verb: 'What is the total area of the felt pieces?', unit: 'cm' },
       { ctx: 'A patio is made of paving stones.', what: 'stones', verb: 'What area do the stones cover?', unit: 'cm' },
       { ctx: `${who} is gluing tiles onto a picture frame.`, what: 'tiles', verb: 'What total area do the tiles cover?', unit: 'cm' },
@@ -303,7 +303,7 @@ export function triPic(t: Tri, labels: { base?: string; height?: string; side?: 
 
 const TRI_CTX: Array<[string, (w: string) => string]> = [
   ['cm', (w) => `${w} is making a triangular pennant for a school team.`],
-  ['m', () => 'A sail on a sailboat at Sylvan Lake is shaped like a triangle.'],
+  ['m', () => 'A sail on a sailboat is shaped like a triangle.'],
   ['m', (w) => `${w} is planting a triangular garden bed.`],
   ['m', () => 'The end of a roof on a large barn is shaped like a triangle.'],
   ['cm', (w) => `${w} cut a triangle out of cardboard for a model.`],
@@ -651,7 +651,7 @@ const COMP_CTX: Record<string, Array<[string, (w: string) => string]>> = {
   trapezoid: [['m', () => 'A garden bed is shaped like this.'], ['m', (w) => `${w} is laying sod on a yard shaped like this.`], ['cm', () => 'A wooden block in a toy set has a face shaped like this.']],
   kite: [['cm', (w) => `${w} is making a paper kite from two triangles.`], ['cm', () => 'A badge is shaped like this.'], ['cm', (w) => `${w} cut this gem shape out of paper.`]],
   chevron: [['cm', () => 'A school logo has this arrow shape.'], ['m', (w) => `${w} is painting an arrow on a parking lot.`], ['cm', () => 'A stripe on a hockey jersey has this shape.']],
-  flag: [['cm', (w) => `${w} is designing a pennant shaped like this.`], ['m', () => 'A field at a campground in Kananaskis has this shape.'], ['cm', (w) => `${w} cut this shape out of felt for a banner.`]],
+  flag: [['cm', (w) => `${w} is designing a pennant shaped like this.`], ['m', () => 'A field at a mountain campground has this shape.'], ['cm', (w) => `${w} cut this shape out of felt for a banner.`]],
   notch: [['cm', () => 'A paper banner has a triangle cut out of its top edge.'], ['cm', (w) => `${w} made a sign from a rectangle of card with a triangular notch.`], ['m', () => 'The wall of a barn has a triangular opening at the top.']],
 };
 

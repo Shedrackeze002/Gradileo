@@ -14,7 +14,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Ananya', 'Nathan', 'Lena', 'Diego', 'Harpreet', 'Noor', 'Jasleen', 'Bao',
 ];
-const CITIES = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 
 const num = (x: number, dp = 4) => fmtGroupTex(x, dp);
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -1142,7 +1142,7 @@ function whatPercent(rng: Rng, d: 1 | 2): GenOutput {
     { b1: [10, 20, 25, 50], b2: [30, 60], f: [0.6, 0.98], t: (a: number, b: number) => `${name} got $${a}$ out of $${b}$ on a practice test for a driver’s licence. What percent is that?`, end: (x: string) => `${name} scored ${x} on the test.` },
     { b1: [20, 25, 50], b2: [40, 120], f: [0.4, 0.9], t: (a: number, b: number) => `Of the $${b}$ customers at a coffee shop one morning, $${a}$ paid with a debit card. What percent paid with debit?`, end: (x: string) => `${x} of the customers paid with debit.` },
     { b1: [10, 20, 25, 50], b2: [30, 90], f: [0.7, 0.98], t: (a: number, b: number) => `A landscaping crew planted $${b}$ trees in the spring. By fall, $${a}$ of them were still alive. What percent of the trees lived?`, end: (x: string) => `${x} of the trees lived.` },
-    { b1: [20, 25, 50], b2: [40, 56], f: [0.5, 0.98], t: (a: number, b: number) => `A shuttle bus from Red Deer to Calgary has $${b}$ seats, and $${a}$ of them are taken. What percent of the seats are taken?`, end: (x: string) => `${x} of the seats are taken.` },
+    { b1: [20, 25, 50], b2: [40, 56], f: [0.5, 0.98], t: (a: number, b: number) => `A shuttle bus from Brookfield to Lakeside has $${b}$ seats, and $${a}$ of them are taken. What percent of the seats are taken?`, end: (x: string) => `${x} of the seats are taken.` },
     { b1: [20, 25], b2: [24, 45], f: [0.8, 0.97], t: (a: number, b: number) => `A hockey goalie faced $${b}$ shots in a game and stopped $${a}$ of them. What percent of the shots did the goalie stop?`, end: (x: string) => `The goalie stopped ${x} of the shots.` },
   ]);
   const partOf = (bb: number) => rng.int(Math.ceil(bb * ctx.f[0]), Math.min(bb - 1, Math.floor(bb * ctx.f[1])));

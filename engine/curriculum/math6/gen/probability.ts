@@ -66,13 +66,13 @@ interface Survey {
 
 const SURVEYS: Survey[] = [
   { setup: (n, t) => `${t} asked the $${n}$ students in a Grade 6 class how they get to school.`, head: 'How they get to school', topic: 'how they get to school', cats: ['Walk', 'Bus', 'Car', 'Bike'], noun: 'students' },
-  { setup: (n) => `A Grade 6 class counted the colours of the next $${n}$ cars that drove past their school in Red Deer.`, head: 'Car colour', cats: ['White', 'Black', 'Grey', 'Red', 'Blue'], noun: 'cars' },
-  { setup: (n) => `A student in Grande Prairie watched a bird feeder and recorded the first $${n}$ birds that visited.`, head: 'Bird', cats: ['Chickadee', 'Sparrow', 'Blue jay', 'Woodpecker'], noun: 'birds' },
-  { setup: (n) => `The school cafeteria in Airdrie counted the $${n}$ lunches it sold on Friday.`, head: 'Lunch', cats: ['Pizza', 'Soup', 'Wrap', 'Salad'], noun: 'lunches' },
+  { setup: (n) => `A Grade 6 class counted the colours of the next $${n}$ cars that drove past their school.`, head: 'Car colour', cats: ['White', 'Black', 'Grey', 'Red', 'Blue'], noun: 'cars' },
+  { setup: (n) => `A student watched a bird feeder and recorded the first $${n}$ birds that visited.`, head: 'Bird', cats: ['Chickadee', 'Sparrow', 'Blue jay', 'Woodpecker'], noun: 'birds' },
+  { setup: (n) => `A school cafeteria counted the $${n}$ lunches it sold on Friday.`, head: 'Lunch', cats: ['Pizza', 'Soup', 'Wrap', 'Salad'], noun: 'lunches' },
   { setup: (n, t) => `${t} asked $${n}$ students which sport they would most like to play at the winter carnival.`, head: 'Sport', topic: 'which winter sport they would most like to play', cats: ['Hockey', 'Skating', 'Curling', 'Snowshoeing'], noun: 'students' },
   { setup: (n, t) => `${t} asked $${n}$ students which season they like best.`, head: 'Season', topic: 'which season they like best', cats: ['Winter', 'Spring', 'Summer', 'Fall'], noun: 'students' },
   { setup: (n, t) => `${t} asked $${n}$ students which pet they would most like to have.`, head: 'Pet', topic: 'which pet they would most like to have', cats: ['Dog', 'Cat', 'Fish', 'Bird'], noun: 'students' },
-  { setup: (n) => `A library in Camrose recorded the kind of book borrowed by each of $${n}$ students.`, head: 'Kind of book', cats: ['Mystery', 'Graphic novel', 'Science', 'Adventure'], noun: 'books' },
+  { setup: (n) => `A school library recorded the kind of book borrowed by each of $${n}$ students.`, head: 'Kind of book', cats: ['Mystery', 'Graphic novel', 'Science', 'Adventure'], noun: 'books' },
 ];
 
 /** Frequencies that add to `total`, each at least `min`. */

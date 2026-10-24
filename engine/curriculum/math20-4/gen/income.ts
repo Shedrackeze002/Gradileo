@@ -83,18 +83,18 @@ const JOBS: Job[] = [
   { job: 'a cook at a fast-food restaurant', lo: 15, hi: 18 },
   { job: 'a barista at a coffee shop', lo: 15, hi: 18 },
   { job: 'a stock clerk at a hardware store', lo: 16, hi: 20 },
-  { job: 'a warehouse worker in Edmonton', lo: 17, hi: 23 },
-  { job: 'a landscaper in Calgary', lo: 16, hi: 22 },
-  { job: 'a farm hand near Lethbridge', lo: 16, hi: 21 },
+  { job: 'a warehouse worker', lo: 17, hi: 23 },
+  { job: 'a landscaper', lo: 16, hi: 22 },
+  { job: 'a farm hand', lo: 16, hi: 21 },
   { job: 'a child-care assistant', lo: 16, hi: 20 },
   { job: 'a cleaner at an office building', lo: 16, hi: 20 },
-  { job: 'a hotel housekeeper in Jasper', lo: 16, hi: 20 },
-  { job: 'a car detailer in Red Deer', lo: 16, hi: 21 },
-  { job: 'a construction labourer in Fort McMurray', lo: 22, hi: 30 },
+  { job: 'a housekeeper at a mountain hotel', lo: 16, hi: 20 },
+  { job: 'a car detailer at a car wash', lo: 16, hi: 21 },
+  { job: 'a construction labourer at a remote work site', lo: 22, hi: 30 },
   { job: 'a kitchen prep cook', lo: 16, hi: 19 },
   { job: 'an assistant at a hair salon', lo: 15, hi: 18 },
-  { job: 'a dishwasher at a restaurant in Medicine Hat', lo: 15, hi: 17 },
-  { job: 'a lifeguard at a pool in Grande Prairie', lo: 16, hi: 21 },
+  { job: 'a dishwasher at a restaurant', lo: 15, hi: 17 },
+  { job: 'a lifeguard at a city pool', lo: 16, hi: 21 },
 ];
 
 /** d1: whole or half dollars; d2 and d3: multiples of 10 cents (so half-hours give whole cents). */
@@ -467,31 +467,31 @@ const SALARY_JOBS = [
   'a receptionist at a dental office',
   'a shift supervisor at a warehouse',
   'an office assistant at a trucking company',
-  'a caretaker at a school in Red Deer',
+  'a caretaker at a high school',
   'a youth worker at a community centre',
   'a parts clerk at a car dealership',
-  'a front-desk clerk at a hotel in Canmore',
+  'a front-desk clerk at a mountain hotel',
 ];
 
 const SALES_JOBS = [
-  { who: 'sells furniture at a store in Edmonton', lo: 4000, hi: 20000 },
+  { who: 'sells furniture at a downtown store', lo: 4000, hi: 20000 },
   { who: 'sells cellphone plans at a mall kiosk', lo: 2000, hi: 9000 },
-  { who: 'sells shoes at a store in Calgary', lo: 3000, hi: 12000 },
-  { who: 'sells hot tubs in Lethbridge', lo: 8000, hi: 30000 },
-  { who: 'sells used cars in Grande Prairie', lo: 15000, hi: 60000 },
+  { who: 'sells shoes at a shoe store', lo: 3000, hi: 12000 },
+  { who: 'sells hot tubs', lo: 8000, hi: 30000 },
+  { who: 'sells used cars', lo: 15000, hi: 60000 },
   { who: 'sells tools at a hardware store', lo: 3000, hi: 15000 },
 ];
 
 const PIECE_JOBS = [
-  { job: 'a tree planter in northern Alberta', verb: 'planted', one: 'tree', many: 'trees', rates: [0.1, 0.12, 0.15, 0.18, 0.2], lo: 600, hi: 2000, step: 50 },
-  { job: 'a flyer carrier in Medicine Hat', verb: 'delivered', one: 'flyer', many: 'flyers', rates: [0.06, 0.08, 0.1, 0.12], lo: 200, hi: 800, step: 10 },
+  { job: 'a tree planter in the northern forests', verb: 'planted', one: 'tree', many: 'trees', rates: [0.1, 0.12, 0.15, 0.18, 0.2], lo: 600, hi: 2000, step: 50 },
+  { job: 'a flyer carrier', verb: 'delivered', one: 'flyer', many: 'flyers', rates: [0.06, 0.08, 0.1, 0.12], lo: 200, hi: 800, step: 10 },
   { job: 'a car detailer', verb: 'cleaned', one: 'car', many: 'cars', rates: [15, 18, 20, 25, 30], lo: 2, hi: 9, step: 1 },
   { job: 'a packer at a warehouse', verb: 'packed', one: 'box', many: 'boxes', rates: [0.4, 0.5, 0.6, 0.75], lo: 80, hi: 300, step: 5 },
-  { job: 'a berry picker at a farm near Lacombe', verb: 'picked', one: 'flat of berries', many: 'flats of berries', rates: [3, 3.5, 4, 4.5, 5], lo: 8, hi: 30, step: 1 },
+  { job: 'a berry picker at a farm', verb: 'picked', one: 'flat of berries', many: 'flats of berries', rates: [3, 3.5, 4, 4.5, 5], lo: 8, hi: 30, step: 1 },
 ];
 
 const TIP_JOBS = [
-  { who: 'servers at a restaurant in Calgary', short: 'servers' },
+  { who: 'servers at a downtown restaurant', short: 'servers' },
   { who: 'baristas at a coffee shop', short: 'baristas' },
   { who: 'stylists at a hair salon', short: 'stylists' },
   { who: 'bussers at a busy café', short: 'bussers' },

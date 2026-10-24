@@ -13,7 +13,7 @@ type Fn = (x: number) => number;
 type Base = Frac;
 
 const NAMES = ['Aisha', 'Mateo', 'Priya', 'Liam', 'Mei', 'Noah', 'Amara', 'Ethan', 'Sofia', 'Kiran', 'Jasmine', 'Owen', 'Fatima', 'Lucas', 'Hana', 'Dakota', 'Ravi', 'Chloe', 'Tariq', 'Émilie', 'Wapun', 'Siobhan', 'Arjun', 'Nadia'];
-const TOWNS = ['Airdrie', 'Okotoks', 'Cochrane', 'Leduc', 'Sylvan Lake', 'Canmore', 'Beaumont', 'Chestermere', 'Strathmore', 'Blackfalds', 'Lacombe', 'Cold Lake'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Elmwood'];
 
 const r3 = (x: number) => Math.round(x * 1000) / 1000 + 0;
 const lg = (x: number) => Math.log10(x);
@@ -1126,7 +1126,7 @@ function cbApplication(rng: Rng): GenOutput {
   const m = rng.int(2, 4);
   const S = S0 * 3 ** m;
   return {
-    prompt: `The number of views of ${name}'s video on hiking near Canmore triples every ${d} days. The number of views $t$ days after posting is modelled by $V = ${S0}(3)^{\\frac{t}{${d}}}$. After how many days will it have ${big(S)} views?`,
+    prompt: `The number of views of ${name}'s video on hiking in the mountains triples every ${d} days. The number of views $t$ days after posting is modelled by $V = ${S0}(3)^{\\frac{t}{${d}}}$. After how many days will it have ${big(S)} views?`,
     parts: [numPart(m * d, { suffix: 'days' })],
     hints: [`Substitute $V = ${big(S)}$ and divide both sides by $${S0}$.`, 'Write the result as a power of $3$ and equate the exponents.'],
     solution: [`$${big(S)} = ${S0}(3)^{\\frac{t}{${d}}}$`, `Divide by $${S0}$: $${3 ** m} = 3^{\\frac{t}{${d}}}$`, `$3^{${m}} = 3^{\\frac{t}{${d}}}$, so $\\dfrac{t}{${d}} = ${m}$.`, `$t = ${m * d}$ days`],
@@ -2618,14 +2618,14 @@ const FREQ: Array<[string, number]> = [
 const COMPOUND = 'The amount is $A = P(1 + i)^{n}$, where $P$ is the principal, $i$ is the interest rate per compounding period (as a decimal) and $n$ is the number of compounding periods.';
 const HALF = (A0: number, h: number, unit: string, sym = 'A') => `$${sym} = ${A0}\\left(\\frac{1}{2}\\right)^{\\frac{t}{${h}}}$, where $t$ is the time in ${unit}`;
 const ISOTOPES: Record<string, string[]> = {
-  hours: ['a radioactive tracer used in medical imaging', 'a radioactive tracer used at a hospital in Calgary'],
-  days: ['a radioactive isotope used in medical treatment', 'a radioactive isotope used in a research lab in Edmonton'],
-  years: ['a radioactive isotope in a sample of nuclear waste', 'a radioactive isotope used in industry', 'a radioactive isotope stored at a research lab in Edmonton'],
+  hours: ['a radioactive tracer used in medical imaging', 'a radioactive tracer used at a city hospital'],
+  days: ['a radioactive isotope used in medical treatment', 'a radioactive isotope used in a university research lab'],
+  years: ['a radioactive isotope in a sample of nuclear waste', 'a radioactive isotope used in industry', 'a radioactive isotope stored at a government research lab'],
 };
 const QUAKE = 'The magnitude of an earthquake is $M = \\log \\dfrac{A}{A_0}$, where $A$ is the amplitude of the ground motion and $A_0$ is the amplitude of a reference earthquake. So an increase of $1$ in magnitude multiplies the amplitude by $10$.';
 const DB = 'The sound level in decibels is $\\beta = 10\\log \\dfrac{I}{I_0}$, where $I$ is the intensity of the sound and $I_0$ is the intensity of the quietest sound a person can hear.';
 const PH = 'The pH of a solution is $\\text{pH} = -\\log\\left[\\text{H}^{+}\\right]$, where $\\left[\\text{H}^{+}\\right]$ is the hydrogen ion concentration in moles per litre.';
-const SOLUTIONS = ['a sample of tomato juice', 'a sample of lake water from northern Alberta', 'a cup of black coffee', 'a sample of rainwater', 'a glass of orange juice', 'a sample of apple juice', 'a sample of vinegar', 'a soil sample from a farm near Lethbridge'];
+const SOLUTIONS = ['a sample of tomato juice', 'a sample of water from a northern lake', 'a cup of black coffee', 'a sample of rainwater', 'a glass of orange juice', 'a sample of apple juice', 'a sample of vinegar', 'a soil sample from a farm'];
 
 function apCompoundA(rng: Rng): GenOutput {
   const o = retry(
@@ -2695,7 +2695,7 @@ function apQuakeInt(rng: Rng): GenOutput {
   const M2 = rng.int(30, 55) / 10;
   const dM = rng.int(1, 3);
   const M1 = M2 + dM;
-  const [place1, place2] = rng.sample(['in northern British Columbia', 'in the Yukon', 'in southern Alaska', 'off Haida Gwaii', 'off Vancouver Island', 'in the Northwest Territories', 'in western Alberta'], 2);
+  const [place1, place2] = rng.sample(['in northern British Columbia', 'in the Yukon', 'in southern Alaska', 'off Haida Gwaii', 'off Vancouver Island', 'in the Northwest Territories', 'in New Zealand'], 2);
   return {
     prompt: `${QUAKE} An earthquake ${place1} had magnitude ${fmt(M1)}, and one ${place2} had magnitude ${fmt(M2)}. How many times as great was the amplitude of the first earthquake?`,
     parts: [numPart(10 ** dM, { suffix: 'times' })],
@@ -2711,7 +2711,7 @@ function apDecibel(rng: Rng): GenOutput {
   );
   const { m, k } = o;
   const beta = 10 * lg(m * 10 ** k);
-  const what = rng.pick(['a busy street in downtown Calgary', 'a lawn mower', 'a hair dryer', 'a crowd at an Oilers game', 'a quiet library', 'a rock concert', 'a dishwasher', 'a chainsaw']);
+  const what = rng.pick(['a busy street downtown', 'a lawn mower', 'a hair dryer', 'a crowd at a hockey game', 'a quiet library', 'a rock concert', 'a dishwasher', 'a chainsaw']);
   return {
     prompt: `${DB} The intensity of the sound of ${what} is $${fmt(m)} \\times 10^{${k}}$ times $I_0$. Find its sound level, to the nearest tenth of a decibel.`,
     parts: [numPart(beta, { decimals: 1, suffix: 'dB' })],
@@ -2941,7 +2941,7 @@ function apSolveLevel(rng: Rng): GenOutput {
     const { M, k } = o;
     const MB = M + lg(k);
     return {
-      prompt: `${QUAKE} An earthquake near Banff had magnitude ${fmt(M)}. A later earthquake had an amplitude ${k} times as great. What was the magnitude of the later earthquake? Round to the nearest tenth.`,
+      prompt: `${QUAKE} An earthquake in the mountains had magnitude ${fmt(M)}. A later earthquake had an amplitude ${k} times as great. What was the magnitude of the later earthquake? Round to the nearest tenth.`,
       parts: [numPart(MB, { decimals: 1, label: '$M =$' })],
       hints: [`$\\dfrac{A_2}{A_1} = 10^{M_2 - M_1} = ${k}$.`, `So $M_2 - M_1 = \\log ${k}$.`],
       solution: [`$10^{M_2 - ${fmt(M)}} = ${k}$`, `$M_2 - ${fmt(M)} = \\log ${k} \\approx ${fx(lg(k), 4)}$`, `$M_2 \\approx ${fx(MB, 1)}$`],
@@ -2954,7 +2954,7 @@ function apSolveLevel(rng: Rng): GenOutput {
   const { k } = o;
   const inc = 10 * lg(k);
   return {
-    prompt: `${DB} A sound system at a concert in Edmonton is turned up so that the intensity of the sound is ${k} times as great. By how many decibels does the sound level increase? Round to the nearest tenth.`,
+    prompt: `${DB} A sound system at an outdoor concert is turned up so that the intensity of the sound is ${k} times as great. By how many decibels does the sound level increase? Round to the nearest tenth.`,
     parts: [numPart(inc, { decimals: 1, suffix: 'dB' })],
     hints: ['$\\beta_2 - \\beta_1 = 10\\log \\dfrac{I_2}{I_0} - 10\\log \\dfrac{I_1}{I_0} = 10\\log \\dfrac{I_2}{I_1}$.', `Here $\\dfrac{I_2}{I_1} = ${k}$.`],
     solution: [`$\\beta_2 - \\beta_1 = 10\\log \\dfrac{I_2}{I_1}$ (quotient law)`, `$= 10\\log ${k} \\approx ${fx(inc, 1)}$`, `The level increases by about ${fx(inc, 1)} dB.`],

@@ -28,7 +28,7 @@ const NAMES = [
   'Ethan', 'Rajveer', 'Leah', 'Marcus', 'Sofia', 'Hiroshi', 'Zainab', 'Cole', 'Ananya', 'Wyatt', 'Thanh', 'Isabelle', 'Dakota', 'Gurpreet', 'Olumide',
 ];
 
-const PLACES = ['Calgary', 'Edmonton', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Grande Prairie', 'Fort McMurray', 'Airdrie', 'Camrose', 'Canmore', 'St. Albert', 'Okotoks'];
+const PLACES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Oakdale'];
 
 /** Remove floating-point noise. */
 const cl = (x: number) => roundTo(x, 9);
@@ -1496,7 +1496,7 @@ function geoApplyD2(rng: Rng): GenOutput {
   let suffix: string;
   let unitWord: string;
   if (kind === 'oil') {
-    prompt = `An oil well in northern Alberta produces $${nx(c.t1)}$ barrels in its first year. Each year after that, it produces ${pct}% less than the year before. Using this model, what is the total production over the first ${n} years, to the nearest barrel?`;
+    prompt = `An oil well in a northern oil field produces $${nx(c.t1)}$ barrels in its first year. Each year after that, it produces ${pct}% less than the year before. Using this model, what is the total production over the first ${n} years, to the nearest barrel?`;
     label = 'Total:';
     suffix = 'barrels';
     unitWord = 'barrels';
