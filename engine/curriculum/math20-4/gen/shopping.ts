@@ -90,10 +90,10 @@ const UP1: UPEach[] = [
   { pack: (n) => `a case of $${n}$ cans of cat food`, each: 'can', many: 'cans', ns: [6, 12, 24], per: [0.75, 1, 1.25, 1.5], store: 'the pet store' },
   { pack: (n) => `a pack of $${n}$ rolls of paper towel`, each: 'roll', many: 'rolls', ns: [2, 4, 6, 8], per: [1.25, 1.5, 1.75, 2], store: 'the grocery store' },
   { pack: (n) => `a carton of $${n}$ eggs`, each: 'egg', many: 'eggs', ns: [12, 18, 30], per: [0.25, 0.3, 0.35, 0.4], store: 'the grocery store' },
-  { pack: (n) => `${art(n)} $${n}\\ ${tx('kg')}$ bag of potatoes`, each: 'kilogram', many: 'kilograms', ns: [2, 5, 10], per: [1.2, 1.5, 2, 2.5], store: 'a farmers’ market in Lethbridge' },
+  { pack: (n) => `${art(n)} $${n}\\ ${tx('kg')}$ bag of potatoes`, each: 'kilogram', many: 'kilograms', ns: [2, 5, 10], per: [1.2, 1.5, 2, 2.5], store: 'a farmers’ market' },
   { pack: (n) => `${art(n)} $${n}\\ ${tx('kg')}$ bag of apples`, each: 'kilogram', many: 'kilograms', ns: [2, 3, 4], per: [2.5, 3, 3.5, 4], store: 'the grocery store' },
   { pack: (n) => `${art(n)} $${n}\\ ${tx('L')}$ jug of milk`, each: 'litre', many: 'litres', ns: [2, 4], per: [1.5, 1.6, 1.75, 2], store: 'a corner store' },
-  { pack: (n) => `a tray of $${n}$ muffins`, each: 'muffin', many: 'muffins', ns: [4, 6, 12], per: [0.75, 1, 1.25, 1.5], store: 'a bakery in Red Deer' },
+  { pack: (n) => `a tray of $${n}$ muffins`, each: 'muffin', many: 'muffins', ns: [4, 6, 12], per: [0.75, 1, 1.25, 1.5], store: 'a bakery' },
 ];
 
 interface UPSize {
@@ -117,7 +117,7 @@ const UP2: UPSize[] = [
   { thing: sized('mL', 'bottle of ketchup'), sizes: [500, 750, 1000], unit: 'mL', base: 100, lo: 0.4, hi: 0.8, store: 'the grocery store' },
   { thing: sized('kg', 'bag of dog food'), sizes: [4, 8, 12, 15], unit: 'kg', base: 1, lo: 3, hi: 6, store: 'the pet store' },
   { thing: sized('kg', 'bag of rice'), sizes: [2, 4, 8, 10], unit: 'kg', base: 1, lo: 2, hi: 3.5, store: 'the grocery store' },
-  { thing: sized('L', 'jug of windshield washer fluid'), sizes: [2, 4], unit: 'L', base: 1, lo: 1.2, hi: 2.4, store: 'a gas station in Grande Prairie' },
+  { thing: sized('L', 'jug of windshield washer fluid'), sizes: [2, 4], unit: 'L', base: 1, lo: 1.2, hi: 2.4, store: 'a gas station on the highway' },
   { thing: sized('kg', 'bag of frozen fries'), sizes: [1, 2, 2.5], unit: 'kg', base: 1, lo: 2.5, hi: 4.5, store: 'the grocery store' },
 ];
 
@@ -435,26 +435,26 @@ const bestBuy = skill({
 // ---------------------------------------------------------------------------
 
 const DISC_ITEMS = [
-  { what: 'winter jacket', lo: 80, hi: 200, store: 'a clothing store in Edmonton' },
+  { what: 'winter jacket', lo: 80, hi: 200, store: 'a clothing store downtown' },
   { what: 'pair of work boots', lo: 100, hi: 220, store: 'a work-wear store' },
   { what: 'hoodie', lo: 30, hi: 70, store: 'a clothing store' },
-  { what: 'pair of running shoes', lo: 60, hi: 160, store: 'a shoe store in Calgary' },
+  { what: 'pair of running shoes', lo: 60, hi: 160, store: 'a shoe store at the mall' },
   { what: 'backpack', lo: 30, hi: 80, store: 'a sporting goods store' },
   { what: 'pair of headphones', lo: 40, hi: 150, store: 'an electronics store' },
   { what: 'video game', lo: 40, hi: 90, store: 'a game store' },
   { what: 'toaster', lo: 30, hi: 70, store: 'a department store' },
-  { what: 'hockey stick', lo: 50, hi: 200, store: 'a sporting goods store in Red Deer' },
+  { what: 'hockey stick', lo: 50, hi: 200, store: 'a sports shop' },
   { what: 'bike', lo: 200, hi: 600, store: 'a bike shop' },
   { what: 'pair of jeans', lo: 40, hi: 90, store: 'a clothing store' },
   { what: 'cordless drill', lo: 80, hi: 200, store: 'a hardware store' },
-  { what: 'microwave', lo: 90, hi: 250, store: 'a department store in Medicine Hat' },
+  { what: 'microwave', lo: 90, hi: 250, store: 'an appliance store' },
 ];
 
 const PAIR_ITEMS = [
   { one: 'pair of running shoes', many: 'pairs of shoes', lo: 50, hi: 140, store: 'a shoe store' },
   { one: 'pair of jeans', many: 'pairs of jeans', lo: 35, hi: 80, store: 'a clothing store' },
   { one: 'video game', many: 'video games', lo: 30, hi: 80, store: 'a game store' },
-  { one: 'hoodie', many: 'hoodies', lo: 30, hi: 65, store: 'a clothing store in Lethbridge' },
+  { one: 'hoodie', many: 'hoodies', lo: 30, hi: 65, store: 'a clothing store downtown' },
   { one: 'pair of sunglasses', many: 'pairs of sunglasses', lo: 20, hi: 60, store: 'a mall kiosk' },
   { one: 'board game', many: 'board games', lo: 25, hi: 60, store: 'a toy store' },
 ];
@@ -566,18 +566,18 @@ interface ShopCtx {
 }
 
 const SHOPS: ShopCtx[] = [
-  { store: 'a hardware store in Red Deer', kind: 'hardware stores', compare: true, items: [['Hammer', 12, 18], ['Box of nails', 5, 8], ['Tape measure', 9, 13], ['Work gloves', 7, 10], ['Safety glasses', 4, 7], ['Utility knife', 6, 9]] },
+  { store: 'a hardware store', kind: 'hardware stores', compare: true, items: [['Hammer', 12, 18], ['Box of nails', 5, 8], ['Tape measure', 9, 13], ['Work gloves', 7, 10], ['Safety glasses', 4, 7], ['Utility knife', 6, 9]] },
   { store: 'an office supply store', kind: 'office supply stores', compare: true, items: [['Binder', 4, 7], ['Pack of pens', 3, 5], ['Calculator', 12, 16], ['Notebook', 2, 4], ['Highlighters', 3, 5], ['USB stick', 9, 15]] },
-  { store: 'a clothing store in Lethbridge', kind: 'clothing stores', items: [['T-shirt', 12, 18], ['Jeans', 38, 50], ['Socks', 8, 11], ['Hoodie', 28, 40], ['Toque', 10, 16], ['Belt', 18, 26]] },
+  { store: 'a clothing store', kind: 'clothing stores', items: [['T-shirt', 12, 18], ['Jeans', 38, 50], ['Socks', 8, 11], ['Hoodie', 28, 40], ['Toque', 10, 16], ['Belt', 18, 26]] },
   { store: 'a pet store', kind: 'pet stores', compare: true, items: [['Dog toy', 6, 10], ['Leash', 14, 19], ['Dog treats', 6, 10], ['Cat litter', 12, 16], ['Food bowl', 8, 13]] },
   { store: 'a sporting goods store', kind: 'sporting goods stores', compare: true, items: [['Hockey tape', 3, 5], ['Water bottle', 9, 14], ['Soccer ball', 18, 26], ['Shin pads', 20, 28], ['Mouthguard', 6, 10]] },
-  { store: 'an auto parts store in Fort McMurray', kind: 'auto parts stores', compare: true, items: [['Wiper blades', 20, 26], ['Washer fluid', 4, 6], ['Air freshener', 2, 4], ['Car wash soap', 8, 11], ['Ice scraper', 5, 8]] },
+  { store: 'an auto parts store', kind: 'auto parts stores', compare: true, items: [['Wiper blades', 20, 26], ['Washer fluid', 4, 6], ['Air freshener', 2, 4], ['Car wash soap', 8, 11], ['Ice scraper', 5, 8]] },
   { store: 'a fast-food restaurant', kind: 'restaurants', items: [['Burger', 7, 9], ['Fries', 3, 5], ['Drink', 2, 4], ['Chicken wrap', 6, 9], ['Sundae', 3, 5], ['Salad', 6, 9]] },
-  { store: 'a coffee shop in Grande Prairie', kind: 'coffee shops', items: [['Latte', 4, 6], ['Muffin', 2, 4], ['Tea', 2, 4], ['Breakfast sandwich', 5, 7], ['Hot chocolate', 3, 5], ['Cookie', 1, 3]] },
+  { store: 'a coffee shop', kind: 'coffee shops', items: [['Latte', 4, 6], ['Muffin', 2, 4], ['Tea', 2, 4], ['Breakfast sandwich', 5, 7], ['Hot chocolate', 3, 5], ['Cookie', 1, 3]] },
   { store: 'a dollar store', kind: 'dollar stores', items: [['Birthday card', 2, 4], ['Gift bag', 1, 3], ['Balloons', 2, 4], ['Paper plates', 2, 4], ['Napkins', 1, 3], ['Tape', 1, 3]] },
 ];
 
-const GST_TEXT = 'GST in Alberta is 5%.';
+const GST_TEXT = 'A sales tax (GST) of 5% is added.';
 
 interface Line {
   name: string;
@@ -605,8 +605,8 @@ function lineSteps(lines: Line[]): string[] {
 
 const totalCost = skill({
   id: 'm204-total-cost',
-  name: 'Total cost with GST',
-  description: 'Add the items on a receipt to find the subtotal, find 5% GST and the total, and find the change or compare two stores.',
+  name: 'Total cost with sales tax',
+  description: 'Add the items on a receipt to find the subtotal, find a 5% sales tax and the total, and find the change or compare two stores.',
   outcomes: ['N2'],
   lessonId: 'm204-2-2',
   calculator: true,

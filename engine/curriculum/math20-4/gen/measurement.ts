@@ -70,7 +70,7 @@ const NAMES = [
   'Maya', 'Wyatt', 'Ngozi', 'Carlos', 'Anika', 'Ji-woo',
 ];
 
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 
 // ---------------------------------------------------------------------------
 // Lesson 6.1 — SI and imperial units
@@ -146,7 +146,7 @@ const PAIRS: Pair[] = [
     ctx: [
       (q, n) => `${n} walks ${q} to work at a grocery store.`,
       (q, n) => `${n} rides a bike ${q} to school.`,
-      (q) => `A walking trail in a Red Deer park is ${q} long.`,
+      (q) => `A walking trail in a city park is ${q} long.`,
       (q) => `A delivery driver drives ${q} between two stops.`,
     ],
   },
@@ -532,14 +532,14 @@ const convertBetween = skill({
           const trip = retry(
             () =>
               rng.pick([
-                ['Calgary', 'Red Deer', 145],
-                ['Edmonton', 'Grande Prairie', 460],
-                ['Lethbridge', 'Medicine Hat', 165],
-                ['Edmonton', 'Fort McMurray', 435],
-                ['Calgary', 'Medicine Hat', 295],
-                ['Edmonton', 'Calgary', 300],
-                ['Calgary', 'Banff', 128],
-                ['Red Deer', 'Edmonton', 155],
+                ['Elmwood', 'Fernhill', 145],
+                ['Oakridge', 'Northgate', 460],
+                ['Sandford', 'Willowdale', 165],
+                ['Oakridge', 'Birchwood', 435],
+                ['Elmwood', 'Willowdale', 295],
+                ['Oakridge', 'Elmwood', 300],
+                ['Elmwood', 'Cedar Hill', 128],
+                ['Fernhill', 'Oakridge', 155],
               ] as const),
             (t) => clearOf(t[2] / 1.6, 1),
           );
@@ -547,7 +547,7 @@ const convertBetween = skill({
         }
         case 'kmh-mph': {
           const v = retry(() => rng.pick([30, 40, 50, 70, 80, 90, 110]), (x) => clearOf(x / 1.6, 0));
-          const where = rng.pick(['on a highway near Calgary', 'on a road near Lethbridge', 'in a school zone in Red Deer', 'on Highway 63 near Fort McMurray', 'on a street in Edmonton']);
+          const where = rng.pick(['on a highway near Lakeside', 'on a country road', 'in a school zone', 'on a northern highway', 'on a city street']);
           return oneStep(mode, v, `The speed limit ${where} is ${M(v, 'km/h')}. A driver from the United States is used to miles per hour.`, 0);
         }
         case 'mi-km': {
@@ -645,7 +645,7 @@ function betweenTwoStep(rng: Rng, n: string) {
     const drive = retry(() => Math.round(kmh / 10) * 10 + rng.pick([-20, -10, 10, 20]), (x) => Math.abs(x - kmh) >= 4 && x > 0);
     const under = drive <= kmh;
     return {
-      prompt: `${n} is driving an Alberta car in ${rng.pick(['Montana', 'Idaho', 'Washington State'])}. The speed limit sign says $${mph}$ miles per hour. The car’s speedometer shows kilometres per hour.\n\n(a) What is the speed limit in km/h?\n\n(b) ${n} is driving at ${M(drive, 'km/h')}. Is that at or under the limit?\n\nUse ${F_MI}.`,
+      prompt: `${n} is driving a car from home on a trip through ${rng.pick(['Montana', 'Idaho', 'Washington State'])}. The speed limit sign says $${mph}$ miles per hour. The car’s speedometer shows kilometres per hour.\n\n(a) What is the speed limit in km/h?\n\n(b) ${n} is driving at ${M(drive, 'km/h')}. Is that at or under the limit?\n\nUse ${F_MI}.`,
       parts: [{ ...exact(kmh, 'km/h'), label: '(a)' }, { label: '(b)', answer: fixedChoice(['Yes, at or under the limit', 'No, over the limit'], under ? 0 : 1) }],
       hints: ['Only the distance unit changes. A kilometre is shorter than a mile, so multiply by 1.6.', 'Then compare the car’s speed with your answer.'],
       solution: [`$${mph} \\times 1.6 = ${nm(kmh)}$, so the limit is $${nm(kmh)}\\ \\text{km/h}$.`, `${n} is driving at $${drive}\\ \\text{km/h}$, which is ${under ? 'less than' : 'more than'} $${nm(kmh)}\\ \\text{km/h}$.`, `(a) $${nm(kmh)}\\ \\text{km/h}$; (b) ${under ? 'Yes, it is under the limit.' : 'No, it is over the limit.'}`],
@@ -680,15 +680,15 @@ const toC = (f: number) => (f - 32) / 1.8;
 const REFERENT_HINT = 'Compare with temperatures you know: water freezes at $0^\\circ\\text{C}$ ($32^\\circ\\text{F}$), a room is about $20^\\circ\\text{C}$ ($68^\\circ\\text{F}$), your body is about $37^\\circ\\text{C}$ ($98.6^\\circ\\text{F}$), and water boils at $100^\\circ\\text{C}$ ($212^\\circ\\text{F}$).';
 
 const REASONABLE: Array<{ thing: string; right: string; wrong: string[]; why: string }> = [
-  { thing: 'a hot summer afternoon in Medicine Hat', right: cDeg(32), wrong: [fDeg(32), cDeg(90), cDeg(-5)], why: 'A hot day is warmer than a room ($20^\\circ\\text{C}$) but much colder than boiling water.' },
-  { thing: 'a cold January morning in Grande Prairie', right: cDeg(-25), wrong: [cDeg(25), fDeg(60), cDeg(-80)], why: 'A cold winter morning in northern Alberta is well below freezing ($0^\\circ\\text{C}$).' },
+  { thing: 'a hot summer afternoon', right: cDeg(32), wrong: [fDeg(32), cDeg(90), cDeg(-5)], why: 'A hot day is warmer than a room ($20^\\circ\\text{C}$) but much colder than boiling water.' },
+  { thing: 'a cold winter morning in a northern town', right: cDeg(-25), wrong: [cDeg(25), fDeg(60), cDeg(-80)], why: 'A cold winter morning in the north is well below freezing ($0^\\circ\\text{C}$).' },
   { thing: 'the inside of a fridge at a grocery store', right: cDeg(4), wrong: [fDeg(4), cDeg(40), cDeg(-30)], why: 'A fridge keeps food cold but just above freezing ($0^\\circ\\text{C}$).' },
   { thing: 'a walk-in freezer at a restaurant', right: cDeg(-18), wrong: [cDeg(18), fDeg(40), cDeg(-80)], why: 'A freezer must be well below the freezing point of water ($0^\\circ\\text{C}$).' },
   { thing: 'a cup of hot coffee at a coffee shop', right: cDeg(70), wrong: [fDeg(70), cDeg(7), cDeg(300)], why: 'Hot coffee is much warmer than your body ($37^\\circ\\text{C}$) but cooler than boiling water ($100^\\circ\\text{C}$).' },
   { thing: 'the water in a hotel hot tub', right: cDeg(39), wrong: [fDeg(39), cDeg(80), cDeg(15)], why: 'A hot tub is a little warmer than your body ($37^\\circ\\text{C}$).' },
   { thing: 'a comfortable classroom', right: cDeg(21), wrong: [fDeg(21), cDeg(40), cDeg(5)], why: 'Room temperature is about $20^\\circ\\text{C}$.' },
   { thing: 'a child with a fever', right: cDeg(39), wrong: [fDeg(39), cDeg(50), cDeg(30)], why: 'Normal body temperature is about $37^\\circ\\text{C}$, so a fever is a bit higher.' },
-  { thing: 'a nice spring day in Calgary', right: cDeg(15), wrong: [fDeg(15), cDeg(45), cDeg(-30)], why: 'A nice spring day is mild: a little cooler than a room ($20^\\circ\\text{C}$).' },
+  { thing: 'a nice spring day', right: cDeg(15), wrong: [fDeg(15), cDeg(45), cDeg(-30)], why: 'A nice spring day is mild: a little cooler than a room ($20^\\circ\\text{C}$).' },
   { thing: 'oil in a deep fryer at a fast-food restaurant', right: cDeg(180), wrong: [cDeg(18), fDeg(80), cDeg(800)], why: 'Frying oil is much hotter than boiling water ($100^\\circ\\text{C}$).' },
   { thing: 'the water in a swimming pool at a recreation centre', right: cDeg(27), wrong: [fDeg(27), cDeg(70), cDeg(2)], why: 'Pool water is warmer than a room but cooler than your body.' },
   { thing: 'a hot summer day in Montana, on a US weather app', right: fDeg(90), wrong: [cDeg(90), fDeg(30), fDeg(9)], why: 'In Fahrenheit, a room is about $68^\\circ\\text{F}$ and body temperature is about $98.6^\\circ\\text{F}$, so a hot day is around $90^\\circ\\text{F}$.' },
@@ -712,7 +712,7 @@ interface TempCtx {
 
 const C_CTX: TempCtx[] = [
   { lo: -30, hi: 30, step: 1, text: (t, n, town) => `The forecast for ${town} tomorrow is ${t}. ${n}’s cousin in Texas uses degrees Fahrenheit.` },
-  { lo: 37, hi: 40, step: 1, text: (t) => `The hot tub at a hotel in Jasper is set to ${t}. A guest from Ohio is used to degrees Fahrenheit.` },
+  { lo: 37, hi: 40, step: 1, text: (t) => `The hot tub at a mountain hotel is set to ${t}. A guest from Ohio is used to degrees Fahrenheit.` },
   { lo: 160, hi: 230, step: 5, text: (t, n) => `${n}’s recipe says to bake at ${t}, but the oven at the restaurant shows degrees Fahrenheit.` },
   { lo: 2, hi: 5, step: 1, text: (t) => `A walk-in cooler at a grocery store is set to ${t}. The new thermostat is a US model that shows degrees Fahrenheit.` },
   { lo: -23, hi: -15, step: 1, text: (t) => `A freezer at a fast-food restaurant is set to ${t}. The new thermometer shows only degrees Fahrenheit.` },
@@ -805,7 +805,7 @@ const temperatureConvert = skill({
         solution: fToCSteps(f),
       };
     }
-    const mode = rng.pick(['safety', 'safety', 'chinook', 'compare', 'oven'] as const);
+    const mode = rng.pick(['safety', 'safety', 'warmWind', 'compare', 'oven'] as const);
     if (mode === 'safety') {
       const rule = rng.pick([
         { what: 'Hot food on a buffet line', rule: 'must be kept at', limit: 60, atLeast: true, lo: 120, hi: 170, q: 'Is the food hot enough?' },
@@ -829,11 +829,11 @@ const temperatureConvert = skill({
         ],
       };
     }
-    if (mode === 'chinook') {
+    if (mode === 'warmWind') {
       const made = retry(() => ({ a: rng.int(-28, -8), rise: rng.int(10, 25) }), (x) => clearOf(toF(x.a + x.rise), 0));
       const b = made.a + made.rise;
       return {
-        prompt: `On a winter morning in ${rng.pick(['Lethbridge', 'Calgary', 'Medicine Hat', 'Pincher Creek'])}, the temperature was $${cDeg(made.a)}$. A chinook wind blew in, and the temperature rose by $${made.rise}$ degrees Celsius. ${n}’s friend in Montana asks for the new temperature in degrees Fahrenheit. What is it, to the nearest degree?\n\nUse ${F_FORMULA}.`,
+        prompt: `On a winter morning in ${rng.pick(['Hillcrest', 'Lakeside', 'Pinewood', 'Stonebridge'])}, the temperature was $${cDeg(made.a)}$. A warm wind blew in, and the temperature rose by $${made.rise}$ degrees Celsius. ${n}’s friend in Montana asks for the new temperature in degrees Fahrenheit. What is it, to the nearest degree?\n\nUse ${F_FORMULA}.`,
         parts: [numPart(toF(b), { decimals: 0, suffix: '°F' })],
         hints: ['First find the new temperature in degrees Celsius: add the rise.', 'Then change it to Fahrenheit: multiply by 1.8, then add 32.'],
         solution: [`New temperature: $${nm(made.a)} + ${made.rise} = ${cDeg(b)}$`, ...cToFSteps(b).slice(1)],

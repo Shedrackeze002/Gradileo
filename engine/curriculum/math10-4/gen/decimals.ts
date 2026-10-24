@@ -14,7 +14,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure; calculator?: boolean };
 type Ctx = (rng: Rng, name: string) => Out;
@@ -741,7 +741,7 @@ const PO_D2: Ctx[] = [
     const c = rng.pick([
       [`A grocery store sold $${N}$ cartons of eggs last week. $${pc(p)}$ of them were the large size. How many cartons of large eggs were sold?`, 'cartons of large eggs were sold'],
       [`$${N}$ people ran in a fun run in ${rng.pick(TOWNS)}. $${pc(p)}$ of them were under $18$. How many runners were under $18$?`, 'runners were under $18$'],
-      [`A warehouse shipped $${N}$ boxes. $${pc(p)}$ of the boxes went to Fort McMurray. How many boxes went to Fort McMurray?`, 'boxes went to Fort McMurray'],
+      [`A warehouse shipped $${N}$ boxes. $${pc(p)}$ of the boxes went to Ashford. How many boxes went to Ashford?`, 'boxes went to Ashford'],
       [`A coffee shop served $${N}$ customers on Monday. $${pc(p)}$ of them paid with cash. How many customers paid with cash?`, 'customers paid with cash'],
     ]);
     return {
@@ -875,7 +875,7 @@ const GOODS = [
   { item: 'a bike helmet', lo: 40, hi: 110 },
   { item: 'a coffee maker', lo: 40, hi: 120 },
 ];
-const GST = 'In Alberta, 5% GST is added to the price.';
+const GST = 'A sales tax (GST) of 5% is added to the price.';
 const DISC_HINT = 'The discount is the percent of the price that you save. Sale price = price − discount.';
 
 /** A realistic shelf price in dollars (x.99, x.49 or x.95). */
@@ -963,8 +963,8 @@ function discountTax(rng: Rng, d: Difficulty): Out {
 
 const discountTaxSkill = skill({
   id: 'm104-discount-tax',
-  name: 'Discounts and GST',
-  description: 'Find a sale price after a percent discount and a total after 5% GST, in that order when both apply.',
+  name: 'Discounts and sales tax',
+  description: 'Find a sale price after a percent discount and a total after a 5% sales tax, in that order when both apply.',
   outcomes: ['N2'],
   lessonId: 'm104-3-3',
   calculator: true,

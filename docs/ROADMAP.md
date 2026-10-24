@@ -634,10 +634,13 @@ items ship or decisions change.
      the recording workflow takes only the `math*` course folders until then). Then Grade 12
      Chemistry, then English 10, 20 and 30. The privacy policy and terms still describe Gradileo
      as a mathematics platform; their wording is the owner's to change.
-   - Also to do: about 100 practice questions and a few lessons are set in Alberta (a farm in
-     Alberta, a road map of Alberta, Alberta's GST). They become places anywhere or no place, with
-     every rate still stated in the question. The rendered videos keep their old course names on
-     screen; new and re-rendered videos use the new names.
+   - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
+     longer set in Alberta (about 1,000 mentions: towns, lakes, parks, teams, Alberta's GST). Town
+     lists and real distance, daylight and temperature data now belong to invented towns (Riverton,
+     Lakeside, …), single settings are neutral, and sales tax is explained for any country with every
+     rate stated in the question. Canada-wide contexts (Canadian dollars, CPP and EI with their rates,
+     provincial parks) stay for now. The rendered videos keep their old settings and course names;
+     new and re-rendered videos use the new ones.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.

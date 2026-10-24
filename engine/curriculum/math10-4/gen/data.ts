@@ -14,7 +14,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Ananya', 'Nathan', 'Lena', 'Diego', 'Harpreet', 'Noor',
 ];
-const CITIES = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure; answerDisplay?: string };
 type Lvl = Difficulty;
@@ -137,19 +137,19 @@ const lower = (c: string) => c.toLowerCase();
 
 const SURVEYS: CatCtx[] = [
   surveyCtx({
-    who: 'Kiara asked students at her high school in Calgary to name their favourite pizza topping.',
+    who: 'Kiara asked students at her high school to name their favourite pizza topping.',
     cats: ['Cheese', 'Pepperoni', 'Hawaiian', 'Veggie', 'Sausage', 'Mushroom'],
     noun: 'students', verb: 'chose', neg: 'did **not** choose', w: (c) => (c === 'Hawaiian' ? 'Hawaiian' : lower(c)),
     valueLabel: 'Number of students', categoryLabel: 'Topping',
   }),
   surveyCtx({
-    who: 'A community centre in Red Deer asked people which sport they most like to watch.',
+    who: 'A community centre asked people which sport they most like to watch.',
     cats: ['Hockey', 'Soccer', 'Basketball', 'Football', 'Baseball', 'Curling'],
     noun: 'people', verb: 'chose', neg: 'did **not** choose', w: lower,
     valueLabel: 'Number of people', categoryLabel: 'Sport',
   }),
   surveyCtx({
-    who: 'An ice cream shop in Medicine Hat asked customers to vote for their favourite flavour.',
+    who: 'An ice cream shop asked customers to vote for their favourite flavour.',
     cats: ['Vanilla', 'Chocolate', 'Strawberry', 'Mint', 'Maple'],
     noun: 'customers', verb: 'voted for', neg: 'did **not** vote for', w: lower,
     valueLabel: 'Number of votes', categoryLabel: 'Flavour',
@@ -161,14 +161,14 @@ const SURVEYS: CatCtx[] = [
     valueLabel: 'Number of students', categoryLabel: 'Pet',
   }),
   surveyCtx({
-    who: 'A warehouse in Edmonton asked its workers how they get to work.',
-    cats: ['Car', 'Bus', 'LRT', 'Bike', 'Walk', 'Carpool'],
+    who: 'A city warehouse asked its workers how they get to work.',
+    cats: ['Car', 'Bus', 'Train', 'Bike', 'Walk', 'Carpool'],
     noun: 'workers', verb: 'get to work', neg: 'do **not** get to work',
-    w: (c) => ({ Car: 'by car', Bus: 'by bus', LRT: 'by LRT', Bike: 'by bike', Walk: 'on foot', Carpool: 'in a carpool' })[c] ?? lower(c),
+    w: (c) => ({ Car: 'by car', Bus: 'by bus', Train: 'by train', Bike: 'by bike', Walk: 'on foot', Carpool: 'in a carpool' })[c] ?? lower(c),
     valueLabel: 'Number of workers', categoryLabel: 'How they travel',
   }),
   surveyCtx({
-    who: 'A radio station in Grande Prairie asked listeners what kind of music they like best.',
+    who: 'A local radio station asked listeners what kind of music they like best.',
     cats: ['Country', 'Pop', 'Rock', 'Hip hop', 'Classical'],
     noun: 'listeners', verb: 'chose', neg: 'did **not** choose', w: lower,
     valueLabel: 'Number of listeners', categoryLabel: 'Music',
@@ -178,7 +178,7 @@ const SURVEYS: CatCtx[] = [
 const COUNTS: CatCtx[] = [
   {
     kind: 'count',
-    intro: 'The {display} shows how many cars an auto detailing shop in Lethbridge washed each day last week.',
+    intro: 'The {display} shows how many cars an auto detailing shop washed each day last week.',
     cats: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     ordered: true,
     noun: 'cars',
@@ -193,7 +193,7 @@ const COUNTS: CatCtx[] = [
   },
   {
     kind: 'count',
-    intro: 'The {display} shows how many haircuts a hair salon in Calgary did each day last week.',
+    intro: 'The {display} shows how many haircuts a hair salon did each day last week.',
     cats: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     ordered: true,
     noun: 'haircuts',
@@ -208,7 +208,7 @@ const COUNTS: CatCtx[] = [
   },
   {
     kind: 'count',
-    intro: 'The {display} shows how many bags of garden soil a garden centre in Grande Prairie sold each day last week.',
+    intro: 'The {display} shows how many bags of garden soil a garden centre sold each day last week.',
     cats: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     ordered: true,
     noun: 'bags',
@@ -222,7 +222,7 @@ const COUNTS: CatCtx[] = [
   },
   {
     kind: 'count',
-    intro: 'The {display} shows how many rooms each housekeeper cleaned at a hotel in Jasper on Saturday.',
+    intro: 'The {display} shows how many rooms each housekeeper cleaned at a mountain hotel on Saturday.',
     cats: ['Ana', 'Ben', 'Carmen', 'Dev', 'Elif', 'Femi'],
     noun: 'rooms',
     valueLabel: 'Rooms cleaned',
@@ -235,7 +235,7 @@ const COUNTS: CatCtx[] = [
   },
   {
     kind: 'count',
-    intro: 'The {display} shows the drinks a coffee shop in Fort McMurray sold one morning.',
+    intro: 'The {display} shows the drinks a coffee shop sold one morning.',
     cats: ['Coffee', 'Latte', 'Tea', 'Hot cocoa', 'Smoothie'],
     noun: 'drinks',
     valueLabel: 'Drinks sold',
@@ -531,7 +531,7 @@ const GRAPH_WHY: Record<GraphKind, string> = {
 const GRAPH_RULE = 'Bar graph: compare groups. Line graph: change over time. Circle graph: parts of one whole.';
 
 const GRAPH_SITUATIONS: Array<{ text: string; kind: GraphKind; easy?: boolean }> = [
-  { text: 'the temperature in Red Deer every hour from 6 in the morning to 6 in the evening', kind: 'line', easy: true },
+  { text: 'the temperature in a town every hour from 6 in the morning to 6 in the evening', kind: 'line', easy: true },
   { text: 'how a puppy’s mass changed each week for $10$ weeks', kind: 'line', easy: true },
   { text: 'the price of a litre of gas on the first day of each month for a year', kind: 'line' },
   { text: '{name}’s savings account balance at the end of each month', kind: 'line' },
@@ -544,7 +544,7 @@ const GRAPH_SITUATIONS: Array<{ text: string; kind: GraphKind; easy?: boolean }>
   { text: 'how many goals each player on a hockey team scored this season', kind: 'bar' },
   { text: 'how {name}’s monthly paycheque is split among rent, food, bus fare and savings', kind: 'circle', easy: true },
   { text: 'the percent of a pizza shop’s sales that come from each size of pizza', kind: 'circle' },
-  { text: 'how a farm near Lethbridge splits its land among wheat, canola, barley and pasture', kind: 'circle' },
+  { text: 'how a family farm splits its land among wheat, canola, barley and pasture', kind: 'circle' },
   { text: 'how {name} spends the $24$ hours of a day: sleep, work, school and free time', kind: 'circle', easy: true },
   { text: 'what part of a community event’s budget goes to food, music, prizes and rent', kind: 'circle' },
 ];
@@ -584,7 +584,7 @@ const QUESTIONS: Array<{ topic: string; fair: string; biased: string[] }> = [
 
 const SAMPLES: Array<{ goal: string; fair: string; biased: Array<[string, string]> }> = [
   {
-    goal: 'what all the students at a large high school in Lethbridge think of the cafeteria food',
+    goal: 'what all the students at a large high school think of the cafeteria food',
     fair: 'Pick $50$ students at random from the whole school list.',
     biased: [
       ['Ask $50$ students on the school volleyball team.', 'Only one team is asked, so most students have no chance to be picked.'],
@@ -593,7 +593,7 @@ const SAMPLES: Array<{ goal: string; fair: string; biased: Array<[string, string
     ],
   },
   {
-    goal: 'whether people in Grande Prairie want a new hockey arena',
+    goal: 'whether people in a city want a new hockey arena',
     fair: 'Phone $200$ people picked at random from all over the city.',
     biased: [
       ['Ask $200$ people leaving a hockey game.', 'People at a hockey game probably like hockey more than most people do.'],
@@ -620,8 +620,8 @@ const SAMPLES: Array<{ goal: string; fair: string; biased: Array<[string, string
     ],
   },
   {
-    goal: 'how many hours a week teens in Alberta spend gaming',
-    fair: 'Survey teens picked at random from schools all over Alberta.',
+    goal: 'how many hours a week teens in the region spend gaming',
+    fair: 'Survey teens picked at random from schools all over the region.',
     biased: [
       ['Survey teens at a video game store.', 'Teens at a game store probably game more than most teens.'],
       ['Survey the members of one school’s chess club.', 'One club at one school does not match all teens.'],
@@ -629,7 +629,7 @@ const SAMPLES: Array<{ goal: string; fair: string; biased: Array<[string, string
     ],
   },
   {
-    goal: 'whether shoppers want a grocery store in Medicine Hat to stay open later',
+    goal: 'whether shoppers want a local grocery store to stay open later',
     fair: 'Ask shoppers picked at random at different times on different days.',
     biased: [
       ['Ask only the store’s staff.', 'The staff are not the shoppers, and they may not want to work late.'],
@@ -779,15 +779,15 @@ const STATS: StatCtx[] = [
     next: { item: 'game', targets: [10, 12, 14, 15], text: (name, n, t) => `${name} wants to average $${t}$ points a game over $${n + 1}$ games. How many points does ${name} need to score in the next game?` },
   },
   {
-    intro: (_name, n) => `Here are the daily high temperatures in Calgary for $${n}$ days in May, in degrees Celsius:`,
+    intro: (_name, n) => `Here are the daily high temperatures in Hillcrest for $${n}$ days in May, in degrees Celsius:`,
     r1: [8, 24], r2: [3, 27], unit: '°C', tex: '^\\circ\\text{C}', noun: 'high temperature',
   },
   {
-    intro: (_name, n) => `A landscaping crew in Lethbridge counted how many lawns it mowed each day for $${n}$ days:`,
+    intro: (_name, n) => `A landscaping crew counted how many lawns it mowed each day for $${n}$ days:`,
     r1: [4, 14], r2: [3, 19], unit: 'lawns', tex: '', noun: 'number of lawns per day',
   },
   {
-    intro: (name, n) => `${name} takes the bus to work in Edmonton. Here is how many minutes the ride took on $${n}$ days:`,
+    intro: (name, n) => `${name} takes the bus to work in the city. Here is how many minutes the ride took on $${n}$ days:`,
     r1: [18, 40], r2: [15, 48], unit: 'min', tex: '\\ \\text{min}', noun: 'ride time',
   },
 ];
@@ -1221,7 +1221,7 @@ function probTwoStep(rng: Rng, name: string): Out {
     const other = rng.pick(['brother', 'sister', 'aunt', 'grandfather', 'best friend']);
     const pc = ((a + b) / t) * 100;
     return {
-      prompt: `A 50/50 draw at a junior hockey game in Medicine Hat sold $${t}$ tickets. ${name} bought $${a}$ tickets and ${name}’s ${other} bought $${b}$ tickets. One ticket wins. What is the probability that one of them wins? Write the answer as a percent.`,
+      prompt: `A 50/50 draw at a junior hockey game sold $${t}$ tickets. ${name} bought $${a}$ tickets and ${name}’s ${other} bought $${b}$ tickets. One ticket wins. What is the probability that one of them wins? Write the answer as a percent.`,
       parts: [numPart(pc, { suffix: '%' })],
       hints: ['First add the two people’s tickets.', 'Divide by the total number of tickets, then multiply by $100$.'],
       solution: [`Their tickets: $${a} + ${b} = ${a + b}$`, `$P = ${fr(a + b, t)} = ${num((a + b) / t)}$`, `As a percent: $${num((a + b) / t)} \\times 100 = ${num(pc)}\\%$`, `The probability is $${num(pc)}\\%$.`],

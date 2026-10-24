@@ -16,7 +16,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Ananya', 'Nathan', 'Lena', 'Diego', 'Harpreet', 'Noor',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 
 /** Plain text with commas for 4 or more digits, like a cheque: 9,020 (also used in table cells). */
 const plain = (x: number) => {
@@ -99,7 +99,7 @@ const SMALL_CTX: Ctx[] = [
 const BIG_CTX: Ctx[] = [
   (x, _n, town) => `A used truck for sale in ${town} has ${x} km on its odometer.`,
   (x, _n, town) => `The crowd at a summer fair in ${town} was ${x} people.`,
-  (x) => `A farm near Lethbridge harvested ${x} kg of potatoes.`,
+  (x) => `A family farm harvested ${x} kg of potatoes.`,
   (x) => `A warehouse shipped ${x} boxes this year.`,
   (x, name) => `${name} walked ${x} steps last month.`,
   (x, _n, town) => `A grocery store in ${town} sold ${x} litres of milk this year.`,
@@ -770,11 +770,11 @@ function exD2(rng: Rng): Ex {
 
 type Shop = { place: string; a: Array<[string, number[]]>; b: Array<[string, number[]]> };
 const SHOPS: Shop[] = [
-  { place: 'a coffee shop in Calgary', a: [['coffees', [2, 3, 4]], ['lattes', [4, 5, 6]], ['hot chocolates', [2, 3, 4]]], b: [['muffins', [2, 3]], ['cookies', [1, 2]], ['bagels', [2, 3]]] },
-  { place: 'a hardware store in Red Deer', a: [['boxes of screws', [4, 5, 6, 7]], ['paint brushes', [6, 8, 9]], ['rolls of tape', [3, 4, 5]]], b: [['pairs of work gloves', [8, 9, 12]], ['packs of sandpaper', [5, 6, 7]]] },
-  { place: 'a burger place in Lethbridge', a: [['burgers', [6, 7, 8, 9]], ['wraps', [7, 8, 9]]], b: [['drinks', [2, 3]], ['orders of fries', [3, 4]]] },
+  { place: 'a downtown coffee shop', a: [['coffees', [2, 3, 4]], ['lattes', [4, 5, 6]], ['hot chocolates', [2, 3, 4]]], b: [['muffins', [2, 3]], ['cookies', [1, 2]], ['bagels', [2, 3]]] },
+  { place: 'a hardware store', a: [['boxes of screws', [4, 5, 6, 7]], ['paint brushes', [6, 8, 9]], ['rolls of tape', [3, 4, 5]]], b: [['pairs of work gloves', [8, 9, 12]], ['packs of sandpaper', [5, 6, 7]]] },
+  { place: 'a burger place', a: [['burgers', [6, 7, 8, 9]], ['wraps', [7, 8, 9]]], b: [['drinks', [2, 3]], ['orders of fries', [3, 4]]] },
   { place: 'the snack bar at a hockey arena', a: [['hot dogs', [3, 4, 5]], ['slices of pizza', [3, 4, 5]]], b: [['bottles of water', [2, 3]], ['bags of popcorn', [3, 4]]] },
-  { place: 'a farmers’ market in Grande Prairie', a: [['jars of honey', [8, 9, 10, 12]], ['loaves of bread', [5, 6, 7]]], b: [['bunches of carrots', [3, 4]], ['cartons of eggs', [5, 6, 7]]] },
+  { place: 'a farmers’ market', a: [['jars of honey', [8, 9, 10, 12]], ['loaves of bread', [5, 6, 7]]], b: [['bunches of carrots', [3, 4]], ['cartons of eggs', [5, 6, 7]]] },
 ];
 
 function receipt(rng: Rng): Out {

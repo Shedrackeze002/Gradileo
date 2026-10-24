@@ -19,7 +19,7 @@ const JOBS = [
   'a grocery store', 'a coffee shop', 'a hotel', 'a warehouse', 'a landscaping company', 'a fast-food restaurant',
   'a hair salon', 'a child care centre', 'an auto detailing shop', 'a building supply store', 'a farm supply store', 'a car wash',
 ];
-const CITIES = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure };
 type Lvl = 1 | 2;
@@ -273,12 +273,12 @@ function budgetPercent(rng: Rng): Out {
 const GOALS = [
   { what: 'a damage deposit on an apartment', lo: 800, hi: 1400 },
   { what: 'a used car', lo: 2400, hi: 4800 },
-  { what: 'a trip to Jasper', lo: 600, hi: 1200 },
+  { what: 'a trip to the mountains', lo: 600, hi: 1200 },
   { what: 'a set of winter tires', lo: 600, hi: 1000 },
   { what: 'a laptop for a college course', lo: 900, hi: 1500 },
   { what: 'an emergency fund', lo: 1000, hi: 2000 },
   { what: 'steel-toed boots and tools for a new job', lo: 400, hi: 800 },
-  { what: 'a concert weekend in Calgary', lo: 500, hi: 900 },
+  { what: 'a concert weekend in the city', lo: 500, hi: 900 },
 ];
 const CUTS = ['eating out', 'entertainment', 'clothing', 'take-out food'];
 

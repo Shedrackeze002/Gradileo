@@ -493,19 +493,19 @@ const scaleSkill = skill({
 // Lesson 8.2 — Map distances
 // ---------------------------------------------------------------------------
 
-/** Approximate highway distances (km) between Alberta places. */
+/** Highway distances (km) between invented towns. */
 const TRIPS: Array<[string, string, number]> = [
-  ['Edmonton', 'Calgary', 300],
-  ['Edmonton', 'Red Deer', 150],
-  ['Red Deer', 'Calgary', 145],
-  ['Calgary', 'Lethbridge', 210],
-  ['Lethbridge', 'Medicine Hat', 165],
-  ['Calgary', 'Medicine Hat', 295],
-  ['Calgary', 'Banff', 130],
-  ['Edmonton', 'Lloydminster', 250],
-  ['Calgary', 'Drumheller', 135],
-  ['Edmonton', 'Fort McMurray', 435],
-  ['Edmonton', 'Grande Prairie', 465],
+  ['Riverton', 'Lakeside', 300],
+  ['Riverton', 'Brookfield', 150],
+  ['Brookfield', 'Lakeside', 145],
+  ['Lakeside', 'Hillcrest', 210],
+  ['Hillcrest', 'Pinewood', 165],
+  ['Lakeside', 'Pinewood', 295],
+  ['Lakeside', 'Maple Falls', 130],
+  ['Riverton', 'Stonebridge', 250],
+  ['Lakeside', 'Westbury', 135],
+  ['Riverton', 'Ashford', 435],
+  ['Riverton', 'Clearwater', 465],
 ];
 
 const LOCAL_MAPS = [
@@ -549,7 +549,7 @@ const mapDistance = skill({
         const cm = roundTo(km / k, 1);
         const real = clean(cm * k);
         return {
-          prompt: `On a road map of Alberta, $1\\ \\text{cm}$ represents ${M(k, 'km')}. ${who} measures the highway from ${a} to ${b} on the map. It is ${M(cm, 'cm')} long. About how far is the drive?`,
+          prompt: `On a regional road map, $1\\ \\text{cm}$ represents ${M(k, 'km')}. ${who} measures the highway from ${a} to ${b} on the map. It is ${M(cm, 'cm')} long. About how far is the drive?`,
           parts: [exact(real, 'km')],
           hints: [`Each centimetre on the map stands for ${M(k, 'km')}.`, `Multiply: $${nm(cm)} \\times ${k}$.`],
           solution: [`$${nm(cm)} \\times ${k} = ${nm(real)}$`, `The drive is about ${M(real, 'km')}.`],
@@ -560,8 +560,8 @@ const mapDistance = skill({
           { n: 50000, k: 0.5, map: 'a hiking map', places: LOCAL_MAPS[0].places },
           { n: 100000, k: 1, map: 'a map of a provincial park', places: LOCAL_MAPS[0].places },
           { n: 250000, k: 2.5, map: 'a county map', places: LOCAL_MAPS[1].places },
-          { n: 1000000, k: 10, map: 'a road map of Alberta', places: [] as string[] },
-          { n: 2000000, k: 20, map: 'a road map of Alberta', places: [] as string[] },
+          { n: 1000000, k: 10, map: 'a regional road map', places: [] as string[] },
+          { n: 2000000, k: 20, map: 'a regional road map', places: [] as string[] },
         ];
         const o = rng.pick(opts);
         let a: string;
@@ -587,7 +587,7 @@ const mapDistance = skill({
       const k = rng.pick([10, 20, 25, 50].filter((x) => (km / x) * 10 === Math.round((km / x) * 10) && km / x <= 20));
       const cm = clean(km / k);
       return {
-        prompt: `${who} is drawing a map of Alberta for a school project. On the map, $1\\ \\text{cm}$ represents ${M(k, 'km')}. The highway from ${a} to ${b} is about ${M(km, 'km')} long. How long should it be on the map?`,
+        prompt: `${who} is drawing a map of the nearby towns for a school project. On the map, $1\\ \\text{cm}$ represents ${M(k, 'km')}. The highway from ${a} to ${b} is about ${M(km, 'km')} long. How long should it be on the map?`,
         parts: [exact(cm, 'cm')],
         hints: [`Each centimetre on the map stands for ${M(k, 'km')}.`, `Find how many groups of ${k} are in ${km}: divide.`],
         solution: [`$${km} \\div ${k} = ${nm(cm)}$`, `It should be ${M(cm, 'cm')} long on the map.`],
@@ -730,7 +730,7 @@ const directions = skill({
   format: 'mc',
   gen(rng, d) {
     const who = rng.pick(NAMES);
-    const town = rng.pick(['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Fort McMurray', 'Camrose', 'Brooks', 'Airdrie']);
+    const town = rng.pick(['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury']);
     const intro = `The map shows part of ${town}. North is at the top of the map.`;
     const locHint = 'Find the letter below the square, then the number at the left. Write the letter first, like B3.';
     if (d === 1) {
@@ -1002,7 +1002,7 @@ const travelTime = skill({
         if (!Number.isInteger(d1) || !Number.isInteger(d2)) continue;
         const total = m1 + m2;
         return {
-          prompt: `${who} drives a work truck from ${rng.pick(['Lethbridge', 'Red Deer', 'Medicine Hat', 'Grande Prairie', 'Brooks'])} to a ${rng.pick(['farm', 'job site', 'gravel pit', 'ranch'])}. The first ${M(d1, 'km')} are on city streets at an average of $${s1}\\ \\text{km/h}$. The last ${M(d2, 'km')} are on the highway at an average of $${s2}\\ \\text{km/h}$. How long does the whole drive take? Give your answer in hours and minutes.`,
+          prompt: `${who} drives a work truck from ${rng.pick(['Ashford', 'Clearwater', 'Brookfield', 'Hillcrest', 'Pinewood'])} to a ${rng.pick(['farm', 'job site', 'gravel pit', 'ranch'])}. The first ${M(d1, 'km')} are on city streets at an average of $${s1}\\ \\text{km/h}$. The last ${M(d2, 'km')} are on the highway at an average of $${s2}\\ \\text{km/h}$. How long does the whole drive take? Give your answer in hours and minutes.`,
           parts: [numPart(Math.floor(total / 60), { suffix: 'h', label: 'Hours' }), numPart(total % 60, { suffix: 'min', label: 'Minutes' })],
           hints: ['Find the time for each part of the drive: $\\text{time} = \\text{distance} \\div \\text{speed}$.', 'Change each time to minutes (multiply hours by $60$), then add.'],
           solution: [

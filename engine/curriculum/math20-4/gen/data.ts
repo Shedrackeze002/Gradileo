@@ -102,7 +102,7 @@ interface LineCtx {
 
 const LINES: LineCtx[] = [
   {
-    intro: () => 'The line graph shows how many iced coffees a café in Red Deer sold each week this summer.',
+    intro: () => 'The line graph shows how many iced coffees a café sold each week this summer.',
     xs: [1, 2, 3, 4, 5, 6, 7, 8], xStep: 1, xLabel: 'Week', yLabel: 'Iced coffees sold',
     yStep: 20, yTop: 200, shape: 'walk', unit: 'coffees',
     when: (x) => `in week ${x}`, ask: 'How many iced coffees did the café sell', what: 'weekly sales', per: 'per week',
@@ -114,13 +114,13 @@ const LINES: LineCtx[] = [
     when: (x) => `at the end of month ${x}`, ask: 'What was the balance', what: 'the balance', per: 'per month',
   },
   {
-    intro: () => 'The line graph shows the temperature in Lethbridge on a summer day. The hours use the 24-hour clock.',
+    intro: () => 'The line graph shows the temperature in a small town on a summer day. The hours use the 24-hour clock.',
     xs: [6, 8, 10, 12, 14, 16, 18], xStep: 2, xLabel: 'Hour of the day', yLabel: 'Temperature (°C)',
     yStep: 4, yTop: 36, shape: 'hill', unit: '°C',
     when: (x) => `at ${x}:00`, ask: 'What was the temperature', what: 'the temperature', per: 'per hour',
   },
   {
-    intro: () => 'The line graph shows how many members a gym in Fort McMurray had at the start of each year.',
+    intro: () => 'The line graph shows how many members a gym in a northern town had at the start of each year.',
     xs: [2019, 2020, 2021, 2022, 2023, 2024, 2025], xStep: 1, xLabel: 'Year', yLabel: 'Members',
     yStep: 100, yTop: 1000, shape: 'walk', unit: 'members',
     when: (x) => `in ${x}`, ask: 'How many members did the gym have', what: 'the number of members', per: 'per year',
@@ -132,7 +132,7 @@ const LINES: LineCtx[] = [
     when: (x) => `at the end of week ${x}`, ask: 'How tall was the sunflower', what: 'the height', per: 'per week',
   },
   {
-    intro: () => 'The line graph shows how many customers came into a coffee shop in Medicine Hat each hour on Saturday morning.',
+    intro: () => 'The line graph shows how many customers came into a downtown coffee shop each hour on Saturday morning.',
     xs: [7, 8, 9, 10, 11, 12, 13, 14], xStep: 1, xLabel: 'Hour of the day', yLabel: 'Customers',
     yStep: 10, yTop: 70, shape: 'hill', unit: 'customers',
     when: (x) => `in the hour starting at ${x}:00`, ask: 'How many customers came in', what: 'the number of customers', per: 'per hour',
@@ -294,7 +294,7 @@ const PIES: PieCtx[] = [
     year: (c) => `How much is budgeted for ${lower(c)} in a whole year?`,
   },
   {
-    intro: (_n, t) => `A café in Calgary took in ${tag(t)} on Saturday. The circle graph shows the sales for each kind of item.`,
+    intro: (_n, t) => `A city café took in ${tag(t)} on Saturday. The circle graph shows the sales for each kind of item.`,
     cats: ['Coffee', 'Sandwiches', 'Baked goods', 'Smoothies', 'Tea'],
     top: 60,
     t1: [1000, 1500, 2000], t2: [1850, 2240, 2460, 2750], money: true, unit: '',
@@ -303,7 +303,7 @@ const PIES: PieCtx[] = [
     not: (c) => `How much of the money did **not** come from ${lower(c)}?`,
   },
   {
-    intro: (_n, t) => `A grocery store in Red Deer asked $${num(t)}$ shoppers how they like to pay. The circle graph shows the results.`,
+    intro: (_n, t) => `A grocery store asked $${num(t)}$ shoppers how they like to pay. The circle graph shows the results.`,
     cats: ['Debit', 'Credit', 'Phone', 'Cash', 'Gift card'],
     top: 60,
     t1: [200, 400, 500], t2: [250, 350, 450, 650], unit: 'shoppers',
@@ -312,7 +312,7 @@ const PIES: PieCtx[] = [
     not: (c) => `How many shoppers did **not** choose ${lower(c)}?`,
   },
   {
-    intro: (_n, t) => `A farm near Lethbridge has $${num(t)}$ hectares of land. The circle graph shows how the land is used.`,
+    intro: (_n, t) => `A family farm has $${num(t)}$ hectares of land. The circle graph shows how the land is used.`,
     cats: ['Wheat', 'Canola', 'Barley', 'Pasture', 'Peas'],
     top: 60,
     t1: [400, 500, 800], t2: [640, 720, 960, 1250], unit: 'ha',
@@ -387,11 +387,11 @@ function pieItem(rng: Rng, d: Lvl, name: string): Out {
 }
 
 const ANGLE_CTX: Array<{ intro: string; head: string; cats: string[]; pct: (c: string) => string }> = [
-  { intro: 'A staff survey at a hotel in Jasper asked workers which shift they like best.', head: 'Shift', cats: ['Day', 'Evening', 'Night', 'Split'], pct: (c) => `What percent of the workers chose the ${lower(c)} shift?` },
-  { intro: 'A pizza shop in Grande Prairie counted the pizzas it sold one evening.', head: 'Size', cats: ['Small', 'Medium', 'Large', 'Party'], pct: (c) => `What percent of the pizzas sold were ${lower(c)} size?` },
-  { intro: 'A car wash in Edmonton counted the washes it sold on Saturday.', head: 'Wash', cats: ['Basic', 'Deluxe', 'Premium', 'Interior'], pct: (c) => `What percent of the washes were ${lower(c)} washes?` },
+  { intro: 'A staff survey at a mountain hotel asked workers which shift they like best.', head: 'Shift', cats: ['Day', 'Evening', 'Night', 'Split'], pct: (c) => `What percent of the workers chose the ${lower(c)} shift?` },
+  { intro: 'A pizza shop counted the pizzas it sold one evening.', head: 'Size', cats: ['Small', 'Medium', 'Large', 'Party'], pct: (c) => `What percent of the pizzas sold were ${lower(c)} size?` },
+  { intro: 'A car wash in the city counted the washes it sold on Saturday.', head: 'Wash', cats: ['Basic', 'Deluxe', 'Premium', 'Interior'], pct: (c) => `What percent of the washes were ${lower(c)} washes?` },
   {
-    intro: 'A school in Red Deer asked students how they get to school.', head: 'Travel', cats: ['Bus', 'Car', 'Walk', 'Bike', 'Other'],
+    intro: 'A high school asked students how they get to school.', head: 'Travel', cats: ['Bus', 'Car', 'Walk', 'Bike', 'Other'],
     pct: (c) => `What percent of the students ${({ Bus: 'take the bus', Car: 'come by car', Walk: 'walk', Bike: 'ride a bike', Other: 'chose “Other”' } as Record<string, string>)[c]}?`,
   },
 ];
@@ -435,10 +435,10 @@ function angleItem(rng: Rng, d: Lvl): Out {
 
 const COUNT_CTX: Array<{ whole: (t: number) => string; part: string; q: string }> = [
   { whole: (t) => `A food truck served $${t}$ customers at lunch.`, part: 'paid with cash', q: 'What percent of the customers paid with cash?' },
-  { whole: (t) => `A hiring manager in Calgary got $${t}$ job applications.`, part: 'came from people with a Class 5 driver’s licence', q: 'What percent of the applications came from people with a driver’s licence?' },
-  { whole: (t) => `A hotel in Banff had $${t}$ rooms booked last night.`, part: 'were booked online', q: 'What percent of the rooms were booked online?' },
-  { whole: (t) => `A warehouse shipped $${t}$ orders on Monday.`, part: 'went to addresses in Edmonton', q: 'What percent of the orders went to Edmonton?' },
-  { whole: (t) => `A landscaping company in Lethbridge has $${t}$ regular customers.`, part: 'want weekly mowing', q: 'What percent of the customers want weekly mowing?' },
+  { whole: (t) => `A hiring manager got $${t}$ job applications.`, part: 'came from people with a full driver’s licence', q: 'What percent of the applications came from people with a driver’s licence?' },
+  { whole: (t) => `A lakeside hotel had $${t}$ rooms booked last night.`, part: 'were booked online', q: 'What percent of the rooms were booked online?' },
+  { whole: (t) => `A warehouse shipped $${t}$ orders on Monday.`, part: 'went to addresses in the city', q: 'What percent of the orders went to addresses in the city?' },
+  { whole: (t) => `A landscaping company has $${t}$ regular customers.`, part: 'want weekly mowing', q: 'What percent of the customers want weekly mowing?' },
 ];
 
 function percentCountItem(rng: Rng, d: Lvl): Out {
@@ -478,9 +478,9 @@ function percentCountItem(rng: Rng, d: Lvl): Out {
   }
   // d3: percent of a bar graph's total.
   const ctx = rng.pick([
-    { intro: 'The bar graph shows how many cars a car wash in Edmonton washed each day last week.', cats: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], label: 'Cars washed', cl: 'Day', what: (c: string) => `What percent of the week’s cars were washed on ${({ Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' } as Record<string, string>)[c]}?` },
-    { intro: 'The bar graph shows the number of each kind of pizza a shop in Grande Prairie sold on Friday.', cats: ['Cheese', 'Pepperoni', 'Hawaiian', 'Veggie', 'Meat'], label: 'Pizzas sold', cl: 'Pizza', what: (c: string) => `What percent of the pizzas sold were ${c === 'Hawaiian' ? 'Hawaiian' : lower(c)}?` },
-    { intro: 'The bar graph shows how many hours each employee at a hardware store in Medicine Hat worked last week.', cats: ['Ava', 'Ben', 'Chen', 'Dina', 'Eli', 'Femi'], label: 'Hours worked', cl: 'Employee', what: (c: string) => `What percent of all the hours did ${c} work?` },
+    { intro: 'The bar graph shows how many cars a car wash washed each day last week.', cats: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], label: 'Cars washed', cl: 'Day', what: (c: string) => `What percent of the week’s cars were washed on ${({ Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' } as Record<string, string>)[c]}?` },
+    { intro: 'The bar graph shows the number of each kind of pizza a shop sold on Friday.', cats: ['Cheese', 'Pepperoni', 'Hawaiian', 'Veggie', 'Meat'], label: 'Pizzas sold', cl: 'Pizza', what: (c: string) => `What percent of the pizzas sold were ${c === 'Hawaiian' ? 'Hawaiian' : lower(c)}?` },
+    { intro: 'The bar graph shows how many hours each employee at a hardware store worked last week.', cats: ['Ava', 'Ben', 'Chen', 'Dina', 'Eli', 'Femi'], label: 'Hours worked', cl: 'Employee', what: (c: string) => `What percent of all the hours did ${c} work?` },
   ]);
   const step = 10;
   const n = ctx.cats.length;
@@ -537,19 +537,19 @@ interface CmpCtx {
 
 const CMP: CmpCtx[] = [
   {
-    intro: (a, b, n) => `${a} and ${b} are servers at a restaurant in Calgary. The table shows their tips for the last $${n}$ shifts.`,
+    intro: (a, b, n) => `${a} and ${b} are servers at a downtown restaurant. The table shows their tips for the last $${n}$ shifts.`,
     rowHead: 'Shift', row: (i) => String(i + 1), r: [30, 95], money: true, unit: '', noun: 'tips per shift',
   },
   {
-    intro: (a, b, n) => `${a} and ${b} bowl in a league in Red Deer. The table shows their scores for $${n}$ games.`,
+    intro: (a, b, n) => `${a} and ${b} bowl in a local league. The table shows their scores for $${n}$ games.`,
     rowHead: 'Game', row: (i) => String(i + 1), r: [95, 205], unit: 'points', noun: 'score',
   },
   {
-    intro: (a, b, n) => `${a} and ${b} drive for a delivery company in Edmonton. The table shows how many minutes their last $${n}$ deliveries took.`,
+    intro: (a, b, n) => `${a} and ${b} drive for a delivery company. The table shows how many minutes their last $${n}$ deliveries took.`,
     rowHead: 'Delivery', row: (i) => String(i + 1), r: [18, 46], unit: 'min', noun: 'delivery time',
   },
   {
-    intro: (a, b, n) => `${a} and ${b} sell phones at a store in Lethbridge. The table shows how many phones each sold on $${n}$ days.`,
+    intro: (a, b, n) => `${a} and ${b} sell phones at a store in the mall. The table shows how many phones each sold on $${n}$ days.`,
     rowHead: 'Day', row: (i) => ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][i], r: [2, 16], unit: 'phones', noun: 'number of phones sold per day',
   },
   {
@@ -615,12 +615,12 @@ interface OutlierCtx {
 
 const OUTLIERS: OutlierCtx[] = [
   {
-    intro: (name, n) => `${name} drives for a delivery company in Edmonton. One of ${name}’s last $${n}$ deliveries was during a snowstorm. Here are the times, in minutes:`,
+    intro: (name, n) => `${name} drives for a delivery company. One of ${name}’s last $${n}$ deliveries was during a snowstorm. Here are the times, in minutes:`,
     typ: 'a typical delivery time',
     r: [18, 34], out: [70, 95], unit: 'min', noun: 'delivery time', why: 'the snowstorm delivery',
   },
   {
-    intro: (_name, n) => `A food truck in Calgary recorded its sales for $${n}$ days. One of the days was during a big music festival. The daily sales were:`,
+    intro: (_name, n) => `A food truck in the city recorded its sales for $${n}$ days. One of the days was during a big music festival. The daily sales were:`,
     typ: 'a typical day’s sales',
     r: [420, 690], out: [1850, 2400], money: true, unit: '', noun: 'daily sales', why: 'the festival day',
   },
@@ -630,7 +630,7 @@ const OUTLIERS: OutlierCtx[] = [
     r: [142, 186], out: [58, 85], unit: 'points', noun: 'score', why: 'the sore-wrist game',
   },
   {
-    intro: (name, n) => `${name} is a server at a restaurant in Lethbridge. On one of the last $${n}$ shifts, ${name} served a big wedding party. Here are ${name}’s tips for those shifts:`,
+    intro: (name, n) => `${name} is a server at a restaurant. On one of the last $${n}$ shifts, ${name} served a big wedding party. Here are ${name}’s tips for those shifts:`,
     typ: 'a typical shift’s tips',
     r: [38, 72], out: [210, 260], money: true, unit: '', noun: 'amount of tips per shift', why: 'the wedding-party shift',
   },
@@ -678,7 +678,7 @@ function outlierEffect(rng: Rng, name: string): Out {
 
 const MEASURE_SCENES: Array<{ text: string; correct: string; wrong: string[] }> = [
   {
-    text: 'A shoe store in Grande Prairie wants to know which size of work boot to order the most of.',
+    text: 'A shoe store in a northern town wants to know which size of work boot to order the most of.',
     correct: 'The mode, because it is the size that sells most often',
     wrong: ['The mean, because it uses every size', 'The range, because it shows the spread of sizes', 'The median, because one size is an outlier'],
   },
@@ -693,7 +693,7 @@ const MEASURE_SCENES: Array<{ text: string; correct: string; wrong: string[] }> 
     wrong: ['The mean, because the owner’s wage makes it more accurate', 'The mode, because it is always the highest wage', 'The range, because it shows a typical wage'],
   },
   {
-    text: 'A real estate agent wants to describe a typical house price on a street in Red Deer. Most houses sold for about \\$350 000, but one large house sold for \\$1 200 000.',
+    text: 'A real estate agent wants to describe a typical house price on one street in a town. Most houses sold for about \\$350 000, but one large house sold for \\$1 200 000.',
     correct: 'The median, because the one very high price pulls the mean up',
     wrong: ['The mean, because the high price makes it more accurate', 'The mode, because every price is different', 'The range, because it is the middle price'],
   },
@@ -790,11 +790,11 @@ const CLASH: Partial<Record<Flaw, Flaw[]>> = { small: ['biased'], biased: ['smal
 
 const CLAIMS: Array<{ flaw: Flaw; text: string }> = [
   { flaw: 'small', text: 'An ad for an energy drink says “4 out of 5 people prefer our drink!” The company asked $5$ people.' },
-  { flaw: 'small', text: 'A gym in Fort McMurray says “$100\\%$ of our members lost weight!” It asked $3$ members.' },
+  { flaw: 'small', text: 'A gym says “$100\\%$ of our members lost weight!” It asked $3$ members.' },
   { flaw: 'small', text: 'A car lot’s sign says “Customers love us: 2 out of 2 gave us 5 stars!”' },
   { flaw: 'biased', text: 'A pizza shop says “$90\\%$ of people prefer our pizza.” It surveyed only customers eating in its own restaurant.' },
-  { flaw: 'biased', text: 'A survey about building a new hockey arena in Grande Prairie asked only people leaving a hockey game. It says $85\\%$ of people want the arena.' },
-  { flaw: 'biased', text: 'A radio station says most people in Calgary love country music. It asked only listeners who called in to its country show.' },
+  { flaw: 'biased', text: 'A survey about building a new hockey arena in town asked only people leaving a hockey game. It says $85\\%$ of people want the arena.' },
+  { flaw: 'biased', text: 'A radio station says most people in the city love country music. It asked only listeners who called in to its country show.' },
   { flaw: 'cherry', text: 'A company’s report shows a graph of sales from March to June, when sales went up. It leaves out the rest of the year, when sales fell.' },
   { flaw: 'cherry', text: 'A hockey team posts the stats from its $3$ best games and says “We score $6$ goals a game!”' },
   { flaw: 'cherry', text: 'A store ad says “Prices are down $20\\%$!” It compares this week with the one week last year when prices were highest.' },
@@ -827,10 +827,10 @@ interface Broken {
 /** A graph whose vertical axis starts well above 0: bars drawn as rectangles, or a line. */
 function brokenGraph(rng: Rng, line: boolean): Broken {
   const ctx = rng.pick([
-    { intro: 'A car dealership in Red Deer made this graph of the cars it sold each year.', base: 90, step: 2, unit: 'cars', what: 'Cars sold', label: 'Cars sold' },
-    { intro: 'A gym in Medicine Hat put this graph of its members on a poster.', base: 450, step: 10, unit: 'members', what: 'Members', label: 'Members' },
+    { intro: 'A car dealership made this graph of the cars it sold each year.', base: 90, step: 2, unit: 'cars', what: 'Cars sold', label: 'Cars sold' },
+    { intro: 'A gym put this graph of its members on a poster.', base: 450, step: 10, unit: 'members', what: 'Members', label: 'Members' },
     { intro: 'A bakery made this graph of the loaves of bread it sold each year.', base: 1800, step: 40, unit: 'loaves', what: 'Loaves sold', label: 'Loaves sold' },
-    { intro: 'A hotel in Jasper made this graph of the rooms it booked each year.', base: 180, step: 4, unit: 'rooms', what: 'Rooms booked', label: 'Rooms booked' },
+    { intro: 'A mountain hotel made this graph of the rooms it booked each year.', base: 180, step: 4, unit: 'rooms', what: 'Rooms booked', label: 'Rooms booked' },
   ]);
   const xs = line ? [2019, 2020, 2021, 2022, 2023, 2024] : [2021, 2022, 2023, 2024];
   const n = xs.length;
@@ -922,7 +922,7 @@ function averageClaim(rng: Rng): Out {
   ];
   const figure: Figure = { type: 'table', headers: ['Worker', 'Hourly wage'], rows: all.map((w, i) => [i === all.length - 1 ? 'Owner' : `Worker ${i + 1}`, `$${w}`]) };
   return {
-    prompt: `A small cleaning company in Calgary says its “average” hourly wage is ${mTxt}. The table shows every wage, including the owner’s. Which statement is true?`,
+    prompt: `A small cleaning company says its “average” hourly wage is ${mTxt}. The table shows every wage, including the owner’s. Which statement is true?`,
     figure,
     parts: [{ answer: mc(rng, correct, ds) }],
     hints: ['Find the median: put the wages in order and find the middle.', 'Compare the median with the “average”. Which is closer to what most workers earn?'],
@@ -1006,15 +1006,15 @@ function predictTheory(rng: Rng, d: Lvl, name: string): Out {
 
 const RESULTS: Array<{ intro: (t: number) => string; head: string; cats: string[]; rank: string[]; ask: (c: string) => string; next: (c: string, n: number) => string }> = [
   {
-    intro: (t) => `A coffee shop in Edmonton recorded the drink size for its last $${t}$ customers.`, head: 'Size', cats: ['Small', 'Medium', 'Large', 'Extra large'], rank: ['Medium', 'Large', 'Small', 'Extra large'],
+    intro: (t) => `A coffee shop recorded the drink size for its last $${t}$ customers.`, head: 'Size', cats: ['Small', 'Medium', 'Large', 'Extra large'], rank: ['Medium', 'Large', 'Small', 'Extra large'],
     ask: (c) => `What is the experimental probability that a customer orders ${lower(c)}?`, next: (c, n) => `Predict how many of the next $${n}$ customers will order ${lower(c)}.`,
   },
   {
-    intro: (t) => `A quality checker at a factory in Red Deer tested $${t}$ light bulbs.`, head: 'Result', cats: ['Works', 'Dim', 'Broken'], rank: ['Works', 'Dim', 'Broken'],
+    intro: (t) => `A quality checker at a factory tested $${t}$ light bulbs.`, head: 'Result', cats: ['Works', 'Dim', 'Broken'], rank: ['Works', 'Dim', 'Broken'],
     ask: (c) => `What is the experimental probability that a bulb is ${c === 'Works' ? 'working' : lower(c)}?`, next: (c, n) => `Predict how many bulbs in the next batch of $${n}$ will be ${c === 'Works' ? 'working' : lower(c)}.`,
   },
   {
-    intro: (t) => `A car wash in Calgary recorded the wash chosen by its last $${t}$ customers.`, head: 'Wash', cats: ['Basic', 'Deluxe', 'Premium'], rank: ['Basic', 'Deluxe', 'Premium'],
+    intro: (t) => `A car wash recorded the wash chosen by its last $${t}$ customers.`, head: 'Wash', cats: ['Basic', 'Deluxe', 'Premium'], rank: ['Basic', 'Deluxe', 'Premium'],
     ask: (c) => `What is the experimental probability that a customer chooses the ${lower(c)} wash?`, next: (c, n) => `Predict how many of the next $${n}$ customers will choose the ${lower(c)} wash.`,
   },
   {

@@ -55,7 +55,7 @@ const NAMES = [
   'Yusuf',
 ];
 
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Clearwater', 'Ashford', 'Pinewood'];
 
 const tx = (u: string) => `\\text{${u}}`;
 
@@ -211,13 +211,13 @@ const BEST_UNIT: Array<{ kind: Kind; u: string; thing: string; why: string }> = 
   {
     kind: 'length',
     u: 'km',
-    thing: 'the distance from Edmonton to Calgary',
+    thing: 'the distance between two cities',
     why: 'Long trips between towns are measured in kilometres.',
   },
   {
     kind: 'length',
     u: 'km',
-    thing: 'the distance of a bus trip from Lethbridge to Medicine Hat',
+    thing: 'the distance of a bus trip between two towns',
     why: 'Road distances between towns are measured in kilometres.',
   },
   {
@@ -1181,12 +1181,12 @@ function noDoubleDots(o: GenOutput): GenOutput {
 const PLACES = ['grocery store', 'coffee shop', 'fast-food restaurant', 'warehouse', 'hotel', 'car wash', 'hair salon', 'child care centre', 'garden centre', 'hardware store'];
 
 const ROUTES = [
-  { from: 'Edmonton', to: 'Calgary', lo: 180, hi: 225 },
-  { from: 'Red Deer', to: 'Calgary', lo: 90, hi: 120 },
-  { from: 'Lethbridge', to: 'Medicine Hat', lo: 105, hi: 135 },
-  { from: 'Grande Prairie', to: 'Edmonton', lo: 300, hi: 345 },
-  { from: 'Fort McMurray', to: 'Edmonton', lo: 280, hi: 330 },
-  { from: 'Calgary', to: 'Lethbridge', lo: 135, hi: 170 },
+  { from: 'Riverton', to: 'Lakeside', lo: 180, hi: 225 },
+  { from: 'Brookfield', to: 'Lakeside', lo: 90, hi: 120 },
+  { from: 'Hillcrest', to: 'Pinewood', lo: 105, hi: 135 },
+  { from: 'Clearwater', to: 'Riverton', lo: 300, hi: 345 },
+  { from: 'Ashford', to: 'Riverton', lo: 280, hi: 330 },
+  { from: 'Lakeside', to: 'Hillcrest', lo: 135, hi: 170 },
 ];
 
 const HINT_COUNT = 'Count up: from the start time to the next full hour, then whole hours, then the extra minutes.';
@@ -1219,7 +1219,7 @@ function elapsedGen(rng: Rng, d: 1 | 2 | 3): GenOutput {
         `The city bus leaves the mall at ${t12(a)} and gets to the college at ${t12(b)}. How many minutes long is the ride?`,
         `${name} starts a load of towels in the dryer at the hotel at ${t12(a)}. The load finishes at ${t12(b)}. How many minutes did the dryer run?`,
         `${name} starts detailing a car at ${t12(a)} and finishes at ${t12(b)}. How many minutes did the job take?`,
-        `A hockey practice in Red Deer starts at ${t12(a)} and ends at ${t12(b)}. How many minutes long is the practice?`,
+        `A hockey practice at the arena starts at ${t12(a)} and ends at ${t12(b)}. How many minutes long is the practice?`,
         `${name}’s haircut appointment starts at ${t12(a)} and ends at ${t12(b)}. How many minutes long is the appointment?`,
       ]);
       const steps = minuteSteps(a, b);
@@ -1418,12 +1418,12 @@ const C = (x: number) => `$${cDeg(x)}$`;
 
 const REASONABLE_T: Array<{ thing: string; right: number; wrong: number[] }> = [
   {
-    thing: 'a hot summer afternoon in Lethbridge',
+    thing: 'a hot summer afternoon',
     right: 31,
     wrong: [3, -31, 80],
   },
   {
-    thing: 'a January night in Grande Prairie',
+    thing: 'a winter night in a northern town',
     right: -25,
     wrong: [25, 8, -75],
   },
@@ -1439,14 +1439,14 @@ const REASONABLE_T: Array<{ thing: string; right: number; wrong: number[] }> = [
   { thing: 'a fresh cup of hot coffee', right: 70, wrong: [7, 20, 200] },
   { thing: 'an oven baking cookies', right: 180, wrong: [18, 40, 1000] },
   { thing: 'water boiling in a pot', right: 100, wrong: [0, 10, 50] },
-  { thing: 'a cool fall morning in Red Deer', right: 5, wrong: [35, -40, 60] },
+  { thing: 'a cool fall morning', right: 5, wrong: [35, -40, 60] },
   {
-    thing: 'the ice surface of an outdoor rink in Edmonton',
+    thing: 'the ice surface of an outdoor rink in winter',
     right: -10,
     wrong: [10, 25, 50],
   },
   {
-    thing: 'a warm spring day in Medicine Hat',
+    thing: 'a warm spring day',
     right: 18,
     wrong: [-18, 1, 60],
   },
@@ -1644,7 +1644,7 @@ function temperatureGen(rng: Rng, d: 1 | 2 | 3): GenOutput {
         ? [`From ${C(lo)} up to $0^\\circ\\text{C}$ is ${degs(-lo)}, and from $0$ up to ${C(hi)} is ${degs(hi)}.`, `$${-lo} + ${hi} = ${hi - lo}$`]
         : [`Both are below zero. Count up from ${C(lo)} to ${C(hi)}: $${hi} - (${lo}) = ${hi} + ${-lo} = ${hi - lo}$`];
     return {
-      prompt: `The table shows the lowest temperature in four Alberta places on one January night. How many degrees warmer was the warmest place than the coldest place?`,
+      prompt: `The table shows the lowest temperature in four towns on one January night. How many degrees warmer was the warmest place than the coldest place?`,
       figure: fig,
       parts: [numPart(hi - lo, { suffix: '°C' })],
       hints: ['The warmest temperature is the one closest to (or above) zero. The coldest is the most negative.', 'Find the difference by counting up from the coldest temperature to the warmest.'],
@@ -1660,7 +1660,7 @@ function temperatureGen(rng: Rng, d: 1 | 2 | 3): GenOutput {
   );
   const b = a + h * per;
   return {
-    prompt: `A chinook wind blew into ${rng.pick(['Calgary', 'Lethbridge', 'Medicine Hat'])}. The temperature rose from ${C(a)} to ${C(b)} in $${h}$ hours. On average, by how many degrees did it rise each hour?`,
+    prompt: `A warm winter wind blew into ${rng.pick(['Lakeside', 'Hillcrest', 'Pinewood'])}. The temperature rose from ${C(a)} to ${C(b)} in $${h}$ hours. On average, by how many degrees did it rise each hour?`,
     parts: [numPart(per, { suffix: '°C' })],
     hints: ['First find the total rise in temperature.', 'Then share the total rise equally among the hours: divide.'],
     solution: [

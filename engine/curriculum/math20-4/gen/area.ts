@@ -1315,7 +1315,7 @@ function materialCost(rng: Rng, d: 1 | 2 | 3, name: string): GenOutput {
 const materialCostSkill = skill({
   id: 'm204-material-cost',
   name: 'Material needed and its cost',
-  description: 'Find how many boxes, rolls, bags or cans of material to buy for an area (always rounding up), and the total cost with 5% GST, adding 10% for waste when needed.',
+  description: 'Find how many boxes, rolls, bags or cans of material to buy for an area (always rounding up), and the total cost with a 5% sales tax, adding 10% for waste when needed.',
   outcomes: ['SS2'],
   lessonId: 'm204-7-3',
   calculator: true,
