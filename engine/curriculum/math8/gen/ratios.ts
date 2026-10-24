@@ -16,7 +16,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Ananya', 'Nathan', 'Lena', 'Diego', 'Harpreet', 'Noor',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat', 'Airdrie', 'Camrose', 'Canmore'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'];
 
 const tx = (u: string) => `\\text{${u}}`;
 const T = '\\times';
@@ -521,7 +521,7 @@ const RATE_D2: RateGen[] = [
     const L = rng.pick([32, 40, 48, 50, 56, 60]);
     const km = r * L;
     return {
-      prompt: `On a road trip from ${rng.pick(TOWNS)} to Jasper, ${name}’s family car uses $${L}\\ ${tx('L')}$ of gas to travel $${km}\\ ${tx('km')}$. How many kilometres does the car travel per litre of gas?`,
+      prompt: `On a road trip from ${rng.pick(TOWNS)} to the mountains, ${name}’s family car uses $${L}\\ ${tx('L')}$ of gas to travel $${km}\\ ${tx('km')}$. How many kilometres does the car travel per litre of gas?`,
       parts: [exactNum(r, 'km/L')],
       hints: [ONE, `Divide the kilometres by the litres: $${km} ${D} ${L}$.`],
       solution: ['Kilometres per litre means the distance for $1$ litre of gas.', `$${km}\\ ${tx('km')} ${D} ${L}\\ ${tx('L')} = ${nm(r)}\\ ${tx('km/L')}$`, `The car travels $${nm(r)}\\ ${tx('km')}$ per litre.`],
@@ -604,7 +604,7 @@ function betterBuy(rng: Rng, name: string): Out {
 /** d3: compare two speeds, each a unit rate, and pick the faster. */
 function compareSpeeds(rng: Rng): Out {
   const [A, B] = rng.sample(NAMES, 2);
-  const act = rng.pick([['ran', 8, 15, `a running club in ${rng.pick(TOWNS)}`], ['cycled', 14, 28, `a cycling club in ${rng.pick(TOWNS)}`], ['skied', 6, 14, 'a cross-country ski club in Canmore']] as const);
+  const act = rng.pick([['ran', 8, 15, `a running club in ${rng.pick(TOWNS)}`], ['cycled', 14, 28, `a cycling club in ${rng.pick(TOWNS)}`], ['skied', 6, 14, 'a cross-country ski club']] as const);
   const mins = [15, 20, 24, 30, 36, 40, 45, 48, 50];
   const make = () => {
     const m = rng.pick(mins);
@@ -851,7 +851,7 @@ function problemsD1(rng: Rng): Out {
   const r = rng.pick([5, 6, 8, 10]);
   const adults = rng.int(3, 8);
   return {
-    prompt: `On a school field trip to ${rng.pick(['the Royal Tyrrell Museum', 'the Calgary Zoo', 'Fort Edmonton Park', 'Head-Smashed-In Buffalo Jump'])}, the ratio of students to adults must be $${rt(r, 1)}$. There are $${r * adults}$ students. How many adults are needed?`,
+    prompt: `On a school field trip to ${rng.pick(['a dinosaur museum', 'the city zoo', 'a living history museum', 'a historic site'])}, the ratio of students to adults must be $${rt(r, 1)}$. There are $${r * adults}$ students. How many adults are needed?`,
     parts: [numPart(adults, { exact: false, suffix: 'adults' })],
     hints: [PROP_HINT, `For every $${r}$ students there is $1$ adult. How many groups of $${r}$ are in $${r * adults}$?`],
     solution: [`$${rt(r, 1)} = ${rt(r * adults, '?')}$`, `$${r} ${T} ${adults} = ${r * adults}$, so multiply $1$ by $${adults}$ too.`, `$${adults}$ adults are needed.`],
@@ -866,10 +866,10 @@ function problemsD2(rng: Rng): Out {
     const toMap = rng.chance(0.4);
     const mapCm = retry(() => rng.int(21, 98) / 10, (x) => !isWhole(x));
     const real = roundTo(mapCm * scale, 4);
-    const [A, B] = rng.sample(['Red Deer', 'Lacombe', 'Ponoka', 'Wetaskiwin', 'Olds', 'Innisfail', 'Stettler', 'Drumheller', 'Brooks', 'Vegreville'], 2);
+    const [A, B] = rng.sample(['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'], 2);
     if (toMap) {
       return {
-        prompt: `On a road map of Alberta, $1\\ ${tx('cm')}$ represents $${scale}\\ ${tx('km')}$. ${A} and ${B} are $${nm(real)}\\ ${tx('km')}$ apart (in a straight line). How far apart are they on the map?`,
+        prompt: `On a road map, $1\\ ${tx('cm')}$ represents $${scale}\\ ${tx('km')}$. ${A} and ${B} are $${nm(real)}\\ ${tx('km')}$ apart (in a straight line). How far apart are they on the map?`,
         parts: [exactNum(mapCm, 'cm')],
         hints: [PROP_HINT, `Every $${scale}\\ ${tx('km')}$ is $1\\ ${tx('cm')}$ on the map. Divide by $${scale}$.`],
         solution: [`Map to real is $${rt(`1\\ ${tx('cm')}`, `${scale}\\ ${tx('km')}`)}$, so $${fr(1, scale)} = ${fr('x', nm(real))}$.`, `$x = ${nm(real)} ${D} ${scale} = ${nm(mapCm)}$`, `They are $${nm(mapCm)}\\ ${tx('cm')}$ apart on the map.`],
@@ -877,7 +877,7 @@ function problemsD2(rng: Rng): Out {
       };
     }
     return {
-      prompt: `On a road map of Alberta, $1\\ ${tx('cm')}$ represents $${scale}\\ ${tx('km')}$. On the map, ${A} and ${B} are $${nm(mapCm)}\\ ${tx('cm')}$ apart. What is the actual distance between them (in a straight line)?`,
+      prompt: `On a road map, $1\\ ${tx('cm')}$ represents $${scale}\\ ${tx('km')}$. On the map, ${A} and ${B} are $${nm(mapCm)}\\ ${tx('cm')}$ apart. What is the actual distance between them (in a straight line)?`,
       parts: [exactNum(real, 'km')],
       hints: [PROP_HINT, `Each centimetre on the map is $${scale}\\ ${tx('km')}$. Multiply.`],
       solution: [`Unit rate: $1\\ ${tx('cm')}$ on the map is $${scale}\\ ${tx('km')}$.`, `$${nm(mapCm)} ${T} ${scale} = ${nm(real)}$`, `The towns are $${nm(real)}\\ ${tx('km')}$ apart.`],
@@ -1012,7 +1012,7 @@ function problemsD3(rng: Rng): Out {
     const h = Math.floor(t2);
     const m = Math.round((t2 - h) * 60);
     return {
-      prompt: `On a summer road trip across Alberta, ${name}’s family drives $${s * t1}\\ ${tx('km')}$ in $${t1}$ hours. At the same speed, how many hours will it take to drive the next $${nm(d2)}\\ ${tx('km')}$? Give your answer in hours, as a decimal.`,
+      prompt: `On a summer road trip, ${name}’s family drives $${s * t1}\\ ${tx('km')}$ in $${t1}$ hours. At the same speed, how many hours will it take to drive the next $${nm(d2)}\\ ${tx('km')}$? Give your answer in hours, as a decimal.`,
       parts: [exactNum(t2, 'h')],
       hints: ['Find the speed (a unit rate in km/h) first.', 'Time = distance ÷ speed.'],
       solution: [

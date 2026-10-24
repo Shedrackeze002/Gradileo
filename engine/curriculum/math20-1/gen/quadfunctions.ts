@@ -842,16 +842,16 @@ const completeSquare = skill({
 const ROCKETS = ['A model rocket is launched from a platform', 'A ball is tossed straight up from a balcony', 'A signal flare is fired upward from a boat', 'A beach ball is bumped into the air'];
 
 const REVENUE = [
-  { what: (n: number, p: number) => `A community theatre in Red Deer sells about $${n}$ tickets per show at \\$${p} each`, unit: 'ticket', units: 'tickets', verb: 'sold', p0: [16, 30], s: 1, k: [5, 8, 10, 12], x: [2, 9] },
-  { what: (n: number, p: number) => `A food truck in Edmonton sells about $${n}$ bowls of pho a day at \\$${p} each`, unit: 'bowl', units: 'bowls', verb: 'sold', p0: [10, 15], s: 0.5, k: [4, 5, 6, 8], x: [2, 7] },
+  { what: (n: number, p: number) => `A community theatre sells about $${n}$ tickets per show at \\$${p} each`, unit: 'ticket', units: 'tickets', verb: 'sold', p0: [16, 30], s: 1, k: [5, 8, 10, 12], x: [2, 9] },
+  { what: (n: number, p: number) => `A downtown food truck sells about $${n}$ bowls of pho a day at \\$${p} each`, unit: 'bowl', units: 'bowls', verb: 'sold', p0: [10, 15], s: 0.5, k: [4, 5, 6, 8], x: [2, 7] },
   { what: (n: number, p: number) => `A ski hill sells about $${n}$ day passes on a Saturday at \\$${p} each`, unit: 'pass', units: 'passes', verb: 'sold', p0: [30, 45], s: 2, k: [5, 10, 15], x: [2, 8] },
-  { what: (n: number, p: number) => `A bike rental shop in Canmore rents about $${n}$ bikes a day at \\$${p} per day`, unit: 'bike', units: 'bikes', verb: 'rented', p0: [30, 50], s: 1, k: [1, 2, 3], x: [2, 10] },
+  { what: (n: number, p: number) => `A bike rental shop in a mountain town rents about $${n}$ bikes a day at \\$${p} per day`, unit: 'bike', units: 'bikes', verb: 'rented', p0: [30, 50], s: 1, k: [1, 2, 3], x: [2, 10] },
 ];
 
 const PENS = [
   { what: 'a rectangular dog run', place: 'in a backyard' },
-  { what: 'a rectangular garden plot', place: 'at a community garden in Lethbridge' },
-  { what: 'a rectangular corral', place: 'on a ranch near Pincher Creek' },
+  { what: 'a rectangular garden plot', place: 'at a community garden' },
+  { what: 'a rectangular corral', place: 'on a cattle ranch' },
   { what: 'a rectangular play area', place: 'beside a daycare' },
 ];
 

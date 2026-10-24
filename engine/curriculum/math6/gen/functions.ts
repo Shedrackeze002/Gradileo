@@ -129,7 +129,7 @@ const CONTEXTS: Array<(rng: Rng, name: string) => Ctx> = [
   (rng, name) => {
     const f = { a: rng.pick([12, 14, 15, 16, 18, 20]), b: 0 };
     return {
-      f, story: `${name} rides a bike on a trail near Canmore at a steady speed of $${f.a}$ km each hour.`, iv: 't', dv: 'd',
+      f, story: `${name} rides a bike on a forest trail at a steady speed of $${f.a}$ km each hour.`, iv: 't', dv: 'd',
       ind: 'the number of hours of riding', dep: 'the distance travelled', constant: `the speed ($${f.a}$ km each hour)`,
       heads: ['Time, $t$ (h)', 'Distance, $d$ (km)'], axes: ['Time (h)', 'Distance (km)'], xs: range(0, 4), xUnit: 'h', yUnit: 'km', money: false,
       xSay: (x) => `$${x}$ h`, ySay: (y) => `$${y}$ km`,
@@ -139,7 +139,7 @@ const CONTEXTS: Array<(rng: Rng, name: string) => Ctx> = [
   (rng) => {
     const f = { a: rng.pick([80, 90, 100]), b: rng.pick([20, 30, 40, 50, 60]) };
     return {
-      f, story: `A family is driving from Edmonton to Jasper. They have already driven $${f.b}$ km. From now on, they drive $${f.a}$ km each hour.`, iv: 't', dv: 'd',
+      f, story: `A family is driving from Riverton to Pinewood. They have already driven $${f.b}$ km. From now on, they drive $${f.a}$ km each hour.`, iv: 't', dv: 'd',
       ind: 'the number of hours driven from now on', dep: 'the total distance driven', constant: `the distance driven each hour ($${f.a}$ km)`,
       heads: ['Time, $t$ (h)', 'Distance, $d$ (km)'], axes: ['Time (h)', 'Distance (km)'], xs: range(0, 3), xUnit: 'h', yUnit: 'km', money: false,
       xSay: (x) => `$${x}$ h`, ySay: (y) => `$${y}$ km`,
@@ -158,7 +158,7 @@ const CONTEXTS: Array<(rng: Rng, name: string) => Ctx> = [
   },
   (rng) => {
     const f = { a: rng.pick([1, 2, 3]), b: rng.int(1, 8) };
-    const town = rng.pick(['Lethbridge', 'Red Deer', 'Brooks', 'Drumheller', 'Medicine Hat']);
+    const town = rng.pick(['Riverton', 'Hillcrest', 'Brookfield', 'Westbury', 'Ashford']);
     return {
       f, story: `On a spring morning in ${town}, the temperature at 6 a.m. is ${deg(f.b)}. It rises ${deg(f.a)} each hour until noon.`, iv: 'h', dv: 't',
       ind: 'the number of hours after 6 a.m.', dep: 'the temperature', constant: `the amount the temperature rises each hour (${deg(f.a)})`,
@@ -199,7 +199,7 @@ const CONTEXTS: Array<(rng: Rng, name: string) => Ctx> = [
   },
   (rng) => {
     const f = { a: rng.pick([1, 2, 3]), b: rng.int(5, 20) };
-    const town = rng.pick(['Grande Prairie', 'Peace River', 'Cold Lake', 'Banff', 'Hinton']);
+    const town = rng.pick(['Northfield', 'Pinewood', 'Clearwater', 'Maple Falls', 'Stonebridge']);
     return {
       f, story: `During a snowstorm in ${town}, the snow on the ground is $${f.b}$ cm deep. Then $${f.a}$ cm more snow falls each hour.`, iv: 'h', dv: 's',
       ind: 'the number of hours', dep: 'the depth of the snow', constant: `the amount of snow that falls each hour ($${f.a}$ cm)`,
@@ -239,7 +239,7 @@ const SITUATIONS = [
   { s: 'A class measures the height of a sunflower every week during the summer.', ind: 'the number of weeks', dep: 'the height of the sunflower', other: 'the colour of the sunflower' },
   { s: 'On a warm day, a student measures the mass of a block of ice every $10$ minutes as it melts.', ind: 'the time since the start', dep: 'the mass of the ice', other: 'the size of the room' },
   { s: 'A vet weighs a puppy once a month as it grows.', ind: 'the age of the puppy in months', dep: 'the mass of the puppy', other: 'the name of the puppy' },
-  { s: 'A weather station in Calgary records the temperature every hour during one day.', ind: 'the time of day', dep: 'the temperature', other: 'the number of weather stations' },
+  { s: 'A weather station in a city records the temperature every hour during one day.', ind: 'the time of day', dep: 'the temperature', other: 'the number of weather stations' },
   { s: 'At a farmers’ market, the cost of a bag of apples depends on the mass of the apples in the bag.', ind: 'the mass of the apples', dep: 'the cost of the bag', other: 'the colour of the bag' },
   { s: 'A rain gauge collects water during a storm. A student reads the amount of water every $15$ minutes.', ind: 'the time since the storm began', dep: 'the amount of water in the gauge', other: 'the shape of the gauge' },
   { s: 'A swimmer counts how many laps she has finished after each minute of swimming.', ind: 'the number of minutes of swimming', dep: 'the number of laps finished', other: 'the length of her swimsuit' },

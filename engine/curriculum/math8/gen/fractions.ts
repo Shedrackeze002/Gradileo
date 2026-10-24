@@ -750,7 +750,7 @@ function probD3(rng: Rng): Out {
   const left = frac(Li.n * (f[1] - f[0]), Li.d * f[1]);
   const a1 = answerFor(done, 'km', '(a)');
   const a2 = answerFor(left, 'km', '(b)');
-  const park = rng.pick(['Elk Island National Park', 'Kananaskis', 'Dinosaur Provincial Park', 'Waterton Lakes National Park', 'Jasper National Park']);
+  const park = rng.pick(['Pinewood National Park', 'a mountain park', 'a badlands park', 'Clearwater Lakes Park', 'Maple Falls Park']);
   return {
     prompt: `A hiking trail in ${park} is $${mtex(L)}\\ ${tx('km')}$ long. ${name} hikes $${fr(f[0], f[1])}$ of the trail before lunch.\n\n(a) How far does ${name} hike before lunch?${a1.ask}\n\n(b) How far is left to the end of the trail?${a2.ask}`,
     parts: [a1.part, a2.part],

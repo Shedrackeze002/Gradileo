@@ -13,7 +13,7 @@ const PEOPLE = [
   'Amara', 'Liam', 'Priya', 'Mateo', 'Aiyana', 'Noah', 'Mei', 'Owen', 'Fatima', 'Jasper', 'Simran', 'Kai', 'Chloé', 'Tariq', 'Nadia',
   'Ethan', 'Rajveer', 'Leah', 'Marcus', 'Sofia', 'Hiroshi', 'Zainab', 'Cole', 'Ananya', 'Wyatt', 'Thanh', 'Isabelle', 'Dakota', 'Gurpreet', 'Olumide',
 ];
-const TOWNS = ['Camrose', 'Lacombe', 'Vegreville', 'Olds', 'Wetaskiwin', 'Ponoka', 'Stettler', 'Drumheller', 'Athabasca', 'Barrhead', 'Vermilion', 'Taber'];
+const TOWNS = ['Riverton', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Oakdale', 'Millbrook'];
 
 type Unit = 'mm' | 'cm' | 'm' | 'km';
 const UNIT_NAME: Record<Unit, string> = { mm: 'millimetre', cm: 'centimetre', m: 'metre', km: 'kilometre' };
@@ -1178,9 +1178,9 @@ const lot: Ctx = (rng) => {
 };
 
 const STATIONS = [
-  { what: 'Two fire lookout towers', each: 'tower', a: 'A', b: 'B', c: 'F', target: 'a column of smoke', obj: 'The fire', u: 'km' as Unit, lo: 8, hi: 25, dec: 1, place: 'in the foothills west of Sundre' },
-  { what: 'Two lifeguard towers', each: 'tower', a: 'A', b: 'B', c: 'S', target: 'a swimmer who needs help', obj: 'The swimmer', u: 'm' as Unit, lo: 80, hi: 260, dec: 0, place: 'on a beach at Sylvan Lake' },
-  { what: 'Two marine rescue stations', each: 'station', a: 'A', b: 'B', c: 'S', target: 'a disabled sailboat', obj: 'The sailboat', u: 'km' as Unit, lo: 6, hi: 20, dec: 1, place: 'on the shore of Lesser Slave Lake' },
+  { what: 'Two fire lookout towers', each: 'tower', a: 'A', b: 'B', c: 'F', target: 'a column of smoke', obj: 'The fire', u: 'km' as Unit, lo: 8, hi: 25, dec: 1, place: 'in the forested foothills' },
+  { what: 'Two lifeguard towers', each: 'tower', a: 'A', b: 'B', c: 'S', target: 'a swimmer who needs help', obj: 'The swimmer', u: 'm' as Unit, lo: 80, hi: 260, dec: 0, place: 'on a busy lake beach' },
+  { what: 'Two marine rescue stations', each: 'station', a: 'A', b: 'B', c: 'S', target: 'a disabled sailboat', obj: 'The sailboat', u: 'km' as Unit, lo: 6, hi: 20, dec: 1, place: 'on the shore of a large lake' },
 ];
 
 /** ASA: two stations a known distance apart sight the same object (third angle first). */
@@ -1284,9 +1284,9 @@ const sssStory: Ctx = (rng) => {
 };
 
 const ELEVATION = [
-  { thing: 'a hot-air balloon', ref: 'the balloon', who: 'Two friends', top: 'H', u: 'm' as Unit, lo: 300, hi: 900, place: 'at a balloon festival near High River' },
+  { thing: 'a hot-air balloon', ref: 'the balloon', who: 'Two friends', top: 'H', u: 'm' as Unit, lo: 300, hi: 900, place: 'at a balloon festival' },
   { thing: 'a drone', ref: 'the drone', who: 'Two students', top: 'D', u: 'm' as Unit, lo: 60, hi: 180, place: 'on a school field' },
-  { thing: 'the top of a ski-lift tower', ref: 'the top of the tower', who: 'Two surveyors', top: 'T', u: 'm' as Unit, lo: 40, hi: 120, place: 'at a ski hill near Canmore' },
+  { thing: 'the top of a ski-lift tower', ref: 'the top of the tower', who: 'Two surveyors', top: 'T', u: 'm' as Unit, lo: 40, hi: 120, place: 'at a mountain ski hill' },
 ];
 
 /** Base angles that leave room for labels beside an altitude, with an acute top angle. */
@@ -1381,7 +1381,7 @@ const river: Ctx = (rng) => {
   const pts = triPts(side, 2, rng.chance(0.5));
   const D: P = [pts[2][0], 0];
   return {
-    prompt: `To find the width of the Red Deer River, ${who} marks two points, $A$ and $B$, $${ms(len, 'm')}$ apart along one straight bank. A tree $T$ stands on the far bank. ${who} measures $\\angle TAB = ${deg(ang[0])}$ and $\\angle TBA = ${deg(ang[1])}$. How wide is the river, to the nearest tenth of a metre? (The width is the perpendicular distance from the tree to the line $AB$.)`,
+    prompt: `To find the width of a river, ${who} marks two points, $A$ and $B$, $${ms(len, 'm')}$ apart along one straight bank. A tree $T$ stands on the far bank. ${who} measures $\\angle TAB = ${deg(ang[0])}$ and $\\angle TBA = ${deg(ang[1])}$. How wide is the river, to the nearest tenth of a metre? (The width is the perpendicular distance from the tree to the line $AB$.)`,
     figure: triFigure({
       pts,
       verts: ['A', 'B', 'T'],
@@ -1404,7 +1404,7 @@ const river: Ctx = (rng) => {
 
 /** Two boats leave together on different courses: distances from speeds, then the cosine law. */
 const boats: Ctx = (rng) => {
-  const marina = rng.pick(['Sylvan Lake', 'Pigeon Lake', 'Lesser Slave Lake', 'Cold Lake', 'Lake Newell']);
+  const marina = rng.pick(['Stonebridge Lake', 'Lake Ashford', 'Clearwater Lake', 'Pinewood Lake', 'Westbury Reservoir']);
   const r = retry(
     () => {
       const v1 = rng.int(12, 30);

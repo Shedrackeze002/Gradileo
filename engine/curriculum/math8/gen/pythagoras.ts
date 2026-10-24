@@ -14,7 +14,7 @@ const NAMES = [
   'Ethan', 'Rajveer', 'Leah', 'Marcus', 'Sofia', 'Hiroshi', 'Zainab', 'Cole', 'Ananya', 'Wyatt', 'Thanh', 'Isabelle', 'Dakota', 'Gurpreet', 'Olumide',
   'Kiona', 'Emeka', 'Hana', 'Diego', 'Maya', 'Arjun',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat', 'Airdrie', 'Camrose', 'Brooks', 'Canmore', 'Lloydminster'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Millbrook'];
 
 type Unit = 'mm' | 'cm' | 'm' | 'km' | 'in' | 'ft';
 const UNIT_NAME: Record<Unit, string> = { mm: 'millimetre', cm: 'centimetre', m: 'metre', km: 'kilometre', in: 'inch', ft: 'foot' };

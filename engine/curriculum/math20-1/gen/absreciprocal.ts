@@ -117,7 +117,7 @@ const solPart = (vals: number[]): Part => part({ kind: 'numbers', values: vals }
 // 7.1 — Absolute value
 // ---------------------------------------------------------------------------
 
-const CITIES = ['Fort McMurray', 'Grande Prairie', 'Lethbridge', 'Red Deer', 'Medicine Hat', 'Edmonton', 'Calgary', 'Jasper', 'Peace River', 'Cold Lake'];
+const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'];
 const pn = (n: number) => (n < 0 ? `(${n})` : `${n}`);
 
 const absEvaluate = skill({
@@ -240,7 +240,7 @@ const absEvaluate = skill({
       const name = rng.pick(NAMES);
       const depth = rng.int(6, 30);
       const height = rng.int(4, 40);
-      const lake = rng.pick(['Lake Minnewanka', 'Sylvan Lake', 'Lac La Biche', 'Pigeon Lake']);
+      const lake = rng.pick(['Clearwater Lake', 'Lake Ashford', 'Pinewood Lake', 'Stonebridge Lake']);
       return {
         prompt: `${name} is scuba diving in ${lake} at an elevation of $${-depth}$ m relative to the surface. An osprey is flying directly above at $${height}$ m. Use absolute value to find the vertical distance between them.`,
         parts: [numPart(height + depth, { suffix: 'm' })],

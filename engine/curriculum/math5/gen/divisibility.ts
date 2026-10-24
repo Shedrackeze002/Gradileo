@@ -189,7 +189,7 @@ function multiTests(rng: Rng, d: Difficulty): Out {
 
 const SHARE = [
   { ask: (n: number, ks: string) => `A coach has $${n}$ players at a soccer camp. Which team sizes would use every player with nobody left out? Select all that apply: teams of ${ks}.`, unit: 'players', group: 'teams' },
-  { ask: (n: number, ks: string) => `A farm in Alberta collected $${n}$ eggs. Which carton sizes would hold every egg with none left over? Select all that apply: cartons of ${ks}.`, unit: 'eggs', group: 'cartons' },
+  { ask: (n: number, ks: string) => `A farm collected $${n}$ eggs. Which carton sizes would hold every egg with none left over? Select all that apply: cartons of ${ks}.`, unit: 'eggs', group: 'cartons' },
   { ask: (n: number, ks: string) => `There are $${n}$ chairs for a school concert. Which row sizes would use every chair with none left over? Select all that apply: rows of ${ks}.`, unit: 'chairs', group: 'rows' },
   { ask: (n: number, ks: string) => `A school has $${n}$ students going on a field trip. Which group sizes would put every student in a group with nobody left out? Select all that apply: groups of ${ks}.`, unit: 'students', group: 'groups' },
 ];

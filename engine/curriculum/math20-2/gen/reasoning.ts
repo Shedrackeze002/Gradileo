@@ -1055,7 +1055,7 @@ function trickData(rng: Rng) {
 
 const SYLLOGISMS: Array<(who: string, rng: Rng) => { premises: string[]; correct: string; ds: string[] }> = [
   (who) => ({
-    premises: ['All players on the Lethbridge relay team train on Saturday mornings.', `${who} is on the Lethbridge relay team.`],
+    premises: ['All players on the school relay team train on Saturday mornings.', `${who} is on the school relay team.`],
     correct: `${who} trains on Saturday mornings.`,
     ds: [`Everyone who trains on Saturday mornings is on the relay team.`, `${who} is the fastest runner on the team.`, `${who} does not train on Saturday mornings.`],
   }),
@@ -1073,7 +1073,7 @@ const SYLLOGISMS: Array<(who: string, rng: Rng) => { premises: string[]; correct
     ds: ['Every quadrilateral is a kite.', 'All four angles of a kite are $90^\\circ$.', 'The interior angles of a kite add to $180^\\circ$.'],
   }),
   (who) => ({
-    premises: ['All employees at the Red Deer garden centre have completed first-aid training.', `${who} is an employee at the Red Deer garden centre.`],
+    premises: ['All employees at the downtown garden centre have completed first-aid training.', `${who} is an employee at the downtown garden centre.`],
     correct: `${who} has completed first-aid training.`,
     ds: [`Everyone with first-aid training works at the garden centre.`, `${who} is a manager at the garden centre.`, `${who} has not completed first-aid training.`],
   }),
@@ -1102,7 +1102,7 @@ const REASONING_KINDS = (who: string) => ({
     `The last five buses on Route 8 were late, so ${who} concludes the next bus will be late.`,
     `${who} measures the angles of six triangles, finds they always add to $180^\\circ$, and concludes this is true for every triangle.`,
     `${who} adds several pairs of even numbers, always gets an even sum, and concludes the sum of two even numbers is always even.`,
-    `It rained the last three Saturdays in Edmonton, so ${who} concludes it will rain next Saturday.`,
+    `It rained the last three Saturdays in ${who}’s town, so ${who} concludes it will rain next Saturday.`,
   ],
 });
 
@@ -1522,7 +1522,7 @@ const GRID_CTX: GridCtx[] = [
   },
   {
     group: 'students',
-    phrase: 'each have a different summer job in Jasper',
+    phrase: 'each have a different summer job at a mountain resort',
     items: ['lifeguard', 'camp counsellor', 'cashier', 'trail guide'],
     has: (p, i) => `${p} works as a ${i}`,
     not: (p, i) => `${p} is not the ${i}.`,
@@ -1540,8 +1540,8 @@ const GRID_CTX: GridCtx[] = [
   },
   {
     group: 'cousins',
-    phrase: 'each live in a different Alberta city',
-    items: ['Lethbridge', 'Red Deer', 'Grande Prairie', 'Medicine Hat'],
+    phrase: 'each live in a different city',
+    items: ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest'],
     has: (p, i) => `${p} lives in ${i}`,
     not: (p, i) => `${p} does not live in ${i}.`,
     either: (p, i, j) => `${p} lives in either ${i} or ${j}.`,
@@ -1623,7 +1623,7 @@ function orderPuzzle(rng: Rng) {
     }
   };
   permute([0, 1, 2, 3]);
-  const event = rng.pick(['a cross-country race', 'a speed-skating race at the Olympic Oval', 'a canoe race on the Bow River', 'a 5 km fun run in Canmore']);
+  const event = rng.pick(['a cross-country race', 'a speed-skating race at an indoor oval', 'a canoe race on a river', 'a 5 km fun run in a mountain town']);
   for (let tries = 0; tries < 300; tries++) {
     const people = rng.sample(NAMES.filter((x) => !x.includes('-')), 4);
     const order = rng.shuffle([0, 1, 2, 3]); // order[pos] = person index

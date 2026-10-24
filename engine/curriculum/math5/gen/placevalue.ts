@@ -13,7 +13,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Airdrie', 'Camrose', 'Okotoks', 'Canmore', 'Brooks', 'Hinton'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Millbrook'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure };
 
@@ -788,7 +788,7 @@ const ROUND_CTX: RoundCtx[] = [
   {
     make: (rng) => {
       const s = roundable(rng, 5, 7, 0);
-      return { s, e: 5, text: `A video about Alberta's dinosaurs has $${tex(s)}$ views. The website rounds views to the nearest hundred thousand.`, ask: 'How many views does the website show?', say: 'The website shows' };
+      return { s, e: 5, text: `A video about dinosaurs has $${tex(s)}$ views. The website rounds views to the nearest hundred thousand.`, ask: 'How many views does the website show?', say: 'The website shows' };
     },
   },
   {

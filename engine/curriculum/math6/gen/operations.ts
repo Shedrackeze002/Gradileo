@@ -337,7 +337,7 @@ const ADD_D3: Ctx[] = [
     const b = retry(() => rng.int(25, Math.round(T * 10 - a * 10) - 15), (x) => x % 10 !== 0) / 10;
     const done = clean(a + b);
     const left = clean(T - done);
-    const trail = rng.pick(['the Iron Horse Trail', 'a trail in Kananaskis', 'the river valley trail in Edmonton', 'a trail around Sylvan Lake', 'the Bow River Pathway']);
+    const trail = rng.pick(['an old railway trail', 'a mountain trail', 'the river valley trail in Riverton', 'a trail around Willow Lake', 'the riverside pathway in Lakeside']);
     return {
       prompt: `${name}’s family is biking ${trail}, which is ${q(T, 'km')} long. They bike ${q(a, 'km')} on Saturday and ${q(b, 'km')} on Sunday. How much of the trail is left?`,
       parts: [exactPart(left, 'km')],
@@ -824,7 +824,7 @@ function problemD3(rng: Rng, name: string): Out {
   const up = rng.chance(0.6);
   const c = rng.pick([
     { item: 'cans of food', box: 'box', boxes: 'boxes', holds: 'holds', why: 'for the food bank' },
-    { item: 'students', box: 'bus', boxes: 'buses', holds: 'seats', why: 'for a field trip to Drumheller' },
+    { item: 'students', box: 'bus', boxes: 'buses', holds: 'seats', why: 'for a field trip to a dinosaur museum' },
     { item: 'eggs', box: 'carton', boxes: 'cartons', holds: 'holds', why: 'from the school farm' },
     { item: 'cookies', box: 'tray', boxes: 'trays', holds: 'holds', why: 'for a bake sale' },
   ]);

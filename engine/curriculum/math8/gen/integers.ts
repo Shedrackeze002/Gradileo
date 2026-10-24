@@ -15,7 +15,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Ananya', 'Nathan', 'Lena', 'Diego', 'Harpreet', 'Noor',
 ];
-const TOWNS = ['Fort McMurray', 'Grande Prairie', 'Edmonton', 'Red Deer', 'Calgary', 'Lethbridge', 'Medicine Hat', 'Peace River', 'Cold Lake', 'High Level', 'Jasper'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Northfield'];
 
 const T = '\\times';
 const D = '\\div';
@@ -393,7 +393,7 @@ function divD3(rng: Rng): Out {
   const days = rng.int(4, 9);
   const per = -rng.int(2, 9);
   const total = per * days;
-  const what = rng.pick(['the water level of a reservoir near Calgary', 'the water level in a farm dugout', 'the depth of snow at a ski hill in Canmore']);
+  const what = rng.pick(['the water level of a reservoir near a city', 'the water level in a farm dugout', 'the depth of snow at a ski hill']);
   return {
     prompt: `During a dry, warm spell, ${what} changed by $${total}$ cm over $${days}$ days. What was the average change per day?`,
     parts: [numPart(per, { exact: false, suffix: 'cm per day' })],

@@ -15,8 +15,8 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi', 'Leah', 'Ravi',
 ];
-const TOWNS = ['Fort McMurray', 'Grande Prairie', 'Edmonton', 'Red Deer', 'Calgary', 'Lethbridge', 'Medicine Hat', 'Peace River', 'Cold Lake', 'Jasper', 'Banff', 'High Level', 'Camrose', 'Drumheller'];
-const LAKES = ['Sylvan Lake', 'Lac La Biche', 'Pigeon Lake', 'Lesser Slave Lake', 'Gull Lake', 'Lake Louise', 'Cold Lake', 'Moose Lake'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Millbrook', 'Northfield', 'Elmwood'];
+const LAKES = ['Willow Lake', 'Heron Lake', 'Otter Lake', 'Silver Lake', 'Cedar Lake', 'Maple Lake', 'Swan Lake', 'Fox Lake'];
 
 const MINUS = '−';
 /** A plain-text label for a figure: −5, 3. */
@@ -416,7 +416,7 @@ function compareD1(rng: Rng): Out {
   const target = coldest ? Math.min(...temps) : Math.max(...temps);
   const i = temps.indexOf(target);
   return {
-    prompt: `The table shows the temperature in three places in Alberta at 7 a.m. on a January morning. Which town was the ${coldest ? 'coldest' : 'warmest'}?`,
+    prompt: `The table shows the temperature in three towns at 7 a.m. on a January morning. Which town was the ${coldest ? 'coldest' : 'warmest'}?`,
     figure: { type: 'table', headers: ['Town', 'Temperature (°C)'], rows: towns.map((t, j) => [t, `${temps[j]}`]) },
     parts: [{ answer: mc(rng, towns[i], towns.filter((_, j) => j !== i)) }],
     hints: [`${coldest ? 'Colder means lower on a thermometer.' : 'Warmer means higher on a thermometer.'} ${LEFT_LESS}`, NEG_TIP],

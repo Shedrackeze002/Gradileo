@@ -14,7 +14,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Fort McMurray', 'Medicine Hat', 'Airdrie', 'Camrose', 'Brooks', 'Canmore', 'Lloydminster'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Millbrook'];
 
 type Out = { prompt: string; parts: Part[]; hints: string[]; solution: string[]; figure?: Figure; calculator?: boolean };
 type Gen = (rng: Rng) => Out;
@@ -208,7 +208,7 @@ const ADD_D2: Gen[] = [
     const ms = items.map(([, lo, hi], i) => deci(rng, lo, hi, dps[i]));
     const { steps, ans } = sumSteps(ms, ['+', '+']);
     return {
-      prompt: `${name} packs for a camping trip near ${rng.pick(['Canmore', 'Jasper', 'Waterton', 'Sylvan Lake', 'Cold Lake'])}. The masses are: ${items.map(([t], i) => `${t}, ${q(ms[i], 'kg')}`).join('; ')}. What is the total mass?`,
+      prompt: `${name} packs for a camping trip near ${rng.pick(['Pinewood', 'Maple Falls', 'Clearwater', 'Willow Lake', 'Stonebridge'])}. The masses are: ${items.map(([t], i) => `${t}, ${q(ms[i], 'kg')}`).join('; ')}. What is the total mass?`,
       parts: [decPart(ans, 'kg')],
       hints: ['Add the three masses.', 'Give every mass three decimal places by adding zeros, then line up the decimal points.'],
       solution: [...steps, `The total mass is ${q(ans, 'kg')}.`],
@@ -670,7 +670,7 @@ const DIV_D1: Gen[] = [
     const per = rng.int(450, 1890) / 100;
     const total = clean(per * n);
     const { steps, ans } = divSteps(total, n);
-    const what = rng.pick(['a pizza order', 'a bill at a restaurant', 'the cost of a gift for their coach', 'a tank of gas for a road trip to Banff', 'a cab ride home from a hockey game']);
+    const what = rng.pick(['a pizza order', 'a bill at a restaurant', 'the cost of a gift for their coach', 'a tank of gas for a road trip to the mountains', 'a cab ride home from a hockey game']);
     return {
       prompt: `${name} and ${n === 2 ? 'a friend' : `$${n - 1}$ friends`} share the cost of ${what} equally. The cost is ${money(total)}. How much does each person pay?`,
       parts: [cashPart(ans)],
@@ -721,7 +721,7 @@ const DIV_D2: Gen[] = [
     const t = rng.pick([1.5, 2.5, 3.5, 2.25, 1.75, 4.5]);
     const v = rng.int(48, 98);
     const dist = clean(v * t);
-    const [from, to] = rng.sample(['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Drumheller', 'Jasper', 'Banff', 'Medicine Hat'], 2);
+    const [from, to] = rng.sample(['Riverton', 'Lakeside', 'Hillcrest', 'Westbury', 'Ashford', 'Pinewood', 'Maple Falls', 'Brookfield'], 2);
     return {
       prompt: `${name}’s family drives ${q(dist, 'km')} from ${from} to ${to}. The trip takes ${q(t, 'h')}. What is their average speed in kilometres per hour?`,
       parts: [decPart(v, 'km/h')],
@@ -1383,7 +1383,7 @@ const OF_D1: Gen[] = [
       [`There are $${N}$ students in the Grade 7 classes at a school in ${rng.pick(TOWNS)}. $${pc(p)}$ of them play on a sports team. How many students play on a team?`, 'students play on a team', 'students'],
       [`A box holds $${N}$ crayons. $${pc(p)}$ of them are broken. How many crayons are broken?`, 'crayons are broken', 'crayons'],
       [`A soccer team took $${N}$ shots this season. $${pc(p)}$ of the shots were on goal. How many shots were on goal?`, 'shots were on goal', 'shots'],
-      [`A farmer near Brooks planted $${N}$ rows of crops. $${pc(p)}$ of the rows are corn. How many rows of corn are there?`, 'rows are corn', 'rows'],
+      [`A farmer planted $${N}$ rows of crops. $${pc(p)}$ of the rows are corn. How many rows of corn are there?`, 'rows are corn', 'rows'],
     ]);
     const steps = p === 75 ? [`Think: $75\\%$ is three quarters. One quarter of $${N}$ is $${N} \\div 4 = ${N / 4}$.`, `Three quarters is $3 \\times ${N / 4} = ${ans}$.`] : [`Think: ${SHORTCUT[p][0]}.`, `$${N} \\div ${SHORTCUT[p][1]} = ${ans}$`];
     return {

@@ -27,7 +27,7 @@ const UNIT_FOR: Array<{ thing: string; unit: string; wrong: string[] }> = [
   { thing: 'the thickness of a smartphone', unit: 'millimetres', wrong: ['metres', 'kilometres', 'yards'] },
   { thing: 'the length of a pencil', unit: 'centimetres', wrong: ['kilometres', 'miles', 'yards'] },
   { thing: 'the length of a football field', unit: 'yards', wrong: ['inches', 'millimetres', 'miles'] },
-  { thing: 'the distance from Calgary to Edmonton', unit: 'kilometres', wrong: ['centimetres', 'metres', 'feet'] },
+  { thing: 'the distance between two cities', unit: 'kilometres', wrong: ['centimetres', 'metres', 'feet'] },
   { thing: 'the height of a classroom door', unit: 'feet', wrong: ['miles', 'kilometres', 'millimetres'] },
   { thing: 'the width of a computer screen', unit: 'inches', wrong: ['miles', 'kilometres', 'yards'] },
   { thing: 'the length of a swimming pool', unit: 'metres', wrong: ['millimetres', 'miles', 'inches'] },

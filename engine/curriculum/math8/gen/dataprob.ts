@@ -71,19 +71,19 @@ const KIND_TEXT: Record<GraphKind, string> = {
 };
 
 const SITUATIONS: Array<{ text: string; kind: GraphKind }> = [
-  { text: 'the temperature in Red Deer every hour from 6 a.m. to 6 p.m.', kind: 'line' },
+  { text: 'the temperature in a city every hour from 6 a.m. to 6 p.m.', kind: 'line' },
   { text: 'how a puppy’s mass changed each week for $12$ weeks', kind: 'line' },
   { text: 'the height of a bean plant each day for three weeks', kind: 'line' },
-  { text: 'the water level in a farm dugout near Vegreville each week of the summer', kind: 'line' },
+  { text: 'the water level in a farm dugout each week of the summer', kind: 'line' },
   { text: '{name}’s savings account balance at the end of each month for a year', kind: 'line' },
   { text: 'the number of goals, to the exact goal, that each player on a hockey team scored this season', kind: 'bar' },
-  { text: 'the exact heights, in metres, of five mountains near Jasper', kind: 'bar' },
-  { text: 'the average January temperature in five Alberta towns, where some of the temperatures are below zero', kind: 'bar' },
-  { text: 'the exact number of each kind of sandwich a deli in Airdrie sold on Friday', kind: 'bar' },
+  { text: 'the exact heights, in metres, of five mountains in a national park', kind: 'bar' },
+  { text: 'the average January temperature in five northern towns, where some of the temperatures are below zero', kind: 'bar' },
+  { text: 'the exact number of each kind of sandwich a deli sold on Friday', kind: 'bar' },
   { text: 'how many students in each grade came to the school dance', kind: 'bar' },
   { text: 'how {name} spends the $24$ hours of a school day: sleeping, school, homework and free time', kind: 'circle' },
   { text: 'what percent of the money from a school fundraiser went to food, prizes, decorations and music', kind: 'circle' },
-  { text: 'how a farm near Lethbridge splits its land among wheat, canola, barley and pasture', kind: 'circle' },
+  { text: 'how a farm splits its land among wheat, canola, barley and pasture', kind: 'circle' },
   { text: 'the percent of a class who chose each of four lunch options, when each student chose exactly one', kind: 'circle' },
   { text: 'how many books each Grade 2 class read in a reading challenge, on a hallway poster where one book picture stands for $10$ books', kind: 'picto' },
   { text: 'the number of cans each homeroom brought to a food drive, on a poster where one can picture stands for $20$ cans', kind: 'picto' },
@@ -130,9 +130,9 @@ function chooseBasic(rng: Rng, d: Lvl, name: string): Out {
 const CRITIQUES: Array<{ used: GraphKind; data: string; reason: string }> = [
   { used: 'line', data: 'the favourite sport of each student in the class', reason: 'The sports are separate categories, not times, so a line joining them has no meaning. A bar graph would be better.' },
   { used: 'line', data: 'the number of students who chose each lunch option', reason: 'The lunch options are separate categories, not times, so a line joining them has no meaning. A bar graph would be better.' },
-  { used: 'circle', data: 'the temperature in Lethbridge every hour from 8 a.m. to 4 p.m.', reason: 'The temperatures are not parts of one whole and do not add to $100\\%$. A line graph would show how the temperature changes.' },
+  { used: 'circle', data: 'the temperature in a town every hour from 8 a.m. to 4 p.m.', reason: 'The temperatures are not parts of one whole and do not add to $100\\%$. A line graph would show how the temperature changes.' },
   { used: 'circle', data: 'a baby’s mass at each monthly check-up for a year', reason: 'The masses are not parts of one whole. A line graph would show how the mass changes over time.' },
-  { used: 'picto', data: 'the average January temperature in five Alberta towns, where some are below zero', reason: 'Symbols cannot show negative values, and exact values are hard to show. A bar graph would be better.' },
+  { used: 'picto', data: 'the average January temperature in five northern towns, where some are below zero', reason: 'Symbols cannot show negative values, and exact values are hard to show. A bar graph would be better.' },
   { used: 'picto', data: 'the masses of five newborn puppies to the nearest gram', reason: 'Exact measurements like these would need many tiny parts of symbols. A bar graph would show the exact values better.' },
 ];
 const CRITIQUE_WRONG = [
@@ -189,15 +189,15 @@ function chooseFromTable(rng: Rng, name: string): Out {
     let v = rng.int(-18, -8);
     const vals = months.map(() => (v += rng.int(2, 7)));
     figure = { type: 'table', headers: ['Month', 'Noon temperature (°C)'], rows: months.map((m, i) => [m, String(vals[i])]) };
-    intro = `${name} recorded the noon temperature in Grande Prairie on the first day of each month.`;
+    intro = `${name} recorded the noon temperature in a northern town on the first day of each month.`;
   } else if (kind === 'circle') {
     const cats = ['Rent', 'Food', 'Transport', 'Savings', 'Fun'];
     const parts = retry(() => cats.map(() => 5 * rng.int(2, 8)), (p) => sum(p) === 100 && new Set(p).size >= 4, 500);
     if (sum(parts) !== 100) parts.splice(0, 5, 35, 25, 15, 15, 10);
     figure = { type: 'table', headers: ['Category', 'Percent of monthly budget'], rows: cats.map((c, i) => [c, `${parts[i]}%`]) };
-    intro = `The table shows how a family in Airdrie splits its monthly budget.`;
+    intro = `The table shows how a family splits its monthly budget.`;
   } else {
-    const towns = ['Banff', 'Cold Lake', 'Medicine Hat', 'Peace River', 'Lethbridge'];
+    const towns = ['Pinewood', 'Clearwater', 'Ashford', 'Northfield', 'Westbury'];
     const vals = towns.map(() => rng.int(250, 900));
     figure = { type: 'table', headers: ['Town', 'Students in the Grade 8 math contest'], rows: towns.map((t, i) => [t, String(vals[i])]) };
     intro = 'The table shows how many students from each of five towns entered a Grade 8 math contest.';
@@ -251,11 +251,11 @@ function flawChoices(rng: Rng, flaw: Flaw) {
 }
 
 const AXIS_CTX = [
-  { intro: 'A gym in Medicine Hat put this bar graph of its members on a poster.', base: 400, step: 10, label: 'Members', unit: 'members', what: 'The number of members' },
+  { intro: 'A gym put this bar graph of its members on a poster.', base: 400, step: 10, label: 'Members', unit: 'members', what: 'The number of members' },
   { intro: 'A school made this bar graph of the number of students in its band each year.', base: 40, step: 2, label: 'Band members', unit: 'students', what: 'The number of band members' },
-  { intro: 'A bakery in Camrose made this bar graph of the loaves of bread it sold each week of a month.', base: 600, step: 20, label: 'Loaves sold', unit: 'loaves', what: 'The number of loaves sold', weeks: true },
+  { intro: 'A bakery made this bar graph of the loaves of bread it sold each week of a month.', base: 600, step: 20, label: 'Loaves sold', unit: 'loaves', what: 'The number of loaves sold', weeks: true },
   { intro: 'A junior hockey team made this bar graph of the fans at its home opener each year.', base: 1500, step: 50, label: 'Fans', unit: 'fans', what: 'The number of fans' },
-  { intro: 'A campground near Sylvan Lake made this bar graph of the campsites it booked each year.', base: 180, step: 4, label: 'Campsites booked', unit: 'campsites', what: 'The number of campsites booked' },
+  { intro: 'A lakeside campground made this bar graph of the campsites it booked each year.', base: 180, step: 4, label: 'Campsites booked', unit: 'campsites', what: 'The number of campsites booked' },
 ];
 
 interface Broken { figure: PlaneFigure; intro: string; xs: number[]; vs: number[]; base: number; unit: string; what: string; xName: (x: number) => string }
@@ -305,7 +305,7 @@ function unequalYears(rng: Rng): { figure: Figure; intro: string } {
   const ctx = rng.pick([
     { intro: 'A curling club made this bar graph of its members.', label: 'Members', lo: 60, hi: 140 },
     { intro: 'A town library made this bar graph of the books it owns, in thousands.', label: 'Books (thousands)', lo: 10, hi: 40 },
-    { intro: 'A ski hill near Canmore made this bar graph of its season passes sold, in hundreds.', label: 'Passes (hundreds)', lo: 8, hi: 30 },
+    { intro: 'A ski hill made this bar graph of its season passes sold, in hundreds.', label: 'Passes (hundreds)', lo: 8, hi: 30 },
   ]);
   let v = ctx.lo;
   const values = years.map(() => (v += rng.int(1, Math.max(2, Math.round((ctx.hi - ctx.lo) / 8)))));
@@ -628,7 +628,7 @@ const DEPENDENT = [
   'Picking a card and then picking a second card without putting the first one back',
   'Drawing a name from a hat, keeping it out, and drawing a second name',
   'Taking a cookie from a jar and eating it, then taking a second cookie from the same jar',
-  'Rain in Calgary this afternoon and Calgary’s outdoor soccer game this afternoon being cancelled',
+  'Rain in Riverton this afternoon and Riverton’s outdoor soccer game this afternoon being cancelled',
   'Picking one student to be captain, then picking a different student from the same team to be assistant captain',
 ];
 
@@ -749,7 +749,7 @@ interface PctCtx {
 
 const PCT_CTX: PctCtx[] = [
   {
-    setup: (pa, pb) => `The forecast for Canmore gives ${aPct(pa)} chance of rain on Saturday and ${aPct(pb)} chance of rain on Sunday. Assume the weather on the two days is independent.`,
+    setup: (pa, pb) => `The forecast for Pinewood gives ${aPct(pa)} chance of rain on Saturday and ${aPct(pb)} chance of rain on Sunday. Assume the weather on the two days is independent.`,
     A: 'it rains on Saturday', B: 'it rains on Sunday', notA: 'it does not rain on Saturday', notB: 'it does not rain on Sunday', atLeast: 'it rains on at least one of the two days',
   },
   {

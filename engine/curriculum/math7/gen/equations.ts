@@ -14,8 +14,8 @@ const NAMES = [
   'Sienna', 'Jun', 'Malik', 'Harpreet', 'Isabelle', 'Talia', 'Yusuf', 'Rosalie', 'Nathan', 'Tanis',
 ];
 const TOWNS = [
-  'Calgary', 'Edmonton', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Grande Prairie', 'Fort McMurray', 'Banff',
-  'Jasper', 'Camrose', 'Lloydminster', 'Peace River', 'High Level', 'Canmore', 'Cold Lake', 'Brooks',
+  'Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury',
+  'Ashford', 'Clearwater', 'Oakridge', 'Millbrook', 'Northfield', 'Elmwood', 'Cedarvale', 'Kingsbridge',
 ];
 /** Letters used for unknowns (no e, i, l or o, which look like numbers or constants). */
 const LETTERS = ['x', 'n', 'a', 'm', 'k', 'p', 't', 'y', 'b', 'w', 'c', 'r', 'g', 'd'];
@@ -210,7 +210,7 @@ const EXPR_CTX: ExprCtx[] = [
     says: (_name, t) => `the plant is $${t}\\ \\text{cm}$ tall`,
   },
   {
-    intro: (a, b) => `Renting a canoe at Sylvan Lake costs a ${dollars(b)} booking fee plus ${dollars(a)} for each hour. The expression $${a}h + ${b}$ gives the cost, in dollars, for $h$ hours.`,
+    intro: (a, b) => `Renting a canoe at Willow Lake costs a ${dollars(b)} booking fee plus ${dollars(a)} for each hour. The expression $${a}h + ${b}$ gives the cost, in dollars, for $h$ hours.`,
     v: 'h', coef: 'the cost of each hour', constant: 'the booking fee', variable: 'the number of hours', total: 'the total cost',
     a: (r) => r.pick([12, 15, 18, 20]), b: (r) => r.pick([5, 8, 10]), money: true, n: [2, 6],
     says: (name, t) => `${name} paid ${dollars(t)}`,
@@ -460,7 +460,7 @@ const FORMULAS: Array<(rng: Rng, name: string) => FormulaCase> = [
   (rng, _name) => {
     const w = rng.int(4, 18);
     const t = rng.int(1, 6);
-    const team = rng.pick(['Red Deer Rebels', 'Camrose Kodiaks', 'Brooks Bandits', 'Okotoks Oilers', 'Canmore Eagles', 'Drumheller Dragons']);
+    const team = rng.pick(['Riverton Rebels', 'Lakeside Kodiaks', 'Brookfield Bandits', 'Hillcrest Hawks', 'Pinewood Eagles', 'Westbury Dragons']);
     const P = 2 * w + t;
     return {
       prompt: `In a minor hockey league, a team gets 2 points for a win, 1 point for a tie and 0 points for a loss. The formula $P = 2w + t$ gives a team’s points, where $w$ is the number of wins and $t$ is the number of ties. The ${team} have ${plural(w, 'win')}, ${plural(t, 'tie')} and ${plural(rng.int(2, 10), 'loss', 'losses')}. How many points do they have?`,
@@ -486,7 +486,7 @@ const FORMULAS: Array<(rng: Rng, name: string) => FormulaCase> = [
     const s = rng.int(18, 32);
     const per = rng.pick([8, 10, 12, 15]);
     const bus = rng.pick([150, 200, 250, 300]);
-    const place = rng.pick(['the Royal Tyrrell Museum', 'the Calgary Zoo', 'TELUS World of Science in Edmonton', 'Head-Smashed-In Buffalo Jump']);
+    const place = rng.pick(['a dinosaur museum', 'the city zoo', 'a science centre', 'a historic site']);
     const C = per * s + bus;
     return {
       prompt: `${name}’s class is planning a trip to ${place}. The cost, in dollars, is given by $C = ${per}s + ${bus}$, where $s$ is the number of students. What is the cost for ${s} students?`,
@@ -1003,7 +1003,7 @@ const ONE_CTX: Array<(rng: Rng, name: string) => OneCtx> = [
   (rng, name) => {
     const spent = rng.int(8, 40);
     const left = rng.int(5, 60);
-    const where = rng.pick(['at the Calgary Stampede', 'at a school book fair', 'at the West Edmonton Mall', 'at a hockey tournament']);
+    const where = rng.pick(['at a summer fair', 'at a school book fair', 'at a shopping mall', 'at a hockey tournament']);
     return {
       text: `${name} spent ${dollars(spent)} ${where} and had ${dollars(left)} left. How much money did ${name} have to start with?`,
       op: 'sub', v: 'm', a: spent, b: left, x: spent + left, label: '\\$',
@@ -1198,7 +1198,7 @@ const PROB1: Array<(rng: Rng, name: string) => ProbCtx> = [
     const n = rng.pick([3, 4, 5, 6]);
     const each = rng.int(5, 14);
     return {
-      text: `${name} and some friends split the cost of a campsite in Kananaskis equally. There are ${n} people, and each pays ${dollars(each)}. Let $c$ be the cost of the campsite in dollars.`,
+      text: `${name} and some friends split the cost of a campsite in the mountains equally. There are ${n} people, and each pays ${dollars(each)}. Let $c$ be the cost of the campsite in dollars.`,
       v: 'c', eq: `\\dfrac{c}{${n}} = ${each}`, wrong: [`${n}c = ${each}`, `c - ${n} = ${each}`, `\\dfrac{${n}}{c} = ${each}`], x: n * each, label: '\\$', ask: 'How much did the campsite cost?',
       steps: oneStepSteps('div', 'c', n, each, n * each), say: `The campsite cost ${dollars(n * each)}.`,
     };
@@ -1258,7 +1258,7 @@ const PROB2: Array<(rng: Rng, name: string, d: Difficulty) => ProbCtx> = [
     const x = rng.int(2, 6);
     const total = fee + per * x;
     return {
-      text: `Renting a canoe at Sylvan Lake costs a ${dollars(fee)} booking fee plus ${dollars(per)} for each hour. ${name} paid ${dollars(total)}. Let $h$ be the number of hours.`,
+      text: `Renting a canoe at Willow Lake costs a ${dollars(fee)} booking fee plus ${dollars(per)} for each hour. ${name} paid ${dollars(total)}. Let $h$ be the number of hours.`,
       v: 'h', eq: `${per}h + ${fee} = ${total}`, wrong: [`${fee}h + ${per} = ${total}`, `${per}h - ${fee} = ${total}`, `h + ${per} + ${fee} = ${total}`], x, suffix: 'hours', ask: `For how many hours did ${name} rent the canoe?`,
       steps: twoStepSteps(per, 'h', fee, total, x), say: `${name} rented the canoe for ${x} hours.`,
     };

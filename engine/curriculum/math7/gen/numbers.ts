@@ -353,7 +353,7 @@ interface ShareCtx {
 
 const SHARE: ShareCtx[] = [
   { sizes: [3, 4, 6, 8, 9], ask: (n, k) => `$${n}$ students are going to a track meet. Can they be split into teams of $${k}$ with nobody left out?`, group: 'teams', thing: 'students' },
-  { sizes: [6, 9, 10, 4], ask: (n, k) => `A farm in Alberta collected $${n}$ eggs this week. Can all the eggs be packed in cartons of $${k}$ with none left over?`, group: 'cartons', thing: 'eggs' },
+  { sizes: [6, 9, 10, 4], ask: (n, k) => `A farm collected $${n}$ eggs this week. Can all the eggs be packed in cartons of $${k}$ with none left over?`, group: 'cartons', thing: 'eggs' },
   { sizes: [4, 6, 8, 9], ask: (n, k) => `A baker made $${n}$ cookies for a school bake sale. Can the cookies be packed in boxes of $${k}$ with none left over?`, group: 'boxes', thing: 'cookies' },
   { sizes: [5, 6, 8, 10], ask: (n, k) => `A hockey club has $${n}$ pucks. Can the pucks be shared equally among $${k}$ teams with none left over?`, group: 'equal shares', thing: 'pucks' },
   { sizes: [8, 9, 10, 6], ask: (n, k) => `There are $${n}$ chairs for a school concert. Can they be set up in rows of $${k}$ with no chairs left over?`, group: 'rows', thing: 'chairs' },
@@ -512,7 +512,7 @@ interface GroupCtx {
 }
 
 const GROUPS: GroupCtx[] = [
-  { intro: (n) => `All $${n}$ students at a school in Red Deer are going to a sports day. The teachers want to split them into equal teams with nobody left out.`, ask: 'Which team sizes work?', unit: 'students per team' },
+  { intro: (n) => `All $${n}$ students at a school are going to a sports day. The teachers want to split them into equal teams with nobody left out.`, ask: 'Which team sizes work?', unit: 'students per team' },
   { intro: (n, name) => `${name} collected $${n}$ cans for the food bank. The cans will be packed in boxes, with the same number in each box and none left over.`, ask: 'Which box sizes work?', unit: 'cans per box' },
   { intro: (n) => `A band is selling $${n}$ chocolate bars to raise money. The bars will be split into equal bundles with none left over.`, ask: 'Which bundle sizes work?', unit: 'bars per bundle' },
   { intro: (n, name) => `${name} is setting up $${n}$ chairs for a graduation. The chairs go in equal rows with none left over.`, ask: 'Which row lengths work?', unit: 'chairs per row' },
@@ -1194,9 +1194,9 @@ interface OrderCtx {
 }
 
 const ORDER_CTX: OrderCtx[] = [
-  { intro: 'Five friends did the long jump at a track meet in Lethbridge. Here are their distances in metres.', unit: 'm', up: 'shortest to longest', down: 'longest to shortest' },
-  { intro: 'A vet in Camrose weighed five puppies. Here are their masses in kilograms.', unit: 'kg', up: 'lightest to heaviest', down: 'heaviest to lightest' },
-  { intro: 'Here are the lengths of five hiking trails near Canmore, in kilometres.', unit: 'km', up: 'shortest to longest', down: 'longest to shortest' },
+  { intro: 'Five friends did the long jump at a track meet. Here are their distances in metres.', unit: 'm', up: 'shortest to longest', down: 'longest to shortest' },
+  { intro: 'A vet weighed five puppies. Here are their masses in kilograms.', unit: 'kg', up: 'lightest to heaviest', down: 'heaviest to lightest' },
+  { intro: 'Here are the lengths of five hiking trails in a mountain park, in kilometres.', unit: 'km', up: 'shortest to longest', down: 'longest to shortest' },
   { intro: 'Five classes measured how much rain fell in their gardens last week, in centimetres.', unit: 'cm', up: 'least to greatest', down: 'greatest to least' },
 ];
 

@@ -15,7 +15,7 @@ const NAMES = [
   'Owen', 'Zainab', 'Kai', 'Ayesha', 'Mason', 'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas',
   'Yusuf', 'Maya', 'Kiona', 'Tyler', 'Harpreet', 'Noor', 'Thanh', 'Kateri', 'Diego', 'Ngozi', 'Leah', 'Ravi',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Airdrie', 'Camrose', 'Brooks', 'Jasper'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'];
 /** Letters for unknowns (no e, i, l or o, which look like numbers). */
 const LETTERS = ['n', 'x', 'a', 'm', 'k', 'p', 't', 'y', 'b', 'w', 'c', 'g', 'd', 'h', 's'];
 

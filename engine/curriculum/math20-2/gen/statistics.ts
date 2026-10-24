@@ -158,13 +158,13 @@ const NORM: NormCtx[] = [
     pairs: [[72, 8], [70, 7], [66, 6], [75, 5], [68, 4], [65, 5], [72, 6], [64, 8]], dp: 1,
   },
   {
-    intro: 'The heights of Grade 11 students in a large Alberta school division',
+    intro: 'The heights of Grade 11 students in a large school division',
     pop: 'students', above: (v) => `are taller than ${v}`, below: (v) => `are shorter than ${v}`, between: (a, b) => `are between ${a} and ${b} tall`,
     one: (v) => `a height of ${v}`, noun: 'height', cert: 'height', unit: 'cm', axis: 'Height (cm)',
     pairs: [[168, 8], [170, 10], [165, 5], [171, 9], [168, 7], [168, 6]], dp: 1,
   },
   {
-    intro: 'The volumes of juice that a machine at a Calgary bottling plant puts into its bottles',
+    intro: 'The volumes of juice that a machine at a bottling plant puts into its bottles',
     pop: 'bottles', above: (v) => `contain more than ${v}`, below: (v) => `contain less than ${v}`, between: (a, b) => `contain between ${a} and ${b}`,
     one: (v) => `a volume of ${v}`, noun: 'volume', thing: 'bottle', cert: 'volume', unit: 'mL', axis: 'Volume (mL)',
     pairs: [[500, 4], [504, 4], [502, 2], [500, 5], [498, 3], [505, 5]], dp: 1,
@@ -176,37 +176,37 @@ const NORM: NormCtx[] = [
     pairs: [[24000, 2000], [25000, 2500], [22000, 1000], [21000, 1500], [30000, 2500]], dp: 0,
   },
   {
-    intro: 'The times it takes employees at a large Calgary office to commute to work',
+    intro: 'The times it takes employees at a large downtown office to commute to work',
     pop: 'employees', above: (v) => `take longer than ${v} to get to work`, below: (v) => `take less than ${v} to get to work`, between: (a, b) => `take between ${a} and ${b} to get to work`,
     one: (v) => `a commute of ${v}`, noun: 'commute time', cert: 'time', unit: 'min', axis: 'Commute time (min)',
     pairs: [[32, 4], [36, 6], [30, 5], [35, 5], [28, 4], [40, 8]], dp: 1,
   },
   {
-    intro: 'The birth masses of babies born at an Edmonton hospital',
+    intro: 'The birth masses of babies born at a city hospital',
     pop: 'babies', above: (v) => `have a birth mass greater than ${v}`, below: (v) => `have a birth mass less than ${v}`, between: (a, b) => `have a birth mass between ${a} and ${b}`,
     one: (v) => `a birth mass of ${v}`, noun: 'birth mass', thing: 'baby', cert: 'mass', unit: 'g', axis: 'Birth mass (g)',
     pairs: [[3500, 500], [3300, 550], [3360, 480], [3400, 425], [3450, 575]], dp: 0,
   },
   {
-    intro: 'The resting heart rates of adults in a large Alberta health study',
+    intro: 'The resting heart rates of adults in a large health study',
     pop: 'adults', above: (v) => `have a resting heart rate above ${v}`, below: (v) => `have a resting heart rate below ${v}`, between: (a, b) => `have a resting heart rate between ${a} and ${b}`,
     one: (v) => `a resting heart rate of ${v}`, noun: 'resting heart rate', cert: 'rate', unit: 'beats/min', axis: 'Heart rate (beats/min)',
     pairs: [[72, 8], [70, 7], [66, 6], [72, 9], [70, 10]], dp: 1,
   },
   {
-    intro: 'The lengths of adult rainbow trout in a lake in Kananaskis Country',
+    intro: 'The lengths of adult rainbow trout in a mountain lake',
     pop: 'trout', above: (v) => `are longer than ${v}`, below: (v) => `are shorter than ${v}`, between: (a, b) => `are between ${a} and ${b} long`,
     one: (v) => `a length of ${v}`, noun: 'length', thing: 'trout', cert: 'length', unit: 'cm', axis: 'Length (cm)',
     pairs: [[40, 5], [36, 4], [42, 6], [45, 5], [39, 3]], dp: 1,
   },
   {
-    intro: 'The finishing times in a large 5 km fun run in Red Deer',
+    intro: 'The finishing times in a large 5 km charity fun run',
     pop: 'runners', above: (v) => `take longer than ${v} to finish`, below: (v) => `finish in less than ${v}`, between: (a, b) => `finish with a time between ${a} and ${b}`,
     one: (v) => `a time of ${v}`, noun: 'finishing time', cert: 'time', unit: 'min', axis: 'Finishing time (min)',
     pairs: [[30, 3], [32, 4], [28, 4], [30, 5], [33, 3]], dp: 1,
   },
   {
-    intro: 'The masses of bags of flour filled by a machine at a mill in Lethbridge',
+    intro: 'The masses of bags of flour filled by a machine at a flour mill',
     pop: 'bags', above: (v) => `have a mass greater than ${v}`, below: (v) => `have a mass less than ${v}`, between: (a, b) => `have a mass between ${a} and ${b}`,
     one: (v) => `a mass of ${v}`, noun: 'mass', thing: 'bag', cert: 'mass', unit: 'g', axis: 'Mass (g)',
     pairs: [[2500, 10], [1000, 8], [2000, 16], [2500, 20], [1000, 5]], dp: 1,
@@ -243,12 +243,12 @@ interface SdCtx {
 const SD_CTX: SdCtx[] = [
   { intro: (nm, n) => `${nm} timed the bus ride to school on ${n} mornings. The times, in minutes, were`, unit: 'min', suffix: 'min', center: [15, 28], spread: [3, 7] },
   { intro: (nm, n) => `${nm}’s marks on ${n} math quizzes, each out of $20$, were`, unit: '', center: [12, 15], spread: [2, 4], hi: 20 },
-  { intro: (_nm, n) => `A food truck in Edmonton counted its lunch-hour customers on ${n} weekdays. The counts were`, unit: 'customers', center: [40, 70], spread: [6, 14] },
-  { intro: (_nm, n) => `The resting heart rates, in beats per minute, of ${n} members of a running club in Canmore were`, unit: 'beats/min', suffix: 'beats/min', center: [54, 66], spread: [4, 9] },
-  { intro: (nm, n) => `${nm} recorded the daily high temperature in Banff on ${n} days in May. The temperatures, in degrees Celsius, were`, unit: '°C', suffix: '°C', center: [10, 16], spread: [3, 6] },
-  { intro: (_nm, n) => `The masses, in grams, of ${n} apples from a farmers’ market in Red Deer were`, unit: 'g', suffix: 'g', center: [150, 180], spread: [8, 18] },
+  { intro: (_nm, n) => `A downtown food truck counted its lunch-hour customers on ${n} weekdays. The counts were`, unit: 'customers', center: [40, 70], spread: [6, 14] },
+  { intro: (_nm, n) => `The resting heart rates, in beats per minute, of ${n} members of a local running club were`, unit: 'beats/min', suffix: 'beats/min', center: [54, 66], spread: [4, 9] },
+  { intro: (nm, n) => `${nm} recorded the daily high temperature in a mountain town on ${n} days in May. The temperatures, in degrees Celsius, were`, unit: '°C', suffix: '°C', center: [10, 16], spread: [3, 6] },
+  { intro: (_nm, n) => `The masses, in grams, of ${n} apples from a farmers’ market were`, unit: 'g', suffix: 'g', center: [150, 180], spread: [8, 18] },
   { intro: (_nm, n) => `The numbers of push-ups done by ${n} students in a fitness test were`, unit: 'push-ups', center: [22, 34], spread: [5, 10] },
-  { intro: (nm, n) => `${nm} works part-time at a garden centre in St. Albert. The hours worked in ${n} weeks were`, unit: 'h', suffix: 'h', center: [10, 18], spread: [2, 5] },
+  { intro: (nm, n) => `${nm} works part-time at a local garden centre. The hours worked in ${n} weeks were`, unit: 'h', suffix: 'h', center: [10, 18], spread: [2, 5] },
 ];
 
 function sdOk(xs: number[], ctx: SdCtx): boolean {
@@ -314,12 +314,12 @@ interface FreqCtx {
 }
 
 const FREQ_CTX: FreqCtx[] = [
-  { intro: 'A ringette team in St. Albert recorded the number of goals it scored in each game of its season.', xs: [0, 1, 2, 3, 4, 5, 6], cat: 'Goals in a game', val: 'Number of games', unit: 'goals' },
-  { intro: 'A survey asked Grade 11 students at a school in Grande Prairie how many siblings they have.', xs: [0, 1, 2, 3, 4, 5], cat: 'Number of siblings', val: 'Number of students', unit: 'siblings' },
-  { intro: 'A traffic study counted the number of people in each car that passed a checkpoint on Deerfoot Trail in Calgary.', xs: [1, 2, 3, 4, 5, 6], cat: 'People in the car', val: 'Number of cars', unit: 'people' },
-  { intro: 'The members of a book club in Medicine Hat reported how many books each of them read over the summer.', xs: [2, 3, 4, 5, 6, 7, 8], cat: 'Books read', val: 'Number of members', unit: 'books' },
-  { intro: 'A Grade 11 class in Fort McMurray reported how many hours of homework each student did on Monday night.', xs: [0, 1, 2, 3, 4], cat: 'Hours of homework', val: 'Number of students', unit: 'h' },
-  { intro: 'A bakery in Okotoks recorded how many loaves of bread each customer bought on Saturday morning.', xs: [1, 2, 3, 4, 5], cat: 'Loaves bought', val: 'Number of customers', unit: 'loaves' },
+  { intro: 'A ringette team recorded the number of goals it scored in each game of its season.', xs: [0, 1, 2, 3, 4, 5, 6], cat: 'Goals in a game', val: 'Number of games', unit: 'goals' },
+  { intro: 'A survey asked Grade 11 students at a school in a northern town how many siblings they have.', xs: [0, 1, 2, 3, 4, 5], cat: 'Number of siblings', val: 'Number of students', unit: 'siblings' },
+  { intro: 'A traffic study counted the number of people in each car that passed a checkpoint on a busy city freeway.', xs: [1, 2, 3, 4, 5, 6], cat: 'People in the car', val: 'Number of cars', unit: 'people' },
+  { intro: 'The members of a local book club reported how many books each of them read over the summer.', xs: [2, 3, 4, 5, 6, 7, 8], cat: 'Books read', val: 'Number of members', unit: 'books' },
+  { intro: 'A Grade 11 class reported how many hours of homework each student did on Monday night.', xs: [0, 1, 2, 3, 4], cat: 'Hours of homework', val: 'Number of students', unit: 'h' },
+  { intro: 'A small-town bakery recorded how many loaves of bread each customer bought on Saturday morning.', xs: [1, 2, 3, 4, 5], cat: 'Loaves bought', val: 'Number of customers', unit: 'loaves' },
 ];
 
 function freqItem(rng: Rng): Out {
@@ -409,23 +409,23 @@ const twoNames = (rng: Rng) => rng.sample(NAMES, 2) as [string, string];
 
 const PAIRS: PairCtx[] = [
   {
-    setting: (a, b) => `${a} and ${b} play basketball for a high school team in Airdrie. The data are their points per game.`,
+    setting: (a, b) => `${a} and ${b} play basketball for a high school team. The data are their points per game.`,
     groups: twoNames, consistent: 'Who scores more consistently?', varied: 'Whose scoring varies more from game to game?',
     unit: 'points', short: 'points', mu: [10, 22], sd: [1.5, 7], data: { center: [10, 20], half: [5, 9], minDiff: 1 },
   },
   {
-    setting: () => 'A bottling plant in Calgary has two machines that fill 500 mL bottles of juice. The data are the volumes, in millilitres, of bottles from each machine.',
+    setting: () => 'A bottling plant has two machines that fill 500 mL bottles of juice. The data are the volumes, in millilitres, of bottles from each machine.',
     groups: () => ['Machine A', 'Machine B'], consistent: 'Which machine fills bottles more consistently?', varied: 'Which machine’s fill volumes vary more?',
     unit: 'mL', short: 'mL', mu: [498, 503], sd: [0.8, 4], data: { center: [499, 501], half: [4, 7], minDiff: 1 },
   },
   {
-    setting: () => 'A commuter in a Calgary suburb can take either of two bus routes to work. The data are travel times, in minutes, on several days.',
+    setting: () => 'A commuter in a city suburb can take either of two bus routes to work. The data are travel times, in minutes, on several days.',
     groups: () => ['Route 1', 'Route 2'], consistent: 'Which route has more consistent travel times?', varied: 'Which route’s travel times vary more?',
     unit: 'min', short: 'min', mu: [26, 40], sd: [2, 9], data: { center: [28, 38], half: [5, 10], minDiff: 1 },
   },
   {
     setting: (a, b) => `A student compared the daily high temperatures in April in ${a} and ${b}. The data are in degrees Celsius.`,
-    groups: (rng) => rng.pick([['Calgary', 'Lethbridge'], ['Edmonton', 'Grande Prairie'], ['Red Deer', 'Medicine Hat'], ['Banff', 'Fort McMurray']] as Array<[string, string]>),
+    groups: (rng) => rng.pick([['Riverton', 'Lakeside'], ['Brookfield', 'Hillcrest'], ['Pinewood', 'Maple Falls'], ['Stonebridge', 'Westbury']] as Array<[string, string]>),
     consistent: 'Which city had more consistent daily highs?', varied: 'Which city’s daily highs varied more?',
     unit: '°C', short: '°C', mu: [8, 15], sd: [2, 7], data: { center: [9, 14], half: [5, 9], minDiff: 1 },
   },
@@ -435,7 +435,7 @@ const PAIRS: PairCtx[] = [
     unit: '%', short: '%', mu: [65, 88], sd: [3, 12], data: { center: [70, 82], half: [7, 12], minDiff: 1, hi: 100 },
   },
   {
-    setting: () => 'A machine shop in Nisku orders parts from two suppliers and records how many days each delivery takes.',
+    setting: () => 'A machine shop in an industrial park orders parts from two suppliers and records how many days each delivery takes.',
     groups: () => ['Supplier A', 'Supplier B'], consistent: 'Which supplier’s delivery times are more consistent?', varied: 'Which supplier’s delivery times vary more?',
     unit: 'days', short: 'days', mu: [3, 7], sd: [0.5, 2.5], data: { center: [6, 8], half: [3, 5], minDiff: 0.5 },
   },
@@ -616,10 +616,10 @@ function histogramItem(rng: Rng): Out {
 
 const STUDY = [
   { who: 'the reaction times of 200 drivers in a driving simulator', who2: 'reaction times' },
-  { who: 'the masses of 300 bags of carrots packed at a farm near Taber', who2: 'masses' },
-  { who: 'the daily numbers of visitors to a museum in Drumheller over 250 days', who2: 'visitor counts' },
-  { who: 'the heights of 400 spruce seedlings at a tree nursery near Smoky Lake', who2: 'heights' },
-  { who: 'the wait times of 500 patients at a walk-in clinic in Edmonton', who2: 'wait times' },
+  { who: 'the masses of 300 bags of carrots packed at a vegetable farm', who2: 'masses' },
+  { who: 'the daily numbers of visitors to a small-town museum over 250 days', who2: 'visitor counts' },
+  { who: 'the heights of 400 spruce seedlings at a tree nursery in the north', who2: 'heights' },
+  { who: 'the wait times of 500 patients at a busy city walk-in clinic', who2: 'wait times' },
 ];
 
 function normalityItem(rng: Rng): Out {
@@ -758,7 +758,7 @@ const CMP: CmpCtx[] = [
   },
   {
     setting: (nm) => `${nm} ran two races this summer.`,
-    labels: [['5 km race in Canmore', '10 km race in Edmonton'], ['5 km race in Lethbridge', '10 km race in Calgary']],
+    labels: [['5 km trail race', '10 km road race'], ['5 km fun run', '10 km city race']],
     line: (l, nm, x, mu, sd) => `In the ${l}, ${nm}’s time was $${x}$ min. The times had mean $\\mu = ${mu}$ min and standard deviation $\\sigma = ${sd}$ min.`,
     ask: (nm) => `Compared with the other runners in each race, in which race did ${nm} do better?`,
     prep: 'in',
@@ -1026,14 +1026,14 @@ const zArea = skill({
 // ---------------------------------------------------------------------------
 
 const POLLS = [
-  { who: 'adults in Airdrie', topic: 'support building a new recreation centre', N: [40000, 60000] },
-  { who: 'Alberta high school students', topic: 'have a part-time job during the school year', N: [150000, 200000] },
-  { who: 'customers of an online store based in Edmonton', topic: 'were satisfied with their most recent order', N: [20000, 80000] },
-  { who: 'adults in Alberta', topic: 'get at least seven hours of sleep on a typical night', N: [3000000, 3600000] },
+  { who: 'adults in Riverton', topic: 'support building a new recreation centre', N: [40000, 60000] },
+  { who: 'high school students in the region', topic: 'have a part-time job during the school year', N: [150000, 200000] },
+  { who: 'customers of a local online store', topic: 'were satisfied with their most recent order', N: [20000, 80000] },
+  { who: 'adults in the region', topic: 'get at least seven hours of sleep on a typical night', N: [3000000, 3600000] },
   { who: 'Grade 11 students in a large school division', topic: 'eat breakfast every school day', N: [6000, 12000] },
-  { who: 'drivers in Edmonton', topic: 'use winter tires', N: [500000, 700000] },
-  { who: 'Lethbridge residents', topic: 'support adding bike lanes downtown', N: [90000, 110000] },
-  { who: 'adults in Red Deer', topic: 'shop at a farmers’ market at least once a month', N: [70000, 90000] },
+  { who: 'drivers in Westbury', topic: 'use winter tires', N: [500000, 700000] },
+  { who: 'Lakeside residents', topic: 'support adding bike lanes downtown', N: [90000, 110000] },
+  { who: 'adults in Brookfield', topic: 'shop at a farmers’ market at least once a month', N: [70000, 90000] },
 ];
 const LEVELS = [
   { L: 95, text: '19 times out of 20', frac: '\\dfrac{19}{20}' },
@@ -1041,7 +1041,7 @@ const LEVELS = [
   { L: 99, text: '99 times out of 100', frac: '\\dfrac{99}{100}' },
 ];
 const CANDIDATES = ['Okafor', 'Lindqvist', 'Tran', 'Bouchard', 'Singh', 'Whitehorse', 'MacDonald', 'Haddad', 'Moreau', 'Petrenko', 'Nakamura', 'Delorme'];
-const CITIES = ['Airdrie', 'Lethbridge', 'Red Deer', 'Grande Prairie', 'Medicine Hat', 'St. Albert', 'Spruce Grove', 'Okotoks', 'Leduc', 'Cochrane'];
+const CITIES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'];
 const ISSUES = ['building a new arena', 'building a new public library', 'switching to a four-day school week', 'building a new dog park', 'adding a new transit route', 'building a covered outdoor rink'];
 const MEANS = [
   { what: 'bags of chips', label: 235, unit: 'g', noun: 'mass', sdRange: [0.8, 2.5] },

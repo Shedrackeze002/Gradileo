@@ -13,7 +13,7 @@ const NAMES = [
   'Kwame', 'Chloé', 'Ravi', 'Sienna', 'Dakota', 'Ethan', 'Leilani', 'Omar', 'Nadia', 'Jaxon', 'Ayesha', 'Wei',
   'Isabelle', 'Kiran', 'Malik', 'Sofia', 'Gurpreet', 'Hiroshi', 'Zara', 'Émile', 'Thandiwe', 'Connor', 'Rosa', 'Tyler',
 ];
-const TOWNS = ['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Airdrie', 'Camrose', 'Brooks', 'Jasper'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater'];
 const LETTERS = ['n', 'm', 'k', 'p', 't', 'w', 'a', 'b'];
 
 type Out = GenOutput;

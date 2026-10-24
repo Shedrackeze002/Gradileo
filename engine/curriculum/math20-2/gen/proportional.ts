@@ -517,7 +517,7 @@ const PIECE_CTX: PieceCtx[] = [
     rising: 'filling at', falling: 'draining at', maxRate: 50,
   },
   {
-    story: (w) => `${w} hikes a mountain trail near Canmore. The graph shows ${w}'s height above the trailhead.`,
+    story: (w) => `${w} hikes a steep mountain trail. The graph shows ${w}'s height above the trailhead.`,
     x: 'Time (h)', y: 'Height above trailhead (m)', xStep: 0.5, yStep: 100, unit: 'm/h',
     fastest: (w) => `During which segment was ${w}'s height changing fastest?`,
     zero: (w) => `During which segment was ${w} resting (or walking on level ground)?`,
@@ -955,7 +955,7 @@ function rateMulti(rng: Rng): GenOutput {
       (t) => safe(t.T, 0),
     );
     return {
-      prompt: `${who} is training for a race in Edmonton and can hold a steady pace of $${r.m}\\ \\text{min}\\ ${r.s}\\ \\text{s}$ per kilometre. At that pace, how many minutes will a ${q(r.D, 'km')} race take, to the nearest minute?`,
+      prompt: `${who} is training for a city road race and can hold a steady pace of $${r.m}\\ \\text{min}\\ ${r.s}\\ \\text{s}$ per kilometre. At that pace, how many minutes will a ${q(r.D, 'km')} race take, to the nearest minute?`,
       parts: [decPart(r.T, 0, 'min')],
       hints: ['Write the pace in minutes as a decimal first.', 'Time = pace × distance, because the pace is minutes per kilometre.'],
       solution: [
@@ -1240,7 +1240,7 @@ function diagramRatio(rng: Rng): GenOutput {
     const n = rng.pick([20000, 50000, 100000, 250000]);
     const x = rng.float(1.5, 14, 1);
     const km = (x * n) / 100000;
-    const what = rng.pick(['a hiking trail in Kananaskis', 'a canoe route', 'a cross-country ski trail', 'a stretch of the Bow River']);
+    const what = rng.pick(['a mountain hiking trail', 'a canoe route', 'a cross-country ski trail', 'a stretch of a winding river']);
     return {
       prompt: `On a map with a scale of $1 : ${num(n)}$, ${what} measures ${q(x, 'cm')}. How long is it in real life, in kilometres?`,
       parts: [exactPart(km, 'km')],

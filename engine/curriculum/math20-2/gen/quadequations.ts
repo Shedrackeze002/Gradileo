@@ -498,7 +498,7 @@ const quadApply = skill({
         const biz = rng.pick([
           { who: 'A school club selling smoothies', item: 'a smoothie' },
           { who: 'A small business that makes candles', item: 'a candle' },
-          { who: 'A food truck in Grande Prairie', item: 'a meal' },
+          { who: 'A food truck in a northern city', item: 'a meal' },
           { who: 'A student selling custom phone cases', item: 'a phone case' },
         ]);
         return {

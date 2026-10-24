@@ -104,7 +104,7 @@ const BAGS = [
   { thing: 'tile', where: 'A box', verb: 'picks one tile' },
   { thing: 'sock', where: 'A drawer', verb: 'grabs one sock' },
 ];
-const WORDS = ['EDMONTON', 'BANFF', 'JASPER', 'LETHBRIDGE', 'CANMORE', 'ALBERTA', 'ROCKIES', 'BROOKS', 'OLDS', 'DRUMHELLER', 'TABER', 'CAMROSE'];
+const WORDS = ['BALLOONS', 'STAFF', 'PLANET', 'WATERSLIDE', 'RAINBOW', 'MAGICAL', 'DOLPHIN', 'COOKIE', 'FROG', 'BALLERINAS', 'TIGER', 'PICTURE'];
 const VOWELS = new Set(['A', 'E', 'I', 'O', 'U']);
 /** Totals that give a whole-number percent. */
 const PCT_TOTALS = [2, 4, 5, 10, 20, 25, 50, 100];
@@ -234,7 +234,7 @@ function nameEvent(rng: Rng, totals: number[] | null): Single {
     ['play on a school team', 'plays on a school team', 'team'],
     ['take the bus to school', 'takes the bus to school', 'bus'],
     ['have a pet dog', 'has a pet dog', 'dog'],
-    ['were born in Alberta', 'was born in Alberta', 'born in Alberta'],
+    ['were born in this town', 'was born in this town', 'born here'],
     ['play a musical instrument', 'plays a musical instrument', 'instrument'],
   ]);
   return {

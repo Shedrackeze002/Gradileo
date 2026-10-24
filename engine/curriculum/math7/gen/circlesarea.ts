@@ -716,7 +716,7 @@ const circumference = skill({
           [(x: string) => `${name} measures around a round hay bale with a measuring tape. The circumference is ${x}.`, 'the diameter of the bale', 'cm', 380, 560],
           [(x: string) => `A circular walking path around a pond is ${x} long.`, 'the diameter of the circle', 'm', 200, 900],
           [(x: string) => `${name} runs a measuring tape around the edge of a round tabletop. The circumference is ${x}.`, 'the diameter of the tabletop', 'cm', 250, 420],
-          [(x: string) => `The rope around a circular corral on a ranch near Pincher Creek is ${x} long.`, 'the diameter of the corral', 'm', 40, 90],
+          [(x: string) => `The rope around a circular corral on a ranch is ${x} long.`, 'the diameter of the corral', 'm', 40, 90],
         ] as const);
         const C = niceMeasure(() => rng.int(lo, hi), (v) => v / Math.PI);
         const D = C / Math.PI;
@@ -1159,7 +1159,7 @@ const AREA_THINGS: Array<{ lead: (x: string) => string; thing: string; u: string
   { lead: (x) => `A round table has a diameter of ${x}.`, thing: 'the tabletop', u: 'cm', lo: 80, hi: 130, given: 'd' },
   { lead: (x) => `The centre circle on a soccer field has a diameter of ${x}.`, thing: 'the centre circle', u: 'm', lo: 16, hi: 19, given: 'd' },
   { lead: (x) => `A lawn sprinkler sprays water ${x} in every direction.`, thing: 'the lawn it waters', u: 'm', lo: 3, hi: 9, given: 'r' },
-  { lead: (x) => `A goat on a farm near Olds is tied to a post with a rope ${x} long.`, thing: 'the ground the goat can reach', u: 'm', lo: 3, hi: 8, given: 'r' },
+  { lead: (x) => `A goat on a farm is tied to a post with a rope ${x} long.`, thing: 'the ground the goat can reach', u: 'm', lo: 3, hi: 8, given: 'r' },
   { lead: (x) => `A round rug has a radius of ${x}.`, thing: 'the rug', u: 'cm', lo: 60, hi: 120, given: 'r' },
 ];
 
