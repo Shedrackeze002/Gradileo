@@ -630,8 +630,11 @@ items ship or decisions change.
      moles, acids and bases (molar mass, Avogadro's number, mole ratios, pH, indicators,
      neutralization). Sign-up recommends it to students in Grades 9 and 10, and Grade 11 Chemistry
      now offers a placement check on its skills.
-   - Next: the videos for Grades 10 and 11, and the AI tutor's recorded voice for chemistry (it reads `\ce{…}` formulas aloud first;
-     the recording workflow takes only the `math*` course folders until then). Then Grade 12
+   - Built (24 October 2026): the AI tutor reads chemistry aloud. `\ce{…}` formulas are said as a
+     teacher says them ("H 2 S O 4", "S O 4, 2 minus", "chlorine-35", "Z N, solid, plus 2 H C L,
+     aqueous, gives …"; `engine/chem/speech.ts`), and the tutor-voice recording now covers the
+     chemistry courses too.
+   - Next: the explainer videos for Grades 10 and 11. Then Grade 12
      Chemistry, then English 10, 20 and 30. The privacy policy and terms still describe Gradileo
      as a mathematics platform; their wording is the owner's to change.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
