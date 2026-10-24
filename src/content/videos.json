@@ -1,4 +1,51 @@
 {
+  "c10-2-1": {
+    "lessonId": "c10-2-1",
+    "title": "Inside the Atom, Part 1: Three Particles",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Protons, neutrons and electrons",
+        "t": 25.1
+      },
+      {
+        "title": "Charge and mass",
+        "t": 67.727
+      },
+      {
+        "title": "Where the mass is",
+        "t": 114.865
+      },
+      {
+        "title": "Your turn",
+        "t": 158.214
+      },
+      {
+        "title": "Summary",
+        "t": 191.054
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-1:q",
+        "t": 169.677,
+        "prompt": "A particle in an atom has a relative mass of $1$ and no charge. Which particle is it, and where is it found?",
+        "choices": [
+          "A proton, in the nucleus",
+          "An electron, in a shell around the nucleus",
+          "A neutron, in a shell around the nucleus",
+          "A neutron, in the nucleus"
+        ],
+        "answer": 3,
+        "working": "Protons and neutrons both have a relative mass of $1$, but only the neutron has no charge. Neutrons are found in the nucleus, with the protons."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
