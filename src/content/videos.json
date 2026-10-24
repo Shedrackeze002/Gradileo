@@ -97,6 +97,57 @@
       }
     ]
   },
+  "c10-2-1-c": {
+    "lessonId": "c10-2-1",
+    "title": "Inside the Atom, Part 3: Atomic Number and Mass Number",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two numbers",
+        "t": 18.842
+      },
+      {
+        "title": "Counting the particles",
+        "t": 51.044
+      },
+      {
+        "title": "Sodium-23",
+        "t": 75.295
+      },
+      {
+        "title": "Nuclide notation",
+        "t": 109.281
+      },
+      {
+        "title": "Your turn",
+        "t": 154.262
+      },
+      {
+        "title": "Summary",
+        "t": 193.256
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-1-c:q",
+        "t": 168.414,
+        "prompt": "How many protons, neutrons and electrons are in a neutral atom of $\\ce{^{39}_{19}K}$?",
+        "choices": [
+          "$19$ protons, $20$ neutrons, $19$ electrons",
+          "$39$ protons, $19$ neutrons, $39$ electrons",
+          "$19$ protons, $39$ neutrons, $19$ electrons",
+          "$20$ protons, $19$ neutrons, $20$ electrons"
+        ],
+        "answer": 0,
+        "working": "The bottom number is the atomic number: $19$ protons, and $19$ electrons in the neutral atom. Neutrons $= 39 - 19 = 20$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
