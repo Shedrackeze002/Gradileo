@@ -21,8 +21,8 @@ const SAVINGS: Saver[] = [
   { what: 'an investment account', it: 'the investment' },
 ];
 const FROM = [
-  'money from a summer job on a farm near Lethbridge', 'savings from a first job in Red Deer', 'a bonus from a job in Fort McMurray',
-  'money from a part-time job in Medicine Hat', 'tips from a restaurant job in Canmore', 'money from selling a used quad', 'a gift from a grandparent',
+  'money from a summer job on a farm', 'savings from a first job', 'a bonus from a job at a mine site',
+  'money from a part-time job', 'tips from a restaurant job in a mountain town', 'money from selling a used quad', 'a gift from a grandparent',
 ];
 const GROWTH: Saver[] = [
   { what: 'an investment account', it: 'the investment' },
@@ -30,8 +30,8 @@ const GROWTH: Saver[] = [
 ];
 /** A GIC or savings account for modest rates; an investment account for high ones. */
 const saverFor = (rng: Rng, r: number) => rng.pick(r <= 5 ? SAVINGS : GROWTH);
-const BORROW = ['a used truck', 'a welding course', 'a set of mechanic’s tools', 'a used snowmobile', 'furniture for an apartment in Lethbridge', 'a used quad', 'a trailer for a landscaping business'];
-const GOALS = ['a down payment on a truck', 'a trade-school program', 'a down payment on a condo in Red Deer', 'a trip to Europe', 'a used boat', 'tools to start a business'];
+const BORROW = ['a used truck', 'a welding course', 'a set of mechanic’s tools', 'a used snowmobile', 'furniture for a first apartment', 'a used quad', 'a trailer for a landscaping business'];
+const GOALS = ['a down payment on a truck', 'a trade-school program', 'a down payment on a condo', 'a trip to Europe', 'a used boat', 'tools to start a business'];
 
 // ---------------------------------------------------------------------------
 // 7.1 Simple interest — m203-simple-interest
@@ -168,7 +168,7 @@ function si3(rng: Rng): Out {
   const t = rng.int(2, 5);
   const r = rng.pick([2, 2.5, 3, 3.5, 4, 4.5, 5]);
   const I = (P * r * t) / 100;
-  const goal = rng.pick(['a new phone', 'a weekend trip to Jasper', 'a set of winter tires', 'a new hockey bag and skates', 'a course fee', 'concert tickets']);
+  const goal = rng.pick(['a new phone', 'a weekend trip to the mountains', 'a set of winter tires', 'a new hockey bag and skates', 'a course fee', 'concert tickets']);
   return {
     prompt: `${name} wants to earn ${money(I)} in interest over ${yrs(t)}, to put toward ${goal}. ${cap(s.what)} at ${bank} pays simple interest of ${pc(r)} per year. How much does ${name} need to invest? ${CENT}`,
     parts: [moneyPart(P, 'Principal: \\$')],
@@ -821,7 +821,7 @@ function cc3(rng: Rng): Out {
     };
   }
   // Carrying a purchase for two months; interest is added to the balance each month.
-  const item = rng.pick(['a laptop', 'a new set of tires', 'a gaming console and games', 'a mountain bike', 'a couch for an apartment in Lethbridge', 'a used snowblower', 'a pair of work boots and a jacket']);
+  const item = rng.pick(['a laptop', 'a new set of tires', 'a gaming console and games', 'a mountain bike', 'a couch for a first apartment', 'a used snowblower', 'a pair of work boots and a jacket']);
   const [D1, D2] = rng.pick([[31, 30], [30, 31], [31, 31]] as const);
   const o = retry(
     () => {
@@ -878,8 +878,8 @@ function payment(L: number, r: number, n: number): number {
 const times = (M: number, n: number) => (Math.round(M * 100) * n) / 100;
 
 const VEHICLES = [
-  'a used truck from a dealer in Grande Prairie', 'a car from a dealer in Red Deer', 'a quad from a dealer in Lloydminster', 'a snowmobile from a dealer in Grande Prairie',
-  'a used pickup in Medicine Hat', 'a fishing boat in Cold Lake', 'a used SUV in Camrose', 'a work van for a plumbing business in Airdrie',
+  'a used truck from a dealer', 'a car from a dealer', 'a quad from a powersports dealer', 'a snowmobile from a dealer up north',
+  'a used pickup from a private seller', 'a fishing boat for the lake', 'a used SUV', 'a work van for a plumbing business',
 ];
 const RTO = [
   { item: 'a washer and dryer', lo: 1100, hi: 1900 },
@@ -964,7 +964,7 @@ function lc2(rng: Rng): Out {
       ],
     };
   }
-  const dealer = rng.pick(['Peace Country Motors', 'Parkland Auto Sales', 'Chinook Truck Centre', 'Big Sky Auto', 'Aspen Powersports']);
+  const dealer = rng.pick(['Valley Motors', 'Lakeshore Auto Sales', 'Summit Truck Centre', 'Big Sky Auto', 'Aspen Powersports']);
   const o = retry(
     () => {
       const L = rng.int(160, 900) * 50;
@@ -981,7 +981,7 @@ function lc2(rng: Rng): Out {
   const { L, nD, nB, MD, MB, TD, TB } = o;
   const bankCheaper = TB < TD;
   return {
-    prompt: `${name} needs to borrow ${tag(L)} for a truck in Grande Prairie. ${dealer} offers a loan with ${nD} monthly payments of ${money(MD)}. ${bank} offers a loan with ${nB} monthly payments of ${money(MB)}. Find the total paid for each loan. Which loan costs less in total? ${CENT}`,
+    prompt: `${name} needs to borrow ${tag(L)} for a truck. ${dealer} offers a loan with ${nD} monthly payments of ${money(MD)}. ${bank} offers a loan with ${nB} monthly payments of ${money(MB)}. Find the total paid for each loan. Which loan costs less in total? ${CENT}`,
     parts: [moneyPart(TD, `${dealer} total: \\$`), moneyPart(TB, `${bank} total: \\$`), part(fixedChoice([`The loan from ${dealer}`, `The loan from ${bank}`], bankCheaper ? 1 : 0), { label: 'Costs less:' })],
     hints: ['Total paid = monthly payment × number of payments, for each loan.', 'A lower monthly payment can still cost more in total if there are more payments.'],
     solution: [
@@ -1012,7 +1012,7 @@ function lc3(rng: Rng): Out {
     const F = sub(all, price);
     const v = rng.pick(['a used truck', 'a three-quarter-ton pickup', 'a used half-ton truck', 'a work truck']);
     return {
-      prompt: `${name} is buying ${v} from a dealer in Grande Prairie for ${tag(price)}. ${name} makes a down payment of ${pc(dp)} and borrows the rest from ${bank}, paying ${money(M)} a month for ${yrs(y)}. Find the amount borrowed, the total cost of the truck (down payment plus all the payments), and the finance charge. ${CENT}`,
+      prompt: `${name} is buying ${v} from a dealer for ${tag(price)}. ${name} makes a down payment of ${pc(dp)} and borrows the rest from ${bank}, paying ${money(M)} a month for ${yrs(y)}. Find the amount borrowed, the total cost of the truck (down payment plus all the payments), and the finance charge. ${CENT}`,
       parts: [moneyPart(L, 'Amount borrowed: \\$'), moneyPart(all, 'Total cost: \\$'), moneyPart(F, 'Finance charge: \\$')],
       hints: [`Down payment = ${pc(dp)} of the price. The amount borrowed is the rest.`, `${yrs(y)} of monthly payments is ${n} payments. Total cost = down payment + payment × ${n}. Finance charge = total cost − price.`],
       solution: [
@@ -1025,7 +1025,7 @@ function lc3(rng: Rng): Out {
       ],
     };
   }
-  const dealer = rng.pick(['Peace Country Motors', 'Parkland Auto Sales', 'Chinook Truck Centre', 'Big Sky Auto']);
+  const dealer = rng.pick(['Valley Motors', 'Lakeshore Auto Sales', 'Summit Truck Centre', 'Big Sky Auto']);
   const o = retry(
     () => {
       const price = rng.int(280, 600) * 100;
@@ -1042,7 +1042,7 @@ function lc3(rng: Rng): Out {
   const { price, R, n, M1, M2, T1, T2 } = o;
   const rebateCheaper = T2 < T1;
   return {
-    prompt: `${name} is buying a truck in Grande Prairie for ${tag(price)} from ${dealer}. **Option 1:** the dealer’s financing on the full price, with ${n} monthly payments of ${money(M1)}. **Option 2:** take a cash rebate of ${tag(R)} off the price and borrow the rest from ${bank}, with ${n} monthly payments of ${money(M2)}. Find the total paid for each option. Which option is cheaper, and by how much? ${CENT}`,
+    prompt: `${name} is buying a truck for ${tag(price)} from ${dealer}. **Option 1:** the dealer’s financing on the full price, with ${n} monthly payments of ${money(M1)}. **Option 2:** take a cash rebate of ${tag(R)} off the price and borrow the rest from ${bank}, with ${n} monthly payments of ${money(M2)}. Find the total paid for each option. Which option is cheaper, and by how much? ${CENT}`,
     parts: [moneyPart(T1, 'Option 1 total: \\$'), moneyPart(T2, 'Option 2 total: \\$'), part(fixedChoice(['Option 1', 'Option 2'], rebateCheaper ? 1 : 0), { label: 'Cheaper:' }), moneyPart(Math.abs(sub(T1, T2)), 'Cheaper by: \\$')],
     hints: ['For each option, total paid = monthly payment × number of payments.', 'The rebate is already built into the Option 2 payments, so do not subtract it again. Compare the two totals.'],
     solution: [

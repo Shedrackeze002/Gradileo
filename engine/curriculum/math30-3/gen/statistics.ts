@@ -125,35 +125,35 @@ interface DataCtx {
 
 const CTX: DataCtx[] = [
   {
-    intro: (name, n) => `${name}, the dispatcher at a furnace repair shop in Red Deer, recorded the number of service calls each day for ${n} days:`,
+    intro: (name, n) => `${name}, the dispatcher at a furnace repair shop, recorded the number of service calls each day for ${n} days:`,
     unit: 'calls', lo: 5, hi: 16, step: 1, out: [31, 38], why: 'the day of a cold snap', typical: 'the number of calls on a typical day',
   },
   {
-    intro: (name, n) => `${name} timed how long, in minutes, ${n} customers waited for a tire change at a shop in Lethbridge:`,
+    intro: (name, n) => `${name} timed how long, in minutes, ${n} customers waited for a tire change at a shop in town:`,
     unit: 'min', lo: 18, hi: 45, step: 1, out: [95, 130], why: 'a customer whose tire had to be ordered in', typical: 'a typical wait',
   },
   {
-    intro: (name, n) => `${name}, an apprentice electrician in Edmonton, logged the hours worked each week for ${n} weeks:`,
+    intro: (name, n) => `${name}, an apprentice electrician, logged the hours worked each week for ${n} weeks:`,
     unit: 'h', lo: 32, hi: 46, step: 1, out: [8, 14], why: 'a week off sick with the flu', typical: 'a typical work week',
   },
   {
-    intro: (name, n) => `${name} weighed ${n} calves at weaning on a ranch near Brooks. Their masses, in kilograms, were:`,
+    intro: (name, n) => `${name} weighed ${n} calves at weaning on a cattle ranch. Their masses, in kilograms, were:`,
     unit: 'kg', lo: 235, hi: 295, step: 1, out: [150, 172], why: 'a calf born late in the season', typical: 'the mass of a typical calf',
   },
   {
-    intro: (name, n) => `${name} recorded the canola yield, in bushels per acre, on ${n} fields near Camrose:`,
+    intro: (name, n) => `${name} recorded the canola yield, in bushels per acre, on ${n} fields on the family farm:`,
     unit: 'bu/acre', lo: 38, hi: 56, step: 1, out: [8, 15], why: 'a field hit by hail', typical: 'a typical yield',
   },
   {
-    intro: (name, n) => `${name} drives a gravel truck near Grande Prairie and counted the loads hauled each day for ${n} days:`,
+    intro: (name, n) => `${name} drives a gravel truck in the north and counted the loads hauled each day for ${n} days:`,
     unit: 'loads', lo: 6, hi: 14, step: 1, out: [1, 2], why: 'a day the truck broke down', typical: 'a typical day',
   },
   {
-    intro: (name, n) => `${name} asked ${n} workers at a plant near Fort Saskatchewan how far, in kilometres, they drive to work one way:`,
+    intro: (name, n) => `${name} asked ${n} workers at a chemical plant outside the city how far, in kilometres, they drive to work one way:`,
     unit: 'km', lo: 6, hi: 35, step: 1, out: [110, 140], why: 'a worker who lives on an acreage far out of town', typical: 'a typical drive',
   },
   {
-    intro: (name, n) => `${name} owns a landscaping company in Okotoks. The ${n} people on the payroll earn these hourly wages:`,
+    intro: (name, n) => `${name} owns a landscaping company. The ${n} people on the payroll earn these hourly wages:`,
     unit: '', lo: 17, hi: 26, step: 0.5, money: true, out: [55, 68], why: 'the wage of the company’s manager', typical: 'a typical wage',
   },
 ];
@@ -280,7 +280,7 @@ interface Choose {
 const CHOOSE: Choose[] = [
   {
     measure: 'mode',
-    intro: (name, n) => `${name} manages a work-wear store in Fort McMurray. These are the sizes of the last ${n} pairs of steel-toed boots sold:`,
+    intro: (name, n) => `${name} manages a work-wear store in a mining town. These are the sizes of the last ${n} pairs of steel-toed boots sold:`,
     goal: () => 'the manager wants to know which size of boot to order the most of',
     values: (rng) => {
       const sizes = range(7, 13, 0.5);
@@ -292,7 +292,7 @@ const CHOOSE: Choose[] = [
   },
   {
     measure: 'mode',
-    intro: (name, n) => `${name} runs a tire shop in Lloydminster. These are the rim sizes, in inches, of the last ${n} sets of winter tires sold:`,
+    intro: (name, n) => `${name} runs a tire shop in a farming town. These are the rim sizes, in inches, of the last ${n} sets of winter tires sold:`,
     goal: () => 'the shop wants to know which size of winter tire to keep the most of in stock',
     values: (rng) => {
       const sizes = [15, 16, 17, 18, 20];
@@ -304,7 +304,7 @@ const CHOOSE: Choose[] = [
   },
   {
     measure: 'median',
-    intro: (name, n) => `${name} is a real-estate agent in Drumheller. These are the selling prices of the last ${n} homes sold in town:`,
+    intro: (name, n) => `${name} is a real-estate agent in a small town. These are the selling prices of the last ${n} homes sold in town:`,
     goal: (name) => `${name} wants to tell a young couple the price of a typical home in town`,
     values: (rng) => {
       const n = rng.pick([7, 9]);
@@ -316,7 +316,7 @@ const CHOOSE: Choose[] = [
   },
   {
     measure: 'median',
-    intro: (name, n) => `${name} owns a landscaping company in Okotoks. The ${n} people on the payroll, including the manager, earn these hourly wages:`,
+    intro: (name, n) => `${name} owns a landscaping company. The ${n} people on the payroll, including the manager, earn these hourly wages:`,
     goal: () => 'a job ad will state the wage that a typical worker at the company earns',
     values: (rng) => {
       const n = rng.pick([7, 9]);
@@ -327,14 +327,14 @@ const CHOOSE: Choose[] = [
   },
   {
     measure: 'mean',
-    intro: (name, n) => `${name} farms near Vulcan and recorded the litres of diesel the tractor used each day for ${n} days of seeding:`,
+    intro: (name, n) => `${name} grows wheat and recorded the litres of diesel the tractor used each day for ${n} days of seeding:`,
     goal: (name) => `${name} wants to estimate how much diesel to order for the rest of seeding`,
     values: (rng) => Array.from({ length: 8 }, () => rng.int(140, 190)),
     unit: 'L',
   },
   {
     measure: 'mean',
-    intro: (name, n) => `${name} is a foreman on a sidewalk crew in Calgary and recorded the bags of concrete mix the crew used each day for ${n} days:`,
+    intro: (name, n) => `${name} is a foreman on a city sidewalk crew and recorded the bags of concrete mix the crew used each day for ${n} days:`,
     goal: (name) => `${name} wants to estimate the total number of bags needed for a 15-day job`,
     values: (rng) => Array.from({ length: 8 }, () => rng.int(42, 64)),
     unit: 'bags',
@@ -460,15 +460,15 @@ const TARGETS: Target[] = [
     have: 'The first marks are', ask: 'What is the lowest mark the last exam can have?', unit: '%', lo: 58, hi: 94, max: 100, T: [65, 70, 75, 80], label: 'Last exam:',
   },
   {
-    setup: (name, n, T) => `${name} sells farm equipment at a dealership in Camrose. The goal is a mean of at least ${T} sales a month over ${n} months.`,
+    setup: (name, n, T) => `${name} sells farm equipment at a dealership. The goal is a mean of at least ${T} sales a month over ${n} months.`,
     have: 'The sales in the first months were', ask: 'How many sales are needed in the last month?', unit: 'sales', lo: 9, hi: 22, max: 40, T: [14, 15, 16, 18], label: 'Last month:',
   },
   {
-    setup: (name, n, T) => `${name} farms ${n} barley fields of the same size near Olds and wants a mean yield of ${T} bushels per acre over all ${n} fields.`,
+    setup: (name, n, T) => `${name} farms ${n} barley fields of the same size and wants a mean yield of ${T} bushels per acre over all ${n} fields.`,
     have: 'The yields from the fields harvested so far are', ask: 'What yield does the last field need?', unit: 'bu/acre', lo: 62, hi: 88, max: 120, T: [72, 75, 78, 80], label: 'Last field:',
   },
   {
-    setup: (name, n, T) => `${name} drives for a gravel company in Grande Prairie that expects a mean of at least ${T} loads a day over a ${n}-day work week.`,
+    setup: (name, n, T) => `${name} drives for a gravel company that expects a mean of at least ${T} loads a day over a ${n}-day work week.`,
     have: 'The loads hauled on the first days were', ask: 'How many loads are needed on the last day?', unit: 'loads', lo: 7, hi: 14, max: 20, T: [10, 11, 12], label: 'Last day:',
   },
 ];
@@ -574,11 +574,11 @@ function courseMark(rng: Rng, k: 3 | 4): Out {
 
 interface Buy { intro: (name: string, k: string) => string; item: string; items: string; lo: number; hi: number; q: [number, number] }
 const BUYS: Buy[] = [
-  { intro: (name, k) => `${name}, a framer in Airdrie, bought 2×4 studs from ${k} suppliers`, item: 'stud', items: 'studs', lo: 3.89, hi: 5.49, q: [40, 160] },
-  { intro: (name, k) => `${name} bought bags of concrete mix for a fence job in Medicine Hat at ${k} stores`, item: 'bag', items: 'bags', lo: 6.49, hi: 9.99, q: [10, 60] },
-  { intro: (name, k) => `${name} bought small square bales of hay for a farm near Ponoka from ${k} neighbours`, item: 'bale', items: 'bales', lo: 6.5, hi: 11.5, q: [50, 300] },
-  { intro: (name, k) => `${name}, a cleaning contractor in Edmonton, bought boxes of nitrile gloves at ${k} different prices`, item: 'box', items: 'boxes', lo: 11.99, hi: 18.99, q: [6, 40] },
-  { intro: (name, k) => `${name} bought fence posts for a pasture near Pincher Creek in ${k} loads`, item: 'post', items: 'posts', lo: 7.25, hi: 12.75, q: [30, 150] },
+  { intro: (name, k) => `${name}, a framer, bought 2×4 studs from ${k} suppliers`, item: 'stud', items: 'studs', lo: 3.89, hi: 5.49, q: [40, 160] },
+  { intro: (name, k) => `${name} bought bags of concrete mix for a fence job at ${k} stores`, item: 'bag', items: 'bags', lo: 6.49, hi: 9.99, q: [10, 60] },
+  { intro: (name, k) => `${name} bought small square bales of hay for a horse farm from ${k} neighbours`, item: 'bale', items: 'bales', lo: 6.5, hi: 11.5, q: [50, 300] },
+  { intro: (name, k) => `${name}, a cleaning contractor, bought boxes of nitrile gloves at ${k} different prices`, item: 'box', items: 'boxes', lo: 11.99, hi: 18.99, q: [6, 40] },
+  { intro: (name, k) => `${name} bought fence posts for a hillside pasture in ${k} loads`, item: 'post', items: 'posts', lo: 7.25, hi: 12.75, q: [30, 150] },
 ];
 
 function avgPrice(rng: Rng, d: 1 | 2): Out {
@@ -637,7 +637,7 @@ function gpa(rng: Rng): Out {
   const C = sum(cr);
   const P = sum(cr.map((c, i) => c * gp[i]));
   return {
-    prompt: `${name} is in ${an(prog)} at a college in Alberta. The college finds a term grade point average (GPA) as a weighted mean: each course’s grade points are weighted by its credits. Find ${poss(name)} GPA for the term, to the nearest hundredth.`,
+    prompt: `${name} is in ${an(prog)} at a college. The college finds a term grade point average (GPA) as a weighted mean: each course’s grade points are weighted by its credits. Find ${poss(name)} GPA for the term, to the nearest hundredth.`,
     figure: { type: 'table', headers: ['Course', 'Credits', 'Grade points'], rows: cr.map((c, i) => [`Course ${i + 1}`, fmt(c), gp[i].toFixed(1)]) },
     parts: [numPart(G, { decimals: 2, label: 'GPA:' })],
     hints: ['Multiply each course’s grade points by its credits, and add the results.', `Then divide by the total number of credits. Do not divide by ${k}, the number of courses.`],
@@ -652,10 +652,10 @@ function gpa(rng: Rng): Out {
 
 interface Judge { intro: (name: string, n: number) => string; of: number; lo: number; hi: number; what: string }
 const JUDGES: Judge[] = [
-  { intro: (name, n) => `At a regional skills competition in Edmonton, ${n} judges scored ${poss(name)} weld out of 10`, of: 10, lo: 5, hi: 10, what: 'score' },
-  { intro: (name, n) => `At a chili cook-off at the rodeo in Ponoka, ${n} judges scored ${poss(name)} chili out of 10`, of: 10, lo: 4, hi: 10, what: 'score' },
-  { intro: (name, n) => `At a cabinetmaking competition in Calgary, ${n} judges scored ${poss(name)} cabinet out of 50`, of: 50, lo: 31, hi: 49, what: 'score' },
-  { intro: (name, n) => `At a hairstyling competition in Red Deer, ${n} judges scored ${poss(name)} design out of 20`, of: 20, lo: 11, hi: 20, what: 'score' },
+  { intro: (name, n) => `At a regional skills competition, ${n} judges scored ${poss(name)} weld out of 10`, of: 10, lo: 5, hi: 10, what: 'score' },
+  { intro: (name, n) => `At a chili cook-off at a summer rodeo, ${n} judges scored ${poss(name)} chili out of 10`, of: 10, lo: 4, hi: 10, what: 'score' },
+  { intro: (name, n) => `At a cabinetmaking competition, ${n} judges scored ${poss(name)} cabinet out of 50`, of: 50, lo: 31, hi: 49, what: 'score' },
+  { intro: (name, n) => `At a hairstyling competition, ${n} judges scored ${poss(name)} design out of 20`, of: 20, lo: 11, hi: 20, what: 'score' },
 ];
 
 function judgesTrim(rng: Rng): Out {
@@ -689,10 +689,10 @@ function judgesTrim(rng: Rng): Out {
 
 interface TrimCtx { intro: (n: number) => string; unit: string; lo: number; hi: number; out: [number, number] }
 const TRIMS: TrimCtx[] = [
-  { intro: (n) => `A courier company in Calgary recorded the delivery times, in minutes, of ${n} parcels across the city:`, unit: 'min', lo: 24, hi: 58, out: [95, 140] },
-  { intro: (n) => `A grain farmer near Lethbridge recorded the hours the combine ran on each of ${n} harvest days:`, unit: 'h', lo: 6, hi: 13, out: [1, 2] },
-  { intro: (n) => `A water-well driller near Westlock recorded the depths, in metres, of the last ${n} wells drilled:`, unit: 'm', lo: 28, hi: 61, out: [110, 150] },
-  { intro: (n) => `A small engine shop in Camrose recorded the minutes spent on each of ${n} lawn-mower tune-ups:`, unit: 'min', lo: 35, hi: 70, out: [150, 190] },
+  { intro: (n) => `A courier company in a large city recorded the delivery times, in minutes, of ${n} parcels across the city:`, unit: 'min', lo: 24, hi: 58, out: [95, 140] },
+  { intro: (n) => `A grain farmer recorded the hours the combine ran on each of ${n} harvest days:`, unit: 'h', lo: 6, hi: 13, out: [1, 2] },
+  { intro: (n) => `A water-well driller in farm country recorded the depths, in metres, of the last ${n} wells drilled:`, unit: 'm', lo: 28, hi: 61, out: [110, 150] },
+  { intro: (n) => `A small engine shop recorded the minutes spent on each of ${n} lawn-mower tune-ups:`, unit: 'min', lo: 35, hi: 70, out: [150, 190] },
 ];
 
 function percentTrim(rng: Rng, withMean = false): Out {
@@ -860,12 +860,12 @@ const INTERP: Interp[] = [
     wrong: (name, P) => [`${name} answered ${P}% of the questions correctly.`, `About ${P}% of the people who wrote the test scored higher than ${name}.`, `${name} scored ${P} marks.`],
   },
   {
-    setup: (name, P) => `At a check-up in Lethbridge, ${poss(name)} baby son’s mass is at the ${ordinal(P)} percentile for his age.`,
+    setup: (name, P) => `At a check-up at the clinic, ${poss(name)} baby son’s mass is at the ${ordinal(P)} percentile for his age.`,
     correct: (_n, P) => `About ${P}% of babies his age have a mass at or below his.`,
     wrong: (_n, P) => [`He is ${P}% heavier than a typical baby his age.`, `About ${P}% of babies his age are heavier than he is.`, `His mass is ${P}% of the mass of the heaviest baby his age.`],
   },
   {
-    setup: (name, P) => `At a car dealership group in Red Deer, ${poss(name)} sales last year were at the ${ordinal(P)} percentile of all the salespeople.`,
+    setup: (name, P) => `At a car dealership group, ${poss(name)} sales last year were at the ${ordinal(P)} percentile of all the salespeople.`,
     correct: (name, P) => `About ${P}% of the salespeople sold the same as ${name} or less.`,
     wrong: (name, P) => [`${name} made ${P}% of all the sales.`, `About ${P}% of the salespeople sold more than ${name}.`, `${name} sold ${P} vehicles.`],
   },
@@ -875,7 +875,7 @@ const INTERP: Interp[] = [
     wrong: (name, P) => [`${name} did ${P} push-ups.`, `About ${P}% of the applicants did more push-ups than ${name}.`, `${name} did ${P}% of the push-ups needed to pass.`],
   },
   {
-    setup: (name, P) => `In a wage survey of welders at shops in Edmonton, ${poss(name)} hourly wage is at the ${ordinal(P)} percentile.`,
+    setup: (name, P) => `In a wage survey of welders at shops across the city, ${poss(name)} hourly wage is at the ${ordinal(P)} percentile.`,
     correct: (name, P) => `About ${P}% of the welders in the survey earn the same as ${name} or less.`,
     wrong: (name, P) => [`${name} earns ${P}% of the highest wage in the survey.`, `About ${P}% of the welders in the survey earn more than ${name}.`, `${name} earns ${P}% more than a typical welder in the survey.`],
   },
@@ -902,7 +902,7 @@ const GROUPS: Group[] = [
   { group: (n) => `${n} apprentices wrote a fall-protection safety test`, did: 'scored lower than', same: 'got the same score as', thing: 'score' },
   { group: (n) => `${n} applicants did a push-up test for a wildland firefighting crew`, did: 'did fewer push-ups than', same: 'did the same number of push-ups as', thing: 'result' },
   { group: (n) => `${n} salespeople worked at a farm equipment dealership last year`, did: 'sold fewer machines than', same: 'sold the same number of machines as', thing: 'sales' },
-  { group: (n) => `${n} students wrote a forklift operator’s written exam in Calgary`, did: 'scored lower than', same: 'got the same score as', thing: 'score' },
+  { group: (n) => `${n} students wrote a forklift operator’s written exam at a training centre`, did: 'scored lower than', same: 'got the same score as', thing: 'score' },
 ];
 
 function prWords(rng: Rng, d: 1 | 3): Out {
@@ -934,7 +934,7 @@ function prWords(rng: Rng, d: 1 | 3): Out {
 interface ListCtx { intro: (n: number) => string; lo: number; hi: number; unit: string; who: (name: string, v: number) => string }
 const LISTS: ListCtx[] = [
   { intro: (n) => `The ${n} apprentices in a class wrote a safety test marked out of 50. Their scores, from least to greatest, are:`, lo: 24, hi: 50, unit: '', who: (name, v) => `${name} scored ${v}` },
-  { intro: (n) => `A hardware store in Brooks recorded the number of customers each day for ${n} days. From least to greatest:`, lo: 62, hi: 118, unit: 'customers', who: (_n, v) => `One day had ${v} customers` },
+  { intro: (n) => `A hardware store in a small town recorded the number of customers each day for ${n} days. From least to greatest:`, lo: 62, hi: 118, unit: 'customers', who: (_n, v) => `One day had ${v} customers` },
   { intro: (n) => `The ${n} trainees in a commercial driving course each did a timed pre-trip inspection. Their scores out of 40, from least to greatest, are:`, lo: 18, hi: 40, unit: '', who: (name, v) => `${name} scored ${v}` },
   { intro: (n) => `A pipeline crew recorded the metres of pipe laid each day for ${n} days. From least to greatest:`, lo: 120, hi: 210, unit: 'm', who: (_n, v) => `One day the crew laid ${v} m` },
 ];
@@ -1008,9 +1008,9 @@ function valueAt(rng: Rng): Out {
 function prTable(rng: Rng): Out {
   const name = rng.pick(NAMES);
   const ctx = rng.pick([
-    { intro: 'The table shows the scores of the workers at a meat-packing plant in Brooks on a 10-question safety quiz.', head: ['Score', 'Number of workers'], lo: 3, hi: 10, who: `${name} scored` },
-    { intro: 'The table shows how many sales calls each agent at a call centre in Calgary closed on Friday.', head: ['Sales closed', 'Number of agents'], lo: 0, hi: 7, who: `${name} closed` },
-    { intro: 'The table shows the number of defects an inspector found in each of the trusses built at a plant in Leduc one week.', head: ['Defects', 'Number of trusses'], lo: 0, hi: 6, who: 'One truss had' },
+    { intro: 'The table shows the scores of the workers at a meat-packing plant on a 10-question safety quiz.', head: ['Score', 'Number of workers'], lo: 3, hi: 10, who: `${name} scored` },
+    { intro: 'The table shows how many sales calls each agent at a call centre closed on Friday.', head: ['Sales closed', 'Number of agents'], lo: 0, hi: 7, who: `${name} closed` },
+    { intro: 'The table shows the number of defects an inspector found in each of the trusses built at a truss plant one week.', head: ['Defects', 'Number of trusses'], lo: 0, hi: 6, who: 'One truss had' },
   ]);
   const o = retry(
     () => {

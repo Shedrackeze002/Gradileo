@@ -86,7 +86,7 @@ const hrs = (n: number) => `$${num(n)}$ hour${n === 1 ? '' : 's'}`;
 const CTXS: Ctx[] = [
   {
     id: 'skid',
-    setup: (n) => `${n} is renting a skid steer from an equipment rental shop in Red Deer.`,
+    setup: (n) => `${n} is renting a skid steer from an equipment rental shop.`,
     rule: (M, B) => `The shop charges a flat fee of ${B} plus ${M} per hour.`,
     y: 'C', x: 'h', yWhat: 'the cost', yIs: 'the cost, $C$, in dollars', xIs: 'the number of hours, $h$', xq: hrs, per: 'hour', money: true, yU: '',
     ms: [35, 40, 45, 50, 55], bs: [40, 50, 60, 75, 80], sign: 1, steps: [1, 2], xMax: () => 12,
@@ -94,7 +94,7 @@ const CTXS: Ctx[] = [
   },
   {
     id: 'taxi',
-    setup: (n) => `${n} takes a taxi from the Calgary airport.`,
+    setup: (n) => `${n} takes a taxi from the airport.`,
     rule: (M, B) => `The fare is ${B} to start plus ${M} per kilometre.`,
     y: 'C', x: 'd', yWhat: 'the fare', yIs: 'the fare, $C$, in dollars', xIs: 'the distance in kilometres, $d$', xq: (n) => `$${num(n)}\\ \\text{km}$`, per: 'kilometre', money: true, yU: '',
     ms: [1.75, 1.95, 2.05, 2.25], bs: [3.8, 4.1, 4.25, 4.5], sign: 1, steps: [5, 10], xMax: () => 50,
@@ -102,7 +102,7 @@ const CTXS: Ctx[] = [
   },
   {
     id: 'driver',
-    setup: (n) => `${n} drives a delivery van in Edmonton.`,
+    setup: (n) => `${n} drives a delivery van in the city.`,
     rule: (M, B, n) => `${n} earns ${B} a day plus ${M} for each package delivered.`,
     y: 'P', x: 'n', yWhat: 'the daily pay', yIs: 'the daily pay, $P$, in dollars', xIs: 'the number of packages, $n$', xq: (n) => `$${num(n)}$ packages`, per: 'package', money: true, yU: '',
     ms: [1.25, 1.5, 1.75, 2], bs: [80, 90, 100, 120], sign: 1, steps: [10, 20, 25], xMax: () => 200,
@@ -110,7 +110,7 @@ const CTXS: Ctx[] = [
   },
   {
     id: 'tractor',
-    setup: () => 'A tractor on a farm near Lacombe starts the day with a full tank of diesel and works at a steady pace.',
+    setup: () => 'A tractor on a grain farm starts the day with a full tank of diesel and works at a steady pace.',
     rule: (M, B) => `The tank holds ${B} and the tractor burns ${M} per hour.`,
     lead: (q) => `After ${q}`,
     y: 'V', x: 'h', yWhat: 'the diesel left in the tank', yIs: 'the diesel left, $V$, in litres', xIs: 'the number of hours worked, $h$', xq: hrs, per: 'hour', money: false, yU: 'L',
@@ -127,7 +127,7 @@ const CTXS: Ctx[] = [
   },
   {
     id: 'plumber',
-    setup: (n) => `${n} calls a plumber in Lethbridge to fix a leaking water line.`,
+    setup: (n) => `${n} calls a plumber to fix a leaking water line.`,
     rule: (M, B) => `The plumber charges a call-out fee of ${B} plus ${M} per hour.`,
     y: 'C', x: 'h', yWhat: 'the cost', yIs: 'the cost, $C$, in dollars', xIs: 'the number of hours, $h$', xq: hrs, per: 'hour', money: true, yU: '',
     ms: [85, 90, 95, 110, 120], bs: [65, 75, 89, 99], sign: 1, steps: [1, 0.5], xMax: () => 10,
@@ -135,7 +135,7 @@ const CTXS: Ctx[] = [
   },
   {
     id: 'concrete',
-    setup: () => 'A contractor in Grande Prairie orders ready-mix concrete for a driveway.',
+    setup: () => 'A contractor orders ready-mix concrete for a driveway.',
     rule: (M, B) => `The supplier charges a delivery fee of ${B} plus ${M} per cubic metre.`,
     y: 'C', x: 'v', yWhat: 'the cost', yIs: 'the cost, $C$, in dollars', xIs: 'the volume in cubic metres, $v$', xq: (n) => `$${num(n)}\\ \\text{m}^3$`, per: 'cubic metre', money: true, yU: '',
     ms: [165, 175, 185, 195, 210], bs: [100, 120, 150, 175], sign: 1, steps: [1, 2], xMax: () => 12,
@@ -143,7 +143,7 @@ const CTXS: Ctx[] = [
   },
   {
     id: 'tank',
-    setup: () => 'A stock tank on a ranch near Brooks is being drained for cleaning.',
+    setup: () => 'A stock tank on a cattle ranch is being drained for cleaning.',
     rule: (M, B) => `It holds ${B} of water at the start and drains at ${M} per minute.`,
     lead: (q) => `After ${q}`,
     y: 'V', x: 't', yWhat: 'the water left in the tank', yIs: 'the water left, $V$, in litres', xIs: 'the time in minutes, $t$', xq: (n) => `$${num(n)}$ minute${n === 1 ? '' : 's'}`, per: 'minute', money: false, yU: 'L',
@@ -623,10 +623,10 @@ function twoFactsEquation(rng: Rng): Out {
 /** d3: Celsius and Fahrenheit. */
 function temperature(rng: Rng): Out {
   const ctx = rng.pick([
-    'A baker in Canmore uses an oven from the United States with a Fahrenheit dial.',
-    'A greenhouse in Brooks has a thermostat that reads in degrees Fahrenheit.',
-    'A mechanic in Medicine Hat reads an engine-temperature gauge in degrees Fahrenheit.',
-    'A cook in Jasper follows a recipe from the United States.',
+    'A baker in a mountain town uses an oven from the United States with a Fahrenheit dial.',
+    'A market-garden greenhouse has a thermostat that reads in degrees Fahrenheit.',
+    'A mechanic at a truck shop reads an engine-temperature gauge in degrees Fahrenheit.',
+    'A cook at a lodge follows a recipe from the United States.',
   ]);
   const toF = rng.chance(0.5);
   const Cv = toF ? rng.pick([-25, -15, -12, 18, 22, 37, 65, 85, 175, 190, 205]) : 0;
@@ -830,10 +830,10 @@ interface FitCtx {
 }
 
 const FITS: FitCtx[] = [
-  { intro: 'A greenhouse in Brooks measured the height of tomato plants each week.', x: 'w', y: 'h', xName: 'the week', yName: 'the height in centimetres', xU: 'weeks', yU: 'cm', m: [4.2, 4.6, 5.3, 5.8], b: [6.5, 8.2, 10.4], xs: [1, 2, 3, 4, 5, 6, 7, 8], noise: 2, dp: 1, xLabel: 'Week', yLabel: 'Height (cm)' },
-  { intro: 'A food truck in Calgary recorded the high temperature and the number of iced drinks sold on several days.', x: 't', y: 'n', xName: 'the high temperature in degrees Celsius', yName: 'the number of iced drinks sold', xU: '°C', yU: 'drinks', m: [6.4, 7.8, 8.5], b: [-22.6, -15.3, -9.8], xs: [14, 16, 18, 20, 22, 24, 26, 28, 30], noise: 8, dp: 0, xLabel: 'High temperature (°C)', yLabel: 'Iced drinks sold' },
-  { intro: 'A welding apprentice in Nisku tracked the length of weld (in centimetres) completed per hour against the weeks of training.', x: 'w', y: 'L', xName: 'the weeks of training', yName: 'the centimetres of weld per hour', xU: 'weeks', yU: 'cm', m: [3.6, 4.1, 4.8], b: [22.5, 25.4, 30.2], xs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], noise: 3, dp: 1, xLabel: 'Weeks of training', yLabel: 'Weld per hour (cm)' },
-  { intro: 'A farmer near Vegreville compared growing-season rainfall with the canola yield on several fields.', x: 'r', y: 'Y', xName: 'the rainfall in millimetres', yName: 'the yield in bushels per acre', xU: 'mm', yU: 'bu/ac', m: [0.12, 0.14, 0.16], b: [8.6, 11.2, 13.5], xs: [150, 175, 200, 225, 250, 275, 300], noise: 2.5, dp: 1, xLabel: 'Rainfall (mm)', yLabel: 'Yield (bu/ac)' },
+  { intro: 'A greenhouse measured the height of tomato plants each week.', x: 'w', y: 'h', xName: 'the week', yName: 'the height in centimetres', xU: 'weeks', yU: 'cm', m: [4.2, 4.6, 5.3, 5.8], b: [6.5, 8.2, 10.4], xs: [1, 2, 3, 4, 5, 6, 7, 8], noise: 2, dp: 1, xLabel: 'Week', yLabel: 'Height (cm)' },
+  { intro: 'A food truck recorded the high temperature and the number of iced drinks sold on several days.', x: 't', y: 'n', xName: 'the high temperature in degrees Celsius', yName: 'the number of iced drinks sold', xU: '°C', yU: 'drinks', m: [6.4, 7.8, 8.5], b: [-22.6, -15.3, -9.8], xs: [14, 16, 18, 20, 22, 24, 26, 28, 30], noise: 8, dp: 0, xLabel: 'High temperature (°C)', yLabel: 'Iced drinks sold' },
+  { intro: 'A welding apprentice tracked the length of weld (in centimetres) completed per hour against the weeks of training.', x: 'w', y: 'L', xName: 'the weeks of training', yName: 'the centimetres of weld per hour', xU: 'weeks', yU: 'cm', m: [3.6, 4.1, 4.8], b: [22.5, 25.4, 30.2], xs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], noise: 3, dp: 1, xLabel: 'Weeks of training', yLabel: 'Weld per hour (cm)' },
+  { intro: 'A farmer compared growing-season rainfall with the canola yield on several fields.', x: 'r', y: 'Y', xName: 'the rainfall in millimetres', yName: 'the yield in bushels per acre', xU: 'mm', yU: 'bu/ac', m: [0.12, 0.14, 0.16], b: [8.6, 11.2, 13.5], xs: [150, 175, 200, 225, 250, 275, 300], noise: 2.5, dp: 1, xLabel: 'Rainfall (mm)', yLabel: 'Yield (bu/ac)' },
 ];
 
 /** d2: use a given line of best fit; say whether it is interpolation or extrapolation. */
@@ -942,7 +942,7 @@ function judgeScenario(rng: Rng, name: string): Judge {
     const t = rng.pick([1.5, 2, 2.5]);
     const days = rng.pick([150, 180, 200]);
     return {
-      text: (n) => `In December, the ice on a lake near Cold Lake got about $${fmt(t)}\\ \\text{cm}$ thicker each day. ${n} extends the trend to predict the ice will be $${num(t * days)}\\ \\text{cm}$ thick $${days}$ days later, in June.`,
+      text: (n) => `In December, the ice on a northern lake got about $${fmt(t)}\\ \\text{cm}$ thicker each day. ${n} extends the trend to predict the ice will be $${num(t * days)}\\ \\text{cm}$ thick $${days}$ days later, in June.`,
       reasonable: false,
       why: 'the ice stops thickening and melts in spring, so the December trend does not hold until June',
       calc: `$${fmt(t)} \\times ${days} = ${num(t * days)}\\ \\text{cm}$, about $${num((t * days) / 100)}\\ \\text{m}$ of ice in June`,

@@ -925,7 +925,7 @@ function kiteAngles(rng: Rng): GenOutput {
   const angA = r.a;
   const angC = r.c;
   const pts = kitePts(angA, angC);
-  const thing = rng.pick(['a kite-shaped stained-glass panel', 'a kite-shaped floor tile', 'the frame of a kite for a festival in Medicine Hat', 'a kite-shaped sign']);
+  const thing = rng.pick(['a kite-shaped stained-glass panel', 'a kite-shaped floor tile', 'the frame of a kite for a summer kite festival', 'a kite-shaped sign']);
   return {
     prompt: `${rng.pick(NAMES)} is making ${thing}. Kite $${N.join('')}$ has $${N[0]}${N[1]} = ${N[0]}${N[3]}$ and $${N[2]}${N[1]} = ${N[2]}${N[3]}$. If $\\angle ${N[0]} = ${deg(angA)}$ and $\\angle ${N[2]} = ${deg(angC)}$, find $\\angle ${N[1]}$.`,
     figure: quadFigure({ pts, names: N, angles: [degL(angA), '?', degL(angC), null], ticks: [[0, 1, 1], [0, 3, 1], [2, 1, 2], [2, 3, 2]] }),
@@ -1525,7 +1525,7 @@ function tilingGap(rng: Rng): GenOutput {
   const listText = list.length === 1 ? list[0] : `${list.slice(0, -1).join(', ')} and ${list[list.length - 1]}`;
   const who = rng.pick(NAMES);
   return {
-    prompt: `${who} is designing a tile pattern for a restaurant floor in Edmonton. At one corner, ${listText} meet, with no overlaps. (a) What angle is left to fill at that corner? (b) A regular polygon will fill the gap exactly. How many sides does it have?`,
+    prompt: `${who} is designing a tile pattern for a restaurant floor. At one corner, ${listText} meet, with no overlaps. (a) What angle is left to fill at that corner? (b) A regular polygon will fill the gap exactly. How many sides does it have?`,
     figure: vertexFigure(st.ns, '?'),
     parts: [numPart(gap, { label: '(a)', suffix: '°' }), numPart(st.fill, { label: '(b)', suffix: 'sides' })],
     hints: ['Find the interior angle of each regular polygon. The angles around a point add to $360^\\circ$.', 'For (b), find the regular polygon whose interior angle equals the gap: its exterior angle is $180^\\circ$ minus the gap.'],

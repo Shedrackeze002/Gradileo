@@ -154,7 +154,7 @@ interface BarCtx {
 
 const BAR_CTX: BarCtx[] = [
   {
-    intro: 'The bar graph shows the vehicles an auto shop in Red Deer serviced last month.',
+    intro: 'The bar graph shows the vehicles an auto shop serviced last month.',
     cats: ['Cars', 'Pickups', 'SUVs', 'Vans', 'Semis'],
     words: ['cars', 'pickups', 'SUVs', 'vans', 'semis'],
     label: 'Vehicles serviced', cl: 'Type of vehicle', steps: [10, 20], lo: 1, hi: 9, unit: 'vehicles',
@@ -163,7 +163,7 @@ const BAR_CTX: BarCtx[] = [
     pct: (w) => `What percent of the vehicles serviced were ${w}?`,
   },
   {
-    intro: 'The bar graph shows the bags of seed a farm supply store in Camrose sold in April.',
+    intro: 'The bar graph shows the bags of seed a farm supply store sold in April.',
     cats: ['Wheat', 'Canola', 'Barley', 'Oats', 'Peas'],
     words: ['wheat', 'canola', 'barley', 'oat', 'pea'],
     label: 'Bags sold', cl: 'Seed', steps: [10, 20, 50], lo: 1, hi: 9, unit: 'bags',
@@ -172,7 +172,7 @@ const BAR_CTX: BarCtx[] = [
     pct: (w) => `What percent of the bags sold were ${w} seed?`,
   },
   {
-    intro: 'The bar graph shows the service calls a plumbing company in Lethbridge answered last month.',
+    intro: 'The bar graph shows the service calls a plumbing company answered last month.',
     cats: ['Leaks', 'Drains', 'Water heaters', 'Toilets', 'Sump pumps'],
     words: ['leak', 'drain', 'water heater', 'toilet', 'sump pump'],
     label: 'Service calls', cl: 'Type of call', steps: [5, 10], lo: 1, hi: 9, unit: 'calls',
@@ -181,7 +181,7 @@ const BAR_CTX: BarCtx[] = [
     pct: (w) => `What percent of the calls were ${w} calls?`,
   },
   {
-    intro: 'The bar graph shows how many customers a tire shop in Grande Prairie served each day last week.',
+    intro: 'The bar graph shows how many customers a tire shop served each day last week.',
     cats: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     words: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     label: 'Customers', cl: 'Day', steps: [5, 10], lo: 2, hi: 9, unit: 'customers',
@@ -190,7 +190,7 @@ const BAR_CTX: BarCtx[] = [
     pct: (w) => `What percent of the week’s customers came on ${w}?`,
   },
   {
-    intro: 'The bar graph shows the hours each apprentice at an electrical contractor in Edmonton worked last month.',
+    intro: 'The bar graph shows the hours each apprentice at an electrical contractor worked last month.',
     cats: ['Aisha', 'Ben', 'Carlos', 'Dana', 'Emeka'],
     words: ['Aisha', 'Ben', 'Carlos', 'Dana', 'Emeka'],
     label: 'Hours worked', cl: 'Apprentice', steps: [20], lo: 4, hi: 9, unit: 'hours',
@@ -199,7 +199,7 @@ const BAR_CTX: BarCtx[] = [
     pct: (w) => `What percent of all the hours did ${w} work?`,
   },
   {
-    intro: 'The bar graph shows how many litres of each kind of fuel a gas station in Brooks sold on Saturday.',
+    intro: 'The bar graph shows how many litres of each kind of fuel a highway gas station sold on Saturday.',
     cats: ['Regular', 'Mid-grade', 'Premium', 'Diesel'],
     words: ['regular gas', 'mid-grade gas', 'premium gas', 'diesel'],
     label: 'Fuel sold (L)', cl: 'Fuel', steps: [500, 1000], lo: 1, hi: 9, unit: 'L',
@@ -327,31 +327,31 @@ interface PieCtx {
 
 const PIES: PieCtx[] = [
   {
-    intro: (_n, t) => `A gas plant near Fort Saskatchewan asked its $${num(t)}$ workers how they get to work. The circle graph shows the results.`,
+    intro: (_n, t) => `A gas plant outside the city asked its $${num(t)}$ workers how they get to work. The circle graph shows the results.`,
     cats: ['Drive alone', 'Carpool', 'Bus', 'Bike', 'Walk'],
     words: ['drive alone', 'carpool', 'take the bus', 'bike', 'walk'],
     top: 60, t1: [200, 400, 500, 600], t2: [250, 360, 450, 640, 850], unit: 'workers',
     ask: (w) => `How many workers ${w} to work?`,
     pct: (w) => `What percent of the workers ${w} to work?`,
-    counts: 'A gas plant near Fort Saskatchewan asked its workers how they get to work. The circle graph shows how many workers chose each way.',
+    counts: 'A gas plant outside the city asked its workers how they get to work. The circle graph shows how many workers chose each way.',
   },
   {
-    intro: (_n, t) => `A farm near Lethbridge has $${num(t)}$ hectares of land. The circle graph shows how the land is used.`,
+    intro: (_n, t) => `A grain farm has $${num(t)}$ hectares of land. The circle graph shows how the land is used.`,
     cats: ['Wheat', 'Canola', 'Barley', 'Hay', 'Pasture'],
     words: ['wheat', 'canola', 'barley', 'hay', 'pasture'],
     top: 60, t1: [400, 500, 800, 1000], t2: [640, 720, 960, 1250], unit: 'ha',
     ask: (w) => `How many hectares are used for ${w}?`,
     pct: (w) => `What percent of the land is used for ${w}?`,
-    counts: 'The circle graph shows how many hectares of a farm near Lethbridge are used for each crop.',
+    counts: 'The circle graph shows how many hectares of a grain farm are used for each crop.',
   },
   {
-    intro: (_n, t) => `A towing company in Calgary answered $${num(t)}$ calls in January. The circle graph shows the reasons for the calls.`,
+    intro: (_n, t) => `A towing company in the city answered $${num(t)}$ calls in January. The circle graph shows the reasons for the calls.`,
     cats: ['Dead battery', 'Stuck in snow', 'Flat tire', 'Lockout', 'Collision'],
     words: ['dead batteries', 'vehicles stuck in snow', 'flat tires', 'lockouts', 'collisions'],
     top: 50, t1: [200, 300, 400, 500], t2: [240, 350, 480, 650], unit: 'calls',
     ask: (w) => `How many calls were for ${w}?`,
     pct: (w) => `What percent of the calls were for ${w}?`,
-    counts: 'The circle graph shows how many calls a towing company in Calgary answered for each reason in January.',
+    counts: 'The circle graph shows how many calls a towing company in the city answered for each reason in January.',
   },
   {
     intro: (name, t) => `${name} is an apprentice welder who takes home ${money(t)} a month. The circle graph shows ${name}’s monthly budget.`,
@@ -364,7 +364,7 @@ const PIES: PieCtx[] = [
     counts: '',
   },
   {
-    intro: (_n, t) => `A hardware store in Camrose sold ${money(t)} worth of goods on Saturday. The circle graph shows the sales for each department.`,
+    intro: (_n, t) => `A hardware store sold ${money(t)} worth of goods on Saturday. The circle graph shows the sales for each department.`,
     cats: ['Lumber', 'Tools', 'Paint', 'Plumbing', 'Garden'],
     words: ['lumber', 'tools', 'paint', 'plumbing', 'garden'],
     top: 55, t1: [5000, 10000, 20000], t2: [12400, 18600, 9450], money: true, unit: '',
@@ -500,10 +500,10 @@ function pieFromAngle(rng: Rng, name: string): Out {
 }
 
 const ANGLE_CTX = [
-  { intro: 'A hiring manager in Calgary sorted the job applications for an apprentice position by the applicant’s trade.', head: 'Trade', cats: ['Electrician', 'Plumber', 'Welder', 'Carpenter', 'Mechanic'] },
-  { intro: 'A diner in Wetaskiwin counted the breakfasts it sold on Sunday.', head: 'Breakfast', cats: ['Pancakes', 'Eggs and toast', 'Omelette', 'Waffles', 'Oatmeal'] },
-  { intro: 'A car dealership in Leduc counted the colours of the trucks on its lot.', head: 'Colour', cats: ['White', 'Black', 'Grey', 'Red', 'Blue'] },
-  { intro: 'A school in Okotoks asked Grade 11 students which trade course they want to take next year.', head: 'Course', cats: ['Construction', 'Automotive', 'Cosmetology', 'Culinary arts', 'Welding'] },
+  { intro: 'A hiring manager at a construction firm sorted the job applications for an apprentice position by the applicant’s trade.', head: 'Trade', cats: ['Electrician', 'Plumber', 'Welder', 'Carpenter', 'Mechanic'] },
+  { intro: 'A small-town diner counted the breakfasts it sold on Sunday.', head: 'Breakfast', cats: ['Pancakes', 'Eggs and toast', 'Omelette', 'Waffles', 'Oatmeal'] },
+  { intro: 'A car dealership counted the colours of the trucks on its lot.', head: 'Colour', cats: ['White', 'Black', 'Grey', 'Red', 'Blue'] },
+  { intro: 'A high school asked Grade 11 students which trade course they want to take next year.', head: 'Course', cats: ['Construction', 'Automotive', 'Cosmetology', 'Culinary arts', 'Welding'] },
 ];
 
 function countsAngle(rng: Rng): Out {
@@ -617,32 +617,32 @@ interface HistCtx {
 
 const HIST_CTX: HistCtx[] = [
   {
-    intro: 'A sporting goods store in Calgary recorded the age of each customer one Saturday morning.',
+    intro: 'A sporting goods store recorded the age of each customer one Saturday morning.',
     who: 'customers', label: 'Number of customers', cl: 'Age (years)', start: 10, w: 10, k: 6, data: 'ages',
     inRange: (a, b) => `were aged ${a} to ${b}`, atLeast: (x) => `were ${x} or older`, under: (x) => `were younger than ${x}`,
   },
   {
-    intro: 'A grocery store in Airdrie recorded the hours each part-time employee worked last week.',
+    intro: 'A grocery store recorded the hours each part-time employee worked last week.',
     who: 'employees', label: 'Number of employees', cl: 'Hours worked', start: 5, w: 5, k: 6, data: 'hours',
     inRange: (a, b) => `worked ${a} to ${b} hours`, atLeast: (x) => `worked ${x} hours or more`, under: (x) => `worked fewer than ${x} hours`,
   },
   {
-    intro: 'A rancher near Pincher Creek recorded the birth mass of each calf this spring, in kilograms.',
+    intro: 'A rancher recorded the birth mass of each calf this spring, in kilograms.',
     who: 'calves', label: 'Number of calves', cl: 'Birth mass (kg)', start: 25, w: 5, k: 5, data: 'masses',
     inRange: (a, b) => `had a birth mass of ${a} kg to ${b} kg`, atLeast: (x) => `had a birth mass of ${x} kg or more`, under: (x) => `had a birth mass under ${x} kg`,
   },
   {
-    intro: 'A plant near Fort Saskatchewan asked its workers how many minutes their drive to work takes.',
+    intro: 'A chemical plant outside the city asked its workers how many minutes their drive to work takes.',
     who: 'workers', label: 'Number of workers', cl: 'Commute (minutes)', start: 0, w: 10, k: 6, data: 'commute times',
     inRange: (a, b) => `have a commute of ${a} to ${b} minutes`, atLeast: (x) => `have a commute of ${x} minutes or more`, under: (x) => `have a commute of less than ${x} minutes`,
   },
   {
-    intro: 'A safety school in Nisku recorded the score of each trainee on a 50-question forklift test.',
+    intro: 'A safety training school recorded the score of each trainee on a 50-question forklift test.',
     who: 'trainees', label: 'Number of trainees', cl: 'Score', start: 25, w: 5, k: 5, data: 'scores',
     inRange: (a, b) => `scored ${a} to ${b}`, atLeast: (x) => `scored ${x} or more`, under: (x) => `scored less than ${x}`,
   },
   {
-    intro: 'A feedlot near Brooks weighed a pen of steers, in kilograms.',
+    intro: 'A cattle feedlot weighed a pen of steers, in kilograms.',
     who: 'steers', label: 'Number of steers', cl: 'Mass (kg)', start: 400, w: 50, k: 5, data: 'masses',
     inRange: (a, b) => `had a mass of ${a} kg to ${b} kg`, atLeast: (x) => `had a mass of ${x} kg or more`, under: (x) => `had a mass under ${x} kg`,
   },
@@ -929,13 +929,13 @@ interface LineCtx {
 
 const LINES: LineCtx[] = [
   {
-    intro: () => 'The line graph shows the temperature in Lethbridge on a summer day. The times use the 24-hour clock.',
+    intro: () => 'The line graph shows the temperature in Riverton on a summer day. The times use the 24-hour clock.',
     xs: [6, 8, 10, 12, 14, 16, 18], xStep: 2, xLabel: 'Time of day (h)', yLabel: 'Temperature (°C)',
     yStep: 4, yTop: 32, vLo: 12, vHi: 30, shape: 'hill', unit: '°C',
     when: (x) => `at ${x}:00`, ask: 'What was the temperature', what: 'the temperature', per: 'hour',
   },
   {
-    intro: () => 'The line graph shows the natural gas a house in Edmonton used each month last year, in gigajoules (GJ).',
+    intro: () => 'The line graph shows the natural gas a house in a city with cold winters used each month last year, in gigajoules (GJ).',
     xs: keys(12).map((i) => i + 1), xStep: 1, xLabel: 'Month (1 = January)', yLabel: 'Gas used (GJ)',
     yStep: 2, yTop: 24, vLo: 2, vHi: 22, shape: 'valley', unit: 'GJ',
     when: (x) => `in ${MONTHS[x - 1]}`, ask: 'How much gas did the house use', what: 'the gas used', per: 'month',
@@ -947,19 +947,19 @@ const LINES: LineCtx[] = [
     when: (x) => (x === 0 ? 'at birth' : `at week ${x}`), ask: 'What was the calf’s mass', what: 'the calf’s mass', per: 'week',
   },
   {
-    intro: () => 'A rancher near Hanna measured the depth of the water in a stock-watering dugout each week during a dry summer.',
+    intro: () => 'A rancher measured the depth of the water in a stock-watering dugout each week during a dry summer.',
     xs: [0, 1, 2, 3, 4, 5, 6], xStep: 1, xLabel: 'Week', yLabel: 'Water depth (cm)',
     yStep: 20, yTop: 260, vLo: 40, vHi: 240, shape: 'down', unit: 'cm',
     when: (x) => (x === 0 ? 'at the start' : `at week ${x}`), ask: 'How deep was the water', what: 'the water depth', per: 'week',
   },
   {
-    intro: () => 'The line graph shows how many campsites were booked each month at a campground near Canmore.',
+    intro: () => 'The line graph shows how many campsites were booked each month at a campground in the mountains.',
     xs: [5, 6, 7, 8, 9, 10], xStep: 1, xLabel: 'Month (5 = May)', yLabel: 'Campsites booked',
     yStep: 20, yTop: 220, vLo: 20, vHi: 200, shape: 'hill', unit: 'campsites',
     when: (x) => `in ${MONTHS[x - 1]}`, ask: 'How many campsites were booked', what: 'the number of campsites booked', per: 'month',
   },
   {
-    intro: () => 'The line graph shows the depth of the snow at a ski hill near Pincher Creek at the start of each week in spring.',
+    intro: () => 'The line graph shows the depth of the snow at a small ski hill at the start of each week in spring.',
     xs: [0, 1, 2, 3, 4, 5, 6], xStep: 1, xLabel: 'Week', yLabel: 'Snow depth (cm)',
     yStep: 20, yTop: 200, vLo: 20, vHi: 180, shape: 'down', unit: 'cm',
     when: (x) => (x === 0 ? 'at the start' : `at week ${x}`), ask: 'How deep was the snow', what: 'the snow depth', per: 'week',
@@ -1157,7 +1157,7 @@ interface LinCtx {
 
 const LIN_CTX: LinCtx[] = [
   {
-    intro: () => 'A generator at a well site near Drayton Valley burns diesel at a steady rate. The line graph shows the diesel left in its tank.',
+    intro: () => 'A generator at a remote well site burns diesel at a steady rate. The line graph shows the diesel left in its tank.',
     xLabel: 'Time (h)', yLabel: 'Diesel in tank (L)', yStep: 20, v0: [200, 220, 240, 260, 280], rates: [10, 20, 30], sign: -1, unit: 'L', per: 'hour',
     when: (x) => (x === 0 ? 'at the start' : `after ${x} hour${x === 1 ? '' : 's'}`), what: 'the diesel in the tank',
     ask: (w) => `how much diesel will be left in the tank ${w}`,
@@ -1173,7 +1173,7 @@ const LIN_CTX: LinCtx[] = [
     targets: keys(30).map((i) => 100 + 5 * i),
   },
   {
-    intro: () => 'A truck driver leaves Calgary and drives north on the highway at a steady speed. The line graph shows the distance travelled.',
+    intro: () => 'A truck driver leaves Riverton and drives north on the highway at a steady speed. The line graph shows the distance travelled.',
     xLabel: 'Time (h)', yLabel: 'Distance (km)', yStep: 50, v0: [0], rates: [75, 100], sign: 1, unit: 'km', per: 'hour',
     when: (x) => (x === 0 ? 'at the start' : `after ${x} hour${x === 1 ? '' : 's'}`), what: 'the distance travelled',
     ask: (w) => `how far will the driver have travelled ${w}`,
@@ -1189,7 +1189,7 @@ const LIN_CTX: LinCtx[] = [
     targets: [1500, 2000, 2500, 3000],
   },
   {
-    intro: () => 'An auger fills a grain bin near Vegreville at a steady rate. The line graph shows the wheat in the bin.',
+    intro: () => 'An auger fills a grain bin on a farm at a steady rate. The line graph shows the wheat in the bin.',
     xLabel: 'Time (h)', yLabel: 'Wheat in bin (t)', yStep: 10, v0: [0, 10, 20], rates: [5, 10, 15], sign: 1, unit: 't', per: 'hour',
     when: (x) => (x === 0 ? 'at the start' : `after ${x} hour${x === 1 ? '' : 's'}`), what: 'the wheat in the bin',
     ask: (w) => `how many tonnes of wheat will be in the bin ${w}`,
@@ -1299,9 +1299,9 @@ const GWHY: Record<GType, string> = {
 const SCENARIOS: Record<GType, string[]> = {
   bar: [
     'the number of trucks of each brand in a company’s fleet',
-    'the number of students in each trade program at a college in Red Deer',
+    'the number of students in each trade program at a college',
     'how many of each kind of power tool a hardware store sold last month',
-    'the number of each breed of cattle on a ranch near Medicine Hat',
+    'the number of each breed of cattle on a ranch',
     'the number of apprentices in each trade at a construction company',
     'the number of vehicles of each colour in a parking lot',
   ],
@@ -1313,7 +1313,7 @@ const SCENARIOS: Record<GType, string[]> = {
     'how a household’s energy bill is split among heating, hot water, lights and appliances',
   ],
   line: [
-    'the temperature in Red Deer every hour for one day',
+    'the temperature in a town every hour for one day',
     'a calf’s mass at the end of each week for ten weeks',
     'the number of apprentices a company hired each year from 2015 to 2025',
     'the water level in a reservoir on the first day of each month for a year',
@@ -1372,11 +1372,11 @@ interface Trunc {
 /** A bar graph whose vertical axis starts well above 0, drawn on a plane with the bars as rectangles. */
 function truncGraph(rng: Rng): Trunc {
   const ctx = rng.pick([
-    { intro: 'A truck dealership in Red Deer made this graph of the pickups it sold each year.', base: 90, step: 2, what: 'Pickups sold', unit: 'pickups' },
-    { intro: 'A gym in Medicine Hat put this graph of its members on a poster.', base: 450, step: 10, what: 'Members', unit: 'members' },
-    { intro: 'A bakery in Camrose made this graph of the loaves of bread it sold each year.', base: 1800, step: 40, what: 'Loaves sold', unit: 'loaves' },
-    { intro: 'An oilfield services company in Grande Prairie made this graph of the wells it serviced each year.', base: 300, step: 5, what: 'Wells serviced', unit: 'wells' },
-    { intro: 'A hotel in Jasper made this graph of the rooms it booked each July.', base: 180, step: 4, what: 'Rooms booked', unit: 'rooms' },
+    { intro: 'A truck dealership made this graph of the pickups it sold each year.', base: 90, step: 2, what: 'Pickups sold', unit: 'pickups' },
+    { intro: 'A gym put this graph of its members on a poster.', base: 450, step: 10, what: 'Members', unit: 'members' },
+    { intro: 'A bakery made this graph of the loaves of bread it sold each year.', base: 1800, step: 40, what: 'Loaves sold', unit: 'loaves' },
+    { intro: 'An oilfield services company made this graph of the wells it serviced each year.', base: 300, step: 5, what: 'Wells serviced', unit: 'wells' },
+    { intro: 'A hotel in a mountain park made this graph of the rooms it booked each July.', base: 180, step: 4, what: 'Rooms booked', unit: 'rooms' },
   ]);
   const xs = [2021, 2022, 2023, 2024];
   const vs = retry(
@@ -1409,10 +1409,10 @@ interface Uneven {
 /** Steady yearly growth shown at uneven years with evenly spaced bars. */
 function unevenGraph(rng: Rng): Uneven {
   const ctx = rng.pick([
-    { intro: 'A town council near Edmonton made this bar graph of the town’s population.', what: 'population', label: 'Population', v0: [2000, 2400, 3000], g: [40, 50, 60, 80], unit: 'people' },
-    { intro: 'A curling club in Olds made this bar graph of its members.', what: 'number of members', label: 'Members', v0: [100, 120, 150], g: [2, 3, 4, 5], unit: 'members' },
-    { intro: 'A county in southern Alberta made this bar graph of the electric vehicles registered there.', what: 'number of electric vehicles', label: 'Electric vehicles', v0: [20, 40, 60], g: [10, 15, 20], unit: 'vehicles' },
-    { intro: 'A trucking company in Nisku made this bar graph of the trucks in its fleet.', what: 'number of trucks', label: 'Trucks', v0: [10, 12, 15], g: [2, 3, 4], unit: 'trucks' },
+    { intro: 'A town council near a big city made this bar graph of the town’s population.', what: 'population', label: 'Population', v0: [2000, 2400, 3000], g: [40, 50, 60, 80], unit: 'people' },
+    { intro: 'A curling club made this bar graph of its members.', what: 'number of members', label: 'Members', v0: [100, 120, 150], g: [2, 3, 4, 5], unit: 'members' },
+    { intro: 'A rural county made this bar graph of the electric vehicles registered there.', what: 'number of electric vehicles', label: 'Electric vehicles', v0: [20, 40, 60], g: [10, 15, 20], unit: 'vehicles' },
+    { intro: 'A trucking company made this bar graph of the trucks in its fleet.', what: 'number of trucks', label: 'Trucks', v0: [10, 12, 15], g: [2, 3, 4], unit: 'trucks' },
   ]);
   const years = rng.pick([
     [2000, 2010, 2020, 2022, 2024],

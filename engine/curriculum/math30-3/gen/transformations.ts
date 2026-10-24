@@ -457,13 +457,13 @@ function orientation(pts: P[]): number {
 // ---------------------------------------------------------------------------
 
 const POINT_CTX = [
-  'A CNC plasma cutter in a Nisku fabrication shop uses a coordinate grid to cut steel plate. The torch is at point $P$.',
-  'On a grid plan of a warehouse in Acheson, a pallet of shingles sits at point $P$.',
-  'A sign maker in Lethbridge is laying out a logo on a coordinate grid. One corner of a letter is at point $P$.',
-  'On a landscape plan for a yard in Okotoks, a spruce tree is planted at point $P$.',
+  'A CNC plasma cutter in a fabrication shop uses a coordinate grid to cut steel plate. The torch is at point $P$.',
+  'On a grid plan of a building-supply warehouse, a pallet of shingles sits at point $P$.',
+  'A sign maker is laying out a logo on a coordinate grid. One corner of a letter is at point $P$.',
+  'On a landscape plan for a back yard, a spruce tree is planted at point $P$.',
   'A drafter is drawing a mounting plate in CAD software. A bolt hole is centred at point $P$.',
-  'On a tile layout for a kitchen floor in Red Deer, the corner of a feature tile is at point $P$.',
-  'A robot arm on an assembly line in Edmonton picks up parts from a grid. The gripper is at point $P$.',
+  'On a tile layout for a kitchen floor, the corner of a feature tile is at point $P$.',
+  'A robot arm on an assembly line picks up parts from a grid. The gripper is at point $P$.',
 ];
 
 function translatePoint(rng: Rng): Out {
@@ -1063,7 +1063,7 @@ function modelItem(rng: Rng): Out {
 function planArea(rng: Rng): Out {
   const mode = rng.pick(['plan', 'plan', 'copy', 'model'] as const);
   const room = rng.pick(['a living room', 'a shop floor', 'a garage', 'a classroom', 'a restaurant kitchen', 'a bedroom']);
-  const place = rng.pick(['Airdrie', 'Camrose', 'Fort McMurray', 'Medicine Hat', 'Cochrane', 'Leduc']);
+  const place = rng.pick(['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Westbury']);
   if (mode === 'plan') {
     const n = rng.pick([50, 100, 200]);
     // Plan lengths in tenths of a centimetre giving real lengths of 3 m to 15 m.

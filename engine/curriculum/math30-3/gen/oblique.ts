@@ -13,7 +13,7 @@ const NAMES = [
   'Olivia', 'Ethan', 'Wei', 'Nadia', 'Darius', 'Talia', 'Malik', 'Simran', 'Jun', 'Isabelle', 'Kai', 'Zainab', 'Mason',
   'Grace', 'Emeka', 'Rosa', 'Dakota', 'Arjun', 'Hana', 'Lucas', 'Kiona', 'Tyler', 'Gurpreet', 'Noor',
 ];
-const TOWNS = ['Camrose', 'Lacombe', 'Vegreville', 'Olds', 'Wetaskiwin', 'Ponoka', 'Stettler', 'Drumheller', 'Athabasca', 'Barrhead', 'Vermilion', 'Taber', 'Brooks', 'Whitecourt'];
+const TOWNS = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Elmwood', 'Cedar Hills', 'Oakdale', 'Fernbrook'];
 
 type Unit = 'mm' | 'cm' | 'm' | 'km' | 'ft';
 const UNIT_NAME: Record<Unit, string> = { mm: 'millimetre', cm: 'centimetre', m: 'metre', km: 'kilometre', ft: 'foot' };
@@ -1116,7 +1116,7 @@ const trussSpan: Ctx = (rng) => {
 };
 
 const pipeline: Ctx = (rng) => {
-  const place = rng.pick(['Drayton Valley', 'Grande Prairie', 'Lloydminster', 'Slave Lake', 'Brooks']);
+  const place = rng.pick(['Pinewood', 'Stonebridge', 'Clearwater', 'Ashford', 'Westbury']);
   return sasContext(rng, {
     verts: ['B', 'A', 'C'],
     names: ['AC', 'BC', 'AB'],
@@ -1156,10 +1156,10 @@ const lot: Ctx = (rng) => {
 };
 
 const STATIONS = [
-  { what: 'Two fire lookout towers', each: 'tower', a: 'A', b: 'B', c: 'F', target: 'a column of smoke', obj: 'The fire', u: 'km' as Unit, lo: 8, hi: 25, place: 'in the foothills west of Sundre' },
-  { what: 'Two lifeguard towers', each: 'tower', a: 'A', b: 'B', c: 'S', target: 'a swimmer who needs help', obj: 'The swimmer', u: 'm' as Unit, lo: 80, hi: 260, place: 'on a beach at Sylvan Lake' },
-  { what: 'Two gas-leak monitoring stations', each: 'station', a: 'A', b: 'B', c: 'L', target: 'a gas leak', obj: 'The leak', u: 'km' as Unit, lo: 2, hi: 9, place: 'at a gas plant near Fox Creek' },
-  { what: 'Two survey stations', each: 'station', a: 'A', b: 'B', c: 'T', target: 'a transmission tower on the far bank', obj: 'The tower', u: 'm' as Unit, lo: 150, hi: 600, place: 'on the bank of the North Saskatchewan River' },
+  { what: 'Two fire lookout towers', each: 'tower', a: 'A', b: 'B', c: 'F', target: 'a column of smoke', obj: 'The fire', u: 'km' as Unit, lo: 8, hi: 25, place: 'in the foothills' },
+  { what: 'Two lifeguard towers', each: 'tower', a: 'A', b: 'B', c: 'S', target: 'a swimmer who needs help', obj: 'The swimmer', u: 'm' as Unit, lo: 80, hi: 260, place: 'on a lake beach' },
+  { what: 'Two gas-leak monitoring stations', each: 'station', a: 'A', b: 'B', c: 'L', target: 'a gas leak', obj: 'The leak', u: 'km' as Unit, lo: 2, hi: 9, place: 'at a gas plant' },
+  { what: 'Two survey stations', each: 'station', a: 'A', b: 'B', c: 'T', target: 'a transmission tower on the far bank', obj: 'The tower', u: 'm' as Unit, lo: 150, hi: 600, place: 'on the bank of a wide river' },
 ];
 
 /** ASA: two stations a known distance apart sight the same object (third angle first). */
@@ -1212,7 +1212,7 @@ const SSS_STORIES = [
     },
     check: () => true,
     story: (who: string, s: number[]) =>
-      `${who} operates a crane on a building site in Calgary. The boom $PT$ is $${ms(s[2], 'm')}$ long from its pivot $P$ to its tip $T$. A cable runs from the tip to a winch $W$ on the crane body, $${ms(s[1], 'm')}$ from the pivot, and the cable $TW$ is $${ms(s[0], 'm')}$ long. What angle does the boom make with the line $PW$ (the angle $\\angle TPW$)`,
+      `${who} operates a crane on a building site downtown. The boom $PT$ is $${ms(s[2], 'm')}$ long from its pivot $P$ to its tip $T$. A cable runs from the tip to a winch $W$ on the crane body, $${ms(s[1], 'm')}$ from the pivot, and the cable $TW$ is $${ms(s[0], 'm')}$ long. What angle does the boom make with the line $PW$ (the angle $\\angle TPW$)`,
     answer: (x: string) => `The boom makes an angle of about $${x}$ with $PW$.`,
   },
   {
@@ -1285,9 +1285,9 @@ const sssStory: Ctx = (rng) => {
 const navigation: Ctx = (rng) => {
   const who = rng.pick(NAMES);
   const v = rng.pick([
-    { S: 'D', lo: 3, hi: 15, intro: (p: string) => `${who} drives a survey boat from a dock $D$ on ${rng.pick(['Lac La Biche', 'Pigeon Lake', 'Lesser Slave Lake', 'Cold Lake'])}. The boat travels ${p} in a straight line to point $T$`, again: 'travels' },
-    { S: 'A', lo: 25, hi: 90, intro: (p: string) => `${who} flies a float plane from a lake $A$ in northern Alberta. The plane flies ${p} in a straight line to point $T$`, again: 'flies' },
-    { S: 'H', lo: 4, hi: 18, intro: (p: string) => `${who} leaves a trailhead $H$ near Grande Cache on a snowmobile and rides ${p} in a straight line to point $T$`, again: 'rides' },
+    { S: 'D', lo: 3, hi: 15, intro: (p: string) => `${who} drives a survey boat from a dock $D$ on ${rng.pick(['Clearwater Lake', 'Silver Lake', 'Willow Lake', 'Crane Lake'])}. The boat travels ${p} in a straight line to point $T$`, again: 'travels' },
+    { S: 'A', lo: 25, hi: 90, intro: (p: string) => `${who} flies a float plane from a lake $A$ in the far north. The plane flies ${p} in a straight line to point $T$`, again: 'flies' },
+    { S: 'H', lo: 4, hi: 18, intro: (p: string) => `${who} leaves a trailhead $H$ in the mountains on a snowmobile and rides ${p} in a straight line to point $T$`, again: 'rides' },
     { S: 'W', lo: 2, hi: 9, intro: (p: string) => `A pipeline inspection drone leaves a well site $W$ and flies ${p} in a straight line to point $T$`, again: 'flies' },
   ]);
   const r = retry(
