@@ -46,6 +46,57 @@
       }
     ]
   },
+  "c10-2-1-b": {
+    "lessonId": "c10-2-1",
+    "title": "Inside the Atom, Part 2: Mostly Empty Space",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The gold foil experiment",
+        "t": 17.026
+      },
+      {
+        "title": "A pea in a stadium",
+        "t": 61.291
+      },
+      {
+        "title": "Why an atom has no charge",
+        "t": 94.734
+      },
+      {
+        "title": "Neutrons do not cancel the charge",
+        "t": 134.772
+      },
+      {
+        "title": "Your turn",
+        "t": 158.787
+      },
+      {
+        "title": "Summary",
+        "t": 193.787
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-1-b:q",
+        "t": 171.579,
+        "prompt": "The nucleus of an atom of fluorine contains $9$ protons and $10$ neutrons. What is the relative charge of the nucleus?",
+        "choices": [
+          "$+19$",
+          "$0$",
+          "$+9$",
+          "$-9$"
+        ],
+        "answer": 2,
+        "working": "The $9$ protons give $9 \\times (+1) = +9$. The $10$ neutrons have no charge, so they add nothing. The nucleus has a relative charge of $+9$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
