@@ -27,7 +27,9 @@ test('a teacher makes a Grade 11 Chemistry class from the Chemistry tab and teac
   await page.goto('/t/new-class');
   await expect(page.getByRole('button', { name: /^Grade 11 Chemistry/ })).toHaveCount(0);
   await page.getByRole('tab', { name: 'Chemistry' }).click();
-  await expect(page.getByRole('button', { name: /^Grade 11 Chemistry/ })).toBeVisible();
+  // The tab opens on the first chemistry course, Grade 10; Grade 11 is beside it.
+  await expect(page.getByLabel('Class name')).toHaveValue('Chemistry 10');
+  await page.getByRole('button', { name: /^Grade 11 Chemistry/ }).click();
   await expect(page.getByLabel('Class name')).toHaveValue('Chemistry 11');
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
@@ -40,7 +42,7 @@ test('a teacher makes a Grade 11 Chemistry class from the Chemistry tab and teac
   expect(errors).toEqual([]);
 });
 
-test('a student who chooses chemistry is placed in Grade 11 Chemistry', async ({ page }) => {
+test('a Grade 10 student who chooses chemistry starts Grade 10 Chemistry, and a Grade 11 student is offered a check first', async ({ page }) => {
   const errors = trackErrors(page);
   await page.goto('/signup');
   await page.getByLabel('Full name').fill('Marie Learner');
@@ -56,9 +58,14 @@ test('a student who chooses chemistry is placed in Grade 11 Chemistry', async ({
   await page.getByRole('button', { name: '11', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 11 Chemistry', exact: true })).toBeVisible();
-  await expect(page.getByText('Chemistry 11 is the first course, so there is no placement check.')).toBeVisible();
-  await page.getByRole('button', { name: 'Start Chemistry 11' }).click();
+  await expect(page.getByText(/6 questions on Chemistry 10 skills/)).toBeVisible();
+  await page.getByRole('button', { name: 'Back' }).click();
+  await page.getByRole('button', { name: '10', exact: true }).click();
+  await page.getByRole('button', { name: 'See my recommendation' }).click();
+  await expect(page.getByRole('heading', { name: 'Grade 10 Chemistry', exact: true })).toBeVisible();
+  await expect(page.getByText('Chemistry 10 is the first course, so there is no placement check.')).toBeVisible();
+  await page.getByRole('button', { name: 'Start Chemistry 10' }).click();
   await page.waitForURL(/\/s$/);
-  await expect(page.getByText('Grade 11 Chemistry · Self-paced with your AI tutor')).toBeVisible();
+  await expect(page.getByText('Grade 10 Chemistry · Self-paced with your AI tutor')).toBeVisible();
   expect(errors).toEqual([]);
 });

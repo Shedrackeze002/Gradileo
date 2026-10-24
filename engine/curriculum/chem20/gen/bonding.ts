@@ -2,7 +2,7 @@
 import { fixedChoice, mc, multi, numPart, part, skill, type GenOutput } from '../../helpers.ts';
 import { ELECTRONEGATIVITY, element, valenceElectrons } from '../../../chem/elements.ts';
 import { ce, parseFormula } from '../../../chem/formula.ts';
-import { ACIDS, ANIONS, CATIONS, COMMON_NAMES, ionFormula, ionicFormula, ionicName, molecularNames, type Ion } from '../../../chem/ions.ts';
+import { ACIDS, ANIONS, CATIONS, COMMON_NAMES, ionFormula, ionicFormula, ionicName, molecularNames, nameVariants, type Ion } from '../../../chem/ions.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, Part, SkillDef } from '../../../types.ts';
 
@@ -10,27 +10,6 @@ const $ = (formula: string) => `$${ce(formula)}$`;
 
 /** A formula answer box. */
 const formulaPart = (expected: string, extra: Omit<Part, 'answer'> = {}): Part => part({ kind: 'formula', expected }, extra);
-
-/**
- * The spellings a name can be typed in: a space before the Roman numeral's bracket or no brackets
- * at all, and the other spellings of aluminium, caesium, sulfur and acetate.
- */
-export function nameVariants(name: string): string[] {
-  const out = new Set([name]);
-  for (const n of [...out]) {
-    out.add(n.replace(/\(/g, ' ('));
-    out.add(n.replace(/\(([IVX]+)\)/g, ' $1'));
-  }
-  const swaps: Array<[RegExp, string]> = [
-    [/aluminium/g, 'aluminum'],
-    [/caesium/g, 'cesium'],
-    [/sulf/g, 'sulph'],
-    [/acetate/g, 'ethanoate'],
-    [/hydrogen carbonate/g, 'bicarbonate'],
-  ];
-  for (const [from, to] of swaps) for (const n of [...out]) if (from.test(n)) out.add(n.replace(from, to));
-  return [...out];
-}
 
 const namePart = (name: string, placeholder = 'Name'): Part => part({ kind: 'text', accepted: nameVariants(name) }, { placeholder });
 

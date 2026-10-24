@@ -53,7 +53,8 @@ export const PREREQUISITE: Record<string, string | null> = {
   'math-30-2': 'math-20-2',
   'math-30-3': 'math-20-3',
   'math-31': 'math-30-1',
-  'chem-20': null,
+  'chem-10': null,
+  'chem-20': 'chem-10',
 };
 
 const CHECK = 'Programs set their own entrance requirements, so check the ones you are interested in.';
@@ -65,9 +66,14 @@ function rec(courseId: string, reasons: string[], alternatives: CourseChoice[] =
 export function recommendCourse(a: PlacementAnswers): Recommendation {
   const g = Math.round(a.grade);
   if (a.subject === 'Chemistry') {
-    const reasons = ['Grade 11 Chemistry is the first chemistry course: chemical bonding, gases, solutions, acids and bases, and stoichiometry.'];
-    if (g < 11) reasons.push('It is usually taken in Grade 11, so some ideas will be new; the first lessons start from atoms and ions.');
-    return rec('chem-20', reasons);
+    if (g <= 10) {
+      const reasons = ['Grade 10 Chemistry is the first chemistry course: the particle model, atoms and the periodic table, bonding, chemical reactions, and moles, acids and bases.'];
+      if (g < 10) reasons.push('It is usually taken in Grade 10, so a few ideas will be new; it starts from what matter is made of.');
+      return rec('chem-10', reasons, [{ courseId: 'chem-20', why: 'If you have already studied atoms, bonding and balancing equations.' }]);
+    }
+    const reasons = ['Grade 11 Chemistry covers chemical bonding and the shapes of molecules, gases, solutions, acids and bases, and stoichiometry.'];
+    if (g >= 12) reasons.push('Grade 12 Chemistry is not on Gradileo yet, so this is the most advanced chemistry course here.');
+    return rec('chem-20', reasons, [{ courseId: 'chem-10', why: 'Start here if chemistry is new to you.' }]);
   }
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));

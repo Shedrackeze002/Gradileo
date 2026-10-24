@@ -167,3 +167,24 @@ export const ACIDS: Array<{ formula: string; iupac: string; classical: string; s
   { formula: 'HClO3', iupac: 'aqueous hydrogen chlorate', classical: 'chloric acid', strong: true },
   { formula: 'HClO', iupac: 'aqueous hydrogen hypochlorite', classical: 'hypochlorous acid' },
 ];
+
+/**
+ * The spellings a name can be typed in: a space before the Roman numeral's bracket or no brackets
+ * at all, and the other spellings of aluminium, caesium, sulfur and acetate.
+ */
+export function nameVariants(name: string): string[] {
+  const out = new Set([name]);
+  for (const n of [...out]) {
+    out.add(n.replace(/\(/g, ' ('));
+    out.add(n.replace(/\(([IVX]+)\)/g, ' $1'));
+  }
+  const swaps: Array<[RegExp, string]> = [
+    [/aluminium/g, 'aluminum'],
+    [/caesium/g, 'cesium'],
+    [/sulf/g, 'sulph'],
+    [/acetate/g, 'ethanoate'],
+    [/hydrogen carbonate/g, 'bicarbonate'],
+  ];
+  for (const [from, to] of swaps) for (const n of [...out]) if (from.test(n)) out.add(n.replace(from, to));
+  return [...out];
+}
