@@ -4,6 +4,7 @@
  * versions are made from the slide text, so the tutor always works, without a key or when the API
  * fails. Runs in the browser (demo mode) and in the `ai-tutor` Edge Function.
  */
+import { chemToWords } from '../chem/speech.ts';
 import { extractJson } from './parse.ts';
 import { minimaxChat, type MiniMaxConfig } from './minimax.ts';
 import { checkBeats, joinThousands } from './tutorCheck.ts';
@@ -224,6 +225,11 @@ export function mathToWords(tex: string): string {
         const [b, k] = group(tex, j);
         out += ` ${mathToWords(a)} over ${mathToWords(b)} `;
         i = k;
+      } else if (name === 'ce') {
+        // Chemistry (KaTeX's mhchem): formulas letter by letter, charges, arrows and states in words.
+        const [a, j] = group(tex, i);
+        out += ` ${chemToWords(a)} `;
+        i = j;
       } else if (name === 'sqrt') {
         let n = '';
         if (tex[i] === '[') {
