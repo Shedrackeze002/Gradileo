@@ -765,7 +765,7 @@ const tangentLine = skill({
       const dr = rng.pick([0.5, 1, 2, 1.5]);
       const est = 2 * Math.PI * r0 * dr;
       return {
-        prompt: `An oil slick on Lake Wabamun is circular. Its radius grows from $${r0}$ m to $${dec(r0 + dr)}$ m. Use linear approximation with $A(r) = \\pi r^2$ to estimate the increase in its area. Give the exact value or round to the nearest tenth.`,
+        prompt: `An oil slick on a lake is circular. Its radius grows from $${r0}$ m to $${dec(r0 + dr)}$ m. Use linear approximation with $A(r) = \\pi r^2$ to estimate the increase in its area. Give the exact value or round to the nearest tenth.`,
         parts: [numPart(est, { decimals: 1, exact: true, suffix: 'm²' })],
         hints: ['$\\Delta A \\approx A\'(r)\\,\\Delta r$ for a small change $\\Delta r$.', '$A\'(r) = 2\\pi r$, the circumference.'],
         solution: [
@@ -782,7 +782,7 @@ const tangentLine = skill({
     const est = s0 + v0 * dt;
     const name = rng.pick(NAMES);
     return {
-      prompt: `${name} drops a stone from a bridge over the Bow River. It falls $s(t) = 4.9t^2$ metres in $t$ seconds. Use the tangent line to $s$ at $t = ${t0}$ to estimate how far the stone has fallen after $${dec(t0 + dt)}$ s.`,
+      prompt: `${name} drops a stone from a bridge over a river. It falls $s(t) = 4.9t^2$ metres in $t$ seconds. Use the tangent line to $s$ at $t = ${t0}$ to estimate how far the stone has fallen after $${dec(t0 + dt)}$ s.`,
       parts: [numPart(est, { suffix: 'm', display: 'decimal' })],
       hints: ['$s(t) \\approx s(a) + s\'(a)(t - a)$ for $t$ near $a$.', `Find $s(${t0})$ and $s'(${t0})$; $s'(t) = 9.8t$.`],
       solution: [
@@ -1836,7 +1836,7 @@ const motion = skill({
     const disc = Math.sqrt(v0 * v0 + 19.6 * h0);
     const tHit = (v0 + disc) / 9.8;
     const vHit = v0 - 9.8 * tHit;
-    const place = rng.pick(['the top of a cliff above the Red Deer River', 'a balcony of an Edmonton apartment building', 'a bridge over the North Saskatchewan River', 'the top of a ski jump tower in Calgary']);
+    const place = rng.pick(['the top of a cliff above a river', 'a balcony of a city apartment building', 'a bridge over a wide river', 'the top of a ski jump tower']);
     return {
       prompt: `A stone is ${v0 ? 'thrown straight up' : 'dropped'} from ${place}. Its height above the ground, in metres, after $t$ seconds is $h(t) = ${h0}${v0 ? ` + ${v0}t` : ''} - 4.9t^2$. When does the stone hit the ground, and what is its velocity at impact? Round the time to the nearest hundredth and the velocity to the nearest tenth.`,
       parts: [numPart(tHit, { label: 'Time', suffix: 's', decimals: 2 }), numPart(vHit, { label: 'Velocity', suffix: 'm/s', decimals: 1 })],

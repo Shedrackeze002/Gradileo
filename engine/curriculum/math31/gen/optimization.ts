@@ -339,10 +339,10 @@ const optimization = skill({
       const N = 2 * k * p;
       const R = k * p * p;
       const c = rng.pick([
-        { who: 'A community theatre in Medicine Hat', item: 'tickets', per: 'per show' },
-        { who: 'A bike rental shop in Jasper', item: 'rentals', per: 'per day' },
-        { who: 'A honey producer at the Edmonton farmers’ market', item: 'jars', per: 'per week' },
-        { who: 'A climbing gym in Lethbridge', item: 'day passes', per: 'per week' },
+        { who: 'A community theatre in Westbury', item: 'tickets', per: 'per show' },
+        { who: 'A bike rental shop in Stonebridge', item: 'rentals', per: 'per day' },
+        { who: 'A honey producer at the Riverton farmers’ market', item: 'jars', per: 'per week' },
+        { who: 'A climbing gym in Ashford', item: 'day passes', per: 'per week' },
       ]);
       return {
         prompt: `${c.who} finds that when the price is $p$ dollars, it sells $${N} - ${k}p$ ${c.item} ${c.per}, so its revenue, in dollars, is $$R(p) = p(${N} - ${k}p) = ${N}p - ${k}p^2.$$ What price gives the maximum revenue, and what is the maximum revenue? Give both to the nearest cent.`,
@@ -406,10 +406,10 @@ const optimization = skill({
       const b = rng.pick([12, 15, 20, 25, 30, 45]);
       const min = 2 * a * x + b;
       const c2 = rng.pick([
-        { who: 'a furniture workshop in Red Deer', item: 'chair', items: 'chairs' },
-        { who: 'a kombucha maker in Canmore', item: 'case', items: 'cases' },
-        { who: 'a print shop in Grande Prairie', item: 'poster', items: 'posters' },
-        { who: 'a canoe maker in Hinton', item: 'paddle', items: 'paddles' },
+        { who: 'a furniture workshop in Hillcrest', item: 'chair', items: 'chairs' },
+        { who: 'a kombucha maker in Stonebridge', item: 'case', items: 'cases' },
+        { who: 'a print shop in Pinewood', item: 'poster', items: 'posters' },
+        { who: 'a canoe maker in Clearwater', item: 'paddle', items: 'paddles' },
       ]);
       return {
         prompt: `When ${c2.who} makes $x$ ${c2.items} a week, the average cost per ${c2.item}, in dollars, is $$\\bar{C}(x) = ${dec(a)}x + ${b} + \\dfrac{${c}}{x}, \\qquad x > 0.$$ How many ${c2.items} should it make each week to minimize the average cost, and what is the minimum average cost? Give the cost to the nearest cent.`,
@@ -496,13 +496,13 @@ const optimization = skill({
       const up = rng.chance(0.6);
       const c = up
         ? rng.pick([
-            { who: 'A climbing gym in Red Deer has', base: (N: number, P: string) => `${N} members who each pay ${P} per month`, change: (s: string, k: number) => `For every ${s} increase in the monthly fee, ${k} members would cancel`, noun: 'monthly fee', unit: 'members', Ps: [40, 50, 60], ss: [1, 2, 5], ks: [4, 5, 8, 10] },
-            { who: 'A junior hockey team in Medicine Hat', base: (N: number, P: string) => `sells ${N} tickets per game at ${P} each`, change: (s: string, k: number) => `For every ${s} increase in the ticket price, ${k} fewer tickets are sold`, noun: 'ticket price', unit: 'tickets sold', Ps: [12, 15, 18, 20], ss: [1, 0.5], ks: [40, 50, 60, 80] },
-            { who: 'A bus tour company in Banff', base: (N: number, P: string) => `books ${N} seats a week at ${P} each`, change: (s: string, k: number) => `For every ${s} increase in price, it books ${k} fewer seats`, noun: 'price', unit: 'seats booked', Ps: [60, 80, 90], ss: [2, 5], ks: [5, 6, 8, 10] },
+            { who: 'A climbing gym in Hillcrest has', base: (N: number, P: string) => `${N} members who each pay ${P} per month`, change: (s: string, k: number) => `For every ${s} increase in the monthly fee, ${k} members would cancel`, noun: 'monthly fee', unit: 'members', Ps: [40, 50, 60], ss: [1, 2, 5], ks: [4, 5, 8, 10] },
+            { who: 'A junior hockey team in Westbury', base: (N: number, P: string) => `sells ${N} tickets per game at ${P} each`, change: (s: string, k: number) => `For every ${s} increase in the ticket price, ${k} fewer tickets are sold`, noun: 'ticket price', unit: 'tickets sold', Ps: [12, 15, 18, 20], ss: [1, 0.5], ks: [40, 50, 60, 80] },
+            { who: 'A bus tour company in Stonebridge', base: (N: number, P: string) => `books ${N} seats a week at ${P} each`, change: (s: string, k: number) => `For every ${s} increase in price, it books ${k} fewer seats`, noun: 'price', unit: 'seats booked', Ps: [60, 80, 90], ss: [2, 5], ks: [5, 6, 8, 10] },
           ])
         : rng.pick([
-            { who: 'A food truck in Calgary', base: (N: number, P: string) => `sells ${N} burritos a day at ${P} each`, change: (s: string, k: number) => `For every ${s} decrease in price, it would sell ${k} more burritos a day`, noun: 'price', unit: 'burritos sold', Ps: [12, 14, 15, 16], ss: [0.5, 1], ks: [10, 12, 15, 20] },
-            { who: 'A ski rental shop in Canmore', base: (N: number, P: string) => `rents ${N} sets of skis a day at ${P} a set`, change: (s: string, k: number) => `For every ${s} decrease in price, it would rent ${k} more sets a day`, noun: 'price', unit: 'sets rented', Ps: [40, 45, 50], ss: [1, 2.5, 5], ks: [3, 4, 5, 6] },
+            { who: 'A food truck in Brookfield', base: (N: number, P: string) => `sells ${N} burritos a day at ${P} each`, change: (s: string, k: number) => `For every ${s} decrease in price, it would sell ${k} more burritos a day`, noun: 'price', unit: 'burritos sold', Ps: [12, 14, 15, 16], ss: [0.5, 1], ks: [10, 12, 15, 20] },
+            { who: 'A ski rental shop in Maple Falls', base: (N: number, P: string) => `rents ${N} sets of skis a day at ${P} a set`, change: (s: string, k: number) => `For every ${s} decrease in price, it would rent ${k} more sets a day`, noun: 'price', unit: 'sets rented', Ps: [40, 45, 50], ss: [1, 2.5, 5], ks: [3, 4, 5, 6] },
           ]);
       const { P, s, k, xs } = retry(
         () => ({ P: rng.pick(c.Ps), s: rng.pick(c.ss), k: rng.pick(c.ks), xs: rng.int(2, 8) }),
@@ -532,10 +532,10 @@ const optimization = skill({
 
     if (kind === 'profit') {
       const c = rng.pick([
-        { who: 'A bakery in Lethbridge', items: 'loaves of bread', unit: 'loaf', per: 'a week' },
-        { who: 'A greenhouse near Brooks', items: 'hanging baskets', unit: 'basket', per: 'a month' },
-        { who: 'A print shop in Airdrie', items: 'T-shirts', unit: 'T-shirt', per: 'a week' },
-        { who: 'A small company in St. Albert', items: 'phone cases', unit: 'case', per: 'a month' },
+        { who: 'A bakery in Ashford', items: 'loaves of bread', unit: 'loaf', per: 'a week' },
+        { who: 'A greenhouse near Elmwood', items: 'hanging baskets', unit: 'basket', per: 'a month' },
+        { who: 'A print shop in Lakeside', items: 'T-shirts', unit: 'T-shirt', per: 'a week' },
+        { who: 'A small company in Oakridge', items: 'phone cases', unit: 'case', per: 'a month' },
       ]);
       const { a, c1, b } = retry(
         () => ({ a: rng.pick([8, 10, 12, 15, 20, 24]), c1: rng.int(2, 10), b: rng.pick([0.01, 0.02, 0.005, 0.004]) }),
@@ -611,7 +611,7 @@ const optimization = skill({
       const h = div * r;
       const prompt =
         variant === 'closed'
-          ? `A company in Leduc is designing a closed cylindrical can that holds $${V}$ cm³ (${V} mL). Find the radius and height that use the least metal. Round both to the nearest tenth of a centimetre.`
+          ? `A packaging company is designing a closed cylindrical can that holds $${V}$ cm³ (${V} mL). Find the radius and height that use the least metal. Round both to the nearest tenth of a centimetre.`
           : variant === 'open'
             ? `A cylindrical tin with an open top (no lid) must hold $${V}$ cm³. Find the radius and height that use the least metal. Round both to the nearest tenth of a centimetre.`
             : `A closed cylindrical can must hold $${V}$ cm³. The metal for the top and bottom costs twice as much per square centimetre as the metal for the side. Find the radius and height that make the cost of the metal as small as possible. Round both to the nearest tenth of a centimetre.`;
@@ -901,7 +901,7 @@ const optimization = skill({
     const y = A / x;
     const cost = 2 * (a + b) * x;
     return {
-      prompt: `${name} wants to fence a rectangular yard of area $${dec(A)}$ m² in front of a house in Airdrie. The fence along the street costs \\$${a} per metre; the fence on the other three sides costs \\$${b} per metre. What dimensions make the cost as small as possible, and what is the minimum cost?`,
+      prompt: `${name} wants to fence a rectangular yard of area $${dec(A)}$ m² in front of a house. The fence along the street costs \\$${a} per metre; the fence on the other three sides costs \\$${b} per metre. What dimensions make the cost as small as possible, and what is the minimum cost?`,
       parts: [numPart(x, { label: 'Side along the street', suffix: 'm' }), numPart(y, { label: 'Depth (the other side)', suffix: 'm', display: 'decimal' }), numPart(cost, { label: 'Minimum cost: \\$' })],
       hints: ['Let $x$ be the length along the street and $y$ the depth. The cost is $' + `${a}x + ${b}x + 2(${b})y` + '$, and $xy$ is the area.', 'Write the cost in terms of $x$ alone, then minimize it for $x > 0$.'],
       solution: [
@@ -1025,7 +1025,7 @@ const relatedRates = skill({
       const q = 2 * R * k;
       return {
         prompt: oil
-          ? `Oil leaking from a boat on Lac La Biche spreads in a circle whose radius increases at $${dec(k)}$ m/min. How fast is the area of the oil slick increasing when the radius is $${R}$ m? Give the exact value or round to the nearest whole number.`
+          ? `Oil leaking from a boat on a lake spreads in a circle whose radius increases at $${dec(k)}$ m/min. How fast is the area of the oil slick increasing when the radius is $${R}$ m? Give the exact value or round to the nearest whole number.`
           : `A pebble dropped into a calm pond makes a circular ripple whose radius increases at $${k}$ cm/s. How fast is the area inside the ripple increasing when the radius is $${R}$ cm? Give the exact value or round to the nearest whole number.`,
         parts: [exactPart(q * Math.PI, 0, { suffix: `${u}²/${tu}`, exact: piStr(q) })],
         hints: [RR_HINT, 'Differentiate $A = \\pi r^2$ with respect to $t$: $\\dfrac{dA}{dt} = 2\\pi r\\dfrac{dr}{dt}$.'],
@@ -1240,7 +1240,7 @@ const relatedRates = skill({
       const a = rng.pick([60, 70, 80, 90, 100]);
       const b = rng.pick([50, 60, 80, 90, 100, 110]);
       const rate = (x * a + y * b) / D;
-      const town = rng.pick(['Olds', 'Ponoka', 'Vegreville', 'Taber', 'Drumheller']);
+      const town = rng.pick(['Hillcrest', 'Ashford', 'Oakridge', 'Elmwood', 'Westbury']);
       return {
         prompt: `Two straight highways cross at right angles near ${town}. At a certain moment, car A is $${x}$ km north of the intersection, driving north at $${a}$ km/h, and car B is $${y}$ km east of the intersection, driving east at $${b}$ km/h. How fast is the distance between the cars increasing at that moment? Give the exact value or round to the nearest tenth.`,
         figure: carsFig(x, y, true, true),
@@ -1260,7 +1260,7 @@ const relatedRates = skill({
       const v = rng.pick([480, 600, 720, 750, 800, 900]);
       const rate = (x * v) / D;
       return {
-        prompt: `A plane flying horizontally at an altitude of $${hh}$ km and a speed of $${v}$ km/h passes directly over a radar station near Fort McMurray. How fast is the distance from the plane to the station increasing when that distance is $${D}$ km? Give the exact value or round to the nearest tenth.`,
+        prompt: `A plane flying horizontally at an altitude of $${hh}$ km and a speed of $${v}$ km/h passes directly over a radar station. How fast is the distance from the plane to the station increasing when that distance is $${D}$ km? Give the exact value or round to the nearest tenth.`,
         figure: { type: 'rightTriangle', vertices: { right: 'G', a: 'S', b: 'P' }, legA: x, legB: hh, sideLabels: { ra: 'x', rb: `${hh} km`, ab: 'D' } },
         parts: [ratePart(rate, 1, 'km/h')],
         hints: [RR_HINT, `Let $x$ be the horizontal distance the plane has flown past the station and $D$ its distance from the station: $D^2 = x^2 + ${hh}^2$, where the altitude is constant.`],
@@ -1336,7 +1336,7 @@ const relatedRates = skill({
       const ang = (v * dd) / (dd * dd + y * y);
       const dist = (y * v) / D;
       return {
-        prompt: `A hot-air balloon lifts off from a field near High River and rises straight up at $${v}$ m/s. ${name} watches from a point on the ground $${dd}$ m from the lift-off point. When the balloon is $${y}$ m up, how fast is the angle of elevation of ${name}'s line of sight increasing, and how fast is the distance between ${name} and the balloon increasing? Give the angle rate in radians per second, exactly or to the nearest thousandth, and the distance rate exactly or to the nearest hundredth.`,
+        prompt: `A hot-air balloon lifts off from a field and rises straight up at $${v}$ m/s. ${name} watches from a point on the ground $${dd}$ m from the lift-off point. When the balloon is $${y}$ m up, how fast is the angle of elevation of ${name}'s line of sight increasing, and how fast is the distance between ${name} and the balloon increasing? Give the angle rate in radians per second, exactly or to the nearest thousandth, and the distance rate exactly or to the nearest hundredth.`,
         figure: { type: 'rightTriangle', vertices: { right: 'L', a: 'O', b: 'B' }, legA: dd, legB: y, sideLabels: { ra: `${dd} m`, rb: 'y', ab: 'D' }, angleLabels: { a: 'θ' } },
         parts: [exactPart(ang, 3, { label: 'Angle', suffix: 'rad/s', ...(terminates(ang, 3) ? {} : { exact: ratStr(ang) }) }), ratePart(dist, 2, 'm/s', undefined, 'Distance')],
         hints: [`Let $y$ be the height of the balloon. Then $\\tan\\theta = \\dfrac{y}{${dd}}$ and $D^2 = ${dd}^2 + y^2$.`, 'Differentiate each equation with respect to $t$ (the derivative of $\\tan\\theta$ is $\\sec^2\\theta\\,\\dfrac{d\\theta}{dt}$), then substitute the values at that moment.'],
@@ -1366,7 +1366,7 @@ const relatedRates = skill({
       const inc = rate > 0;
       const desc = (dir: string, toward: boolean, s: number) => `driving ${toward ? `${dir === 'north' ? 'south' : 'west'} toward the intersection` : `${dir} away from the intersection`} at $${s}$ km/h`;
       return {
-        prompt: `Two straight roads cross at right angles near Wetaskiwin. At a certain moment, car A is $${x}$ km north of the intersection, ${desc('north', sa < 0, a)}, and car B is $${y}$ km east of it, ${desc('east', sb < 0, b)}. At that moment, is the distance between the cars increasing or decreasing, and at what rate? Give the rate exactly or to the nearest tenth.`,
+        prompt: `Two straight roads cross at right angles near Lakeside. At a certain moment, car A is $${x}$ km north of the intersection, ${desc('north', sa < 0, a)}, and car B is $${y}$ km east of it, ${desc('east', sb < 0, b)}. At that moment, is the distance between the cars increasing or decreasing, and at what rate? Give the rate exactly or to the nearest tenth.`,
         figure: carsFig(x, y, sa > 0, sb > 0),
         parts: [part(fixedChoice(['Increasing', 'Decreasing'], inc ? 0 : 1)), ratePart(Math.abs(rate), 1, 'km/h', undefined, 'Rate')],
         hints: ['$D^2 = x^2 + y^2$, so $D\\dfrac{dD}{dt} = x\\dfrac{dx}{dt} + y\\dfrac{dy}{dt}$.', 'A car driving toward the intersection has a decreasing distance from it, so its rate is negative. The sign of $\\dfrac{dD}{dt}$ tells you whether $D$ is increasing or decreasing.'],

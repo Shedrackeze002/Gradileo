@@ -15,7 +15,7 @@ const NAMES = [
   'Arjun', 'Maëlle', 'Connor', 'Layla', 'Nathaniel', 'Wren', 'Bao', 'Fiona', 'Ibrahim', 'Skye', 'Diego', 'Naomi', 'Kwame', 'Jessie', 'Parveen',
 ];
 
-const PLACES = ['Calgary', 'Edmonton', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Grande Prairie', 'Airdrie', 'Spruce Grove', 'St. Albert', 'Okotoks', 'Camrose', 'Brooks'];
+const PLACES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Elmwood'];
 
 const range = (a: number, b: number) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
@@ -421,7 +421,7 @@ function takeAway(rng: Rng, d: 2 | 3): GenOutput {
 const THEMES = [
   { items: ['hockey', 'soccer', 'curling', 'volleyball', 'badminton'], verb: 'plays', not: 'does not play', must: 'must play', can: 'can play', what: 'sport', has: 'plays a different sport' },
   { items: ['guitar', 'piano', 'drums', 'violin', 'trumpet'], verb: 'plays the', not: 'does not play the', must: 'must play the', can: 'can play the', what: 'instrument', has: 'plays a different instrument' },
-  { items: ['Banff', 'Jasper', 'Drumheller', 'Waterton', 'Canmore'], verb: 'is visiting', not: 'is not visiting', must: 'must be visiting', can: 'can be visiting', what: 'place', has: 'is visiting a different place this summer' },
+  { items: ['Riverton', 'Lakeside', 'Maple Falls', 'Stonebridge', 'Clearwater'], verb: 'is visiting', not: 'is not visiting', must: 'must be visiting', can: 'can be visiting', what: 'place', has: 'is visiting a different place this summer' },
   { items: ['lifeguard', 'cashier', 'camp counsellor', 'farmhand', 'barista'], verb: 'works as a', not: 'does not work as a', must: 'must work as a', can: 'can work as a', what: 'summer job', has: 'has a different summer job' },
 ];
 
@@ -598,12 +598,12 @@ interface ResearchQ {
 
 const RESEARCH_QS: ResearchQ[] = [
   { good: 'Is there a relationship between daily screen time and hours of sleep for Grade 12 students at my school?', broad: 'How does technology affect people?', opinion: 'Is too much screen time bad for you?', vague: 'Why do teenagers love their phones?' },
-  { good: 'How has the number of transit riders per month in Calgary changed over the past ten years?', broad: 'What is public transportation?', opinion: 'Is taking the bus better than driving?', vague: 'Do people enjoy riding the bus?' },
-  { good: 'How is the rainfall in a growing season related to canola yield per hectare on farms near Camrose?', broad: 'What is farming like in Alberta?', opinion: 'Is canola the best crop to grow?', vague: 'Why do farmers choose canola?' },
+  { good: 'How has the number of transit riders per month in our city changed over the past ten years?', broad: 'What is public transportation?', opinion: 'Is taking the bus better than driving?', vague: 'Do people enjoy riding the bus?' },
+  { good: 'How is the rainfall in a growing season related to canola yield per hectare on farms near our town?', broad: 'What is farming like in our region?', opinion: 'Is canola the best crop to grow?', vague: 'Why do farmers choose canola?' },
   { good: 'Do students at my school who work more than 15 hours a week have a lower average mark than students who work less?', broad: 'What are part-time jobs like?', opinion: 'Should high school students have jobs?', vague: 'How do jobs make students feel about school?' },
   { good: 'How much electricity could solar panels on our school roof produce in each month of the year?', broad: 'What is solar energy?', opinion: 'Is solar power better than wind power?', vague: 'Why do people like solar panels?' },
-  { good: 'How has the total area burned by wildfires in Alberta each year changed over the past 20 years?', broad: 'What causes fires?', opinion: 'Are wildfires getting scarier?', vague: 'How do wildfires make communities feel?' },
-  { good: 'Is there a relationship between the price of a used pickup truck and its distance driven, for trucks advertised in Red Deer?', broad: 'How do cars work?', opinion: 'Are pickup trucks the best vehicles?', vague: 'Why do Albertans like trucks?' },
+  { good: 'How has the total area burned by wildfires in our region each year changed over the past 20 years?', broad: 'What causes fires?', opinion: 'Are wildfires getting scarier?', vague: 'How do wildfires make communities feel?' },
+  { good: 'Is there a relationship between the price of a used pickup truck and its distance driven, for trucks advertised in our town?', broad: 'How do cars work?', opinion: 'Are pickup trucks the best vehicles?', vague: 'Why do people in our town like trucks?' },
 ];
 
 const SOURCES = [
@@ -621,7 +621,7 @@ const SOURCES = [
 
 const DATA_KINDS = [
   { text: 'the number of minutes each student spends travelling to school', quant: true },
-  { text: 'the mass of each bag of flour leaving a mill in High River', quant: true },
+  { text: 'the mass of each bag of flour leaving a mill', quant: true },
   { text: 'the number of goals scored by each team in a season', quant: true },
   { text: 'the temperature at noon each day in January', quant: true },
   { text: 'the price of each used bike for sale online', quant: true },
@@ -696,7 +696,7 @@ function biasScenarios(rng: Rng): Array<{ text: string; type: keyof typeof BIAS_
     { text: `To estimate the typical height of Grade 12 students, ${name} measures only the players on the senior basketball team.`, type: 'sampling', why: 'basketball players tend to be taller than other students', fix: 'measure a random sample of all Grade 12 students', bad: ['measure each player twice and use the average', 'use a more accurate measuring tape'] },
     { text: 'A survey asks students: "Don\'t you agree that the cafeteria should serve healthier food?"', type: 'response', why: 'the leading question suggests the answer "yes"', fix: 'reword it as a neutral question, such as asking students to rate the cafeteria food from 1 to 5', bad: ['give the same question to every grade', 'ask the question to students as they leave the cafeteria'] },
     { text: `${name} asks classmates out loud, in front of the teacher, whether they have ever copied homework.`, type: 'response', why: 'people may not answer a sensitive question honestly when others can hear', fix: 'use an anonymous written survey', bad: ['ask the question to another class in the same way', 'ask the question twice to check the answers'] },
-    { text: 'A town in Alberta mails 2000 surveys about a new bike lane, and only 150 are returned, mostly from people who strongly oppose it.', type: 'nonresponse', why: 'the few people who replied may feel much more strongly than the people who did not', fix: 'follow up with the people who did not reply, or survey a smaller random sample in person', bad: ['use only the 150 replies, since they came from a random mailing', 'mail the same survey to 2000 different homes'] },
+    { text: 'A town council mails 2000 surveys about a new bike lane, and only 150 are returned, mostly from people who strongly oppose it.', type: 'nonresponse', why: 'the few people who replied may feel much more strongly than the people who did not', fix: 'follow up with the people who did not reply, or survey a smaller random sample in person', bad: ['use only the 150 replies, since they came from a random mailing', 'mail the same survey to 2000 different homes'] },
     { text: 'A club emails a survey about meeting times to all 300 members; only 40 reply, and most of them already attend every meeting.', type: 'nonresponse', why: 'members who rarely attend did not reply, and they are the ones the meeting time might affect', fix: 'follow up with the members who did not reply', bad: ['ask the 40 who replied to answer again', 'count each reply from a regular attendee twice'] },
     { text: `For a science fair, ${name} weighs every sample on a kitchen scale that reads 50 g too heavy.`, type: 'measurement', why: 'every mass is recorded 50 g too high', fix: 'check the scale against a known mass and correct the readings (subtract 50 g)', bad: ['weigh more samples on the same scale', 'weigh each sample twice and use the average'] },
     { text: `${name} measures a hallway several times with a measuring tape that has the first 2 cm torn off, starting each measurement at the torn end.`, type: 'measurement', why: 'every length is recorded 2 cm too long', fix: 'subtract 2 cm from each measurement, or use an undamaged tape', bad: ['measure the hallway more times with the same tape', 'measure a longer hallway instead'] },
@@ -704,13 +704,13 @@ function biasScenarios(rng: Rng): Array<{ text: string; type: keyof typeof BIAS_
 }
 
 const GRAPHS = [
-  { text: 'how the population of Airdrie changed each year from 2005 to 2025', best: 'Line graph', why: 'a line graph shows change over time' },
+  { text: 'how the population of Lakeside changed each year from 2005 to 2025', best: 'Line graph', why: 'a line graph shows change over time' },
   { text: 'the percent of a family’s monthly budget spent on housing, food, transportation and other costs', best: 'Circle graph', why: 'a circle graph shows how a whole is divided into parts' },
   { text: 'the relationship between hours studied and test marks for 40 students', best: 'Scatter plot', why: 'a scatter plot shows the relationship between two numerical variables' },
   { text: 'the number of students who chose each of five lunch options', best: 'Bar graph', why: 'a bar graph compares counts for separate categories' },
   { text: 'how the heights of 120 Grade 12 students are distributed in 5 cm intervals', best: 'Histogram', why: 'a histogram shows how one numerical variable is distributed across intervals' },
   { text: 'the relationship between the age of a used car and its price', best: 'Scatter plot', why: 'a scatter plot shows the relationship between two numerical variables' },
-  { text: 'the monthly rainfall in Lethbridge over the past two years', best: 'Line graph', why: 'a line graph shows change over time' },
+  { text: 'the monthly rainfall in Ashford over the past two years', best: 'Line graph', why: 'a line graph shows change over time' },
 ];
 
 function researchD2(rng: Rng): GenOutput {
@@ -838,7 +838,7 @@ function researchD3(rng: Rng): GenOutput {
   }
   const n = rng.int(12, 30);
   const claims = [
-    { claim: `most Albertans prefer winter to summer`, sample: `${n} members of a ski club` },
+    { claim: `most people in ${rng.pick(PLACES)} prefer winter to summer`, sample: `${n} members of a ski club` },
     { claim: `most Canadian teenagers play video games every day`, sample: `${n} people at a video game store` },
     { claim: `most drivers in ${rng.pick(PLACES)} want lower parking fees`, sample: `${n} people parking downtown on one Saturday` },
     { claim: `most students at the school want a longer lunch break`, sample: `${n} friends in the student's math class` },

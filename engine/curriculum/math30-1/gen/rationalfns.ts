@@ -674,7 +674,7 @@ const rationalFeatures = skill({
     const s = rng.pick([2, 3, 4, 5, 10]);
     const N0 = rng.pick([120, 150, 200, 250, 300, 400]);
     const L = rng.pick([800, 900, 1200, 1500, 2000, 2400]);
-    const lake = rng.pick(['Sylvan Lake', 'Pigeon Lake', 'Lac La Biche', 'Gull Lake', 'Lake Newell', 'Cold Lake']);
+    const lake = rng.pick(['Pinewood Lake', 'Willow Lake', 'Heron Lake', 'Stonebridge Reservoir', 'Maple Lake', 'Crystal Lake']);
     return {
       prompt: `Biologists stock ${lake} with trout. They model the population after $t$ years with $P(t) = \\dfrac{${N0 * s} + ${L}t}{${s} + t}$.\n\nFind the initial population and the population the model approaches in the long run.`,
       parts: [numPart(N0, { label: 'Initial population $P(0)$', suffix: 'trout' }), numPart(L, { label: 'Long-run population', suffix: 'trout' })],
@@ -1264,7 +1264,7 @@ const rationalEquations = skill({
     }
     const [v, c, T, D] = rng.pick(BOAT_SETS);
     const v2 = clean((-c * c) / v);
-    const river = rng.pick(['North Saskatchewan', 'Bow', 'Athabasca', 'Red Deer', 'Peace', 'Oldman']);
+    const river = rng.pick(['Willow', 'Heron', 'Silver', 'Cedar', 'Maple', 'Pinewood']);
     const quad = intCoeffs([-T * c * c, -2 * D, T]);
     return {
       prompt: `A boat travels $${D}$ km up the ${river} River against a current of $${c}$ km/h, then $${D}$ km back downstream. The round trip takes $${T}$ h. What is the boat's speed in still water?`,
@@ -1574,7 +1574,7 @@ const functionOperations = skill({
       const be = rng.pick([1, 2]);
       const t1 = rng.int(2, 6);
       const A = pmul([L0, al], [W0, be]);
-      const town = rng.pick(['Red Deer', 'Lethbridge', 'Airdrie', 'Grande Prairie', 'St. Albert', 'Medicine Hat']);
+      const town = rng.pick(['Hillcrest', 'Ashford', 'Lakeside', 'Pinewood', 'Maple Falls', 'Westbury']);
       return {
         prompt: `A rectangular community garden in ${town} is being enlarged. After $t$ years, its length is $L(t) = ${L0} + ${coefTex(al)}t$ metres and its width is $W(t) = ${W0} + ${coefTex(be)}t$ metres.\n\nWrite the area function $A(t) = (LW)(t)$ in expanded form, and find the area after $${t1}$ years.`,
         parts: [exprPart(ptxt(A, 't'), '$A(t) =$', 'expanded'), numPart(peval(A, t1), { label: `$A(${t1}) =$`, suffix: 'm²' })],
@@ -1606,7 +1606,7 @@ const functionOperations = skill({
         calculator: true,
       };
     }
-    const town = rng.pick(['Airdrie', 'Okotoks', 'Cochrane', 'Beaumont', 'Leduc', 'Chestermere', 'Sylvan Lake', 'Canmore']);
+    const town = rng.pick(['Lakeside', 'Ashford', 'Oakridge', 'Elmwood', 'Brookfield', 'Hillcrest', 'Clearwater', 'Stonebridge']);
     const { P0, gr, A0, ga, t1 } = retry(
       () => ({ P0: rng.pick([8000, 12000, 15000, 20000, 24000]), gr: rng.pick([400, 600, 750, 900, 1200]), A0: rng.pick([20, 25, 30, 40]), ga: rng.pick([0.5, 1, 1.5, 2]), t1: rng.pick([5, 8, 10, 12, 15]) }),
       (o) => safeRound((o.P0 + o.gr * o.t1) / (o.A0 + o.ga * o.t1), 1),

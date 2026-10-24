@@ -14,7 +14,7 @@ const NAMES = [
   'Arjun', 'Maëlle', 'Connor', 'Layla', 'Nathaniel', 'Wren', 'Bao', 'Fiona', 'Ibrahim', 'Skye', 'Diego', 'Naomi', 'Kwame', 'Jessie', 'Parveen',
 ];
 
-const PLACES = ['Calgary', 'Edmonton', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Grande Prairie', 'Airdrie', 'Spruce Grove', 'St. Albert', 'Okotoks', 'Camrose', 'Brooks'];
+const PLACES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Elmwood'];
 
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 const range = (a: number, b: number) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
@@ -237,7 +237,7 @@ const NONEMPTY_SETS = [
   { md: 'the set of perfect squares between 60 and 70', why: 'it contains 64' },
   { md: 'the set of days of the week that begin with the letter T', why: 'it contains Tuesday and Thursday' },
   { md: 'the set of whole numbers less than 1', why: 'it contains 0' },
-  { md: 'the set of provinces of Canada that border Alberta', why: 'it contains British Columbia and Saskatchewan' },
+  { md: 'the set of planets in our solar system that have rings', why: 'it contains Saturn' },
   { md: 'the set of multiples of 7 between 20 and 30', why: 'it contains 21 and 28' },
 ];
 
@@ -251,13 +251,13 @@ const INFINITE_SETS = [
 ];
 
 const FINITE_SETS = [
-  'the set of grains of sand on a beach in Jasper',
+  'the set of grains of sand on a beach',
   'the set of people living in Canada',
   'the set of factors of 1 000 000',
   'the set of whole numbers less than one billion',
   'the set of letters in the English alphabet',
   'the set of integers between $-500$ and $500$',
-  'the set of hairs on all the people in Alberta',
+  'the set of hairs on all the people in a large city',
 ];
 
 /** A random subset of size k from xs, as a sorted list. */
@@ -829,14 +829,14 @@ interface Ctx2 {
 }
 
 const CTX2: Ctx2[] = [
-  { group: 'Grade 12 students at a school in PLACE', A: 'take Biology 30', B: 'take Chemistry 30', notA: 'do not take Biology 30', both: 'take both courses', la: 'Bio', lb: 'Chem' },
+  { group: 'Grade 12 students at a school in PLACE', A: 'take Biology', B: 'take Chemistry', notA: 'do not take Biology', both: 'take both courses', la: 'Bio', lb: 'Chem' },
   { group: 'families in PLACE', A: 'own a dog', B: 'own a cat', notA: 'do not own a dog', both: 'own both a dog and a cat', la: 'Dog', lb: 'Cat' },
   { group: 'students at a junior high school in PLACE', A: 'play hockey', B: 'play soccer', notA: 'do not play hockey', both: 'play both sports', la: 'Hockey', lb: 'Soccer' },
   { group: 'customers at a café in PLACE', A: 'bought a coffee', B: 'bought a muffin', notA: 'did not buy a coffee', both: 'bought both', la: 'Coffee', lb: 'Muffin' },
   { group: 'students at a high school in PLACE', A: 'speak French', B: 'speak Spanish', notA: 'do not speak French', both: 'speak both languages', la: 'French', lb: 'Spanish' },
   { group: 'Grade 12 students in PLACE', A: 'have a part-time job', B: 'play on a school team', notA: 'do not have a part-time job', both: 'do both', la: 'Job', lb: 'Team' },
   { group: 'people at a community meeting in PLACE', A: 'volunteer at the food bank', B: 'volunteer at the animal shelter', notA: 'do not volunteer at the food bank', both: 'volunteer at both', la: 'Food', lb: 'Shelter' },
-  { group: 'hockey fans in PLACE', A: 'watched the Oilers game', B: 'watched the Flames game', notA: 'did not watch the Oilers game', both: 'watched both games', la: 'Oilers', lb: 'Flames' },
+  { group: 'hockey fans in PLACE', A: 'watched the Hawks game', B: 'watched the Wolves game', notA: 'did not watch the Hawks game', both: 'watched both games', la: 'Hawks', lb: 'Wolves' },
 ];
 
 interface Ctx3 {
@@ -850,7 +850,7 @@ interface Ctx3 {
 }
 
 const CTX3: Ctx3[] = [
-  { group: 'Grade 12 students at a school in PLACE', who: 'students', verb: 'take', kind: 'courses', names: ['Biology 30', 'Chemistry 30', 'Physics 30'], labels: ['Bio', 'Chem', 'Phys'] },
+  { group: 'Grade 12 students at a school in PLACE', who: 'students', verb: 'take', kind: 'courses', names: ['Biology', 'Chemistry', 'Physics'], labels: ['Bio', 'Chem', 'Phys'] },
   { group: 'students in an activities survey in PLACE', who: 'students', verb: 'belong to', kind: 'groups', names: ['the music club', 'a sports team', 'the art club'], labels: ['Music', 'Sports', 'Art'] },
   { group: 'students at a high school in PLACE', who: 'students', verb: 'play', kind: 'sports', names: ['basketball', 'volleyball', 'badminton'], labels: ['Bball', 'Vball', 'Badm'] },
   { group: 'people at a winter festival in PLACE', who: 'people', verb: 'tried', kind: 'activities', names: ['skating', 'cross-country skiing', 'snowshoeing'], labels: ['Skate', 'Ski', 'Shoe'] },
@@ -1037,7 +1037,7 @@ const CONDS: Cond[] = [
   { S: 'a quadrilateral', pron: 'it', P: 'is a square', Q: 'has four right angles', nP: 'is not a square', nQ: 'does not have four right angles', truth: true, conv: false, ccx: 'a 2 cm by 5 cm rectangle has four right angles but is not a square' },
   { S: 'an integer', pron: 'it', P: 'is even', Q: 'is divisible by 2', nP: 'is not even', nQ: 'is not divisible by 2', truth: true, conv: true },
   { S: 'a triangle', pron: 'it', P: 'has three equal sides', Q: 'has three equal angles', nP: 'does not have three equal sides', nQ: 'does not have three equal angles', truth: true, conv: true },
-  { S: 'a person', pron: 'that person', P: 'lives in Calgary', Q: 'lives in Alberta', nP: 'does not live in Calgary', nQ: 'does not live in Alberta', truth: true, conv: false, ccx: 'a person who lives in Lethbridge lives in Alberta but not in Calgary' },
+  { S: 'a person', pron: 'that person', P: 'lives in Tokyo', Q: 'lives in Japan', nP: 'does not live in Tokyo', nQ: 'does not live in Japan', truth: true, conv: false, ccx: 'a person who lives in Osaka lives in Japan but not in Tokyo' },
   { S: '', pron: '', P: '$x = 3$', Q: '$x^2 = 9$', nP: '$x \\neq 3$', nQ: '$x^2 \\neq 9$', truth: true, conv: false, ccx: '$x = -3$ gives $x^2 = 9$, but $x \\neq 3$' },
   { S: '', pron: '', P: '$x^2 = 16$', Q: '$x = 4$', nP: '$x^2 \\neq 16$', nQ: '$x \\neq 4$', truth: false, conv: true, cx: '$x = -4$ gives $x^2 = 16$, but $x \\neq 4$' },
   { S: 'a number', pron: 'it', P: 'is prime', Q: 'is odd', nP: 'is not prime', nQ: 'is not odd', truth: false, conv: false, cx: '2 is prime but not odd', ccx: '9 is odd but not prime' },
@@ -1058,7 +1058,7 @@ const CONDS: Cond[] = [
   { S: 'two lines in a plane', pron: 'they', P: 'are parallel', Q: 'never intersect', nP: 'are not parallel', nQ: 'intersect', truth: true, conv: true },
   { S: 'a triangle', pron: 'it', P: 'has a right angle', Q: 'has two acute angles', nP: 'does not have a right angle', nQ: 'does not have two acute angles', truth: true, conv: false, ccx: 'an equilateral triangle has two (in fact three) acute angles but no right angle' },
   { S: 'a number', pron: 'it', P: 'is a multiple of 3', Q: 'is a multiple of 6', nP: 'is not a multiple of 3', nQ: 'is not a multiple of 6', truth: false, conv: true, cx: '9 is a multiple of 3 but not a multiple of 6' },
-  { S: 'a city', pron: 'it', P: 'is in Canada', Q: 'is in Alberta', nP: 'is not in Canada', nQ: 'is not in Alberta', truth: false, conv: true, cx: 'Regina is in Canada but not in Alberta' },
+  { S: 'a city', pron: 'it', P: 'is in Europe', Q: 'is in Italy', nP: 'is not in Europe', nQ: 'is not in Italy', truth: false, conv: true, cx: 'Madrid is in Europe but not in Italy' },
 ];
 
 const clause = (subj: string, pred: string) => (subj ? `${subj} ${pred}` : pred);

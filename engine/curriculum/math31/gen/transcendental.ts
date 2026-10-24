@@ -636,7 +636,7 @@ function trigApplied(rng: Rng): GenOutput {
   const P = rng.pick([3, 4, 5, 6, 10]);
   const t = rng.pick([1, 2, 0.5, 1.5].filter((x) => x < P));
   const rate = ((R * Math.PI) / P) * Math.sin((Math.PI * t) / P);
-  const place = rng.pick(['the Calgary Stampede', 'the Edmonton K-Days fair', 'a summer fair in Red Deer', 'West Edmonton Mall']);
+  const place = rng.pick(['a summer rodeo', 'the Riverton city fair', 'a summer fair in Hillcrest', 'an indoor amusement park']);
   return {
     prompt: `A rider's height on a Ferris wheel at ${place} is $h(t) = ${C} - ${R}\\cos\\left(\\dfrac{\\pi t}{${P}}\\right)$ metres, $t$ minutes after boarding. Find $h'(${fmt(t)})$, the rate at which the rider is rising, to the nearest hundredth.`,
     parts: [numPart(rate, { label: `$h'(${fmt(t)}) =$`, decimals: 2, exact: true, suffix: 'm/min' })],
@@ -1103,7 +1103,7 @@ function expApplied(rng: Rng): GenOutput {
     const k = rng.pick([0.02, 0.03, 0.025, 0.04, 0.015]);
     const T = rng.pick([5, 10, 15, 20]);
     const rate = P0 * k * Math.exp(k * T);
-    const town = rng.pick(['Airdrie', 'Okotoks', 'Cochrane', 'Canmore', 'Leduc', 'Chestermere']);
+    const town = rng.pick(['Lakeside', 'Ashford', 'Oakridge', 'Stonebridge', 'Elmwood', 'Brookfield']);
     return {
       prompt: `The population of ${town} is modelled by $P(t) = ${P0}e^{${fmt(k)}t}$, where $t$ is the number of years after the model starts. How fast is the population growing when $t = ${T}$? Give the answer in people per year, to the nearest whole number.`,
       parts: [numPart(rate, { label: `$P'(${T}) =$`, decimals: 0, exact: true, suffix: 'people/year' })],

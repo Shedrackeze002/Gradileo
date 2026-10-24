@@ -937,7 +937,7 @@ interface Model {
 
 function makeModel(rng: Rng, kinds: Model['kind'][]): Model {
   const kind = rng.pick(kinds);
-  const town = rng.pick(['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Grande Prairie', 'Camrose']);
+  const town = rng.pick(['Riverton', 'Brookfield', 'Hillcrest', 'Ashford', 'Westbury', 'Pinewood', 'Lakeside']);
   if (kind === 'ferris') {
     const R = rng.int(8, 25);
     const H = R + rng.pick([1, 1.5, 2, 2.5, 3]);
@@ -956,7 +956,7 @@ function makeModel(rng: Rng, kinds: Model['kind'][]): Model {
     const T = rng.pick([3, 4, 5, 6]);
     const bf = frac(2, T);
     return {
-      kind, name: 'h', place: 'Pincher Creek', intro: `The blades of a wind turbine near Pincher Creek are $${L}$ m long and turn about a hub $${H}$ m above the ground, making one rotation every $${T}$ s. At $t = 0$, the tip of one blade points horizontally and is moving upward.`,
+      kind, name: 'h', place: 'a wind farm', intro: `The blades of a wind turbine at a wind farm are $${L}$ m long and turn about a hub $${H}$ m above the ground, making one rotation every $${T}$ s. At $t = 0$, the tip of one blade points horizontally and is moving upward.`,
       tex: `h(t) = ${L}\\sin\\left(${piTex(bf)}t\\right) + ${H}`,
       f: (t) => L * Math.sin((2 * PI * t) / T) + H, fn: 'sin', a: L, b: (2 * PI) / T, bTex: piTex(bf), c: 0, d: H, period: T,
       qty: 'height of the blade tip above the ground', unit: 'm', unitWord: 'metre', tWord: 'seconds', tUnit: 's', horizon: T, when: (t) => `at $t = ${fmt(t)}$ s`,
@@ -975,11 +975,11 @@ function makeModel(rng: Rng, kinds: Model['kind'][]): Model {
   }
   if (kind === 'daylight') {
     const [city, A, d] = rng.pick([
-      ['Edmonton', 4.9, 12.2],
-      ['Calgary', 4.3, 12.2],
-      ['Grande Prairie', 5.4, 12.3],
-      ['Fort McMurray', 5.7, 12.3],
-      ['Lethbridge', 4.0, 12.2],
+      ['Riverton', 4.9, 12.2],
+      ['Brookfield', 4.3, 12.2],
+      ['Pinewood', 5.4, 12.3],
+      ['Clearwater', 5.7, 12.3],
+      ['Ashford', 4.0, 12.2],
     ] as Array<[string, number, number]>);
     return {
       kind, name: 'L', place: city, intro: `A model for the number of hours of daylight in ${city} on day $t$ of the year ($t = 1$ is January 1) is given below.`,

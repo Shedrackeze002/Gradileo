@@ -15,7 +15,7 @@ const NAMES = [
   'Arjun', 'Maëlle', 'Connor', 'Layla', 'Nathaniel', 'Wren', 'Bao', 'Fiona', 'Ibrahim', 'Skye', 'Diego', 'Naomi', 'Kwame', 'Jessie', 'Parveen',
 ];
 
-const PLACES = ['Calgary', 'Edmonton', 'Red Deer', 'Lethbridge', 'Medicine Hat', 'Grande Prairie', 'Airdrie', 'Spruce Grove', 'St. Albert', 'Okotoks', 'Camrose', 'Brooks'];
+const PLACES = ['Riverton', 'Lakeside', 'Brookfield', 'Hillcrest', 'Pinewood', 'Maple Falls', 'Stonebridge', 'Westbury', 'Ashford', 'Clearwater', 'Oakridge', 'Elmwood'];
 
 const DECK_TEXT =
   'A standard deck of 52 playing cards has four suits: hearts and diamonds (red), clubs and spades (black). Each suit has 13 ranks: A, 2 to 10, J, Q and K. The J, Q and K are face cards.';
@@ -250,16 +250,16 @@ function spinnerSit(rng: Rng): Situation {
 }
 
 const ODDS_EVENTS = [
-  'the Edmonton Oilers winning their next game',
-  'rain in Lethbridge tomorrow',
-  'snow in Grande Prairie tomorrow',
-  'the Calgary Stampeders winning their next game',
-  'a flight from Calgary to Toronto leaving on time',
-  'a randomly chosen Grade 12 student at a school in Red Deer having a driver’s licence',
-  'a randomly chosen customer at a store in Airdrie paying by debit card',
+  'the Riverton Hawks winning their next game',
+  'rain in Ashford tomorrow',
+  'snow in Pinewood tomorrow',
+  'the Brookfield Rams winning their next game',
+  'a flight from Brookfield to Westbury leaving on time',
+  'a randomly chosen Grade 12 student at a school in Hillcrest having a driver’s licence',
+  'a randomly chosen customer at a store in Lakeside paying by debit card',
   'a canola seed from a new batch sprouting',
-  'the Calgary Flames scoring first in their next game',
-  'a randomly chosen car in a St. Albert parking lot being electric',
+  'the Stonebridge Wolves scoring first in their next game',
+  'a randomly chosen car in a Maple Falls parking lot being electric',
 ];
 
 const ODDS_HINTS = [
@@ -957,7 +957,7 @@ const SURVEYS: Survey[] = [
   { group: 'students at a high school in PLACE', one: 'student', A: 'play on a school team', B: 'have a part-time job', As: 'plays on a school team', Bs: 'has a part-time job', notBs: 'does not have a part-time job', neither: 'neither plays on a school team nor has a part-time job', la: 'Team', lb: 'Job' },
   { group: 'households in PLACE', one: 'household', A: 'own a dog', B: 'own a cat', As: 'owns a dog', Bs: 'owns a cat', notBs: 'does not own a cat', neither: 'owns neither a dog nor a cat', la: 'Dog', lb: 'Cat' },
   { group: 'customers at a café in PLACE', one: 'customer', A: 'buy a hot drink', B: 'buy a baked good', As: 'buys a hot drink', Bs: 'buys a baked good', notBs: 'does not buy a baked good', neither: 'buys neither a hot drink nor a baked good', la: 'Drink', lb: 'Baked' },
-  { group: 'Grade 12 students in PLACE', one: 'student', A: 'take Biology 30', B: 'take Chemistry 30', As: 'takes Biology 30', Bs: 'takes Chemistry 30', notBs: 'does not take Chemistry 30', neither: 'takes neither Biology 30 nor Chemistry 30', la: 'Bio', lb: 'Chem' },
+  { group: 'Grade 12 students in PLACE', one: 'student', A: 'take Biology', B: 'take Chemistry', As: 'takes Biology', Bs: 'takes Chemistry', notBs: 'does not take Chemistry', neither: 'takes neither Biology nor Chemistry', la: 'Bio', lb: 'Chem' },
   { group: 'visitors to a library in PLACE', one: 'visitor', A: 'borrow a book', B: 'use a computer', As: 'borrows a book', Bs: 'uses a computer', notBs: 'does not use a computer', neither: 'neither borrows a book nor uses a computer', la: 'Book', lb: 'Computer' },
   { group: 'members of a fitness centre in PLACE', one: 'member', A: 'use the pool', B: 'take a yoga class', As: 'uses the pool', Bs: 'takes a yoga class', notBs: 'does not take a yoga class', neither: 'neither uses the pool nor takes a yoga class', la: 'Pool', lb: 'Yoga' },
 ];
@@ -1417,7 +1417,7 @@ const TWO_WAYS: TwoWay[] = [
   { intro: 'students at a high school in PLACE were asked whether they have a part-time job', rows: ['Grade 11', 'Grade 12'], cols: ['Job', 'No job'], rowIs: ['is in Grade 11', 'is in Grade 12'], colIs: ['has a part-time job', 'does not have a part-time job'] },
   { intro: 'adults in PLACE were asked whether they got a flu shot and whether they caught the flu last winter', rows: ['Flu shot', 'No flu shot'], cols: ['Caught flu', 'No flu'], rowIs: ['got a flu shot', 'did not get a flu shot'], colIs: ['caught the flu', 'did not catch the flu'] },
   { intro: 'commuters in PLACE were asked how they travel to work and whether they were late at least once last month', rows: ['Transit', 'Car'], cols: ['Late', 'Not late'], rowIs: ['takes transit', 'drives a car'], colIs: ['was late at least once', 'was never late'] },
-  { intro: 'Grade 12 students in PLACE were asked whether they plan to go to university and whether they take Math 30-1', rows: ['Math 30-1', 'No Math 30-1'], cols: ['University', 'No university'], rowIs: ['takes Math 30-1', 'does not take Math 30-1'], colIs: ['plans to go to university', 'does not plan to go to university'] },
+  { intro: 'Grade 12 students in PLACE were asked whether they plan to go to university and whether they take calculus', rows: ['Calculus', 'No calculus'], cols: ['University', 'No university'], rowIs: ['takes calculus', 'does not take calculus'], colIs: ['plans to go to university', 'does not plan to go to university'] },
 ];
 
 function twoWayTable(t: TwoWay, cells: number[][]): TableFigure {
@@ -1495,7 +1495,7 @@ function depD3(rng: Rng): GenOutput {
   const mode = rng.pick(['cond', 'oneEach', 'three', 'tableIndep'] as const);
   if (mode === 'cond') {
     const ctx = rng.pick([
-      { a: 'takes Chemistry 30', b: 'also takes Physics 30', both: 'takes both Chemistry 30 and Physics 30', group: 'Grade 12 students in PLACE', one: 'student' },
+      { a: 'takes Chemistry', b: 'also takes Physics', both: 'takes both Chemistry and Physics', group: 'Grade 12 students in PLACE', one: 'student' },
       { a: 'orders a pizza', b: 'also orders a drink', both: 'orders a pizza and a drink', group: 'customers at a restaurant in PLACE', one: 'customer' },
       { a: 'plays volleyball', b: 'also plays basketball', both: 'plays both volleyball and basketball', group: 'students at a school in PLACE', one: 'student' },
       { a: 'owns a truck', b: 'also owns a snowmobile', both: 'owns a truck and a snowmobile', group: 'households in PLACE', one: 'household' },

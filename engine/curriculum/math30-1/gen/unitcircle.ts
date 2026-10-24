@@ -640,11 +640,11 @@ function toDegSteps(deg: number): string[] {
 }
 
 const SPINNERS = [
-  { what: 'The blades of a wind turbine near Pincher Creek turn', noun: 'a blade', rpm: [12, 15, 18, 20] },
+  { what: 'The blades of a wind turbine at a wind farm turn', noun: 'a blade', rpm: [12, 15, 18, 20] },
   { what: "A potter's wheel spins", noun: 'the wheel', rpm: [60, 75, 90, 120] },
   { what: 'A ceiling fan turns', noun: 'a fan blade', rpm: [80, 90, 100, 120] },
   { what: 'The drum of a clothes dryer turns', noun: 'the drum', rpm: [45, 50, 54, 60] },
-  { what: 'A merry-go-round at a playground in Leduc turns', noun: 'the merry-go-round', rpm: [6, 8, 10, 12] },
+  { what: 'A merry-go-round at a playground turns', noun: 'the merry-go-round', rpm: [6, 8, 10, 12] },
   { what: 'The reel of a combine harvester turns', noun: 'the reel', rpm: [30, 36, 40, 45] },
 ];
 
@@ -1043,7 +1043,7 @@ const arcLength = skill({
       );
       const a = L * rv(deg);
       return {
-        prompt: `The pendulum of a clock in a museum in ${rng.pick(['Edmonton', 'Calgary', 'Red Deer', 'Lethbridge'])} is $${L}$ cm long. It swings through an angle of $${dg(deg)}$ from one side to the other. How far does the tip of the pendulum travel in one swing? Give your answer to the nearest tenth of a centimetre.`,
+        prompt: `The pendulum of a clock in a museum in ${rng.pick(['Riverton', 'Brookfield', 'Hillcrest', 'Ashford'])} is $${L}$ cm long. It swings through an angle of $${dg(deg)}$ from one side to the other. How far does the tip of the pendulum travel in one swing? Give your answer to the nearest tenth of a centimetre.`,
         parts: [numPart(a, { label: 'Distance', suffix: 'cm', decimals: 1 })],
         hints: ['The tip moves along an arc of a circle whose radius is the length of the pendulum.', 'Convert the angle to radians, then use $a = r\\theta$.'],
         solution: [`$r = ${L}$ cm and $\\theta = ${dg(deg)} = ${rt(deg)}$ radians.`, `$a = r\\theta = ${L} \\times ${rt(deg)} \\approx ${fmt(a, 3)}$`, `The tip travels about $${fmtFixed(a, 1)}$ cm in one swing.`],
@@ -1085,7 +1085,7 @@ const arcLength = skill({
       const dl = Math.round((lat2 - lat1) * 10) / 10;
       const a = 6370 * rv(dl);
       return {
-        prompt: `Two weather stations in Alberta lie on the same line of longitude, one at latitude $${fmt(lat1)}^\\circ$N and the other at latitude $${fmt(lat2)}^\\circ$N. Treat Earth as a sphere with a radius of $6370$ km. How far apart are the stations, measured along Earth's surface? Give your answer to the nearest kilometre.`,
+        prompt: `Two weather stations lie on the same line of longitude, one at latitude $${fmt(lat1)}^\\circ$N and the other at latitude $${fmt(lat2)}^\\circ$N. Treat Earth as a sphere with a radius of $6370$ km. How far apart are the stations, measured along Earth's surface? Give your answer to the nearest kilometre.`,
         parts: [numPart(a, { label: 'Distance', suffix: 'km', decimals: 0 })],
         hints: ['The stations lie on a circle through the poles with the same radius as Earth. The central angle between them is the difference in latitude.', 'Convert the angle to radians, then use $a = r\\theta$.'],
         solution: [`Central angle: $${fmt(lat2)}^\\circ - ${fmt(lat1)}^\\circ = ${fmt(dl)}^\\circ = ${fmt(dl)} \\times \\dfrac{\\pi}{180} \\approx ${fmt(rv(dl), 5)}$ radians`, `$a = r\\theta = 6370 \\times ${fmt(rv(dl), 5)} \\approx ${fmt(a, 2)}$`, `The stations are about $${fmtFixed(a, 0)}$ km apart.`],

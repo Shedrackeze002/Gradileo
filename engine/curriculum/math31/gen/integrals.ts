@@ -849,7 +849,7 @@ const initialValue = skill({
       const item = rng.pick([
         ['hockey sticks', 'stick'],
         ['canoe paddles', 'paddle'],
-        ['jars of saskatoon berry jam', 'jar'],
+        ['jars of berry jam', 'jar'],
         ['cowboy hats', 'hat'],
         ['bike frames', 'frame'],
         ['wooden chairs', 'chair'],
@@ -861,7 +861,7 @@ const initialValue = skill({
       const cost = F0 + a * N - (b / 2) * N * N;
       const v = Math.round(cost * 100) / 100;
       return {
-        prompt: `A workshop in ${rng.pick(['Red Deer', 'Lethbridge', 'Grande Prairie', 'Medicine Hat', 'Airdrie'])} makes ${item[0]}. The marginal cost of making $x$ ${item[0]} is $C'(x) = ${a} - ${fmt(b)}x$ dollars per ${item[1]}, and the fixed costs (the cost when $x = 0$) are \\$${F0}. Find the total cost $C(${N})$ of making ${N} ${item[0]}, to the nearest cent.`,
+        prompt: `A workshop in ${rng.pick(['Hillcrest', 'Ashford', 'Pinewood', 'Westbury', 'Lakeside'])} makes ${item[0]}. The marginal cost of making $x$ ${item[0]} is $C'(x) = ${a} - ${fmt(b)}x$ dollars per ${item[1]}, and the fixed costs (the cost when $x = 0$) are \\$${F0}. Find the total cost $C(${N})$ of making ${N} ${item[0]}, to the nearest cent.`,
         parts: [part({ kind: 'numeric', value: v, decimals: 2, tolerance: 0.011 }, { label: 'Total cost: \\$' })],
         hints: ["Total cost is an antiderivative of marginal cost: $C(x) = \\int C'(x)\\,dx$.", `Use $C(0) = ${F0}$ (the fixed costs) to find the constant, then evaluate $C(${N})$.`],
         solution: [
@@ -881,7 +881,7 @@ const initialValue = skill({
     const coef = (2 * k) / 3;
     const C = H1 - coef * t1 ** 1.5;
     const h2 = coef * t2 ** 1.5 + C;
-    const plant = rng.pick(['A sunflower seedling', 'A spruce sapling at a tree nursery near Smoky Lake', 'A tomato plant in a greenhouse in Brooks', 'A poplar sapling']);
+    const plant = rng.pick(['A sunflower seedling', 'A spruce sapling at a tree nursery', 'A tomato plant in a greenhouse', 'A poplar sapling']);
     return {
       prompt: `${plant} grows at a rate of $h'(t) = ${fmt(k)}\\sqrt{t}$ cm per week, where $t$ is the time in weeks. At $t = ${t1}$ the plant is ${H1} cm tall. How tall is it at $t = ${t2}$?`,
       parts: [part({ kind: 'numeric', value: h2 }, { suffix: 'cm' })],
@@ -1076,10 +1076,10 @@ const riemann = skill({
 
     // table (d3): estimate a total from rates recorded at equal time steps
     const ctx = rng.pick([
-      { what: 'The velocity of a car merging onto Deerfoot Trail in Calgary', q: 'v (m/s)', t: 't (s)', dt: 2, start: [0, 2, 4], inc: [2, 5], total: 'distance travelled', unit: 'm', rate: 'velocity' },
+      { what: 'The velocity of a car merging onto a highway', q: 'v (m/s)', t: 't (s)', dt: 2, start: [0, 2, 4], inc: [2, 5], total: 'distance travelled', unit: 'm', rate: 'velocity' },
       { what: 'The rate at which water flows into a reservoir', q: 'r (L/min)', t: 't (min)', dt: 10, start: [40, 50, 60], inc: [-6, -2], total: 'volume of water that flows in', unit: 'L', rate: 'flow rate' },
-      { what: "A cyclist's speed on the Legacy Trail near Canmore", q: 'v (m/s)', t: 't (s)', dt: 30, start: [4, 5, 6], inc: [-1, 2], total: 'distance travelled', unit: 'm', rate: 'speed' },
-      { what: 'The rate at which oil flows from a well near Drayton Valley', q: 'r (barrels/h)', t: 't (h)', dt: 4, start: [30, 36, 42], inc: [-4, -1], total: 'amount of oil produced', unit: 'barrels', rate: 'flow rate' },
+      { what: "A cyclist's speed on a valley bike trail", q: 'v (m/s)', t: 't (s)', dt: 30, start: [4, 5, 6], inc: [-1, 2], total: 'distance travelled', unit: 'm', rate: 'speed' },
+      { what: 'The rate at which oil flows from a well', q: 'r (barrels/h)', t: 't (h)', dt: 4, start: [30, 36, 42], inc: [-4, -1], total: 'amount of oil produced', unit: 'barrels', rate: 'flow rate' },
     ]);
     const rk = rng.pick(['left', 'right', 'mid'] as const);
     const n = rk === 'mid' ? 4 : rng.pick([4, 5, 6]);
@@ -1461,7 +1461,7 @@ const definiteIntegral = skill({
         const r = ftcSteps(terms, 0, T);
         const avg = snap(r.value / T);
         const v = valuePart(avg, { suffix: '°C', display: 'decimal' });
-        const city = rng.pick(['Calgary', 'Edmonton', 'Banff', 'Fort McMurray', 'Jasper']);
+        const city = rng.pick(['Brookfield', 'Riverton', 'Stonebridge', 'Clearwater', 'Pinewood']);
         return {
           prompt: `On a spring day in ${city}, the temperature $t$ hours after 6:00 a.m. is modelled by $T(t) = ${joinTerms(terms.map((x) => x.tex))}$ degrees Celsius, for $0 \\le t \\le 12$. Find the average temperature from 6:00 a.m. to 6:00 p.m.${v.note}`,
           parts: [v.part],
@@ -1951,7 +1951,7 @@ function substitutionApp(rng: Rng): GenOutput {
     const { A, r, T } = o;
     const c = A / r;
     const value = c * (Math.exp(r * T) - 1);
-    const what = rng.pick(['A bacteria culture in a lab at the University of Alberta grows', 'A population of yeast cells in a bakery starter grows', 'A colony of algae in a pond near Sylvan Lake grows']);
+    const what = rng.pick(['A bacteria culture in a university lab grows', 'A population of yeast cells in a bakery starter grows', 'A colony of algae in a farm pond grows']);
     return {
       prompt: `${what} at a rate of $P'(t) = ${A}e^{${fmt(r)}t}$ cells per hour, where $t$ is the time in hours. By how much does the population increase during the first ${T} hours? Round to the nearest whole number.`,
       parts: [part({ kind: 'numeric', value, decimals: 0 }, { suffix: 'cells' })],
@@ -1975,7 +1975,7 @@ function substitutionApp(rng: Rng): GenOutput {
   const [p, T] = o.pt;
   const ub = T * T + p;
   const value = (A / 2) * Math.log(ub / p);
-  const app = rng.pick(['a new transit app in Edmonton', 'a local news podcast in Lethbridge', 'a hiking-trail app for Kananaskis Country']);
+  const app = rng.pick(['a new transit app in Riverton', 'a local news podcast in Ashford', 'a hiking-trail app for a mountain park']);
   return {
     prompt: `After launch, ${app} gains new users at a rate of $N'(t) = \\dfrac{${A}t}{t^{2} + ${p}}$ users per week, where $t$ is the time in weeks. How many new users does it gain in the first ${T} weeks? Round to the nearest whole number.`,
     parts: [part({ kind: 'numeric', value, decimals: 0 }, { suffix: 'users' })],

@@ -1336,13 +1336,13 @@ interface CostCtx {
   unit: string;
 }
 const COSTS: CostCtx[] = [
-  { who: 'A small business in Red Deer', items: 'custom phone cases', item: 'case', unit: 'cases' },
-  { who: 'A leadership class in Airdrie', items: 'school hoodies', item: 'hoodie', unit: 'hoodies' },
-  { who: 'A farm stand near Lacombe', items: 'jars of saskatoon berry jam', item: 'jar', unit: 'jars' },
-  { who: 'A bakery in Canmore', items: 'loaves of sourdough bread', item: 'loaf', unit: 'loaves' },
-  { who: 'A screen-printing shop in Grande Prairie', items: 'printed T-shirts', item: 'T-shirt', unit: 'T-shirts' },
-  { who: 'An artist at a comic expo in Edmonton', items: 'enamel pins', item: 'pin', unit: 'pins' },
-  { who: 'A robotics club in Medicine Hat', items: 'robot kits', item: 'kit', unit: 'kits' },
+  { who: 'A small business in Hillcrest', items: 'custom phone cases', item: 'case', unit: 'cases' },
+  { who: 'A leadership class in Lakeside', items: 'school hoodies', item: 'hoodie', unit: 'hoodies' },
+  { who: 'A farm stand near Maple Falls', items: 'jars of berry jam', item: 'jar', unit: 'jars' },
+  { who: 'A bakery in Stonebridge', items: 'loaves of sourdough bread', item: 'loaf', unit: 'loaves' },
+  { who: 'A screen-printing shop in Pinewood', items: 'printed T-shirts', item: 'T-shirt', unit: 'T-shirts' },
+  { who: 'An artist at a comic expo in Riverton', items: 'enamel pins', item: 'pin', unit: 'pins' },
+  { who: 'A robotics club in Westbury', items: 'robot kits', item: 'kit', unit: 'kits' },
 ];
 
 /** Money in prose (outside maths): \$4.50, \$1200. */
@@ -1362,10 +1362,10 @@ function costNumbers(rng: Rng): { F: number; v: number; n: number } {
 }
 
 const TRAVEL = [
-  { fast: 'cyclist', slow: 'runner', where: 'on the Legacy Trail near Canmore', unit: 'km/h', k: [4, 6, 8, 10, 12], s: [8, 9, 10, 12, 14, 15], t: [0.5, 1, 1.5, 2] },
-  { fast: 'car', slow: 'loaded truck', where: 'on Highway 2 between Calgary and Edmonton', unit: 'km/h', k: [10, 15, 20, 25], s: [70, 75, 80, 85, 90], t: [1, 1.5, 2, 2.5, 3] },
-  { fast: 'motorboat', slow: 'canoe', where: 'across Sylvan Lake', unit: 'km/h', k: [6, 8, 10, 12, 15], s: [4, 5, 6, 8], t: [0.5, 1, 1.5, 2] },
-  { fast: 'delivery drone', slow: 'courier van', where: 'across Edmonton', unit: 'km/h', k: [10, 15, 20, 30], s: [30, 40, 45, 50, 60], t: [0.5, 1, 1.5] },
+  { fast: 'cyclist', slow: 'runner', where: 'on a valley bike trail', unit: 'km/h', k: [4, 6, 8, 10, 12], s: [8, 9, 10, 12, 14, 15], t: [0.5, 1, 1.5, 2] },
+  { fast: 'car', slow: 'loaded truck', where: 'on the highway between Riverton and Brookfield', unit: 'km/h', k: [10, 15, 20, 25], s: [70, 75, 80, 85, 90], t: [1, 1.5, 2, 2.5, 3] },
+  { fast: 'motorboat', slow: 'canoe', where: 'across a large lake', unit: 'km/h', k: [6, 8, 10, 12, 15], s: [4, 5, 6, 8], t: [0.5, 1, 1.5, 2] },
+  { fast: 'delivery drone', slow: 'courier van', where: 'across the city', unit: 'km/h', k: [10, 15, 20, 30], s: [30, 40, 45, 50, 60], t: [0.5, 1, 1.5] },
 ];
 
 const rationalApply = skill({
@@ -1580,7 +1580,7 @@ const rationalApply = skill({
     const quad: P = [-D1 * k, T * k - D1 - D2, T];
     const disc = quad[1] ** 2 - 4 * quad[2] * quad[0];
     const other = (-quad[1] - Math.sqrt(disc)) / (2 * quad[2]);
-    const trail = rng.pick(['a gravel trail near Hinton', 'a gravel road outside Okotoks', 'a dirt path along the Red Deer River', 'a gravel trail in Elk Island National Park']);
+    const trail = rng.pick(['a gravel trail in the foothills', 'a gravel road outside Ashford', 'a dirt path along a river', 'a gravel trail in a national park']);
     return {
       prompt: `${who} cycles ${D1} km on ${trail}, then ${D2} km on a paved road, riding ${k} km/h faster on the pavement. The whole ride takes ${fmt(T)} h. What was ${who}’s speed on the gravel?`,
       parts: [numPart(s, { suffix: 'km/h' })],
