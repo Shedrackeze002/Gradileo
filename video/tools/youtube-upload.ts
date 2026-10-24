@@ -15,10 +15,14 @@
 // a run touches is then put in lesson order if it is out of order (the playlist must be set to sort
 // manually).
 //
-// Videos are public unless --private or --unlisted is given. It stops at the day's quota (10,000
-// units: an upload with captions, a thumbnail and its playlist place costs about 600) or the
-// channel's daily upload limit, and --limit N uploads at most N videos. It prints each upload as
-// "<video id> -> https://youtu.be/<youtube id>", for the Videos page of the admin console.
+// Videos are public unless --private or --unlisted is given. It stops at the day's API quota
+// (10,000 units: a thumbnail, captions and a playlist place cost about 500 a video) or the channel's
+// daily upload limit, and --limit N uploads at most N videos. Uploads count against the channel's
+// limit, not the quota, so a video can go up after the quota has run out; the run stops there, and
+// a video left without its thumbnail or captions is kept in youtube-unfinished.json in Drive
+// (video/lib/unfinished.ts) and finished first on the next run. It prints each upload as
+// "<video id> -> https://youtu.be/<youtube id>", for the Videos page of the admin console, and each
+// video it finishes as "<video id>: finishing on YouTube: …".
 //
 // Signs in with the YOUTUBE_* variables, and the GDRIVE_* ones for videos taken from Drive.
 import { existsSync, readFileSync } from 'node:fs';
@@ -26,6 +30,7 @@ import path from 'node:path';
 import type { CourseMeta, UnitMeta } from '../../engine/types.ts';
 import { FIRST_NAME, MANIFEST, scriptOf, youtubeFieldsFor } from '../lib/catalog.ts';
 import { download, find, place, unitVideos, videoFolder, videoIds } from '../lib/google.ts';
+import { loadUnfinished, saveUnfinished, type Missing } from '../lib/unfinished.ts';
 import {
   addToPlaylist,
   createPlaylist,
@@ -67,21 +72,23 @@ const MADE_FOR_KIDS: Record<string, boolean> = {
 
 /** A video's MP4, thumbnail and captions, from the session or from Drive. */
 async function files(id: string): Promise<{ from: string; mp4: Buffer; png: Buffer; srt: Buffer }> {
+  const [mp4, png, srt] = await fetchFiles(id, [`${id}.mp4`, 'thumbnail.png', 'captions.srt']);
+  return { from: mp4.from, mp4: mp4.data, png: png.data, srt: srt.data };
+}
+
+/** Some of a video's files by name, from the session or from Drive. */
+async function fetchFiles(id: string, names: string[]): Promise<Array<{ from: string; data: Buffer }>> {
   const local = path.join(OUT, id);
-  const names = [`${id}.mp4`, 'thumbnail.png', 'captions.srt'];
-  if (names.every((n) => existsSync(path.join(local, n)))) {
-    const [mp4, png, srt] = names.map((n) => readFileSync(path.join(local, n)));
-    return { from: 'session', mp4, png, srt };
-  }
+  if (names.every((n) => existsSync(path.join(local, n)))) return names.map((n) => ({ from: 'session', data: readFileSync(path.join(local, n)) }));
   const folder = await videoFolder(place(id));
   if (!folder) throw new Error('not in the session and not in Drive');
-  const got: Buffer[] = [];
+  const got: Array<{ from: string; data: Buffer }> = [];
   for (const n of names) {
     const file = await find(n, folder, false);
     if (!file) throw new Error(`Drive has no ${n}`);
-    got.push(await download(file.id));
+    got.push({ from: 'Drive', data: await download(file.id) });
   }
-  return { from: 'Drive', mp4: got[0], png: got[1], srt: got[2] };
+  return got;
 }
 
 // ---------------------------------------------------------------- playlists
@@ -141,6 +148,29 @@ async function intoPlaylist(id: string, youtubeId: string, dryRun: boolean): Pro
 /** True for the errors that end the day's uploading: quota or the channel's upload limit. */
 const dayIsOver = (e: Error) => /quotaExceeded|uploadLimitExceeded|rateLimitExceeded/.test(e.message);
 
+/**
+ * Adds what an unfinished video on the channel still lacks (its thumbnail, its captions) and
+ * returns what is still missing. Stops at the first error that ends the day.
+ */
+async function finish(id: string, youtubeId: string, missing: Missing[], have?: { png: Buffer; srt: Buffer }): Promise<{ left: Missing[]; notes: string[]; over?: Error }> {
+  const notes: string[] = [];
+  const left: Missing[] = [];
+  const [png, srt] = have ? [{ data: have.png }, { data: have.srt }] : await fetchFiles(id, ['thumbnail.png', 'captions.srt']);
+  for (const m of missing) {
+    try {
+      if (m === 'thumbnail') await setThumbnail(youtubeId, png.data);
+      else await insertCaptions(youtubeId, srt.data);
+      notes.push(m === 'thumbnail' ? 'thumbnail set' : 'captions added');
+    } catch (e) {
+      const err = e as Error;
+      left.push(m);
+      notes.push(`${m} not ${m === 'thumbnail' ? 'set' : 'added'}: ${err.message.slice(0, 160)}`);
+      if (dayIsOver(err)) return { left: [...left, ...missing.slice(missing.indexOf(m) + 1)], notes, over: err };
+    }
+  }
+  return { left, notes };
+}
+
 // ---------------------------------------------------------------- main
 
 const args = process.argv.slice(2);
@@ -154,11 +184,27 @@ if (!targets.length) {
   process.exit(1);
 }
 
+const unfinished = await loadUnfinished();
+let unfinishedChanged = false;
+const setUnfinished = (id: string, missing: Missing[]) => {
+  if (missing.length) unfinished.set(id, missing);
+  else unfinished.delete(id);
+  unfinishedChanged = true;
+};
+
 const onChannel = new Map<string, string>();
-for (const v of await uploads()) {
-  const id = scriptOf(v.snippet.title, v.snippet.description);
-  if (id) onChannel.set(id, v.id);
-  if (id) scriptOfYoutube.set(v.id, id);
+try {
+  for (const v of await uploads()) {
+    const id = scriptOf(v.snippet.title, v.snippet.description);
+    if (id) onChannel.set(id, v.id);
+    if (id) scriptOfYoutube.set(v.id, id);
+  }
+} catch (e) {
+  const err = e as Error;
+  if (!dayIsOver(err)) throw err;
+  // An earlier run today used up the API quota; it comes back at midnight Pacific time.
+  console.log(`stopped for today: the API quota is used up (${err.message.slice(0, 120)})`);
+  process.exit(0);
 }
 
 let done = 0;
@@ -174,6 +220,25 @@ for (const id of ids) {
       console.error(`${id}: playlist: ${err.message.slice(0, 200)}`);
       if (dayIsOver(err)) break;
       failed++;
+    }
+    const missing = unfinished.get(id);
+    if (missing?.length) {
+      if (dryRun) {
+        console.log(`${id}: would add its ${missing.join(' and ')}`);
+        continue;
+      }
+      try {
+        const r = await finish(id, known, missing);
+        setUnfinished(id, r.left);
+        console.log(`${id}: finishing on YouTube: ${r.notes.join('; ')}`);
+        if (r.over) {
+          console.error(`${id}: stopped for today: ${r.over.message.slice(0, 200)}`);
+          break;
+        }
+      } catch (e) {
+        console.error(`${id}: not finished: ${(e as Error).message.slice(0, 200)}`);
+        failed++;
+      }
     }
     continue;
   }
@@ -192,24 +257,26 @@ for (const id of ids) {
     const f = await files(id);
     const video = await insertVideo(f.mp4, text, { privacy, madeForKids: kids });
     scriptOfYoutube.set(video.id, id);
-    const notes: string[] = [];
-    try {
-      await setThumbnail(video.id, f.png);
-    } catch (e) {
-      notes.push(`thumbnail not set: ${(e as Error).message.slice(0, 160)}`);
-    }
-    try {
-      await insertCaptions(video.id, f.srt);
-    } catch (e) {
-      notes.push(`captions not added: ${(e as Error).message.slice(0, 160)}`);
-    }
-    try {
-      notes.push(await intoPlaylist(id, video.id, false));
-    } catch (e) {
-      notes.push(`playlist not set: ${(e as Error).message.slice(0, 160)}`);
+    // The thumbnail and captions spend the day's API quota; what they miss is finished on a later run.
+    const r = await finish(id, video.id, ['thumbnail', 'captions'], f);
+    setUnfinished(id, r.left);
+    const notes = r.notes.filter((n) => / not /.test(n));
+    let over = r.over;
+    if (!over) {
+      try {
+        notes.push(await intoPlaylist(id, video.id, false));
+      } catch (e) {
+        const err = e as Error;
+        notes.push(`playlist not set: ${err.message.slice(0, 160)}`);
+        if (dayIsOver(err)) over = err;
+      }
     }
     done++;
     console.log(`${id} -> https://youtu.be/${video.id} (${video.privacy}, from ${f.from})${notes.length ? `; ${notes.join('; ')}` : ''}`);
+    if (over) {
+      console.error(`${id}: stopped for today: the API quota ran out (${over.message.slice(0, 120)})`);
+      break;
+    }
   } catch (e) {
     const err = e as Error;
     if (dayIsOver(err)) {
@@ -220,6 +287,8 @@ for (const id of ids) {
     failed++;
   }
 }
+if (unfinishedChanged) await saveUnfinished(unfinished);
+
 for (const { list, unit } of touched.values()) {
   const order = unitVideos(unit);
   const rank = (v: string) => {
@@ -237,5 +306,8 @@ for (const { list, unit } of touched.values()) {
 }
 
 const left = ids.filter((id) => !onChannel.has(id)).length - (dryRun ? 0 : done);
-console.log(`${done} ${dryRun ? 'to upload' : 'uploaded'}${failed ? `, ${failed} failed` : ''}; ${left} of ${ids.length} not on YouTube yet`);
+console.log(
+  `${done} ${dryRun ? 'to upload' : 'uploaded'}${failed ? `, ${failed} failed` : ''}; ${left} of ${ids.length} not on YouTube yet` +
+    (unfinished.size ? `; ${unfinished.size} on YouTube still need a thumbnail or captions` : ''),
+);
 if (failed) process.exit(1);
