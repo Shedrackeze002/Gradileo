@@ -2046,6 +2046,308 @@
       }
     ]
   },
+  "c10-3-1-d": {
+    "lessonId": "c10-3-1",
+    "title": "Ions, Part 4: Counting Electrons in Ions",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two rules",
+        "t": 19.146
+      },
+      {
+        "title": "A positive ion",
+        "t": 48.019
+      },
+      {
+        "title": "A negative ion",
+        "t": 82.558
+      },
+      {
+        "title": "Same arrangement, different ions",
+        "t": 111.95
+      },
+      {
+        "title": "Your turn",
+        "t": 158.464
+      },
+      {
+        "title": "Summary",
+        "t": 194.589
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-1-d:q",
+        "t": 169.878,
+        "prompt": "How many electrons are in the ion $\\ce{Ca^2+}$? (The atomic number of calcium is $20$.)",
+        "choices": [
+          "$22$",
+          "$20$",
+          "$2$",
+          "$18$"
+        ],
+        "answer": 3,
+        "working": "A charge of 2+ means the atom lost $2$ electrons: $20 - 2 = 18$."
+      }
+    ]
+  },
+  "c10-3-2": {
+    "lessonId": "c10-3-2",
+    "title": "Ionic Compounds: Names and Formulas, Part 1: Electron Transfer and the Ionic Bond",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A dot-and-cross diagram",
+        "t": 27.427
+      },
+      {
+        "title": "The ionic bond",
+        "t": 70.915
+      },
+      {
+        "title": "Magnesium chloride",
+        "t": 135.401
+      },
+      {
+        "title": "Your turn",
+        "t": 180.504
+      },
+      {
+        "title": "Summary",
+        "t": 215.616
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-2:q",
+        "t": 190.962,
+        "prompt": "Magnesium (2,8,2) reacts with oxygen (2,6). What happens to the electrons?",
+        "choices": [
+          "Each oxygen atom gives 2 electrons to a magnesium atom.",
+          "Each magnesium atom gives 1 electron to each of two oxygen atoms.",
+          "Magnesium and oxygen atoms share their electrons.",
+          "Each magnesium atom gives 2 electrons to one oxygen atom."
+        ],
+        "answer": 3,
+        "working": "Magnesium must lose $2$ electrons to reach 2,8, and oxygen needs exactly $2$ to reach 2,8, so one oxygen atom takes both: $\\ce{Mg^2+}$ and $\\ce{O^2-}$."
+      }
+    ]
+  },
+  "c10-3-2-b": {
+    "lessonId": "c10-3-2",
+    "title": "Ionic Compounds: Names and Formulas, Part 2: Writing Formulas",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 23.236
+      },
+      {
+        "title": "Aluminium oxide",
+        "t": 69.843
+      },
+      {
+        "title": "Magnesium nitride",
+        "t": 111.64
+      },
+      {
+        "title": "The fewest ions",
+        "t": 137.656
+      },
+      {
+        "title": "Your turn",
+        "t": 173.123
+      },
+      {
+        "title": "Summary",
+        "t": 213.658
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-2-b:q",
+        "t": 184.274,
+        "prompt": "Write the formula of calcium nitride. (Calcium is in group $2$, and nitrogen is in group $15$.)",
+        "choices": [
+          "$\\ce{Ca2N3}$",
+          "$\\ce{Ca3N2}$",
+          "$\\ce{CaN}$",
+          "$\\ce{CaN2}$"
+        ],
+        "answer": 1,
+        "working": "The ions are $\\ce{Ca^2+}$ and $\\ce{N^3-}$. Three calcium ions give 6+, and two nitride ions give 6−."
+      }
+    ]
+  },
+  "c10-3-2-c": {
+    "lessonId": "c10-3-2",
+    "title": "Ionic Compounds: Names and Formulas, Part 3: Naming Ionic Compounds",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The metal, then the non-metal",
+        "t": 20.011
+      },
+      {
+        "title": "The non-metal ions",
+        "t": 46.456
+      },
+      {
+        "title": "Naming from a formula",
+        "t": 85.166
+      },
+      {
+        "title": "No counting words",
+        "t": 113.643
+      },
+      {
+        "title": "Your turn",
+        "t": 150.822
+      },
+      {
+        "title": "Summary",
+        "t": 179.301
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-2-c:q",
+        "t": 157.561,
+        "prompt": "Name the compound $\\ce{CaBr2}$.",
+        "choices": [
+          "calcium bromide",
+          "calcium dibromide",
+          "calcium bromine",
+          "dicalcium bromide"
+        ],
+        "answer": 0,
+        "working": "The metal is calcium, and bromine becomes bromide. The subscript only makes the charges cancel, so it is not part of the name."
+      }
+    ]
+  },
+  "c10-3-2-d": {
+    "lessonId": "c10-3-2",
+    "title": "Ionic Compounds: Names and Formulas, Part 4: Polyatomic Ions",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A group with one charge",
+        "t": 19.313
+      },
+      {
+        "title": "Five common ions",
+        "t": 46.794
+      },
+      {
+        "title": "Names and brackets",
+        "t": 102.578
+      },
+      {
+        "title": "Keep the ion whole",
+        "t": 161.824
+      },
+      {
+        "title": "Your turn",
+        "t": 194.707
+      },
+      {
+        "title": "Summary",
+        "t": 230.955
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-2-d:q",
+        "t": 207.81,
+        "prompt": "Which is the formula of magnesium nitrate? (Magnesium is in group $2$, and the nitrate ion is $\\ce{NO3-}$.)",
+        "choices": [
+          "$\\ce{MgNO3}$",
+          "$\\ce{Mg2NO3}$",
+          "$\\ce{Mg(NO3)2}$",
+          "$\\ce{Mg3N2}$"
+        ],
+        "answer": 2,
+        "working": "The ions are $\\ce{Mg^2+}$ and $\\ce{NO3-}$, so one magnesium ion needs two nitrate ions, and more than one goes in brackets."
+      }
+    ]
+  },
+  "c10-3-3": {
+    "lessonId": "c10-3-3",
+    "title": "Covalent Bonds and Molecular Names, Part 1: Ionic, Covalent or Metallic?",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sharing electrons",
+        "t": 30.255
+      },
+      {
+        "title": "Three kinds of bonding",
+        "t": 68.633
+      },
+      {
+        "title": "Which kind of bonding?",
+        "t": 111.228
+      },
+      {
+        "title": "Ammonium compounds",
+        "t": 146.432
+      },
+      {
+        "title": "Your turn",
+        "t": 172.481
+      },
+      {
+        "title": "Summary",
+        "t": 207.238
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-3:q",
+        "t": 180.44,
+        "prompt": "Which of these substances is held together by covalent bonds?",
+        "choices": [
+          "$\\ce{KBr}$ (potassium bromide)",
+          "$\\ce{Cu}$ (copper)",
+          "$\\ce{SO2}$ (sulfur dioxide)",
+          "$\\ce{MgO}$ (magnesium oxide)"
+        ],
+        "answer": 2,
+        "working": "Sulfur and oxygen are both non-metals, so they share electrons. $\\ce{KBr}$ and $\\ce{MgO}$ are ionic, and copper is metallic."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
