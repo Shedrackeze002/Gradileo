@@ -1,4 +1,306 @@
 {
+  "c10-1-1": {
+    "lessonId": "c10-1-1",
+    "title": "States of Matter and the Particle Model, Part 1: The Particle Model",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The particle model",
+        "t": 33.327
+      },
+      {
+        "title": "Three states of matter",
+        "t": 65.801
+      },
+      {
+        "title": "Naming a state",
+        "t": 123.002
+      },
+      {
+        "title": "Solid particles still move",
+        "t": 154.987
+      },
+      {
+        "title": "Your turn",
+        "t": 172.471
+      },
+      {
+        "title": "Summary",
+        "t": 202.468
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-1:q",
+        "t": 181.341,
+        "prompt": "Which statement describes the particles in a **solid**, such as an iron nail?",
+        "choices": [
+          "They do not move at all.",
+          "They vibrate about fixed positions.",
+          "They slide past one another.",
+          "They are far apart, with very weak forces between them."
+        ],
+        "answer": 1,
+        "working": "Strong forces hold the particles of a solid in place, so they vibrate about fixed positions. They still move: the particles of every substance are always moving."
+      }
+    ]
+  },
+  "c10-1-1-b": {
+    "lessonId": "c10-1-1",
+    "title": "States of Matter and the Particle Model, Part 2: Explaining Properties",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Compressing a gas",
+        "t": 21.047
+      },
+      {
+        "title": "Shape, volume and flow",
+        "t": 60.236
+      },
+      {
+        "title": "Diffusion",
+        "t": 93.824
+      },
+      {
+        "title": "Particles never change size",
+        "t": 121.855
+      },
+      {
+        "title": "Your turn",
+        "t": 148.819
+      },
+      {
+        "title": "Summary",
+        "t": 180.239
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-1-b:q",
+        "t": 157.485,
+        "prompt": "Why does a liquid take the shape of its container? Use the particle model.",
+        "choices": [
+          "Its particles are far apart, with a lot of space between them.",
+          "Its particles are held in fixed positions by strong forces.",
+          "Its particles grow larger to fill the container.",
+          "Its particles are not held in fixed positions, so they can slide past one another."
+        ],
+        "answer": 3,
+        "working": "Liquid particles stay close together but can move over one another, so the liquid flows into the shape of its container."
+      }
+    ]
+  },
+  "c10-1-1-c": {
+    "lessonId": "c10-1-1",
+    "title": "States of Matter and the Particle Model, Part 3: Changes of State",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six changes of state",
+        "t": 16.069
+      },
+      {
+        "title": "Energy in or out",
+        "t": 72.09
+      },
+      {
+        "title": "Everyday changes",
+        "t": 102.666
+      },
+      {
+        "title": "Dew on the grass",
+        "t": 142.039
+      },
+      {
+        "title": "Your turn",
+        "t": 173.801
+      },
+      {
+        "title": "Summary",
+        "t": 210.477
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-1-c:q",
+        "t": 189.091,
+        "prompt": "Iodine crystals are warmed gently and give off a purple gas without melting. Name the change of state, and say whether the iodine takes in or gives out energy.",
+        "choices": [
+          "Sublimation; energy is taken in.",
+          "Sublimation; energy is given out.",
+          "Evaporation; energy is taken in.",
+          "Deposition; energy is given out."
+        ],
+        "answer": 0,
+        "working": "Solid → gas without melting is sublimation. The particles end up far apart and moving freely, so energy is taken in."
+      }
+    ]
+  },
+  "c10-1-1-d": {
+    "lessonId": "c10-1-1",
+    "title": "States of Matter and the Particle Model, Part 4: Melting and Boiling Points",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A heating curve",
+        "t": 21.705
+      },
+      {
+        "title": "Melting and boiling points",
+        "t": 70.321
+      },
+      {
+        "title": "The state at a temperature",
+        "t": 102.896
+      },
+      {
+        "title": "Negative temperatures",
+        "t": 154.927
+      },
+      {
+        "title": "Your turn",
+        "t": 179.737
+      },
+      {
+        "title": "Summary",
+        "t": 216.01
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-1-d:q",
+        "t": 191.128,
+        "prompt": "Melting and boiling points: oxygen $-218^\\circ\\text{C}$ and $-183^\\circ\\text{C}$; ethanol $-114^\\circ\\text{C}$ and $78^\\circ\\text{C}$; mercury $-39^\\circ\\text{C}$ and $357^\\circ\\text{C}$; sulfur $115^\\circ\\text{C}$ and $445^\\circ\\text{C}$. Which substance is a liquid at $90^\\circ\\text{C}$?",
+        "choices": [
+          "oxygen",
+          "ethanol",
+          "mercury",
+          "sulfur"
+        ],
+        "answer": 2,
+        "working": "$90^\\circ\\text{C}$ is between the melting point ($-39^\\circ\\text{C}$) and boiling point ($357^\\circ\\text{C}$) of mercury. Oxygen and ethanol are gases at $90^\\circ\\text{C}$, and sulfur is still a solid."
+      }
+    ]
+  },
+  "c10-1-2": {
+    "lessonId": "c10-1-2",
+    "title": "Pure Substances and Mixtures, Part 1: Elements and Compounds",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pure substances",
+        "t": 28.071
+      },
+      {
+        "title": "Elements and compounds",
+        "t": 48.832
+      },
+      {
+        "title": "Breaking them down",
+        "t": 90.754
+      },
+      {
+        "title": "Reading a formula",
+        "t": 135.558
+      },
+      {
+        "title": "Molecules and compounds",
+        "t": 178.386
+      },
+      {
+        "title": "Your turn",
+        "t": 196.947
+      },
+      {
+        "title": "Summary",
+        "t": 228.493
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-2:q",
+        "t": 203.514,
+        "prompt": "Which of these substances is a **compound**?",
+        "choices": [
+          "nitrogen, $\\ce{N2}$",
+          "helium, $\\ce{He}$",
+          "ammonia, $\\ce{NH3}$",
+          "sulfur, $\\ce{S8}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{NH3}$ has two different symbols: nitrogen and hydrogen chemically joined. $\\ce{N2}$, $\\ce{He}$ and $\\ce{S8}$ each contain only one kind of atom, so they are elements."
+      }
+    ]
+  },
+  "c10-1-2-b": {
+    "lessonId": "c10-1-2",
+    "title": "Pure Substances and Mixtures, Part 2: Mixtures",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a mixture is",
+        "t": 22.119
+      },
+      {
+        "title": "Iron and sulfur",
+        "t": 70.149
+      },
+      {
+        "title": "Your turn",
+        "t": 120.226
+      },
+      {
+        "title": "Summary",
+        "t": 160.717
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-2-b:q",
+        "t": 135.061,
+        "prompt": "Grey iron filings and yellow sulfur powder are stirred together. A magnet held over the powder pulls out the iron filings. What is the grey-yellow powder?",
+        "choices": [
+          "A compound: the iron and the sulfur have joined together.",
+          "A mixture: the iron and sulfur keep their own properties and can be separated physically.",
+          "An element: it contains only one kind of atom.",
+          "A pure substance: it looks the same all the way through."
+        ],
+        "answer": 1,
+        "working": "The iron is still magnetic, so it has kept its own properties, and a magnet separates it without any chemical reaction. So the powder is a mixture."
+      }
+    ]
+  },
   "c10-2-1": {
     "lessonId": "c10-2-1",
     "title": "Inside the Atom, Part 1: Three Particles",
