@@ -56,6 +56,10 @@ describe('speechText', () => {
     expect(speechText('Both lengths together. Lengths add, and one length stays.')).toBe('Both lenkths together. Lenkths add, and one length stays.');
     expect(speechText('Eighty-one and eighty-two, but twenty-one and eighty.')).toBe('Eighty one and eighty two, but twenty-one and eighty.');
     expect(speechText('Two x-tiles, one x-tile and three unit tiles.')).toBe('Two x tiles, one x tile and three unit tiles.');
+    expect(speechText('Lead two nitrate gives lead two iodide; 0.0021 g of lead, such as lead or nitrate, tin and lead.')).toBe(
+      'Led two nitrate gives led two iodide; 0.0021 g of led, such as led or nitrate, tin and led.',
+    );
+    expect(speechText('These steps lead to the answer, trails lead directly there, and a big lead.')).toBe('These steps lead to the answer, trails lead directly there, and a big lead.');
   });
 });
 

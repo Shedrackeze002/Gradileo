@@ -301,6 +301,222 @@
       }
     ]
   },
+  "c10-1-2-c": {
+    "lessonId": "c10-1-2",
+    "title": "Pure Substances and Mixtures, Part 3: Homogeneous and Heterogeneous Mixtures",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of mixture",
+        "t": 19.385
+      },
+      {
+        "title": "Examples",
+        "t": 46.23
+      },
+      {
+        "title": "Classifying mixtures",
+        "t": 69.219
+      },
+      {
+        "title": "Clear is not pure",
+        "t": 110.072
+      },
+      {
+        "title": "Your turn",
+        "t": 136.177
+      },
+      {
+        "title": "Summary",
+        "t": 175.36
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-2-c:q",
+        "t": 153.158,
+        "prompt": "A clear, colourless liquid starts to boil at $82^\\circ\\text{C}$, and its temperature keeps rising as it boils, up to $96^\\circ\\text{C}$. What is the liquid most likely to be?",
+        "choices": [
+          "A mixture: a pure substance boils at one fixed temperature.",
+          "An element, because it is colourless.",
+          "A compound, because it is clear.",
+          "A pure substance, because it boils below $100^\\circ\\text{C}$."
+        ],
+        "answer": 0,
+        "working": "A pure substance (an element or a compound) boils at one fixed temperature. A liquid that boils over a range of temperatures contains more than one substance, so it is a mixture."
+      }
+    ]
+  },
+  "c10-1-2-d": {
+    "lessonId": "c10-1-2",
+    "title": "Pure Substances and Mixtures, Part 4: Solutions",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solute and solvent",
+        "t": 18.021
+      },
+      {
+        "title": "Gases, liquids and solids",
+        "t": 48.889
+      },
+      {
+        "title": "Mass of a solution",
+        "t": 92.392
+      },
+      {
+        "title": "Finding the mass of a solute",
+        "t": 121.501
+      },
+      {
+        "title": "Masses add up",
+        "t": 173.696
+      },
+      {
+        "title": "Your turn",
+        "t": 196.888
+      },
+      {
+        "title": "Summary",
+        "t": 228.892
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-2-d:q",
+        "t": 210.305,
+        "prompt": "Amara dissolves $8.5\\ \\text{g}$ of salt in $120.0\\ \\text{g}$ of water. What is the mass of the solution?",
+        "choices": [
+          "$111.5\\ \\text{g}$",
+          "$120.0\\ \\text{g}$",
+          "$8.5\\ \\text{g}$",
+          "$128.5\\ \\text{g}$"
+        ],
+        "answer": 3,
+        "working": "Mass of solution = mass of solute + mass of solvent $= 8.5 + 120.0 = 128.5\\ \\text{g}$."
+      }
+    ]
+  },
+  "c10-1-3": {
+    "lessonId": "c10-1-3",
+    "title": "Separating Mixtures, Part 1: Filtration, Evaporation and Crystallization",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How the parts differ",
+        "t": 21.662
+      },
+      {
+        "title": "Filtration",
+        "t": 40.493
+      },
+      {
+        "title": "Evaporation",
+        "t": 70.981
+      },
+      {
+        "title": "Crystallization",
+        "t": 90.01
+      },
+      {
+        "title": "Sand and salt",
+        "t": 126.633
+      },
+      {
+        "title": "What filter paper cannot do",
+        "t": 166.461
+      },
+      {
+        "title": "Your turn",
+        "t": 185.362
+      },
+      {
+        "title": "Summary",
+        "t": 222.216
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-3:q",
+        "t": 199.249,
+        "prompt": "A mixture of sand and copper(II) sulfate solution is poured through filter paper in a funnel. What is the residue, and what is the filtrate?",
+        "choices": [
+          "Residue: copper(II) sulfate solution. Filtrate: sand.",
+          "Residue: sand. Filtrate: copper(II) sulfate solution.",
+          "Residue: sand and copper(II) sulfate. Filtrate: pure water.",
+          "Residue: copper(II) sulfate crystals. Filtrate: water and sand."
+        ],
+        "answer": 1,
+        "working": "Sand does not dissolve, so it stays on the paper as the residue. The dissolved copper(II) sulfate passes through with the water, so the filtrate is copper(II) sulfate solution."
+      }
+    ]
+  },
+  "c10-1-3-b": {
+    "lessonId": "c10-1-3",
+    "title": "Separating Mixtures, Part 2: Distillation and Other Methods",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Simple distillation",
+        "t": 22.536
+      },
+      {
+        "title": "Fractional distillation",
+        "t": 57.145
+      },
+      {
+        "title": "Simpler methods",
+        "t": 98.926
+      },
+      {
+        "title": "Two liquids",
+        "t": 137.41
+      },
+      {
+        "title": "Your turn",
+        "t": 171.643
+      },
+      {
+        "title": "Summary",
+        "t": 212.807
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-3-b:q",
+        "t": 188.216,
+        "prompt": "You have salt water, and you want to collect pure water from it. Water boils at $100^\\circ\\text{C}$; salt does not boil until well over $1000^\\circ\\text{C}$. Which method should you use?",
+        "choices": [
+          "Filtration",
+          "Evaporation",
+          "Simple distillation",
+          "A separating funnel"
+        ],
+        "answer": 2,
+        "working": "Simple distillation boils off the water, condenses it in the condenser and collects it as the distillate; the salt stays behind in the flask."
+      }
+    ]
+  },
   "c10-2-1": {
     "lessonId": "c10-2-1",
     "title": "Inside the Atom, Part 1: Three Particles",

@@ -27,8 +27,11 @@ export function speechText(say: string): string {
   // "Kwame" as "Quam", "Jun" as "John", "GST" often as "GSD", "EI" as "I", "a chord bisects the
   // chord" as "a cord by sex the cord", "lengths" as "links"), "eighty-one" and "x-tiles" said
   // without their hyphens (with them, the voice blurs them into "A to 1" and "x styles"), and sizes like "eight-by-twelve", which run
-  // together, said as separate words.
+  // together, said as separate words. The metal lead is always read as the verb ("leed"), so where it is
+  // the metal (lead two nitrate, a sample of lead) it is spelled as it sounds; "lead to" and "a big lead" keep theirs.
   return words
+    .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
+    .replace(/\b(of|as|and) lead\b/g, '$1 led')
     .replace(/\b(GST|HST|EI)\b/g, (m) => m.split('').join(' '))
     .replace(/\b([Bb])iweekly\b/g, '$1i-weekly')
     .replace(/\b([Bb])reak-even\b/g, '$1reak even')
