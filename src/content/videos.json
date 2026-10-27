@@ -1325,25 +1325,25 @@
       },
       {
         "title": "Classifying by place",
-        "t": 91.018
+        "t": 91.013
       },
       {
         "title": "Classifying by properties",
-        "t": 114.983
+        "t": 114.978
       },
       {
         "title": "Your turn",
-        "t": 146.242
+        "t": 146.237
       },
       {
         "title": "Summary",
-        "t": 181.738
+        "t": 181.733
       }
     ],
     "cues": [
       {
         "id": "c10-2-4-d:q",
-        "t": 159.255,
+        "t": 159.25,
         "prompt": "Three solid elements are tested. Q is shiny and silver-grey, conducts electricity well, and flattens when hit. R is dull and yellow, does not conduct, and shatters into powder. X is shiny and dark grey, conducts a little, and shatters. Which is most likely a metalloid?",
         "choices": [
           "Q",
