@@ -291,6 +291,14 @@ Lessons learned while scripting (the script check does not catch these):
   over five, while the screen shows −(2 + 2)/(1 + 4).
 - Use `\dfrac` for fractions in Math 20-4 maths lines, and state every rate, tax or rule inside
   the question (see `CLAUDE.md`).
+- Chemistry: write formulas with mhchem on screen (`$\ce{H2SO4}$`) and say them as a teacher reads
+  them ("H two S O four", or the name), with a `caption` written properly (H₂SO₄). Say "dye-" for
+  the prefix di- ("dye-nitrogen tetroxide"; "di" alone is heard as the letter D) and keep the real
+  spelling in the caption; say "eye-you-pack" for IUPAC; never say a bare ending such as "-ate",
+  "-ite", "-ic" or "-ous" (heard as "eight", "Ike", "ooze"): say it inside an example ("a name
+  ending like nitrate"). Say "iodine", never the letter I. The metal lead is respelled by
+  `speechText` (before "two", an ion name or a bracket, and after "of", "as" or "and"); any other
+  use of the metal should be reworded so it is one of those.
 
 ### Google Drive
 
