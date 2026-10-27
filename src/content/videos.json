@@ -666,6 +666,355 @@
       }
     ]
   },
+  "c10-1-4-b": {
+    "lessonId": "c10-1-4",
+    "title": "Physical and Chemical Change, Part 2: Physical and Chemical Properties",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "When evidence misleads",
+        "t": 19.77
+      },
+      {
+        "title": "Two kinds of property",
+        "t": 68.396
+      },
+      {
+        "title": "Three substances",
+        "t": 116.517
+      },
+      {
+        "title": "Sorting properties",
+        "t": 144.506
+      },
+      {
+        "title": "Not reacting counts",
+        "t": 179.264
+      },
+      {
+        "title": "Your turn",
+        "t": 195.491
+      },
+      {
+        "title": "Summary",
+        "t": 223.805
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-4-b:q",
+        "t": 202.919,
+        "prompt": "Which of these is a **chemical** property of magnesium?",
+        "choices": [
+          "It is silvery grey.",
+          "It burns in air with a bright white flame.",
+          "It melts at $650^\\circ\\text{C}$.",
+          "It conducts electricity."
+        ],
+        "answer": 1,
+        "working": "Burning makes a new substance, so flammability is a chemical property. Colour, melting point and conductivity can be observed or measured without making anything new."
+      }
+    ]
+  },
+  "c10-1-4-c": {
+    "lessonId": "c10-1-4",
+    "title": "Physical and Chemical Change, Part 3: Density",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What density is",
+        "t": 19.917
+      },
+      {
+        "title": "Identifying a substance",
+        "t": 57.996
+      },
+      {
+        "title": "Finding a mass",
+        "t": 104.077
+      },
+      {
+        "title": "Same substance, same density",
+        "t": 133.144
+      },
+      {
+        "title": "Your turn",
+        "t": 147.559
+      },
+      {
+        "title": "Summary",
+        "t": 189.131
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-4-c:q",
+        "t": 161.415,
+        "prompt": "Copper has a density of $8.96\\ \\text{g/cm}^3$. What volume of copper has a mass of $44.8\\ \\text{g}$?",
+        "choices": [
+          "$401.4\\ \\text{cm}^3$",
+          "$0.20\\ \\text{cm}^3$",
+          "$5.00\\ \\text{cm}^3$",
+          "$35.84\\ \\text{cm}^3$"
+        ],
+        "answer": 2,
+        "working": "$V = \\dfrac{m}{\\rho} = \\dfrac{44.8}{8.96} = 5.00\\ \\text{cm}^3$."
+      }
+    ]
+  },
+  "c10-1-4-d": {
+    "lessonId": "c10-1-4",
+    "title": "Physical and Chemical Change, Part 4: Displacement and Floating",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Volume by displacement",
+        "t": 20.223
+      },
+      {
+        "title": "The density of a key",
+        "t": 55.651
+      },
+      {
+        "title": "Floating and sinking",
+        "t": 87.941
+      },
+      {
+        "title": "Heavy is not dense",
+        "t": 128.317
+      },
+      {
+        "title": "Your turn",
+        "t": 147.046
+      },
+      {
+        "title": "Summary",
+        "t": 195.548
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-4-d:q",
+        "t": 168.963,
+        "prompt": "A block of wood has a mass of $54.0\\ \\text{g}$ and a volume of $90.0\\ \\text{cm}^3$. Water has a density of $1.00\\ \\text{g/cm}^3$. What is the density of the block, and does it float in water?",
+        "choices": [
+          "$1.67\\ \\text{g/cm}^3$; it sinks.",
+          "$0.60\\ \\text{g/cm}^3$; it sinks.",
+          "$1.67\\ \\text{g/cm}^3$; it floats.",
+          "$0.60\\ \\text{g/cm}^3$; it floats."
+        ],
+        "answer": 3,
+        "working": "$\\rho = \\dfrac{54.0}{90.0} = 0.60\\ \\text{g/cm}^3$, which is less than $1.00\\ \\text{g/cm}^3$, so the block floats."
+      }
+    ]
+  },
+  "c10-1-5": {
+    "lessonId": "c10-1-5",
+    "title": "Lab Safety and Hazard Symbols, Part 1: Hazard Pictograms",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The red diamond",
+        "t": 28.018
+      },
+      {
+        "title": "Fire, explosion and pressure",
+        "t": 74.192
+      },
+      {
+        "title": "Safety data sheets",
+        "t": 138.658
+      },
+      {
+        "title": "Your turn",
+        "t": 164.381
+      },
+      {
+        "title": "Summary",
+        "t": 200.151
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-5:q",
+        "t": 175.926,
+        "prompt": "A chemical label shows a hazard pictogram: a red-bordered diamond containing a flame above a circle. What does it warn you about?",
+        "choices": [
+          "Flammable: it catches fire easily.",
+          "Oxidizer: it gives off oxygen and can make other materials burn fiercely.",
+          "Explosive: it can explode if heated, struck or rubbed.",
+          "Gas under pressure: the container may burst if heated."
+        ],
+        "answer": 1,
+        "working": "The flame over circle pictogram marks an oxidizer: it gives off oxygen and makes other materials burn faster and hotter."
+      }
+    ]
+  },
+  "c10-1-5-b": {
+    "lessonId": "c10-1-5",
+    "title": "Lab Safety and Hazard Symbols, Part 2: Harm to People and the Environment",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five more pictograms",
+        "t": 19.845
+      },
+      {
+        "title": "Skull or exclamation mark?",
+        "t": 103.716
+      },
+      {
+        "title": "Reading a label",
+        "t": 130.481
+      },
+      {
+        "title": "Your turn",
+        "t": 178.468
+      },
+      {
+        "title": "Summary",
+        "t": 211.891
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-5-b:q",
+        "t": 190.915,
+        "prompt": "A label must warn that swallowing even a few drops of a liquid could kill. Which symbol should its red-bordered diamond show?",
+        "choices": [
+          "an exclamation mark (!)",
+          "a dead tree and a dead fish",
+          "a skull and crossbones",
+          "a head and chest with a star-shaped burst"
+        ],
+        "answer": 2,
+        "working": "The skull and crossbones pictogram means acutely toxic: a small amount can poison or kill. The exclamation mark warns of a less severe hazard."
+      }
+    ]
+  },
+  "c10-1-5-c": {
+    "lessonId": "c10-1-5",
+    "title": "Lab Safety and Hazard Symbols, Part 3: Protecting Yourself and Heating Safely",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Protect yourself",
+        "t": 24.208
+      },
+      {
+        "title": "Heating a test tube",
+        "t": 70.362
+      },
+      {
+        "title": "Flames and hot glass",
+        "t": 96.661
+      },
+      {
+        "title": "Your turn",
+        "t": 132.629
+      },
+      {
+        "title": "Summary",
+        "t": 166.795
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-5-c:q",
+        "t": 143.493,
+        "prompt": "You are heating a liquid in a test tube over a Bunsen burner. Which way should the open end of the tube point?",
+        "choices": [
+          "Away from yourself and everyone else.",
+          "Towards yourself, so that you can see inside.",
+          "Towards your partner, who is watching.",
+          "Straight up, with a stopper pushed in tightly."
+        ],
+        "answer": 0,
+        "working": "A liquid heated in a narrow tube can boil suddenly and shoot out of the open end, so it must point away from everyone. A stoppered tube could burst as the gas inside expands."
+      }
+    ]
+  },
+  "c10-1-5-d": {
+    "lessonId": "c10-1-5",
+    "title": "Lab Safety and Hazard Symbols, Part 4: Handling Chemicals and Reporting Accidents",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Handle chemicals safely",
+        "t": 23.225
+      },
+      {
+        "title": "Acid to water",
+        "t": 59.81
+      },
+      {
+        "title": "Report everything",
+        "t": 84.59
+      },
+      {
+        "title": "Spotting unsafe actions",
+        "t": 115.057
+      },
+      {
+        "title": "Your turn",
+        "t": 172.667
+      },
+      {
+        "title": "Summary",
+        "t": 204.346
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-1-5-d:q",
+        "t": 181.73,
+        "prompt": "A concentrated acid has to be diluted with water. How should it be done?",
+        "choices": [
+          "Pour the water quickly into the acid.",
+          "Pour the acid and the water into a beaker at the same moment.",
+          "Add the water to the acid in a sealed bottle and shake it.",
+          "Add the acid slowly to the water while stirring."
+        ],
+        "answer": 3,
+        "working": "Mixing gives out a lot of heat. Adding a little acid at a time to plenty of water lets the water absorb the heat, so the mixture cannot boil and spit acid."
+      }
+    ]
+  },
   "c10-2-1": {
     "lessonId": "c10-2-1",
     "title": "Inside the Atom, Part 1: Three Particles",
@@ -1549,6 +1898,151 @@
         ],
         "answer": 1,
         "working": "Iodine is below chlorine in group 17, so it is less reactive. It cannot take an electron from the chloride ions, so there is no reaction."
+      }
+    ]
+  },
+  "c10-3-1": {
+    "lessonId": "c10-3-1",
+    "title": "Ions, Part 1: Why Atoms Form Ions",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Full outer shells",
+        "t": 29.278
+      },
+      {
+        "title": "Sodium loses an electron",
+        "t": 67.399
+      },
+      {
+        "title": "Chlorine gains an electron",
+        "t": 111.784
+      },
+      {
+        "title": "What an ion is",
+        "t": 149.642
+      },
+      {
+        "title": "Your turn",
+        "t": 172.615
+      },
+      {
+        "title": "Summary",
+        "t": 211.251
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-1:q",
+        "t": 188.069,
+        "prompt": "Why does an atom of magnesium (atomic number $12$, electron arrangement 2,8,2) form the ion $\\ce{Mg^2+}$?",
+        "choices": [
+          "It gains 2 electrons, filling its outer shell.",
+          "It loses 2 electrons, leaving a full outer shell like neon’s.",
+          "It loses 2 protons from its nucleus.",
+          "It gains 2 protons in its nucleus."
+        ],
+        "answer": 1,
+        "working": "The outer shell holds 2 electrons. Losing both leaves 2,8, a full outer shell like neon’s, and a charge of 2+. The protons never change."
+      }
+    ]
+  },
+  "c10-3-1-b": {
+    "lessonId": "c10-3-1",
+    "title": "Ions, Part 2: Charges from the Group",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Metals lose, non-metals gain",
+        "t": 21.145
+      },
+      {
+        "title": "The group gives the charge",
+        "t": 62.987
+      },
+      {
+        "title": "Predicting an ion",
+        "t": 124.074
+      },
+      {
+        "title": "Your turn",
+        "t": 169.49
+      },
+      {
+        "title": "Summary",
+        "t": 205.077
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-1-b:q",
+        "t": 178.538,
+        "prompt": "Phosphorus is a non-metal in group $15$. Which ion does it form?",
+        "choices": [
+          "$\\ce{P^5+}$",
+          "$\\ce{P^5-}$",
+          "$\\ce{P^3-}$",
+          "$\\ce{P^3+}$"
+        ],
+        "answer": 2,
+        "working": "Group $15$: $5$ outer electrons. A non-metal gains $8 - 5 = 3$ electrons, so the charge is 3−."
+      }
+    ]
+  },
+  "c10-3-1-c": {
+    "lessonId": "c10-3-1",
+    "title": "Ions, Part 3: Writing and Naming Ions",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Writing the charge",
+        "t": 22.962
+      },
+      {
+        "title": "Naming ions",
+        "t": 69.223
+      },
+      {
+        "title": "From the atomic number",
+        "t": 102.072
+      },
+      {
+        "title": "Your turn",
+        "t": 137.87
+      },
+      {
+        "title": "Summary",
+        "t": 177.146
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-1-c:q",
+        "t": 148.292,
+        "prompt": "Nitrogen has atomic number $7$. Which ion does it form, and what is the ion called?",
+        "choices": [
+          "$\\ce{N^3-}$, the nitride ion",
+          "$\\ce{N^3-}$, the nitrogen ion",
+          "$\\ce{N^5+}$, the nitrogen ion",
+          "$\\ce{N^3+}$, the nitride ion"
+        ],
+        "answer": 0,
+        "working": "$7$ electrons: 2,5. A non-metal gains $8 - 5 = 3$ electrons, so the charge is 3−, and a negative ion ends in -ide: $\\ce{N^3-}$, the nitride ion."
       }
     ]
   },
