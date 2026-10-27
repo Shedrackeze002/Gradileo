@@ -2348,6 +2348,163 @@
       }
     ]
   },
+  "c10-3-3-b": {
+    "lessonId": "c10-3-3",
+    "title": "Covalent Bonds and Molecular Names, Part 2: Sharing Electrons",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hydrogen",
+        "t": 20.329
+      },
+      {
+        "title": "Hydrogen chloride",
+        "t": 64.811
+      },
+      {
+        "title": "Water",
+        "t": 89.998
+      },
+      {
+        "title": "How many bonds?",
+        "t": 114.283
+      },
+      {
+        "title": "Your turn",
+        "t": 149.372
+      },
+      {
+        "title": "Summary",
+        "t": 183.161
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-3-b:q",
+        "t": 158.69,
+        "prompt": "How many shared pairs of electrons (covalent bonds) are in a molecule of ammonia, $\\ce{NH3}$?",
+        "choices": [
+          "$3$",
+          "$1$",
+          "$5$",
+          "$4$"
+        ],
+        "answer": 0,
+        "working": "Nitrogen has $5$ outer electrons and needs $3$ more. It shares one pair with each of the three hydrogen atoms."
+      }
+    ]
+  },
+  "c10-3-3-c": {
+    "lessonId": "c10-3-3",
+    "title": "Covalent Bonds and Molecular Names, Part 3: Double and Triple Bonds",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Oxygen and nitrogen",
+        "t": 21.804
+      },
+      {
+        "title": "Carbon dioxide",
+        "t": 60.408
+      },
+      {
+        "title": "Pairs and electrons",
+        "t": 96.967
+      },
+      {
+        "title": "The diatomic elements",
+        "t": 133.399
+      },
+      {
+        "title": "Your turn",
+        "t": 152.816
+      },
+      {
+        "title": "Summary",
+        "t": 185.144
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-3-c:q",
+        "t": 161.502,
+        "prompt": "How many electrons are shared between the atoms (bonding electrons) in a molecule of nitrogen, $\\ce{N2}$?",
+        "choices": [
+          "$3$",
+          "$2$",
+          "$10$",
+          "$6$"
+        ],
+        "answer": 3,
+        "working": "Each nitrogen atom needs $3$ more electrons, so the atoms share three pairs: a triple bond. $3 \\times 2 = 6$ bonding electrons."
+      }
+    ]
+  },
+  "c10-3-3-d": {
+    "lessonId": "c10-3-3",
+    "title": "Covalent Bonds and Molecular Names, Part 4: Naming Molecular Compounds",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting prefixes",
+        "t": 24.005
+      },
+      {
+        "title": "Three rules",
+        "t": 52.332
+      },
+      {
+        "title": "More names",
+        "t": 102.991
+      },
+      {
+        "title": "From a name to a formula",
+        "t": 135.501
+      },
+      {
+        "title": "Check the elements first",
+        "t": 176.815
+      },
+      {
+        "title": "Your turn",
+        "t": 204.453
+      },
+      {
+        "title": "Summary",
+        "t": 234.106
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-3-d:q",
+        "t": 211.357,
+        "prompt": "Name the molecular compound $\\ce{N2O3}$.",
+        "choices": [
+          "nitrogen trioxide",
+          "dinitrogen trioxide",
+          "nitrogen oxide",
+          "dinitrogen monoxide"
+        ],
+        "answer": 1,
+        "working": "Two nitrogen atoms: “dinitrogen”. Three oxygen atoms: “trioxide”."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
