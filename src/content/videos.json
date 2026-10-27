@@ -838,6 +838,53 @@
       }
     ]
   },
+  "c10-2-5-d": {
+    "lessonId": "c10-2-5",
+    "title": "Families of Elements, Part 4: Displacement and the Noble Gases",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Displacement reactions",
+        "t": 24.441
+      },
+      {
+        "title": "Predicting displacement",
+        "t": 76.884
+      },
+      {
+        "title": "The noble gases",
+        "t": 119.457
+      },
+      {
+        "title": "Your turn",
+        "t": 170.502
+      },
+      {
+        "title": "Summary",
+        "t": 206.794
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-5-d:q",
+        "t": 181.534,
+        "prompt": "Iodine solution is added to a colourless solution of potassium chloride. Does a reaction happen? (In group $17$, from the top down: fluorine, chlorine, bromine, iodine.)",
+        "choices": [
+          "Yes: iodine displaces the chloride ions, and chlorine forms.",
+          "No: iodine is less reactive than chlorine, so it cannot displace the chloride ions.",
+          "Yes: chlorine is more reactive, so the solution turns brown.",
+          "No: iodine is more reactive than chlorine, so it cannot displace the chloride ions."
+        ],
+        "answer": 1,
+        "working": "Iodine is below chlorine in group 17, so it is less reactive. It cannot take an electron from the chloride ions, so there is no reaction."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
