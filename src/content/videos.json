@@ -787,6 +787,57 @@
       }
     ]
   },
+  "c10-2-5-c": {
+    "lessonId": "c10-2-5",
+    "title": "Families of Elements, Part 3: The Halogens",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Salt-formers",
+        "t": 20.047
+      },
+      {
+        "title": "Down the group",
+        "t": 45.179
+      },
+      {
+        "title": "Why reactivity decreases",
+        "t": 83.8
+      },
+      {
+        "title": "Opposite trends",
+        "t": 107.785
+      },
+      {
+        "title": "Your turn",
+        "t": 131.024
+      },
+      {
+        "title": "Summary",
+        "t": 169.282
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-5-c:q",
+        "t": 147.28,
+        "prompt": "At room temperature, fluorine and chlorine are gases, bromine is a liquid and iodine is a solid. Astatine is below iodine in group $17$. Predict its state at room temperature.",
+        "choices": [
+          "A solid",
+          "A liquid",
+          "A gas",
+          "It cannot be predicted"
+        ],
+        "answer": 0,
+        "working": "Down group 17 the melting and boiling points rise: gas, gas, liquid, solid. Astatine, below iodine, should also be a solid."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
