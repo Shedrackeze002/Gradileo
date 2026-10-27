@@ -2505,6 +2505,308 @@
       }
     ]
   },
+  "c10-3-4": {
+    "lessonId": "c10-3-4",
+    "title": "Bonding and Properties, Part 1: Ionic Compounds",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two questions",
+        "t": 32.245
+      },
+      {
+        "title": "High melting points",
+        "t": 84.445
+      },
+      {
+        "title": "Conducting electricity",
+        "t": 123.155
+      },
+      {
+        "title": "Soluble but brittle",
+        "t": 150.011
+      },
+      {
+        "title": "Your turn",
+        "t": 184.673
+      },
+      {
+        "title": "Summary",
+        "t": 220.926
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-4:q",
+        "t": 195.352,
+        "prompt": "Why does solid sodium chloride not conduct electricity, while molten sodium chloride does?",
+        "choices": [
+          "In the solid its ions are held in place; in the liquid they are free to move and carry the current.",
+          "Melting releases electrons from its covalent bonds.",
+          "In the solid its ions are too far apart to carry a current.",
+          "Molten sodium chloride is made of metal atoms, which conduct."
+        ],
+        "answer": 0,
+        "working": "A current needs charged particles that can move. Sodium chloride’s ions are fixed in the solid lattice, but free to move when it melts."
+      }
+    ]
+  },
+  "c10-3-4-b": {
+    "lessonId": "c10-3-4",
+    "title": "Bonding and Properties, Part 2: Molecules and Giant Networks",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Simple molecular substances",
+        "t": 20.747
+      },
+      {
+        "title": "Low melting points",
+        "t": 43.109
+      },
+      {
+        "title": "Conducting and dissolving",
+        "t": 90.21
+      },
+      {
+        "title": "Giant covalent structures",
+        "t": 125.187
+      },
+      {
+        "title": "Your turn",
+        "t": 185.392
+      },
+      {
+        "title": "Summary",
+        "t": 223.899
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-4-b:q",
+        "t": 193.365,
+        "prompt": "Why does diamond have a much higher melting point than iodine?",
+        "choices": [
+          "Diamond has ionic bonds, which are stronger.",
+          "Melting iodine breaks its covalent bonds; diamond’s are too strong to break.",
+          "Diamond has free electrons that hold its atoms together.",
+          "Melting diamond breaks strong covalent bonds; melting iodine only separates molecules."
+        ],
+        "answer": 3,
+        "working": "Diamond is a giant covalent structure and iodine is simple molecular."
+      }
+    ]
+  },
+  "c10-3-4-c": {
+    "lessonId": "c10-3-4",
+    "title": "Bonding and Properties, Part 3: Graphite and Metals",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Graphite",
+        "t": 25.986
+      },
+      {
+        "title": "Metallic bonding",
+        "t": 54.976
+      },
+      {
+        "title": "Properties of metals",
+        "t": 78.697
+      },
+      {
+        "title": "All four structures",
+        "t": 133.295
+      },
+      {
+        "title": "Your turn",
+        "t": 177.328
+      },
+      {
+        "title": "Summary",
+        "t": 214.016
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-4-c:q",
+        "t": 185.946,
+        "prompt": "Why can a metal be hammered into shape, while an ionic crystal shatters?",
+        "choices": [
+          "Metal atoms are softer than ions.",
+          "Metal layers slide and the sea of electrons still holds them; sliding an ionic crystal brings like charges together.",
+          "Metals have weak bonds, while ionic bonds are too strong to bend.",
+          "Ionic crystals contain free electrons that make them brittle."
+        ],
+        "answer": 1,
+        "working": "In a metal, the electron sea holds the ions wherever the layers slide. In an ionic crystal, sliding puts ions of the same charge face to face, and they repel."
+      }
+    ]
+  },
+  "c10-3-4-d": {
+    "lessonId": "c10-3-4",
+    "title": "Bonding and Properties, Part 4: Identifying a Structure",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three questions",
+        "t": 22.234
+      },
+      {
+        "title": "One substance",
+        "t": 54.362
+      },
+      {
+        "title": "Four substances",
+        "t": 95.287
+      },
+      {
+        "title": "Conductivity first",
+        "t": 135.395
+      },
+      {
+        "title": "Your turn",
+        "t": 161.947
+      },
+      {
+        "title": "Summary",
+        "t": 206.272
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-3-4-d:q",
+        "t": 180.762,
+        "prompt": "A substance melts at $770$ °C. It does not conduct electricity as a solid, but it does when molten, and it dissolves in water to give a solution that conducts. What kind of structure does it most likely have?",
+        "choices": [
+          "metallic",
+          "simple molecular",
+          "ionic",
+          "giant covalent"
+        ],
+        "answer": 2,
+        "working": "It conducts when molten but not as a solid: its ions are fixed in the solid and free to move in the liquid."
+      }
+    ]
+  },
+  "c10-4-1": {
+    "lessonId": "c10-4-1",
+    "title": "Word Equations and Conservation of Mass, Part 1: Reactants, Products and Word Equations",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reactants and products",
+        "t": 27.22
+      },
+      {
+        "title": "Word equations",
+        "t": 68.4
+      },
+      {
+        "title": "Zinc in acid",
+        "t": 92.621
+      },
+      {
+        "title": "Heat and catalysts",
+        "t": 140.461
+      },
+      {
+        "title": "Your turn",
+        "t": 179.768
+      },
+      {
+        "title": "Summary",
+        "t": 218.287
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-1:q",
+        "t": 195.227,
+        "prompt": "An iron nail is placed in copper(II) sulfate solution. A coating of copper forms on the nail, and iron(II) sulfate forms in the solution. Which word equation describes the reaction?",
+        "choices": [
+          "iron(II) sulfate + copper → iron + copper(II) sulfate",
+          "iron + copper(II) sulfate → iron(II) sulfide + copper",
+          "iron + copper(II) sulfate → iron(II) sulfate + copper",
+          "iron + copper(II) sulfate + copper → iron(II) sulfate"
+        ],
+        "answer": 2,
+        "working": "Used up: iron and copper(II) sulfate, on the left. New: iron(II) sulfate and copper, on the right."
+      }
+    ]
+  },
+  "c10-4-1-b": {
+    "lessonId": "c10-4-1",
+    "title": "Word Equations and Conservation of Mass, Part 2: Identifying the Products",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four tests",
+        "t": 22.242
+      },
+      {
+        "title": "Marble chips in acid",
+        "t": 67.055
+      },
+      {
+        "title": "A water plant in light",
+        "t": 119.446
+      },
+      {
+        "title": "Your turn",
+        "t": 160.151
+      },
+      {
+        "title": "Summary",
+        "t": 203.42
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-1-b:q",
+        "t": 177.381,
+        "prompt": "A small piece of sodium is placed on water. Sodium hydroxide forms and dissolves, and the gas given off burns with a squeaky pop. Which word equation describes the reaction?",
+        "choices": [
+          "sodium + water → sodium hydroxide + hydrogen",
+          "sodium + water → sodium hydroxide + oxygen",
+          "sodium hydroxide + hydrogen → sodium + water",
+          "sodium + water → sodium oxide + hydrogen"
+        ],
+        "answer": 0,
+        "working": "A gas that burns with a squeaky pop is hydrogen. Reactants: sodium and water. Products: sodium hydroxide and hydrogen."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
