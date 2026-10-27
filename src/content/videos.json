@@ -148,6 +148,645 @@
       }
     ]
   },
+  "c10-2-1-d": {
+    "lessonId": "c10-2-1",
+    "title": "Inside the Atom, Part 4: Identifying an Element",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Protons decide the element",
+        "t": 16.801
+      },
+      {
+        "title": "From the electrons",
+        "t": 52.223
+      },
+      {
+        "title": "From the mass number",
+        "t": 86.756
+      },
+      {
+        "title": "Your turn",
+        "t": 122.131
+      },
+      {
+        "title": "Summary",
+        "t": 158.967
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-1-d:q",
+        "t": 132.54,
+        "prompt": "An atom has a mass number of $40$ and contains $22$ neutrons. Which element is it? Use these atomic numbers: argon $18$, calcium $20$, titanium $22$, zirconium $40$.",
+        "choices": [
+          "Titanium",
+          "Argon",
+          "Calcium",
+          "Zirconium"
+        ],
+        "answer": 1,
+        "working": "Protons $= 40 - 22 = 18$. The element with atomic number $18$ is argon."
+      }
+    ]
+  },
+  "c10-2-2": {
+    "lessonId": "c10-2-2",
+    "title": "Isotopes and Relative Atomic Mass, Part 1: Isotopes",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same protons, different neutrons",
+        "t": 35.125
+      },
+      {
+        "title": "Counting neutrons",
+        "t": 79.824
+      },
+      {
+        "title": "Isotopes react in the same way",
+        "t": 116.897
+      },
+      {
+        "title": "Same mass number, different elements",
+        "t": 161.481
+      },
+      {
+        "title": "Your turn",
+        "t": 183.659
+      },
+      {
+        "title": "Summary",
+        "t": 221.121
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-2:q",
+        "t": 195.442,
+        "prompt": "Atom W has $12$ protons and $12$ neutrons, atom X has $12$ protons and $14$ neutrons, atom Y has $13$ protons and $11$ neutrons, and atom Z has $11$ protons and $14$ neutrons. Which two atoms are isotopes of the same element?",
+        "choices": [
+          "W and Y",
+          "X and Z",
+          "W and X",
+          "Y and Z"
+        ],
+        "answer": 2,
+        "working": "W and X both have $12$ protons, so they are the same element, with different numbers of neutrons. W and Y have the same mass number, $24$, but different numbers of protons, so they are different elements."
+      }
+    ]
+  },
+  "c10-2-2-b": {
+    "lessonId": "c10-2-2",
+    "title": "Isotopes and Relative Atomic Mass, Part 2: Relative Atomic Mass",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Abundance",
+        "t": 20.996
+      },
+      {
+        "title": "A weighted mean",
+        "t": 54.269
+      },
+      {
+        "title": "Using percentages",
+        "t": 105.202
+      },
+      {
+        "title": "Not a simple average",
+        "t": 160.951
+      },
+      {
+        "title": "Your turn",
+        "t": 186.441
+      },
+      {
+        "title": "Summary",
+        "t": 230.098
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-2-b:q",
+        "t": 203.804,
+        "prompt": "In a sample of potassium, $93\\%$ of the atoms are potassium-39 and $7\\%$ are potassium-41. Taking the mass of each isotope to be its mass number, calculate the relative atomic mass of potassium to the nearest tenth.",
+        "choices": [
+          "$40.0$",
+          "$40.9$",
+          "$39.0$",
+          "$39.1$"
+        ],
+        "answer": 3,
+        "working": "$A_r = \\dfrac{39 \\times 93 + 41 \\times 7}{100} = \\dfrac{3627 + 287}{100} = \\dfrac{3914}{100} = 39.14$, which is $39.1$ to the nearest tenth."
+      }
+    ]
+  },
+  "c10-2-2-c": {
+    "lessonId": "c10-2-2",
+    "title": "Isotopes and Relative Atomic Mass, Part 3: Measured Masses and Abundances",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Measured masses",
+        "t": 23.264
+      },
+      {
+        "title": "The percentages add up to 100",
+        "t": 89.013
+      },
+      {
+        "title": "Finding an abundance",
+        "t": 112.275
+      },
+      {
+        "title": "Check with an estimate",
+        "t": 173.193
+      },
+      {
+        "title": "Your turn",
+        "t": 195.434
+      },
+      {
+        "title": "Summary",
+        "t": 246.004
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-2-c:q",
+        "t": 216.556,
+        "prompt": "Gallium has two isotopes, gallium-69 and gallium-71. Take the mass of each isotope to be its mass number. A sample of gallium has a relative atomic mass of $69.8$. What percentage of the atoms are gallium-69?",
+        "choices": [
+          "$40\\%$",
+          "$60\\%$",
+          "$80\\%$",
+          "$20\\%$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{69x + 71(100 - x)}{100} = 69.8$. Multiply by $100$: $69x + 7100 - 71x = 6980$, so $7100 - 2x = 6980$ and $x = 60$. Check: $\\dfrac{69 \\times 60 + 71 \\times 40}{100} = \\dfrac{6980}{100} = 69.8$."
+      }
+    ]
+  },
+  "c10-2-3": {
+    "lessonId": "c10-2-3",
+    "title": "Electron Shells, Part 1: Filling the Shells",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electron shells",
+        "t": 38.522
+      },
+      {
+        "title": "Electron arrangement",
+        "t": 81.794
+      },
+      {
+        "title": "Chlorine, step by step",
+        "t": 117.829
+      },
+      {
+        "title": "Your turn",
+        "t": 152.213
+      },
+      {
+        "title": "Summary",
+        "t": 187.275
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-3:q",
+        "t": 162.659,
+        "prompt": "Which is the electron arrangement of a neutral atom of aluminium, atomic number $13$?",
+        "choices": [
+          "2,8,3",
+          "2,11",
+          "3,8,2",
+          "8,5"
+        ],
+        "answer": 0,
+        "working": "The first shell takes $2$, leaving $11$. The second shell takes $8$, leaving $3$. The third shell takes the last $3$: 2,8,3."
+      }
+    ]
+  },
+  "c10-2-3-b": {
+    "lessonId": "c10-2-3",
+    "title": "Electron Shells, Part 2: The First 20 Elements",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The fourth shell",
+        "t": 16.72
+      },
+      {
+        "title": "Potassium is 2,8,8,1",
+        "t": 45.238
+      },
+      {
+        "title": "The first 20 elements",
+        "t": 69.681
+      },
+      {
+        "title": "From an arrangement to an element",
+        "t": 88.799
+      },
+      {
+        "title": "Your turn",
+        "t": 130.199
+      },
+      {
+        "title": "Summary",
+        "t": 163.295
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-3-b:q",
+        "t": 140.125,
+        "prompt": "A neutral atom has the electron arrangement 2,8,8. Which element is it? Use these atomic numbers: neon $10$, chlorine $17$, argon $18$, potassium $19$.",
+        "choices": [
+          "Neon",
+          "Chlorine",
+          "Argon",
+          "Potassium"
+        ],
+        "answer": 2,
+        "working": "Electrons: $2 + 8 + 8 = 18$. A neutral atom has as many protons as electrons, so the atomic number is $18$: argon."
+      }
+    ]
+  },
+  "c10-2-3-c": {
+    "lessonId": "c10-2-3",
+    "title": "Electron Shells, Part 3: Outer Electrons, Groups and Periods",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Outer electrons",
+        "t": 19.154
+      },
+      {
+        "title": "Groups and periods",
+        "t": 53.831
+      },
+      {
+        "title": "Sulfur and fluorine",
+        "t": 96.048
+      },
+      {
+        "title": "The last number, not the total",
+        "t": 141.164
+      },
+      {
+        "title": "Your turn",
+        "t": 159.965
+      },
+      {
+        "title": "Summary",
+        "t": 193.14
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-3-c:q",
+        "t": 169.905,
+        "prompt": "An atom has the electron arrangement 2,6. In which group and which period of the periodic table is it? (Groups are numbered $1$ to $18$.)",
+        "choices": [
+          "Group $6$, period $2$",
+          "Group $16$, period $6$",
+          "Group $2$, period $16$",
+          "Group $16$, period $2$"
+        ],
+        "answer": 3,
+        "working": "Two shells: period $2$. Six outer electrons: group $6 + 10 = 16$."
+      }
+    ]
+  },
+  "c10-2-4": {
+    "lessonId": "c10-2-4",
+    "title": "The Periodic Table, Part 1: Groups and Periods",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Groups and periods",
+        "t": 37.4
+      },
+      {
+        "title": "Reading the table",
+        "t": 76.559
+      },
+      {
+        "title": "Groups go down, periods go across",
+        "t": 109.643
+      },
+      {
+        "title": "Your turn",
+        "t": 133.459
+      },
+      {
+        "title": "Summary",
+        "t": 173.155
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-4:q",
+        "t": 146.867,
+        "prompt": "An element is in the same period as sodium (group $1$, period $3$) and in the same group as fluorine (group $17$, period $2$). Which element is it?",
+        "choices": [
+          "Chlorine",
+          "Lithium",
+          "Argon",
+          "Sulfur"
+        ],
+        "answer": 0,
+        "working": "The same period as sodium is period $3$, and the same group as fluorine is group $17$. Group $17$, period $3$ is chlorine."
+      }
+    ]
+  },
+  "c10-2-4-b": {
+    "lessonId": "c10-2-4",
+    "title": "The Periodic Table, Part 2: Why the Table Works",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same group, same outer electrons",
+        "t": 19.051
+      },
+      {
+        "title": "Potassium and sodium",
+        "t": 71.774
+      },
+      {
+        "title": "The long periods",
+        "t": 107.09
+      },
+      {
+        "title": "Your turn",
+        "t": 147.984
+      },
+      {
+        "title": "Summary",
+        "t": 185.77
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-4-b:q",
+        "t": 160.841,
+        "prompt": "Period $4$ begins with potassium, atomic number $19$, in group $1$, and has one element in each group from $1$ to $18$, in order of atomic number. In which group is zinc, atomic number $30$?",
+        "choices": [
+          "Group $11$",
+          "Group $12$",
+          "Group $30$",
+          "Group $2$"
+        ],
+        "answer": 1,
+        "working": "Zinc is $30 - 19 = 11$ places after potassium, so it is in group $1 + 11 = 12$, a transition metal."
+      }
+    ]
+  },
+  "c10-2-4-c": {
+    "lessonId": "c10-2-4",
+    "title": "The Periodic Table, Part 3: Metals and Non-metals",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where they are",
+        "t": 23.323
+      },
+      {
+        "title": "Properties",
+        "t": 50.597
+      },
+      {
+        "title": "State is not enough",
+        "t": 99.981
+      },
+      {
+        "title": "Your turn",
+        "t": 134.096
+      },
+      {
+        "title": "Summary",
+        "t": 173.785
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-4-c:q",
+        "t": 150.695,
+        "prompt": "An element is a liquid at room temperature. It is dark red-brown, gives off an orange vapour, and does not conduct electricity. Is it a metal, a non-metal or a metalloid?",
+        "choices": [
+          "A metal",
+          "A metalloid",
+          "A non-metal",
+          "There is not enough information"
+        ],
+        "answer": 2,
+        "working": "Being a liquid does not decide it. It is not shiny and does not conduct: those are the properties of a non-metal. (It is bromine.)"
+      }
+    ]
+  },
+  "c10-2-4-d": {
+    "lessonId": "c10-2-4",
+    "title": "The Periodic Table, Part 4: Metalloids and the Staircase",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The staircase",
+        "t": 19.819
+      },
+      {
+        "title": "Left and right of the line",
+        "t": 62.167
+      },
+      {
+        "title": "Classifying by place",
+        "t": 91.018
+      },
+      {
+        "title": "Classifying by properties",
+        "t": 114.983
+      },
+      {
+        "title": "Your turn",
+        "t": 146.242
+      },
+      {
+        "title": "Summary",
+        "t": 181.738
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-4-d:q",
+        "t": 159.255,
+        "prompt": "Three solid elements are tested. Q is shiny and silver-grey, conducts electricity well, and flattens when hit. R is dull and yellow, does not conduct, and shatters into powder. X is shiny and dark grey, conducts a little, and shatters. Which is most likely a metalloid?",
+        "choices": [
+          "Q",
+          "R",
+          "Q and X",
+          "X"
+        ],
+        "answer": 3,
+        "working": "Q is shiny, conducts well and is malleable: a metal. R is dull, does not conduct and is brittle: a non-metal. X is shiny like a metal, but brittle and only a weak conductor: a metalloid."
+      }
+    ]
+  },
+  "c10-2-5": {
+    "lessonId": "c10-2-5",
+    "title": "Families of Elements, Part 1: The Families",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The families",
+        "t": 29.825
+      },
+      {
+        "title": "Alkaline earth metals",
+        "t": 81.373
+      },
+      {
+        "title": "Transition metals",
+        "t": 111.532
+      },
+      {
+        "title": "Your turn",
+        "t": 167.931
+      },
+      {
+        "title": "Summary",
+        "t": 200.073
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-5:q",
+        "t": 181.75,
+        "prompt": "Which family of elements is described here: colourless gases that exist as single atoms and hardly ever react, because their outer shells are full?",
+        "choices": [
+          "The noble gases",
+          "The halogens",
+          "The alkali metals",
+          "The transition metals"
+        ],
+        "answer": 0,
+        "working": "These are the noble gases, in group 18. The halogens are reactive, and exist as molecules of two atoms."
+      }
+    ]
+  },
+  "c10-2-5-b": {
+    "lessonId": "c10-2-5",
+    "title": "Families of Elements, Part 2: The Alkali Metals",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Unusual metals",
+        "t": 19.825
+      },
+      {
+        "title": "Reacting with water",
+        "t": 46.784
+      },
+      {
+        "title": "Down the group",
+        "t": 72.087
+      },
+      {
+        "title": "Why reactivity increases",
+        "t": 109.138
+      },
+      {
+        "title": "Your turn",
+        "t": 140.506
+      },
+      {
+        "title": "Summary",
+        "t": 179.263
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-2-5-b:q",
+        "t": 155.359,
+        "prompt": "Put potassium (atomic number $19$), lithium ($3$) and caesium ($55$), all alkali metals, in order of reactivity, most reactive first.",
+        "choices": [
+          "Lithium, potassium, caesium",
+          "Caesium, potassium, lithium",
+          "Potassium, lithium, caesium",
+          "Caesium, lithium, potassium"
+        ],
+        "answer": 1,
+        "working": "A larger atomic number means further down the group: lithium, then potassium, then caesium. Reactivity increases down group 1, so caesium is the most reactive."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
