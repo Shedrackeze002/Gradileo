@@ -51,6 +51,11 @@ describe('speechText', () => {
     expect(speechText("Swap Ava and Kwame; Kwame's job changes.")).toBe("Swap Ava and Kwahmay; Kwahmay's job changes.");
     expect(speechText('Jun jumps farther than Junaid in June.')).toBe('Joon jumps farther than Junaid in June.');
     expect(speechText('Amedeo Avogadro was an Italian scientist.')).toBe('Ama-day-o Avogadro was an Italian scientist.');
+    expect(speechText('Octa eight, nona nine, and deca ten. Sodium carbonate decahydrate.')).toBe('Octa eight, nona nine, and decka ten. Sodium carbonate deckahydrate.');
+    expect(speechText('Dye-chlorine heptaoxide. The pipetted acid.')).toBe('Dye-chlorine hepta-oxide. The pih-petted acid.');
+    expect(speechText('Electronegativity rises; their electronegativities differ. Svante Arrhenius.')).toBe('Electro-negativity rises; their electro-negativities differ. Svahntay Arrhenius.');
+    // Words that only start with deca keep their sound.
+    expect(speechText('Decanting, decays and tetraphosphorus decaoxide.')).toBe('Decanting, decays and tetraphosphorus decaoxide.');
     expect(speechText('EI: 0.02 times 960. CPP, EI and tax, not EIS.')).toBe('E I: 0.02 times 960. CPP, E I and tax, not EIS.');
     expect(speechText('An eight-by-twelve print and a two-by-four.')).toBe('An eight by twelve print and a two by four.');
     expect(speechText('It bisects the chord. Bisect it with the perpendicular bisector.')).toBe('It bi-sects the chord. Bi-sect it with the perpendicular bi-sector.');
