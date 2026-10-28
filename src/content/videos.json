@@ -8278,6 +8278,245 @@
       }
     ]
   },
+  "c20-3-5-c": {
+    "lessonId": "c20-3-5",
+    "title": "Dilution, Part 3: Dilution Factor",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The dilution factor",
+        "t": 24.389
+      },
+      {
+        "title": "Using a dilution factor",
+        "t": 70.722
+      },
+      {
+        "title": "A tenfold dilution",
+        "t": 118.994
+      },
+      {
+        "title": "Your turn",
+        "t": 157.522
+      },
+      {
+        "title": "Summary",
+        "t": 205.964
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-5-c:q",
+        "t": 175.656,
+        "prompt": "$5.00\\ \\text{mL}$ of a $1.50\\ \\text{mol/L}$ solution is diluted to $100.0\\ \\text{mL}$. What are the dilution factor and the new concentration? The dilution factor is $\\dfrac{V_2}{V_1} = \\dfrac{c_1}{c_2}$.",
+        "choices": [
+          "$20$; $0.0750\\ \\text{mol/L}$",
+          "$20$; $30.0\\ \\text{mol/L}$",
+          "$0.05$; $0.0750\\ \\text{mol/L}$",
+          "$95$; $0.0158\\ \\text{mol/L}$"
+        ],
+        "answer": 0,
+        "working": "Dilution factor: $\\dfrac{100.0}{5.00} = 20$. New concentration: $\\dfrac{1.50}{20} = 0.0750\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-3-5-d": {
+    "lessonId": "c20-3-5",
+    "title": "Dilution, Part 4: Making a Dilution in the Lab",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five steps",
+        "t": 20.875
+      },
+      {
+        "title": "Add acid to water",
+        "t": 95.505
+      },
+      {
+        "title": "Planning a dilution",
+        "t": 128.905
+      },
+      {
+        "title": "Your turn",
+        "t": 176.37
+      },
+      {
+        "title": "Summary",
+        "t": 219.962
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-5-d:q",
+        "t": 195.398,
+        "prompt": "How do you make $100.0\\ \\text{mL}$ of a $0.150\\ \\text{mol/L}$ solution from a $1.50\\ \\text{mol/L}$ stock solution, in a $100\\ \\text{mL}$ volumetric flask? When a solution is diluted, $c_1V_1 = c_2V_2$.",
+        "choices": [
+          "Pipette in $10.0\\ \\text{mL}$ of stock, then add $100.0\\ \\text{mL}$ of water.",
+          "Pipette in $1.00\\ \\text{mL}$ of stock, then fill to the mark.",
+          "Pipette in $10.0\\ \\text{mL}$ of stock, then fill to the mark.",
+          "Pipette in $15.0\\ \\text{mL}$ of stock, then fill to the mark."
+        ],
+        "answer": 2,
+        "working": "$V_1 = \\dfrac{0.150 \\times 100.0}{1.50} = 10.0\\ \\text{mL}$. Filling a $100\\ \\text{mL}$ flask to the mark makes the final volume exactly $100.0\\ \\text{mL}$."
+      }
+    ]
+  },
+  "c20-3-6": {
+    "lessonId": "c20-3-6",
+    "title": "Acids, Bases and Neutralisation, Part 1: Testing Solutions",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Indicators",
+        "t": 35.466
+      },
+      {
+        "title": "More tests",
+        "t": 88.592
+      },
+      {
+        "title": "One test may not be enough",
+        "t": 141.77
+      },
+      {
+        "title": "Your turn",
+        "t": 190.372
+      },
+      {
+        "title": "Summary",
+        "t": 220.818
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-6:q",
+        "t": 197.806,
+        "prompt": "Which observation shows that a solution is acidic?",
+        "choices": [
+          "Phenolphthalein stays colourless.",
+          "Red litmus paper stays red.",
+          "Bromothymol blue turns yellow.",
+          "The solution conducts electricity."
+        ],
+        "answer": 2,
+        "working": "Bromothymol blue is yellow only in an acidic solution. Phenolphthalein and red litmus do not change in acidic or neutral solutions, and basic solutions conduct as well."
+      }
+    ]
+  },
+  "c20-3-6-b": {
+    "lessonId": "c20-3-6",
+    "title": "Acids, Bases and Neutralisation, Part 2: Hydronium and Hydroxide Ions",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The hydronium ion",
+        "t": 23.152
+      },
+      {
+        "title": "Modified Arrhenius theory",
+        "t": 69.719
+      },
+      {
+        "title": "Ammonia",
+        "t": 120.323
+      },
+      {
+        "title": "Writing an ionisation",
+        "t": 151.449
+      },
+      {
+        "title": "Your turn",
+        "t": 193.023
+      },
+      {
+        "title": "Summary",
+        "t": 228.801
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-6-b:q",
+        "t": 203.502,
+        "prompt": "Nitric acid, $\\ce{HNO3}$, ionises in water to make an acidic solution: $\\ce{HNO3(aq) + H2O(l) ->}$ ? Which two ions form?",
+        "choices": [
+          "$\\ce{H3O+}$ and $\\ce{NO3-}$",
+          "$\\ce{H3O-}$ and $\\ce{NO3+}$",
+          "$\\ce{OH-}$ and $\\ce{H2NO3+}$",
+          "$\\ce{H-}$ and $\\ce{NO3+}$"
+        ],
+        "answer": 0,
+        "working": "The acid gives a hydrogen ion to water, forming the hydronium ion, $\\ce{H3O+}$, and leaving the nitrate ion, $\\ce{NO3-}$."
+      }
+    ]
+  },
+  "c20-3-6-c": {
+    "lessonId": "c20-3-6",
+    "title": "Acids, Bases and Neutralisation, Part 3: Acidic, Basic or Neutral?",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What to look for",
+        "t": 22.38
+      },
+      {
+        "title": "Salts and molecules",
+        "t": 69.577
+      },
+      {
+        "title": "An OH does not make a base",
+        "t": 106.952
+      },
+      {
+        "title": "Your turn",
+        "t": 138.411
+      },
+      {
+        "title": "Summary",
+        "t": 166.548
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-6-c:q",
+        "t": 144.511,
+        "prompt": "Which of these solutions is basic?",
+        "choices": [
+          "ethanol, $\\ce{C2H5OH(aq)}$",
+          "sodium chloride, $\\ce{NaCl(aq)}$",
+          "acetic acid, $\\ce{CH3COOH(aq)}$",
+          "ammonia, $\\ce{NH3(aq)}$"
+        ],
+        "answer": 3,
+        "working": "Ammonia reacts with water to form $\\ce{OH-}$ ions. Ethanol and sodium chloride form neither $\\ce{H3O+}$ nor $\\ce{OH-}$, and acetic acid forms $\\ce{H3O+}$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
