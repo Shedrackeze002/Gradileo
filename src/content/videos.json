@@ -3678,29 +3678,29 @@
       },
       {
         "title": "Atoms, molecules and formula units",
-        "t": 78.513
+        "t": 78.663
       },
       {
         "title": "Moles to particles",
-        "t": 115.227
+        "t": 115.377
       },
       {
         "title": "Moles to molecules",
-        "t": 149.895
+        "t": 150.045
       },
       {
         "title": "Your turn",
-        "t": 204.407
+        "t": 204.557
       },
       {
         "title": "Summary",
-        "t": 236.486
+        "t": 236.636
       }
     ],
     "cues": [
       {
         "id": "c10-5-1:q",
-        "t": 210.964,
+        "t": 211.114,
         "prompt": "How many atoms are in $3.0\\ \\text{mol}$ of iron, $\\ce{Fe}$? One mole holds $6.02 \\times 10^{23}$ particles.",
         "choices": [
           "$2.01 \\times 10^{23}$",
@@ -5828,6 +5828,904 @@
         ],
         "answer": 3,
         "working": "Boiling moves the molecules apart, but each $\\ce{Br2}$ molecule stays whole: bromine gas is still made of $\\ce{Br2}$ molecules. Only the intermolecular forces are overcome."
+      }
+    ]
+  },
+  "c20-1-8-b": {
+    "lessonId": "c20-1-8",
+    "title": "Intermolecular Forces, Part 2: London and Dipole–Dipole Forces",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Flickering dipoles",
+        "t": 22.103
+      },
+      {
+        "title": "More electrons, stronger forces",
+        "t": 66.268
+      },
+      {
+        "title": "Dipole–dipole forces",
+        "t": 113.481
+      },
+      {
+        "title": "Same electrons, different polarity",
+        "t": 142.753
+      },
+      {
+        "title": "Your turn",
+        "t": 175.966
+      },
+      {
+        "title": "Summary",
+        "t": 208.919
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-8-b:q",
+        "t": 184.17,
+        "prompt": "Which has the higher boiling point, propane, $\\ce{C3H8}$, or methane, $\\ce{CH4}$, and why? (Atomic numbers: H 1, C 6.)",
+        "choices": [
+          "$\\ce{CH4}$: more electrons, so stronger London forces",
+          "$\\ce{C3H8}$: its molecules form hydrogen bonds",
+          "$\\ce{C3H8}$: more electrons, so stronger London forces",
+          "$\\ce{CH4}$: its molecules form hydrogen bonds"
+        ],
+        "answer": 2,
+        "working": "Both are non-polar, so only London forces act. $\\ce{C3H8}$ has $3 \\times 6 + 8 \\times 1 = 26$ electrons and $\\ce{CH4}$ has $6 + 4 \\times 1 = 10$. Propane boils at about $-42\\ ^\\circ\\text{C}$, methane at about $-162\\ ^\\circ\\text{C}$."
+      }
+    ]
+  },
+  "c20-1-8-c": {
+    "lessonId": "c20-1-8",
+    "title": "Intermolecular Forces, Part 3: Hydrogen Bonds",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hydrogen on N, O or F",
+        "t": 20.734
+      },
+      {
+        "title": "Up to four per water molecule",
+        "t": 61.832
+      },
+      {
+        "title": "Not every hydrogen",
+        "t": 93.731
+      },
+      {
+        "title": "The forces add up",
+        "t": 122.236
+      },
+      {
+        "title": "Your turn",
+        "t": 159.792
+      },
+      {
+        "title": "Summary",
+        "t": 193.687
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-8-c:q",
+        "t": 169.357,
+        "prompt": "Which intermolecular forces act between molecules of methanol, $\\ce{CH3OH}$? (It is polar.)",
+        "choices": [
+          "London dispersion forces, dipole–dipole forces and hydrogen bonds",
+          "London dispersion forces and dipole–dipole forces only",
+          "Hydrogen bonds only",
+          "London dispersion forces only"
+        ],
+        "answer": 0,
+        "working": "London forces act between all molecules. Methanol is polar, so dipole–dipole forces act too. Its H on the O is bonded directly to oxygen, so it forms hydrogen bonds as well."
+      }
+    ]
+  },
+  "c20-1-8-d": {
+    "lessonId": "c20-1-8",
+    "title": "Intermolecular Forces, Part 4: Comparing Boiling Points",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why water boils so high",
+        "t": 21.127
+      },
+      {
+        "title": "Three questions in order",
+        "t": 67.594
+      },
+      {
+        "title": "Pairs of substances",
+        "t": 105.88
+      },
+      {
+        "title": "Methanol and ethane",
+        "t": 139.223
+      },
+      {
+        "title": "Size still matters",
+        "t": 178.293
+      },
+      {
+        "title": "Your turn",
+        "t": 200.226
+      },
+      {
+        "title": "Summary",
+        "t": 235.939
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-8-d:q",
+        "t": 210.161,
+        "prompt": "Which has the higher boiling point, $\\ce{HF}$ or $\\ce{HBr}$, and why? (Atomic numbers: H 1, F 9, Br 35.)",
+        "choices": [
+          "$\\ce{HBr}$: more electrons, so stronger London forces",
+          "$\\ce{HF}$: its molecules form hydrogen bonds",
+          "$\\ce{HBr}$: its molecules form hydrogen bonds",
+          "$\\ce{HF}$: more electrons, so stronger London forces"
+        ],
+        "answer": 1,
+        "working": "In $\\ce{HF}$, H is bonded directly to F, so it forms hydrogen bonds; $\\ce{HBr}$ does not. $\\ce{HBr}$ has more electrons (36 against 10), but hydrogen bonds decide first."
+      }
+    ]
+  },
+  "c20-2-1": {
+    "lessonId": "c20-2-1",
+    "title": "Gases and the Kinetic Molecular Theory, Part 1: The Properties of Gases",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four properties",
+        "t": 34.746
+      },
+      {
+        "title": "A picture of a gas",
+        "t": 98.802
+      },
+      {
+        "title": "Five ideas",
+        "t": 138.89
+      },
+      {
+        "title": "Your turn",
+        "t": 190.264
+      },
+      {
+        "title": "Summary",
+        "t": 218.283
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-1:q",
+        "t": 196.526,
+        "prompt": "Which property is shared by **every** gas?",
+        "choices": [
+          "It keeps its own volume.",
+          "It is easily compressed.",
+          "It is denser than the same substance as a liquid.",
+          "It must be stirred to mix with another gas."
+        ],
+        "answer": 1,
+        "working": "A gas is mostly empty space, so pushing on it squeezes it into a much smaller space. A gas keeps neither its shape nor its volume, has a low density, and mixes with other gases on its own."
+      }
+    ]
+  },
+  "c20-2-1-b": {
+    "lessonId": "c20-2-1",
+    "title": "Gases and the Kinetic Molecular Theory, Part 2: Inside the Theory",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Kinetic energy",
+        "t": 28.486
+      },
+      {
+        "title": "Elastic collisions",
+        "t": 50.595
+      },
+      {
+        "title": "An ideal gas",
+        "t": 84.335
+      },
+      {
+        "title": "Mostly empty space",
+        "t": 107.706
+      },
+      {
+        "title": "Misreading the theory",
+        "t": 153.924
+      },
+      {
+        "title": "Your turn",
+        "t": 182.618
+      },
+      {
+        "title": "Summary",
+        "t": 215.213
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-1-b:q",
+        "t": 191.622,
+        "prompt": "Which statement is part of the kinetic molecular theory of an ideal gas?",
+        "choices": [
+          "Gas particles slow down a little every time they hit the walls, until they stop.",
+          "Most of the volume of a gas is taken up by the particles themselves.",
+          "Gas particles attract each other strongly, which keeps them close together.",
+          "Gas particles are very small compared with the distances between them."
+        ],
+        "answer": 3,
+        "working": "A gas is mostly empty space: its particles are tiny compared with the gaps between them. Collisions lose no kinetic energy overall, and ideal gas particles do not attract each other."
+      }
+    ]
+  },
+  "c20-2-1-c": {
+    "lessonId": "c20-2-1",
+    "title": "Gases and the Kinetic Molecular Theory, Part 3: Explaining How Gases Behave",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why a gas exerts pressure",
+        "t": 20.661
+      },
+      {
+        "title": "Compressing a gas",
+        "t": 48.055
+      },
+      {
+        "title": "Hotter and colder",
+        "t": 94.778
+      },
+      {
+        "title": "Diffusion",
+        "t": 144.459
+      },
+      {
+        "title": "Your turn",
+        "t": 185.828
+      },
+      {
+        "title": "Summary",
+        "t": 220.501
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-1-c:q",
+        "t": 197.389,
+        "prompt": "Use the kinetic molecular theory. Why can a gas be compressed much more easily than a liquid or a solid?",
+        "choices": [
+          "Its particles are far apart, with mostly empty space between them.",
+          "Its particles are softer and can be squashed.",
+          "Its particles shrink when they are pushed together.",
+          "Its particles attract each other, so they pull closer together."
+        ],
+        "answer": 0,
+        "working": "Squeezing a gas only shrinks the empty space between its particles. The particles themselves never change size."
+      }
+    ]
+  },
+  "c20-2-1-d": {
+    "lessonId": "c20-2-1",
+    "title": "Gases and the Kinetic Molecular Theory, Part 4: Mass, Speed and Real Gases",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Average kinetic energy",
+        "t": 20.486
+      },
+      {
+        "title": "How much faster?",
+        "t": 67.82
+      },
+      {
+        "title": "A ring in a tube",
+        "t": 123.789
+      },
+      {
+        "title": "Real gases",
+        "t": 166.907
+      },
+      {
+        "title": "Your turn",
+        "t": 215.207
+      },
+      {
+        "title": "Summary",
+        "t": 244.411
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-1-d:q",
+        "t": 223.958,
+        "prompt": "Real gases behave most like an ideal gas under which conditions?",
+        "choices": [
+          "Low temperature and high pressure",
+          "Low temperature and low pressure",
+          "High temperature and low pressure",
+          "High temperature and high pressure"
+        ],
+        "answer": 2,
+        "working": "At low pressure the particles are far apart, so their own volume hardly matters. At high temperature they move fast, so their attractions hardly matter."
+      }
+    ]
+  },
+  "c20-2-2": {
+    "lessonId": "c20-2-2",
+    "title": "Pressure and Temperature, Part 1: What Is Pressure?",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Force and area",
+        "t": 27.401
+      },
+      {
+        "title": "A box on the floor",
+        "t": 73.555
+      },
+      {
+        "title": "Pressure in a gas",
+        "t": 112.007
+      },
+      {
+        "title": "Your turn",
+        "t": 161.993
+      },
+      {
+        "title": "Summary",
+        "t": 202.027
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-2:q",
+        "t": 178.189,
+        "prompt": "A crate pushes down on the floor with a force of $600\\ \\text{N}$, spread over an area of $0.25\\ \\text{m}^2$. What pressure does it exert, in kilopascals?",
+        "choices": [
+          "$0.24\\ \\text{kPa}$",
+          "$150\\ \\text{kPa}$",
+          "$2.4\\ \\text{kPa}$",
+          "$2400\\ \\text{kPa}$"
+        ],
+        "answer": 2,
+        "working": "$P = \\dfrac{F}{A} = \\dfrac{600\\ \\text{N}}{0.25\\ \\text{m}^2} = 2400\\ \\text{Pa} = 2.4\\ \\text{kPa}$"
+      }
+    ]
+  },
+  "c20-2-2-b": {
+    "lessonId": "c20-2-2",
+    "title": "Pressure and Temperature, Part 2: Atmospheric Pressure and the Barometer",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The pressure of the air",
+        "t": 20.014
+      },
+      {
+        "title": "The barometer",
+        "t": 61.528
+      },
+      {
+        "title": "Three units of pressure",
+        "t": 124.143
+      },
+      {
+        "title": "Your turn",
+        "t": 165.011
+      },
+      {
+        "title": "Summary",
+        "t": 201.01
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-2-b:q",
+        "t": 177.271,
+        "prompt": "A mercury barometer is carried from sea level to the top of a high mountain. What happens to the height of its mercury column?",
+        "choices": [
+          "It falls, because there is less air above pressing down.",
+          "It rises, because the air at the top is thinner.",
+          "It stays at $760\\ \\text{mm}$, because the tube is the same.",
+          "It falls to zero, because there is no air at the top."
+        ],
+        "answer": 0,
+        "working": "Higher up there is less air above, so atmospheric pressure is lower, and it holds up a shorter column. Near the tops of the highest mountains it is only about a third of its value at sea level, but it is not zero."
+      }
+    ]
+  },
+  "c20-2-2-c": {
+    "lessonId": "c20-2-2",
+    "title": "Pressure and Temperature, Part 3: Converting Pressure Units",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Conversion factors",
+        "t": 20.741
+      },
+      {
+        "title": "Atmospheres and kilopascals",
+        "t": 59.961
+      },
+      {
+        "title": "Millimetres of mercury",
+        "t": 115.836
+      },
+      {
+        "title": "Is the answer sensible?",
+        "t": 170.017
+      },
+      {
+        "title": "Your turn",
+        "t": 219.929
+      },
+      {
+        "title": "Summary",
+        "t": 257.742
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-2-c:q",
+        "t": 230.178,
+        "prompt": "Convert $2.25\\ \\text{atm}$ to millimetres of mercury, to the nearest whole number. Use $1\\ \\text{atm} = 101.325\\ \\text{kPa} = 760\\ \\text{mm Hg}$.",
+        "choices": [
+          "$228\\ \\text{mm Hg}$",
+          "$338\\ \\text{mm Hg}$",
+          "$17\\ \\text{mm Hg}$",
+          "$1710\\ \\text{mm Hg}$"
+        ],
+        "answer": 3,
+        "working": "$2.25\\ \\text{atm} \\times \\dfrac{760\\ \\text{mm Hg}}{1\\ \\text{atm}} = 1710\\ \\text{mm Hg}$. Converting to mm Hg makes the number bigger."
+      }
+    ]
+  },
+  "c20-2-2-d": {
+    "lessonId": "c20-2-2",
+    "title": "Pressure and Temperature, Part 4: Absolute Zero and the Kelvin Scale",
+    "duration": 315,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Absolute zero",
+        "t": 22.664
+      },
+      {
+        "title": "The Kelvin scale",
+        "t": 59.203
+      },
+      {
+        "title": "Converting temperatures",
+        "t": 118.332
+      },
+      {
+        "title": "Why gas laws use kelvins",
+        "t": 174.097
+      },
+      {
+        "title": "Your turn",
+        "t": 244.535
+      },
+      {
+        "title": "Summary",
+        "t": 275.843
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-2-d:q",
+        "t": 251.773,
+        "prompt": "Convert $200\\ \\text{K}$ to degrees Celsius. Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.",
+        "choices": [
+          "$473.15^\\circ\\text{C}$",
+          "$-73.15^\\circ\\text{C}$",
+          "$73.15^\\circ\\text{C}$",
+          "$-473.15^\\circ\\text{C}$"
+        ],
+        "answer": 1,
+        "working": "From kelvins to Celsius, subtract: $T = 200 - 273.15 = -73.15^\\circ\\text{C}$."
+      }
+    ]
+  },
+  "c20-2-3": {
+    "lessonId": "c20-2-3",
+    "title": "Boyle's Law, Part 1: Pressure and Volume",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Measuring pressure and volume",
+        "t": 28.458
+      },
+      {
+        "title": "The graph",
+        "t": 76.213
+      },
+      {
+        "title": "Boyle’s law",
+        "t": 117.098
+      },
+      {
+        "title": "Your turn",
+        "t": 168.039
+      },
+      {
+        "title": "Summary",
+        "t": 209.542
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-3:q",
+        "t": 183.276,
+        "prompt": "A gas has a volume of $6.0\\ \\text{L}$. The pressure on it is **tripled**, while the temperature and the amount of gas stay the same. What is its new volume?",
+        "choices": [
+          "$18\\ \\text{L}$",
+          "$3.0\\ \\text{L}$",
+          "$9.0\\ \\text{L}$",
+          "$2.0\\ \\text{L}$"
+        ],
+        "answer": 3,
+        "working": "Volume is inversely proportional to pressure: when the pressure is multiplied by $3$, the volume is divided by $3$. $6.0 \\div 3 = 2.0\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-2-3-b": {
+    "lessonId": "c20-2-3",
+    "title": "Boyle's Law, Part 2: Why Squeezing Raises the Pressure",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "More often, not harder",
+        "t": 23.772
+      },
+      {
+        "title": "Squeezing does not speed them up",
+        "t": 72.198
+      },
+      {
+        "title": "Pumps and breathing",
+        "t": 94.817
+      },
+      {
+        "title": "Your turn",
+        "t": 139.648
+      },
+      {
+        "title": "Summary",
+        "t": 179.071
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-3-b:q",
+        "t": 152.917,
+        "prompt": "A gas is squeezed into half its volume at constant temperature, and its pressure doubles. According to the kinetic molecular theory, why?",
+        "choices": [
+          "Its particles move twice as fast.",
+          "Its particles hit each part of the wall twice as often.",
+          "Its particles grow to twice their size.",
+          "Each collision with the wall is twice as hard."
+        ],
+        "answer": 1,
+        "working": "At constant temperature the particles keep the same average speed, so each hit is just as hard. In half the space, each part of the wall is hit twice as often, so the pressure doubles."
+      }
+    ]
+  },
+  "c20-2-3-c": {
+    "lessonId": "c20-2-3",
+    "title": "Boyle's Law, Part 3: Finding a New Volume",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five steps",
+        "t": 25.42
+      },
+      {
+        "title": "Doubling the pressure",
+        "t": 79.472
+      },
+      {
+        "title": "Any change in pressure",
+        "t": 125.614
+      },
+      {
+        "title": "Pressures the wrong way up",
+        "t": 164.652
+      },
+      {
+        "title": "Your turn",
+        "t": 205.943
+      },
+      {
+        "title": "Summary",
+        "t": 250.12
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-3-c:q",
+        "t": 226.693,
+        "prompt": "A gas in a syringe sealed at the tip has a volume of $7.2\\ \\text{L}$ at $130\\ \\text{kPa}$. The pressure changes to $310\\ \\text{kPa}$ while the temperature stays the same. What is the new volume, to the nearest hundredth?",
+        "choices": [
+          "$17.17\\ \\text{L}$",
+          "$7.20\\ \\text{L}$",
+          "$3.02\\ \\text{L}$",
+          "$2.40\\ \\text{L}$"
+        ],
+        "answer": 2,
+        "working": "$V_2 = \\dfrac{P_1V_1}{P_2} = \\dfrac{130 \\times 7.2}{310} = 3.02\\ \\text{L}$. The pressure went up, so the volume went down."
+      }
+    ]
+  },
+  "c20-2-3-d": {
+    "lessonId": "c20-2-3",
+    "title": "Boyle's Law, Part 4: Finding a New Pressure",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solving for the pressure",
+        "t": 16.839
+      },
+      {
+        "title": "Rounding and units",
+        "t": 73.093
+      },
+      {
+        "title": "When the law applies",
+        "t": 120.575
+      },
+      {
+        "title": "Your turn",
+        "t": 145.281
+      },
+      {
+        "title": "Summary",
+        "t": 187.47
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-3-d:q",
+        "t": 162.883,
+        "prompt": "A gas in a gas syringe is at $150\\ \\text{kPa}$ with a volume of $9.6\\ \\text{L}$. At the same temperature, what pressure would make its volume $4.0\\ \\text{L}$? Give the pressure to the nearest whole number.",
+        "choices": [
+          "$360\\ \\text{kPa}$",
+          "$63\\ \\text{kPa}$",
+          "$1440\\ \\text{kPa}$",
+          "$3600\\ \\text{kPa}$"
+        ],
+        "answer": 0,
+        "working": "$P_2 = \\dfrac{P_1V_1}{V_2} = \\dfrac{150 \\times 9.6}{4.0} = 360\\ \\text{kPa}$. The volume went down, so the pressure went up."
+      }
+    ]
+  },
+  "c20-2-4": {
+    "lessonId": "c20-2-4",
+    "title": "Charles's Law and Gay-Lussac's Law, Part 1: Volume and Temperature",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Heating at constant pressure",
+        "t": 25.095
+      },
+      {
+        "title": "Back to absolute zero",
+        "t": 48.651
+      },
+      {
+        "title": "Charles’s law",
+        "t": 106.305
+      },
+      {
+        "title": "Why a hotter gas takes more room",
+        "t": 149.238
+      },
+      {
+        "title": "Your turn",
+        "t": 183.809
+      },
+      {
+        "title": "Summary",
+        "t": 218.884
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-4:q",
+        "t": 195.084,
+        "prompt": "At constant pressure, the **Kelvin** temperature of a fixed amount of gas is tripled. What happens to its volume?",
+        "choices": [
+          "It triples.",
+          "It falls to a third.",
+          "It stays the same, because the pressure is constant.",
+          "It becomes nine times as large."
+        ],
+        "answer": 0,
+        "working": "By Charles’s law, the volume is directly proportional to the Kelvin temperature, so multiplying the Kelvin temperature by $3$ multiplies the volume by $3$."
+      }
+    ]
+  },
+  "c20-2-4-b": {
+    "lessonId": "c20-2-4",
+    "title": "Charles's Law and Gay-Lussac's Law, Part 2: Using Charles's Law",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Kelvin temperatures",
+        "t": 23.265
+      },
+      {
+        "title": "Celsius temperatures",
+        "t": 76.477
+      },
+      {
+        "title": "Using degrees Celsius",
+        "t": 132.308
+      },
+      {
+        "title": "Your turn",
+        "t": 168.348
+      },
+      {
+        "title": "Summary",
+        "t": 213.349
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-4-b:q",
+        "t": 185.936,
+        "prompt": "A gas has a volume of $5.00\\ \\text{L}$ at $15^\\circ\\text{C}$. The pressure stays the same. What is its volume at $75^\\circ\\text{C}$, to the nearest hundredth? Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.",
+        "choices": [
+          "$25.00\\ \\text{L}$",
+          "$4.14\\ \\text{L}$",
+          "$6.04\\ \\text{L}$",
+          "$1.00\\ \\text{L}$"
+        ],
+        "answer": 2,
+        "working": "$T_1 = 288.15\\ \\text{K}$ and $T_2 = 348.15\\ \\text{K}$. $V_2 = 5.00 \\times \\dfrac{348.15}{288.15} = 6.04\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-2-4-c": {
+    "lessonId": "c20-2-4",
+    "title": "Charles's Law and Gay-Lussac's Law, Part 3: Gay-Lussac's Law",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Heating at constant volume",
+        "t": 23.069
+      },
+      {
+        "title": "Gay-Lussac’s law",
+        "t": 59.397
+      },
+      {
+        "title": "A heated aerosol can",
+        "t": 98.735
+      },
+      {
+        "title": "Never heat a sealed container",
+        "t": 149.589
+      },
+      {
+        "title": "Your turn",
+        "t": 187.404
+      },
+      {
+        "title": "Summary",
+        "t": 233.913
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-4-c:q",
+        "t": 203.266,
+        "prompt": "The gas in a rigid sealed flask is at $120\\ \\text{kPa}$ and $10^\\circ\\text{C}$. What is its pressure at $90^\\circ\\text{C}$, to the nearest whole number? Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.",
+        "choices": [
+          "$1080\\ \\text{kPa}$",
+          "$154\\ \\text{kPa}$",
+          "$94\\ \\text{kPa}$",
+          "$200\\ \\text{kPa}$"
+        ],
+        "answer": 1,
+        "working": "$T_1 = 283.15\\ \\text{K}$ and $T_2 = 363.15\\ \\text{K}$. $P_2 = 120 \\times \\dfrac{363.15}{283.15} = 153.90\\ldots = 154\\ \\text{kPa}$."
       }
     ]
   },
