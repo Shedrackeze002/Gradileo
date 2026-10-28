@@ -8517,6 +8517,943 @@
       }
     ]
   },
+  "c20-3-6-d": {
+    "lessonId": "c20-3-6",
+    "title": "Acids, Bases and Neutralisation, Part 4: Salt and Water",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Neutralisation",
+        "t": 21.262
+      },
+      {
+        "title": "Writing the salt",
+        "t": 59.426
+      },
+      {
+        "title": "Balancing a neutralisation",
+        "t": 125.63
+      },
+      {
+        "title": "Your turn",
+        "t": 189.747
+      },
+      {
+        "title": "Summary",
+        "t": 233.109
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-6-d:q",
+        "t": 204.734,
+        "prompt": "Phosphoric acid is neutralised by potassium hydroxide: $\\ce{H3PO4 + KOH -> K3PO4 + H2O}$. What are the coefficients of the balanced equation, in order?",
+        "choices": [
+          "$1,\\ 1,\\ 1,\\ 1$",
+          "$1,\\ 3,\\ 1,\\ 3$",
+          "$1,\\ 3,\\ 1,\\ 1$",
+          "$3,\\ 1,\\ 1,\\ 3$"
+        ],
+        "answer": 1,
+        "working": "Three $\\ce{K+}$ balance one $\\ce{PO4^3-}$, so the salt is $\\ce{K3PO4}$ and needs $\\ce{3KOH}$. $\\ce{H3PO4}$ gives up 3 $\\ce{H+}$, making 3 $\\ce{H2O}$."
+      }
+    ]
+  },
+  "c20-3-7": {
+    "lessonId": "c20-3-7",
+    "title": "pH and pOH, Part 1: A Scale of Powers of Ten",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Squashed against zero",
+        "t": 39.271
+      },
+      {
+        "title": "The pH",
+        "t": 93.974
+      },
+      {
+        "title": "Any concentration",
+        "t": 124.581
+      },
+      {
+        "title": "Your turn",
+        "t": 179.55
+      },
+      {
+        "title": "Summary",
+        "t": 216.348
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-7:q",
+        "t": 193.573,
+        "prompt": "A solution has $[\\ce{H3O+}] = 4.5 \\times 10^{-6}\\ \\text{mol/L}$. What is its pH, to two decimal places? $\\text{pH} = -\\log[\\ce{H3O+}]$.",
+        "choices": [
+          "$6.00$",
+          "$-5.35$",
+          "$8.65$",
+          "$5.35$"
+        ],
+        "answer": 3,
+        "working": "$\\text{pH} = -\\log(4.5 \\times 10^{-6}) = 5.3468... = 5.35$"
+      }
+    ]
+  },
+  "c20-3-7-b": {
+    "lessonId": "c20-3-7",
+    "title": "pH and pOH, Part 2: From pH to Concentration",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undoing the logarithm",
+        "t": 21.821
+      },
+      {
+        "title": "A pH with decimals",
+        "t": 64.531
+      },
+      {
+        "title": "Dropping the minus sign",
+        "t": 105.653
+      },
+      {
+        "title": "Your turn",
+        "t": 135.854
+      },
+      {
+        "title": "Summary",
+        "t": 172.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-7-b:q",
+        "t": 149.39,
+        "prompt": "A solution has a pH of $4.20$. What is $[\\ce{H3O+}]$, in mol/L, to two significant figures? $[\\ce{H3O+}] = 10^{-\\text{pH}}$.",
+        "choices": [
+          "$1.6 \\times 10^{4}$",
+          "$6.3 \\times 10^{-5}$",
+          "$1.6 \\times 10^{-10}$",
+          "$1.0 \\times 10^{-4}$"
+        ],
+        "answer": 1,
+        "working": "$[\\ce{H3O+}] = 10^{-4.20} = 0.0000631 = 6.3 \\times 10^{-5}\\ \\text{mol/L}$"
+      }
+    ]
+  },
+  "c20-3-7-c": {
+    "lessonId": "c20-3-7",
+    "title": "pH and pOH, Part 3: pOH and the Hydroxide Ion",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ions in pure water",
+        "t": 21.534
+      },
+      {
+        "title": "The pOH scale",
+        "t": 79.323
+      },
+      {
+        "title": "From hydroxide to pH",
+        "t": 118.89
+      },
+      {
+        "title": "Hydroxide from the pH",
+        "t": 151.778
+      },
+      {
+        "title": "Your turn",
+        "t": 192.207
+      },
+      {
+        "title": "Summary",
+        "t": 230.681
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-7-c:q",
+        "t": 205.817,
+        "prompt": "A solution has a pH of $10.60$. What is $[\\ce{OH-}]$, in mol/L, to two significant figures? At $25^\\circ\\text{C}$, $\\text{pH} + \\text{pOH} = 14.00$. $[\\ce{OH-}] = 10^{-\\text{pOH}}$.",
+        "choices": [
+          "$2.5 \\times 10^{-11}$",
+          "$2.5 \\times 10^{3}$",
+          "$4.0 \\times 10^{-4}$",
+          "$3.4 \\times 10^{-4}$"
+        ],
+        "answer": 2,
+        "working": "$\\text{pOH} = 14.00 - 10.60 = 3.40$, so $[\\ce{OH-}] = 10^{-3.40} = 4.0 \\times 10^{-4}\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-3-7-d": {
+    "lessonId": "c20-3-7",
+    "title": "pH and pOH, Part 4: Reading the pH Scale",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Acidic, neutral and basic",
+        "t": 21.738
+      },
+      {
+        "title": "Both ions on one table",
+        "t": 49.04
+      },
+      {
+        "title": "Factors of ten",
+        "t": 76.146
+      },
+      {
+        "title": "Acidic or basic?",
+        "t": 124.644
+      },
+      {
+        "title": "Your turn",
+        "t": 168.35
+      },
+      {
+        "title": "Summary",
+        "t": 206.101
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-7-d:q",
+        "t": 182.919,
+        "prompt": "Solution A has a pH of 2, and solution B has a pH of 6. How many times greater is $[\\ce{H3O+}]$ in solution A than in solution B?",
+        "choices": [
+          "$10\\,000$ times",
+          "$4$ times",
+          "$40$ times",
+          "$3$ times"
+        ],
+        "answer": 0,
+        "working": "The pH values differ by 4, so $[\\ce{H3O+}]$ differs by a factor of $10^4 = 10\\,000$. The lower pH, A, has the greater concentration."
+      }
+    ]
+  },
+  "c20-3-8": {
+    "lessonId": "c20-3-8",
+    "title": "Strong and Weak Acids and Bases, Part 1: Strong and Weak Acids",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How far an acid ionises",
+        "t": 30.879
+      },
+      {
+        "title": "Inside the two solutions",
+        "t": 78.066
+      },
+      {
+        "title": "Counting the particles",
+        "t": 113.699
+      },
+      {
+        "title": "The six strong acids",
+        "t": 138.013
+      },
+      {
+        "title": "Your turn",
+        "t": 180.736
+      },
+      {
+        "title": "Summary",
+        "t": 208.855
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-8:q",
+        "t": 186.7,
+        "prompt": "Which of these is a strong acid?",
+        "choices": [
+          "hydrobromic acid, $\\ce{HBr(aq)}$",
+          "hydrofluoric acid, $\\ce{HF(aq)}$",
+          "nitrous acid, $\\ce{HNO2(aq)}$",
+          "acetic acid, $\\ce{CH3COOH(aq)}$"
+        ],
+        "answer": 0,
+        "working": "Hydrobromic acid is one of the six common strong acids: it ionises completely in water. The other three are weak."
+      }
+    ]
+  },
+  "c20-3-8-b": {
+    "lessonId": "c20-3-8",
+    "title": "Strong and Weak Acids and Bases, Part 2: Strength and Concentration",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two different ideas",
+        "t": 23.414
+      },
+      {
+        "title": "Same concentration, different acids",
+        "t": 83.859
+      },
+      {
+        "title": "Which has the higher pH?",
+        "t": 144.78
+      },
+      {
+        "title": "Your turn",
+        "t": 188.35
+      },
+      {
+        "title": "Summary",
+        "t": 229.229
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-8-b:q",
+        "t": 203.654,
+        "prompt": "Solutions of hydrochloric acid and hydrofluoric acid both have a concentration of $0.10\\ \\text{mol/L}$. Which statement is true?",
+        "choices": [
+          "Both have the same pH, because their concentrations are equal.",
+          "The hydrofluoric acid has the higher $[\\ce{H3O+}]$, because it ionises more.",
+          "The hydrochloric acid conducts electricity better, because it ionises completely.",
+          "The hydrochloric acid has the higher pH, because it has more ions."
+        ],
+        "answer": 2,
+        "working": "Hydrochloric acid is strong and hydrofluoric acid is weak, so the hydrochloric acid has far more ions: better conductivity, a higher $[\\ce{H3O+}]$ and a lower pH."
+      }
+    ]
+  },
+  "c20-3-8-c": {
+    "lessonId": "c20-3-8",
+    "title": "Strong and Weak Acids and Bases, Part 3: Strong Bases",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Strong bases",
+        "t": 19.956
+      },
+      {
+        "title": "One or two hydroxide ions",
+        "t": 78.639
+      },
+      {
+        "title": "A weak base",
+        "t": 126.013
+      },
+      {
+        "title": "Your turn",
+        "t": 155.857
+      },
+      {
+        "title": "Summary",
+        "t": 195.951
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-8-c:q",
+        "t": 169.822,
+        "prompt": "What is $[\\ce{OH-}]$ in a $0.030\\ \\text{mol/L}$ solution of strontium hydroxide, $\\ce{Sr(OH)2}$? It dissociates completely.",
+        "choices": [
+          "$0.030\\ \\text{mol/L}$",
+          "$0.060\\ \\text{mol/L}$",
+          "$0.015\\ \\text{mol/L}$",
+          "$0.090\\ \\text{mol/L}$"
+        ],
+        "answer": 1,
+        "working": "$\\ce{Sr(OH)2(s) -> Sr^2+(aq) + 2OH-(aq)}$, so $[\\ce{OH-}] = 2 \\times 0.030 = 0.060\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-3-8-d": {
+    "lessonId": "c20-3-8",
+    "title": "Strong and Weak Acids and Bases, Part 4: pH of Strong Acids and Bases",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A strong acid",
+        "t": 26.569
+      },
+      {
+        "title": "A group 1 hydroxide",
+        "t": 74.177
+      },
+      {
+        "title": "Barium hydroxide",
+        "t": 112.032
+      },
+      {
+        "title": "Your turn",
+        "t": 169.664
+      },
+      {
+        "title": "Summary",
+        "t": 209.648
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-8-d:q",
+        "t": 181.147,
+        "prompt": "What is the pH of a $1.5 \\times 10^{-3}\\ \\text{mol/L}$ solution of barium hydroxide, $\\ce{Ba(OH)2}$, to two decimal places? It dissociates completely. At $25^\\circ\\text{C}$, $\\text{pH} + \\text{pOH} = 14.00$.",
+        "choices": [
+          "$11.18$",
+          "$2.52$",
+          "$2.82$",
+          "$11.48$"
+        ],
+        "answer": 3,
+        "working": "$[\\ce{OH-}] = 2 \\times 1.5 \\times 10^{-3} = 3.0 \\times 10^{-3}\\ \\text{mol/L}$, so $\\text{pOH} = 2.52$ and $\\text{pH} = 14.00 - 2.52 = 11.48$."
+      }
+    ]
+  },
+  "c20-4-1": {
+    "lessonId": "c20-4-1",
+    "title": "Balancing Equations and Types of Reactions, Part 1: Coefficients and Balanced Equations",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reactants and products",
+        "t": 31.374
+      },
+      {
+        "title": "Coefficients",
+        "t": 74.477
+      },
+      {
+        "title": "Balancing methane",
+        "t": 107.194
+      },
+      {
+        "title": "Never change a subscript",
+        "t": 151.984
+      },
+      {
+        "title": "Your turn",
+        "t": 183.596
+      },
+      {
+        "title": "Summary",
+        "t": 219.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-1:q",
+        "t": 197.478,
+        "prompt": "Nitrogen and hydrogen react to form ammonia, $\\ce{NH3}$. Which is the balanced equation, with the smallest whole-number coefficients?",
+        "choices": [
+          "$\\ce{N2 + H2 -> 2NH3}$",
+          "$\\ce{N2 + 3H2 -> 2NH3}$",
+          "$\\ce{N2 + 3H2 -> N2H6}$",
+          "$\\ce{2N2 + 6H2 -> 4NH3}$"
+        ],
+        "answer": 1,
+        "working": "N: $2 = 2$. H: $3 \\times 2 = 6$ on the left and $2 \\times 3 = 6$ on the right. $\\ce{N2H6}$ changes a subscript, and every coefficient in $\\ce{2N2 + 6H2 -> 4NH3}$ divides by 2."
+      }
+    ]
+  },
+  "c20-4-1-b": {
+    "lessonId": "c20-4-1",
+    "title": "Balancing Equations and Types of Reactions, Part 2: Balancing Step by Step",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six habits",
+        "t": 19.659
+      },
+      {
+        "title": "A formation",
+        "t": 70.475
+      },
+      {
+        "title": "Keep the sulfate together",
+        "t": 115.503
+      },
+      {
+        "title": "Water as H–OH",
+        "t": 165.815
+      },
+      {
+        "title": "Your turn",
+        "t": 202.348
+      },
+      {
+        "title": "Summary",
+        "t": 243.486
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-1-b:q",
+        "t": 217.813,
+        "prompt": "In a car’s airbag, sodium azide decomposes into sodium and nitrogen gas: $\\ce{NaN3 -> Na + N2}$. Which is the balanced equation, with the smallest whole-number coefficients?",
+        "choices": [
+          "$\\ce{NaN3 -> Na + N3}$",
+          "$\\ce{2NaN3 -> 2Na + 2N2}$",
+          "$\\ce{4NaN3 -> 4Na + 6N2}$",
+          "$\\ce{2NaN3 -> 2Na + 3N2}$"
+        ],
+        "answer": 3,
+        "working": "$\\ce{NaN3}$ holds 3 N and $\\ce{N2}$ brings them in pairs, so make both 6: $\\ce{2NaN3}$ and $\\ce{3N2}$. Then $\\ce{2Na}$. Check: Na $2 = 2$, N $6 = 6$."
+      }
+    ]
+  },
+  "c20-4-1-c": {
+    "lessonId": "c20-4-1",
+    "title": "Balancing Equations and Types of Reactions, Part 3: Balancing Combustion Reactions",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Carbon, hydrogen, then oxygen",
+        "t": 26.014
+      },
+      {
+        "title": "When oxygen needs a half",
+        "t": 85.129
+      },
+      {
+        "title": "Oxygen in the fuel",
+        "t": 126.527
+      },
+      {
+        "title": "Your turn",
+        "t": 171.181
+      },
+      {
+        "title": "Summary",
+        "t": 217.338
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-1-c:q",
+        "t": 184.578,
+        "prompt": "Methanol burns completely: $\\ce{CH3OH + O2 -> CO2 + H2O}$. Which coefficients, in order, balance it with the smallest whole numbers?",
+        "choices": [
+          "$2,\\ 3,\\ 2,\\ 4$",
+          "$1,\\ 2,\\ 1,\\ 2$",
+          "$2,\\ 2,\\ 2,\\ 4$",
+          "$4,\\ 6,\\ 4,\\ 8$"
+        ],
+        "answer": 0,
+        "working": "C: $\\ce{CO2}$. H: 4 atoms, so $\\ce{2H2O}$. O on the right: $2 + 2 = 4$; methanol supplies 1, so $\\ce{O2}$ supplies 3, which is $1\\tfrac{1}{2}$ molecules. Double everything: $\\ce{2CH3OH + 3O2 -> 2CO2 + 4H2O}$."
+      }
+    ]
+  },
+  "c20-4-1-d": {
+    "lessonId": "c20-4-1",
+    "title": "Balancing Equations and Types of Reactions, Part 4: Five Types of Reactions",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Element or compound?",
+        "t": 19.039
+      },
+      {
+        "title": "Five patterns",
+        "t": 40.567
+      },
+      {
+        "title": "Name the type",
+        "t": 108.444
+      },
+      {
+        "title": "Predict from the reactants",
+        "t": 142.808
+      },
+      {
+        "title": "Your turn",
+        "t": 186.481
+      },
+      {
+        "title": "Summary",
+        "t": 224.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-1-d:q",
+        "t": 197.945,
+        "prompt": "A reaction has the reactants $\\ce{C2H5OH}$ and $\\ce{O2}$. Before you see the products, what type of reaction is it?",
+        "choices": [
+          "Single replacement",
+          "Formation",
+          "Complete combustion",
+          "Double replacement"
+        ],
+        "answer": 2,
+        "working": "$\\ce{C2H5OH}$ is ethanol, an alcohol, and it reacts with oxygen, so it burns: $\\ce{C2H5OH + 3O2 -> 2CO2 + 3H2O}$."
+      }
+    ]
+  },
+  "c20-4-2": {
+    "lessonId": "c20-4-2",
+    "title": "Net Ionic Equations, Part 1: Total and Net Ionic Equations",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways to write a reaction",
+        "t": 46.327
+      },
+      {
+        "title": "Silver nitrate and potassium bromide",
+        "t": 113.89
+      },
+      {
+        "title": "Keep the solid whole",
+        "t": 181.192
+      },
+      {
+        "title": "Your turn",
+        "t": 200.599
+      },
+      {
+        "title": "Summary",
+        "t": 242.3
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-2:q",
+        "t": 214.233,
+        "prompt": "Solutions of silver nitrate and sodium iodide are mixed: $\\ce{AgNO3(aq) + NaI(aq) -> AgI(s) + NaNO3(aq)}$. Which is the net ionic equation?",
+        "choices": [
+          "$\\ce{Na+(aq) + I-(aq) -> NaI(s)}$",
+          "$\\ce{Ag+(aq) + I-(aq) -> AgI(aq)}$",
+          "$\\ce{Ag+(aq) + I-(aq) -> AgI(s)}$",
+          "$\\ce{AgI(s) -> Ag+(aq) + I-(aq)}$"
+        ],
+        "answer": 2,
+        "working": "Total ionic equation: $\\ce{Ag+(aq) + NO3-(aq) + Na+(aq) + I-(aq) -> AgI(s) + Na+(aq) + NO3-(aq)}$. The spectators are $\\ce{Na+}$ and $\\ce{NO3-}$."
+      }
+    ]
+  },
+  "c20-4-2-b": {
+    "lessonId": "c20-4-2",
+    "title": "Net Ionic Equations, Part 2: Spotting Spectators and Counting Ions",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Spotting the spectators",
+        "t": 19.841
+      },
+      {
+        "title": "Counting the ions",
+        "t": 71.113
+      },
+      {
+        "title": "Lead(II) nitrate and potassium iodide",
+        "t": 116.782
+      },
+      {
+        "title": "Your turn",
+        "t": 165.845
+      },
+      {
+        "title": "Summary",
+        "t": 205.577
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-2-b:q",
+        "t": 180.157,
+        "prompt": "Solutions of calcium chloride and sodium carbonate are mixed, and calcium carbonate precipitates. Which ions are the spectator ions?",
+        "choices": [
+          "$\\ce{Na+}$ and $\\ce{Cl-}$",
+          "$\\ce{Ca^2+}$ and $\\ce{CO3^2-}$",
+          "$\\ce{Ca^2+}$ and $\\ce{Cl-}$",
+          "$\\ce{Na+}$ and $\\ce{CO3^2-}$"
+        ],
+        "answer": 0,
+        "working": "$\\ce{Ca^2+}$ and $\\ce{CO3^2-}$ form the solid, so they react. $\\ce{Na+}$ and $\\ce{Cl-}$ stay dissolved, as $\\ce{NaCl(aq)}$. Net: $\\ce{Ca^2+(aq) + CO3^2-(aq) -> CaCO3(s)}$."
+      }
+    ]
+  },
+  "c20-4-2-c": {
+    "lessonId": "c20-4-2",
+    "title": "Net Ionic Equations, Part 3: Lowest Terms, and Starting from Names",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lowest terms",
+        "t": 22.985
+      },
+      {
+        "title": "Balance the net ionic equation",
+        "t": 74.69
+      },
+      {
+        "title": "Starting from names",
+        "t": 101.647
+      },
+      {
+        "title": "More precipitates",
+        "t": 154.199
+      },
+      {
+        "title": "Your turn",
+        "t": 174.654
+      },
+      {
+        "title": "Summary",
+        "t": 220.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-2-c:q",
+        "t": 191.764,
+        "prompt": "Solutions of silver nitrate and potassium chromate are mixed, and silver chromate precipitates. The chromate ion is $\\ce{CrO4^2-}$. Which is the net ionic equation? (State symbols are left out.)",
+        "choices": [
+          "$\\ce{Ag+ + CrO4^2- -> Ag2CrO4}$",
+          "$\\ce{K+ + NO3- -> KNO3}$",
+          "$\\ce{Ag2^2+ + CrO4^2- -> Ag2CrO4}$",
+          "$\\ce{2Ag+ + CrO4^2- -> Ag2CrO4}$"
+        ],
+        "answer": 3,
+        "working": "Silver chromate is $\\ce{Ag2CrO4}$: two $\\ce{Ag+}$ for each $\\ce{CrO4^2-}$. Net: $\\ce{2Ag+(aq) + CrO4^2-(aq) -> Ag2CrO4(s)}$. The spectators are $\\ce{K+}$ and $\\ce{NO3-}$."
+      }
+    ]
+  },
+  "c20-4-2-d": {
+    "lessonId": "c20-4-2",
+    "title": "Net Ionic Equations, Part 4: Neutralisation of a Strong Acid and a Strong Base",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Writing strong acids and bases",
+        "t": 27.376
+      },
+      {
+        "title": "Nitric acid and potassium hydroxide",
+        "t": 61.602
+      },
+      {
+        "title": "Why two water molecules?",
+        "t": 102.201
+      },
+      {
+        "title": "Every strong acid and strong base",
+        "t": 134.316
+      },
+      {
+        "title": "Your turn",
+        "t": 186.45
+      },
+      {
+        "title": "Summary",
+        "t": 227.302
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-2-d:q",
+        "t": 204.523,
+        "prompt": "Hydrobromic acid, $\\ce{HBr(aq)}$, is neutralised by lithium hydroxide, $\\ce{LiOH(aq)}$. The acid is strong, so in water it is entirely $\\ce{H3O+}$ and $\\ce{Br-}$ ions. Which ions are the spectator ions?",
+        "choices": [
+          "$\\ce{H3O+}$ and $\\ce{OH-}$",
+          "$\\ce{Br-}$ and $\\ce{Li+}$",
+          "$\\ce{H3O+}$ and $\\ce{Br-}$",
+          "$\\ce{Li+}$ and $\\ce{OH-}$"
+        ],
+        "answer": 1,
+        "working": "Total ionic equation: $\\ce{H3O+(aq) + Br-(aq) + Li+(aq) + OH-(aq) -> 2H2O(l) + Li+(aq) + Br-(aq)}$. The spectators are $\\ce{Li+}$ and $\\ce{Br-}$."
+      }
+    ]
+  },
+  "c20-4-3": {
+    "lessonId": "c20-4-3",
+    "title": "The Mole and Molar Mass, Part 1: Molar Mass",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The mole and molar mass",
+        "t": 35.529
+      },
+      {
+        "title": "Water",
+        "t": 77.136
+      },
+      {
+        "title": "Glucose",
+        "t": 95.023
+      },
+      {
+        "title": "Brackets",
+        "t": 132.858
+      },
+      {
+        "title": "The bracket multiplies everything",
+        "t": 182.124
+      },
+      {
+        "title": "Your turn",
+        "t": 197.238
+      },
+      {
+        "title": "Summary",
+        "t": 233.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-3:q",
+        "t": 208.588,
+        "prompt": "What is the molar mass of magnesium nitrate, $\\ce{Mg(NO3)2}$, to the nearest hundredth? Use these molar masses: Mg $24.31\\ \\text{g/mol}$, N $14.01\\ \\text{g/mol}$, O $16.00\\ \\text{g/mol}$.",
+        "choices": [
+          "$86.32\\ \\text{g/mol}$",
+          "$100.33\\ \\text{g/mol}$",
+          "$134.32\\ \\text{g/mol}$",
+          "$148.33\\ \\text{g/mol}$"
+        ],
+        "answer": 3,
+        "working": "One formula unit holds 1 Mg, 2 N and $2 \\times 3 = 6$ O: $24.31 + 2(14.01) + 6(16.00) = 148.33\\ \\text{g/mol}$."
+      }
+    ]
+  },
+  "c20-4-3-b": {
+    "lessonId": "c20-4-3",
+    "title": "The Mole and Molar Mass, Part 2: Hydrates",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a hydrate is",
+        "t": 18.651
+      },
+      {
+        "title": "Copper(II) sulfate pentahydrate",
+        "t": 58.567
+      },
+      {
+        "title": "Washing soda",
+        "t": 107.638
+      },
+      {
+        "title": "The dot means add",
+        "t": 142.543
+      },
+      {
+        "title": "Your turn",
+        "t": 164.465
+      },
+      {
+        "title": "Summary",
+        "t": 205.368
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-3-b:q",
+        "t": 174.319,
+        "prompt": "What is the molar mass of magnesium sulfate heptahydrate, $\\ce{MgSO4*7H2O}$, to the nearest hundredth? Use these molar masses: Mg $24.31$, S $32.06$, O $16.00$, H $1.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$138.39\\ \\text{g/mol}$",
+          "$246.51\\ \\text{g/mol}$",
+          "$968.73\\ \\text{g/mol}$",
+          "$120.37\\ \\text{g/mol}$"
+        ],
+        "answer": 1,
+        "working": "$M(\\ce{MgSO4}) = 24.31 + 32.06 + 4(16.00) = 120.37$ and $7(18.02) = 126.14$, so $M = 120.37 + 126.14 = 246.51\\ \\text{g/mol}$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
