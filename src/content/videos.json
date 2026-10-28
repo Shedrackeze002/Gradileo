@@ -6729,6 +6729,810 @@
       }
     ]
   },
+  "c20-2-4-d": {
+    "lessonId": "c20-2-4",
+    "title": "Charles's Law and Gay-Lussac's Law, Part 4: Finding a Temperature",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "With Charles’s law",
+        "t": 21.741
+      },
+      {
+        "title": "With Gay-Lussac’s law",
+        "t": 85.933
+      },
+      {
+        "title": "Does it make sense?",
+        "t": 138.701
+      },
+      {
+        "title": "Your turn",
+        "t": 177.04
+      },
+      {
+        "title": "Summary",
+        "t": 228.231
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-4-d:q",
+        "t": 197.078,
+        "prompt": "A gas has a volume of $2.00\\ \\text{L}$ at $27^\\circ\\text{C}$. At the same pressure, at what temperature in degrees Celsius will its volume be $2.50\\ \\text{L}$? Round to the nearest degree. Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.",
+        "choices": [
+          "$34^\\circ\\text{C}$",
+          "$375^\\circ\\text{C}$",
+          "$-33^\\circ\\text{C}$",
+          "$102^\\circ\\text{C}$"
+        ],
+        "answer": 3,
+        "working": "$T_1 = 300.15\\ \\text{K}$. $T_2 = 300.15 \\times \\dfrac{2.50}{2.00} = 375.19\\ \\text{K}$, and $375.19 - 273.15 = 102.04^\\circ\\text{C}$, or $102^\\circ\\text{C}$."
+      }
+    ]
+  },
+  "c20-2-5": {
+    "lessonId": "c20-2-5",
+    "title": "The Combined Gas Law, Part 1: Three Laws in One",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three laws so far",
+        "t": 33.706
+      },
+      {
+        "title": "The combined gas law",
+        "t": 72.84
+      },
+      {
+        "title": "Cancelling to the other laws",
+        "t": 112.708
+      },
+      {
+        "title": "Your turn",
+        "t": 159.822
+      },
+      {
+        "title": "Summary",
+        "t": 192.096
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-5:q",
+        "t": 172.304,
+        "prompt": "A fixed amount of gas is heated in a sealed rigid container, so its **volume** stays the same. Which law is left when the volume cancels from $\\dfrac{P_1V_1}{T_1} = \\dfrac{P_2V_2}{T_2}$?",
+        "choices": [
+          "$P_1V_1 = P_2V_2$",
+          "$\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$",
+          "$\\dfrac{P_1}{T_1} = \\dfrac{P_2}{T_2}$",
+          "$P_1T_1 = P_2T_2$"
+        ],
+        "answer": 2,
+        "working": "With $V_1 = V_2$, the volumes cancel, leaving $\\dfrac{P_1}{T_1} = \\dfrac{P_2}{T_2}$: Gay-Lussac's law."
+      }
+    ]
+  },
+  "c20-2-5-b": {
+    "lessonId": "c20-2-5",
+    "title": "The Combined Gas Law, Part 2: Finding a New Volume",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solving for one quantity",
+        "t": 18.242
+      },
+      {
+        "title": "The right way up",
+        "t": 40.751
+      },
+      {
+        "title": "Kelvin temperatures",
+        "t": 69.295
+      },
+      {
+        "title": "Celsius temperatures",
+        "t": 111.11
+      },
+      {
+        "title": "Your turn",
+        "t": 165.794
+      },
+      {
+        "title": "Summary",
+        "t": 207.186
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-5-b:q",
+        "t": 184.681,
+        "prompt": "A gas occupies $4.0\\ \\text{L}$ at $200\\ \\text{kPa}$ and $27^\\circ\\text{C}$. What volume does it occupy at $100\\ \\text{kPa}$ and $127^\\circ\\text{C}$, to the nearest hundredth? Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.",
+        "choices": [
+          "$10.67\\ \\text{L}$",
+          "$2.67\\ \\text{L}$",
+          "$37.63\\ \\text{L}$",
+          "$6.00\\ \\text{L}$"
+        ],
+        "answer": 0,
+        "working": "$T_1 = 300.15\\ \\text{K}$ and $T_2 = 400.15\\ \\text{K}$, so $V_2 = 4.0 \\times \\dfrac{200}{100} \\times \\dfrac{400.15}{300.15} = 10.67\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-2-5-c": {
+    "lessonId": "c20-2-5",
+    "title": "The Combined Gas Law, Part 3: A New Pressure or Temperature",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A new pressure",
+        "t": 16.981
+      },
+      {
+        "title": "A new temperature",
+        "t": 82.038
+      },
+      {
+        "title": "Your turn",
+        "t": 135.018
+      },
+      {
+        "title": "Summary",
+        "t": 178.385
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-5-c:q",
+        "t": 154.555,
+        "prompt": "A gas occupies $2.0\\ \\text{L}$ at $100\\ \\text{kPa}$ and $27^\\circ\\text{C}$. At what temperature in degrees Celsius will it occupy $3.0\\ \\text{L}$ at $120\\ \\text{kPa}$? Round to the nearest degree. Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.",
+        "choices": [
+          "$540^\\circ\\text{C}$",
+          "$49^\\circ\\text{C}$",
+          "$-106^\\circ\\text{C}$",
+          "$267^\\circ\\text{C}$"
+        ],
+        "answer": 3,
+        "working": "$T_2 = 300.15 \\times \\dfrac{120}{100} \\times \\dfrac{3.0}{2.0} = 540.27\\ \\text{K}$, and $540.27 - 273.15 = 267.12$, so $267^\\circ\\text{C}$."
+      }
+    ]
+  },
+  "c20-2-5-d": {
+    "lessonId": "c20-2-5",
+    "title": "The Combined Gas Law, Part 4: Predicting Changes",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Changes by factors",
+        "t": 17.018
+      },
+      {
+        "title": "Two changes at once",
+        "t": 72.952
+      },
+      {
+        "title": "The weather balloon",
+        "t": 102.023
+      },
+      {
+        "title": "The Celsius trap",
+        "t": 130.927
+      },
+      {
+        "title": "Your turn",
+        "t": 182.7
+      },
+      {
+        "title": "Summary",
+        "t": 216.646
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-5-d:q",
+        "t": 195.837,
+        "prompt": "The pressure of a gas is **tripled** and its Kelvin temperature is **doubled**. The amount of gas stays the same. What happens to its volume?",
+        "choices": [
+          "It is multiplied by $6$.",
+          "It is multiplied by $\\tfrac{2}{3}$.",
+          "It is multiplied by $\\tfrac{3}{2}$.",
+          "It stays the same."
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{V_2}{V_1} = \\dfrac{T_2/T_1}{P_2/P_1} = \\dfrac{2}{3}$: multiply by the temperature factor, $2$, and divide by the pressure factor, $3$."
+      }
+    ]
+  },
+  "c20-2-6": {
+    "lessonId": "c20-2-6",
+    "title": "Avogadro's Law and Molar Volume, Part 1: Equal Volumes, Equal Numbers",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Equal volumes, equal numbers",
+        "t": 20.812
+      },
+      {
+        "title": "Why it works",
+        "t": 57.394
+      },
+      {
+        "title": "Avogadro's law",
+        "t": 93.679
+      },
+      {
+        "title": "Tripling the amount",
+        "t": 127.244
+      },
+      {
+        "title": "Your turn",
+        "t": 165.332
+      },
+      {
+        "title": "Summary",
+        "t": 204.497
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-6:q",
+        "t": 182.634,
+        "prompt": "A flexible container holds $0.50\\ \\text{mol}$ of gas in $12.2\\ \\text{L}$. At the same temperature and pressure, what volume would $1.50\\ \\text{mol}$ of the gas occupy, to the nearest tenth?",
+        "choices": [
+          "$4.1\\ \\text{L}$",
+          "$24.4\\ \\text{L}$",
+          "$13.2\\ \\text{L}$",
+          "$36.6\\ \\text{L}$"
+        ],
+        "answer": 3,
+        "working": "$V_2 = V_1 \\times \\dfrac{n_2}{n_1} = 12.2 \\times \\dfrac{1.50}{0.50} = 36.6\\ \\text{L}$. The amount triples, so the volume triples."
+      }
+    ]
+  },
+  "c20-2-6-b": {
+    "lessonId": "c20-2-6",
+    "title": "Avogadro's Law and Molar Volume, Part 2: More or Less Gas",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A smaller amount",
+        "t": 21.113
+      },
+      {
+        "title": "How much gas to add",
+        "t": 75.638
+      },
+      {
+        "title": "The total is not the amount added",
+        "t": 117.466
+      },
+      {
+        "title": "Your turn",
+        "t": 146.955
+      },
+      {
+        "title": "Summary",
+        "t": 187.745
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-6-b:q",
+        "t": 163.67,
+        "prompt": "A flexible container holds $0.50\\ \\text{mol}$ of gas in $12.0\\ \\text{L}$. How many moles of gas must be added to make its volume $18.0\\ \\text{L}$ at the same temperature and pressure? Give the answer to the nearest hundredth.",
+        "choices": [
+          "$0.75\\ \\text{mol}$",
+          "$0.33\\ \\text{mol}$",
+          "$0.25\\ \\text{mol}$",
+          "$1.25\\ \\text{mol}$"
+        ],
+        "answer": 2,
+        "working": "The total needed is $n_2 = 0.50 \\times \\dfrac{18.0}{12.0} = 0.75\\ \\text{mol}$, so $0.75 - 0.50 = 0.25\\ \\text{mol}$ must be added."
+      }
+    ]
+  },
+  "c20-2-6-c": {
+    "lessonId": "c20-2-6",
+    "title": "Avogadro's Law and Molar Volume, Part 3: Moles and Molar Volume",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The mole",
+        "t": 13.34
+      },
+      {
+        "title": "From mass to moles",
+        "t": 45.283
+      },
+      {
+        "title": "Molar volume",
+        "t": 88.985
+      },
+      {
+        "title": "Same volume, different masses",
+        "t": 151.327
+      },
+      {
+        "title": "Your turn",
+        "t": 178.958
+      },
+      {
+        "title": "Summary",
+        "t": 213.391
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-6-c:q",
+        "t": 188.334,
+        "prompt": "What are the mass and the volume of $1.00\\ \\text{mol}$ of nitrogen gas, $\\ce{N2}$, at STP? Use the molar mass N $14.01\\ \\text{g/mol}$. At STP ($0^\\circ\\text{C}$ and $101.325\\ \\text{kPa}$), the molar volume of a gas is $22.4\\ \\text{L/mol}$.",
+        "choices": [
+          "$28.02\\ \\text{g}$ and $22.4\\ \\text{L}$",
+          "$14.01\\ \\text{g}$ and $22.4\\ \\text{L}$",
+          "$28.02\\ \\text{g}$ and $24.8\\ \\text{L}$",
+          "$14.01\\ \\text{g}$ and $11.2\\ \\text{L}$"
+        ],
+        "answer": 0,
+        "working": "Nitrogen gas is $\\ce{N2}$: $M = 2 \\times 14.01 = 28.02\\ \\text{g/mol}$. One mole of any gas at STP fills $22.4\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-2-6-d": {
+    "lessonId": "c20-2-6",
+    "title": "Avogadro's Law and Molar Volume, Part 4: Using Molar Volume",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Moles and litres",
+        "t": 19.214
+      },
+      {
+        "title": "The wrong molar volume",
+        "t": 66.239
+      },
+      {
+        "title": "Mass to volume",
+        "t": 85.975
+      },
+      {
+        "title": "Volume to mass",
+        "t": 132.835
+      },
+      {
+        "title": "Your turn",
+        "t": 174.827
+      },
+      {
+        "title": "Summary",
+        "t": 213.277
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-6-d:q",
+        "t": 186.489,
+        "prompt": "What volume does $8.00\\ \\text{g}$ of methane, $\\ce{CH4}$, occupy at SATP, to the nearest tenth? At SATP the molar volume of a gas is $24.8\\ \\text{L/mol}$. Use C $12.01\\ \\text{g/mol}$, H $1.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$11.2\\ \\text{L}$",
+          "$12.4\\ \\text{L}$",
+          "$15.2\\ \\text{L}$",
+          "$198.4\\ \\text{L}$"
+        ],
+        "answer": 1,
+        "working": "$M = 12.01 + 4 \\times 1.01 = 16.05\\ \\text{g/mol}$, $n = \\dfrac{8.00}{16.05} = 0.4984\\ \\text{mol}$, and $V = 0.4984 \\times 24.8 = 12.4\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-2-7": {
+    "lessonId": "c20-2-7",
+    "title": "The Ideal Gas Law, Part 1: One Law for Four Quantities",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three laws, one equation",
+        "t": 27.829
+      },
+      {
+        "title": "The gas constant",
+        "t": 70.057
+      },
+      {
+        "title": "The molar volume again",
+        "t": 101.465
+      },
+      {
+        "title": "Finding the pressure",
+        "t": 129.193
+      },
+      {
+        "title": "Your turn",
+        "t": 170.089
+      },
+      {
+        "title": "Summary",
+        "t": 208.817
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-7:q",
+        "t": 184.102,
+        "prompt": "A $12.0\\ \\text{L}$ container holds $0.75\\ \\text{mol}$ of gas at $320\\ \\text{K}$. What is the pressure of the gas, to the nearest whole number? Use $PV = nRT$ with $R = 8.314\\ \\text{kPa·L/(mol·K)}$.",
+        "choices": [
+          "$222\\ \\text{kPa}$",
+          "$166\\ \\text{kPa}$",
+          "$1995\\ \\text{kPa}$",
+          "$0.234\\ \\text{kPa}$"
+        ],
+        "answer": 1,
+        "working": "$P = \\dfrac{nRT}{V} = \\dfrac{0.75 \\times 8.314 \\times 320}{12.0} = 166.28\\ \\text{kPa}$, so $166\\ \\text{kPa}$."
+      }
+    ]
+  },
+  "c20-2-7-b": {
+    "lessonId": "c20-2-7",
+    "title": "The Ideal Gas Law, Part 2: Kelvins First",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Finding the volume",
+        "t": 20.069
+      },
+      {
+        "title": "Degrees Celsius in the law",
+        "t": 56.262
+      },
+      {
+        "title": "Finding the amount",
+        "t": 78.791
+      },
+      {
+        "title": "Finding the temperature",
+        "t": 112.987
+      },
+      {
+        "title": "Your turn",
+        "t": 151.187
+      },
+      {
+        "title": "Summary",
+        "t": 189.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-7-b:q",
+        "t": 164.329,
+        "prompt": "How many moles of gas are in a $25.0\\ \\text{L}$ tank at $200\\ \\text{kPa}$ and $27^\\circ\\text{C}$? Give the answer to the nearest hundredth. Use $PV = nRT$ with $R = 8.314\\ \\text{kPa·L/(mol·K)}$. Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.",
+        "choices": [
+          "$22.27\\ \\text{mol}$",
+          "$0.50\\ \\text{mol}$",
+          "$601.40\\ \\text{mol}$",
+          "$2.00\\ \\text{mol}$"
+        ],
+        "answer": 3,
+        "working": "$T = 27 + 273.15 = 300.15\\ \\text{K}$, so $n = \\dfrac{PV}{RT} = \\dfrac{200 \\times 25.0}{8.314 \\times 300.15} = 2.00\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-2-7-c": {
+    "lessonId": "c20-2-7",
+    "title": "The Ideal Gas Law, Part 3: Mass and Molar Mass",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Finding a mass",
+        "t": 18.182
+      },
+      {
+        "title": "Finding a molar mass",
+        "t": 57.845
+      },
+      {
+        "title": "Identifying a gas",
+        "t": 107.52
+      },
+      {
+        "title": "A gas to identify",
+        "t": 122.885
+      },
+      {
+        "title": "Round the amount with care",
+        "t": 159.475
+      },
+      {
+        "title": "Your turn",
+        "t": 177.587
+      },
+      {
+        "title": "Summary",
+        "t": 218.715
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-7-c:q",
+        "t": 194.188,
+        "prompt": "A $1.612\\ \\text{g}$ sample of a gas occupies $1.00\\ \\text{L}$ at $100\\ \\text{kPa}$ and $25^\\circ\\text{C}$. Which gas is it? Use $PV = nRT$ with $R = 8.314\\ \\text{kPa·L/(mol·K)}$. Molar masses: $\\ce{N2}$ $28.02$, $\\ce{O2}$ $32.00$, $\\ce{Ar}$ $39.95$, $\\ce{CO2}$ $44.01\\ \\text{g/mol}$.",
+        "choices": [
+          "oxygen, $\\ce{O2}$",
+          "carbon dioxide, $\\ce{CO2}$",
+          "argon, $\\ce{Ar}$",
+          "nitrogen, $\\ce{N2}$"
+        ],
+        "answer": 2,
+        "working": "$n = \\dfrac{100 \\times 1.00}{8.314 \\times 298.15} = 0.04034\\ \\text{mol}$, so $M = \\dfrac{1.612}{0.04034} = 40.0\\ \\text{g/mol}$: closest to argon, $39.95\\ \\text{g/mol}$."
+      }
+    ]
+  },
+  "c20-2-7-d": {
+    "lessonId": "c20-2-7",
+    "title": "The Ideal Gas Law, Part 4: Real Gases",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ideal and real gases",
+        "t": 19.26
+      },
+      {
+        "title": "Pressure and temperature",
+        "t": 52.091
+      },
+      {
+        "title": "Most like an ideal gas",
+        "t": 94.124
+      },
+      {
+        "title": "Which is more ideal?",
+        "t": 123.783
+      },
+      {
+        "title": "Intermolecular forces",
+        "t": 154.639
+      },
+      {
+        "title": "Your turn",
+        "t": 188.129
+      },
+      {
+        "title": "Summary",
+        "t": 218.246
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-2-7-d:q",
+        "t": 198.312,
+        "prompt": "Under which conditions does a sample of oxygen gas, $\\ce{O2}$, behave **most** like an ideal gas?",
+        "choices": [
+          "$50\\ \\text{kPa}$ and $200^\\circ\\text{C}$",
+          "$50\\ \\text{kPa}$ and $-20^\\circ\\text{C}$",
+          "$2000\\ \\text{kPa}$ and $200^\\circ\\text{C}$",
+          "$2000\\ \\text{kPa}$ and $-20^\\circ\\text{C}$"
+        ],
+        "answer": 0,
+        "working": "Low pressure keeps the particles far apart, and high temperature keeps them moving fast, so their volume and attractions hardly matter."
+      }
+    ]
+  },
+  "c20-3-1": {
+    "lessonId": "c20-3-1",
+    "title": "Solutions, Electrolytes and Dissociation, Part 1: Solutions, Solutes and Solvents",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solute and solvent",
+        "t": 37.581
+      },
+      {
+        "title": "Aqueous solutions",
+        "t": 80.525
+      },
+      {
+        "title": "The universal solvent",
+        "t": 111.646
+      },
+      {
+        "title": "Which is the solvent?",
+        "t": 155.915
+      },
+      {
+        "title": "Your turn",
+        "t": 185.063
+      },
+      {
+        "title": "Summary",
+        "t": 220.015
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-1:q",
+        "t": 197.668,
+        "prompt": "A solution is made by mixing $30\\ \\text{mL}$ of water with $120\\ \\text{mL}$ of ethanol. Which statement is correct?",
+        "choices": [
+          "Water is the solvent, because water is always the solvent.",
+          "Ethanol is the solvent, because there is more of it.",
+          "Ethanol is the solute, because it is a liquid.",
+          "Two liquids cannot form a solution."
+        ],
+        "answer": 1,
+        "working": "Both substances are liquids, so the solvent is the one present in the larger amount: $120\\ \\text{mL}$ of ethanol. Water is the solute here."
+      }
+    ]
+  },
+  "c20-3-1-b": {
+    "lessonId": "c20-3-1",
+    "title": "Solutions, Electrolytes and Dissociation, Part 2: Electrolytes and Non-electrolytes",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The conductivity test",
+        "t": 20.877
+      },
+      {
+        "title": "Three kinds of solute",
+        "t": 79.95
+      },
+      {
+        "title": "Two traps",
+        "t": 141.219
+      },
+      {
+        "title": "Your turn",
+        "t": 190.922
+      },
+      {
+        "title": "Summary",
+        "t": 223.514
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-1-b:q",
+        "t": 199.603,
+        "prompt": "Which substance forms a solution in water that conducts electricity?",
+        "choices": [
+          "Methanol, $\\ce{CH3OH}$",
+          "Sucrose, $\\ce{C12H22O11}$",
+          "Glucose, $\\ce{C6H12O6}$",
+          "Ammonium chloride, $\\ce{NH4Cl}$"
+        ],
+        "answer": 3,
+        "working": "Ammonium chloride is an ionic compound: the ammonium ion takes the place of a metal ion. It dissociates into ions that can move. The other three are molecular compounds that stay whole in water."
+      }
+    ]
+  },
+  "c20-3-1-c": {
+    "lessonId": "c20-3-1",
+    "title": "Solutions, Electrolytes and Dissociation, Part 3: Dissociation Equations",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pulling the lattice apart",
+        "t": 20.84
+      },
+      {
+        "title": "Dissociation",
+        "t": 56.613
+      },
+      {
+        "title": "Four steps",
+        "t": 92.211
+      },
+      {
+        "title": "Aluminium sulfate",
+        "t": 138.141
+      },
+      {
+        "title": "Polyatomic ions stay whole",
+        "t": 174.957
+      },
+      {
+        "title": "Your turn",
+        "t": 214.265
+      },
+      {
+        "title": "Summary",
+        "t": 249.314
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-1-c:q",
+        "t": 225.771,
+        "prompt": "Iron(III) nitrate, $\\ce{Fe(NO3)3}$, dissociates in water. Which is the right-hand side of its dissociation equation?",
+        "choices": [
+          "$\\ce{Fe^3+(aq) + 3NO3-(aq)}$",
+          "$\\ce{3Fe^3+(aq) + NO3-(aq)}$",
+          "$\\ce{Fe^3+(aq) + (NO3)3^3-(aq)}$",
+          "$\\ce{Fe(NO3)3(aq)}$"
+        ],
+        "answer": 0,
+        "working": "One $\\ce{Fe^3+}$ ion and three nitrate ions, each kept whole with its own charge. Check: $(+3) + 3 \\times (-1) = 0$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
