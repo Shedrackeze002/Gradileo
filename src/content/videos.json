@@ -5081,7 +5081,7 @@
   "c20-1-4": {
     "lessonId": "c20-1-4",
     "title": "Electronegativity and Bond Types, Part 1: Electronegativity",
-    "duration": 256,
+    "duration": 258,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5090,33 +5090,33 @@
       },
       {
         "title": "A tug-of-war",
-        "t": 28.647
+        "t": 28.773
       },
       {
         "title": "The values",
-        "t": 66.066
+        "t": 66.451
       },
       {
         "title": "Trends in the table",
-        "t": 98.419
+        "t": 98.804
       },
       {
         "title": "Using the trends",
-        "t": 151.175
+        "t": 152.031
       },
       {
         "title": "Your turn",
-        "t": 186.707
+        "t": 188.334
       },
       {
         "title": "Summary",
-        "t": 221.34
+        "t": 223.218
       }
     ],
     "cues": [
       {
         "id": "c20-1-4:q",
-        "t": 200.716,
+        "t": 202.469,
         "prompt": "Using only the trends in the periodic table, which list puts fluorine, chlorine and bromine (all in group 17) in order of **increasing** electronegativity?",
         "choices": [
           "F, Cl, Br",
@@ -5132,7 +5132,7 @@
   "c20-1-4-b": {
     "lessonId": "c20-1-4",
     "title": "Electronegativity and Bond Types, Part 2: The Difference and Bond Types",
-    "duration": 253,
+    "duration": 254,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5141,33 +5141,33 @@
       },
       {
         "title": "The electronegativity difference",
-        "t": 22.684
+        "t": 22.758
       },
       {
         "title": "Three kinds of bond",
-        "t": 70.812
+        "t": 71.186
       },
       {
         "title": "The rule",
-        "t": 112.694
+        "t": 113.546
       },
       {
         "title": "Two non-polar bonds",
-        "t": 151.25
+        "t": 152.102
       },
       {
         "title": "Your turn",
-        "t": 182.383
+        "t": 183.235
       },
       {
         "title": "Summary",
-        "t": 216.274
+        "t": 217.251
       }
     ],
     "cues": [
       {
         "id": "c20-1-4-b:q",
-        "t": 195.271,
+        "t": 196.248,
         "prompt": "Find $\\Delta\\text{EN}$ for the N–H bond and classify it (N $3.0$, H $2.2$). Rule: below $0.5$ non-polar covalent, $0.5$ up to $1.7$ polar covalent, $1.7$ or more ionic.",
         "choices": [
           "$5.2$; ionic",
@@ -5183,7 +5183,7 @@
   "c20-1-4-c": {
     "lessonId": "c20-1-4",
     "title": "Electronegativity and Bond Types, Part 3: Partial Charges and the Continuum",
-    "duration": 247,
+    "duration": 248,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5196,29 +5196,29 @@
       },
       {
         "title": "The O–H bond",
-        "t": 62.789
+        "t": 62.941
       },
       {
         "title": "Where the delta minus goes",
-        "t": 101.025
+        "t": 101.276
       },
       {
         "title": "A continuum, not three boxes",
-        "t": 122.472
+        "t": 122.848
       },
       {
         "title": "Your turn",
-        "t": 182.737
+        "t": 183.113
       },
       {
         "title": "Summary",
-        "t": 217.999
+        "t": 218.4
       }
     ],
     "cues": [
       {
         "id": "c20-1-4-c:q",
-        "t": 194.325,
+        "t": 194.701,
         "prompt": "Which shows the C–Cl bond correctly? (C $2.6$, Cl $3.2$; a difference from $0.5$ up to $1.7$ is polar covalent.)",
         "choices": [
           "$\\overset{\\delta+}{\\text{C}}\\text{–}\\overset{\\delta-}{\\text{Cl}}$",
@@ -5345,29 +5345,29 @@
       },
       {
         "title": "Phosphorus trichloride",
-        "t": 65.561
+        "t": 65.683
       },
       {
         "title": "More molecules",
-        "t": 124.233
+        "t": 124.555
       },
       {
         "title": "Ions in brackets",
-        "t": 151.638
+        "t": 151.96
       },
       {
         "title": "Your turn",
-        "t": 180.893
+        "t": 181.215
       },
       {
         "title": "Summary",
-        "t": 219.99
+        "t": 220.312
       }
     ],
     "cues": [
       {
         "id": "c20-1-5-c:q",
-        "t": 195.401,
+        "t": 195.723,
         "prompt": "Chloroform, $\\ce{CHCl3}$, has carbon as its central atom, with single bonds only. (Valence electrons: C 4, H 1, Cl 7.) How many lone pairs are in its Lewis structure, in all?",
         "choices": [
           "$12$",
@@ -5400,29 +5400,29 @@
       },
       {
         "title": "A double bond is two pairs",
-        "t": 108.503
+        "t": 108.659
       },
       {
         "title": "Molecules of two atoms",
-        "t": 134.567
+        "t": 134.723
       },
       {
         "title": "An exception: boron trifluoride",
-        "t": 163.64
+        "t": 163.796
       },
       {
         "title": "Your turn",
-        "t": 187.838
+        "t": 187.994
       },
       {
         "title": "Summary",
-        "t": 224.684
+        "t": 224.84
       }
     ],
     "cues": [
       {
         "id": "c20-1-5-d:q",
-        "t": 200.698,
+        "t": 200.854,
         "prompt": "Carbon disulfide, $\\ce{CS2}$, has carbon as its central atom. (Valence electrons: C 4, S 6.) How many bonding pairs and lone pairs are in its Lewis structure?",
         "choices": [
           "2 bonding pairs and 6 lone pairs",
@@ -5591,7 +5591,7 @@
   "c20-1-7": {
     "lessonId": "c20-1-7",
     "title": "Polar and Non-polar Molecules, Part 1: Polar Bonds and Dipoles",
-    "duration": 218,
+    "duration": 219,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5604,25 +5604,25 @@
       },
       {
         "title": "Dipoles and polar molecules",
-        "t": 73.57
+        "t": 73.951
       },
       {
         "title": "Molecules of two atoms",
-        "t": 114.127
+        "t": 114.508
       },
       {
         "title": "Your turn",
-        "t": 146.324
+        "t": 146.705
       },
       {
         "title": "Summary",
-        "t": 182.453
+        "t": 182.909
       }
     ],
     "cues": [
       {
         "id": "c20-1-7:q",
-        "t": 155.464,
+        "t": 155.92,
         "prompt": "Which of these molecules is polar? (Electronegativities: H $2.2$, Br $3.0$, O $3.4$.)",
         "choices": [
           "$\\ce{Br2}$",
@@ -5651,29 +5651,29 @@
       },
       {
         "title": "Water",
-        "t": 73.329
+        "t": 73.579
       },
       {
         "title": "Symmetry",
-        "t": 116.855
+        "t": 117.105
       },
       {
         "title": "Three outer atoms, two shapes",
-        "t": 152.347
+        "t": 152.597
       },
       {
         "title": "Your turn",
-        "t": 188.952
+        "t": 189.202
       },
       {
         "title": "Summary",
-        "t": 228.256
+        "t": 228.556
       }
     ],
     "cues": [
       {
         "id": "c20-1-7-b:q",
-        "t": 202.515,
+        "t": 202.815,
         "prompt": "Phosphorus trichloride, $\\ce{PCl3}$, is trigonal pyramidal (P $2.2$, Cl $3.2$). Is it polar or non-polar, and why?",
         "choices": [
           "Polar: its pulls lean the same way, so they do not cancel.",
@@ -5706,21 +5706,21 @@
       },
       {
         "title": "Linear and flat, but polar",
-        "t": 108.44
+        "t": 108.565
       },
       {
         "title": "Your turn",
-        "t": 148.565
+        "t": 148.886
       },
       {
         "title": "Summary",
-        "t": 185.958
+        "t": 186.279
       }
     ],
     "cues": [
       {
         "id": "c20-1-7-c:q",
-        "t": 158.499,
+        "t": 158.82,
         "prompt": "Carbon tetrafluoride, $\\ce{CF4}$, and fluoromethane, $\\ce{CH3F}$, are both tetrahedral. (Electronegativities: H $2.2$, C $2.6$, F $4.0$.) Which of them is polar?",
         "choices": [
           "Both are polar.",
@@ -5898,29 +5898,29 @@
       },
       {
         "title": "Up to four per water molecule",
-        "t": 61.832
+        "t": 61.959
       },
       {
         "title": "Not every hydrogen",
-        "t": 93.731
+        "t": 93.859
       },
       {
         "title": "The forces add up",
-        "t": 122.236
+        "t": 122.364
       },
       {
         "title": "Your turn",
-        "t": 159.792
+        "t": 159.92
       },
       {
         "title": "Summary",
-        "t": 193.687
+        "t": 193.815
       }
     ],
     "cues": [
       {
         "id": "c20-1-8-c:q",
-        "t": 169.357,
+        "t": 169.485,
         "prompt": "Which intermolecular forces act between molecules of methanol, $\\ce{CH3OH}$? (It is polar.)",
         "choices": [
           "London dispersion forces, dipole–dipole forces and hydrogen bonds",
@@ -8422,7 +8422,7 @@
   "c20-3-6-b": {
     "lessonId": "c20-3-6",
     "title": "Acids, Bases and Neutralisation, Part 2: Hydronium and Hydroxide Ions",
-    "duration": 269,
+    "duration": 270,
     "voice": "af_heart",
     "chapters": [
       {
@@ -8435,29 +8435,29 @@
       },
       {
         "title": "Modified Arrhenius theory",
-        "t": 69.719
+        "t": 70.193
       },
       {
         "title": "Ammonia",
-        "t": 120.323
+        "t": 120.797
       },
       {
         "title": "Writing an ionisation",
-        "t": 151.449
+        "t": 151.923
       },
       {
         "title": "Your turn",
-        "t": 193.023
+        "t": 193.497
       },
       {
         "title": "Summary",
-        "t": 228.801
+        "t": 229.275
       }
     ],
     "cues": [
       {
         "id": "c20-3-6-b:q",
-        "t": 203.502,
+        "t": 203.976,
         "prompt": "Nitric acid, $\\ce{HNO3}$, ionises in water to make an acidic solution: $\\ce{HNO3(aq) + H2O(l) ->}$ ? Which two ions form?",
         "choices": [
           "$\\ce{H3O+}$ and $\\ce{NO3-}$",
@@ -9427,21 +9427,21 @@
       },
       {
         "title": "The dot means add",
-        "t": 142.543
+        "t": 142.515
       },
       {
         "title": "Your turn",
-        "t": 164.465
+        "t": 164.437
       },
       {
         "title": "Summary",
-        "t": 205.368
+        "t": 205.34
       }
     ],
     "cues": [
       {
         "id": "c20-4-3-b:q",
-        "t": 174.319,
+        "t": 174.291,
         "prompt": "What is the molar mass of magnesium sulfate heptahydrate, $\\ce{MgSO4*7H2O}$, to the nearest hundredth? Use these molar masses: Mg $24.31$, S $32.06$, O $16.00$, H $1.01\\ \\text{g/mol}$.",
         "choices": [
           "$138.39\\ \\text{g/mol}$",
