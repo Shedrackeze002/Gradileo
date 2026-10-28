@@ -10740,6 +10740,151 @@
       }
     ]
   },
+  "c30-1-2": {
+    "lessonId": "c30-1-2",
+    "title": "Calorimetry, Part 1: Heat and Specific Heat Capacity",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Heat",
+        "t": 28.025
+      },
+      {
+        "title": "Specific heat capacity",
+        "t": 63.316
+      },
+      {
+        "title": "One equation",
+        "t": 102.901
+      },
+      {
+        "title": "Warming water",
+        "t": 130.909
+      },
+      {
+        "title": "Your turn",
+        "t": 170.588
+      },
+      {
+        "title": "Summary",
+        "t": 208.52
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-2:q",
+        "t": 183.469,
+        "prompt": "How much heat does $150.0\\ \\text{g}$ of water absorb as it warms by $30.0^\\circ\\text{C}$? The specific heat capacity of water is $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$4.50\\ \\text{kJ}$",
+          "$1.89\\ \\text{kJ}$",
+          "$18.9\\ \\text{kJ}$",
+          "$18\\,855\\ \\text{kJ}$"
+        ],
+        "answer": 2,
+        "working": "$Q = mc\\Delta t = 150.0 \\times 4.19 \\times 30.0 = 18\\,855\\ \\text{J}$, which is $18.9\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-2-b": {
+    "lessonId": "c30-1-2",
+    "title": "Calorimetry, Part 2: Heat Lost, Units and Containers",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A block that cools",
+        "t": 20.999
+      },
+      {
+        "title": "Grams, not kilograms",
+        "t": 71.163
+      },
+      {
+        "title": "A saucepan of water",
+        "t": 102.269
+      },
+      {
+        "title": "Your turn",
+        "t": 173.747
+      },
+      {
+        "title": "Summary",
+        "t": 215.108
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-2-b:q",
+        "t": 190.559,
+        "prompt": "The temperature of $300.0\\ \\text{mL}$ of water falls from $65.0^\\circ\\text{C}$ to $25.0^\\circ\\text{C}$. How much heat does it gain or lose? The density of water is $1.00\\ \\text{g/mL}$ and its specific heat capacity is $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$50.3\\ \\text{kJ}$ lost",
+          "$50.3\\ \\text{kJ}$ gained",
+          "$50.3\\ \\text{J}$ lost",
+          "$12.0\\ \\text{kJ}$ lost"
+        ],
+        "answer": 0,
+        "working": "$m = 300.0\\ \\text{g}$ and $\\Delta t = 25.0 - 65.0 = -40.0^\\circ\\text{C}$. $Q = 300.0 \\times 4.19 \\times 40.0 = 50\\,280\\ \\text{J} \\approx 50.3\\ \\text{kJ}$, lost, since the water cooled."
+      }
+    ]
+  },
+  "c30-1-2-c": {
+    "lessonId": "c30-1-2",
+    "title": "Calorimetry, Part 3: Solving for a Mass, a Heat Capacity or a Temperature",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rearranging the equation",
+        "t": 21.502
+      },
+      {
+        "title": "Identifying a metal",
+        "t": 56.289
+      },
+      {
+        "title": "A final temperature",
+        "t": 108.052
+      },
+      {
+        "title": "Your turn",
+        "t": 162.131
+      },
+      {
+        "title": "Summary",
+        "t": 201.739
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-2-c:q",
+        "t": 177.167,
+        "prompt": "Some water absorbs $6.28\\ \\text{kJ}$ of heat, and its temperature rises by $12.5^\\circ\\text{C}$. What is the mass of the water? The specific heat capacity of water is $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$0.120\\ \\text{g}$",
+          "$329\\ \\text{g}$",
+          "$1500\\ \\text{g}$",
+          "$120\\ \\text{g}$"
+        ],
+        "answer": 3,
+        "working": "$Q = 6280\\ \\text{J}$, so $m = \\dfrac{Q}{c\\Delta t} = \\dfrac{6280}{4.19 \\times 12.5} = 120\\ \\text{g}$."
+      }
+    ]
+  },
   "c30-3-1": {
     "lessonId": "c30-3-1",
     "title": "Organic Compounds and How They Are Drawn, Part 1: What Makes a Compound Organic",
