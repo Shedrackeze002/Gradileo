@@ -655,9 +655,17 @@ items ship or decisions change.
      teacher says them ("H 2 S O 4", "S O 4, 2 minus", "chlorine-35", "Z N, solid, plus 2 H C L,
      aqueous, gives …"; `engine/chem/speech.ts`), and the tutor-voice recording now covers the
      chemistry courses too.
-   - Next: the explainer videos for Grades 10 and 11. Then Grade 12
-     Chemistry, then English 10, 20 and 30. The privacy policy and terms still describe Gradileo
-     as a mathematics platform; their wording is the owner's to change.
+   - Done (28 October 2026): the explainer videos for Grades 10 and 11 Chemistry, 89 and 122 (PRs
+     #96 and the one after it). New figures in `src/video/chem.ts`: Bohr diagrams, Lewis structures
+     (bonds, lone pairs, ion brackets), particle boxes for states and mixtures, energy diagrams and
+     the main-group periodic table. Every video is rendered and in Drive. The pronunciation checks
+     found the voice saying the metal lead as "leed", Amedeo (Avogadro) as "Aym-dee-oh", "deca" and
+     "decahydrate" as "dih-KA", "heptaoxide", "pipetted", "electronegativity" (without its "neg")
+     and Svante Arrhenius wrongly; each is respelled for the voice in `speechText`, and the videos
+     with them were made again. Grade 10 is cleared from the session (`free-disk.sh` now handles
+     chemistry courses). They go on YouTube after the maths.
+   - Next: Grade 12 Chemistry, then English 10, 20 and 30. The privacy policy and terms still
+     describe Gradileo as a mathematics platform; their wording is the owner's to change.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
      longer set in Alberta (about 1,000 mentions: towns, lakes, parks, teams, Alberta's GST). Town
      lists and real distance, daylight and temperature data now belong to invented towns (Riverton,

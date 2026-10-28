@@ -29,6 +29,9 @@ export function speechText(say: string): string {
   // without their hyphens (with them, the voice blurs them into "A to 1" and "x styles"), and sizes like "eight-by-twelve", which run
   // together, said as separate words. The metal lead is always read as the verb ("leed"), so where it is
   // the metal (lead two nitrate, a sample of lead) it is spelled as it sounds; "lead to" and "a big lead" keep theirs.
+  // Chemistry prefixes: "deca" alone and in "decahydrate" is stressed "dih-KA", "heptaoxide" runs its
+  // vowels together ("hep-TOWK-side"), "pipetted" comes out "PIPE-uh-did", "electronegativity" loses its
+  // "neg" ("electrong-gativity"), and the chemist Svante Arrhenius is "Svant".
   return words
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
@@ -45,6 +48,11 @@ export function speechText(say: string): string {
     .replace(/\bKwame\b/g, 'Kwahmay')
     .replace(/\bJun\b/g, 'Joon')
     .replace(/\bAmedeo\b/g, 'Ama-day-o')
+    .replace(/\b([Dd])eca(?=\b|hydrate)/g, '$1ecka')
+    .replace(/\b([Hh])eptaoxide/g, '$1epta-oxide')
+    .replace(/\b([Pp])ipetted\b/g, '$1ih-petted')
+    .replace(/\b([Ee])lectronegativ/g, '$1lectro-negativ')
+    .replace(/\bSvante\b/g, 'Svahntay')
     .replace(/(\w)-by-(\w)/g, '$1 by $2');
 }
 

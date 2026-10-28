@@ -4941,29 +4941,29 @@
       },
       {
         "title": "Three rules",
-        "t": 56.649
+        "t": 56.742
       },
       {
         "title": "More examples",
-        "t": 106.549
+        "t": 106.642
       },
       {
         "title": "Molecular names only",
-        "t": 142.34
+        "t": 142.433
       },
       {
         "title": "Your turn",
-        "t": 170.364
+        "t": 170.457
       },
       {
         "title": "Summary",
-        "t": 202.921
+        "t": 203.211
       }
     ],
     "cues": [
       {
         "id": "c20-1-3-b:q",
-        "t": 177.802,
+        "t": 177.895,
         "prompt": "Name the molecular compound $\\ce{Cl2O7}$.",
         "choices": [
           "chlorine heptaoxide",
@@ -4992,29 +4992,29 @@
       },
       {
         "title": "Never simplify",
-        "t": 58.556
+        "t": 58.432
       },
       {
         "title": "Common names",
-        "t": 90.214
+        "t": 90.09
       },
       {
         "title": "Alcohols and ozone",
-        "t": 132.261
+        "t": 132.136
       },
       {
         "title": "Your turn",
-        "t": 161.243
+        "t": 161.118
       },
       {
         "title": "Summary",
-        "t": 190.194
+        "t": 190.069
       }
     ],
     "cues": [
       {
         "id": "c20-1-3-c:q",
-        "t": 168.758,
+        "t": 168.633,
         "prompt": "What is the formula of tetraphosphorus trisulfide?",
         "choices": [
           "$\\ce{P3S4}$",
@@ -5081,7 +5081,7 @@
   "c20-1-4": {
     "lessonId": "c20-1-4",
     "title": "Electronegativity and Bond Types, Part 1: Electronegativity",
-    "duration": 256,
+    "duration": 258,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5090,33 +5090,33 @@
       },
       {
         "title": "A tug-of-war",
-        "t": 28.647
+        "t": 28.773
       },
       {
         "title": "The values",
-        "t": 66.066
+        "t": 66.451
       },
       {
         "title": "Trends in the table",
-        "t": 98.419
+        "t": 98.804
       },
       {
         "title": "Using the trends",
-        "t": 151.175
+        "t": 152.031
       },
       {
         "title": "Your turn",
-        "t": 186.707
+        "t": 188.334
       },
       {
         "title": "Summary",
-        "t": 221.34
+        "t": 223.218
       }
     ],
     "cues": [
       {
         "id": "c20-1-4:q",
-        "t": 200.716,
+        "t": 202.469,
         "prompt": "Using only the trends in the periodic table, which list puts fluorine, chlorine and bromine (all in group 17) in order of **increasing** electronegativity?",
         "choices": [
           "F, Cl, Br",
@@ -5132,7 +5132,7 @@
   "c20-1-4-b": {
     "lessonId": "c20-1-4",
     "title": "Electronegativity and Bond Types, Part 2: The Difference and Bond Types",
-    "duration": 253,
+    "duration": 254,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5141,33 +5141,33 @@
       },
       {
         "title": "The electronegativity difference",
-        "t": 22.684
+        "t": 22.758
       },
       {
         "title": "Three kinds of bond",
-        "t": 70.812
+        "t": 71.186
       },
       {
         "title": "The rule",
-        "t": 112.694
+        "t": 113.546
       },
       {
         "title": "Two non-polar bonds",
-        "t": 151.25
+        "t": 152.102
       },
       {
         "title": "Your turn",
-        "t": 182.383
+        "t": 183.235
       },
       {
         "title": "Summary",
-        "t": 216.274
+        "t": 217.251
       }
     ],
     "cues": [
       {
         "id": "c20-1-4-b:q",
-        "t": 195.271,
+        "t": 196.248,
         "prompt": "Find $\\Delta\\text{EN}$ for the N–H bond and classify it (N $3.0$, H $2.2$). Rule: below $0.5$ non-polar covalent, $0.5$ up to $1.7$ polar covalent, $1.7$ or more ionic.",
         "choices": [
           "$5.2$; ionic",
@@ -5183,7 +5183,7 @@
   "c20-1-4-c": {
     "lessonId": "c20-1-4",
     "title": "Electronegativity and Bond Types, Part 3: Partial Charges and the Continuum",
-    "duration": 247,
+    "duration": 248,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5196,29 +5196,29 @@
       },
       {
         "title": "The O–H bond",
-        "t": 62.789
+        "t": 62.941
       },
       {
         "title": "Where the delta minus goes",
-        "t": 101.025
+        "t": 101.276
       },
       {
         "title": "A continuum, not three boxes",
-        "t": 122.472
+        "t": 122.848
       },
       {
         "title": "Your turn",
-        "t": 182.737
+        "t": 183.113
       },
       {
         "title": "Summary",
-        "t": 217.999
+        "t": 218.4
       }
     ],
     "cues": [
       {
         "id": "c20-1-4-c:q",
-        "t": 194.325,
+        "t": 194.701,
         "prompt": "Which shows the C–Cl bond correctly? (C $2.6$, Cl $3.2$; a difference from $0.5$ up to $1.7$ is polar covalent.)",
         "choices": [
           "$\\overset{\\delta+}{\\text{C}}\\text{–}\\overset{\\delta-}{\\text{Cl}}$",
@@ -5345,29 +5345,29 @@
       },
       {
         "title": "Phosphorus trichloride",
-        "t": 65.561
+        "t": 65.683
       },
       {
         "title": "More molecules",
-        "t": 124.233
+        "t": 124.555
       },
       {
         "title": "Ions in brackets",
-        "t": 151.638
+        "t": 151.96
       },
       {
         "title": "Your turn",
-        "t": 180.893
+        "t": 181.215
       },
       {
         "title": "Summary",
-        "t": 219.99
+        "t": 220.312
       }
     ],
     "cues": [
       {
         "id": "c20-1-5-c:q",
-        "t": 195.401,
+        "t": 195.723,
         "prompt": "Chloroform, $\\ce{CHCl3}$, has carbon as its central atom, with single bonds only. (Valence electrons: C 4, H 1, Cl 7.) How many lone pairs are in its Lewis structure, in all?",
         "choices": [
           "$12$",
@@ -5400,29 +5400,29 @@
       },
       {
         "title": "A double bond is two pairs",
-        "t": 108.503
+        "t": 108.659
       },
       {
         "title": "Molecules of two atoms",
-        "t": 134.567
+        "t": 134.723
       },
       {
         "title": "An exception: boron trifluoride",
-        "t": 163.64
+        "t": 163.796
       },
       {
         "title": "Your turn",
-        "t": 187.838
+        "t": 187.994
       },
       {
         "title": "Summary",
-        "t": 224.684
+        "t": 224.84
       }
     ],
     "cues": [
       {
         "id": "c20-1-5-d:q",
-        "t": 200.698,
+        "t": 200.854,
         "prompt": "Carbon disulfide, $\\ce{CS2}$, has carbon as its central atom. (Valence electrons: C 4, S 6.) How many bonding pairs and lone pairs are in its Lewis structure?",
         "choices": [
           "2 bonding pairs and 6 lone pairs",
@@ -5591,7 +5591,7 @@
   "c20-1-7": {
     "lessonId": "c20-1-7",
     "title": "Polar and Non-polar Molecules, Part 1: Polar Bonds and Dipoles",
-    "duration": 218,
+    "duration": 219,
     "voice": "af_heart",
     "chapters": [
       {
@@ -5604,25 +5604,25 @@
       },
       {
         "title": "Dipoles and polar molecules",
-        "t": 73.57
+        "t": 73.951
       },
       {
         "title": "Molecules of two atoms",
-        "t": 114.127
+        "t": 114.508
       },
       {
         "title": "Your turn",
-        "t": 146.324
+        "t": 146.705
       },
       {
         "title": "Summary",
-        "t": 182.453
+        "t": 182.909
       }
     ],
     "cues": [
       {
         "id": "c20-1-7:q",
-        "t": 155.464,
+        "t": 155.92,
         "prompt": "Which of these molecules is polar? (Electronegativities: H $2.2$, Br $3.0$, O $3.4$.)",
         "choices": [
           "$\\ce{Br2}$",
@@ -5651,29 +5651,29 @@
       },
       {
         "title": "Water",
-        "t": 73.329
+        "t": 73.579
       },
       {
         "title": "Symmetry",
-        "t": 116.855
+        "t": 117.105
       },
       {
         "title": "Three outer atoms, two shapes",
-        "t": 152.347
+        "t": 152.597
       },
       {
         "title": "Your turn",
-        "t": 188.952
+        "t": 189.202
       },
       {
         "title": "Summary",
-        "t": 228.256
+        "t": 228.556
       }
     ],
     "cues": [
       {
         "id": "c20-1-7-b:q",
-        "t": 202.515,
+        "t": 202.815,
         "prompt": "Phosphorus trichloride, $\\ce{PCl3}$, is trigonal pyramidal (P $2.2$, Cl $3.2$). Is it polar or non-polar, and why?",
         "choices": [
           "Polar: its pulls lean the same way, so they do not cancel.",
@@ -5706,21 +5706,21 @@
       },
       {
         "title": "Linear and flat, but polar",
-        "t": 108.44
+        "t": 108.565
       },
       {
         "title": "Your turn",
-        "t": 148.565
+        "t": 148.886
       },
       {
         "title": "Summary",
-        "t": 185.958
+        "t": 186.279
       }
     ],
     "cues": [
       {
         "id": "c20-1-7-c:q",
-        "t": 158.499,
+        "t": 158.82,
         "prompt": "Carbon tetrafluoride, $\\ce{CF4}$, and fluoromethane, $\\ce{CH3F}$, are both tetrahedral. (Electronegativities: H $2.2$, C $2.6$, F $4.0$.) Which of them is polar?",
         "choices": [
           "Both are polar.",
@@ -5898,29 +5898,29 @@
       },
       {
         "title": "Up to four per water molecule",
-        "t": 61.832
+        "t": 61.959
       },
       {
         "title": "Not every hydrogen",
-        "t": 93.731
+        "t": 93.859
       },
       {
         "title": "The forces add up",
-        "t": 122.236
+        "t": 122.364
       },
       {
         "title": "Your turn",
-        "t": 159.792
+        "t": 159.92
       },
       {
         "title": "Summary",
-        "t": 193.687
+        "t": 193.815
       }
     ],
     "cues": [
       {
         "id": "c20-1-8-c:q",
-        "t": 169.357,
+        "t": 169.485,
         "prompt": "Which intermolecular forces act between molecules of methanol, $\\ce{CH3OH}$? (It is polar.)",
         "choices": [
           "London dispersion forces, dipole–dipole forces and hydrogen bonds",
@@ -8036,6 +8036,2507 @@
         ],
         "answer": 0,
         "working": "$V = 400\\ \\text{mL} = 0.400\\ \\text{L}$, so $n = cV = 0.250 \\times 0.400 = 0.100\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-3-4-b": {
+    "lessonId": "c20-3-4",
+    "title": "Molar Concentration, Part 2: From a Mass to a Concentration",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From mass to concentration",
+        "t": 15.942
+      },
+      {
+        "title": "The mass needed",
+        "t": 81.061
+      },
+      {
+        "title": "Your turn",
+        "t": 155.176
+      },
+      {
+        "title": "Summary",
+        "t": 197.395
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-4-b:q",
+        "t": 171.348,
+        "prompt": "What mass of potassium chloride, $\\ce{KCl}$, is needed to make $500\\ \\text{mL}$ of a $0.200\\ \\text{mol/L}$ solution? Use these molar masses: K $39.10\\ \\text{g/mol}$, Cl $35.45\\ \\text{g/mol}$.",
+        "choices": [
+          "$29.8\\ \\text{g}$",
+          "$7\\,455\\ \\text{g}$",
+          "$7.46\\ \\text{g}$",
+          "$0.00134\\ \\text{g}$"
+        ],
+        "answer": 2,
+        "working": "$M = 39.10 + 35.45 = 74.55\\ \\text{g/mol}$, $n = 0.200 \\times 0.500 = 0.100\\ \\text{mol}$, so $m = 0.100 \\times 74.55 = 7.455 \\approx 7.46\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-3-4-c": {
+    "lessonId": "c20-3-4",
+    "title": "Molar Concentration, Part 3: Preparing a Standard Solution",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Standard solutions",
+        "t": 21.863
+      },
+      {
+        "title": "Six steps",
+        "t": 51.311
+      },
+      {
+        "title": "Make up to the volume",
+        "t": 131.434
+      },
+      {
+        "title": "Your turn",
+        "t": 158.853
+      },
+      {
+        "title": "Summary",
+        "t": 194.52
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-4-c:q",
+        "t": 169.591,
+        "prompt": "Which method makes $250.0\\ \\text{mL}$ of a standard solution from a weighed solid?",
+        "choices": [
+          "Dissolve it in $250.0\\ \\text{mL}$ of water.",
+          "Dissolve it in a little water, transfer it with every rinse to the flask, and fill to the line.",
+          "Fill the flask to the line with water, then add the solid.",
+          "Dissolve it in the flask, and fill until the top of the meniscus is on the line."
+        ],
+        "answer": 1,
+        "working": "Dissolve first, then make up to the line in a $250.0\\ \\text{mL}$ volumetric flask, with the bottom of the meniscus on the line."
+      }
+    ]
+  },
+  "c20-3-4-d": {
+    "lessonId": "c20-3-4",
+    "title": "Molar Concentration, Part 4: Concentrations of Ions",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Each ion’s concentration",
+        "t": 19.216
+      },
+      {
+        "title": "Aluminium sulfate",
+        "t": 67.964
+      },
+      {
+        "title": "From an ion to the compound",
+        "t": 112.317
+      },
+      {
+        "title": "Starting from a mass",
+        "t": 158.995
+      },
+      {
+        "title": "Your turn",
+        "t": 210.708
+      },
+      {
+        "title": "Summary",
+        "t": 249.662
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-4-d:q",
+        "t": 223.71,
+        "prompt": "What is the concentration of $\\ce{K+}$ ions in a $0.40\\ \\text{mol/L}$ solution of potassium phosphate, $\\ce{K3PO4}$?",
+        "choices": [
+          "$0.13\\ \\text{mol/L}$",
+          "$0.40\\ \\text{mol/L}$",
+          "$0.80\\ \\text{mol/L}$",
+          "$1.20\\ \\text{mol/L}$"
+        ],
+        "answer": 3,
+        "working": "$\\ce{K3PO4(s) -> 3K+(aq) + PO4^3-(aq)}$, so $[\\ce{K+}] = 3 \\times 0.40 = 1.20\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-3-5": {
+    "lessonId": "c20-3-5",
+    "title": "Dilution, Part 1: What Stays the Same",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding solvent",
+        "t": 35.148
+      },
+      {
+        "title": "The dilution equation",
+        "t": 69.554
+      },
+      {
+        "title": "Finding the new concentration",
+        "t": 121.842
+      },
+      {
+        "title": "Both volumes in one unit",
+        "t": 161.935
+      },
+      {
+        "title": "Your turn",
+        "t": 177.705
+      },
+      {
+        "title": "Summary",
+        "t": 217.889
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-5:q",
+        "t": 195.038,
+        "prompt": "$15.0\\ \\text{mL}$ of a $3.00\\ \\text{mol/L}$ solution is diluted with water to $75.0\\ \\text{mL}$. What is the new concentration? When a solution is diluted, $c_1V_1 = c_2V_2$.",
+        "choices": [
+          "$15.0\\ \\text{mol/L}$",
+          "$0.600\\ \\text{mol/L}$",
+          "$600\\ \\text{mol/L}$",
+          "$0.200\\ \\text{mol/L}$"
+        ],
+        "answer": 1,
+        "working": "$c_2 = \\dfrac{c_1V_1}{V_2} = \\dfrac{3.00 \\times 15.0}{75.0} = 0.600\\ \\text{mol/L}$. The volume grew five times, so the concentration fell to one fifth."
+      }
+    ]
+  },
+  "c20-3-5-b": {
+    "lessonId": "c20-3-5",
+    "title": "Dilution, Part 2: Stock Solution and Water",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How much stock solution",
+        "t": 24.745
+      },
+      {
+        "title": "How much water",
+        "t": 76.269
+      },
+      {
+        "title": "The final volume is not the water",
+        "t": 132.694
+      },
+      {
+        "title": "Your turn",
+        "t": 155.458
+      },
+      {
+        "title": "Summary",
+        "t": 198.157
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-5-b:q",
+        "t": 173.399,
+        "prompt": "A student makes $250\\ \\text{mL}$ of a $0.400\\ \\text{mol/L}$ solution from a $2.00\\ \\text{mol/L}$ stock solution. What volume of water is added? When a solution is diluted, $c_1V_1 = c_2V_2$.",
+        "choices": [
+          "$50.0\\ \\text{mL}$",
+          "$250\\ \\text{mL}$",
+          "$1250\\ \\text{mL}$",
+          "$200\\ \\text{mL}$"
+        ],
+        "answer": 3,
+        "working": "$V_1 = \\dfrac{0.400 \\times 250}{2.00} = 50.0\\ \\text{mL}$ of stock solution, so the water is $250 - 50.0 = 200\\ \\text{mL}$."
+      }
+    ]
+  },
+  "c20-3-5-c": {
+    "lessonId": "c20-3-5",
+    "title": "Dilution, Part 3: Dilution Factor",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The dilution factor",
+        "t": 24.389
+      },
+      {
+        "title": "Using a dilution factor",
+        "t": 70.722
+      },
+      {
+        "title": "A tenfold dilution",
+        "t": 118.994
+      },
+      {
+        "title": "Your turn",
+        "t": 157.522
+      },
+      {
+        "title": "Summary",
+        "t": 205.964
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-5-c:q",
+        "t": 175.656,
+        "prompt": "$5.00\\ \\text{mL}$ of a $1.50\\ \\text{mol/L}$ solution is diluted to $100.0\\ \\text{mL}$. What are the dilution factor and the new concentration? The dilution factor is $\\dfrac{V_2}{V_1} = \\dfrac{c_1}{c_2}$.",
+        "choices": [
+          "$20$; $0.0750\\ \\text{mol/L}$",
+          "$20$; $30.0\\ \\text{mol/L}$",
+          "$0.05$; $0.0750\\ \\text{mol/L}$",
+          "$95$; $0.0158\\ \\text{mol/L}$"
+        ],
+        "answer": 0,
+        "working": "Dilution factor: $\\dfrac{100.0}{5.00} = 20$. New concentration: $\\dfrac{1.50}{20} = 0.0750\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-3-5-d": {
+    "lessonId": "c20-3-5",
+    "title": "Dilution, Part 4: Making a Dilution in the Lab",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five steps",
+        "t": 20.875
+      },
+      {
+        "title": "Add acid to water",
+        "t": 95.505
+      },
+      {
+        "title": "Planning a dilution",
+        "t": 128.905
+      },
+      {
+        "title": "Your turn",
+        "t": 176.37
+      },
+      {
+        "title": "Summary",
+        "t": 219.962
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-5-d:q",
+        "t": 195.398,
+        "prompt": "How do you make $100.0\\ \\text{mL}$ of a $0.150\\ \\text{mol/L}$ solution from a $1.50\\ \\text{mol/L}$ stock solution, in a $100\\ \\text{mL}$ volumetric flask? When a solution is diluted, $c_1V_1 = c_2V_2$.",
+        "choices": [
+          "Pipette in $10.0\\ \\text{mL}$ of stock, then add $100.0\\ \\text{mL}$ of water.",
+          "Pipette in $1.00\\ \\text{mL}$ of stock, then fill to the mark.",
+          "Pipette in $10.0\\ \\text{mL}$ of stock, then fill to the mark.",
+          "Pipette in $15.0\\ \\text{mL}$ of stock, then fill to the mark."
+        ],
+        "answer": 2,
+        "working": "$V_1 = \\dfrac{0.150 \\times 100.0}{1.50} = 10.0\\ \\text{mL}$. Filling a $100\\ \\text{mL}$ flask to the mark makes the final volume exactly $100.0\\ \\text{mL}$."
+      }
+    ]
+  },
+  "c20-3-6": {
+    "lessonId": "c20-3-6",
+    "title": "Acids, Bases and Neutralisation, Part 1: Testing Solutions",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Indicators",
+        "t": 35.466
+      },
+      {
+        "title": "More tests",
+        "t": 88.592
+      },
+      {
+        "title": "One test may not be enough",
+        "t": 141.77
+      },
+      {
+        "title": "Your turn",
+        "t": 190.372
+      },
+      {
+        "title": "Summary",
+        "t": 220.818
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-6:q",
+        "t": 197.806,
+        "prompt": "Which observation shows that a solution is acidic?",
+        "choices": [
+          "Phenolphthalein stays colourless.",
+          "Red litmus paper stays red.",
+          "Bromothymol blue turns yellow.",
+          "The solution conducts electricity."
+        ],
+        "answer": 2,
+        "working": "Bromothymol blue is yellow only in an acidic solution. Phenolphthalein and red litmus do not change in acidic or neutral solutions, and basic solutions conduct as well."
+      }
+    ]
+  },
+  "c20-3-6-b": {
+    "lessonId": "c20-3-6",
+    "title": "Acids, Bases and Neutralisation, Part 2: Hydronium and Hydroxide Ions",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The hydronium ion",
+        "t": 23.152
+      },
+      {
+        "title": "Modified Arrhenius theory",
+        "t": 70.193
+      },
+      {
+        "title": "Ammonia",
+        "t": 120.797
+      },
+      {
+        "title": "Writing an ionisation",
+        "t": 151.923
+      },
+      {
+        "title": "Your turn",
+        "t": 193.497
+      },
+      {
+        "title": "Summary",
+        "t": 229.275
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-6-b:q",
+        "t": 203.976,
+        "prompt": "Nitric acid, $\\ce{HNO3}$, ionises in water to make an acidic solution: $\\ce{HNO3(aq) + H2O(l) ->}$ ? Which two ions form?",
+        "choices": [
+          "$\\ce{H3O+}$ and $\\ce{NO3-}$",
+          "$\\ce{H3O-}$ and $\\ce{NO3+}$",
+          "$\\ce{OH-}$ and $\\ce{H2NO3+}$",
+          "$\\ce{H-}$ and $\\ce{NO3+}$"
+        ],
+        "answer": 0,
+        "working": "The acid gives a hydrogen ion to water, forming the hydronium ion, $\\ce{H3O+}$, and leaving the nitrate ion, $\\ce{NO3-}$."
+      }
+    ]
+  },
+  "c20-3-6-c": {
+    "lessonId": "c20-3-6",
+    "title": "Acids, Bases and Neutralisation, Part 3: Acidic, Basic or Neutral?",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What to look for",
+        "t": 22.38
+      },
+      {
+        "title": "Salts and molecules",
+        "t": 69.577
+      },
+      {
+        "title": "An OH does not make a base",
+        "t": 106.952
+      },
+      {
+        "title": "Your turn",
+        "t": 138.411
+      },
+      {
+        "title": "Summary",
+        "t": 166.548
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-6-c:q",
+        "t": 144.511,
+        "prompt": "Which of these solutions is basic?",
+        "choices": [
+          "ethanol, $\\ce{C2H5OH(aq)}$",
+          "sodium chloride, $\\ce{NaCl(aq)}$",
+          "acetic acid, $\\ce{CH3COOH(aq)}$",
+          "ammonia, $\\ce{NH3(aq)}$"
+        ],
+        "answer": 3,
+        "working": "Ammonia reacts with water to form $\\ce{OH-}$ ions. Ethanol and sodium chloride form neither $\\ce{H3O+}$ nor $\\ce{OH-}$, and acetic acid forms $\\ce{H3O+}$."
+      }
+    ]
+  },
+  "c20-3-6-d": {
+    "lessonId": "c20-3-6",
+    "title": "Acids, Bases and Neutralisation, Part 4: Salt and Water",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Neutralisation",
+        "t": 21.262
+      },
+      {
+        "title": "Writing the salt",
+        "t": 59.426
+      },
+      {
+        "title": "Balancing a neutralisation",
+        "t": 125.63
+      },
+      {
+        "title": "Your turn",
+        "t": 189.747
+      },
+      {
+        "title": "Summary",
+        "t": 233.109
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-6-d:q",
+        "t": 204.734,
+        "prompt": "Phosphoric acid is neutralised by potassium hydroxide: $\\ce{H3PO4 + KOH -> K3PO4 + H2O}$. What are the coefficients of the balanced equation, in order?",
+        "choices": [
+          "$1,\\ 1,\\ 1,\\ 1$",
+          "$1,\\ 3,\\ 1,\\ 3$",
+          "$1,\\ 3,\\ 1,\\ 1$",
+          "$3,\\ 1,\\ 1,\\ 3$"
+        ],
+        "answer": 1,
+        "working": "Three $\\ce{K+}$ balance one $\\ce{PO4^3-}$, so the salt is $\\ce{K3PO4}$ and needs $\\ce{3KOH}$. $\\ce{H3PO4}$ gives up 3 $\\ce{H+}$, making 3 $\\ce{H2O}$."
+      }
+    ]
+  },
+  "c20-3-7": {
+    "lessonId": "c20-3-7",
+    "title": "pH and pOH, Part 1: A Scale of Powers of Ten",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Squashed against zero",
+        "t": 39.271
+      },
+      {
+        "title": "The pH",
+        "t": 93.974
+      },
+      {
+        "title": "Any concentration",
+        "t": 124.581
+      },
+      {
+        "title": "Your turn",
+        "t": 179.55
+      },
+      {
+        "title": "Summary",
+        "t": 216.348
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-7:q",
+        "t": 193.573,
+        "prompt": "A solution has $[\\ce{H3O+}] = 4.5 \\times 10^{-6}\\ \\text{mol/L}$. What is its pH, to two decimal places? $\\text{pH} = -\\log[\\ce{H3O+}]$.",
+        "choices": [
+          "$6.00$",
+          "$-5.35$",
+          "$8.65$",
+          "$5.35$"
+        ],
+        "answer": 3,
+        "working": "$\\text{pH} = -\\log(4.5 \\times 10^{-6}) = 5.3468... = 5.35$"
+      }
+    ]
+  },
+  "c20-3-7-b": {
+    "lessonId": "c20-3-7",
+    "title": "pH and pOH, Part 2: From pH to Concentration",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Undoing the logarithm",
+        "t": 21.821
+      },
+      {
+        "title": "A pH with decimals",
+        "t": 64.531
+      },
+      {
+        "title": "Dropping the minus sign",
+        "t": 105.653
+      },
+      {
+        "title": "Your turn",
+        "t": 135.854
+      },
+      {
+        "title": "Summary",
+        "t": 172.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-7-b:q",
+        "t": 149.39,
+        "prompt": "A solution has a pH of $4.20$. What is $[\\ce{H3O+}]$, in mol/L, to two significant figures? $[\\ce{H3O+}] = 10^{-\\text{pH}}$.",
+        "choices": [
+          "$1.6 \\times 10^{4}$",
+          "$6.3 \\times 10^{-5}$",
+          "$1.6 \\times 10^{-10}$",
+          "$1.0 \\times 10^{-4}$"
+        ],
+        "answer": 1,
+        "working": "$[\\ce{H3O+}] = 10^{-4.20} = 0.0000631 = 6.3 \\times 10^{-5}\\ \\text{mol/L}$"
+      }
+    ]
+  },
+  "c20-3-7-c": {
+    "lessonId": "c20-3-7",
+    "title": "pH and pOH, Part 3: pOH and the Hydroxide Ion",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ions in pure water",
+        "t": 21.534
+      },
+      {
+        "title": "The pOH scale",
+        "t": 79.323
+      },
+      {
+        "title": "From hydroxide to pH",
+        "t": 118.89
+      },
+      {
+        "title": "Hydroxide from the pH",
+        "t": 151.778
+      },
+      {
+        "title": "Your turn",
+        "t": 192.207
+      },
+      {
+        "title": "Summary",
+        "t": 230.681
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-7-c:q",
+        "t": 205.817,
+        "prompt": "A solution has a pH of $10.60$. What is $[\\ce{OH-}]$, in mol/L, to two significant figures? At $25^\\circ\\text{C}$, $\\text{pH} + \\text{pOH} = 14.00$. $[\\ce{OH-}] = 10^{-\\text{pOH}}$.",
+        "choices": [
+          "$2.5 \\times 10^{-11}$",
+          "$2.5 \\times 10^{3}$",
+          "$4.0 \\times 10^{-4}$",
+          "$3.4 \\times 10^{-4}$"
+        ],
+        "answer": 2,
+        "working": "$\\text{pOH} = 14.00 - 10.60 = 3.40$, so $[\\ce{OH-}] = 10^{-3.40} = 4.0 \\times 10^{-4}\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-3-7-d": {
+    "lessonId": "c20-3-7",
+    "title": "pH and pOH, Part 4: Reading the pH Scale",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Acidic, neutral and basic",
+        "t": 21.738
+      },
+      {
+        "title": "Both ions on one table",
+        "t": 49.04
+      },
+      {
+        "title": "Factors of ten",
+        "t": 76.146
+      },
+      {
+        "title": "Acidic or basic?",
+        "t": 124.644
+      },
+      {
+        "title": "Your turn",
+        "t": 168.35
+      },
+      {
+        "title": "Summary",
+        "t": 206.101
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-7-d:q",
+        "t": 182.919,
+        "prompt": "Solution A has a pH of 2, and solution B has a pH of 6. How many times greater is $[\\ce{H3O+}]$ in solution A than in solution B?",
+        "choices": [
+          "$10\\,000$ times",
+          "$4$ times",
+          "$40$ times",
+          "$3$ times"
+        ],
+        "answer": 0,
+        "working": "The pH values differ by 4, so $[\\ce{H3O+}]$ differs by a factor of $10^4 = 10\\,000$. The lower pH, A, has the greater concentration."
+      }
+    ]
+  },
+  "c20-3-8": {
+    "lessonId": "c20-3-8",
+    "title": "Strong and Weak Acids and Bases, Part 1: Strong and Weak Acids",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How far an acid ionises",
+        "t": 30.879
+      },
+      {
+        "title": "Inside the two solutions",
+        "t": 78.066
+      },
+      {
+        "title": "Counting the particles",
+        "t": 113.699
+      },
+      {
+        "title": "The six strong acids",
+        "t": 138.013
+      },
+      {
+        "title": "Your turn",
+        "t": 180.736
+      },
+      {
+        "title": "Summary",
+        "t": 208.855
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-8:q",
+        "t": 186.7,
+        "prompt": "Which of these is a strong acid?",
+        "choices": [
+          "hydrobromic acid, $\\ce{HBr(aq)}$",
+          "hydrofluoric acid, $\\ce{HF(aq)}$",
+          "nitrous acid, $\\ce{HNO2(aq)}$",
+          "acetic acid, $\\ce{CH3COOH(aq)}$"
+        ],
+        "answer": 0,
+        "working": "Hydrobromic acid is one of the six common strong acids: it ionises completely in water. The other three are weak."
+      }
+    ]
+  },
+  "c20-3-8-b": {
+    "lessonId": "c20-3-8",
+    "title": "Strong and Weak Acids and Bases, Part 2: Strength and Concentration",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two different ideas",
+        "t": 23.414
+      },
+      {
+        "title": "Same concentration, different acids",
+        "t": 83.859
+      },
+      {
+        "title": "Which has the higher pH?",
+        "t": 144.78
+      },
+      {
+        "title": "Your turn",
+        "t": 188.35
+      },
+      {
+        "title": "Summary",
+        "t": 229.229
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-8-b:q",
+        "t": 203.654,
+        "prompt": "Solutions of hydrochloric acid and hydrofluoric acid both have a concentration of $0.10\\ \\text{mol/L}$. Which statement is true?",
+        "choices": [
+          "Both have the same pH, because their concentrations are equal.",
+          "The hydrofluoric acid has the higher $[\\ce{H3O+}]$, because it ionises more.",
+          "The hydrochloric acid conducts electricity better, because it ionises completely.",
+          "The hydrochloric acid has the higher pH, because it has more ions."
+        ],
+        "answer": 2,
+        "working": "Hydrochloric acid is strong and hydrofluoric acid is weak, so the hydrochloric acid has far more ions: better conductivity, a higher $[\\ce{H3O+}]$ and a lower pH."
+      }
+    ]
+  },
+  "c20-3-8-c": {
+    "lessonId": "c20-3-8",
+    "title": "Strong and Weak Acids and Bases, Part 3: Strong Bases",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Strong bases",
+        "t": 19.956
+      },
+      {
+        "title": "One or two hydroxide ions",
+        "t": 78.639
+      },
+      {
+        "title": "A weak base",
+        "t": 126.013
+      },
+      {
+        "title": "Your turn",
+        "t": 155.857
+      },
+      {
+        "title": "Summary",
+        "t": 195.951
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-8-c:q",
+        "t": 169.822,
+        "prompt": "What is $[\\ce{OH-}]$ in a $0.030\\ \\text{mol/L}$ solution of strontium hydroxide, $\\ce{Sr(OH)2}$? It dissociates completely.",
+        "choices": [
+          "$0.030\\ \\text{mol/L}$",
+          "$0.060\\ \\text{mol/L}$",
+          "$0.015\\ \\text{mol/L}$",
+          "$0.090\\ \\text{mol/L}$"
+        ],
+        "answer": 1,
+        "working": "$\\ce{Sr(OH)2(s) -> Sr^2+(aq) + 2OH-(aq)}$, so $[\\ce{OH-}] = 2 \\times 0.030 = 0.060\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-3-8-d": {
+    "lessonId": "c20-3-8",
+    "title": "Strong and Weak Acids and Bases, Part 4: pH of Strong Acids and Bases",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A strong acid",
+        "t": 26.569
+      },
+      {
+        "title": "A group 1 hydroxide",
+        "t": 74.177
+      },
+      {
+        "title": "Barium hydroxide",
+        "t": 112.032
+      },
+      {
+        "title": "Your turn",
+        "t": 169.664
+      },
+      {
+        "title": "Summary",
+        "t": 209.648
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-8-d:q",
+        "t": 181.147,
+        "prompt": "What is the pH of a $1.5 \\times 10^{-3}\\ \\text{mol/L}$ solution of barium hydroxide, $\\ce{Ba(OH)2}$, to two decimal places? It dissociates completely. At $25^\\circ\\text{C}$, $\\text{pH} + \\text{pOH} = 14.00$.",
+        "choices": [
+          "$11.18$",
+          "$2.52$",
+          "$2.82$",
+          "$11.48$"
+        ],
+        "answer": 3,
+        "working": "$[\\ce{OH-}] = 2 \\times 1.5 \\times 10^{-3} = 3.0 \\times 10^{-3}\\ \\text{mol/L}$, so $\\text{pOH} = 2.52$ and $\\text{pH} = 14.00 - 2.52 = 11.48$."
+      }
+    ]
+  },
+  "c20-4-1": {
+    "lessonId": "c20-4-1",
+    "title": "Balancing Equations and Types of Reactions, Part 1: Coefficients and Balanced Equations",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reactants and products",
+        "t": 31.374
+      },
+      {
+        "title": "Coefficients",
+        "t": 74.477
+      },
+      {
+        "title": "Balancing methane",
+        "t": 107.194
+      },
+      {
+        "title": "Never change a subscript",
+        "t": 151.984
+      },
+      {
+        "title": "Your turn",
+        "t": 183.596
+      },
+      {
+        "title": "Summary",
+        "t": 219.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-1:q",
+        "t": 197.478,
+        "prompt": "Nitrogen and hydrogen react to form ammonia, $\\ce{NH3}$. Which is the balanced equation, with the smallest whole-number coefficients?",
+        "choices": [
+          "$\\ce{N2 + H2 -> 2NH3}$",
+          "$\\ce{N2 + 3H2 -> 2NH3}$",
+          "$\\ce{N2 + 3H2 -> N2H6}$",
+          "$\\ce{2N2 + 6H2 -> 4NH3}$"
+        ],
+        "answer": 1,
+        "working": "N: $2 = 2$. H: $3 \\times 2 = 6$ on the left and $2 \\times 3 = 6$ on the right. $\\ce{N2H6}$ changes a subscript, and every coefficient in $\\ce{2N2 + 6H2 -> 4NH3}$ divides by 2."
+      }
+    ]
+  },
+  "c20-4-1-b": {
+    "lessonId": "c20-4-1",
+    "title": "Balancing Equations and Types of Reactions, Part 2: Balancing Step by Step",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six habits",
+        "t": 19.659
+      },
+      {
+        "title": "A formation",
+        "t": 70.475
+      },
+      {
+        "title": "Keep the sulfate together",
+        "t": 115.503
+      },
+      {
+        "title": "Water as H–OH",
+        "t": 165.815
+      },
+      {
+        "title": "Your turn",
+        "t": 202.348
+      },
+      {
+        "title": "Summary",
+        "t": 243.486
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-1-b:q",
+        "t": 217.813,
+        "prompt": "In a car’s airbag, sodium azide decomposes into sodium and nitrogen gas: $\\ce{NaN3 -> Na + N2}$. Which is the balanced equation, with the smallest whole-number coefficients?",
+        "choices": [
+          "$\\ce{NaN3 -> Na + N3}$",
+          "$\\ce{2NaN3 -> 2Na + 2N2}$",
+          "$\\ce{4NaN3 -> 4Na + 6N2}$",
+          "$\\ce{2NaN3 -> 2Na + 3N2}$"
+        ],
+        "answer": 3,
+        "working": "$\\ce{NaN3}$ holds 3 N and $\\ce{N2}$ brings them in pairs, so make both 6: $\\ce{2NaN3}$ and $\\ce{3N2}$. Then $\\ce{2Na}$. Check: Na $2 = 2$, N $6 = 6$."
+      }
+    ]
+  },
+  "c20-4-1-c": {
+    "lessonId": "c20-4-1",
+    "title": "Balancing Equations and Types of Reactions, Part 3: Balancing Combustion Reactions",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Carbon, hydrogen, then oxygen",
+        "t": 26.014
+      },
+      {
+        "title": "When oxygen needs a half",
+        "t": 85.129
+      },
+      {
+        "title": "Oxygen in the fuel",
+        "t": 126.527
+      },
+      {
+        "title": "Your turn",
+        "t": 171.181
+      },
+      {
+        "title": "Summary",
+        "t": 217.338
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-1-c:q",
+        "t": 184.578,
+        "prompt": "Methanol burns completely: $\\ce{CH3OH + O2 -> CO2 + H2O}$. Which coefficients, in order, balance it with the smallest whole numbers?",
+        "choices": [
+          "$2,\\ 3,\\ 2,\\ 4$",
+          "$1,\\ 2,\\ 1,\\ 2$",
+          "$2,\\ 2,\\ 2,\\ 4$",
+          "$4,\\ 6,\\ 4,\\ 8$"
+        ],
+        "answer": 0,
+        "working": "C: $\\ce{CO2}$. H: 4 atoms, so $\\ce{2H2O}$. O on the right: $2 + 2 = 4$; methanol supplies 1, so $\\ce{O2}$ supplies 3, which is $1\\tfrac{1}{2}$ molecules. Double everything: $\\ce{2CH3OH + 3O2 -> 2CO2 + 4H2O}$."
+      }
+    ]
+  },
+  "c20-4-1-d": {
+    "lessonId": "c20-4-1",
+    "title": "Balancing Equations and Types of Reactions, Part 4: Five Types of Reactions",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Element or compound?",
+        "t": 19.039
+      },
+      {
+        "title": "Five patterns",
+        "t": 40.567
+      },
+      {
+        "title": "Name the type",
+        "t": 108.444
+      },
+      {
+        "title": "Predict from the reactants",
+        "t": 142.808
+      },
+      {
+        "title": "Your turn",
+        "t": 186.481
+      },
+      {
+        "title": "Summary",
+        "t": 224.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-1-d:q",
+        "t": 197.945,
+        "prompt": "A reaction has the reactants $\\ce{C2H5OH}$ and $\\ce{O2}$. Before you see the products, what type of reaction is it?",
+        "choices": [
+          "Single replacement",
+          "Formation",
+          "Complete combustion",
+          "Double replacement"
+        ],
+        "answer": 2,
+        "working": "$\\ce{C2H5OH}$ is ethanol, an alcohol, and it reacts with oxygen, so it burns: $\\ce{C2H5OH + 3O2 -> 2CO2 + 3H2O}$."
+      }
+    ]
+  },
+  "c20-4-2": {
+    "lessonId": "c20-4-2",
+    "title": "Net Ionic Equations, Part 1: Total and Net Ionic Equations",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways to write a reaction",
+        "t": 46.327
+      },
+      {
+        "title": "Silver nitrate and potassium bromide",
+        "t": 113.89
+      },
+      {
+        "title": "Keep the solid whole",
+        "t": 181.192
+      },
+      {
+        "title": "Your turn",
+        "t": 200.599
+      },
+      {
+        "title": "Summary",
+        "t": 242.3
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-2:q",
+        "t": 214.233,
+        "prompt": "Solutions of silver nitrate and sodium iodide are mixed: $\\ce{AgNO3(aq) + NaI(aq) -> AgI(s) + NaNO3(aq)}$. Which is the net ionic equation?",
+        "choices": [
+          "$\\ce{Na+(aq) + I-(aq) -> NaI(s)}$",
+          "$\\ce{Ag+(aq) + I-(aq) -> AgI(aq)}$",
+          "$\\ce{Ag+(aq) + I-(aq) -> AgI(s)}$",
+          "$\\ce{AgI(s) -> Ag+(aq) + I-(aq)}$"
+        ],
+        "answer": 2,
+        "working": "Total ionic equation: $\\ce{Ag+(aq) + NO3-(aq) + Na+(aq) + I-(aq) -> AgI(s) + Na+(aq) + NO3-(aq)}$. The spectators are $\\ce{Na+}$ and $\\ce{NO3-}$."
+      }
+    ]
+  },
+  "c20-4-2-b": {
+    "lessonId": "c20-4-2",
+    "title": "Net Ionic Equations, Part 2: Spotting Spectators and Counting Ions",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Spotting the spectators",
+        "t": 19.841
+      },
+      {
+        "title": "Counting the ions",
+        "t": 71.113
+      },
+      {
+        "title": "Lead(II) nitrate and potassium iodide",
+        "t": 116.782
+      },
+      {
+        "title": "Your turn",
+        "t": 165.845
+      },
+      {
+        "title": "Summary",
+        "t": 205.577
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-2-b:q",
+        "t": 180.157,
+        "prompt": "Solutions of calcium chloride and sodium carbonate are mixed, and calcium carbonate precipitates. Which ions are the spectator ions?",
+        "choices": [
+          "$\\ce{Na+}$ and $\\ce{Cl-}$",
+          "$\\ce{Ca^2+}$ and $\\ce{CO3^2-}$",
+          "$\\ce{Ca^2+}$ and $\\ce{Cl-}$",
+          "$\\ce{Na+}$ and $\\ce{CO3^2-}$"
+        ],
+        "answer": 0,
+        "working": "$\\ce{Ca^2+}$ and $\\ce{CO3^2-}$ form the solid, so they react. $\\ce{Na+}$ and $\\ce{Cl-}$ stay dissolved, as $\\ce{NaCl(aq)}$. Net: $\\ce{Ca^2+(aq) + CO3^2-(aq) -> CaCO3(s)}$."
+      }
+    ]
+  },
+  "c20-4-2-c": {
+    "lessonId": "c20-4-2",
+    "title": "Net Ionic Equations, Part 3: Lowest Terms, and Starting from Names",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lowest terms",
+        "t": 22.985
+      },
+      {
+        "title": "Balance the net ionic equation",
+        "t": 74.69
+      },
+      {
+        "title": "Starting from names",
+        "t": 101.647
+      },
+      {
+        "title": "More precipitates",
+        "t": 154.199
+      },
+      {
+        "title": "Your turn",
+        "t": 174.654
+      },
+      {
+        "title": "Summary",
+        "t": 220.091
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-2-c:q",
+        "t": 191.764,
+        "prompt": "Solutions of silver nitrate and potassium chromate are mixed, and silver chromate precipitates. The chromate ion is $\\ce{CrO4^2-}$. Which is the net ionic equation? (State symbols are left out.)",
+        "choices": [
+          "$\\ce{Ag+ + CrO4^2- -> Ag2CrO4}$",
+          "$\\ce{K+ + NO3- -> KNO3}$",
+          "$\\ce{Ag2^2+ + CrO4^2- -> Ag2CrO4}$",
+          "$\\ce{2Ag+ + CrO4^2- -> Ag2CrO4}$"
+        ],
+        "answer": 3,
+        "working": "Silver chromate is $\\ce{Ag2CrO4}$: two $\\ce{Ag+}$ for each $\\ce{CrO4^2-}$. Net: $\\ce{2Ag+(aq) + CrO4^2-(aq) -> Ag2CrO4(s)}$. The spectators are $\\ce{K+}$ and $\\ce{NO3-}$."
+      }
+    ]
+  },
+  "c20-4-2-d": {
+    "lessonId": "c20-4-2",
+    "title": "Net Ionic Equations, Part 4: Neutralisation of a Strong Acid and a Strong Base",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Writing strong acids and bases",
+        "t": 27.376
+      },
+      {
+        "title": "Nitric acid and potassium hydroxide",
+        "t": 61.602
+      },
+      {
+        "title": "Why two water molecules?",
+        "t": 102.201
+      },
+      {
+        "title": "Every strong acid and strong base",
+        "t": 134.316
+      },
+      {
+        "title": "Your turn",
+        "t": 186.45
+      },
+      {
+        "title": "Summary",
+        "t": 227.302
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-2-d:q",
+        "t": 204.523,
+        "prompt": "Hydrobromic acid, $\\ce{HBr(aq)}$, is neutralised by lithium hydroxide, $\\ce{LiOH(aq)}$. The acid is strong, so in water it is entirely $\\ce{H3O+}$ and $\\ce{Br-}$ ions. Which ions are the spectator ions?",
+        "choices": [
+          "$\\ce{H3O+}$ and $\\ce{OH-}$",
+          "$\\ce{Br-}$ and $\\ce{Li+}$",
+          "$\\ce{H3O+}$ and $\\ce{Br-}$",
+          "$\\ce{Li+}$ and $\\ce{OH-}$"
+        ],
+        "answer": 1,
+        "working": "Total ionic equation: $\\ce{H3O+(aq) + Br-(aq) + Li+(aq) + OH-(aq) -> 2H2O(l) + Li+(aq) + Br-(aq)}$. The spectators are $\\ce{Li+}$ and $\\ce{Br-}$."
+      }
+    ]
+  },
+  "c20-4-3": {
+    "lessonId": "c20-4-3",
+    "title": "The Mole and Molar Mass, Part 1: Molar Mass",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The mole and molar mass",
+        "t": 35.529
+      },
+      {
+        "title": "Water",
+        "t": 77.136
+      },
+      {
+        "title": "Glucose",
+        "t": 95.023
+      },
+      {
+        "title": "Brackets",
+        "t": 132.858
+      },
+      {
+        "title": "The bracket multiplies everything",
+        "t": 182.124
+      },
+      {
+        "title": "Your turn",
+        "t": 197.238
+      },
+      {
+        "title": "Summary",
+        "t": 233.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-3:q",
+        "t": 208.588,
+        "prompt": "What is the molar mass of magnesium nitrate, $\\ce{Mg(NO3)2}$, to the nearest hundredth? Use these molar masses: Mg $24.31\\ \\text{g/mol}$, N $14.01\\ \\text{g/mol}$, O $16.00\\ \\text{g/mol}$.",
+        "choices": [
+          "$86.32\\ \\text{g/mol}$",
+          "$100.33\\ \\text{g/mol}$",
+          "$134.32\\ \\text{g/mol}$",
+          "$148.33\\ \\text{g/mol}$"
+        ],
+        "answer": 3,
+        "working": "One formula unit holds 1 Mg, 2 N and $2 \\times 3 = 6$ O: $24.31 + 2(14.01) + 6(16.00) = 148.33\\ \\text{g/mol}$."
+      }
+    ]
+  },
+  "c20-4-3-b": {
+    "lessonId": "c20-4-3",
+    "title": "The Mole and Molar Mass, Part 2: Hydrates",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a hydrate is",
+        "t": 18.651
+      },
+      {
+        "title": "Copper(II) sulfate pentahydrate",
+        "t": 58.567
+      },
+      {
+        "title": "Washing soda",
+        "t": 107.638
+      },
+      {
+        "title": "The dot means add",
+        "t": 142.515
+      },
+      {
+        "title": "Your turn",
+        "t": 164.437
+      },
+      {
+        "title": "Summary",
+        "t": 205.34
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-3-b:q",
+        "t": 174.291,
+        "prompt": "What is the molar mass of magnesium sulfate heptahydrate, $\\ce{MgSO4*7H2O}$, to the nearest hundredth? Use these molar masses: Mg $24.31$, S $32.06$, O $16.00$, H $1.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$138.39\\ \\text{g/mol}$",
+          "$246.51\\ \\text{g/mol}$",
+          "$968.73\\ \\text{g/mol}$",
+          "$120.37\\ \\text{g/mol}$"
+        ],
+        "answer": 1,
+        "working": "$M(\\ce{MgSO4}) = 24.31 + 32.06 + 4(16.00) = 120.37$ and $7(18.02) = 126.14$, so $M = 120.37 + 126.14 = 246.51\\ \\text{g/mol}$."
+      }
+    ]
+  },
+  "c20-4-3-c": {
+    "lessonId": "c20-4-3",
+    "title": "The Mole and Molar Mass, Part 3: Mass and Amount",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two formulas",
+        "t": 16.797
+      },
+      {
+        "title": "From mass to moles",
+        "t": 53.657
+      },
+      {
+        "title": "From moles to mass",
+        "t": 84.889
+      },
+      {
+        "title": "Molar mass first",
+        "t": 114.338
+      },
+      {
+        "title": "Your turn",
+        "t": 157.663
+      },
+      {
+        "title": "Summary",
+        "t": 200.56
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-3-c:q",
+        "t": 172.433,
+        "prompt": "How many moles are in $45.0\\ \\text{g}$ of water, $\\ce{H2O}$, to the nearest hundredth? The molar mass of water is $18.02\\ \\text{g/mol}$.",
+        "choices": [
+          "$810.9\\ \\text{mol}$",
+          "$0.40\\ \\text{mol}$",
+          "$2.50\\ \\text{mol}$",
+          "$26.98\\ \\text{mol}$"
+        ],
+        "answer": 2,
+        "working": "$n = \\dfrac{m}{M} = \\dfrac{45.0}{18.02} = 2.497\\ \\text{mol} \\approx 2.50\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-4-3-d": {
+    "lessonId": "c20-4-3",
+    "title": "The Mole and Molar Mass, Part 4: Counting Particles",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Avogadro’s number",
+        "t": 21.918
+      },
+      {
+        "title": "Moles to molecules, and back",
+        "t": 49.558
+      },
+      {
+        "title": "Powers of ten on a calculator",
+        "t": 96.886
+      },
+      {
+        "title": "From a mass to atoms",
+        "t": 127.436
+      },
+      {
+        "title": "Your turn",
+        "t": 189.208
+      },
+      {
+        "title": "Summary",
+        "t": 230.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-3-d:q",
+        "t": 199.207,
+        "prompt": "How many oxygen atoms are in $2.00\\ \\text{mol}$ of carbon dioxide, $\\ce{CO2}$? Use $N_A = 6.02 \\times 10^{23}\\ \\text{mol}^{-1}$.",
+        "choices": [
+          "$2.41 \\times 10^{24}$",
+          "$1.20 \\times 10^{24}$",
+          "$3.61 \\times 10^{24}$",
+          "$3.01 \\times 10^{23}$"
+        ],
+        "answer": 0,
+        "working": "Molecules: $2.00 \\times 6.02 \\times 10^{23} = 1.204 \\times 10^{24}$. Each $\\ce{CO2}$ holds 2 O atoms: $2 \\times 1.204 \\times 10^{24} = 2.41 \\times 10^{24}$."
+      }
+    ]
+  },
+  "c20-4-4": {
+    "lessonId": "c20-4-4",
+    "title": "Mole Ratios and Gravimetric Stoichiometry, Part 1: Reading an Equation in Moles",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Coefficients count moles",
+        "t": 37.311
+      },
+      {
+        "title": "Stoichiometry and mole ratios",
+        "t": 104.495
+      },
+      {
+        "title": "Coefficients are not grams",
+        "t": 134.177
+      },
+      {
+        "title": "Your turn",
+        "t": 154.399
+      },
+      {
+        "title": "Summary",
+        "t": 190.214
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-4:q",
+        "t": 163.526,
+        "prompt": "Which statement about $\\ce{N2 + 3H2 -> 2NH3}$ is correct?",
+        "choices": [
+          "$1\\ \\text{mol}$ of $\\ce{N2}$ reacts with $3\\ \\text{mol}$ of $\\ce{H2}$ to form $2\\ \\text{mol}$ of $\\ce{NH3}$.",
+          "$1\\ \\text{g}$ of $\\ce{N2}$ reacts with $3\\ \\text{g}$ of $\\ce{H2}$ to form $2\\ \\text{g}$ of $\\ce{NH3}$.",
+          "The mass of $\\ce{NH3}$ formed is twice the mass of $\\ce{N2}$ used.",
+          "The mole ratio of $\\ce{H2}$ to $\\ce{NH3}$ is $2 : 3$."
+        ],
+        "answer": 0,
+        "working": "The coefficients count moles, not grams: $1\\ \\text{mol}$ of $\\ce{N2}$, $3\\ \\text{mol}$ of $\\ce{H2}$ and $2\\ \\text{mol}$ of $\\ce{NH3}$. The mole ratio of $\\ce{H2}$ to $\\ce{NH3}$ is $3 : 2$."
+      }
+    ]
+  },
+  "c20-4-4-b": {
+    "lessonId": "c20-4-4",
+    "title": "Mole Ratios and Gravimetric Stoichiometry, Part 2: Using a Mole Ratio",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Wanted over given",
+        "t": 20.573
+      },
+      {
+        "title": "Burning butane",
+        "t": 60.805
+      },
+      {
+        "title": "Working backwards",
+        "t": 98.057
+      },
+      {
+        "title": "Balance first",
+        "t": 144.472
+      },
+      {
+        "title": "Your turn",
+        "t": 178.104
+      },
+      {
+        "title": "Summary",
+        "t": 220.519
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-4-b:q",
+        "t": 190.384,
+        "prompt": "In the reaction $\\ce{2C2H6 + 7O2 -> 4CO2 + 6H2O}$, how many moles of $\\ce{O2}$ react with $0.300\\ \\text{mol}$ of $\\ce{C2H6}$? Give the answer to the nearest hundredth.",
+        "choices": [
+          "$0.09\\ \\text{mol}$",
+          "$2.10\\ \\text{mol}$",
+          "$1.05\\ \\text{mol}$",
+          "$0.30\\ \\text{mol}$"
+        ],
+        "answer": 2,
+        "working": "$n(\\ce{O2}) = 0.300 \\times \\dfrac{7}{2} = 1.05\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-4-4-c": {
+    "lessonId": "c20-4-4",
+    "title": "Mole Ratios and Gravimetric Stoichiometry, Part 3: Gravimetric Stoichiometry",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 20.759
+      },
+      {
+        "title": "From moles to a mass",
+        "t": 62.746
+      },
+      {
+        "title": "Iron from thermite",
+        "t": 103.53
+      },
+      {
+        "title": "Your turn",
+        "t": 164.225
+      },
+      {
+        "title": "Summary",
+        "t": 210.143
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-4-c:q",
+        "t": 179.56,
+        "prompt": "In the reaction $\\ce{2Mg + O2 -> 2MgO}$, what mass of $\\ce{MgO}$ forms from $6.08\\ \\text{g}$ of $\\ce{Mg}$? Give the answer to the nearest tenth. Use these molar masses: Mg $24.31\\ \\text{g/mol}$, O $16.00\\ \\text{g/mol}$.",
+        "choices": [
+          "$6.1\\ \\text{g}$",
+          "$10.1\\ \\text{g}$",
+          "$5.0\\ \\text{g}$",
+          "$20.2\\ \\text{g}$"
+        ],
+        "answer": 1,
+        "working": "$n(\\ce{Mg}) = \\dfrac{6.08}{24.31} = 0.2501\\ \\text{mol}$, so $n(\\ce{MgO}) = 0.2501 \\times \\dfrac{2}{2} = 0.2501\\ \\text{mol}$. $M(\\ce{MgO}) = 40.31\\ \\text{g/mol}$, so $m = 0.2501 \\times 40.31 = 10.08\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-4-d": {
+    "lessonId": "c20-4-4",
+    "title": "Mole Ratios and Gravimetric Stoichiometry, Part 4: Gravimetric Analysis",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Oxygen for a barbecue",
+        "t": 19.448
+      },
+      {
+        "title": "Two habits",
+        "t": 66.9
+      },
+      {
+        "title": "Gravimetric analysis",
+        "t": 95.194
+      },
+      {
+        "title": "Barium chloride in a solution",
+        "t": 136.85
+      },
+      {
+        "title": "Your turn",
+        "t": 177.504
+      },
+      {
+        "title": "Summary",
+        "t": 228.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-4-d:q",
+        "t": 195.813,
+        "prompt": "Silver nitrate solution is mixed with excess sodium chloride solution: $\\ce{AgNO3(aq) + NaCl(aq) -> AgCl(s) + NaNO3(aq)}$. The dried $\\ce{AgCl}$ has a mass of $1.43\\ \\text{g}$. What mass of $\\ce{AgNO3}$ was in the solution, to the nearest hundredth? Use Ag $107.87$, N $14.01$, O $16.00$, Cl $35.45\\ \\text{g/mol}$.",
+        "choices": [
+          "$1.43\\ \\text{g}$",
+          "$1.21\\ \\text{g}$",
+          "$3.39\\ \\text{g}$",
+          "$1.70\\ \\text{g}$"
+        ],
+        "answer": 3,
+        "working": "$M(\\ce{AgCl}) = 143.32$, so $n = \\dfrac{1.43}{143.32} = 0.009978\\ \\text{mol}$. The ratio is $1 : 1$ and $M(\\ce{AgNO3}) = 169.88$, so $m = 0.009978 \\times 169.88 = 1.70\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-5": {
+    "lessonId": "c20-4-5",
+    "title": "Gas and Solution Stoichiometry, Part 1: Gases at STP and SATP",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same path through moles",
+        "t": 34.852
+      },
+      {
+        "title": "Ways in and out of moles",
+        "t": 63.965
+      },
+      {
+        "title": "Molar volume",
+        "t": 94.901
+      },
+      {
+        "title": "Filling an airbag",
+        "t": 128.649
+      },
+      {
+        "title": "Your turn",
+        "t": 174.651
+      },
+      {
+        "title": "Summary",
+        "t": 216.371
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-5:q",
+        "t": 189.484,
+        "prompt": "Zinc reacts with excess hydrochloric acid: $\\ce{Zn + 2HCl -> ZnCl2 + H2}$. What volume of $\\ce{H2}$ at SATP forms from $6.54\\ \\text{g}$ of $\\ce{Zn}$? Give the answer to the nearest hundredth. At SATP, the molar volume of a gas is $24.8\\ \\text{L/mol}$. Use the molar mass Zn $65.38\\ \\text{g/mol}$.",
+        "choices": [
+          "$2.24\\ \\text{L}$",
+          "$4.96\\ \\text{L}$",
+          "$2.48\\ \\text{L}$",
+          "$162.19\\ \\text{L}$"
+        ],
+        "answer": 2,
+        "working": "$n(\\ce{Zn}) = \\dfrac{6.54}{65.38} = 0.1000\\ \\text{mol}$, so $n(\\ce{H2}) = 0.1000 \\times \\dfrac{1}{1} = 0.1000\\ \\text{mol}$, and $V = 0.1000 \\times 24.8 = 2.48\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-4-5-b": {
+    "lessonId": "c20-4-5",
+    "title": "Gas and Solution Stoichiometry, Part 2: From a Gas Back to a Mass",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Carbon dioxide from limestone",
+        "t": 20.605
+      },
+      {
+        "title": "Oxygen from potassium chlorate",
+        "t": 65.373
+      },
+      {
+        "title": "Gases only, and gas to gas",
+        "t": 111.297
+      },
+      {
+        "title": "Your turn",
+        "t": 156.421
+      },
+      {
+        "title": "Summary",
+        "t": 203.45
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-5-b:q",
+        "t": 172.232,
+        "prompt": "Magnesium reacts with excess hydrochloric acid: $\\ce{Mg + 2HCl -> MgCl2 + H2}$. What mass of $\\ce{Mg}$ is needed to make $3.00\\ \\text{L}$ of $\\ce{H2}$ at STP? Give the answer to the nearest hundredth. At STP, the molar volume of a gas is $22.4\\ \\text{L/mol}$. Use the molar mass Mg $24.31\\ \\text{g/mol}$.",
+        "choices": [
+          "$3.26\\ \\text{g}$",
+          "$2.94\\ \\text{g}$",
+          "$72.93\\ \\text{g}$",
+          "$1.63\\ \\text{g}$"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{H2}) = \\dfrac{3.00}{22.4} = 0.1339\\ \\text{mol}$, so $n(\\ce{Mg}) = 0.1339 \\times \\dfrac{1}{1} = 0.1339\\ \\text{mol}$, and $m = 0.1339 \\times 24.31 = 3.26\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-5-c": {
+    "lessonId": "c20-4-5",
+    "title": "Gas and Solution Stoichiometry, Part 3: Gases at Other Conditions",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ideal gas law",
+        "t": 22.884
+      },
+      {
+        "title": "Hydrogen on a cool day",
+        "t": 60.449
+      },
+      {
+        "title": "Kelvins, not Celsius",
+        "t": 104.172
+      },
+      {
+        "title": "Burning propane",
+        "t": 126.861
+      },
+      {
+        "title": "Your turn",
+        "t": 168.593
+      },
+      {
+        "title": "Summary",
+        "t": 221.046
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-5-c:q",
+        "t": 184.499,
+        "prompt": "Limestone breaks down: $\\ce{CaCO3 -> CaO + CO2}$. What volume of $\\ce{CO2}$ at $25^\\circ\\text{C}$ and $105\\ \\text{kPa}$ forms from $12.0\\ \\text{g}$ of $\\ce{CaCO3}$, to the nearest hundredth? Use $PV = nRT$, $R = 8.314\\ \\text{kPa·L/(mol·K)}$, $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$ and $M(\\ce{CaCO3}) = 100.09\\ \\text{g/mol}$.",
+        "choices": [
+          "$0.24\\ \\text{L}$",
+          "$2.97\\ \\text{L}$",
+          "$2.69\\ \\text{L}$",
+          "$2.83\\ \\text{L}$"
+        ],
+        "answer": 3,
+        "working": "$n = 12.0 \\div 100.09 = 0.1199\\ \\text{mol}$ of each, $T = 298.15\\ \\text{K}$, and $V = 0.1199 \\times 8.314 \\times 298.15 \\div 105 = 2.83\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-4-5-d": {
+    "lessonId": "c20-4-5",
+    "title": "Gas and Solution Stoichiometry, Part 4: Solution Stoichiometry",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Amount in a solution",
+        "t": 15.509
+      },
+      {
+        "title": "A silver chloride precipitate",
+        "t": 37.483
+      },
+      {
+        "title": "How much solution reacts?",
+        "t": 80.276
+      },
+      {
+        "title": "Two solutions",
+        "t": 125.845
+      },
+      {
+        "title": "Your turn",
+        "t": 178.969
+      },
+      {
+        "title": "Summary",
+        "t": 229.909
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-5-d:q",
+        "t": 198.095,
+        "prompt": "In the reaction $\\ce{H3PO4 + 3KOH -> K3PO4 + 3H2O}$, what volume of $0.200\\ \\text{mol/L}$ potassium hydroxide reacts exactly with $15.0\\ \\text{mL}$ of $0.100\\ \\text{mol/L}$ phosphoric acid? Give the answer in millilitres, to the nearest tenth.",
+        "choices": [
+          "$7.5\\ \\text{mL}$",
+          "$22.5\\ \\text{mL}$",
+          "$2.5\\ \\text{mL}$",
+          "$45.0\\ \\text{mL}$"
+        ],
+        "answer": 1,
+        "working": "$n(\\ce{H3PO4}) = 0.100 \\times 0.0150 = 0.001500\\ \\text{mol}$, $n(\\ce{KOH}) = 0.001500 \\times \\dfrac{3}{1} = 0.004500\\ \\text{mol}$, and $V = \\dfrac{0.004500}{0.200} = 0.02250\\ \\text{L} = 22.5\\ \\text{mL}$."
+      }
+    ]
+  },
+  "c20-4-6": {
+    "lessonId": "c20-4-6",
+    "title": "Limiting and Excess Reagents, Part 1: Which Reactant Runs Out?",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Limiting and excess",
+        "t": 29.893
+      },
+      {
+        "title": "Making ammonia",
+        "t": 74.888
+      },
+      {
+        "title": "Counting molecules",
+        "t": 129.024
+      },
+      {
+        "title": "Your turn",
+        "t": 167.103
+      },
+      {
+        "title": "Summary",
+        "t": 210.915
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-6:q",
+        "t": 183.878,
+        "prompt": "A mixture for the reaction $\\ce{2H2 + O2 -> 2H2O}$ holds $3.00\\ \\text{mol}$ of $\\ce{H2}$ and $2.00\\ \\text{mol}$ of $\\ce{O2}$. Which reactant is the limiting reagent?",
+        "choices": [
+          "$\\ce{O2}$, because there is less of it",
+          "$\\ce{H2}$, because it runs out first",
+          "Neither: both are used up exactly",
+          "$\\ce{O2}$, because its coefficient is smaller"
+        ],
+        "answer": 1,
+        "working": "The $\\ce{H2}$ needs $3.00 \\times \\dfrac{1}{2} = 1.50\\ \\text{mol}$ of $\\ce{O2}$, and there is $2.00\\ \\text{mol}$, more than enough. So $\\ce{H2}$ runs out first and is limiting; $\\ce{O2}$ is in excess."
+      }
+    ]
+  },
+  "c20-4-6-b": {
+    "lessonId": "c20-4-6",
+    "title": "Limiting and Excess Reagents, Part 2: A Shortcut, and Masses",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The thermite reaction",
+        "t": 22.477
+      },
+      {
+        "title": "A shortcut",
+        "t": 62.484
+      },
+      {
+        "title": "Starting from masses",
+        "t": 105.765
+      },
+      {
+        "title": "Your turn",
+        "t": 177.328
+      },
+      {
+        "title": "Summary",
+        "t": 225.019
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-6-b:q",
+        "t": 191.217,
+        "prompt": "A mixture for the reaction $\\ce{2Na + Cl2 -> 2NaCl}$ holds $4.60\\ \\text{g}$ of $\\ce{Na}$ and $10.0\\ \\text{g}$ of $\\ce{Cl2}$. Which reactant is in excess? Use these molar masses: Na $22.99\\ \\text{g/mol}$, Cl $35.45\\ \\text{g/mol}$.",
+        "choices": [
+          "$\\ce{Cl2}$: there is $0.1410\\ \\text{mol}$, and the $\\ce{Na}$ needs $0.1000\\ \\text{mol}$",
+          "$\\ce{Na}$: $0.2001\\ \\text{mol}$ is more than $0.1410\\ \\text{mol}$",
+          "$\\ce{Na}$: it needs $0.4002\\ \\text{mol}$ of $\\ce{Cl2}$",
+          "Neither: both are used up exactly"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{Na}) = 4.60 \\div 22.99 = 0.2001\\ \\text{mol}$ and $n(\\ce{Cl2}) = 10.0 \\div 70.90 = 0.1410\\ \\text{mol}$. The $\\ce{Na}$ needs $0.2001 \\div 2 = 0.1000\\ \\text{mol}$ of $\\ce{Cl2}$, so $\\ce{Na}$ is limiting and $\\ce{Cl2}$ is in excess."
+      }
+    ]
+  },
+  "c20-4-6-c": {
+    "lessonId": "c20-4-6",
+    "title": "Limiting and Excess Reagents, Part 3: How Much Product Forms?",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Zinc chloride",
+        "t": 17.297
+      },
+      {
+        "title": "Using the excess reagent",
+        "t": 84.383
+      },
+      {
+        "title": "Burning methane",
+        "t": 106.131
+      },
+      {
+        "title": "From the limiting reagent",
+        "t": 159.586
+      },
+      {
+        "title": "Your turn",
+        "t": 183.52
+      },
+      {
+        "title": "Summary",
+        "t": 231.564
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-6-c:q",
+        "t": 198.083,
+        "prompt": "A mixture for the reaction $\\ce{4Al + 3O2 -> 2Al2O3}$ holds $0.600\\ \\text{mol}$ of $\\ce{Al}$ and $0.600\\ \\text{mol}$ of $\\ce{O2}$. How many moles of $\\ce{Al2O3}$ can form, to the nearest thousandth?",
+        "choices": [
+          "$0.400\\ \\text{mol}$",
+          "$0.600\\ \\text{mol}$",
+          "$0.150\\ \\text{mol}$",
+          "$0.300\\ \\text{mol}$"
+        ],
+        "answer": 3,
+        "working": "$0.600 \\div 4 = 0.150$ for $\\ce{Al}$ and $0.600 \\div 3 = 0.200$ for $\\ce{O2}$, so $\\ce{Al}$ is limiting. $n(\\ce{Al2O3}) = 0.600 \\times \\dfrac{2}{4} = 0.300\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-4-6-d": {
+    "lessonId": "c20-4-6",
+    "title": "Limiting and Excess Reagents, Part 4: What Is Left Over?",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Methane left over",
+        "t": 21.006
+      },
+      {
+        "title": "Check with conservation of mass",
+        "t": 82.187
+      },
+      {
+        "title": "Excess on purpose",
+        "t": 123.476
+      },
+      {
+        "title": "Your turn",
+        "t": 166.647
+      },
+      {
+        "title": "Summary",
+        "t": 215.005
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-6-d:q",
+        "t": 183.268,
+        "prompt": "A mixture for the reaction $\\ce{N2 + 3H2 -> 2NH3}$ holds $14.0\\ \\text{g}$ of $\\ce{N2}$ and $2.00\\ \\text{g}$ of $\\ce{H2}$. When the reaction stops, what mass of the excess reagent is left over, to the nearest hundredth? Use these molar masses: N $14.01\\ \\text{g/mol}$, H $1.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$9.25\\ \\text{g}$",
+          "$12.00\\ \\text{g}$",
+          "$4.75\\ \\text{g}$",
+          "$0.17\\ \\text{g}$"
+        ],
+        "answer": 2,
+        "working": "$n(\\ce{N2}) = 14.0 \\div 28.02 = 0.4996\\ \\text{mol}$ and $n(\\ce{H2}) = 2.00 \\div 2.02 = 0.9901\\ \\text{mol}$. $0.9901 \\div 3 = 0.3300$ is smaller, so $\\ce{H2}$ is limiting and $0.3300\\ \\text{mol}$ of $\\ce{N2}$ is used. Left: $(0.4996 - 0.3300) \\times 28.02 = 4.75\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-7": {
+    "lessonId": "c20-4-7",
+    "title": "Percent Yield, Part 1: Theoretical, Actual and Percent Yield",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Theoretical and actual yield",
+        "t": 37.983
+      },
+      {
+        "title": "Percent yield",
+        "t": 80.142
+      },
+      {
+        "title": "Upside down",
+        "t": 119.323
+      },
+      {
+        "title": "Your turn",
+        "t": 141.771
+      },
+      {
+        "title": "Summary",
+        "t": 186.753
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-7:q",
+        "t": 159.873,
+        "prompt": "Magnesium ribbon is burned in air: $\\ce{2Mg + O2 -> 2MgO}$. The theoretical yield is $8.06\\ \\text{g}$ of $\\ce{MgO}$, and $7.10\\ \\text{g}$ is collected. What is the percent yield, to the nearest tenth?",
+        "choices": [
+          "$113.5\\%$",
+          "$88.1\\%$",
+          "$11.9\\%$",
+          "$0.88\\%$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{7.10}{8.06} \\times 100\\% = 88.1\\%$"
+      }
+    ]
+  },
+  "c20-4-7-b": {
+    "lessonId": "c20-4-7",
+    "title": "Percent Yield, Part 2: Why Yields Fall Short",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four reasons",
+        "t": 15.902
+      },
+      {
+        "title": "A yield that is too high",
+        "t": 70.431
+      },
+      {
+        "title": "Dry to a constant mass",
+        "t": 123.445
+      },
+      {
+        "title": "Your turn",
+        "t": 136.926
+      },
+      {
+        "title": "Summary",
+        "t": 178.93
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-7-b:q",
+        "t": 151.414,
+        "prompt": "A student filters, dries and weighs a precipitate, and calculates a percent yield of $108\\%$. Which is the most likely explanation?",
+        "choices": [
+          "Some precipitate stuck to the filter paper.",
+          "The reaction did not go to completion.",
+          "The precipitate was still wet when it was weighed.",
+          "The reaction made more product than the theoretical yield."
+        ],
+        "answer": 2,
+        "working": "A yield above $100\\%$ means something else was weighed with the product, most often water. Choices A and B would make the yield lower, and no reaction makes more than its theoretical yield, because mass is conserved."
+      }
+    ]
+  },
+  "c20-4-7-c": {
+    "lessonId": "c20-4-7",
+    "title": "Percent Yield, Part 3: Finding the Theoretical Yield",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lime from limestone",
+        "t": 18.958
+      },
+      {
+        "title": "Silver from copper",
+        "t": 80.185
+      },
+      {
+        "title": "Keep the unrounded value",
+        "t": 136.077
+      },
+      {
+        "title": "Your turn",
+        "t": 161.865
+      },
+      {
+        "title": "Summary",
+        "t": 209.657
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-7-c:q",
+        "t": 179.493,
+        "prompt": "Zinc is added to excess copper(II) sulfate solution: $\\ce{Zn + CuSO4 -> ZnSO4 + Cu}$. $5.00\\ \\text{g}$ of $\\ce{Zn}$ is used, and $4.12\\ \\text{g}$ of $\\ce{Cu}$ is collected. What is the percent yield, to the nearest tenth? Use these molar masses: Zn $65.38\\ \\text{g/mol}$, Cu $63.55\\ \\text{g/mol}$.",
+        "choices": [
+          "$84.8\\%$",
+          "$82.4\\%$",
+          "$118.0\\%$",
+          "$80.1\\%$"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{Zn}) = 5.00 \\div 65.38 = 0.07648\\ \\text{mol} = n(\\ce{Cu})$, so the theoretical yield is $0.07648 \\times 63.55 = 4.860\\ \\text{g}$, and $4.12 \\div 4.860 \\times 100\\% = 84.8\\%$."
+      }
+    ]
+  },
+  "c20-4-7-d": {
+    "lessonId": "c20-4-7",
+    "title": "Percent Yield, Part 4: Planning for a Known Yield",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Aim higher",
+        "t": 15.164
+      },
+      {
+        "title": "Collecting copper",
+        "t": 49.483
+      },
+      {
+        "title": "Multiply or divide?",
+        "t": 92.579
+      },
+      {
+        "title": "Making ammonia",
+        "t": 122.762
+      },
+      {
+        "title": "Your turn",
+        "t": 169.279
+      },
+      {
+        "title": "Summary",
+        "t": 218.715
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-7-d:q",
+        "t": 184.331,
+        "prompt": "Calcium carbonate is heated to make lime: $\\ce{CaCO3 -> CaO + CO2}$. The process has a percent yield of 90%. What mass of $\\ce{CaCO3}$ is needed to collect $28.0\\ \\text{g}$ of $\\ce{CaO}$? Give the answer to the nearest tenth. Use these molar masses: Ca $40.08\\ \\text{g/mol}$, C $12.01\\ \\text{g/mol}$, O $16.00\\ \\text{g/mol}$.",
+        "choices": [
+          "$45.0\\ \\text{g}$",
+          "$50.0\\ \\text{g}$",
+          "$31.1\\ \\text{g}$",
+          "$55.5\\ \\text{g}$"
+        ],
+        "answer": 3,
+        "working": "Theoretical yield needed: $28.0 \\div 0.90 = 31.11\\ \\text{g}$ of $\\ce{CaO}$, which is $31.11 \\div 56.08 = 0.5548\\ \\text{mol}$. The ratio is $1 : 1$, so $m = 0.5548 \\times 100.09 = 55.5\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-8": {
+    "lessonId": "c20-4-8",
+    "title": "Titration, Part 1: How a Titration Is Done",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Titration",
+        "t": 37.225
+      },
+      {
+        "title": "The steps",
+        "t": 71.316
+      },
+      {
+        "title": "Reading the burette",
+        "t": 120.583
+      },
+      {
+        "title": "Equivalence point and endpoint",
+        "t": 146.958
+      },
+      {
+        "title": "Your turn",
+        "t": 184.893
+      },
+      {
+        "title": "Summary",
+        "t": 222.038
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-8:q",
+        "t": 200.359,
+        "prompt": "A burette reads $2.35\\ \\text{mL}$ before a titration and $21.80\\ \\text{mL}$ at the endpoint. What volume of titrant was added?",
+        "choices": [
+          "$24.15\\ \\text{mL}$",
+          "$21.80\\ \\text{mL}$",
+          "$18.45\\ \\text{mL}$",
+          "$19.45\\ \\text{mL}$"
+        ],
+        "answer": 3,
+        "working": "Volume added $=$ final reading $-$ initial reading $= 21.80 - 2.35 = 19.45\\ \\text{mL}$."
+      }
+    ]
+  },
+  "c20-4-8-b": {
+    "lessonId": "c20-4-8",
+    "title": "Titration, Part 2: From Data to a Concentration",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hydrochloric acid",
+        "t": 18.24
+      },
+      {
+        "title": "Mind the mole ratio",
+        "t": 80.908
+      },
+      {
+        "title": "Several trials",
+        "t": 132.391
+      },
+      {
+        "title": "From the average",
+        "t": 165.461
+      },
+      {
+        "title": "Your turn",
+        "t": 197.418
+      },
+      {
+        "title": "Summary",
+        "t": 244.838
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-8-b:q",
+        "t": 218.878,
+        "prompt": "A $25.00\\ \\text{mL}$ sample of barium hydroxide is titrated with $0.200\\ \\text{mol/L}$ hydrochloric acid: $\\ce{Ba(OH)2(aq) + 2HCl(aq) -> BaCl2(aq) + 2H2O(l)}$. The endpoint is reached after $18.60\\ \\text{mL}$. What is the concentration of the barium hydroxide, to four decimal places?",
+        "choices": [
+          "$0.0744\\ \\text{mol/L}$",
+          "$0.1488\\ \\text{mol/L}$",
+          "$0.2976\\ \\text{mol/L}$",
+          "$0.1344\\ \\text{mol/L}$"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{HCl}) = 0.200 \\times 0.01860 = 0.003720\\ \\text{mol}$, $n(\\ce{Ba(OH)2}) = 0.003720 \\div 2 = 0.001860\\ \\text{mol}$, and $c = 0.001860 \\div 0.02500 = 0.0744\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-4-8-c": {
+    "lessonId": "c20-4-8",
+    "title": "Titration, Part 3: Titration Curves",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A strong acid and a strong base",
+        "t": 15.759
+      },
+      {
+        "title": "Reading the equivalence point",
+        "t": 71.116
+      },
+      {
+        "title": "Choosing an indicator",
+        "t": 128.95
+      },
+      {
+        "title": "Strong with strong",
+        "t": 149.073
+      },
+      {
+        "title": "Your turn",
+        "t": 180.38
+      },
+      {
+        "title": "Summary",
+        "t": 216.94
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-8-c:q",
+        "t": 192.279,
+        "prompt": "The middle of the steep part of a titration curve is at about pH 5.3. Which indicator should be used? The colour-change ranges are: methyl orange, pH 3.2 to 4.4; methyl red, pH 4.8 to 6.0; bromothymol blue, pH 6.0 to 7.6; phenolphthalein, pH 8.2 to 10.0.",
+        "choices": [
+          "Methyl orange",
+          "Bromothymol blue",
+          "Methyl red",
+          "Phenolphthalein"
+        ],
+        "answer": 2,
+        "working": "The equivalence point is at about pH 5.3, which is inside the range of methyl red, pH 4.8 to 6.0."
+      }
+    ]
+  },
+  "c20-4-8-d": {
+    "lessonId": "c20-4-8",
+    "title": "Titration, Part 4: Weak Acids and Weak Bases",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A weak acid",
+        "t": 20.859
+      },
+      {
+        "title": "Bases in the flask",
+        "t": 84.745
+      },
+      {
+        "title": "Four titrations",
+        "t": 128.898
+      },
+      {
+        "title": "An indicator for vinegar",
+        "t": 152.651
+      },
+      {
+        "title": "Your turn",
+        "t": 189.001
+      },
+      {
+        "title": "Summary",
+        "t": 229.74
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-8-d:q",
+        "t": 204.639,
+        "prompt": "A titration curve starts near pH 13 and falls as the titrant is added. The middle of its steep part is at pH 7. Which titration does it show?",
+        "choices": [
+          "A strong acid titrated with a strong base",
+          "A strong base titrated with a strong acid",
+          "A weak acid titrated with a strong base",
+          "A weak base titrated with a strong acid"
+        ],
+        "answer": 1,
+        "working": "It starts above 7 and falls, so a base is in the flask and an acid is added. It starts near pH 13 and its equivalence point is at pH 7, so the base is strong."
       }
     ]
   },

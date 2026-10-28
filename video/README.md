@@ -298,7 +298,11 @@ Lessons learned while scripting (the script check does not catch these):
   "-ite", "-ic" or "-ous" (heard as "eight", "Ike", "ooze"): say it inside an example ("a name
   ending like nitrate"). Say "iodine", never the letter I. The metal lead is respelled by
   `speechText` (before "two", an ion name or a bracket, and after "of", "as" or "and"); any other
-  use of the metal should be reworded so it is one of those.
+  use of the metal should be reworded so it is one of those. `speechText` also respells "deca" and
+  "decahydrate" (otherwise "dih-KA"), "heptaoxide", "pipetted", "electronegativity" (which loses its
+  "neg") and Svante Arrhenius. Whisper writes many chemistry words its own way ("methanol" for
+  methanal, "boils" for Boyle's, "SATP", "iron II"); check those with Kokoro's phonemes before
+  changing anything: methanal, nona, valence, phenolphthalein and intermolecular are said right.
 
 ### Google Drive
 

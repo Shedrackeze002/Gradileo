@@ -19,9 +19,13 @@ if [ "${1:-}" = "--dry-run" ]; then dry=1; shift; fi
 test $# -gt 0 || { echo "usage: free-disk.sh [--dry-run] <course id>..."; exit 1; }
 status=0
 for course in "$@"; do
-  dir=${course/math-/math}
+  # The folder drops the course id's first hyphen: math-20-1 is math20-1, chem-10 is chem10.
+  dir=${course/-/}
   test -d "src/content/$dir/videos" || { echo "=== $course: no scripts in src/content/$dir/videos"; status=1; continue; }
-  ids=$(ls "src/content/$dir/videos" | sed 's/\.ts$//' | grep -E '^m[0-9a-z]+(-[0-9a-z]+)+$' | sort -V)
+  # Video ids: m20-1-1-b, c10-2-3 (the lib folder of figure helpers has no hyphen).
+  ids=$(ls "src/content/$dir/videos" | sed 's/\.ts$//' | grep -E '^[a-z]+[0-9a-z]*(-[0-9a-z]+)+$' | sort -V)
+  # With no ids, nothing below would be checked, and du would measure the whole repository.
+  test -n "$ids" || { echo "=== $course: no video scripts in src/content/$dir/videos"; status=1; continue; }
   log=$(npx tsx video/tools/drive-upload.ts "$course" 2>&1)
   missing=""
   for id in $ids; do
