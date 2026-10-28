@@ -8039,6 +8039,198 @@
       }
     ]
   },
+  "c20-3-4-b": {
+    "lessonId": "c20-3-4",
+    "title": "Molar Concentration, Part 2: From a Mass to a Concentration",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From mass to concentration",
+        "t": 15.942
+      },
+      {
+        "title": "The mass needed",
+        "t": 81.061
+      },
+      {
+        "title": "Your turn",
+        "t": 155.176
+      },
+      {
+        "title": "Summary",
+        "t": 197.395
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-4-b:q",
+        "t": 171.348,
+        "prompt": "What mass of potassium chloride, $\\ce{KCl}$, is needed to make $500\\ \\text{mL}$ of a $0.200\\ \\text{mol/L}$ solution? Use these molar masses: K $39.10\\ \\text{g/mol}$, Cl $35.45\\ \\text{g/mol}$.",
+        "choices": [
+          "$29.8\\ \\text{g}$",
+          "$7\\,455\\ \\text{g}$",
+          "$7.46\\ \\text{g}$",
+          "$0.00134\\ \\text{g}$"
+        ],
+        "answer": 2,
+        "working": "$M = 39.10 + 35.45 = 74.55\\ \\text{g/mol}$, $n = 0.200 \\times 0.500 = 0.100\\ \\text{mol}$, so $m = 0.100 \\times 74.55 = 7.455 \\approx 7.46\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-3-4-c": {
+    "lessonId": "c20-3-4",
+    "title": "Molar Concentration, Part 3: Preparing a Standard Solution",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Standard solutions",
+        "t": 21.863
+      },
+      {
+        "title": "Six steps",
+        "t": 51.311
+      },
+      {
+        "title": "Make up to the volume",
+        "t": 131.434
+      },
+      {
+        "title": "Your turn",
+        "t": 158.853
+      },
+      {
+        "title": "Summary",
+        "t": 194.52
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-4-c:q",
+        "t": 169.591,
+        "prompt": "Which method makes $250.0\\ \\text{mL}$ of a standard solution from a weighed solid?",
+        "choices": [
+          "Dissolve it in $250.0\\ \\text{mL}$ of water.",
+          "Dissolve it in a little water, transfer it with every rinse to the flask, and fill to the line.",
+          "Fill the flask to the line with water, then add the solid.",
+          "Dissolve it in the flask, and fill until the top of the meniscus is on the line."
+        ],
+        "answer": 1,
+        "working": "Dissolve first, then make up to the line in a $250.0\\ \\text{mL}$ volumetric flask, with the bottom of the meniscus on the line."
+      }
+    ]
+  },
+  "c20-3-4-d": {
+    "lessonId": "c20-3-4",
+    "title": "Molar Concentration, Part 4: Concentrations of Ions",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Each ion’s concentration",
+        "t": 19.216
+      },
+      {
+        "title": "Aluminium sulfate",
+        "t": 67.964
+      },
+      {
+        "title": "From an ion to the compound",
+        "t": 112.317
+      },
+      {
+        "title": "Starting from a mass",
+        "t": 158.995
+      },
+      {
+        "title": "Your turn",
+        "t": 210.708
+      },
+      {
+        "title": "Summary",
+        "t": 249.662
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-4-d:q",
+        "t": 223.71,
+        "prompt": "What is the concentration of $\\ce{K+}$ ions in a $0.40\\ \\text{mol/L}$ solution of potassium phosphate, $\\ce{K3PO4}$?",
+        "choices": [
+          "$0.13\\ \\text{mol/L}$",
+          "$0.40\\ \\text{mol/L}$",
+          "$0.80\\ \\text{mol/L}$",
+          "$1.20\\ \\text{mol/L}$"
+        ],
+        "answer": 3,
+        "working": "$\\ce{K3PO4(s) -> 3K+(aq) + PO4^3-(aq)}$, so $[\\ce{K+}] = 3 \\times 0.40 = 1.20\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-3-5": {
+    "lessonId": "c20-3-5",
+    "title": "Dilution, Part 1: What Stays the Same",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding solvent",
+        "t": 35.148
+      },
+      {
+        "title": "The dilution equation",
+        "t": 69.554
+      },
+      {
+        "title": "Finding the new concentration",
+        "t": 121.842
+      },
+      {
+        "title": "Both volumes in one unit",
+        "t": 161.935
+      },
+      {
+        "title": "Your turn",
+        "t": 177.705
+      },
+      {
+        "title": "Summary",
+        "t": 217.889
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-5:q",
+        "t": 195.038,
+        "prompt": "$15.0\\ \\text{mL}$ of a $3.00\\ \\text{mol/L}$ solution is diluted with water to $75.0\\ \\text{mL}$. What is the new concentration? When a solution is diluted, $c_1V_1 = c_2V_2$.",
+        "choices": [
+          "$15.0\\ \\text{mol/L}$",
+          "$0.600\\ \\text{mol/L}$",
+          "$600\\ \\text{mol/L}$",
+          "$0.200\\ \\text{mol/L}$"
+        ],
+        "answer": 1,
+        "working": "$c_2 = \\dfrac{c_1V_1}{V_2} = \\dfrac{3.00 \\times 15.0}{75.0} = 0.600\\ \\text{mol/L}$. The volume grew five times, so the concentration fell to one fifth."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
