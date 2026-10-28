@@ -464,7 +464,8 @@ export function molecularFormula(sk: Skeleton): string {
     if (g.kind === 'ester') (add('O', 2), add('C', g.alkyl), add('H', 2 * g.alkyl + 1));
   }
   const order = ['C', 'H', ...[...count.keys()].filter((e) => e !== 'C' && e !== 'H').sort()];
-  return order.map((el) => `${el}${count.get(el)! > 1 ? count.get(el) : ''}`).join('');
+  // An element counted zero times (the hydrogens of CCl4) is left out, not written bare.
+  return order.filter((el) => count.get(el)! > 0).map((el) => `${el}${count.get(el)! > 1 ? count.get(el) : ''}`).join('');
 }
 
 /** An unbranched alkyl group of k carbons, written from its point of attachment (right) or towards it (left). */

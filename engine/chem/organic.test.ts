@@ -110,6 +110,8 @@ describe('formulas', () => {
     expect(molecularFormula({ chain: 3, group: { kind: 'alcohol', at: 1 } })).toBe('C3H8O');
     expect(molecularFormula({ chain: 2, group: { kind: 'acid' } })).toBe('C2H4O2');
     expect(molecularFormula({ chain: 2, group: { kind: 'ester', alkyl: 1 } })).toBe('C3H6O2');
+    // No hydrogens left: tetrachloromethane is CCl4, not CHCl4.
+    expect(molecularFormula({ chain: 1, subs: [1, 1, 1, 1].map((at) => ({ at, prefix: 'chloro' as const })) })).toBe('CCl4');
     expect(molecularFormula({ chain: 2, subs: [{ at: 1, prefix: 'bromo' }, { at: 2, prefix: 'bromo' }] })).toBe('C2H4Br2');
     expect(molecularFormula({ chain: 2, group: { kind: 'amine', at: 1 } })).toBe('C2H7N');
   });
