@@ -4941,29 +4941,29 @@
       },
       {
         "title": "Three rules",
-        "t": 56.649
+        "t": 56.742
       },
       {
         "title": "More examples",
-        "t": 106.549
+        "t": 106.642
       },
       {
         "title": "Molecular names only",
-        "t": 142.34
+        "t": 142.433
       },
       {
         "title": "Your turn",
-        "t": 170.364
+        "t": 170.457
       },
       {
         "title": "Summary",
-        "t": 202.921
+        "t": 203.211
       }
     ],
     "cues": [
       {
         "id": "c20-1-3-b:q",
-        "t": 177.802,
+        "t": 177.895,
         "prompt": "Name the molecular compound $\\ce{Cl2O7}$.",
         "choices": [
           "chlorine heptaoxide",
@@ -4992,29 +4992,29 @@
       },
       {
         "title": "Never simplify",
-        "t": 58.556
+        "t": 58.432
       },
       {
         "title": "Common names",
-        "t": 90.214
+        "t": 90.09
       },
       {
         "title": "Alcohols and ozone",
-        "t": 132.261
+        "t": 132.136
       },
       {
         "title": "Your turn",
-        "t": 161.243
+        "t": 161.118
       },
       {
         "title": "Summary",
-        "t": 190.194
+        "t": 190.069
       }
     ],
     "cues": [
       {
         "id": "c20-1-3-c:q",
-        "t": 168.758,
+        "t": 168.633,
         "prompt": "What is the formula of tetraphosphorus trisulfide?",
         "choices": [
           "$\\ce{P3S4}$",
@@ -9451,6 +9451,1092 @@
         ],
         "answer": 1,
         "working": "$M(\\ce{MgSO4}) = 24.31 + 32.06 + 4(16.00) = 120.37$ and $7(18.02) = 126.14$, so $M = 120.37 + 126.14 = 246.51\\ \\text{g/mol}$."
+      }
+    ]
+  },
+  "c20-4-3-c": {
+    "lessonId": "c20-4-3",
+    "title": "The Mole and Molar Mass, Part 3: Mass and Amount",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two formulas",
+        "t": 16.797
+      },
+      {
+        "title": "From mass to moles",
+        "t": 53.657
+      },
+      {
+        "title": "From moles to mass",
+        "t": 84.889
+      },
+      {
+        "title": "Molar mass first",
+        "t": 114.338
+      },
+      {
+        "title": "Your turn",
+        "t": 157.663
+      },
+      {
+        "title": "Summary",
+        "t": 200.56
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-3-c:q",
+        "t": 172.433,
+        "prompt": "How many moles are in $45.0\\ \\text{g}$ of water, $\\ce{H2O}$, to the nearest hundredth? The molar mass of water is $18.02\\ \\text{g/mol}$.",
+        "choices": [
+          "$810.9\\ \\text{mol}$",
+          "$0.40\\ \\text{mol}$",
+          "$2.50\\ \\text{mol}$",
+          "$26.98\\ \\text{mol}$"
+        ],
+        "answer": 2,
+        "working": "$n = \\dfrac{m}{M} = \\dfrac{45.0}{18.02} = 2.497\\ \\text{mol} \\approx 2.50\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-4-3-d": {
+    "lessonId": "c20-4-3",
+    "title": "The Mole and Molar Mass, Part 4: Counting Particles",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Avogadro’s number",
+        "t": 21.918
+      },
+      {
+        "title": "Moles to molecules, and back",
+        "t": 49.558
+      },
+      {
+        "title": "Powers of ten on a calculator",
+        "t": 96.886
+      },
+      {
+        "title": "From a mass to atoms",
+        "t": 127.436
+      },
+      {
+        "title": "Your turn",
+        "t": 189.208
+      },
+      {
+        "title": "Summary",
+        "t": 230.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-3-d:q",
+        "t": 199.207,
+        "prompt": "How many oxygen atoms are in $2.00\\ \\text{mol}$ of carbon dioxide, $\\ce{CO2}$? Use $N_A = 6.02 \\times 10^{23}\\ \\text{mol}^{-1}$.",
+        "choices": [
+          "$2.41 \\times 10^{24}$",
+          "$1.20 \\times 10^{24}$",
+          "$3.61 \\times 10^{24}$",
+          "$3.01 \\times 10^{23}$"
+        ],
+        "answer": 0,
+        "working": "Molecules: $2.00 \\times 6.02 \\times 10^{23} = 1.204 \\times 10^{24}$. Each $\\ce{CO2}$ holds 2 O atoms: $2 \\times 1.204 \\times 10^{24} = 2.41 \\times 10^{24}$."
+      }
+    ]
+  },
+  "c20-4-4": {
+    "lessonId": "c20-4-4",
+    "title": "Mole Ratios and Gravimetric Stoichiometry, Part 1: Reading an Equation in Moles",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Coefficients count moles",
+        "t": 37.311
+      },
+      {
+        "title": "Stoichiometry and mole ratios",
+        "t": 104.495
+      },
+      {
+        "title": "Coefficients are not grams",
+        "t": 134.177
+      },
+      {
+        "title": "Your turn",
+        "t": 154.399
+      },
+      {
+        "title": "Summary",
+        "t": 190.214
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-4:q",
+        "t": 163.526,
+        "prompt": "Which statement about $\\ce{N2 + 3H2 -> 2NH3}$ is correct?",
+        "choices": [
+          "$1\\ \\text{mol}$ of $\\ce{N2}$ reacts with $3\\ \\text{mol}$ of $\\ce{H2}$ to form $2\\ \\text{mol}$ of $\\ce{NH3}$.",
+          "$1\\ \\text{g}$ of $\\ce{N2}$ reacts with $3\\ \\text{g}$ of $\\ce{H2}$ to form $2\\ \\text{g}$ of $\\ce{NH3}$.",
+          "The mass of $\\ce{NH3}$ formed is twice the mass of $\\ce{N2}$ used.",
+          "The mole ratio of $\\ce{H2}$ to $\\ce{NH3}$ is $2 : 3$."
+        ],
+        "answer": 0,
+        "working": "The coefficients count moles, not grams: $1\\ \\text{mol}$ of $\\ce{N2}$, $3\\ \\text{mol}$ of $\\ce{H2}$ and $2\\ \\text{mol}$ of $\\ce{NH3}$. The mole ratio of $\\ce{H2}$ to $\\ce{NH3}$ is $3 : 2$."
+      }
+    ]
+  },
+  "c20-4-4-b": {
+    "lessonId": "c20-4-4",
+    "title": "Mole Ratios and Gravimetric Stoichiometry, Part 2: Using a Mole Ratio",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Wanted over given",
+        "t": 20.573
+      },
+      {
+        "title": "Burning butane",
+        "t": 60.805
+      },
+      {
+        "title": "Working backwards",
+        "t": 98.057
+      },
+      {
+        "title": "Balance first",
+        "t": 144.472
+      },
+      {
+        "title": "Your turn",
+        "t": 178.104
+      },
+      {
+        "title": "Summary",
+        "t": 220.519
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-4-b:q",
+        "t": 190.384,
+        "prompt": "In the reaction $\\ce{2C2H6 + 7O2 -> 4CO2 + 6H2O}$, how many moles of $\\ce{O2}$ react with $0.300\\ \\text{mol}$ of $\\ce{C2H6}$? Give the answer to the nearest hundredth.",
+        "choices": [
+          "$0.09\\ \\text{mol}$",
+          "$2.10\\ \\text{mol}$",
+          "$1.05\\ \\text{mol}$",
+          "$0.30\\ \\text{mol}$"
+        ],
+        "answer": 2,
+        "working": "$n(\\ce{O2}) = 0.300 \\times \\dfrac{7}{2} = 1.05\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-4-4-c": {
+    "lessonId": "c20-4-4",
+    "title": "Mole Ratios and Gravimetric Stoichiometry, Part 3: Gravimetric Stoichiometry",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 20.759
+      },
+      {
+        "title": "From moles to a mass",
+        "t": 62.746
+      },
+      {
+        "title": "Iron from thermite",
+        "t": 103.53
+      },
+      {
+        "title": "Your turn",
+        "t": 164.225
+      },
+      {
+        "title": "Summary",
+        "t": 210.143
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-4-c:q",
+        "t": 179.56,
+        "prompt": "In the reaction $\\ce{2Mg + O2 -> 2MgO}$, what mass of $\\ce{MgO}$ forms from $6.08\\ \\text{g}$ of $\\ce{Mg}$? Give the answer to the nearest tenth. Use these molar masses: Mg $24.31\\ \\text{g/mol}$, O $16.00\\ \\text{g/mol}$.",
+        "choices": [
+          "$6.1\\ \\text{g}$",
+          "$10.1\\ \\text{g}$",
+          "$5.0\\ \\text{g}$",
+          "$20.2\\ \\text{g}$"
+        ],
+        "answer": 1,
+        "working": "$n(\\ce{Mg}) = \\dfrac{6.08}{24.31} = 0.2501\\ \\text{mol}$, so $n(\\ce{MgO}) = 0.2501 \\times \\dfrac{2}{2} = 0.2501\\ \\text{mol}$. $M(\\ce{MgO}) = 40.31\\ \\text{g/mol}$, so $m = 0.2501 \\times 40.31 = 10.08\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-4-d": {
+    "lessonId": "c20-4-4",
+    "title": "Mole Ratios and Gravimetric Stoichiometry, Part 4: Gravimetric Analysis",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Oxygen for a barbecue",
+        "t": 19.448
+      },
+      {
+        "title": "Two habits",
+        "t": 66.9
+      },
+      {
+        "title": "Gravimetric analysis",
+        "t": 95.194
+      },
+      {
+        "title": "Barium chloride in a solution",
+        "t": 136.85
+      },
+      {
+        "title": "Your turn",
+        "t": 177.504
+      },
+      {
+        "title": "Summary",
+        "t": 228.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-4-d:q",
+        "t": 195.813,
+        "prompt": "Silver nitrate solution is mixed with excess sodium chloride solution: $\\ce{AgNO3(aq) + NaCl(aq) -> AgCl(s) + NaNO3(aq)}$. The dried $\\ce{AgCl}$ has a mass of $1.43\\ \\text{g}$. What mass of $\\ce{AgNO3}$ was in the solution, to the nearest hundredth? Use Ag $107.87$, N $14.01$, O $16.00$, Cl $35.45\\ \\text{g/mol}$.",
+        "choices": [
+          "$1.43\\ \\text{g}$",
+          "$1.21\\ \\text{g}$",
+          "$3.39\\ \\text{g}$",
+          "$1.70\\ \\text{g}$"
+        ],
+        "answer": 3,
+        "working": "$M(\\ce{AgCl}) = 143.32$, so $n = \\dfrac{1.43}{143.32} = 0.009978\\ \\text{mol}$. The ratio is $1 : 1$ and $M(\\ce{AgNO3}) = 169.88$, so $m = 0.009978 \\times 169.88 = 1.70\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-5": {
+    "lessonId": "c20-4-5",
+    "title": "Gas and Solution Stoichiometry, Part 1: Gases at STP and SATP",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same path through moles",
+        "t": 34.852
+      },
+      {
+        "title": "Ways in and out of moles",
+        "t": 63.965
+      },
+      {
+        "title": "Molar volume",
+        "t": 94.901
+      },
+      {
+        "title": "Filling an airbag",
+        "t": 128.649
+      },
+      {
+        "title": "Your turn",
+        "t": 174.651
+      },
+      {
+        "title": "Summary",
+        "t": 216.371
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-5:q",
+        "t": 189.484,
+        "prompt": "Zinc reacts with excess hydrochloric acid: $\\ce{Zn + 2HCl -> ZnCl2 + H2}$. What volume of $\\ce{H2}$ at SATP forms from $6.54\\ \\text{g}$ of $\\ce{Zn}$? Give the answer to the nearest hundredth. At SATP, the molar volume of a gas is $24.8\\ \\text{L/mol}$. Use the molar mass Zn $65.38\\ \\text{g/mol}$.",
+        "choices": [
+          "$2.24\\ \\text{L}$",
+          "$4.96\\ \\text{L}$",
+          "$2.48\\ \\text{L}$",
+          "$162.19\\ \\text{L}$"
+        ],
+        "answer": 2,
+        "working": "$n(\\ce{Zn}) = \\dfrac{6.54}{65.38} = 0.1000\\ \\text{mol}$, so $n(\\ce{H2}) = 0.1000 \\times \\dfrac{1}{1} = 0.1000\\ \\text{mol}$, and $V = 0.1000 \\times 24.8 = 2.48\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-4-5-b": {
+    "lessonId": "c20-4-5",
+    "title": "Gas and Solution Stoichiometry, Part 2: From a Gas Back to a Mass",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Carbon dioxide from limestone",
+        "t": 20.605
+      },
+      {
+        "title": "Oxygen from potassium chlorate",
+        "t": 65.373
+      },
+      {
+        "title": "Gases only, and gas to gas",
+        "t": 111.297
+      },
+      {
+        "title": "Your turn",
+        "t": 156.421
+      },
+      {
+        "title": "Summary",
+        "t": 203.45
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-5-b:q",
+        "t": 172.232,
+        "prompt": "Magnesium reacts with excess hydrochloric acid: $\\ce{Mg + 2HCl -> MgCl2 + H2}$. What mass of $\\ce{Mg}$ is needed to make $3.00\\ \\text{L}$ of $\\ce{H2}$ at STP? Give the answer to the nearest hundredth. At STP, the molar volume of a gas is $22.4\\ \\text{L/mol}$. Use the molar mass Mg $24.31\\ \\text{g/mol}$.",
+        "choices": [
+          "$3.26\\ \\text{g}$",
+          "$2.94\\ \\text{g}$",
+          "$72.93\\ \\text{g}$",
+          "$1.63\\ \\text{g}$"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{H2}) = \\dfrac{3.00}{22.4} = 0.1339\\ \\text{mol}$, so $n(\\ce{Mg}) = 0.1339 \\times \\dfrac{1}{1} = 0.1339\\ \\text{mol}$, and $m = 0.1339 \\times 24.31 = 3.26\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-5-c": {
+    "lessonId": "c20-4-5",
+    "title": "Gas and Solution Stoichiometry, Part 3: Gases at Other Conditions",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ideal gas law",
+        "t": 22.884
+      },
+      {
+        "title": "Hydrogen on a cool day",
+        "t": 60.449
+      },
+      {
+        "title": "Kelvins, not Celsius",
+        "t": 104.172
+      },
+      {
+        "title": "Burning propane",
+        "t": 126.861
+      },
+      {
+        "title": "Your turn",
+        "t": 168.593
+      },
+      {
+        "title": "Summary",
+        "t": 221.046
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-5-c:q",
+        "t": 184.499,
+        "prompt": "Limestone breaks down: $\\ce{CaCO3 -> CaO + CO2}$. What volume of $\\ce{CO2}$ at $25^\\circ\\text{C}$ and $105\\ \\text{kPa}$ forms from $12.0\\ \\text{g}$ of $\\ce{CaCO3}$, to the nearest hundredth? Use $PV = nRT$, $R = 8.314\\ \\text{kPa·L/(mol·K)}$, $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$ and $M(\\ce{CaCO3}) = 100.09\\ \\text{g/mol}$.",
+        "choices": [
+          "$0.24\\ \\text{L}$",
+          "$2.97\\ \\text{L}$",
+          "$2.69\\ \\text{L}$",
+          "$2.83\\ \\text{L}$"
+        ],
+        "answer": 3,
+        "working": "$n = 12.0 \\div 100.09 = 0.1199\\ \\text{mol}$ of each, $T = 298.15\\ \\text{K}$, and $V = 0.1199 \\times 8.314 \\times 298.15 \\div 105 = 2.83\\ \\text{L}$."
+      }
+    ]
+  },
+  "c20-4-5-d": {
+    "lessonId": "c20-4-5",
+    "title": "Gas and Solution Stoichiometry, Part 4: Solution Stoichiometry",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Amount in a solution",
+        "t": 15.509
+      },
+      {
+        "title": "A silver chloride precipitate",
+        "t": 37.483
+      },
+      {
+        "title": "How much solution reacts?",
+        "t": 80.276
+      },
+      {
+        "title": "Two solutions",
+        "t": 125.845
+      },
+      {
+        "title": "Your turn",
+        "t": 178.969
+      },
+      {
+        "title": "Summary",
+        "t": 229.909
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-5-d:q",
+        "t": 198.095,
+        "prompt": "In the reaction $\\ce{H3PO4 + 3KOH -> K3PO4 + 3H2O}$, what volume of $0.200\\ \\text{mol/L}$ potassium hydroxide reacts exactly with $15.0\\ \\text{mL}$ of $0.100\\ \\text{mol/L}$ phosphoric acid? Give the answer in millilitres, to the nearest tenth.",
+        "choices": [
+          "$7.5\\ \\text{mL}$",
+          "$22.5\\ \\text{mL}$",
+          "$2.5\\ \\text{mL}$",
+          "$45.0\\ \\text{mL}$"
+        ],
+        "answer": 1,
+        "working": "$n(\\ce{H3PO4}) = 0.100 \\times 0.0150 = 0.001500\\ \\text{mol}$, $n(\\ce{KOH}) = 0.001500 \\times \\dfrac{3}{1} = 0.004500\\ \\text{mol}$, and $V = \\dfrac{0.004500}{0.200} = 0.02250\\ \\text{L} = 22.5\\ \\text{mL}$."
+      }
+    ]
+  },
+  "c20-4-6": {
+    "lessonId": "c20-4-6",
+    "title": "Limiting and Excess Reagents, Part 1: Which Reactant Runs Out?",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Limiting and excess",
+        "t": 29.893
+      },
+      {
+        "title": "Making ammonia",
+        "t": 74.888
+      },
+      {
+        "title": "Counting molecules",
+        "t": 129.024
+      },
+      {
+        "title": "Your turn",
+        "t": 167.103
+      },
+      {
+        "title": "Summary",
+        "t": 210.915
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-6:q",
+        "t": 183.878,
+        "prompt": "A mixture for the reaction $\\ce{2H2 + O2 -> 2H2O}$ holds $3.00\\ \\text{mol}$ of $\\ce{H2}$ and $2.00\\ \\text{mol}$ of $\\ce{O2}$. Which reactant is the limiting reagent?",
+        "choices": [
+          "$\\ce{O2}$, because there is less of it",
+          "$\\ce{H2}$, because it runs out first",
+          "Neither: both are used up exactly",
+          "$\\ce{O2}$, because its coefficient is smaller"
+        ],
+        "answer": 1,
+        "working": "The $\\ce{H2}$ needs $3.00 \\times \\dfrac{1}{2} = 1.50\\ \\text{mol}$ of $\\ce{O2}$, and there is $2.00\\ \\text{mol}$, more than enough. So $\\ce{H2}$ runs out first and is limiting; $\\ce{O2}$ is in excess."
+      }
+    ]
+  },
+  "c20-4-6-b": {
+    "lessonId": "c20-4-6",
+    "title": "Limiting and Excess Reagents, Part 2: A Shortcut, and Masses",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The thermite reaction",
+        "t": 22.477
+      },
+      {
+        "title": "A shortcut",
+        "t": 62.484
+      },
+      {
+        "title": "Starting from masses",
+        "t": 105.765
+      },
+      {
+        "title": "Your turn",
+        "t": 177.328
+      },
+      {
+        "title": "Summary",
+        "t": 225.019
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-6-b:q",
+        "t": 191.217,
+        "prompt": "A mixture for the reaction $\\ce{2Na + Cl2 -> 2NaCl}$ holds $4.60\\ \\text{g}$ of $\\ce{Na}$ and $10.0\\ \\text{g}$ of $\\ce{Cl2}$. Which reactant is in excess? Use these molar masses: Na $22.99\\ \\text{g/mol}$, Cl $35.45\\ \\text{g/mol}$.",
+        "choices": [
+          "$\\ce{Cl2}$: there is $0.1410\\ \\text{mol}$, and the $\\ce{Na}$ needs $0.1000\\ \\text{mol}$",
+          "$\\ce{Na}$: $0.2001\\ \\text{mol}$ is more than $0.1410\\ \\text{mol}$",
+          "$\\ce{Na}$: it needs $0.4002\\ \\text{mol}$ of $\\ce{Cl2}$",
+          "Neither: both are used up exactly"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{Na}) = 4.60 \\div 22.99 = 0.2001\\ \\text{mol}$ and $n(\\ce{Cl2}) = 10.0 \\div 70.90 = 0.1410\\ \\text{mol}$. The $\\ce{Na}$ needs $0.2001 \\div 2 = 0.1000\\ \\text{mol}$ of $\\ce{Cl2}$, so $\\ce{Na}$ is limiting and $\\ce{Cl2}$ is in excess."
+      }
+    ]
+  },
+  "c20-4-6-c": {
+    "lessonId": "c20-4-6",
+    "title": "Limiting and Excess Reagents, Part 3: How Much Product Forms?",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Zinc chloride",
+        "t": 17.297
+      },
+      {
+        "title": "Using the excess reagent",
+        "t": 84.383
+      },
+      {
+        "title": "Burning methane",
+        "t": 106.131
+      },
+      {
+        "title": "From the limiting reagent",
+        "t": 159.586
+      },
+      {
+        "title": "Your turn",
+        "t": 183.52
+      },
+      {
+        "title": "Summary",
+        "t": 231.564
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-6-c:q",
+        "t": 198.083,
+        "prompt": "A mixture for the reaction $\\ce{4Al + 3O2 -> 2Al2O3}$ holds $0.600\\ \\text{mol}$ of $\\ce{Al}$ and $0.600\\ \\text{mol}$ of $\\ce{O2}$. How many moles of $\\ce{Al2O3}$ can form, to the nearest thousandth?",
+        "choices": [
+          "$0.400\\ \\text{mol}$",
+          "$0.600\\ \\text{mol}$",
+          "$0.150\\ \\text{mol}$",
+          "$0.300\\ \\text{mol}$"
+        ],
+        "answer": 3,
+        "working": "$0.600 \\div 4 = 0.150$ for $\\ce{Al}$ and $0.600 \\div 3 = 0.200$ for $\\ce{O2}$, so $\\ce{Al}$ is limiting. $n(\\ce{Al2O3}) = 0.600 \\times \\dfrac{2}{4} = 0.300\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-4-6-d": {
+    "lessonId": "c20-4-6",
+    "title": "Limiting and Excess Reagents, Part 4: What Is Left Over?",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Methane left over",
+        "t": 21.006
+      },
+      {
+        "title": "Check with conservation of mass",
+        "t": 82.187
+      },
+      {
+        "title": "Excess on purpose",
+        "t": 123.476
+      },
+      {
+        "title": "Your turn",
+        "t": 166.647
+      },
+      {
+        "title": "Summary",
+        "t": 215.005
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-6-d:q",
+        "t": 183.268,
+        "prompt": "A mixture for the reaction $\\ce{N2 + 3H2 -> 2NH3}$ holds $14.0\\ \\text{g}$ of $\\ce{N2}$ and $2.00\\ \\text{g}$ of $\\ce{H2}$. When the reaction stops, what mass of the excess reagent is left over, to the nearest hundredth? Use these molar masses: N $14.01\\ \\text{g/mol}$, H $1.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$9.25\\ \\text{g}$",
+          "$12.00\\ \\text{g}$",
+          "$4.75\\ \\text{g}$",
+          "$0.17\\ \\text{g}$"
+        ],
+        "answer": 2,
+        "working": "$n(\\ce{N2}) = 14.0 \\div 28.02 = 0.4996\\ \\text{mol}$ and $n(\\ce{H2}) = 2.00 \\div 2.02 = 0.9901\\ \\text{mol}$. $0.9901 \\div 3 = 0.3300$ is smaller, so $\\ce{H2}$ is limiting and $0.3300\\ \\text{mol}$ of $\\ce{N2}$ is used. Left: $(0.4996 - 0.3300) \\times 28.02 = 4.75\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-7": {
+    "lessonId": "c20-4-7",
+    "title": "Percent Yield, Part 1: Theoretical, Actual and Percent Yield",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Theoretical and actual yield",
+        "t": 37.983
+      },
+      {
+        "title": "Percent yield",
+        "t": 80.142
+      },
+      {
+        "title": "Upside down",
+        "t": 119.323
+      },
+      {
+        "title": "Your turn",
+        "t": 141.771
+      },
+      {
+        "title": "Summary",
+        "t": 186.753
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-7:q",
+        "t": 159.873,
+        "prompt": "Magnesium ribbon is burned in air: $\\ce{2Mg + O2 -> 2MgO}$. The theoretical yield is $8.06\\ \\text{g}$ of $\\ce{MgO}$, and $7.10\\ \\text{g}$ is collected. What is the percent yield, to the nearest tenth?",
+        "choices": [
+          "$113.5\\%$",
+          "$88.1\\%$",
+          "$11.9\\%$",
+          "$0.88\\%$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{7.10}{8.06} \\times 100\\% = 88.1\\%$"
+      }
+    ]
+  },
+  "c20-4-7-b": {
+    "lessonId": "c20-4-7",
+    "title": "Percent Yield, Part 2: Why Yields Fall Short",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four reasons",
+        "t": 15.902
+      },
+      {
+        "title": "A yield that is too high",
+        "t": 70.431
+      },
+      {
+        "title": "Dry to a constant mass",
+        "t": 123.445
+      },
+      {
+        "title": "Your turn",
+        "t": 136.926
+      },
+      {
+        "title": "Summary",
+        "t": 178.93
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-7-b:q",
+        "t": 151.414,
+        "prompt": "A student filters, dries and weighs a precipitate, and calculates a percent yield of $108\\%$. Which is the most likely explanation?",
+        "choices": [
+          "Some precipitate stuck to the filter paper.",
+          "The reaction did not go to completion.",
+          "The precipitate was still wet when it was weighed.",
+          "The reaction made more product than the theoretical yield."
+        ],
+        "answer": 2,
+        "working": "A yield above $100\\%$ means something else was weighed with the product, most often water. Choices A and B would make the yield lower, and no reaction makes more than its theoretical yield, because mass is conserved."
+      }
+    ]
+  },
+  "c20-4-7-c": {
+    "lessonId": "c20-4-7",
+    "title": "Percent Yield, Part 3: Finding the Theoretical Yield",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lime from limestone",
+        "t": 18.958
+      },
+      {
+        "title": "Silver from copper",
+        "t": 80.185
+      },
+      {
+        "title": "Keep the unrounded value",
+        "t": 136.077
+      },
+      {
+        "title": "Your turn",
+        "t": 161.865
+      },
+      {
+        "title": "Summary",
+        "t": 209.657
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-7-c:q",
+        "t": 179.493,
+        "prompt": "Zinc is added to excess copper(II) sulfate solution: $\\ce{Zn + CuSO4 -> ZnSO4 + Cu}$. $5.00\\ \\text{g}$ of $\\ce{Zn}$ is used, and $4.12\\ \\text{g}$ of $\\ce{Cu}$ is collected. What is the percent yield, to the nearest tenth? Use these molar masses: Zn $65.38\\ \\text{g/mol}$, Cu $63.55\\ \\text{g/mol}$.",
+        "choices": [
+          "$84.8\\%$",
+          "$82.4\\%$",
+          "$118.0\\%$",
+          "$80.1\\%$"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{Zn}) = 5.00 \\div 65.38 = 0.07648\\ \\text{mol} = n(\\ce{Cu})$, so the theoretical yield is $0.07648 \\times 63.55 = 4.860\\ \\text{g}$, and $4.12 \\div 4.860 \\times 100\\% = 84.8\\%$."
+      }
+    ]
+  },
+  "c20-4-7-d": {
+    "lessonId": "c20-4-7",
+    "title": "Percent Yield, Part 4: Planning for a Known Yield",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Aim higher",
+        "t": 15.164
+      },
+      {
+        "title": "Collecting copper",
+        "t": 49.483
+      },
+      {
+        "title": "Multiply or divide?",
+        "t": 92.579
+      },
+      {
+        "title": "Making ammonia",
+        "t": 122.762
+      },
+      {
+        "title": "Your turn",
+        "t": 169.279
+      },
+      {
+        "title": "Summary",
+        "t": 218.715
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-7-d:q",
+        "t": 184.331,
+        "prompt": "Calcium carbonate is heated to make lime: $\\ce{CaCO3 -> CaO + CO2}$. The process has a percent yield of 90%. What mass of $\\ce{CaCO3}$ is needed to collect $28.0\\ \\text{g}$ of $\\ce{CaO}$? Give the answer to the nearest tenth. Use these molar masses: Ca $40.08\\ \\text{g/mol}$, C $12.01\\ \\text{g/mol}$, O $16.00\\ \\text{g/mol}$.",
+        "choices": [
+          "$45.0\\ \\text{g}$",
+          "$50.0\\ \\text{g}$",
+          "$31.1\\ \\text{g}$",
+          "$55.5\\ \\text{g}$"
+        ],
+        "answer": 3,
+        "working": "Theoretical yield needed: $28.0 \\div 0.90 = 31.11\\ \\text{g}$ of $\\ce{CaO}$, which is $31.11 \\div 56.08 = 0.5548\\ \\text{mol}$. The ratio is $1 : 1$, so $m = 0.5548 \\times 100.09 = 55.5\\ \\text{g}$."
+      }
+    ]
+  },
+  "c20-4-8": {
+    "lessonId": "c20-4-8",
+    "title": "Titration, Part 1: How a Titration Is Done",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Titration",
+        "t": 37.225
+      },
+      {
+        "title": "The steps",
+        "t": 71.316
+      },
+      {
+        "title": "Reading the burette",
+        "t": 120.583
+      },
+      {
+        "title": "Equivalence point and endpoint",
+        "t": 146.958
+      },
+      {
+        "title": "Your turn",
+        "t": 184.893
+      },
+      {
+        "title": "Summary",
+        "t": 222.038
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-8:q",
+        "t": 200.359,
+        "prompt": "A burette reads $2.35\\ \\text{mL}$ before a titration and $21.80\\ \\text{mL}$ at the endpoint. What volume of titrant was added?",
+        "choices": [
+          "$24.15\\ \\text{mL}$",
+          "$21.80\\ \\text{mL}$",
+          "$18.45\\ \\text{mL}$",
+          "$19.45\\ \\text{mL}$"
+        ],
+        "answer": 3,
+        "working": "Volume added $=$ final reading $-$ initial reading $= 21.80 - 2.35 = 19.45\\ \\text{mL}$."
+      }
+    ]
+  },
+  "c20-4-8-b": {
+    "lessonId": "c20-4-8",
+    "title": "Titration, Part 2: From Data to a Concentration",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hydrochloric acid",
+        "t": 18.24
+      },
+      {
+        "title": "Mind the mole ratio",
+        "t": 80.908
+      },
+      {
+        "title": "Several trials",
+        "t": 132.391
+      },
+      {
+        "title": "From the average",
+        "t": 165.461
+      },
+      {
+        "title": "Your turn",
+        "t": 197.418
+      },
+      {
+        "title": "Summary",
+        "t": 244.838
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-8-b:q",
+        "t": 218.878,
+        "prompt": "A $25.00\\ \\text{mL}$ sample of barium hydroxide is titrated with $0.200\\ \\text{mol/L}$ hydrochloric acid: $\\ce{Ba(OH)2(aq) + 2HCl(aq) -> BaCl2(aq) + 2H2O(l)}$. The endpoint is reached after $18.60\\ \\text{mL}$. What is the concentration of the barium hydroxide, to four decimal places?",
+        "choices": [
+          "$0.0744\\ \\text{mol/L}$",
+          "$0.1488\\ \\text{mol/L}$",
+          "$0.2976\\ \\text{mol/L}$",
+          "$0.1344\\ \\text{mol/L}$"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{HCl}) = 0.200 \\times 0.01860 = 0.003720\\ \\text{mol}$, $n(\\ce{Ba(OH)2}) = 0.003720 \\div 2 = 0.001860\\ \\text{mol}$, and $c = 0.001860 \\div 0.02500 = 0.0744\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c20-4-8-c": {
+    "lessonId": "c20-4-8",
+    "title": "Titration, Part 3: Titration Curves",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A strong acid and a strong base",
+        "t": 15.759
+      },
+      {
+        "title": "Reading the equivalence point",
+        "t": 71.116
+      },
+      {
+        "title": "Choosing an indicator",
+        "t": 128.95
+      },
+      {
+        "title": "Strong with strong",
+        "t": 149.073
+      },
+      {
+        "title": "Your turn",
+        "t": 180.38
+      },
+      {
+        "title": "Summary",
+        "t": 216.94
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-8-c:q",
+        "t": 192.279,
+        "prompt": "The middle of the steep part of a titration curve is at about pH 5.3. Which indicator should be used? The colour-change ranges are: methyl orange, pH 3.2 to 4.4; methyl red, pH 4.8 to 6.0; bromothymol blue, pH 6.0 to 7.6; phenolphthalein, pH 8.2 to 10.0.",
+        "choices": [
+          "Methyl orange",
+          "Bromothymol blue",
+          "Methyl red",
+          "Phenolphthalein"
+        ],
+        "answer": 2,
+        "working": "The equivalence point is at about pH 5.3, which is inside the range of methyl red, pH 4.8 to 6.0."
+      }
+    ]
+  },
+  "c20-4-8-d": {
+    "lessonId": "c20-4-8",
+    "title": "Titration, Part 4: Weak Acids and Weak Bases",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A weak acid",
+        "t": 20.859
+      },
+      {
+        "title": "Bases in the flask",
+        "t": 84.745
+      },
+      {
+        "title": "Four titrations",
+        "t": 128.898
+      },
+      {
+        "title": "An indicator for vinegar",
+        "t": 152.651
+      },
+      {
+        "title": "Your turn",
+        "t": 189.001
+      },
+      {
+        "title": "Summary",
+        "t": 229.74
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-4-8-d:q",
+        "t": 204.639,
+        "prompt": "A titration curve starts near pH 13 and falls as the titrant is added. The middle of its steep part is at pH 7. Which titration does it show?",
+        "choices": [
+          "A strong acid titrated with a strong base",
+          "A strong base titrated with a strong acid",
+          "A weak acid titrated with a strong base",
+          "A weak base titrated with a strong acid"
+        ],
+        "answer": 1,
+        "working": "It starts above 7 and falls, so a base is in the flask and an acid is added. It starts near pH 13 and its equivalence point is at pH 7, so the base is strong."
       }
     ]
   },
