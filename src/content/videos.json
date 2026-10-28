@@ -7992,6 +7992,53 @@
       }
     ]
   },
+  "c20-3-4": {
+    "lessonId": "c20-3-4",
+    "title": "Molar Concentration, Part 1: Moles per Litre",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Molar concentration",
+        "t": 27.903
+      },
+      {
+        "title": "Finding a concentration",
+        "t": 71.794
+      },
+      {
+        "title": "Rearranging",
+        "t": 110.698
+      },
+      {
+        "title": "Your turn",
+        "t": 173.397
+      },
+      {
+        "title": "Summary",
+        "t": 213.463
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-4:q",
+        "t": 185.589,
+        "prompt": "How many moles of solute are in $400\\ \\text{mL}$ of a $0.250\\ \\text{mol/L}$ solution? Molar concentration is $c = \\dfrac{n}{V}$, in moles per litre.",
+        "choices": [
+          "$0.100\\ \\text{mol}$",
+          "$100\\ \\text{mol}$",
+          "$1.60\\ \\text{mol}$",
+          "$0.000625\\ \\text{mol}$"
+        ],
+        "answer": 0,
+        "working": "$V = 400\\ \\text{mL} = 0.400\\ \\text{L}$, so $n = cV = 0.250 \\times 0.400 = 0.100\\ \\text{mol}$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
