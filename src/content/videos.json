@@ -2807,6 +2807,1069 @@
       }
     ]
   },
+  "c10-4-1-c": {
+    "lessonId": "c10-4-1",
+    "title": "Word Equations and Conservation of Mass, Part 3: The Law of Conservation of Mass",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Atoms are rearranged",
+        "t": 24.237
+      },
+      {
+        "title": "The law",
+        "t": 54.31
+      },
+      {
+        "title": "A missing mass",
+        "t": 74.927
+      },
+      {
+        "title": "One reactant left over",
+        "t": 136.446
+      },
+      {
+        "title": "Your turn",
+        "t": 187.144
+      },
+      {
+        "title": "Summary",
+        "t": 239.458
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-1-c:q",
+        "t": 209.548,
+        "prompt": "In a stoppered flask, silver nitrate and $1.17\\ \\text{g}$ of sodium chloride react completely, forming $2.87\\ \\text{g}$ of silver chloride and $1.70\\ \\text{g}$ of sodium nitrate. What mass of silver nitrate reacted?",
+        "choices": [
+          "$5.74\\ \\text{g}$",
+          "$1.70\\ \\text{g}$",
+          "$4.57\\ \\text{g}$",
+          "$3.40\\ \\text{g}$"
+        ],
+        "answer": 3,
+        "working": "$m + 1.17 = 2.87 + 1.70 = 4.57$, so $m = 4.57 - 1.17 = 3.40\\ \\text{g}$."
+      }
+    ]
+  },
+  "c10-4-1-d": {
+    "lessonId": "c10-4-1",
+    "title": "Word Equations and Conservation of Mass, Part 4: Open and Closed Containers",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Closed and open systems",
+        "t": 22.779
+      },
+      {
+        "title": "Marble chips on a balance",
+        "t": 49.357
+      },
+      {
+        "title": "Heating magnesium",
+        "t": 98.674
+      },
+      {
+        "title": "Mass is never destroyed",
+        "t": 148.539
+      },
+      {
+        "title": "Your turn",
+        "t": 170.979
+      },
+      {
+        "title": "Summary",
+        "t": 216.892
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-1-d:q",
+        "t": 192.804,
+        "prompt": "Copper powder in an open dish is heated in air until it has all turned into black copper(II) oxide. The dish and its contents have a mass of $32.40\\ \\text{g}$ at the start and $32.72\\ \\text{g}$ at the end. Which statement is correct?",
+        "choices": [
+          "$0.32\\ \\text{g}$ of copper was made by the heating.",
+          "$0.32\\ \\text{g}$ of oxygen from the air combined with the copper.",
+          "$0.32\\ \\text{g}$ of mass was created, because hot substances weigh more.",
+          "Mass was destroyed: the copper lost $0.32\\ \\text{g}$."
+        ],
+        "answer": 1,
+        "working": "The mass rose by $32.72 - 32.40 = 0.32\\ \\text{g}$. No atoms are made or destroyed: oxygen from the air combined with the copper."
+      }
+    ]
+  },
+  "c10-4-2": {
+    "lessonId": "c10-4-2",
+    "title": "Balancing Equations, Part 1: Counting Atoms",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subscripts and coefficients",
+        "t": 32.258
+      },
+      {
+        "title": "Four rules",
+        "t": 72.366
+      },
+      {
+        "title": "Brackets and a coefficient",
+        "t": 116.491
+      },
+      {
+        "title": "More examples",
+        "t": 151.8
+      },
+      {
+        "title": "Your turn",
+        "t": 197.653
+      },
+      {
+        "title": "Summary",
+        "t": 231.391
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-2:q",
+        "t": 206.66,
+        "prompt": "How many oxygen atoms are shown by $\\ce{3Mg(NO3)2}$?",
+        "choices": [
+          "$6$",
+          "$18$",
+          "$9$",
+          "$36$"
+        ],
+        "answer": 1,
+        "working": "One $\\ce{Mg(NO3)2}$ holds $3 \\times 2 = 6$ O atoms. The coefficient makes it $3 \\times 6 = 18$."
+      }
+    ]
+  },
+  "c10-4-2-b": {
+    "lessonId": "c10-4-2",
+    "title": "Balancing Equations, Part 2: Balancing Step by Step",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting both sides",
+        "t": 20.935
+      },
+      {
+        "title": "Four steps",
+        "t": 48.955
+      },
+      {
+        "title": "Hydrogen and oxygen",
+        "t": 86.257
+      },
+      {
+        "title": "Making ammonia",
+        "t": 123.978
+      },
+      {
+        "title": "Never change subscripts",
+        "t": 155.168
+      },
+      {
+        "title": "Your turn",
+        "t": 179.901
+      },
+      {
+        "title": "Summary",
+        "t": 219.079
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-2-b:q",
+        "t": 192.352,
+        "prompt": "Which is the balanced equation for $\\ce{Na + Cl2 -> NaCl}$, with the smallest whole-number coefficients?",
+        "choices": [
+          "$\\ce{Na + Cl2 -> NaCl2}$",
+          "$\\ce{Na + Cl2 -> 2NaCl}$",
+          "$\\ce{4Na + 2Cl2 -> 4NaCl}$",
+          "$\\ce{2Na + Cl2 -> 2NaCl}$"
+        ],
+        "answer": 3,
+        "working": "Chlorine: write $\\ce{2NaCl}$. Then sodium is 2 on the right, so write $\\ce{2Na}$. Check: Na $2 = 2$, Cl $2 = 2$."
+      }
+    ]
+  },
+  "c10-4-2-c": {
+    "lessonId": "c10-4-2",
+    "title": "Balancing Equations, Part 3: State Symbols",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four state symbols",
+        "t": 21.44
+      },
+      {
+        "title": "Liquid or aqueous?",
+        "t": 57.255
+      },
+      {
+        "title": "Sodium and water",
+        "t": 83.562
+      },
+      {
+        "title": "Adding the states",
+        "t": 135.187
+      },
+      {
+        "title": "Your turn",
+        "t": 163.457
+      },
+      {
+        "title": "Summary",
+        "t": 204.526
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-2-c:q",
+        "t": 181.844,
+        "prompt": "In $\\ce{CuSO4(aq) + 2NaOH(aq) -> Cu(OH)2 + Na2SO4(aq)}$, the copper(II) hydroxide forms as a pale blue precipitate. Which state symbol goes after $\\ce{Cu(OH)2}$?",
+        "choices": [
+          "(s)",
+          "(l)",
+          "(g)",
+          "(aq)"
+        ],
+        "answer": 0,
+        "working": "A precipitate is a solid that forms when two solutions are mixed, so it is (s)."
+      }
+    ]
+  },
+  "c10-4-2-d": {
+    "lessonId": "c10-4-2",
+    "title": "Balancing Equations, Part 4: Fuels and Polyatomic Ions",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Burning propane",
+        "t": 24.166
+      },
+      {
+        "title": "Keep ions together",
+        "t": 65.045
+      },
+      {
+        "title": "Double everything",
+        "t": 120.486
+      },
+      {
+        "title": "Your turn",
+        "t": 159.451
+      },
+      {
+        "title": "Summary",
+        "t": 203.319
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-2-d:q",
+        "t": 175.127,
+        "prompt": "Butane burns completely: $\\ce{C4H10 + O2 -> CO2 + H2O}$. Which coefficients, in order, balance the equation with the smallest whole numbers?",
+        "choices": [
+          "$1,\\ 9,\\ 4,\\ 5$",
+          "$2,\\ 9,\\ 8,\\ 10$",
+          "$2,\\ 13,\\ 8,\\ 10$",
+          "$1,\\ 13,\\ 8,\\ 10$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{4CO2}$ and $\\ce{5H2O}$ hold $8 + 5 = 13$ O atoms: $6\\tfrac{1}{2}$ $\\ce{O2}$. Doubled: $\\ce{2C4H10 + 13O2 -> 8CO2 + 10H2O}$."
+      }
+    ]
+  },
+  "c10-4-3": {
+    "lessonId": "c10-4-3",
+    "title": "Types of Reactions, Part 1: Five Types of Reactions",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Elements and compounds",
+        "t": 27.099
+      },
+      {
+        "title": "Four patterns",
+        "t": 47.676
+      },
+      {
+        "title": "Examples of each",
+        "t": 91.375
+      },
+      {
+        "title": "Name the type",
+        "t": 146.181
+      },
+      {
+        "title": "Your turn",
+        "t": 189.22
+      },
+      {
+        "title": "Summary",
+        "t": 224.065
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-3:q",
+        "t": 201.158,
+        "prompt": "What type of reaction is $\\ce{CaCl2 + Na2CO3 -> CaCO3 + 2NaCl}$?",
+        "choices": [
+          "Double displacement",
+          "Single displacement",
+          "Synthesis",
+          "Decomposition"
+        ],
+        "answer": 0,
+        "working": "Two compounds swap partners: calcium pairs with carbonate, and sodium with chloride."
+      }
+    ]
+  },
+  "c10-4-3-b": {
+    "lessonId": "c10-4-3",
+    "title": "Types of Reactions, Part 2: Predicting the Type, and Burning",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The reactants decide",
+        "t": 17.222
+      },
+      {
+        "title": "Element and compound",
+        "t": 49.354
+      },
+      {
+        "title": "Products of burning",
+        "t": 94.76
+      },
+      {
+        "title": "Your turn",
+        "t": 157.08
+      },
+      {
+        "title": "Summary",
+        "t": 192.224
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-3-b:q",
+        "t": 169.919,
+        "prompt": "A reaction has the reactants propane, $\\ce{C3H8}$, and oxygen, $\\ce{O2}$. Before you see the products, what type of reaction is it?",
+        "choices": [
+          "Single displacement",
+          "Synthesis",
+          "Combustion",
+          "Double displacement"
+        ],
+        "answer": 2,
+        "working": "Propane is a fuel, and a fuel with oxygen is a combustion: $\\ce{C3H8 + 5O2 -> 3CO2 + 4H2O}$."
+      }
+    ]
+  },
+  "c10-4-3-c": {
+    "lessonId": "c10-4-3",
+    "title": "Types of Reactions, Part 3: Displacement and Reactivity",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A reactivity series",
+        "t": 20.933
+      },
+      {
+        "title": "Zinc, then silver",
+        "t": 60.454
+      },
+      {
+        "title": "Metals in acid",
+        "t": 95.179
+      },
+      {
+        "title": "Halogens",
+        "t": 135.57
+      },
+      {
+        "title": "Your turn",
+        "t": 157.661
+      },
+      {
+        "title": "Summary",
+        "t": 200.129
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-3-c:q",
+        "t": 174.219,
+        "prompt": "A piece of copper is placed in silver nitrate solution. Use this reactivity order, most reactive first: magnesium, zinc, iron, copper, silver. What forms?",
+        "choices": [
+          "No reaction happens",
+          "Copper(II) nitrate and silver",
+          "Copper(II) nitrate and hydrogen",
+          "Copper(II) oxide and silver"
+        ],
+        "answer": 1,
+        "working": "Copper is more reactive than silver, so it displaces it: $\\ce{Cu + 2AgNO3 -> Cu(NO3)2 + 2Ag}$."
+      }
+    ]
+  },
+  "c10-4-3-d": {
+    "lessonId": "c10-4-3",
+    "title": "Types of Reactions, Part 4: Precipitates",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Swap and check",
+        "t": 16.662
+      },
+      {
+        "title": "Barium chloride and sodium sulfate",
+        "t": 63.061
+      },
+      {
+        "title": "The precipitate is new",
+        "t": 100.85
+      },
+      {
+        "title": "Your turn",
+        "t": 141.547
+      },
+      {
+        "title": "Summary",
+        "t": 185.975
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-3-d:q",
+        "t": 159.439,
+        "prompt": "Solutions of silver nitrate, $\\ce{AgNO3}$, and potassium bromide, $\\ce{KBr}$, are mixed. All potassium compounds and all nitrates dissolve; most bromides dissolve, but silver bromide does not. What forms?",
+        "choices": [
+          "A precipitate of potassium nitrate",
+          "A precipitate of silver nitrate",
+          "No reaction: everything stays dissolved",
+          "A precipitate of silver bromide"
+        ],
+        "answer": 3,
+        "working": "Swapping partners gives silver bromide and potassium nitrate. Potassium nitrate dissolves; silver bromide does not: $\\ce{AgNO3(aq) + KBr(aq) -> AgBr(s) + KNO3(aq)}$."
+      }
+    ]
+  },
+  "c10-4-4": {
+    "lessonId": "c10-4-4",
+    "title": "Energy in Reactions, Part 1: Exothermic and Endothermic",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Energy out, energy in",
+        "t": 27.938
+      },
+      {
+        "title": "Everyday examples",
+        "t": 71.379
+      },
+      {
+        "title": "The sign of the energy change",
+        "t": 99.014
+      },
+      {
+        "title": "Reading a thermometer",
+        "t": 126.979
+      },
+      {
+        "title": "Cold is not given out",
+        "t": 178.945
+      },
+      {
+        "title": "Your turn",
+        "t": 199.585
+      },
+      {
+        "title": "Summary",
+        "t": 245.651
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-4:q",
+        "t": 218.519,
+        "prompt": "Two solutions are mixed in a polystyrene cup. A thermometer reads $22.4^\\circ\\text{C}$ at the start and $17.9^\\circ\\text{C}$ at the end. Find the temperature change and classify the change.",
+        "choices": [
+          "$+4.5^\\circ\\text{C}$, exothermic",
+          "$-4.5^\\circ\\text{C}$, exothermic",
+          "$+4.5^\\circ\\text{C}$, endothermic",
+          "$-4.5^\\circ\\text{C}$, endothermic"
+        ],
+        "answer": 3,
+        "working": "$17.9 - 22.4 = -4.5^\\circ\\text{C}$. The temperature fell, so energy was taken in: endothermic."
+      }
+    ]
+  },
+  "c10-4-4-b": {
+    "lessonId": "c10-4-4",
+    "title": "Energy in Reactions, Part 2: Bonds and Energy Level Diagrams",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Breaking and making bonds",
+        "t": 20.71
+      },
+      {
+        "title": "Bonds broken and made",
+        "t": 66.038
+      },
+      {
+        "title": "Energy level diagrams",
+        "t": 99.647
+      },
+      {
+        "title": "Endothermic diagrams",
+        "t": 156.623
+      },
+      {
+        "title": "Your turn",
+        "t": 190.551
+      },
+      {
+        "title": "Summary",
+        "t": 235.31
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-4-b:q",
+        "t": 208.425,
+        "prompt": "In a reaction, breaking the bonds of the reactants takes in $945\\ \\text{kJ}$, and making the bonds of the products gives out $780\\ \\text{kJ}$. Find the energy change and classify the reaction.",
+        "choices": [
+          "$-165\\ \\text{kJ}$, exothermic",
+          "$+165\\ \\text{kJ}$, endothermic",
+          "$+1725\\ \\text{kJ}$, endothermic",
+          "$-165\\ \\text{kJ}$, endothermic"
+        ],
+        "answer": 1,
+        "working": "Energy change $= 945 - 780 = +165\\ \\text{kJ}$. More energy is taken in breaking bonds than is given out making them: endothermic."
+      }
+    ]
+  },
+  "c10-4-4-c": {
+    "lessonId": "c10-4-4",
+    "title": "Energy in Reactions, Part 3: Reading Energy Diagrams and Catalysts",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading a diagram",
+        "t": 21.72
+      },
+      {
+        "title": "Measure from the reactants",
+        "t": 63.63
+      },
+      {
+        "title": "Catalysts",
+        "t": 86.625
+      },
+      {
+        "title": "The effect of a catalyst",
+        "t": 117.093
+      },
+      {
+        "title": "Your turn",
+        "t": 153.016
+      },
+      {
+        "title": "Summary",
+        "t": 203.997
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-4-c:q",
+        "t": 175.369,
+        "prompt": "The reactants are at $200\\ \\text{kJ}$ and the products at $140\\ \\text{kJ}$. Without a catalyst the hump reaches $320\\ \\text{kJ}$; with one, $260\\ \\text{kJ}$. What is the activation energy with the catalyst, and what happens to the energy change?",
+        "choices": [
+          "$60\\ \\text{kJ}$; it stays the same",
+          "$60\\ \\text{kJ}$; it becomes smaller",
+          "$120\\ \\text{kJ}$; it stays the same",
+          "$260\\ \\text{kJ}$; it stays the same"
+        ],
+        "answer": 0,
+        "working": "With the catalyst: $260 - 200 = 60\\ \\text{kJ}$. The reactants and products do not move, so the energy change stays $140 - 200 = -60\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c10-4-5": {
+    "lessonId": "c10-4-5",
+    "title": "Rates of Reaction, Part 1: Measuring the Rate",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rate of reaction",
+        "t": 30.301
+      },
+      {
+        "title": "Mean rate",
+        "t": 76.292
+      },
+      {
+        "title": "Hydrogen in a gas syringe",
+        "t": 101.29
+      },
+      {
+        "title": "How long will it take?",
+        "t": 125.513
+      },
+      {
+        "title": "Your turn",
+        "t": 159.07
+      },
+      {
+        "title": "Summary",
+        "t": 205.965
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-5:q",
+        "t": 181.101,
+        "prompt": "Marble chips react with hydrochloric acid in an open flask on a balance. As carbon dioxide escapes, the mass reading falls by $0.90\\ \\text{g}$ in $60\\ \\text{s}$. What is the mean rate of reaction, as mass lost per second?",
+        "choices": [
+          "$66.7\\ \\text{g/s}$",
+          "$0.15\\ \\text{g/s}$",
+          "$0.015\\ \\text{g/s}$",
+          "$54\\ \\text{g/s}$"
+        ],
+        "answer": 2,
+        "working": "Mean rate $= \\dfrac{0.90\\ \\text{g}}{60\\ \\text{s}} = 0.015\\ \\text{g/s}$."
+      }
+    ]
+  },
+  "c10-4-5-b": {
+    "lessonId": "c10-4-5",
+    "title": "Rates of Reaction, Part 2: Reading Rates from Data",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fastest at the start",
+        "t": 19.039
+      },
+      {
+        "title": "Reading a table",
+        "t": 53.794
+      },
+      {
+        "title": "Your turn",
+        "t": 116.855
+      },
+      {
+        "title": "Summary",
+        "t": 170.717
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-5-b:q",
+        "t": 139.167,
+        "prompt": "Zinc reacts with dilute acid, and hydrogen is collected. The total volume is $72\\ \\text{cm}^3$ at $60\\ \\text{s}$ and $93\\ \\text{cm}^3$ at $120\\ \\text{s}$. What is the mean rate between $60\\ \\text{s}$ and $120\\ \\text{s}$?",
+        "choices": [
+          "$0.35\\ \\text{cm}^3\\text{/s}$",
+          "$0.78\\ \\text{cm}^3\\text{/s}$",
+          "$1.55\\ \\text{cm}^3\\text{/s}$",
+          "$1.2\\ \\text{cm}^3\\text{/s}$"
+        ],
+        "answer": 0,
+        "working": "Volume made: $93 - 72 = 21\\ \\text{cm}^3$ in $120 - 60 = 60\\ \\text{s}$. Mean rate $= 21 \\div 60 = 0.35\\ \\text{cm}^3\\text{/s}$."
+      }
+    ]
+  },
+  "c10-4-5-c": {
+    "lessonId": "c10-4-5",
+    "title": "Rates of Reaction, Part 3: Collision Theory",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Collisions",
+        "t": 24.697
+      },
+      {
+        "title": "Concentration and pressure",
+        "t": 62.784
+      },
+      {
+        "title": "Temperature and catalysts",
+        "t": 92.369
+      },
+      {
+        "title": "Five factors",
+        "t": 137.347
+      },
+      {
+        "title": "Your turn",
+        "t": 167.629
+      },
+      {
+        "title": "Summary",
+        "t": 206.514
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-5-c:q",
+        "t": 179.961,
+        "prompt": "Which change makes the particles collide more often **and** makes more of their collisions have at least the activation energy?",
+        "choices": [
+          "Increasing the concentration of a solution",
+          "Adding a catalyst",
+          "Using a powder instead of lumps",
+          "Raising the temperature"
+        ],
+        "answer": 3,
+        "working": "At a higher temperature the particles move faster: they collide more often and harder, so more collisions reach the activation energy."
+      }
+    ]
+  },
+  "c10-4-5-d": {
+    "lessonId": "c10-4-5",
+    "title": "Rates of Reaction, Part 4: Surface Area and Comparing Experiments",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Surface area",
+        "t": 23.197
+      },
+      {
+        "title": "Powder or lumps?",
+        "t": 57.538
+      },
+      {
+        "title": "Hotter particles are not bigger",
+        "t": 96.369
+      },
+      {
+        "title": "Which is fastest?",
+        "t": 120.176
+      },
+      {
+        "title": "Your turn",
+        "t": 169.696
+      },
+      {
+        "title": "Summary",
+        "t": 204.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-4-5-d:q",
+        "t": 181.957,
+        "prompt": "Four experiments use the same mass of marble and the same volume of hydrochloric acid. Which has the fastest rate at the start?",
+        "choices": [
+          "lumps, $2.0\\ \\text{mol/L}$ acid, $40^\\circ\\text{C}$",
+          "powder, $2.0\\ \\text{mol/L}$ acid, $40^\\circ\\text{C}$",
+          "powder, $1.0\\ \\text{mol/L}$ acid, $40^\\circ\\text{C}$",
+          "powder, $2.0\\ \\text{mol/L}$ acid, $20^\\circ\\text{C}$"
+        ],
+        "answer": 1,
+        "working": "Choice B is at least as good as every other experiment on every factor: powder, the higher concentration and the higher temperature."
+      }
+    ]
+  },
+  "c10-5-1": {
+    "lessonId": "c10-5-1",
+    "title": "The Mole and Molar Mass, Part 1: Counting with the Mole",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting in bundles",
+        "t": 34.224
+      },
+      {
+        "title": "Atoms, molecules and formula units",
+        "t": 78.513
+      },
+      {
+        "title": "Moles to particles",
+        "t": 115.227
+      },
+      {
+        "title": "Moles to molecules",
+        "t": 149.895
+      },
+      {
+        "title": "Your turn",
+        "t": 204.407
+      },
+      {
+        "title": "Summary",
+        "t": 236.486
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-1:q",
+        "t": 210.964,
+        "prompt": "How many atoms are in $3.0\\ \\text{mol}$ of iron, $\\ce{Fe}$? One mole holds $6.02 \\times 10^{23}$ particles.",
+        "choices": [
+          "$2.01 \\times 10^{23}$",
+          "$1.81 \\times 10^{24}$",
+          "$1.81 \\times 10^{23}$",
+          "$9.02 \\times 10^{23}$"
+        ],
+        "answer": 1,
+        "working": "$N = 3.0 \\times 6.02 \\times 10^{23} = 18.06 \\times 10^{23} = 1.806 \\times 10^{24}$, which is $1.81 \\times 10^{24}$ atoms to three significant figures."
+      }
+    ]
+  },
+  "c10-5-1-b": {
+    "lessonId": "c10-5-1",
+    "title": "The Mole and Molar Mass, Part 2: Particles to Moles, Atoms in Molecules",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Particles to moles",
+        "t": 19.099
+      },
+      {
+        "title": "On a calculator",
+        "t": 61.359
+      },
+      {
+        "title": "Atoms inside molecules",
+        "t": 95.753
+      },
+      {
+        "title": "Hydrogen atoms in water",
+        "t": 124.261
+      },
+      {
+        "title": "Molecules or atoms?",
+        "t": 168.475
+      },
+      {
+        "title": "Your turn",
+        "t": 202.437
+      },
+      {
+        "title": "Summary",
+        "t": 238.437
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-1-b:q",
+        "t": 213.094,
+        "prompt": "How many atoms in total are in $0.5\\ \\text{mol}$ of carbon dioxide, $\\ce{CO2}$? One mole holds $6.02 \\times 10^{23}$ particles.",
+        "choices": [
+          "$3.01 \\times 10^{23}$",
+          "$6.02 \\times 10^{23}$",
+          "$1.81 \\times 10^{24}$",
+          "$9.03 \\times 10^{23}$"
+        ],
+        "answer": 3,
+        "working": "Each $\\ce{CO2}$ molecule has 1 C and 2 O: 3 atoms. Moles of atoms: $3 \\times 0.5 = 1.5\\ \\text{mol}$, so $N = 1.5 \\times 6.02 \\times 10^{23} = 9.03 \\times 10^{23}$ atoms."
+      }
+    ]
+  },
+  "c10-5-1-c": {
+    "lessonId": "c10-5-1",
+    "title": "The Mole and Molar Mass, Part 3: Molar Mass",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Molar mass",
+        "t": 20.667
+      },
+      {
+        "title": "Water",
+        "t": 76.283
+      },
+      {
+        "title": "Carbon dioxide",
+        "t": 112.204
+      },
+      {
+        "title": "Sulfuric acid",
+        "t": 141.943
+      },
+      {
+        "title": "Your turn",
+        "t": 182.583
+      },
+      {
+        "title": "Summary",
+        "t": 221.092
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-1-c:q",
+        "t": 192.248,
+        "prompt": "What is the molar mass of ammonia, $\\ce{NH3}$, to the nearest tenth? Use N $14.0\\ \\text{g/mol}$ and H $1.0\\ \\text{g/mol}$.",
+        "choices": [
+          "$17.0\\ \\text{g/mol}$",
+          "$15.0\\ \\text{g/mol}$",
+          "$43.0\\ \\text{g/mol}$",
+          "$45.0\\ \\text{g/mol}$"
+        ],
+        "answer": 0,
+        "working": "One molecule has 1 N and 3 H: $M = 14.0 + 3 \\times 1.0 = 14.0 + 3.0 = 17.0\\ \\text{g/mol}$."
+      }
+    ]
+  },
+  "c10-5-1-d": {
+    "lessonId": "c10-5-1",
+    "title": "The Mole and Molar Mass, Part 4: Brackets in Formulas",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading a bracket",
+        "t": 20.88
+      },
+      {
+        "title": "Calcium hydroxide",
+        "t": 59.116
+      },
+      {
+        "title": "Ammonium sulfate",
+        "t": 100.795
+      },
+      {
+        "title": "The bracket multiplies everything",
+        "t": 147.523
+      },
+      {
+        "title": "Your turn",
+        "t": 180.952
+      },
+      {
+        "title": "Summary",
+        "t": 218.834
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-1-d:q",
+        "t": 191.055,
+        "prompt": "What is the molar mass of magnesium hydroxide, $\\ce{Mg(OH)2}$, to the nearest tenth? Use Mg $24.3\\ \\text{g/mol}$, O $16.0\\ \\text{g/mol}$ and H $1.0\\ \\text{g/mol}$.",
+        "choices": [
+          "$41.3\\ \\text{g/mol}$",
+          "$42.3\\ \\text{g/mol}$",
+          "$58.3\\ \\text{g/mol}$",
+          "$82.6\\ \\text{g/mol}$"
+        ],
+        "answer": 2,
+        "working": "One formula unit has 1 Mg, $2 \\times 1 = 2$ O and $2 \\times 1 = 2$ H: $M = 24.3 + 2 \\times 16.0 + 2 \\times 1.0 = 24.3 + 32.0 + 2.0 = 58.3\\ \\text{g/mol}$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
