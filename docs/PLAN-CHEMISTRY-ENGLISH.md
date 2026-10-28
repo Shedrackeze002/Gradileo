@@ -28,7 +28,7 @@ and 30, 2007, updated 2014), named for learners everywhere by topic, as the math
 | C. Matter as Solutions, Acids and Bases | Solutions and dissociation equations · Percent, ppm and molar concentration · Preparing and diluting solutions · Solubility and solubility curves · Acids, bases and the Arrhenius theory · pH, pOH, [H₃O⁺] and [OH⁻] · Strong and weak acids and bases, indicators · Neutralization |
 | D. Quantitative Relationships in Chemical Changes | Balancing equations and reaction types · Net ionic equations · The mole and molar mass · Gravimetric stoichiometry · Gas and solution stoichiometry · Limiting and excess reagents, percent yield · Titration and standard solutions · Titration curves |
 
-### Chemistry 30 (Grade 12), about 30 lessons
+### Chemistry 30 (Grade 12), about 30 lessons (built 28 October 2026 as Grade 12 Chemistry: 30 lessons, 57 skills)
 
 | Unit | Lessons |
 |---|---|

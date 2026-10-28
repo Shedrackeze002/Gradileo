@@ -664,8 +664,21 @@ items ship or decisions change.
      and Svante Arrhenius wrongly; each is respelled for the voice in `speechText`, and the videos
      with them were made again. Grade 10 is cleared from the session (`free-disk.sh` now handles
      chemistry courses). They go on YouTube after the maths.
-   - Next: Grade 12 Chemistry, then English 10, 20 and 30. The privacy policy and terms still
-     describe Gradileo as a mathematics platform; their wording is the owner's to change.
+   - Built (28 October 2026): **Grade 12 Chemistry** (`chem-30`), four units, 30 lessons and 57
+     skills: thermochemical changes (calorimetry, molar enthalpy, enthalpy diagrams, Hess's law,
+     enthalpies of formation, activation energy and catalysts), electrochemical changes (oxidation
+     numbers, predicting and balancing redox reactions, redox titrations, voltaic and electrolytic
+     cells, cell potentials, Faraday's law), organic compounds (drawing and naming hydrocarbons,
+     isomers, functional groups, addition, substitution and elimination, esters, polymers, fuels)
+     and equilibrium with acid–base systems (Kc and ICE tables, Le Châtelier, Brønsted–Lowry, Ka
+     and Kb, weak-acid pH, buffers, titration curves). New in the chemistry engine:
+     `engine/chem/redox.ts` (oxidation numbers, half-reaction balancing, a table of reduction
+     potentials) and `engine/chem/organic.ts` (one model of a carbon skeleton gives its IUPAC name
+     and formulas, so names and structures always agree). Grade 12 students are now recommended it,
+     with a check on Grade 11 skills first.
+   - Next: the Grade 12 Chemistry explainer videos, then English 10, 20 and 30. The privacy policy
+     and terms still describe Gradileo as a mathematics platform; their wording is the owner's to
+     change.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
      longer set in Alberta (about 1,000 mentions: towns, lakes, parks, teams, Alberta's GST). Town
      lists and real distance, daylight and temperature data now belong to invented towns (Riverton,

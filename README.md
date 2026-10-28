@@ -5,7 +5,7 @@ present them in class, and assign work in one click. Students learn, practise an
 feedback. An AI teaching assistant reads every answer and suggests the next step for each
 student and for the class.
 
-It covers **mathematics from Grade 5 to Grade 12**, one course a grade to Grade 9, then streams: Math 10, Workplace and Essentials in Grade 10; Pre-calculus, Foundations, Workplace and Essentials in Grade 11; and Pre-calculus, Foundations, Workplace and Calculus in Grade 12, and chemistry in **Grade 10** (5 units, 23 lessons: matter and mixtures, atoms and the periodic table, bonding and names, reactions, and moles, acids and bases) and **Grade 11** (4 units, 31 lessons: bonding, gases, solutions, acids and bases, and stoichiometry). Courses are named by grade and stream so they make sense to learners anywhere; their outcomes were first drawn from Alberta's programs of studies.
+It covers **mathematics from Grade 5 to Grade 12**, one course a grade to Grade 9, then streams: Math 10, Workplace and Essentials in Grade 10; Pre-calculus, Foundations, Workplace and Essentials in Grade 11; and Pre-calculus, Foundations, Workplace and Calculus in Grade 12, and chemistry in **Grade 10** (5 units, 23 lessons: matter and mixtures, atoms and the periodic table, bonding and names, reactions, and moles, acids and bases) **Grade 11** (4 units, 31 lessons: bonding, gases, solutions, acids and bases, and stoichiometry) and **Grade 12** (4 units, 30 lessons: thermochemistry, electrochemistry, organic compounds, and equilibrium with acids and bases). Courses are named by grade and stream so they make sense to learners anywhere; their outcomes were first drawn from Alberta's programs of studies.
 
 ## What is inside
 

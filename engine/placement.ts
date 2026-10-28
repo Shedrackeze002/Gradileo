@@ -55,6 +55,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'math-31': 'math-30-1',
   'chem-10': null,
   'chem-20': 'chem-10',
+  'chem-30': 'chem-20',
 };
 
 const CHECK = 'Programs set their own entrance requirements, so check the ones you are interested in.';
@@ -71,9 +72,14 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
       if (g < 10) reasons.push('It is usually taken in Grade 10, so a few ideas will be new; it starts from what matter is made of.');
       return rec('chem-10', reasons, [{ courseId: 'chem-20', why: 'If you have already studied atoms, bonding and balancing equations.' }]);
     }
-    const reasons = ['Grade 11 Chemistry covers chemical bonding and the shapes of molecules, gases, solutions, acids and bases, and stoichiometry.'];
-    if (g >= 12) reasons.push('Grade 12 Chemistry is not on Gradileo yet, so this is the most advanced chemistry course here.');
-    return rec('chem-20', reasons, [{ courseId: 'chem-10', why: 'Start here if chemistry is new to you.' }]);
+    if (g >= 12) {
+      return rec('chem-30', ['Grade 12 Chemistry covers thermochemistry, electrochemistry, organic compounds and their reactions, and equilibrium with acids and bases.'], [
+        { courseId: 'chem-20', why: 'If you have not yet studied bonding, gases, solutions and stoichiometry.' },
+      ]);
+    }
+    return rec('chem-20', ['Grade 11 Chemistry covers chemical bonding and the shapes of molecules, gases, solutions, acids and bases, and stoichiometry.'], [
+      { courseId: 'chem-10', why: 'Start here if chemistry is new to you.' },
+    ]);
   }
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));
