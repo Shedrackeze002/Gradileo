@@ -8231,6 +8231,53 @@
       }
     ]
   },
+  "c20-3-5-b": {
+    "lessonId": "c20-3-5",
+    "title": "Dilution, Part 2: Stock Solution and Water",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How much stock solution",
+        "t": 24.745
+      },
+      {
+        "title": "How much water",
+        "t": 76.269
+      },
+      {
+        "title": "The final volume is not the water",
+        "t": 132.694
+      },
+      {
+        "title": "Your turn",
+        "t": 155.458
+      },
+      {
+        "title": "Summary",
+        "t": 198.157
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-5-b:q",
+        "t": 173.399,
+        "prompt": "A student makes $250\\ \\text{mL}$ of a $0.400\\ \\text{mol/L}$ solution from a $2.00\\ \\text{mol/L}$ stock solution. What volume of water is added? When a solution is diluted, $c_1V_1 = c_2V_2$.",
+        "choices": [
+          "$50.0\\ \\text{mL}$",
+          "$250\\ \\text{mL}$",
+          "$1250\\ \\text{mL}$",
+          "$200\\ \\text{mL}$"
+        ],
+        "answer": 3,
+        "working": "$V_1 = \\dfrac{0.400 \\times 250}{2.00} = 50.0\\ \\text{mL}$ of stock solution, so the water is $250 - 50.0 = 200\\ \\text{mL}$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
