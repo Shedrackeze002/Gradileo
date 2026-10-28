@@ -49,6 +49,7 @@ import type {
   Submission,
 } from '../types.ts';
 import {
+  assignmentChanges,
   fromAssignment,
   toAdminClass,
   toAdminUser,
@@ -591,15 +592,14 @@ export class SupabaseApi implements DataApi {
   }
 
   async saveAssignment(input: Partial<Assignment> & { classId: string }) {
-    const row = fromAssignment(input);
     if (input.id) {
-      const { data, error } = await this.client.from('assignments').update(row).eq('id', input.id).select().single();
+      const { data, error } = await this.client.from('assignments').update(assignmentChanges(input)).eq('id', input.id).select().single();
       fail(error);
       return toAssignment(data);
     }
     const { data, error } = await this.client
       .from('assignments')
-      .insert({ ...row, title: input.title?.trim() || 'Untitled assignment', status: 'draft', content: input.content ?? { sections: [], custom: [] } })
+      .insert({ ...fromAssignment(input), title: input.title?.trim() || 'Untitled assignment', status: 'draft', content: input.content ?? { sections: [], custom: [] } })
       .select()
       .single();
     fail(error);

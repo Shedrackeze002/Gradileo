@@ -50,12 +50,17 @@ describe('speechText', () => {
     expect(speechText("Aisha paints for three hours; Aisha's rate is one third.")).toBe("Ayesha paints for three hours; Ayesha's rate is one third.");
     expect(speechText("Swap Ava and Kwame; Kwame's job changes.")).toBe("Swap Ava and Kwahmay; Kwahmay's job changes.");
     expect(speechText('Jun jumps farther than Junaid in June.')).toBe('Joon jumps farther than Junaid in June.');
+    expect(speechText('Amedeo Avogadro was an Italian scientist.')).toBe('Ama-day-o Avogadro was an Italian scientist.');
     expect(speechText('EI: 0.02 times 960. CPP, EI and tax, not EIS.')).toBe('E I: 0.02 times 960. CPP, E I and tax, not EIS.');
     expect(speechText('An eight-by-twelve print and a two-by-four.')).toBe('An eight by twelve print and a two by four.');
     expect(speechText('It bisects the chord. Bisect it with the perpendicular bisector.')).toBe('It bi-sects the chord. Bi-sect it with the perpendicular bi-sector.');
     expect(speechText('Both lengths together. Lengths add, and one length stays.')).toBe('Both lenkths together. Lenkths add, and one length stays.');
     expect(speechText('Eighty-one and eighty-two, but twenty-one and eighty.')).toBe('Eighty one and eighty two, but twenty-one and eighty.');
     expect(speechText('Two x-tiles, one x-tile and three unit tiles.')).toBe('Two x tiles, one x tile and three unit tiles.');
+    expect(speechText('Lead two nitrate gives lead two iodide; 0.0021 g of lead, such as lead or nitrate, tin and lead.')).toBe(
+      'Led two nitrate gives led two iodide; 0.0021 g of led, such as led or nitrate, tin and led.',
+    );
+    expect(speechText('These steps lead to the answer, trails lead directly there, and a big lead.')).toBe('These steps lead to the answer, trails lead directly there, and a big lead.');
   });
 });
 
