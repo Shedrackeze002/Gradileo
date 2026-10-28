@@ -30,7 +30,7 @@ import path from 'node:path';
 import type { CourseMeta, UnitMeta } from '../../engine/types.ts';
 import { FIRST_NAME, MANIFEST, scriptOf, youtubeFieldsFor } from '../lib/catalog.ts';
 import { download, find, place, unitVideos, videoFolder, videoIds } from '../lib/google.ts';
-import { loadUnfinished, saveUnfinished, type Missing } from '../lib/unfinished.ts';
+import { loadUnfinished, loadUploaded, saveUnfinished, saveUploaded, type Missing } from '../lib/unfinished.ts';
 import {
   addToPlaylist,
   createPlaylist,
@@ -207,6 +207,24 @@ try {
   process.exit(0);
 }
 
+// YouTube's list of the channel's uploads can leave a video out, so the videos uploaded earlier are
+// also kept in a list of their own: one in it counts as on YouTube, and is never uploaded again.
+const uploaded = await loadUploaded();
+let uploadedChanged = false;
+let unlisted = 0;
+for (const [id, youtubeId] of uploaded) {
+  if (onChannel.has(id)) continue;
+  onChannel.set(id, youtubeId);
+  scriptOfYoutube.set(youtubeId, id);
+  unlisted++;
+}
+for (const [id, youtubeId] of onChannel) {
+  if (uploaded.has(id)) continue;
+  uploaded.set(id, youtubeId);
+  uploadedChanged = true;
+}
+if (unlisted) console.log(`${unlisted} uploaded earlier but missing from YouTube's list of the channel's videos; counted as on YouTube`);
+
 let done = 0;
 let failed = 0;
 const ids = videoIds(targets, (v) => v in MANIFEST);
@@ -257,6 +275,9 @@ for (const id of ids) {
     const f = await files(id);
     const video = await insertVideo(f.mp4, text, { privacy, madeForKids: kids });
     scriptOfYoutube.set(video.id, id);
+    // Recorded at once, so a run that fails later still never uploads it again.
+    uploaded.set(id, video.id);
+    await saveUploaded(uploaded);
     // The thumbnail and captions spend the day's API quota; what they miss is finished on a later run.
     const r = await finish(id, video.id, ['thumbnail', 'captions'], f);
     setUnfinished(id, r.left);
@@ -288,6 +309,7 @@ for (const id of ids) {
   }
 }
 if (unfinishedChanged) await saveUnfinished(unfinished);
+if (uploadedChanged && !dryRun) await saveUploaded(uploaded);
 
 for (const { list, unit } of touched.values()) {
   const order = unitVideos(unit);
