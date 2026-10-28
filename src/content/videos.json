@@ -10540,6 +10540,206 @@
       }
     ]
   },
+  "c30-1-1": {
+    "lessonId": "c30-1-1",
+    "title": "Energy in Chemical Systems, Part 1: Systems and Surroundings",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The system and the surroundings",
+        "t": 30.913
+      },
+      {
+        "title": "Open, closed and isolated",
+        "t": 78.015
+      },
+      {
+        "title": "Naming the parts",
+        "t": 123.077
+      },
+      {
+        "title": "Your turn",
+        "t": 163.28
+      },
+      {
+        "title": "Summary",
+        "t": 197.69
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-1:q",
+        "t": 175.269,
+        "prompt": "Ammonium nitrate dissolves in the water of an instant cold pack. Which of these is part of the **chemical system**?",
+        "choices": [
+          "The water in the pack",
+          "The ammonium nitrate",
+          "The plastic bag of the pack",
+          "The injured wrist the pack is held against"
+        ],
+        "answer": 1,
+        "working": "The chemical system is the substance that changes: the ammonium nitrate (and the ions it releases). The water only holds the dissolved ions, so it belongs to the surroundings, with the bag and the wrist."
+      }
+    ]
+  },
+  "c30-1-1-b": {
+    "lessonId": "c30-1-1",
+    "title": "Energy in Chemical Systems, Part 2: Kinetic and Potential Energy",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Kinetic energy",
+        "t": 20.555
+      },
+      {
+        "title": "Potential energy",
+        "t": 51.615
+      },
+      {
+        "title": "Enthalpy",
+        "t": 98.214
+      },
+      {
+        "title": "Energy in a stove",
+        "t": 139.396
+      },
+      {
+        "title": "Your turn",
+        "t": 178.122
+      },
+      {
+        "title": "Summary",
+        "t": 213.542
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-1-b:q",
+        "t": 190.5,
+        "prompt": "The water in a calorimeter warms from $20.0^\\circ\\text{C}$ to $26.5^\\circ\\text{C}$. What has increased?",
+        "choices": [
+          "The potential energy stored in the bonds of the water molecules",
+          "The number of water molecules",
+          "The strength of the bonds inside each water molecule",
+          "The average kinetic energy of the water molecules"
+        ],
+        "answer": 3,
+        "working": "Temperature measures the average kinetic energy of the particles, so a rise in temperature means the water molecules are moving faster."
+      }
+    ]
+  },
+  "c30-1-1-c": {
+    "lessonId": "c30-1-1",
+    "title": "Energy in Chemical Systems, Part 3: Exothermic and Endothermic Changes",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two directions",
+        "t": 22.71
+      },
+      {
+        "title": "Reading the signs",
+        "t": 57.023
+      },
+      {
+        "title": "Reading the surroundings",
+        "t": 111.811
+      },
+      {
+        "title": "Cold does not flow",
+        "t": 151.378
+      },
+      {
+        "title": "Your turn",
+        "t": 176.049
+      },
+      {
+        "title": "Summary",
+        "t": 210.177
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-1-c:q",
+        "t": 186.393,
+        "prompt": "Ethanol evaporates from the skin, and the skin feels cool. How is the change classified?",
+        "choices": [
+          "Endothermic, with $\\Delta H$ positive",
+          "Endothermic, with $\\Delta H$ negative",
+          "Exothermic, with $\\Delta H$ negative",
+          "Exothermic, with $\\Delta H$ positive"
+        ],
+        "answer": 0,
+        "working": "Evaporating absorbs energy from the skin to separate the ethanol molecules. Energy flows into the system, so the change is endothermic and $\\Delta H$ is positive."
+      }
+    ]
+  },
+  "c30-1-1-d": {
+    "lessonId": "c30-1-1",
+    "title": "Energy in Chemical Systems, Part 4: Bonds Broken and Bonds Formed",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Breaking and forming",
+        "t": 19.062
+      },
+      {
+        "title": "Hydrogen and chlorine",
+        "t": 62.96
+      },
+      {
+        "title": "Making ammonia",
+        "t": 141.71
+      },
+      {
+        "title": "Breaking bonds never releases energy",
+        "t": 190.718
+      },
+      {
+        "title": "Your turn",
+        "t": 215.962
+      },
+      {
+        "title": "Summary",
+        "t": 255.548
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-1-d:q",
+        "t": 228.28,
+        "prompt": "Use the bond energies $\\ce{H-H}$ $436$, $\\ce{Br-Br}$ $193$ and $\\ce{H-Br}$ $366\\ \\text{kJ/mol}$ to estimate $\\Delta_r H$ for $\\ce{H2(g) + Br2(g) -> 2HBr(g)}$.",
+        "choices": [
+          "$+103\\ \\text{kJ}$",
+          "$+263\\ \\text{kJ}$",
+          "$-103\\ \\text{kJ}$",
+          "$-732\\ \\text{kJ}$"
+        ],
+        "answer": 2,
+        "working": "Bonds broken: $436 + 193 = 629\\ \\text{kJ}$. Bonds formed: $2(366) = 732\\ \\text{kJ}$. $\\Delta_r H = 629 - 732 = -103\\ \\text{kJ}$."
+      }
+    ]
+  },
   "c30-3-1": {
     "lessonId": "c30-3-1",
     "title": "Organic Compounds and How They Are Drawn, Part 1: What Makes a Compound Organic",
@@ -12560,6 +12760,861 @@
         ],
         "answer": 3,
         "working": "$\\ce{NH3}$ gains a proton and becomes $\\ce{NH4+}$, so it is the base. $\\ce{HNO2}$ loses the proton and becomes $\\ce{NO2-}$, so it is the acid."
+      }
+    ]
+  },
+  "c30-4-4-b": {
+    "lessonId": "c30-4-4",
+    "title": "Brønsted–Lowry Acids and Bases, Part 2: Conjugate Acid–Base Pairs",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Conjugate pairs",
+        "t": 18.944
+      },
+      {
+        "title": "Labelling a reaction",
+        "t": 74.443
+      },
+      {
+        "title": "The white smoke",
+        "t": 120.737
+      },
+      {
+        "title": "Your turn",
+        "t": 164.854
+      },
+      {
+        "title": "Summary",
+        "t": 199.828
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-4-b:q",
+        "t": 177.316,
+        "prompt": "Which is a conjugate acid–base pair in the reaction $\\ce{HSO4^-(aq) + CH3COO^-(aq) <=> SO4^2-(aq) + CH3COOH(aq)}$?",
+        "choices": [
+          "$\\ce{HSO4-}$ and $\\ce{CH3COO-}$",
+          "$\\ce{SO4^2-}$ and $\\ce{CH3COOH}$",
+          "$\\ce{HSO4-}$ and $\\ce{SO4^2-}$",
+          "$\\ce{HSO4-}$ and $\\ce{CH3COOH}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{HSO4-}$ gives a proton and becomes $\\ce{SO4^2-}$: one pair. $\\ce{CH3COO-}$ takes the proton and becomes $\\ce{CH3COOH}$: the other pair."
+      }
+    ]
+  },
+  "c30-4-4-c": {
+    "lessonId": "c30-4-4",
+    "title": "Brønsted–Lowry Acids and Bases, Part 3: Writing Conjugates",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Conjugate bases",
+        "t": 22.502
+      },
+      {
+        "title": "Conjugate acids",
+        "t": 56.607
+      },
+      {
+        "title": "A table of conjugates",
+        "t": 84.641
+      },
+      {
+        "title": "Two conjugates",
+        "t": 124.396
+      },
+      {
+        "title": "Your turn",
+        "t": 159.572
+      },
+      {
+        "title": "Summary",
+        "t": 193.699
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-4-c:q",
+        "t": 169.285,
+        "prompt": "What is the conjugate acid of the sulfate ion, $\\ce{SO4^2-}$?",
+        "choices": [
+          "$\\ce{HSO4-}$",
+          "$\\ce{H2SO4}$",
+          "$\\ce{HSO4^2-}$",
+          "$\\ce{SO4-}$"
+        ],
+        "answer": 0,
+        "working": "Add one H and raise the charge by 1: $\\ce{SO4^2-} + \\ce{H+} \\to \\ce{HSO4-}$."
+      }
+    ]
+  },
+  "c30-4-4-d": {
+    "lessonId": "c30-4-4",
+    "title": "Brønsted–Lowry Acids and Bases, Part 4: Amphiprotic Particles",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Water goes both ways",
+        "t": 20.951
+      },
+      {
+        "title": "Two conjugates",
+        "t": 57.736
+      },
+      {
+        "title": "One ion, two roles",
+        "t": 97.891
+      },
+      {
+        "title": "Baking soda",
+        "t": 130.392
+      },
+      {
+        "title": "Your turn",
+        "t": 151.621
+      },
+      {
+        "title": "Summary",
+        "t": 191.563
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-4-d:q",
+        "t": 165.08,
+        "prompt": "The hydrogen sulfite ion, $\\ce{HSO3-}$, is amphiprotic. What are its conjugate acid and its conjugate base?",
+        "choices": [
+          "Conjugate acid $\\ce{SO3^2-}$; conjugate base $\\ce{H2SO3}$",
+          "Conjugate acid $\\ce{H2SO3}$; conjugate base $\\ce{SO3^2-}$",
+          "Conjugate acid $\\ce{H2SO3-}$; conjugate base $\\ce{SO3-}$",
+          "Conjugate acid $\\ce{H3O+}$; conjugate base $\\ce{OH-}$"
+        ],
+        "answer": 1,
+        "working": "Accepting a proton (add H, raise the charge by 1) gives $\\ce{H2SO3}$. Donating one (remove H, lower the charge by 1) gives $\\ce{SO3^2-}$."
+      }
+    ]
+  },
+  "c30-4-5": {
+    "lessonId": "c30-4-5",
+    "title": "Predicting Acid–Base Reactions, Part 1: Reading the Table",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table of acid strengths",
+        "t": 32.545
+      },
+      {
+        "title": "The two ends",
+        "t": 90.957
+      },
+      {
+        "title": "Comparing strengths",
+        "t": 127.542
+      },
+      {
+        "title": "Your turn",
+        "t": 170.526
+      },
+      {
+        "title": "Summary",
+        "t": 200.883
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-5:q",
+        "t": 180.456,
+        "prompt": "Use these $K_a$ values at $25^\\circ\\text{C}$: $\\ce{HNO2}$, $5.6 \\times 10^{-4}$; $\\ce{CH3COOH}$, $1.8 \\times 10^{-5}$; $\\ce{HClO}$, $4.0 \\times 10^{-8}$; $\\ce{NH4+}$, $5.6 \\times 10^{-10}$. Which of their conjugate bases is the **weakest** base?",
+        "choices": [
+          "$\\ce{NH3}$",
+          "$\\ce{ClO-}$",
+          "$\\ce{NO2-}$",
+          "$\\ce{CH3COO-}$"
+        ],
+        "answer": 2,
+        "working": "The weakest base is the conjugate base of the strongest acid, the one with the largest $K_a$: $\\ce{HNO2}$, with $K_a = 5.6 \\times 10^{-4}$. Its conjugate base is $\\ce{NO2-}$."
+      }
+    ]
+  },
+  "c30-4-5-b": {
+    "lessonId": "c30-4-5",
+    "title": "Predicting Acid–Base Reactions, Part 2: The Strongest Acid and Base",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Listing the particles",
+        "t": 18.695
+      },
+      {
+        "title": "Vinegar and baking soda",
+        "t": 62.468
+      },
+      {
+        "title": "Two common slips",
+        "t": 124.462
+      },
+      {
+        "title": "Your turn",
+        "t": 151.565
+      },
+      {
+        "title": "Summary",
+        "t": 188.258
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-5-b:q",
+        "t": 162.934,
+        "prompt": "Solutions of hydrochloric acid and ammonia, $\\ce{NH3}$, are mixed. List the particles in the two solutions. Which of them is the strongest acid?",
+        "choices": [
+          "$\\ce{HCl}$",
+          "$\\ce{NH4+}$",
+          "$\\ce{H2O}$",
+          "$\\ce{H3O+}$"
+        ],
+        "answer": 3,
+        "working": "Hydrochloric acid ionises completely, so the particles are $\\ce{H3O+}$, $\\ce{Cl-}$, $\\ce{NH3}$ and $\\ce{H2O}$. The strongest acid among them is $\\ce{H3O+}$; no $\\ce{HCl}$ molecules are left."
+      }
+    ]
+  },
+  "c30-4-5-c": {
+    "lessonId": "c30-4-5",
+    "title": "Predicting Acid–Base Reactions, Part 3: Which Side Is Favoured?",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Writing the reaction",
+        "t": 16.287
+      },
+      {
+        "title": "Downhill",
+        "t": 46.356
+      },
+      {
+        "title": "A reaction that hardly goes",
+        "t": 88.397
+      },
+      {
+        "title": "A strong acid",
+        "t": 130.467
+      },
+      {
+        "title": "Your turn",
+        "t": 170.358
+      },
+      {
+        "title": "Summary",
+        "t": 201.953
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-5-c:q",
+        "t": 180.369,
+        "prompt": "Hydrocyanic acid and sodium acetate react: $\\ce{HCN + CH3COO- <=> CN- + CH3COOH}$. At $25^\\circ\\text{C}$, $K_a$ is $6.2 \\times 10^{-10}$ for $\\ce{HCN}$ and $1.8 \\times 10^{-5}$ for $\\ce{CH3COOH}$. Which side is favoured?",
+        "choices": [
+          "Products: $\\ce{HCN}$ is the stronger acid.",
+          "Reactants: $\\ce{CH3COOH}$ is the stronger acid.",
+          "Products: $\\ce{CH3COOH}$ is the stronger acid.",
+          "Reactants: $\\ce{HCN}$ is the stronger acid."
+        ],
+        "answer": 1,
+        "working": "$\\ce{CH3COOH}$, formed on the right, is a stronger acid than $\\ce{HCN}$ on the left, so it gives its proton back: reactants are favoured."
+      }
+    ]
+  },
+  "c30-4-6": {
+    "lessonId": "c30-4-6",
+    "title": "Ka and Kb, Part 1: The Ionisation Constants",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The acid ionisation constant",
+        "t": 36.207
+      },
+      {
+        "title": "Nitrous acid",
+        "t": 83.693
+      },
+      {
+        "title": "The base ionisation constant",
+        "t": 107.488
+      },
+      {
+        "title": "Ammonia and cyanide",
+        "t": 145.003
+      },
+      {
+        "title": "Hydroxide, not hydronium",
+        "t": 176.439
+      },
+      {
+        "title": "Your turn",
+        "t": 194.392
+      },
+      {
+        "title": "Summary",
+        "t": 228.653
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-6:q",
+        "t": 204.106,
+        "prompt": "Which is the base ionisation constant expression, $K_b$, for the fluoride ion, $\\ce{F-}$, acting as a base in water?",
+        "choices": [
+          "$K_b = \\dfrac{[\\ce{HF}][\\ce{OH-}]}{[\\ce{F-}]}$",
+          "$K_b = \\dfrac{[\\ce{HF}][\\ce{H3O+}]}{[\\ce{F-}]}$",
+          "$K_b = \\dfrac{[\\ce{F-}]}{[\\ce{HF}][\\ce{OH-}]}$",
+          "$K_b = \\dfrac{[\\ce{HF}][\\ce{OH-}]}{[\\ce{F-}][\\ce{H2O}]}$"
+        ],
+        "answer": 0,
+        "working": "$\\ce{F-(aq) + H2O(l) <=> HF(aq) + OH-(aq)}$. Products over reactants, leaving out liquid water."
+      }
+    ]
+  },
+  "c30-4-6-b": {
+    "lessonId": "c30-4-6",
+    "title": "Ka and Kb, Part 2: The Link Through Water",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ion product of water",
+        "t": 21.383
+      },
+      {
+        "title": "Ka times Kb",
+        "t": 54.629
+      },
+      {
+        "title": "Three conjugate pairs",
+        "t": 85.85
+      },
+      {
+        "title": "The fluoride ion",
+        "t": 111.18
+      },
+      {
+        "title": "The ammonium ion",
+        "t": 140.423
+      },
+      {
+        "title": "Your turn",
+        "t": 163.845
+      },
+      {
+        "title": "Summary",
+        "t": 201.763
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-6-b:q",
+        "t": 176.153,
+        "prompt": "At $25^\\circ\\text{C}$, $K_a$ for nitrous acid, $\\ce{HNO2}$, is $5.6 \\times 10^{-4}$, and $K_w = 1.0 \\times 10^{-14}$. What is $K_b$ for the nitrite ion, $\\ce{NO2-}$?",
+        "choices": [
+          "$5.6 \\times 10^{-18}$",
+          "$5.6 \\times 10^{-4}$",
+          "$1.8 \\times 10^{-11}$",
+          "$1.8 \\times 10^{3}$"
+        ],
+        "answer": 2,
+        "working": "$K_b = \\dfrac{K_w}{K_a} = \\dfrac{1.0 \\times 10^{-14}}{5.6 \\times 10^{-4}} = 1.8 \\times 10^{-11}$"
+      }
+    ]
+  },
+  "c30-4-6-c": {
+    "lessonId": "c30-4-6",
+    "title": "Ka and Kb, Part 3: Comparing Acids and Bases",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Comparing with Ka",
+        "t": 20.305
+      },
+      {
+        "title": "The strongest conjugate base",
+        "t": 48.774
+      },
+      {
+        "title": "pKa",
+        "t": 78.303
+      },
+      {
+        "title": "Amphiprotic ions",
+        "t": 108.785
+      },
+      {
+        "title": "Which Ka?",
+        "t": 149.17
+      },
+      {
+        "title": "Your turn",
+        "t": 163.446
+      },
+      {
+        "title": "Summary",
+        "t": 202.655
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-6-c:q",
+        "t": 174.904,
+        "prompt": "At $25^\\circ\\text{C}$, $K_a$ for $\\ce{H3PO4}$ is $6.9 \\times 10^{-3}$ and $K_a$ for $\\ce{H2PO4-}$ is $6.2 \\times 10^{-8}$; $K_w = 1.0 \\times 10^{-14}$. Is a solution of sodium dihydrogen phosphate, $\\ce{NaH2PO4}$, acidic or basic?",
+        "choices": [
+          "Basic, because its $K_b$ is greater than its $K_a$.",
+          "Basic, because its $K_a$ is greater than its $K_b$.",
+          "Acidic, because its $K_b$ is greater than its $K_a$.",
+          "Acidic, because its $K_a$ is greater than its $K_b$."
+        ],
+        "answer": 3,
+        "working": "As a base, $\\ce{H2PO4-}$ forms $\\ce{H3PO4}$: $K_b = \\dfrac{1.0 \\times 10^{-14}}{6.9 \\times 10^{-3}} = 1.4 \\times 10^{-12}$. Its own $K_a$, $6.2 \\times 10^{-8}$, is larger, so the solution is acidic."
+      }
+    ]
+  },
+  "c30-4-7": {
+    "lessonId": "c30-4-7",
+    "title": "pH of Weak Acids and Bases, Part 1: The pH of a Weak Acid",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Setting up",
+        "t": 34.418
+      },
+      {
+        "title": "The approximation",
+        "t": 76.186
+      },
+      {
+        "title": "Acetic acid",
+        "t": 106.37
+      },
+      {
+        "title": "Your turn",
+        "t": 153.272
+      },
+      {
+        "title": "Summary",
+        "t": 186.584
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-7:q",
+        "t": 165.579,
+        "prompt": "What is the pH of a $0.200\\ \\text{mol/L}$ solution of benzoic acid, $\\ce{C6H5COOH}$, to two decimal places? At $25^\\circ\\text{C}$, $K_a = 6.3 \\times 10^{-5}$. Use the approximation; $\\text{pH} = -\\log[\\ce{H3O+}]$.",
+        "choices": [
+          "$4.90$",
+          "$2.45$",
+          "$0.70$",
+          "$11.55$"
+        ],
+        "answer": 1,
+        "working": "$[\\ce{H3O+}] = \\sqrt{6.3 \\times 10^{-5} \\times 0.200} = 3.55 \\times 10^{-3}\\ \\text{mol/L}$, so $\\text{pH} = -\\log(3.55 \\times 10^{-3}) = 2.45$."
+      }
+    ]
+  },
+  "c30-4-7-b": {
+    "lessonId": "c30-4-7",
+    "title": "pH of Weak Acids and Bases, Part 2: Weak Bases and Salts",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Weak bases",
+        "t": 17.293
+      },
+      {
+        "title": "Ammonia",
+        "t": 45.352
+      },
+      {
+        "title": "Salts",
+        "t": 88.96
+      },
+      {
+        "title": "Sodium acetate",
+        "t": 115.124
+      },
+      {
+        "title": "Your turn",
+        "t": 151.389
+      },
+      {
+        "title": "Summary",
+        "t": 184.823
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-7-b:q",
+        "t": 161.387,
+        "prompt": "What is the pH of a $0.250\\ \\text{mol/L}$ solution of ammonium chloride, $\\ce{NH4Cl}$, to two decimal places? At $25^\\circ\\text{C}$, $K_b$ for ammonia is $1.8 \\times 10^{-5}$ and $K_w = 1.0 \\times 10^{-14}$. Use the approximation.",
+        "choices": [
+          "$4.93$",
+          "$9.07$",
+          "$2.67$",
+          "$11.33$"
+        ],
+        "answer": 0,
+        "working": "The acid is $\\ce{NH4+}$: $K_a = \\dfrac{1.0 \\times 10^{-14}}{1.8 \\times 10^{-5}} = 5.56 \\times 10^{-10}$. $[\\ce{H3O+}] = \\sqrt{5.56 \\times 10^{-10} \\times 0.250} = 1.18 \\times 10^{-5}\\ \\text{mol/L}$, so $\\text{pH} = 4.93$."
+      }
+    ]
+  },
+  "c30-4-7-c": {
+    "lessonId": "c30-4-7",
+    "title": "pH of Weak Acids and Bases, Part 3: When the Approximation Fails",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Too much ionises",
+        "t": 16.968
+      },
+      {
+        "title": "The quadratic",
+        "t": 57.125
+      },
+      {
+        "title": "Hydrofluoric acid",
+        "t": 83.133
+      },
+      {
+        "title": "Your turn",
+        "t": 134.365
+      },
+      {
+        "title": "Summary",
+        "t": 178.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-7-c:q",
+        "t": 151.388,
+        "prompt": "What is the pH of a $0.0200\\ \\text{mol/L}$ solution of nitrous acid, $\\ce{HNO2}$, to two decimal places? At $25^\\circ\\text{C}$, $K_a = 5.6 \\times 10^{-4}$. The acid ionises too much for the approximation, so solve the quadratic.",
+        "choices": [
+          "$2.48$",
+          "$1.70$",
+          "$3.25$",
+          "$2.51$"
+        ],
+        "answer": 3,
+        "working": "$x^2 + 5.6 \\times 10^{-4}x - 1.12 \\times 10^{-5} = 0$, so $x = \\dfrac{-5.6 \\times 10^{-4} + \\sqrt{(5.6 \\times 10^{-4})^2 + 4(1.12 \\times 10^{-5})}}{2} = 3.08 \\times 10^{-3}\\ \\text{mol/L}$ and $\\text{pH} = 2.51$."
+      }
+    ]
+  },
+  "c30-4-7-d": {
+    "lessonId": "c30-4-7",
+    "title": "pH of Weak Acids and Bases, Part 4: Ka from a Measured pH",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent ionisation",
+        "t": 19.755
+      },
+      {
+        "title": "Methanoic acid",
+        "t": 46.358
+      },
+      {
+        "title": "Diluting raises it",
+        "t": 99.645
+      },
+      {
+        "title": "Working backwards",
+        "t": 137.472
+      },
+      {
+        "title": "Your turn",
+        "t": 170.375
+      },
+      {
+        "title": "Summary",
+        "t": 211.11
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-7-d:q",
+        "t": 185.213,
+        "prompt": "A $0.0500\\ \\text{mol/L}$ solution of benzoic acid has a pH of 2.76 at $25^\\circ\\text{C}$. What is the percent ionisation of the acid, to three significant figures? Percent ionisation $= \\dfrac{[\\ce{H3O+}]_{eq}}{c_{\\text{initial}}} \\times 100\\%$.",
+        "choices": [
+          "$0.174\\%$",
+          "$3.60\\%$",
+          "$3.48\\%$",
+          "$96.5\\%$"
+        ],
+        "answer": 2,
+        "working": "$[\\ce{H3O+}] = 10^{-2.76} = 1.74 \\times 10^{-3}\\ \\text{mol/L}$, and $\\dfrac{1.74 \\times 10^{-3}}{0.0500} \\times 100\\% = 3.48\\%$."
+      }
+    ]
+  },
+  "c30-4-8": {
+    "lessonId": "c30-4-8",
+    "title": "Buffers and Titration Curves, Part 1: How a Buffer Works",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a buffer is",
+        "t": 32.021
+      },
+      {
+        "title": "Spotting a buffer",
+        "t": 57.735
+      },
+      {
+        "title": "How it works",
+        "t": 96.748
+      },
+      {
+        "title": "Not a wall",
+        "t": 144.412
+      },
+      {
+        "title": "Your turn",
+        "t": 170.376
+      },
+      {
+        "title": "Summary",
+        "t": 201.742
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-8:q",
+        "t": 179.538,
+        "prompt": "Each solution contains equal amounts of the two substances. Which solution is a buffer?",
+        "choices": [
+          "Hydrochloric acid and sodium chloride",
+          "Nitrous acid, $\\ce{HNO2}$, and sodium nitrite, $\\ce{NaNO2}$",
+          "Acetic acid and hydrofluoric acid",
+          "Sodium hydroxide and ammonia"
+        ],
+        "answer": 1,
+        "working": "$\\ce{HNO2}$ is a weak acid, and $\\ce{NO2-}$ is its conjugate base. The other mixtures lack a weak acid with its conjugate base."
+      }
+    ]
+  },
+  "c30-4-8-b": {
+    "lessonId": "c30-4-8",
+    "title": "Buffers and Titration Curves, Part 2: The pH of a Buffer",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The buffer equation",
+        "t": 15.088
+      },
+      {
+        "title": "How well a buffer resists",
+        "t": 42.81
+      },
+      {
+        "title": "Choosing a buffer",
+        "t": 110.532
+      },
+      {
+        "title": "Your turn",
+        "t": 138.643
+      },
+      {
+        "title": "Summary",
+        "t": 179.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-8-b:q",
+        "t": 153.716,
+        "prompt": "A buffer contains $0.20\\ \\text{mol/L}$ acetic acid and $0.10\\ \\text{mol/L}$ sodium acetate. At $25^\\circ\\text{C}$, $K_a = 1.8 \\times 10^{-5}$. What is its pH, to two decimal places? Use $[\\ce{H3O+}] = K_a \\times \\dfrac{[\\text{acid}]}{[\\text{conjugate base}]}$.",
+        "choices": [
+          "$4.44$",
+          "$5.05$",
+          "$4.74$",
+          "$2.72$"
+        ],
+        "answer": 0,
+        "working": "$[\\ce{H3O+}] = 1.8 \\times 10^{-5} \\times \\dfrac{0.20}{0.10} = 3.6 \\times 10^{-5}\\ \\text{mol/L}$, so $\\text{pH} = -\\log(3.6 \\times 10^{-5}) = 4.44$."
+      }
+    ]
+  },
+  "c30-4-8-c": {
+    "lessonId": "c30-4-8",
+    "title": "Buffers and Titration Curves, Part 3: Reading Titration Curves",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A titration curve",
+        "t": 14.859
+      },
+      {
+        "title": "A weak acid",
+        "t": 55.931
+      },
+      {
+        "title": "A weak base",
+        "t": 100.669
+      },
+      {
+        "title": "Reading the curve",
+        "t": 127.801
+      },
+      {
+        "title": "Your turn",
+        "t": 174.892
+      },
+      {
+        "title": "Summary",
+        "t": 215.402
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-8-c:q",
+        "t": 189.599,
+        "prompt": "$25.00\\ \\text{mL}$ of acetic acid is titrated with $0.150\\ \\text{mol/L}$ sodium hydroxide. The steep part of the curve is centred on $20.0\\ \\text{mL}$. One mole of $\\ce{NaOH}$ reacts with one mole of $\\ce{CH3COOH}$. What is the concentration of the acetic acid?",
+        "choices": [
+          "$0.188\\ \\text{mol/L}$",
+          "$0.00300\\ \\text{mol/L}$",
+          "$0.150\\ \\text{mol/L}$",
+          "$0.120\\ \\text{mol/L}$"
+        ],
+        "answer": 3,
+        "working": "$n(\\ce{NaOH}) = 0.150 \\times 0.0200 = 0.00300\\ \\text{mol} = n(\\ce{CH3COOH})$, so $c = \\dfrac{0.00300}{0.02500} = 0.120\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c30-4-8-d": {
+    "lessonId": "c30-4-8",
+    "title": "Buffers and Titration Curves, Part 4: Indicators and Polyprotic Acids",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing an indicator",
+        "t": 17.471
+      },
+      {
+        "title": "One for each titration",
+        "t": 42.87
+      },
+      {
+        "title": "Polyprotic acids",
+        "t": 89.335
+      },
+      {
+        "title": "A polyprotic titration",
+        "t": 140.444
+      },
+      {
+        "title": "Your turn",
+        "t": 185.037
+      },
+      {
+        "title": "Summary",
+        "t": 223.062
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-8-d:q",
+        "t": 199.954,
+        "prompt": "Hydrazine, a weak base, is titrated with hydrochloric acid. The middle of the steep drop is at pH 4.7. Which indicator should be used? Choose the one whose colour-change range includes the pH at the equivalence point.",
+        "choices": [
+          "Methyl orange, 3.2 to 4.4",
+          "Phenolphthalein, 8.2 to 10.0",
+          "Bromocresol green, 3.8 to 5.4",
+          "Bromothymol blue, 6.0 to 7.6"
+        ],
+        "answer": 2,
+        "working": "Bromocresol green changes colour from pH 3.8 to 5.4, which includes 4.7. Methyl orange stops at 4.4, and phenolphthalein would change colour long before the equivalence point."
       }
     ]
   },
