@@ -4721,6 +4721,1116 @@
       }
     ]
   },
+  "c20-1-2-b": {
+    "lessonId": "c20-1-2",
+    "title": "Ionic Compounds, Part 2: Polyatomic Ions",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ions made of several atoms",
+        "t": 21.87
+      },
+      {
+        "title": "Some common ones",
+        "t": 54.285
+      },
+      {
+        "title": "Patterns in the names",
+        "t": 78.309
+      },
+      {
+        "title": "Brackets for more than one",
+        "t": 122.05
+      },
+      {
+        "title": "Your turn",
+        "t": 176.209
+      },
+      {
+        "title": "Summary",
+        "t": 210.923
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-2-b:q",
+        "t": 188.44,
+        "prompt": "Aluminium forms $\\ce{Al^3+}$, and sulfate is $\\ce{SO4^2-}$. What is the formula of aluminium sulfate?",
+        "choices": [
+          "$\\ce{Al2(SO4)3}$",
+          "$\\ce{Al3(SO4)2}$",
+          "$\\ce{AlSO4}$",
+          "$\\ce{Al2S3O12}$"
+        ],
+        "answer": 0,
+        "working": "The LCM of $3$ and $2$ is $6$: two $\\ce{Al^3+}$ give 6+ and three $\\ce{SO4^2-}$ give 6−. More than one sulfate, so it goes in brackets."
+      }
+    ]
+  },
+  "c20-1-2-c": {
+    "lessonId": "c20-1-2",
+    "title": "Ionic Compounds, Part 3: Naming and Roman Numerals",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cation first, then anion",
+        "t": 19.965
+      },
+      {
+        "title": "Metals with more than one charge",
+        "t": 62.453
+      },
+      {
+        "title": "Finding the charge",
+        "t": 106.026
+      },
+      {
+        "title": "A charge, not a count",
+        "t": 144.052
+      },
+      {
+        "title": "Your turn",
+        "t": 177.904
+      },
+      {
+        "title": "Summary",
+        "t": 209.973
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-2-c:q",
+        "t": 188.343,
+        "prompt": "Name the compound $\\ce{SnO2}$. Include the charge of the metal ion as a Roman numeral.",
+        "choices": [
+          "tin oxide",
+          "tin(II) oxide",
+          "tin dioxide",
+          "tin(IV) oxide"
+        ],
+        "answer": 3,
+        "working": "Two $\\ce{O^2-}$ ions give 4−, so the one tin ion is $\\ce{Sn^4+}$: tin(IV) oxide."
+      }
+    ]
+  },
+  "c20-1-2-d": {
+    "lessonId": "c20-1-2",
+    "title": "Ionic Compounds, Part 4: Properties of Ionic Compounds",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "High melting points",
+        "t": 24.263
+      },
+      {
+        "title": "Hard but brittle",
+        "t": 57.98
+      },
+      {
+        "title": "Conducting electricity",
+        "t": 87.372
+      },
+      {
+        "title": "Ionic, molecular or metal?",
+        "t": 110.107
+      },
+      {
+        "title": "Which kind of substance?",
+        "t": 146.063
+      },
+      {
+        "title": "Your turn",
+        "t": 179.446
+      },
+      {
+        "title": "Summary",
+        "t": 210.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-2-d:q",
+        "t": 189.364,
+        "prompt": "Potassium bromide, $\\ce{KBr}$, is an ionic compound. Which property would you expect it to have?",
+        "choices": [
+          "It conducts electricity as a solid.",
+          "It conducts electricity when melted or dissolved in water.",
+          "It is soft and melts at a low temperature.",
+          "It bends instead of shattering when struck."
+        ],
+        "answer": 1,
+        "working": "Its ions are fixed in the solid lattice, but free to move when it is melted or dissolved, so only then does it conduct."
+      }
+    ]
+  },
+  "c20-1-3": {
+    "lessonId": "c20-1-3",
+    "title": "Molecular Compounds and Acids, Part 1: Covalent Bonds and Molecules",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sharing electrons",
+        "t": 31.666
+      },
+      {
+        "title": "Molecules",
+        "t": 68.113
+      },
+      {
+        "title": "Elements made of molecules",
+        "t": 106.977
+      },
+      {
+        "title": "Your turn",
+        "t": 151.663
+      },
+      {
+        "title": "Summary",
+        "t": 185.713
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-3:q",
+        "t": 160.129,
+        "prompt": "Which formula shows the element bromine, as it exists on its own?",
+        "choices": [
+          "$\\ce{Br2}$",
+          "$\\ce{Br}$",
+          "$\\ce{Br-}$",
+          "$\\ce{Br4}$"
+        ],
+        "answer": 0,
+        "working": "Bromine is one of the seven diatomic elements, so the element is made of $\\ce{Br2}$ molecules."
+      }
+    ]
+  },
+  "c20-1-3-b": {
+    "lessonId": "c20-1-3",
+    "title": "Molecular Compounds and Acids, Part 2: Naming with Prefixes",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Prefixes count atoms",
+        "t": 18.49
+      },
+      {
+        "title": "Three rules",
+        "t": 56.649
+      },
+      {
+        "title": "More examples",
+        "t": 106.549
+      },
+      {
+        "title": "Molecular names only",
+        "t": 142.34
+      },
+      {
+        "title": "Your turn",
+        "t": 170.364
+      },
+      {
+        "title": "Summary",
+        "t": 202.921
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-3-b:q",
+        "t": 177.802,
+        "prompt": "Name the molecular compound $\\ce{Cl2O7}$.",
+        "choices": [
+          "chlorine heptaoxide",
+          "dichlorine oxide",
+          "dichlorine heptaoxide",
+          "heptaoxygen dichloride"
+        ],
+        "answer": 2,
+        "working": "Two chlorine atoms: dichlorine. Seven oxygen atoms: heptaoxide."
+      }
+    ]
+  },
+  "c20-1-3-c": {
+    "lessonId": "c20-1-3",
+    "title": "Molecular Compounds and Acids, Part 3: Formulas and Common Names",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From name to formula",
+        "t": 19.672
+      },
+      {
+        "title": "Never simplify",
+        "t": 58.556
+      },
+      {
+        "title": "Common names",
+        "t": 90.214
+      },
+      {
+        "title": "Alcohols and ozone",
+        "t": 132.261
+      },
+      {
+        "title": "Your turn",
+        "t": 161.243
+      },
+      {
+        "title": "Summary",
+        "t": 190.194
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-3-c:q",
+        "t": 168.758,
+        "prompt": "What is the formula of tetraphosphorus trisulfide?",
+        "choices": [
+          "$\\ce{P3S4}$",
+          "$\\ce{P4S3}$",
+          "$\\ce{PS}$",
+          "$\\ce{P4S}$"
+        ],
+        "answer": 1,
+        "working": "Tetra: four phosphorus atoms. Tri: three sulfur atoms. $\\ce{P4S3}$."
+      }
+    ]
+  },
+  "c20-1-3-d": {
+    "lessonId": "c20-1-3",
+    "title": "Molecular Compounds and Acids, Part 4: Naming Acids",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is an acid?",
+        "t": 18.835
+      },
+      {
+        "title": "Classical names",
+        "t": 59.57
+      },
+      {
+        "title": "Two examples",
+        "t": 105.018
+      },
+      {
+        "title": "IUPAC names",
+        "t": 141.548
+      },
+      {
+        "title": "Your turn",
+        "t": 183.733
+      },
+      {
+        "title": "Summary",
+        "t": 218.068
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-3-d:q",
+        "t": 191.096,
+        "prompt": "What is the classical name of $\\ce{HNO2(aq)}$?",
+        "choices": [
+          "nitric acid",
+          "hydronitrous acid",
+          "hydronitric acid",
+          "nitrous acid"
+        ],
+        "answer": 3,
+        "working": "The anion is $\\ce{NO2-}$, nitrite. An -ite anion gives an -ous acid: nitrous acid."
+      }
+    ]
+  },
+  "c20-1-4": {
+    "lessonId": "c20-1-4",
+    "title": "Electronegativity and Bond Types, Part 1: Electronegativity",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A tug-of-war",
+        "t": 28.647
+      },
+      {
+        "title": "The values",
+        "t": 66.066
+      },
+      {
+        "title": "Trends in the table",
+        "t": 98.419
+      },
+      {
+        "title": "Using the trends",
+        "t": 151.175
+      },
+      {
+        "title": "Your turn",
+        "t": 186.707
+      },
+      {
+        "title": "Summary",
+        "t": 221.34
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-4:q",
+        "t": 200.716,
+        "prompt": "Using only the trends in the periodic table, which list puts fluorine, chlorine and bromine (all in group 17) in order of **increasing** electronegativity?",
+        "choices": [
+          "F, Cl, Br",
+          "Cl, F, Br",
+          "Cl, Br, F",
+          "Br, Cl, F"
+        ],
+        "answer": 3,
+        "working": "Electronegativity decreases down a group, so it increases going up: Br (3.0), then Cl (3.2), then F (4.0)."
+      }
+    ]
+  },
+  "c20-1-4-b": {
+    "lessonId": "c20-1-4",
+    "title": "Electronegativity and Bond Types, Part 2: The Difference and Bond Types",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The electronegativity difference",
+        "t": 22.684
+      },
+      {
+        "title": "Three kinds of bond",
+        "t": 70.812
+      },
+      {
+        "title": "The rule",
+        "t": 112.694
+      },
+      {
+        "title": "Two non-polar bonds",
+        "t": 151.25
+      },
+      {
+        "title": "Your turn",
+        "t": 182.383
+      },
+      {
+        "title": "Summary",
+        "t": 216.274
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-4-b:q",
+        "t": 195.271,
+        "prompt": "Find $\\Delta\\text{EN}$ for the N–H bond and classify it (N $3.0$, H $2.2$). Rule: below $0.5$ non-polar covalent, $0.5$ up to $1.7$ polar covalent, $1.7$ or more ionic.",
+        "choices": [
+          "$5.2$; ionic",
+          "$0.8$; polar covalent",
+          "$0.8$; non-polar covalent",
+          "$-0.8$; polar covalent"
+        ],
+        "answer": 1,
+        "working": "$\\Delta\\text{EN} = 3.0 - 2.2 = 0.8$, which is from $0.5$ up to $1.7$: polar covalent."
+      }
+    ]
+  },
+  "c20-1-4-c": {
+    "lessonId": "c20-1-4",
+    "title": "Electronegativity and Bond Types, Part 3: Partial Charges and the Continuum",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Partial charges",
+        "t": 21.396
+      },
+      {
+        "title": "The O–H bond",
+        "t": 62.789
+      },
+      {
+        "title": "Where the delta minus goes",
+        "t": 101.025
+      },
+      {
+        "title": "A continuum, not three boxes",
+        "t": 122.472
+      },
+      {
+        "title": "Your turn",
+        "t": 182.737
+      },
+      {
+        "title": "Summary",
+        "t": 217.999
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-4-c:q",
+        "t": 194.325,
+        "prompt": "Which shows the C–Cl bond correctly? (C $2.6$, Cl $3.2$; a difference from $0.5$ up to $1.7$ is polar covalent.)",
+        "choices": [
+          "$\\overset{\\delta+}{\\text{C}}\\text{–}\\overset{\\delta-}{\\text{Cl}}$",
+          "$\\overset{\\delta-}{\\text{C}}\\text{–}\\overset{\\delta+}{\\text{Cl}}$",
+          "$\\ce{C+}\\text{–}\\ce{Cl-}$",
+          "No partial charges: the bond is non-polar."
+        ],
+        "answer": 0,
+        "working": "$\\Delta\\text{EN} = 3.2 - 2.6 = 0.6$: polar covalent. Chlorine is more electronegative, so it is $\\delta-$."
+      }
+    ]
+  },
+  "c20-1-5": {
+    "lessonId": "c20-1-5",
+    "title": "Lewis Structures, Part 1: Counting Valence Electrons",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Valence electrons from the group",
+        "t": 34.578
+      },
+      {
+        "title": "Adding up a molecule",
+        "t": 66.648
+      },
+      {
+        "title": "Ions: add or subtract",
+        "t": 98.798
+      },
+      {
+        "title": "Getting the charge backwards",
+        "t": 138.605
+      },
+      {
+        "title": "Your turn",
+        "t": 165.274
+      },
+      {
+        "title": "Summary",
+        "t": 200.874
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-5:q",
+        "t": 178.962,
+        "prompt": "How many valence electrons are in the sulfate ion, $\\ce{SO4^2-}$? (S and O are both in group 16.)",
+        "choices": [
+          "$28$",
+          "$30$",
+          "$32$",
+          "$16$"
+        ],
+        "answer": 2,
+        "working": "Atoms: $1 \\times 6 + 4 \\times 6 = 30$. The charge is $2-$, so add 2: $30 + 2 = 32$ valence electrons."
+      }
+    ]
+  },
+  "c20-1-5-b": {
+    "lessonId": "c20-1-5",
+    "title": "Lewis Structures, Part 2: Bonding Pairs and Lone Pairs",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lewis structures",
+        "t": 20.75
+      },
+      {
+        "title": "The octet rule",
+        "t": 64.12
+      },
+      {
+        "title": "Why water is H₂O",
+        "t": 103.136
+      },
+      {
+        "title": "Your turn",
+        "t": 138.595
+      },
+      {
+        "title": "Summary",
+        "t": 182.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-5-b:q",
+        "t": 157.312,
+        "prompt": "Hydrogen sulfide, $\\ce{H2S}$, has 8 valence electrons. In its Lewis structure, the sulfur atom forms a single bond with each hydrogen atom. How many bonding pairs and lone pairs does it have in all?",
+        "choices": [
+          "2 bonding pairs and 2 lone pairs",
+          "2 bonding pairs and 0 lone pairs",
+          "2 bonding pairs and 4 lone pairs",
+          "4 bonding pairs and 0 lone pairs"
+        ],
+        "answer": 0,
+        "working": "8 electrons make 4 pairs. The two S–H bonds use 2 pairs, and the other 2 are lone pairs on sulfur, which give it $2 \\times 2 + 2 \\times 2 = 8$ electrons: an octet."
+      }
+    ]
+  },
+  "c20-1-5-c": {
+    "lessonId": "c20-1-5",
+    "title": "Lewis Structures, Part 3: Drawing a Lewis Structure",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six steps",
+        "t": 16.68
+      },
+      {
+        "title": "Phosphorus trichloride",
+        "t": 65.561
+      },
+      {
+        "title": "More molecules",
+        "t": 124.233
+      },
+      {
+        "title": "Ions in brackets",
+        "t": 151.638
+      },
+      {
+        "title": "Your turn",
+        "t": 180.893
+      },
+      {
+        "title": "Summary",
+        "t": 219.99
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-5-c:q",
+        "t": 195.401,
+        "prompt": "Chloroform, $\\ce{CHCl3}$, has carbon as its central atom, with single bonds only. (Valence electrons: C 4, H 1, Cl 7.) How many lone pairs are in its Lewis structure, in all?",
+        "choices": [
+          "$12$",
+          "$13$",
+          "$10$",
+          "$9$"
+        ],
+        "answer": 3,
+        "working": "$4 + 1 + 3 \\times 7 = 26$ electrons, or 13 pairs. Four bonds use 4 pairs; each Cl takes 3 lone pairs, $3 \\times 3 = 9$. That uses all 13, and carbon has its octet. Check: $4 + 9 = 13$."
+      }
+    ]
+  },
+  "c20-1-5-d": {
+    "lessonId": "c20-1-5",
+    "title": "Lewis Structures, Part 4: Double and Triple Bonds",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Carbon dioxide",
+        "t": 17.752
+      },
+      {
+        "title": "Hydrogen cyanide",
+        "t": 62.021
+      },
+      {
+        "title": "A double bond is two pairs",
+        "t": 108.503
+      },
+      {
+        "title": "Molecules of two atoms",
+        "t": 134.567
+      },
+      {
+        "title": "An exception: boron trifluoride",
+        "t": 163.64
+      },
+      {
+        "title": "Your turn",
+        "t": 187.838
+      },
+      {
+        "title": "Summary",
+        "t": 224.684
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-5-d:q",
+        "t": 200.698,
+        "prompt": "Carbon disulfide, $\\ce{CS2}$, has carbon as its central atom. (Valence electrons: C 4, S 6.) How many bonding pairs and lone pairs are in its Lewis structure?",
+        "choices": [
+          "2 bonding pairs and 6 lone pairs",
+          "4 bonding pairs and 4 lone pairs",
+          "2 bonding pairs and 4 lone pairs",
+          "4 bonding pairs and 2 lone pairs"
+        ],
+        "answer": 1,
+        "working": "$4 + 2 \\times 6 = 16$ electrons, or 8 pairs. Single bonds leave carbon with only 4 electrons, so make two double bonds: $\\ce{S=C=S}$, with 2 lone pairs on each S. Check: $4 + 4 = 8$."
+      }
+    ]
+  },
+  "c20-1-6": {
+    "lessonId": "c20-1-6",
+    "title": "Shapes of Molecules, Part 1: Electron Groups",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "VSEPR theory",
+        "t": 37.647
+      },
+      {
+        "title": "Counting electron groups",
+        "t": 76.29
+      },
+      {
+        "title": "A double bond is one group",
+        "t": 111.013
+      },
+      {
+        "title": "Your turn",
+        "t": 154.229
+      },
+      {
+        "title": "Summary",
+        "t": 195.755
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-6:q",
+        "t": 174.481,
+        "prompt": "The Lewis structure of hydrogen cyanide is $\\ce{H-C#N}$, with one lone pair on nitrogen and none on carbon. How many electron groups are around the central carbon atom?",
+        "choices": [
+          "$4$",
+          "$2$",
+          "$3$",
+          "$5$"
+        ],
+        "answer": 1,
+        "working": "Carbon has 2 bonded atoms, H and N; the triple bond is one group. It has no lone pairs, so $2 + 0 = 2$ groups. The lone pair on nitrogen is on an outer atom, so it does not count."
+      }
+    ]
+  },
+  "c20-1-6-b": {
+    "lessonId": "c20-1-6",
+    "title": "Shapes of Molecules, Part 2: Shapes With No Lone Pairs",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two groups: linear",
+        "t": 19.52
+      },
+      {
+        "title": "Three groups: trigonal planar",
+        "t": 47.988
+      },
+      {
+        "title": "Four groups: tetrahedral",
+        "t": 72.135
+      },
+      {
+        "title": "Methanal",
+        "t": 114.726
+      },
+      {
+        "title": "Two more rules",
+        "t": 148.256
+      },
+      {
+        "title": "Your turn",
+        "t": 179.325
+      },
+      {
+        "title": "Summary",
+        "t": 213.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-6-b:q",
+        "t": 191.053,
+        "prompt": "In silane, $\\ce{SiH4}$, the central silicon atom has 4 bonded atoms and no lone pairs. About what is the bond angle?",
+        "choices": [
+          "$90^\\circ$",
+          "$120^\\circ$",
+          "$180^\\circ$",
+          "$109.5^\\circ$"
+        ],
+        "answer": 3,
+        "working": "4 bonded atoms and no lone pairs make 4 electron groups, so silane is tetrahedral, with bond angles of $109.5^\\circ$."
+      }
+    ]
+  },
+  "c20-1-6-c": {
+    "lessonId": "c20-1-6",
+    "title": "Shapes of Molecules, Part 3: Lone Pairs Change the Shape",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ammonia: trigonal pyramidal",
+        "t": 20.685
+      },
+      {
+        "title": "Water: V-shaped",
+        "t": 60.475
+      },
+      {
+        "title": "Lone pairs squeeze the angles",
+        "t": 81.587
+      },
+      {
+        "title": "Four steps",
+        "t": 126.588
+      },
+      {
+        "title": "Your turn",
+        "t": 167.896
+      },
+      {
+        "title": "Summary",
+        "t": 203.622
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-6-c:q",
+        "t": 181.566,
+        "prompt": "In hydrogen sulfide, $\\ce{H2S}$, the central sulfur atom has 2 bonded atoms and 2 lone pairs. What is the shape of the molecule?",
+        "choices": [
+          "V-shaped (bent)",
+          "linear",
+          "trigonal pyramidal",
+          "tetrahedral"
+        ],
+        "answer": 0,
+        "working": "2 bonded atoms + 2 lone pairs = 4 groups. Named from the atoms only, H, S and H form a V: V-shaped (bent), like water."
+      }
+    ]
+  },
+  "c20-1-7": {
+    "lessonId": "c20-1-7",
+    "title": "Polar and Non-polar Molecules, Part 1: Polar Bonds and Dipoles",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polar bonds",
+        "t": 36.444
+      },
+      {
+        "title": "Dipoles and polar molecules",
+        "t": 73.57
+      },
+      {
+        "title": "Molecules of two atoms",
+        "t": 114.127
+      },
+      {
+        "title": "Your turn",
+        "t": 146.324
+      },
+      {
+        "title": "Summary",
+        "t": 182.453
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-7:q",
+        "t": 155.464,
+        "prompt": "Which of these molecules is polar? (Electronegativities: H $2.2$, Br $3.0$, O $3.4$.)",
+        "choices": [
+          "$\\ce{Br2}$",
+          "$\\ce{O2}$",
+          "$\\ce{HBr}$",
+          "$\\ce{H2}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{HBr}$ is made of two different atoms, so its one bond is polar ($3.0 - 2.2 = 0.8$), and there is no other bond to cancel it. The other three are made of identical atoms, so they are non-polar."
+      }
+    ]
+  },
+  "c20-1-7-b": {
+    "lessonId": "c20-1-7",
+    "title": "Polar and Non-polar Molecules, Part 2: Shape Decides",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Carbon dioxide",
+        "t": 18.036
+      },
+      {
+        "title": "Water",
+        "t": 73.329
+      },
+      {
+        "title": "Symmetry",
+        "t": 116.855
+      },
+      {
+        "title": "Three outer atoms, two shapes",
+        "t": 152.347
+      },
+      {
+        "title": "Your turn",
+        "t": 188.952
+      },
+      {
+        "title": "Summary",
+        "t": 228.256
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-7-b:q",
+        "t": 202.515,
+        "prompt": "Phosphorus trichloride, $\\ce{PCl3}$, is trigonal pyramidal (P $2.2$, Cl $3.2$). Is it polar or non-polar, and why?",
+        "choices": [
+          "Polar: its pulls lean the same way, so they do not cancel.",
+          "Non-polar: its pulls are spread evenly, so they cancel.",
+          "Non-polar: its bonds are non-polar.",
+          "Polar: every molecule with polar bonds is polar."
+        ],
+        "answer": 0,
+        "working": "The P–Cl bonds are polar ($3.2 - 2.2 = 1.0$). In a trigonal pyramid, the lone pair on phosphorus crowds the bonds to one side, so the three pulls lean the same way and do not cancel."
+      }
+    ]
+  },
+  "c20-1-7-c": {
+    "lessonId": "c20-1-7",
+    "title": "Polar and Non-polar Molecules, Part 3: Same Shape, Different Outer Atoms",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four tetrahedral molecules",
+        "t": 19.113
+      },
+      {
+        "title": "Chloroform",
+        "t": 62.067
+      },
+      {
+        "title": "Linear and flat, but polar",
+        "t": 108.44
+      },
+      {
+        "title": "Your turn",
+        "t": 148.565
+      },
+      {
+        "title": "Summary",
+        "t": 185.958
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-7-c:q",
+        "t": 158.499,
+        "prompt": "Carbon tetrafluoride, $\\ce{CF4}$, and fluoromethane, $\\ce{CH3F}$, are both tetrahedral. (Electronegativities: H $2.2$, C $2.6$, F $4.0$.) Which of them is polar?",
+        "choices": [
+          "Both are polar.",
+          "Neither is polar.",
+          "Only $\\ce{CF4}$.",
+          "Only $\\ce{CH3F}$."
+        ],
+        "answer": 3,
+        "working": "$\\ce{CF4}$ has four identical outer atoms, so its four equal pulls cancel: non-polar. $\\ce{CH3F}$ has one fluorine and three hydrogens, so nothing balances the strong $\\ce{C-F}$ pull: polar."
+      }
+    ]
+  },
+  "c20-1-7-d": {
+    "lessonId": "c20-1-7",
+    "title": "Polar and Non-polar Molecules, Part 4: Testing for Polar Molecules",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three questions",
+        "t": 18.697
+      },
+      {
+        "title": "The stream test",
+        "t": 61.291
+      },
+      {
+        "title": "Predicting the stream test",
+        "t": 107.934
+      },
+      {
+        "title": "Like dissolves like",
+        "t": 145.792
+      },
+      {
+        "title": "Your turn",
+        "t": 171.274
+      },
+      {
+        "title": "Summary",
+        "t": 209.74
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-7-d:q",
+        "t": 185.612,
+        "prompt": "A charged rod is held near thin streams of two liquids: phosphorus trichloride, $\\ce{PCl3}$ (trigonal pyramidal), and carbon tetrachloride, $\\ce{CCl4}$ (tetrahedral). Both have polar bonds. Which stream bends towards the rod?",
+        "choices": [
+          "Only the $\\ce{CCl4}$ stream",
+          "Only the $\\ce{PCl3}$ stream",
+          "Both streams",
+          "Neither stream"
+        ],
+        "answer": 1,
+        "working": "$\\ce{PCl3}$ is trigonal pyramidal, so its pulls lean the same way and do not cancel: it is polar, and its stream bends. $\\ce{CCl4}$ is symmetrical, with four identical chlorines, so it is non-polar."
+      }
+    ]
+  },
+  "c20-1-8": {
+    "lessonId": "c20-1-8",
+    "title": "Intermolecular Forces, Part 1: Forces Between Molecules",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inside and between",
+        "t": 41.694
+      },
+      {
+        "title": "What boiling overcomes",
+        "t": 70.305
+      },
+      {
+        "title": "Boiling point",
+        "t": 109.302
+      },
+      {
+        "title": "Your turn",
+        "t": 140.157
+      },
+      {
+        "title": "Summary",
+        "t": 170.701
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-8:q",
+        "t": 147.139,
+        "prompt": "When liquid bromine, $\\ce{Br2}$, boils, what is overcome?",
+        "choices": [
+          "The covalent bonds inside the $\\ce{Br2}$ molecules",
+          "Both the bonds inside the molecules and the forces between them",
+          "The ionic bonds between bromide ions",
+          "The intermolecular forces between $\\ce{Br2}$ molecules"
+        ],
+        "answer": 3,
+        "working": "Boiling moves the molecules apart, but each $\\ce{Br2}$ molecule stays whole: bromine gas is still made of $\\ce{Br2}$ molecules. Only the intermolecular forces are overcome."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
