@@ -7635,6 +7635,410 @@
       }
     ]
   },
+  "c20-3-2-b": {
+    "lessonId": "c20-3-2",
+    "title": "Solubility and Precipitates, Part 2: The Solubility Rules",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The solubility rules",
+        "t": 19.924
+      },
+      {
+        "title": "Rows that run the other way",
+        "t": 73.823
+      },
+      {
+        "title": "Always high solubility",
+        "t": 89.28
+      },
+      {
+        "title": "Two examples",
+        "t": 123.722
+      },
+      {
+        "title": "Start with the anion",
+        "t": 167.207
+      },
+      {
+        "title": "Your turn",
+        "t": 209.667
+      },
+      {
+        "title": "Summary",
+        "t": 243.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-2-b:q",
+        "t": 219.377,
+        "prompt": "Which compound has **low** solubility in water? Sulfates have high solubility, except those of $\\ce{Ca^2+}$, $\\ce{Sr^2+}$, $\\ce{Ba^2+}$, $\\ce{Pb^2+}$ and $\\ce{Ag+}$, which have low solubility.",
+        "choices": [
+          "$\\ce{BaSO4}$",
+          "$\\ce{Na2SO4}$",
+          "$\\ce{CuSO4}$",
+          "$\\ce{MgSO4}$"
+        ],
+        "answer": 0,
+        "working": "All four are sulfates. Only $\\ce{Ba^2+}$ is one of the exceptions, so barium sulfate has low solubility; the others have high solubility."
+      }
+    ]
+  },
+  "c20-3-2-c": {
+    "lessonId": "c20-3-2",
+    "title": "Solubility and Precipitates, Part 3: Predicting Precipitates",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ions swap partners",
+        "t": 22.004
+      },
+      {
+        "title": "Precipitates",
+        "t": 69.573
+      },
+      {
+        "title": "Four steps",
+        "t": 94.861
+      },
+      {
+        "title": "Two checks",
+        "t": 154.565
+      },
+      {
+        "title": "Your turn",
+        "t": 178.02
+      },
+      {
+        "title": "Summary",
+        "t": 214.697
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-2-c:q",
+        "t": 191.832,
+        "prompt": "Solutions of barium nitrate, $\\ce{Ba(NO3)2}$, and potassium sulfate, $\\ce{K2SO4}$, are mixed. Which precipitate forms, if any? Sulfates have high solubility, except those of $\\ce{Ca^2+}$, $\\ce{Sr^2+}$, $\\ce{Ba^2+}$, $\\ce{Pb^2+}$ and $\\ce{Ag+}$. All nitrates and all compounds of group 1 ions have high solubility.",
+        "choices": [
+          "$\\ce{KNO3(s)}$",
+          "No precipitate forms.",
+          "Both $\\ce{BaSO4(s)}$ and $\\ce{KNO3(s)}$",
+          "$\\ce{BaSO4(s)}$"
+        ],
+        "answer": 3,
+        "working": "The possible new compounds are $\\ce{BaSO4}$ and $\\ce{KNO3}$. $\\ce{KNO3}$ has high solubility; $\\ce{BaSO4}$ has low solubility, because $\\ce{Ba^2+}$ is an exception to the sulfate rule."
+      }
+    ]
+  },
+  "c20-3-2-d": {
+    "lessonId": "c20-3-2",
+    "title": "Solubility and Precipitates, Part 4: No Precipitate, and Net Ionic Equations",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "No precipitate",
+        "t": 20.355
+      },
+      {
+        "title": "A shortcut",
+        "t": 60.831
+      },
+      {
+        "title": "Spectator ions",
+        "t": 118.914
+      },
+      {
+        "title": "Your turn",
+        "t": 162.193
+      },
+      {
+        "title": "Summary",
+        "t": 198.573
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-2-d:q",
+        "t": 175.306,
+        "prompt": "Solutions of zinc nitrate, $\\ce{Zn(NO3)2}$, and potassium chloride, $\\ce{KCl}$, are mixed. Which precipitate forms, if any? Chlorides have high solubility, except those of $\\ce{Ag+}$, $\\ce{Pb^2+}$ and $\\ce{Cu+}$. All nitrates and all compounds of group 1 ions have high solubility.",
+        "choices": [
+          "$\\ce{ZnCl2(s)}$",
+          "No precipitate forms.",
+          "$\\ce{KNO3(s)}$",
+          "Both $\\ce{ZnCl2(s)}$ and $\\ce{KNO3(s)}$"
+        ],
+        "answer": 1,
+        "working": "The possible new compounds are $\\ce{ZnCl2}$ and $\\ce{KNO3}$. $\\ce{Zn^2+}$ is not a chloride exception, so both have high solubility, and all four ions stay dissolved."
+      }
+    ]
+  },
+  "c20-3-3": {
+    "lessonId": "c20-3-3",
+    "title": "Percent Concentration and Parts per Million, Part 1: Concentration and Percent by Mass per Volume",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Concentration",
+        "t": 26.768
+      },
+      {
+        "title": "Three percentages",
+        "t": 64.677
+      },
+      {
+        "title": "A sugar solution",
+        "t": 106.437
+      },
+      {
+        "title": "Making a solution",
+        "t": 151.319
+      },
+      {
+        "title": "Your turn",
+        "t": 191.751
+      },
+      {
+        "title": "Summary",
+        "t": 227.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-3:q",
+        "t": 207.159,
+        "prompt": "$12.5\\ \\text{g}$ of glucose is dissolved in water to make $250\\ \\text{mL}$ of solution. What is the concentration in % (w/V)? Percent by mass per volume, % (w/V), is grams of solute per $100\\ \\text{mL}$ of solution.",
+        "choices": [
+          "$0.050\\%$",
+          "$20\\%$",
+          "$31\\%$",
+          "$5.0\\%$"
+        ],
+        "answer": 3,
+        "working": "$\\dfrac{12.5\\ \\text{g}}{250\\ \\text{mL}} \\times 100\\% = 5.0\\%$ (w/V)."
+      }
+    ]
+  },
+  "c20-3-3-b": {
+    "lessonId": "c20-3-3",
+    "title": "Percent Concentration and Parts per Million, Part 2: Percent by Volume and Percent by Mass",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent by volume",
+        "t": 18.812
+      },
+      {
+        "title": "Volumes do not always add",
+        "t": 67.582
+      },
+      {
+        "title": "Percent by mass",
+        "t": 99.027
+      },
+      {
+        "title": "The mass of the solution",
+        "t": 157.381
+      },
+      {
+        "title": "Your turn",
+        "t": 176.013
+      },
+      {
+        "title": "Summary",
+        "t": 214.801
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-3-b:q",
+        "t": 190.094,
+        "prompt": "$15.0\\ \\text{g}$ of salt is dissolved in $135\\ \\text{g}$ of water. What is the concentration in % (w/w)? Percent by mass, % (w/w), is grams of solute per $100\\ \\text{g}$ of solution.",
+        "choices": [
+          "$11.1\\%$",
+          "$10.0\\%$",
+          "$0.10\\%$",
+          "$15.0\\%$"
+        ],
+        "answer": 1,
+        "working": "The mass of the solution is $15.0 + 135 = 150\\ \\text{g}$, so $\\dfrac{15.0}{150} \\times 100\\% = 10.0\\%$ (w/w)."
+      }
+    ]
+  },
+  "c20-3-3-c": {
+    "lessonId": "c20-3-3",
+    "title": "Percent Concentration and Parts per Million, Part 3: Parts per Million",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tiny percentages",
+        "t": 21.354
+      },
+      {
+        "title": "Parts per million",
+        "t": 45.078
+      },
+      {
+        "title": "A weighed sample",
+        "t": 79.488
+      },
+      {
+        "title": "Same units, and a million",
+        "t": 119.034
+      },
+      {
+        "title": "Your turn",
+        "t": 153.889
+      },
+      {
+        "title": "Summary",
+        "t": 194.256
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-3-c:q",
+        "t": 169.814,
+        "prompt": "A $250\\ \\text{g}$ sample of water contains $0.0040\\ \\text{g}$ of copper. What is the concentration of copper in parts per million? Parts per million are grams of solute per million grams of solution.",
+        "choices": [
+          "$0.000016\\ \\text{ppm}$",
+          "$1.6\\ \\text{ppm}$",
+          "$16\\ \\text{ppm}$",
+          "$160\\ \\text{ppm}$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{0.0040\\ \\text{g}}{250\\ \\text{g}} \\times 10^6 = 16\\ \\text{ppm}$"
+      }
+    ]
+  },
+  "c20-3-3-d": {
+    "lessonId": "c20-3-3",
+    "title": "Percent Concentration and Parts per Million, Part 4: Parts per Million in Water",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Milligrams per litre",
+        "t": 17.948
+      },
+      {
+        "title": "A water sample",
+        "t": 51.342
+      },
+      {
+        "title": "Chlorine in a pool",
+        "t": 88.748
+      },
+      {
+        "title": "Limits",
+        "t": 143.546
+      },
+      {
+        "title": "Your turn",
+        "t": 167.132
+      },
+      {
+        "title": "Summary",
+        "t": 204.868
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-3-d:q",
+        "t": 182.066,
+        "prompt": "A $1.5\\ \\text{L}$ water sample contains $0.48\\ \\text{mg}$ of fluoride. What is the concentration of fluoride in parts per million? For a dilute solution in water, $1\\ \\text{ppm} = 1\\ \\text{mg}$ of solute per litre of solution.",
+        "choices": [
+          "$0.32\\ \\text{ppm}$",
+          "$0.72\\ \\text{ppm}$",
+          "$3.1\\ \\text{ppm}$",
+          "$320\\ \\text{ppm}$"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{0.48\\ \\text{mg}}{1.5\\ \\text{L}} = 0.32\\ \\text{ppm}$"
+      }
+    ]
+  },
+  "c20-3-4": {
+    "lessonId": "c20-3-4",
+    "title": "Molar Concentration, Part 1: Moles per Litre",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Molar concentration",
+        "t": 27.903
+      },
+      {
+        "title": "Finding a concentration",
+        "t": 71.794
+      },
+      {
+        "title": "Rearranging",
+        "t": 110.698
+      },
+      {
+        "title": "Your turn",
+        "t": 173.397
+      },
+      {
+        "title": "Summary",
+        "t": 213.463
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-4:q",
+        "t": 185.589,
+        "prompt": "How many moles of solute are in $400\\ \\text{mL}$ of a $0.250\\ \\text{mol/L}$ solution? Molar concentration is $c = \\dfrac{n}{V}$, in moles per litre.",
+        "choices": [
+          "$0.100\\ \\text{mol}$",
+          "$100\\ \\text{mol}$",
+          "$1.60\\ \\text{mol}$",
+          "$0.000625\\ \\text{mol}$"
+        ],
+        "answer": 0,
+        "working": "$V = 400\\ \\text{mL} = 0.400\\ \\text{L}$, so $n = cV = 0.250 \\times 0.400 = 0.100\\ \\text{mol}$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",

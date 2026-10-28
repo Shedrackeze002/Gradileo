@@ -52,8 +52,10 @@ test('an administrator links an explainer video, and the lesson plays it and pau
   await expect(page.getByRole('heading', { name: 'Naming the sides' })).toBeVisible();
   await expect(page.getByRole('region', { name: 'Explainer video' })).toHaveCount(0);
 
-  // The administrator pastes the video's YouTube link.
+  // The administrator finds the video (each course is folded until opened) and pastes its link.
   await page.goto('/admin/videos');
+  await page.getByLabel('Find a video').fill('m10c-2-1');
+  await expect(page.getByText('2 matches.')).toBeVisible();
   // Other courses have videos with the same title (Math 10-3 also teaches the tangent ratio), so
   // pick the row by its video id as well.
   const row = page.getByRole('listitem').filter({ hasText: video.title }).filter({ hasText: 'm10c-2-1 ·' });
@@ -95,6 +97,7 @@ test('an administrator links an explainer video, and the lesson plays it and pau
 
   // With part 2 linked too, the lesson offers both parts.
   await page.goto('/admin/videos');
+  await page.getByLabel('Find a video').fill('m10c-2-1-b');
   const part2 = page.getByRole('listitem').filter({ hasText: manifest['m10c-2-1-b'].title }).filter({ hasText: 'm10c-2-1-b ·' });
   await part2.getByLabel('YouTube link').fill('abcdefghijk');
   await part2.getByRole('button', { name: 'Link video' }).click();
@@ -118,6 +121,7 @@ test('present mode plays each explainer part as a slide just before the section 
 
   // Only part 1 of the lesson's two parts is on YouTube.
   await page.goto('/admin/videos');
+  await page.getByLabel('Find a video').fill('m10c-2-1');
   const part1 = manifest['m10c-2-1'];
   const row = page.getByRole('listitem').filter({ hasText: part1.title }).filter({ hasText: 'm10c-2-1 ·' });
   await row.getByLabel('YouTube link').fill('https://youtu.be/dQw4w9WgXcQ');

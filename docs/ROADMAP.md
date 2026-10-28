@@ -325,6 +325,22 @@ items ship or decisions change.
      Math 5 to 9 as they are made), on a daily schedule. The owner decided no course is "made for
      kids". The owner set the Unit 1 and Unit 2 playlists to Manual, and the tool put them in
      lesson order (it now does this for every playlist a run touches).
+   - Decision (the owner, 28 October 2026): keep our thumbnails, drop our captions from now on.
+     YouTube raised the channel's upload limit on 24 October (101 went up that day), so the API's
+     10,000 units a day became the limit, and our captions were 400 of the roughly 500 each
+     finished video cost: 83 of that day's videos went up without their thumbnail and captions,
+     and the next runs spent every day finishing them (no runs 25 to 27 October, while the session
+     was paused). The owner compared videos with and without ours and could not tell YouTube's
+     automatic captions apart. `youtube-upload.ts` now adds only the thumbnail and playlist place
+     (`--captions` adds ours), about 90 videos a day instead of about 20, and the 42 still waiting
+     need only their thumbnail. It also keeps `youtube-uploaded.json` in Drive, since YouTube's
+     listing once left a video out and the run uploaded it twice (the owner deleted the copy).
+   - To do, when the first non-maths videos go up (after the maths): change the channel
+     description so it covers every subject. Lead with a line that stays true as subjects are
+     added ("Gradileo explainer videos for Grades 5 to 12", then what each video does and how it
+     pauses for its question on gradileo.com), followed by a short "Subjects so far" line naming
+     each subject and its grades, which is updated as each new subject starts uploading. Name only
+     subjects that have videos on the channel.
    - Built: Math 30-2, all 97 videos at the calm pace (3:40 to 7:07, about 7.8 hours in all), the
      first course with topic-first title cards and no Alberta place names in the narration,
      rendered unit by unit and uploaded to Drive (checked: Drive holds every file of all 97). The
