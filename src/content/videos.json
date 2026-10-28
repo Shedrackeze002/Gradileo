@@ -3870,6 +3870,857 @@
       }
     ]
   },
+  "c10-5-2": {
+    "lessonId": "c10-5-2",
+    "title": "Moles, Mass and Particles, Part 1: Mass and Moles",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Amount of substance",
+        "t": 30.612
+      },
+      {
+        "title": "Mass to moles",
+        "t": 64.51
+      },
+      {
+        "title": "Moles to mass",
+        "t": 98.656
+      },
+      {
+        "title": "Let the units decide",
+        "t": 129.478
+      },
+      {
+        "title": "Your turn",
+        "t": 161.637
+      },
+      {
+        "title": "Summary",
+        "t": 200.148
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-2:q",
+        "t": 175.133,
+        "prompt": "How many moles are in $88.0\\ \\text{g}$ of carbon dioxide, $\\ce{CO2}$? The molar mass of carbon dioxide is $44.0\\ \\text{g/mol}$.",
+        "choices": [
+          "$0.50\\ \\text{mol}$",
+          "$3\\,872\\ \\text{mol}$",
+          "$2.00\\ \\text{mol}$",
+          "$132.0\\ \\text{mol}$"
+        ],
+        "answer": 2,
+        "working": "$n = \\dfrac{m}{M} = \\dfrac{88.0\\ \\text{g}}{44.0\\ \\text{g/mol}} = 2.00\\ \\text{mol}$"
+      }
+    ]
+  },
+  "c10-5-2-b": {
+    "lessonId": "c10-5-2",
+    "title": "Moles, Mass and Particles, Part 2: From Mass to Particles",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Molar mass first",
+        "t": 17.504
+      },
+      {
+        "title": "Mass to particles",
+        "t": 62.035
+      },
+      {
+        "title": "Go through moles",
+        "t": 115.156
+      },
+      {
+        "title": "Your turn",
+        "t": 145.755
+      },
+      {
+        "title": "Summary",
+        "t": 187.826
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-2-b:q",
+        "t": 158.351,
+        "prompt": "How many atoms are in $5.4\\ \\text{g}$ of aluminium, $\\ce{Al}$? Use the molar mass Al $27.0\\ \\text{g/mol}$, and $6.02 \\times 10^{23}$ particles per mole.",
+        "choices": [
+          "$1.20 \\times 10^{23}$",
+          "$3.25 \\times 10^{24}$",
+          "$3.01 \\times 10^{24}$",
+          "$1.20 \\times 10^{22}$"
+        ],
+        "answer": 0,
+        "working": "$n = \\dfrac{5.4}{27.0} = 0.20\\ \\text{mol}$, so $N = 0.20 \\times 6.02 \\times 10^{23} = 1.204 \\times 10^{23}$, which is $1.20 \\times 10^{23}$ atoms."
+      }
+    ]
+  },
+  "c10-5-2-c": {
+    "lessonId": "c10-5-2",
+    "title": "Moles, Mass and Particles, Part 3: Mole Ratios",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Coefficients count moles",
+        "t": 18.766
+      },
+      {
+        "title": "The mole ratio",
+        "t": 56.153
+      },
+      {
+        "title": "Making ammonia",
+        "t": 81.989
+      },
+      {
+        "title": "Burning magnesium",
+        "t": 112.493
+      },
+      {
+        "title": "Your turn",
+        "t": 156.574
+      },
+      {
+        "title": "Summary",
+        "t": 194.182
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-2-c:q",
+        "t": 172.385,
+        "prompt": "Methane burns in oxygen: $\\ce{CH4 + 2O2 -> CO2 + 2H2O}$. How many moles of $\\ce{O2}$ react with $3\\ \\text{mol}$ of $\\ce{CH4}$?",
+        "choices": [
+          "$1.5\\ \\text{mol}$",
+          "$3\\ \\text{mol}$",
+          "$5\\ \\text{mol}$",
+          "$6\\ \\text{mol}$"
+        ],
+        "answer": 3,
+        "working": "The mole ratio $\\ce{CH4} : \\ce{O2}$ is $1 : 2$, so $n(\\ce{O2}) = 3 \\times \\dfrac{2}{1} = 6\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c10-5-2-d": {
+    "lessonId": "c10-5-2",
+    "title": "Moles, Mass and Particles, Part 4: From Mass to Mass",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 19.539
+      },
+      {
+        "title": "Magnesium oxide from magnesium",
+        "t": 49.336
+      },
+      {
+        "title": "Check with the conservation of mass",
+        "t": 105.487
+      },
+      {
+        "title": "Your turn",
+        "t": 146.456
+      },
+      {
+        "title": "Summary",
+        "t": 191.606
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-2-d:q",
+        "t": 161.462,
+        "prompt": "Hydrogen burns in oxygen to make water: $\\ce{2H2 + O2 -> 2H2O}$. What mass of $\\ce{H2O}$ forms from $4.0\\ \\text{g}$ of $\\ce{H2}$? The molar masses are $\\ce{H2}$ $2.0\\ \\text{g/mol}$ and $\\ce{H2O}$ $18.0\\ \\text{g/mol}$.",
+        "choices": [
+          "$4.0\\ \\text{g}$",
+          "$36.0\\ \\text{g}$",
+          "$72.0\\ \\text{g}$",
+          "$18.0\\ \\text{g}$"
+        ],
+        "answer": 1,
+        "working": "$n(\\ce{H2}) = \\dfrac{4.0}{2.0} = 2.0\\ \\text{mol}$; the ratio is $2 : 2$, so $n(\\ce{H2O}) = 2.0\\ \\text{mol}$; $m(\\ce{H2O}) = 2.0 \\times 18.0 = 36.0\\ \\text{g}$."
+      }
+    ]
+  },
+  "c10-5-3": {
+    "lessonId": "c10-5-3",
+    "title": "Acids, Bases and the pH Scale, Part 1: Acids and Bases",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Acids",
+        "t": 26.502
+      },
+      {
+        "title": "Bases and alkalis",
+        "t": 54.954
+      },
+      {
+        "title": "Everyday acids and bases",
+        "t": 90.348
+      },
+      {
+        "title": "Never taste or touch",
+        "t": 130.874
+      },
+      {
+        "title": "Your turn",
+        "t": 154.744
+      },
+      {
+        "title": "Summary",
+        "t": 190.065
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-3:q",
+        "t": 166.103,
+        "prompt": "Potassium hydroxide dissolves in water, forming hydroxide ions, $\\ce{OH-}$. What kind of substance is it?",
+        "choices": [
+          "An acid",
+          "A neutral substance",
+          "A metal carbonate",
+          "An alkali"
+        ],
+        "answer": 3,
+        "working": "An alkali is a base that dissolves in water, forming hydroxide ions. An acid would form hydrogen ions, $\\ce{H+}$."
+      }
+    ]
+  },
+  "c10-5-3-b": {
+    "lessonId": "c10-5-3",
+    "title": "Acids, Bases and the pH Scale, Part 2: The pH Scale",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The pH scale",
+        "t": 18.881
+      },
+      {
+        "title": "Acidic, neutral or basic?",
+        "t": 62.229
+      },
+      {
+        "title": "Putting solutions in order",
+        "t": 83.091
+      },
+      {
+        "title": "Ten times for every step",
+        "t": 113.451
+      },
+      {
+        "title": "Comparing two acids",
+        "t": 150.231
+      },
+      {
+        "title": "Your turn",
+        "t": 195.279
+      },
+      {
+        "title": "Summary",
+        "t": 227.531
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-3-b:q",
+        "t": 208.274,
+        "prompt": "Solution X has a pH of 3, and solution Y has a pH of 5. How many times more acidic is solution X than solution Y? Each change of 1 pH unit is a tenfold change in acidity.",
+        "choices": [
+          "$2$ times",
+          "$100$ times",
+          "$20$ times",
+          "$1000$ times"
+        ],
+        "answer": 1,
+        "working": "The pH values differ by $5 - 3 = 2$, so X is $10 \\times 10 = 100$ times more acidic."
+      }
+    ]
+  },
+  "c10-5-3-c": {
+    "lessonId": "c10-5-3",
+    "title": "Acids, Bases and the pH Scale, Part 3: Indicators",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Litmus",
+        "t": 24.114
+      },
+      {
+        "title": "Phenolphthalein",
+        "t": 46.403
+      },
+      {
+        "title": "Universal indicator",
+        "t": 68.404
+      },
+      {
+        "title": "Predicting colours",
+        "t": 107.314
+      },
+      {
+        "title": "Your turn",
+        "t": 136.61
+      },
+      {
+        "title": "Summary",
+        "t": 170.21
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-3-c:q",
+        "t": 146.996,
+        "prompt": "What colour is phenolphthalein when a few drops are added to a solution with a pH of 7?",
+        "choices": [
+          "Red",
+          "Blue",
+          "Colourless",
+          "Pink"
+        ],
+        "answer": 2,
+        "working": "A pH of 7 is neutral, and phenolphthalein is colourless in acidic and neutral solutions. It turns pink only in basic ones."
+      }
+    ]
+  },
+  "c10-5-3-d": {
+    "lessonId": "c10-5-3",
+    "title": "Acids, Bases and the pH Scale, Part 4: Using Two Indicators",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Colourless does not mean acidic",
+        "t": 18.656
+      },
+      {
+        "title": "Colour-change ranges",
+        "t": 46.48
+      },
+      {
+        "title": "Two clues",
+        "t": 84.291
+      },
+      {
+        "title": "Your turn",
+        "t": 118.755
+      },
+      {
+        "title": "Summary",
+        "t": 154.019
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-3-d:q",
+        "t": 129.426,
+        "prompt": "Bromothymol blue is yellow below pH 6.0 and blue above 7.6. Phenolphthalein is colourless below pH 8.2 and pink above 10.0. In a solution, bromothymol blue is blue and phenolphthalein is colourless. What is its pH?",
+        "choices": [
+          "pH between 7.6 and 8.2",
+          "pH below 6.0",
+          "pH between 6.0 and 7.6",
+          "pH above 10.0"
+        ],
+        "answer": 0,
+        "working": "Bromothymol blue is blue, so the pH is above 7.6. Phenolphthalein is colourless, so the pH is below 8.2. Both are true only between 7.6 and 8.2."
+      }
+    ]
+  },
+  "c10-5-4": {
+    "lessonId": "c10-5-4",
+    "title": "Neutralization, Part 1: Acids Meet Bases",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Neutralization",
+        "t": 23.905
+      },
+      {
+        "title": "Where the water comes from",
+        "t": 53.422
+      },
+      {
+        "title": "Hydrochloric acid and sodium hydroxide",
+        "t": 92.591
+      },
+      {
+        "title": "Your turn",
+        "t": 129.96
+      },
+      {
+        "title": "Summary",
+        "t": 164.109
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-4:q",
+        "t": 139.448,
+        "prompt": "Hydrochloric acid reacts with potassium hydroxide. What are the products?",
+        "choices": [
+          "Potassium chloride and water",
+          "Potassium chloride and hydrogen",
+          "Potassium chloride, water and carbon dioxide",
+          "Potassium sulfate and water"
+        ],
+        "answer": 0,
+        "working": "Potassium hydroxide is a base, so the products are a salt and water. The salt has potassium from the base and chloride from hydrochloric acid: potassium chloride."
+      }
+    ]
+  },
+  "c10-5-4-b": {
+    "lessonId": "c10-5-4",
+    "title": "Neutralization, Part 2: Naming Salts",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two-part names",
+        "t": 17.893
+      },
+      {
+        "title": "Sulfuric acid and magnesium oxide",
+        "t": 51.35
+      },
+      {
+        "title": "Working backwards",
+        "t": 86.163
+      },
+      {
+        "title": "Chloride, not chlorine",
+        "t": 115.498
+      },
+      {
+        "title": "Your turn",
+        "t": 142.693
+      },
+      {
+        "title": "Summary",
+        "t": 174.36
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-4-b:q",
+        "t": 152.076,
+        "prompt": "Which salt forms when sulfuric acid reacts with potassium hydroxide?",
+        "choices": [
+          "Potassium sulfur",
+          "Potassium nitrate",
+          "Potassium sulfate",
+          "Potassium chloride"
+        ],
+        "answer": 2,
+        "working": "The metal comes from potassium hydroxide: potassium. Sulfuric acid makes sulfates. The salt is potassium sulfate: sulfuric acid + potassium hydroxide → potassium sulfate + water."
+      }
+    ]
+  },
+  "c10-5-4-c": {
+    "lessonId": "c10-5-4",
+    "title": "Neutralization, Part 3: Formulas of Salts",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ions in salts",
+        "t": 22.927
+      },
+      {
+        "title": "Calcium nitrate",
+        "t": 52.429
+      },
+      {
+        "title": "Sodium sulfate",
+        "t": 94.139
+      },
+      {
+        "title": "Your turn",
+        "t": 135.785
+      },
+      {
+        "title": "Summary",
+        "t": 170.285
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-4-c:q",
+        "t": 145.92,
+        "prompt": "Potassium hydroxide reacts with sulfuric acid. What is the formula of the salt? The ions are potassium, $\\ce{K+}$, and sulfate, $\\ce{SO4^2-}$.",
+        "choices": [
+          "$\\ce{KSO4}$",
+          "$\\ce{K2SO4}$",
+          "$\\ce{K(SO4)2}$",
+          "$\\ce{K2(SO4)2}$"
+        ],
+        "answer": 1,
+        "working": "The salt is potassium sulfate. Two $\\ce{K+}$ ions (2+) balance one $\\ce{SO4^2-}$ ion (2−), so the formula is $\\ce{K2SO4}$."
+      }
+    ]
+  },
+  "c10-5-4-d": {
+    "lessonId": "c10-5-4",
+    "title": "Neutralization, Part 4: Carbonates and Neutralizing Safely",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Acids and metal carbonates",
+        "t": 22.223
+      },
+      {
+        "title": "Calcium carbonate and hydrochloric acid",
+        "t": 58.095
+      },
+      {
+        "title": "Making a neutral solution",
+        "t": 94.257
+      },
+      {
+        "title": "Spills and splashes",
+        "t": 152.713
+      },
+      {
+        "title": "Your turn",
+        "t": 190.911
+      },
+      {
+        "title": "Summary",
+        "t": 225.149
+      }
+    ],
+    "cues": [
+      {
+        "id": "c10-5-4-d:q",
+        "t": 203.423,
+        "prompt": "A little dilute hydrochloric acid is spilled on the bench. After telling the teacher, what is the safest way to deal with it?",
+        "choices": [
+          "Pour concentrated sodium hydroxide on it.",
+          "Wipe it up with bare hands.",
+          "Leave it to evaporate.",
+          "Add sodium hydrogen carbonate powder until the fizzing stops, then wipe it up with water."
+        ],
+        "answer": 3,
+        "working": "A weak base neutralizes the acid safely: when the fizzing stops, the acid is used up. Concentrated sodium hydroxide is corrosive itself."
+      }
+    ]
+  },
+  "c20-1-1": {
+    "lessonId": "c20-1-1",
+    "title": "Atoms, Ions and the Periodic Table, Part 1: Inside an Atom",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three particles",
+        "t": 25.312
+      },
+      {
+        "title": "Atomic number and mass number",
+        "t": 66.151
+      },
+      {
+        "title": "Isotopes",
+        "t": 102.416
+      },
+      {
+        "title": "Counting particles",
+        "t": 147.003
+      },
+      {
+        "title": "Your turn",
+        "t": 192.205
+      },
+      {
+        "title": "Summary",
+        "t": 225.99
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-1:q",
+        "t": 203.146,
+        "prompt": "How many neutrons are in an atom of $\\ce{^{63}_{29}Cu}$?",
+        "choices": [
+          "$29$",
+          "$34$",
+          "$63$",
+          "$92$"
+        ],
+        "answer": 1,
+        "working": "Neutrons $=$ mass number $-$ atomic number $= 63 - 29 = 34$."
+      }
+    ]
+  },
+  "c20-1-1-b": {
+    "lessonId": "c20-1-1",
+    "title": "Atoms, Ions and the Periodic Table, Part 2: Valence Electrons",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Energy levels",
+        "t": 25.543
+      },
+      {
+        "title": "Valence electrons from the group",
+        "t": 60.745
+      },
+      {
+        "title": "Families and helium",
+        "t": 99.191
+      },
+      {
+        "title": "Two examples",
+        "t": 135.611
+      },
+      {
+        "title": "Your turn",
+        "t": 155.764
+      },
+      {
+        "title": "Summary",
+        "t": 193.204
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-1-b:q",
+        "t": 167.739,
+        "prompt": "Selenium is in group $16$ of the periodic table. How many valence electrons does an atom of selenium have?",
+        "choices": [
+          "$16$",
+          "$2$",
+          "$8$",
+          "$6$"
+        ],
+        "answer": 3,
+        "working": "For groups 13 to 18, valence electrons $=$ group number $- 10 = 16 - 10 = 6$."
+      }
+    ]
+  },
+  "c20-1-1-c": {
+    "lessonId": "c20-1-1",
+    "title": "Atoms, Ions and the Periodic Table, Part 3: How Atoms Become Ions",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A stable octet",
+        "t": 23.041
+      },
+      {
+        "title": "Metals lose electrons",
+        "t": 65.563
+      },
+      {
+        "title": "Non-metals gain electrons",
+        "t": 105.233
+      },
+      {
+        "title": "The charge from the group",
+        "t": 144.041
+      },
+      {
+        "title": "Your turn",
+        "t": 185.872
+      },
+      {
+        "title": "Summary",
+        "t": 217.081
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-1-c:q",
+        "t": 194.238,
+        "prompt": "Barium is a metal in group $2$. Which ion does barium form?",
+        "choices": [
+          "$\\ce{Ba^2+}$",
+          "$\\ce{Ba^2-}$",
+          "$\\ce{Ba+}$",
+          "$\\ce{Ba^6-}$"
+        ],
+        "answer": 0,
+        "working": "Group $2$: $2$ valence electrons. A metal loses them, leaving $2$ more protons than electrons: a charge of 2+."
+      }
+    ]
+  },
+  "c20-1-1-d": {
+    "lessonId": "c20-1-1",
+    "title": "Atoms, Ions and the Periodic Table, Part 4: Naming Ions and Counting Electrons",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Predicting two ions",
+        "t": 21.44
+      },
+      {
+        "title": "Names and charges",
+        "t": 68.213
+      },
+      {
+        "title": "Counting electrons in an ion",
+        "t": 109.289
+      },
+      {
+        "title": "A negative charge adds electrons",
+        "t": 151.687
+      },
+      {
+        "title": "Your turn",
+        "t": 180.123
+      },
+      {
+        "title": "Summary",
+        "t": 216.895
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-1-d:q",
+        "t": 191.558,
+        "prompt": "How many electrons does the ion $\\ce{N^3-}$ have? (Nitrogen, atomic number $7$.)",
+        "choices": [
+          "$4$",
+          "$7$",
+          "$10$",
+          "$3$"
+        ],
+        "answer": 2,
+        "working": "Electrons $=$ atomic number $-$ charge $= 7 - (-3) = 7 + 3 = 10$."
+      }
+    ]
+  },
+  "c20-1-2": {
+    "lessonId": "c20-1-2",
+    "title": "Ionic Compounds, Part 1: Ionic Bonds and Formulas",
+    "duration": 262,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electron transfer",
+        "t": 24.441
+      },
+      {
+        "title": "A crystal lattice",
+        "t": 65.726
+      },
+      {
+        "title": "Writing formulas",
+        "t": 112.045
+      },
+      {
+        "title": "Use the fewest ions",
+        "t": 161.297
+      },
+      {
+        "title": "Your turn",
+        "t": 189.883
+      },
+      {
+        "title": "Summary",
+        "t": 224.275
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-1-2:q",
+        "t": 202.467,
+        "prompt": "Calcium forms $\\ce{Ca^2+}$ and nitrogen forms the nitride ion, $\\ce{N^3-}$. What is the formula of calcium nitride?",
+        "choices": [
+          "$\\ce{CaN}$",
+          "$\\ce{Ca2N3}$",
+          "$\\ce{Ca3N2}$",
+          "$\\ce{Ca3N}$"
+        ],
+        "answer": 2,
+        "working": "The LCM of $2$ and $3$ is $6$: three $\\ce{Ca^2+}$ give 6+ and two $\\ce{N^3-}$ give 6−."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",

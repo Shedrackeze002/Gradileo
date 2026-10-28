@@ -50,6 +50,7 @@ describe('speechText', () => {
     expect(speechText("Aisha paints for three hours; Aisha's rate is one third.")).toBe("Ayesha paints for three hours; Ayesha's rate is one third.");
     expect(speechText("Swap Ava and Kwame; Kwame's job changes.")).toBe("Swap Ava and Kwahmay; Kwahmay's job changes.");
     expect(speechText('Jun jumps farther than Junaid in June.')).toBe('Joon jumps farther than Junaid in June.');
+    expect(speechText('Amedeo Avogadro was an Italian scientist.')).toBe('Ama-day-o Avogadro was an Italian scientist.');
     expect(speechText('EI: 0.02 times 960. CPP, EI and tax, not EIS.')).toBe('E I: 0.02 times 960. CPP, E I and tax, not EIS.');
     expect(speechText('An eight-by-twelve print and a two-by-four.')).toBe('An eight by twelve print and a two by four.');
     expect(speechText('It bisects the chord. Bisect it with the perpendicular bisector.')).toBe('It bi-sects the chord. Bi-sect it with the perpendicular bi-sector.');

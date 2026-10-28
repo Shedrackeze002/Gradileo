@@ -24,7 +24,7 @@ export function speechText(say: string): string {
     .replace(/\b([B-Z])(?=[’']s\b)/g, (l) => LETTER_NAMES[l]);
   // Words the voice gets wrong, respelled as they sound ("biweekly" comes out "boy-weekly", "deci"
   // as "Desai", "break-even" as "Bray-Keevan", "cosecant" as "co-second", "Aisha" as "Ah-shah",
-  // "Kwame" as "Quam", "Jun" as "John", "GST" often as "GSD", "EI" as "I", "a chord bisects the
+  // "Kwame" as "Quam", "Jun" as "John", "Amedeo" (Avogadro) as "Aym-dee-oh", "GST" often as "GSD", "EI" as "I", "a chord bisects the
   // chord" as "a cord by sex the cord", "lengths" as "links"), "eighty-one" and "x-tiles" said
   // without their hyphens (with them, the voice blurs them into "A to 1" and "x styles"), and sizes like "eight-by-twelve", which run
   // together, said as separate words. The metal lead is always read as the verb ("leed"), so where it is
@@ -44,6 +44,7 @@ export function speechText(say: string): string {
     .replace(/\bAisha\b/g, 'Ayesha')
     .replace(/\bKwame\b/g, 'Kwahmay')
     .replace(/\bJun\b/g, 'Joon')
+    .replace(/\bAmedeo\b/g, 'Ama-day-o')
     .replace(/(\w)-by-(\w)/g, '$1 by $2');
 }
 
