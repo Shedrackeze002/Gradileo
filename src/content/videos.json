@@ -11528,6 +11528,1041 @@
       }
     ]
   },
+  "c30-3-6": {
+    "lessonId": "c30-3-6",
+    "title": "Esterification and Polymerisation, Part 1: Esterification",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Esterification",
+        "t": 25.663
+      },
+      {
+        "title": "Which atoms leave",
+        "t": 53.418
+      },
+      {
+        "title": "The ester",
+        "t": 84.094
+      },
+      {
+        "title": "In the laboratory",
+        "t": 112.18
+      },
+      {
+        "title": "Your turn",
+        "t": 147.939
+      },
+      {
+        "title": "Summary",
+        "t": 184.054
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-6:q",
+        "t": 159.831,
+        "prompt": "Propanoic acid, $\\ce{C3H6O2}$, reacts with ethanol, $\\ce{C2H6O}$, to form an ester and water. What is the molecular formula of the ester?",
+        "choices": [
+          "$\\ce{C5H12O3}$",
+          "$\\ce{C5H10O3}$",
+          "$\\ce{C5H10O2}$",
+          "$\\ce{C5H8O2}$"
+        ],
+        "answer": 2,
+        "working": "The ester is the acid and the alcohol joined, less one water: $\\ce{C3H6O2} + \\ce{C2H6O} = \\ce{C5H12O3}$, and taking away $\\ce{H2O}$ leaves $\\ce{C5H10O2}$."
+      }
+    ]
+  },
+  "c30-3-6-b": {
+    "lessonId": "c30-3-6",
+    "title": "Esterification and Polymerisation, Part 2: Naming Esters",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two words",
+        "t": 24.075
+      },
+      {
+        "title": "Methyl propanoate",
+        "t": 58.972
+      },
+      {
+        "title": "The order of the words",
+        "t": 92.401
+      },
+      {
+        "title": "Back to the acid and alcohol",
+        "t": 135.822
+      },
+      {
+        "title": "Your turn",
+        "t": 177.539
+      },
+      {
+        "title": "Summary",
+        "t": 209.642
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-6-b:q",
+        "t": 186.656,
+        "prompt": "Which carboxylic acid and which alcohol react to make propyl ethanoate?",
+        "choices": [
+          "Ethanoic acid and propan‑1‑ol",
+          "Propanoic acid and ethanol",
+          "Propanoic acid and propan‑1‑ol",
+          "Ethanoic acid and ethanol"
+        ],
+        "answer": 0,
+        "working": "The -oate word, ethanoate, comes from ethanoic acid. The alkyl word, propyl, comes from propan-1-ol. The ester is $\\ce{CH3-COO-CH2-CH2-CH3}$."
+      }
+    ]
+  },
+  "c30-3-6-c": {
+    "lessonId": "c30-3-6",
+    "title": "Esterification and Polymerisation, Part 3: Addition Polymers",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polymers and monomers",
+        "t": 19.904
+      },
+      {
+        "title": "Poly(ethene)",
+        "t": 40.498
+      },
+      {
+        "title": "Common addition polymers",
+        "t": 84.691
+      },
+      {
+        "title": "Poly(propene)",
+        "t": 114.955
+      },
+      {
+        "title": "The double bond does not stay",
+        "t": 147.317
+      },
+      {
+        "title": "Your turn",
+        "t": 172.611
+      },
+      {
+        "title": "Summary",
+        "t": 205.372
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-6-c:q",
+        "t": 181.357,
+        "prompt": "A segment of a polymer chain is $\\ce{-CH2-CHCl-CH2-CHCl-CH2-CHCl-{}}$. Which monomer was it made from?",
+        "choices": [
+          "$\\ce{CH3-CH2Cl}$",
+          "$\\ce{CHCl=CHCl}$",
+          "$\\ce{CH2=CH2}$",
+          "$\\ce{CH2=CHCl}$"
+        ],
+        "answer": 3,
+        "working": "The repeating unit is $\\ce{-[CH2-CHCl]-{}}$. Putting the double bond back between its two carbons gives chloroethene, $\\ce{CH2=CHCl}$: the polymer is PVC."
+      }
+    ]
+  },
+  "c30-3-6-d": {
+    "lessonId": "c30-3-6",
+    "title": "Esterification and Polymerisation, Part 4: Condensation Polymers",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two reacting groups",
+        "t": 17.918
+      },
+      {
+        "title": "Polyesters, nylon and nature",
+        "t": 63.315
+      },
+      {
+        "title": "Finding the monomers",
+        "t": 101.018
+      },
+      {
+        "title": "Addition or condensation?",
+        "t": 131.21
+      },
+      {
+        "title": "Counting units",
+        "t": 163.244
+      },
+      {
+        "title": "Your turn",
+        "t": 197.505
+      },
+      {
+        "title": "Summary",
+        "t": 231.806
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-6-d:q",
+        "t": 210.307,
+        "prompt": "Hexane-1,6-diamine, $\\ce{H2N-(CH2)6-NH2}$, and hexanedioic acid, $\\ce{HOOC-(CH2)4-COOH}$, link into long chains (nylon). What kind of polymer forms?",
+        "choices": [
+          "An addition polymer; no other product forms",
+          "A condensation polymer; water also forms",
+          "An addition polymer; water also forms",
+          "A condensation polymer; no other product forms"
+        ],
+        "answer": 1,
+        "working": "Each $\\ce{-NH2}$ reacts with a $\\ce{-COOH}$, forming an amide link and releasing water. Neither monomer has a $\\ce{C=C}$ double bond."
+      }
+    ]
+  },
+  "c30-3-7": {
+    "lessonId": "c30-3-7",
+    "title": "Fossil Fuels and Combustion, Part 1: Fractional Distillation",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fossil fuels",
+        "t": 22.807
+      },
+      {
+        "title": "The fractionating column",
+        "t": 63.033
+      },
+      {
+        "title": "The fractions",
+        "t": 124.858
+      },
+      {
+        "title": "Where does it collect?",
+        "t": 160.309
+      },
+      {
+        "title": "Your turn",
+        "t": 196.831
+      },
+      {
+        "title": "Summary",
+        "t": 223.526
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-7:q",
+        "t": 206.607,
+        "prompt": "In a fractionating column, where are the fractions with the lowest boiling points collected?",
+        "choices": [
+          "At the top, where the column is coolest",
+          "At the bottom, where the column is hottest",
+          "At the top, where the column is hottest",
+          "At the bottom, where the column is coolest"
+        ],
+        "answer": 0,
+        "working": "The column is hottest at the bottom and coolest at the top. Small molecules with low boiling points stay as gases until they reach the cool top, where they condense."
+      }
+    ]
+  },
+  "c30-3-7-b": {
+    "lessonId": "c30-3-7",
+    "title": "Fossil Fuels and Combustion, Part 2: Cracking",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cracking",
+        "t": 18.338
+      },
+      {
+        "title": "Atoms are conserved",
+        "t": 58.415
+      },
+      {
+        "title": "A missing product",
+        "t": 90.039
+      },
+      {
+        "title": "Your turn",
+        "t": 127.764
+      },
+      {
+        "title": "Summary",
+        "t": 165.694
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-7-b:q",
+        "t": 140.037,
+        "prompt": "Cracking breaks a large alkane into smaller molecules: $\\ce{C16H34 -> C10H22 + 2X}$. What is the formula of X?",
+        "choices": [
+          "$\\ce{C6H12}$",
+          "$\\ce{C3H8}$",
+          "$\\ce{C3H6}$",
+          "$\\ce{C6H14}$"
+        ],
+        "answer": 2,
+        "working": "Carbon: $16 - 10 = 6$, shared by 2 molecules: 3 each. Hydrogen: $34 - 22 = 12$, 6 each. X is $\\ce{C3H6}$, propene: $\\ce{C16H34 -> C10H22 + 2C3H6}$."
+      }
+    ]
+  },
+  "c30-3-7-c": {
+    "lessonId": "c30-3-7",
+    "title": "Fossil Fuels and Combustion, Part 3: Combustion Equations",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Complete and incomplete",
+        "t": 20.597
+      },
+      {
+        "title": "Burning octane",
+        "t": 50.335
+      },
+      {
+        "title": "Burning an alcohol",
+        "t": 95.491
+      },
+      {
+        "title": "Incomplete combustion",
+        "t": 138.918
+      },
+      {
+        "title": "Your turn",
+        "t": 172.553
+      },
+      {
+        "title": "Summary",
+        "t": 219.454
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-7-c:q",
+        "t": 189.202,
+        "prompt": "Ethane burns in a limited supply of oxygen, forming only carbon monoxide and water: $\\ce{C2H6 + O2 -> CO + H2O}$. Which coefficients, in order, balance it with the smallest whole numbers?",
+        "choices": [
+          "$2,\\ 7,\\ 4,\\ 6$",
+          "$1,\\ 5,\\ 2,\\ 3$",
+          "$1,\\ 2\\tfrac{1}{2},\\ 2,\\ 3$",
+          "$2,\\ 5,\\ 4,\\ 6$"
+        ],
+        "answer": 3,
+        "working": "Carbon: $\\ce{2CO}$. Hydrogen: $\\ce{3H2O}$. Oxygen on the right: $2 + 3 = 5$ atoms, so $2\\tfrac{1}{2}\\ \\ce{O2}$. Doubling: $\\ce{2C2H6 + 5O2 -> 4CO + 6H2O}$. Check: C $4 = 4$, H $12 = 12$, O $10 = 10$."
+      }
+    ]
+  },
+  "c30-3-7-d": {
+    "lessonId": "c30-3-7",
+    "title": "Fossil Fuels and Combustion, Part 4: Burning Fossil Fuels and the Environment",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What burning releases",
+        "t": 22.717
+      },
+      {
+        "title": "Reducing the damage",
+        "t": 81.334
+      },
+      {
+        "title": "Carbon dioxide from a fuel",
+        "t": 118.568
+      },
+      {
+        "title": "Your turn",
+        "t": 187.151
+      },
+      {
+        "title": "Summary",
+        "t": 233.847
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-7-d:q",
+        "t": 200.055,
+        "prompt": "Methane burns completely: $\\ce{CH4 + 2O2 -> CO2 + 2H2O}$. What mass of carbon dioxide forms when $100\\ \\text{g}$ of methane burns? Use $M(\\ce{CH4}) = 16.05\\ \\text{g/mol}$ and $M(\\ce{CO2}) = 44.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$36.5\\ \\text{g}$",
+          "$274\\ \\text{g}$",
+          "$137\\ \\text{g}$",
+          "$548\\ \\text{g}$"
+        ],
+        "answer": 1,
+        "working": "$n(\\ce{CH4}) = 100 \\div 16.05 = 6.231\\ \\text{mol}$, which gives $6.231\\ \\text{mol}$ of $\\ce{CO2}$ (1 to 1). $m = 6.231 \\times 44.01 = 274\\ \\text{g}$."
+      }
+    ]
+  },
+  "c30-4-1": {
+    "lessonId": "c30-4-1",
+    "title": "Dynamic Equilibrium, Part 1: Reversible Reactions",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reversible reactions",
+        "t": 32.019
+      },
+      {
+        "title": "Dynamic equilibrium",
+        "t": 85.88
+      },
+      {
+        "title": "Three conditions",
+        "t": 137.995
+      },
+      {
+        "title": "Your turn",
+        "t": 182.217
+      },
+      {
+        "title": "Summary",
+        "t": 214.153
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-1:q",
+        "t": 189.86,
+        "prompt": "Which of these systems can reach dynamic equilibrium?",
+        "choices": [
+          "Water evaporating from an open beaker",
+          "A candle burning in open air",
+          "Water and water vapour in a sealed bottle at constant temperature",
+          "Carbonated water losing its bubbles in an open glass"
+        ],
+        "answer": 2,
+        "working": "The sealed bottle is a closed system at constant temperature, so evaporation and condensation can reach equal rates. In the open systems a product escapes, so the reverse process cannot keep up."
+      }
+    ]
+  },
+  "c30-4-1-b": {
+    "lessonId": "c30-4-1",
+    "title": "Dynamic Equilibrium, Part 2: Features of Equilibrium",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is true at equilibrium",
+        "t": 20.179
+      },
+      {
+        "title": "Evidence that it never stops",
+        "t": 64.606
+      },
+      {
+        "title": "Three kinds of equilibrium",
+        "t": 103.594
+      },
+      {
+        "title": "From either side",
+        "t": 144.552
+      },
+      {
+        "title": "Your turn",
+        "t": 183.209
+      },
+      {
+        "title": "Summary",
+        "t": 215.754
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-1-b:q",
+        "t": 195.947,
+        "prompt": "A reversible reaction in a sealed flask at constant temperature has reached dynamic equilibrium. Which statement is true?",
+        "choices": [
+          "The forward and reverse reactions have stopped.",
+          "The concentrations of the reactants and products are equal.",
+          "Equilibrium can be reached only by starting from the reactants.",
+          "The forward and reverse reactions continue at equal rates."
+        ],
+        "answer": 3,
+        "working": "At dynamic equilibrium both reactions keep going at equal rates, so the concentrations stay constant, but not necessarily equal. It can be reached from either side."
+      }
+    ]
+  },
+  "c30-4-1-c": {
+    "lessonId": "c30-4-1",
+    "title": "Dynamic Equilibrium, Part 3: Concentration–Time Graphs",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The position of equilibrium",
+        "t": 22.755
+      },
+      {
+        "title": "Reading the graph",
+        "t": 46.708
+      },
+      {
+        "title": "Finding the equation",
+        "t": 113.384
+      },
+      {
+        "title": "Your turn",
+        "t": 174.224
+      },
+      {
+        "title": "Summary",
+        "t": 210.115
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-1-c:q",
+        "t": 185.282,
+        "prompt": "Gases A and B react in a sealed flask to form gas C. On a concentration–time graph, $[\\text{A}]$ falls from $0.80$ to $0.50\\ \\text{mol/L}$, $[\\text{B}]$ falls from $0.60$ to $0.50\\ \\text{mol/L}$, and $[\\text{C}]$ rises from $0$ to $0.20\\ \\text{mol/L}$, all levelling off at $40\\ \\text{s}$. Which equation matches?",
+        "choices": [
+          "$\\ce{5A + 5B <=> 2C}$",
+          "$\\ce{3A + B <=> 2C}$",
+          "$\\ce{A + 3B <=> 2C}$",
+          "$\\ce{3A + B <=> C}$"
+        ],
+        "answer": 1,
+        "working": "Changes: $0.30$, $0.10$ and $0.20\\ \\text{mol/L}$, and $0.30 : 0.10 : 0.20 = 3 : 1 : 2$. The final values $0.50 : 0.50 : 0.20$ are not the ratio of the coefficients."
+      }
+    ]
+  },
+  "c30-4-1-d": {
+    "lessonId": "c30-4-1",
+    "title": "Dynamic Equilibrium, Part 4: Rate–Time Graphs",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Forward and reverse rates",
+        "t": 20.07
+      },
+      {
+        "title": "Reading a rate graph",
+        "t": 61.748
+      },
+      {
+        "title": "Two graphs, one story",
+        "t": 101.933
+      },
+      {
+        "title": "Your turn",
+        "t": 141.781
+      },
+      {
+        "title": "Summary",
+        "t": 183.986
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-1-d:q",
+        "t": 159.64,
+        "prompt": "A sealed flask starts with reactants only. Its forward rate falls from $0.70$ and its reverse rate rises from $0$, until both are $0.25\\ \\text{mol/(L·s)}$ at $30\\ \\text{s}$. Which describes the system at $15\\ \\text{s}$?",
+        "choices": [
+          "Products are still forming overall: the forward rate is greater.",
+          "It is at equilibrium, because both reactions are happening.",
+          "Reactants are forming overall: the reverse rate is greater.",
+          "Both reactions have stopped."
+        ],
+        "answer": 0,
+        "working": "At $15\\ \\text{s}$ the curves have not met: the forward rate is still greater. Equilibrium needs equal rates, reached at $30\\ \\text{s}$."
+      }
+    ]
+  },
+  "c30-4-2": {
+    "lessonId": "c30-4-2",
+    "title": "The Equilibrium Constant, Part 1: The Equilibrium Law",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three experiments",
+        "t": 29.211
+      },
+      {
+        "title": "The equilibrium law",
+        "t": 82.906
+      },
+      {
+        "title": "Writing an expression",
+        "t": 116.576
+      },
+      {
+        "title": "Powers, not multipliers",
+        "t": 154.061
+      },
+      {
+        "title": "Your turn",
+        "t": 184.509
+      },
+      {
+        "title": "Summary",
+        "t": 220.986
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-2:q",
+        "t": 197.864,
+        "prompt": "Which is the equilibrium law expression for $\\ce{2SO2(g) + O2(g) <=> 2SO3(g)}$?",
+        "choices": [
+          "$K_c = \\dfrac{[\\ce{SO3}]^2}{[\\ce{SO2}]^2[\\ce{O2}]}$",
+          "$K_c = \\dfrac{[\\ce{SO2}]^2[\\ce{O2}]}{[\\ce{SO3}]^2}$",
+          "$K_c = \\dfrac{2[\\ce{SO3}]}{2[\\ce{SO2}][\\ce{O2}]}$",
+          "$K_c = \\dfrac{[\\ce{SO3}]}{[\\ce{SO2}][\\ce{O2}]}$"
+        ],
+        "answer": 0,
+        "working": "Products over reactants, each to the power of its coefficient: $[\\ce{SO3}]^2$ on top, $[\\ce{SO2}]^2[\\ce{O2}]$ on the bottom."
+      }
+    ]
+  },
+  "c30-4-2-b": {
+    "lessonId": "c30-4-2",
+    "title": "The Equilibrium Constant, Part 2: Solids, Liquids and the Size of K",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pure solids and liquids",
+        "t": 23.346
+      },
+      {
+        "title": "What the size of K tells you",
+        "t": 86.107
+      },
+      {
+        "title": "Related equations",
+        "t": 110.54
+      },
+      {
+        "title": "Your turn",
+        "t": 165.005
+      },
+      {
+        "title": "Summary",
+        "t": 199.773
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-2-b:q",
+        "t": 177.812,
+        "prompt": "Which is the equilibrium law expression for $\\ce{C(s) + H2O(g) <=> CO(g) + H2(g)}$?",
+        "choices": [
+          "$K_c = \\dfrac{[\\ce{CO}][\\ce{H2}]}{[\\ce{C}][\\ce{H2O}]}$",
+          "$K_c = \\dfrac{[\\ce{H2O}]}{[\\ce{CO}][\\ce{H2}]}$",
+          "$K_c = \\dfrac{[\\ce{CO}][\\ce{H2}]}{[\\ce{H2O}]}$",
+          "$K_c = [\\ce{CO}][\\ce{H2}]$"
+        ],
+        "answer": 2,
+        "working": "Carbon is a pure solid, so it is left out. The water is steam, $\\ce{H2O(g)}$, a gas, so it stays in, on the bottom."
+      }
+    ]
+  },
+  "c30-4-2-c": {
+    "lessonId": "c30-4-2",
+    "title": "The Equilibrium Constant, Part 3: Calculating K with ICE Tables",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "K from equilibrium concentrations",
+        "t": 19.827
+      },
+      {
+        "title": "ICE tables",
+        "t": 57.593
+      },
+      {
+        "title": "Setting up the table",
+        "t": 88.443
+      },
+      {
+        "title": "Solving for K",
+        "t": 141.414
+      },
+      {
+        "title": "Your turn",
+        "t": 190.336
+      },
+      {
+        "title": "Summary",
+        "t": 238.39
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-2-c:q",
+        "t": 208.859,
+        "prompt": "A sealed flask starts with $0.200\\ \\text{mol/L}$ each of $\\ce{H2}$ and $\\ce{I2}$: $\\ce{H2(g) + I2(g) <=> 2HI(g)}$. At equilibrium, $[\\ce{HI}] = 0.300\\ \\text{mol/L}$. What is $K_c$, to three significant figures?",
+        "choices": [
+          "$2.25$",
+          "$36.0$",
+          "$120$",
+          "$9.00$"
+        ],
+        "answer": 1,
+        "working": "$2x = 0.300$, so $x = 0.150$ and $[\\ce{H2}] = [\\ce{I2}] = 0.200 - 0.150 = 0.0500$. $K_c = \\dfrac{(0.300)^2}{(0.0500)(0.0500)} = 36.0$."
+      }
+    ]
+  },
+  "c30-4-2-d": {
+    "lessonId": "c30-4-2",
+    "title": "The Equilibrium Constant, Part 4: Working Backwards from K",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A perfect square",
+        "t": 20.656
+      },
+      {
+        "title": "Taking square roots",
+        "t": 63.228
+      },
+      {
+        "title": "A very small K",
+        "t": 97.111
+      },
+      {
+        "title": "Your turn",
+        "t": 175.507
+      },
+      {
+        "title": "Summary",
+        "t": 223.307
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-2-d:q",
+        "t": 192.828,
+        "prompt": "$0.200\\ \\text{mol/L}$ each of $\\ce{H2}$ and $\\ce{Br2}$ are put into an empty flask at a temperature where $K_c = 16.0$ for $\\ce{H2(g) + Br2(g) <=> 2HBr(g)}$. What is the equilibrium concentration of $\\ce{HBr}$, to three significant figures?",
+        "choices": [
+          "$0.133\\ \\text{mol/L}$",
+          "$0.0667\\ \\text{mol/L}$",
+          "$0.160\\ \\text{mol/L}$",
+          "$0.267\\ \\text{mol/L}$"
+        ],
+        "answer": 3,
+        "working": "$\\sqrt{16.0} = 4.00 = \\dfrac{2x}{0.200 - x}$, so $2x = 0.800 - 4.00x$, $6.00x = 0.800$ and $x = 0.1333$. $[\\ce{HBr}] = 2x = 0.267\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c30-4-3": {
+    "lessonId": "c30-4-3",
+    "title": "Le Châtelier's Principle, Part 1: Stress and Shift",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Le Châtelier's principle",
+        "t": 35.036
+      },
+      {
+        "title": "Changing a concentration",
+        "t": 89.731
+      },
+      {
+        "title": "Removing a product",
+        "t": 116.076
+      },
+      {
+        "title": "Your turn",
+        "t": 151.112
+      },
+      {
+        "title": "Summary",
+        "t": 189.252
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-3:q",
+        "t": 168.729,
+        "prompt": "The system $\\ce{PCl5(g) <=> PCl3(g) + Cl2(g)}$ is at equilibrium. More chlorine is added at constant volume. How does the equilibrium respond, and what happens to $[\\ce{PCl5}]$?",
+        "choices": [
+          "Shifts right; $[\\ce{PCl5}]$ decreases.",
+          "Shifts left; $[\\ce{PCl5}]$ increases.",
+          "Shifts left; $[\\ce{PCl5}]$ decreases.",
+          "No shift; $[\\ce{PCl5}]$ stays the same."
+        ],
+        "answer": 1,
+        "working": "Chlorine is a product, so adding it shifts the equilibrium left, using up some of the added chlorine. A shift left makes more $\\ce{PCl5}$."
+      }
+    ]
+  },
+  "c30-4-3-b": {
+    "lessonId": "c30-4-3",
+    "title": "Le Châtelier's Principle, Part 2: Reading a Shift",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding hydrogen",
+        "t": 20.295
+      },
+      {
+        "title": "The reaction quotient",
+        "t": 71.338
+      },
+      {
+        "title": "A colour change",
+        "t": 122.687
+      },
+      {
+        "title": "Your turn",
+        "t": 159.33
+      },
+      {
+        "title": "Summary",
+        "t": 195.114
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-3-b:q",
+        "t": 174.564,
+        "prompt": "The system $\\ce{Fe^3+(aq) + SCN^-(aq) <=> FeSCN^2+(aq)}$ is at equilibrium; the red colour comes from $\\ce{FeSCN^2+}$. Sodium hydroxide solution is added, which removes $\\ce{Fe^3+}$ ions as solid iron(III) hydroxide. What happens?",
+        "choices": [
+          "Shifts left; the red colour gets paler.",
+          "Shifts right; the red colour gets darker.",
+          "Shifts left; the red colour gets darker.",
+          "No shift; the colour does not change."
+        ],
+        "answer": 0,
+        "working": "Removing a reactant, $\\ce{Fe^3+}$, shifts the equilibrium left to replace some of it. That uses up $\\ce{FeSCN^2+}$, so the red colour gets paler."
+      }
+    ]
+  },
+  "c30-4-3-c": {
+    "lessonId": "c30-4-3",
+    "title": "Le Châtelier's Principle, Part 3: Volume and Pressure",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Count the gas molecules",
+        "t": 21.478
+      },
+      {
+        "title": "Squeezing a brown gas",
+        "t": 74.456
+      },
+      {
+        "title": "Changes that cause no shift",
+        "t": 110.786
+      },
+      {
+        "title": "Your turn",
+        "t": 144.364
+      },
+      {
+        "title": "Summary",
+        "t": 181.87
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-3-c:q",
+        "t": 158.42,
+        "prompt": "The system $\\ce{C(s) + H2O(g) <=> CO(g) + H2(g)}$ is at equilibrium in a closed container. The volume of the container is decreased. How does the equilibrium respond?",
+        "choices": [
+          "Shifts right, towards the side with more gas molecules.",
+          "No shift: there are two particles on each side.",
+          "Shifts left, towards the side with fewer gas molecules.",
+          "No shift: a solid is present."
+        ],
+        "answer": 2,
+        "working": "Count only the gases: $1$ mole ($\\ce{H2O}$) on the left and $2$ on the right. A smaller volume favours the side with fewer gas molecules: the left."
+      }
+    ]
+  },
+  "c30-4-3-d": {
+    "lessonId": "c30-4-3",
+    "title": "Le Châtelier's Principle, Part 4: Temperature, K and Catalysts",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Energy as a reactant or product",
+        "t": 26.32
+      },
+      {
+        "title": "Temperature changes K",
+        "t": 90.346
+      },
+      {
+        "title": "Catalysts",
+        "t": 128.696
+      },
+      {
+        "title": "Your turn",
+        "t": 169.11
+      },
+      {
+        "title": "Summary",
+        "t": 215.236
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-3-d:q",
+        "t": 189.089,
+        "prompt": "For $\\ce{2SO2(g) + O2(g) <=> 2SO3(g)}$, $K_c$ is $2.5 \\times 10^{3}$ at $300^\\circ\\text{C}$ and $34$ at $500^\\circ\\text{C}$ (values for this question). Is the forward reaction exothermic or endothermic?",
+        "choices": [
+          "Endothermic: $K_c$ falls as the temperature rises.",
+          "Exothermic: $K_c$ is greater than 1.",
+          "Neither: $K_c$ does not depend on temperature.",
+          "Exothermic: $K_c$ falls as the temperature rises."
+        ],
+        "answer": 3,
+        "working": "$K_c$ falls as the temperature rises, so heating shifts the equilibrium left: the reverse reaction is endothermic, and the forward reaction exothermic."
+      }
+    ]
+  },
+  "c30-4-4": {
+    "lessonId": "c30-4-4",
+    "title": "Brønsted–Lowry Acids and Bases, Part 1: Proton Donors and Acceptors",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A hydrogen ion is a proton",
+        "t": 33.535
+      },
+      {
+        "title": "Donors and acceptors",
+        "t": 80.54
+      },
+      {
+        "title": "The hydronium ion",
+        "t": 119.576
+      },
+      {
+        "title": "Ammonia in water",
+        "t": 144.659
+      },
+      {
+        "title": "Your turn",
+        "t": 177.946
+      },
+      {
+        "title": "Summary",
+        "t": 212.155
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-4:q",
+        "t": 188.476,
+        "prompt": "In the reaction $\\ce{HNO2(aq) + NH3(aq) <=> NO2^-(aq) + NH4^+(aq)}$, which particle is the Brønsted–Lowry base?",
+        "choices": [
+          "$\\ce{HNO2}$",
+          "$\\ce{NO2-}$",
+          "$\\ce{NH4+}$",
+          "$\\ce{NH3}$"
+        ],
+        "answer": 3,
+        "working": "$\\ce{NH3}$ gains a proton and becomes $\\ce{NH4+}$, so it is the base. $\\ce{HNO2}$ loses the proton and becomes $\\ce{NO2-}$, so it is the acid."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
