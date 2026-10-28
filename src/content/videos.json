@@ -7533,6 +7533,108 @@
       }
     ]
   },
+  "c20-3-1-d": {
+    "lessonId": "c20-3-1",
+    "title": "Solutions, Electrolytes and Dissociation, Part 4: Moles of Ions and Ionisation",
+    "duration": 277,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Count ions, not atoms",
+        "t": 21.746
+      },
+      {
+        "title": "Moles of ions",
+        "t": 53.53
+      },
+      {
+        "title": "Acids ionise",
+        "t": 105.096
+      },
+      {
+        "title": "Dissociation or ionisation?",
+        "t": 151.956
+      },
+      {
+        "title": "Your turn",
+        "t": 199.619
+      },
+      {
+        "title": "Summary",
+        "t": 239.087
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-1-d:q",
+        "t": 212.928,
+        "prompt": "$0.25\\ \\text{mol}$ of potassium phosphate, $\\ce{K3PO4}$, dissolves completely in water. How many moles of ions does it release in total?",
+        "choices": [
+          "$0.25\\ \\text{mol}$",
+          "$0.75\\ \\text{mol}$",
+          "$1.00\\ \\text{mol}$",
+          "$2.00\\ \\text{mol}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{K3PO4(s) -> 3K+(aq) + PO4^3-(aq)}$, so each mole releases $3 + 1 = 4$ moles of ions: $0.25 \\times 4 = 1.00\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c20-3-2": {
+    "lessonId": "c20-3-2",
+    "title": "Solubility and Precipitates, Part 1: Saturated Solutions and Solubility",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Saturated or unsaturated",
+        "t": 26.674
+      },
+      {
+        "title": "Potassium nitrate",
+        "t": 78.114
+      },
+      {
+        "title": "Temperature",
+        "t": 128.79
+      },
+      {
+        "title": "Saturated is not concentrated",
+        "t": 171.093
+      },
+      {
+        "title": "Your turn",
+        "t": 195.67
+      },
+      {
+        "title": "Summary",
+        "t": 235.149
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-2:q",
+        "t": 214.161,
+        "prompt": "The solubility of sodium chloride is $36\\ \\text{g}$ per $100\\ \\text{g}$ of water at $20^\\circ\\text{C}$. $50\\ \\text{g}$ of it is stirred into $100\\ \\text{g}$ of water at $20^\\circ\\text{C}$. What happens?",
+        "choices": [
+          "All $50\\ \\text{g}$ dissolves, and the solution is unsaturated.",
+          "All $50\\ \\text{g}$ dissolves, and the solution is saturated.",
+          "$36\\ \\text{g}$ dissolves; the solution is saturated, with $14\\ \\text{g}$ of solid left.",
+          "$14\\ \\text{g}$ dissolves, and $36\\ \\text{g}$ of solid is left."
+        ],
+        "answer": 2,
+        "working": "Only $36\\ \\text{g}$ can dissolve in $100\\ \\text{g}$ of water at $20^\\circ\\text{C}$, so the solution is saturated and $50 - 36 = 14\\ \\text{g}$ of solid stays at the bottom."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
