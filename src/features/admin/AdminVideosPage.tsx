@@ -1,7 +1,8 @@
 /**
  * Explainer videos: every video built from the scripts in the repository, and its YouTube link.
  * After uploading a video to Gradileo's channel, an administrator pastes the link here; the
- * lesson then shows the video, with its questions.
+ * lesson then shows the video, with its questions. There are well over a thousand, so each course
+ * is folded until it is opened, and a search finds a video by its title or id.
  */
 import { useMemo, useState } from 'react';
 import { CheckCircle2, Clapperboard, ExternalLink, Link2, Trash2 } from 'lucide-react';
@@ -13,24 +14,32 @@ import { youtubeId } from '@/video/youtube.ts';
 
 const minutes = (s: number) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
 
+/** Matches shown at most while searching; a longer search narrows them. */
+const MAX_MATCHES = 50;
+
 export default function AdminVideosPage() {
   const links = useVideoLinks();
+  const [query, setQuery] = useState('');
+  const [open, setOpen] = useState<Set<string>>(new Set());
+  const q = query.trim().toLowerCase();
+  const matches = useMemo(() => (q ? VIDEOS.filter((v) => v.id.toLowerCase().includes(q) || v.title.toLowerCase().includes(q)) : VIDEOS), [q]);
+  const shown = q ? matches.slice(0, MAX_MATCHES) : matches;
   const groups = useMemo(() => {
     const out: Array<{ course: string; videos: ExplainerVideo[] }> = [];
-    for (const v of VIDEOS) {
+    for (const v of shown) {
       const course = courseOfLesson(v.lessonId)?.shortTitle ?? 'Other';
       const g = out.find((x) => x.course === course) ?? out[out.push({ course, videos: [] }) - 1];
       g.videos.push(v);
     }
     return out;
-  }, []);
+  }, [shown]);
   const linked = VIDEOS.filter((v) => links.data?.[v.id]).length;
   return (
     <div>
       <PageHeader
         eyebrow="Admin console"
         title="Explainer videos"
-        subtitle="Videos built from the scripts in the repository. Upload each one to Gradileo's YouTube channel (with its captions and thumbnail), then paste its link here so its lesson shows it."
+        subtitle="Videos built from the scripts in the repository. Upload each one to Gradileo's YouTube channel (with its thumbnail), then paste its link here so its lesson shows it."
       />
       {links.isLoading ? (
         <Skeleton className="h-48" />
@@ -46,16 +55,52 @@ export default function AdminVideosPage() {
           <p className="text-sm text-ink-3">
             {linked} of {VIDEOS.length} {VIDEOS.length === 1 ? 'video is' : 'videos are'} on YouTube.
           </p>
-          {groups.map((g) => (
-            <section key={g.course} className="space-y-3">
-              <h2 className="text-lg font-semibold">{g.course}</h2>
-              <ul className="space-y-3" aria-label={`${g.course} videos`}>
-                {g.videos.map((v) => (
-                  <VideoRow key={v.id} video={v} youtube={links.data?.[v.id] ?? null} />
-                ))}
-              </ul>
-            </section>
-          ))}
+          <Input label="Find a video" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Its title or id, like m10c-2-1" className="max-w-md" />
+          {q && (
+            <p className="text-sm text-ink-3" role="status">
+              {matches.length === 0
+                ? 'No video matches.'
+                : matches.length > MAX_MATCHES
+                  ? `Showing ${MAX_MATCHES} of ${matches.length} matches; type more to narrow them.`
+                  : `${matches.length} ${matches.length === 1 ? 'match' : 'matches'}.`}
+            </p>
+          )}
+          {groups.map((g) => {
+            // Rows are drawn only for an opened course or a search, so the page stays quick.
+            const expanded = !!q || open.has(g.course);
+            const onYouTube = g.videos.filter((v) => links.data?.[v.id]).length;
+            return (
+              <details
+                key={g.course}
+                open={expanded}
+                onToggle={(e) => {
+                  if (q) return;
+                  const isOpen = (e.currentTarget as HTMLDetailsElement).open;
+                  setOpen((was) => {
+                    const next = new Set(was);
+                    if (isOpen) next.add(g.course);
+                    else next.delete(g.course);
+                    return next;
+                  });
+                }}
+                className="space-y-3"
+              >
+                <summary className="cursor-pointer text-lg font-semibold">
+                  {g.course}{' '}
+                  <span className="text-sm font-normal text-ink-3">
+                    · {onYouTube} of {g.videos.length} on YouTube
+                  </span>
+                </summary>
+                {expanded && (
+                  <ul className="mt-3 space-y-3" aria-label={`${g.course} videos`}>
+                    {g.videos.map((v) => (
+                      <VideoRow key={v.id} video={v} youtube={links.data?.[v.id] ?? null} />
+                    ))}
+                  </ul>
+                )}
+              </details>
+            );
+          })}
         </div>
       )}
     </div>

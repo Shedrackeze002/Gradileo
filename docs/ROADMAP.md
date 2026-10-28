@@ -335,6 +335,12 @@ items ship or decisions change.
      (`--captions` adds ours), about 90 videos a day instead of about 20, and the 42 still waiting
      need only their thumbnail. It also keeps `youtube-uploaded.json` in Drive, since YouTube's
      listing once left a video out and the run uploaded it twice (the owner deleted the copy).
+   - To do, when the first non-maths videos go up (after the maths): change the channel
+     description so it covers every subject. Lead with a line that stays true as subjects are
+     added ("Gradileo explainer videos for Grades 5 to 12", then what each video does and how it
+     pauses for its question on gradileo.com), followed by a short "Subjects so far" line naming
+     each subject and its grades, which is updated as each new subject starts uploading. Name only
+     subjects that have videos on the channel.
    - Built: Math 30-2, all 97 videos at the calm pace (3:40 to 7:07, about 7.8 hours in all), the
      first course with topic-first title cards and no Alberta place names in the narration,
      rendered unit by unit and uploaded to Drive (checked: Drive holds every file of all 97). The
