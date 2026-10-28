@@ -154,6 +154,16 @@ export const fromAssignment = (a: Partial<Assignment>): Row => {
   return r;
 };
 
+/**
+ * The columns an edit of a saved assignment writes. An assignment stays in its class, and teachers
+ * have no UPDATE grant on class_id, so an update naming it is refused outright ("permission denied").
+ */
+export const assignmentChanges = (a: Partial<Assignment>): Row => {
+  const r = fromAssignment(a);
+  delete r.class_id;
+  return r;
+};
+
 export const toSubmission = (r: Row): Submission => ({
   id: r.id,
   assignmentId: r.assignment_id,

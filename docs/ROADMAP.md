@@ -537,6 +537,11 @@ items ship or decisions change.
      fresh numbers, so they are changed by count and difficulty and seen with Preview. "Your own
      questions · Questions 6–30" can be edited one by one. Also fixed: the "…" menu on an
      assignment row now opens over the page instead of under the cards below it.
+   - Fixed (28 October 2026, the owner could not edit a quiz or homework once it was saved, nor a
+     duplicate of one: "permission denied"): every save of an existing assignment also sent its
+     class, which teachers may not change (the database grants no update on `class_id`), so
+     Postgres refused the whole edit. Edits now leave the class out (`assignmentChanges`), and a
+     test checks the columns each save writes against the migrations' grants.
    - Built: "solve it on the canvas" answers. Every written response (the AI's and the
      teacher's) opens on a canvas built on the whiteboard's ink, with a Type tab beside it; the
      working is kept in the response as compact text (`engine/ink.ts`, up to four pages), checked
