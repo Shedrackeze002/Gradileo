@@ -55,6 +55,9 @@ describe('speechText', () => {
     expect(speechText('Dye-chlorine heptaoxide. The pipetted acid.')).toBe('Dye-chlorine hepta-oxide. The pih-petted acid.');
     expect(speechText('Electronegativity rises; their electronegativities differ. Svante Arrhenius.')).toBe('Electro-negativity rises; their electro-negativities differ. Svahntay Arrhenius.');
     expect(speechText('Le Chatelier’s principle, as Le Châtelier said.')).toBe('Luh Shah-tell-yay’s principle, as Luh Shah-tell-yay said.');
+    expect(speechText('Ethene, chloro-ethene and propene; propyne; a ketone; cycloalkanes; methoxymethane.')).toBe('Eth-een, chloro-eth-een and pro-peen; pro-pine; a kee-tone; cyclo-alkanes; methoxy-methane.');
+    // Names that only contain them keep their sound.
+    expect(speechText('Ethane, propane, polypropene and ethoxy groups.')).toBe('Ethane, propane, polypropene and ethoxy groups.');
     // Words that only start with deca keep their sound.
     expect(speechText('Decanting, decays and tetraphosphorus decaoxide.')).toBe('Decanting, decays and tetraphosphorus decaoxide.');
     expect(speechText('EI: 0.02 times 960. CPP, EI and tax, not EIS.')).toBe('E I: 0.02 times 960. CPP, E I and tax, not EIS.');
