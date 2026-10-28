@@ -347,15 +347,19 @@ script: name it with `<youtube id>=<video id>` (the admin console's Videos page 
 
 `video/tools/youtube-upload.ts` uploads finished videos to the channel in course order: the MP4
 with its title, description and tags (made from the script, as in `youtube.txt`), in Education,
-in English, then `thumbnail.png` and our `captions.srt`, and puts each in its unit's playlist in
-lesson order. It uses the owner's playlist when its title names the course and unit ("Math 10C -
+in English, then `thumbnail.png`, and puts each in its unit's playlist in lesson order. Our
+`captions.srt` goes up only with `--captions`: captions cost 400 quota units a video, most of what
+a finished video costs, and the owner found YouTube's automatic captions as good (28 October 2026),
+so the lesson player now shows those. It uses the owner's playlist when its title names the course and unit ("Math 10C -
 Unit 1 (Measurements)") and otherwise makes one in that style, and puts each playlist it touches
 back in lesson order if it is out of order (50 units a moved video). That needs the playlist set
 to **Manual** in YouTube Studio; one that sorts itself (by date) takes new videos at the end and
 cannot be reordered. `--limit 0` uploads nothing and only files and orders playlists. It takes each video's files from `video/out/<id>/`, or from its Drive folder when the course has been
 cleared from the session, and skips videos already on the channel (only filing them in their
-playlist if missing), so a run can be repeated. The channel may upload 10 videos a day; the tool
-stops by itself at that limit or the day's quota. `--limit N` uploads at most N, `--private` or
+playlist if missing), so a run can be repeated. The tool stops by itself at the channel's daily
+upload limit or the day's quota; a video that went up without its thumbnail is listed in
+`youtube-unfinished.json` in Drive and finished first on the next run, and every upload is recorded
+in `youtube-uploaded.json` there, so a video YouTube's listing leaves out is never uploaded twice. `--limit N` uploads at most N, `--private` or
 `--unlisted` holds them back, and `--dry-run` lists what it would upload:
 
     npx tsx video/tools/youtube-upload.ts --dry-run math-10c
@@ -376,9 +380,11 @@ with the YouTube Data API v3 enabled, the `youtube.force-ssl` scope on its conse
 (published **In production**, or the sign-in lapses after 7 days; it does not need Google's
 verification, since only the channel's own account signs in), and a Web application OAuth client
 whose refresh token was made in the OAuth 2.0 Playground while signed in as the channel. The API
-allows 10,000 units a day: an update costs 50 (about 200 renames a day), and an upload with its
-thumbnail, captions and playlist place about 600. Uploads through this project come out public
-(checked on 19 October 2026). The channel's own limit of 10 uploads a day binds first.
+allows 10,000 units a day, reset at midnight Pacific time: an update costs 50 (about 200 renames a
+day), a thumbnail 50, a playlist place 50 and captions 400; an upload itself counts against the
+channel's own daily limit instead, which YouTube raised past 100 on 24 October 2026. So about 90
+videos a day go up with their thumbnails, or about 20 with our captions too. Uploads through this
+project come out public (checked on 19 October 2026).
 
 By hand, the same steps in YouTube Studio:
 

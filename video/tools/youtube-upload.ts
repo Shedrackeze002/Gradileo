@@ -1,9 +1,11 @@
-// Usage: npx tsx video/tools/youtube-upload.ts [--dry-run] [--private | --unlisted] [--limit N] <video id | unit id | course id> ...
+// Usage: npx tsx video/tools/youtube-upload.ts [--dry-run] [--private | --unlisted] [--captions] [--limit N] <video id | unit id | course id> ...
 //
 // Uploads finished videos to the Gradileo YouTube channel, in course order: the MP4 with its title,
 // description and tags (made again from the script and src/content/videos.json, so they match
-// youtube.txt), then its thumbnail and our captions, and puts it in its unit's playlist in lesson
-// order. Each video's files come from video/out/<id>/ when it is still in the session, or else from
+// youtube.txt), then its thumbnail, and puts it in its unit's playlist in lesson order. Our captions
+// go up only with --captions: they cost 400 of the day's 10,000 quota units a video, and the owner
+// found YouTube's automatic captions as good (28 October 2026), so without them about 90 videos go
+// up a day instead of about 20. Each video's files come from video/out/<id>/ when it is still in the session, or else from
 // its folder in the owner's Drive. A video already on the channel (its title matches its script) is
 // not uploaded again, only put in its playlist if it is missing, so a run can be repeated. A unit or
 // course id stands for every video in videos.json in it.
@@ -16,11 +18,11 @@
 // manually).
 //
 // Videos are public unless --private or --unlisted is given. It stops at the day's API quota
-// (10,000 units: a thumbnail, captions and a playlist place cost about 500 a video) or the channel's
-// daily upload limit, and --limit N uploads at most N videos. Uploads count against the channel's
-// limit, not the quota, so a video can go up after the quota has run out; the run stops there, and
-// a video left without its thumbnail or captions is kept in youtube-unfinished.json in Drive
-// (video/lib/unfinished.ts) and finished first on the next run. It prints each upload as
+// (10,000 units: a thumbnail and a playlist place cost about 100 a video, our captions 400 more) or
+// the channel's daily upload limit, and --limit N uploads at most N videos. Uploads count against
+// the channel's limit, not the quota, so a video can go up after the quota has run out; the run
+// stops there, and a video left without its thumbnail (or, with --captions, its captions) is kept in
+// youtube-unfinished.json in Drive (video/lib/unfinished.ts) and finished first on the next run. It prints each upload as
 // "<video id> -> https://youtu.be/<youtube id>", for the Videos page of the admin console, and each
 // video it finishes as "<video id>: finishing on YouTube: …".
 //
@@ -155,11 +157,14 @@ const dayIsOver = (e: Error) => /quotaExceeded|uploadLimitExceeded|rateLimitExce
 async function finish(id: string, youtubeId: string, missing: Missing[], have?: { png: Buffer; srt: Buffer }): Promise<{ left: Missing[]; notes: string[]; over?: Error }> {
   const notes: string[] = [];
   const left: Missing[] = [];
-  const [png, srt] = have ? [{ data: have.png }, { data: have.srt }] : await fetchFiles(id, ['thumbnail.png', 'captions.srt']);
+  const file = { thumbnail: 'thumbnail.png', captions: 'captions.srt' } as const;
+  const got = have
+    ? { thumbnail: have.png, captions: have.srt }
+    : Object.fromEntries((await fetchFiles(id, missing.map((m) => file[m]))).map((f, i) => [missing[i], f.data]));
   for (const m of missing) {
     try {
-      if (m === 'thumbnail') await setThumbnail(youtubeId, png.data);
-      else await insertCaptions(youtubeId, srt.data);
+      if (m === 'thumbnail') await setThumbnail(youtubeId, got.thumbnail);
+      else await insertCaptions(youtubeId, got.captions);
       notes.push(m === 'thumbnail' ? 'thumbnail set' : 'captions added');
     } catch (e) {
       const err = e as Error;
@@ -175,6 +180,8 @@ async function finish(id: string, youtubeId: string, missing: Missing[], have?: 
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
+const withCaptions = args.includes('--captions');
+const extras: Missing[] = withCaptions ? ['thumbnail', 'captions'] : ['thumbnail'];
 const privacy: Privacy = args.includes('--private') ? 'private' : args.includes('--unlisted') ? 'unlisted' : 'public';
 const at = args.indexOf('--limit');
 const limit = at >= 0 ? Number(args[at + 1]) : Infinity;
@@ -191,6 +198,10 @@ const setUnfinished = (id: string, missing: Missing[]) => {
   else unfinished.delete(id);
   unfinishedChanged = true;
 };
+// Without --captions a video waiting only for our captions is finished: YouTube's automatic ones serve.
+if (!withCaptions && !dryRun) {
+  for (const [id, missing] of unfinished) if (missing.includes('captions')) setUnfinished(id, missing.filter((m) => m !== 'captions'));
+}
 
 const onChannel = new Map<string, string>();
 try {
@@ -239,7 +250,7 @@ for (const id of ids) {
       if (dayIsOver(err)) break;
       failed++;
     }
-    const missing = unfinished.get(id);
+    const missing = unfinished.get(id)?.filter((m) => withCaptions || m !== 'captions');
     if (missing?.length) {
       if (dryRun) {
         console.log(`${id}: would add its ${missing.join(' and ')}`);
@@ -278,8 +289,8 @@ for (const id of ids) {
     // Recorded at once, so a run that fails later still never uploads it again.
     uploaded.set(id, video.id);
     await saveUploaded(uploaded);
-    // The thumbnail and captions spend the day's API quota; what they miss is finished on a later run.
-    const r = await finish(id, video.id, ['thumbnail', 'captions'], f);
+    // The thumbnail (and captions) spend the day's API quota; what they miss is finished on a later run.
+    const r = await finish(id, video.id, extras, f);
     setUnfinished(id, r.left);
     const notes = r.notes.filter((n) => / not /.test(n));
     let over = r.over;
@@ -330,6 +341,6 @@ for (const { list, unit } of touched.values()) {
 const left = ids.filter((id) => !onChannel.has(id)).length - (dryRun ? 0 : done);
 console.log(
   `${done} ${dryRun ? 'to upload' : 'uploaded'}${failed ? `, ${failed} failed` : ''}; ${left} of ${ids.length} not on YouTube yet` +
-    (unfinished.size ? `; ${unfinished.size} on YouTube still need a thumbnail or captions` : ''),
+    (unfinished.size ? `; ${unfinished.size} on YouTube still need ${withCaptions ? 'a thumbnail or captions' : 'a thumbnail'}` : ''),
 );
 if (failed) process.exit(1);
