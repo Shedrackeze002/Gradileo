@@ -31,7 +31,8 @@ export function speechText(say: string): string {
   // the metal (lead two nitrate, a sample of lead) it is spelled as it sounds; "lead to" and "a big lead" keep theirs.
   // Chemistry prefixes: "deca" alone and in "decahydrate" is stressed "dih-KA", "heptaoxide" runs its
   // vowels together ("hep-TOWK-side"), "pipetted" comes out "PIPE-uh-did", "electronegativity" loses its
-  // "neg" ("electrong-gativity"), and the chemist Svante Arrhenius is "Svant".
+  // "neg" ("electrong-gativity"), the chemist Svante Arrhenius is "Svant", and Le Chatelier is
+  // "luh CHATE-lee-er".
   return words
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
@@ -53,6 +54,7 @@ export function speechText(say: string): string {
     .replace(/\b([Pp])ipetted\b/g, '$1ih-petted')
     .replace(/\b([Ee])lectronegativ/g, '$1lectro-negativ')
     .replace(/\bSvante\b/g, 'Svahntay')
+    .replace(/\bLe Ch[aâ]telier/g, 'Luh Shah-tell-yay')
     .replace(/(\w)-by-(\w)/g, '$1 by $2');
 }
 

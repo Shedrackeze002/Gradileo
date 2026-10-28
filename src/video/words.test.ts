@@ -54,6 +54,7 @@ describe('speechText', () => {
     expect(speechText('Octa eight, nona nine, and deca ten. Sodium carbonate decahydrate.')).toBe('Octa eight, nona nine, and decka ten. Sodium carbonate deckahydrate.');
     expect(speechText('Dye-chlorine heptaoxide. The pipetted acid.')).toBe('Dye-chlorine hepta-oxide. The pih-petted acid.');
     expect(speechText('Electronegativity rises; their electronegativities differ. Svante Arrhenius.')).toBe('Electro-negativity rises; their electro-negativities differ. Svahntay Arrhenius.');
+    expect(speechText('Le Chatelier’s principle, as Le Châtelier said.')).toBe('Luh Shah-tell-yay’s principle, as Luh Shah-tell-yay said.');
     // Words that only start with deca keep their sound.
     expect(speechText('Decanting, decays and tetraphosphorus decaoxide.')).toBe('Decanting, decays and tetraphosphorus decaoxide.');
     expect(speechText('EI: 0.02 times 960. CPP, EI and tax, not EIS.')).toBe('E I: 0.02 times 960. CPP, E I and tax, not EIS.');
