@@ -10693,6 +10693,841 @@
       }
     ]
   },
+  "c30-3-1-d": {
+    "lessonId": "c30-3-1",
+    "title": "Organic Compounds and How They Are Drawn, Part 4: General Formulas",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Alkanes",
+        "t": 18.677
+      },
+      {
+        "title": "Double bonds, rings and triple bonds",
+        "t": 59.925
+      },
+      {
+        "title": "Count the branch",
+        "t": 94.117
+      },
+      {
+        "title": "From a molar mass",
+        "t": 122.338
+      },
+      {
+        "title": "Your turn",
+        "t": 167.915
+      },
+      {
+        "title": "Summary",
+        "t": 211.379
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-1-d:q",
+        "t": 181.874,
+        "prompt": "An alkane has a molar mass of $100.23\\ \\text{g/mol}$. What is its molecular formula? Use C $12.01\\ \\text{g/mol}$ and H $1.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$\\ce{C7H14}$",
+          "$\\ce{C8H18}$",
+          "$\\ce{C7H16}$",
+          "$\\ce{C6H14}$"
+        ],
+        "answer": 2,
+        "working": "Alkanes are $\\text{C}_n\\text{H}_{2n+2}$, so $M = 12.01n + 1.01(2n + 2) = 14.03n + 2.02$. Then $n = \\dfrac{100.23 - 2.02}{14.03} = 7$: $\\ce{C7H16}$."
+      }
+    ]
+  },
+  "c30-3-2": {
+    "lessonId": "c30-3-2",
+    "title": "Naming Hydrocarbons, Part 1: Straight-Chain Alkanes",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stem and ending",
+        "t": 35.203
+      },
+      {
+        "title": "A run of CH₂ groups",
+        "t": 76.093
+      },
+      {
+        "title": "Alkyl groups",
+        "t": 100.727
+      },
+      {
+        "title": "Your turn",
+        "t": 130.418
+      },
+      {
+        "title": "Summary",
+        "t": 157.991
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-2:q",
+        "t": 136.867,
+        "prompt": "What is the IUPAC name of $\\ce{CH3-(CH2)5-CH3}$?",
+        "choices": [
+          "pentane",
+          "octane",
+          "heptane",
+          "hexane"
+        ],
+        "answer": 2,
+        "working": "One carbon at each end and five $\\ce{CH2}$ groups between them: $1 + 5 + 1 = 7$ carbons. Seven is hept-, so the alkane is heptane."
+      }
+    ]
+  },
+  "c30-3-2-b": {
+    "lessonId": "c30-3-2",
+    "title": "Naming Hydrocarbons, Part 2: Branched Alkanes",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parent chain and substituents",
+        "t": 17.213
+      },
+      {
+        "title": "Five steps",
+        "t": 50.485
+      },
+      {
+        "title": "One branch",
+        "t": 93.149
+      },
+      {
+        "title": "Two kinds of branch",
+        "t": 123.727
+      },
+      {
+        "title": "Your turn",
+        "t": 159.408
+      },
+      {
+        "title": "Summary",
+        "t": 191.515
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-2-b:q",
+        "t": 165.965,
+        "prompt": "What is the IUPAC name of $\\ce{CH3-CH2-CH(CH3)-CH2-CH2-CH3}$?",
+        "choices": [
+          "3-methylhexane",
+          "4-methylhexane",
+          "2-ethylpentane",
+          "3-methylpentane"
+        ],
+        "answer": 0,
+        "working": "The longest chain has 6 carbons: hexane. Numbered from the left, nearer the branch, the methyl group is on carbon 3."
+      }
+    ]
+  },
+  "c30-3-2-c": {
+    "lessonId": "c30-3-2",
+    "title": "Naming Hydrocarbons, Part 3: Repeated Branches and Drawing From a Name",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Repeated branches",
+        "t": 20.071
+      },
+      {
+        "title": "Two traps",
+        "t": 61.489
+      },
+      {
+        "title": "Drawing from a name",
+        "t": 109.548
+      },
+      {
+        "title": "Your turn",
+        "t": 147.486
+      },
+      {
+        "title": "Summary",
+        "t": 185.51
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-2-c:q",
+        "t": 160.906,
+        "prompt": "A student named a compound 2-ethylbutane. The name describes a real compound but breaks a naming rule. What is its correct IUPAC name?",
+        "choices": [
+          "2-methylpentane",
+          "3-methylpentane",
+          "3-ethylbutane",
+          "2-methylbutane"
+        ],
+        "answer": 1,
+        "working": "2-ethylbutane is $\\ce{CH3-CH(CH2CH3)-CH2-CH3}$. The longest chain runs into the ethyl group: 5 carbons, with a methyl group on carbon 3. The correct name is 3-methylpentane."
+      }
+    ]
+  },
+  "c30-3-2-d": {
+    "lessonId": "c30-3-2",
+    "title": "Naming Hydrocarbons, Part 4: Alkenes and Alkynes",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The multiple bond comes first",
+        "t": 16.135
+      },
+      {
+        "title": "Numbering from the nearer end",
+        "t": 67.905
+      },
+      {
+        "title": "An alkene with a branch",
+        "t": 99.429
+      },
+      {
+        "title": "Alkynes",
+        "t": 138.307
+      },
+      {
+        "title": "Your turn",
+        "t": 176.227
+      },
+      {
+        "title": "Summary",
+        "t": 208.58
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-2-d:q",
+        "t": 182.784,
+        "prompt": "What is the IUPAC name of $\\ce{CH3-C#C-CH(CH3)-CH3}$?",
+        "choices": [
+          "2-methylpent-3-yne",
+          "4-methylpent-3-yne",
+          "4-methylpent-2-ene",
+          "4-methylpent-2-yne"
+        ],
+        "answer": 3,
+        "working": "The chain holding the triple bond has 5 carbons. Numbered from the left, nearer the triple bond, the bond starts at carbon 2 and the methyl group is on carbon 4."
+      }
+    ]
+  },
+  "c30-3-3": {
+    "lessonId": "c30-3-3",
+    "title": "Isomers, Part 1: Structural Isomers",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same formula, different structure",
+        "t": 29.232
+      },
+      {
+        "title": "Isomers",
+        "t": 67.379
+      },
+      {
+        "title": "More carbons, more isomers",
+        "t": 121.379
+      },
+      {
+        "title": "Your turn",
+        "t": 148.056
+      },
+      {
+        "title": "Summary",
+        "t": 180.836
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-3:q",
+        "t": 156.652,
+        "prompt": "Which compound is an isomer of hexane, $\\ce{C6H14}$?",
+        "choices": [
+          "$\\ce{CH3-(CH2)5-CH3}$",
+          "$\\ce{CH3-(CH2)3-CH3}$",
+          "$\\ce{CH3-CH(CH3)-CH(CH3)-CH3}$",
+          "$\\ce{CH2=CH-(CH2)3-CH3}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{CH3-CH(CH3)-CH(CH3)-CH3}$ has 6 carbons and $3 + 1 + 1 + 3 + 3 + 3 = 14$ hydrogens: $\\ce{C6H14}$, with a different structure. The others are $\\ce{C7H16}$, $\\ce{C5H12}$ and $\\ce{C6H12}$."
+      }
+    ]
+  },
+  "c30-3-3-b": {
+    "lessonId": "c30-3-3",
+    "title": "Isomers, Part 2: Finding the Isomers of an Alkane",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A system",
+        "t": 19.523
+      },
+      {
+        "title": "The isomers of C₅H₁₂",
+        "t": 71.951
+      },
+      {
+        "title": "Branching and boiling point",
+        "t": 118.534
+      },
+      {
+        "title": "Your turn",
+        "t": 155.072
+      },
+      {
+        "title": "Summary",
+        "t": 190.032
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-3-b:q",
+        "t": 163.703,
+        "prompt": "Which of these is the correct IUPAC name of an isomer of $\\ce{C5H12}$?",
+        "choices": [
+          "3-methylbutane",
+          "2-ethylpropane",
+          "1-methylbutane",
+          "2,2-dimethylpropane"
+        ],
+        "answer": 3,
+        "working": "2,2-dimethylpropane is $\\ce{CH3-C(CH3)2-CH3}$, $\\ce{C5H12}$. \"3-methylbutane\" is 2-methylbutane numbered from the wrong end, \"2-ethylpropane\" has a longer chain (it is 2-methylbutane), and \"1-methylbutane\" is just pentane."
+      }
+    ]
+  },
+  "c30-3-3-c": {
+    "lessonId": "c30-3-3",
+    "title": "Isomers, Part 3: The Isomers of Hexane",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five or six carbons in the chain",
+        "t": 18.936
+      },
+      {
+        "title": "Four carbons in the chain",
+        "t": 47.1
+      },
+      {
+        "title": "Five isomers",
+        "t": 85.719
+      },
+      {
+        "title": "Your turn",
+        "t": 110.986
+      },
+      {
+        "title": "Summary",
+        "t": 142.996
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-3-c:q",
+        "t": 118.534,
+        "prompt": "Which compound is an isomer of 2-methylpentane, $\\ce{CH3-CH(CH3)-CH2-CH2-CH3}$?",
+        "choices": [
+          "$\\ce{CH3-(CH2)2-CH(CH3)-CH3}$",
+          "$\\ce{CH3-C(CH3)2-CH2-CH3}$",
+          "$\\ce{CH3-CH(CH3)-(CH2)3-CH3}$",
+          "$\\ce{CH2=C(CH3)-(CH2)2-CH3}$"
+        ],
+        "answer": 1,
+        "working": "$\\ce{CH3-C(CH3)2-CH2-CH3}$ is 2,2-dimethylbutane, also $\\ce{C6H14}$, with a different structure. Choice A is 2-methylpentane itself, written from the other end; C is $\\ce{C7H16}$ and D is $\\ce{C6H12}$."
+      }
+    ]
+  },
+  "c30-3-3-d": {
+    "lessonId": "c30-3-3",
+    "title": "Isomers, Part 4: Same Compound or Isomers?",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One compound, drawn two ways",
+        "t": 19.275
+      },
+      {
+        "title": "Name them both",
+        "t": 61.774
+      },
+      {
+        "title": "Isomers in different families",
+        "t": 86.675
+      },
+      {
+        "title": "Geometric isomers",
+        "t": 133.742
+      },
+      {
+        "title": "Your turn",
+        "t": 162.825
+      },
+      {
+        "title": "Summary",
+        "t": 197.945
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-3-d:q",
+        "t": 169.681,
+        "prompt": "How are $\\ce{CH3-CH(CH2CH3)-CH2-CH3}$ and $\\ce{CH3-CH2-CH(CH3)-CH2-CH3}$ related?",
+        "choices": [
+          "Isomers: the same molecular formula, different structures",
+          "Not isomers: different molecular formulas",
+          "The same compound, drawn two ways",
+          "Isomers in different families"
+        ],
+        "answer": 2,
+        "working": "In the first, the longest chain runs into the ethyl group: 5 carbons, with a methyl group on carbon 3. Both are 3-methylpentane, $\\ce{C6H14}$."
+      }
+    ]
+  },
+  "c30-3-4": {
+    "lessonId": "c30-3-4",
+    "title": "Functional Groups, Part 1: Eight Families",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Functional groups",
+        "t": 35.405
+      },
+      {
+        "title": "Eight families",
+        "t": 70.724
+      },
+      {
+        "title": "Hydroxyl and carboxyl groups",
+        "t": 126.253
+      },
+      {
+        "title": "Your turn",
+        "t": 158.633
+      },
+      {
+        "title": "Summary",
+        "t": 187.629
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-4:q",
+        "t": 166.119,
+        "prompt": "Which family does $\\ce{CH3-CH2-NH2}$ belong to?",
+        "choices": [
+          "Alcohol",
+          "Amine",
+          "Ether",
+          "Haloalkane"
+        ],
+        "answer": 1,
+        "working": "It has an amino group, $\\ce{-NH2}$: an amine (ethanamine). An alcohol would have $\\ce{-OH}$, an ether $\\ce{-O-{}}$ between two chains, and a haloalkane a halogen atom."
+      }
+    ]
+  },
+  "c30-3-4-b": {
+    "lessonId": "c30-3-4",
+    "title": "Functional Groups, Part 2: Families With Oxygen",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Aldehydes and ketones",
+        "t": 19.322
+      },
+      {
+        "title": "Acids, esters and ethers",
+        "t": 51.739
+      },
+      {
+        "title": "Spotting the family",
+        "t": 81.021
+      },
+      {
+        "title": "Not a hydroxide",
+        "t": 111.258
+      },
+      {
+        "title": "Your turn",
+        "t": 138.907
+      },
+      {
+        "title": "Summary",
+        "t": 169.031
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-4-b:q",
+        "t": 145.065,
+        "prompt": "Which compound is an ester?",
+        "choices": [
+          "$\\ce{CH3-COO-CH2-CH3}$",
+          "$\\ce{CH3-CH2-COOH}$",
+          "$\\ce{CH3-CO-CH2-CH3}$",
+          "$\\ce{CH3-CH2-CHO}$"
+        ],
+        "answer": 0,
+        "working": "$\\ce{CH3-COO-CH2-CH3}$ has $\\ce{-COO-{}}$ with carbon on both sides: an ester (ethyl ethanoate). The others are a carboxylic acid, a ketone and an aldehyde."
+      }
+    ]
+  },
+  "c30-3-4-c": {
+    "lessonId": "c30-3-4",
+    "title": "Functional Groups, Part 3: Naming Alcohols, Haloalkanes and Acids",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Alcohols",
+        "t": 21.849
+      },
+      {
+        "title": "Haloalkanes",
+        "t": 63.97
+      },
+      {
+        "title": "Carboxylic acids",
+        "t": 108.015
+      },
+      {
+        "title": "Your turn",
+        "t": 155.706
+      },
+      {
+        "title": "Summary",
+        "t": 183.63
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-4-c:q",
+        "t": 162.332,
+        "prompt": "What is the IUPAC name of $\\ce{CH3-CH2-CH2-CH(OH)-CH3}$?",
+        "choices": [
+          "pentan-4-ol",
+          "butan-2-ol",
+          "pentan-3-ol",
+          "pentan-2-ol"
+        ],
+        "answer": 3,
+        "working": "The chain holding the $\\ce{-OH}$ carbon has 5 carbons: pentanol. Numbered from the right, nearer the $\\ce{-OH}$ group, it is on carbon 2: pentan-2-ol."
+      }
+    ]
+  },
+  "c30-3-4-d": {
+    "lessonId": "c30-3-4",
+    "title": "Functional Groups, Part 4: Boiling Points and Solubility",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Forces between molecules",
+        "t": 21.079
+      },
+      {
+        "title": "Same size, different groups",
+        "t": 66.704
+      },
+      {
+        "title": "Solubility in water",
+        "t": 117.683
+      },
+      {
+        "title": "Your turn",
+        "t": 156.108
+      },
+      {
+        "title": "Summary",
+        "t": 189.979
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-4-d:q",
+        "t": 165.615,
+        "prompt": "These compounds have similar molar masses: pentane $72.17\\ \\text{g/mol}$, butanal $72.12\\ \\text{g/mol}$, butan-1-ol $74.14\\ \\text{g/mol}$ and propanoic acid $74.09\\ \\text{g/mol}$. Which has the **lowest** boiling point?",
+        "choices": [
+          "Pentane",
+          "Butanal",
+          "Butan-1-ol",
+          "Propanoic acid"
+        ],
+        "answer": 0,
+        "working": "With similar molar masses, the dispersion forces are similar. Pentane, an alkane, has only dispersion forces; butanal adds dipole–dipole forces, and butan-1-ol and propanoic acid hydrogen bond. So pentane boils lowest."
+      }
+    ]
+  },
+  "c30-3-5": {
+    "lessonId": "c30-3-5",
+    "title": "Addition, Substitution and Elimination, Part 1: Addition Reactions",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What addition is",
+        "t": 44.492
+      },
+      {
+        "title": "Ethene and bromine",
+        "t": 73.916
+      },
+      {
+        "title": "Four small molecules",
+        "t": 118.183
+      },
+      {
+        "title": "The bromine water test",
+        "t": 168.577
+      },
+      {
+        "title": "Your turn",
+        "t": 193.846
+      },
+      {
+        "title": "Summary",
+        "t": 226.431
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-5:q",
+        "t": 201.741,
+        "prompt": "Propene, $\\ce{CH2=CH-CH3}$, reacts with chlorine, $\\ce{Cl2}$. Which is the organic product?",
+        "choices": [
+          "$\\ce{CH3-CCl2-CH3}$",
+          "$\\ce{CH2Cl-CHCl-CH3}$",
+          "$\\ce{CH2Cl-CH2-CH3}$",
+          "$\\ce{CH2Cl-CH2-CH2Cl}$"
+        ],
+        "answer": 1,
+        "working": "The double bond is between carbons 1 and 2. It opens, and one chlorine atom adds to each of those carbons: $\\ce{CH2=CH-CH3 + Cl2 -> CH2Cl-CHCl-CH3}$, 1,2-dichloropropane."
+      }
+    ]
+  },
+  "c30-3-5-b": {
+    "lessonId": "c30-3-5",
+    "title": "Addition, Substitution and Elimination, Part 2: Where the Hydrogen Goes",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two possible products",
+        "t": 25.334
+      },
+      {
+        "title": "The rule",
+        "t": 71.35
+      },
+      {
+        "title": "Water, and alike carbons",
+        "t": 109.083
+      },
+      {
+        "title": "Alkynes add twice",
+        "t": 147.802
+      },
+      {
+        "title": "Your turn",
+        "t": 173.8
+      },
+      {
+        "title": "Summary",
+        "t": 211.063
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-5-b:q",
+        "t": 188.306,
+        "prompt": "But-1-ene, $\\ce{CH2=CH-CH2-CH3}$, reacts with hydrogen bromide. When the two carbons of the double bond differ, the hydrogen atom adds to the carbon that already has more hydrogen atoms. Name the organic product.",
+        "choices": [
+          "1-bromobutane",
+          "1,2-dibromobutane",
+          "butan-2-ol",
+          "2-bromobutane"
+        ],
+        "answer": 3,
+        "working": "Carbon 1 has two hydrogen atoms and carbon 2 has one, so the H adds to carbon 1 and the Br to carbon 2: $\\ce{CH2=CH-CH2-CH3 + HBr -> CH3-CHBr-CH2-CH3}$."
+      }
+    ]
+  },
+  "c30-3-5-c": {
+    "lessonId": "c30-3-5",
+    "title": "Addition, Substitution and Elimination, Part 3: Substitution and Elimination",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substitution",
+        "t": 22.097
+      },
+      {
+        "title": "Haloalkanes and benzene",
+        "t": 71.441
+      },
+      {
+        "title": "Elimination",
+        "t": 103.917
+      },
+      {
+        "title": "Substitution or elimination?",
+        "t": 143.669
+      },
+      {
+        "title": "Your turn",
+        "t": 186.774
+      },
+      {
+        "title": "Summary",
+        "t": 225.416
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-5-c:q",
+        "t": 201.035,
+        "prompt": "1-Bromobutane, $\\ce{CH3-CH2-CH2-CH2Br}$, is heated with hydroxide ions dissolved in ethanol. What type of reaction happens, and what is the organic product?",
+        "choices": [
+          "Elimination; but-1-ene",
+          "Substitution; butan-1-ol",
+          "Elimination; butan-1-ol",
+          "Substitution; but-1-ene"
+        ],
+        "answer": 0,
+        "working": "Heated in ethanol, a haloalkane loses HBr: the Br on carbon 1 and an H on carbon 2 leave, and a double bond forms between them. $\\ce{CH3-CH2-CH2-CH2Br + OH- -> CH2=CH-CH2-CH3 + H2O + Br-}$"
+      }
+    ]
+  },
+  "c30-3-5-d": {
+    "lessonId": "c30-3-5",
+    "title": "Addition, Substitution and Elimination, Part 4: Telling Them Apart and Predicting Products",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Count, then look at the bonds",
+        "t": 23.139
+      },
+      {
+        "title": "Classify three reactions",
+        "t": 64.314
+      },
+      {
+        "title": "Predicting a product",
+        "t": 104.996
+      },
+      {
+        "title": "Working backwards",
+        "t": 152.737
+      },
+      {
+        "title": "Your turn",
+        "t": 186.855
+      },
+      {
+        "title": "Summary",
+        "t": 221.174
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-5-d:q",
+        "t": 195.915,
+        "prompt": "Which reactants form 1,2-dibromobutane, $\\ce{CH2Br-CHBr-CH2-CH3}$, in an addition reaction?",
+        "choices": [
+          "But-2-ene and bromine",
+          "But-1-ene and hydrogen bromide",
+          "But-1-ene and bromine",
+          "Butane and bromine"
+        ],
+        "answer": 2,
+        "working": "The bromine atoms are on carbons 1 and 2, so the double bond was between them: but-1-ene. Two Br atoms were added, so the reagent is bromine: $\\ce{CH2=CH-CH2-CH3 + Br2 -> CH2Br-CHBr-CH2-CH3}$."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
