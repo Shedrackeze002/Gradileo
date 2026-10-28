@@ -7839,6 +7839,57 @@
       }
     ]
   },
+  "c20-3-3-b": {
+    "lessonId": "c20-3-3",
+    "title": "Percent Concentration and Parts per Million, Part 2: Percent by Volume and Percent by Mass",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent by volume",
+        "t": 18.812
+      },
+      {
+        "title": "Volumes do not always add",
+        "t": 67.582
+      },
+      {
+        "title": "Percent by mass",
+        "t": 99.027
+      },
+      {
+        "title": "The mass of the solution",
+        "t": 157.381
+      },
+      {
+        "title": "Your turn",
+        "t": 176.013
+      },
+      {
+        "title": "Summary",
+        "t": 214.801
+      }
+    ],
+    "cues": [
+      {
+        "id": "c20-3-3-b:q",
+        "t": 190.094,
+        "prompt": "$15.0\\ \\text{g}$ of salt is dissolved in $135\\ \\text{g}$ of water. What is the concentration in % (w/w)? Percent by mass, % (w/w), is grams of solute per $100\\ \\text{g}$ of solution.",
+        "choices": [
+          "$11.1\\%$",
+          "$10.0\\%$",
+          "$0.10\\%$",
+          "$15.0\\%$"
+        ],
+        "answer": 1,
+        "working": "The mass of the solution is $15.0 + 135 = 150\\ \\text{g}$, so $\\dfrac{15.0}{150} \\times 100\\% = 10.0\\%$ (w/w)."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
