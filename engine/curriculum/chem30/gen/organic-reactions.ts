@@ -18,7 +18,6 @@ const cf = (sk: Skeleton) => ceMd(condensed(sk));
 const nm = (sk: Skeleton) => nameOf(sk).name;
 const namePart = (sk: Skeleton, label?: string): Part => part({ kind: 'text', accepted: nameOf(sk).accepted }, { placeholder: 'IUPAC name', ...(label && { label }) });
 const formulaPart = (f: string, label?: string): Part => part({ kind: 'formula', expected: f }, { placeholder: 'Formula', ...(label && { label }) });
-const andList = (xs: string[]) => (xs.length <= 1 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
 const coef = (k: number) => (k === 1 ? '' : `${k}`);
 /** A working value to four significant figures, as a solution writes it. */
 const w = (v: number) => (Math.abs(v) >= 1e4 ? groups(Math.round(v)) : v.toPrecision(4));

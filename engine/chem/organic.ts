@@ -496,6 +496,7 @@ function carbonText(sk: Skeleton, p: number, h: number, end: 'left' | 'right' | 
     const lone = sk.chain === 1;
     if (g.kind === 'aldehyde') return lone ? 'HCHO' : right ? 'CHO' : 'OHC';
     if (g.kind === 'acid') return lone ? 'HCOOH' : right ? 'COOH' : 'HOOC';
+    if (g.kind !== 'ester') throw new Error(`no condensed formula for a ${g.kind} at this end`);
     if (lone) return `HCOO-${alkylChain(g.alkyl, 'right')}`;
     return right ? `COO-${alkylChain(g.alkyl, 'right')}` : `${alkylChain(g.alkyl, 'left')}-OOC`;
   }

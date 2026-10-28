@@ -338,7 +338,7 @@ reading time when a slide has no recording (a teacher's own resource, or a slide
 
 The platform is course-agnostic: mathematics from Grade 5 to Grade 12 (Math 5 to 9; Math 10, 10
 Workplace and 10 Essentials; Math 11 Pre-calculus, Foundations, Workplace and Essentials; Math 12
-Pre-calculus, Foundations, Workplace and Calculus) and chemistry in Grades 10 and 11 already run side
+Pre-calculus, Foundations, Workplace and Calculus) and chemistry in Grades 10, 11 and 12 already run side
 by side, grouped by subject and grade in course pickers. Courses are named by grade and stream, not
 by any one curriculum's codes; their folders and ids keep the codes they were first built under
 (`math30-1` is Math 12 Pre-calculus). To add a course, for example Math 12 Pre-calculus (the steps

@@ -174,8 +174,6 @@ export const CHEM30: CourseMeta = {
   shortTitle: 'Chemistry 12',
   grade: 12,
   subject: 'Chemistry',
-  // A draft until all four units are written: hidden from course pickers and sign-up.
-  draft: true,
   description: 'Chemistry for Grade 12: thermochemical and electrochemical changes, organic compounds and their reactions, and chemical equilibrium with acids and bases.',
   outcomes: OUTCOMES,
   units: UNITS,

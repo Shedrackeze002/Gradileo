@@ -199,7 +199,8 @@ function organicClassify(rng: Rng, d: Difficulty): GenOutput {
   }
   // Unsaturated hydrocarbons among five, by condensed formula or by name.
   const kinds = rng.shuffle<Hc>(['alkane', 'alkene', 'alkyne', 'cycloalkane', 'cycloalkene', rng.pick<Hc>(['alkane', 'alkene', 'cycloalkane'])]).slice(0, 5);
-  if (kinds.every((k) => k === 'alkane' || k === 'cycloalkane')) kinds[0] = 'alkene';
+  // An explicit boolean, so `every` does not narrow `kinds` to the saturated kinds.
+  if (kinds.every((k): boolean => k === 'alkane' || k === 'cycloalkane')) kinds[0] = 'alkene';
   const one = (k: Hc) => {
     if (k === 'cycloalkane' || k === 'cycloalkene') {
       const r = rng.pick(RINGS.filter((x) => x.cls === k));
