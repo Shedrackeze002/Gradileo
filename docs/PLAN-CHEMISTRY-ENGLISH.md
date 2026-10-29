@@ -78,8 +78,13 @@ English 20 was built on 29 October 2026 as **Grade 11 English** (31 lessons, 58 
 Browning, Tennyson, Arnold, Hopkins, Hardy, Owen, McKay, Millay), *Macbeth*, the essay and rhetoric
 (Thoreau, Emerson, Wollstonecraft, Douglass, Twain, Swift, Bacon, Lamb, Chesterton), news and
 media, writing (literary analysis, comparison, sources, argument, style, the timed essay) and
-language (clauses, advanced punctuation, voice and mood, usage, word roots). English 30 (Grade 12)
-follows with *Hamlet*.
+language (clauses, advanced punctuation, voice and mood, usage, word roots). English 30 was built
+the same day as **Grade 12 English** (31 lessons, 49 skills): fiction through critical lenses
+(Joyce, Woolf, Melville, Henry James, Chesnutt, Zitkala-Ša, Sui Sin Far, Wharton, Chekhov in
+Garnett's translation, Chopin), poetry (the ode, war and witness, modern forms, the unseen poem),
+*Hamlet*, rhetoric and argument (Lincoln, Douglass, Stanton, Washington, Wells, Paine, Mill, Swift,
+Pope, Wilde), media and culture, writing (the critical, comparative, research and reflective essay,
+style, the final examination essay) and language for effect.
 
 Grade 10 English uses *Romeo and Juliet* for its Shakespeare unit. The stories come from O. Henry,
 Kate Chopin, Poe, Saki, W. W. Jacobs, Jack London, Ambrose Bierce and Frank R. Stockton; the poems

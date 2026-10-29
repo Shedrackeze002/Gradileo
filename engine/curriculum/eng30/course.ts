@@ -1,0 +1,200 @@
+/**
+ * Grade 12 English: the course after Grade 11 English. Gradileo's own outline (29 October 2026, from
+ * `docs/PLAN-CHEMISTRY-ENGLISH.md`), written for learners anywhere at the level of the
+ * university-bound stream of Grade 12 English: fiction read through critical lenses, poetry,
+ * Shakespeare's Hamlet, rhetoric and argument, media and culture, critical, comparative, research
+ * and reflective writing, and language for effect. The same seven strands as Grades 10 and 11, with
+ * the hardest texts and the most independent analysis. Every text quoted is in the public domain or
+ * written for Gradileo.
+ */
+import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
+
+export const OUTCOMES: Outcome[] = [
+  { code: '12-A1', strand: 'Fiction', text: 'Analyse how narrative technique, time and authorial style shape meaning in complex fiction.' },
+  { code: '12-A2', strand: 'Fiction', text: 'Interpret fiction in its social and historical context and through critical lenses, and weigh ambiguous or open endings.' },
+  { code: '12-B1', strand: 'Poetry', text: 'Analyse the ode, the poetry of war and witness, and modern forms, and interpret an unseen poem independently.' },
+  { code: '12-C1', strand: 'Shakespeare', text: 'Analyse the language, soliloquies, characters, dramatic devices and themes of Hamlet, and weigh different interpretations of the play.' },
+  { code: '12-D1', strand: 'Rhetoric and Argument', text: 'Analyse rhetorical strategy in speeches and essays, and model arguments with claims, data, warrants, qualifiers and rebuttals.' },
+  { code: '12-D2', strand: 'Rhetoric and Argument', text: 'Evaluate reasoning and the use of statistics and sources, and analyse satire.' },
+  { code: '12-E1', strand: 'Media and Culture', text: 'Analyse how media industries, representation and propaganda shape audiences, and test claims in digital media.' },
+  { code: '12-F1', strand: 'Writing', text: 'Write critical and comparative literary essays with a sophisticated thesis and sustained analysis.' },
+  { code: '12-F2', strand: 'Writing', text: 'Write research-based and reflective prose, revise for style, and write a final examination essay.' },
+  { code: '12-G1', strand: 'Language', text: 'Use syntax, rhetorical figures and register deliberately for effect and audience.' },
+  { code: '12-G2', strand: 'Language', text: 'Apply advanced grammar in context, and use etymology and academic vocabulary precisely.' },
+];
+
+const L = (
+  id: string,
+  unitId: string,
+  number: string,
+  title: string,
+  outcomes: string[],
+  skills: string[],
+  objectives: string[],
+  minutes = 60,
+  vocabulary: string[] = [],
+): LessonMeta => ({ id, unitId, number, title, outcomes, skills, objectives, minutes, vocabulary });
+
+export const LESSONS: LessonMeta[] = [
+  // ---------------- Unit 1: Fiction ----------------
+  L('e12-1-1', 'e12-u1', '1.1', 'Narrative Technique and Time', ['12-A1'],
+    ['e12-narrative-technique', 'e12-time'],
+    ['Recognize stream of consciousness, multiple narrators and shifting focalization, and explain their effect', 'Analyse how a story handles time: compression, expansion, memory and the present moment'],
+    60, ['stream of consciousness', 'interior monologue', 'focalization', 'multiple narrators', 'anachrony', 'epiphany']),
+  L('e12-1-2', 'e12-u1', '1.2', 'Fiction in Context', ['12-A2'],
+    ['e12-context', 'e12-character-society'],
+    ['Use a story’s historical and social context to deepen an interpretation without replacing it', 'Analyse how characters are shaped by, and push against, the society around them'],
+    60, ['context', 'historical context', 'social class', 'convention', 'constraint', 'agency']),
+  L('e12-1-3', 'e12-u1', '1.3', 'Critical Lenses', ['12-A2'],
+    ['e12-literary-lens', 'e12-lens-reading'],
+    ['Recognize historical, feminist, psychological, economic and reader-response readings of a text', 'Choose the evidence that best supports a reading through a given lens'],
+    60, ['critical lens', 'feminist reading', 'psychological reading', 'economic reading', 'historical reading', 'reader-response']),
+  L('e12-1-4', 'e12-u1', '1.4', 'Ambiguity and Open Endings', ['12-A2'],
+    ['e12-ambiguity', 'e12-endings'],
+    ['Recognize deliberate ambiguity and the evidence on each side of it', 'Weigh how an open or ironic ending shapes a story’s meaning'],
+    55, ['ambiguity', 'open ending', 'closure', 'irony', 'interpretation']),
+  L('e12-1-5', 'e12-u1', '1.5', 'Style and Authorial Voice', ['12-A1'],
+    ['e12-style', 'e12-tone-irony'],
+    ['Identify the features of an author’s style and their effect', 'Analyse subtle shifts of tone and irony in narration'],
+    60, ['style', 'voice', 'diction', 'syntax', 'tone', 'irony', 'restraint']),
+
+  // ---------------- Unit 2: Poetry ----------------
+  L('e12-2-1', 'e12-u2', '2.1', 'The Ode and the Romantic Lyric', ['12-B1'],
+    ['e12-ode', 'e12-lyric-thought'],
+    ['Recognize the ode and its address, and the Romantic lyric’s turn from the world to the mind', 'Trace how a meditative lyric develops its thought'],
+    60, ['ode', 'apostrophe', 'lyric', 'Romanticism', 'the sublime', 'meditation']),
+  L('e12-2-2', 'e12-u2', '2.2', 'Poetry of War and Witness', ['12-B1'],
+    ['e12-war-poetry'],
+    ['Compare how poets of war and witness use form, imagery and irony to bear witness'],
+    60, ['witness', 'elegy', 'irony', 'pararhyme', 'patriotism', 'protest']),
+  L('e12-2-3', 'e12-u2', '2.3', 'Modern Forms', ['12-B1'],
+    ['e12-modern-form', 'e12-sound-sense'],
+    ['Recognize imagism, sprung rhythm, the modern sonnet and free verse, and explain how form carries meaning', 'Explain how sound and rhythm reinforce sense'],
+    60, ['imagism', 'free verse', 'sprung rhythm', 'modern sonnet', 'enjambment', 'caesura']),
+  L('e12-2-4', 'e12-u2', '2.4', 'The Unseen Poem', ['12-B1'],
+    ['e12-unseen-poem'],
+    ['Analyse a poem you have never read: its speaker, situation, structure, imagery and turn'],
+    60, ['unseen poem', 'speaker', 'situation', 'structure', 'turn', 'interpretation']),
+
+  // ---------------- Unit 3: Shakespeare ----------------
+  L('e12-3-1', 'e12-u3', '3.1', 'The Language of Hamlet and Its Soliloquies', ['12-C1'],
+    ['e12-hamlet-language', 'e12-soliloquy'],
+    ['Paraphrase Hamlet’s language accurately', 'Trace the argument of Hamlet’s soliloquies and what they reveal'],
+    60, ['soliloquy', 'paraphrase', 'blank verse', 'prose', 'wordplay']),
+  L('e12-3-2', 'e12-u3', '3.2', 'Characters and Relationships', ['12-C1'],
+    ['e12-hamlet-characters', 'e12-hamlet-motive'],
+    ['Follow the characters and events of Hamlet', 'Explain the motives of Hamlet, Claudius, Gertrude, Ophelia, Polonius and Laertes with evidence'],
+    60, ['revenge', 'foil', 'motive', 'loyalty', 'corruption']),
+  L('e12-3-3', 'e12-u3', '3.3', 'Delay, Madness and Dramatic Devices', ['12-C1'],
+    ['e12-hamlet-devices', 'e12-hamlet-irony'],
+    ['Recognize the play within a play, feigned madness, the ghost, foils and asides, and their purpose', 'Explain the dramatic and verbal ironies of Hamlet'],
+    60, ['play within a play', 'antic disposition', 'delay', 'foil', 'dramatic irony', 'pun']),
+  L('e12-3-4', 'e12-u3', '3.4', 'Themes and Interpretations', ['12-C1'],
+    ['e12-hamlet-themes', 'e12-hamlet-readings'],
+    ['State and support the themes of Hamlet', 'Weigh different interpretations of the play against the text'],
+    60, ['theme', 'revenge tragedy', 'mortality', 'interpretation', 'critical reading']),
+
+  // ---------------- Unit 4: Rhetoric and Argument ----------------
+  L('e12-4-1', 'e12-u4', '4.1', 'Rhetorical Strategy', ['12-D1'],
+    ['e12-rhetorical-strategy', 'e12-rhetorical-effect'],
+    ['Identify the overall strategy of a speech or essay and how its parts serve it', 'Explain the effect of a rhetorical choice on a particular audience'],
+    60, ['strategy', 'arrangement', 'kairos', 'audience', 'concession', 'appeal']),
+  L('e12-4-2', 'e12-u4', '4.2', 'Modelling Arguments', ['12-D1'],
+    ['e12-toulmin'],
+    ['Identify the claim, data, warrant, backing, qualifier and rebuttal of an argument'],
+    55, ['claim', 'data', 'warrant', 'backing', 'qualifier', 'rebuttal']),
+  L('e12-4-3', 'e12-u4', '4.3', 'Satire and the Comedy of Manners', ['12-D2'],
+    ['e12-satire'],
+    ['Analyse the targets and techniques of satire, from Swift to the comedy of manners'],
+    55, ['satire', 'comedy of manners', 'epigram', 'irony', 'target', 'Horatian', 'Juvenalian']),
+  L('e12-4-4', 'e12-u4', '4.4', 'Statistics, Evidence and Reasoning', ['12-D2'],
+    ['e12-statistics', 'e12-reasoning'],
+    ['Recognize misleading uses of statistics and graphs', 'Evaluate reasoning: correlation and causation, cherry-picking, base rates and sampling'],
+    60, ['statistic', 'sample', 'base rate', 'correlation', 'causation', 'cherry-picking', 'misleading graph']),
+
+  // ---------------- Unit 5: Media and Culture ----------------
+  L('e12-5-1', 'e12-u5', '5.1', 'Media Industries and Audiences', ['12-E1'],
+    ['e12-media-industry'],
+    ['Explain how ownership, funding, audience and platforms shape media content'],
+    55, ['ownership', 'funding', 'advertising', 'audience', 'platform', 'gatekeeping']),
+  L('e12-5-2', 'e12-u5', '5.2', 'Representation and Power', ['12-E1'],
+    ['e12-representation-power'],
+    ['Analyse whose stories are told, by whom, and how representation reflects and shapes power'],
+    55, ['representation', 'power', 'voice', 'stereotype', 'counter-narrative', 'gaze']),
+  L('e12-5-3', 'e12-u5', '5.3', 'Propaganda and Misinformation', ['12-E1'],
+    ['e12-propaganda', 'e12-misinformation'],
+    ['Recognize the techniques of propaganda past and present', 'Test a claim in digital media: source, evidence, context and manipulation'],
+    60, ['propaganda', 'misinformation', 'disinformation', 'deepfake', 'lateral reading', 'context']),
+
+  // ---------------- Unit 6: Writing ----------------
+  L('e12-6-1', 'e12-u6', '6.1', 'The Critical Essay', ['12-F1'],
+    ['e12-critical-thesis', 'e12-critical-analysis'],
+    ['Write a sophisticated thesis that takes a position on how and why a text means', 'Develop analysis that considers complexity, tension and counter-reading'],
+    65, ['critical essay', 'thesis', 'complexity', 'tension', 'counter-reading', 'nuance']),
+  L('e12-6-2', 'e12-u6', '6.2', 'The Comparative Literary Essay', ['12-F1'],
+    ['e12-comparative-argument'],
+    ['Build a comparative argument that reveals something neither text shows alone'],
+    60, ['comparison', 'synthesis', 'comparative thesis', 'integration']),
+  L('e12-6-3', 'e12-u6', '6.3', 'Research Writing', ['12-F2'],
+    ['e12-source-evaluation', 'e12-integrating-sources'],
+    ['Evaluate sources for authority, evidence, currency and purpose', 'Integrate and synthesize sources in your own argument, with attribution'],
+    60, ['research', 'source', 'authority', 'currency', 'synthesis', 'attribution', 'plagiarism']),
+  L('e12-6-4', 'e12-u6', '6.4', 'Reflective Writing', ['12-F2'],
+    ['e12-reflective-writing'],
+    ['Write reflective prose that moves from experience to insight with specific detail'],
+    55, ['reflection', 'insight', 'specific detail', 'voice', 'personal essay']),
+  L('e12-6-5', 'e12-u6', '6.5', 'Style: Precision, Concision and Voice', ['12-F2'],
+    ['e12-style-revision', 'e12-sentence-craft'],
+    ['Revise prose for precision, concision and a consistent voice', 'Craft sentences for emphasis and rhythm'],
+    60, ['precision', 'concision', 'voice', 'emphasis', 'rhythm', 'nominalization']),
+  L('e12-6-6', 'e12-u6', '6.6', 'The Final Examination Essay', ['12-F2'],
+    ['e12-exam-prompt', 'e12-exam-strategy'],
+    ['Interpret a final examination prompt and choose the text and approach that answer it best', 'Plan, write and check an examination essay under time'],
+    55, ['examination', 'prompt', 'controlling idea', 'plan', 'proofreading']),
+
+  // ---------------- Unit 7: Language ----------------
+  L('e12-7-1', 'e12-u7', '7.1', 'Syntax for Effect', ['12-G1'],
+    ['e12-syntax-devices'],
+    ['Recognize periodic and loose sentences, inversion, asyndeton, polysyndeton, parallelism and antithesis, and their effect'],
+    60, ['periodic sentence', 'loose sentence', 'inversion', 'asyndeton', 'polysyndeton', 'antithesis']),
+  L('e12-7-2', 'e12-u7', '7.2', 'Grammar in Context', ['12-G2'],
+    ['e12-advanced-grammar'],
+    ['Apply advanced agreement, reference, parallelism and modification rules in complex sentences'],
+    55, ['agreement', 'reference', 'parallelism', 'modification', 'ellipsis']),
+  L('e12-7-3', 'e12-u7', '7.3', 'Register, Tone and Audience', ['12-G1'],
+    ['e12-register'],
+    ['Choose the register and tone that suit an audience and purpose, and shift them deliberately'],
+    55, ['register', 'tone', 'audience', 'formal', 'academic', 'colloquial']),
+  L('e12-7-4', 'e12-u7', '7.4', 'Rhetorical Figures', ['12-G1'],
+    ['e12-figures'],
+    ['Recognize chiasmus, zeugma, litotes, synecdoche, metonymy, apostrophe and paradox, and their effect'],
+    55, ['chiasmus', 'zeugma', 'litotes', 'synecdoche', 'metonymy', 'apostrophe', 'paradox']),
+  L('e12-7-5', 'e12-u7', '7.5', 'Etymology and Academic Vocabulary', ['12-G2'],
+    ['e12-etymology', 'e12-academic-vocabulary'],
+    ['Use a word’s history and parts to work out its meaning', 'Choose precise academic vocabulary for analysis'],
+    55, ['etymology', 'root', 'cognate', 'academic vocabulary', 'connotation']),
+];
+
+export const UNITS: UnitMeta[] = [
+  { id: 'e12-u1', number: 1, title: 'Fiction', description: 'Narrative technique and time, fiction in context, critical lenses, ambiguity and open endings, and style and authorial voice, in stories by Joyce, Woolf, Chekhov, Melville, Wharton, Chesnutt, Zitkala-Ša and others.', outcomes: ['12-A1', '12-A2'], lessons: [], color: 'rose' },
+  { id: 'e12-u2', number: 2, title: 'Poetry', description: 'The ode and the Romantic lyric, poetry of war and witness, modern forms, and the unseen poem.', outcomes: ['12-B1'], lessons: [], color: 'sky' },
+  { id: 'e12-u3', number: 3, title: 'Shakespeare', description: 'Hamlet: its language and soliloquies, characters and relationships, delay, madness and dramatic devices, and its themes and interpretations.', outcomes: ['12-C1'], lessons: [], color: 'violet' },
+  { id: 'e12-u4', number: 4, title: 'Rhetoric and Argument', description: 'Rhetorical strategy, modelling arguments, satire and the comedy of manners, and statistics, evidence and reasoning.', outcomes: ['12-D1', '12-D2'], lessons: [], color: 'amber' },
+  { id: 'e12-u5', number: 5, title: 'Media and Culture', description: 'Media industries and audiences, representation and power, and propaganda and misinformation.', outcomes: ['12-E1'], lessons: [], color: 'emerald' },
+  { id: 'e12-u6', number: 6, title: 'Writing', description: 'The critical essay, the comparative literary essay, research writing, reflective writing, style, and the final examination essay.', outcomes: ['12-F1', '12-F2'], lessons: [], color: 'indigo' },
+  { id: 'e12-u7', number: 7, title: 'Language', description: 'Syntax for effect, grammar in context, register, tone and audience, rhetorical figures, and etymology and academic vocabulary.', outcomes: ['12-G1', '12-G2'], lessons: [], color: 'teal' },
+];
+
+for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
+
+export const ENG30: CourseMeta = {
+  id: 'eng-30',
+  title: 'Grade 12 English',
+  shortTitle: 'English 12',
+  grade: 12,
+  subject: 'English',
+  description: 'English for Grade 12: fiction and critical lenses, poetry, Shakespeare’s Hamlet, rhetoric and argument, media and culture, critical, research and reflective writing, and language for effect.',
+  outcomes: OUTCOMES,
+  units: UNITS,
+  lessons: LESSONS,
+};

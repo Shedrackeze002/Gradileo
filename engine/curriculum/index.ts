@@ -29,9 +29,10 @@ import { CHEM20 } from './chem20/course.ts';
 import { CHEM30 } from './chem30/course.ts';
 import { ENG10 } from './eng10/course.ts';
 import { ENG20 } from './eng20/course.ts';
+import { ENG30 } from './eng30/course.ts';
 
 /** Every course, youngest grade first (the order of course pickers and tabs). */
-export const COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, CHEM10, CHEM20, CHEM30, ENG10, ENG20];
+export const COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, CHEM10, CHEM20, CHEM30, ENG10, ENG20, ENG30];
 
 /** The courses a class can be made for or a student placed in: every course that is not a draft. */
 export const LISTED_COURSES: CourseMeta[] = COURSES.filter((c) => !c.draft);
@@ -62,6 +63,7 @@ const LOADERS: Record<string, () => Promise<SkillDef[]>> = {
   'chem-30': () => import('./chem30/skills.ts').then((m) => m.CHEM30_SKILLS),
   'eng-10': () => import('./eng10/skills.ts').then((m) => m.ENG10_SKILLS),
   'eng-20': () => import('./eng20/skills.ts').then((m) => m.ENG20_SKILLS),
+  'eng-30': () => import('./eng30/skills.ts').then((m) => m.ENG30_SKILLS),
 };
 
 const INFO = new Map<string, SkillInfo>(SKILL_CATALOG.map((s) => [s.id, s]));
