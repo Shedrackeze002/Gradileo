@@ -288,6 +288,13 @@
 .prose-edu td {
   @apply border-t border-line px-3 py-2 align-top;
 }
+.prose-edu blockquote {
+  @apply border-l-4 border-line bg-surface-2/60 py-2 pl-4 pr-3 text-ink-2;
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+.prose-edu blockquote p + p {
+  margin-top: 0.6em;
+}
 .prose-edu .katex-display {
   @apply my-3 overflow-x-auto overflow-y-hidden py-1;
 }

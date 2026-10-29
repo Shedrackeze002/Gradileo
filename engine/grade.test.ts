@@ -239,6 +239,16 @@ describe('lines', () => {
   });
 });
 
+describe('typed words', () => {
+  it('treats straight and curly quotes and apostrophes alike, and ignores case and spacing', () => {
+    const spec = { kind: 'text' as const, accepted: ["the children's toys"] };
+    expect(gradePart(spec, 'the children’s toys').correct).toBe(true);
+    expect(gradePart(spec, '  The  Children\'s toys ').correct).toBe(true);
+    expect(gradePart(spec, 'the childrens toys').correct).toBe(false);
+    expect(gradePart({ kind: 'text', accepted: ['“Yes,” she said.'] }, '"Yes," she said.').correct).toBe(true);
+  });
+});
+
 describe('mastery', () => {
   it('needs several sessions for mastery', () => {
     let s = emptySkillState('k');

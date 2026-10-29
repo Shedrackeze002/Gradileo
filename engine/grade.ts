@@ -79,8 +79,11 @@ export function gradePart(spec: AnswerSpec, raw: string): PartResult {
       }
       case 'text': {
         if (!response) return invalid('Enter an answer.');
-        const norm = (s: string) =>
-          spec.caseSensitive ? s.trim().replace(/\s+/g, ' ') : s.trim().replace(/\s+/g, ' ').toLowerCase();
+        // Phones type curly quotes and apostrophes: “it’s” and "it's" are the same answer.
+        const norm = (s: string) => {
+          const t = s.trim().replace(/\s+/g, ' ').replace(/[‘’ʼ`]/g, "'").replace(/[“”]/g, '"');
+          return spec.caseSensitive ? t : t.toLowerCase();
+        };
         return spec.accepted.some((a) => norm(a) === norm(response)) ? ok() : no();
       }
       case 'numeric':
