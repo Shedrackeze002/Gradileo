@@ -2,7 +2,7 @@
  * Grade 11 English, lesson 3.3: The Supernatural and Dramatic Devices (11-C1). Soliloquy, aside,
  * monologue and dialogue; prophecy, foreshadowing, comic relief and stage directions; equivocation;
  * and the dramatic, verbal and situational ironies of Macbeth, from the witches' prophecies to
- * Birnam Wood and the man “not of woman born”.
+ * Birnam Wood and the man “none of woman born” can harm.
  */
 import { fixedChoice, mc, part, skill } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';

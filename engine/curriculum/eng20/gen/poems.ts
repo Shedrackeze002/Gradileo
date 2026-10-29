@@ -486,7 +486,9 @@ And took the fire with him, and a knife.
 And as they sojourned both of them together,
 Isaac the first-born spake and said, My Father,
 Behold the preparations, fire and iron,
-But where the lamb for this burnt-offering?`);
+But where the lamb for this burnt-offering?
+Then Abram bound the youth with belts and straps,
+And builded parapets and trenches there,`);
 export const PARABLE_END = V(PARABLE, `When lo! an angel called him out of heaven,
 Saying, Lay not thy hand upon the lad,
 Neither do anything to him. Behold,
