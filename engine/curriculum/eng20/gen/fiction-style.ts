@@ -194,14 +194,14 @@ function syntaxQ(rng: Rng, d: Difficulty) {
       prompt: `${block(fill(p.text, cast))}\n\nWhat is the main effect of the sentence structure here?`,
       parts: [part(mc(rng, fill(p.effect, cast), p.wrong.map((w) => fill(w, cast))))],
       hints: ['Notice the length and shape of the sentences, then ask how that shape changes the pace or the feeling.'],
-      solution: [`${SYNTAX_NAME[p.kind]}.`, fill(p.effect, cast)],
+      solution: [`The passage uses ${SYNTAX_NAME[p.kind].replace(/^(A |Many |Sentence |Short |Repetition )/, (m) => m.toLowerCase())}.`, fill(p.effect, cast)],
     };
   }
   return {
     prompt: `${block(fill(p.text, cast))}\n\nWhich technique of sentence structure does this passage use?`,
     parts: [part(mc(rng, SYNTAX_NAME[p.kind], rng.shuffle(SYNTAX_FAR[p.kind]).map((k) => SYNTAX_NAME[k])))],
     hints: ['Look at the length of the sentences, where the main clause comes, and any words that repeat.'],
-    solution: [`The passage uses this: ${SYNTAX_NAME[p.kind].replace(/^./, (c) => c.toLowerCase())}.`, fill(p.effect, cast)],
+    solution: [`The passage uses ${SYNTAX_NAME[p.kind].replace(/^(A |Many |Sentence |Short |Repetition )/, (m) => m.toLowerCase())}.`, fill(p.effect, cast)],
   };
 }
 
