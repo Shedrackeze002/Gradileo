@@ -204,11 +204,11 @@ const DRAMATIC: Dramatic[] = [
 /** Moments with no dramatic irony: the characters know what the audience knows. */
 const PLAIN: string[] = [
   'A wounded captain tells Duncan how bravely Macbeth fought against the rebels and the Norwegian army.',
-  'Malcolm and Donalbain agree to flee to England and Ireland after their father’s murder, to keep themselves safe.',
+  'Macduff returns from the battle with Macbeth’s head and hails Malcolm as King of Scotland.',
   'The witches stir their cauldron in a dark cave and chant “Double, double, toil and trouble”.',
   'Ross tells Macduff plainly that his wife and children have been savagely slaughtered, and Macduff grieves.',
-  'Malcolm tells his soldiers to cut boughs from Birnam Wood and carry them before them, to hide their numbers.',
-  'Macbeth tells his wife, who is waiting for him at the castle, that Duncan is coming there tonight.',
+  'Macbeth, alone on his way to Duncan’s room, wonders whether the dagger he sees before him is real.',
+  'Lady Macbeth, alone, reads her husband’s letter about the witches and decides that he must be king.',
 ];
 
 type Kind = 'dramatic' | 'verbal' | 'situational';

@@ -27,7 +27,7 @@ const TERM_WHAT: Record<Term, string> = {
   hamartia: 'the flaw or error of judgement in the hero that leads to their downfall',
   hubris: 'excessive pride or overconfidence that leads a person to defy limits, fate or the gods',
   recognition: 'the moment when the hero realizes the truth about their situation or their mistake',
-  catharsis: 'the release of pity and fear that the audience feels at the end of a tragedy',
+  catharsis: 'the release of pity and fear that the audience feels at the end of the play',
 };
 
 /** Applying the ideas to Macbeth (difficulty 2). */
@@ -97,7 +97,7 @@ function tragedyQ(rng: Rng, d: Difficulty) {
     const others = rng.sample(terms.filter((x) => x !== t), 3);
     if (rng.chance(0.5)) {
       return {
-        prompt: `In tragedy, which term names ${TERM_WHAT[t]}?`,
+        prompt: `In the language of tragedy, which term names ${TERM_WHAT[t]}?`,
         parts: [part(mc(rng, TERM_NAME[t], others.map((x) => TERM_NAME[x])))],
         hints: ['Tragic hero: the great person who falls. Hamartia: the flaw. Hubris: overconfidence. Recognition: seeing the truth. Catharsis: what the audience feels.'],
         solution: [`${TERM_NAME[t]}: ${TERM_WHAT[t]}.`],
