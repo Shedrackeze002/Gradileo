@@ -4,6 +4,8 @@
  * typed answers are graded with straight and curly ones treated alike (engine/grade.ts).
  */
 import type { Rng } from '../../../rng.ts';
+import { part, type GenOutput } from '../../helpers.ts';
+import type { AnswerSpec, Choice } from '../../../types.ts';
 
 export interface Person {
   name: string;
@@ -73,4 +75,17 @@ export function fill(template: string, cast: readonly Person[]): string {
     }
     return cast[(Number(nn) || 1) - 1].name;
   });
+}
+
+/** An order question whose items are shown shuffled (never already in order). */
+export function order(rng: Rng, prompt: string, steps: string[], hints: string[], solution: string[]): GenOutput {
+  const ids = 'abcdefgh';
+  const idx = steps.map((_, i) => i);
+  let shown = rng.shuffle(idx);
+  for (let i = 0; i < 50 && shown.every((v, j) => v === j); i++) shown = rng.shuffle(idx);
+  if (shown.every((v, j) => v === j)) shown = [...idx].reverse();
+  const items: Choice[] = shown.map((k, i) => ({ id: ids[i], md: steps[k] }));
+  const correctOrder = idx.map((k) => items[shown.indexOf(k)].id);
+  const answer: AnswerSpec = { kind: 'order', items, correctOrder, ends: ['First', 'Last'] };
+  return { prompt, parts: [part(answer)], hints, solution };
 }

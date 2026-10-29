@@ -73,6 +73,14 @@ and 30-1 (the stream towards university), whose five general outcomes run throug
 English 20 and English 30 follow the same units with harder texts and longer writing, ending
 with the essay a final exam asks for.
 
+English 20 was built on 29 October 2026 as **Grade 11 English** (31 lessons, 58 skills): fiction
+(Hawthorne, Gilman, Joyce, Mansfield, Crane, Jewett, Twain, Chopin), poetry (Donne, Herbert, Milton,
+Browning, Tennyson, Arnold, Hopkins, Hardy, Owen, McKay, Millay), *Macbeth*, the essay and rhetoric
+(Thoreau, Emerson, Wollstonecraft, Douglass, Twain, Swift, Bacon, Lamb, Chesterton), news and
+media, writing (literary analysis, comparison, sources, argument, style, the timed essay) and
+language (clauses, advanced punctuation, voice and mood, usage, word roots). English 30 (Grade 12)
+follows with *Hamlet*.
+
 Grade 10 English uses *Romeo and Juliet* for its Shakespeare unit. The stories come from O. Henry,
 Kate Chopin, Poe, Saki, W. W. Jacobs, Jack London, Ambrose Bierce and Frank R. Stockton; the poems
 from poets who died before 1955; the speeches from Lincoln, Frederick Douglass, Sojourner Truth,

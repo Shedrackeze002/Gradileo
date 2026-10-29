@@ -110,7 +110,7 @@ export default function LandingPage() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:pt-20">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-surface px-3 py-1 text-xs font-semibold text-brand-700">
-              <Sparkles className="h-3.5 w-3.5" /> Mathematics, Grades 5 to 12 · Chemistry, Grades 10 to 12 · English, Grade 10
+              <Sparkles className="h-3.5 w-3.5" /> Mathematics, Grades 5 to 12 · Chemistry, Grades 10 to 12 · English, Grades 10 and 11
             </span>
             <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-[56px]">
               Teach it once. <span className="text-brand">Practise until it sticks.</span> Know who needs help.

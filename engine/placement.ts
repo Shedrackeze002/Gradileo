@@ -57,6 +57,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'chem-20': 'chem-10',
   'chem-30': 'chem-20',
   'eng-10': null,
+  'eng-20': 'eng-10',
 };
 
 const CHECK = 'Programs set their own entrance requirements, so check the ones you are interested in.';
@@ -68,10 +69,14 @@ function rec(courseId: string, reasons: string[], alternatives: CourseChoice[] =
 export function recommendCourse(a: PlacementAnswers): Recommendation {
   const g = Math.round(a.grade);
   if (a.subject === 'English') {
-    const reasons = ['Grade 10 English covers short stories, poetry, Shakespeare’s Romeo and Juliet, non-fiction and persuasion, visual and media texts, essay and narrative writing, and grammar.'];
-    if (g < 10) reasons.push('It is usually taken in Grade 10, so some texts will be a stretch; the grammar and writing lessons build up from the basics.');
-    if (g > 10) reasons.push('Gradileo’s Grade 11 and 12 English courses are still being written, so start here: its reading, essay and grammar skills carry through every senior English course.');
-    return rec('eng-10', reasons);
+    if (g <= 10) {
+      const reasons = ['Grade 10 English covers short stories, poetry, Shakespeare’s Romeo and Juliet, non-fiction and persuasion, visual and media texts, essay and narrative writing, and grammar.'];
+      if (g < 10) reasons.push('It is usually taken in Grade 10, so some texts will be a stretch; the grammar and writing lessons build up from the basics.');
+      return rec('eng-10', reasons, [{ courseId: 'eng-20', why: 'If you have already studied short stories, poetry, a Shakespeare play and the essay.' }]);
+    }
+    const reasons = ['Grade 11 English covers fiction, poetry, Shakespeare’s Macbeth, the essay and rhetoric, news and media, literary, comparative and argumentative writing, and language.'];
+    if (g > 11) reasons.push('Gradileo’s Grade 12 English course is still being written, so Grade 11 English is the most advanced English course for now.');
+    return rec('eng-20', reasons, [{ courseId: 'eng-10', why: 'Start here if you have not yet studied short stories, poetry and a Shakespeare play in English.' }]);
   }
   if (a.subject === 'Chemistry') {
     if (g <= 10) {

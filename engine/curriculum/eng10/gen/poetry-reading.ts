@@ -87,7 +87,7 @@ const PD_TONE: ToneQ[] = [
     lead: `${titled(FLANDERS_ALL.poem)} by John McCrae, a Canadian doctor who served in the First World War:`,
     ask: 'Who is the speaker of this poem?',
     right: 'Soldiers who have died in the war and lie buried in Flanders',
-    wrong: ['A general planning the next attack', 'A farmer who grows poppies', 'A priest speaking at a funeral'],
+    wrong: ['A general who is planning the next attack from behind the lines', 'A farmer who grows the poppies that cover the fields of Flanders', 'A priest speaking at the funeral of soldiers killed in battle'],
     why: '“We are the Dead”: the speakers are the soldiers buried “Between the crosses, row on row”.',
   },
   {
@@ -95,15 +95,15 @@ const PD_TONE: ToneQ[] = [
     lead: `${titled(MASK_ALL.poem)} by Paul Laurence Dunbar (“guile” means trickery; “myriad subtleties” means countless clever ways of hiding the truth):`,
     ask: 'Who is the “we” who speaks in this poem?',
     right: 'People who hide their suffering from the world behind smiling faces',
-    wrong: ['Actors performing in a play', 'Children dressing up for a party', 'Thieves hiding who they are'],
+    wrong: ['Actors who put on masks to perform comedies in a crowded theatre', 'Children dressing up in costumes and masks for a birthday party', 'Thieves who cover their faces so that no one can recognize them'],
     why: 'They smile “With torn and bleeding hearts” and hide their “tears and sighs” from the world: the mask is a cheerful face over real suffering.',
   },
   {
     verse: NOBODY_ALL,
     lead: `${titled(NOBODY_ALL.poem)} by Emily Dickinson (“banish” means send away):`,
     ask: 'Which choice best describes the tone of this poem?',
-    right: 'Playful and gently mocking',
-    wrong: ['Angry and bitter', 'Fearful and anxious', 'Solemn and grieving'],
+    right: 'Playful, gently mocking the famous',
+    wrong: ['Angry and bitter at being ignored', 'Solemn and grieving over a loss', 'Proud and boastful about her fame'],
     why: 'The speaker whispers “don’t tell!” like a child sharing a secret, and laughs at famous people as frogs croaking to a bog.',
   },
   {
@@ -119,7 +119,7 @@ const PD_TONE: ToneQ[] = [
     lead: `The opening of ${titled(DULCE_FIRST.poem)} by Wilfred Owen, a soldier in the First World War:`,
     ask: 'Which choice best describes the tone of these lines?',
     right: 'Grim and bitter about the reality of war',
-    wrong: ['Proud and full of glory', 'Light-hearted and amused', 'Calm and peaceful'],
+    wrong: ['Proud and full of the glory of battle', 'Light-hearted and amused by army life', 'Calm and peaceful, like a quiet march home'],
     why: 'The soldiers are “like old beggars”, “coughing like hags”, cursing “through sludge”: there is no glory here, only grim exhaustion.',
   },
   {
@@ -135,7 +135,7 @@ const PD_TONE: ToneQ[] = [
     lead: `${titled(OZYMANDIAS_ALL.poem)} by Percy Bysshe Shelley (“visage” means face):`,
     ask: 'Who tells the story of the statue?',
     right: 'The speaker repeats what a traveller from an ancient land told him',
-    wrong: ['Ozymandias himself', 'The sculptor who carved the statue', 'A king who is building a statue'],
+    wrong: ['Ozymandias himself, speaking from the pedestal of his statue', 'The sculptor who carved the statue, looking back on his work', 'A king of today who is having his own statue built in the sand'],
     why: '“I met a traveller from an antique land / Who said …”: the speaker passes on the traveller’s description.',
   },
   {
@@ -143,7 +143,7 @@ const PD_TONE: ToneQ[] = [
     lead: `${titled(DEATH_ALL.poem)} by Emily Dickinson (“civility” means politeness; a “cornice” is the decorated edge of a roof):`,
     ask: 'What does the last stanza reveal about the speaker?',
     right: 'She died long ago and is looking back on the day of her death.',
-    wrong: ['She is a child on her way home from school.', 'She is about to marry the man in the carriage.', 'She is planning a trip into the countryside.'],
+    wrong: ['She is a child riding home from school in a neighbour’s carriage.', 'She is about to marry the gentleman who drives the carriage.', 'She is planning a long trip into the countryside for the summer.'],
     why: '“Since then ’t is centuries”: the ride was long ago, and the carriage was taking her toward “eternity”. The speaker is dead.',
   },
 ];
@@ -153,8 +153,8 @@ const PD_SHIFTS: ToneQ[] = [
     verse: FLANDERS_ALL,
     lead: `${titled(FLANDERS_ALL.poem)} by John McCrae:`,
     ask: 'Where does the tone shift, and how?',
-    right: 'In the third stanza: from quiet description of the dead to an urgent call to the living to carry on the fight',
-    wrong: ['In the second stanza: from sadness to joy at the larks’ singing', 'In the last line: from anger to forgiveness of the enemy', 'There is no shift: the poem is cheerful throughout'],
+    right: 'In the third stanza: from describing the dead to urging the living to fight on',
+    wrong: ['In the second stanza: from sadness to joy as the larks sing above the guns', 'In the last line: from anger at the enemy to a calm wish for peace with them', 'There is no shift: the poem stays cheerful and hopeful from start to end'],
     why: 'The first two stanzas describe the graves and the lives lost; then “Take up our quarrel with the foe” turns to command and warning.',
   },
   {
@@ -162,7 +162,7 @@ const PD_SHIFTS: ToneQ[] = [
     lead: `${titled(REMEMBER_ALL.poem)} by Christina Rossetti (“a vestige” means a trace):`,
     ask: 'Where does the tone shift, and how?',
     right: 'At “Yet”: from pleading to be remembered to gently freeing her loved one from grief',
-    wrong: ['At “Yet”: from love to anger at being forgotten', 'At line 5: from sadness to joy at their future plans', 'In the last line: from hope to despair'],
+    wrong: ['At “Yet”: from loving requests to bitter anger at the thought of being forgotten', 'At line 5: from sadness to joy as she pictures the future they had planned', 'In the last line: from calm hope to sudden despair about dying so young'],
     why: 'For eight lines she begs, “Remember me”; then “Yet if you should forget me” she says she would rather be forgotten than make her loved one sad.',
   },
   {
@@ -170,7 +170,7 @@ const PD_SHIFTS: ToneQ[] = [
     lead: `Shakespeare’s ${titled(SONNET29_ALL.poem)} (“beweep” means weep over; “haply” means by chance):`,
     ask: 'Where does the tone shift, and how?',
     right: 'When he thinks of the person he loves: from despair and envy to joy',
-    wrong: ['When he loses his fortune: from joy to despair', 'In the last line: from love to anger at his rivals', 'At the start: from boredom to curiosity'],
+    wrong: ['When he loses his fortune: from joy and pride to despair and envy', 'In the last line: from love to bitter anger at the rivals he envies', 'At the start: from boredom to curiosity about the men he admires'],
     why: 'The first part is full of disgrace, envy and cursing his fate; then “Haply I think on thee” and his mood rises “like to the lark at break of day”.',
   },
   {
@@ -178,15 +178,15 @@ const PD_SHIFTS: ToneQ[] = [
     lead: `${titled(ASTRONOMER_ALL.poem)} by Walt Whitman:`,
     ask: 'Where does the tone shift, and how?',
     right: 'When he leaves the lecture: from weariness to quiet wonder at the stars',
-    wrong: ['When the astronomer begins: from boredom to excitement about the figures', 'In the last line: from wonder to fear of the dark', 'At the start: from loneliness to joy at meeting the astronomer'],
+    wrong: ['When the astronomer begins: from boredom to excitement about the figures', 'In the last line: from wonder to fear of the cold, dark night outside', 'At the start: from loneliness to joy at meeting the famous astronomer'],
     why: 'The repeated “When …” lines pile up charts and figures until he becomes “tired and sick”; outside, alone, he looks up “in perfect silence at the stars”.',
   },
   {
     verse: RAINS_ALL,
     lead: `${titled(RAINS_ALL.poem)} by Sara Teasdale:`,
     ask: 'Where does the tone shift, and how?',
-    right: 'At “And not one will know of the war”: from gentle pictures of nature to the bleak idea that nature would not notice if people were gone',
-    wrong: ['At the start: from war to a peace treaty', 'At “Robins will wear their feathery fire”: from spring to winter', 'In the last line: from sadness to joy'],
+    right: 'At “And not one will know of the war”: from calm nature to the bleak idea it would not miss us',
+    wrong: ['At the start: from the noise of war to the calm of the peace treaty that ended it', 'At “Robins will wear their feathery fire”: from the softness of spring to harsh winter', 'In the last line: from sadness to joy, as Spring wakes and welcomes people back'],
     why: 'The first three couplets are calm pictures of rain, frogs and robins; then the poem turns to the war and to the thought that “mankind perished utterly” and no one would mind.',
   },
 ];
@@ -228,17 +228,17 @@ const READINGS: Reading[] = [
     verse: EAGLE_ALL,
     lead: `${titled(EAGLE_ALL.poem)} by Alfred, Lord Tennyson (a “crag” is a steep rock; “azure” means sky blue):`,
     qs: [
-      { ask: 'What does the eagle do in the last line?', right: 'It dives swiftly down toward the sea.', wrong: ['It is struck by lightning.', 'It flies up toward the sun.', 'It falls asleep on the cliff.'], why: 'It “falls” “like a thunderbolt”: a sudden, powerful dive, perhaps onto its prey.' },
-      { ask: 'What does “Close to the sun in lonely lands” suggest about the eagle?', right: 'It lives high up and alone, far above everything else.', wrong: ['It is too hot and wants to fly away.', 'It is lost and looking for a home.', 'It lives in a desert country.'], why: 'Being “close to the sun” puts the eagle at a great height, and the lands are “lonely”: it rules a high, empty world.' },
-      { ask: 'Why does the sea seem to “crawl”?', right: 'From so high up, the waves look small and slow.', wrong: ['The tide is going out.', 'The sea is frozen.', 'The eagle is flying very fast.'], why: 'The sea is “beneath him”: from the top of the cliff, even big waves look like slow wrinkles.' },
+      { ask: 'What does the eagle do in the last line?', right: 'It dives swiftly down toward the sea.', wrong: ['It is struck by a bolt of lightning.', 'It flies higher and higher toward the sun.', 'It falls asleep on its ledge on the cliff.'], why: 'It “falls” “like a thunderbolt”: a sudden, powerful dive, perhaps onto its prey.' },
+      { ask: 'What does “Close to the sun in lonely lands” suggest about the eagle?', right: 'It lives high up and alone, far above everything else.', wrong: ['It is too hot so near the sun and wants to fly away.', 'It is lost far from home and looking for a place to rest.', 'It lives in a hot desert country where nothing grows.'], why: 'Being “close to the sun” puts the eagle at a great height, and the lands are “lonely”: it rules a high, empty world.' },
+      { ask: 'Why does the sea seem to “crawl”?', right: 'From so high up, the waves look small and slow.', wrong: ['The tide is going out, so the water creeps away.', 'The sea is frozen, so its waves can barely move.', 'The eagle flies so fast that everything else seems slow.'], why: 'The sea is “beneath him”: from the top of the cliff, even big waves look like slow wrinkles.' },
     ],
   },
   {
     verse: NOBODY_ALL,
     lead: `${titled(NOBODY_ALL.poem)} by Emily Dickinson (“banish” means send away):`,
     qs: [
-      { ask: 'How does the speaker feel about being “nobody”?', right: 'Content, even pleased, especially now that she has found another nobody', wrong: ['Ashamed and lonely', 'Angry at being ignored', 'Desperate to become famous'], why: 'She greets the reader happily (“Then there’s a pair of us”) and finds being somebody “dreary”.' },
-      { ask: 'Why does the speaker compare being “somebody” to a frog?', right: 'Famous people keep announcing their own names to admirers who hardly matter.', wrong: ['Famous people like to live near water.', 'Frogs are the most admired animals.', 'Being somebody is peaceful and private.'], why: 'A frog croaks the same sound “the livelong day” to “an admiring bog”: fame is noisy, repetitive and a little ridiculous.' },
+      { ask: 'How does the speaker feel about being “nobody”?', right: 'Content, even pleased, now she has found another nobody', wrong: ['Ashamed and lonely, because no one knows who she is', 'Angry that the famous people ignore her completely', 'Desperate to become famous and admired like a somebody'], why: 'She greets the reader happily (“Then there’s a pair of us”) and finds being somebody “dreary”.' },
+      { ask: 'Why does the speaker compare being “somebody” to a frog?', right: 'Famous people keep telling their names to admirers who hardly matter.', wrong: ['Famous people like to live near water, as frogs do in a bog.', 'Frogs are the animals that people admire most of all in nature.', 'Being somebody is peaceful and private, like a frog in a quiet pond.'], why: 'A frog croaks the same sound “the livelong day” to “an admiring bog”: fame is noisy, repetitive and a little ridiculous.' },
     ],
   },
   {
@@ -246,33 +246,33 @@ const READINGS: Reading[] = [
     lead: `${titled(ASTRONOMER_ALL.poem)} by Walt Whitman:`,
     qs: [
       { ask: 'How does the speaker feel during the lecture?', right: 'Tired and sick', wrong: ['Thrilled and inspired', 'Proud of his own knowledge', 'Eager to ask questions'], why: 'He says, “How soon unaccountable I became tired and sick.”' },
-      { ask: 'What does the speaker do instead of listening?', right: 'He goes outside alone and looks up at the stars in silence.', wrong: ['He asks the astronomer a question.', 'He copies down the figures and charts.', 'He falls asleep in the lecture room.'], why: '“I wander’d off by myself … / Look’d up in perfect silence at the stars.”' },
-      { ask: 'What does the poem suggest?', right: 'Experiencing nature directly can move us more than studying it in figures and charts.', wrong: ['Lectures should be shorter.', 'The stars are too far away to study.', 'People should never be alone at night.'], why: 'The crowded room of “proofs” and “figures” leaves him sick; the “mystical moist night-air” and the stars bring peace and wonder.' },
+      { ask: 'What does the speaker do instead of listening?', right: 'He goes outside alone and looks up at the stars in silence.', wrong: ['He stands up to ask the astronomer a question about the stars.', 'He copies down all the figures and charts into his notebook.', 'He falls asleep in the lecture room until the talk is over.'], why: '“I wander’d off by myself … / Look’d up in perfect silence at the stars.”' },
+      { ask: 'What does the poem suggest?', right: 'Seeing nature for ourselves can move us more than studying its figures.', wrong: ['Lectures about the stars should be shorter and use far fewer charts.', 'The stars are too far away for anyone to study them properly.', 'People should never wander off alone outside late at night.'], why: 'The crowded room of “proofs” and “figures” leaves him sick; the “mystical moist night-air” and the stars bring peace and wonder.' },
     ],
   },
   {
     verse: RAINS_ALL,
     lead: `${titled(RAINS_ALL.poem)} by Sara Teasdale, written during the First World War:`,
     qs: [
-      { ask: 'According to the poem, what would nature do if the war wiped out humankind?', right: 'Carry on as before, without noticing that people were gone', wrong: ['Mourn for humankind', 'Be destroyed along with the people', 'Wait for people to return'], why: '“Not one would mind, neither bird nor tree”, and Spring “Would scarcely know that we were gone.”' },
-      { ask: 'What does the poem suggest about people and nature?', right: 'Nature does not depend on us and would not miss us.', wrong: ['Nature needs people to protect it.', 'People are the most important part of nature.', 'Birds and frogs start wars too.'], why: 'The rain, frogs, robins and Spring go on without us: the poem quietly humbles human importance.' },
+      { ask: 'According to the poem, what would nature do if the war wiped out humankind?', right: 'Carry on as before, without noticing that people were gone', wrong: ['Mourn for humankind, as the birds and trees fall silent', 'Be destroyed by the war together with all the people', 'Wait patiently, season after season, for people to return'], why: '“Not one would mind, neither bird nor tree”, and Spring “Would scarcely know that we were gone.”' },
+      { ask: 'What does the poem suggest about people and nature?', right: 'Nature does not depend on us and would not miss us.', wrong: ['Nature needs people to look after it and protect it.', 'People are the most important part of the natural world.', 'Birds and frogs fight wars of their own, just as people do.'], why: 'The rain, frogs, robins and Spring go on without us: the poem quietly humbles human importance.' },
     ],
   },
   {
     verse: FLANDERS_ALL,
     lead: `${titled(FLANDERS_ALL.poem)} by John McCrae, a Canadian doctor who served in the First World War:`,
     qs: [
-      { ask: 'Who is speaking in the poem?', right: 'Soldiers who have died and are buried in Flanders', wrong: ['The larks singing in the sky', 'A general giving orders', 'The poppies in the fields'], why: '“We are the Dead. Short days ago / We lived”.' },
-      { ask: 'What do the speakers ask of the reader?', right: 'To carry on the fight they died for', wrong: ['To bring flowers to their graves', 'To stop fighting at once', 'To forget them and move on'], why: '“Take up our quarrel with the foe”, and do not “break faith with us who die”.' },
-      { ask: 'What does “The Torch” stand for?', right: 'The cause, or duty, that the dead pass on to the living', wrong: ['A real torch used to see at night', 'The light of the setting sun', 'The guns firing below'], why: 'It is thrown “from failing hands” to the living, who must “hold it high”: the cause they must continue.' },
+      { ask: 'Who is speaking in the poem?', right: 'Soldiers who have died and are buried in Flanders', wrong: ['The larks singing bravely in the sky above the guns', 'A general giving orders to the troops before a battle', 'The poppies that blow between the crosses in the fields'], why: '“We are the Dead. Short days ago / We lived”.' },
+      { ask: 'What do the speakers ask of the reader?', right: 'To carry on the fight they died for', wrong: ['To bring flowers to their graves', 'To stop the fighting at once', 'To forget them and move on with life'], why: '“Take up our quarrel with the foe”, and do not “break faith with us who die”.' },
+      { ask: 'What does “The Torch” stand for?', right: 'The cause, or duty, that the dead pass on to the living', wrong: ['A real torch the soldiers use to see in the trenches at night', 'The light of the sun as it sets over the fields of poppies', 'The flash of the guns firing below the singing larks'], why: 'It is thrown “from failing hands” to the living, who must “hold it high”: the cause they must continue.' },
     ],
   },
   {
     verse: REMEMBER_ALL,
     lead: `${titled(REMEMBER_ALL.poem)} by Christina Rossetti (“to counsel” means to advise; “a vestige” means a trace):`,
     qs: [
-      { ask: 'What does the speaker ask at the start of the poem?', right: 'To be remembered after she has died', wrong: ['To be forgiven for leaving', 'To be visited every day', 'To be forgotten at once'], why: '“Remember me when I am gone away, / Gone far away into the silent land”: the “silent land” is death.' },
-      { ask: 'What does she say after “Yet”?', right: 'She would rather be forgotten than have her loved one be sad.', wrong: ['She will be angry if she is forgotten.', 'She will come back to remind them.', 'She wants her loved one to grieve forever.'], why: '“Better by far you should forget and smile / Than that you should remember and be sad.”' },
+      { ask: 'What does the speaker ask at the start of the poem?', right: 'To be remembered after she has died', wrong: ['To be forgiven for leaving without a word', 'To be visited at her grave every day', 'To be forgotten as soon as she is gone'], why: '“Remember me when I am gone away, / Gone far away into the silent land”: the “silent land” is death.' },
+      { ask: 'What does she say after “Yet”?', right: 'She would rather be forgotten than have her loved one be sad.', wrong: ['She will be angry and hurt if her loved one ever forgets her.', 'She will come back from the silent land to remind them of her.', 'She wants her loved one to grieve for her for the rest of their life.'], why: '“Better by far you should forget and smile / Than that you should remember and be sad.”' },
     ],
   },
   {
@@ -280,15 +280,15 @@ const READINGS: Reading[] = [
     lead: `${titled(MASK_ALL.poem)} by Paul Laurence Dunbar (“guile” means trickery; “over-wise” means knowing too much):`,
     qs: [
       { ask: 'What does the mask hide?', right: 'Pain and suffering', wrong: ['The speakers’ names', 'Their wealth', 'Their happiness'], why: 'Behind the grinning mask are “torn and bleeding hearts”, “tears and sighs” and “tortured souls”.' },
-      { ask: 'Why do the speakers wear the mask?', right: 'They do not want the world to see and count their suffering.', wrong: ['The law forces them to.', 'They are performing in a play.', 'They are ashamed of their faces.'], why: '“Why should the world be over-wise, / In counting all our tears and sighs?” They choose to let the world see only the mask.' },
+      { ask: 'Why do the speakers wear the mask?', right: 'They do not want the world to see and count their suffering.', wrong: ['The law forces them to hide their faces whenever they go out.', 'They are actors performing a comedy in front of an audience.', 'They are ashamed of their faces and do not want to be seen.'], why: '“Why should the world be over-wise, / In counting all our tears and sighs?” They choose to let the world see only the mask.' },
     ],
   },
   {
     verse: OZYMANDIAS_ALL,
     lead: `${titled(OZYMANDIAS_ALL.poem)} by Percy Bysshe Shelley (“visage” means face; “colossal” means enormous):`,
     qs: [
-      { ask: 'What is left of the statue?', right: 'Two huge legs, and a broken face half buried in the sand', wrong: ['A complete statue of a king on his throne', 'Nothing at all', 'A great city around it'], why: '“Two vast and trunkless legs of stone” stand, and nearby “a shattered visage lies”, “Half sunk”.' },
-      { ask: 'What is ironic about the words on the pedestal?', right: 'The king boasted that his works would make the mighty despair, but nothing of them remains.', wrong: ['The words are in a foreign language.', 'The king was really very poor.', 'The traveller carved the words himself.'], why: '“Look on my works, ye Mighty, and despair!” — yet “Nothing beside remains”, only “lone and level sands”.' },
+      { ask: 'What is left of the statue?', right: 'Two huge legs, and a broken face half buried in the sand', wrong: ['A complete statue of a king, still seated proudly on his throne', 'Nothing at all: the sand has covered every piece of the statue', 'A great city of temples and palaces built all around it'], why: '“Two vast and trunkless legs of stone” stand, and nearby “a shattered visage lies”, “Half sunk”.' },
+      { ask: 'What is ironic about the words on the pedestal?', right: 'He boasted his works would make the mighty despair, yet nothing of them remains.', wrong: ['The words are carved in an ancient language that no traveller can read.', 'The proud king who boasted of his great works was really very poor.', 'The traveller carved the boastful words on the pedestal himself.'], why: '“Look on my works, ye Mighty, and despair!” — yet “Nothing beside remains”, only “lone and level sands”.' },
       { ask: 'Which idea does the poem suggest?', right: 'Power and fame do not last.', wrong: ['Statues are the best way to be remembered.', 'Deserts are dangerous to cross.', 'Travellers cannot be trusted.'], why: 'The proudest king’s works have crumbled into the desert: time defeats power.' },
     ],
   },
@@ -297,23 +297,23 @@ const READINGS: Reading[] = [
     lead: `${titled(HOPE_ALL.poem)} by Emily Dickinson (“abash” means to shame or silence; “in extremity” means in the worst of times):`,
     qs: [
       { ask: 'Where does hope live, according to the poem?', right: 'In the soul', wrong: ['In a cage', 'In the sky', 'In the storm'], why: 'It is the thing “That perches in the soul”.' },
-      { ask: 'What does hope ask of the speaker in return?', right: 'Nothing at all, not even a crumb', wrong: ['A crumb of bread each day', 'A place to shelter from storms', 'That she sing along with it'], why: '“Yet, never, in extremity, / It asked a crumb of me.”' },
-      { ask: 'What does “sweetest in the gale is heard” suggest?', right: 'Hope matters most, and sounds sweetest, in the hardest times.', wrong: ['Hope can only be heard on windy days.', 'Hope disappears in a storm.', 'Birds sing louder in bad weather.'], why: 'A gale is a storm: hope sings sweetest when life is hardest, and only a terrible storm could silence it.' },
+      { ask: 'What does hope ask of the speaker in return?', right: 'Nothing at all, not even a crumb', wrong: ['A crumb of bread every single day', 'A place to shelter from storms', 'That she sing along with it each morning'], why: '“Yet, never, in extremity, / It asked a crumb of me.”' },
+      { ask: 'What does “sweetest in the gale is heard” suggest?', right: 'Hope matters most, and sounds sweetest, in the hardest times.', wrong: ['Hope can only be heard on stormy days, when the wind is high.', 'Hope disappears completely as soon as a storm blows in.', 'Real birds sing louder and sweeter in bad, windy weather.'], why: 'A gale is a storm: hope sings sweetest when life is hardest, and only a terrible storm could silence it.' },
     ],
   },
   {
     verse: SONNET18_ALL,
     lead: `Shakespeare’s ${titled(SONNET18_ALL.poem)} (“temperate” means mild and even; “lease” means a time that is rented and must end; “thou ow’st” means you own):`,
     qs: [
-      { ask: 'What does the speaker say is wrong with a summer’s day?', right: 'Summer is too short, and sometimes too hot or too windy.', wrong: ['Summer is too cold.', 'Summer lasts too long.', 'Summer has no flowers.'], why: '“Rough winds” shake the buds, “summer’s lease hath all too short a date”, and sometimes the sun is “too hot”.' },
-      { ask: 'Why will the loved one’s “eternal summer” not fade?', right: 'The poem itself will keep their beauty alive as long as people read it.', wrong: ['The loved one will never grow old.', 'Summer will never end.', 'The loved one lives in a warm country.'], why: '“So long as men can breathe, or eyes can see, / So long lives this, and this gives life to thee”: “this” is the poem.' },
+      { ask: 'What does the speaker say is wrong with a summer’s day?', right: 'Summer is too short, and sometimes too hot or too windy.', wrong: ['Summer is too cold, with grey skies and endless rain.', 'Summer lasts too long, and its heat never seems to end.', 'Summer has no flowers, since every bud dies in May.'], why: '“Rough winds” shake the buds, “summer’s lease hath all too short a date”, and sometimes the sun is “too hot”.' },
+      { ask: 'Why will the loved one’s “eternal summer” not fade?', right: 'The poem itself will keep their beauty alive as long as people read it.', wrong: ['The loved one has found a secret way never to grow old or die.', 'Summer will never end, so their beauty will last forever too.', 'The loved one lives in a warm country where summer never fades.'], why: '“So long as men can breathe, or eyes can see, / So long lives this, and this gives life to thee”: “this” is the poem.' },
     ],
   },
   {
     verse: DEATH_ALL,
     lead: `${titled(DEATH_ALL.poem)} by Emily Dickinson (“civility” means politeness; a “cornice” is the decorated edge of a roof):`,
     qs: [
-      { ask: 'How is Death shown in the first two stanzas?', right: 'As a kind, unhurried gentleman taking the speaker for a carriage ride', wrong: ['As a frightening monster', 'As a thief who drags her away', 'As an angry judge'], why: 'He “kindly stopped”, “knew no haste”, and she gives up her work “For his civility”.' },
+      { ask: 'How is Death shown in the first two stanzas?', right: 'As a kind, unhurried gentleman taking the speaker for a carriage ride', wrong: ['As a frightening monster who chases the speaker through the town', 'As a thief who seizes her and drags her away against her will', 'As a stern, angry judge who sentences the speaker for her sins'], why: 'He “kindly stopped”, “knew no haste”, and she gives up her work “For his civility”.' },
       { ask: 'What is the “house” that seems “A swelling of the ground”?', right: 'Her grave', wrong: ['A farmhouse', 'Death’s castle', 'The school'], why: 'A house that is only a swelling in the ground, its roof “scarcely visible”, is a grave.' },
     ],
   },
