@@ -19,7 +19,7 @@ const L = 'e10-1-2';
 type Method = 'direct' | 'speech' | 'thoughts' | 'effect' | 'actions' | 'looks';
 const INDIRECT: Method[] = ['speech', 'thoughts', 'effect', 'actions', 'looks'];
 const METHOD_NAME: Record<Method, string> = {
-  direct: 'Direct: the narrator names the trait',
+  direct: 'Direct: the narrator states the trait',
   speech: 'Speech: what the character says',
   thoughts: 'Thoughts: what the character thinks or feels',
   effect: 'Effect on others: how others react to them',
