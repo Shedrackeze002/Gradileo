@@ -41,7 +41,7 @@ const TERMS: Ask[] = [
   {
     ask: 'In a Petrarchan sonnet, where does the **volta** (the turn) usually come?',
     right: 'At line 9, where the octave gives way to the sestet',
-    wrong: ['In the very first line', 'In the final couplet', 'At line 5, after the first quatrain'],
+    wrong: ['In the very first line, before the octave begins', 'In a closing couplet that sums up the whole sonnet', 'At line 5, after the first four lines of the octave'],
     why: 'The octave sets out a problem or situation; at line 9 the sestet turns to answer it or see it differently.',
   },
   {
@@ -53,13 +53,13 @@ const TERMS: Ask[] = [
   {
     ask: 'What is the **volta** of a sonnet?',
     right: 'The turn: the point where the poem’s thought or feeling shifts',
-    wrong: ['The rhyme scheme of its last six lines', 'A line with ten syllables', 'The title of the poem'],
+    wrong: ['The rhyme scheme of the sestet, its last six lines (CDECDE)', 'A single line of ten syllables, with five stresses, da-DUM', 'The title of the poem, usually its first line repeated'],
     why: 'Volta is Italian for “turn”. Every sonnet has one: a shift in argument, mood or point of view.',
   },
   {
     ask: 'How many lines does a sonnet have, and in what metre are English sonnets usually written?',
     right: 'Fourteen lines, usually in iambic pentameter',
-    wrong: ['Twelve lines, in free verse', 'Sixteen lines, in iambic tetrameter', 'Fourteen lines, with no regular metre'],
+    wrong: ['Twelve lines, usually in unrhymed free verse', 'Sixteen lines, usually in iambic tetrameter', 'Fourteen lines, usually with no regular metre'],
     why: 'A sonnet has fourteen lines; in English they are usually iambic pentameter, five da-DUM beats to a line.',
   },
 ];
@@ -135,14 +135,14 @@ const VOLTAS: Volta[] = [
     lead: `${titled(MILTON19_ALL.poem)} by John Milton, who had gone blind (a “talent” is a coin in a story Jesus told about a servant who buried his instead of using it; “fondly” means foolishly):`,
     where: {
       ask: 'Where does the poem turn?',
-      right: 'In the middle of line 8: “But Patience, to prevent / That murmur, soon replies”',
-      wrong: ['At line 1: “When I consider how my light is spent”', 'At line 4: “Lodged with me useless”', 'At the last line: “They also serve who only stand and wait.”'],
+      right: 'In line 8: “But Patience, to prevent / That murmur, soon replies”',
+      wrong: ['At line 1: “When I consider how my light is spent”', 'At line 4: “Lodged with me useless, though my soul more bent”', 'At the last line: “They also serve who only stand and wait.”'],
       why: 'Milton’s turn comes half a line early, when Patience interrupts the speaker’s question.',
     },
     what: {
       ask: 'What changes at the turn?',
-      right: 'The speaker’s anxious complaint that blindness stops him serving God is answered by Patience: God values those who wait in faith.',
-      wrong: ['The speaker regains his sight and returns to work.', 'The speaker turns from praising God to rebelling against him.', 'The speaker stops thinking about God and describes the weather.'],
+      right: 'His fear that blindness stops him serving God is answered: God values those who wait in faith.',
+      wrong: ['The speaker regains his sight by a miracle and returns gladly to his work for God.', 'The speaker turns from patient praise of God to angry rebellion against his blindness.', 'Patience tells him that God needs his work urgently, so he must labour without rest.'],
       why: 'Up to the turn he frets (“Doth God exact day-labor, light denied?”); after it Patience replies that “They also serve who only stand and wait.”',
     },
   },
@@ -157,8 +157,8 @@ const VOLTAS: Volta[] = [
     },
     what: {
       ask: 'What changes at the turn?',
-      right: 'A complaint that people are too busy getting and spending to feel nature becomes a wish for an old pagan faith that would let him feel its wonder.',
-      wrong: ['Love of nature turns into love of money.', 'Despair turns into joy at the beauty of the sea.', 'Praise of the modern world turns into fear of the sea.'],
+      right: 'A complaint that busy modern people cannot feel nature becomes a wish for an old pagan faith.',
+      wrong: ['His love of the natural world slowly turns into a love of money, trade and getting rich.', 'His despair at the modern world turns into simple joy at the beauty of the moonlit sea.', 'His praise of the busy modern world turns into terror of the stormy sea and its gods.'],
       why: 'The octave laments that “we are out of tune”; the sestet longs to be “A Pagan” who could still see Proteus and hear Triton.',
     },
   },
@@ -173,8 +173,8 @@ const VOLTAS: Volta[] = [
     },
     what: {
       ask: 'What changes at the turn?',
-      right: 'Grief that people have scarred and dulled the earth gives way to hope that nature is always renewed by God.',
-      wrong: ['Hope gives way to despair about the future.', 'Praise of trade gives way to praise of industry.', 'A description of morning gives way to a description of night.'],
+      right: 'Grief that people have scarred the earth gives way to hope that God always renews nature.',
+      wrong: ['Hope for the future gives way to despair that the earth can never recover from industry.', 'Praise of trade and toil gives way to praise of the factories that have changed the land.', 'A description of a bright morning gives way to a description of a dark, starless night.'],
       why: 'The octave mourns that “all is seared with trade”; the sestet answers that “There lives the dearest freshness deep down things”.',
     },
   },
@@ -189,8 +189,8 @@ const VOLTAS: Volta[] = [
     },
     what: {
       ask: 'What changes at the turn?',
-      right: 'An account of how widely he has read gives way to the thrill of discovering Homer through Chapman.',
-      wrong: ['Love of travel gives way to fear of the sea.', 'Joy gives way to disappointment.', 'Praise of Chapman gives way to criticism of him.'],
+      right: 'An account of how widely he has read gives way to the thrill of finding Homer in Chapman.',
+      wrong: ['His love of travelling abroad gives way to a fear of the wide, unknown seas he has crossed.', 'His joy at reading Homer gives way to disappointment with Chapman’s clumsy translation.', 'His praise of Chapman’s skill gives way to sharp criticism of his errors and his style.'],
       why: 'The octave tours the “realms of gold” he has read; the sestet compares his discovery to an astronomer’s new planet and an explorer’s first sight of the Pacific.',
     },
   },
@@ -205,8 +205,8 @@ const VOLTAS: Volta[] = [
     },
     what: {
       ask: 'What changes at the turn?',
-      right: 'Lament for a troubled present gives way to a direct plea for Douglass’s guiding voice and strength.',
-      wrong: ['Praise of Douglass gives way to criticism of him.', 'A plea for help gives way to a celebration of victory.', 'Talk of the past gives way to a description of a real ship.'],
+      right: 'Lament for a troubled present gives way to a plea for Douglass’s guiding voice and strength.',
+      wrong: ['Praise of Douglass and his work gives way to harsh criticism of the way he led his people.', 'A desperate plea for help gives way to a joyful celebration of a victory already won.', 'Talk of Douglass’s past gives way to a description of a real ship lost in a real storm.'],
       why: 'The octave mourns “evil days”; the sestet cries, “Oh, for thy voice high-sounding o’er the storm”.',
     },
   },
@@ -222,7 +222,7 @@ const VOLTAS: Volta[] = [
     what: {
       ask: 'What does the final couplet do?',
       right: 'It sums up the poem’s resolve: to face the enemy with courage and die fighting back.',
-      wrong: ['It admits that resistance is hopeless and urges surrender.', 'It introduces a new subject: the beauty of the city.', 'It asks the enemy for mercy.'],
+      wrong: ['It admits that resistance is hopeless and urges the kinsmen to surrender quietly.', 'It introduces a completely new subject: the peaceful beauty of the city at night.', 'It turns to the enemy and humbly begs for mercy for the speaker and his kinsmen.'],
       why: '“Like men we’ll face the murderous, cowardly pack, / Pressed to the wall, dying, but fighting back!” clinches the argument in two rhyming lines.',
     },
   },
@@ -232,13 +232,13 @@ const VOLTAS: Volta[] = [
     where: {
       ask: 'What does “Love’s not Time’s fool” (line 9) mean?',
       right: 'Love is not at the mercy of time, even though youth and beauty fade.',
-      wrong: ['Love makes people foolish as they grow old.', 'Time is a fool who does not understand love.', 'Love is a waste of time.'],
+      wrong: ['Love makes people act foolishly as they grow old and lose their looks.', 'Time is a fool who will never understand what real love is about.', 'Love is a waste of time, since youth and beauty fade so quickly.'],
       why: 'Time’s “bending sickle” cuts down “rosy lips and cheeks”, but love “alters not with his brief hours and weeks”.',
     },
     what: {
       ask: 'What does the final couplet do?',
-      right: 'It stakes everything on the poem’s claim: if this view of love is wrong, then he never wrote and no one ever loved.',
-      wrong: ['It admits that love does change with time.', 'It describes the speaker’s wedding day.', 'It begins a new argument about beauty.'],
+      right: 'It stakes all on the poem’s claim: if it is wrong, he never wrote and no one ever loved.',
+      wrong: ['It admits at last that love does change with time, as youth and beauty fade away.', 'It describes the speaker’s own wedding day and the vows he made to the one he loves.', 'It begins a new argument, about beauty rather than love, to be continued in the next poem.'],
       why: '“If this be error and upon me prov’d, / I never writ, nor no man ever lov’d”: since he plainly has written, and people plainly have loved, the claim must be true.',
     },
   },
@@ -289,7 +289,7 @@ const METRE_TERMS: Ask[] = [
   { ask: 'Which term names a foot of poetry with a stressed syllable followed by an unstressed one (DUM-da), as in “garden”?', right: 'Trochee', wrong: ['Iamb', 'Spondee', 'Caesura'], why: 'A trochee is DUM-da, the reverse of an iamb (da-DUM).' },
   { ask: 'Which term names a foot of poetry with two stressed syllables (DUM-DUM)?', right: 'Spondee', wrong: ['Trochee', 'Iamb', 'Enjambment'], why: 'A spondee has two stresses side by side, which slows a line and gives it weight.' },
   { ask: 'Which term names a line that ends with a pause, at a punctuation mark such as a full stop or semicolon?', right: 'End-stopped line', wrong: ['Enjambment', 'Spondee', 'Trochee'], why: 'An end-stopped line finishes its phrase or sentence at the line break.' },
-  { ask: 'A poet writing in iambic pentameter starts a line with a trochee instead of an iamb. What is this variation called?', right: 'A trochaic inversion (a reversed first foot)', wrong: ['A caesura', 'An end-stopped line', 'A rhyming couplet'], why: 'Swapping the first iamb (da-DUM) for a trochee (DUM-da) is called trochaic inversion; it puts a strong stress on the first word.' },
+  { ask: 'A poet writing in iambic pentameter starts a line with a trochee instead of an iamb. What is this variation called?', right: 'A trochaic inversion (a reversed first foot)', wrong: ['A caesura (a pause in the middle of the line)', 'An end-stopped line (a pause at the line’s end)', 'A rhyming couplet (two lines that rhyme)'], why: 'Swapping the first iamb (da-DUM) for a trochee (DUM-da) is called trochaic inversion; it puts a strong stress on the first word.' },
 ];
 
 interface Ending {
@@ -347,21 +347,21 @@ const INVERSIONS: Inversion[] = [
     verse: linesOf(WORLD_ALL, 1, 2),
     lead: `The opening of ${titled(WORLD_ALL.poem)} by William Wordsworth. Look at the second line:`,
     first: 'Getting',
-    effect: { ask: 'What is the effect of the trochee here?', right: 'It throws a heavy stress onto the restless activity of “Getting and spending”, making it sound busy and relentless.', wrong: ['It slows the line to a calm, peaceful pace.', 'It makes the line rhyme with the line before.', 'It hides the meaning so that the reader passes over it.'], why: '“GET-ting and SPEND-ing” hammers the stress onto the very activity the poem condemns.' },
+    effect: { ask: 'What is the effect of the trochee here?', right: 'It throws a heavy stress onto “Getting and spending”, making that activity sound relentless.', wrong: ['It slows the line down to a calm, peaceful pace, like a quiet walk in nature.', 'It makes the second line rhyme with the first, so the two lines form a couplet.', 'It hides the words in an unstressed rush, so the reader hardly notices them at all.'], why: '“GET-ting and SPEND-ing” hammers the stress onto the very activity the poem condemns.' },
     why: 'The line begins “GET-ting” (DUM-da), a trochee, where the iambic pattern would lead us to expect da-DUM; then it settles back into the iambic beat.',
   },
   {
     verse: linesOf(LONDON_ALL, 1, 1),
     lead: `The first line of ${titled(LONDON_ALL.poem)} by William Wordsworth:`,
     first: 'Milton!',
-    effect: { ask: 'What is the effect of the trochee here?', right: 'The name bursts out with a stress on its first syllable, like an urgent cry for help.', wrong: ['It makes the line sound sleepy and slow.', 'It shows that the speaker has forgotten Milton’s name.', 'It turns the line into prose.'], why: 'Starting with “MIL-ton!” rather than an unstressed syllable makes the poem open with a call.' },
+    effect: { ask: 'What is the effect of the trochee here?', right: 'The name bursts out with a stress on its first syllable, like an urgent cry for help.', wrong: ['It makes the opening sound sleepy and slow, as if the speaker were half awake.', 'It shows that the speaker has mispronounced Milton’s name, stressing it wrongly.', 'It breaks the metre completely, turning the whole line into ordinary prose.'], why: 'Starting with “MIL-ton!” rather than an unstressed syllable makes the poem open with a call.' },
     why: 'The line begins “MIL-ton!” (DUM-da), a trochee, then continues in iambs: “thou SHOULD’ST | be LIV | ing AT | this HOUR”.',
   },
   {
     verse: linesOf(MILTON19_ALL, 3, 4),
     lead: `From ${titled(MILTON19_ALL.poem)} by John Milton, who had gone blind. Look at the second line:`,
     first: 'Lodged with',
-    effect: { ask: 'What is the effect of the trochee here?', right: 'The stress lands hard on “Lodged”, emphasizing that his gift is stuck and lying useless.', wrong: ['It makes the speaker sound cheerful.', 'It speeds the line up to show he is busy.', 'It hides the speaker’s worry.'], why: 'The heavy first syllable makes the talent seem stuck, “Lodged with me useless”.' },
+    effect: { ask: 'What is the effect of the trochee here?', right: 'The stress lands hard on “Lodged”, emphasizing that his gift is stuck and lying useless.', wrong: ['It makes the speaker sound cheerful and relaxed about the gift he has been given.', 'It speeds the whole line up to show how busy and productive he is in serving God.', 'It softens the line and hides the speaker’s worry behind a gentle, even beat.'], why: 'The heavy first syllable makes the talent seem stuck, “Lodged with me useless”.' },
     why: 'The line begins “LODGED with” (DUM-da), a trochee, then returns to iambs: “me USE | less, THOUGH | my SOUL | more BENT”.',
   },
   {

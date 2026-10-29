@@ -86,13 +86,13 @@ interface Effect {
   wrong: string[];
 }
 const EFFECTS: Effect[] = [
-  { device: 'soliloquy', lead: 'Juliet is alone with the Friar’s vial.', line: P.WHAT_IF_POISON, right: 'It lets the audience hear the private fears she hides from everyone else, so we share her terror before she drinks.', wrong: ['It tells her mother and the Nurse what she is about to do.', 'It lightens the mood with a joke before a serious scene.', 'It shows that she no longer trusts Romeo.'] },
-  { device: 'aside', lead: 'Paris has explained why his wedding to Juliet must be so soon.', line: P.FRIAR_SLOWD, right: 'It shows the audience that the Friar knows a secret Paris does not: Juliet is already married.', wrong: ['It warns Paris that the wedding must be put off.', 'It shows that the Friar has forgotten about the wedding.', 'It makes the audience laugh at Paris.'] },
-  { device: 'foreshadowing', lead: 'The Chorus speaks before the play begins.', line: P.PROLOGUE_STAR_CROSSED, right: 'Telling the audience from the start that the lovers will die makes every hopeful moment that follows feel doomed.', wrong: ['It keeps the ending a surprise until the last scene.', 'It shows that the two families have already made peace.', 'It explains how the feud between the families began.'] },
-  { device: 'comic', lead: 'Lady Capulet wants to talk to Juliet about marriage, but the Nurse rambles on about Juliet as a baby.', line: P.NURSE_SUSAN, right: 'Her rambling story lightens the mood and shows her warm, talkative nature before the serious talk of marriage.', wrong: ['It reveals that Juliet is secretly married.', 'It builds suspense about whether Juliet will die.', 'It shows that the Nurse dislikes Juliet.'] },
-  { device: 'pun', lead: 'Mercutio has been wounded by Tybalt.', line: P.GRAVE_MAN, right: 'He jokes even as he dies, which shows his wit to the very end and makes his death more shocking.', wrong: ['It shows that he does not realize he has been hurt.', 'It tells the audience that he will recover.', 'It proves that he is on Tybalt’s side.'] },
-  { device: 'monologue', lead: 'Romeo has said that dreams can come true. Mercutio answers with a long speech to his friends about Queen Mab, the fairy who brings dreams. It begins:', line: P.QUEEN_MAB, right: 'His fanciful speech shows his wild imagination and makes fun of Romeo’s faith in dreams.', wrong: ['It reveals his private thoughts while he is alone on stage.', 'It is a secret remark that Romeo does not hear.', 'It shows that he believes every dream comes true.'] },
-  { device: 'foreshadowing', lead: 'As Romeo leaves for Mantua at dawn, Juliet looks down at him.', line: P.ILL_DIVINING, right: 'It hints at the ending: the next time Juliet sees Romeo, he will be lying dead in a tomb.', wrong: ['It shows that Juliet is happy to see Romeo leave.', 'It tells Romeo about the Friar’s plan.', 'It is a joke that eases the tension of the parting.'] },
+  { device: 'soliloquy', lead: 'Juliet is alone with the Friar’s vial.', line: P.WHAT_IF_POISON, right: 'It lets the audience hear the private fears she hides from everyone else, so we share her terror before she drinks.', wrong: ['It lets her mother and the Nurse overhear her plan, so that they can stop her before she drinks the potion.', 'It breaks the tension with a joke about the Friar, so the audience can relax before the dark scene in the tomb.', 'It reveals that she has stopped trusting Romeo, and that she now means to marry Paris after all.'] },
+  { device: 'aside', lead: 'Paris has explained why his wedding to Juliet must be so soon.', line: P.FRIAR_SLOWD, right: 'It shows the audience that the Friar knows a secret Paris does not: Juliet is already married.', wrong: ['It warns Paris, in words he clearly hears, that the wedding should be put off until Romeo returns.', 'It shows that the Friar has forgotten the wedding and does not know why Paris has come to see him.', 'It invites the audience to laugh at Paris for being so eager, without adding anything to the plot.'] },
+  { device: 'foreshadowing', lead: 'The Chorus speaks before the play begins.', line: P.PROLOGUE_STAR_CROSSED, right: 'Telling the audience from the start that the lovers will die makes every hopeful moment that follows feel doomed.', wrong: ['It keeps the ending a surprise, so the audience does not learn that the lovers will die until the last scene.', 'It reassures the audience that the two families have already made peace before the story even begins.', 'It explains in detail how the feud between the Montagues and the Capulets first began, many years ago.'] },
+  { device: 'comic', lead: 'Lady Capulet wants to talk to Juliet about marriage, but the Nurse rambles on about Juliet as a baby.', line: P.NURSE_SUSAN, right: 'Her rambling story lightens the mood and shows her warm, talkative nature before the serious talk of marriage.', wrong: ['Her story reveals to Lady Capulet that Juliet is already secretly married to Romeo, a Montague.', 'Her story shows that she resents Juliet and wants Lady Capulet to send the girl away from home.', 'Her story gives the audience the history of the feud between the Montague and Capulet families.'] },
+  { device: 'pun', lead: 'Mercutio has been wounded by Tybalt.', line: P.GRAVE_MAN, right: 'He jokes even as he dies, which shows his wit to the very end and makes his death more shocking.', wrong: ['It shows that he does not yet realize he has been badly hurt, and expects to be well by tomorrow.', 'It tells the audience that his wound is only a scratch and that he will recover by the next scene.', 'It proves that he is secretly on Tybalt’s side, since he makes light of the fight that Tybalt won.'] },
+  { device: 'monologue', lead: 'Romeo has said that dreams can come true. Mercutio answers with a long speech to his friends about Queen Mab, the fairy who brings dreams. It begins:', line: P.QUEEN_MAB, right: 'His fanciful speech shows his wild imagination and makes fun of Romeo’s faith in dreams.', wrong: ['It reveals his private thoughts while he is alone on stage, where no other character can hear him.', 'It is a quick secret remark to the audience that Romeo and Benvolio are not meant to hear.', 'It shows that he shares Romeo’s belief that dreams are true warnings sent from heaven.'] },
+  { device: 'foreshadowing', lead: 'As Romeo leaves for Mantua at dawn, Juliet looks down at him.', line: P.ILL_DIVINING, right: 'It hints at the ending: the next time Juliet sees Romeo, he will be lying dead in a tomb.', wrong: ['It shows that Juliet is secretly relieved to see Romeo leave Verona and go to Mantua at last.', 'It tells Romeo about the Friar’s plan with the potion, so that he knows when to come back.', 'It is a playful joke between the lovers that eases the sadness of their parting at dawn.'] },
 ];
 
 function devicesQ(rng: Rng, d: Difficulty) {
@@ -155,67 +155,67 @@ interface Irony {
 const IRONIES: Irony[] = [
   {
     lead: 'Tybalt has called Romeo a villain and challenged him. Romeo answers:', line: P.REASON_TO_LOVE, who: 'Tybalt and Mercutio',
-    knows: 'Romeo has just married Juliet, Tybalt’s cousin.', wrongKnows: ['Tybalt has already killed Mercutio.', 'Romeo has been banished to Mantua.', 'Juliet has taken a sleeping potion.'],
-    effect: 'Tension: we understand Romeo’s gentleness, while Tybalt and Mercutio take it for cowardice, and we dread the fight to come.', wrongEffects: ['It makes the audience laugh at Tybalt’s mistake.', 'It reveals the marriage to everyone on stage.', 'It shows that Romeo is afraid of Tybalt.'],
+    knows: 'Romeo has just married Juliet, Tybalt’s cousin.', wrongKnows: ['Tybalt has already killed Mercutio in the street.', 'Romeo has been banished from Verona to Mantua.', 'Juliet has already taken the Friar’s sleeping potion.'],
+    effect: 'Tension: we know why Romeo is gentle, while Tybalt and Mercutio take it for cowardice.', wrongEffects: ['Humour: the audience laughs at Tybalt for mistaking Romeo’s kindness for fear.', 'Surprise: Romeo reveals his secret marriage to Tybalt and Mercutio at this moment.', 'Doubt: it shows that Romeo really is too frightened of Tybalt’s sword to fight him.'],
     summary: 'Tybalt challenges Romeo, not knowing that Romeo has just married Tybalt’s cousin, Juliet.',
   },
   {
     lead: 'Juliet waits impatiently for night, when Romeo will come to her:', line: P.TEDIOUS_DAY, who: 'Juliet',
     knows: 'Romeo has just killed Tybalt and been banished.', wrongKnows: ['Romeo has gone to Mantua to buy poison.', 'Juliet has already married Paris.', 'The Nurse has told Capulet about the wedding.'],
-    effect: 'Pity: her happiness is painful to watch, because we know it is about to be shattered.', wrongEffects: ['Relief: we know that everything will turn out well.', 'Humour: we laugh at how impatient she is.', 'Surprise: we learn about Tybalt’s death at the same moment she does.'],
-    summary: 'Juliet longs for night to bring Romeo to her, not knowing that he has just killed her cousin and been banished.',
+    effect: 'Pity: her happiness is painful to watch, because we know it is about to be shattered.', wrongEffects: ['Relief: we know that everything will turn out well for the lovers in the end.', 'Humour: we laugh at how impatient and dramatic she is as she waits for night.', 'Surprise: we learn about Tybalt’s death at the same moment she does.'],
+    summary: 'Juliet longs for night to bring Romeo, not knowing he has killed her cousin and been banished.',
   },
   {
     lead: 'Lady Capulet promises Juliet revenge on “that same villain Romeo”:', line: P.MANY_MILES_ASUNDER, who: 'Lady Capulet',
     knows: 'Juliet loves Romeo and is secretly married to him.', wrongKnows: ['Juliet is planning to poison Romeo herself.', 'Romeo is still hiding in Juliet’s room.', 'Lady Capulet has already sent someone to Mantua.'],
-    effect: 'Juliet’s double meanings let her tell the audience the truth, while her mother hears only hatred of Romeo.', wrongEffects: ['It shows that Juliet now hates Romeo.', 'It reveals the marriage to Lady Capulet.', 'It makes the audience doubt Juliet’s love.'],
+    effect: 'Juliet’s double meanings tell the audience the truth, while her mother hears only hatred of Romeo.', wrongEffects: ['It shows that Juliet has truly turned against Romeo now that he has killed her cousin.', 'It lets Lady Capulet see through Juliet’s words and discover that she is married to Romeo.', 'It makes the audience doubt whether Juliet ever truly loved Romeo, now that he is banished.'],
     summary: 'Lady Capulet tells Juliet she will have Romeo poisoned, never guessing that Juliet is married to him.',
   },
   {
     lead: 'Paris greets Juliet at Friar Lawrence’s cell:', line: P.MY_LADY_AND_MY_WIFE, who: 'Paris',
-    knows: 'Juliet is already married to Romeo.', wrongKnows: ['Juliet has already drunk the potion.', 'Romeo is dead.', 'The Friar is Juliet’s uncle.'],
-    effect: 'Discomfort and tension: everything Paris says about their marriage is wrong in a way he cannot see.', wrongEffects: ['It makes us admire Paris for winning Juliet’s love.', 'It tells Paris the truth about Romeo.', 'It shows that Juliet has agreed to marry Paris.'],
+    knows: 'Juliet is already married to Romeo.', wrongKnows: ['Juliet has already drunk the potion.', 'Romeo has died in Mantua.', 'The Friar is Juliet’s uncle.'],
+    effect: 'Discomfort and tension: everything Paris says about their marriage is wrong, and he cannot see it.', wrongEffects: ['Admiration: we are glad that Paris has finally won Juliet’s love, and with it her hand.', 'Relief: Juliet’s careful replies tell Paris the truth about Romeo, so the danger passes.', 'Joy: it shows that Juliet has truly given up Romeo and is now happy to marry Paris.'],
     summary: 'Paris greets Juliet as “my lady and my wife”, not knowing that she is already married to Romeo.',
   },
   {
     lead: 'Juliet returns from the Friar’s cell and kneels to her father:', line: P.EVER_RULD, who: 'Capulet',
-    knows: 'Juliet is only pretending; she plans to drink the Friar’s potion.', wrongKnows: ['Juliet has decided to marry Paris after all.', 'The Friar has told Capulet about Romeo.', 'Romeo has come back from Mantua.'],
-    effect: 'Capulet’s joy is painful to watch, because it rests on a lie, and in his delight he moves the wedding a day earlier.', wrongEffects: ['It shows that Juliet has given up on Romeo.', 'It ends the conflict between Juliet and her father for good.', 'It makes the audience laugh at Juliet.'],
-    summary: 'Capulet rejoices that his daughter will obey him, not knowing that her obedience is part of the Friar’s plan.',
+    knows: 'Juliet is only pretending; she plans to drink the Friar’s potion.', wrongKnows: ['Juliet has changed her mind and decided to marry Paris after all.', 'The Friar has secretly told Capulet all about the marriage to Romeo.', 'Romeo has come back from Mantua and is hiding in the house.'],
+    effect: 'Capulet’s joy is painful to watch: it rests on a lie, and in his delight he moves the wedding earlier.', wrongEffects: ['It shows that Juliet has truly given up on Romeo and now wants to please her father.', 'It ends the conflict between Juliet and her father for good, so the danger to her has passed.', 'It makes the audience laugh at how easily Juliet has been talked out of her love for Romeo.'],
+    summary: 'Capulet rejoices that Juliet will obey him, not knowing her obedience is part of the Friar’s plan.',
   },
   {
     lead: 'On the wedding morning, Capulet finds Juliet lying cold on her bed:', line: P.UNTIMELY_FROST, who: 'Capulet and the rest of the household',
-    knows: 'Juliet is not dead but in a deep sleep from the Friar’s potion.', wrongKnows: ['Juliet has stabbed herself.', 'Romeo has already heard the news in Mantua.', 'Paris gave Juliet the potion.'],
-    effect: 'Their grief is hard to watch, and we wait anxiously to see whether the Friar’s plan will work.', wrongEffects: ['It tells us that Juliet has really died.', 'It makes the scene a comic one.', 'It shows that the Capulets never loved Juliet.'],
+    knows: 'Juliet is not dead but in a deep sleep from the Friar’s potion.', wrongKnows: ['Juliet has stabbed herself in the night with a hidden dagger.', 'Romeo has already heard the news of her death in Mantua.', 'Paris gave Juliet the potion the night before the wedding.'],
+    effect: 'Their grief is hard to watch, and we wait anxiously to see whether the Friar’s plan will work.', wrongEffects: ['It tells the audience that Juliet has really died, and the Friar’s plan has failed.', 'It turns the scene into a comic one, since the audience can laugh at the family’s mistake.', 'It shows that the Capulets never truly loved Juliet, since they grieve so loudly.'],
     summary: 'The Capulets weep over Juliet’s body, believing she is dead, while she lies in a drugged sleep.',
   },
   {
     lead: 'In Mantua, Romeo asks his servant for news of Juliet. Balthasar answers:', line: P.SHE_IS_WELL, who: 'Romeo and Balthasar',
-    knows: 'Juliet is only in a drugged sleep, and the Friar’s letter has not reached Romeo.', wrongKnows: ['Juliet really has died of grief.', 'Balthasar is lying to Romeo on purpose.', 'Romeo has already read the Friar’s letter.'],
-    effect: 'Agonizing suspense: one message could save Romeo, but we watch him act on a mistake.', wrongEffects: ['Relief: we know Romeo will learn the truth in time.', 'Humour: Balthasar’s words are a joke.', 'Surprise: we learn of Juliet’s death at the same time as Romeo.'],
+    knows: 'Juliet is only in a drugged sleep, and the Friar’s letter has not reached Romeo.', wrongKnows: ['Juliet really has died of grief for Romeo, just as Balthasar says.', 'Balthasar is lying to Romeo on purpose, on the orders of the Capulets.', 'Romeo has already read the Friar’s letter and knows about the potion.'],
+    effect: 'Agonizing suspense: one message could save Romeo, but we watch him act on a mistake.', wrongEffects: ['Relief: we know that Romeo will learn the truth in time to save them both.', 'Humour: Balthasar’s gloomy news is really a joke that Romeo will soon see through.', 'Surprise: we learn of Juliet’s death at the same moment as Romeo does.'],
     summary: 'Balthasar tells Romeo that Juliet is dead, not knowing that she is only in a drugged sleep.',
   },
   {
     lead: 'In the tomb, Romeo looks at Juliet before he drinks the poison:', line: P.BEAUTYS_ENSIGN, who: 'Romeo',
     knows: 'Juliet is alive and about to wake.', wrongKnows: ['Juliet has been dead for two days.', 'Paris is still alive.', 'Friar Lawrence is already in the tomb.'],
-    effect: 'Almost unbearable tension: Romeo notices the signs that she is alive but takes them for death’s mercy, and we watch him miss the truth by moments.', wrongEffects: ['It shows that Romeo knows Juliet is alive.', 'It comforts the audience that all will be well.', 'It makes the audience laugh at Romeo’s mistake.'],
-    summary: 'Romeo notices that Juliet’s lips and cheeks are still red, but takes it as death’s mercy rather than a sign that she is alive.',
+    effect: 'Unbearable tension: Romeo sees the signs that she is alive but takes them for death’s mercy.', wrongEffects: ['Relief: it shows that Romeo has seen that Juliet is alive, and will wait for her to wake.', 'Comfort: it assures the audience that all will be well for the lovers in the end.', 'Humour: it makes the audience laugh at Romeo for mistaking sleep for death.'],
+    summary: 'Romeo sees that Juliet’s lips are still red, but takes it for death’s mercy, not a sign of life.',
   },
   {
     lead: 'Alone in Mantua, Romeo wakes in good spirits:', line: P.ROMEO_DREAM, who: 'Romeo',
-    knows: 'Juliet’s family believe she is dead, and she now lies in the Capulet tomb.', wrongKnows: ['Juliet has written to say she is coming to Mantua.', 'The Prince has pardoned Romeo.', 'Romeo has already bought the poison.'],
-    effect: 'His cheerful mood makes the bad news that is coming feel even crueller.', wrongEffects: ['It tells us the news really will be joyful.', 'It shows that Romeo has forgotten Juliet.', 'It is a joke to lighten the ending.'],
-    summary: 'Romeo wakes expecting joyful news, while the audience knows that Juliet’s family, believing her dead, have laid her in the tomb.',
+    knows: 'Juliet’s family believe she is dead, and she now lies in the Capulet tomb.', wrongKnows: ['Juliet has written to say that she is on her way to join him in Mantua.', 'The Prince has pardoned Romeo, and he may now return to Verona.', 'Romeo has already bought poison from the apothecary in Mantua.'],
+    effect: 'His cheerful mood makes the bad news that is coming feel even crueller.', wrongEffects: ['It tells the audience that the news he expects really will be joyful.', 'It shows that Romeo has forgotten Juliet now that he is in Mantua.', 'It is a joke that lightens the mood before the tragic ending.'],
+    summary: 'Romeo wakes in Mantua expecting joyful news, while we know Juliet lies in the Capulet tomb.',
   },
 ];
 /** Moments with no dramatic irony: the characters know what the audience knows. */
 const PLAIN: string[] = [
-  'Benvolio tries to part the servants who are fighting in the first scene.',
-  'Capulet invites Paris to his feast so that Paris can see Juliet.',
-  'Mercutio makes fun of Romeo’s talk of dreams with a long speech about Queen Mab.',
-  'Romeo tells Friar Lawrence that he loves Juliet and asks to be married that day.',
-  'Capulet tells Paris that Juliet is too young to marry yet.',
-  'The Prince orders Capulet and Montague to keep the peace after the first street fight.',
+  'Benvolio tries to part the fighting servants in the first scene, beating down their swords with his own.',
+  'Capulet invites Paris to his feast so that Paris can see Juliet and begin to win her heart.',
+  'Mercutio makes fun of Romeo’s talk of dreams with a long speech about Queen Mab, the fairy of dreams.',
+  'Romeo tells Friar Lawrence that he loves Juliet now, not Rosaline, and asks to be married that day.',
+  'Capulet tells Paris that Juliet is too young to marry yet, and that he should wait two more summers.',
+  'The Prince orders Capulet and Montague to keep the peace after the first street fight, on pain of death.',
 ];
 
 function ironyQ(rng: Rng, d: Difficulty) {
