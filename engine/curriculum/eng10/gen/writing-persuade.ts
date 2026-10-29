@@ -7,8 +7,8 @@
  */
 import { mc, part, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
-import type { AnswerSpec, Choice, Difficulty, SkillDef } from '../../../types.ts';
-import { block, cap, fill, pair, people, q } from './common.ts';
+import type { Difficulty, SkillDef } from '../../../types.ts';
+import { block, cap, fill, order, pair, people, q } from './common.ts';
 
 const PERSUADE = 'e10-6-3';
 const NARRATIVE = 'e10-6-4';
@@ -292,19 +292,6 @@ function persuasiveWriting(rng: Rng, d: Difficulty): GenOutput {
     'The body gives the reasons with evidence, then answers the strongest counterargument.',
     'The conclusion restates the position and ends with a call to action.',
   ]);
-}
-
-/** An order question whose items are shown shuffled (never already in order). */
-export function order(rng: Rng, prompt: string, steps: string[], hints: string[], solution: string[]): GenOutput {
-  const ids = 'abcdefgh';
-  const idx = steps.map((_, i) => i);
-  let shown = rng.shuffle(idx);
-  for (let i = 0; i < 50 && shown.every((v, j) => v === j); i++) shown = rng.shuffle(idx);
-  if (shown.every((v, j) => v === j)) shown = [...idx].reverse();
-  const items: Choice[] = shown.map((k, i) => ({ id: ids[i], md: steps[k] }));
-  const correctOrder = idx.map((k) => items[shown.indexOf(k)].id);
-  const answer: AnswerSpec = { kind: 'order', items, correctOrder, ends: ['First', 'Last'] };
-  return { prompt, parts: [part(answer)], hints, solution };
 }
 
 type RebuttalFlaw = 'deny' | 'attack' | 'giveUp' | 'ignore';

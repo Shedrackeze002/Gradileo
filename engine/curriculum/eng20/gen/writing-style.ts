@@ -8,8 +8,7 @@
 import { mc, multi, part, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { block, q } from '../../eng10/gen/common.ts';
-import { order } from './writing-analysis.ts';
+import { block, order, q } from '../../eng10/gen/common.ts';
 
 const STYLE = 'e11-6-5';
 const TIMED = 'e11-6-6';

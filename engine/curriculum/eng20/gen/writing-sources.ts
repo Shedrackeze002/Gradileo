@@ -8,8 +8,7 @@
 import { fixedChoice, mc, part, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { block, q } from '../../eng10/gen/common.ts';
-import { order } from './writing-analysis.ts';
+import { block, order, q } from '../../eng10/gen/common.ts';
 
 const SOURCES = 'e11-6-3';
 const ARGUE = 'e11-6-4';

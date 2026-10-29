@@ -7,27 +7,14 @@
  */
 import { fixedChoice, mc, part, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
-import type { AnswerSpec, Choice, Difficulty, SkillDef } from '../../../types.ts';
-import { block, q } from '../../eng10/gen/common.ts';
+import type { Difficulty, SkillDef } from '../../../types.ts';
+import { block, order, q } from '../../eng10/gen/common.ts';
 import { CASK, FIRE, HEART, HOUR, MAGI, PAW, WINDOW, titled, type Story } from '../../eng10/gen/texts.ts';
 import { DULCE, FLANDERS, MASK, NOBODY, OZYMANDIAS, REMEMBER, SONNET18 } from '../../eng10/gen/poems.ts';
 
 const LIT = 'e11-6-1';
 const COMP = 'e11-6-2';
 const OUTCOMES = ['11-F1'];
-
-/** Items to put in order: shuffled (never already in order), with the first and last places named. */
-export function order(rng: Rng, prompt: string, steps: string[], hints: string[], solution: string[]): GenOutput {
-  const ids = 'abcdefgh';
-  const idx = steps.map((_, i) => i);
-  let shown = rng.shuffle(idx);
-  for (let i = 0; i < 50 && shown.every((v, j) => v === j); i++) shown = rng.shuffle(idx);
-  if (shown.every((v, j) => v === j)) shown = [...idx].reverse();
-  const items: Choice[] = shown.map((k, i) => ({ id: ids[i], md: steps[k] }));
-  const correctOrder = idx.map((k) => items[shown.indexOf(k)].id);
-  const answer: AnswerSpec = { kind: 'order', items, correctOrder, ends: ['First', 'Last'] };
-  return { prompt, parts: [part(answer)], hints, solution };
-}
 
 /** "A, B or C" from short phrases. */
 function orList(xs: string[]): string {
