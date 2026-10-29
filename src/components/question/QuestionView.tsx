@@ -143,7 +143,7 @@ function PartInput({
       );
       break;
     case 'order':
-      input = <OrderList items={spec.items} value={value} onChange={onChange} locked={locked} />;
+      input = <OrderList items={spec.items} ends={spec.ends} value={value} onChange={onChange} locked={locked} />;
       break;
     case 'graph-line':
     case 'graph-points':
@@ -297,7 +297,7 @@ function ChoiceList({
   );
 }
 
-function OrderList({ items, value, onChange, locked }: { items: Choice[]; value: string; onChange: (v: string) => void; locked?: boolean }) {
+function OrderList({ items, ends = ['Least', 'Greatest'], value, onChange, locked }: { items: Choice[]; ends?: [string, string]; value: string; onChange: (v: string) => void; locked?: boolean }) {
   const order = value ? value.split(',') : items.map((c) => c.id);
   const byId = new Map(items.map((c) => [c.id, c]));
   const move = (i: number, d: number) => {
@@ -310,7 +310,7 @@ function OrderList({ items, value, onChange, locked }: { items: Choice[]; value:
   return (
     <div>
       <div className="mb-2 flex justify-between text-xs font-medium uppercase tracking-wide text-ink-3">
-        <span>Least</span>
+        <span>{ends[0]}</span>
         <span>Use the arrows to reorder</span>
       </div>
       <ol className="space-y-2">
@@ -331,7 +331,7 @@ function OrderList({ items, value, onChange, locked }: { items: Choice[]; value:
           </li>
         ))}
       </ol>
-      <div className="mt-1 text-right text-xs font-medium uppercase tracking-wide text-ink-3">Greatest</div>
+      <div className="mt-1 text-right text-xs font-medium uppercase tracking-wide text-ink-3">{ends[1]}</div>
     </div>
   );
 }

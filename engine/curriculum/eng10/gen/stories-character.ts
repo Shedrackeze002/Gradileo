@@ -6,8 +6,7 @@
 import { fixedChoice, mc, part, skill } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { block, fill, people } from './common.ts';
-import { pair } from './stories-plot.ts';
+import { block, fill, pair, people } from './common.ts';
 import {
   CASK_SMILE, FIRE_FROST, FIRE_IMAGINATION, HOUR, HOUR_FREE, HOUR_PRAYER, MAGI_HAIR, MAGI_JIM, MAGI_OPENING, MAGI_PRAYER, MAGI_SELL, MAGI_WATCH, PAW_SNATCH, TIGER_YOUTH, WINDOW_FRAMTON, WINDOW_ROMANCE,
   quoteBlock, titled, type Excerpt,
@@ -277,6 +276,8 @@ const INFERENCES: Inference[] = [
 interface PdInference {
   who: string;
   lead?: string;
+  /** A gloss of a hard word, shown under the passage. */
+  note?: string;
   excerpt: Excerpt;
   trait: string;
   wrong: string[];
@@ -284,10 +285,10 @@ interface PdInference {
 }
 const PD_INFERENCES: PdInference[] = [
   { who: 'Della', excerpt: MAGI_OPENING, trait: 'She is careful with money and has saved hard.', wrong: ['She is wasteful with money.', 'She is lazy and careless.', 'She is rich but mean.'], why: 'She saved pennies by bargaining hard and counted her money three times, which shows how carefully she manages what little she has.' },
-  { who: 'Della', lead: 'Della has cut off and sold her hair to buy Jim a present. As Jim comes up the stairs:', excerpt: MAGI_PRAYER, trait: 'She is anxious about how Jim will see her.', wrong: ['She is confident about her looks.', 'She is angry with Jim.', 'She does not care what Jim thinks.'], why: 'She prays that Jim will still think her pretty, which shows she is worried about his reaction to her short hair.' },
-  { who: 'Jim', lead: 'Della has just given Jim a chain for his watch, after receiving combs for her hair. Jim says:', excerpt: MAGI_WATCH, trait: 'He gave up his greatest treasure for Della.', wrong: ['He is angry that Della sold her hair.', 'He cares more about the watch than about Della.', 'He is greedy and selfish.'], why: 'Jim sold the watch he was so proud of to buy Della’s combs, a sacrifice that shows his love for her.' },
+  { who: 'Della', lead: 'Della has cut off and sold her hair to buy Jim a present, and now she hears him on the stairs.', excerpt: MAGI_PRAYER, trait: 'She is anxious about how Jim will see her.', wrong: ['She is confident about her looks.', 'She is angry with Jim.', 'She does not care what Jim thinks.'], why: 'She prays that Jim will still think her pretty, which shows she is worried about his reaction to her short hair.' },
+  { who: 'Jim', lead: 'Della has just given Jim a chain for his watch, after receiving combs for her hair.', excerpt: MAGI_WATCH, trait: 'He gave up his greatest treasure for Della.', wrong: ['He is angry that Della sold her hair.', 'He cares more about the watch than about Della.', 'He is greedy and selfish.'], why: 'Jim sold the watch he was so proud of to buy Della’s combs, a sacrifice that shows his love for her.' },
   { who: 'Framton Nuttel', excerpt: WINDOW_FRAMTON, trait: 'He is wrapped up in himself and his health.', wrong: ['He is modest and quiet.', 'He is curious about other people.', 'He is adventurous and daring.'], why: 'He tells a near-stranger the details of his illnesses, believing others want to hear them, which shows he is self-absorbed.' },
-  { who: 'Montresor', lead: 'Montresor, the narrator, has sworn revenge on Fortunato.', excerpt: CASK_SMILE, trait: 'He is deceitful, hiding his hatred behind a smile.', wrong: ['He is forgiving and kind.', 'He is honest about his feelings.', 'He is shy and nervous.'], why: 'He smiles in Fortunato’s face while planning his death, so he hides his true feelings: he is deceitful.' },
+  { who: 'Montresor', lead: 'Montresor, the narrator, has sworn revenge on Fortunato.', note: '*Immolation* means killing someone as a sacrifice.', excerpt: CASK_SMILE, trait: 'He is deceitful, hiding his hatred behind a smile.', wrong: ['He is forgiving and kind.', 'He is honest about his feelings.', 'He is shy and nervous.'], why: 'He smiles in Fortunato’s face while planning his death, so he hides his true feelings: he is deceitful.' },
   { who: 'the man', excerpt: FIRE_FROST, trait: 'He does not grasp how dangerous the cold is.', wrong: ['He is terrified of the cold.', 'He is wise about life in the North.', 'He is careful and cautious.'], why: 'Fifty below zero is only “cold and uncomfortable” to him, so he does not see the danger to his life.' },
   { who: 'Mr. White', lead: 'Sergeant-Major Morris has just warned the family that the monkey’s paw causes sorrow.', excerpt: PAW_SNATCH, trait: 'He is curious and tempted by the paw.', wrong: ['He is cautious and sensible.', 'He is afraid of the paw.', 'He is generous to his guest.'], why: 'Despite the warning, he snatches the paw out of the fire, which shows that his curiosity and temptation are stronger than his caution.' },
   { who: 'Mrs. Mallard', lead: 'Mrs. Mallard has just learned that her husband is dead.', excerpt: HOUR_FREE, trait: 'She longs for independence.', wrong: ['She wants to remarry soon.', 'She depends on her husband for everything.', 'She is afraid of the years ahead.'], why: 'She rejoices that she will live for herself, which shows how much she longs to be independent.' },
@@ -297,7 +298,7 @@ function characterInference(rng: Rng, d: Difficulty) {
   if (d === 3 || (d === 2 && rng.chance(0.5))) {
     const c = rng.pick(PD_INFERENCES);
     return {
-      prompt: `${c.lead ? `${c.lead} ` : ''}Read this passage from ${titled(c.excerpt.story)}.\n\n${quoteBlock(c.excerpt)}\n\nWhat does the passage most suggest about ${c.who}?`,
+      prompt: `${c.lead ? `${c.lead} ` : ''}Read this passage from ${titled(c.excerpt.story)}.\n\n${quoteBlock(c.excerpt)}${c.note ? `\n\n${c.note}` : ''}\n\nWhat does the passage most suggest about ${c.who}?`,
       parts: [part(mc(rng, c.trait, c.wrong))],
       hints: ['Ask what the character says, does or thinks here, and what kind of person would behave that way.'],
       solution: [c.why],

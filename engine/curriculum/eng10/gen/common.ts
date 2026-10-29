@@ -28,6 +28,20 @@ export const person = (rng: Rng): Person => rng.pick(PEOPLE);
 /** `n` different people. */
 export const people = (rng: Rng, n: number): Person[] => rng.sample(PEOPLE, n);
 
+/** Two people of different genders, so "he" and "she" are never ambiguous. */
+export function pair(rng: Rng): Person[] {
+  const a = people(rng, 1)[0];
+  const b = retryPick(rng, (p) => p.he !== a.he);
+  return [a, b, retryPick(rng, (p) => p.name !== a.name && p.name !== b.name)];
+}
+function retryPick(rng: Rng, ok: (p: Person) => boolean): Person {
+  for (let i = 0; i < 100; i++) {
+    const p = people(rng, 1)[0];
+    if (ok(p)) return p;
+  }
+  throw new Error('no person found');
+}
+
 export const cap = (s: string) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 /** Lower-case the first letter, unless the first word is "I" or a name (a capitalized word in `keep`). */
 export function lowerFirst(s: string, keep: readonly string[] = []): string {

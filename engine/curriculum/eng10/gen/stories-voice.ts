@@ -7,8 +7,7 @@
 import { fixedChoice, mc, part, skill } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { block, cap, fill, type Person } from './common.ts';
-import { pair } from './stories-plot.ts';
+import { block, cap, fill, pair, type Person } from './common.ts';
 import {
   CASK, CASK_OPENING, CASK_SMILE, FIRE, FIRE_FROST, FIRE_IMAGINATION, FIRE_OPENING, HEART, HEART_BEAT, HEART_OPENING, HEART_WISELY, HOUR, HOUR_FREE, HOUR_WINDOW, MAGI, MAGI_GRAY, MAGI_OPENING,
   MAGI_PIER_GLASS, OWL, OWL_OPENING, PAW, PAW_KNOCK, USHER, USHER_OPENING, WINDOW, WINDOW_FRAMTON, quoteBlock, titled, type Excerpt,
@@ -73,19 +72,21 @@ interface PdMood {
   lead: string;
   excerpt: Excerpt;
   family: Family;
+  /** Wrong-answer families, when the default ones could be argued from the story around the passage. */
+  far?: Family[];
   answer: string;
   why: string;
 }
 const PD_MOODS: PdMood[] = [
   { lead: `This is the opening of ${titled(USHER)}:`, excerpt: USHER_OPENING, family: 'gloomy', answer: 'Gloomy', why: 'A “dull, dark, and soundless day”, low clouds, a “dreary tract of country” and “insufferable gloom” create a dark, depressing mood.' },
-  { lead: `In ${titled(HOUR)}, Mrs. Mallard sits alone at her open window, an hour after hearing of her husband’s death:`, excerpt: HOUR_WINDOW, family: 'hopeful', answer: 'Hopeful', why: '“New spring life”, “the delicious breath of rain”, a distant song and twittering sparrows suggest fresh life and new possibilities.' },
+  { lead: `In ${titled(HOUR)}, Mrs. Mallard sits alone at her open window, an hour after hearing of her husband’s death:`, excerpt: HOUR_WINDOW, family: 'hopeful', far: ['eerie', 'chaotic', 'tense'], answer: 'Hopeful', why: '“New spring life”, “the delicious breath of rain”, a distant song and twittering sparrows suggest fresh life and new possibilities.' },
   { lead: `In ${titled(HEART)}, the narrator stands in the dark beside the old man’s bed:`, excerpt: HEART_BEAT, family: 'tense', answer: 'Tense', why: 'The heart beats “quicker and quicker, and louder and louder”, building pressure toward something terrible.' },
   { lead: `This is the opening of ${titled(FIRE)}:`, excerpt: FIRE_OPENING, family: 'gloomy', answer: 'Bleak', why: '“Cold and grey, exceedingly cold and grey”, repeated, and a “dim and little-travelled trail” make the scene bleak and lonely.' },
   { lead: `In ${titled(PAW)}, late at night after the second wish, Mr. White goes downstairs in the dark:`, excerpt: PAW_KNOCK, family: 'tense', answer: 'Suspenseful', why: 'The match goes out in the dark, and a “quiet and stealthy” knock sounds at that very moment, so the reader dreads what is outside.' },
 ];
 
-function moodChoices(rng: Rng, family: Family, answer: string, max = 4) {
-  const wrong = rng.shuffle(FAR[family]).map((f) => rng.pick(WORDS[f]));
+function moodChoices(rng: Rng, family: Family, answer: string, max = 4, far = FAR[family]) {
+  const wrong = rng.shuffle(far).map((f) => rng.pick(WORDS[f]));
   return mc(rng, answer, wrong, { max });
 }
 
@@ -95,7 +96,7 @@ function moodQ(rng: Rng, d: Difficulty) {
     const m = rng.pick(PD_MOODS);
     return {
       prompt: `${m.lead}\n\n${quoteBlock(m.excerpt)}\n\nWhich word best describes the **mood** of this passage?`,
-      parts: [part(moodChoices(rng, m.family, m.answer))],
+      parts: [part(moodChoices(rng, m.family, m.answer, 4, m.far))],
       hints: ['Mood is the feeling the passage creates in the reader. Look at the descriptive words and images: what feeling do they share?'],
       solution: [`The mood is ${m.answer.toLowerCase()}.`, m.why],
     };
@@ -211,10 +212,10 @@ function moodDetails(rng: Rng, d: Difficulty) {
   const wrong = rng.shuffle(FAR[p.family]).map((f) => fill(rng.pick(MOOD_DETAILS[f]), cast));
   const word = WORDS[p.family][0].toLowerCase();
   return {
-    prompt: `${block(fill(p.text, cast))}\n\nThe mood of this passage is ${word}. Which sentence, added to the end, would best **keep** that mood?`,
+    prompt: `${block(fill(p.text, cast))}\n\nThe mood of this passage is ${word}. Which of these sentences creates the **same** mood?`,
     parts: [part(mc(rng, right, wrong, { max: d === 1 ? 3 : 4 }))],
     hints: ['Choose the detail whose images and sounds create the same feeling as the rest of the passage.'],
-    solution: [`“${right}” fits the ${word} mood.`, 'Each of the other sentences would create a different feeling and break the mood.'],
+    solution: [`“${right}” creates the same ${word} mood.`, 'Each of the other sentences creates a different feeling.'],
   };
 }
 
@@ -270,7 +271,7 @@ const SCENES: Scene[] = [
     setup: '[A] stopped in the middle of the crowded market and turned in a slow circle, looking for [B].',
     aThought: '[Aa] felt a cold wave of panic rise in [a:pos] chest.',
     act: 'A voice called [A:pos] name from behind the spice stall.',
-    bThought: '[Bb] had been watching the whole time, trying not to laugh.',
+    bThought: '[Bb] had hidden there on purpose and was secretly enjoying the joke.',
     act2: '[A] hurried toward the spice stall.',
     comment: 'Years later, it would become the family’s favourite story.',
   },
@@ -308,7 +309,7 @@ const SCENES: Scene[] = [
   },
   {
     setup: '[A] carried a plate of dumplings to the door of [B], the new neighbour.',
-    aThought: '[Aa] hoped [b] would not notice that half of them were burnt.',
+    aThought: '[Aa] hoped [b] would not notice that half of the dumplings were burnt.',
     act: '[B] opened the door and smiled.',
     bThought: '[Bb] had been too nervous to knock on anyone’s door all week.',
     act2: '[A] held out the plate.',
@@ -330,9 +331,9 @@ function render(t: string, voice: Voice, a: Person, b: Person, standalone = fals
     .replace(/\[a\]/g, A.sub)
     .replace(/\[was\]/g, A.was)
     .replace(/\[B\]/g, b.name)
-    .replace(/\[Bb\]/g, standalone ? b.name : cap(b.he))
+    .replace(/\[Bb\]/g, b.name)
     .replace(/\[b:pos\]/g, b.his)
-    .replace(/\[b\]/g, b.he);
+    .replace(/\[b\]/g, standalone ? b.name : b.he);
 }
 
 function passage(rng: Rng, pov: Pov, withComment = false): { text: string; a: Person; b: Person } {
@@ -489,7 +490,7 @@ function narrator(rng: Rng, d: Difficulty) {
       pov === 'objective'
         ? `“${right}” reveals what a character is thinking or feeling, which an objective narrator never does.`
         : `“${right}” reveals ${b.name}’s private thoughts, which ${pov === 'first' ? 'the narrator' : `a narrator limited to ${a.name}’s mind`} cannot know.`,
-      'The other sentences describe actions, or the viewpoint character’s own thoughts, which this narrator can report.',
+      pov === 'objective' ? 'The other sentences report only what could be seen and heard.' : 'The other sentences describe actions, or the viewpoint character’s own thoughts, which this narrator can report.',
     ],
   };
 }

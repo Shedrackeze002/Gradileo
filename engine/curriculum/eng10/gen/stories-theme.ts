@@ -6,8 +6,7 @@
 import { mc, part, skill } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { block, fill } from './common.ts';
-import { pair } from './stories-plot.ts';
+import { block, fill, pair } from './common.ts';
 import { CASK, CASK_COUGH, CASK_TOAST, FIRE, HEART, HOUR, HOUR_ENDING, HOUR_WINDOW, MAGI, MAGI_WATCH, PAW, PAW_FATE, WINDOW, WINDOW_GHOST, quoteBlock, titled, type Excerpt } from './texts.ts';
 
 const L = 'e10-1-5';
@@ -193,7 +192,7 @@ const IRONY_SCENES: Record<Irony, string[]> = {
     'NAME spent months training a guard dog to protect {his} house, and the dog was so friendly that it followed the burglar home.',
     'NAME2, a driving instructor famous for {his2} safety lectures, crashed {his2} car into the driving-school sign.',
     'NAME had worried all year about failing mathematics, and passed it easily, but failed art, the subject {he} thought was easiest.',
-    'NAME set six alarm clocks so that {he} would never oversleep again, and a power cut silenced every one of them on the morning of {his} exam.',
+    'NAME put up a security camera to catch whoever was stealing {his} flowers, and the thief stole the camera.',
   ],
   dramatic: [
     'The reader knows that NAME’s friends are hiding in the dark living room for a surprise party, but NAME, sure that everyone has forgotten {his} birthday, decides to go straight to bed.',

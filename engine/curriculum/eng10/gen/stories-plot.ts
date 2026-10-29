@@ -6,24 +6,10 @@
 import { fixedChoice, mc, part, skill } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { AnswerSpec, Choice, Difficulty, SkillDef } from '../../../types.ts';
-import { fill, people, type Person } from './common.ts';
+import { fill, list, pair, type Person } from './common.ts';
 import { FIRE, FIRE_SPIT, HEART, HEART_BEAT, MAGI, HOUR, OWL, OWL_OPENING, PAW, PAW_BURN, PAW_KNOCK, PAW_THIRD_WISH, WINDOW, quoteBlock, titled, type Excerpt, type Story } from './texts.ts';
 
 const L = 'e10-1-1';
-
-/** Two people of different genders, so "he" and "she" are never ambiguous. */
-export function pair(rng: Rng): Person[] {
-  const a = people(rng, 1)[0];
-  const b = retryPick(rng, (p) => p.he !== a.he);
-  return [a, b, retryPick(rng, (p) => p.name !== a.name && p.name !== b.name)];
-}
-function retryPick(rng: Rng, ok: (p: Person) => boolean): Person {
-  for (let i = 0; i < 100; i++) {
-    const p = people(rng, 1)[0];
-    if (ok(p)) return p;
-  }
-  throw new Error('no person found');
-}
 
 // ---------------------------------------------------------------------------- plot stages
 
@@ -213,7 +199,7 @@ function plotStages(rng: Rng, d: Difficulty) {
     const shown = shuffledNotInOrder(rng, [0, 1, 2, 3, 4]);
     const items: Choice[] = shown.map((k, i) => ({ id: ids[i], md: events[k] }));
     const correctOrder = [0, 1, 2, 3, 4].map((k) => items[shown.indexOf(k)].id);
-    const answer: AnswerSpec = { kind: 'order', items, correctOrder };
+    const answer: AnswerSpec = { kind: 'order', items, correctOrder, ends: ['First', 'Last'] };
     return {
       prompt: `${intro} Put the events in **plot order**, with the exposition first and the resolution last.`,
       parts: [part(answer)],
@@ -293,6 +279,8 @@ const CONFLICTS: Record<Conflict, string[]> = {
 };
 
 const CONFLICT_TYPES: Conflict[] = ['character', 'nature', 'society', 'self'];
+/** What the character struggles against, for solutions. */
+const AGAINST: Record<Conflict, string> = { character: 'another person', nature: 'nature', society: 'society', self: 'their own mind' };
 
 function conflictQ(rng: Rng, d: Difficulty) {
   const cast = pair(rng);
@@ -304,7 +292,7 @@ function conflictQ(rng: Rng, d: Difficulty) {
       prompt: `Which situation shows a **${CONFLICT_NAME[want].toLowerCase()}** conflict?`,
       parts: [part(mc(rng, correct, options.filter((o) => o !== correct)))],
       hints: [`In a ${CONFLICT_NAME[want].toLowerCase()} conflict, ${CONFLICT_WHAT[want]}.`],
-      solution: [`“${correct}” fits: ${CONFLICT_WHAT[want]}.`, 'In each other situation, the character struggles against something different: another person, nature, society or their own mind.'],
+      solution: [`“${correct}” fits: ${CONFLICT_WHAT[want]}.`, `In each other situation, the character struggles against something different: ${list(CONFLICT_TYPES.filter((t) => t !== want).map((t) => AGAINST[t]), 'or')}.`],
     };
   }
   const type = rng.pick(CONFLICT_TYPES);
