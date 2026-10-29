@@ -203,7 +203,7 @@ function clauses(rng: Rng, d: Difficulty): GenOutput {
       prompt: `The clause in bold is a noun clause. What job does it do in the sentence?\n\n${sentence}`,
       parts: [part(fixedChoice(jobs.map((j) => NOUN_JOB[j]), jobs.indexOf(it.job as NounJob)))],
       hints: ['Replace the clause with “something” and read the sentence again: is “something” doing the action, receiving it, following “is”, or following a word such as “about”, “to” or “of”?'],
-      solution: [`Replace the clause with “something”: ${f(withSomething(it.s))}.`, `${NOUN_JOB[it.job as NounJob]}.`],
+      solution: [`Replace the clause with “something”: ${f(withSomething(it.s))}`, `${NOUN_JOB[it.job as NounJob]}.`],
     };
   }
   if (it.kind === 'adverb') {
