@@ -409,7 +409,7 @@ function metreQ(rng: Rng, d: Difficulty): GenOutput {
   }
   const v = rng.pick(INVERSIONS);
   const line = v.verse.lines.filter(Boolean).slice(-1)[0];
-  const firstWords = line.split(/\s+/).map((w) => w.replace(/[.,;:!?]+$/, ''));
+  const firstWords = line.split(/\s+/).map((w) => w.replace(/^[“‘]+/, '').replace(/[.,;:!?”’]+$/, ''));
   const regular = 'None: every foot is an iamb';
   const choices = [
     `The first foot: “${v.first ?? firstWords[0]}”`,
