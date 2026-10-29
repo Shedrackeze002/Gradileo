@@ -59,6 +59,8 @@ export function list(items: readonly string[], conj = 'and'): string {
 }
 /** “text” with typographic double quotes. */
 export const dq = (s: string) => `“${s}”`;
+/** “text” in double quotes, with any double quotes inside it made single: “says ‘this’”. */
+export const q = (s: string) => `“${s.replace(/“/g, '‘').replace(/”/g, '’')}”`;
 /** A sentence or passage set off as a quotation block in Markdown. */
 export const block = (s: string) => s.split('\n').map((l) => `> ${l}`).join('\n');
 /** Fill NAME, NAME2, … placeholders and their pronouns ({he}, {him}, {his}, {He}, {His}, {he2} …). */

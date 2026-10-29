@@ -6,8 +6,7 @@
 import { fixedChoice, mc, part, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { block, fill, people } from './common.ts';
-import { q } from './writing-response.ts';
+import { block, fill, people, q } from './common.ts';
 import { order } from './writing-persuade.ts';
 
 const REVISE = 'e10-6-5';

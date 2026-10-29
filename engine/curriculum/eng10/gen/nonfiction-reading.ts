@@ -7,7 +7,7 @@
 import { fixedChoice, mc, part, skill } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { block, fill, pair } from './common.ts';
+import { block, fill, pair, q } from './common.ts';
 import { JS_PROPOSE, SWIFT, intro, speechBlock } from './speeches.ts';
 
 // ============================================================================ lesson 4.1: purpose
@@ -544,7 +544,7 @@ function evidenceQ(rng: Rng, d: Difficulty) {
       prompt: `A writer makes this claim:\n\n${block(t.claim)}\n\nWhich piece of evidence best supports it?`,
       parts: [part(mc(rng, t[kind], [t.opinion, t.irrelevant, t.vague]))],
       hints: ['Good evidence is relevant to the claim, specific, and can be checked. An opinion or a vague statement proves nothing.'],
-      solution: [`“${t[kind]}” is specific, relevant evidence that backs up the claim.`, 'One of the other choices is only an opinion, one is beside the point, and one is too vague to prove anything.'],
+      solution: [`${q(t[kind])} is specific, relevant evidence that backs up the claim.`, 'One of the other choices is only an opinion, one is beside the point, and one is too vague to prove anything.'],
     };
   }
   const kind = rng.pick<EvidenceKind>(['statistic', 'anecdote', 'expert', 'example']);

@@ -8,12 +8,11 @@
 import { fixedChoice, mc, part, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { block, fill, people } from './common.ts';
+import { block, fill, people, q } from './common.ts';
 import { CASK, FIRE, HEART, HOUR, MAGI, PAW, WINDOW, titled, type Story } from './texts.ts';
 
 const RESPONSE = 'e10-6-1';
 /** A choice quoted in a solution, with any quotation marks inside it made single. */
-export const q = (s: string) => `“${s.replace(/“/g, '‘').replace(/”/g, '’')}”`;
 const ESSAY = 'e10-6-2';
 const OUTCOMES = ['10-F1'];
 

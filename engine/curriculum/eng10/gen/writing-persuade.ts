@@ -8,8 +8,7 @@
 import { mc, part, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { AnswerSpec, Choice, Difficulty, SkillDef } from '../../../types.ts';
-import { block, cap, fill, pair, people } from './common.ts';
-import { q } from './writing-response.ts';
+import { block, cap, fill, pair, people, q } from './common.ts';
 
 const PERSUADE = 'e10-6-3';
 const NARRATIVE = 'e10-6-4';
