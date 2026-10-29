@@ -56,7 +56,7 @@ const THESES: ThesisSet[] = [
       'Chopin lets Mrs. Mallard’s grief and her joy rise together in a single hour, so the story refuses to call her either heartless or merely relieved, and asks what a marriage was costing her all along.',
     ],
     obvious: 'In “The Story of an Hour”, Chopin uses the open window and the spring imagery to show that Mrs. Mallard feels free after she hears that her husband has died in a railway accident.',
-    summary: 'In “The Story of an Hour”, Mrs. Mallard hears that her husband has died, locks herself in her room, feels a growing sense of freedom by the window, and dies of shock when he walks through the door alive.',
+    summary: 'In “The Story of an Hour”, Mrs. Mallard hears that her husband has died, locks herself in her room, feels a growing sense of freedom by the window and dies of shock when he walks through the door alive.',
     overreach: 'Chopin wrote “The Story of an Hour” to prove that every marriage of her time was a prison and that every married woman in the 1890s secretly longed for her husband to die, whatever she said in public.',
     list: 'In “The Story of an Hour”, Chopin uses imagery, irony, symbolism, foreshadowing and a narrator who reveals Mrs. Mallard’s thoughts, especially in the long scene by the open window.',
   },
@@ -78,7 +78,7 @@ const THESES: ThesisSet[] = [
       'Poe has the narrator set his chair over the very spot where the body lies, so the story suggests that pride in his own cleverness, as much as guilt, is what finally betrays him.',
     ],
     obvious: 'In “The Tell-Tale Heart”, Poe uses a first-person narrator who insists that he is sane to show that guilt can drive a person mad and force him to confess to his crime.',
-    summary: 'In “The Tell-Tale Heart”, a man kills an old man because of his eye, hides the body under the floor, and confesses to the police when he believes he can hear the heart still beating.',
+    summary: 'In “The Tell-Tale Heart”, a man kills an old man because of his eye, hides the body under the floor and confesses to the police when he believes he can hear the heart still beating.',
     overreach: 'Poe wrote “The Tell-Tale Heart” about his own madness, and the story proves that he himself was a dangerous man who heard voices and could easily have killed someone, just as his narrator does.',
     list: 'Poe uses a first-person narrator, repetition, dashes, exclamations and the symbol of the beating heart in “The Tell-Tale Heart”, especially in the final scene with the police officers.',
   },
@@ -89,7 +89,7 @@ const THESES: ThesisSet[] = [
       'Hawthorne names Brown’s wife Faith and then lets him lose her in the forest, so the allegory seems simple, yet the story leaves open whether Faith failed Brown or Brown failed her.',
     ],
     obvious: 'In “Young Goodman Brown”, Hawthorne uses the dark forest and the witches’ meeting to show that Goodman Brown loses his faith in the goodness of the people around him.',
-    summary: 'In “Young Goodman Brown”, Brown leaves his wife Faith for a night in the forest, sees the townspeople at a witches’ meeting, and returns home a gloomy, distrustful man for the rest of his life.',
+    summary: 'In “Young Goodman Brown”, Brown leaves his wife Faith for a night in the forest, sees the townspeople at a witches’ meeting and returns home a gloomy, distrustful man for the rest of his life.',
     overreach: 'Hawthorne wrote “Young Goodman Brown” to prove that everyone in Salem was secretly evil, and that religion has always turned every believer, everywhere, into a hypocrite.',
     list: 'Hawthorne uses allegory, symbolism, a dark forest setting, an ambiguous dream and names with double meanings, such as Faith, in “Young Goodman Brown”, especially at the end.',
   },
@@ -100,7 +100,7 @@ const THESES: ThesisSet[] = [
       'Gilman lets the narrator praise her husband’s care in the same sentences that show its control, so the story exposes a harm that no one in the house, not even the narrator, fully names.',
     ],
     obvious: 'In “The Yellow Wallpaper”, Gilman uses the wallpaper as a symbol to show that the narrator is going mad because she is shut away in a room with nothing to do all day.',
-    summary: 'In “The Yellow Wallpaper”, a woman is taken to a country house to rest, grows obsessed with the wallpaper in her room, and finally tears it down to free the woman she sees in it.',
+    summary: 'In “The Yellow Wallpaper”, a woman is taken to a country house to rest, grows obsessed with the wallpaper in her room and finally tears it down to free the woman she sees in it.',
     overreach: 'Gilman wrote “The Yellow Wallpaper” to prove that every doctor of her time was cruel and that every husband in the 1890s deliberately set out to drive his wife mad, as John does in the story.',
     list: 'Gilman uses a first-person journal, symbolism, repetition, a gothic setting and an unreliable narrator in “The Yellow Wallpaper”, especially in its final pages.',
   },
@@ -111,7 +111,7 @@ const THESES: ThesisSet[] = [
       'Joyce makes the bazaar fail the boy in the same way his imagination had made it holy, so the epiphany exposes not only a childish crush but a habit of turning ordinary things into shrines.',
     ],
     obvious: 'In “Araby”, Joyce uses the dark, closing bazaar to show that the boy is bitterly disappointed when he cannot buy the gift he promised to the girl he admires so much.',
-    summary: 'In “Araby”, a boy falls for his friend’s sister, promises to bring her a gift from a bazaar, arrives late after his uncle forgets, and leaves the dark hall without buying anything at all.',
+    summary: 'In “Araby”, a boy falls for his friend’s sister, promises to bring her a gift from a bazaar, arrives late after his uncle forgets and leaves the dark hall without buying anything at all.',
     overreach: 'Joyce wrote “Araby” to prove that first love is always foolish, and that every young person who falls in love will end up bitter and disappointed for the rest of their life.',
     list: 'Joyce uses first-person narration, light and dark imagery, religious language, a quest structure and an epiphany in “Araby”, especially in its last paragraph at the bazaar.',
   },
@@ -122,7 +122,7 @@ const THESES: ThesisSet[] = [
       'Mansfield gives Miss Brill a fantasy of the park as a stage, and the story treats it with sympathy rather than scorn, so its collapse feels like a loss as much as a correction.',
     ],
     obvious: 'In “Miss Brill”, Mansfield uses the fur necklet as a symbol to show that Miss Brill is a lonely woman who imagines that she is part of the crowd in the park on Sundays.',
-    summary: 'In “Miss Brill”, a woman goes to the park on Sunday, enjoys watching the people around her, overhears a young couple mocking her, and goes home in sadness to her little room.',
+    summary: 'In “Miss Brill”, a woman goes to the park on Sunday, enjoys watching the people around her, overhears a young couple mocking her and goes home in sadness to her little room.',
     overreach: 'Mansfield wrote “Miss Brill” to prove that all young people are cruel to the old, and that every woman who lives alone is lonely and unhappy, whatever she may say to her neighbours.',
     list: 'Mansfield uses free indirect style, the fur necklet as a symbol, music, an overheard conversation and a quiet ending in “Miss Brill”, especially in its final paragraph.',
   },
@@ -133,7 +133,7 @@ const THESES: ThesisSet[] = [
       'Hawthorne lets the veil make Mr. Hooper a better preacher and a lonelier man at once, so the story asks whether a truth about sin is worth the human ties it costs.',
     ],
     obvious: 'In “The Minister’s Black Veil”, Hawthorne uses the black veil as a symbol of secret sin to show that every person hides some of their sins from other people, even from those they love.',
-    summary: 'In “The Minister’s Black Veil”, Mr. Hooper begins to wear a black veil, refuses to remove it even for the woman he is to marry, and is buried still wearing it years later.',
+    summary: 'In “The Minister’s Black Veil”, Mr. Hooper begins to wear a black veil, refuses to remove it even for the woman he is to marry and is buried still wearing it years later.',
     overreach: 'Hawthorne wrote “The Minister’s Black Veil” to prove that every minister in New England was hiding a terrible crime, and that the church was full of liars and cheats, from the pulpit to the door.',
     list: 'Hawthorne uses symbolism, ambiguity, a parable structure, a deathbed speech and a small-town setting in “The Minister’s Black Veil”, especially at Mr. Hooper’s death.',
   },
@@ -155,7 +155,7 @@ const THESES: ThesisSet[] = [
       'Owen ends by addressing one comfortable reader as “My friend”, a phrase both inviting and accusing, which keeps the poem from becoming only a description of war.',
     ],
     obvious: 'In “Dulce et Decorum Est”, Owen uses shocking images of a gas attack and a dying soldier to show that war is not glorious at all, but cruel, ugly and horrible.',
-    summary: 'In “Dulce et Decorum Est”, exhausted soldiers march away from the front line, a gas attack begins, and one man fails to fit his mask in time and dies in agony.',
+    summary: 'In “Dulce et Decorum Est”, exhausted soldiers march away from the front line, a gas attack begins and one man fails to fit his mask in time and dies in agony.',
     overreach: 'Owen wrote “Dulce et Decorum Est” to prove that no war in history has ever been worth fighting and that every soldier who dies in battle has died for nothing.',
     list: 'Owen uses similes, graphic imagery, a Latin title, a sudden shift into the present tense and direct address to the reader in “Dulce et Decorum Est”, especially at the end.',
   },
@@ -177,7 +177,7 @@ const THESES: ThesisSet[] = [
       'Jewett gives the hunter real charm rather than villainy, so Sylvia’s silence costs her a friendship she wanted, and the story honours her choice without pretending it was easy.',
     ],
     obvious: 'In “A White Heron”, Jewett uses Sylvia’s climb up the great pine tree to show that she chooses to protect nature and the heron instead of helping the young hunter.',
-    summary: 'In “A White Heron”, a girl meets a hunter who offers money for help in finding a rare heron, climbs a pine tree to find its nest, and then decides to keep the secret.',
+    summary: 'In “A White Heron”, a girl meets a hunter who offers money for help in finding a rare heron, climbs a pine tree to find its nest and then decides to keep the secret.',
     overreach: 'Jewett wrote “A White Heron” to prove that every hunter is cruel and that people who live in the country are always better and kinder than people from the city.',
     list: 'Jewett uses a third-person narrator, nature imagery, a climb up a tall pine tree, direct address to the reader and an open ending in “A White Heron”, especially in its final paragraph.',
   },
@@ -192,7 +192,7 @@ function criticalThesis(rng: Rng, d: Difficulty): GenOutput {
       return {
         prompt: `A student wrote this thesis for a critical essay on ${titled(s.text)}:\n\n${block(right)}\n\nWhat, if anything, is its main weakness?`,
         parts: [part(mc(rng, THESIS_NONE, others))],
-        hints: ['A sophisticated thesis is arguable, says how and why the text means, and takes on a tension or complexity that a quick reading would miss.'],
+        hints: ['A sophisticated thesis is arguable, says how and why the text means and takes on a tension or complexity that a quick reading would miss.'],
         solution: ['Nothing: it takes a position that a reader could dispute, and it engages a real tension in the text rather than its most obvious meaning.'],
       };
     }
@@ -330,7 +330,7 @@ function criticalAnalysis(rng: Rng, d: Difficulty): GenOutput {
     return {
       prompt: `${lead}\n\nThe student’s commentary on it:\n\n${block(c[kind])}\n\nWhat, if anything, is wrong with this commentary?`,
       parts: [part(mc(rng, CKIND_LABEL[kind], others))],
-      hints: ['Critical commentary explains how the words work and then asks what else they might mean: a tension, a second reading, or what the character cannot see.'],
+      hints: ['Critical commentary explains how the words work and then asks what else they might mean: a tension, a second reading or what the character cannot see.'],
       solution: [CKIND_LABEL[kind], kind === 'complex' ? 'It explains the words and then weighs the tension they create, which is what critical analysis does.' : `Commentary that weighs the tension: ${q(c.complex)}`],
     };
   }
@@ -341,7 +341,7 @@ function criticalAnalysis(rng: Rng, d: Difficulty): GenOutput {
     hints: [
       d === 1
         ? 'Analysis explains what the words do. Repeating the quotation, or announcing a big meaning without showing how the words create it, is not yet analysis.'
-        : 'More than one of these looks closely at the words. The best one also notices a tension, a second reading, or something a character cannot see.',
+        : 'More than one of these looks closely at the words. The best one also notices a tension, a second reading or something a character cannot see.',
     ],
     solution: [`${q(c.complex)} explains how the words work and weighs the tension they create.`, `Of the others, ${andList(wrong.map((k) => `one ${CKIND_SHORT[k]}`))}.`],
   };

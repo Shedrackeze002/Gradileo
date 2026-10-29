@@ -151,7 +151,7 @@ function sourceEvaluation(rng: Rng, d: Difficulty): GenOutput {
     return {
       prompt: `${lead}\n\nOne source the student found:\n\n${block(inq[f])}\n\nWhat is the main weakness of this source **for this question**?`,
       parts: [part(mc(rng, FLAW_LABEL[f], FLAWS.filter((x) => x !== f).map((x) => FLAW_LABEL[x])))],
-      hints: ['Check the date, who wrote it and what they gain, what evidence it rests on, and whether it answers the question being researched.'],
+      hints: ['Check the date, who wrote it and what they gain, what evidence it rests on and whether it answers the question being researched.'],
       solution: [FLAW_LABEL[f]],
     };
   }

@@ -207,7 +207,7 @@ function styleRevision(rng: Rng, d: Difficulty): GenOutput {
       prompt: `${block(n.original)}\n\nWhich revision turns the **nominalizations** (actions buried in nouns, such as *make a decision*) back into verbs, keeping the meaning and a formal voice?`,
       parts: [part(mc(rng, n.good, [n.stillNominal, n.overcut, n.informal]))],
       hints: ['Find the action hiding in a noun (*decision*, *investigation*, *description*) and make it the verb: *decide*, *investigate*, *describe*.'],
-      solution: [`${q(n.good)} puts the actions back into verbs, keeps every part of the meaning, and stays formal.`, 'Of the others, one is still built on nouns, one cuts so much that meaning is lost and one slips into a casual voice.'],
+      solution: [`${q(n.good)} puts the actions back into verbs, keeps every part of the meaning and stays formal.`, 'Of the others, one is still built on nouns, one cuts so much that meaning is lost and one slips into a casual voice.'],
     };
   }
   if (d === 2) {
@@ -223,7 +223,7 @@ function styleRevision(rng: Rng, d: Difficulty): GenOutput {
   return {
     prompt: `A student’s paragraph slips out of its academic voice:\n\n${block(v.original)}\n\nWhich revision keeps **one precise, consistent academic voice**?`,
     parts: [part(mc(rng, v.good, [v.youShift, v.slang, v.pompous]))],
-    hints: ['An academic voice is formal but plain: third person, no slang, and no inflated words chosen to sound impressive rather than to be exact.'],
+    hints: ['An academic voice is formal but plain: third person, no slang and no inflated words chosen to sound impressive rather than to be exact.'],
     solution: [`${q(v.good)} is formal, precise and consistent from start to finish.`, 'Of the others, one shifts into “you”, one keeps the slang and one swaps plain words for inflated ones that blur the point.'],
   };
 }
@@ -419,7 +419,7 @@ const EXAM_PROMPTS: ExamPrompt[] = [
     thesisWrong: [
       'In “Araby”, Joyce develops an important and interesting idea about how people respond when the truth threatens the stories they tell.',
       'In “Araby”, Joyce shows that Dublin in the early twentieth century was a dark and poor city where religion shaped almost every part of daily life.',
-      'In “Araby”, a boy promises to bring a girl a gift from a bazaar, arrives too late after his uncle forgets, and leaves the bazaar with nothing at all.',
+      'In “Araby”, a boy promises to bring a girl a gift from a bazaar, arrives too late after his uncle forgets and leaves the bazaar with nothing at all.',
     ],
   },
   {
@@ -440,7 +440,7 @@ const EXAM_PROMPTS: ExamPrompt[] = [
     thesisWrong: [
       'In “A White Heron”, Jewett develops an important and interesting idea about the cost that a person pays for keeping a secret from other people.',
       'In “A White Heron”, Jewett shows that the countryside of nineteenth-century New England was a beautiful place, full of forests, marshes and wildlife.',
-      'In “A White Heron”, Sylvia meets a young hunter, climbs a tall pine tree to find the heron’s nest, and then decides not to tell him where it is.',
+      'In “A White Heron”, Sylvia meets a young hunter, climbs a tall pine tree to find the heron’s nest and then decides not to tell him where it is.',
     ],
   },
   {
@@ -461,7 +461,7 @@ const EXAM_PROMPTS: ExamPrompt[] = [
     thesisWrong: [
       'In “The Yellow Wallpaper”, Gilman develops an interesting idea about the gap between how other people see a person and who that person really is.',
       'In “The Yellow Wallpaper”, Gilman shows that country houses in the 1890s were often old, gloomy places decorated with very strange yellow wallpaper.',
-      'In “The Yellow Wallpaper”, a woman rests in an upstairs room, becomes obsessed with the paper on its walls, and finally tears it all down at the end.',
+      'In “The Yellow Wallpaper”, a woman rests in an upstairs room, becomes obsessed with the paper on its walls and finally tears it all down at the end.',
     ],
   },
   {
@@ -482,7 +482,7 @@ const EXAM_PROMPTS: ExamPrompt[] = [
     thesisWrong: [
       'In “To Build a Fire”, London develops an interesting idea about the many different ways in which people respond to forces they cannot control.',
       'In “To Build a Fire”, London shows that the Yukon in the depths of winter is one of the coldest and most dangerous places anywhere on Earth.',
-      'In “To Build a Fire”, a man ignores an old-timer’s advice, breaks through the ice into a hidden spring, fails to keep a fire burning, and freezes.',
+      'In “To Build a Fire”, a man ignores an old-timer’s advice, breaks through the ice into a hidden spring, fails to keep a fire burning and freezes.',
     ],
   },
   {
@@ -524,7 +524,7 @@ const EXAM_PROMPTS: ExamPrompt[] = [
     thesisWrong: [
       'In “Miss Brill”, Mansfield develops an interesting idea about the role that illusion plays in a person’s life and in the lives of the people around her.',
       'In “Miss Brill”, Mansfield shows that public gardens in the early twentieth century were busy places on Sundays, full of music and visitors.',
-      'In “Miss Brill”, a woman listens to the band in the park, overhears a young couple mocking her fur, and goes home sadly to her little dark room.',
+      'In “Miss Brill”, a woman listens to the band in the park, overhears a young couple mocking her fur and goes home sadly to her little dark room.',
     ],
   },
 ];
@@ -571,7 +571,7 @@ const BUDGETS: Budget[] = [
     wrong: [
       'Exactly 75 minutes on each task, starting to write at once, with no time set aside for reading or for checking at the end',
       'About 100 minutes on the personal response, since it comes first, and whatever time is left over at the end for the critical essay',
-      'About 60 minutes reading and planning both tasks, then 90 minutes to write both essays, and no time at all to check your work',
+      'About 60 minutes reading and planning both tasks, then 90 minutes to write both essays and no time at all to check your work',
     ],
   },
   {
@@ -580,16 +580,16 @@ const BUDGETS: Budget[] = [
     wrong: [
       'Exactly 90 minutes on each task, starting to write at once, with no time set aside for reading or for checking at the end',
       'About 120 minutes on the personal response, since it comes first, and whatever time is left over at the end for the critical essay',
-      'About 70 minutes reading and planning both tasks, then 110 minutes to write both essays, and no time at all to check your work',
+      'About 70 minutes reading and planning both tasks, then 110 minutes to write both essays and no time at all to check your work',
     ],
   },
   {
     setup: 'Your final examination has **120 minutes** for two tasks of equal weight: a personal response and a critical essay.',
-    good: 'About 10 minutes reading, 50 minutes on each of the two tasks, and 10 minutes at the end checking both of them carefully',
+    good: 'About 10 minutes reading, 50 minutes on each of the two tasks and 10 minutes at the end checking both of them carefully',
     wrong: [
       'Exactly 60 minutes on each task, starting to write at once, with no time set aside for reading or for checking at the end',
       'About 85 minutes on the personal response, since it comes first, and whatever time is left over at the end for the critical essay',
-      'About 50 minutes reading and planning both tasks, then 70 minutes to write both essays, and no time at all to check your work',
+      'About 50 minutes reading and planning both tasks, then 70 minutes to write both essays and no time at all to check your work',
     ],
   },
 ];
@@ -607,13 +607,13 @@ const SITUATIONS: Array<{ ask: string; good: string; wrong: [string, string, str
   },
   {
     ask: 'The critical essay prompt uses a key word, *resilience*, and you are not sure exactly how the examiners mean it.',
-    good: 'Work out its meaning from the rest of the prompt, state in your introduction how you understand it, and use that meaning throughout.',
+    good: 'Work out its meaning from the rest of the prompt, state in your introduction how you understand it and use that meaning throughout.',
     wrong: [
       'Skip the word and write about the text in general, hoping that the marker will not notice that you have left part of the prompt out.',
       'Choose a different prompt from an earlier examination that you have already practised and know well, and write about that one.',
       'Spend twenty minutes trying to recall the dictionary definition before writing anything, so that you are certain you are right.',
     ],
-    why: 'Defining a key term in your own words shows the marker how you are reading the prompt, and keeps the essay focused on it.',
+    why: 'Defining a key term in your own words shows the marker how you are reading the prompt and keeps the essay focused on it.',
   },
   {
     ask: 'Halfway through the critical essay you realize that your chosen text fits the prompt less well than you thought.',
@@ -689,7 +689,7 @@ export const CRAFT_SKILLS: SkillDef[] = [
   skill({
     id: 'e12-style-revision',
     name: 'Revising for precision, concision and voice',
-    description: 'Turn nominalizations back into verbs, cut stacked hedges without overstating, and keep one precise, consistent academic voice.',
+    description: 'Turn nominalizations back into verbs, cut stacked hedges without overstating and keep one precise, consistent academic voice.',
     outcomes: OUTCOMES,
     lessonId: STYLE,
     format: 'mc',
@@ -707,7 +707,7 @@ export const CRAFT_SKILLS: SkillDef[] = [
   skill({
     id: 'e12-exam-prompt',
     name: 'The examination prompt',
-    description: 'Work out what a final-examination prompt asks, choose the text and approach that answer it, and choose a controlling idea that answers it arguably.',
+    description: 'Work out what a final-examination prompt asks, choose the text and approach that answer it and choose a controlling idea that answers it arguably.',
     outcomes: OUTCOMES,
     lessonId: EXAM,
     format: 'mc',
@@ -716,7 +716,7 @@ export const CRAFT_SKILLS: SkillDef[] = [
   skill({
     id: 'e12-exam-strategy',
     name: 'Managing the examination',
-    description: 'Divide the time of a two-task examination by its marks, decide what to do when plans go wrong, and order the steps of the critical essay.',
+    description: 'Divide the time of a two-task examination by its marks, decide what to do when plans go wrong and order the steps of the critical essay.',
     outcomes: OUTCOMES,
     lessonId: EXAM,
     format: 'mc',
