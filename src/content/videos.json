@@ -11916,6 +11916,1096 @@
       }
     ]
   },
+  "c30-2-1": {
+    "lessonId": "c30-2-1",
+    "title": "Oxidation and Reduction, Part 1: Losing and Gaining Electrons",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Older than the electron",
+        "t": 31.616
+      },
+      {
+        "title": "Loss and gain",
+        "t": 74.617
+      },
+      {
+        "title": "The iron nail",
+        "t": 105.165
+      },
+      {
+        "title": "Follow the charges",
+        "t": 154.795
+      },
+      {
+        "title": "Your turn",
+        "t": 197.847
+      },
+      {
+        "title": "Summary",
+        "t": 236.804
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-1:q",
+        "t": 212.001,
+        "prompt": "A piece of magnesium is placed in a solution of copper(II) ions: $\\ce{Mg(s) + Cu^2+(aq) -> Mg^2+(aq) + Cu(s)}$. Which substance is **oxidised**?",
+        "choices": [
+          "$\\ce{Mg(s)}$",
+          "$\\ce{Cu^2+(aq)}$",
+          "$\\ce{Mg^2+(aq)}$",
+          "$\\ce{Cu(s)}$"
+        ],
+        "answer": 0,
+        "working": "Each magnesium atom goes from a charge of 0 to $2+$: it loses two electrons, so magnesium is oxidised. The copper(II) ions gain two electrons each: they are reduced."
+      }
+    ]
+  },
+  "c30-2-1-b": {
+    "lessonId": "c30-2-1",
+    "title": "Oxidation and Reduction, Part 2: Half-Reactions",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two halves",
+        "t": 27.273
+      },
+      {
+        "title": "Atoms and charge",
+        "t": 63.097
+      },
+      {
+        "title": "Chlorine and bromide",
+        "t": 98.11
+      },
+      {
+        "title": "Electrons on the wrong side",
+        "t": 149.74
+      },
+      {
+        "title": "Your turn",
+        "t": 174.913
+      },
+      {
+        "title": "Summary",
+        "t": 213.434
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-1-b:q",
+        "t": 187.78,
+        "prompt": "A piece of zinc is placed in copper(II) sulfate solution: $\\ce{Zn(s) + Cu^2+(aq) -> Zn^2+(aq) + Cu(s)}$. Which is the **reduction** half-reaction?",
+        "choices": [
+          "$\\ce{Cu^2+(aq) -> Cu(s) + 2e-}$",
+          "$\\ce{Zn(s) -> Zn^2+(aq) + 2e-}$",
+          "$\\ce{Cu^2+(aq) + 2e- -> Cu(s)}$",
+          "$\\ce{Zn^2+(aq) + 2e- -> Zn(s)}$"
+        ],
+        "answer": 2,
+        "working": "The copper(II) ions gain two electrons, so the electrons are reactants: $\\ce{Cu^2+(aq) + 2e- -> Cu(s)}$. The charge is 0 on both sides."
+      }
+    ]
+  },
+  "c30-2-1-c": {
+    "lessonId": "c30-2-1",
+    "title": "Oxidation and Reduction, Part 3: Oxidising and Reducing Agents",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two agents",
+        "t": 23.35
+      },
+      {
+        "title": "The iron nail",
+        "t": 49.747
+      },
+      {
+        "title": "Agents in an acid",
+        "t": 90.975
+      },
+      {
+        "title": "Not oxidised",
+        "t": 140.677
+      },
+      {
+        "title": "Your turn",
+        "t": 174.839
+      },
+      {
+        "title": "Summary",
+        "t": 218.876
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-1-c:q",
+        "t": 191.539,
+        "prompt": "Chlorine is added to a solution of iodide ions: $\\ce{Cl2(g) + 2I^-(aq) -> 2Cl^-(aq) + I2(s)}$. Which substance is the **reducing agent**?",
+        "choices": [
+          "$\\ce{Cl2(g)}$",
+          "$\\ce{I^-(aq)}$",
+          "$\\ce{Cl^-(aq)}$",
+          "$\\ce{I2(s)}$"
+        ],
+        "answer": 1,
+        "working": "Each iodide ion loses an electron as iodine forms: $\\ce{2I^-(aq) -> I2(s) + 2e-}$. The iodide ions are oxidised, so they are the reducing agent. Chlorine takes the electrons: it is the oxidising agent."
+      }
+    ]
+  },
+  "c30-2-1-d": {
+    "lessonId": "c30-2-1",
+    "title": "Oxidation and Reduction, Part 4: Balancing the Electrons",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Making them match",
+        "t": 22.047
+      },
+      {
+        "title": "Add and cancel",
+        "t": 57.223
+      },
+      {
+        "title": "Silver from copper",
+        "t": 99.341
+      },
+      {
+        "title": "Your turn",
+        "t": 144.387
+      },
+      {
+        "title": "Summary",
+        "t": 189.648
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-1-d:q",
+        "t": 163.878,
+        "prompt": "Aluminium reacts with hydrochloric acid: $\\ce{2Al(s) + 6H^+(aq) -> 2Al^3+(aq) + 3H2(g)}$. How many electrons are transferred in the equation as written?",
+        "choices": [
+          "$3$",
+          "$2$",
+          "$12$",
+          "$6$"
+        ],
+        "answer": 3,
+        "working": "Oxidation: $\\ce{Al -> Al^3+ + 3e-}$, used twice: 6 electrons lost. Reduction: $\\ce{2H+ + 2e- -> H2}$, used three times: 6 electrons gained."
+      }
+    ]
+  },
+  "c30-2-2": {
+    "lessonId": "c30-2-2",
+    "title": "Oxidation Numbers, Part 1: Electron Bookkeeping",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Shared, but not equally",
+        "t": 29.968
+      },
+      {
+        "title": "The rules",
+        "t": 89.889
+      },
+      {
+        "title": "Back to methane",
+        "t": 158.412
+      },
+      {
+        "title": "Your turn",
+        "t": 184.819
+      },
+      {
+        "title": "Summary",
+        "t": 216.195
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-2:q",
+        "t": 193.453,
+        "prompt": "What is the oxidation number of nitrogen in ammonia, $\\ce{NH3}$?",
+        "choices": [
+          "$+3$",
+          "$-1$",
+          "$0$",
+          "$-3$"
+        ],
+        "answer": 3,
+        "working": "Hydrogen is $+1$, so the three hydrogens make $+3$. The total is 0: $x + 3(+1) = 0$, so nitrogen is $-3$."
+      }
+    ]
+  },
+  "c30-2-2-b": {
+    "lessonId": "c30-2-2",
+    "title": "Oxidation Numbers, Part 2: Compounds and Polyatomic Ions",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sulfuric acid",
+        "t": 21.629
+      },
+      {
+        "title": "Two elements left",
+        "t": 57.399
+      },
+      {
+        "title": "A polyatomic ion",
+        "t": 95.971
+      },
+      {
+        "title": "Adding up to zero in an ion",
+        "t": 136.836
+      },
+      {
+        "title": "Your turn",
+        "t": 162.181
+      },
+      {
+        "title": "Summary",
+        "t": 195.63
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-2-b:q",
+        "t": 172.083,
+        "prompt": "What is the oxidation number of nitrogen in the nitrate ion, $\\ce{NO3^-}$?",
+        "choices": [
+          "$+5$",
+          "$+6$",
+          "$-1$",
+          "$+7$"
+        ],
+        "answer": 0,
+        "working": "Oxygen is $-2$. The sum is the charge of the ion: $x + 3(-2) = -1$, so $x - 6 = -1$ and nitrogen is $+5$."
+      }
+    ]
+  },
+  "c30-2-2-c": {
+    "lessonId": "c30-2-2",
+    "title": "Oxidation Numbers, Part 3: Peroxides, Hydrides and Averages",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Peroxides",
+        "t": 23.702
+      },
+      {
+        "title": "Metal hydrides and fluorine",
+        "t": 66.114
+      },
+      {
+        "title": "Averages",
+        "t": 105.62
+      },
+      {
+        "title": "Your turn",
+        "t": 151.255
+      },
+      {
+        "title": "Summary",
+        "t": 184.805
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-2-c:q",
+        "t": 160.715,
+        "prompt": "What is the oxidation number of hydrogen in calcium hydride, $\\ce{CaH2}$?",
+        "choices": [
+          "$+1$",
+          "$-2$",
+          "$-1$",
+          "$+2$"
+        ],
+        "answer": 2,
+        "working": "Calcium is a group 2 metal, $+2$. The total is 0: $+2 + 2x = 0$, so each hydrogen is $-1$. It is a metal hydride."
+      }
+    ]
+  },
+  "c30-2-2-d": {
+    "lessonId": "c30-2-2",
+    "title": "Oxidation Numbers, Part 4: Oxidation Numbers and Redox",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Up and down",
+        "t": 23.007
+      },
+      {
+        "title": "Burning methane",
+        "t": 53.183
+      },
+      {
+        "title": "Is it redox?",
+        "t": 93.626
+      },
+      {
+        "title": "Finding the agents",
+        "t": 134.536
+      },
+      {
+        "title": "Your turn",
+        "t": 192.335
+      },
+      {
+        "title": "Summary",
+        "t": 235.429
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-2-d:q",
+        "t": 207.919,
+        "prompt": "In the reaction $\\ce{Fe2O3 + 3CO -> 2Fe + 3CO2}$, which reactant is the **oxidising agent**?",
+        "choices": [
+          "$\\ce{CO}$",
+          "$\\ce{Fe2O3}$",
+          "$\\ce{Fe}$",
+          "$\\ce{CO2}$"
+        ],
+        "answer": 1,
+        "working": "Iron goes from $+3$ in $\\ce{Fe2O3}$ to $0$: it is reduced, so $\\ce{Fe2O3}$, the reactant containing it, is the oxidising agent. Carbon goes from $+2$ in $\\ce{CO}$ to $+4$ in $\\ce{CO2}$, so $\\ce{CO}$ is the reducing agent."
+      }
+    ]
+  },
+  "c30-2-3": {
+    "lessonId": "c30-2-3",
+    "title": "Predicting Redox Reactions, Part 1: Comparing Oxidising Agents",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two wires",
+        "t": 31.985
+      },
+      {
+        "title": "Putting them in order",
+        "t": 78.804
+      },
+      {
+        "title": "Spontaneous",
+        "t": 122.533
+      },
+      {
+        "title": "Your turn",
+        "t": 144.722
+      },
+      {
+        "title": "Summary",
+        "t": 186.482
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-3:q",
+        "t": 161.502,
+        "prompt": "Nickel placed in copper(II) nitrate solution gets a coat of copper. Copper placed in nickel(II) nitrate solution does not change. Which is the **stronger oxidising agent**?",
+        "choices": [
+          "$\\ce{Ni^2+}$",
+          "$\\ce{Cu^2+}$",
+          "$\\ce{Ni}$",
+          "$\\ce{Cu}$"
+        ],
+        "answer": 1,
+        "working": "Copper(II) ions take electrons from nickel atoms, but nickel(II) ions cannot take electrons from copper atoms. So $\\ce{Cu^2+}$ is the stronger oxidising agent, and $\\ce{Ni}$ the stronger reducing agent."
+      }
+    ]
+  },
+  "c30-2-3-b": {
+    "lessonId": "c30-2-3",
+    "title": "Predicting Redox Reactions, Part 2: The Redox Table",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the table",
+        "t": 19.508
+      },
+      {
+        "title": "Opposite directions",
+        "t": 72.13
+      },
+      {
+        "title": "The strongest oxidising agent",
+        "t": 103.164
+      },
+      {
+        "title": "Your turn",
+        "t": 144.076
+      },
+      {
+        "title": "Summary",
+        "t": 182.646
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-3-b:q",
+        "t": 156.382,
+        "prompt": "Use these reduction half-reactions: $\\ce{Ag+ + e- -> Ag}$, $+0.80$ V; $\\ce{Cu^2+ + 2e- -> Cu}$, $+0.34$ V; $\\ce{Zn^2+ + 2e- -> Zn}$, $-0.76$ V; $\\ce{Mg^2+ + 2e- -> Mg}$, $-2.37$ V. Which is the strongest **reducing agent**?",
+        "choices": [
+          "$\\ce{Ag}$",
+          "$\\ce{Cu}$",
+          "$\\ce{Zn}$",
+          "$\\ce{Mg}$"
+        ],
+        "answer": 3,
+        "working": "Reducing agents are on the right of the half-reactions, and the strongest is the lowest one: $\\ce{Mg}$, at $-2.37$ V."
+      }
+    ]
+  },
+  "c30-2-3-c": {
+    "lessonId": "c30-2-3",
+    "title": "Predicting Redox Reactions, Part 3: Spontaneous or Not",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Copper and silver ions",
+        "t": 26.521
+      },
+      {
+        "title": "Combining the halves",
+        "t": 67.921
+      },
+      {
+        "title": "Copper in hydrochloric acid",
+        "t": 100.004
+      },
+      {
+        "title": "Two oxidising agents",
+        "t": 143.166
+      },
+      {
+        "title": "Your turn",
+        "t": 165.615
+      },
+      {
+        "title": "Summary",
+        "t": 206.131
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-3-c:q",
+        "t": 177.376,
+        "prompt": "Which metal reacts spontaneously with iron(II) sulfate solution? Use: $\\ce{Ag+ + e- -> Ag}$, $+0.80$ V; $\\ce{Cu^2+ + 2e- -> Cu}$, $+0.34$ V; $\\ce{Ni^2+ + 2e- -> Ni}$, $-0.26$ V; $\\ce{Fe^2+ + 2e- -> Fe}$, $-0.45$ V; $\\ce{Zn^2+ + 2e- -> Zn}$, $-0.76$ V.",
+        "choices": [
+          "Zinc",
+          "Copper",
+          "Silver",
+          "Nickel"
+        ],
+        "answer": 0,
+        "working": "The oxidising agent is $\\ce{Fe^2+}$, at $-0.45$ V. Only a metal below it is oxidised by it: zinc, at $-0.76$ V. $\\ce{Zn(s) + Fe^2+(aq) -> Zn^2+(aq) + Fe(s)}$."
+      }
+    ]
+  },
+  "c30-2-3-d": {
+    "lessonId": "c30-2-3",
+    "title": "Predicting Redox Reactions, Part 4: Predicting Reactions in Mixtures",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 17.053
+      },
+      {
+        "title": "A strip of nickel",
+        "t": 60.126
+      },
+      {
+        "title": "Both sides of the table",
+        "t": 121.324
+      },
+      {
+        "title": "Your turn",
+        "t": 177.047
+      },
+      {
+        "title": "Summary",
+        "t": 216.703
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-3-d:q",
+        "t": 189.961,
+        "prompt": "A beaker contains $\\ce{Mg^2+(aq)}$, $\\ce{Zn(s)}$, $\\ce{Cu^2+(aq)}$ and $\\ce{Ag(s)}$. Use: $\\ce{Ag+}$, $+0.80$ V; $\\ce{Cu^2+}$, $+0.34$ V; $\\ce{Zn^2+}$, $-0.76$ V; $\\ce{Mg^2+}$, $-2.37$ V. Which reaction occurs spontaneously?",
+        "choices": [
+          "$\\ce{2Ag + Cu^2+ -> 2Ag+ + Cu}$",
+          "$\\ce{Zn + Mg^2+ -> Zn^2+ + Mg}$",
+          "$\\ce{Zn + Cu^2+ -> Zn^2+ + Cu}$",
+          "$\\ce{2Ag + Mg^2+ -> 2Ag+ + Mg}$"
+        ],
+        "answer": 2,
+        "working": "Oxidising agents present: $\\ce{Cu^2+}$ ($+0.34$ V) and $\\ce{Mg^2+}$ ($-2.37$ V); the strongest is $\\ce{Cu^2+}$. Reducing agents: $\\ce{Ag}$ ($+0.80$ V) and $\\ce{Zn}$ ($-0.76$ V); the strongest is $\\ce{Zn}$. $\\ce{Cu^2+}$ is above $\\ce{Zn}$, so they react."
+      }
+    ]
+  },
+  "c30-2-4": {
+    "lessonId": "c30-2-4",
+    "title": "Balancing Redox Equations, Part 1: Balancing a Half-Reaction",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The breath tester",
+        "t": 28.307
+      },
+      {
+        "title": "Six steps",
+        "t": 45.963
+      },
+      {
+        "title": "Permanganate",
+        "t": 97.899
+      },
+      {
+        "title": "A quick check",
+        "t": 144.383
+      },
+      {
+        "title": "Your turn",
+        "t": 165.167
+      },
+      {
+        "title": "Summary",
+        "t": 206.42
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-4:q",
+        "t": 177.043,
+        "prompt": "Balance $\\ce{NO3- -> NO}$ in acidic solution: $\\ce{NO3-} + \\square\\,\\ce{H+} + \\square\\,\\ce{e-} \\longrightarrow \\ce{NO} + \\square\\,\\ce{H2O}$. Which numbers go in the boxes, in order?",
+        "choices": [
+          "$2,\\ 1,\\ 1$",
+          "$4,\\ 5,\\ 2$",
+          "$4,\\ 3,\\ 2$",
+          "$6,\\ 3,\\ 3$"
+        ],
+        "answer": 2,
+        "working": "Oxygen: add $\\ce{2H2O}$ to the right. Hydrogen: add $\\ce{4H+}$ to the left. Charge: $-1 + 4 = +3$ on the left and 0 on the right, so add 3 electrons to the left. Check: nitrogen goes from $+5$ to $+2$, a drop of 3."
+      }
+    ]
+  },
+  "c30-2-4-b": {
+    "lessonId": "c30-2-4",
+    "title": "Balancing Redox Equations, Part 2: Dichromate and an Oxidation",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dichromate",
+        "t": 18.935
+      },
+      {
+        "title": "An oxidation",
+        "t": 65.709
+      },
+      {
+        "title": "Only electrons fix the charge",
+        "t": 112.978
+      },
+      {
+        "title": "Your turn",
+        "t": 142.461
+      },
+      {
+        "title": "Summary",
+        "t": 181.136
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-4-b:q",
+        "t": 153.665,
+        "prompt": "Balance $\\ce{ClO3- -> Cl-}$ in acidic solution: $\\ce{ClO3-} + \\square\\,\\ce{H+} + \\square\\,\\ce{e-} \\longrightarrow \\ce{Cl-} + \\square\\,\\ce{H2O}$. Which numbers go in the boxes, in order?",
+        "choices": [
+          "$6,\\ 4,\\ 3$",
+          "$6,\\ 6,\\ 3$",
+          "$3,\\ 6,\\ 3$",
+          "$6,\\ 6,\\ 6$"
+        ],
+        "answer": 1,
+        "working": "Oxygen: add $\\ce{3H2O}$ to the right. Hydrogen: add $\\ce{6H+}$ to the left. Charge: $-1 + 6 = +5$ on the left and $-1$ on the right, so add 6 electrons to the left. Check: chlorine goes from $+5$ to $-1$, a drop of 6."
+      }
+    ]
+  },
+  "c30-2-4-c": {
+    "lessonId": "c30-2-4",
+    "title": "Balancing Redox Equations, Part 3: Combining Half-Reactions",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four more steps",
+        "t": 21.641
+      },
+      {
+        "title": "Permanganate and iron(II)",
+        "t": 51.255
+      },
+      {
+        "title": "Multiply the whole half-reaction",
+        "t": 106.546
+      },
+      {
+        "title": "Your turn",
+        "t": 143.202
+      },
+      {
+        "title": "Summary",
+        "t": 184.763
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-4-c:q",
+        "t": 157.963,
+        "prompt": "Combine $\\ce{Sn^2+ -> Sn^4+ + 2e-}$ and $\\ce{Fe^3+ + e- -> Fe^2+}$: $\\square\\,\\ce{Sn^2+} + \\square\\,\\ce{Fe^3+} \\longrightarrow \\square\\,\\ce{Sn^4+} + \\square\\,\\ce{Fe^2+}$. Which coefficients balance it, in order?",
+        "choices": [
+          "$1,\\ 1,\\ 1,\\ 1$",
+          "$2,\\ 1,\\ 2,\\ 1$",
+          "$2,\\ 2,\\ 2,\\ 2$",
+          "$1,\\ 2,\\ 1,\\ 2$"
+        ],
+        "answer": 3,
+        "working": "The oxidation gives 2 electrons and the reduction takes 1, so multiply the reduction by 2: $\\ce{2Fe^3+ + 2e- -> 2Fe^2+}$. Add and cancel the electrons: $\\ce{Sn^2+ + 2Fe^3+ -> Sn^4+ + 2Fe^2+}$. Charge: $2 + 6 = +8$ on the left and $4 + 4 = +8$ on the right."
+      }
+    ]
+  },
+  "c30-2-4-d": {
+    "lessonId": "c30-2-4",
+    "title": "Balancing Redox Equations, Part 4: Balancing the Breath Tester",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two half-reactions",
+        "t": 21.896
+      },
+      {
+        "title": "Match the electrons",
+        "t": 66.767
+      },
+      {
+        "title": "Cancel what appears twice",
+        "t": 103.455
+      },
+      {
+        "title": "Basic solutions",
+        "t": 151.614
+      },
+      {
+        "title": "Your turn",
+        "t": 177.109
+      },
+      {
+        "title": "Summary",
+        "t": 222.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-4-d:q",
+        "t": 195.262,
+        "prompt": "Combine $\\ce{MnO4- + 8H+ + 5e- -> Mn^2+ + 4H2O}$ and $\\ce{SO3^2- + H2O -> SO4^2- + 2H+ + 2e-}$. In the balanced equation, how many $\\ce{H+}$ and $\\ce{H2O}$ are left, and on which side?",
+        "choices": [
+          "$6\\ \\ce{H+}$ on the left, $3\\ \\ce{H2O}$ on the right",
+          "$16\\ \\ce{H+}$ on the left, $8\\ \\ce{H2O}$ on the right",
+          "$6\\ \\ce{H+}$ on the right, $3\\ \\ce{H2O}$ on the left",
+          "$2\\ \\ce{H+}$ on the right, $1\\ \\ce{H2O}$ on the left"
+        ],
+        "answer": 0,
+        "working": "The least common multiple of 5 and 2 is 10: reduction $\\times 2$, oxidation $\\times 5$. Then $16 - 10 = 6$ $\\ce{H+}$ on the left and $8 - 5 = 3$ $\\ce{H2O}$ on the right: $\\ce{2MnO4- + 5SO3^2- + 6H+ -> 2Mn^2+ + 5SO4^2- + 3H2O}$."
+      }
+    ]
+  },
+  "c30-2-5": {
+    "lessonId": "c30-2-5",
+    "title": "Redox Titrations, Part 1: Titrating with Permanganate",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Redox titrations",
+        "t": 37.93
+      },
+      {
+        "title": "Acidified permanganate",
+        "t": 86.37
+      },
+      {
+        "title": "Its own indicator",
+        "t": 117.871
+      },
+      {
+        "title": "Dichromate needs help",
+        "t": 172.355
+      },
+      {
+        "title": "Your turn",
+        "t": 203.902
+      },
+      {
+        "title": "Summary",
+        "t": 240.871
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-5:q",
+        "t": 217.44,
+        "prompt": "Acidified potassium permanganate is added from a burette to a colourless sample of hydrogen peroxide. What marks the endpoint?",
+        "choices": [
+          "The solution turns from orange to green.",
+          "The purple solution in the flask suddenly turns colourless.",
+          "The first pale pink colour that lasts after swirling.",
+          "A few drops of indicator turn violet."
+        ],
+        "answer": 2,
+        "working": "While any hydrogen peroxide is left, each drop of purple permanganate reacts and becomes almost colourless $\\ce{Mn^2+}$. The first drop in excess stays, giving a lasting pale pink."
+      }
+    ]
+  },
+  "c30-2-5-b": {
+    "lessonId": "c30-2-5",
+    "title": "Redox Titrations, Part 2: From Titration Data to a Concentration",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 25.297
+      },
+      {
+        "title": "Iron(II) ions",
+        "t": 60.313
+      },
+      {
+        "title": "The ratio upside down",
+        "t": 127.106
+      },
+      {
+        "title": "Hydrogen peroxide",
+        "t": 164.056
+      },
+      {
+        "title": "Your turn",
+        "t": 210.7
+      },
+      {
+        "title": "Summary",
+        "t": 260.182
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-5-b:q",
+        "t": 233.304,
+        "prompt": "A $25.00\\ \\text{mL}$ sample of oxalic acid needs $21.60\\ \\text{mL}$ of $0.0200\\ \\text{mol/L}$ $\\ce{KMnO4}$: $\\ce{2MnO4^- + 5H2C2O4 + 6H+ -> 2Mn^2+ + 10CO2 + 8H2O}$. What is the concentration of the oxalic acid?",
+        "choices": [
+          "$0.0432\\ \\text{mol/L}$",
+          "$0.00691\\ \\text{mol/L}$",
+          "$0.0173\\ \\text{mol/L}$",
+          "$0.0864\\ \\text{mol/L}$"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{H2C2O4}) = 0.0200 \\times 0.02160 \\times \\tfrac{5}{2} = 1.080 \\times 10^{-3}$ mol, and $1.080 \\times 10^{-3} \\div 0.02500 = 0.0432$ mol/L."
+      }
+    ]
+  },
+  "c30-2-5-c": {
+    "lessonId": "c30-2-5",
+    "title": "Redox Titrations, Part 3: Several Trials and a Solid Sample",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Several trials",
+        "t": 22.458
+      },
+      {
+        "title": "Percent of iron",
+        "t": 70.555
+      },
+      {
+        "title": "Diluted samples",
+        "t": 118.902
+      },
+      {
+        "title": "Your turn",
+        "t": 163.818
+      },
+      {
+        "title": "Summary",
+        "t": 215.582
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-5-c:q",
+        "t": 190.218,
+        "prompt": "A $1.200\\ \\text{g}$ iron tablet is dissolved, and all its iron is turned into $\\ce{Fe^2+}$. It needs an average of $21.50\\ \\text{mL}$ of $0.0200\\ \\text{mol/L}$ $\\ce{KMnO4}$: $\\ce{MnO4^- + 5Fe^2+ + 8H+ -> Mn^2+ + 5Fe^3+ + 4H2O}$. What is the percent by mass of iron (Fe $55.85\\ \\text{g/mol}$)?",
+        "choices": [
+          "$2.0\\%$",
+          "$0.4\\%$",
+          "$0.18\\%$",
+          "$10.0\\%$"
+        ],
+        "answer": 3,
+        "working": "$n(\\ce{Fe}) = 5 \\times 0.0200 \\times 0.02150 = 2.150 \\times 10^{-3}$ mol, so $m = 0.1201$ g, and $0.1201 \\div 1.200 \\times 100\\% = 10.0\\%$."
+      }
+    ]
+  },
+  "c30-2-6": {
+    "lessonId": "c30-2-6",
+    "title": "Voltaic Cells, Part 1: The Parts of a Voltaic Cell",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Through a wire",
+        "t": 25.533
+      },
+      {
+        "title": "Two half-cells",
+        "t": 65.944
+      },
+      {
+        "title": "Anode and cathode",
+        "t": 126.52
+      },
+      {
+        "title": "Which electrode is which?",
+        "t": 148.899
+      },
+      {
+        "title": "Your turn",
+        "t": 191.532
+      },
+      {
+        "title": "Summary",
+        "t": 235.557
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-6:q",
+        "t": 213.979,
+        "prompt": "A voltaic cell has a nickel electrode in $\\ce{Ni(NO3)2(aq)}$ and a copper electrode in $\\ce{Cu(NO3)2(aq)}$. Use $\\ce{Cu^2+ + 2e- -> Cu}$, $E^\\circ = +0.34\\ \\text{V}$, and $\\ce{Ni^2+ + 2e- -> Ni}$, $E^\\circ = -0.26\\ \\text{V}$. Which electrode is the anode?",
+        "choices": [
+          "Copper, where $\\ce{Cu^2+}$ is reduced",
+          "Nickel, where $\\ce{Ni}$ is oxidised",
+          "Copper, where $\\ce{Cu}$ is oxidised",
+          "Nickel, where $\\ce{Ni^2+}$ is reduced"
+        ],
+        "answer": 1,
+        "working": "Nickel is lower in the table, so it is the stronger reducing agent and is oxidised at the anode: $\\ce{Ni -> Ni^2+ + 2e-}$."
+      }
+    ]
+  },
+  "c30-2-6-b": {
+    "lessonId": "c30-2-6",
+    "title": "Voltaic Cells, Part 2: What Moves Where",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrons in the wire",
+        "t": 20.721
+      },
+      {
+        "title": "The electrodes change",
+        "t": 47.043
+      },
+      {
+        "title": "Ions in the salt bridge",
+        "t": 77.982
+      },
+      {
+        "title": "No electrons in the bridge",
+        "t": 111.665
+      },
+      {
+        "title": "A nickel–silver cell",
+        "t": 136.474
+      },
+      {
+        "title": "Your turn",
+        "t": 193.321
+      },
+      {
+        "title": "Summary",
+        "t": 237.724
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-6-b:q",
+        "t": 212.81,
+        "prompt": "A voltaic cell has a zinc electrode in $\\ce{Zn(NO3)2(aq)}$ and a silver electrode in $\\ce{AgNO3(aq)}$, with a $\\ce{KNO3(aq)}$ salt bridge. Use $\\ce{Ag+ + e- -> Ag}$, $E^\\circ = +0.80\\ \\text{V}$, and $\\ce{Zn^2+ + 2e- -> Zn}$, $E^\\circ = -0.76\\ \\text{V}$. Which statement is true as the cell runs?",
+        "choices": [
+          "The silver electrode gains mass.",
+          "Electrons flow through the salt bridge.",
+          "Nitrate ions move toward the silver half-cell.",
+          "The zinc electrode gains mass."
+        ],
+        "answer": 0,
+        "working": "Silver ions are reduced to silver metal on the silver electrode, the cathode, so it gains mass. Zinc is oxidised at the anode, and nitrate ions move toward it."
+      }
+    ]
+  },
+  "c30-2-6-c": {
+    "lessonId": "c30-2-6",
+    "title": "Voltaic Cells, Part 3: Inert Electrodes and Cell Notation",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inert electrodes",
+        "t": 17.46
+      },
+      {
+        "title": "Cell notation",
+        "t": 59.441
+      },
+      {
+        "title": "Reading a cell",
+        "t": 103.667
+      },
+      {
+        "title": "With an inert electrode",
+        "t": 146.79
+      },
+      {
+        "title": "Your turn",
+        "t": 192.723
+      },
+      {
+        "title": "Summary",
+        "t": 235.657
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-6-c:q",
+        "t": 207.571,
+        "prompt": "A voltaic cell is written $\\ce{Al(s)} \\mid \\ce{Al^3+(aq)} \\parallel \\ce{Ni^2+(aq)} \\mid \\ce{Ni(s)}$. Which is the balanced cell reaction?",
+        "choices": [
+          "$\\ce{Al + Ni^2+ -> Al^3+ + Ni}$",
+          "$\\ce{3Ni + 2Al^3+ -> 3Ni^2+ + 2Al}$",
+          "$\\ce{2Al + 3Ni^2+ -> 2Al^3+ + 3Ni}$",
+          "$\\ce{3Al + 2Ni^2+ -> 3Al^3+ + 2Ni}$"
+        ],
+        "answer": 2,
+        "working": "Anode (left): $\\ce{Al -> Al^3+ + 3e-}$, times 2. Cathode (right): $\\ce{Ni^2+ + 2e- -> Ni}$, times 3. Six electrons are transferred."
+      }
+    ]
+  },
   "c30-3-1": {
     "lessonId": "c30-3-1",
     "title": "Organic Compounds and How They Are Drawn, Part 1: What Makes a Compound Organic",
