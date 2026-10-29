@@ -123,13 +123,20 @@ function tragedyQ(rng: Rng, d: Difficulty) {
   const right = rng.pick(SHOWS.filter((s) => s.term === want));
   const others = (['hero', 'hamartia', 'hubris', 'recognition'] as const).filter((t) => t !== want).map((t) => rng.pick(SHOWS.filter((s) => s.term === t)).line);
   return {
-    prompt: `Which quotation best shows Macbeth’s **${TERM_NAME[want].toLowerCase().replace(/ \(.*\)$/, '')}**? (${capFirst(TERM_NAME[want].replace(/ \(.*\)$/, ''))}: ${TERM_WHAT[want]}.)`,
+    prompt: SHOW_ASK[want],
     parts: [part(mc(rng, inline(right.line), others.map(inline)))],
     hints: ['Read each quotation and ask what it shows about Macbeth: greatness, ambition, overconfidence, or a moment of seeing the truth.'],
     solution: [`${inline(right.line)} (${where(right.line)})`, SHOW_WHY[want]],
   };
 }
 const capFirst = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+/** What each quotation question asks for: one quality of Macbeth that only one of the four quotations shows. */
+const SHOW_ASK: Record<'hero' | 'hamartia' | 'hubris' | 'recognition', string> = {
+  hero: 'A tragic hero has real greatness to lose. Which quotation best shows Macbeth’s **greatness** before his fall?',
+  hamartia: 'Which quotation best shows Macbeth’s **hamartia**, the tragic flaw that drives him to murder?',
+  hubris: 'Which quotation best shows Macbeth’s **hubris**, the overconfidence that makes him think he cannot be beaten?',
+  recognition: 'Which quotation best shows Macbeth’s moment of **recognition**, when he sees the truth about the witches’ promises?',
+};
 
 // ---------------------------------------------------------------------------- theme statements
 

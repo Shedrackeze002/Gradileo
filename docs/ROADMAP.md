@@ -696,9 +696,17 @@ items ship or decisions change.
      Questions are marked automatically (choices, ordering, short typed answers, which now treat
      curly and straight quotes alike); essays stay with the teacher and the AI's suggested mark.
      "Find your course" offers English and recommends Grade 10 English at any grade for now.
-   - Next: Grade 11 and Grade 12 English (as Grade 10, with harder texts and longer writing:
-     *Macbeth* and *Hamlet* are the plan), then Grade 10 English videos (fewer than mathematics:
-     how to read a poem, how to write a thesis) and its tutor voice. Later, a mark per rubric
+   - Built (29 October 2026): **Grade 11 English** (`eng-20`), 7 units, 31 lessons and 58 skills,
+     open to classes and sign-up: fiction, poetry, *Macbeth*, the essay and rhetoric, news and
+     media, writing and language, with harder public-domain texts, every excerpt checked against
+     its source. Placement now goes by grade (Grade 10 or 11 English, with a check on Grade 10
+     skills first); Grade 12 students take Grade 11 English until Grade 12 English is written.
+   - Fixed (29 October 2026): in many reading and writing questions of both English courses the
+     right answer was usually the longest choice, which a test-wise student could exploit. Every
+     wrong answer was rewritten as fully as the right one, and `answer-length.test.ts` now fails
+     any English skill where the keyed answer stands out by length.
+   - Next: Grade 12 English (*Hamlet*), then English videos (fewer than mathematics: how to read
+     a poem, how to write a thesis) and the English tutor voice. Later, a mark per rubric
      criterion for essays. The privacy policy and terms still describe Gradileo as a mathematics
      platform; their wording is the owner's to change.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
