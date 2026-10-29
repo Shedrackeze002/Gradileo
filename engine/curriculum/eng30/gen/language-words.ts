@@ -55,7 +55,7 @@ const WORDS: Word[] = [
   W('window', 'image', 'from Old Norse *vindauga*, “wind eye”: an opening that let in air and light', 'an opening in a wall, usually filled with glass, to let in light'),
   W('daisy', 'image', 'from Old English *dæges ēage*, “day’s eye”: the flower opens at dawn and closes at dusk', 'a small flower with white petals around a yellow centre'),
   W('goodbye', 'compound', 'a shortening of the old blessing “God be with you”, said when parting', 'a word said when leaving someone or ending a conversation'),
-  W('clue', 'myth', 'from *clew*, a ball of thread: in Greek myth, Theseus followed a thread out of the labyrinth', 'a piece of evidence that helps to solve a problem or mystery'),
+  W('clue', 'shifted', 'from *clew*, “a ball of thread”: like the thread Theseus followed out of the labyrinth, a clue leads you through a puzzle', 'a piece of evidence that helps to solve a problem or mystery'),
   W('rival', 'image', 'from Latin *rivalis*, “one who uses the same stream” as another', 'a person competing with another for the same thing'),
   W('senate', 'image', 'from Latin *senex*, “old man”: a council of elders', 'a council or house of a parliament that makes laws'),
   W('calculate', 'image', 'from Latin *calculus*, “small pebble”: pebbles were once used for counting', 'to work out an amount or number by using mathematics'),
@@ -118,7 +118,7 @@ const KIND_ASK: Record<Exclude<Kind, 'image' | 'compound'>, string> = {
   shifted: 'meant something very different in English a few centuries ago',
 };
 /** Words whose meaning in English has hardly changed since they arrived. */
-const STABLE = ['hippopotamus', 'philosophy', 'democracy', 'alphabet', 'checkmate', 'sandwich', 'boycott', 'vaccine', 'robot', 'calculate'];
+const STABLE = ['hippopotamus', 'democracy', 'alphabet', 'checkmate', 'sandwich', 'boycott', 'robot', 'calculate', 'daisy', 'goodbye'];
 
 function etymology(rng: Rng, d: Difficulty): GenOutput {
   if (d === 1) {
@@ -157,14 +157,17 @@ function etymology(rng: Rng, d: Difficulty): GenOutput {
       prompt: `Which English word comes from the Latin ${r.root}, “${r.gloss}”?`,
       parts: [part(mc(rng, r.word, others))],
       hints: ['Look for the Latin root inside the English word, letter for letter.'],
-      solution: [`**${r.word}** comes from ${r.root}, “${r.gloss}”.`, `The others come from ${rng.shuffle(ROOTS.filter((x) => others.includes(x.word))).map((x) => `${x.root} (${x.gloss})`).join(', ')}.`],
+      solution: [`**${r.word}** comes from ${r.root}, “${r.gloss}”.`, `The others come from other roots: ${rng.shuffle(ROOTS.filter((x) => others.includes(x.word))).map((x) => `${x.word} from ${x.root} (${x.gloss})`).join(', ')}.`],
     };
   }
   const kind = rng.pick(['myth', 'person', 'shifted'] as const);
   const right = rng.pick(WORDS.filter((x) => x.kind === kind));
   // Wrong answers come only from words that plainly do not fit: no myth figure is offered as a real
-  // person, and only words whose English meaning has stayed put are offered against a shifted one.
-  const pool = kind === 'shifted' ? WORDS.filter((x) => STABLE.includes(x.word)) : WORDS.filter((x) => x.kind !== 'myth' && x.kind !== 'person');
+  // person, only words whose English meaning has stayed put are offered against a shifted one, and
+  // no word with a near link to myth (lunatic and the moon goddess Luna, clue and Theseus) is offered.
+  const pool = kind === 'shifted'
+    ? WORDS.filter((x) => STABLE.includes(x.word))
+    : WORDS.filter((x) => (x.kind === 'image' || x.kind === 'compound') && x.word !== 'lunatic');
   const others = rng.sample(pool, 3);
   return {
     prompt: `Which of these words ${KIND_ASK[kind]}?`,
@@ -252,13 +255,14 @@ function academicVocabulary(rng: Rng, d: Difficulty): GenOutput {
   if (d === 1) return gapItem(rng.pick(VERBS), 'verb');
   if (d === 2) {
     if (rng.chance(0.5)) return gapItem(rng.pick(NOUNS), 'noun');
-    const g = rng.pick(VERBS);
-    const vague = rng.shuffle(g.plural ? ['show', 'talk about', 'are about', 'deal with'] : ['shows', 'talks about', 'is about', 'deals with']).slice(0, 3);
+    // "implies that …" and "contrasts … with …" do not take a vague verb grammatically, so they stay out.
+    const g = rng.pick(VERBS.filter((x) => x.right !== 'implies' && x.right !== 'contrasts'));
+    const vague = rng.shuffle(g.plural ? ['show', 'talk about', 'deal with', 'mention'] : ['shows', 'talks about', 'deals with', 'mentions']).slice(0, 3);
     const fill = (v: string) => g.s.replace('___', v);
     return {
       prompt: 'Which sentence of literary analysis uses the most precise verb?',
       parts: [part(mc(rng, fill(g.right), vague.map(fill)))],
-      hints: ['“Shows”, “is about” and “talks about” say little. A precise verb says exactly what the writer is doing.'],
+      hints: ['“Shows”, “talks about” and “deals with” say little. A precise verb says exactly what the writer is doing.'],
       solution: [`“${fill(g.right)}” is precise. ${g.why}`, 'The others use vague verbs that could describe almost anything a text does.'],
     };
   }

@@ -67,7 +67,7 @@ const FORMS: Item[] = [
   },
   {
     verses: [BULLION_ALL],
-    lead: `${by(BULLION_ALL)}, from the anthology *Some Imagist Poets* (1915):`,
+    lead: `${by(BULLION_ALL)}, from the anthology *Some Imagist Poets*:`,
     ask: 'Which form does the poem take?',
     right: IMAGIST,
     wrong: [SHAKESPEAREAN, BALLAD, BLANK],
@@ -158,7 +158,7 @@ const FORM_DEEP: Item[] = [
     lead: `Hopkins called ${titled(PIED_ALL.poem)} a curtal (shortened) sonnet: built in the proportions of a Petrarchan sonnet, but six lines and then four and a half instead of eight and six.`,
     ask: 'How does that shape divide the poem’s thought?',
     right: 'Lines 1–6 list dappled things; the last part widens to all changing things and their maker',
-    wrong: ['Lines 1–6 praise God; the last part turns to criticize the ugliness of farms and trades', 'Lines 1–6 describe one trout; the last part follows it as it swims down the river to the sea', 'Lines 1–6 ask questions; the last part answers each of them in the same order, one by one'],
+    wrong: ['Lines 1–6 describe the seasons; the last part turns to criticize farms and trades', 'Lines 1–6 describe one trout; the last part follows it as it swims down the river to the sea', 'Lines 1–6 ask questions; the last part answers each of them in the same order, one by one'],
     why: 'The first part names skies, trout, finches, fields and trades; the second gathers “All things counter, original, spare, strange” and ends on the God who “fathers-forth” them.',
   },
   {
@@ -335,7 +335,7 @@ const EFFECTS: Device[] = [
     ask: 'What is the effect of the bold line?',
     right: 'The sudden oath and blunt question break through her controlled speech',
     wrong: ['The gentle question shows she is calmly curious about the garden’s design', 'The repeated sounds imitate the rustle of her stiff, brocaded silk gown', 'The cheerful exclamation shows her pleasure at walking in the garden'],
-    why: 'After a poem of careful, measured speech, the oath “Christ!” and the bare question burst out: the grief she has held in breaks the pattern.',
+    why: 'After lines that calmly describe her stiff, guarded life, the oath “Christ!” and the bare question burst out: the grief she has held in breaks the pattern.',
   },
   {
     verse: withBold(linesOf(WINDHOVER_SESTET, 1, 3), 'Buckle!'),

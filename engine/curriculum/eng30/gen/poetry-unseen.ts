@@ -28,7 +28,7 @@ interface Unseen {
 const UNSEEN: Unseen[] = [
   {
     verse: CASUAL_ALL,
-    lead: `${titled(CASUAL_ALL.poem)}, a sonnet by ${CASUAL_ALL.poem.author}, published in 1917:`,
+    lead: `${titled(CASUAL_ALL.poem)}, a sonnet by ${CASUAL_ALL.poem.author}:`,
     basic: [
       {
         ask: 'What situation does the speaker imagine?',
@@ -46,8 +46,8 @@ const UNSEEN: Unseen[] = [
     close: [
       {
         ask: 'How does the poem divide at line 9?',
-        right: 'The octave imagines the news; the sestet, how calmly she would behave in public',
-        wrong: ['The octave imagines the news; the sestet, how loudly she would weep and cry out', 'The octave describes the city; the sestet describes her childhood in the country', 'The octave is spoken by her; the sestet is spoken by the hurrying man himself'],
+        right: 'Lines 1–8 imagine the news; lines 9–14, how calmly she would behave in public',
+        wrong: ['Lines 1–8 imagine the news; lines 9–14, how loudly she would weep and cry out', 'Lines 1–8 describe the city; lines 9–14 describe her childhood in the country', 'Lines 1–8 are spoken by her; lines 9–14 by the hurrying man himself'],
         why: 'Lines 1–8 build the scene of the news; line 9 turns: “I should not cry aloud”. She would only watch the lights “With a more careful interest on my face”.',
       },
       {

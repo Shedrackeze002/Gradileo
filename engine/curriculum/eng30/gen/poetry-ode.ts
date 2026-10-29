@@ -84,7 +84,7 @@ const ADDRESSED: Item[] = [
   },
   {
     verses: [ODE_FOUNTAINS],
-    lead: `Near the end of an ode by William Wordsworth, first printed in 1807 as simply “Ode” and now called ${titled(ODE_FOUNTAINS.poem)}:`,
+    lead: 'Near the end of an ode by William Wordsworth, first printed in 1807 as simply “Ode” and now known as “Ode: Intimations of Immortality”:',
     ask: 'Whom or what does the speaker address here?',
     right: 'Nature: its fountains, meadows, hills and groves',
     wrong: ['The children he sees picking flowers on a May morning', 'His old friends, who he fears have long forgotten him', 'God, who he says is the true home of the human soul'],
@@ -207,7 +207,7 @@ const LYRIC_HINT = 'A meditative lyric starts in a place and a moment, follows t
 const SITUATION: Item[] = [
   {
     verses: [TINTERN_OPENING],
-    lead: `The opening of ${titled(TINTERN_OPENING.poem)} by William Wordsworth, written in 1798 on a walking tour beside the River Wye:`,
+    lead: `The opening of ${titled(TINTERN_OPENING.poem)} by William Wordsworth, written on a walking tour beside the River Wye:`,
     ask: 'What situation begins the poem?',
     right: 'He returns to a river valley that he last saw five years before',
     wrong: ['He sees a river valley for the first time on a summer tour', 'He says goodbye to the valley before leaving for five years', 'He describes a painting of the valley that hangs in his room'],

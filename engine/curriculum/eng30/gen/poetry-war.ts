@@ -24,7 +24,7 @@ const by = (v: Verse) => `${titled(v.poem)} by ${v.poem.author}`;
 const SEEN: Item[] = [
   {
     verses: [FUTILITY_ALL],
-    lead: `${by(FUTILITY_ALL)}, a soldier, written in France (“fatuous” means foolish):`,
+    lead: `${by(FUTILITY_ALL)}, a soldier who was killed in France in 1918 (“fatuous” means foolish):`,
     ask: 'What is happening in the poem?',
     right: 'Soldiers lay a dead comrade in the sun, hoping that it will wake him',
     wrong: ['A soldier wakes at home in the sun after a long dream of France', 'Farm workers sow their fields as the sun melts the morning snow', 'A wounded soldier is carried home from France to be buried'],
@@ -48,7 +48,7 @@ const SEEN: Item[] = [
   },
   {
     verses: [IN_MEMORIAM_ALL],
-    lead: `${by(IN_MEMORIAM_ALL)}, written in 1915 while Thomas was waiting to go to the war:`,
+    lead: `${by(IN_MEMORIAM_ALL)}, written at Easter 1915, a few months before Thomas himself enlisted:`,
     ask: 'What do the flowers in the wood make the speaker think of?',
     right: 'The young men away at war who will never gather them again',
     wrong: ['The Easter service he will go to that night in the village', 'The sweethearts who picked them to send to the soldiers', 'The gardeners who planted the wood many years ago'],
@@ -203,9 +203,9 @@ interface Pair {
 const PAIRS: Pair[] = [
   {
     a: FUTILITY_ALL,
-    aNote: 'Owen, a soldier in France, 1918',
+    aNote: 'a soldier killed in France in 1918',
     b: VIGIL_SILENCE,
-    bNote: 'Whitman, the American Civil War; the speaker sits by a dead young comrade',
+    bNote: 'the American Civil War; the speaker sits by a dead young comrade',
     asks: [
       {
         ask: 'What do both poems respond to?',
@@ -229,9 +229,9 @@ const PAIRS: Pair[] = [
   },
   {
     a: STRANGE_END,
-    aNote: 'Owen; the speaker meets a dead man in an underground hall',
+    aNote: 'the speaker meets a dead man in an underground hall',
     b: BREAK_OF_DAY_ALL,
-    bNote: 'Rosenberg, a private soldier killed in 1918',
+    bNote: 'a private soldier killed in 1918',
     asks: [
       {
         ask: 'What idea do both poems share?',
@@ -249,9 +249,9 @@ const PAIRS: Pair[] = [
   },
   {
     a: IN_MEMORIAM_ALL,
-    aNote: 'Edward Thomas, 1915, at home in England',
+    aNote: 'written at home in England in 1915',
     b: SEND_OFF_ALL,
-    bNote: 'Owen; soldiers leave a country station for the front',
+    bNote: 'soldiers leave a country station for the front',
     asks: [
       {
         ask: 'What image do both poems use?',
@@ -269,14 +269,14 @@ const PAIRS: Pair[] = [
   },
   {
     a: DRUMS_FIRST,
-    aNote: 'Whitman, written in 1861 at the start of the American Civil War',
+    aNote: 'written in 1861, at the start of the American Civil War',
     b: CHANNEL_OPENING,
-    bNote: 'Hardy, dated April 1914, four months before the First World War',
+    bNote: 'dated April 1914, four months before the First World War',
     asks: [
       {
         ask: 'What do both poems show?',
         right: 'War’s noise breaking into a church and into the peace of ordinary life',
-        wrong: ['A great victory celebrated with bells and bands in a crowded town', 'Soldiers fighting hand to hand in the mud of a muddy battlefield', 'A quiet countryside untouched by the war going on far away'],
+        wrong: ['A great victory celebrated with bells and bands in a crowded town', 'Soldiers fighting hand to hand in the mud of a distant battlefield', 'A quiet countryside untouched by the war going on far away'],
         why: 'Poem A’s drums burst “Into the solemn church”; Poem B’s guns break “the chancel window-squares” and wake the dead.',
       },
       {
@@ -294,7 +294,7 @@ function pairQ(rng: Rng): GenOutput {
   const asks = p.asks.length > 2 ? [p.asks[0], ...rng.sample(p.asks.slice(1), 1)] : p.asks;
   const head = (v: Verse, label: string, note: string) => `**${label}:** ${titled(v.poem)} by ${v.poem.author} (${note})`;
   return {
-    prompt: [`Read the two poems, then answer both questions.`, head(p.a, 'Poem A', p.aNote), verseBlock(p.a), head(p.b, 'Poem B', p.bNote), verseBlock(p.b)].join('\n\n'),
+    prompt: [`Read the two passages, then answer both questions.`, head(p.a, 'Poem A', p.aNote), verseBlock(p.a), head(p.b, 'Poem B', p.bNote), verseBlock(p.b)].join('\n\n'),
     parts: asks.map((a, i) => part(mc(rng, a.right, a.wrong), { label: `${i + 1}. ${a.ask}` })),
     hints: [HINT],
     solution: asks.map((a, i) => `${i + 1}. ${end(a.right)} ${a.why}`),
