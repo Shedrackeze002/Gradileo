@@ -41,7 +41,7 @@ describe('lesson edits', () => {
       const parsed = parseLesson(raw).sections.map((s) => s.title);
       expect(split, f).toEqual(parsed);
     }
-  });
+  }, 30_000); // every lesson of every course, more each time a course is added
 
   it('keeps headings inside ::: blocks in their section', () => {
     const { head, sections } = splitLesson(LESSON);

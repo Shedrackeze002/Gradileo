@@ -10540,6 +10540,5750 @@
       }
     ]
   },
+  "c30-1-1": {
+    "lessonId": "c30-1-1",
+    "title": "Energy in Chemical Systems, Part 1: Systems and Surroundings",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The system and the surroundings",
+        "t": 30.913
+      },
+      {
+        "title": "Open, closed and isolated",
+        "t": 78.015
+      },
+      {
+        "title": "Naming the parts",
+        "t": 123.077
+      },
+      {
+        "title": "Your turn",
+        "t": 163.28
+      },
+      {
+        "title": "Summary",
+        "t": 197.69
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-1:q",
+        "t": 175.269,
+        "prompt": "Ammonium nitrate dissolves in the water of an instant cold pack. Which of these is part of the **chemical system**?",
+        "choices": [
+          "The water in the pack",
+          "The ammonium nitrate",
+          "The plastic bag of the pack",
+          "The injured wrist the pack is held against"
+        ],
+        "answer": 1,
+        "working": "The chemical system is the substance that changes: the ammonium nitrate (and the ions it releases). The water only holds the dissolved ions, so it belongs to the surroundings, with the bag and the wrist."
+      }
+    ]
+  },
+  "c30-1-1-b": {
+    "lessonId": "c30-1-1",
+    "title": "Energy in Chemical Systems, Part 2: Kinetic and Potential Energy",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Kinetic energy",
+        "t": 20.555
+      },
+      {
+        "title": "Potential energy",
+        "t": 51.615
+      },
+      {
+        "title": "Enthalpy",
+        "t": 98.214
+      },
+      {
+        "title": "Energy in a stove",
+        "t": 139.396
+      },
+      {
+        "title": "Your turn",
+        "t": 178.122
+      },
+      {
+        "title": "Summary",
+        "t": 213.542
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-1-b:q",
+        "t": 190.5,
+        "prompt": "The water in a calorimeter warms from $20.0^\\circ\\text{C}$ to $26.5^\\circ\\text{C}$. What has increased?",
+        "choices": [
+          "The potential energy stored in the bonds of the water molecules",
+          "The number of water molecules",
+          "The strength of the bonds inside each water molecule",
+          "The average kinetic energy of the water molecules"
+        ],
+        "answer": 3,
+        "working": "Temperature measures the average kinetic energy of the particles, so a rise in temperature means the water molecules are moving faster."
+      }
+    ]
+  },
+  "c30-1-1-c": {
+    "lessonId": "c30-1-1",
+    "title": "Energy in Chemical Systems, Part 3: Exothermic and Endothermic Changes",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two directions",
+        "t": 22.71
+      },
+      {
+        "title": "Reading the signs",
+        "t": 57.023
+      },
+      {
+        "title": "Reading the surroundings",
+        "t": 111.811
+      },
+      {
+        "title": "Cold does not flow",
+        "t": 151.378
+      },
+      {
+        "title": "Your turn",
+        "t": 176.049
+      },
+      {
+        "title": "Summary",
+        "t": 210.177
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-1-c:q",
+        "t": 186.393,
+        "prompt": "Ethanol evaporates from the skin, and the skin feels cool. How is the change classified?",
+        "choices": [
+          "Endothermic, with $\\Delta H$ positive",
+          "Endothermic, with $\\Delta H$ negative",
+          "Exothermic, with $\\Delta H$ negative",
+          "Exothermic, with $\\Delta H$ positive"
+        ],
+        "answer": 0,
+        "working": "Evaporating absorbs energy from the skin to separate the ethanol molecules. Energy flows into the system, so the change is endothermic and $\\Delta H$ is positive."
+      }
+    ]
+  },
+  "c30-1-1-d": {
+    "lessonId": "c30-1-1",
+    "title": "Energy in Chemical Systems, Part 4: Bonds Broken and Bonds Formed",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Breaking and forming",
+        "t": 19.062
+      },
+      {
+        "title": "Hydrogen and chlorine",
+        "t": 62.96
+      },
+      {
+        "title": "Making ammonia",
+        "t": 141.71
+      },
+      {
+        "title": "Breaking bonds never releases energy",
+        "t": 190.718
+      },
+      {
+        "title": "Your turn",
+        "t": 215.962
+      },
+      {
+        "title": "Summary",
+        "t": 255.548
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-1-d:q",
+        "t": 228.28,
+        "prompt": "Use the bond energies $\\ce{H-H}$ $436$, $\\ce{Br-Br}$ $193$ and $\\ce{H-Br}$ $366\\ \\text{kJ/mol}$ to estimate $\\Delta_r H$ for $\\ce{H2(g) + Br2(g) -> 2HBr(g)}$.",
+        "choices": [
+          "$+103\\ \\text{kJ}$",
+          "$+263\\ \\text{kJ}$",
+          "$-103\\ \\text{kJ}$",
+          "$-732\\ \\text{kJ}$"
+        ],
+        "answer": 2,
+        "working": "Bonds broken: $436 + 193 = 629\\ \\text{kJ}$. Bonds formed: $2(366) = 732\\ \\text{kJ}$. $\\Delta_r H = 629 - 732 = -103\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-2": {
+    "lessonId": "c30-1-2",
+    "title": "Calorimetry, Part 1: Heat and Specific Heat Capacity",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Heat",
+        "t": 28.025
+      },
+      {
+        "title": "Specific heat capacity",
+        "t": 63.316
+      },
+      {
+        "title": "One equation",
+        "t": 102.901
+      },
+      {
+        "title": "Warming water",
+        "t": 130.909
+      },
+      {
+        "title": "Your turn",
+        "t": 170.588
+      },
+      {
+        "title": "Summary",
+        "t": 208.52
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-2:q",
+        "t": 183.469,
+        "prompt": "How much heat does $150.0\\ \\text{g}$ of water absorb as it warms by $30.0^\\circ\\text{C}$? The specific heat capacity of water is $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$4.50\\ \\text{kJ}$",
+          "$1.89\\ \\text{kJ}$",
+          "$18.9\\ \\text{kJ}$",
+          "$18\\,855\\ \\text{kJ}$"
+        ],
+        "answer": 2,
+        "working": "$Q = mc\\Delta t = 150.0 \\times 4.19 \\times 30.0 = 18\\,855\\ \\text{J}$, which is $18.9\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-2-b": {
+    "lessonId": "c30-1-2",
+    "title": "Calorimetry, Part 2: Heat Lost, Units and Containers",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A block that cools",
+        "t": 20.999
+      },
+      {
+        "title": "Grams, not kilograms",
+        "t": 71.163
+      },
+      {
+        "title": "A saucepan of water",
+        "t": 102.269
+      },
+      {
+        "title": "Your turn",
+        "t": 173.747
+      },
+      {
+        "title": "Summary",
+        "t": 215.108
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-2-b:q",
+        "t": 190.559,
+        "prompt": "The temperature of $300.0\\ \\text{mL}$ of water falls from $65.0^\\circ\\text{C}$ to $25.0^\\circ\\text{C}$. How much heat does it gain or lose? The density of water is $1.00\\ \\text{g/mL}$ and its specific heat capacity is $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$50.3\\ \\text{kJ}$ lost",
+          "$50.3\\ \\text{kJ}$ gained",
+          "$50.3\\ \\text{J}$ lost",
+          "$12.0\\ \\text{kJ}$ lost"
+        ],
+        "answer": 0,
+        "working": "$m = 300.0\\ \\text{g}$ and $\\Delta t = 25.0 - 65.0 = -40.0^\\circ\\text{C}$. $Q = 300.0 \\times 4.19 \\times 40.0 = 50\\,280\\ \\text{J} \\approx 50.3\\ \\text{kJ}$, lost, since the water cooled."
+      }
+    ]
+  },
+  "c30-1-2-c": {
+    "lessonId": "c30-1-2",
+    "title": "Calorimetry, Part 3: Solving for a Mass, a Heat Capacity or a Temperature",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rearranging the equation",
+        "t": 21.502
+      },
+      {
+        "title": "Identifying a metal",
+        "t": 56.289
+      },
+      {
+        "title": "A final temperature",
+        "t": 108.052
+      },
+      {
+        "title": "Your turn",
+        "t": 162.131
+      },
+      {
+        "title": "Summary",
+        "t": 201.739
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-2-c:q",
+        "t": 177.167,
+        "prompt": "Some water absorbs $6.28\\ \\text{kJ}$ of heat, and its temperature rises by $12.5^\\circ\\text{C}$. What is the mass of the water? The specific heat capacity of water is $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$0.120\\ \\text{g}$",
+          "$329\\ \\text{g}$",
+          "$1500\\ \\text{g}$",
+          "$120\\ \\text{g}$"
+        ],
+        "answer": 3,
+        "working": "$Q = 6280\\ \\text{J}$, so $m = \\dfrac{Q}{c\\Delta t} = \\dfrac{6280}{4.19 \\times 12.5} = 120\\ \\text{g}$."
+      }
+    ]
+  },
+  "c30-1-2-d": {
+    "lessonId": "c30-1-2",
+    "title": "Calorimetry, Part 4: Heat Lost, Heat Gained and the Calorimeter",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Heat lost equals heat gained",
+        "t": 18.8
+      },
+      {
+        "title": "A hot metal in cold water",
+        "t": 45.611
+      },
+      {
+        "title": "Why the water hardly warms",
+        "t": 101.247
+      },
+      {
+        "title": "The simple calorimeter",
+        "t": 123.669
+      },
+      {
+        "title": "Four assumptions",
+        "t": 150.95
+      },
+      {
+        "title": "Your turn",
+        "t": 199.105
+      },
+      {
+        "title": "Summary",
+        "t": 239.718
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-2-d:q",
+        "t": 217.726,
+        "prompt": "A $50.0\\ \\text{g}$ piece of iron at $95.0^\\circ\\text{C}$ is dropped into $100.0\\ \\text{g}$ of water at $20.0^\\circ\\text{C}$ in an insulated cup. What is the final temperature? $c$: iron $0.449$, water $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$57.5^\\circ\\text{C}$",
+          "$23.8^\\circ\\text{C}$",
+          "$81.8^\\circ\\text{C}$",
+          "$27.3^\\circ\\text{C}$"
+        ],
+        "answer": 1,
+        "working": "$50.0(0.449)(95.0 - t_f) = 100.0(4.19)(t_f - 20.0)$, so $22.45(95.0 - t_f) = 419.0(t_f - 20.0)$ and $t_f = \\dfrac{2132.75 + 8380}{441.45} = 23.8^\\circ\\text{C}$."
+      }
+    ]
+  },
+  "c30-1-3": {
+    "lessonId": "c30-1-3",
+    "title": "Molar Enthalpy, Part 1: From Heat to Molar Enthalpy",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The water is the surroundings",
+        "t": 23.49
+      },
+      {
+        "title": "Molar enthalpy",
+        "t": 67.888
+      },
+      {
+        "title": "Dissolving ammonium nitrate",
+        "t": 111.829
+      },
+      {
+        "title": "Your turn",
+        "t": 181.3
+      },
+      {
+        "title": "Summary",
+        "t": 226.317
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-3:q",
+        "t": 199.882,
+        "prompt": "When $0.0500\\ \\text{mol}$ of sodium hydroxide, $\\ce{NaOH}$, dissolves in the water of a calorimeter, the water gains $2.22\\ \\text{kJ}$ of heat. What is the molar enthalpy of solution of sodium hydroxide?",
+        "choices": [
+          "$+44.4\\ \\text{kJ/mol}$",
+          "$-0.111\\ \\text{kJ/mol}$",
+          "$-44.4\\ \\text{kJ/mol}$",
+          "$+0.111\\ \\text{kJ/mol}$"
+        ],
+        "answer": 2,
+        "working": "The water gained heat, so the system lost it: $\\Delta H = -2.22\\ \\text{kJ}$. $\\Delta_r H_m = \\dfrac{-2.22\\ \\text{kJ}}{0.0500\\ \\text{mol}} = -44.4\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-3-b": {
+    "lessonId": "c30-1-3",
+    "title": "Molar Enthalpy, Part 2: Neutralisation and the Sign of ΔH",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two solutions, one mass",
+        "t": 21.071
+      },
+      {
+        "title": "Neutralisation",
+        "t": 53.469
+      },
+      {
+        "title": "The sign comes from the water",
+        "t": 125.408
+      },
+      {
+        "title": "Your turn",
+        "t": 160.352
+      },
+      {
+        "title": "Summary",
+        "t": 214.544
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-3-b:q",
+        "t": 184.106,
+        "prompt": "$40.0\\ \\text{mL}$ of $1.50\\ \\text{mol/L}$ $\\ce{HCl(aq)}$ and $40.0\\ \\text{mL}$ of $1.50\\ \\text{mol/L}$ $\\ce{NaOH(aq)}$ are mixed in a polystyrene cup. The temperature rises from $20.5^\\circ\\text{C}$ to $30.7^\\circ\\text{C}$. What is the molar enthalpy of neutralisation of the acid? Use $1.00\\ \\text{g/mL}$ and $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$-57.0\\ \\text{kJ/mol}$",
+          "$+57.0\\ \\text{kJ/mol}$",
+          "$-28.5\\ \\text{kJ/mol}$",
+          "$-0.0570\\ \\text{kJ/mol}$"
+        ],
+        "answer": 0,
+        "working": "$Q = 80.0 \\times 4.19 \\times 10.2 = 3419\\ \\text{J} = 3.419\\ \\text{kJ}$ and $n(\\ce{HCl}) = 1.50 \\times 0.0400 = 0.0600\\ \\text{mol}$. The water warmed, so $\\Delta_r H_m = \\dfrac{-3.419}{0.0600} = -57.0\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-3-c": {
+    "lessonId": "c30-1-3",
+    "title": "Molar Enthalpy, Part 3: The Bomb Calorimeter",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inside a bomb calorimeter",
+        "t": 19.666
+      },
+      {
+        "title": "Burning glucose",
+        "t": 63.797
+      },
+      {
+        "title": "A simple calorimeter for fuels",
+        "t": 115.768
+      },
+      {
+        "title": "Your turn",
+        "t": 139.332
+      },
+      {
+        "title": "Summary",
+        "t": 192.232
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-3-c:q",
+        "t": 162.261,
+        "prompt": "A $0.800\\ \\text{g}$ sample of methanol, $\\ce{CH3OH}$, burns in a bomb calorimeter with $C = 10.50\\ \\text{kJ/°C}$. The temperature rises by $1.73^\\circ\\text{C}$. What is the molar enthalpy of combustion of methanol? $M(\\ce{CH3OH}) = 32.05\\ \\text{g/mol}$.",
+        "choices": [
+          "$-728\\ \\text{kJ/mol}$",
+          "$+728\\ \\text{kJ/mol}$",
+          "$-22.7\\ \\text{kJ/mol}$",
+          "$-0.453\\ \\text{kJ/mol}$"
+        ],
+        "answer": 0,
+        "working": "$Q = 10.50 \\times 1.73 = 18.17\\ \\text{kJ}$ and $n = \\dfrac{0.800}{32.05} = 0.02496\\ \\text{mol}$, so $\\Delta_c H_m = \\dfrac{-18.17}{0.02496} = -728\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-3-d": {
+    "lessonId": "c30-1-3",
+    "title": "Molar Enthalpy, Part 4: Using a Molar Enthalpy",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From moles to energy",
+        "t": 18.65
+      },
+      {
+        "title": "Burning propane",
+        "t": 41.85
+      },
+      {
+        "title": "Melting ice",
+        "t": 83.079
+      },
+      {
+        "title": "How much fuel?",
+        "t": 122.06
+      },
+      {
+        "title": "Your turn",
+        "t": 180.539
+      },
+      {
+        "title": "Summary",
+        "t": 223.483
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-3-d:q",
+        "t": 198.138,
+        "prompt": "The molar enthalpy of combustion of ethanol, $\\ce{C2H5OH}$, is $-1366.8\\ \\text{kJ/mol}$. What is the enthalpy change when $23.0\\ \\text{g}$ of ethanol burns? $M(\\ce{C2H5OH}) = 46.08\\ \\text{g/mol}$.",
+        "choices": [
+          "$+682\\ \\text{kJ}$",
+          "$-31\\,436\\ \\text{kJ}$",
+          "$-29.7\\ \\text{kJ}$",
+          "$-682\\ \\text{kJ}$"
+        ],
+        "answer": 3,
+        "working": "$n = \\dfrac{23.0}{46.08} = 0.4991\\ \\text{mol}$, so $\\Delta H = 0.4991 \\times (-1366.8) = -682\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-4": {
+    "lessonId": "c30-1-4",
+    "title": "Communicating Enthalpy Changes, Part 1: Energy in the Equation",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four ways",
+        "t": 25.877
+      },
+      {
+        "title": "Which side?",
+        "t": 74.38
+      },
+      {
+        "title": "Reading an energy term",
+        "t": 105.744
+      },
+      {
+        "title": "No minus signs in energy terms",
+        "t": 141.509
+      },
+      {
+        "title": "Your turn",
+        "t": 165.881
+      },
+      {
+        "title": "Summary",
+        "t": 208.737
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-4:q",
+        "t": 182.331,
+        "prompt": "For $\\ce{2H2(g) + O2(g) -> 2H2O(g)}$, $\\Delta_r H = -483.6\\ \\text{kJ}$. How is this energy change written as an **energy term** in the equation?",
+        "choices": [
+          "$483.6\\ \\text{kJ}$, with the reactants",
+          "$483.6\\ \\text{kJ}$, with the products",
+          "$-483.6\\ \\text{kJ}$, with the products",
+          "$241.8\\ \\text{kJ}$, with the products"
+        ],
+        "answer": 1,
+        "working": "$\\Delta_r H$ is negative, so the energy is released: it is written with the products, as a positive amount, $483.6\\ \\text{kJ}$ for the equation as written."
+      }
+    ]
+  },
+  "c30-1-4-b": {
+    "lessonId": "c30-1-4",
+    "title": "Communicating Enthalpy Changes, Part 2: Molar Enthalpies from an Equation",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The equation as written",
+        "t": 18.529
+      },
+      {
+        "title": "One equation, three molar enthalpies",
+        "t": 47.326
+      },
+      {
+        "title": "From a molar enthalpy to the equation",
+        "t": 98.977
+      },
+      {
+        "title": "Your turn",
+        "t": 145.962
+      },
+      {
+        "title": "Summary",
+        "t": 190.136
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-4-b:q",
+        "t": 165.546,
+        "prompt": "For $\\ce{2SO2(g) + O2(g) -> 2SO3(g)}$, $\\Delta_r H = -197.8\\ \\text{kJ}$. What is the molar enthalpy of reaction per mole of $\\ce{SO3}$ that forms?",
+        "choices": [
+          "$-395.6\\ \\text{kJ/mol}$",
+          "$+98.9\\ \\text{kJ/mol}$",
+          "$-98.9\\ \\text{kJ/mol}$",
+          "$-197.8\\ \\text{kJ/mol}$"
+        ],
+        "answer": 2,
+        "working": "The equation forms $2\\ \\text{mol}$ of $\\ce{SO3}$: $\\Delta_r H_m = \\dfrac{-197.8\\ \\text{kJ}}{2\\ \\text{mol}} = -98.9\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-4-c": {
+    "lessonId": "c30-1-4",
+    "title": "Communicating Enthalpy Changes, Part 3: Enthalpy Diagrams",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exothermic: the arrow points down",
+        "t": 22.554
+      },
+      {
+        "title": "Endothermic: the arrow points up",
+        "t": 63.562
+      },
+      {
+        "title": "Reading a diagram",
+        "t": 99.229
+      },
+      {
+        "title": "Your turn",
+        "t": 148.655
+      },
+      {
+        "title": "Summary",
+        "t": 195.129
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-4-c:q",
+        "t": 168.501,
+        "prompt": "An enthalpy diagram has $\\ce{2Mg(s) + O2(g)}$ on the upper line and $\\ce{2MgO(s)}$ on the lower line, with an arrow from the upper line down to the lower line labelled $1203.2\\ \\text{kJ}$. What is $\\Delta_r H$ for $\\ce{2Mg(s) + O2(g) -> 2MgO(s)}$?",
+        "choices": [
+          "$+1203.2\\ \\text{kJ}$, endothermic",
+          "$-1203.2\\ \\text{kJ}$, endothermic",
+          "$+1203.2\\ \\text{kJ}$, exothermic",
+          "$-1203.2\\ \\text{kJ}$, exothermic"
+        ],
+        "answer": 3,
+        "working": "The arrow starts at the reactants, $\\ce{2Mg(s) + O2(g)}$, and points down to the products: the system loses $1203.2\\ \\text{kJ}$, so $\\Delta_r H = -1203.2\\ \\text{kJ}$ and the reaction is exothermic."
+      }
+    ]
+  },
+  "c30-1-4-d": {
+    "lessonId": "c30-1-4",
+    "title": "Communicating Enthalpy Changes, Part 4: Diagrams, Masses and All Four Ways",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A diagram and a mass",
+        "t": 21.556
+      },
+      {
+        "title": "Photosynthesis, every way",
+        "t": 73.223
+      },
+      {
+        "title": "And as a diagram",
+        "t": 127.331
+      },
+      {
+        "title": "An enthalpy diagram has no hump",
+        "t": 149.887
+      },
+      {
+        "title": "Your turn",
+        "t": 177.747
+      },
+      {
+        "title": "Summary",
+        "t": 228.594
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-4-d:q",
+        "t": 199.259,
+        "prompt": "The enthalpy diagram for $\\ce{N2(g) + 3H2(g) -> 2NH3(g)}$ has the arrow pointing down, labelled $\\Delta H = -91.8\\ \\text{kJ}$. What is the enthalpy change when $6.00\\ \\text{g}$ of ammonia forms? $M(\\ce{NH3}) = 17.04\\ \\text{g/mol}$.",
+        "choices": [
+          "$-32.3\\ \\text{kJ}$",
+          "$-16.2\\ \\text{kJ}$",
+          "$+16.2\\ \\text{kJ}$",
+          "$-551\\ \\text{kJ}$"
+        ],
+        "answer": 1,
+        "working": "Per mole of ammonia: $\\dfrac{-91.8}{2} = -45.9\\ \\text{kJ/mol}$. $n = \\dfrac{6.00}{17.04} = 0.3521\\ \\text{mol}$, so $\\Delta H = 0.3521 \\times (-45.9) = -16.2\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-5": {
+    "lessonId": "c30-1-5",
+    "title": "Hess's Law, Part 1: Reversing and Multiplying Equations",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reversing an equation",
+        "t": 28.817
+      },
+      {
+        "title": "Multiplying an equation",
+        "t": 73.287
+      },
+      {
+        "title": "Both at once",
+        "t": 130.206
+      },
+      {
+        "title": "Your turn",
+        "t": 164.789
+      },
+      {
+        "title": "Summary",
+        "t": 207.805
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-5:q",
+        "t": 184.576,
+        "prompt": "Given $\\ce{2SO2(g) + O2(g) -> 2SO3(g)}\\quad \\Delta_r H = -197.8\\ \\text{kJ}$, what is $\\Delta_r H$ for $\\ce{SO3(g) -> SO2(g) + 1/2 O2(g)}$?",
+        "choices": [
+          "$-98.9\\ \\text{kJ}$",
+          "$+197.8\\ \\text{kJ}$",
+          "$+98.9\\ \\text{kJ}$",
+          "$-395.6\\ \\text{kJ}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{SO3}$ has moved to the reactant side, so the equation is reversed: $+197.8\\ \\text{kJ}$. Its coefficient went from 2 to 1, so it is multiplied by $\\tfrac{1}{2}$: $\\tfrac{1}{2} \\times (+197.8) = +98.9\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-5-b": {
+    "lessonId": "c30-1-5",
+    "title": "Hess's Law, Part 2: One Step or Several",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two routes to carbon dioxide",
+        "t": 22.686
+      },
+      {
+        "title": "Hess's law",
+        "t": 63.394
+      },
+      {
+        "title": "Why it must be true",
+        "t": 104.918
+      },
+      {
+        "title": "The target equation",
+        "t": 137.009
+      },
+      {
+        "title": "Your turn",
+        "t": 172.006
+      },
+      {
+        "title": "Summary",
+        "t": 212.778
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-5-b:q",
+        "t": 190.807,
+        "prompt": "Nitrogen dioxide can form in one step, $\\ce{N2(g) + 2O2(g) -> 2NO2(g)}$, or in two: $\\ce{N2(g) + O2(g) -> 2NO(g)}$, $\\Delta_r H = +182.6\\ \\text{kJ}$, then $\\ce{2NO(g) + O2(g) -> 2NO2(g)}$, $\\Delta_r H = -116.2\\ \\text{kJ}$. What is $\\Delta_r H$ for the one-step reaction?",
+        "choices": [
+          "$+298.8\\ \\text{kJ}$",
+          "$+66.4\\ \\text{kJ}$",
+          "$-66.4\\ \\text{kJ}$",
+          "$-298.8\\ \\text{kJ}$"
+        ],
+        "answer": 1,
+        "working": "The two steps add up to the one-step equation ($\\ce{2NO}$ cancels), so their enthalpy changes add: $+182.6 + (-116.2) = +66.4\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-5-c": {
+    "lessonId": "c30-1-5",
+    "title": "Hess's Law, Part 3: Combining Two Equations",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five steps",
+        "t": 26.061
+      },
+      {
+        "title": "Arranging the equations",
+        "t": 73.649
+      },
+      {
+        "title": "Adding the equations",
+        "t": 116.52
+      },
+      {
+        "title": "Your turn",
+        "t": 162.689
+      },
+      {
+        "title": "Summary",
+        "t": 203.443
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-5-c:q",
+        "t": 176.192,
+        "prompt": "Find $\\Delta_r H$ for $\\ce{CuO(s) + H2(g) -> Cu(s) + H2O(g)}$ from these equations: $\\begin{array}{llr} (1) & \\ce{Cu(s) + 1/2 O2(g) -> CuO(s)} & -157.3\\ \\text{kJ} \\\\ (2) & \\ce{H2(g) + 1/2 O2(g) -> H2O(g)} & -241.8\\ \\text{kJ} \\end{array}$",
+        "choices": [
+          "$-399.1\\ \\text{kJ}$",
+          "$+84.5\\ \\text{kJ}$",
+          "$+399.1\\ \\text{kJ}$",
+          "$-84.5\\ \\text{kJ}$"
+        ],
+        "answer": 3,
+        "working": "$\\ce{CuO(s)}$ is a reactant in the target but a product in (1): reverse (1), $+157.3\\ \\text{kJ}$. Keep (2). $\\ce{O2}$ cancels, and $\\Delta_r H = +157.3 + (-241.8) = -84.5\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-5-d": {
+    "lessonId": "c30-1-5",
+    "title": "Hess's Law, Part 4: Three Equations and Fractions",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Methane from its elements",
+        "t": 24.55
+      },
+      {
+        "title": "Adding three equations",
+        "t": 67.035
+      },
+      {
+        "title": "Fractions",
+        "t": 97.919
+      },
+      {
+        "title": "Check before you add",
+        "t": 142.416
+      },
+      {
+        "title": "Your turn",
+        "t": 181.581
+      },
+      {
+        "title": "Summary",
+        "t": 218.012
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-5-d:q",
+        "t": 192.467,
+        "prompt": "Find $\\Delta_r H$ for $\\ce{2C(s) + H2(g) -> C2H2(g)}$ from these equations: $\\begin{array}{llr} (1) & \\ce{C(s) + O2(g) -> CO2(g)} & -393.5\\ \\text{kJ} \\\\ (2) & \\ce{H2(g) + 1/2 O2(g) -> H2O(l)} & -285.8\\ \\text{kJ} \\\\ (3) & \\ce{2C2H2(g) + 5O2(g) -> 4CO2(g) + 2H2O(l)} & -2600.4\\ \\text{kJ} \\end{array}$",
+        "choices": [
+          "$+227.4\\ \\text{kJ}$",
+          "$+1527.6\\ \\text{kJ}$",
+          "$+620.9\\ \\text{kJ}$",
+          "$-2373.0\\ \\text{kJ}$"
+        ],
+        "answer": 0,
+        "working": "(1) $\\times\\, 2$: $-787.0\\ \\text{kJ}$. (2) as given: $-285.8\\ \\text{kJ}$. (3) reversed and $\\times\\, \\tfrac{1}{2}$: $+1300.2\\ \\text{kJ}$. $\\Delta_r H = -787.0 - 285.8 + 1300.2 = +227.4\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-6": {
+    "lessonId": "c30-1-6",
+    "title": "Enthalpies of Formation, Part 1: Standard States",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Standard conditions",
+        "t": 30.268
+      },
+      {
+        "title": "The elements",
+        "t": 69.996
+      },
+      {
+        "title": "Formation equations",
+        "t": 105.164
+      },
+      {
+        "title": "Elements are zero",
+        "t": 147.079
+      },
+      {
+        "title": "Your turn",
+        "t": 172.588
+      },
+      {
+        "title": "Summary",
+        "t": 208.47
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-6:q",
+        "t": 182.275,
+        "prompt": "At SATP, which of these has a standard enthalpy of formation, $\\Delta_f H^\\circ$, of zero?",
+        "choices": [
+          "$\\ce{O3(g)}$",
+          "$\\ce{I2(s)}$",
+          "$\\ce{Hg(g)}$",
+          "$\\ce{H(g)}$"
+        ],
+        "answer": 1,
+        "working": "The standard state of iodine is a diatomic solid, $\\ce{I2(s)}$. Oxygen and hydrogen are diatomic gases, $\\ce{O2(g)}$ and $\\ce{H2(g)}$, and mercury is a liquid, $\\ce{Hg(l)}$."
+      }
+    ]
+  },
+  "c30-1-6-b": {
+    "lessonId": "c30-1-6",
+    "title": "Enthalpies of Formation, Part 2: Writing Formation Equations",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two oxides",
+        "t": 22.918
+      },
+      {
+        "title": "Three elements",
+        "t": 68.042
+      },
+      {
+        "title": "Keep the fractions",
+        "t": 116.211
+      },
+      {
+        "title": "Your turn",
+        "t": 151.742
+      },
+      {
+        "title": "Summary",
+        "t": 184.766
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-6-b:q",
+        "t": 158.554,
+        "prompt": "Which is the formation equation of ammonia, $\\ce{NH3(g)}$?",
+        "choices": [
+          "$\\ce{N2(g) + 3H2(g) -> 2NH3(g)}$",
+          "$\\ce{N(g) + 3H(g) -> NH3(g)}$",
+          "$\\ce{NH3(g) -> 1/2 N2(g) + 3/2 H2(g)}$",
+          "$\\ce{1/2 N2(g) + 3/2 H2(g) -> NH3(g)}$"
+        ],
+        "answer": 3,
+        "working": "One mole of $\\ce{NH3(g)}$ forms from the diatomic gases $\\ce{N2(g)}$ and $\\ce{H2(g)}$: one N atom is $\\tfrac{1}{2}$ of an $\\ce{N2}$ molecule, and three H atoms are $\\tfrac{3}{2}$ of an $\\ce{H2}$ molecule."
+      }
+    ]
+  },
+  "c30-1-6-c": {
+    "lessonId": "c30-1-6",
+    "title": "Enthalpies of Formation, Part 3: The Route Through the Elements",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A detour through the elements",
+        "t": 21.738
+      },
+      {
+        "title": "Products minus reactants",
+        "t": 80.764
+      },
+      {
+        "title": "Burning methane",
+        "t": 109.521
+      },
+      {
+        "title": "Your turn",
+        "t": 153.435
+      },
+      {
+        "title": "Summary",
+        "t": 194.576
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-6-c:q",
+        "t": 166.866,
+        "prompt": "Find $\\Delta_r H^\\circ$ for $\\ce{CaCO3(s) -> CaO(s) + CO2(g)}$, using $\\Delta_f H^\\circ$ values of $-1207.6\\ \\text{kJ/mol}$ for $\\ce{CaCO3(s)}$, $-634.9\\ \\text{kJ/mol}$ for $\\ce{CaO(s)}$ and $-393.5\\ \\text{kJ/mol}$ for $\\ce{CO2(g)}$.",
+        "choices": [
+          "$+179.2\\ \\text{kJ}$",
+          "$-179.2\\ \\text{kJ}$",
+          "$-2236.0\\ \\text{kJ}$",
+          "$+2236.0\\ \\text{kJ}$"
+        ],
+        "answer": 0,
+        "working": "Products: $(-634.9) + (-393.5) = -1028.4\\ \\text{kJ}$. Reactants: $-1207.6\\ \\text{kJ}$. $\\Delta_r H^\\circ = -1028.4 - (-1207.6) = +179.2\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-6-d": {
+    "lessonId": "c30-1-6",
+    "title": "Enthalpies of Formation, Part 4: Signs, States and Working Backwards",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Smelting iron",
+        "t": 26.023
+      },
+      {
+        "title": "Three slips",
+        "t": 71.221
+      },
+      {
+        "title": "What the sign says",
+        "t": 104.816
+      },
+      {
+        "title": "Working backwards",
+        "t": 130.225
+      },
+      {
+        "title": "Your turn",
+        "t": 187.088
+      },
+      {
+        "title": "Summary",
+        "t": 225.539
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-6-d:q",
+        "t": 198.522,
+        "prompt": "For $\\ce{C2H5OH(l) + 3O2(g) -> 2CO2(g) + 3H2O(l)}$, $\\Delta_r H^\\circ = -1366.8\\ \\text{kJ}$. Using $-393.5\\ \\text{kJ/mol}$ for $\\ce{CO2(g)}$ and $-285.8\\ \\text{kJ/mol}$ for $\\ce{H2O(l)}$, find $\\Delta_f H^\\circ$ of ethanol.",
+        "choices": [
+          "$+277.6\\ \\text{kJ/mol}$",
+          "$-3011.2\\ \\text{kJ/mol}$",
+          "$-277.6\\ \\text{kJ/mol}$",
+          "$+294.0\\ \\text{kJ/mol}$"
+        ],
+        "answer": 2,
+        "working": "Products: $2(-393.5) + 3(-285.8) = -1644.4\\ \\text{kJ}$. Then $-1366.8 = -1644.4 - x$, so $x = -1644.4 + 1366.8 = -277.6\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-7": {
+    "lessonId": "c30-1-7",
+    "title": "Activation Energy and Catalysts, Part 1: Activation Energy",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The activated complex",
+        "t": 26.272
+      },
+      {
+        "title": "Why a spark is needed",
+        "t": 71.328
+      },
+      {
+        "title": "Potential energy diagrams",
+        "t": 97.687
+      },
+      {
+        "title": "Your turn",
+        "t": 141.222
+      },
+      {
+        "title": "Summary",
+        "t": 182.303
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-7:q",
+        "t": 159.137,
+        "prompt": "A potential energy diagram shows the reactants at $80\\ \\text{kJ}$, the activated complex at $230\\ \\text{kJ}$ and the products at $40\\ \\text{kJ}$. What is the activation energy of the forward reaction?",
+        "choices": [
+          "$230\\ \\text{kJ}$",
+          "$190\\ \\text{kJ}$",
+          "$40\\ \\text{kJ}$",
+          "$150\\ \\text{kJ}$"
+        ],
+        "answer": 3,
+        "working": "The forward reaction climbs from the reactants to the top of the hump: $E_a(\\text{forward}) = 230 - 80 = 150\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-7-b": {
+    "lessonId": "c30-1-7",
+    "title": "Activation Energy and Catalysts, Part 2: Reading Potential Energy Diagrams",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three quantities",
+        "t": 17.662
+      },
+      {
+        "title": "How they are linked",
+        "t": 66.629
+      },
+      {
+        "title": "An endothermic reaction",
+        "t": 97.933
+      },
+      {
+        "title": "Measure from the right level",
+        "t": 139.53
+      },
+      {
+        "title": "Your turn",
+        "t": 180.864
+      },
+      {
+        "title": "Summary",
+        "t": 226.1
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-7-b:q",
+        "t": 199.422,
+        "prompt": "A potential energy diagram shows the reactants at $60\\ \\text{kJ}$, the activated complex at $180\\ \\text{kJ}$ and the products at $140\\ \\text{kJ}$. What are $E_a(\\text{reverse})$ and $\\Delta H$?",
+        "choices": [
+          "$40\\ \\text{kJ}$ and $+80\\ \\text{kJ}$",
+          "$120\\ \\text{kJ}$ and $+80\\ \\text{kJ}$",
+          "$40\\ \\text{kJ}$ and $-80\\ \\text{kJ}$",
+          "$180\\ \\text{kJ}$ and $+80\\ \\text{kJ}$"
+        ],
+        "answer": 0,
+        "working": "$E_a(\\text{reverse}) = 180 - 140 = 40\\ \\text{kJ}$, and $\\Delta H = 140 - 60 = +80\\ \\text{kJ}$. Check: $E_a(\\text{forward}) - E_a(\\text{reverse}) = 120 - 40 = 80$."
+      }
+    ]
+  },
+  "c30-1-7-c": {
+    "lessonId": "c30-1-7",
+    "title": "Activation Energy and Catalysts, Part 3: Catalysts",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A lower barrier",
+        "t": 21.163
+      },
+      {
+        "title": "What does not change",
+        "t": 70.531
+      },
+      {
+        "title": "Why it is faster",
+        "t": 99.8
+      },
+      {
+        "title": "Catalysts at work",
+        "t": 132.16
+      },
+      {
+        "title": "Your turn",
+        "t": 173.856
+      },
+      {
+        "title": "Summary",
+        "t": 208.39
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-7-c:q",
+        "t": 185.502,
+        "prompt": "A catalyst is added to a reaction mixture at constant temperature. Which statement about the catalyst is true?",
+        "choices": [
+          "It raises the kinetic energy of the reactant particles.",
+          "It lowers the activation energy of the forward reaction only.",
+          "It leaves $\\Delta H$ for the reaction unchanged.",
+          "It is used up as the reaction takes place."
+        ],
+        "answer": 2,
+        "working": "A catalyst lowers the hump; the reactant and product levels do not move, so $\\Delta H$ is unchanged. Both activation energies fall by the same amount, and the catalyst is regenerated."
+      }
+    ]
+  },
+  "c30-1-7-d": {
+    "lessonId": "c30-1-7",
+    "title": "Activation Energy and Catalysts, Part 4: Working Without a Diagram",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sketch it",
+        "t": 19.117
+      },
+      {
+        "title": "With a catalyst",
+        "t": 65.828
+      },
+      {
+        "title": "Finding the products",
+        "t": 114.42
+      },
+      {
+        "title": "Your turn",
+        "t": 152.191
+      },
+      {
+        "title": "Summary",
+        "t": 195.467
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-7-d:q",
+        "t": 174.267,
+        "prompt": "Without a catalyst, a reaction has $E_a(\\text{forward}) = 90\\ \\text{kJ}$ and $\\Delta H = -50\\ \\text{kJ}$. A catalyst lowers $E_a(\\text{forward})$ to $35\\ \\text{kJ}$. What is $E_a(\\text{reverse})$ with the catalyst?",
+        "choices": [
+          "$140\\ \\text{kJ}$",
+          "$85\\ \\text{kJ}$",
+          "$-15\\ \\text{kJ}$",
+          "$55\\ \\text{kJ}$"
+        ],
+        "answer": 1,
+        "working": "The catalyst does not change $\\Delta H$, so $E_a(\\text{reverse}) = E_a(\\text{forward}) - \\Delta H = 35 - (-50) = 85\\ \\text{kJ}$. Without the catalyst it is $90 - (-50) = 140\\ \\text{kJ}$: both fall by $55\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-2-1": {
+    "lessonId": "c30-2-1",
+    "title": "Oxidation and Reduction, Part 1: Losing and Gaining Electrons",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Older than the electron",
+        "t": 31.616
+      },
+      {
+        "title": "Loss and gain",
+        "t": 74.617
+      },
+      {
+        "title": "The iron nail",
+        "t": 105.165
+      },
+      {
+        "title": "Follow the charges",
+        "t": 154.795
+      },
+      {
+        "title": "Your turn",
+        "t": 197.847
+      },
+      {
+        "title": "Summary",
+        "t": 236.804
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-1:q",
+        "t": 212.001,
+        "prompt": "A piece of magnesium is placed in a solution of copper(II) ions: $\\ce{Mg(s) + Cu^2+(aq) -> Mg^2+(aq) + Cu(s)}$. Which substance is **oxidised**?",
+        "choices": [
+          "$\\ce{Mg(s)}$",
+          "$\\ce{Cu^2+(aq)}$",
+          "$\\ce{Mg^2+(aq)}$",
+          "$\\ce{Cu(s)}$"
+        ],
+        "answer": 0,
+        "working": "Each magnesium atom goes from a charge of 0 to $2+$: it loses two electrons, so magnesium is oxidised. The copper(II) ions gain two electrons each: they are reduced."
+      }
+    ]
+  },
+  "c30-2-1-b": {
+    "lessonId": "c30-2-1",
+    "title": "Oxidation and Reduction, Part 2: Half-Reactions",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two halves",
+        "t": 27.273
+      },
+      {
+        "title": "Atoms and charge",
+        "t": 63.097
+      },
+      {
+        "title": "Chlorine and bromide",
+        "t": 98.11
+      },
+      {
+        "title": "Electrons on the wrong side",
+        "t": 149.74
+      },
+      {
+        "title": "Your turn",
+        "t": 174.913
+      },
+      {
+        "title": "Summary",
+        "t": 213.434
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-1-b:q",
+        "t": 187.78,
+        "prompt": "A piece of zinc is placed in copper(II) sulfate solution: $\\ce{Zn(s) + Cu^2+(aq) -> Zn^2+(aq) + Cu(s)}$. Which is the **reduction** half-reaction?",
+        "choices": [
+          "$\\ce{Cu^2+(aq) -> Cu(s) + 2e-}$",
+          "$\\ce{Zn(s) -> Zn^2+(aq) + 2e-}$",
+          "$\\ce{Cu^2+(aq) + 2e- -> Cu(s)}$",
+          "$\\ce{Zn^2+(aq) + 2e- -> Zn(s)}$"
+        ],
+        "answer": 2,
+        "working": "The copper(II) ions gain two electrons, so the electrons are reactants: $\\ce{Cu^2+(aq) + 2e- -> Cu(s)}$. The charge is 0 on both sides."
+      }
+    ]
+  },
+  "c30-2-1-c": {
+    "lessonId": "c30-2-1",
+    "title": "Oxidation and Reduction, Part 3: Oxidising and Reducing Agents",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two agents",
+        "t": 23.35
+      },
+      {
+        "title": "The iron nail",
+        "t": 49.747
+      },
+      {
+        "title": "Agents in an acid",
+        "t": 90.975
+      },
+      {
+        "title": "Not oxidised",
+        "t": 140.677
+      },
+      {
+        "title": "Your turn",
+        "t": 174.839
+      },
+      {
+        "title": "Summary",
+        "t": 218.876
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-1-c:q",
+        "t": 191.539,
+        "prompt": "Chlorine is added to a solution of iodide ions: $\\ce{Cl2(g) + 2I^-(aq) -> 2Cl^-(aq) + I2(s)}$. Which substance is the **reducing agent**?",
+        "choices": [
+          "$\\ce{Cl2(g)}$",
+          "$\\ce{I^-(aq)}$",
+          "$\\ce{Cl^-(aq)}$",
+          "$\\ce{I2(s)}$"
+        ],
+        "answer": 1,
+        "working": "Each iodide ion loses an electron as iodine forms: $\\ce{2I^-(aq) -> I2(s) + 2e-}$. The iodide ions are oxidised, so they are the reducing agent. Chlorine takes the electrons: it is the oxidising agent."
+      }
+    ]
+  },
+  "c30-2-1-d": {
+    "lessonId": "c30-2-1",
+    "title": "Oxidation and Reduction, Part 4: Balancing the Electrons",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Making them match",
+        "t": 22.047
+      },
+      {
+        "title": "Add and cancel",
+        "t": 57.223
+      },
+      {
+        "title": "Silver from copper",
+        "t": 99.341
+      },
+      {
+        "title": "Your turn",
+        "t": 144.387
+      },
+      {
+        "title": "Summary",
+        "t": 189.648
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-1-d:q",
+        "t": 163.878,
+        "prompt": "Aluminium reacts with hydrochloric acid: $\\ce{2Al(s) + 6H^+(aq) -> 2Al^3+(aq) + 3H2(g)}$. How many electrons are transferred in the equation as written?",
+        "choices": [
+          "$3$",
+          "$2$",
+          "$12$",
+          "$6$"
+        ],
+        "answer": 3,
+        "working": "Oxidation: $\\ce{Al -> Al^3+ + 3e-}$, used twice: 6 electrons lost. Reduction: $\\ce{2H+ + 2e- -> H2}$, used three times: 6 electrons gained."
+      }
+    ]
+  },
+  "c30-2-2": {
+    "lessonId": "c30-2-2",
+    "title": "Oxidation Numbers, Part 1: Electron Bookkeeping",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Shared, but not equally",
+        "t": 29.968
+      },
+      {
+        "title": "The rules",
+        "t": 89.889
+      },
+      {
+        "title": "Back to methane",
+        "t": 158.412
+      },
+      {
+        "title": "Your turn",
+        "t": 184.819
+      },
+      {
+        "title": "Summary",
+        "t": 216.195
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-2:q",
+        "t": 193.453,
+        "prompt": "What is the oxidation number of nitrogen in ammonia, $\\ce{NH3}$?",
+        "choices": [
+          "$+3$",
+          "$-1$",
+          "$0$",
+          "$-3$"
+        ],
+        "answer": 3,
+        "working": "Hydrogen is $+1$, so the three hydrogens make $+3$. The total is 0: $x + 3(+1) = 0$, so nitrogen is $-3$."
+      }
+    ]
+  },
+  "c30-2-2-b": {
+    "lessonId": "c30-2-2",
+    "title": "Oxidation Numbers, Part 2: Compounds and Polyatomic Ions",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sulfuric acid",
+        "t": 21.629
+      },
+      {
+        "title": "Two elements left",
+        "t": 57.399
+      },
+      {
+        "title": "A polyatomic ion",
+        "t": 95.971
+      },
+      {
+        "title": "Adding up to zero in an ion",
+        "t": 136.836
+      },
+      {
+        "title": "Your turn",
+        "t": 162.181
+      },
+      {
+        "title": "Summary",
+        "t": 195.63
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-2-b:q",
+        "t": 172.083,
+        "prompt": "What is the oxidation number of nitrogen in the nitrate ion, $\\ce{NO3^-}$?",
+        "choices": [
+          "$+5$",
+          "$+6$",
+          "$-1$",
+          "$+7$"
+        ],
+        "answer": 0,
+        "working": "Oxygen is $-2$. The sum is the charge of the ion: $x + 3(-2) = -1$, so $x - 6 = -1$ and nitrogen is $+5$."
+      }
+    ]
+  },
+  "c30-2-2-c": {
+    "lessonId": "c30-2-2",
+    "title": "Oxidation Numbers, Part 3: Peroxides, Hydrides and Averages",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Peroxides",
+        "t": 23.702
+      },
+      {
+        "title": "Metal hydrides and fluorine",
+        "t": 66.114
+      },
+      {
+        "title": "Averages",
+        "t": 105.62
+      },
+      {
+        "title": "Your turn",
+        "t": 151.255
+      },
+      {
+        "title": "Summary",
+        "t": 184.805
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-2-c:q",
+        "t": 160.715,
+        "prompt": "What is the oxidation number of hydrogen in calcium hydride, $\\ce{CaH2}$?",
+        "choices": [
+          "$+1$",
+          "$-2$",
+          "$-1$",
+          "$+2$"
+        ],
+        "answer": 2,
+        "working": "Calcium is a group 2 metal, $+2$. The total is 0: $+2 + 2x = 0$, so each hydrogen is $-1$. It is a metal hydride."
+      }
+    ]
+  },
+  "c30-2-2-d": {
+    "lessonId": "c30-2-2",
+    "title": "Oxidation Numbers, Part 4: Oxidation Numbers and Redox",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Up and down",
+        "t": 23.007
+      },
+      {
+        "title": "Burning methane",
+        "t": 53.183
+      },
+      {
+        "title": "Is it redox?",
+        "t": 93.626
+      },
+      {
+        "title": "Finding the agents",
+        "t": 134.536
+      },
+      {
+        "title": "Your turn",
+        "t": 192.335
+      },
+      {
+        "title": "Summary",
+        "t": 235.429
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-2-d:q",
+        "t": 207.919,
+        "prompt": "In the reaction $\\ce{Fe2O3 + 3CO -> 2Fe + 3CO2}$, which reactant is the **oxidising agent**?",
+        "choices": [
+          "$\\ce{CO}$",
+          "$\\ce{Fe2O3}$",
+          "$\\ce{Fe}$",
+          "$\\ce{CO2}$"
+        ],
+        "answer": 1,
+        "working": "Iron goes from $+3$ in $\\ce{Fe2O3}$ to $0$: it is reduced, so $\\ce{Fe2O3}$, the reactant containing it, is the oxidising agent. Carbon goes from $+2$ in $\\ce{CO}$ to $+4$ in $\\ce{CO2}$, so $\\ce{CO}$ is the reducing agent."
+      }
+    ]
+  },
+  "c30-2-3": {
+    "lessonId": "c30-2-3",
+    "title": "Predicting Redox Reactions, Part 1: Comparing Oxidising Agents",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two wires",
+        "t": 31.985
+      },
+      {
+        "title": "Putting them in order",
+        "t": 78.804
+      },
+      {
+        "title": "Spontaneous",
+        "t": 122.533
+      },
+      {
+        "title": "Your turn",
+        "t": 144.722
+      },
+      {
+        "title": "Summary",
+        "t": 186.482
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-3:q",
+        "t": 161.502,
+        "prompt": "Nickel placed in copper(II) nitrate solution gets a coat of copper. Copper placed in nickel(II) nitrate solution does not change. Which is the **stronger oxidising agent**?",
+        "choices": [
+          "$\\ce{Ni^2+}$",
+          "$\\ce{Cu^2+}$",
+          "$\\ce{Ni}$",
+          "$\\ce{Cu}$"
+        ],
+        "answer": 1,
+        "working": "Copper(II) ions take electrons from nickel atoms, but nickel(II) ions cannot take electrons from copper atoms. So $\\ce{Cu^2+}$ is the stronger oxidising agent, and $\\ce{Ni}$ the stronger reducing agent."
+      }
+    ]
+  },
+  "c30-2-3-b": {
+    "lessonId": "c30-2-3",
+    "title": "Predicting Redox Reactions, Part 2: The Redox Table",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the table",
+        "t": 19.508
+      },
+      {
+        "title": "Opposite directions",
+        "t": 72.13
+      },
+      {
+        "title": "The strongest oxidising agent",
+        "t": 103.164
+      },
+      {
+        "title": "Your turn",
+        "t": 144.076
+      },
+      {
+        "title": "Summary",
+        "t": 182.646
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-3-b:q",
+        "t": 156.382,
+        "prompt": "Use these reduction half-reactions: $\\ce{Ag+ + e- -> Ag}$, $+0.80$ V; $\\ce{Cu^2+ + 2e- -> Cu}$, $+0.34$ V; $\\ce{Zn^2+ + 2e- -> Zn}$, $-0.76$ V; $\\ce{Mg^2+ + 2e- -> Mg}$, $-2.37$ V. Which is the strongest **reducing agent**?",
+        "choices": [
+          "$\\ce{Ag}$",
+          "$\\ce{Cu}$",
+          "$\\ce{Zn}$",
+          "$\\ce{Mg}$"
+        ],
+        "answer": 3,
+        "working": "Reducing agents are on the right of the half-reactions, and the strongest is the lowest one: $\\ce{Mg}$, at $-2.37$ V."
+      }
+    ]
+  },
+  "c30-2-3-c": {
+    "lessonId": "c30-2-3",
+    "title": "Predicting Redox Reactions, Part 3: Spontaneous or Not",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Copper and silver ions",
+        "t": 26.521
+      },
+      {
+        "title": "Combining the halves",
+        "t": 67.921
+      },
+      {
+        "title": "Copper in hydrochloric acid",
+        "t": 100.004
+      },
+      {
+        "title": "Two oxidising agents",
+        "t": 143.166
+      },
+      {
+        "title": "Your turn",
+        "t": 165.615
+      },
+      {
+        "title": "Summary",
+        "t": 206.131
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-3-c:q",
+        "t": 177.376,
+        "prompt": "Which metal reacts spontaneously with iron(II) sulfate solution? Use: $\\ce{Ag+ + e- -> Ag}$, $+0.80$ V; $\\ce{Cu^2+ + 2e- -> Cu}$, $+0.34$ V; $\\ce{Ni^2+ + 2e- -> Ni}$, $-0.26$ V; $\\ce{Fe^2+ + 2e- -> Fe}$, $-0.45$ V; $\\ce{Zn^2+ + 2e- -> Zn}$, $-0.76$ V.",
+        "choices": [
+          "Zinc",
+          "Copper",
+          "Silver",
+          "Nickel"
+        ],
+        "answer": 0,
+        "working": "The oxidising agent is $\\ce{Fe^2+}$, at $-0.45$ V. Only a metal below it is oxidised by it: zinc, at $-0.76$ V. $\\ce{Zn(s) + Fe^2+(aq) -> Zn^2+(aq) + Fe(s)}$."
+      }
+    ]
+  },
+  "c30-2-3-d": {
+    "lessonId": "c30-2-3",
+    "title": "Predicting Redox Reactions, Part 4: Predicting Reactions in Mixtures",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four steps",
+        "t": 17.053
+      },
+      {
+        "title": "A strip of nickel",
+        "t": 60.126
+      },
+      {
+        "title": "Both sides of the table",
+        "t": 121.324
+      },
+      {
+        "title": "Your turn",
+        "t": 177.047
+      },
+      {
+        "title": "Summary",
+        "t": 216.703
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-3-d:q",
+        "t": 189.961,
+        "prompt": "A beaker contains $\\ce{Mg^2+(aq)}$, $\\ce{Zn(s)}$, $\\ce{Cu^2+(aq)}$ and $\\ce{Ag(s)}$. Use: $\\ce{Ag+}$, $+0.80$ V; $\\ce{Cu^2+}$, $+0.34$ V; $\\ce{Zn^2+}$, $-0.76$ V; $\\ce{Mg^2+}$, $-2.37$ V. Which reaction occurs spontaneously?",
+        "choices": [
+          "$\\ce{2Ag + Cu^2+ -> 2Ag+ + Cu}$",
+          "$\\ce{Zn + Mg^2+ -> Zn^2+ + Mg}$",
+          "$\\ce{Zn + Cu^2+ -> Zn^2+ + Cu}$",
+          "$\\ce{2Ag + Mg^2+ -> 2Ag+ + Mg}$"
+        ],
+        "answer": 2,
+        "working": "Oxidising agents present: $\\ce{Cu^2+}$ ($+0.34$ V) and $\\ce{Mg^2+}$ ($-2.37$ V); the strongest is $\\ce{Cu^2+}$. Reducing agents: $\\ce{Ag}$ ($+0.80$ V) and $\\ce{Zn}$ ($-0.76$ V); the strongest is $\\ce{Zn}$. $\\ce{Cu^2+}$ is above $\\ce{Zn}$, so they react."
+      }
+    ]
+  },
+  "c30-2-4": {
+    "lessonId": "c30-2-4",
+    "title": "Balancing Redox Equations, Part 1: Balancing a Half-Reaction",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The breath tester",
+        "t": 28.307
+      },
+      {
+        "title": "Six steps",
+        "t": 45.963
+      },
+      {
+        "title": "Permanganate",
+        "t": 97.899
+      },
+      {
+        "title": "A quick check",
+        "t": 144.383
+      },
+      {
+        "title": "Your turn",
+        "t": 165.167
+      },
+      {
+        "title": "Summary",
+        "t": 206.42
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-4:q",
+        "t": 177.043,
+        "prompt": "Balance $\\ce{NO3- -> NO}$ in acidic solution: $\\ce{NO3-} + \\square\\,\\ce{H+} + \\square\\,\\ce{e-} \\longrightarrow \\ce{NO} + \\square\\,\\ce{H2O}$. Which numbers go in the boxes, in order?",
+        "choices": [
+          "$2,\\ 1,\\ 1$",
+          "$4,\\ 5,\\ 2$",
+          "$4,\\ 3,\\ 2$",
+          "$6,\\ 3,\\ 3$"
+        ],
+        "answer": 2,
+        "working": "Oxygen: add $\\ce{2H2O}$ to the right. Hydrogen: add $\\ce{4H+}$ to the left. Charge: $-1 + 4 = +3$ on the left and 0 on the right, so add 3 electrons to the left. Check: nitrogen goes from $+5$ to $+2$, a drop of 3."
+      }
+    ]
+  },
+  "c30-2-4-b": {
+    "lessonId": "c30-2-4",
+    "title": "Balancing Redox Equations, Part 2: Dichromate and an Oxidation",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dichromate",
+        "t": 18.935
+      },
+      {
+        "title": "An oxidation",
+        "t": 65.709
+      },
+      {
+        "title": "Only electrons fix the charge",
+        "t": 112.978
+      },
+      {
+        "title": "Your turn",
+        "t": 142.461
+      },
+      {
+        "title": "Summary",
+        "t": 181.136
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-4-b:q",
+        "t": 153.665,
+        "prompt": "Balance $\\ce{ClO3- -> Cl-}$ in acidic solution: $\\ce{ClO3-} + \\square\\,\\ce{H+} + \\square\\,\\ce{e-} \\longrightarrow \\ce{Cl-} + \\square\\,\\ce{H2O}$. Which numbers go in the boxes, in order?",
+        "choices": [
+          "$6,\\ 4,\\ 3$",
+          "$6,\\ 6,\\ 3$",
+          "$3,\\ 6,\\ 3$",
+          "$6,\\ 6,\\ 6$"
+        ],
+        "answer": 1,
+        "working": "Oxygen: add $\\ce{3H2O}$ to the right. Hydrogen: add $\\ce{6H+}$ to the left. Charge: $-1 + 6 = +5$ on the left and $-1$ on the right, so add 6 electrons to the left. Check: chlorine goes from $+5$ to $-1$, a drop of 6."
+      }
+    ]
+  },
+  "c30-2-4-c": {
+    "lessonId": "c30-2-4",
+    "title": "Balancing Redox Equations, Part 3: Combining Half-Reactions",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four more steps",
+        "t": 21.641
+      },
+      {
+        "title": "Permanganate and iron(II)",
+        "t": 51.255
+      },
+      {
+        "title": "Multiply the whole half-reaction",
+        "t": 106.546
+      },
+      {
+        "title": "Your turn",
+        "t": 143.202
+      },
+      {
+        "title": "Summary",
+        "t": 184.763
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-4-c:q",
+        "t": 157.963,
+        "prompt": "Combine $\\ce{Sn^2+ -> Sn^4+ + 2e-}$ and $\\ce{Fe^3+ + e- -> Fe^2+}$: $\\square\\,\\ce{Sn^2+} + \\square\\,\\ce{Fe^3+} \\longrightarrow \\square\\,\\ce{Sn^4+} + \\square\\,\\ce{Fe^2+}$. Which coefficients balance it, in order?",
+        "choices": [
+          "$1,\\ 1,\\ 1,\\ 1$",
+          "$2,\\ 1,\\ 2,\\ 1$",
+          "$2,\\ 2,\\ 2,\\ 2$",
+          "$1,\\ 2,\\ 1,\\ 2$"
+        ],
+        "answer": 3,
+        "working": "The oxidation gives 2 electrons and the reduction takes 1, so multiply the reduction by 2: $\\ce{2Fe^3+ + 2e- -> 2Fe^2+}$. Add and cancel the electrons: $\\ce{Sn^2+ + 2Fe^3+ -> Sn^4+ + 2Fe^2+}$. Charge: $2 + 6 = +8$ on the left and $4 + 4 = +8$ on the right."
+      }
+    ]
+  },
+  "c30-2-4-d": {
+    "lessonId": "c30-2-4",
+    "title": "Balancing Redox Equations, Part 4: Balancing the Breath Tester",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two half-reactions",
+        "t": 21.896
+      },
+      {
+        "title": "Match the electrons",
+        "t": 66.767
+      },
+      {
+        "title": "Cancel what appears twice",
+        "t": 103.455
+      },
+      {
+        "title": "Basic solutions",
+        "t": 151.614
+      },
+      {
+        "title": "Your turn",
+        "t": 177.109
+      },
+      {
+        "title": "Summary",
+        "t": 222.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-4-d:q",
+        "t": 195.262,
+        "prompt": "Combine $\\ce{MnO4- + 8H+ + 5e- -> Mn^2+ + 4H2O}$ and $\\ce{SO3^2- + H2O -> SO4^2- + 2H+ + 2e-}$. In the balanced equation, how many $\\ce{H+}$ and $\\ce{H2O}$ are left, and on which side?",
+        "choices": [
+          "$6\\ \\ce{H+}$ on the left, $3\\ \\ce{H2O}$ on the right",
+          "$16\\ \\ce{H+}$ on the left, $8\\ \\ce{H2O}$ on the right",
+          "$6\\ \\ce{H+}$ on the right, $3\\ \\ce{H2O}$ on the left",
+          "$2\\ \\ce{H+}$ on the right, $1\\ \\ce{H2O}$ on the left"
+        ],
+        "answer": 0,
+        "working": "The least common multiple of 5 and 2 is 10: reduction $\\times 2$, oxidation $\\times 5$. Then $16 - 10 = 6$ $\\ce{H+}$ on the left and $8 - 5 = 3$ $\\ce{H2O}$ on the right: $\\ce{2MnO4- + 5SO3^2- + 6H+ -> 2Mn^2+ + 5SO4^2- + 3H2O}$."
+      }
+    ]
+  },
+  "c30-2-5": {
+    "lessonId": "c30-2-5",
+    "title": "Redox Titrations, Part 1: Titrating with Permanganate",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Redox titrations",
+        "t": 37.93
+      },
+      {
+        "title": "Acidified permanganate",
+        "t": 86.37
+      },
+      {
+        "title": "Its own indicator",
+        "t": 117.871
+      },
+      {
+        "title": "Dichromate needs help",
+        "t": 172.355
+      },
+      {
+        "title": "Your turn",
+        "t": 203.902
+      },
+      {
+        "title": "Summary",
+        "t": 240.871
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-5:q",
+        "t": 217.44,
+        "prompt": "Acidified potassium permanganate is added from a burette to a colourless sample of hydrogen peroxide. What marks the endpoint?",
+        "choices": [
+          "The solution turns from orange to green.",
+          "The purple solution in the flask suddenly turns colourless.",
+          "The first pale pink colour that lasts after swirling.",
+          "A few drops of indicator turn violet."
+        ],
+        "answer": 2,
+        "working": "While any hydrogen peroxide is left, each drop of purple permanganate reacts and becomes almost colourless $\\ce{Mn^2+}$. The first drop in excess stays, giving a lasting pale pink."
+      }
+    ]
+  },
+  "c30-2-5-b": {
+    "lessonId": "c30-2-5",
+    "title": "Redox Titrations, Part 2: From Titration Data to a Concentration",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 25.297
+      },
+      {
+        "title": "Iron(II) ions",
+        "t": 60.313
+      },
+      {
+        "title": "The ratio upside down",
+        "t": 127.106
+      },
+      {
+        "title": "Hydrogen peroxide",
+        "t": 164.056
+      },
+      {
+        "title": "Your turn",
+        "t": 210.7
+      },
+      {
+        "title": "Summary",
+        "t": 260.182
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-5-b:q",
+        "t": 233.304,
+        "prompt": "A $25.00\\ \\text{mL}$ sample of oxalic acid needs $21.60\\ \\text{mL}$ of $0.0200\\ \\text{mol/L}$ $\\ce{KMnO4}$: $\\ce{2MnO4^- + 5H2C2O4 + 6H+ -> 2Mn^2+ + 10CO2 + 8H2O}$. What is the concentration of the oxalic acid?",
+        "choices": [
+          "$0.0432\\ \\text{mol/L}$",
+          "$0.00691\\ \\text{mol/L}$",
+          "$0.0173\\ \\text{mol/L}$",
+          "$0.0864\\ \\text{mol/L}$"
+        ],
+        "answer": 0,
+        "working": "$n(\\ce{H2C2O4}) = 0.0200 \\times 0.02160 \\times \\tfrac{5}{2} = 1.080 \\times 10^{-3}$ mol, and $1.080 \\times 10^{-3} \\div 0.02500 = 0.0432$ mol/L."
+      }
+    ]
+  },
+  "c30-2-5-c": {
+    "lessonId": "c30-2-5",
+    "title": "Redox Titrations, Part 3: Several Trials and a Solid Sample",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Several trials",
+        "t": 22.458
+      },
+      {
+        "title": "Percent of iron",
+        "t": 70.555
+      },
+      {
+        "title": "Diluted samples",
+        "t": 118.902
+      },
+      {
+        "title": "Your turn",
+        "t": 163.818
+      },
+      {
+        "title": "Summary",
+        "t": 215.582
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-5-c:q",
+        "t": 190.218,
+        "prompt": "A $1.200\\ \\text{g}$ iron tablet is dissolved, and all its iron is turned into $\\ce{Fe^2+}$. It needs an average of $21.50\\ \\text{mL}$ of $0.0200\\ \\text{mol/L}$ $\\ce{KMnO4}$: $\\ce{MnO4^- + 5Fe^2+ + 8H+ -> Mn^2+ + 5Fe^3+ + 4H2O}$. What is the percent by mass of iron (Fe $55.85\\ \\text{g/mol}$)?",
+        "choices": [
+          "$2.0\\%$",
+          "$0.4\\%$",
+          "$0.18\\%$",
+          "$10.0\\%$"
+        ],
+        "answer": 3,
+        "working": "$n(\\ce{Fe}) = 5 \\times 0.0200 \\times 0.02150 = 2.150 \\times 10^{-3}$ mol, so $m = 0.1201$ g, and $0.1201 \\div 1.200 \\times 100\\% = 10.0\\%$."
+      }
+    ]
+  },
+  "c30-2-6": {
+    "lessonId": "c30-2-6",
+    "title": "Voltaic Cells, Part 1: The Parts of a Voltaic Cell",
+    "duration": 270,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Through a wire",
+        "t": 25.533
+      },
+      {
+        "title": "Two half-cells",
+        "t": 65.944
+      },
+      {
+        "title": "Anode and cathode",
+        "t": 126.52
+      },
+      {
+        "title": "Which electrode is which?",
+        "t": 148.899
+      },
+      {
+        "title": "Your turn",
+        "t": 191.532
+      },
+      {
+        "title": "Summary",
+        "t": 235.557
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-6:q",
+        "t": 213.979,
+        "prompt": "A voltaic cell has a nickel electrode in $\\ce{Ni(NO3)2(aq)}$ and a copper electrode in $\\ce{Cu(NO3)2(aq)}$. Use $\\ce{Cu^2+ + 2e- -> Cu}$, $E^\\circ = +0.34\\ \\text{V}$, and $\\ce{Ni^2+ + 2e- -> Ni}$, $E^\\circ = -0.26\\ \\text{V}$. Which electrode is the anode?",
+        "choices": [
+          "Copper, where $\\ce{Cu^2+}$ is reduced",
+          "Nickel, where $\\ce{Ni}$ is oxidised",
+          "Copper, where $\\ce{Cu}$ is oxidised",
+          "Nickel, where $\\ce{Ni^2+}$ is reduced"
+        ],
+        "answer": 1,
+        "working": "Nickel is lower in the table, so it is the stronger reducing agent and is oxidised at the anode: $\\ce{Ni -> Ni^2+ + 2e-}$."
+      }
+    ]
+  },
+  "c30-2-6-b": {
+    "lessonId": "c30-2-6",
+    "title": "Voltaic Cells, Part 2: What Moves Where",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrons in the wire",
+        "t": 20.721
+      },
+      {
+        "title": "The electrodes change",
+        "t": 47.043
+      },
+      {
+        "title": "Ions in the salt bridge",
+        "t": 77.982
+      },
+      {
+        "title": "No electrons in the bridge",
+        "t": 111.665
+      },
+      {
+        "title": "A nickel–silver cell",
+        "t": 136.474
+      },
+      {
+        "title": "Your turn",
+        "t": 193.321
+      },
+      {
+        "title": "Summary",
+        "t": 237.724
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-6-b:q",
+        "t": 212.81,
+        "prompt": "A voltaic cell has a zinc electrode in $\\ce{Zn(NO3)2(aq)}$ and a silver electrode in $\\ce{AgNO3(aq)}$, with a $\\ce{KNO3(aq)}$ salt bridge. Use $\\ce{Ag+ + e- -> Ag}$, $E^\\circ = +0.80\\ \\text{V}$, and $\\ce{Zn^2+ + 2e- -> Zn}$, $E^\\circ = -0.76\\ \\text{V}$. Which statement is true as the cell runs?",
+        "choices": [
+          "The silver electrode gains mass.",
+          "Electrons flow through the salt bridge.",
+          "Nitrate ions move toward the silver half-cell.",
+          "The zinc electrode gains mass."
+        ],
+        "answer": 0,
+        "working": "Silver ions are reduced to silver metal on the silver electrode, the cathode, so it gains mass. Zinc is oxidised at the anode, and nitrate ions move toward it."
+      }
+    ]
+  },
+  "c30-2-6-c": {
+    "lessonId": "c30-2-6",
+    "title": "Voltaic Cells, Part 3: Inert Electrodes and Cell Notation",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inert electrodes",
+        "t": 17.46
+      },
+      {
+        "title": "Cell notation",
+        "t": 59.441
+      },
+      {
+        "title": "Reading a cell",
+        "t": 103.667
+      },
+      {
+        "title": "With an inert electrode",
+        "t": 146.79
+      },
+      {
+        "title": "Your turn",
+        "t": 192.723
+      },
+      {
+        "title": "Summary",
+        "t": 235.657
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-6-c:q",
+        "t": 207.571,
+        "prompt": "A voltaic cell is written $\\ce{Al(s)} \\mid \\ce{Al^3+(aq)} \\parallel \\ce{Ni^2+(aq)} \\mid \\ce{Ni(s)}$. Which is the balanced cell reaction?",
+        "choices": [
+          "$\\ce{Al + Ni^2+ -> Al^3+ + Ni}$",
+          "$\\ce{3Ni + 2Al^3+ -> 3Ni^2+ + 2Al}$",
+          "$\\ce{2Al + 3Ni^2+ -> 2Al^3+ + 3Ni}$",
+          "$\\ce{3Al + 2Ni^2+ -> 3Al^3+ + 2Ni}$"
+        ],
+        "answer": 2,
+        "working": "Anode (left): $\\ce{Al -> Al^3+ + 3e-}$, times 2. Cathode (right): $\\ce{Ni^2+ + 2e- -> Ni}$, times 3. Six electrons are transferred."
+      }
+    ]
+  },
+  "c30-2-7": {
+    "lessonId": "c30-2-7",
+    "title": "Standard Cell Potentials, Part 1: The Standard Hydrogen Electrode",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A reference half-cell",
+        "t": 36.087
+      },
+      {
+        "title": "Standard reduction potentials",
+        "t": 80.926
+      },
+      {
+        "title": "Measuring zinc",
+        "t": 115.013
+      },
+      {
+        "title": "Building the table",
+        "t": 153.721
+      },
+      {
+        "title": "Your turn",
+        "t": 196.785
+      },
+      {
+        "title": "Summary",
+        "t": 242.829
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-7:q",
+        "t": 215.525,
+        "prompt": "A standard nickel half-cell is joined to a standard hydrogen electrode. Nickel is oxidised, and the voltmeter reads $0.26\\ \\text{V}$. What is the standard reduction potential of $\\ce{Ni^2+(aq) + 2e- -> Ni(s)}$?",
+        "choices": [
+          "$+0.26\\ \\text{V}$",
+          "$-0.26\\ \\text{V}$",
+          "$0.00\\ \\text{V}$",
+          "$-0.52\\ \\text{V}$"
+        ],
+        "answer": 1,
+        "working": "Nickel gives its electrons to hydrogen ions, so nickel(II) ions are weaker oxidising agents than $\\ce{H+}$, and the potential is negative: $-0.26\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-7-b": {
+    "lessonId": "c30-2-7",
+    "title": "Standard Cell Potentials, Part 2: Calculating a Cell Potential",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cathode minus anode",
+        "t": 17.467
+      },
+      {
+        "title": "The zinc–copper cell",
+        "t": 48.368
+      },
+      {
+        "title": "Which is the cathode?",
+        "t": 84.871
+      },
+      {
+        "title": "Two mistakes",
+        "t": 136.896
+      },
+      {
+        "title": "Your turn",
+        "t": 185.293
+      },
+      {
+        "title": "Summary",
+        "t": 229.583
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-7-b:q",
+        "t": 202.501,
+        "prompt": "A standard voltaic cell is made from a nickel half-cell, $\\ce{Ni^2+ + 2e- -> Ni}$, $E^\\circ = -0.26\\ \\text{V}$, and a silver half-cell, $\\ce{Ag+ + e- -> Ag}$, $E^\\circ = +0.80\\ \\text{V}$. What is its standard cell potential?",
+        "choices": [
+          "$+0.54\\ \\text{V}$",
+          "$+1.86\\ \\text{V}$",
+          "$-1.06\\ \\text{V}$",
+          "$+1.06\\ \\text{V}$"
+        ],
+        "answer": 3,
+        "working": "Silver is higher in the table, so it is the cathode: $E^\\circ_\\text{cell} = +0.80 - ({-0.26}) = +1.06\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-7-c": {
+    "lessonId": "c30-2-7",
+    "title": "Standard Cell Potentials, Part 3: Finding an Unknown Potential",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An unknown metal",
+        "t": 20.938
+      },
+      {
+        "title": "Solve for the unknown",
+        "t": 54.378
+      },
+      {
+        "title": "When the unknown is the cathode",
+        "t": 96.01
+      },
+      {
+        "title": "Your turn",
+        "t": 141.632
+      },
+      {
+        "title": "Summary",
+        "t": 192.217
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-7-c:q",
+        "t": 163.251,
+        "prompt": "A standard copper half-cell, $\\ce{Cu^2+ + 2e- -> Cu}$, $E^\\circ = +0.34\\ \\text{V}$, is joined to a half-cell of metal M in $\\ce{M^2+(aq)}$. The cell potential is $0.79\\ \\text{V}$, and electrons flow from M to copper. What is $E^\\circ$ for $\\ce{M^2+ + 2e- -> M}$?",
+        "choices": [
+          "$-0.45\\ \\text{V}$",
+          "$+1.13\\ \\text{V}$",
+          "$+0.45\\ \\text{V}$",
+          "$-1.13\\ \\text{V}$"
+        ],
+        "answer": 0,
+        "working": "Electrons leave M, so M is the anode: $0.79 = +0.34 - E^\\circ_\\text{M}$, so $E^\\circ_\\text{M} = 0.34 - 0.79 = -0.45\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-7-d": {
+    "lessonId": "c30-2-7",
+    "title": "Standard Cell Potentials, Part 4: Potentials and Spontaneity",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Any reaction as a cell",
+        "t": 22.475
+      },
+      {
+        "title": "Copper in acid",
+        "t": 71.976
+      },
+      {
+        "title": "Permanganate and chloride",
+        "t": 110.303
+      },
+      {
+        "title": "Not standard conditions",
+        "t": 151.556
+      },
+      {
+        "title": "Your turn",
+        "t": 172.955
+      },
+      {
+        "title": "Summary",
+        "t": 215.109
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-7-d:q",
+        "t": 188.081,
+        "prompt": "Consider $\\ce{2Ag(s) + Cu^2+(aq) -> 2Ag+(aq) + Cu(s)}$. Use $E^\\circ = +0.80\\ \\text{V}$ for $\\ce{Ag+/Ag}$ and $+0.34\\ \\text{V}$ for $\\ce{Cu^2+/Cu}$. What is $E^\\circ$ for the reaction, and is it spontaneous?",
+        "choices": [
+          "$E^\\circ = +0.46\\ \\text{V}$, spontaneous",
+          "$E^\\circ = +0.46\\ \\text{V}$, non-spontaneous",
+          "$E^\\circ = -0.46\\ \\text{V}$, non-spontaneous",
+          "$E^\\circ = -0.46\\ \\text{V}$, spontaneous"
+        ],
+        "answer": 2,
+        "working": "Copper(II) ions are reduced (cathode) and silver is oxidised (anode): $E^\\circ = +0.34 - (+0.80) = -0.46\\ \\text{V}$, so the reaction is non-spontaneous."
+      }
+    ]
+  },
+  "c30-2-8": {
+    "lessonId": "c30-2-8",
+    "title": "Electrolytic Cells and Faraday's Law, Part 1: Electrolytic Cells and Molten Salts",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrolytic cells",
+        "t": 44.759
+      },
+      {
+        "title": "Voltaic and electrolytic",
+        "t": 81.936
+      },
+      {
+        "title": "Molten sodium chloride",
+        "t": 119.218
+      },
+      {
+        "title": "Minimum voltage",
+        "t": 166.562
+      },
+      {
+        "title": "Your turn",
+        "t": 190.904
+      },
+      {
+        "title": "Summary",
+        "t": 239.499
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-8:q",
+        "t": 206.963,
+        "prompt": "Molten potassium bromide, $\\ce{KBr(l)}$, is electrolysed with inert electrodes. Use $\\ce{K+ + e- -> K}$, $E^\\circ = -2.93\\ \\text{V}$, and $\\ce{Br2 + 2e- -> 2Br-}$, $E^\\circ = +1.07\\ \\text{V}$. What forms at the cathode and at the anode, and what is the minimum voltage?",
+        "choices": [
+          "Bromine and potassium; $4.00\\ \\text{V}$",
+          "Potassium and bromine; $4.00\\ \\text{V}$",
+          "Potassium and bromine; $1.86\\ \\text{V}$",
+          "Hydrogen and bromine; $1.90\\ \\text{V}$"
+        ],
+        "answer": 1,
+        "working": "Cathode: $\\ce{K+ + e- -> K}$. Anode: $\\ce{2Br- -> Br2 + 2e-}$. $E^\\circ_\\text{cell} = -2.93 - (+1.07) = -4.00\\ \\text{V}$, so at least $4.00\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-8-b": {
+    "lessonId": "c30-2-8",
+    "title": "Electrolytic Cells and Faraday's Law, Part 2: Electrolysing Solutions",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Water competes",
+        "t": 19.424
+      },
+      {
+        "title": "Potassium iodide solution",
+        "t": 69.874
+      },
+      {
+        "title": "Copper(II) sulfate solution",
+        "t": 133.546
+      },
+      {
+        "title": "Chloride solutions",
+        "t": 177.112
+      },
+      {
+        "title": "Your turn",
+        "t": 210.2
+      },
+      {
+        "title": "Summary",
+        "t": 254.174
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-8-b:q",
+        "t": 226.285,
+        "prompt": "Aqueous nickel(II) iodide is electrolysed with inert electrodes. Use $\\ce{Ni^2+ + 2e- -> Ni}$, $-0.26\\ \\text{V}$; $\\ce{I2 + 2e- -> 2I-}$, $+0.54\\ \\text{V}$; and water, $-0.83\\ \\text{V}$ and $+1.23\\ \\text{V}$. What forms at the cathode and at the anode, and what is the minimum voltage?",
+        "choices": [
+          "Hydrogen and iodine; $1.37\\ \\text{V}$",
+          "Nickel and oxygen; $1.49\\ \\text{V}$",
+          "Hydrogen and oxygen; $2.06\\ \\text{V}$",
+          "Nickel and iodine; $0.80\\ \\text{V}$"
+        ],
+        "answer": 3,
+        "working": "Cathode: $\\ce{Ni^2+}$ ($-0.26$ V) beats water ($-0.83$ V). Anode: $\\ce{I-}$ ($+0.54$ V) beats water ($+1.23$ V). $E^\\circ_\\text{cell} = -0.26 - (+0.54) = -0.80\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-8-c": {
+    "lessonId": "c30-2-8",
+    "title": "Electrolytic Cells and Faraday's Law, Part 3: Electroplating and Faraday's Law",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electroplating",
+        "t": 21.9
+      },
+      {
+        "title": "Charge and the Faraday constant",
+        "t": 67.924
+      },
+      {
+        "title": "Moles of electrons",
+        "t": 108.773
+      },
+      {
+        "title": "Your turn",
+        "t": 145.915
+      },
+      {
+        "title": "Summary",
+        "t": 183.894
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-8-c:q",
+        "t": 160.963,
+        "prompt": "A current of $1.50\\ \\text{A}$ flows through an electrolytic cell for $20.0\\ \\text{min}$. Using $F = 9.65 \\times 10^4\\ \\text{C/mol}$, what amount of electrons passes through the cell?",
+        "choices": [
+          "$0.0187\\ \\text{mol}$",
+          "$3.11 \\times 10^{-4}\\ \\text{mol}$",
+          "$0.0373\\ \\text{mol}$",
+          "$1.80 \\times 10^{3}\\ \\text{mol}$"
+        ],
+        "answer": 0,
+        "working": "$t = 20.0 \\times 60 = 1200\\ \\text{s}$, $Q = 1.50 \\times 1200 = 1800\\ \\text{C}$, and $n_{e^-} = 1800 \\div (9.65 \\times 10^4) = 0.0187\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c30-2-8-d": {
+    "lessonId": "c30-2-8",
+    "title": "Electrolytic Cells and Faraday's Law, Part 4: Mass and Time from Faraday's Law",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From electrons to mass",
+        "t": 18.666
+      },
+      {
+        "title": "Mass of copper",
+        "t": 49.763
+      },
+      {
+        "title": "Electrons per atom",
+        "t": 102.085
+      },
+      {
+        "title": "Time to silver-plate",
+        "t": 126.447
+      },
+      {
+        "title": "Your turn",
+        "t": 181.203
+      },
+      {
+        "title": "Summary",
+        "t": 225.173
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-8-d:q",
+        "t": 198.708,
+        "prompt": "A steel part is nickel-plated with a current of $2.00\\ \\text{A}$ for $40.0\\ \\text{min}$: $\\ce{Ni^2+ + 2e- -> Ni}$. Using Ni $58.69\\ \\text{g/mol}$ and $F = 9.65 \\times 10^4\\ \\text{C/mol}$, what mass of nickel is deposited?",
+        "choices": [
+          "$2.92\\ \\text{g}$",
+          "$0.973\\ \\text{g}$",
+          "$1.46\\ \\text{g}$",
+          "$0.0243\\ \\text{g}$"
+        ],
+        "answer": 2,
+        "working": "$n_{e^-} = 2.00 \\times 2400 \\div (9.65 \\times 10^4) = 0.04974$ mol, $n(\\ce{Ni}) = 0.02487$ mol, and $m = 0.02487 \\times 58.69 = 1.46$ g."
+      }
+    ]
+  },
+  "c30-3-1": {
+    "lessonId": "c30-3-1",
+    "title": "Organic Compounds and How They Are Drawn, Part 1: What Makes a Compound Organic",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Organic compounds",
+        "t": 26.301
+      },
+      {
+        "title": "The inorganic exceptions",
+        "t": 68.007
+      },
+      {
+        "title": "Why carbon?",
+        "t": 108.919
+      },
+      {
+        "title": "Organic or inorganic?",
+        "t": 145.151
+      },
+      {
+        "title": "Your turn",
+        "t": 173.117
+      },
+      {
+        "title": "Summary",
+        "t": 211.205
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-1:q",
+        "t": 185.154,
+        "prompt": "Which of these carbon compounds is **inorganic**?",
+        "choices": [
+          "Propane, $\\ce{C3H8}$",
+          "Potassium cyanide, $\\ce{KCN}$",
+          "Glucose, $\\ce{C6H12O6}$",
+          "Chloromethane, $\\ce{CH3Cl}$"
+        ],
+        "answer": 1,
+        "working": "Potassium cyanide contains carbon, but cyanides are classed as inorganic. Propane, glucose and chloromethane have carbon bonded to hydrogen: they are organic."
+      }
+    ]
+  },
+  "c30-3-1-b": {
+    "lessonId": "c30-3-1",
+    "title": "Organic Compounds and How They Are Drawn, Part 2: Families of Hydrocarbons",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five families",
+        "t": 19.78
+      },
+      {
+        "title": "Saturated and unsaturated",
+        "t": 58.758
+      },
+      {
+        "title": "Rings",
+        "t": 100.262
+      },
+      {
+        "title": "One formula, two families",
+        "t": 151.95
+      },
+      {
+        "title": "Your turn",
+        "t": 185.081
+      },
+      {
+        "title": "Summary",
+        "t": 215.607
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-1-b:q",
+        "t": 192.3,
+        "prompt": "Which describes the hydrocarbon $\\ce{CH2=CH-CH2-CH3}$?",
+        "choices": [
+          "An alkane: saturated",
+          "An alkyne: unsaturated",
+          "A cycloalkene: unsaturated",
+          "An alkene: unsaturated"
+        ],
+        "answer": 3,
+        "working": "The chain has a carbon–carbon double bond, shown by $=$: an alkene. A multiple bond means it could hold more hydrogen, so it is unsaturated."
+      }
+    ]
+  },
+  "c30-3-1-c": {
+    "lessonId": "c30-3-1",
+    "title": "Organic Compounds and How They Are Drawn, Part 3: Four Ways to Show a Molecule",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Molecular and structural formulas",
+        "t": 17.93
+      },
+      {
+        "title": "Condensed formulas",
+        "t": 54.124
+      },
+      {
+        "title": "Line formulas",
+        "t": 87.065
+      },
+      {
+        "title": "From a line formula",
+        "t": 125.773
+      },
+      {
+        "title": "Your turn",
+        "t": 174.117
+      },
+      {
+        "title": "Summary",
+        "t": 204.059
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-1-c:q",
+        "t": 181.751,
+        "prompt": "What is the molecular formula of $\\ce{CH3-C(CH3)=CH-CH3}$?",
+        "choices": [
+          "$\\ce{C5H10}$",
+          "$\\ce{C5H12}$",
+          "$\\ce{C4H8}$",
+          "$\\ce{C5H8}$"
+        ],
+        "answer": 0,
+        "working": "Carbons: $4$ in the chain and $1$ in the branch, $5$ in all. Hydrogens: $3 + 0 + 1 + 3 + 3 = 10$. The molecular formula is $\\ce{C5H10}$."
+      }
+    ]
+  },
+  "c30-3-1-d": {
+    "lessonId": "c30-3-1",
+    "title": "Organic Compounds and How They Are Drawn, Part 4: General Formulas",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Alkanes",
+        "t": 18.677
+      },
+      {
+        "title": "Double bonds, rings and triple bonds",
+        "t": 59.925
+      },
+      {
+        "title": "Count the branch",
+        "t": 94.292
+      },
+      {
+        "title": "From a molar mass",
+        "t": 122.513
+      },
+      {
+        "title": "Your turn",
+        "t": 168.09
+      },
+      {
+        "title": "Summary",
+        "t": 211.554
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-1-d:q",
+        "t": 182.049,
+        "prompt": "An alkane has a molar mass of $100.23\\ \\text{g/mol}$. What is its molecular formula? Use C $12.01\\ \\text{g/mol}$ and H $1.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$\\ce{C7H14}$",
+          "$\\ce{C8H18}$",
+          "$\\ce{C7H16}$",
+          "$\\ce{C6H14}$"
+        ],
+        "answer": 2,
+        "working": "Alkanes are $\\text{C}_n\\text{H}_{2n+2}$, so $M = 12.01n + 1.01(2n + 2) = 14.03n + 2.02$. Then $n = \\dfrac{100.23 - 2.02}{14.03} = 7$: $\\ce{C7H16}$."
+      }
+    ]
+  },
+  "c30-3-2": {
+    "lessonId": "c30-3-2",
+    "title": "Naming Hydrocarbons, Part 1: Straight-Chain Alkanes",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stem and ending",
+        "t": 35.203
+      },
+      {
+        "title": "A run of CH₂ groups",
+        "t": 76.093
+      },
+      {
+        "title": "Alkyl groups",
+        "t": 100.727
+      },
+      {
+        "title": "Your turn",
+        "t": 130.418
+      },
+      {
+        "title": "Summary",
+        "t": 157.991
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-2:q",
+        "t": 136.867,
+        "prompt": "What is the IUPAC name of $\\ce{CH3-(CH2)5-CH3}$?",
+        "choices": [
+          "pentane",
+          "octane",
+          "heptane",
+          "hexane"
+        ],
+        "answer": 2,
+        "working": "One carbon at each end and five $\\ce{CH2}$ groups between them: $1 + 5 + 1 = 7$ carbons. Seven is hept-, so the alkane is heptane."
+      }
+    ]
+  },
+  "c30-3-2-b": {
+    "lessonId": "c30-3-2",
+    "title": "Naming Hydrocarbons, Part 2: Branched Alkanes",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parent chain and substituents",
+        "t": 17.213
+      },
+      {
+        "title": "Five steps",
+        "t": 50.485
+      },
+      {
+        "title": "One branch",
+        "t": 93.149
+      },
+      {
+        "title": "Two kinds of branch",
+        "t": 123.727
+      },
+      {
+        "title": "Your turn",
+        "t": 159.408
+      },
+      {
+        "title": "Summary",
+        "t": 191.515
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-2-b:q",
+        "t": 165.965,
+        "prompt": "What is the IUPAC name of $\\ce{CH3-CH2-CH(CH3)-CH2-CH2-CH3}$?",
+        "choices": [
+          "3-methylhexane",
+          "4-methylhexane",
+          "2-ethylpentane",
+          "3-methylpentane"
+        ],
+        "answer": 0,
+        "working": "The longest chain has 6 carbons: hexane. Numbered from the left, nearer the branch, the methyl group is on carbon 3."
+      }
+    ]
+  },
+  "c30-3-2-c": {
+    "lessonId": "c30-3-2",
+    "title": "Naming Hydrocarbons, Part 3: Repeated Branches and Drawing From a Name",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Repeated branches",
+        "t": 20.071
+      },
+      {
+        "title": "Two traps",
+        "t": 61.489
+      },
+      {
+        "title": "Drawing from a name",
+        "t": 109.548
+      },
+      {
+        "title": "Your turn",
+        "t": 147.486
+      },
+      {
+        "title": "Summary",
+        "t": 185.51
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-2-c:q",
+        "t": 160.906,
+        "prompt": "A student named a compound 2-ethylbutane. The name describes a real compound but breaks a naming rule. What is its correct IUPAC name?",
+        "choices": [
+          "2-methylpentane",
+          "3-methylpentane",
+          "3-ethylbutane",
+          "2-methylbutane"
+        ],
+        "answer": 1,
+        "working": "2-ethylbutane is $\\ce{CH3-CH(CH2CH3)-CH2-CH3}$. The longest chain runs into the ethyl group: 5 carbons, with a methyl group on carbon 3. The correct name is 3-methylpentane."
+      }
+    ]
+  },
+  "c30-3-2-d": {
+    "lessonId": "c30-3-2",
+    "title": "Naming Hydrocarbons, Part 4: Alkenes and Alkynes",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The multiple bond comes first",
+        "t": 16.135
+      },
+      {
+        "title": "Numbering from the nearer end",
+        "t": 67.982
+      },
+      {
+        "title": "An alkene with a branch",
+        "t": 99.506
+      },
+      {
+        "title": "Alkynes",
+        "t": 138.384
+      },
+      {
+        "title": "Your turn",
+        "t": 176.304
+      },
+      {
+        "title": "Summary",
+        "t": 208.657
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-2-d:q",
+        "t": 182.861,
+        "prompt": "What is the IUPAC name of $\\ce{CH3-C#C-CH(CH3)-CH3}$?",
+        "choices": [
+          "2-methylpent-3-yne",
+          "4-methylpent-3-yne",
+          "4-methylpent-2-ene",
+          "4-methylpent-2-yne"
+        ],
+        "answer": 3,
+        "working": "The chain holding the triple bond has 5 carbons. Numbered from the left, nearer the triple bond, the bond starts at carbon 2 and the methyl group is on carbon 4."
+      }
+    ]
+  },
+  "c30-3-3": {
+    "lessonId": "c30-3-3",
+    "title": "Isomers, Part 1: Structural Isomers",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Same formula, different structure",
+        "t": 29.232
+      },
+      {
+        "title": "Isomers",
+        "t": 67.379
+      },
+      {
+        "title": "More carbons, more isomers",
+        "t": 121.584
+      },
+      {
+        "title": "Your turn",
+        "t": 148.261
+      },
+      {
+        "title": "Summary",
+        "t": 181.041
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-3:q",
+        "t": 156.857,
+        "prompt": "Which compound is an isomer of hexane, $\\ce{C6H14}$?",
+        "choices": [
+          "$\\ce{CH3-(CH2)5-CH3}$",
+          "$\\ce{CH3-(CH2)3-CH3}$",
+          "$\\ce{CH3-CH(CH3)-CH(CH3)-CH3}$",
+          "$\\ce{CH2=CH-(CH2)3-CH3}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{CH3-CH(CH3)-CH(CH3)-CH3}$ has 6 carbons and $3 + 1 + 1 + 3 + 3 + 3 = 14$ hydrogens: $\\ce{C6H14}$, with a different structure. The others are $\\ce{C7H16}$, $\\ce{C5H12}$ and $\\ce{C6H12}$."
+      }
+    ]
+  },
+  "c30-3-3-b": {
+    "lessonId": "c30-3-3",
+    "title": "Isomers, Part 2: Finding the Isomers of an Alkane",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A system",
+        "t": 19.523
+      },
+      {
+        "title": "The isomers of C₅H₁₂",
+        "t": 71.951
+      },
+      {
+        "title": "Branching and boiling point",
+        "t": 118.534
+      },
+      {
+        "title": "Your turn",
+        "t": 155.072
+      },
+      {
+        "title": "Summary",
+        "t": 190.032
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-3-b:q",
+        "t": 163.703,
+        "prompt": "Which of these is the correct IUPAC name of an isomer of $\\ce{C5H12}$?",
+        "choices": [
+          "3-methylbutane",
+          "2-ethylpropane",
+          "1-methylbutane",
+          "2,2-dimethylpropane"
+        ],
+        "answer": 3,
+        "working": "2,2-dimethylpropane is $\\ce{CH3-C(CH3)2-CH3}$, $\\ce{C5H12}$. \"3-methylbutane\" is 2-methylbutane numbered from the wrong end, \"2-ethylpropane\" has a longer chain (it is 2-methylbutane), and \"1-methylbutane\" is just pentane."
+      }
+    ]
+  },
+  "c30-3-3-c": {
+    "lessonId": "c30-3-3",
+    "title": "Isomers, Part 3: The Isomers of Hexane",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five or six carbons in the chain",
+        "t": 18.936
+      },
+      {
+        "title": "Four carbons in the chain",
+        "t": 47.1
+      },
+      {
+        "title": "Five isomers",
+        "t": 85.719
+      },
+      {
+        "title": "Your turn",
+        "t": 110.986
+      },
+      {
+        "title": "Summary",
+        "t": 142.996
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-3-c:q",
+        "t": 118.534,
+        "prompt": "Which compound is an isomer of 2-methylpentane, $\\ce{CH3-CH(CH3)-CH2-CH2-CH3}$?",
+        "choices": [
+          "$\\ce{CH3-(CH2)2-CH(CH3)-CH3}$",
+          "$\\ce{CH3-C(CH3)2-CH2-CH3}$",
+          "$\\ce{CH3-CH(CH3)-(CH2)3-CH3}$",
+          "$\\ce{CH2=C(CH3)-(CH2)2-CH3}$"
+        ],
+        "answer": 1,
+        "working": "$\\ce{CH3-C(CH3)2-CH2-CH3}$ is 2,2-dimethylbutane, also $\\ce{C6H14}$, with a different structure. Choice A is 2-methylpentane itself, written from the other end; C is $\\ce{C7H16}$ and D is $\\ce{C6H12}$."
+      }
+    ]
+  },
+  "c30-3-3-d": {
+    "lessonId": "c30-3-3",
+    "title": "Isomers, Part 4: Same Compound or Isomers?",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One compound, drawn two ways",
+        "t": 19.275
+      },
+      {
+        "title": "Name them both",
+        "t": 61.774
+      },
+      {
+        "title": "Isomers in different families",
+        "t": 86.675
+      },
+      {
+        "title": "Geometric isomers",
+        "t": 133.742
+      },
+      {
+        "title": "Your turn",
+        "t": 162.825
+      },
+      {
+        "title": "Summary",
+        "t": 197.945
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-3-d:q",
+        "t": 169.681,
+        "prompt": "How are $\\ce{CH3-CH(CH2CH3)-CH2-CH3}$ and $\\ce{CH3-CH2-CH(CH3)-CH2-CH3}$ related?",
+        "choices": [
+          "Isomers: the same molecular formula, different structures",
+          "Not isomers: different molecular formulas",
+          "The same compound, drawn two ways",
+          "Isomers in different families"
+        ],
+        "answer": 2,
+        "working": "In the first, the longest chain runs into the ethyl group: 5 carbons, with a methyl group on carbon 3. Both are 3-methylpentane, $\\ce{C6H14}$."
+      }
+    ]
+  },
+  "c30-3-4": {
+    "lessonId": "c30-3-4",
+    "title": "Functional Groups, Part 1: Eight Families",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Functional groups",
+        "t": 35.405
+      },
+      {
+        "title": "Eight families",
+        "t": 70.724
+      },
+      {
+        "title": "Hydroxyl and carboxyl groups",
+        "t": 126.228
+      },
+      {
+        "title": "Your turn",
+        "t": 158.608
+      },
+      {
+        "title": "Summary",
+        "t": 187.604
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-4:q",
+        "t": 166.094,
+        "prompt": "Which family does $\\ce{CH3-CH2-NH2}$ belong to?",
+        "choices": [
+          "Alcohol",
+          "Amine",
+          "Ether",
+          "Haloalkane"
+        ],
+        "answer": 1,
+        "working": "It has an amino group, $\\ce{-NH2}$: an amine (ethanamine). An alcohol would have $\\ce{-OH}$, an ether $\\ce{-O-{}}$ between two chains, and a haloalkane a halogen atom."
+      }
+    ]
+  },
+  "c30-3-4-b": {
+    "lessonId": "c30-3-4",
+    "title": "Functional Groups, Part 2: Families With Oxygen",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Aldehydes and ketones",
+        "t": 19.322
+      },
+      {
+        "title": "Acids, esters and ethers",
+        "t": 51.766
+      },
+      {
+        "title": "Spotting the family",
+        "t": 81.048
+      },
+      {
+        "title": "Not a hydroxide",
+        "t": 111.288
+      },
+      {
+        "title": "Your turn",
+        "t": 138.937
+      },
+      {
+        "title": "Summary",
+        "t": 169.061
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-4-b:q",
+        "t": 145.095,
+        "prompt": "Which compound is an ester?",
+        "choices": [
+          "$\\ce{CH3-COO-CH2-CH3}$",
+          "$\\ce{CH3-CH2-COOH}$",
+          "$\\ce{CH3-CO-CH2-CH3}$",
+          "$\\ce{CH3-CH2-CHO}$"
+        ],
+        "answer": 0,
+        "working": "$\\ce{CH3-COO-CH2-CH3}$ has $\\ce{-COO-{}}$ with carbon on both sides: an ester (ethyl ethanoate). The others are a carboxylic acid, a ketone and an aldehyde."
+      }
+    ]
+  },
+  "c30-3-4-c": {
+    "lessonId": "c30-3-4",
+    "title": "Functional Groups, Part 3: Naming Alcohols, Haloalkanes and Acids",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Alcohols",
+        "t": 21.849
+      },
+      {
+        "title": "Haloalkanes",
+        "t": 63.97
+      },
+      {
+        "title": "Carboxylic acids",
+        "t": 108.015
+      },
+      {
+        "title": "Your turn",
+        "t": 155.706
+      },
+      {
+        "title": "Summary",
+        "t": 183.63
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-4-c:q",
+        "t": 162.332,
+        "prompt": "What is the IUPAC name of $\\ce{CH3-CH2-CH2-CH(OH)-CH3}$?",
+        "choices": [
+          "pentan-4-ol",
+          "butan-2-ol",
+          "pentan-3-ol",
+          "pentan-2-ol"
+        ],
+        "answer": 3,
+        "working": "The chain holding the $\\ce{-OH}$ carbon has 5 carbons: pentanol. Numbered from the right, nearer the $\\ce{-OH}$ group, it is on carbon 2: pentan-2-ol."
+      }
+    ]
+  },
+  "c30-3-4-d": {
+    "lessonId": "c30-3-4",
+    "title": "Functional Groups, Part 4: Boiling Points and Solubility",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Forces between molecules",
+        "t": 21.079
+      },
+      {
+        "title": "Same size, different groups",
+        "t": 66.704
+      },
+      {
+        "title": "Solubility in water",
+        "t": 117.61
+      },
+      {
+        "title": "Your turn",
+        "t": 156.035
+      },
+      {
+        "title": "Summary",
+        "t": 189.906
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-4-d:q",
+        "t": 165.542,
+        "prompt": "These compounds have similar molar masses: pentane $72.17\\ \\text{g/mol}$, butanal $72.12\\ \\text{g/mol}$, butan-1-ol $74.14\\ \\text{g/mol}$ and propanoic acid $74.09\\ \\text{g/mol}$. Which has the **lowest** boiling point?",
+        "choices": [
+          "Pentane",
+          "Butanal",
+          "Butan-1-ol",
+          "Propanoic acid"
+        ],
+        "answer": 0,
+        "working": "With similar molar masses, the dispersion forces are similar. Pentane, an alkane, has only dispersion forces; butanal adds dipole–dipole forces, and butan-1-ol and propanoic acid hydrogen bond. So pentane boils lowest."
+      }
+    ]
+  },
+  "c30-3-5": {
+    "lessonId": "c30-3-5",
+    "title": "Addition, Substitution and Elimination, Part 1: Addition Reactions",
+    "duration": 266,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What addition is",
+        "t": 44.492
+      },
+      {
+        "title": "Ethene and bromine",
+        "t": 73.916
+      },
+      {
+        "title": "Four small molecules",
+        "t": 118.118
+      },
+      {
+        "title": "The bromine water test",
+        "t": 168.658
+      },
+      {
+        "title": "Your turn",
+        "t": 193.927
+      },
+      {
+        "title": "Summary",
+        "t": 226.695
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-5:q",
+        "t": 202.005,
+        "prompt": "Propene, $\\ce{CH2=CH-CH3}$, reacts with chlorine, $\\ce{Cl2}$. Which is the organic product?",
+        "choices": [
+          "$\\ce{CH3-CCl2-CH3}$",
+          "$\\ce{CH2Cl-CHCl-CH3}$",
+          "$\\ce{CH2Cl-CH2-CH3}$",
+          "$\\ce{CH2Cl-CH2-CH2Cl}$"
+        ],
+        "answer": 1,
+        "working": "The double bond is between carbons 1 and 2. It opens, and one chlorine atom adds to each of those carbons: $\\ce{CH2=CH-CH3 + Cl2 -> CH2Cl-CHCl-CH3}$, 1,2-dichloropropane."
+      }
+    ]
+  },
+  "c30-3-5-b": {
+    "lessonId": "c30-3-5",
+    "title": "Addition, Substitution and Elimination, Part 2: Where the Hydrogen Goes",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two possible products",
+        "t": 25.431
+      },
+      {
+        "title": "The rule",
+        "t": 71.648
+      },
+      {
+        "title": "Water, and alike carbons",
+        "t": 109.504
+      },
+      {
+        "title": "Alkynes add twice",
+        "t": 148.269
+      },
+      {
+        "title": "Your turn",
+        "t": 174.264
+      },
+      {
+        "title": "Summary",
+        "t": 211.527
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-5-b:q",
+        "t": 188.77,
+        "prompt": "But-1-ene, $\\ce{CH2=CH-CH2-CH3}$, reacts with hydrogen bromide. When the two carbons of the double bond differ, the hydrogen atom adds to the carbon that already has more hydrogen atoms. Name the organic product.",
+        "choices": [
+          "1-bromobutane",
+          "1,2-dibromobutane",
+          "butan-2-ol",
+          "2-bromobutane"
+        ],
+        "answer": 3,
+        "working": "Carbon 1 has two hydrogen atoms and carbon 2 has one, so the H adds to carbon 1 and the Br to carbon 2: $\\ce{CH2=CH-CH2-CH3 + HBr -> CH3-CHBr-CH2-CH3}$."
+      }
+    ]
+  },
+  "c30-3-5-c": {
+    "lessonId": "c30-3-5",
+    "title": "Addition, Substitution and Elimination, Part 3: Substitution and Elimination",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substitution",
+        "t": 22.097
+      },
+      {
+        "title": "Haloalkanes and benzene",
+        "t": 71.441
+      },
+      {
+        "title": "Elimination",
+        "t": 103.917
+      },
+      {
+        "title": "Substitution or elimination?",
+        "t": 143.721
+      },
+      {
+        "title": "Your turn",
+        "t": 186.95
+      },
+      {
+        "title": "Summary",
+        "t": 225.592
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-5-c:q",
+        "t": 201.211,
+        "prompt": "1-Bromobutane, $\\ce{CH3-CH2-CH2-CH2Br}$, is heated with hydroxide ions dissolved in ethanol. What type of reaction happens, and what is the organic product?",
+        "choices": [
+          "Elimination; but-1-ene",
+          "Substitution; butan-1-ol",
+          "Elimination; butan-1-ol",
+          "Substitution; but-1-ene"
+        ],
+        "answer": 0,
+        "working": "Heated in ethanol, a haloalkane loses HBr: the Br on carbon 1 and an H on carbon 2 leave, and a double bond forms between them. $\\ce{CH3-CH2-CH2-CH2Br + OH- -> CH2=CH-CH2-CH3 + H2O + Br-}$"
+      }
+    ]
+  },
+  "c30-3-5-d": {
+    "lessonId": "c30-3-5",
+    "title": "Addition, Substitution and Elimination, Part 4: Telling Them Apart and Predicting Products",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Count, then look at the bonds",
+        "t": 23.139
+      },
+      {
+        "title": "Classify three reactions",
+        "t": 64.314
+      },
+      {
+        "title": "Predicting a product",
+        "t": 104.95
+      },
+      {
+        "title": "Working backwards",
+        "t": 152.691
+      },
+      {
+        "title": "Your turn",
+        "t": 187.077
+      },
+      {
+        "title": "Summary",
+        "t": 221.396
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-5-d:q",
+        "t": 196.137,
+        "prompt": "Which reactants form 1,2-dibromobutane, $\\ce{CH2Br-CHBr-CH2-CH3}$, in an addition reaction?",
+        "choices": [
+          "But-2-ene and bromine",
+          "But-1-ene and hydrogen bromide",
+          "But-1-ene and bromine",
+          "Butane and bromine"
+        ],
+        "answer": 2,
+        "working": "The bromine atoms are on carbons 1 and 2, so the double bond was between them: but-1-ene. Two Br atoms were added, so the reagent is bromine: $\\ce{CH2=CH-CH2-CH3 + Br2 -> CH2Br-CHBr-CH2-CH3}$."
+      }
+    ]
+  },
+  "c30-3-6": {
+    "lessonId": "c30-3-6",
+    "title": "Esterification and Polymerisation, Part 1: Esterification",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Esterification",
+        "t": 25.663
+      },
+      {
+        "title": "Which atoms leave",
+        "t": 53.418
+      },
+      {
+        "title": "The ester",
+        "t": 84.094
+      },
+      {
+        "title": "In the laboratory",
+        "t": 112.18
+      },
+      {
+        "title": "Your turn",
+        "t": 147.939
+      },
+      {
+        "title": "Summary",
+        "t": 184.054
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-6:q",
+        "t": 159.831,
+        "prompt": "Propanoic acid, $\\ce{C3H6O2}$, reacts with ethanol, $\\ce{C2H6O}$, to form an ester and water. What is the molecular formula of the ester?",
+        "choices": [
+          "$\\ce{C5H12O3}$",
+          "$\\ce{C5H10O3}$",
+          "$\\ce{C5H10O2}$",
+          "$\\ce{C5H8O2}$"
+        ],
+        "answer": 2,
+        "working": "The ester is the acid and the alcohol joined, less one water: $\\ce{C3H6O2} + \\ce{C2H6O} = \\ce{C5H12O3}$, and taking away $\\ce{H2O}$ leaves $\\ce{C5H10O2}$."
+      }
+    ]
+  },
+  "c30-3-6-b": {
+    "lessonId": "c30-3-6",
+    "title": "Esterification and Polymerisation, Part 2: Naming Esters",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two words",
+        "t": 24.075
+      },
+      {
+        "title": "Methyl propanoate",
+        "t": 58.972
+      },
+      {
+        "title": "The order of the words",
+        "t": 92.401
+      },
+      {
+        "title": "Back to the acid and alcohol",
+        "t": 135.822
+      },
+      {
+        "title": "Your turn",
+        "t": 177.539
+      },
+      {
+        "title": "Summary",
+        "t": 209.642
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-6-b:q",
+        "t": 186.656,
+        "prompt": "Which carboxylic acid and which alcohol react to make propyl ethanoate?",
+        "choices": [
+          "Ethanoic acid and propan‑1‑ol",
+          "Propanoic acid and ethanol",
+          "Propanoic acid and propan‑1‑ol",
+          "Ethanoic acid and ethanol"
+        ],
+        "answer": 0,
+        "working": "The -oate word, ethanoate, comes from ethanoic acid. The alkyl word, propyl, comes from propan-1-ol. The ester is $\\ce{CH3-COO-CH2-CH2-CH3}$."
+      }
+    ]
+  },
+  "c30-3-6-c": {
+    "lessonId": "c30-3-6",
+    "title": "Esterification and Polymerisation, Part 3: Addition Polymers",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polymers and monomers",
+        "t": 20.054
+      },
+      {
+        "title": "Poly(ethene)",
+        "t": 40.648
+      },
+      {
+        "title": "Common addition polymers",
+        "t": 84.941
+      },
+      {
+        "title": "Poly(propene)",
+        "t": 115.211
+      },
+      {
+        "title": "The double bond does not stay",
+        "t": 147.82
+      },
+      {
+        "title": "Your turn",
+        "t": 173.119
+      },
+      {
+        "title": "Summary",
+        "t": 205.876
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-6-c:q",
+        "t": 181.865,
+        "prompt": "A segment of a polymer chain is $\\ce{-CH2-CHCl-CH2-CHCl-CH2-CHCl-{}}$. Which monomer was it made from?",
+        "choices": [
+          "$\\ce{CH3-CH2Cl}$",
+          "$\\ce{CHCl=CHCl}$",
+          "$\\ce{CH2=CH2}$",
+          "$\\ce{CH2=CHCl}$"
+        ],
+        "answer": 3,
+        "working": "The repeating unit is $\\ce{-[CH2-CHCl]-{}}$. Putting the double bond back between its two carbons gives chloroethene, $\\ce{CH2=CHCl}$: the polymer is PVC."
+      }
+    ]
+  },
+  "c30-3-6-d": {
+    "lessonId": "c30-3-6",
+    "title": "Esterification and Polymerisation, Part 4: Condensation Polymers",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two reacting groups",
+        "t": 17.918
+      },
+      {
+        "title": "Polyesters, nylon and nature",
+        "t": 63.315
+      },
+      {
+        "title": "Finding the monomers",
+        "t": 101.018
+      },
+      {
+        "title": "Addition or condensation?",
+        "t": 131.21
+      },
+      {
+        "title": "Counting units",
+        "t": 163.244
+      },
+      {
+        "title": "Your turn",
+        "t": 197.501
+      },
+      {
+        "title": "Summary",
+        "t": 231.802
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-6-d:q",
+        "t": 210.303,
+        "prompt": "Hexane-1,6-diamine, $\\ce{H2N-(CH2)6-NH2}$, and hexanedioic acid, $\\ce{HOOC-(CH2)4-COOH}$, link into long chains (nylon). What kind of polymer forms?",
+        "choices": [
+          "An addition polymer; no other product forms",
+          "A condensation polymer; water also forms",
+          "An addition polymer; water also forms",
+          "A condensation polymer; no other product forms"
+        ],
+        "answer": 1,
+        "working": "Each $\\ce{-NH2}$ reacts with a $\\ce{-COOH}$, forming an amide link and releasing water. Neither monomer has a $\\ce{C=C}$ double bond."
+      }
+    ]
+  },
+  "c30-3-7": {
+    "lessonId": "c30-3-7",
+    "title": "Fossil Fuels and Combustion, Part 1: Fractional Distillation",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fossil fuels",
+        "t": 22.807
+      },
+      {
+        "title": "The fractionating column",
+        "t": 63.033
+      },
+      {
+        "title": "The fractions",
+        "t": 124.858
+      },
+      {
+        "title": "Where does it collect?",
+        "t": 160.309
+      },
+      {
+        "title": "Your turn",
+        "t": 196.831
+      },
+      {
+        "title": "Summary",
+        "t": 223.526
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-7:q",
+        "t": 206.607,
+        "prompt": "In a fractionating column, where are the fractions with the lowest boiling points collected?",
+        "choices": [
+          "At the top, where the column is coolest",
+          "At the bottom, where the column is hottest",
+          "At the top, where the column is hottest",
+          "At the bottom, where the column is coolest"
+        ],
+        "answer": 0,
+        "working": "The column is hottest at the bottom and coolest at the top. Small molecules with low boiling points stay as gases until they reach the cool top, where they condense."
+      }
+    ]
+  },
+  "c30-3-7-b": {
+    "lessonId": "c30-3-7",
+    "title": "Fossil Fuels and Combustion, Part 2: Cracking",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cracking",
+        "t": 18.338
+      },
+      {
+        "title": "Atoms are conserved",
+        "t": 58.718
+      },
+      {
+        "title": "A missing product",
+        "t": 90.342
+      },
+      {
+        "title": "Your turn",
+        "t": 128.192
+      },
+      {
+        "title": "Summary",
+        "t": 166.122
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-7-b:q",
+        "t": 140.465,
+        "prompt": "Cracking breaks a large alkane into smaller molecules: $\\ce{C16H34 -> C10H22 + 2X}$. What is the formula of X?",
+        "choices": [
+          "$\\ce{C6H12}$",
+          "$\\ce{C3H8}$",
+          "$\\ce{C3H6}$",
+          "$\\ce{C6H14}$"
+        ],
+        "answer": 2,
+        "working": "Carbon: $16 - 10 = 6$, shared by 2 molecules: 3 each. Hydrogen: $34 - 22 = 12$, 6 each. X is $\\ce{C3H6}$, propene: $\\ce{C16H34 -> C10H22 + 2C3H6}$."
+      }
+    ]
+  },
+  "c30-3-7-c": {
+    "lessonId": "c30-3-7",
+    "title": "Fossil Fuels and Combustion, Part 3: Combustion Equations",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Complete and incomplete",
+        "t": 20.597
+      },
+      {
+        "title": "Burning octane",
+        "t": 50.335
+      },
+      {
+        "title": "Burning an alcohol",
+        "t": 95.491
+      },
+      {
+        "title": "Incomplete combustion",
+        "t": 138.918
+      },
+      {
+        "title": "Your turn",
+        "t": 172.553
+      },
+      {
+        "title": "Summary",
+        "t": 219.454
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-7-c:q",
+        "t": 189.202,
+        "prompt": "Ethane burns in a limited supply of oxygen, forming only carbon monoxide and water: $\\ce{C2H6 + O2 -> CO + H2O}$. Which coefficients, in order, balance it with the smallest whole numbers?",
+        "choices": [
+          "$2,\\ 7,\\ 4,\\ 6$",
+          "$1,\\ 5,\\ 2,\\ 3$",
+          "$1,\\ 2\\tfrac{1}{2},\\ 2,\\ 3$",
+          "$2,\\ 5,\\ 4,\\ 6$"
+        ],
+        "answer": 3,
+        "working": "Carbon: $\\ce{2CO}$. Hydrogen: $\\ce{3H2O}$. Oxygen on the right: $2 + 3 = 5$ atoms, so $2\\tfrac{1}{2}\\ \\ce{O2}$. Doubling: $\\ce{2C2H6 + 5O2 -> 4CO + 6H2O}$. Check: C $4 = 4$, H $12 = 12$, O $10 = 10$."
+      }
+    ]
+  },
+  "c30-3-7-d": {
+    "lessonId": "c30-3-7",
+    "title": "Fossil Fuels and Combustion, Part 4: Burning Fossil Fuels and the Environment",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What burning releases",
+        "t": 22.717
+      },
+      {
+        "title": "Reducing the damage",
+        "t": 81.334
+      },
+      {
+        "title": "Carbon dioxide from a fuel",
+        "t": 118.568
+      },
+      {
+        "title": "Your turn",
+        "t": 187.151
+      },
+      {
+        "title": "Summary",
+        "t": 233.847
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-3-7-d:q",
+        "t": 200.055,
+        "prompt": "Methane burns completely: $\\ce{CH4 + 2O2 -> CO2 + 2H2O}$. What mass of carbon dioxide forms when $100\\ \\text{g}$ of methane burns? Use $M(\\ce{CH4}) = 16.05\\ \\text{g/mol}$ and $M(\\ce{CO2}) = 44.01\\ \\text{g/mol}$.",
+        "choices": [
+          "$36.5\\ \\text{g}$",
+          "$274\\ \\text{g}$",
+          "$137\\ \\text{g}$",
+          "$548\\ \\text{g}$"
+        ],
+        "answer": 1,
+        "working": "$n(\\ce{CH4}) = 100 \\div 16.05 = 6.231\\ \\text{mol}$, which gives $6.231\\ \\text{mol}$ of $\\ce{CO2}$ (1 to 1). $m = 6.231 \\times 44.01 = 274\\ \\text{g}$."
+      }
+    ]
+  },
+  "c30-4-1": {
+    "lessonId": "c30-4-1",
+    "title": "Dynamic Equilibrium, Part 1: Reversible Reactions",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reversible reactions",
+        "t": 32.019
+      },
+      {
+        "title": "Dynamic equilibrium",
+        "t": 85.88
+      },
+      {
+        "title": "Three conditions",
+        "t": 137.995
+      },
+      {
+        "title": "Your turn",
+        "t": 182.217
+      },
+      {
+        "title": "Summary",
+        "t": 214.153
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-1:q",
+        "t": 189.86,
+        "prompt": "Which of these systems can reach dynamic equilibrium?",
+        "choices": [
+          "Water evaporating from an open beaker",
+          "A candle burning in open air",
+          "Water and water vapour in a sealed bottle at constant temperature",
+          "Carbonated water losing its bubbles in an open glass"
+        ],
+        "answer": 2,
+        "working": "The sealed bottle is a closed system at constant temperature, so evaporation and condensation can reach equal rates. In the open systems a product escapes, so the reverse process cannot keep up."
+      }
+    ]
+  },
+  "c30-4-1-b": {
+    "lessonId": "c30-4-1",
+    "title": "Dynamic Equilibrium, Part 2: Features of Equilibrium",
+    "duration": 251,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is true at equilibrium",
+        "t": 20.179
+      },
+      {
+        "title": "Evidence that it never stops",
+        "t": 64.606
+      },
+      {
+        "title": "Three kinds of equilibrium",
+        "t": 103.594
+      },
+      {
+        "title": "From either side",
+        "t": 144.552
+      },
+      {
+        "title": "Your turn",
+        "t": 183.209
+      },
+      {
+        "title": "Summary",
+        "t": 215.754
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-1-b:q",
+        "t": 195.947,
+        "prompt": "A reversible reaction in a sealed flask at constant temperature has reached dynamic equilibrium. Which statement is true?",
+        "choices": [
+          "The forward and reverse reactions have stopped.",
+          "The concentrations of the reactants and products are equal.",
+          "Equilibrium can be reached only by starting from the reactants.",
+          "The forward and reverse reactions continue at equal rates."
+        ],
+        "answer": 3,
+        "working": "At dynamic equilibrium both reactions keep going at equal rates, so the concentrations stay constant, but not necessarily equal. It can be reached from either side."
+      }
+    ]
+  },
+  "c30-4-1-c": {
+    "lessonId": "c30-4-1",
+    "title": "Dynamic Equilibrium, Part 3: Concentration–Time Graphs",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The position of equilibrium",
+        "t": 22.755
+      },
+      {
+        "title": "Reading the graph",
+        "t": 46.708
+      },
+      {
+        "title": "Finding the equation",
+        "t": 113.384
+      },
+      {
+        "title": "Your turn",
+        "t": 174.224
+      },
+      {
+        "title": "Summary",
+        "t": 210.115
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-1-c:q",
+        "t": 185.282,
+        "prompt": "Gases A and B react in a sealed flask to form gas C. On a concentration–time graph, $[\\text{A}]$ falls from $0.80$ to $0.50\\ \\text{mol/L}$, $[\\text{B}]$ falls from $0.60$ to $0.50\\ \\text{mol/L}$, and $[\\text{C}]$ rises from $0$ to $0.20\\ \\text{mol/L}$, all levelling off at $40\\ \\text{s}$. Which equation matches?",
+        "choices": [
+          "$\\ce{5A + 5B <=> 2C}$",
+          "$\\ce{3A + B <=> 2C}$",
+          "$\\ce{A + 3B <=> 2C}$",
+          "$\\ce{3A + B <=> C}$"
+        ],
+        "answer": 1,
+        "working": "Changes: $0.30$, $0.10$ and $0.20\\ \\text{mol/L}$, and $0.30 : 0.10 : 0.20 = 3 : 1 : 2$. The final values $0.50 : 0.50 : 0.20$ are not the ratio of the coefficients."
+      }
+    ]
+  },
+  "c30-4-1-d": {
+    "lessonId": "c30-4-1",
+    "title": "Dynamic Equilibrium, Part 4: Rate–Time Graphs",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Forward and reverse rates",
+        "t": 20.07
+      },
+      {
+        "title": "Reading a rate graph",
+        "t": 61.748
+      },
+      {
+        "title": "Two graphs, one story",
+        "t": 101.933
+      },
+      {
+        "title": "Your turn",
+        "t": 141.781
+      },
+      {
+        "title": "Summary",
+        "t": 183.986
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-1-d:q",
+        "t": 159.64,
+        "prompt": "A sealed flask starts with reactants only. Its forward rate falls from $0.70$ and its reverse rate rises from $0$, until both are $0.25\\ \\text{mol/(L·s)}$ at $30\\ \\text{s}$. Which describes the system at $15\\ \\text{s}$?",
+        "choices": [
+          "Products are still forming overall: the forward rate is greater.",
+          "It is at equilibrium, because both reactions are happening.",
+          "Reactants are forming overall: the reverse rate is greater.",
+          "Both reactions have stopped."
+        ],
+        "answer": 0,
+        "working": "At $15\\ \\text{s}$ the curves have not met: the forward rate is still greater. Equilibrium needs equal rates, reached at $30\\ \\text{s}$."
+      }
+    ]
+  },
+  "c30-4-2": {
+    "lessonId": "c30-4-2",
+    "title": "The Equilibrium Constant, Part 1: The Equilibrium Law",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three experiments",
+        "t": 29.211
+      },
+      {
+        "title": "The equilibrium law",
+        "t": 82.906
+      },
+      {
+        "title": "Writing an expression",
+        "t": 116.576
+      },
+      {
+        "title": "Powers, not multipliers",
+        "t": 154.061
+      },
+      {
+        "title": "Your turn",
+        "t": 184.509
+      },
+      {
+        "title": "Summary",
+        "t": 220.986
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-2:q",
+        "t": 197.864,
+        "prompt": "Which is the equilibrium law expression for $\\ce{2SO2(g) + O2(g) <=> 2SO3(g)}$?",
+        "choices": [
+          "$K_c = \\dfrac{[\\ce{SO3}]^2}{[\\ce{SO2}]^2[\\ce{O2}]}$",
+          "$K_c = \\dfrac{[\\ce{SO2}]^2[\\ce{O2}]}{[\\ce{SO3}]^2}$",
+          "$K_c = \\dfrac{2[\\ce{SO3}]}{2[\\ce{SO2}][\\ce{O2}]}$",
+          "$K_c = \\dfrac{[\\ce{SO3}]}{[\\ce{SO2}][\\ce{O2}]}$"
+        ],
+        "answer": 0,
+        "working": "Products over reactants, each to the power of its coefficient: $[\\ce{SO3}]^2$ on top, $[\\ce{SO2}]^2[\\ce{O2}]$ on the bottom."
+      }
+    ]
+  },
+  "c30-4-2-b": {
+    "lessonId": "c30-4-2",
+    "title": "The Equilibrium Constant, Part 2: Solids, Liquids and the Size of K",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pure solids and liquids",
+        "t": 23.346
+      },
+      {
+        "title": "What the size of K tells you",
+        "t": 86.107
+      },
+      {
+        "title": "Related equations",
+        "t": 110.54
+      },
+      {
+        "title": "Your turn",
+        "t": 165.005
+      },
+      {
+        "title": "Summary",
+        "t": 199.773
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-2-b:q",
+        "t": 177.812,
+        "prompt": "Which is the equilibrium law expression for $\\ce{C(s) + H2O(g) <=> CO(g) + H2(g)}$?",
+        "choices": [
+          "$K_c = \\dfrac{[\\ce{CO}][\\ce{H2}]}{[\\ce{C}][\\ce{H2O}]}$",
+          "$K_c = \\dfrac{[\\ce{H2O}]}{[\\ce{CO}][\\ce{H2}]}$",
+          "$K_c = \\dfrac{[\\ce{CO}][\\ce{H2}]}{[\\ce{H2O}]}$",
+          "$K_c = [\\ce{CO}][\\ce{H2}]$"
+        ],
+        "answer": 2,
+        "working": "Carbon is a pure solid, so it is left out. The water is steam, $\\ce{H2O(g)}$, a gas, so it stays in, on the bottom."
+      }
+    ]
+  },
+  "c30-4-2-c": {
+    "lessonId": "c30-4-2",
+    "title": "The Equilibrium Constant, Part 3: Calculating K with ICE Tables",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "K from equilibrium concentrations",
+        "t": 19.827
+      },
+      {
+        "title": "ICE tables",
+        "t": 57.593
+      },
+      {
+        "title": "Setting up the table",
+        "t": 88.443
+      },
+      {
+        "title": "Solving for K",
+        "t": 141.414
+      },
+      {
+        "title": "Your turn",
+        "t": 190.336
+      },
+      {
+        "title": "Summary",
+        "t": 238.39
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-2-c:q",
+        "t": 208.859,
+        "prompt": "A sealed flask starts with $0.200\\ \\text{mol/L}$ each of $\\ce{H2}$ and $\\ce{I2}$: $\\ce{H2(g) + I2(g) <=> 2HI(g)}$. At equilibrium, $[\\ce{HI}] = 0.300\\ \\text{mol/L}$. What is $K_c$, to three significant figures?",
+        "choices": [
+          "$2.25$",
+          "$36.0$",
+          "$120$",
+          "$9.00$"
+        ],
+        "answer": 1,
+        "working": "$2x = 0.300$, so $x = 0.150$ and $[\\ce{H2}] = [\\ce{I2}] = 0.200 - 0.150 = 0.0500$. $K_c = \\dfrac{(0.300)^2}{(0.0500)(0.0500)} = 36.0$."
+      }
+    ]
+  },
+  "c30-4-2-d": {
+    "lessonId": "c30-4-2",
+    "title": "The Equilibrium Constant, Part 4: Working Backwards from K",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A perfect square",
+        "t": 20.656
+      },
+      {
+        "title": "Taking square roots",
+        "t": 63.228
+      },
+      {
+        "title": "A very small K",
+        "t": 97.111
+      },
+      {
+        "title": "Your turn",
+        "t": 175.507
+      },
+      {
+        "title": "Summary",
+        "t": 223.307
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-2-d:q",
+        "t": 192.828,
+        "prompt": "$0.200\\ \\text{mol/L}$ each of $\\ce{H2}$ and $\\ce{Br2}$ are put into an empty flask at a temperature where $K_c = 16.0$ for $\\ce{H2(g) + Br2(g) <=> 2HBr(g)}$. What is the equilibrium concentration of $\\ce{HBr}$, to three significant figures?",
+        "choices": [
+          "$0.133\\ \\text{mol/L}$",
+          "$0.0667\\ \\text{mol/L}$",
+          "$0.160\\ \\text{mol/L}$",
+          "$0.267\\ \\text{mol/L}$"
+        ],
+        "answer": 3,
+        "working": "$\\sqrt{16.0} = 4.00 = \\dfrac{2x}{0.200 - x}$, so $2x = 0.800 - 4.00x$, $6.00x = 0.800$ and $x = 0.1333$. $[\\ce{HBr}] = 2x = 0.267\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c30-4-3": {
+    "lessonId": "c30-4-3",
+    "title": "Le Châtelier's Principle, Part 1: Stress and Shift",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Le Châtelier's principle",
+        "t": 35.036
+      },
+      {
+        "title": "Changing a concentration",
+        "t": 89.731
+      },
+      {
+        "title": "Removing a product",
+        "t": 116.076
+      },
+      {
+        "title": "Your turn",
+        "t": 151.112
+      },
+      {
+        "title": "Summary",
+        "t": 189.252
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-3:q",
+        "t": 168.729,
+        "prompt": "The system $\\ce{PCl5(g) <=> PCl3(g) + Cl2(g)}$ is at equilibrium. More chlorine is added at constant volume. How does the equilibrium respond, and what happens to $[\\ce{PCl5}]$?",
+        "choices": [
+          "Shifts right; $[\\ce{PCl5}]$ decreases.",
+          "Shifts left; $[\\ce{PCl5}]$ increases.",
+          "Shifts left; $[\\ce{PCl5}]$ decreases.",
+          "No shift; $[\\ce{PCl5}]$ stays the same."
+        ],
+        "answer": 1,
+        "working": "Chlorine is a product, so adding it shifts the equilibrium left, using up some of the added chlorine. A shift left makes more $\\ce{PCl5}$."
+      }
+    ]
+  },
+  "c30-4-3-b": {
+    "lessonId": "c30-4-3",
+    "title": "Le Châtelier's Principle, Part 2: Reading a Shift",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding hydrogen",
+        "t": 20.295
+      },
+      {
+        "title": "The reaction quotient",
+        "t": 71.338
+      },
+      {
+        "title": "A colour change",
+        "t": 122.687
+      },
+      {
+        "title": "Your turn",
+        "t": 159.33
+      },
+      {
+        "title": "Summary",
+        "t": 195.114
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-3-b:q",
+        "t": 174.564,
+        "prompt": "The system $\\ce{Fe^3+(aq) + SCN^-(aq) <=> FeSCN^2+(aq)}$ is at equilibrium; the red colour comes from $\\ce{FeSCN^2+}$. Sodium hydroxide solution is added, which removes $\\ce{Fe^3+}$ ions as solid iron(III) hydroxide. What happens?",
+        "choices": [
+          "Shifts left; the red colour gets paler.",
+          "Shifts right; the red colour gets darker.",
+          "Shifts left; the red colour gets darker.",
+          "No shift; the colour does not change."
+        ],
+        "answer": 0,
+        "working": "Removing a reactant, $\\ce{Fe^3+}$, shifts the equilibrium left to replace some of it. That uses up $\\ce{FeSCN^2+}$, so the red colour gets paler."
+      }
+    ]
+  },
+  "c30-4-3-c": {
+    "lessonId": "c30-4-3",
+    "title": "Le Châtelier's Principle, Part 3: Volume and Pressure",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Count the gas molecules",
+        "t": 21.478
+      },
+      {
+        "title": "Squeezing a brown gas",
+        "t": 74.456
+      },
+      {
+        "title": "Changes that cause no shift",
+        "t": 110.786
+      },
+      {
+        "title": "Your turn",
+        "t": 144.364
+      },
+      {
+        "title": "Summary",
+        "t": 181.87
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-3-c:q",
+        "t": 158.42,
+        "prompt": "The system $\\ce{C(s) + H2O(g) <=> CO(g) + H2(g)}$ is at equilibrium in a closed container. The volume of the container is decreased. How does the equilibrium respond?",
+        "choices": [
+          "Shifts right, towards the side with more gas molecules.",
+          "No shift: there are two particles on each side.",
+          "Shifts left, towards the side with fewer gas molecules.",
+          "No shift: a solid is present."
+        ],
+        "answer": 2,
+        "working": "Count only the gases: $1$ mole ($\\ce{H2O}$) on the left and $2$ on the right. A smaller volume favours the side with fewer gas molecules: the left."
+      }
+    ]
+  },
+  "c30-4-3-d": {
+    "lessonId": "c30-4-3",
+    "title": "Le Châtelier's Principle, Part 4: Temperature, K and Catalysts",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Energy as a reactant or product",
+        "t": 26.32
+      },
+      {
+        "title": "Temperature changes K",
+        "t": 90.346
+      },
+      {
+        "title": "Catalysts",
+        "t": 128.696
+      },
+      {
+        "title": "Your turn",
+        "t": 169.11
+      },
+      {
+        "title": "Summary",
+        "t": 215.236
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-3-d:q",
+        "t": 189.089,
+        "prompt": "For $\\ce{2SO2(g) + O2(g) <=> 2SO3(g)}$, $K_c$ is $2.5 \\times 10^{3}$ at $300^\\circ\\text{C}$ and $34$ at $500^\\circ\\text{C}$ (values for this question). Is the forward reaction exothermic or endothermic?",
+        "choices": [
+          "Endothermic: $K_c$ falls as the temperature rises.",
+          "Exothermic: $K_c$ is greater than 1.",
+          "Neither: $K_c$ does not depend on temperature.",
+          "Exothermic: $K_c$ falls as the temperature rises."
+        ],
+        "answer": 3,
+        "working": "$K_c$ falls as the temperature rises, so heating shifts the equilibrium left: the reverse reaction is endothermic, and the forward reaction exothermic."
+      }
+    ]
+  },
+  "c30-4-4": {
+    "lessonId": "c30-4-4",
+    "title": "Brønsted–Lowry Acids and Bases, Part 1: Proton Donors and Acceptors",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A hydrogen ion is a proton",
+        "t": 33.535
+      },
+      {
+        "title": "Donors and acceptors",
+        "t": 80.54
+      },
+      {
+        "title": "The hydronium ion",
+        "t": 119.576
+      },
+      {
+        "title": "Ammonia in water",
+        "t": 144.659
+      },
+      {
+        "title": "Your turn",
+        "t": 177.946
+      },
+      {
+        "title": "Summary",
+        "t": 212.155
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-4:q",
+        "t": 188.476,
+        "prompt": "In the reaction $\\ce{HNO2(aq) + NH3(aq) <=> NO2^-(aq) + NH4^+(aq)}$, which particle is the Brønsted–Lowry base?",
+        "choices": [
+          "$\\ce{HNO2}$",
+          "$\\ce{NO2-}$",
+          "$\\ce{NH4+}$",
+          "$\\ce{NH3}$"
+        ],
+        "answer": 3,
+        "working": "$\\ce{NH3}$ gains a proton and becomes $\\ce{NH4+}$, so it is the base. $\\ce{HNO2}$ loses the proton and becomes $\\ce{NO2-}$, so it is the acid."
+      }
+    ]
+  },
+  "c30-4-4-b": {
+    "lessonId": "c30-4-4",
+    "title": "Brønsted–Lowry Acids and Bases, Part 2: Conjugate Acid–Base Pairs",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Conjugate pairs",
+        "t": 18.944
+      },
+      {
+        "title": "Labelling a reaction",
+        "t": 74.443
+      },
+      {
+        "title": "The white smoke",
+        "t": 120.737
+      },
+      {
+        "title": "Your turn",
+        "t": 164.854
+      },
+      {
+        "title": "Summary",
+        "t": 199.828
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-4-b:q",
+        "t": 177.316,
+        "prompt": "Which is a conjugate acid–base pair in the reaction $\\ce{HSO4^-(aq) + CH3COO^-(aq) <=> SO4^2-(aq) + CH3COOH(aq)}$?",
+        "choices": [
+          "$\\ce{HSO4-}$ and $\\ce{CH3COO-}$",
+          "$\\ce{SO4^2-}$ and $\\ce{CH3COOH}$",
+          "$\\ce{HSO4-}$ and $\\ce{SO4^2-}$",
+          "$\\ce{HSO4-}$ and $\\ce{CH3COOH}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{HSO4-}$ gives a proton and becomes $\\ce{SO4^2-}$: one pair. $\\ce{CH3COO-}$ takes the proton and becomes $\\ce{CH3COOH}$: the other pair."
+      }
+    ]
+  },
+  "c30-4-4-c": {
+    "lessonId": "c30-4-4",
+    "title": "Brønsted–Lowry Acids and Bases, Part 3: Writing Conjugates",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Conjugate bases",
+        "t": 22.502
+      },
+      {
+        "title": "Conjugate acids",
+        "t": 56.607
+      },
+      {
+        "title": "A table of conjugates",
+        "t": 84.641
+      },
+      {
+        "title": "Two conjugates",
+        "t": 124.396
+      },
+      {
+        "title": "Your turn",
+        "t": 159.572
+      },
+      {
+        "title": "Summary",
+        "t": 193.699
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-4-c:q",
+        "t": 169.285,
+        "prompt": "What is the conjugate acid of the sulfate ion, $\\ce{SO4^2-}$?",
+        "choices": [
+          "$\\ce{HSO4-}$",
+          "$\\ce{H2SO4}$",
+          "$\\ce{HSO4^2-}$",
+          "$\\ce{SO4-}$"
+        ],
+        "answer": 0,
+        "working": "Add one H and raise the charge by 1: $\\ce{SO4^2-} + \\ce{H+} \\to \\ce{HSO4-}$."
+      }
+    ]
+  },
+  "c30-4-4-d": {
+    "lessonId": "c30-4-4",
+    "title": "Brønsted–Lowry Acids and Bases, Part 4: Amphiprotic Particles",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Water goes both ways",
+        "t": 20.951
+      },
+      {
+        "title": "Two conjugates",
+        "t": 57.736
+      },
+      {
+        "title": "One ion, two roles",
+        "t": 97.891
+      },
+      {
+        "title": "Baking soda",
+        "t": 130.392
+      },
+      {
+        "title": "Your turn",
+        "t": 151.621
+      },
+      {
+        "title": "Summary",
+        "t": 191.563
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-4-d:q",
+        "t": 165.08,
+        "prompt": "The hydrogen sulfite ion, $\\ce{HSO3-}$, is amphiprotic. What are its conjugate acid and its conjugate base?",
+        "choices": [
+          "Conjugate acid $\\ce{SO3^2-}$; conjugate base $\\ce{H2SO3}$",
+          "Conjugate acid $\\ce{H2SO3}$; conjugate base $\\ce{SO3^2-}$",
+          "Conjugate acid $\\ce{H2SO3-}$; conjugate base $\\ce{SO3-}$",
+          "Conjugate acid $\\ce{H3O+}$; conjugate base $\\ce{OH-}$"
+        ],
+        "answer": 1,
+        "working": "Accepting a proton (add H, raise the charge by 1) gives $\\ce{H2SO3}$. Donating one (remove H, lower the charge by 1) gives $\\ce{SO3^2-}$."
+      }
+    ]
+  },
+  "c30-4-5": {
+    "lessonId": "c30-4-5",
+    "title": "Predicting Acid–Base Reactions, Part 1: Reading the Table",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A table of acid strengths",
+        "t": 32.545
+      },
+      {
+        "title": "The two ends",
+        "t": 90.957
+      },
+      {
+        "title": "Comparing strengths",
+        "t": 127.542
+      },
+      {
+        "title": "Your turn",
+        "t": 170.526
+      },
+      {
+        "title": "Summary",
+        "t": 200.883
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-5:q",
+        "t": 180.456,
+        "prompt": "Use these $K_a$ values at $25^\\circ\\text{C}$: $\\ce{HNO2}$, $5.6 \\times 10^{-4}$; $\\ce{CH3COOH}$, $1.8 \\times 10^{-5}$; $\\ce{HClO}$, $4.0 \\times 10^{-8}$; $\\ce{NH4+}$, $5.6 \\times 10^{-10}$. Which of their conjugate bases is the **weakest** base?",
+        "choices": [
+          "$\\ce{NH3}$",
+          "$\\ce{ClO-}$",
+          "$\\ce{NO2-}$",
+          "$\\ce{CH3COO-}$"
+        ],
+        "answer": 2,
+        "working": "The weakest base is the conjugate base of the strongest acid, the one with the largest $K_a$: $\\ce{HNO2}$, with $K_a = 5.6 \\times 10^{-4}$. Its conjugate base is $\\ce{NO2-}$."
+      }
+    ]
+  },
+  "c30-4-5-b": {
+    "lessonId": "c30-4-5",
+    "title": "Predicting Acid–Base Reactions, Part 2: The Strongest Acid and Base",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Listing the particles",
+        "t": 18.695
+      },
+      {
+        "title": "Vinegar and baking soda",
+        "t": 62.468
+      },
+      {
+        "title": "Two common slips",
+        "t": 124.462
+      },
+      {
+        "title": "Your turn",
+        "t": 151.565
+      },
+      {
+        "title": "Summary",
+        "t": 188.258
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-5-b:q",
+        "t": 162.934,
+        "prompt": "Solutions of hydrochloric acid and ammonia, $\\ce{NH3}$, are mixed. List the particles in the two solutions. Which of them is the strongest acid?",
+        "choices": [
+          "$\\ce{HCl}$",
+          "$\\ce{NH4+}$",
+          "$\\ce{H2O}$",
+          "$\\ce{H3O+}$"
+        ],
+        "answer": 3,
+        "working": "Hydrochloric acid ionises completely, so the particles are $\\ce{H3O+}$, $\\ce{Cl-}$, $\\ce{NH3}$ and $\\ce{H2O}$. The strongest acid among them is $\\ce{H3O+}$; no $\\ce{HCl}$ molecules are left."
+      }
+    ]
+  },
+  "c30-4-5-c": {
+    "lessonId": "c30-4-5",
+    "title": "Predicting Acid–Base Reactions, Part 3: Which Side Is Favoured?",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Writing the reaction",
+        "t": 16.287
+      },
+      {
+        "title": "Downhill",
+        "t": 46.356
+      },
+      {
+        "title": "A reaction that hardly goes",
+        "t": 88.397
+      },
+      {
+        "title": "A strong acid",
+        "t": 130.467
+      },
+      {
+        "title": "Your turn",
+        "t": 170.358
+      },
+      {
+        "title": "Summary",
+        "t": 201.953
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-5-c:q",
+        "t": 180.369,
+        "prompt": "Hydrocyanic acid and sodium acetate react: $\\ce{HCN + CH3COO- <=> CN- + CH3COOH}$. At $25^\\circ\\text{C}$, $K_a$ is $6.2 \\times 10^{-10}$ for $\\ce{HCN}$ and $1.8 \\times 10^{-5}$ for $\\ce{CH3COOH}$. Which side is favoured?",
+        "choices": [
+          "Products: $\\ce{HCN}$ is the stronger acid.",
+          "Reactants: $\\ce{CH3COOH}$ is the stronger acid.",
+          "Products: $\\ce{CH3COOH}$ is the stronger acid.",
+          "Reactants: $\\ce{HCN}$ is the stronger acid."
+        ],
+        "answer": 1,
+        "working": "$\\ce{CH3COOH}$, formed on the right, is a stronger acid than $\\ce{HCN}$ on the left, so it gives its proton back: reactants are favoured."
+      }
+    ]
+  },
+  "c30-4-6": {
+    "lessonId": "c30-4-6",
+    "title": "Ka and Kb, Part 1: The Ionisation Constants",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The acid ionisation constant",
+        "t": 36.207
+      },
+      {
+        "title": "Nitrous acid",
+        "t": 83.693
+      },
+      {
+        "title": "The base ionisation constant",
+        "t": 107.488
+      },
+      {
+        "title": "Ammonia and cyanide",
+        "t": 145.003
+      },
+      {
+        "title": "Hydroxide, not hydronium",
+        "t": 176.439
+      },
+      {
+        "title": "Your turn",
+        "t": 194.392
+      },
+      {
+        "title": "Summary",
+        "t": 228.653
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-6:q",
+        "t": 204.106,
+        "prompt": "Which is the base ionisation constant expression, $K_b$, for the fluoride ion, $\\ce{F-}$, acting as a base in water?",
+        "choices": [
+          "$K_b = \\dfrac{[\\ce{HF}][\\ce{OH-}]}{[\\ce{F-}]}$",
+          "$K_b = \\dfrac{[\\ce{HF}][\\ce{H3O+}]}{[\\ce{F-}]}$",
+          "$K_b = \\dfrac{[\\ce{F-}]}{[\\ce{HF}][\\ce{OH-}]}$",
+          "$K_b = \\dfrac{[\\ce{HF}][\\ce{OH-}]}{[\\ce{F-}][\\ce{H2O}]}$"
+        ],
+        "answer": 0,
+        "working": "$\\ce{F-(aq) + H2O(l) <=> HF(aq) + OH-(aq)}$. Products over reactants, leaving out liquid water."
+      }
+    ]
+  },
+  "c30-4-6-b": {
+    "lessonId": "c30-4-6",
+    "title": "Ka and Kb, Part 2: The Link Through Water",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ion product of water",
+        "t": 21.383
+      },
+      {
+        "title": "Ka times Kb",
+        "t": 54.629
+      },
+      {
+        "title": "Three conjugate pairs",
+        "t": 85.85
+      },
+      {
+        "title": "The fluoride ion",
+        "t": 111.18
+      },
+      {
+        "title": "The ammonium ion",
+        "t": 140.423
+      },
+      {
+        "title": "Your turn",
+        "t": 163.845
+      },
+      {
+        "title": "Summary",
+        "t": 201.763
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-6-b:q",
+        "t": 176.153,
+        "prompt": "At $25^\\circ\\text{C}$, $K_a$ for nitrous acid, $\\ce{HNO2}$, is $5.6 \\times 10^{-4}$, and $K_w = 1.0 \\times 10^{-14}$. What is $K_b$ for the nitrite ion, $\\ce{NO2-}$?",
+        "choices": [
+          "$5.6 \\times 10^{-18}$",
+          "$5.6 \\times 10^{-4}$",
+          "$1.8 \\times 10^{-11}$",
+          "$1.8 \\times 10^{3}$"
+        ],
+        "answer": 2,
+        "working": "$K_b = \\dfrac{K_w}{K_a} = \\dfrac{1.0 \\times 10^{-14}}{5.6 \\times 10^{-4}} = 1.8 \\times 10^{-11}$"
+      }
+    ]
+  },
+  "c30-4-6-c": {
+    "lessonId": "c30-4-6",
+    "title": "Ka and Kb, Part 3: Comparing Acids and Bases",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Comparing with Ka",
+        "t": 20.305
+      },
+      {
+        "title": "The strongest conjugate base",
+        "t": 48.774
+      },
+      {
+        "title": "pKa",
+        "t": 78.303
+      },
+      {
+        "title": "Amphiprotic ions",
+        "t": 108.785
+      },
+      {
+        "title": "Which Ka?",
+        "t": 149.17
+      },
+      {
+        "title": "Your turn",
+        "t": 163.446
+      },
+      {
+        "title": "Summary",
+        "t": 202.655
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-6-c:q",
+        "t": 174.904,
+        "prompt": "At $25^\\circ\\text{C}$, $K_a$ for $\\ce{H3PO4}$ is $6.9 \\times 10^{-3}$ and $K_a$ for $\\ce{H2PO4-}$ is $6.2 \\times 10^{-8}$; $K_w = 1.0 \\times 10^{-14}$. Is a solution of sodium dihydrogen phosphate, $\\ce{NaH2PO4}$, acidic or basic?",
+        "choices": [
+          "Basic, because its $K_b$ is greater than its $K_a$.",
+          "Basic, because its $K_a$ is greater than its $K_b$.",
+          "Acidic, because its $K_b$ is greater than its $K_a$.",
+          "Acidic, because its $K_a$ is greater than its $K_b$."
+        ],
+        "answer": 3,
+        "working": "As a base, $\\ce{H2PO4-}$ forms $\\ce{H3PO4}$: $K_b = \\dfrac{1.0 \\times 10^{-14}}{6.9 \\times 10^{-3}} = 1.4 \\times 10^{-12}$. Its own $K_a$, $6.2 \\times 10^{-8}$, is larger, so the solution is acidic."
+      }
+    ]
+  },
+  "c30-4-7": {
+    "lessonId": "c30-4-7",
+    "title": "pH of Weak Acids and Bases, Part 1: The pH of a Weak Acid",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Setting up",
+        "t": 34.418
+      },
+      {
+        "title": "The approximation",
+        "t": 76.186
+      },
+      {
+        "title": "Acetic acid",
+        "t": 106.37
+      },
+      {
+        "title": "Your turn",
+        "t": 153.272
+      },
+      {
+        "title": "Summary",
+        "t": 186.584
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-7:q",
+        "t": 165.579,
+        "prompt": "What is the pH of a $0.200\\ \\text{mol/L}$ solution of benzoic acid, $\\ce{C6H5COOH}$, to two decimal places? At $25^\\circ\\text{C}$, $K_a = 6.3 \\times 10^{-5}$. Use the approximation; $\\text{pH} = -\\log[\\ce{H3O+}]$.",
+        "choices": [
+          "$4.90$",
+          "$2.45$",
+          "$0.70$",
+          "$11.55$"
+        ],
+        "answer": 1,
+        "working": "$[\\ce{H3O+}] = \\sqrt{6.3 \\times 10^{-5} \\times 0.200} = 3.55 \\times 10^{-3}\\ \\text{mol/L}$, so $\\text{pH} = -\\log(3.55 \\times 10^{-3}) = 2.45$."
+      }
+    ]
+  },
+  "c30-4-7-b": {
+    "lessonId": "c30-4-7",
+    "title": "pH of Weak Acids and Bases, Part 2: Weak Bases and Salts",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Weak bases",
+        "t": 17.293
+      },
+      {
+        "title": "Ammonia",
+        "t": 45.352
+      },
+      {
+        "title": "Salts",
+        "t": 88.96
+      },
+      {
+        "title": "Sodium acetate",
+        "t": 115.124
+      },
+      {
+        "title": "Your turn",
+        "t": 151.389
+      },
+      {
+        "title": "Summary",
+        "t": 184.823
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-7-b:q",
+        "t": 161.387,
+        "prompt": "What is the pH of a $0.250\\ \\text{mol/L}$ solution of ammonium chloride, $\\ce{NH4Cl}$, to two decimal places? At $25^\\circ\\text{C}$, $K_b$ for ammonia is $1.8 \\times 10^{-5}$ and $K_w = 1.0 \\times 10^{-14}$. Use the approximation.",
+        "choices": [
+          "$4.93$",
+          "$9.07$",
+          "$2.67$",
+          "$11.33$"
+        ],
+        "answer": 0,
+        "working": "The acid is $\\ce{NH4+}$: $K_a = \\dfrac{1.0 \\times 10^{-14}}{1.8 \\times 10^{-5}} = 5.56 \\times 10^{-10}$. $[\\ce{H3O+}] = \\sqrt{5.56 \\times 10^{-10} \\times 0.250} = 1.18 \\times 10^{-5}\\ \\text{mol/L}$, so $\\text{pH} = 4.93$."
+      }
+    ]
+  },
+  "c30-4-7-c": {
+    "lessonId": "c30-4-7",
+    "title": "pH of Weak Acids and Bases, Part 3: When the Approximation Fails",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Too much ionises",
+        "t": 16.968
+      },
+      {
+        "title": "The quadratic",
+        "t": 57.125
+      },
+      {
+        "title": "Hydrofluoric acid",
+        "t": 83.133
+      },
+      {
+        "title": "Your turn",
+        "t": 134.365
+      },
+      {
+        "title": "Summary",
+        "t": 178.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-7-c:q",
+        "t": 151.388,
+        "prompt": "What is the pH of a $0.0200\\ \\text{mol/L}$ solution of nitrous acid, $\\ce{HNO2}$, to two decimal places? At $25^\\circ\\text{C}$, $K_a = 5.6 \\times 10^{-4}$. The acid ionises too much for the approximation, so solve the quadratic.",
+        "choices": [
+          "$2.48$",
+          "$1.70$",
+          "$3.25$",
+          "$2.51$"
+        ],
+        "answer": 3,
+        "working": "$x^2 + 5.6 \\times 10^{-4}x - 1.12 \\times 10^{-5} = 0$, so $x = \\dfrac{-5.6 \\times 10^{-4} + \\sqrt{(5.6 \\times 10^{-4})^2 + 4(1.12 \\times 10^{-5})}}{2} = 3.08 \\times 10^{-3}\\ \\text{mol/L}$ and $\\text{pH} = 2.51$."
+      }
+    ]
+  },
+  "c30-4-7-d": {
+    "lessonId": "c30-4-7",
+    "title": "pH of Weak Acids and Bases, Part 4: Ka from a Measured pH",
+    "duration": 241,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Percent ionisation",
+        "t": 19.755
+      },
+      {
+        "title": "Methanoic acid",
+        "t": 46.358
+      },
+      {
+        "title": "Diluting raises it",
+        "t": 99.645
+      },
+      {
+        "title": "Working backwards",
+        "t": 137.472
+      },
+      {
+        "title": "Your turn",
+        "t": 170.375
+      },
+      {
+        "title": "Summary",
+        "t": 211.11
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-7-d:q",
+        "t": 185.213,
+        "prompt": "A $0.0500\\ \\text{mol/L}$ solution of benzoic acid has a pH of 2.76 at $25^\\circ\\text{C}$. What is the percent ionisation of the acid, to three significant figures? Percent ionisation $= \\dfrac{[\\ce{H3O+}]_{eq}}{c_{\\text{initial}}} \\times 100\\%$.",
+        "choices": [
+          "$0.174\\%$",
+          "$3.60\\%$",
+          "$3.48\\%$",
+          "$96.5\\%$"
+        ],
+        "answer": 2,
+        "working": "$[\\ce{H3O+}] = 10^{-2.76} = 1.74 \\times 10^{-3}\\ \\text{mol/L}$, and $\\dfrac{1.74 \\times 10^{-3}}{0.0500} \\times 100\\% = 3.48\\%$."
+      }
+    ]
+  },
+  "c30-4-8": {
+    "lessonId": "c30-4-8",
+    "title": "Buffers and Titration Curves, Part 1: How a Buffer Works",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a buffer is",
+        "t": 32.021
+      },
+      {
+        "title": "Spotting a buffer",
+        "t": 57.735
+      },
+      {
+        "title": "How it works",
+        "t": 96.748
+      },
+      {
+        "title": "Not a wall",
+        "t": 144.412
+      },
+      {
+        "title": "Your turn",
+        "t": 170.376
+      },
+      {
+        "title": "Summary",
+        "t": 201.742
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-8:q",
+        "t": 179.538,
+        "prompt": "Each solution contains equal amounts of the two substances. Which solution is a buffer?",
+        "choices": [
+          "Hydrochloric acid and sodium chloride",
+          "Nitrous acid, $\\ce{HNO2}$, and sodium nitrite, $\\ce{NaNO2}$",
+          "Acetic acid and hydrofluoric acid",
+          "Sodium hydroxide and ammonia"
+        ],
+        "answer": 1,
+        "working": "$\\ce{HNO2}$ is a weak acid, and $\\ce{NO2-}$ is its conjugate base. The other mixtures lack a weak acid with its conjugate base."
+      }
+    ]
+  },
+  "c30-4-8-b": {
+    "lessonId": "c30-4-8",
+    "title": "Buffers and Titration Curves, Part 2: The pH of a Buffer",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The buffer equation",
+        "t": 15.088
+      },
+      {
+        "title": "How well a buffer resists",
+        "t": 42.81
+      },
+      {
+        "title": "Choosing a buffer",
+        "t": 110.532
+      },
+      {
+        "title": "Your turn",
+        "t": 138.643
+      },
+      {
+        "title": "Summary",
+        "t": 179.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-8-b:q",
+        "t": 153.716,
+        "prompt": "A buffer contains $0.20\\ \\text{mol/L}$ acetic acid and $0.10\\ \\text{mol/L}$ sodium acetate. At $25^\\circ\\text{C}$, $K_a = 1.8 \\times 10^{-5}$. What is its pH, to two decimal places? Use $[\\ce{H3O+}] = K_a \\times \\dfrac{[\\text{acid}]}{[\\text{conjugate base}]}$.",
+        "choices": [
+          "$4.44$",
+          "$5.05$",
+          "$4.74$",
+          "$2.72$"
+        ],
+        "answer": 0,
+        "working": "$[\\ce{H3O+}] = 1.8 \\times 10^{-5} \\times \\dfrac{0.20}{0.10} = 3.6 \\times 10^{-5}\\ \\text{mol/L}$, so $\\text{pH} = -\\log(3.6 \\times 10^{-5}) = 4.44$."
+      }
+    ]
+  },
+  "c30-4-8-c": {
+    "lessonId": "c30-4-8",
+    "title": "Buffers and Titration Curves, Part 3: Reading Titration Curves",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A titration curve",
+        "t": 14.859
+      },
+      {
+        "title": "A weak acid",
+        "t": 55.931
+      },
+      {
+        "title": "A weak base",
+        "t": 100.669
+      },
+      {
+        "title": "Reading the curve",
+        "t": 127.801
+      },
+      {
+        "title": "Your turn",
+        "t": 174.892
+      },
+      {
+        "title": "Summary",
+        "t": 215.402
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-8-c:q",
+        "t": 189.599,
+        "prompt": "$25.00\\ \\text{mL}$ of acetic acid is titrated with $0.150\\ \\text{mol/L}$ sodium hydroxide. The steep part of the curve is centred on $20.0\\ \\text{mL}$. One mole of $\\ce{NaOH}$ reacts with one mole of $\\ce{CH3COOH}$. What is the concentration of the acetic acid?",
+        "choices": [
+          "$0.188\\ \\text{mol/L}$",
+          "$0.00300\\ \\text{mol/L}$",
+          "$0.150\\ \\text{mol/L}$",
+          "$0.120\\ \\text{mol/L}$"
+        ],
+        "answer": 3,
+        "working": "$n(\\ce{NaOH}) = 0.150 \\times 0.0200 = 0.00300\\ \\text{mol} = n(\\ce{CH3COOH})$, so $c = \\dfrac{0.00300}{0.02500} = 0.120\\ \\text{mol/L}$."
+      }
+    ]
+  },
+  "c30-4-8-d": {
+    "lessonId": "c30-4-8",
+    "title": "Buffers and Titration Curves, Part 4: Indicators and Polyprotic Acids",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing an indicator",
+        "t": 17.471
+      },
+      {
+        "title": "One for each titration",
+        "t": 42.87
+      },
+      {
+        "title": "Polyprotic acids",
+        "t": 89.335
+      },
+      {
+        "title": "A polyprotic titration",
+        "t": 140.444
+      },
+      {
+        "title": "Your turn",
+        "t": 185.037
+      },
+      {
+        "title": "Summary",
+        "t": 223.062
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-4-8-d:q",
+        "t": 199.954,
+        "prompt": "Hydrazine, a weak base, is titrated with hydrochloric acid. The middle of the steep drop is at pH 4.7. Which indicator should be used? Choose the one whose colour-change range includes the pH at the equivalence point.",
+        "choices": [
+          "Methyl orange, 3.2 to 4.4",
+          "Phenolphthalein, 8.2 to 10.0",
+          "Bromocresol green, 3.8 to 5.4",
+          "Bromothymol blue, 6.0 to 7.6"
+        ],
+        "answer": 2,
+        "working": "Bromocresol green changes colour from pH 3.8 to 5.4, which includes 4.7. Methyl orange stops at 4.4, and phenolphthalein would change colour long before the equivalence point."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",

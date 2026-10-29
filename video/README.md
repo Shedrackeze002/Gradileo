@@ -300,7 +300,8 @@ Lessons learned while scripting (the script check does not catch these):
   `speechText` (before "two", an ion name or a bracket, and after "of", "as" or "and"); any other
   use of the metal should be reworded so it is one of those. `speechText` also respells "deca" and
   "decahydrate" (otherwise "dih-KA"), "heptaoxide", "pipetted", "electronegativity" (which loses its
-  "neg") and Svante Arrhenius. Whisper writes many chemistry words its own way ("methanol" for
+  "neg"), Svante Arrhenius, Le Chatelier, and the organic names ethene, propene, propyne, ketone,
+  cycloalkane and methoxymethane. Whisper writes many chemistry words its own way ("methanol" for
   methanal, "boils" for Boyle's, "SATP", "iron II"); check those with Kokoro's phonemes before
   changing anything: methanal, nona, valence, phenolphthalein and intermolecular are said right.
 

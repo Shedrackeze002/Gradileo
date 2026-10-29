@@ -676,9 +676,18 @@ items ship or decisions change.
      potentials) and `engine/chem/organic.ts` (one model of a carbon skeleton gives its IUPAC name
      and formulas, so names and structures always agree). Grade 12 students are now recommended it,
      with a check on Grade 11 skills first.
-   - Next: the Grade 12 Chemistry explainer videos, then English 10, 20 and 30. The privacy policy
-     and terms still describe Gradileo as a mathematics platform; their wording is the owner's to
-     change.
+   - Done (29 October 2026): the Grade 12 Chemistry explainer videos, all 116, rendered and in Drive
+     (checked: Drive holds every file of all 116). Eight writers scripted them half a unit each;
+     new figures include voltaic and electrolytic cells, line and structural formulas of organic
+     molecules, potential energy diagrams with a catalysed path, redox tables and titration curves.
+     The pronunciation checks found Le Chatelier said "luh CHATE-lee-er", and ethene, propene,
+     propyne, ketone, cycloalkane and methoxymethane said wrongly; each is respelled for the voice
+     in `speechText`, and the 15 videos with them were made again. Writing them also found a
+     mistake in lesson 2.4 (multiplying only the electrons breaks the charge, not the atoms) and a
+     bug in `engine/chem/organic.ts` (tetrachloromethane written CHCl4), both fixed. Grades 10 to 12
+     Chemistry now have 327 videos; they go on YouTube after the maths.
+   - Next: English 10, 20 and 30 (public-domain texts only). The privacy policy and terms still
+     describe Gradileo as a mathematics platform; their wording is the owner's to change.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
      longer set in Alberta (about 1,000 mentions: towns, lakes, parks, teams, Alberta's GST). Town
      lists and real distance, daylight and temperature data now belong to invented towns (Riverton,
