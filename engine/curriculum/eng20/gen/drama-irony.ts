@@ -86,13 +86,13 @@ interface Effect {
   wrong: string[];
 }
 const EFFECTS: Effect[] = [
-  { device: 'soliloquy', lead: 'Macbeth, alone, on his way to Duncan’s room.', line: M.DAGGER, right: 'It lets the audience into Macbeth’s mind, so we see how disturbed he is, and wonder whether the dagger is real, just before the murder.', wrong: ['It tells Lady Macbeth that the murder is done.', 'It proves that the witches have sent him a real dagger.', 'It lightens the mood with a joke before a serious scene.'] },
-  { device: 'aside', lead: 'Duncan has just named Malcolm heir to the throne, in front of all his lords.', line: M.STARS_HIDE, right: 'It shows the audience Macbeth’s secret thoughts of murder while, on stage, he seems a loyal subject: we know what Duncan cannot see.', wrong: ['It warns Duncan that he is in danger.', 'It shows that Macbeth has given up his ambition.', 'It is a remark to Banquo that the King overhears.'] },
-  { device: 'comic', lead: 'The drunken Porter answers the knocking on the morning after the murder.', line: M.PORTER_BONFIRE, right: 'His jokes ease the horror for a moment, yet they make the castle a kind of hell, which is exactly what the murder has made it.', wrong: ['It shows that the Porter helped to plan the murder.', 'It tells the audience that Duncan is still alive.', 'It is a soliloquy revealing Macbeth’s fears.'] },
-  { device: 'prophecy', lead: 'The witches greet Macbeth on the heath.', line: M.ALL_HAIL, right: 'The prophecy plants the idea of the crown in Macbeth’s mind and sets the tragedy in motion.', wrong: ['It warns Macbeth never to try to become king.', 'It tells the audience that Banquo will murder Duncan.', 'It ends the play’s main conflict.'] },
-  { device: 'stage', lead: 'Macbeth has just murdered Duncan, and a knocking begins at the gate.', line: M.WAKE_DUNCAN, right: 'The repeated knocking builds suspense and fear: someone is at the gate, and the murderers may be found out.', wrong: ['It tells the audience that Duncan has woken up.', 'It is a joke that makes the murder less frightening.', 'It shows that the witches have come to the castle.'] },
-  { device: 'equivocation', lead: 'In the witches’ cave, an apparition of a bloody child tells Macbeth:', line: M.NONE_OF_WOMAN_BORN, right: 'The words are true in a sense Macbeth cannot see, so they fill him with false confidence: “none of woman born” does not include a man “untimely ripp’d” from his mother’s womb.', wrong: ['The apparition is lying outright, and Macbeth knows it.', 'The words warn Macbeth plainly that Macduff will kill him.', 'The apparition is joking to lighten the mood.'] },
-  { device: 'monologue', lead: 'Lennox speaks to another lord about recent events.', line: M.LENNOX_IRONY, right: 'Through its mocking irony, the audience learns that the thanes now see through Macbeth and suspect him of the murders.', wrong: ['It shows that Lennox fully believes Macbeth’s story.', 'It reveals Lennox’s private thoughts while he is alone.', 'It tells the audience that Fleance really killed Banquo.'] },
+  { device: 'soliloquy', lead: 'Macbeth, alone, on his way to Duncan’s room.', line: M.DAGGER, right: 'It lets us into Macbeth’s mind just before the murder, so we see how disturbed he is and wonder whether the dagger is real.', wrong: ['It tells Lady Macbeth, who is listening nearby, that the murder is done and that she can now ring the bell.', 'It proves to the audience that the witches have really sent Macbeth a magic dagger to use against the sleeping King.', 'It lightens the mood with a joke before the murder, so that the audience can relax for a moment.'] },
+  { device: 'aside', lead: 'Duncan has just named Malcolm heir to the throne, in front of all his lords.', line: M.STARS_HIDE, right: 'It shows us Macbeth’s secret thoughts of murder while, on stage, he seems a loyal subject: we know what Duncan cannot see.', wrong: ['It warns Duncan, who hears every word, that he is in danger from the very man he has just honoured and trusted.', 'It shows that Macbeth has given up his ambition now that Malcolm, and not he, will be the next king.', 'It is a remark to Banquo that the King overhears, and it makes Duncan suspect Macbeth from then on.'] },
+  { device: 'comic', lead: 'The drunken Porter answers the knocking on the morning after the murder.', line: M.PORTER_BONFIRE, right: 'His jokes ease the horror for a moment, yet they make the castle a kind of hell, which is exactly what the murder has made it.', wrong: ['It shows that the Porter helped to plan the murder, and that he is now laughing at the King’s death.', 'It tells the audience that Duncan is still alive and well, so the tension of the murder scene can safely relax for a while.', 'It shows that the castle is a cheerful place, where even the servants enjoy themselves after a feast.'] },
+  { device: 'prophecy', lead: 'The witches greet Macbeth on the heath.', line: M.ALL_HAIL, right: 'The prophecy plants the idea of the crown in Macbeth’s mind and sets the tragedy in motion.', wrong: ['It warns Macbeth never to try to become king, because the crown will bring him only sorrow.', 'It tells the audience that Banquo, not Macbeth, will be the one to murder Duncan.', 'It ends the play’s main conflict by settling, at the start, who will rule Scotland.'] },
+  { device: 'stage', lead: 'Macbeth has just murdered Duncan, and a knocking begins at the gate.', line: M.WAKE_DUNCAN, right: 'The repeated knocking builds suspense and fear: someone is at the gate, and the murderers may be found out.', wrong: ['It tells the audience that Duncan has woken up and is knocking on his chamber door for help.', 'It is a joke that makes the murder less frightening, because the knocking sounds so ordinary and homely.', 'It shows that the witches have come to the castle to claim Macbeth’s soul for his crime.'] },
+  { device: 'equivocation', lead: 'In the witches’ cave, an apparition of a bloody child tells Macbeth:', line: M.NONE_OF_WOMAN_BORN, right: 'The words are true in a sense Macbeth cannot see, so they make him overconfident: Macduff, “untimely ripp’d”, was not born in the usual way.', wrong: ['The apparition is lying outright, and Macbeth knows it, so he decides to ignore everything the witches show him in the cave.', 'The words warn Macbeth plainly that Macduff will be the man to kill him, so he prepares to flee from Scotland at once.', 'The apparition is joking to lighten the mood, since the scene in the cave has been so dark and frightening.'] },
+  { device: 'monologue', lead: 'Lennox speaks to another lord about recent events.', line: M.LENNOX_IRONY, right: 'Through its mocking irony, the audience learns that the thanes now see through Macbeth and suspect him of the murders.', wrong: ['It shows that Lennox fully believes Macbeth’s story, and that the thanes still trust their new king completely.', 'It reveals Lennox’s private thoughts while he is alone on stage, so no other character can hear him.', 'It tells the audience that Fleance really killed his father Banquo, and that he fled to escape justice.'] },
 ];
 
 function devicesQ(rng: Rng, d: Difficulty) {
@@ -160,55 +160,55 @@ interface Dramatic {
 const DRAMATIC: Dramatic[] = [
   {
     lead: 'Duncan speaks of the traitor Thane of Cawdor, just as Macbeth enters:', line: M.NO_ART, who: 'Duncan',
-    knows: 'Macbeth, the man walking in, has already thought of murdering him.', wrongKnows: ['Macbeth has already been crowned king.', 'Banquo is plotting against him.', 'The Thane of Cawdor is still alive and free.'],
-    effect: 'Duncan admits he can never judge a man by his face, then warmly greets the next traitor: we watch him make the same mistake again.', wrongEffects: ['It reassures the audience that Duncan has learned his lesson.', 'It makes the audience laugh at the Thane of Cawdor.', 'It reveals Macbeth’s plan to everyone on stage.'],
+    knows: 'Macbeth, the man walking in, has already thought of murdering him.', wrongKnows: ['Macbeth has already been crowned king in Duncan’s place.', 'Banquo, the man walking in, is plotting with the rebels against him.', 'The Thane of Cawdor is still alive and has escaped to Norway.'],
+    effect: 'Duncan admits he cannot read a man’s mind in his face, then warmly greets the next traitor: he makes the same mistake again.', wrongEffects: ['It reassures the audience that Duncan has learned his lesson, and that he will never trust anyone so easily again.', 'It makes the audience laugh at the Thane of Cawdor, who was foolish enough to be caught and executed.', 'It reveals Macbeth’s plan to everyone on stage, so the lords begin to watch him closely from now on.'],
     summary: 'Duncan says no one can read a traitor’s mind in his face, just as Macbeth, who has already thought of murder, enters.',
   },
   {
     lead: 'Duncan arrives at Macbeth’s castle:', line: M.PLEASANT_SEAT, who: 'Duncan',
-    knows: 'Lady Macbeth means to have him murdered in this castle tonight.', wrongKnows: ['The castle is about to be attacked by the Norwegians.', 'Macbeth has fled to England.', 'Banquo is waiting inside to arrest him.'],
-    effect: 'The King praises the sweet air of the place where he will be murdered, which makes the scene quietly chilling.', wrongEffects: ['It shows that Duncan suspects the Macbeths.', 'It is a joke that lightens the mood.', 'It tells the audience that Duncan will be safe.'],
+    knows: 'Lady Macbeth means to have him murdered in this castle tonight.', wrongKnows: ['The castle is about to be attacked by the Norwegian army.', 'Macbeth has fled to England, leaving his wife alone.', 'Banquo is waiting inside the castle with soldiers to arrest him.'],
+    effect: 'The King praises the sweet air of the place where he will be murdered, which makes the scene quietly chilling.', wrongEffects: ['It shows that Duncan suspects the Macbeths, and is only pretending to admire their castle.', 'It is a joke that lightens the mood after the tense scenes of Lady Macbeth’s plotting.', 'It tells the audience that Duncan will be safe, because the castle is so peaceful, sweet-aired and well kept.'],
     summary: 'Duncan praises the pleasant air of the castle where Lady Macbeth plans to have him murdered that night.',
   },
   {
     lead: 'Macduff tells the household that the King has been murdered:', line: M.WHAT_IN_OUR_HOUSE, who: 'Macduff and Banquo',
-    knows: 'Lady Macbeth helped to plan the murder and smeared the grooms with blood herself.', wrongKnows: ['Duncan is not really dead.', 'Banquo committed the murder.', 'Macduff killed the King.'],
-    effect: 'Her shocked “What, in our house?” is pure acting, and Banquo’s reply, “Too cruel anywhere”, shows how hollow her concern sounds.', wrongEffects: ['It shows that Lady Macbeth is truly innocent.', 'It reveals the murderer to everyone on stage.', 'It makes the scene comic.'],
+    knows: 'Lady Macbeth helped to plan the murder and smeared the grooms with blood.', wrongKnows: ['Duncan is not really dead, but only badly wounded in his bed.', 'Banquo committed the murder and hid the daggers in the grooms’ room.', 'Macduff killed the King before raising the alarm to cover himself.'],
+    effect: 'Her shocked “What, in our house?” is acting, and Banquo’s reply, “Too cruel anywhere”, shows how hollow her concern sounds.', wrongEffects: ['It shows that Lady Macbeth is truly innocent, and just as shocked by the murder as everyone else in the house.', 'It reveals the murderer to everyone on stage, because Lady Macbeth gives herself away with her first words.', 'It makes the scene comic, as the whole household runs about in their nightclothes shouting for help.'],
     summary: 'Lady Macbeth cries, “What, in our house?”, as though shocked by the murder she helped to plan.',
   },
   {
     lead: 'The morning after the murder, Lennox describes the stormy night:', line: M.ROUGH_NIGHT, who: 'Lennox',
-    knows: 'Macbeth has just murdered the King in that same night.', wrongKnows: ['Macbeth slept through the storm.', 'Lennox caused the storm.', 'The chimneys were blown down by the Porter.'],
-    effect: 'Macbeth’s flat reply, “’Twas a rough night”, is a chilling understatement: we know just how rough his night was.', wrongEffects: ['It shows that Macbeth is bored by the weather.', 'It proves that Macbeth is innocent.', 'It tells Lennox what Macbeth has done.'],
+    knows: 'Macbeth has just murdered the King in that same night.', wrongKnows: ['Macbeth slept soundly through the whole storm.', 'Lennox caused the storm with the witches’ help.', 'The chimneys were knocked down by the drunken Porter.'],
+    effect: 'Macbeth’s flat reply, “’Twas a rough night”, is a chilling understatement: we know how rough his night was.', wrongEffects: ['It shows that Macbeth is bored by Lennox’s long speech about the weather, and wants to be left alone to rest.', 'It proves to the audience that Macbeth is innocent, since he slept through the whole storm.', 'It tells Lennox plainly what Macbeth has done, so Lennox knows the truth from this moment.'],
     summary: 'Lennox describes the wild night, and Macbeth, who has just killed the King, answers only, “’Twas a rough night.”',
   },
   {
     lead: 'Banquo and Fleance ride up to the palace gate at dusk:', line: M.RAIN_TONIGHT, who: 'Banquo',
-    knows: 'The men waiting in the dark have been sent by Macbeth to kill him and his son.', wrongKnows: ['Fleance has already been killed.', 'The feast has been cancelled.', 'Macbeth is waiting at the gate to welcome him.'],
-    effect: 'Banquo’s small talk about rain becomes the cue for his murder, and the murderer’s “Let it come down” has a deadly second meaning.', wrongEffects: ['It tells the audience that Banquo will escape.', 'It makes the audience laugh at the weather.', 'It shows that Banquo suspects the murderers.'],
+    knows: 'The men waiting in the dark have been sent by Macbeth to kill him and his son.', wrongKnows: ['Fleance has already been killed by the men waiting at the gate.', 'The feast has been cancelled because Macbeth has fallen ill.', 'Macbeth himself is waiting at the gate to welcome him to the feast.'],
+    effect: 'Banquo’s small talk about rain becomes the cue for his murder, and the murderer’s “Let it come down” takes on a deadly meaning.', wrongEffects: ['It tells the audience that Banquo will escape, since the rain will hide him from the murderers.', 'It makes the audience laugh at Banquo’s worry about the weather, which eases the tension of the scene before the feast.', 'It shows that Banquo suspects the murderers, and that his remark about rain is a secret warning to Fleance to run.'],
     summary: 'Banquo remarks that it will rain tonight, not knowing that the men in the dark have been sent to kill him.',
   },
   {
     lead: 'At the banquet, Macbeth raises his cup to the lords:', line: M.WHOM_WE_MISS, who: 'the lords at the banquet',
-    knows: 'Macbeth has just been told that Banquo lies dead in a ditch.', wrongKnows: ['Banquo is on his way to the feast.', 'Fleance has been captured.', 'Lady Macbeth has poisoned the wine.'],
-    effect: 'His false wish that Banquo were present is answered at once when the ghost rises again, which turns the toast into horror.', wrongEffects: ['It shows that Macbeth truly misses his friend.', 'It reveals the murder to the lords.', 'It calms Macbeth before the end of the feast.'],
+    knows: 'Macbeth has just been told that Banquo lies dead in a ditch.', wrongKnows: ['Banquo is still on his way to the feast and will arrive late.', 'Fleance has been captured and is locked in the castle.', 'Lady Macbeth has poisoned the wine in Macbeth’s cup.'],
+    effect: 'His false wish that Banquo were there is answered at once when the ghost rises again, turning the toast into horror.', wrongEffects: ['It shows that Macbeth truly misses his old friend and regrets that he cannot be at the feast.', 'It reveals the murder to the lords, who suddenly understand why Banquo has not come to the feast tonight.', 'It calms Macbeth down, so that the rest of the feast passes pleasantly and without trouble.'],
     summary: 'Macbeth toasts “our dear friend Banquo, whom we miss”, though he knows he has had Banquo murdered.',
   },
   {
     lead: 'In England, Macduff asks Ross for news of his family:', line: M.WELL_AT_PEACE, who: 'Macduff',
-    knows: 'Macduff’s wife and children have been murdered, so they are “at peace” only in death.', wrongKnows: ['Macduff’s family has fled safely to Ireland.', 'Ross has not been to Fife.', 'Macbeth has made peace with Macduff.'],
-    effect: 'Ross’s careful words delay the blow, and we wait in dread for Macduff to understand.', wrongEffects: ['It reassures the audience that the family is safe.', 'It makes Macduff laugh with relief.', 'It shows that Ross is on Macbeth’s side.'],
+    knows: 'Macduff’s wife and children have been murdered: they are “at peace” only in death.', wrongKnows: ['Macduff’s wife and children have fled safely across the sea to Ireland.', 'Ross has not been to Fife at all, and is only guessing.', 'Macbeth has offered to make peace with Macduff and to protect his family.'],
+    effect: 'Ross’s careful words delay the blow, and we wait in dread for Macduff to understand.', wrongEffects: ['It reassures the audience that Macduff’s family is safe at home.', 'It makes Macduff laugh with relief after so many months of worry.', 'It shows that Ross is secretly on Macbeth’s side and wants to hurt Macduff.'],
     summary: 'Ross tells Macduff that his family were “well at peace” when he left them, knowing that they have been murdered.',
   },
 ];
 /** Moments with no dramatic irony: the characters know what the audience knows. */
 const PLAIN: string[] = [
-  'A wounded captain tells Duncan how bravely Macbeth fought against the rebels.',
-  'Malcolm and Donalbain agree to flee to England and Ireland after their father’s murder.',
-  'The witches stir their cauldron and chant “Double, double, toil and trouble”.',
-  'Ross tells Macduff plainly that his wife and children have been savagely slaughtered.',
-  'Malcolm tells his soldiers to cut boughs from Birnam Wood and carry them.',
-  'Macbeth tells his wife that Duncan is coming to the castle tonight.',
+  'A wounded captain tells Duncan how bravely Macbeth fought against the rebels and the Norwegian army.',
+  'Malcolm and Donalbain agree to flee to England and Ireland after their father’s murder, to keep themselves safe.',
+  'The witches stir their cauldron in a dark cave and chant “Double, double, toil and trouble”.',
+  'Ross tells Macduff plainly that his wife and children have been savagely slaughtered, and Macduff grieves.',
+  'Malcolm tells his soldiers to cut boughs from Birnam Wood and carry them before them, to hide their numbers.',
+  'Macbeth tells his wife, who is waiting for him at the castle, that Duncan is coming there tonight.',
 ];
 
 type Kind = 'dramatic' | 'verbal' | 'situational';
@@ -232,26 +232,26 @@ const KINDS: Array<{ kind: Kind; lead: string; line?: Passage; why: string }> = 
 const EQUIVOCAL: Array<{ line: Passage; lead: string; ask: string; right: string; wrong: string[]; why: string }> = [
   {
     line: M.BIRNAM, lead: 'In the witches’ cave, a crowned child with a tree in its hand tells Macbeth:', ask: 'How does this prophecy come true?',
-    right: 'Malcolm’s soldiers cut branches from Birnam Wood and carry them to hide their numbers, so the wood seems to move to Dunsinane.',
-    wrong: ['A storm uproots the trees of Birnam Wood and blows them to the castle.', 'Macbeth moves his army to Birnam Wood, so the prophecy never applies.', 'The witches cast a spell that makes the trees walk.'],
+    right: 'Malcolm’s soldiers cut branches from Birnam Wood and carry them to hide their numbers, so the wood seems to move.',
+    wrong: ['A great storm uproots the trees of Birnam Wood and blows them all the way up the hill to Dunsinane castle.', 'Macbeth moves his army out to Birnam Wood to meet Malcolm, so the prophecy never applies.', 'The witches cast a spell that makes the trees of Birnam Wood walk to Dunsinane on their own roots.'],
     why: 'In Act 5, Scene 4, Malcolm orders, “Let every soldier hew him down a bough, / And bear’t before him”. The words came true, but not as Macbeth understood them.',
   },
   {
     line: M.NONE_OF_WOMAN_BORN, lead: 'In the witches’ cave, a bloody child tells Macbeth:', ask: 'How does this prophecy come true?',
-    right: 'Macduff was “untimely ripp’d” from his mother’s womb, delivered by surgery rather than born in the usual way, and he kills Macbeth.',
-    wrong: ['Macbeth is killed by a woman, Lady Macduff.', 'No one ever harms Macbeth, and he dies of old age.', 'Malcolm is revealed to be the son of a witch.'],
+    right: 'Macduff was “untimely ripp’d” from his mother’s womb, not born in the usual way, and he kills Macbeth.',
+    wrong: ['Macbeth is killed by a woman, Lady Macduff, since the prophecy said nothing about women.', 'No one ever harms Macbeth, and he dies of old age, still king, as the apparition promised.', 'Malcolm is revealed to be the son of a witch, not of a woman, and he kills Macbeth in battle.'],
     why: 'Macbeth took “none of woman born” to mean no man at all. Macduff, “from his mother’s womb / Untimely ripp’d”, is the exception hidden in the words.',
   },
   {
     line: M.EQUIVOCATION_OF_FIEND, lead: 'Macbeth hears that Birnam Wood seems to be moving:', ask: 'What does Macbeth begin to realize about the witches’ promises?',
     right: 'They were equivocations: true in their words, but meant to mislead him into a false sense of safety.',
-    wrong: ['They were plain lies that he should never have believed.', 'They were warnings that he understood correctly all along.', 'They were jokes that meant nothing at all.'],
+    wrong: ['They were plain lies from the very start, and none of the witches’ words will ever come true.', 'They were honest warnings, and he has understood them correctly all along.', 'They were only jokes and riddles that meant nothing at all, so he can ignore them.'],
     why: 'He doubts “th’ equivocation of the fiend, / That lies like truth”: the prophecies were literally true, but deceived him.',
   },
   {
     line: M.SECURITY, lead: 'Hecate tells the witches how the apparitions will work on Macbeth:', ask: 'Why do the apparitions give Macbeth promises that seem to make him safe?',
     right: 'False confidence (“security”) will make him overreach, and it is “mortals’ chiefest enemy”.',
-    wrong: ['They want to protect him from Macduff.', 'They have decided to make up for their earlier lies.', 'They want him to give up the crown.'],
+    wrong: ['They want to protect him from Macduff and keep him safely on the throne for the rest of his life.', 'They have decided to make up for their earlier lies and help him at last.', 'They want him to feel safe enough to give up the crown and live in peace.'],
     why: 'Hecate says he will “spurn fate, scorn death” and that “security / Is mortals’ chiefest enemy”: the promises are a trap that feeds his overconfidence.',
   },
 ];
