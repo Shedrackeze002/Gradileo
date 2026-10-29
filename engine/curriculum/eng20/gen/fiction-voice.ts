@@ -29,30 +29,30 @@ const FORMS: Forms[] = [
   {
     context: 'NAME turned over the exam paper.',
     fis: 'Question one—easy, surely! {He} had practised it a hundred times.',
-    direct: '“I’ve practised this a hundred times,” {he} thought.',
+    direct: '“I’ve practised this question a hundred times,” {he} thought.',
     reported: '{He} thought that {he} had practised the first question many times.',
-    plain: '{He} picked up {his} pen and began to write.',
+    plain: '{He} picked up {his} pen and began to write the first answer.',
   },
   {
     context: 'NAME stood at the bus stop as the rain came down harder.',
     fis: 'Late again, of course. Why did the number 9 never, ever come?',
-    direct: '“Why is the bus always late?” {he} wondered.',
-    reported: '{He} wondered why the bus was always late.',
-    plain: '{He} pulled up {his} hood and checked the timetable.',
+    direct: '“Why is the number 9 bus never on time?” {he} wondered.',
+    reported: '{He} wondered why the number 9 bus was always so late.',
+    plain: '{He} pulled up {his} hood and checked the timetable on the pole.',
   },
   {
     context: 'NAME looked round the crowded hall for {his} sister.',
     fis: 'There she was at last—and wearing that ridiculous hat again!',
-    direct: '“She’s wearing that hat again,” {he} thought.',
+    direct: '“She’s wearing that ridiculous hat again,” {he} thought.',
     reported: '{He} noticed that {his} sister was wearing the same hat again.',
     plain: '{He} waved and walked towards the front of the hall.',
   },
   {
     context: 'The phone rang for the third time. NAME stared at it.',
     fis: 'Three times in an hour! What on earth could Mr. Okafor want now?',
-    direct: '“What does he want now?” {he} asked {him}self.',
-    reported: '{He} wondered what Mr. Okafor could want.',
-    plain: 'At last {he} picked it up.',
+    direct: '“What on earth does Mr. Okafor want now?” {he} asked {him}self.',
+    reported: '{He} wondered what Mr. Okafor could want after three calls.',
+    plain: 'At last {he} picked it up and said a polite good afternoon.',
   },
 ];
 
@@ -71,15 +71,15 @@ const WHOSE: Voice[] = [
     excerpt: PARTY_EYESORE,
     ask: 'Whose attitude does this sentence express?',
     answer: 'The Sheridan family’s snobbish view, slipped into the narration',
-    wrong: ['The narrator’s own judgement, which the story asks us to share', 'Laura’s sympathy for the dead man’s family', 'The cottagers’ pride in their homes'],
+    wrong: ['The narrator’s own judgement, which the story asks us to share', 'Laura’s own sympathy for the dead man and his family', 'The cottagers’ pride in their own small homes and gardens'],
     why: '“The greatest possible eyesore” and “no right to be in that neighbourhood” are the words a wealthy family would use. Mansfield lets their prejudice speak through the narration so that the reader can judge it.',
   },
   {
     lead: `In ${titled(BRILL)}, Miss Brill takes her old fur out of its box for her Sunday walk:`,
     excerpt: BRILL_FUR,
     ask: 'Whose voice do we hear in “Dear little thing! It was nice to feel it again.”?',
-    answer: 'Miss Brill’s own fond thoughts, in her own words, without a tag such as “she thought”',
-    wrong: ['The narrator’s mocking judgement of the shabby fur', 'The fur speaking to Miss Brill', 'A passer-by in the park, admiring the fur'],
+    answer: 'Miss Brill’s own fond thoughts, in her own words, without a tag',
+    wrong: ['The narrator’s mocking judgement of the shabby old fur', 'The fur itself, speaking aloud to Miss Brill in the story', 'A passer-by in the park, admiring the fur from a bench'],
     why: 'The exclamation and the pet name belong to Miss Brill, but they are not in quotation marks or tagged: this is free indirect style.',
   },
   {
@@ -94,16 +94,16 @@ const WHOSE: Voice[] = [
     lead: `In ${titled(PARTY)}, Laura begs her sister Jose to stop the party, and Jose pretends not to understand:`,
     excerpt: PARTY_PRETEND,
     ask: 'Whose thought is “Why did Jose pretend?”',
-    answer: 'Laura’s, given in the narration without quotation marks',
-    wrong: ['Jose’s', 'The narrator’s, speaking directly to the reader', 'Their mother’s'],
+    answer: 'Laura’s, folded into the narration',
+    wrong: ['Jose’s, as she pretends not to understand', 'The narrator’s, speaking directly to the reader', 'Their mother’s, from the next room'],
     why: 'Laura is the one who believes Jose is pretending; her question is folded into the narration with no tag.',
   },
   {
     lead: `In ${titled(BRILL)}, Miss Brill watches the other people who sit on the benches every Sunday:`,
     excerpt: BRILL_CUPBOARDS,
     ask: 'Whose view of the other people is this, and what irony does it carry?',
-    answer: 'Miss Brill’s, and it fits her too: she also lives alone in a little dark room',
-    wrong: ['The narrator’s, and it proves the others are dangerous', 'The young couple’s, mocking the old people', 'The band leader’s, judging his audience'],
+    answer: 'Miss Brill’s, and it fits her too: she also lives in a little dark room',
+    wrong: ['The narrator’s, and it proves the others are dangerous and strange', 'The young couple’s, mocking the old people on the benches', 'The band leader’s, judging his audience from the bandstand'],
     why: 'The breathless “even—even cupboards!” is Miss Brill’s, but the reader later sees her own room is “like a cupboard”: she describes herself without knowing it.',
   },
 ];
@@ -113,24 +113,24 @@ const REVEAL: Voice[] = [
     lead: `The narrator of ${titled(ARABY)} describes his boyhood love for his friend’s sister:`,
     excerpt: ARABY_SUMMONS,
     ask: 'What does the narrator’s voice reveal about him?',
-    answer: 'He is looking back as an older man, with gentle irony at his younger self',
-    wrong: ['He is a boy telling events as they happen, with no hindsight', 'He despises the girl and wants revenge on her', 'He is the girl’s brother, describing her from outside'],
+    answer: 'He is an older man looking back with gentle irony at his younger self',
+    wrong: ['He is a boy telling events as they happen, with no hindsight', 'He despises the girl and wants revenge on her for refusing him', 'He is the girl’s brother, Mangan, describing his own sister'],
     why: 'Calling his young feelings “foolish blood” shows an older narrator who sees more than the boy did, but remembers him fondly.',
   },
   {
     lead: `The narrator of ${titled(FROG)} describes old Simon Wheeler telling his tale:`,
     excerpt: FROG_WHEELER,
     ask: 'What does the narrator’s own language reveal about him?',
-    answer: 'He is educated and rather formal, and his polished style contrasts comically with Wheeler’s rambling',
-    wrong: ['He is a miner from the camp who speaks just like Wheeler', 'He is bored and leaves before Wheeler begins', 'He believes every word of Wheeler’s story'],
+    answer: 'He is educated and formal, which contrasts comically with Wheeler’s rambling',
+    wrong: ['He is a miner from the camp who speaks in just the same way as Wheeler', 'He is bored and leaves the tavern before Wheeler even begins his tale', 'He believes every word of Wheeler’s story and admires Jim Smiley'],
     why: 'Phrases such as “gentle-flowing key” and “betrayed the slightest suspicion of enthusiasm” are a cultured writer’s; Wheeler’s tale that follows is in country dialect. The gap is the joke.',
   },
   {
     lead: `The narrator of ${titled(WALLPAPER)} writes in a secret journal:`,
     excerpt: PAPER_JOHN,
     ask: 'What does this aside, in brackets, reveal about the narrator?',
-    answer: 'She feels unable to speak openly to anyone, so she confides only in her hidden journal',
-    wrong: ['She trusts her husband completely and tells him everything', 'She is a doctor writing notes about a patient', 'She is writing a letter to be published in a newspaper'],
+    answer: 'She cannot speak openly to anyone, so she confides only in her journal',
+    wrong: ['She trusts her husband completely and tells him everything she feels', 'She is a doctor writing careful notes about a patient in her care', 'She is writing a letter that she hopes a newspaper will publish'],
     why: '“I would not say it to a living soul… but this is dead paper”: her real thoughts can only go on paper, which shows how silenced she feels.',
   },
 ];
@@ -141,7 +141,7 @@ function voiceQ(rng: Rng, d: Difficulty) {
     if (pick === 0) {
       return {
         prompt: `In ${titled(HERON)}, most of the story is told in the past tense about Sylvia. Then, as she sits high in the pine at dawn, the narrator writes:\n\n${quoteBlock(HERON_LOOK)}\n\nWhat changes in the narration here, and what is the effect?`,
-        parts: [part(mc(rng, 'The narrator speaks directly to Sylvia, in the present tense, which makes the moment urgent and close.', ['Sylvia takes over and tells the rest of the story in the first person.', 'The narrator jumps forward many years to summarize Sylvia’s life.', 'A new narrator, the young hunter, begins to tell the story.']))],
+        parts: [part(mc(rng, 'The narrator speaks to Sylvia in the present tense, making the moment urgent.', ['Sylvia takes over and tells the rest of the story in the first person.', 'The narrator jumps forward many years to summarize the rest of Sylvia’s life.', 'A new narrator, the young hunter, begins to tell the story in his own words.']))],
         hints: ['Look at who “you” is in “Now look down again, Sylvia”, and at the tense of “you will see him again”.'],
         solution: ['The narrator addresses Sylvia by name and moves into the present tense, as if watching beside her.', 'The shift pulls the reader into the moment of discovery. Sylvia is not narrating: the narrator is speaking to her.'],
       };
@@ -149,7 +149,7 @@ function voiceQ(rng: Rng, d: Difficulty) {
     if (pick === 1) {
       return {
         prompt: `In ${titled(ARABY)}, the boy is waiting impatiently for his uncle to come home and give him money for the bazaar:\n\n${quoteBlock(ARABY_UNCLE)}\n\nWhat does the narrator leave the reader to infer from “I could interpret these signs”?`,
-        parts: [part(mc(rng, 'That his uncle has come home late after drinking, which does not bode well for the bazaar', ['That his uncle has brought him a present from the bazaar', 'That his uncle is too ill to eat dinner', 'That his uncle is angry with him for asking for money']))],
+        parts: [part(mc(rng, 'That his uncle has been drinking, which does not bode well for the bazaar', ['That his uncle has brought him home a present from the bazaar himself', 'That his uncle is too ill to eat dinner and has gone straight to bed', 'That his uncle is angry with him for asking for money for the bazaar']))],
         hints: ['What might a man who talks to himself and makes the hallstand rock as he throws down his coat have been doing all evening?'],
         solution: ['The narrator does not say it outright, but the signs (talking to himself, the hallstand rocking) suggest that the uncle has been drinking.', 'The narrator trusts the reader to read the clues as the boy did; a moment later we learn the uncle “had forgotten” the bazaar.'],
       };
@@ -185,7 +185,7 @@ function voiceQ(rng: Rng, d: Difficulty) {
 
 type Reason = 'naive' | 'contradicts' | 'grudge' | 'reliable';
 const REASON_LABEL: Record<Reason, string> = {
-  naive: 'Carefully: the narrator is a child who reports accurately what they see but does not understand it.',
+  naive: 'Carefully: the narrator is a child who reports what they see but does not understand it.',
   contradicts: 'Not much: the narrator’s own actions contradict what they claim about themselves.',
   grudge: 'Not much: the narrator has a strong grudge against the person they are describing.',
   reliable: 'Fully: the narrator reports events plainly and admits their own mistakes.',
@@ -197,12 +197,12 @@ interface Gap {
   wrong: string[];
 }
 const GAPS: Gap[] = [
-  { text: 'Grandpa has started calling me by my mum’s name. I think it is a new game, so I answer to it, and he smiles. Mum goes very quiet when I tell her about it.', answer: 'Grandpa’s memory is failing, and he is confusing the narrator with Mum.', wrong: ['Grandpa has invented a new game and Mum is jealous of it.', 'Mum has changed her name.', 'The narrator is pretending to be Mum to trick Grandpa.'] },
-  { text: 'The men who came this morning took our sofa and the television. Dad said they were only borrowing them for a while, so I helped carry the cushions to their van.', answer: 'The family’s belongings are being taken away, probably because of money troubles.', wrong: ['The neighbours are borrowing furniture for a party.', 'Dad has bought a new sofa and television.', 'The narrator is helping friends move house.'] },
-  { text: 'Every night this week Mum has stayed up late at the kitchen table with a pile of letters and a calculator. She must be very good at maths, because she does it so often.', answer: 'The family is struggling with money, and Mum is worried about paying the bills.', wrong: ['Mum is training to become a maths teacher.', 'Mum is writing letters to old friends.', 'Mum has won a maths competition.'] },
+  { text: 'Grandpa has started calling me by my mum’s name. I think it is a new game, so I answer to it, and he smiles. Mum goes very quiet when I tell her about it.', answer: 'Grandpa’s memory is failing, and he is confusing the narrator with Mum.', wrong: ['Grandpa has invented a new game and Mum is jealous of it.', 'Mum has changed her name, and Grandpa has not yet heard about it.', 'The narrator is pretending to be Mum to trick Grandpa into smiling.'] },
+  { text: 'The men who came this morning took our sofa and the television. Dad said they were only borrowing them for a while, so I helped carry the cushions to their van.', answer: 'The family’s things are being taken away, probably over money troubles.', wrong: ['The neighbours are borrowing the furniture for a big party this weekend.', 'Dad has bought a new sofa and television, and the old ones are going.', 'The narrator is helping some family friends move into a new house.'] },
+  { text: 'Every night this week Mum has stayed up late at the kitchen table with a pile of letters and a calculator. She must be very good at maths, because she does it so often.', answer: 'Money is tight, and Mum is worried about paying the bills.', wrong: ['Mum is training at night to become a maths teacher.', 'Mum is writing long letters to her old friends abroad.', 'Mum is practising for a maths competition at work.'] },
   { text: 'Everyone at the office agrees that I am the calmest person there. When Omar moved my stapler again, I only threw it a little, and only at the wall.', answer: 'The narrator has a temper and is not calm at all.', wrong: ['Omar threw the stapler at the narrator.', 'The narrator is the calmest person in the office.', 'Everyone at the office is afraid of Omar.'] },
-  { text: 'I have never once been jealous of my sister. That is why, when the judges asked whose painting it was, I didn’t think it worth mentioning that it was hers and not mine.', answer: 'The narrator is jealous, and let the judges believe the sister’s painting was the narrator’s own.', wrong: ['The sister copied the narrator’s painting.', 'The judges chose the sister’s painting as the winner.', 'The narrator is proud of the sister and told the judges so.'] },
-  { text: 'I am a very honest person, as I always tell people. I only said I had finished the report because it was nearly finished, and nobody would have checked anyway.', answer: 'The narrator lied about the report, and is less honest than they claim.', wrong: ['The report really was finished.', 'Someone else lied about the report.', 'The narrator always checks other people’s work.'] },
+  { text: 'I have never once been jealous of my sister. That is why, when the judges asked whose painting it was, I didn’t think it worth mentioning that it was hers and not mine.', answer: 'The narrator is jealous, and let the judges think the painting was theirs.', wrong: ['The sister copied the narrator’s painting and entered it as her own.', 'The judges chose the sister’s painting as the winner of the prize.', 'The narrator is proud of the sister and told the judges it was hers.'] },
+  { text: 'I am a very honest person, as I always tell people. I only said I had finished the report because it was nearly finished, and nobody would have checked anyway.', answer: 'The narrator lied about the report, and is less honest than they claim.', wrong: ['The report really was finished, just as the narrator said it was.', 'Someone else lied about the report and blamed the narrator for it.', 'The narrator always checks other people’s work before it is sent.'] },
 ];
 
 const NARRATORS: Record<Reason, string[]> = {
@@ -246,7 +246,7 @@ function reliabilityQ(rng: Rng, d: Difficulty) {
   if (d === 3) {
     return {
       prompt: `${titled(WALLPAPER)} ends with the narrator creeping around the room, the wallpaper torn from the walls. Her husband, John, breaks in:\n\n${quoteBlock(PAPER_FAINTED)}\n\nWhat does the reader understand that the narrator does not?`,
-      parts: [part(mc(rng, 'John has fainted from the shock of seeing her breakdown; she sees him only as something in her way.', ['John is pretending to faint to trick her into leaving the room.', 'The narrator has finally recovered and is cleaning the room.', 'John has fainted because the room is too hot.']))],
+      parts: [part(mc(rng, 'John has fainted at the sight of her breakdown; to her, he is just in the way.', ['John is only pretending to faint, to trick her into leaving the room.', 'The narrator has finally recovered and is tidying the room for John.', 'John has fainted because the locked room is far too hot and airless.']))],
       hints: ['The narrator cannot see herself as John sees her. What has he just found when he opens the door?'],
       solution: ['John faints at the sight of his wife creeping around a room stripped of its paper, a sign of how far her mind has gone.', 'She calls him “that man”, wonders why he fainted, and creeps over him: the gap between her account and what the reader understands shows how unreliable she has become.'],
     };

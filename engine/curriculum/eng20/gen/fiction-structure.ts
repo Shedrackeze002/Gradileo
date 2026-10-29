@@ -105,32 +105,32 @@ interface StructEffect {
 const STRUCT_EFFECTS: StructEffect[] = [
   {
     lead: `In ${titled(FROG)} by Mark Twain, a well-spoken narrator introduces old Simon Wheeler, who then tells his rambling tale without ever smiling. What is the main effect of this frame?`,
-    answer: 'The contrast between the polished narrator and Wheeler’s deadpan, rambling voice creates much of the humour.',
-    wrong: ['It lets the reader see events happening in two places at the same time.', 'It hides the ending so that the story finishes on a cliffhanger.', 'It shows the narrator’s thoughts while keeping Wheeler’s secret.'],
+    answer: 'The gap between the polished narrator and Wheeler’s deadpan rambling makes it funny.',
+    wrong: ['It lets the reader follow events happening in two different places at the same time.', 'It hides how the frog contest ends, so the story finishes on a cliffhanger.', 'It reveals the narrator’s private thoughts while keeping Wheeler’s secret hidden.'],
     why: 'The frame puts two very different voices side by side: the narrator’s careful, educated prose and Wheeler’s earnest yarn. The comedy comes from the gap between them.',
   },
   {
     lead: `In ${titled(BRIDE)} by Stephen Crane, the story cuts between the town marshal travelling home with his new bride and a drunken gunman roaming the town’s streets. What is the main effect of this structure?`,
-    answer: 'The reader knows a clash is coming before the characters do, which builds suspense about what will happen when the two storylines meet.',
-    wrong: ['It reveals the ending first and then explains how it happened.', 'It lets an older narrator look back on the events with regret.', 'It shows the same event twice, from two characters’ memories.'],
+    answer: 'The reader knows a clash is coming before the characters do, which builds suspense.',
+    wrong: ['It reveals the ending first, then goes back to explain how the clash came about.', 'It lets an older narrator look back on the day in Yellow Sky with regret.', 'It shows the same event twice, once from each of two characters’ memories.'],
     why: 'Each cut back to the gunman reminds the reader of the danger waiting for the unarmed marshal, so tension grows as the train gets closer.',
   },
   {
     lead: `${titled(DESIREE)} by Kate Chopin opens with a visit to Désirée and her baby, then goes back eighteen years to tell how Désirée was found as a toddler, with no one knowing who her parents were. What is the main effect of this flashback?`,
-    answer: 'It plants the mystery of Désirée’s unknown origins, which the rest of the story, and its ending, depend on.',
-    wrong: ['It lets the reader hear Désirée tell her own story in her own words.', 'It shows two storylines happening at the same time.', 'It tells the reader the ending before the story begins.'],
+    answer: 'It plants the mystery of Désirée’s unknown parents, on which the ending depends.',
+    wrong: ['It lets the reader hear Désirée tell her own story, in her own words, years later.', 'It cuts between two storylines happening at the same time in different houses.', 'It tells the reader how the story ends before the main events begin.'],
     why: 'The reader learns early that Désirée’s parents are unknown, so when her husband blames her for their child’s appearance, everyone, including the reader, assumes the answer lies in her past. The ending turns that assumption upside down.',
   },
   {
     lead: 'A story begins with NAME, aged twelve, leaving {his} village on a crowded bus. It ends, forty years later, with {him} stepping off a bus in the same village square. What is the main effect of this circular structure?',
-    answer: 'Returning to the same place invites the reader to measure how much NAME has changed, and how much the village has, over a lifetime.',
-    wrong: ['It builds suspense by cutting between two places at the same time.', 'It hides who is telling the story until the last page.', 'It makes the story move faster by skipping the middle.'],
+    answer: 'Ending where it began invites the reader to see how much NAME and the village have changed.',
+    wrong: ['It builds suspense by cutting between the village and the city at the same moment.', 'It hides who is telling the story until NAME steps off the bus on the last page.', 'It makes the story move faster by skipping the forty years in the middle entirely.'],
     why: 'When a story ends where it began, the repeated scene works like a mirror: the reader compares the two moments and sees the change between them.',
   },
   {
     lead: 'A novel about a shipwreck opens with the survivors already on the beach, then jumps back to the voyage and the storm. What is the main effect of beginning near the end?',
-    answer: 'The reader knows some people survive, so the suspense shifts from whether they live to how they survived and who did not.',
-    wrong: ['The reader cannot tell whether anyone survives until the last page.', 'Two storylines happening at the same time are told in turn.', 'A second narrator tells the story to listeners in a frame.'],
+    answer: 'Knowing that some survive, the reader wonders how they did, and who did not.',
+    wrong: ['The reader cannot tell whether anyone survives until the last page.', 'Two storylines happening at the same time are told in turn, chapter by chapter.', 'A second narrator tells the whole story to listeners gathered around a fire.'],
     why: 'Starting near the end gives away part of the outcome, so the reader’s curiosity moves from what happens to how and why it happens.',
   },
 ];
@@ -142,9 +142,9 @@ interface StructChange {
   why: string;
 }
 const STRUCT_CHANGES: StructChange[] = [
-  { story: 'A chronological story follows NAME through one summer working on {his} grandfather’s fishing boat.', answer: 'Begin and end with an older NAME telling the story to {his} grandchildren on the same boat.', wrong: ['Tell the summer’s events in the order they happened, but in more detail.', 'Cut out the first week of the summer.', 'Add a second character who works on the boat.'], why: 'The older NAME and the grandchildren become the frame, and the summer on the boat becomes the story told inside it.' },
-  { story: 'A chronological story tells how NAME and NAME2 planned and ran a charity concert, from the first idea to the final song.', answer: 'Have NAME tell the whole story years later to a reporter, opening and closing with their interview.', wrong: ['Add more songs to the concert.', 'Tell the planning in the order it happened, day by day.', 'Remove NAME2 from the story.'], why: 'The interview becomes the frame, and the planning of the concert becomes the story told inside it.' },
-  { story: 'A chronological story follows NAME’s first week as a volunteer firefighter in a dry, windy summer.', answer: 'Open and close with NAME, now the fire chief, telling new recruits about that week around a station table.', wrong: ['Add a second fire later in the week.', 'Tell the week in the order it happened, hour by hour.', 'End the story a day earlier.'], why: 'The fire chief’s talk to the recruits becomes the frame, and the first week becomes the story told inside it.' },
+  { story: 'A chronological story follows NAME through one summer working on {his} grandfather’s fishing boat.', answer: 'Begin and end with an older NAME telling the story to {his} grandchildren.', wrong: ['Tell the summer’s events in the order they happened, but in more detail.', 'Cut out the first week of the summer and start on the day of the first storm.', 'Add a second character, a cousin, who works on the boat beside NAME all summer.'], why: 'The older NAME and the grandchildren become the frame, and the summer on the boat becomes the story told inside it.' },
+  { story: 'A chronological story tells how NAME and NAME2 planned and ran a charity concert, from the first idea to the final song.', answer: 'Open and close with NAME telling the story to a reporter years later.', wrong: ['Add more songs to the concert and describe each performer in detail.', 'Tell the planning in the order it happened, day by day, up to the concert.', 'Remove NAME2 from the story so that NAME plans the concert alone.'], why: 'The interview becomes the frame, and the planning of the concert becomes the story told inside it.' },
+  { story: 'A chronological story follows NAME’s first week as a volunteer firefighter in a dry, windy summer.', answer: 'Open and close with NAME, now the fire chief, telling new recruits about that week.', wrong: ['Add a second, bigger fire later in the week, on the hottest day of the summer.', 'Tell the week in the order it happened, hour by hour, from the first alarm.', 'End the story a day earlier, before the last and most dangerous call-out.'], why: 'The fire chief’s talk to the recruits becomes the frame, and the first week becomes the story told inside it.' },
 ];
 
 function structQ(rng: Rng, d: Difficulty) {
@@ -242,7 +242,7 @@ function paceQ(rng: Rng, d: Difficulty) {
     const s = rng.pick(SLOW);
     return {
       prompt: `${block(fill(s.text, cast))}\n\nThis moment is the turning point of the story. Why does the writer slow it down?`,
-      parts: [part(mc(rng, 'To build suspense at the most important moment, so the reader feels it as it happens.', ['To cover a long stretch of time quickly.', 'To fill in background information about NAME’s childhood.', 'To show that the moment is unimportant.'].map((w) => fill(w, cast))))],
+      parts: [part(mc(rng, 'To build suspense, so the reader lives the key moment as it happens.', ['To cover a long stretch of time quickly and move on to the ending.', 'To fill in background information about NAME’s childhood and family.', 'To show that the moment is unimportant and can be passed over.'].map((w) => fill(w, cast))))],
       hints: ['Writers spend the most words on the moments that matter most. What happens to the reader’s attention when a second is stretched across several sentences?'],
       solution: [`Here ${fill(s.why, cast)}.`, 'Slowing the turning point down holds the reader inside the moment and builds suspense about what happens next.'],
     };
@@ -252,7 +252,7 @@ function paceQ(rng: Rng, d: Difficulty) {
       const s = rng.pick(SLOW);
       return {
         prompt: `${block(fill(s.text, cast))}\n\nHow does the writer **slow down** this moment?`,
-        parts: [part(mc(rng, 'By breaking a few seconds into small actions, sights and sounds', ['By jumping ahead to what happens weeks later', 'By summarizing many events in one sentence', 'By going back in time to an earlier memory']))],
+        parts: [part(mc(rng, 'By breaking a few seconds into small actions and sounds', ['By jumping ahead to what happens weeks after this moment', 'By summarizing many events in a single quick sentence', 'By going back in time to a memory from years before']))],
         hints: ['Slowing down means spending many words on a short stretch of time. Look at how much happens in each sentence.'],
         solution: [`In this passage ${fill(s.why, cast)}.`, 'Breaking a moment into small details is the main way a writer slows time down.'],
       };

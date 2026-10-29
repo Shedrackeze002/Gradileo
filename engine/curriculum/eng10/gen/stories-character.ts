@@ -19,10 +19,10 @@ const L = 'e10-1-2';
 type Method = 'direct' | 'speech' | 'thoughts' | 'effect' | 'actions' | 'looks';
 const INDIRECT: Method[] = ['speech', 'thoughts', 'effect', 'actions', 'looks'];
 const METHOD_NAME: Record<Method, string> = {
-  direct: 'Direct characterization: the narrator states the trait',
+  direct: 'Direct: the narrator names the trait',
   speech: 'Speech: what the character says',
   thoughts: 'Thoughts: what the character thinks or feels',
-  effect: 'Effect on others: how other people react to the character',
+  effect: 'Effect on others: how others react to them',
   actions: 'Actions: what the character does',
   looks: 'Looks: the character’s appearance',
 };
@@ -89,14 +89,14 @@ interface CharExcerpt {
   wrong: string[];
 }
 const CHAR_EXCERPTS: CharExcerpt[] = [
-  { who: 'Vera', excerpt: WINDOW_ROMANCE, method: 'direct', exclude: ['thoughts', 'effect'], trait: 'She can invent a convincing story on the spot.', wrong: ['She is shy with strangers.', 'She is always truthful.', 'She is easily frightened.'] },
-  { who: 'the man', excerpt: FIRE_IMAGINATION, method: 'direct', exclude: ['thoughts', 'effect'], trait: 'He notices facts but not what they could mean for him.', wrong: ['He is fearful and overly cautious.', 'He is wise from many winters in the North.', 'He thinks deeply about life and death.'] },
-  { who: 'Della', lead: 'Della has climbed the stairs to a shop that buys hair, and the owner has just looked at hers.', excerpt: MAGI_SELL, method: 'speech', exclude: ['actions'], trait: 'Once she has made up her mind, she acts quickly.', wrong: ['She cannot make up her mind.', 'She is rude to everyone she meets.', 'She wants to keep the money for herself.'] },
-  { who: 'Mrs. Mallard', lead: 'An hour after hearing of her husband’s death, Mrs. Mallard thinks about the years ahead.', excerpt: HOUR_FREE, method: 'thoughts', exclude: ['direct'], trait: 'She longs to live her own life, for herself.', wrong: ['She is afraid of living alone.', 'She wishes her husband would come home.', 'She is jealous of her sister.'] },
+  { who: 'Vera', excerpt: WINDOW_ROMANCE, method: 'direct', exclude: ['thoughts', 'effect'], trait: 'She can invent a convincing story on the spot.', wrong: ['She is too shy to say much to a stranger.', 'She always tells visitors exactly what happened.', 'She is easily frightened by stories of ghosts.'] },
+  { who: 'the man', excerpt: FIRE_IMAGINATION, method: 'direct', exclude: ['thoughts', 'effect'], trait: 'He notices facts but not what they could mean for him.', wrong: ['He is so fearful that he turns back at every danger.', 'He is wise from many hard winters spent in the North.', 'He thinks deeply about man’s frailty and the universe.'] },
+  { who: 'Della', lead: 'Della has climbed the stairs to a shop that buys hair, and the owner has just looked at hers.', excerpt: MAGI_SELL, method: 'speech', exclude: ['actions'], trait: 'Once she has made up her mind, she acts quickly.', wrong: ['She cannot make up her mind and keeps delaying.', 'She is rude to the shop owner and insults her.', 'She wants to keep the money to spend on herself.'] },
+  { who: 'Mrs. Mallard', lead: 'An hour after hearing of her husband’s death, Mrs. Mallard thinks about the years ahead.', excerpt: HOUR_FREE, method: 'thoughts', exclude: ['direct'], trait: 'She longs to live her own life, for herself.', wrong: ['She is afraid of the long years of living alone.', 'She wishes her husband would come home again.', 'She is jealous of her sister Josephine’s life.'] },
   { who: 'the young man on trial', lead: 'The young man accused of loving the princess walks into the king’s arena.', excerpt: TIGER_YOUTH, method: 'effect', exclude: ['looks', 'direct'], trait: 'He is handsome and impressive.', wrong: ['He is cruel and frightening.', 'He is weak and sickly.', 'He is ordinary and easy to overlook.'] },
-  { who: 'Mr. White', lead: 'Sergeant-Major Morris has warned the Whites that the monkey’s paw causes sorrow.', excerpt: PAW_SNATCH, method: 'actions', exclude: ['speech', 'effect'], trait: 'He is curious about the paw and unwilling to let it go.', wrong: ['He is cautious and afraid of the paw.', 'He is generous with his guest.', 'He does not believe in the paw at all.'] },
-  { who: 'Della', lead: 'Della has decided to sell her long, beautiful hair, and has just let it down in front of the mirror.', excerpt: MAGI_HAIR, method: 'actions', exclude: ['looks', 'thoughts'], trait: 'She is torn about giving up the hair she treasures.', wrong: ['She does not care about her looks.', 'She is angry with Jim.', 'She is proud of being poor.'] },
-  { who: 'Jim', lead: 'Jim comes home on Christmas Eve.', excerpt: MAGI_JIM, method: 'looks', exclude: ['direct', 'thoughts'], trait: 'He is poor and weighed down by his responsibilities.', wrong: ['He is wealthy and carefree.', 'He is lazy and careless.', 'He is cruel to Della.'] },
+  { who: 'Mr. White', lead: 'Sergeant-Major Morris has warned the Whites that the monkey’s paw causes sorrow.', excerpt: PAW_SNATCH, method: 'actions', exclude: ['speech', 'effect'], trait: 'He is curious about the paw and unwilling to let it go.', wrong: ['He is cautious and wants nothing to do with the paw.', 'He is generous and eager to make his guest comfortable.', 'He does not believe in the paw’s power at all.'] },
+  { who: 'Della', lead: 'Della has decided to sell her long, beautiful hair, and has just let it down in front of the mirror.', excerpt: MAGI_HAIR, method: 'actions', exclude: ['looks', 'thoughts'], trait: 'She is torn about giving up the hair she treasures.', wrong: ['She does not care at all about how she looks.', 'She is angry with Jim for leaving her so little money.', 'She is proud of being poor and wants others to see it.'] },
+  { who: 'Jim', lead: 'Jim comes home on Christmas Eve.', excerpt: MAGI_JIM, method: 'looks', exclude: ['direct', 'thoughts'], trait: 'He is poor and weighed down by his responsibilities.', wrong: ['He is wealthy and carefree, with nothing to worry him.', 'He is lazy and careless about his work and his home.', 'He is harsh with Della and takes his troubles out on her.'] },
 ];
 const EXCERPT_STORY = (c: CharExcerpt) => `${titled(c.excerpt.story)}`;
 
@@ -183,13 +183,13 @@ interface TypeLine {
   answer: 'Round' | 'Flat' | 'Static' | 'Dynamic';
 }
 const TYPE_LINES: TypeLine[] = [
-  { text: 'We learn about NAME’s fears and hopes, {his} mixed feelings about {his} father and {his} secret love of poetry, and {he} surprises the reader more than once.', dim: 'complexity', answer: 'Round' },
+  { text: 'We learn NAME’s fears, {his} mixed feelings about {his} father and {his} secret love of poetry, and {he} often surprises us.', dim: 'complexity', answer: 'Round' },
   { text: 'NAME is brave but sometimes cruel, loyal to {his} friends yet jealous of them, and the story shows each side of {him} in turn.', dim: 'complexity', answer: 'Round' },
   { text: 'The shopkeeper, NAME, appears in three short scenes, and all the reader ever learns about {him} is that {he} is grumpy.', dim: 'complexity', answer: 'Flat' },
   { text: 'NAME, the bully, does nothing in the story except push younger students around; we learn nothing else about {him}.', dim: 'complexity', answer: 'Flat' },
-  { text: 'At the start, NAME refuses to share anything with {his} younger sister. By the end, after nursing the little girl through an illness, NAME hands over {his} most treasured book as a gift.', dim: 'change', answer: 'Dynamic' },
-  { text: 'NAME begins the story certain that {he} is better than everyone else in the village; after losing everything, {he} learns to ask others for help.', dim: 'change', answer: 'Dynamic' },
-  { text: 'NAME is selfish on the first page and just as selfish on the last; nothing that happens changes {him}.', dim: 'change', answer: 'Static' },
+  { text: 'At first NAME will share nothing with {his} little sister; after nursing her through an illness, {he} gives her {his} most treasured book.', dim: 'change', answer: 'Dynamic' },
+  { text: 'NAME begins certain that {he} is better than everyone in the village; after losing everything, {he} learns to ask others for help.', dim: 'change', answer: 'Dynamic' },
+  { text: 'NAME is selfish on the first page and just as selfish on the last; nothing that happens in the story changes {him} at all.', dim: 'change', answer: 'Static' },
   { text: 'Through floods, quarrels and a move to a new city, NAME stays exactly the same cheerful, stubborn person {he} was at the start.', dim: 'change', answer: 'Static' },
 ];
 const TYPE_WHAT: Record<string, string> = {
@@ -260,12 +260,12 @@ interface Inference {
 }
 const INFERENCES: Inference[] = [
   { detail: 'Every morning, NAME gives up {his} seat on the bus to an older passenger, even when {he} is tired.', trait: 'considerate', wrong: ['selfish', 'lazy', 'rude'] },
-  { detail: 'NAME counts the change from every purchase twice and writes the amount in a small notebook.', trait: 'careful with money', wrong: ['wasteful', 'forgetful', 'reckless'] },
+  { detail: 'NAME counts the change from every purchase twice and writes the amount in a small notebook.', trait: 'careful with money', wrong: ['wasteful with money', 'forgetful and disorganized', 'reckless with money'] },
   { detail: 'NAME laughs loudly at {his} own jokes and interrupts whenever anyone else is speaking.', trait: 'self-centred', wrong: ['shy', 'modest', 'thoughtful'] },
-  { detail: 'When {his} team loses the final, NAME is the first to walk over and shake the winners’ hands.', trait: 'gracious in defeat', wrong: ['bitter', 'arrogant', 'cowardly'] },
-  { detail: 'NAME has rewritten the first page of {his} story eleven times and still is not satisfied.', trait: 'determined to get it right', wrong: ['careless', 'lazy', 'easily satisfied'] },
+  { detail: 'When {his} team loses the final, NAME is the first to walk over and shake the winners’ hands.', trait: 'gracious in defeat', wrong: ['bitter about losing', 'arrogant and boastful', 'afraid of the winners'] },
+  { detail: 'NAME has rewritten the first page of {his} story eleven times and still is not satisfied.', trait: 'determined to get it right', wrong: ['careless about mistakes', 'too lazy to finish anything', 'satisfied with a first try'] },
   { detail: 'NAME checks the locks three times before bed and keeps a light on all night.', trait: 'anxious', wrong: ['carefree', 'reckless', 'bold'] },
-  { detail: 'NAME hides {his} report card under the mattress before {his} parents get home.', trait: 'worried about {his} parents’ reaction', wrong: ['proud of {his} marks', 'eager to share {his} news', 'careless about school'] },
+  { detail: 'NAME hides {his} report card under the mattress before {his} parents get home.', trait: 'worried about {his} parents’ reaction', wrong: ['proud to show {his} parents {his} marks', 'eager to share {his} good news at home', 'careless about school and {his} marks'] },
   { detail: 'After the party, NAME stays to wash every dish, though no one asked {him} to.', trait: 'helpful', wrong: ['lazy', 'rude', 'selfish'] },
   { detail: 'NAME spends all of {his} birthday money on a present for {his} little brother.', trait: 'generous', wrong: ['greedy', 'selfish', 'jealous'] },
   { detail: 'Although {he} is afraid of heights, NAME climbs the ladder to rescue the neighbour’s cat from the roof.', trait: 'brave', wrong: ['cowardly', 'cruel', 'lazy'] },
@@ -284,13 +284,13 @@ interface PdInference {
   why: string;
 }
 const PD_INFERENCES: PdInference[] = [
-  { who: 'Della', excerpt: MAGI_OPENING, trait: 'She is careful with money and has saved hard.', wrong: ['She is wasteful with money.', 'She is lazy and careless.', 'She is rich but mean.'], why: 'She saved pennies by bargaining hard and counted her money three times, which shows how carefully she manages what little she has.' },
-  { who: 'Della', lead: 'Della has cut off and sold her hair to buy Jim a present, and now she hears him on the stairs.', excerpt: MAGI_PRAYER, trait: 'She is anxious about how Jim will see her.', wrong: ['She is confident about her looks.', 'She is angry with Jim.', 'She does not care what Jim thinks.'], why: 'She prays that Jim will still think her pretty, which shows she is worried about his reaction to her short hair.' },
-  { who: 'Jim', lead: 'Della has just given Jim a chain for his watch, after receiving combs for her hair.', excerpt: MAGI_WATCH, trait: 'He gave up his greatest treasure for Della.', wrong: ['He is angry that Della sold her hair.', 'He cares more about the watch than about Della.', 'He is greedy and selfish.'], why: 'Jim sold the watch he was so proud of to buy Della’s combs, a sacrifice that shows his love for her.' },
-  { who: 'Framton Nuttel', excerpt: WINDOW_FRAMTON, trait: 'He is wrapped up in himself and his health.', wrong: ['He is modest and quiet.', 'He is curious about other people.', 'He is adventurous and daring.'], why: 'He tells a near-stranger the details of his illnesses, believing others want to hear them, which shows he is self-absorbed.' },
-  { who: 'Montresor', lead: 'Montresor, the narrator, has sworn revenge on Fortunato.', note: '*Immolation* means killing someone as a sacrifice.', excerpt: CASK_SMILE, trait: 'He is deceitful, hiding his hatred behind a smile.', wrong: ['He is forgiving and kind.', 'He is honest about his feelings.', 'He is shy and nervous.'], why: 'He smiles in Fortunato’s face while planning his death, so he hides his true feelings: he is deceitful.' },
-  { who: 'the man', excerpt: FIRE_FROST, trait: 'He does not grasp how dangerous the cold is.', wrong: ['He is terrified of the cold.', 'He is wise about life in the North.', 'He is careful and cautious.'], why: 'Fifty below zero is only “cold and uncomfortable” to him, so he does not see the danger to his life.' },
-  { who: 'Mr. White', lead: 'Sergeant-Major Morris has just warned the family that the monkey’s paw causes sorrow.', excerpt: PAW_SNATCH, trait: 'He is curious and tempted by the paw.', wrong: ['He is cautious and sensible.', 'He is afraid of the paw.', 'He is generous to his guest.'], why: 'Despite the warning, he snatches the paw out of the fire, which shows that his curiosity and temptation are stronger than his caution.' },
+  { who: 'Della', excerpt: MAGI_OPENING, trait: 'She is careful with money and has saved hard.', wrong: ['She spends money as soon as she gets any.', 'She is lazy and careless about her household.', 'She is rich but mean with her money.'], why: 'She saved pennies by bargaining hard and counted her money three times, which shows how carefully she manages what little she has.' },
+  { who: 'Della', lead: 'Della has cut off and sold her hair to buy Jim a present, and now she hears him on the stairs.', excerpt: MAGI_PRAYER, trait: 'She is anxious about how Jim will see her.', wrong: ['She is confident that she looks as lovely as ever.', 'She is angry with Jim for coming home so late.', 'She does not care what Jim thinks of her.'], why: 'She prays that Jim will still think her pretty, which shows she is worried about his reaction to her short hair.' },
+  { who: 'Jim', lead: 'Della has just given Jim a chain for his watch, after receiving combs for her hair.', excerpt: MAGI_WATCH, trait: 'He gave up his greatest treasure for Della.', wrong: ['He is angry that Della sold her hair.', 'He cares more about the watch than about Della.', 'He is greedy and wants the money for himself.'], why: 'Jim sold the watch he was so proud of to buy Della’s combs, a sacrifice that shows his love for her.' },
+  { who: 'Framton Nuttel', excerpt: WINDOW_FRAMTON, trait: 'He is wrapped up in himself and his health.', wrong: ['He is modest and quiet about his own troubles.', 'He is curious about other people and their lives.', 'He is adventurous and eager for danger.'], why: 'He tells a near-stranger the details of his illnesses, believing others want to hear them, which shows he is self-absorbed.' },
+  { who: 'Montresor', lead: 'Montresor, the narrator, has sworn revenge on Fortunato.', note: '*Immolation* means killing someone as a sacrifice.', excerpt: CASK_SMILE, trait: 'He is deceitful, hiding his hatred behind a smile.', wrong: ['He is forgiving and has put the insult behind him.', 'He is honest and open about his true feelings.', 'He is shy and nervous in Fortunato’s company.'], why: 'He smiles in Fortunato’s face while planning his death, so he hides his true feelings: he is deceitful.' },
+  { who: 'the man', excerpt: FIRE_FROST, trait: 'He does not grasp how dangerous the cold is.', wrong: ['He is terrified of the cold and of being alone.', 'He is wise from many years of life in the North.', 'He is careful and cautious about every danger.'], why: 'Fifty below zero is only “cold and uncomfortable” to him, so he does not see the danger to his life.' },
+  { who: 'Mr. White', lead: 'Sergeant-Major Morris has just warned the family that the monkey’s paw causes sorrow.', excerpt: PAW_SNATCH, trait: 'He is curious and tempted by the paw.', wrong: ['He is cautious and heeds his guest’s warning.', 'He is afraid of the paw and what it might do.', 'He is generous and polite to his guest.'], why: 'Despite the warning, he snatches the paw out of the fire, which shows that his curiosity and temptation are stronger than his caution.' },
   { who: 'Mrs. Mallard', lead: 'Mrs. Mallard has just learned that her husband is dead.', excerpt: HOUR_FREE, trait: 'She longs for independence.', wrong: ['She wants to remarry soon.', 'She depends on her husband for everything.', 'She is afraid of the years ahead.'], why: 'She rejoices that she will live for herself, which shows how much she longs to be independent.' },
 ];
 
