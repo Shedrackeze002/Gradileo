@@ -10885,6 +10885,1037 @@
       }
     ]
   },
+  "c30-1-2-d": {
+    "lessonId": "c30-1-2",
+    "title": "Calorimetry, Part 4: Heat Lost, Heat Gained and the Calorimeter",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Heat lost equals heat gained",
+        "t": 18.8
+      },
+      {
+        "title": "A hot metal in cold water",
+        "t": 45.611
+      },
+      {
+        "title": "Why the water hardly warms",
+        "t": 101.247
+      },
+      {
+        "title": "The simple calorimeter",
+        "t": 123.669
+      },
+      {
+        "title": "Four assumptions",
+        "t": 150.95
+      },
+      {
+        "title": "Your turn",
+        "t": 199.105
+      },
+      {
+        "title": "Summary",
+        "t": 239.718
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-2-d:q",
+        "t": 217.726,
+        "prompt": "A $50.0\\ \\text{g}$ piece of iron at $95.0^\\circ\\text{C}$ is dropped into $100.0\\ \\text{g}$ of water at $20.0^\\circ\\text{C}$ in an insulated cup. What is the final temperature? $c$: iron $0.449$, water $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$57.5^\\circ\\text{C}$",
+          "$23.8^\\circ\\text{C}$",
+          "$81.8^\\circ\\text{C}$",
+          "$27.3^\\circ\\text{C}$"
+        ],
+        "answer": 1,
+        "working": "$50.0(0.449)(95.0 - t_f) = 100.0(4.19)(t_f - 20.0)$, so $22.45(95.0 - t_f) = 419.0(t_f - 20.0)$ and $t_f = \\dfrac{2132.75 + 8380}{441.45} = 23.8^\\circ\\text{C}$."
+      }
+    ]
+  },
+  "c30-1-3": {
+    "lessonId": "c30-1-3",
+    "title": "Molar Enthalpy, Part 1: From Heat to Molar Enthalpy",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The water is the surroundings",
+        "t": 23.49
+      },
+      {
+        "title": "Molar enthalpy",
+        "t": 67.888
+      },
+      {
+        "title": "Dissolving ammonium nitrate",
+        "t": 111.829
+      },
+      {
+        "title": "Your turn",
+        "t": 181.3
+      },
+      {
+        "title": "Summary",
+        "t": 226.317
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-3:q",
+        "t": 199.882,
+        "prompt": "When $0.0500\\ \\text{mol}$ of sodium hydroxide, $\\ce{NaOH}$, dissolves in the water of a calorimeter, the water gains $2.22\\ \\text{kJ}$ of heat. What is the molar enthalpy of solution of sodium hydroxide?",
+        "choices": [
+          "$+44.4\\ \\text{kJ/mol}$",
+          "$-0.111\\ \\text{kJ/mol}$",
+          "$-44.4\\ \\text{kJ/mol}$",
+          "$+0.111\\ \\text{kJ/mol}$"
+        ],
+        "answer": 2,
+        "working": "The water gained heat, so the system lost it: $\\Delta H = -2.22\\ \\text{kJ}$. $\\Delta_r H_m = \\dfrac{-2.22\\ \\text{kJ}}{0.0500\\ \\text{mol}} = -44.4\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-3-b": {
+    "lessonId": "c30-1-3",
+    "title": "Molar Enthalpy, Part 2: Neutralisation and the Sign of ΔH",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two solutions, one mass",
+        "t": 21.071
+      },
+      {
+        "title": "Neutralisation",
+        "t": 53.469
+      },
+      {
+        "title": "The sign comes from the water",
+        "t": 125.408
+      },
+      {
+        "title": "Your turn",
+        "t": 160.352
+      },
+      {
+        "title": "Summary",
+        "t": 214.544
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-3-b:q",
+        "t": 184.106,
+        "prompt": "$40.0\\ \\text{mL}$ of $1.50\\ \\text{mol/L}$ $\\ce{HCl(aq)}$ and $40.0\\ \\text{mL}$ of $1.50\\ \\text{mol/L}$ $\\ce{NaOH(aq)}$ are mixed in a polystyrene cup. The temperature rises from $20.5^\\circ\\text{C}$ to $30.7^\\circ\\text{C}$. What is the molar enthalpy of neutralisation of the acid? Use $1.00\\ \\text{g/mL}$ and $4.19\\ \\text{J/(g·°C)}$.",
+        "choices": [
+          "$-57.0\\ \\text{kJ/mol}$",
+          "$+57.0\\ \\text{kJ/mol}$",
+          "$-28.5\\ \\text{kJ/mol}$",
+          "$-0.0570\\ \\text{kJ/mol}$"
+        ],
+        "answer": 0,
+        "working": "$Q = 80.0 \\times 4.19 \\times 10.2 = 3419\\ \\text{J} = 3.419\\ \\text{kJ}$ and $n(\\ce{HCl}) = 1.50 \\times 0.0400 = 0.0600\\ \\text{mol}$. The water warmed, so $\\Delta_r H_m = \\dfrac{-3.419}{0.0600} = -57.0\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-3-c": {
+    "lessonId": "c30-1-3",
+    "title": "Molar Enthalpy, Part 3: The Bomb Calorimeter",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Inside a bomb calorimeter",
+        "t": 19.666
+      },
+      {
+        "title": "Burning glucose",
+        "t": 63.797
+      },
+      {
+        "title": "A simple calorimeter for fuels",
+        "t": 115.768
+      },
+      {
+        "title": "Your turn",
+        "t": 139.332
+      },
+      {
+        "title": "Summary",
+        "t": 192.232
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-3-c:q",
+        "t": 162.261,
+        "prompt": "A $0.800\\ \\text{g}$ sample of methanol, $\\ce{CH3OH}$, burns in a bomb calorimeter with $C = 10.50\\ \\text{kJ/°C}$. The temperature rises by $1.73^\\circ\\text{C}$. What is the molar enthalpy of combustion of methanol? $M(\\ce{CH3OH}) = 32.05\\ \\text{g/mol}$.",
+        "choices": [
+          "$-728\\ \\text{kJ/mol}$",
+          "$+728\\ \\text{kJ/mol}$",
+          "$-22.7\\ \\text{kJ/mol}$",
+          "$-0.453\\ \\text{kJ/mol}$"
+        ],
+        "answer": 0,
+        "working": "$Q = 10.50 \\times 1.73 = 18.17\\ \\text{kJ}$ and $n = \\dfrac{0.800}{32.05} = 0.02496\\ \\text{mol}$, so $\\Delta_c H_m = \\dfrac{-18.17}{0.02496} = -728\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-3-d": {
+    "lessonId": "c30-1-3",
+    "title": "Molar Enthalpy, Part 4: Using a Molar Enthalpy",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From moles to energy",
+        "t": 18.65
+      },
+      {
+        "title": "Burning propane",
+        "t": 41.85
+      },
+      {
+        "title": "Melting ice",
+        "t": 83.079
+      },
+      {
+        "title": "How much fuel?",
+        "t": 122.06
+      },
+      {
+        "title": "Your turn",
+        "t": 180.539
+      },
+      {
+        "title": "Summary",
+        "t": 223.483
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-3-d:q",
+        "t": 198.138,
+        "prompt": "The molar enthalpy of combustion of ethanol, $\\ce{C2H5OH}$, is $-1366.8\\ \\text{kJ/mol}$. What is the enthalpy change when $23.0\\ \\text{g}$ of ethanol burns? $M(\\ce{C2H5OH}) = 46.08\\ \\text{g/mol}$.",
+        "choices": [
+          "$+682\\ \\text{kJ}$",
+          "$-31\\,436\\ \\text{kJ}$",
+          "$-29.7\\ \\text{kJ}$",
+          "$-682\\ \\text{kJ}$"
+        ],
+        "answer": 3,
+        "working": "$n = \\dfrac{23.0}{46.08} = 0.4991\\ \\text{mol}$, so $\\Delta H = 0.4991 \\times (-1366.8) = -682\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-4": {
+    "lessonId": "c30-1-4",
+    "title": "Communicating Enthalpy Changes, Part 1: Energy in the Equation",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four ways",
+        "t": 25.877
+      },
+      {
+        "title": "Which side?",
+        "t": 74.38
+      },
+      {
+        "title": "Reading an energy term",
+        "t": 105.744
+      },
+      {
+        "title": "No minus signs in energy terms",
+        "t": 141.509
+      },
+      {
+        "title": "Your turn",
+        "t": 165.881
+      },
+      {
+        "title": "Summary",
+        "t": 208.737
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-4:q",
+        "t": 182.331,
+        "prompt": "For $\\ce{2H2(g) + O2(g) -> 2H2O(g)}$, $\\Delta_r H = -483.6\\ \\text{kJ}$. How is this energy change written as an **energy term** in the equation?",
+        "choices": [
+          "$483.6\\ \\text{kJ}$, with the reactants",
+          "$483.6\\ \\text{kJ}$, with the products",
+          "$-483.6\\ \\text{kJ}$, with the products",
+          "$241.8\\ \\text{kJ}$, with the products"
+        ],
+        "answer": 1,
+        "working": "$\\Delta_r H$ is negative, so the energy is released: it is written with the products, as a positive amount, $483.6\\ \\text{kJ}$ for the equation as written."
+      }
+    ]
+  },
+  "c30-1-4-b": {
+    "lessonId": "c30-1-4",
+    "title": "Communicating Enthalpy Changes, Part 2: Molar Enthalpies from an Equation",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The equation as written",
+        "t": 18.529
+      },
+      {
+        "title": "One equation, three molar enthalpies",
+        "t": 47.326
+      },
+      {
+        "title": "From a molar enthalpy to the equation",
+        "t": 98.977
+      },
+      {
+        "title": "Your turn",
+        "t": 145.962
+      },
+      {
+        "title": "Summary",
+        "t": 190.136
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-4-b:q",
+        "t": 165.546,
+        "prompt": "For $\\ce{2SO2(g) + O2(g) -> 2SO3(g)}$, $\\Delta_r H = -197.8\\ \\text{kJ}$. What is the molar enthalpy of reaction per mole of $\\ce{SO3}$ that forms?",
+        "choices": [
+          "$-395.6\\ \\text{kJ/mol}$",
+          "$+98.9\\ \\text{kJ/mol}$",
+          "$-98.9\\ \\text{kJ/mol}$",
+          "$-197.8\\ \\text{kJ/mol}$"
+        ],
+        "answer": 2,
+        "working": "The equation forms $2\\ \\text{mol}$ of $\\ce{SO3}$: $\\Delta_r H_m = \\dfrac{-197.8\\ \\text{kJ}}{2\\ \\text{mol}} = -98.9\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-4-c": {
+    "lessonId": "c30-1-4",
+    "title": "Communicating Enthalpy Changes, Part 3: Enthalpy Diagrams",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Exothermic: the arrow points down",
+        "t": 22.554
+      },
+      {
+        "title": "Endothermic: the arrow points up",
+        "t": 63.562
+      },
+      {
+        "title": "Reading a diagram",
+        "t": 99.229
+      },
+      {
+        "title": "Your turn",
+        "t": 148.655
+      },
+      {
+        "title": "Summary",
+        "t": 195.129
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-4-c:q",
+        "t": 168.501,
+        "prompt": "An enthalpy diagram has $\\ce{2Mg(s) + O2(g)}$ on the upper line and $\\ce{2MgO(s)}$ on the lower line, with an arrow from the upper line down to the lower line labelled $1203.2\\ \\text{kJ}$. What is $\\Delta_r H$ for $\\ce{2Mg(s) + O2(g) -> 2MgO(s)}$?",
+        "choices": [
+          "$+1203.2\\ \\text{kJ}$, endothermic",
+          "$-1203.2\\ \\text{kJ}$, endothermic",
+          "$+1203.2\\ \\text{kJ}$, exothermic",
+          "$-1203.2\\ \\text{kJ}$, exothermic"
+        ],
+        "answer": 3,
+        "working": "The arrow starts at the reactants, $\\ce{2Mg(s) + O2(g)}$, and points down to the products: the system loses $1203.2\\ \\text{kJ}$, so $\\Delta_r H = -1203.2\\ \\text{kJ}$ and the reaction is exothermic."
+      }
+    ]
+  },
+  "c30-1-4-d": {
+    "lessonId": "c30-1-4",
+    "title": "Communicating Enthalpy Changes, Part 4: Diagrams, Masses and All Four Ways",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A diagram and a mass",
+        "t": 21.556
+      },
+      {
+        "title": "Photosynthesis, every way",
+        "t": 73.223
+      },
+      {
+        "title": "And as a diagram",
+        "t": 127.331
+      },
+      {
+        "title": "An enthalpy diagram has no hump",
+        "t": 149.887
+      },
+      {
+        "title": "Your turn",
+        "t": 177.747
+      },
+      {
+        "title": "Summary",
+        "t": 228.594
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-4-d:q",
+        "t": 199.259,
+        "prompt": "The enthalpy diagram for $\\ce{N2(g) + 3H2(g) -> 2NH3(g)}$ has the arrow pointing down, labelled $\\Delta H = -91.8\\ \\text{kJ}$. What is the enthalpy change when $6.00\\ \\text{g}$ of ammonia forms? $M(\\ce{NH3}) = 17.04\\ \\text{g/mol}$.",
+        "choices": [
+          "$-32.3\\ \\text{kJ}$",
+          "$-16.2\\ \\text{kJ}$",
+          "$+16.2\\ \\text{kJ}$",
+          "$-551\\ \\text{kJ}$"
+        ],
+        "answer": 1,
+        "working": "Per mole of ammonia: $\\dfrac{-91.8}{2} = -45.9\\ \\text{kJ/mol}$. $n = \\dfrac{6.00}{17.04} = 0.3521\\ \\text{mol}$, so $\\Delta H = 0.3521 \\times (-45.9) = -16.2\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-5": {
+    "lessonId": "c30-1-5",
+    "title": "Hess's Law, Part 1: Reversing and Multiplying Equations",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reversing an equation",
+        "t": 28.817
+      },
+      {
+        "title": "Multiplying an equation",
+        "t": 73.287
+      },
+      {
+        "title": "Both at once",
+        "t": 130.206
+      },
+      {
+        "title": "Your turn",
+        "t": 164.789
+      },
+      {
+        "title": "Summary",
+        "t": 207.805
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-5:q",
+        "t": 184.576,
+        "prompt": "Given $\\ce{2SO2(g) + O2(g) -> 2SO3(g)}\\quad \\Delta_r H = -197.8\\ \\text{kJ}$, what is $\\Delta_r H$ for $\\ce{SO3(g) -> SO2(g) + 1/2 O2(g)}$?",
+        "choices": [
+          "$-98.9\\ \\text{kJ}$",
+          "$+197.8\\ \\text{kJ}$",
+          "$+98.9\\ \\text{kJ}$",
+          "$-395.6\\ \\text{kJ}$"
+        ],
+        "answer": 2,
+        "working": "$\\ce{SO3}$ has moved to the reactant side, so the equation is reversed: $+197.8\\ \\text{kJ}$. Its coefficient went from 2 to 1, so it is multiplied by $\\tfrac{1}{2}$: $\\tfrac{1}{2} \\times (+197.8) = +98.9\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-5-b": {
+    "lessonId": "c30-1-5",
+    "title": "Hess's Law, Part 2: One Step or Several",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two routes to carbon dioxide",
+        "t": 22.686
+      },
+      {
+        "title": "Hess's law",
+        "t": 63.394
+      },
+      {
+        "title": "Why it must be true",
+        "t": 104.918
+      },
+      {
+        "title": "The target equation",
+        "t": 137.009
+      },
+      {
+        "title": "Your turn",
+        "t": 172.006
+      },
+      {
+        "title": "Summary",
+        "t": 212.778
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-5-b:q",
+        "t": 190.807,
+        "prompt": "Nitrogen dioxide can form in one step, $\\ce{N2(g) + 2O2(g) -> 2NO2(g)}$, or in two: $\\ce{N2(g) + O2(g) -> 2NO(g)}$, $\\Delta_r H = +182.6\\ \\text{kJ}$, then $\\ce{2NO(g) + O2(g) -> 2NO2(g)}$, $\\Delta_r H = -116.2\\ \\text{kJ}$. What is $\\Delta_r H$ for the one-step reaction?",
+        "choices": [
+          "$+298.8\\ \\text{kJ}$",
+          "$+66.4\\ \\text{kJ}$",
+          "$-66.4\\ \\text{kJ}$",
+          "$-298.8\\ \\text{kJ}$"
+        ],
+        "answer": 1,
+        "working": "The two steps add up to the one-step equation ($\\ce{2NO}$ cancels), so their enthalpy changes add: $+182.6 + (-116.2) = +66.4\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-5-c": {
+    "lessonId": "c30-1-5",
+    "title": "Hess's Law, Part 3: Combining Two Equations",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five steps",
+        "t": 26.061
+      },
+      {
+        "title": "Arranging the equations",
+        "t": 73.649
+      },
+      {
+        "title": "Adding the equations",
+        "t": 116.52
+      },
+      {
+        "title": "Your turn",
+        "t": 162.689
+      },
+      {
+        "title": "Summary",
+        "t": 203.443
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-5-c:q",
+        "t": 176.192,
+        "prompt": "Find $\\Delta_r H$ for $\\ce{CuO(s) + H2(g) -> Cu(s) + H2O(g)}$ from these equations: $\\begin{array}{llr} (1) & \\ce{Cu(s) + 1/2 O2(g) -> CuO(s)} & -157.3\\ \\text{kJ} \\\\ (2) & \\ce{H2(g) + 1/2 O2(g) -> H2O(g)} & -241.8\\ \\text{kJ} \\end{array}$",
+        "choices": [
+          "$-399.1\\ \\text{kJ}$",
+          "$+84.5\\ \\text{kJ}$",
+          "$+399.1\\ \\text{kJ}$",
+          "$-84.5\\ \\text{kJ}$"
+        ],
+        "answer": 3,
+        "working": "$\\ce{CuO(s)}$ is a reactant in the target but a product in (1): reverse (1), $+157.3\\ \\text{kJ}$. Keep (2). $\\ce{O2}$ cancels, and $\\Delta_r H = +157.3 + (-241.8) = -84.5\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-5-d": {
+    "lessonId": "c30-1-5",
+    "title": "Hess's Law, Part 4: Three Equations and Fractions",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Methane from its elements",
+        "t": 24.55
+      },
+      {
+        "title": "Adding three equations",
+        "t": 67.035
+      },
+      {
+        "title": "Fractions",
+        "t": 97.919
+      },
+      {
+        "title": "Check before you add",
+        "t": 142.416
+      },
+      {
+        "title": "Your turn",
+        "t": 181.581
+      },
+      {
+        "title": "Summary",
+        "t": 218.012
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-5-d:q",
+        "t": 192.467,
+        "prompt": "Find $\\Delta_r H$ for $\\ce{2C(s) + H2(g) -> C2H2(g)}$ from these equations: $\\begin{array}{llr} (1) & \\ce{C(s) + O2(g) -> CO2(g)} & -393.5\\ \\text{kJ} \\\\ (2) & \\ce{H2(g) + 1/2 O2(g) -> H2O(l)} & -285.8\\ \\text{kJ} \\\\ (3) & \\ce{2C2H2(g) + 5O2(g) -> 4CO2(g) + 2H2O(l)} & -2600.4\\ \\text{kJ} \\end{array}$",
+        "choices": [
+          "$+227.4\\ \\text{kJ}$",
+          "$+1527.6\\ \\text{kJ}$",
+          "$+620.9\\ \\text{kJ}$",
+          "$-2373.0\\ \\text{kJ}$"
+        ],
+        "answer": 0,
+        "working": "(1) $\\times\\, 2$: $-787.0\\ \\text{kJ}$. (2) as given: $-285.8\\ \\text{kJ}$. (3) reversed and $\\times\\, \\tfrac{1}{2}$: $+1300.2\\ \\text{kJ}$. $\\Delta_r H = -787.0 - 285.8 + 1300.2 = +227.4\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-6": {
+    "lessonId": "c30-1-6",
+    "title": "Enthalpies of Formation, Part 1: Standard States",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Standard conditions",
+        "t": 30.268
+      },
+      {
+        "title": "The elements",
+        "t": 69.996
+      },
+      {
+        "title": "Formation equations",
+        "t": 105.164
+      },
+      {
+        "title": "Elements are zero",
+        "t": 147.079
+      },
+      {
+        "title": "Your turn",
+        "t": 172.588
+      },
+      {
+        "title": "Summary",
+        "t": 208.47
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-6:q",
+        "t": 182.275,
+        "prompt": "At SATP, which of these has a standard enthalpy of formation, $\\Delta_f H^\\circ$, of zero?",
+        "choices": [
+          "$\\ce{O3(g)}$",
+          "$\\ce{I2(s)}$",
+          "$\\ce{Hg(g)}$",
+          "$\\ce{H(g)}$"
+        ],
+        "answer": 1,
+        "working": "The standard state of iodine is a diatomic solid, $\\ce{I2(s)}$. Oxygen and hydrogen are diatomic gases, $\\ce{O2(g)}$ and $\\ce{H2(g)}$, and mercury is a liquid, $\\ce{Hg(l)}$."
+      }
+    ]
+  },
+  "c30-1-6-b": {
+    "lessonId": "c30-1-6",
+    "title": "Enthalpies of Formation, Part 2: Writing Formation Equations",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two oxides",
+        "t": 22.918
+      },
+      {
+        "title": "Three elements",
+        "t": 68.042
+      },
+      {
+        "title": "Keep the fractions",
+        "t": 116.211
+      },
+      {
+        "title": "Your turn",
+        "t": 151.742
+      },
+      {
+        "title": "Summary",
+        "t": 184.766
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-6-b:q",
+        "t": 158.554,
+        "prompt": "Which is the formation equation of ammonia, $\\ce{NH3(g)}$?",
+        "choices": [
+          "$\\ce{N2(g) + 3H2(g) -> 2NH3(g)}$",
+          "$\\ce{N(g) + 3H(g) -> NH3(g)}$",
+          "$\\ce{NH3(g) -> 1/2 N2(g) + 3/2 H2(g)}$",
+          "$\\ce{1/2 N2(g) + 3/2 H2(g) -> NH3(g)}$"
+        ],
+        "answer": 3,
+        "working": "One mole of $\\ce{NH3(g)}$ forms from the diatomic gases $\\ce{N2(g)}$ and $\\ce{H2(g)}$: one N atom is $\\tfrac{1}{2}$ of an $\\ce{N2}$ molecule, and three H atoms are $\\tfrac{3}{2}$ of an $\\ce{H2}$ molecule."
+      }
+    ]
+  },
+  "c30-1-6-c": {
+    "lessonId": "c30-1-6",
+    "title": "Enthalpies of Formation, Part 3: The Route Through the Elements",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A detour through the elements",
+        "t": 21.738
+      },
+      {
+        "title": "Products minus reactants",
+        "t": 80.764
+      },
+      {
+        "title": "Burning methane",
+        "t": 109.521
+      },
+      {
+        "title": "Your turn",
+        "t": 153.435
+      },
+      {
+        "title": "Summary",
+        "t": 194.576
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-6-c:q",
+        "t": 166.866,
+        "prompt": "Find $\\Delta_r H^\\circ$ for $\\ce{CaCO3(s) -> CaO(s) + CO2(g)}$, using $\\Delta_f H^\\circ$ values of $-1207.6\\ \\text{kJ/mol}$ for $\\ce{CaCO3(s)}$, $-634.9\\ \\text{kJ/mol}$ for $\\ce{CaO(s)}$ and $-393.5\\ \\text{kJ/mol}$ for $\\ce{CO2(g)}$.",
+        "choices": [
+          "$+179.2\\ \\text{kJ}$",
+          "$-179.2\\ \\text{kJ}$",
+          "$-2236.0\\ \\text{kJ}$",
+          "$+2236.0\\ \\text{kJ}$"
+        ],
+        "answer": 0,
+        "working": "Products: $(-634.9) + (-393.5) = -1028.4\\ \\text{kJ}$. Reactants: $-1207.6\\ \\text{kJ}$. $\\Delta_r H^\\circ = -1028.4 - (-1207.6) = +179.2\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-6-d": {
+    "lessonId": "c30-1-6",
+    "title": "Enthalpies of Formation, Part 4: Signs, States and Working Backwards",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Smelting iron",
+        "t": 26.023
+      },
+      {
+        "title": "Three slips",
+        "t": 71.221
+      },
+      {
+        "title": "What the sign says",
+        "t": 104.816
+      },
+      {
+        "title": "Working backwards",
+        "t": 130.225
+      },
+      {
+        "title": "Your turn",
+        "t": 187.088
+      },
+      {
+        "title": "Summary",
+        "t": 225.539
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-6-d:q",
+        "t": 198.522,
+        "prompt": "For $\\ce{C2H5OH(l) + 3O2(g) -> 2CO2(g) + 3H2O(l)}$, $\\Delta_r H^\\circ = -1366.8\\ \\text{kJ}$. Using $-393.5\\ \\text{kJ/mol}$ for $\\ce{CO2(g)}$ and $-285.8\\ \\text{kJ/mol}$ for $\\ce{H2O(l)}$, find $\\Delta_f H^\\circ$ of ethanol.",
+        "choices": [
+          "$+277.6\\ \\text{kJ/mol}$",
+          "$-3011.2\\ \\text{kJ/mol}$",
+          "$-277.6\\ \\text{kJ/mol}$",
+          "$+294.0\\ \\text{kJ/mol}$"
+        ],
+        "answer": 2,
+        "working": "Products: $2(-393.5) + 3(-285.8) = -1644.4\\ \\text{kJ}$. Then $-1366.8 = -1644.4 - x$, so $x = -1644.4 + 1366.8 = -277.6\\ \\text{kJ/mol}$."
+      }
+    ]
+  },
+  "c30-1-7": {
+    "lessonId": "c30-1-7",
+    "title": "Activation Energy and Catalysts, Part 1: Activation Energy",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The activated complex",
+        "t": 26.272
+      },
+      {
+        "title": "Why a spark is needed",
+        "t": 71.328
+      },
+      {
+        "title": "Potential energy diagrams",
+        "t": 97.687
+      },
+      {
+        "title": "Your turn",
+        "t": 141.222
+      },
+      {
+        "title": "Summary",
+        "t": 182.303
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-7:q",
+        "t": 159.137,
+        "prompt": "A potential energy diagram shows the reactants at $80\\ \\text{kJ}$, the activated complex at $230\\ \\text{kJ}$ and the products at $40\\ \\text{kJ}$. What is the activation energy of the forward reaction?",
+        "choices": [
+          "$230\\ \\text{kJ}$",
+          "$190\\ \\text{kJ}$",
+          "$40\\ \\text{kJ}$",
+          "$150\\ \\text{kJ}$"
+        ],
+        "answer": 3,
+        "working": "The forward reaction climbs from the reactants to the top of the hump: $E_a(\\text{forward}) = 230 - 80 = 150\\ \\text{kJ}$."
+      }
+    ]
+  },
+  "c30-1-7-b": {
+    "lessonId": "c30-1-7",
+    "title": "Activation Energy and Catalysts, Part 2: Reading Potential Energy Diagrams",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three quantities",
+        "t": 17.662
+      },
+      {
+        "title": "How they are linked",
+        "t": 66.629
+      },
+      {
+        "title": "An endothermic reaction",
+        "t": 97.933
+      },
+      {
+        "title": "Measure from the right level",
+        "t": 139.53
+      },
+      {
+        "title": "Your turn",
+        "t": 180.864
+      },
+      {
+        "title": "Summary",
+        "t": 226.1
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-7-b:q",
+        "t": 199.422,
+        "prompt": "A potential energy diagram shows the reactants at $60\\ \\text{kJ}$, the activated complex at $180\\ \\text{kJ}$ and the products at $140\\ \\text{kJ}$. What are $E_a(\\text{reverse})$ and $\\Delta H$?",
+        "choices": [
+          "$40\\ \\text{kJ}$ and $+80\\ \\text{kJ}$",
+          "$120\\ \\text{kJ}$ and $+80\\ \\text{kJ}$",
+          "$40\\ \\text{kJ}$ and $-80\\ \\text{kJ}$",
+          "$180\\ \\text{kJ}$ and $+80\\ \\text{kJ}$"
+        ],
+        "answer": 0,
+        "working": "$E_a(\\text{reverse}) = 180 - 140 = 40\\ \\text{kJ}$, and $\\Delta H = 140 - 60 = +80\\ \\text{kJ}$. Check: $E_a(\\text{forward}) - E_a(\\text{reverse}) = 120 - 40 = 80$."
+      }
+    ]
+  },
+  "c30-1-7-c": {
+    "lessonId": "c30-1-7",
+    "title": "Activation Energy and Catalysts, Part 3: Catalysts",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A lower barrier",
+        "t": 21.163
+      },
+      {
+        "title": "What does not change",
+        "t": 70.531
+      },
+      {
+        "title": "Why it is faster",
+        "t": 99.8
+      },
+      {
+        "title": "Catalysts at work",
+        "t": 132.16
+      },
+      {
+        "title": "Your turn",
+        "t": 173.856
+      },
+      {
+        "title": "Summary",
+        "t": 208.39
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-7-c:q",
+        "t": 185.502,
+        "prompt": "A catalyst is added to a reaction mixture at constant temperature. Which statement about the catalyst is true?",
+        "choices": [
+          "It raises the kinetic energy of the reactant particles.",
+          "It lowers the activation energy of the forward reaction only.",
+          "It leaves $\\Delta H$ for the reaction unchanged.",
+          "It is used up as the reaction takes place."
+        ],
+        "answer": 2,
+        "working": "A catalyst lowers the hump; the reactant and product levels do not move, so $\\Delta H$ is unchanged. Both activation energies fall by the same amount, and the catalyst is regenerated."
+      }
+    ]
+  },
+  "c30-1-7-d": {
+    "lessonId": "c30-1-7",
+    "title": "Activation Energy and Catalysts, Part 4: Working Without a Diagram",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sketch it",
+        "t": 19.117
+      },
+      {
+        "title": "With a catalyst",
+        "t": 65.828
+      },
+      {
+        "title": "Finding the products",
+        "t": 114.42
+      },
+      {
+        "title": "Your turn",
+        "t": 152.191
+      },
+      {
+        "title": "Summary",
+        "t": 195.467
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-1-7-d:q",
+        "t": 174.267,
+        "prompt": "Without a catalyst, a reaction has $E_a(\\text{forward}) = 90\\ \\text{kJ}$ and $\\Delta H = -50\\ \\text{kJ}$. A catalyst lowers $E_a(\\text{forward})$ to $35\\ \\text{kJ}$. What is $E_a(\\text{reverse})$ with the catalyst?",
+        "choices": [
+          "$140\\ \\text{kJ}$",
+          "$85\\ \\text{kJ}$",
+          "$-15\\ \\text{kJ}$",
+          "$55\\ \\text{kJ}$"
+        ],
+        "answer": 1,
+        "working": "The catalyst does not change $\\Delta H$, so $E_a(\\text{reverse}) = E_a(\\text{forward}) - \\Delta H = 35 - (-50) = 85\\ \\text{kJ}$. Without the catalyst it is $90 - (-50) = 140\\ \\text{kJ}$: both fall by $55\\ \\text{kJ}$."
+      }
+    ]
+  },
   "c30-3-1": {
     "lessonId": "c30-3-1",
     "title": "Organic Compounds and How They Are Drawn, Part 1: What Makes a Compound Organic",
