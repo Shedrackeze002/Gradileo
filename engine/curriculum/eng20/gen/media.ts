@@ -381,11 +381,11 @@ interface Voices {
   missing: string;
 }
 const VOICES: Voices[] = [
-  { text: 'A report on a plan to close a youth centre quotes the mayor, a councillor and a local business owner.', quoted: ['The mayor', 'A councillor', 'A local business owner'], missing: 'The young people who use the centre' },
-  { text: 'A report on a new policy to cut hospital waiting times quotes the health minister, the hospital’s director and an economist.', quoted: ['The health minister', 'The hospital’s director', 'An economist'], missing: 'Patients waiting for treatment' },
-  { text: 'A report on a strike by bus drivers quotes the bus company’s chief executive, a city councillor and two passengers.', quoted: ['The bus company’s chief executive', 'A city councillor', 'Passengers'], missing: 'The bus drivers who are on strike' },
-  { text: 'A documentary about a logging project in a rainforest interviews the logging company, a government official and a timber buyer.', quoted: ['The logging company', 'A government official', 'A timber buyer'], missing: 'The people who live in the rainforest' },
-  { text: 'A school newsletter article about a new uniform rule quotes the principal, the head of the parents’ association and the uniform supplier.', quoted: ['The principal', 'The head of the parents’ association', 'The uniform supplier'], missing: 'The students who must wear the uniform' },
+  { text: 'A report on a plan to close a youth centre quotes the mayor who proposed the closure, a councillor on the budget committee and a business owner who hopes to buy the building.', quoted: ['The mayor who proposed the closure', 'A councillor on the budget committee', 'A business owner who hopes to buy it'], missing: 'The young people who use the centre' },
+  { text: 'A report on a new policy to cut hospital waiting times quotes the health minister who announced it, the hospital’s director and an economist who studies health spending.', quoted: ['The health minister who announced it', 'The director of the hospital', 'An economist who studies health spending'], missing: 'Patients waiting for treatment' },
+  { text: 'A report on a strike by bus drivers quotes the bus company’s chief executive, a councillor on the city’s transport committee and two passengers stuck at a bus stop.', quoted: ['The bus company’s chief executive', 'A councillor on the transport committee', 'Passengers stuck at a bus stop'], missing: 'The bus drivers who are on strike' },
+  { text: 'A documentary about a logging project in a rainforest interviews the head of the logging company, a government official who approved the project and a timber buyer from overseas.', quoted: ['The head of the logging company', 'The official who approved the project', 'A timber buyer from overseas'], missing: 'The people who live in the rainforest' },
+  { text: 'A school newsletter article about a new uniform rule quotes the principal who made the rule, the head of the parents’ association and the company that supplies the uniform.', quoted: ['The principal who made the rule', 'The head of the parents’ association', 'The company that supplies the uniform'], missing: 'The students who must wear the uniform' },
 ];
 
 function representationQ(rng: Rng, d: Difficulty) {
@@ -473,12 +473,12 @@ const CHECKS: Array<{ claim: string }> = [
   { claim: 'A post shared by thousands of people says that the national exams have been cancelled this year.' },
   { claim: 'A screenshot going round your school claims that a famous author has announced she will visit next week.' },
 ];
-const CHECK_RIGHT = 'Leave the post and search what trusted news sources, official websites and fact-checkers say about the claim, and who posted it.';
+const CHECK_RIGHT = 'Leave the post and see what trusted news sources and fact-checkers say, and who posted it.';
 const CHECK_WRONG = [
-  'Read the post several more times to judge whether it sounds convincing.',
-  'Check how many likes and shares the post has.',
-  'Share the post with a warning, so that friends can decide for themselves.',
-  'Look at the comments under the post to see whether people agree.',
+  'Read the post several more times, slowly, to judge whether it sounds convincing and well written.',
+  'Check how many likes and shares the post has, since thousands of people are unlikely to be wrong.',
+  'Share the post with a short warning, so that your friends can look at it and decide for themselves.',
+  'Read the comments under the post to see whether most of the people there agree with it.',
 ];
 const DISCLOSURE: Array<{ brand: string; product: string }> = [
   { brand: 'Brightsmile', product: 'toothpaste' },
