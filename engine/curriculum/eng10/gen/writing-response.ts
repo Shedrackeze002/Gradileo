@@ -236,7 +236,7 @@ const THESES: ThesisSet[] = [
       'In “To Build a Fire”, Jack London contrasts the man’s confidence with the dog’s instinct to show that a lack of imagination can be deadly in the face of nature.',
       'Jack London presents nature in “To Build a Fire” as neither cruel nor kind but simply indifferent, which makes the man’s overconfidence all the more fatal.',
     ],
-    fact: '“To Build a Fire” is a short story by Jack London, published in 1908, about a man and a dog travelling alone through the Yukon in extreme cold.',
+    fact: '“To Build a Fire” is a short story by Jack London, published in 1908, about a man who travels through the Yukon in extreme cold with only a dog.',
     announcement: 'In my essay, I will talk about nature in “To Build a Fire”, including the cold, the snow, the frozen creek and the man’s dog, and what each one is like.',
     summary: 'In “To Build a Fire”, a man travels alone through the frozen Yukon, soaks his feet, fails to keep a fire burning and freezes to death.',
     opinion: '“To Build a Fire” is a very sad story, and I think it is one of the most depressing stories I have ever had to read for an English class.',

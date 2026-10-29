@@ -381,16 +381,16 @@ const SHOW: Record<Feeling, string[]> = {
   lonely: ['NAME sat on the steps with {his} lunch, watching the other groups laugh together across the yard.', 'NAME scrolled through {his} messages, but no one had written all weekend.'],
 };
 const TELL: Record<Feeling, string> = {
-  nervous: 'NAME was very nervous before the audition, and {he} felt more and more nervous with every minute that passed.',
-  angry: 'NAME was really angry about what had happened, angrier than {he} had ever been in {his} whole life.',
-  exhausted: 'NAME was completely exhausted after the long day, and {he} felt more tired than {he} had ever felt before.',
-  excited: 'NAME felt very excited about the visit, more excited than {he} had been about anything for months.',
-  embarrassed: 'NAME was really embarrassed in front of the whole class, more embarrassed than {he} had ever been.',
-  proud: 'NAME was very proud of winning the competition, and {he} felt prouder than ever before in {his} life.',
-  cold: 'NAME was very cold standing outside in the wind, and {he} felt colder and colder as the minutes went by.',
-  scared: 'NAME was really scared in the dark, empty house, more frightened than {he} had ever been before.',
-  bored: 'NAME was really bored in the long lesson, as bored as {he} had ever been in any class at school.',
-  lonely: 'NAME felt very lonely at the new school, lonelier than {he} had ever felt anywhere in {his} life.',
+  nervous: 'NAME was very nervous before the audition and grew more nervous every minute.',
+  angry: 'NAME was really angry about what had happened, angrier than ever before.',
+  exhausted: 'NAME was completely exhausted after the long day and felt more tired than ever.',
+  excited: 'NAME felt very excited about the visit, more excited than {he} had been in months.',
+  embarrassed: 'NAME was really embarrassed in front of the whole class, more than ever before.',
+  proud: 'NAME was very proud of winning the competition, prouder than ever before.',
+  cold: 'NAME was very cold standing outside and felt colder as the minutes went by.',
+  scared: 'NAME was really scared in the dark, empty house, more frightened than ever.',
+  bored: 'NAME was really bored in the long lesson, as bored as {he} had ever been.',
+  lonely: 'NAME felt very lonely at the new school, lonelier than {he} had ever felt.',
 };
 const FEELINGS = Object.keys(SHOW) as Feeling[];
 

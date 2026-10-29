@@ -184,32 +184,32 @@ const PRECISION: Precision[] = [
   {
     vague: 'The story has a lot of good stuff about things like fate.',
     good: 'The story uses three wishes on a magic paw to ask whether people can control their fate.',
-    wrong: ['The story has many good things about stuff like fate.', 'The story is about fate and things like that.', 'The story is really, really good about fate.'],
+    wrong: ['The story has many good things in it about stuff like fate and things that happen to people.', 'The story is about fate and things like that, and it has a lot of really good stuff in it.', 'The story is really, really good about fate and about all the other things that it shows.'],
   },
   {
     vague: 'The poem uses some nice words to make you feel stuff about war.',
     good: 'Owen’s images of a soldier choking on gas make the reader feel the horror of war.',
-    wrong: ['The poem uses a lot of nice words to make people feel things about war.', 'The poem is good and has feelings about war in it.', 'The poem uses words to make you feel stuff.'],
+    wrong: ['The poem uses a lot of nice words to make people feel lots of things about war.', 'The poem is good and has a lot of strong feelings about war and stuff in it.', 'The poem uses many words and things to make you feel all kinds of stuff.'],
   },
   {
     vague: 'The ending is kind of weird and does a thing to the reader.',
     good: 'The ending surprises the reader by revealing that both gifts are now useless.',
-    wrong: ['The ending is weird and does something to the reader.', 'The ending is really strange and stuff.', 'The ending does a thing that is weird.'],
+    wrong: ['The ending is weird and does something to the reader that is kind of a big deal.', 'The ending is really strange and stuff, and it makes the reader feel a certain way.', 'The ending does a thing that is weird, and a lot of readers notice the thing.'],
   },
   {
     vague: 'The narrator is a bad guy who does bad things for bad reasons.',
     good: 'Montresor murders Fortunato in cold blood to avenge an insult that he never describes.',
-    wrong: ['The narrator is a very bad guy who does very bad things.', 'The narrator is bad and does stuff.', 'The narrator is not a good person.'],
+    wrong: ['The narrator is a very bad guy who does very bad things to another guy in the story.', 'The narrator is bad and does a lot of stuff that is really not good at all.', 'The narrator is not a good person, and the things he does are bad in many ways.'],
   },
   {
     vague: 'The setting is important in a lot of ways in this story.',
     good: 'The extreme cold of the Yukon is more than a backdrop: it is the force that kills the man.',
-    wrong: ['The setting is very important in many ways in this story.', 'The setting matters a lot.', 'The setting is a big thing in the story.'],
+    wrong: ['The setting is very important in many ways in this story, and it matters a lot to it.', 'The setting matters a lot, and it is a really big thing in the story in lots of ways.', 'The setting is a big thing in the story, and it does many important things for it.'],
   },
   {
     vague: 'Della is a nice person who does a nice thing.',
     good: 'Della sells her long, beautiful hair to buy Jim a chain for his watch.',
-    wrong: ['Della is a really nice person who does nice things.', 'Della is nice and does a thing.', 'Della is a good person.'],
+    wrong: ['Della is a really nice person who does nice things for the people she loves.', 'Della is nice and does a thing for Jim that is really nice of her.', 'Della is a good person, and she does a good thing in the story.'],
   },
 ];
 
@@ -272,12 +272,12 @@ const TONES: Tone[] = [
   {
     sentences: ['In “The Monkey’s Paw”, W. W. Jacobs builds suspense through the sergeant-major’s warnings.', 'The guy straight up tells them the paw is bad news, but they totally ignore him.', 'Each wish therefore fills the reader with dread.'],
     good: 'The sergeant-major warns the Whites that the paw brings sorrow, but they ignore him.',
-    wrong: ['The dude warns them the paw is trouble, but they ignore him anyway.', 'The sergeant-major warns them, but they do not care, which is so annoying.', 'The sergeant-major praises the paw, and the Whites follow his advice.'],
+    wrong: ['The dude warns them that the paw is total trouble, but they just ignore him anyway.', 'The sergeant-major warns them, but they do not care, which is so annoying to read.', 'The sergeant-major praises the paw warmly, and the Whites gladly follow his advice.'],
   },
   {
     sentences: ['Kate Chopin makes Mrs. Mallard’s grief intense but surprisingly brief.', 'She cries hard for a bit and then she is kind of over it.', 'This short-lived grief prepares the reader for the joy that follows.'],
     good: 'She weeps at once in her sister’s arms, but the storm of grief soon passes.',
-    wrong: ['She cries hard for a bit, but then she gets over it real quick.', 'She weeps at once, but then she is totally fine, which is weird.', 'She refuses to cry at all.'],
+    wrong: ['She cries hard for a bit, but then she gets over it real quick, like in minutes.', 'She weeps at once, but then she is totally fine, which is honestly kind of weird.', 'She refuses to cry at all, even when her sister holds her in her arms.'],
   },
   {
     sentences: ['In “Ozymandias”, Shelley uses irony to criticize the pride of rulers.', 'The king’s statue is, like, totally smashed up.', 'His boast now stands among ruins.'],
@@ -287,12 +287,12 @@ const TONES: Tone[] = [
   {
     sentences: ['Jack London presents the man as practical but unimaginative.', 'He doesn’t get that it’s super cold, which is a big oops.', 'This failure of imagination proves fatal.'],
     good: 'He notices the extreme cold but never considers what it could do to him.',
-    wrong: ['He doesn’t really get how cold it is, which is a mistake.', 'He totally misses that it’s freezing.', 'He is terrified of the cold from the start.'],
+    wrong: ['He doesn’t really get how cold it is out there, which is a pretty big mistake.', 'He totally misses that it’s freezing, which is a seriously dumb move on his part.', 'He is terrified of the cold from the very start and refuses to leave camp.'],
   },
   {
     sentences: ['Poe opens “The Tell-Tale Heart” with a narrator who insists on his sanity.', 'But the guy is obviously out of his mind, seriously.', 'His frantic tone undermines every claim he makes.'],
     good: 'Yet the narrator’s own words suggest that he is not sane.',
-    wrong: ['But the narrator is clearly crazy, for real.', 'But it’s super obvious he has lost it.', 'His calm, logical words prove that he is sane.'],
+    wrong: ['But the narrator is clearly crazy, for real, no matter what he says.', 'But it’s super obvious that the guy has totally lost it.', 'His calm, logical words prove that he is perfectly sane.'],
   },
 ];
 
@@ -338,44 +338,44 @@ const PROMPTS: Prompt[] = [
   {
     prompt: 'Analyse how Kate Chopin uses the scene outside Mrs. Mallard’s window to reveal her inner life in “The Story of an Hour”, and evaluate whether the final sentence is an effective ending.',
     tasks: ['Analyse how the view from the window reveals Mrs. Mallard’s inner life', 'Judge whether the final sentence is an effective ending, with reasons'],
-    notTasks: ['Retell the events of the story in order', 'Compare the story with a story by another writer', 'Describe Kate Chopin’s life'],
-    plan: 'A thesis that answers both parts; two paragraphs on the window scene and what it reveals; one paragraph judging the final sentence; a conclusion',
-    badPlans: ['A summary of the story from beginning to end, then a conclusion', 'Three paragraphs on the window scene and nothing on the ending', 'A paragraph on Chopin’s life, a paragraph on the window scene and a conclusion'],
+    notTasks: ['Retell the events of the story in order, from the news to the final scene', 'Compare the story with a story by another writer from the same period', 'Describe Kate Chopin’s life and the other stories that she wrote'],
+    plan: 'A thesis answering both parts; two paragraphs on what the window scene reveals; a paragraph judging the final sentence; a conclusion',
+    badPlans: ['A detailed summary of the story, from the news of the railway accident to Mrs. Mallard’s sudden death, then a conclusion', 'Three paragraphs on the window scene and what it reveals about Mrs. Mallard, with nothing at all on the ending', 'A paragraph on Chopin’s life, a paragraph on the window scene, and a conclusion saying that the ending is surprising'],
   },
   {
     prompt: 'Compare the narrators of “The Tell-Tale Heart” and “The Cask of Amontillado”, and explain which one the reader trusts less, and why.',
-    tasks: ['Compare the two narrators', 'Decide which narrator the reader trusts less', 'Give the reasons for that judgement'],
-    notTasks: ['Retell both plots', 'Write about only one of the stories', 'Explain why Poe wrote horror stories'],
-    plan: 'A thesis naming the less trustworthy narrator; paragraphs comparing how each narrator speaks and what each hides; a conclusion explaining why one is trusted less',
-    badPlans: ['A paragraph summarizing each story, then a conclusion', 'Three paragraphs on the narrator of “The Tell-Tale Heart” alone', 'A comparison of the two narrators that never says which one is trusted less'],
+    tasks: ['Compare the two narrators and how each one tells his story', 'Decide which of the two narrators the reader trusts less', 'Give the reasons for that judgement, with evidence'],
+    notTasks: ['Retell the plots of both stories from beginning to end', 'Write about only one of the two stories in detail', 'Explain why Poe chose to write so many horror stories'],
+    plan: 'A thesis naming the less trustworthy narrator; paragraphs comparing how each speaks and what each hides; a conclusion explaining the judgement',
+    badPlans: ['A paragraph summarizing the plot of each story, from the first plan to the very end, then a conclusion saying which story is the scarier one', 'Three detailed paragraphs on how the narrator of “The Tell-Tale Heart” speaks and what he hides, and nothing on Montresor', 'A careful comparison of how the two narrators speak and what each one hides, which never says which of them is trusted less'],
   },
   {
     prompt: 'Discuss the role of the dog in “To Build a Fire”. How does Jack London use the dog to develop the story’s view of nature?',
     tasks: ['Consider what part the dog plays in the story', 'Explain how London uses the dog to develop the story’s view of nature'],
-    notTasks: ['Describe the dog’s appearance in detail', 'Compare the story with a story about another animal', 'Give your opinion of dogs as pets'],
-    plan: 'A thesis about what the dog shows about nature; paragraphs on the dog’s instinct, its contrast with the man and its survival at the end; a conclusion linking the dog to the story’s view of nature',
-    badPlans: ['A retelling of the man’s journey from start to finish', 'Paragraphs on the man’s mistakes that never mention the dog', 'A description of the dog with no link to nature'],
+    notTasks: ['Describe the dog’s appearance, its size and its coat in detail', 'Compare the story with a different story about another animal', 'Give your own opinion of whether dogs make good pets'],
+    plan: 'A thesis on what the dog shows about nature; paragraphs on its instinct, its contrast with the man and its survival; a conclusion on nature',
+    badPlans: ['A retelling of the man’s journey from the main trail to his death, with a paragraph for each fire he builds, then a short conclusion', 'Paragraphs on the man’s mistakes, from ignoring the old-timer to wetting his feet in the hidden spring, that never mention the dog', 'A detailed description of the dog’s appearance, its behaviour and its relationship with the man, with no link to nature'],
   },
   {
     prompt: 'Explain how O. Henry prepares the reader for the ending of “The Gift of the Magi”, and consider whether the narrator’s final comment changes how we see Della and Jim.',
     tasks: ['Explain how earlier details prepare the reader for the ending', 'Consider whether the final comment changes how we see Della and Jim'],
-    notTasks: ['Retell the ending in your own words', 'Write a different ending for the story', 'Compare the story with a Christmas film'],
-    plan: 'A thesis answering both parts; paragraphs on the details that prepare the ending; a paragraph weighing how the final comment changes our view of the couple; a conclusion',
-    badPlans: ['A retelling of the story, then a conclusion', 'Paragraphs on the details that prepare the ending, with nothing on the final comment', 'One paragraph on the final comment and nothing else'],
+    notTasks: ['Retell the ending of the story in your own words, step by step', 'Write a different, happier ending for the story and explain it', 'Compare the story with a Christmas film that you have seen'],
+    plan: 'A thesis answering both parts; paragraphs on the details that prepare the ending; a paragraph on how the final comment changes our view; a conclusion',
+    badPlans: ['A detailed retelling of the story, from Della counting her money on the first page to the opening of the two gifts, then a conclusion', 'Several paragraphs on the details that prepare the reader for the ending, with nothing at all on the narrator’s final comment', 'One long paragraph on the narrator’s final comment about the magi, and nothing on the details that come before it'],
   },
   {
     prompt: 'Analyse how Wilfred Owen uses imagery in “Dulce et Decorum Est” to challenge the idea expressed in the poem’s title.',
-    tasks: ['Analyse Owen’s imagery', 'Explain how that imagery challenges the idea in the title'],
-    notTasks: ['Put every line of the poem into modern English', 'Compare the poem with “In Flanders Fields”', 'Write a history of the First World War'],
-    plan: 'A thesis on how the imagery undercuts the title’s idea; paragraphs on the images of the exhausted soldiers, the gas attack and the dying man, each tied to the title; a conclusion',
-    badPlans: ['A list of every image in the poem with no link to the title', 'A history of the First World War, then one paragraph on the poem', 'A paragraph explaining the Latin title and nothing else'],
+    tasks: ['Analyse Owen’s imagery and how it works in the poem', 'Explain how that imagery challenges the idea in the title'],
+    notTasks: ['Put every line of the poem into plain modern English', 'Compare the poem with “In Flanders Fields” by John McCrae', 'Write a history of the First World War and its battles'],
+    plan: 'A thesis on how the imagery undercuts the title; paragraphs on the exhausted soldiers, the gas attack and the dying man; a conclusion',
+    badPlans: ['A list of every image in the poem, from the beggars under sacks to the dying man, each explained in turn but with no link to the title', 'A history of the First World War and the use of gas in its battles, then one short paragraph on the poem itself', 'A paragraph explaining what the Latin title means and where it comes from, and nothing about the poem’s imagery'],
   },
   {
     prompt: 'Evaluate how effectively Saki uses Vera’s story to create the surprise ending of “The Open Window”.',
     tasks: ['Analyse how Vera’s story sets up the ending', 'Judge how effective it is, with reasons'],
     notTasks: ['Retell Vera’s story in full', 'Write your own ending for the story', 'Compare Saki with other writers of his time'],
-    plan: 'A thesis that gives a judgement; paragraphs on how Vera tells her story, how it prepares the twist and how convincing it is; a conclusion weighing its effectiveness',
-    badPlans: ['A retelling of Vera’s story, then a conclusion', 'Paragraphs on how Vera’s story works that never judge its effectiveness', 'A new ending for the story written in Saki’s style'],
+    plan: 'A thesis giving a judgement; paragraphs on how Vera tells her story, how it sets up the twist and how convincing it is; a conclusion',
+    badPlans: ['A detailed retelling of Vera’s story about the bog and the three missing hunters, followed by a conclusion saying it was clever', 'Paragraphs on how Vera tells her story and how it sets up the twist, which never judge how effective the ending actually is', 'A new ending for the story written in Saki’s own style, followed by a paragraph explaining why the new ending is better'],
   },
 ];
 
@@ -417,42 +417,42 @@ interface Budget {
 }
 
 const BUDGETS: Budget[] = [
-  { total: 45, good: '5 minutes reading and planning, 35 minutes writing, 5 minutes checking', wrong: ['No planning: all 45 minutes writing', '20 minutes planning, 25 minutes writing, no time to check', 'A 25-minute rough draft, then 20 minutes copying it out neatly'] },
-  { total: 60, good: '10 minutes reading and planning, 45 minutes writing, 5 minutes checking', wrong: ['No planning: all 60 minutes writing', '30 minutes planning, 30 minutes writing, no time to check', 'A 35-minute rough draft, then 25 minutes copying it out neatly'] },
-  { total: 75, good: '10 minutes reading and planning, 55 minutes writing, 10 minutes checking', wrong: ['No planning: all 75 minutes writing', '40 minutes planning, 35 minutes writing, no time to check', 'A 40-minute rough draft, then 35 minutes copying it out neatly'] },
-  { total: 90, good: '15 minutes reading and planning, 65 minutes writing, 10 minutes checking', wrong: ['No planning: all 90 minutes writing', '45 minutes planning, 45 minutes writing, no time to check', 'A 50-minute rough draft, then 40 minutes copying it out neatly'] },
-  { total: 120, good: '20 minutes reading and planning, 85 minutes writing, 15 minutes checking', wrong: ['No planning: all 120 minutes writing', '60 minutes planning, 60 minutes writing, no time to check', 'A 70-minute rough draft, then 50 minutes copying it out neatly'] },
+  { total: 45, good: '5 minutes reading and planning, 35 minutes writing, 5 minutes checking', wrong: ['No planning or checking at all: all 45 minutes spent writing the essay', '20 minutes planning, 25 minutes writing, and no time left over to check', 'A 25-minute rough draft, then 20 minutes copying it all out neatly'] },
+  { total: 60, good: '10 minutes reading and planning, 45 minutes writing, 5 minutes checking', wrong: ['No planning or checking at all: all 60 minutes spent writing the essay', '30 minutes planning, 30 minutes writing, and no time left over to check', 'A 35-minute rough draft, then 25 minutes copying it all out neatly'] },
+  { total: 75, good: '10 minutes reading and planning, 55 minutes writing, 10 minutes checking', wrong: ['No planning or checking at all: all 75 minutes spent writing the essay', '40 minutes planning, 35 minutes writing, and no time left over to check', 'A 40-minute rough draft, then 35 minutes copying it all out neatly'] },
+  { total: 90, good: '15 minutes reading and planning, 65 minutes writing, 10 minutes checking', wrong: ['No planning or checking at all: all 90 minutes spent writing the essay', '45 minutes planning, 45 minutes writing, and no time left over to check', 'A 50-minute rough draft, then 40 minutes copying it all out neatly'] },
+  { total: 120, good: '20 minutes reading and planning, 85 minutes writing, 15 minutes checking', wrong: ['No planning or checking at all: all 120 minutes spent writing the essay', '60 minutes planning, 60 minutes writing, and no time left over to check', 'A 70-minute rough draft, then 50 minutes copying it all out neatly'] },
 ];
 
 const SHORT_ON_TIME: Array<{ ask: string; good: string; wrong: string[]; why: string }> = [
   {
     ask: 'You have 10 minutes left. You have written your introduction and two body paragraphs, and you planned a third.',
     good: 'Write a brief version of the third point and a short conclusion that returns to your thesis.',
-    wrong: ['Start a long, fully developed third paragraph and hope to finish it.', 'Rewrite your introduction more neatly.', 'Stop and leave the essay without a conclusion.'],
+    wrong: ['Start a long, fully developed third paragraph with all your evidence and hope to finish it.', 'Use the time to rewrite your introduction more neatly so that it makes a good first impression.', 'Stop writing and hand in the essay as it is, without a third point or a conclusion.'],
     why: 'A short third point and a conclusion finish the argument; an unfinished paragraph or a missing conclusion leaves the essay incomplete.',
   },
   {
     ask: 'You have 5 minutes left and no conclusion yet.',
     good: 'Write two or three sentences that answer the prompt and return to your thesis, then check for errors if time remains.',
-    wrong: ['Begin a new body paragraph with fresh evidence.', 'Copy your introduction out again word for word as the conclusion.', 'Spend the time recopying a messy paragraph.'],
+    wrong: ['Begin a new body paragraph with fresh evidence from the text, and try to squeeze in the conclusion afterwards if you can.', 'Copy your introduction out again, word for word, as the conclusion, so that the essay at least has some kind of ending.', 'Spend the time recopying a messy paragraph so that the marker can read every single word of it easily.'],
     why: 'Even a short conclusion that answers the prompt makes the essay complete; new evidence at the end would be left unfinished.',
   },
   {
     ask: 'With 20 minutes left, you realize that your body paragraphs prove a slightly different point from the thesis in your introduction.',
     good: 'Revise the thesis so that it matches what the body paragraphs actually prove.',
-    wrong: ['Start the whole essay again.', 'Leave the mismatch and hope the marker does not notice.', 'Add a paragraph arguing against your own body paragraphs.'],
+    wrong: ['Start the whole essay again from the beginning with a new plan and a new thesis.', 'Leave the mismatch as it is and hope that the marker does not notice it.', 'Add a paragraph arguing against your own body paragraphs to make the thesis fit.'],
     why: 'Changing one sentence brings the whole essay into line; starting again would leave too little time to finish.',
   },
   {
     ask: 'Ten minutes into the exam, you have read the prompt twice but still have no thesis.',
     good: 'Jot down ideas and evidence from the text, look for what they have in common, and draft a thesis from that before you begin.',
-    wrong: ['Start writing body paragraphs at once and decide what the essay argues at the very end.', 'Answer a different question that you find easier.', 'Write a summary of the text instead of an argument.'],
+    wrong: ['Start writing body paragraphs at once, and decide what the essay argues at the very end, once you can see what you have written.', 'Answer a different question that you find easier and have practised before, since any good essay is better than none.', 'Write a careful summary of the whole text instead of an argument, since a summary does not need a thesis at all.'],
     why: 'A thesis often grows out of the evidence you notice; writing without one usually produces paragraphs that do not add up to an argument.',
   },
   {
     ask: 'You finish your conclusion with 8 minutes left.',
-    good: 'Reread the essay, check that each paragraph answers the prompt, and correct errors in spelling and punctuation.',
-    wrong: ['Hand it in at once without reading it.', 'Start a long new body paragraph on a fresh point.', 'Rewrite the whole essay more neatly.'],
+    good: 'Reread the essay, check that each paragraph answers the prompt, and correct spelling and punctuation.',
+    wrong: ['Hand it in at once without reading it, since the essay is already finished and complete.', 'Start a long new body paragraph on a fresh point that you have only just thought of now.', 'Rewrite the whole essay more neatly so that the marker can read your handwriting.'],
     why: 'The last minutes are best spent catching errors and gaps; a long new paragraph or a full rewrite cannot be finished in time.',
   },
 ];

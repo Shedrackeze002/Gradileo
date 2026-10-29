@@ -121,7 +121,7 @@ const THESES: ThesisSet[] = [
       'London’s flat, matter-of-fact narration mirrors the man’s own failure to feel the danger of the cold, so that the reader dreads what the man cannot imagine.',
     ],
     topic: 'Nature in “To Build a Fire”',
-    summary: 'In “To Build a Fire”, a man travels alone through the frozen Yukon with his dog, soaks his feet, fails to keep a fire burning and freezes to death in the snow.',
+    summary: 'In “To Build a Fire”, a man travels through the frozen Yukon with only his dog, soaks his feet, fails to keep a fire burning and freezes to death in the snow.',
     vague: '“To Build a Fire” is a gripping story that is very well written, and it is one of the most exciting and memorable adventure stories that I have ever read.',
     noHow: '“To Build a Fire” shows that nature does not care whether people live or die, and that a person who ignores good advice in the wild can pay with their life.',
     noWhy: 'Jack London uses imagery, a third-person narrator, repetition and a contrast between the man and the dog in “To Build a Fire”, especially when the man lights his fires.',
