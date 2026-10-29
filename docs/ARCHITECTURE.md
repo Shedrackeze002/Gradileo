@@ -128,8 +128,9 @@ Students who sign up without a class code go to onboarding (`/s/welcome`). They 
 subject (`SUBJECTS`, the subjects of the listed courses; Mathematics to begin with) and give
 their grade; for mathematics also their plans after high school (from Grade 10), whether they
 want calculus (Grade 12 science plans) and how mathematics feels. `recommendCourse` follows
-Alberta's course sequences to recommend a course, with reasons and alternatives; Chemistry starts
-at Chemistry 20. New classes pick a course from a tab for each subject. An optional placement check asks
+Alberta's course sequences to recommend a course, with reasons and alternatives; chemistry goes by
+the grade (Grade 10, 11 or 12 Chemistry), and English starts with Grade 10 English until Grades 11
+and 12 are written. New classes pick a course from a tab for each subject. An optional placement check asks
 6 questions from the course before (`placementSkills`: the skill each unit builds towards,
 spread across the course), graded in the browser and not saved; `placementResult` says ready,
 ready with review, or start earlier.
@@ -338,8 +339,8 @@ reading time when a slide has no recording (a teacher's own resource, or a slide
 
 The platform is course-agnostic: mathematics from Grade 5 to Grade 12 (Math 5 to 9; Math 10, 10
 Workplace and 10 Essentials; Math 11 Pre-calculus, Foundations, Workplace and Essentials; Math 12
-Pre-calculus, Foundations, Workplace and Calculus) and chemistry in Grades 10, 11 and 12 already run side
-by side, grouped by subject and grade in course pickers. Courses are named by grade and stream, not
+Pre-calculus, Foundations, Workplace and Calculus), chemistry in Grades 10, 11 and 12 and English in
+Grade 10 already run side by side, grouped by subject and grade in course pickers. Courses are named by grade and stream, not
 by any one curriculum's codes; their folders and ids keep the codes they were first built under
 (`math30-1` is Math 12 Pre-calculus). To add a course, for example Math 12 Pre-calculus (the steps
 it followed):
@@ -378,6 +379,17 @@ teaching assistant, the assignment drafts and the report cards speak of a chemis
 mathematics one (`subjectName` in `engine/ai/prompt.ts`). Chemical formulas and equations are
 written with KaTeX's chemistry extension inside the maths, `$\ce{H2SO4}$` or
 `$\ce{2H2 + O2 -> 2H2O}$`, in lessons, questions and videos alike.
+
+English (`engine/curriculum/eng10/`) needs no new answer types: its generated questions are choices,
+ordering (an `order` answer can name its ends, `ends: ['First', 'Last']`) and short typed answers
+(`text`, graded with straight and curly quotes and apostrophes alike), and essays stay with the
+teacher, marked with the AI's suggested mark. A reading passage goes in the prompt as a Markdown
+blockquote, with poem lines ended by a backslash, and several labelled parts can ask about it.
+Every text quoted is in the public domain (authors who died before 1955, published before 1929) or
+written for Gradileo, and each excerpt (`gen/texts.ts`, `poems.ts`, `play.ts`, `speeches.ts`) was
+checked word for word against its Project Gutenberg or Wikisource source. Sentences avoid the points
+where varieties of English differ (the serial comma, punctuation inside quotation marks, collective
+nouns, -ise and -ize spellings), so a question is right everywhere.
 
 ## Lesson format
 

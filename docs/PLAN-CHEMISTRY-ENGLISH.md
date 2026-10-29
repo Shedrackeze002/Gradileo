@@ -58,7 +58,7 @@ English is mostly reading and written responses, graded by the teacher with AI-s
 practised with instant feedback. The levels follow Alberta's English Language Arts 10-1, 20-1
 and 30-1 (the stream towards university), whose five general outcomes run through every unit.
 
-### English 10 (Grade 10), about 31 lessons
+### English 10 (Grade 10), about 31 lessons (built 29 October 2026 as Grade 10 English: 31 lessons, 72 skills)
 
 | Unit | Lessons |
 |---|---|
@@ -72,6 +72,13 @@ and 30-1 (the stream towards university), whose five general outcomes run throug
 
 English 20 and English 30 follow the same units with harder texts and longer writing, ending
 with the essay a final exam asks for.
+
+Grade 10 English uses *Romeo and Juliet* for its Shakespeare unit. The stories come from O. Henry,
+Kate Chopin, Poe, Saki, W. W. Jacobs, Jack London, Ambrose Bierce and Frank R. Stockton; the poems
+from poets who died before 1955; the speeches from Lincoln, Frederick Douglass, Sojourner Truth,
+Emmeline Pankhurst, the Declaration of Sentiments and Swift. Its generated questions practise what
+can be marked automatically (choices, ordering and short typed answers); essays stay with the
+teacher, with the AI's suggested mark. A mark per rubric criterion is still to come.
 
 ### What English needs that mathematics did not
 

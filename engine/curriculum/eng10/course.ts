@@ -196,5 +196,4 @@ export const ENG10: CourseMeta = {
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
-  draft: true,
 };
