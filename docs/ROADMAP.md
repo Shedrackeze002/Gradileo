@@ -686,8 +686,21 @@ items ship or decisions change.
      mistake in lesson 2.4 (multiplying only the electrons breaks the charge, not the atoms) and a
      bug in `engine/chem/organic.ts` (tetrachloromethane written CHCl4), both fixed. Grades 10 to 12
      Chemistry now have 327 videos; they go on YouTube after the maths.
-   - Next: English 10, 20 and 30 (public-domain texts only). The privacy policy and terms still
-     describe Gradileo as a mathematics platform; their wording is the owner's to change.
+   - Built (29 October 2026): **Grade 10 English** (`eng-10`), 7 units, 31 lessons and 72 skills,
+     open to classes and sign-up: short stories (O. Henry, Chopin, Poe, Saki, Jacobs, London,
+     Bierce, Stockton), poetry, Shakespeare's *Romeo and Juliet*, non-fiction and persuasion
+     (Lincoln, Douglass, Sojourner Truth, Pankhurst, Swift), visual and media texts, writing (the
+     personal response, the analytical and persuasive essay, narrative, revising, timed writing) and
+     grammar and language. Public-domain texts only, every excerpt checked word for word against
+     its source. The grammar and short stories units came first to settle the format, as planned.
+     Questions are marked automatically (choices, ordering, short typed answers, which now treat
+     curly and straight quotes alike); essays stay with the teacher and the AI's suggested mark.
+     "Find your course" offers English and recommends Grade 10 English at any grade for now.
+   - Next: Grade 11 and Grade 12 English (as Grade 10, with harder texts and longer writing:
+     *Macbeth* and *Hamlet* are the plan), then Grade 10 English videos (fewer than mathematics:
+     how to read a poem, how to write a thesis) and its tutor voice. Later, a mark per rubric
+     criterion for essays. The privacy policy and terms still describe Gradileo as a mathematics
+     platform; their wording is the owner's to change.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
      longer set in Alberta (about 1,000 mentions: towns, lakes, parks, teams, Alberta's GST). Town
      lists and real distance, daylight and temperature data now belong to invented towns (Riverton,

@@ -90,7 +90,8 @@ export type AnswerSpec =
   | { kind: 'point'; x: number; y: number; tolerance?: number }
   | { kind: 'graph-line'; line: Line; grid: GridSpec }
   | { kind: 'graph-points'; points: Array<[number, number]>; grid: GridSpec }
-  | { kind: 'order'; items: Choice[]; correctOrder: string[] }
+  /** Put the items in order; `ends` labels the first and last places (Least and Greatest when not given). */
+  | { kind: 'order'; items: Choice[]; correctOrder: string[]; ends?: [string, string] }
   | { kind: 'text'; accepted: string[]; caseSensitive?: boolean }
   /**
    * A chemical formula, written as a question writes it (`Na2SO4`, `SO4^2-`, `CuSO4.5H2O`) and

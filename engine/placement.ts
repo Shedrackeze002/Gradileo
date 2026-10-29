@@ -56,6 +56,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'chem-10': null,
   'chem-20': 'chem-10',
   'chem-30': 'chem-20',
+  'eng-10': null,
 };
 
 const CHECK = 'Programs set their own entrance requirements, so check the ones you are interested in.';
@@ -66,6 +67,12 @@ function rec(courseId: string, reasons: string[], alternatives: CourseChoice[] =
 
 export function recommendCourse(a: PlacementAnswers): Recommendation {
   const g = Math.round(a.grade);
+  if (a.subject === 'English') {
+    const reasons = ['Grade 10 English covers short stories, poetry, Shakespeare’s Romeo and Juliet, non-fiction and persuasion, visual and media texts, essay and narrative writing, and grammar.'];
+    if (g < 10) reasons.push('It is usually taken in Grade 10, so some texts will be a stretch; the grammar and writing lessons build up from the basics.');
+    if (g > 10) reasons.push('Gradileo’s Grade 11 and 12 English courses are still being written, so start here: its reading, essay and grammar skills carry through every senior English course.');
+    return rec('eng-10', reasons);
+  }
   if (a.subject === 'Chemistry') {
     if (g <= 10) {
       const reasons = ['Grade 10 Chemistry is the first chemistry course: the particle model, atoms and the periodic table, bonding, chemical reactions, and moles, acids and bases.'];

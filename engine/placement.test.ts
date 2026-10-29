@@ -23,7 +23,7 @@ describe('course placement', () => {
   });
 
   it('recommends a course in the subject the student chose', () => {
-    expect(SUBJECTS).toEqual(['Mathematics', 'Chemistry']);
+    expect(SUBJECTS).toEqual(['Mathematics', 'Chemistry', 'English']);
     for (const subject of SUBJECTS)
       for (const grade of [5, 9, 10, 11, 12]) {
         const r = recommendCourse({ subject, grade, plan: 'university-stem' });
@@ -36,6 +36,10 @@ describe('course placement', () => {
     expect(recommendCourse({ subject: 'Chemistry', grade: 11 })).toMatchObject({ courseId: 'chem-20', prerequisite: 'chem-10' });
     expect(recommendCourse({ subject: 'Chemistry', grade: 12 })).toMatchObject({ courseId: 'chem-30', prerequisite: 'chem-20' });
     expect(recommendCourse({ subject: 'Mathematics', grade: 11, plan: 'university-stem' }).courseId).toBe('math-20-1');
+    // English starts with Grade 10 English, whatever the grade, until Grades 11 and 12 are written.
+    expect(recommendCourse({ subject: 'English', grade: 10 })).toMatchObject({ courseId: 'eng-10', prerequisite: null });
+    expect(recommendCourse({ subject: 'English', grade: 9 }).reasons.join(' ')).toMatch(/usually taken in Grade 10/);
+    expect(recommendCourse({ subject: 'English', grade: 12 }).reasons.join(' ')).toMatch(/still being written/);
   });
 
   it('only recommends courses that exist, with reasons, and a prerequisite that exists', () => {

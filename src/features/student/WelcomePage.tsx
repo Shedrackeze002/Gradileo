@@ -39,7 +39,7 @@ function gradesOf(subject: string) {
   const courses = COURSES.filter((c) => c.subject === subject);
   return [...new Set(courses.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: courses.filter((c) => c.grade === grade) }));
 }
-/** The grades a student can say they are in: Grades 5 to 12 for mathematics, 9 to 12 for a senior science. */
+/** The grades a student can say they are in: Grades 5 to 12 for mathematics, 9 to 12 for chemistry and English. */
 const gradeChoices = (subject: string) => (subject === 'Mathematics' ? [5, 6, 7, 8, 9, 10, 11, 12] : [9, 10, 11, 12]);
 
 const title = (courseId: string | null | undefined) => (courseId ? (getCourse(courseId)?.title ?? courseId) : '');
@@ -163,7 +163,7 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
   const [calculus, setCalculus] = useState<boolean | null>(initial?.calculus ?? null);
   const [feeling, setFeeling] = useState<Feeling | null>(initial?.feeling ?? null);
   const [support, setSupport] = useState(initial?.support ?? false);
-  // Plans, calculus and how it feels choose between mathematics courses; a science starts at its first course.
+  // Plans, calculus and how it feels choose between mathematics courses; chemistry and English go by the grade alone.
   const maths = subject === 'Mathematics';
   const grades = gradeChoices(subject);
   const senior = maths && grade !== null && grade >= 10;
@@ -180,7 +180,7 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
       <CardBody className="space-y-7">
         {SUBJECTS.length > 1 && (
           <Question label="What do you want to study?">
-            <div className="grid grid-cols-2 gap-2 sm:w-96">
+            <div className={cn('grid grid-cols-2 gap-2', SUBJECTS.length > 2 ? 'sm:w-[34rem] sm:grid-cols-3' : 'sm:w-96')}>
               {SUBJECTS.map((s) => (
                 <Choice key={s} selected={subject === s} onClick={() => chooseSubject(s)}>
                   {s}
