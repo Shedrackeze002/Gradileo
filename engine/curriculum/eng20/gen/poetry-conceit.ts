@@ -12,7 +12,7 @@ import { titled } from '../../eng10/gen/texts.ts';
 import {
   ANTHEM_ALL, CHAPMAN_ALL, DOUGLASS_ALL, DOVER_SOPHOCLES, DULCE_LIE, FRIGATE_ALL, LIQUOR_FIRST, LONDON_ALL, PARABLE_END, PARABLE_OPENING, PULLEY_ALL,
   SECOND_COMING_BEAST, SECOND_COMING_END, SONNET116_ALL, SUN_RISING_LAST, ULYSSES_END, VALEDICTION_COMPASS, VALEDICTION_GOLD, VALEDICTION_OPENING, WORLD_ALL,
-  linesOf, verseBlock, type Verse,
+  end, linesOf, verseBlock, type Verse,
 } from './poems.ts';
 
 const L = 'e11-2-1';
@@ -269,7 +269,7 @@ function conceitQ(rng: Rng, d: Difficulty): GenOutput {
       prompt: `${q.lead}\n\n${verseBlock(q.verse)}\n\n${q.ask}`,
       parts: [part(mc(rng, q.right, q.wrong))],
       hints: ['Read the comparison as if it were literal, then ask what each detail of it would mean for the real subject.'],
-      solution: [q.why, `So the answer is: ${q.right}`],
+      solution: [q.why, `So the answer is: ${end(q.right)}`],
     };
   }
   if (rng.chance(0.25)) {
@@ -286,7 +286,7 @@ function conceitQ(rng: Rng, d: Difficulty): GenOutput {
     prompt: `${q.lead}\n\n${verseBlock(q.verse)}\n\nAnswer both questions.`,
     parts: q.asks.map((a, i) => part(mc(rng, a.right, a.wrong), { label: `${i + 1}. ${a.ask}` })),
     hints: ['Name the two things being compared, then match each part of one to a part of the other.'],
-    solution: q.asks.map((a, i) => `${i + 1}. ${a.right} ${a.why}`),
+    solution: q.asks.map((a, i) => `${i + 1}. ${end(a.right)} ${a.why}`),
   };
 }
 
@@ -296,7 +296,7 @@ type Kind = 'biblical' | 'classical' | 'historical' | 'literary';
 const KIND_NAME: Record<Kind, string> = { biblical: 'Biblical', classical: 'Classical', historical: 'Historical', literary: 'Literary' };
 const KIND_WHAT: Record<Kind, string> = {
   biblical: 'it refers to a story or person from the Bible',
-  classical: 'it refers to the myths and legends of ancient Greece or Rome',
+  classical: 'it refers to the myths, legends or writers of ancient Greece or Rome',
   historical: 'it refers to a real person or event from history',
   literary: 'it refers to a character or work of literature',
 };
@@ -450,7 +450,7 @@ function allusionQ(rng: Rng, d: Difficulty): GenOutput {
       return {
         prompt: `${block(sentence)}\n\nThe words in bold allude to ${e.source}. What kind of allusion is this?`,
         parts: [part(mc(rng, KIND_NAME[e.kind], choices))],
-        hints: ['Biblical allusions come from the Bible, classical ones from Greek and Roman myth and legend, historical ones from real people and events, and literary ones from later works of literature.'],
+        hints: ['Biblical allusions come from the Bible; classical ones from ancient Greece and Rome (their myths, legends and writers); historical ones from real people and events; literary ones from later works of literature.'],
         solution: [`It is ${e.kind === 'historical' ? 'a historical' : `a ${e.kind}`} allusion: ${KIND_WHAT[e.kind]}, here ${e.source}.`],
       };
     }
@@ -467,7 +467,7 @@ function allusionQ(rng: Rng, d: Difficulty): GenOutput {
       prompt: `${q.lead}\n\n${verseBlock(q.verse)}\n\n${q.ask}`,
       parts: [part(mc(rng, q.right, q.wrong))],
       hints: ['Ask what the person, story or place alluded to is famous for, then how that meaning fits the poem.'],
-      solution: [q.why, `So: ${q.right}`],
+      solution: [q.why, `So: ${end(q.right)}`],
     };
   }
   const q = rng.pick(PD_ALLUSION_TWO);
@@ -480,7 +480,7 @@ function allusionQ(rng: Rng, d: Difficulty): GenOutput {
       part(mc(rng, q.ask.right, q.ask.wrong), { label: `2. ${q.ask.ask}` }),
     ],
     hints: ['First place the allusion: Bible, Greek and Roman myth, real history or later literature. Then ask what the poem does with it: does it borrow the meaning, or twist it?'],
-    solution: [`1. It is ${q.kind === 'historical' ? 'a historical' : `a ${q.kind}`} allusion: ${KIND_WHAT[q.kind]}.`, `2. ${q.ask.right} ${q.ask.why}`],
+    solution: [`1. It is ${q.kind === 'historical' ? 'a historical' : `a ${q.kind}`} allusion: ${KIND_WHAT[q.kind]}.`, `2. ${end(q.ask.right)} ${q.ask.why}`],
   };
 }
 

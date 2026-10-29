@@ -12,7 +12,7 @@ import { titled } from '../../eng10/gen/texts.ts';
 import {
   CORY_ALL, DIGGING_ALL, DUCHESS_COMMANDS, DUCHESS_DOWRY, DUCHESS_LOOKS, DUCHESS_NAME, DUCHESS_NEPTUNE, DUCHESS_OPENING, DUCHESS_STOOP, MADNESS_ALL,
   MAN_KILLED_ALL, SUCCESS_ALL, ULYSSES_END, ULYSSES_FRIENDS, ULYSSES_OPENING, ULYSSES_SON, WAR_KIND_BABE, WAR_KIND_FLAG, WAR_KIND_MOTHER, WAR_KIND_OPENING,
-  linesOf, verseBlock, type Verse,
+  end, linesOf, verseBlock, type Verse,
 } from './poems.ts';
 import { versesWithGap } from './poetry-conceit.ts';
 
@@ -80,7 +80,8 @@ interface PdMono extends Ask {
   lead: string;
 }
 
-const DUCHESS_LEAD = (where: string) => `${where} ${titled(DUCHESS_OPENING.poem)} by Robert Browning. The speaker is a duke in Renaissance Italy:`;
+/** “From “My Last Duchess” … The speaker is a duke …”, with any extra context, ending in a colon. */
+const DUCHESS_LEAD = (where: string, extra = '') => `${where} ${titled(DUCHESS_OPENING.poem)} by Robert Browning. The speaker is a duke in Renaissance Italy${extra}:`;
 
 const PD_MONO: PdMono[] = [
   {
@@ -93,7 +94,7 @@ const PD_MONO: PdMono[] = [
   },
   {
     verse: DUCHESS_DOWRY,
-    lead: `${DUCHESS_LEAD('Near the end of')} (“munificence” means generosity, and a “dowry” is the money a bride’s family pays at a marriage):`,
+    lead: DUCHESS_LEAD('Near the end of', ' (“munificence” means generosity, and a “dowry” is the money a bride’s family pays at a marriage)'),
     ask: 'Who is the listener, and why is he visiting?',
     right: 'An agent of a Count, arranging the Duke’s marriage to the Count’s daughter',
     wrong: ['A painter hired to paint the new Duchess', 'A friend of the dead Duchess, asking how she died', 'A judge investigating a crime'],
@@ -101,7 +102,7 @@ const PD_MONO: PdMono[] = [
   },
   {
     verse: DUCHESS_LOOKS,
-    lead: `${DUCHESS_LEAD('From')}`,
+    lead: DUCHESS_LEAD('From'),
     ask: 'What does this complaint about his wife reveal about the Duke?',
     right: 'He was jealous and possessive, angry that she smiled at everything as warmly as at him.',
     wrong: ['He admired her kindness to everyone.', 'He was too shy to speak to her.', 'He thought she was unhappy and wanted to help her.'],
@@ -109,7 +110,7 @@ const PD_MONO: PdMono[] = [
   },
   {
     verse: DUCHESS_NAME,
-    lead: `${DUCHESS_LEAD('From')}`,
+    lead: DUCHESS_LEAD('From'),
     ask: 'What does the Duke reveal about himself here?',
     right: 'He is proud and arrogant: he expected his ancient family name to be valued above any other gift.',
     wrong: ['He is modest about his family.', 'He is generous with gifts to everyone.', 'He forgave his wife easily.'],
@@ -117,7 +118,7 @@ const PD_MONO: PdMono[] = [
   },
   {
     verse: DUCHESS_STOOP,
-    lead: `${DUCHESS_LEAD('From')} He has been explaining why he never told his wife what displeased him:`,
+    lead: DUCHESS_LEAD('From', ', explaining why he never told his wife what displeased him'),
     ask: 'What do these words reveal about the Duke?',
     right: 'He is too proud ever to lower himself to explain, or to talk things through.',
     wrong: ['He is too kind to criticize anyone.', 'He is physically unable to bend down.', 'He was afraid of his wife.'],
@@ -158,7 +159,7 @@ interface PdMonoTwo {
 const PD_MONO_TWO: PdMonoTwo[] = [
   {
     verse: DUCHESS_COMMANDS,
-    lead: `${DUCHESS_LEAD('From')} He is telling the Count’s agent, who is arranging his next marriage, about his late wife:`,
+    lead: DUCHESS_LEAD('From', ', telling the agent of a Count, who is arranging the Duke’s next marriage, about his late wife'),
     asks: [
       {
         ask: 'What does “I gave commands; / Then all smiles stopped together” most likely suggest?',
@@ -220,7 +221,7 @@ function monologueQ(rng: Rng, d: Difficulty): GenOutput {
       prompt: `A dramatic monologue written for Gradileo, called “${m.title}”:\n\n${block(m.lines.join('\n'))}\n\n${q.ask}`,
       parts: [part(mc(rng, q.right, q.wrong))],
       hints: ['In a dramatic monologue, one character speaks to a silent listener. Use the speaker’s questions and replies to work out who is there, and compare what the speaker says with what the details show.'],
-      solution: [q.why, `So: ${q.right}`],
+      solution: [q.why, `So: ${end(q.right)}`],
     };
   }
   if (d === 2) {
@@ -229,15 +230,15 @@ function monologueQ(rng: Rng, d: Difficulty): GenOutput {
       prompt: `${q.lead}\n\n${verseBlock(q.verse)}\n\n${q.ask}`,
       parts: [part(mc(rng, q.right, q.wrong))],
       hints: ['Look for words addressed to the listener (“you”, “sir”) and for moments where the speaker says more about himself than he intends.'],
-      solution: [q.why, `So: ${q.right}`],
+      solution: [q.why, `So: ${end(q.right)}`],
     };
   }
   const q = rng.pick(PD_MONO_TWO);
   return {
     prompt: `${q.lead}\n\n${verseBlock(q.verse)}\n\nAnswer both questions.`,
     parts: q.asks.map((a, i) => part(mc(rng, a.right, a.wrong), { label: `${i + 1}. ${a.ask}` })),
-    hints: ['Read between the lines: what the speaker says calmly may show something terrible he does not see.'],
-    solution: q.asks.map((a, i) => `${i + 1}. ${a.right} ${a.why}`),
+    hints: ['Work out whom the speaker is addressing, then read between the lines: what a speaker says calmly can reveal more than he intends.'],
+    solution: q.asks.map((a, i) => `${i + 1}. ${end(a.right)} ${a.why}`),
   };
 }
 
@@ -365,7 +366,7 @@ const PD_IRONY_TWO: PdIronyTwo[] = [
         ask: 'Why does the refrain grow more bitter each time it is repeated?',
         right: 'Each stanza adds a new grieving family, so the claim that “War is kind” sounds more and more false.',
         wrong: ['Each stanza reports a victory, so the claim becomes more believable.', 'The speaker forgets the words and has to repeat them.', 'Each stanza is about the same person.'],
-        why: 'Lover, father, son: the deaths pile up, and the same comforting phrase becomes harder to bear.',
+        why: 'First a father, then a son: the deaths pile up, and the same comforting phrase becomes harder to bear.',
       },
     ],
   },
@@ -429,7 +430,7 @@ const PD_IRONY_TWO: PdIronyTwo[] = [
     asks: [
       {
         ask: 'What do her first three guesses (her loved one, her family, her enemy) have in common?',
-        right: 'Each one has forgotten her or stopped caring.',
+        right: 'None of them is coming: each has moved on or given up on her.',
         wrong: ['Each one is planting flowers on her grave.', 'Each one is digging to find treasure.', 'Each one is coming to visit her that day.'],
         why: 'Her loved one has married someone rich, her family think “What use!”, and her enemy no longer thinks her “worth her hate”.',
       },
@@ -460,7 +461,7 @@ function ironyQ(rng: Rng, d: Difficulty): GenOutput {
       prompt: `${q.lead}\n\n${verseBlock(q.verse)}\n\n${q.ask}`,
       parts: [part(mc(rng, q.right, q.wrong))],
       hints: ['Compare what is said or expected with what the poem actually shows.'],
-      solution: [q.why, `So: ${q.right}`],
+      solution: [q.why, `So: ${end(q.right)}`],
     };
   }
   const q = rng.pick(PD_IRONY_TWO);
@@ -468,7 +469,7 @@ function ironyQ(rng: Rng, d: Difficulty): GenOutput {
     prompt: `${q.lead}\n\n${q.passage}\n\nAnswer both questions.`,
     parts: q.asks.map((a, i) => part(mc(rng, a.right, a.wrong), { label: `${i + 1}. ${a.ask}` })),
     hints: ['Ask what the words say on the surface, what the poem actually shows, and why the gap between them matters.'],
-    solution: q.asks.map((a, i) => `${i + 1}. ${a.right} ${a.why}`),
+    solution: q.asks.map((a, i) => `${i + 1}. ${end(a.right)} ${a.why}`),
   };
 }
 

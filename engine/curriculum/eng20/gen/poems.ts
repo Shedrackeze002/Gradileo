@@ -13,6 +13,9 @@ export { linesOf, verseBlock, verseMd, withBold, type Poem, type Verse } from '.
 
 const V = (poem: Poem, text: string): Verse => ({ poem, lines: text.split('\n') });
 
+/** A choice used as a sentence in a solution, with a full stop added when it has none. */
+export const end = (s: string) => (/[.!?]”?$/.test(s) ? s : `${s}.`);
+
 // ---------------------------------------------------------------------------- the poems
 
 export const VALEDICTION: Poem = { author: 'John Donne', title: 'A Valediction: Forbidding Mourning', year: 1633, url: 'https://www.gutenberg.org/ebooks/48688' };

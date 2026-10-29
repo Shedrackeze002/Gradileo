@@ -10,7 +10,7 @@ import type { Difficulty, SkillDef } from '../../../types.ts';
 import { titled } from '../../eng10/gen/texts.ts';
 import {
   CHAPMAN_ALL, DOUGLASS_ALL, DUCHESS_OPENING, GRANDEUR_ALL, HOLY10_ALL, LONDON_ALL, MILTON19_ALL, MUST_DIE_ALL, SONNET116_ALL, ULYSSES_END, WORLD_ALL,
-  linesOf, verseBlock, withBold, type Verse,
+  end, linesOf, verseBlock, withBold, type Verse,
 } from './poems.ts';
 
 const L = 'e11-2-2';
@@ -107,7 +107,7 @@ const SONNETS: Sonnet[] = [
   },
   {
     verse: MUST_DIE_ALL,
-    lead: `${titled(MUST_DIE_ALL.poem)} by Claude McKay, written in 1919, a year of violent attacks on Black communities in the United States:`,
+    lead: `${titled(MUST_DIE_ALL.poem)} by Claude McKay, written in a year of violent attacks on Black communities in the United States:`,
     kind: 'shakespearean',
     octave: 'ABABCDCD',
     why: 'It rhymes hogs, spot, dogs, lot (ABAB); die, shed, defy, dead (CDCD); foe, brave, blow, grave (EFEF); then pack, back (GG). Three quatrains and a couplet make it Shakespearean.',
@@ -212,7 +212,7 @@ const VOLTAS: Volta[] = [
   },
   {
     verse: MUST_DIE_ALL,
-    lead: `${titled(MUST_DIE_ALL.poem)} by Claude McKay, written in 1919, a year of violent attacks on Black communities in the United States:`,
+    lead: `${titled(MUST_DIE_ALL.poem)} by Claude McKay, written in a year of violent attacks on Black communities in the United States:`,
     where: {
       ask: 'Where does the poem turn from how not to die to a call to fight together?',
       right: 'At line 9: “O kinsmen! we must meet the common foe!”',
@@ -277,7 +277,7 @@ function sonnetQ(rng: Rng, d: Difficulty): GenOutput {
     prompt: `${v.lead}\n\n${verseBlock(v.verse)}\n\nAnswer both questions.`,
     parts: [part(mc(rng, v.where.right, v.where.wrong), { label: `1. ${v.where.ask}` }), part(mc(rng, v.what.right, v.what.wrong), { label: `2. ${v.what.ask}` })],
     hints: ['Look for a word such as “But”, “Yet”, “Then” or “Now”, or a sudden change of tone, near line 9 or at the closing couplet.'],
-    solution: [`1. ${v.where.right}. ${v.where.why}`, `2. ${v.what.right} ${v.what.why}`],
+    solution: [`1. ${end(v.where.right)} ${v.where.why}`, `2. ${end(v.what.right)} ${v.what.why}`],
   };
 }
 
@@ -348,7 +348,7 @@ const INVERSIONS: Inversion[] = [
     lead: `The opening of ${titled(WORLD_ALL.poem)} by William Wordsworth. Look at the second line:`,
     first: 'Getting',
     effect: { ask: 'What is the effect of the trochee here?', right: 'It throws a heavy stress onto the restless activity of “Getting and spending”, making it sound busy and relentless.', wrong: ['It slows the line to a calm, peaceful pace.', 'It makes the line rhyme with the line before.', 'It hides the meaning so that the reader passes over it.'], why: '“GET-ting and SPEND-ing” hammers the stress onto the very activity the poem condemns.' },
-    why: 'The line begins “GET-ting” (DUM-da), a trochee, before settling into iambs: “and SPEND | ing, WE | lay WASTE | our POW | ers”.',
+    why: 'The line begins “GET-ting” (DUM-da), a trochee, where the iambic pattern would lead us to expect da-DUM; then it settles back into the iambic beat.',
   },
   {
     verse: linesOf(LONDON_ALL, 1, 1),
@@ -365,10 +365,10 @@ const INVERSIONS: Inversion[] = [
     why: 'The line begins “LODGED with” (DUM-da), a trochee, then returns to iambs: “me USE | less, THOUGH | my SOUL | more BENT”.',
   },
   {
-    verse: linesOf(MILTON19_ALL, 1, 1),
-    lead: `The first line of ${titled(MILTON19_ALL.poem)} by John Milton:`,
+    verse: linesOf(MILTON19_ALL, 13, 13),
+    lead: `Line 13 of ${titled(MILTON19_ALL.poem)} by John Milton (“post” means ride swiftly):`,
     first: null,
-    why: 'It is perfectly regular: “when I | con-SID | er HOW | my LIGHT | is SPENT”: five iambs.',
+    why: 'It is perfectly regular: “and POST | o’er LAND | and O | cean WITH | out REST”: five iambs.',
   },
   {
     verse: linesOf(MILTON19_ALL, 14, 14),
@@ -410,19 +410,19 @@ function metreQ(rng: Rng, d: Difficulty): GenOutput {
   const v = rng.pick(INVERSIONS);
   const line = v.verse.lines.filter(Boolean).slice(-1)[0];
   const firstWords = line.split(/\s+/).map((w) => w.replace(/[.,;:!?]+$/, ''));
-  const regular = 'Nowhere: every foot is a regular iamb';
+  const regular = 'None: every foot is an iamb';
   const choices = [
-    `In the first foot: “${v.first ?? firstWords[0]}”`,
-    `In the last foot: “${firstWords.slice(-2).join(' ')}”`,
-    `In the middle of the line: “${firstWords.slice(3, 5).join(' ')}”`,
+    `The first foot: “${v.first ?? firstWords[0]}”`,
+    `The last foot: “${firstWords.slice(-2).join(' ')}”`,
+    `A foot in the middle: “${firstWords.slice(3, 5).join(' ')}”`,
     regular,
   ];
   const right = v.first ? choices[0] : regular;
-  const parts = [part(mc(rng, right, choices.filter((c) => c !== right)), { label: '1. Where does the rhythm break the da-DUM pattern?' })];
+  const parts = [part(mc(rng, right, choices.filter((c) => c !== right)), { label: '1. Which foot is a trochee (DUM-da) instead of an iamb (da-DUM)?' })];
   const solution = [`1. ${v.why}`];
   if (v.effect) {
     parts.push(part(mc(rng, v.effect.right, v.effect.wrong), { label: `2. ${v.effect.ask}` }));
-    solution.push(`2. ${v.effect.right} ${v.effect.why}`);
+    solution.push(`2. ${end(v.effect.right)} ${v.effect.why}`);
   }
   return {
     prompt: `${v.lead}\n\n${verseBlock(v.verse)}\n\nThe poem is in iambic pentameter (five da-DUM feet a line). Answer ${v.effect ? 'both questions' : 'the question'} about the ${v.verse.lines.filter(Boolean).length > 1 ? 'last line' : 'line'}.`,
