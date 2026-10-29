@@ -705,8 +705,12 @@ items ship or decisions change.
      right answer was usually the longest choice, which a test-wise student could exploit. Every
      wrong answer was rewritten as fully as the right one, and `answer-length.test.ts` now fails
      any English skill where the keyed answer stands out by length.
-   - Next: Grade 12 English (*Hamlet*), then English videos (fewer than mathematics: how to read
-     a poem, how to write a thesis) and the English tutor voice. Later, a mark per rubric
+   - Built (29 October 2026): **Grade 12 English** (`eng-30`), 7 units, 31 lessons and 49 skills,
+     open to classes and sign-up: fiction through critical lenses, poetry, *Hamlet*, rhetoric and
+     argument, media and culture, writing and language. English now runs Grades 10 to 12, and
+     placement goes by grade with a check on the course before. The roadmap's English item is done.
+   - Next: English videos (fewer than mathematics: how to read a poem, how to write a thesis) and
+     the English tutor voice. Later, a mark per rubric
      criterion for essays. The privacy policy and terms still describe Gradileo as a mathematics
      platform; their wording is the owner's to change.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no

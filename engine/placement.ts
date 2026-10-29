@@ -58,6 +58,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'chem-30': 'chem-20',
   'eng-10': null,
   'eng-20': 'eng-10',
+  'eng-30': 'eng-20',
 };
 
 const CHECK = 'Programs set their own entrance requirements, so check the ones you are interested in.';
@@ -74,8 +75,12 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
       if (g < 10) reasons.push('It is usually taken in Grade 10, so some texts will be a stretch; the grammar and writing lessons build up from the basics.');
       return rec('eng-10', reasons, [{ courseId: 'eng-20', why: 'If you have already studied short stories, poetry, a Shakespeare play and the essay.' }]);
     }
+    if (g >= 12) {
+      return rec('eng-30', ['Grade 12 English covers fiction through critical lenses, poetry, Shakespeare’s Hamlet, rhetoric and argument, media and culture, critical, research and reflective writing, and language for effect.'], [
+        { courseId: 'eng-20', why: 'If you have not yet studied literary analysis, the comparative essay and Macbeth.' },
+      ]);
+    }
     const reasons = ['Grade 11 English covers fiction, poetry, Shakespeare’s Macbeth, the essay and rhetoric, news and media, literary, comparative and argumentative writing, and language.'];
-    if (g > 11) reasons.push('Gradileo’s Grade 12 English course is still being written, so Grade 11 English is the most advanced English course for now.');
     return rec('eng-20', reasons, [{ courseId: 'eng-10', why: 'Start here if you have not yet studied short stories, poetry and a Shakespeare play in English.' }]);
   }
   if (a.subject === 'Chemistry') {

@@ -129,8 +129,7 @@ subject (`SUBJECTS`, the subjects of the listed courses; Mathematics to begin wi
 their grade; for mathematics also their plans after high school (from Grade 10), whether they
 want calculus (Grade 12 science plans) and how mathematics feels. `recommendCourse` follows
 Alberta's course sequences to recommend a course, with reasons and alternatives; chemistry goes by
-the grade (Grade 10, 11 or 12 Chemistry), and so does English (Grade 10 or 11 English; Grade 12
-students take Grade 11 English until Grade 12 is written). New classes pick a course from a tab for each subject. An optional placement check asks
+the grade (Grade 10, 11 or 12 Chemistry), and so does English (Grade 10, 11 or 12 English). New classes pick a course from a tab for each subject. An optional placement check asks
 6 questions from the course before (`placementSkills`: the skill each unit builds towards,
 spread across the course), graded in the browser and not saved; `placementResult` says ready,
 ready with review, or start earlier.
@@ -339,8 +338,8 @@ reading time when a slide has no recording (a teacher's own resource, or a slide
 
 The platform is course-agnostic: mathematics from Grade 5 to Grade 12 (Math 5 to 9; Math 10, 10
 Workplace and 10 Essentials; Math 11 Pre-calculus, Foundations, Workplace and Essentials; Math 12
-Pre-calculus, Foundations, Workplace and Calculus), chemistry in Grades 10, 11 and 12 and English in
-Grades 10 and 11 already run side by side, grouped by subject and grade in course pickers. Courses are named by grade and stream, not
+Pre-calculus, Foundations, Workplace and Calculus), chemistry and English in Grades 10, 11 and 12
+already run side by side, grouped by subject and grade in course pickers. Courses are named by grade and stream, not
 by any one curriculum's codes; their folders and ids keep the codes they were first built under
 (`math30-1` is Math 12 Pre-calculus). To add a course, for example Math 12 Pre-calculus (the steps
 it followed):
@@ -389,8 +388,8 @@ Every text quoted is in the public domain (authors who died before 1955, publish
 written for Gradileo, and each excerpt (`gen/texts.ts`, `poems.ts`, `play.ts`, `speeches.ts`) was
 checked word for word against its Project Gutenberg or Wikisource source. Sentences avoid the points
 where varieties of English differ (the serial comma, punctuation inside quotation marks, collective
-nouns, -ise and -ize spellings), so a question is right everywhere. Grade 11 English
-(`engine/curriculum/eng20/`) shares the helpers in `eng10/gen/common.ts`. Because a test-wise
+nouns, -ise and -ize spellings), so a question is right everywhere. Grade 11 and 12 English
+(`engine/curriculum/eng20/`, `eng30/`) share the helpers in `eng10/gen/common.ts`. Because a test-wise
 student learns to pick the fullest choice, `answer-length.test.ts` fails any English skill whose
 keyed answer is more than 15% longer than every other choice in more than 35% of its items: wrong
 answers are written as fully as the right one and are wrong in what they say.
