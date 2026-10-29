@@ -57,7 +57,7 @@ const SATIRE: SatireExample[] = [
   { text: 'Our thoughtful leader has kindly protected us from the danger of free speech by closing every newspaper in the country.', tool: 'irony', also: [], target: 'Leaders who silence the press' },
   { text: 'Congratulations to the cinema on its brave new policy of charging extra for seats that face the screen.', tool: 'irony', also: ['exaggeration'], target: 'Businesses that invent extra charges' },
   // parody
-  { text: 'An article written in the style of a nature documentary describes shoppers on the first day of a sale: “Here we see the bargain hunter, a fierce creature, defending its territory near the discount racks.”', tool: 'parody', also: ['mock'], target: 'Shoppers’ frenzy during sales' },
+  { text: 'An article written in the style of a nature documentary describes shoppers on the first day of a sale: “Here we see the bargain hunter, a fierce creature, defending its territory near the discount racks.”', tool: 'parody', also: ['mock', 'exaggeration'], target: 'Shoppers’ frenzy during sales' },
   { text: 'A “fairy tale” in a student magazine begins: “Once upon a time, in a land of endless forms, there lived a committee that had never once made a decision.”', tool: 'parody', also: [], target: 'Slow, indecisive committees' },
   { text: 'A newspaper column prints a “recipe” for a successful political speech: two cups of promises, a pinch of facts, and plenty of applause.', tool: 'parody', also: [], target: 'Empty political speeches' },
   { text: 'A mock instruction manual for a new phone includes the step: “Step 7: Agree to the 400-page terms and conditions without reading them, like everyone else.”', tool: 'parody', also: ['irony'], target: 'Long terms and conditions that nobody reads' },
@@ -237,7 +237,7 @@ const FALLACIES: Record<Fallacy, string[]> = {
   ],
   'red-herring': [
     'Why worry about pollution from the factory when there are so many potholes in our roads?',
-    'Asked why the new stadium went over budget, the councillor replied: “Our town has always loved its football team, and the fans deserve a great place to watch.”',
+    'Asked why the new stadium went over budget, the councillor replied: “Our fans are the most loyal in the country, and they deserve a great place to watch.”',
     'Critics say the new phone’s battery dies too quickly, but the company points out that it comes in six beautiful colours.',
     'Yes, the restaurant failed its hygiene inspection, but its owner gives a great deal of money to local charities.',
     'When asked why the bus service was cut, the minister talked for ten minutes about the new trains planned for the capital.',
