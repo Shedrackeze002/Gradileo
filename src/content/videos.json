@@ -13006,6 +13006,406 @@
       }
     ]
   },
+  "c30-2-7": {
+    "lessonId": "c30-2-7",
+    "title": "Standard Cell Potentials, Part 1: The Standard Hydrogen Electrode",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A reference half-cell",
+        "t": 36.087
+      },
+      {
+        "title": "Standard reduction potentials",
+        "t": 80.926
+      },
+      {
+        "title": "Measuring zinc",
+        "t": 115.013
+      },
+      {
+        "title": "Building the table",
+        "t": 153.721
+      },
+      {
+        "title": "Your turn",
+        "t": 196.785
+      },
+      {
+        "title": "Summary",
+        "t": 242.829
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-7:q",
+        "t": 215.525,
+        "prompt": "A standard nickel half-cell is joined to a standard hydrogen electrode. Nickel is oxidised, and the voltmeter reads $0.26\\ \\text{V}$. What is the standard reduction potential of $\\ce{Ni^2+(aq) + 2e- -> Ni(s)}$?",
+        "choices": [
+          "$+0.26\\ \\text{V}$",
+          "$-0.26\\ \\text{V}$",
+          "$0.00\\ \\text{V}$",
+          "$-0.52\\ \\text{V}$"
+        ],
+        "answer": 1,
+        "working": "Nickel gives its electrons to hydrogen ions, so nickel(II) ions are weaker oxidising agents than $\\ce{H+}$, and the potential is negative: $-0.26\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-7-b": {
+    "lessonId": "c30-2-7",
+    "title": "Standard Cell Potentials, Part 2: Calculating a Cell Potential",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cathode minus anode",
+        "t": 17.467
+      },
+      {
+        "title": "The zinc–copper cell",
+        "t": 48.368
+      },
+      {
+        "title": "Which is the cathode?",
+        "t": 84.871
+      },
+      {
+        "title": "Two mistakes",
+        "t": 136.896
+      },
+      {
+        "title": "Your turn",
+        "t": 185.293
+      },
+      {
+        "title": "Summary",
+        "t": 229.583
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-7-b:q",
+        "t": 202.501,
+        "prompt": "A standard voltaic cell is made from a nickel half-cell, $\\ce{Ni^2+ + 2e- -> Ni}$, $E^\\circ = -0.26\\ \\text{V}$, and a silver half-cell, $\\ce{Ag+ + e- -> Ag}$, $E^\\circ = +0.80\\ \\text{V}$. What is its standard cell potential?",
+        "choices": [
+          "$+0.54\\ \\text{V}$",
+          "$+1.86\\ \\text{V}$",
+          "$-1.06\\ \\text{V}$",
+          "$+1.06\\ \\text{V}$"
+        ],
+        "answer": 3,
+        "working": "Silver is higher in the table, so it is the cathode: $E^\\circ_\\text{cell} = +0.80 - ({-0.26}) = +1.06\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-7-c": {
+    "lessonId": "c30-2-7",
+    "title": "Standard Cell Potentials, Part 3: Finding an Unknown Potential",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An unknown metal",
+        "t": 20.938
+      },
+      {
+        "title": "Solve for the unknown",
+        "t": 54.378
+      },
+      {
+        "title": "When the unknown is the cathode",
+        "t": 96.01
+      },
+      {
+        "title": "Your turn",
+        "t": 141.632
+      },
+      {
+        "title": "Summary",
+        "t": 192.217
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-7-c:q",
+        "t": 163.251,
+        "prompt": "A standard copper half-cell, $\\ce{Cu^2+ + 2e- -> Cu}$, $E^\\circ = +0.34\\ \\text{V}$, is joined to a half-cell of metal M in $\\ce{M^2+(aq)}$. The cell potential is $0.79\\ \\text{V}$, and electrons flow from M to copper. What is $E^\\circ$ for $\\ce{M^2+ + 2e- -> M}$?",
+        "choices": [
+          "$-0.45\\ \\text{V}$",
+          "$+1.13\\ \\text{V}$",
+          "$+0.45\\ \\text{V}$",
+          "$-1.13\\ \\text{V}$"
+        ],
+        "answer": 0,
+        "working": "Electrons leave M, so M is the anode: $0.79 = +0.34 - E^\\circ_\\text{M}$, so $E^\\circ_\\text{M} = 0.34 - 0.79 = -0.45\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-7-d": {
+    "lessonId": "c30-2-7",
+    "title": "Standard Cell Potentials, Part 4: Potentials and Spontaneity",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Any reaction as a cell",
+        "t": 22.475
+      },
+      {
+        "title": "Copper in acid",
+        "t": 71.976
+      },
+      {
+        "title": "Permanganate and chloride",
+        "t": 110.303
+      },
+      {
+        "title": "Not standard conditions",
+        "t": 151.556
+      },
+      {
+        "title": "Your turn",
+        "t": 172.955
+      },
+      {
+        "title": "Summary",
+        "t": 215.109
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-7-d:q",
+        "t": 188.081,
+        "prompt": "Consider $\\ce{2Ag(s) + Cu^2+(aq) -> 2Ag+(aq) + Cu(s)}$. Use $E^\\circ = +0.80\\ \\text{V}$ for $\\ce{Ag+/Ag}$ and $+0.34\\ \\text{V}$ for $\\ce{Cu^2+/Cu}$. What is $E^\\circ$ for the reaction, and is it spontaneous?",
+        "choices": [
+          "$E^\\circ = +0.46\\ \\text{V}$, spontaneous",
+          "$E^\\circ = +0.46\\ \\text{V}$, non-spontaneous",
+          "$E^\\circ = -0.46\\ \\text{V}$, non-spontaneous",
+          "$E^\\circ = -0.46\\ \\text{V}$, spontaneous"
+        ],
+        "answer": 2,
+        "working": "Copper(II) ions are reduced (cathode) and silver is oxidised (anode): $E^\\circ = +0.34 - (+0.80) = -0.46\\ \\text{V}$, so the reaction is non-spontaneous."
+      }
+    ]
+  },
+  "c30-2-8": {
+    "lessonId": "c30-2-8",
+    "title": "Electrolytic Cells and Faraday's Law, Part 1: Electrolytic Cells and Molten Salts",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrolytic cells",
+        "t": 44.759
+      },
+      {
+        "title": "Voltaic and electrolytic",
+        "t": 81.936
+      },
+      {
+        "title": "Molten sodium chloride",
+        "t": 119.218
+      },
+      {
+        "title": "Minimum voltage",
+        "t": 166.562
+      },
+      {
+        "title": "Your turn",
+        "t": 190.904
+      },
+      {
+        "title": "Summary",
+        "t": 239.499
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-8:q",
+        "t": 206.963,
+        "prompt": "Molten potassium bromide, $\\ce{KBr(l)}$, is electrolysed with inert electrodes. Use $\\ce{K+ + e- -> K}$, $E^\\circ = -2.93\\ \\text{V}$, and $\\ce{Br2 + 2e- -> 2Br-}$, $E^\\circ = +1.07\\ \\text{V}$. What forms at the cathode and at the anode, and what is the minimum voltage?",
+        "choices": [
+          "Bromine and potassium; $4.00\\ \\text{V}$",
+          "Potassium and bromine; $4.00\\ \\text{V}$",
+          "Potassium and bromine; $1.86\\ \\text{V}$",
+          "Hydrogen and bromine; $1.90\\ \\text{V}$"
+        ],
+        "answer": 1,
+        "working": "Cathode: $\\ce{K+ + e- -> K}$. Anode: $\\ce{2Br- -> Br2 + 2e-}$. $E^\\circ_\\text{cell} = -2.93 - (+1.07) = -4.00\\ \\text{V}$, so at least $4.00\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-8-b": {
+    "lessonId": "c30-2-8",
+    "title": "Electrolytic Cells and Faraday's Law, Part 2: Electrolysing Solutions",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Water competes",
+        "t": 19.424
+      },
+      {
+        "title": "Potassium iodide solution",
+        "t": 69.874
+      },
+      {
+        "title": "Copper(II) sulfate solution",
+        "t": 133.546
+      },
+      {
+        "title": "Chloride solutions",
+        "t": 177.112
+      },
+      {
+        "title": "Your turn",
+        "t": 210.2
+      },
+      {
+        "title": "Summary",
+        "t": 254.174
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-8-b:q",
+        "t": 226.285,
+        "prompt": "Aqueous nickel(II) iodide is electrolysed with inert electrodes. Use $\\ce{Ni^2+ + 2e- -> Ni}$, $-0.26\\ \\text{V}$; $\\ce{I2 + 2e- -> 2I-}$, $+0.54\\ \\text{V}$; and water, $-0.83\\ \\text{V}$ and $+1.23\\ \\text{V}$. What forms at the cathode and at the anode, and what is the minimum voltage?",
+        "choices": [
+          "Hydrogen and iodine; $1.37\\ \\text{V}$",
+          "Nickel and oxygen; $1.49\\ \\text{V}$",
+          "Hydrogen and oxygen; $2.06\\ \\text{V}$",
+          "Nickel and iodine; $0.80\\ \\text{V}$"
+        ],
+        "answer": 3,
+        "working": "Cathode: $\\ce{Ni^2+}$ ($-0.26$ V) beats water ($-0.83$ V). Anode: $\\ce{I-}$ ($+0.54$ V) beats water ($+1.23$ V). $E^\\circ_\\text{cell} = -0.26 - (+0.54) = -0.80\\ \\text{V}$."
+      }
+    ]
+  },
+  "c30-2-8-c": {
+    "lessonId": "c30-2-8",
+    "title": "Electrolytic Cells and Faraday's Law, Part 3: Electroplating and Faraday's Law",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electroplating",
+        "t": 21.9
+      },
+      {
+        "title": "Charge and the Faraday constant",
+        "t": 67.924
+      },
+      {
+        "title": "Moles of electrons",
+        "t": 108.773
+      },
+      {
+        "title": "Your turn",
+        "t": 145.915
+      },
+      {
+        "title": "Summary",
+        "t": 183.894
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-8-c:q",
+        "t": 160.963,
+        "prompt": "A current of $1.50\\ \\text{A}$ flows through an electrolytic cell for $20.0\\ \\text{min}$. Using $F = 9.65 \\times 10^4\\ \\text{C/mol}$, what amount of electrons passes through the cell?",
+        "choices": [
+          "$0.0187\\ \\text{mol}$",
+          "$3.11 \\times 10^{-4}\\ \\text{mol}$",
+          "$0.0373\\ \\text{mol}$",
+          "$1.80 \\times 10^{3}\\ \\text{mol}$"
+        ],
+        "answer": 0,
+        "working": "$t = 20.0 \\times 60 = 1200\\ \\text{s}$, $Q = 1.50 \\times 1200 = 1800\\ \\text{C}$, and $n_{e^-} = 1800 \\div (9.65 \\times 10^4) = 0.0187\\ \\text{mol}$."
+      }
+    ]
+  },
+  "c30-2-8-d": {
+    "lessonId": "c30-2-8",
+    "title": "Electrolytic Cells and Faraday's Law, Part 4: Mass and Time from Faraday's Law",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From electrons to mass",
+        "t": 18.666
+      },
+      {
+        "title": "Mass of copper",
+        "t": 49.763
+      },
+      {
+        "title": "Electrons per atom",
+        "t": 102.085
+      },
+      {
+        "title": "Time to silver-plate",
+        "t": 126.447
+      },
+      {
+        "title": "Your turn",
+        "t": 181.203
+      },
+      {
+        "title": "Summary",
+        "t": 225.173
+      }
+    ],
+    "cues": [
+      {
+        "id": "c30-2-8-d:q",
+        "t": 198.708,
+        "prompt": "A steel part is nickel-plated with a current of $2.00\\ \\text{A}$ for $40.0\\ \\text{min}$: $\\ce{Ni^2+ + 2e- -> Ni}$. Using Ni $58.69\\ \\text{g/mol}$ and $F = 9.65 \\times 10^4\\ \\text{C/mol}$, what mass of nickel is deposited?",
+        "choices": [
+          "$2.92\\ \\text{g}$",
+          "$0.973\\ \\text{g}$",
+          "$1.46\\ \\text{g}$",
+          "$0.0243\\ \\text{g}$"
+        ],
+        "answer": 2,
+        "working": "$n_{e^-} = 2.00 \\times 2400 \\div (9.65 \\times 10^4) = 0.04974$ mol, $n(\\ce{Ni}) = 0.02487$ mol, and $m = 0.02487 \\times 58.69 = 1.46$ g."
+      }
+    ]
+  },
   "c30-3-1": {
     "lessonId": "c30-3-1",
     "title": "Organic Compounds and How They Are Drawn, Part 1: What Makes a Compound Organic",
@@ -13060,7 +13460,7 @@
   "c30-3-1-b": {
     "lessonId": "c30-3-1",
     "title": "Organic Compounds and How They Are Drawn, Part 2: Families of Hydrocarbons",
-    "duration": 254,
+    "duration": 256,
     "voice": "af_heart",
     "chapters": [
       {
@@ -13073,29 +13473,29 @@
       },
       {
         "title": "Saturated and unsaturated",
-        "t": 58.521
+        "t": 58.758
       },
       {
         "title": "Rings",
-        "t": 99.644
+        "t": 100.262
       },
       {
         "title": "One formula, two families",
-        "t": 151.132
+        "t": 151.95
       },
       {
         "title": "Your turn",
-        "t": 184.182
+        "t": 185.081
       },
       {
         "title": "Summary",
-        "t": 214.708
+        "t": 215.607
       }
     ],
     "cues": [
       {
         "id": "c30-3-1-b:q",
-        "t": 191.401,
+        "t": 192.3,
         "prompt": "Which describes the hydrocarbon $\\ce{CH2=CH-CH2-CH3}$?",
         "choices": [
           "An alkane: saturated",
@@ -13128,25 +13528,25 @@
       },
       {
         "title": "Line formulas",
-        "t": 86.989
+        "t": 87.065
       },
       {
         "title": "From a line formula",
-        "t": 125.697
+        "t": 125.773
       },
       {
         "title": "Your turn",
-        "t": 174.041
+        "t": 174.117
       },
       {
         "title": "Summary",
-        "t": 203.983
+        "t": 204.059
       }
     ],
     "cues": [
       {
         "id": "c30-3-1-c:q",
-        "t": 181.675,
+        "t": 181.751,
         "prompt": "What is the molecular formula of $\\ce{CH3-C(CH3)=CH-CH3}$?",
         "choices": [
           "$\\ce{C5H10}$",
@@ -13162,7 +13562,7 @@
   "c30-3-1-d": {
     "lessonId": "c30-3-1",
     "title": "Organic Compounds and How They Are Drawn, Part 4: General Formulas",
-    "duration": 243,
+    "duration": 244,
     "voice": "af_heart",
     "chapters": [
       {
@@ -13179,25 +13579,25 @@
       },
       {
         "title": "Count the branch",
-        "t": 94.117
+        "t": 94.292
       },
       {
         "title": "From a molar mass",
-        "t": 122.338
+        "t": 122.513
       },
       {
         "title": "Your turn",
-        "t": 167.915
+        "t": 168.09
       },
       {
         "title": "Summary",
-        "t": 211.379
+        "t": 211.554
       }
     ],
     "cues": [
       {
         "id": "c30-3-1-d:q",
-        "t": 181.874,
+        "t": 182.049,
         "prompt": "An alkane has a molar mass of $100.23\\ \\text{g/mol}$. What is its molecular formula? Use C $12.01\\ \\text{g/mol}$ and H $1.01\\ \\text{g/mol}$.",
         "choices": [
           "$\\ce{C7H14}$",
@@ -13371,29 +13771,29 @@
       },
       {
         "title": "Numbering from the nearer end",
-        "t": 67.905
+        "t": 67.982
       },
       {
         "title": "An alkene with a branch",
-        "t": 99.429
+        "t": 99.506
       },
       {
         "title": "Alkynes",
-        "t": 138.307
+        "t": 138.384
       },
       {
         "title": "Your turn",
-        "t": 176.227
+        "t": 176.304
       },
       {
         "title": "Summary",
-        "t": 208.58
+        "t": 208.657
       }
     ],
     "cues": [
       {
         "id": "c30-3-2-d:q",
-        "t": 182.784,
+        "t": 182.861,
         "prompt": "What is the IUPAC name of $\\ce{CH3-C#C-CH(CH3)-CH3}$?",
         "choices": [
           "2-methylpent-3-yne",
@@ -13426,21 +13826,21 @@
       },
       {
         "title": "More carbons, more isomers",
-        "t": 121.379
+        "t": 121.584
       },
       {
         "title": "Your turn",
-        "t": 148.056
+        "t": 148.261
       },
       {
         "title": "Summary",
-        "t": 180.836
+        "t": 181.041
       }
     ],
     "cues": [
       {
         "id": "c30-3-3:q",
-        "t": 156.652,
+        "t": 156.857,
         "prompt": "Which compound is an isomer of hexane, $\\ce{C6H14}$?",
         "choices": [
           "$\\ce{CH3-(CH2)5-CH3}$",
@@ -13618,21 +14018,21 @@
       },
       {
         "title": "Hydroxyl and carboxyl groups",
-        "t": 126.253
+        "t": 126.228
       },
       {
         "title": "Your turn",
-        "t": 158.633
+        "t": 158.608
       },
       {
         "title": "Summary",
-        "t": 187.629
+        "t": 187.604
       }
     ],
     "cues": [
       {
         "id": "c30-3-4:q",
-        "t": 166.119,
+        "t": 166.094,
         "prompt": "Which family does $\\ce{CH3-CH2-NH2}$ belong to?",
         "choices": [
           "Alcohol",
@@ -13661,29 +14061,29 @@
       },
       {
         "title": "Acids, esters and ethers",
-        "t": 51.739
+        "t": 51.766
       },
       {
         "title": "Spotting the family",
-        "t": 81.021
+        "t": 81.048
       },
       {
         "title": "Not a hydroxide",
-        "t": 111.258
+        "t": 111.288
       },
       {
         "title": "Your turn",
-        "t": 138.907
+        "t": 138.937
       },
       {
         "title": "Summary",
-        "t": 169.031
+        "t": 169.061
       }
     ],
     "cues": [
       {
         "id": "c30-3-4-b:q",
-        "t": 145.065,
+        "t": 145.095,
         "prompt": "Which compound is an ester?",
         "choices": [
           "$\\ce{CH3-COO-CH2-CH3}$",
@@ -13763,21 +14163,21 @@
       },
       {
         "title": "Solubility in water",
-        "t": 117.683
+        "t": 117.61
       },
       {
         "title": "Your turn",
-        "t": 156.108
+        "t": 156.035
       },
       {
         "title": "Summary",
-        "t": 189.979
+        "t": 189.906
       }
     ],
     "cues": [
       {
         "id": "c30-3-4-d:q",
-        "t": 165.615,
+        "t": 165.542,
         "prompt": "These compounds have similar molar masses: pentane $72.17\\ \\text{g/mol}$, butanal $72.12\\ \\text{g/mol}$, butan-1-ol $74.14\\ \\text{g/mol}$ and propanoic acid $74.09\\ \\text{g/mol}$. Which has the **lowest** boiling point?",
         "choices": [
           "Pentane",
@@ -13810,25 +14210,25 @@
       },
       {
         "title": "Four small molecules",
-        "t": 118.183
+        "t": 118.118
       },
       {
         "title": "The bromine water test",
-        "t": 168.577
+        "t": 168.658
       },
       {
         "title": "Your turn",
-        "t": 193.846
+        "t": 193.927
       },
       {
         "title": "Summary",
-        "t": 226.431
+        "t": 226.695
       }
     ],
     "cues": [
       {
         "id": "c30-3-5:q",
-        "t": 201.741,
+        "t": 202.005,
         "prompt": "Propene, $\\ce{CH2=CH-CH3}$, reacts with chlorine, $\\ce{Cl2}$. Which is the organic product?",
         "choices": [
           "$\\ce{CH3-CCl2-CH3}$",
@@ -13844,7 +14244,7 @@
   "c30-3-5-b": {
     "lessonId": "c30-3-5",
     "title": "Addition, Substitution and Elimination, Part 2: Where the Hydrogen Goes",
-    "duration": 248,
+    "duration": 249,
     "voice": "af_heart",
     "chapters": [
       {
@@ -13853,33 +14253,33 @@
       },
       {
         "title": "Two possible products",
-        "t": 25.334
+        "t": 25.431
       },
       {
         "title": "The rule",
-        "t": 71.35
+        "t": 71.648
       },
       {
         "title": "Water, and alike carbons",
-        "t": 109.083
+        "t": 109.504
       },
       {
         "title": "Alkynes add twice",
-        "t": 147.802
+        "t": 148.269
       },
       {
         "title": "Your turn",
-        "t": 173.8
+        "t": 174.264
       },
       {
         "title": "Summary",
-        "t": 211.063
+        "t": 211.527
       }
     ],
     "cues": [
       {
         "id": "c30-3-5-b:q",
-        "t": 188.306,
+        "t": 188.77,
         "prompt": "But-1-ene, $\\ce{CH2=CH-CH2-CH3}$, reacts with hydrogen bromide. When the two carbons of the double bond differ, the hydrogen atom adds to the carbon that already has more hydrogen atoms. Name the organic product.",
         "choices": [
           "1-bromobutane",
@@ -13916,21 +14316,21 @@
       },
       {
         "title": "Substitution or elimination?",
-        "t": 143.669
+        "t": 143.721
       },
       {
         "title": "Your turn",
-        "t": 186.774
+        "t": 186.95
       },
       {
         "title": "Summary",
-        "t": 225.416
+        "t": 225.592
       }
     ],
     "cues": [
       {
         "id": "c30-3-5-c:q",
-        "t": 201.035,
+        "t": 201.211,
         "prompt": "1-Bromobutane, $\\ce{CH3-CH2-CH2-CH2Br}$, is heated with hydroxide ions dissolved in ethanol. What type of reaction happens, and what is the organic product?",
         "choices": [
           "Elimination; but-1-ene",
@@ -13963,25 +14363,25 @@
       },
       {
         "title": "Predicting a product",
-        "t": 104.996
+        "t": 104.95
       },
       {
         "title": "Working backwards",
-        "t": 152.737
+        "t": 152.691
       },
       {
         "title": "Your turn",
-        "t": 186.855
+        "t": 187.077
       },
       {
         "title": "Summary",
-        "t": 221.174
+        "t": 221.396
       }
     ],
     "cues": [
       {
         "id": "c30-3-5-d:q",
-        "t": 195.915,
+        "t": 196.137,
         "prompt": "Which reactants form 1,2-dibromobutane, $\\ce{CH2Br-CHBr-CH2-CH3}$, in an addition reaction?",
         "choices": [
           "But-2-ene and bromine",
@@ -14108,37 +14508,37 @@
       },
       {
         "title": "Polymers and monomers",
-        "t": 19.904
+        "t": 20.054
       },
       {
         "title": "Poly(ethene)",
-        "t": 40.498
+        "t": 40.648
       },
       {
         "title": "Common addition polymers",
-        "t": 84.691
+        "t": 84.941
       },
       {
         "title": "Poly(propene)",
-        "t": 114.955
+        "t": 115.211
       },
       {
         "title": "The double bond does not stay",
-        "t": 147.317
+        "t": 147.82
       },
       {
         "title": "Your turn",
-        "t": 172.611
+        "t": 173.119
       },
       {
         "title": "Summary",
-        "t": 205.372
+        "t": 205.876
       }
     ],
     "cues": [
       {
         "id": "c30-3-6-c:q",
-        "t": 181.357,
+        "t": 181.865,
         "prompt": "A segment of a polymer chain is $\\ce{-CH2-CHCl-CH2-CHCl-CH2-CHCl-{}}$. Which monomer was it made from?",
         "choices": [
           "$\\ce{CH3-CH2Cl}$",
@@ -14183,17 +14583,17 @@
       },
       {
         "title": "Your turn",
-        "t": 197.505
+        "t": 197.501
       },
       {
         "title": "Summary",
-        "t": 231.806
+        "t": 231.802
       }
     ],
     "cues": [
       {
         "id": "c30-3-6-d:q",
-        "t": 210.307,
+        "t": 210.303,
         "prompt": "Hexane-1,6-diamine, $\\ce{H2N-(CH2)6-NH2}$, and hexanedioic acid, $\\ce{HOOC-(CH2)4-COOH}$, link into long chains (nylon). What kind of polymer forms?",
         "choices": [
           "An addition polymer; no other product forms",
@@ -14273,25 +14673,25 @@
       },
       {
         "title": "Atoms are conserved",
-        "t": 58.415
+        "t": 58.718
       },
       {
         "title": "A missing product",
-        "t": 90.039
+        "t": 90.342
       },
       {
         "title": "Your turn",
-        "t": 127.764
+        "t": 128.192
       },
       {
         "title": "Summary",
-        "t": 165.694
+        "t": 166.122
       }
     ],
     "cues": [
       {
         "id": "c30-3-7-b:q",
-        "t": 140.037,
+        "t": 140.465,
         "prompt": "Cracking breaks a large alkane into smaller molecules: $\\ce{C16H34 -> C10H22 + 2X}$. What is the formula of X?",
         "choices": [
           "$\\ce{C6H12}$",
