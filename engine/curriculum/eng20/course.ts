@@ -1,0 +1,201 @@
+/**
+ * Grade 11 English: the course after Grade 10 English. Gradileo's own outline (29 October 2026, from
+ * `docs/PLAN-CHEMISTRY-ENGLISH.md`), written for learners anywhere at the level of the
+ * university-bound stream of Grade 11 English: fiction, poetry, Shakespeare's Macbeth, the essay and
+ * rhetoric, news and media, analytical, comparative and argumentative writing, and language. The
+ * same seven strands as Grade 10, with harder texts and longer, more analytical writing. Every text
+ * quoted is in the public domain or written for Gradileo.
+ */
+import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
+
+export const OUTCOMES: Outcome[] = [
+  { code: '11-A1', strand: 'Fiction', text: 'Analyse how structure, pacing, narrative voice and perspective shape the meaning of a story.' },
+  { code: '11-A2', strand: 'Fiction', text: 'Interpret complex characters, symbolism and allegory, and explain how an author’s style creates tone.' },
+  { code: '11-B1', strand: 'Poetry', text: 'Analyse extended metaphor, allusion, the sonnet and the dramatic monologue, and compare how poems treat a subject.' },
+  { code: '11-C1', strand: 'Shakespeare', text: 'Analyse the language, imagery, characters, dramatic devices and tragic form of Macbeth.' },
+  { code: '11-D1', strand: 'The Essay and Rhetoric', text: 'Analyse the rhetorical situation and choices of an essay or speech, including satire.' },
+  { code: '11-D2', strand: 'The Essay and Rhetoric', text: 'Evaluate the reasoning and evidence of an argument, and recognize subtler fallacies.' },
+  { code: '11-E1', strand: 'News and Media', text: 'Analyse how news, documentary and digital media frame events, represent people and persuade.' },
+  { code: '11-F1', strand: 'Writing', text: 'Write literary and comparative essays with an arguable thesis, integrated evidence and sustained analysis.' },
+  { code: '11-F2', strand: 'Writing', text: 'Use sources responsibly, write arguments that concede and rebut, and revise for style, including under a time limit.' },
+  { code: '11-G1', strand: 'Language', text: 'Use clauses, sentence variety and advanced punctuation for clarity and effect.' },
+  { code: '11-G2', strand: 'Language', text: 'Use active and passive voice, the subjunctive and standard usage deliberately, with clear pronoun reference.' },
+  { code: '11-G3', strand: 'Language', text: 'Work out words from Greek and Latin roots, and choose precise diction over jargon and cliché.' },
+];
+
+const L = (
+  id: string,
+  unitId: string,
+  number: string,
+  title: string,
+  outcomes: string[],
+  skills: string[],
+  objectives: string[],
+  minutes = 60,
+  vocabulary: string[] = [],
+): LessonMeta => ({ id, unitId, number, title, outcomes, skills, objectives, minutes, vocabulary });
+
+export const LESSONS: LessonMeta[] = [
+  // ---------------- Unit 1: Fiction ----------------
+  L('e11-1-1', 'e11-u1', '1.1', 'Structure and Pacing', ['11-A1'],
+    ['e11-structure', 'e11-pacing'],
+    ['Recognize chronological, non-linear, frame and circular structures and explain their effect', 'Tell scene from summary, and explain how a writer speeds up or slows down time'],
+    60, ['structure', 'chronological', 'non-linear', 'frame narrative', 'circular structure', 'pacing', 'scene', 'summary', 'epiphany']),
+  L('e11-1-2', 'e11-u1', '1.2', 'Complex Characters', ['11-A2'],
+    ['e11-character-motive', 'e11-character-change'],
+    ['Infer a character’s motives, including mixed and hidden ones, from evidence', 'Trace how and why a character changes, and what the change reveals'],
+    60, ['motive', 'internal conflict', 'complex character', 'epiphany', 'character arc', 'catalyst']),
+  L('e11-1-3', 'e11-u1', '1.3', 'Narrative Voice and Perspective', ['11-A1'],
+    ['e11-narrative-voice', 'e11-reliability'],
+    ['Recognize free indirect style and shifts in perspective, and explain what a narrator’s voice reveals', 'Judge how reliable a narrator is from evidence in the text'],
+    60, ['narrative voice', 'perspective', 'free indirect style', 'unreliable narrator', 'naive narrator', 'distance']),
+  L('e11-1-4', 'e11-u1', '1.4', 'Symbolism and Allegory', ['11-A2'],
+    ['e11-symbolism', 'e11-allegory'],
+    ['Interpret symbols that change meaning as a story goes on', 'Recognize allegory and explain what its characters and events stand for'],
+    60, ['symbol', 'motif', 'allegory', 'archetype', 'parable']),
+  L('e11-1-5', 'e11-u1', '1.5', 'Style: Diction, Syntax and Tone', ['11-A2'],
+    ['e11-diction-tone', 'e11-syntax-effect'],
+    ['Explain how word choice creates tone', 'Explain the effect of sentence length, structure and rhythm'],
+    60, ['style', 'diction', 'syntax', 'tone', 'register', 'periodic sentence', 'fragment for effect']),
+
+  // ---------------- Unit 2: Poetry ----------------
+  L('e11-2-1', 'e11-u2', '2.1', 'Extended Metaphor, Conceit and Allusion', ['11-B1'],
+    ['e11-conceit', 'e11-allusion'],
+    ['Follow an extended metaphor or conceit through a poem', 'Recognize allusions and explain what they add'],
+    60, ['extended metaphor', 'conceit', 'allusion', 'apostrophe', 'paradox']),
+  L('e11-2-2', 'e11-u2', '2.2', 'The Sonnet', ['11-B1'],
+    ['e11-sonnet', 'e11-meter-variation'],
+    ['Compare the Petrarchan and Shakespearean sonnet and find the volta', 'Recognize variations in iambic metre and explain their effect'],
+    60, ['sonnet', 'Petrarchan', 'Shakespearean', 'octave', 'sestet', 'quatrain', 'couplet', 'volta', 'trochee', 'spondee', 'caesura', 'enjambment']),
+  L('e11-2-3', 'e11-u2', '2.3', 'Voice and Irony in Poetry', ['11-B1'],
+    ['e11-dramatic-monologue', 'e11-poetic-irony'],
+    ['Read a dramatic monologue and infer what its speaker reveals without meaning to', 'Recognize irony in a poem and explain its effect'],
+    60, ['speaker', 'persona', 'dramatic monologue', 'auditor', 'irony', 'understatement']),
+  L('e11-2-4', 'e11-u2', '2.4', 'Comparing Poems', ['11-B1'],
+    ['e11-compare-poems'],
+    ['Compare how two poems treat the same subject through form, imagery and tone'],
+    60, ['comparison', 'contrast', 'subject', 'treatment', 'tone']),
+
+  // ---------------- Unit 3: Shakespeare ----------------
+  L('e11-3-1', 'e11-u3', '3.1', 'The Language and Imagery of Macbeth', ['11-C1'],
+    ['e11-macbeth-language', 'e11-macbeth-imagery'],
+    ['Paraphrase Macbeth’s language accurately', 'Trace the play’s patterns of imagery: blood, darkness, sleep and clothing'],
+    60, ['paraphrase', 'imagery', 'motif', 'blank verse', 'equivocation']),
+  L('e11-3-2', 'e11-u3', '3.2', 'Ambition and Character', ['11-C1'],
+    ['e11-macbeth-characters', 'e11-macbeth-motive'],
+    ['Follow the characters and events of Macbeth', 'Explain the motives of Macbeth, Lady Macbeth and Banquo with evidence'],
+    60, ['ambition', 'motive', 'foil', 'regicide', 'tyrant']),
+  L('e11-3-3', 'e11-u3', '3.3', 'The Supernatural and Dramatic Devices', ['11-C1'],
+    ['e11-macbeth-devices', 'e11-macbeth-irony'],
+    ['Recognize soliloquy, aside, prophecy, equivocation and dramatic irony in Macbeth', 'Explain the effect of the play’s ironies on the audience'],
+    60, ['soliloquy', 'aside', 'prophecy', 'equivocation', 'dramatic irony', 'apparition']),
+  L('e11-3-4', 'e11-u3', '3.4', 'Tragedy and Theme', ['11-C1'],
+    ['e11-tragedy', 'e11-macbeth-themes'],
+    ['Apply the ideas of tragic hero, flaw and catharsis to Macbeth', 'State and support the play’s themes with quotations'],
+    60, ['tragedy', 'tragic hero', 'hamartia', 'hubris', 'catharsis', 'theme']),
+
+  // ---------------- Unit 4: The Essay and Rhetoric ----------------
+  L('e11-4-1', 'e11-u4', '4.1', 'The Essay', ['11-D1'],
+    ['e11-essay-types', 'e11-central-idea'],
+    ['Recognize expository, argumentative, personal and satirical essays', 'Find an essay’s central idea, stated or implied'],
+    55, ['essay', 'expository', 'argumentative', 'personal essay', 'central idea', 'implied']),
+  L('e11-4-2', 'e11-u4', '4.2', 'Rhetorical Analysis', ['11-D1'],
+    ['e11-rhetorical-situation', 'e11-rhetorical-choices'],
+    ['Describe a text’s rhetorical situation: speaker, occasion, audience, purpose and tone', 'Explain how a writer’s choices serve that purpose'],
+    60, ['rhetorical situation', 'speaker', 'occasion', 'audience', 'purpose', 'exigence', 'rhetorical choice']),
+  L('e11-4-3', 'e11-u4', '4.3', 'Satire', ['11-D1'],
+    ['e11-satire'],
+    ['Recognize satire and its tools (irony, exaggeration, understatement, parody) and name what is being criticized'],
+    55, ['satire', 'irony', 'exaggeration', 'parody', 'understatement', 'target']),
+  L('e11-4-4', 'e11-u4', '4.4', 'Evaluating Arguments', ['11-D2'],
+    ['e11-fallacies', 'e11-evidence-quality'],
+    ['Recognize subtler fallacies: post hoc, circular reasoning, red herring, false analogy and appeal to tradition', 'Judge whether evidence is relevant, sufficient and representative'],
+    60, ['logical fallacy', 'post hoc', 'circular reasoning', 'red herring', 'false analogy', 'appeal to tradition', 'sufficient', 'representative']),
+
+  // ---------------- Unit 5: News and Media ----------------
+  L('e11-5-1', 'e11-u5', '5.1', 'News and Framing', ['11-E1'],
+    ['e11-news-framing', 'e11-headlines'],
+    ['Explain how selection, order, emphasis and omission frame a news story', 'Compare headlines and the impressions they create'],
+    55, ['framing', 'selection', 'omission', 'emphasis', 'headline', 'objectivity', 'editorial']),
+  L('e11-5-2', 'e11-u5', '5.2', 'Documentary', ['11-E1'],
+    ['e11-documentary'],
+    ['Recognize the techniques of documentary film (interviews, voice-over, archival footage, reconstruction, music) and their persuasive effect'],
+    55, ['documentary', 'voice-over', 'interview', 'archival footage', 'reconstruction', 'point of view']),
+  L('e11-5-3', 'e11-u5', '5.3', 'Representation and Digital Media', ['11-E1'],
+    ['e11-representation', 'e11-digital-media'],
+    ['Recognize stereotypes and how media represent groups of people', 'Explain how algorithms, sharing and sponsorship shape what people see online'],
+    55, ['representation', 'stereotype', 'algorithm', 'echo chamber', 'sponsored content', 'misinformation']),
+
+  // ---------------- Unit 6: Writing ----------------
+  L('e11-6-1', 'e11-u6', '6.1', 'The Literary Analysis Essay', ['11-F1'],
+    ['e11-literary-thesis', 'e11-analysis-depth'],
+    ['Write a thesis about how a text creates meaning', 'Develop analysis that explains how and why, not only what'],
+    60, ['literary analysis', 'thesis', 'claim', 'analysis', 'commentary', 'insight']),
+  L('e11-6-2', 'e11-u6', '6.2', 'The Comparative Essay', ['11-F1'],
+    ['e11-comparative-thesis', 'e11-comparison-structure'],
+    ['Write a comparative thesis that says why the comparison matters', 'Organize a comparison by subject (block) or point by point'],
+    60, ['comparison', 'contrast', 'block structure', 'point-by-point structure', 'comparative thesis']),
+  L('e11-6-3', 'e11-u6', '6.3', 'Using Sources', ['11-F2'],
+    ['e11-paraphrase-sources', 'e11-synthesis'],
+    ['Paraphrase and summarize a source in your own words without plagiarizing', 'Synthesize several sources to support one point'],
+    60, ['source', 'paraphrase', 'summary', 'quotation', 'plagiarism', 'synthesis', 'attribution']),
+  L('e11-6-4', 'e11-u6', '6.4', 'The Argumentative Essay', ['11-F2'],
+    ['e11-argument-structure', 'e11-concession'],
+    ['Organize an argument with claims, evidence, reasoning and a conclusion', 'Concede a point gracefully and turn it to your argument'],
+    60, ['argument', 'claim', 'warrant', 'concession', 'refutation', 'qualifier']),
+  L('e11-6-5', 'e11-u6', '6.5', 'Revising for Style', ['11-F2'],
+    ['e11-sentence-variety', 'e11-revision'],
+    ['Vary sentence length and openings for rhythm and emphasis', 'Revise for precision, concision and a consistent tone'],
+    60, ['sentence variety', 'emphasis', 'rhythm', 'concision', 'precision', 'tone']),
+  L('e11-6-6', 'e11-u6', '6.6', 'The Timed Literary Essay', ['11-F2'],
+    ['e11-prompt-analysis', 'e11-timed-essay'],
+    ['Break a literary essay prompt into its tasks', 'Plan, write and check a timed literary essay'],
+    55, ['prompt', 'task', 'plan', 'timed writing', 'proofreading']),
+
+  // ---------------- Unit 7: Language ----------------
+  L('e11-7-1', 'e11-u7', '7.1', 'Clauses and Sentence Combining', ['11-G1'],
+    ['e11-clauses', 'e11-sentence-combining'],
+    ['Identify noun, adjective (relative) and adverb clauses', 'Combine sentences with clauses and phrases to show how ideas relate'],
+    60, ['clause', 'noun clause', 'relative clause', 'adverb clause', 'phrase', 'appositive', 'subordination', 'coordination']),
+  L('e11-7-2', 'e11-u7', '7.2', 'Dashes, Colons, Parentheses and Ellipses', ['11-G1'],
+    ['e11-advanced-punctuation'],
+    ['Use dashes, colons, parentheses, brackets and ellipses correctly and for effect'],
+    55, ['dash', 'colon', 'parentheses', 'brackets', 'ellipsis', 'interruption']),
+  L('e11-7-3', 'e11-u7', '7.3', 'Voice and Mood', ['11-G2'],
+    ['e11-active-passive', 'e11-subjunctive'],
+    ['Recognize active and passive voice and choose between them deliberately', 'Use the subjunctive mood for wishes, conditions contrary to fact and demands'],
+    55, ['active voice', 'passive voice', 'agent', 'mood', 'indicative', 'imperative', 'subjunctive']),
+  L('e11-7-4', 'e11-u7', '7.4', 'Usage and Pronoun Reference', ['11-G2'],
+    ['e11-usage', 'e11-pronoun-reference'],
+    ['Choose standard usage: who and whom, lie and lay, fewer and less, comparisons', 'Fix vague and ambiguous pronoun reference'],
+    55, ['usage', 'who', 'whom', 'lie', 'lay', 'antecedent', 'ambiguous reference', 'vague reference']),
+  L('e11-7-5', 'e11-u7', '7.5', 'Word Roots and Precise Diction', ['11-G3'],
+    ['e11-word-roots', 'e11-precise-diction'],
+    ['Work out the meaning of a word from its Greek and Latin roots, prefixes and suffixes', 'Replace vague words, jargon, euphemism and cliché with precise diction'],
+    55, ['root', 'prefix', 'suffix', 'etymology', 'diction', 'jargon', 'euphemism', 'cliché']),
+];
+
+export const UNITS: UnitMeta[] = [
+  { id: 'e11-u1', number: 1, title: 'Fiction', description: 'Structure and pacing, complex characters, narrative voice and perspective, symbolism and allegory, and style, in stories by Hawthorne, Gilman, Joyce, Mansfield, Crane, Jewett and others.', outcomes: ['11-A1', '11-A2'], lessons: [], color: 'rose' },
+  { id: 'e11-u2', number: 2, title: 'Poetry', description: 'Extended metaphor, conceit and allusion, the sonnet and its metre, the dramatic monologue and irony, and comparing poems.', outcomes: ['11-B1'], lessons: [], color: 'sky' },
+  { id: 'e11-u3', number: 3, title: 'Shakespeare', description: 'Macbeth: its language and imagery, ambition and character, the supernatural and dramatic devices, and tragedy and theme.', outcomes: ['11-C1'], lessons: [], color: 'violet' },
+  { id: 'e11-u4', number: 4, title: 'The Essay and Rhetoric', description: 'Kinds of essay and their central ideas, rhetorical analysis, satire, and evaluating arguments and evidence.', outcomes: ['11-D1', '11-D2'], lessons: [], color: 'amber' },
+  { id: 'e11-u5', number: 5, title: 'News and Media', description: 'How news frames events, how documentaries persuade, and how media represent people and shape what we see online.', outcomes: ['11-E1'], lessons: [], color: 'emerald' },
+  { id: 'e11-u6', number: 6, title: 'Writing', description: 'The literary analysis essay, the comparative essay, using sources, the argumentative essay, revising for style, and the timed literary essay.', outcomes: ['11-F1', '11-F2'], lessons: [], color: 'indigo' },
+  { id: 'e11-u7', number: 7, title: 'Language', description: 'Clauses and sentence combining, dashes, colons, parentheses and ellipses, active and passive voice and the subjunctive, usage and pronoun reference, and word roots and precise diction.', outcomes: ['11-G1', '11-G2', '11-G3'], lessons: [], color: 'teal' },
+];
+
+for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
+
+export const ENG20: CourseMeta = {
+  id: 'eng-20',
+  title: 'Grade 11 English',
+  shortTitle: 'English 11',
+  grade: 11,
+  subject: 'English',
+  description: 'English for Grade 11: fiction, poetry, Shakespeare’s Macbeth, the essay and rhetoric, news and media, literary, comparative and argumentative writing, and language.',
+  outcomes: OUTCOMES,
+  units: UNITS,
+  lessons: LESSONS,
+  draft: true,
+};
