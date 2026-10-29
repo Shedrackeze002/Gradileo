@@ -87,7 +87,7 @@ const TRICKY: Word[] = [
   { word: 'e’en', meaning: 'even (“Is it really so?”)', misread: 'evening', wrong: ['ever', 'again'], lines: [P.IS_IT_EEN_SO], why: '“E’en” is “even” with a letter left out: “Is it e’en so?” means “Is that really so?”' },
   { word: 'Methinks', meaning: 'It seems to me', misread: 'My thinking is wrong', wrong: ['Remember', 'Do not think'], lines: [P.ILL_DIVINING], why: '“Methinks” means “it seems to me” or “I think”.' },
   { word: 'hence', meaning: 'away from here', misread: 'therefore', wrong: ['home', 'here'], lines: [P.HIE_YOU_HENCE, P.EXILE], why: '“Hence” means “from here”: “exile him hence” means “banish him from here”.' },
-  { word: 'hither', meaning: 'here (to this place)', misread: 'over there', wrong: ['hiding', 'later'], lines: [P.HOW_CAMST_THOU], why: '“Hither” means “to here”: “How cam’st thou hither?” means “How did you get here?”' },
+  { word: 'hither', meaning: 'here (to this place)', misread: 'over there', wrong: ['hiding', 'later'], lines: [P.HOW_CAMST_THOU], why: '“Hither” means “to here”: “How cam’st thou hither” means “How did you get here”.' },
   { word: 'coz', meaning: 'cousin (a friendly word for a relative)', misread: 'because', wrong: ['coward', 'sir'], lines: [P.ROMEO_LAUGH], why: '“Coz” is short for “cousin”, a friendly name for a relative. Benvolio is Romeo’s cousin.' },
 ];
 

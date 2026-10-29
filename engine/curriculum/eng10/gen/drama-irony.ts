@@ -41,6 +41,8 @@ const TECHNIQUE: Device[] = ['comic', 'foreshadowing', 'pun', 'stage'];
 interface Example {
   device: Device;
   lead: string;
+  /** The question, when it is not simply which device the passage is. */
+  ask?: string;
   line: Passage;
   /** Devices that could also be argued for this example, left out of its choices. */
   not?: Device[];
@@ -72,8 +74,8 @@ const EXAMPLES: Example[] = [
   { device: 'pun', lead: 'The servants Sampson and Gregory joke as the play opens:', line: P.SERVANTS_COLLIERS, not: ['comic'], why: 'The jokes play on words that sound alike: “colliers” (coal-sellers), “choler” (anger) and “collar” (the hangman’s noose).' },
   { device: 'pun', lead: 'Romeo’s friends want him to dance at the feast. He refuses:', line: P.SOUL_OF_LEAD, not: ['comic'], why: '“Soles” (of shoes) and “soul” sound alike: his friends have light dancing shoes, but his soul is heavy as lead.' },
   { device: 'pun', lead: 'The Nurse has just said that she hopes to live to see Juliet married. Lady Capulet answers:', line: P.MARRY_THEME, not: ['comic'], why: 'Lady Capulet begins with “Marry”, an oath meaning “indeed”, then plays on its other meaning, getting married: the very subject she has come to raise.' },
-  { device: 'stage', lead: 'In the tomb, Romeo says his last words. Look at the words in square brackets.', line: P.WITH_A_KISS, why: '“[Drinks.]” is not spoken: it tells the actor what to do. It is a stage direction.' },
-  { device: 'stage', lead: 'Juliet has woken in the tomb and found Romeo dead. Look at the words in square brackets.', line: P.HAPPY_DAGGER, why: 'The words in square brackets are not spoken: they tell the actor what to do. They are stage directions.' },
+  { device: 'stage', lead: 'In the tomb, Romeo says his last words:', ask: 'What are the words in square brackets?', line: P.WITH_A_KISS, why: '“[Drinks.]” is not spoken: it tells the actor what to do. It is a stage direction.' },
+  { device: 'stage', lead: 'Juliet has woken in the tomb and found Romeo dead:', ask: 'What are the words in square brackets?', line: P.HAPPY_DAGGER, why: 'The words in square brackets are not spoken: they tell the actor what to do. They are stage directions.' },
 ];
 
 interface Effect {
@@ -117,7 +119,7 @@ function devicesQ(rng: Rng, d: Difficulty) {
     const group = SPEECH.includes(ex.device) ? SPEECH : TECHNIQUE;
     const others = group.filter((x) => x !== ex.device && !(ex.not ?? []).includes(x));
     return {
-      prompt: `${ex.lead}\n\n${quoteBlock(ex.line)}\n\nWhich dramatic device is this?`,
+      prompt: `${ex.lead}\n\n${quoteBlock(ex.line)}\n\n${ex.ask ?? 'Which dramatic device is this?'}`,
       parts: [part(mc(rng, DEVICE_NAME[ex.device], others.map((x) => DEVICE_NAME[x])))],
       hints: [SPEECH.includes(ex.device) ? 'Ask who is on stage and who can hear the speaker.' : 'Ask what the lines do: make us laugh, hint at what is coming, play on a word, or tell the actors what to do?'],
       solution: [ex.why],
