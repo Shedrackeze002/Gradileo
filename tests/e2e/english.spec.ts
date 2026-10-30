@@ -30,12 +30,13 @@ test('a Grade 10 student who chooses English starts Grade 10 English, and a Grad
   await page.waitForURL(/\/s\/welcome$/);
   await page.getByRole('button', { name: 'English', exact: true }).click();
   await expect(page.getByText('How does mathematics feel right now?')).toHaveCount(0);
-  await page.getByRole('button', { name: '12', exact: true }).click();
+  await page.getByLabel('Country or curriculum').selectOption('ca');
+  await page.getByRole('button', { name: 'Grade 12', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 12 English', exact: true })).toBeVisible();
   await expect(page.getByText(/6 questions on English 11 skills/)).toBeVisible();
   await page.getByRole('button', { name: 'Back' }).click();
-  await page.getByRole('button', { name: '10', exact: true }).click();
+  await page.getByRole('button', { name: 'Grade 10', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 10 English', exact: true })).toBeVisible();
   await expect(page.getByText('English 10 is the first course, so there is no placement check.')).toBeVisible();

@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      updated="October 23, 2026"
+      updated="October 30, 2026"
       intro={
         <>
           <p>
@@ -30,7 +30,9 @@ export default function PrivacyPage() {
         <p>
           <strong>Account information.</strong> Your name, your email address (or, for a student account created by a teacher, a username instead of an
           email address), your password, and whether you are a teacher or a student. Passwords are stored in hashed form by our authentication provider;
-          we never see them in plain text. For teacher accounts, we also keep whether the account has been approved.
+          we never see them in plain text. For teacher accounts, we also keep whether the account has been approved. For a student who finds their
+          own course, we keep where they go to school (the country or curriculum they choose), so their courses can follow it; their year and other
+          answers to the course questions stay in their browser.
         </p>
         <p>
           <strong>Class information.</strong> The classes you teach or join, class settings, join requests (including any short message you add),

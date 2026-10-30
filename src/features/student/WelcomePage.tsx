@@ -1,6 +1,7 @@
 /**
- * Onboarding for students who sign up on their own: the subject they want to study, a few
- * questions about their grade, plans and how mathematics feels, a recommended course in the
+ * Onboarding for students who sign up on their own: the subject they want to study, where they go
+ * to school and their year there, a few questions about their plans and how mathematics feels, a
+ * recommended course in the
  * stream that fits their plans, and an optional placement check on the skills of the course before
  * it. Starting a course opens a self-paced section where the AI acts as tutor.
  */
@@ -8,13 +9,16 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, ClipboardCheck, Compass, KeyRound, Sparkles, XCircle } from 'lucide-react';
 import { LISTED_COURSES as COURSES, SUBJECTS, getCourse, getSkill, skillInfo } from '@engine/curriculum/index.ts';
+import { CURRICULA, curriculumById, guessCurriculum, levelIn, yearsFor } from '@engine/curricula.ts';
 import { gradeItem } from '@engine/grade.ts';
 import { placementResult, placementSkills, PREREQUISITE, recommendCourse, type Feeling, type PlacementAnswers, type Plan, type PlacementResult } from '@engine/placement.ts';
 import { freshSeed } from '@engine/rng.ts';
+import { api } from '@/data/index.ts';
 import { useStartSelfPaced } from '@/data/hooks.ts';
+import { useAuth, useMe } from '@/features/auth/AuthProvider.tsx';
 import { SkillsGate } from '@/components/SkillsGate.tsx';
 import { QuestionView } from '@/components/question/QuestionView.tsx';
-import { Badge, Button, Card, CardBody, Checkbox, PageHeader, useToast } from '@/components/ui/index.ts';
+import { Badge, Button, Card, CardBody, Checkbox, PageHeader, Select, useToast } from '@/components/ui/index.ts';
 import { cn } from '@/lib/cn.ts';
 import { chooseStudentClass, useStudentClass } from '../shared/useStudentClass.ts';
 import { saveReviewSkills } from './review.ts';
@@ -39,8 +43,17 @@ function gradesOf(subject: string) {
   const courses = COURSES.filter((c) => c.subject === subject);
   return [...new Set(courses.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: courses.filter((c) => c.grade === grade) }));
 }
-/** The grades a student can say they are in: Grades 5 to 12 for mathematics, 9 to 12 for chemistry and English. */
-const gradeChoices = (subject: string) => (subject === 'Mathematics' ? [5, 6, 7, 8, 9, 10, 11, 12] : [9, 10, 11, 12]);
+/** The first level a student can say they are at: Grade 5 for mathematics, Grade 9 for chemistry and English. */
+const firstGrade = (subject: string) => (subject === 'Mathematics' ? 5 : 9);
+
+/** The learner's time zone, for a first guess at where they go to school. */
+const timeZone = () => {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+  } catch {
+    return undefined;
+  }
+};
 
 const title = (courseId: string | null | undefined) => (courseId ? (getCourse(courseId)?.title ?? courseId) : '');
 
@@ -53,6 +66,8 @@ interface CheckResult {
 
 export default function WelcomePage() {
   const { classes } = useStudentClass();
+  const me = useMe();
+  const { setUser } = useAuth();
   const [answers, setAnswers] = useState<PlacementAnswers | null>(null);
   const [step, setStep] = useState<Step>('about');
   const [courseId, setCourseId] = useState<string | null>(null);
@@ -84,7 +99,10 @@ export default function WelcomePage() {
       {step === 'about' && (
         <About
           initial={answers}
+          saved={me.curriculum ?? undefined}
           onDone={(a) => {
+            // Saved on the profile so later the learner's own syllabus can be shown; not worth an error if it fails.
+            if (a.curriculum && a.curriculum !== me.curriculum) void api().updateProfile({ curriculum: a.curriculum }).then(setUser, () => undefined);
             setAnswers(a);
             setCourseId(recommendCourse(a).courseId);
             setStep('course');
@@ -94,6 +112,7 @@ export default function WelcomePage() {
       {step === 'course' && rec && courseId && (
         <CourseChoice
           rec={rec}
+          curriculum={answers?.curriculum}
           courseId={courseId}
           onPick={setCourseId}
           onBack={() => setStep('about')}
@@ -156,23 +175,31 @@ function Question({ label, children }: { label: string; children: React.ReactNod
   );
 }
 
-function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: (a: PlacementAnswers) => void }) {
+function About({ initial, saved, onDone }: { initial: PlacementAnswers | null; saved?: string; onDone: (a: PlacementAnswers) => void }) {
   const [subject, setSubject] = useState(initial?.subject ?? SUBJECTS[0]);
-  const [grade, setGrade] = useState<number | null>(initial?.grade ?? null);
+  const [curriculum, setCurriculum] = useState(() => initial?.curriculum ?? saved ?? guessCurriculum(timeZone()) ?? '');
+  const [year, setYear] = useState<string | null>(initial?.year ?? null);
   const [plan, setPlan] = useState<Plan | null>(initial?.plan ?? null);
   const [calculus, setCalculus] = useState<boolean | null>(initial?.calculus ?? null);
   const [feeling, setFeeling] = useState<Feeling | null>(initial?.feeling ?? null);
   const [support, setSupport] = useState(initial?.support ?? false);
   // Plans, calculus and how it feels choose between mathematics courses; chemistry and English go by the grade alone.
   const maths = subject === 'Mathematics';
-  const grades = gradeChoices(subject);
+  const system = curriculumById(curriculum);
+  const years = system ? yearsFor(system, firstGrade(subject)) : [];
+  const grade = years.find((y) => y.label === year)?.grade ?? null;
   const senior = maths && grade !== null && grade >= 10;
   const askCalculus = senior && grade === 12 && plan === 'university-stem';
   const askSupport = senior && feeling === 'struggling';
   const complete = grade !== null && (!maths || feeling !== null) && (!senior || plan !== null) && (!askCalculus || calculus !== null);
   const chooseSubject = (s: string) => {
     setSubject(s);
-    if (grade !== null && !gradeChoices(s).includes(grade)) setGrade(null);
+    if (system && !yearsFor(system, firstGrade(s)).some((y) => y.label === year)) setYear(null);
+  };
+  const chooseCurriculum = (id: string) => {
+    setCurriculum(id);
+    const next = curriculumById(id);
+    if (!next || !yearsFor(next, firstGrade(subject)).some((y) => y.label === year)) setYear(null);
   };
 
   return (
@@ -189,17 +216,29 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
             </div>
           </Question>
         )}
-        <Question label="Which grade are you in?">
-          <div className={cn('grid grid-cols-4 gap-2', grades.length > 4 ? 'sm:grid-cols-8' : 'sm:w-96')}>
-            {grades.map((g) => (
-              <Choice key={g} selected={grade === g} onClick={() => setGrade(g)} className="text-center">
-                {g}
-              </Choice>
+        <Question label="Where do you go to school?">
+          <Select aria-label="Country or curriculum" value={curriculum} onChange={(e) => chooseCurriculum(e.target.value)} className="sm:w-[26rem]">
+            {!system && <option value="">Choose your country or curriculum</option>}
+            {CURRICULA.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
             ))}
-          </div>
+          </Select>
         </Question>
+        {system && (
+          <Question label={system.question}>
+            <div className={cn('grid grid-cols-3 gap-2 sm:grid-cols-4', years.length <= 4 && 'sm:w-[34rem]')}>
+              {years.map((y) => (
+                <Choice key={y.label} selected={year === y.label} onClick={() => setYear(y.label)} className="text-center">
+                  {y.label}
+                </Choice>
+              ))}
+            </div>
+          </Question>
+        )}
         {senior && (
-          <Question label="What are you thinking of doing after high school?">
+          <Question label="What are you thinking of doing after you finish school?">
             <div className="grid gap-2 sm:grid-cols-2">
               {PLANS.map(([p, label]) => (
                 <Choice key={p} selected={plan === p} onClick={() => setPlan(p)}>
@@ -210,7 +249,7 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
           </Question>
         )}
         {askCalculus && (
-          <Question label="Do you plan to take calculus in Grade 12?">
+          <Question label="Do you plan to take calculus in your last year of school?">
             <div className="grid grid-cols-2 gap-2 sm:w-80">
               <Choice selected={calculus === true} onClick={() => setCalculus(true)}>
                 Yes
@@ -239,7 +278,7 @@ function About({ initial, onDone }: { initial: PlacementAnswers | null; onDone: 
           <Button
             size="lg"
             disabled={!complete}
-            onClick={() => complete && onDone({ subject, grade: grade!, plan: senior ? plan! : undefined, calculus: askCalculus ? calculus! : undefined, feeling: maths ? feeling! : undefined, support: askSupport && support })}
+            onClick={() => complete && onDone({ subject, grade: grade!, curriculum, year: year!, plan: senior ? plan! : undefined, calculus: askCalculus ? calculus! : undefined, feeling: maths ? feeling! : undefined, support: askSupport && support })}
           >
             See my recommendation <ArrowRight className="h-4 w-4" />
           </Button>
@@ -272,12 +311,15 @@ function CourseCard({ courseId, selected, onClick, badge, why }: { courseId: str
   );
 }
 
-function CourseChoice({ rec, courseId, onPick, onBack, onCheck, onStart, starting }: { rec: ReturnType<typeof recommendCourse>; courseId: string; onPick: (id: string) => void; onBack: () => void; onCheck: () => void; onStart: () => void; starting: boolean }) {
+function CourseChoice({ rec, curriculum, courseId, onPick, onBack, onCheck, onStart, starting }: { rec: ReturnType<typeof recommendCourse>; curriculum?: string; courseId: string; onPick: (id: string) => void; onBack: () => void; onCheck: () => void; onStart: () => void; starting: boolean }) {
   const [all, setAll] = useState(false);
   const course = getCourse(courseId);
   const prerequisite = PREREQUISITE[courseId] ?? null;
   const listed = new Set([rec.courseId, ...rec.alternatives.map((a) => a.courseId)]);
   const grades = gradesOf(getCourse(rec.courseId)?.subject ?? SUBJECTS[0]);
+  // Where the recommended course sits in the learner's own system: "Year 11", "SS 1", "age 15".
+  const recGrade = getCourse(rec.courseId)?.grade;
+  const where = recGrade !== undefined ? levelIn(curriculum, recGrade) : undefined;
   return (
     <div className="space-y-6">
       <Card className="border-brand-200 bg-gradient-to-br from-brand-50 to-surface">
@@ -287,6 +329,7 @@ function CourseChoice({ rec, courseId, onPick, onBack, onCheck, onStart, startin
           </div>
           <h2 className="mt-2 font-display text-2xl font-semibold">{title(rec.courseId)}</h2>
           <p className="mt-1 text-ink-2">{getCourse(rec.courseId)?.description}</p>
+          {where && <p className="mt-1 text-sm font-medium text-ink-2">{curriculum === 'other' ? `Usually taken at about ${where}.` : `Usually taken in ${where}.`}</p>}
           <ul className="mt-4 space-y-2">
             {rec.reasons.map((r) => (
               <li key={r} className="flex gap-2 text-[15px] text-ink-2">
@@ -312,7 +355,7 @@ function CourseChoice({ rec, courseId, onPick, onBack, onCheck, onStart, startin
           <div className="space-y-2.5 rounded-2xl border border-line bg-surface p-4">
             {grades.map(({ grade, courses }) => (
               <section key={grade} aria-label={`Grade ${grade}`} className="flex items-center gap-3">
-                <h3 className="w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-ink-3">Grade {grade}</h3>
+                <h3 className="w-20 shrink-0 text-xs font-semibold uppercase tracking-wide text-ink-3">{curriculum === 'other' ? `Grade ${grade}` : (levelIn(curriculum, grade) ?? `Grade ${grade}`)}</h3>
                 <div className="flex flex-wrap gap-2">
                   {courses.map((c) => (
                     <Choice key={c.id} selected={courseId === c.id} onClick={() => onPick(c.id)} className="py-1.5 text-sm">

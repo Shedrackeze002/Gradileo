@@ -302,7 +302,7 @@ export class DemoApi implements DataApi {
     this.authListeners.forEach((l) => l(null));
   }
 
-  async updateProfile(patch: Partial<Pick<Profile, 'fullName' | 'avatarColor'>>) {
+  async updateProfile(patch: Partial<Pick<Profile, 'fullName' | 'avatarColor' | 'curriculum'>>) {
     const u = this.me();
     Object.assign(u, patch);
     this.persist();

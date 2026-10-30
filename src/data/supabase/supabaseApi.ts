@@ -208,11 +208,12 @@ export class SupabaseApi implements DataApi {
     await this.client.auth.signOut();
   }
 
-  async updateProfile(patch: Partial<Pick<Profile, 'fullName' | 'avatarColor'>>) {
+  async updateProfile(patch: Partial<Pick<Profile, 'fullName' | 'avatarColor' | 'curriculum'>>) {
     const id = await this.uid();
     const row: Record<string, unknown> = {};
     if (patch.fullName !== undefined) row.full_name = patch.fullName;
     if (patch.avatarColor !== undefined) row.avatar_color = patch.avatarColor;
+    if (patch.curriculum !== undefined) row.curriculum = patch.curriculum;
     const { data, error } = await this.client.from('profiles').update(row).eq('id', id).select().single();
     fail(error);
     this.profile = toProfile(data);

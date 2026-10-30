@@ -505,6 +505,19 @@ items ship or decisions change.
      landing page speaks to learners everywhere.
    - Local details: units, currency and spelling to suit the learner where it matters; examples
      tied to one country (Canadian GST and EI) say so in the question.
+   - The plan (30 October 2026): `docs/PLAN-WORLDWIDE.md`. Four steps: ask for the country and
+     year first, a catalogue of topics with "Browse by topic", curriculum maps that show the same
+     lessons in each syllabus's order and names, and filling the gaps the maps show. Decisions (the
+     owner, 30 October 2026): US Common Core is the first map and UK GCSE the second, one spelling
+     (Canadian and British) everywhere, and teachers can start a class on a mapped course.
+   - Built (30 October 2026), step 1: **the country and year first**. "Find your course" asks where
+     the learner goes to school (the US, the UK's three systems, Canada, Nigeria, Ghana, Kenya,
+     South Africa, India, Australia, New Zealand, Ireland, the IB, Cambridge, or somewhere else by
+     age) and their year in that system's words (Year 11, SS 1, Form 3, MYP 5), with a first guess
+     from the time zone. `engine/curricula.ts` matches each year to Gradileo's level, the
+     recommendation says where the course sits ("Usually taken in Year 11"), and the curriculum is
+     saved on the profile (`profiles.curriculum`) for the maps. The landing page names the
+     countries. Next: step 2, the topics.
 6. **AI question builder for quizzes, exams and assignments.** In the assignment builder the
    teacher chooses the kind of work (quiz, exam, homework, exercise, activity, classwork and so
    on), the question formats and every other setting, then presses one button (name to settle;

@@ -26,6 +26,8 @@ export interface Profile {
   disabled?: boolean;
   /** Joined a class by link with only a name: no email or password, and this device keeps the session. */
   nameOnly?: boolean;
+  /** Where the learner goes to school (`engine/curricula.ts`), chosen on "Find your course". */
+  curriculum?: string | null;
 }
 
 export interface ClassSettings {
