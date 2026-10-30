@@ -52,6 +52,7 @@ describe('speechText', () => {
     expect(speechText('Jun jumps farther than Junaid in June.')).toBe('Joon jumps farther than Junaid in June.');
     expect(speechText('Amedeo Avogadro was an Italian scientist.')).toBe('Ama-day-o Avogadro was an Italian scientist.');
     expect(speechText("Tybalt fights; Wei reads Teasdale, Montresor's story and a Petrarchan sonnet.")).toBe("Tibbalt fights; Way reads Teez-dale, Mon-treh-zor's story and a Pet-trark-an sonnet.");
+    expect(speechText('“Désirée’s Baby”; the volta, and Volta.')).toBe('“Dezzi-ray’s Baby”; the vole-ta, and Vole-ta.');
     expect(speechText('Octa eight, nona nine, and deca ten. Sodium carbonate decahydrate.')).toBe('Octa eight, nona nine, and decka ten. Sodium carbonate deckahydrate.');
     expect(speechText('Dye-chlorine heptaoxide. The pipetted acid.')).toBe('Dye-chlorine hepta-oxide. The pih-petted acid.');
     expect(speechText('Electronegativity rises; their electronegativities differ. Svante Arrhenius.')).toBe('Electro-negativity rises; their electro-negativities differ. Svahntay Arrhenius.');

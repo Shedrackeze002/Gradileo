@@ -16335,6 +16335,108 @@
       }
     ]
   },
+  "e10-3-2": {
+    "lessonId": "e10-3-2",
+    "title": "Character and Motive",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The two households",
+        "t": 30.24
+      },
+      {
+        "title": "Motive and evidence",
+        "t": 57.273
+      },
+      {
+        "title": "Foils",
+        "t": 102.181
+      },
+      {
+        "title": "A common mistake",
+        "t": 133.095
+      },
+      {
+        "title": "Your turn",
+        "t": 159.098
+      },
+      {
+        "title": "Summary",
+        "t": 190.131
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-3-2:q",
+        "t": 169.313,
+        "prompt": "In Romeo and Juliet, Tybalt challenges Romeo to a fight. Which is Tybalt’s motive, based on what Tybalt actually knows?",
+        "choices": [
+          "He has learned that Romeo secretly married his cousin Juliet.",
+          "He wants to help Friar Lawrence bring the feud to an end.",
+          "He is jealous because Romeo once loved a woman named Rosaline.",
+          "He is furious that Romeo came to the Capulet feast uninvited."
+        ],
+        "answer": 3,
+        "working": "Tybalt never learns of the marriage. His anger comes from Romeo’s uninvited visit to the Capulets’ feast."
+      }
+    ]
+  },
+  "e10-3-3": {
+    "lessonId": "e10-3-3",
+    "title": "Soliloquy and Dramatic Irony",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Who is listening?",
+        "t": 30.284
+      },
+      {
+        "title": "Foreshadowing",
+        "t": 63.975
+      },
+      {
+        "title": "Dramatic irony",
+        "t": 88.961
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.391
+      },
+      {
+        "title": "Your turn",
+        "t": 144.588
+      },
+      {
+        "title": "Summary",
+        "t": 171.868
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-3-3:q",
+        "t": 155.732,
+        "prompt": "In a play, a father weeps over his daughter’s body, but the audience knows she is only asleep. What is the effect called?",
+        "choices": [
+          "Dramatic irony: the audience knows what he does not",
+          "Verbal irony: he says the opposite of what he means",
+          "Situational irony: an outcome opposite to expectation",
+          "Foreshadowing: a hint of something that comes later"
+        ],
+        "answer": 0,
+        "working": "The audience knows something important that the character does not. That is dramatic irony."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",

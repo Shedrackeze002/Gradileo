@@ -35,8 +35,8 @@ export function speechText(say: string): string {
   // "luh CHATE-lee-er". Organic names: "ethene" comes out "EE-theen" (heard as ethyne), "propene"
   // "pruh-PEEN", "propyne" "PRAH-pin", "ketone" "KET-own", "cycloalkane" without its "al", and
   // "methoxymethane" as "METH-ux-ime-thane". Names in the English videos: "Tybalt" comes out "TIE-balt",
-  // "Wei" as "Why", "Teasdale" as "Tea-stale", "Montresor" as "Mon-tresser" and "Petrarchan" with a
-  // "ch" as in "church".
+  // "Wei" as "Why", "Teasdale" as "Tea-stale", "Montresor" as "Mon-tresser", "Petrarchan" with a
+  // "ch" as in "church", "Désirée" as "Dess-er-ee" and a sonnet's "volta" as "volt".
   return words
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
@@ -58,6 +58,8 @@ export function speechText(say: string): string {
     .replace(/\bTeasdale\b/g, 'Teez-dale')
     .replace(/\bMontresor\b/g, 'Mon-treh-zor')
     .replace(/\bPetrarchan\b/g, 'Pet-trark-an')
+    .replace(/Désirée/g, 'Dezzi-ray')
+    .replace(/\b([Vv])olta(s?)\b/g, '$1ole-ta$2')
     .replace(/\b([Dd])eca(?=\b|hydrate)/g, '$1ecka')
     .replace(/\b([Hh])eptaoxide/g, '$1epta-oxide')
     .replace(/\b([Pp])ipetted\b/g, '$1ih-petted')
