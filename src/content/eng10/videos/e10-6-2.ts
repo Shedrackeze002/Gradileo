@@ -61,7 +61,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'bullets', id: 'b', items: ['**Point**: a topic sentence saying what the paragraph proves', '**Evidence**: words from the text, usually a short quotation', '**Analysis**: how particular words prove the point'] },
-        { kind: 'text', id: 'model', md: 'Point: Jack London presents the man as practical but unable to imagine danger.\n\nEvidence: The narrator says that the cold “impressed him as being cold and uncomfortable, and that was all.”\n\nAnalysis: The words “and that was all” show that the man notices the cold as a fact but never thinks about what it could do to him.', size: 'md' },
+        { kind: 'quote', id: 'model', lines: ['**Point:** Jack London presents the man as practical but unable to imagine danger.', '**Evidence:** The narrator says that the cold “impressed him as being cold and uncomfortable, and that was all.”', '**Analysis:** The words “and that was all” show that the man notices the cold as a fact but never thinks about what it could do to him.'], size: 'md' },
       ],
       lines: [
         { say: 'Each body paragraph proves one part of the thesis, in three parts. The point is a topic sentence stating what the paragraph will prove.', show: 'b.0' },

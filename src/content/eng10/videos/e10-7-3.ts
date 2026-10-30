@@ -24,7 +24,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'bullets', id: 'b', items: ['A phrase between: *The keys to the science lab are missing.*', 'Joined by *and*: *Kenji and Liam play in the orchestra.*', '*One of* is singular: *One of the windows is cracked.*', '*There* and *here*: the subject comes after the verb: *There are three letters on the table.*'] },
-        { kind: 'text', id: 'ans', md: 'Choose: *The cost of the concert tickets (is / are) too high.*\n\nCover the phrase with *of*: the subject is *cost*, so **is**.', size: 'md' },
+        { kind: 'bullets', id: 'ans', items: ['Choose: *The cost of the concert tickets (is / are) too high.*', 'Cover the phrase with *of*: the subject is *cost*, so **is**.'] },
       ],
       lines: [
         { say: 'A verb must agree with its subject in number. The rule is simple, but finding the subject is hard. When a phrase sits between the subject and the verb, cover the phrase up.', show: 'b.0' },
@@ -38,7 +38,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'bullets', id: 'b', items: ['**Subject case**: I, he, she, we, they, who', '**Object case**: me, him, her, us, them, whom', 'After a preposition such as *to*, *for* or *between*, use the object case'] },
-        { kind: 'text', id: 'ans', md: 'Choose: *The teacher asked Diego and (I / me) to hand out the books.*\n\nCover the other person: *The teacher asked me.* So: **me**.', size: 'md' },
+        { kind: 'bullets', id: 'ans', items: ['Choose: *The teacher asked Diego and (I / me) to hand out the books.*', 'Cover the other person: *The teacher asked me.* So: **me**.'] },
       ],
       lines: [
         { say: 'A pronoun stands in for a noun, and must agree with it in number. It must also be in the right case. Use subject case, such as I and she, when the pronoun does the action.', show: ['b.0'] },
@@ -49,7 +49,7 @@ const video: Explainer = {
     {
       chapter: 'Consistent tense',
       layout: 'center',
-      main: [{ kind: 'text', id: 'ex', md: '*Hana opened the door and looked around the empty classroom. On the desk, she **notices** a note and picked it up.*\n\nFix: *she **noticed** a note and picked it up.*', size: 'md' }],
+      main: [{ kind: 'bullets', id: 'ex', items: ['*Hana opened the door and looked around the empty classroom. On the desk, she **notices** a note and picked it up.*', 'Fix: *she **noticed** a note and picked it up.*'] }],
       lines: [
         { say: 'A story or essay chooses a tense, past or present, and stays in it. Read this one. Hana opened the door and looked around. Then she notices a note and picked it up.', show: 'ex' },
         { say: 'The verbs are opened, looked, notices and picked. Three are past, but notices is present. Change it to noticed.' },

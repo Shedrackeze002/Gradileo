@@ -43,17 +43,25 @@ const video: Explainer = {
       main: [
         { kind: 'bullets', id: 'k', items: ['**Text to self**: an experience from your own life', '**Text to world**: something happening in your community or the wider world', '**Text to text**: another story, poem, film or song'] },
         { kind: 'callout', id: 'rule', tone: 'tip', title: 'A strong connection', md: 'Links something **specific** in the text to something specific in your life, and says **why the link matters**.' },
+      ],
+      lines: [
+        { say: 'Most responses grow from a connection: text to self, text to world, or text to text.', show: 'k' },
+        { say: 'A strong connection links something specific in the text to something specific in your life, and says why the link matters.', hide: 'k', show: 'rule' },
+      ],
+    },
+    {
+      chapter: 'Building a connection',
+      layout: 'center',
+      main: [
         { kind: 'text', id: 'weak', md: 'Weak: *I have also had a wish that came true.*', size: 'lg' },
         { kind: 'bullets', id: 'steps', items: ['The Whites wish for two hundred pounds, and the money arrives as compensation for their son’s death.', 'A phone you begged for, which then took over your evenings.', 'Getting what you want can cost more than you expected.'] },
         { kind: 'text', id: 'ans', md: '*The Whites’ first wish reminded me of the time I begged for a phone and then spent every evening glued to it instead of talking to my family; getting what you want can cost more than you expect.*', size: 'md' },
       ],
       lines: [
-        { say: 'Most responses grow from a connection: text to self, text to world, or text to text.', show: 'k' },
-        { say: 'A strong connection links something specific in the text to something specific in your life, and says why the link matters.', hide: 'k', show: 'rule' },
-        { say: 'Let’s improve a weak connection about “The Monkey’s Paw”: I have also had a wish that came true.', hide: 'rule', show: 'weak' },
+        { say: 'Let’s improve a weak connection about “The Monkey’s Paw”: I have also had a wish that came true.', show: 'weak' },
         { say: 'First, name something specific in the story: the Whites wish for money, and it arrives as compensation for their son’s death.', show: 'steps.0' },
         { say: 'Next, name something from your own life: a phone you begged for, which then took over your evenings.', show: 'steps.1' },
-        { say: 'Last, say what the link shows: getting what you want can cost more than you expected. Now the connection has a point.', hide: 'weak', show: ['steps.2', 'ans'] },
+        { say: 'Last, say what the link shows: getting what you want can cost more than you expected. Now the connection has a point.', hide: ['weak', 'steps'], show: 'ans' },
       ],
     },
     {

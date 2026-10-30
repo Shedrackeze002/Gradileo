@@ -46,7 +46,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'bullets', id: 'b', items: ['*due to the fact that* means *because*', '*made the decision to postpone* means *postponed*', '*until a later date* adds nothing'] },
-        { kind: 'text', id: 'ans', md: 'Wordy: *Due to the fact that it was raining, we made the decision to postpone the match until a later date.*\n\nConcise: *Because it was raining, we postponed the match.*', size: 'md' },
+        { kind: 'bullets', id: 'ans', items: ['Wordy: *Due to the fact that it was raining, we made the decision to postpone the match until a later date.*', 'Concise: *Because it was raining, we postponed the match.*'] },
       ],
       lines: [
         { say: 'Concise writing says everything it needs in as few words as possible. Watch for empty phrases, redundant pairs such as “free gift”, and needless repetition.', show: 'ans.0' },

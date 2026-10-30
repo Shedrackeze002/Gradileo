@@ -12,7 +12,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'title', id: 'title', kicker: 'Writing', title: 'Narrative Writing', subtitle: 'Show, don’t tell' },
-        { kind: 'text', id: 'pass', md: 'Della finished her cry and attended to her cheeks with the powder rag. She stood by the window and looked out dully at a gray cat walking a gray fence in a gray backyard.\n\nO. Henry, “The Gift of the Magi”', size: 'md' },
+        { kind: 'quote', id: 'pass', lines: ['Della finished her cry and attended to her cheeks with the powder rag. She stood by the window and looked out dully at a gray cat walking a gray fence in a gray backyard.'], by: 'O. Henry, “The Gift of the Magi”', size: 'md' },
       ],
       lines: [
         { say: 'O. Henry could have written that Della was sad. Instead, after she has cried, he shows her looking out at a gray cat on a gray fence in a gray backyard.', show: ['title', 'pass'] },
@@ -25,7 +25,7 @@ const video: Explainer = {
       main: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Showing and telling', md: '**Telling** names a feeling: *Liam was nervous.* **Showing** lets the reader work it out from actions and details: *Liam wiped his damp palms on his jeans for the third time.*' },
         { kind: 'bullets', id: 'steps', items: ['Ask what exhaustion looks like from the outside.', 'Choose one or two specific actions.', 'Leave out the word *exhausted*.'] },
-        { kind: 'text', id: 'ans', md: 'Telling: *Amara was exhausted after the long day.*\n\nShowing: *Amara dropped her bag in the hall, kicked off her shoes and fell asleep on the sofa with the lights still on.*', size: 'md' },
+        { kind: 'bullets', id: 'ans', items: ['Telling: *Amara was exhausted after the long day.*', 'Showing: *Amara dropped her bag in the hall, kicked off her shoes and fell asleep on the sofa with the lights still on.*'] },
       ],
       lines: [
         { say: 'Telling names a feeling outright. Showing lets the reader work it out from actions, body language and details.', show: 'def' },
@@ -49,7 +49,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'bullets', id: 'b', items: ['Spoken words go inside quotation marks.', 'Tag after the words: a comma ends them, and the tag starts with a small letter.', 'Tag first: a comma after the tag, then a capital letter.', 'A new speaker starts a new paragraph.'] },
-        { kind: 'text', id: 'ans', md: 'Punctuate: *if we leave now Wei said we can still catch the bus*\n\n*“If we leave now,” Wei said, “we can still catch the bus.”*', size: 'md' },
+        { kind: 'bullets', id: 'ans', items: ['Punctuate: *if we leave now Wei said we can still catch the bus*', 'Punctuated: *“If we leave now,” Wei said, “we can still catch the bus.”*'] },
       ],
       lines: [
         { say: 'Spoken words go inside quotation marks.', show: 'b.0' },

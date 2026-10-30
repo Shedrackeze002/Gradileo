@@ -41,7 +41,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Parallel structure', md: 'Items of equal importance have the **same grammatical form**: all nouns, all *-ing* words, all *to* verbs, all clauses.' },
-        { kind: 'text', id: 'ex', md: 'Not parallel: *The job requires patience, honesty and that you work hard.*\n\nParallel: *The job requires patience, honesty and hard work.*', size: 'md' },
+        { kind: 'bullets', id: 'ex', items: ['Not parallel: *The job requires patience, honesty and that you work hard.*', 'Parallel: *The job requires patience, honesty and hard work.*'] },
         { kind: 'text', id: 'pair', md: '*Daniel is not only **a talented singer** but also **a gifted songwriter**.*', size: 'md' },
       ],
       lines: [

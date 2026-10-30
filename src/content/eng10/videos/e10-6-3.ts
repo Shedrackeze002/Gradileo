@@ -74,12 +74,12 @@ const video: Explainer = {
         {
           kind: 'try',
           id: 'q',
-          prompt: 'A writer argues that the school library should stay open until 6:00 p.m. on weekdays. A reader objects: “Paying staff to stay late would cost too much.” Which reply is the strongest rebuttal?',
+          prompt: 'Objection to a library staying open late: “Paying staff to stay late would cost too much.” Which reply is the strongest rebuttal?',
           choices: [
-            'Staff time does cost money, but trained student volunteers could help run the evening, so one paid staff member would do.',
-            'That is simply not true, and anyone who says it has clearly never needed a quiet place to study.',
-            'That is a fair point about the cost, so perhaps the library should close early after all.',
-            'People who worry about the cost obviously do not care about students, so the complaint can be ignored.',
+            'Staff time costs money, but trained student volunteers could help, so one paid worker would do.',
+            'That is simply not true, and anyone who says so has never needed to study.',
+            'That is a fair point about cost, so perhaps the library should close early after all.',
+            'People who worry about cost obviously do not care about students, so ignore them.',
           ],
           answer: 0,
           working: 'Choice A concedes what is fair, then answers with a practical solution. B denies, C gives up and D attacks people.',

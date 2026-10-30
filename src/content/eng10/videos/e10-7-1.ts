@@ -87,7 +87,7 @@ const video: Explainer = {
     {
       chapter: 'A common mistake',
       layout: 'center',
-      main: [{ kind: 'callout', id: 'm', tone: 'mistake', title: 'Fixes that are not fixes', md: '*Nia forgot her umbrella so, she got soaked.* The comma goes **before** the conjunction, not after it.\n\n*She got soaked on the walk home. Because Nia forgot her umbrella.* This just makes a new fragment.' }],
+      main: [{ kind: 'callout', id: 'm', tone: 'mistake', title: 'Fixes that are not fixes', md: '*Nia forgot her umbrella so, she got soaked.* The comma goes **before** the conjunction, not after it. And *She got soaked on the walk home. Because Nia forgot her umbrella.* only makes a new fragment.' }],
       lines: [
         { say: 'Some fixes are not fixes. In the first example, the comma sits after the word so. A comma goes before the conjunction.', show: 'm' },
         { say: 'And in the second, splitting off a dependent clause with a period just makes a new fragment.' },

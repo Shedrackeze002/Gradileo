@@ -21,7 +21,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'bullets', id: 'b', items: ['After an introduction: *When the bell rang, the students hurried out.*', 'Before a conjunction joining two independent clauses: *The road was icy, so the buses stayed in the depot.*', 'Around direct address: *Thank you for your help, Omar.*', 'Never between a subject and its verb'] },
-        { kind: 'text', id: 'ans', md: 'Punctuate: *My oldest sister who is a nurse works night shifts.*\n\n*My oldest sister, who is a nurse, works night shifts.*', size: 'md' },
+        { kind: 'bullets', id: 'ans', items: ['Punctuate: *My oldest sister who is a nurse works night shifts.*', 'Punctuated: *My oldest sister, who is a nurse, works night shifts.*'] },
       ],
       lines: [
         { say: 'Most comma rules come down to a few uses. A comma follows an introduction, so the reader does not misread it.', show: 'b.0' },
@@ -56,7 +56,7 @@ const video: Explainer = {
       chapter: 'Semicolons and colons',
       layout: 'center',
       main: [
-        { kind: 'callout', id: 'def', tone: 'definition', title: 'Semicolon and colon', md: 'A **semicolon** joins two closely related independent clauses: *The first half was dull; the second half was thrilling.*\n\nA **colon** follows a complete clause and introduces a list or explanation: *Hana packed three things for the hike: a map, a compass and a water bottle.*' },
+        { kind: 'callout', id: 'def', tone: 'definition', title: 'Semicolon and colon', md: 'A **semicolon** joins two closely related independent clauses: *The first half was dull; the second half was thrilling.* A **colon** follows a complete clause and introduces a list or explanation: *Hana packed three things for the hike: a map, a compass and a water bottle.*' },
       ],
       lines: [
         { say: 'These two marks look alike, but do different jobs. A semicolon joins two closely related independent clauses.', show: 'def' },

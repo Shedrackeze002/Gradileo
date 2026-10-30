@@ -46,7 +46,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Denotation and connotation', md: '**Denotation** is a word’s dictionary meaning. **Connotation** is the feeling or judgement it carries.' },
-        { kind: 'text', id: 'ex', md: '*Kwame’s decision to sail across the bay alone was courageous / bold / reckless.*\n\n**Courageous** approves. **Bold** is fairly neutral. **Reckless** condemns.', size: 'md' },
+        { kind: 'bullets', id: 'ex', items: ['*Kwame’s decision to sail across the bay alone was courageous / bold / reckless.*', '**Courageous** approves. **Bold** is fairly neutral. **Reckless** condemns.'] },
       ],
       lines: [
         { say: 'A word’s denotation is its dictionary meaning. Its connotation is the feeling or judgement it carries.', show: 'def' },

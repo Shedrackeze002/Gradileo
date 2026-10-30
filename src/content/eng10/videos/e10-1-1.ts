@@ -13,7 +13,7 @@ const video: Explainer = {
       main: [{ kind: 'title', id: 'title', kicker: 'Short Stories', title: 'Plot and Conflict', subtitle: 'How a story moves' }],
       lines: [
         { say: 'On a stormy night, readers of “The Monkey’s Paw” met the White family by their fire. The blinds were drawn, and the fire burned brightly.', show: 'title' },
-        { say: 'Before the evening is over, a visitor has left a dried paw that grants three wishes, and the story begins to move. In this lesson, you will learn how a story’s events form a plot, and what drives that plot forward.' },
+        { say: 'Before the evening is over, a visitor has left a dried paw that grants three wishes, and the story begins to move. In this lesson, you will learn how a plot works.' },
       ],
     },
     {
@@ -98,7 +98,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Here is a common mistake. Students often pick the most exciting event as the climax.', show: 'm' },
-        { say: 'A story can have several exciting moments. The climax is the one that decides the outcome, so everything before it builds toward it, and everything after it follows from it.', focus: 'm' },
+        { say: 'The climax is the one moment that decides the outcome.', focus: 'm' },
       ],
     },
     {
@@ -121,7 +121,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Your turn. In a short story, which of these describes the climax? Pause the video and try it.', show: 'q', wait: 6 },
-        { say: 'The answer is B. The climax is the moment that decides the outcome of the main conflict. Choice A is only exciting, and Choice D describes the resolution.', show: 'q.answer' },
+        { say: 'The answer is B. The climax is the moment that decides the outcome of the main conflict.', show: 'q.answer' },
       ],
     },
     {
