@@ -19430,6 +19430,53 @@
       }
     ]
   },
+  "e12-1-1": {
+    "lessonId": "e12-1-1",
+    "title": "Narrative Technique and Time",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Whose mind are we in?",
+        "t": 28.094
+      },
+      {
+        "title": "Handling time",
+        "t": 75.372
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.824
+      },
+      {
+        "title": "Your turn",
+        "t": 134.218
+      },
+      {
+        "title": "Summary",
+        "t": 165.998
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-1-1:q2",
+        "t": 147.275,
+        "prompt": "In “Kew Gardens”, a third-person narrator enters a man’s mind, then a snail’s, then two passers-by. What technique is this?",
+        "choices": [
+          "Stream of consciousness, because one mind drifts freely by association.",
+          "Multiple narrators, because each character takes a turn telling the story.",
+          "Shifting focalization, because the point of view passes between perceivers.",
+          "External narration, because the narrator reports only what can be seen."
+        ],
+        "answer": 2,
+        "working": "The narration stays in the third person but passes from one perceiver to the next. That is shifting focalization."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
