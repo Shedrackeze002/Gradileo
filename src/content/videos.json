@@ -16688,6 +16688,159 @@
       }
     ]
   },
+  "e10-5-1": {
+    "lessonId": "e10-5-1",
+    "title": "Reading an Image",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The focal point",
+        "t": 32.868
+      },
+      {
+        "title": "Composition",
+        "t": 67.763
+      },
+      {
+        "title": "The effect of each choice",
+        "t": 107.621
+      },
+      {
+        "title": "A common mistake",
+        "t": 142.193
+      },
+      {
+        "title": "Your turn",
+        "t": 162.108
+      },
+      {
+        "title": "Summary",
+        "t": 192.021
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-5-1:q",
+        "t": 175.467,
+        "prompt": "A photograph shows one tiny hiker crossing a vast, empty desert. What effect does the huge empty space most likely create?",
+        "choices": [
+          "The hiker seems powerful and very important",
+          "The scene feels cheerful, busy and crowded",
+          "The hiker seems small and alone in nature",
+          "The desert feels warm, safe and comforting"
+        ],
+        "answer": 2,
+        "working": "A small figure in a vast space suggests loneliness and smallness against nature."
+      }
+    ]
+  },
+  "e10-5-2": {
+    "lessonId": "e10-5-2",
+    "title": "Film Techniques",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Shots",
+        "t": 28.137
+      },
+      {
+        "title": "Angles and sound",
+        "t": 64.422
+      },
+      {
+        "title": "Editing and lighting",
+        "t": 100.419
+      },
+      {
+        "title": "A common mistake",
+        "t": 135.564
+      },
+      {
+        "title": "Your turn",
+        "t": 150.496
+      },
+      {
+        "title": "Summary",
+        "t": 180.536
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-5-2:q",
+        "t": 161.899,
+        "prompt": "In a film, the villain is shown from a low angle as he steps out of the shadows. What effect does this angle have?",
+        "choices": [
+          "He seems powerful and threatening",
+          "He seems small, weak and afraid",
+          "He seems calm, neutral and natural",
+          "He seems far from the audience"
+        ],
+        "answer": 0,
+        "working": "A low angle looks up at the subject, which makes it seem large, powerful or threatening."
+      }
+    ]
+  },
+  "e10-5-3": {
+    "lessonId": "e10-5-3",
+    "title": "Advertising",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Persuasive techniques",
+        "t": 31.915
+      },
+      {
+        "title": "The target audience",
+        "t": 64.358
+      },
+      {
+        "title": "Reading critically",
+        "t": 95.255
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.207
+      },
+      {
+        "title": "Your turn",
+        "t": 142.16
+      },
+      {
+        "title": "Summary",
+        "t": 175.924
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-5-3:q",
+        "t": 155.896,
+        "prompt": "An advertisement says: “Over a million teenagers have already switched to Zing Chat. Don’t be the last one left out!” Which technique does it use?",
+        "choices": [
+          "Snob appeal: only special people can own it",
+          "Bandwagon: everyone else is already doing it",
+          "Testimonial: a famous expert recommends it",
+          "Plain folks: the seller is an ordinary neighbour"
+        ],
+        "answer": 1,
+        "working": "It says everyone else is already using the app, so you should too. Popularity is not evidence of quality."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
