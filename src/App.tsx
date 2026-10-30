@@ -42,6 +42,7 @@ const PresentMode = lazy(() => import('./features/lessons/PresentMode.tsx'));
 const StudentHome = lazy(() => import('./features/student/StudentHome.tsx'));
 const JoinClass = lazy(() => import('./features/student/JoinClassPage.tsx'));
 const Welcome = lazy(() => import('./features/student/WelcomePage.tsx'));
+const Topics = lazy(() => import('./features/student/TopicsPage.tsx'));
 const Learn = lazy(() => import('./features/student/LearnPage.tsx'));
 const StudentLesson = lazy(() => import('./features/student/StudentLessonPage.tsx'));
 const Work = lazy(() => import('./features/student/WorkPage.tsx'));
@@ -119,6 +120,7 @@ export default function App() {
                     <Route index element={<StudentHome />} />
                     <Route path="join" element={<JoinClass />} />
                     <Route path="welcome" element={<Welcome />} />
+                    <Route path="topics" element={<Topics />} />
                     <Route path="learn" element={<Learn />} />
                     <Route path="learn/:lessonId" element={<StudentLesson />} />
                     <Route path="work" element={<Work />} />

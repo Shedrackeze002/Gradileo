@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, ChevronDown, Lock, PlayCircle } from 'lucide-react';
+import { BookOpen, ChevronDown, Lock, PlayCircle, Search } from 'lucide-react';
 import { getCourse, lessonById } from '@engine/curriculum/index.ts';
 import { useMastery, usePublications } from '@/data/hooks.ts';
 import { useMe } from '@/features/auth/AuthProvider.tsx';
@@ -34,7 +34,14 @@ export default function LearnPage() {
 
   return (
     <div>
-      <PageHeader title="Learn" subtitle={self ? `${course.title} · Self-paced: every lesson is open, and your next one is marked` : `${course.title} · ${published.size} of ${course.lessons.length} lessons available`} />
+      <PageHeader
+        title="Learn"
+        actions={
+          <Button size="sm" variant="secondary" to="/s/topics" icon={<Search className="h-4 w-4" />}>
+            Browse by topic
+          </Button>
+        }
+        subtitle={self ? `${course.title} · Self-paced: every lesson is open, and your next one is marked` : `${course.title} · ${published.size} of ${course.lessons.length} lessons available`} />
       <MasteryLegend className="mb-5" />
       {units.length === 0 && <EmptyState icon={<BookOpen className="h-6 w-6" />} title="No lessons yet">Your teacher hasn’t published any lessons yet.</EmptyState>}
       <div className="space-y-4">

@@ -23,6 +23,7 @@ import {
   RefreshCcw,
   School,
   ScrollText,
+  Search,
   Settings,
   ShieldCheck,
   Sparkles,
@@ -329,6 +330,9 @@ function StudentClassBadge({ compact = false }: { compact?: boolean }) {
         <Link to="/s/join" className="flex items-center gap-2 rounded-xl px-3 py-1.5 text-sm font-medium text-ink-2 hover:bg-surface-2 hover:text-ink">
           <Plus className="h-4 w-4" /> Join a class
         </Link>
+        <Link to="/s/topics" className="flex items-center gap-2 rounded-xl px-3 py-1.5 text-sm font-medium text-ink-2 hover:bg-surface-2 hover:text-ink">
+          <Search className="h-4 w-4" /> Browse by topic
+        </Link>
       </div>
     );
   const name = studentClassName(cls);
@@ -384,6 +388,15 @@ function StudentClassBadge({ compact = false }: { compact?: boolean }) {
               }}
             >
               Add a course
+            </MenuItem>
+            <MenuItem
+              icon={<Search className="h-4 w-4" />}
+              onClick={() => {
+                close();
+                navigate('/s/topics');
+              }}
+            >
+              Browse by topic
             </MenuItem>
             <MenuItem
               icon={<Plus className="h-4 w-4" />}
