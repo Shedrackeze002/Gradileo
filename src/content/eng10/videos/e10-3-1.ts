@@ -69,7 +69,7 @@ const video: Explainer = {
       chapter: 'Paraphrasing a line',
       layout: 'center',
       main: [
-        { kind: 'text', id: 'q', size: 'md', md: '> Deny thy father and refuse thy name.\\\n> Or if thou wilt not, be but sworn my love.' },
+        { kind: 'quote', id: 'q', size: 'md', lines: ['Deny thy father and refuse thy name.', 'Or if thou wilt not, be but sworn my love.'] },
         {
           kind: 'bullets',
           id: 'steps',
@@ -89,7 +89,7 @@ const video: Explainer = {
       chapter: 'A common mistake',
       layout: 'center',
       main: [
-        { kind: 'text', id: 'line', size: 'md', md: '> O Romeo, Romeo, wherefore art thou Romeo?' },
+        { kind: 'text', id: 'line', size: 'md', md: 'O Romeo, Romeo, wherefore art thou Romeo?' },
         { kind: 'callout', id: 'mis', tone: 'mistake', title: 'Wherefore does not mean where', md: '*Wherefore* means **why**. Juliet is not asking where Romeo is. She is asking why he has to be a Montague.' },
       ],
       lines: [

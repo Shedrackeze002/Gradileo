@@ -12,7 +12,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'title', id: 'title', kicker: 'Shakespeare', title: 'Themes', subtitle: 'The big ideas of Romeo and Juliet' },
-        { kind: 'text', id: 'q', size: 'md', md: '> See what a scourge is laid upon your hate,\\\n> That heaven finds means to kill your joys with love!\\\n> And I, for winking at your discords too,\\\n> Have lost a brace of kinsmen. All are punish’d.' },
+        { kind: 'quote', id: 'q', size: 'md', lines: ['See what a scourge is laid upon your hate,', 'That heaven finds means to kill your joys with love!', 'And I, for winking at your discords too,', 'Have lost a brace of kinsmen. All are punish’d.'] },
       ],
       lines: [
         { say: 'At dawn, the Prince stands over the bodies of Romeo and Juliet and speaks to their fathers. See what a scourge is laid upon your hate. All are punish’d.', show: ['title', 'q'] },

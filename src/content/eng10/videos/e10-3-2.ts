@@ -42,7 +42,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Motive', md: 'The **reason** behind what a character does. Support it with **evidence**: the character’s words, what others say, or what they do.' },
-        { kind: 'text', id: 'q', size: 'md', md: '> In one respect I’ll thy assistant be;\\\n> For this alliance may so happy prove,\\\n> To turn your households’ rancour to pure love.' },
+        { kind: 'quote', id: 'q', size: 'md', lines: ['In one respect I’ll thy assistant be;', 'For this alliance may so happy prove,', 'To turn your households’ rancour to pure love.'] },
         { kind: 'text', id: 'ans', size: 'md', md: '**Motive:** he hopes the marriage will turn hatred into love.' },
       ],
       lines: [

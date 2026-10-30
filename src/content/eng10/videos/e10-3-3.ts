@@ -12,7 +12,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'title', id: 'title', kicker: 'Shakespeare', title: 'Soliloquy and Dramatic Irony', subtitle: 'What the audience knows' },
-        { kind: 'text', id: 'q', size: 'md', md: '> My dismal scene I needs must act alone.\\\n> Come, vial.\\\n> What if this mixture do not work at all?' },
+        { kind: 'quote', id: 'q', size: 'md', lines: ['My dismal scene I needs must act alone.', 'Come, vial.', 'What if this mixture do not work at all?'] },
       ],
       lines: [
         { say: 'Juliet is alone in her room at night, holding a vial that Friar Lawrence has given her. She says: My dismal scene I needs must act alone.', show: ['title', 'q'] },
@@ -47,7 +47,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Foreshadowing', md: 'A **hint** of what will happen later in the play.' },
-        { kind: 'text', id: 'q', size: 'md', md: '> O God! I have an ill-divining soul!\\\n> Methinks I see thee, now thou art so low,\\\n> As one dead in the bottom of a tomb.' },
+        { kind: 'quote', id: 'q', size: 'md', lines: ['O God! I have an ill-divining soul!', 'Methinks I see thee, now thou art so low,', 'As one dead in the bottom of a tomb.'] },
       ],
       lines: [
         { say: 'Foreshadowing is a hint of what will happen later, and Romeo and Juliet is full of it.', show: 'def' },
@@ -60,7 +60,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Dramatic irony', md: 'The **audience** knows something important that a character on stage does not.' },
-        { kind: 'text', id: 'q', size: 'md', md: '> Death lies on her like an untimely frost\\\n> Upon the sweetest flower of all the field.\n>\n> — Capulet, Act 4, Scene 5' },
+        { kind: 'quote', id: 'q', size: 'md', lines: ['Death lies on her like an untimely frost', 'Upon the sweetest flower of all the field.'], by: 'Capulet, Act 4, Scene 5' },
         { kind: 'text', id: 'ans', size: 'md', md: 'We know she is **only asleep**, from the Friar’s potion.' },
       ],
       lines: [

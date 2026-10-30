@@ -2,7 +2,7 @@
 import { BRAND, type DiagramEl, type El, type Explainer, type ScreenEl, type TriangleEl, type SimilarEl } from '../script.ts';
 import type { ElState, FrameState } from '../timeline.ts';
 import { DiagramView } from './Diagram.tsx';
-import { BulletsView, CalcView, CalloutView, MathView, TableView, TextView, TitleView, TryView } from './elements.tsx';
+import { BulletsView, CalcView, CalloutView, MathView, QuoteView, TableView, TextView, TitleView, TryView } from './elements.tsx';
 import { ScreenView } from './Screen.tsx';
 import { rich, TONES } from './tex.ts';
 import { SimilarView, TriangleView } from './Triangle.tsx';
@@ -35,6 +35,8 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <TitleView el={el} st={st} />;
     case 'text':
       return <TextView el={el} st={st} center={center} />;
+    case 'quote':
+      return <QuoteView el={el} st={st} />;
     case 'math':
       return <MathView el={el} st={st} center={center} />;
     case 'bullets':
