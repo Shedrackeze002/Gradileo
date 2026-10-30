@@ -16637,6 +16637,57 @@
       }
     ]
   },
+  "e10-4-4": {
+    "lessonId": "e10-4-4",
+    "title": "Bias and Reliable Sources",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Logical fallacies",
+        "t": 27.249
+      },
+      {
+        "title": "Bias and loaded language",
+        "t": 58.565
+      },
+      {
+        "title": "Reliable sources",
+        "t": 93.035
+      },
+      {
+        "title": "A common mistake",
+        "t": 115.721
+      },
+      {
+        "title": "Your turn",
+        "t": 139.319
+      },
+      {
+        "title": "Summary",
+        "t": 170.503
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-4-4:q",
+        "t": 150.024,
+        "prompt": "You want to know how many hours of sleep teenagers need. Which source is the most reliable?",
+        "choices": [
+          "A blog post by a company that sells mattresses to teenagers",
+          "A magazine article about sleep that was written fifty years ago",
+          "A video about sleep by a very popular online personality",
+          "A recent report by children’s doctors reviewing many studies"
+        ],
+        "answer": 3,
+        "working": "The doctors are experts, the report rests on many studies, and it is recent. The others gain from selling, are out of date, or lack evidence."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
