@@ -3,7 +3,7 @@
 Roadmap item 5. On 17 October 2026 the owner decided that Gradileo is for students anywhere: in
 the US, the UK, Africa and every other English-speaking country, and not only in Alberta schools.
 Some of that is already built. This plan covers what is left, with the owner's decisions to come
-at the end. Nothing below is built until the owner has chosen.
+at the end. The owner decided on 30 October 2026, and building starts with step 1.
 
 ## Already done
 
@@ -93,3 +93,9 @@ topics").
    one spelling for now, because a second spelling doubles every lesson's checking.
 3. Should a teacher be able to start a class on a mapped course ("Algebra I", "GCSE Higher") as
    well as on Gradileo's own courses? We suggest yes.
+
+## The owner's decisions (30 October 2026)
+
+1. The first map is **US Common Core**, followed by **UK GCSE**.
+2. **One spelling** everywhere (Canadian and British) for now.
+3. **Yes:** a teacher can start a class on a mapped course.

@@ -507,9 +507,10 @@ items ship or decisions change.
      tied to one country (Canadian GST and EI) say so in the question.
    - The plan (30 October 2026): `docs/PLAN-WORLDWIDE.md`. Four steps: ask for the country and
      year first, a catalogue of topics with "Browse by topic", curriculum maps that show the same
-     lessons in each syllabus's order and names, and filling the gaps the maps show. It waits for
-     the owner to choose the first map, the spelling and whether classes can start on a mapped
-     course.
+     lessons in each syllabus's order and names, and filling the gaps the maps show. Decisions (the
+     owner, 30 October 2026): US Common Core is the first map and UK GCSE the second, one spelling
+     (Canadian and British) everywhere, and teachers can start a class on a mapped course.
+     Building starts with step 1, the country and year first.
 6. **AI question builder for quizzes, exams and assignments.** In the assignment builder the
    teacher chooses the kind of work (quiz, exam, homework, exercise, activity, classwork and so
    on), the question formats and every other setting, then presses one button (name to settle;
