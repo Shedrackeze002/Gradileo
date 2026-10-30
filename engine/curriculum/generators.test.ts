@@ -35,12 +35,13 @@ describe('course structure', () => {
     for (const c of COURSES) {
       for (const l of c.lessons) for (const sk of l.skills) expect(ids.has(sk), `${l.id} -> ${sk}`).toBe(true);
     }
-    const lessons = new Map(COURSES.flatMap((c) => c.lessons.map((l) => [l.id, l] as const)));
+    const lessons = new Map(COURSES.filter((c) => !c.map).flatMap((c) => c.lessons.map((l) => [l.id, l] as const)));
     for (const s of allSkills()) expect(lessons.get(s.lessonId)?.skills, `${s.id} names lesson ${s.lessonId}, which does not list it`).toContain(s.id);
   });
 
   it('lesson and unit ids are unique across courses, and lesson outcomes exist in their course', () => {
-    const lessonIds = COURSES.flatMap((c) => c.lessons.map((l) => l.id));
+    // A mapped course ("Algebra I") reuses other courses' lessons, so only Gradileo's own courses own lesson ids.
+    const lessonIds = COURSES.filter((c) => !c.map).flatMap((c) => c.lessons.map((l) => l.id));
     expect(new Set(lessonIds).size).toBe(lessonIds.length);
     const unitIds = COURSES.flatMap((c) => c.units.map((u) => u.id));
     expect(new Set(unitIds).size).toBe(unitIds.length);

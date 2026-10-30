@@ -143,6 +143,24 @@ skill stays weak. Skills missed on the placement check are kept on the device an
 practice on the home page. A student can study several courses and join teachers' classes; the
 course switcher in the shell remembers the current one.
 
+**Where the learner goes to school, topics and curriculum maps.** Onboarding first asks for the
+country or curriculum and the year in that system's words (`engine/curricula.ts` matches each year
+to Gradileo's level; the curriculum is saved on `profiles.curriculum`). `engine/topics.ts` files
+every lesson under a plain topic for **Browse by topic** (`/s/topics`). A **curriculum map**
+(`engine/curriculum/maps/`) describes a school system's own courses (`us.ts`: US Grade 6 to
+Precalculus) as units of existing lesson ids; `buildMappedCourse` turns each into a `CourseMeta`
+with `map` set (its lessons are copies filed under the map's units, with outcome codes that name
+their own course, "Math 10 N1") and `gaps`, the syllabus topics not taught yet. Mapped courses come
+last in `COURSES`, so `lessonById`, `unitById` and `courseOfLesson` still find a lesson's own
+course, and they are not in `LISTED_COURSES`: onboarding offers them to learners of that
+curriculum (`recommendCourse` gives a US learner the course of their grade) and new classes pick
+them from the map's tab. Lesson content, practice, videos and tutor recordings are found by lesson
+or skill id, so they need nothing new; `loadCourseSkills` loads a mapped course's generators from
+the courses its lessons come from, and `courseLesson(courseId, lessonId)` gives a lesson as the
+class's course numbers it. To add a map, write its file next to `us.ts`, add it to
+`CURRICULUM_MAPS`, give each course a `PREREQUISITE`, and run `npm test` (the map tests check every
+lesson id).
+
 **Joining a teacher's class.** A class can ask for approval (`settings.joinApproval`, on by default
 for new classes). Then a class code, used on the Join page or at sign-up, creates a pending
 `join_requests` row and tells the teacher; the Students page lists the requests (with the

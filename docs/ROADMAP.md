@@ -529,8 +529,17 @@ items ship or decisions change.
    - Fixed (30 October 2026): students could not study Chemistry or English self-paced on the live
      site. The database's `start_self_paced` accepted only mathematics course ids ("That course was
      not found."); the demo mode skips that check, so the tests missed it. It now accepts every
-     subject's course ids, with a database test for chemistry and English. Next: step 3, the US
-     Common Core map.
+     subject's course ids, with a database test for chemistry and English (PR #110).
+   - Built (30 October 2026), step 3: **the US Common Core map** (`engine/curriculum/maps/us.ts`).
+     Seven US courses, Grade 6, Grade 7, Grade 8, Algebra I, Geometry, Algebra II and
+     Precalculus, each built from Gradileo's lessons in the US order and under US unit names
+     (with the standards each unit covers), 35 to 57 lessons a course. A US learner is offered the
+     course of their grade on "Find your course" (with Calculus after Precalculus), with a placement
+     check on the course before; teachers can start a class on any of them from the new "US Common
+     Core" tab. Each course lists its gaps, shown with the course: scientific notation, two-way
+     tables, box plots, complex numbers, the equation of a circle, two-column proofs, vectors,
+     matrices, polar form and conics among them. Next: step 4 fills these gaps, and the UK GCSE
+     map follows.
 6. **AI question builder for quizzes, exams and assignments.** In the assignment builder the
    teacher chooses the kind of work (quiz, exam, homework, exercise, activity, classwork and so
    on), the question formats and every other setting, then presses one button (name to settle;

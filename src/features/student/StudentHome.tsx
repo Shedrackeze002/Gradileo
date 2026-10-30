@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, CalendarClock, Compass, Flame, KeyRound, Megaphone, PlayCircle, RotateCcw, Sparkles, Target, X } from 'lucide-react';
-import { courseOfSkill, lessonById, getCourse } from '@engine/curriculum/index.ts';
+import { courseLesson, courseOfSkill, lessonById, getCourse } from '@engine/curriculum/index.ts';
 import { analyzeStudent, buildStudentContext } from '@engine/ai/index.ts';
 import type { SkillState } from '@engine/mastery.ts';
 import { TYPE_LABEL } from '@engine/assemble.ts';
@@ -42,7 +42,7 @@ export default function StudentHome() {
   const recs = recommendedSkills(published, map, 4);
   const course = cls ? getCourse(cls.courseId) : undefined;
   const cm = cls ? courseMastery(cls.courseId, map) : null;
-  const latestLesson = frontier ? lessonById(frontier.next ?? '') : published.length ? lessonById(published[published.length - 1]) : undefined;
+  const latestLesson = frontier ? courseLesson(cls?.courseId, frontier.next ?? '') : published.length ? courseLesson(cls?.courseId, published[published.length - 1]!) : undefined;
 
   const coach = useMemo(() => {
     if (!cls || !mastery.data || !events.data) return null;

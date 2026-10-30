@@ -30,12 +30,31 @@ import { CHEM30 } from './chem30/course.ts';
 import { ENG10 } from './eng10/course.ts';
 import { ENG20 } from './eng20/course.ts';
 import { ENG30 } from './eng30/course.ts';
+import { buildMappedCourse, type CurriculumMap } from './maps/build.ts';
+import { US_MAP } from './maps/us.ts';
 
-/** Every course, youngest grade first (the order of course pickers and tabs). */
-export const COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, CHEM10, CHEM20, CHEM30, ENG10, ENG20, ENG30];
+/** Gradileo's own courses, youngest grade first (the order of course pickers and tabs). */
+const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, CHEM10, CHEM20, CHEM30, ENG10, ENG20, ENG30];
 
-/** The courses a class can be made for or a student placed in: every course that is not a draft. */
-export const LISTED_COURSES: CourseMeta[] = COURSES.filter((c) => !c.draft);
+/** The school systems with a curriculum map, the first map first. */
+export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP];
+
+/** Courses of other school systems built from Gradileo's lessons ("Algebra I"), in their maps' order. */
+export const MAPPED_COURSES: CourseMeta[] = CURRICULUM_MAPS.flatMap((m) => m.courses.map((c) => buildMappedCourse(m, c, OWN_COURSES)));
+
+/**
+ * Every course. The mapped courses come last, so a lesson or unit looked up by id is always found
+ * in the course it belongs to.
+ */
+export const COURSES: CourseMeta[] = [...OWN_COURSES, ...MAPPED_COURSES];
+
+/** The courses a class can be made for or a student placed in: every own course that is not a draft. */
+export const LISTED_COURSES: CourseMeta[] = OWN_COURSES.filter((c) => !c.draft);
+
+/** A school system's mapped courses ("us": Grade 6 to Precalculus). */
+export function mappedCourses(curriculumId: string | null | undefined): CourseMeta[] {
+  return curriculumId ? MAPPED_COURSES.filter((c) => c.map === curriculumId) : [];
+}
 
 /** The subjects of the listed courses, in the order of the courses (Mathematics first). */
 export const SUBJECTS: string[] = [...new Set(LISTED_COURSES.map((c) => c.subject))];
@@ -106,6 +125,8 @@ export function allSkills(): SkillDef[] {
 export function loadCourseSkills(courseId: string): Promise<void> {
   const course = getCourse(courseId);
   if (!course || course.lessons.every((l) => l.skills.every((s) => LOADED.has(s)))) return Promise.resolve();
+  // A mapped course has no generators of its own: load those of the courses its lessons come from.
+  if (course.map) return loadSkills(course.lessons.flatMap((l) => l.skills));
   let p = loading.get(courseId);
   if (!p) {
     const load = LOADERS[courseId];
@@ -169,6 +190,11 @@ export function lessonById(id: string) {
     if (l) return l;
   }
   return undefined;
+}
+
+/** A lesson as a course lists it: a mapped course ("Algebra I") numbers and files it under its own units. */
+export function courseLesson(courseId: string | undefined, lessonId: string) {
+  return (courseId ? getCourse(courseId)?.lessons.find((l) => l.id === lessonId) : undefined) ?? lessonById(lessonId);
 }
 
 export function unitById(id: string) {

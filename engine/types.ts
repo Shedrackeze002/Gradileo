@@ -434,4 +434,11 @@ export interface CourseMeta {
   lessons: LessonMeta[];
   /** Still being written: it runs everywhere but the course pickers (LISTED_COURSES). */
   draft?: boolean;
+  /**
+   * A school system's own course built from other courses' lessons (`engine/curriculum/maps`): the
+   * curriculum id ("us"). Its lessons still belong to their own courses (`courseOfLesson`).
+   */
+  map?: string;
+  /** For a mapped course: syllabus topics Gradileo does not teach yet. */
+  gaps?: string[];
 }

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CalendarClock, ChevronRight, FileText, PlayCircle } from 'lucide-react';
-import { getCourse, lessonById } from '@engine/curriculum/index.ts';
+import { courseLesson, getCourse } from '@engine/curriculum/index.ts';
 import { reviewDue } from '@engine/mastery.ts';
 import { useEvents, useMastery, usePublications, useReportCards } from '@/data/hooks.ts';
 import { fmtDate } from '@/lib/dates.ts';
@@ -106,11 +106,11 @@ export default function ProgressPage() {
                 {lessons.length > 0 && (
                   <div className="border-t border-line">
                     {lessons.flatMap((lid) =>
-                      lessonById(lid)!.skills.map((s) => {
+                      courseLesson(course.id, lid)!.skills.map((s) => {
                         const st = stateOf(map, s);
                         return (
                           <div key={s} className="flex flex-wrap items-center gap-3 border-b border-line px-5 py-2.5 last:border-0">
-                            <span className="w-10 text-xs font-semibold text-ink-3">{lessonById(lid)!.number}</span>
+                            <span className="w-10 text-xs font-semibold text-ink-3">{courseLesson(course.id, lid)!.number}</span>
                             <span className="min-w-0 flex-1 text-[15px]">{skillLabel(s)}</span>
                             <span className="hidden text-xs text-ink-3 sm:inline">
                               {st.correct}/{st.attempts} correct

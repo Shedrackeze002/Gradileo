@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, ChevronDown, Lock, PlayCircle, Search } from 'lucide-react';
-import { getCourse, lessonById } from '@engine/curriculum/index.ts';
+import { courseLesson, getCourse } from '@engine/curriculum/index.ts';
 import { useMastery, usePublications } from '@/data/hooks.ts';
 import { useMe } from '@/features/auth/AuthProvider.tsx';
 import { Button, Card, EmptyState, PageHeader, PageSpinner, ProgressRing } from '@/components/ui/index.ts';
@@ -43,6 +43,7 @@ export default function LearnPage() {
         }
         subtitle={self ? `${course.title} · Self-paced: every lesson is open, and your next one is marked` : `${course.title} · ${published.size} of ${course.lessons.length} lessons available`} />
       <MasteryLegend className="mb-5" />
+      {!!course.gaps?.length && <p className="-mt-2 mb-5 text-sm text-ink-3">Not in Gradileo yet: {course.gaps.join('; ')}.</p>}
       {units.length === 0 && <EmptyState icon={<BookOpen className="h-6 w-6" />} title="No lessons yet">Your teacher hasn’t published any lessons yet.</EmptyState>}
       <div className="space-y-4">
         {units.map((u) => {
@@ -62,7 +63,7 @@ export default function LearnPage() {
               {isOpen && (
                 <div className="border-t border-line">
                   {u.lessons.map((lid) => {
-                    const l = lessonById(lid)!;
+                    const l = courseLesson(course.id, lid)!;
                     const avail = published.has(lid);
                     const lm = lessonMastery(lid, map);
                     return avail ? (

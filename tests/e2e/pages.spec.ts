@@ -94,6 +94,25 @@ test('a teacher creates a Grade 10 Workplace class and teaches from its curricul
   expect(errors).toEqual([]);
 });
 
+test('a teacher creates a class on a US Common Core course, built from Gradileo’s lessons', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'US Common Core' }).click();
+  await page.getByRole('button', { name: /^Geometry \(US Common Core\)/ }).click();
+  await expect(page.getByLabel('Class name')).toHaveValue('Geometry');
+  await expect(page.getByText(/Not in Gradileo yet: Two-column proofs/).first()).toBeVisible();
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
+  await expect(page.getByText('Reasoning and Proof').first()).toBeVisible();
+  await expect(page.getByText('Right Triangles and Trigonometry').first()).toBeVisible();
+  // A lesson from Math 11 Foundations, taught in this course.
+  await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/m202-1-1`);
+  await expect(page.getByText('Making Conjectures: Inductive Reasoning').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test('a Grade 11 lesson check takes a list of roots', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
@@ -448,6 +467,31 @@ test('a learner browses by topic, sees levels in their own years, and opens a le
   await page.getByRole('button', { name: 'Completing the Square and the Quadratic Formula' }).click();
   await page.waitForURL(/\/s\/learn\/m201-4-3$/);
   await expect(page.getByRole('heading', { name: 'Completing the Square and the Quadratic Formula' }).first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a US learner is placed in Algebra I and studies it in the Common Core order', async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.goto('/signup');
+  await page.getByLabel('Full name').fill('Sam Learner');
+  await page.getByLabel('Email').fill(`sam.${Date.now() % 100000}@example.com`);
+  await page.getByLabel('Password').fill('secret12');
+  await page.getByRole('button', { name: 'Create account' }).click();
+  await page.waitForURL(/\/s\/welcome$/);
+  await page.getByLabel('Country or curriculum').selectOption('us');
+  await page.getByRole('button', { name: 'Grade 9', exact: true }).click();
+  await page.getByRole('button', { name: 'Okay, with some gaps' }).click();
+  await page.getByRole('button', { name: 'See my recommendation' }).click();
+  await expect(page.getByRole('heading', { name: 'Algebra I (US Common Core)', exact: true })).toBeVisible();
+  await expect(page.getByText(/Not in Gradileo yet: Two-way frequency tables/)).toBeVisible();
+  await page.getByRole('button', { name: 'Skip the check and start' }).click();
+  await page.waitForURL(/\/s$/);
+  await page.goto('/s/learn');
+  await expect(page.getByText('Expressions and Quantities')).toBeVisible();
+  await expect(page.getByText('Quadratic Equations', { exact: true })).toBeVisible();
+  // Algebra I's lessons come from several Gradileo courses and open in Algebra I.
+  await page.goto('/s/learn/m10c-4-1');
+  await expect(page.getByText('Multiplying Binomials').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 
