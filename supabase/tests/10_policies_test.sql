@@ -1008,4 +1008,13 @@ set role authenticated;
 select _fails($$select send_due_reminders()$$, 'users cannot run the scheduler');
 reset role;
 
+-- Every subject can be studied self-paced, not only mathematics.
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b2","role":"authenticated"}', false);
+set role authenticated;
+select start_self_paced('chem-20', array['c20-1-1']);
+select start_self_paced('eng-10', array['e10-1-1']);
+select _fails($$select start_self_paced('chem 20; drop', array[]::text[])$$, 'course ids of any other form are still rejected');
+reset role;
+select _assert((select count(*) from classes c join enrollments e on e.class_id = c.id where e.student_id = '00000000-0000-0000-0000-0000000000b2' and c.kind = 'self' and c.course_id in ('chem-20', 'eng-10')) = 2, 'chemistry and English courses can be studied self-paced');
+
 select 'ALL DATABASE TESTS PASSED' as result;

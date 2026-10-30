@@ -525,8 +525,12 @@ items ship or decisions change.
      have **Browse by topic** (`/s/topics`, from Learn, the sidebar and the course menu): the
      topics by subject and strand, a search over topics and lesson titles in every subject, and
      each topic's level in the learner's own years ("Years 11–13", "JSS 3 – SS 2"), taken from
-     the courses that first teach it. A lesson in another course opens there, self-paced. Next:
-     step 3, the US Common Core map.
+     the courses that first teach it. A lesson in another course opens there, self-paced (PR #109).
+   - Fixed (30 October 2026): students could not study Chemistry or English self-paced on the live
+     site. The database's `start_self_paced` accepted only mathematics course ids ("That course was
+     not found."); the demo mode skips that check, so the tests missed it. It now accepts every
+     subject's course ids, with a database test for chemistry and English. Next: step 3, the US
+     Common Core map.
 6. **AI question builder for quizzes, exams and assignments.** In the assignment builder the
    teacher chooses the kind of work (quiz, exam, homework, exercise, activity, classwork and so
    on), the question formats and every other setting, then presses one button (name to settle;
