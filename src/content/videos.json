@@ -16841,6 +16841,112 @@
       }
     ]
   },
+  "e10-6-1": {
+    "lessonId": "e10-6-1",
+    "title": "The Personal Response",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Response, not summary",
+        "t": 28.362
+      },
+      {
+        "title": "Connections that matter",
+        "t": 69.519
+      },
+      {
+        "title": "Building a connection",
+        "t": 87.714
+      },
+      {
+        "title": "The controlling idea",
+        "t": 122.164
+      },
+      {
+        "title": "A common mistake",
+        "t": 151.316
+      },
+      {
+        "title": "Your turn",
+        "t": 168.578
+      },
+      {
+        "title": "Summary",
+        "t": 199.246
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-1:q",
+        "t": 179.588,
+        "prompt": "Which sentence is a personal response to “The Gift of the Magi”, rather than a summary?",
+        "choices": [
+          "Della sells her long hair so that she can buy Jim a chain.",
+          "Della’s sacrifice reminded me of my cousin’s bike, and I saw that real gifts cost something.",
+          "I think the story is about Della selling her hair for Jim.",
+          "The story takes place at Christmas and has a husband and wife."
+        ],
+        "answer": 1,
+        "working": "Only choice B brings in the writer’s own life and says what the writer learned. The others only report what happens in the story."
+      }
+    ]
+  },
+  "e10-6-2": {
+    "lessonId": "e10-6-2",
+    "title": "The Analytical Essay: Thesis, Evidence, Analysis",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The thesis",
+        "t": 24.821
+      },
+      {
+        "title": "Strengthening a thesis",
+        "t": 67.448
+      },
+      {
+        "title": "Point, evidence, analysis",
+        "t": 97.971
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.823
+      },
+      {
+        "title": "Your turn",
+        "t": 158.053
+      },
+      {
+        "title": "Summary",
+        "t": 187.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-2:q",
+        "t": 167.84,
+        "prompt": "Which of these is the strongest thesis for an essay about “The Monkey’s Paw”?",
+        "choices": [
+          "In this essay, I will discuss the monkey’s paw and the three wishes.",
+          "The Whites wish for money, and soon afterwards their son dies.",
+          "“The Monkey’s Paw” is a very scary story that many readers enjoy.",
+          "Jacobs builds dread by warning us early, so every wish feels risky."
+        ],
+        "answer": 3,
+        "working": "Choice D is arguable, specific and analytical: it names the technique and how it affects the reader. A is an announcement, B a plot summary and C a bare opinion."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",

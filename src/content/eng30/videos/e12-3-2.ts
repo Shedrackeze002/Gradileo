@@ -41,7 +41,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Hamlet is the Prince of Denmark. Claudius, his uncle, murdered the old King, and married the widow, Gertrude, who is Hamlet’s mother.' },
+        { say: 'Claudius, Hamlet’s uncle, murdered the old King and married the widow, Gertrude, Hamlet’s mother.' },
         { say: 'Two families stand at the centre. Hamlet’s father is murdered, and Hamlet is asked to avenge him.', show: 'b.0' },
         { say: 'Then Hamlet kills Polonius, the King’s talkative counsellor, and Polonius’s son, Laertes, sets out to avenge his father. Fortinbras, the Prince of Norway, also has a father to avenge. The play sets these three sons side by side.', show: ['b.1', 'b.2'] },
       ],
@@ -138,7 +138,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Let’s sum up. Hamlet, Laertes and Fortinbras are all sons whose fathers have been killed, so the play sets their responses side by side.', show: 'sum.0' },
-        { say: 'The five acts move from the Ghost’s revelation, to the watching court, the play and the prayer, to England, and finally the fencing match.', show: 'sum.1' },
+        { say: 'The five acts run from the Ghost’s revelation to the fatal fencing match.', show: 'sum.1' },
         { say: 'And a motive is the reason behind an action. Support it with evidence, and trust what characters say alone more than what they say in public.', show: 'sum.2' },
       ],
     },

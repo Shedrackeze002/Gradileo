@@ -64,7 +64,7 @@ const video: Explainer = {
         { kind: 'quote', id: 'q', size: 'md', lines: ['That I essentially am not in madness,', 'But mad in craft.'], by: 'Hamlet, Act 3, Scene 4' },
       ],
       lines: [
-        { say: 'The play is full of devices. The play within the play gives Hamlet his proof, and shows the King’s guilt to everyone watching.', show: 'b.0' },
+        { say: 'The play is full of devices. The play within the play gives Hamlet his proof.', show: 'b.0' },
         { say: 'His feigned madness may be a mask that gives him time. When he tells his mother he is mad only in craft, we must decide whether to believe him.', show: ['b.1', 'q.0', 'q.1'] },
         { say: 'And his foils, Laertes and Fortinbras, act at once to avenge their fathers, so every time they act, Hamlet is measured against them. Naming a device is only the first step. Always ask what it does.', show: 'b.2' },
       ],

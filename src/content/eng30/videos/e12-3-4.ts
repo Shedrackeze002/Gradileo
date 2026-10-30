@@ -60,7 +60,7 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Interpretation', md: 'An argument about what a play means. Evidence **supports** a reading or **complicates** it.' },
-        { kind: 'quote', id: 'q', size: 'md', lines: ['That I essentially am not in madness,', 'But mad in craft.'], by: 'Hamlet, Act 3, Scene 4' },
+        { kind: 'quote', id: 'q', size: 'md', lines: ['not in madness,', 'But mad in craft'], by: 'Hamlet, Act 3, Scene 4' },
       ],
       lines: [
         { say: 'An interpretation is an argument about what a play means. Evidence supports a reading when it makes it more likely, and complicates it when it gives a reason to doubt it, without simply disproving it.', show: 'def' },
