@@ -64,8 +64,22 @@ const AdminRequests = lazy(() => import('./features/admin/AdminRequestsPage.tsx'
 const AdminEdits = lazy(() => import('./features/admin/AdminEditsPage.tsx'));
 const AdminVideos = lazy(() => import('./features/admin/AdminVideosPage.tsx'));
 
+/**
+ * A load refused because the sign-in had lapsed: after a laptop wakes, the first loads can go out
+ * before the session is renewed, and the database refuses them ("permission denied", "JWT expired").
+ */
+const signInLapsed = (e: unknown) => /permission denied|jwt|not authenticated/i.test((e as Error)?.message ?? '');
+
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { staleTime: 20_000, retry: 1, refetchOnWindowFocus: true } },
+  defaultOptions: {
+    queries: {
+      staleTime: 20_000,
+      // Once for most failures; up to four times, a few seconds apart, while a lapsed sign-in is renewed.
+      retry: (failures, error) => failures < (signInLapsed(error) ? 4 : 1),
+      retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 8000),
+      refetchOnWindowFocus: true,
+    },
+  },
 });
 
 function HomeRedirect() {

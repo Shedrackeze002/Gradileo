@@ -6,6 +6,7 @@
  * Edge Function running with the service role (see /supabase).
  */
 import { createClient, type SupabaseClient, type RealtimeChannel } from '@supabase/supabase-js';
+import { allRows } from './pages.ts';
 import { freshSeed } from '@engine/rng.ts';
 import { getCourse } from '@engine/curriculum/index.ts';
 import { isQuestionType, type StoredResponse } from '@engine/assemble.ts';
@@ -629,13 +630,14 @@ export class SupabaseApi implements DataApi {
   // ------------------------------------------------------------------ submissions
 
   async listSubmissions(filter: { classId?: string; assignmentId?: string; studentId?: string }) {
-    let q = this.client.from('submissions').select('*');
-    if (filter.classId) q = q.eq('class_id', filter.classId);
-    if (filter.assignmentId) q = q.eq('assignment_id', filter.assignmentId);
-    if (filter.studentId) q = q.eq('student_id', filter.studentId);
-    const { data, error } = await q.order('started_at', { ascending: false }).limit(5000);
-    fail(error);
-    return (data ?? []).map(toSubmission);
+    const page = (from: number, to: number) => {
+      let q = this.client.from('submissions').select('*');
+      if (filter.classId) q = q.eq('class_id', filter.classId);
+      if (filter.assignmentId) q = q.eq('assignment_id', filter.assignmentId);
+      if (filter.studentId) q = q.eq('student_id', filter.studentId);
+      return q.order('started_at', { ascending: false }).order('id').range(from, to);
+    };
+    return (await allRows(page, 5000)).map(toSubmission);
   }
 
   async getSubmission(id: string) {
@@ -694,21 +696,24 @@ export class SupabaseApi implements DataApi {
   async listMastery(filter: { classId?: string; studentId?: string }) {
     let studentIds: string[] | null = null;
     if (filter.classId) studentIds = (await this.listRoster(filter.classId)).map((p) => p.id);
-    let q = this.client.from('skill_mastery').select('*');
-    if (filter.studentId) q = q.eq('student_id', filter.studentId);
-    else if (studentIds) q = q.in('student_id', studentIds.length ? studentIds : ['00000000-0000-0000-0000-000000000000']);
-    const { data, error } = await q.limit(20000);
-    fail(error);
-    return (data ?? []).map(toMastery);
+    const page = (from: number, to: number) => {
+      let q = this.client.from('skill_mastery').select('*');
+      if (filter.studentId) q = q.eq('student_id', filter.studentId);
+      else if (studentIds) q = q.in('student_id', studentIds.length ? studentIds : ['00000000-0000-0000-0000-000000000000']);
+      return q.order('student_id').order('skill_id').range(from, to);
+    };
+    return (await allRows(page, 20000)).map(toMastery);
   }
 
   async listEvents(filter: { classId: string; studentId?: string; sinceDays?: number }) {
-    let q = this.client.from('skill_events').select('*').eq('class_id', filter.classId);
-    if (filter.studentId) q = q.eq('student_id', filter.studentId);
-    if (filter.sinceDays) q = q.gte('at', new Date(Date.now() - filter.sinceDays * 86_400_000).toISOString());
-    const { data, error } = await q.order('at', { ascending: false }).limit(10000);
-    fail(error);
-    return (data ?? []).map(toEvent);
+    const since = filter.sinceDays ? new Date(Date.now() - filter.sinceDays * 86_400_000).toISOString() : null;
+    const page = (from: number, to: number) => {
+      let q = this.client.from('skill_events').select('*').eq('class_id', filter.classId);
+      if (filter.studentId) q = q.eq('student_id', filter.studentId);
+      if (since) q = q.gte('at', since);
+      return q.order('at', { ascending: false }).order('id', { ascending: false }).range(from, to);
+    };
+    return (await allRows(page, 10000)).map(toEvent);
   }
 
   // ------------------------------------------------------------------ notifications

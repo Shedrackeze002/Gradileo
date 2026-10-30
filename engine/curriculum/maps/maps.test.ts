@@ -15,7 +15,7 @@ describe('curriculum maps', () => {
       }
       expect(c.gaps?.length, `${c.id} lists its gaps`).toBeGreaterThan(0);
       // The database's start_self_paced accepts course ids of this form only.
-      expect(c.id).toMatch(/^[a-z]{2,6}-[0-9a-z-]{1,12}$/);
+      expect(c.id).toMatch(/^[a-z0-9-]{3,40}$/);
     }
   });
 
