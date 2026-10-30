@@ -34,6 +34,19 @@ export interface TextEl {
   align?: 'left' | 'center';
 }
 
+/**
+ * A quotation set off from the narration: a passage of prose or verse, one entry per line (each
+ * Markdown), with an optional attribution under it. Lines can be shown one at a time ("q.0").
+ */
+export interface QuoteEl {
+  kind: 'quote';
+  id: string;
+  lines: string[];
+  /** Who wrote or said it and where, shown under the quotation ("Emily Dickinson, 1891"). */
+  by?: string;
+  size?: 'lg' | 'md';
+}
+
 /** Display maths, one line per step. */
 export interface MathEl {
   kind: 'math';
@@ -205,7 +218,7 @@ export interface ScreenEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */

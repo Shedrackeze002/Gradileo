@@ -1,6 +1,6 @@
 /** The elements of an explainer scene, each drawn from its state at the current frame. */
 import type { CSSProperties, ReactNode } from 'react';
-import type { BulletsEl, CalcEl, CalloutEl, MathEl, TableEl, TextEl, TitleEl, TryEl } from '../script.ts';
+import type { BulletsEl, CalcEl, CalloutEl, MathEl, QuoteEl, TableEl, TextEl, TitleEl, TryEl } from '../script.ts';
 import { ownPart, partShown, type ElState } from '../timeline.ts';
 import { rich, tex, TONES } from './tex.ts';
 
@@ -33,6 +33,25 @@ export function TextView({ el, st, center }: { el: TextEl; st?: ElState; center:
   return (
     <Reveal p={st?.p ?? 0}>
       <p className="v-rich" style={{ fontSize: TEXT_SIZE[el.size ?? 'lg'], lineHeight: 1.4, margin: 0, textAlign: (el.align ?? (center ? 'center' : 'left')) as CSSProperties['textAlign'], maxWidth: center ? 1000 : undefined, marginInline: center ? 'auto' : undefined }} {...html(rich(el.md))} />
+    </Reveal>
+  );
+}
+
+const QUOTE_SIZE = { lg: 34, md: 28 } as const;
+
+export function QuoteView({ el, st }: { el: QuoteEl; st?: ElState }) {
+  return (
+    <Reveal p={st?.p ?? 0}>
+      <figure style={{ margin: 0, maxWidth: 1060, textAlign: 'left', borderLeft: `6px solid ${TONES.brand}`, padding: '10px 0 10px 32px' }}>
+        <div style={{ fontSize: QUOTE_SIZE[el.size ?? 'lg'], lineHeight: 1.45, fontStyle: 'italic' }}>
+          {el.lines.map((line, i) => (
+            <div key={i} className="v-rich" style={{ opacity: clamp01(partShown(st, String(i)) * 2) }} {...html(rich(line))} />
+          ))}
+        </div>
+        {el.by && (
+          <figcaption style={{ marginTop: 16, fontSize: 22, opacity: 0.7 }} {...html(rich(`— ${el.by}`))} />
+        )}
+      </figure>
     </Reveal>
   );
 }

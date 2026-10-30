@@ -16284,6 +16284,1030 @@
       }
     ]
   },
+  "e10-3-1": {
+    "lessonId": "e10-3-1",
+    "title": "Reading Shakespeare’s Language",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Thou, thee, thy and thine",
+        "t": 27.715
+      },
+      {
+        "title": "Words that have changed",
+        "t": 65.422
+      },
+      {
+        "title": "Paraphrasing a line",
+        "t": 86.418
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.357
+      },
+      {
+        "title": "Your turn",
+        "t": 152.229
+      },
+      {
+        "title": "Summary",
+        "t": 180.716
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-3-1:q",
+        "t": 162.616,
+        "prompt": "In a play by Shakespeare, a character says “Ere night, hie thee hence.” Which is the best modern version?",
+        "choices": [
+          "Before night, hide away from this place.",
+          "Before night, hurry away from here.",
+          "After nightfall, come here to me soon.",
+          "Even at night, hurry back to me now."
+        ],
+        "answer": 1,
+        "working": "*Ere* means before, *hie* means hurry, *thee* means you and *hence* means from here."
+      }
+    ]
+  },
+  "e10-3-2": {
+    "lessonId": "e10-3-2",
+    "title": "Character and Motive",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The two households",
+        "t": 30.24
+      },
+      {
+        "title": "Motive and evidence",
+        "t": 57.273
+      },
+      {
+        "title": "Foils",
+        "t": 102.181
+      },
+      {
+        "title": "A common mistake",
+        "t": 133.095
+      },
+      {
+        "title": "Your turn",
+        "t": 159.098
+      },
+      {
+        "title": "Summary",
+        "t": 190.131
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-3-2:q",
+        "t": 169.313,
+        "prompt": "In Romeo and Juliet, Tybalt challenges Romeo to a fight. Which is Tybalt’s motive, based on what Tybalt actually knows?",
+        "choices": [
+          "He has learned that Romeo secretly married his cousin Juliet.",
+          "He wants to help Friar Lawrence bring the feud to an end.",
+          "He is jealous because Romeo once loved a woman named Rosaline.",
+          "He is furious that Romeo came to the Capulet feast uninvited."
+        ],
+        "answer": 3,
+        "working": "Tybalt never learns of the marriage. His anger comes from Romeo’s uninvited visit to the Capulets’ feast."
+      }
+    ]
+  },
+  "e10-3-3": {
+    "lessonId": "e10-3-3",
+    "title": "Soliloquy and Dramatic Irony",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Who is listening?",
+        "t": 30.284
+      },
+      {
+        "title": "Foreshadowing",
+        "t": 63.975
+      },
+      {
+        "title": "Dramatic irony",
+        "t": 88.961
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.391
+      },
+      {
+        "title": "Your turn",
+        "t": 144.588
+      },
+      {
+        "title": "Summary",
+        "t": 171.868
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-3-3:q",
+        "t": 155.732,
+        "prompt": "In a play, a father weeps over his daughter’s body, but the audience knows she is only asleep. What is the effect called?",
+        "choices": [
+          "Dramatic irony: the audience knows what he does not",
+          "Verbal irony: he says the opposite of what he means",
+          "Situational irony: an outcome opposite to expectation",
+          "Foreshadowing: a hint of something that comes later"
+        ],
+        "answer": 0,
+        "working": "The audience knows something important that the character does not. That is dramatic irony."
+      }
+    ]
+  },
+  "e10-3-4": {
+    "lessonId": "e10-3-4",
+    "title": "Themes",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The big ideas",
+        "t": 30.741
+      },
+      {
+        "title": "Writing a theme statement",
+        "t": 68.188
+      },
+      {
+        "title": "Quotations as evidence",
+        "t": 116.531
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.703
+      },
+      {
+        "title": "Your turn",
+        "t": 163.559
+      },
+      {
+        "title": "Summary",
+        "t": 191.793
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-3-4:q",
+        "t": 171.518,
+        "prompt": "Which of these is a theme statement about Romeo and Juliet?",
+        "choices": [
+          "Romeo and Juliet marry only a day after they first meet.",
+          "Always stop and think carefully before making any decision.",
+          "Hatred passed down in families destroys the innocent.",
+          "Every feud in every family always ends in tragedy."
+        ],
+        "answer": 2,
+        "working": "Choice C is a general idea the play supports. A is a plot summary, B is an order, and D is an absolute."
+      }
+    ]
+  },
+  "e10-4-1": {
+    "lessonId": "e10-4-1",
+    "title": "Purpose and Audience",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why was it written?",
+        "t": 28.848
+      },
+      {
+        "title": "Satire and audience",
+        "t": 57.942
+      },
+      {
+        "title": "Register",
+        "t": 102.934
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.156
+      },
+      {
+        "title": "Your turn",
+        "t": 155.338
+      },
+      {
+        "title": "Summary",
+        "t": 187.426
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-4-1:q",
+        "t": 169.725,
+        "prompt": "A passage reads: “First, rinse the rice until the water runs clear. Then add two cups of water for every cup of rice.” What is its main purpose?",
+        "choices": [
+          "To instruct: it tells the reader how to do something",
+          "To inform: it gives the reader facts about growing rice",
+          "To persuade: it urges the reader to buy a brand of rice",
+          "To describe: it paints a picture of a field of rice"
+        ],
+        "answer": 0,
+        "working": "The commands *rinse* and *add*, ordered by *first* and *then*, show a purpose of instructing."
+      }
+    ]
+  },
+  "e10-4-2": {
+    "lessonId": "e10-4-2",
+    "title": "Argument and Evidence",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an argument",
+        "t": 29.166
+      },
+      {
+        "title": "Fact and opinion",
+        "t": 64.413
+      },
+      {
+        "title": "Strong evidence",
+        "t": 96.661
+      },
+      {
+        "title": "A common mistake",
+        "t": 134.521
+      },
+      {
+        "title": "Your turn",
+        "t": 158.559
+      },
+      {
+        "title": "Summary",
+        "t": 190.011
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-4-2:q",
+        "t": 170.879,
+        "prompt": "A writer claims that regular exercise improves teenagers’ mood. Which piece of evidence supports the claim best?",
+        "choices": [
+          "Running is the most boring sport that there could ever be.",
+          "Exercise is good for all kinds of things in a person’s life.",
+          "A study of 500 teenagers found exercise halved low moods.",
+          "Everybody knows that people who exercise are much happier."
+        ],
+        "answer": 2,
+        "working": "Statement C is relevant, specific and can be checked. A is an opinion, B is too vague, and D is not evidence."
+      }
+    ]
+  },
+  "e10-4-3": {
+    "lessonId": "e10-4-3",
+    "title": "Ethos, Pathos and Logos",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The three appeals",
+        "t": 33.343
+      },
+      {
+        "title": "Rhetorical devices",
+        "t": 80.566
+      },
+      {
+        "title": "A common mistake",
+        "t": 116.951
+      },
+      {
+        "title": "Your turn",
+        "t": 142.084
+      },
+      {
+        "title": "Summary",
+        "t": 175.624
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-4-3:q",
+        "t": 156.323,
+        "prompt": "A student speaks to the town council: “I have volunteered at the shelter every weekend for six years, so I know its work first-hand.” Which appeal is this?",
+        "choices": [
+          "Pathos, because it makes the reader feel pity",
+          "Ethos, because it builds the speaker’s credibility",
+          "Logos, because it gives facts and numbers",
+          "Antithesis, because it sets opposites side by side"
+        ],
+        "answer": 1,
+        "working": "The speaker asks the audience to trust them because of their experience. That is ethos."
+      }
+    ]
+  },
+  "e10-4-4": {
+    "lessonId": "e10-4-4",
+    "title": "Bias and Reliable Sources",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Logical fallacies",
+        "t": 27.249
+      },
+      {
+        "title": "Bias and loaded language",
+        "t": 58.565
+      },
+      {
+        "title": "Reliable sources",
+        "t": 93.035
+      },
+      {
+        "title": "A common mistake",
+        "t": 115.721
+      },
+      {
+        "title": "Your turn",
+        "t": 139.319
+      },
+      {
+        "title": "Summary",
+        "t": 170.503
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-4-4:q",
+        "t": 150.024,
+        "prompt": "You want to know how many hours of sleep teenagers need. Which source is the most reliable?",
+        "choices": [
+          "A blog post by a company that sells mattresses to teenagers",
+          "A magazine article about sleep that was written fifty years ago",
+          "A video about sleep by a very popular online personality",
+          "A recent report by children’s doctors reviewing many studies"
+        ],
+        "answer": 3,
+        "working": "The doctors are experts, the report rests on many studies, and it is recent. The others gain from selling, are out of date, or lack evidence."
+      }
+    ]
+  },
+  "e10-5-1": {
+    "lessonId": "e10-5-1",
+    "title": "Reading an Image",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The focal point",
+        "t": 32.868
+      },
+      {
+        "title": "Composition",
+        "t": 67.763
+      },
+      {
+        "title": "The effect of each choice",
+        "t": 107.621
+      },
+      {
+        "title": "A common mistake",
+        "t": 142.193
+      },
+      {
+        "title": "Your turn",
+        "t": 162.108
+      },
+      {
+        "title": "Summary",
+        "t": 192.021
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-5-1:q",
+        "t": 175.467,
+        "prompt": "A photograph shows one tiny hiker crossing a vast, empty desert. What effect does the huge empty space most likely create?",
+        "choices": [
+          "The hiker seems powerful and very important",
+          "The scene feels cheerful, busy and crowded",
+          "The hiker seems small and alone in nature",
+          "The desert feels warm, safe and comforting"
+        ],
+        "answer": 2,
+        "working": "A small figure in a vast space suggests loneliness and smallness against nature."
+      }
+    ]
+  },
+  "e10-5-2": {
+    "lessonId": "e10-5-2",
+    "title": "Film Techniques",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Shots",
+        "t": 28.137
+      },
+      {
+        "title": "Angles and sound",
+        "t": 64.422
+      },
+      {
+        "title": "Editing and lighting",
+        "t": 100.419
+      },
+      {
+        "title": "A common mistake",
+        "t": 135.564
+      },
+      {
+        "title": "Your turn",
+        "t": 150.496
+      },
+      {
+        "title": "Summary",
+        "t": 180.536
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-5-2:q",
+        "t": 161.899,
+        "prompt": "In a film, the villain is shown from a low angle as he steps out of the shadows. What effect does this angle have?",
+        "choices": [
+          "He seems powerful and threatening",
+          "He seems small, weak and afraid",
+          "He seems calm, neutral and natural",
+          "He seems far from the audience"
+        ],
+        "answer": 0,
+        "working": "A low angle looks up at the subject, which makes it seem large, powerful or threatening."
+      }
+    ]
+  },
+  "e10-5-3": {
+    "lessonId": "e10-5-3",
+    "title": "Advertising",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Persuasive techniques",
+        "t": 31.915
+      },
+      {
+        "title": "The target audience",
+        "t": 64.358
+      },
+      {
+        "title": "Reading critically",
+        "t": 95.255
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.207
+      },
+      {
+        "title": "Your turn",
+        "t": 142.16
+      },
+      {
+        "title": "Summary",
+        "t": 175.924
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-5-3:q",
+        "t": 155.896,
+        "prompt": "An advertisement says: “Over a million teenagers have already switched to Zing Chat. Don’t be the last one left out!” Which technique does it use?",
+        "choices": [
+          "Snob appeal: only special people can own it",
+          "Bandwagon: everyone else is already doing it",
+          "Testimonial: a famous expert recommends it",
+          "Plain folks: the seller is an ordinary neighbour"
+        ],
+        "answer": 1,
+        "working": "It says everyone else is already using the app, so you should too. Popularity is not evidence of quality."
+      }
+    ]
+  },
+  "e10-6-1": {
+    "lessonId": "e10-6-1",
+    "title": "The Personal Response",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Response, not summary",
+        "t": 28.362
+      },
+      {
+        "title": "Connections that matter",
+        "t": 69.519
+      },
+      {
+        "title": "Building a connection",
+        "t": 87.714
+      },
+      {
+        "title": "The controlling idea",
+        "t": 122.164
+      },
+      {
+        "title": "A common mistake",
+        "t": 151.316
+      },
+      {
+        "title": "Your turn",
+        "t": 168.578
+      },
+      {
+        "title": "Summary",
+        "t": 199.246
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-1:q",
+        "t": 179.588,
+        "prompt": "Which sentence is a personal response to “The Gift of the Magi”, rather than a summary?",
+        "choices": [
+          "Della sells her long hair so that she can buy Jim a chain.",
+          "Della’s sacrifice reminded me of my cousin’s bike, and I saw that real gifts cost something.",
+          "I think the story is about Della selling her hair for Jim.",
+          "The story takes place at Christmas and has a husband and wife."
+        ],
+        "answer": 1,
+        "working": "Only choice B brings in the writer’s own life and says what the writer learned. The others only report what happens in the story."
+      }
+    ]
+  },
+  "e10-6-2": {
+    "lessonId": "e10-6-2",
+    "title": "The Analytical Essay: Thesis, Evidence, Analysis",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The thesis",
+        "t": 24.821
+      },
+      {
+        "title": "Strengthening a thesis",
+        "t": 67.448
+      },
+      {
+        "title": "Point, evidence, analysis",
+        "t": 97.971
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.823
+      },
+      {
+        "title": "Your turn",
+        "t": 158.053
+      },
+      {
+        "title": "Summary",
+        "t": 187.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-2:q",
+        "t": 167.84,
+        "prompt": "Which of these is the strongest thesis for an essay about “The Monkey’s Paw”?",
+        "choices": [
+          "In this essay, I will discuss the monkey’s paw and the three wishes.",
+          "The Whites wish for money, and soon afterwards their son dies.",
+          "“The Monkey’s Paw” is a very scary story that many readers enjoy.",
+          "Jacobs builds dread by warning us early, so every wish feels risky."
+        ],
+        "answer": 3,
+        "working": "Choice D is arguable, specific and analytical: it names the technique and how it affects the reader. A is an announcement, B a plot summary and C a bare opinion."
+      }
+    ]
+  },
+  "e10-6-3": {
+    "lessonId": "e10-6-3",
+    "title": "The Persuasive Essay",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Taking a position",
+        "t": 20.765
+      },
+      {
+        "title": "Reasons and evidence",
+        "t": 57.87
+      },
+      {
+        "title": "Counterargument and rebuttal",
+        "t": 88.032
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.607
+      },
+      {
+        "title": "Your turn",
+        "t": 149.552
+      },
+      {
+        "title": "Summary",
+        "t": 184.688
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-3:q",
+        "t": 166.154,
+        "prompt": "Objection to a library staying open late: “Paying staff to stay late would cost too much.” Which reply is the strongest rebuttal?",
+        "choices": [
+          "Staff time costs money, but trained student volunteers could help, so one paid worker would do.",
+          "That is simply not true, and anyone who says so has never needed to study.",
+          "That is a fair point about cost, so perhaps the library should close early after all.",
+          "People who worry about cost obviously do not care about students, so ignore them."
+        ],
+        "answer": 0,
+        "working": "Choice A concedes what is fair, then answers with a practical solution. B denies, C gives up and D attacks people."
+      }
+    ]
+  },
+  "e10-6-4": {
+    "lessonId": "e10-6-4",
+    "title": "Narrative Writing",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Show, don’t tell",
+        "t": 25.89
+      },
+      {
+        "title": "Details, openings and pacing",
+        "t": 60.635
+      },
+      {
+        "title": "Writing dialogue",
+        "t": 94.845
+      },
+      {
+        "title": "A common mistake",
+        "t": 133.699
+      },
+      {
+        "title": "Your turn",
+        "t": 152.294
+      },
+      {
+        "title": "Summary",
+        "t": 186.037
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-4:q",
+        "t": 165.424,
+        "prompt": "Tomás says two separate sentences: I’m not going. It’s far too cold. Which version is punctuated correctly?",
+        "choices": [
+          "“I’m not going,” Tomás said. “it’s far too cold.”",
+          "“I’m not going,” Tomás said, “It’s far too cold.”",
+          "“I’m not going,” Tomás said. “It’s far too cold.”",
+          "“I’m not going.” Tomás said, “it’s far too cold.”"
+        ],
+        "answer": 2,
+        "working": "The tag ends the first sentence with a period, so the second spoken sentence starts with a capital letter."
+      }
+    ]
+  },
+  "e10-6-5": {
+    "lessonId": "e10-6-5",
+    "title": "Revising and Editing",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Revising and transitions",
+        "t": 23.609
+      },
+      {
+        "title": "Cutting wordiness",
+        "t": 79.571
+      },
+      {
+        "title": "Unity and order",
+        "t": 120.9
+      },
+      {
+        "title": "A common mistake",
+        "t": 145.929
+      },
+      {
+        "title": "Your turn",
+        "t": 159.764
+      },
+      {
+        "title": "Summary",
+        "t": 192.147
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-5:q",
+        "t": 172.535,
+        "prompt": "Which transition best fills the gap? “The bakery ran out of bread by nine. ____ many customers left empty-handed.”",
+        "choices": [
+          "As a result,",
+          "However,",
+          "For example,",
+          "On the other hand,"
+        ],
+        "answer": 0,
+        "working": "The empty-handed customers are a result of the bread running out, so a cause and effect transition fits."
+      }
+    ]
+  },
+  "e10-6-6": {
+    "lessonId": "e10-6-6",
+    "title": "Writing Under a Time Limit",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the prompt",
+        "t": 28.055
+      },
+      {
+        "title": "Planning and dividing time",
+        "t": 70.817
+      },
+      {
+        "title": "Writing and checking",
+        "t": 108.074
+      },
+      {
+        "title": "A common mistake",
+        "t": 141.804
+      },
+      {
+        "title": "Your turn",
+        "t": 158.348
+      },
+      {
+        "title": "Summary",
+        "t": 188.095
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-6:q",
+        "t": 170.133,
+        "prompt": "A prompt says: “Evaluate how effectively Saki builds suspense in ‘The Open Window’.” What must the essay do?",
+        "choices": [
+          "List the techniques Saki uses and stay neutral about them",
+          "Retell the events of the story in the order they happen",
+          "Describe the setting and characters in as much detail as possible",
+          "Judge how well the suspense works and support the judgement"
+        ],
+        "answer": 3,
+        "working": "Evaluate asks for a judgement, supported with evidence. Listing, retelling and describing do not judge."
+      }
+    ]
+  },
+  "e10-7-1": {
+    "lessonId": "e10-7-1",
+    "title": "Sentences: Fragments, Run-ons and Comma Splices",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Clauses and fragments",
+        "t": 21.951
+      },
+      {
+        "title": "Run-ons and comma splices",
+        "t": 57.768
+      },
+      {
+        "title": "Fixing a comma splice",
+        "t": 95.405
+      },
+      {
+        "title": "Four kinds of sentence",
+        "t": 121.695
+      },
+      {
+        "title": "A common mistake",
+        "t": 145.156
+      },
+      {
+        "title": "Your turn",
+        "t": 163.383
+      },
+      {
+        "title": "Summary",
+        "t": 190.954
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-7-1:q",
+        "t": 173.814,
+        "prompt": "Which of these four sentences is correct, with no run-on, comma splice or misplaced comma?",
+        "choices": [
+          "The museum was closed, so the children went to the park.",
+          "The museum was closed, the children went to the park.",
+          "The museum was closed the children went to the park.",
+          "The museum was closed, so, the children went to the park."
+        ],
+        "answer": 0,
+        "working": "Choice A joins the clauses with a comma before so. B is a comma splice, C a run-on, and D has an extra comma after so."
+      }
+    ]
+  },
+  "e10-7-2": {
+    "lessonId": "e10-7-2",
+    "title": "Punctuation",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Commas",
+        "t": 21.961
+      },
+      {
+        "title": "Apostrophes",
+        "t": 66.103
+      },
+      {
+        "title": "Semicolons and colons",
+        "t": 100.879
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.458
+      },
+      {
+        "title": "Your turn",
+        "t": 141.342
+      },
+      {
+        "title": "Summary",
+        "t": 170.162
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-7-2:q",
+        "t": 150.486,
+        "prompt": "Which phrase is correct for the toys that belong to several dogs?",
+        "choices": [
+          "the dog’s toys",
+          "the dogs toy’s",
+          "the dogs’ toys",
+          "the dogs’s toys"
+        ],
+        "answer": 2,
+        "working": "The owner is dogs, a plural ending in s, so add only an apostrophe after it."
+      }
+    ]
+  },
+  "e10-7-3": {
+    "lessonId": "e10-7-3",
+    "title": "Agreement",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subject–verb agreement",
+        "t": 27.754
+      },
+      {
+        "title": "Pronouns",
+        "t": 69.178
+      },
+      {
+        "title": "Consistent tense",
+        "t": 101.511
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.44
+      },
+      {
+        "title": "Your turn",
+        "t": 147.234
+      },
+      {
+        "title": "Summary",
+        "t": 173.699
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-7-3:q",
+        "t": 155.664,
+        "prompt": "Which of these four sentences has a verb that agrees with its subject?",
+        "choices": [
+          "One of the windows are cracked.",
+          "One of the windows is cracked.",
+          "One of the window are cracked.",
+          "One of the windows were cracked."
+        ],
+        "answer": 1,
+        "working": "The subject is one, which is singular, so the verb is is."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",

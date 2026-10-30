@@ -56,7 +56,7 @@ function aiConfig(): MiniMaxConfig | null {
 
 /** What the tutor says on each slide: kept from the last recording where possible, else written now. */
 async function writeBeats(lessonId: string, ai: MiniMaxConfig | null, previous: TutorVoice | null): Promise<Map<string, { beats: string[]; ai: boolean }>> {
-  const { title, unit, slides } = lessonTutorSlides(lessonId);
+  const { title, unit, subject, slides } = lessonTutorSlides(lessonId);
   const out = new Map<string, { beats: string[]; ai: boolean }>();
   const missing: TutorSlide[] = [];
   for (const s of slides) {
@@ -75,7 +75,7 @@ async function writeBeats(lessonId: string, ai: MiniMaxConfig | null, previous: 
   const next = async (): Promise<void> => {
     const run = queue.shift();
     if (!run) return;
-    const chunk = { lessonTitle: title, unit, slides: run };
+    const chunk = { lessonTitle: title, unit, subject, slides: run };
     let script = offlineScript(chunk);
     let written = false;
     for (let attempt = 0; ai && attempt < 5 && !written; attempt++) {

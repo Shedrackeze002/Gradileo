@@ -51,6 +51,14 @@ describe('speechText', () => {
     expect(speechText("Swap Ava and Kwame; Kwame's job changes.")).toBe("Swap Ava and Kwahmay; Kwahmay's job changes.");
     expect(speechText('Jun jumps farther than Junaid in June.')).toBe('Joon jumps farther than Junaid in June.');
     expect(speechText('Amedeo Avogadro was an Italian scientist.')).toBe('Ama-day-o Avogadro was an Italian scientist.');
+    expect(speechText("Tybalt fights; Wei reads Teasdale, Montresor's story and a Petrarchan sonnet.")).toBe("Tibbalt fights; Way reads Teez-dale, Mon-treh-zor's story and a Pet-trark-an sonnet.");
+    expect(speechText('“Désirée’s Baby”; the volta, and Volta.')).toBe('“Dezzi-ray’s Baby”; the vole-ta, and Vole-ta.');
+    expect(speechText('Hamartia: Birnam Wood comes to Dunsinane, and his hamartia shows.')).toBe('Ha-mar-tee-a: Birnam Wood comes to Dun-sin-ain, and his ha-mar-tee-a shows.');
+    expect(speechText('Countee Cullen, not the county.')).toBe('Countay Cullen, not the county.');
+    expect(speechText('Diegetic sound and non-diegetic music.')).toBe('Dye-a-jettic sound and non-dye-a-jettic music.');
+    expect(speechText("Laertes and Fortinbras; his quietus. Toulmin's model; Horatian satire.")).toBe("Lay-air-teez and Fortin-brass; his kwy-ee-tus. Tool-min's model; Horayshan satire.");
+    expect(speechText('Tomás said, “It’s far too cold.”')).toBe('Tomahss said, “It’s far too cold.”');
+    expect(speechText('Synecdoche and litotes; Litotes and synecdoche.')).toBe('Sin-eck-duh-kee and lie-toe-teez; Lie-toe-teez and sin-eck-duh-kee.');
     expect(speechText('Octa eight, nona nine, and deca ten. Sodium carbonate decahydrate.')).toBe('Octa eight, nona nine, and decka ten. Sodium carbonate deckahydrate.');
     expect(speechText('Dye-chlorine heptaoxide. The pipetted acid.')).toBe('Dye-chlorine hepta-oxide. The pih-petted acid.');
     expect(speechText('Electronegativity rises; their electronegativities differ. Svante Arrhenius.')).toBe('Electro-negativity rises; their electro-negativities differ. Svahntay Arrhenius.');

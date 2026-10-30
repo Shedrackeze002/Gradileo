@@ -34,7 +34,14 @@ export function speechText(say: string): string {
   // "neg" ("electrong-gativity"), the chemist Svante Arrhenius is "Svant", and Le Chatelier is
   // "luh CHATE-lee-er". Organic names: "ethene" comes out "EE-theen" (heard as ethyne), "propene"
   // "pruh-PEEN", "propyne" "PRAH-pin", "ketone" "KET-own", "cycloalkane" without its "al", and
-  // "methoxymethane" as "METH-ux-ime-thane".
+  // "methoxymethane" as "METH-ux-ime-thane". Names in the English videos: "Tybalt" comes out "TIE-balt",
+  // "Wei" as "Why", "Teasdale" as "Tea-stale", "Montresor" as "Mon-tresser", "Petrarchan" with a
+  // "ch" as in "church", "Désirée" as "Dess-er-ee", a sonnet's "volta" as "volt", "Dunsinane" as
+  // "Dung-sening", "hamartia" as "ha-MAR-sha", the poet Countee Cullen as "County" and film's
+  // "diegetic" sound without its first syllable ("dee-JET-ic"). In Hamlet, "Laertes" comes out "Lerts",
+  // "Fortinbras" "Fortenborough's" and "quietus" "quietest"; Toulmin is "Tallman" and "Horatian"
+  // satire "Hoo-ration". "Tomás" loses its final "s" ("Tamar"). Of the rhetorical figures,
+  // "synecdoche" comes out "scenic-dodge" and "litotes" "LIT-oats".
   return words
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
@@ -51,6 +58,25 @@ export function speechText(say: string): string {
     .replace(/\bKwame\b/g, 'Kwahmay')
     .replace(/\bJun\b/g, 'Joon')
     .replace(/\bAmedeo\b/g, 'Ama-day-o')
+    .replace(/\bTybalt\b/g, 'Tibbalt')
+    .replace(/\bWei\b/g, 'Way')
+    .replace(/\bTeasdale\b/g, 'Teez-dale')
+    .replace(/\bMontresor\b/g, 'Mon-treh-zor')
+    .replace(/\bPetrarchan\b/g, 'Pet-trark-an')
+    .replace(/Désirée/g, 'Dezzi-ray')
+    .replace(/\b([Vv])olta(s?)\b/g, '$1ole-ta$2')
+    .replace(/\bDunsinane\b/g, 'Dun-sin-ain')
+    .replace(/\b([Hh])amartia\b/g, '$1a-mar-tee-a')
+    .replace(/\bCountee\b/g, 'Countay')
+    .replace(/\b([Dd])iegetic\b/g, '$1ye-a-jettic')
+    .replace(/\bLaertes\b/g, 'Lay-air-teez')
+    .replace(/\bFortinbras\b/g, 'Fortin-brass')
+    .replace(/\bquietus\b/g, 'kwy-ee-tus')
+    .replace(/\bToulmin\b/g, 'Tool-min')
+    .replace(/\bHoratian\b/g, 'Horayshan')
+    .replace(/\bTomás\b/g, 'Tomahss')
+    .replace(/\b([Ss])ynecdoche\b/g, '$1in-eck-duh-kee')
+    .replace(/\b([Ll])itotes\b/g, '$1ie-toe-teez')
     .replace(/\b([Dd])eca(?=\b|hydrate)/g, '$1ecka')
     .replace(/\b([Hh])eptaoxide/g, '$1epta-oxide')
     .replace(/\b([Pp])ipetted\b/g, '$1ih-petted')

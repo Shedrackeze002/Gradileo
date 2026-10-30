@@ -137,6 +137,11 @@ See `src/video/script.ts` for every element and option. In short:
   each standard deviation, `d.axis`, `d.curve` and `d.mean`, and shaded regions between numbers of
   standard deviations, each a part by its id, with a percent label that `labelAt` can move).
 
+- `quote` sets a passage of prose or verse off from the narration, for the English videos: one
+  entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)
+  under it; lines can be shown one at a time (`q.0`). Quote only what the lesson already quotes,
+  word for word: those quotations were checked against their public-domain sources.
+
 - Explain everything as simply as possible, at the calm pace above, and give each video the time
   that takes. There is no time limit: never trim an explanation to save time, even if a video
   runs ten or fifteen minutes. A video runs at least two minutes (the build warns under that);
