@@ -16284,6 +16284,465 @@
       }
     ]
   },
+  "e10-1-1": {
+    "lessonId": "e10-1-1",
+    "title": "Plot and Conflict",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The five stages of a plot",
+        "t": 23.676
+      },
+      {
+        "title": "Finding the climax",
+        "t": 66.457
+      },
+      {
+        "title": "Conflict",
+        "t": 105.333
+      },
+      {
+        "title": "A common mistake",
+        "t": 144.637
+      },
+      {
+        "title": "Your turn",
+        "t": 157.93
+      },
+      {
+        "title": "Summary",
+        "t": 181.139
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-1-1:q",
+        "t": 165.417,
+        "prompt": "In a short story, which of these describes the climax?",
+        "choices": [
+          "The most exciting or frightening event in the story",
+          "The moment that decides the outcome of the main conflict",
+          "The first event that introduces the characters and setting",
+          "The final scene, where the loose ends are tied up"
+        ],
+        "answer": 1,
+        "working": "The climax is the turning point: the moment the main conflict comes to a head and the outcome is decided. Choice D describes the resolution."
+      }
+    ]
+  },
+  "e10-1-2": {
+    "lessonId": "e10-1-2",
+    "title": "Character",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Direct and indirect",
+        "t": 28.583
+      },
+      {
+        "title": "Kinds of character",
+        "t": 68.913
+      },
+      {
+        "title": "Static or dynamic?",
+        "t": 98.219
+      },
+      {
+        "title": "A common mistake",
+        "t": 122.871
+      },
+      {
+        "title": "Your turn",
+        "t": 145.378
+      },
+      {
+        "title": "Summary",
+        "t": 175.014
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-1-2:q2",
+        "t": 156.692,
+        "prompt": "A story is about a character named Ana. Which sentence is an example of indirect characterization?",
+        "choices": [
+          "The narrator tells us that Ana is a generous person.",
+          "Another character says that Ana is a generous person.",
+          "The story begins by calling Ana a generous person.",
+          "Ana gave the last of the bread to a stranger."
+        ],
+        "answer": 3,
+        "working": "Choices A, B and C all state the trait outright. In Choice D the reader works out the trait from what Ana does."
+      }
+    ]
+  },
+  "e10-1-3": {
+    "lessonId": "e10-1-3",
+    "title": "Setting and Mood",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Setting and mood",
+        "t": 25.008
+      },
+      {
+        "title": "How writers build mood",
+        "t": 55.36
+      },
+      {
+        "title": "Which word creates the mood?",
+        "t": 90.546
+      },
+      {
+        "title": "A common mistake",
+        "t": 115.817
+      },
+      {
+        "title": "Your turn",
+        "t": 138.728
+      },
+      {
+        "title": "Summary",
+        "t": 169.275
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-1-3:q2",
+        "t": 152.736,
+        "prompt": "A narrator describes a cruel plan in a calm, satisfied voice, and the reader feels chilled. What word names the narrator’s calm attitude?",
+        "choices": [
+          "Tone",
+          "Mood",
+          "Setting",
+          "Theme"
+        ],
+        "answer": 0,
+        "working": "The narrator’s attitude is the tone. The chill the reader feels is the mood."
+      }
+    ]
+  },
+  "e10-1-4": {
+    "lessonId": "e10-1-4",
+    "title": "Point of View",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "First, second and third person",
+        "t": 23.64
+      },
+      {
+        "title": "Three kinds of third person",
+        "t": 58.285
+      },
+      {
+        "title": "What a narrator can know",
+        "t": 91.45
+      },
+      {
+        "title": "A common mistake",
+        "t": 121.614
+      },
+      {
+        "title": "Your turn",
+        "t": 147.566
+      },
+      {
+        "title": "Summary",
+        "t": 175.367
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-1-4:q2",
+        "t": 158.485,
+        "prompt": "A story is told in third person limited from Amara’s point of view. Which sentence could not appear in it?",
+        "choices": [
+          "Amara slid the letter across the kitchen table to Wei, in silence.",
+          "Amara had practised the words all morning, but none would come.",
+          "Wei knew the handwriting at once and felt a sudden drop inside.",
+          "Amara felt a warm flush rise as the whole kitchen went quiet."
+        ],
+        "answer": 2,
+        "working": "A limited narrator can enter only Amara’s mind, so Wei’s inner feelings cannot appear."
+      }
+    ]
+  },
+  "e10-1-5": {
+    "lessonId": "e10-1-5",
+    "title": "Theme, Symbol and Irony",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Theme",
+        "t": 31.652
+      },
+      {
+        "title": "Symbol",
+        "t": 65.331
+      },
+      {
+        "title": "Three kinds of irony",
+        "t": 95.505
+      },
+      {
+        "title": "A common mistake",
+        "t": 134.675
+      },
+      {
+        "title": "Your turn",
+        "t": 153.911
+      },
+      {
+        "title": "Summary",
+        "t": 184.335
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-1-5:q2",
+        "t": 161.349,
+        "prompt": "Which of these is an example of situational irony?",
+        "choices": [
+          "It rains on the day of the school picnic, so it is cancelled.",
+          "A fire station burns down while the crew is out at a party.",
+          "A student says “Lovely weather!” while standing in a storm.",
+          "The reader knows a secret that a character has not learned."
+        ],
+        "answer": 1,
+        "working": "Situational irony reverses what was expected: a fire station is expected to be safe from fire. Choice C is verbal irony and Choice D is dramatic irony."
+      }
+    ]
+  },
+  "e10-2-1": {
+    "lessonId": "e10-2-1",
+    "title": "Imagery and Figurative Language",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Imagery",
+        "t": 26.675
+      },
+      {
+        "title": "Similes and metaphors",
+        "t": 58.284
+      },
+      {
+        "title": "What a comparison suggests",
+        "t": 91.441
+      },
+      {
+        "title": "A common mistake",
+        "t": 120.44
+      },
+      {
+        "title": "Your turn",
+        "t": 137.077
+      },
+      {
+        "title": "Summary",
+        "t": 162.464
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-2-1:q2",
+        "t": 143.944,
+        "prompt": "Which of these sentences contains a metaphor?",
+        "choices": [
+          "The lake lay still, like a sheet of clear glass.",
+          "Her hands were as cold as the winter ice itself.",
+          "Her hands were ice in the cold winter air.",
+          "I have told you a million times to stop it."
+        ],
+        "answer": 2,
+        "working": "A metaphor says one thing is another. Choices A and B are similes, and Choice D is hyperbole."
+      }
+    ]
+  },
+  "e10-2-2": {
+    "lessonId": "e10-2-2",
+    "title": "Sound and Rhythm",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sound devices",
+        "t": 25.904
+      },
+      {
+        "title": "Rhyme scheme",
+        "t": 55.725
+      },
+      {
+        "title": "Stress and metre",
+        "t": 89.725
+      },
+      {
+        "title": "A common mistake",
+        "t": 125.625
+      },
+      {
+        "title": "Your turn",
+        "t": 145.345
+      },
+      {
+        "title": "Summary",
+        "t": 173.345
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-2-2:q2",
+        "t": 156.166,
+        "prompt": "The four lines of a stanza end with these words: bright, night, sea, free. What is the rhyme scheme?",
+        "choices": [
+          "AABB",
+          "ABAB",
+          "ABBA",
+          "AAAB"
+        ],
+        "answer": 0,
+        "working": "Bright and night rhyme, so they are both A. Sea and free rhyme, so they are both B. The scheme is AABB."
+      }
+    ]
+  },
+  "e10-2-3": {
+    "lessonId": "e10-2-3",
+    "title": "Form",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stanzas",
+        "t": 23.597
+      },
+      {
+        "title": "The sonnet",
+        "t": 54.144
+      },
+      {
+        "title": "Other forms",
+        "t": 90.131
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.473
+      },
+      {
+        "title": "Your turn",
+        "t": 138.119
+      },
+      {
+        "title": "Summary",
+        "t": 165.701
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-2-3:q2",
+        "t": 148.445,
+        "prompt": "A poem has fourteen lines, made up of three quatrains and a couplet. Which kind of poem is it?",
+        "choices": [
+          "A Petrarchan (Italian) sonnet",
+          "A Shakespearean (English) sonnet",
+          "A ballad, a poem that tells a story",
+          "A limerick, a short comic poem"
+        ],
+        "answer": 1,
+        "working": "Three quatrains and a couplet make fourteen lines: a Shakespearean sonnet. A Petrarchan sonnet is an octave and a sestet."
+      }
+    ]
+  },
+  "e10-2-4": {
+    "lessonId": "e10-2-4",
+    "title": "Reading a Poem Closely",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The speaker",
+        "t": 37.338
+      },
+      {
+        "title": "Tone and shifts",
+        "t": 62.185
+      },
+      {
+        "title": "Close reading steps",
+        "t": 101.265
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.131
+      },
+      {
+        "title": "Your turn",
+        "t": 151.539
+      },
+      {
+        "title": "Summary",
+        "t": 183.061
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-2-4:q2",
+        "t": 163.89,
+        "prompt": "A poem’s first half is despairing. Then a line begins with “Yet” and the speaker turns hopeful. What is this change called?",
+        "choices": [
+          "A change in rhyme scheme",
+          "A new kind of simile",
+          "A break between stanzas",
+          "A shift in the tone"
+        ],
+        "answer": 3,
+        "working": "A shift is a change in tone or direction, often marked by a word such as but, yet or then."
+      }
+    ]
+  },
   "e10-3-1": {
     "lessonId": "e10-3-1",
     "title": "Reading Shakespeare’s Language",
@@ -17305,6 +17764,104 @@
         ],
         "answer": 1,
         "working": "The subject is one, which is singular, so the verb is is."
+      }
+    ]
+  },
+  "e10-7-4": {
+    "lessonId": "e10-7-4",
+    "title": "Modifiers and Parallel Structure",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Misplaced and dangling modifiers",
+        "t": 22.297
+      },
+      {
+        "title": "Parallel structure",
+        "t": 73.96
+      },
+      {
+        "title": "A common mistake",
+        "t": 111.846
+      },
+      {
+        "title": "Your turn",
+        "t": 136.181
+      },
+      {
+        "title": "Summary",
+        "t": 167.126
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-7-4:q",
+        "t": 148.009,
+        "prompt": "Which of these four sentences has no dangling modifier?",
+        "choices": [
+          "Running for the train, the bag of books fell open on the platform.",
+          "Running for the train, the books were spilled across the platform.",
+          "Running for the train, the crowded platform was hard to get through.",
+          "Running for the train, Mei spilled the books across the platform."
+        ],
+        "answer": 3,
+        "working": "The opening phrase must describe the subject after the comma. Only Mei could be running for the train."
+      }
+    ]
+  },
+  "e10-7-5": {
+    "lessonId": "e10-7-5",
+    "title": "Word Choice, Tone and Vocabulary in Context",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Commonly confused words",
+        "t": 23.751
+      },
+      {
+        "title": "Denotation and connotation",
+        "t": 57.916
+      },
+      {
+        "title": "Context clues and word parts",
+        "t": 93.606
+      },
+      {
+        "title": "A common mistake",
+        "t": 131.59
+      },
+      {
+        "title": "Your turn",
+        "t": 150.893
+      },
+      {
+        "title": "Summary",
+        "t": 177.751
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-7-5:q",
+        "t": 161.904,
+        "prompt": "After the marathon, Ruth was so famished that she ate three plates of rice. What does “famished” mean?",
+        "choices": [
+          "Very tired",
+          "Very nervous",
+          "Very hungry",
+          "Very proud"
+        ],
+        "answer": 2,
+        "working": "Eating three plates of rice is a clue from the situation: famished means very hungry."
       }
     ]
   },
