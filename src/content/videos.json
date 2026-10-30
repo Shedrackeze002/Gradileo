@@ -19732,21 +19732,21 @@
       },
       {
         "title": "A common mistake",
-        "t": 121.659
+        "t": 121.535
       },
       {
         "title": "Your turn",
-        "t": 147.88
+        "t": 147.756
       },
       {
         "title": "Summary",
-        "t": 175.118
+        "t": 175.044
       }
     ],
     "cues": [
       {
         "id": "e12-2-2:q2",
-        "t": 156.783,
+        "t": 156.659,
         "prompt": "Which sentence best compares how form works as witness in Owen and Whitman?",
         "choices": [
           "Both poets use perfect rhyme, so each poem ends in settled comfort.",
@@ -20658,6 +20658,320 @@
         ],
         "answer": 2,
         "working": "C builds the context first and ends on the key fact. A, B and D all end on a minor detail."
+      }
+    ]
+  },
+  "e12-6-6": {
+    "lessonId": "e12-6-6",
+    "title": "The Final Examination Essay",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the prompt",
+        "t": 17.404
+      },
+      {
+        "title": "The controlling idea",
+        "t": 59.165
+      },
+      {
+        "title": "Managing the time",
+        "t": 86.583
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.962
+      },
+      {
+        "title": "Your turn",
+        "t": 154.588
+      },
+      {
+        "title": "Summary",
+        "t": 191.186
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-6:q2",
+        "t": 169.976,
+        "prompt": "An exam gives 140 minutes, with 10 to plan and 10 to check. How long for a 25% task and a 75% task?",
+        "choices": [
+          "30 and 90 minutes, from 25% and 75% of the 120 left.",
+          "35 and 105 minutes, from 25% and 75% of all 140.",
+          "60 minutes each, since both tasks deserve equal time.",
+          "25 and 75 minutes, since the percentages are minutes."
+        ],
+        "answer": 0,
+        "working": "After 20 minutes for planning and checking, 120 minutes are left. Twenty-five percent of 120 is 30, and seventy-five percent is 90."
+      }
+    ]
+  },
+  "e12-7-1": {
+    "lessonId": "e12-7-1",
+    "title": "Sentence Structure and Rhetorical Effect",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Loose and periodic sentences",
+        "t": 26.906
+      },
+      {
+        "title": "Inversion",
+        "t": 64.743
+      },
+      {
+        "title": "Asyndeton and polysyndeton",
+        "t": 84.881
+      },
+      {
+        "title": "Parallelism and antithesis",
+        "t": 123.496
+      },
+      {
+        "title": "A common mistake",
+        "t": 149.06
+      },
+      {
+        "title": "Your turn",
+        "t": 162.797
+      },
+      {
+        "title": "Summary",
+        "t": 188.54
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-1:q2",
+        "t": 170.436,
+        "prompt": "Which sentence is periodic, with its main clause last?",
+        "choices": [
+          "The crowd cheered all night, long after the last song had ended.",
+          "The river rose by morning, covering the road and the bridge below.",
+          "The lights went out, as the wind tore across the empty harbour.",
+          "After the wind had dropped and the river had calmed, the town woke."
+        ],
+        "answer": 3,
+        "working": "D holds its main clause, the town woke, until the end. A, B and C all state the main clause first."
+      }
+    ]
+  },
+  "e12-7-2": {
+    "lessonId": "e12-7-2",
+    "title": "Advanced Grammar in Complex Sentences",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Agreement in tricky places",
+        "t": 27.313
+      },
+      {
+        "title": "Parallel structure and comparisons",
+        "t": 62.498
+      },
+      {
+        "title": "Dangling modifiers",
+        "t": 92.528
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.54
+      },
+      {
+        "title": "Your turn",
+        "t": 139.669
+      },
+      {
+        "title": "Summary",
+        "t": 164.053
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-2:q2",
+        "t": 145.064,
+        "prompt": "Which sentence is correct?",
+        "choices": [
+          "The number of applicants have risen sharply since last spring.",
+          "Neither the principal nor the teachers have signed the form yet.",
+          "The climate of Lagos is warmer than Toronto in the same month.",
+          "When only five, Diego’s family moved to Nairobi last spring."
+        ],
+        "answer": 1,
+        "working": "B agrees with the nearer subject, the teachers. A needs has, C compares a climate with a city, and D dangles."
+      }
+    ]
+  },
+  "e12-7-3": {
+    "lessonId": "e12-7-3",
+    "title": "Register, Tone and Audience",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Register and tone",
+        "t": 29.038
+      },
+      {
+        "title": "Four registers",
+        "t": 64.29
+      },
+      {
+        "title": "Spotting a slip and revising",
+        "t": 97.581
+      },
+      {
+        "title": "A common mistake",
+        "t": 129.551
+      },
+      {
+        "title": "Your turn",
+        "t": 148.057
+      },
+      {
+        "title": "Summary",
+        "t": 174.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-3:q2",
+        "t": 155.211,
+        "prompt": "Which formal revision of “kind of mixed” keeps the meaning?",
+        "choices": [
+          "The research is inconclusive, so the claim cannot yet be confirmed.",
+          "The research firmly confirms the claim, as the evidence is very strong.",
+          "I was so surprised that the research gave such mixed results at all.",
+          "The research is pretty much mixed, and the claim is sort of unclear."
+        ],
+        "answer": 0,
+        "working": "A keeps the meaning in formal words. B changes the claim, C is a personal reaction, and D keeps the casual hedges."
+      }
+    ]
+  },
+  "e12-7-4": {
+    "lessonId": "e12-7-4",
+    "title": "Rhetorical Figures",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Figures of order",
+        "t": 23.628
+      },
+      {
+        "title": "Zeugma and litotes",
+        "t": 52.685
+      },
+      {
+        "title": "Synecdoche and metonymy",
+        "t": 83.296
+      },
+      {
+        "title": "Address and contradiction",
+        "t": 106.83
+      },
+      {
+        "title": "A common mistake",
+        "t": 135.995
+      },
+      {
+        "title": "Your turn",
+        "t": 152.738
+      },
+      {
+        "title": "Summary",
+        "t": 181.377
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-4:q2",
+        "t": 159.961,
+        "prompt": "Why is “the crown” metonymy, not synecdoche?",
+        "choices": [
+          "Because a crown is a part of a monarch, standing for the whole person.",
+          "Because a crown is an understatement that affirms by denying the opposite.",
+          "Because a crown is only worn by a monarch, and is not a piece of one.",
+          "Because a crown is a direct address to someone who cannot answer back."
+        ],
+        "answer": 2,
+        "working": "C is right: a crown is associated with a monarch, not a part of one. A describes synecdoche, B litotes and D apostrophe."
+      }
+    ]
+  },
+  "e12-7-5": {
+    "lessonId": "e12-7-5",
+    "title": "Etymology and Academic Vocabulary",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Words have histories",
+        "t": 28.724
+      },
+      {
+        "title": "Roots and cognates",
+        "t": 64.121
+      },
+      {
+        "title": "Precise verbs for analysis",
+        "t": 94.716
+      },
+      {
+        "title": "A common mistake",
+        "t": 128.88
+      },
+      {
+        "title": "Your turn",
+        "t": 146.274
+      },
+      {
+        "title": "Summary",
+        "t": 172.106
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-5:q2",
+        "t": 153.77,
+        "prompt": "Which sentence analyses the text most precisely?",
+        "choices": [
+          "The writer talks about the storm and shows that it is bad for them.",
+          "The opening storm foreshadows the loss that the family suffers later.",
+          "The writer deals with the storm and shows how upset the family feels.",
+          "The storm scene is very important and shows a lot about the family."
+        ],
+        "answer": 1,
+        "working": "B uses a precise verb and names what the storm does. A, C and D lean on vague verbs and filler words."
       }
     ]
   },
