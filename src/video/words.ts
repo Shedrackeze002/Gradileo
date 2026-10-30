@@ -40,7 +40,8 @@ export function speechText(say: string): string {
   // "Dung-sening", "hamartia" as "ha-MAR-sha", the poet Countee Cullen as "County" and film's
   // "diegetic" sound without its first syllable ("dee-JET-ic"). In Hamlet, "Laertes" comes out "Lerts",
   // "Fortinbras" "Fortenborough's" and "quietus" "quietest"; Toulmin is "Tallman" and "Horatian"
-  // satire "Hoo-ration". "Tomás" loses its final "s" ("Tamar"). Of the rhetorical figures,
+  // satire "Hoo-ration", and Banquo's son Fleance is one syllable ("Fleans"). "Tomás" loses its
+  // final "s" ("Tamar"). Of the rhetorical figures,
   // "synecdoche" comes out "scenic-dodge" and "litotes" "LIT-oats".
   return words
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
@@ -74,6 +75,7 @@ export function speechText(say: string): string {
     .replace(/\bquietus\b/g, 'kwy-ee-tus')
     .replace(/\bToulmin\b/g, 'Tool-min')
     .replace(/\bHoratian\b/g, 'Horayshan')
+    .replace(/\bFleance\b/g, 'Flee-ance')
     .replace(/\bTomás\b/g, 'Tomahss')
     .replace(/\b([Ss])ynecdoche\b/g, '$1in-eck-duh-kee')
     .replace(/\b([Ll])itotes\b/g, '$1ie-toe-teez')

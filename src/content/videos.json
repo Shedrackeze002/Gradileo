@@ -17865,6 +17865,1618 @@
       }
     ]
   },
+  "e11-1-1": {
+    "lessonId": "e11-1-1",
+    "title": "Structure and Pacing",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five structures",
+        "t": 29.642
+      },
+      {
+        "title": "The effect of structure",
+        "t": 68.988
+      },
+      {
+        "title": "Pacing",
+        "t": 103.838
+      },
+      {
+        "title": "A common mistake",
+        "t": 137.65
+      },
+      {
+        "title": "Your turn",
+        "t": 156.671
+      },
+      {
+        "title": "Summary",
+        "t": 186.407
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-1:q2",
+        "t": 167.316,
+        "prompt": "A story opens with a visit, then goes back years to explain how it began. Which structure is it?",
+        "choices": [
+          "Chronological, because every event comes in the order it happened.",
+          "Non-linear, because the story jumps back to an earlier time.",
+          "Circular, because the story returns to the scene where it began.",
+          "Parallel, because two storylines are told in turn at once."
+        ],
+        "answer": 1,
+        "working": "A jump back in time is the mark of a non-linear story. Choices A, C and D each describe a different structure."
+      }
+    ]
+  },
+  "e11-1-2": {
+    "lessonId": "e11-1-2",
+    "title": "Motive and Character Change",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Motive",
+        "t": 27.673
+      },
+      {
+        "title": "Change",
+        "t": 56.118
+      },
+      {
+        "title": "Epiphany",
+        "t": 94.292
+      },
+      {
+        "title": "A common mistake",
+        "t": 113.744
+      },
+      {
+        "title": "Your turn",
+        "t": 135.343
+      },
+      {
+        "title": "Summary",
+        "t": 163.639
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-2:q2",
+        "t": 144.666,
+        "prompt": "Miss Brill skips her honey-cake after a cruel remark. What is that remark called?",
+        "choices": [
+          "A motive, because it is the reason behind her whole routine.",
+          "An epiphany, because it is a sudden moment of understanding.",
+          "A foil, because it is a contrast that makes her stand out.",
+          "A catalyst, because it is the event that sets her change off."
+        ],
+        "answer": 3,
+        "working": "The remark is the event that sets her change in motion, which is a catalyst. The other choices name different ideas."
+      }
+    ]
+  },
+  "e11-1-3": {
+    "lessonId": "e11-1-3",
+    "title": "Narrative Voice and Reliability",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Free indirect style",
+        "t": 24.52
+      },
+      {
+        "title": "Two voices",
+        "t": 58.451
+      },
+      {
+        "title": "Unreliable narrators",
+        "t": 92.544
+      },
+      {
+        "title": "A common mistake",
+        "t": 136.129
+      },
+      {
+        "title": "Your turn",
+        "t": 156.61
+      },
+      {
+        "title": "Summary",
+        "t": 187.564
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-3:q2",
+        "t": 168.597,
+        "prompt": "Ravi ran up the stairs. Late again! What would Ms. Grant say this time? What style are the last two sentences?",
+        "choices": [
+          "Free indirect style, because his thoughts blend into the narration.",
+          "Direct thought, because his exact words are quoted with a tag.",
+          "Reported thought, because the narrator says what he realized.",
+          "Plain narration, because it only describes what he does."
+        ],
+        "answer": 0,
+        "working": "The exclamation and the question are Ravi’s own thoughts, with no quotation marks or tag. That is free indirect style."
+      }
+    ]
+  },
+  "e11-1-4": {
+    "lessonId": "e11-1-4",
+    "title": "Symbol, Motif and Allegory",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Symbols",
+        "t": 25.478
+      },
+      {
+        "title": "Motifs",
+        "t": 54.566
+      },
+      {
+        "title": "Allegory",
+        "t": 81.757
+      },
+      {
+        "title": "A common mistake",
+        "t": 112.18
+      },
+      {
+        "title": "Your turn",
+        "t": 131.156
+      },
+      {
+        "title": "Summary",
+        "t": 160.302
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-4:q2",
+        "t": 141.202,
+        "prompt": "Faith’s pink ribbons return at several turning points in the story. What does that make them?",
+        "choices": [
+          "An allegory, because the whole story stands for an idea.",
+          "A parable, because the ribbons teach a short moral lesson.",
+          "A motif, because the image keeps coming back and adds meaning.",
+          "A foil, because the ribbons contrast with another character."
+        ],
+        "answer": 2,
+        "working": "An image that recurs through a story, adding meaning each time, is a motif. The other choices name different ideas."
+      }
+    ]
+  },
+  "e11-1-5": {
+    "lessonId": "e11-1-5",
+    "title": "Diction, Tone and Syntax",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Diction",
+        "t": 25.473
+      },
+      {
+        "title": "Tone",
+        "t": 45.768
+      },
+      {
+        "title": "Syntax",
+        "t": 75.838
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.392
+      },
+      {
+        "title": "Your turn",
+        "t": 128.303
+      },
+      {
+        "title": "Summary",
+        "t": 157.238
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-5:q2",
+        "t": 139.142,
+        "prompt": "One writer calls a man “thrifty”. Another calls the same man “stingy”. How do the two words differ?",
+        "choices": [
+          "Their denotation, because the two dictionary meanings are far apart.",
+          "Their connotation, because each word carries different feelings.",
+          "Their syntax, because each word has a different sentence pattern.",
+          "Their mood, because each word names the reader’s feeling."
+        ],
+        "answer": 1,
+        "working": "Both words describe someone careful with money, but they carry different feelings. That difference is connotation."
+      }
+    ]
+  },
+  "e11-2-1": {
+    "lessonId": "e11-2-1",
+    "title": "Extended Metaphor, Conceit and Allusion",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Extended metaphor",
+        "t": 30.091
+      },
+      {
+        "title": "The conceit",
+        "t": 58.23
+      },
+      {
+        "title": "Allusion",
+        "t": 95.952
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.348
+      },
+      {
+        "title": "Your turn",
+        "t": 142.973
+      },
+      {
+        "title": "Summary",
+        "t": 169.239
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-2-1:q2",
+        "t": 152.407,
+        "prompt": "A writer calls a hard job a “Herculean” task. What kind of allusion is that?",
+        "choices": [
+          "Biblical, because it refers to a story from the Bible.",
+          "Historical, because it refers to a real event in history.",
+          "Classical, because it refers to a hero of Greek legend.",
+          "Literary, because it refers to a character from a later novel."
+        ],
+        "answer": 2,
+        "working": "Hercules is a hero of ancient Greek and Roman myth, so this is a classical allusion."
+      }
+    ]
+  },
+  "e11-2-2": {
+    "lessonId": "e11-2-2",
+    "title": "The Sonnet",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two shapes",
+        "t": 28.07
+      },
+      {
+        "title": "The volta",
+        "t": 63.921
+      },
+      {
+        "title": "Bending the beat",
+        "t": 89.071
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.345
+      },
+      {
+        "title": "Your turn",
+        "t": 141.078
+      },
+      {
+        "title": "Summary",
+        "t": 173.395
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-2-2:q2",
+        "t": 154.439,
+        "prompt": "A sonnet has three quatrains and a couplet, rhyming ABAB CDCD EFEF GG. Which kind is it?",
+        "choices": [
+          "Shakespearean, because it ends with a rhyming couplet.",
+          "Petrarchan, because it is built from an octave and a sestet.",
+          "Shakespearean, because it must turn at line nine.",
+          "Petrarchan, because it uses only a few rhyme sounds."
+        ],
+        "answer": 0,
+        "working": "Three quatrains and a closing couplet make a Shakespearean sonnet. A Petrarchan sonnet has an octave and a sestet."
+      }
+    ]
+  },
+  "e11-2-3": {
+    "lessonId": "e11-2-3",
+    "title": "Dramatic Monologue and Irony",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The speaker",
+        "t": 24.983
+      },
+      {
+        "title": "Between the lines",
+        "t": 49.572
+      },
+      {
+        "title": "Irony",
+        "t": 81.672
+      },
+      {
+        "title": "A common mistake",
+        "t": 122.348
+      },
+      {
+        "title": "Your turn",
+        "t": 139.61
+      },
+      {
+        "title": "Summary",
+        "t": 168.428
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-2-3:q2",
+        "t": 151.888,
+        "prompt": "Everyone in a poem envies a rich, admired man, yet the last line shows him in despair. Which irony is it?",
+        "choices": [
+          "Verbal irony, because someone says the opposite of what they mean.",
+          "Dramatic irony, because the reader knows more than a character does.",
+          "An allusion, because it refers to a well-known story or person.",
+          "Situational irony, because events turn out the opposite of what we expect."
+        ],
+        "answer": 3,
+        "working": "The ending reverses what the poem led us to expect, so the irony is situational."
+      }
+    ]
+  },
+  "e11-2-4": {
+    "lessonId": "e11-2-4",
+    "title": "Comparing Poems",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Points of comparison",
+        "t": 30.643
+      },
+      {
+        "title": "Two birds of hope",
+        "t": 67.883
+      },
+      {
+        "title": "Writing the comparison",
+        "t": 103.129
+      },
+      {
+        "title": "A common mistake",
+        "t": 129.613
+      },
+      {
+        "title": "Your turn",
+        "t": 146.891
+      },
+      {
+        "title": "Summary",
+        "t": 172.36
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-2-4:q2",
+        "t": 154.062,
+        "prompt": "Which sentence best compares two poems about war?",
+        "choices": [
+          "The first poem is about a soldier’s death, and the second is about war.",
+          "The first poem is gentle, and the second also describes a soldier.",
+          "Whereas the first poem is gentle, the second is brutal, so war looks different.",
+          "Both poems were written by soldiers and are about the First World War."
+        ],
+        "answer": 2,
+        "working": "Choice C names a point, contrasts both poems and says why it matters. The others list or only note a likeness."
+      }
+    ]
+  },
+  "e11-3-1": {
+    "lessonId": "e11-3-1",
+    "title": "Macbeth: Language and Imagery",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Verse, prose and chant",
+        "t": 21.912
+      },
+      {
+        "title": "Paraphrasing Macbeth",
+        "t": 58.635
+      },
+      {
+        "title": "Motifs",
+        "t": 96.393
+      },
+      {
+        "title": "A common mistake",
+        "t": 128.966
+      },
+      {
+        "title": "Your turn",
+        "t": 152.18
+      },
+      {
+        "title": "Summary",
+        "t": 177.508
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-3-1:q2",
+        "t": 162.407,
+        "prompt": "Macbeth cries, “Stars, hide your fires!” Which is the best paraphrase?",
+        "choices": [
+          "Stars, stop shining, so that no one sees my wishes.",
+          "The sky is growing dark, so the stars are fading.",
+          "Stars, shine more brightly, so that I can see my way.",
+          "Stars, tell everyone about the wishes that I hide."
+        ],
+        "answer": 0,
+        "working": "A paraphrase keeps the image: the stars are asked to stop shining, so that the night hides his wishes."
+      }
+    ]
+  },
+  "e11-3-2": {
+    "lessonId": "e11-3-2",
+    "title": "Macbeth: Plot, Characters and Motive",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The people and the story",
+        "t": 32.333
+      },
+      {
+        "title": "Why do they do it?",
+        "t": 81.439
+      },
+      {
+        "title": "Foils",
+        "t": 107.018
+      },
+      {
+        "title": "A common mistake",
+        "t": 136.259
+      },
+      {
+        "title": "Your turn",
+        "t": 155.6
+      },
+      {
+        "title": "Summary",
+        "t": 181.191
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-3-2:q2",
+        "t": 161.717,
+        "prompt": "Why does Macbeth have Banquo murdered?",
+        "choices": [
+          "Because Fleance escapes while Banquo is killed.",
+          "Because Lady Macbeth taunts him about his manhood.",
+          "Because he fears the Witches’ promise to Banquo.",
+          "Because Banquo refuses to come to the banquet."
+        ],
+        "answer": 2,
+        "working": "Macbeth fears the Witches’ promise that Banquo’s descendants will be kings. That reason comes before the murder."
+      }
+    ]
+  },
+  "e11-3-3": {
+    "lessonId": "e11-3-3",
+    "title": "Macbeth: Dramatic Devices",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Who is listening?",
+        "t": 26.092
+      },
+      {
+        "title": "Prophecy and equivocation",
+        "t": 68.08
+      },
+      {
+        "title": "Dramatic irony",
+        "t": 105.375
+      },
+      {
+        "title": "A common mistake",
+        "t": 133.826
+      },
+      {
+        "title": "Your turn",
+        "t": 157.292
+      },
+      {
+        "title": "Summary",
+        "t": 187.401
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-3-3:q2",
+        "t": 167.086,
+        "prompt": "Alone, Macbeth sees a floating dagger and speaks his thoughts aloud. What is this speech?",
+        "choices": [
+          "An aside, because it is a brief remark to us.",
+          "A soliloquy, because he is alone and only we hear.",
+          "A monologue, because the other lords listen in.",
+          "A dialogue, because he is talking to the dagger."
+        ],
+        "answer": 1,
+        "working": "A character alone on stage who speaks thoughts aloud, so that only the audience hears, is giving a soliloquy."
+      }
+    ]
+  },
+  "e11-3-4": {
+    "lessonId": "e11-3-4",
+    "title": "Macbeth: Tragedy and Themes",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Macbeth as a tragic hero",
+        "t": 29.294
+      },
+      {
+        "title": "Pity and fear",
+        "t": 71.365
+      },
+      {
+        "title": "Themes",
+        "t": 94.272
+      },
+      {
+        "title": "A common mistake",
+        "t": 132.003
+      },
+      {
+        "title": "Your turn",
+        "t": 156.3
+      },
+      {
+        "title": "Summary",
+        "t": 181.835
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-3-4:q2",
+        "t": 163.34,
+        "prompt": "Which is the strongest theme statement about Macbeth?",
+        "choices": [
+          "Guilty people always lose their minds in the end.",
+          "Never trust a prophecy that promises you a crown.",
+          "Macbeth shows how ambition and guilt ruin a king.",
+          "Ambition without a conscience destroys the one it drives."
+        ],
+        "answer": 3,
+        "working": "A strong theme statement is a general sentence with no character names, no orders and no absolutes, and the play supports it."
+      }
+    ]
+  },
+  "e11-4-1": {
+    "lessonId": "e11-4-1",
+    "title": "The Essay: Kinds and Central Ideas",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four kinds of essay",
+        "t": 26.415
+      },
+      {
+        "title": "The central idea",
+        "t": 66.874
+      },
+      {
+        "title": "A common mistake",
+        "t": 105.298
+      },
+      {
+        "title": "Your turn",
+        "t": 128.886
+      },
+      {
+        "title": "Summary",
+        "t": 156.874
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-4-1:q2",
+        "t": 140.398,
+        "prompt": "An essay opens: “For a whole term I slept four hours a night and called it ambition.” What kind is it?",
+        "choices": [
+          "Expository, because it explains how sleep works.",
+          "Argumentative, because it takes a firm position.",
+          "Satirical, because it mocks a target to criticize it.",
+          "Personal, because it reflects on the writer’s own life."
+        ],
+        "answer": 3,
+        "working": "The writer speaks as “I” and remembers his own experience, so the essay is personal."
+      }
+    ]
+  },
+  "e11-4-2": {
+    "lessonId": "e11-4-2",
+    "title": "Rhetorical Analysis",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rhetorical situation",
+        "t": 30.599
+      },
+      {
+        "title": "Rhetorical choices",
+        "t": 65.226
+      },
+      {
+        "title": "A common mistake",
+        "t": 96.792
+      },
+      {
+        "title": "Your turn",
+        "t": 118.281
+      },
+      {
+        "title": "Summary",
+        "t": 149.186
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-4-2:q2",
+        "t": 132.025,
+        "prompt": "A nurse writes to the town paper after the council votes to close her clinic. What is her purpose?",
+        "choices": [
+          "To persuade readers to come and keep the clinic open.",
+          "To inform readers about how the council votes work.",
+          "To apologize to readers for the clinic’s closing now.",
+          "To mock the council by praising its decision loudly."
+        ],
+        "answer": 0,
+        "working": "The letter urges readers to attend a public meeting and demand that the clinic stay open, so its purpose is to persuade."
+      }
+    ]
+  },
+  "e11-4-3": {
+    "lessonId": "e11-4-3",
+    "title": "Satire and Its Tools",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The target",
+        "t": 31.264
+      },
+      {
+        "title": "The tools of satire",
+        "t": 60.654
+      },
+      {
+        "title": "A common mistake",
+        "t": 99.957
+      },
+      {
+        "title": "Your turn",
+        "t": 124.587
+      },
+      {
+        "title": "Summary",
+        "t": 157.721
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-4-3:q2",
+        "t": 137.67,
+        "prompt": "A school board solemnly announces, after eighteen months of study, that the lunch queue will form on the left. Which tool is this?",
+        "choices": [
+          "Verbal irony, because it says the opposite of its meaning.",
+          "Exaggeration, because it stretches a fault until absurd.",
+          "Mock seriousness, because it treats a small thing solemnly.",
+          "Understatement, because it describes a disaster as minor."
+        ],
+        "answer": 2,
+        "working": "The joke lies in the gap between the solemn manner and the trivial matter. The target is school boards that waste time on trivial things."
+      }
+    ]
+  },
+  "e11-4-4": {
+    "lessonId": "e11-4-4",
+    "title": "Fallacies and Evidence",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five subtler fallacies",
+        "t": 27.132
+      },
+      {
+        "title": "Judging evidence",
+        "t": 75.458
+      },
+      {
+        "title": "A common mistake",
+        "t": 111.886
+      },
+      {
+        "title": "Your turn",
+        "t": 135.108
+      },
+      {
+        "title": "Summary",
+        "t": 168.206
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-4-4:q2",
+        "t": 150.84,
+        "prompt": "A survey at a 7:00 a.m. breakfast club finds that 85% of students like the early start. What is wrong with it?",
+        "choices": [
+          "Not relevant, because it asks about the wrong thing.",
+          "Not representative, because early risers are not typical.",
+          "Not sufficient, because two hundred students is too few.",
+          "Circular, because it assumes what it sets out to prove."
+        ],
+        "answer": 1,
+        "working": "Students who choose a breakfast club at seven in the morning are early risers, so the sample does not represent the whole school."
+      }
+    ]
+  },
+  "e11-5-1": {
+    "lessonId": "e11-5-1",
+    "title": "Framing in News Reports",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Framing",
+        "t": 27.564
+      },
+      {
+        "title": "What a report leaves out",
+        "t": 68.756
+      },
+      {
+        "title": "Comparing headlines",
+        "t": 100.669
+      },
+      {
+        "title": "A common mistake",
+        "t": 135.098
+      },
+      {
+        "title": "Your turn",
+        "t": 150.969
+      },
+      {
+        "title": "Summary",
+        "t": 179.515
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-5-1:q2",
+        "t": 161.108,
+        "prompt": "Riverside FC lost a cup final 2–1. Which headline is neutral?",
+        "choices": [
+          "Riverside Crumble in Cup Final Flop",
+          "Riverside FC Loses Cup Final 2–1",
+          "Brave Riverside Robbed in the Final",
+          "Riverside Shamed in Cup Final Fiasco"
+        ],
+        "answer": 1,
+        "working": "B states what happened in plain words. “Crumble”, “flop”, “robbed” and “shamed” all judge rather than report."
+      }
+    ]
+  },
+  "e11-5-2": {
+    "lessonId": "e11-5-2",
+    "title": "Documentary Techniques",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six techniques",
+        "t": 23.161
+      },
+      {
+        "title": "How they persuade",
+        "t": 68.408
+      },
+      {
+        "title": "Point of view",
+        "t": 101.9
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.372
+      },
+      {
+        "title": "Your turn",
+        "t": 161.157
+      },
+      {
+        "title": "Summary",
+        "t": 187.568
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-5-2:q2",
+        "t": 170.743,
+        "prompt": "Low, slow strings play over an empty playground at dusk. Which technique is this?",
+        "choices": [
+          "An expert interview that lends the film authority.",
+          "Archival footage that feels like real proof.",
+          "A reconstruction that shows an unfilmed event.",
+          "Music that tells viewers how to feel."
+        ],
+        "answer": 3,
+        "working": "Low, slow strings added to the soundtrack set the mood. That is music, which tells viewers how to feel."
+      }
+    ]
+  },
+  "e11-5-3": {
+    "lessonId": "e11-5-3",
+    "title": "Representation and Digital Media",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stereotypes and voices",
+        "t": 29.695
+      },
+      {
+        "title": "What decides what you see",
+        "t": 68.199
+      },
+      {
+        "title": "A common mistake",
+        "t": 105.14
+      },
+      {
+        "title": "Checking a viral claim",
+        "t": 126.715
+      },
+      {
+        "title": "Your turn",
+        "t": 161.806
+      },
+      {
+        "title": "Summary",
+        "t": 187.444
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-5-3:q2",
+        "t": 170.857,
+        "prompt": "A shocking post is going viral. What do fact-checkers do first?",
+        "choices": [
+          "Leave the post and check what trusted sources say.",
+          "Reread the post closely and count how many likes it has.",
+          "Scan the comments to see whether other viewers believe it.",
+          "Ask friends to share it so the claim can be debated."
+        ],
+        "answer": 0,
+        "working": "Professional fact-checkers read laterally: they leave the post and see what reliable sources say about the claim and who is behind it."
+      }
+    ]
+  },
+  "e11-6-1": {
+    "lessonId": "e11-6-1",
+    "title": "Literary Analysis: Thesis and Commentary",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The analytical thesis",
+        "t": 20.869
+      },
+      {
+        "title": "Building a thesis",
+        "t": 56.96
+      },
+      {
+        "title": "Commentary that goes deep",
+        "t": 81.74
+      },
+      {
+        "title": "A common mistake",
+        "t": 118.373
+      },
+      {
+        "title": "Your turn",
+        "t": 138.065
+      },
+      {
+        "title": "Summary",
+        "t": 165.654
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-1:q2",
+        "t": 150.345,
+        "prompt": "What is wrong with: “Kate Chopin uses imagery, irony and symbolism in ‘The Story of an Hour’.”?",
+        "choices": [
+          "It only retells the plot of the whole story.",
+          "It only praises the story with nothing to prove.",
+          "It lists devices but never says why they matter.",
+          "It states a meaning but never says how it works."
+        ],
+        "answer": 2,
+        "working": "The sentence names devices but never says what they show. It has no why. A topic or plot summary would be a different fault."
+      }
+    ]
+  },
+  "e11-6-2": {
+    "lessonId": "e11-6-2",
+    "title": "Comparative Essays",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The comparative thesis",
+        "t": 26.061
+      },
+      {
+        "title": "Block and point by point",
+        "t": 65.518
+      },
+      {
+        "title": "A common mistake",
+        "t": 116.069
+      },
+      {
+        "title": "Your turn",
+        "t": 139.127
+      },
+      {
+        "title": "Summary",
+        "t": 168.905
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-2:q2",
+        "t": 151.215,
+        "prompt": "What is wrong with: “The narrator of ‘The Tell-Tale Heart’ feels guilty, but Montresor does not.”?",
+        "choices": [
+          "It discusses only one of the two texts.",
+          "It is a real difference, but never says so what.",
+          "It makes two claims that are never connected.",
+          "It is true of any two texts, so says nothing."
+        ],
+        "answer": 1,
+        "working": "The difference is real and covers both texts, but the thesis never says what the contrast reveals, so it needs a so what."
+      }
+    ]
+  },
+  "e11-6-3": {
+    "lessonId": "e11-6-3",
+    "title": "Using Sources",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quote, paraphrase or summarize",
+        "t": 27.57
+      },
+      {
+        "title": "Paraphrasing safely",
+        "t": 56.926
+      },
+      {
+        "title": "Synthesis",
+        "t": 100.01
+      },
+      {
+        "title": "Your turn",
+        "t": 134.154
+      },
+      {
+        "title": "Summary",
+        "t": 161.287
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-3:q2",
+        "t": 140.885,
+        "prompt": "Which of these best describes patchwriting?",
+        "choices": [
+          "Copying the source’s exact words without using any quotation marks.",
+          "Using your own words and structure but never naming the source.",
+          "Changing a source’s meaning so it says something it never said.",
+          "Keeping the source’s sentence structure and swapping in synonyms."
+        ],
+        "answer": 3,
+        "working": "Patchwriting keeps the source’s sentence structure and swaps in a few synonyms. A is copying, B is no credit and C is a changed meaning."
+      }
+    ]
+  },
+  "e11-6-4": {
+    "lessonId": "e11-6-4",
+    "title": "Building an Argument",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an argument",
+        "t": 20.216
+      },
+      {
+        "title": "The warrant",
+        "t": 48.689
+      },
+      {
+        "title": "Conceding and qualifying",
+        "t": 67.471
+      },
+      {
+        "title": "A common mistake",
+        "t": 106.008
+      },
+      {
+        "title": "Your turn",
+        "t": 124.653
+      },
+      {
+        "title": "Summary",
+        "t": 156.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-4:q2",
+        "t": 137.699,
+        "prompt": "In a study, students with a silent phone in sight remembered less. Which sentence is the warrant for keeping phones in lockers?",
+        "choices": [
+          "If a visible phone harms learning, putting phones out of sight protects it.",
+          "Phones should be kept in lockers during every lesson at school.",
+          "Students with silent phones on their desks remembered less afterwards.",
+          "Some students may need their phones to contact their families."
+        ],
+        "answer": 0,
+        "working": "The warrant explains why the evidence proves the claim. B is the claim, C is the evidence and D is a counterargument."
+      }
+    ]
+  },
+  "e11-6-5": {
+    "lessonId": "e11-6-5",
+    "title": "Style and Revision",
+    "duration": 175,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Varying your sentences",
+        "t": 23.065
+      },
+      {
+        "title": "End focus",
+        "t": 58.875
+      },
+      {
+        "title": "Precision and tone",
+        "t": 75.962
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.163
+      },
+      {
+        "title": "Your turn",
+        "t": 127.914
+      },
+      {
+        "title": "Summary",
+        "t": 155.005
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-5:q2",
+        "t": 139.266,
+        "prompt": "Which best revises: “I think that maybe the ending is sort of really very surprising”?",
+        "choices": [
+          "I think the ending is very surprising to most readers.",
+          "The ending is sort of surprising, and maybe it shocks.",
+          "The ending is surprising.",
+          "Perhaps the ending is truly and extremely surprising."
+        ],
+        "answer": 2,
+        "working": "C cuts the hedges and the empty intensifiers and states the point plainly. The others keep a hedge or an intensifier."
+      }
+    ]
+  },
+  "e11-6-6": {
+    "lessonId": "e11-6-6",
+    "title": "Writing Under Time Pressure",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the prompt",
+        "t": 21.421
+      },
+      {
+        "title": "Planning and the clock",
+        "t": 55.388
+      },
+      {
+        "title": "Finishing strongly",
+        "t": 92.366
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.622
+      },
+      {
+        "title": "Your turn",
+        "t": 141.035
+      },
+      {
+        "title": "Summary",
+        "t": 165.918
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-6:q2",
+        "t": 151.232,
+        "prompt": "A literary essay exam lasts sixty minutes. Which split of the time is best?",
+        "choices": [
+          "Plan for 15 minutes, write for 40, check for 5.",
+          "Plan for 5 minutes, write for 50, check for 5.",
+          "Plan for 20 minutes, write for 35, check for 5.",
+          "Plan for 10 minutes, write for 45, check for 5."
+        ],
+        "answer": 3,
+        "working": "For sixty minutes the lesson suggests 10 minutes to read and plan, 45 to write and 5 to check."
+      }
+    ]
+  },
+  "e11-7-1": {
+    "lessonId": "e11-7-1",
+    "title": "Clauses and Combining Sentences",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of dependent clause",
+        "t": 33.428
+      },
+      {
+        "title": "Five ways to combine",
+        "t": 74.177
+      },
+      {
+        "title": "Worked example",
+        "t": 112.838
+      },
+      {
+        "title": "A common mistake",
+        "t": 133.094
+      },
+      {
+        "title": "Your turn",
+        "t": 153.172
+      },
+      {
+        "title": "Summary",
+        "t": 182.975
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-1:q",
+        "t": 164.022,
+        "prompt": "Which sentence combines the ideas correctly?",
+        "choices": [
+          "Because Mei was exhausted after the long shift, she fell asleep on the bus.",
+          "Although Mei was exhausted after the long shift, she fell asleep on the bus.",
+          "Mei was exhausted after the long shift, she fell asleep on the bus.",
+          "Exhausted after the long shift, the bus carried Mei past her stop."
+        ],
+        "answer": 0,
+        "working": "A uses because to show the true cause. B shows a contrast that is false, C is a comma splice, and in D the bus is exhausted."
+      }
+    ]
+  },
+  "e11-7-2": {
+    "lessonId": "e11-7-2",
+    "title": "Dashes, Colons, Parentheses and Quotation Marks",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dashes",
+        "t": 22.273
+      },
+      {
+        "title": "Colons",
+        "t": 50.672
+      },
+      {
+        "title": "Parentheses",
+        "t": 69.486
+      },
+      {
+        "title": "Marks inside quotations",
+        "t": 98.702
+      },
+      {
+        "title": "A common mistake",
+        "t": 136.833
+      },
+      {
+        "title": "Your turn",
+        "t": 154.338
+      },
+      {
+        "title": "Summary",
+        "t": 175.598
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-2:q2",
+        "t": 161.167,
+        "prompt": "Which sentence sets off the interruption correctly?",
+        "choices": [
+          "My grandmother, a champion swimmer in her youth—still swims every morning.",
+          "My grandmother—a champion swimmer in her youth, still swims every morning.",
+          "My grandmother—a champion swimmer in her youth—still swims every morning.",
+          "My grandmother: a champion swimmer in her youth: still swims every morning."
+        ],
+        "answer": 2,
+        "working": "C opens and closes the interruption with a dash. A and B open and close with different marks, and D uses colons, which do not set off an interruption."
+      }
+    ]
+  },
+  "e11-7-3": {
+    "lessonId": "e11-7-3",
+    "title": "Active, Passive and the Subjunctive",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Active and passive",
+        "t": 24.283
+      },
+      {
+        "title": "When the passive is better",
+        "t": 60.961
+      },
+      {
+        "title": "The subjunctive mood",
+        "t": 89.348
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.948
+      },
+      {
+        "title": "Your turn",
+        "t": 145.706
+      },
+      {
+        "title": "Summary",
+        "t": 167.497
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-3:q3",
+        "t": 153.094,
+        "prompt": "Which sentence is correct in formal writing?",
+        "choices": [
+          "The doctor recommended that Omar drinks more water every day.",
+          "The doctor recommended that Omar drink more water every day.",
+          "I wish my grandmother was here to see this award today.",
+          "If I would have known about the party, I would have come."
+        ],
+        "answer": 1,
+        "working": "B uses the base form after recommended. A adds an s, C should say were, and D should say had known."
+      }
+    ]
+  },
+  "e11-7-4": {
+    "lessonId": "e11-7-4",
+    "title": "Usage and Pronoun Reference",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Who and whom",
+        "t": 29.19
+      },
+      {
+        "title": "More easily confused words",
+        "t": 46.573
+      },
+      {
+        "title": "Clear pronoun reference",
+        "t": 82.046
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.216
+      },
+      {
+        "title": "Your turn",
+        "t": 134.787
+      },
+      {
+        "title": "Summary",
+        "t": 161.626
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-4:q4",
+        "t": 145.758,
+        "prompt": "Priya told Yuki that she had won. Which says clearly that Yuki won?",
+        "choices": [
+          "Priya told Yuki that she had won the prize, and she was delighted.",
+          "Priya told Yuki about the prize, so she knew that she had won it.",
+          "Priya told Yuki that she herself had certainly won the prize.",
+          "Priya said to Yuki, “You have won the prize.”"
+        ],
+        "answer": 3,
+        "working": "D uses the exact words, so only one reading is possible. A, B and C still leave she open to two readings."
+      }
+    ]
+  },
+  "e11-7-5": {
+    "lessonId": "e11-7-5",
+    "title": "Word Roots and Precise Diction",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Building words from parts",
+        "t": 28.671
+      },
+      {
+        "title": "One root, different prefixes",
+        "t": 60.522
+      },
+      {
+        "title": "Four enemies of precision",
+        "t": 83.726
+      },
+      {
+        "title": "Revising for precision",
+        "t": 122.089
+      },
+      {
+        "title": "A common mistake",
+        "t": 146.148
+      },
+      {
+        "title": "Your turn",
+        "t": 158.305
+      },
+      {
+        "title": "Summary",
+        "t": 181.856
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-5:q5",
+        "t": 165.09,
+        "prompt": "Which sentence contains a cliché?",
+        "choices": [
+          "The rescuers arrived in the nick of time.",
+          "The patient reported acute cephalalgia.",
+          "Her grandfather passed away last spring.",
+          "The trip was a really good thing."
+        ],
+        "answer": 0,
+        "working": "A is a worn-out expression. B is jargon, C is a euphemism, and D is vague."
+      }
+    ]
+  },
+  "e12-1-1": {
+    "lessonId": "e12-1-1",
+    "title": "Narrative Technique and Time",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Whose mind are we in?",
+        "t": 28.094
+      },
+      {
+        "title": "Handling time",
+        "t": 75.372
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.824
+      },
+      {
+        "title": "Your turn",
+        "t": 134.218
+      },
+      {
+        "title": "Summary",
+        "t": 165.998
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-1-1:q2",
+        "t": 147.275,
+        "prompt": "In “Kew Gardens”, a third-person narrator enters a man’s mind, then a snail’s, then two passers-by. What technique is this?",
+        "choices": [
+          "Stream of consciousness, because one mind drifts freely by association.",
+          "Multiple narrators, because each character takes a turn telling the story.",
+          "Shifting focalization, because the point of view passes between perceivers.",
+          "External narration, because the narrator reports only what can be seen."
+        ],
+        "answer": 2,
+        "working": "The narration stays in the third person but passes from one perceiver to the next. That is shifting focalization."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
