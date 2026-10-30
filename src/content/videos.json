@@ -17151,6 +17151,163 @@
       }
     ]
   },
+  "e10-7-1": {
+    "lessonId": "e10-7-1",
+    "title": "Sentences: Fragments, Run-ons and Comma Splices",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Clauses and fragments",
+        "t": 21.951
+      },
+      {
+        "title": "Run-ons and comma splices",
+        "t": 57.768
+      },
+      {
+        "title": "Fixing a comma splice",
+        "t": 95.405
+      },
+      {
+        "title": "Four kinds of sentence",
+        "t": 121.695
+      },
+      {
+        "title": "A common mistake",
+        "t": 145.156
+      },
+      {
+        "title": "Your turn",
+        "t": 163.383
+      },
+      {
+        "title": "Summary",
+        "t": 190.954
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-7-1:q",
+        "t": 173.814,
+        "prompt": "Which of these four sentences is correct, with no run-on, comma splice or misplaced comma?",
+        "choices": [
+          "The museum was closed, so the children went to the park.",
+          "The museum was closed, the children went to the park.",
+          "The museum was closed the children went to the park.",
+          "The museum was closed, so, the children went to the park."
+        ],
+        "answer": 0,
+        "working": "Choice A joins the clauses with a comma before so. B is a comma splice, C a run-on, and D has an extra comma after so."
+      }
+    ]
+  },
+  "e10-7-2": {
+    "lessonId": "e10-7-2",
+    "title": "Punctuation",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Commas",
+        "t": 21.961
+      },
+      {
+        "title": "Apostrophes",
+        "t": 66.103
+      },
+      {
+        "title": "Semicolons and colons",
+        "t": 100.879
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.458
+      },
+      {
+        "title": "Your turn",
+        "t": 141.342
+      },
+      {
+        "title": "Summary",
+        "t": 170.162
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-7-2:q",
+        "t": 150.486,
+        "prompt": "Which phrase is correct for the toys that belong to several dogs?",
+        "choices": [
+          "the dog’s toys",
+          "the dogs toy’s",
+          "the dogs’ toys",
+          "the dogs’s toys"
+        ],
+        "answer": 2,
+        "working": "The owner is dogs, a plural ending in s, so add only an apostrophe after it."
+      }
+    ]
+  },
+  "e10-7-3": {
+    "lessonId": "e10-7-3",
+    "title": "Agreement",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subject–verb agreement",
+        "t": 27.754
+      },
+      {
+        "title": "Pronouns",
+        "t": 69.178
+      },
+      {
+        "title": "Consistent tense",
+        "t": 101.511
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.44
+      },
+      {
+        "title": "Your turn",
+        "t": 147.234
+      },
+      {
+        "title": "Summary",
+        "t": 173.699
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-7-3:q",
+        "t": 155.664,
+        "prompt": "Which of these four sentences has a verb that agrees with its subject?",
+        "choices": [
+          "One of the windows are cracked.",
+          "One of the windows is cracked.",
+          "One of the window are cracked.",
+          "One of the windows were cracked."
+        ],
+        "answer": 1,
+        "working": "The subject is one, which is singular, so the verb is is."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",

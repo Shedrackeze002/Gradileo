@@ -11,7 +11,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Gauge, MessageCircleQuestion, Pause, Play, RotateCcw, Send, Sparkles, Volume2, VolumeX, X } from 'lucide-react';
-import { lessonById, unitById } from '@engine/curriculum/index.ts';
+import { courseOfLesson, lessonById, unitById } from '@engine/curriculum/index.ts';
 import { offlineBeats, PRAISE_PHRASES, TUTOR_PHRASES, tutorSlideKey, type Clip, type TutorMessage, type TutorVoice } from '@engine/ai/tutor.ts';
 import { usePublications, useResources, useVideoLinks } from '@/data/hooks.ts';
 import { api } from '@/data/index.ts';
@@ -71,6 +71,7 @@ export default function TutorMode() {
   const slides = useMemo(() => (content && meta ? buildSlides(content, meta.title, lessonResources, explainers) : []), [content, meta, lessonResources, explainers]);
   const tutorSlides = useMemo(() => slides.map(tutorSlide), [slides]);
   const unitLabel = unit ? `Unit ${unit.number} · ${unit.title}` : '';
+  const subject = courseOfLesson(lessonId)?.subject;
   const deckLesson: DeckLesson | null = meta ? { number: meta.number, title: meta.title, unitLabel, objectives: meta.objectives, vocabulary: meta.vocabulary ?? [], minutes: meta.minutes } : null;
 
   // ------------------------------------------------------------ the recorded voice
@@ -272,7 +273,7 @@ export default function TutorMode() {
       for (const k of order) {
         if (!alive) return;
         const res = await api()
-          .tutorScript(lessonId, { lessonTitle: meta.title, unit: unitLabel, slides: chunks[k] })
+          .tutorScript(lessonId, { lessonTitle: meta.title, unit: unitLabel, subject, slides: chunks[k] })
           .catch(() => null);
         if (!alive || !res) continue;
         for (const s of res.script.slides) beats.current.set(s.id, s.beats);
@@ -281,7 +282,7 @@ export default function TutorMode() {
     return () => {
       alive = false;
     };
-  }, [lessonId, meta, unitLabel, tutorSlides, voice, keys]);
+  }, [lessonId, meta, unitLabel, subject, tutorSlides, voice, keys]);
 
   // ------------------------------------------------------------ asking the tutor
   const [chat, setChat] = useState<ChatEntry[]>([]);
@@ -297,7 +298,7 @@ export default function TutorMode() {
       setChat((c) => [...c, { role: 'student', text: q }]);
       setAsking(true);
       try {
-        const res = await api().askTutor({ lessonTitle: meta.title, unit: unitLabel, slideTitle: slide.title, slideText: slideText(slide), question: q, history });
+        const res = await api().askTutor({ lessonTitle: meta.title, unit: unitLabel, subject, slideTitle: slide.title, slideText: slideText(slide), question: q, history });
         setChat((c) => [...c, { role: 'tutor', text: res.answer.say, show: res.answer.show }]);
         say(TUTOR_PHRASES.answer, voice?.phrases.answer);
       } catch (e) {
@@ -306,7 +307,7 @@ export default function TutorMode() {
         setAsking(false);
       }
     },
-    [slide, meta, unitLabel, chat, say, voice],
+    [slide, meta, unitLabel, subject, chat, say, voice],
   );
   const explainMistake = () => {
     if (!checked) return;

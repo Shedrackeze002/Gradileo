@@ -709,9 +709,17 @@ items ship or decisions change.
      open to classes and sign-up: fiction through critical lenses, poetry, *Hamlet*, rhetoric and
      argument, media and culture, writing and language. English now runs Grades 10 to 12, and
      placement goes by grade with a check on the course before. The roadmap's English item is done.
-   - Next: English videos (fewer than mathematics: how to read a poem, how to write a thesis) and
-     the English tutor voice. Later, a mark per rubric
-     criterion for essays. The privacy policy and terms still describe Gradileo as a mathematics
+   - In progress (30 October 2026): **English explainer videos**, one per lesson, 93 in all. Every
+     script is written (`src/content/eng10|eng20|eng30/videos/`), each checked against its lesson:
+     every quotation word for word, its layout on stills, and the voice on each name and term
+     (Tybalt, Laertes, Dunsinane, Désirée, hamartia, synecdoche and others are respelled in
+     `src/video/words.ts`). The video stage has a new `quote` element for passages of prose and
+     verse. Grade 10's videos are rendering and going to Drive unit by unit; Grades 11 and 12 follow.
+   - Done (30 October 2026): **the English tutor voice**. The Tutor voice workflow now records the
+     English courses too; the tutor reads verse with a pause at each line, and its prompts name the
+     course's subject (an English or chemistry tutor, not a mathematics one), so "Ask your tutor"
+     answers questions about poems and essays instead of steering back to mathematics.
+   - Later: a mark per rubric criterion for essays. The privacy policy and terms still describe Gradileo as a mathematics
      platform; their wording is the owner's to change.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
      longer set in Alberta (about 1,000 mentions: towns, lakes, parks, teams, Alberta's GST). Town

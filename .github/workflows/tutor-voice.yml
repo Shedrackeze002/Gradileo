@@ -19,7 +19,7 @@ on:
   workflow_dispatch:
     inputs:
       courses:
-        description: Course folders to record, separated by spaces, such as "math10c math5" (empty for every course)
+        description: Course folders to record, separated by spaces, such as "math10c chem20 eng10" (empty for every course)
         required: false
         default: ''
   # Runs the workflow as it is on main and checks out main, never a pull request's own code.
@@ -60,9 +60,9 @@ jobs:
         env:
           WANTED: ${{ github.event.inputs.courses }}
         run: |
-          list=${WANTED:-$(ls -d engine/curriculum/math*/ engine/curriculum/chem*/ | xargs -n1 basename)}
+          list=${WANTED:-$(ls -d engine/curriculum/math*/ engine/curriculum/chem*/ engine/curriculum/eng*/ | xargs -n1 basename)}
           for c in $list; do
-            if [[ ! "$c" =~ ^(math|chem)[0-9a-z-]+$ ]] || [ ! -d "engine/curriculum/$c" ]; then echo "Unknown course folder: $c"; exit 1; fi
+            if [[ ! "$c" =~ ^(math|chem|eng)[0-9a-z-]+$ ]] || [ ! -d "engine/curriculum/$c" ]; then echo "Unknown course folder: $c"; exit 1; fi
           done
           echo "list=$(printf '%s\n' $list | jq -R . | jq -cs .)" >> "$GITHUB_OUTPUT"
 

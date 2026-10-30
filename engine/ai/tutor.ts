@@ -6,6 +6,7 @@
  */
 import { chemToWords } from '../chem/speech.ts';
 import { extractJson } from './parse.ts';
+import { subjectName } from './prompt.ts';
 import { minimaxChat, type MiniMaxConfig } from './minimax.ts';
 import { checkBeats, joinThousands } from './tutorCheck.ts';
 
@@ -32,6 +33,8 @@ export interface TutorChunk {
   lessonTitle: string;
   /** "Unit 2 · Trigonometry" */
   unit: string;
+  /** The course's subject ("Chemistry", "English"); mathematics when it is missing. */
+  subject?: string;
   slides: TutorSlide[];
 }
 
@@ -56,6 +59,8 @@ export interface TutorMessage {
 export interface TutorQuestion {
   lessonTitle: string;
   unit: string;
+  /** The course's subject, as in TutorChunk. */
+  subject?: string;
   slideTitle: string;
   /** The slide's content as Markdown. */
   slideText: string;
@@ -83,6 +88,11 @@ export interface TutorAnswerResult {
 const LIMITS = { slides: 12, steps: 30, step: 2000, title: 200, total: 30_000, question: 500, slideText: 4000, history: 6, message: 800 };
 
 const text = (v: unknown, max: number): string => (typeof v === 'string' ? v.trim().slice(0, max) : '');
+/** A subject's name goes into the prompt, so only a plain name is kept. */
+const subject = (v: unknown): string | undefined => {
+  const s = text(v, 40);
+  return /^[A-Za-z][A-Za-z ]*$/.test(s) ? s : undefined;
+};
 
 /** Checks a chunk sent by a browser and trims it to the limits; throws when it is unusable. */
 export function normalizeChunk(v: unknown): TutorChunk {
@@ -103,7 +113,7 @@ export function normalizeChunk(v: unknown): TutorChunk {
     return { id, kind, title: text(x.title, LIMITS.title), steps: steps.length ? steps : [''] };
   });
   if (total > LIMITS.total) throw new Error('These slides are too long for one request.');
-  return { lessonTitle: text(o.lessonTitle, LIMITS.title), unit: text(o.unit, LIMITS.title), slides };
+  return { lessonTitle: text(o.lessonTitle, LIMITS.title), unit: text(o.unit, LIMITS.title), subject: subject(o.subject), slides };
 }
 
 /** Checks a question sent by a browser and trims it to the limits; throws when it is empty. */
@@ -121,6 +131,7 @@ export function normalizeQuestion(v: unknown): TutorQuestion {
   return {
     lessonTitle: text(o.lessonTitle, LIMITS.title),
     unit: text(o.unit, LIMITS.title),
+    subject: subject(o.subject),
     slideTitle: text(o.slideTitle, LIMITS.title),
     slideText: text(o.slideText, LIMITS.slideText),
     question,
@@ -365,8 +376,13 @@ export function speakable(md: string): string {
     .replace(/<[^>]+>/g, ' ')
     .replace(/^\s{0,3}#{1,6}\s+/gm, '')
     .replace(/^\s{0,3}>\s?/gm, '')
+    // A line of verse ends in a backslash (a line break): a short pause where it has no punctuation.
+    .replace(/([^\s.,;:!?—–-])\\$/gm, '$1,')
+    .replace(/\\$/gm, '')
     .replace(/^\s*(?:[-*+]|\d+[.)])\s+/gm, '')
-    .replace(/(\*\*|__|\*|`)/g, '');
+    .replace(/(\*\*|__|\*|`)/g, '')
+    // A list straight after a box's title ("**Sound devices.** - Alliteration …").
+    .replace(/([.!?:]) [-*+] /g, '$1 ');
   // "4 572 306" is one number; with its spaces the voice says three. Units are said in full.
   return sayUnits(joinThousands(
     s
@@ -509,7 +525,7 @@ const VOICE_RULES = `- Your words are read aloud by a text-to-speech voice. Writ
 
 export function scriptPrompt(chunk: TutorChunk): { system: string; user: string } {
   return {
-    system: `You are a friendly, patient mathematics tutor for school students (about 10 to 18 years old) anywhere in the English-speaking world. You are taking ONE student through a lesson on screen, the way a good teacher presents slides. Each slide shows its content in numbered steps; for every step you write what you SAY while that step appears.
+    system: `You are a friendly, patient ${subjectName(chunk.subject)} tutor for school students (about 10 to 18 years old) anywhere in the English-speaking world. You are taking ONE student through a lesson on screen, the way a good teacher presents slides. Each slide shows its content in numbered steps; for every step you write what you SAY while that step appears.
 Rules:
 - Talk to the student ("you", "we"), warmly and encouragingly, never patronising.
 - Teach, don't just read: say what the step shows and why it matters, in plain words. One to three short sentences per step (at most 55 words).
@@ -530,11 +546,11 @@ Output ONLY one JSON object, no prose and no code fences: {"slides":[{"id": stri
 
 export function questionPrompt(q: TutorQuestion): { system: string; user: string } {
   return {
-    system: `You are a friendly, patient mathematics tutor for school students (about 10 to 18 years old). The student is working through a lesson with you and has a question about the slide in front of them.
+    system: `You are a friendly, patient ${subjectName(q.subject)} tutor for school students (about 10 to 18 years old). The student is working through a lesson with you and has a question about the slide in front of them.
 Rules:
 - Answer the question simply and correctly, step by step, using the ideas and methods on the slide. Keep it short: under 120 words.
 - If they ask for the answer to a "Your turn" question they have not checked yet, don't give the final answer: give a hint and the first step, and encourage them to finish it. If they have already checked it and tell you the correct answer, explain the method and where their answer went wrong.
-- If the question is not about mathematics or this lesson, kindly bring them back to the lesson.
+- If the question is not about ${subjectName(q.subject)} or this lesson, kindly bring them back to the lesson.
 - If you are not sure, say so and suggest how they could check.
 ${VOICE_RULES}
 Output ONLY one JSON object, no prose and no code fences: {"show": string (the answer for the screen, Markdown with maths in $...$), "say": string (the same answer in plain spoken words, no symbols)}.`,
