@@ -20559,6 +20559,108 @@
       }
     ]
   },
+  "e12-6-4": {
+    "lessonId": "e12-6-4",
+    "title": "Reflective Writing",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From experience to insight",
+        "t": 24.326
+      },
+      {
+        "title": "Three ways reflection fails",
+        "t": 64.226
+      },
+      {
+        "title": "Then and now",
+        "t": 91.304
+      },
+      {
+        "title": "A common mistake",
+        "t": 127.378
+      },
+      {
+        "title": "Your turn",
+        "t": 150.317
+      },
+      {
+        "title": "Summary",
+        "t": 181.07
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-4:q2",
+        "t": 160.074,
+        "prompt": "A writer hurried an old man who paid in coins. Which sentence is an earned insight?",
+        "choices": [
+          "This taught me that patience is a virtue, and everyone deserves kindness.",
+          "I thought I was saving him time, but I had taken the last part of the errand that was his.",
+          "It was a very emotional moment, and I felt so many powerful things at once.",
+          "He counted each coin from a cloth purse while the line behind him grew longer."
+        ],
+        "answer": 1,
+        "working": "B grows from a particular detail and turns back on the writer. A is a tacked-on moral, C is a vague generality and D is narration only."
+      }
+    ]
+  },
+  "e12-6-5": {
+    "lessonId": "e12-6-5",
+    "title": "Style: Precision, Concision and Voice",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Precision and concision",
+        "t": 28.477
+      },
+      {
+        "title": "Hedges and voice",
+        "t": 67.548
+      },
+      {
+        "title": "Emphasis and rhythm",
+        "t": 109.627
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.29
+      },
+      {
+        "title": "Your turn",
+        "t": 158.481
+      },
+      {
+        "title": "Summary",
+        "t": 185.469
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-5:q2",
+        "t": 167.479,
+        "prompt": "Which sentence saves its key idea, the lost village, for the last words?",
+        "choices": [
+          "The village was gone by noon, after a storm that had hit at dawn.",
+          "The storm hit the village at dawn, which no one had expected.",
+          "The storm hit at dawn, and by noon the village was gone.",
+          "By noon the village was gone, though no one had seen it at dawn."
+        ],
+        "answer": 2,
+        "working": "C builds the context first and ends on the key fact. A, B and D all end on a minor detail."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
