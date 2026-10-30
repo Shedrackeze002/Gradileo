@@ -19477,6 +19477,100 @@
       }
     ]
   },
+  "e12-1-2": {
+    "lessonId": "e12-1-2",
+    "title": "Context and Society in Fiction",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Using context well",
+        "t": 32.463
+      },
+      {
+        "title": "A common mistake",
+        "t": 70.3
+      },
+      {
+        "title": "Characters and their societies",
+        "t": 103.364
+      },
+      {
+        "title": "Your turn",
+        "t": 136.433
+      },
+      {
+        "title": "Summary",
+        "t": 169.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-1-2:q2",
+        "t": 148.912,
+        "prompt": "At his ball, Mr. Ryder introduces the old woman as the wife of his youth. How does he answer his society’s expectations?",
+        "choices": [
+          "He resists them, choosing loyalty to his past over the standing it prizes.",
+          "He conforms to them, hiding his past so that his standing stays safe.",
+          "He exploits them, using the guests’ approval to win more respect.",
+          "He is torn by them, and leaves the question unanswered at the end."
+        ],
+        "answer": 0,
+        "working": "He publicly acknowledges his wife from the days of slavery, so he chooses loyalty over the standing his society prizes. He resists."
+      }
+    ]
+  },
+  "e12-1-3": {
+    "lessonId": "e12-1-3",
+    "title": "Critical Lenses and Evidence",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five lenses",
+        "t": 30.254
+      },
+      {
+        "title": "Evidence for a reading",
+        "t": 70.569
+      },
+      {
+        "title": "A common mistake",
+        "t": 105.868
+      },
+      {
+        "title": "Your turn",
+        "t": 136.406
+      },
+      {
+        "title": "Summary",
+        "t": 168.546
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-1-3:q2",
+        "t": 148.917,
+        "prompt": "The lawyer loves the sound of John Jacob Astor’s name, which “rings like unto bullion”. Which lens does this support?",
+        "choices": [
+          "Feminist, because it shows how the roles of women and men are fixed.",
+          "Psychological, because it shows a hidden fear of loving another person.",
+          "Historical, because it shows the beliefs of upper-class London in 1900.",
+          "Economic, because it shows how deeply money shapes his sense of himself."
+        ],
+        "answer": 3,
+        "working": "His pleasure in a millionaire’s name, which rings like gold, shows how money shapes his self-image. That is an economic lens."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
