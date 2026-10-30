@@ -17916,6 +17916,665 @@
       }
     ]
   },
+  "e11-1-2": {
+    "lessonId": "e11-1-2",
+    "title": "Motive and Character Change",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Motive",
+        "t": 27.673
+      },
+      {
+        "title": "Change",
+        "t": 56.118
+      },
+      {
+        "title": "Epiphany",
+        "t": 94.292
+      },
+      {
+        "title": "A common mistake",
+        "t": 113.744
+      },
+      {
+        "title": "Your turn",
+        "t": 135.343
+      },
+      {
+        "title": "Summary",
+        "t": 163.639
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-2:q2",
+        "t": 144.666,
+        "prompt": "Miss Brill skips her honey-cake after a cruel remark. What is that remark called?",
+        "choices": [
+          "A motive, because it is the reason behind her whole routine.",
+          "An epiphany, because it is a sudden moment of understanding.",
+          "A foil, because it is a contrast that makes her stand out.",
+          "A catalyst, because it is the event that sets her change off."
+        ],
+        "answer": 3,
+        "working": "The remark is the event that sets her change in motion, which is a catalyst. The other choices name different ideas."
+      }
+    ]
+  },
+  "e11-1-3": {
+    "lessonId": "e11-1-3",
+    "title": "Narrative Voice and Reliability",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Free indirect style",
+        "t": 24.52
+      },
+      {
+        "title": "Two voices",
+        "t": 58.451
+      },
+      {
+        "title": "Unreliable narrators",
+        "t": 92.544
+      },
+      {
+        "title": "A common mistake",
+        "t": 136.129
+      },
+      {
+        "title": "Your turn",
+        "t": 156.61
+      },
+      {
+        "title": "Summary",
+        "t": 187.564
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-3:q2",
+        "t": 168.597,
+        "prompt": "Ravi ran up the stairs. Late again! What would Ms. Grant say this time? What style are the last two sentences?",
+        "choices": [
+          "Free indirect style, because his thoughts blend into the narration.",
+          "Direct thought, because his exact words are quoted with a tag.",
+          "Reported thought, because the narrator says what he realized.",
+          "Plain narration, because it only describes what he does."
+        ],
+        "answer": 0,
+        "working": "The exclamation and the question are Ravi’s own thoughts, with no quotation marks or tag. That is free indirect style."
+      }
+    ]
+  },
+  "e11-1-4": {
+    "lessonId": "e11-1-4",
+    "title": "Symbol, Motif and Allegory",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Symbols",
+        "t": 25.478
+      },
+      {
+        "title": "Motifs",
+        "t": 54.566
+      },
+      {
+        "title": "Allegory",
+        "t": 81.757
+      },
+      {
+        "title": "A common mistake",
+        "t": 112.18
+      },
+      {
+        "title": "Your turn",
+        "t": 131.156
+      },
+      {
+        "title": "Summary",
+        "t": 160.302
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-4:q2",
+        "t": 141.202,
+        "prompt": "Faith’s pink ribbons return at several turning points in the story. What does that make them?",
+        "choices": [
+          "An allegory, because the whole story stands for an idea.",
+          "A parable, because the ribbons teach a short moral lesson.",
+          "A motif, because the image keeps coming back and adds meaning.",
+          "A foil, because the ribbons contrast with another character."
+        ],
+        "answer": 2,
+        "working": "An image that recurs through a story, adding meaning each time, is a motif. The other choices name different ideas."
+      }
+    ]
+  },
+  "e11-1-5": {
+    "lessonId": "e11-1-5",
+    "title": "Diction, Tone and Syntax",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Diction",
+        "t": 25.473
+      },
+      {
+        "title": "Tone",
+        "t": 45.768
+      },
+      {
+        "title": "Syntax",
+        "t": 75.838
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.392
+      },
+      {
+        "title": "Your turn",
+        "t": 128.303
+      },
+      {
+        "title": "Summary",
+        "t": 157.238
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-5:q2",
+        "t": 139.142,
+        "prompt": "One writer calls a man “thrifty”. Another calls the same man “stingy”. How do the two words differ?",
+        "choices": [
+          "Their denotation, because the two dictionary meanings are far apart.",
+          "Their connotation, because each word carries different feelings.",
+          "Their syntax, because each word has a different sentence pattern.",
+          "Their mood, because each word names the reader’s feeling."
+        ],
+        "answer": 1,
+        "working": "Both words describe someone careful with money, but they carry different feelings. That difference is connotation."
+      }
+    ]
+  },
+  "e11-2-1": {
+    "lessonId": "e11-2-1",
+    "title": "Extended Metaphor, Conceit and Allusion",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Extended metaphor",
+        "t": 30.091
+      },
+      {
+        "title": "The conceit",
+        "t": 58.23
+      },
+      {
+        "title": "Allusion",
+        "t": 95.952
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.348
+      },
+      {
+        "title": "Your turn",
+        "t": 142.973
+      },
+      {
+        "title": "Summary",
+        "t": 169.239
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-2-1:q2",
+        "t": 152.407,
+        "prompt": "A writer calls a hard job a “Herculean” task. What kind of allusion is that?",
+        "choices": [
+          "Biblical, because it refers to a story from the Bible.",
+          "Historical, because it refers to a real event in history.",
+          "Classical, because it refers to a hero of Greek legend.",
+          "Literary, because it refers to a character from a later novel."
+        ],
+        "answer": 2,
+        "working": "Hercules is a hero of ancient Greek and Roman myth, so this is a classical allusion."
+      }
+    ]
+  },
+  "e11-2-2": {
+    "lessonId": "e11-2-2",
+    "title": "The Sonnet",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two shapes",
+        "t": 28.07
+      },
+      {
+        "title": "The volta",
+        "t": 63.921
+      },
+      {
+        "title": "Bending the beat",
+        "t": 89.071
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.345
+      },
+      {
+        "title": "Your turn",
+        "t": 141.078
+      },
+      {
+        "title": "Summary",
+        "t": 173.395
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-2-2:q2",
+        "t": 154.439,
+        "prompt": "A sonnet has three quatrains and a couplet, rhyming ABAB CDCD EFEF GG. Which kind is it?",
+        "choices": [
+          "Shakespearean, because it ends with a rhyming couplet.",
+          "Petrarchan, because it is built from an octave and a sestet.",
+          "Shakespearean, because it must turn at line nine.",
+          "Petrarchan, because it uses only a few rhyme sounds."
+        ],
+        "answer": 0,
+        "working": "Three quatrains and a closing couplet make a Shakespearean sonnet. A Petrarchan sonnet has an octave and a sestet."
+      }
+    ]
+  },
+  "e11-2-3": {
+    "lessonId": "e11-2-3",
+    "title": "Dramatic Monologue and Irony",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The speaker",
+        "t": 24.983
+      },
+      {
+        "title": "Between the lines",
+        "t": 49.572
+      },
+      {
+        "title": "Irony",
+        "t": 81.672
+      },
+      {
+        "title": "A common mistake",
+        "t": 122.348
+      },
+      {
+        "title": "Your turn",
+        "t": 139.61
+      },
+      {
+        "title": "Summary",
+        "t": 168.428
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-2-3:q2",
+        "t": 151.888,
+        "prompt": "Everyone in a poem envies a rich, admired man, yet the last line shows him in despair. Which irony is it?",
+        "choices": [
+          "Verbal irony, because someone says the opposite of what they mean.",
+          "Dramatic irony, because the reader knows more than a character does.",
+          "An allusion, because it refers to a well-known story or person.",
+          "Situational irony, because events turn out the opposite of what we expect."
+        ],
+        "answer": 3,
+        "working": "The ending reverses what the poem led us to expect, so the irony is situational."
+      }
+    ]
+  },
+  "e11-2-4": {
+    "lessonId": "e11-2-4",
+    "title": "Comparing Poems",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Points of comparison",
+        "t": 30.643
+      },
+      {
+        "title": "Two birds of hope",
+        "t": 67.883
+      },
+      {
+        "title": "Writing the comparison",
+        "t": 103.129
+      },
+      {
+        "title": "A common mistake",
+        "t": 129.613
+      },
+      {
+        "title": "Your turn",
+        "t": 146.891
+      },
+      {
+        "title": "Summary",
+        "t": 172.36
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-2-4:q2",
+        "t": 154.062,
+        "prompt": "Which sentence best compares two poems about war?",
+        "choices": [
+          "The first poem is about a soldier’s death, and the second is about war.",
+          "The first poem is gentle, and the second also describes a soldier.",
+          "Whereas the first poem is gentle, the second is brutal, so war looks different.",
+          "Both poems were written by soldiers and are about the First World War."
+        ],
+        "answer": 2,
+        "working": "Choice C names a point, contrasts both poems and says why it matters. The others list or only note a likeness."
+      }
+    ]
+  },
+  "e11-3-1": {
+    "lessonId": "e11-3-1",
+    "title": "Macbeth: Language and Imagery",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Verse, prose and chant",
+        "t": 21.912
+      },
+      {
+        "title": "Paraphrasing Macbeth",
+        "t": 58.635
+      },
+      {
+        "title": "Motifs",
+        "t": 96.393
+      },
+      {
+        "title": "A common mistake",
+        "t": 128.966
+      },
+      {
+        "title": "Your turn",
+        "t": 152.18
+      },
+      {
+        "title": "Summary",
+        "t": 177.508
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-3-1:q2",
+        "t": 162.407,
+        "prompt": "Macbeth cries, “Stars, hide your fires!” Which is the best paraphrase?",
+        "choices": [
+          "Stars, stop shining, so that no one sees my wishes.",
+          "The sky is growing dark, so the stars are fading.",
+          "Stars, shine more brightly, so that I can see my way.",
+          "Stars, tell everyone about the wishes that I hide."
+        ],
+        "answer": 0,
+        "working": "A paraphrase keeps the image: the stars are asked to stop shining, so that the night hides his wishes."
+      }
+    ]
+  },
+  "e11-3-2": {
+    "lessonId": "e11-3-2",
+    "title": "Macbeth: Plot, Characters and Motive",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The people and the story",
+        "t": 32.333
+      },
+      {
+        "title": "Why do they do it?",
+        "t": 81.39
+      },
+      {
+        "title": "Foils",
+        "t": 106.969
+      },
+      {
+        "title": "A common mistake",
+        "t": 136.21
+      },
+      {
+        "title": "Your turn",
+        "t": 155.201
+      },
+      {
+        "title": "Summary",
+        "t": 180.792
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-3-2:q2",
+        "t": 161.318,
+        "prompt": "Why does Macbeth have Banquo murdered?",
+        "choices": [
+          "Because Fleance escapes while Banquo is killed.",
+          "Because Lady Macbeth taunts him about his manhood.",
+          "Because he fears the Witches’ promise to Banquo.",
+          "Because Banquo refuses to come to the banquet."
+        ],
+        "answer": 2,
+        "working": "Macbeth fears the Witches’ promise that Banquo’s descendants will be kings. That reason comes before the murder."
+      }
+    ]
+  },
+  "e11-3-3": {
+    "lessonId": "e11-3-3",
+    "title": "Macbeth: Dramatic Devices",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Who is listening?",
+        "t": 26.092
+      },
+      {
+        "title": "Prophecy and equivocation",
+        "t": 68.08
+      },
+      {
+        "title": "Dramatic irony",
+        "t": 105.375
+      },
+      {
+        "title": "A common mistake",
+        "t": 133.826
+      },
+      {
+        "title": "Your turn",
+        "t": 157.292
+      },
+      {
+        "title": "Summary",
+        "t": 187.401
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-3-3:q2",
+        "t": 167.086,
+        "prompt": "Alone, Macbeth sees a floating dagger and speaks his thoughts aloud. What is this speech?",
+        "choices": [
+          "An aside, because it is a brief remark to us.",
+          "A soliloquy, because he is alone and only we hear.",
+          "A monologue, because the other lords listen in.",
+          "A dialogue, because he is talking to the dagger."
+        ],
+        "answer": 1,
+        "working": "A character alone on stage who speaks thoughts aloud, so that only the audience hears, is giving a soliloquy."
+      }
+    ]
+  },
+  "e11-3-4": {
+    "lessonId": "e11-3-4",
+    "title": "Macbeth: Tragedy and Themes",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Macbeth as a tragic hero",
+        "t": 29.294
+      },
+      {
+        "title": "Pity and fear",
+        "t": 71.365
+      },
+      {
+        "title": "Themes",
+        "t": 94.272
+      },
+      {
+        "title": "A common mistake",
+        "t": 132.003
+      },
+      {
+        "title": "Your turn",
+        "t": 156.3
+      },
+      {
+        "title": "Summary",
+        "t": 181.835
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-3-4:q2",
+        "t": 163.34,
+        "prompt": "Which is the strongest theme statement about Macbeth?",
+        "choices": [
+          "Guilty people always lose their minds in the end.",
+          "Never trust a prophecy that promises you a crown.",
+          "Macbeth shows how ambition and guilt ruin a king.",
+          "Ambition without a conscience destroys the one it drives."
+        ],
+        "answer": 3,
+        "working": "A strong theme statement is a general sentence with no character names, no orders and no absolutes, and the play supports it."
+      }
+    ]
+  },
+  "e11-4-1": {
+    "lessonId": "e11-4-1",
+    "title": "The Essay: Kinds and Central Ideas",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four kinds of essay",
+        "t": 26.415
+      },
+      {
+        "title": "The central idea",
+        "t": 66.874
+      },
+      {
+        "title": "A common mistake",
+        "t": 105.298
+      },
+      {
+        "title": "Your turn",
+        "t": 128.886
+      },
+      {
+        "title": "Summary",
+        "t": 156.874
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-4-1:q2",
+        "t": 140.398,
+        "prompt": "An essay opens: “For a whole term I slept four hours a night and called it ambition.” What kind is it?",
+        "choices": [
+          "Expository, because it explains how sleep works.",
+          "Argumentative, because it takes a firm position.",
+          "Satirical, because it mocks a target to criticize it.",
+          "Personal, because it reflects on the writer’s own life."
+        ],
+        "answer": 3,
+        "working": "The writer speaks as “I” and remembers his own experience, so the essay is personal."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
