@@ -709,13 +709,12 @@ items ship or decisions change.
      open to classes and sign-up: fiction through critical lenses, poetry, *Hamlet*, rhetoric and
      argument, media and culture, writing and language. English now runs Grades 10 to 12, and
      placement goes by grade with a check on the course before. The roadmap's English item is done.
-   - In progress (30 October 2026): **English explainer videos**, one per lesson, 93 in all. Every
+   - Done (30 October 2026): **English explainer videos**, one per lesson, 93 in all. Every
      script is written (`src/content/eng10|eng20|eng30/videos/`), each checked against its lesson:
      every quotation word for word, its layout on stills, and the voice on each name and term
-     (Tybalt, Laertes, Dunsinane, Désirée, hamartia, synecdoche and others are respelled in
-     `src/video/words.ts`). The video stage has a new `quote` element for passages of prose and
-     verse. Grades 10 and 11 (31 videos each) are rendered, checked by ear (Whisper) and in Drive;
-     Grade 12's are rendering.
+     (Tybalt, Laertes, Dunsinane, Désirée, hamartia, synecdoche, pararhyme and others are respelled
+     in `src/video/words.ts`). The video stage has a new `quote` element for passages of prose and
+     verse. All three grades (31 videos each) are rendered, checked by ear (Whisper) and in Drive.
    - Done (30 October 2026): **the English tutor voice**. The Tutor voice workflow now records the
      English courses too; the tutor reads verse with a pause at each line, and its prompts name the
      course's subject (an English or chemistry tutor, not a mathematics one), so "Ask your tutor"

@@ -19477,6 +19477,1504 @@
       }
     ]
   },
+  "e12-1-2": {
+    "lessonId": "e12-1-2",
+    "title": "Context and Society in Fiction",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Using context well",
+        "t": 32.463
+      },
+      {
+        "title": "A common mistake",
+        "t": 70.3
+      },
+      {
+        "title": "Characters and their societies",
+        "t": 103.364
+      },
+      {
+        "title": "Your turn",
+        "t": 136.433
+      },
+      {
+        "title": "Summary",
+        "t": 169.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-1-2:q2",
+        "t": 148.912,
+        "prompt": "At his ball, Mr. Ryder introduces the old woman as the wife of his youth. How does he answer his society’s expectations?",
+        "choices": [
+          "He resists them, choosing loyalty to his past over the standing it prizes.",
+          "He conforms to them, hiding his past so that his standing stays safe.",
+          "He exploits them, using the guests’ approval to win more respect.",
+          "He is torn by them, and leaves the question unanswered at the end."
+        ],
+        "answer": 0,
+        "working": "He publicly acknowledges his wife from the days of slavery, so he chooses loyalty over the standing his society prizes. He resists."
+      }
+    ]
+  },
+  "e12-1-3": {
+    "lessonId": "e12-1-3",
+    "title": "Critical Lenses and Evidence",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five lenses",
+        "t": 30.254
+      },
+      {
+        "title": "Evidence for a reading",
+        "t": 70.569
+      },
+      {
+        "title": "A common mistake",
+        "t": 105.868
+      },
+      {
+        "title": "Your turn",
+        "t": 136.406
+      },
+      {
+        "title": "Summary",
+        "t": 168.546
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-1-3:q2",
+        "t": 148.917,
+        "prompt": "The lawyer loves the sound of John Jacob Astor’s name, which “rings like unto bullion”. Which lens does this support?",
+        "choices": [
+          "Feminist, because it shows how the roles of women and men are fixed.",
+          "Psychological, because it shows a hidden fear of loving another person.",
+          "Historical, because it shows the beliefs of upper-class London in 1900.",
+          "Economic, because it shows how deeply money shapes his sense of himself."
+        ],
+        "answer": 3,
+        "working": "His pleasure in a millionaire’s name, which rings like gold, shows how money shapes his self-image. That is an economic lens."
+      }
+    ]
+  },
+  "e12-1-4": {
+    "lessonId": "e12-1-4",
+    "title": "Ambiguity and Endings",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Deliberate ambiguity",
+        "t": 29.38
+      },
+      {
+        "title": "A common mistake",
+        "t": 66.28
+      },
+      {
+        "title": "How stories end",
+        "t": 98.774
+      },
+      {
+        "title": "Your turn",
+        "t": 142.113
+      },
+      {
+        "title": "Summary",
+        "t": 177.74
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-1-4:q2",
+        "t": 154.876,
+        "prompt": "Waythorn, who wanted his wife’s past kept away, “took the third cup with a laugh”. What kind of ending is this?",
+        "choices": [
+          "Closed, because it settles his unease and makes the meaning plain.",
+          "Ironic, because it reverses what he wanted and he accepts it.",
+          "Open, because it leaves his future for the reader to imagine.",
+          "Epiphanic, because he suddenly sees a truth he had missed."
+        ],
+        "answer": 1,
+        "working": "The man who wanted his wife’s past at a distance ends up as the third of her husbands, drinking tea with the other two. The outcome reverses his wish, so the ending is ironic."
+      }
+    ]
+  },
+  "e12-1-5": {
+    "lessonId": "e12-1-5",
+    "title": "Style, Tone and Irony",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Style",
+        "t": 28.867
+      },
+      {
+        "title": "Tone and irony",
+        "t": 77.55
+      },
+      {
+        "title": "A common mistake",
+        "t": 116.331
+      },
+      {
+        "title": "Your turn",
+        "t": 136.29
+      },
+      {
+        "title": "Summary",
+        "t": 164.432
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-1-5:q2",
+        "t": 143.491,
+        "prompt": "Which of these is ironic, and not merely unlucky?",
+        "choices": [
+          "Rain falls on a picnic held to celebrate the end of a drought.",
+          "Rain falls on a picnic the whole family had planned for weeks.",
+          "A traveller is caught in a storm and has a cold, wet journey.",
+          "A farmer misses the bus in the rain and arrives late to work."
+        ],
+        "answer": 0,
+        "working": "The rain reverses what the picnic was meant to celebrate. The other choices are only misfortunes, with no gap between expectation and outcome."
+      }
+    ]
+  },
+  "e12-2-1": {
+    "lessonId": "e12-2-1",
+    "title": "The Ode and the Meditative Lyric",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The ode and its address",
+        "t": 34.278
+      },
+      {
+        "title": "The meditative lyric",
+        "t": 72.06
+      },
+      {
+        "title": "A common mistake",
+        "t": 112.133
+      },
+      {
+        "title": "Your turn",
+        "t": 133.672
+      },
+      {
+        "title": "Summary",
+        "t": 163.223
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-2-1:q2",
+        "t": 144.369,
+        "prompt": "In “Ode to a Nightingale”, Keats mentions Death, an emperor and a clown. Who is the poem’s “thou”?",
+        "choices": [
+          "Death, because the poem keeps returning to the thought of dying.",
+          "The emperor, because he is the grandest figure the poem names.",
+          "The reader, because the poem asks us to share the speaker’s pain.",
+          "The nightingale, because the speaker is speaking to the bird."
+        ],
+        "answer": 3,
+        "working": "An ode is built on apostrophe. Death, the emperor and the clown are mentioned, but the speaker speaks to the nightingale."
+      }
+    ]
+  },
+  "e12-2-2": {
+    "lessonId": "e12-2-2",
+    "title": "War Poetry and Witness",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the witness stands",
+        "t": 32.737
+      },
+      {
+        "title": "Irony and form",
+        "t": 72.691
+      },
+      {
+        "title": "A common mistake",
+        "t": 121.535
+      },
+      {
+        "title": "Your turn",
+        "t": 147.756
+      },
+      {
+        "title": "Summary",
+        "t": 175.044
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-2-2:q2",
+        "t": 156.659,
+        "prompt": "Which sentence best compares how form works as witness in Owen and Whitman?",
+        "choices": [
+          "Both poets use perfect rhyme, so each poem ends in settled comfort.",
+          "Owen’s pararhyme echoes without resolving; Whitman’s long lines make us wait.",
+          "Owen’s long lines slow the reader down; Whitman’s pararhyme unsettles us.",
+          "Owen writes in strict rhyme to console, while Whitman writes in short lines."
+        ],
+        "answer": 1,
+        "working": "Owen’s pararhyme echoes without resolving, and Whitman’s long unrhymed lines make the reader wait and watch."
+      }
+    ]
+  },
+  "e12-2-3": {
+    "lessonId": "e12-2-3",
+    "title": "Modern Form, Free Verse and Sound",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reshaping the sonnet",
+        "t": 34.55
+      },
+      {
+        "title": "Free verse",
+        "t": 80.627
+      },
+      {
+        "title": "Sound and sense",
+        "t": 116.027
+      },
+      {
+        "title": "Your turn",
+        "t": 158.099
+      },
+      {
+        "title": "Summary",
+        "t": 191.863
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-2-3:q2",
+        "t": 171.36,
+        "prompt": "Hopkins writes, “Landscape plotted and pieced—fold, fallow, and plough”. Which sentence best links sound to sense?",
+        "choices": [
+          "The line uses alliteration on p and f, a feature of Hopkins’s style.",
+          "The long, flowing line imitates a smooth field with an unbroken rhythm.",
+          "The repeated sounds and broken list make the line a patchwork, like the land.",
+          "The line uses rhyme and a strict metre to show how orderly the farmland is."
+        ],
+        "answer": 2,
+        "working": "Alliteration and a list broken by a dash and commas make the line itself a patchwork, like the patched and dappled countryside it describes."
+      }
+    ]
+  },
+  "e12-2-4": {
+    "lessonId": "e12-2-4",
+    "title": "Reading an Unseen Poem",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four passes",
+        "t": 31.627
+      },
+      {
+        "title": "Finding the turn",
+        "t": 75.006
+      },
+      {
+        "title": "A common mistake",
+        "t": 107.086
+      },
+      {
+        "title": "Your turn",
+        "t": 134.246
+      },
+      {
+        "title": "Summary",
+        "t": 165.954
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-2-4:q2",
+        "t": 145.387,
+        "prompt": "In “Rain”, the poem turns at “But here I pray that none whom once I loved”. What changes at the turn?",
+        "choices": [
+          "It moves from his own death to his fear for the people he once loved.",
+          "It moves from the rain outside to a memory of a farm in sunshine.",
+          "It moves from fear of death to hope that the rain will wash it away.",
+          "It moves from calm acceptance to panic as the storm grows louder."
+        ],
+        "answer": 0,
+        "working": "Before the turn, the speaker thinks of his own death. After it, he fears for the people he once loved. Naming both halves shows how the poem is built."
+      }
+    ]
+  },
+  "e12-3-1": {
+    "lessonId": "e12-3-1",
+    "title": "Hamlet: Language and Soliloquies",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Verse, prose and wordplay",
+        "t": 22.785
+      },
+      {
+        "title": "Paraphrasing Hamlet",
+        "t": 67.725
+      },
+      {
+        "title": "The soliloquies",
+        "t": 98.319
+      },
+      {
+        "title": "A common mistake",
+        "t": 132.162
+      },
+      {
+        "title": "Your turn",
+        "t": 158.203
+      },
+      {
+        "title": "Summary",
+        "t": 183.872
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-3-1:q2",
+        "t": 165.907,
+        "prompt": "Hamlet speaks of “this mortal coil”. What does coil mean here?",
+        "choices": [
+          "A coil of rope that ties a person to life.",
+          "The turmoil, fuss and trouble of life.",
+          "A spring that keeps the body moving.",
+          "The cloth that wraps the body in death."
+        ],
+        "answer": 1,
+        "working": "A word that looks familiar may have changed its meaning. Here coil is turmoil, the fuss and trouble of life."
+      }
+    ]
+  },
+  "e12-3-2": {
+    "lessonId": "e12-3-2",
+    "title": "Hamlet: Plot, Characters and Motives",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Who’s who",
+        "t": 24.765
+      },
+      {
+        "title": "The play, act by act",
+        "t": 59.782
+      },
+      {
+        "title": "Motives",
+        "t": 96.872
+      },
+      {
+        "title": "A common mistake",
+        "t": 128.569
+      },
+      {
+        "title": "Your turn",
+        "t": 151.556
+      },
+      {
+        "title": "Summary",
+        "t": 181.444
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-3-2:q2",
+        "t": 162.298,
+        "prompt": "Alone at prayer, Claudius says he still has “My crown, mine own ambition, and my queen.” What does this show?",
+        "choices": [
+          "He wants forgiveness most, so he will give up his crown.",
+          "He wants Hamlet to rule, so he hopes to hand over the crown.",
+          "He wants to confess, so he will tell the court the truth.",
+          "He wants to keep what the murder won, so he cannot truly repent."
+        ],
+        "answer": 3,
+        "working": "Alone, Claudius reveals his real motive: he will not give up the crown, the ambition and the queen that the murder won him."
+      }
+    ]
+  },
+  "e12-3-3": {
+    "lessonId": "e12-3-3",
+    "title": "Hamlet: Dramatic Devices and Irony",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Kinds of speech",
+        "t": 24.536
+      },
+      {
+        "title": "The devices of Hamlet",
+        "t": 66.336
+      },
+      {
+        "title": "Irony",
+        "t": 100.649
+      },
+      {
+        "title": "A common mistake",
+        "t": 131.97
+      },
+      {
+        "title": "Your turn",
+        "t": 149.253
+      },
+      {
+        "title": "Summary",
+        "t": 178.693
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-3-3:q2",
+        "t": 159.566,
+        "prompt": "Claudius says “O ’tis too true!” and nobody on stage hears him. What is this speech?",
+        "choices": [
+          "An aside, because only the audience hears it.",
+          "A soliloquy, because it shows his private thoughts.",
+          "A monologue, because it is a long speech to others.",
+          "Dialogue, because he answers what Polonius said."
+        ],
+        "answer": 0,
+        "working": "Claudius is not alone on stage, so it is not a soliloquy. A short remark that only the audience hears is an aside."
+      }
+    ]
+  },
+  "e12-3-4": {
+    "lessonId": "e12-3-4",
+    "title": "Hamlet: Themes and Interpretations",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Revenge tragedy",
+        "t": 27.622
+      },
+      {
+        "title": "Stating a theme",
+        "t": 56.941
+      },
+      {
+        "title": "Weighing interpretations",
+        "t": 81.272
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.413
+      },
+      {
+        "title": "Your turn",
+        "t": 142.63
+      },
+      {
+        "title": "Summary",
+        "t": 170.467
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-3-4:q2",
+        "t": 150.642,
+        "prompt": "Which is the best theme statement for Hamlet?",
+        "choices": [
+          "Hamlet puts off his revenge until the last act.",
+          "Death and revenge are the main topics of the play.",
+          "Corruption at the top of a state spreads to those around it.",
+          "Never trust a ghost, and never take revenge on anyone."
+        ],
+        "answer": 2,
+        "working": "A theme is a general sentence supported by the play. A is plot, B is a list of topics, and D gives orders with an absolute."
+      }
+    ]
+  },
+  "e12-4-1": {
+    "lessonId": "e12-4-1",
+    "title": "Rhetorical Strategy and Effect",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Strategy: the plan of the whole",
+        "t": 29.811
+      },
+      {
+        "title": "How the parts serve the whole",
+        "t": 67.163
+      },
+      {
+        "title": "Effect on an audience",
+        "t": 97.485
+      },
+      {
+        "title": "A common mistake",
+        "t": 137.626
+      },
+      {
+        "title": "Your turn",
+        "t": 156.738
+      },
+      {
+        "title": "Summary",
+        "t": 186.221
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-4-1:q2",
+        "t": 167.299,
+        "prompt": "Paine contrasts “the summer soldier” with the one who “stands it now”. What is the effect on his soldiers?",
+        "choices": [
+          "It grabs their attention, because the images are vivid.",
+          "It warns them that the enemy is stronger than they thought.",
+          "It shames those tempted to leave, and honours those who stay.",
+          "It praises every soldier alike, so all may go home proud."
+        ],
+        "answer": 2,
+        "working": "No soldier wants to be the fair-weather kind, so the contrast shames anyone tempted to leave and honours those who stay."
+      }
+    ]
+  },
+  "e12-4-2": {
+    "lessonId": "e12-4-2",
+    "title": "Toulmin’s Model of Argument",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The six parts",
+        "t": 30.466
+      },
+      {
+        "title": "The warrant: the hidden link",
+        "t": 68.806
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.831
+      },
+      {
+        "title": "Your turn",
+        "t": 139.841
+      },
+      {
+        "title": "Summary",
+        "t": 173.425
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-4-2:q2",
+        "t": 152.983,
+        "prompt": "The library’s warrant is “A public service should be open when the public most wants to use it.” What is the city charter?",
+        "choices": [
+          "Backing, because it supports the warrant that the library serves everyone.",
+          "Data, because it shows directly that Sunday hours are wanted.",
+          "A qualifier, because it limits how strongly the claim is made.",
+          "A rebuttal, because it names a case where the claim fails."
+        ],
+        "answer": 0,
+        "working": "The charter does not show that Sunday hours are wanted; it supports the warrant by showing the library’s job is to serve every resident."
+      }
+    ]
+  },
+  "e12-4-3": {
+    "lessonId": "e12-4-3",
+    "title": "Satire: Wilde, Pope and Swift",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two modes of satire",
+        "t": 32.017
+      },
+      {
+        "title": "Five tools of satire",
+        "t": 70.684
+      },
+      {
+        "title": "A common mistake",
+        "t": 128.505
+      },
+      {
+        "title": "Your turn",
+        "t": 150.785
+      },
+      {
+        "title": "Summary",
+        "t": 180.721
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-4-3:q2",
+        "t": 160.378,
+        "prompt": "In Lilliput, wars are fought over which end of an egg to break. What is Swift’s target?",
+        "choices": [
+          "The cooking habits of ordinary families in his England.",
+          "The greedy merchants who sold eggs at high prices.",
+          "The giant King and the strange laws of his land.",
+          "The bitter wars between Catholics and Protestants."
+        ],
+        "answer": 3,
+        "working": "Lilliput is an allegory. The quarrel over eggs stands for the bitter quarrels between Catholics and Protestants, and between Britain and France."
+      }
+    ]
+  },
+  "e12-4-4": {
+    "lessonId": "e12-4-4",
+    "title": "Statistics and Causal Reasoning",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How true figures mislead",
+        "t": 29.266
+      },
+      {
+        "title": "Relative and absolute change",
+        "t": 61.026
+      },
+      {
+        "title": "Reasoning about causes",
+        "t": 92.363
+      },
+      {
+        "title": "A common mistake",
+        "t": 144.945
+      },
+      {
+        "title": "Your turn",
+        "t": 157.698
+      },
+      {
+        "title": "Summary",
+        "t": 187.327
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-4-4:q2",
+        "t": 168.425,
+        "prompt": "Families with more fire extinguishers have had more house fires. What is the best explanation?",
+        "choices": [
+          "A confounding factor: bigger houses have both more extinguishers and more fires.",
+          "Reverse causation: a fire led families to buy more extinguishers.",
+          "Survivorship bias: only houses that burned down were counted.",
+          "Base-rate neglect: most houses never had an extinguisher."
+        ],
+        "answer": 1,
+        "working": "The cause may run backwards. A house fire is what led the family to buy extinguishers, so no third factor is needed."
+      }
+    ]
+  },
+  "e12-5-1": {
+    "lessonId": "e12-5-1",
+    "title": "Media Industries and Audiences",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Who pays?",
+        "t": 28.565
+      },
+      {
+        "title": "Who owns?",
+        "t": 69.763
+      },
+      {
+        "title": "Platforms and gatekeepers",
+        "t": 108.334
+      },
+      {
+        "title": "A common mistake",
+        "t": 141.353
+      },
+      {
+        "title": "Your turn",
+        "t": 163.862
+      },
+      {
+        "title": "Summary",
+        "t": 193.203
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-5-1:q2",
+        "t": 175.627,
+        "prompt": "A farming newsletter, paid for by reader fees, grows cautious about criticizing big farms. What shapes it?",
+        "choices": [
+          "Subscription: it softens stories that upset its paying readers.",
+          "Advertising: it avoids stories that offend its paying sponsors.",
+          "Public funding: it must serve every region without controversy.",
+          "Platform rules: its articles are pushed down by an algorithm."
+        ],
+        "answer": 0,
+        "working": "Its income comes from readers, and many of them own large farms, so criticism costs subscribers. Subscription funding is shaping the content."
+      }
+    ]
+  },
+  "e12-5-2": {
+    "lessonId": "e12-5-2",
+    "title": "Representation and Power",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Voice and the gaze",
+        "t": 27.812
+      },
+      {
+        "title": "Frames, stereotypes and tokens",
+        "t": 68.726
+      },
+      {
+        "title": "Counter-narratives",
+        "t": 104.552
+      },
+      {
+        "title": "A common mistake",
+        "t": 129.216
+      },
+      {
+        "title": "Your turn",
+        "t": 151.334
+      },
+      {
+        "title": "Summary",
+        "t": 181.241
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-5-2:q2",
+        "t": 163.252,
+        "prompt": "A film shows a refugee family in every scene, but only a volunteer narrates. What is the fairest fix?",
+        "choices": [
+          "Add one family member, briefly, so the film looks fairer.",
+          "Show the family in more roles, such as shopping and school.",
+          "Add more volunteers, so more people can describe the family.",
+          "Let the family tell their own story, in their own words."
+        ],
+        "answer": 3,
+        "working": "The family has no voice, and the film takes an outsider’s gaze. Letting them tell their own story addresses both, and moves the film towards a counter-narrative."
+      }
+    ]
+  },
+  "e12-5-3": {
+    "lessonId": "e12-5-3",
+    "title": "Propaganda and Misinformation",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The techniques of propaganda",
+        "t": 31.283
+      },
+      {
+        "title": "Resisting propaganda",
+        "t": 70.458
+      },
+      {
+        "title": "Testing claims in digital media",
+        "t": 100.207
+      },
+      {
+        "title": "A common mistake",
+        "t": 141.19
+      },
+      {
+        "title": "Your turn",
+        "t": 160.9
+      },
+      {
+        "title": "Summary",
+        "t": 195.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-5-3:q2",
+        "t": 175.446,
+        "prompt": "A three-day-old account posts a cracked dam: “Millbrook Dam failing NOW — evacuate!” What is the best next step?",
+        "choices": [
+          "Share it quickly, because a warning could save lives if true.",
+          "Read laterally: see what the town’s official channels report.",
+          "Trust it, because so many people have shared it so fast.",
+          "Judge it by its look, since the photo seems real and urgent."
+        ],
+        "answer": 1,
+        "working": "Urgency is a reason to slow down. Until the town’s official channels or reliable local news confirm it, the post should not be believed or shared."
+      }
+    ]
+  },
+  "e12-6-1": {
+    "lessonId": "e12-6-1",
+    "title": "The Critical Essay",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The sophisticated thesis",
+        "t": 28.964
+      },
+      {
+        "title": "Where tensions gather",
+        "t": 63.132
+      },
+      {
+        "title": "Commentary that weighs complexity",
+        "t": 100.643
+      },
+      {
+        "title": "A common mistake",
+        "t": 138.367
+      },
+      {
+        "title": "Your turn",
+        "t": 160.6
+      },
+      {
+        "title": "Summary",
+        "t": 186.784
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-1:q2",
+        "t": 168.769,
+        "prompt": "Which thesis on “The Cask of Amontillado” is sophisticated?",
+        "choices": [
+          "Poe uses the dark catacombs to show how cruel Montresor is.",
+          "Poe proves that every man who seeks revenge is full of guilt.",
+          "Montresor blames his sick heart on dampness, so his boast may hide guilt.",
+          "Montresor lures Fortunato into the catacombs and walls him in."
+        ],
+        "answer": 2,
+        "working": "C is arguable and takes on a tension. A is obvious, B overreaches and D only summarizes."
+      }
+    ]
+  },
+  "e12-6-2": {
+    "lessonId": "e12-6-2",
+    "title": "The Comparative Literary Essay",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The comparative thesis",
+        "t": 17.5
+      },
+      {
+        "title": "Building the thesis",
+        "t": 50.596
+      },
+      {
+        "title": "Organizing the comparison",
+        "t": 87.843
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.644
+      },
+      {
+        "title": "Your turn",
+        "t": 145.534
+      },
+      {
+        "title": "Summary",
+        "t": 174.834
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-2:q2",
+        "t": 153.577,
+        "prompt": "Which Poe thesis has a ground, a difference and a revelation?",
+        "choices": [
+          "Both boast of control, but one confesses and one never does: calm guilt scares more.",
+          "Both stories have murderers who boast of control, so they are very similar.",
+          "One narrator confesses within hours, while the other tells his tale calmly years later.",
+          "The first story is about a haunted man. The second is about a revenge."
+        ],
+        "answer": 0,
+        "working": "A has a ground, a difference and a revelation. B shows a likeness, C a bare difference and D two separate claims."
+      }
+    ]
+  },
+  "e12-6-3": {
+    "lessonId": "e12-6-3",
+    "title": "Research Writing",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Judging a source",
+        "t": 21.827
+      },
+      {
+        "title": "Weighing a mixed source",
+        "t": 58.453
+      },
+      {
+        "title": "Weaving sources into your argument",
+        "t": 90.802
+      },
+      {
+        "title": "A common mistake",
+        "t": 129.69
+      },
+      {
+        "title": "Your turn",
+        "t": 156.61
+      },
+      {
+        "title": "Summary",
+        "t": 188.049
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-3:q2",
+        "t": 168.348,
+        "prompt": "A software seller reports that vocabulary rose in fifteen schools using its program. How should you use it?",
+        "choices": [
+          "Reject it, because the seller gains and so the report is worthless.",
+          "Accept it as settled, because the seller knows its program best.",
+          "Treat it as proof, because it compares scores in fifteen schools.",
+          "Use it, name its limit, and check it against independent research."
+        ],
+        "answer": 3,
+        "working": "The report is real evidence, but the seller gains from the result. Use it, state its limit, and look for independent support."
+      }
+    ]
+  },
+  "e12-6-4": {
+    "lessonId": "e12-6-4",
+    "title": "Reflective Writing",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From experience to insight",
+        "t": 24.326
+      },
+      {
+        "title": "Three ways reflection fails",
+        "t": 64.226
+      },
+      {
+        "title": "Then and now",
+        "t": 91.304
+      },
+      {
+        "title": "A common mistake",
+        "t": 127.378
+      },
+      {
+        "title": "Your turn",
+        "t": 150.317
+      },
+      {
+        "title": "Summary",
+        "t": 181.07
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-4:q2",
+        "t": 160.074,
+        "prompt": "A writer hurried an old man who paid in coins. Which sentence is an earned insight?",
+        "choices": [
+          "This taught me that patience is a virtue, and everyone deserves kindness.",
+          "I thought I was saving him time, but I had taken the last part of the errand that was his.",
+          "It was a very emotional moment, and I felt so many powerful things at once.",
+          "He counted each coin from a cloth purse while the line behind him grew longer."
+        ],
+        "answer": 1,
+        "working": "B grows from a particular detail and turns back on the writer. A is a tacked-on moral, C is a vague generality and D is narration only."
+      }
+    ]
+  },
+  "e12-6-5": {
+    "lessonId": "e12-6-5",
+    "title": "Style: Precision, Concision and Voice",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Precision and concision",
+        "t": 28.477
+      },
+      {
+        "title": "Hedges and voice",
+        "t": 67.548
+      },
+      {
+        "title": "Emphasis and rhythm",
+        "t": 109.627
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.29
+      },
+      {
+        "title": "Your turn",
+        "t": 158.481
+      },
+      {
+        "title": "Summary",
+        "t": 185.469
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-5:q2",
+        "t": 167.479,
+        "prompt": "Which sentence saves its key idea, the lost village, for the last words?",
+        "choices": [
+          "The village was gone by noon, after a storm that had hit at dawn.",
+          "The storm hit the village at dawn, which no one had expected.",
+          "The storm hit at dawn, and by noon the village was gone.",
+          "By noon the village was gone, though no one had seen it at dawn."
+        ],
+        "answer": 2,
+        "working": "C builds the context first and ends on the key fact. A, B and D all end on a minor detail."
+      }
+    ]
+  },
+  "e12-6-6": {
+    "lessonId": "e12-6-6",
+    "title": "The Final Examination Essay",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the prompt",
+        "t": 17.404
+      },
+      {
+        "title": "The controlling idea",
+        "t": 59.165
+      },
+      {
+        "title": "Managing the time",
+        "t": 86.583
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.962
+      },
+      {
+        "title": "Your turn",
+        "t": 154.588
+      },
+      {
+        "title": "Summary",
+        "t": 191.186
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-6-6:q2",
+        "t": 169.976,
+        "prompt": "An exam gives 140 minutes, with 10 to plan and 10 to check. How long for a 25% task and a 75% task?",
+        "choices": [
+          "30 and 90 minutes, from 25% and 75% of the 120 left.",
+          "35 and 105 minutes, from 25% and 75% of all 140.",
+          "60 minutes each, since both tasks deserve equal time.",
+          "25 and 75 minutes, since the percentages are minutes."
+        ],
+        "answer": 0,
+        "working": "After 20 minutes for planning and checking, 120 minutes are left. Twenty-five percent of 120 is 30, and seventy-five percent is 90."
+      }
+    ]
+  },
+  "e12-7-1": {
+    "lessonId": "e12-7-1",
+    "title": "Sentence Structure and Rhetorical Effect",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Loose and periodic sentences",
+        "t": 26.906
+      },
+      {
+        "title": "Inversion",
+        "t": 64.743
+      },
+      {
+        "title": "Asyndeton and polysyndeton",
+        "t": 84.881
+      },
+      {
+        "title": "Parallelism and antithesis",
+        "t": 123.496
+      },
+      {
+        "title": "A common mistake",
+        "t": 149.06
+      },
+      {
+        "title": "Your turn",
+        "t": 162.797
+      },
+      {
+        "title": "Summary",
+        "t": 188.54
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-1:q2",
+        "t": 170.436,
+        "prompt": "Which sentence is periodic, with its main clause last?",
+        "choices": [
+          "The crowd cheered all night, long after the last song had ended.",
+          "The river rose by morning, covering the road and the bridge below.",
+          "The lights went out, as the wind tore across the empty harbour.",
+          "After the wind had dropped and the river had calmed, the town woke."
+        ],
+        "answer": 3,
+        "working": "D holds its main clause, the town woke, until the end. A, B and C all state the main clause first."
+      }
+    ]
+  },
+  "e12-7-2": {
+    "lessonId": "e12-7-2",
+    "title": "Advanced Grammar in Complex Sentences",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Agreement in tricky places",
+        "t": 27.313
+      },
+      {
+        "title": "Parallel structure and comparisons",
+        "t": 62.498
+      },
+      {
+        "title": "Dangling modifiers",
+        "t": 92.528
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.54
+      },
+      {
+        "title": "Your turn",
+        "t": 139.669
+      },
+      {
+        "title": "Summary",
+        "t": 164.053
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-2:q2",
+        "t": 145.064,
+        "prompt": "Which sentence is correct?",
+        "choices": [
+          "The number of applicants have risen sharply since last spring.",
+          "Neither the principal nor the teachers have signed the form yet.",
+          "The climate of Lagos is warmer than Toronto in the same month.",
+          "When only five, Diego’s family moved to Nairobi last spring."
+        ],
+        "answer": 1,
+        "working": "B agrees with the nearer subject, the teachers. A needs has, C compares a climate with a city, and D dangles."
+      }
+    ]
+  },
+  "e12-7-3": {
+    "lessonId": "e12-7-3",
+    "title": "Register, Tone and Audience",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Register and tone",
+        "t": 29.038
+      },
+      {
+        "title": "Four registers",
+        "t": 64.29
+      },
+      {
+        "title": "Spotting a slip and revising",
+        "t": 97.581
+      },
+      {
+        "title": "A common mistake",
+        "t": 129.551
+      },
+      {
+        "title": "Your turn",
+        "t": 148.057
+      },
+      {
+        "title": "Summary",
+        "t": 174.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-3:q2",
+        "t": 155.211,
+        "prompt": "Which formal revision of “kind of mixed” keeps the meaning?",
+        "choices": [
+          "The research is inconclusive, so the claim cannot yet be confirmed.",
+          "The research firmly confirms the claim, as the evidence is very strong.",
+          "I was so surprised that the research gave such mixed results at all.",
+          "The research is pretty much mixed, and the claim is sort of unclear."
+        ],
+        "answer": 0,
+        "working": "A keeps the meaning in formal words. B changes the claim, C is a personal reaction, and D keeps the casual hedges."
+      }
+    ]
+  },
+  "e12-7-4": {
+    "lessonId": "e12-7-4",
+    "title": "Rhetorical Figures",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Figures of order",
+        "t": 23.628
+      },
+      {
+        "title": "Zeugma and litotes",
+        "t": 52.685
+      },
+      {
+        "title": "Synecdoche and metonymy",
+        "t": 83.296
+      },
+      {
+        "title": "Address and contradiction",
+        "t": 106.83
+      },
+      {
+        "title": "A common mistake",
+        "t": 135.995
+      },
+      {
+        "title": "Your turn",
+        "t": 152.738
+      },
+      {
+        "title": "Summary",
+        "t": 181.377
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-4:q2",
+        "t": 159.961,
+        "prompt": "Why is “the crown” metonymy, not synecdoche?",
+        "choices": [
+          "Because a crown is a part of a monarch, standing for the whole person.",
+          "Because a crown is an understatement that affirms by denying the opposite.",
+          "Because a crown is only worn by a monarch, and is not a piece of one.",
+          "Because a crown is a direct address to someone who cannot answer back."
+        ],
+        "answer": 2,
+        "working": "C is right: a crown is associated with a monarch, not a part of one. A describes synecdoche, B litotes and D apostrophe."
+      }
+    ]
+  },
+  "e12-7-5": {
+    "lessonId": "e12-7-5",
+    "title": "Etymology and Academic Vocabulary",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Words have histories",
+        "t": 28.724
+      },
+      {
+        "title": "Roots and cognates",
+        "t": 64.121
+      },
+      {
+        "title": "Precise verbs for analysis",
+        "t": 94.716
+      },
+      {
+        "title": "A common mistake",
+        "t": 128.88
+      },
+      {
+        "title": "Your turn",
+        "t": 146.274
+      },
+      {
+        "title": "Summary",
+        "t": 172.106
+      }
+    ],
+    "cues": [
+      {
+        "id": "e12-7-5:q2",
+        "t": 153.77,
+        "prompt": "Which sentence analyses the text most precisely?",
+        "choices": [
+          "The writer talks about the storm and shows that it is bad for them.",
+          "The opening storm foreshadows the loss that the family suffers later.",
+          "The writer deals with the storm and shows how upset the family feels.",
+          "The storm scene is very important and shows a lot about the family."
+        ],
+        "answer": 1,
+        "working": "B uses a precise verb and names what the storm does. A, C and D lean on vague verbs and filler words."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
