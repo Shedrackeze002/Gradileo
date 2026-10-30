@@ -189,6 +189,9 @@ export default function LandingPage() {
       <section id="curriculum" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <h2 className="text-3xl font-semibold sm:text-4xl">Every outcome in every course</h2>
         <p className="mt-3 max-w-2xl text-lg text-ink-2">Each course covers every outcome of its grade and stream: each one is taught, practised and assessed, from Grade 5 to Grade 12.</p>
+        <p className="mt-3 max-w-2xl text-ink-2">
+          For learners everywhere: tell Gradileo where you go to school and your year there, such as Year 11 in England, SS 1 in Nigeria, Form 3 in Kenya or MYP 5 in the IB, and it finds the course at your level. Schools in the US, the UK, Canada, Nigeria, Ghana, Kenya, South Africa, India, Australia, Ireland and New Zealand, the IB and Cambridge are all listed.
+        </p>
         <Tabs className="mt-8 flex-wrap" value={courseId} onChange={setCourseId} items={COURSES.map((c) => ({ value: c.id, label: c.shortTitle }))} />
         <p className="mt-3 text-sm text-ink-3">{course.description}</p>
         <div className="mt-6 grid gap-4 md:grid-cols-2">

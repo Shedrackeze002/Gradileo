@@ -11,8 +11,12 @@ export type Feeling = 'confident' | 'ok' | 'struggling';
 export interface PlacementAnswers {
   /** The subject to study, as a course names it; Mathematics when not given. */
   subject?: string;
-  /** School grade, 5 to 12. */
+  /** Gradileo's level for the learner's year, 5 to 12 (`engine/curricula.ts`). */
   grade: number;
+  /** Where the learner goes to school: a curriculum id from `engine/curricula.ts`. */
+  curriculum?: string;
+  /** Their year as that system names it ("Year 11", "SS 1"). */
+  year?: string;
   /** Plans after high school (asked from Grade 10). */
   plan?: Plan;
   /** Interested in calculus (asked in Grade 12 for university science plans). */

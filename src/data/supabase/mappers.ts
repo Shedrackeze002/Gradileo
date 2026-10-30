@@ -44,6 +44,7 @@ export const toProfile = (r: Row): Profile => ({
   teacherStatus: r.teacher_status ?? null,
   disabled: !!r.disabled_at,
   nameOnly: !!r.name_only,
+  curriculum: r.curriculum ?? null,
 });
 
 export const toClass = (r: Row): ClassRoom => ({

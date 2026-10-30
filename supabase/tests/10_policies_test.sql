@@ -81,7 +81,12 @@ select _assert((select count(*) from classes) = 0, 'not enrolled yet: no classes
 select join_class((select lower(join_code) from ctx));
 select _assert((select count(*) from classes) = 1, 'joined class is visible');
 select _fails($$select join_class('ZZZZZZ')$$, 'unknown join code rejected');
+update profiles set curriculum = 'ng' where id = '00000000-0000-0000-0000-0000000000b1';
+select _assert((select curriculum from profiles where id = '00000000-0000-0000-0000-0000000000b1') = 'ng', 'students save where they go to school');
+select _fails($$update profiles set curriculum = 'Not an id!' where id = '00000000-0000-0000-0000-0000000000b1'$$, 'the curriculum must be an id');
+update profiles set curriculum = 'uk' where id = '00000000-0000-0000-0000-0000000000b2';
 reset role;
+select _assert((select curriculum from profiles where id = '00000000-0000-0000-0000-0000000000b2') is null, 'students cannot change another learner''s curriculum');
 
 -- Self-registration with a join code enrols automatically.
 insert into auth.users (id, email, raw_user_meta_data)

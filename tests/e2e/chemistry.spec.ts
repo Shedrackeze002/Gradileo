@@ -53,14 +53,15 @@ test('a Grade 10 student who chooses chemistry starts Grade 10 Chemistry, and a 
   // Mathematics is chosen to begin with; chemistry asks only for the grade.
   await expect(page.getByRole('button', { name: 'Mathematics', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: 'Chemistry', exact: true }).click();
-  await expect(page.getByRole('button', { name: '5', exact: true })).toHaveCount(0);
+  await page.getByLabel('Country or curriculum').selectOption('ca');
+  await expect(page.getByRole('button', { name: 'Grade 5', exact: true })).toHaveCount(0);
   await expect(page.getByText('How does mathematics feel right now?')).toHaveCount(0);
-  await page.getByRole('button', { name: '11', exact: true }).click();
+  await page.getByRole('button', { name: 'Grade 11', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 11 Chemistry', exact: true })).toBeVisible();
   await expect(page.getByText(/6 questions on Chemistry 10 skills/)).toBeVisible();
   await page.getByRole('button', { name: 'Back' }).click();
-  await page.getByRole('button', { name: '10', exact: true }).click();
+  await page.getByRole('button', { name: 'Grade 10', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 10 Chemistry', exact: true })).toBeVisible();
   await expect(page.getByText('Chemistry 10 is the first course, so there is no placement check.')).toBeVisible();

@@ -82,7 +82,7 @@ export interface DataApi {
   signIn(identifier: string, password: string): Promise<Profile>;
   signUp(input: SignUpInput): Promise<Profile>;
   signOut(): Promise<void>;
-  updateProfile(patch: Partial<Pick<Profile, 'fullName' | 'avatarColor'>>): Promise<Profile>;
+  updateProfile(patch: Partial<Pick<Profile, 'fullName' | 'avatarColor' | 'curriculum'>>): Promise<Profile>;
   changePassword(newPassword: string): Promise<void>;
 
   // Classes and people

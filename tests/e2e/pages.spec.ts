@@ -345,9 +345,10 @@ test('a student signs up without a class code, is placed in a course and studies
   await page.getByLabel('Password').fill('secret12');
   await page.getByRole('button', { name: 'Create account' }).click();
 
-  // Onboarding: grade, plans and how mathematics feels lead to a recommended course.
+  // Onboarding: country and year, plans and how mathematics feels lead to a recommended course.
   await page.waitForURL(/\/s\/welcome$/);
-  await page.getByRole('button', { name: '10', exact: true }).click();
+  await page.getByLabel('Country or curriculum').selectOption('ca');
+  await page.getByRole('button', { name: 'Grade 10', exact: true }).click();
   await page.getByRole('button', { name: /University: science/ }).click();
   await page.getByRole('button', { name: 'Okay, with some gaps' }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
@@ -373,7 +374,9 @@ test('a student signs up without a class code, is placed in a course and studies
   await page.getByRole('button', { name: 'Switch course' }).first().click();
   await page.getByRole('button', { name: 'Add a course' }).click();
   await page.waitForURL(/\/s\/welcome$/);
-  await page.getByRole('button', { name: '12', exact: true }).click();
+  // The country chosen first is remembered on the profile.
+  await expect(page.getByLabel('Country or curriculum')).toHaveValue('ca');
+  await page.getByRole('button', { name: 'Grade 12', exact: true }).click();
   await page.getByRole('button', { name: /University: science/ }).click();
   await page.getByRole('button', { name: 'Yes', exact: true }).click();
   await page.getByRole('button', { name: 'Going well' }).click();
@@ -384,6 +387,34 @@ test('a student signs up without a class code, is placed in a course and studies
   await page.getByRole('button', { name: 'Switch course' }).first().click();
   await expect(page.getByRole('button', { name: /^Math 10 Self-paced/ })).toBeVisible();
   await expect(page.getByRole('button', { name: /^Math 12 Pre-calculus.*Self-paced/ })).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a learner outside Canada gives their country and year, and sees the course in their own terms', async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.goto('/signup');
+  await page.getByLabel('Full name').fill('Bola Learner');
+  await page.getByLabel('Email').fill(`bola.${Date.now() % 100000}@example.ca`);
+  await page.getByLabel('Password').fill('secret12');
+  await page.getByRole('button', { name: 'Create account' }).click();
+  await page.waitForURL(/\/s\/welcome$/);
+  await page.getByLabel('Country or curriculum').selectOption('uk');
+  await expect(page.getByText('Which year are you in?')).toBeVisible();
+  await page.getByRole('button', { name: 'Year 11', exact: true }).click();
+  await page.getByRole('button', { name: /University: science/ }).click();
+  await page.getByRole('button', { name: 'Okay, with some gaps' }).click();
+  await page.getByRole('button', { name: 'See my recommendation' }).click();
+  await expect(page.getByRole('heading', { name: 'Grade 10 Mathematics', exact: true })).toBeVisible();
+  await expect(page.getByText('Usually taken in Year 11.')).toBeVisible();
+
+  // In Nigeria the same level is SS 1.
+  await page.getByRole('button', { name: 'Back' }).click();
+  await page.getByLabel('Country or curriculum').selectOption('ng');
+  await expect(page.getByText('Which class are you in?')).toBeVisible();
+  await page.getByRole('button', { name: 'SS 1', exact: true }).click();
+  await page.getByRole('button', { name: 'See my recommendation' }).click();
+  await expect(page.getByRole('heading', { name: 'Grade 10 Mathematics', exact: true })).toBeVisible();
+  await expect(page.getByText('Usually taken in SS 1.')).toBeVisible();
   expect(errors).toEqual([]);
 });
 
