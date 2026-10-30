@@ -517,7 +517,16 @@ items ship or decisions change.
      from the time zone. `engine/curricula.ts` matches each year to Gradileo's level, the
      recommendation says where the course sits ("Usually taken in Year 11"), and the curriculum is
      saved on the profile (`profiles.curriculum`) for the maps. The landing page names the
-     countries. Next: step 2, the topics.
+     countries (PR #108).
+   - Built (30 October 2026), step 2: **topics first**. `engine/topics.ts` files every lesson of
+     every course under a plain topic: 52 in mathematics in nine strands (number, algebra,
+     functions, geometry and measurement, trigonometry, data and probability, money, reasoning,
+     calculus), 12 in chemistry and 7 in English, with a test that no lesson is left out. Students
+     have **Browse by topic** (`/s/topics`, from Learn, the sidebar and the course menu): the
+     topics by subject and strand, a search over topics and lesson titles in every subject, and
+     each topic's level in the learner's own years ("Years 11–13", "JSS 3 – SS 2"), taken from
+     the courses that first teach it. A lesson in another course opens there, self-paced. Next:
+     step 3, the US Common Core map.
 6. **AI question builder for quizzes, exams and assignments.** In the assignment builder the
    teacher chooses the kind of work (quiz, exam, homework, exercise, activity, classwork and so
    on), the question formats and every other setting, then presses one button (name to settle;

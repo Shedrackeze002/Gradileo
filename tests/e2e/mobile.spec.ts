@@ -3,7 +3,7 @@ import { expectNoHorizontalScroll, signInDemo } from './helpers';
 
 test('student pages fit a phone screen', async ({ page }) => {
   await signInDemo(page, 'Student');
-  for (const path of ['/s', '/s/learn', '/s/work', '/s/progress', '/s/learn/m10c-3-4', '/s/live', '/s/welcome']) {
+  for (const path of ['/s', '/s/learn', '/s/work', '/s/progress', '/s/learn/m10c-3-4', '/s/live', '/s/welcome', '/s/topics']) {
     await page.goto(path);
     await page.waitForLoadState('networkidle');
     await expectNoHorizontalScroll(page);

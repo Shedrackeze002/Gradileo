@@ -45,6 +45,7 @@ test('every student page loads without errors', async ({ page }) => {
     ['/s/progress', 'My progress'],
     ['/s/live', 'Class question'],
     ['/s/welcome', 'Find your course'],
+    ['/s/topics', 'Browse by topic'],
   ] as const) {
     await page.goto(path);
     await expect(page.getByRole('heading', { name: heading }).first()).toBeVisible();
@@ -415,6 +416,38 @@ test('a learner outside Canada gives their country and year, and sees the course
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 10 Mathematics', exact: true })).toBeVisible();
   await expect(page.getByText('Usually taken in SS 1.')).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a learner browses by topic, sees levels in their own years, and opens a lesson from another course', async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.goto('/signup');
+  await page.getByLabel('Full name').fill('Tobi Learner');
+  await page.getByLabel('Email').fill(`tobi.${Date.now() % 100000}@example.ca`);
+  await page.getByLabel('Password').fill('secret12');
+  await page.getByRole('button', { name: 'Create account' }).click();
+  await page.waitForURL(/\/s\/welcome$/);
+  await page.getByLabel('Country or curriculum').selectOption('uk');
+  await page.getByRole('button', { name: 'Year 11', exact: true }).click();
+  await page.getByRole('button', { name: /University: science/ }).click();
+  await page.getByRole('button', { name: 'Going well' }).click();
+  await page.getByRole('button', { name: 'See my recommendation' }).click();
+  await expect(page.getByText('Usually taken in Year 11.')).toBeVisible();
+
+  // Browse by topic: the subjects' topics in strands, each with its level in the learner's years.
+  await page.getByRole('link', { name: 'Browse by topic' }).first().click();
+  await expect(page.getByRole('heading', { name: 'Browse by topic' })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Algebra' })).toBeVisible();
+  const quadratics = page.getByRole('button', { name: /Quadratic functions and equations/ });
+  await expect(quadratics).toContainText('Year 12');
+  await page.getByRole('tab', { name: 'English' }).click();
+  await expect(page.getByRole('button', { name: /Poetry/ })).toContainText('Years 11–13');
+
+  // A search finds lessons in every subject; a lesson in a course the learner is not taking opens it self-paced.
+  await page.getByLabel('Search topics and lessons').fill('quadratic formula');
+  await page.getByRole('button', { name: 'Completing the Square and the Quadratic Formula' }).click();
+  await page.waitForURL(/\/s\/learn\/m201-4-3$/);
+  await expect(page.getByRole('heading', { name: 'Completing the Square and the Quadratic Formula' }).first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 
