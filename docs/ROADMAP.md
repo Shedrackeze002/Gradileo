@@ -714,8 +714,8 @@ items ship or decisions change.
      every quotation word for word, its layout on stills, and the voice on each name and term
      (Tybalt, Laertes, Dunsinane, Désirée, hamartia, synecdoche and others are respelled in
      `src/video/words.ts`). The video stage has a new `quote` element for passages of prose and
-     verse. Grade 10's 31 videos are rendered, checked by ear (Whisper) and in Drive; Grade 11's are
-     rendering, then Grade 12's.
+     verse. Grades 10 and 11 (31 videos each) are rendered, checked by ear (Whisper) and in Drive;
+     Grade 12's are rendering.
    - Done (30 October 2026): **the English tutor voice**. The Tutor voice workflow now records the
      English courses too; the tutor reads verse with a pause at each line, and its prompts name the
      course's subject (an English or chemistry tutor, not a mathematics one), so "Ask your tutor"

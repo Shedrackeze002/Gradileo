@@ -18391,29 +18391,29 @@
       },
       {
         "title": "Why do they do it?",
-        "t": 81.39
+        "t": 81.439
       },
       {
         "title": "Foils",
-        "t": 106.969
+        "t": 107.018
       },
       {
         "title": "A common mistake",
-        "t": 136.21
+        "t": 136.259
       },
       {
         "title": "Your turn",
-        "t": 155.201
+        "t": 155.6
       },
       {
         "title": "Summary",
-        "t": 180.792
+        "t": 181.191
       }
     ],
     "cues": [
       {
         "id": "e11-3-2:q2",
-        "t": 161.318,
+        "t": 161.717,
         "prompt": "Why does Macbeth have Banquo murdered?",
         "choices": [
           "Because Fleance escapes while Banquo is killed.",
@@ -18572,6 +18572,861 @@
         ],
         "answer": 3,
         "working": "The writer speaks as “I” and remembers his own experience, so the essay is personal."
+      }
+    ]
+  },
+  "e11-4-2": {
+    "lessonId": "e11-4-2",
+    "title": "Rhetorical Analysis",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rhetorical situation",
+        "t": 30.599
+      },
+      {
+        "title": "Rhetorical choices",
+        "t": 65.226
+      },
+      {
+        "title": "A common mistake",
+        "t": 96.792
+      },
+      {
+        "title": "Your turn",
+        "t": 118.281
+      },
+      {
+        "title": "Summary",
+        "t": 149.186
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-4-2:q2",
+        "t": 132.025,
+        "prompt": "A nurse writes to the town paper after the council votes to close her clinic. What is her purpose?",
+        "choices": [
+          "To persuade readers to come and keep the clinic open.",
+          "To inform readers about how the council votes work.",
+          "To apologize to readers for the clinic’s closing now.",
+          "To mock the council by praising its decision loudly."
+        ],
+        "answer": 0,
+        "working": "The letter urges readers to attend a public meeting and demand that the clinic stay open, so its purpose is to persuade."
+      }
+    ]
+  },
+  "e11-4-3": {
+    "lessonId": "e11-4-3",
+    "title": "Satire and Its Tools",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The target",
+        "t": 31.264
+      },
+      {
+        "title": "The tools of satire",
+        "t": 60.654
+      },
+      {
+        "title": "A common mistake",
+        "t": 99.957
+      },
+      {
+        "title": "Your turn",
+        "t": 124.587
+      },
+      {
+        "title": "Summary",
+        "t": 157.721
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-4-3:q2",
+        "t": 137.67,
+        "prompt": "A school board solemnly announces, after eighteen months of study, that the lunch queue will form on the left. Which tool is this?",
+        "choices": [
+          "Verbal irony, because it says the opposite of its meaning.",
+          "Exaggeration, because it stretches a fault until absurd.",
+          "Mock seriousness, because it treats a small thing solemnly.",
+          "Understatement, because it describes a disaster as minor."
+        ],
+        "answer": 2,
+        "working": "The joke lies in the gap between the solemn manner and the trivial matter. The target is school boards that waste time on trivial things."
+      }
+    ]
+  },
+  "e11-4-4": {
+    "lessonId": "e11-4-4",
+    "title": "Fallacies and Evidence",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five subtler fallacies",
+        "t": 27.132
+      },
+      {
+        "title": "Judging evidence",
+        "t": 75.458
+      },
+      {
+        "title": "A common mistake",
+        "t": 111.886
+      },
+      {
+        "title": "Your turn",
+        "t": 135.108
+      },
+      {
+        "title": "Summary",
+        "t": 168.206
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-4-4:q2",
+        "t": 150.84,
+        "prompt": "A survey at a 7:00 a.m. breakfast club finds that 85% of students like the early start. What is wrong with it?",
+        "choices": [
+          "Not relevant, because it asks about the wrong thing.",
+          "Not representative, because early risers are not typical.",
+          "Not sufficient, because two hundred students is too few.",
+          "Circular, because it assumes what it sets out to prove."
+        ],
+        "answer": 1,
+        "working": "Students who choose a breakfast club at seven in the morning are early risers, so the sample does not represent the whole school."
+      }
+    ]
+  },
+  "e11-5-1": {
+    "lessonId": "e11-5-1",
+    "title": "Framing in News Reports",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Framing",
+        "t": 27.564
+      },
+      {
+        "title": "What a report leaves out",
+        "t": 68.756
+      },
+      {
+        "title": "Comparing headlines",
+        "t": 100.669
+      },
+      {
+        "title": "A common mistake",
+        "t": 135.098
+      },
+      {
+        "title": "Your turn",
+        "t": 150.969
+      },
+      {
+        "title": "Summary",
+        "t": 179.515
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-5-1:q2",
+        "t": 161.108,
+        "prompt": "Riverside FC lost a cup final 2–1. Which headline is neutral?",
+        "choices": [
+          "Riverside Crumble in Cup Final Flop",
+          "Riverside FC Loses Cup Final 2–1",
+          "Brave Riverside Robbed in the Final",
+          "Riverside Shamed in Cup Final Fiasco"
+        ],
+        "answer": 1,
+        "working": "B states what happened in plain words. “Crumble”, “flop”, “robbed” and “shamed” all judge rather than report."
+      }
+    ]
+  },
+  "e11-5-2": {
+    "lessonId": "e11-5-2",
+    "title": "Documentary Techniques",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Six techniques",
+        "t": 23.161
+      },
+      {
+        "title": "How they persuade",
+        "t": 68.408
+      },
+      {
+        "title": "Point of view",
+        "t": 101.9
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.372
+      },
+      {
+        "title": "Your turn",
+        "t": 161.157
+      },
+      {
+        "title": "Summary",
+        "t": 187.568
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-5-2:q2",
+        "t": 170.743,
+        "prompt": "Low, slow strings play over an empty playground at dusk. Which technique is this?",
+        "choices": [
+          "An expert interview that lends the film authority.",
+          "Archival footage that feels like real proof.",
+          "A reconstruction that shows an unfilmed event.",
+          "Music that tells viewers how to feel."
+        ],
+        "answer": 3,
+        "working": "Low, slow strings added to the soundtrack set the mood. That is music, which tells viewers how to feel."
+      }
+    ]
+  },
+  "e11-5-3": {
+    "lessonId": "e11-5-3",
+    "title": "Representation and Digital Media",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stereotypes and voices",
+        "t": 29.695
+      },
+      {
+        "title": "What decides what you see",
+        "t": 68.199
+      },
+      {
+        "title": "A common mistake",
+        "t": 105.14
+      },
+      {
+        "title": "Checking a viral claim",
+        "t": 126.715
+      },
+      {
+        "title": "Your turn",
+        "t": 161.806
+      },
+      {
+        "title": "Summary",
+        "t": 187.444
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-5-3:q2",
+        "t": 170.857,
+        "prompt": "A shocking post is going viral. What do fact-checkers do first?",
+        "choices": [
+          "Leave the post and check what trusted sources say.",
+          "Reread the post closely and count how many likes it has.",
+          "Scan the comments to see whether other viewers believe it.",
+          "Ask friends to share it so the claim can be debated."
+        ],
+        "answer": 0,
+        "working": "Professional fact-checkers read laterally: they leave the post and see what reliable sources say about the claim and who is behind it."
+      }
+    ]
+  },
+  "e11-6-1": {
+    "lessonId": "e11-6-1",
+    "title": "Literary Analysis: Thesis and Commentary",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The analytical thesis",
+        "t": 20.869
+      },
+      {
+        "title": "Building a thesis",
+        "t": 56.96
+      },
+      {
+        "title": "Commentary that goes deep",
+        "t": 81.74
+      },
+      {
+        "title": "A common mistake",
+        "t": 118.373
+      },
+      {
+        "title": "Your turn",
+        "t": 138.065
+      },
+      {
+        "title": "Summary",
+        "t": 165.654
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-1:q2",
+        "t": 150.345,
+        "prompt": "What is wrong with: “Kate Chopin uses imagery, irony and symbolism in ‘The Story of an Hour’.”?",
+        "choices": [
+          "It only retells the plot of the whole story.",
+          "It only praises the story with nothing to prove.",
+          "It lists devices but never says why they matter.",
+          "It states a meaning but never says how it works."
+        ],
+        "answer": 2,
+        "working": "The sentence names devices but never says what they show. It has no why. A topic or plot summary would be a different fault."
+      }
+    ]
+  },
+  "e11-6-2": {
+    "lessonId": "e11-6-2",
+    "title": "Comparative Essays",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The comparative thesis",
+        "t": 26.061
+      },
+      {
+        "title": "Block and point by point",
+        "t": 65.518
+      },
+      {
+        "title": "A common mistake",
+        "t": 116.069
+      },
+      {
+        "title": "Your turn",
+        "t": 139.127
+      },
+      {
+        "title": "Summary",
+        "t": 168.905
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-2:q2",
+        "t": 151.215,
+        "prompt": "What is wrong with: “The narrator of ‘The Tell-Tale Heart’ feels guilty, but Montresor does not.”?",
+        "choices": [
+          "It discusses only one of the two texts.",
+          "It is a real difference, but never says so what.",
+          "It makes two claims that are never connected.",
+          "It is true of any two texts, so says nothing."
+        ],
+        "answer": 1,
+        "working": "The difference is real and covers both texts, but the thesis never says what the contrast reveals, so it needs a so what."
+      }
+    ]
+  },
+  "e11-6-3": {
+    "lessonId": "e11-6-3",
+    "title": "Using Sources",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quote, paraphrase or summarize",
+        "t": 27.57
+      },
+      {
+        "title": "Paraphrasing safely",
+        "t": 56.926
+      },
+      {
+        "title": "Synthesis",
+        "t": 100.01
+      },
+      {
+        "title": "Your turn",
+        "t": 134.154
+      },
+      {
+        "title": "Summary",
+        "t": 161.287
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-3:q2",
+        "t": 140.885,
+        "prompt": "Which of these best describes patchwriting?",
+        "choices": [
+          "Copying the source’s exact words without using any quotation marks.",
+          "Using your own words and structure but never naming the source.",
+          "Changing a source’s meaning so it says something it never said.",
+          "Keeping the source’s sentence structure and swapping in synonyms."
+        ],
+        "answer": 3,
+        "working": "Patchwriting keeps the source’s sentence structure and swaps in a few synonyms. A is copying, B is no credit and C is a changed meaning."
+      }
+    ]
+  },
+  "e11-6-4": {
+    "lessonId": "e11-6-4",
+    "title": "Building an Argument",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an argument",
+        "t": 20.216
+      },
+      {
+        "title": "The warrant",
+        "t": 48.689
+      },
+      {
+        "title": "Conceding and qualifying",
+        "t": 67.471
+      },
+      {
+        "title": "A common mistake",
+        "t": 106.008
+      },
+      {
+        "title": "Your turn",
+        "t": 124.653
+      },
+      {
+        "title": "Summary",
+        "t": 156.16
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-4:q2",
+        "t": 137.699,
+        "prompt": "In a study, students with a silent phone in sight remembered less. Which sentence is the warrant for keeping phones in lockers?",
+        "choices": [
+          "If a visible phone harms learning, putting phones out of sight protects it.",
+          "Phones should be kept in lockers during every lesson at school.",
+          "Students with silent phones on their desks remembered less afterwards.",
+          "Some students may need their phones to contact their families."
+        ],
+        "answer": 0,
+        "working": "The warrant explains why the evidence proves the claim. B is the claim, C is the evidence and D is a counterargument."
+      }
+    ]
+  },
+  "e11-6-5": {
+    "lessonId": "e11-6-5",
+    "title": "Style and Revision",
+    "duration": 175,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Varying your sentences",
+        "t": 23.065
+      },
+      {
+        "title": "End focus",
+        "t": 58.875
+      },
+      {
+        "title": "Precision and tone",
+        "t": 75.962
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.163
+      },
+      {
+        "title": "Your turn",
+        "t": 127.914
+      },
+      {
+        "title": "Summary",
+        "t": 155.005
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-5:q2",
+        "t": 139.266,
+        "prompt": "Which best revises: “I think that maybe the ending is sort of really very surprising”?",
+        "choices": [
+          "I think the ending is very surprising to most readers.",
+          "The ending is sort of surprising, and maybe it shocks.",
+          "The ending is surprising.",
+          "Perhaps the ending is truly and extremely surprising."
+        ],
+        "answer": 2,
+        "working": "C cuts the hedges and the empty intensifiers and states the point plainly. The others keep a hedge or an intensifier."
+      }
+    ]
+  },
+  "e11-6-6": {
+    "lessonId": "e11-6-6",
+    "title": "Writing Under Time Pressure",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the prompt",
+        "t": 21.421
+      },
+      {
+        "title": "Planning and the clock",
+        "t": 55.388
+      },
+      {
+        "title": "Finishing strongly",
+        "t": 92.366
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.622
+      },
+      {
+        "title": "Your turn",
+        "t": 141.035
+      },
+      {
+        "title": "Summary",
+        "t": 165.918
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-6-6:q2",
+        "t": 151.232,
+        "prompt": "A literary essay exam lasts sixty minutes. Which split of the time is best?",
+        "choices": [
+          "Plan for 15 minutes, write for 40, check for 5.",
+          "Plan for 5 minutes, write for 50, check for 5.",
+          "Plan for 20 minutes, write for 35, check for 5.",
+          "Plan for 10 minutes, write for 45, check for 5."
+        ],
+        "answer": 3,
+        "working": "For sixty minutes the lesson suggests 10 minutes to read and plan, 45 to write and 5 to check."
+      }
+    ]
+  },
+  "e11-7-1": {
+    "lessonId": "e11-7-1",
+    "title": "Clauses and Combining Sentences",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of dependent clause",
+        "t": 33.428
+      },
+      {
+        "title": "Five ways to combine",
+        "t": 74.177
+      },
+      {
+        "title": "Worked example",
+        "t": 112.838
+      },
+      {
+        "title": "A common mistake",
+        "t": 133.094
+      },
+      {
+        "title": "Your turn",
+        "t": 153.172
+      },
+      {
+        "title": "Summary",
+        "t": 182.975
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-1:q",
+        "t": 164.022,
+        "prompt": "Which sentence combines the ideas correctly?",
+        "choices": [
+          "Because Mei was exhausted after the long shift, she fell asleep on the bus.",
+          "Although Mei was exhausted after the long shift, she fell asleep on the bus.",
+          "Mei was exhausted after the long shift, she fell asleep on the bus.",
+          "Exhausted after the long shift, the bus carried Mei past her stop."
+        ],
+        "answer": 0,
+        "working": "A uses because to show the true cause. B shows a contrast that is false, C is a comma splice, and in D the bus is exhausted."
+      }
+    ]
+  },
+  "e11-7-2": {
+    "lessonId": "e11-7-2",
+    "title": "Dashes, Colons, Parentheses and Quotation Marks",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dashes",
+        "t": 22.273
+      },
+      {
+        "title": "Colons",
+        "t": 50.672
+      },
+      {
+        "title": "Parentheses",
+        "t": 69.486
+      },
+      {
+        "title": "Marks inside quotations",
+        "t": 98.702
+      },
+      {
+        "title": "A common mistake",
+        "t": 136.833
+      },
+      {
+        "title": "Your turn",
+        "t": 154.338
+      },
+      {
+        "title": "Summary",
+        "t": 175.598
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-2:q2",
+        "t": 161.167,
+        "prompt": "Which sentence sets off the interruption correctly?",
+        "choices": [
+          "My grandmother, a champion swimmer in her youth—still swims every morning.",
+          "My grandmother—a champion swimmer in her youth, still swims every morning.",
+          "My grandmother—a champion swimmer in her youth—still swims every morning.",
+          "My grandmother: a champion swimmer in her youth: still swims every morning."
+        ],
+        "answer": 2,
+        "working": "C opens and closes the interruption with a dash. A and B open and close with different marks, and D uses colons, which do not set off an interruption."
+      }
+    ]
+  },
+  "e11-7-3": {
+    "lessonId": "e11-7-3",
+    "title": "Active, Passive and the Subjunctive",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Active and passive",
+        "t": 24.283
+      },
+      {
+        "title": "When the passive is better",
+        "t": 60.961
+      },
+      {
+        "title": "The subjunctive mood",
+        "t": 89.348
+      },
+      {
+        "title": "A common mistake",
+        "t": 124.948
+      },
+      {
+        "title": "Your turn",
+        "t": 145.706
+      },
+      {
+        "title": "Summary",
+        "t": 167.497
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-3:q3",
+        "t": 153.094,
+        "prompt": "Which sentence is correct in formal writing?",
+        "choices": [
+          "The doctor recommended that Omar drinks more water every day.",
+          "The doctor recommended that Omar drink more water every day.",
+          "I wish my grandmother was here to see this award today.",
+          "If I would have known about the party, I would have come."
+        ],
+        "answer": 1,
+        "working": "B uses the base form after recommended. A adds an s, C should say were, and D should say had known."
+      }
+    ]
+  },
+  "e11-7-4": {
+    "lessonId": "e11-7-4",
+    "title": "Usage and Pronoun Reference",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Who and whom",
+        "t": 29.19
+      },
+      {
+        "title": "More easily confused words",
+        "t": 46.573
+      },
+      {
+        "title": "Clear pronoun reference",
+        "t": 82.046
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.216
+      },
+      {
+        "title": "Your turn",
+        "t": 134.787
+      },
+      {
+        "title": "Summary",
+        "t": 161.626
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-4:q4",
+        "t": 145.758,
+        "prompt": "Priya told Yuki that she had won. Which says clearly that Yuki won?",
+        "choices": [
+          "Priya told Yuki that she had won the prize, and she was delighted.",
+          "Priya told Yuki about the prize, so she knew that she had won it.",
+          "Priya told Yuki that she herself had certainly won the prize.",
+          "Priya said to Yuki, “You have won the prize.”"
+        ],
+        "answer": 3,
+        "working": "D uses the exact words, so only one reading is possible. A, B and C still leave she open to two readings."
+      }
+    ]
+  },
+  "e11-7-5": {
+    "lessonId": "e11-7-5",
+    "title": "Word Roots and Precise Diction",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Building words from parts",
+        "t": 28.671
+      },
+      {
+        "title": "One root, different prefixes",
+        "t": 60.522
+      },
+      {
+        "title": "Four enemies of precision",
+        "t": 83.726
+      },
+      {
+        "title": "Revising for precision",
+        "t": 122.089
+      },
+      {
+        "title": "A common mistake",
+        "t": 146.148
+      },
+      {
+        "title": "Your turn",
+        "t": 158.305
+      },
+      {
+        "title": "Summary",
+        "t": 181.856
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-7-5:q5",
+        "t": 165.09,
+        "prompt": "Which sentence contains a cliché?",
+        "choices": [
+          "The rescuers arrived in the nick of time.",
+          "The patient reported acute cephalalgia.",
+          "Her grandfather passed away last spring.",
+          "The trip was a really good thing."
+        ],
+        "answer": 0,
+        "working": "A is a worn-out expression. B is jargon, C is a euphemism, and D is vague."
       }
     ]
   },
