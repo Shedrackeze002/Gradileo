@@ -17865,6 +17865,57 @@
       }
     ]
   },
+  "e11-1-1": {
+    "lessonId": "e11-1-1",
+    "title": "Structure and Pacing",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five structures",
+        "t": 29.642
+      },
+      {
+        "title": "The effect of structure",
+        "t": 68.988
+      },
+      {
+        "title": "Pacing",
+        "t": 103.838
+      },
+      {
+        "title": "A common mistake",
+        "t": 137.65
+      },
+      {
+        "title": "Your turn",
+        "t": 156.671
+      },
+      {
+        "title": "Summary",
+        "t": 186.407
+      }
+    ],
+    "cues": [
+      {
+        "id": "e11-1-1:q2",
+        "t": 167.316,
+        "prompt": "A story opens with a visit, then goes back years to explain how it began. Which structure is it?",
+        "choices": [
+          "Chronological, because every event comes in the order it happened.",
+          "Non-linear, because the story jumps back to an earlier time.",
+          "Circular, because the story returns to the scene where it began.",
+          "Parallel, because two storylines are told in turn at once."
+        ],
+        "answer": 1,
+        "working": "A jump back in time is the mark of a non-linear story. Choices A, C and D each describe a different structure."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
