@@ -538,8 +538,20 @@ items ship or decisions change.
      check on the course before; teachers can start a class on any of them from the new "US Common
      Core" tab. Each course lists its gaps, shown with the course: scientific notation, two-way
      tables, box plots, complex numbers, the equation of a circle, two-column proofs, vectors,
-     matrices, polar form and conics among them. Next: step 4 fills these gaps, and the UK GCSE
-     map follows.
+     matrices, polar form and conics among them (PR #111). Next: step 4 fills these gaps, and the
+     UK GCSE map follows.
+   - Bug check (30 October 2026, the owner's request after the homework-editing error): every one
+     of the live site's database calls (99 in the data layer, 41 database functions, 7 Edge
+     Functions) was checked against the database's grants, rules and checks on a copy built from
+     the migrations, and the live logs were read. No call is refused today. Fixed what could break
+     with real use: a written exam of several drawn answers could pass the 400 KB limit on a
+     submission and not save (now 10 MB, above the app's own maximum), and a long whiteboard (3 MB,
+     now 10 MB) and a full live answer (8,000 bytes, now 32,000) likewise; the self-paced course id
+     check accepts any id of the app's form; long lists (mastery, practice events, submissions, and
+     the AI analyst's) are read a page at a time, since the live API returns at most 1,000 rows a
+     request; loads refused while a lapsed sign-in renews (seen once in the logs, after a laptop
+     woke) are retried a few times; and the teacher's resource fields stop at the database's
+     lengths.
 6. **AI question builder for quizzes, exams and assignments.** In the assignment builder the
    teacher chooses the kind of work (quiz, exam, homework, exercise, activity, classwork and so
    on), the question formats and every other setting, then presses one button (name to settle;

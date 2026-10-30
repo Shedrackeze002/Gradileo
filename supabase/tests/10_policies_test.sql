@@ -1014,7 +1014,16 @@ set role authenticated;
 select start_self_paced('chem-20', array['c20-1-1']);
 select start_self_paced('eng-10', array['e10-1-1']);
 select _fails($$select start_self_paced('chem 20; drop', array[]::text[])$$, 'course ids of any other form are still rejected');
+select start_self_paced('us-algebra-1-honours', array['m10c-4-1']);
 reset role;
+select _assert((select count(*) from classes where kind = 'self' and course_id = 'us-algebra-1-honours') = 1, 'a longer mapped course id is accepted too');
+
+-- Size limits no tighter than the app: an exam of drawn answers, a long lesson's board, a full live answer.
+-- Drawn answers barely compress, so hashes stand in for them: about 1 MB, more than the old 400 KB.
+update submissions set responses = jsonb_build_object('0', (select string_agg(md5(i::text), '') from generate_series(1, 30000) i)) where id = (select id from submissions order by started_at limit 1);
+select _assert((select length(responses ->> '0') from submissions order by started_at limit 1) = 960000, 'a submission holds about 1 MB of drawn answers');
+select _assert((select pg_get_constraintdef(oid) from pg_constraint where conname = 'boards_pages_check') like '%10000000%', 'a whiteboard holds up to 10 MB of ink');
+select _assert((select pg_get_constraintdef(oid) from pg_constraint where conname = 'live_answers_responses_check') like '%32000%', 'a live answer holds 20 responses of 400 characters');
 select _assert((select count(*) from classes c join enrollments e on e.class_id = c.id where e.student_id = '00000000-0000-0000-0000-0000000000b2' and c.kind = 'self' and c.course_id in ('chem-20', 'eng-10')) = 2, 'chemistry and English courses can be studied self-paced');
 
 select 'ALL DATABASE TESTS PASSED' as result;

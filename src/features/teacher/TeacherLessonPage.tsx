@@ -267,11 +267,11 @@ export function AddResourceModal({ open, onClose, classId, lessonId }: { open: b
             { value: 'note', label: 'Note' },
           ]}
         />
-        <Input label="Title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder={kind === 'video' ? 'e.g. Converting units with unit fractions' : kind === 'link' ? 'e.g. Desmos: explore slope' : 'e.g. Tips for tomorrow’s quiz'} />
+        <Input label="Title" maxLength={200} value={title} onChange={(e) => setTitle(e.target.value)} placeholder={kind === 'video' ? 'e.g. Converting units with unit fractions' : kind === 'link' ? 'e.g. Desmos: explore slope' : 'e.g. Tips for tomorrow’s quiz'} />
         {kind !== 'note' ? (
           <Input label="URL" value={url} onChange={(e) => setUrl(e.target.value)} placeholder={kind === 'video' ? 'YouTube or Vimeo link' : 'https://'} hint={kind === 'video' ? (url ? (embed ? 'This video will play inside the lesson.' : 'Not a YouTube or Vimeo link: students will get a link instead.') : 'YouTube and Vimeo play inline.') : undefined} />
         ) : (
-          <Textarea label="Note" rows={6} value={body} onChange={(e) => setBody(e.target.value)} hint={'Markdown and $math$ supported, e.g. $\\frac{3}{4}$'} />
+          <Textarea label="Note" rows={6} maxLength={20000} value={body} onChange={(e) => setBody(e.target.value)} hint={'Markdown and $math$ supported, e.g. $\\frac{3}{4}$'} />
         )}
       </div>
     </Modal>
