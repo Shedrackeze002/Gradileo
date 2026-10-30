@@ -16284,6 +16284,57 @@
       }
     ]
   },
+  "e10-3-1": {
+    "lessonId": "e10-3-1",
+    "title": "Reading Shakespeare’s Language",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Thou, thee, thy and thine",
+        "t": 27.715
+      },
+      {
+        "title": "Words that have changed",
+        "t": 65.422
+      },
+      {
+        "title": "Paraphrasing a line",
+        "t": 86.418
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.357
+      },
+      {
+        "title": "Your turn",
+        "t": 152.229
+      },
+      {
+        "title": "Summary",
+        "t": 180.716
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-3-1:q",
+        "t": 162.616,
+        "prompt": "In a play by Shakespeare, a character says “Ere night, hie thee hence.” Which is the best modern version?",
+        "choices": [
+          "Before night, hide away from this place.",
+          "Before night, hurry away from here.",
+          "After nightfall, come here to me soon.",
+          "Even at night, hurry back to me now."
+        ],
+        "answer": 1,
+        "working": "*Ere* means before, *hie* means hurry, *thee* means you and *hence* means from here."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
