@@ -17030,13 +17030,13 @@
       },
       {
         "title": "Summary",
-        "t": 186.037
+        "t": 186.012
       }
     ],
     "cues": [
       {
         "id": "e10-6-4:q",
-        "t": 165.424,
+        "t": 165.399,
         "prompt": "Tomás says two separate sentences: I’m not going. It’s far too cold. Which version is punctuated correctly?",
         "choices": [
           "“I’m not going,” Tomás said. “it’s far too cold.”",
