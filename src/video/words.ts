@@ -42,7 +42,8 @@ export function speechText(say: string): string {
   // "Fortinbras" "Fortenborough's" and "quietus" "quietest"; Toulmin is "Tallman" and "Horatian"
   // satire "Hoo-ration", and Banquo's son Fleance is one syllable ("Fleans"). "Tomás" loses its
   // final "s" ("Tamar"). Of the rhetorical figures,
-  // "synecdoche" comes out "scenic-dodge" and "litotes" "LIT-oats".
+  // "synecdoche" comes out "scenic-dodge" and "litotes" "LIT-oats". Owen's "pararhyme" loses
+  // its second "r" ("para-hime").
   return words
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
@@ -79,6 +80,7 @@ export function speechText(say: string): string {
     .replace(/\bTomás\b/g, 'Tomahss')
     .replace(/\b([Ss])ynecdoche\b/g, '$1in-eck-duh-kee')
     .replace(/\b([Ll])itotes\b/g, '$1ie-toe-teez')
+    .replace(/\b([Pp])ararhyme/g, '$1ara-rhyme')
     .replace(/\b([Dd])eca(?=\b|hydrate)/g, '$1ecka')
     .replace(/\b([Hh])eptaoxide/g, '$1epta-oxide')
     .replace(/\b([Pp])ipetted\b/g, '$1ih-petted')

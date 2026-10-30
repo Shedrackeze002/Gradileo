@@ -60,6 +60,7 @@ describe('speechText', () => {
     expect(speechText('Tomás said, “It’s far too cold.”')).toBe('Tomahss said, “It’s far too cold.”');
     expect(speechText("Fleance escapes; Fleance's father dies.")).toBe("Flee-ance escapes; Flee-ance's father dies.");
     expect(speechText('Synecdoche and litotes; Litotes and synecdoche.')).toBe('Sin-eck-duh-kee and lie-toe-teez; Lie-toe-teez and sin-eck-duh-kee.');
+    expect(speechText('Owen uses pararhyme. Pararhymes echo.')).toBe('Owen uses para-rhyme. Para-rhymes echo.');
     expect(speechText('Octa eight, nona nine, and deca ten. Sodium carbonate decahydrate.')).toBe('Octa eight, nona nine, and decka ten. Sodium carbonate deckahydrate.');
     expect(speechText('Dye-chlorine heptaoxide. The pipetted acid.')).toBe('Dye-chlorine hepta-oxide. The pih-petted acid.');
     expect(speechText('Electronegativity rises; their electronegativities differ. Svante Arrhenius.')).toBe('Electro-negativity rises; their electro-negativities differ. Svahntay Arrhenius.');
