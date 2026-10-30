@@ -16539,6 +16539,104 @@
       }
     ]
   },
+  "e10-4-2": {
+    "lessonId": "e10-4-2",
+    "title": "Argument and Evidence",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an argument",
+        "t": 29.166
+      },
+      {
+        "title": "Fact and opinion",
+        "t": 64.413
+      },
+      {
+        "title": "Strong evidence",
+        "t": 96.661
+      },
+      {
+        "title": "A common mistake",
+        "t": 134.521
+      },
+      {
+        "title": "Your turn",
+        "t": 158.559
+      },
+      {
+        "title": "Summary",
+        "t": 190.011
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-4-2:q",
+        "t": 170.879,
+        "prompt": "A writer claims that regular exercise improves teenagers’ mood. Which piece of evidence supports the claim best?",
+        "choices": [
+          "Running is the most boring sport that there could ever be.",
+          "Exercise is good for all kinds of things in a person’s life.",
+          "A study of 500 teenagers found exercise halved low moods.",
+          "Everybody knows that people who exercise are much happier."
+        ],
+        "answer": 2,
+        "working": "Statement C is relevant, specific and can be checked. A is an opinion, B is too vague, and D is not evidence."
+      }
+    ]
+  },
+  "e10-4-3": {
+    "lessonId": "e10-4-3",
+    "title": "Ethos, Pathos and Logos",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The three appeals",
+        "t": 33.343
+      },
+      {
+        "title": "Rhetorical devices",
+        "t": 80.566
+      },
+      {
+        "title": "A common mistake",
+        "t": 116.951
+      },
+      {
+        "title": "Your turn",
+        "t": 142.084
+      },
+      {
+        "title": "Summary",
+        "t": 175.624
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-4-3:q",
+        "t": 156.323,
+        "prompt": "A student speaks to the town council: “I have volunteered at the shelter every weekend for six years, so I know its work first-hand.” Which appeal is this?",
+        "choices": [
+          "Pathos, because it makes the reader feel pity",
+          "Ethos, because it builds the speaker’s credibility",
+          "Logos, because it gives facts and numbers",
+          "Antithesis, because it sets opposites side by side"
+        ],
+        "answer": 1,
+        "working": "The speaker asks the audience to trust them because of their experience. That is ethos."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
