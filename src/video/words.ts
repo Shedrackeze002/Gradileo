@@ -65,7 +65,7 @@ export function speechText(say: string): string {
     .replace(/\bDunsinane\b/g, 'Dun-sin-ain')
     .replace(/\b([Hh])amartia\b/g, '$1a-mar-tee-a')
     .replace(/\bCountee\b/g, 'Countay')
-    .replace(/\b([Dd])iegetic\b/g, (m, d: string) => (d === 'D' ? 'Dye-a-jettic' : 'dye-a-jettic'))
+    .replace(/\b([Dd])iegetic\b/g, '$1ye-a-jettic')
     .replace(/\b([Dd])eca(?=\b|hydrate)/g, '$1ecka')
     .replace(/\b([Hh])eptaoxide/g, '$1epta-oxide')
     .replace(/\b([Pp])ipetted\b/g, '$1ih-petted')
