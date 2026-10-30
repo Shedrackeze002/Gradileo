@@ -34,7 +34,9 @@ export function speechText(say: string): string {
   // "neg" ("electrong-gativity"), the chemist Svante Arrhenius is "Svant", and Le Chatelier is
   // "luh CHATE-lee-er". Organic names: "ethene" comes out "EE-theen" (heard as ethyne), "propene"
   // "pruh-PEEN", "propyne" "PRAH-pin", "ketone" "KET-own", "cycloalkane" without its "al", and
-  // "methoxymethane" as "METH-ux-ime-thane".
+  // "methoxymethane" as "METH-ux-ime-thane". Names in the English videos: "Tybalt" comes out "TIE-balt",
+  // "Wei" as "Why", "Teasdale" as "Tea-stale", "Montresor" as "Mon-tresser" and "Petrarchan" with a
+  // "ch" as in "church".
   return words
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
@@ -51,6 +53,11 @@ export function speechText(say: string): string {
     .replace(/\bKwame\b/g, 'Kwahmay')
     .replace(/\bJun\b/g, 'Joon')
     .replace(/\bAmedeo\b/g, 'Ama-day-o')
+    .replace(/\bTybalt\b/g, 'Tibbalt')
+    .replace(/\bWei\b/g, 'Way')
+    .replace(/\bTeasdale\b/g, 'Teez-dale')
+    .replace(/\bMontresor\b/g, 'Mon-treh-zor')
+    .replace(/\bPetrarchan\b/g, 'Pet-trark-an')
     .replace(/\b([Dd])eca(?=\b|hydrate)/g, '$1ecka')
     .replace(/\b([Hh])eptaoxide/g, '$1epta-oxide')
     .replace(/\b([Pp])ipetted\b/g, '$1ih-petted')
