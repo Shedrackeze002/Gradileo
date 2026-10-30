@@ -7,7 +7,7 @@ import { ALL_SKILLS } from './all.ts';
 import { COURSES } from './index.ts';
 
 function render(): string {
-  const order = new Map(COURSES.flatMap((c) => c.lessons.flatMap((l) => l.skills)).map((id, i) => [id, i]));
+  const order = new Map(COURSES.filter((c) => !c.map).flatMap((c) => c.lessons.flatMap((l) => l.skills)).map((id, i) => [id, i]));
   const rows = [...ALL_SKILLS]
     .sort((a, b) => (order.get(a.id) ?? 1e9) - (order.get(b.id) ?? 1e9))
     .map(({ id, name, description, outcomes, lessonId, format, calculator }) => JSON.stringify({ id, name, description, outcomes, lessonId, format, ...(calculator ? { calculator } : {}) }));

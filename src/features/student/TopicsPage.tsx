@@ -53,10 +53,12 @@ export default function TopicsPage() {
     [q, subject],
   );
   const strands = [...new Set(found.map((f) => f.topic.strand))];
-  const mine = new Set(classes.map((c) => c.courseId));
+  // A lesson may also be in a course of the student's own school system ("Algebra I" has Math 10's lessons).
+  const has = (courseId: string, lessonId: string) => !!getCourse(courseId)?.lessons.some((x) => x.id === lessonId);
+  const mine = new Set(classes.flatMap((c) => getCourse(c.courseId)?.lessons.map((l) => l.id) ?? []));
 
   const openLesson = async (l: TopicLesson) => {
-    if (cls?.courseId === l.courseId) return navigate(`/s/learn/${l.lessonId}`);
+    if (cls && has(cls.courseId, l.lessonId)) return navigate(`/s/learn/${l.lessonId}`);
     const self = classes.find((c) => c.kind === 'self' && c.courseId === l.courseId);
     try {
       const c = self ?? (await start.mutateAsync(l.courseId));
@@ -89,7 +91,7 @@ export default function TopicsPage() {
               <section key={g.courseId} aria-label={getCourse(g.courseId)?.title}>
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-ink-3">
                   {getCourse(g.courseId)?.shortTitle}
-                  {!mine.has(g.courseId) && <span className="ml-2 font-normal normal-case tracking-normal">· opens as a self-paced course</span>}
+                  {!g.lessons.some((l) => mine.has(l.lessonId)) && <span className="ml-2 font-normal normal-case tracking-normal">· opens as a self-paced course</span>}
                 </h3>
                 <ul className="mt-1.5 space-y-1">
                   {g.lessons.map((l) => (

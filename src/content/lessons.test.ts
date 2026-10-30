@@ -18,7 +18,8 @@ const files = readdirSync(__dirname, { withFileTypes: true })
     }
   });
 
-const lessonMeta = new Map(COURSES.flatMap((c) => c.lessons.map((l) => [l.id, l] as const)));
+// The lessons as their own courses list them (a mapped course files them under its own units).
+const lessonMeta = new Map(COURSES.filter((c) => !c.map).flatMap((c) => c.lessons.map((l) => [l.id, l] as const)));
 
 describe('lesson content', () => {
   for (const course of COURSES) {

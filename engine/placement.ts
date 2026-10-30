@@ -63,7 +63,51 @@ export const PREREQUISITE: Record<string, string | null> = {
   'eng-10': null,
   'eng-20': 'eng-10',
   'eng-30': 'eng-20',
+  // The US Common Core map: Algebra II follows Algebra I (Geometry is not needed first).
+  'us-grade-6': 'math-5',
+  'us-grade-7': 'us-grade-6',
+  'us-grade-8': 'us-grade-7',
+  'us-algebra-1': 'us-grade-8',
+  'us-geometry': 'us-algebra-1',
+  'us-algebra-2': 'us-algebra-1',
+  'us-precalculus': 'us-algebra-2',
 };
+
+/** For a US learner: the course of their grade on the Common Core map, and the ones either side. */
+function usCourse(g: number, a: PlacementAnswers): Recommendation {
+  const why = (title: string, grade: string) => [`${title} is the course US students usually take in ${grade}, with its units in the Common Core order.`];
+  if (g === 6) return rec('us-grade-6', why('Grade 6 Mathematics', 'Grade 6'), [{ courseId: 'us-grade-7', why: 'If you have already learned ratios, dividing fractions and one-step equations.' }]);
+  if (g === 7)
+    return rec('us-grade-7', why('Grade 7 Mathematics', 'Grade 7'), [
+      { courseId: 'us-grade-6', why: 'If ratios, fractions and negative numbers still feel new.' },
+      { courseId: 'us-grade-8', why: 'If you are ready for linear equations and functions.' },
+    ]);
+  if (g === 8)
+    return rec('us-grade-8', why('Grade 8 Mathematics', 'Grade 8'), [
+      { courseId: 'us-algebra-1', why: 'If your school has you take Algebra I in Grade 8.' },
+      { courseId: 'us-grade-7', why: 'If proportions and equations still feel new.' },
+    ]);
+  if (g === 9)
+    return rec('us-algebra-1', why('Algebra I', 'Grade 9'), [
+      { courseId: 'us-geometry', why: 'If you took Algebra I in Grade 8.' },
+      { courseId: 'us-grade-8', why: 'If linear equations and functions still feel new.' },
+    ]);
+  if (g === 10)
+    return rec('us-geometry', why('Geometry', 'Grade 10'), [
+      { courseId: 'us-algebra-2', why: 'If you have already taken Geometry.' },
+      { courseId: 'us-algebra-1', why: 'If you have not taken Algebra I yet.' },
+    ]);
+  if (g === 11)
+    return rec('us-algebra-2', why('Algebra II', 'Grade 11'), [
+      { courseId: 'us-precalculus', why: 'If you have already taken Algebra II.' },
+      { courseId: 'us-geometry', why: 'If you have not taken Geometry yet.' },
+    ]);
+  if (a.calculus) return rec('math-31', ['Calculus follows Precalculus: limits, derivatives and integrals, and their applications.'], [{ courseId: 'us-precalculus', why: 'If you have not finished Precalculus.' }]);
+  return rec('us-precalculus', why('Precalculus', 'Grade 12'), [
+    { courseId: 'math-31', why: 'If you have finished Precalculus and want to start calculus.' },
+    { courseId: 'us-algebra-2', why: 'If you have not finished Algebra II.' },
+  ]);
+}
 
 const CHECK = 'Programs set their own entrance requirements, so check the ones you are interested in.';
 
@@ -102,6 +146,8 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
       { courseId: 'chem-10', why: 'Start here if chemistry is new to you.' },
     ]);
   }
+  // A US learner gets the Common Core course of their grade (Grade 6 to Precalculus).
+  if (a.curriculum === 'us' && g >= 6) return usCourse(Math.min(12, g), a);
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));
     return rec(`math-${grade}`, [`Grade ${grade} Mathematics covers the mathematics of your grade, so you learn what your class is learning.`]);

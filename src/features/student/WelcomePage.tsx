@@ -8,7 +8,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, ClipboardCheck, Compass, KeyRound, Sparkles, XCircle } from 'lucide-react';
-import { LISTED_COURSES as COURSES, SUBJECTS, getCourse, getSkill, skillInfo } from '@engine/curriculum/index.ts';
+import { LISTED_COURSES as COURSES, SUBJECTS, getCourse, getSkill, mappedCourses, skillInfo } from '@engine/curriculum/index.ts';
 import { CURRICULA, curriculumById, guessCurriculum, levelIn, yearsFor } from '@engine/curricula.ts';
 import { gradeItem } from '@engine/grade.ts';
 import { placementResult, placementSkills, PREREQUISITE, recommendCourse, type Feeling, type PlacementAnswers, type Plan, type PlacementResult } from '@engine/placement.ts';
@@ -38,9 +38,9 @@ const FEELINGS: Array<[Feeling, string]> = [
   ['struggling', 'Hard right now'],
 ];
 
-/** A subject's courses grouped by grade, youngest first. */
-function gradesOf(subject: string) {
-  const courses = COURSES.filter((c) => c.subject === subject);
+/** A subject's courses grouped by grade, youngest first, with the learner's own system's courses (US Algebra I …). */
+function gradesOf(subject: string, curriculum?: string) {
+  const courses = [...mappedCourses(curriculum), ...COURSES].filter((c) => c.subject === subject);
   return [...new Set(courses.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: courses.filter((c) => c.grade === grade) }));
 }
 /** The first level a student can say they are at: Grade 5 for mathematics, Grade 9 for chemistry and English. */
@@ -316,7 +316,8 @@ function CourseChoice({ rec, curriculum, courseId, onPick, onBack, onCheck, onSt
   const course = getCourse(courseId);
   const prerequisite = PREREQUISITE[courseId] ?? null;
   const listed = new Set([rec.courseId, ...rec.alternatives.map((a) => a.courseId)]);
-  const grades = gradesOf(getCourse(rec.courseId)?.subject ?? SUBJECTS[0]);
+  const grades = gradesOf(getCourse(rec.courseId)?.subject ?? SUBJECTS[0], curriculum);
+  const gaps = getCourse(rec.courseId)?.gaps ?? [];
   // Where the recommended course sits in the learner's own system: "Year 11", "SS 1", "age 15".
   const recGrade = getCourse(rec.courseId)?.grade;
   const where = recGrade !== undefined ? levelIn(curriculum, recGrade) : undefined;
@@ -330,6 +331,7 @@ function CourseChoice({ rec, curriculum, courseId, onPick, onBack, onCheck, onSt
           <h2 className="mt-2 font-display text-2xl font-semibold">{title(rec.courseId)}</h2>
           <p className="mt-1 text-ink-2">{getCourse(rec.courseId)?.description}</p>
           {where && <p className="mt-1 text-sm font-medium text-ink-2">{curriculum === 'other' ? `Usually taken at about ${where}.` : `Usually taken in ${where}.`}</p>}
+          {gaps.length > 0 && <p className="mt-1 text-sm text-ink-3">Not in Gradileo yet: {gaps.join('; ')}.</p>}
           <ul className="mt-4 space-y-2">
             {rec.reasons.map((r) => (
               <li key={r} className="flex gap-2 text-[15px] text-ink-2">

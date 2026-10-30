@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Check } from 'lucide-react';
-import { LISTED_COURSES as COURSES, SUBJECTS } from '@engine/curriculum/index.ts';
+import { CURRICULUM_MAPS, getCourse, LISTED_COURSES as COURSES, mappedCourses, SUBJECTS } from '@engine/curriculum/index.ts';
 import { api } from '@/data/index.ts';
 import { useCreateClass } from '@/data/hooks.ts';
 import { Button, Card, CardBody, Checkbox, Input, PageHeader, Tabs, useToast } from '@/components/ui/index.ts';
@@ -10,9 +10,13 @@ import { useMe } from '@/features/auth/AuthProvider.tsx';
 import { ApprovalNotice, needsApproval } from './ApprovalNotice.tsx';
 import { CourseRequestCard } from '@/features/requests/CourseRequestCard.tsx';
 
-/** A subject's courses grouped by grade, youngest first. */
-function gradesOf(subject: string) {
-  const courses = COURSES.filter((c) => c.subject === subject);
+/** A tab of the course picker: a subject, or a school system's own courses ("map:us"). */
+const coursesOf = (tab: string) => (tab.startsWith('map:') ? mappedCourses(tab.slice(4)) : COURSES.filter((c) => c.subject === tab));
+const TABS = [...SUBJECTS.map((s) => ({ value: s, label: s })), ...CURRICULUM_MAPS.map((m) => ({ value: `map:${m.curriculum}`, label: m.name }))];
+
+/** A tab's courses grouped by grade, youngest first. */
+function gradesOf(tab: string) {
+  const courses = coursesOf(tab);
   return [...new Set(courses.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: courses.filter((c) => c.grade === grade) }));
 }
 
@@ -34,7 +38,7 @@ export default function NewClassPage() {
     try {
       const c = await create.mutateAsync({ name: name.trim() || 'My class', section: section.trim() || null, courseId, joinApproval });
       if (publishFirst) {
-        const course = COURSES.find((x) => x.id === courseId)!;
+        const course = getCourse(courseId)!;
         await api().setPublished(c.id, course.lessons[0].id, true);
       }
       toast({ kind: 'success', title: 'Class created', body: `Share the code ${c.joinCode} with your students, or add them from the Students page.` });
@@ -50,10 +54,10 @@ export default function NewClassPage() {
     setCourseId(id);
     if (!nameEdited) setName(title);
   };
-  // Changing the subject selects its first course, so the class is never made for a course out of view.
+  // Changing the tab selects its first course, so the class is never made for a course out of view.
   const chooseSubject = (s: string) => {
     setSubject(s);
-    const first = COURSES.find((c) => c.subject === s)!;
+    const first = coursesOf(s)[0]!;
     pick(first.id, first.shortTitle);
   };
 
@@ -69,7 +73,10 @@ export default function NewClassPage() {
         </Card>
         <div>
           <div className="label">Course</div>
-          {SUBJECTS.length > 1 && <Tabs className="mb-4" value={subject} onChange={chooseSubject} items={SUBJECTS.map((s) => ({ value: s, label: s }))} />}
+          {TABS.length > 1 && <Tabs className="mb-4" value={subject} onChange={chooseSubject} items={TABS} />}
+          {subject.startsWith('map:') && (
+            <p className="mb-4 text-sm text-ink-3">These courses follow the {CURRICULUM_MAPS.find((m) => `map:${m.curriculum}` === subject)?.name} order and names, built from Gradileo’s lessons. Each lists the topics Gradileo does not teach yet.</p>
+          )}
           <div className="space-y-5">
             {gradesOf(subject).map(({ grade, courses }) => (
               <section key={grade} aria-label={`Grade ${grade}`}>
@@ -88,8 +95,9 @@ export default function NewClassPage() {
                       <span className="min-w-0 flex-1">
                         <span className="block font-semibold">{c.title}</span>
                         <span className="mt-0.5 block text-sm text-ink-3">
-                          {c.units.length} units · {c.lessons.length} lessons · {c.outcomes.length} outcomes
+                          {c.units.length} units · {c.lessons.length} lessons{c.map ? '' : ` · ${c.outcomes.length} outcomes`}
                         </span>
+                        {!!c.gaps?.length && <span className="mt-0.5 block text-xs text-ink-3">Not in Gradileo yet: {c.gaps.join('; ')}.</span>}
                       </span>
                       {courseId === c.id && <Check className="h-5 w-5 text-brand" />}
                     </button>
