@@ -58,6 +58,7 @@ describe('speechText', () => {
     expect(speechText('Diegetic sound and non-diegetic music.')).toBe('Dye-a-jettic sound and non-dye-a-jettic music.');
     expect(speechText("Laertes and Fortinbras; his quietus. Toulmin's model; Horatian satire.")).toBe("Lay-air-teez and Fortin-brass; his kwy-ee-tus. Tool-min's model; Horayshan satire.");
     expect(speechText('Tomás said, “It’s far too cold.”')).toBe('Tomahss said, “It’s far too cold.”');
+    expect(speechText('Synecdoche and litotes; Litotes and synecdoche.')).toBe('Sin-eck-duh-kee and lie-toe-teez; Lie-toe-teez and sin-eck-duh-kee.');
     expect(speechText('Octa eight, nona nine, and deca ten. Sodium carbonate decahydrate.')).toBe('Octa eight, nona nine, and decka ten. Sodium carbonate deckahydrate.');
     expect(speechText('Dye-chlorine heptaoxide. The pipetted acid.')).toBe('Dye-chlorine hepta-oxide. The pih-petted acid.');
     expect(speechText('Electronegativity rises; their electronegativities differ. Svante Arrhenius.')).toBe('Electro-negativity rises; their electro-negativities differ. Svahntay Arrhenius.');

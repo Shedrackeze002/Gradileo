@@ -17049,6 +17049,108 @@
       }
     ]
   },
+  "e10-6-5": {
+    "lessonId": "e10-6-5",
+    "title": "Revising and Editing",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Revising and transitions",
+        "t": 23.609
+      },
+      {
+        "title": "Cutting wordiness",
+        "t": 79.571
+      },
+      {
+        "title": "Unity and order",
+        "t": 120.9
+      },
+      {
+        "title": "A common mistake",
+        "t": 145.929
+      },
+      {
+        "title": "Your turn",
+        "t": 159.764
+      },
+      {
+        "title": "Summary",
+        "t": 192.147
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-5:q",
+        "t": 172.535,
+        "prompt": "Which transition best fills the gap? “The bakery ran out of bread by nine. ____ many customers left empty-handed.”",
+        "choices": [
+          "As a result,",
+          "However,",
+          "For example,",
+          "On the other hand,"
+        ],
+        "answer": 0,
+        "working": "The empty-handed customers are a result of the bread running out, so a cause and effect transition fits."
+      }
+    ]
+  },
+  "e10-6-6": {
+    "lessonId": "e10-6-6",
+    "title": "Writing Under a Time Limit",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the prompt",
+        "t": 28.055
+      },
+      {
+        "title": "Planning and dividing time",
+        "t": 70.817
+      },
+      {
+        "title": "Writing and checking",
+        "t": 108.074
+      },
+      {
+        "title": "A common mistake",
+        "t": 141.804
+      },
+      {
+        "title": "Your turn",
+        "t": 158.348
+      },
+      {
+        "title": "Summary",
+        "t": 188.095
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-6:q",
+        "t": 170.133,
+        "prompt": "A prompt says: “Evaluate how effectively Saki builds suspense in ‘The Open Window’.” What must the essay do?",
+        "choices": [
+          "List the techniques Saki uses and stay neutral about them",
+          "Retell the events of the story in the order they happen",
+          "Describe the setting and characters in as much detail as possible",
+          "Judge how well the suspense works and support the judgement"
+        ],
+        "answer": 3,
+        "working": "Evaluate asks for a judgement, supported with evidence. Listing, retelling and describing do not judge."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",

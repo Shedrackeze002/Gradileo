@@ -61,9 +61,9 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Items in a series should share one grammatical form. Here the first two duties are ing forms, so the third must be one too.', show: 'p' },
+        { say: 'Items in a series should share one grammatical form. Here the first two duties end in i n g, so the third must too.', show: 'p' },
         { say: 'A comparison must compare like with like. This sentence compares a climate with a city. Name both sides, and add that of, or those for a plural.', hide: 'p', show: 'c' },
-        { say: 'Also form a comparative once, with er or with more, never with both.' },
+        { say: 'Also form a comparative once, with the ending e r or with the word more, never with both.' },
       ],
     },
     {
