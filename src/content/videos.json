@@ -16947,6 +16947,108 @@
       }
     ]
   },
+  "e10-6-3": {
+    "lessonId": "e10-6-3",
+    "title": "The Persuasive Essay",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Taking a position",
+        "t": 20.765
+      },
+      {
+        "title": "Reasons and evidence",
+        "t": 57.87
+      },
+      {
+        "title": "Counterargument and rebuttal",
+        "t": 88.032
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.607
+      },
+      {
+        "title": "Your turn",
+        "t": 149.552
+      },
+      {
+        "title": "Summary",
+        "t": 184.688
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-3:q",
+        "t": 166.154,
+        "prompt": "Objection to a library staying open late: “Paying staff to stay late would cost too much.” Which reply is the strongest rebuttal?",
+        "choices": [
+          "Staff time costs money, but trained student volunteers could help, so one paid worker would do.",
+          "That is simply not true, and anyone who says so has never needed to study.",
+          "That is a fair point about cost, so perhaps the library should close early after all.",
+          "People who worry about cost obviously do not care about students, so ignore them."
+        ],
+        "answer": 0,
+        "working": "Choice A concedes what is fair, then answers with a practical solution. B denies, C gives up and D attacks people."
+      }
+    ]
+  },
+  "e10-6-4": {
+    "lessonId": "e10-6-4",
+    "title": "Narrative Writing",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Show, don’t tell",
+        "t": 25.89
+      },
+      {
+        "title": "Details, openings and pacing",
+        "t": 60.635
+      },
+      {
+        "title": "Writing dialogue",
+        "t": 94.845
+      },
+      {
+        "title": "A common mistake",
+        "t": 133.699
+      },
+      {
+        "title": "Your turn",
+        "t": 152.294
+      },
+      {
+        "title": "Summary",
+        "t": 186.037
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-6-4:q",
+        "t": 165.424,
+        "prompt": "Tomás says two separate sentences: I’m not going. It’s far too cold. Which version is punctuated correctly?",
+        "choices": [
+          "“I’m not going,” Tomás said. “it’s far too cold.”",
+          "“I’m not going,” Tomás said, “It’s far too cold.”",
+          "“I’m not going,” Tomás said. “It’s far too cold.”",
+          "“I’m not going.” Tomás said, “it’s far too cold.”"
+        ],
+        "answer": 2,
+        "working": "The tag ends the first sentence with a period, so the second spoken sentence starts with a capital letter."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
