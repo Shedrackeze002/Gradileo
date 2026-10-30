@@ -16437,6 +16437,108 @@
       }
     ]
   },
+  "e10-3-4": {
+    "lessonId": "e10-3-4",
+    "title": "Themes",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The big ideas",
+        "t": 30.741
+      },
+      {
+        "title": "Writing a theme statement",
+        "t": 68.188
+      },
+      {
+        "title": "Quotations as evidence",
+        "t": 116.531
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.703
+      },
+      {
+        "title": "Your turn",
+        "t": 163.559
+      },
+      {
+        "title": "Summary",
+        "t": 191.793
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-3-4:q",
+        "t": 171.518,
+        "prompt": "Which of these is a theme statement about Romeo and Juliet?",
+        "choices": [
+          "Romeo and Juliet marry only a day after they first meet.",
+          "Always stop and think carefully before making any decision.",
+          "Hatred passed down in families destroys the innocent.",
+          "Every feud in every family always ends in tragedy."
+        ],
+        "answer": 2,
+        "working": "Choice C is a general idea the play supports. A is a plot summary, B is an order, and D is an absolute."
+      }
+    ]
+  },
+  "e10-4-1": {
+    "lessonId": "e10-4-1",
+    "title": "Purpose and Audience",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why was it written?",
+        "t": 28.848
+      },
+      {
+        "title": "Satire and audience",
+        "t": 57.942
+      },
+      {
+        "title": "Register",
+        "t": 102.934
+      },
+      {
+        "title": "A common mistake",
+        "t": 130.156
+      },
+      {
+        "title": "Your turn",
+        "t": 155.338
+      },
+      {
+        "title": "Summary",
+        "t": 187.426
+      }
+    ],
+    "cues": [
+      {
+        "id": "e10-4-1:q",
+        "t": 169.725,
+        "prompt": "A passage reads: “First, rinse the rice until the water runs clear. Then add two cups of water for every cup of rice.” What is its main purpose?",
+        "choices": [
+          "To instruct: it tells the reader how to do something",
+          "To inform: it gives the reader facts about growing rice",
+          "To persuade: it urges the reader to buy a brand of rice",
+          "To describe: it paints a picture of a field of rice"
+        ],
+        "answer": 0,
+        "working": "The commands *rinse* and *add*, ordered by *first* and *then*, show a purpose of instructing."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
