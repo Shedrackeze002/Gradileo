@@ -40,7 +40,7 @@ export function speechText(say: string): string {
   // "Dung-sening", "hamartia" as "ha-MAR-sha", the poet Countee Cullen as "County" and film's
   // "diegetic" sound without its first syllable ("dee-JET-ic"). In Hamlet, "Laertes" comes out "Lerts",
   // "Fortinbras" "Fortenborough's" and "quietus" "quietest"; Toulmin is "Tallman" and "Horatian"
-  // satire "Hoo-ration".
+  // satire "Hoo-ration". "Tomás" loses its final "s" ("Tamar").
   return words
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
@@ -73,6 +73,7 @@ export function speechText(say: string): string {
     .replace(/\bquietus\b/g, 'kwy-ee-tus')
     .replace(/\bToulmin\b/g, 'Tool-min')
     .replace(/\bHoratian\b/g, 'Horayshan')
+    .replace(/\bTomás\b/g, 'Tomahss')
     .replace(/\b([Dd])eca(?=\b|hydrate)/g, '$1ecka')
     .replace(/\b([Hh])eptaoxide/g, '$1epta-oxide')
     .replace(/\b([Pp])ipetted\b/g, '$1ih-petted')
