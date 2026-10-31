@@ -166,7 +166,15 @@ export class SupabaseApi implements DataApi {
         cb(null);
         return;
       }
-      if (event === 'SIGNED_IN' || event === 'USER_UPDATED') cb(await this.loadProfile(session.user.id));
+      if (event !== 'SIGNED_IN' && event !== 'USER_UPDATED') return;
+      // Supabase says SIGNED_IN again each time the tab comes back into view. The profile is loaded
+      // then, and a failed reload (a tablet still waking up) must not sign the page out.
+      if (event === 'SIGNED_IN' && this.profile?.id === session.user.id) return cb(this.profile);
+      try {
+        cb(await this.loadProfile(session.user.id));
+      } catch {
+        /* keep the profile already shown; the next call that needs the sign-in retries */
+      }
     });
     return () => data.subscription.unsubscribe();
   }

@@ -90,6 +90,14 @@ erases, and palm rejection ignores fingers once a pen is used, ignores broad con
 pen replace a resting hand's stroke. Boards are saved to `boards` (teacher-only unless shared with
 the class).
 
+On a touch screen, present mode locks the screen (`screenLock.ts`): the page cannot scroll, bounce,
+zoom or be pulled down to reload, except inside panels that scroll, and a touch while the pencil
+writes (or within 0.8 s of it lifting, or a hand already down when it lands) is a palm that presses
+nothing. The highlighter keeps its own colour (yellow at first) apart from the pen's. Where the
+presentation is (slide, step, drawing, each slide's ink and the whiteboard's pages) is kept in the
+tab's sessionStorage (`presentPlace.ts`), so a reload carries on, and is forgotten when the
+teacher leaves present mode.
+
 Written responses are answered on the same ink (`CanvasAnswer.tsx`), with a Type tab beside the
 canvas. The working is kept in the response's `canvas` field as compact text (`encodeCanvas`:
 whole board units, each point a step from the one before, pressure in tenths; at most four pages

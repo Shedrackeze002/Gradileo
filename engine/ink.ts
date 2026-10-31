@@ -10,7 +10,7 @@
  */
 
 export type InkTool = 'pen' | 'highlighter';
-export type InkColor = 'ink' | 'blue' | 'red' | 'green' | 'orange' | 'purple';
+export type InkColor = 'ink' | 'blue' | 'red' | 'green' | 'orange' | 'purple' | 'yellow';
 export type BoardBackground = 'plain' | 'grid' | 'lined' | 'dots';
 
 export interface Stroke {
@@ -29,7 +29,7 @@ export interface BoardPage {
 
 export const BOARD_W = 1600;
 export const BOARD_H = 900;
-export const INK_COLORS: InkColor[] = ['ink', 'blue', 'red', 'green', 'orange', 'purple'];
+export const INK_COLORS: InkColor[] = ['ink', 'blue', 'red', 'green', 'orange', 'purple', 'yellow'];
 export const BACKGROUNDS: BoardBackground[] = ['plain', 'grid', 'lined', 'dots'];
 const TOOLS: InkTool[] = ['pen', 'highlighter'];
 
@@ -81,7 +81,7 @@ export const CANVAS_POINT_GAP = 3;
 
 const BG_CODE: Record<BoardBackground, string> = { plain: 'p', grid: 'g', lined: 'l', dots: 'd' };
 const TOOL_CODE: Record<InkTool, string> = { pen: 'p', highlighter: 'h' };
-const COLOR_CODE: Record<InkColor, string> = { ink: 'k', blue: 'b', red: 'r', green: 'g', orange: 'o', purple: 'u' };
+const COLOR_CODE: Record<InkColor, string> = { ink: 'k', blue: 'b', red: 'r', green: 'g', orange: 'o', purple: 'u', yellow: 'y' };
 const invert = <K extends string>(m: Record<K, string>) => Object.fromEntries(Object.entries(m).map(([k, v]) => [v, k])) as Record<string, K>;
 const BG_OF = invert(BG_CODE);
 const TOOL_OF = invert(TOOL_CODE);
