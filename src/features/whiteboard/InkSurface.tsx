@@ -112,6 +112,16 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
   }, [strokes, dims, theme, background, unitsWide, eraseTick]);
 
   useEffect(() => () => cancelAnimationFrame(frame.current), []);
+  // Safari holds a canvas's memory until it is collected, and an iPad that opens and closes drawing
+  // often can run out and reload the page; the canvases give their memory back at once.
+  useEffect(() => {
+    const canvases = [base.current, live.current];
+    return () => {
+      for (const c of canvases) {
+        if (c) c.width = c.height = 0;
+      }
+    };
+  }, []);
 
   // The pointer: points with the time they were made, faded out frame by frame and never saved.
   const trail = useRef<Array<{ x: number; y: number; t: number }>>([]);

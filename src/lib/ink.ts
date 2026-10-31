@@ -29,8 +29,8 @@ export const INK_SIZES = [3, 6, 12];
 /** Stroke colours for a light or a dark surface. `ink` follows the page text colour. */
 export function inkPalette(dark: boolean): Record<InkColor, string> {
   return dark
-    ? { ink: '#eceef7', blue: '#60a5fa', red: '#f87171', green: '#4ade80', orange: '#fb923c', purple: '#a78bfa' }
-    : { ink: '#111626', blue: '#2563eb', red: '#dc2626', green: '#16a34a', orange: '#ea580c', purple: '#7c3aed' };
+    ? { ink: '#eceef7', blue: '#60a5fa', red: '#f87171', green: '#4ade80', orange: '#fb923c', purple: '#a78bfa', yellow: '#fde047' }
+    : { ink: '#111626', blue: '#2563eb', red: '#dc2626', green: '#16a34a', orange: '#ea580c', purple: '#7c3aed', yellow: '#facc15' };
 }
 
 /** Line width at a given pressure: thinner for a light touch, thicker for a firm one. */
@@ -191,7 +191,7 @@ export function drawStroke(ctx: CanvasRenderingContext2D, s: Stroke, palette: Re
   ctx.lineJoin = 'round';
   ctx.strokeStyle = palette[s.color] ?? palette.ink;
   ctx.fillStyle = ctx.strokeStyle;
-  if (s.tool === 'highlighter') ctx.globalAlpha = 0.32;
+  if (s.tool === 'highlighter') ctx.globalAlpha = 0.42;
   if (n === 1) {
     ctx.beginPath();
     ctx.arc(pts[0], pts[1], widthAt(s, pts[2]) / 2, 0, Math.PI * 2);

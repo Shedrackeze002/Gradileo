@@ -9,6 +9,7 @@ import { BACKGROUNDS, BOARD_W, hasInk, inkCommit, inkDoc, inkRedo, inkUndo, type
 import type { Board } from '@/data/types.ts';
 import { Button, Menu, MenuItem, useToast } from '@/components/ui/index.ts';
 import { cn } from '@/lib/cn.ts';
+import { keepBoard, readBoard } from '@/features/lessons/presentPlace.ts';
 import { InkSurface } from './InkSurface.tsx';
 import { usePageLock } from './pageLock.ts';
 import { InkToolbar, type InkTools } from './InkToolbar.tsx';
@@ -34,14 +35,20 @@ export interface WhiteboardProps {
   /** Saved boards for this lesson; when given with onSave, boards can be saved and reopened. */
   boards?: Board[];
   onSave?: (b: { id?: string; title: string; pages: BoardPage[] }) => Promise<Board>;
+  /** Where the board is kept for the tab, so a reload of the page keeps its ink. */
+  keepKey?: string;
 }
 
-export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave }: WhiteboardProps) {
-  const [pages, setPages] = useState<PageState[]>(() => [blankPage()]);
-  const [ix, setIx] = useState(0);
-  const [boardId, setBoardId] = useState<string | undefined>();
-  const [title, setTitle] = useState(() => `${lessonTitle} board`);
-  const [dirty, setDirty] = useState(false);
+export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave, keepKey }: WhiteboardProps) {
+  const [kept] = useState(() => (keepKey ? readBoard(keepKey) : null));
+  const [pages, setPages] = useState<PageState[]>(() => kept?.pages.map((p) => ({ background: p.background, doc: inkDoc(p.strokes) })) ?? [blankPage()]);
+  const [ix, setIx] = useState(kept?.ix ?? 0);
+  const [boardId, setBoardId] = useState<string | undefined>(kept?.boardId);
+  const [title, setTitle] = useState(() => kept?.title || `${lessonTitle} board`);
+  const [dirty, setDirty] = useState(kept?.dirty ?? false);
+  useEffect(() => {
+    if (keepKey) keepBoard(keepKey, { pages: toPages(pages), ix, boardId, title, dirty });
+  }, [keepKey, pages, ix, boardId, title, dirty]);
   const [saving, setSaving] = useState(false);
   usePageLock(open);
   const [fitRef, fit] = useBoardFit();

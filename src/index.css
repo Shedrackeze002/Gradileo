@@ -220,6 +220,16 @@
   .ink-surface {
     -webkit-tap-highlight-color: transparent;
   }
+  /* Present mode on a touch screen: the page cannot scroll, bounce, zoom on a double tap or be
+     pulled down to reload (see screenLock.ts). */
+  html.screen-lock,
+  html.screen-lock body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  html.screen-lock {
+    touch-action: manipulation;
+  }
 }
 
 @layer components {

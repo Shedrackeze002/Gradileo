@@ -22,6 +22,14 @@ items ship or decisions change.
   drawing on slides, a whiteboard with pen pressure and palm rejection saved to the lesson (and
   shared with students), a timer, a student picker, embedded videos and activities, and "Choose
   what to show" per class.
+- Present mode on an iPad (fixed 31 October 2026, the owner's report: a resting palm pressed
+  buttons and moved the screen, Safari left full screen or reloaded the page back to the start, and
+  the highlighter could not be found). The screen is now locked in present mode: it cannot scroll,
+  bounce, zoom or be pulled down to reload, and while the pencil writes a palm presses nothing
+  (the toolbar, Next or anything it rests on). If Safari closes its full screen anyway, a "Back to
+  full screen" button brings it back in one tap. The highlighter is yellow and keeps its own colour,
+  and the drawing tools are named under their icons. A reload carries on at the same slide with
+  its ink and whiteboard pages, and signing in again returns to the presentation.
 - Live class questions: from a "Your turn" slide the teacher sends the question to every
   student's device; answers arrive in real time and the slide shows how many answered, how many
   were right, each choice's share or the common wrong answers, without names. Students see

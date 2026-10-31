@@ -24,10 +24,12 @@ import { getItem, setItem } from '@/lib/storage.ts';
 import { cn } from '@/lib/cn.ts';
 import { InkSurface } from '@/features/whiteboard/InkSurface.tsx';
 import { usePageLock } from '@/features/whiteboard/pageLock.ts';
+import { useScreenLock } from '@/features/whiteboard/screenLock.ts';
 import { InkToolbar, useInkTools } from '@/features/whiteboard/InkToolbar.tsx';
 import { Whiteboard } from '@/features/whiteboard/Whiteboard.tsx';
 import { useLessonContent } from './LessonView.tsx';
 import { PresentTimer } from './PresentTimer.tsx';
+import { forgetPlace, keepPlace, placeKey, readPlace } from './presentPlace.ts';
 import { buildSlides, fixedSlide, lastStep, presentedSlides, revealAt, withQuestionsSlide, type Slide, type SlideItem } from './slides.ts';
 import { SlideView, type DeckLesson } from './deck/SlideView.tsx';
 import { SLIDE_H, SLIDE_W, useStageScale } from './deck/fit.tsx';
@@ -90,6 +92,11 @@ export default function PresentMode() {
   const boards = useBoards(classId, lessonId);
   const saveBoard = useSaveBoard(classId, lessonId);
   const tools = useInkTools();
+  // On a touch screen the slides stay put under the teacher's hand, and a palm presses nothing.
+  useScreenLock(true);
+  // After a reload the presentation carries on where it was, with its ink.
+  const keepKey = placeKey(classId, lessonId);
+  const [saved] = useState(() => readPlace(keepKey));
 
   const lessonResources = useMemo(
     () =>
@@ -168,7 +175,7 @@ export default function PresentMode() {
     return v === 'fade' || v === 'off' ? v : 'dynamic';
   });
   const build = stepsOn && !editing;
-  const [pos, setPos] = useState({ id: 'title', step: 0, dir: 1 });
+  const [pos, setPos] = useState(() => ({ id: saved.slide ?? 'title', step: saved.step ?? 0, dir: 1 }));
   const lastIx = useRef(0);
   let ix = slides.findIndex((s) => s.id === pos.id);
   if (ix < 0) ix = Math.max(0, Math.min(lastIx.current, slides.length - 1));
@@ -178,9 +185,17 @@ export default function PresentMode() {
   const step = build ? Math.min(pos.step, maxStep) : maxStep;
 
   const [full, setFull] = useState(false);
-  const [drawing, setDrawing] = useState(false);
+  // Safari on an iPad can close its full screen under a hand on the glass: one tap brings it back.
+  const wantFull = useRef(false);
+  const [lostFull, setLostFull] = useState(false);
+  const toggleFull = () => {
+    setLostFull(false);
+    wantFull.current = !document.fullscreenElement;
+    void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.())?.catch(() => undefined);
+  };
+  const [drawing, setDrawing] = useState(() => !!saved.drawing);
   usePageLock(drawing);
-  const [boardOpen, setBoardOpen] = useState(false);
+  const [boardOpen, setBoardOpen] = useState(() => !!saved.board);
   const [timerOpen, setTimerOpen] = useState(false);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [overview, setOverview] = useState(false);
@@ -218,7 +233,11 @@ export default function PresentMode() {
       }
     }
   }, [liveSlot, liveOpen, allSlides]);
-  const [notes, setNotes] = useState<Record<string, InkDoc>>({});
+  const [notes, setNotes] = useState<Record<string, InkDoc>>(() => Object.fromEntries(Object.entries(saved.notes ?? {}).map(([id, strokes]) => [id, inkDoc(strokes)])));
+  useEffect(() => {
+    const ink = Object.fromEntries(Object.entries(notes).flatMap(([id, d]) => (d.strokes.length ? [[id, d.strokes]] : [])));
+    keepPlace(keepKey, { slide: pos.id, step: pos.step, drawing, board: boardOpen, notes: ink });
+  }, [keepKey, pos.id, pos.step, drawing, boardOpen, notes]);
   const note = (slide && notes[slide.id]) || inkDoc();
   const editNote = useCallback((fn: (d: InkDoc) => InkDoc) => slide && setNotes((n) => ({ ...n, [slide.id]: fn(n[slide.id] ?? inkDoc()) })), [slide]);
   const [stageRef, scale] = useStageScale();
@@ -261,9 +280,11 @@ export default function PresentMode() {
   }, [slide, build, step, ix, slides, goTo]);
 
   const exit = useCallback(() => {
+    wantFull.current = false;
+    forgetPlace(keepKey);
     if (document.fullscreenElement) void document.exitFullscreen();
     navigate(`/t/c/${classId}/lessons/${lessonId}`);
-  }, [navigate, classId, lessonId]);
+  }, [navigate, classId, lessonId, keepKey]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -314,7 +335,12 @@ export default function PresentMode() {
         else if (!document.fullscreenElement) exit();
       }
     };
-    const onFs = () => setFull(!!document.fullscreenElement);
+    const onFs = () => {
+      const on = !!document.fullscreenElement;
+      setFull(on);
+      // Only a touch screen offers it back: on a computer, Escape leaving full screen is meant.
+      setLostFull(!on && wantFull.current && navigator.maxTouchPoints > 0);
+    };
     window.addEventListener('keydown', onKey);
     document.addEventListener('fullscreenchange', onFs);
     return () => {
@@ -451,7 +477,7 @@ export default function PresentMode() {
             )}
           </Menu>
           <span className="mx-1 h-6 w-px bg-line" />
-          <button type="button" className="rounded-lg p-2 text-ink-2 hover:bg-surface-2" onClick={() => void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.())?.catch(() => undefined)} aria-label="Toggle full screen">
+          <button type="button" className="rounded-lg p-2 text-ink-2 hover:bg-surface-2" onClick={toggleFull} aria-label="Toggle full screen">
             {full ? <Minimize2 className="h-5 w-5" /> : <Maximize2 className="h-5 w-5" />}
           </button>
           <button type="button" className="rounded-lg p-2 text-ink-2 hover:bg-surface-2" onClick={exit} aria-label="Exit presentation">
@@ -629,7 +655,7 @@ export default function PresentMode() {
         </div>
       )}
 
-      <Whiteboard open={boardOpen} onClose={() => setBoardOpen(false)} tools={tools} lessonTitle={meta.title} boards={boards.data} onSave={(b) => saveBoard.mutateAsync(b)} />
+      <Whiteboard open={boardOpen} onClose={() => setBoardOpen(false)} tools={tools} lessonTitle={meta.title} boards={boards.data} onSave={(b) => saveBoard.mutateAsync(b)} keepKey={`${keepKey}:board`} />
       <PresentTimer open={timerOpen} onClose={() => setTimerOpen(false)} />
       <StudentPicker open={pickerOpen} onClose={() => setPickerOpen(false)} students={roster.data ?? []} onPicked={celebrate} />
       <Confetti fire={confetti} />
@@ -638,6 +664,19 @@ export default function PresentMode() {
       )}
       {answering && <AnsweringView question={answering} onDone={() => setAnswering(null)} />}
       {blank && <button type="button" className="fixed inset-0 z-[70] cursor-default bg-black" onClick={() => setBlank(false)} aria-label="Show the slide again" />}
+      {lostFull && !full && (
+        <div className="fixed inset-x-0 top-3 z-[60] flex justify-center px-3" role="status">
+          <div className="flex items-center gap-1 rounded-2xl border border-line bg-surface p-1.5 pl-4 text-sm shadow-pop">
+            <span className="mr-2 text-ink-2">Full screen closed</span>
+            <Button size="sm" icon={<Maximize2 className="h-4 w-4" />} onClick={toggleFull}>
+              Back to full screen
+            </Button>
+            <button type="button" className="rounded-lg p-2 text-ink-3 hover:bg-surface-2" onClick={() => ((wantFull.current = false), setLostFull(false))} aria-label="Stay out of full screen">
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

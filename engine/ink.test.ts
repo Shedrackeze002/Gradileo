@@ -17,6 +17,12 @@ describe('canvas answers', () => {
     ]);
   });
 
+  it('keeps a yellow highlighter', () => {
+    const pages: BoardPage[] = [{ background: 'plain', strokes: [stroke([50, 60, 0.5, 90, 60, 0.5], { tool: 'highlighter', color: 'yellow', size: 6 })] }];
+    expect(encodeCanvas(pages)).toBe('p;hy6:50,60,5 40,0,5');
+    expect(decodeCanvas(encodeCanvas(pages))).toEqual(pages);
+  });
+
   it('drops points that round to the one before', () => {
     expect(encodeCanvas([{ background: 'plain', strokes: [stroke([5, 5, 0.5, 5.2, 4.9, 0.5, 9, 5, 0.5])] }])).toBe('p;pk6:5,5,5 4,0,5');
   });
