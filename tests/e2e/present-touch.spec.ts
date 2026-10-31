@@ -127,3 +127,33 @@ test('on a touch screen the presentation stays put, panels still scroll, and a p
   await expect(page.locator('html')).not.toHaveClass(/screen-lock/);
   expect(errors).toEqual([]);
 });
+
+test.describe('on an iPad', () => {
+  test.use({ userAgent: 'Mozilla/5.0 (iPad; CPU OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/141.0 Mobile/15E148 Safari/604.1', hasTouch: true });
+
+  test('the full-screen button explains the Home Screen app once, then uses the browser’s full screen', async ({ page }) => {
+    const errors = trackErrors(page);
+    await signInDemo(page, 'Teacher');
+    await page.goto('/present/c_math10a/m10c-2-1');
+    await expect(page.locator('[aria-roledescription="slide"]')).toBeVisible();
+    await page.getByRole('button', { name: 'Toggle full screen' }).click();
+    const help = page.getByRole('dialog', { name: 'Full screen on an iPad' });
+    await expect(help).toBeVisible();
+    await expect(help.getByText('Add to Home Screen')).toBeVisible();
+    await help.getByRole('button', { name: 'Got it' }).click();
+    await expect(help).toBeHidden();
+    // Seen once: the next tap goes straight to the browser's full screen, with no guide.
+    await page.getByRole('button', { name: 'Toggle full screen' }).click();
+    await expect(help).toBeHidden();
+    expect(errors).toEqual([]);
+  });
+
+  test('opened from the Home Screen there is no full-screen button: the app has no browser bars', async ({ page }) => {
+    await page.addInitScript(() => Object.defineProperty(navigator, 'standalone', { value: true }));
+    await signInDemo(page, 'Teacher');
+    await page.goto('/present/c_math10a/m10c-2-1');
+    await expect(page.locator('[aria-roledescription="slide"]')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Exit presentation' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Toggle full screen' })).toHaveCount(0);
+  });
+});

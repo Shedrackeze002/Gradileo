@@ -96,7 +96,10 @@ writes (or within 0.8 s of it lifting, or a hand already down when it lands) is 
 nothing. The highlighter keeps its own colour (yellow at first) apart from the pen's. Where the
 presentation is (slide, step, drawing, each slide's ink and the whiteboard's pages) is kept in the
 tab's sessionStorage (`presentPlace.ts`), so a reload carries on, and is forgotten when the
-teacher leaves present mode.
+teacher leaves present mode. On an iPad the browser's full screen closes under a pencil or hand moving down
+the glass (in every browser, all on Safari's engine), so there the full-screen button explains
+once how to open Gradileo from the Home Screen (`src/lib/device.ts`; `index.html` and the
+manifest carry the app's icons), where present mode has no full-screen button at all.
 
 Written responses are answered on the same ink (`CanvasAnswer.tsx`), with a Type tab beside the
 canvas. The working is kept in the response's `canvas` field as compact text (`encodeCanvas`:
