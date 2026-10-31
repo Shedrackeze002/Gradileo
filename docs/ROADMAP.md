@@ -30,6 +30,13 @@ items ship or decisions change.
   full screen" button brings it back in one tap. The highlighter is yellow and keeps its own colour,
   and the drawing tools are named under their icons. A reload carries on at the same slide with
   its ink and whiteboard pages, and signing in again returns to the presentation.
+  The same day the owner found the browser's full screen still closing while they wrote, in Chrome
+  as in Safari: on an iPad every browser runs on Safari's engine, whose full screen closes when
+  the pencil or a hand moves down the glass, and a page cannot stop it. The "Back to full screen"
+  button is gone (it kept reappearing). Instead, on an iPad the full-screen button explains once how
+  to add Gradileo to the Home Screen, where it opens as its own app with no browser bars (the
+  full screen that stays put); the app has a proper icon now, and opened that way present mode has
+  no full-screen button.
 - Live class questions: from a "Your turn" slide the teacher sends the question to every
   student's device; answers arrive in real time and the slide shows how many answered, how many
   were right, each choice's share or the common wrong answers, without names. Students see

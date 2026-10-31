@@ -12,7 +12,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import { useNavigate, useParams } from 'react-router-dom';
 import { BookOpen, ChevronLeft, ChevronRight, EyeOff, LayoutGrid, Maximize2, MessageCircleQuestion, Minimize2, MonitorOff, PenLine, Settings2, Shuffle, SquarePen, Timer, X } from 'lucide-react';
 import { lessonById, unitById } from '@engine/curriculum/index.ts';
-import { Button, Menu, PageSpinner, Switch, useToast } from '@/components/ui/index.ts';
+import { Button, Menu, Modal, PageSpinner, Switch, useToast } from '@/components/ui/index.ts';
 import { useBoards, useClassQuestions, useCloseLiveQuestion, useLessonPrefs, useLiveAnswers, useLiveQuestion, useOpenLiveQuestion, useQuestionsFeed, useResources, useRoster, useSaveBoard, useSetHiddenBlocks, useSetQuestionStatus, useVideoLinks } from '@/data/hooks.ts';
 import { api, demoApi } from '@/data/index.ts';
 import type { ClassQuestion, Presentation } from '@/data/types.ts';
@@ -21,6 +21,7 @@ import { freshSeed } from '@engine/rng.ts';
 import { LivePanel } from '@/features/live/LivePanel.tsx';
 import { inkCommit, inkDoc, inkRedo, inkUndo, type InkDoc } from '@/lib/ink.ts';
 import { getItem, setItem } from '@/lib/storage.ts';
+import { appleTouchDevice, homeScreenApp } from '@/lib/device.ts';
 import { cn } from '@/lib/cn.ts';
 import { InkSurface } from '@/features/whiteboard/InkSurface.tsx';
 import { usePageLock } from '@/features/whiteboard/pageLock.ts';
@@ -40,6 +41,7 @@ import { AnsweringView, QuestionPopup, QuestionsSlideBody } from './deck/ClassQu
 const STEPS_KEY = 'educore-present-steps';
 const TX_KEY = 'educore-present-transitions';
 const QUESTIONS_KEY = 'educore-present-questions';
+const IPAD_HELP_KEY = 'gradileo-present-ipad-full-screen';
 type TxMode = 'dynamic' | 'fade' | 'off';
 
 interface Transition {
@@ -185,13 +187,24 @@ export default function PresentMode() {
   const step = build ? Math.min(pos.step, maxStep) : maxStep;
 
   const [full, setFull] = useState(false);
-  // Safari on an iPad can close its full screen under a hand on the glass: one tap brings it back.
-  const wantFull = useRef(false);
-  const [lostFull, setLostFull] = useState(false);
-  const toggleFull = () => {
-    setLostFull(false);
-    wantFull.current = !document.fullscreenElement;
+  // On an iPad the browser's full screen (Safari's, Chrome's or any other: all run on Safari's
+  // engine there) closes whenever the pencil or a hand moves down the glass, and a page cannot stop
+  // it. Added to the Home Screen, Gradileo opens as its own app with no browser bars, which is the
+  // full screen that stays put. So on an iPad the button explains that the first time; the
+  // browser's full screen is still one tap away, and it is never offered again when it closes.
+  const apple = useMemo(appleTouchDevice, []);
+  const homeApp = useMemo(homeScreenApp, []);
+  const [fullHelp, setFullHelp] = useState(false);
+  const browserFull = () => {
+    setFullHelp(false);
     void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.())?.catch(() => undefined);
+  };
+  const toggleFull = () => {
+    if (apple && !document.fullscreenElement && getItem(IPAD_HELP_KEY) !== 'seen') {
+      setItem(IPAD_HELP_KEY, 'seen');
+      return setFullHelp(true);
+    }
+    browserFull();
   };
   const [drawing, setDrawing] = useState(() => !!saved.drawing);
   usePageLock(drawing);
@@ -280,7 +293,6 @@ export default function PresentMode() {
   }, [slide, build, step, ix, slides, goTo]);
 
   const exit = useCallback(() => {
-    wantFull.current = false;
     forgetPlace(keepKey);
     if (document.fullscreenElement) void document.exitFullscreen();
     navigate(`/t/c/${classId}/lessons/${lessonId}`);
@@ -335,12 +347,7 @@ export default function PresentMode() {
         else if (!document.fullscreenElement) exit();
       }
     };
-    const onFs = () => {
-      const on = !!document.fullscreenElement;
-      setFull(on);
-      // Only a touch screen offers it back: on a computer, Escape leaving full screen is meant.
-      setLostFull(!on && wantFull.current && navigator.maxTouchPoints > 0);
-    };
+    const onFs = () => setFull(!!document.fullscreenElement);
     window.addEventListener('keydown', onKey);
     document.addEventListener('fullscreenchange', onFs);
     return () => {
@@ -477,9 +484,11 @@ export default function PresentMode() {
             )}
           </Menu>
           <span className="mx-1 h-6 w-px bg-line" />
-          <button type="button" className="rounded-lg p-2 text-ink-2 hover:bg-surface-2" onClick={toggleFull} aria-label="Toggle full screen">
-            {full ? <Minimize2 className="h-5 w-5" /> : <Maximize2 className="h-5 w-5" />}
-          </button>
+          {!homeApp && (
+            <button type="button" className="rounded-lg p-2 text-ink-2 hover:bg-surface-2" onClick={toggleFull} aria-label="Toggle full screen">
+              {full ? <Minimize2 className="h-5 w-5" /> : <Maximize2 className="h-5 w-5" />}
+            </button>
+          )}
           <button type="button" className="rounded-lg p-2 text-ink-2 hover:bg-surface-2" onClick={exit} aria-label="Exit presentation">
             <X className="h-5 w-5" />
           </button>
@@ -664,19 +673,34 @@ export default function PresentMode() {
       )}
       {answering && <AnsweringView question={answering} onDone={() => setAnswering(null)} />}
       {blank && <button type="button" className="fixed inset-0 z-[70] cursor-default bg-black" onClick={() => setBlank(false)} aria-label="Show the slide again" />}
-      {lostFull && !full && (
-        <div className="fixed inset-x-0 top-3 z-[60] flex justify-center px-3" role="status">
-          <div className="flex items-center gap-1 rounded-2xl border border-line bg-surface p-1.5 pl-4 text-sm shadow-pop">
-            <span className="mr-2 text-ink-2">Full screen closed</span>
-            <Button size="sm" icon={<Maximize2 className="h-4 w-4" />} onClick={toggleFull}>
-              Back to full screen
+      <Modal
+        open={fullHelp}
+        onClose={() => setFullHelp(false)}
+        title="Full screen on an iPad"
+        footer={
+          <>
+            <Button variant="ghost" onClick={browserFull}>
+              Use the browser's full screen anyway
             </Button>
-            <button type="button" className="rounded-lg p-2 text-ink-3 hover:bg-surface-2" onClick={() => ((wantFull.current = false), setLostFull(false))} aria-label="Stay out of full screen">
-              <X className="h-4 w-4" />
-            </button>
-          </div>
+            <Button onClick={() => setFullHelp(false)}>Got it</Button>
+          </>
+        }
+      >
+        <div className="space-y-3 text-[15px] text-ink-2">
+          <p>On an iPad, the browser's full screen closes whenever the pencil or your hand moves down the screen, in Safari, Chrome and every other browser, and no website can switch that off.</p>
+          <p className="font-medium text-ink">For a full screen that stays put while you write, open Gradileo as an app:</p>
+          <ol className="list-decimal space-y-1.5 pl-5">
+            <li>
+              Tap the <strong>Share</strong> button (the square with an arrow), at the top of Safari or Chrome.
+            </li>
+            <li>
+              Choose <strong>Add to Home Screen</strong>, then <strong>Add</strong>.
+            </li>
+            <li>Open Gradileo from your Home Screen and sign in once. It opens without the browser's bars, and the screen stays still.</li>
+          </ol>
+          <p>Until then, presenting without full screen works too: the slides stay put while you write.</p>
         </div>
-      )}
+      </Modal>
     </div>
   );
 }
