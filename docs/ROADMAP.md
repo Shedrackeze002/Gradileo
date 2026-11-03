@@ -350,6 +350,11 @@ items ship or decisions change.
      (`--captions` adds ours), about 90 videos a day instead of about 20, and the 42 still waiting
      need only their thumbnail. It also keeps `youtube-uploaded.json` in Drive, since YouTube's
      listing once left a video out and the run uploaded it twice (the owner deleted the copy).
+   - Decision (the owner, 3 November 2026): chemistry and English go on YouTube after the maths,
+     in the same daily run, and like the maths none of them is "made for kids". Their videos are
+     tagged with their own subject ("chemistry", "Grade 10 chemistry") instead of "math". One
+     scheduled task does the uploads (the twice-a-day one); a duplicate made for the project the
+     same day was turned off.
    - To do, when the first non-maths videos go up (after the maths): change the channel
      description so it covers every subject. Lead with a line that stays true as subjects are
      added ("Gradileo explainer videos for Grades 5 to 12", then what each video does and how it
