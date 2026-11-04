@@ -33,12 +33,13 @@ import { ENG30 } from './eng30/course.ts';
 import { MATHMORE } from './mathmore/course.ts';
 import { buildMappedCourse, type CurriculumMap } from './maps/build.ts';
 import { US_MAP } from './maps/us.ts';
+import { UK_MAP } from './maps/uk.ts';
 
 /** Gradileo's own courses, youngest grade first (the order of course pickers and tabs). */
 const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, MATHMORE, CHEM10, CHEM20, CHEM30, ENG10, ENG20, ENG30];
 
 /** The school systems with a curriculum map, the first map first. */
-export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP];
+export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP, UK_MAP];
 
 /** Courses of other school systems built from Gradileo's lessons ("Algebra I"), in their maps' order. */
 export const MAPPED_COURSES: CourseMeta[] = CURRICULUM_MAPS.flatMap((m) => m.courses.map((c) => buildMappedCourse(m, c, OWN_COURSES)));

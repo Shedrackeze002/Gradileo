@@ -135,6 +135,22 @@ test('the US Precalculus course lists no gaps and teaches vectors and matrices',
   expect(errors).toEqual([]);
 });
 
+test('a teacher starts a class on GCSE Higher, which lists the topics Gradileo does not teach yet', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'UK GCSE' }).click();
+  const course = page.getByRole('button', { name: /^GCSE Mathematics: Higher \(UK\)/ });
+  await course.click();
+  await expect(course.getByText(/Not in Gradileo yet/)).toBeVisible();
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
+  await expect(page.getByText('Circle Theorems').first()).toBeVisible();
+  await expect(page.getByText('Surds').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test('a Grade 11 lesson check takes a list of roots', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
@@ -446,7 +462,8 @@ test('a learner outside Canada gives their country and year, and sees the course
   await page.getByRole('button', { name: /University: science/ }).click();
   await page.getByRole('button', { name: 'Okay, with some gaps' }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
-  await expect(page.getByRole('heading', { name: 'Grade 10 Mathematics', exact: true })).toBeVisible();
+  // A UK learner in Year 11 is offered GCSE Mathematics, built from Gradileo's lessons.
+  await expect(page.getByRole('heading', { name: 'GCSE Mathematics: Higher (UK)', exact: true })).toBeVisible();
   await expect(page.getByText('Usually taken in Year 11.')).toBeVisible();
 
   // In Nigeria the same level is SS 1.
