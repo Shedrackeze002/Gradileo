@@ -786,8 +786,16 @@ items ship or decisions change.
      English courses too; the tutor reads verse with a pause at each line, and its prompts name the
      course's subject (an English or chemistry tutor, not a mathematics one), so "Ask your tutor"
      answers questions about poems and essays instead of steering back to mathematics.
-   - Later: a mark per rubric criterion for essays. The privacy policy and terms still describe Gradileo as a mathematics
-     platform; their wording is the owner's to change.
+   - Later: a mark per rubric criterion for essays.
+   - Done (4 November 2026): **the privacy policy and terms for all three subjects.** Both pages now
+     describe Gradileo as a mastery-based platform for learners anywhere (mathematics Grades 5 to 12,
+     chemistry and English Grades 10 to 12). The privacy policy adds name-only class-link accounts,
+     written answers and essays, one overview of the AI features across subjects, the AI usage
+     records kept for rate limits, learners who sign up on their own, and the YouTube Data API
+     connection to Gradileo's own channel. The terms add the AI tutor and the teacher's AI tools
+     (the teacher decides every mark and report card), fair use of the AI, public-domain English
+     texts, and that Gradileo is independent of any education authority or exam board. The owner
+     may still want a lawyer to review the wording and add a governing-law clause.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
      longer set in Alberta (about 1,000 mentions: towns, lakes, parks, teams, Alberta's GST). Town
      lists and real distance, daylight and temperature data now belong to invented towns (Riverton,
@@ -845,7 +853,8 @@ items ship or decisions change.
   (a Domain property, through a DNS TXT record). The privacy policy describes what the app actually
   collects and who receives it (Supabase in Canada, Cloudflare, MiniMax for teacher-run analyses,
   the email provider, YouTube embeds) and the Google Drive upload connection (drive.file only,
-  with Google's Limited Use statement). Keep both pages in step with new features. The owner may
+  with Google's Limited Use statement), and the YouTube Data API connection to Gradileo's own
+  channel (updated 4 November 2026 for all three subjects). Keep both pages in step with new features. The owner may
   want a lawyer to review them, and to add a governing-law clause.
 
 ## Technical follow-ups
