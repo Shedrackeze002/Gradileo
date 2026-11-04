@@ -14,7 +14,7 @@ const video: Explainer = {
   thumbnailTitle: 'Meet Gradileo',
   thumbnail: 'app',
   summary:
-    'A tour of Gradileo: complete lessons in mathematics (Grade 5 to Grade 12), chemistry and English (Grade 10 to Grade 12) with explainer videos, an AI tutor and practice that never runs out for students; present mode, AI-drafted assignments, suggested marks, a gradebook, a mastery map, an AI teaching assistant, report cards and a class forum for teachers; and a clear report card for parents. Try the demo at gradileo.com, with nothing to sign up for.',
+    'A tour of Gradileo: complete lessons in mathematics, chemistry and English with explainer videos, an AI tutor and practice that never runs out for students; present mode, AI-drafted assignments, suggested marks, a gradebook, a mastery map, an AI teaching assistant, report cards and a class forum for teachers; and a clear report card for parents. Try the demo at gradileo.com, with nothing to sign up for.',
   tags: ['learning platform', 'online math', 'chemistry', 'English', 'teacher tools', 'AI tutor', 'mastery learning', 'report cards', 'practice questions'],
   scenes: [
     {
@@ -34,7 +34,7 @@ const video: Explainer = {
           kind: 'bullets',
           id: 'list',
           items: [
-            '**Mathematics** from Grade 5 to Grade 12, **chemistry** and **English** from Grade 10 to Grade 12',
+            'Courses in **mathematics**, **chemistry** and **English**, grade by grade',
             'Complete lessons with worked examples, and an **explainer video** for every lesson',
             '**Fresh questions** every time: practice never runs out',
             'An **AI tutor** for students and an **AI teaching assistant** for teachers',
@@ -43,7 +43,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Gradileo brings everything a class needs into one place.', show: 'lead' },
-        { say: 'It teaches mathematics from Grade 5 all the way to Grade 12, and chemistry and English from Grade 10 to Grade 12.', show: 'list.0' },
+        { say: 'It teaches mathematics, chemistry and English, with a course for each grade.', show: 'list.0' },
         { say: 'Every lesson is complete, with worked examples, and comes with explainer videos like this one.', show: 'list.1' },
         { say: 'Practice questions are written fresh every time, so practice never runs out.', show: 'list.2' },
         { say: 'And it has AI built in: a tutor for students, and a teaching assistant for teachers.', show: 'list.3' },

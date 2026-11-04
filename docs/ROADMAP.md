@@ -857,7 +857,7 @@ items ship or decisions change.
      Drive (`Gradileo videos/About Gradileo/gradileo-intro/`), and sent to the owner.
    - Revised (4 November 2026, the owner's review): the first cut was about mathematics only and
      quoted counts of courses, lessons and videos that went out of date. It now presents Gradileo as
-     a platform for mathematics, chemistry and English, says no counts, and shows the course picker
+     a platform for mathematics, chemistry and English, gives no counts or grade ranges (English for Grades 5 to 9 is coming), and shows the course picker
      on Chemistry (a new `teacher-subjects` picture). Every picture was taken again from today's app.
      Next: the owner watches the new cut; it goes to YouTube once they are happy with it.
 
