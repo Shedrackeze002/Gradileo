@@ -355,6 +355,12 @@ items ship or decisions change.
      tagged with their own subject ("chemistry", "Grade 10 chemistry") instead of "math". One
      scheduled task does the uploads (the twice-a-day one); a duplicate made for the project the
      same day was turned off.
+   - Built (4 November 2026, the owner's request after finding two viewer comments by chance):
+     `video/tools/youtube-comments.ts` lists viewers' new comments and replies on every video,
+     with the channel's existing sign-in and a few quota units a run, and keeps what it has seen
+     in the project's shared folder. A scheduled check runs it every three hours, logs each new
+     comment in the viewer-requests log and drafts a reply with links to matching videos for the
+     owner; nothing is posted on YouTube without the owner's yes.
    - To do, when the first non-maths videos go up (after the maths): change the channel
      description so it covers every subject. Lead with a line that stays true as subjects are
      added ("Gradileo explainer videos for Grades 5 to 12", then what each video does and how it
