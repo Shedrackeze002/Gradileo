@@ -78,6 +78,7 @@ import {
   toSubmission,
 } from './mappers.ts';
 import { STUDENT_EMAIL_DOMAIN } from '@/config.ts';
+import { duplicateClass, duplicateClassMessage } from '../classRules.ts';
 
 function browserTimeZone(): string {
   try {
@@ -89,6 +90,14 @@ function browserTimeZone(): string {
 
 function fail(error: { message: string } | null): void {
   if (error) throw new Error(error.message);
+}
+
+/** Like `fail`, but names the clash when the database refuses a second class for the same course and section. */
+function failClassWrite(error: { message: string; code?: string } | null): void {
+  if (error?.code === '23505' && error.message.includes('classes_one_active_per_course')) {
+    throw new Error('You already have an active class for this course and section. Open that class instead, or give this one a different section or period, such as "Period 3".');
+  }
+  fail(error);
 }
 
 const DISABLED_MESSAGE = 'This account has been disabled. Please contact your school administrator.';
@@ -259,12 +268,14 @@ export class SupabaseApi implements DataApi {
     const id = await this.uid();
     const me = await this.getCurrentUser();
     if (me?.role === 'teacher' && me.teacherStatus !== 'approved') throw new Error('Your teacher account is waiting for approval.');
+    const dup = duplicateClass(await this.listMyClasses(), input.courseId, input.section);
+    if (dup) throw new Error(duplicateClassMessage(dup));
     const { data, error } = await this.client
       .from('classes')
       .insert({ teacher_id: id, name: input.name.trim(), section: input.section?.trim() || null, course_id: input.courseId, settings: { timezone: browserTimeZone(), ...(input.joinApproval ? { joinApproval: true } : {}) } })
       .select()
       .single();
-    fail(error);
+    failClassWrite(error);
     return toClass(data);
   }
 
@@ -278,8 +289,15 @@ export class SupabaseApi implements DataApi {
       row.settings = { ...(current?.settings ?? {}), ...patch.settings };
     }
     const { data, error } = await this.client.from('classes').update(row).eq('id', id).select().single();
-    fail(error);
+    failClassWrite(error);
     return toClass(data);
+  }
+
+  async deleteClass(id: string) {
+    // Rows that belong to the class (roster, assignments, submissions, ...) go with it by cascade.
+    const { data, error } = await this.client.from('classes').delete().eq('id', id).select('id');
+    fail(error);
+    if (!data?.length) throw new Error('Only the teacher of this class can delete it.');
   }
 
   async regenerateJoinCode(id: string) {

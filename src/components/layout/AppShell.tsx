@@ -232,9 +232,11 @@ function Sidebar({ role, classId, nav, isAdmin }: { role: ShellRole; classId?: s
 }
 
 function ClassSwitcher({ classId }: { classId?: string }) {
-  const { data: classes = [] } = useClasses();
+  const { data: all = [] } = useClasses();
+  // Archived classes stay on the All classes page, not in the switcher.
+  const classes = all.filter((c) => !c.archived);
   const navigate = useNavigate();
-  const current = classes.find((c) => c.id === classId);
+  const current = all.find((c) => c.id === classId);
   return (
     <div className="px-3">
       <Menu
