@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getCourse } from '../../engine/curriculum/index.ts';
-import { levelOf, youtubeFields, youtubeText } from './youtube-text.ts';
+import { levelOf, youtubeFields, youtubeText, youtubeTitle } from './youtube-text.ts';
 
 const video = { title: 'Percents of Money, Part 1: Percent of an Amount and Tips', summary: 'Finding a percent of an amount.', lessonId: 'm104-3-3' };
 const chapters = [
@@ -40,6 +40,15 @@ describe('youtubeText', () => {
     const long = youtubeText({ ...video, title: 'A'.repeat(95) }, null);
     expect(long.split('\n')[1]).toBe('A'.repeat(95));
     expect(long).not.toContain('Chapters');
+  });
+
+  it('keeps the topic and the part of a title too long even without the brand, so YouTube takes it', () => {
+    // Math 30-1 lesson 6.4, part 2: 111 characters, which YouTube refused on 4 November 2026.
+    const title = 'Solving Trigonometric Equations Using Identities, Part 2: Square Roots, Impossible Values and Calculator Values';
+    expect(youtubeTitle(title)).toBe('Solving Trigonometric Equations Using Identities, Part 2 | Gradileo');
+    const plain = youtubeTitle(`${'word '.repeat(30)}end`);
+    expect(plain.length).toBeLessThanOrEqual(100);
+    expect(plain.endsWith('word…')).toBe(true);
   });
 });
 
