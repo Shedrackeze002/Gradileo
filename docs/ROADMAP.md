@@ -593,10 +593,11 @@ items ship or decisions change.
      unit. A UK learner in Year 10 or 11 is offered Higher on "Find your course", or Foundation if
      they want extra support, with a placement check on Math 9 or Math 8 first; teachers can start
      a class on either from the new "UK GCSE" tab. Gaps it lists: error intervals and bounds,
-     recurring decimals, the nth term of a quadratic sequence, iteration, direct and inverse
-     proportion, density and pressure, bearings, loci, arcs and sectors in degrees, exact
-     trigonometric values (Foundation), 3D trigonometry, histograms and cumulative frequency, and
-     frequency trees. Next: fill the GCSE gaps, then A level Mathematics.
+     recurring decimals, the nth term of a quadratic sequence, iteration, gradients and areas
+     under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and
+     pressure, bearings, loci, arcs and sectors in degrees, 3D trigonometry, histograms and
+     cumulative frequency, and frequency trees. (Gradileo's own versions of these use radians or
+     calculus, which GCSE does not.) Next: fill the GCSE gaps, then A level Mathematics.
    - Bug check (30 October 2026, the owner's request after the homework-editing error): every one
      of the live site's database calls (99 in the data layer, 41 database functions, 7 Edge
      Functions) was checked against the database's grants, rules and checks on a copy built from
