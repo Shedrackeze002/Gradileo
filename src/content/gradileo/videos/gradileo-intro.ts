@@ -10,18 +10,18 @@ const video: Explainer = {
   id: 'gradileo-intro',
   lessonId: '',
   label: 'Platform tour',
-  title: 'A Math Platform for Students, Teachers and Parents',
+  title: 'A Learning Platform for Students, Teachers and Parents',
   thumbnailTitle: 'Meet Gradileo',
   thumbnail: 'app',
   summary:
-    'A tour of Gradileo: complete math lessons from Grade 5 to Grade 12 with explainer videos, an AI tutor and practice that never runs out for students; present mode, AI-drafted assignments, suggested marks, a gradebook, a mastery map, an AI teaching assistant, report cards and a class forum for teachers; and a clear report card for parents. Try the demo at gradileo.com, with nothing to sign up for.',
-  tags: ['math platform', 'online math', 'math teacher tools', 'AI tutor', 'mastery learning', 'report cards', 'math practice'],
+    'A tour of Gradileo: complete lessons in mathematics (Grade 5 to Grade 12), chemistry and English (Grade 10 to Grade 12) with explainer videos, an AI tutor and practice that never runs out for students; present mode, AI-drafted assignments, suggested marks, a gradebook, a mastery map, an AI teaching assistant, report cards and a class forum for teachers; and a clear report card for parents. Try the demo at gradileo.com, with nothing to sign up for.',
+  tags: ['learning platform', 'online math', 'chemistry', 'English', 'teacher tools', 'AI tutor', 'mastery learning', 'report cards', 'practice questions'],
   scenes: [
     {
       layout: 'center',
-      main: [{ kind: 'title', id: 'title', kicker: 'Introducing Gradileo', title: 'Teach it once. Practise until it sticks.', subtitle: 'Math for students, teachers and parents, from Grade 5 to Grade 12' }],
+      main: [{ kind: 'title', id: 'title', kicker: 'Introducing Gradileo', title: 'Teach it once. Practise until it sticks.', subtitle: 'Mathematics, chemistry and English for students, teachers and parents' }],
       lines: [
-        { say: 'Welcome to Gradileo, a math platform for students, teachers and parents.', show: 'title' },
+        { say: 'Welcome to Gradileo, a learning platform for students, teachers and parents.', show: 'title' },
         { say: 'In the next few minutes, you will see what it does for each of them, and why it helps students learn.' },
       ],
     },
@@ -29,24 +29,33 @@ const video: Explainer = {
       chapter: 'What Gradileo is',
       layout: 'center',
       main: [
-        { kind: 'text', id: 'lead', size: 'xl', md: 'Everything a math class needs, **in one place**' },
+        { kind: 'text', id: 'lead', size: 'xl', md: 'Everything a class needs, **in one place**' },
         {
           kind: 'bullets',
           id: 'list',
           items: [
-            '**16 courses**, from Grade 5 to Grade 12',
-            '**486 lessons**, with worked examples and **1,634 explainer videos**',
-            '**760 question generators**: practice never runs out',
+            '**Mathematics** from Grade 5 to Grade 12, **chemistry** and **English** from Grade 10 to Grade 12',
+            'Complete lessons with worked examples, and an **explainer video** for every lesson',
+            '**Fresh questions** every time: practice never runs out',
             'An **AI tutor** for students and an **AI teaching assistant** for teachers',
           ],
         },
       ],
       lines: [
-        { say: 'Gradileo brings everything a math class needs into one place.', show: 'lead' },
-        { say: 'It has sixteen courses, from Grade 5 all the way to Grade 12.', show: 'list.0' },
-        { say: 'There are 486 complete lessons with worked examples, and 1,634 explainer videos like this one.', show: 'list.1' },
-        { say: '760 question generators write a fresh question every time, so practice never runs out.', show: 'list.2' },
+        { say: 'Gradileo brings everything a class needs into one place.', show: 'lead' },
+        { say: 'It teaches mathematics from Grade 5 all the way to Grade 12, and chemistry and English from Grade 10 to Grade 12.', show: 'list.0' },
+        { say: 'Every lesson is complete, with worked examples, and comes with explainer videos like this one.', show: 'list.1' },
+        { say: 'Practice questions are written fresh every time, so practice never runs out.', show: 'list.2' },
         { say: 'And it has AI built in: a tutor for students, and a teaching assistant for teachers.', show: 'list.3' },
+      ],
+    },
+    {
+      layout: 'center',
+      main: [screen('subjects', 'teacher-subjects', 't/new-class', [264, 100, 1004, 640], ['subjects', 'courses'])],
+      lines: [
+        { say: 'A teacher starts a class by choosing a subject and a course.', show: 'subjects', focus: 'subjects.subjects' },
+        { say: 'Here it is chemistry, with a course for each grade, and the same tools work in every subject you will see in this video.', focus: 'subjects.courses' },
+        { say: 'Mathematics courses can also follow the order of the US Common Core or the UK GCSE.', focus: 'subjects.subjects' },
       ],
     },
 
@@ -278,7 +287,7 @@ const video: Explainer = {
       lines: [
         { say: 'Parents see how their child is doing through the report card.', show: 'home' },
         { say: 'With a private link from the teacher, a parent can read it without an account: the numbers that matter,', focus: 'home.stats' },
-        { say: 'what their child does well, what to work on next, and simple ways to help at home, even without knowing the math.', focus: 'home.parents' },
+        { say: 'what their child does well, what to work on next, and simple ways to help at home, even without knowing the subject themselves.', focus: 'home.parents' },
       ],
     },
     {

@@ -284,6 +284,19 @@ const SHOTS: Record<string, Shot> = {
   },
 
   // ---------------------------------------------------------------- teachers
+  /** The course picker on Chemistry, so the video shows that Gradileo has more than mathematics. */
+  'teacher-subjects': {
+    open: async (p, base) => {
+      await signIn(p, base, 'Teacher');
+      await p.goto(`${base}t/new-class`);
+      await p.getByRole('tab', { name: 'Chemistry' }).click();
+      await p.getByRole('region', { name: 'Grade 10' }).waitFor();
+    },
+    spots: {
+      subjects: (p) => p.getByRole('tablist').first(),
+      courses: (p) => p.getByRole('region', { name: 'Grade 10' }).locator('xpath=..'),
+    },
+  },
   'teacher-class': {
     open: async (p, base) => {
       await signIn(p, base, 'Teacher');
@@ -351,14 +364,30 @@ const SHOTS: Record<string, Shot> = {
   },
   'live-results': {
     open: async (p, base) => {
+      // The question is drawn at random, and a tall triangle pushes the results below the window,
+      // so pick the question with a fixed seed: one whose triangle lies flat.
+      await p.addInitScript((seed) => {
+        let a = seed;
+        Math.random = () => {
+          a = (a + 0x6d2b79f5) | 0;
+          let t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }, 2);
       await signIn(p, base, 'Teacher');
       await p.goto(`${base}present/${CLASS}/m10c-2-1`);
       await p.locator('[aria-roledescription="slide"]').waitFor();
       await p.keyboard.press('o');
       await p.getByRole('dialog', { name: 'All slides' }).getByRole('button', { name: /Your turn/ }).first().click();
-      await p.getByRole('button', { name: 'Ask the class on their devices' }).click();
-      await p.getByRole('button', { name: /Add the sample class/ }).click();
-      await p.getByRole('button', { name: 'Stop and show results' }).click();
+      // The slide slides in, and Playwright never sees these buttons stand still, so wait for it
+      // and press them directly.
+      await p.waitForTimeout(1500);
+      await p.getByRole('button', { name: 'Ask the class on their devices' }).dispatchEvent('click');
+      await p.waitForTimeout(1500);
+      await p.getByRole('button', { name: /Add the sample class/ }).dispatchEvent('click');
+      await p.waitForTimeout(1500);
+      await p.getByRole('button', { name: 'Stop and show results' }).dispatchEvent('click');
       await p.getByLabel('Answers by choice').waitFor();
     },
     spots: {
