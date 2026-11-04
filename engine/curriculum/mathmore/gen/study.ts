@@ -65,7 +65,7 @@ function simulation(rng: Rng, d: Difficulty): Out {
   // The question is about a high result (evidence of more wins than claimed), so the observed
   // count is at or above the simulated median, or above every simulated run.
   const high = asc(counts).slice(runs / 2);
-  const observed = rng.chance(0.5) ? Math.max(...counts) + rng.int(1, 2) : rng.pick(high);
+  const observed = rng.chance(0.5) ? Math.min(n, Math.max(...counts) + rng.int(1, 2)) : rng.pick(high);
   const asExtreme = counts.filter((c) => c >= observed).length;
   const unusual = asExtreme / runs < 0.05;
   return {
