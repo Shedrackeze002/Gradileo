@@ -353,6 +353,19 @@ script: name it with `<youtube id>=<video id>` (the admin console's Videos page 
     npx tsx video/tools/youtube-update.ts --dry-run
     npx tsx video/tools/youtube-update.ts CMSCsWap8b0=m10c-1-8
 
+### Watching for comments
+
+`video/tools/youtube-comments.ts` lists the comments viewers have left on any of the channel's
+videos since its last run: new comments and new replies in old threads, never the channel's own.
+Each comes with its video's title and Gradileo id, whether the channel has answered it, and a link
+to it. It keeps what it has seen in `--state` (by default
+`/mnt/project-files/viewer-requests/youtube-comments-seen.json`), and `--json` prints the list for a
+scheduled check to draft replies from. It reads with the uploader's `YOUTUBE_*` sign-in (the
+`youtube.force-ssl` scope covers comments) and costs a few quota units a run. It never posts a
+reply.
+
+    npx tsx video/tools/youtube-comments.ts --dry-run
+
 ### Uploading to YouTube
 
 `video/tools/youtube-upload.ts` uploads finished videos to the channel in course order: the MP4
