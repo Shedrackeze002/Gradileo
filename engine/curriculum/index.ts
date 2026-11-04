@@ -30,14 +30,16 @@ import { CHEM30 } from './chem30/course.ts';
 import { ENG10 } from './eng10/course.ts';
 import { ENG20 } from './eng20/course.ts';
 import { ENG30 } from './eng30/course.ts';
+import { MATHMORE } from './mathmore/course.ts';
 import { buildMappedCourse, type CurriculumMap } from './maps/build.ts';
 import { US_MAP } from './maps/us.ts';
+import { UK_MAP } from './maps/uk.ts';
 
 /** Gradileo's own courses, youngest grade first (the order of course pickers and tabs). */
-const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, CHEM10, CHEM20, CHEM30, ENG10, ENG20, ENG30];
+const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, MATHMORE, CHEM10, CHEM20, CHEM30, ENG10, ENG20, ENG30];
 
 /** The school systems with a curriculum map, the first map first. */
-export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP];
+export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP, UK_MAP];
 
 /** Courses of other school systems built from Gradileo's lessons ("Algebra I"), in their maps' order. */
 export const MAPPED_COURSES: CourseMeta[] = CURRICULUM_MAPS.flatMap((m) => m.courses.map((c) => buildMappedCourse(m, c, OWN_COURSES)));
@@ -48,8 +50,11 @@ export const MAPPED_COURSES: CourseMeta[] = CURRICULUM_MAPS.flatMap((m) => m.cou
  */
 export const COURSES: CourseMeta[] = [...OWN_COURSES, ...MAPPED_COURSES];
 
-/** The courses a class can be made for or a student placed in: every own course that is not a draft. */
-export const LISTED_COURSES: CourseMeta[] = OWN_COURSES.filter((c) => !c.draft);
+/** The courses a class can be made for or a student placed in: every own course that is not a draft or a course of extra lessons. */
+export const LISTED_COURSES: CourseMeta[] = OWN_COURSES.filter((c) => !c.draft && !c.extra);
+
+/** The courses whose lessons are filed under topics: the listed courses and the courses of extra lessons. */
+export const TOPIC_COURSES: CourseMeta[] = OWN_COURSES.filter((c) => !c.draft);
 
 /** A school system's mapped courses ("us": Grade 6 to Precalculus). */
 export function mappedCourses(curriculumId: string | null | undefined): CourseMeta[] {
@@ -77,6 +82,7 @@ const LOADERS: Record<string, () => Promise<SkillDef[]>> = {
   'math-7': () => import('./math7/skills.ts').then((m) => m.MATH7_SKILLS),
   'math-8': () => import('./math8/skills.ts').then((m) => m.MATH8_SKILLS),
   'math-9': () => import('./math9/skills.ts').then((m) => m.MATH9_SKILLS),
+  'math-more': () => import('./mathmore/skills.ts').then((m) => m.MATHMORE_SKILLS),
   'chem-10': () => import('./chem10/skills.ts').then((m) => m.CHEM10_SKILLS),
   'chem-20': () => import('./chem20/skills.ts').then((m) => m.CHEM20_SKILLS),
   'chem-30': () => import('./chem30/skills.ts').then((m) => m.CHEM30_SKILLS),

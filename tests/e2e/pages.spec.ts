@@ -101,7 +101,8 @@ test('a teacher creates a class on a US Common Core course, built from Gradileoâ
   await page.getByRole('tab', { name: 'US Common Core' }).click();
   await page.getByRole('button', { name: /^Geometry \(US Common Core\)/ }).click();
   await expect(page.getByLabel('Class name')).toHaveValue('Geometry');
-  await expect(page.getByText(/Not in Gradileo yet: Two-column proofs/).first()).toBeVisible();
+  // Geometry's gaps are filled by lessons in More Mathematics Topics, so it lists none.
+  await expect(page.getByRole('button', { name: /^Geometry \(US Common Core\)/ }).getByText(/Not in Gradileo yet/)).toHaveCount(0);
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
   await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
@@ -110,6 +111,43 @@ test('a teacher creates a class on a US Common Core course, built from Gradileoâ
   // A lesson from Math 11 Foundations, taught in this course.
   await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/m202-1-1`);
   await expect(page.getByText('Making Conjectures: Inductive Reasoning').first()).toBeVisible();
+  // A lesson written to fill a gap, from More Mathematics Topics.
+  await page.goto(`${page.url().replace(/\/lessons\/m202-1-1$/, '')}/lessons/mx-3-4`);
+  await expect(page.getByText('The Equation of a Circle').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('the US Precalculus course lists no gaps and teaches vectors and matrices', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'US Common Core' }).click();
+  const course = page.getByRole('button', { name: /^Precalculus \(US Common Core\)/ });
+  await course.click();
+  await expect(course.getByText(/Not in Gradileo yet/)).toHaveCount(0);
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
+  await expect(page.getByText('Vectors and Matrices').first()).toBeVisible();
+  await expect(page.getByText('Conic Sections and Parametric Equations').first()).toBeVisible();
+  await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/mx-5-3`);
+  await expect(page.getByText('Determinants, Inverses and Systems').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a teacher starts a class on GCSE Higher, which lists the topics Gradileo does not teach yet', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'UK GCSE' }).click();
+  const course = page.getByRole('button', { name: /^GCSE Mathematics: Higher \(UK\)/ });
+  await course.click();
+  await expect(course.getByText(/Not in Gradileo yet/)).toBeVisible();
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
+  await expect(page.getByText('Circle Theorems').first()).toBeVisible();
+  await expect(page.getByText('Surds').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 
@@ -424,7 +462,8 @@ test('a learner outside Canada gives their country and year, and sees the course
   await page.getByRole('button', { name: /University: science/ }).click();
   await page.getByRole('button', { name: 'Okay, with some gaps' }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
-  await expect(page.getByRole('heading', { name: 'Grade 10 Mathematics', exact: true })).toBeVisible();
+  // A UK learner in Year 11 is offered GCSE Mathematics, built from Gradileo's lessons.
+  await expect(page.getByRole('heading', { name: 'GCSE Mathematics: Higher (UK)', exact: true })).toBeVisible();
   await expect(page.getByText('Usually taken in Year 11.')).toBeVisible();
 
   // In Nigeria the same level is SS 1.
@@ -483,7 +522,7 @@ test('a US learner is placed in Algebra I and studies it in the Common Core orde
   await page.getByRole('button', { name: 'Okay, with some gaps' }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Algebra I (US Common Core)', exact: true })).toBeVisible();
-  await expect(page.getByText(/Not in Gradileo yet: Two-way frequency tables/)).toBeVisible();
+  await expect(page.getByText(/Not in Gradileo yet/)).toHaveCount(0);
   await page.getByRole('button', { name: 'Skip the check and start' }).click();
   await page.waitForURL(/\/s$/);
   await page.goto('/s/learn');
@@ -492,6 +531,10 @@ test('a US learner is placed in Algebra I and studies it in the Common Core orde
   // Algebra I's lessons come from several Gradileo courses and open in Algebra I.
   await page.goto('/s/learn/m10c-4-1');
   await expect(page.getByText('Multiplying Binomials').first()).toBeVisible();
+  // Box plots, a lesson that fills a gap, draws its box plot.
+  await page.goto('/s/learn/mx-1-2');
+  await expect(page.getByText('Box Plots and the Interquartile Range').first()).toBeVisible();
+  await expect(page.getByRole('img', { name: /^Box plot/ }).first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 

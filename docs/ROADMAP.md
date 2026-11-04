@@ -350,6 +350,17 @@ items ship or decisions change.
      (`--captions` adds ours), about 90 videos a day instead of about 20, and the 42 still waiting
      need only their thumbnail. It also keeps `youtube-uploaded.json` in Drive, since YouTube's
      listing once left a video out and the run uploaded it twice (the owner deleted the copy).
+   - Decision (the owner, 3 November 2026): chemistry and English go on YouTube after the maths,
+     in the same daily run, and like the maths none of them is "made for kids". Their videos are
+     tagged with their own subject ("chemistry", "Grade 10 chemistry") instead of "math". One
+     scheduled task does the uploads (the twice-a-day one); a duplicate made for the project the
+     same day was turned off.
+   - Built (4 November 2026, the owner's request after finding two viewer comments by chance):
+     `video/tools/youtube-comments.ts` lists viewers' new comments and replies on every video,
+     with the channel's existing sign-in and a few quota units a run, and keeps what it has seen
+     in the project's shared folder. A scheduled check runs it every three hours, logs each new
+     comment in the viewer-requests log and drafts a reply with links to matching videos for the
+     owner; nothing is posted on YouTube without the owner's yes.
    - To do, when the first non-maths videos go up (after the maths): change the channel
      description so it covers every subject. Lead with a line that stays true as subjects are
      added ("Gradileo explainer videos for Grades 5 to 12", then what each video does and how it
@@ -555,6 +566,38 @@ items ship or decisions change.
      tables, box plots, complex numbers, the equation of a circle, two-column proofs, vectors,
      matrices, polar form and conics among them (PR #111). Next: step 4 fills these gaps, and the
      UK GCSE map follows.
+   - Built (4 November 2026), step 4, part 1: **the US gaps of Grades 6 to 8, Algebra I and
+     Geometry are filled.** Twelve new lessons with 18 question generators, in a new course of extra
+     lessons, **More Mathematics Topics** (`engine/curriculum/mathmore/`), which the maps borrow from
+     and Browse by topic lists but the course pickers do not offer: statistical questions and dot
+     plots, box plots and the interquartile range, mean absolute deviation, comparing two
+     populations, two-way tables, scientific notation and calculating with it, linear and
+     exponential growth compared, cross-sections, solids of revolution, two-column proofs and the
+     equation of a circle. Each lesson has its own level (Grade 6 to Grade 10). Dot plots and box
+     plots are new figure types. Five of the seven US courses now have no gaps; Algebra II
+     (complex numbers, polynomial identities, experiments and simulation) and Precalculus
+     (vectors, matrices, polar form, conics) are next. The new lessons still need their videos and
+     tutor recordings.
+   - Built (4 November 2026), step 4, part 2: **the US gaps of Algebra II and Precalculus are
+     filled, so all seven US courses list none.** Eleven more lessons in More Mathematics Topics
+     with 16 question generators: experiments, observational studies and simulation; complex
+     numbers, complex solutions of quadratics, and polynomial identities with the fundamental
+     theorem of algebra (a new unit); vectors, matrices, and determinants and inverses with systems
+     (a new unit); and polar coordinates, complex numbers in polar form, conic sections and
+     parametric equations (a new unit), at Grades 11 and 12. Browse by topic has new topics for
+     complex numbers, vectors and matrices, polar form, and conics. These lessons also need their
+     videos and tutor recordings. Next: the UK GCSE map.
+   - Built (4 November 2026), step 3, the second map: **UK GCSE Mathematics, Foundation and
+     Higher** (`engine/curriculum/maps/uk.ts`), each built from Gradileo's lessons in the order of a
+     Year 10 and 11 scheme of work, with the GCSE content references (N, A, R, G, P, S) in each
+     unit. A UK learner in Year 10 or 11 is offered Higher on "Find your course", or Foundation if
+     they want extra support, with a placement check on Math 9 or Math 8 first; teachers can start
+     a class on either from the new "UK GCSE" tab. Gaps it lists: error intervals and bounds,
+     recurring decimals, the nth term of a quadratic sequence, iteration, gradients and areas
+     under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and
+     pressure, bearings, loci, arcs and sectors in degrees, 3D trigonometry, histograms and
+     cumulative frequency, and frequency trees. (Gradileo's own versions of these use radians or
+     calculus, which GCSE does not.) Next: fill the GCSE gaps, then A level Mathematics.
    - Bug check (30 October 2026, the owner's request after the homework-editing error): every one
      of the live site's database calls (99 in the data layer, 41 database functions, 7 Edge
      Functions) was checked against the database's grants, rules and checks on a copy built from
@@ -781,8 +824,16 @@ items ship or decisions change.
      English courses too; the tutor reads verse with a pause at each line, and its prompts name the
      course's subject (an English or chemistry tutor, not a mathematics one), so "Ask your tutor"
      answers questions about poems and essays instead of steering back to mathematics.
-   - Later: a mark per rubric criterion for essays. The privacy policy and terms still describe Gradileo as a mathematics
-     platform; their wording is the owner's to change.
+   - Later: a mark per rubric criterion for essays.
+   - Done (4 November 2026): **the privacy policy and terms for all three subjects.** Both pages now
+     describe Gradileo as a mastery-based platform for learners anywhere (mathematics Grades 5 to 12,
+     chemistry and English Grades 10 to 12). The privacy policy adds name-only class-link accounts,
+     written answers and essays, one overview of the AI features across subjects, the AI usage
+     records kept for rate limits, learners who sign up on their own, and the YouTube Data API
+     connection to Gradileo's own channel. The terms add the AI tutor and the teacher's AI tools
+     (the teacher decides every mark and report card), fair use of the AI, public-domain English
+     texts, and that Gradileo is independent of any education authority or exam board. The owner
+     may still want a lawyer to review the wording and add a governing-law clause.
    - Done (24 October 2026): the practice questions and lessons of all 16 mathematics courses are no
      longer set in Alberta (about 1,000 mentions: towns, lakes, parks, teams, Alberta's GST). Town
      lists and real distance, daylight and temperature data now belong to invented towns (Riverton,
@@ -840,7 +891,8 @@ items ship or decisions change.
   (a Domain property, through a DNS TXT record). The privacy policy describes what the app actually
   collects and who receives it (Supabase in Canada, Cloudflare, MiniMax for teacher-run analyses,
   the email provider, YouTube embeds) and the Google Drive upload connection (drive.file only,
-  with Google's Limited Use statement). Keep both pages in step with new features. The owner may
+  with Google's Limited Use statement), and the YouTube Data API connection to Gradileo's own
+  channel (updated 4 November 2026 for all three subjects). Keep both pages in step with new features. The owner may
   want a lawyer to review them, and to add a governing-law clause.
 
 ## Technical follow-ups

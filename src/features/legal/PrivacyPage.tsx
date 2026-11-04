@@ -12,11 +12,12 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      updated="October 30, 2026"
+      updated="November 4, 2026"
       intro={
         <>
           <p>
-            Gradileo (gradileo.com) is an online mathematics platform for teachers and students from Grade 5 to Grade 12. This policy explains what
+            Gradileo (gradileo.com) is an online, mastery-based learning platform for teachers and learners anywhere in the world. It covers mathematics
+            from Grade 5 to Grade 12, and chemistry and English from Grade 10 to Grade 12. This policy explains what
             information Gradileo collects, how it is used and shared, and the choices you have. It applies to the Gradileo website and app.
           </p>
           <p>
@@ -30,7 +31,9 @@ export default function PrivacyPage() {
         <p>
           <strong>Account information.</strong> Your name, your email address (or, for a student account created by a teacher, a username instead of an
           email address), your password, and whether you are a teacher or a student. Passwords are stored in hashed form by our authentication provider;
-          we never see them in plain text. For teacher accounts, we also keep whether the account has been approved. For a student who finds their
+          we never see them in plain text. A student who joins a class from the teacher’s class link with just a name gives only a first and last
+          name: no email address, username or password (the account’s password is random and never shown to anyone), and the device they joined on
+          remembers them. A name-only account that the teacher never lets into the class is deleted automatically. For teacher accounts, we also keep whether the account has been approved. For a student who finds their
           own course, we keep where they go to school (the country or curriculum they choose), so their courses can follow it; their year and other
           answers to the course questions stay in their browser.
         </p>
@@ -39,7 +42,7 @@ export default function PrivacyPage() {
           announcements, and course requests (the grade and course you ask for).
         </p>
         <p>
-          <strong>Learning information.</strong> Answers to questions, scores, feedback, progress on skills, practice history, whiteboard drawings, answers
+          <strong>Learning information.</strong> Answers to questions (including written answers and essays in English and chemistry), scores, feedback, progress on skills, practice history, whiteboard drawings, answers
           to live class questions, posts in the class forum, report cards, lesson edit suggestions from teachers, and the results of AI analyses that
           teachers run. A forum question is seen by the people its author chooses: only the teacher, the whole class, or the whole class without the
           author’s name (the teacher always sees who wrote it). When a teacher turns on exam
@@ -66,7 +69,13 @@ export default function PrivacyPage() {
         <p>We do not sell personal information, we do not use it for advertising, and we do not build profiles of students for anything other than their learning in Gradileo.</p>
       </Section>
 
-      <Section id="ai" title="3. The AI teaching assistant and the AI tutor">
+      <Section id="ai" title="3. The AI features">
+        <p>
+          Gradileo’s AI features work the same way in mathematics, chemistry and English. Each one sends an AI model provider (MiniMax) only what that
+          feature needs. Gradileo does not add a student’s email address or surname from their account, but anything a student or teacher types, such
+          as a written answer, a question to the tutor or a teacher’s note, is sent as it was typed. What the teacher’s AI tools write about a student
+          goes to the teacher first, and the AI tutor answers the student directly. The details for each feature are below.
+        </p>
         <p>
           When a teacher asks the AI teaching assistant to analyze a class or a student, Gradileo sends the AI model provider (MiniMax) the information the
           analysis needs: the class name, students’ first names and last initials, their progress on skills, recent incorrect answers with the question
@@ -75,7 +84,8 @@ export default function PrivacyPage() {
         </p>
         <p>
           When a student studies a lesson with the AI tutor, Gradileo sends MiniMax the lesson’s slides so it can write what the tutor says. This contains
-          nothing about the student, and the narration is saved and reused for other students. When a student asks the tutor a question, Gradileo sends
+          nothing about the student (in English lessons it includes the passages of poems, plays and prose that the lesson studies), and the narration
+          is saved and reused for other students. When a student asks the tutor a question, Gradileo sends
           MiniMax the question, the slide it is about and the last few messages of that conversation. We do not send the student’s name or email address,
           and we do not keep the questions or answers. Students should not type personal information into a question. The tutor’s voice is recorded
           ahead of time from the lesson’s slides and played from our website; nothing the student says or types is recorded.
@@ -97,6 +107,11 @@ export default function PrivacyPage() {
           the student’s name or email address. The draft is saved for the teacher, who edits it before sharing it with the student. If the teacher
           makes a private link for a shared report card, anyone with the link can read that card (with the student’s first name, the class and the
           teacher’s name) without signing in, until the teacher turns the link off.
+        </p>
+        <p>
+          To keep the AI features within fair limits, Gradileo records when an account uses one: the account and the kind of request, but not what was
+          asked or answered. These records are needed only for the last day, and records older than a day are deleted from time to time while
+          the AI tutor is in use.
         </p>
         <p>The student coach and the course placement check run inside the student’s browser and do not send information to an AI provider.</p>
       </Section>
@@ -151,7 +166,12 @@ export default function PrivacyPage() {
           any other files.
         </p>
         <p>
-          Files uploaded this way are used only to prepare and publish Gradileo’s lesson videos. They are not shared with others, sold, or used for
+          Gradileo’s administrators also use a Google API connection to the YouTube Data API, signed in as Gradileo’s own YouTube channel, only to
+          upload Gradileo’s explainer videos to that channel and to keep their titles, descriptions, thumbnails and playlists up to date. It does not
+          access the YouTube accounts or data of teachers, students or anyone else.
+        </p>
+        <p>
+          Files uploaded to Drive this way are used only to prepare and publish Gradileo’s lesson videos. They are not shared with others, sold, or used for
           advertising. Gradileo’s use and transfer of information received from Google APIs adheres to the{' '}
           <a className="text-brand hover:underline" href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noreferrer">
             Google API Services User Data Policy
@@ -169,8 +189,9 @@ export default function PrivacyPage() {
 
       <Section id="children" title="7. Students and children">
         <p>
-          Gradileo is designed for use in schools. Students often join through a teacher’s class, and teachers can create student logins that need no
-          email address.
+          Gradileo is designed for students, both in school classes and on their own. Students often join through a teacher’s class, where teachers can
+          create student logins or let students join with just a name, so no email address is needed. Learners can also sign up by themselves and
+          choose a course that fits where they go to school.
         </p>
         <p>
           Students who are younger than the age at which they can agree to the use of their personal information where they live (for example, under 13 in

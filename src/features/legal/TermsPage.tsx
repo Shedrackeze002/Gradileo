@@ -12,10 +12,11 @@ export default function TermsPage() {
   return (
     <LegalLayout
       title="Terms of Service"
-      updated="October 14, 2026"
+      updated="November 4, 2026"
       intro={
         <p>
-          These terms explain the rules for using Gradileo (gradileo.com), an online mathematics platform for teachers and students from Grade 5 to Grade 12.
+          These terms explain the rules for using Gradileo (gradileo.com), an online, mastery-based learning platform for teachers and learners anywhere
+          in the world, covering mathematics from Grade 5 to Grade 12 and chemistry and English from Grade 10 to Grade 12.
           By creating an account or using Gradileo, you agree to these terms and to our{' '}
           <Link className="text-brand hover:underline" to="/privacy">
             Privacy Policy
@@ -26,7 +27,7 @@ export default function TermsPage() {
     >
       <Section id="who" title="1. Who can use Gradileo">
         <p>
-          Gradileo is for teachers, students and schools. Students who are minors where they live should use Gradileo through their school or a teacher’s
+          Gradileo is for teachers, students and schools, and for learners who study on their own. Students who are minors where they live should use Gradileo through their school or a teacher’s
           class, or with the permission of a parent or guardian.
         </p>
       </Section>
@@ -73,12 +74,32 @@ export default function TermsPage() {
           teaching and learning, including showing them in class. Please do not copy, sell or republish them elsewhere without our permission. Explainer
           videos hosted on YouTube are also subject to YouTube’s terms.
         </p>
+        <p>
+          Gradileo chooses the poems, plays, stories and other literary texts studied in its English courses from works in the public domain. Copyright
+          terms differ between countries, so if you believe one of these texts is still protected where you live, email <Mail /> and we will look into
+          it. Gradileo’s rights cover its own lessons, questions, notes and videos about those texts, not the texts themselves.
+        </p>
+        <p>
+          Gradileo’s courses follow the topics of school curricula used in different countries, but Gradileo is independent: it is not made or endorsed
+          by any government, education authority or exam board, and it does not replace a school’s own course or a student’s official assessments.
+        </p>
       </Section>
 
-      <Section id="ai" title="6. Automatic grading and AI suggestions">
+      <Section id="ai" title="6. Automatic grading and AI features">
         <p>
-          Gradileo grades many answers automatically, and its AI teaching assistant suggests insights and next steps. These tools can make mistakes.
-          Teachers should review grades and suggestions and use their own judgement, and students can ask their teacher about a grade.
+          Gradileo grades many answers automatically, and it has AI features in every subject: an AI tutor that presents lessons and answers students’
+          questions, and, for teachers, an AI teaching assistant that analyzes a class, drafts assignments, suggests marks for written answers and drafts report
+          cards. These tools can make mistakes. Teachers should review grades, drafts and suggestions and use their own judgement before relying on them,
+          since the teacher, not the AI, decides a mark or what goes on a report card. Students can ask their teacher about a grade.
+        </p>
+        <p>
+          Use the AI features for learning and teaching. Do not type personal information into the AI tutor, and do not present work the AI wrote as
+          your own where your school or class does not allow it. How Gradileo handles the information these features use is explained in section 3 of
+          our{' '}
+          <Link className="text-brand hover:underline" to="/privacy">
+            Privacy Policy
+          </Link>
+          .
         </p>
       </Section>
 

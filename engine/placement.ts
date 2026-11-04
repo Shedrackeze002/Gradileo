@@ -71,7 +71,23 @@ export const PREREQUISITE: Record<string, string | null> = {
   'us-geometry': 'us-algebra-1',
   'us-algebra-2': 'us-algebra-1',
   'us-precalculus': 'us-algebra-2',
+  // The UK GCSE map: both tiers follow Key Stage 3 (Years 7 to 9).
+  'uk-gcse-foundation': 'math-8',
+  'uk-gcse-higher': 'math-9',
 };
+
+/** For a UK learner in Year 10 or 11: the GCSE tier, Higher unless they want extra support. */
+function ukGcse(a: PlacementAnswers): Recommendation {
+  const where = 'GCSE Mathematics is the course of Years 10 and 11, with its units in the order of a GCSE scheme of work.';
+  if (a.support || a.feeling === 'struggling') {
+    return rec('uk-gcse-foundation', [where, 'The Foundation tier builds number, algebra, geometry and statistics up from the basics.'], [
+      { courseId: 'uk-gcse-higher', why: 'If your school has entered you for the Higher tier.' },
+    ]);
+  }
+  return rec('uk-gcse-higher', [where, 'The Higher tier adds surds, functions, circle theorems, the sine and cosine rules and more.'], [
+    { courseId: 'uk-gcse-foundation', why: 'If your school has entered you for the Foundation tier, or the basics still feel new.' },
+  ]);
+}
 
 /** For a US learner: the course of their grade on the Common Core map, and the ones either side. */
 function usCourse(g: number, a: PlacementAnswers): Recommendation {
@@ -148,6 +164,8 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
   }
   // A US learner gets the Common Core course of their grade (Grade 6 to Precalculus).
   if (a.curriculum === 'us' && g >= 6) return usCourse(Math.min(12, g), a);
+  // A UK learner in Year 10 or 11 gets GCSE Mathematics: Higher, or Foundation with extra support.
+  if (a.curriculum === 'uk' && (g === 9 || g === 10)) return ukGcse(a);
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));
     return rec(`math-${grade}`, [`Grade ${grade} Mathematics covers the mathematics of your grade, so you learn what your class is learning.`]);

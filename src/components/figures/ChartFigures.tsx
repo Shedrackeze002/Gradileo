@@ -1,4 +1,4 @@
-import type { BarChartFigure, CircleGraphFigure } from '@engine/types.ts';
+import type { BarChartFigure, BoxPlotFigure, CircleGraphFigure, DotPlotFigure } from '@engine/types.ts';
 import { texToText } from '@/lib/texText.ts';
 
 const INK = 'rgb(var(--ink))';
@@ -144,5 +144,107 @@ export function CircleGraph({ fig }: { fig: CircleGraphFigure }) {
         ))}
       </ul>
     </div>
+  );
+}
+
+/** Ticks from min to max every step (rounded to avoid 0.30000000000000004). */
+function lineTicks(min: number, max: number, step: number): number[] {
+  const out: number[] = [];
+  for (let v = min; v <= max + 1e-9; v += step) out.push(Math.round(v * 1e6) / 1e6);
+  return out;
+}
+
+/** The number line under a dot plot or box plot, with its ticks and title. */
+function NumberAxis({ y, left, right, ticks, toX, label }: { y: number; left: number; right: number; ticks: number[]; toX: (v: number) => number; label?: string }) {
+  const every = ticks.length > 16 ? Math.ceil(ticks.length / 12) : 1;
+  return (
+    <g>
+      <line x1={left} x2={right} y1={y} y2={y} stroke={INK} strokeWidth={1.5} />
+      {ticks.map((t, i) => (
+        <g key={t}>
+          <line x1={toX(t)} x2={toX(t)} y1={y} y2={y + (i % every === 0 ? 7 : 4)} stroke={INK} strokeWidth={1} />
+          {i % every === 0 && (
+            <text x={toX(t)} y={y + 22} fontSize={13} textAnchor="middle" fill={INK}>
+              {fmt(t)}
+            </text>
+          )}
+        </g>
+      ))}
+      {label && (
+        <text x={(left + right) / 2} y={y + 44} fontSize={13} fontWeight={600} textAnchor="middle" fill={INK}>
+          {texToText(label)}
+        </text>
+      )}
+    </g>
+  );
+}
+
+export function DotPlot({ fig }: { fig: DotPlotFigure }) {
+  const W = 460;
+  const left = 22;
+  const right = W - 22;
+  const step = fig.step ?? 1;
+  const ticks = lineTicks(fig.min, fig.max, step);
+  const toX = (v: number) => left + ((v - fig.min) / Math.max(fig.max - fig.min, 1e-9)) * (right - left);
+  const counts = new Map<number, number>();
+  for (const v of fig.values) counts.set(v, (counts.get(v) ?? 0) + 1);
+  const tallest = Math.max(1, ...counts.values());
+  const gap = Math.min(22, ((right - left) / Math.max(ticks.length - 1, 1)) * 0.9);
+  const r = Math.min(8, gap / 2 - 1);
+  const top = 14;
+  const axisY = top + tallest * gap + 6;
+  const H = axisY + (fig.label ? 54 : 32);
+  const summary = [...counts].sort((a, b) => a[0] - b[0]).map(([v, k]) => `${fmt(v)}: ${k}`).join(', ');
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="figure-svg mx-auto h-auto w-full max-w-[520px]" role="img" aria-label={`Dot plot${fig.label ? ` of ${texToText(fig.label)}` : ''}. ${summary}`}>
+      {[...counts].map(([v, k]) =>
+        Array.from({ length: k }, (_, j) => <circle key={`${v}-${j}`} cx={toX(v)} cy={axisY - 6 - gap / 2 - j * gap} r={r} fill={SERIES} />),
+      )}
+      <NumberAxis y={axisY} left={left} right={right} ticks={ticks} toX={toX} label={fig.label} />
+    </svg>
+  );
+}
+
+export function BoxPlot({ fig }: { fig: BoxPlotFigure }) {
+  const W = 460;
+  const named = fig.plots.some((p) => p.label);
+  const left = named ? 96 : 22;
+  const right = W - 22;
+  const step = fig.step ?? niceStep(fig.max - fig.min) / 2;
+  const ticks = lineTicks(fig.min, fig.max, step);
+  const toX = (v: number) => left + ((v - fig.min) / Math.max(fig.max - fig.min, 1e-9)) * (right - left);
+  const row = 54;
+  const top = 10;
+  const axisY = top + fig.plots.length * row + 4;
+  const H = axisY + (fig.label ? 54 : 32);
+  const summary = fig.plots
+    .map((p) => `${p.label ? `${texToText(p.label)}: ` : ''}minimum ${fmt(p.min)}, lower quartile ${fmt(p.q1)}, median ${fmt(p.median)}, upper quartile ${fmt(p.q3)}, maximum ${fmt(p.max)}`)
+    .join('; ');
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="figure-svg mx-auto h-auto w-full max-w-[520px]" role="img" aria-label={`Box plot${fig.label ? ` of ${texToText(fig.label)}` : ''}. ${summary}`}>
+      {ticks.map((t) => (
+        <line key={t} x1={toX(t)} x2={toX(t)} y1={top} y2={axisY} stroke={GRID} strokeWidth={1} />
+      ))}
+      {fig.plots.map((p, i) => {
+        const mid = top + i * row + row / 2;
+        const h = 30;
+        return (
+          <g key={i}>
+            {p.label && (
+              <text x={left - 10} y={mid + 4} fontSize={13} textAnchor="end" fill={INK}>
+                {texToText(p.label)}
+              </text>
+            )}
+            <line x1={toX(p.min)} x2={toX(p.q1)} y1={mid} y2={mid} stroke={INK} strokeWidth={1.5} />
+            <line x1={toX(p.q3)} x2={toX(p.max)} y1={mid} y2={mid} stroke={INK} strokeWidth={1.5} />
+            <line x1={toX(p.min)} x2={toX(p.min)} y1={mid - 9} y2={mid + 9} stroke={INK} strokeWidth={1.5} />
+            <line x1={toX(p.max)} x2={toX(p.max)} y1={mid - 9} y2={mid + 9} stroke={INK} strokeWidth={1.5} />
+            <rect x={toX(p.q1)} y={mid - h / 2} width={Math.max(toX(p.q3) - toX(p.q1), 1)} height={h} fill={SURFACE} stroke={SERIES} strokeWidth={2} />
+            <line x1={toX(p.median)} x2={toX(p.median)} y1={mid - h / 2} y2={mid + h / 2} stroke={SERIES} strokeWidth={3} />
+          </g>
+        );
+      })}
+      <NumberAxis y={axisY} left={left} right={right} ticks={ticks} toX={toX} label={fig.label} />
+    </svg>
   );
 }

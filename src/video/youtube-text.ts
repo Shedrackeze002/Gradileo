@@ -59,16 +59,19 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
     lesson ? `Practise this topic with instant feedback on ${BRAND}: ${SITE}` : `Try ${BRAND}: ${SITE}`,
     ...(course && lesson ? ['', 'Course', `${course.title}, lesson ${lesson.number}: ${lesson.title}`] : []),
   ].join('\n');
+  // Mathematics is tagged both ways ("math" and "maths"); chemistry and English by their own name.
+  const maths = !course || course.subject === 'Mathematics';
+  const [us, uk] = maths ? ['math', 'maths'] : [course.subject.toLowerCase(), course.subject.toLowerCase()];
   const tags = [
     BRAND,
-    'math',
-    'maths',
+    us,
+    uk,
     unit?.title,
     lesson?.title,
     course && KIND[course.id],
-    course && `Grade ${course.grade} math`,
-    course && `Year ${course.grade + 1} maths`,
-    course && (course.grade >= 9 ? 'high school math' : course.grade >= 6 ? 'middle school math' : 'elementary math'),
+    course && `Grade ${course.grade} ${us}`,
+    course && `Year ${course.grade + 1} ${uk}`,
+    course && (course.grade >= 9 ? `high school ${us}` : course.grade >= 6 ? `middle school ${us}` : `elementary ${us}`),
     'explainer',
     course?.shortTitle,
     ...(x.tags ?? []),

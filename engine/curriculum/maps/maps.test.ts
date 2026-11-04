@@ -13,7 +13,8 @@ describe('curriculum maps', () => {
         expect(courseOfLesson(l.id)?.map, `${l.id} belongs to its own course`).toBeUndefined();
         expect(c.units.find((u) => u.id === l.unitId)?.lessons, l.id).toContain(l.id);
       }
-      expect(c.gaps?.length, `${c.id} lists its gaps`).toBeGreaterThan(0);
+      // The gaps the map still shows (an empty list once every syllabus topic has a lesson).
+      expect(Array.isArray(c.gaps), `${c.id} lists its gaps`).toBe(true);
       // The database's start_self_paced accepts course ids of this form only.
       expect(c.id).toMatch(/^[a-z0-9-]{3,40}$/);
     }
@@ -29,6 +30,18 @@ describe('curriculum maps', () => {
     expect(algebra.lessons.find((l) => l.id === 'm10c-4-1')!.outcomes.every((o) => o.startsWith('Math 10 '))).toBe(true);
   });
 
+  it('recommend a GCSE tier to a UK learner in Year 10 or 11, and Gradileo’s own courses to others', () => {
+    expect(mappedCourses('uk').map((c) => c.shortTitle)).toEqual(['GCSE Foundation', 'GCSE Higher']);
+    const uk = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'uk', feeling: 'ok', ...more });
+    expect(uk(9).courseId).toBe('uk-gcse-higher');
+    expect(uk(10).courseId).toBe('uk-gcse-higher');
+    expect(uk(10).alternatives.map((c) => c.courseId)).toContain('uk-gcse-foundation');
+    expect(uk(10, { support: true }).courseId).toBe('uk-gcse-foundation');
+    expect(uk(9, { feeling: 'struggling' }).courseId).toBe('uk-gcse-foundation');
+    expect(uk(8).courseId).toBe('math-8');
+    expect(uk(10).prerequisite).toBe('math-9');
+  });
+
   it('recommend the Common Core course of a US learner’s grade, with a placement check on the one before', () => {
     const us = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'us', plan: 'university-stem', feeling: 'ok', ...more });
     expect([6, 7, 8, 9, 10, 11, 12].map((g) => us(g).courseId)).toEqual(['us-grade-6', 'us-grade-7', 'us-grade-8', 'us-algebra-1', 'us-geometry', 'us-algebra-2', 'us-precalculus']);
@@ -36,7 +49,7 @@ describe('curriculum maps', () => {
     expect(us(10).prerequisite).toBe('us-algebra-1');
     expect(us(5).courseId).toBe('math-5');
     // Other learners keep Gradileo's own courses.
-    expect(recommendCourse({ subject: 'Mathematics', grade: 9, curriculum: 'uk' }).courseId).toBe('math-9');
+    expect(recommendCourse({ subject: 'Mathematics', grade: 9, curriculum: 'ng' }).courseId).toBe('math-9');
     for (const c of MAPPED_COURSES) {
       const before = PREREQUISITE[c.id];
       expect(before && getCourse(before), c.id).toBeTruthy();

@@ -71,4 +71,11 @@ describe('levelOf', () => {
     expect(levelOf(getCourse('math-30-1')!)).toBe('Grade 12 / Year 13 · pre-calculus');
     expect(levelOf(getCourse('math-7')!)).toBe('Grade 7 / Year 8 · mathematics');
   });
+  it('tags chemistry and English videos with their own subject, not mathematics', () => {
+    const chem = youtubeFields({ title: 'The Particle Model', summary: 'States of matter.', lessonId: 'c10-1-1' }, null);
+    expect(chem.tags).toContain('chemistry');
+    expect(chem.tags).toContain('Grade 10 chemistry');
+    expect(chem.tags).toContain('high school chemistry');
+    expect(chem.tags.filter((t) => /\bmaths?\b/i.test(t))).toEqual([]);
+  });
 });
