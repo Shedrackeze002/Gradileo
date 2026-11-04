@@ -31,6 +31,24 @@ export function levelOf(course: CourseMeta): string {
 /** YouTube refuses "<" and ">" in titles, descriptions and tags; the full-width signs look the same. */
 const safe = (s: string) => s.replace(/</g, '＜').replace(/>/g, '＞');
 
+/** YouTube takes a title of at most 100 characters. */
+const TITLE_MAX = 100;
+
+/**
+ * The title with the brand when it fits, else without it. A title too long even then ("Topic,
+ * Part 2: the part's own name") keeps the topic and the part and drops the part's name; one with
+ * no such part is cut at a word, so YouTube never refuses the upload.
+ */
+export function youtubeTitle(title: string): string {
+  const fits = (t: string) => t.length <= TITLE_MAX;
+  const branded = `${title} | ${BRAND}`;
+  if (fits(branded)) return branded;
+  if (fits(title)) return title;
+  const head = title.split(': ')[0];
+  if (head !== title && fits(head)) return fits(`${head} | ${BRAND}`) ? `${head} | ${BRAND}` : head;
+  return `${title.slice(0, TITLE_MAX - 1).replace(/\s+\S*$/, '')}…`;
+}
+
 interface Video {
   title: string;
   summary: string;
@@ -50,7 +68,6 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
   const lesson = lessonById(x.lessonId);
   const course = courseOfLesson(x.lessonId);
   const unit = lesson ? unitById(lesson.unitId) : undefined;
-  const branded = `${x.title} | ${BRAND}`;
   const description = [
     x.summary,
     ...(unit || course ? ['', ...(unit ? [`Topic: ${unit.title}`] : []), ...(course ? [`Level: ${levelOf(course)}`] : [])] : []),
@@ -79,7 +96,7 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
     // YouTube splits tags at commas, so a comma inside one ("Decimals, Percents and Money") goes.
     .map((t) => t && safe(t.replace(/,/g, '')))
     .filter((t, i, all): t is string => Boolean(t) && all.indexOf(t) === i);
-  return { title: safe(branded.length <= 100 ? branded : x.title), description: safe(description), tags };
+  return { title: safe(youtubeTitle(x.title)), description: safe(description), tags };
 }
 
 /** The YouTube text file that goes with each video, to paste into YouTube Studio. */
