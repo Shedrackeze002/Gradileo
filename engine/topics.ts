@@ -41,9 +41,11 @@ export const TOPICS: Topic[] = [
   t(M, 'Algebra', 'patterns-sequences', 'Patterns and sequences', ['m5-u11', 'm7-5-1', 'm104-5-1', 'm201-u1']),
   t(M, 'Algebra', 'linear-equations', 'Linear equations and inequalities', ['m8-u7', 'm9-u6']),
   t(M, 'Algebra', 'linear-relations', 'Linear relations and their graphs', ['m7-5-2', 'm8-u6', 'm9-u4', 'm104-5-4', 'm10c-u6', 'm10c-u7', 'm203-u1', 'm204-5-3', 'm303-u5']),
-  t(M, 'Algebra', 'polynomials', 'Polynomials and factoring', ['m9-u5', 'm10c-u4', 'm201-4-1']),
+  t(M, 'Algebra', 'polynomials', 'Polynomials and factoring', ['m9-u5', 'm10c-u4', 'm201-4-1', 'mx-4-3']),
   t(M, 'Algebra', 'systems', 'Systems of equations', ['m10c-u8', 'm201-u8']),
   t(M, 'Algebra', 'quadratics', 'Quadratic functions and equations', ['m201-u3', 'm201-4-2', 'm201-4-3', 'm201-4-4', 'm202-u6', 'm202-u7']),
+  t(M, 'Algebra', 'complex-numbers', 'Complex numbers', ['mx-4-1', 'mx-4-2', 'mx-6-2']),
+  t(M, 'Algebra', 'vectors-matrices', 'Vectors and matrices', ['mx-u5']),
   t(M, 'Algebra', 'inequalities', 'Linear and quadratic inequalities', ['m201-u9']),
   t(M, 'Algebra', 'rational-expressions', 'Rational expressions and equations', ['m201-u6', 'm302-u4']),
   // Functions.
@@ -62,6 +64,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Geometry and measurement', 'angles-polygons', 'Angles, triangles and polygons', ['m6-7-2', 'm8-u9', 'm103-u6', 'm202-u2', 'm303-u3']),
   t(M, 'Geometry and measurement', 'constructions', 'Geometric constructions', ['m7-u8']),
   t(M, 'Geometry and measurement', 'proof', 'Geometric proof', ['mx-3-3']),
+  t(M, 'Geometry and measurement', 'conics-parametric', 'Conic sections and parametric equations', ['mx-3-4', 'mx-6-3', 'mx-6-4']),
   t(M, 'Geometry and measurement', 'coordinate-plane', 'The coordinate plane', ['m5-u9', 'm6-u8', 'm7-9-1']),
   t(M, 'Geometry and measurement', 'symmetry-transformations', 'Symmetry and transformations', ['m5-u8', 'm6-7-1', 'm7-9-2', 'm7-9-3', 'm9-u9', 'm104-u8', 'm303-u4']),
   t(M, 'Geometry and measurement', 'similarity-scale', 'Similarity and scale', ['m9-u7', 'm103-7-3', 'm103-7-4', 'm203-u5', 'm204-u8']),
@@ -70,6 +73,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Trigonometry', 'right-triangle-trig', 'Right-triangle trigonometry', ['m10c-u2', 'm103-u8', 'm203-u4']),
   t(M, 'Trigonometry', 'sine-cosine-laws', 'Angles of any size, and the sine and cosine laws', ['m201-u2', 'm202-u3', 'm303-u2']),
   t(M, 'Trigonometry', 'unit-circle', 'The unit circle and trigonometric functions', ['m301-u4', 'm301-u5', 'm302-u7', 'm31-1-2']),
+  t(M, 'Trigonometry', 'polar', 'Polar coordinates and polar form', ['mx-6-1', 'mx-6-2']),
   t(M, 'Trigonometry', 'trig-identities', 'Trigonometric identities', ['m301-u6']),
   // Data and probability.
   t(M, 'Data and probability', 'data', 'Data, graphs and statistics', ['m5-u12', 'm7-u10', 'm8-u10', 'm9-u10', 'm104-u9', 'm202-u5', 'm203-8-1', 'm203-8-2', 'm204-u9', 'm303-u6', 'mx-u1']),

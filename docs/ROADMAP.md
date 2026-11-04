@@ -578,6 +578,15 @@ items ship or decisions change.
      (complex numbers, polynomial identities, experiments and simulation) and Precalculus
      (vectors, matrices, polar form, conics) are next. The new lessons still need their videos and
      tutor recordings.
+   - Built (4 November 2026), step 4, part 2: **the US gaps of Algebra II and Precalculus are
+     filled, so all seven US courses list none.** Eleven more lessons in More Mathematics Topics
+     with 16 question generators: experiments, observational studies and simulation; complex
+     numbers, complex solutions of quadratics, and polynomial identities with the fundamental
+     theorem of algebra (a new unit); vectors, matrices, and determinants and inverses with systems
+     (a new unit); and polar coordinates, complex numbers in polar form, conic sections and
+     parametric equations (a new unit), at Grades 11 and 12. Browse by topic has new topics for
+     complex numbers, vectors and matrices, polar form, and conics. These lessons also need their
+     videos and tutor recordings. Next: the UK GCSE map.
    - Bug check (30 October 2026, the owner's request after the homework-editing error): every one
      of the live site's database calls (99 in the data layer, 41 database functions, 7 Edge
      Functions) was checked against the database's grants, rules and checks on a copy built from
