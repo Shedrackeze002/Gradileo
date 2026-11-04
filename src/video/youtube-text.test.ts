@@ -79,6 +79,7 @@ describe('levelOf', () => {
   it('names the grade, the UK year and the kind of course', () => {
     expect(levelOf(getCourse('math-30-1')!)).toBe('Grade 12 / Year 13 · pre-calculus');
     expect(levelOf(getCourse('math-7')!)).toBe('Grade 7 / Year 8 · mathematics');
+    expect(levelOf(getCourse('math-more')!, 6)).toBe('Grade 6 / Year 7 · mathematics');
   });
   it('tags chemistry and English videos with their own subject, not mathematics', () => {
     const chem = youtubeFields({ title: 'The Particle Model', summary: 'States of matter.', lessonId: 'c10-1-1' }, null);

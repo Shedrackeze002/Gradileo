@@ -103896,5 +103896,1559 @@
         "working": "Win first, then block, then fork. You cannot win, so block: otherwise your opponent completes the row on the next turn."
       }
     ]
+  },
+  "mx-1-1": {
+    "lessonId": "mx-1-1",
+    "title": "Statistical Questions and Dot Plots",
+    "duration": 294,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Statistical questions",
+        "t": 23.924
+      },
+      {
+        "title": "Which are statistical?",
+        "t": 56.444
+      },
+      {
+        "title": "Dot plots",
+        "t": 95.118
+      },
+      {
+        "title": "Reading a dot plot",
+        "t": 136.377
+      },
+      {
+        "title": "Watch out",
+        "t": 186.316
+      },
+      {
+        "title": "Your turn",
+        "t": 222.845
+      },
+      {
+        "title": "Summary",
+        "t": 258.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-1:q",
+        "t": 236.603,
+        "prompt": "A dot plot shows the number of goals scored in $9$ games: $0, 1, 1, 2, 2, 2, 2, 3, 5$. Find the median.",
+        "choices": [
+          "$1$",
+          "$2.5$",
+          "$3$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "There are $9$ values, so the median is the $5$th in order: $0, 1, 1, 2, \\mathbf{2}, \\ldots$ The median is $2$."
+      }
+    ]
+  },
+  "mx-1-2": {
+    "lessonId": "mx-1-2",
+    "title": "Box Plots and the Interquartile Range, Part 1: Quartiles",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quartiles",
+        "t": 20.417
+      },
+      {
+        "title": "An odd number of values",
+        "t": 51.776
+      },
+      {
+        "title": "An even number of values",
+        "t": 106.037
+      },
+      {
+        "title": "The interquartile range",
+        "t": 149.744
+      },
+      {
+        "title": "Your turn",
+        "t": 198.093
+      },
+      {
+        "title": "Summary",
+        "t": 237.246
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-2:q",
+        "t": 208.234,
+        "prompt": "Find the interquartile range of $2,\\ 4,\\ 5,\\ 7,\\ 8,\\ 10,\\ 13$.",
+        "choices": [
+          "$11$",
+          "$4$",
+          "$6$",
+          "$7$"
+        ],
+        "answer": 2,
+        "working": "The median is the $4$th value, $7$. Lower half $2, 4, 5$: $Q_1 = 4$. Upper half $8, 10, 13$: $Q_3 = 10$. $\\text{IQR} = 10 - 4 = 6$."
+      }
+    ]
+  },
+  "mx-1-2-b": {
+    "lessonId": "mx-1-2",
+    "title": "Box Plots and the Interquartile Range, Part 2: Box Plots",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Drawing a box plot",
+        "t": 20.767
+      },
+      {
+        "title": "A quarter in each part",
+        "t": 57.542
+      },
+      {
+        "title": "Reading a box plot",
+        "t": 96.209
+      },
+      {
+        "title": "Comparing box plots",
+        "t": 130.196
+      },
+      {
+        "title": "Your turn",
+        "t": 169.883
+      },
+      {
+        "title": "Summary",
+        "t": 207.846
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-2-b:q",
+        "t": 187.044,
+        "prompt": "A box plot has minimum $20$, $Q_1 = 30$, median $35$, $Q_3 = 50$ and maximum $60$. About what percent of the values are between $30$ and $50$?",
+        "choices": [
+          "$50\\%$",
+          "$25\\%$",
+          "$75\\%$",
+          "$100\\%$"
+        ],
+        "answer": 0,
+        "working": "The box runs from $Q_1 = 30$ to $Q_3 = 50$, and it holds the middle half of the values: about $50\\%$."
+      }
+    ]
+  },
+  "mx-1-3": {
+    "lessonId": "mx-1-3",
+    "title": "Mean Absolute Deviation",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Distance from the mean",
+        "t": 24.605
+      },
+      {
+        "title": "Finding the MAD",
+        "t": 55.108
+      },
+      {
+        "title": "Watch out",
+        "t": 102.344
+      },
+      {
+        "title": "What the MAD tells us",
+        "t": 135.927
+      },
+      {
+        "title": "Your turn",
+        "t": 183.754
+      },
+      {
+        "title": "Summary",
+        "t": 222.537
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-3:q",
+        "t": 192.642,
+        "prompt": "Find the mean absolute deviation of $2,\\ 6,\\ 8,\\ 12$.",
+        "choices": [
+          "$0$",
+          "$7$",
+          "$3$",
+          "$10$"
+        ],
+        "answer": 2,
+        "working": "Mean: $28 \\div 4 = 7$. Distances: $5, 1, 1, 5$. MAD: $12 \\div 4 = 3$."
+      }
+    ]
+  },
+  "mx-1-4": {
+    "lessonId": "mx-1-4",
+    "title": "Comparing Two Populations",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Population and sample",
+        "t": 20.845
+      },
+      {
+        "title": "Comparing the means",
+        "t": 39.913
+      },
+      {
+        "title": "Taking the spread into account",
+        "t": 75.722
+      },
+      {
+        "title": "A clear difference",
+        "t": 120.222
+      },
+      {
+        "title": "Is the difference real?",
+        "t": 151.064
+      },
+      {
+        "title": "Your turn",
+        "t": 193.644
+      },
+      {
+        "title": "Summary",
+        "t": 229.094
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-4:q",
+        "t": 205.681,
+        "prompt": "Two samples have means $40$ and $49$, and each has a MAD of $3$. How many MADs apart are the means?",
+        "choices": [
+          "$9$",
+          "$3$",
+          "$1$",
+          "$27$"
+        ],
+        "answer": 1,
+        "working": "The means differ by $49 - 40 = 9$, and $9 \\div 3 = 3$ MADs: a clear difference."
+      }
+    ]
+  },
+  "mx-1-5": {
+    "lessonId": "mx-1-5",
+    "title": "Two-Way Tables",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two-way tables",
+        "t": 20.589
+      },
+      {
+        "title": "Completing a table",
+        "t": 62.104
+      },
+      {
+        "title": "Relative frequencies",
+        "t": 104.283
+      },
+      {
+        "title": "Looking for an association",
+        "t": 160.446
+      },
+      {
+        "title": "Your turn",
+        "t": 205.018
+      },
+      {
+        "title": "Summary",
+        "t": 244.58
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-5:q",
+        "t": 219.274,
+        "prompt": "Of $50$ students who own a bike, $35$ walk to school. Of $50$ students who do not own a bike, $20$ walk. What percent of the bike owners walk?",
+        "choices": [
+          "$35\\%$",
+          "$55\\%$",
+          "$40\\%$",
+          "$70\\%$"
+        ],
+        "answer": 3,
+        "working": "Divide by the bike owners’ total: $35 \\div 50 = 0.7 = 70\\%$."
+      }
+    ]
+  },
+  "mx-1-6": {
+    "lessonId": "mx-1-6",
+    "title": "Surveys, Experiments and Simulation, Part 1: Three Kinds of Study",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of study",
+        "t": 24.374
+      },
+      {
+        "title": "Naming the study",
+        "t": 68.827
+      },
+      {
+        "title": "Confounding variables",
+        "t": 111.931
+      },
+      {
+        "title": "Cause and effect",
+        "t": 143.117
+      },
+      {
+        "title": "Your turn",
+        "t": 189.601
+      },
+      {
+        "title": "Summary",
+        "t": 227.486
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-6:q",
+        "t": 201.782,
+        "prompt": "A school compares the reading scores of students who chose to join a reading club with those who did not. What kind of study is this?",
+        "choices": [
+          "A randomized experiment",
+          "An observational study",
+          "A sample survey",
+          "An experiment with a control group"
+        ],
+        "answer": 1,
+        "working": "The students chose their own groups, and the school only records the scores: an observational study. It cannot show that the club causes better reading."
+      }
+    ]
+  },
+  "mx-1-6-b": {
+    "lessonId": "mx-1-6",
+    "title": "Surveys, Experiments and Simulation, Part 2: Simulation",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a simulation does",
+        "t": 20.773
+      },
+      {
+        "title": "A fair coin?",
+        "t": 46.892
+      },
+      {
+        "title": "Is the result unusual?",
+        "t": 83.383
+      },
+      {
+        "title": "What counts as unusual?",
+        "t": 121.032
+      },
+      {
+        "title": "Your turn",
+        "t": 154.577
+      },
+      {
+        "title": "Summary",
+        "t": 194.471
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-6-b:q",
+        "t": 170.036,
+        "prompt": "In $200$ simulated runs of a claim, $6$ runs gave a result as extreme as the real one. By the $5\\%$ rule, is the real result unusual?",
+        "choices": [
+          "No, because $6$ runs gave it",
+          "No, because $6 \\div 200$ is more than $5\\%$",
+          "Yes, because $6 \\div 200 = 3\\%$, less than $5\\%$",
+          "We cannot tell from a simulation"
+        ],
+        "answer": 2,
+        "working": "$6 \\div 200 = 0.03 = 3\\%$, which is less than $5\\%$, so the result is unusual if the claim is true: evidence against the claim."
+      }
+    ]
+  },
+  "mx-2-1": {
+    "lessonId": "mx-2-1",
+    "title": "Scientific Notation",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Scientific notation",
+        "t": 27.133
+      },
+      {
+        "title": "A large number",
+        "t": 58.494
+      },
+      {
+        "title": "Small numbers",
+        "t": 105.076
+      },
+      {
+        "title": "Which sign?",
+        "t": 160.172
+      },
+      {
+        "title": "Writing numbers in full",
+        "t": 215.036
+      },
+      {
+        "title": "Your turn",
+        "t": 252.716
+      },
+      {
+        "title": "Summary",
+        "t": 288.687
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-2-1:q",
+        "t": 261.674,
+        "prompt": "Write $0.0039$ in scientific notation.",
+        "choices": [
+          "$3.9 \\times 10^{3}$",
+          "$39 \\times 10^{-4}$",
+          "$3.9 \\times 10^{-3}$",
+          "$3.9 \\times 10^{-2}$"
+        ],
+        "answer": 2,
+        "working": "Put the point after the $3$: $3.9$. The point moves $3$ places right, so the exponent is $-3$: $3.9 \\times 10^{-3}$."
+      }
+    ]
+  },
+  "mx-2-2": {
+    "lessonId": "mx-2-2",
+    "title": "Calculating with Scientific Notation",
+    "duration": 313,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Multiplying",
+        "t": 20.347
+      },
+      {
+        "title": "Adjusting the coefficient",
+        "t": 55.351
+      },
+      {
+        "title": "Dividing",
+        "t": 95.179
+      },
+      {
+        "title": "Adding and subtracting",
+        "t": 135.516
+      },
+      {
+        "title": "Watch out",
+        "t": 190.069
+      },
+      {
+        "title": "Your turn",
+        "t": 229.514
+      },
+      {
+        "title": "Summary",
+        "t": 276.909
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-2-2:q",
+        "t": 242.848,
+        "prompt": "Find $(5 \\times 10^{7})(3 \\times 10^{-2})$ in scientific notation.",
+        "choices": [
+          "$1.5 \\times 10^{6}$",
+          "$15 \\times 10^{5}$",
+          "$1.5 \\times 10^{5}$",
+          "$8 \\times 10^{5}$"
+        ],
+        "answer": 0,
+        "working": "$5 \\times 3 = 15$ and $7 + ({-2}) = 5$, so the product is $15 \\times 10^{5} = 1.5 \\times 10^{1} \\times 10^{5} = 1.5 \\times 10^{6}$."
+      }
+    ]
+  },
+  "mx-2-3": {
+    "lessonId": "mx-2-3",
+    "title": "Linear and Exponential Growth",
+    "duration": 313,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of growth",
+        "t": 26.395
+      },
+      {
+        "title": "Which kind of growth?",
+        "t": 56.767
+      },
+      {
+        "title": "The graphs",
+        "t": 105.378
+      },
+      {
+        "title": "Exponential growth always wins",
+        "t": 141.589
+      },
+      {
+        "title": "When does it overtake?",
+        "t": 184.379
+      },
+      {
+        "title": "Your turn",
+        "t": 234
+      },
+      {
+        "title": "Summary",
+        "t": 277.76
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-2-3:q",
+        "t": 247.77,
+        "prompt": "A table gives $y = 4, 12, 36, 108$ for $x = 0, 1, 2, 3$. Which kind of growth is it?",
+        "choices": [
+          "Linear, with common difference $8$",
+          "Linear, with common difference $4$",
+          "Neither",
+          "Exponential, with common ratio $3$"
+        ],
+        "answer": 3,
+        "working": "The differences $8, 24, 72$ are not equal, but the ratios $12 \\div 4$, $36 \\div 12$ and $108 \\div 36$ are all $3$: exponential, $y = 4 \\times 3^{x}$."
+      }
+    ]
+  },
+  "mx-3-1": {
+    "lessonId": "mx-3-1",
+    "title": "Cross-Sections of Solids",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cross-sections",
+        "t": 27.535
+      },
+      {
+        "title": "Slicing a cylinder",
+        "t": 58.738
+      },
+      {
+        "title": "Cones and spheres",
+        "t": 97.591
+      },
+      {
+        "title": "A slanted cut",
+        "t": 131.111
+      },
+      {
+        "title": "The area of a cross-section",
+        "t": 155.386
+      },
+      {
+        "title": "Your turn",
+        "t": 199.186
+      },
+      {
+        "title": "Summary",
+        "t": 232.458
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-3-1:q",
+        "t": 211.228,
+        "prompt": "A square pyramid is cut by a plane perpendicular to its base, through its apex. What shape is the cross-section?",
+        "choices": [
+          "A square",
+          "A triangle",
+          "A smaller square",
+          "A rectangle"
+        ],
+        "answer": 1,
+        "working": "A cut perpendicular to the base of a pyramid, through the apex, gives a triangle. A cut parallel to the base would give a smaller square."
+      }
+    ]
+  },
+  "mx-3-2": {
+    "lessonId": "mx-3-2",
+    "title": "Solids of Revolution",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solids of revolution",
+        "t": 18.832
+      },
+      {
+        "title": "Three solids",
+        "t": 36.065
+      },
+      {
+        "title": "Naming the solid",
+        "t": 73.33
+      },
+      {
+        "title": "Which side is the radius?",
+        "t": 110.08
+      },
+      {
+        "title": "The volume",
+        "t": 145.808
+      },
+      {
+        "title": "Your turn",
+        "t": 203.4
+      },
+      {
+        "title": "Summary",
+        "t": 249.496
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-3-2:q",
+        "t": 217.388,
+        "prompt": "A rectangle $2$ cm by $5$ cm is turned about its $2$ cm side. Find the volume of the solid, to the nearest tenth.",
+        "choices": [
+          "$62.8\\ \\text{cm}^3$",
+          "$20.9\\ \\text{cm}^3$",
+          "$31.4\\ \\text{cm}^3$",
+          "$157.1\\ \\text{cm}^3$"
+        ],
+        "answer": 3,
+        "working": "The $2$ cm side is on the axis, so it is the height, and the $5$ cm side is the radius: $V = \\pi \\times 5^2 \\times 2 = 50\\pi \\approx 157.1\\ \\text{cm}^3$."
+      }
+    ]
+  },
+  "mx-3-3": {
+    "lessonId": "mx-3-3",
+    "title": "Two-Column Proofs",
+    "duration": 351,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of a proof",
+        "t": 24.74
+      },
+      {
+        "title": "Reasons used often",
+        "t": 58.881
+      },
+      {
+        "title": "Vertical angles are congruent",
+        "t": 114.312
+      },
+      {
+        "title": "Proving triangles congruent",
+        "t": 180.864
+      },
+      {
+        "title": "Watch out",
+        "t": 255.079
+      },
+      {
+        "title": "Your turn",
+        "t": 274.882
+      },
+      {
+        "title": "Summary",
+        "t": 311.26
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-3-3:q",
+        "t": 288.252,
+        "prompt": "In a proof, $M$ is the midpoint of $\\overline{PQ}$, and the next statement is $\\overline{PM} \\cong \\overline{MQ}$. What is the reason?",
+        "choices": [
+          "Reflexive property",
+          "Given",
+          "Definition of a midpoint",
+          "CPCTC"
+        ],
+        "answer": 2,
+        "working": "A midpoint splits a segment into two congruent parts, so the reason is the definition of a midpoint."
+      }
+    ]
+  },
+  "mx-3-4": {
+    "lessonId": "mx-3-4",
+    "title": "The Equation of a Circle",
+    "duration": 299,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the equation comes from",
+        "t": 21.601
+      },
+      {
+        "title": "Centre and radius",
+        "t": 67.942
+      },
+      {
+        "title": "From the centre and a point",
+        "t": 116.829
+      },
+      {
+        "title": "Completing the square",
+        "t": 156.792
+      },
+      {
+        "title": "Your turn",
+        "t": 218.256
+      },
+      {
+        "title": "Summary",
+        "t": 255.487
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-3-4:q",
+        "t": 229.796,
+        "prompt": "Find the centre and radius of $(x - 5)^2 + (y + 3)^2 = 16$.",
+        "choices": [
+          "Centre $(-5, 3)$, radius $4$",
+          "Centre $(5, -3)$, radius $16$",
+          "Centre $(5, -3)$, radius $4$",
+          "Centre $(5, 3)$, radius $4$"
+        ],
+        "answer": 2,
+        "working": "$x - 5$ gives $h = 5$, and $y + 3 = y - (-3)$ gives $k = -3$. $r^2 = 16$, so $r = 4$."
+      }
+    ]
+  },
+  "mx-4-1": {
+    "lessonId": "mx-4-1",
+    "title": "Complex Numbers, Part 1: The Imaginary Unit",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The imaginary unit",
+        "t": 33.709
+      },
+      {
+        "title": "Adding and subtracting",
+        "t": 76.994
+      },
+      {
+        "title": "Multiplying",
+        "t": 116.709
+      },
+      {
+        "title": "Powers of i",
+        "t": 169.517
+      },
+      {
+        "title": "Your turn",
+        "t": 216.791
+      },
+      {
+        "title": "Summary",
+        "t": 253.691
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-4-1:q",
+        "t": 223.892,
+        "prompt": "Multiply $(1 + 2i)(3 + i)$.",
+        "choices": [
+          "$5 + 7i$",
+          "$1 + 7i$",
+          "$3 + 2i$",
+          "$5 + 5i$"
+        ],
+        "answer": 1,
+        "working": "$3 + i + 6i + 2i^2 = 3 + 7i - 2 = 1 + 7i$."
+      }
+    ]
+  },
+  "mx-4-1-b": {
+    "lessonId": "mx-4-1",
+    "title": "Complex Numbers, Part 2: Conjugates and Division",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The conjugate",
+        "t": 17.456
+      },
+      {
+        "title": "Dividing",
+        "t": 59.74
+      },
+      {
+        "title": "Check by multiplying",
+        "t": 106.741
+      },
+      {
+        "title": "Your turn",
+        "t": 152.879
+      },
+      {
+        "title": "Summary",
+        "t": 186.668
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-4-1-b:q",
+        "t": 159.029,
+        "prompt": "Divide $\\dfrac{10}{3 - i}$.",
+        "choices": [
+          "$\\dfrac{10}{3} + 10i$",
+          "$3 - i$",
+          "$1 + 3i$",
+          "$3 + i$"
+        ],
+        "answer": 3,
+        "working": "Multiply top and bottom by $3 + i$: bottom $9 + 1 = 10$, top $10(3 + i) = 30 + 10i$. So $\\dfrac{30 + 10i}{10} = 3 + i$."
+      }
+    ]
+  },
+  "mx-4-2": {
+    "lessonId": "mx-4-2",
+    "title": "Complex Solutions of Quadratic Equations",
+    "duration": 274,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Square roots of negative numbers",
+        "t": 26.303
+      },
+      {
+        "title": "The discriminant",
+        "t": 64.438
+      },
+      {
+        "title": "Two complex solutions",
+        "t": 106.664
+      },
+      {
+        "title": "What the graph shows",
+        "t": 152.7
+      },
+      {
+        "title": "Your turn",
+        "t": 197.409
+      },
+      {
+        "title": "Summary",
+        "t": 233.793
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-4-2:q",
+        "t": 205.645,
+        "prompt": "Solve $x^2 - 4x + 13 = 0$.",
+        "choices": [
+          "$x = 2 \\pm 3i$",
+          "$x = -2 \\pm 3i$",
+          "$x = 4 \\pm 6i$",
+          "$x = 2 \\pm 6i$"
+        ],
+        "answer": 0,
+        "working": "Discriminant: $16 - 52 = -36$, and $\\sqrt{-36} = 6i$. So $x = \\dfrac{4 \\pm 6i}{2} = 2 \\pm 3i$."
+      }
+    ]
+  },
+  "mx-4-3": {
+    "lessonId": "mx-4-3",
+    "title": "Polynomial Identities, Part 1: Identities",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an identity is",
+        "t": 22.573
+      },
+      {
+        "title": "Identities to know",
+        "t": 62.076
+      },
+      {
+        "title": "Mental arithmetic",
+        "t": 98.06
+      },
+      {
+        "title": "Watch out",
+        "t": 125.749
+      },
+      {
+        "title": "Pythagorean triples",
+        "t": 150.654
+      },
+      {
+        "title": "Your turn",
+        "t": 192.997
+      },
+      {
+        "title": "Summary",
+        "t": 227.776
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-4-3:q",
+        "t": 201.878,
+        "prompt": "Use an identity to work out $61^2 - 39^2$.",
+        "choices": [
+          "$484$",
+          "$2{,}200$",
+          "$22$",
+          "$4{,}840$"
+        ],
+        "answer": 1,
+        "working": "$61^2 - 39^2 = (61 + 39)(61 - 39) = 100 \\times 22 = 2{,}200$."
+      }
+    ]
+  },
+  "mx-4-3-b": {
+    "lessonId": "mx-4-3",
+    "title": "Polynomial Identities, Part 2: The Fundamental Theorem of Algebra",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The theorem",
+        "t": 21.747
+      },
+      {
+        "title": "Conjugate pairs",
+        "t": 65.882
+      },
+      {
+        "title": "Finding the other roots",
+        "t": 102.108
+      },
+      {
+        "title": "Your turn",
+        "t": 170.477
+      },
+      {
+        "title": "Summary",
+        "t": 213.95
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-4-3-b:q",
+        "t": 182.937,
+        "prompt": "A polynomial of degree $4$ with real coefficients has roots $3i$ and $1 + i$. What are its other two roots?",
+        "choices": [
+          "$3$ and $1$",
+          "$-3i$ and $1 - i$",
+          "$-3i$ and $-1 - i$",
+          "$3i$ and $1 + i$ again"
+        ],
+        "answer": 1,
+        "working": "With real coefficients, the conjugates are roots too: $-3i$ (the conjugate of $0 + 3i$) and $1 - i$. That makes $4$ roots."
+      }
+    ]
+  },
+  "mx-5-1": {
+    "lessonId": "mx-5-1",
+    "title": "Vectors, Part 1: Components, Magnitude and Direction",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Vectors",
+        "t": 27.74
+      },
+      {
+        "title": "Components and magnitude",
+        "t": 64.767
+      },
+      {
+        "title": "Direction",
+        "t": 98.459
+      },
+      {
+        "title": "Your turn",
+        "t": 157.26
+      },
+      {
+        "title": "Summary",
+        "t": 195.79
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-5-1:q",
+        "t": 167.226,
+        "prompt": "Find the magnitude of the vector from $A(2, -1)$ to $B(8, 7)$.",
+        "choices": [
+          "$14$",
+          "$\\sqrt{52}$",
+          "$\\langle 6, 8 \\rangle$",
+          "$10$"
+        ],
+        "answer": 3,
+        "working": "$\\overrightarrow{AB} = \\langle 8 - 2,\\ 7 - (-1) \\rangle = \\langle 6, 8 \\rangle$, and $\\sqrt{6^2 + 8^2} = \\sqrt{100} = 10$."
+      }
+    ]
+  },
+  "mx-5-1-b": {
+    "lessonId": "mx-5-1",
+    "title": "Vectors, Part 2: Adding and Scaling Vectors",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding vectors",
+        "t": 18.186
+      },
+      {
+        "title": "Multiplying by a scalar",
+        "t": 50.123
+      },
+      {
+        "title": "Combining vectors",
+        "t": 80.883
+      },
+      {
+        "title": "Watch out",
+        "t": 112.87
+      },
+      {
+        "title": "Your turn",
+        "t": 139.237
+      },
+      {
+        "title": "Summary",
+        "t": 170.678
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-5-1-b:q",
+        "t": 148.731,
+        "prompt": "Let $\\mathbf{u} = \\langle 1, 5 \\rangle$ and $\\mathbf{v} = \\langle 4, -2 \\rangle$. Find $2\\mathbf{u} + \\mathbf{v}$.",
+        "choices": [
+          "$\\langle 5, 3 \\rangle$",
+          "$\\langle 6, 8 \\rangle$",
+          "$\\langle 10, 6 \\rangle$",
+          "$\\langle 6, 12 \\rangle$"
+        ],
+        "answer": 1,
+        "working": "$2\\mathbf{u} = \\langle 2, 10 \\rangle$, and $\\langle 2, 10 \\rangle + \\langle 4, -2 \\rangle = \\langle 6, 8 \\rangle$."
+      }
+    ]
+  },
+  "mx-5-2": {
+    "lessonId": "mx-5-2",
+    "title": "Matrices",
+    "duration": 283,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Matrices",
+        "t": 24.553
+      },
+      {
+        "title": "Adding and scaling",
+        "t": 55.835
+      },
+      {
+        "title": "Multiplying matrices",
+        "t": 93.001
+      },
+      {
+        "title": "An example",
+        "t": 137.877
+      },
+      {
+        "title": "Watch out",
+        "t": 185.672
+      },
+      {
+        "title": "Your turn",
+        "t": 212.121
+      },
+      {
+        "title": "Summary",
+        "t": 246.044
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-5-2:q",
+        "t": 219.467,
+        "prompt": "Find the top left entry of $\\begin{bmatrix} 2 & 3 \\\\ 1 & 0 \\end{bmatrix}\\begin{bmatrix} 4 & 1 \\\\ 5 & 2 \\end{bmatrix}$.",
+        "choices": [
+          "$8$",
+          "$23$",
+          "$11$",
+          "$14$"
+        ],
+        "answer": 1,
+        "working": "Row $1$ times column $1$: $2 \\times 4 + 3 \\times 5 = 8 + 15 = 23$."
+      }
+    ]
+  },
+  "mx-5-3": {
+    "lessonId": "mx-5-3",
+    "title": "Determinants and Inverses, Part 1: The Determinant and the Inverse",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The determinant",
+        "t": 23.159
+      },
+      {
+        "title": "The identity matrix",
+        "t": 58.762
+      },
+      {
+        "title": "The inverse",
+        "t": 88.903
+      },
+      {
+        "title": "Finding an inverse",
+        "t": 117.751
+      },
+      {
+        "title": "Your turn",
+        "t": 159.494
+      },
+      {
+        "title": "Summary",
+        "t": 189.204
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-5-3:q",
+        "t": 166.15,
+        "prompt": "Which matrix has no inverse?",
+        "choices": [
+          "$\\begin{bmatrix} 2 & 1 \\\\ 1 & 2 \\end{bmatrix}$",
+          "$\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$",
+          "$\\begin{bmatrix} 3 & 2 \\\\ 1 & 4 \\end{bmatrix}$",
+          "$\\begin{bmatrix} 2 & 6 \\\\ 1 & 3 \\end{bmatrix}$"
+        ],
+        "answer": 3,
+        "working": "Its determinant is $2 \\times 3 - 6 \\times 1 = 0$, so it has no inverse. The others have determinants $3$, $1$ and $10$."
+      }
+    ]
+  },
+  "mx-5-3-b": {
+    "lessonId": "mx-5-3",
+    "title": "Determinants and Inverses, Part 2: Solving a System with Matrices",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A system as a matrix equation",
+        "t": 17.758
+      },
+      {
+        "title": "Solving a system",
+        "t": 58.981
+      },
+      {
+        "title": "Watch out",
+        "t": 109.335
+      },
+      {
+        "title": "Your turn",
+        "t": 144.349
+      },
+      {
+        "title": "Summary",
+        "t": 179.172
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-5-3-b:q",
+        "t": 157.886,
+        "prompt": "The system $AX = B$ has $A^{-1} = \\begin{bmatrix} 1 & -2 \\\\ -1 & 3 \\end{bmatrix}$ and $B = \\begin{bmatrix} 8 \\\\ 3 \\end{bmatrix}$. Find $x$ and $y$.",
+        "choices": [
+          "$x = 8$, $y = 3$",
+          "$x = 14$, $y = -17$",
+          "$x = 1$, $y = 2$",
+          "$x = 2$, $y = 1$"
+        ],
+        "answer": 3,
+        "working": "$X = A^{-1}B$: $x = 1(8) + ({-2})(3) = 2$ and $y = {-1}(8) + 3(3) = 1$."
+      }
+    ]
+  },
+  "mx-6-1": {
+    "lessonId": "mx-6-1",
+    "title": "Polar Coordinates",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Polar coordinates",
+        "t": 28.541
+      },
+      {
+        "title": "Converting",
+        "t": 69.619
+      },
+      {
+        "title": "Polar to rectangular",
+        "t": 95.487
+      },
+      {
+        "title": "Rectangular to polar",
+        "t": 135.03
+      },
+      {
+        "title": "Many names for one point",
+        "t": 191.199
+      },
+      {
+        "title": "Your turn",
+        "t": 220.37
+      },
+      {
+        "title": "Summary",
+        "t": 251.348
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-6-1:q",
+        "t": 228.486,
+        "prompt": "Convert $(4, 90^\\circ)$ to rectangular coordinates.",
+        "choices": [
+          "$(4, 0)$",
+          "$(0, 4)$",
+          "$(4, 90)$",
+          "$(0, -4)$"
+        ],
+        "answer": 1,
+        "working": "$x = 4\\cos 90^\\circ = 0$ and $y = 4\\sin 90^\\circ = 4$, so the point is $(0, 4)$, straight up from the origin."
+      }
+    ]
+  },
+  "mx-6-2": {
+    "lessonId": "mx-6-2",
+    "title": "Complex Numbers in Polar Form",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The complex plane",
+        "t": 25.194
+      },
+      {
+        "title": "Polar form",
+        "t": 71.702
+      },
+      {
+        "title": "Multiplying and dividing",
+        "t": 108.407
+      },
+      {
+        "title": "An example",
+        "t": 133.349
+      },
+      {
+        "title": "Your turn",
+        "t": 176.951
+      },
+      {
+        "title": "Summary",
+        "t": 221.375
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-6-2:q",
+        "t": 194.803,
+        "prompt": "Let $z = 8(\\cos 100^\\circ + i\\sin 100^\\circ)$ and $w = 2(\\cos 30^\\circ + i\\sin 30^\\circ)$. Find $\\dfrac{z}{w}$.",
+        "choices": [
+          "$4(\\cos 70^\\circ + i\\sin 70^\\circ)$",
+          "$16(\\cos 130^\\circ + i\\sin 130^\\circ)$",
+          "$6(\\cos 70^\\circ + i\\sin 70^\\circ)$",
+          "$4(\\cos 130^\\circ + i\\sin 130^\\circ)$"
+        ],
+        "answer": 0,
+        "working": "Divide the moduli, $8 \\div 2 = 4$, and subtract the arguments, $100^\\circ - 30^\\circ = 70^\\circ$."
+      }
+    ]
+  },
+  "mx-6-3": {
+    "lessonId": "mx-6-3",
+    "title": "Conic Sections, Part 1: Recognizing the Conics",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Slicing a cone",
+        "t": 22.729
+      },
+      {
+        "title": "The four equations",
+        "t": 52.915
+      },
+      {
+        "title": "Moving the centre",
+        "t": 87.72
+      },
+      {
+        "title": "Watch out",
+        "t": 138.49
+      },
+      {
+        "title": "Your turn",
+        "t": 158.297
+      },
+      {
+        "title": "Summary",
+        "t": 191.394
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-6-3:q",
+        "t": 168.012,
+        "prompt": "Name the conic $\\dfrac{y^2}{4} - \\dfrac{x^2}{9} = 1$.",
+        "choices": [
+          "A circle",
+          "An ellipse",
+          "A hyperbola",
+          "A parabola"
+        ],
+        "answer": 2,
+        "working": "Both $x$ and $y$ are squared, and one square is subtracted, so it is a hyperbola. This one opens up and down, because the $y^2$ term is the positive one."
+      }
+    ]
+  },
+  "mx-6-3-b": {
+    "lessonId": "mx-6-3",
+    "title": "Conic Sections, Part 2: Foci, Directrix and Axes",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Focus and directrix",
+        "t": 21.223
+      },
+      {
+        "title": "Axes and foci of an ellipse",
+        "t": 71.329
+      },
+      {
+        "title": "Watch out",
+        "t": 128.25
+      },
+      {
+        "title": "Your turn",
+        "t": 151.588
+      },
+      {
+        "title": "Summary",
+        "t": 190.97
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-6-3-b:q",
+        "t": 164.578,
+        "prompt": "Find the foci of the ellipse $\\dfrac{x^2}{169} + \\dfrac{y^2}{144} = 1$.",
+        "choices": [
+          "$(\\pm 13, 0)$",
+          "$(0, \\pm 5)$",
+          "$(\\pm 12, 0)$",
+          "$(\\pm 5, 0)$"
+        ],
+        "answer": 3,
+        "working": "$a^2 = 169$ and $b^2 = 144$, so $c^2 = 169 - 144 = 25$ and $c = 5$. The larger denominator is under $x^2$, so the foci are on the $x$-axis: $(\\pm 5, 0)$."
+      }
+    ]
+  },
+  "mx-6-4": {
+    "lessonId": "mx-6-4",
+    "title": "Parametric Equations",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parametric equations",
+        "t": 22.549
+      },
+      {
+        "title": "Eliminating the parameter",
+        "t": 76.771
+      },
+      {
+        "title": "A circle",
+        "t": 110.558
+      },
+      {
+        "title": "Watch out",
+        "t": 164.895
+      },
+      {
+        "title": "Your turn",
+        "t": 185.468
+      },
+      {
+        "title": "Summary",
+        "t": 219.769
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-6-4:q",
+        "t": 196.965,
+        "prompt": "A point moves with $x = t^2$ and $y = 2t + 1$. Where is it when $t = 3$?",
+        "choices": [
+          "$(6, 7)$",
+          "$(9, 7)$",
+          "$(9, 6)$",
+          "$(3, 7)$"
+        ],
+        "answer": 1,
+        "working": "$x = 3^2 = 9$ and $y = 2(3) + 1 = 7$, so the point is at $(9, 7)$."
+      }
+    ]
   }
 }

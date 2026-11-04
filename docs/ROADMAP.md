@@ -594,6 +594,13 @@ items ship or decisions change.
      parametric equations (a new unit), at Grades 11 and 12. Browse by topic has new topics for
      complex numbers, vectors and matrices, polar form, and conics. These lessons also need their
      videos and tutor recordings. Next: the UK GCSE map.
+   - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
+     explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
+     grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
+     course joins the daily YouTube upload (the scheduled task's course list needs `math-more`).
+     Its tutor recordings are still to do.
+   - Next (the owner's decision, 4 November 2026): **English Grades 5 to 9**, after these videos.
+     English is Grades 10 to 12 only today.
    - Built (4 November 2026), step 3, the second map: **UK GCSE Mathematics, Foundation and
      Higher** (`engine/curriculum/maps/uk.ts`), each built from Gradileo's lessons in the order of a
      Year 10 and 11 scheme of work, with the GCSE content references (N, A, R, G, P, S) in each
