@@ -72,8 +72,9 @@ export default function PrivacyPage() {
       <Section id="ai" title="3. The AI features">
         <p>
           Gradileo’s AI features work the same way in mathematics, chemistry and English. Each one sends an AI model provider (MiniMax) only what that
-          feature needs, never a student’s email address or surname, and everything the AI writes about a student goes to their teacher first. The
-          details for each feature are below.
+          feature needs. Gradileo does not add a student’s email address or surname from their account, but anything a student or teacher types, such
+          as a written answer, a question to the tutor or a teacher’s note, is sent as it was typed. What the teacher’s AI tools write about a student
+          goes to the teacher first, and the AI tutor answers the student directly. The details for each feature are below.
         </p>
         <p>
           When a teacher asks the AI teaching assistant to analyze a class or a student, Gradileo sends the AI model provider (MiniMax) the information the
@@ -109,7 +110,8 @@ export default function PrivacyPage() {
         </p>
         <p>
           To keep the AI features within fair limits, Gradileo records when an account uses one: the account and the kind of request, but not what was
-          asked or answered. These records are needed only for the last day and are cleared regularly.
+          asked or answered. These records are needed only for the last day, and records older than a day are deleted from time to time while
+          the AI tutor is in use.
         </p>
         <p>The student coach and the course placement check run inside the student’s browser and do not send information to an AI provider.</p>
       </Section>
