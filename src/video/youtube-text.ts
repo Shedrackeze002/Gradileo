@@ -23,9 +23,12 @@ const KIND: Record<string, string> = {
   'math-31': 'calculus',
 };
 
-/** "Grade 12 / Year 13 · pre-calculus": the grade, the year it is in the UK, and the kind of course. */
-export function levelOf(course: CourseMeta): string {
-  return `Grade ${course.grade} / Year ${course.grade + 1} · ${KIND[course.id] ?? course.subject.toLowerCase()}`;
+/**
+ * "Grade 12 / Year 13 · pre-calculus": the grade, the year it is in the UK, and the kind of course.
+ * A lesson with its own level (More Mathematics Topics spans Grades 6 to 12) gives its `grade`.
+ */
+export function levelOf(course: CourseMeta, grade = course.grade): string {
+  return `Grade ${grade} / Year ${grade + 1} · ${KIND[course.id] ?? course.subject.toLowerCase()}`;
 }
 
 /** YouTube refuses "<" and ">" in titles, descriptions and tags; the full-width signs look the same. */
@@ -51,9 +54,10 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
   const course = courseOfLesson(x.lessonId);
   const unit = lesson ? unitById(lesson.unitId) : undefined;
   const branded = `${x.title} | ${BRAND}`;
+  const grade = lesson?.grade ?? course?.grade ?? 0;
   const description = [
     x.summary,
-    ...(unit || course ? ['', ...(unit ? [`Topic: ${unit.title}`] : []), ...(course ? [`Level: ${levelOf(course)}`] : [])] : []),
+    ...(unit || course ? ['', ...(unit ? [`Topic: ${unit.title}`] : []), ...(course ? [`Level: ${levelOf(course, grade)}`] : [])] : []),
     ...(chapters ? ['', 'Chapters', ...chapters.map((c) => `${clock(c.t)} ${c.title}`)] : []),
     '',
     lesson ? `Practise this topic with instant feedback on ${BRAND}: ${SITE}` : `Try ${BRAND}: ${SITE}`,
@@ -69,9 +73,9 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
     unit?.title,
     lesson?.title,
     course && KIND[course.id],
-    course && `Grade ${course.grade} ${us}`,
-    course && `Year ${course.grade + 1} ${uk}`,
-    course && (course.grade >= 9 ? `high school ${us}` : course.grade >= 6 ? `middle school ${us}` : `elementary ${us}`),
+    course && `Grade ${grade} ${us}`,
+    course && `Year ${grade + 1} ${uk}`,
+    course && (grade >= 9 ? `high school ${us}` : grade >= 6 ? `middle school ${us}` : `elementary ${us}`),
     'explainer',
     course?.shortTitle,
     ...(x.tags ?? []),
