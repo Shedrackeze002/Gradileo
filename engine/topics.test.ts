@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { LISTED_COURSES } from './curriculum/index.ts';
+import { TOPIC_COURSES as LISTED_COURSES } from './curriculum/index.ts';
 import { TOPICS, topicLessons, topicLevel } from './topics.ts';
 
 const byId = (id: string) => TOPICS.find((t) => t.id === id)!;
 
 describe('topics', () => {
-  it('file every lesson of every listed course under at least one topic of its subject', () => {
+  it('file every lesson of every listed course (and of More Mathematics Topics) under at least one topic of its subject', () => {
     const filed = new Map<string, string[]>();
     for (const t of TOPICS) for (const l of topicLessons(t)) filed.set(l.lessonId, [...(filed.get(l.lessonId) ?? []), t.subject]);
     const missing = LISTED_COURSES.flatMap((c) => c.lessons.filter((l) => !filed.get(l.id)?.includes(c.subject)).map((l) => `${c.id} ${l.id} ${l.title}`));

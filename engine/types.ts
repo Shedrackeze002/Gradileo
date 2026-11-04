@@ -171,11 +171,13 @@ export type Figure =
   | TableFigure
   | BarChartFigure
   | CircleGraphFigure
-  | CubesFigure;
+  | CubesFigure
+  | DotPlotFigure
+  | BoxPlotFigure;
 
 /** Every figure type, for checking figures written by hand in lesson files. */
 export const FIGURE_TYPES: ReadonlyArray<Figure['type']> = [
-  'rightTriangle', 'twoTriangles', 'solid', 'plane', 'numberLine', 'ruler', 'caliper', 'areaModel', 'arrowDiagram', 'table', 'barChart', 'circleGraph', 'cubes',
+  'rightTriangle', 'twoTriangles', 'solid', 'plane', 'numberLine', 'ruler', 'caliper', 'areaModel', 'arrowDiagram', 'table', 'barChart', 'circleGraph', 'cubes', 'dotPlot', 'boxPlot',
 ];
 
 export interface RightTriangleFigure {
@@ -343,6 +345,33 @@ export interface BarChartFigure {
   caption?: string;
 }
 
+/** A dot plot: one dot for each value, stacked above a number line. */
+export interface DotPlotFigure {
+  type: 'dotPlot';
+  /** The values (whole multiples of `step`), one dot each. */
+  values: number[];
+  min: number;
+  max: number;
+  /** The gap between ticks (1 when omitted). */
+  step?: number;
+  /** Title under the number line, e.g. "Hours of sleep". */
+  label?: string;
+  caption?: string;
+}
+
+/** One or more box plots (box-and-whisker plots) over a shared number line. */
+export interface BoxPlotFigure {
+  type: 'boxPlot';
+  plots: Array<{ label?: string; min: number; q1: number; median: number; q3: number; max: number }>;
+  min: number;
+  max: number;
+  /** The gap between ticks; chosen from the range when omitted. */
+  step?: number;
+  /** Title under the number line, e.g. "Height (cm)". */
+  label?: string;
+  caption?: string;
+}
+
 /**
  * A structure built from unit cubes, drawn in isometric view from the front right.
  * `heights[row][col]` is the number of cubes stacked on that square; row 0 is at the back and the
@@ -371,6 +400,8 @@ export interface TableFigure {
   rows: string[][];
   /** Render horizontally (x row, y row). */
   horizontal?: boolean;
+  /** Every cell is Markdown (maths such as $AB = CD$, **bold**), not only cells with a formula. */
+  markdown?: boolean;
 }
 
 // ---------------------------------------------------------------------------
@@ -410,6 +441,8 @@ export interface LessonMeta {
   objectives: string[];
   minutes: number;
   vocabulary?: string[];
+  /** The lesson's level, where it differs from its course's (More Mathematics Topics spans Grades 6 to 12). */
+  grade?: number;
 }
 
 export interface UnitMeta {
@@ -434,6 +467,12 @@ export interface CourseMeta {
   lessons: LessonMeta[];
   /** Still being written: it runs everywhere but the course pickers (LISTED_COURSES). */
   draft?: boolean;
+  /**
+   * A course of lessons that other courses borrow (More Mathematics Topics: the topics the
+   * curriculum maps need). It runs everywhere and its lessons are in Browse by topic, but it is not
+   * offered in the course pickers (LISTED_COURSES).
+   */
+  extra?: boolean;
   /**
    * A school system's own course built from other courses' lessons (`engine/curriculum/maps`): the
    * curriculum id ("us"). Its lessons still belong to their own courses (`courseOfLesson`).

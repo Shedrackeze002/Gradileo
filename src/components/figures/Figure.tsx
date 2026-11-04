@@ -4,7 +4,7 @@ import { PlaneFigure } from './PlaneFigure.tsx';
 import { RightTriangle, TwoTriangles } from './TriangleFigures.tsx';
 import { SolidFigure } from './SolidFigure.tsx';
 import { AreaModel, ArrowDiagram, Caliper, NumberLine, Ruler, TableFig } from './MiscFigures.tsx';
-import { BarChart, CircleGraph } from './ChartFigures.tsx';
+import { BarChart, BoxPlot, CircleGraph, DotPlot } from './ChartFigures.tsx';
 import { CubesFigure } from './CubesFigure.tsx';
 
 function Inner({ fig }: { fig: FigureSpec }) {
@@ -35,6 +35,10 @@ function Inner({ fig }: { fig: FigureSpec }) {
       return <CircleGraph fig={fig} />;
     case 'cubes':
       return <CubesFigure fig={fig} />;
+    case 'dotPlot':
+      return <DotPlot fig={fig} />;
+    case 'boxPlot':
+      return <BoxPlot fig={fig} />;
   }
 }
 
