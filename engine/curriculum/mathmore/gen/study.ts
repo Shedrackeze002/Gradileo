@@ -62,11 +62,14 @@ function simulation(rng: Rng, d: Difficulty): Out {
     };
   }
   // Is an observed result unusual? Compare with the simulated runs.
-  const observed = rng.chance(0.5) ? Math.max(...counts) + rng.int(1, 2) : rng.pick(counts);
+  // The question is about a high result (evidence of more wins than claimed), so the observed
+  // count is at or above the simulated median, or above every simulated run.
+  const high = asc(counts).slice(runs / 2);
+  const observed = rng.chance(0.5) ? Math.max(...counts) + rng.int(1, 2) : rng.pick(high);
   const asExtreme = counts.filter((c) => c >= observed).length;
   const unusual = asExtreme / runs < 0.05;
   return {
-    prompt: `A game is said to give a win $${claim}\\%$ of the time. A computer simulated $${runs}$ runs of $${n}$ games each, and the dot plot shows the number of wins in each run. A player then won $${observed}$ of $${n}$ real games.\n\n**(a)** In what percent of the simulated runs were there $${observed}$ or more wins?\n\n**(b)** Taking less than $5\\%$ as unusual, is the player's result unusual if the claim is true?`,
+    prompt: `A game is said to give a win $${claim}\\%$ of the time. A computer simulated $${runs}$ runs of $${n}$ games each, and the dot plot shows the number of wins in each run. A player then won $${observed}$ of $${n}$ real games.\n\n**(a)** In what percent of the simulated runs were there $${observed}$ or more wins?\n\n**(b)** Taking less than $5\\%$ as unusual, is a result this high unusual if the claim is true?`,
     figure,
     parts: [numPart(roundTo((asExtreme / runs) * 100, 1), { label: '(a)', suffix: '%' }), { label: '(b)', answer: fixedChoice(['Yes, it is unusual: the claim may be wrong.', 'No, it is not unusual: it fits the claim.'], unusual ? 0 : 1) }],
     hints: ['Count the dots at the observed value and to its right, and divide by the number of runs.', 'A result that the simulation rarely gives (less than $5\\%$ of the runs) is evidence against the claim.'],
