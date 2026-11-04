@@ -155,6 +155,17 @@ export function useUpdateClass(classId: string) {
   });
 }
 
+export function useDeleteClass(classId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () => api().deleteClass(classId),
+    onSuccess: () => {
+      qc.removeQueries({ queryKey: qk.class(classId) });
+      qc.invalidateQueries({ queryKey: qk.classes });
+    },
+  });
+}
+
 export function useSetPublished(classId: string) {
   const qc = useQueryClient();
   return useMutation({

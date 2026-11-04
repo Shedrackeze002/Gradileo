@@ -67,6 +67,13 @@ items ship or decisions change.
   submitted automatically. The camera option only checks that the camera is on: nothing is
   recorded or stored, and students see a consent notice before they start.
 
+- One class per course and section (4 Nov 2026, owner's bug report): a teacher cannot create a
+  second active class for a course they already teach unless it has its own section or period
+  (the course picker marks courses they have; a unique index backs it up, and the migration
+  archived existing repeats, keeping the copy with students). Class settings can now delete a
+  class for good after the teacher types its name, beside the existing archive; archived classes
+  no longer show in the class switcher.
+
 ## Next, in order
 
 0. **Rename EduCore to Gradileo** (the owner's decision, after the Math 10C Unit 2 videos and

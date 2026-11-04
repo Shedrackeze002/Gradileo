@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
-import { Archive, Bell, Copy, KeyRound, RefreshCw, Settings2, Sparkles } from 'lucide-react';
+import { Archive, Bell, Copy, KeyRound, RefreshCw, Settings2, Sparkles, Trash2 } from 'lucide-react';
 import { DEFAULT_MODEL } from '@engine/ai/minimax.ts';
 import { api, demoApi } from '@/data/index.ts';
-import { qk, useAiStatus, useClass, useUpdateClass } from '@/data/hooks.ts';
-import { Button, Card, CardBody, CardHeader, Input, PageHeader, PageSpinner, Select, Switch, useToast } from '@/components/ui/index.ts';
+import { qk, useAiStatus, useClass, useDeleteClass, useRoster, useUpdateClass } from '@/data/hooks.ts';
+import type { ClassRoom } from '@/data/types.ts';
+import { Button, Card, CardBody, CardHeader, Input, Modal, PageHeader, PageSpinner, Select, Switch, useToast } from '@/components/ui/index.ts';
 import { cn } from '@/lib/cn.ts';
 import { joinLink } from './StudentsPage.tsx';
 import { useClassId } from './shared.tsx';
@@ -67,8 +68,12 @@ export default function ClassSettingsPage() {
               disabled={!name.trim() || (name === c.name && section === (c.section ?? ''))}
               loading={update.isPending}
               onClick={async () => {
-                await update.mutateAsync({ name: name.trim(), section: section.trim() || null });
-                toast({ kind: 'success', title: 'Saved' });
+                try {
+                  await update.mutateAsync({ name: name.trim(), section: section.trim() || null });
+                  toast({ kind: 'success', title: 'Saved' });
+                } catch (err) {
+                  toast({ kind: 'error', title: 'Could not save', body: (err as Error).message });
+                }
               }}
             >
               Save
@@ -166,15 +171,86 @@ export default function ClassSettingsPage() {
             variant="danger"
             onClick={async () => {
               if (!window.confirm(`${c.archived ? 'Restore' : 'Archive'} ${c.name}?`)) return;
-              await update.mutateAsync({ archived: !c.archived });
-              navigate('/t?all');
+              try {
+                await update.mutateAsync({ archived: !c.archived });
+                navigate('/t?all');
+              } catch (err) {
+                toast({ kind: 'error', title: `Could not ${c.archived ? 'restore' : 'archive'} the class`, body: (err as Error).message });
+              }
             }}
           >
             {c.archived ? 'Restore class' : 'Archive class'}
           </Button>
         </CardBody>
       </Card>
+
+      <DeleteClassCard cls={c} />
     </div>
+  );
+}
+
+/** Deleting a class for good, after the teacher types its name: for a class made by mistake. */
+function DeleteClassCard({ cls }: { cls: ClassRoom }) {
+  const [open, setOpen] = useState(false);
+  const [typed, setTyped] = useState('');
+  const roster = useRoster(cls.id);
+  const remove = useDeleteClass(cls.id);
+  const navigate = useNavigate();
+  const toast = useToast();
+  const students = roster.data?.length ?? 0;
+  const close = () => {
+    setOpen(false);
+    setTyped('');
+  };
+  const confirmed = typed.trim().toLowerCase() === cls.name.trim().toLowerCase();
+
+  return (
+    <Card className="border-bad/30">
+      <CardHeader title="Delete class" subtitle="Removes the class for good, with its roster, assignments, submissions and grades. This cannot be undone." icon={<Trash2 className="h-5 w-5" />} />
+      <CardBody className="flex justify-end pt-4">
+        <Button variant="danger" icon={<Trash2 className="h-4 w-4" />} onClick={() => setOpen(true)}>
+          Delete class
+        </Button>
+      </CardBody>
+      <Modal
+        open={open}
+        onClose={close}
+        size="sm"
+        title={`Delete ${cls.name}?`}
+        footer={
+          <>
+            <Button variant="ghost" onClick={close}>
+              Cancel
+            </Button>
+            <Button
+              variant="danger"
+              disabled={!confirmed}
+              loading={remove.isPending}
+              onClick={async () => {
+                try {
+                  await remove.mutateAsync();
+                  toast({ kind: 'success', title: 'Class deleted', body: `${cls.name} and everything in it is gone.` });
+                  navigate('/t?all');
+                } catch (err) {
+                  toast({ kind: 'error', title: 'Could not delete the class', body: (err as Error).message });
+                }
+              }}
+            >
+              Delete for good
+            </Button>
+          </>
+        }
+      >
+        <div className="space-y-4 text-[15px] text-ink-2">
+          <p>
+            {students > 0
+              ? `${students} student${students === 1 ? ' is' : 's are'} in this class. They lose access to it, and their work and grades in it are deleted. To keep the work, archive the class instead.`
+              : 'Nobody has joined this class yet.'}
+          </p>
+          <Input label={`Type ${cls.name} to confirm`} value={typed} onChange={(e) => setTyped(e.target.value)} autoComplete="off" />
+        </div>
+      </Modal>
+    </Card>
   );
 }
 

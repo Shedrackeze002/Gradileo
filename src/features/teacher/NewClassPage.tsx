@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { BookOpen, Check } from 'lucide-react';
 import { CURRICULUM_MAPS, getCourse, LISTED_COURSES as COURSES, mappedCourses, SUBJECTS } from '@engine/curriculum/index.ts';
 import { api } from '@/data/index.ts';
-import { useCreateClass } from '@/data/hooks.ts';
-import { Button, Card, CardBody, Checkbox, Input, PageHeader, Tabs, useToast } from '@/components/ui/index.ts';
+import { useClasses, useCreateClass } from '@/data/hooks.ts';
+import { duplicateClass, duplicateClassMessage } from '@/data/classRules.ts';
+import { Badge, Button, Card, CardBody, Checkbox, Input, PageHeader, Tabs, useToast } from '@/components/ui/index.ts';
 import { cn } from '@/lib/cn.ts';
 import { useMe } from '@/features/auth/AuthProvider.tsx';
 import { ApprovalNotice, needsApproval } from './ApprovalNotice.tsx';
@@ -29,12 +30,17 @@ export default function NewClassPage() {
   const [publishFirst, setPublishFirst] = useState(true);
   const [joinApproval, setJoinApproval] = useState(true);
   const create = useCreateClass();
+  const { data: myClasses = [] } = useClasses();
+  const active = myClasses.filter((c) => c.kind === 'teacher' && !c.archived);
+  const taken = new Set(active.map((c) => c.courseId));
+  const clash = duplicateClass(active, courseId, section);
   const navigate = useNavigate();
   const toast = useToast();
   const me = useMe();
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (clash) return;
     try {
       const c = await create.mutateAsync({ name: name.trim() || 'My class', section: section.trim() || null, courseId, joinApproval });
       if (publishFirst) {
@@ -97,6 +103,7 @@ export default function NewClassPage() {
                         <span className="mt-0.5 block text-sm text-ink-3">
                           {c.units.length} units · {c.lessons.length} lessons{c.map ? '' : ` · ${c.outcomes.length} outcomes`}
                         </span>
+                        {taken.has(c.id) && <Badge className="mt-1">You have this class</Badge>}
                         {!!c.gaps?.length && <span className="mt-0.5 block text-xs text-ink-3">Not in Gradileo yet: {c.gaps.join('; ')}.</span>}
                       </span>
                       {courseId === c.id && <Check className="h-5 w-5 text-brand" />}
@@ -111,11 +118,19 @@ export default function NewClassPage() {
           <Checkbox checked={publishFirst} onChange={setPublishFirst} label="Publish the first lesson now so students see something when they join" />
           <Checkbox checked={joinApproval} onChange={setJoinApproval} label="Approve students who join with the class code (you can change this in class settings)" />
         </div>
+        {clash && (
+          <div role="alert" className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-warn/40 bg-warn-soft p-4 text-sm text-ink">
+            <span className="min-w-0 flex-1">{duplicateClassMessage(clash)}</span>
+            <Button variant="secondary" size="sm" to={`/t/c/${clash.id}`}>
+              Open {clash.name}
+            </Button>
+          </div>
+        )}
         <div className="flex justify-end gap-2">
           <Button variant="ghost" to="/t?all">
             Cancel
           </Button>
-          <Button type="submit" loading={create.isPending}>
+          <Button type="submit" loading={create.isPending} disabled={!!clash}>
             Create class
           </Button>
         </div>

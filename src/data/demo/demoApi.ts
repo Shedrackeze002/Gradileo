@@ -76,6 +76,7 @@ import { simulatedResponses } from './liveSim.ts';
 import { uid, joinCode as makeJoinCode, friendlyPassword } from '@/lib/ids.ts';
 import { cleanNamePart, sameName } from '@/lib/names.ts';
 import { YOUTUBE_ID } from '@/video/youtube.ts';
+import { duplicateClass, duplicateClassMessage } from '../classRules.ts';
 
 const SESSION_KEY = 'educore-demo-session';
 const COLORS = ['#6a43e3', '#2a78d6', '#0c8c4a', '#b45309', '#d03b3b', '#c2417a', '#0e7c86', '#7a5af8'];
@@ -336,6 +337,8 @@ export class DemoApi implements DataApi {
     const me = this.me();
     if (me.role !== 'teacher') throw new Error('Only teachers can create classes.');
     if ((me.teacherStatus ?? 'approved') !== 'approved' || me.disabled) throw new Error('Your teacher account is waiting for approval.');
+    const dup = duplicateClass(this.db.classes.filter((x) => x.teacherId === me.id), input.courseId, input.section);
+    if (dup) throw new Error(duplicateClassMessage(dup));
     const c: ClassRoom = {
       id: uid('c'),
       teacherId: me.id,
@@ -355,12 +358,28 @@ export class DemoApi implements DataApi {
 
   async updateClass(id: string, patch: { name?: string; section?: string | null; settings?: Partial<ClassSettings>; archived?: boolean }) {
     const c = this.requireTeacherOf(id);
+    if (patch.section !== undefined || patch.archived === false) {
+      const dup = duplicateClass(this.db.classes.filter((x) => x.teacherId === c.teacherId), c.courseId, patch.section !== undefined ? patch.section : c.section, c.id);
+      if (dup && !(patch.archived ?? c.archived)) throw new Error(duplicateClassMessage(dup));
+    }
     if (patch.name !== undefined) c.name = patch.name;
     if (patch.section !== undefined) c.section = patch.section;
     if (patch.archived !== undefined) c.archived = patch.archived;
     if (patch.settings) c.settings = { ...c.settings, ...patch.settings };
     this.persist();
     return { ...c };
+  }
+
+  async deleteClass(id: string) {
+    this.requireTeacherOf(id);
+    this.db.classes = this.db.classes.filter((c) => c.id !== id);
+    // Everything that belongs to the class goes with it, as the database's cascades do.
+    const db = this.db as unknown as Record<string, unknown>;
+    for (const key of Object.keys(db)) {
+      const rows = db[key];
+      if (Array.isArray(rows)) db[key] = rows.filter((r) => !(r && typeof r === 'object' && (r as { classId?: unknown }).classId === id));
+    }
+    this.persist();
   }
 
   async regenerateJoinCode(id: string) {

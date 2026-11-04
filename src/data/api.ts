@@ -90,6 +90,8 @@ export interface DataApi {
   getClass(id: string): Promise<ClassRoom | null>;
   createClass(input: { name: string; section?: string | null; courseId: string; joinApproval?: boolean }): Promise<ClassRoom>;
   updateClass(id: string, patch: { name?: string; section?: string | null; settings?: Partial<ClassSettings>; archived?: boolean }): Promise<ClassRoom>;
+  /** Deletes the class and everything in it (roster, assignments, submissions, grades). Teacher of the class only. */
+  deleteClass(id: string): Promise<void>;
   regenerateJoinCode(id: string): Promise<ClassRoom>;
   joinClass(code: string): Promise<ClassRoom>;
   /** Use a class code: join straight away, or send the teacher a request when the class asks for approval. */
