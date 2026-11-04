@@ -341,8 +341,11 @@ function comparePopulations(rng: Rng, d: Difficulty): Out {
       ],
     };
   }
-  const madV = rng.int(2, 8);
-  const gap = rng.pick(d === 2 ? [1, 2, 3, 4] : [0.5, 1, 1.5, 2.5, 3, 4]);
+  // Both means stay at least 10 inside the context's range, so the gap between them is at most span - 20.
+  const maxDiff = ctx.hi - ctx.lo - 20;
+  const gaps = d === 2 ? [1, 2, 3, 4] : [0.5, 1, 1.5, 2.5, 3, 4];
+  const madV = rng.int(2, Math.min(8, Math.floor(maxDiff / gaps[0]!)));
+  const gap = rng.pick(gaps.filter((g) => madV * g <= maxDiff));
   const diff = madV * gap;
   const ma = rng.int(ctx.lo + 10, ctx.hi - 10 - Math.ceil(diff));
   const mb = ma + diff;

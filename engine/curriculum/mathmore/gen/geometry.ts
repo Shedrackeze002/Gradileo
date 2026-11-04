@@ -25,6 +25,15 @@ const SECTIONS: Array<{ solid: string; cut: string; shape: string; why: string }
   { solid: 'a square pyramid', cut: 'perpendicular to its base, through its apex', shape: 'A triangle', why: 'The cut runs from the apex down to the base.' },
   { solid: 'a cube', cut: 'through three corners next to one corner (cutting that corner off)', shape: 'A triangle', why: 'The cut meets three faces, one side of the triangle on each.' },
 ];
+/**
+ * Shapes that would also be a correct name for the answer, so are never offered as wrong choices:
+ * a square is a rectangle (and, by the inclusive definition, a trapezoid), and a circle is an ellipse.
+ */
+const ALSO_TRUE: Record<string, string[]> = {
+  'A square': ['A rectangle', 'A trapezoid'],
+  'A rectangle': ['A trapezoid'],
+  'A circle': ['An oval (ellipse)'],
+};
 const SHAPES = ['A square', 'A rectangle', 'A circle', 'A triangle', 'A trapezoid', 'A pentagon', 'An oval (ellipse)', 'A circle smaller than the base', 'A triangle the same size as the base'];
 
 function crossSection(rng: Rng, d: Difficulty): Out {
@@ -33,7 +42,7 @@ function crossSection(rng: Rng, d: Difficulty): Out {
     const base = s.shape.split(' ').slice(0, 2).join(' ');
     return {
       prompt: `A plane cuts ${s.solid} ${s.cut}. What shape is the cross-section?`,
-      parts: [{ answer: mc(rng, s.shape, SHAPES.filter((x) => !x.startsWith(base))) }],
+      parts: [{ answer: mc(rng, s.shape, SHAPES.filter((x) => !x.startsWith(base) && !(ALSO_TRUE[base] ?? []).includes(x))) }],
       hints: ['A **cross-section** is the flat face left where a plane slices through a solid.', 'Picture slicing the solid with a knife, then look at the cut face straight on.'],
       solution: [s.why, `The cross-section is ${s.shape.charAt(0).toLowerCase()}${s.shape.slice(1)}.`],
     };
@@ -124,7 +133,7 @@ function proofs(rng: Rng): Proof[] {
       ],
     },
     {
-      given: `Lines $${A}${B}$ and $${C}${D}$ cross at $${E}$`,
+      given: `Lines $${A}${B}$ and $${C}${D}$ cross at $${E}$, which lies between $${A}$ and $${B}$ and between $${C}$ and $${D}$`,
       prove: `$\\angle ${A}${E}${C} \\cong \\angle ${B}${E}${D}$`,
       rows: [
         [`$\\angle ${A}${E}${C}$ and $\\angle ${C}${E}${B}$ form a linear pair`, 'Definition of a linear pair'],

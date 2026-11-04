@@ -73,9 +73,11 @@ function sciStandard(rng: Rng, d: Difficulty): Out {
   const a = coefficient(rng, rng.int(2, 3));
   const n = d === 1 ? rng.int(2, 6) : d === 2 ? -rng.int(2, 5) : rng.pick([rng.int(5, 9), -rng.int(4, 7)]);
   const x = value(a, n);
+  // Grade to the last digit of the number, whatever its size: 0 is not an answer to 2.5 × 10^-7.
+  const places = Math.max(0, (String(a).split('.')[1]?.length ?? 0) - n);
   return {
     prompt: `Write $${sci(a, n)}$ as an ordinary number (in standard form, without a power of ten).`,
-    parts: [numPart(x, { exact: false })],
+    parts: [numPart(x, { exact: false, decimals: places, tolerance: 0.4 * 10 ** -places })],
     hints: [n > 0 ? `Multiplying by $10^{${n}}$ moves the decimal point $${n}$ places to the right.` : `Multiplying by $10^{${n}}$ is dividing by $10^{${-n}}$: it moves the decimal point $${-n}$ places to the left.`, 'Fill any empty places with zeros.'],
     solution: [
       n > 0 ? `Move the decimal point in $${fmt(a)}$ $${n}$ places to the right, adding zeros as needed.` : `Move the decimal point in $${fmt(a)}$ $${-n}$ places to the left, adding zeros after the point.`,
