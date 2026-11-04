@@ -117,6 +117,24 @@ test('a teacher creates a class on a US Common Core course, built from Gradileoâ
   expect(errors).toEqual([]);
 });
 
+test('the US Precalculus course lists no gaps and teaches vectors and matrices', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'US Common Core' }).click();
+  const course = page.getByRole('button', { name: /^Precalculus \(US Common Core\)/ });
+  await course.click();
+  await expect(course.getByText(/Not in Gradileo yet/)).toHaveCount(0);
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
+  await expect(page.getByText('Vectors and Matrices').first()).toBeVisible();
+  await expect(page.getByText('Conic Sections and Parametric Equations').first()).toBeVisible();
+  await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/mx-5-3`);
+  await expect(page.getByText('Determinants, Inverses and Systems').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test('a Grade 11 lesson check takes a list of roots', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
