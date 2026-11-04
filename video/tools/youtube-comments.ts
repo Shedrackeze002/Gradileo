@@ -13,7 +13,7 @@
 // ever posted: replies are written by hand, or by Claude only after the owner says yes.
 //
 // Quota: it reads every thread on the channel (commentThreads.list with allThreadsRelatedToChannelId,
-// 1 unit per 100 threads), the full replies of a thread with more than five whose count changed
+// 1 unit per 100 threads), the full replies of each thread with more than five
 // (comments.list, 1 unit per 100), and the titles of the videos with new comments (videos.list, 1
 // unit per 50), so a run costs a few units of the day's 10,000, next to about 110 an upload.
 //
@@ -31,7 +31,8 @@ interface RawComment {
     videoId?: string;
     authorDisplayName: string;
     authorChannelId?: { value: string };
-    textOriginal: string;
+    textOriginal?: string;
+    textDisplay: string;
     publishedAt: string;
     parentId?: string;
   };
@@ -61,7 +62,8 @@ const toComment = (c: RawComment, videoId: string, threadId: string): Comment =>
   videoId,
   author: c.snippet.authorDisplayName,
   authorChannelId: c.snippet.authorChannelId?.value ?? '',
-  text: c.snippet.textOriginal,
+  // textOriginal comes only with the channel's own comments; textDisplay is plain text here.
+  text: c.snippet.textOriginal ?? c.snippet.textDisplay ?? '',
   publishedAt: c.snippet.publishedAt,
   inReplyTo: c.snippet.parentId,
 });
@@ -74,7 +76,7 @@ const threads: Thread[] = [];
 let page = '';
 do {
   const list = await call<{ items: RawThread[]; nextPageToken?: string }>(
-    `${API}/commentThreads?part=snippet,replies&maxResults=100&order=time&allThreadsRelatedToChannelId=${channelId}${page ? `&pageToken=${page}` : ''}`,
+    `${API}/commentThreads?part=snippet,replies&maxResults=100&order=time&textFormat=plainText&allThreadsRelatedToChannelId=${channelId}${page ? `&pageToken=${page}` : ''}`,
   );
   for (const t of list.items) {
     const videoId = t.snippet.videoId;
@@ -90,7 +92,7 @@ do {
 } while (page);
 
 const seen: Seen = existsSync(statePath) ? (JSON.parse(readFileSync(statePath, 'utf8')) as Seen) : emptySeen();
-for (const t of threadsToExpand(threads, seen)) {
+for (const t of threadsToExpand(threads)) {
   const replies: Comment[] = [];
   let next = '';
   do {

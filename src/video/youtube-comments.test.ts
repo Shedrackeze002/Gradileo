@@ -38,10 +38,18 @@ describe('newComments', () => {
 });
 
 describe('threadsToExpand', () => {
-  it('reads a long thread again only when its reply count changed', () => {
+  it('reads a long thread in full every run, even when its count is unchanged', () => {
     const t = thread(comment('c', 'viewer', '2026-11-01T00:00:00Z'), [], 7);
-    expect(threadsToExpand([t], emptySeen())).toEqual([t]);
-    expect(threadsToExpand([t], { comments: [], replyCounts: { c: 7 } })).toEqual([]);
+    expect(threadsToExpand([t])).toEqual([t]);
+    expect(threadsToExpand([thread(comment('e', 'viewer', '2026-11-01T00:00:00Z'), [])])).toEqual([]);
+  });
+
+  it('reports a new reply when a deleted one left the count unchanged', () => {
+    const top = comment('f', 'viewer', '2026-11-01T00:00:00Z');
+    const before = thread(top, [comment('f.1', 'other', '2026-11-02T00:00:00Z', 'f')]);
+    const seen = newComments([before], emptySeen(), CHANNEL).seen;
+    const after = thread(top, [comment('f.2', 'other', '2026-11-03T00:00:00Z', 'f')]);
+    expect(newComments([after], seen, CHANNEL).fresh.map((c) => c.id)).toEqual(['f.2']);
   });
 });
 

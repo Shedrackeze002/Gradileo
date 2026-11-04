@@ -37,9 +37,13 @@ export interface Seen {
 
 export const emptySeen = (): Seen => ({ comments: [], replyCounts: {} });
 
-/** The threads whose replies must be fetched in full: more replies than the listing carried, and a count that has changed. */
-export function threadsToExpand(threads: Thread[], seen: Seen): Thread[] {
-  return threads.filter((t) => t.totalReplyCount > t.replies.length && seen.replyCounts[t.id] !== t.totalReplyCount);
+/**
+ * The threads whose replies must be fetched in full: those with more replies than the listing
+ * carried. They are read every run, not only when their count changes, since a deleted reply and a
+ * new one leave the count as it was. Each costs a unit, and few threads run past five replies.
+ */
+export function threadsToExpand(threads: Thread[]): Thread[] {
+  return threads.filter((t) => t.totalReplyCount > t.replies.length);
 }
 
 /**
