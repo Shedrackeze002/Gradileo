@@ -212,7 +212,8 @@ function fta(rng: Rng, d: Difficulty): Out {
     const n = rng.int(2, 7);
     const real = rng.int(0, n);
     const ok = (n - real) % 2 === 0;
-    const r = ok ? real : real - 1;
+    // n - real is odd: one more real root keeps the count from 0 to n.
+    const r = ok ? real : real + 1;
     const nonreal = n - r;
     return {
       prompt: `A polynomial with real coefficients has degree $${n}$ and exactly $${r}$ real roots (counted with multiplicity). How many roots does it have altogether, and how many are not real?`,
@@ -239,7 +240,7 @@ function fta(rng: Rng, d: Difficulty): Out {
     );
   }
   return {
-    prompt: `The polynomial $p(x) = ${poly}$ has real coefficients, and $${cx(a, b)}$ is a root. ${d === 3 ? 'Find another non-real root, and the real root.' : 'Find another root.'}`,
+    prompt: `The polynomial $p(x) = ${poly}$ has real coefficients, and $${cx(a, b)}$ is a root. ${d === 3 ? 'Find another non-real root, and the real root.' : 'Find another non-real root.'}`,
     parts,
     hints: ['Non-real roots of a polynomial with real coefficients come in conjugate pairs: $a + bi$ and $a - bi$.', d === 3 ? 'Multiply out the factor from the two complex roots, then compare constant terms (or divide) to find the third factor.' : 'Change the sign of the imaginary part.'],
     solution: sol,

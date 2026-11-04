@@ -72,10 +72,10 @@ function complexPolar(rng: Rng, d: Difficulty): Out {
   const t = ((divide ? t1 - t2 : t1 + t2) + 360) % 360;
   const cis = (m: number, a: number) => `${m}(\\cos ${a}^\\circ + i\\sin ${a}^\\circ)`;
   return {
-    prompt: `Let $z = ${cis(r1, t1)}$ and $w = ${cis(r2, t2)}$. Find ${divide ? '$\\dfrac{z}{w}$' : '$zw$'} in polar form, with $0^\\circ \\le \\theta < 360^\\circ$.`,
+    prompt: `Let $z = ${cis(r1, t1)}$ and $w = ${cis(r2, t2)}$. Find ${divide ? '$\\dfrac{z}{w}$' : '$zw$'} in polar form, with $0^\\circ \\le \\theta < 360^\\circ$.${Number.isInteger(r) ? '' : ' Give $r$ exactly (a fraction is fine).'}`,
     parts: [numPart(r, { label: '$r$ =' }), numPart(t, { label: '$\\theta$ =', suffix: '°' })],
     hints: [divide ? 'To divide, divide the moduli and subtract the arguments.' : 'To multiply, multiply the moduli and add the arguments.'],
-    solution: [divide ? `Modulus: $${r1} \\div ${r2} = ${fmt(r)}$. Argument: $${t1}^\\circ - ${t2}^\\circ = ${t1 - t2}^\\circ$${t1 - t2 < 0 ? `, which is $${t}^\\circ$` : ''}.` : `Modulus: $${r1} \\times ${r2} = ${r}$. Argument: $${t1}^\\circ + ${t2}^\\circ = ${t1 + t2}^\\circ$${t1 + t2 >= 360 ? `, which is $${t}^\\circ$` : ''}.`, `${divide ? '$\\dfrac{z}{w}' : '$zw'} = ${fmt(r)}(\\cos ${t}^\\circ + i\\sin ${t}^\\circ)$`],
+    solution: [divide ? `Modulus: $${r1} \\div ${r2} = ${niceNum(r)}$. Argument: $${t1}^\\circ - ${t2}^\\circ = ${t1 - t2}^\\circ$${t1 - t2 < 0 ? `, which is $${t}^\\circ$` : ''}.` : `Modulus: $${r1} \\times ${r2} = ${r}$. Argument: $${t1}^\\circ + ${t2}^\\circ = ${t1 + t2}^\\circ$${t1 + t2 >= 360 ? `, which is $${t}^\\circ$` : ''}.`, `${divide ? '$\\dfrac{z}{w}' : '$zw'} = ${niceNum(r)}(\\cos ${t}^\\circ + i\\sin ${t}^\\circ)$`],
   };
 }
 
