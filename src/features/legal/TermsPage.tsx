@@ -75,8 +75,9 @@ export default function TermsPage() {
           videos hosted on YouTube are also subject to YouTube’s terms.
         </p>
         <p>
-          The poems, plays, stories and other literary texts studied in Gradileo’s English courses are in the public domain. Gradileo’s rights cover
-          its own lessons, questions, notes and videos about those texts, not the texts themselves.
+          Gradileo chooses the poems, plays, stories and other literary texts studied in its English courses from works in the public domain. Copyright
+          terms differ between countries, so if you believe one of these texts is still protected where you live, email <Mail /> and we will look into
+          it. Gradileo’s rights cover its own lessons, questions, notes and videos about those texts, not the texts themselves.
         </p>
         <p>
           Gradileo’s courses follow the topics of school curricula used in different countries, but Gradileo is independent: it is not made or endorsed
