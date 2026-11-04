@@ -170,7 +170,12 @@ or skill id, so they need nothing new; `loadCourseSkills` loads a mapped course'
 the courses its lessons come from, and `courseLesson(courseId, lessonId)` gives a lesson as the
 class's course numbers it. To add a map, write its file next to `us.ts`, add it to
 `CURRICULUM_MAPS`, give each course a `PREREQUISITE`, and run `npm test` (the map tests check every
-lesson id).
+lesson id). A gap is filled with a lesson in **More Mathematics Topics** (`engine/curriculum/mathmore/`,
+`math-more`, lesson ids `mx-…`): a course of the lessons the maps need that Gradileo's grade courses
+do not teach (box plots, scientific notation, the equation of a circle). It is marked `extra`, so it
+is not in `LISTED_COURSES`, but its lessons are filed under topics (`TOPIC_COURSES`) and each lesson
+carries its own level (`LessonMeta.grade`), since the course spans Grades 6 to 12. Add the lesson to
+the map's unit and take the topic off the map's `gaps`.
 
 **Joining a teacher's class.** A class can ask for approval (`settings.joinApproval`, on by default
 for new classes). Then a class code, used on the Join page or at sign-up, creates a pending
@@ -399,7 +404,9 @@ it followed):
 
 A course can be written a unit at a time as a draft (`draft: true` in its `CourseMeta`): it runs
 everywhere, tests included, but the course pickers, the landing page and sign-up list only
-`LISTED_COURSES`, so no class can start it until it is finished and the flag comes off.
+`LISTED_COURSES`, so no class can start it until it is finished and the flag comes off. A course of
+extra lessons (`extra: true`, More Mathematics Topics) is left out of the pickers in the same way,
+but is finished: its lessons are taught through the curriculum maps and Browse by topic.
 
 A course in another subject (Chemistry and English are planned in `docs/PLAN-CHEMISTRY-ENGLISH.md`)
 follows the same steps. Its `subject` (`'Chemistry'`) is what the AI's instructions name: the

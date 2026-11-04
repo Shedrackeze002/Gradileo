@@ -3,10 +3,10 @@
  * "Quadratic functions and equations"), whichever course teaches it, so a learner anywhere can go
  * straight to a topic without knowing which course it sits in. A topic lists whole units and
  * single lessons (for units that cover more than one topic); its level comes from the grades of
- * the courses its lessons are in. A test checks that every lesson of every listed course is in a
- * topic.
+ * the courses its lessons are in (or a lesson's own level, in More Mathematics Topics). A test
+ * checks that every lesson of every listed course, and of the courses of extra lessons, is in a topic.
  */
-import { LISTED_COURSES } from './curriculum/index.ts';
+import { TOPIC_COURSES } from './curriculum/index.ts';
 import { levelIn } from './curricula.ts';
 
 export interface Topic {
@@ -34,7 +34,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Number', 'decimals-percents', 'Decimals and percents', ['m7-1-2', 'm7-1-3', 'm7-u2', 'm8-u2', 'm104-u3', 'm204-1-4']),
   t(M, 'Number', 'rational-numbers', 'Rational and real numbers', ['m9-u3', 'm10c-3-3']),
   t(M, 'Number', 'ratios', 'Ratios, rates and proportions', ['m5-u6', 'm6-u5', 'm8-u3', 'm103-1-1', 'm202-u8', 'm204-1-3']),
-  t(M, 'Number', 'powers', 'Powers and exponents', ['m6-3-2', 'm9-u2', 'm10c-3-5', 'm10c-3-6']),
+  t(M, 'Number', 'powers', 'Powers and exponents', ['m6-3-2', 'm9-u2', 'm10c-3-5', 'm10c-3-6', 'mx-2-1', 'mx-2-2']),
   t(M, 'Number', 'roots-radicals', 'Square roots and radicals', ['m8-1-1', 'm8-1-2', 'm9-1-1', 'm9-1-2', 'm10c-3-2', 'm10c-3-4', 'm201-u5', 'm202-u4']),
   // Algebra.
   t(M, 'Algebra', 'expressions-equations', 'Expressions, formulas and equations', ['m5-u7', 'm6-u6', 'm7-u6', 'm104-5-2', 'm104-5-3', 'm204-5-1', 'm204-5-2']),
@@ -52,15 +52,16 @@ export const TOPICS: Topic[] = [
   t(M, 'Functions', 'absolute-reciprocal', 'Absolute value and reciprocal functions', ['m201-u7']),
   t(M, 'Functions', 'radical-functions', 'Radical functions', ['m301-u2']),
   t(M, 'Functions', 'polynomial-functions', 'Polynomial functions', ['m301-u3', 'm302-u5']),
-  t(M, 'Functions', 'exponentials-logarithms', 'Exponential functions and logarithms', ['m301-u7', 'm302-u6']),
+  t(M, 'Functions', 'exponentials-logarithms', 'Exponential functions and logarithms', ['mx-2-3', 'm301-u7', 'm302-u6']),
   t(M, 'Functions', 'rational-functions', 'Rational functions and combining functions', ['m301-u8']),
   // Geometry and measurement.
   t(M, 'Geometry and measurement', 'measurement', 'Measurement, units and conversions', ['m10c-1-1', 'm10c-1-2', 'm10c-1-3', 'm10c-1-4', 'm103-u3', 'm103-u4', 'm104-u6', 'm204-u6', 'm303-u1']),
   t(M, 'Geometry and measurement', 'perimeter-area', 'Perimeter and area', ['m5-u10', 'm6-u9', 'm7-7-2', 'm7-7-3', 'm103-u5', 'm104-7-1', 'm104-7-2', 'm204-u7']),
-  t(M, 'Geometry and measurement', 'circles', 'Circles', ['m7-7-1', 'm7-7-4', 'm9-u8']),
-  t(M, 'Geometry and measurement', 'surface-area-volume', 'Surface area and volume', ['m6-u10', 'm8-u8', 'm9-1-3', 'm10c-1-5', 'm10c-1-6', 'm10c-1-7', 'm10c-1-8', 'm104-7-3', 'm203-u2', 'm203-u3']),
+  t(M, 'Geometry and measurement', 'circles', 'Circles', ['m7-7-1', 'm7-7-4', 'm9-u8', 'mx-3-4']),
+  t(M, 'Geometry and measurement', 'surface-area-volume', 'Surface area and volume', ['m6-u10', 'm8-u8', 'm9-1-3', 'm10c-1-5', 'm10c-1-6', 'm10c-1-7', 'm10c-1-8', 'm104-7-3', 'm203-u2', 'm203-u3', 'mx-3-1', 'mx-3-2']),
   t(M, 'Geometry and measurement', 'angles-polygons', 'Angles, triangles and polygons', ['m6-7-2', 'm8-u9', 'm103-u6', 'm202-u2', 'm303-u3']),
   t(M, 'Geometry and measurement', 'constructions', 'Geometric constructions', ['m7-u8']),
+  t(M, 'Geometry and measurement', 'proof', 'Geometric proof', ['mx-3-3']),
   t(M, 'Geometry and measurement', 'coordinate-plane', 'The coordinate plane', ['m5-u9', 'm6-u8', 'm7-9-1']),
   t(M, 'Geometry and measurement', 'symmetry-transformations', 'Symmetry and transformations', ['m5-u8', 'm6-7-1', 'm7-9-2', 'm7-9-3', 'm9-u9', 'm104-u8', 'm303-u4']),
   t(M, 'Geometry and measurement', 'similarity-scale', 'Similarity and scale', ['m9-u7', 'm103-7-3', 'm103-7-4', 'm203-u5', 'm204-u8']),
@@ -71,7 +72,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Trigonometry', 'unit-circle', 'The unit circle and trigonometric functions', ['m301-u4', 'm301-u5', 'm302-u7', 'm31-1-2']),
   t(M, 'Trigonometry', 'trig-identities', 'Trigonometric identities', ['m301-u6']),
   // Data and probability.
-  t(M, 'Data and probability', 'data', 'Data, graphs and statistics', ['m5-u12', 'm7-u10', 'm8-u10', 'm9-u10', 'm104-u9', 'm202-u5', 'm203-8-1', 'm203-8-2', 'm204-u9', 'm303-u6']),
+  t(M, 'Data and probability', 'data', 'Data, graphs and statistics', ['m5-u12', 'm7-u10', 'm8-u10', 'm9-u10', 'm104-u9', 'm202-u5', 'm203-8-1', 'm203-8-2', 'm204-u9', 'm303-u6', 'mx-u1']),
   t(M, 'Data and probability', 'probability', 'Probability', ['m6-u12', 'm7-u11', 'm8-u10', 'm9-u10', 'm104-u9', 'm204-u9', 'm302-u3', 'm303-u7']),
   t(M, 'Data and probability', 'counting', 'Counting, permutations and combinations', ['m301-u9', 'm302-u2']),
   // Money.
@@ -118,8 +119,8 @@ export interface TopicLesson {
   grade: number;
 }
 
-const UNITS = new Map(LISTED_COURSES.flatMap((c) => c.units.map((u) => [u.id, { course: c, unit: u }] as const)));
-const LESSONS = new Map(LISTED_COURSES.flatMap((c) => c.lessons.map((l) => [l.id, { course: c, lesson: l }] as const)));
+const UNITS = new Map(TOPIC_COURSES.flatMap((c) => c.units.map((u) => [u.id, { course: c, unit: u }] as const)));
+const LESSONS = new Map(TOPIC_COURSES.flatMap((c) => c.lessons.map((l) => [l.id, { course: c, lesson: l }] as const)));
 
 /** A topic's lessons, youngest course first and in teaching order within a course. */
 export function topicLessons(topic: Topic): TopicLesson[] {
@@ -130,9 +131,9 @@ export function topicLessons(topic: Topic): TopicLesson[] {
   }
   const out = ids.flatMap((id) => {
     const l = LESSONS.get(id);
-    return l ? [{ lessonId: id, title: l.lesson.title, courseId: l.course.id, grade: l.course.grade }] : [];
+    return l ? [{ lessonId: id, title: l.lesson.title, courseId: l.course.id, grade: l.lesson.grade ?? l.course.grade }] : [];
   });
-  return out.sort((a, b) => a.grade - b.grade || LISTED_COURSES.findIndex((c) => c.id === a.courseId) - LISTED_COURSES.findIndex((c) => c.id === b.courseId) || order(a.lessonId) - order(b.lessonId));
+  return out.sort((a, b) => a.grade - b.grade || TOPIC_COURSES.findIndex((c) => c.id === a.courseId) - TOPIC_COURSES.findIndex((c) => c.id === b.courseId) || order(a.lessonId) - order(b.lessonId));
 }
 
 function order(lessonId: string): number {

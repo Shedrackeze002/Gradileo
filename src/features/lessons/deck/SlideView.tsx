@@ -104,7 +104,7 @@ const CALLOUT = {
 const GLYPHS = ['π', '√', 'θ', 'Σ', 'Δ', '∞', '÷', '≈', '%', 'x²'];
 
 /** Diagrams drawn beside the text; wide ones (number lines, tables, rulers) run across the slide. */
-const SIDE_FIGURES = new Set(['plane', 'rightTriangle', 'twoTriangles', 'solid', 'cubes', 'circleGraph', 'barChart']);
+const SIDE_FIGURES = new Set(['plane', 'rightTriangle', 'twoTriangles', 'solid', 'cubes', 'circleGraph', 'barChart', 'dotPlot', 'boxPlot']);
 const besideText = (b: Block) => b.type === 'figure' && SIDE_FIGURES.has(b.figure.type);
 
 /** The entrance effect for an item, chosen by what it is. */

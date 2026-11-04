@@ -560,6 +560,18 @@ items ship or decisions change.
      tables, box plots, complex numbers, the equation of a circle, two-column proofs, vectors,
      matrices, polar form and conics among them (PR #111). Next: step 4 fills these gaps, and the
      UK GCSE map follows.
+   - Built (4 November 2026), step 4, part 1: **the US gaps of Grades 6 to 8, Algebra I and
+     Geometry are filled.** Twelve new lessons with 18 question generators, in a new course of extra
+     lessons, **More Mathematics Topics** (`engine/curriculum/mathmore/`), which the maps borrow from
+     and Browse by topic lists but the course pickers do not offer: statistical questions and dot
+     plots, box plots and the interquartile range, mean absolute deviation, comparing two
+     populations, two-way tables, scientific notation and calculating with it, linear and
+     exponential growth compared, cross-sections, solids of revolution, two-column proofs and the
+     equation of a circle. Each lesson has its own level (Grade 6 to Grade 10). Dot plots and box
+     plots are new figure types. Five of the seven US courses now have no gaps; Algebra II
+     (complex numbers, polynomial identities, experiments and simulation) and Precalculus
+     (vectors, matrices, polar form, conics) are next. The new lessons still need their videos and
+     tutor recordings.
    - Bug check (30 October 2026, the owner's request after the homework-editing error): every one
      of the live site's database calls (99 in the data layer, 41 database functions, 7 Edge
      Functions) was checked against the database's grants, rules and checks on a copy built from

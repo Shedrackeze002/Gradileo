@@ -13,7 +13,8 @@ describe('curriculum maps', () => {
         expect(courseOfLesson(l.id)?.map, `${l.id} belongs to its own course`).toBeUndefined();
         expect(c.units.find((u) => u.id === l.unitId)?.lessons, l.id).toContain(l.id);
       }
-      expect(c.gaps?.length, `${c.id} lists its gaps`).toBeGreaterThan(0);
+      // The gaps the map still shows (an empty list once every syllabus topic has a lesson).
+      expect(Array.isArray(c.gaps), `${c.id} lists its gaps`).toBe(true);
       // The database's start_self_paced accepts course ids of this form only.
       expect(c.id).toMatch(/^[a-z0-9-]{3,40}$/);
     }
