@@ -103896,5 +103896,370 @@
         "working": "Win first, then block, then fork. You cannot win, so block: otherwise your opponent completes the row on the next turn."
       }
     ]
+  },
+  "mx-1-1": {
+    "lessonId": "mx-1-1",
+    "title": "Statistical Questions and Dot Plots",
+    "duration": 294,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Statistical questions",
+        "t": 23.924
+      },
+      {
+        "title": "Which are statistical?",
+        "t": 56.444
+      },
+      {
+        "title": "Dot plots",
+        "t": 95.118
+      },
+      {
+        "title": "Reading a dot plot",
+        "t": 136.377
+      },
+      {
+        "title": "Watch out",
+        "t": 186.316
+      },
+      {
+        "title": "Your turn",
+        "t": 222.845
+      },
+      {
+        "title": "Summary",
+        "t": 258.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-1:q",
+        "t": 236.603,
+        "prompt": "A dot plot shows the number of goals scored in $9$ games: $0, 1, 1, 2, 2, 2, 2, 3, 5$. Find the median.",
+        "choices": [
+          "$1$",
+          "$2.5$",
+          "$3$",
+          "$2$"
+        ],
+        "answer": 3,
+        "working": "There are $9$ values, so the median is the $5$th in order: $0, 1, 1, 2, \\mathbf{2}, \\ldots$ The median is $2$."
+      }
+    ]
+  },
+  "mx-1-2": {
+    "lessonId": "mx-1-2",
+    "title": "Box Plots and the Interquartile Range, Part 1: Quartiles",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quartiles",
+        "t": 20.417
+      },
+      {
+        "title": "An odd number of values",
+        "t": 51.776
+      },
+      {
+        "title": "An even number of values",
+        "t": 106.037
+      },
+      {
+        "title": "The interquartile range",
+        "t": 149.744
+      },
+      {
+        "title": "Your turn",
+        "t": 198.093
+      },
+      {
+        "title": "Summary",
+        "t": 237.246
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-2:q",
+        "t": 208.234,
+        "prompt": "Find the interquartile range of $2,\\ 4,\\ 5,\\ 7,\\ 8,\\ 10,\\ 13$.",
+        "choices": [
+          "$11$",
+          "$4$",
+          "$6$",
+          "$7$"
+        ],
+        "answer": 2,
+        "working": "The median is the $4$th value, $7$. Lower half $2, 4, 5$: $Q_1 = 4$. Upper half $8, 10, 13$: $Q_3 = 10$. $\\text{IQR} = 10 - 4 = 6$."
+      }
+    ]
+  },
+  "mx-1-2-b": {
+    "lessonId": "mx-1-2",
+    "title": "Box Plots and the Interquartile Range, Part 2: Box Plots",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Drawing a box plot",
+        "t": 20.767
+      },
+      {
+        "title": "A quarter in each part",
+        "t": 57.542
+      },
+      {
+        "title": "Reading a box plot",
+        "t": 96.209
+      },
+      {
+        "title": "Comparing box plots",
+        "t": 130.196
+      },
+      {
+        "title": "Your turn",
+        "t": 169.883
+      },
+      {
+        "title": "Summary",
+        "t": 207.846
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-2-b:q",
+        "t": 187.044,
+        "prompt": "A box plot has minimum $20$, $Q_1 = 30$, median $35$, $Q_3 = 50$ and maximum $60$. About what percent of the values are between $30$ and $50$?",
+        "choices": [
+          "$50\\%$",
+          "$25\\%$",
+          "$75\\%$",
+          "$100\\%$"
+        ],
+        "answer": 0,
+        "working": "The box runs from $Q_1 = 30$ to $Q_3 = 50$, and it holds the middle half of the values: about $50\\%$."
+      }
+    ]
+  },
+  "mx-1-3": {
+    "lessonId": "mx-1-3",
+    "title": "Mean Absolute Deviation",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Distance from the mean",
+        "t": 24.605
+      },
+      {
+        "title": "Finding the MAD",
+        "t": 55.108
+      },
+      {
+        "title": "Watch out",
+        "t": 102.344
+      },
+      {
+        "title": "What the MAD tells us",
+        "t": 135.927
+      },
+      {
+        "title": "Your turn",
+        "t": 183.754
+      },
+      {
+        "title": "Summary",
+        "t": 222.537
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-3:q",
+        "t": 192.642,
+        "prompt": "Find the mean absolute deviation of $2,\\ 6,\\ 8,\\ 12$.",
+        "choices": [
+          "$0$",
+          "$7$",
+          "$3$",
+          "$10$"
+        ],
+        "answer": 2,
+        "working": "Mean: $28 \\div 4 = 7$. Distances: $5, 1, 1, 5$. MAD: $12 \\div 4 = 3$."
+      }
+    ]
+  },
+  "mx-1-4": {
+    "lessonId": "mx-1-4",
+    "title": "Comparing Two Populations",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Population and sample",
+        "t": 20.845
+      },
+      {
+        "title": "Comparing the means",
+        "t": 39.913
+      },
+      {
+        "title": "Taking the spread into account",
+        "t": 75.722
+      },
+      {
+        "title": "A clear difference",
+        "t": 120.222
+      },
+      {
+        "title": "Is the difference real?",
+        "t": 151.064
+      },
+      {
+        "title": "Your turn",
+        "t": 193.644
+      },
+      {
+        "title": "Summary",
+        "t": 229.094
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-4:q",
+        "t": 205.681,
+        "prompt": "Two samples have means $40$ and $49$, and each has a MAD of $3$. How many MADs apart are the means?",
+        "choices": [
+          "$9$",
+          "$3$",
+          "$1$",
+          "$27$"
+        ],
+        "answer": 1,
+        "working": "The means differ by $49 - 40 = 9$, and $9 \\div 3 = 3$ MADs: a clear difference."
+      }
+    ]
+  },
+  "mx-1-5": {
+    "lessonId": "mx-1-5",
+    "title": "Two-Way Tables",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two-way tables",
+        "t": 20.589
+      },
+      {
+        "title": "Completing a table",
+        "t": 62.104
+      },
+      {
+        "title": "Relative frequencies",
+        "t": 104.283
+      },
+      {
+        "title": "Looking for an association",
+        "t": 160.446
+      },
+      {
+        "title": "Your turn",
+        "t": 205.018
+      },
+      {
+        "title": "Summary",
+        "t": 244.58
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-5:q",
+        "t": 219.274,
+        "prompt": "Of $50$ students who own a bike, $35$ walk to school. Of $50$ students who do not own a bike, $20$ walk. What percent of the bike owners walk?",
+        "choices": [
+          "$35\\%$",
+          "$55\\%$",
+          "$40\\%$",
+          "$70\\%$"
+        ],
+        "answer": 3,
+        "working": "Divide by the bike owners’ total: $35 \\div 50 = 0.7 = 70\\%$."
+      }
+    ]
+  },
+  "mx-1-6": {
+    "lessonId": "mx-1-6",
+    "title": "Surveys, Experiments and Simulation, Part 1: Three Kinds of Study",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of study",
+        "t": 24.374
+      },
+      {
+        "title": "Naming the study",
+        "t": 68.827
+      },
+      {
+        "title": "Confounding variables",
+        "t": 111.931
+      },
+      {
+        "title": "Cause and effect",
+        "t": 143.117
+      },
+      {
+        "title": "Your turn",
+        "t": 189.601
+      },
+      {
+        "title": "Summary",
+        "t": 227.486
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-6:q",
+        "t": 201.782,
+        "prompt": "A school compares the reading scores of students who chose to join a reading club with those who did not. What kind of study is this?",
+        "choices": [
+          "A randomized experiment",
+          "An observational study",
+          "A sample survey",
+          "An experiment with a control group"
+        ],
+        "answer": 1,
+        "working": "The students chose their own groups, and the school only records the scores: an observational study. It cannot show that the club causes better reading."
+      }
+    ]
   }
 }
