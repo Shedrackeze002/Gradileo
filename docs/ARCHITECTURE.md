@@ -168,7 +168,8 @@ curriculum (`recommendCourse` gives a US learner the course of their grade) and 
 them from the map's tab. Lesson content, practice, videos and tutor recordings are found by lesson
 or skill id, so they need nothing new; `loadCourseSkills` loads a mapped course's generators from
 the courses its lessons come from, and `courseLesson(courseId, lessonId)` gives a lesson as the
-class's course numbers it. To add a map, write its file next to `us.ts`, add it to
+class's course numbers it. The maps are `us.ts` (US Common Core, Grade 6 to Precalculus) and `uk.ts` (UK GCSE,
+Foundation and Higher). To add a map, write its file next to them, add it to
 `CURRICULUM_MAPS`, give each course a `PREREQUISITE`, and run `npm test` (the map tests check every
 lesson id). A gap is filled with a lesson in **More Mathematics Topics** (`engine/curriculum/mathmore/`,
 `math-more`, lesson ids `mx-…`): a course of the lessons the maps need that Gradileo's grade courses
