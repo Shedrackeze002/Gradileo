@@ -28,6 +28,7 @@ import { CHEM10 } from './chem10/course.ts';
 import { CHEM20 } from './chem20/course.ts';
 import { CHEM30 } from './chem30/course.ts';
 import { ENG5 } from './eng5/course.ts';
+import { ENG6 } from './eng6/course.ts';
 import { ENG10 } from './eng10/course.ts';
 import { ENG20 } from './eng20/course.ts';
 import { ENG30 } from './eng30/course.ts';
@@ -37,7 +38,7 @@ import { US_MAP } from './maps/us.ts';
 import { UK_MAP } from './maps/uk.ts';
 
 /** Gradileo's own courses, youngest grade first (the order of course pickers and tabs). */
-const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, MATHMORE, CHEM10, CHEM20, CHEM30, ENG5, ENG10, ENG20, ENG30];
+const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, MATHMORE, CHEM10, CHEM20, CHEM30, ENG5, ENG6, ENG10, ENG20, ENG30];
 
 /** The school systems with a curriculum map, the first map first. */
 export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP, UK_MAP];
@@ -88,6 +89,7 @@ const LOADERS: Record<string, () => Promise<SkillDef[]>> = {
   'chem-20': () => import('./chem20/skills.ts').then((m) => m.CHEM20_SKILLS),
   'chem-30': () => import('./chem30/skills.ts').then((m) => m.CHEM30_SKILLS),
   'eng-5': () => import('./eng5/skills.ts').then((m) => m.ENG5_SKILLS),
+  'eng-6': () => import('./eng6/skills.ts').then((m) => m.ENG6_SKILLS),
   'eng-10': () => import('./eng10/skills.ts').then((m) => m.ENG10_SKILLS),
   'eng-20': () => import('./eng20/skills.ts').then((m) => m.ENG20_SKILLS),
   'eng-30': () => import('./eng30/skills.ts').then((m) => m.ENG30_SKILLS),

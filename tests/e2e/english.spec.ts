@@ -39,6 +39,23 @@ test('a teacher makes a Grade 5 English class and opens a poetry lesson', async 
   expect(errors).toEqual([]);
 });
 
+test('a teacher makes a Grade 6 English class and opens a poem by Tennyson', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'English' }).click();
+  await page.getByRole('button', { name: /^Grade 6 English/ }).click();
+  await expect(page.getByLabel('Class name')).toHaveValue('English 6');
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await expect(page.getByText('Grade 6 English').first()).toBeVisible();
+  await page.goto(`${page.url().replace(/\/$/, '')}/lessons/e6-2-1`);
+  await expect(page.getByRole('heading', { name: 'Personification and Hyperbole' }).first()).toBeVisible();
+  await expect(page.locator('.prose-edu blockquote').filter({ hasText: 'He clasps the crag' }).locator('br').first()).toBeAttached();
+  await expect(page.getByText(/Check your understanding · /).first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test('a Grade 10 student who chooses English starts Grade 10 English, and a Grade 12 student is offered Grade 12 English with a check first', async ({ page }) => {
   const errors = trackErrors(page);
   await page.goto('/signup');

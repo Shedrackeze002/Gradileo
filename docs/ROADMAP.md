@@ -603,8 +603,12 @@ items ship or decisions change.
      pull request (plan: `docs/PLAN-ENGLISH-5-9.md`). Grade 5 English (`eng-5`) is built: 6 units
      (stories, poetry, reading for information, words, grammar and punctuation, writing), 25
      lessons and 52 practice skills, listed for classes and placement (a Grade 5 learner is placed
-     in it; Grades 6 to 9 still go to Grade 10 English, with Grade 5 offered) and filed under the
-     English topics. Next: Grades 6, 7, 8 and 9, then videos for every lesson.
+     in it) and filed under the English topics (#126; poems in its questions keep their line
+     breaks since #127). Grade 6 English (`eng-6`) is built: 7 units (stories, poetry,
+     non-fiction, media, words, grammar and punctuation, writing), 25 lessons and 50 practice
+     skills, with poems by Tennyson, Wordsworth, Dickinson, Sandburg and Stevenson. A Grade 6
+     learner is placed in it; Grades 7 to 9 still go to Grade 10 English, with Grade 6 offered.
+     Next: Grades 7, 8 and 9, then videos for every lesson.
    - Built (4 November 2026), step 3, the second map: **UK GCSE Mathematics, Foundation and
      Higher** (`engine/curriculum/maps/uk.ts`), each built from Gradileo's lessons in the order of a
      Year 10 and 11 scheme of work, with the GCSE content references (N, A, R, G, P, S) in each
