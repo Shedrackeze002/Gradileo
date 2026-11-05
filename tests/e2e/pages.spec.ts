@@ -499,7 +499,8 @@ test('a learner browses by topic, sees levels in their own years, and opens a le
   const quadratics = page.getByRole('button', { name: /Quadratic functions and equations/ });
   await expect(quadratics).toContainText('Year 12');
   await page.getByRole('tab', { name: 'English' }).click();
-  await expect(page.getByRole('button', { name: /Poetry/ })).toContainText('Years 11–13');
+  await expect(page.getByRole('button', { name: /Shakespeare/ })).toContainText('Years 11–13');
+  await expect(page.getByRole('button', { name: /^Poetry/ })).toContainText('Years 6–13');
 
   // A search finds lessons in every subject; a lesson in a course the learner is not taking opens it self-paced.
   await page.getByLabel('Search topics and lessons').fill('quadratic formula');

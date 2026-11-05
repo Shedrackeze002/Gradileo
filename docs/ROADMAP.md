@@ -599,8 +599,12 @@ items ship or decisions change.
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
      course joins the daily YouTube upload (the scheduled task's course list needs `math-more`).
      Its tutor recordings are still to do.
-   - Next (the owner's decision, 4 November 2026): **English Grades 5 to 9**, after these videos.
-     English is Grades 10 to 12 only today.
+   - In progress (the owner's go-ahead, 4 November 2026): **English Grades 5 to 9**, one grade per
+     pull request (plan: `docs/PLAN-ENGLISH-5-9.md`). Grade 5 English (`eng-5`) is built: 6 units
+     (stories, poetry, reading for information, words, grammar and punctuation, writing), 25
+     lessons and 52 practice skills, listed for classes and placement (a Grade 5 learner is placed
+     in it; Grades 6 to 9 still go to Grade 10 English, with Grade 5 offered) and filed under the
+     English topics. Next: Grades 6, 7, 8 and 9, then videos for every lesson.
    - Built (4 November 2026), step 3, the second map: **UK GCSE Mathematics, Foundation and
      Higher** (`engine/curriculum/maps/uk.ts`), each built from Gradileo's lessons in the order of a
      Year 10 and 11 scheme of work, with the GCSE content references (N, A, R, G, P, S) in each
