@@ -6,6 +6,9 @@ test('a teacher makes a Grade 10 English class from the English tab and teaches 
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
   await page.getByRole('tab', { name: 'English' }).click();
+  // The English tab starts at its youngest course, Grade 5.
+  await expect(page.getByLabel('Class name')).toHaveValue('English 5');
+  await page.getByRole('button', { name: /^Grade 10 English/ }).click();
   await expect(page.getByLabel('Class name')).toHaveValue('English 10');
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
@@ -17,6 +20,22 @@ test('a teacher makes a Grade 10 English class from the English tab and teaches 
   await expect(poem).toBeVisible();
   await expect(page.getByText(/Check your understanding · /).first()).toBeVisible();
   expect(await page.locator('.katex-error').count()).toBe(0);
+  expect(errors).toEqual([]);
+});
+
+test('a teacher makes a Grade 5 English class and opens a poetry lesson', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'English' }).click();
+  await expect(page.getByLabel('Class name')).toHaveValue('English 5');
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await expect(page.getByText('Grade 5 English').first()).toBeVisible();
+  await page.goto(`${page.url().replace(/\/$/, '')}/lessons/e5-2-1`);
+  await expect(page.getByRole('heading', { name: 'Rhyme and Rhythm' }).first()).toBeVisible();
+  await expect(page.locator('.prose-edu blockquote').filter({ has: page.locator('br') }).first()).toBeVisible();
+  await expect(page.getByText(/Check your understanding · /).first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 

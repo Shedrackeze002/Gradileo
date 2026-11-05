@@ -36,7 +36,9 @@ describe('course placement', () => {
     expect(recommendCourse({ subject: 'Chemistry', grade: 11 })).toMatchObject({ courseId: 'chem-20', prerequisite: 'chem-10' });
     expect(recommendCourse({ subject: 'Chemistry', grade: 12 })).toMatchObject({ courseId: 'chem-30', prerequisite: 'chem-20' });
     expect(recommendCourse({ subject: 'Mathematics', grade: 11, plan: 'university-stem' }).courseId).toBe('math-20-1');
-    // English runs Grade 10, 11, then 12: each later course checks the one before's skills first.
+    // English runs Grade 5, then 10, 11 and 12: each later course checks the one before's skills first.
+    expect(recommendCourse({ subject: 'English', grade: 5 })).toMatchObject({ courseId: 'eng-5', prerequisite: null });
+    expect(recommendCourse({ subject: 'English', grade: 7 }).alternatives.map((a) => a.courseId)).toContain('eng-5');
     expect(recommendCourse({ subject: 'English', grade: 10 })).toMatchObject({ courseId: 'eng-10', prerequisite: null });
     expect(recommendCourse({ subject: 'English', grade: 9 }).reasons.join(' ')).toMatch(/usually taken in Grade 10/);
     expect(recommendCourse({ subject: 'English', grade: 11 })).toMatchObject({ courseId: 'eng-20', prerequisite: 'eng-10' });
