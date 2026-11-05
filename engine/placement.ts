@@ -61,6 +61,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'chem-20': 'chem-10',
   'chem-30': 'chem-20',
   'eng-5': null,
+  'eng-6': 'eng-5',
   'eng-10': null,
   'eng-20': 'eng-10',
   'eng-30': 'eng-20',
@@ -140,11 +141,15 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
       if (g < 5) reasons.push('It is usually taken in Grade 5, so some lessons will be a stretch; each one starts from the basics.');
       return rec('eng-5', reasons, [{ courseId: 'eng-10', why: 'If you are already confident with reading, grammar and writing well beyond Grade 5.' }]);
     }
+    if (g === 6) {
+      const reasons = ['Grade 6 English covers plot, character, point of view and theme, poetry, non-fiction and media, Greek and Latin roots, grammar and punctuation, and narrative, informational and persuasive writing.'];
+      return rec('eng-6', reasons, [{ courseId: 'eng-5', why: 'If you want to start with stories, paragraphs and the basics of grammar.' }]);
+    }
     if (g <= 10) {
       const reasons = ['Grade 10 English covers short stories, poetry, Shakespeare’s Romeo and Juliet, non-fiction and persuasion, visual and media texts, essay and narrative writing, and grammar.'];
       if (g < 10) reasons.push('It is usually taken in Grade 10, so some texts will be a stretch; the grammar and writing lessons build up from the basics.');
       const alternatives: CourseChoice[] = [{ courseId: 'eng-20', why: 'If you have already studied short stories, poetry, a Shakespeare play and the essay.' }];
-      if (g < 10) alternatives.unshift({ courseId: 'eng-5', why: 'If you want to build up reading, grammar and paragraph writing first.' });
+      if (g < 10) alternatives.unshift({ courseId: 'eng-6', why: 'If you want to build up reading, grammar and writing first.' });
       return rec('eng-10', reasons, alternatives);
     }
     if (g >= 12) {
