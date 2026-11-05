@@ -1,4 +1,4 @@
-// Usage: npx tsx video/tools/youtube-comments.ts [--state <file>] [--dry-run] [--json]
+// Usage: npx tsx video/tools/youtube-comments.ts [--state <file>] [--channel <id>] [--dry-run] [--json]
 //
 // Lists the comments viewers have left on any of the Gradileo channel's videos since the last run,
 // so none is missed: new top-level comments and new replies in old threads (a viewer answering one
@@ -15,13 +15,14 @@
 // Quota: it reads every thread on the channel (commentThreads.list with allThreadsRelatedToChannelId,
 // 1 unit per 100 threads), the full replies of each thread with more than five
 // (comments.list, 1 unit per 100), and the titles of the videos with new comments (videos.list, 1
-// unit per 50), so a run costs a few units of the day's 10,000, next to about 110 an upload.
+// unit per 50), so a run costs one or two units of the day's 10,000, next to about 110 an upload.
 //
 // Signs in with YOUTUBE_COMMENTS_CLIENT_ID, YOUTUBE_COMMENTS_CLIENT_SECRET and
 // YOUTUBE_COMMENTS_REFRESH_TOKEN when they are set: an OAuth client in a second Google Cloud
-// project, signed in as the channel, so the watcher has its own 10,000 units a day and still runs
-// after the evening upload has spent the uploader's. Otherwise it uses the uploader's YOUTUBE_*
-// variables (youtube.force-ssl covers reading comments). Their values are never printed.
+// project with the youtube.force-ssl scope (commentThreads.list refuses youtube.readonly), so
+// the watcher has its own 10,000 units a day and still runs after the evening upload has spent
+// the uploader's. Otherwise it uses the uploader's YOUTUBE_* variables. Their values are never
+// printed.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { scriptOf } from '../lib/catalog.ts';
@@ -73,9 +74,13 @@ const toComment = (c: RawComment, videoId: string, threadId: string): Comment =>
   inReplyTo: c.snippet.parentId,
 });
 
-const channels = await call<{ items: Array<{ id: string }> }>(`${API}/channels?part=id&mine=true`);
-const channelId = channels.items[0]?.id;
-if (!channelId) throw new Error('This sign-in has no YouTube channel');
+// The Gradileo channel. Its comments are public, so any signed-in account can list them; the
+// channel's own sign-in is not needed, which matters when the account signed in to the watcher's
+// project is the owner's and not the channel's (a Brand Account channel). --channel names another.
+const GRADILEO_CHANNEL = 'UCxfFvWV_zYVIFQBlZ-r7U-Q';
+const ch = args.indexOf('--channel');
+const channelId = ch >= 0 ? args[ch + 1] : GRADILEO_CHANNEL;
+if (!channelId) throw new Error('--channel needs a channel id');
 
 const threads: Thread[] = [];
 let page = '';

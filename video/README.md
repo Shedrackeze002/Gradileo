@@ -367,9 +367,11 @@ It signs in with `YOUTUBE_COMMENTS_CLIENT_ID`, `YOUTUBE_COMMENTS_CLIENT_SECRET` 
 variables. The uploader spends the rest of each day's 10,000 units in the evening, so on its
 sign-in the watcher cannot read comments from then until the reset. Its own variables come from a
 second Google Cloud project, made the same way as the uploader's (see "YouTube API" below): the
-YouTube Data API v3 enabled, the `youtube.readonly` scope on a consent screen published **In
-production**, and a Web application client whose refresh token was made in the OAuth 2.0
-Playground while signed in as the channel. That project has its own quota.
+YouTube Data API v3 enabled, the `youtube.force-ssl` scope on a consent screen published **In
+production** (listing a channel's comment threads needs that scope; `youtube.readonly` is refused),
+and a Web application client whose refresh token was made in the OAuth 2.0 Playground. Any
+account can sign in, since the tool names the Gradileo channel itself (`--channel` names another).
+That project has its own quota.
 
     npx tsx video/tools/youtube-comments.ts --dry-run
 
