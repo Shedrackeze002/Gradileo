@@ -7,7 +7,7 @@
 import { mc, part, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
-import { bank, block, people, Q } from './common.ts';
+import { bank, people, Q, quote } from './common.ts';
 
 const B1 = ['E5-B1'];
 
@@ -50,7 +50,7 @@ const show = (p: Poem) => {
       i += n;
     }
   } else parts.push(p.lines.join('\n'));
-  return `${block(parts.join('\n\n'))}\n>\n> — ${p.source}`;
+  return `${quote(parts.join('\n\n'))}\n>\n> — ${p.source}`;
 };
 
 // ---------------------------------------------------------------------------- 2.1 rhyme

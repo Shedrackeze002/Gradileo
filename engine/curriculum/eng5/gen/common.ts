@@ -6,6 +6,7 @@ import { mc, part, type Gen, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty } from '../../../types.ts';
 import { block, cap, fill, people, type Person } from '../../eng10/gen/common.ts';
+import { verseMd } from '../../eng10/gen/poems.ts';
 
 export { an, block, cap, dq, fill, list, lowerFirst, order, pair, people, person, q, type Person } from '../../eng10/gen/common.ts';
 
@@ -26,6 +27,9 @@ export interface Q {
   why: string;
 }
 
+/** A passage as a quotation block that keeps its line breaks (for verse) and its blank lines (stanzas). */
+export const quote = (text: string) => block(verseMd(text.split('\n')));
+
 /** Fills names and pronouns in every field of a question. */
 function cast(item: Q, who: Person[]): Q {
   const f = (s: string) => fill(s, who);
@@ -45,7 +49,7 @@ export function atLevel<T extends { d: Difficulty }>(items: readonly T[], d: Dif
 export function askQ(rng: Rng, item: Q, hints: string[]): GenOutput {
   const who = people(rng, 3);
   const x = cast(item, who);
-  const passage = x.text ? `${block(x.text)}${x.source ? `\n>\n> — ${x.source}` : ''}\n\n` : '';
+  const passage = x.text ? `${quote(x.text)}${x.source ? `\n>\n> — ${x.source}` : ''}\n\n` : '';
   return {
     prompt: `${passage}${x.ask}`,
     parts: [part(mc(rng, x.right, x.wrong))],
