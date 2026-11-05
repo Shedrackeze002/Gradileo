@@ -149,7 +149,21 @@ jobs:
           for id in $ids; do
             gh api --paginate "repos/$GITHUB_REPOSITORY/releases/$id/assets?per_page=100" -q '.[].browser_download_url' >> tutor-files.txt
           done
-          xargs -r -P 8 -n 1 curl -fsSL --retry 4 --retry-all-errors -O --output-dir dist/tutor < tutor-files.txt
+          # GitHub's download servers sometimes answer 504 for a minute or two when many files are
+          # fetched at once, so files that still fail after curl's own retries are tried again,
+          # one at a time, after a pause; the step fails only if a file is still missing then.
+          xargs -r -P 4 -n 1 curl -fsSL --retry 5 --retry-delay 5 --retry-all-errors --remove-on-error -O --output-dir dist/tutor < tutor-files.txt || true
+          for pass in 1 2 3; do
+            : > tutor-missing.txt
+            while read -r url; do [ -s "dist/tutor/${url##*/}" ] || echo "$url" >> tutor-missing.txt; done < tutor-files.txt
+            [ -s tutor-missing.txt ] || break
+            echo "Pass $pass: $(wc -l < tutor-missing.txt) files still to download; waiting before trying again"
+            sleep 60
+            while read -r url; do curl -fsSL --retry 5 --retry-delay 10 --retry-all-errors --remove-on-error -O --output-dir dist/tutor "$url" || true; done < tutor-missing.txt
+          done
+          : > tutor-missing.txt
+          while read -r url; do [ -s "dist/tutor/${url##*/}" ] || echo "$url" >> tutor-missing.txt; done < tutor-files.txt
+          if [ -s tutor-missing.txt ]; then echo "::error::$(wc -l < tutor-missing.txt) tutor files could not be downloaded"; head tutor-missing.txt; exit 1; fi
           echo "$(ls dist/tutor | grep -c '\.json$' || true) lessons have a recorded voice ($(wc -l < tutor-files.txt) files)"
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v4.1.3
