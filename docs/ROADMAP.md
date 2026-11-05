@@ -599,7 +599,7 @@ items ship or decisions change.
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
      course joins the daily YouTube upload (the scheduled task's course list needs `math-more`).
      Its tutor recordings are still to do.
-   - In progress (the owner's go-ahead, 4 November 2026): **English Grades 5 to 9**, one grade per
+   - Built (the owner's go-ahead, 4 November 2026; finished 5 November 2026): **English Grades 5 to 9**, one grade per
      pull request (plan: `docs/PLAN-ENGLISH-5-9.md`). Grade 5 English (`eng-5`) is built: 6 units
      (stories, poetry, reading for information, words, grammar and punctuation, writing), 25
      lessons and 52 practice skills, listed for classes and placement (a Grade 5 learner is placed
@@ -616,8 +616,14 @@ items ship or decisions change.
      media, grammar and punctuation, writing), 23 lessons and 46 practice skills, with poems by
      Shelley, Dickinson, Langston Hughes, Frost and Blake and O. Henry's "The Gift of the Magi";
      the play's unit is filed under the Shakespeare topic, which now starts at Grade 8. A Grade 8
-     learner is placed in it; Grade 9 still goes to Grade 10 English, with Grade 8 offered.
-     Next: Grade 9 (with *The Tempest*), then videos for every lesson.
+     learner is placed in it (#130). Grade 9 English (`eng-9`) is built: 7 units (fiction,
+     poetry, Shakespeare's *The Tempest*, non-fiction and rhetoric, media, grammar and
+     punctuation, writing), 23 lessons and 46 practice skills, with Shakespeare's Sonnet 116,
+     Rossetti's "Remember", Dunbar's "We Wear the Mask", Owen's "Dulce et Decorum Est", Poe's
+     "The Raven", Lincoln's Gettysburg Address and Douglass's 1852 Fourth of July speech. A Grade 9
+     learner is placed in it, with Grade 8 offered, and Grade 10 English now offers Grade 9 first.
+     English now runs from Grade 5 to Grade 12. Next: videos for every new lesson (Grades 5 to 9),
+     after the maths videos.
    - Built (4 November 2026), step 3, the second map: **UK GCSE Mathematics, Foundation and
      Higher** (`engine/curriculum/maps/uk.ts`), each built from Gradileo's lessons in the order of a
      Year 10 and 11 scheme of work, with the GCSE content references (N, A, R, G, P, S) in each
