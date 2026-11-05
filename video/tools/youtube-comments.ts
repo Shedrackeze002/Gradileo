@@ -17,8 +17,11 @@
 // (comments.list, 1 unit per 100), and the titles of the videos with new comments (videos.list, 1
 // unit per 50), so a run costs a few units of the day's 10,000, next to about 110 an upload.
 //
-// Signs in with the YOUTUBE_* variables, like the uploader (youtube.force-ssl covers reading
-// comments). Their values are never printed.
+// Signs in with YOUTUBE_COMMENTS_CLIENT_ID, YOUTUBE_COMMENTS_CLIENT_SECRET and
+// YOUTUBE_COMMENTS_REFRESH_TOKEN when they are set: an OAuth client in a second Google Cloud
+// project, signed in as the channel, so the watcher has its own 10,000 units a day and still runs
+// after the evening upload has spent the uploader's. Otherwise it uses the uploader's YOUTUBE_*
+// variables (youtube.force-ssl covers reading comments). Their values are never printed.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { scriptOf } from '../lib/catalog.ts';
@@ -50,10 +53,12 @@ const at = args.indexOf('--state');
 const statePath = at >= 0 ? args[at + 1] : '/mnt/project-files/viewer-requests/youtube-comments-seen.json';
 if (!statePath) throw new Error('--state needs a file');
 
+// Its own sign-in when set (a second Google Cloud project, so its quota is not the uploader's).
+const service = process.env.YOUTUBE_COMMENTS_REFRESH_TOKEN ? 'YOUTUBE_COMMENTS' : 'YOUTUBE';
 let units = 0;
 async function call<T>(url: string): Promise<T> {
   units += 1;
-  return youtube<T>(url);
+  return youtube<T>(url, {}, service);
 }
 
 const toComment = (c: RawComment, videoId: string, threadId: string): Comment => ({

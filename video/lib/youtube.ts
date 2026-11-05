@@ -4,14 +4,14 @@
  * from the project's 10,000 units a day: an upload about 100, captions 400, a thumbnail or an
  * update 50, a listing 1.
  */
-import { google } from './google.ts';
+import { google, type Service } from './google.ts';
 
 export const API = 'https://www.googleapis.com/youtube/v3';
 const UPLOAD = 'https://www.googleapis.com/upload/youtube/v3';
 
 /** A YouTube API call that answers with JSON. */
-export async function youtube<T>(url: string, init: RequestInit = {}): Promise<T> {
-  return (await (await google('YOUTUBE', url, init)).json()) as T;
+export async function youtube<T>(url: string, init: RequestInit = {}, service: Service = 'YOUTUBE'): Promise<T> {
+  return (await (await google(service, url, init)).json()) as T;
 }
 
 export interface Snippet {

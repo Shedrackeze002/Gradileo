@@ -4,14 +4,15 @@
  * Drive signs in with GDRIVE_CLIENT_ID, GDRIVE_CLIENT_SECRET and GDRIVE_REFRESH_TOKEN (the drive.file
  * scope, which sees only what the tools created); YouTube with YOUTUBE_CLIENT_ID,
  * YOUTUBE_CLIENT_SECRET and YOUTUBE_REFRESH_TOKEN (the youtube.force-ssl scope, signed in as the
- * channel). Their values are never printed.
+ * channel). The comment watcher can sign in with its own YOUTUBE_COMMENTS_* client instead, from a
+ * second Google Cloud project, so it has a quota of its own. Their values are never printed.
  */
 import { COURSES } from '../../engine/curriculum/index.ts';
 import type { CourseMeta, UnitMeta } from '../../engine/types.ts';
 import { FIRST_NAME, SCRIPT_FILES } from './catalog.ts';
 
-export type Service = 'GDRIVE' | 'YOUTUBE';
-const README = { GDRIVE: '"Google Drive"', YOUTUBE: '"YouTube API"' };
+export type Service = 'GDRIVE' | 'YOUTUBE' | 'YOUTUBE_COMMENTS';
+const README = { GDRIVE: '"Google Drive"', YOUTUBE: '"YouTube API"', YOUTUBE_COMMENTS: '"Watching for comments"' };
 const tokens = new Map<Service, { value: string; until: number }>();
 
 export async function accessToken(service: Service): Promise<string> {

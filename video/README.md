@@ -360,9 +360,16 @@ videos since its last run: new comments and new replies in old threads, never th
 Each comes with its video's title and Gradileo id, whether the channel has answered it, and a link
 to it. It keeps what it has seen in `--state` (by default
 `/mnt/project-files/viewer-requests/youtube-comments-seen.json`), and `--json` prints the list for a
-scheduled check to draft replies from. It reads with the uploader's `YOUTUBE_*` sign-in (the
-`youtube.force-ssl` scope covers comments) and costs a few quota units a run. It never posts a
-reply.
+scheduled check to draft replies from. It costs a few quota units a run and never posts a reply.
+
+It signs in with `YOUTUBE_COMMENTS_CLIENT_ID`, `YOUTUBE_COMMENTS_CLIENT_SECRET` and
+`YOUTUBE_COMMENTS_REFRESH_TOKEN` when they are set, and otherwise with the uploader's `YOUTUBE_*`
+variables. The uploader spends the rest of each day's 10,000 units in the evening, so on its
+sign-in the watcher cannot read comments from then until the reset. Its own variables come from a
+second Google Cloud project, made the same way as the uploader's (see "YouTube API" below): the
+YouTube Data API v3 enabled, the `youtube.readonly` scope on a consent screen published **In
+production**, and a Web application client whose refresh token was made in the OAuth 2.0
+Playground while signed in as the channel. That project has its own quota.
 
     npx tsx video/tools/youtube-comments.ts --dry-run
 
