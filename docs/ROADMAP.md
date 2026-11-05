@@ -611,8 +611,13 @@ items ship or decisions change.
      poetry, drama, non-fiction, media, grammar and punctuation, writing), 26 lessons and 52
      practice skills, with Shakespeare's Sonnet 18, Coleridge's "Ancient Mariner", Whitman,
      Dickinson, Frost, Keats, Tennyson, Stevenson and William Carlos Williams, and a new "Drama and
-     scripts" topic. A Grade 7 learner is placed in it; Grades 8 and 9 still go to Grade 10
-     English, with Grade 7 offered. Next: Grades 8 and 9, then videos for every lesson.
+     scripts" topic. A Grade 7 learner is placed in it (#129). Grade 8 English (`eng-8`) is
+     built: 7 units (fiction, poetry, Shakespeare's *A Midsummer Night's Dream*, non-fiction,
+     media, grammar and punctuation, writing), 23 lessons and 46 practice skills, with poems by
+     Shelley, Dickinson, Langston Hughes, Frost and Blake and O. Henry's "The Gift of the Magi";
+     the play's unit is filed under the Shakespeare topic, which now starts at Grade 8. A Grade 8
+     learner is placed in it; Grade 9 still goes to Grade 10 English, with Grade 8 offered.
+     Next: Grade 9 (with *The Tempest*), then videos for every lesson.
    - Built (4 November 2026), step 3, the second map: **UK GCSE Mathematics, Foundation and
      Higher** (`engine/curriculum/maps/uk.ts`), each built from Gradileo's lessons in the order of a
      Year 10 and 11 scheme of work, with the GCSE content references (N, A, R, G, P, S) in each

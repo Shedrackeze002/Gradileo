@@ -63,6 +63,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'eng-5': null,
   'eng-6': 'eng-5',
   'eng-7': 'eng-6',
+  'eng-8': 'eng-7',
   'eng-10': null,
   'eng-20': 'eng-10',
   'eng-30': 'eng-20',
@@ -150,11 +151,15 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
       const reasons = ['Grade 7 English covers conflict, characterization, setting, foreshadowing and symbol in short stories, imagery, ballads and sonnets, reading a script, persuasion and bias, news and online sources, clauses and agreement, and paragraphs, essays and research.'];
       return rec('eng-7', reasons, [{ courseId: 'eng-6', why: 'If you want to build up plot, theme, poetry and grammar first.' }]);
     }
+    if (g === 8) {
+      const reasons = ['Grade 8 English covers subplot, irony and narrators, figurative language, form and metre, Shakespeare’s A Midsummer Night’s Dream, building and judging arguments, film and news framing, voice, modifiers and parallel structure, semicolons and colons, and argument, literary and research writing.'];
+      return rec('eng-8', reasons, [{ courseId: 'eng-7', why: 'If you want to build up short stories, poetry, scripts and essays first.' }]);
+    }
     if (g <= 10) {
       const reasons = ['Grade 10 English covers short stories, poetry, Shakespeare’s Romeo and Juliet, non-fiction and persuasion, visual and media texts, essay and narrative writing, and grammar.'];
       if (g < 10) reasons.push('It is usually taken in Grade 10, so some texts will be a stretch; the grammar and writing lessons build up from the basics.');
       const alternatives: CourseChoice[] = [{ courseId: 'eng-20', why: 'If you have already studied short stories, poetry, a Shakespeare play and the essay.' }];
-      if (g < 10) alternatives.unshift({ courseId: 'eng-7', why: 'If you want to build up reading, grammar and writing first.' });
+      if (g < 10) alternatives.unshift({ courseId: 'eng-8', why: 'If you want to build up reading, grammar and writing first.' });
       return rec('eng-10', reasons, alternatives);
     }
     if (g >= 12) {
