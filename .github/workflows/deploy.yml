@@ -12,6 +12,8 @@ name: Deploy to GitHub Pages and Cloudflare
 #   Variables (optional)
 #     VITE_SUPABASE_URL       Supabase project URL; overrides .env.production when set
 #     VITE_SUPABASE_ANON_KEY  the project's anon / publishable key (safe to expose)
+#     VITE_CF_BEACON_TOKEN    Cloudflare Web Analytics site token (public by design), for
+#                             visitor counts on gradileo.com; see docs/SETUP.md
 #     CUSTOM_DOMAIN           e.g. learn.yourschool.ca, once you have a domain
 #     BASE_PATH               override the base path (defaults to /<repo>/, or / with a custom domain)
 #
@@ -125,9 +127,12 @@ jobs:
           : > .env.production.local
           if [ -n "$URL" ]; then echo "VITE_SUPABASE_URL=$URL" >> .env.production.local; fi
           if [ -n "$KEY" ]; then echo "VITE_SUPABASE_ANON_KEY=$KEY" >> .env.production.local; fi
+          # Cloudflare Web Analytics (src/analytics.ts): counted only on gradileo.com.
+          if [ -n "$BEACON" ]; then echo "VITE_CF_BEACON_TOKEN=$BEACON" >> .env.production.local; fi
         env:
           URL: ${{ vars.VITE_SUPABASE_URL }}
           KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
+          BEACON: ${{ vars.VITE_CF_BEACON_TOKEN }}
       - name: Build for the root of gradileo.com
         run: npm run build
         env:
