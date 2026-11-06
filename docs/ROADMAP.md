@@ -74,6 +74,15 @@ items ship or decisions change.
   class for good after the teacher types its name, beside the existing archive; archived classes
   no longer show in the class switcher.
 
+- Reopening a submitted attempt (6 Nov 2026, owner's request after a student submitted by
+  mistake): a Reopen button on each student's row of an assignment and on the submission page.
+  The old attempt is kept for the record (marked reopened, still readable) but no longer counts
+  towards the score, the gradebook, the attempt limit or reminders, and the student gets a fresh
+  attempt straight away with newly generated questions. Mastery changes from the old attempt stay.
+  The same day: a Rename action on the assignment page (the title in the editor was easy to miss),
+  and each generated-question row in the editor now shows an example of its questions (Q1, Q2...)
+  so they read as questions rather than skill names.
+
 ## Next, in order
 
 0. **Rename EduCore to Gradileo** (the owner's decision, after the Math 10C Unit 2 videos and

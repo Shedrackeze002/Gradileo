@@ -56,6 +56,14 @@ import type {
   ItemRef,
 } from './types.ts';
 
+export interface SubmissionFilter {
+  classId?: string;
+  assignmentId?: string;
+  studentId?: string;
+  /** Also return attempts a teacher reopened (kept for the record). Off by default. */
+  includeReopened?: boolean;
+}
+
 export interface SignUpInput {
   fullName: string;
   email: string;
@@ -173,7 +181,8 @@ export interface DataApi {
   remindNow(assignmentId: string): Promise<number>;
 
   // Submissions
-  listSubmissions(filter: { classId?: string; assignmentId?: string; studentId?: string }): Promise<Submission[]>;
+  /** Attempts a teacher reopened are left out unless includeReopened is set (they no longer count). */
+  listSubmissions(filter: SubmissionFilter): Promise<Submission[]>;
   getSubmission(id: string): Promise<Submission | null>;
   startSubmission(assignmentId: string): Promise<Submission>;
   startPractice(classId: string, skillIds: string[]): Promise<Submission>;
@@ -184,6 +193,8 @@ export interface DataApi {
   /** The teacher's mark on one question, 0..1; null on an auto-graded question restores the automatic mark. */
   gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string): Promise<Submission>;
   returnSubmission(submissionId: string, feedback: string): Promise<Submission>;
+  /** Teacher: reopen a submitted attempt. It is kept but stops counting; returns the student's fresh attempt. */
+  reopenSubmission(submissionId: string): Promise<Submission>;
 
   // Mastery & analytics
   listMastery(filter: { classId?: string; studentId?: string }): Promise<SkillMastery[]>;

@@ -307,6 +307,8 @@ export interface Submission {
   /** Tab switches and, in exam mode, exits from full screen and camera-off events. */
   integrity: Integrity;
   masteryChanges?: Array<{ skillId: string; before: string; after: string; pBefore: number; pAfter: number }>;
+  /** Set when a teacher reopened this attempt: it is kept for the record but no longer counts. */
+  reopenedAt?: string | null;
 }
 
 export interface SkillMastery extends SkillState {

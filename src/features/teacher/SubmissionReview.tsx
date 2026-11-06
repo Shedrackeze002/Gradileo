@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
-import { CameraOff, ChevronLeft, ChevronRight, Clock, Eye, Lightbulb, Send, ShieldCheck, Sparkles } from 'lucide-react';
+import { CameraOff, ChevronLeft, ChevronRight, Clock, Eye, Lightbulb, RotateCcw, Send, ShieldCheck, Sparkles } from 'lucide-react';
 import { isQuestionType, itemFromRef } from '@engine/assemble.ts';
 import { cameraOffCount, exitCount } from '@engine/integrity.ts';
 import { markSteps, type MarkResult } from '@engine/ai/marking.ts';
@@ -22,6 +22,7 @@ const fmtTime = (iso: string) => {
   return Number.isNaN(d.getTime()) ? iso : d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', second: '2-digit' });
 };
 import { scoreCell, useClassId } from './shared.tsx';
+import { ReopenAttempt } from './ReopenAttempt.tsx';
 
 /** Waits for the attempt's question generators before showing the review. */
 export default function SubmissionReview() {
@@ -41,7 +42,8 @@ function Review() {
   const sub = useSubmission(submissionId);
   const a = useAssignment(sub.data?.assignmentId ?? undefined);
   const student = useProfile(sub.data?.studentId);
-  const siblings = useSubmissions({ assignmentId: sub.data?.assignmentId ?? undefined }, !!sub.data?.assignmentId);
+  // Reopened attempts are listed too, so a teacher can still step through and read them.
+  const siblings = useSubmissions({ assignmentId: sub.data?.assignmentId ?? undefined, includeReopened: true }, !!sub.data?.assignmentId);
   const roster = useRoster(classId);
   const navigate = useNavigate();
 
@@ -58,6 +60,7 @@ function Review() {
   const idx = order.findIndex((x) => x.id === s.id);
   const prev = idx > 0 ? order[idx - 1] : null;
   const next = idx >= 0 && idx < order.length - 1 ? order[idx + 1] : null;
+  const canReopen = !!a.data && s.status !== 'in_progress' && !s.reopenedAt && siblings.isSuccess && !(siblings.data ?? []).some((x) => x.studentId === s.studentId && x.status === 'in_progress');
   const timeMs = Object.values(s.responses).reduce((t, r) => t + (r.timeMs ?? 0), 0);
   const hints = Object.values(s.responses).reduce((t, r) => t + (r.hintsUsed ?? 0), 0);
 
@@ -78,20 +81,30 @@ function Review() {
             <span>{s.submittedAt ? `Submitted ${fmtDateTime(s.submittedAt)}` : 'In progress'}</span>
             {s.late && <Badge tone="warn">Late</Badge>}
             {s.status === 'returned' && <Badge tone="good">Returned</Badge>}
+            {s.reopenedAt && (
+              <Badge tone="neutral" icon={<RotateCcw className="h-3 w-3" />}>
+                Reopened {fmtDateTime(s.reopenedAt)}, kept for the record
+              </Badge>
+            )}
           </span>
         }
         actions={
-          order.length > 1 && (
+          (order.length > 1 || canReopen) && (
             <div className="flex items-center gap-1">
-              <Button variant="secondary" size="sm" disabled={!prev} onClick={() => prev && navigate(`/t/c/${classId}/submissions/${prev.id}`)} icon={<ChevronLeft className="h-4 w-4" />}>
-                Previous
-              </Button>
-              <span className="px-2 text-sm text-ink-3">
-                {idx + 1} of {order.length}
-              </span>
-              <Button variant="secondary" size="sm" disabled={!next} onClick={() => next && navigate(`/t/c/${classId}/submissions/${next.id}`)}>
-                Next <ChevronRight className="h-4 w-4" />
-              </Button>
+              {canReopen && a.data && <ReopenAttempt s={s} studentName={student.data?.fullName ?? 'this student'} questions={isQuestionType(a.data.type)} size="sm" />}
+              {order.length > 1 && (
+                <>
+                  <Button variant="secondary" size="sm" disabled={!prev} onClick={() => prev && navigate(`/t/c/${classId}/submissions/${prev.id}`)} icon={<ChevronLeft className="h-4 w-4" />}>
+                    Previous
+                  </Button>
+                  <span className="px-2 text-sm text-ink-3">
+                    {idx + 1} of {order.length}
+                  </span>
+                  <Button variant="secondary" size="sm" disabled={!next} onClick={() => next && navigate(`/t/c/${classId}/submissions/${next.id}`)}>
+                    Next <ChevronRight className="h-4 w-4" />
+                  </Button>
+                </>
+              )}
             </div>
           )
         }

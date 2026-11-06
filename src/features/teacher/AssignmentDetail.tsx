@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
-import { ArrowUpDown, BellRing, CalendarPlus, CameraOff, ChevronRight, Download, Eye, Lightbulb, Lock, MoreHorizontal, Pencil, Send, Sparkles, Trash2, Wand2 } from 'lucide-react';
+import { ArrowUpDown, BellRing, CalendarPlus, CameraOff, ChevronRight, Download, Eye, Lightbulb, Lock, MoreHorizontal, Pencil, Send, Sparkles, Trash2, Type, Wand2 } from 'lucide-react';
 import { TYPE_LABEL, gradeSubmission, isQuestionType } from '@engine/assemble.ts';
 import { cameraOffCount, exitCount, isLocked } from '@engine/integrity.ts';
 import { SkillsGate } from '@/components/SkillsGate.tsx';
@@ -14,6 +14,7 @@ import { Markdown } from '@/components/math/Markdown.tsx';
 import { dueLabel, fmtDateTime, fromLocalInput, relative, toLocalInput } from '@/lib/dates.ts';
 import { cn } from '@/lib/cn.ts';
 import { downloadText, itemCount, skillLabel, toCsv } from '../shared/derive.ts';
+import { ReopenAttempt } from './ReopenAttempt.tsx';
 import { assignmentStats, pct, rosterStatus, scoreCell, statusLabel, StatusBadge, useClassId, type RosterRow } from './shared.tsx';
 
 type Sort = 'name' | 'status' | 'score';
@@ -115,6 +116,7 @@ function HeaderActions({ a, classId, rows }: { a: Assignment; classId: string; r
   const del = useDeleteAssignment(classId);
   const publish = usePublishAssignment(classId);
   const [extend, setExtend] = useState(false);
+  const [rename, setRename] = useState(false);
   const [reminding, setReminding] = useState(false);
   const pending = rows.filter((r) => r.status === 'not_started' || r.status === 'in_progress' || r.status === 'missing').length;
 
@@ -136,6 +138,9 @@ function HeaderActions({ a, classId, rows }: { a: Assignment; classId: string; r
   if (a.status === 'draft')
     return (
       <>
+        <Button variant="secondary" icon={<Type className="h-4 w-4" />} onClick={() => setRename(true)}>
+          Rename
+        </Button>
         <Button variant="secondary" icon={<Pencil className="h-4 w-4" />} to={`/t/c/${classId}/assignments/${a.id}/edit`}>
           Edit
         </Button>
@@ -153,6 +158,7 @@ function HeaderActions({ a, classId, rows }: { a: Assignment; classId: string; r
         >
           Publish
         </Button>
+        {rename && <RenameModal a={a} classId={classId} onClose={() => setRename(false)} />}
       </>
     );
 
@@ -191,6 +197,15 @@ function HeaderActions({ a, classId, rows }: { a: Assignment; classId: string; r
         {(close) => (
           <>
             <MenuItem
+              icon={<Type className="h-4 w-4" />}
+              onClick={() => {
+                close();
+                setRename(true);
+              }}
+            >
+              Rename
+            </MenuItem>
+            <MenuItem
               icon={<CalendarPlus className="h-4 w-4" />}
               onClick={() => {
                 close();
@@ -225,7 +240,57 @@ function HeaderActions({ a, classId, rows }: { a: Assignment; classId: string; r
         )}
       </Menu>
       {extend && <ExtendModal a={a} classId={classId} onClose={() => setExtend(false)} />}
+      {rename && <RenameModal a={a} classId={classId} onClose={() => setRename(false)} />}
     </>
+  );
+}
+
+function RenameModal({ a, classId, onClose }: { a: Assignment; classId: string; onClose: () => void }) {
+  const [title, setTitle] = useState(a.title);
+  const save = useSaveAssignment(classId);
+  const toast = useToast();
+  const clean = title.replace(/\s+/g, ' ').trim();
+  async function submit() {
+    if (!clean || clean === a.title) return onClose();
+    try {
+      await save.mutateAsync({ id: a.id, classId, title: clean });
+      toast({ kind: 'success', title: 'Renamed', body: a.status === 'published' ? 'Students see the new name straight away.' : undefined });
+      onClose();
+    } catch (e) {
+      toast({ kind: 'error', title: 'Could not rename', body: (e as Error).message });
+    }
+  }
+  return (
+    <Modal
+      open
+      onClose={onClose}
+      title="Rename assignment"
+      size="sm"
+      footer={
+        <>
+          <Button variant="ghost" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button loading={save.isPending} disabled={!clean} onClick={submit}>
+            Save
+          </Button>
+        </>
+      }
+    >
+      <Input
+        label="Name"
+        value={title}
+        maxLength={120}
+        autoFocus
+        onChange={(e) => setTitle(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            void submit();
+          }
+        }}
+      />
+    </Modal>
   );
 }
 
@@ -355,6 +420,7 @@ function StudentTable({ rows, a, classId }: { rows: RosterRow[]; a: Assignment; 
                           </Button>
                         </>
                       )}
+                      {r.latest && !r.open && <ReopenAttempt s={r.latest} studentName={r.student.fullName} questions={questions} />}
                     </span>
                   </td>
                   {questions && (

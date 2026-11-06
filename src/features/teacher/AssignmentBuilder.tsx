@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { AlertCircle, Bell, Eye, Minus, Plus, RefreshCw, Shuffle, Sparkles, Trash2, Users, Wand2 } from 'lucide-react';
+import { AlertCircle, Bell, ChevronDown, Eye, Minus, Plus, RefreshCw, Shuffle, Sparkles, Trash2, Users, Wand2 } from 'lucide-react';
 import {
   DEFAULT_SETTINGS,
   TYPE_LABEL,
   buildItemRefs,
+  difficultyFor,
   isQuestionType,
   itemFromRef,
   type AssignmentContent,
@@ -483,14 +484,14 @@ export default function AssignmentBuilder() {
               <div className="min-w-0 flex-1">
                 <textarea
                   rows={2}
-                  className="w-full resize-none rounded-lg border border-transparent bg-transparent px-1 py-0.5 font-semibold leading-snug placeholder:text-ink hover:border-line focus:border-brand focus:outline-none focus:placeholder:text-ink-3"
+                  className="w-full resize-none rounded-lg border border-line bg-surface px-2 py-1 font-semibold leading-snug placeholder:text-ink hover:border-line-strong focus:border-brand focus:outline-none focus:placeholder:text-ink-3"
                   value={d.title}
                   placeholder={autoTitle(d)}
                   onChange={(e) => set({ title: e.target.value.replace(/\n/g, ' ') })}
                   aria-label="Title"
                   maxLength={120}
                 />
-                <div className="px-1 text-xs text-ink-3">{TYPE_LABEL[d.type]} · click the title to rename it</div>
+                <div className="px-1 pt-1 text-xs text-ink-3">{TYPE_LABEL[d.type]} · type here to rename it</div>
               </div>
             </div>
             <dl className="space-y-2 text-sm">
@@ -703,7 +704,7 @@ function SectionsEditor({ d, setContent, onAdd, mastery, published, courseId }: 
       <div className="flex items-center justify-between gap-2">
         <div>
           <div className="label mb-0">Generated questions{total > 0 && <span className="font-normal text-ink-3"> · {range(1, total)}</span>}</div>
-          {total > 0 && <div className="text-xs text-ink-3">Each student gets fresh numbers, marked automatically, with hints and worked solutions. Change how many and how hard; their wording comes from the course, so preview the assignment to see them.</div>}
+          {total > 0 && <div className="text-xs text-ink-3">Each student gets fresh numbers, marked automatically, with hints and worked solutions. Change how many and how hard. Each row below is one or more real questions; an example of each is shown under it.</div>}
         </div>
         <Button size="sm" variant="soft" icon={<Plus className="h-4 w-4" />} onClick={onAdd}>
           Add skills
@@ -714,32 +715,35 @@ function SectionsEditor({ d, setContent, onAdd, mastery, published, courseId }: 
         const skill = skillInfo(s.skillId);
         const lesson = skill ? lessonById(skill.lessonId) : undefined;
         return (
-          <div key={s.skillId} className="flex flex-wrap items-center gap-3 rounded-xl border border-line px-3 py-2.5">
-            <span className="w-14 shrink-0 text-sm font-semibold tabular-nums text-ink-2">{range(starts[i], starts[i] + s.count - 1, 'Q')}</span>
-            <div className="min-w-0 flex-1 basis-48">
-              <div className="text-sm font-medium">{skill?.name ?? s.skillId}</div>
-              <div className="truncate text-xs text-ink-3">
-                Lesson {lesson?.number} · {skill?.description}
+          <div key={s.skillId} className="rounded-xl border border-line px-3 py-2.5">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="w-14 shrink-0 text-sm font-semibold tabular-nums text-ink-2">{range(starts[i], starts[i] + s.count - 1, 'Q')}</span>
+              <div className="min-w-0 flex-1 basis-48">
+                <div className="text-sm font-medium">{skill?.name ?? s.skillId}</div>
+                <div className="truncate text-xs text-ink-3">
+                  Lesson {lesson?.number} · {skill?.description}
+                </div>
               </div>
-            </div>
-            <div className="flex items-center gap-1" role="group" aria-label="Number of questions">
-              <IconButton label="Fewer" className="h-8 w-8" onClick={() => update(i, { count: Math.max(1, s.count - 1) })}>
-                <Minus className="h-4 w-4" />
+              <div className="flex items-center gap-1" role="group" aria-label="Number of questions">
+                <IconButton label="Fewer" className="h-8 w-8" onClick={() => update(i, { count: Math.max(1, s.count - 1) })}>
+                  <Minus className="h-4 w-4" />
+                </IconButton>
+                <span className="w-6 text-center text-sm font-semibold tabular-nums">{s.count}</span>
+                <IconButton label="More" className="h-8 w-8" onClick={() => update(i, { count: Math.min(15, s.count + 1) })}>
+                  <Plus className="h-4 w-4" />
+                </IconButton>
+              </div>
+              <select className="input h-9 w-36 py-0 text-sm" value={String(s.difficulty)} onChange={(e) => update(i, { difficulty: (/^\d$/.test(e.target.value) ? Number(e.target.value) : e.target.value) as SkillSection['difficulty'] })} aria-label="Difficulty">
+                <option value="mixed">Easy → hard</option>
+                <option value="1">Easy</option>
+                <option value="2">Medium</option>
+                <option value="3">Hard</option>
+              </select>
+              <IconButton label="Remove skill" className="h-8 w-8" onClick={() => setContent({ sections: sections.filter((_, j) => j !== i) })}>
+                <Trash2 className="h-4 w-4" />
               </IconButton>
-              <span className="w-6 text-center text-sm font-semibold tabular-nums">{s.count}</span>
-              <IconButton label="More" className="h-8 w-8" onClick={() => update(i, { count: Math.min(15, s.count + 1) })}>
-                <Plus className="h-4 w-4" />
-              </IconButton>
             </div>
-            <select className="input h-9 w-36 py-0 text-sm" value={String(s.difficulty)} onChange={(e) => update(i, { difficulty: (/^\d$/.test(e.target.value) ? Number(e.target.value) : e.target.value) as SkillSection['difficulty'] })} aria-label="Difficulty">
-              <option value="mixed">Easy → hard</option>
-              <option value="1">Easy</option>
-              <option value="2">Medium</option>
-              <option value="3">Hard</option>
-            </select>
-            <IconButton label="Remove skill" className="h-8 w-8" onClick={() => setContent({ sections: sections.filter((_, j) => j !== i) })}>
-              <Trash2 className="h-4 w-4" />
-            </IconButton>
+            <SkillExamples section={s} start={starts[i]} />
           </div>
         );
       })}
@@ -755,6 +759,58 @@ function SectionsEditor({ d, setContent, onAdd, mastery, published, courseId }: 
           ))}
         </div>
       )}
+    </div>
+  );
+}
+
+const DIFFICULTY_LABEL: Record<number, string> = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
+
+/**
+ * Example versions of a skill row's generated questions, so the teacher can read them as questions
+ * (Q1, Q2, ...) in the editor. Every student still gets their own numbers.
+ */
+function SkillExamples({ section, start }: { section: SkillSection; start: number }) {
+  const [seed, setSeed] = useState(() => freshSeed());
+  const [all, setAll] = useState(false);
+  const loaded = useSkillsReady([section.skillId]);
+  const examples = useMemo(() => {
+    if (loaded !== 'ready') return [];
+    return Array.from({ length: section.count }, (_, k) => {
+      const difficulty = difficultyFor(section, k);
+      let item: Item | null = null;
+      try {
+        item = itemFromRef({ skillId: section.skillId, seed: seed + k * 7919, difficulty }, { sections: [], custom: [] }, 'preview');
+      } catch {
+        item = null;
+      }
+      return { n: start + k, difficulty, item };
+    });
+  }, [loaded, section, seed, start]);
+  if (loaded === 'error') return null;
+  if (loaded !== 'ready') return <div className="mt-2 text-xs text-ink-3">Loading example questions…</div>;
+  const shown = all ? examples : examples.slice(0, 1);
+  return (
+    <div className="mt-2 space-y-2 border-t border-line pt-2" aria-label="Example questions">
+      {shown.map((x) => (
+        <div key={x.n} className="flex gap-3 text-sm">
+          <span className="w-14 shrink-0 text-xs font-semibold tabular-nums text-ink-3">
+            Q{x.n} <span className="block font-normal">{DIFFICULTY_LABEL[x.difficulty]}</span>
+          </span>
+          <div className={cn('min-w-0 flex-1 text-ink-2', !all && 'line-clamp-3')}>{x.item ? <Markdown md={x.item.prompt} /> : <span className="text-ink-3">No example available.</span>}</div>
+        </div>
+      ))}
+      <div className="flex flex-wrap items-center gap-3 pl-[4.25rem] text-xs">
+        <span className="text-ink-3">Example only: each student gets their own numbers.</span>
+        {section.count > 1 && (
+          <button type="button" className="inline-flex items-center gap-1 font-medium text-brand hover:underline" onClick={() => setAll(!all)} aria-expanded={all}>
+            <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', all && 'rotate-180')} />
+            {all ? 'Show one' : `Show all ${section.count}`}
+          </button>
+        )}
+        <button type="button" className="inline-flex items-center gap-1 font-medium text-brand hover:underline" onClick={() => setSeed(freshSeed())}>
+          <RefreshCw className="h-3.5 w-3.5" /> Another example
+        </button>
+      </div>
     </div>
   );
 }

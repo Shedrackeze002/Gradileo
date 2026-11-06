@@ -17,6 +17,8 @@ export interface RosterRow {
   status: RosterStatus;
   best: Submission | null;
   open: Submission | null;
+  /** The most recent submitted attempt (the one a teacher would reopen). */
+  latest: Submission | null;
   attempts: number;
 }
 
@@ -38,7 +40,9 @@ export function rosterStatus(a: Assignment, roster: Profile[], subs: Submission[
     } else if (overdue) status = 'missing';
     else if (open) status = 'in_progress';
     else status = 'not_started';
-    return { student, status, best, open, attempts: mine.filter((s) => s.status !== 'in_progress').length };
+    const done = mine.filter((s) => s.status !== 'in_progress');
+    const latest = done.reduce<Submission | null>((l, s) => (!l || s.attempt > l.attempt ? s : l), null);
+    return { student, status, best, open, latest, attempts: done.length };
   });
 }
 
