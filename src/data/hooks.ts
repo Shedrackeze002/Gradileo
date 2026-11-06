@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { useMutation, useQuery, useQueryClient, type QueryClient } from '@tanstack/react-query';
 import { api } from './index.ts';
+import type { SubmissionFilter } from './api.ts';
 import type { Integrity } from '@engine/integrity.ts';
 import type { DraftRequest, RegenerateRequest } from '@engine/ai/builder.ts';
 import type { AdminUserFilter, Assignment, BoardInput, ClassSettings, CourseRequestInput, CourseRequestStatus, LessonEditInput, LessonEditStatus, ItemRef, JoinDecision, LessonPrefs, PlatformSettings, ProposedAction, Resource, StoredResponse } from './types.ts';
@@ -30,7 +31,7 @@ export const qk = {
   liveAnswers: (questionId: string) => ['liveAnswers', questionId] as const,
   assignments: (classId: string) => ['assignments', classId] as const,
   assignment: (id: string) => ['assignment', id] as const,
-  submissions: (f: { classId?: string; assignmentId?: string; studentId?: string }) => ['submissions', f.classId ?? '', f.assignmentId ?? '', f.studentId ?? ''] as const,
+  submissions: (f: SubmissionFilter) => ['submissions', f.classId ?? '', f.assignmentId ?? '', f.studentId ?? '', f.includeReopened ? 'all' : ''] as const,
   submission: (id: string) => ['submission', id] as const,
   mastery: (f: { classId?: string; studentId?: string }) => ['mastery', f.classId ?? '', f.studentId ?? ''] as const,
   events: (classId: string, studentId?: string, sinceDays?: number) => ['events', classId, studentId ?? '', sinceDays ?? 0] as const,
@@ -59,7 +60,7 @@ export const usePublications = (classId: string | undefined) => useQuery({ query
 export const useResources = (classId: string | undefined) => useQuery({ queryKey: qk.resources(classId ?? ''), queryFn: () => api().listResources(classId!), enabled: !!classId });
 export const useAssignments = (classId: string | undefined) => useQuery({ queryKey: qk.assignments(classId ?? ''), queryFn: () => api().listAssignments(classId!), enabled: !!classId });
 export const useAssignment = (id: string | undefined) => useQuery({ queryKey: qk.assignment(id ?? ''), queryFn: () => api().getAssignment(id!), enabled: !!id });
-export const useSubmissions = (f: { classId?: string; assignmentId?: string; studentId?: string }, enabled = true) =>
+export const useSubmissions = (f: SubmissionFilter, enabled = true) =>
   useQuery({ queryKey: qk.submissions(f), queryFn: () => api().listSubmissions(f), enabled: enabled && !!(f.classId || f.assignmentId || f.studentId) });
 export const useSubmission = (id: string | undefined) => useQuery({ queryKey: qk.submission(id ?? ''), queryFn: () => api().getSubmission(id!), enabled: !!id });
 export const useMastery = (f: { classId?: string; studentId?: string }, enabled = true) => useQuery({ queryKey: qk.mastery(f), queryFn: () => api().listMastery(f), enabled });
@@ -343,6 +344,18 @@ export function useDeleteAssignment(classId: string) {
 }
 
 /** Teacher: unlock an attempt that exam mode locked. */
+/** Teacher: reopen a submitted attempt; the student gets a fresh attempt with new questions. */
+export function useReopenSubmission() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (submissionId: string) => api().reopenSubmission(submissionId),
+    onSuccess: (_fresh, submissionId) => {
+      qc.invalidateQueries({ queryKey: ['submissions'] });
+      qc.invalidateQueries({ queryKey: qk.submission(submissionId) });
+    },
+  });
+}
+
 export function useUnlockAttempt() {
   const qc = useQueryClient();
   return useMutation({ mutationFn: (submissionId: string) => api().unlockAttempt(submissionId), onSuccess: () => qc.invalidateQueries({ queryKey: ['submissions'] }) });

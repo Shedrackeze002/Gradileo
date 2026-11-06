@@ -5,6 +5,8 @@
  *            updates mastery and records analytics events.
  *   manual — teacher scores a written response.
  *   return — teacher returns the work with feedback.
+ *   reopen — teacher reopens a submitted attempt: it is kept for the record but stops
+ *            counting, and the student gets a fresh attempt with new questions.
  */
 import { background, HttpError, readJson, serve } from '../_shared/http.ts';
 import { adminClient, getCaller, notify, requireTeacherOf, str, type Caller, type Db } from '../_shared/db.ts';
@@ -48,6 +50,8 @@ serve(async (req) => {
       return { submission: await manual(db, me, body) };
     case 'return':
       return { submission: await giveBack(db, me, body) };
+    case 'reopen':
+      return { submission: await reopen(db, me, body) };
     default:
       throw new HttpError(400, 'Unknown action.');
   }
@@ -70,18 +74,13 @@ async function start(db: Db, me: Caller, assignmentId: string): Promise<Row> {
   const { data: mine } = await db.from('submissions').select('*').eq('assignment_id', a.id).eq('student_id', me.id);
   const open = (mine ?? []).find((s: Row) => s.status === 'in_progress');
   if (open) return open;
-  const used = (mine ?? []).length;
+  // A reopened attempt is kept for the record but does not use up an attempt.
+  const used = (mine ?? []).filter((s: Row) => !s.reopened_at).length;
   const attempts = a.settings?.attempts as number | null;
   if (attempts && used >= attempts) throw new HttpError(400, 'You have used all of your attempts.');
   if (a.due_at && new Date(a.due_at) < new Date() && !a.allow_late) throw new HttpError(400, 'This assignment is closed.');
 
-  const seed = freshSeed();
-  const items = isQuestionType(a.type as AssignmentType) ? buildItemRefs(a.content as AssignmentContent, seed) : [];
-  const { data, error } = await db
-    .from('submissions')
-    .insert({ assignment_id: a.id, class_id: a.class_id, student_id: me.id, attempt: used + 1, status: 'in_progress', seed, items, responses: {} })
-    .select()
-    .single();
+  const { data, error } = await newAttempt(db, a, me.id, nextAttempt(mine ?? []));
   if (error) {
     // Two tabs started at once: return the attempt the other request created.
     if (error.code === '23505') {
@@ -91,6 +90,22 @@ async function start(db: Db, me: Caller, assignmentId: string): Promise<Row> {
     throw new Error(error.message);
   }
   return data;
+}
+
+/** Attempt numbers keep counting past reopened attempts, so every attempt keeps its own number. */
+function nextAttempt(mine: Row[]): number {
+  return mine.reduce((m, s) => Math.max(m, Number(s.attempt) || 0), 0) + 1;
+}
+
+/** A new attempt with a fresh seed, so the generated questions are new. */
+function newAttempt(db: Db, a: Row, studentId: string, attempt: number) {
+  const seed = freshSeed();
+  const items = isQuestionType(a.type as AssignmentType) ? buildItemRefs(a.content as AssignmentContent, seed) : [];
+  return db
+    .from('submissions')
+    .insert({ assignment_id: a.id, class_id: a.class_id, student_id: studentId, attempt, status: 'in_progress', seed, items, responses: {} })
+    .select()
+    .single();
 }
 
 function cleanResponses(v: unknown): Record<number, StoredResponse> {
@@ -355,4 +370,41 @@ async function giveBack(db: Db, me: Caller, body: Record<string, unknown>): Prom
     },
   ]);
   return data;
+}
+
+/**
+ * The teacher reopens a submitted attempt, for example when a student handed it in by mistake.
+ * The attempt is kept for the record (marked reopened) but no longer counts, and the student gets
+ * a fresh attempt straight away with newly generated questions. Mastery changes already made by
+ * the old attempt stay, as they are part of the student's learning history.
+ */
+async function reopen(db: Db, me: Caller, body: Record<string, unknown>): Promise<Row> {
+  const { s, a } = await teacherSubmission(db, me, str(body.submissionId, 64));
+  if (!a) throw new HttpError(400, 'Only assignment attempts can be reopened.');
+  if (s.status === 'in_progress') throw new HttpError(400, 'This attempt is still in progress.');
+  if (s.reopened_at) throw new HttpError(400, 'This attempt was already reopened.');
+  const { data: mine } = await db.from('submissions').select('id, attempt, status').eq('assignment_id', a.id).eq('student_id', s.student_id);
+  if ((mine ?? []).some((x: Row) => x.status === 'in_progress')) throw new HttpError(400, 'The student already has an attempt in progress.');
+
+  const now = new Date().toISOString();
+  const { data: marked } = await db.from('submissions').update({ reopened_at: now, reopened_by: me.id }).eq('id', s.id).is('reopened_at', null).select('id').maybeSingle();
+  if (!marked) throw new HttpError(409, 'This attempt was already reopened.');
+  const { data: fresh, error } = await newAttempt(db, a, s.student_id, nextAttempt(mine ?? []));
+  if (error || !fresh) {
+    // Put the old attempt back as it was, so the student is never left with nothing that counts.
+    await db.from('submissions').update({ reopened_at: null, reopened_by: null }).eq('id', s.id);
+    if (error?.code === '23505') throw new HttpError(400, 'The student already has an attempt in progress.');
+    throw new Error(error?.message ?? 'Could not reopen the attempt.');
+  }
+  await notify(db, [
+    {
+      user_id: s.student_id,
+      kind: 'announcement',
+      title: `Your teacher reopened ${a.title}`,
+      body: 'You can start again with a new set of questions.',
+      link: `/s/work/${a.id}`,
+      assignment_id: a.id,
+    },
+  ]);
+  return fresh;
 }

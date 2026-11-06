@@ -186,6 +186,7 @@ export const toSubmission = (r: Row): Submission => ({
   feedback: r.feedback,
   integrity: cleanIntegrity(r.integrity),
   masteryChanges: r.mastery_changes ?? undefined,
+  reopenedAt: r.reopened_at ?? null,
 });
 
 export const toMastery = (r: Row): SkillMastery => ({

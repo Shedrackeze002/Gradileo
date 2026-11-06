@@ -11,7 +11,7 @@ import { freshSeed } from '@engine/rng.ts';
 import { getCourse } from '@engine/curriculum/index.ts';
 import { isQuestionType, type StoredResponse } from '@engine/assemble.ts';
 import type { Integrity } from '@engine/integrity.ts';
-import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts';
+import type { AiConfigStatus, DataApi, SignUpInput, SubmissionFilter, TutorReply } from '../api.ts';
 import { offlineScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
 import type { DraftRequest, DraftResult, RegenerateRequest, RegenerateResult } from '@engine/ai/builder.ts';
 import type { MarkResult } from '@engine/ai/marking.ts';
@@ -655,9 +655,10 @@ export class SupabaseApi implements DataApi {
 
   // ------------------------------------------------------------------ submissions
 
-  async listSubmissions(filter: { classId?: string; assignmentId?: string; studentId?: string }) {
+  async listSubmissions(filter: SubmissionFilter) {
     const page = (from: number, to: number) => {
       let q = this.client.from('submissions').select('*');
+      if (!filter.includeReopened) q = q.is('reopened_at', null);
       if (filter.classId) q = q.eq('class_id', filter.classId);
       if (filter.assignmentId) q = q.eq('assignment_id', filter.assignmentId);
       if (filter.studentId) q = q.eq('student_id', filter.studentId);
@@ -714,6 +715,11 @@ export class SupabaseApi implements DataApi {
 
   async returnSubmission(submissionId: string, feedback: string) {
     const res = await this.invoke<{ submission: Record<string, unknown> }>('grade-submission', { action: 'return', submissionId, feedback });
+    return toSubmission(res.submission);
+  }
+
+  async reopenSubmission(submissionId: string) {
+    const res = await this.invoke<{ submission: Record<string, unknown> }>('grade-submission', { action: 'reopen', submissionId });
     return toSubmission(res.submission);
   }
 

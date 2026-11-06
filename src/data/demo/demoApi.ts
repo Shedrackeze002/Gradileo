@@ -21,7 +21,7 @@ import { classMastery, draftAssignment, draftContext, normalizeDraftRequest, nor
 import { markRequestFor, suggestMark, type MarkResult } from '@engine/ai/marking.ts';
 import type { SkillState } from '@engine/mastery.ts';
 import { exitCount, isLocked, mergeIntegrity, type Integrity } from '@engine/integrity.ts';
-import type { AiConfigStatus, DataApi, SignUpInput, TutorReply } from '../api.ts';
+import type { AiConfigStatus, DataApi, SignUpInput, SubmissionFilter, TutorReply } from '../api.ts';
 import type {
   AdminAuditEntry,
   AdminClassRow,
@@ -990,7 +990,8 @@ export class DemoApi implements DataApi {
     await this.ready;
     const me = this.me();
     const a = this.db.assignments.find((x) => x.id === id);
-    return a && this.visibleTo(a, me) ? a : null;
+    // A copy, so a later in-place save is seen as a change (React Query keeps deep-equal data as it was).
+    return a && this.visibleTo(a, me) ? { ...a } : null;
   }
 
   async saveAssignment(input: Partial<Assignment> & { classId: string }) {
@@ -1054,7 +1055,7 @@ export class DemoApi implements DataApi {
   }
 
   private doneSet(): Set<string> {
-    return new Set(this.db.submissions.filter((s) => s.assignmentId && s.status !== 'in_progress').map((s) => `${s.assignmentId}:${s.studentId}`));
+    return new Set(this.db.submissions.filter((s) => s.assignmentId && s.status !== 'in_progress' && !s.reopenedAt).map((s) => `${s.assignmentId}:${s.studentId}`));
   }
 
   async remindNow(assignmentId: string) {
@@ -1070,10 +1071,11 @@ export class DemoApi implements DataApi {
 
   // ------------------------------------------------------------------ submissions
 
-  async listSubmissions(filter: { classId?: string; assignmentId?: string; studentId?: string }) {
+  async listSubmissions(filter: SubmissionFilter) {
     await this.ready;
     const me = this.me();
     return this.db.submissions.filter((s) => {
+      if (s.reopenedAt && !filter.includeReopened) return false;
       if (me.role === 'student' && s.studentId !== me.id) return false;
       if (me.role === 'teacher' && !this.db.classes.some((c) => c.id === s.classId && c.teacherId === me.id)) return false;
       if (filter.classId && s.classId !== filter.classId) return false;
@@ -1100,16 +1102,21 @@ export class DemoApi implements DataApi {
     const mine = this.db.submissions.filter((s) => s.assignmentId === a.id && s.studentId === me.id);
     const open = mine.find((s) => s.status === 'in_progress');
     if (open) return open;
-    const done = mine.filter((s) => s.status !== 'in_progress').length;
+    const done = mine.filter((s) => s.status !== 'in_progress' && !s.reopenedAt).length;
     if (a.settings.attempts && done >= a.settings.attempts) throw new Error('You have used all of your attempts.');
     if (a.dueAt && new Date(a.dueAt) < new Date() && !a.allowLate) throw new Error('This assignment is closed.');
+    return this.newAttempt(a, me.id, mine.reduce((m, x) => Math.max(m, x.attempt), 0) + 1);
+  }
+
+  /** A new attempt with a fresh seed, so the generated questions are new. */
+  private newAttempt(a: Assignment, studentId: string, attempt: number): Submission {
     const seed = freshSeed();
     const s: Submission = {
       id: uid('s'),
       assignmentId: a.id,
       classId: a.classId,
-      studentId: me.id,
-      attempt: done + 1,
+      studentId,
+      attempt,
       status: 'in_progress',
       seed,
       items: isQuestionType(a.type) ? buildItemRefs(a.content, seed) : [],
@@ -1284,6 +1291,24 @@ export class DemoApi implements DataApi {
     this.db.submissions[at] = s;
     this.persist();
     return { ...s };
+  }
+
+  async reopenSubmission(submissionId: string) {
+    await this.ready;
+    const s = this.db.submissions.find((x) => x.id === submissionId);
+    if (!s) throw new Error('Submission not found.');
+    this.requireTeacherOf(s.classId);
+    const a = s.assignmentId ? this.db.assignments.find((x) => x.id === s.assignmentId) : null;
+    if (!a) throw new Error('Only assignment attempts can be reopened.');
+    if (s.status === 'in_progress') throw new Error('This attempt is still in progress.');
+    if (s.reopenedAt) throw new Error('This attempt was already reopened.');
+    const mine = this.db.submissions.filter((x) => x.assignmentId === a.id && x.studentId === s.studentId);
+    if (mine.some((x) => x.status === 'in_progress')) throw new Error('The student already has an attempt in progress.');
+    s.reopenedAt = nowIso();
+    const fresh = this.newAttempt(a, s.studentId, mine.reduce((m, x) => Math.max(m, x.attempt), 0) + 1);
+    this.notify(s.studentId, 'announcement', `Your teacher reopened ${a.title}`, 'You can start again with a new set of questions.', `/s/work/${a.id}`, a.id);
+    this.persist();
+    return { ...fresh };
   }
 
   async returnSubmission(submissionId: string, feedback: string) {
