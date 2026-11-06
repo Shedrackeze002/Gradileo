@@ -920,6 +920,13 @@ items ship or decisions change.
   point to Cloudflare). More addresses are a line in `scripts/cloudflare-email.mjs`. Next: send
   from gradileo.com through Resend, which also lets reminders come from an address at
   gradileo.com (and Gmail's "Send mail as").
+- Visitor counts (6 November 2026): Cloudflare reported 18,032 page views on gradileo.com in the
+  month after it went live (13 October), but the zone's count includes bots, and Supabase had only
+  8 accounts (1 teacher, 7 students, 6 of them since 13 October). Built: Cloudflare Web Analytics
+  (free, no cookies; `src/analytics.ts`, docs/SETUP.md 3.1) runs on gradileo.com once the owner adds
+  the site token as the repository variable `VITE_CF_BEACON_TOKEN`; the privacy policy says so.
+  Sign-ups by week are on the admin Overview page. Next: compare visitors with sign-ups after a
+  few weeks of data, and see which pages and referrers bring students.
 - Before investing further in the brand, check the Canadian (CIPO) and US (USPTO) trademark
   databases for "Gradileo" in classes 9, 41 and 42.
 - Legal pages: built. The Privacy Policy is at gradileo.com/privacy and the Terms of Service at

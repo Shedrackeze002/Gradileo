@@ -5,6 +5,8 @@ interface ImportMetaEnv {
   readonly VITE_SUPABASE_ANON_KEY?: string;
   readonly VITE_STUDENT_EMAIL_DOMAIN?: string;
   readonly VITE_SUPPORT_EMAIL?: string;
+  /** Cloudflare Web Analytics site token (public by design); see src/analytics.ts. */
+  readonly VITE_CF_BEACON_TOKEN?: string;
 }
 
 interface ImportMeta {

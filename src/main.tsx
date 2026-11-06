@@ -4,6 +4,9 @@ import '@fontsource-variable/inter';
 import '@fontsource-variable/lexend';
 import './index.css';
 import App from './App.tsx';
+import { startAnalytics } from './analytics';
+
+startAnalytics();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

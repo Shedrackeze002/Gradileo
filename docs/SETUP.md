@@ -204,6 +204,22 @@ bandwidth limit and creates the domain's DNS records and certificates itself.
    (`https://<domain>/**`), and once the site works there, make it the **Site URL**. Set `APP_URL`
    (and `ALLOWED_ORIGINS`, if you restrict it) to the new address.
 
+#### Visitor counts (Cloudflare Web Analytics, free)
+
+The zone's own analytics count every request, bots included. Web Analytics counts real visitors
+in their browsers, without cookies, and shows where they came from, the pages they opened and how
+fast pages loaded. Sign-ups are on the admin **Overview** page, so the two together show how many
+visitors become students.
+
+1. In Cloudflare, open **Analytics & Logs → Web Analytics → Add a site**, enter `gradileo.com`
+   and choose the manual (JavaScript snippet) setup rather than automatic setup.
+2. Copy the `token` value from the snippet it shows (the text between the quotes after
+   `"token":`). The token is public by design: every visitor's browser sees it.
+3. In GitHub, add it as the repository **variable** (not secret) `VITE_CF_BEACON_TOKEN`
+   (**Settings → Secrets and variables → Actions → Variables**).
+4. Re-run the deploy, or merge any change. `src/analytics.ts` adds the beacon only on
+   gradileo.com, so the demo, local development and the tests are never counted.
+
 ### 3.2 GitHub Pages with a custom domain
 
 1. Buy a domain, or use a subdomain of your school's site such as

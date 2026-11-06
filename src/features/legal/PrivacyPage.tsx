@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      updated="November 4, 2026"
+      updated="November 6, 2026"
       intro={
         <>
           <p>
@@ -22,7 +22,8 @@ export default function PrivacyPage() {
           </p>
           <p>
             In short: we collect only what we need to run classes, lessons and assignments. We do not sell personal information, we do not show ads, and we
-            do not use analytics or tracking tools.
+            do not use advertising or cross-site tracking tools. We count visits to the website with a privacy-first tool that sets no cookies and does
+            not identify you (section 6).
           </p>
         </>
       }
@@ -131,7 +132,7 @@ export default function PrivacyPage() {
             <strong>Supabase</strong>: our database, sign-in and server functions. Gradileo’s data is stored in Supabase’s Canada (Central) region.
           </li>
           <li>
-            <strong>Cloudflare</strong>: hosts the Gradileo website and handles email sent to gradileo.com addresses.
+            <strong>Cloudflare</strong>: hosts the Gradileo website, counts visits to it without cookies (section 6) and handles email sent to gradileo.com addresses.
           </li>
           <li>
             <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses, assignment drafts, suggested marks, report card drafts and the AI tutor, as described in section 3.
@@ -184,6 +185,12 @@ export default function PrivacyPage() {
         <p>
           Gradileo does not set cookies. It uses your browser’s local storage to keep you signed in and to remember preferences, such as your theme and
           the last class you opened. In the demo, everything stays in your browser and nothing is sent to our servers.
+        </p>
+        <p>
+          To understand how many people visit gradileo.com, which pages they open and how quickly pages load, the website uses Cloudflare Web
+          Analytics. It sets no cookies, uses no local storage, does not fingerprint your browser or device, and does not follow you to other websites.
+          It sees what any website sees when a page loads, such as the page address, the referring site, your browser and an approximate country, and
+          reports only totals to us. It cannot tell us who you are, and it is not connected to your Gradileo account.
         </p>
       </Section>
 
