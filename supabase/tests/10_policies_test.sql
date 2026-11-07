@@ -1026,4 +1026,48 @@ select _assert((select pg_get_constraintdef(oid) from pg_constraint where connam
 select _assert((select pg_get_constraintdef(oid) from pg_constraint where conname = 'live_answers_responses_check') like '%32000%', 'a live answer holds 20 responses of 400 characters');
 select _assert((select count(*) from classes c join enrollments e on e.class_id = c.id where e.student_id = '00000000-0000-0000-0000-0000000000b2' and c.kind = 'self' and c.course_id in ('chem-20', 'eng-10')) = 2, 'chemistry and English courses can be studied self-paced');
 
+-- Answer keys: students read an assignment's content only through assignment_contents, which leaves
+-- out the answers of teacher-written questions until they are due to be seen.
+create temp table akey as
+select e.class_id from enrollments e join classes c on c.id = e.class_id
+where e.student_id = '00000000-0000-0000-0000-0000000000b1' and c.teacher_id = '00000000-0000-0000-0000-0000000000a1' and c.kind = 'teacher' limit 1;
+grant select on akey to authenticated;
+insert into assignments (class_id, title, type, content, status, due_at)
+select class_id, 'Key quiz', 'quiz',
+  '{"sections":[],"custom":[{"id":"q1","prompt":"2 + 2?","kind":"mc","choices":[{"id":"a","label":"4"},{"id":"b","label":"5"}],"correct":"a","solution":"Add."},{"id":"q2","prompt":"Pi?","kind":"numeric","value":3.14,"tolerance":0.01},{"id":"q3","prompt":"Say hi","kind":"text","accepted":["hi"]}]}',
+  'published', now() + interval '1 day'
+from akey;
+create temp table akq as select id from assignments where title = 'Key quiz';
+grant select on akq to authenticated;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b1","role":"authenticated"}', false);
+set role authenticated;
+select _fails($$select content from assignments limit 1$$, 'students cannot select assignment content directly');
+select _assert((select count(*) from assignments where title = 'Key quiz') = 1, 'the student still sees the quiz itself');
+select _assert((select c.content -> 'custom' -> 0 ->> 'prompt' from assignment_contents(array[(select id from assignments where title = 'Key quiz')]) c) = '2 + 2?', 'the student gets the questions');
+select _assert((select not (c.content -> 'custom' -> 0 ? 'correct') and not (c.content -> 'custom' -> 0 ? 'solution') and not (c.content -> 'custom' -> 1 ? 'value') and not (c.content -> 'custom' -> 2 ? 'accepted') and c.content -> 'custom' -> 0 -> 'choices' -> 1 ->> 'label' = '5' from assignment_contents(array[(select id from assignments where title = 'Key quiz')]) c), 'the student gets no answers before handing in a quiz');
+select _assert((select count(*) from assignment_contents(array[(select id from assignments where title = 'Homework 1')]) c where c.content ? 'sections') = 1, 'instant-feedback homework comes whole');
+reset role;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000a1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select c.content -> 'custom' -> 0 ->> 'correct' from assignment_contents(array[(select id from assignments where title = 'Key quiz')]) c) = 'a', 'the teacher gets the answers');
+reset role;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000c9","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) from assignment_contents(array[(select id from akq)])) = 0, 'someone outside the class gets nothing');
+reset role;
+-- Handed in: a quiz's answers show in the review.
+insert into submissions (assignment_id, class_id, student_id, seed, status, items, responses)
+select a.id, a.class_id, '00000000-0000-0000-0000-0000000000b1', 7, 'graded', '[]', '{}' from assignments a where a.title = 'Key quiz';
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select c.content -> 'custom' -> 0 ->> 'correct' from assignment_contents(array[(select id from assignments where title = 'Key quiz')]) c) = 'a', 'answers show once the quiz is handed in');
+reset role;
+update assignments set settings = settings || '{"feedback":"after_due"}' where title = 'Key quiz';
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select not (c.content -> 'custom' -> 0 ? 'correct') from assignment_contents(array[(select id from assignments where title = 'Key quiz')]) c), 'an exam keeps its answers until the due date');
+reset role;
+delete from submissions where assignment_id = (select id from assignments where title = 'Key quiz');
+delete from assignments where title = 'Key quiz';
+
 select 'ALL DATABASE TESTS PASSED' as result;

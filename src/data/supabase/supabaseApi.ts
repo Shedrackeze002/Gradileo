@@ -101,6 +101,10 @@ function failClassWrite(error: { message: string; code?: string } | null): void 
   fail(error);
 }
 
+/** Every assignment column a signed-in user may select; the content comes from assignment_contents. */
+const ASSIGNMENT_COLUMNS = 'id, class_id, title, type, instructions, settings, open_at, due_at, allow_late, reminder_hours, assigned_to, status, created_at, published_at, notified_at, created_by, ai_rationale';
+type Row = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+
 const DISABLED_MESSAGE = 'This account has been disabled. Please contact your school administrator.';
 
 /** A random sign-in from the join-class function, used once by this device (never shown). */
@@ -626,31 +630,40 @@ export class SupabaseApi implements DataApi {
 
   // ------------------------------------------------------------------ assignments
 
-  async listAssignments(classId: string) {
-    const { data, error } = await this.client.from('assignments').select('*').eq('class_id', classId).order('due_at', { ascending: false, nullsFirst: true });
+  /** Adds each assignment's content, which students get without answers until they are due (see assignment_contents). */
+  private async withContent(rows: Row[]): Promise<Row[]> {
+    if (!rows.length) return rows;
+    const { data, error } = await this.client.rpc('assignment_contents', { p_ids: rows.map((r) => r.id) });
     fail(error);
-    return (data ?? []).map(toAssignment);
+    const byId = new Map(((data ?? []) as Array<{ id: string; content: unknown }>).map((r) => [r.id, r.content]));
+    return rows.map((r) => ({ ...r, content: byId.get(r.id) ?? { sections: [], custom: [] } }));
+  }
+
+  async listAssignments(classId: string) {
+    const { data, error } = await this.client.from('assignments').select(ASSIGNMENT_COLUMNS).eq('class_id', classId).order('due_at', { ascending: false, nullsFirst: true });
+    fail(error);
+    return (await this.withContent(data ?? [])).map(toAssignment);
   }
 
   async getAssignment(id: string) {
-    const { data, error } = await this.client.from('assignments').select('*').eq('id', id).maybeSingle();
+    const { data, error } = await this.client.from('assignments').select(ASSIGNMENT_COLUMNS).eq('id', id).maybeSingle();
     fail(error);
-    return data ? toAssignment(data) : null;
+    return data ? toAssignment((await this.withContent([data]))[0]) : null;
   }
 
   async saveAssignment(input: Partial<Assignment> & { classId: string }) {
     if (input.id) {
-      const { data, error } = await this.client.from('assignments').update(assignmentChanges(input)).eq('id', input.id).select().single();
+      const { data, error } = await this.client.from('assignments').update(assignmentChanges(input)).eq('id', input.id).select(ASSIGNMENT_COLUMNS).single();
       fail(error);
-      return toAssignment(data);
+      return toAssignment((await this.withContent([data as Row]))[0]);
     }
     const { data, error } = await this.client
       .from('assignments')
       .insert({ ...fromAssignment(input), title: input.title?.trim() || 'Untitled assignment', status: 'draft', content: input.content ?? { sections: [], custom: [] } })
-      .select()
+      .select(ASSIGNMENT_COLUMNS)
       .single();
     fail(error);
-    return toAssignment(data);
+    return toAssignment((await this.withContent([data as Row]))[0]);
   }
 
   async publishAssignment(id: string) {
