@@ -115,7 +115,18 @@ export function CheckBlock({ skillId, difficulty, onResult }: { skillId: string;
   const [result, setResult] = useState<ItemResult | null>(null);
   const [hints, setHints] = useState(0);
   const [showSolution, setShowSolution] = useState(false);
-  if (!skill || !item) return loaded === 'loading' && skillInfo(skillId) ? <div className="card h-40 animate-pulse bg-surface-2" aria-label="Loading question" /> : null;
+  if (!skill || !item) {
+    if (loaded === 'error' && skillInfo(skillId))
+      return (
+        <div role="alert" className="rounded-2xl border-2 border-dashed border-brand-200 bg-surface p-4 text-sm text-ink-2 sm:p-5">
+          <p className="mb-3">This question could not load. Gradileo was probably just updated, so reload the page to get the new version.</p>
+          <Button onClick={() => window.location.reload()}>
+            <RefreshCw className="h-4 w-4" /> Reload the page
+          </Button>
+        </div>
+      );
+    return loaded === 'loading' && skillInfo(skillId) ? <div className="card h-40 animate-pulse bg-surface-2" aria-label="Loading question" /> : null;
+  }
   const check = () => {
     const r = gradeItem(item, responses);
     if (r.parts.every((p) => p.invalid)) {

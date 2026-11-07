@@ -5,8 +5,10 @@ import '@fontsource-variable/lexend';
 import './index.css';
 import App from './App.tsx';
 import { startAnalytics } from './analytics';
+import { watchForNewBuild } from './staleBuild';
 
 startAnalytics();
+watchForNewBuild();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
