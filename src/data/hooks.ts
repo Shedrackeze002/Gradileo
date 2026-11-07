@@ -14,6 +14,7 @@ export const qk = {
   roster: (classId: string) => ['roster', classId] as const,
   profile: (id: string) => ['profile', id] as const,
   publications: (classId: string) => ['publications', classId] as const,
+  completedLessons: (classId: string) => ['completedLessons', classId] as const,
   resources: (classId: string) => ['resources', classId] as const,
   lessonPrefs: (classId: string, lessonId: string) => ['lessonPrefs', classId, lessonId] as const,
   boards: (classId: string, lessonId: string) => ['boards', classId, lessonId] as const,
@@ -172,6 +173,17 @@ export function useSetPublished(classId: string) {
   return useMutation({
     mutationFn: (v: { lessonId: string; published: boolean }) => api().setPublished(classId, v.lessonId, v.published),
     onSuccess: () => qc.invalidateQueries({ queryKey: qk.publications(classId) }),
+  });
+}
+
+export const useCompletedLessons = (classId: string | undefined) =>
+  useQuery({ queryKey: qk.completedLessons(classId ?? ''), queryFn: () => api().listCompletedLessons(classId!), enabled: !!classId });
+
+export function useSetLessonCompleted(classId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (v: { lessonId: string; completed: boolean }) => api().setLessonCompleted(classId, v.lessonId, v.completed),
+    onSuccess: () => qc.invalidateQueries({ queryKey: qk.completedLessons(classId) }),
   });
 }
 

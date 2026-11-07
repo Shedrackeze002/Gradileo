@@ -699,3 +699,33 @@ test('the privacy policy and terms of service are public, and linked from the la
   await expect(page).toHaveURL(/\/terms$/);
   expect(errors).toEqual([]);
 });
+
+test('a teacher marks lessons completed, sees what is covered and hides completed lessons', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/c/c_math10a/curriculum');
+  const lessons = page.getByTestId('lessons-covered');
+  await expect(lessons).toHaveText(/^0\/\d+$/);
+  const total = Number((await lessons.textContent())!.split('/')[1]);
+  await expect(page.getByTestId('topics-covered')).toHaveText(/^0\/\d+$/);
+  // Mark every lesson of the first topic completed: the topic then counts as covered.
+  const firstUnit = page.locator('.card').nth(1);
+  const marks = firstUnit.getByRole('button', { name: 'Mark lesson completed' });
+  const inFirst = await marks.count();
+  for (let i = 0; i < inFirst; i++) {
+    await marks.first().click();
+    await expect(lessons).toHaveText(`${i + 1}/${total}`);
+  }
+  await expect(page.getByTestId('topics-covered')).toHaveText(/^1\/\d+$/);
+  // Hiding completed lessons hides the finished topic, and the choice is remembered.
+  const firstTitle = (await firstUnit.locator('button[aria-expanded] span.block.text-lg').textContent())!;
+  await page.getByRole('switch', { name: 'Hide completed lessons' }).click();
+  await expect(page.getByText(firstTitle, { exact: true })).toHaveCount(0);
+  await expect(page.getByText(/1 completed topic is hidden/)).toBeVisible();
+  await page.reload();
+  await expect(page.getByTestId('topics-covered')).toHaveText(/^1\/\d+$/);
+  await expect(page.getByText(firstTitle, { exact: true })).toHaveCount(0);
+  await page.getByRole('switch', { name: 'Hide completed lessons' }).click();
+  await expect(page.getByText(firstTitle, { exact: true })).toBeVisible();
+  expect(errors).toEqual([]);
+});

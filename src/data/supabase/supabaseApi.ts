@@ -68,6 +68,7 @@ import {
   toMyJoinRequest,
   toNotification,
   toProfile,
+  toLessonCompletion,
   toPublication,
   toResource,
   toBoard,
@@ -413,6 +414,24 @@ export class SupabaseApi implements DataApi {
       fail(error);
     } else {
       const { error } = await this.client.from('publications').delete().eq('class_id', classId).eq('lesson_id', lessonId);
+      fail(error);
+    }
+  }
+
+  async listCompletedLessons(classId: string) {
+    const me = await this.uid();
+    const { data, error } = await this.client.from('lesson_progress').select('*').eq('class_id', classId).eq('teacher_id', me);
+    fail(error);
+    return (data ?? []).map(toLessonCompletion);
+  }
+
+  async setLessonCompleted(classId: string, lessonId: string, completed: boolean) {
+    const me = await this.uid();
+    if (completed) {
+      const { error } = await this.client.from('lesson_progress').upsert({ class_id: classId, teacher_id: me, lesson_id: lessonId }, { ignoreDuplicates: true });
+      fail(error);
+    } else {
+      const { error } = await this.client.from('lesson_progress').delete().eq('class_id', classId).eq('teacher_id', me).eq('lesson_id', lessonId);
       fail(error);
     }
   }

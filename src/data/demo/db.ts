@@ -9,6 +9,7 @@ import type {
   Insight,
   ReportCard,
   LessonEdit,
+  LessonCompletion,
   LessonPrefs,
   LiveAnswer,
   LiveQuestion,
@@ -63,6 +64,8 @@ export interface DemoDB {
   /** Presenting (added later; older saved demos may lack these). */
   boards?: Board[];
   lessonPrefs?: LessonPrefs[];
+  /** Lessons each teacher marked as covered (added later; older saved demos may lack this). */
+  lessonProgress?: LessonCompletion[];
   liveQuestions?: LiveQuestion[];
   liveAnswers?: LiveAnswer[];
   /** Students' questions during a presentation (added later). */

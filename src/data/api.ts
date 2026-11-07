@@ -34,6 +34,7 @@ import type {
   JoinResult,
   MyJoinRequest,
   Insight,
+  LessonCompletion,
   LessonPrefs,
   LiveAnswer,
   LiveQuestion,
@@ -131,6 +132,9 @@ export interface DataApi {
   // Curriculum
   listPublications(classId: string): Promise<Publication[]>;
   setPublished(classId: string, lessonId: string, published: boolean): Promise<void>;
+  /** The lessons the signed-in teacher has marked as covered with this class. */
+  listCompletedLessons(classId: string): Promise<LessonCompletion[]>;
+  setLessonCompleted(classId: string, lessonId: string, completed: boolean): Promise<void>;
   listResources(classId: string): Promise<Resource[]>;
   addResource(input: Omit<Resource, 'id' | 'createdAt'>): Promise<Resource>;
   deleteResource(id: string): Promise<void>;
