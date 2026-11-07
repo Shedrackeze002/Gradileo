@@ -9,7 +9,13 @@
  *    hovering pencil or a mouse too), and draws nothing;
  *  - on an iPad, Safari treats a pencil or finger moving over the page as text selection (it
  *    highlights instead of drawing), so the canvas cancels its touch events and the page cannot be
- *    selected while a stroke is drawn.
+ *    selected while a stroke is drawn;
+ *  - iPadOS can drop a pencil's events: Scribble (handwriting into text) or palm rejection may
+ *    cancel a stroke halfway, or swallow its pointerdown or pointerup. A pen has one tip, so the
+ *    surface never waits on a lost event: a pen touching the glass with no stroke under way starts
+ *    one (and a cancelled stroke carries on from where it stopped), and a new pen stroke, or the pen
+ *    hovering, ends the one before. Without this, a lost pointerup left the old stroke "drawing"
+ *    and every new stroke was ignored until it ended, so writing vanished and had to be redone.
  */
 import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { drawBackground, drawStroke, drawStrokes, hitStroke, pointerPressure, shapeStroke, StrokeBuilder, type BoardBackground, type InkColor, type ShapeKind, type Stroke } from '@/lib/ink.ts';
@@ -52,6 +58,8 @@ interface Active {
 }
 
 const PALM_AREA = 45 * 45;
+/** How soon after a pen's stroke is cancelled its next move still continues that stroke, in ms. */
+const RESUME_MS = 400;
 /** How long the pointer's trail takes to fade, in milliseconds. */
 const LASER_MS = 650;
 
@@ -66,6 +74,8 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
   const [eraseTick, setEraseTick] = useState(0);
   const frame = useRef(0);
   const clearLive = useRef(false);
+  /** Where a pen stroke that the system cancelled stopped, so the pen can carry on from there. */
+  const cancelled = useRef<{ id: number; x: number; y: number; p: number; t: number } | null>(null);
   const latest = useRef({ strokes, onCommit, mode, shape, color, size, penOnly, onPen, palette: theme.palette });
   latest.current = { strokes, onCommit, mode, shape, color, size, penOnly, onPen, palette: theme.palette };
 
@@ -224,10 +234,15 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
     if (hit) setEraseTick((t) => t + 1);
   };
 
-  const finish = (commit: boolean) => {
+  const finish = (commit: boolean, wasCancelled = false) => {
     const a = cur.current;
     cur.current = null;
     if (!a) return;
+    cancelled.current = null;
+    const pts = a.builder?.stroke.points;
+    if (wasCancelled && a.type === 'pen' && !a.erasing && !a.shapeFrom && pts && pts.length >= 3) {
+      cancelled.current = { id: a.id, x: pts[pts.length - 3], y: pts[pts.length - 2], p: pts[pts.length - 1], t: performance.now() };
+    }
     lockSelection(false);
     const { strokes: now, onCommit: commitFn } = latest.current;
     if (a.erasing) {
@@ -268,9 +283,17 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
     if (cur.current) {
       // A pen landing while a resting hand is drawing: drop the hand's stroke and follow the pen.
       if (e.pointerType === 'pen' && cur.current.type === 'touch') finish(false);
+      // A pen or mouse has one tip, so a new press means the last stroke's pointerup was lost.
+      else if (e.pointerType !== 'touch' && cur.current.type === e.pointerType) finish(true);
       else return;
     }
     e.preventDefault();
+    begin(e);
+  };
+
+  /** Starts a stroke (or an erase, or a shape) under a pointer that is touching the surface. */
+  const begin = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    const l = latest.current;
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
     } catch {
@@ -295,6 +318,10 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
       return;
     }
     a.builder = new StrokeBuilder(l.mode === 'highlighter' ? 'highlighter' : 'pen', l.color, l.mode === 'highlighter' ? l.size * 1.5 : l.size, pointGap);
+    // The same pen moving on soon after the system cancelled its stroke: join on where it stopped.
+    const c = cancelled.current;
+    cancelled.current = null;
+    if (c && c.id === e.pointerId && performance.now() - c.t < RESUME_MS) a.builder.add(c.x, c.y, c.p);
     a.builder.add(x, y, pointerPressure(e.pointerType, e.pressure));
     cur.current = a;
     drawLive();
@@ -302,6 +329,20 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
 
   const onMove = (e: ReactPointerEvent<HTMLCanvasElement>) => {
     if (active && latest.current.mode === 'pointer') return pointAt(e);
+    if (!active) return;
+    const touching = e.buttons !== 0 || e.pressure > 0;
+    if (e.pointerType === 'pen') {
+      const now = cur.current;
+      // The pen hovering (an iPad Pro shows it) over its own stroke: it lifted and the pointerup was lost.
+      if (now && now.id === e.pointerId && !touching) return finish(true);
+      // The pen on the glass with no stroke of its own: its pointerdown was swallowed, or the system
+      // cancelled its stroke and it carries on. Draw from here rather than lose the writing.
+      if (touching && (!now || (now.type === 'pen' && now.id !== e.pointerId) || now.type === 'touch')) {
+        if (now) finish(now.type !== 'touch');
+        begin(e);
+        return;
+      }
+    }
     const a = cur.current;
     if (!a || a.id !== e.pointerId) return;
     const native = e.nativeEvent;
@@ -324,7 +365,7 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
   };
 
   const onUp = (e: ReactPointerEvent<HTMLCanvasElement>) => {
-    if (cur.current?.id === e.pointerId) finish(true);
+    if (cur.current?.id === e.pointerId) finish(true, e.type === 'pointercancel');
   };
 
   return (
