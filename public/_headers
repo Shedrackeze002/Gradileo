@@ -4,17 +4,17 @@
 #  - Strict-Transport-Security: browsers only ever use HTTPS for gradileo.com.
 #  - X-Frame-Options: other sites cannot show Gradileo inside a frame (clickjacking).
 #  - Permissions-Policy: only the camera (exam mode) may be asked for, and only by Gradileo itself.
-#  - Content-Security-Policy-Report-Only: the policy the site will enforce, reported in the browser
-#    console for now so nothing breaks; once a check of the live site shows no reports it becomes
-#    Content-Security-Policy. The sha256 is index.html's theme script (src/securityHeaders.test.ts
-#    keeps the two in step).
+#  - Content-Security-Policy: scripts only from Gradileo, YouTube's player and Cloudflare's analytics;
+#    data only to Supabase, Cloudflare's analytics and MiniMax (the demo's own-key AI). Enforced since
+#    7 Nov 2026, after every browser test passed under it. The sha256 is index.html's theme script
+#    (src/securityHeaders.test.ts keeps the two in step).
 /*
   Strict-Transport-Security: max-age=31536000
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(self), microphone=(), geolocation=(), payment=(), usb=()
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'sha256-mR5mCVtakqt+rLKQ6YNoWR9038sdlomw5S3ZTm1/HsU=' https://www.youtube.com https://s.ytimg.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com; frame-src https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-mR5mCVtakqt+rLKQ6YNoWR9038sdlomw5S3ZTm1/HsU=' https://www.youtube.com https://s.ytimg.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://api.minimax.io https://api.minimax.cn; frame-src https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
 
 # The tutor's recordings are named by their content, so a browser can keep them.
 /tutor/*.mp3
