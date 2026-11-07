@@ -905,7 +905,8 @@ items ship or decisions change.
      quoted counts of courses, lessons and videos that went out of date. It now presents Gradileo as
      a platform for mathematics, chemistry and English, gives no counts or grade ranges (English for Grades 5 to 9 is coming), and shows the course picker
      on Chemistry (a new `teacher-subjects` picture). Every picture was taken again from today's app.
-     Next: the owner watches the new cut; it goes to YouTube once they are happy with it.
+   - Approved by the owner and published on YouTube (7 November 2026): https://youtu.be/VCPa_7uUjyM,
+     public, with its thumbnail and YouTube's own captions.
 
 ## Hosting
 
