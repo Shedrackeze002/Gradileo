@@ -93,8 +93,8 @@ items ship or decisions change.
   tutor answers) and stays closed to name-only students until their teacher lets them in;
   students get an assignment's content without the answers of teacher-written questions until
   the answers are due (`assignment_contents`); the site sends security headers (HSTS, frame
-  protection, nosniff, referrer and permissions policies, and a Content-Security-Policy in
-  report-only mode); DOMPurify updated; CI and backend workflows have read-only tokens.
+  protection, nosniff, referrer and permissions policies, and a Content-Security-Policy,
+  enforced since the same day); DOMPurify updated; CI and backend workflows have read-only tokens.
 
 ## Next, in order
 
@@ -968,8 +968,8 @@ items ship or decisions change.
 
 ## Technical follow-ups
 
-- Security follow-ups from the 7 November 2026 audit: switch the Content-Security-Policy from
-  report-only to enforced once the live site shows no reports; add Cloudflare Turnstile to
+- Security follow-ups from the 7 November 2026 audit (the Content-Security-Policy is enforced
+  since 7 November, after all 73 browser tests passed under it with no reports): add Cloudflare Turnstile to
   sign-up and class-link joins (needs a Turnstile site key and Supabase Auth's CAPTCHA setting);
   upgrade KaTeX to 0.19 (an advisory, low risk while `trust` stays off) and vitest (dev only).
   Owner-side: turn on leaked-password protection in Supabase Auth, check "Always Use HTTPS" in
