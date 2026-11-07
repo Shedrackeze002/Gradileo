@@ -83,6 +83,12 @@ items ship or decisions change.
   and each generated-question row in the editor now shows an example of its questions (Q1, Q2...)
   so they read as questions rather than skill names.
 
+- Teacher lesson progress (7 November 2026, the owner's request): on the curriculum page a
+  teacher marks each lesson completed once taught, sees how many topics and lessons are covered
+  out of the total (for example 3/14 topics, 14/50 lessons; a topic counts once all its lessons
+  are done), and can hide completed lessons to declutter the page. Marks are kept per teacher and
+  per class, and students never see them. The lesson page has the same "Mark completed" button.
+
 ## Next, in order
 
 0. **Rename EduCore to Gradileo** (the owner's decision, after the Math 10C Unit 2 videos and

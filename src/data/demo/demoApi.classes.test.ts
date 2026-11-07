@@ -47,6 +47,20 @@ describe('demo teacher classes', () => {
     expect(again.courseId).toBe('chem-10');
   });
 
+  it('keeps the lessons a teacher marked completed, per class', async () => {
+    const a = await api.createClass({ name: 'Chemistry 10', courseId: 'chem-10' });
+    const b = await api.createClass({ name: 'Chemistry 10', section: 'Period 3', courseId: 'chem-10' });
+    await api.setLessonCompleted(a.id, 'c10-1-1', true);
+    await api.setLessonCompleted(a.id, 'c10-1-1', true);
+    await api.setLessonCompleted(a.id, 'c10-1-2', true);
+    expect((await api.listCompletedLessons(a.id)).map((c) => c.lessonId).sort()).toEqual(['c10-1-1', 'c10-1-2']);
+    expect(await api.listCompletedLessons(b.id)).toHaveLength(0);
+    await api.setLessonCompleted(a.id, 'c10-1-1', false);
+    expect((await api.listCompletedLessons(a.id)).map((c) => c.lessonId)).toEqual(['c10-1-2']);
+    await api.deleteClass(a.id);
+    await expect(api.listCompletedLessons(a.id)).rejects.toThrow();
+  });
+
   it('deletes a class with everything in it', async () => {
     const c = await api.createClass({ name: 'Chemistry 10', courseId: 'chem-10' });
     await api.setPublished(c.id, 'c10-1-1', true);

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ExternalLink, FileText, Link2, MessageCircleQuestion, PencilLine, PenLine, Plus, Presentation, Target, Trash2, Video } from 'lucide-react';
 import { lessonById } from '@engine/curriculum/index.ts';
 import { LEVELS, type MasteryLevel } from '@engine/mastery.ts';
-import { useAddResource, useBoards, useClassQuestions, useDeleteBoard, useDeleteQuestion, useDeleteResource, useMastery, usePublications, useResources, useRoster, useSetBoardShared, useSetPublished, useSetQuestionStatus } from '@/data/hooks.ts';
+import { useAddResource, useBoards, useClassQuestions, useCompletedLessons, useDeleteBoard, useDeleteQuestion, useDeleteResource, useMastery, usePublications, useResources, useRoster, useSetBoardShared, useSetLessonCompleted, useSetPublished, useSetQuestionStatus } from '@/data/hooks.ts';
 import type { Board, ClassQuestion, Resource } from '@/data/types.ts';
 import { Badge, Button, Card, CardBody, CardHeader, EmptyState, IconButton, Input, Modal, PageHeader, Switch, Tabs, Textarea, useToast } from '@/components/ui/index.ts';
 import { MasteryBar, MasteryLegend } from '@/components/mastery/Mastery.tsx';
@@ -13,7 +13,7 @@ import { videoEmbedUrl } from '@/features/lessons/LessonBlocks.tsx';
 import { BoardPageCanvas, BoardViewer } from '@/features/whiteboard/BoardView.tsx';
 import { fmtDate, fmtDateTime } from '@/lib/dates.ts';
 import { masteryMap, skillLabel, stateOf } from '../shared/derive.ts';
-import { AssignMenu } from './CurriculumPage.tsx';
+import { AssignMenu, CompletedButton } from './CurriculumPage.tsx';
 import { useClassId } from './shared.tsx';
 
 export default function TeacherLessonPage() {
@@ -22,6 +22,8 @@ export default function TeacherLessonPage() {
   const meta = lessonById(lessonId);
   const pubs = usePublications(classId);
   const setPub = useSetPublished(classId);
+  const completed = useCompletedLessons(classId);
+  const setDone = useSetLessonCompleted(classId);
   const resources = useResources(classId);
   const roster = useRoster(classId);
   const mastery = useMastery({ classId });
@@ -30,6 +32,7 @@ export default function TeacherLessonPage() {
   const [editing, setEditing] = useState<SectionSource | null>(null);
   const toast = useToast();
   const isPublished = (pubs.data ?? []).some((p) => p.lessonId === lessonId);
+  const isDone = (completed.data ?? []).some((c) => c.lessonId === lessonId);
   const mine = (resources.data ?? []).filter((r) => r.lessonId === lessonId);
 
   const skillRows = useMemo(() => {
@@ -62,6 +65,18 @@ export default function TeacherLessonPage() {
                 label={<span className="text-sm">{isPublished ? 'Published' : 'Hidden from students'}</span>}
               />
             </div>
+            <CompletedButton
+              done={isDone}
+              busy={setDone.isPending}
+              onToggle={async () => {
+                try {
+                  await setDone.mutateAsync({ lessonId, completed: !isDone });
+                  toast({ kind: 'success', title: isDone ? 'Marked as not yet covered' : 'Lesson marked completed' });
+                } catch (e) {
+                  toast({ kind: 'error', title: 'Could not save', body: e instanceof Error ? e.message : String(e) });
+                }
+              }}
+            />
             <Button variant="secondary" to={`/present/${classId}/${lessonId}`} icon={<Presentation className="h-4 w-4" />}>
               Present
             </Button>

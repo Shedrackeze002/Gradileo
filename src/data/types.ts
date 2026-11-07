@@ -172,6 +172,14 @@ export interface Publication {
   publishedAt: string;
 }
 
+/** A lesson a teacher has marked as covered with a class (each teacher keeps their own list). */
+export interface LessonCompletion {
+  classId: string;
+  teacherId: string;
+  lessonId: string;
+  completedAt: string;
+}
+
 export interface Resource {
   id: string;
   classId: string;

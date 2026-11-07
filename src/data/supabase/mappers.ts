@@ -13,6 +13,7 @@ import type {
   Insight,
   MyJoinRequest,
   Profile,
+  LessonCompletion,
   Publication,
   ReportCard,
   Resource,
@@ -60,6 +61,7 @@ export const toClass = (r: Row): ClassRoom => ({
   archived: r.archived,
 });
 
+export const toLessonCompletion = (r: Row): LessonCompletion => ({ classId: r.class_id, teacherId: r.teacher_id, lessonId: r.lesson_id, completedAt: r.completed_at });
 export const toPublication = (r: Row): Publication => ({ classId: r.class_id, lessonId: r.lesson_id, publishedAt: r.published_at });
 
 export const toResource = (r: Row): Resource => ({

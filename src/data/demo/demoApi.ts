@@ -62,6 +62,7 @@ import type {
   NotificationKind,
   Profile,
   ProposedAction,
+  LessonCompletion,
   Publication,
   Resource,
   SkillEvent,
@@ -157,6 +158,7 @@ export class DemoApi implements DataApi {
     this.db.audit ??= [];
     this.db.boards ??= [];
     this.db.lessonPrefs ??= [];
+    this.db.lessonProgress ??= [];
     this.db.liveQuestions ??= [];
     this.db.liveAnswers ??= [];
     this.db.presentations ??= [];
@@ -175,7 +177,7 @@ export class DemoApi implements DataApi {
   /** Erase all demo data and rebuild the sample class. */
   async reset(): Promise<void> {
     clearDb();
-    this.db = { ...(await buildSeed()), settings: { teacherSignup: 'open' }, audit: [], boards: [], lessonPrefs: [], liveQuestions: [], liveAnswers: [], presentations: [], classQuestions: [], joinRequests: [], courseRequests: [], lessonEdits: [], videoLinks: {} };
+    this.db = { ...(await buildSeed()), settings: { teacherSignup: 'open' }, audit: [], boards: [], lessonPrefs: [], lessonProgress: [], liveQuestions: [], liveAnswers: [], presentations: [], classQuestions: [], joinRequests: [], courseRequests: [], lessonEdits: [], videoLinks: {} };
     saveDb(this.db);
     sessionSet(null);
     this.authListeners.forEach((l) => l(null));
@@ -662,6 +664,24 @@ export class DemoApi implements DataApi {
       for (const sid of this.rosterIds(classId)) this.notify(sid, 'announcement', 'New lesson available', `A new lesson was published in ${c.name}.`, `/s/learn/${lessonId}`);
     }
     if (!published) this.db.publications = this.db.publications.filter((p) => !(p.classId === classId && p.lessonId === lessonId));
+    this.persist();
+  }
+
+  async listCompletedLessons(classId: string): Promise<LessonCompletion[]> {
+    await this.ready;
+    const me = this.me();
+    this.requireTeacherOf(classId);
+    return this.db.lessonProgress!.filter((p) => p.classId === classId && p.teacherId === me.id);
+  }
+
+  async setLessonCompleted(classId: string, lessonId: string, completed: boolean) {
+    await this.ready;
+    const me = this.me();
+    this.requireTeacherOf(classId);
+    const mine = (p: LessonCompletion) => p.classId === classId && p.teacherId === me.id && p.lessonId === lessonId;
+    const exists = this.db.lessonProgress!.some(mine);
+    if (completed && !exists) this.db.lessonProgress!.push({ classId, teacherId: me.id, lessonId, completedAt: nowIso() });
+    if (!completed) this.db.lessonProgress = this.db.lessonProgress!.filter((p) => !mine(p));
     this.persist();
   }
 
