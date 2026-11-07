@@ -88,6 +88,13 @@ items ship or decisions change.
   out of the total (for example 3/14 topics, 14/50 lessons; a topic counts once all its lessons
   are done), and can hide completed lessons to declutter the page. Marks are kept per teacher and
   per class, and students never see them. The lesson page has the same "Mark completed" button.
+- Security audit and fixes (7 November 2026, the owner's request): the AI tutor has a daily
+  limit across all users (`AI_TUTOR_DAILY_LIMIT`, 3000 MiniMax calls in 24 hours, then the offline
+  tutor answers) and stays closed to name-only students until their teacher lets them in;
+  students get an assignment's content without the answers of teacher-written questions until
+  the answers are due (`assignment_contents`); the site sends security headers (HSTS, frame
+  protection, nosniff, referrer and permissions policies, and a Content-Security-Policy in
+  report-only mode); DOMPurify updated; CI and backend workflows have read-only tokens.
 
 ## Next, in order
 
@@ -961,6 +968,12 @@ items ship or decisions change.
 
 ## Technical follow-ups
 
+- Security follow-ups from the 7 November 2026 audit: switch the Content-Security-Policy from
+  report-only to enforced once the live site shows no reports; add Cloudflare Turnstile to
+  sign-up and class-link joins (needs a Turnstile site key and Supabase Auth's CAPTCHA setting);
+  upgrade KaTeX to 0.19 (an advisory, low risk while `trust` stays off) and vitest (dev only).
+  Owner-side: turn on leaked-password protection in Supabase Auth, check "Always Use HTTPS" in
+  Cloudflare, and set a spending limit on the MiniMax account.
 - Lower priority since Gradileo is no longer aimed at Alberta first (17 October 2026): check the
   K&E, Math 10-3, Grade 11 and Grade 12 outcome wording word for word against Alberta's
   program of studies and *Outcomes with Assessment Standards*. Their hosts are now reachable from

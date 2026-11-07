@@ -28,6 +28,10 @@ on:
       - 'supabase/**'
       - 'engine/**'
 
+# The token only needs to read the code.
+permissions:
+  contents: read
+
 jobs:
   deploy:
     # A closed pull request deploys only when it was merged.
