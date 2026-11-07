@@ -128,6 +128,21 @@ test('on a touch screen the presentation stays put, panels still scroll, and a p
   expect(errors).toEqual([]);
 });
 
+test('on a computer the full-screen button stays, even in an installed app or a full-screen window', async ({ page }) => {
+  // Chrome reports display-mode: standalone for an installed app and display-mode: fullscreen for a
+  // window the system made full screen; neither is an iPad's Home Screen app.
+  await page.addInitScript(() => {
+    const real = window.matchMedia.bind(window);
+    window.matchMedia = (q: string) => (/display-mode: (standalone|fullscreen)/.test(q) ? ({ ...real(q), matches: true, media: q } as MediaQueryList) : real(q));
+  });
+  await signInDemo(page, 'Teacher');
+  await page.goto('/present/c_math10a/m10c-2-1');
+  await expect(page.locator('[aria-roledescription="slide"]')).toBeVisible();
+  await page.getByRole('button', { name: 'Toggle full screen' }).click();
+  await expect.poll(() => page.evaluate(() => !!document.fullscreenElement)).toBe(true);
+  await expect(page.getByRole('dialog', { name: 'Full screen on an iPad' })).toHaveCount(0);
+});
+
 test.describe('on an iPad', () => {
   test.use({ userAgent: 'Mozilla/5.0 (iPad; CPU OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/141.0 Mobile/15E148 Safari/604.1', hasTouch: true });
 

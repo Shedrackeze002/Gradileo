@@ -193,7 +193,10 @@ export default function PresentMode() {
   // full screen that stays put. So on an iPad the button explains that the first time; the
   // browser's full screen is still one tap away, and it is never offered again when it closes.
   const apple = useMemo(appleTouchDevice, []);
-  const homeApp = useMemo(homeScreenApp, []);
+  // Only an iPad's Home Screen app hides the button. On a computer, an installed app's window, or a
+  // browser window the system has made full screen (Chrome then reports display-mode: fullscreen),
+  // still has bars a presenter wants gone, so the button stays.
+  const homeApp = useMemo(() => apple && homeScreenApp(), [apple]);
   const [fullHelp, setFullHelp] = useState(false);
   const browserFull = () => {
     setFullHelp(false);
