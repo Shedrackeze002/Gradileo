@@ -900,8 +900,12 @@ items ship or decisions change.
      report card link) and privacy. It shows the app itself: the video stage has a `screen`
      element, a picture of Gradileo with spots the narration points at, and
      `video/tools/screens.ts` takes the pictures from the demo (PR #76). Rendered (8:57) and in
-     Drive (`Gradileo videos/About Gradileo/gradileo-intro/`), and sent to the owner. Next: the
-     owner watches it; it goes to YouTube once they are happy with it.
+     Drive (`Gradileo videos/About Gradileo/gradileo-intro/`), and sent to the owner.
+   - Revised (4 November 2026, the owner's review): the first cut was about mathematics only and
+     quoted counts of courses, lessons and videos that went out of date. It now presents Gradileo as
+     a platform for mathematics, chemistry and English, gives no counts or grade ranges (English for Grades 5 to 9 is coming), and shows the course picker
+     on Chemistry (a new `teacher-subjects` picture). Every picture was taken again from today's app.
+     Next: the owner watches the new cut; it goes to YouTube once they are happy with it.
 
 ## Hosting
 
