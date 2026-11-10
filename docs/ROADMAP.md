@@ -973,7 +973,13 @@ items ship or decisions change.
   from Gradileo <no-reply@gradileo.com>, replies go to admin@gradileo.com, and each email says
   why it came. A migration makes the scheduler's secret inside the database. Owner-side (one
   pass, docs/SETUP.md 3.3): a Resend account with two keys, the GitHub secret `RESEND_API_KEY`,
-  Supabase's SMTP form for sign-in emails, Zone DNS Edit on the email token, then one run.
+  Supabase's SMTP form for sign-in emails, Zone DNS Edit on the email token, then one run. Live
+  since 10 November (test email arrived in the owner's inbox, not spam).
+- Email for students without one (11 November 2026, the owner's request): a student with a username
+  from the teacher, or a name-only account let into a class, can add an email address in Settings
+  (theirs or a parent's). It counts once the six-digit code sent to it is typed back (5 codes an
+  hour, 5 tries a code, 15 minutes each); reminders then go there, and it can be changed or removed.
+  Only the student sees it (`notification_emails`, the `notify-email` function).
 - Visitor counts (6 November 2026): Cloudflare reported 18,032 page views on gradileo.com in the
   month after it went live (13 October), but the zone's count includes bots, and Supabase had only
   8 accounts (1 teacher, 7 students, 6 of them since 13 October). Built: Cloudflare Web Analytics

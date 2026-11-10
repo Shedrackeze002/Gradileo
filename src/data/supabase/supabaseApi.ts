@@ -34,6 +34,7 @@ import type {
   JoinResult,
   NewStudentCredential,
   PlatformSettings,
+  NotificationEmail,
   Profile,
   ProposedAction,
   ReportCard,
@@ -247,6 +248,22 @@ export class SupabaseApi implements DataApi {
   async changePassword(newPassword: string) {
     const { error } = await this.client.auth.updateUser({ password: newPassword });
     fail(error);
+  }
+
+  getNotificationEmail() {
+    return this.invoke<NotificationEmail>('notify-email', { action: 'get' });
+  }
+
+  requestNotificationEmail(email: string) {
+    return this.invoke<NotificationEmail>('notify-email', { action: 'request', email });
+  }
+
+  confirmNotificationEmail(code: string) {
+    return this.invoke<NotificationEmail>('notify-email', { action: 'confirm', code });
+  }
+
+  removeNotificationEmail() {
+    return this.invoke<NotificationEmail>('notify-email', { action: 'remove' });
   }
 
   // ------------------------------------------------------------------ classes

@@ -21,7 +21,9 @@ interface EmailSettings {
 }
 
 // Says why the email came, which helps people (and spam filters) trust it.
-const FOOTER = 'You get this email because your teacher turned on email reminders for this class in Gradileo.';
+const FOOTER =
+  'You get this email because your teacher turned on email reminders for this class in Gradileo. ' +
+  'A student who added this address can remove it in Settings.';
 
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
@@ -43,13 +45,23 @@ serve(async (req) => {
   const since = new Date(Date.now() - 86_400_000).toISOString();
   const { data, error } = await db
     .from('notifications')
-    .select('id, title, body, link, profiles!inner(email, full_name), assignments(class_id, classes(name, settings))')
+    .select('id, user_id, title, body, link, profiles!inner(email, full_name), assignments(class_id, classes(name, settings))')
     .is('emailed_at', null)
     .in('kind', ['assignment', 'reminder'])
     .gte('created_at', since)
     .order('created_at')
     .limit(200);
   if (error) throw new Error(error.message);
+
+  // Students without an email address of their own may add and confirm one in Settings
+  // (notify-email); it takes the place of their account's address.
+  const userIds = [...new Set(((data ?? []) as Array<{ user_id: string }>).map((n) => n.user_id))];
+  const added = new Map<string, string>();
+  if (userIds.length) {
+    const { data: rows, error: e } = await db.from('notification_emails').select('user_id, email').in('user_id', userIds).not('verified_at', 'is', null);
+    if (e) throw new Error(e.message);
+    for (const r of rows ?? []) if (r.email) added.set(r.user_id, r.email);
+  }
 
   let sent = 0;
   const processed: string[] = [];
@@ -59,8 +71,9 @@ serve(async (req) => {
     const profile = Array.isArray(n.profiles) ? n.profiles[0] : n.profiles;
     const assignment = Array.isArray(n.assignments) ? n.assignments[0] : n.assignments;
     const cls = assignment ? (Array.isArray(assignment.classes) ? assignment.classes[0] : assignment.classes) : null;
-    const email: string = profile?.email ?? '';
-    if (!cls?.settings?.emailReminders || !email || email.endsWith(`@${DOMAIN}`)) continue;
+    const own: string = profile?.email ?? '';
+    const email = added.get(n.user_id) ?? (own.endsWith(`@${DOMAIN}`) ? '' : own);
+    if (!cls?.settings?.emailReminders || !email) continue;
     const href = appUrl && n.link ? `${appUrl}${n.link}` : appUrl;
     const html = `<div style="font-family:system-ui,sans-serif;max-width:520px;margin:auto;padding:24px;color:#14161f">
       <div style="font-size:12px;font-weight:700;color:#6a43e3;letter-spacing:.06em;text-transform:uppercase">Gradileo · ${esc(cls.name ?? '')}</div>
