@@ -240,3 +240,32 @@ describe('a second, independent solution of the AI’s answers', () => {
     expect((await regenerateQuestion(regen, ctx, { apiKey: 'k' }, ids)).problem).toMatch(/did not pass the checks \(a second, independent solution got 10, not 14\)/);
   });
 });
+
+describe('English written questions', () => {
+  const eng = draftContext('eng-10', ['e10-6-2'], new Map());
+  const engReq = request({ lessonIds: ['e10-6-2'], count: 2, formats: ['written'] });
+
+  it('are offered the ready-made rubrics, and only in English', () => {
+    expect(eng.subject).toBe('English');
+    expect(draftPrompt(engReq, eng).system).toMatch(/"rubric", the id of the rubric it is marked with: "analytical-essay"/);
+    expect(draftPrompt(request(), ctx).system).not.toMatch(/analytical-essay/);
+  });
+
+  it('get the rubric the AI names, and none for an unknown one', () => {
+    const { draft } = parseDraft(
+      {
+        questions: [
+          { format: 'written', skillId: 'e10-thesis', prompt: 'Write an analytical essay on “The Story of an Hour”.', points: 10, rubric: 'analytical-essay', solution: 'A strong essay argues that…' },
+          { format: 'written', skillId: 'e10-evidence-analysis', prompt: 'Explain one quotation.', points: 4, rubric: 'sonnet', solution: 'Names the quotation and explains it.' },
+        ],
+      },
+      engReq,
+      eng,
+      ids,
+    );
+    expect(draft.custom[0].rubric?.name).toBe('Analytical essay');
+    expect(draft.custom[0].rubric?.criteria).toHaveLength(5);
+    expect(draft.custom[1]).not.toHaveProperty('rubric');
+  });
+});
+

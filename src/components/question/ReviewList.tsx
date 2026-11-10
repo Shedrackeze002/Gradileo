@@ -1,10 +1,11 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { CheckCircle2, ChevronDown, CircleDashed, Lightbulb, XCircle } from 'lucide-react';
-import { itemFromRef, type AssignmentContent, type StoredResponse } from '@engine/assemble.ts';
+import { itemFromRef, rubricOf, type AssignmentContent, type StoredResponse } from '@engine/assemble.ts';
 import { gradeItem } from '@engine/grade.ts';
 import type { ItemRef } from '@engine/types.ts';
 import { skillInfo } from '@engine/curriculum/index.ts';
 import { QuestionView, SolutionPanel } from './QuestionView.tsx';
+import { RubricGuide, RubricResult } from './Rubric.tsx';
 import { cn } from '@/lib/cn.ts';
 import { SkillsGate } from '@/components/SkillsGate.tsx';
 import { refSkillIds } from '@/lib/useSkills.ts';
@@ -16,6 +17,8 @@ type ReviewListProps = {
   assignmentId: string;
   showSolutions?: boolean;
   renderExtra?: (index: number) => ReactNode;
+  /** Show the rubric and its levels on written responses (the teacher marks with their own grid instead). */
+  showRubric?: boolean;
 };
 
 /** Every question of an attempt with the student's answers, once the questions' generators have loaded. */
@@ -27,7 +30,7 @@ export function ReviewList(props: ReviewListProps) {
   );
 }
 
-function Rows({ items, responses, content, assignmentId, showSolutions = true, renderExtra }: ReviewListProps) {
+function Rows({ items, responses, content, assignmentId, showSolutions = true, renderExtra, showRubric = true }: ReviewListProps) {
   const rows = useMemo(
     () =>
       items.map((ref, i) => {
@@ -76,6 +79,7 @@ function Rows({ items, responses, content, assignmentId, showSolutions = true, r
                     The teacher changed the mark on this question to {Math.round(ms! * 100)}%{result ? ` (it was marked ${result.correct ? 'correct' : result.score > 0 ? 'partly correct' : 'incorrect'} automatically)` : ''}.
                   </div>
                 )}
+                {showRubric && manual && <Rubric criteria={rubricOf(item)} levels={resp.rubric} scored={typeof ms === 'number'} points={Math.max(1, Math.round(item.points ?? 1))} />}
                 {resp.comment && (
                   <div className="rounded-xl bg-info-soft px-3 py-2 text-sm text-info-ink">
                     <span className="font-semibold">Teacher comment: </span>
@@ -91,4 +95,10 @@ function Rows({ items, responses, content, assignmentId, showSolutions = true, r
       })}
     </div>
   );
+}
+
+/** The levels the teacher gave, or, before it is marked (or when marked without the rubric), the rubric itself. */
+function Rubric({ criteria, levels, scored, points }: { criteria: ReturnType<typeof rubricOf>; levels: StoredResponse['rubric']; scored: boolean; points: number }) {
+  if (!criteria) return null;
+  return scored && levels ? <RubricResult criteria={criteria} levels={levels} points={points} /> : <RubricGuide criteria={criteria} />;
 }

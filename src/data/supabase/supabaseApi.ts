@@ -15,6 +15,7 @@ import type { AiConfigStatus, DataApi, SignUpInput, SubmissionFilter, TutorReply
 import { offlineScript, type TutorAnswer, type TutorChunk, type TutorQuestion, type TutorScript } from '@engine/ai/tutor.ts';
 import type { DraftRequest, DraftResult, RegenerateRequest, RegenerateResult } from '@engine/ai/builder.ts';
 import type { MarkResult } from '@engine/ai/marking.ts';
+import type { RubricLevels } from '@engine/rubric.ts';
 import type { ReportCardContent } from '@engine/ai/reportCard.ts';
 import type {
   AdminOverview,
@@ -740,8 +741,8 @@ export class SupabaseApi implements DataApi {
     fail(error);
   }
 
-  async gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string) {
-    const res = await this.invoke<{ submission: Record<string, unknown> }>('grade-submission', { action: 'manual', submissionId, itemIndex, score: score01, comment });
+  async gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string, rubric?: RubricLevels) {
+    const res = await this.invoke<{ submission: Record<string, unknown> }>('grade-submission', { action: 'manual', submissionId, itemIndex, score: score01, comment, rubric });
     return toSubmission(res.submission);
   }
 

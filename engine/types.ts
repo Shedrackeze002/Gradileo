@@ -5,6 +5,7 @@
  * Text fields are Markdown with inline LaTeX ($...$) and display LaTeX ($$...$$).
  */
 
+import type { RubricCriterion } from './rubric.ts';
 export type Difficulty = 1 | 2 | 3;
 
 export interface Choice {
@@ -104,7 +105,8 @@ export type AnswerSpec =
    * an empty box meaning 1. Graded by whether the atoms and the charge balance.
    */
   | { kind: 'coefficients'; reactants: string[]; products: string[] }
-  | { kind: 'manual'; rubric?: string; maxPoints?: number };
+  /** Marked by the teacher; `criteria` is the rubric it is marked with, if any (engine/rubric.ts). */
+  | { kind: 'manual'; rubric?: string; maxPoints?: number; criteria?: RubricCriterion[] };
 
 export interface Part {
   /** Label shown before the input, e.g. "Slope", "x =" (Markdown + LaTeX). */

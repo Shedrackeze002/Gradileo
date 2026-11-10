@@ -20,6 +20,7 @@ import { answerTutorQuestion, normalizeChunk, normalizeQuestion, writeTutorScrip
 import { classMastery, draftAssignment, draftContext, normalizeDraftRequest, normalizeRegenerateRequest, regenerateQuestion, type DraftRequest, type DraftResult, type RegenerateRequest, type RegenerateResult } from '@engine/ai/builder.ts';
 import { markRequestFor, suggestMark, type MarkResult } from '@engine/ai/marking.ts';
 import type { SkillState } from '@engine/mastery.ts';
+import type { RubricLevels } from '@engine/rubric.ts';
 import { exitCount, isLocked, mergeIntegrity, type Integrity } from '@engine/integrity.ts';
 import type { AiConfigStatus, DataApi, SignUpInput, SubmissionFilter, TutorReply } from '../api.ts';
 import type {
@@ -1290,7 +1291,7 @@ export class DemoApi implements DataApi {
     this.persist();
   }
 
-  async gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string) {
+  async gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string, rubric?: RubricLevels) {
     const at = this.db.submissions.findIndex((x) => x.id === submissionId);
     if (at < 0) throw new Error('Submission not found.');
     this.requireTeacherOf(this.db.submissions[at].classId);
@@ -1298,10 +1299,11 @@ export class DemoApi implements DataApi {
     // and would not see the change.
     const s = { ...this.db.submissions[at] };
     const a = s.assignmentId ? this.db.assignments.find((x) => x.id === s.assignmentId) : null;
-    s.responses = { ...s.responses, [itemIndex]: { ...(s.responses[itemIndex] ?? { answers: [], hintsUsed: 0 }), manualScore: score01 === null ? null : Math.max(0, Math.min(1, score01)), comment: comment ?? null } };
     // Recompute totals with the engine (teacher marks included).
-    const { gradeSubmission } = await import('@engine/assemble.ts');
+    const { gradeSubmission, itemFromRef, markResponse } = await import('@engine/assemble.ts');
     await loadSkills(refSkillIds(a?.content, s.items));
+    const item = s.items[itemIndex] ? itemFromRef(s.items[itemIndex], a?.content ?? { sections: [], custom: [] }, a?.id ?? 'practice') : null;
+    s.responses = { ...s.responses, [itemIndex]: markResponse(item, s.responses[itemIndex], { score: score01, comment, rubric }) };
     const g = gradeSubmission(s.items, s.responses, a?.content ?? { sections: [], custom: [] }, a?.id ?? 'practice');
     s.score = g.score;
     s.maxScore = g.maxScore;
