@@ -105450,5 +105450,209 @@
         "working": "$x = 3^2 = 9$ and $y = 2(3) + 1 = 7$, so the point is at $(9, 7)$."
       }
     ]
+  },
+  "mx-7-1": {
+    "lessonId": "mx-7-1",
+    "title": "Error Intervals",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an error interval is",
+        "t": 23.155
+      },
+      {
+        "title": "Decimal places and significant figures",
+        "t": 80.361
+      },
+      {
+        "title": "Truncation",
+        "t": 143.422
+      },
+      {
+        "title": "Rounding or truncation?",
+        "t": 194.152
+      },
+      {
+        "title": "Your turn",
+        "t": 226.605
+      },
+      {
+        "title": "Summary",
+        "t": 264.28
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-1:q",
+        "t": 236.865,
+        "prompt": "A length $l$ is $8.4$ m, to $1$ decimal place. Which is its error interval?",
+        "choices": [
+          "$8.4 \\le l < 8.5$",
+          "$8.35 \\le l < 8.45$",
+          "$8.35 < l \\le 8.45$",
+          "$8.3 \\le l < 8.5$"
+        ],
+        "answer": 1,
+        "working": "The unit is $0.1$ m, so half a unit is $0.05$ m: $8.4 - 0.05 = 8.35$ and $8.4 + 0.05 = 8.45$. The lower bound is included and the upper bound is not."
+      }
+    ]
+  },
+  "mx-7-2": {
+    "lessonId": "mx-7-2",
+    "title": "Upper and Lower Bounds in Calculations",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding and multiplying",
+        "t": 16.614
+      },
+      {
+        "title": "Subtracting and dividing",
+        "t": 70.405
+      },
+      {
+        "title": "A speed",
+        "t": 105.246
+      },
+      {
+        "title": "A sensible answer",
+        "t": 170.877
+      },
+      {
+        "title": "Your turn",
+        "t": 199.816
+      },
+      {
+        "title": "Summary",
+        "t": 235.692
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-2:q",
+        "t": 210.303,
+        "prompt": "$a = 20$ and $b = 6$, each to the nearest whole number. What is the upper bound of $a - b$?",
+        "choices": [
+          "$14$",
+          "$13$",
+          "$14.5$",
+          "$15$"
+        ],
+        "answer": 3,
+        "working": "Use the upper bound of $a$ and the lower bound of $b$: $20.5 - 5.5 = 15$."
+      }
+    ]
+  },
+  "mx-7-3": {
+    "lessonId": "mx-7-3",
+    "title": "Recurring Decimals and Fractions",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dot notation",
+        "t": 24.073
+      },
+      {
+        "title": "From a fraction",
+        "t": 65.07
+      },
+      {
+        "title": "Back to a fraction",
+        "t": 110.963
+      },
+      {
+        "title": "A digit before the block",
+        "t": 162.849
+      },
+      {
+        "title": "Your turn",
+        "t": 212.177
+      },
+      {
+        "title": "Summary",
+        "t": 250.768
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-3:q",
+        "t": 223.566,
+        "prompt": "Write $0.\\dot{1}\\dot{8}$ (that is, $0.181818\\ldots$) as a fraction in its lowest terms.",
+        "choices": [
+          "$\\tfrac{9}{50}$",
+          "$\\tfrac{2}{11}$",
+          "$\\tfrac{18}{100}$",
+          "$\\tfrac{1}{8}$"
+        ],
+        "answer": 1,
+        "working": "Let $x = 0.1818\\ldots$. Then $100x = 18.1818\\ldots$, so $99x = 18$ and $x = \\tfrac{18}{99} = \\tfrac{2}{11}$."
+      }
+    ]
+  },
+  "mx-8-1": {
+    "lessonId": "mx-8-1",
+    "title": "Quadratic Sequences",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Second differences",
+        "t": 27.605
+      },
+      {
+        "title": "Finding the nth term",
+        "t": 72.578
+      },
+      {
+        "title": "Checking and a common mistake",
+        "t": 139.803
+      },
+      {
+        "title": "Which term?",
+        "t": 168.712
+      },
+      {
+        "title": "Your turn",
+        "t": 214.294
+      },
+      {
+        "title": "Summary",
+        "t": 251.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-1:q",
+        "t": 223.55,
+        "prompt": "Find the $n$th term of the sequence $3,\\ 9,\\ 19,\\ 33,\\ 51,\\ \\ldots$",
+        "choices": [
+          "$4n^2 - 1$",
+          "$2n^2 + 1$",
+          "$n^2 + 2$",
+          "$2n^2 + 2n - 1$"
+        ],
+        "answer": 1,
+        "working": "First differences $6, 10, 14, 18$; second differences $4$, so $2n^2$: $2, 8, 18, 32, 50$. The sequence minus $2n^2$ is $1, 1, 1, 1, 1$, so the $n$th term is $2n^2 + 1$."
+      }
+    ]
   }
 }
