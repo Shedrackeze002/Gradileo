@@ -115,22 +115,16 @@ Notes:
 In-app and browser notifications work without any setup. To also email reminders to students
 and parents who signed up with an email address:
 
-1. Create an account at [resend.com](https://resend.com) and verify a sending domain.
-2. Set the function secrets:
-
-   ```bash
-   supabase secrets set RESEND_API_KEY=<key> EMAIL_FROM="Gradileo <reminders@yourschool.ca>" \
-     APP_URL=https://<your-username>.github.io/Gradileo EDUCORE_CRON_SECRET=<long random string>
-   ```
-
-3. In the SQL editor, store the two values the scheduler needs in Vault:
-
-   ```sql
-   select vault.create_secret('https://<project-ref>.supabase.co', 'educore_project_url');
-   select vault.create_secret('<the same long random string>', 'educore_cron_secret');
-   ```
-
-4. Turn on **Also send reminders by email** in each class's settings.
+1. Set the function secret `APP_URL` (for example `https://gradileo.com`), so each email links back
+   to the app.
+2. Let the app send email from your domain with the *Set up sending email* workflow (3.3, "Sending
+   email from your domain"). It stores the Resend key, the sender and the reply-to address in
+   Vault, where the `send-emails` function reads them, together with the project URL the scheduler
+   needs. The scheduler's shared secret (`educore_cron_secret`) is made by a migration, inside the
+   database, so there is nothing to copy by hand. (The function secrets `RESEND_API_KEY`,
+   `EMAIL_FROM` and `EMAIL_REPLY_TO` still work for a copy without that workflow; Vault wins when
+   both are set.)
+3. Turn on **Also send reminders by email** in each class's settings.
 
 ### 2.7 Deploy the backend from GitHub (optional)
 
@@ -239,7 +233,7 @@ See GitHub's guide to [managing a custom domain for GitHub Pages](https://docs.g
 
 Cloudflare Email Routing forwards mail sent to an address at the domain (admin@gradileo.com) to
 an inbox you already have, free. It only receives mail; sending from the address needs an email
-service such as Resend (2.6). The *Set up email* workflow (`scripts/cloudflare-email.mjs`) turns
+service such as Resend (below). The *Set up email* workflow (`scripts/cloudflare-email.mjs`) turns
 it on through Cloudflare's API.
 
 1. Create a second Cloudflare API token (custom token) with these permissions, limited to your
@@ -261,6 +255,41 @@ it on through Cloudflare's API.
 
 To add another address such as hello@, add it to `ADDRESSES`; the workflow runs once the change
 is merged.
+
+#### Sending email from your domain
+
+Forwarding only receives mail. To send reminders and sign-in emails from an address at the
+domain (Gradileo <no-reply@gradileo.com>, with replies going to admin@gradileo.com), Gradileo uses
+[Resend](https://resend.com). Mail from your own domain, signed with its DKIM key and covered by
+SPF and DMARC records, is far less likely to land in spam than mail from a shared address. Do these
+steps in this order; each is done once.
+
+1. **Resend.** Create a free account at [resend.com](https://resend.com) (do not add the domain;
+   the workflow does that). Under **API Keys**, create two keys and keep each one until it is
+   pasted below, because Resend shows a key only once:
+   - "GitHub setup", permission **Full access**;
+   - "Supabase sign-in emails", permission **Sending access**, domain **All domains**.
+2. **GitHub.** Add the repository secret `RESEND_API_KEY` with the *GitHub setup* key.
+3. **Supabase sign-in emails.** In the dashboard, open **Authentication → Emails → SMTP Settings**,
+   turn on **Enable custom SMTP** and enter: sender email `no-reply@gradileo.com`, sender name
+   `Gradileo`, host `smtp.resend.com`, port `465`, username `resend`, password the *Supabase
+   sign-in emails* key. Save. (Supabase's own mail server sends only a few messages an hour and
+   only to the project's team, so this also lets every new teacher get their confirmation email.)
+4. **Cloudflare.** Under **My Profile → API Tokens**, edit the email token (3.3) and add the
+   permission **Zone → DNS → Edit** for the domain. Editing keeps the token's value, so the GitHub
+   secret stays as it is.
+5. **Run it.** Run **Actions → Set up sending email → Run workflow**. It adds the domain to Resend
+   (sending only), adds Resend's DNS records (`resend._domainkey`, and an MX and SPF record on
+   `send.`) and a DMARC record if the domain has none, waits for Resend to verify the domain
+   (usually a few minutes), sends a test message to admin@gradileo.com, then stores a key that can
+   only send from the domain in Supabase Vault for the reminders. It never touches the domain's
+   own MX and SPF records, which Email Routing owns. It ends with **Done**; the test message
+   arrives in the inbox that admin@ forwards to.
+
+Running the workflow again only adds what is missing and gives the reminders a fresh key (the old
+one is deleted). To reply as admin@gradileo.com from Gmail, add it under Gmail's **Settings →
+Accounts → Send mail as** with the same SMTP details as step 3 and a Resend key with Sending
+access.
 
 ---
 

@@ -962,9 +962,18 @@ items ship or decisions change.
      github.io/EduCore links no longer open; gradileo.com is the only address.
 - Email: done. admin@gradileo.com forwards to the owner's inbox through Cloudflare Email Routing,
   set up by the *Set up email* workflow (docs/SETUP.md 3.3; gradileo.com's MX and SPF records
-  point to Cloudflare). More addresses are a line in `scripts/cloudflare-email.mjs`. Next: send
-  from gradileo.com through Resend, which also lets reminders come from an address at
-  gradileo.com (and Gmail's "Send mail as").
+  point to Cloudflare). More addresses are a line in `scripts/cloudflare-email.mjs`.
+- Sending email from gradileo.com (10 November 2026). Found: no email had ever been sent. The
+  reminder sender (`send-emails`) had no Resend key and the scheduler's Vault secrets were never
+  set, and sign-up confirmations went through Supabase's own mail server, which sends only a few
+  an hour and only to the project's team. Built: the *Set up sending email* workflow
+  (`scripts/resend-email.mjs`, docs/SETUP.md 3.3) adds gradileo.com to Resend, adds its DKIM, SPF,
+  bounce MX and a DMARC record in Cloudflare (never the domain's own Email Routing records), waits
+  for verification, sends a test to admin@, and stores a sending-only key in Vault. Reminders come
+  from Gradileo <no-reply@gradileo.com>, replies go to admin@gradileo.com, and each email says
+  why it came. A migration makes the scheduler's secret inside the database. Owner-side (one
+  pass, docs/SETUP.md 3.3): a Resend account with two keys, the GitHub secret `RESEND_API_KEY`,
+  Supabase's SMTP form for sign-in emails, Zone DNS Edit on the email token, then one run.
 - Visitor counts (6 November 2026): Cloudflare reported 18,032 page views on gradileo.com in the
   month after it went live (13 October), but the zone's count includes bots, and Supabase had only
   8 accounts (1 teacher, 7 students, 6 of them since 13 October). Built: Cloudflare Web Analytics

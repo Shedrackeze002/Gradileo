@@ -355,7 +355,10 @@ reading time when a slide has no recording (a teacher's own resource, or a slide
 3. The browser shows new notifications instantly (Realtime), as a toast, and as a system
    notification when the tab is in the background.
 4. If the class has email reminders on, `send-emails` delivers `assignment` and `reminder`
-   notifications through Resend to students with a real email address.
+   notifications through Resend to students with a real email address, from
+   Gradileo <no-reply@gradileo.com>. Its Resend key and sender are in Vault (the *Set up sending
+   email* workflow writes them), read through `email_settings()`, which answers only the
+   scheduler's shared secret.
 
 ## AI teaching assistant
 
