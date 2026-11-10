@@ -16284,6 +16284,708 @@
       }
     ]
   },
+  "e5-1-1": {
+    "lessonId": "e5-1-1",
+    "title": "Story Elements: Characters, Setting and Plot",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The three story elements",
+        "t": 24.77
+      },
+      {
+        "title": "Finding the elements",
+        "t": 54.521
+      },
+      {
+        "title": "Who tells the story?",
+        "t": 84.812
+      },
+      {
+        "title": "Clues to the setting",
+        "t": 114.472
+      },
+      {
+        "title": "Your turn",
+        "t": 156.569
+      },
+      {
+        "title": "Summary",
+        "t": 183.608
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-1-1:q2",
+        "t": 162.991,
+        "prompt": "“The lanterns flickered as the knights rode across the castle bridge at midnight.” What is the setting?",
+        "choices": [
+          "The knights and their horses",
+          "A castle, at midnight, long ago",
+          "The knights ride across a bridge",
+          "A narrator who is one of the knights"
+        ],
+        "answer": 1,
+        "working": "The setting is where and when: a castle, at midnight, in a time of knights and lanterns. Choice A names characters, and Choice C is the plot."
+      }
+    ]
+  },
+  "e5-1-2": {
+    "lessonId": "e5-1-2",
+    "title": "Characters: Traits and Feelings",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Character traits",
+        "t": 23.684
+      },
+      {
+        "title": "Inferring a trait",
+        "t": 56.592
+      },
+      {
+        "title": "Feelings",
+        "t": 78.592
+      },
+      {
+        "title": "Characters change",
+        "t": 128.579
+      },
+      {
+        "title": "Your turn",
+        "t": 146.304
+      },
+      {
+        "title": "Summary",
+        "t": 175.506
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-1-2:q2",
+        "t": 153.298,
+        "prompt": "“Ana let her little brother go first on the swing, even though she had waited a long time.” Which trait does Ana show?",
+        "choices": [
+          "Nervous",
+          "Excited",
+          "Selfish",
+          "Patient and kind"
+        ],
+        "answer": 3,
+        "working": "She waits and lets her brother go first, so she is patient and kind. Nervous and excited are feelings, and selfish is the opposite of what she does."
+      }
+    ]
+  },
+  "e5-1-3": {
+    "lessonId": "e5-1-3",
+    "title": "Problem, Events and Solution",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Problem and solution",
+        "t": 19.774
+      },
+      {
+        "title": "The Crow and the Pitcher",
+        "t": 38.585
+      },
+      {
+        "title": "Beginning, middle and end",
+        "t": 64.574
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.559
+      },
+      {
+        "title": "Your turn",
+        "t": 128.528
+      },
+      {
+        "title": "Summary",
+        "t": 156.764
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-1-3:q2",
+        "t": 135.554,
+        "prompt": "“Zara’s kite got stuck high in a tree. She asked her tall uncle to help, and he lifted it free with a long rake.” What is the solution?",
+        "choices": [
+          "Zara’s kite gets stuck in a tree.",
+          "Zara asks her tall uncle to help.",
+          "Zara has a kite.",
+          "Her uncle lifts the kite free with a rake."
+        ],
+        "answer": 3,
+        "working": "The solution is how the problem is solved. Choice A is the problem, and Choice B is an event on the way to the solution."
+      }
+    ]
+  },
+  "e5-1-4": {
+    "lessonId": "e5-1-4",
+    "title": "Fables, Folk Tales and Their Lessons",
+    "duration": 181,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fables and morals",
+        "t": 21.267
+      },
+      {
+        "title": "The Fox and the Grapes",
+        "t": 40.977
+      },
+      {
+        "title": "A common mistake",
+        "t": 66.752
+      },
+      {
+        "title": "Kinds of traditional tales",
+        "t": 86.428
+      },
+      {
+        "title": "Your turn",
+        "t": 128.024
+      },
+      {
+        "title": "Summary",
+        "t": 154.938
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-1-4:q2",
+        "t": 134.636,
+        "prompt": "A lion lets a tiny mouse go free. Later, the mouse chews through a net to save the lion. What is the best moral?",
+        "choices": [
+          "Lions are stronger than mice.",
+          "Even the small can help the great.",
+          "Mice have sharp teeth.",
+          "Nets are made of rope."
+        ],
+        "answer": 1,
+        "working": "A moral is a lesson for people. Choices A, C and D are facts, not lessons about how to live."
+      }
+    ]
+  },
+  "e5-2-1": {
+    "lessonId": "e5-2-1",
+    "title": "Rhyme and Rhythm",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Words that rhyme",
+        "t": 18.903
+      },
+      {
+        "title": "The rhyme pattern",
+        "t": 52.585
+      },
+      {
+        "title": "Every sound gets a letter",
+        "t": 84.333
+      },
+      {
+        "title": "Syllables and beats",
+        "t": 114.661
+      },
+      {
+        "title": "Your turn",
+        "t": 157.35
+      },
+      {
+        "title": "Summary",
+        "t": 185.616
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-2-1:q2",
+        "t": 164.637,
+        "prompt": "The last words of four lines of a poem are “sky”, “sun”, “high” and “fun”. What is the rhyme pattern?",
+        "choices": [
+          "AABB",
+          "ABAB",
+          "ABCB",
+          "ABBA"
+        ],
+        "answer": 1,
+        "working": "“sky” is A and “sun” is B. “high” rhymes with “sky” (A), and “fun” rhymes with “sun” (B): ABAB."
+      }
+    ]
+  },
+  "e5-2-2": {
+    "lessonId": "e5-2-2",
+    "title": "Similes and Metaphors",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Literal and figurative",
+        "t": 22.181
+      },
+      {
+        "title": "Similes",
+        "t": 50.216
+      },
+      {
+        "title": "Metaphors",
+        "t": 80.879
+      },
+      {
+        "title": "What a comparison means",
+        "t": 114.516
+      },
+      {
+        "title": "Your turn",
+        "t": 145.412
+      },
+      {
+        "title": "Summary",
+        "t": 170.117
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-2-2:q2",
+        "t": 151.424,
+        "prompt": "“When the bell rang, the hallway was a river of students.” What does the metaphor tell the reader?",
+        "choices": [
+          "The hallway was flooded with water.",
+          "The students were swimming.",
+          "A crowd of students flowed through the hallway together.",
+          "The hallway was very quiet."
+        ],
+        "answer": 2,
+        "working": "A river is long and flows steadily one way, so the students moved together in a long, steady stream."
+      }
+    ]
+  },
+  "e5-2-3": {
+    "lessonId": "e5-2-3",
+    "title": "Images and the Senses",
+    "duration": 166,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Imagery",
+        "t": 23.09
+      },
+      {
+        "title": "Seeing the wind",
+        "t": 54.186
+      },
+      {
+        "title": "Vivid words",
+        "t": 75.316
+      },
+      {
+        "title": "Your turn",
+        "t": 121.915
+      },
+      {
+        "title": "Summary",
+        "t": 146.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-2-3:q2",
+        "t": 128.554,
+        "prompt": "“The kettle whistled and the bacon sizzled in the pan.” Which sense does this image appeal to most?",
+        "choices": [
+          "Hearing",
+          "Sight",
+          "Touch",
+          "Taste"
+        ],
+        "answer": 0,
+        "working": "“Whistled” and “sizzled” are both sounds, so the image appeals to hearing."
+      }
+    ]
+  },
+  "e5-2-4": {
+    "lessonId": "e5-2-4",
+    "title": "Forms of Poetry",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lines and stanzas",
+        "t": 19.812
+      },
+      {
+        "title": "Four forms",
+        "t": 57.387
+      },
+      {
+        "title": "A limerick",
+        "t": 93.896
+      },
+      {
+        "title": "A haiku",
+        "t": 113.144
+      },
+      {
+        "title": "Your turn",
+        "t": 143.945
+      },
+      {
+        "title": "Summary",
+        "t": 171.077
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-2-4:q2",
+        "t": 154.2,
+        "prompt": "A poem has five funny lines that rhyme AABBA. What form is it?",
+        "choices": [
+          "A haiku",
+          "Free verse",
+          "An acrostic",
+          "A limerick"
+        ],
+        "answer": 3,
+        "working": "A limerick has five funny lines with the rhyme pattern AABBA."
+      }
+    ]
+  },
+  "e5-3-1": {
+    "lessonId": "e5-3-1",
+    "title": "Main Idea and Supporting Details",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Topic and main idea",
+        "t": 28.19
+      },
+      {
+        "title": "Finding the main idea",
+        "t": 60.208
+      },
+      {
+        "title": "Supporting details",
+        "t": 85.539
+      },
+      {
+        "title": "Common mistakes",
+        "t": 112.692
+      },
+      {
+        "title": "Your turn",
+        "t": 145.469
+      },
+      {
+        "title": "Summary",
+        "t": 172.708
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-3-1:q2",
+        "t": 153.072,
+        "prompt": "“Owls are skilled night hunters. Their large eyes see in dim light. Their soft feathers let them fly silently. Their sharp hearing finds mice under snow.” What is the main idea?",
+        "choices": [
+          "Owls have large eyes.",
+          "Owls have soft feathers.",
+          "Owls are skilled night hunters.",
+          "Mice live under the snow."
+        ],
+        "answer": 2,
+        "working": "Every other sentence gives one reason owls hunt well at night. Choices A and B are supporting details."
+      }
+    ]
+  },
+  "e5-3-2": {
+    "lessonId": "e5-3-2",
+    "title": "Text Features",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What text features are",
+        "t": 19.991
+      },
+      {
+        "title": "Pictures that teach",
+        "t": 50.145
+      },
+      {
+        "title": "The front and back of a book",
+        "t": 71.688
+      },
+      {
+        "title": "Where would you look?",
+        "t": 104.936
+      },
+      {
+        "title": "Your turn",
+        "t": 137.32
+      },
+      {
+        "title": "Summary",
+        "t": 159.542
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-3-2:q2",
+        "t": 143.213,
+        "prompt": "You want to see the order in which events happened in the history of flight, with their dates. Which text feature would help most?",
+        "choices": [
+          "A glossary",
+          "A timeline",
+          "A caption",
+          "A map"
+        ],
+        "answer": 1,
+        "working": "A timeline shows events in the order they happened, with dates."
+      }
+    ]
+  },
+  "e5-3-3": {
+    "lessonId": "e5-3-3",
+    "title": "Text Structures and Signal Words",
+    "duration": 158,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Structure and signal words",
+        "t": 16.912
+      },
+      {
+        "title": "Four text structures",
+        "t": 31.511
+      },
+      {
+        "title": "Naming the structure",
+        "t": 66.654
+      },
+      {
+        "title": "A common mistake",
+        "t": 82.874
+      },
+      {
+        "title": "Your turn",
+        "t": 105.603
+      },
+      {
+        "title": "Summary",
+        "t": 133.072
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-3-3:q2",
+        "t": 111.866,
+        "prompt": "“The river flooded the road. ____, the school bus had to take a longer route.” Which signal word fits best?",
+        "choices": [
+          "First",
+          "Both",
+          "Unlike",
+          "As a result"
+        ],
+        "answer": 3,
+        "working": "The flood caused the bus to change its route, so a cause-and-effect signal word is needed."
+      }
+    ]
+  },
+  "e5-3-4": {
+    "lessonId": "e5-3-4",
+    "title": "Fact, Opinion and the Author’s Purpose",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fact and opinion",
+        "t": 19.604
+      },
+      {
+        "title": "Testing a sentence",
+        "t": 67.999
+      },
+      {
+        "title": "The author’s purpose",
+        "t": 97.3
+      },
+      {
+        "title": "Your turn",
+        "t": 132.304
+      },
+      {
+        "title": "Summary",
+        "t": 157.205
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-3-4:q2",
+        "t": 138.543,
+        "prompt": "“Come to Maple Street Bakery! Our cinnamon rolls are the softest in the city, and this week every second roll is free.” What is the author’s purpose?",
+        "choices": [
+          "To persuade",
+          "To inform",
+          "To entertain",
+          "To describe a setting"
+        ],
+        "answer": 0,
+        "working": "It uses an opinion word (“softest”) and offers a deal, because it wants the reader to go to the bakery."
+      }
+    ]
+  },
+  "e5-4-1": {
+    "lessonId": "e5-4-1",
+    "title": "Prefixes and Suffixes",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Base words and prefixes",
+        "t": 20.545
+      },
+      {
+        "title": "Working out a new word",
+        "t": 57.397
+      },
+      {
+        "title": "Suffixes",
+        "t": 86.764
+      },
+      {
+        "title": "Two parts added",
+        "t": 123.318
+      },
+      {
+        "title": "Your turn",
+        "t": 142.396
+      },
+      {
+        "title": "Summary",
+        "t": 164.96
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-4-1:q2",
+        "t": 148.129,
+        "prompt": "What does the word “fearless” mean?",
+        "choices": [
+          "Full of fear",
+          "Afraid again",
+          "Without fear",
+          "A person who is afraid"
+        ],
+        "answer": 2,
+        "working": "fear + less: the suffix -less means “without”, so fearless means without fear."
+      }
+    ]
+  },
+  "e5-4-2": {
+    "lessonId": "e5-4-2",
+    "title": "Synonyms, Antonyms and Shades of Meaning",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Synonyms and antonyms",
+        "t": 18.969
+      },
+      {
+        "title": "Testing a synonym",
+        "t": 51.672
+      },
+      {
+        "title": "Shades of meaning",
+        "t": 84.911
+      },
+      {
+        "title": "Your turn",
+        "t": 123.597
+      },
+      {
+        "title": "Summary",
+        "t": 147.169
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-4-2:q2",
+        "t": 130.661,
+        "prompt": "Order these words from the weakest to the strongest: furious, annoyed, angry.",
+        "choices": [
+          "furious, angry, annoyed",
+          "angry, annoyed, furious",
+          "annoyed, furious, angry",
+          "annoyed, angry, furious"
+        ],
+        "answer": 3,
+        "working": "Annoyed is a little bit cross, angry is more, and furious is very, very angry."
+      }
+    ]
+  },
   "e10-1-1": {
     "lessonId": "e10-1-1",
     "title": "Plot and Conflict",
