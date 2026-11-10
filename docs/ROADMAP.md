@@ -624,6 +624,24 @@ items ship or decisions change.
      and trigonometry in 3D; and frequency trees, histograms and cumulative frequency, at Grades 9
      to 11. Each is filed in the Foundation and Higher units that teach it and under Browse by
      topic. These lessons also need their videos and tutor recordings. Next: A level Mathematics.
+   - Built (11 November 2026), step 3, the third map: **A level Mathematics, Years 12 and 13**
+     (in `engine/curriculum/maps/uk.ts`, under the tab now called "UK GCSE and A level"). The first
+     year (the AS content, 20 units) and the second (12 units) are built from Gradileo's lessons in
+     the order of a two-year scheme of work, with the A level content areas (A proof to S moments)
+     in each unit. A UK learner in Year 12 or 13 heading for university, or not sure, is offered the
+     year of A level on "Find your course", with a placement check on GCSE Higher or the first year;
+     teachers can start a class on either. Gaps it lists (36): proof by exhaustion and by
+     contradiction; partial fractions; sigma notation and recurrence relations; the binomial
+     expansion for rational n; ½ab sin C; small-angle approximations; sec, cosec and cot graphs and
+     the inverse trigonometric functions; R cos(θ ± α); logarithmic graphs for y = axⁿ and y = kbˣ;
+     parametric differentiation; change of sign, Newton–Raphson and the trapezium rule; integration
+     by parts and with partial fractions; differential equations; 3D vectors; quota and opportunity
+     sampling, coding and outliers; discrete random variables and the binomial distribution; the
+     inverse normal and the normal approximation; hypothesis tests (binomial, correlation, normal
+     mean) and the correlation coefficient; and all of mechanics beyond straight-line motion
+     (units, suvat, forces and Newton's laws, connected particles, projectiles, resolving forces,
+     friction, inclined planes, 2D kinematics, moments). Next: fill these gaps, mechanics and
+     statistics first, then the pure topics.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
