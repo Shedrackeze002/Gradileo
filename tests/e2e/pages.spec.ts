@@ -135,19 +135,22 @@ test('the US Precalculus course lists no gaps and teaches vectors and matrices',
   expect(errors).toEqual([]);
 });
 
-test('a teacher starts a class on GCSE Higher, which lists the topics Gradileo does not teach yet', async ({ page }) => {
+test('a teacher starts a class on GCSE Higher, which teaches every topic, and opens one of its new lessons', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
   await page.getByRole('tab', { name: 'UK GCSE' }).click();
   const course = page.getByRole('button', { name: /^GCSE Mathematics: Higher \(UK\)/ });
   await course.click();
-  await expect(course.getByText(/Not in Gradileo yet/)).toBeVisible();
+  await expect(course.getByText(/Not in Gradileo yet/)).toHaveCount(0);
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
   await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
   await expect(page.getByText('Circle Theorems').first()).toBeVisible();
   await expect(page.getByText('Surds').first()).toBeVisible();
+  await expect(page.getByText('Histograms').first()).toBeVisible();
+  await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/mx-11-3`);
+  await expect(page.getByText('Cumulative Frequency').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 

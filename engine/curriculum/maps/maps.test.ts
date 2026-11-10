@@ -32,6 +32,8 @@ describe('curriculum maps', () => {
 
   it('recommend a GCSE tier to a UK learner in Year 10 or 11, and Gradileo’s own courses to others', () => {
     expect(mappedCourses('uk').map((c) => c.shortTitle)).toEqual(['GCSE Foundation', 'GCSE Higher']);
+    // Every GCSE topic has a lesson, so neither tier lists a gap.
+    for (const c of mappedCourses('uk')) expect(c.gaps, c.id).toEqual([]);
     const uk = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'uk', feeling: 'ok', ...more });
     expect(uk(9).courseId).toBe('uk-gcse-higher');
     expect(uk(10).courseId).toBe('uk-gcse-higher');

@@ -616,6 +616,14 @@ items ship or decisions change.
      parametric equations (a new unit), at Grades 11 and 12. Browse by topic has new topics for
      complex numbers, vectors and matrices, polar form, and conics. These lessons also need their
      videos and tutor recordings. Next: the UK GCSE map.
+   - Built (10 November 2026), step 4, part 3: **the UK GCSE gaps are filled, so both tiers list
+     none.** Sixteen more lessons in More Mathematics Topics, in five new units, with 32 question
+     generators: error intervals, bounds and recurring decimals; quadratic sequences, iteration,
+     gradients and areas under graphs, and trigonometric graphs in degrees; direct and inverse
+     proportion, density and pressure; bearings, loci, arcs and sectors in degrees, and Pythagoras
+     and trigonometry in 3D; and frequency trees, histograms and cumulative frequency, at Grades 9
+     to 11. Each is filed in the Foundation and Higher units that teach it and under Browse by
+     topic. These lessons also need their videos and tutor recordings. Next: A level Mathematics.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
@@ -656,7 +664,7 @@ items ship or decisions change.
      under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and
      pressure, bearings, loci, arcs and sectors in degrees, 3D trigonometry, histograms and
      cumulative frequency, and frequency trees. (Gradileo's own versions of these use radians or
-     calculus, which GCSE does not.) Next: fill the GCSE gaps, then A level Mathematics.
+     calculus, which GCSE does not.) Filled on 10 November 2026 (step 4, part 3).
    - Bug check (30 October 2026, the owner's request after the homework-editing error): every one
      of the live site's database calls (99 in the data layer, 41 database functions, 7 Edge
      Functions) was checked against the database's grants, rules and checks on a copy built from
