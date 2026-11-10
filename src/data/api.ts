@@ -42,6 +42,7 @@ import type {
   Presentation,
   ClassQuestion,
   NewStudentCredential,
+  NotificationEmail,
   Profile,
   ProposedAction,
   ReportCard,
@@ -94,6 +95,12 @@ export interface DataApi {
   signOut(): Promise<void>;
   updateProfile(patch: Partial<Pick<Profile, 'fullName' | 'avatarColor' | 'curriculum'>>): Promise<Profile>;
   changePassword(newPassword: string): Promise<void>;
+  /** A student without an email address may add one (theirs or a parent's) for class reminders. */
+  getNotificationEmail(): Promise<NotificationEmail>;
+  /** Sends a six-digit code to the address. */
+  requestNotificationEmail(email: string): Promise<NotificationEmail>;
+  confirmNotificationEmail(code: string): Promise<NotificationEmail>;
+  removeNotificationEmail(): Promise<NotificationEmail>;
 
   // Classes and people
   listMyClasses(): Promise<ClassRoom[]>;

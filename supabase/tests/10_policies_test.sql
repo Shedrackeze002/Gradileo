@@ -1070,4 +1070,23 @@ reset role;
 delete from submissions where assignment_id = (select id from assignments where title = 'Key quiz');
 delete from assignments where title = 'Key quiz';
 
+-- ---------------------------------------------------------------- notification emails
+-- Written only by the notify-email Edge Function (service role); a student reads only their own
+-- row, never its code, and nobody else sees it.
+insert into notification_emails (user_id, email, verified_at, code_hash) values
+  ('00000000-0000-0000-0000-0000000000b2', 'parent@home.ca', now(), 'secret-hash');
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000b2","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select email from notification_emails) = 'parent@home.ca', 'a student reads their own notification email');
+select _fails($$select code_hash from notification_emails$$, 'the code hash stays hidden');
+select _fails($$update notification_emails set email = 'x@y.ca'$$, 'students cannot change it directly');
+select _fails($$insert into notification_emails (user_id, email, verified_at) values ('00000000-0000-0000-0000-0000000000b2', 'x@y.ca', now())$$, 'students cannot add one without a code');
+select _fails($$select email_sender()$$, 'students cannot read the email settings');
+reset role;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000a1","role":"authenticated"}', false);
+set role authenticated;
+select _assert((select count(*) from notification_emails) = 0, 'teachers cannot see a student''s notification email');
+reset role;
+delete from notification_emails;
+
 select 'ALL DATABASE TESTS PASSED' as result;

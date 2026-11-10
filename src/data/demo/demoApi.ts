@@ -22,6 +22,7 @@ import { markRequestFor, suggestMark, type MarkResult } from '@engine/ai/marking
 import type { SkillState } from '@engine/mastery.ts';
 import type { RubricLevels } from '@engine/rubric.ts';
 import { exitCount, isLocked, mergeIntegrity, type Integrity } from '@engine/integrity.ts';
+import { DEMO_EMAIL_CODE } from './emailCode.ts';
 import type { AiConfigStatus, DataApi, SignUpInput, SubmissionFilter, TutorReply } from '../api.ts';
 import type {
   AdminAuditEntry,
@@ -61,6 +62,7 @@ import type {
   ClassQuestion,
   NewStudentCredential,
   NotificationKind,
+  NotificationEmail,
   Profile,
   ProposedAction,
   LessonCompletion,
@@ -319,6 +321,36 @@ export class DemoApi implements DataApi {
     if (newPassword.length < 6) throw new Error('Use at least 6 characters.');
     this.me().password = newPassword;
     this.persist();
+  }
+
+  // The demo sends no email: the code is always DEMO_EMAIL_CODE, and the address lasts until the
+  // page is reloaded.
+  private notifyEmails = new Map<string, NotificationEmail>();
+
+  async getNotificationEmail(): Promise<NotificationEmail> {
+    return this.notifyEmails.get(this.me().id) ?? { email: null, pendingEmail: null };
+  }
+
+  async requestNotificationEmail(email: string): Promise<NotificationEmail> {
+    const address = email.trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(address)) throw new Error('Enter a full email address, such as name@example.com.');
+    const next = { email: (await this.getNotificationEmail()).email, pendingEmail: address };
+    this.notifyEmails.set(this.me().id, next);
+    return next;
+  }
+
+  async confirmNotificationEmail(code: string): Promise<NotificationEmail> {
+    const now = await this.getNotificationEmail();
+    if (!now.pendingEmail) throw new Error('Ask for a code first.');
+    if (code !== DEMO_EMAIL_CODE) throw new Error('That code is not right. Check the email and try again.');
+    const next = { email: now.pendingEmail, pendingEmail: null };
+    this.notifyEmails.set(this.me().id, next);
+    return next;
+  }
+
+  async removeNotificationEmail(): Promise<NotificationEmail> {
+    this.notifyEmails.delete(this.me().id);
+    return { email: null, pendingEmail: null };
   }
 
   // ------------------------------------------------------------------ classes

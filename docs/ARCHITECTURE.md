@@ -19,7 +19,7 @@ work authoritatively. This keeps the server and the student's screen in exact ag
                  │  pg_cron: send_due_reminders() every 5 min, email delivery         │
                  │  Edge Functions (Deno, engine copied in by scripts/sync-engine):   │
                  │    grade-submission · ai-agent · ai-tutor · create-students ·      │
-                 │    send-emails · admin-users · join-class                          │
+                 │    send-emails · admin-users · join-class · notify-email           │
                  └──────────────┬───────────────────────────────┬────────────────────┘
                                 │                               │
                          MiniMax chat API                  Resend email API
