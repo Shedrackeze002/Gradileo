@@ -623,7 +623,11 @@ items ship or decisions change.
      proportion, density and pressure; bearings, loci, arcs and sectors in degrees, and Pythagoras
      and trigonometry in 3D; and frequency trees, histograms and cumulative frequency, at Grades 9
      to 11. Each is filed in the Foundation and Higher units that teach it and under Browse by
-     topic. These lessons also need their videos and tutor recordings. Next: A level Mathematics.
+     topic. Next: A level Mathematics.
+     Their videos (10 November 2026): 17 explainers for the 16 lessons (`mx-7-1` to `mx-11-3`, with
+     gradients and areas under graphs in two parts), scripted and checked in stills, then rendered
+     unit by unit (`mx-u7` to `mx-u11`), stored on Drive and handed to the YouTube uploads. The
+     Tutor voice workflow records their tutor narration after the merge.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

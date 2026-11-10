@@ -168,3 +168,19 @@ export function axisLine(name: string, a: P, b: P, tex = '\\text{axis}'): Part {
     ],
   };
 }
+
+/**
+ * Points round an arc of a circle with centre `c` and radius `r`, from angle `a0` to `a1` in
+ * degrees (anticlockwise from the positive x-axis), named `<pfx>0` to `<pfx><n>`, for a diagram's
+ * curves and regions.
+ */
+export function arcPoints(pfx: string, c: P, r: number, a0: number, a1: number, n = 24): { pts: Record<string, P>; keys: string[] } {
+  const pts: Record<string, P> = {};
+  const keys: string[] = [];
+  for (let i = 0; i <= n; i++) {
+    const a = ((a0 + ((a1 - a0) * i) / n) * Math.PI) / 180;
+    pts[`${pfx}${i}`] = [c[0] + r * Math.cos(a), c[1] + r * Math.sin(a)];
+    keys.push(`${pfx}${i}`);
+  }
+  return { pts, keys };
+}
