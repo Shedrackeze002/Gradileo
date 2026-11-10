@@ -278,7 +278,8 @@ steps in this order; each is done once.
 4. **Cloudflare.** Under **My Profile → API Tokens**, edit the email token (3.3) and add the
    permission **Zone → DNS → Edit** for the domain. Editing keeps the token's value, so the GitHub
    secret stays as it is.
-5. **Run it.** Run **Actions → Set up sending email → Run workflow**. It adds the domain to Resend
+5. **Run it.** Run **Actions → Set up sending email → Run workflow** (it also runs by itself when a
+   change to the script or the workflow reaches `main`). It adds the domain to Resend
    (sending only), adds Resend's DNS records (`resend._domainkey`, and an MX and SPF record on
    `send.`) and a DMARC record if the domain has none, waits for Resend to verify the domain
    (usually a few minutes), sends a test message to admin@gradileo.com, then stores a key that can

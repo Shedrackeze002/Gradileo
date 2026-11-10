@@ -3,8 +3,10 @@ name: Set up sending email
 # Lets Gradileo send email from gradileo.com (scripts/resend-email.mjs): adds the domain to Resend,
 # adds Resend's DNS records (and a DMARC record) in Cloudflare, waits for Resend to verify the
 # domain, sends a test message to admin@gradileo.com, then stores a sending-only key, the sender and
-# the reply-to address in Supabase Vault, where the send-emails Edge Function reads them. Run it from
-# the Actions tab; running it again only adds what is missing and gives Supabase a fresh key.
+# the reply-to address in Supabase Vault, where the send-emails Edge Function reads them. It runs when
+# a change to it or to the script reaches main, and from the Actions tab (which lists it only while
+# it is on the repository's default branch). Running it again only adds what is missing and gives
+# Supabase a fresh key.
 #
 # Repository secrets (docs/SETUP.md 3.3):
 #   RESEND_API_KEY          a Resend key with Full access
@@ -15,6 +17,11 @@ name: Set up sending email
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/resend-email.mjs
+      - .github/workflows/send-email.yml
 
 permissions:
   contents: read
@@ -28,13 +35,26 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # A copy of the repository without the Resend secret skips the automatic run; a manual run
+      # says what is missing.
+      - name: Check configuration
+        id: cfg
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = push ] && [ -z "$RESEND_API_KEY" ]; then
+            echo "RESEND_API_KEY is not set; skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       - name: Add the domain to Resend and its DNS records to Cloudflare
+        if: steps.cfg.outputs.skip != 'true'
         run: node scripts/resend-email.mjs setup
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           CLOUDFLARE_EMAIL_TOKEN: ${{ secrets.CLOUDFLARE_EMAIL_TOKEN }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       - name: Store the email settings in Supabase Vault
+        if: steps.cfg.outputs.skip != 'true'
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
           SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
@@ -84,6 +104,7 @@ jobs:
           SQL
           echo "Stored the Resend key, the sender and the reply-to address in Vault."
       - name: Delete the older sending keys
+        if: steps.cfg.outputs.skip != 'true'
         run: node scripts/resend-email.mjs cleanup
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
