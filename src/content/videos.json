@@ -17229,6 +17229,249 @@
       }
     ]
   },
+  "e5-5-4": {
+    "lessonId": "e5-5-4",
+    "title": "Capital Letters and End Marks",
+    "duration": 166,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Capital letters",
+        "t": 19.836
+      },
+      {
+        "title": "Finding the missing capitals",
+        "t": 52.126
+      },
+      {
+        "title": "Four kinds of sentences",
+        "t": 84.015
+      },
+      {
+        "title": "Your turn",
+        "t": 113.007
+      },
+      {
+        "title": "Summary",
+        "t": 138.325
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-4:q2",
+        "t": 119.68,
+        "prompt": "“I wonder where my keys are” What kind of sentence is this, and how should it end?",
+        "choices": [
+          "A question, with a question mark",
+          "A statement, with a period",
+          "An exclamation, with an exclamation mark",
+          "A command, with an exclamation mark"
+        ],
+        "answer": 1,
+        "working": "It does not ask the reader anything; it tells what the speaker is wondering. So it is a statement and ends with a period."
+      }
+    ]
+  },
+  "e5-5-5": {
+    "lessonId": "e5-5-5",
+    "title": "Commas and Quotation Marks",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Commas",
+        "t": 16.577
+      },
+      {
+        "title": "Placing the commas",
+        "t": 58.713
+      },
+      {
+        "title": "Quotation marks",
+        "t": 94.553
+      },
+      {
+        "title": "Your turn",
+        "t": 129.628
+      },
+      {
+        "title": "Summary",
+        "t": 157.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-5:q2",
+        "t": 136.63,
+        "prompt": "Which is the correct way to write Omar’s question?",
+        "choices": [
+          "“Can we go to the park” asked Omar?",
+          "“Can we go to the park?” asked Omar.",
+          "“Can we go to the park.” asked Omar?",
+          "Can we go to the park? “asked Omar.”"
+        ],
+        "answer": 1,
+        "working": "The exact words “Can we go to the park” ask a question, so the question mark goes inside the closing quotation mark, and the sentence ends with a period."
+      }
+    ]
+  },
+  "e5-6-1": {
+    "lessonId": "e5-6-1",
+    "title": "The Paragraph",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of a paragraph",
+        "t": 16.761
+      },
+      {
+        "title": "A paragraph about recess",
+        "t": 44.679
+      },
+      {
+        "title": "Choosing a topic sentence",
+        "t": 72.195
+      },
+      {
+        "title": "Keeping to the topic",
+        "t": 101.724
+      },
+      {
+        "title": "Your turn",
+        "t": 123.474
+      },
+      {
+        "title": "Summary",
+        "t": 151.903
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-6-1:q2",
+        "t": 130.291,
+        "prompt": "“Penguins are birds that cannot fly. Their wings work like flippers for swimming. They waddle on land and slide on their bellies over ice. My uncle saw a penguin at the zoo last year.” Which sentence does not belong?",
+        "choices": [
+          "Penguins are birds that cannot fly.",
+          "Their wings work like flippers for swimming.",
+          "They waddle on land and slide on their bellies over ice.",
+          "My uncle saw a penguin at the zoo last year."
+        ],
+        "answer": 3,
+        "working": "The paragraph is about how penguins move, since they cannot fly. The sentence about the writer’s uncle wanders off topic."
+      }
+    ]
+  },
+  "e5-6-2": {
+    "lessonId": "e5-6-2",
+    "title": "Narrative Writing: Time Order and Showing",
+    "duration": 177,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a narrative is",
+        "t": 13.485
+      },
+      {
+        "title": "Time-order words",
+        "t": 30.485
+      },
+      {
+        "title": "Show, don’t tell",
+        "t": 70.864
+      },
+      {
+        "title": "A common mistake",
+        "t": 107.511
+      },
+      {
+        "title": "Your turn",
+        "t": 128.428
+      },
+      {
+        "title": "Summary",
+        "t": 155.25
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-6-2:q2",
+        "t": 135.829,
+        "prompt": "Which sentence shows that Ben was angry, without telling?",
+        "choices": [
+          "Ben was angry.",
+          "Ben was very, very mad.",
+          "Ben’s face turned red, and he slammed his book shut.",
+          "Ben felt anger."
+        ],
+        "answer": 2,
+        "working": "C describes actions (a red face, a slammed book) and lets the reader work out the feeling. The others name it."
+      }
+    ]
+  },
+  "e5-6-3": {
+    "lessonId": "e5-6-3",
+    "title": "Opinion Writing",
+    "duration": 159,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an opinion piece",
+        "t": 16.686
+      },
+      {
+        "title": "Strong and weak reasons",
+        "t": 47.07
+      },
+      {
+        "title": "Linking words",
+        "t": 85.793
+      },
+      {
+        "title": "Your turn",
+        "t": 112.03
+      },
+      {
+        "title": "Summary",
+        "t": 134.672
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-6-3:q2",
+        "t": 118.256,
+        "prompt": "“Dogs make great pets. ____, they can be trained to fetch, sit and shake hands.” Which linking word fits best?",
+        "choices": [
+          "For example",
+          "However",
+          "In conclusion",
+          "Although"
+        ],
+        "answer": 0,
+        "working": "The second sentence gives an example of why dogs are great pets."
+      }
+    ]
+  },
   "e10-1-1": {
     "lessonId": "e10-1-1",
     "title": "Plot and Conflict",
