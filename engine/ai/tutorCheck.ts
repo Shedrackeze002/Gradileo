@@ -29,9 +29,14 @@ const DIGITS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', '
 
 const isNumberWord = (w: string | undefined) => w !== undefined && (w in UNITS || w in TENS || w === 'hundred' || w in SCALES);
 
-/** Joins digit groups written with spaces, as the lessons write big numbers: "4 572 306" is 4572306. */
+/**
+ * Joins digit groups written with spaces, as the lessons write big numbers and long decimals:
+ * "4 572 306" is 4572306, and "0.000 81" (after the point, groups of three) is 0.00081.
+ */
 export function joinThousands(s: string): string {
-  return s.replace(/\b\d{1,3}(?:[    ,]\d{3})+(?![\d,]\d)/g, (m) => m.replace(/[    ,]/g, ''));
+  return s
+    .replace(/(?<!\.)\b\d{1,3}(?:[    ,]\d{3})+(?![\d,]\d)/g, (m) => m.replace(/[    ,]/g, ''))
+    .replace(/(\d\.\d{3})((?:[    ]\d{3})*[    ]\d{1,3})(?![\d.]*\d)/g, (_, a: string, b: string) => a + b.replace(/[    ]/g, ''));
 }
 
 interface Parsed {

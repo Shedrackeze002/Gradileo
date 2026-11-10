@@ -29,6 +29,7 @@ on:
     paths:
       - 'src/content/**'
       - 'engine/ai/tutor.ts'
+      - 'engine/ai/tutorCheck.ts'
       - 'src/features/lessons/slides.ts'
       - 'src/features/tutor/tutorSlides.ts'
       - 'src/video/words.ts'

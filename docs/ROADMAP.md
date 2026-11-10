@@ -1040,6 +1040,15 @@ items ship or decisions change.
   lesson's recording once and plays it from memory. Next: speak the tutor's answers to questions too
   (today they are written in the chat); record approved teacher edits of a lesson; let the tutor
   ask its own follow-up question after a wrong answer.
+  Checked (10 November 2026): the newest lessons, More Mathematics Topics (23) and English
+  Grades 5 to 9 (122), all have the tutor voice on gradileo.com (recorded 4 and 5 November and kept
+  up to date by the nightly run), as do the other 22 courses: 808 lessons and 12,807 slides, 12,719 with
+  MiniMax's lines. The other 88 are read in the voice from the slide's own words because the
+  checks turned MiniMax's lines down. Two of them, in Scientific notation (mx-2-1), were a real slip: a long
+  decimal written in groups ("0.000 81") reached the voice and the checks as two numbers. Those
+  groups are now joined, so the voice says one number. Of the 17 such slides in the newest
+  courses, the other 15 are English slides with a long passage, where the line-to-step check is
+  strict; they are left as they are for now.
 - Self-paced study, next steps: let the AI write the student coach's note on the home page (today
   it comes from the offline analyst); store placement results on the server (today they stay on
   the device); let a student leave a self-paced course; and email the AI tutor's weekly summary.

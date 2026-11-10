@@ -29,6 +29,13 @@ describe('numbers in words', () => {
     expect(joinThousands('4 572 306 and 70 000, then 12,345.5')).toBe('4572306 and 70000, then 12345.5');
     expect(joinThousands('the list 2, 345 and 7 8')).toBe('the list 2, 345 and 7 8');
   });
+
+  it('joins the groups of a long decimal, but not separate numbers', () => {
+    expect(joinThousands('8.1 to 0.000 81.')).toBe('8.1 to 0.00081.');
+    expect(joinThousands('a mass of 0.000\u2009000 4 grams')).toBe('a mass of 0.0000004 grams');
+    expect(joinThousands('3.141 592 65 and 1 000 000.25')).toBe('3.14159265 and 1000000.25');
+    expect(joinThousands('the points 1.000 2.000 and 0.5 3')).toBe('the points 1.000 2.000 and 0.5 3');
+  });
 });
 
 describe('calculations a line states', () => {
