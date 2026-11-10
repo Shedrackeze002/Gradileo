@@ -98,7 +98,7 @@ export default function PrivacyPage() {
           question, its skill and the teacher’s note.
         </p>
         <p>
-          When a teacher asks for a suggested mark on a student’s written answer, Gradileo sends MiniMax the question, its marking guide, what the
+          When a teacher asks for a suggested mark on a student’s written answer, Gradileo sends MiniMax the question, its marking guide and rubric, what the
           student typed and pictures of the student’s working on the answer canvas. We do not send the student’s name or email address, and the
           suggestion is not saved: it is shown only to the teacher, who decides the mark.
         </p>

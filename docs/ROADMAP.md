@@ -883,7 +883,17 @@ items ship or decisions change.
      English courses too; the tutor reads verse with a pause at each line, and its prompts name the
      course's subject (an English or chemistry tutor, not a mathematics one), so "Ask your tutor"
      answers questions about poems and essays instead of steering back to mathematics.
-   - Later: a mark per rubric criterion for essays.
+   - Done (10 November 2026): **essay rubrics.** A written question can carry a rubric: one of five
+     ready-made English rubrics (analytical essay, persuasive essay, narrative, personal response,
+     short written response) or the teacher's own, with up to eight criteria such as thesis,
+     evidence, organization, style and conventions. Each criterion is marked at one of four levels
+     (4 Excellent, 3 Proficient, 2 Developing, 1 Beginning, or 0 when it is not shown), a criterion
+     can count twice or three times, and the total is scaled to the question's points. Students see
+     the rubric while they write and, once marked, the level on each criterion with what it means.
+     The teacher marks on a grid (or gives one mark instead), the server works out the score from
+     the levels (`engine/rubric.ts`, `markResponse`), and "Suggest a mark" gives a level and a
+     reason for each criterion. Draft with AI attaches the fitting rubric to English essays and
+     paragraphs it writes.
    - Done (4 November 2026): **the privacy policy and terms for all three subjects.** Both pages now
      describe Gradileo as a mastery-based platform for learners anywhere (mathematics Grades 5 to 12,
      chemistry and English Grades 10 to 12). The privacy policy adds name-only class-link accounts,

@@ -91,7 +91,8 @@ Kate Chopin, Poe, Saki, W. W. Jacobs, Jack London, Ambrose Bierce and Frank R. S
 from poets who died before 1955; the speeches from Lincoln, Frederick Douglass, Sojourner Truth,
 Emmeline Pankhurst, the Declaration of Sentiments and Swift. Its generated questions practise what
 can be marked automatically (choices, ordering and short typed answers); essays stay with the
-teacher, with the AI's suggested mark. A mark per rubric criterion is still to come.
+teacher, with the AI's suggested mark, and since 10 November 2026 with a mark per rubric criterion
+(`engine/rubric.ts`).
 
 ### What English needs that mathematics did not
 

@@ -19,6 +19,8 @@ import {
   freshSeed,
   gradeSubmission,
   isQuestionType,
+  itemFromRef,
+  markResponse,
   mergeIntegrity,
   processSubmission,
   TYPE_LABEL,
@@ -336,12 +338,17 @@ async function manual(db: Db, me: Caller, body: Record<string, unknown>): Promis
   if (s.status === 'in_progress') throw new HttpError(400, 'The student has not submitted yet.');
   const index = Number(body.itemIndex);
   if (!Number.isInteger(index) || index < 0 || index >= (s.items as unknown[]).length) throw new HttpError(400, 'Unknown question.');
-  // null clears the teacher's mark: an auto-graded question goes back to its automatic mark.
-  const score = body.score === null ? null : Math.max(0, Math.min(1, Number(body.score)));
-  if (score !== null && !Number.isFinite(score)) throw new HttpError(400, 'Invalid score.');
+  const content = (a?.content as AssignmentContent) ?? EMPTY;
   const responses = { ...(s.responses as Record<number, StoredResponse>) };
-  responses[index] = { ...(responses[index] ?? { answers: [], hintsUsed: 0 }), manualScore: score, comment: str(body.comment, 2000) || null };
-  const g = gradeSubmission(s.items as ItemRef[], responses, (a?.content as AssignmentContent) ?? EMPTY, a?.id ?? 'practice');
+  // null clears the teacher's mark: an auto-graded question goes back to its automatic mark. On a
+  // question with a rubric, the levels on its criteria set the score.
+  try {
+    const item = itemFromRef((s.items as ItemRef[])[index], content, a?.id ?? 'practice');
+    responses[index] = markResponse(item, responses[index], { score: body.score === null ? null : Number(body.score), comment: str(body.comment, 2000), rubric: body.rubric });
+  } catch (e) {
+    throw new HttpError(400, e instanceof Error ? e.message : 'Invalid mark.');
+  }
+  const g = gradeSubmission(s.items as ItemRef[], responses, content, a?.id ?? 'practice');
   const status = s.status === 'submitted' && g.pendingManual === 0 ? 'graded' : s.status;
   const { data, error } = await db
     .from('submissions')

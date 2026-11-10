@@ -7,6 +7,7 @@ import type { Integrity } from '@engine/integrity.ts';
 import type { TutorAnswer, TutorChunk, TutorQuestion, TutorScript } from '@engine/ai/tutor.ts';
 import type { DraftRequest, DraftResult, RegenerateRequest, RegenerateResult } from '@engine/ai/builder.ts';
 import type { MarkResult } from '@engine/ai/marking.ts';
+import type { RubricLevels } from '@engine/rubric.ts';
 import type { ReportCardContent } from '@engine/ai/reportCard.ts';
 import type {
   AdminAuditEntry,
@@ -194,8 +195,11 @@ export interface DataApi {
   submit(submissionId: string, patch: { responses: Record<number, StoredResponse>; items: ItemRef[]; integrity?: Integrity }): Promise<Submission>;
   /** Teacher: unlock an attempt that exam mode locked; the student may leave it as many times again. */
   unlockAttempt(submissionId: string): Promise<void>;
-  /** The teacher's mark on one question, 0..1; null on an auto-graded question restores the automatic mark. */
-  gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string): Promise<Submission>;
+  /**
+   * The teacher's mark on one question, 0..1; null on an auto-graded question restores the automatic
+   * mark. On a question with a rubric, `rubric` (a level on every criterion) sets the score instead.
+   */
+  gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string, rubric?: RubricLevels): Promise<Submission>;
   returnSubmission(submissionId: string, feedback: string): Promise<Submission>;
   /** Teacher: reopen a submitted attempt. It is kept but stops counting; returns the student's fresh attempt. */
   reopenSubmission(submissionId: string): Promise<Submission>;

@@ -7,6 +7,7 @@ import { getSkill, skillInfo } from './curriculum/index.ts';
 import type { AnswerSpec, Choice, Difficulty, Item, ItemRef } from './types.ts';
 import { gradeItem, type ItemResult } from './grade.ts';
 import { applyObservation, DEFAULT_BKT, emptySkillState, type SkillState } from './mastery.ts';
+import { cleanLevels, cleanRubric, rubricScore01, type Rubric, type RubricCriterion, type RubricLevels } from './rubric.ts';
 
 export type AssignmentType = 'lesson' | 'video' | 'reading' | 'practice' | 'classwork' | 'homework' | 'quiz' | 'exam';
 
@@ -32,6 +33,8 @@ export interface CustomQuestion {
   skillId?: string;
   /** Written by the AI builder (engine/ai/builder.ts): the teacher should check it before publishing. */
   aiWritten?: boolean;
+  /** A written response's rubric: it is marked on each criterion, and students see it as they write. */
+  rubric?: Rubric;
 }
 
 export interface AssignmentContent {
@@ -132,8 +135,10 @@ export function customToItem(q: CustomQuestion, index: number, assignmentId: str
     case 'text':
       answer = { kind: 'text', accepted: q.accepted ?? [] };
       break;
-    default:
-      answer = { kind: 'manual', maxPoints: q.points ?? 1 };
+    default: {
+      const criteria = cleanRubric(q.rubric)?.criteria;
+      answer = { kind: 'manual', maxPoints: q.points ?? 1, ...(criteria ? { criteria } : {}) };
+    }
   }
   return {
     id: `custom:${assignmentId}:${index}`,
@@ -184,6 +189,8 @@ export interface StoredResponse {
   manualScore?: number | null;
   /** Teacher comment on this item. */
   comment?: string | null;
+  /** The level the teacher gave on each criterion of the question's rubric (engine/rubric.ts). */
+  rubric?: RubricLevels | null;
   /** The student checked this answer (instant-feedback mode); it is locked. */
   checked?: boolean;
   /** Earlier tries on this slot when the student asked for a similar question. */
@@ -207,6 +214,41 @@ export interface GradeSummary {
   percent: number;
   /** Manual items still waiting for a teacher. */
   pendingManual: number;
+}
+
+/** The rubric criteria a question is marked with, if it is a written response with a rubric. */
+export function rubricOf(item: Item | null | undefined): RubricCriterion[] | null {
+  const spec = item?.parts.find((p) => p.answer.kind === 'manual')?.answer;
+  return spec?.kind === 'manual' && spec.criteria?.length ? spec.criteria : null;
+}
+
+export interface TeacherMark {
+  /** 0..1, or null to clear the teacher's mark. Ignored when `rubric` levels are given. */
+  score: number | null;
+  comment?: string | null;
+  /** The level on each criterion, for a question with a rubric: every criterion needs one. */
+  rubric?: unknown;
+}
+
+/**
+ * A teacher's mark applied to one stored response. On a question with a rubric, the levels set the
+ * score (the rubric's total scaled to 0..1), so the browser cannot save a score that disagrees with
+ * them. Throws when a level is missing. Shared by demo mode and the `grade-submission` function.
+ */
+export function markResponse(item: Item | null, resp: StoredResponse | undefined, mark: TeacherMark): StoredResponse {
+  const base = resp ?? { answers: [], hintsUsed: 0 };
+  const comment = mark.comment?.trim() || null;
+  if (mark.score === null) return { ...base, manualScore: null, comment, rubric: null };
+  const criteria = rubricOf(item);
+  if (criteria && mark.rubric && typeof mark.rubric === 'object') {
+    const levels = cleanLevels(criteria, mark.rubric);
+    const score = rubricScore01(criteria, levels);
+    if (score === null) throw new Error('Give a level on every criterion of the rubric.');
+    return { ...base, manualScore: score, comment, rubric: levels };
+  }
+  const score = Math.max(0, Math.min(1, Number(mark.score)));
+  if (!Number.isFinite(score)) throw new Error('Invalid score.');
+  return { ...base, manualScore: score, comment, rubric: null };
 }
 
 /**
