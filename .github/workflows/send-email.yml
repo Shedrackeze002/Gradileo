@@ -1,0 +1,92 @@
+name: Set up sending email
+
+# Lets Gradileo send email from gradileo.com (scripts/resend-email.mjs): adds the domain to Resend,
+# adds Resend's DNS records (and a DMARC record) in Cloudflare, waits for Resend to verify the
+# domain, sends a test message to admin@gradileo.com, then stores a sending-only key, the sender and
+# the reply-to address in Supabase Vault, where the send-emails Edge Function reads them. Run it from
+# the Actions tab; running it again only adds what is missing and gives Supabase a fresh key.
+#
+# Repository secrets (docs/SETUP.md 3.3):
+#   RESEND_API_KEY          a Resend key with Full access
+#   CLOUDFLARE_EMAIL_TOKEN  the email token, which also needs Zone: DNS: Edit
+#   CLOUDFLARE_API_TOKEN    the deploy token, which finds the domain
+#   SUPABASE_ACCESS_TOKEN, SUPABASE_PROJECT_ID, SUPABASE_DB_PASSWORD  the backend deploy secrets,
+#                           used to reach the database through the session pooler, as in supabase.yml
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  email:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Add the domain to Resend and its DNS records to Cloudflare
+        run: node scripts/resend-email.mjs setup
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          CLOUDFLARE_EMAIL_TOKEN: ${{ secrets.CLOUDFLARE_EMAIL_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Store the email settings in Supabase Vault
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+        run: |
+          if [ -z "$SUPABASE_ACCESS_TOKEN" ] || [ -z "$PROJECT_ID" ] || [ -z "$SUPABASE_DB_PASSWORD" ]; then
+            echo "::error::Set the Supabase deploy secrets (docs/SETUP.md 2.7)."
+            exit 1
+          fi
+          if ! pooler=$(curl -sS --fail-with-body -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" \
+            "https://api.supabase.com/v1/projects/$PROJECT_ID/config/database/pooler"); then
+            echo "::error::Could not read the pooler address (a scoped token needs Connection Pooling, Read): $pooler"
+            exit 1
+          fi
+          password=$(jq -rn --arg p "$SUPABASE_DB_PASSWORD" '$p | @uri')
+          echo "::add-mask::$password"
+          db_url=$(jq -r --arg p "$password" '
+            map(select(.database_type == "PRIMARY"))[0].connection_string // empty
+            | sub(":\\[YOUR-PASSWORD\\]@"; ":" + $p + "@")
+            | sub(":6543/"; ":5432/")' <<<"$pooler")
+          if [ -z "$db_url" ]; then
+            echo "::error::The project has no primary pooler connection."
+            exit 1
+          fi
+          echo "::add-mask::$db_url"
+          KEY_FILE="$RUNNER_TEMP/email-settings.json"
+          key=$(jq -r .resend_api_key "$KEY_FILE")
+          echo "::add-mask::$key"
+          # Writes each value, replacing an older one; the scheduler's shared secret is made inside
+          # the database when the migration has not made it already.
+          psql "$db_url" -q -o /dev/null -v ON_ERROR_STOP=1 \
+            -v url="https://$PROJECT_ID.supabase.co" \
+            -v key="$key" \
+            -v from="$(jq -r .email_from "$KEY_FILE")" \
+            -v reply_to="$(jq -r .email_reply_to "$KEY_FILE")" <<'SQL'
+          create temp table settings (name text primary key, value text not null);
+          insert into settings values
+            ('educore_project_url', :'url'),
+            ('gradileo_resend_api_key', :'key'),
+            ('gradileo_email_from', :'from'),
+            ('gradileo_email_reply_to', :'reply_to');
+          select vault.update_secret(s.id, v.value) from settings v join vault.secrets s using (name);
+          select vault.create_secret(v.value, v.name) from settings v
+            where not exists (select 1 from vault.secrets s where s.name = v.name);
+          select vault.create_secret(encode(extensions.gen_random_bytes(32), 'hex'), 'educore_cron_secret')
+            where not exists (select 1 from vault.secrets where name = 'educore_cron_secret');
+          SQL
+          echo "Stored the Resend key, the sender and the reply-to address in Vault."
+      - name: Delete the older sending keys
+        run: node scripts/resend-email.mjs cleanup
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      - name: Remove the settings file
+        if: always()
+        run: rm -f "$RUNNER_TEMP/email-settings.json" "$RUNNER_TEMP/email-settings.json.id"

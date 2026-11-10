@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      updated="November 6, 2026"
+      updated="November 10, 2026"
       intro={
         <>
           <p>
@@ -138,8 +138,8 @@ export default function PrivacyPage() {
             <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses, assignment drafts, suggested marks, report card drafts and the AI tutor, as described in section 3.
           </li>
           <li>
-            <strong>Our email delivery provider</strong>: sends reminder emails when a teacher turns them on. It receives the student’s email address and
-            the message.
+            <strong>Resend</strong>: our email delivery provider. It sends account emails (such as the one that confirms a new account’s email address)
+            and, when a teacher turns them on, reminder emails, from gradileo.com. It receives the recipient’s email address and the message.
           </li>
           <li>
             <strong>YouTube</strong>: some lessons include explainer videos hosted on YouTube, embedded in YouTube’s privacy-enhanced mode. When you play a
