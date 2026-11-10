@@ -6,6 +6,12 @@ import { GEOMETRY_SKILLS } from './gen/geometry.ts';
 import { COMPLEX_SKILLS } from './gen/complex.ts';
 import { VECTOR_SKILLS } from './gen/vectors.ts';
 import { POLAR_SKILLS } from './gen/polar.ts';
+import { ACCURACY_SKILLS } from './gen/accuracy.ts';
+import { SEQUENCE_SKILLS } from './gen/sequences.ts';
+import { GRAPH_SKILLS } from './gen/graphs.ts';
+import { PROPORTION_SKILLS } from './gen/proportion.ts';
+import { MEASURE_SKILLS } from './gen/measures.ts';
+import { FREQUENCY_SKILLS } from './gen/frequency.ts';
 
 export const MATHMORE_SKILLS: SkillDef[] = [
   ...STATS_SKILLS,
@@ -15,4 +21,10 @@ export const MATHMORE_SKILLS: SkillDef[] = [
   ...COMPLEX_SKILLS,
   ...VECTOR_SKILLS,
   ...POLAR_SKILLS,
+  ...ACCURACY_SKILLS,
+  ...SEQUENCE_SKILLS,
+  ...GRAPH_SKILLS,
+  ...PROPORTION_SKILLS,
+  ...MEASURE_SKILLS,
+  ...FREQUENCY_SKILLS,
 ];
