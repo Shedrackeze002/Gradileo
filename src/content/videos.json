@@ -16986,6 +16986,249 @@
       }
     ]
   },
+  "e5-4-3": {
+    "lessonId": "e5-4-3",
+    "title": "Context Clues",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What context clues are",
+        "t": 17.509
+      },
+      {
+        "title": "Five kinds of clue",
+        "t": 38.314
+      },
+      {
+        "title": "Checking your guess",
+        "t": 91.497
+      },
+      {
+        "title": "A common mistake",
+        "t": 120.764
+      },
+      {
+        "title": "Your turn",
+        "t": 138.438
+      },
+      {
+        "title": "Summary",
+        "t": 163.362
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-4-3:q2",
+        "t": 146.105,
+        "prompt": "“The old bridge was so fragile that the town closed it, afraid it might break under a single car.” What does “fragile” mean?",
+        "choices": [
+          "Easily broken",
+          "Very long",
+          "Brand new",
+          "Painted red"
+        ],
+        "answer": 0,
+        "working": "The town was afraid the bridge might break under one car, so fragile means easily broken."
+      }
+    ]
+  },
+  "e5-4-4": {
+    "lessonId": "e5-4-4",
+    "title": "Homophones and Multiple-Meaning Words",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Homophones",
+        "t": 23.068
+      },
+      {
+        "title": "Choosing the right homophone",
+        "t": 65.628
+      },
+      {
+        "title": "Multiple-meaning words",
+        "t": 93.169
+      },
+      {
+        "title": "Your turn",
+        "t": 129.33
+      },
+      {
+        "title": "Summary",
+        "t": 160.719
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-4-4:q2",
+        "t": 135.906,
+        "prompt": "Which sentence uses the right homophone?",
+        "choices": [
+          "The children left there bikes by the gate.",
+          "We waited a whole weak for the parcel.",
+          "You’re coat is on the floor.",
+          "The parcel took a whole week to arrive."
+        ],
+        "answer": 3,
+        "working": "“Week” means seven days. A needs “their”, B needs “week”, and C needs “your” (“You are coat” makes no sense)."
+      }
+    ]
+  },
+  "e5-5-1": {
+    "lessonId": "e5-5-1",
+    "title": "Parts of Speech",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five parts of speech",
+        "t": 19.076
+      },
+      {
+        "title": "Labelling a sentence",
+        "t": 73.21
+      },
+      {
+        "title": "Adjective or adverb?",
+        "t": 103.525
+      },
+      {
+        "title": "Your turn",
+        "t": 141.154
+      },
+      {
+        "title": "Summary",
+        "t": 167.23
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-1:q2",
+        "t": 147.676,
+        "prompt": "“The noisy crowd cheered loudly.” Which word is an adverb?",
+        "choices": [
+          "noisy",
+          "loudly",
+          "crowd",
+          "cheered"
+        ],
+        "answer": 1,
+        "working": "“Loudly” tells how the crowd cheered, so it describes a verb. “Noisy” is an adjective, “crowd” a noun and “cheered” a verb."
+      }
+    ]
+  },
+  "e5-5-2": {
+    "lessonId": "e5-5-2",
+    "title": "Complete Sentences: Fragments and Run-ons",
+    "duration": 170,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subject and predicate",
+        "t": 16.481
+      },
+      {
+        "title": "Fragments and run-ons",
+        "t": 53.882
+      },
+      {
+        "title": "A common mistake",
+        "t": 94.969
+      },
+      {
+        "title": "Your turn",
+        "t": 114.155
+      },
+      {
+        "title": "Summary",
+        "t": 141.304
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-2:q2",
+        "t": 120.292,
+        "prompt": "Which of these is a complete sentence?",
+        "choices": [
+          "After the long walk home.",
+          "The rain stopped we went outside.",
+          "Jumped over the puddle.",
+          "The students in Room 4 planted a garden."
+        ],
+        "answer": 3,
+        "working": "D has a subject (the students in Room 4) and a predicate (planted a garden). A and C are fragments, and B is a run-on."
+      }
+    ]
+  },
+  "e5-5-3": {
+    "lessonId": "e5-5-3",
+    "title": "Subject-Verb Agreement and Verb Tense",
+    "duration": 171,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Agreement",
+        "t": 20.256
+      },
+      {
+        "title": "Finding the real subject",
+        "t": 54.731
+      },
+      {
+        "title": "Verb tense",
+        "t": 81.454
+      },
+      {
+        "title": "Irregular verbs",
+        "t": 100.137
+      },
+      {
+        "title": "Your turn",
+        "t": 119.672
+      },
+      {
+        "title": "Summary",
+        "t": 143.39
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-3:q2",
+        "t": 125.854,
+        "prompt": "“Yesterday Kai (catch) a huge fish.” Which form of the verb is correct?",
+        "choices": [
+          "catches",
+          "catched",
+          "caught",
+          "will catch"
+        ],
+        "answer": 2,
+        "working": "“Yesterday” tells us it is the past, and catch is irregular: its past form is “caught”."
+      }
+    ]
+  },
   "e10-1-1": {
     "lessonId": "e10-1-1",
     "title": "Plot and Conflict",
