@@ -111,6 +111,11 @@ export const OUTCOMES: Outcome[] = [
   { code: 'FI2', strand: 'Interest rates, annuities, loans and shares', text: 'Find the future value of an annuity and the payments into a sinking fund.' },
   { code: 'FI3', strand: 'Interest rates, annuities, loans and shares', text: 'Find the present value of an annuity, the repayments on a loan and the interest paid.' },
   { code: 'FI4', strand: 'Interest rates, annuities, loans and shares', text: 'Find dividends, yields and profits on shares, and the income and yield from stock.' },
+  { code: 'GT1', strand: 'Geometry theorems, vectors and transformation matrices', text: 'Use the midpoint theorem and the proportionality theorem to find lengths in triangles.' },
+  { code: 'GT2', strand: 'Geometry theorems, vectors and transformation matrices', text: 'Find the angle of inclination of a line from its gradient, the gradient from the inclination, and the angle between two lines.' },
+  { code: 'GT3', strand: 'Geometry theorems, vectors and transformation matrices', text: 'Find the gradient and the equation of the tangent to a circle at a given point.' },
+  { code: 'GT4', strand: 'Geometry theorems, vectors and transformation matrices', text: 'Use position vectors and the ratio theorem to divide a line segment in a given ratio, and show that points are collinear.' },
+  { code: 'GT5', strand: 'Geometry theorems, vectors and transformation matrices', text: 'Use 2 × 2 matrices to represent, combine and undo transformations, and use the determinant as an area scale factor.' },
 ];
 
 const L = (
@@ -558,6 +563,28 @@ export const LESSONS: LessonMeta[] = [
     ['mx-share-dividend', 'mx-share-yield'],
     ['Find dividends, numbers of shares and the profit on a sale of shares', 'Find the yield of shares and stocks, and the income from stock'],
     ['share', 'nominal value', 'market price', 'dividend', 'yield', 'stock']),
+
+  // ---------------- Unit 27: Geometry Theorems, Vectors and Transformation Matrices ----------------
+  L('mx-27-1', 'mx-u27', '27.1', 'The Midpoint and Proportionality Theorems', 10, ['GT1'],
+    ['mx-midpoint-theorem', 'mx-proportionality-theorem'],
+    ['Use the midpoint theorem to find lengths in a triangle', 'Use the proportionality theorem when a line is parallel to one side of a triangle'],
+    ['midpoint theorem', 'proportionality theorem', 'parallel', 'ratio', 'similar triangles']),
+  L('mx-27-2', 'mx-u27', '27.2', 'The Angle of Inclination of a Line', 11, ['GT2'],
+    ['mx-inclination-angle', 'mx-inclination-line'],
+    ['Find the angle of inclination of a line from its gradient', 'Find the gradient and equation of a line from its inclination', 'Find the angle between two lines'],
+    ['angle of inclination', 'gradient', 'inverse tangent', 'obtuse angle']),
+  L('mx-27-3', 'mx-u27', '27.3', 'The Equation of a Tangent to a Circle', 12, ['GT3'],
+    ['mx-circle-tangent-gradient', 'mx-circle-tangent-equation'],
+    ['Find the gradient of the radius and of the tangent at a point on a circle', 'Find the equation of the tangent at a point on a circle'],
+    ['tangent', 'point of contact', 'radius', 'perpendicular', 'negative reciprocal']),
+  L('mx-27-4', 'mx-u27', '27.4', 'The Ratio Theorem and Collinear Points', 11, ['GT4'],
+    ['mx-ratio-theorem', 'mx-collinear-points'],
+    ['Find the position vector of a point that divides a line segment in a given ratio', 'Use vectors to show that three points are collinear'],
+    ['position vector', 'ratio theorem', 'collinear', 'scalar multiple']),
+  L('mx-27-5', 'mx-u27', '27.5', 'Matrices and Transformations', 12, ['GT5'],
+    ['mx-transformation-matrix', 'mx-transformation-combine'],
+    ['Find the image of a point under a matrix, and recognize the matrices of standard transformations', 'Use the determinant as an area scale factor', 'Combine two transformations into one matrix, and undo a transformation with the inverse matrix'],
+    ['transformation matrix', 'image', 'determinant', 'area scale factor', 'inverse matrix']),
 ];
 
 export const UNITS: UnitMeta[] = [
@@ -587,6 +614,7 @@ export const UNITS: UnitMeta[] = [
   { id: 'mx-u24', number: 24, title: 'Formulae, Variation and Linear Programming', description: 'Changing the subject of a formula, joint and partial variation, linear programming, segments of a circle, frustums, Heron’s formula, cyclic quadrilaterals, the alternate segment theorem, intersecting chords, common tangents, longitude and latitude, nominal and effective interest rates, annuities, sinking funds, loans, and shares and stocks.', outcomes: ['FV1', 'FV2', 'FV3'], lessons: [], color: 'emerald' },
   { id: 'mx-u25', number: 25, title: 'Circles, Solids and the Earth', description: 'Segments of a circle, frustums, Heron’s formula, cyclic quadrilaterals and the alternate segment theorem, intersecting chords and common tangents, and longitude and latitude.', outcomes: ['CS1', 'CS2', 'CS3', 'CS4', 'CS5', 'CS6'], lessons: [], color: 'orange' },
   { id: 'mx-u26', number: 26, title: 'Interest Rates, Annuities, Loans and Shares', description: 'Nominal and effective interest rates, annuities and sinking funds, present value and loan repayments, and shares and stocks.', outcomes: ['FI1', 'FI2', 'FI3', 'FI4'], lessons: [], color: 'fuchsia' },
+  { id: 'mx-u27', number: 27, title: 'Geometry Theorems, Vectors and Transformation Matrices', description: 'The midpoint and proportionality theorems, the angle of inclination of a line, the equation of a tangent to a circle, the ratio theorem and collinear points, and matrices as transformations.', outcomes: ['GT1', 'GT2', 'GT3', 'GT4', 'GT5'], lessons: [], color: 'teal' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
@@ -597,7 +625,7 @@ export const MATHMORE: CourseMeta = {
   shortTitle: 'More Topics',
   grade: 10,
   subject: 'Mathematics',
-  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: dot plots and box plots, mean absolute deviation, two-way tables, scientific notation, linear and exponential growth, cross-sections and solids of revolution, two-column proofs, the equation of a circle, experiments and simulation, complex numbers, polynomial identities, vectors and matrices, polar form, conic sections and parametric equations; and for GCSE, error intervals and bounds, recurring decimals, quadratic sequences, iteration, gradients and areas under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and pressure, bearings, loci, arcs and sectors, 3D trigonometry, frequency trees, histograms and cumulative frequency; and for A level, mechanics: the constant acceleration formulae, Newton’s laws, connected particles, forces at angles and friction, inclined planes, projectiles and moments; and statistics: sampling methods, coding, outliers, discrete random variables, the binomial distribution and its hypothesis tests, correlation, the inverse normal distribution, the normal approximation and tests for a normal mean; and pure: proof by exhaustion and contradiction, ½ab sin C, logarithmic graphs, partial fractions, sigma notation and recurrence relations, the binomial expansion for rational n, 3D vectors, small-angle approximations, reciprocal and inverse trigonometric functions, R sin(θ ± α), parametric differentiation, the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and differential equations; and for Alberta’s new Grades 7 to 9 curriculum, absolute value, perfect cubes, the constant of proportionality, sets of real numbers and set-builder notation, geometric notation, dilations, functions with domain and range, simple quadratic equations and the shape of a distribution; and for WAEC, KCSE, CAPS, IGCSE and the IB, number bases, modular arithmetic, truth tables, changing the subject of a formula, joint and partial variation, linear programming, segments of a circle, frustums, Heron’s formula, circle theorems, longitude and latitude, effective interest rates, annuities, loans and shares.',
+  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: dot plots and box plots, mean absolute deviation, two-way tables, scientific notation, linear and exponential growth, cross-sections and solids of revolution, two-column proofs, the equation of a circle, experiments and simulation, complex numbers, polynomial identities, vectors and matrices, polar form, conic sections and parametric equations; and for GCSE, error intervals and bounds, recurring decimals, quadratic sequences, iteration, gradients and areas under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and pressure, bearings, loci, arcs and sectors, 3D trigonometry, frequency trees, histograms and cumulative frequency; and for A level, mechanics: the constant acceleration formulae, Newton’s laws, connected particles, forces at angles and friction, inclined planes, projectiles and moments; and statistics: sampling methods, coding, outliers, discrete random variables, the binomial distribution and its hypothesis tests, correlation, the inverse normal distribution, the normal approximation and tests for a normal mean; and pure: proof by exhaustion and contradiction, ½ab sin C, logarithmic graphs, partial fractions, sigma notation and recurrence relations, the binomial expansion for rational n, 3D vectors, small-angle approximations, reciprocal and inverse trigonometric functions, R sin(θ ± α), parametric differentiation, the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and differential equations; and for Alberta’s new Grades 7 to 9 curriculum, absolute value, perfect cubes, the constant of proportionality, sets of real numbers and set-builder notation, geometric notation, dilations, functions with domain and range, simple quadratic equations and the shape of a distribution; and for WAEC, KCSE, CAPS, IGCSE and the IB, number bases, modular arithmetic, truth tables, changing the subject of a formula, joint and partial variation, linear programming, segments of a circle, frustums, Heron’s formula, circle theorems, longitude and latitude, effective interest rates, annuities, loans and shares, the midpoint and proportionality theorems, the angle of inclination of a line, tangents to circles, the ratio theorem and transformation matrices.',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,

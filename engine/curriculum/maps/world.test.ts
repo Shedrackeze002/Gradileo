@@ -25,7 +25,7 @@ describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
     expect(getCourse('ib-aa-sl')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Circular Functions', 'Probability Distributions', 'Integration and Kinematics']));
     expect(getCourse('waec-ss-3')!.gaps).toEqual([]);
     expect(getCourse('kcse-form-4')!.gaps).toContain('The mid-ordinate rule');
-    expect(getCourse('caps-grade-12')!.gaps).toContain('The proportionality theorem');
+    expect(getCourse('caps-grade-12')!.gaps).toEqual(['The least squares regression line']);
     expect(getCourse('ib-ai-sl')!.gaps).toContain('Voronoi diagrams');
     expect(getCourse('kcse-form-1')!.gaps).toEqual([]);
   });
@@ -41,6 +41,15 @@ describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
     expect(lessons('caps-grade-11')).toEqual(expect.arrayContaining(['mx-25-4', 'mx-26-1']));
     expect(lessons('caps-grade-12')).toEqual(expect.arrayContaining(['mx-26-2', 'mx-26-3']));
     expect(lessons('ib-ai-sl')).toEqual(expect.arrayContaining(['mx-26-2', 'mx-26-3']));
+    // Unit 27: the geometry theorems, vector geometry and transformation matrices.
+    expect(lessons('caps-grade-10')).toContain('mx-27-1');
+    expect(lessons('caps-grade-11')).toContain('mx-27-2');
+    expect(lessons('caps-grade-12')).toEqual(expect.arrayContaining(['mx-27-1', 'mx-27-3']));
+    expect(lessons('kcse-form-3')).toContain('mx-27-4');
+    expect(lessons('kcse-form-4')).toContain('mx-27-5');
+    expect(lessons('igcse-extended')).toContain('mx-27-4');
+    for (const id of ['caps-grade-10', 'caps-grade-11', 'kcse-form-3', 'igcse-extended']) expect(getCourse(id)!.gaps).toEqual([]);
+    expect(getCourse('kcse-form-4')!.gaps).toEqual(['The mid-ordinate rule']);
   });
 
   it('recommend the course of the learner’s year in their own system', () => {

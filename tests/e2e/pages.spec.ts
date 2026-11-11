@@ -154,7 +154,7 @@ test('a teacher starts a class on GCSE Higher, which teaches every topic, and op
   expect(errors).toEqual([]);
 });
 
-test('a teacher starts a class on KCSE Form 3 from the Kenya tab, which lists the topics Gradileo does not teach yet', async ({ page }) => {
+test('a teacher starts a class on KCSE Form 3 from the Kenya tab, and Gradileo teaches every topic of it', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
@@ -162,7 +162,7 @@ test('a teacher starts a class on KCSE Form 3 from the Kenya tab, which lists th
   await page.getByRole('tab', { name: 'Kenya KCSE' }).click();
   const course = page.getByRole('button', { name: /^KCSE Mathematics: Form 3 \(Kenya\)/ });
   await course.click();
-  await expect(course.getByText(/Not in Gradileo yet: Vector geometry/)).toBeVisible();
+  await expect(course.getByText(/Not in Gradileo yet/)).toHaveCount(0);
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
   await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
