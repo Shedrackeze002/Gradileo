@@ -33,14 +33,14 @@ describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
   it('teach the topics that More Mathematics Topics added for them', () => {
     const lessons = (id: string) => getCourse(id)!.lessons.map((l) => l.id);
     expect(getCourse('waec-ss-1')!.gaps).toEqual([]);
-    expect(lessons('waec-ss-1')).toEqual(expect.arrayContaining(['mx-20-1', 'mx-20-2', 'mx-20-3', 'mx-21-1', 'mx-21-2', 'mx-22-1', 'mx-22-2']));
-    expect(lessons('waec-ss-2')).toEqual(expect.arrayContaining(['mx-21-3', 'mx-22-4']));
-    expect(lessons('kcse-form-2')).toEqual(expect.arrayContaining(['mx-22-1', 'mx-22-2', 'mx-22-3', 'mx-22-4']));
-    expect(lessons('kcse-form-4')).toEqual(expect.arrayContaining(['mx-21-3', 'mx-22-6']));
-    expect(lessons('igcse-core')).toContain('mx-21-1');
-    expect(lessons('caps-grade-11')).toEqual(expect.arrayContaining(['mx-22-4', 'mx-23-1']));
-    expect(lessons('caps-grade-12')).toEqual(expect.arrayContaining(['mx-23-2', 'mx-23-3']));
-    expect(lessons('ib-ai-sl')).toEqual(expect.arrayContaining(['mx-23-2', 'mx-23-3']));
+    expect(lessons('waec-ss-1')).toEqual(expect.arrayContaining(['mx-23-1', 'mx-23-2', 'mx-23-3', 'mx-24-1', 'mx-24-2', 'mx-25-1', 'mx-25-2']));
+    expect(lessons('waec-ss-2')).toEqual(expect.arrayContaining(['mx-24-3', 'mx-25-4']));
+    expect(lessons('kcse-form-2')).toEqual(expect.arrayContaining(['mx-25-1', 'mx-25-2', 'mx-25-3', 'mx-25-4']));
+    expect(lessons('kcse-form-4')).toEqual(expect.arrayContaining(['mx-24-3', 'mx-25-6']));
+    expect(lessons('igcse-core')).toContain('mx-24-1');
+    expect(lessons('caps-grade-11')).toEqual(expect.arrayContaining(['mx-25-4', 'mx-26-1']));
+    expect(lessons('caps-grade-12')).toEqual(expect.arrayContaining(['mx-26-2', 'mx-26-3']));
+    expect(lessons('ib-ai-sl')).toEqual(expect.arrayContaining(['mx-26-2', 'mx-26-3']));
   });
 
   it('recommend the course of the learner’s year in their own system', () => {

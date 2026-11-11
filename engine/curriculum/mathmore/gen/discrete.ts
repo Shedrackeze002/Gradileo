@@ -1,4 +1,4 @@
-/** More Mathematics Topics, Unit 20: number bases, modular arithmetic and truth tables. */
+/** More Mathematics Topics, Unit 23: number bases, modular arithmetic and truth tables. */
 import { mc, numPart, retry, skill, type GenOutput } from '../../helpers.ts';
 import type { Rng } from '../../../rng.ts';
 import type { Difficulty, SkillDef } from '../../../types.ts';
@@ -7,7 +7,7 @@ import { NAMES } from './common.ts';
 type Out = GenOutput;
 
 // ---------------------------------------------------------------------------
-// 20.1 Number bases
+// 23.1 Number bases
 // ---------------------------------------------------------------------------
 
 const BASE_WORD: Record<number, string> = { 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten' };
@@ -99,7 +99,7 @@ function baseArithmetic(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 20.2 Modular arithmetic
+// 23.2 Modular arithmetic
 // ---------------------------------------------------------------------------
 
 const mod = (a: number, m: number) => ((a % m) + m) % m;
@@ -184,7 +184,7 @@ function modOperations(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 20.3 Truth tables
+// 23.3 Truth tables
 // ---------------------------------------------------------------------------
 
 type Op = 'and' | 'or' | 'implies' | 'iff';
@@ -287,10 +287,10 @@ function truthTable(rng: Rng, d: Difficulty): Out {
 }
 
 export const DISCRETE_SKILLS: SkillDef[] = [
-  skill({ id: 'mx-base-convert', name: 'Converting between number bases', description: 'Change numbers between base ten and other bases, and from one base to another', outcomes: ['DM1'], lessonId: 'mx-20-1', gen: baseConvert }),
-  skill({ id: 'mx-base-arithmetic', name: 'Calculating in other bases', description: 'Add, subtract and multiply numbers written in bases other than ten', outcomes: ['DM1'], lessonId: 'mx-20-1', gen: baseArithmetic }),
-  skill({ id: 'mx-mod-reduce', name: 'Reducing modulo m', description: 'Find the value of a number modulo m, and use it for days and clocks', outcomes: ['DM2'], lessonId: 'mx-20-2', gen: modReduce }),
-  skill({ id: 'mx-mod-operations', name: 'Adding and multiplying modulo m', description: 'Add and multiply in modular arithmetic, and solve simple congruences', outcomes: ['DM2'], lessonId: 'mx-20-2', gen: modOperations }),
-  skill({ id: 'mx-truth-value', name: 'Truth values of compound statements', description: 'Find the truth value of statements joined by not, and, or, if–then and if and only if', outcomes: ['DM3'], lessonId: 'mx-20-3', gen: truthValue }),
-  skill({ id: 'mx-truth-table', name: 'Truth tables', description: 'Complete truth tables, and recognize tautologies and contradictions', outcomes: ['DM3'], lessonId: 'mx-20-3', gen: truthTable }),
+  skill({ id: 'mx-base-convert', name: 'Converting between number bases', description: 'Change numbers between base ten and other bases, and from one base to another', outcomes: ['DM1'], lessonId: 'mx-23-1', gen: baseConvert }),
+  skill({ id: 'mx-base-arithmetic', name: 'Calculating in other bases', description: 'Add, subtract and multiply numbers written in bases other than ten', outcomes: ['DM1'], lessonId: 'mx-23-1', gen: baseArithmetic }),
+  skill({ id: 'mx-mod-reduce', name: 'Reducing modulo m', description: 'Find the value of a number modulo m, and use it for days and clocks', outcomes: ['DM2'], lessonId: 'mx-23-2', gen: modReduce }),
+  skill({ id: 'mx-mod-operations', name: 'Adding and multiplying modulo m', description: 'Add and multiply in modular arithmetic, and solve simple congruences', outcomes: ['DM2'], lessonId: 'mx-23-2', gen: modOperations }),
+  skill({ id: 'mx-truth-value', name: 'Truth values of compound statements', description: 'Find the truth value of statements joined by not, and, or, if–then and if and only if', outcomes: ['DM3'], lessonId: 'mx-23-3', gen: truthValue }),
+  skill({ id: 'mx-truth-table', name: 'Truth tables', description: 'Complete truth tables, and recognize tautologies and contradictions', outcomes: ['DM3'], lessonId: 'mx-23-3', gen: truthTable }),
 ];

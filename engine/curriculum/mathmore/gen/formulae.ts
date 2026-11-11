@@ -1,4 +1,4 @@
-/** More Mathematics Topics, Unit 21: changing the subject of a formula, joint and partial variation, and linear programming. */
+/** More Mathematics Topics, Unit 24: changing the subject of a formula, joint and partial variation, and linear programming. */
 import { mc, numPart, retry, skill, type GenOutput } from '../../helpers.ts';
 import { fmt, roundTo } from '../../../math/numbers.ts';
 import type { Rng } from '../../../rng.ts';
@@ -12,7 +12,7 @@ const answer = (v: number, opts: { label?: string; suffix?: string } = {}): Part
 const shown = (v: number) => (isExact(v) ? fmt(v) : `${fmt(v, 2)}`);
 
 // ---------------------------------------------------------------------------
-// 21.1 Changing the subject of a formula
+// 24.1 Changing the subject of a formula
 // ---------------------------------------------------------------------------
 
 interface Rearrangement {
@@ -121,7 +121,7 @@ function subjectEvaluate(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 21.2 Joint and partial variation
+// 24.2 Joint and partial variation
 // ---------------------------------------------------------------------------
 
 function jointVariation(rng: Rng, d: Difficulty): Out {
@@ -216,7 +216,7 @@ function partialVariation(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 21.3 Linear programming
+// 24.3 Linear programming
 // ---------------------------------------------------------------------------
 
 interface Region {
@@ -328,10 +328,10 @@ function lpOptimize(rng: Rng, d: Difficulty): Out {
 }
 
 export const FORMULAE_SKILLS: SkillDef[] = [
-  skill({ id: 'mx-change-subject', name: 'Changing the subject', description: 'Rearrange a formula to make a different letter its subject', outcomes: ['FV1'], lessonId: 'mx-21-1', format: 'mc', gen: changeSubject }),
-  skill({ id: 'mx-subject-evaluate', name: 'Rearranging and substituting', description: 'Find a quantity that is not the subject of a formula by rearranging and substituting', outcomes: ['FV1'], lessonId: 'mx-21-1', gen: subjectEvaluate }),
-  skill({ id: 'mx-joint-variation', name: 'Joint variation', description: 'Find and use the rule when one quantity varies with two others, directly or inversely', outcomes: ['FV2'], lessonId: 'mx-21-2', gen: jointVariation }),
-  skill({ id: 'mx-partial-variation', name: 'Partial variation', description: 'Find and use the rule when a quantity is partly constant and partly varies with another', outcomes: ['FV2'], lessonId: 'mx-21-2', gen: partialVariation }),
-  skill({ id: 'mx-lp-constraints', name: 'Constraints as inequalities', description: 'Write the constraints of a problem as inequalities, and test points against them', outcomes: ['FV3'], lessonId: 'mx-21-3', format: 'mc', gen: lpConstraints }),
-  skill({ id: 'mx-lp-optimize', name: 'Greatest value in a region', description: 'Find the greatest value of a linear objective at the corners of a feasible region', outcomes: ['FV3'], lessonId: 'mx-21-3', gen: lpOptimize }),
+  skill({ id: 'mx-change-subject', name: 'Changing the subject', description: 'Rearrange a formula to make a different letter its subject', outcomes: ['FV1'], lessonId: 'mx-24-1', format: 'mc', gen: changeSubject }),
+  skill({ id: 'mx-subject-evaluate', name: 'Rearranging and substituting', description: 'Find a quantity that is not the subject of a formula by rearranging and substituting', outcomes: ['FV1'], lessonId: 'mx-24-1', gen: subjectEvaluate }),
+  skill({ id: 'mx-joint-variation', name: 'Joint variation', description: 'Find and use the rule when one quantity varies with two others, directly or inversely', outcomes: ['FV2'], lessonId: 'mx-24-2', gen: jointVariation }),
+  skill({ id: 'mx-partial-variation', name: 'Partial variation', description: 'Find and use the rule when a quantity is partly constant and partly varies with another', outcomes: ['FV2'], lessonId: 'mx-24-2', gen: partialVariation }),
+  skill({ id: 'mx-lp-constraints', name: 'Constraints as inequalities', description: 'Write the constraints of a problem as inequalities, and test points against them', outcomes: ['FV3'], lessonId: 'mx-24-3', format: 'mc', gen: lpConstraints }),
+  skill({ id: 'mx-lp-optimize', name: 'Greatest value in a region', description: 'Find the greatest value of a linear objective at the corners of a feasible region', outcomes: ['FV3'], lessonId: 'mx-24-3', gen: lpOptimize }),
 ];

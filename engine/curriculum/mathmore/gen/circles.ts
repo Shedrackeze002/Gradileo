@@ -1,4 +1,4 @@
-/** More Mathematics Topics, Unit 22: segments, frustums, Heron's formula, cyclic quadrilaterals, chords and tangents, and longitude and latitude. */
+/** More Mathematics Topics, Unit 25: segments, frustums, Heron's formula, cyclic quadrilaterals, chords and tangents, and longitude and latitude. */
 import { numPart, retry, skill, type GenOutput } from '../../helpers.ts';
 import { cosD, fmt, roundTo, sinD } from '../../../math/numbers.ts';
 import type { Rng } from '../../../rng.ts';
@@ -15,7 +15,7 @@ const isWhole = (v: number) => Math.abs(v - Math.round(v)) < 1e-9;
 const eq2 = (v: number) => (isWhole(v) ? `= ${fmt(Math.round(v))}` : `\\approx ${f2(v)}`);
 
 // ---------------------------------------------------------------------------
-// 22.1 Segments of a circle
+// 25.1 Segments of a circle
 // ---------------------------------------------------------------------------
 
 const sectorArea = (r: number, t: number) => (t / 360) * PI * r * r;
@@ -90,7 +90,7 @@ function segmentPerimeter(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 22.2 Frustums
+// 25.2 Frustums
 // ---------------------------------------------------------------------------
 
 function frustumVolume(rng: Rng, d: Difficulty): Out {
@@ -176,7 +176,7 @@ function frustumSurface(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 22.3 Heron's formula
+// 25.3 Heron's formula
 // ---------------------------------------------------------------------------
 
 /** Triangles with whole sides and a whole area. */
@@ -282,7 +282,7 @@ function heronApply(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 22.4 Cyclic quadrilaterals and the alternate segment theorem
+// 25.4 Cyclic quadrilaterals and the alternate segment theorem
 // ---------------------------------------------------------------------------
 
 function cyclicQuad(rng: Rng, d: Difficulty): Out {
@@ -361,7 +361,7 @@ function alternateSegment(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 22.5 Intersecting chords and common tangents
+// 25.5 Intersecting chords and common tangents
 // ---------------------------------------------------------------------------
 
 function intersectingChords(rng: Rng, d: Difficulty): Out {
@@ -446,7 +446,7 @@ function commonTangents(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 22.6 Longitude and latitude
+// 25.6 Longitude and latitude
 // ---------------------------------------------------------------------------
 
 const EARTH = 6400;
@@ -549,16 +549,16 @@ function parallelLatitude(rng: Rng, d: Difficulty): Out {
 }
 
 export const CIRCLE_SKILLS: SkillDef[] = [
-  skill({ id: 'mx-segment-area', name: 'Area of a segment', description: 'Find the area of a minor or major segment of a circle', outcomes: ['CS1'], lessonId: 'mx-22-1', calculator: true, gen: segmentArea }),
-  skill({ id: 'mx-segment-perimeter', name: 'Chords and the perimeter of a segment', description: 'Find the length of a chord from the angle at the centre, and the perimeter of a segment', outcomes: ['CS1'], lessonId: 'mx-22-1', calculator: true, gen: segmentPerimeter }),
-  skill({ id: 'mx-frustum-volume', name: 'Volume of a frustum', description: 'Find the volume of a frustum of a cone by subtracting the cone that was removed', outcomes: ['CS2'], lessonId: 'mx-22-2', calculator: true, gen: frustumVolume }),
-  skill({ id: 'mx-frustum-surface', name: 'Surface area of a frustum', description: 'Find the curved and total surface area of a frustum of a cone', outcomes: ['CS2'], lessonId: 'mx-22-2', calculator: true, gen: frustumSurface }),
-  skill({ id: 'mx-heron-area', name: 'Heron’s formula', description: 'Find the area of a triangle from its three sides', outcomes: ['CS3'], lessonId: 'mx-22-3', gen: heronArea }),
-  skill({ id: 'mx-heron-apply', name: 'Using Heron’s formula', description: 'Use Heron’s formula to find heights of triangles and areas of quadrilaterals', outcomes: ['CS3'], lessonId: 'mx-22-3', gen: heronApply }),
-  skill({ id: 'mx-cyclic-quadrilateral', name: 'Cyclic quadrilaterals', description: 'Use the angle properties of cyclic quadrilaterals', outcomes: ['CS4'], lessonId: 'mx-22-4', gen: cyclicQuad }),
-  skill({ id: 'mx-alternate-segment', name: 'The alternate segment theorem', description: 'Find angles between tangents and chords with the alternate segment theorem', outcomes: ['CS4'], lessonId: 'mx-22-4', gen: alternateSegment }),
-  skill({ id: 'mx-intersecting-chords', name: 'Intersecting chords and secants', description: 'Use the products of the parts of intersecting chords, secants and a tangent', outcomes: ['CS5'], lessonId: 'mx-22-5', gen: intersectingChords }),
-  skill({ id: 'mx-common-tangents', name: 'Common tangents', description: 'Find the lengths of direct and transverse common tangents to two circles', outcomes: ['CS5'], lessonId: 'mx-22-5', gen: commonTangents }),
-  skill({ id: 'mx-great-circle', name: 'Distances along great circles', description: 'Find distances along meridians and the equator', outcomes: ['CS6'], lessonId: 'mx-22-6', gen: greatCircle }),
-  skill({ id: 'mx-parallel-latitude', name: 'Parallels of latitude', description: 'Find the radius of a parallel of latitude, distances along it, and time differences from longitude', outcomes: ['CS6'], lessonId: 'mx-22-6', gen: parallelLatitude }),
+  skill({ id: 'mx-segment-area', name: 'Area of a segment', description: 'Find the area of a minor or major segment of a circle', outcomes: ['CS1'], lessonId: 'mx-25-1', calculator: true, gen: segmentArea }),
+  skill({ id: 'mx-segment-perimeter', name: 'Chords and the perimeter of a segment', description: 'Find the length of a chord from the angle at the centre, and the perimeter of a segment', outcomes: ['CS1'], lessonId: 'mx-25-1', calculator: true, gen: segmentPerimeter }),
+  skill({ id: 'mx-frustum-volume', name: 'Volume of a frustum', description: 'Find the volume of a frustum of a cone by subtracting the cone that was removed', outcomes: ['CS2'], lessonId: 'mx-25-2', calculator: true, gen: frustumVolume }),
+  skill({ id: 'mx-frustum-surface', name: 'Surface area of a frustum', description: 'Find the curved and total surface area of a frustum of a cone', outcomes: ['CS2'], lessonId: 'mx-25-2', calculator: true, gen: frustumSurface }),
+  skill({ id: 'mx-heron-area', name: 'Heron’s formula', description: 'Find the area of a triangle from its three sides', outcomes: ['CS3'], lessonId: 'mx-25-3', gen: heronArea }),
+  skill({ id: 'mx-heron-apply', name: 'Using Heron’s formula', description: 'Use Heron’s formula to find heights of triangles and areas of quadrilaterals', outcomes: ['CS3'], lessonId: 'mx-25-3', gen: heronApply }),
+  skill({ id: 'mx-cyclic-quadrilateral', name: 'Cyclic quadrilaterals', description: 'Use the angle properties of cyclic quadrilaterals', outcomes: ['CS4'], lessonId: 'mx-25-4', gen: cyclicQuad }),
+  skill({ id: 'mx-alternate-segment', name: 'The alternate segment theorem', description: 'Find angles between tangents and chords with the alternate segment theorem', outcomes: ['CS4'], lessonId: 'mx-25-4', gen: alternateSegment }),
+  skill({ id: 'mx-intersecting-chords', name: 'Intersecting chords and secants', description: 'Use the products of the parts of intersecting chords, secants and a tangent', outcomes: ['CS5'], lessonId: 'mx-25-5', gen: intersectingChords }),
+  skill({ id: 'mx-common-tangents', name: 'Common tangents', description: 'Find the lengths of direct and transverse common tangents to two circles', outcomes: ['CS5'], lessonId: 'mx-25-5', gen: commonTangents }),
+  skill({ id: 'mx-great-circle', name: 'Distances along great circles', description: 'Find distances along meridians and the equator', outcomes: ['CS6'], lessonId: 'mx-25-6', gen: greatCircle }),
+  skill({ id: 'mx-parallel-latitude', name: 'Parallels of latitude', description: 'Find the radius of a parallel of latitude, distances along it, and time differences from longitude', outcomes: ['CS6'], lessonId: 'mx-25-6', gen: parallelLatitude }),
 ];

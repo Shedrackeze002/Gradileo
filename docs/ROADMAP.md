@@ -749,11 +749,11 @@ items ship or decisions change.
      diagrams. Next: fill these gaps in More Mathematics Topics, the most shared first, then their
      videos and tutor recordings.
    - Built (11 November 2026): **the first 16 gap lessons**, in four new units of More Mathematics
-     Topics with 32 question generators. Unit 20: number bases, modular arithmetic and truth
-     tables. Unit 21: changing the subject of a formula, joint and partial variation, and linear
-     programming. Unit 22: segments of a circle, frustums, Heron's formula, cyclic quadrilaterals
+     Topics with 32 question generators. Unit 23: number bases, modular arithmetic and truth
+     tables. Unit 24: changing the subject of a formula, joint and partial variation, and linear
+     programming. Unit 25: segments of a circle, frustums, Heron's formula, cyclic quadrilaterals
      and the alternate segment theorem, intersecting chords and common tangents, and longitude and
-     latitude. Unit 23: nominal and effective interest rates, annuities and sinking funds, present
+     latitude. Unit 26: nominal and effective interest rates, annuities and sinking funds, present
      value and loans, and shares and stocks. The maps teach them under their own unit names, so
      WASSCE SS 1 to SS 3, KCSE Form 1 and Form 2, and IGCSE Core now list no gaps. Gaps still
      listed: vector geometry (KCSE Form 3, IGCSE Extended); matrices and transformations and the
@@ -761,7 +761,7 @@ items ship or decisions change.
      inclination, the tangent to a circle and the least squares regression line (CAPS); the
      regression line and expected value (IB), and Voronoi diagrams, Spearman's rank correlation,
      the chi-squared tests and the t-test (IB AI SL). Next: these lessons, then the videos and
-     tutor recordings for Units 20 to 23 and after.
+     tutor recordings for Units 23 to 26 and after.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

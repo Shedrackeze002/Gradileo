@@ -1,4 +1,4 @@
-/** More Mathematics Topics, Unit 23: nominal and effective interest rates, annuities and sinking funds, loans, and shares and stocks. */
+/** More Mathematics Topics, Unit 26: nominal and effective interest rates, annuities and sinking funds, loans, and shares and stocks. */
 import { mc, numPart, retry, skill, type GenOutput } from '../../helpers.ts';
 import { fmt, fmtFixed, roundTo } from '../../../math/numbers.ts';
 import type { Rng } from '../../../rng.ts';
@@ -29,7 +29,7 @@ const MONTHLY_RATES = [3, 3.6, 4.2, 4.8, 5.4, 6, 7.2, 8.4, 9, 9.6, 10.8, 12];
 const effective = (r: number, m: number) => ((1 + r / 100 / m) ** m - 1) * 100;
 
 // ---------------------------------------------------------------------------
-// 23.1 Nominal and effective interest rates
+// 26.1 Nominal and effective interest rates
 // ---------------------------------------------------------------------------
 
 const effSteps = (r: number, m: number) => [
@@ -96,7 +96,7 @@ function nominalConvert(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 23.2 Annuities: future value and sinking funds
+// 26.2 Annuities: future value and sinking funds
 // ---------------------------------------------------------------------------
 
 const futureValue = (x: number, i: number, n: number) => (x * ((1 + i) ** n - 1)) / i;
@@ -167,7 +167,7 @@ function sinkingFund(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 23.3 Present value and loans
+// 26.3 Present value and loans
 // ---------------------------------------------------------------------------
 
 function annuityPresent(rng: Rng, d: Difficulty): Out {
@@ -234,7 +234,7 @@ function loanRepayment(rng: Rng, d: Difficulty): Out {
 }
 
 // ---------------------------------------------------------------------------
-// 23.4 Shares and stocks
+// 26.4 Shares and stocks
 // ---------------------------------------------------------------------------
 
 function shareDividend(rng: Rng, d: Difficulty): Out {
@@ -324,12 +324,12 @@ function shareYield(rng: Rng, d: Difficulty): Out {
 }
 
 export const FINANCE_SKILLS: SkillDef[] = [
-  skill({ id: 'mx-effective-rate', name: 'Effective interest rates', description: 'Find the effective annual rate from a nominal rate, and compare offers', outcomes: ['FN1'], lessonId: 'mx-23-1', calculator: true, gen: effectiveRate }),
-  skill({ id: 'mx-nominal-convert', name: 'Nominal rates and compound growth', description: 'Find the nominal rate from an effective rate, and use nominal rates in compound interest', outcomes: ['FN1'], lessonId: 'mx-23-1', calculator: true, gen: nominalConvert }),
-  skill({ id: 'mx-annuity-future', name: 'Future value of an annuity', description: 'Find what regular savings grow to', outcomes: ['FN2'], lessonId: 'mx-23-2', calculator: true, gen: annuityFuture }),
-  skill({ id: 'mx-sinking-fund', name: 'Sinking funds', description: 'Find the regular payment that reaches a target amount', outcomes: ['FN2'], lessonId: 'mx-23-2', calculator: true, gen: sinkingFund }),
-  skill({ id: 'mx-annuity-present', name: 'Present value of an annuity', description: 'Find the present value of regular payments, and the loan that repayments can support', outcomes: ['FN3'], lessonId: 'mx-23-3', calculator: true, gen: annuityPresent }),
-  skill({ id: 'mx-loan-repayment', name: 'Loan repayments', description: 'Find the repayments on a loan and the interest paid', outcomes: ['FN3'], lessonId: 'mx-23-3', calculator: true, gen: loanRepayment }),
-  skill({ id: 'mx-share-dividend', name: 'Shares and dividends', description: 'Find dividends, numbers of shares and the profit on a sale of shares', outcomes: ['FN4'], lessonId: 'mx-23-4', calculator: true, gen: shareDividend }),
-  skill({ id: 'mx-share-yield', name: 'Yield on shares and stocks', description: 'Find the yield of shares and stocks, and the income from stock', outcomes: ['FN4'], lessonId: 'mx-23-4', calculator: true, gen: shareYield }),
+  skill({ id: 'mx-effective-rate', name: 'Effective interest rates', description: 'Find the effective annual rate from a nominal rate, and compare offers', outcomes: ['FI1'], lessonId: 'mx-26-1', calculator: true, gen: effectiveRate }),
+  skill({ id: 'mx-nominal-convert', name: 'Nominal rates and compound growth', description: 'Find the nominal rate from an effective rate, and use nominal rates in compound interest', outcomes: ['FI1'], lessonId: 'mx-26-1', calculator: true, gen: nominalConvert }),
+  skill({ id: 'mx-annuity-future', name: 'Future value of an annuity', description: 'Find what regular savings grow to', outcomes: ['FI2'], lessonId: 'mx-26-2', calculator: true, gen: annuityFuture }),
+  skill({ id: 'mx-sinking-fund', name: 'Sinking funds', description: 'Find the regular payment that reaches a target amount', outcomes: ['FI2'], lessonId: 'mx-26-2', calculator: true, gen: sinkingFund }),
+  skill({ id: 'mx-annuity-present', name: 'Present value of an annuity', description: 'Find the present value of regular payments, and the loan that repayments can support', outcomes: ['FI3'], lessonId: 'mx-26-3', calculator: true, gen: annuityPresent }),
+  skill({ id: 'mx-loan-repayment', name: 'Loan repayments', description: 'Find the repayments on a loan and the interest paid', outcomes: ['FI3'], lessonId: 'mx-26-3', calculator: true, gen: loanRepayment }),
+  skill({ id: 'mx-share-dividend', name: 'Shares and dividends', description: 'Find dividends, numbers of shares and the profit on a sale of shares', outcomes: ['FI4'], lessonId: 'mx-26-4', calculator: true, gen: shareDividend }),
+  skill({ id: 'mx-share-yield', name: 'Yield on shares and stocks', description: 'Find the yield of shares and stocks, and the income from stock', outcomes: ['FI4'], lessonId: 'mx-26-4', calculator: true, gen: shareYield }),
 ];
