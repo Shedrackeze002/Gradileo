@@ -706,6 +706,22 @@ items ship or decisions change.
      and handed to the YouTube uploads. The Tutor voice workflow recorded all 38 lessons (runs #75
      and #77). Every UK GCSE and A level Mathematics topic now has a lesson, a video and a tutor
      recording.
+   - Built (11 November 2026), step 3, the first maps outside mathematics: **UK chemistry and
+     English** (`engine/curriculum/maps/uk-chemistry.ts` and `uk-english.ts`, joined to the UK map,
+     whose courses can now name a `subject`). **GCSE Chemistry** (8 units, 42 lessons) and **A level
+     Chemistry, Years 12 and 13** (9 units and 3 units) are built from the chemistry lessons of
+     Grades 10 to 12, and **GCSE English Language** (7 units) and **GCSE English Literature** (6
+     units: Romeo and Juliet, Macbeth, The Tempest, poetry, unseen poetry and writing about
+     literature) from the English lessons of Grades 6 to 12. A UK learner in Year 10 or 11 is
+     offered the GCSE course on "Find your course", and A level Chemistry in Years 12 and 13 with
+     Gradileo's own courses as alternatives. The gaps: GCSE Chemistry lists 16 (the reactivity
+     series and extracting metals, making salts, the tests for gases and ions, the atmosphere,
+     using resources, and smaller ones); A level Chemistry lists 13 in Year 12 and 15 in Year 13
+     (mostly inorganic chemistry, mechanisms, analysis and thermodynamics); GCSE English Language
+     lists 8 (evaluating a statement, comparing two writers, the forms of viewpoint writing,
+     descriptive writing); GCSE English Literature lists 6 (the nineteenth-century novel is the
+     largest; modern texts in copyright stay out, since Gradileo teaches from the public domain).
+     A level English is not mapped. Next: fill the GCSE gaps, chemistry first.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

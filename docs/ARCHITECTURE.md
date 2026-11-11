@@ -159,7 +159,8 @@ country or curriculum and the year in that system's words (`engine/curricula.ts`
 to Gradileo's level; the curriculum is saved on `profiles.curriculum`). `engine/topics.ts` files
 every lesson under a plain topic for **Browse by topic** (`/s/topics`). A **curriculum map**
 (`engine/curriculum/maps/`) describes a school system's own courses (`us.ts`: US Grade 6 to
-Precalculus) as units of existing lesson ids; `buildMappedCourse` turns each into a `CourseMeta`
+Precalculus; `uk-chemistry.ts` and `uk-english.ts`: a course names its `subject` when it is not
+mathematics) as units of existing lesson ids; `buildMappedCourse` turns each into a `CourseMeta`
 with `map` set (its lessons are copies filed under the map's units, with outcome codes that name
 their own course, "Math 10 N1") and `gaps`, the syllabus topics not taught yet. Mapped courses come
 last in `COURSES`, so `lessonById`, `unitById` and `courseOfLesson` still find a lesson's own

@@ -82,6 +82,13 @@ export const PREREQUISITE: Record<string, string | null> = {
   // A level Mathematics follows GCSE Higher, and its second year follows its first.
   'uk-a-level-year-1': 'uk-gcse-higher',
   'uk-a-level-year-2': 'uk-a-level-year-1',
+  // UK chemistry: GCSE is the first chemistry course, and A level follows it.
+  'uk-gcse-chemistry': null,
+  'uk-a-level-chemistry-1': 'uk-gcse-chemistry',
+  'uk-a-level-chemistry-2': 'uk-a-level-chemistry-1',
+  // UK English: both GCSEs follow Key Stage 3 (Years 7 to 9).
+  'uk-gcse-english-language': 'eng-9',
+  'uk-gcse-english-literature': 'eng-9',
 };
 
 /** For a UK learner in Year 10 or 11: the GCSE tier, Higher unless they want extra support. */
@@ -108,6 +115,34 @@ function ukALevel(g: number): Recommendation {
   }
   return rec('uk-a-level-year-2', [where, 'The second year adds functions, radians and further trigonometry, series, and further differentiation and integration.'], [
     { courseId: 'uk-a-level-year-1', why: 'If you have not finished the first year of A level yet.' },
+  ]);
+}
+
+/** For a UK learner of chemistry from Year 10: GCSE Chemistry, then the year of A level Chemistry. */
+function ukChemistry(g: number): Recommendation {
+  if (g <= 10) {
+    return rec('uk-gcse-chemistry', ['GCSE Chemistry is the course of Years 10 and 11, with its units in the order of a GCSE scheme of work: atoms and the periodic table, bonding, quantitative chemistry, chemical and energy changes, rates, and organic chemistry.'], [
+      { courseId: 'chem-10', why: 'If chemistry is new to you and you want to start with the particle model and the atom.' },
+    ]);
+  }
+  const where = 'A level Chemistry is the course of Years 12 and 13, with its units in the order of a two-year scheme of work. It lists the topics Gradileo does not teach yet.';
+  if (g === 11) {
+    return rec('uk-a-level-chemistry-1', [where, 'The first year (the AS content) covers atomic structure, amount of substance, bonding, energetics, kinetics, equilibria, redox and a first course in organic chemistry.'], [
+      { courseId: 'uk-gcse-chemistry', why: 'If you want to review GCSE Chemistry first.' },
+      { courseId: 'chem-20', why: 'Grade 11 Chemistry adds the gas laws and solutions, in Gradileo’s own order.' },
+    ]);
+  }
+  return rec('uk-a-level-chemistry-2', [where, 'The second year covers electrode potentials and cells, acids, bases and buffers, and esters and polymers.'], [
+    { courseId: 'uk-a-level-chemistry-1', why: 'If you have not finished the first year of A level yet.' },
+    { courseId: 'chem-30', why: 'Grade 12 Chemistry covers thermochemistry, electrochemistry, organic chemistry and equilibrium, in Gradileo’s own order.' },
+  ]);
+}
+
+/** For a UK learner in Year 10 or 11: GCSE English Language, with GCSE English Literature beside it. */
+function ukEnglish(): Recommendation {
+  return rec('uk-gcse-english-language', ['GCSE English Language is the course of Years 10 and 11: reading fiction and non-fiction closely, and descriptive, narrative and viewpoint writing.'], [
+    { courseId: 'uk-gcse-english-literature', why: 'For your other English GCSE: a Shakespeare play, poetry and writing about literature.' },
+    { courseId: 'eng-9', why: 'If you want to build up close reading, rhetoric and the analytical essay first.' },
   ]);
 }
 
@@ -155,6 +190,9 @@ function rec(courseId: string, reasons: string[], alternatives: CourseChoice[] =
 
 export function recommendCourse(a: PlacementAnswers): Recommendation {
   const g = Math.round(a.grade);
+  // A UK learner in Year 10 or 11 gets the GCSE courses of English and chemistry, and A level Chemistry after them.
+  if (a.curriculum === 'uk' && a.subject === 'English' && (g === 9 || g === 10)) return ukEnglish();
+  if (a.curriculum === 'uk' && a.subject === 'Chemistry' && g >= 9) return ukChemistry(Math.min(12, g));
   if (a.subject === 'English') {
     if (g <= 5) {
       const reasons = ['Grade 5 English covers stories and fables, poetry, reading for information, word study, grammar and punctuation, and writing paragraphs, stories and opinions.'];

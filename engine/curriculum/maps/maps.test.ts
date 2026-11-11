@@ -31,7 +31,7 @@ describe('curriculum maps', () => {
   });
 
   it('recommend a GCSE tier to a UK learner in Year 10 or 11, and Gradileo’s own courses to others', () => {
-    expect(mappedCourses('uk').map((c) => c.shortTitle)).toEqual(['GCSE Foundation', 'GCSE Higher', 'A level Year 12', 'A level Year 13']);
+    expect(mappedCourses('uk').filter((c) => c.subject === 'Mathematics').map((c) => c.shortTitle)).toEqual(['GCSE Foundation', 'GCSE Higher', 'A level Year 12', 'A level Year 13']);
     // Every GCSE topic has a lesson, so neither tier lists a gap.
     for (const id of ['uk-gcse-foundation', 'uk-gcse-higher']) expect(getCourse(id)!.gaps, id).toEqual([]);
     const uk = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'uk', feeling: 'ok', ...more });
@@ -82,6 +82,11 @@ describe('curriculum maps', () => {
     expect(recommendCourse({ subject: 'Mathematics', grade: 9, curriculum: 'ng' }).courseId).toBe('math-9');
     for (const c of MAPPED_COURSES) {
       const before = PREREQUISITE[c.id];
+      // GCSE Chemistry is a first course in its subject, so it has no course before it.
+      if (c.id === 'uk-gcse-chemistry') {
+        expect(before, c.id).toBeNull();
+        continue;
+      }
       expect(before && getCourse(before), c.id).toBeTruthy();
       expect(placementSkills(before!).length, c.id).toBeGreaterThan(0);
     }
