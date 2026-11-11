@@ -106670,5 +106670,197 @@
         "working": "$R = 5 \\times 9.8 = 49$ N, and limiting friction is $0.4 \\times 49 = 19.6$ N."
       }
     ]
+  },
+  "mx-13-3": {
+    "lessonId": "mx-13-3",
+    "title": "Inclined Planes",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Resolving on a slope",
+        "t": 21.851
+      },
+      {
+        "title": "Smooth and rough slopes",
+        "t": 60.058
+      },
+      {
+        "title": "A slope and a pulley",
+        "t": 134.521
+      },
+      {
+        "title": "Your turn",
+        "t": 196.548
+      },
+      {
+        "title": "Summary",
+        "t": 231.972
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-3:q",
+        "t": 207.634,
+        "prompt": "A particle slides down a smooth slope at $20^\\circ$ to the horizontal. Find its acceleration. Take $g = 9.8$ m/s².",
+        "choices": [
+          "$3.35$ m/s²",
+          "$9.21$ m/s²",
+          "$9.8$ m/s²",
+          "$4.9$ m/s²"
+        ],
+        "answer": 0,
+        "working": "$a = g\\sin 20^\\circ = 9.8 \\times 0.342 \\approx 3.35$ m/s²."
+      }
+    ]
+  },
+  "mx-13-4": {
+    "lessonId": "mx-13-4",
+    "title": "Projectiles",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two motions",
+        "t": 23.425
+      },
+      {
+        "title": "Thrown horizontally",
+        "t": 71.578
+      },
+      {
+        "title": "Projected at an angle",
+        "t": 118.027
+      },
+      {
+        "title": "Velocity at any time",
+        "t": 185.065
+      },
+      {
+        "title": "Your turn",
+        "t": 229.989
+      },
+      {
+        "title": "Summary",
+        "t": 268.096
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-4:q",
+        "t": 243.8,
+        "prompt": "A ball is projected at $10$ m/s at $30^\\circ$ above the horizontal. What is its horizontal velocity $1$ s later?",
+        "choices": [
+          "$5$ m/s",
+          "$8.66$ m/s",
+          "$0.2$ m/s",
+          "$10$ m/s"
+        ],
+        "answer": 1,
+        "working": "The horizontal velocity never changes: $10\\cos 30^\\circ \\approx 8.66$ m/s."
+      }
+    ]
+  },
+  "mx-13-5": {
+    "lessonId": "mx-13-5",
+    "title": "Kinematics in Two Dimensions",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Vectors for motion",
+        "t": 28.317
+      },
+      {
+        "title": "Constant acceleration",
+        "t": 70.538
+      },
+      {
+        "title": "Using calculus",
+        "t": 138.066
+      },
+      {
+        "title": "Your turn",
+        "t": 201.978
+      },
+      {
+        "title": "Summary",
+        "t": 237.263
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-5:q",
+        "t": 213.842,
+        "prompt": "A particle has velocity $\\mathbf{v} = 3t^2\\mathbf{i} + 4\\mathbf{j}$ m/s. Find its acceleration when $t = 2$.",
+        "choices": [
+          "$12\\mathbf{i} + 4\\mathbf{j}$",
+          "$6\\mathbf{i}$",
+          "$12\\mathbf{i} + \\mathbf{j}$",
+          "$12\\mathbf{i}$"
+        ],
+        "answer": 3,
+        "working": "$\\mathbf{a} = \\dfrac{d\\mathbf{v}}{dt} = 6t\\mathbf{i}$, since $4\\mathbf{j}$ is constant. At $t = 2$, $\\mathbf{a} = 12\\mathbf{i}$ m/s²."
+      }
+    ]
+  },
+  "mx-13-6": {
+    "lessonId": "mx-13-6",
+    "title": "Moments",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The moment of a force",
+        "t": 24.385
+      },
+      {
+        "title": "A beam in equilibrium",
+        "t": 80.299
+      },
+      {
+        "title": "On the point of tilting",
+        "t": 147.053
+      },
+      {
+        "title": "Your turn",
+        "t": 178.464
+      },
+      {
+        "title": "Summary",
+        "t": 216.387
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-6:q",
+        "t": 193.111,
+        "prompt": "A uniform rod $2$ m long with weight $30$ N is pivoted at one end and held horizontal. Find the moment of its weight about the pivot.",
+        "choices": [
+          "$60$ N m",
+          "$15$ N m",
+          "$30$ N m",
+          "$32$ N m"
+        ],
+        "answer": 2,
+        "working": "The weight acts at the midpoint, $1$ m from the pivot: $30 \\times 1 = 30$ N m."
+      }
+    ]
   }
 }
