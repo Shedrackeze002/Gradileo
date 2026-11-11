@@ -106325,5 +106325,350 @@
         "working": "The upper quartile is $\\tfrac{3}{4}$ of the way through: $\\tfrac{3}{4} \\times 80 = 60$."
       }
     ]
+  },
+  "mx-12-1": {
+    "lessonId": "mx-12-1",
+    "title": "Quantities, Units and Modelling in Mechanics",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "SI units",
+        "t": 28.581
+      },
+      {
+        "title": "Changing units",
+        "t": 82.901
+      },
+      {
+        "title": "Mass and weight",
+        "t": 129.002
+      },
+      {
+        "title": "Modelling assumptions",
+        "t": 185.391
+      },
+      {
+        "title": "Your turn",
+        "t": 245.391
+      },
+      {
+        "title": "Summary",
+        "t": 277.637
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-1:q",
+        "t": 255.603,
+        "prompt": "A train travels at $54$ km/h. What is its speed in metres per second?",
+        "choices": [
+          "$194.4$ m/s",
+          "$15$ m/s",
+          "$1.5$ m/s",
+          "$540$ m/s"
+        ],
+        "answer": 1,
+        "working": "Divide by $3.6$: $54 \\div 3.6 = 15$ m/s."
+      }
+    ]
+  },
+  "mx-12-2": {
+    "lessonId": "mx-12-2",
+    "title": "The Constant Acceleration Formulae",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The five quantities",
+        "t": 19.516
+      },
+      {
+        "title": "The formulas",
+        "t": 73.091
+      },
+      {
+        "title": "Choosing the formula",
+        "t": 118.998
+      },
+      {
+        "title": "Slowing down",
+        "t": 165.969
+      },
+      {
+        "title": "Two vehicles",
+        "t": 209.687
+      },
+      {
+        "title": "Your turn",
+        "t": 262.246
+      },
+      {
+        "title": "Summary",
+        "t": 300.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-2:q",
+        "t": 275.732,
+        "prompt": "A train speeds up steadily from $10$ m/s to $30$ m/s over $400$ m. Find its acceleration.",
+        "choices": [
+          "$0.05$ m/s²",
+          "$2$ m/s²",
+          "$1$ m/s²",
+          "$0.5$ m/s²"
+        ],
+        "answer": 2,
+        "working": "$v^2 = u^2 + 2as$: $900 = 100 + 800a$, so $a = 1$ m/s²."
+      }
+    ]
+  },
+  "mx-12-3": {
+    "lessonId": "mx-12-3",
+    "title": "Vertical Motion Under Gravity",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Free fall",
+        "t": 24.339
+      },
+      {
+        "title": "The greatest height",
+        "t": 63.983
+      },
+      {
+        "title": "From a cliff",
+        "t": 123.494
+      },
+      {
+        "title": "Your turn",
+        "t": 187.634
+      },
+      {
+        "title": "Summary",
+        "t": 221.333
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-3:q",
+        "t": 196.788,
+        "prompt": "A stone is dropped from rest and falls for $2$ s. How far does it fall? Take $g = 9.8$ m/s².",
+        "choices": [
+          "$9.8$ m",
+          "$39.2$ m",
+          "$4.9$ m",
+          "$19.6$ m"
+        ],
+        "answer": 3,
+        "working": "Downwards positive: $s = ut + \\tfrac{1}{2}at^2 = 0 + \\tfrac{1}{2}(9.8)(2^2) = 19.6$ m."
+      }
+    ]
+  },
+  "mx-12-4": {
+    "lessonId": "mx-12-4",
+    "title": "Forces and Newton’s Laws",
+    "duration": 296,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Newton’s three laws",
+        "t": 24.178
+      },
+      {
+        "title": "A car on a level road",
+        "t": 74.362
+      },
+      {
+        "title": "Forces as vectors",
+        "t": 119.773
+      },
+      {
+        "title": "In a lift",
+        "t": 160.392
+      },
+      {
+        "title": "Your turn",
+        "t": 220.948
+      },
+      {
+        "title": "Summary",
+        "t": 260.877
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-4:q",
+        "t": 236.803,
+        "prompt": "A box of mass $5$ kg is pulled along the floor by a horizontal force of $20$ N against a resistance of $5$ N. Find its acceleration.",
+        "choices": [
+          "$3$ m/s²",
+          "$4$ m/s²",
+          "$5$ m/s²",
+          "$75$ m/s²"
+        ],
+        "answer": 0,
+        "working": "Resultant force $= 20 - 5 = 15$ N, and $15 = 5a$, so $a = 3$ m/s²."
+      }
+    ]
+  },
+  "mx-12-5": {
+    "lessonId": "mx-12-5",
+    "title": "Connected Particles and Pulleys",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Connected particles",
+        "t": 24.085
+      },
+      {
+        "title": "A car and a trailer",
+        "t": 60.571
+      },
+      {
+        "title": "Pulleys",
+        "t": 122.428
+      },
+      {
+        "title": "Your turn",
+        "t": 185.542
+      },
+      {
+        "title": "Summary",
+        "t": 222.766
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-5:q",
+        "t": 198.843,
+        "prompt": "Particles of mass $4$ kg and $6$ kg hang over a smooth pulley and are released from rest. Find the acceleration. Take $g = 9.8$ m/s².",
+        "choices": [
+          "$9.8$ m/s²",
+          "$1.96$ m/s²",
+          "$3.92$ m/s²",
+          "$0.98$ m/s²"
+        ],
+        "answer": 1,
+        "working": "$6g - T = 6a$ and $T - 4g = 4a$. Adding: $2g = 10a$, so $a = 1.96$ m/s²."
+      }
+    ]
+  },
+  "mx-13-1": {
+    "lessonId": "mx-13-1",
+    "title": "Resolving Forces and Equilibrium",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Resolving a force",
+        "t": 24.659
+      },
+      {
+        "title": "The resultant",
+        "t": 62.691
+      },
+      {
+        "title": "Equilibrium",
+        "t": 101.807
+      },
+      {
+        "title": "Your turn",
+        "t": 172.315
+      },
+      {
+        "title": "Summary",
+        "t": 206.283
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-1:q",
+        "t": 183.703,
+        "prompt": "A force of $10$ N acts at $60^\\circ$ above the horizontal. Find its horizontal component.",
+        "choices": [
+          "$8.66$ N",
+          "$10$ N",
+          "$5$ N",
+          "$0.5$ N"
+        ],
+        "answer": 2,
+        "working": "The horizontal side is next to the angle: $10\\cos 60^\\circ = 5$ N."
+      }
+    ]
+  },
+  "mx-13-2": {
+    "lessonId": "mx-13-2",
+    "title": "Friction",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The friction law",
+        "t": 20.321
+      },
+      {
+        "title": "Does it move?",
+        "t": 58.769
+      },
+      {
+        "title": "A pull at an angle",
+        "t": 112.428
+      },
+      {
+        "title": "Your turn",
+        "t": 185.132
+      },
+      {
+        "title": "Summary",
+        "t": 224.114
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-2:q",
+        "t": 200.044,
+        "prompt": "A box of mass $5$ kg rests on rough horizontal ground with $\\mu = 0.4$. What horizontal force puts it on the point of moving?",
+        "choices": [
+          "$2$ N",
+          "$49$ N",
+          "$12.25$ N",
+          "$19.6$ N"
+        ],
+        "answer": 3,
+        "working": "$R = 5 \\times 9.8 = 49$ N, and limiting friction is $0.4 \\times 49 = 19.6$ N."
+      }
+    ]
   }
 }
