@@ -626,8 +626,8 @@ items ship or decisions change.
      topic. Next: A level Mathematics.
      Their videos (10 November 2026): 17 explainers for the 16 lessons (`mx-7-1` to `mx-11-3`, with
      gradients and areas under graphs in two parts), scripted and checked in stills, then rendered
-     unit by unit (`mx-u7` to `mx-u11`), stored on Drive and handed to the YouTube uploads. The
-     Tutor voice workflow records their tutor narration after the merge.
+     unit by unit (`mx-u7` to `mx-u11`), stored on Drive and handed to the YouTube uploads (PR #149).
+     The Tutor voice workflow recorded their tutor narration after #146 merged.
    - Built (11 November 2026), step 3, the third map: **A level Mathematics, Years 12 and 13**
      (in `engine/curriculum/maps/uk.ts`, under the tab now called "UK GCSE and A level"). The first
      year (the AS content, 20 units) and the second (12 units) are built from Gradileo's lessons in
