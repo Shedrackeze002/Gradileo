@@ -861,6 +861,13 @@ items ship or decisions change.
      Spearman's rank correlation coefficient, the chi-squared tests, the t-test for two means, the
      mid-ordinate rule and Voronoi diagrams. Every course in the WAEC, KCSE, CAPS, IGCSE and IB
      maps now lists no gaps. Next: the videos and tutor recordings for Units 23 to 29.
+   - Built (11 November 2026): **the videos for Units 23 to 29**, one explainer for each of the
+     28 gap lessons (`src/content/mathmore/videos/mx-23-1.ts` to `mx-29-2.ts`), with figures for
+     the feasible region, segments, frustums, the midpoint theorem, inclination, regression
+     residuals and mid-ordinate rectangles. They are rendered unit by unit (`mx-u23` to `mx-u29`)
+     and stored on Drive under `Gradileo videos/More Topics/`, ready for the YouTube uploads. The
+     voice now says "modulo" correctly (`src/video/words.ts`). The tutor recordings follow from the
+     *Tutor voice* workflow once the lessons and videos are merged.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

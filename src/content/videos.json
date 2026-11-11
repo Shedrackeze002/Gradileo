@@ -116005,5 +116005,1361 @@
         "working": "Subtract $36$: $x^2 = -36$. The square of a number is never negative, so there is no solution."
       }
     ]
+  },
+  "mx-23-1": {
+    "lessonId": "mx-23-1",
+    "title": "Number Bases",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a base is",
+        "t": 20.714
+      },
+      {
+        "title": "To base ten",
+        "t": 59.116
+      },
+      {
+        "title": "From base ten",
+        "t": 86.104
+      },
+      {
+        "title": "Adding in base two",
+        "t": 133.857
+      },
+      {
+        "title": "Your turn",
+        "t": 175.622
+      },
+      {
+        "title": "Summary",
+        "t": 206.287
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-23-1:q",
+        "t": 181.448,
+        "prompt": "Write $23$ in base two.",
+        "choices": [
+          "$11101_{\\text{two}}$",
+          "$10111_{\\text{two}}$",
+          "$10011_{\\text{two}}$",
+          "$11011_{\\text{two}}$"
+        ],
+        "answer": 1,
+        "working": "$23 = 16 + 4 + 2 + 1$, so the digits for $16, 8, 4, 2, 1$ are $1, 0, 1, 1, 1$."
+      }
+    ]
+  },
+  "mx-23-2": {
+    "lessonId": "mx-23-2",
+    "title": "Modular Arithmetic",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Congruence",
+        "t": 20.925
+      },
+      {
+        "title": "Reducing",
+        "t": 53.198
+      },
+      {
+        "title": "Days of the week",
+        "t": 89.262
+      },
+      {
+        "title": "Adding and multiplying",
+        "t": 118.081
+      },
+      {
+        "title": "Your turn",
+        "t": 164.312
+      },
+      {
+        "title": "Summary",
+        "t": 198.284
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-23-2:q",
+        "t": 173.352,
+        "prompt": "It is $9$ o’clock. What time will it be on a $12$-hour clock in $40$ hours?",
+        "choices": [
+          "$7$ o’clock",
+          "$4$ o’clock",
+          "$1$ o’clock",
+          "$5$ o’clock"
+        ],
+        "answer": 2,
+        "working": "$40 = 3 \\times 12 + 4$, so $40 \\equiv 4 \\pmod{12}$. Then $9 + 4 = 13 \\equiv 1 \\pmod{12}$."
+      }
+    ]
+  },
+  "mx-23-3": {
+    "lessonId": "mx-23-3",
+    "title": "Truth Tables",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Statements",
+        "t": 18.09
+      },
+      {
+        "title": "If–then",
+        "t": 53.547
+      },
+      {
+        "title": "Inside out",
+        "t": 82.359
+      },
+      {
+        "title": "Equivalence",
+        "t": 104.331
+      },
+      {
+        "title": "Your turn",
+        "t": 143.056
+      },
+      {
+        "title": "Summary",
+        "t": 175.505
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-23-3:q",
+        "t": 150.57,
+        "prompt": "$p$ is false and $q$ is true. Which statement is false?",
+        "choices": [
+          "$p \\vee q$",
+          "$p \\Rightarrow q$",
+          "$\\neg p \\wedge q$",
+          "$p \\Leftrightarrow q$"
+        ],
+        "answer": 3,
+        "working": "$p$ and $q$ have different truth values, so $p \\Leftrightarrow q$ is false. The other three are true."
+      }
+    ]
+  },
+  "mx-24-1": {
+    "lessonId": "mx-24-1",
+    "title": "Changing the Subject of a Formula",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The subject",
+        "t": 19.765
+      },
+      {
+        "title": "Substituting",
+        "t": 54.612
+      },
+      {
+        "title": "Fractions and brackets",
+        "t": 74.745
+      },
+      {
+        "title": "Squares and repeats",
+        "t": 110.968
+      },
+      {
+        "title": "Your turn",
+        "t": 143.107
+      },
+      {
+        "title": "Summary",
+        "t": 169.03
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-24-1:q",
+        "t": 149.368,
+        "prompt": "Make $t$ the subject of $s = \\dfrac{(u + v)t}{2}$.",
+        "choices": [
+          "$t = \\dfrac{s}{2(u + v)}$",
+          "$t = 2s - u - v$",
+          "$t = \\dfrac{2s}{u + v}$",
+          "$t = \\dfrac{2s}{u} + v$"
+        ],
+        "answer": 2,
+        "working": "Multiply by $2$: $2s = (u + v)t$. Divide by $u + v$: $t = \\dfrac{2s}{u + v}$."
+      }
+    ]
+  },
+  "mx-24-2": {
+    "lessonId": "mx-24-2",
+    "title": "Joint and Partial Variation",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Joint variation",
+        "t": 20.89
+      },
+      {
+        "title": "Directly and inversely",
+        "t": 57.946
+      },
+      {
+        "title": "Partial variation",
+        "t": 87.164
+      },
+      {
+        "title": "Your turn",
+        "t": 140.53
+      },
+      {
+        "title": "Summary",
+        "t": 170.588
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-24-2:q",
+        "t": 150.242,
+        "prompt": "$P$ varies jointly as $m$ and $n$, and $P = 24$ when $m = 2$, $n = 3$. Find $P$ when $m = 5$, $n = 2$.",
+        "choices": [
+          "$40$",
+          "$20$",
+          "$60$",
+          "$36$"
+        ],
+        "answer": 0,
+        "working": "$24 = 6k$, so $k = 4$. Then $P = 4 \\times 5 \\times 2 = 40$."
+      }
+    ]
+  },
+  "mx-24-3": {
+    "lessonId": "mx-24-3",
+    "title": "Linear Programming",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Constraints",
+        "t": 19.51
+      },
+      {
+        "title": "The feasible region",
+        "t": 55.549
+      },
+      {
+        "title": "Test the corners",
+        "t": 97.977
+      },
+      {
+        "title": "Your turn",
+        "t": 140.782
+      },
+      {
+        "title": "Summary",
+        "t": 171.892
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-24-3:q",
+        "t": 150.278,
+        "prompt": "For the same region, find the greatest value of $Q = x + 4y$.",
+        "choices": [
+          "$10$",
+          "$14$",
+          "$20$",
+          "$23$"
+        ],
+        "answer": 3,
+        "working": "$(0, 0)$: $0$. $(6, 0)$: $6$. $(6, 2)$: $14$. $(3, 5)$: $23$. $(0, 5)$: $20$. The greatest is $23$."
+      }
+    ]
+  },
+  "mx-25-1": {
+    "lessonId": "mx-25-1",
+    "title": "Segments of a Circle",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a segment is",
+        "t": 18.327
+      },
+      {
+        "title": "Finding the area",
+        "t": 60.659
+      },
+      {
+        "title": "Chord and perimeter",
+        "t": 113.707
+      },
+      {
+        "title": "Your turn",
+        "t": 169.102
+      },
+      {
+        "title": "Summary",
+        "t": 209.868
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-25-1:q",
+        "t": 181.953,
+        "prompt": "A chord subtends $90°$ at the centre of a circle of radius $8$ cm. Find the area of the minor segment.",
+        "choices": [
+          "$50.27$ cm²",
+          "$18.27$ cm²",
+          "$32.00$ cm²",
+          "$82.27$ cm²"
+        ],
+        "answer": 1,
+        "working": "Sector $\\approx 50.2655$, triangle $= \\frac{1}{2} \\times 64 \\times \\sin 90° = 32$. Segment $\\approx 18.27$ cm²."
+      }
+    ]
+  },
+  "mx-25-2": {
+    "lessonId": "mx-25-2",
+    "title": "Frustums",
+    "duration": 235,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a frustum is",
+        "t": 17.416
+      },
+      {
+        "title": "Finding the volume",
+        "t": 55.906
+      },
+      {
+        "title": "Surface area",
+        "t": 116.707
+      },
+      {
+        "title": "Your turn",
+        "t": 166.224
+      },
+      {
+        "title": "Summary",
+        "t": 203.859
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-25-2:q",
+        "t": 179.512,
+        "prompt": "A frustum has end radii $7$ cm and $4$ cm and slant height $5$ cm. Find its curved surface area.",
+        "choices": [
+          "$47.12$ cm²",
+          "$109.96$ cm²",
+          "$172.79$ cm²",
+          "$345.58$ cm²"
+        ],
+        "answer": 2,
+        "working": "$\\pi(R + r)l = \\pi \\times 11 \\times 5 = 55\\pi \\approx 172.79$ cm²."
+      }
+    ]
+  },
+  "mx-25-3": {
+    "lessonId": "mx-25-3",
+    "title": "Heron’s Formula",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The formula",
+        "t": 18.961
+      },
+      {
+        "title": "A whole-number answer",
+        "t": 33.805
+      },
+      {
+        "title": "Heights and plots",
+        "t": 71.326
+      },
+      {
+        "title": "Your turn",
+        "t": 117.844
+      },
+      {
+        "title": "Summary",
+        "t": 154.771
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-25-3:q",
+        "t": 127.142,
+        "prompt": "A field has sides $8$ m, $11$ m and $13$ m. Find its area.",
+        "choices": [
+          "$43.82$ m²",
+          "$32.00$ m²",
+          "$87.64$ m²",
+          "$1920$ m²"
+        ],
+        "answer": 0,
+        "working": "$s = 16$, so the area is $\\sqrt{16 \\times 8 \\times 5 \\times 3} = \\sqrt{1920} \\approx 43.82$ m²."
+      }
+    ]
+  },
+  "mx-25-4": {
+    "lessonId": "mx-25-4",
+    "title": "Cyclic Quadrilaterals and the Alternate Segment Theorem",
+    "duration": 249,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cyclic quadrilaterals",
+        "t": 23.734
+      },
+      {
+        "title": "Exterior angles and algebra",
+        "t": 70.498
+      },
+      {
+        "title": "The alternate segment theorem",
+        "t": 119.778
+      },
+      {
+        "title": "Your turn",
+        "t": 180.136
+      },
+      {
+        "title": "Summary",
+        "t": 221.585
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-25-4:q",
+        "t": 195.199,
+        "prompt": "In a cyclic quadrilateral $PQRS$, $Q = (4x - 5)°$ and $S = (x + 35)°$. Find angle $Q$.",
+        "choices": [
+          "$30°$",
+          "$65°$",
+          "$115°$",
+          "$145°$"
+        ],
+        "answer": 2,
+        "working": "$(4x - 5) + (x + 35) = 180$, so $5x + 30 = 180$ and $x = 30$. Then $Q = 4 \\times 30 - 5 = 115°$."
+      }
+    ]
+  },
+  "mx-25-5": {
+    "lessonId": "mx-25-5",
+    "title": "Intersecting Chords and Common Tangents",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Intersecting chords",
+        "t": 24.178
+      },
+      {
+        "title": "From a point outside",
+        "t": 60.458
+      },
+      {
+        "title": "Common tangents",
+        "t": 117.102
+      },
+      {
+        "title": "Your turn",
+        "t": 184.219
+      },
+      {
+        "title": "Summary",
+        "t": 221.112
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-25-5:q",
+        "t": 198.855,
+        "prompt": "From $P$, a tangent touches a circle at $T$ with $PT = 6$ cm, and a secant meets it at $A$ and $B$ with $PA = 3$ cm. Find $AB$.",
+        "choices": [
+          "$12$ cm",
+          "$2$ cm",
+          "$3$ cm",
+          "$9$ cm"
+        ],
+        "answer": 3,
+        "working": "$PT^2 = PA \\times PB$, so $36 = 3 \\times PB$ and $PB = 12$. Then $AB = 12 - 3 = 9$ cm."
+      }
+    ]
+  },
+  "mx-25-6": {
+    "lessonId": "mx-25-6",
+    "title": "Longitude and Latitude",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two angles",
+        "t": 16.559
+      },
+      {
+        "title": "Along a meridian",
+        "t": 55.44
+      },
+      {
+        "title": "Along a parallel",
+        "t": 107.954
+      },
+      {
+        "title": "Longitude and time",
+        "t": 155.279
+      },
+      {
+        "title": "Your turn",
+        "t": 180.838
+      },
+      {
+        "title": "Summary",
+        "t": 212.67
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-25-6:q",
+        "t": 189.321,
+        "prompt": "Find the radius of the parallel of latitude $60°$N. Take $R = 6400$ km.",
+        "choices": [
+          "$3200$ km",
+          "$5543$ km",
+          "$6400$ km",
+          "$1600$ km"
+        ],
+        "answer": 0,
+        "working": "$r = R\\cos\\theta = 6400 \\times \\cos 60° = 6400 \\times 0.5 = 3200$ km."
+      }
+    ]
+  },
+  "mx-26-1": {
+    "lessonId": "mx-26-1",
+    "title": "Nominal and Effective Interest Rates",
+    "duration": 243,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of rate",
+        "t": 20.507
+      },
+      {
+        "title": "Finding the effective rate",
+        "t": 62.567
+      },
+      {
+        "title": "Back to nominal",
+        "t": 110.542
+      },
+      {
+        "title": "Compound interest",
+        "t": 140.188
+      },
+      {
+        "title": "Your turn",
+        "t": 173.947
+      },
+      {
+        "title": "Summary",
+        "t": 210.963
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-26-1:q",
+        "t": 184.289,
+        "prompt": "Find the effective rate for a nominal rate of $6\\%$ per year, compounded half-yearly.",
+        "choices": [
+          "$6.00\\%$",
+          "$3.00\\%$",
+          "$6.09\\%$",
+          "$6.17\\%$"
+        ],
+        "answer": 2,
+        "working": "$1 + i = 1.03^2 = 1.0609$, so $i = 6.09\\%$."
+      }
+    ]
+  },
+  "mx-26-2": {
+    "lessonId": "mx-26-2",
+    "title": "Annuities and Sinking Funds",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Annuities",
+        "t": 25.546
+      },
+      {
+        "title": "Yearly and monthly",
+        "t": 56.489
+      },
+      {
+        "title": "Match the periods",
+        "t": 100.473
+      },
+      {
+        "title": "Sinking funds",
+        "t": 124.657
+      },
+      {
+        "title": "Your turn",
+        "t": 166.837
+      },
+      {
+        "title": "Summary",
+        "t": 207.214
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-26-2:q",
+        "t": 178.787,
+        "prompt": "\\$500 is paid at the end of every year for $3$ years at $4\\%$ per year. Find the future value.",
+        "choices": [
+          "\\$1,500.00",
+          "\\$1,560.80",
+          "\\$1,624.32",
+          "\\$1,687.29"
+        ],
+        "answer": 1,
+        "working": "$F = \\dfrac{500\\left[1.04^3 - 1\\right]}{0.04} = \\dfrac{500 \\times 0.124864}{0.04} = 1560.80$."
+      }
+    ]
+  },
+  "mx-26-3": {
+    "lessonId": "mx-26-3",
+    "title": "Present Value and Loans",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Present value",
+        "t": 22.405
+      },
+      {
+        "title": "A fund that pays out",
+        "t": 55.91
+      },
+      {
+        "title": "A loan",
+        "t": 83.155
+      },
+      {
+        "title": "Total interest",
+        "t": 131.346
+      },
+      {
+        "title": "Your turn",
+        "t": 159.011
+      },
+      {
+        "title": "Summary",
+        "t": 203.073
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-26-3:q",
+        "t": 172.134,
+        "prompt": "A fund pays \\$2,000 at the end of every year for $3$ years and earns $5\\%$ per year. How much must it hold now?",
+        "choices": [
+          "\\$6,000.00",
+          "\\$6,305.00",
+          "\\$5,714.29",
+          "\\$5,446.50"
+        ],
+        "answer": 3,
+        "working": "$P = \\dfrac{2000\\left[1 - 1.05^{-3}\\right]}{0.05} = \\dfrac{2000 \\times 0.136162}{0.05} \\approx 5446.50$."
+      }
+    ]
+  },
+  "mx-26-4": {
+    "lessonId": "mx-26-4",
+    "title": "Shares and Stocks",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Shares and dividends",
+        "t": 18.914
+      },
+      {
+        "title": "Brokerage and profit",
+        "t": 81.829
+      },
+      {
+        "title": "Yield",
+        "t": 119.725
+      },
+      {
+        "title": "Stocks",
+        "t": 150.414
+      },
+      {
+        "title": "Your turn",
+        "t": 196.351
+      },
+      {
+        "title": "Summary",
+        "t": 232.52
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-26-4:q",
+        "t": 209.806,
+        "prompt": "A shareholder owns $800$ shares with a nominal value of \\$2. The dividend is $9\\%$. Find the dividend.",
+        "choices": [
+          "\\$144",
+          "\\$72",
+          "\\$1,600",
+          "\\$18"
+        ],
+        "answer": 0,
+        "working": "Nominal value: $800 \\times 2 = 1600$. Dividend: $9\\% \\times 1600 = 144$."
+      }
+    ]
+  },
+  "mx-27-1": {
+    "lessonId": "mx-27-1",
+    "title": "The Midpoint and Proportionality Theorems",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The midpoint theorem",
+        "t": 20.391
+      },
+      {
+        "title": "Expressions",
+        "t": 56.867
+      },
+      {
+        "title": "The proportionality theorem",
+        "t": 89.433
+      },
+      {
+        "title": "Your turn",
+        "t": 133.152
+      },
+      {
+        "title": "Summary",
+        "t": 163.073
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-27-1:q",
+        "t": 140.161,
+        "prompt": "$DE \\parallel BC$, $AD = x$, $DB = x + 3$, $AE = 4$ and $EC = 6$. Find $x$.",
+        "choices": [
+          "$2$",
+          "$4$",
+          "$6$",
+          "$9$"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{x}{x + 3} = \\dfrac{4}{6}$, so $6x = 4x + 12$ and $x = 6$."
+      }
+    ]
+  },
+  "mx-27-2": {
+    "lessonId": "mx-27-2",
+    "title": "The Angle of Inclination of a Line",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The angle of inclination",
+        "t": 18.903
+      },
+      {
+        "title": "Gradient to angle",
+        "t": 50.117
+      },
+      {
+        "title": "Between two lines",
+        "t": 95.569
+      },
+      {
+        "title": "Your turn",
+        "t": 147.454
+      },
+      {
+        "title": "Summary",
+        "t": 178.588
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-27-2:q",
+        "t": 155.709,
+        "prompt": "Find the angle of inclination of the line through $(1, 2)$ and $(5, 9)$.",
+        "choices": [
+          "$29.7°$",
+          "$60.3°$",
+          "$119.7°$",
+          "$74.1°$"
+        ],
+        "answer": 1,
+        "working": "$m = \\dfrac{9 - 2}{5 - 1} = \\dfrac{7}{4}$, so $\\theta = \\tan^{-1}\\left(\\dfrac{7}{4}\\right) \\approx 60.3°$."
+      }
+    ]
+  },
+  "mx-27-3": {
+    "lessonId": "mx-27-3",
+    "title": "The Equation of a Tangent to a Circle",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The gradient of a tangent",
+        "t": 19.89
+      },
+      {
+        "title": "Finding the centre",
+        "t": 64.769
+      },
+      {
+        "title": "The equation",
+        "t": 100.45
+      },
+      {
+        "title": "Your turn",
+        "t": 134.43
+      },
+      {
+        "title": "Summary",
+        "t": 168.547
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-27-3:q",
+        "t": 145.881,
+        "prompt": "Find the gradient of the tangent to $(x - 1)^2 + (y - 1)^2 = 13$ at $(3, 4)$.",
+        "choices": [
+          "$\\dfrac{3}{2}$",
+          "$-\\dfrac{3}{2}$",
+          "$\\dfrac{2}{3}$",
+          "$-\\dfrac{2}{3}$"
+        ],
+        "answer": 3,
+        "working": "The centre is $(1, 1)$. The radius has gradient $\\dfrac{4 - 1}{3 - 1} = \\dfrac{3}{2}$, so the tangent has gradient $-\\dfrac{2}{3}$."
+      }
+    ]
+  },
+  "mx-27-4": {
+    "lessonId": "mx-27-4",
+    "title": "The Ratio Theorem and Collinear Points",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Position vectors",
+        "t": 17.114
+      },
+      {
+        "title": "The ratio theorem",
+        "t": 50.973
+      },
+      {
+        "title": "Collinear points",
+        "t": 92.361
+      },
+      {
+        "title": "Your turn",
+        "t": 127.85
+      },
+      {
+        "title": "Summary",
+        "t": 158.558
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-27-4:q",
+        "t": 137.573,
+        "prompt": "$\\mathbf{a} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$, $\\mathbf{b} = \\begin{pmatrix} 10 \\\\ 9 \\end{pmatrix}$ and $AP : PB = 3 : 1$. Find $\\overrightarrow{OP}$.",
+        "choices": [
+          "$\\begin{pmatrix} 8 \\\\ 7 \\end{pmatrix}$",
+          "$\\begin{pmatrix} 4 \\\\ 3 \\end{pmatrix}$",
+          "$\\begin{pmatrix} 6 \\\\ 5 \\end{pmatrix}$",
+          "$\\begin{pmatrix} 9 \\\\ 8 \\end{pmatrix}$"
+        ],
+        "answer": 0,
+        "working": "$\\overrightarrow{OP} = \\dfrac{\\mathbf{a} + 3\\mathbf{b}}{4} = \\dfrac{1}{4}\\begin{pmatrix} 32 \\\\ 28 \\end{pmatrix} = \\begin{pmatrix} 8 \\\\ 7 \\end{pmatrix}$."
+      }
+    ]
+  },
+  "mx-27-5": {
+    "lessonId": "mx-27-5",
+    "title": "Matrices and Transformations",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The image of a point",
+        "t": 21.857
+      },
+      {
+        "title": "The standard matrices",
+        "t": 44.789
+      },
+      {
+        "title": "Determinant and area",
+        "t": 90.231
+      },
+      {
+        "title": "Combining and undoing",
+        "t": 123.708
+      },
+      {
+        "title": "Your turn",
+        "t": 168.146
+      },
+      {
+        "title": "Summary",
+        "t": 200.173
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-27-5:q",
+        "t": 178.992,
+        "prompt": "A shape of area $6$ square units is transformed by $\\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$. Find the area of its image.",
+        "choices": [
+          "$14$",
+          "$84$",
+          "$60$",
+          "$36$"
+        ],
+        "answer": 2,
+        "working": "Determinant $= 4 \\times 3 - 1 \\times 2 = 10$, so the area is $10 \\times 6 = 60$ square units."
+      }
+    ]
+  },
+  "mx-28-1": {
+    "lessonId": "mx-28-1",
+    "title": "The Least Squares Regression Line",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Residuals",
+        "t": 22.499
+      },
+      {
+        "title": "From a table",
+        "t": 58.401
+      },
+      {
+        "title": "Using the line",
+        "t": 115.487
+      },
+      {
+        "title": "Your turn",
+        "t": 169.684
+      },
+      {
+        "title": "Summary",
+        "t": 202.73
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-28-1:q",
+        "t": 178.425,
+        "prompt": "$\\bar{x} = 4$, $\\bar{y} = 20$, $S_{xx} = 50$ and $S_{xy} = 125$. Find the regression line of $y$ on $x$.",
+        "choices": [
+          "$y = 2.5 + 20x$",
+          "$y = 0.4 + 18.4x$",
+          "$y = 20 + 2.5x$",
+          "$y = 10 + 2.5x$"
+        ],
+        "answer": 3,
+        "working": "$b = \\dfrac{125}{50} = 2.5$ and $a = 20 - 2.5 \\times 4 = 10$, so $y = 10 + 2.5x$."
+      }
+    ]
+  },
+  "mx-28-2": {
+    "lessonId": "mx-28-2",
+    "title": "Expected Value",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The expected value",
+        "t": 19.284
+      },
+      {
+        "title": "Unknown probabilities",
+        "t": 58.503
+      },
+      {
+        "title": "Fair games",
+        "t": 91.13
+      },
+      {
+        "title": "Your turn",
+        "t": 150.191
+      },
+      {
+        "title": "Summary",
+        "t": 178.403
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-28-2:q",
+        "t": 156.48,
+        "prompt": "$X$ takes the values $1$, $2$, $5$ with probabilities $0.5$, $0.3$, $0.2$. Find $E(X)$.",
+        "choices": [
+          "$2.67$",
+          "$2.1$",
+          "$8$",
+          "$1$"
+        ],
+        "answer": 1,
+        "working": "$E(X) = 1 \\times 0.5 + 2 \\times 0.3 + 5 \\times 0.2 = 0.5 + 0.6 + 1 = 2.1$."
+      }
+    ]
+  },
+  "mx-28-3": {
+    "lessonId": "mx-28-3",
+    "title": "Spearman’s Rank Correlation Coefficient",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The coefficient",
+        "t": 18.556
+      },
+      {
+        "title": "Two judges",
+        "t": 49.207
+      },
+      {
+        "title": "Interpreting and testing",
+        "t": 82.731
+      },
+      {
+        "title": "Your turn",
+        "t": 142.381
+      },
+      {
+        "title": "Summary",
+        "t": 176.678
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-28-3:q",
+        "t": 150.947,
+        "prompt": "For $6$ items, $\\sum d^2 = 14$. Find $r_s$.",
+        "choices": [
+          "$0.6$",
+          "$0.4$",
+          "$0.067$",
+          "$0.8$"
+        ],
+        "answer": 0,
+        "working": "$r_s = 1 - \\dfrac{6 \\times 14}{6(36 - 1)} = 1 - \\dfrac{84}{210} = 0.6$."
+      }
+    ]
+  },
+  "mx-28-4": {
+    "lessonId": "mx-28-4",
+    "title": "The Chi-Squared Tests",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The statistic",
+        "t": 24.372
+      },
+      {
+        "title": "Goodness of fit",
+        "t": 50.889
+      },
+      {
+        "title": "Independence",
+        "t": 96.587
+      },
+      {
+        "title": "Your turn",
+        "t": 150.753
+      },
+      {
+        "title": "Summary",
+        "t": 184.098
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-28-4:q",
+        "t": 161.603,
+        "prompt": "How many degrees of freedom does a test for independence on a $3 \\times 4$ contingency table have?",
+        "choices": [
+          "$12$",
+          "$11$",
+          "$7$",
+          "$6$"
+        ],
+        "answer": 3,
+        "working": "$\\nu = (3 - 1)(4 - 1) = 2 \\times 3 = 6$."
+      }
+    ]
+  },
+  "mx-28-5": {
+    "lessonId": "mx-28-5",
+    "title": "The t-Test for Two Means",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hypotheses",
+        "t": 20.576
+      },
+      {
+        "title": "The p-value",
+        "t": 54.031
+      },
+      {
+        "title": "The test statistic",
+        "t": 97.435
+      },
+      {
+        "title": "Your turn",
+        "t": 147.863
+      },
+      {
+        "title": "Summary",
+        "t": 180.231
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-28-5:q",
+        "t": 159.525,
+        "prompt": "A researcher asks whether two teaching methods give **different** mean scores. Which alternative hypothesis is right?",
+        "choices": [
+          "$H_1: \\mu_1 > \\mu_2$",
+          "$H_1: \\mu_1 < \\mu_2$",
+          "$H_1: \\mu_1 \\ne \\mu_2$",
+          "$H_1: \\mu_1 = \\mu_2$"
+        ],
+        "answer": 2,
+        "working": "The question asks only whether the means differ, not which is greater, so the test is two-tailed: $H_1: \\mu_1 \\ne \\mu_2$."
+      }
+    ]
+  },
+  "mx-29-1": {
+    "lessonId": "mx-29-1",
+    "title": "The Mid-Ordinate Rule",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 22.376
+      },
+      {
+        "title": "From a formula",
+        "t": 62.675
+      },
+      {
+        "title": "How accurate is it?",
+        "t": 104.332
+      },
+      {
+        "title": "Your turn",
+        "t": 141.419
+      },
+      {
+        "title": "Summary",
+        "t": 170.416
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-29-1:q",
+        "t": 151.157,
+        "prompt": "The mid-ordinates of four strips of width $0.5$ are $2.1$, $2.6$, $3.4$ and $4.5$. Estimate the area.",
+        "choices": [
+          "$12.6$",
+          "$25.2$",
+          "$3.15$",
+          "$6.3$"
+        ],
+        "answer": 3,
+        "working": "Area $\\approx 0.5(2.1 + 2.6 + 3.4 + 4.5) = 0.5 \\times 12.6 = 6.3$."
+      }
+    ]
+  },
+  "mx-29-2": {
+    "lessonId": "mx-29-2",
+    "title": "Voronoi Diagrams",
+    "duration": 218,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cells and sites",
+        "t": 19.013
+      },
+      {
+        "title": "Edges",
+        "t": 56.978
+      },
+      {
+        "title": "Vertices",
+        "t": 99.254
+      },
+      {
+        "title": "Your turn",
+        "t": 153.706
+      },
+      {
+        "title": "Summary",
+        "t": 191.46
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-29-2:q",
+        "t": 164.674,
+        "prompt": "Sites are at $P(0, 0)$ and $Q(6, 0)$. Which line is the edge between their cells?",
+        "choices": [
+          "$y = 3$",
+          "$x = 3$",
+          "$y = x$",
+          "$x = 6$"
+        ],
+        "answer": 1,
+        "working": "The midpoint of $PQ$ is $(3, 0)$ and $PQ$ is horizontal, so the perpendicular bisector is the vertical line $x = 3$."
+      }
+    ]
   }
 }
