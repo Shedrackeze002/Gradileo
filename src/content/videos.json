@@ -16700,6 +16700,504 @@
       }
     ]
   },
+  "cx-4-1": {
+    "lessonId": "cx-4-1",
+    "title": "The Earth’s Atmosphere",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The air today",
+        "t": 20.677
+      },
+      {
+        "title": "The early atmosphere",
+        "t": 49.339
+      },
+      {
+        "title": "Where the carbon dioxide went",
+        "t": 89.405
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.869
+      },
+      {
+        "title": "Your turn",
+        "t": 135.422
+      },
+      {
+        "title": "Summary",
+        "t": 167.51
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-4-1:q",
+        "t": 144.998,
+        "prompt": "A room holds $50\\ \\text{m}^3$ of air. About how much of it is oxygen?",
+        "choices": [
+          "$39\\ \\text{m}^3$",
+          "$10.5\\ \\text{m}^3$",
+          "$0.02\\ \\text{m}^3$",
+          "$21\\ \\text{m}^3$"
+        ],
+        "answer": 1,
+        "working": "$21\\%$ of $50 = 0.21 \\times 50 = 10.5\\ \\text{m}^3$"
+      }
+    ]
+  },
+  "cx-4-2": {
+    "lessonId": "cx-4-2",
+    "title": "Greenhouse Gases and Air Pollution",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The greenhouse effect",
+        "t": 22.705
+      },
+      {
+        "title": "Climate change and carbon footprints",
+        "t": 49.74
+      },
+      {
+        "title": "Pollutants from burning fuels",
+        "t": 96.503
+      },
+      {
+        "title": "A common mistake",
+        "t": 142.081
+      },
+      {
+        "title": "Your turn",
+        "t": 155.232
+      },
+      {
+        "title": "Summary",
+        "t": 188.363
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-4-2:q",
+        "t": 166.385,
+        "prompt": "A gas heater burns in a room with poor ventilation. Which harmful gas is it most likely to produce?",
+        "choices": [
+          "Sulfur dioxide",
+          "Methane",
+          "Oxygen",
+          "Carbon monoxide"
+        ],
+        "answer": 3,
+        "working": "Little oxygen means **incomplete combustion**, which makes carbon monoxide."
+      }
+    ]
+  },
+  "cx-4-3": {
+    "lessonId": "cx-4-3",
+    "title": "Potable Water and Waste Water",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Potable water",
+        "t": 17.622
+      },
+      {
+        "title": "From fresh water",
+        "t": 36.952
+      },
+      {
+        "title": "From sea water",
+        "t": 60.502
+      },
+      {
+        "title": "Treating waste water",
+        "t": 90.842
+      },
+      {
+        "title": "A common mistake",
+        "t": 121.806
+      },
+      {
+        "title": "Your turn",
+        "t": 136.994
+      },
+      {
+        "title": "Summary",
+        "t": 167.178
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-4-3:q",
+        "t": 145.476,
+        "prompt": "Which source of potable water usually needs the **most** energy to treat?",
+        "choices": [
+          "Sea water",
+          "Rain water from a reservoir",
+          "Water from a river",
+          "Ground water from a well"
+        ],
+        "answer": 0,
+        "working": "Sea water must be **desalinated**, by boiling it or by forcing it through a membrane at high pressure."
+      }
+    ]
+  },
+  "cx-4-4": {
+    "lessonId": "cx-4-4",
+    "title": "Life Cycle Assessments and Recycling",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The four stages",
+        "t": 20.844
+      },
+      {
+        "title": "Comparing for each use",
+        "t": 48.743
+      },
+      {
+        "title": "Reduce, reuse, recycle",
+        "t": 84.852
+      },
+      {
+        "title": "A common mistake",
+        "t": 115.06
+      },
+      {
+        "title": "Your turn",
+        "t": 127.996
+      },
+      {
+        "title": "Summary",
+        "t": 165.689
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-4-4:q",
+        "t": 142.897,
+        "prompt": "Making 1 tonne of a metal from ore takes 200 GJ. From recycled metal it takes 10 GJ. What percentage of the energy does recycling save?",
+        "choices": [
+          "5%",
+          "90%",
+          "95%",
+          "190%"
+        ],
+        "answer": 2,
+        "working": "$\\dfrac{200 - 10}{200} \\times 100 = 95\\%$"
+      }
+    ]
+  },
+  "cx-5-1": {
+    "lessonId": "cx-5-1",
+    "title": "The Development of the Atom and the Periodic Table",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Models of the atom",
+        "t": 21.496
+      },
+      {
+        "title": "Alpha particle scattering",
+        "t": 65.577
+      },
+      {
+        "title": "Mendeleev’s periodic table",
+        "t": 100.38
+      },
+      {
+        "title": "Your turn",
+        "t": 143.381
+      },
+      {
+        "title": "Summary",
+        "t": 174.588
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-5-1:q",
+        "t": 154.609,
+        "prompt": "In the scattering experiment, a very few alpha particles bounced back from the gold foil. What did this show?",
+        "choices": [
+          "Most of the atom is empty space",
+          "The mass is concentrated in a tiny, charged nucleus",
+          "Atoms cannot be divided",
+          "Electrons orbit in shells"
+        ],
+        "answer": 1,
+        "working": "Only something small, dense and charged could turn an alpha particle back."
+      }
+    ]
+  },
+  "cx-5-2": {
+    "lessonId": "cx-5-2",
+    "title": "Transition Metals",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Comparing the metals",
+        "t": 23.392
+      },
+      {
+        "title": "Their compounds",
+        "t": 56.432
+      },
+      {
+        "title": "Roman numerals",
+        "t": 87.777
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.349
+      },
+      {
+        "title": "Your turn",
+        "t": 127.972
+      },
+      {
+        "title": "Summary",
+        "t": 165.653
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-5-2:q",
+        "t": 145.608,
+        "prompt": "A metal melts at 1455 °C, has a density of 8.9 g/cm³ and does not react with cold water. Which is it most likely to be?",
+        "choices": [
+          "Sodium",
+          "Potassium",
+          "Nickel",
+          "Lithium"
+        ],
+        "answer": 2,
+        "working": "A high melting point, a high density and no reaction with water are the properties of a **transition metal**."
+      }
+    ]
+  },
+  "cx-5-3": {
+    "lessonId": "cx-5-3",
+    "title": "Forms of Carbon and Nanoparticles",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Diamond and graphite",
+        "t": 20.174
+      },
+      {
+        "title": "Graphene and fullerenes",
+        "t": 62.632
+      },
+      {
+        "title": "Nanoparticles",
+        "t": 94.594
+      },
+      {
+        "title": "Your turn",
+        "t": 133.264
+      },
+      {
+        "title": "Summary",
+        "t": 161.167
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-5-3:q",
+        "t": 139.705,
+        "prompt": "Why does graphite conduct electricity?",
+        "choices": [
+          "Each carbon has one delocalised electron that can move",
+          "Each carbon forms four covalent bonds",
+          "Its layers are held by strong bonds",
+          "Its carbon atoms are ions that can move"
+        ],
+        "answer": 0,
+        "working": "Each atom uses three outer electrons in bonds; the fourth is **delocalised** and carries charge."
+      }
+    ]
+  },
+  "cx-6-1": {
+    "lessonId": "cx-6-1",
+    "title": "Corrosion, Alloys and Materials",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Rusting",
+        "t": 21.738
+      },
+      {
+        "title": "Preventing rust",
+        "t": 47.682
+      },
+      {
+        "title": "Alloys",
+        "t": 82.827
+      },
+      {
+        "title": "Your turn",
+        "t": 137.625
+      },
+      {
+        "title": "Summary",
+        "t": 173.203
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-6-1:q",
+        "t": 151.27,
+        "prompt": "Order of reactivity: magnesium, zinc, iron, tin, copper. Which metal could give **sacrificial protection** to an iron pipe?",
+        "choices": [
+          "Copper",
+          "Tin",
+          "None of them",
+          "Zinc"
+        ],
+        "answer": 3,
+        "working": "A sacrificial metal must be **more reactive** than iron. Zinc is above iron."
+      }
+    ]
+  },
+  "cx-6-2": {
+    "lessonId": "cx-6-2",
+    "title": "The Haber Process and Fertilisers",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The Haber process",
+        "t": 26.298
+      },
+      {
+        "title": "Compromise conditions",
+        "t": 68.968
+      },
+      {
+        "title": "NPK fertilisers",
+        "t": 106.016
+      },
+      {
+        "title": "Your turn",
+        "t": 139.15
+      },
+      {
+        "title": "Summary",
+        "t": 168.058
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-6-2:q",
+        "t": 148.985,
+        "prompt": "Why is the Haber process **not** run at a low temperature, which would give a higher yield?",
+        "choices": [
+          "The catalyst would melt",
+          "The yield would fall",
+          "The reaction would be too slow",
+          "Ammonia would not form at all"
+        ],
+        "answer": 2,
+        "working": "A moderate temperature is a **compromise**: a lower yield, but ammonia is made fast enough."
+      }
+    ]
+  },
+  "cx-6-3": {
+    "lessonId": "cx-6-3",
+    "title": "Hydrogen Fuel Cells and Batteries",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cells and batteries",
+        "t": 20.839
+      },
+      {
+        "title": "Hydrogen fuel cells",
+        "t": 51.345
+      },
+      {
+        "title": "The half equations",
+        "t": 70.76
+      },
+      {
+        "title": "Fuel cell or battery?",
+        "t": 103.324
+      },
+      {
+        "title": "Your turn",
+        "t": 128.03
+      },
+      {
+        "title": "Summary",
+        "t": 158.858
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-6-3:q",
+        "t": 137.654,
+        "prompt": "In a hydrogen fuel cell, what happens to the hydrogen at the negative electrode?",
+        "choices": [
+          "It is reduced: it gains electrons",
+          "It is oxidised: $\\ce{2H2 -> 4H+ + 4e-}$",
+          "It is reduced: $\\ce{O2 + 4H+ + 4e- -> 2H2O}$",
+          "It is unchanged"
+        ],
+        "answer": 1,
+        "working": "Hydrogen **loses** electrons, which is oxidation."
+      }
+    ]
+  },
   "e5-1-1": {
     "lessonId": "e5-1-1",
     "title": "Story Elements: Characters, Setting and Plot",
@@ -27674,6 +28172,210 @@
         ],
         "answer": 0,
         "working": "“Yours faithfully” goes with “Dear Sir or Madam”. “Yours sincerely” goes with a name."
+      }
+    ]
+  },
+  "ex-3-1": {
+    "lessonId": "ex-3-1",
+    "title": "Reading Nineteenth-Century Non-fiction",
+    "duration": 214,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Words in context",
+        "t": 28.255
+      },
+      {
+        "title": "Long sentences",
+        "t": 60.934
+      },
+      {
+        "title": "Attitude and irony",
+        "t": 92.974
+      },
+      {
+        "title": "A common mistake",
+        "t": 117.023
+      },
+      {
+        "title": "Evidence about its time",
+        "t": 130.412
+      },
+      {
+        "title": "Your turn",
+        "t": 154.603
+      },
+      {
+        "title": "Summary",
+        "t": 189.152
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-3-1:q",
+        "t": 169.22,
+        "prompt": "The overseer says the girls are “perfectly contented”, *yet* the visitor notes that “not one of them raised her eyes from her work while he stood near”. What is the visitor’s attitude?",
+        "choices": [
+          "Impressed by how efficiently the mill is run",
+          "Bored, and eager to leave",
+          "Amused by the girls’ hard work",
+          "Doubtful of the overseer, and sympathetic to the girls"
+        ],
+        "answer": 3,
+        "working": "“Yet” introduces evidence against the overseer: the girls seem afraid of him."
+      }
+    ]
+  },
+  "ex-3-2": {
+    "lessonId": "ex-3-2",
+    "title": "Descriptive Writing from a Picture",
+    "duration": 162,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Starting from the picture",
+        "t": 22.936
+      },
+      {
+        "title": "Precise and sensory detail",
+        "t": 48.912
+      },
+      {
+        "title": "Show, not tell",
+        "t": 68.419
+      },
+      {
+        "title": "Shaping a description",
+        "t": 86.71
+      },
+      {
+        "title": "Your turn",
+        "t": 114.313
+      },
+      {
+        "title": "Summary",
+        "t": 139.427
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-3-2:q",
+        "t": 122.127,
+        "prompt": "Which sentence **shows**, rather than tells, that the man was cold?",
+        "choices": [
+          "He stamped his feet and blew into his cupped, reddened hands.",
+          "The man was very cold because it was a freezing night.",
+          "He felt cold, and he did not enjoy the cold at all.",
+          "It was cold, so he was cold, and he wished he was warmer."
+        ],
+        "answer": 0,
+        "working": "Stamping and blowing on red hands are what a cold person does, so the reader feels the cold without being told."
+      }
+    ]
+  },
+  "ex-4-1": {
+    "lessonId": "ex-4-1",
+    "title": "Spelling",
+    "duration": 177,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Homophones",
+        "t": 22.596
+      },
+      {
+        "title": "Noun or verb?",
+        "t": 62.878
+      },
+      {
+        "title": "Tricky words and suffix rules",
+        "t": 86.936
+      },
+      {
+        "title": "Your turn",
+        "t": 125.435
+      },
+      {
+        "title": "Summary",
+        "t": 151.777
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-4-1:q",
+        "t": 132.723,
+        "prompt": "Which word fills the gap? *“The dog wagged ___ tail.”*",
+        "choices": [
+          "it’s",
+          "its’",
+          "its",
+          "it is"
+        ],
+        "answer": 2,
+        "working": "The tail belongs to the dog, so the word shows belonging: **its**, with no apostrophe."
+      }
+    ]
+  },
+  "ex-4-2": {
+    "lessonId": "ex-4-2",
+    "title": "Spoken Language: Presenting and Answering Questions",
+    "duration": 170,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Planning it",
+        "t": 20.081
+      },
+      {
+        "title": "Delivering it",
+        "t": 59.586
+      },
+      {
+        "title": "Standard English",
+        "t": 81.069
+      },
+      {
+        "title": "Answering questions",
+        "t": 102.895
+      },
+      {
+        "title": "Your turn",
+        "t": 123.037
+      },
+      {
+        "title": "Summary",
+        "t": 146.539
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-4-2:q",
+        "t": 129.348,
+        "prompt": "Which sentence is in **standard English**?",
+        "choices": [
+          "We was surprised by the results.",
+          "We were surprised by the results.",
+          "Us lot was surprised by the results.",
+          "We was well surprised by the results."
+        ],
+        "answer": 1,
+        "working": "“We **were**” is the standard form of the verb."
       }
     ]
   },
