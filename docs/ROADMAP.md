@@ -818,6 +818,11 @@ items ship or decisions change.
      line (CAPS Grade 12); the regression line and expected value (IB), and Voronoi diagrams,
      Spearman's rank correlation, the chi-squared tests and the t-test (IB AI SL). Next: a
      statistics unit for these, then the videos and tutor recordings for Units 23 to 27.
+   - Built (11 November 2026): **the last seven gap lessons**, Units 28 and 29 of More Mathematics
+     Topics, with 14 question generators: the least squares regression line, expected value,
+     Spearman's rank correlation coefficient, the chi-squared tests, the t-test for two means, the
+     mid-ordinate rule and Voronoi diagrams. Every course in the WAEC, KCSE, CAPS, IGCSE and IB
+     maps now lists no gaps. Next: the videos and tutor recordings for Units 23 to 29.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

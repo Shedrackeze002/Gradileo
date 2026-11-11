@@ -99,10 +99,10 @@ export const KENYA_MAP: CurriculumMap = {
         { title: 'Longitude and Latitude', description: 'Great and small circles, distances along meridians and parallels of latitude, nautical miles, and longitude and time.', members: ['mx-25-6'] },
         { title: 'Linear Programming', description: 'Writing constraints as inequalities, the feasible region, and the greatest value of an objective.', members: ['mx-24-3'] },
         { title: 'Differentiation', description: 'The gradient of a curve from first principles, differentiating polynomials, tangents and normals, stationary points, and velocity and acceleration.', members: ['m31-3-2', 'm31-4-1', 'm31-6-1', 'm31-6-2', 'm31-6-4'] },
-        { title: 'Area Approximations', description: 'The area under a curve by the trapezium rule.', members: ['mx-19-3'] },
+        { title: 'Area Approximations', description: 'The area under a curve by the trapezium rule. The mid-ordinate rule.', members: ['mx-19-3', 'mx-29-1'] },
         { title: 'Integration', description: 'Integrating polynomials, definite integrals, the area under a curve, and the area between two curves.', members: ['m31-8-1', 'm31-8-3', 'm31-9-1'] },
       ],
-      gaps: ['The mid-ordinate rule'],
+      gaps: [],
     },
   ],
 };

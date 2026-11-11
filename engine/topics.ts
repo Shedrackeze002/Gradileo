@@ -66,7 +66,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Geometry and measurement', 'constructions', 'Geometric constructions', ['m7-u8', 'mx-10-2']),
   t(M, 'Geometry and measurement', 'proof', 'Geometric proof', ['mx-3-3']),
   t(M, 'Geometry and measurement', 'conics-parametric', 'Conic sections and parametric equations', ['mx-3-4', 'mx-6-3', 'mx-6-4']),
-  t(M, 'Geometry and measurement', 'coordinate-plane', 'The coordinate plane', ['m5-u9', 'm6-u8', 'm7-9-1']),
+  t(M, 'Geometry and measurement', 'coordinate-plane', 'The coordinate plane', ['m5-u9', 'm6-u8', 'm7-9-1', 'mx-29-2']),
   t(M, 'Geometry and measurement', 'symmetry-transformations', 'Symmetry and transformations', ['m5-u8', 'm6-7-1', 'm7-9-2', 'm7-9-3', 'm9-u9', 'm104-u8', 'm303-u4', 'mx-27-5']),
   t(M, 'Geometry and measurement', 'similarity-scale', 'Similarity and scale', ['m9-u7', 'm103-7-3', 'm103-7-4', 'm203-u5', 'm204-u8', 'mx-21-2', 'mx-27-1']),
   // Trigonometry.
@@ -77,9 +77,9 @@ export const TOPICS: Topic[] = [
   t(M, 'Trigonometry', 'polar', 'Polar coordinates and polar form', ['mx-6-1', 'mx-6-2']),
   t(M, 'Trigonometry', 'trig-identities', 'Trigonometric identities', ['m301-u6', 'mx-18-3']),
   // Data and probability.
-  t(M, 'Data and probability', 'data', 'Data, graphs and statistics', ['m5-u12', 'm7-u10', 'm8-u10', 'm9-u10', 'm104-u9', 'm202-u5', 'm203-8-1', 'm203-8-2', 'm204-u9', 'm303-u6', 'mx-u1', 'mx-u11', 'mx-14-1', 'mx-14-2', 'mx-14-3', 'mx-15-1', 'mx-1-7']),
-  t(M, 'Data and probability', 'probability', 'Probability', ['m6-u12', 'm7-u11', 'm8-u10', 'm9-u10', 'm104-u9', 'm204-u9', 'm302-u3', 'm303-u7', 'mx-11-1', 'mx-14-4', 'mx-14-5', 'mx-15-2', 'mx-15-3']),
-  t(M, 'Data and probability', 'hypothesis-testing', 'Statistical hypothesis testing', ['mx-14-6', 'mx-15-1', 'mx-15-4']),
+  t(M, 'Data and probability', 'data', 'Data, graphs and statistics', ['m5-u12', 'm7-u10', 'm8-u10', 'm9-u10', 'm104-u9', 'm202-u5', 'm203-8-1', 'm203-8-2', 'm204-u9', 'm303-u6', 'mx-u1', 'mx-u11', 'mx-14-1', 'mx-14-2', 'mx-14-3', 'mx-15-1', 'mx-1-7', 'mx-28-1', 'mx-28-3']),
+  t(M, 'Data and probability', 'probability', 'Probability', ['m6-u12', 'm7-u11', 'm8-u10', 'm9-u10', 'm104-u9', 'm204-u9', 'm302-u3', 'm303-u7', 'mx-11-1', 'mx-14-4', 'mx-14-5', 'mx-15-2', 'mx-15-3', 'mx-28-2']),
+  t(M, 'Data and probability', 'hypothesis-testing', 'Statistical hypothesis testing', ['mx-14-6', 'mx-15-1', 'mx-15-4', 'mx-28-3', 'mx-28-4', 'mx-28-5']),
   t(M, 'Data and probability', 'counting', 'Counting, permutations and combinations', ['m301-u9', 'm302-u2']),
   // Money.
   t(M, 'Money', 'prices', 'Prices, unit rates and currency', ['m103-1-2', 'm103-1-3', 'm103-1-4', 'm204-u2']),
@@ -92,7 +92,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Calculus', 'limits', 'Limits and continuity', ['m31-u2']),
   t(M, 'Calculus', 'derivatives', 'Derivatives and differentiation rules', ['m31-u3', 'm31-u4', 'm31-u5', 'mx-19-1']),
   t(M, 'Calculus', 'derivative-applications', 'Applications of derivatives', ['m31-u6', 'm31-u7']),
-  t(M, 'Calculus', 'integrals', 'Antiderivatives and integrals', ['m31-u8', 'm31-u9', 'mx-19-3', 'mx-19-4', 'mx-19-5']),
+  t(M, 'Calculus', 'integrals', 'Antiderivatives and integrals', ['m31-u8', 'm31-u9', 'mx-19-3', 'mx-19-4', 'mx-19-5', 'mx-29-1']),
   t(M, 'Calculus', 'differential-equations', 'Differential equations', ['mx-19-6']),
   // Mechanics.
   t(M, 'Mechanics', 'kinematics', 'Motion: kinematics and projectiles', ['mx-8-3', 'm31-6-4', 'mx-12-2', 'mx-12-3', 'mx-13-4', 'mx-13-5']),
