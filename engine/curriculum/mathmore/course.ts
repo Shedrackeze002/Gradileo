@@ -85,6 +85,16 @@ export const OUTCOMES: Outcome[] = [
   { code: 'CL4', strand: 'Pure: further calculus and numerical methods', text: 'Integrate by parts.' },
   { code: 'CL5', strand: 'Pure: further calculus and numerical methods', text: 'Integrate rational functions by splitting them into partial fractions.' },
   { code: 'CL6', strand: 'Pure: further calculus and numerical methods', text: 'Solve separable first-order differential equations, and use them to model growth, decay and cooling.' },
+  { code: 'ST7', strand: 'Statistics', text: 'Describe the shape of a distribution from a histogram or dot plot: symmetric, skewed or uniform, and its number of modes.' },
+  { code: 'NS1', strand: 'Number sets, absolute value and proportionality', text: 'Find the absolute value and the opposite of positive and negative numbers, and compare and order positive and negative decimals and fractions.' },
+  { code: 'NS2', strand: 'Number sets, absolute value and proportionality', text: 'Recognize perfect cubes up to 125 and find their cube roots, and relate them to the volume and edge length of a cube.' },
+  { code: 'NS3', strand: 'Number sets, absolute value and proportionality', text: 'Interpret a ratio as a multiplicative comparison with a constant of proportionality, and find it as a unit rate, a slope or a scale factor.' },
+  { code: 'NS4', strand: 'Number sets, absolute value and proportionality', text: 'Organize the real numbers into sets and subsets, describe sets as finite or infinite, and write sets in set-builder notation.' },
+  { code: 'GN1', strand: 'Geometric notation and dilations', text: 'Tell lines, rays, line segments, angles and polygons apart, name them and their relationships with symbols, and use angle relationships at intersections.' },
+  { code: 'GN2', strand: 'Geometric notation and dilations', text: 'Dilate points and shapes on the Cartesian plane, and relate the scale factor to lengths and areas.' },
+  { code: 'FN1', strand: 'Functions and simple quadratic equations', text: 'Tell whether a relation is a function, from ordered pairs, tables, arrow diagrams and graphs, and find inputs and outputs.' },
+  { code: 'FN2', strand: 'Functions and simple quadratic equations', text: 'Describe the domain and range of a function in words, tell discrete from continuous functions, and describe the restrictions a situation puts on them.' },
+  { code: 'FN3', strand: 'Functions and simple quadratic equations', text: 'Solve quadratic equations of the form x² = a and x² + c = 0, and decide how many solutions they have.' },
 ];
 
 const L = (
@@ -125,6 +135,10 @@ export const LESSONS: LessonMeta[] = [
     ['mx-study-design', 'mx-simulation'],
     ['Tell surveys, observational studies and experiments apart', 'Explain why only a randomized experiment can show cause and effect', 'Use a simulation to decide whether a result is unusual'],
     ['survey', 'observational study', 'experiment', 'random assignment', 'simulation']),
+  L('mx-1-7', 'mx-u1', '1.7', 'The Shape of a Distribution', 8, ['ST7'],
+    ['mx-distribution-shape', 'mx-histogram-frequencies'],
+    ['Read frequencies from a histogram with equal intervals', 'Describe a distribution as symmetric, skewed to the right, skewed to the left or uniform, and count its modes', 'Explain how a tail pulls the mean away from the median'],
+    ['distribution', 'histogram', 'symmetric', 'skewed', 'uniform', 'mode', 'bimodal']),
 
   // ---------------- Unit 2: Scientific Notation and Growth ----------------
   L('mx-2-1', 'mx-u2', '2.1', 'Scientific Notation', 8, ['NA1'],
@@ -422,10 +436,52 @@ export const LESSONS: LessonMeta[] = [
     ['mx-separable-solve', 'mx-de-model'],
     ['Solve first-order differential equations by separating the variables', 'Model growth, decay and cooling with differential equations'],
     ['differential equation', 'separating the variables', 'general solution', 'particular solution']),
+
+  // ---------------- Unit 20: Number Sets, Absolute Value and Proportionality ----------------
+  L('mx-20-1', 'mx-u20', '20.1', 'Absolute Value and Opposites', 7, ['NS1'],
+    ['mx-absolute-value', 'mx-order-signed-numbers'],
+    ['Find the absolute value of a number as its distance from zero', 'Find the opposite (additive inverse) of a number', 'Compare and order positive and negative decimals and fractions'],
+    ['absolute value', 'opposite', 'additive inverse', 'magnitude']),
+  L('mx-20-2', 'mx-u20', '20.2', 'Perfect Cubes and Cube Roots', 7, ['NS2'],
+    ['mx-perfect-cubes', 'mx-cube-volume'],
+    ['Write a perfect cube as repeated multiplication and as a power with exponent 3', 'Recall the perfect cubes up to 125 and their cube roots', 'Solve problems about the volume and edge length of a cube'],
+    ['perfect cube', 'cube root', 'base', 'exponent', 'radical sign']),
+  L('mx-20-3', 'mx-u20', '20.3', 'The Constant of Proportionality', 8, ['NS3'],
+    ['mx-constant-of-proportionality', 'mx-proportional-or-not'],
+    ['Find the constant of proportionality from a pair of values, a table or a graph', 'Write a proportional relationship as y = kx and use it', 'Decide whether a relationship is proportional'],
+    ['proportional relationship', 'constant of proportionality', 'unit rate', 'scale factor', 'slope']),
+  L('mx-20-4', 'mx-u20', '20.4', 'Sets of Real Numbers and Set-Builder Notation', 9, ['NS4'],
+    ['mx-number-sets', 'mx-set-builder'],
+    ['Classify a real number as natural, integer, rational or irrational, and name every set it belongs to', 'Decide whether one set is a subset of another, and whether a set is finite or infinite', 'Read and write sets in set-builder notation'],
+    ['set', 'element', 'subset', 'finite', 'infinite', 'real number', 'set-builder notation']),
+
+  // ---------------- Unit 21: Geometric Notation and Dilations ----------------
+  L('mx-21-1', 'mx-u21', '21.1', 'Geometric Objects and Their Notation', 7, ['GN1'],
+    ['mx-geometric-objects', 'mx-angles-at-intersections'],
+    ['Tell lines, rays, line segments, angles and polygons apart', 'Name geometric objects, and parallel and perpendicular lines, with symbols', 'Use opposite, adjacent and corresponding angles at intersections'],
+    ['line', 'ray', 'line segment', 'vertex', 'parallel', 'perpendicular', 'transversal', 'corresponding angles']),
+  L('mx-21-2', 'mx-u21', '21.2', 'Dilations on the Cartesian Plane', 8, ['GN2'],
+    ['mx-dilate-point', 'mx-dilation-scale-factor'],
+    ['Dilate points and shapes about the origin and about other centres', 'Find the scale factor of a dilation', 'Explain what a dilation does to lengths, angles, perimeter and area'],
+    ['dilation', 'scale factor', 'centre of dilation', 'enlargement', 'reduction', 'image', 'similar']),
+
+  // ---------------- Unit 22: Functions and Simple Quadratic Equations ----------------
+  L('mx-22-1', 'mx-u22', '22.1', 'Relations and Functions', 7, ['FN1'],
+    ['mx-function-or-not', 'mx-function-input-output'],
+    ['Explain what a relation and a function are', 'Decide whether a relation is a function from ordered pairs, a table, an arrow diagram or a graph', 'Find outputs and inputs of a function'],
+    ['relation', 'function', 'input', 'output', 'independent variable', 'dependent variable', 'vertical line test']),
+  L('mx-22-2', 'mx-u22', '22.2', 'Domain and Range', 7, ['FN2'],
+    ['mx-domain-range', 'mx-discrete-continuous'],
+    ['Describe the domain and range of a function', 'Tell discrete functions from continuous functions, and graph each kind', 'Describe the restrictions a real situation puts on the domain and range'],
+    ['domain', 'range', 'discrete', 'continuous', 'restriction']),
+  L('mx-22-3', 'mx-u22', '22.3', 'Simple Quadratic Equations', 9, ['FN3'],
+    ['mx-quadratic-square-roots', 'mx-quadratic-solutions-count'],
+    ['Solve equations of the form x² = a and x² + c = 0', 'Explain why such an equation has two solutions, one solution or none', 'Choose the solution that makes sense in a real situation'],
+    ['quadratic equation', 'solution', 'square root', 'perfect square']),
 ];
 
 export const UNITS: UnitMeta[] = [
-  { id: 'mx-u1', number: 1, title: 'Statistics and Data Displays', description: 'Statistical questions, dot plots, box plots and the interquartile range, mean absolute deviation, comparing populations, two-way tables, and experiments and simulation.', outcomes: ['ST1', 'ST2', 'ST3', 'ST4', 'ST5', 'ST6'], lessons: [], color: 'sky' },
+  { id: 'mx-u1', number: 1, title: 'Statistics and Data Displays', description: 'Statistical questions, dot plots, box plots and the interquartile range, mean absolute deviation, comparing populations, two-way tables, experiments and simulation, and the shape of a distribution.', outcomes: ['ST1', 'ST2', 'ST3', 'ST4', 'ST5', 'ST6', 'ST7'], lessons: [], color: 'sky' },
   { id: 'mx-u2', number: 2, title: 'Scientific Notation and Growth', description: 'Scientific notation, calculating with it, and linear and exponential growth compared.', outcomes: ['NA1', 'NA2', 'NA3'], lessons: [], color: 'amber' },
   { id: 'mx-u3', number: 3, title: 'Geometry', description: 'Cross-sections, solids of revolution, two-column proofs and the equation of a circle.', outcomes: ['GE1', 'GE2', 'GE3', 'GE4'], lessons: [], color: 'violet' },
   { id: 'mx-u4', number: 4, title: 'Complex Numbers and Polynomials', description: 'Complex numbers and their arithmetic, complex solutions of quadratic equations, polynomial identities and the fundamental theorem of algebra.', outcomes: ['CX1', 'CX2', 'CX3'], lessons: [], color: 'rose' },
@@ -444,6 +500,9 @@ export const UNITS: UnitMeta[] = [
   { id: 'mx-u17', number: 17, title: 'Pure: Proof, Algebra and Vectors', description: 'Proof by contradiction, partial fractions, sigma notation and recurrence relations, the binomial expansion for any rational n, and vectors in three dimensions.', outcomes: ['AL1', 'AL2', 'AL3', 'AL4', 'AL5'], lessons: [], color: 'sky' },
   { id: 'mx-u18', number: 18, title: 'Pure: Further Trigonometry', description: 'Small-angle approximations, sec, cosec and cot, the inverse trigonometric functions, and R sin(θ ± α).', outcomes: ['TR1', 'TR2', 'TR3'], lessons: [], color: 'orange' },
   { id: 'mx-u19', number: 19, title: 'Pure: Further Calculus and Numerical Methods', description: 'Parametric differentiation and first principles for sin x and cos x, locating roots and the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and separable differential equations.', outcomes: ['CL1', 'CL2', 'CL3', 'CL4', 'CL5', 'CL6'], lessons: [], color: 'fuchsia' },
+  { id: 'mx-u20', number: 20, title: 'Number Sets, Absolute Value and Proportionality', description: 'Absolute value and opposites, perfect cubes and cube roots, the constant of proportionality, and sets of real numbers with set-builder notation.', outcomes: ['NS1', 'NS2', 'NS3', 'NS4'], lessons: [], color: 'sky' },
+  { id: 'mx-u21', number: 21, title: 'Geometric Notation and Dilations', description: 'Lines, rays, segments and angles with their symbols, angles at intersections, and dilations on the Cartesian plane.', outcomes: ['GN1', 'GN2'], lessons: [], color: 'emerald' },
+  { id: 'mx-u22', number: 22, title: 'Functions and Simple Quadratic Equations', description: 'Relations and functions, domain and range, discrete and continuous functions, and quadratic equations of the form x² = a.', outcomes: ['FN1', 'FN2', 'FN3'], lessons: [], color: 'amber' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
@@ -454,7 +513,7 @@ export const MATHMORE: CourseMeta = {
   shortTitle: 'More Topics',
   grade: 10,
   subject: 'Mathematics',
-  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: dot plots and box plots, mean absolute deviation, two-way tables, scientific notation, linear and exponential growth, cross-sections and solids of revolution, two-column proofs, the equation of a circle, experiments and simulation, complex numbers, polynomial identities, vectors and matrices, polar form, conic sections and parametric equations; and for GCSE, error intervals and bounds, recurring decimals, quadratic sequences, iteration, gradients and areas under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and pressure, bearings, loci, arcs and sectors, 3D trigonometry, frequency trees, histograms and cumulative frequency; and for A level, mechanics: the constant acceleration formulae, Newton’s laws, connected particles, forces at angles and friction, inclined planes, projectiles and moments; and statistics: sampling methods, coding, outliers, discrete random variables, the binomial distribution and its hypothesis tests, correlation, the inverse normal distribution, the normal approximation and tests for a normal mean; and pure: proof by exhaustion and contradiction, ½ab sin C, logarithmic graphs, partial fractions, sigma notation and recurrence relations, the binomial expansion for rational n, 3D vectors, small-angle approximations, reciprocal and inverse trigonometric functions, R sin(θ ± α), parametric differentiation, the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and differential equations.',
+  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: dot plots and box plots, mean absolute deviation, two-way tables, scientific notation, linear and exponential growth, cross-sections and solids of revolution, two-column proofs, the equation of a circle, experiments and simulation, complex numbers, polynomial identities, vectors and matrices, polar form, conic sections and parametric equations; and for GCSE, error intervals and bounds, recurring decimals, quadratic sequences, iteration, gradients and areas under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and pressure, bearings, loci, arcs and sectors, 3D trigonometry, frequency trees, histograms and cumulative frequency; and for A level, mechanics: the constant acceleration formulae, Newton’s laws, connected particles, forces at angles and friction, inclined planes, projectiles and moments; and statistics: sampling methods, coding, outliers, discrete random variables, the binomial distribution and its hypothesis tests, correlation, the inverse normal distribution, the normal approximation and tests for a normal mean; and pure: proof by exhaustion and contradiction, ½ab sin C, logarithmic graphs, partial fractions, sigma notation and recurrence relations, the binomial expansion for rational n, 3D vectors, small-angle approximations, reciprocal and inverse trigonometric functions, R sin(θ ± α), parametric differentiation, the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and differential equations.; and for Alberta’s new Grades 7 to 9 curriculum, absolute value, perfect cubes, the constant of proportionality, sets of real numbers and set-builder notation, geometric notation, dilations, functions with domain and range, simple quadratic equations and the shape of a distribution',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
