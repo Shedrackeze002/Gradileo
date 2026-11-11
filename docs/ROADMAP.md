@@ -95,6 +95,11 @@ items ship or decisions change.
   the answers are due (`assignment_contents`); the site sends security headers (HSTS, frame
   protection, nosniff, referrer and permissions policies, and a Content-Security-Policy,
   enforced since the same day); DOMPurify updated; CI and backend workflows have read-only tokens.
+- No accidental submits (11 November 2026, the owner's urgent request): students pressed Submit
+  thinking it saved only the current question. In homework, quizzes and exams Submit now appears
+  only on the last question, the footer reminds students that answers save automatically, and
+  the confirmation says plainly that submitting ends the homework or exam and answers can no
+  longer be changed ("Keep working" or "Yes, submit my exam").
 
 ## Next, in order
 
