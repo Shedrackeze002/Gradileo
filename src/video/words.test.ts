@@ -37,6 +37,7 @@ describe('speechText', () => {
 
   it('says a lone letter with ’s as the letter’s name', () => {
     expect(speechText('Route A’s times are close. Route B’s times swing.')).toBe('Route Eh’s times are close. Route Bee’s times swing.');
+    expect(speechText('A report answers the five Ws: who, what and why.')).toBe('A report answers the five double-yous: who, what and why.');
     expect(speechText("Store C's total, and Store D’s.")).toBe("Store See's total, and Store Dee’s.");
     expect(speechText('AB’s length, Ann’s bike, and B C.')).toBe('AB’s length, Ann’s bike, and B C.');
   });

@@ -50,7 +50,7 @@ const video: Explainer = {
       lines: [
         { say: 'Which point of view is this? The narrator tells us what Mr. Diaz worries about, what the night guard dreams, and what the girl is planning.', show: 'q' },
         { say: 'It moves from one character’s mind to the next, so it is third-person omniscient.', focus: 'q' },
-        { say: 'Limited and omniscient both use he and she, so the test is whose thoughts we are told. If we only ever get inside one character’s head, the narrator is limited.', show: 'm', focus: 'm' },
+        { say: 'Limited and omniscient narrators both use the pronouns he and she, so the test is whose thoughts we are told. If we only ever get inside one character’s head, the narrator is limited.', show: 'm', focus: 'm' },
       ],
     },
     {
