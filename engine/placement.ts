@@ -58,6 +58,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'math-30-3': 'math-20-3',
   'math-31': 'math-30-1',
   'chem-7': null,
+  'chem-8': 'chem-7',
   'chem-10': null,
   'chem-20': 'chem-10',
   'chem-30': 'chem-20',
@@ -318,11 +319,17 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
         { courseId: 'chem-10', why: 'If you have already studied the particle model and mixtures and want to start on atoms.' },
       ]);
     }
+    if (g === 8) {
+      return rec('chem-8', ['Grade 8 Chemistry covers atoms, elements and compounds, the periodic table, physical and chemical changes, and burning, rusting and materials.'], [
+        { courseId: 'chem-7', why: 'If you have not yet studied the particle model, mixtures and separating them.' },
+        { courseId: 'chem-10', why: 'If you have already studied atoms, the periodic table and word equations.' },
+      ]);
+    }
     if (g <= 10) {
       const reasons = ['Grade 10 Chemistry is the first full chemistry course: the particle model, atoms and the periodic table, bonding, chemical reactions, and moles, acids and bases.'];
       if (g < 10) reasons.push('It is usually taken in Grade 10, so a few ideas will be new; it starts from what matter is made of.');
       const others = [{ courseId: 'chem-20', why: 'If you have already studied atoms, bonding and balancing equations.' }];
-      if (g < 10) others.unshift({ courseId: 'chem-7', why: 'If you want to start with matter, the particle model and mixtures.' });
+      if (g < 10) others.unshift({ courseId: 'chem-8', why: 'If you want to start with atoms, elements, the periodic table and simple reactions.' });
       return rec('chem-10', reasons, others);
     }
     if (g >= 12) {

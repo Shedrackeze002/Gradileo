@@ -30,11 +30,16 @@ junior grades had nothing to study. These three courses lead into it.
 | Mixtures and Solutions | pure substances and mixtures; solutions and concentration; solubility and saturation; the rate of dissolving and fair tests |
 | Separating Mixtures | sieving, magnets and filtering; evaporation and distillation; chromatography and choosing a method |
 
-## Grade 8: atoms, elements and compounds (planned)
+## Grade 8: atoms, elements and compounds (built)
 
-Atoms, elements and compounds and their symbols; the periodic table (metals and non-metals,
-groups and periods); physical and chemical changes and the signs of a reaction; simple word
-equations; properties and uses of common materials.
+`chem-8`, "Chemistry 8", in `engine/curriculum/chem8/` and `src/content/chem8/`.
+
+| Unit | Lessons |
+|---|---|
+| Atoms, Elements and Compounds | atoms and elements; compounds and molecules; elements, compounds and mixtures; chemical formulas |
+| The Periodic Table | organizing the elements; metals and non-metals; families of elements; patterns in the table |
+| Physical and Chemical Changes | physical and chemical changes; signs of a chemical reaction; word equations |
+| Reactions and Materials | burning; rusting and corrosion; metals and alloys; polymers, ceramics and composites |
 
 ## Grade 9: atomic structure and reactions (planned)
 
