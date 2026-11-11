@@ -41,12 +41,17 @@ junior grades had nothing to study. These three courses lead into it.
 | Physical and Chemical Changes | physical and chemical changes; signs of a chemical reaction; word equations |
 | Reactions and Materials | burning; rusting and corrosion; metals and alloys; polymers, ceramics and composites |
 
-## Grade 9: atomic structure and reactions (planned)
+## Grade 9: atomic structure and reactions (built)
 
-Protons, neutrons and electrons and simple electron arrangements; formulas and names of simple
-compounds; reactions and the conservation of mass; acids, bases, indicators and pH, and
-neutralization. When Grade 9 is built, Grade 10 Chemistry's placement check starts from Grade 9's
-skills.
+`chem-9`, "Chemistry 9", in `engine/curriculum/chem9/` and `src/content/chem9/`. Grade 10
+Chemistry's placement check now starts from Grade 9's skills.
+
+| Unit | Lessons |
+|---|---|
+| Atomic Structure | inside the atom; atomic number, mass number and isotopes; electron arrangements; ions |
+| Formulas and Names | ionic and covalent bonding; formulas of ionic compounds; naming compounds; relative formula mass |
+| Reactions and Conservation of Mass | conservation of mass; balancing equations; types of reaction; rates of reaction |
+| Acids and Bases | acids, bases and indicators; the pH scale; neutralization |
 
 ## Sources
 
