@@ -38,23 +38,23 @@ export const TOPICS: Topic[] = [
   t(M, 'Number', 'roots-radicals', 'Square roots and radicals', ['m8-1-1', 'm8-1-2', 'm9-1-1', 'm9-1-2', 'm10c-3-2', 'm10c-3-4', 'm201-u5', 'm202-u4']),
   // Algebra.
   t(M, 'Algebra', 'expressions-equations', 'Expressions, formulas and equations', ['m5-u7', 'm6-u6', 'm7-u6', 'm104-5-2', 'm104-5-3', 'm204-5-1', 'm204-5-2']),
-  t(M, 'Algebra', 'patterns-sequences', 'Patterns and sequences', ['m5-u11', 'm7-5-1', 'm104-5-1', 'm201-u1', 'mx-8-1']),
+  t(M, 'Algebra', 'patterns-sequences', 'Patterns and sequences', ['m5-u11', 'm7-5-1', 'm104-5-1', 'm201-u1', 'mx-8-1', 'mx-17-3', 'mx-17-4']),
   t(M, 'Algebra', 'linear-equations', 'Linear equations and inequalities', ['m8-u7', 'm9-u6']),
   t(M, 'Algebra', 'linear-relations', 'Linear relations and their graphs', ['m7-5-2', 'm8-u6', 'm9-u4', 'm104-5-4', 'm10c-u6', 'm10c-u7', 'm203-u1', 'm204-5-3', 'm303-u5', 'mx-8-3']),
   t(M, 'Algebra', 'polynomials', 'Polynomials and factoring', ['m9-u5', 'm10c-u4', 'm201-4-1', 'mx-4-3']),
   t(M, 'Algebra', 'systems', 'Systems of equations', ['m10c-u8', 'm201-u8']),
   t(M, 'Algebra', 'quadratics', 'Quadratic functions and equations', ['m201-u3', 'm201-4-2', 'm201-4-3', 'm201-4-4', 'm202-u6', 'm202-u7']),
   t(M, 'Algebra', 'complex-numbers', 'Complex numbers', ['mx-4-1', 'mx-4-2', 'mx-6-2']),
-  t(M, 'Algebra', 'vectors-matrices', 'Vectors and matrices', ['mx-u5']),
+  t(M, 'Algebra', 'vectors-matrices', 'Vectors and matrices', ['mx-u5', 'mx-17-5']),
   t(M, 'Algebra', 'inequalities', 'Linear and quadratic inequalities', ['m201-u9']),
-  t(M, 'Algebra', 'rational-expressions', 'Rational expressions and equations', ['m201-u6', 'm302-u4']),
+  t(M, 'Algebra', 'rational-expressions', 'Rational expressions and equations', ['m201-u6', 'm302-u4', 'mx-17-2']),
   // Functions.
   t(M, 'Functions', 'functions', 'Relations and functions', ['m6-u11', 'm10c-u5', 'm31-1-1']),
   t(M, 'Functions', 'function-transformations', 'Transformations of functions', ['m301-u1']),
   t(M, 'Functions', 'absolute-reciprocal', 'Absolute value and reciprocal functions', ['m201-u7']),
   t(M, 'Functions', 'radical-functions', 'Radical functions', ['m301-u2']),
   t(M, 'Functions', 'polynomial-functions', 'Polynomial functions', ['m301-u3', 'm302-u5', 'mx-8-2']),
-  t(M, 'Functions', 'exponentials-logarithms', 'Exponential functions and logarithms', ['mx-2-3', 'm301-u7', 'm302-u6']),
+  t(M, 'Functions', 'exponentials-logarithms', 'Exponential functions and logarithms', ['mx-2-3', 'm301-u7', 'm302-u6', 'mx-16-3']),
   t(M, 'Functions', 'rational-functions', 'Rational functions and combining functions', ['m301-u8']),
   // Geometry and measurement.
   t(M, 'Geometry and measurement', 'measurement', 'Measurement, units and conversions', ['m10c-1-1', 'm10c-1-2', 'm10c-1-3', 'm10c-1-4', 'm103-u3', 'm103-u4', 'm104-u6', 'm204-u6', 'm303-u1', 'mx-7-1', 'mx-7-2']),
@@ -71,10 +71,10 @@ export const TOPICS: Topic[] = [
   // Trigonometry.
   t(M, 'Trigonometry', 'pythagoras', 'The Pythagorean theorem', ['m8-1-3', 'm8-1-4', 'm103-7-1', 'm103-7-2', 'mx-10-4']),
   t(M, 'Trigonometry', 'right-triangle-trig', 'Right-triangle trigonometry', ['m10c-u2', 'm103-u8', 'm203-u4', 'mx-10-1', 'mx-10-4']),
-  t(M, 'Trigonometry', 'sine-cosine-laws', 'Angles of any size, and the sine and cosine laws', ['m201-u2', 'm202-u3', 'm303-u2']),
-  t(M, 'Trigonometry', 'unit-circle', 'The unit circle and trigonometric functions', ['m301-u4', 'm301-u5', 'm302-u7', 'm31-1-2', 'mx-8-4']),
+  t(M, 'Trigonometry', 'sine-cosine-laws', 'Angles of any size, and the sine and cosine laws', ['m201-u2', 'm202-u3', 'm303-u2', 'mx-16-2']),
+  t(M, 'Trigonometry', 'unit-circle', 'The unit circle and trigonometric functions', ['m301-u4', 'm301-u5', 'm302-u7', 'm31-1-2', 'mx-8-4', 'mx-18-1', 'mx-18-2']),
   t(M, 'Trigonometry', 'polar', 'Polar coordinates and polar form', ['mx-6-1', 'mx-6-2']),
-  t(M, 'Trigonometry', 'trig-identities', 'Trigonometric identities', ['m301-u6']),
+  t(M, 'Trigonometry', 'trig-identities', 'Trigonometric identities', ['m301-u6', 'mx-18-3']),
   // Data and probability.
   t(M, 'Data and probability', 'data', 'Data, graphs and statistics', ['m5-u12', 'm7-u10', 'm8-u10', 'm9-u10', 'm104-u9', 'm202-u5', 'm203-8-1', 'm203-8-2', 'm204-u9', 'm303-u6', 'mx-u1', 'mx-u11', 'mx-14-1', 'mx-14-2', 'mx-14-3', 'mx-15-1']),
   t(M, 'Data and probability', 'probability', 'Probability', ['m6-u12', 'm7-u11', 'm8-u10', 'm9-u10', 'm104-u9', 'm204-u9', 'm302-u3', 'm303-u7', 'mx-11-1', 'mx-14-4', 'mx-14-5', 'mx-15-2', 'mx-15-3']),
@@ -85,7 +85,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Money', 'income', 'Earning an income', ['m103-u2', 'm204-u3']),
   t(M, 'Money', 'budgets-credit', 'Budgets, banking, interest and credit', ['m203-u6', 'm203-u7', 'm204-u4', 'm303-u8']),
   // Reasoning.
-  t(M, 'Reasoning', 'logic', 'Reasoning, sets and logic', ['m202-u1', 'm302-u1']),
+  t(M, 'Reasoning', 'logic', 'Reasoning, sets and logic', ['m202-u1', 'm302-u1', 'mx-16-1', 'mx-17-1']),
   t(M, 'Reasoning', 'puzzles-projects', 'Puzzles, games and research projects', ['m203-8-3', 'm202-u9', 'm302-u8', 'm303-u9']),
   // Calculus.
   t(M, 'Calculus', 'limits', 'Limits and continuity', ['m31-u2']),
