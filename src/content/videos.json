@@ -110387,6 +110387,61 @@
       }
     ]
   },
+  "mx-1-7": {
+    "lessonId": "mx-1-7",
+    "title": "The Shape of a Distribution",
+    "duration": 260,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Distributions and histograms",
+        "t": 24.833
+      },
+      {
+        "title": "Reading a histogram",
+        "t": 53.475
+      },
+      {
+        "title": "Symmetric and skewed",
+        "t": 90.971
+      },
+      {
+        "title": "Modes",
+        "t": 134.264
+      },
+      {
+        "title": "Shape, mean and median",
+        "t": 158.486
+      },
+      {
+        "title": "Your turn",
+        "t": 198.287
+      },
+      {
+        "title": "Summary",
+        "t": 230.058
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-1-7:q",
+        "t": 210.397,
+        "prompt": "A histogram has its tallest bars on the right and a long tail of low bars on the left. Which statement is true?",
+        "choices": [
+          "It is skewed to the right, and the mean is greater than the median.",
+          "It is skewed to the left, and the mean is less than the median.",
+          "It is skewed to the left, and the mean is greater than the median.",
+          "It is symmetric, and the mean equals the median."
+        ],
+        "answer": 1,
+        "working": "The tail is on the left, so it is skewed to the left. The tail pulls the mean down, below the median."
+      }
+    ]
+  },
   "mx-2-1": {
     "lessonId": "mx-2-1",
     "title": "Scientific Notation",
@@ -114159,6 +114214,465 @@
         ],
         "answer": 2,
         "working": "$\\displaystyle\\int \\frac{1}{y}\\,dy = \\int 1\\,dx$, so $\\ln|y| = x + c$ and $y = Ae^x$. At $x = 0$, $A = 5$, so $y = 5e^x$."
+      }
+    ]
+  },
+  "mx-20-1": {
+    "lessonId": "mx-20-1",
+    "title": "Absolute Value and Opposites",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Opposites",
+        "t": 23.008
+      },
+      {
+        "title": "Absolute value",
+        "t": 50.481
+      },
+      {
+        "title": "Calculating with absolute value",
+        "t": 99.859
+      },
+      {
+        "title": "Ordering negative numbers",
+        "t": 132.158
+      },
+      {
+        "title": "Your turn",
+        "t": 161.812
+      },
+      {
+        "title": "Summary",
+        "t": 193.778
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-20-1:q",
+        "t": 172.73,
+        "prompt": "Evaluate $|4 - 9| - |{-3}|$.",
+        "choices": [
+          "$8$",
+          "$-8$",
+          "$2$",
+          "$10$"
+        ],
+        "answer": 2,
+        "working": "$|4 - 9| = |{-5}| = 5$ and $|{-3}| = 3$, so $5 - 3 = 2$."
+      }
+    ]
+  },
+  "mx-20-2": {
+    "lessonId": "mx-20-2",
+    "title": "Perfect Cubes and Cube Roots",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Perfect cubes",
+        "t": 19.733
+      },
+      {
+        "title": "A common mistake",
+        "t": 53.977
+      },
+      {
+        "title": "Cube roots",
+        "t": 81.869
+      },
+      {
+        "title": "Cubes and volume",
+        "t": 119.031
+      },
+      {
+        "title": "Your turn",
+        "t": 152.461
+      },
+      {
+        "title": "Summary",
+        "t": 186.637
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-20-2:q",
+        "t": 163.864,
+        "prompt": "A cube has a volume of $125$ cm³. What is the area of one of its faces?",
+        "choices": [
+          "$25$ cm²",
+          "$5$ cm²",
+          "$41.7$ cm²",
+          "$15$ cm²"
+        ],
+        "answer": 0,
+        "working": "Edge $= \\sqrt[3]{125} = 5$ cm, so one face is $5 \\times 5 = 25$ cm²."
+      }
+    ]
+  },
+  "mx-20-3": {
+    "lessonId": "mx-20-3",
+    "title": "The Constant of Proportionality",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Proportional relationships",
+        "t": 25.745
+      },
+      {
+        "title": "Finding k from one pair",
+        "t": 59.533
+      },
+      {
+        "title": "Tables and graphs",
+        "t": 86.789
+      },
+      {
+        "title": "Proportional or not?",
+        "t": 133.414
+      },
+      {
+        "title": "Your turn",
+        "t": 166.879
+      },
+      {
+        "title": "Summary",
+        "t": 201.75
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-20-3:q",
+        "t": 181.951,
+        "prompt": "The mass $m$ grams of a wire is proportional to its length $L$ cm. A piece $12$ cm long has a mass of $30$ g. What is the mass of a piece $20$ cm long?",
+        "choices": [
+          "$38$ g",
+          "$8$ g",
+          "$72$ g",
+          "$50$ g"
+        ],
+        "answer": 3,
+        "working": "$k = \\dfrac{30}{12} = 2.5$ g for every cm, so $m = 2.5 \\times 20 = 50$ g."
+      }
+    ]
+  },
+  "mx-20-4": {
+    "lessonId": "mx-20-4",
+    "title": "Sets of Real Numbers and Set-Builder Notation",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sets and subsets",
+        "t": 23.59
+      },
+      {
+        "title": "The real number system",
+        "t": 55.116
+      },
+      {
+        "title": "Classifying a number",
+        "t": 98.844
+      },
+      {
+        "title": "Set-builder notation",
+        "t": 138.865
+      },
+      {
+        "title": "Your turn",
+        "t": 178.96
+      },
+      {
+        "title": "Summary",
+        "t": 211.203
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-20-4:q",
+        "t": 191.946,
+        "prompt": "Which set is the same as $\\{x \\mid x \\le 4,\\ x \\in \\mathbb{N}\\}$?",
+        "choices": [
+          "$\\{0, 1, 2, 3, 4\\}$",
+          "$\\{1, 2, 3, 4\\}$",
+          "$\\{1, 2, 3\\}$",
+          "All real numbers up to $4$"
+        ],
+        "answer": 1,
+        "working": "The natural numbers start at $1$, and $\\le$ includes $4$: $\\{1, 2, 3, 4\\}$."
+      }
+    ]
+  },
+  "mx-21-1": {
+    "lessonId": "mx-21-1",
+    "title": "Geometric Objects and Their Notation",
+    "duration": 263,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lines, rays and segments",
+        "t": 26.32
+      },
+      {
+        "title": "Angles",
+        "t": 70.89
+      },
+      {
+        "title": "Parallel and perpendicular",
+        "t": 98.843
+      },
+      {
+        "title": "Angles where lines intersect",
+        "t": 134.746
+      },
+      {
+        "title": "Your turn",
+        "t": 188.794
+      },
+      {
+        "title": "Summary",
+        "t": 226.527
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-21-1:q",
+        "t": 202.65,
+        "prompt": "Lines $PQ$ and $RS$ intersect at $T$, and $\\angle PTR = 48^\\circ$. What is the measure of $\\angle PTS$?",
+        "choices": [
+          "$48^\\circ$",
+          "$42^\\circ$",
+          "$312^\\circ$",
+          "$132^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$\\angle PTS$ and $\\angle PTR$ are adjacent angles on line $RS$: $180^\\circ - 48^\\circ = 132^\\circ$."
+      }
+    ]
+  },
+  "mx-21-2": {
+    "lessonId": "mx-21-2",
+    "title": "Dilations on the Cartesian Plane",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a dilation is",
+        "t": 22.404
+      },
+      {
+        "title": "Centre at the origin",
+        "t": 67.464
+      },
+      {
+        "title": "Another centre",
+        "t": 99.686
+      },
+      {
+        "title": "Lengths and areas",
+        "t": 146.835
+      },
+      {
+        "title": "Your turn",
+        "t": 187.46
+      },
+      {
+        "title": "Summary",
+        "t": 227.024
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-21-2:q",
+        "t": 204.972,
+        "prompt": "A dilation with centre $(0, 0)$ maps $P(2, 5)$ to $P^\\prime(6, 15)$. What is the scale factor?",
+        "choices": [
+          "$4$",
+          "$3$",
+          "$10$",
+          "$\\dfrac{1}{3}$"
+        ],
+        "answer": 1,
+        "working": "Divide an image coordinate by the original: $\\dfrac{6}{2} = 3$ (and $\\dfrac{15}{5} = 3$)."
+      }
+    ]
+  },
+  "mx-22-1": {
+    "lessonId": "mx-22-1",
+    "title": "Relations and Functions",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Relations and functions",
+        "t": 24.106
+      },
+      {
+        "title": "Testing a relation",
+        "t": 55.517
+      },
+      {
+        "title": "The vertical line test",
+        "t": 87.552
+      },
+      {
+        "title": "Inputs and outputs",
+        "t": 119.659
+      },
+      {
+        "title": "Your turn",
+        "t": 152.813
+      },
+      {
+        "title": "Summary",
+        "t": 180.983
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-22-1:q",
+        "t": 159.551,
+        "prompt": "Which relation is **not** a function?",
+        "choices": [
+          "$\\{(1, 2),\\ (2, 2),\\ (3, 2)\\}$",
+          "$\\{(0, 5),\\ (1, 6),\\ (2, 7)\\}$",
+          "$\\{(4, 1),\\ (5, 3),\\ (4, 6)\\}$",
+          "$\\{(-1, 1),\\ (1, 1),\\ (2, 4)\\}$"
+        ],
+        "answer": 2,
+        "working": "In C, the input $4$ has two outputs, $1$ and $6$. In the others, every input has one output."
+      }
+    ]
+  },
+  "mx-22-2": {
+    "lessonId": "mx-22-2",
+    "title": "Domain and Range",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Domain and range",
+        "t": 21.32
+      },
+      {
+        "title": "From ordered pairs",
+        "t": 43.99
+      },
+      {
+        "title": "Discrete and continuous",
+        "t": 78.166
+      },
+      {
+        "title": "Domain and range in context",
+        "t": 129.934
+      },
+      {
+        "title": "Your turn",
+        "t": 173.201
+      },
+      {
+        "title": "Summary",
+        "t": 200.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-22-2:q",
+        "t": 178.999,
+        "prompt": "What is the range of the function $\\{(-2, 4),\\ (0, 0),\\ (2, 4),\\ (3, 9)\\}$?",
+        "choices": [
+          "$\\{0, 4, 9\\}$",
+          "$\\{-2, 0, 2, 3\\}$",
+          "$\\{0, 4, 4, 9\\}$",
+          "$\\{-2, 9\\}$"
+        ],
+        "answer": 0,
+        "working": "The outputs are $4, 0, 4, 9$. Written once each, in order: $\\{0, 4, 9\\}$."
+      }
+    ]
+  },
+  "mx-22-3": {
+    "lessonId": "mx-22-3",
+    "title": "Simple Quadratic Equations",
+    "duration": 223,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Quadratic equations",
+        "t": 23.07
+      },
+      {
+        "title": "Two solutions",
+        "t": 42.376
+      },
+      {
+        "title": "How many solutions?",
+        "t": 85.388
+      },
+      {
+        "title": "Rearranging first",
+        "t": 111.966
+      },
+      {
+        "title": "Your turn",
+        "t": 160.625
+      },
+      {
+        "title": "Summary",
+        "t": 192.839
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-22-3:q",
+        "t": 167.865,
+        "prompt": "Solve $x^2 + 36 = 0$.",
+        "choices": [
+          "$x = 6$ or $x = -6$",
+          "$x = 6$ only",
+          "$x = -6$ only",
+          "No solution"
+        ],
+        "answer": 3,
+        "working": "Subtract $36$: $x^2 = -36$. The square of a number is never negative, so there is no solution."
       }
     ]
   }
