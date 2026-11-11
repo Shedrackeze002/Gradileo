@@ -1,0 +1,236 @@
+/** A Christmas Carol, Charles Dickens (1843). Quotations from Project Gutenberg eBook #46. */
+import type { LitText } from '../literature.ts';
+
+export const CAROL: LitText = {
+  title: 'A Christmas Carol',
+  author: 'Charles Dickens',
+  date: '1843',
+  part: 'Stave',
+  characters: [
+    { name: 'Ebenezer Scrooge', is: 'a rich, miserly moneylender who hates Christmas until four ghosts visit him on Christmas Eve' },
+    { name: 'Jacob Marley', is: 'Scrooge’s dead business partner, who returns in chains to warn him to change' },
+    { name: 'Bob Cratchit', is: 'Scrooge’s poorly paid clerk, who still toasts his employer at the family’s Christmas dinner' },
+    { name: 'Tiny Tim', is: 'the Cratchits’ youngest son, who is disabled and seriously ill, and who will die unless things change' },
+    { name: 'Fred', is: 'Scrooge’s cheerful nephew, who invites him to Christmas dinner every year despite being refused' },
+    { name: 'Belle', is: 'the young woman who was once engaged to Scrooge, and who ended it because he loved money more' },
+    { name: 'Mr Fezziwig', is: 'the kind, generous man Scrooge was apprenticed to as a young man, who throws a Christmas party for his workers' },
+    { name: 'Fan', is: 'Scrooge’s younger sister, who comes to bring him home from school, and who died young' },
+    { name: 'the Ghost of Christmas Past', is: 'the strange, candle-like spirit that shows Scrooge scenes from his childhood and youth' },
+    { name: 'the Ghost of Christmas Present', is: 'the jolly giant spirit that shows Scrooge how other people are spending this Christmas' },
+    { name: 'the Ghost of Christmas Yet to Come', is: 'the silent, hooded spirit that shows Scrooge his own death and his unmourned grave' },
+  ],
+  events: [
+    { where: 'Stave 1', what: 'Scrooge refuses to give money to two gentlemen collecting for the poor.' },
+    { where: 'Stave 1', what: 'Scrooge turns down his nephew Fred’s invitation to Christmas dinner.' },
+    { where: 'Stave 1', what: 'Marley’s ghost appears, wrapped in chains, and warns Scrooge that three spirits will visit him.' },
+    { where: 'Stave 2', what: 'Scrooge sees himself as a lonely boy, left at school over Christmas.' },
+    { where: 'Stave 2', what: 'Scrooge watches Fezziwig’s Christmas party, where he was an apprentice.' },
+    { where: 'Stave 2', what: 'Scrooge watches Belle end their engagement because he loves money more than her.' },
+    { where: 'Stave 3', what: 'Scrooge watches the Cratchit family share their small Christmas dinner.' },
+    { where: 'Stave 3', what: 'Scrooge watches Fred’s Christmas party, where the guests play games and joke about him.' },
+    { where: 'Stave 3', what: 'The spirit shows Scrooge two starving children, Ignorance and Want, under its robe.' },
+    { where: 'Stave 4', what: 'Businessmen joke about a funeral that nobody will go to unless lunch is provided.' },
+    { where: 'Stave 4', what: 'Scrooge watches thieves sell a dead man’s bed curtains and shirt.' },
+    { where: 'Stave 4', what: 'Scrooge sees his own name on a neglected gravestone, and begs to be allowed to change.' },
+    { where: 'Stave 5', what: 'Scrooge wakes on Christmas morning and sends a boy to buy the prize turkey for the Cratchits.' },
+    { where: 'Stave 5', what: 'Scrooge goes to Fred’s house for Christmas dinner and is warmly welcomed.' },
+    { where: 'Stave 5', what: 'Scrooge raises Bob Cratchit’s salary and becomes a second father to Tiny Tim.' },
+  ],
+  themes: ['Greed and wealth', 'Poverty and social responsibility', 'Isolation', 'Christmas and generosity', 'Family', 'Change and redemption'],
+  quotations: [
+    {
+      text: 'a squeezing, wrenching, grasping, scraping, clutching, covetous, old sinner!',
+      who: 'the narrator', where: 'Stave 1', lead: 'The narrator introduces Scrooge:', theme: 'Greed and wealth',
+      reading: 'The list of grabbing verbs piles up to show that Scrooge’s whole life is taken up with getting and holding on to money.',
+      misreadings: [
+        'The list of busy verbs shows that Scrooge is a hard-working man whose success the narrator secretly admires.',
+        'The violent verbs suggest that Scrooge is physically dangerous and has hurt people who owed him money.',
+        'The word “old” shows that the narrator pities Scrooge as a weak man too frail to change his ways now.',
+      ],
+    },
+    {
+      text: 'Hard and sharp as flint, from which no steel had ever struck out generous fire; secret, and self-contained, and solitary as an oyster.',
+      who: 'the narrator', where: 'Stave 1', lead: 'The narrator describes Scrooge’s character:', theme: 'Isolation',
+      reading: 'Scrooge has shut himself away like an oyster in its shell, so hard that no one has ever sparked any warmth in him.',
+      misreadings: [
+        'Scrooge is a rare and precious person, like the pearl in an oyster, whom others have simply failed to value.',
+        'Scrooge is a sharp and clever businessman, as useful as flint, whose talents are hidden from his workers.',
+        'Scrooge keeps his feelings secret because he is shy, and he longs for company that never comes to his door.',
+      ],
+    },
+    {
+      text: 'External heat and cold had little influence on Scrooge. No warmth could warm, no wintry weather chill him.',
+      who: 'the narrator', where: 'Stave 1', lead: 'The narrator describes how Scrooge carries the cold with him:', theme: 'Isolation',
+      reading: 'Scrooge is so cold inside that nothing from outside, weather or human warmth, can reach him or change him.',
+      misreadings: [
+        'Scrooge is unusually strong and healthy, so he never feels the cold winter weather that troubles everyone else.',
+        'Scrooge is so busy with his work that he never notices the weather, which shows how dedicated he is to his job.',
+        'Scrooge cannot afford to heat his house, so he has trained himself to bear the cold without complaint.',
+      ],
+    },
+    {
+      text: 'Darkness is cheap, and Scrooge liked it.',
+      who: 'the narrator', where: 'Stave 1', lead: 'Scrooge climbs the dark stairs to his rooms:', theme: 'Greed and wealth',
+      reading: 'Scrooge chooses gloom because it costs nothing, so the short sentence links his meanness to the darkness in his life.',
+      misreadings: [
+        'Scrooge enjoys darkness because he is frightened of being seen, which hints that he has a guilty secret.',
+        'Scrooge is too poor to afford candles, which shows that his money troubles are worse than people think.',
+        'Scrooge prefers the dark because he is tired after a long day, so the sentence shows he works too hard.',
+      ],
+    },
+    {
+      text: 'Are there no prisons?',
+      who: 'Ebenezer Scrooge', where: 'Stave 1', lead: 'Two gentlemen ask Scrooge to give to the poor:', theme: 'Poverty and social responsibility',
+      reading: 'Scrooge thinks the poor are dealt with by prisons and workhouses, so his question refuses any duty to help them himself.',
+      misreadings: [
+        'Scrooge genuinely does not know whether prisons exist, which shows how little he leaves his counting-house.',
+        'Scrooge is worried that the poor will turn to crime, so he asks whether there are enough prisons to hold them.',
+        'Scrooge wants the gentlemen to collect for prisoners instead, as he thinks they are the people most in need.',
+      ],
+    },
+    {
+      text: 'they had better do it, and decrease the surplus population.',
+      who: 'Ebenezer Scrooge', where: 'Stave 1', lead: 'Told that many of the poor would rather die than go to the workhouse:', theme: 'Poverty and social responsibility',
+      reading: 'Scrooge talks of the poor as a number to be reduced, not as people, and the spirit later throws these words back at him.',
+      misreadings: [
+        'Scrooge is making a joke to end the conversation, and the gentlemen laugh with him before they leave his office.',
+        'Scrooge is worried that the country is overcrowded, and he is asking the gentlemen to find a kinder answer.',
+        'Scrooge is sad that so many poor people are dying, and he shows it in the only way his pride will allow.',
+      ],
+    },
+    {
+      text: 'Mankind was my business.',
+      who: 'Jacob Marley', where: 'Stave 1', lead: 'Scrooge says Marley was always a good man of business:', theme: 'Poverty and social responsibility',
+      reading: 'Marley says too late that his real duty was to other people, so he turns Scrooge’s idea of business upside down.',
+      misreadings: [
+        'Marley boasts that he was very successful in trade, and he wants Scrooge to carry on the business as he did.',
+        'Marley explains that his firm sold goods to the whole of mankind, so he was a far bigger merchant than Scrooge.',
+        'Marley complains that people interfered in his business, and he warns Scrooge not to let them do the same.',
+      ],
+    },
+    {
+      text: 'Another idol has displaced me',
+      who: 'Belle', where: 'Stave 2', lead: 'Belle ends her engagement to the young Scrooge:', theme: 'Greed and wealth',
+      reading: 'Belle means that Scrooge now worships money as an idol, and it has taken the place in his heart that she once had.',
+      misreadings: [
+        'Belle means that Scrooge has fallen in love with another woman, and she is too proud to fight for him.',
+        'Belle means that she has found a richer man to marry, and she is breaking the news to Scrooge gently.',
+        'Belle means that Scrooge has put his religion before her, and she cannot share his strict beliefs.',
+      ],
+    },
+    {
+      text: 'The happiness he gives, is quite as great as if it cost a fortune.',
+      who: 'Ebenezer Scrooge', where: 'Stave 2', lead: 'Watching Fezziwig’s Christmas party:', theme: 'Christmas and generosity',
+      reading: 'Scrooge sees that an employer’s kindness matters more than money, which starts him thinking about how he treats Bob.',
+      misreadings: [
+        'Scrooge complains that Fezziwig has wasted a fortune on the party, which shows he has not changed at all.',
+        'Scrooge says that happiness can only be bought with a fortune, so he is glad that he has saved his money.',
+        'Scrooge is jealous of Fezziwig’s wealth, and he wishes he had been able to afford such a party himself.',
+      ],
+    },
+    {
+      text: 'Father is so much kinder than he used to be, that home’s like Heaven!',
+      who: 'Fan', where: 'Stave 2', lead: 'Scrooge’s sister comes to fetch him from school:', theme: 'Family',
+      reading: 'Fan hints that Scrooge’s father was once harsh to him, which helps explain the lonely, guarded man he became.',
+      misreadings: [
+        'Fan is showing off that their father loves her more, so she is teasing Scrooge for being left at school.',
+        'Fan means that their father has died and gone to Heaven, so the house is quiet and peaceful at last.',
+        'Fan is describing how rich the family has become, with a home as grand as a palace for them to live in.',
+      ],
+    },
+    {
+      text: 'I’ll give you Mr. Scrooge, the Founder of the Feast!',
+      who: 'Bob Cratchit', where: 'Stave 3', lead: 'At the Cratchits’ Christmas dinner:', theme: 'Christmas and generosity',
+      reading: 'Bob toasts the employer who underpays him, so his generous forgiveness shows up Scrooge’s meanness.',
+      misreadings: [
+        'Bob is mocking Scrooge in front of his family, and the title “Founder of the Feast” is meant as a cruel joke.',
+        'Bob is thanking Scrooge for a large Christmas bonus that paid for the whole of the family’s dinner.',
+        'Bob is afraid that Scrooge will find out what was said, so he praises him to protect his job.',
+      ],
+    },
+    {
+      text: 'This boy is Ignorance. This girl is Want.',
+      who: 'the Ghost of Christmas Present', where: 'Stave 3', lead: 'The spirit shows Scrooge two children hidden under its robe:', theme: 'Poverty and social responsibility',
+      reading: 'The two children stand for the neglect of the poor by society, and the spirit warns that ignorance is the greater danger.',
+      misreadings: [
+        'The two children are the spirit’s own son and daughter, and it wants Scrooge to adopt them and give them a home.',
+        'The two children are naughty pupils from a ragged school, named after the faults their teachers saw in them.',
+        'The two children are Bob Cratchit’s, and the spirit is warning Scrooge that they will soon be put to work.',
+      ],
+    },
+    {
+      text: 'I will honour Christmas in my heart, and try to keep it all the year.',
+      who: 'Ebenezer Scrooge', where: 'Stave 4', lead: 'Kneeling at his own gravestone:', theme: 'Change and redemption',
+      reading: 'Scrooge promises to live by the spirit of Christmas every day, which marks the moment his change begins.',
+      misreadings: [
+        'Scrooge promises to celebrate Christmas for a whole year, with parties and presents, to make up for lost time.',
+        'Scrooge is only pretending to change, so that the spirit will let him go home safely to his warm bed.',
+        'Scrooge promises to remember the ghosts every Christmas, so that he can tell other people his story.',
+      ],
+    },
+    {
+      text: 'I am as light as a feather, I am as happy as an angel, I am as merry as a schoolboy.',
+      who: 'Ebenezer Scrooge', where: 'Stave 5', lead: 'Scrooge wakes on Christmas morning:', theme: 'Change and redemption',
+      reading: 'The joyful list of similes shows Scrooge freed from the weight of his old self, and as innocent as a child again.',
+      misreadings: [
+        'The similes show that Scrooge is dizzy and unwell after his night with the ghosts, and needs a doctor.',
+        'The similes show that Scrooge thinks he has died and gone to Heaven, as the spirits had warned he would.',
+        'The similes show that Scrooge is relieved the ghosts were only a dream, and that nothing needs to change.',
+      ],
+    },
+    {
+      text: 'He became as good a friend, as good a master, and as good a man, as the good old city knew',
+      who: 'the narrator', where: 'Stave 5', lead: 'The narrator tells us what became of Scrooge:', theme: 'Change and redemption',
+      reading: 'The repeated “as good a” shows that Scrooge has changed in every part of his life, as a friend, an employer and a man.',
+      misreadings: [
+        'The repetition shows that the city is full of good men, and Scrooge is now one ordinary citizen among them.',
+        'The repetition shows that Scrooge has become a popular friend, but that he is still a hard and careful master.',
+        'The repetition shows that the narrator doubts that Scrooge has changed, and is mocking the people who believe it.',
+      ],
+    },
+  ],
+  context: [
+    {
+      ask: 'Dickens wrote *A Christmas Carol* in 1843. Which of these was part of his purpose?',
+      right: 'To make comfortable readers feel responsible for the poor, at a time of hunger and harsh workhouses',
+      wrong: ['To persuade readers that the new workhouses were a fair and generous way to look after the poor', 'To record a true ghost story that he had heard from a merchant in the City of London', 'To argue that Christmas was a foolish waste of money that the poor could not afford'],
+      sol: 'In the 1840s many working people went hungry, and the Poor Law of 1834 sent the destitute to grim workhouses. Dickens wanted readers to see the poor as people and to act.',
+    },
+    {
+      ask: 'Why are the five chapters of *A Christmas Carol* called **staves**?',
+      right: 'A stave is a verse of a song, so each chapter is like one verse of a Christmas carol',
+      wrong: ['A stave is a wooden stick, so each chapter beats a lesson into Scrooge like a teacher', 'A stave is a part of a play, so the story was written to be acted on a stage', 'A stave is a long poem, so each chapter is written in rhyming verse'],
+      sol: 'A stave is a verse or stanza of a song. The book is a “carol”, so its chapters are its verses.',
+    },
+    {
+      ask: 'What were the **workhouses** Scrooge mentions?',
+      right: 'Places where the very poor could get food and shelter in return for hard work, under strict rules',
+      wrong: ['Factories where Scrooge’s clerks were sent to work when his counting-house was quiet', 'Schools where poor children learned a trade, paid for by gentlemen like the two collectors', 'Shops where the poor could buy cheap Christmas food, run by the government each December'],
+      sol: 'Under the Poor Law of 1834, people with no means of support went into workhouses, where families were split up and the work and food were made deliberately harsh.',
+    },
+    {
+      ask: 'Why does Dickens make Tiny Tim a likeable child who may die?',
+      right: 'So readers feel what poverty costs a real family, and see that helping could save lives like his',
+      wrong: ['So readers learn that illness was punishment for laziness, a common belief that Dickens shared', 'So the story has a frightening twist, since it was written mainly to be a ghost story', 'So readers see that doctors in the 1840s could cure any illness if a family could pay'],
+      sol: 'Tim stands for the many poor children who died of illness and hunger. Scrooge’s help, and Tim’s survival, show what generosity can do.',
+    },
+    {
+      ask: 'What is the effect of the **structure** of *A Christmas Carol*, with past, present and future?',
+      right: 'Scrooge sees why he became cold, who suffers now, and where he is heading, so his change feels earned',
+      wrong: ['It lets Dickens tell three separate stories about three different men who are all called Scrooge', 'It shows that the past cannot be changed, so Scrooge’s future is already fixed whatever he does', 'It keeps the reader guessing about who Scrooge really is until the very last page of Stave 5'],
+      sol: 'Each spirit shows one stage: the causes of his coldness, its effect on others now, and its end. By Stave 5 his change is believable.',
+    },
+    {
+      ask: 'Why does Dickens give Scrooge’s own words back to him through the Ghost of Christmas Present?',
+      right: 'To make Scrooge, and the reader, feel ashamed of talking about the poor as a surplus to be got rid of',
+      wrong: ['To show that the ghost agrees with Scrooge that there are too many poor people in London', 'To show that the ghost has a poor memory and has to borrow other people’s words to speak', 'To make the reader laugh at the ghost for copying the way Scrooge speaks to his clerk'],
+      sol: 'When the spirit says “decrease the surplus population” about Tiny Tim, Scrooge “hung his head”. The words now mean the death of a child he cares about.',
+    },
+    {
+      ask: 'How does Dickens use **Fred** in the novella?',
+      right: 'As a contrast to Scrooge: he is not rich, yet he is warm, forgiving and full of Christmas spirit',
+      wrong: ['As a villain who wants to inherit Scrooge’s money, and pretends to love Christmas to win it', 'As a second miser, so the reader sees that Scrooge’s whole family is cold and mean', 'As the narrator of the story, who tells us what happened to his uncle that Christmas'],
+      sol: 'Fred keeps inviting Scrooge despite every refusal. He shows that happiness does not depend on money, and he welcomes Scrooge at the end.',
+    },
+  ],
+};

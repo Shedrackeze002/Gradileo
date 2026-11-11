@@ -808,6 +808,18 @@ items ship or decisions change.
      synthesis, and NMR and chromatography. The Year 13 map is reordered into the scheme's
      seventeen units, so **both A level Chemistry years have no gaps**. Next: GCSE English
      Literature's nineteenth-century novels and other Shakespeare plays.
+   - Built (11 November 2026), step 3, **GCSE English Literature set texts**: More English Topics
+     gains units 5 to 7, one lesson and two question generators for each of the ten set texts in
+     the public domain: *A Christmas Carol*, *Dr Jekyll and Mr Hyde* and *Great Expectations*
+     (Unit 5); *Frankenstein*, *Jane Eyre*, *Pride and Prejudice* and *The Sign of Four* (Unit 6);
+     *Much Ado About Nothing*, *The Merchant of Venice* and *Julius Caesar* (Unit 7). Each text is
+     data in `engmore/gen/lit/` (characters, events in order, themes, quotations with a reading
+     and three misreadings, and context questions), and `engmore/gen/literature.ts` turns any text
+     into questions: who is who, which event comes first or last, who says a line, which theme a
+     quotation shows, its best reading, and context. Every quotation, in the data and on the
+     lesson pages, was checked word for word against the text's Project Gutenberg edition. The
+     Literature map files each text as its own unit, so its only gaps are the anthology poems and
+     the texts still in copyright. Ten explainer videos come with them.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1
