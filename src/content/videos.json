@@ -16284,6 +16284,316 @@
       }
     ]
   },
+  "cx-1-1": {
+    "lessonId": "cx-1-1",
+    "title": "The Reactivity Series and Displacement Reactions",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The reactivity series",
+        "t": 21.094
+      },
+      {
+        "title": "Displacement reactions",
+        "t": 67.849
+      },
+      {
+        "title": "Losing and gaining electrons",
+        "t": 104.705
+      },
+      {
+        "title": "A common mistake",
+        "t": 149.87
+      },
+      {
+        "title": "Your turn",
+        "t": 170.594
+      },
+      {
+        "title": "Summary",
+        "t": 198.733
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-1-1:q",
+        "t": 179.327,
+        "prompt": "Zinc is placed in magnesium sulfate solution. What happens?",
+        "choices": [
+          "Zinc displaces the magnesium",
+          "Hydrogen gas is given off",
+          "No reaction happens",
+          "The zinc ions are reduced"
+        ],
+        "answer": 2,
+        "working": "Magnesium is above zinc in the series, so zinc cannot displace it."
+      }
+    ]
+  },
+  "cx-1-2": {
+    "lessonId": "cx-1-2",
+    "title": "Extracting Metals from Their Ores",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ores and extraction",
+        "t": 23.044
+      },
+      {
+        "title": "Choosing the method",
+        "t": 50.993
+      },
+      {
+        "title": "Why not electrolysis for everything?",
+        "t": 93.308
+      },
+      {
+        "title": "Copper from poor ores",
+        "t": 134.9
+      },
+      {
+        "title": "How much metal is in an ore?",
+        "t": 165.58
+      },
+      {
+        "title": "Your turn",
+        "t": 203.923
+      },
+      {
+        "title": "Summary",
+        "t": 232.602
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-1-2:q",
+        "t": 213.29,
+        "prompt": "Magnesium is above carbon in the reactivity series. How is it extracted?",
+        "choices": [
+          "Electrolysis of its molten compound",
+          "Heating its oxide with carbon",
+          "It is found native",
+          "Heating its oxide in air"
+        ],
+        "answer": 0,
+        "working": "Carbon cannot take the oxygen from a metal above it, so electricity is needed."
+      }
+    ]
+  },
+  "cx-1-3": {
+    "lessonId": "cx-1-3",
+    "title": "Making Soluble Salts",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming a salt",
+        "t": 25.218
+      },
+      {
+        "title": "Four ways to make a salt",
+        "t": 58.423
+      },
+      {
+        "title": "The balanced equation",
+        "t": 94.162
+      },
+      {
+        "title": "Making the crystals",
+        "t": 121.051
+      },
+      {
+        "title": "Your turn",
+        "t": 178.163
+      },
+      {
+        "title": "Summary",
+        "t": 210.543
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-1-3:q",
+        "t": 189.126,
+        "prompt": "A student stops adding copper(II) oxide while the liquid is still acidic. What is wrong with the crystals?",
+        "choices": [
+          "They contain unreacted copper(II) oxide",
+          "They are contaminated with sulfuric acid",
+          "They will be too large",
+          "Nothing: they are pure"
+        ],
+        "answer": 1,
+        "working": "With no excess of solid, some acid is left. It is dissolved, so it passes through the filter paper with the salt."
+      }
+    ]
+  },
+  "cx-1-4": {
+    "lessonId": "cx-1-4",
+    "title": "Electrolysis of Solutions and Half Equations",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrolysis",
+        "t": 24.786
+      },
+      {
+        "title": "Electrolysis of a solution",
+        "t": 66.378
+      },
+      {
+        "title": "Two solutions",
+        "t": 103.368
+      },
+      {
+        "title": "Half equations",
+        "t": 148.33
+      },
+      {
+        "title": "Your turn",
+        "t": 189.997
+      },
+      {
+        "title": "Summary",
+        "t": 222.106
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-1-4:q",
+        "t": 202.865,
+        "prompt": "How many electrons balance this half equation? $\\ce{Al^3+ + n e- -> Al}$",
+        "choices": [
+          "1",
+          "2",
+          "4",
+          "3"
+        ],
+        "answer": 3,
+        "working": "The right-hand side has no charge. The ion is 3+, so 3 electrons bring the left-hand side to zero."
+      }
+    ]
+  },
+  "cx-2-1": {
+    "lessonId": "cx-2-1",
+    "title": "Purity, Formulations and Tests for Gases",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pure substances",
+        "t": 25.223
+      },
+      {
+        "title": "Melting points and purity",
+        "t": 61.009
+      },
+      {
+        "title": "Formulations",
+        "t": 102.643
+      },
+      {
+        "title": "Tests for four gases",
+        "t": 131.466
+      },
+      {
+        "title": "Your turn",
+        "t": 173.688
+      },
+      {
+        "title": "Summary",
+        "t": 206.178
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-2-1:q",
+        "t": 184.513,
+        "prompt": "Magnesium ribbon fizzes in dilute hydrochloric acid. Which test identifies the gas?",
+        "choices": [
+          "A glowing splint relights",
+          "A burning splint gives a squeaky pop",
+          "Limewater turns milky",
+          "Damp litmus paper is bleached"
+        ],
+        "answer": 1,
+        "working": "A metal and an acid give a salt and hydrogen, and the test for hydrogen is a burning splint."
+      }
+    ]
+  },
+  "cx-2-2": {
+    "lessonId": "cx-2-2",
+    "title": "Identifying Ions: Flame Tests and Precipitates",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Flame tests",
+        "t": 24.319
+      },
+      {
+        "title": "Precipitates with sodium hydroxide",
+        "t": 56.47
+      },
+      {
+        "title": "Tests for negative ions",
+        "t": 109.911
+      },
+      {
+        "title": "A common mistake",
+        "t": 144.141
+      },
+      {
+        "title": "Your turn",
+        "t": 174.701
+      },
+      {
+        "title": "Summary",
+        "t": 214.164
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-2-2:q",
+        "t": 189.752,
+        "prompt": "A white solid gives a yellow flame. Its solution, with dilute hydrochloric acid and then barium chloride, gives a white precipitate. What is it?",
+        "choices": [
+          "Potassium sulfate",
+          "Sodium chloride",
+          "Sodium carbonate",
+          "Sodium sulfate"
+        ],
+        "answer": 3,
+        "working": "A yellow flame shows sodium ions. A white precipitate with barium chloride shows sulfate ions."
+      }
+    ]
+  },
   "e5-1-1": {
     "lessonId": "e5-1-1",
     "title": "Story Elements: Characters, Setting and Plot",
