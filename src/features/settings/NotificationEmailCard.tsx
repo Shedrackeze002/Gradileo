@@ -47,7 +47,7 @@ export function NotificationEmailCard() {
   }
 
   const waiting = state?.pendingEmail;
-  const showForm = state && (!state.email || editing) && !waiting;
+  const showForm = state && !state.waitingForClass && (!state.email || editing) && !waiting;
 
   return (
     <Card>
@@ -59,6 +59,7 @@ export function NotificationEmailCard() {
       <CardBody className="space-y-4 pt-4">
         {demo && <p className="text-sm text-ink-3">The demo sends no email: the code is always {DEMO_EMAIL_CODE}.</p>}
         {!state && <p className="text-sm text-ink-3">Loading…</p>}
+        {state?.waitingForClass && <p className="text-sm text-ink-3">You can add an email address once your teacher has let you into the class.</p>}
 
         {state?.email && !editing && !waiting && (
           <div className="flex flex-wrap items-center justify-between gap-3">

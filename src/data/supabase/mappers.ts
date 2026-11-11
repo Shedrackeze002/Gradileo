@@ -27,7 +27,7 @@ import type {
   Submission,
 } from '../types.ts';
 import { parsePages } from '@/lib/ink.ts';
-import { cleanIntegrity } from '@engine/integrity.ts';
+import { storedIntegrity } from '@engine/integrity.ts';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Row = Record<string, any>;
@@ -187,7 +187,7 @@ export const toSubmission = (r: Row): Submission => ({
   late: r.late,
   feedback: r.feedback,
   // The server's "reopened, not opened yet" mark is kept for display; the player cleans it away before saving.
-  integrity: { ...cleanIntegrity(r.integrity), ...(r.integrity?.awaitingStart === true ? { awaitingStart: true } : {}) },
+  integrity: storedIntegrity(r.integrity),
   masteryChanges: r.mastery_changes ?? undefined,
   reopenedAt: r.reopened_at ?? null,
 });

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { CameraOff, ChevronLeft, ChevronRight, Clock, Eye, Lightbulb, RotateCcw, Send, ShieldCheck, Sparkles } from 'lucide-react';
 import { isQuestionType, itemFromRef, rubricOf } from '@engine/assemble.ts';
-import { cameraOffCount, exitCount } from '@engine/integrity.ts';
+import { cameraOffCount, exitCount, overtimeLabel } from '@engine/integrity.ts';
 import { markSteps, type MarkResult, type MarkSuggestion } from '@engine/ai/marking.ts';
 import { levelName, rubricScore01, type RubricCriterion, type RubricLevels } from '@engine/rubric.ts';
 import { api } from '@/data/index.ts';
@@ -190,6 +190,7 @@ function Review() {
                 </div>
               )}
             </dl>
+            {!!s.integrity.overtimeSeconds && <p className="mt-3 text-sm font-medium text-warn-ink">Submitted {overtimeLabel(s.integrity.overtimeSeconds)} after the time limit ended.</p>}
             {a.data?.settings.lockdown && (s.integrity.events?.length ?? 0) > 0 && (
               <details className="mt-3 text-sm">
                 <summary className="cursor-pointer font-medium text-brand">Exam mode record</summary>

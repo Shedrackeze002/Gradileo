@@ -13,6 +13,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
+  const [resent, setResent] = useState<string | null>(null);
   const { setUser } = useAuth();
   const navigate = useNavigate();
   const [params] = useSearchParams();
@@ -21,6 +22,7 @@ export default function LoginPage() {
   const go = async (id: string, pw: string, key: string) => {
     setBusy(key);
     setError(null);
+    setResent(null);
     try {
       const u = await api().signIn(id, pw);
       setUser(u);
@@ -28,6 +30,21 @@ export default function LoginPage() {
       // Only pages in the app: the signed-in area, a teacher's presentation, or (for a student) back to a class link.
       const ok = !!next && (next.startsWith(u.role === 'teacher' ? '/t' : '/s') || (u.role === 'teacher' && next.startsWith('/present/')) || (u.role === 'student' && /^\/join\/[A-Za-z0-9]{4,12}$/.test(next)));
       navigate(ok ? next : u.role === 'teacher' ? '/t' : '/s', { replace: true });
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const unconfirmed = !!error && /not confirmed/i.test(error) && identifier.includes('@');
+
+  const resend = async () => {
+    setBusy('resend');
+    try {
+      await api().resendConfirmation(identifier);
+      setResent(identifier.trim());
+      setError(null);
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -60,8 +77,29 @@ export default function LoginPage() {
         }}
       >
         <Input label="Email or username" autoComplete="username" value={identifier} onChange={(e) => setIdentifier(e.target.value)} required placeholder="you@school.ca or amara.o" />
-        <Input label="Password" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        {error && <p className="rounded-xl bg-bad-soft px-3 py-2 text-sm text-bad-ink">{error}</p>}
+        <div>
+          <Input label="Password" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <p className="mt-1.5 text-right text-sm">
+            <Link to={identifier.includes('@') ? `/forgot-password?email=${encodeURIComponent(identifier.trim())}` : '/forgot-password'} className="font-medium text-brand hover:underline">
+              Forgot password?
+            </Link>
+          </p>
+        </div>
+        {error && (
+          <div className="rounded-xl bg-bad-soft px-3 py-2 text-sm text-bad-ink">
+            <p>{unconfirmed ? 'Your email address is not confirmed yet. Open the link in the email we sent when you signed up.' : error}</p>
+            {unconfirmed && (
+              <button type="button" className="mt-1 font-semibold underline disabled:opacity-60" disabled={busy === 'resend'} onClick={() => void resend()}>
+                {busy === 'resend' ? 'Sending…' : 'Send the confirmation email again'}
+              </button>
+            )}
+          </div>
+        )}
+        {resent && (
+          <p className="rounded-xl bg-good-soft px-3 py-2 text-sm text-good-ink" role="status">
+            We sent the confirmation email again to {resent}. Open its link, then sign in here.
+          </p>
+        )}
         <Button type="submit" className="w-full" size="lg" loading={busy === 'form'}>
           Sign in <ArrowRight className="h-4 w-4" />
         </Button>

@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { ArrowUpDown, BellRing, CalendarPlus, CameraOff, ChevronRight, Download, Eye, Lightbulb, Lock, MoreHorizontal, Pencil, Send, Sparkles, Trash2, Type, Wand2 } from 'lucide-react';
 import { TYPE_LABEL, gradeSubmission, isQuestionType } from '@engine/assemble.ts';
-import { cameraOffCount, exitCount, isLocked } from '@engine/integrity.ts';
+import { cameraOffCount, exitCount, isLocked, overtimeLabel } from '@engine/integrity.ts';
 import { SkillsGate } from '@/components/SkillsGate.tsx';
 import { refSkillIds } from '@/lib/useSkills.ts';
 import { api } from '@/data/index.ts';
@@ -568,12 +568,18 @@ function SkillBreakdown({ a, rows, classId }: { a: Assignment; rows: RosterRow[]
 export function IntegrityBadges({ s, examMode }: { s: Submission | null; examMode: boolean }) {
   if (!s) return null;
   const i = s.integrity;
+  const overtime = i.overtimeSeconds ? <Badge tone="warn">{overtimeLabel(i.overtimeSeconds)} over the time limit</Badge> : null;
   if (!examMode)
-    return i.blurCount >= 3 ? (
-      <Badge tone="info" icon={<Eye className="h-3 w-3" />}>
-        Left tab {i.blurCount}×
-      </Badge>
-    ) : null;
+    return (
+      <>
+        {i.blurCount >= 3 && (
+          <Badge tone="info" icon={<Eye className="h-3 w-3" />}>
+            Left tab {i.blurCount}×
+          </Badge>
+        )}
+        {overtime}
+      </>
+    );
   const exits = exitCount(i);
   const camera = cameraOffCount(i);
   return (
@@ -589,6 +595,7 @@ export function IntegrityBadges({ s, examMode }: { s: Submission | null; examMod
         </Badge>
       )}
       {i.autoSubmitted && <Badge tone="bad">Submitted automatically</Badge>}
+      {overtime}
     </>
   );
 }

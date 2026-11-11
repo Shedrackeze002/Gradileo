@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { getCourse } from '@engine/curriculum/index.ts';
 import { emptySkillState, type SkillState } from '@engine/mastery.ts';
-import { selfPacedLessons } from './derive.ts';
+import { heldUntilDue, resultsVisible, selfPacedLessons } from './derive.ts';
 
 const proficient = (skillId: string): SkillState => ({ ...emptySkillState(skillId), level: 'proficient', pKnown: 0.9, attempts: 6 });
 
@@ -30,5 +30,22 @@ describe('self-paced lessons', () => {
 
   it('returns nothing for an unknown course', () => {
     expect(selfPacedLessons('math-0', new Map())).toEqual({ next: undefined, taught: [] });
+  });
+});
+
+describe('results held until the due date', () => {
+  const exam = (dueAt: string | null) => ({ settings: { feedback: 'after_due' }, dueAt }) as unknown as Parameters<typeof resultsVisible>[0];
+
+  it('holds results until the due date has passed', () => {
+    const a = exam('2026-11-12T19:00:00Z');
+    expect(heldUntilDue(a)).toBe(true);
+    expect(resultsVisible(a, new Date('2026-11-12T18:00:00Z'))).toBe(false);
+    expect(resultsVisible(a, new Date('2026-11-12T19:00:01Z'))).toBe(true);
+  });
+
+  it('shows results after submission when there is no due date to wait for', () => {
+    const a = exam(null);
+    expect(heldUntilDue(a)).toBe(false);
+    expect(resultsVisible(a)).toBe(true);
   });
 });

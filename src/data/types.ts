@@ -17,6 +17,8 @@ export interface NotificationEmail {
   email: string | null;
   /** An address waiting for the code sent to it. */
   pendingEmail: string | null;
+  /** A student who joined by class link and is not in the class yet cannot add an address. */
+  waitingForClass?: boolean;
 }
 
 export interface Profile {

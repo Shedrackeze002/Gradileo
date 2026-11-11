@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, ChevronDown, ChevronRight, Search } from 'lucide-react';
 import { getCourse } from '@engine/curriculum/index.ts';
+import { levelIn } from '@engine/curricula.ts';
 import { TOPICS, TOPIC_SUBJECTS, topicLessons, topicLevel, type Topic, type TopicLesson } from '@engine/topics.ts';
 import { useStartSelfPaced } from '@/data/hooks.ts';
 import { useMe } from '@/features/auth/AuthProvider.tsx';
@@ -91,6 +92,8 @@ export default function TopicsPage() {
               <section key={g.courseId} aria-label={getCourse(g.courseId)?.title}>
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-ink-3">
                   {getCourse(g.courseId)?.shortTitle}
+                  {/* A course is named by its Canadian grade; say which year that is where the learner lives. */}
+                  {courseLevel(g.courseId, me.curriculum) && <span className="ml-2 font-normal normal-case tracking-normal">({courseLevel(g.courseId, me.curriculum)})</span>}
                   {!g.lessons.some((l) => mine.has(l.lessonId)) && <span className="ml-2 font-normal normal-case tracking-normal">· opens as a self-paced course</span>}
                 </h3>
                 <ul className="mt-1.5 space-y-1">
@@ -141,4 +144,9 @@ export default function TopicsPage() {
       )}
     </div>
   );
+}
+
+function courseLevel(courseId: string, curriculum: string | null | undefined): string | undefined {
+  const grade = getCourse(courseId)?.grade;
+  return typeof grade === 'number' ? levelIn(curriculum, grade) : undefined;
 }

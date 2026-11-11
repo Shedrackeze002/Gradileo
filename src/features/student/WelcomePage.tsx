@@ -26,8 +26,8 @@ import { CourseRequestCard } from '@/features/requests/CourseRequestCard.tsx';
 
 const PLANS: Array<[Plan, string]> = [
   ['university-stem', 'University: science, engineering, health or mathematics'],
-  ['university-other', 'University: arts, business, education or another program'],
-  ['college-trades', 'College, a technical program or a trade'],
+  ['university-other', 'University: arts, business, education or another subject'],
+  ['college-trades', 'College, a technical course or a trade'],
   ['work', 'Straight into work'],
   ['not-sure', 'Not sure yet'],
 ];
@@ -43,8 +43,15 @@ function gradesOf(subject: string, curriculum?: string) {
   const courses = [...mappedCourses(curriculum), ...COURSES].filter((c) => c.subject === subject);
   return [...new Set(courses.map((c) => c.grade))].sort((a, b) => a - b).map((grade) => ({ grade, courses: courses.filter((c) => c.grade === grade) }));
 }
-/** The first level a student can say they are at: Grade 5 for mathematics, Grade 9 for chemistry and English. */
-const firstGrade = (subject: string) => (subject === 'Mathematics' ? 5 : 9);
+/**
+ * The first level a student can say they are at: the grade of the subject's youngest course
+ * (Grade 5 for mathematics and English), and a year before it for chemistry, which starts at Grade 10.
+ */
+const firstGrade = (subject: string) => {
+  const grades = COURSES.filter((c) => c.subject === subject).map((c) => c.grade);
+  const youngest = grades.length ? Math.min(...grades) : 5;
+  return subject === 'Chemistry' ? youngest - 1 : youngest;
+};
 
 /** The learner's time zone, for a first guess at where they go to school. */
 const timeZone = () => {

@@ -12,6 +12,7 @@ import { skillInfo } from '@engine/curriculum/index.ts';
 import { SkillsGate } from '@/components/SkillsGate.tsx';
 import { refSkillIds } from '@/lib/useSkills.ts';
 import { api } from '@/data/index.ts';
+import { heldUntilDue } from '../shared/derive.ts';
 import { useAssignment, useSubmit } from '@/data/hooks.ts';
 import type { Submission } from '@/data/types.ts';
 import { useMe } from '@/features/auth/AuthProvider.tsx';
@@ -179,7 +180,7 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
       await submitM.mutateAsync({ submissionId: submission.id, responses, items, integrity: finalIntegrity ?? integrity });
       endExamMode(submission.id);
       await qc.invalidateQueries({ queryKey: ['submissions'] });
-      toast({ kind: 'success', title: 'Submitted!', body: instant || assignment.settings.feedback === 'after_submit' ? 'Your results are ready.' : 'Results will appear after the due date.' });
+      toast({ kind: 'success', title: 'Submitted!', body: heldUntilDue(assignment) ? 'Results will appear after the due date.' : 'Your results are ready.' });
       navigate(`/s/work/${assignment.id}`, { replace: true });
     } catch (e) {
       done.current = false;
@@ -204,15 +205,31 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
     const t = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(t);
   }, [limitMs]);
-  const remaining = limitMs ? new Date(submission.startedAt).getTime() + limitMs - now : null;
+  // The attempt's start time is the server's, so count down against the server's clock: a device
+  // clock that is wrong would otherwise give extra time or end the attempt early.
+  const [clockOffset, setClockOffset] = useState<number | null>(limitMs ? null : 0);
+  useEffect(() => {
+    if (!limitMs) return;
+    let alive = true;
+    const sent = Date.now();
+    api()
+      .serverNow()
+      .then((t) => alive && setClockOffset(Number.isFinite(t) ? Math.round(t - (sent + Date.now()) / 2) : 0))
+      .catch(() => alive && setClockOffset(0));
+    return () => {
+      alive = false;
+    };
+  }, [limitMs]);
+  const remaining = limitMs ? new Date(submission.startedAt).getTime() + limitMs - (now + (clockOffset ?? 0)) : null;
   const autoSubmitted = useRef(false);
   useEffect(() => {
+    if (clockOffset === null) return; // wait for the server's clock before ending an attempt
     if (remaining !== null && remaining <= 0 && !autoSubmitted.current) {
       autoSubmitted.current = true;
       toast({ kind: 'info', title: 'Time is up', body: 'Your answers were submitted automatically.' });
       void doSubmit();
     }
-  }, [remaining, doSubmit, toast]);
+  }, [remaining, clockOffset, doSubmit, toast]);
 
   if (!item) return <PageSpinner />;
 
@@ -383,9 +400,22 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
           <p className="hidden flex-1 text-center text-xs text-ink-3 sm:block">{last ? `Submitting ends this ${label}.` : 'Your answers save automatically.'}</p>
           <div className="flex-1 sm:hidden" />
           {instant && !checked && !isManual ? (
-            <Button size="lg" onClick={check} disabled={!answered(idx)}>
-              Check answer
-            </Button>
+            <>
+              {/* A student who cannot answer must still be able to move on (or finish) from here. */}
+              {!answered(idx) &&
+                (last ? (
+                  <Button variant="secondary" size="lg" icon={<Send className="h-4 w-4" />} onClick={() => setConfirm(true)}>
+                    Finish
+                  </Button>
+                ) : (
+                  <Button variant="secondary" size="lg" onClick={() => go(1)}>
+                    Skip for now <ArrowRight className="h-4 w-4" />
+                  </Button>
+                ))}
+              <Button size="lg" onClick={check} disabled={!answered(idx)}>
+                Check answer
+              </Button>
+            </>
           ) : last ? (
             <Button size="lg" icon={<Send className="h-4 w-4" />} onClick={() => setConfirm(true)}>
               Finish
@@ -425,7 +455,7 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
               You have <strong>{unanswered}</strong> unanswered question{unanswered > 1 ? 's' : ''}. Unanswered questions are marked incorrect.
             </p>
           ) : (
-            <p className="text-ink-2">You’ve answered every question. {assignment.settings.feedback === 'after_due' ? 'Results will be released after the due date.' : 'You’ll see your results right away.'}</p>
+            <p className="text-ink-2">You’ve answered every question. {heldUntilDue(assignment) ? 'Results will be released after the due date.' : 'You’ll see your results right away.'}</p>
           )}
           <p className="text-sm text-ink-3">Your answers are already saved as you go, so you only need to submit when you have finished. Choose Keep working to go back to your questions.</p>
         </div>

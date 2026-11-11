@@ -4,7 +4,7 @@ import { extractJson, validateInsight } from './parse.ts';
 import { minimaxChat, type MiniMaxConfig } from './minimax.ts';
 import { analyzeClass, analyzeStudent } from './heuristic.ts';
 import { buildClassContext, buildStudentContext, type AnalystInput } from './context.ts';
-import { allSkillInfos, COURSES } from '../curriculum/index.ts';
+import { allSkillInfos, COURSES, lessonById } from '../curriculum/index.ts';
 import type { InsightData } from './types.ts';
 
 export * from './types.ts';
@@ -32,6 +32,26 @@ function known(input: AnalystInput, defaultStudentId?: string) {
     lessonIds: new Set(COURSES.flatMap((c) => c.lessons.map((l) => l.id))),
     defaultStudentId,
   };
+}
+
+const ID_KEYS = new Set(['id', 'lessonId', 'skillId', 'skillIds', 'studentIds', 'actionId', 'type', 'status', 'scope', 'riskLevel']);
+
+/**
+ * The model sometimes names a lesson by its internal id ("reteach m10c-1-1"). A teacher reads the
+ * report, so every such id in its sentences becomes the lesson's title.
+ */
+export function nameLessons<T>(value: T): T {
+  if (typeof value === 'string') {
+    return value.replace(/\b[a-z][a-z0-9]*(?:-[a-z0-9]+)*-\d+-\d+\b/g, (id) => {
+      const title = lessonById(id)?.title;
+      return title ? `“${title}”` : id;
+    }) as unknown as T;
+  }
+  if (Array.isArray(value)) return value.map((v) => nameLessons(v)) as unknown as T;
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, ID_KEYS.has(k) ? v : nameLessons(v)])) as T;
+  }
+  return value;
 }
 
 /** "Amara Okafor" → "Amara O." */
@@ -62,7 +82,7 @@ export async function generateInsight(
       { role: 'user', content: p.user },
     ]);
     const data = validateInsight(extractJson(res.content), target.scope, known(input, target.scope === 'student' ? target.studentId : undefined));
-    return { data, source: 'minimax', model: res.model };
+    return { data: nameLessons(data), source: 'minimax', model: res.model };
   } catch (e) {
     return { data: offline(), source: 'offline', model: null, error: e instanceof Error ? e.message : String(e) };
   }

@@ -1,11 +1,14 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { CalendarClock, ChevronDown, ChevronRight, ClipboardPlus, FileText, Flame, Sparkles, Target, TrendingUp, XCircle } from 'lucide-react';
+import { CalendarClock, ChevronDown, ChevronRight, ClipboardPlus, FileText, Flame, KeyRound, Sparkles, Target, TrendingUp, XCircle } from 'lucide-react';
 import { getCourse, lessonById } from '@engine/curriculum/index.ts';
 import { reviewDue, summarize } from '@engine/mastery.ts';
 import { TYPE_LABEL, isQuestionType } from '@engine/assemble.ts';
 import { useAssignments, useClass, useEvents, useInsights, useMastery, useProfile, usePublications, useReportCards, useSubmissions } from '@/data/hooks.ts';
-import { Avatar, Badge, Button, Card, CardBody, CardHeader, EmptyState, PageHeader, PageSpinner, StatTile } from '@/components/ui/index.ts';
+import { Avatar, Badge, Button, Card, CardBody, CardHeader, EmptyState, Modal, PageHeader, PageSpinner, StatTile, useToast } from '@/components/ui/index.ts';
+import { api } from '@/data/index.ts';
+import { STUDENT_EMAIL_DOMAIN } from '@/config.ts';
+import type { NewStudentCredential } from '@/data/types.ts';
 import { MasteryBar, MasteryChip, MasteryLegend } from '@/components/mastery/Mastery.tsx';
 import { WeeklyAccuracyChart } from '@/components/mastery/WeeklyAccuracyChart.tsx';
 import { GenerateButton, InsightBody } from '@/features/ai/InsightReport.tsx';
@@ -81,6 +84,7 @@ export default function StudentProfile() {
         actions={
           <>
             <GenerateButton classId={classId} studentId={studentId} label="Analyse with AI" size="md" />
+            {p.username && !p.nameOnly && p.email.toLowerCase().endsWith(`@${STUDENT_EMAIL_DOMAIN}`) && <NewPassword classId={classId} studentId={studentId} name={p.fullName} />}
             <Button variant="secondary" icon={<FileText className="h-4 w-4" />} to={reports.data?.[0] ? `/t/c/${classId}/reports/${reports.data[0].id}` : `/t/c/${classId}/reports`}>
               Report card
             </Button>
@@ -239,5 +243,71 @@ export default function StudentProfile() {
         </div>
       </div>
     </div>
+  );
+}
+
+/** For a student who signs in with a username and forgot the password: the teacher makes a new temporary one. */
+function NewPassword({ classId, studentId, name }: { classId: string; studentId: string; name: string }) {
+  const [open, setOpen] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [made, setMade] = useState<NewStudentCredential | null>(null);
+  const toast = useToast();
+  const close = () => {
+    setOpen(false);
+    setMade(null);
+  };
+  const make = async () => {
+    setBusy(true);
+    try {
+      setMade(await api().resetStudentPassword(classId, studentId));
+    } catch (e) {
+      toast({ kind: 'error', title: 'Could not make a new password', body: (e as Error).message });
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <>
+      <Button variant="secondary" icon={<KeyRound className="h-4 w-4" />} onClick={() => setOpen(true)}>
+        New password
+      </Button>
+      <Modal
+        open={open}
+        onClose={close}
+        size="sm"
+        title={made ? 'New temporary password' : `Give ${name} a new password?`}
+        description={made ? 'This is the only time it is shown.' : 'The old password stops working at once.'}
+        footer={
+          made ? (
+            <Button onClick={close}>Done</Button>
+          ) : (
+            <>
+              <Button variant="secondary" onClick={close}>
+                Cancel
+              </Button>
+              <Button onClick={make} loading={busy}>
+                Make a new password
+              </Button>
+            </>
+          )
+        }
+      >
+        {made ? (
+          <dl className="space-y-3 text-sm">
+            <div>
+              <dt className="text-ink-3">Username</dt>
+              <dd className="mt-0.5 font-mono font-medium text-ink">{made.username}</dd>
+            </div>
+            <div>
+              <dt className="text-ink-3">Temporary password</dt>
+              <dd className="mt-0.5 font-mono font-medium text-ink">{made.password}</dd>
+            </div>
+            <p className="text-ink-3">The student can change it afterwards in Settings.</p>
+          </dl>
+        ) : (
+          <p className="text-sm text-ink-2">Use this when a student who signs in with a username has forgotten the password. You will see the new one once, to pass on.</p>
+        )}
+      </Modal>
+    </>
   );
 }

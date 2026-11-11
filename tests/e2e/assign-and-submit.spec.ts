@@ -143,6 +143,9 @@ test('accepted answers take commas, empty choices are left out, and an answer gi
   await page.goto(`/s/work/${assignmentId}`);
   await page.getByRole('button', { name: /^Start/ }).click();
   await page.waitForURL(/\/take$/);
+  // A student who cannot answer can still move on: the blank question offers a way past it.
+  await expect(page.getByRole('button', { name: 'Check answer' })).toBeDisabled();
+  await expect(page.getByRole('button', { name: /Skip for now/ })).toBeVisible();
   // Answer and leave at once with the X: the answer is saved, not lost with the pending autosave.
   await page.locator('main').getByRole('textbox').first().fill('The Hypotenuse');
   await page.getByRole('button', { name: 'Save and exit' }).click();
@@ -156,6 +159,9 @@ test('accepted answers take commas, empty choices are left out, and an answer gi
   // Only the two choices the teacher wrote are offered.
   await page.getByRole('button', { name: 'Question 2', exact: true }).click();
   await expect(page.getByRole('radio')).toHaveCount(2);
+  // On the last question, left blank, the way on is Finish.
+  await expect(page.getByRole('button', { name: /Skip for now/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Finish' })).toBeVisible();
 
   expect(errors).toEqual([]);
 });
