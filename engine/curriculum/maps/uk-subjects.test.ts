@@ -11,19 +11,25 @@ describe('the UK map’s chemistry and English courses', () => {
     const own = new Set([...LISTED_COURSES.filter((c) => c.subject === 'Chemistry'), more].flatMap((c) => c.lessons.map((l) => l.id)));
     for (const c of mappedCourses('uk').filter((c) => c.subject === 'Chemistry')) {
       for (const l of c.lessons) expect(own.has(l.id), `${c.id} ${l.id}`).toBe(true);
-      // GCSE Chemistry now teaches every topic of the specification; the A levels still list gaps.
-      if (c.id !== 'uk-gcse-chemistry') expect(c.gaps!.length, `${c.id} lists what it does not teach yet`).toBeGreaterThan(0);
+      // GCSE Chemistry and the first year of A level now teach every topic; Year 13 still lists gaps.
+      if (c.id === 'uk-a-level-chemistry-2') expect(c.gaps!.length, `${c.id} lists what it does not teach yet`).toBeGreaterThan(0);
     }
     const gcse = getCourse('uk-gcse-chemistry')!;
     expect(gcse.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Quantitative Chemistry', 'Chemical Changes', 'Organic Chemistry', 'Chemical Analysis']));
     // Gaps are filled from More Chemistry Topics, an extra course that no picker lists.
     expect(more.extra).toBe(true);
     expect(LISTED_COURSES).not.toContain(more);
-    for (const l of more.lessons) expect(gcse.lessons.some((x) => x.id === l.id), `GCSE Chemistry teaches ${l.id}`).toBe(true);
+    // Each More Chemistry lesson is filed in GCSE Chemistry (GCSE level, up to Grade 10) or in an A level course.
+    const alevel = ['uk-a-level-chemistry-1', 'uk-a-level-chemistry-2'].map((id) => getCourse(id)!);
+    for (const l of more.lessons) {
+      const home = (l.grade ?? 10) <= 10 ? [gcse] : alevel;
+      expect(home.some((c) => c.lessons.some((x) => x.id === l.id)), `${l.id} is filed in a course of its level`).toBe(true);
+    }
     expect(gcse.gaps).toEqual([]);
     // Outcome codes name the course a lesson comes from.
     expect(gcse.lessons.find((l) => l.id === 'c30-2-8')!.outcomes.every((o) => o.startsWith('Chemistry 12 '))).toBe(true);
-    expect(getCourse('uk-a-level-chemistry-1')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Amount of Substance', 'Bonding', 'Energetics']));
+    expect(getCourse('uk-a-level-chemistry-1')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Amount of Substance', 'Bonding', 'Energetics', 'Group 7, the Halogens', 'Organic Analysis']));
+    expect(getCourse('uk-a-level-chemistry-1')!.gaps).toEqual([]);
     expect(getCourse('uk-a-level-chemistry-2')!.units.map((u) => u.title)).toContain('Acids and Bases');
   });
 

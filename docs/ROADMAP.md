@@ -791,6 +791,14 @@ items ship or decisions change.
      under its own units, adding a Spoken Language unit, so **GCSE English Language** now has 41
      lessons and **no gaps**. Next: GCSE English Literature's nineteenth-century novels, then
      A level Chemistry.
+   - Built (11 November 2026), step 3, **A level Chemistry Year 12 complete**: More Chemistry
+     Topics gains three A level units, twelve lessons and 24 question generators
+     (`chemmore/gen/atoms12.ts`, `inorganic12.ts`, `organic12.ts`). Unit 7: time of flight mass
+     spectrometry, electron configurations and ionisation energies, dative bonds and the
+     Maxwell–Boltzmann distribution. Unit 8: Period 3, Group 2 and Group 7. Unit 9: reaction
+     mechanisms, halogenoalkanes and ozone, E–Z isomerism, alcohols and organic analysis. The Year
+     12 map files them under its units, adding Periodicity, Group 2, Group 7, Alcohols and Organic
+     Analysis, so **A level Chemistry Year 12** has **no gaps**. Next: the 15 Year 13 gaps.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1
