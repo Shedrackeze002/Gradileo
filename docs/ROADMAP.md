@@ -732,8 +732,18 @@ items ship or decisions change.
      (Unit 3). **GCSE Chemistry** now has 50 lessons and lists 10 gaps, down from 16 (the
      atmosphere, using resources, the Haber process, fuel cells, the history of the atom, the
      transition metals and the forms of carbon remain), and **A level Chemistry Year 12** lists
-     12, down from 13. The new lessons have no videos or tutor recordings yet. Next: the GCSE
-     English Language gaps, then the rest of GCSE Chemistry.
+     12, down from 13. The new lessons have no videos or tutor recordings yet.
+   - Built (11 November 2026), step 3, the first English gaps filled: **More English Topics**
+     (`engine/curriculum/engmore/`, `eng-more`, lesson ids `ex-…`), the same kind of course for
+     English. Four lessons in two units, with 8 question generators: evaluating a statement about
+     a text ("how far do you agree?"), summarising the differences between two texts, comparing
+     two writers' viewpoints and methods, and writing an article, a formal letter and a speech.
+     Its texts (five pairs of a modern and a nineteenth-century source, and five fiction
+     extracts) were written for the lessons, so nothing depends on a text in copyright. **GCSE
+     English Language** now has 37 lessons and lists 4 gaps, down from 8 (nineteenth-century
+     non-fiction, descriptive writing from a picture, spelling and spoken language remain). The
+     new lessons have no videos or tutor recordings yet. Next: the rest of GCSE Chemistry (the
+     atmosphere, using resources), then GCSE English Literature's nineteenth-century novel.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1
