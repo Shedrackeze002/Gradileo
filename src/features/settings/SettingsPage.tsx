@@ -3,11 +3,12 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Bell, Database, KeyRound, Monitor, Moon, Palette, RefreshCcw, Sun, UserRound } from 'lucide-react';
 import { api, demoApi, setDemoBackend } from '@/data/index.ts';
 import { qk } from '@/data/hooks.ts';
-import { SUPABASE_CONFIGURED } from '@/config.ts';
+import { STUDENT_EMAIL_DOMAIN, SUPABASE_CONFIGURED } from '@/config.ts';
 import { useAuth, useMe } from '@/features/auth/AuthProvider.tsx';
 import { Avatar, Badge, Button, Card, CardBody, CardHeader, Input, PageHeader, useToast } from '@/components/ui/index.ts';
 import { useTheme } from '@/lib/theme.ts';
 import { cn } from '@/lib/cn.ts';
+import { NotificationEmailCard } from './NotificationEmailCard.tsx';
 
 const COLORS = ['#6a43e3', '#2a78d6', '#0e8a6a', '#c2410c', '#be185d', '#7c3aed', '#0f766e', '#b45309', '#4338ca', '#475569'];
 
@@ -24,6 +25,8 @@ export default function SettingsPage() {
   const [busy, setBusy] = useState<string | null>(null);
   const [perm, setPerm] = useState<NotificationPermission | 'unsupported'>(() => ('Notification' in window ? Notification.permission : 'unsupported'));
   const demo = demoApi();
+  // A username from the teacher, or a class-link account: no email address of their own.
+  const noEmail = me.role === 'student' && (!!me.nameOnly || !!me.username || me.email.toLowerCase().endsWith(`@${STUDENT_EMAIL_DOMAIN}`));
 
   useEffect(() => {
     setName(me.fullName);
@@ -134,6 +137,8 @@ export default function SettingsPage() {
           )}
         </CardBody>
       </Card>
+
+      {noEmail && <NotificationEmailCard />}
 
       <Card>
         <CardHeader title="Password" icon={<KeyRound className="h-5 w-5" />} />

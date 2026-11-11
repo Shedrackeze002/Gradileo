@@ -19,7 +19,7 @@ work authoritatively. This keeps the server and the student's screen in exact ag
                  │  pg_cron: send_due_reminders() every 5 min, email delivery         │
                  │  Edge Functions (Deno, engine copied in by scripts/sync-engine):   │
                  │    grade-submission · ai-agent · ai-tutor · create-students ·      │
-                 │    send-emails · admin-users · join-class                          │
+                 │    send-emails · admin-users · join-class · notify-email           │
                  └──────────────┬───────────────────────────────┬────────────────────┘
                                 │                               │
                          MiniMax chat API                  Resend email API
@@ -169,7 +169,7 @@ them from the map's tab. Lesson content, practice, videos and tutor recordings a
 or skill id, so they need nothing new; `loadCourseSkills` loads a mapped course's generators from
 the courses its lessons come from, and `courseLesson(courseId, lessonId)` gives a lesson as the
 class's course numbers it. The maps are `us.ts` (US Common Core, Grade 6 to Precalculus) and `uk.ts` (UK GCSE,
-Foundation and Higher). To add a map, write its file next to them, add it to
+Foundation and Higher, and A level Mathematics, Years 12 and 13). To add a map, write its file next to them, add it to
 `CURRICULUM_MAPS`, give each course a `PREREQUISITE`, and run `npm test` (the map tests check every
 lesson id). A gap is filled with a lesson in **More Mathematics Topics** (`engine/curriculum/mathmore/`,
 `math-more`, lesson ids `mx-…`): a course of the lessons the maps need that Gradileo's grade courses

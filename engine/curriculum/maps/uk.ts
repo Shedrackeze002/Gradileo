@@ -1,14 +1,24 @@
 /**
- * UK GCSE Mathematics, as schools in England teach it in Years 10 and 11: the Foundation and Higher
- * tiers. Each unit points to the Gradileo lessons that teach its part of the GCSE subject content,
- * with the content references (N number, A algebra, R ratio and proportion, G geometry and measures,
- * P probability, S statistics) in its description, in the order a typical scheme of work meets them.
+ * UK mathematics as schools in England teach it.
+ *
+ * GCSE Mathematics in Years 10 and 11: the Foundation and Higher tiers. Each unit points to the
+ * Gradileo lessons that teach its part of the GCSE subject content, with the content references
+ * (N number, A algebra, R ratio and proportion, G geometry and measures, P probability, S statistics)
+ * in its description, in the order a typical scheme of work meets them.
+ *
+ * A level Mathematics in Years 12 and 13: the first year (the AS content) and the second. Each unit
+ * names the content areas of the A level subject content it covers (A proof, B algebra and
+ * functions, C coordinate geometry, D sequences and series, E trigonometry, F exponentials and
+ * logarithms, G differentiation, H integration, I numerical methods, J vectors, K sampling, L data
+ * presentation, M probability, N distributions, O hypothesis testing, P units in mechanics,
+ * Q kinematics, R forces and Newton's laws, S moments), in the order a two-year scheme of work
+ * meets them. Further Mathematics is not mapped yet.
  */
 import type { CurriculumMap } from './build.ts';
 
 export const UK_MAP: CurriculumMap = {
   curriculum: 'uk',
-  name: 'UK GCSE',
+  name: 'UK GCSE and A level',
   courses: [
     {
       id: 'uk-gcse-foundation',
@@ -75,6 +85,96 @@ export const UK_MAP: CurriculumMap = {
         { title: 'Statistics', description: 'Sampling, averages, box plots and the interquartile range, scatter graphs, two-way tables and charts, histograms, and cumulative frequency graphs (S1–S6).', members: ['m9-10-1', 'm9-10-2', 'm7-10-1', 'mx-1-2', 'm10c-7-5', 'mx-1-5', 'm203-8-1', 'mx-11-2', 'mx-11-3'] },
       ],
       gaps: [],
+    },
+    {
+      id: 'uk-a-level-year-1',
+      title: 'A level Mathematics: Year 12 (UK)',
+      shortTitle: 'A level Year 12',
+      grade: 11,
+      description: 'The first year of A level Mathematics (the AS content): proof, algebra and functions, coordinate geometry, the binomial expansion, trigonometry, exponentials and logarithms, differentiation, integration and vectors, with statistics and mechanics, in the order of a two-year scheme of work.',
+      units: [
+        { title: 'Proof', description: 'Conjectures, proof by deduction, and disproof by counterexample (A).', members: ['m202-1-1', 'm202-1-3', 'm202-1-2'] },
+        { title: 'Indices and Surds', description: 'The laws of indices for negative and fractional indices, simplifying surds, and rationalizing the denominator (B).', members: ['m10c-3-5', 'm10c-3-6', 'm10c-3-4', 'm201-5-1', 'm201-5-2'] },
+        { title: 'Quadratics', description: 'Quadratic functions and their graphs, completing the square, the quadratic formula, and the discriminant (B).', members: ['m201-3-1', 'm201-3-2', 'm201-3-3', 'm201-4-2', 'm201-4-3', 'm201-4-4'] },
+        { title: 'Equations and Inequalities', description: 'Simultaneous equations, one linear and one quadratic, and linear and quadratic inequalities with their regions (B).', members: ['m201-8-1', 'm201-8-2', 'm201-9-1', 'm201-9-2', 'm201-9-3'] },
+        { title: 'Graphs and Transformations', description: 'Cubic, quartic and reciprocal graphs, proportion, and translations, stretches and reflections of graphs (B).', members: ['m301-3-1', 'm301-3-4', 'm201-7-4', 'mx-9-1', 'm301-1-1', 'm301-1-2', 'm301-1-3'] },
+        { title: 'Straight-Line Graphs', description: 'Gradients, the equations of straight lines, parallel and perpendicular lines, and straight-line models (C).', members: ['m10c-6-3', 'm10c-7-1', 'm10c-7-2', 'm10c-7-3', 'm10c-7-4', 'm10c-6-5'] },
+        { title: 'Circles', description: 'The equation of a circle, completing the square to find its centre and radius, and chords and tangents (C).', members: ['mx-3-4', 'm9-8-1', 'm9-8-3'] },
+        { title: 'Algebraic Methods', description: 'Algebraic division, the remainder theorem and the factor theorem (B).', members: ['m301-3-2', 'm301-3-3'] },
+        { title: 'The Binomial Expansion', description: 'Combinations and the binomial expansion of (a + b)ⁿ for a positive whole number n (D).', members: ['m301-9-3', 'm301-9-4'] },
+        { title: 'Trigonometric Ratios', description: 'The trigonometric ratios of any angle, the sine rule and its ambiguous case, and the cosine rule (E).', members: ['m201-2-1', 'm201-2-2', 'm201-2-3', 'm201-2-4', 'm201-2-5'] },
+        { title: 'Trigonometric Identities and Equations', description: 'The graphs of sine, cosine and tangent, tan θ = sin θ / cos θ and sin² θ + cos² θ = 1, and solving trigonometric equations in a given interval (E).', members: ['mx-8-4', 'm301-4-4', 'm301-6-1', 'm301-6-4'] },
+        { title: 'Vectors', description: 'Vectors in two dimensions: magnitude and direction, and adding and scaling vectors (J).', members: ['mx-5-1'] },
+        { title: 'Differentiation', description: 'The gradient of a curve, differentiation from first principles, differentiating xⁿ, tangents and normals, and increasing and decreasing functions and stationary points (G).', members: ['m31-3-1', 'm31-3-2', 'm31-4-1', 'm31-6-1', 'm31-6-2'] },
+        { title: 'Integration', description: 'Integrating xⁿ, definite integrals and the area under a curve (H).', members: ['m31-8-1', 'm31-8-3'] },
+        { title: 'Exponentials and Logarithms', description: 'Exponential functions, e and ln x, the laws of logarithms, solving aˣ = b, and exponential models (F).', members: ['m301-7-1', 'm301-7-4', 'm301-7-6', 'm301-7-3', 'm301-7-7', 'm31-1-2', 'm302-6-4'] },
+        { title: 'Data Collection', description: 'Populations and samples, and sampling methods (K).', members: ['m9-10-1', 'm9-10-2', 'mx-1-6'] },
+        { title: 'Measures of Location and Spread', description: 'Averages, the interquartile range and percentiles, and variance and standard deviation (L).', members: ['m303-6-1', 'm303-6-3', 'mx-1-2', 'm202-5-1'] },
+        { title: 'Representations of Data', description: 'Histograms, cumulative frequency, box plots, and scatter diagrams with regression lines (L).', members: ['mx-11-2', 'mx-11-3', 'm10c-7-5'] },
+        { title: 'Probability', description: 'Venn diagrams, mutually exclusive and independent events, and tree diagrams (M).', members: ['m302-1-2', 'm302-3-3', 'm8-10-2', 'm302-3-4'] },
+        { title: 'Kinematics', description: 'Displacement, velocity and acceleration, distance–time and velocity–time graphs, and calculus for motion in a straight line (Q).', members: ['mx-8-3', 'm31-6-4'] },
+      ],
+      gaps: [
+        'Proof by exhaustion',
+        'The area of a triangle as ½ab sin C',
+        'Using logarithmic graphs to find the constants in y = axⁿ and y = kbˣ',
+        'Quota and opportunity sampling',
+        'Coding, and the variance and standard deviation from Σx and Σx²',
+        'Finding outliers with the 1.5 × IQR rule, and cleaning data',
+        'Discrete random variables and their probability distributions',
+        'The binomial distribution',
+        'Hypothesis testing for the proportion of a binomial distribution',
+        'Quantities and units in mechanics (SI units, and modelling assumptions)',
+        'The constant acceleration formulae (suvat), including vertical motion under gravity',
+        'Forces and Newton’s laws of motion',
+        'Connected particles and pulleys',
+      ],
+    },
+    {
+      id: 'uk-a-level-year-2',
+      title: 'A level Mathematics: Year 13 (UK)',
+      shortTitle: 'A level Year 13',
+      grade: 12,
+      description: 'The second year of A level Mathematics: functions, sequences and series, radians and further trigonometry, parametric equations, further differentiation and integration, and numerical methods, with statistics and mechanics, in the order of a two-year scheme of work.',
+      units: [
+        { title: 'Algebraic Fractions', description: 'Simplifying and combining algebraic fractions, and equations with them (B).', members: ['m201-u6'] },
+        { title: 'Functions and Graphs', description: 'The modulus function and its equations, inverse and composite functions, combining functions, and combinations of transformations (B).', members: ['m201-7-1', 'm201-7-2', 'm201-7-3', 'm301-1-4', 'm301-8-4', 'm301-8-5', 'm301-1-3'] },
+        { title: 'Sequences and Series', description: 'Arithmetic and geometric sequences and series, and the sum to infinity of a convergent geometric series (D).', members: ['m201-u1'] },
+        { title: 'Radians', description: 'Radian measure, arc length and sector area, the unit circle, and exact values (E).', members: ['m301-4-1', 'm301-4-2', 'm301-4-3'] },
+        { title: 'Trigonometric Functions', description: 'The graphs of sine, cosine and tangent in radians and their transformations, and solving equations with them (E).', members: ['m301-5-1', 'm301-5-2', 'm301-5-3', 'm301-5-4'] },
+        { title: 'Trigonometry and Modelling', description: 'Secant, cosecant and cotangent, sec² θ = 1 + tan² θ, the compound and double angle formulae, proving identities, and solving equations with identities (E).', members: ['m301-6-1', 'm301-6-2', 'm301-6-3', 'm301-6-4'] },
+        { title: 'Parametric Equations', description: 'Curves given by parametric equations, and converting between parametric and Cartesian forms (C).', members: ['mx-6-4'] },
+        { title: 'Differentiation', description: 'Differentiating eˣ, ln x, aˣ, sin x and cos x, the product, quotient and chain rules, implicit differentiation and second derivatives, points of inflection, optimization, and connected rates of change (G).', members: ['m31-5-1', 'm31-5-2', 'm31-4-2', 'm31-4-3', 'm31-5-3', 'm31-6-3', 'm31-7-1', 'm31-7-2'] },
+        { title: 'Numerical Methods', description: 'Solving equations by iteration (I).', members: ['mx-8-2'] },
+        { title: 'Integration', description: 'Integration as the limit of a sum, integration by substitution, and the area between two curves (H).', members: ['m31-8-2', 'm31-8-4', 'm31-9-1'] },
+        { title: 'Conditional Probability', description: 'Set notation and Venn diagrams, and conditional probability with tree diagrams (M).', members: ['m302-1-1', 'm302-1-2', 'm302-3-4'] },
+        { title: 'The Normal Distribution', description: 'The normal distribution, standardizing with z-scores, and finding probabilities (N).', members: ['m202-5-2', 'm202-5-3'] },
+      ],
+      gaps: [
+        'Proof by contradiction (including the irrationality of √2 and the infinity of primes)',
+        'Partial fractions',
+        'Sigma notation, recurrence relations, and increasing, decreasing and periodic sequences',
+        'The binomial expansion of (1 + x)ⁿ for any rational n, and its validity',
+        'Small-angle approximations',
+        'The graphs of sec, cosec and cot, and arcsin, arccos and arctan with their domains and ranges',
+        'Writing a sin θ + b cos θ as R sin(θ ± α) or R cos(θ ± α)',
+        'Differentiating parametric equations, and differentiating sin x and cos x from first principles',
+        'Locating roots by a change of sign, and the Newton–Raphson method',
+        'The trapezium rule',
+        'Integration by parts',
+        'Integrating with partial fractions',
+        'Separable first-order differential equations and modelling with them',
+        'Vectors in three dimensions',
+        'The product moment correlation coefficient and testing it for significance',
+        'The inverse normal distribution, and the normal approximation to the binomial',
+        'Hypothesis testing for the mean of a normal distribution',
+        'Projectiles',
+        'Resolving forces, and forces in equilibrium',
+        'Friction and the coefficient of friction',
+        'Motion on an inclined plane, and connected particles with forces at an angle',
+        'Kinematics in two dimensions with vectors and calculus',
+        'Moments',
+      ],
     },
   ],
 };

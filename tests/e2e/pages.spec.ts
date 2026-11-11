@@ -139,7 +139,7 @@ test('a teacher starts a class on GCSE Higher, which teaches every topic, and op
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
-  await page.getByRole('tab', { name: 'UK GCSE' }).click();
+  await page.getByRole('tab', { name: 'UK GCSE and A level' }).click();
   const course = page.getByRole('button', { name: /^GCSE Mathematics: Higher \(UK\)/ });
   await course.click();
   await expect(course.getByText(/Not in Gradileo yet/)).toHaveCount(0);
@@ -151,6 +151,22 @@ test('a teacher starts a class on GCSE Higher, which teaches every topic, and op
   await expect(page.getByText('Histograms').first()).toBeVisible();
   await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/mx-11-3`);
   await expect(page.getByText('Cumulative Frequency').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a teacher starts a class on A level Year 13, which lists the topics Gradileo does not teach yet', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'UK GCSE and A level' }).click();
+  const course = page.getByRole('button', { name: /^A level Mathematics: Year 13 \(UK\)/ });
+  await course.click();
+  await expect(course.getByText(/Not in Gradileo yet/)).toBeVisible();
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
+  await expect(page.getByText('Trigonometry and Modelling').first()).toBeVisible();
+  await expect(page.getByText('Parametric Equations').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 

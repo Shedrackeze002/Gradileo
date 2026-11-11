@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      updated="November 10, 2026"
+      updated="November 11, 2026"
       intro={
         <>
           <p>
@@ -37,6 +37,13 @@ export default function PrivacyPage() {
           remembers them. A name-only account that the teacher never lets into the class is deleted automatically. For teacher accounts, we also keep whether the account has been approved. For a student who finds their
           own course, we keep where they go to school (the country or curriculum they choose), so their courses can follow it; their year and other
           answers to the course questions stay in their browser.
+        </p>
+        <p>
+          <strong>An email address for reminders (optional).</strong> A student whose account has no email address (a username from their teacher, or a
+          name-only account the teacher has let into a class) may add one in Settings, their own or a parent’s, so that reminders from classes whose
+          teacher turned on email reminders also arrive by email. We send a six-digit code to the address and use it only once the code is typed back.
+          We use the address only for those reminders. Teachers and other students cannot see it, and the student can change or remove it at any time
+          in Settings.
         </p>
         <p>
           <strong>Class information.</strong> The classes you teach or join, class settings, join requests (including any short message you add),

@@ -628,6 +628,24 @@ items ship or decisions change.
      gradients and areas under graphs in two parts), scripted and checked in stills, then rendered
      unit by unit (`mx-u7` to `mx-u11`), stored on Drive and handed to the YouTube uploads. The
      Tutor voice workflow records their tutor narration after the merge.
+   - Built (11 November 2026), step 3, the third map: **A level Mathematics, Years 12 and 13**
+     (in `engine/curriculum/maps/uk.ts`, under the tab now called "UK GCSE and A level"). The first
+     year (the AS content, 20 units) and the second (12 units) are built from Gradileo's lessons in
+     the order of a two-year scheme of work, with the A level content areas (A proof to S moments)
+     in each unit. A UK learner in Year 12 or 13 heading for university, or not sure, is offered the
+     year of A level on "Find your course", with a placement check on GCSE Higher or the first year;
+     teachers can start a class on either. Gaps it lists (36): proof by exhaustion and by
+     contradiction; partial fractions; sigma notation and recurrence relations; the binomial
+     expansion for rational n; ½ab sin C; small-angle approximations; sec, cosec and cot graphs and
+     the inverse trigonometric functions; R cos(θ ± α); logarithmic graphs for y = axⁿ and y = kbˣ;
+     parametric differentiation; change of sign, Newton–Raphson and the trapezium rule; integration
+     by parts and with partial fractions; differential equations; 3D vectors; quota and opportunity
+     sampling, coding and outliers; discrete random variables and the binomial distribution; the
+     inverse normal and the normal approximation; hypothesis tests (binomial, correlation, normal
+     mean) and the correlation coefficient; and all of mechanics beyond straight-line motion
+     (units, suvat, forces and Newton's laws, connected particles, projectiles, resolving forces,
+     friction, inclined planes, 2D kinematics, moments). Next: fill these gaps, mechanics and
+     statistics first, then the pure topics.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
@@ -977,7 +995,13 @@ items ship or decisions change.
   from Gradileo <no-reply@gradileo.com>, replies go to admin@gradileo.com, and each email says
   why it came. A migration makes the scheduler's secret inside the database. Owner-side (one
   pass, docs/SETUP.md 3.3): a Resend account with two keys, the GitHub secret `RESEND_API_KEY`,
-  Supabase's SMTP form for sign-in emails, Zone DNS Edit on the email token, then one run.
+  Supabase's SMTP form for sign-in emails, Zone DNS Edit on the email token, then one run. Live
+  since 10 November (test email arrived in the owner's inbox, not spam).
+- Email for students without one (11 November 2026, the owner's request): a student with a username
+  from the teacher, or a name-only account let into a class, can add an email address in Settings
+  (theirs or a parent's). It counts once the six-digit code sent to it is typed back (5 codes an
+  hour, 5 tries a code, 15 minutes each); reminders then go there, and it can be changed or removed.
+  Only the student sees it (`notification_emails`, the `notify-email` function).
 - Visitor counts (6 November 2026): Cloudflare reported 18,032 page views on gradileo.com in the
   month after it went live (13 October), but the zone's count includes bots, and Supabase had only
   8 accounts (1 teacher, 7 students, 6 of them since 13 October). Built: Cloudflare Web Analytics
