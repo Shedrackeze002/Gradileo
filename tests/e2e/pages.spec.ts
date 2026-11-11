@@ -168,8 +168,11 @@ test('a teacher starts a class on A level Year 13, which lists the topics Gradil
   await expect(page.getByText('Trigonometry and Modelling').first()).toBeVisible();
   await expect(page.getByText('Parametric Equations').first()).toBeVisible();
   await expect(page.getByText('Projectiles').first()).toBeVisible();
+  await expect(page.getByText('Regression, Correlation and Hypothesis Testing').first()).toBeVisible();
   await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/mx-13-6`);
   await expect(page.getByText('Beams in equilibrium').first()).toBeVisible();
+  await page.goto(page.url().replace(/mx-13-6$/, 'mx-15-1'));
+  await expect(page.getByText('Testing for correlation').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 

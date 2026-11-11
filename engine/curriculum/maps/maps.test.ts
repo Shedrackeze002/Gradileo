@@ -53,7 +53,11 @@ describe('curriculum maps', () => {
     expect(year1.units.map((u) => u.title)).toContain('Forces and Newton’s Laws');
     expect(year2.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Moments', 'Projectiles', 'Applications of Forces']));
     expect([...year1.gaps!, ...year2.gaps!].filter((g) => /mechanics|Newton’s laws|pulley|Projectile|friction|inclined|Moments|Kinematics/i.test(g))).toEqual([]);
-    expect(year1.gaps).toContain('The binomial distribution');
+    // Statistics is taught in both years too.
+    expect(year1.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Statistical Distributions', 'Hypothesis Testing']));
+    expect(year2.units.map((u) => u.title)).toContain('Regression, Correlation and Hypothesis Testing');
+    expect([...year1.gaps!, ...year2.gaps!].filter((g) => /sampling|binomial distribution|outliers|random variables|correlation|normal/i.test(g))).toEqual([]);
+    expect(year1.gaps).toContain('Proof by exhaustion');
     const uk = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'uk', plan: 'university-stem', feeling: 'ok', ...more });
     expect(uk(11).courseId).toBe('uk-a-level-year-1');
     expect(uk(11).prerequisite).toBe('uk-gcse-higher');

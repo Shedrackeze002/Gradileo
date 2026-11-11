@@ -75,7 +75,7 @@ export const s3 = (v: number) => (isNice(v) ? fmt(v) : fmtFixed(v, sfDecimals(v)
 export const eq3 = (v: number) => (isNice(v) ? `= ${fmt(v)}` : `\\approx ${s3(v)}`);
 /** A numeric answer: exact when it is nice, otherwise to 3 significant figures. */
 export function sfPart(v: number, opts: { label?: string; suffix?: string } = {}): Part {
-  return isNice(v) ? numPart(roundTo(v, sfDecimals(v)), { ...opts, exact: false }) : numPart(v, { ...opts, decimals: sfDecimals(v) });
+  return isNice(v) ? numPart(roundTo(v, sfDecimals(v)), { ...opts, exact: false, display: 'decimal' }) : numPart(v, { ...opts, decimals: sfDecimals(v) });
 }
 /** The sentence that tells students how to round. */
 export const SF_TEXT = 'Give any answer that is not exact to 3 significant figures.';
