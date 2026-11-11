@@ -27,6 +27,8 @@ import { FORMULAE_SKILLS } from './gen/formulae.ts';
 import { CIRCLE_SKILLS } from './gen/circles.ts';
 import { FINANCE_SKILLS } from './gen/finance.ts';
 import { THEOREM_SKILLS } from './gen/theorems.ts';
+import { INFERENCE_SKILLS } from './gen/inference.ts';
+import { VORONOI_SKILLS } from './gen/voronoi.ts';
 
 export const MATHMORE_SKILLS: SkillDef[] = [
   ...STATS_SKILLS,
@@ -57,4 +59,6 @@ export const MATHMORE_SKILLS: SkillDef[] = [
   ...CIRCLE_SKILLS,
   ...FINANCE_SKILLS,
   ...THEOREM_SKILLS,
+  ...INFERENCE_SKILLS,
+  ...VORONOI_SKILLS,
 ];

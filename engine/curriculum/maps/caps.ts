@@ -68,10 +68,10 @@ export const CAPS_MAP: CurriculumMap = {
         { title: 'Differential Calculus', description: 'Limits, the derivative from first principles, the rules of differentiation, tangents, cubic graphs with their stationary points and points of inflection, optimization, and rates of change.', members: ['m31-2-1', 'm31-3-1', 'm31-3-2', 'm31-4-1', 'm31-6-1', 'm31-6-2', 'm31-6-3', 'm31-7-1', 'm31-6-4'] },
         { title: 'Analytical Geometry: Circles', description: 'The equation of a circle with any centre, completing the square to find its centre and radius, and tangents to a circle. The equation of a tangent to a circle.', members: ['mx-3-4', 'm9-8-3', 'mx-27-3'] },
         { title: 'Euclidean Geometry: Proportion and Similarity', description: 'Similar polygons, similar triangles, and finding missing sides. The proportionality theorem.', members: ['m9-7-3', 'm103-7-4', 'mx-27-1'] },
-        { title: 'Statistics: Regression and Correlation', description: 'Scatter plots and lines of best fit, and the correlation coefficient.', members: ['m10c-7-5', 'mx-15-1'] },
+        { title: 'Statistics: Regression and Correlation', description: 'Scatter plots and lines of best fit, and the correlation coefficient. The least squares regression line.', members: ['m10c-7-5', 'mx-15-1', 'mx-28-1'] },
         { title: 'Counting and Probability', description: 'The fundamental counting principle, factorials and arrangements, and probability problems with counting.', members: ['m301-9-1', 'm301-9-2', 'm302-3-2'] },
       ],
-      gaps: ['The least squares regression line'],
+      gaps: [],
     },
   ],
 };

@@ -116,6 +116,13 @@ export const OUTCOMES: Outcome[] = [
   { code: 'GT3', strand: 'Geometry theorems, vectors and transformation matrices', text: 'Find the gradient and the equation of the tangent to a circle at a given point.' },
   { code: 'GT4', strand: 'Geometry theorems, vectors and transformation matrices', text: 'Use position vectors and the ratio theorem to divide a line segment in a given ratio, and show that points are collinear.' },
   { code: 'GT5', strand: 'Geometry theorems, vectors and transformation matrices', text: 'Use 2 × 2 matrices to represent, combine and undo transformations, and use the determinant as an area scale factor.' },
+  { code: 'RT1', strand: 'Regression, expected value and statistical tests', text: 'Find the least squares regression line of y on x, and use it to estimate and to interpret the gradient.' },
+  { code: 'RT2', strand: 'Regression, expected value and statistical tests', text: 'Find the expected value of a discrete random variable, expected numbers of successes and the expected gain in a game.' },
+  { code: 'RT3', strand: 'Regression, expected value and statistical tests', text: 'Find and interpret Spearman’s rank correlation coefficient, and test it against a critical value.' },
+  { code: 'RT4', strand: 'Regression, expected value and statistical tests', text: 'Carry out chi-squared goodness of fit tests and tests for independence.' },
+  { code: 'RT5', strand: 'Regression, expected value and statistical tests', text: 'Carry out a t-test for the difference between two means, from a p-value or a test statistic.' },
+  { code: 'MV1', strand: 'The mid-ordinate rule and Voronoi diagrams', text: 'Estimate the area under a curve with the mid-ordinate rule, and judge its accuracy.' },
+  { code: 'MV2', strand: 'The mid-ordinate rule and Voronoi diagrams', text: 'Use Voronoi diagrams: their cells, edges as perpendicular bisectors, and vertices as the points furthest from their nearest sites.' },
 ];
 
 const L = (
@@ -585,6 +592,38 @@ export const LESSONS: LessonMeta[] = [
     ['mx-transformation-matrix', 'mx-transformation-combine'],
     ['Find the image of a point under a matrix, and recognize the matrices of standard transformations', 'Use the determinant as an area scale factor', 'Combine two transformations into one matrix, and undo a transformation with the inverse matrix'],
     ['transformation matrix', 'image', 'determinant', 'area scale factor', 'inverse matrix']),
+
+  // ---------------- Unit 28: Regression, Expected Value and Statistical Tests ----------------
+  L('mx-28-1', 'mx-u28', '28.1', 'The Least Squares Regression Line', 12, ['RT1'],
+    ['mx-regression-line', 'mx-regression-use'],
+    ['Find the regression line of y on x from data or summary statistics', 'Estimate with the line, and say whether an estimate is reliable', 'Interpret the gradient of the line'],
+    ['regression line', 'least squares', 'residual', 'interpolation', 'extrapolation']),
+  L('mx-28-2', 'mx-u28', '28.2', 'Expected Value', 11, ['RT2'],
+    ['mx-expected-value', 'mx-expected-gain'],
+    ['Find the expected value of a discrete random variable', 'Find unknown probabilities from the expected value', 'Find expected numbers of successes, and decide whether a game is fair'],
+    ['expected value', 'discrete random variable', 'expected number', 'fair game']),
+  L('mx-28-3', 'mx-u28', '28.3', 'Spearman’s Rank Correlation Coefficient', 12, ['RT3'],
+    ['mx-spearman-rank', 'mx-spearman-interpret'],
+    ['Rank data and find Spearman’s rank correlation coefficient', 'Interpret r_s and choose between r_s and r', 'Test r_s against a critical value'],
+    ['rank', 'Spearman’s rank correlation coefficient', 'monotonic', 'association']),
+  L('mx-28-4', 'mx-u28', '28.4', 'The Chi-Squared Tests', 12, ['RT4'],
+    ['mx-chi-expected', 'mx-chi-test'],
+    ['Find expected frequencies and degrees of freedom', 'Carry out a chi-squared goodness of fit test', 'Carry out a chi-squared test for independence with a contingency table'],
+    ['observed frequency', 'expected frequency', 'degrees of freedom', 'contingency table', 'goodness of fit', 'independence']),
+  L('mx-28-5', 'mx-u28', '28.5', 'The t-Test for Two Means', 12, ['RT5'],
+    ['mx-t-test-hypotheses', 'mx-t-test-statistic'],
+    ['Write hypotheses for comparing two population means', 'Draw a conclusion from a p-value', 'Find the pooled variance and the t statistic, and compare it with a critical value'],
+    ['t-test', 'p-value', 'pooled variance', 'one-tailed', 'two-tailed']),
+
+  // ---------------- Unit 29: The Mid-Ordinate Rule and Voronoi Diagrams ----------------
+  L('mx-29-1', 'mx-u29', '29.1', 'The Mid-Ordinate Rule', 12, ['MV1'],
+    ['mx-mid-ordinate', 'mx-mid-ordinate-error'],
+    ['Estimate the area under a curve with the mid-ordinate rule', 'Find the percentage error of an estimate', 'Decide whether the rule over- or underestimates'],
+    ['mid-ordinate rule', 'strip', 'mid-ordinate', 'percentage error']),
+  L('mx-29-2', 'mx-u29', '29.2', 'Voronoi Diagrams', 11, ['MV2'],
+    ['mx-voronoi-bisector', 'mx-voronoi-nearest'],
+    ['Find which cell of a Voronoi diagram a point lies in', 'Find the equation of an edge as a perpendicular bisector', 'Find a vertex, and the point furthest from its nearest sites'],
+    ['Voronoi diagram', 'site', 'cell', 'edge', 'vertex', 'perpendicular bisector']),
 ];
 
 export const UNITS: UnitMeta[] = [
@@ -615,6 +654,8 @@ export const UNITS: UnitMeta[] = [
   { id: 'mx-u25', number: 25, title: 'Circles, Solids and the Earth', description: 'Segments of a circle, frustums, Heron’s formula, cyclic quadrilaterals and the alternate segment theorem, intersecting chords and common tangents, and longitude and latitude.', outcomes: ['CS1', 'CS2', 'CS3', 'CS4', 'CS5', 'CS6'], lessons: [], color: 'orange' },
   { id: 'mx-u26', number: 26, title: 'Interest Rates, Annuities, Loans and Shares', description: 'Nominal and effective interest rates, annuities and sinking funds, present value and loan repayments, and shares and stocks.', outcomes: ['FI1', 'FI2', 'FI3', 'FI4'], lessons: [], color: 'fuchsia' },
   { id: 'mx-u27', number: 27, title: 'Geometry Theorems, Vectors and Transformation Matrices', description: 'The midpoint and proportionality theorems, the angle of inclination of a line, the equation of a tangent to a circle, the ratio theorem and collinear points, and matrices as transformations.', outcomes: ['GT1', 'GT2', 'GT3', 'GT4', 'GT5'], lessons: [], color: 'teal' },
+  { id: 'mx-u28', number: 28, title: 'Regression, Expected Value and Statistical Tests', description: 'The least squares regression line, expected value, Spearman’s rank correlation coefficient, the chi-squared tests, and the t-test for two means.', outcomes: ['RT1', 'RT2', 'RT3', 'RT4', 'RT5'], lessons: [], color: 'indigo' },
+  { id: 'mx-u29', number: 29, title: 'The Mid-Ordinate Rule and Voronoi Diagrams', description: 'Estimating areas with the mid-ordinate rule, and Voronoi diagrams: cells, edges, vertices and the point furthest from its nearest sites.', outcomes: ['MV1', 'MV2'], lessons: [], color: 'rose' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
@@ -625,7 +666,7 @@ export const MATHMORE: CourseMeta = {
   shortTitle: 'More Topics',
   grade: 10,
   subject: 'Mathematics',
-  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: dot plots and box plots, mean absolute deviation, two-way tables, scientific notation, linear and exponential growth, cross-sections and solids of revolution, two-column proofs, the equation of a circle, experiments and simulation, complex numbers, polynomial identities, vectors and matrices, polar form, conic sections and parametric equations; and for GCSE, error intervals and bounds, recurring decimals, quadratic sequences, iteration, gradients and areas under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and pressure, bearings, loci, arcs and sectors, 3D trigonometry, frequency trees, histograms and cumulative frequency; and for A level, mechanics: the constant acceleration formulae, Newton’s laws, connected particles, forces at angles and friction, inclined planes, projectiles and moments; and statistics: sampling methods, coding, outliers, discrete random variables, the binomial distribution and its hypothesis tests, correlation, the inverse normal distribution, the normal approximation and tests for a normal mean; and pure: proof by exhaustion and contradiction, ½ab sin C, logarithmic graphs, partial fractions, sigma notation and recurrence relations, the binomial expansion for rational n, 3D vectors, small-angle approximations, reciprocal and inverse trigonometric functions, R sin(θ ± α), parametric differentiation, the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and differential equations; and for Alberta’s new Grades 7 to 9 curriculum, absolute value, perfect cubes, the constant of proportionality, sets of real numbers and set-builder notation, geometric notation, dilations, functions with domain and range, simple quadratic equations and the shape of a distribution; and for WAEC, KCSE, CAPS, IGCSE and the IB, number bases, modular arithmetic, truth tables, changing the subject of a formula, joint and partial variation, linear programming, segments of a circle, frustums, Heron’s formula, circle theorems, longitude and latitude, effective interest rates, annuities, loans and shares, the midpoint and proportionality theorems, the angle of inclination of a line, tangents to circles, the ratio theorem and transformation matrices.',
+  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: dot plots and box plots, mean absolute deviation, two-way tables, scientific notation, linear and exponential growth, cross-sections and solids of revolution, two-column proofs, the equation of a circle, experiments and simulation, complex numbers, polynomial identities, vectors and matrices, polar form, conic sections and parametric equations; and for GCSE, error intervals and bounds, recurring decimals, quadratic sequences, iteration, gradients and areas under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and pressure, bearings, loci, arcs and sectors, 3D trigonometry, frequency trees, histograms and cumulative frequency; and for A level, mechanics: the constant acceleration formulae, Newton’s laws, connected particles, forces at angles and friction, inclined planes, projectiles and moments; and statistics: sampling methods, coding, outliers, discrete random variables, the binomial distribution and its hypothesis tests, correlation, the inverse normal distribution, the normal approximation and tests for a normal mean; and pure: proof by exhaustion and contradiction, ½ab sin C, logarithmic graphs, partial fractions, sigma notation and recurrence relations, the binomial expansion for rational n, 3D vectors, small-angle approximations, reciprocal and inverse trigonometric functions, R sin(θ ± α), parametric differentiation, the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and differential equations; and for Alberta’s new Grades 7 to 9 curriculum, absolute value, perfect cubes, the constant of proportionality, sets of real numbers and set-builder notation, geometric notation, dilations, functions with domain and range, simple quadratic equations and the shape of a distribution; and for WAEC, KCSE, CAPS, IGCSE and the IB, number bases, modular arithmetic, truth tables, changing the subject of a formula, joint and partial variation, linear programming, segments of a circle, frustums, Heron’s formula, circle theorems, longitude and latitude, effective interest rates, annuities, loans and shares, the midpoint and proportionality theorems, the angle of inclination of a line, tangents to circles, the ratio theorem, transformation matrices, the least squares regression line, expected value, Spearman’s rank correlation, the chi-squared tests, the t-test, the mid-ordinate rule and Voronoi diagrams.',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,

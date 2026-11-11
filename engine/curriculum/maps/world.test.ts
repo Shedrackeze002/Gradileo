@@ -24,9 +24,8 @@ describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
     expect(getCourse('igcse-extended')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Surds', 'Differentiation', 'Transformations and Vectors']));
     expect(getCourse('ib-aa-sl')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Circular Functions', 'Probability Distributions', 'Integration and Kinematics']));
     expect(getCourse('waec-ss-3')!.gaps).toEqual([]);
-    expect(getCourse('kcse-form-4')!.gaps).toContain('The mid-ordinate rule');
-    expect(getCourse('caps-grade-12')!.gaps).toEqual(['The least squares regression line']);
-    expect(getCourse('ib-ai-sl')!.gaps).toContain('Voronoi diagrams');
+    // More Mathematics Topics now teaches every topic these maps listed as a gap.
+    for (const system of ['ng', 'ke', 'za', 'cambridge', 'ib']) for (const c of mappedCourses(system)) expect([c.id, c.gaps]).toEqual([c.id, []]);
     expect(getCourse('kcse-form-1')!.gaps).toEqual([]);
   });
 
@@ -49,7 +48,11 @@ describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
     expect(lessons('kcse-form-4')).toContain('mx-27-5');
     expect(lessons('igcse-extended')).toContain('mx-27-4');
     for (const id of ['caps-grade-10', 'caps-grade-11', 'kcse-form-3', 'igcse-extended']) expect(getCourse(id)!.gaps).toEqual([]);
-    expect(getCourse('kcse-form-4')!.gaps).toEqual(['The mid-ordinate rule']);
+    // Units 28 and 29: statistics, the mid-ordinate rule and Voronoi diagrams.
+    expect(lessons('caps-grade-12')).toContain('mx-28-1');
+    expect(lessons('ib-aa-sl')).toEqual(expect.arrayContaining(['mx-28-1', 'mx-28-2']));
+    expect(lessons('ib-ai-sl')).toEqual(expect.arrayContaining(['mx-28-1', 'mx-28-2', 'mx-28-3', 'mx-28-4', 'mx-28-5', 'mx-29-2']));
+    expect(lessons('kcse-form-4')).toContain('mx-29-1');
   });
 
   it('recommend the course of the learner’s year in their own system', () => {
