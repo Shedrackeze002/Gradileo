@@ -47,7 +47,8 @@ describe('curricula', () => {
   it('guess the curriculum from the time zone', () => {
     expect(guessCurriculum('Europe/London')).toBe('uk');
     expect(guessCurriculum('Africa/Lagos')).toBe('ng');
-    expect(guessCurriculum('America/Edmonton')).toBe('ca');
+    expect(guessCurriculum('America/Edmonton')).toBe('ab');
+    expect(guessCurriculum('America/Toronto')).toBe('ca');
     expect(guessCurriculum('America/Chicago')).toBe('us');
     expect(guessCurriculum('Australia/Sydney')).toBe('au');
     expect(guessCurriculum('Etc/UTC')).toBeUndefined();

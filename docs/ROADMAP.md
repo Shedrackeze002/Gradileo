@@ -1152,10 +1152,26 @@ items ship or decisions change.
   K&E, Math 10-3, Grade 11 and Grade 12 outcome wording word for word against Alberta's
   program of studies and *Outcomes with Assessment Standards*. Their hosts are now reachable from
   the build environment (Grades 5 to 9 were checked this way).
-- Still worth doing, as topics most countries teach at these ages: update Math 7, 8 and 9 to
-  Alberta's new Grades 7–9 curriculum before it becomes mandatory in
-  September 2027 (functions, irrational numbers, scientific notation, quadratic equations and
-  more). Optional classroom piloting runs in 2026–27.
+- Built (11 November 2026): **Alberta's new Grades 7 to 9 mathematics curriculum**, as a
+  curriculum map (`engine/curriculum/maps/ab.ts`, curriculum `ab`, "Canada: Alberta" on "Find your
+  course"): `ab-grade-7`, `ab-grade-8` and `ab-grade-9`, each built from Gradileo's lessons in the
+  order of the draft curriculum's organizing ideas (Number, Algebra, Geometry, Measurement,
+  Patterns and Relations, Statistics and Probability, Financial Literacy), with the outcome codes
+  of the scope and sequence (7N1, 8A2, 9PR1) in each unit. Math 7, 8 and 9 stay on the 2016
+  program of studies, which schools teach until the new one is mandatory in September 2027, so an
+  Alberta learner in Grades 7 to 9 is still recommended Math 7, 8 or 9 and is offered the new
+  course as an alternative ("if your school is piloting"); teachers start a class on one from the
+  "New Alberta Grades 7 to 9" tab. Ten lessons in More Mathematics Topics fill what the new
+  curriculum adds, with 20 question generators: absolute value and opposites, perfect cubes and
+  cube roots, the constant of proportionality, sets of real numbers and set-builder notation
+  (Unit 20); geometric objects and their notation, and dilations on the Cartesian plane (Unit 21);
+  relations and functions, domain and range, and simple quadratic equations (Unit 22); and the
+  shape of a distribution (Unit 1). The maps list no gaps. Sources: the June 2026 draft (the full
+  Grade 7 text and the Grades 6 to 9 scope and sequence published by the Alberta Professional
+  Learning Consortium) and Alberta Education's fact sheet. Still to do: check the Grades 8 and 9
+  wording against new LearnAlberta when the final curriculum is published (its site refuses the
+  build environment), add videos and tutor recordings for the ten lessons, and in September 2027
+  make the new courses the first recommendation in Alberta.
 - Done: the *Deploy Supabase backend* workflow works. Its secrets (`SUPABASE_ACCESS_TOKEN`,
   `SUPABASE_PROJECT_ID` and `SUPABASE_DB_PASSWORD`) were added on 14 October 2026. The first run
   failed at `supabase link`, which reads the project's secret API keys, so the workflow no longer

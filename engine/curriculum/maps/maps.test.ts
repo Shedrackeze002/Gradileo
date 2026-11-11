@@ -44,6 +44,24 @@ describe('curriculum maps', () => {
     expect(uk(10).prerequisite).toBe('math-9');
   });
 
+  it('build Alberta’s new Grades 7 to 9 with no gaps, and offer them beside the current courses', () => {
+    expect(mappedCourses('ab').map((c) => c.shortTitle)).toEqual(['Alberta Grade 7', 'Alberta Grade 8', 'Alberta Grade 9']);
+    for (const id of ['ab-grade-7', 'ab-grade-8', 'ab-grade-9']) expect(getCourse(id)!.gaps, id).toEqual([]);
+    // The lessons written for the new curriculum are taught in the grade that names them.
+    const lessons = (id: string) => getCourse(id)!.lessons.map((l) => l.id);
+    expect(lessons('ab-grade-7')).toEqual(expect.arrayContaining(['mx-20-1', 'mx-20-2', 'mx-21-1', 'mx-22-1', 'mx-22-2']));
+    expect(lessons('ab-grade-8')).toEqual(expect.arrayContaining(['mx-20-3', 'mx-21-2', 'mx-1-7']));
+    expect(lessons('ab-grade-9')).toEqual(expect.arrayContaining(['mx-20-4', 'mx-22-3']));
+    // The new curriculum is optional until September 2027, so the current course stays first.
+    const ab = (grade: number) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'ab', feeling: 'ok' });
+    for (const g of [7, 8, 9]) {
+      expect(ab(g).courseId).toBe(`math-${g}`);
+      expect(ab(g).alternatives.map((c) => c.courseId)).toContain(`ab-grade-${g}`);
+    }
+    expect(ab(6).alternatives.map((c) => c.courseId).filter((c) => c.startsWith('ab-'))).toEqual([]);
+    expect(PREREQUISITE['ab-grade-8']).toBe('ab-grade-7');
+  });
+
   it('build A level Mathematics from Gradileo’s lessons, list what it does not teach yet, and offer it in Years 12 and 13', () => {
     const year1 = getCourse('uk-a-level-year-1')!;
     const year2 = getCourse('uk-a-level-year-2')!;
