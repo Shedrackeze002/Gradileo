@@ -1307,13 +1307,13 @@ items ship or decisions change.
     burning, rusting, metals and alloys, and polymers, ceramics and composites) with 30 question
     generators. A Grade 8 learner is recommended it, with Chemistry 7 as the readiness check, and
     Grade 9 learners are offered it as well as Grade 10 Chemistry. Its 15 explainer videos are
-    being made.
+    rendered and on Drive.
   - Built: **Grade 9 Chemistry** (`chem-9`, "Chemistry 9"): four units and 15 lessons (atomic
     structure and ions; ionic and covalent bonding, formulas, names and relative formula mass;
     conservation of mass, balancing equations, types of reaction and rates; acids, bases, pH and
     neutralization) with 30 question generators. A Grade 9 learner is recommended it, with
     Chemistry 8 as the readiness check, and Grade 10 Chemistry's readiness check is now Chemistry
-    9. Next: the explainer videos for Chemistry 8 and 9.
+    9. Next: its 15 explainer videos.
 - Done: the *Deploy Supabase backend* workflow works. Its secrets (`SUPABASE_ACCESS_TOKEN`,
   `SUPABASE_PROJECT_ID` and `SUPABASE_DB_PASSWORD`) were added on 14 October 2026. The first run
   failed at `supabase link`, which reads the project's secret API keys, so the workflow no longer

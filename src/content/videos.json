@@ -119921,5 +119921,654 @@
         "working": "Evaporation loses the water to the air, and filtration cannot catch dissolved salt. Distillation keeps the salt in the flask and collects the water."
       }
     ]
+  },
+  "c8-1-1": {
+    "lessonId": "c8-1-1",
+    "title": "Atoms and Elements",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Atoms and elements",
+        "t": 24.509
+      },
+      {
+        "title": "Chemical symbols",
+        "t": 90.818
+      },
+      {
+        "title": "Your turn",
+        "t": 139.24
+      },
+      {
+        "title": "Summary",
+        "t": 168.723
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-1-1:q",
+        "t": 147.571,
+        "prompt": "Which of these is written correctly as the symbol for a single element?",
+        "choices": [
+          "CL",
+          "mg",
+          "Zn",
+          "CO"
+        ],
+        "answer": 2,
+        "working": "A symbol is a capital letter, then a small letter if there is one. Zn is zinc. CO has two capitals, so it is two elements: carbon and oxygen."
+      }
+    ]
+  },
+  "c8-1-2": {
+    "lessonId": "c8-1-2",
+    "title": "Compounds and Molecules",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Compounds and molecules",
+        "t": 22.702
+      },
+      {
+        "title": "New properties",
+        "t": 68.525
+      },
+      {
+        "title": "Particle diagrams",
+        "t": 99.044
+      },
+      {
+        "title": "Your turn",
+        "t": 133.115
+      },
+      {
+        "title": "Summary",
+        "t": 166.09
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-1-2:q",
+        "t": 146.004,
+        "prompt": "A box holds identical particles. Each is one carbon atom joined to two oxygen atoms. What does it show?",
+        "choices": [
+          "a compound",
+          "an element",
+          "a mixture of two elements",
+          "a mixture of three substances"
+        ],
+        "answer": 0,
+        "working": "All the particles are the same, so it is one substance. Each has two kinds of atom joined, so it is a compound: carbon dioxide."
+      }
+    ]
+  },
+  "c8-1-3": {
+    "lessonId": "c8-1-3",
+    "title": "Elements, Compounds and Mixtures",
+    "duration": 181,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of matter",
+        "t": 25.686
+      },
+      {
+        "title": "Compounds and mixtures compared",
+        "t": 65.579
+      },
+      {
+        "title": "Your turn",
+        "t": 117.078
+      },
+      {
+        "title": "Summary",
+        "t": 148.826
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-1-3:q",
+        "t": 127.604,
+        "prompt": "A grey-and-yellow powder is tested with a magnet, and grey specks are pulled out. What is the powder?",
+        "choices": [
+          "a compound of iron and sulfur",
+          "a mixture of iron and sulfur",
+          "a single element",
+          "a compound that is magnetic"
+        ],
+        "answer": 1,
+        "working": "The iron still has its own property, magnetism, so it is not joined. In a compound the iron would no longer be magnetic."
+      }
+    ]
+  },
+  "c8-1-4": {
+    "lessonId": "c8-1-4",
+    "title": "Chemical Formulas",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a formula tells you",
+        "t": 19.571
+      },
+      {
+        "title": "Counting atoms",
+        "t": 70.412
+      },
+      {
+        "title": "Your turn",
+        "t": 114.542
+      },
+      {
+        "title": "Summary",
+        "t": 141.494
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-1-4:q",
+        "t": 123.523,
+        "prompt": "How many hydrogen atoms does the formula $\\ce{Ca(OH)2}$ show?",
+        "choices": [
+          "1",
+          "3",
+          "4",
+          "2"
+        ],
+        "answer": 3,
+        "working": "There is 1 hydrogen atom inside the bracket, and the 2 after the bracket doubles it: 1 × 2 = 2."
+      }
+    ]
+  },
+  "c8-2-1": {
+    "lessonId": "c8-2-1",
+    "title": "Organizing the Elements",
+    "duration": 174,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Groups and periods",
+        "t": 21.131
+      },
+      {
+        "title": "Mendeleev’s table",
+        "t": 75.985
+      },
+      {
+        "title": "Your turn",
+        "t": 116.237
+      },
+      {
+        "title": "Summary",
+        "t": 146.388
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-2-1:q",
+        "t": 124.534,
+        "prompt": "In which period and group is the element with atomic number 12?",
+        "choices": [
+          "period 3, group 2",
+          "period 2, group 3",
+          "period 3, group 12",
+          "period 2, group 12"
+        ],
+        "answer": 0,
+        "working": "12 is between 11 and 18, so it is in period 3. Period 3 starts at 11 in group 1, so 12 is in group 2. It is magnesium."
+      }
+    ]
+  },
+  "c8-2-2": {
+    "lessonId": "c8-2-2",
+    "title": "Metals and Non-metals",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Properties",
+        "t": 22.204
+      },
+      {
+        "title": "Using the table",
+        "t": 71.552
+      },
+      {
+        "title": "Your turn",
+        "t": 110.538
+      },
+      {
+        "title": "Summary",
+        "t": 141.804
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-2-2:q",
+        "t": 122.478,
+        "prompt": "An element is a yellow solid that shatters when hit and does not conduct electricity. What is it most likely to be?",
+        "choices": [
+          "a metal",
+          "a metalloid",
+          "a non-metal",
+          "a liquid metal"
+        ],
+        "answer": 2,
+        "working": "It is dull, brittle and an insulator: all non-metal properties. It could be sulfur."
+      }
+    ]
+  },
+  "c8-2-3": {
+    "lessonId": "c8-2-3",
+    "title": "Families of Elements",
+    "duration": 165,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Group 1: the alkali metals",
+        "t": 23.759
+      },
+      {
+        "title": "Halogens and noble gases",
+        "t": 62.828
+      },
+      {
+        "title": "Your turn",
+        "t": 103.219
+      },
+      {
+        "title": "Summary",
+        "t": 132.45
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-2-3:q",
+        "t": 113.829,
+        "prompt": "Helium and hydrogen are both less dense than air. Why are party balloons filled with helium?",
+        "choices": [
+          "helium is a metal",
+          "helium is unreactive, so it cannot burn",
+          "helium is an alkali metal",
+          "hydrogen is denser than air"
+        ],
+        "answer": 1,
+        "working": "Hydrogen is flammable and can explode. Helium is a noble gas, so it does not react and cannot burn."
+      }
+    ]
+  },
+  "c8-2-4": {
+    "lessonId": "c8-2-4",
+    "title": "Patterns in the Periodic Table",
+    "duration": 174,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trends",
+        "t": 22.655
+      },
+      {
+        "title": "Elements at work",
+        "t": 72.487
+      },
+      {
+        "title": "Your turn",
+        "t": 116.37
+      },
+      {
+        "title": "Summary",
+        "t": 144.4
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-2-4:q",
+        "t": 126.834,
+        "prompt": "Fluorine is at the top of group 17 and iodine is lower down. Which is more reactive?",
+        "choices": [
+          "iodine, because reactivity rises down every group",
+          "they are equally reactive",
+          "neither: halogens do not react",
+          "fluorine, because halogens get less reactive down the group"
+        ],
+        "answer": 3,
+        "working": "Halogens get less reactive down group 17, so fluorine, at the top, is the most reactive."
+      }
+    ]
+  },
+  "c8-3-1": {
+    "lessonId": "c8-3-1",
+    "title": "Physical and Chemical Changes",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of change",
+        "t": 19.712
+      },
+      {
+        "title": "Can it be reversed?",
+        "t": 70.436
+      },
+      {
+        "title": "Your turn",
+        "t": 109.131
+      },
+      {
+        "title": "Summary",
+        "t": 136.714
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-3-1:q",
+        "t": 115.224,
+        "prompt": "Which of these is a chemical change?",
+        "choices": [
+          "butter melting",
+          "milk going sour",
+          "salt dissolving",
+          "water boiling"
+        ],
+        "answer": 1,
+        "working": "Sour milk contains new substances made as it goes off, and it cannot be turned back. The others make no new substance."
+      }
+    ]
+  },
+  "c8-3-2": {
+    "lessonId": "c8-3-2",
+    "title": "Signs of a Chemical Reaction",
+    "duration": 165,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Signs of a reaction",
+        "t": 18.177
+      },
+      {
+        "title": "Reactants and products",
+        "t": 63.966
+      },
+      {
+        "title": "Your turn",
+        "t": 101.626
+      },
+      {
+        "title": "Summary",
+        "t": 136.755
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-3-2:q",
+        "t": 115.933,
+        "prompt": "Limestone, calcium carbonate, is heated and breaks down into calcium oxide and carbon dioxide. What is the reactant?",
+        "choices": [
+          "calcium oxide",
+          "carbon dioxide",
+          "calcium carbonate",
+          "calcium oxide and carbon dioxide"
+        ],
+        "answer": 2,
+        "working": "The reaction starts with calcium carbonate alone. Calcium oxide and carbon dioxide are the products."
+      }
+    ]
+  },
+  "c8-3-3": {
+    "lessonId": "c8-3-3",
+    "title": "Word Equations",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Word equations",
+        "t": 19.29
+      },
+      {
+        "title": "Naming compounds",
+        "t": 77.307
+      },
+      {
+        "title": "Your turn",
+        "t": 115.071
+      },
+      {
+        "title": "Summary",
+        "t": 144.086
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-3-3:q",
+        "t": 123.448,
+        "prompt": "Calcium reacts with chlorine. Which is the correct word equation?",
+        "choices": [
+          "calcium + chlorine → calcium chloride",
+          "calcium chloride → calcium + chlorine",
+          "calcium + chlorine → chlorine calcide",
+          "calcium + chloride → calcium chlorine"
+        ],
+        "answer": 0,
+        "working": "The reactants go on the left. The metal comes first in the name, and chlorine becomes chloride."
+      }
+    ]
+  },
+  "c8-4-1": {
+    "lessonId": "c8-4-1",
+    "title": "Burning",
+    "duration": 175,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Combustion",
+        "t": 21.5
+      },
+      {
+        "title": "The fire triangle",
+        "t": 72.01
+      },
+      {
+        "title": "Your turn",
+        "t": 112.43
+      },
+      {
+        "title": "Summary",
+        "t": 142.579
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-4-1:q",
+        "t": 125.565,
+        "prompt": "Firefighters cut a wide strip of trees out of a forest, ahead of a wildfire. Which side of the fire triangle does this remove?",
+        "choices": [
+          "heat",
+          "oxygen",
+          "carbon dioxide",
+          "fuel"
+        ],
+        "answer": 3,
+        "working": "The trees are what burns. With no trees in the strip, the fire runs out of fuel when it reaches it."
+      }
+    ]
+  },
+  "c8-4-2": {
+    "lessonId": "c8-4-2",
+    "title": "Rusting and Corrosion",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What makes iron rust",
+        "t": 21.217
+      },
+      {
+        "title": "Stopping rust",
+        "t": 82.447
+      },
+      {
+        "title": "Your turn",
+        "t": 112.254
+      },
+      {
+        "title": "Summary",
+        "t": 138.306
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-4-2:q",
+        "t": 119.541,
+        "prompt": "Why is a bicycle chain oiled rather than painted?",
+        "choices": [
+          "oil adds zinc to the chain",
+          "paint lets water through",
+          "oil keeps out water and air but lets the chain move",
+          "chains are made of aluminium"
+        ],
+        "answer": 2,
+        "working": "Paint would crack and flake off the moving links. Oil is a barrier that still lets the links move freely."
+      }
+    ]
+  },
+  "c8-4-3": {
+    "lessonId": "c8-4-3",
+    "title": "Metals and Alloys",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing a metal",
+        "t": 24.055
+      },
+      {
+        "title": "Alloys",
+        "t": 65.936
+      },
+      {
+        "title": "Your turn",
+        "t": 116.322
+      },
+      {
+        "title": "Summary",
+        "t": 142.606
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-4-3:q",
+        "t": 123.427,
+        "prompt": "Why is an alloy usually harder than the pure metal?",
+        "choices": [
+          "atoms of a different size stop the layers sliding",
+          "the atoms in an alloy are all the same size",
+          "alloys contain no metal atoms",
+          "alloys are always heavier"
+        ],
+        "answer": 0,
+        "working": "In a pure metal, same-sized atoms form layers that slide easily. Different-sized atoms in an alloy disrupt the layers."
+      }
+    ]
+  },
+  "c8-4-4": {
+    "lessonId": "c8-4-4",
+    "title": "Polymers, Ceramics and Composites",
+    "duration": 172,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of material",
+        "t": 20.342
+      },
+      {
+        "title": "Choosing a material",
+        "t": 84.34
+      },
+      {
+        "title": "Your turn",
+        "t": 113.333
+      },
+      {
+        "title": "Summary",
+        "t": 143.821
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-4-4:q",
+        "t": 121.266,
+        "prompt": "Which material is best for the covering of electrical wires?",
+        "choices": [
+          "copper",
+          "PVC plastic",
+          "glass",
+          "steel"
+        ],
+        "answer": 1,
+        "working": "The covering must be a flexible insulator. PVC is a polymer that is flexible and does not conduct electricity."
+      }
+    ]
   }
 }
