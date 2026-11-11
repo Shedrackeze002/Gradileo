@@ -107,7 +107,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Let’s sum up. An outlier lies more than one and a half IQRs beyond a quartile.', show: 'sum.0' },
+        { say: 'Let’s sum up. An outlier lies more than one and a half times the IQR beyond a quartile.', show: 'sum.0' },
         { say: 'Or, by the other rule, more than two standard deviations from the mean.', show: 'sum.1' },
         { say: 'Cleaning data removes errors, while real outliers may be kept.', show: 'sum.2' },
         { say: 'And to remove a value, take it out of the totals and reduce n by one. In the next lesson, we meet discrete random variables. See you there!', show: 'sum.3' },
