@@ -623,7 +623,11 @@ items ship or decisions change.
      proportion, density and pressure; bearings, loci, arcs and sectors in degrees, and Pythagoras
      and trigonometry in 3D; and frequency trees, histograms and cumulative frequency, at Grades 9
      to 11. Each is filed in the Foundation and Higher units that teach it and under Browse by
-     topic. These lessons also need their videos and tutor recordings. Next: A level Mathematics.
+     topic. Next: A level Mathematics.
+     Their videos (10 November 2026): 17 explainers for the 16 lessons (`mx-7-1` to `mx-11-3`, with
+     gradients and areas under graphs in two parts), scripted and checked in stills, then rendered
+     unit by unit (`mx-u7` to `mx-u11`), stored on Drive and handed to the YouTube uploads (PR #149).
+     The Tutor voice workflow recorded their tutor narration after #146 merged.
    - Built (11 November 2026), step 3, the third map: **A level Mathematics, Years 12 and 13**
      (in `engine/curriculum/maps/uk.ts`, under the tab now called "UK GCSE and A level"). The first
      year (the AS content, 20 units) and the second (12 units) are built from Gradileo's lessons in

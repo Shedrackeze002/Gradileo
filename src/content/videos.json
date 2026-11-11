@@ -105450,5 +105450,880 @@
         "working": "$x = 3^2 = 9$ and $y = 2(3) + 1 = 7$, so the point is at $(9, 7)$."
       }
     ]
+  },
+  "mx-7-1": {
+    "lessonId": "mx-7-1",
+    "title": "Error Intervals",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an error interval is",
+        "t": 23.155
+      },
+      {
+        "title": "Decimal places and significant figures",
+        "t": 80.361
+      },
+      {
+        "title": "Truncation",
+        "t": 143.422
+      },
+      {
+        "title": "Rounding or truncation?",
+        "t": 194.152
+      },
+      {
+        "title": "Your turn",
+        "t": 226.605
+      },
+      {
+        "title": "Summary",
+        "t": 264.28
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-1:q",
+        "t": 236.865,
+        "prompt": "A length $l$ is $8.4$ m, to $1$ decimal place. Which is its error interval?",
+        "choices": [
+          "$8.4 \\le l < 8.5$",
+          "$8.35 \\le l < 8.45$",
+          "$8.35 < l \\le 8.45$",
+          "$8.3 \\le l < 8.5$"
+        ],
+        "answer": 1,
+        "working": "The unit is $0.1$ m, so half a unit is $0.05$ m: $8.4 - 0.05 = 8.35$ and $8.4 + 0.05 = 8.45$. The lower bound is included and the upper bound is not."
+      }
+    ]
+  },
+  "mx-7-2": {
+    "lessonId": "mx-7-2",
+    "title": "Upper and Lower Bounds in Calculations",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding and multiplying",
+        "t": 16.614
+      },
+      {
+        "title": "Subtracting and dividing",
+        "t": 70.405
+      },
+      {
+        "title": "A speed",
+        "t": 105.246
+      },
+      {
+        "title": "A sensible answer",
+        "t": 170.877
+      },
+      {
+        "title": "Your turn",
+        "t": 199.816
+      },
+      {
+        "title": "Summary",
+        "t": 235.692
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-2:q",
+        "t": 210.303,
+        "prompt": "$a = 20$ and $b = 6$, each to the nearest whole number. What is the upper bound of $a - b$?",
+        "choices": [
+          "$14$",
+          "$13$",
+          "$14.5$",
+          "$15$"
+        ],
+        "answer": 3,
+        "working": "Use the upper bound of $a$ and the lower bound of $b$: $20.5 - 5.5 = 15$."
+      }
+    ]
+  },
+  "mx-7-3": {
+    "lessonId": "mx-7-3",
+    "title": "Recurring Decimals and Fractions",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dot notation",
+        "t": 24.073
+      },
+      {
+        "title": "From a fraction",
+        "t": 65.07
+      },
+      {
+        "title": "Back to a fraction",
+        "t": 110.963
+      },
+      {
+        "title": "A digit before the block",
+        "t": 162.849
+      },
+      {
+        "title": "Your turn",
+        "t": 212.177
+      },
+      {
+        "title": "Summary",
+        "t": 250.768
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-3:q",
+        "t": 223.566,
+        "prompt": "Write $0.\\dot{1}\\dot{8}$ (that is, $0.181818\\ldots$) as a fraction in its lowest terms.",
+        "choices": [
+          "$\\tfrac{9}{50}$",
+          "$\\tfrac{2}{11}$",
+          "$\\tfrac{18}{100}$",
+          "$\\tfrac{1}{8}$"
+        ],
+        "answer": 1,
+        "working": "Let $x = 0.1818\\ldots$. Then $100x = 18.1818\\ldots$, so $99x = 18$ and $x = \\tfrac{18}{99} = \\tfrac{2}{11}$."
+      }
+    ]
+  },
+  "mx-8-1": {
+    "lessonId": "mx-8-1",
+    "title": "Quadratic Sequences",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Second differences",
+        "t": 27.605
+      },
+      {
+        "title": "Finding the nth term",
+        "t": 72.578
+      },
+      {
+        "title": "Checking and a common mistake",
+        "t": 139.803
+      },
+      {
+        "title": "Which term?",
+        "t": 168.712
+      },
+      {
+        "title": "Your turn",
+        "t": 214.294
+      },
+      {
+        "title": "Summary",
+        "t": 251.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-1:q",
+        "t": 223.55,
+        "prompt": "Find the $n$th term of the sequence $3,\\ 9,\\ 19,\\ 33,\\ 51,\\ \\ldots$",
+        "choices": [
+          "$4n^2 - 1$",
+          "$2n^2 + 1$",
+          "$n^2 + 2$",
+          "$2n^2 + 2n - 1$"
+        ],
+        "answer": 1,
+        "working": "First differences $6, 10, 14, 18$; second differences $4$, so $2n^2$: $2, 8, 18, 32, 50$. The sequence minus $2n^2$ is $1, 1, 1, 1, 1$, so the $n$th term is $2n^2 + 1$."
+      }
+    ]
+  },
+  "mx-8-2": {
+    "lessonId": "mx-8-2",
+    "title": "Solving Equations by Iteration",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A change of sign",
+        "t": 24.252
+      },
+      {
+        "title": "An iteration formula",
+        "t": 67.791
+      },
+      {
+        "title": "Iterating",
+        "t": 112.038
+      },
+      {
+        "title": "Keep every digit",
+        "t": 168.39
+      },
+      {
+        "title": "Your turn",
+        "t": 194.087
+      },
+      {
+        "title": "Summary",
+        "t": 230.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-2:q",
+        "t": 210.093,
+        "prompt": "Use $x_{n+1} = \\sqrt{x_n + 5}$ with $x_0 = 3$. What is $x_1$, to 3 decimal places?",
+        "choices": [
+          "$2.828$",
+          "$2.798$",
+          "$2.646$",
+          "$2.236$"
+        ],
+        "answer": 0,
+        "working": "$x_1 = \\sqrt{3 + 5} = \\sqrt{8} = 2.828\\ldots$"
+      }
+    ]
+  },
+  "mx-8-3": {
+    "lessonId": "mx-8-3",
+    "title": "Gradients as Rates of Change",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Gradient as a rate",
+        "t": 21.859
+      },
+      {
+        "title": "Acceleration",
+        "t": 57.459
+      },
+      {
+        "title": "Tangents to curves",
+        "t": 111.463
+      },
+      {
+        "title": "Your turn",
+        "t": 161.511
+      },
+      {
+        "title": "Summary",
+        "t": 205.714
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-3:q",
+        "t": 177.69,
+        "prompt": "On a velocity–time graph, a car’s velocity rises steadily from $5$ m/s to $25$ m/s in $8$ seconds. What is its acceleration?",
+        "choices": [
+          "$3.125$ m/s²",
+          "$20$ m/s²",
+          "$2.5$ m/s²",
+          "$0.4$ m/s²"
+        ],
+        "answer": 2,
+        "working": "Gradient $= \\dfrac{25 - 5}{8} = \\dfrac{20}{8} = 2.5$ m/s²."
+      }
+    ]
+  },
+  "mx-8-3-b": {
+    "lessonId": "mx-8-3",
+    "title": "Areas Under Graphs",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What the area means",
+        "t": 20.744
+      },
+      {
+        "title": "The tram",
+        "t": 41.159
+      },
+      {
+        "title": "Estimating under a curve",
+        "t": 86.281
+      },
+      {
+        "title": "Too high or too low?",
+        "t": 138.008
+      },
+      {
+        "title": "Your turn",
+        "t": 170.372
+      },
+      {
+        "title": "Summary",
+        "t": 211.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-3-b:q",
+        "t": 186.437,
+        "prompt": "A car speeds up steadily from rest to $20$ m/s in $10$ seconds. Using the area under its velocity–time graph, how far does it travel in those $10$ seconds?",
+        "choices": [
+          "$200$ m",
+          "$2$ m",
+          "$20$ m",
+          "$100$ m"
+        ],
+        "answer": 3,
+        "working": "The area is a triangle: $\\tfrac{1}{2} \\times 10 \\times 20 = 100$ m."
+      }
+    ]
+  },
+  "mx-8-4": {
+    "lessonId": "mx-8-4",
+    "title": "Graphs of Sine, Cosine and Tangent",
+    "duration": 327,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sine and cosine",
+        "t": 23.137
+      },
+      {
+        "title": "Tangent",
+        "t": 75.765
+      },
+      {
+        "title": "Stretching and moving",
+        "t": 118.166
+      },
+      {
+        "title": "Every solution",
+        "t": 173.895
+      },
+      {
+        "title": "Using the symmetry",
+        "t": 205.665
+      },
+      {
+        "title": "Your turn",
+        "t": 249.854
+      },
+      {
+        "title": "Summary",
+        "t": 285.796
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-4:q",
+        "t": 260.917,
+        "prompt": "Solve $\\cos x = 0.5$ for $0^\\circ \\le x \\le 360^\\circ$.",
+        "choices": [
+          "$x = 60^\\circ$ only",
+          "$x = 60^\\circ$ or $x = 120^\\circ$",
+          "$x = 60^\\circ$ or $x = 240^\\circ$",
+          "$x = 60^\\circ$ or $x = 300^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$\\cos^{-1}(0.5) = 60^\\circ$, and the cosine graph is symmetrical about $180^\\circ$, so the other solution is $360^\\circ - 60^\\circ = 300^\\circ$."
+      }
+    ]
+  },
+  "mx-9-1": {
+    "lessonId": "mx-9-1",
+    "title": "Direct and Inverse Proportion",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Direct proportion",
+        "t": 22.112
+      },
+      {
+        "title": "Squares and roots",
+        "t": 81.579
+      },
+      {
+        "title": "Inverse proportion",
+        "t": 122.856
+      },
+      {
+        "title": "The graphs",
+        "t": 168.514
+      },
+      {
+        "title": "Your turn",
+        "t": 200.821
+      },
+      {
+        "title": "Summary",
+        "t": 235.447
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-9-1:q",
+        "t": 212.606,
+        "prompt": "$y$ is inversely proportional to $x$. When $x = 5$, $y = 12$. Find $y$ when $x = 15$.",
+        "choices": [
+          "$36$",
+          "$2$",
+          "$4$",
+          "$60$"
+        ],
+        "answer": 2,
+        "working": "$y = \\dfrac{k}{x}$, so $k = 5 \\times 12 = 60$. When $x = 15$, $y = \\dfrac{60}{15} = 4$."
+      }
+    ]
+  },
+  "mx-9-2": {
+    "lessonId": "mx-9-2",
+    "title": "Density and Pressure",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Density",
+        "t": 21.543
+      },
+      {
+        "title": "Finding a mass",
+        "t": 61.84
+      },
+      {
+        "title": "Pressure",
+        "t": 112.741
+      },
+      {
+        "title": "Square centimetres to square metres",
+        "t": 160.786
+      },
+      {
+        "title": "Your turn",
+        "t": 210.346
+      },
+      {
+        "title": "Summary",
+        "t": 247.291
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-9-2:q",
+        "t": 224.277,
+        "prompt": "A piece of wood has a mass of $360$ g and a density of $0.6$ g/cm³. What is its volume?",
+        "choices": [
+          "$216$ cm³",
+          "$600$ cm³",
+          "$0.0017$ cm³",
+          "$60$ cm³"
+        ],
+        "answer": 1,
+        "working": "Volume $= \\dfrac{\\text{mass}}{\\text{density}} = \\dfrac{360}{0.6} = 600$ cm³."
+      }
+    ]
+  },
+  "mx-10-1": {
+    "lessonId": "mx-10-1",
+    "title": "Bearings",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three-figure bearings",
+        "t": 23.621
+      },
+      {
+        "title": "The bearing back",
+        "t": 76.972
+      },
+      {
+        "title": "How far east?",
+        "t": 112.768
+      },
+      {
+        "title": "Finding a bearing",
+        "t": 161.845
+      },
+      {
+        "title": "Your turn",
+        "t": 216.015
+      },
+      {
+        "title": "Summary",
+        "t": 252.709
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-10-1:q",
+        "t": 226.483,
+        "prompt": "The bearing of $Q$ from $P$ is $125^\\circ$. What is the bearing of $P$ from $Q$?",
+        "choices": [
+          "$305^\\circ$",
+          "$055^\\circ$",
+          "$235^\\circ$",
+          "$125^\\circ$"
+        ],
+        "answer": 0,
+        "working": "$125^\\circ$ is less than $180^\\circ$, so add $180^\\circ$: $125^\\circ + 180^\\circ = 305^\\circ$."
+      }
+    ]
+  },
+  "mx-10-2": {
+    "lessonId": "mx-10-2",
+    "title": "Loci",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a locus is",
+        "t": 19.99
+      },
+      {
+        "title": "A distance from a point",
+        "t": 66.916
+      },
+      {
+        "title": "Equidistant from two points",
+        "t": 100.554
+      },
+      {
+        "title": "A distance from a line",
+        "t": 145.987
+      },
+      {
+        "title": "Forgetting the ends",
+        "t": 196.314
+      },
+      {
+        "title": "Your turn",
+        "t": 212.833
+      },
+      {
+        "title": "Summary",
+        "t": 252.053
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-10-2:q",
+        "t": 224.889,
+        "prompt": "A dog is tied to a post by a lead $4$ m long. What area of ground can it reach, to $1$ decimal place?",
+        "choices": [
+          "$25.1$ m²",
+          "$12.6$ m²",
+          "$50.3$ m²",
+          "$201.1$ m²"
+        ],
+        "answer": 2,
+        "working": "The region is a circle of radius $4$ m: $\\pi \\times 4^2 = 50.26\\ldots \\approx 50.3$ m²."
+      }
+    ]
+  },
+  "mx-10-3": {
+    "lessonId": "mx-10-3",
+    "title": "Arcs and Sectors",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Arcs and sectors",
+        "t": 21.318
+      },
+      {
+        "title": "Arc length",
+        "t": 55.106
+      },
+      {
+        "title": "Sector area",
+        "t": 104.021
+      },
+      {
+        "title": "Segments",
+        "t": 137.529
+      },
+      {
+        "title": "Your turn",
+        "t": 182.062
+      },
+      {
+        "title": "Summary",
+        "t": 221.904
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-10-3:q",
+        "t": 194.694,
+        "prompt": "A sector has radius $10$ cm and angle $72^\\circ$. What is its area, to $1$ decimal place?",
+        "choices": [
+          "$12.6$ cm²",
+          "$6.3$ cm²",
+          "$314.2$ cm²",
+          "$62.8$ cm²"
+        ],
+        "answer": 3,
+        "working": "Area $= \\dfrac{72}{360} \\times \\pi \\times 10^2 = 20\\pi = 62.83\\ldots \\approx 62.8$ cm²."
+      }
+    ]
+  },
+  "mx-10-4": {
+    "lessonId": "mx-10-4",
+    "title": "Pythagoras and Trigonometry in 3D",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The space diagonal",
+        "t": 21.51
+      },
+      {
+        "title": "A pyramid",
+        "t": 90.741
+      },
+      {
+        "title": "A line and a plane",
+        "t": 151.128
+      },
+      {
+        "title": "Your turn",
+        "t": 205.215
+      },
+      {
+        "title": "Summary",
+        "t": 243.623
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-10-4:q",
+        "t": 217.507,
+        "prompt": "A cuboid is $12$ cm long, $4$ cm wide and $3$ cm high. How long is its space diagonal?",
+        "choices": [
+          "$19$ cm",
+          "$13$ cm",
+          "$12.6$ cm",
+          "$169$ cm"
+        ],
+        "answer": 1,
+        "working": "$d = \\sqrt{12^2 + 4^2 + 3^2} = \\sqrt{144 + 16 + 9} = \\sqrt{169} = 13$ cm."
+      }
+    ]
+  },
+  "mx-11-1": {
+    "lessonId": "mx-11-1",
+    "title": "Frequency Trees",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a frequency tree is",
+        "t": 17.509
+      },
+      {
+        "title": "Completing a tree",
+        "t": 33.057
+      },
+      {
+        "title": "Fractions and percentages",
+        "t": 71.322
+      },
+      {
+        "title": "Probabilities",
+        "t": 102.686
+      },
+      {
+        "title": "The right total",
+        "t": 149.47
+      },
+      {
+        "title": "Your turn",
+        "t": 165.024
+      },
+      {
+        "title": "Summary",
+        "t": 210.394
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-11-1:q",
+        "t": 182.189,
+        "prompt": "$80$ people visited a museum, and $30$ of them were children. $18$ of the children bought a ticket. One of the children is chosen at random. What is the probability that they did **not** buy a ticket?",
+        "choices": [
+          "$\\dfrac{2}{5}$",
+          "$\\dfrac{3}{5}$",
+          "$\\dfrac{3}{20}$",
+          "$\\dfrac{2}{3}$"
+        ],
+        "answer": 0,
+        "working": "$30 - 18 = 12$ children did not buy a ticket, and we choose from the $30$ children: $\\dfrac{12}{30} = \\dfrac{2}{5}$."
+      }
+    ]
+  },
+  "mx-11-2": {
+    "lessonId": "mx-11-2",
+    "title": "Histograms",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Frequency density",
+        "t": 21.134
+      },
+      {
+        "title": "Working out the densities",
+        "t": 43.785
+      },
+      {
+        "title": "Drawing the histogram",
+        "t": 86.538
+      },
+      {
+        "title": "Plotting the frequency",
+        "t": 106.911
+      },
+      {
+        "title": "Reading a histogram",
+        "t": 124.829
+      },
+      {
+        "title": "Your turn",
+        "t": 163.289
+      },
+      {
+        "title": "Summary",
+        "t": 200.768
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-11-2:q",
+        "t": 175.45,
+        "prompt": "In a histogram, the class $10 < h \\le 25$ has a frequency density of $1.6$. What is its frequency?",
+        "choices": [
+          "$9.4$",
+          "$40$",
+          "$24$",
+          "$16$"
+        ],
+        "answer": 2,
+        "working": "The class width is $25 - 10 = 15$, so the frequency is $1.6 \\times 15 = 24$."
+      }
+    ]
+  },
+  "mx-11-3": {
+    "lessonId": "mx-11-3",
+    "title": "Cumulative Frequency",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Running totals",
+        "t": 20.257
+      },
+      {
+        "title": "Drawing the graph",
+        "t": 65.525
+      },
+      {
+        "title": "The median and quartiles",
+        "t": 100.381
+      },
+      {
+        "title": "Reading the graph",
+        "t": 132.669
+      },
+      {
+        "title": "Your turn",
+        "t": 175.438
+      },
+      {
+        "title": "Summary",
+        "t": 210.518
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-11-3:q",
+        "t": 188.86,
+        "prompt": "A cumulative frequency graph shows the heights of $80$ plants. At what cumulative frequency do you read across to find the **upper quartile**?",
+        "choices": [
+          "$40$",
+          "$60$",
+          "$20$",
+          "$45$"
+        ],
+        "answer": 1,
+        "working": "The upper quartile is $\\tfrac{3}{4}$ of the way through: $\\tfrac{3}{4} \\times 80 = 60$."
+      }
+    ]
   }
 }
