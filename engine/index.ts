@@ -12,3 +12,4 @@ export * from './actions.ts';
 export * from './integrity.ts';
 export * from './ink.ts';
 export * from './timing.ts';
+export * from './rubric.ts';

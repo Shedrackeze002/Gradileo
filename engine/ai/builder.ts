@@ -22,6 +22,7 @@ import type { Difficulty } from '../types.ts';
 import { minimaxChat, type MiniMaxConfig } from './minimax.ts';
 import { extractJson } from './parse.ts';
 import { subjectName } from './prompt.ts';
+import { RUBRIC_TEMPLATES, rubricFromTemplate } from '../rubric.ts';
 
 export const DRAFT_TYPES = ['homework', 'practice', 'classwork', 'quiz', 'exam'] as const;
 export type DraftType = (typeof DRAFT_TYPES)[number];
@@ -207,7 +208,16 @@ const FORMAT_RULES: Record<WrittenFormat, string> = {
 const ACCURACY_RULES = `- Every number in your questions and answers must be right: work each answer out step by step before you write it.
 - Questions use Markdown with maths in $...$; write money as \\$4.50 outside the maths. State every rate, price or rule inside the question, never claim a current official figure, and use neutral settings with no real place names. In JSON strings, write every backslash twice (\\\\frac).`;
 
-const QUESTION_JSON = `{"format": "choice" | "short" | "written", "skillId": string, "prompt": string, "choices"?: [string, ...], "correct"?: number, "value"?: number, "check"?: string, "accepted"?: [string, ...], "points"?: number, "solution": string}`;
+const QUESTION_JSON = `{"format": "choice" | "short" | "written", "skillId": string, "prompt": string, "choices"?: [string, ...], "correct"?: number, "value"?: number, "check"?: string, "accepted"?: [string, ...], "points"?: number, "rubric"?: string, "solution": string}`;
+
+/** English written work is marked with a rubric (engine/rubric.ts): the AI picks the one that fits. */
+const isEnglish = (subject?: string) => /^English\b/.test(subject?.trim() ?? '');
+const RUBRIC_RULE = `  - written, in English: for an essay, a paragraph or any longer piece of writing, also give "rubric", the id of the rubric it is marked with: ${RUBRIC_TEMPLATES.map((t) => `"${t.id}" (${t.use.replace(/\.$/, '').toLowerCase()})`).join(', ')}. The solution then gives a model answer or what a strong answer includes, not points.`;
+
+/** The rules for the formats asked for, with the rubric rule for English written work. */
+function formatRules(formats: readonly WrittenFormat[], subject?: string): string {
+  return formats.map((f) => FORMAT_RULES[f] + (f === 'written' && isEnglish(subject) ? `\n${RUBRIC_RULE}` : '')).join('\n');
+}
 
 export function draftPrompt(req: DraftRequest, ctx: DraftContext): { system: string; user: string } {
   const own = req.formats.filter((f): f is WrittenFormat => f !== 'generated');
@@ -217,7 +227,7 @@ Rules:
 - Exactly ${req.count} questions in all: each generated question counts as one, and each question you write counts as one.
 ${req.formats.includes('generated') ? `- Generated questions: choose skills by their id from the list. Each gives every student fresh numbers and is graded automatically, with hints and a worked solution. Give each chosen skill a count (1 to 6) and a difficulty: 1 easy, 2 medium, 3 hard, or "mixed" (easy to hard). Use generated questions for most routine practice.` : '- Do not use generated questions: write every question yourself.'}
 ${own.length ? `- Your own questions, only in these formats: ${own.join(', ')} (never any other format). Use them for what generated questions cannot do: word problems in a real context, reasoning, explaining, spotting a mistake. Each practises one skill from the list (give its id) and has a worked "solution" in Markdown with maths in $...$.
-${own.map((f) => FORMAT_RULES[f]).join('\n')}` : '- Do not write questions of your own.'}
+${formatRules(own, ctx.subject)}` : '- Do not write questions of your own.'}
 ${ACCURACY_RULES}
 - Difficulty: ${req.difficulty === 'easier' ? 'mostly easy, some medium' : req.difficulty === 'harder' ? 'mostly medium and hard' : 'a range from easy to hard'}.${req.focusWeak ? '\n- Give more of the questions to the skills with low class mastery (the class\'s average chance of knowing the skill, 0 to 1; null means no data yet).' : ''}
 - Follow the teacher's notes where they fit these rules.
@@ -334,7 +344,8 @@ function parseQuestions(raw: unknown, allowedFormats: readonly DraftFormat[], al
     } else {
       if (!solution) return void dropped.push(`${n}: no marking guide`);
       const points = Math.min(10, Math.max(1, Math.round(Number(q.points) || 4)));
-      custom.push({ ...base, kind: 'manual', points });
+      const rubric = typeof q.rubric === 'string' ? rubricFromTemplate(q.rubric) : null;
+      custom.push({ ...base, kind: 'manual', points, ...(rubric ? { rubric } : {}) });
     }
   });
   return { custom, dropped };
@@ -533,7 +544,7 @@ export function regeneratePrompt(req: RegenerateRequest, ctx: DraftContext): { s
     system: `You help a ${subjectName(ctx.subject)} teacher replace one question in a ${TYPE_LABEL[req.type].toLowerCase()} they are writing. The teacher reviews your question before any student sees it.
 Rules:
 - Write exactly one new question in the format "${req.format}", for ${req.skillId ? `the skill with id "${req.skillId}"` : 'one skill from the list (give its id)'}. It must be clearly different from the question it replaces (a new context or new numbers, not the same question reworded), at about the same difficulty unless the teacher asks otherwise.
-${FORMAT_RULES[req.format]}${req.format === 'written' && req.points ? ` It is worth ${req.points} points: award them in the solution.` : ''}
+${formatRules([req.format], ctx.subject)}${req.format === 'written' && req.points ? ` It is worth ${req.points} points${isEnglish(ctx.subject) ? '' : ': award them in the solution'}.` : ''}
 - Give a worked "solution" in Markdown with maths in $...$.
 ${ACCURACY_RULES}
 - Follow the teacher's request where it fits these rules.

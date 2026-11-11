@@ -157,7 +157,7 @@ export default function ClassSettingsPage() {
             checked={c.settings.emailReminders}
             onChange={(emailReminders) => update.mutate({ settings: { emailReminders } })}
             label="Also send reminders by email"
-            description={demoApi() ? 'Available once Gradileo is connected to Supabase and an email provider (see docs/SETUP.md). In-app and browser notifications always work.' : 'Uses the email provider configured for your Gradileo deployment. Students with generated usernames only get in-app notifications.'}
+            description={demoApi() ? 'Available once Gradileo is connected to Supabase and an email provider (see docs/SETUP.md). In-app and browser notifications always work.' : 'Emails go to students who signed up with an email address, and to students with a username or class link who added one in Settings. Everyone else gets in-app notifications.'}
           />
         </CardBody>
       </Card>

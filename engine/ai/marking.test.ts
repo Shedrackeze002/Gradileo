@@ -1,5 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { cleanPages, markPrompt, markSteps, parseMark, snapMark, suggestMark, type MarkRequest } from './marking.ts';
+import { cleanPages, markPrompt, markRequestFor, markSteps, parseMark, snapMark, suggestMark, type MarkRequest } from './marking.ts';
+import { rubricFromTemplate } from '../rubric.ts';
+import { customToItem } from '../assemble.ts';
 
 const page = 'data:image/png;base64,iVBORw0KGgo=';
 const request = (patch: Partial<MarkRequest> = {}): MarkRequest => ({
@@ -82,5 +84,39 @@ describe('suggesting a mark', () => {
     const down = await suggestMark(request(), { apiKey: 'k' });
     expect(down.suggestion).toBeNull();
     expect(down.error).toMatch(/503/);
+  });
+});
+
+describe('marking with a rubric', () => {
+  const criteria = rubricFromTemplate('short-response')!.criteria;
+  const essay = (patch: Partial<MarkRequest> = {}) => request({ prompt: 'How does Poe build suspense?', guide: '', points: 5, typed: 'The narrator repeats that he is calm.', pages: [], criteria, ...patch });
+
+  it('takes the rubric from the question', () => {
+    const item = customToItem({ id: 'q', prompt: 'Why?', kind: 'manual', points: 5, rubric: { criteria } }, 0, 'a');
+    expect(markRequestFor(item, { answers: ['Because.'] }, [])?.criteria).toEqual(criteria);
+    expect(markRequestFor(customToItem({ id: 'q', prompt: 'Why?', kind: 'manual' }, 0, 'a'), { answers: ['x'] }, [])).not.toHaveProperty('criteria');
+  });
+
+  it('asks for a level on each criterion, with the rubric in the request', () => {
+    const p = markPrompt(essay(), false);
+    expect(p.system).toMatch(/give every criterion a level from 0 to 4/);
+    expect(p.system).toMatch(/"criteria": \[\{"id": string, "level"/);
+    expect(p.system).not.toMatch(/Do not take marks off for handwriting, spelling/);
+    const sent = (p.user[0] as { text: string }).text;
+    expect(sent).toContain('Evidence and explanation [id evidence] (counts 2×)');
+    expect(sent).toContain('(none: use the rubric)');
+  });
+
+  it('scores the levels it gives, scaled to the points, and needs every criterion', () => {
+    const m = parseMark({ criteria: [{ id: 'answer', level: 3, reason: 'Clear.' }, { id: 'evidence', level: 2.4, reason: 'One quotation.' }, { id: 'clarity', level: 4 }, { id: 'extra', level: 4 }], reasons: 'A clear answer with thin evidence.', comment: 'Explain your quotation.', confidence: 'medium' }, essay(), false);
+    // 3 + 2 × 2 + 4 = 11 of 16, scaled to 5 points.
+    expect(m.points).toBe(3.4);
+    expect(m.criteria).toEqual([{ id: 'answer', level: 3, reason: 'Clear.' }, { id: 'evidence', level: 2, reason: 'One quotation.' }, { id: 'clarity', level: 4, reason: '' }]);
+    expect(() => parseMark({ criteria: [{ id: 'answer', level: 3 }], reasons: 'x' }, essay(), false)).toThrow(/every criterion/);
+  });
+
+  it('gives an empty answer 0 on every criterion without asking the AI', async () => {
+    const r = await suggestMark(essay({ typed: '' }), { apiKey: 'k' });
+    expect(r.suggestion?.criteria?.map((c) => c.level)).toEqual([0, 0, 0]);
   });
 });

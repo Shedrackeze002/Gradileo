@@ -2,9 +2,10 @@ import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { CameraOff, ChevronLeft, ChevronRight, Clock, Eye, Lightbulb, RotateCcw, Send, ShieldCheck, Sparkles } from 'lucide-react';
-import { isQuestionType, itemFromRef } from '@engine/assemble.ts';
+import { isQuestionType, itemFromRef, rubricOf } from '@engine/assemble.ts';
 import { cameraOffCount, exitCount } from '@engine/integrity.ts';
-import { markSteps, type MarkResult } from '@engine/ai/marking.ts';
+import { markSteps, type MarkResult, type MarkSuggestion } from '@engine/ai/marking.ts';
+import { levelName, rubricScore01, type RubricCriterion, type RubricLevels } from '@engine/rubric.ts';
 import { api } from '@/data/index.ts';
 import { qk, useAssignment, useProfile, useRoster, useSubmission, useSubmissions, useSuggestMark } from '@/data/hooks.ts';
 import type { Assignment, Submission } from '@/data/types.ts';
@@ -12,6 +13,7 @@ import { Avatar, Badge, Button, Card, CardBody, EmptyState, PageHeader, PageSpin
 import { Markdown } from '@/components/math/Markdown.tsx';
 import { canvasPageImages } from '@/features/whiteboard/pageImages.ts';
 import { ReviewList } from '@/components/question/ReviewList.tsx';
+import { RubricGrid } from '@/components/question/Rubric.tsx';
 import { SkillsGate } from '@/components/SkillsGate.tsx';
 import { refSkillIds } from '@/lib/useSkills.ts';
 import { fmtDateTime } from '@/lib/dates.ts';
@@ -123,6 +125,7 @@ function Review() {
               responses={s.responses}
               content={a.data?.content ?? { sections: [], custom: [] }}
               assignmentId={a.data?.id ?? 'practice'}
+              showRubric={false}
               renderExtra={(i) =>
                 a.data ? (
                   <>
@@ -212,7 +215,12 @@ function Review() {
 function ManualGrader({ s, a, index }: { s: Submission; a: Assignment; index: number }) {
   const item = itemFromRef(s.items[index], a.content, a.id);
   const resp = s.responses[index];
+  const criteria = rubricOf(item);
   const [score, setScore] = useState<number | null>(resp?.manualScore ?? null);
+  const [levels, setLevels] = useState<RubricLevels>(resp?.rubric ?? {});
+  const [suggested, setSuggested] = useState<RubricLevels | undefined>();
+  // A question with a rubric is marked on it, unless the teacher chose to give one mark instead.
+  const [single, setSingle] = useState(!!criteria && typeof resp?.manualScore === 'number' && !resp?.rubric);
   const [comment, setComment] = useState(resp?.comment ?? '');
   const [busy, setBusy] = useState(false);
   const qc = useQueryClient();
@@ -220,6 +228,8 @@ function ManualGrader({ s, a, index }: { s: Submission; a: Assignment; index: nu
   if (!item || !item.parts.some((p) => p.answer.kind === 'manual')) return null;
   const pts = Math.max(1, Math.round(item.points ?? 1));
   const steps = markSteps(pts);
+  const byRubric = !!criteria && !single;
+  const value = byRubric ? rubricScore01(criteria, levels) : score;
   return (
     <div className="space-y-3 rounded-xl border border-brand-200 bg-brand-50/40 p-4">
       <SuggestedMark
@@ -227,38 +237,56 @@ function ManualGrader({ s, a, index }: { s: Submission; a: Assignment; index: nu
         index={index}
         canvas={resp?.canvas}
         points={pts}
+        criteria={criteria}
         onUse={(m) => {
-          setScore(m.points / pts);
+          if (criteria && m.criteria) {
+            const next = Object.fromEntries(m.criteria.map((c) => [c.id, c.level]));
+            setLevels(next);
+            setSuggested(next);
+            setSingle(false);
+          } else setScore(m.points / pts);
           if (!comment.trim() && m.comment) setComment(m.comment);
         }}
       />
-      <div className="text-sm font-semibold">Your grade</div>
-      <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Points">
-        {steps.map((p) => (
-          <button
-            key={p}
-            type="button"
-            role="radio"
-            aria-checked={score !== null && Math.abs(score * pts - p) < 1e-6}
-            onClick={() => setScore(p / pts)}
-            className={cn('h-9 min-w-[2.75rem] rounded-lg border px-2 text-sm font-semibold transition', score !== null && Math.abs(score * pts - p) < 1e-6 ? 'border-brand bg-brand text-brand-ink' : 'border-line bg-surface hover:border-line-strong')}
-          >
-            {p}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="text-sm font-semibold">Your grade{byRubric && ' on the rubric'}</div>
+        {criteria && (
+          <button type="button" className="text-xs font-semibold text-brand hover:underline" onClick={() => setSingle(!single)}>
+            {single ? 'Mark with the rubric' : 'Give one mark instead'}
           </button>
-        ))}
-        <span className="self-center pl-1 text-sm text-ink-3">/ {pts}</span>
+        )}
       </div>
+      {byRubric ? (
+        <RubricGrid criteria={criteria} levels={levels} onChange={setLevels} points={pts} suggested={suggested} />
+      ) : (
+        <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Points">
+          {steps.map((p) => (
+            <button
+              key={p}
+              type="button"
+              role="radio"
+              aria-checked={score !== null && Math.abs(score * pts - p) < 1e-6}
+              onClick={() => setScore(p / pts)}
+              className={cn('h-9 min-w-[2.75rem] rounded-lg border px-2 text-sm font-semibold transition', score !== null && Math.abs(score * pts - p) < 1e-6 ? 'border-brand bg-brand text-brand-ink' : 'border-line bg-surface hover:border-line-strong')}
+            >
+              {p}
+            </button>
+          ))}
+          <span className="self-center pl-1 text-sm text-ink-3">/ {pts}</span>
+        </div>
+      )}
       <Textarea rows={2} placeholder="Comment for the student (optional)" value={comment} onChange={(e) => setComment(e.target.value)} />
       <div className="flex justify-end">
         <Button
           size="sm"
-          disabled={score === null}
+          disabled={value === null}
+          title={value === null && byRubric ? 'Give a level on every criterion' : undefined}
           loading={busy}
           onClick={async () => {
-            if (score === null) return;
+            if (value === null) return;
             setBusy(true);
             try {
-              const updated = await api().gradeManual(s.id, index, score, comment.trim() || undefined);
+              const updated = await api().gradeManual(s.id, index, value, comment.trim() || undefined, byRubric ? levels : undefined);
               qc.setQueryData(qk.submission(s.id), updated);
               await qc.invalidateQueries({ queryKey: ['submissions'] });
               toast({ kind: 'success', title: 'Grade saved' });
@@ -359,7 +387,7 @@ function MarkOverride({ s, a, index }: { s: Submission; a: Assignment; index: nu
 const CONFIDENCE = { high: 'High confidence', medium: 'Medium confidence', low: 'Low confidence' } as const;
 
 /** "Suggest a mark": the AI reads the question, the marking guide and the answer (canvas included). */
-function SuggestedMark({ s, index, canvas, points, onUse }: { s: Submission; index: number; canvas?: string; points: number; onUse: (m: { points: number; comment: string }) => void }) {
+function SuggestedMark({ s, index, canvas, points, criteria, onUse }: { s: Submission; index: number; canvas?: string; points: number; criteria: RubricCriterion[] | null; onUse: (m: MarkSuggestion) => void }) {
   const suggest = useSuggestMark(s.id, index);
   const [result, setResult] = useState<MarkResult | null>(null);
   const m = result?.suggestion;
@@ -381,7 +409,7 @@ function SuggestedMark({ s, index, canvas, points, onUse }: { s: Submission; ind
         >
           {suggest.isPending ? 'Reading the answer…' : result ? 'Suggest again' : 'Suggest a mark'}
         </Button>
-        {!result && !suggest.isPending && <span className="text-xs text-ink-3">The AI reads the answer{canvas ? ' and the working on the canvas' : ''} against the marking guide. You decide the mark.</span>}
+        {!result && !suggest.isPending && <span className="text-xs text-ink-3">The AI reads the answer{canvas ? ' and the working on the canvas' : ''} against the {criteria ? 'rubric' : 'marking guide'}. You decide the mark.</span>}
       </div>
       {suggest.isError && <p className="rounded-lg bg-bad-soft px-3 py-2 text-sm text-bad-ink">{(suggest.error as Error).message || 'Could not suggest a mark. Please try again.'}</p>}
       {result && !m && result.note && <p className="rounded-lg bg-info-soft px-3 py-2 text-sm text-info-ink">{result.note}</p>}
@@ -396,6 +424,16 @@ function SuggestedMark({ s, index, canvas, points, onUse }: { s: Submission; ind
               Use this mark
             </Button>
           </div>
+          {criteria && m.criteria && (
+            <ul className="space-y-1" aria-label="Suggested levels">
+              {m.criteria.map((c) => (
+                <li key={c.id}>
+                  <span className="font-medium">{criteria.find((x) => x.id === c.id)?.name ?? c.id}:</span> {c.level} {levelName(c.level)}
+                  {c.reason && <span className="text-ink-3"> · {c.reason}</span>}
+                </li>
+              ))}
+            </ul>
+          )}
           <Markdown md={m.reasons} sanitize className="text-ink-2" />
           {m.comment && (
             <div className="text-ink-3">

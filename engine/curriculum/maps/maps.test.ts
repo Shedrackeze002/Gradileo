@@ -31,7 +31,9 @@ describe('curriculum maps', () => {
   });
 
   it('recommend a GCSE tier to a UK learner in Year 10 or 11, and Gradileo’s own courses to others', () => {
-    expect(mappedCourses('uk').map((c) => c.shortTitle)).toEqual(['GCSE Foundation', 'GCSE Higher']);
+    expect(mappedCourses('uk').map((c) => c.shortTitle)).toEqual(['GCSE Foundation', 'GCSE Higher', 'A level Year 12', 'A level Year 13']);
+    // Every GCSE topic has a lesson, so neither tier lists a gap.
+    for (const id of ['uk-gcse-foundation', 'uk-gcse-higher']) expect(getCourse(id)!.gaps, id).toEqual([]);
     const uk = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'uk', feeling: 'ok', ...more });
     expect(uk(9).courseId).toBe('uk-gcse-higher');
     expect(uk(10).courseId).toBe('uk-gcse-higher');
@@ -40,6 +42,34 @@ describe('curriculum maps', () => {
     expect(uk(9, { feeling: 'struggling' }).courseId).toBe('uk-gcse-foundation');
     expect(uk(8).courseId).toBe('math-8');
     expect(uk(10).prerequisite).toBe('math-9');
+  });
+
+  it('build A level Mathematics from Gradileo’s lessons, list what it does not teach yet, and offer it in Years 12 and 13', () => {
+    const year1 = getCourse('uk-a-level-year-1')!;
+    const year2 = getCourse('uk-a-level-year-2')!;
+    expect(year1.units.map((u) => u.title)).toContain('Exponentials and Logarithms');
+    expect(year2.units.map((u) => u.title)).toContain('Trigonometry and Modelling');
+    // Mechanics is taught in both years, so it is no longer a gap.
+    expect(year1.units.map((u) => u.title)).toContain('Forces and Newton’s Laws');
+    expect(year2.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Moments', 'Projectiles', 'Applications of Forces']));
+    expect([...year1.gaps!, ...year2.gaps!].filter((g) => /mechanics|Newton’s laws|pulley|Projectile|friction|inclined|Moments|Kinematics/i.test(g))).toEqual([]);
+    // Statistics is taught in both years too.
+    expect(year1.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Statistical Distributions', 'Hypothesis Testing']));
+    expect(year2.units.map((u) => u.title)).toContain('Regression, Correlation and Hypothesis Testing');
+    expect([...year1.gaps!, ...year2.gaps!].filter((g) => /sampling|binomial distribution|outliers|random variables|correlation|normal/i.test(g))).toEqual([]);
+    // So is pure mathematics, including the calculus and numerical methods: neither year has a gap left.
+    expect(year2.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Proof', 'The Binomial Expansion', 'Vectors', 'Numerical Methods']));
+    expect(year2.units.find((u) => u.title === 'Integration')!.lessons).toEqual(expect.arrayContaining(['mx-19-3', 'mx-19-4', 'mx-19-5', 'mx-19-6']));
+    expect(year1.gaps).toEqual([]);
+    expect(year2.gaps).toEqual([]);
+    const uk = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'uk', plan: 'university-stem', feeling: 'ok', ...more });
+    expect(uk(11).courseId).toBe('uk-a-level-year-1');
+    expect(uk(11).prerequisite).toBe('uk-gcse-higher');
+    expect(uk(12).courseId).toBe('uk-a-level-year-2');
+    expect(uk(12).prerequisite).toBe('uk-a-level-year-1');
+    // A learner heading for work or with extra support keeps Gradileo’s own courses.
+    expect(uk(11, { plan: 'work' }).courseId).toBe('math-20-3');
+    expect(uk(12, { support: true }).courseId).toBe('math-20-4');
   });
 
   it('recommend the Common Core course of a US learner’s grade, with a placement check on the one before', () => {

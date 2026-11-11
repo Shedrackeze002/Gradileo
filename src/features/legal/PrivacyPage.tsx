@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       title="Privacy Policy"
-      updated="November 6, 2026"
+      updated="November 11, 2026"
       intro={
         <>
           <p>
@@ -37,6 +37,13 @@ export default function PrivacyPage() {
           remembers them. A name-only account that the teacher never lets into the class is deleted automatically. For teacher accounts, we also keep whether the account has been approved. For a student who finds their
           own course, we keep where they go to school (the country or curriculum they choose), so their courses can follow it; their year and other
           answers to the course questions stay in their browser.
+        </p>
+        <p>
+          <strong>An email address for reminders (optional).</strong> A student whose account has no email address (a username from their teacher, or a
+          name-only account the teacher has let into a class) may add one in Settings, their own or a parent’s, so that reminders from classes whose
+          teacher turned on email reminders also arrive by email. We send a six-digit code to the address and use it only once the code is typed back.
+          We use the address only for those reminders. Teachers and other students cannot see it, and the student can change or remove it at any time
+          in Settings.
         </p>
         <p>
           <strong>Class information.</strong> The classes you teach or join, class settings, join requests (including any short message you add),
@@ -98,7 +105,7 @@ export default function PrivacyPage() {
           question, its skill and the teacher’s note.
         </p>
         <p>
-          When a teacher asks for a suggested mark on a student’s written answer, Gradileo sends MiniMax the question, its marking guide, what the
+          When a teacher asks for a suggested mark on a student’s written answer, Gradileo sends MiniMax the question, its marking guide and rubric, what the
           student typed and pictures of the student’s working on the answer canvas. We do not send the student’s name or email address, and the
           suggestion is not saved: it is shown only to the teacher, who decides the mark.
         </p>
@@ -138,8 +145,8 @@ export default function PrivacyPage() {
             <strong>MiniMax</strong>: the AI model provider for teacher-requested analyses, assignment drafts, suggested marks, report card drafts and the AI tutor, as described in section 3.
           </li>
           <li>
-            <strong>Our email delivery provider</strong>: sends reminder emails when a teacher turns them on. It receives the student’s email address and
-            the message.
+            <strong>Resend</strong>: our email delivery provider. It sends account emails (such as the one that confirms a new account’s email address)
+            and, when a teacher turns them on, reminder emails, from gradileo.com. It receives the recipient’s email address and the message.
           </li>
           <li>
             <strong>YouTube</strong>: some lessons include explainer videos hosted on YouTube, embedded in YouTube’s privacy-enhanced mode. When you play a

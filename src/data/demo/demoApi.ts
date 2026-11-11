@@ -20,7 +20,9 @@ import { answerTutorQuestion, normalizeChunk, normalizeQuestion, writeTutorScrip
 import { classMastery, draftAssignment, draftContext, normalizeDraftRequest, normalizeRegenerateRequest, regenerateQuestion, type DraftRequest, type DraftResult, type RegenerateRequest, type RegenerateResult } from '@engine/ai/builder.ts';
 import { markRequestFor, suggestMark, type MarkResult } from '@engine/ai/marking.ts';
 import type { SkillState } from '@engine/mastery.ts';
+import type { RubricLevels } from '@engine/rubric.ts';
 import { exitCount, isLocked, mergeIntegrity, type Integrity } from '@engine/integrity.ts';
+import { DEMO_EMAIL_CODE } from './emailCode.ts';
 import type { AiConfigStatus, DataApi, SignUpInput, SubmissionFilter, TutorReply } from '../api.ts';
 import type {
   AdminAuditEntry,
@@ -60,6 +62,7 @@ import type {
   ClassQuestion,
   NewStudentCredential,
   NotificationKind,
+  NotificationEmail,
   Profile,
   ProposedAction,
   LessonCompletion,
@@ -318,6 +321,36 @@ export class DemoApi implements DataApi {
     if (newPassword.length < 6) throw new Error('Use at least 6 characters.');
     this.me().password = newPassword;
     this.persist();
+  }
+
+  // The demo sends no email: the code is always DEMO_EMAIL_CODE, and the address lasts until the
+  // page is reloaded.
+  private notifyEmails = new Map<string, NotificationEmail>();
+
+  async getNotificationEmail(): Promise<NotificationEmail> {
+    return this.notifyEmails.get(this.me().id) ?? { email: null, pendingEmail: null };
+  }
+
+  async requestNotificationEmail(email: string): Promise<NotificationEmail> {
+    const address = email.trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(address)) throw new Error('Enter a full email address, such as name@example.com.');
+    const next = { email: (await this.getNotificationEmail()).email, pendingEmail: address };
+    this.notifyEmails.set(this.me().id, next);
+    return next;
+  }
+
+  async confirmNotificationEmail(code: string): Promise<NotificationEmail> {
+    const now = await this.getNotificationEmail();
+    if (!now.pendingEmail) throw new Error('Ask for a code first.');
+    if (code !== DEMO_EMAIL_CODE) throw new Error('That code is not right. Check the email and try again.');
+    const next = { email: now.pendingEmail, pendingEmail: null };
+    this.notifyEmails.set(this.me().id, next);
+    return next;
+  }
+
+  async removeNotificationEmail(): Promise<NotificationEmail> {
+    this.notifyEmails.delete(this.me().id);
+    return { email: null, pendingEmail: null };
   }
 
   // ------------------------------------------------------------------ classes
@@ -1290,7 +1323,7 @@ export class DemoApi implements DataApi {
     this.persist();
   }
 
-  async gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string) {
+  async gradeManual(submissionId: string, itemIndex: number, score01: number | null, comment?: string, rubric?: RubricLevels) {
     const at = this.db.submissions.findIndex((x) => x.id === submissionId);
     if (at < 0) throw new Error('Submission not found.');
     this.requireTeacherOf(this.db.submissions[at].classId);
@@ -1298,10 +1331,11 @@ export class DemoApi implements DataApi {
     // and would not see the change.
     const s = { ...this.db.submissions[at] };
     const a = s.assignmentId ? this.db.assignments.find((x) => x.id === s.assignmentId) : null;
-    s.responses = { ...s.responses, [itemIndex]: { ...(s.responses[itemIndex] ?? { answers: [], hintsUsed: 0 }), manualScore: score01 === null ? null : Math.max(0, Math.min(1, score01)), comment: comment ?? null } };
     // Recompute totals with the engine (teacher marks included).
-    const { gradeSubmission } = await import('@engine/assemble.ts');
+    const { gradeSubmission, itemFromRef, markResponse } = await import('@engine/assemble.ts');
     await loadSkills(refSkillIds(a?.content, s.items));
+    const item = s.items[itemIndex] ? itemFromRef(s.items[itemIndex], a?.content ?? { sections: [], custom: [] }, a?.id ?? 'practice') : null;
+    s.responses = { ...s.responses, [itemIndex]: markResponse(item, s.responses[itemIndex], { score: score01, comment, rubric }) };
     const g = gradeSubmission(s.items, s.responses, a?.content ?? { sections: [], custom: [] }, a?.id ?? 'practice');
     s.score = g.score;
     s.maxScore = g.maxScore;

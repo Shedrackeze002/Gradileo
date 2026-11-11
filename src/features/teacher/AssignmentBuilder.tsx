@@ -35,6 +35,7 @@ import { skillLabel } from '../shared/derive.ts';
 import { useClassId } from './shared.tsx';
 import { DraftWithAI, type DraftMode } from './DraftWithAI.tsx';
 import { RegenerateQuestion } from './RegenerateQuestion.tsx';
+import { RubricEditor } from './RubricEditor.tsx';
 
 interface Draft {
   id?: string;
@@ -938,7 +939,8 @@ function CustomEditor({ d, setContent, classId }: { d: Draft; setContent: (p: Pa
           lessonIds={lessons}
           onClose={() => setRegenerating(null)}
           onReplace={(nq) => {
-            setContent({ custom: qs.map((x) => (x.id === target.id ? nq : x)) });
+            // A new written question keeps the rubric the teacher chose, unless the AI chose one.
+            setContent({ custom: qs.map((x) => (x.id === target.id ? (nq.kind === 'manual' && !nq.rubric && target.rubric ? { ...nq, rubric: target.rubric } : nq) : x)) });
             setRegenerating(null);
           }}
         />
@@ -1024,6 +1026,7 @@ function QuestionEditor({ q, number, onChange, onRemove, onRegenerate, skillOpti
           <Input label="Accept within ±" type="number" step="any" min={0} value={q.tolerance ?? 0} onChange={(e) => onChange({ ...q, tolerance: Math.abs(Number(e.target.value)) })} hint="Students may also type fractions or expressions." />
         </div>
       )}
+      {q.kind === 'manual' && <RubricEditor q={q} onChange={onChange} />}
       {q.kind === 'text' && <Input label="Accepted answers" placeholder="Separate with commas, e.g. hypotenuse, the hypotenuse" value={(q.accepted ?? []).join(', ')} onChange={(e) => onChange({ ...q, accepted: e.target.value.split(',').map((x) => x.trim()).filter(Boolean) })} hint="Not case-sensitive." />}
       <div className="flex flex-wrap items-center gap-3">
         {skillOptions.length > 0 && (

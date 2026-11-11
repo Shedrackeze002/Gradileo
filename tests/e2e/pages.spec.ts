@@ -135,19 +135,49 @@ test('the US Precalculus course lists no gaps and teaches vectors and matrices',
   expect(errors).toEqual([]);
 });
 
-test('a teacher starts a class on GCSE Higher, which lists the topics Gradileo does not teach yet', async ({ page }) => {
+test('a teacher starts a class on GCSE Higher, which teaches every topic, and opens one of its new lessons', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
   await page.goto('/t/new-class');
-  await page.getByRole('tab', { name: 'UK GCSE' }).click();
+  await page.getByRole('tab', { name: 'UK GCSE and A level' }).click();
   const course = page.getByRole('button', { name: /^GCSE Mathematics: Higher \(UK\)/ });
   await course.click();
-  await expect(course.getByText(/Not in Gradileo yet/)).toBeVisible();
+  await expect(course.getByText(/Not in Gradileo yet/)).toHaveCount(0);
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
   await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
   await expect(page.getByText('Circle Theorems').first()).toBeVisible();
   await expect(page.getByText('Surds').first()).toBeVisible();
+  await expect(page.getByText('Histograms').first()).toBeVisible();
+  await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/mx-11-3`);
+  await expect(page.getByText('Cumulative Frequency').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a teacher starts a class on A level Year 13, which lists the topics Gradileo does not teach yet', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'UK GCSE and A level' }).click();
+  const course = page.getByRole('button', { name: /^A level Mathematics: Year 13 \(UK\)/ });
+  await course.click();
+  await expect(course.getByText(/Not in Gradileo yet/)).toHaveCount(0);
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
+  await expect(page.getByText('Trigonometry and Modelling').first()).toBeVisible();
+  await expect(page.getByText('Parametric Equations').first()).toBeVisible();
+  await expect(page.getByText('Projectiles').first()).toBeVisible();
+  await expect(page.getByText('Regression, Correlation and Hypothesis Testing').first()).toBeVisible();
+  await expect(page.getByText('The Binomial Expansion').first()).toBeVisible();
+  await page.goto(`${page.url().replace(/\/curriculum$/, '')}/lessons/mx-13-6`);
+  await expect(page.getByText('Beams in equilibrium').first()).toBeVisible();
+  await page.goto(page.url().replace(/mx-13-6$/, 'mx-15-1'));
+  await expect(page.getByText('Testing for correlation').first()).toBeVisible();
+  await page.goto(page.url().replace(/mx-15-1$/, 'mx-18-3'));
+  await expect(page.getByText('Using the form').first()).toBeVisible();
+  await page.goto(page.url().replace(/mx-18-3$/, 'mx-19-4'));
+  await expect(page.getByText('Definite integrals by parts').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 

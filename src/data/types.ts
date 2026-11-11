@@ -11,6 +11,14 @@ export type Role = 'teacher' | 'student';
 
 export type TeacherStatus = 'approved' | 'pending' | 'rejected';
 
+/** An email address a student without one added for class reminders (Settings). */
+export interface NotificationEmail {
+  /** The confirmed address that reminders go to. */
+  email: string | null;
+  /** An address waiting for the code sent to it. */
+  pendingEmail: string | null;
+}
+
 export interface Profile {
   id: string;
   role: Role;

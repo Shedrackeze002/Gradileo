@@ -79,6 +79,9 @@ export const PREREQUISITE: Record<string, string | null> = {
   // The UK GCSE map: both tiers follow Key Stage 3 (Years 7 to 9).
   'uk-gcse-foundation': 'math-8',
   'uk-gcse-higher': 'math-9',
+  // A level Mathematics follows GCSE Higher, and its second year follows its first.
+  'uk-a-level-year-1': 'uk-gcse-higher',
+  'uk-a-level-year-2': 'uk-a-level-year-1',
 };
 
 /** For a UK learner in Year 10 or 11: the GCSE tier, Higher unless they want extra support. */
@@ -91,6 +94,20 @@ function ukGcse(a: PlacementAnswers): Recommendation {
   }
   return rec('uk-gcse-higher', [where, 'The Higher tier adds surds, functions, circle theorems, the sine and cosine rules and more.'], [
     { courseId: 'uk-gcse-foundation', why: 'If your school has entered you for the Foundation tier, or the basics still feel new.' },
+  ]);
+}
+
+/** For a UK learner in Year 12 or 13 who plans to study further: the year of A level Mathematics. */
+function ukALevel(g: number): Recommendation {
+  const where = 'A level Mathematics is the course of Years 12 and 13, with its units in the order of a two-year scheme of work: pure mathematics, statistics and mechanics.';
+  if (g === 11) {
+    return rec('uk-a-level-year-1', [where, 'The first year (the AS content) covers proof, quadratics, coordinate geometry, trigonometry, exponentials and logarithms, and a first course in differentiation and integration.'], [
+      { courseId: 'uk-a-level-year-2', why: 'If you have already finished the first year of A level.' },
+      { courseId: 'uk-gcse-higher', why: 'If you want to review GCSE Higher first.' },
+    ]);
+  }
+  return rec('uk-a-level-year-2', [where, 'The second year adds functions, radians and further trigonometry, series, and further differentiation and integration.'], [
+    { courseId: 'uk-a-level-year-1', why: 'If you have not finished the first year of A level yet.' },
   ]);
 }
 
@@ -194,6 +211,9 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
   if (a.curriculum === 'us' && g >= 6) return usCourse(Math.min(12, g), a);
   // A UK learner in Year 10 or 11 gets GCSE Mathematics: Higher, or Foundation with extra support.
   if (a.curriculum === 'uk' && (g === 9 || g === 10)) return ukGcse(a);
+  // A UK learner in Year 12 or 13 heading for university, or not sure yet, gets A level Mathematics.
+  const studying = !a.plan || a.plan === 'university-stem' || a.plan === 'university-other' || a.plan === 'not-sure';
+  if (a.curriculum === 'uk' && g >= 11 && !a.support && studying) return ukALevel(Math.min(12, g));
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));
     return rec(`math-${grade}`, [`Grade ${grade} Mathematics covers the mathematics of your grade, so you learn what your class is learning.`]);

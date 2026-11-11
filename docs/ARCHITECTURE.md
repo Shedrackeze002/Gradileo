@@ -19,7 +19,7 @@ work authoritatively. This keeps the server and the student's screen in exact ag
                  │  pg_cron: send_due_reminders() every 5 min, email delivery         │
                  │  Edge Functions (Deno, engine copied in by scripts/sync-engine):   │
                  │    grade-submission · ai-agent · ai-tutor · create-students ·      │
-                 │    send-emails · admin-users · join-class                          │
+                 │    send-emails · admin-users · join-class · notify-email           │
                  └──────────────┬───────────────────────────────┬────────────────────┘
                                 │                               │
                          MiniMax chat API                  Resend email API
@@ -169,12 +169,12 @@ them from the map's tab. Lesson content, practice, videos and tutor recordings a
 or skill id, so they need nothing new; `loadCourseSkills` loads a mapped course's generators from
 the courses its lessons come from, and `courseLesson(courseId, lessonId)` gives a lesson as the
 class's course numbers it. The maps are `us.ts` (US Common Core, Grade 6 to Precalculus) and `uk.ts` (UK GCSE,
-Foundation and Higher). To add a map, write its file next to them, add it to
+Foundation and Higher, and A level Mathematics, Years 12 and 13). To add a map, write its file next to them, add it to
 `CURRICULUM_MAPS`, give each course a `PREREQUISITE`, and run `npm test` (the map tests check every
 lesson id). A gap is filled with a lesson in **More Mathematics Topics** (`engine/curriculum/mathmore/`,
 `math-more`, lesson ids `mx-…`): a course of the lessons the maps need that Gradileo's grade courses
-do not teach (box plots, scientific notation, the equation of a circle, complex numbers, vectors
-and matrices, conic sections). It is marked `extra`, so it
+do not teach (box plots, scientific notation, the equation of a circle, complex numbers, vectors,
+matrices, conic sections, and the GCSE topics such as bounds, iteration, bearings, loci and histograms, and the A level mechanics, statistics, pure and calculus topics). It is marked `extra`, so it
 is not in `LISTED_COURSES`, but its lessons are filed under topics (`TOPIC_COURSES`) and each lesson
 carries its own level (`LessonMeta.grade`), since the course spans Grades 6 to 12. Add the lesson to
 the map's unit and take the topic off the map's `gaps`.
@@ -355,7 +355,10 @@ reading time when a slide has no recording (a teacher's own resource, or a slide
 3. The browser shows new notifications instantly (Realtime), as a toast, and as a system
    notification when the tab is in the background.
 4. If the class has email reminders on, `send-emails` delivers `assignment` and `reminder`
-   notifications through Resend to students with a real email address.
+   notifications through Resend to students with a real email address, from
+   Gradileo <no-reply@gradileo.com>. Its Resend key and sender are in Vault (the *Set up sending
+   email* workflow writes them), read through `email_settings()`, which answers only the
+   scheduler's shared secret.
 
 ## AI teaching assistant
 

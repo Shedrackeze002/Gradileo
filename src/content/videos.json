@@ -111524,5 +111524,2642 @@
         "working": "$x = 3^2 = 9$ and $y = 2(3) + 1 = 7$, so the point is at $(9, 7)$."
       }
     ]
+  },
+  "mx-7-1": {
+    "lessonId": "mx-7-1",
+    "title": "Error Intervals",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an error interval is",
+        "t": 23.155
+      },
+      {
+        "title": "Decimal places and significant figures",
+        "t": 80.361
+      },
+      {
+        "title": "Truncation",
+        "t": 143.422
+      },
+      {
+        "title": "Rounding or truncation?",
+        "t": 194.152
+      },
+      {
+        "title": "Your turn",
+        "t": 226.605
+      },
+      {
+        "title": "Summary",
+        "t": 264.28
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-1:q",
+        "t": 236.865,
+        "prompt": "A length $l$ is $8.4$ m, to $1$ decimal place. Which is its error interval?",
+        "choices": [
+          "$8.4 \\le l < 8.5$",
+          "$8.35 \\le l < 8.45$",
+          "$8.35 < l \\le 8.45$",
+          "$8.3 \\le l < 8.5$"
+        ],
+        "answer": 1,
+        "working": "The unit is $0.1$ m, so half a unit is $0.05$ m: $8.4 - 0.05 = 8.35$ and $8.4 + 0.05 = 8.45$. The lower bound is included and the upper bound is not."
+      }
+    ]
+  },
+  "mx-7-2": {
+    "lessonId": "mx-7-2",
+    "title": "Upper and Lower Bounds in Calculations",
+    "duration": 272,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Adding and multiplying",
+        "t": 16.614
+      },
+      {
+        "title": "Subtracting and dividing",
+        "t": 70.405
+      },
+      {
+        "title": "A speed",
+        "t": 105.246
+      },
+      {
+        "title": "A sensible answer",
+        "t": 170.877
+      },
+      {
+        "title": "Your turn",
+        "t": 199.816
+      },
+      {
+        "title": "Summary",
+        "t": 235.692
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-2:q",
+        "t": 210.303,
+        "prompt": "$a = 20$ and $b = 6$, each to the nearest whole number. What is the upper bound of $a - b$?",
+        "choices": [
+          "$14$",
+          "$13$",
+          "$14.5$",
+          "$15$"
+        ],
+        "answer": 3,
+        "working": "Use the upper bound of $a$ and the lower bound of $b$: $20.5 - 5.5 = 15$."
+      }
+    ]
+  },
+  "mx-7-3": {
+    "lessonId": "mx-7-3",
+    "title": "Recurring Decimals and Fractions",
+    "duration": 287,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dot notation",
+        "t": 24.073
+      },
+      {
+        "title": "From a fraction",
+        "t": 65.07
+      },
+      {
+        "title": "Back to a fraction",
+        "t": 110.963
+      },
+      {
+        "title": "A digit before the block",
+        "t": 162.849
+      },
+      {
+        "title": "Your turn",
+        "t": 212.177
+      },
+      {
+        "title": "Summary",
+        "t": 250.768
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-7-3:q",
+        "t": 223.566,
+        "prompt": "Write $0.\\dot{1}\\dot{8}$ (that is, $0.181818\\ldots$) as a fraction in its lowest terms.",
+        "choices": [
+          "$\\tfrac{9}{50}$",
+          "$\\tfrac{2}{11}$",
+          "$\\tfrac{18}{100}$",
+          "$\\tfrac{1}{8}$"
+        ],
+        "answer": 1,
+        "working": "Let $x = 0.1818\\ldots$. Then $100x = 18.1818\\ldots$, so $99x = 18$ and $x = \\tfrac{18}{99} = \\tfrac{2}{11}$."
+      }
+    ]
+  },
+  "mx-8-1": {
+    "lessonId": "mx-8-1",
+    "title": "Quadratic Sequences",
+    "duration": 286,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Second differences",
+        "t": 27.605
+      },
+      {
+        "title": "Finding the nth term",
+        "t": 72.578
+      },
+      {
+        "title": "Checking and a common mistake",
+        "t": 139.803
+      },
+      {
+        "title": "Which term?",
+        "t": 168.712
+      },
+      {
+        "title": "Your turn",
+        "t": 214.294
+      },
+      {
+        "title": "Summary",
+        "t": 251.845
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-1:q",
+        "t": 223.55,
+        "prompt": "Find the $n$th term of the sequence $3,\\ 9,\\ 19,\\ 33,\\ 51,\\ \\ldots$",
+        "choices": [
+          "$4n^2 - 1$",
+          "$2n^2 + 1$",
+          "$n^2 + 2$",
+          "$2n^2 + 2n - 1$"
+        ],
+        "answer": 1,
+        "working": "First differences $6, 10, 14, 18$; second differences $4$, so $2n^2$: $2, 8, 18, 32, 50$. The sequence minus $2n^2$ is $1, 1, 1, 1, 1$, so the $n$th term is $2n^2 + 1$."
+      }
+    ]
+  },
+  "mx-8-2": {
+    "lessonId": "mx-8-2",
+    "title": "Solving Equations by Iteration",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A change of sign",
+        "t": 24.252
+      },
+      {
+        "title": "An iteration formula",
+        "t": 67.791
+      },
+      {
+        "title": "Iterating",
+        "t": 112.038
+      },
+      {
+        "title": "Keep every digit",
+        "t": 168.39
+      },
+      {
+        "title": "Your turn",
+        "t": 194.087
+      },
+      {
+        "title": "Summary",
+        "t": 230.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-2:q",
+        "t": 210.093,
+        "prompt": "Use $x_{n+1} = \\sqrt{x_n + 5}$ with $x_0 = 3$. What is $x_1$, to 3 decimal places?",
+        "choices": [
+          "$2.828$",
+          "$2.798$",
+          "$2.646$",
+          "$2.236$"
+        ],
+        "answer": 0,
+        "working": "$x_1 = \\sqrt{3 + 5} = \\sqrt{8} = 2.828\\ldots$"
+      }
+    ]
+  },
+  "mx-8-3": {
+    "lessonId": "mx-8-3",
+    "title": "Gradients as Rates of Change",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Gradient as a rate",
+        "t": 21.859
+      },
+      {
+        "title": "Acceleration",
+        "t": 57.459
+      },
+      {
+        "title": "Tangents to curves",
+        "t": 111.463
+      },
+      {
+        "title": "Your turn",
+        "t": 161.511
+      },
+      {
+        "title": "Summary",
+        "t": 205.714
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-3:q",
+        "t": 177.69,
+        "prompt": "On a velocity–time graph, a car’s velocity rises steadily from $5$ m/s to $25$ m/s in $8$ seconds. What is its acceleration?",
+        "choices": [
+          "$3.125$ m/s²",
+          "$20$ m/s²",
+          "$2.5$ m/s²",
+          "$0.4$ m/s²"
+        ],
+        "answer": 2,
+        "working": "Gradient $= \\dfrac{25 - 5}{8} = \\dfrac{20}{8} = 2.5$ m/s²."
+      }
+    ]
+  },
+  "mx-8-3-b": {
+    "lessonId": "mx-8-3",
+    "title": "Areas Under Graphs",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What the area means",
+        "t": 20.744
+      },
+      {
+        "title": "The tram",
+        "t": 41.159
+      },
+      {
+        "title": "Estimating under a curve",
+        "t": 86.281
+      },
+      {
+        "title": "Too high or too low?",
+        "t": 138.008
+      },
+      {
+        "title": "Your turn",
+        "t": 170.372
+      },
+      {
+        "title": "Summary",
+        "t": 211.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-3-b:q",
+        "t": 186.437,
+        "prompt": "A car speeds up steadily from rest to $20$ m/s in $10$ seconds. Using the area under its velocity–time graph, how far does it travel in those $10$ seconds?",
+        "choices": [
+          "$200$ m",
+          "$2$ m",
+          "$20$ m",
+          "$100$ m"
+        ],
+        "answer": 3,
+        "working": "The area is a triangle: $\\tfrac{1}{2} \\times 10 \\times 20 = 100$ m."
+      }
+    ]
+  },
+  "mx-8-4": {
+    "lessonId": "mx-8-4",
+    "title": "Graphs of Sine, Cosine and Tangent",
+    "duration": 327,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sine and cosine",
+        "t": 23.137
+      },
+      {
+        "title": "Tangent",
+        "t": 75.765
+      },
+      {
+        "title": "Stretching and moving",
+        "t": 118.166
+      },
+      {
+        "title": "Every solution",
+        "t": 173.895
+      },
+      {
+        "title": "Using the symmetry",
+        "t": 205.665
+      },
+      {
+        "title": "Your turn",
+        "t": 249.854
+      },
+      {
+        "title": "Summary",
+        "t": 285.796
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-8-4:q",
+        "t": 260.917,
+        "prompt": "Solve $\\cos x = 0.5$ for $0^\\circ \\le x \\le 360^\\circ$.",
+        "choices": [
+          "$x = 60^\\circ$ only",
+          "$x = 60^\\circ$ or $x = 120^\\circ$",
+          "$x = 60^\\circ$ or $x = 240^\\circ$",
+          "$x = 60^\\circ$ or $x = 300^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$\\cos^{-1}(0.5) = 60^\\circ$, and the cosine graph is symmetrical about $180^\\circ$, so the other solution is $360^\\circ - 60^\\circ = 300^\\circ$."
+      }
+    ]
+  },
+  "mx-9-1": {
+    "lessonId": "mx-9-1",
+    "title": "Direct and Inverse Proportion",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Direct proportion",
+        "t": 22.112
+      },
+      {
+        "title": "Squares and roots",
+        "t": 81.579
+      },
+      {
+        "title": "Inverse proportion",
+        "t": 122.856
+      },
+      {
+        "title": "The graphs",
+        "t": 168.514
+      },
+      {
+        "title": "Your turn",
+        "t": 200.821
+      },
+      {
+        "title": "Summary",
+        "t": 235.447
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-9-1:q",
+        "t": 212.606,
+        "prompt": "$y$ is inversely proportional to $x$. When $x = 5$, $y = 12$. Find $y$ when $x = 15$.",
+        "choices": [
+          "$36$",
+          "$2$",
+          "$4$",
+          "$60$"
+        ],
+        "answer": 2,
+        "working": "$y = \\dfrac{k}{x}$, so $k = 5 \\times 12 = 60$. When $x = 15$, $y = \\dfrac{60}{15} = 4$."
+      }
+    ]
+  },
+  "mx-9-2": {
+    "lessonId": "mx-9-2",
+    "title": "Density and Pressure",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Density",
+        "t": 21.543
+      },
+      {
+        "title": "Finding a mass",
+        "t": 61.84
+      },
+      {
+        "title": "Pressure",
+        "t": 112.741
+      },
+      {
+        "title": "Square centimetres to square metres",
+        "t": 160.786
+      },
+      {
+        "title": "Your turn",
+        "t": 210.346
+      },
+      {
+        "title": "Summary",
+        "t": 247.291
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-9-2:q",
+        "t": 224.277,
+        "prompt": "A piece of wood has a mass of $360$ g and a density of $0.6$ g/cm³. What is its volume?",
+        "choices": [
+          "$216$ cm³",
+          "$600$ cm³",
+          "$0.0017$ cm³",
+          "$60$ cm³"
+        ],
+        "answer": 1,
+        "working": "Volume $= \\dfrac{\\text{mass}}{\\text{density}} = \\dfrac{360}{0.6} = 600$ cm³."
+      }
+    ]
+  },
+  "mx-10-1": {
+    "lessonId": "mx-10-1",
+    "title": "Bearings",
+    "duration": 282,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three-figure bearings",
+        "t": 23.621
+      },
+      {
+        "title": "The bearing back",
+        "t": 76.972
+      },
+      {
+        "title": "How far east?",
+        "t": 112.768
+      },
+      {
+        "title": "Finding a bearing",
+        "t": 161.845
+      },
+      {
+        "title": "Your turn",
+        "t": 216.015
+      },
+      {
+        "title": "Summary",
+        "t": 252.709
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-10-1:q",
+        "t": 226.483,
+        "prompt": "The bearing of $Q$ from $P$ is $125^\\circ$. What is the bearing of $P$ from $Q$?",
+        "choices": [
+          "$305^\\circ$",
+          "$055^\\circ$",
+          "$235^\\circ$",
+          "$125^\\circ$"
+        ],
+        "answer": 0,
+        "working": "$125^\\circ$ is less than $180^\\circ$, so add $180^\\circ$: $125^\\circ + 180^\\circ = 305^\\circ$."
+      }
+    ]
+  },
+  "mx-10-2": {
+    "lessonId": "mx-10-2",
+    "title": "Loci",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a locus is",
+        "t": 19.99
+      },
+      {
+        "title": "A distance from a point",
+        "t": 66.916
+      },
+      {
+        "title": "Equidistant from two points",
+        "t": 100.554
+      },
+      {
+        "title": "A distance from a line",
+        "t": 145.987
+      },
+      {
+        "title": "Forgetting the ends",
+        "t": 196.314
+      },
+      {
+        "title": "Your turn",
+        "t": 212.833
+      },
+      {
+        "title": "Summary",
+        "t": 252.053
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-10-2:q",
+        "t": 224.889,
+        "prompt": "A dog is tied to a post by a lead $4$ m long. What area of ground can it reach, to $1$ decimal place?",
+        "choices": [
+          "$25.1$ m²",
+          "$12.6$ m²",
+          "$50.3$ m²",
+          "$201.1$ m²"
+        ],
+        "answer": 2,
+        "working": "The region is a circle of radius $4$ m: $\\pi \\times 4^2 = 50.26\\ldots \\approx 50.3$ m²."
+      }
+    ]
+  },
+  "mx-10-3": {
+    "lessonId": "mx-10-3",
+    "title": "Arcs and Sectors",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Arcs and sectors",
+        "t": 21.318
+      },
+      {
+        "title": "Arc length",
+        "t": 55.106
+      },
+      {
+        "title": "Sector area",
+        "t": 104.021
+      },
+      {
+        "title": "Segments",
+        "t": 137.529
+      },
+      {
+        "title": "Your turn",
+        "t": 182.062
+      },
+      {
+        "title": "Summary",
+        "t": 221.904
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-10-3:q",
+        "t": 194.694,
+        "prompt": "A sector has radius $10$ cm and angle $72^\\circ$. What is its area, to $1$ decimal place?",
+        "choices": [
+          "$12.6$ cm²",
+          "$6.3$ cm²",
+          "$314.2$ cm²",
+          "$62.8$ cm²"
+        ],
+        "answer": 3,
+        "working": "Area $= \\dfrac{72}{360} \\times \\pi \\times 10^2 = 20\\pi = 62.83\\ldots \\approx 62.8$ cm²."
+      }
+    ]
+  },
+  "mx-10-4": {
+    "lessonId": "mx-10-4",
+    "title": "Pythagoras and Trigonometry in 3D",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The space diagonal",
+        "t": 21.51
+      },
+      {
+        "title": "A pyramid",
+        "t": 90.741
+      },
+      {
+        "title": "A line and a plane",
+        "t": 151.128
+      },
+      {
+        "title": "Your turn",
+        "t": 205.215
+      },
+      {
+        "title": "Summary",
+        "t": 243.623
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-10-4:q",
+        "t": 217.507,
+        "prompt": "A cuboid is $12$ cm long, $4$ cm wide and $3$ cm high. How long is its space diagonal?",
+        "choices": [
+          "$19$ cm",
+          "$13$ cm",
+          "$12.6$ cm",
+          "$169$ cm"
+        ],
+        "answer": 1,
+        "working": "$d = \\sqrt{12^2 + 4^2 + 3^2} = \\sqrt{144 + 16 + 9} = \\sqrt{169} = 13$ cm."
+      }
+    ]
+  },
+  "mx-11-1": {
+    "lessonId": "mx-11-1",
+    "title": "Frequency Trees",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a frequency tree is",
+        "t": 17.509
+      },
+      {
+        "title": "Completing a tree",
+        "t": 33.057
+      },
+      {
+        "title": "Fractions and percentages",
+        "t": 71.322
+      },
+      {
+        "title": "Probabilities",
+        "t": 102.686
+      },
+      {
+        "title": "The right total",
+        "t": 149.47
+      },
+      {
+        "title": "Your turn",
+        "t": 165.024
+      },
+      {
+        "title": "Summary",
+        "t": 210.394
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-11-1:q",
+        "t": 182.189,
+        "prompt": "$80$ people visited a museum, and $30$ of them were children. $18$ of the children bought a ticket. One of the children is chosen at random. What is the probability that they did **not** buy a ticket?",
+        "choices": [
+          "$\\dfrac{2}{5}$",
+          "$\\dfrac{3}{5}$",
+          "$\\dfrac{3}{20}$",
+          "$\\dfrac{2}{3}$"
+        ],
+        "answer": 0,
+        "working": "$30 - 18 = 12$ children did not buy a ticket, and we choose from the $30$ children: $\\dfrac{12}{30} = \\dfrac{2}{5}$."
+      }
+    ]
+  },
+  "mx-11-2": {
+    "lessonId": "mx-11-2",
+    "title": "Histograms",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Frequency density",
+        "t": 21.134
+      },
+      {
+        "title": "Working out the densities",
+        "t": 43.785
+      },
+      {
+        "title": "Drawing the histogram",
+        "t": 86.538
+      },
+      {
+        "title": "Plotting the frequency",
+        "t": 106.911
+      },
+      {
+        "title": "Reading a histogram",
+        "t": 124.829
+      },
+      {
+        "title": "Your turn",
+        "t": 163.289
+      },
+      {
+        "title": "Summary",
+        "t": 200.768
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-11-2:q",
+        "t": 175.45,
+        "prompt": "In a histogram, the class $10 < h \\le 25$ has a frequency density of $1.6$. What is its frequency?",
+        "choices": [
+          "$9.4$",
+          "$40$",
+          "$24$",
+          "$16$"
+        ],
+        "answer": 2,
+        "working": "The class width is $25 - 10 = 15$, so the frequency is $1.6 \\times 15 = 24$."
+      }
+    ]
+  },
+  "mx-11-3": {
+    "lessonId": "mx-11-3",
+    "title": "Cumulative Frequency",
+    "duration": 244,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Running totals",
+        "t": 20.257
+      },
+      {
+        "title": "Drawing the graph",
+        "t": 65.525
+      },
+      {
+        "title": "The median and quartiles",
+        "t": 100.381
+      },
+      {
+        "title": "Reading the graph",
+        "t": 132.669
+      },
+      {
+        "title": "Your turn",
+        "t": 175.438
+      },
+      {
+        "title": "Summary",
+        "t": 210.518
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-11-3:q",
+        "t": 188.86,
+        "prompt": "A cumulative frequency graph shows the heights of $80$ plants. At what cumulative frequency do you read across to find the **upper quartile**?",
+        "choices": [
+          "$40$",
+          "$60$",
+          "$20$",
+          "$45$"
+        ],
+        "answer": 1,
+        "working": "The upper quartile is $\\tfrac{3}{4}$ of the way through: $\\tfrac{3}{4} \\times 80 = 60$."
+      }
+    ]
+  },
+  "mx-12-1": {
+    "lessonId": "mx-12-1",
+    "title": "Quantities, Units and Modelling in Mechanics",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "SI units",
+        "t": 28.581
+      },
+      {
+        "title": "Changing units",
+        "t": 82.901
+      },
+      {
+        "title": "Mass and weight",
+        "t": 129.002
+      },
+      {
+        "title": "Modelling assumptions",
+        "t": 185.391
+      },
+      {
+        "title": "Your turn",
+        "t": 245.391
+      },
+      {
+        "title": "Summary",
+        "t": 277.637
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-1:q",
+        "t": 255.603,
+        "prompt": "A train travels at $54$ km/h. What is its speed in metres per second?",
+        "choices": [
+          "$194.4$ m/s",
+          "$15$ m/s",
+          "$1.5$ m/s",
+          "$540$ m/s"
+        ],
+        "answer": 1,
+        "working": "Divide by $3.6$: $54 \\div 3.6 = 15$ m/s."
+      }
+    ]
+  },
+  "mx-12-2": {
+    "lessonId": "mx-12-2",
+    "title": "The Constant Acceleration Formulae",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The five quantities",
+        "t": 19.516
+      },
+      {
+        "title": "The formulas",
+        "t": 73.091
+      },
+      {
+        "title": "Choosing the formula",
+        "t": 118.998
+      },
+      {
+        "title": "Slowing down",
+        "t": 165.969
+      },
+      {
+        "title": "Two vehicles",
+        "t": 209.687
+      },
+      {
+        "title": "Your turn",
+        "t": 262.246
+      },
+      {
+        "title": "Summary",
+        "t": 300.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-2:q",
+        "t": 275.732,
+        "prompt": "A train speeds up steadily from $10$ m/s to $30$ m/s over $400$ m. Find its acceleration.",
+        "choices": [
+          "$0.05$ m/s²",
+          "$2$ m/s²",
+          "$1$ m/s²",
+          "$0.5$ m/s²"
+        ],
+        "answer": 2,
+        "working": "$v^2 = u^2 + 2as$: $900 = 100 + 800a$, so $a = 1$ m/s²."
+      }
+    ]
+  },
+  "mx-12-3": {
+    "lessonId": "mx-12-3",
+    "title": "Vertical Motion Under Gravity",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Free fall",
+        "t": 24.339
+      },
+      {
+        "title": "The greatest height",
+        "t": 63.983
+      },
+      {
+        "title": "From a cliff",
+        "t": 123.494
+      },
+      {
+        "title": "Your turn",
+        "t": 187.634
+      },
+      {
+        "title": "Summary",
+        "t": 221.333
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-3:q",
+        "t": 196.788,
+        "prompt": "A stone is dropped from rest and falls for $2$ s. How far does it fall? Take $g = 9.8$ m/s².",
+        "choices": [
+          "$9.8$ m",
+          "$39.2$ m",
+          "$4.9$ m",
+          "$19.6$ m"
+        ],
+        "answer": 3,
+        "working": "Downwards positive: $s = ut + \\tfrac{1}{2}at^2 = 0 + \\tfrac{1}{2}(9.8)(2^2) = 19.6$ m."
+      }
+    ]
+  },
+  "mx-12-4": {
+    "lessonId": "mx-12-4",
+    "title": "Forces and Newton’s Laws",
+    "duration": 296,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Newton’s three laws",
+        "t": 24.178
+      },
+      {
+        "title": "A car on a level road",
+        "t": 74.362
+      },
+      {
+        "title": "Forces as vectors",
+        "t": 119.773
+      },
+      {
+        "title": "In a lift",
+        "t": 160.392
+      },
+      {
+        "title": "Your turn",
+        "t": 220.948
+      },
+      {
+        "title": "Summary",
+        "t": 260.877
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-4:q",
+        "t": 236.803,
+        "prompt": "A box of mass $5$ kg is pulled along the floor by a horizontal force of $20$ N against a resistance of $5$ N. Find its acceleration.",
+        "choices": [
+          "$3$ m/s²",
+          "$4$ m/s²",
+          "$5$ m/s²",
+          "$75$ m/s²"
+        ],
+        "answer": 0,
+        "working": "Resultant force $= 20 - 5 = 15$ N, and $15 = 5a$, so $a = 3$ m/s²."
+      }
+    ]
+  },
+  "mx-12-5": {
+    "lessonId": "mx-12-5",
+    "title": "Connected Particles and Pulleys",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Connected particles",
+        "t": 24.085
+      },
+      {
+        "title": "A car and a trailer",
+        "t": 60.571
+      },
+      {
+        "title": "Pulleys",
+        "t": 122.428
+      },
+      {
+        "title": "Your turn",
+        "t": 185.542
+      },
+      {
+        "title": "Summary",
+        "t": 222.766
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-12-5:q",
+        "t": 198.843,
+        "prompt": "Particles of mass $4$ kg and $6$ kg hang over a smooth pulley and are released from rest. Find the acceleration. Take $g = 9.8$ m/s².",
+        "choices": [
+          "$9.8$ m/s²",
+          "$1.96$ m/s²",
+          "$3.92$ m/s²",
+          "$0.98$ m/s²"
+        ],
+        "answer": 1,
+        "working": "$6g - T = 6a$ and $T - 4g = 4a$. Adding: $2g = 10a$, so $a = 1.96$ m/s²."
+      }
+    ]
+  },
+  "mx-13-1": {
+    "lessonId": "mx-13-1",
+    "title": "Resolving Forces and Equilibrium",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Resolving a force",
+        "t": 24.659
+      },
+      {
+        "title": "The resultant",
+        "t": 62.691
+      },
+      {
+        "title": "Equilibrium",
+        "t": 101.807
+      },
+      {
+        "title": "Your turn",
+        "t": 172.315
+      },
+      {
+        "title": "Summary",
+        "t": 206.283
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-1:q",
+        "t": 183.703,
+        "prompt": "A force of $10$ N acts at $60^\\circ$ above the horizontal. Find its horizontal component.",
+        "choices": [
+          "$8.66$ N",
+          "$10$ N",
+          "$5$ N",
+          "$0.5$ N"
+        ],
+        "answer": 2,
+        "working": "The horizontal side is next to the angle: $10\\cos 60^\\circ = 5$ N."
+      }
+    ]
+  },
+  "mx-13-2": {
+    "lessonId": "mx-13-2",
+    "title": "Friction",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The friction law",
+        "t": 20.321
+      },
+      {
+        "title": "Does it move?",
+        "t": 58.769
+      },
+      {
+        "title": "A pull at an angle",
+        "t": 112.428
+      },
+      {
+        "title": "Your turn",
+        "t": 185.132
+      },
+      {
+        "title": "Summary",
+        "t": 224.114
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-2:q",
+        "t": 200.044,
+        "prompt": "A box of mass $5$ kg rests on rough horizontal ground with $\\mu = 0.4$. What horizontal force puts it on the point of moving?",
+        "choices": [
+          "$2$ N",
+          "$49$ N",
+          "$12.25$ N",
+          "$19.6$ N"
+        ],
+        "answer": 3,
+        "working": "$R = 5 \\times 9.8 = 49$ N, and limiting friction is $0.4 \\times 49 = 19.6$ N."
+      }
+    ]
+  },
+  "mx-13-3": {
+    "lessonId": "mx-13-3",
+    "title": "Inclined Planes",
+    "duration": 264,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Resolving on a slope",
+        "t": 21.851
+      },
+      {
+        "title": "Smooth and rough slopes",
+        "t": 60.058
+      },
+      {
+        "title": "A slope and a pulley",
+        "t": 134.521
+      },
+      {
+        "title": "Your turn",
+        "t": 196.548
+      },
+      {
+        "title": "Summary",
+        "t": 231.972
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-3:q",
+        "t": 207.634,
+        "prompt": "A particle slides down a smooth slope at $20^\\circ$ to the horizontal. Find its acceleration. Take $g = 9.8$ m/s².",
+        "choices": [
+          "$3.35$ m/s²",
+          "$9.21$ m/s²",
+          "$9.8$ m/s²",
+          "$4.9$ m/s²"
+        ],
+        "answer": 0,
+        "working": "$a = g\\sin 20^\\circ = 9.8 \\times 0.342 \\approx 3.35$ m/s²."
+      }
+    ]
+  },
+  "mx-13-4": {
+    "lessonId": "mx-13-4",
+    "title": "Projectiles",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two motions",
+        "t": 23.425
+      },
+      {
+        "title": "Thrown horizontally",
+        "t": 71.578
+      },
+      {
+        "title": "Projected at an angle",
+        "t": 118.027
+      },
+      {
+        "title": "Velocity at any time",
+        "t": 185.065
+      },
+      {
+        "title": "Your turn",
+        "t": 229.989
+      },
+      {
+        "title": "Summary",
+        "t": 268.096
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-4:q",
+        "t": 243.8,
+        "prompt": "A ball is projected at $10$ m/s at $30^\\circ$ above the horizontal. What is its horizontal velocity $1$ s later?",
+        "choices": [
+          "$5$ m/s",
+          "$8.66$ m/s",
+          "$0.2$ m/s",
+          "$10$ m/s"
+        ],
+        "answer": 1,
+        "working": "The horizontal velocity never changes: $10\\cos 30^\\circ \\approx 8.66$ m/s."
+      }
+    ]
+  },
+  "mx-13-5": {
+    "lessonId": "mx-13-5",
+    "title": "Kinematics in Two Dimensions",
+    "duration": 271,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Vectors for motion",
+        "t": 28.317
+      },
+      {
+        "title": "Constant acceleration",
+        "t": 70.538
+      },
+      {
+        "title": "Using calculus",
+        "t": 138.066
+      },
+      {
+        "title": "Your turn",
+        "t": 201.978
+      },
+      {
+        "title": "Summary",
+        "t": 237.263
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-5:q",
+        "t": 213.842,
+        "prompt": "A particle has velocity $\\mathbf{v} = 3t^2\\mathbf{i} + 4\\mathbf{j}$ m/s. Find its acceleration when $t = 2$.",
+        "choices": [
+          "$12\\mathbf{i} + 4\\mathbf{j}$",
+          "$6\\mathbf{i}$",
+          "$12\\mathbf{i} + \\mathbf{j}$",
+          "$12\\mathbf{i}$"
+        ],
+        "answer": 3,
+        "working": "$\\mathbf{a} = \\dfrac{d\\mathbf{v}}{dt} = 6t\\mathbf{i}$, since $4\\mathbf{j}$ is constant. At $t = 2$, $\\mathbf{a} = 12\\mathbf{i}$ m/s²."
+      }
+    ]
+  },
+  "mx-13-6": {
+    "lessonId": "mx-13-6",
+    "title": "Moments",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The moment of a force",
+        "t": 24.385
+      },
+      {
+        "title": "A beam in equilibrium",
+        "t": 80.299
+      },
+      {
+        "title": "On the point of tilting",
+        "t": 147.053
+      },
+      {
+        "title": "Your turn",
+        "t": 178.464
+      },
+      {
+        "title": "Summary",
+        "t": 216.387
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-13-6:q",
+        "t": 193.111,
+        "prompt": "A uniform rod $2$ m long with weight $30$ N is pivoted at one end and held horizontal. Find the moment of its weight about the pivot.",
+        "choices": [
+          "$60$ N m",
+          "$15$ N m",
+          "$30$ N m",
+          "$32$ N m"
+        ],
+        "answer": 2,
+        "working": "The weight acts at the midpoint, $1$ m from the pivot: $30 \\times 1 = 30$ N m."
+      }
+    ]
+  },
+  "mx-14-1": {
+    "lessonId": "mx-14-1",
+    "title": "Sampling Methods",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Populations and samples",
+        "t": 25.718
+      },
+      {
+        "title": "Five methods",
+        "t": 50.389
+      },
+      {
+        "title": "A stratified sample",
+        "t": 116.086
+      },
+      {
+        "title": "Your turn",
+        "t": 172.122
+      },
+      {
+        "title": "Summary",
+        "t": 206.3
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-14-1:q",
+        "t": 184.961,
+        "prompt": "A club has $90$ adults and $60$ children. A stratified sample of $20$ members is taken. How many children are in it?",
+        "choices": [
+          "$8$",
+          "$12$",
+          "$10$",
+          "$6$"
+        ],
+        "answer": 0,
+        "working": "The club has $150$ members, so $\\dfrac{60}{150} \\times 20 = 8$ children."
+      }
+    ]
+  },
+  "mx-14-2": {
+    "lessonId": "mx-14-2",
+    "title": "Variance, Standard Deviation and Coding",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Variance and standard deviation",
+        "t": 21.473
+      },
+      {
+        "title": "From the totals",
+        "t": 61.527
+      },
+      {
+        "title": "Coding",
+        "t": 105.773
+      },
+      {
+        "title": "Your turn",
+        "t": 162.961
+      },
+      {
+        "title": "Summary",
+        "t": 196.777
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-14-2:q",
+        "t": 174.674,
+        "prompt": "For $8$ values, $\\sum x = 40$ and $\\sum x^2 = 232$. Find the variance.",
+        "choices": [
+          "$2$",
+          "$4$",
+          "$29$",
+          "$24$"
+        ],
+        "answer": 1,
+        "working": "$\\bar{x} = 5$, so $\\sigma^2 = \\dfrac{232}{8} - 5^2 = 29 - 25 = 4$."
+      }
+    ]
+  },
+  "mx-14-3": {
+    "lessonId": "mx-14-3",
+    "title": "Outliers and Cleaning Data",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Finding outliers",
+        "t": 28.493
+      },
+      {
+        "title": "The 1.5 × IQR rule",
+        "t": 60.901
+      },
+      {
+        "title": "Cleaning data",
+        "t": 101.658
+      },
+      {
+        "title": "Your turn",
+        "t": 152.556
+      },
+      {
+        "title": "Summary",
+        "t": 187.762
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-14-3:q",
+        "t": 167.488,
+        "prompt": "A data set has $Q_1 = 18$ and $Q_3 = 26$. Using the $1.5 \\times \\text{IQR}$ rule, which value is an outlier?",
+        "choices": [
+          "$35$",
+          "$8$",
+          "$40$",
+          "$30$"
+        ],
+        "answer": 2,
+        "working": "IQR $= 8$ and $1.5 \\times 8 = 12$, so the limits are $6$ and $38$. Only $40$ is beyond them."
+      }
+    ]
+  },
+  "mx-14-4": {
+    "lessonId": "mx-14-4",
+    "title": "Discrete Random Variables",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Probability distributions",
+        "t": 25.776
+      },
+      {
+        "title": "Probability functions",
+        "t": 87.939
+      },
+      {
+        "title": "Your turn",
+        "t": 137.304
+      },
+      {
+        "title": "Summary",
+        "t": 173.714
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-14-4:q",
+        "t": 150.278,
+        "prompt": "$P(X = x) = k(x + 1)$ for $x = 0, 1, 2, 3$. Find $k$.",
+        "choices": [
+          "$\\tfrac{1}{6}$",
+          "$0.25$",
+          "$1$",
+          "$0.1$"
+        ],
+        "answer": 3,
+        "working": "$k(1 + 2 + 3 + 4) = 10k = 1$, so $k = 0.1$."
+      }
+    ]
+  },
+  "mx-14-5": {
+    "lessonId": "mx-14-5",
+    "title": "The Binomial Distribution",
+    "duration": 248,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "When it applies",
+        "t": 24.772
+      },
+      {
+        "title": "An exact probability",
+        "t": 73.108
+      },
+      {
+        "title": "Cumulative probabilities",
+        "t": 122.999
+      },
+      {
+        "title": "Your turn",
+        "t": 176.136
+      },
+      {
+        "title": "Summary",
+        "t": 211.366
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-14-5:q",
+        "t": 186.202,
+        "prompt": "$X \\sim \\mathrm{B}(5, 0.5)$. Find $P(X = 5)$.",
+        "choices": [
+          "$0.03125$",
+          "$0.5$",
+          "$0.15625$",
+          "$2.5$"
+        ],
+        "answer": 0,
+        "working": "$P(X = 5) = \\dbinom{5}{5}(0.5)^5(0.5)^0 = \\tfrac{1}{32} = 0.03125$."
+      }
+    ]
+  },
+  "mx-14-6": {
+    "lessonId": "mx-14-6",
+    "title": "Hypothesis Testing with the Binomial Distribution",
+    "duration": 259,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The language of testing",
+        "t": 23.267
+      },
+      {
+        "title": "Carrying out the test",
+        "t": 84.277
+      },
+      {
+        "title": "The critical region",
+        "t": 143.833
+      },
+      {
+        "title": "Your turn",
+        "t": 183.87
+      },
+      {
+        "title": "Summary",
+        "t": 226.306
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-14-6:q",
+        "t": 200.614,
+        "prompt": "A test of $H_0$: $p = 0.4$ against $H_1$: $p > 0.4$ at the $5\\%$ level gives a p-value of $0.08$. What is the conclusion?",
+        "choices": [
+          "Reject $H_0$: there is evidence that $p > 0.4$",
+          "Do not reject $H_0$: not enough evidence that $p > 0.4$",
+          "Accept $H_1$, since $p = 0.08$",
+          "This proves that $p = 0.4$"
+        ],
+        "answer": 1,
+        "working": "$0.08 > 0.05$, so the result is not significant: there is not enough evidence to reject $H_0$."
+      }
+    ]
+  },
+  "mx-15-1": {
+    "lessonId": "mx-15-1",
+    "title": "Correlation and the Product Moment Correlation Coefficient",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Measuring correlation",
+        "t": 19.313
+      },
+      {
+        "title": "Finding r",
+        "t": 63.298
+      },
+      {
+        "title": "Testing for correlation",
+        "t": 103.018
+      },
+      {
+        "title": "Your turn",
+        "t": 162.136
+      },
+      {
+        "title": "Summary",
+        "t": 204.7
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-15-1:q",
+        "t": 180.944,
+        "prompt": "For $12$ pairs, $r = -0.45$. Testing $H_1$: $\\rho < 0$ at the $5\\%$ level, the critical value is $-0.4973$. What is the conclusion?",
+        "choices": [
+          "Reject $H_0$: evidence of negative correlation",
+          "Reject $H_0$: evidence of positive correlation",
+          "Do not reject $H_0$: not enough evidence of negative correlation",
+          "$r$ proves there is no correlation"
+        ],
+        "answer": 2,
+        "working": "$-0.45$ is not beyond $-0.4973$, so the result is not significant."
+      }
+    ]
+  },
+  "mx-15-2": {
+    "lessonId": "mx-15-2",
+    "title": "The Inverse Normal Distribution",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From a probability to a value",
+        "t": 25.242
+      },
+      {
+        "title": "Finding μ or σ",
+        "t": 88.03
+      },
+      {
+        "title": "Your turn",
+        "t": 147.55
+      },
+      {
+        "title": "Summary",
+        "t": 189.29
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-15-2:q",
+        "t": 162.66,
+        "prompt": "$X \\sim \\mathrm{N}(60, 5^2)$. Find $a$ such that $P(X < a) = 0.95$.",
+        "choices": [
+          "$51.8$",
+          "$64.9$",
+          "$60.95$",
+          "$68.2$"
+        ],
+        "answer": 3,
+        "working": "$P(Z < z) = 0.95$ gives $z \\approx 1.6449$, so $a = 60 + 1.6449 \\times 5 \\approx 68.2$."
+      }
+    ]
+  },
+  "mx-15-3": {
+    "lessonId": "mx-15-3",
+    "title": "The Normal Approximation to the Binomial",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Setting up",
+        "t": 28.24
+      },
+      {
+        "title": "The continuity correction",
+        "t": 76.031
+      },
+      {
+        "title": "Your turn",
+        "t": 130.425
+      },
+      {
+        "title": "Summary",
+        "t": 169.302
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-15-3:q",
+        "t": 147.691,
+        "prompt": "$X \\sim \\mathrm{B}(50, 0.5)$ is approximated by $Y \\sim \\mathrm{N}(25, 12.5)$. Which probability approximates $P(X \\ge 30)$?",
+        "choices": [
+          "$P(Y > 29.5)$",
+          "$P(Y > 30.5)$",
+          "$P(Y < 29.5)$",
+          "$P(Y > 30)$"
+        ],
+        "answer": 0,
+        "working": "$X \\ge 30$ includes $30$, whose interval starts at $29.5$, so use $P(Y > 29.5)$."
+      }
+    ]
+  },
+  "mx-15-4": {
+    "lessonId": "mx-15-4",
+    "title": "Hypothesis Testing for the Mean of a Normal Distribution",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The sample mean",
+        "t": 25.544
+      },
+      {
+        "title": "Testing a mean",
+        "t": 74.196
+      },
+      {
+        "title": "Two tails",
+        "t": 125.863
+      },
+      {
+        "title": "Your turn",
+        "t": 174.673
+      },
+      {
+        "title": "Summary",
+        "t": 208.445
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-15-4:q",
+        "t": 189.733,
+        "prompt": "$X \\sim \\mathrm{N}(80, 10^2)$. A random sample of $25$ is taken. Find the standard deviation of the sample mean $\\bar{X}$.",
+        "choices": [
+          "$0.4$",
+          "$2$",
+          "$4$",
+          "$10$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{10}{\\sqrt{25}} = 2$."
+      }
+    ]
+  },
+  "mx-16-1": {
+    "lessonId": "mx-16-1",
+    "title": "Proof by Exhaustion",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Cases that cover everything",
+        "t": 24.08
+      },
+      {
+        "title": "Two cases",
+        "t": 57.358
+      },
+      {
+        "title": "Counterexamples",
+        "t": 114.756
+      },
+      {
+        "title": "Your turn",
+        "t": 156.71
+      },
+      {
+        "title": "Summary",
+        "t": 190.667
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-16-1:q",
+        "t": 170.036,
+        "prompt": "Which value of $n$ is a counterexample to “$2^n + 1$ is prime for every positive integer $n$”?",
+        "choices": [
+          "$n = 1$",
+          "$n = 2$",
+          "$n = 3$",
+          "$n = 4$"
+        ],
+        "answer": 2,
+        "working": "$2^1 + 1 = 3$, $2^2 + 1 = 5$ and $2^4 + 1 = 17$ are prime, but $2^3 + 1 = 9 = 3^2$ is not."
+      }
+    ]
+  },
+  "mx-16-2": {
+    "lessonId": "mx-16-2",
+    "title": "The Area of a Triangle",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Area = ½ab sin C",
+        "t": 20.076
+      },
+      {
+        "title": "Two possible angles",
+        "t": 75.295
+      },
+      {
+        "title": "Your turn",
+        "t": 127.399
+      },
+      {
+        "title": "Summary",
+        "t": 160.476
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-16-2:q",
+        "t": 140.117,
+        "prompt": "A triangle has sides $6$ cm and $10$ cm with an angle of $30^\\circ$ between them. Find its area.",
+        "choices": [
+          "$30$ cm²",
+          "$60$ cm²",
+          "$25.98$ cm²",
+          "$15$ cm²"
+        ],
+        "answer": 3,
+        "working": "$\\tfrac{1}{2} \\times 6 \\times 10 \\times \\sin 30^\\circ = 30 \\times 0.5 = 15$ cm²."
+      }
+    ]
+  },
+  "mx-16-3": {
+    "lessonId": "mx-16-3",
+    "title": "Logarithmic Graphs",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A power law",
+        "t": 22.055
+      },
+      {
+        "title": "Exponential models",
+        "t": 76.427
+      },
+      {
+        "title": "Your turn",
+        "t": 138.826
+      },
+      {
+        "title": "Summary",
+        "t": 174.727
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-16-3:q",
+        "t": 154.253,
+        "prompt": "For $y = kb^x$, the graph of $\\log y$ against $x$ is a straight line with gradient $0.3$ and intercept $0.5$. Find $b$.",
+        "choices": [
+          "$2.00$",
+          "$0.3$",
+          "$3.16$",
+          "$1.35$"
+        ],
+        "answer": 0,
+        "working": "The gradient is $\\log b$, so $b = 10^{0.3} \\approx 2.00$."
+      }
+    ]
+  },
+  "mx-17-1": {
+    "lessonId": "mx-17-1",
+    "title": "Proof by Contradiction",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How it works",
+        "t": 21.083
+      },
+      {
+        "title": "Root 2 is irrational",
+        "t": 63.479
+      },
+      {
+        "title": "Infinitely many primes",
+        "t": 112.782
+      },
+      {
+        "title": "Your turn",
+        "t": 167.231
+      },
+      {
+        "title": "Summary",
+        "t": 197.648
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-17-1:q",
+        "t": 177.117,
+        "prompt": "To prove “there is no largest even number” by contradiction, what do you assume first?",
+        "choices": [
+          "Every even number is large",
+          "There is a largest even number, $N$",
+          "There is no largest odd number",
+          "$N + 2$ is even"
+        ],
+        "answer": 1,
+        "working": "Assume the exact negation: there is a largest even number $N$. Then $N + 2$ is even and larger, a contradiction."
+      }
+    ]
+  },
+  "mx-17-2": {
+    "lessonId": "mx-17-2",
+    "title": "Partial Fractions",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Splitting a fraction",
+        "t": 26.37
+      },
+      {
+        "title": "Finding the constants",
+        "t": 62.071
+      },
+      {
+        "title": "Improper fractions",
+        "t": 117.235
+      },
+      {
+        "title": "Your turn",
+        "t": 151.452
+      },
+      {
+        "title": "Summary",
+        "t": 195.014
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-17-2:q",
+        "t": 167.748,
+        "prompt": "$\\dfrac{3x + 5}{(x + 1)(x + 3)} \\equiv \\dfrac{A}{x + 1} + \\dfrac{B}{x + 3}$. Find $A$.",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$1$",
+          "$-1$"
+        ],
+        "answer": 2,
+        "working": "$3x + 5 \\equiv A(x + 3) + B(x + 1)$. Put $x = -1$: $2 = 2A$, so $A = 1$."
+      }
+    ]
+  },
+  "mx-17-3": {
+    "lessonId": "mx-17-3",
+    "title": "Sigma Notation and Recurrence Relations",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sigma notation",
+        "t": 21.281
+      },
+      {
+        "title": "Recurrence relations",
+        "t": 84.058
+      },
+      {
+        "title": "Periodic sequences",
+        "t": 122.797
+      },
+      {
+        "title": "Your turn",
+        "t": 156.254
+      },
+      {
+        "title": "Summary",
+        "t": 187.24
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-17-3:q",
+        "t": 164.717,
+        "prompt": "Find $\\displaystyle\\sum_{r = 1}^{10} (2r + 1)$.",
+        "choices": [
+          "$110$",
+          "$21$",
+          "$240$",
+          "$120$"
+        ],
+        "answer": 3,
+        "working": "The terms run from $3$ to $21$, with $10$ terms: $\\tfrac{10}{2}(3 + 21) = 120$."
+      }
+    ]
+  },
+  "mx-17-4": {
+    "lessonId": "mx-17-4",
+    "title": "The Binomial Expansion for Any Rational n",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The general expansion",
+        "t": 24.782
+      },
+      {
+        "title": "A square root",
+        "t": 65.942
+      },
+      {
+        "title": "Other first terms",
+        "t": 113.966
+      },
+      {
+        "title": "Your turn",
+        "t": 162.413
+      },
+      {
+        "title": "Summary",
+        "t": 197.111
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-17-4:q",
+        "t": 172.6,
+        "prompt": "Find the first two terms of the expansion of $(1 - x)^{-1}$.",
+        "choices": [
+          "$1 + x$",
+          "$1 - x$",
+          "$-1 + x$",
+          "$1 - 2x$"
+        ],
+        "answer": 0,
+        "working": "$n = -1$ and the “$x$” is $-x$: $1 + (-1)(-x) = 1 + x$."
+      }
+    ]
+  },
+  "mx-17-5": {
+    "lessonId": "mx-17-5",
+    "title": "Vectors in Three Dimensions",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Vectors in 3D",
+        "t": 24.103
+      },
+      {
+        "title": "Distance and direction",
+        "t": 71.756
+      },
+      {
+        "title": "Geometry in 3D",
+        "t": 117.876
+      },
+      {
+        "title": "Your turn",
+        "t": 147.012
+      },
+      {
+        "title": "Summary",
+        "t": 180.061
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-17-5:q",
+        "t": 155.559,
+        "prompt": "Find $|4\\mathbf{i} - 4\\mathbf{j} + 7\\mathbf{k}|$.",
+        "choices": [
+          "$7$",
+          "$9$",
+          "$\\sqrt{15}$",
+          "$3$"
+        ],
+        "answer": 1,
+        "working": "$\\sqrt{16 + 16 + 49} = \\sqrt{81} = 9$."
+      }
+    ]
+  },
+  "mx-18-1": {
+    "lessonId": "mx-18-1",
+    "title": "Small-Angle Approximations",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The approximations",
+        "t": 26.48
+      },
+      {
+        "title": "Using them",
+        "t": 89.415
+      },
+      {
+        "title": "Your turn",
+        "t": 143.276
+      },
+      {
+        "title": "Summary",
+        "t": 177.082
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-18-1:q",
+        "t": 152.739,
+        "prompt": "For small $\\theta$ in radians, which is the approximation for $\\cos 4\\theta$?",
+        "choices": [
+          "$1 - 2\\theta^2$",
+          "$1 - 4\\theta^2$",
+          "$1 - 8\\theta^2$",
+          "$1 - 16\\theta^2$"
+        ],
+        "answer": 2,
+        "working": "$\\cos 4\\theta \\approx 1 - \\dfrac{(4\\theta)^2}{2} = 1 - \\dfrac{16\\theta^2}{2} = 1 - 8\\theta^2$."
+      }
+    ]
+  },
+  "mx-18-2": {
+    "lessonId": "mx-18-2",
+    "title": "Reciprocal and Inverse Trigonometric Functions",
+    "duration": 240,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sec, cosec and cot",
+        "t": 21.527
+      },
+      {
+        "title": "Solving with sec",
+        "t": 73.73
+      },
+      {
+        "title": "Inverse functions",
+        "t": 110.49
+      },
+      {
+        "title": "Your turn",
+        "t": 172.167
+      },
+      {
+        "title": "Summary",
+        "t": 205.535
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-18-2:q",
+        "t": 182.508,
+        "prompt": "Solve $\\operatorname{cosec} x = 2$ for $0^\\circ \\le x < 360^\\circ$.",
+        "choices": [
+          "$60^\\circ$ and $300^\\circ$",
+          "$30^\\circ$ only",
+          "$60^\\circ$ and $120^\\circ$",
+          "$30^\\circ$ and $150^\\circ$"
+        ],
+        "answer": 3,
+        "working": "$\\sin x = \\tfrac{1}{2}$, so $x = 30^\\circ$ or $180^\\circ - 30^\\circ = 150^\\circ$."
+      }
+    ]
+  },
+  "mx-18-3": {
+    "lessonId": "mx-18-3",
+    "title": "R sin(θ ± α)",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One wave",
+        "t": 23.162
+      },
+      {
+        "title": "Finding R and α",
+        "t": 51.783
+      },
+      {
+        "title": "Solving an equation",
+        "t": 108.223
+      },
+      {
+        "title": "Your turn",
+        "t": 178.677
+      },
+      {
+        "title": "Summary",
+        "t": 211.413
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-18-3:q",
+        "t": 187.371,
+        "prompt": "Find the greatest value of $5\\sin\\theta + 12\\cos\\theta$.",
+        "choices": [
+          "$13$",
+          "$17$",
+          "$12$",
+          "$7$"
+        ],
+        "answer": 0,
+        "working": "$R = \\sqrt{5^2 + 12^2} = \\sqrt{169} = 13$, and the greatest value of $R\\sin(\\theta + \\alpha)$ is $R$."
+      }
+    ]
+  },
+  "mx-19-1": {
+    "lessonId": "mx-19-1",
+    "title": "Parametric Differentiation and First Principles",
+    "duration": 217,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parametric differentiation",
+        "t": 23.873
+      },
+      {
+        "title": "Sine from first principles",
+        "t": 88.021
+      },
+      {
+        "title": "Your turn",
+        "t": 152.193
+      },
+      {
+        "title": "Summary",
+        "t": 186.193
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-19-1:q",
+        "t": 163.804,
+        "prompt": "A curve has $x = 2t$ and $y = t^2$. Find $\\dfrac{dy}{dx}$ in terms of $t$.",
+        "choices": [
+          "$2t$",
+          "$t$",
+          "$\\dfrac{1}{t}$",
+          "$t^2$"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{dy}{dt} = 2t$ and $\\dfrac{dx}{dt} = 2$, so $\\dfrac{dy}{dx} = \\dfrac{2t}{2} = t$."
+      }
+    ]
+  },
+  "mx-19-2": {
+    "lessonId": "mx-19-2",
+    "title": "Locating Roots and the Newton–Raphson Method",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Change of sign",
+        "t": 19.159
+      },
+      {
+        "title": "Newton–Raphson",
+        "t": 69.88
+      },
+      {
+        "title": "Your turn",
+        "t": 131.109
+      },
+      {
+        "title": "Summary",
+        "t": 169.072
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-19-2:q",
+        "t": 143.971,
+        "prompt": "Use one step of the Newton–Raphson method on $f(x) = x^2 - 3$, starting from $x_0 = 2$. Find $x_1$.",
+        "choices": [
+          "$2.25$",
+          "$1.5$",
+          "$1.75$",
+          "$1.732$"
+        ],
+        "answer": 2,
+        "working": "$f(2) = 1$ and $f'(2) = 4$, so $x_1 = 2 - \\tfrac{1}{4} = 1.75$."
+      }
+    ]
+  },
+  "mx-19-3": {
+    "lessonId": "mx-19-3",
+    "title": "The Trapezium Rule",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rule",
+        "t": 23.633
+      },
+      {
+        "title": "Four strips",
+        "t": 66.964
+      },
+      {
+        "title": "Over or under?",
+        "t": 116.122
+      },
+      {
+        "title": "Your turn",
+        "t": 156.123
+      },
+      {
+        "title": "Summary",
+        "t": 190.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-19-3:q",
+        "t": 167.931,
+        "prompt": "Two strips of width $h = 1$ have $y$-values $2$, $3$ and $6$. Use the trapezium rule to estimate the area.",
+        "choices": [
+          "$11$",
+          "$5.5$",
+          "$14$",
+          "$7$"
+        ],
+        "answer": 3,
+        "working": "$\\tfrac{1}{2}(1)\\big[2 + 2(3) + 6\\big] = \\tfrac{1}{2} \\times 14 = 7$."
+      }
+    ]
+  },
+  "mx-19-4": {
+    "lessonId": "mx-19-4",
+    "title": "Integration by Parts",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The formula",
+        "t": 21.083
+      },
+      {
+        "title": "Logs and limits",
+        "t": 75.467
+      },
+      {
+        "title": "Your turn",
+        "t": 132.317
+      },
+      {
+        "title": "Summary",
+        "t": 168.836
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-19-4:q",
+        "t": 138.607,
+        "prompt": "Find $\\displaystyle\\int x\\cos x\\,dx$.",
+        "choices": [
+          "$x\\sin x + \\cos x + C$",
+          "$x\\sin x - \\cos x + C$",
+          "$-x\\sin x + \\cos x + C$",
+          "$\\tfrac{1}{2}x^2\\sin x + C$"
+        ],
+        "answer": 0,
+        "working": "Let $u = x$ and $\\dfrac{dv}{dx} = \\cos x$, so $v = \\sin x$: $x\\sin x - \\displaystyle\\int \\sin x\\,dx = x\\sin x + \\cos x + C$."
+      }
+    ]
+  },
+  "mx-19-5": {
+    "lessonId": "mx-19-5",
+    "title": "Integrating with Partial Fractions",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Linear fractions",
+        "t": 22.892
+      },
+      {
+        "title": "A worked example",
+        "t": 66.69
+      },
+      {
+        "title": "Your turn",
+        "t": 136.011
+      },
+      {
+        "title": "Summary",
+        "t": 170.071
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-19-5:q",
+        "t": 143.466,
+        "prompt": "Find $\\displaystyle\\int \\frac{4}{2x + 1}\\,dx$.",
+        "choices": [
+          "$4\\ln|2x + 1| + C$",
+          "$2\\ln|2x + 1| + C$",
+          "$8\\ln|2x + 1| + C$",
+          "$\\ln|2x + 1| + C$"
+        ],
+        "answer": 1,
+        "working": "$\\displaystyle\\int \\frac{4}{2x + 1}\\,dx = 4 \\times \\tfrac{1}{2}\\ln|2x + 1| + C = 2\\ln|2x + 1| + C$."
+      }
+    ]
+  },
+  "mx-19-6": {
+    "lessonId": "mx-19-6",
+    "title": "Separable Differential Equations",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Separating the variables",
+        "t": 23.779
+      },
+      {
+        "title": "Modelling growth",
+        "t": 89.62
+      },
+      {
+        "title": "Your turn",
+        "t": 153.367
+      },
+      {
+        "title": "Summary",
+        "t": 189.199
+      }
+    ],
+    "cues": [
+      {
+        "id": "mx-19-6:q",
+        "t": 163.399,
+        "prompt": "Solve $\\dfrac{dy}{dx} = y$, given that $y = 5$ when $x = 0$.",
+        "choices": [
+          "$y = e^x + 5$",
+          "$y = 5x$",
+          "$y = 5e^x$",
+          "$y = e^{5x}$"
+        ],
+        "answer": 2,
+        "working": "$\\displaystyle\\int \\frac{1}{y}\\,dy = \\int 1\\,dx$, so $\\ln|y| = x + c$ and $y = Ae^x$. At $x = 0$, $A = 5$, so $y = 5e^x$."
+      }
+    ]
   }
 }

@@ -10,6 +10,7 @@ import { cn } from '@/lib/cn.ts';
 import { CanvasAnswer, CanvasAnswerView } from '@/features/whiteboard/CanvasAnswer.tsx';
 import { GraphInput } from './GraphInput.tsx';
 import { CoefficientsInput, FormulaInput } from './ChemInputs.tsx';
+import { RubricGuide } from './Rubric.tsx';
 
 export interface QuestionViewProps {
   item: Item;
@@ -174,6 +175,14 @@ function PartInput({
           placeholder="Write your answer. Explain your reasoning in full sentences."
         />
       );
+      // Students see how the response is marked while they write it.
+      if (spec.criteria?.length && !locked)
+        input = (
+          <>
+            {input}
+            <RubricGuide criteria={spec.criteria} />
+          </>
+        );
       break;
     case 'text':
       input = <input className="input h-12" value={value} disabled={locked} onChange={(e) => onChange(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && onEnter?.()} placeholder={part.placeholder ?? 'Your answer'} />;

@@ -616,6 +616,91 @@ items ship or decisions change.
      parametric equations (a new unit), at Grades 11 and 12. Browse by topic has new topics for
      complex numbers, vectors and matrices, polar form, and conics. These lessons also need their
      videos and tutor recordings. Next: the UK GCSE map.
+   - Built (10 November 2026), step 4, part 3: **the UK GCSE gaps are filled, so both tiers list
+     none.** Sixteen more lessons in More Mathematics Topics, in five new units, with 32 question
+     generators: error intervals, bounds and recurring decimals; quadratic sequences, iteration,
+     gradients and areas under graphs, and trigonometric graphs in degrees; direct and inverse
+     proportion, density and pressure; bearings, loci, arcs and sectors in degrees, and Pythagoras
+     and trigonometry in 3D; and frequency trees, histograms and cumulative frequency, at Grades 9
+     to 11. Each is filed in the Foundation and Higher units that teach it and under Browse by
+     topic. Next: A level Mathematics.
+     Their videos (10 November 2026): 17 explainers for the 16 lessons (`mx-7-1` to `mx-11-3`, with
+     gradients and areas under graphs in two parts), scripted and checked in stills, then rendered
+     unit by unit (`mx-u7` to `mx-u11`), stored on Drive and handed to the YouTube uploads (PR #149).
+     The Tutor voice workflow recorded their tutor narration after #146 merged.
+   - Built (11 November 2026), step 3, the third map: **A level Mathematics, Years 12 and 13**
+     (in `engine/curriculum/maps/uk.ts`, under the tab now called "UK GCSE and A level"). The first
+     year (the AS content, 20 units) and the second (12 units) are built from Gradileo's lessons in
+     the order of a two-year scheme of work, with the A level content areas (A proof to S moments)
+     in each unit. A UK learner in Year 12 or 13 heading for university, or not sure, is offered the
+     year of A level on "Find your course", with a placement check on GCSE Higher or the first year;
+     teachers can start a class on either. Gaps it lists (36): proof by exhaustion and by
+     contradiction; partial fractions; sigma notation and recurrence relations; the binomial
+     expansion for rational n; ½ab sin C; small-angle approximations; sec, cosec and cot graphs and
+     the inverse trigonometric functions; R cos(θ ± α); logarithmic graphs for y = axⁿ and y = kbˣ;
+     parametric differentiation; change of sign, Newton–Raphson and the trapezium rule; integration
+     by parts and with partial fractions; differential equations; 3D vectors; quota and opportunity
+     sampling, coding and outliers; discrete random variables and the binomial distribution; the
+     inverse normal and the normal approximation; hypothesis tests (binomial, correlation, normal
+     mean) and the correlation coefficient; and all of mechanics beyond straight-line motion
+     (units, suvat, forces and Newton's laws, connected particles, projectiles, resolving forces,
+     friction, inclined planes, 2D kinematics, moments). Next: fill these gaps, mechanics and
+     statistics first, then the pure topics.
+   - Built (11 November 2026), step 4, part 4: **the A level mechanics gaps are filled.** Eleven
+     lessons in More Mathematics Topics, in two new units, with 22 question generators: quantities,
+     units and modelling, the constant acceleration formulae, vertical motion under gravity,
+     Newton's laws and lifts, and connected particles (Unit 12, Year 12); resolving forces and
+     equilibrium, friction, inclined planes, projectiles, kinematics in two dimensions with vectors
+     and calculus, and moments (Unit 13, Year 13). Each is filed in the A level units that teach it
+     (Year 12 gains "Quantities and Units in Mechanics" and "Forces and Newton's Laws"; Year 13
+     gains "Moments", "Forces and Friction", "Projectiles", "Applications of Forces" and "Further
+     Kinematics") and under a new Mechanics strand in Browse by topic. Every question states
+     g = 9.8 m/s² and asks for 3 significant figures where an answer is not exact. The maps now
+     list 26 gaps. These lessons also need their videos and tutor recordings. Next: the statistics
+     gaps, then the pure topics.
+   - Built (11 November 2026), step 4, part 5: **the A level statistics gaps are filled.** Ten
+     lessons in More Mathematics Topics, in two new units, with 20 question generators: sampling
+     methods (including quota and opportunity), variance and standard deviation from Σx and Σx²
+     with coding, outliers and cleaning data, discrete random variables, the binomial distribution,
+     and binomial hypothesis tests with p-values and critical regions (Unit 14, Year 12); the
+     product moment correlation coefficient and its test, the inverse normal distribution, the
+     normal approximation to the binomial, and tests for the mean of a normal distribution (Unit 15,
+     Year 13). Year 12 gains "Statistical Distributions" and "Hypothesis Testing", Year 13 gains
+     "Regression, Correlation and Hypothesis Testing", and the other lessons join the existing data
+     and normal distribution units; Browse by topic gains "Statistical hypothesis testing". Critical
+     values for the correlation test are worked out from the t distribution and stated in each
+     question, as the tables print them. The maps now list 17 gaps, all pure. These lessons also
+     need their videos and tutor recordings. Next: the pure topics.
+   - Built (11 November 2026), step 4, part 6: **the A level pure gaps outside calculus are filled.**
+     Eleven lessons in More Mathematics Topics, in three new units, with 22 question generators:
+     proof by exhaustion, the area of a triangle as ½ab sin C, and logarithmic graphs for y = axⁿ
+     and y = kbˣ (Unit 16, Year 12); proof by contradiction, partial fractions (including improper
+     fractions), sigma notation and recurrence relations, the binomial expansion for any rational n
+     and its validity, and vectors in three dimensions (Unit 17, Year 13); and small-angle
+     approximations, sec, cosec, cot and the inverse trigonometric functions, and R sin(θ ± α)
+     (Unit 18, Year 13). Year 12 has no gaps left; Year 13 gains "Proof", "The Binomial Expansion"
+     and "Vectors", and the other lessons join the existing units. The maps now list 6 gaps, all
+     calculus and numerical methods. These lessons also need their videos and tutor recordings.
+     Next: parametric differentiation, Newton–Raphson, the trapezium rule, integration by parts and
+     with partial fractions, and differential equations.
+   - Built (11 November 2026), step 4, part 7: **the last A level gaps are filled.** Six lessons in
+     More Mathematics Topics, in a new Unit 19 (Year 13), with 12 question generators: parametric
+     differentiation and differentiating sin x and cos x from first principles, locating roots by a
+     change of sign and the Newton–Raphson method, the trapezium rule with over- and
+     underestimates, integration by parts, integrating with partial fractions (answers in the form
+     ln K), and separable differential equations with growth, decay and cooling models. They join
+     the Year 13 Differentiation, Numerical Methods and Integration units, and Browse by topic gains
+     "Differential equations". **The A level map now lists no gaps**, so every UK GCSE and A level
+     Mathematics topic has a Gradileo lesson. These 38 A level lessons (Units 12 to 19) still need
+     their videos and tutor recordings.
+   - Built (11 November 2026): **videos and tutor recordings for the 38 A level lessons.** One
+     explainer each (`src/content/mathmore/videos/mx-12-1.ts` to `mx-19-6.ts`, PR #157), made the
+     same way as the GCSE gap videos in PR #149, with two shared figure helpers:
+     `lib/mx-mechanics.ts` (blocks, force arrows) and `lib/mx-stats.ts` (normal curves with shaded
+     areas). Units `mx-u12` to `mx-u19` are rendered and in Drive (`Gradileo videos/More Topics/`)
+     and handed to the YouTube uploads. The Tutor voice workflow recorded all 38 lessons (runs #75
+     and #77). Every UK GCSE and A level Mathematics topic now has a lesson, a video and a tutor
+     recording.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
@@ -656,7 +741,7 @@ items ship or decisions change.
      under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and
      pressure, bearings, loci, arcs and sectors in degrees, 3D trigonometry, histograms and
      cumulative frequency, and frequency trees. (Gradileo's own versions of these use radians or
-     calculus, which GCSE does not.) Next: fill the GCSE gaps, then A level Mathematics.
+     calculus, which GCSE does not.) Filled on 10 November 2026 (step 4, part 3).
    - Bug check (30 October 2026, the owner's request after the homework-editing error): every one
      of the live site's database calls (99 in the data layer, 41 database functions, 7 Edge
      Functions) was checked against the database's grants, rules and checks on a copy built from
@@ -883,7 +968,17 @@ items ship or decisions change.
      English courses too; the tutor reads verse with a pause at each line, and its prompts name the
      course's subject (an English or chemistry tutor, not a mathematics one), so "Ask your tutor"
      answers questions about poems and essays instead of steering back to mathematics.
-   - Later: a mark per rubric criterion for essays.
+   - Done (10 November 2026): **essay rubrics.** A written question can carry a rubric: one of five
+     ready-made English rubrics (analytical essay, persuasive essay, narrative, personal response,
+     short written response) or the teacher's own, with up to eight criteria such as thesis,
+     evidence, organization, style and conventions. Each criterion is marked at one of four levels
+     (4 Excellent, 3 Proficient, 2 Developing, 1 Beginning, or 0 when it is not shown), a criterion
+     can count twice or three times, and the total is scaled to the question's points. Students see
+     the rubric while they write and, once marked, the level on each criterion with what it means.
+     The teacher marks on a grid (or gives one mark instead), the server works out the score from
+     the levels (`engine/rubric.ts`, `markResponse`), and "Suggest a mark" gives a level and a
+     reason for each criterion. Draft with AI attaches the fitting rubric to English essays and
+     paragraphs it writes.
    - Done (4 November 2026): **the privacy policy and terms for all three subjects.** Both pages now
      describe Gradileo as a mastery-based platform for learners anywhere (mathematics Grades 5 to 12,
      chemistry and English Grades 10 to 12). The privacy policy adds name-only class-link accounts,
@@ -944,9 +1039,24 @@ items ship or decisions change.
      github.io/EduCore links no longer open; gradileo.com is the only address.
 - Email: done. admin@gradileo.com forwards to the owner's inbox through Cloudflare Email Routing,
   set up by the *Set up email* workflow (docs/SETUP.md 3.3; gradileo.com's MX and SPF records
-  point to Cloudflare). More addresses are a line in `scripts/cloudflare-email.mjs`. Next: send
-  from gradileo.com through Resend, which also lets reminders come from an address at
-  gradileo.com (and Gmail's "Send mail as").
+  point to Cloudflare). More addresses are a line in `scripts/cloudflare-email.mjs`.
+- Sending email from gradileo.com (10 November 2026). Found: no email had ever been sent. The
+  reminder sender (`send-emails`) had no Resend key and the scheduler's Vault secrets were never
+  set, and sign-up confirmations went through Supabase's own mail server, which sends only a few
+  an hour and only to the project's team. Built: the *Set up sending email* workflow
+  (`scripts/resend-email.mjs`, docs/SETUP.md 3.3) adds gradileo.com to Resend, adds its DKIM, SPF,
+  bounce MX and a DMARC record in Cloudflare (never the domain's own Email Routing records), waits
+  for verification, sends a test to admin@, and stores a sending-only key in Vault. Reminders come
+  from Gradileo <no-reply@gradileo.com>, replies go to admin@gradileo.com, and each email says
+  why it came. A migration makes the scheduler's secret inside the database. Owner-side (one
+  pass, docs/SETUP.md 3.3): a Resend account with two keys, the GitHub secret `RESEND_API_KEY`,
+  Supabase's SMTP form for sign-in emails, Zone DNS Edit on the email token, then one run. Live
+  since 10 November (test email arrived in the owner's inbox, not spam).
+- Email for students without one (11 November 2026, the owner's request): a student with a username
+  from the teacher, or a name-only account let into a class, can add an email address in Settings
+  (theirs or a parent's). It counts once the six-digit code sent to it is typed back (5 codes an
+  hour, 5 tries a code, 15 minutes each); reminders then go there, and it can be changed or removed.
+  Only the student sees it (`notification_emails`, the `notify-email` function).
 - Visitor counts (6 November 2026): Cloudflare reported 18,032 page views on gradileo.com in the
   month after it went live (13 October), but the zone's count includes bots, and Supabase had only
   8 accounts (1 teacher, 7 students, 6 of them since 13 October). Built: Cloudflare Web Analytics
@@ -1040,6 +1150,15 @@ items ship or decisions change.
   lesson's recording once and plays it from memory. Next: speak the tutor's answers to questions too
   (today they are written in the chat); record approved teacher edits of a lesson; let the tutor
   ask its own follow-up question after a wrong answer.
+  Checked (10 November 2026): the newest lessons, More Mathematics Topics (23) and English
+  Grades 5 to 9 (122), all have the tutor voice on gradileo.com (recorded 4 and 5 November and kept
+  up to date by the nightly run), as do the other 22 courses: 808 lessons and 12,807 slides, 12,719 with
+  MiniMax's lines. The other 88 are read in the voice from the slide's own words because the
+  checks turned MiniMax's lines down. Two of them, in Scientific notation (mx-2-1), were a real slip: a long
+  decimal written in groups ("0.000 81") reached the voice and the checks as two numbers. Those
+  groups are now joined, so the voice says one number. Of the 17 such slides in the newest
+  courses, the other 15 are English slides with a long passage, where the line-to-step check is
+  strict; they are left as they are for now.
 - Self-paced study, next steps: let the AI write the student coach's note on the home page (today
   it comes from the offline analyst); store placement results on the server (today they stay on
   the device); let a student leave a self-paced course; and email the AI tutor's weekly summary.
