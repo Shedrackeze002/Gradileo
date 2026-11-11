@@ -76,13 +76,13 @@ export const KENYA_MAP: CurriculumMap = {
         { title: 'Matrices', description: 'Adding and multiplying matrices, the determinant and inverse of a 2 × 2 matrix, and solving simultaneous equations with matrices.', members: ['mx-5-2', 'mx-5-3'] },
         { title: 'Formulae and Variations', description: 'Direct and inverse variation, and their graphs. Changing the subject of a formula, and joint and partial variation.', members: ['mx-24-1', 'mx-9-1', 'mx-24-2'] },
         { title: 'Sequences and Series', description: 'Arithmetic and geometric sequences and series.', members: ['m201-1-1', 'm201-1-2', 'm201-1-3', 'm201-1-4'] },
-        { title: 'Vectors II', description: 'Vectors in three dimensions: column vectors, magnitude, and position vectors.', members: ['mx-17-5'] },
+        { title: 'Vectors II', description: 'Vectors in three dimensions: column vectors, magnitude, and position vectors. The ratio theorem and collinear points.', members: ['mx-17-5', 'mx-27-4'] },
         { title: 'Binomial Expansion', description: 'Pascal’s triangle and the expansion of (a + b)ⁿ.', members: ['m301-9-4'] },
         { title: 'Probability', description: 'Experimental and theoretical probability, sample spaces, mutually exclusive and independent events, and tree diagrams.', members: ['m7-11-3', 'm7-11-2', 'm302-3-3', 'm8-10-2', 'm302-3-4'] },
         { title: 'Compound Proportions and Rates of Work', description: 'Problems with rates, including rates of work, and proportional reasoning with units.', members: ['m202-8-2', 'm203-1-3'] },
         { title: 'Graphical Methods', description: 'Cubic graphs, average and instantaneous rates of change, linear laws from logarithmic graphs, and the equation of a circle.', members: ['m301-3-1', 'm31-3-1', 'mx-16-3', 'mx-3-4'] },
       ],
-      gaps: ['Vector geometry: the ratio theorem and collinear points'],
+      gaps: [],
     },
     {
       id: 'kcse-form-4',
@@ -91,6 +91,7 @@ export const KENYA_MAP: CurriculumMap = {
       grade: 12,
       description: 'Form 4 Mathematics: statistics, loci, trigonometry, three-dimensional geometry, differentiation, area approximations and integration, in the order of the KCSE syllabus.',
       units: [
+        { title: 'Matrices and Transformations', description: 'Matrices as transformations, the standard transformation matrices, successive transformations, inverse transformations, and the determinant as an area scale factor.', members: ['mx-27-5'] },
         { title: 'Statistics II', description: 'Cumulative frequency curves, quartiles and the interquartile range, and the variance and standard deviation.', members: ['mx-11-3', 'mx-1-2', 'm202-5-1', 'mx-14-2'] },
         { title: 'Loci', description: 'Common loci, and the regions they describe.', members: ['mx-10-2'] },
         { title: 'Trigonometry III', description: 'sin² θ + cos² θ = 1, the graphs of the trigonometric functions with their amplitude and period, and solving trigonometric equations.', members: ['m301-6-1', 'm301-5-1', 'm301-5-2', 'm301-6-4'] },
@@ -101,7 +102,7 @@ export const KENYA_MAP: CurriculumMap = {
         { title: 'Area Approximations', description: 'The area under a curve by the trapezium rule.', members: ['mx-19-3'] },
         { title: 'Integration', description: 'Integrating polynomials, definite integrals, the area under a curve, and the area between two curves.', members: ['m31-8-1', 'm31-8-3', 'm31-9-1'] },
       ],
-      gaps: ['Matrices and transformations', 'The mid-ordinate rule'],
+      gaps: ['The mid-ordinate rule'],
     },
   ],
 };

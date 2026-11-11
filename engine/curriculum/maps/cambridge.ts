@@ -65,11 +65,11 @@ export const CAMBRIDGE_MAP: CurriculumMap = {
         { title: 'Circle Theorems', description: 'Chords, angles at the centre and at the circumference, the angle in a semicircle, and tangents. Cyclic quadrilaterals and the alternate segment theorem.', members: ['m9-u8', 'mx-25-4'] },
         { title: 'Mensuration', description: 'The area of a circle, arcs and sectors, and the surface area and volume of prisms, cylinders, pyramids, cones, spheres and compound solids.', members: ['m7-7-4', 'mx-10-3', 'm10c-1-5', 'm10c-1-6', 'm10c-1-7', 'm10c-1-8'] },
         { title: 'Trigonometry', description: 'Pythagoras’ theorem, right-angled trigonometry, bearings, exact values, the graphs of sine, cosine and tangent, the sine and cosine rules, the area of a triangle as ½ab sin C, and trigonometry in three dimensions.', members: ['m8-1-4', 'm10c-2-3', 'm10c-2-4', 'mx-10-1', 'm201-2-1', 'm201-2-2', 'mx-8-4', 'm201-2-3', 'm201-2-4', 'm201-2-5', 'mx-16-2', 'mx-10-4'] },
-        { title: 'Transformations and Vectors', description: 'Reflections, rotations and enlargements, and vectors: components, magnitude, adding and multiplying by a scalar.', members: ['m7-9-3', 'm303-4-2', 'mx-5-1'] },
+        { title: 'Transformations and Vectors', description: 'Reflections, rotations and enlargements, and vectors: components, magnitude, adding and multiplying by a scalar. The ratio theorem and collinear points.', members: ['m7-9-3', 'm303-4-2', 'mx-5-1', 'mx-27-4'] },
         { title: 'Probability', description: 'Relative frequency, sample spaces, mutually exclusive and independent events, tree diagrams, and conditional probability.', members: ['m7-11-3', 'm7-11-2', 'm302-3-3', 'm8-10-2', 'm302-3-4'] },
         { title: 'Statistics', description: 'Stem-and-leaf diagrams, averages, the mean of a frequency table, scatter diagrams, histograms, cumulative frequency, and box-and-whisker plots.', members: ['m5-12-2', 'm7-10-1', 'm303-6-2', 'm10c-7-5', 'mx-11-2', 'mx-11-3', 'mx-1-2'] },
       ],
-      gaps: ['Vector geometry: the ratio theorem and collinear points'],
+      gaps: [],
     },
   ],
 };
