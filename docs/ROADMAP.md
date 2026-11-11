@@ -722,6 +722,32 @@ items ship or decisions change.
      descriptive writing); GCSE English Literature lists 6 (the nineteenth-century novel is the
      largest; modern texts in copyright stay out, since Gradileo teaches from the public domain).
      A level English is not mapped. Next: fill the GCSE gaps, chemistry first.
+   - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
+     IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
+     syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1
+     to SS 3 (Nigeria, and Ghana as SHS 1 to 3 through the map's `alsoFor`). `maps/kenya.ts`: KCSE
+     Mathematics, Form 1 to Form 4. `maps/caps.ts`: CAPS Mathematics, Grades 10 to 12.
+     `maps/cambridge.ts`: IGCSE Mathematics (0580), Core and Extended. `maps/ib.ts`: Analysis and
+     Approaches SL and Applications and Interpretation SL. "Find your course" offers a senior
+     secondary learner in Nigeria or Ghana the year of WASSCE, a Kenyan learner who gives a form
+     that form's KCSE course (a grade of the new curriculum keeps Gradileo's courses), a South
+     African learner heading for further study the grade's CAPS course (with the practical course
+     as the Mathematical Literacy alternative), a Cambridge learner in Year 10 or 11 IGCSE Extended
+     (Core with extra support), and an IB Diploma learner AA SL for science plans and AI SL
+     otherwise; teachers can start a class on any of them from the five new tabs. Not mapped yet:
+     WAEC Further Mathematics, Kenya's new senior school, Mathematical Literacy, Cambridge A level,
+     and the IB's higher level and MYP. Gaps the maps list, by topic (many are shared, so one
+     lesson fills several maps): number bases; modular arithmetic; truth tables; changing the
+     subject of a formula; joint and partial variation; linear programming; segments of a circle;
+     frustums; Heron's formula; cyclic quadrilaterals and the alternate segment (tangent–chord)
+     theorem; intersecting chords and common tangents; the midpoint and proportionality theorems;
+     the angle of inclination of a line; the equation of a tangent to a circle; vector geometry
+     (the ratio theorem, collinear points); matrices and transformations; longitude and latitude;
+     the mid-ordinate rule; nominal and effective interest rates; annuities, loans, sinking funds,
+     shares and stocks; the least squares regression line; the expected value of a discrete random
+     variable; Spearman's rank correlation; the chi-squared tests; the t-test; and Voronoi
+     diagrams. Next: fill these gaps in More Mathematics Topics, the most shared first, then their
+     videos and tutor recordings.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

@@ -31,6 +31,8 @@ export interface MapCourse {
 export interface CurriculumMap {
   /** The curriculum id in `engine/curricula.ts` ("us"). */
   curriculum: string;
+  /** Other curriculum ids whose learners take the same courses (WAEC: Nigeria's map is Ghana's too). */
+  alsoFor?: string[];
   /** The system's name, as a course list heading ("US Common Core"). */
   name: string;
   courses: MapCourse[];
