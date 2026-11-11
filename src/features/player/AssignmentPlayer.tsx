@@ -230,6 +230,7 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
 
   const go = (d: number) => setIdx((i) => Math.max(0, Math.min(items.length - 1, i + d)));
   const last = idx === items.length - 1;
+  const label = TYPE_LABEL[assignment.type].toLowerCase();
   const tries = (resp.history?.length ?? 0) + 1;
   const canSimilar = instant && assignment.settings.retrySimilar && checked && result && !result.correct && !('custom' in items[idx]) && tries < MAX_TRIES;
   const mm = remaining !== null ? Math.max(0, Math.floor(remaining / 60000)) : 0;
@@ -241,7 +242,7 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
         <ExamMode
           submissionId={submission.id}
           settings={assignment.settings}
-          label={TYPE_LABEL[assignment.type].toLowerCase()}
+          label={label}
           integrity={integrity}
           locked={locked}
           onEvent={record}
@@ -266,9 +267,12 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
               <Clock className="h-4 w-4" /> {String(mm).padStart(2, '0')}:{String(ss).padStart(2, '0')}
             </div>
           )}
-          <Button size="sm" variant={unanswered === 0 ? 'primary' : 'secondary'} icon={<Send className="h-4 w-4" />} onClick={() => setConfirm(true)}>
-            Submit
-          </Button>
+          {/* Submit lives on the last question only, so a student moving on cannot submit by mistake. */}
+          {last && (
+            <Button size="sm" variant={unanswered === 0 ? 'primary' : 'secondary'} icon={<Send className="h-4 w-4" />} onClick={() => setConfirm(true)}>
+              Submit
+            </Button>
+          )}
         </div>
         <div className="mx-auto flex max-w-4xl gap-1.5 overflow-x-auto px-4 pb-2.5 scrollbar-thin">
           {items.map((_, i) => {
@@ -358,7 +362,8 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
           <Button variant="ghost" icon={<ArrowLeft className="h-4 w-4" />} disabled={idx === 0} onClick={() => go(-1)}>
             <span className="hidden sm:inline">Previous</span>
           </Button>
-          <div className="flex-1" />
+          <p className="hidden flex-1 text-center text-xs text-ink-3 sm:block">{last ? `Submitting ends this ${label}.` : 'Your answers save automatically.'}</p>
+          <div className="flex-1 sm:hidden" />
           {instant && !checked && !isManual ? (
             <Button size="lg" onClick={check} disabled={!answered(idx)}>
               Check answer
@@ -378,25 +383,34 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
       <Modal
         open={confirm}
         onClose={() => setConfirm(false)}
-        title="Submit your work?"
+        title={`Submit your ${label}?`}
         footer={
           <>
             <Button variant="ghost" onClick={() => setConfirm(false)}>
               Keep working
             </Button>
             <Button loading={submitM.isPending} onClick={() => doSubmit()} icon={<Send className="h-4 w-4" />}>
-              Submit
+              Yes, submit my {label}
             </Button>
           </>
         }
       >
-        {unanswered > 0 ? (
-          <p className="text-ink-2">
-            You have <strong>{unanswered}</strong> unanswered question{unanswered > 1 ? 's' : ''}. Unanswered questions are marked incorrect.
-          </p>
-        ) : (
-          <p className="text-ink-2">You’ve answered every question. {assignment.settings.feedback === 'after_due' ? 'Results will be released after the due date.' : 'You’ll see your results right away.'}</p>
-        )}
+        <div className="space-y-3">
+          <div className="flex gap-2 rounded-xl bg-warn-soft px-4 py-3 text-warn-ink">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
+            <p>
+              <strong>This ends your {label}.</strong> Once you submit, you cannot go back or change any of your answers.
+            </p>
+          </div>
+          {unanswered > 0 ? (
+            <p className="text-ink-2">
+              You have <strong>{unanswered}</strong> unanswered question{unanswered > 1 ? 's' : ''}. Unanswered questions are marked incorrect.
+            </p>
+          ) : (
+            <p className="text-ink-2">You’ve answered every question. {assignment.settings.feedback === 'after_due' ? 'Results will be released after the due date.' : 'You’ll see your results right away.'}</p>
+          )}
+          <p className="text-sm text-ink-3">Your answers are already saved as you go, so you only need to submit when you have finished. Choose Keep working to go back to your questions.</p>
+        </div>
       </Modal>
     </FocusShell>
   );

@@ -25,6 +25,10 @@ test('teacher assigns a quiz, the student is notified, completes it, and the tea
   await page.getByRole('button', { name: /^Start/ }).click();
   await page.waitForURL(/\/take$/);
 
+  // Submit is only offered on the last question, so moving on cannot submit by mistake.
+  await expect(page.getByRole('button', { name: /Save & next/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Submit', exact: true })).toHaveCount(0);
+
   // Answer the first question if it is multiple choice, then move through to the end.
   const choice = page.getByRole('radio').first();
   if (await choice.isVisible().catch(() => false)) await choice.click();
@@ -33,8 +37,15 @@ test('teacher assigns a quiz, the student is notified, completes it, and the tea
     if (await finish.isVisible()) break;
     await page.getByRole('button', { name: /Save & next/ }).click();
   }
+  await expect(page.getByRole('button', { name: 'Submit', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Finish' }).click();
-  await page.getByRole('dialog').getByRole('button', { name: 'Submit' }).click();
+  // The confirmation says plainly that submitting ends the quiz.
+  const dialog = page.getByRole('dialog', { name: 'Submit your quiz?' });
+  await expect(dialog.getByText(/cannot go back or change any of your answers/)).toBeVisible();
+  await dialog.getByRole('button', { name: 'Keep working' }).click();
+  await expect(dialog).toHaveCount(0);
+  await page.getByRole('button', { name: 'Finish' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Yes, submit my quiz' }).click();
   await page.waitForURL(/\/s\/work\/a_[^/]+$/);
   await expect(page.getByText('Your best result')).toBeVisible();
   await signOut(page);
@@ -97,7 +108,7 @@ test('exam mode records exits, locks the attempt at the limit, and the teacher u
     await student.getByRole('button', { name: /Save & next/ }).click();
   }
   await student.getByRole('button', { name: 'Finish' }).click();
-  await student.getByRole('dialog', { name: 'Submit your work?' }).getByRole('button', { name: 'Submit' }).click();
+  await student.getByRole('dialog', { name: /^Submit your / }).getByRole('button', { name: 'Submit' }).click();
   await student.waitForURL(/\/s\/work\/a_[^/]+$/);
 
   await teacher.reload();
