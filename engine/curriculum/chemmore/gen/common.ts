@@ -1,6 +1,7 @@
 /** Shared pieces for the More Chemistry Topics generators. */
 import { ce, parseFormula } from '../../../chem/formula.ts';
 import type { Rng } from '../../../rng.ts';
+import { mc, part, type GenOutput } from '../../helpers.ts';
 
 export const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 /** "a, b and c" */
@@ -50,4 +51,17 @@ export function mrWorking(f: string): string {
   const atoms = atomsOf(f);
   if (atoms.length === 1 && atoms[0][1] === 1) return `${mr(f)}`;
   return `${atoms.map(([el, n]) => (n === 1 ? `${AR[el]}` : `(${n} \\times ${AR[el]})`)).join(' + ')} = ${mr(f)}`;
+}
+
+/** A question from a bank: what is asked, the right answer, three wrong ones, and why. */
+export interface BankItem {
+  ask: string;
+  right: string;
+  wrong: string[];
+  sol: string;
+}
+/** One question picked from a bank, as a multiple-choice item. */
+export function fromBank(rng: Rng, items: BankItem[], hints: string[]): GenOutput {
+  const item = rng.pick(items);
+  return { prompt: item.ask, parts: [part(mc(rng, item.right, item.wrong))], hints, solution: [item.sol] };
 }

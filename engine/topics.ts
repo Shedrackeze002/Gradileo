@@ -101,19 +101,19 @@ export const TOPICS: Topic[] = [
 
   // Chemistry.
   t(C, 'Matter and bonding', 'matter', 'Matter and the particle model', ['c10-u1']),
-  t(C, 'Matter and bonding', 'atoms', 'Atoms and the periodic table', ['c10-u2', 'cx-5-1', 'cx-5-2']),
-  t(C, 'Matter and bonding', 'bonding', 'Bonding, names and formulas', ['c10-u3', 'c20-u1', 'cx-5-3']),
+  t(C, 'Matter and bonding', 'atoms', 'Atoms and the periodic table', ['c10-u2', 'cx-5-1', 'cx-5-2', 'cx-7-1', 'cx-7-2', 'cx-u8', 'cx-u11']),
+  t(C, 'Matter and bonding', 'bonding', 'Bonding, names and formulas', ['c10-u3', 'c20-u1', 'cx-5-3', 'cx-7-3']),
   t(C, 'Matter and bonding', 'gases', 'Gases', ['c20-u2']),
   t(C, 'Reactions and quantities', 'reactions', 'Chemical reactions and equations', ['c10-4-1', 'c10-4-2', 'c10-4-3', 'c20-4-1', 'c20-4-2', 'cx-1-1', 'cx-1-2']),
   t(C, 'Reactions and quantities', 'moles-stoichiometry', 'The mole and stoichiometry', ['c10-5-1', 'c10-5-2', 'c20-4-3', 'c20-4-4', 'c20-4-5', 'c20-4-6', 'c20-4-7', 'c20-4-8', 'cx-3-1', 'cx-3-2']),
   t(C, 'Reactions and quantities', 'solutions', 'Solutions and concentration', ['c20-3-1', 'c20-3-2', 'c20-3-3', 'c20-3-4', 'c20-3-5']),
   t(C, 'Reactions and quantities', 'acids-bases', 'Acids and bases', ['c10-5-3', 'c10-5-4', 'c20-3-6', 'c20-3-7', 'c20-3-8', 'cx-1-3', 'c30-u4']),
-  t(C, 'Reactions and quantities', 'chemical-analysis', 'Chemical analysis', ['cx-u2']),
+  t(C, 'Reactions and quantities', 'chemical-analysis', 'Chemical analysis', ['cx-u2', 'cx-12-8']),
   t(C, 'Reactions and quantities', 'earth-resources', 'The Earth’s atmosphere and resources', ['cx-u4', 'cx-6-1', 'cx-6-2']),
-  t(C, 'Energy, equilibrium and organic chemistry', 'energy-rates', 'Energy changes and reaction rates', ['c10-4-4', 'c10-4-5', 'c30-u1']),
+  t(C, 'Energy, equilibrium and organic chemistry', 'energy-rates', 'Energy changes and reaction rates', ['c10-4-4', 'c10-4-5', 'c30-u1', 'cx-7-4', 'cx-10-1', 'cx-10-2', 'cx-10-3']),
   t(C, 'Energy, equilibrium and organic chemistry', 'electrochemistry', 'Electrochemistry', ['c30-u2', 'cx-1-4', 'cx-6-3']),
-  t(C, 'Energy, equilibrium and organic chemistry', 'organic', 'Organic chemistry', ['c30-u3']),
-  t(C, 'Energy, equilibrium and organic chemistry', 'equilibrium', 'Chemical equilibrium', ['c30-u4']),
+  t(C, 'Energy, equilibrium and organic chemistry', 'organic', 'Organic chemistry', ['c30-u3', 'cx-u9', 'cx-u12']),
+  t(C, 'Energy, equilibrium and organic chemistry', 'equilibrium', 'Chemical equilibrium', ['c30-u4', 'cx-10-4']),
 
   // English.
   t(E, 'Reading', 'fiction', 'Fiction and short stories', ['e5-u1', 'e6-u1', 'e7-u1', 'e8-u1', 'e9-u1', 'e10-u1', 'e11-u1', 'e12-u1', 'ex-1-1']),

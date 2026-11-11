@@ -41,7 +41,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      # The runner image already has Chromium's system libraries; when the Ubuntu package mirrors
+      # cannot be reached (as on 11 Nov 2026), install the browser alone instead of failing.
+      - run: npx playwright install --with-deps chromium || npx playwright install chromium
       - run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: failure()
@@ -71,7 +73,8 @@ jobs:
       PGPASSWORD: postgres
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      # psql ships with the runner image; apt is only a fallback, so a mirror outage cannot fail the job.
+      - run: command -v psql || (sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client)
       - run: bash scripts/test-db.sh
 
   functions:
