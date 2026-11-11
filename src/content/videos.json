@@ -119220,5 +119220,706 @@
         "working": "The midpoint of $PQ$ is $(3, 0)$ and $PQ$ is horizontal, so the perpendicular bisector is the vertical line $x = 3$."
       }
     ]
+  },
+  "c7-1-1": {
+    "lessonId": "c7-1-1",
+    "title": "Working Safely in the Lab",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hazard symbols",
+        "t": 21.118
+      },
+      {
+        "title": "Rules for working safely",
+        "t": 70.34
+      },
+      {
+        "title": "Your turn",
+        "t": 117.493
+      },
+      {
+        "title": "Summary",
+        "t": 145.897
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-1-1:q",
+        "t": 126.084,
+        "prompt": "A bottle’s label shows a flame sitting on top of a circle. What does it warn?",
+        "choices": [
+          "The substance catches fire very easily by itself.",
+          "The substance makes other things burn more fiercely.",
+          "The substance is poisonous if swallowed.",
+          "The substance is a gas kept under pressure."
+        ],
+        "answer": 1,
+        "working": "A flame over a circle marks an oxidizer: it feeds a fire. A plain flame would mean flammable."
+      }
+    ]
+  },
+  "c7-1-2": {
+    "lessonId": "c7-1-2",
+    "title": "What Is Matter?",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The test for matter",
+        "t": 19.167
+      },
+      {
+        "title": "Properties",
+        "t": 66.24
+      },
+      {
+        "title": "Using properties as clues",
+        "t": 110.538
+      },
+      {
+        "title": "Your turn",
+        "t": 144.412
+      },
+      {
+        "title": "Summary",
+        "t": 169.51
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-1-2:q",
+        "t": 149.858,
+        "prompt": "Which of these is NOT matter?",
+        "choices": [
+          "The steam from a kettle",
+          "The air inside a football",
+          "The helium in a party balloon",
+          "The sound of a bell"
+        ],
+        "answer": 3,
+        "working": "Sound is energy carried by vibrations; it has no mass. Steam, air and helium all have mass and take up space."
+      }
+    ]
+  },
+  "c7-1-3": {
+    "lessonId": "c7-1-3",
+    "title": "Measuring Mass and Volume",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading a measuring cylinder",
+        "t": 22.72
+      },
+      {
+        "title": "Volume by displacement",
+        "t": 63.909
+      },
+      {
+        "title": "Changing units",
+        "t": 101.094
+      },
+      {
+        "title": "Your turn",
+        "t": 136.248
+      },
+      {
+        "title": "Summary",
+        "t": 167.123
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-1-3:q",
+        "t": 149.679,
+        "prompt": "A measuring cylinder holds 60 mL of water. A key is dropped in and the level rises to 67 mL. What is the volume of the key?",
+        "choices": [
+          "7 cm³",
+          "67 cm³",
+          "127 cm³",
+          "60 cm³"
+        ],
+        "answer": 0,
+        "working": "The rise in the level is the key’s volume: 67 − 60 = 7 mL, and 1 mL = 1 cm³."
+      }
+    ]
+  },
+  "c7-1-4": {
+    "lessonId": "c7-1-4",
+    "title": "Density",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What density is",
+        "t": 22.454
+      },
+      {
+        "title": "Identifying a substance",
+        "t": 58.487
+      },
+      {
+        "title": "Floating and sinking",
+        "t": 97.695
+      },
+      {
+        "title": "Your turn",
+        "t": 148.027
+      },
+      {
+        "title": "Summary",
+        "t": 180.461
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-1-4:q",
+        "t": 160.611,
+        "prompt": "A stone has a mass of 60 g and a volume of 24 cm³. What is its density, and does it float in water?",
+        "choices": [
+          "0.4 g/cm³, so it floats",
+          "2.5 g/cm³, so it floats",
+          "2.5 g/cm³, so it sinks",
+          "36 g/cm³, so it sinks"
+        ],
+        "answer": 2,
+        "working": "60 ÷ 24 = 2.5 g/cm³. That is more than 1 g/cm³, the density of water, so the stone sinks."
+      }
+    ]
+  },
+  "c7-2-1": {
+    "lessonId": "c7-2-1",
+    "title": "Solids, Liquids and Gases",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The three states",
+        "t": 20.921
+      },
+      {
+        "title": "The particle model",
+        "t": 53.293
+      },
+      {
+        "title": "Two common mistakes",
+        "t": 99.888
+      },
+      {
+        "title": "Your turn",
+        "t": 119.837
+      },
+      {
+        "title": "Summary",
+        "t": 147.984
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-2-1:q",
+        "t": 128.153,
+        "prompt": "Why can the air in a sealed syringe be pushed in, but water cannot?",
+        "choices": [
+          "Air particles shrink when they are pushed, but water particles cannot.",
+          "Air particles are far apart, but water particles are already touching.",
+          "Water particles are held in fixed rows, but air particles are not.",
+          "Water particles do not move, but air particles move quickly."
+        ],
+        "answer": 1,
+        "working": "In a gas the particles are far apart, so they can be pushed closer. In a liquid they already touch, so there is no space to push them into."
+      }
+    ]
+  },
+  "c7-2-2": {
+    "lessonId": "c7-2-2",
+    "title": "Changes of State",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming the changes",
+        "t": 21.482
+      },
+      {
+        "title": "Water on a cold can",
+        "t": 67.316
+      },
+      {
+        "title": "Melting and boiling points",
+        "t": 88.2
+      },
+      {
+        "title": "Your turn",
+        "t": 134.039
+      },
+      {
+        "title": "Summary",
+        "t": 164.741
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-2-2:q",
+        "t": 147.82,
+        "prompt": "Oxygen melts at −218 °C and boils at −183 °C. What state is oxygen in at −200 °C?",
+        "choices": [
+          "A liquid",
+          "A solid",
+          "A gas",
+          "A solid and a gas at once"
+        ],
+        "answer": 0,
+        "working": "−200 °C is warmer than −218 °C but colder than −183 °C, so it lies between the melting and boiling points: oxygen is a liquid."
+      }
+    ]
+  },
+  "c7-2-3": {
+    "lessonId": "c7-2-3",
+    "title": "Temperature and Heat",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Temperature",
+        "t": 16.136
+      },
+      {
+        "title": "Heat",
+        "t": 58.859
+      },
+      {
+        "title": "How heat moves",
+        "t": 92.594
+      },
+      {
+        "title": "Your turn",
+        "t": 137.615
+      },
+      {
+        "title": "Summary",
+        "t": 164.527
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-2-3:q",
+        "t": 144.98,
+        "prompt": "How does the Sun’s heat reach Earth across empty space?",
+        "choices": [
+          "By conduction",
+          "By convection",
+          "By sound waves",
+          "By radiation"
+        ],
+        "answer": 3,
+        "working": "Conduction and convection both need particles. Space is empty, so only radiation, which travels as rays, can cross it."
+      }
+    ]
+  },
+  "c7-2-4": {
+    "lessonId": "c7-2-4",
+    "title": "Expansion and Diffusion",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expansion and contraction",
+        "t": 19.893
+      },
+      {
+        "title": "Expansion in everyday life",
+        "t": 50.38
+      },
+      {
+        "title": "Diffusion",
+        "t": 87.478
+      },
+      {
+        "title": "Your turn",
+        "t": 126.088
+      },
+      {
+        "title": "Summary",
+        "t": 156.728
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-2-4:q",
+        "t": 138.034,
+        "prompt": "A tea bag is put into hot water and another into cold water. In which cup does the colour spread faster, and why?",
+        "choices": [
+          "The cold water, because its particles are closer together.",
+          "Both the same, because diffusion does not depend on temperature.",
+          "The hot water, because its particles move faster.",
+          "The hot water, because its particles are bigger."
+        ],
+        "answer": 2,
+        "working": "The colour spreads by diffusion, which is faster when the particles move faster: in the hot water. Particles never get bigger."
+      }
+    ]
+  },
+  "c7-3-1": {
+    "lessonId": "c7-3-1",
+    "title": "Pure Substances and Mixtures",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pure or mixture?",
+        "t": 17.85
+      },
+      {
+        "title": "A test for purity",
+        "t": 60.864
+      },
+      {
+        "title": "Four kinds of mixture",
+        "t": 91.233
+      },
+      {
+        "title": "Your turn",
+        "t": 129.402
+      },
+      {
+        "title": "Summary",
+        "t": 156.462
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-3-1:q",
+        "t": 139.321,
+        "prompt": "A mixture looks cloudy, but even after a week nothing has settled. What kind of mixture is it?",
+        "choices": [
+          "A colloid",
+          "A solution",
+          "A suspension",
+          "A mechanical mixture"
+        ],
+        "answer": 0,
+        "working": "It is cloudy, so not a solution. Nothing settles, so not a suspension. Cloudy and never settling: a colloid."
+      }
+    ]
+  },
+  "c7-3-2": {
+    "lessonId": "c7-3-2",
+    "title": "Solutions and Concentration",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solute, solvent and solution",
+        "t": 19.734
+      },
+      {
+        "title": "Mass is conserved",
+        "t": 65.144
+      },
+      {
+        "title": "Concentration",
+        "t": 92.39
+      },
+      {
+        "title": "Your turn",
+        "t": 142.334
+      },
+      {
+        "title": "Summary",
+        "t": 173.173
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-3-2:q",
+        "t": 153.719,
+        "prompt": "10 g of sugar is dissolved to make 500 mL of solution. What is the concentration?",
+        "choices": [
+          "5 g/L",
+          "20 g/L",
+          "0.02 g/L",
+          "50 g/L"
+        ],
+        "answer": 1,
+        "working": "500 mL = 0.5 L, and 10 ÷ 0.5 = 20 g/L."
+      }
+    ]
+  },
+  "c7-3-3": {
+    "lessonId": "c7-3-3",
+    "title": "Solubility",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solubility",
+        "t": 20.81
+      },
+      {
+        "title": "Using the table",
+        "t": 50.189
+      },
+      {
+        "title": "Saturated or unsaturated?",
+        "t": 86.131
+      },
+      {
+        "title": "Your turn",
+        "t": 122.205
+      },
+      {
+        "title": "Summary",
+        "t": 153.616
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-3-3:q",
+        "t": 135.396,
+        "prompt": "At 20 °C, 36 g of salt dissolves in 100 g of water. 30 g of salt is stirred into 100 g of water at 20 °C. Which is true?",
+        "choices": [
+          "The solution is saturated, and 6 g stays as solid.",
+          "The solution is saturated, and nothing more can dissolve.",
+          "None of the salt dissolves, because salt is insoluble.",
+          "All the salt dissolves, and the solution is unsaturated."
+        ],
+        "answer": 3,
+        "working": "30 g is less than the 36 g that can dissolve, so it all dissolves, and another 6 g could still dissolve."
+      }
+    ]
+  },
+  "c7-3-4": {
+    "lessonId": "c7-3-4",
+    "title": "How Fast Things Dissolve",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways to dissolve faster",
+        "t": 17.256
+      },
+      {
+        "title": "Fair tests",
+        "t": 69.148
+      },
+      {
+        "title": "Designing a test",
+        "t": 97.337
+      },
+      {
+        "title": "Your turn",
+        "t": 138.964
+      },
+      {
+        "title": "Summary",
+        "t": 169.795
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-3-4:q",
+        "t": 150.408,
+        "prompt": "A student times how long sugar takes to dissolve with and without stirring. What is the dependent variable?",
+        "choices": [
+          "Whether the water is stirred",
+          "The volume of water",
+          "The time the sugar takes to dissolve",
+          "The mass of sugar"
+        ],
+        "answer": 2,
+        "working": "The dependent variable is what is measured: the time. Stirring is the independent variable; the volume and mass are controlled."
+      }
+    ]
+  },
+  "c7-4-1": {
+    "lessonId": "c7-4-1",
+    "title": "Sieving, Magnets and Filtering",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sieving and magnets",
+        "t": 21.728
+      },
+      {
+        "title": "Filtration",
+        "t": 63.826
+      },
+      {
+        "title": "What a filter cannot do",
+        "t": 101.725
+      },
+      {
+        "title": "Your turn",
+        "t": 139.421
+      },
+      {
+        "title": "Summary",
+        "t": 166.92
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-4-1:q",
+        "t": 146.367,
+        "prompt": "Which mixture can be separated by filtration?",
+        "choices": [
+          "Sugar dissolved in water",
+          "Chalk powder stirred into water",
+          "Salt dissolved in water",
+          "Iron filings mixed with sulfur"
+        ],
+        "answer": 1,
+        "working": "Chalk is insoluble, so the filter paper catches it. Dissolved sugar and salt pass through, and iron and sulfur are both dry solids, best separated with a magnet."
+      }
+    ]
+  },
+  "c7-4-2": {
+    "lessonId": "c7-4-2",
+    "title": "Evaporation and Distillation",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Evaporation",
+        "t": 21.33
+      },
+      {
+        "title": "Crystallization",
+        "t": 58.192
+      },
+      {
+        "title": "Distillation",
+        "t": 104.926
+      },
+      {
+        "title": "Your turn",
+        "t": 145.989
+      },
+      {
+        "title": "Summary",
+        "t": 171.623
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-4-2:q",
+        "t": 154.133,
+        "prompt": "Salt water is distilled. What is collected in the beaker at the end?",
+        "choices": [
+          "Pure water",
+          "Salty water, saltier than before",
+          "Dry salt crystals",
+          "Steam"
+        ],
+        "answer": 0,
+        "working": "Only the water boils. It condenses in the condenser and collects as pure water; the salt stays in the flask."
+      }
+    ]
+  },
+  "c7-4-3": {
+    "lessonId": "c7-4-3",
+    "title": "Chromatography and Choosing a Method",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Paper chromatography",
+        "t": 23.01
+      },
+      {
+        "title": "Reading a chromatogram",
+        "t": 68.134
+      },
+      {
+        "title": "Choosing a method",
+        "t": 99.412
+      },
+      {
+        "title": "Your turn",
+        "t": 141.78
+      },
+      {
+        "title": "Summary",
+        "t": 170.863
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-4-3:q",
+        "t": 151.321,
+        "prompt": "You want to keep both the salt and the water from salt water. Which method should you use?",
+        "choices": [
+          "Evaporation",
+          "Filtration",
+          "Chromatography",
+          "Distillation"
+        ],
+        "answer": 3,
+        "working": "Evaporation loses the water to the air, and filtration cannot catch dissolved salt. Distillation keeps the salt in the flask and collects the water."
+      }
+    ]
   }
 }
