@@ -11,8 +11,8 @@ describe('the UK map’s chemistry and English courses', () => {
     const own = new Set([...LISTED_COURSES.filter((c) => c.subject === 'Chemistry'), more].flatMap((c) => c.lessons.map((l) => l.id)));
     for (const c of mappedCourses('uk').filter((c) => c.subject === 'Chemistry')) {
       for (const l of c.lessons) expect(own.has(l.id), `${c.id} ${l.id}`).toBe(true);
-      // GCSE Chemistry and the first year of A level now teach every topic; Year 13 still lists gaps.
-      if (c.id === 'uk-a-level-chemistry-2') expect(c.gaps!.length, `${c.id} lists what it does not teach yet`).toBeGreaterThan(0);
+      // GCSE Chemistry and both years of A level now teach every topic.
+      expect(c.gaps, `${c.id} has no gaps`).toEqual([]);
     }
     const gcse = getCourse('uk-gcse-chemistry')!;
     expect(gcse.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Quantitative Chemistry', 'Chemical Changes', 'Organic Chemistry', 'Chemical Analysis']));

@@ -7,8 +7,8 @@
  *
  * A level Chemistry in Years 12 and 13: the first year (the AS content) and the second, each in
  * the usual three strands of physical, inorganic and organic chemistry. Gradileo's chemistry was
- * written as three grade courses, so the A level courses list more gaps than GCSE does; most are
- * inorganic chemistry, reaction mechanisms and the instruments of organic analysis.
+ * written as three grade courses; the More Chemistry course fills in the rest of both years, so
+ * neither A level course lists a gap.
  */
 import type { MapCourse } from './build.ts';
 
@@ -66,28 +66,26 @@ export const UK_CHEMISTRY_COURSES: MapCourse[] = [
     shortTitle: 'A level Chemistry Year 13',
     grade: 12,
     subject: 'Chemistry',
-    description: 'The second year of A level Chemistry: electrode potentials and cells, acids, bases and buffers, and esters and polymers, in the order of a two-year scheme of work. Most of this year’s inorganic and organic chemistry is still to come.',
+    description: 'The second year of A level Chemistry: thermodynamics, rate equations, Kp, electrode potentials and acids and bases; the Period 3 oxides, transition metals and metal aqua ions; and optical isomerism, carbonyl and aromatic chemistry, amines, polymers, biochemistry, synthesis and NMR, in the order of a two-year scheme of work.',
     units: [
+      { title: 'Thermodynamics', description: 'Born–Haber cycles, lattice enthalpies and the perfect ionic model, enthalpies of solution and hydration, entropy, and Gibbs free energy and feasibility.', members: ['cx-10-1', 'cx-10-2'] },
+      { title: 'Rate Equations', description: 'Orders of reaction and rate equations, the units of the rate constant, the rate-determining step, and the Arrhenius equation and its graph.', members: ['cx-10-3'] },
+      { title: 'The Equilibrium Constant Kp', description: 'Mole fractions and partial pressures, calculating Kp and its units, and how temperature, pressure and catalysts affect it.', members: ['cx-10-4'] },
       { title: 'Electrode Potentials and Electrochemical Cells', description: 'The electrochemical series and predicting redox reactions, cells and their conventional notation, standard cell potentials, electrolysis, and redox titrations with manganate(VII).', members: ['c30-2-3', 'c30-2-6', 'c30-2-7', 'c30-2-8', 'c30-2-5'] },
       { title: 'Acids and Bases', description: 'Brønsted–Lowry acids and bases, pH, strong and weak acids and bases, Ka and Kw, the pH of weak acids, pH curves, indicators and buffer solutions.', members: ['c30-4-4', 'c20-3-7', 'c20-3-8', 'c30-4-5', 'c30-4-6', 'c30-4-7', 'c30-4-8'] },
-      { title: 'Esters and Polymers', description: 'Making and naming esters, and addition and condensation polymers with their monomers.', members: ['c30-3-6'] },
+      { title: 'Properties of Period 3 Elements and Their Oxides', description: 'The reactions of the Period 3 elements with water and oxygen, the structure and bonding of their oxides, and their acid–base reactions, including amphoteric aluminium oxide.', members: ['cx-11-1'] },
+      { title: 'Transition Metals', description: 'Complex ions, ligands and coordination numbers, the shapes of complexes, why they are coloured, colorimetry, the oxidation states of vanadium, and transition metals as catalysts.', members: ['cx-11-2'] },
+      { title: 'Reactions of Ions in Aqueous Solution', description: 'The acidity of metal aqua ions, their reactions with hydroxide, ammonia and carbonate, ligand substitution and the chelate effect.', members: ['cx-11-3'] },
+      { title: 'Optical Isomerism', description: 'Chiral centres, enantiomers, optical activity and racemic mixtures.', members: ['cx-12-1'] },
+      { title: 'Aldehydes and Ketones', description: 'Telling aldehydes from ketones, reduction with NaBH₄, nucleophilic addition and hydroxynitriles.', members: ['cx-12-2'] },
+      { title: 'Carboxylic Acids and Derivatives', description: 'Esters and their hydrolysis, soaps and biodiesel, and acylation with acyl chlorides and acid anhydrides by nucleophilic addition–elimination.', members: ['cx-12-3'] },
+      { title: 'Aromatic Chemistry', description: 'The structure and stability of benzene, and electrophilic substitution: nitration and Friedel–Crafts acylation.', members: ['cx-12-4'] },
+      { title: 'Amines', description: 'Classifying amines, their base strengths, quaternary ammonium salts, and making amines from halogenoalkanes, nitriles and nitro compounds.', members: ['cx-12-5'] },
+      { title: 'Polymers', description: 'Addition polymers, and condensation polymers such as polyesters and polyamides, with their monomers.', members: ['c30-3-6'] },
+      { title: 'Amino Acids, Proteins and DNA', description: 'Amino acids at different pH, peptide links and protein structure, enzymes, the structure of DNA, and the action of cisplatin.', members: ['cx-12-6'] },
+      { title: 'Organic Synthesis', description: 'The reagents and conditions for each change of functional group, and planning routes of several steps.', members: ['cx-12-7'] },
+      { title: 'NMR Spectroscopy and Chromatography', description: 'Carbon-13 and proton NMR, chemical shift, integration and splitting, and thin-layer, column and gas chromatography.', members: ['cx-12-8'] },
     ],
-    gaps: [
-      'Born–Haber cycles and lattice enthalpies',
-      'Entropy and Gibbs free energy',
-      'Rate equations, orders of reaction and the Arrhenius equation',
-      'The equilibrium constant Kp for gases',
-      'Properties of the Period 3 elements and their oxides',
-      'Transition metals: complex ions, coloured ions, variable oxidation states and catalysts',
-      'Reactions of metal ions in aqueous solution',
-      'Optical isomerism',
-      'Aldehydes and ketones',
-      'Carboxylic acid derivatives and acylation',
-      'Aromatic chemistry: benzene and electrophilic substitution',
-      'Amines',
-      'Amino acids, proteins and DNA',
-      'Organic synthesis: planning a route of several steps',
-      'Nuclear magnetic resonance spectroscopy, and chromatography',
-    ],
+    gaps: [],
   },
 ];
