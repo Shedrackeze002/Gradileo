@@ -17597,7 +17597,7 @@
   "cx-9-2": {
     "lessonId": "cx-9-2",
     "title": "Halogenoalkanes and Ozone Depletion",
-    "duration": 174,
+    "duration": 175,
     "voice": "af_heart",
     "chapters": [
       {
@@ -17606,29 +17606,29 @@
       },
       {
         "title": "Substitution and elimination",
-        "t": 27.012
+        "t": 27.506
       },
       {
         "title": "Which reacts fastest?",
-        "t": 57.686
+        "t": 58.18
       },
       {
         "title": "CFCs and ozone",
-        "t": 78.041
+        "t": 78.535
       },
       {
         "title": "Your turn",
-        "t": 119.518
+        "t": 120.223
       },
       {
         "title": "Summary",
-        "t": 145.127
+        "t": 145.832
       }
     ],
     "cues": [
       {
         "id": "cx-9-2:q",
-        "t": 128.054,
+        "t": 128.759,
         "prompt": "Which halogenoalkane reacts fastest with aqueous silver nitrate?",
         "choices": [
           "1-chlorobutane",
@@ -17979,6 +17979,531 @@
         ],
         "answer": 2,
         "working": "Mole fraction $= \\dfrac{3.0}{5.0} = 0.60$, so $p = 0.60 \\times 200 = 120$ kPa."
+      }
+    ]
+  },
+  "cx-11-1": {
+    "lessonId": "cx-11-1",
+    "title": "Period 3 Elements and Their Oxides",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "With water and oxygen",
+        "t": 24.039
+      },
+      {
+        "title": "Structure and pH",
+        "t": 52.218
+      },
+      {
+        "title": "Amphoteric aluminium oxide",
+        "t": 83.859
+      },
+      {
+        "title": "A common mistake",
+        "t": 108.818
+      },
+      {
+        "title": "Your turn",
+        "t": 122.292
+      },
+      {
+        "title": "Summary",
+        "t": 146.655
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-11-1:q",
+        "t": 132.929,
+        "prompt": "Which Period 3 oxide reacts with both hydrochloric acid and sodium hydroxide?",
+        "choices": [
+          "Magnesium oxide",
+          "Aluminium oxide",
+          "Sulfur dioxide",
+          "Sodium oxide"
+        ],
+        "answer": 1,
+        "working": "Aluminium oxide is **amphoteric**: it acts as a base with acids and as an acid with bases."
+      }
+    ]
+  },
+  "cx-11-2": {
+    "lessonId": "cx-11-2",
+    "title": "Transition Metals: Complex Ions, Colour and Catalysts",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ligands",
+        "t": 26.507
+      },
+      {
+        "title": "Shapes",
+        "t": 48.774
+      },
+      {
+        "title": "Colour",
+        "t": 73.815
+      },
+      {
+        "title": "Catalysts",
+        "t": 105.837
+      },
+      {
+        "title": "Your turn",
+        "t": 132.364
+      },
+      {
+        "title": "Summary",
+        "t": 161.337
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-11-2:q",
+        "t": 143.098,
+        "prompt": "What is the oxidation state of cobalt in $\\ce{[CoCl4]^2-}$, and what is its shape?",
+        "choices": [
+          "+4, octahedral",
+          "+2, octahedral",
+          "+6, tetrahedral",
+          "+2, tetrahedral"
+        ],
+        "answer": 3,
+        "working": "Four $\\ce{Cl-}$ give −4, so cobalt is +2 to make −2 overall. Four large chloride ligands: **tetrahedral**."
+      }
+    ]
+  },
+  "cx-11-3": {
+    "lessonId": "cx-11-3",
+    "title": "Reactions of Metal Ions in Aqueous Solution",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Acidic aqua ions",
+        "t": 27.025
+      },
+      {
+        "title": "Test-tube reactions",
+        "t": 51.949
+      },
+      {
+        "title": "The chelate effect",
+        "t": 101.479
+      },
+      {
+        "title": "Your turn",
+        "t": 133.317
+      },
+      {
+        "title": "Summary",
+        "t": 167.549
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-11-3:q",
+        "t": 148.428,
+        "prompt": "A colourless solution gives a white precipitate with sodium hydroxide, which dissolves in excess. It fizzes with sodium carbonate. Which ion is it?",
+        "choices": [
+          "$\\ce{Al^3+}$",
+          "$\\ce{Fe^2+}$",
+          "$\\ce{Cu^2+}$",
+          "$\\ce{Fe^3+}$"
+        ],
+        "answer": 0,
+        "working": "Colourless, a white precipitate that dissolves in excess hydroxide, and fizzing with carbonate: **aluminium**."
+      }
+    ]
+  },
+  "cx-12-1": {
+    "lessonId": "cx-12-1",
+    "title": "Optical Isomerism",
+    "duration": 155,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Chiral centres",
+        "t": 24.631
+      },
+      {
+        "title": "Enantiomers",
+        "t": 50.671
+      },
+      {
+        "title": "Why a racemate forms",
+        "t": 79.429
+      },
+      {
+        "title": "Your turn",
+        "t": 106.84
+      },
+      {
+        "title": "Summary",
+        "t": 129.888
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-12-1:q",
+        "t": 113.685,
+        "prompt": "Which of these molecules has a chiral centre?",
+        "choices": [
+          "Propan-2-ol, $\\ce{CH3CH(OH)CH3}$",
+          "Ethanol, $\\ce{CH3CH2OH}$",
+          "2-hydroxypropanoic acid, $\\ce{CH3CH(OH)COOH}$",
+          "Propanone, $\\ce{CH3COCH3}$"
+        ],
+        "answer": 2,
+        "working": "Carbon 2 of 2-hydroxypropanoic acid carries H, OH, $\\ce{CH3}$ and COOH: **four different groups**."
+      }
+    ]
+  },
+  "cx-12-2": {
+    "lessonId": "cx-12-2",
+    "title": "Aldehydes and Ketones",
+    "duration": 161,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Telling them apart",
+        "t": 23.349
+      },
+      {
+        "title": "Reduction",
+        "t": 40.734
+      },
+      {
+        "title": "Hydroxynitriles",
+        "t": 74.079
+      },
+      {
+        "title": "Your turn",
+        "t": 105.214
+      },
+      {
+        "title": "Summary",
+        "t": 129.939
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-12-2:q",
+        "t": 114.118,
+        "prompt": "What forms when butanone, $\\ce{CH3COCH2CH3}$, is reduced with $\\ce{NaBH4}$?",
+        "choices": [
+          "Butan-1-ol",
+          "Butan-2-ol",
+          "Butanoic acid",
+          "Butanal"
+        ],
+        "answer": 1,
+        "working": "Butanone is a **ketone**, so it is reduced to a secondary alcohol: butan-2-ol."
+      }
+    ]
+  },
+  "cx-12-3": {
+    "lessonId": "cx-12-3",
+    "title": "Carboxylic Acid Derivatives and Acylation",
+    "duration": 171,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Esters",
+        "t": 19.089
+      },
+      {
+        "title": "Acylation",
+        "t": 61.085
+      },
+      {
+        "title": "A common mistake",
+        "t": 102.679
+      },
+      {
+        "title": "Your turn",
+        "t": 116.107
+      },
+      {
+        "title": "Summary",
+        "t": 143.973
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-12-3:q",
+        "t": 127.144,
+        "prompt": "Methyl propanoate is heated under reflux with sodium hydroxide solution. Which products form?",
+        "choices": [
+          "Propanoic acid and methanol",
+          "Sodium methanoate and propanol",
+          "Methanoic acid and propan-1-ol",
+          "Sodium propanoate and methanol"
+        ],
+        "answer": 3,
+        "working": "The propanoate part came from propanoic acid, which forms as its **sodium salt**; the methyl part came from methanol."
+      }
+    ]
+  },
+  "cx-12-4": {
+    "lessonId": "cx-12-4",
+    "title": "Benzene and Electrophilic Substitution",
+    "duration": 166,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The evidence",
+        "t": 23.446
+      },
+      {
+        "title": "Nitration",
+        "t": 65.13
+      },
+      {
+        "title": "Friedel–Crafts acylation",
+        "t": 95.896
+      },
+      {
+        "title": "Your turn",
+        "t": 112.66
+      },
+      {
+        "title": "Summary",
+        "t": 135.532
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-12-4:q",
+        "t": 120.097,
+        "prompt": "What is the electrophile in the nitration of benzene?",
+        "choices": [
+          "$\\ce{NO2+}$",
+          "$\\ce{NO3-}$",
+          "$\\ce{HNO3}$",
+          "$\\ce{HSO4-}$"
+        ],
+        "answer": 0,
+        "working": "Concentrated sulfuric acid protonates nitric acid, which loses water to give the **nitronium ion**, $\\ce{NO2+}$."
+      }
+    ]
+  },
+  "cx-12-5": {
+    "lessonId": "cx-12-5",
+    "title": "Amines",
+    "duration": 154,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Classifying amines",
+        "t": 19.122
+      },
+      {
+        "title": "Base strength",
+        "t": 41.147
+      },
+      {
+        "title": "Making amines",
+        "t": 70.493
+      },
+      {
+        "title": "Your turn",
+        "t": 103.532
+      },
+      {
+        "title": "Summary",
+        "t": 126.726
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-12-5:q",
+        "t": 109.046,
+        "prompt": "Which is the strongest base?",
+        "choices": [
+          "Phenylamine",
+          "Ammonia",
+          "Ethylamine",
+          "Water"
+        ],
+        "answer": 2,
+        "working": "The ethyl group pushes electron density onto the nitrogen, so its lone pair is the **most available**."
+      }
+    ]
+  },
+  "cx-12-6": {
+    "lessonId": "cx-12-6",
+    "title": "Amino Acids, Proteins and DNA",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Amino acids",
+        "t": 22.44
+      },
+      {
+        "title": "Proteins",
+        "t": 57.69
+      },
+      {
+        "title": "DNA and cisplatin",
+        "t": 98.295
+      },
+      {
+        "title": "Your turn",
+        "t": 135.034
+      },
+      {
+        "title": "Summary",
+        "t": 163.303
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-12-6:q",
+        "t": 146.263,
+        "prompt": "One DNA strand reads ATGC. How many hydrogen bonds hold it to its partner strand?",
+        "choices": [
+          "8",
+          "10",
+          "12",
+          "4"
+        ],
+        "answer": 1,
+        "working": "Two A–T pairs give $2 \\times 2 = 4$, and two C–G pairs give $2 \\times 3 = 6$: **10** in all."
+      }
+    ]
+  },
+  "cx-12-7": {
+    "lessonId": "cx-12-7",
+    "title": "Organic Synthesis",
+    "duration": 158,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Key conversions",
+        "t": 19.994
+      },
+      {
+        "title": "Fewer steps",
+        "t": 56.569
+      },
+      {
+        "title": "Working backwards",
+        "t": 78.963
+      },
+      {
+        "title": "Your turn",
+        "t": 110.735
+      },
+      {
+        "title": "Summary",
+        "t": 135.944
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-12-7:q",
+        "t": 117.937,
+        "prompt": "Which two steps make propylamine, $\\ce{CH3CH2CH2NH2}$, from bromoethane?",
+        "choices": [
+          "Excess ammonia, then KCN",
+          "Aqueous NaOH, then ammonia",
+          "Steam, then $\\ce{H2}$ and nickel",
+          "KCN in ethanol, then $\\ce{H2}$ with a nickel catalyst"
+        ],
+        "answer": 3,
+        "working": "Bromoethane has two carbons and propylamine three, so add one with **cyanide** (propanenitrile), then **reduce** the nitrile."
+      }
+    ]
+  },
+  "cx-12-8": {
+    "lessonId": "cx-12-8",
+    "title": "NMR Spectroscopy and Chromatography",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "NMR basics",
+        "t": 25.946
+      },
+      {
+        "title": "Proton NMR",
+        "t": 63.458
+      },
+      {
+        "title": "Chromatography",
+        "t": 99.85
+      },
+      {
+        "title": "Your turn",
+        "t": 141.006
+      },
+      {
+        "title": "Summary",
+        "t": 167.552
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-12-8:q",
+        "t": 149.754,
+        "prompt": "How many peaks are there in the ¹H NMR spectrum of propanone, $\\ce{CH3COCH3}$?",
+        "choices": [
+          "1",
+          "2",
+          "3",
+          "6"
+        ],
+        "answer": 0,
+        "working": "Both $\\ce{CH3}$ groups are in the **same environment**, so all six hydrogens give a single peak."
       }
     ]
   },
@@ -29160,6 +29685,556 @@
         ],
         "answer": 1,
         "working": "“We **were**” is the standard form of the verb."
+      }
+    ]
+  },
+  "ex-5-1": {
+    "lessonId": "ex-5-1",
+    "title": "A Christmas Carol",
+    "duration": 220,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five staves",
+        "t": 23.445
+      },
+      {
+        "title": "Greed and isolation",
+        "t": 71.294
+      },
+      {
+        "title": "Poverty and responsibility",
+        "t": 91.024
+      },
+      {
+        "title": "Context",
+        "t": 117.763
+      },
+      {
+        "title": "A common mistake",
+        "t": 143.697
+      },
+      {
+        "title": "Your turn",
+        "t": 159.916
+      },
+      {
+        "title": "Summary",
+        "t": 188.87
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-5-1:q",
+        "t": 168.486,
+        "prompt": "Marley’s ghost says: *“Mankind was my business.”* What does he mean?",
+        "choices": [
+          "He was very successful in trade, and wants Scrooge to carry on the firm",
+          "His real duty was to other people, not to making money",
+          "His firm sold goods to the whole of mankind",
+          "People interfered in his business, and he warns Scrooge"
+        ],
+        "answer": 1,
+        "working": "Scrooge has just praised him as “a good man of business”; Marley turns the word around."
+      }
+    ]
+  },
+  "ex-5-2": {
+    "lessonId": "ex-5-2",
+    "title": "Dr Jekyll and Mr Hyde",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A mystery",
+        "t": 24.545
+      },
+      {
+        "title": "Less than human",
+        "t": 63.393
+      },
+      {
+        "title": "Duality",
+        "t": 83.876
+      },
+      {
+        "title": "Context",
+        "t": 108.913
+      },
+      {
+        "title": "A common mistake",
+        "t": 134.178
+      },
+      {
+        "title": "Your turn",
+        "t": 150.368
+      },
+      {
+        "title": "Summary",
+        "t": 179.5
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-5-2:q",
+        "t": 161.251,
+        "prompt": "Jekyll tells Utterson: *“the moment I choose, I can be rid of Mr. Hyde.”* Why is this line important?",
+        "choices": [
+          "Jekyll plans to have Hyde arrested",
+          "Hyde is only a lodger in Jekyll’s house",
+          "Jekyll is tired of Hyde’s company",
+          "It is dramatic irony: Hyde will soon control Jekyll"
+        ],
+        "answer": 3,
+        "working": "Jekyll believes he controls his darker self; later Hyde appears without the drug."
+      }
+    ]
+  },
+  "ex-5-3": {
+    "lessonId": "ex-5-3",
+    "title": "Great Expectations",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three stages",
+        "t": 25.374
+      },
+      {
+        "title": "Shame and ambition",
+        "t": 57.567
+      },
+      {
+        "title": "Who paid",
+        "t": 78.372
+      },
+      {
+        "title": "Revenge",
+        "t": 100.026
+      },
+      {
+        "title": "A common mistake",
+        "t": 118.576
+      },
+      {
+        "title": "Your turn",
+        "t": 133.223
+      },
+      {
+        "title": "Summary",
+        "t": 163.395
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-5-3:q",
+        "t": 146.162,
+        "prompt": "Leaving London, Joe says: *“Pip, dear old chap, life is made of ever so many partings welded together”*. What does this show?",
+        "choices": [
+          "Joe accepts with dignity that he and Pip now live apart",
+          "Joe never wants to see Pip again",
+          "Joe hopes Pip will come back to work at the forge",
+          "Joe is announcing his own wedding"
+        ],
+        "answer": 0,
+        "working": "“Welded” is the language of Joe’s own trade: he speaks simply and kindly."
+      }
+    ]
+  },
+  "ex-6-1": {
+    "lessonId": "ex-6-1",
+    "title": "Frankenstein",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A story within a story",
+        "t": 24.81
+      },
+      {
+        "title": "Dangerous knowledge",
+        "t": 53.269
+      },
+      {
+        "title": "Rejection and revenge",
+        "t": 75.345
+      },
+      {
+        "title": "Context",
+        "t": 93.37
+      },
+      {
+        "title": "A common mistake",
+        "t": 114.312
+      },
+      {
+        "title": "Your turn",
+        "t": 129.516
+      },
+      {
+        "title": "Summary",
+        "t": 161.881
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-6-1:q",
+        "t": 140.092,
+        "prompt": "The creature says: *“I ought to be thy Adam, but I am rather the fallen angel”*. What does he mean?",
+        "choices": [
+          "He is more powerful than any man",
+          "He has sinned like Adam and wants forgiveness",
+          "He should have been loved by his maker, but was cast out for no wrong",
+          "He wants to become a priest"
+        ],
+        "answer": 2,
+        "working": "Adam was made and loved by God; the fallen angel, Satan, was cast out of heaven."
+      }
+    ]
+  },
+  "ex-6-2": {
+    "lessonId": "ex-6-2",
+    "title": "Jane Eyre",
+    "duration": 198,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five homes",
+        "t": 24.654
+      },
+      {
+        "title": "Equality",
+        "t": 60.21
+      },
+      {
+        "title": "Independence",
+        "t": 81.458
+      },
+      {
+        "title": "Context",
+        "t": 100.345
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.113
+      },
+      {
+        "title": "Your turn",
+        "t": 138.689
+      },
+      {
+        "title": "Summary",
+        "t": 170.356
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-6-2:q",
+        "t": 151.808,
+        "prompt": "Rochester tells Jane to be still, like a frantic bird. She replies: *“I am no bird; and no net ensnares me”*. What does this show?",
+        "choices": [
+          "She thinks birds are ugly and foolish",
+          "She refuses to be trapped or owned by anyone",
+          "She wants to travel abroad",
+          "She has escaped from Lowood School"
+        ],
+        "answer": 1,
+        "working": "A bird in a net is trapped; Jane rejects the image and names her own free will."
+      }
+    ]
+  },
+  "ex-6-3": {
+    "lessonId": "ex-6-3",
+    "title": "Pride and Prejudice",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The story",
+        "t": 26.413
+      },
+      {
+        "title": "Irony",
+        "t": 60.38
+      },
+      {
+        "title": "Pride and prejudice",
+        "t": 80.031
+      },
+      {
+        "title": "Context",
+        "t": 101.698
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.845
+      },
+      {
+        "title": "Your turn",
+        "t": 138.944
+      },
+      {
+        "title": "Summary",
+        "t": 172.502
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-6-3:q",
+        "t": 154.163,
+        "prompt": "Lady Catherine says Elizabeth is not Darcy’s equal. Elizabeth replies: *“He is a gentleman; I am a gentleman’s daughter; so far we are equal.”* What does this show?",
+        "choices": [
+          "She agrees that she is below Darcy in rank",
+          "She boasts that her father is richer than Darcy",
+          "She and Darcy are cousins",
+          "She refuses to accept that rank makes her unworthy"
+        ],
+        "answer": 3,
+        "working": "She answers Lady Catherine’s snobbery calmly, and claims equality with Darcy."
+      }
+    ]
+  },
+  "ex-6-4": {
+    "lessonId": "ex-6-4",
+    "title": "The Sign of Four",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The case",
+        "t": 25.224
+      },
+      {
+        "title": "Reason",
+        "t": 55.364
+      },
+      {
+        "title": "Treasure and love",
+        "t": 74.523
+      },
+      {
+        "title": "Context",
+        "t": 97.562
+      },
+      {
+        "title": "A common mistake",
+        "t": 123.088
+      },
+      {
+        "title": "Your turn",
+        "t": 137.948
+      },
+      {
+        "title": "Summary",
+        "t": 169.737
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-6-4:q",
+        "t": 151.26,
+        "prompt": "Holmes says: *“when you have eliminated the impossible whatever remains, however improbable, must be the truth”*. How does he reason?",
+        "choices": [
+          "He rules out what cannot be, and accepts what is left",
+          "He always chooses the most likely answer",
+          "He gives up when a crime seems impossible",
+          "He decides that a ghost must be to blame"
+        ],
+        "answer": 0,
+        "working": "He rules out every way the killer could not have entered; the way that is left must be right."
+      }
+    ]
+  },
+  "ex-7-1": {
+    "lessonId": "ex-7-1",
+    "title": "Much Ado About Nothing",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two love stories",
+        "t": 24.077
+      },
+      {
+        "title": "Wit",
+        "t": 46.136
+      },
+      {
+        "title": "Honour",
+        "t": 66.225
+      },
+      {
+        "title": "Context",
+        "t": 85.73
+      },
+      {
+        "title": "A common mistake",
+        "t": 106.919
+      },
+      {
+        "title": "Your turn",
+        "t": 121.948
+      },
+      {
+        "title": "Summary",
+        "t": 151.5
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-7-1:q",
+        "t": 133.648,
+        "prompt": "Benedick has just overheard that Beatrice loves him. He says: *“No; the world must be peopled.”* What is the effect?",
+        "choices": [
+          "He gives a serious speech about the falling population",
+          "He still refuses to marry, and mocks Claudio",
+          "He comically argues his way out of his old vow",
+          "He mourns a friend who died a bachelor"
+        ],
+        "answer": 2,
+        "working": "He swore he would die a bachelor; now he finds a grand reason to change his mind."
+      }
+    ]
+  },
+  "ex-7-2": {
+    "lessonId": "ex-7-2",
+    "title": "The Merchant of Venice",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two plots",
+        "t": 25.142
+      },
+      {
+        "title": "Prejudice",
+        "t": 55.89
+      },
+      {
+        "title": "Mercy and justice",
+        "t": 78.968
+      },
+      {
+        "title": "Context",
+        "t": 101.958
+      },
+      {
+        "title": "A common mistake",
+        "t": 127.012
+      },
+      {
+        "title": "Your turn",
+        "t": 143.391
+      },
+      {
+        "title": "Summary",
+        "t": 173.488
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-7-2:q",
+        "t": 155.483,
+        "prompt": "The Prince of Morocco chooses the gold casket and reads: *“All that glisters is not gold”*. What does the scroll warn?",
+        "choices": [
+          "That Portia is poorer than he thinks",
+          "That outward show can hide something worthless",
+          "That the casket is really made of brass",
+          "That he has chosen wisely"
+        ],
+        "answer": 1,
+        "working": "Morocco judged by appearance; the gold casket holds a skull, not Portia’s picture."
+      }
+    ]
+  },
+  "ex-7-3": {
+    "lessonId": "ex-7-3",
+    "title": "Julius Caesar",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plot",
+        "t": 23.555
+      },
+      {
+        "title": "Persuading Brutus",
+        "t": 52.905
+      },
+      {
+        "title": "The funeral",
+        "t": 75.048
+      },
+      {
+        "title": "Context",
+        "t": 96.265
+      },
+      {
+        "title": "A common mistake",
+        "t": 116.082
+      },
+      {
+        "title": "Your turn",
+        "t": 131.625
+      },
+      {
+        "title": "Summary",
+        "t": 162.873
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-7-3:q",
+        "t": 143.712,
+        "prompt": "Showing the crowd Brutus’s wound in Caesar’s body, Antony says: *“This was the most unkindest cut of all”*. What does he stress?",
+        "choices": [
+          "That Brutus’s blow was the least serious",
+          "That Casca struck first and hardest",
+          "That Caesar’s cloak was badly made",
+          "That the blow from a friend hurt most"
+        ],
+        "answer": 3,
+        "working": "The double superlative, “most unkindest”, stresses the betrayal of a friend."
       }
     ]
   },
