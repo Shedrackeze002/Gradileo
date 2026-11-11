@@ -1295,7 +1295,7 @@ items ship or decisions change.
   (`src/content/mathmore/videos/mx-20-1.ts` to `mx-22-3.ts` and `mx-1-7.ts`), rendered and in
   Drive (`Gradileo videos/More Topics/`); the Tutor voice workflow records the lessons after each
   merge. The owner chose junior chemistry as the next subject (11 November 2026).
-- In progress (11 November 2026): **Junior chemistry, Grades 7 to 9** (`docs/PLAN-JUNIOR-CHEMISTRY.md`),
+- Done (11 November 2026): **Junior chemistry, Grades 7 to 9** (`docs/PLAN-JUNIOR-CHEMISTRY.md`),
   one grade per pull request so each can be used in classes as soon as it merges.
   - Built: **Grade 7 Chemistry** (`chem-7`, "Chemistry 7"): four units and 15 lessons (matter and
     measurement, the particle model, mixtures and solutions, separating mixtures) with 30 question
@@ -1313,7 +1313,7 @@ items ship or decisions change.
     conservation of mass, balancing equations, types of reaction and rates; acids, bases, pH and
     neutralization) with 30 question generators. A Grade 9 learner is recommended it, with
     Chemistry 8 as the readiness check, and Grade 10 Chemistry's readiness check is now Chemistry
-    9. Next: its 15 explainer videos.
+    9. Its 15 explainer videos are rendered and on Drive.
 - Done: the *Deploy Supabase backend* workflow works. Its secrets (`SUPABASE_ACCESS_TOKEN`,
   `SUPABASE_PROJECT_ID` and `SUPABASE_DB_PASSWORD`) were added on 14 October 2026. The first run
   failed at `supabase link`, which reads the project's secret API keys, so the workflow no longer
