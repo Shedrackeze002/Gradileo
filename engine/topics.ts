@@ -53,7 +53,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Functions', 'function-transformations', 'Transformations of functions', ['m301-u1']),
   t(M, 'Functions', 'absolute-reciprocal', 'Absolute value and reciprocal functions', ['m201-u7']),
   t(M, 'Functions', 'radical-functions', 'Radical functions', ['m301-u2']),
-  t(M, 'Functions', 'polynomial-functions', 'Polynomial functions', ['m301-u3', 'm302-u5', 'mx-8-2']),
+  t(M, 'Functions', 'polynomial-functions', 'Polynomial functions', ['m301-u3', 'm302-u5', 'mx-8-2', 'mx-19-2']),
   t(M, 'Functions', 'exponentials-logarithms', 'Exponential functions and logarithms', ['mx-2-3', 'm301-u7', 'm302-u6', 'mx-16-3']),
   t(M, 'Functions', 'rational-functions', 'Rational functions and combining functions', ['m301-u8']),
   // Geometry and measurement.
@@ -89,9 +89,10 @@ export const TOPICS: Topic[] = [
   t(M, 'Reasoning', 'puzzles-projects', 'Puzzles, games and research projects', ['m203-8-3', 'm202-u9', 'm302-u8', 'm303-u9']),
   // Calculus.
   t(M, 'Calculus', 'limits', 'Limits and continuity', ['m31-u2']),
-  t(M, 'Calculus', 'derivatives', 'Derivatives and differentiation rules', ['m31-u3', 'm31-u4', 'm31-u5']),
+  t(M, 'Calculus', 'derivatives', 'Derivatives and differentiation rules', ['m31-u3', 'm31-u4', 'm31-u5', 'mx-19-1']),
   t(M, 'Calculus', 'derivative-applications', 'Applications of derivatives', ['m31-u6', 'm31-u7']),
-  t(M, 'Calculus', 'integrals', 'Antiderivatives and integrals', ['m31-u8', 'm31-u9']),
+  t(M, 'Calculus', 'integrals', 'Antiderivatives and integrals', ['m31-u8', 'm31-u9', 'mx-19-3', 'mx-19-4', 'mx-19-5']),
+  t(M, 'Calculus', 'differential-equations', 'Differential equations', ['mx-19-6']),
   // Mechanics.
   t(M, 'Mechanics', 'kinematics', 'Motion: kinematics and projectiles', ['mx-8-3', 'm31-6-4', 'mx-12-2', 'mx-12-3', 'mx-13-4', 'mx-13-5']),
   t(M, 'Mechanics', 'forces', 'Forces and Newton’s laws', ['mx-12-1', 'mx-12-4', 'mx-12-5', 'mx-13-1', 'mx-13-2', 'mx-13-3']),

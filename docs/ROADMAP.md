@@ -683,6 +683,16 @@ items ship or decisions change.
      calculus and numerical methods. These lessons also need their videos and tutor recordings.
      Next: parametric differentiation, Newton–Raphson, the trapezium rule, integration by parts and
      with partial fractions, and differential equations.
+   - Built (11 November 2026), step 4, part 7: **the last A level gaps are filled.** Six lessons in
+     More Mathematics Topics, in a new Unit 19 (Year 13), with 12 question generators: parametric
+     differentiation and differentiating sin x and cos x from first principles, locating roots by a
+     change of sign and the Newton–Raphson method, the trapezium rule with over- and
+     underestimates, integration by parts, integrating with partial fractions (answers in the form
+     ln K), and separable differential equations with growth, decay and cooling models. They join
+     the Year 13 Differentiation, Numerical Methods and Integration units, and Browse by topic gains
+     "Differential equations". **The A level map now lists no gaps**, so every UK GCSE and A level
+     Mathematics topic has a Gradileo lesson. These 38 A level lessons (Units 12 to 19) still need
+     their videos and tutor recordings.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the

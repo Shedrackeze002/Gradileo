@@ -57,11 +57,11 @@ describe('curriculum maps', () => {
     expect(year1.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Statistical Distributions', 'Hypothesis Testing']));
     expect(year2.units.map((u) => u.title)).toContain('Regression, Correlation and Hypothesis Testing');
     expect([...year1.gaps!, ...year2.gaps!].filter((g) => /sampling|binomial distribution|outliers|random variables|correlation|normal/i.test(g))).toEqual([]);
-    // The pure topics outside calculus are taught now; Year 12 has no gaps left.
+    // So is pure mathematics, including the calculus and numerical methods: neither year has a gap left.
+    expect(year2.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Proof', 'The Binomial Expansion', 'Vectors', 'Numerical Methods']));
+    expect(year2.units.find((u) => u.title === 'Integration')!.lessons).toEqual(expect.arrayContaining(['mx-19-3', 'mx-19-4', 'mx-19-5', 'mx-19-6']));
     expect(year1.gaps).toEqual([]);
-    expect(year2.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Proof', 'The Binomial Expansion', 'Vectors']));
-    expect(year2.gaps!.filter((g) => /contradiction|^Partial fractions$|Sigma|rational n|Small-angle|arcsin|R sin|three dimensions/i.test(g))).toEqual([]);
-    expect(year2.gaps).toContain('The trapezium rule');
+    expect(year2.gaps).toEqual([]);
     const uk = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'uk', plan: 'university-stem', feeling: 'ok', ...more });
     expect(uk(11).courseId).toBe('uk-a-level-year-1');
     expect(uk(11).prerequisite).toBe('uk-gcse-higher');
