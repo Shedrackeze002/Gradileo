@@ -120570,5 +120570,650 @@
         "working": "The covering must be a flexible insulator. PVC is a polymer that is flexible and does not conduct electricity."
       }
     ]
+  },
+  "c9-1-1": {
+    "lessonId": "c9-1-1",
+    "title": "Inside the Atom",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three particles",
+        "t": 20.407
+      },
+      {
+        "title": "How the model changed",
+        "t": 68.09
+      },
+      {
+        "title": "Your turn",
+        "t": 133.498
+      },
+      {
+        "title": "Summary",
+        "t": 165.335
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-1-1:q",
+        "t": 142.909,
+        "prompt": "In the gold foil experiment, what did the few alpha particles that bounced back show?",
+        "choices": [
+          "electrons are negative",
+          "there is a tiny, dense, positive nucleus",
+          "atoms are solid spheres",
+          "neutrons have no charge"
+        ],
+        "answer": 1,
+        "working": "Spread-out positive charge could only nudge an alpha particle. Throwing it back needs a small, dense, positive centre."
+      }
+    ]
+  },
+  "c9-1-2": {
+    "lessonId": "c9-1-2",
+    "title": "Atomic Number, Mass Number and Isotopes",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two numbers",
+        "t": 20.695
+      },
+      {
+        "title": "Isotopes",
+        "t": 67.901
+      },
+      {
+        "title": "Your turn",
+        "t": 117.704
+      },
+      {
+        "title": "Summary",
+        "t": 146.476
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-1-2:q",
+        "t": 128.899,
+        "prompt": "Potassium has atomic number 19 and mass number 39. How many neutrons are in the atom?",
+        "choices": [
+          "19",
+          "39",
+          "58",
+          "20"
+        ],
+        "answer": 3,
+        "working": "Neutrons = mass number − atomic number = 39 − 19 = 20."
+      }
+    ]
+  },
+  "c9-1-3": {
+    "lessonId": "c9-1-3",
+    "title": "Electron Arrangements",
+    "duration": 177,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Filling the shells",
+        "t": 20.385
+      },
+      {
+        "title": "Shells and the periodic table",
+        "t": 69.032
+      },
+      {
+        "title": "Your turn",
+        "t": 114.78
+      },
+      {
+        "title": "Summary",
+        "t": 142.472
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-1-3:q",
+        "t": 124.242,
+        "prompt": "An element has the arrangement 2, 8, 6. Which group and period is it in?",
+        "choices": [
+          "group 16, period 3",
+          "group 6, period 2",
+          "group 3, period 6",
+          "group 18, period 3"
+        ],
+        "answer": 0,
+        "working": "Three shells, so period 3. Six outer electrons, so group 16. It is sulfur."
+      }
+    ]
+  },
+  "c9-1-4": {
+    "lessonId": "c9-1-4",
+    "title": "Ions",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How ions form",
+        "t": 20
+      },
+      {
+        "title": "Charges from the group",
+        "t": 63.837
+      },
+      {
+        "title": "Your turn",
+        "t": 119.454
+      },
+      {
+        "title": "Summary",
+        "t": 149.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-1-4:q",
+        "t": 130.536,
+        "prompt": "Magnesium has atomic number 12. How many electrons are in a $\\text{Mg}^{2+}$ ion?",
+        "choices": [
+          "12",
+          "14",
+          "10",
+          "2"
+        ],
+        "answer": 2,
+        "working": "Electrons = protons − charge = 12 − 2 = 10. The 12 protons do not change."
+      }
+    ]
+  },
+  "c9-2-1": {
+    "lessonId": "c9-2-1",
+    "title": "Ionic and Covalent Bonding",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of bond",
+        "t": 22.746
+      },
+      {
+        "title": "Bonding and properties",
+        "t": 71.62
+      },
+      {
+        "title": "Your turn",
+        "t": 118.36
+      },
+      {
+        "title": "Summary",
+        "t": 152.408
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-2-1:q",
+        "t": 131.72,
+        "prompt": "A white solid melts at 770 °C, and its solution conducts electricity. What kind of bonding does it have?",
+        "choices": [
+          "covalent",
+          "no bonding",
+          "metallic only",
+          "ionic"
+        ],
+        "answer": 3,
+        "working": "A high melting point means strong forces in a lattice; conducting in solution means ions that can move."
+      }
+    ]
+  },
+  "c9-2-2": {
+    "lessonId": "c9-2-2",
+    "title": "Formulas of Ionic Compounds",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Balancing the charges",
+        "t": 20.151
+      },
+      {
+        "title": "Polyatomic ions",
+        "t": 80.023
+      },
+      {
+        "title": "Your turn",
+        "t": 128.162
+      },
+      {
+        "title": "Summary",
+        "t": 160.606
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-2-2:q",
+        "t": 138.915,
+        "prompt": "What is the formula of magnesium nitrate, made of $\\text{Mg}^{2+}$ and $\\ce{NO3-}$ ions?",
+        "choices": [
+          "$\\ce{MgNO3}$",
+          "$\\ce{Mg(NO3)2}$",
+          "$\\ce{MgNO32}$",
+          "$\\ce{Mg2NO3}$"
+        ],
+        "answer": 1,
+        "working": "One $\\text{Mg}^{2+}$ needs two $\\ce{NO3-}$ ions, and two nitrate ions go in brackets."
+      }
+    ]
+  },
+  "c9-2-3": {
+    "lessonId": "c9-2-3",
+    "title": "Naming Compounds",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming ionic compounds",
+        "t": 18.166
+      },
+      {
+        "title": "Naming covalent compounds",
+        "t": 70.386
+      },
+      {
+        "title": "Your turn",
+        "t": 112.751
+      },
+      {
+        "title": "Summary",
+        "t": 136.185
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-2-3:q",
+        "t": 119.897,
+        "prompt": "What is the formula of dinitrogen monoxide?",
+        "choices": [
+          "$\\ce{N2O}$",
+          "$\\ce{NO2}$",
+          "$\\ce{N2O2}$",
+          "$\\ce{NO}$"
+        ],
+        "answer": 0,
+        "working": "\"Di\" means 2 nitrogen atoms and \"mono\" means 1 oxygen atom."
+      }
+    ]
+  },
+  "c9-2-4": {
+    "lessonId": "c9-2-4",
+    "title": "Relative Formula Mass",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Relative formula mass",
+        "t": 18.041
+      },
+      {
+        "title": "Percentage by mass",
+        "t": 81.121
+      },
+      {
+        "title": "Your turn",
+        "t": 119.684
+      },
+      {
+        "title": "Summary",
+        "t": 148.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-2-4:q",
+        "t": 133.109,
+        "prompt": "Find $M_r$ of magnesium oxide, MgO. ($A_r$: Mg = 24, O = 16.)",
+        "choices": [
+          "24",
+          "16",
+          "40",
+          "56"
+        ],
+        "answer": 2,
+        "working": "$M_r = 24 + 16 = 40$."
+      }
+    ]
+  },
+  "c9-3-1": {
+    "lessonId": "c9-3-1",
+    "title": "Conservation of Mass",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The law",
+        "t": 21.349
+      },
+      {
+        "title": "Open and closed systems",
+        "t": 67.035
+      },
+      {
+        "title": "Your turn",
+        "t": 109.068
+      },
+      {
+        "title": "Summary",
+        "t": 147.59
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-3-1:q",
+        "t": 125.38,
+        "prompt": "A tablet fizzes in water in an open cup. The reading falls from 152.4 g to 151.6 g. What has happened?",
+        "choices": [
+          "0.8 g of mass was destroyed",
+          "0.8 g of carbon dioxide escaped",
+          "0.8 g of oxygen joined the cup",
+          "the balance is broken"
+        ],
+        "answer": 1,
+        "working": "152.4 − 151.6 = 0.8 g. The gas made by the reaction left the open cup; mass was conserved."
+      }
+    ]
+  },
+  "c9-3-2": {
+    "lessonId": "c9-3-2",
+    "title": "Balancing Equations",
+    "duration": 171,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting atoms",
+        "t": 24.958
+      },
+      {
+        "title": "Balancing",
+        "t": 60.023
+      },
+      {
+        "title": "Your turn",
+        "t": 112.29
+      },
+      {
+        "title": "Summary",
+        "t": 144.576
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-3-2:q",
+        "t": 120.872,
+        "prompt": "Which is the balanced equation for magnesium burning: $\\ce{Mg + O2 -> MgO}$?",
+        "choices": [
+          "$\\ce{Mg + O2 -> MgO2}$",
+          "$\\ce{Mg + O2 -> 2MgO}$",
+          "$\\ce{Mg + O -> MgO}$",
+          "$\\ce{2Mg + O2 -> 2MgO}$"
+        ],
+        "answer": 3,
+        "working": "Put 2 in front of MgO to balance oxygen, then 2 in front of Mg to balance magnesium."
+      }
+    ]
+  },
+  "c9-3-3": {
+    "lessonId": "c9-3-3",
+    "title": "Types of Reaction",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four types",
+        "t": 22.063
+      },
+      {
+        "title": "The reactivity series",
+        "t": 72.431
+      },
+      {
+        "title": "Your turn",
+        "t": 119.269
+      },
+      {
+        "title": "Summary",
+        "t": 148.122
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-3-3:q",
+        "t": 124.672,
+        "prompt": "Which of these will react?",
+        "choices": [
+          "copper + zinc sulfate",
+          "silver + iron sulfate",
+          "magnesium + lead nitrate",
+          "gold + copper sulfate"
+        ],
+        "answer": 2,
+        "working": "Only magnesium is higher in the series than the metal in the compound, so only it can displace lead."
+      }
+    ]
+  },
+  "c9-3-4": {
+    "lessonId": "c9-3-4",
+    "title": "Rates of Reaction",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What changes the rate",
+        "t": 16.872
+      },
+      {
+        "title": "Collision theory",
+        "t": 66.438
+      },
+      {
+        "title": "Your turn",
+        "t": 116.281
+      },
+      {
+        "title": "Summary",
+        "t": 144.743
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-3-4:q",
+        "t": 124.959,
+        "prompt": "Why does powdered marble react with acid faster than a single lump?",
+        "choices": [
+          "the powder has a larger surface area",
+          "the powder is hotter",
+          "the powder is a catalyst",
+          "the acid is more concentrated"
+        ],
+        "answer": 0,
+        "working": "More marble particles are exposed to the acid, so there are more collisions each second."
+      }
+    ]
+  },
+  "c9-4-1": {
+    "lessonId": "c9-4-1",
+    "title": "Acids, Bases and Indicators",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Acids, bases and alkalis",
+        "t": 21.636
+      },
+      {
+        "title": "Indicators",
+        "t": 80.108
+      },
+      {
+        "title": "Your turn",
+        "t": 119.861
+      },
+      {
+        "title": "Summary",
+        "t": 147.473
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-4-1:q",
+        "t": 128.984,
+        "prompt": "A solution turns red litmus blue and phenolphthalein pink. What is it?",
+        "choices": [
+          "an acid",
+          "pure water",
+          "a neutral salt solution",
+          "an alkali"
+        ],
+        "answer": 3,
+        "working": "Both changes happen only in alkalis."
+      }
+    ]
+  },
+  "c9-4-2": {
+    "lessonId": "c9-4-2",
+    "title": "The pH Scale",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The pH scale",
+        "t": 20.416
+      },
+      {
+        "title": "Comparing pH",
+        "t": 76.389
+      },
+      {
+        "title": "Your turn",
+        "t": 116.131
+      },
+      {
+        "title": "Summary",
+        "t": 145.828
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-4-2:q",
+        "t": 126.031,
+        "prompt": "How many times more acidic is a solution of pH 3 than one of pH 6?",
+        "choices": [
+          "3 times",
+          "1000 times",
+          "30 times",
+          "300 times"
+        ],
+        "answer": 1,
+        "working": "6 − 3 = 3 steps, and $10^3 = 1000$."
+      }
+    ]
+  },
+  "c9-4-3": {
+    "lessonId": "c9-4-3",
+    "title": "Neutralization",
+    "duration": 165,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Neutralization",
+        "t": 21.207
+      },
+      {
+        "title": "Everyday neutralization",
+        "t": 70.037
+      },
+      {
+        "title": "Your turn",
+        "t": 108.553
+      },
+      {
+        "title": "Summary",
+        "t": 135.553
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-4-3:q",
+        "t": 117.955,
+        "prompt": "Which salt is made when nitric acid neutralizes potassium hydroxide?",
+        "choices": [
+          "potassium chloride",
+          "potassium sulfate",
+          "potassium nitrate",
+          "hydrogen nitrate"
+        ],
+        "answer": 2,
+        "working": "The metal, potassium, comes from the base; nitric acid makes nitrates."
+      }
+    ]
   }
 }
