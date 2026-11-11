@@ -17,6 +17,16 @@ export const OUTCOMES: Outcome[] = [
   { code: 'CA2', strand: 'Chemical analysis', text: 'Identify metal ions by flame tests and hydroxide precipitates, and carbonate, halide and sulfate ions by their tests.' },
   { code: 'QC1', strand: 'Formulae and atom economy', text: 'Find the empirical formula of a compound from masses or percentages, and a molecular formula from it.' },
   { code: 'QC2', strand: 'Formulae and atom economy', text: 'Calculate the atom economy of a reaction, and use it with yield to compare ways of making a product.' },
+  { code: 'EA1', strand: 'The Earth’s atmosphere and resources', text: 'State the composition of the air, and explain how the Earth’s early atmosphere formed and changed.' },
+  { code: 'EA2', strand: 'The Earth’s atmosphere and resources', text: 'Explain the greenhouse effect, climate change and carbon footprints, and how the pollutants from burning fuels form and the harm they do.' },
+  { code: 'EA3', strand: 'The Earth’s atmosphere and resources', text: 'Describe how potable water is obtained from fresh water, salty water and waste water.' },
+  { code: 'EA4', strand: 'The Earth’s atmosphere and resources', text: 'Use a life cycle assessment to compare products, and explain the value of reducing, reusing and recycling.' },
+  { code: 'AS1', strand: 'Atoms, elements and structures', text: 'Describe how the model of the atom and the periodic table developed, and the evidence that changed them.' },
+  { code: 'AS2', strand: 'Atoms, elements and structures', text: 'Compare the transition metals with the alkali metals, and describe their coloured compounds, ions and use as catalysts.' },
+  { code: 'AS3', strand: 'Atoms, elements and structures', text: 'Explain the properties of diamond, graphite, graphene and fullerenes from their structures, and the properties and uses of nanoparticles.' },
+  { code: 'MI1', strand: 'Materials and industry', text: 'Explain how corrosion is prevented, and why alloys, ceramics, polymers and composites suit their uses.' },
+  { code: 'MI2', strand: 'Materials and industry', text: 'Describe the Haber process and its compromise conditions, and how NPK fertilisers are made.' },
+  { code: 'MI3', strand: 'Materials and industry', text: 'Describe how hydrogen fuel cells, cells and batteries produce electricity, and compare them.' },
 ];
 
 const L = (
@@ -69,12 +79,61 @@ export const LESSONS: LessonMeta[] = [
     ['cx-atom-economy', 'cx-atom-economy-compare'],
     ['Calculate the atom economy of a reaction from its balanced equation', 'Compare ways of making a product by their atom economy and their yield'],
     ['atom economy', 'desired product', 'by-product', 'percentage yield']),
+
+  // ---------------- Unit 4: The Earth's Atmosphere and Resources ----------------
+  L('cx-4-1', 'cx-u4', '4.1', 'The Earth’s Atmosphere', 10, ['EA1'],
+    ['cx-atmosphere-composition', 'cx-atmosphere-change'],
+    ['State the proportions of the gases in the air today and use them in calculations', 'Explain how the early atmosphere formed, and how its carbon dioxide fell and its oxygen rose'],
+    ['atmosphere', 'photosynthesis', 'sedimentary rock', 'fossil fuel']),
+  L('cx-4-2', 'cx-u4', '4.2', 'Greenhouse Gases and Air Pollution', 10, ['EA2'],
+    ['cx-greenhouse', 'cx-pollutants'],
+    ['Explain the greenhouse effect and climate change, and calculate and reduce a carbon footprint', 'Say how carbon monoxide, soot, sulfur dioxide and oxides of nitrogen form, and the harm each does'],
+    ['greenhouse gas', 'climate change', 'carbon footprint', 'incomplete combustion', 'acid rain', 'global dimming']),
+  L('cx-4-3', 'cx-u4', '4.3', 'Potable Water and Waste Water', 10, ['EA3'],
+    ['cx-potable-water', 'cx-waste-water'],
+    ['Tell potable water from pure water, and describe how fresh water and salty water are made safe to drink', 'Describe the steps in treating sewage, and compare ways of obtaining potable water'],
+    ['potable water', 'sterilisation', 'desalination', 'reverse osmosis', 'effluent', 'sludge']),
+  L('cx-4-4', 'cx-u4', '4.4', 'Life Cycle Assessments and Recycling', 10, ['EA4'],
+    ['cx-lca', 'cx-recycling'],
+    ['Name the four stages of a life cycle assessment and use one to compare products', 'Tell reducing, reusing and recycling apart, and calculate the energy that recycling saves'],
+    ['life cycle assessment', 'finite resource', 'reduce', 'reuse', 'recycle']),
+
+  // ---------------- Unit 5: Atoms, Structures and the Periodic Table ----------------
+  L('cx-5-1', 'cx-u5', '5.1', 'The Development of the Atom and the Periodic Table', 9, ['AS1'],
+    ['cx-atomic-model', 'cx-periodic-history'],
+    ['Describe how the model of the atom changed from Dalton to Chadwick, and the evidence from alpha particle scattering', 'Explain how Mendeleev arranged the elements, and why the modern table is in order of atomic number'],
+    ['plum pudding model', 'nuclear model', 'alpha particle scattering', 'Mendeleev', 'isotope']),
+  L('cx-5-2', 'cx-u5', '5.2', 'Transition Metals', 10, ['AS2'],
+    ['cx-transition-properties', 'cx-transition-compounds'],
+    ['Compare the melting points, densities, strength and reactivity of the transition metals with the alkali metals', 'Recognise coloured compounds, ions of different charges and catalysts among the transition metals'],
+    ['transition metal', 'alkali metal', 'catalyst', 'coloured compound']),
+  L('cx-5-3', 'cx-u5', '5.3', 'Forms of Carbon and Nanoparticles', 10, ['AS3'],
+    ['cx-carbon-structures', 'cx-nanoparticles'],
+    ['Explain the properties of diamond, graphite, graphene and fullerenes from their bonding', 'Recognise the size of nanoparticles, and calculate surface area to volume ratios'],
+    ['giant covalent structure', 'delocalised electron', 'graphene', 'fullerene', 'nanotube', 'nanoparticle']),
+
+  // ---------------- Unit 6: Materials and Industry ----------------
+  L('cx-6-1', 'cx-u6', '6.1', 'Corrosion, Alloys and Materials', 10, ['MI1'],
+    ['cx-corrosion', 'cx-alloys-materials'],
+    ['Say what iron needs in order to rust, and explain barrier methods and sacrificial protection', 'Explain why alloys are harder than pure metals, and compare ceramics, polymers and composites'],
+    ['corrosion', 'rusting', 'galvanising', 'sacrificial protection', 'alloy', 'composite']),
+  L('cx-6-2', 'cx-u6', '6.2', 'The Haber Process and Fertilisers', 10, ['MI2'],
+    ['cx-haber', 'cx-fertilisers'],
+    ['Describe how ammonia is made and explain the compromise conditions', 'Say what NPK fertilisers supply, and calculate the percentage of nitrogen in a fertiliser'],
+    ['Haber process', 'reversible reaction', 'compromise', 'NPK fertiliser']),
+  L('cx-6-3', 'cx-u6', '6.3', 'Hydrogen Fuel Cells and Batteries', 10, ['MI3'],
+    ['cx-fuel-cells', 'cx-cells-batteries'],
+    ['Describe the reaction in a hydrogen fuel cell and write its half equations', 'Compare cells, batteries and fuel cells, and work out the voltage of a battery'],
+    ['fuel cell', 'cell', 'battery', 'rechargeable', 'half equation']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'cx-u1', number: 1, title: 'Metals and Their Reactions', description: 'The reactivity series, extracting metals from their ores, making soluble salts, and the electrolysis of solutions with half equations.', outcomes: ['MR1', 'MR2', 'MR3', 'MR4'], lessons: [], color: 'amber' },
   { id: 'cx-u2', number: 2, title: 'Chemical Analysis', description: 'Pure substances and formulations, the tests for four common gases, flame tests and the tests for ions in solution.', outcomes: ['CA1', 'CA2'], lessons: [], color: 'sky' },
   { id: 'cx-u3', number: 3, title: 'Formulae and Atom Economy', description: 'Empirical and molecular formulae, and the atom economy of a reaction.', outcomes: ['QC1', 'QC2'], lessons: [], color: 'emerald' },
+  { id: 'cx-u4', number: 4, title: 'The Earth’s Atmosphere and Resources', description: 'The gases of the air and how the atmosphere changed, greenhouse gases and the pollutants from burning fuels, potable water and waste water, and life cycle assessments.', outcomes: ['EA1', 'EA2', 'EA3', 'EA4'], lessons: [], color: 'teal' },
+  { id: 'cx-u5', number: 5, title: 'Atoms, Structures and the Periodic Table', description: 'How the model of the atom and the periodic table developed, the transition metals, and the forms of carbon and nanoparticles.', outcomes: ['AS1', 'AS2', 'AS3'], lessons: [], color: 'indigo' },
+  { id: 'cx-u6', number: 6, title: 'Materials and Industry', description: 'Corrosion and its prevention, alloys and other materials, the Haber process and fertilisers, and fuel cells and batteries.', outcomes: ['MI1', 'MI2', 'MI3'], lessons: [], color: 'orange' },
 ];
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
 
@@ -84,7 +143,7 @@ export const CHEMMORE: CourseMeta = {
   shortTitle: 'More Chemistry',
   grade: 10,
   subject: 'Chemistry',
-  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: the reactivity series and extracting metals, making soluble salts, the electrolysis of solutions, the tests for gases and ions, empirical formulae and atom economy.',
+  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: the reactivity series and extracting metals, making soluble salts, the electrolysis of solutions, the tests for gases and ions, empirical formulae and atom economy, the Earth’s atmosphere, potable water, life cycle assessments, the transition metals, forms of carbon, materials and the Haber process.',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
