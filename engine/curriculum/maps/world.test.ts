@@ -23,11 +23,22 @@ describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
     expect(getCourse('caps-grade-11')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Exponents and Surds', 'Euclidean Geometry: Circles', 'Finance, Growth and Decay']));
     expect(getCourse('igcse-extended')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Surds', 'Differentiation', 'Transformations and Vectors']));
     expect(getCourse('ib-aa-sl')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Circular Functions', 'Probability Distributions', 'Integration and Kinematics']));
-    expect(getCourse('waec-ss-1')!.gaps).toEqual(expect.arrayContaining(['Number bases', 'Modular arithmetic']));
-    expect(getCourse('kcse-form-4')!.gaps).toContain('Longitude and latitude');
+    expect(getCourse('waec-ss-3')!.gaps).toContain('Annuities, shares and stocks');
+    expect(getCourse('kcse-form-4')!.gaps).toContain('The mid-ordinate rule');
     expect(getCourse('caps-grade-12')!.gaps).toContain('Annuities, loans and sinking funds');
     expect(getCourse('ib-ai-sl')!.gaps).toContain('Voronoi diagrams');
     expect(getCourse('kcse-form-1')!.gaps).toEqual([]);
+  });
+
+  it('teach the topics that More Mathematics Topics added for them', () => {
+    const lessons = (id: string) => getCourse(id)!.lessons.map((l) => l.id);
+    expect(getCourse('waec-ss-1')!.gaps).toEqual([]);
+    expect(lessons('waec-ss-1')).toEqual(expect.arrayContaining(['mx-20-1', 'mx-20-2', 'mx-20-3', 'mx-21-1', 'mx-21-2', 'mx-22-1', 'mx-22-2']));
+    expect(lessons('waec-ss-2')).toEqual(expect.arrayContaining(['mx-21-3', 'mx-22-4']));
+    expect(lessons('kcse-form-2')).toEqual(expect.arrayContaining(['mx-22-1', 'mx-22-2', 'mx-22-3', 'mx-22-4']));
+    expect(lessons('kcse-form-4')).toEqual(expect.arrayContaining(['mx-21-3', 'mx-22-6']));
+    expect(lessons('igcse-core')).toContain('mx-21-1');
+    expect(lessons('caps-grade-11')).toContain('mx-22-4');
   });
 
   it('recommend the course of the learner’s year in their own system', () => {
