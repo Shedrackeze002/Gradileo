@@ -1154,7 +1154,16 @@ export class DemoApi implements DataApi {
     if (me.role !== 'student') throw new Error('Only students can start assignments.');
     const mine = this.db.submissions.filter((s) => s.assignmentId === a.id && s.studentId === me.id);
     const open = mine.find((s) => s.status === 'in_progress');
-    if (open) return open;
+    if (open) {
+      // An attempt the teacher reopened starts its clock when the student first opens it.
+      if (open.integrity?.awaitingStart) {
+        const { awaitingStart: _waiting, ...integrity } = open.integrity;
+        open.integrity = integrity;
+        open.startedAt = nowIso();
+        this.persist();
+      }
+      return open;
+    }
     const done = mine.filter((s) => s.status !== 'in_progress' && !s.reopenedAt).length;
     if (a.settings.attempts && done >= a.settings.attempts) throw new Error('You have used all of your attempts.');
     if (a.dueAt && new Date(a.dueAt) < new Date() && !a.allowLate) throw new Error('This assignment is closed.');
@@ -1162,7 +1171,7 @@ export class DemoApi implements DataApi {
   }
 
   /** A new attempt with a fresh seed, so the generated questions are new. */
-  private newAttempt(a: Assignment, studentId: string, attempt: number): Submission {
+  private newAttempt(a: Assignment, studentId: string, attempt: number, awaitingStart = false): Submission {
     const seed = freshSeed();
     const s: Submission = {
       id: uid('s'),
@@ -1183,7 +1192,7 @@ export class DemoApi implements DataApi {
       pendingManual: 0,
       late: false,
       feedback: null,
-      integrity: { blurCount: 0 },
+      integrity: awaitingStart ? { blurCount: 0, awaitingStart: true } : { blurCount: 0 },
     };
     this.db.submissions.push(s);
     this.persist();
@@ -1359,7 +1368,7 @@ export class DemoApi implements DataApi {
     const mine = this.db.submissions.filter((x) => x.assignmentId === a.id && x.studentId === s.studentId);
     if (mine.some((x) => x.status === 'in_progress')) throw new Error('The student already has an attempt in progress.');
     s.reopenedAt = nowIso();
-    const fresh = this.newAttempt(a, s.studentId, mine.reduce((m, x) => Math.max(m, x.attempt), 0) + 1);
+    const fresh = this.newAttempt(a, s.studentId, mine.reduce((m, x) => Math.max(m, x.attempt), 0) + 1, true);
     this.notify(s.studentId, 'announcement', `Your teacher reopened ${a.title}`, 'You can start again with a new set of questions.', `/s/work/${a.id}`, a.id);
     this.persist();
     return { ...fresh };

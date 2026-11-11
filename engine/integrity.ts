@@ -24,6 +24,12 @@ export interface Integrity {
   autoSubmitted?: boolean;
   /** The camera was on when the attempt started (exam mode with camera). */
   camera?: boolean;
+  /**
+   * A teacher reopened the work and the student has not opened this fresh attempt yet. Its clock
+   * starts when they do, not when the teacher pressed Reopen. Only the server (or the demo) sets
+   * and clears it; `cleanIntegrity` drops it, so a student's save never writes it.
+   */
+  awaitingStart?: boolean;
 }
 
 export const MAX_EVENTS = 200;

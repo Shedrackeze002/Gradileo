@@ -75,7 +75,15 @@ async function start(db: Db, me: Caller, assignmentId: string): Promise<Row> {
 
   const { data: mine } = await db.from('submissions').select('*').eq('assignment_id', a.id).eq('student_id', me.id);
   const open = (mine ?? []).find((s: Row) => s.status === 'in_progress');
-  if (open) return open;
+  if (open) {
+    // An attempt the teacher reopened starts its clock now, when the student first opens it.
+    // Otherwise a timed quiz reopened in the morning would be out of time by the afternoon.
+    if (!open.integrity?.awaitingStart) return open;
+    const { awaitingStart: _waiting, ...integrity } = open.integrity as Row;
+    const { data: begun, error } = await db.from('submissions').update({ started_at: new Date().toISOString(), integrity }).eq('id', open.id).eq('status', 'in_progress').select().single();
+    if (error) throw new Error(error.message);
+    return begun;
+  }
   // A reopened attempt is kept for the record but does not use up an attempt.
   const used = (mine ?? []).filter((s: Row) => !s.reopened_at).length;
   const attempts = a.settings?.attempts as number | null;
@@ -100,12 +108,12 @@ function nextAttempt(mine: Row[]): number {
 }
 
 /** A new attempt with a fresh seed, so the generated questions are new. */
-function newAttempt(db: Db, a: Row, studentId: string, attempt: number) {
+function newAttempt(db: Db, a: Row, studentId: string, attempt: number, awaitingStart = false) {
   const seed = freshSeed();
   const items = isQuestionType(a.type as AssignmentType) ? buildItemRefs(a.content as AssignmentContent, seed) : [];
   return db
     .from('submissions')
-    .insert({ assignment_id: a.id, class_id: a.class_id, student_id: studentId, attempt, status: 'in_progress', seed, items, responses: {} })
+    .insert({ assignment_id: a.id, class_id: a.class_id, student_id: studentId, attempt, status: 'in_progress', seed, items, responses: {}, integrity: awaitingStart ? { blurCount: 0, awaitingStart: true } : { blurCount: 0 } })
     .select()
     .single();
 }
@@ -396,7 +404,7 @@ async function reopen(db: Db, me: Caller, body: Record<string, unknown>): Promis
   const now = new Date().toISOString();
   const { data: marked } = await db.from('submissions').update({ reopened_at: now, reopened_by: me.id }).eq('id', s.id).is('reopened_at', null).select('id').maybeSingle();
   if (!marked) throw new HttpError(409, 'This attempt was already reopened.');
-  const { data: fresh, error } = await newAttempt(db, a, s.student_id, nextAttempt(mine ?? []));
+  const { data: fresh, error } = await newAttempt(db, a, s.student_id, nextAttempt(mine ?? []), true);
   if (error || !fresh) {
     // Put the old attempt back as it was, so the student is never left with nothing that counts.
     await db.from('submissions').update({ reopened_at: null, reopened_by: null }).eq('id', s.id);

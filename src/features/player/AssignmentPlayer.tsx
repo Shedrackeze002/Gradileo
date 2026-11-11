@@ -143,15 +143,33 @@ function Player({ assignment, submission }: { assignment: NonNullable<ReturnType
     return () => clearInterval(t);
   }, [locked, submission.id]);
 
-  // Autosave
+  // Autosave: shortly after each change, and at once when the student leaves (the X, the back
+  // button, closing the tab), so an answer given just before leaving is not lost.
   const saveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  useEffect(() => {
+  const unsaved = useRef<{ responses: Record<number, StoredResponse>; items: ItemRef[]; integrity: Integrity } | null>(null);
+  const saveNow = useCallback(() => {
     clearTimeout(saveTimer.current);
-    saveTimer.current = setTimeout(() => {
-      api().saveProgress(submission.id, { responses, items, integrity }).catch(() => undefined);
-    }, 700);
-    return () => clearTimeout(saveTimer.current);
-  }, [responses, items, integrity, submission.id]);
+    const pending = unsaved.current;
+    unsaved.current = null;
+    if (pending && !done.current) api().saveProgress(submission.id, pending).catch(() => undefined);
+  }, [submission.id]);
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    unsaved.current = { responses, items, integrity };
+    clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(saveNow, 700);
+  }, [responses, items, integrity, saveNow]);
+  useEffect(() => {
+    window.addEventListener('pagehide', saveNow);
+    return () => {
+      window.removeEventListener('pagehide', saveNow);
+      saveNow();
+    };
+  }, [saveNow]);
 
   const update = (patch: Partial<StoredResponse>) => setResponses((r) => ({ ...r, [idx]: { ...(r[idx] ?? { answers: [], hintsUsed: 0 }), ...patch } }));
 

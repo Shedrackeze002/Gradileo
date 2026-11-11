@@ -435,7 +435,7 @@ function StudentTable({ rows, a, classId }: { rows: RosterRow[]; a: Assignment; 
                     </td>
                   )}
                   <td className="hidden px-3 py-2.5 text-ink-2 md:table-cell" title={fmtDateTime(r.best?.submittedAt)}>
-                    {r.best?.submittedAt ? relative(r.best.submittedAt) : r.open ? `Started ${relative(r.open.startedAt)}` : '—'}
+                    {r.best?.submittedAt ? relative(r.best.submittedAt) : r.open ? (r.open.integrity?.awaitingStart ? 'Reopened, not started yet' : `Started ${relative(r.open.startedAt)}`) : '—'}
                   </td>
                   {questions && (
                     <td className="hidden px-3 py-2.5 lg:table-cell">

@@ -49,8 +49,37 @@ describe('reopening a submitted attempt', () => {
     expect(all.find((s) => s.id === old!.id)?.reopenedAt).toBeTruthy();
     expect((await api.getSubmission(old!.id))?.percent).toBe(old!.percent);
 
+    // The fresh attempt's clock waits for the student: it starts when they first open it.
+    expect(fresh.integrity.awaitingStart).toBe(true);
+
     // Not twice, and not while the fresh attempt is open.
     await expect(api.reopenSubmission(old!.id)).rejects.toThrow(/already reopened/);
     await expect(api.reopenSubmission(fresh.id)).rejects.toThrow(/still in progress/);
+  });
+
+  it('starts the fresh attempt’s clock when the student first opens it, not when the teacher reopened', async () => {
+    const api = await teacherApi();
+    const [cls] = await api.listMyClasses();
+    const subs = await api.listSubmissions({ classId: cls.id });
+    const old = subs.find((s) => s.assignmentId && s.status !== 'in_progress' && s.items.length > 0 && !subs.some((x) => x.assignmentId === s.assignmentId && x.studentId === s.studentId && x.status === 'in_progress'));
+    const fresh = await api.reopenSubmission(old!.id);
+
+    // The teacher reopened it a day ago; the student opens it only now.
+    const db = (api as unknown as { db: { submissions: { id: string; startedAt: string }[]; users: { id: string; email: string | null }[] } }).db;
+    const aDayAgo = new Date(Date.now() - 86_400_000).toISOString();
+    db.submissions.find((s) => s.id === fresh.id)!.startedAt = aDayAgo;
+    const student = db.users.find((p) => p.id === old!.studentId)!;
+    await api.signOut();
+    await api.signIn(student.email!, DEMO_PASSWORD);
+
+    const begun = await api.startSubmission(old!.assignmentId!);
+    expect(begun.id).toBe(fresh.id);
+    expect(begun.integrity.awaitingStart).toBeUndefined();
+    expect(Date.now() - new Date(begun.startedAt).getTime()).toBeLessThan(5000);
+
+    // Opening it again (a reload) does not restart the clock.
+    const startedAt = begun.startedAt;
+    await new Promise((r) => setTimeout(r, 15));
+    expect((await api.startSubmission(old!.assignmentId!)).startedAt).toBe(startedAt);
   });
 });
