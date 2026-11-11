@@ -658,6 +658,19 @@ items ship or decisions change.
      g = 9.8 m/s² and asks for 3 significant figures where an answer is not exact. The maps now
      list 26 gaps. These lessons also need their videos and tutor recordings. Next: the statistics
      gaps, then the pure topics.
+   - Built (11 November 2026), step 4, part 5: **the A level statistics gaps are filled.** Ten
+     lessons in More Mathematics Topics, in two new units, with 20 question generators: sampling
+     methods (including quota and opportunity), variance and standard deviation from Σx and Σx²
+     with coding, outliers and cleaning data, discrete random variables, the binomial distribution,
+     and binomial hypothesis tests with p-values and critical regions (Unit 14, Year 12); the
+     product moment correlation coefficient and its test, the inverse normal distribution, the
+     normal approximation to the binomial, and tests for the mean of a normal distribution (Unit 15,
+     Year 13). Year 12 gains "Statistical Distributions" and "Hypothesis Testing", Year 13 gains
+     "Regression, Correlation and Hypothesis Testing", and the other lessons join the existing data
+     and normal distribution units; Browse by topic gains "Statistical hypothesis testing". Critical
+     values for the correlation test are worked out from the t distribution and stated in each
+     question, as the tables print them. The maps now list 17 gaps, all pure. These lessons also
+     need their videos and tutor recordings. Next: the pure topics.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
