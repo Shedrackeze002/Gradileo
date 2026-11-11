@@ -7,8 +7,9 @@ import { Button, Card, CardBody, CardHeader, Input, useToast } from '@/component
 
 /**
  * For a student whose account has no email address (a username from their teacher, or a class
- * link): add one, theirs or a parent's, so class reminders also arrive by email. The address counts
- * once the six-digit code sent to it is typed back.
+ * link): add a parent's or guardian's email, so class reminders also arrive there. The code goes to
+ * the parent, who agrees by giving it to the student to type back (the owner's decision, 11 November
+ * 2026: many students are under 13).
  */
 export function NotificationEmailCard() {
   const toast = useToast();
@@ -52,7 +53,7 @@ export function NotificationEmailCard() {
     <Card>
       <CardHeader
         title="Email reminders"
-        subtitle="Your account has no email address. Add yours or a parent's, and reminders from classes whose teacher turned on email reminders will also arrive there."
+        subtitle="Your account has no email address. Add a parent's or guardian's, and reminders from classes whose teacher turned on email reminders will also arrive there."
         icon={<Mail className="h-5 w-5" />}
       />
       <CardBody className="space-y-4 pt-4">
@@ -83,12 +84,12 @@ export function NotificationEmailCard() {
               const s = await run('request', () => api().requestNotificationEmail(email.trim()));
               if (s) {
                 setCode('');
-                toast({ kind: 'success', title: 'Code sent', body: `Check ${email.trim()} for a six-digit code.` });
+                toast({ kind: 'success', title: 'Code sent', body: `Ask your parent or guardian for the code sent to ${email.trim()}.` });
               }
             }}
           >
             <div className="min-w-0 flex-1">
-              <Input type="email" label="Email address" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={254} hint="We send a code to check it is yours." />
+              <Input type="email" label="Parent or guardian's email" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={254} hint="We email them a code. If they agree, they give you the code to type below." />
             </div>
             <Button type="submit" loading={busy === 'request'} disabled={!email.trim()}>
               Send code
@@ -114,7 +115,7 @@ export function NotificationEmailCard() {
             }}
           >
             <p className="text-sm">
-              We sent a six-digit code to <strong>{waiting}</strong>. It works for 15 minutes.
+              We sent a six-digit code to <strong>{waiting}</strong>. If your parent or guardian agrees, ask them for it. It works for 15 minutes.
             </p>
             <div className="flex flex-wrap items-end gap-3">
               <div className="w-40">

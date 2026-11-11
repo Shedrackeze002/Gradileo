@@ -127,8 +127,9 @@ and parents who signed up with an email address:
 3. Turn on **Also send reminders by email** in each class's settings.
 
 Students whose account has no email address (a username from the teacher, or a class link) can add
-one, theirs or a parent's, under **Settings → Email reminders**. The `notify-email` function sends a
-six-digit code to it, and reminders go there once the code is typed back.
+a parent's or guardian's email under **Settings → Email reminders**. The `notify-email` function
+emails the parent a six-digit code and what it is for; the parent agrees by giving the student the
+code, and reminders go there once it is typed back.
 
 ### 2.7 Deploy the backend from GitHub (optional)
 

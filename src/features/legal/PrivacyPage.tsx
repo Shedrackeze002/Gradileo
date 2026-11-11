@@ -39,11 +39,11 @@ export default function PrivacyPage() {
           answers to the course questions stay in their browser.
         </p>
         <p>
-          <strong>An email address for reminders (optional).</strong> A student whose account has no email address (a username from their teacher, or a
-          name-only account the teacher has let into a class) may add one in Settings, their own or a parent’s, so that reminders from classes whose
-          teacher turned on email reminders also arrive by email. We send a six-digit code to the address and use it only once the code is typed back.
-          We use the address only for those reminders. Teachers and other students cannot see it, and the student can change or remove it at any time
-          in Settings.
+          <strong>A parent’s email address for reminders (optional).</strong> A student whose account has no email address (a username from their
+          teacher, or a name-only account the teacher has let into a class) may add a parent’s or guardian’s email address in Settings, so that
+          reminders from classes whose teacher turned on email reminders also arrive there. We email the parent a six-digit code and explain what it
+          is for; the address is used only once the student types the code back, which the parent gives them if they agree. We use the address only
+          for those reminders. Teachers and other students cannot see it, and it can be changed or removed at any time in Settings.
         </p>
         <p>
           <strong>Class information.</strong> The classes you teach or join, class settings, join requests (including any short message you add),
