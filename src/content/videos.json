@@ -16284,6 +16284,422 @@
       }
     ]
   },
+  "cx-1-1": {
+    "lessonId": "cx-1-1",
+    "title": "The Reactivity Series and Displacement Reactions",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The reactivity series",
+        "t": 21.094
+      },
+      {
+        "title": "Displacement reactions",
+        "t": 67.849
+      },
+      {
+        "title": "Losing and gaining electrons",
+        "t": 104.705
+      },
+      {
+        "title": "A common mistake",
+        "t": 149.87
+      },
+      {
+        "title": "Your turn",
+        "t": 170.594
+      },
+      {
+        "title": "Summary",
+        "t": 198.733
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-1-1:q",
+        "t": 179.327,
+        "prompt": "Zinc is placed in magnesium sulfate solution. What happens?",
+        "choices": [
+          "Zinc displaces the magnesium",
+          "Hydrogen gas is given off",
+          "No reaction happens",
+          "The zinc ions are reduced"
+        ],
+        "answer": 2,
+        "working": "Magnesium is above zinc in the series, so zinc cannot displace it."
+      }
+    ]
+  },
+  "cx-1-2": {
+    "lessonId": "cx-1-2",
+    "title": "Extracting Metals from Their Ores",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ores and extraction",
+        "t": 23.044
+      },
+      {
+        "title": "Choosing the method",
+        "t": 50.993
+      },
+      {
+        "title": "Why not electrolysis for everything?",
+        "t": 93.308
+      },
+      {
+        "title": "Copper from poor ores",
+        "t": 134.9
+      },
+      {
+        "title": "How much metal is in an ore?",
+        "t": 165.58
+      },
+      {
+        "title": "Your turn",
+        "t": 203.923
+      },
+      {
+        "title": "Summary",
+        "t": 232.602
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-1-2:q",
+        "t": 213.29,
+        "prompt": "Magnesium is above carbon in the reactivity series. How is it extracted?",
+        "choices": [
+          "Electrolysis of its molten compound",
+          "Heating its oxide with carbon",
+          "It is found native",
+          "Heating its oxide in air"
+        ],
+        "answer": 0,
+        "working": "Carbon cannot take the oxygen from a metal above it, so electricity is needed."
+      }
+    ]
+  },
+  "cx-1-3": {
+    "lessonId": "cx-1-3",
+    "title": "Making Soluble Salts",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming a salt",
+        "t": 25.218
+      },
+      {
+        "title": "Four ways to make a salt",
+        "t": 58.423
+      },
+      {
+        "title": "The balanced equation",
+        "t": 94.162
+      },
+      {
+        "title": "Making the crystals",
+        "t": 121.051
+      },
+      {
+        "title": "Your turn",
+        "t": 178.163
+      },
+      {
+        "title": "Summary",
+        "t": 210.543
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-1-3:q",
+        "t": 189.126,
+        "prompt": "A student stops adding copper(II) oxide while the liquid is still acidic. What is wrong with the crystals?",
+        "choices": [
+          "They contain unreacted copper(II) oxide",
+          "They are contaminated with sulfuric acid",
+          "They will be too large",
+          "Nothing: they are pure"
+        ],
+        "answer": 1,
+        "working": "With no excess of solid, some acid is left. It is dissolved, so it passes through the filter paper with the salt."
+      }
+    ]
+  },
+  "cx-1-4": {
+    "lessonId": "cx-1-4",
+    "title": "Electrolysis of Solutions and Half Equations",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrolysis",
+        "t": 24.786
+      },
+      {
+        "title": "Electrolysis of a solution",
+        "t": 66.378
+      },
+      {
+        "title": "Two solutions",
+        "t": 103.368
+      },
+      {
+        "title": "Half equations",
+        "t": 148.33
+      },
+      {
+        "title": "Your turn",
+        "t": 189.997
+      },
+      {
+        "title": "Summary",
+        "t": 222.106
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-1-4:q",
+        "t": 202.865,
+        "prompt": "How many electrons balance this half equation? $\\ce{Al^3+ + n e- -> Al}$",
+        "choices": [
+          "1",
+          "2",
+          "4",
+          "3"
+        ],
+        "answer": 3,
+        "working": "The right-hand side has no charge. The ion is 3+, so 3 electrons bring the left-hand side to zero."
+      }
+    ]
+  },
+  "cx-2-1": {
+    "lessonId": "cx-2-1",
+    "title": "Purity, Formulations and Tests for Gases",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pure substances",
+        "t": 25.223
+      },
+      {
+        "title": "Melting points and purity",
+        "t": 61.009
+      },
+      {
+        "title": "Formulations",
+        "t": 102.643
+      },
+      {
+        "title": "Tests for four gases",
+        "t": 131.466
+      },
+      {
+        "title": "Your turn",
+        "t": 173.688
+      },
+      {
+        "title": "Summary",
+        "t": 206.178
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-2-1:q",
+        "t": 184.513,
+        "prompt": "Magnesium ribbon fizzes in dilute hydrochloric acid. Which test identifies the gas?",
+        "choices": [
+          "A glowing splint relights",
+          "A burning splint gives a squeaky pop",
+          "Limewater turns milky",
+          "Damp litmus paper is bleached"
+        ],
+        "answer": 1,
+        "working": "A metal and an acid give a salt and hydrogen, and the test for hydrogen is a burning splint."
+      }
+    ]
+  },
+  "cx-2-2": {
+    "lessonId": "cx-2-2",
+    "title": "Identifying Ions: Flame Tests and Precipitates",
+    "duration": 252,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Flame tests",
+        "t": 24.319
+      },
+      {
+        "title": "Precipitates with sodium hydroxide",
+        "t": 56.47
+      },
+      {
+        "title": "Tests for negative ions",
+        "t": 109.911
+      },
+      {
+        "title": "A common mistake",
+        "t": 144.141
+      },
+      {
+        "title": "Your turn",
+        "t": 174.701
+      },
+      {
+        "title": "Summary",
+        "t": 214.164
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-2-2:q",
+        "t": 189.752,
+        "prompt": "A white solid gives a yellow flame. Its solution, with dilute hydrochloric acid and then barium chloride, gives a white precipitate. What is it?",
+        "choices": [
+          "Potassium sulfate",
+          "Sodium chloride",
+          "Sodium carbonate",
+          "Sodium sulfate"
+        ],
+        "answer": 3,
+        "working": "A yellow flame shows sodium ions. A white precipitate with barium chloride shows sulfate ions."
+      }
+    ]
+  },
+  "cx-3-1": {
+    "lessonId": "cx-3-1",
+    "title": "Empirical and Molecular Formulae",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of formula",
+        "t": 24.077
+      },
+      {
+        "title": "From masses to a formula",
+        "t": 54.866
+      },
+      {
+        "title": "A worked example",
+        "t": 81.951
+      },
+      {
+        "title": "A common mistake",
+        "t": 126.898
+      },
+      {
+        "title": "The molecular formula",
+        "t": 145.659
+      },
+      {
+        "title": "Your turn",
+        "t": 183.17
+      },
+      {
+        "title": "Summary",
+        "t": 221.239
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-3-1:q",
+        "t": 196.652,
+        "prompt": "A compound contains $4.8\\ \\text{g}$ of magnesium and $3.2\\ \\text{g}$ of oxygen. What is its empirical formula? (Mg = 24, O = 16)",
+        "choices": [
+          "$\\ce{Mg2O}$",
+          "$\\ce{MgO2}$",
+          "$\\ce{MgO}$",
+          "$\\ce{Mg3O2}$"
+        ],
+        "answer": 2,
+        "working": "Mg: $4.8 \\div 24 = 0.2$. O: $3.2 \\div 16 = 0.2$. The ratio is $1 : 1$."
+      }
+    ]
+  },
+  "cx-3-2": {
+    "lessonId": "cx-3-2",
+    "title": "Atom Economy",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What atom economy measures",
+        "t": 21.189
+      },
+      {
+        "title": "Calculating it",
+        "t": 56.074
+      },
+      {
+        "title": "A common mistake",
+        "t": 96.247
+      },
+      {
+        "title": "Atom economy and yield",
+        "t": 111.601
+      },
+      {
+        "title": "Your turn",
+        "t": 149.985
+      },
+      {
+        "title": "Summary",
+        "t": 190.908
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-3-2:q",
+        "t": 170.084,
+        "prompt": "In $\\ce{2PbO + C -> 2Pb + CO2}$ the reactants total 458 and the lead totals 414. What is the atom economy for making lead?",
+        "choices": [
+          "90.4%",
+          "45.2%",
+          "9.6%",
+          "110.6%"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{414}{458} \\times 100 = 90.4\\%$"
+      }
+    ]
+  },
   "e5-1-1": {
     "lessonId": "e5-1-1",
     "title": "Story Elements: Characters, Setting and Plot",
@@ -27046,6 +27462,218 @@
         ],
         "answer": 1,
         "working": "B uses a precise verb and names what the storm does. A, C and D lean on vague verbs and filler words."
+      }
+    ]
+  },
+  "ex-1-1": {
+    "lessonId": "ex-1-1",
+    "title": "Evaluating a Statement: How Far Do You Agree?",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What evaluating means",
+        "t": 25.355
+      },
+      {
+        "title": "Evidence for the statement",
+        "t": 56.407
+      },
+      {
+        "title": "Evidence against the statement",
+        "t": 94.687
+      },
+      {
+        "title": "Methods and their effect",
+        "t": 129.054
+      },
+      {
+        "title": "A common mistake",
+        "t": 159.365
+      },
+      {
+        "title": "Your turn",
+        "t": 182.146
+      },
+      {
+        "title": "Summary",
+        "t": 213.09
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-1-1:q",
+        "t": 190.682,
+        "prompt": "Which is the best opening sentence for an evaluation of the statement?",
+        "choices": [
+          "In this extract a girl called Asha walks down a long school corridor.",
+          "I really enjoyed this extract because it is tense and interesting.",
+          "It depends on the reader whether Asha seems nervous and alone.",
+          "I agree to a large extent, because the school seems empty and hostile until the final sentence."
+        ],
+        "answer": 3,
+        "working": "It says how far the writer agrees, and why. The others describe, give an opinion with no evidence, or refuse to judge."
+      }
+    ]
+  },
+  "ex-1-2": {
+    "lessonId": "ex-1-2",
+    "title": "Summarising the Differences between Two Texts",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What the question asks for",
+        "t": 24.629
+      },
+      {
+        "title": "Stating a difference",
+        "t": 59.296
+      },
+      {
+        "title": "Evidence and inference",
+        "t": 98.809
+      },
+      {
+        "title": "Two common mistakes",
+        "t": 148.958
+      },
+      {
+        "title": "Your turn",
+        "t": 173.717
+      },
+      {
+        "title": "Summary",
+        "t": 203.118
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-1-2:q",
+        "t": 180.864,
+        "prompt": "Which is a fair inference about the writer of Source A?",
+        "choices": [
+          "He dislikes listening to music.",
+          "He pays little attention to his surroundings.",
+          "He lives a long way from his school.",
+          "He is fitter than the writer of Source B."
+        ],
+        "answer": 1,
+        "working": "He cannot name one street on a walk he makes every day. Nothing in the text supports the others."
+      }
+    ]
+  },
+  "ex-1-3": {
+    "lessonId": "ex-1-3",
+    "title": "Comparing Writers’ Viewpoints and Methods",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Viewpoint",
+        "t": 22.321
+      },
+      {
+        "title": "Tone",
+        "t": 68.4
+      },
+      {
+        "title": "Methods",
+        "t": 96.782
+      },
+      {
+        "title": "Comparing the methods",
+        "t": 139.325
+      },
+      {
+        "title": "Your turn",
+        "t": 179.805
+      },
+      {
+        "title": "Summary",
+        "t": 206.158
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-1-3:q",
+        "t": 187.387,
+        "prompt": "Which method is used in “the very air rings like a bell”?",
+        "choices": [
+          "Metaphor",
+          "Rhetorical question",
+          "Simile",
+          "Direct address"
+        ],
+        "answer": 2,
+        "working": "It compares the air to a bell using the word “like”."
+      }
+    ]
+  },
+  "ex-2-1": {
+    "lessonId": "ex-2-1",
+    "title": "Writing an Article, a Letter and a Speech",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Form, audience and purpose",
+        "t": 27.73
+      },
+      {
+        "title": "The article",
+        "t": 53.819
+      },
+      {
+        "title": "The formal letter",
+        "t": 86.171
+      },
+      {
+        "title": "The speech",
+        "t": 123.982
+      },
+      {
+        "title": "Register",
+        "t": 153.534
+      },
+      {
+        "title": "Your turn",
+        "t": 185.99
+      },
+      {
+        "title": "Summary",
+        "t": 214.622
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-2-1:q",
+        "t": 194.315,
+        "prompt": "A formal letter begins “Dear Sir or Madam,”. How should it end?",
+        "choices": [
+          "Yours faithfully,",
+          "Yours sincerely,",
+          "Thank you for listening.",
+          "Best wishes,"
+        ],
+        "answer": 0,
+        "working": "“Yours faithfully” goes with “Dear Sir or Madam”. “Yours sincerely” goes with a name."
       }
     ]
   },

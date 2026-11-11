@@ -101,16 +101,17 @@ export const TOPICS: Topic[] = [
 
   // Chemistry.
   t(C, 'Matter and bonding', 'matter', 'Matter and the particle model', ['c10-u1']),
-  t(C, 'Matter and bonding', 'atoms', 'Atoms and the periodic table', ['c10-u2']),
-  t(C, 'Matter and bonding', 'bonding', 'Bonding, names and formulas', ['c10-u3', 'c20-u1']),
+  t(C, 'Matter and bonding', 'atoms', 'Atoms and the periodic table', ['c10-u2', 'cx-5-1', 'cx-5-2']),
+  t(C, 'Matter and bonding', 'bonding', 'Bonding, names and formulas', ['c10-u3', 'c20-u1', 'cx-5-3']),
   t(C, 'Matter and bonding', 'gases', 'Gases', ['c20-u2']),
   t(C, 'Reactions and quantities', 'reactions', 'Chemical reactions and equations', ['c10-4-1', 'c10-4-2', 'c10-4-3', 'c20-4-1', 'c20-4-2', 'cx-1-1', 'cx-1-2']),
   t(C, 'Reactions and quantities', 'moles-stoichiometry', 'The mole and stoichiometry', ['c10-5-1', 'c10-5-2', 'c20-4-3', 'c20-4-4', 'c20-4-5', 'c20-4-6', 'c20-4-7', 'c20-4-8', 'cx-3-1', 'cx-3-2']),
   t(C, 'Reactions and quantities', 'solutions', 'Solutions and concentration', ['c20-3-1', 'c20-3-2', 'c20-3-3', 'c20-3-4', 'c20-3-5']),
   t(C, 'Reactions and quantities', 'acids-bases', 'Acids and bases', ['c10-5-3', 'c10-5-4', 'c20-3-6', 'c20-3-7', 'c20-3-8', 'cx-1-3', 'c30-u4']),
   t(C, 'Reactions and quantities', 'chemical-analysis', 'Chemical analysis', ['cx-u2']),
+  t(C, 'Reactions and quantities', 'earth-resources', 'The Earth’s atmosphere and resources', ['cx-u4', 'cx-6-1', 'cx-6-2']),
   t(C, 'Energy, equilibrium and organic chemistry', 'energy-rates', 'Energy changes and reaction rates', ['c10-4-4', 'c10-4-5', 'c30-u1']),
-  t(C, 'Energy, equilibrium and organic chemistry', 'electrochemistry', 'Electrochemistry', ['c30-u2', 'cx-1-4']),
+  t(C, 'Energy, equilibrium and organic chemistry', 'electrochemistry', 'Electrochemistry', ['c30-u2', 'cx-1-4', 'cx-6-3']),
   t(C, 'Energy, equilibrium and organic chemistry', 'organic', 'Organic chemistry', ['c30-u3']),
   t(C, 'Energy, equilibrium and organic chemistry', 'equilibrium', 'Chemical equilibrium', ['c30-u4']),
 
@@ -120,10 +121,10 @@ export const TOPICS: Topic[] = [
   t(E, 'Reading', 'drama', 'Drama and scripts', ['e7-u3']),
   t(E, 'Reading', 'shakespeare', 'Shakespeare', ['e8-u3', 'e9-u3', 'e10-u3', 'e11-u3', 'e12-u3']),
   t(E, 'Reading', 'informational', 'Reading for information', ['e5-u3', 'e6-u3', 'e7-u4']),
-  t(E, 'Reading', 'nonfiction-rhetoric', 'Non-fiction, essays and rhetoric', ['e8-u4', 'e9-u4', 'e10-u4', 'e11-u4', 'e12-u4', 'ex-1-2', 'ex-1-3']),
+  t(E, 'Reading', 'nonfiction-rhetoric', 'Non-fiction, essays and rhetoric', ['e8-u4', 'e9-u4', 'e10-u4', 'e11-u4', 'e12-u4', 'ex-1-2', 'ex-1-3', 'ex-3-1']),
   t(E, 'Reading', 'media', 'Media and visual texts', ['e6-u4', 'e7-u5', 'e8-u5', 'e9-u5', 'e10-u5', 'e11-u5', 'e12-u5']),
-  t(E, 'Writing and language', 'vocabulary', 'Words and vocabulary', ['e5-u4', 'e6-u5']),
-  t(E, 'Writing and language', 'writing', 'Writing', ['e5-u6', 'e6-u7', 'e7-u7', 'e8-u7', 'e9-u7', 'e10-u6', 'e11-u6', 'e12-u6', 'ex-u2']),
+  t(E, 'Writing and language', 'vocabulary', 'Words and vocabulary', ['e5-u4', 'e6-u5', 'ex-4-1']),
+  t(E, 'Writing and language', 'writing', 'Writing', ['e5-u6', 'e6-u7', 'e7-u7', 'e8-u7', 'e9-u7', 'e10-u6', 'e11-u6', 'e12-u6', 'ex-u2', 'ex-3-2', 'ex-4-2']),
   t(E, 'Writing and language', 'grammar', 'Grammar and language', ['e5-u5', 'e6-u6', 'e7-u6', 'e8-u6', 'e9-u6', 'e10-u7', 'e11-u7', 'e12-u7']),
 ];
 

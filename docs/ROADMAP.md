@@ -770,6 +770,27 @@ items ship or decisions change.
      non-fiction, descriptive writing from a picture, spelling and spoken language remain). The
      new lessons have no videos or tutor recordings yet. Next: the rest of GCSE Chemistry (the
      atmosphere, using resources), then GCSE English Literature's nineteenth-century novel.
+   - Built (11 November 2026), step 3, **GCSE Chemistry complete**: More Chemistry Topics gains
+     three units, ten lessons and 20 question generators. Unit 4, The Earth’s Atmosphere and
+     Resources: the air and the early atmosphere, greenhouse gases and pollutants, potable water
+     and waste water, and life cycle assessments with recycling. Unit 5, Atoms, Structures and the
+     Periodic Table: the history of the atomic model and of the periodic table, the transition
+     metals, and diamond, graphite, graphene, fullerenes and nanoparticles. Unit 6, Materials and
+     Industry: corrosion, alloys and other materials, the Haber process and NPK fertilisers, and
+     fuel cells with cells and batteries. The GCSE map files them under its own units (two new
+     ones, Chemistry of the Atmosphere and Using Resources), so **GCSE Chemistry** now has 60
+     lessons and **no gaps**. Explainer videos for the first twelve More Chemistry and More
+     English lessons are being rendered, and the tutor voice workflow records every new lesson
+     when it merges.
+   - Built (11 November 2026), step 3, **GCSE English Language complete**: More English Topics
+     gains two units, four lessons and 8 question generators (`engmore/gen/skills34.ts`). Unit 3:
+     reading nineteenth-century non-fiction (four extracts written for the lesson in the style of
+     the period: a letter, a newspaper report, a diary and an advice book) and descriptive writing
+     from a picture. Unit 4: spelling (homophones, tricky words, suffix and plural rules) and
+     spoken language (presenting, standard English, answering questions). The GCSE map files them
+     under its own units, adding a Spoken Language unit, so **GCSE English Language** now has 41
+     lessons and **no gaps**. Next: GCSE English Literature's nineteenth-century novels, then
+     A level Chemistry.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1

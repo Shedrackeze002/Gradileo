@@ -11,7 +11,8 @@ describe('the UK map’s chemistry and English courses', () => {
     const own = new Set([...LISTED_COURSES.filter((c) => c.subject === 'Chemistry'), more].flatMap((c) => c.lessons.map((l) => l.id)));
     for (const c of mappedCourses('uk').filter((c) => c.subject === 'Chemistry')) {
       for (const l of c.lessons) expect(own.has(l.id), `${c.id} ${l.id}`).toBe(true);
-      expect(c.gaps!.length, `${c.id} lists what it does not teach yet`).toBeGreaterThan(0);
+      // GCSE Chemistry now teaches every topic of the specification; the A levels still list gaps.
+      if (c.id !== 'uk-gcse-chemistry') expect(c.gaps!.length, `${c.id} lists what it does not teach yet`).toBeGreaterThan(0);
     }
     const gcse = getCourse('uk-gcse-chemistry')!;
     expect(gcse.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Quantitative Chemistry', 'Chemical Changes', 'Organic Chemistry', 'Chemical Analysis']));
@@ -19,7 +20,7 @@ describe('the UK map’s chemistry and English courses', () => {
     expect(more.extra).toBe(true);
     expect(LISTED_COURSES).not.toContain(more);
     for (const l of more.lessons) expect(gcse.lessons.some((x) => x.id === l.id), `GCSE Chemistry teaches ${l.id}`).toBe(true);
-    expect(gcse.gaps!.some((g) => /reactivity series|Flame tests|Empirical/.test(g))).toBe(false);
+    expect(gcse.gaps).toEqual([]);
     // Outcome codes name the course a lesson comes from.
     expect(gcse.lessons.find((l) => l.id === 'c30-2-8')!.outcomes.every((o) => o.startsWith('Chemistry 12 '))).toBe(true);
     expect(getCourse('uk-a-level-chemistry-1')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Amount of Substance', 'Bonding', 'Energetics']));
@@ -35,7 +36,8 @@ describe('the UK map’s chemistry and English courses', () => {
     expect(LISTED_COURSES).not.toContain(moreEnglish);
     const language = getCourse('uk-gcse-english-language')!;
     for (const l of moreEnglish.lessons) expect(language.lessons.some((x) => x.id === l.id), `GCSE English Language teaches ${l.id}`).toBe(true);
-    expect(language.gaps!.some((g) => /Evaluating a statement|Summarising|Comparing how/.test(g))).toBe(false);
+    // GCSE English Language now teaches every part of the specification.
+    expect(language.gaps).toEqual([]);
     const literature = getCourse('uk-gcse-english-literature')!;
     expect(literature.units.find((u) => u.title === 'Shakespeare: Macbeth')!.lessons).toEqual(['e11-3-1', 'e11-3-2', 'e11-3-3', 'e11-3-4']);
     // Texts still in copyright stay a gap: Gradileo teaches from the public domain only.

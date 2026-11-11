@@ -13,6 +13,10 @@ export const OUTCOMES: Outcome[] = [
   { code: 'RE2', strand: 'Evaluating and comparing texts', text: 'Summarise the differences between two texts, with evidence from each and an inference.' },
   { code: 'RE3', strand: 'Evaluating and comparing texts', text: 'Compare two writers’ viewpoints and the methods each uses to convey them.' },
   { code: 'WF1', strand: 'Writing in a form', text: 'Write to present a viewpoint as an article, a formal letter or a speech, with the features, structure and register that suit the form and its audience.' },
+  { code: 'RN1', strand: 'Nineteenth-century non-fiction and description', text: 'Read nineteenth-century non-fiction: work out older words and long sentences, find information, infer the writer’s attitude and explain the effect of the language.' },
+  { code: 'WD1', strand: 'Nineteenth-century non-fiction and description', text: 'Write a description from a picture, with precise and sensory detail, imagery, and a structure that moves from the wide view to a small detail.' },
+  { code: 'SP1', strand: 'Spelling and spoken language', text: 'Spell homophones, commonly misspelt words and words with suffixes correctly.' },
+  { code: 'SL1', strand: 'Spoken language', text: 'Give a presentation in standard English, and answer the audience’s questions politely and directly.' },
 ];
 
 const L = (
@@ -47,11 +51,33 @@ export const LESSONS: LessonMeta[] = [
     ['ex-form-features', 'ex-form-register'],
     ['Use the features and structure of an article, a formal letter and a speech', 'Match the register of the writing to its audience'],
     ['form', 'audience', 'purpose', 'register', 'headline', 'sign-off']),
+
+  // ---------------- Unit 3: Nineteenth-Century Non-fiction and Description ----------------
+  L('ex-3-1', 'ex-u3', '3.1', 'Reading Nineteenth-Century Non-fiction', 10, ['RN1'],
+    ['ex-c19-language', 'ex-c19-inference'],
+    ['Work out the meaning of older words and long sentences from their context', 'Find information, infer the writer’s attitude, and use the text as evidence about its time'],
+    ['context', 'archaic', 'attitude', 'inference', 'irony']),
+  L('ex-3-2', 'ex-u3', '3.2', 'Descriptive Writing from a Picture', 10, ['WD1'],
+    ['ex-describe-detail', 'ex-describe-craft'],
+    ['Choose and describe details that fit a picture, and plan from the wide view to a small detail', 'Use imagery and the senses, show rather than tell, and revise for precision'],
+    ['description', 'sensory detail', 'imagery', 'show, not tell', 'cyclical structure']),
+
+  // ---------------- Unit 4: Spelling and Spoken Language ----------------
+  L('ex-4-1', 'ex-u4', '4.1', 'Spelling', 9, ['SP1'],
+    ['ex-spelling-homophones', 'ex-spelling-words'],
+    ['Choose the right homophone for the sentence', 'Spell commonly misspelt words, and apply the rules for suffixes and plurals'],
+    ['homophone', 'suffix', 'plural', 'silent e']),
+  L('ex-4-2', 'ex-u4', '4.2', 'Spoken Language: Presenting and Answering Questions', 10, ['SL1'],
+    ['ex-presentation', 'ex-spoken-questions'],
+    ['Plan and deliver a presentation that holds an audience', 'Use standard English, and answer questions politely and directly'],
+    ['presentation', 'signposting', 'standard English', 'eye contact']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'ex-u1', number: 1, title: 'Evaluating and Comparing Texts', description: 'Evaluating a statement about a text, summarising the differences between two texts, and comparing two writers’ viewpoints and methods.', outcomes: ['RE1', 'RE2', 'RE3'], lessons: [], color: 'violet' },
   { id: 'ex-u2', number: 2, title: 'Writing in a Form', description: 'The article, the formal letter and the speech: their features, their structure and the register that suits the audience.', outcomes: ['WF1'], lessons: [], color: 'rose' },
+  { id: 'ex-u3', number: 3, title: 'Nineteenth-Century Non-fiction and Description', description: 'Reading letters, diaries, reports and advice from the nineteenth century, and writing a description from a picture.', outcomes: ['RN1', 'WD1'], lessons: [], color: 'amber' },
+  { id: 'ex-u4', number: 4, title: 'Spelling and Spoken Language', description: 'Homophones, tricky words and the rules for suffixes, and giving a presentation and answering questions in standard English.', outcomes: ['SP1', 'SL1'], lessons: [], color: 'sky' },
 ];
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
 
@@ -61,7 +87,7 @@ export const ENGMORE: CourseMeta = {
   shortTitle: 'More English',
   grade: 10,
   subject: 'English',
-  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: evaluating a statement about a text, summarising and comparing two texts, and writing an article, a formal letter and a speech.',
+  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: evaluating a statement about a text, summarising and comparing two texts, writing an article, a formal letter and a speech, nineteenth-century non-fiction, descriptive writing, spelling and spoken language.',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
