@@ -693,6 +693,14 @@ items ship or decisions change.
      "Differential equations". **The A level map now lists no gaps**, so every UK GCSE and A level
      Mathematics topic has a Gradileo lesson. These 38 A level lessons (Units 12 to 19) still need
      their videos and tutor recordings.
+   - Built (11 November 2026): **videos and tutor recordings for the 38 A level lessons.** One
+     explainer each (`src/content/mathmore/videos/mx-12-1.ts` to `mx-19-6.ts`, PR #157), made the
+     same way as the GCSE gap videos in PR #149, with two shared figure helpers:
+     `lib/mx-mechanics.ts` (blocks, force arrows) and `lib/mx-stats.ts` (normal curves with shaded
+     areas). Units `mx-u12` to `mx-u19` are rendered and in Drive (`Gradileo videos/More Topics/`)
+     and handed to the YouTube uploads. The Tutor voice workflow recorded all 38 lessons (runs #75
+     and #77). Every UK GCSE and A level Mathematics topic now has a lesson, a video and a tutor
+     recording.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
