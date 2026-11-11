@@ -1301,10 +1301,14 @@ items ship or decisions change.
     measurement, the particle model, mixtures and solutions, separating mixtures) with 30 question
     generators, on a shared question-bank helper (`engine/curriculum/chemjr/bank.ts`). Learners in
     Grade 7 or below who pick Chemistry are recommended it, with Grade 10 Chemistry as the
-    alternative. Next: its 15 explainer videos, then Grade 8 (atoms, elements and compounds, the
-    periodic table, physical and chemical changes) and Grade 9 (atomic structure, formulas and
-    names, reactions and conservation of mass, acids and bases), after which Grade 10 Chemistry's
-    placement check looks at Grade 9.
+    alternative. Its 15 explainer videos are rendered and on Drive.
+  - Built: **Grade 8 Chemistry** (`chem-8`, "Chemistry 8"): four units and 15 lessons (atoms,
+    elements and compounds; the periodic table; physical and chemical changes and word equations;
+    burning, rusting, metals and alloys, and polymers, ceramics and composites) with 30 question
+    generators. A Grade 8 learner is recommended it, with Chemistry 7 as the readiness check, and
+    Grade 9 learners are offered it as well as Grade 10 Chemistry. Next: its 15 explainer videos,
+    then Grade 9 (atomic structure, formulas and names, reactions and conservation of mass, acids
+    and bases), after which Grade 10 Chemistry's placement check looks at Grade 9.
 - Done: the *Deploy Supabase backend* workflow works. Its secrets (`SUPABASE_ACCESS_TOKEN`,
   `SUPABASE_PROJECT_ID` and `SUPABASE_DB_PASSWORD`) were added on 14 October 2026. The first run
   failed at `supabase link`, which reads the project's secret API keys, so the workflow no longer
