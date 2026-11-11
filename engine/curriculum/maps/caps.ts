@@ -47,11 +47,11 @@ export const CAPS_MAP: CurriculumMap = {
         { title: 'Functions', description: 'The parabola y = a(x + p)² + q, the hyperbola and the exponential graph with their shifts and asymptotes, and the average gradient between two points.', members: ['m201-3-1', 'm201-3-2', 'm201-3-3', 'm301-8-1', 'm301-7-2', 'mx-8-3'] },
         { title: 'Trigonometry', description: 'The ratios of any angle, the identities tan θ = sin θ / cos θ and sin² θ + cos² θ = 1, proving identities, trigonometric equations and their general solutions, and the sine, cosine and area rules.', members: ['m201-2-2', 'm301-6-1', 'm301-6-3', 'm301-4-4', 'm201-2-3', 'm201-2-4', 'm201-2-5', 'mx-16-2'] },
         { title: 'Euclidean Geometry: Circles', description: 'Chords, angles at the centre and at the circumference, and tangents. Cyclic quadrilaterals and the tangent–chord theorem.', members: ['m9-u8', 'mx-22-4'] },
-        { title: 'Finance, Growth and Decay', description: 'Compound growth, depreciation on a reducing balance, and investments over different periods.', members: ['m302-6-4', 'm203-7-2'] },
+        { title: 'Finance, Growth and Decay', description: 'Compound growth, depreciation on a reducing balance, and investments over different periods. Nominal and effective interest rates.', members: ['m302-6-4', 'm203-7-2', 'mx-23-1'] },
         { title: 'Probability', description: 'Independent and dependent events, tree diagrams, and two-way contingency tables.', members: ['m8-10-2', 'm302-3-4', 'mx-1-5'] },
         { title: 'Statistics', description: 'Histograms, ogives, the variance and standard deviation, and outliers.', members: ['mx-11-2', 'mx-11-3', 'm202-5-1', 'mx-14-2', 'mx-14-3'] },
       ],
-      gaps: ['The angle of inclination of a line', 'Nominal and effective interest rates'],
+      gaps: ['The angle of inclination of a line'],
     },
     {
       id: 'caps-grade-12',
@@ -62,6 +62,7 @@ export const CAPS_MAP: CurriculumMap = {
       units: [
         { title: 'Patterns, Sequences and Series', description: 'Arithmetic and geometric sequences and series, sigma notation, and the sum to infinity of a convergent geometric series.', members: ['m201-u1', 'mx-17-3'] },
         { title: 'Functions, Inverses and Logarithms', description: 'The inverse of a function, the logarithmic function as the inverse of the exponential function, and the laws of logarithms.', members: ['m301-1-4', 'm301-7-4', 'm301-7-5', 'm301-7-6', 'm301-7-7'] },
+        { title: 'Finance', description: 'Future value and present value annuities, sinking funds, and loan repayments.', members: ['mx-23-2', 'mx-23-3'] },
         { title: 'Trigonometry', description: 'The compound angle and double angle identities, proving identities, solving equations with them, and problems in two and three dimensions.', members: ['m301-6-2', 'm301-6-3', 'm301-6-4', 'm202-3-3', 'mx-10-4'] },
         { title: 'Polynomials', description: 'The remainder and factor theorems, and factorizing and solving cubic polynomials.', members: ['m301-3-2', 'm301-3-3', 'm301-3-4'] },
         { title: 'Differential Calculus', description: 'Limits, the derivative from first principles, the rules of differentiation, tangents, cubic graphs with their stationary points and points of inflection, optimization, and rates of change.', members: ['m31-2-1', 'm31-3-1', 'm31-3-2', 'm31-4-1', 'm31-6-1', 'm31-6-2', 'm31-6-3', 'm31-7-1', 'm31-6-4'] },
@@ -70,7 +71,7 @@ export const CAPS_MAP: CurriculumMap = {
         { title: 'Statistics: Regression and Correlation', description: 'Scatter plots and lines of best fit, and the correlation coefficient.', members: ['m10c-7-5', 'mx-15-1'] },
         { title: 'Counting and Probability', description: 'The fundamental counting principle, factorials and arrangements, and probability problems with counting.', members: ['m301-9-1', 'm301-9-2', 'm302-3-2'] },
       ],
-      gaps: ['Annuities, loans and sinking funds', 'The proportionality theorem', 'The equation of a tangent to a circle', 'The least squares regression line'],
+      gaps: ['The proportionality theorem', 'The equation of a tangent to a circle', 'The least squares regression line'],
     },
   ],
 };

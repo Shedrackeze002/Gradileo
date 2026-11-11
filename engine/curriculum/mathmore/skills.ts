@@ -21,6 +21,7 @@ import { CALCULUS_SKILLS } from './gen/calculus.ts';
 import { DISCRETE_SKILLS } from './gen/discrete.ts';
 import { FORMULAE_SKILLS } from './gen/formulae.ts';
 import { CIRCLE_SKILLS } from './gen/circles.ts';
+import { FINANCE_SKILLS } from './gen/finance.ts';
 
 export const MATHMORE_SKILLS: SkillDef[] = [
   ...STATS_SKILLS,
@@ -45,4 +46,5 @@ export const MATHMORE_SKILLS: SkillDef[] = [
   ...DISCRETE_SKILLS,
   ...FORMULAE_SKILLS,
   ...CIRCLE_SKILLS,
+  ...FINANCE_SKILLS,
 ];

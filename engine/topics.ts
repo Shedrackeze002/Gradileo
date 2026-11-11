@@ -84,7 +84,7 @@ export const TOPICS: Topic[] = [
   // Money.
   t(M, 'Money', 'prices', 'Prices, unit rates and currency', ['m103-1-2', 'm103-1-3', 'm103-1-4', 'm204-u2']),
   t(M, 'Money', 'income', 'Earning an income', ['m103-u2', 'm204-u3']),
-  t(M, 'Money', 'budgets-credit', 'Budgets, banking, interest and credit', ['m203-u6', 'm203-u7', 'm204-u4', 'm303-u8']),
+  t(M, 'Money', 'budgets-credit', 'Budgets, banking, interest and credit', ['m203-u6', 'm203-u7', 'm204-u4', 'm303-u8', 'mx-u23']),
   // Reasoning.
   t(M, 'Reasoning', 'logic', 'Reasoning, sets and logic', ['m202-u1', 'm302-u1', 'mx-16-1', 'mx-17-1', 'mx-20-3']),
   t(M, 'Reasoning', 'puzzles-projects', 'Puzzles, games and research projects', ['m203-8-3', 'm202-u9', 'm302-u8', 'm303-u9']),

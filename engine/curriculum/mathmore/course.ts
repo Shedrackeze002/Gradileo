@@ -97,6 +97,10 @@ export const OUTCOMES: Outcome[] = [
   { code: 'CS4', strand: 'Circles, solids and the Earth', text: 'Use the angle properties of cyclic quadrilaterals and the alternate segment theorem.' },
   { code: 'CS5', strand: 'Circles, solids and the Earth', text: 'Use the intersecting chords, secant and tangent–secant rules, and find the lengths of common tangents to two circles.' },
   { code: 'CS6', strand: 'Circles, solids and the Earth', text: 'Find distances along great circles and parallels of latitude, and time differences from longitude.' },
+  { code: 'FN1', strand: 'Interest rates, annuities, loans and shares', text: 'Convert between nominal and effective interest rates, and compare offers.' },
+  { code: 'FN2', strand: 'Interest rates, annuities, loans and shares', text: 'Find the future value of an annuity and the payments into a sinking fund.' },
+  { code: 'FN3', strand: 'Interest rates, annuities, loans and shares', text: 'Find the present value of an annuity, the repayments on a loan and the interest paid.' },
+  { code: 'FN4', strand: 'Interest rates, annuities, loans and shares', text: 'Find dividends, yields and profits on shares, and the income and yield from stock.' },
 ];
 
 const L = (
@@ -482,6 +486,22 @@ export const LESSONS: LessonMeta[] = [
     ['mx-great-circle', 'mx-parallel-latitude'],
     ['Find distances along meridians and the equator', 'Find distances along a parallel of latitude, and time differences from longitude'],
     ['latitude', 'longitude', 'meridian', 'great circle', 'small circle', 'nautical mile']),
+  L('mx-23-1', 'mx-u23', '23.1', 'Nominal and Effective Interest Rates', 11, ['FN1'],
+    ['mx-effective-rate', 'mx-nominal-convert'],
+    ['Find the effective annual rate from a nominal rate, and compare offers', 'Find a nominal rate from an effective rate, and use nominal rates in compound interest'],
+    ['nominal rate', 'effective rate', 'compounding']),
+  L('mx-23-2', 'mx-u23', '23.2', 'Annuities and Sinking Funds', 12, ['FN2'],
+    ['mx-annuity-future', 'mx-sinking-fund'],
+    ['Find the future value of regular payments', 'Find the regular payment that makes a sinking fund reach its target'],
+    ['annuity', 'future value', 'sinking fund']),
+  L('mx-23-3', 'mx-u23', '23.3', 'Present Value and Loans', 12, ['FN3'],
+    ['mx-annuity-present', 'mx-loan-repayment'],
+    ['Find the present value of regular payments and the loan they can support', 'Find the repayments on a loan and the interest paid'],
+    ['present value', 'loan', 'repayment']),
+  L('mx-23-4', 'mx-u23', '23.4', 'Shares and Stocks', 12, ['FN4'],
+    ['mx-share-dividend', 'mx-share-yield'],
+    ['Find dividends, numbers of shares and the profit on a sale of shares', 'Find the yield of shares and stocks, and the income from stock'],
+    ['share', 'nominal value', 'market price', 'dividend', 'yield', 'stock']),
 ];
 
 export const UNITS: UnitMeta[] = [
@@ -505,8 +525,9 @@ export const UNITS: UnitMeta[] = [
   { id: 'mx-u18', number: 18, title: 'Pure: Further Trigonometry', description: 'Small-angle approximations, sec, cosec and cot, the inverse trigonometric functions, and R sin(θ ± α).', outcomes: ['TR1', 'TR2', 'TR3'], lessons: [], color: 'orange' },
   { id: 'mx-u19', number: 19, title: 'Pure: Further Calculus and Numerical Methods', description: 'Parametric differentiation and first principles for sin x and cos x, locating roots and the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and separable differential equations.', outcomes: ['CL1', 'CL2', 'CL3', 'CL4', 'CL5', 'CL6'], lessons: [], color: 'fuchsia' },
   { id: 'mx-u20', number: 20, title: 'Number Bases, Modular Arithmetic and Logic', description: 'Numbers in bases other than ten, arithmetic modulo m, and truth tables for compound statements.', outcomes: ['DM1', 'DM2', 'DM3'], lessons: [], color: 'sky' },
-  { id: 'mx-u21', number: 21, title: 'Formulae, Variation and Linear Programming', description: 'Changing the subject of a formula, joint and partial variation, linear programming, segments of a circle, frustums, Heron’s formula, cyclic quadrilaterals, the alternate segment theorem, intersecting chords, common tangents, and longitude and latitude.', outcomes: ['FV1', 'FV2', 'FV3'], lessons: [], color: 'emerald' },
+  { id: 'mx-u21', number: 21, title: 'Formulae, Variation and Linear Programming', description: 'Changing the subject of a formula, joint and partial variation, linear programming, segments of a circle, frustums, Heron’s formula, cyclic quadrilaterals, the alternate segment theorem, intersecting chords, common tangents, longitude and latitude, nominal and effective interest rates, annuities, sinking funds, loans, and shares and stocks.', outcomes: ['FV1', 'FV2', 'FV3'], lessons: [], color: 'emerald' },
   { id: 'mx-u22', number: 22, title: 'Circles, Solids and the Earth', description: 'Segments of a circle, frustums, Heron’s formula, cyclic quadrilaterals and the alternate segment theorem, intersecting chords and common tangents, and longitude and latitude.', outcomes: ['CS1', 'CS2', 'CS3', 'CS4', 'CS5', 'CS6'], lessons: [], color: 'orange' },
+  { id: 'mx-u23', number: 23, title: 'Interest Rates, Annuities, Loans and Shares', description: 'Nominal and effective interest rates, annuities and sinking funds, present value and loan repayments, and shares and stocks.', outcomes: ['FN1', 'FN2', 'FN3', 'FN4'], lessons: [], color: 'fuchsia' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);

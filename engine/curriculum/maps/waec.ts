@@ -66,7 +66,7 @@ export const WAEC_MAP: CurriculumMap = {
       units: [
         { title: 'Surds', description: 'Rational and irrational numbers, simplifying surds, calculating with surds, and rationalizing the denominator.', members: ['m10c-3-3', 'm10c-3-4', 'm202-4-1', 'm202-4-2', 'm202-4-3'] },
         { title: 'Matrices and Determinants', description: 'Adding and multiplying matrices, the determinant and inverse of a 2 × 2 matrix, and solving simultaneous equations with matrices.', members: ['mx-5-2', 'mx-5-3'] },
-        { title: 'Arithmetic of Finance', description: 'Simple and compound interest, profit, discount and tax, commission, hire purchase, income tax, and depreciation.', members: ['m203-7-1', 'm103-1-3', 'm103-2-2', 'm204-2-3', 'm103-2-4', 'm302-6-4'] },
+        { title: 'Arithmetic of Finance', description: 'Simple and compound interest, profit, discount and tax, commission, hire purchase, income tax, and depreciation. Annuities, and shares and stocks.', members: ['m203-7-1', 'm103-1-3', 'm103-2-2', 'm204-2-3', 'm103-2-4', 'm302-6-4', 'mx-23-2', 'mx-23-4'] },
         { title: 'Longitude and Latitude', description: 'The Earth as a sphere: great circles and small circles, and distances along meridians and parallels of latitude.', members: ['mx-22-6'] },
         { title: 'Coordinate Geometry of Straight Lines', description: 'The distance between two points and the midpoint, the gradient, the equation of a line, and parallel and perpendicular lines.', members: ['m10c-6-5', 'm10c-6-3', 'm10c-7-1', 'm10c-7-2', 'm10c-7-3', 'm10c-6-4', 'm10c-7-4'] },
         { title: 'Trigonometric Graphs', description: 'The graphs of sine, cosine and tangent from 0° to 360°, and solving equations with them.', members: ['mx-8-4'] },
@@ -74,7 +74,7 @@ export const WAEC_MAP: CurriculumMap = {
         { title: 'Integration', description: 'Integrating powers of x, definite integrals, and the area under a curve.', members: ['m31-8-1', 'm31-8-3'] },
         { title: 'Vectors and Transformations', description: 'Vectors in a plane, and translations, reflections, rotations and enlargements.', members: ['mx-5-1', 'm7-9-2', 'm7-9-3', 'm303-4-2'] },
       ],
-      gaps: ['Annuities, shares and stocks'],
+      gaps: [],
     },
   ],
 };
