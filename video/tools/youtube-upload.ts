@@ -82,6 +82,7 @@ const MADE_FOR_KIDS: Record<string, boolean> = {
   'eng-20': false,
   'eng-30': false,
   'math-more': false,
+  'chem-more': false,
 };
 
 /** A video's MP4, thumbnail and captions, from the session or from Drive. */

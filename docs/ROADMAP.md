@@ -721,7 +721,19 @@ items ship or decisions change.
      lists 8 (evaluating a statement, comparing two writers, the forms of viewpoint writing,
      descriptive writing); GCSE English Literature lists 6 (the nineteenth-century novel is the
      largest; modern texts in copyright stay out, since Gradileo teaches from the public domain).
-     A level English is not mapped. Next: fill the GCSE gaps, chemistry first.
+     A level English is not mapped.
+   - Built (11 November 2026), step 3, the first chemistry gaps filled: **More Chemistry Topics**
+     (`engine/curriculum/chemmore/`, `chem-more`, lesson ids `cx-…`), a course of extra lessons
+     like More Mathematics Topics, which the chemistry maps borrow from. Eight lessons in three
+     units, with 16 question generators: the reactivity series and displacement, extracting
+     metals, making soluble salts, and the electrolysis of solutions with half equations (Unit 1);
+     purity, formulations and the tests for gases, and flame tests with the tests for metal ions,
+     carbonates, halides and sulfates (Unit 2); empirical and molecular formulae, and atom economy
+     (Unit 3). **GCSE Chemistry** now has 50 lessons and lists 10 gaps, down from 16 (the
+     atmosphere, using resources, the Haber process, fuel cells, the history of the atom, the
+     transition metals and the forms of carbon remain), and **A level Chemistry Year 12** lists
+     12, down from 13. The new lessons have no videos or tutor recordings yet. Next: the GCSE
+     English Language gaps, then the rest of GCSE Chemistry.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1
