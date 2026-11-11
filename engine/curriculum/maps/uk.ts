@@ -13,8 +13,12 @@
  * presentation, M probability, N distributions, O hypothesis testing, P units in mechanics,
  * Q kinematics, R forces and Newton's laws, S moments), in the order a two-year scheme of work
  * meets them. Further Mathematics is not mapped yet.
+ *
+ * The map's chemistry and English courses are in `uk-chemistry.ts` and `uk-english.ts`.
  */
 import type { CurriculumMap } from './build.ts';
+import { UK_CHEMISTRY_COURSES } from './uk-chemistry.ts';
+import { UK_ENGLISH_COURSES } from './uk-english.ts';
 
 export const UK_MAP: CurriculumMap = {
   curriculum: 'uk',
@@ -151,5 +155,8 @@ export const UK_MAP: CurriculumMap = {
       ],
       gaps: [],
     },
+      // Chemistry and English, each in its own file.
+    ...UK_CHEMISTRY_COURSES,
+    ...UK_ENGLISH_COURSES,
   ],
 };

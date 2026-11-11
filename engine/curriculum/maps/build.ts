@@ -1,7 +1,7 @@
 /**
  * Curriculum maps (roadmap item 5, step 3): a school system's own courses ("Algebra I", "GCSE
- * Higher"), each built from Gradileo's lessons in that system's order and under its unit names.
- * The lessons, practice, videos and tutor recordings are the ones the lessons already have, so a
+ * Higher", "GCSE Chemistry"), each built from Gradileo's lessons in that system's order and under
+ * its unit names. The lessons, practice, videos and tutor recordings are the ones the lessons already have, so a
  * mapped course is a course outline only. Each also lists its gaps: syllabus topics Gradileo does
  * not teach yet.
  */
@@ -20,6 +20,8 @@ export interface MapCourse {
   shortTitle: string;
   /** Gradileo's level for the course (the grade of a learner of the same age). */
   grade: number;
+  /** The subject, as Gradileo's own courses name it; Mathematics when not given. */
+  subject?: string;
   description: string;
   units: MapUnit[];
   /** Syllabus topics Gradileo does not teach yet. */
@@ -74,7 +76,7 @@ export function buildMappedCourse(map: CurriculumMap, def: MapCourse, base: Cour
     title: def.title,
     shortTitle: def.shortTitle,
     grade: def.grade,
-    subject: 'Mathematics',
+    subject: def.subject ?? 'Mathematics',
     description: def.description,
     outcomes: [...outcomes.values()],
     units,
