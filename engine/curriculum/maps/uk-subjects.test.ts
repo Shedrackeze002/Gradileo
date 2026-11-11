@@ -6,14 +6,20 @@ const titles = (subject: string) => mappedCourses('uk').filter((c) => c.subject 
 
 describe('the UK map’s chemistry and English courses', () => {
   it('build GCSE and A level Chemistry from chemistry lessons only', () => {
+    const more = getCourse('chem-more')!;
     expect(titles('Chemistry')).toEqual(['GCSE Chemistry', 'A level Chemistry Year 12', 'A level Chemistry Year 13']);
-    const own = new Set(LISTED_COURSES.filter((c) => c.subject === 'Chemistry').flatMap((c) => c.lessons.map((l) => l.id)));
+    const own = new Set([...LISTED_COURSES.filter((c) => c.subject === 'Chemistry'), more].flatMap((c) => c.lessons.map((l) => l.id)));
     for (const c of mappedCourses('uk').filter((c) => c.subject === 'Chemistry')) {
       for (const l of c.lessons) expect(own.has(l.id), `${c.id} ${l.id}`).toBe(true);
       expect(c.gaps!.length, `${c.id} lists what it does not teach yet`).toBeGreaterThan(0);
     }
     const gcse = getCourse('uk-gcse-chemistry')!;
     expect(gcse.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Quantitative Chemistry', 'Chemical Changes', 'Organic Chemistry', 'Chemical Analysis']));
+    // Gaps are filled from More Chemistry Topics, an extra course that no picker lists.
+    expect(more.extra).toBe(true);
+    expect(LISTED_COURSES).not.toContain(more);
+    for (const l of more.lessons) expect(gcse.lessons.some((x) => x.id === l.id), `GCSE Chemistry teaches ${l.id}`).toBe(true);
+    expect(gcse.gaps!.some((g) => /reactivity series|Flame tests|Empirical/.test(g))).toBe(false);
     // Outcome codes name the course a lesson comes from.
     expect(gcse.lessons.find((l) => l.id === 'c30-2-8')!.outcomes.every((o) => o.startsWith('Chemistry 12 '))).toBe(true);
     expect(getCourse('uk-a-level-chemistry-1')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Amount of Substance', 'Bonding', 'Energetics']));

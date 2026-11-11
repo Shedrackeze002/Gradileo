@@ -181,7 +181,8 @@ do not teach (box plots, scientific notation, the equation of a circle, complex 
 matrices, conic sections, and the GCSE topics such as bounds, iteration, bearings, loci and histograms, and the A level mechanics, statistics, pure and calculus topics). It is marked `extra`, so it
 is not in `LISTED_COURSES`, but its lessons are filed under topics (`TOPIC_COURSES`) and each lesson
 carries its own level (`LessonMeta.grade`), since the course spans Grades 6 to 12. Add the lesson to
-the map's unit and take the topic off the map's `gaps`.
+the map's unit and take the topic off the map's `gaps`. Chemistry has the same kind of course, **More Chemistry
+Topics** (`engine/curriculum/chemmore/`, `chem-more`, lesson ids `cx-…`), for the gaps in the chemistry maps.
 
 **Joining a teacher's class.** A class can ask for approval (`settings.joinApproval`, on by default
 for new classes). Then a class code, used on the Join page or at sign-up, creates a pending
