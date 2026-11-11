@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { EXTRACTS, PAIRS, TASKS } from './gen/texts.ts';
+import { SET_TEXTS } from './gen/litskills.ts';
 
 // The questions quote the texts, so every quotation must be in its text word for word.
 describe('More English Topics: the practice texts', () => {
@@ -34,4 +35,31 @@ describe('More English Topics: the practice texts', () => {
       expect(t.signOff).toBe(t.greeting.includes('Sir or Madam') ? 'Yours faithfully,' : 'Yours sincerely,');
     }
   });
+});
+
+// The literature questions draw on each set text's data. The quotations were checked word for word
+// against the Project Gutenberg edition named in each file; here we check that the data fits the
+// generators: every speaker is a character, every theme is listed, and there is enough of each kind
+// for four distinct choices.
+describe('More English Topics: the set texts', () => {
+  for (const { key, text: t } of SET_TEXTS) {
+    it(`${key}: has the data each kind of question needs`, () => {
+      const names = new Set(t.characters.map((c) => c.name));
+      expect(names.size, 'distinct character names').toBe(t.characters.length);
+      expect(t.characters.length).toBeGreaterThanOrEqual(6);
+      expect(t.themes.length).toBeGreaterThanOrEqual(5);
+      expect(new Set(t.events.map((e) => e.where)).size, 'places for “where” questions').toBeGreaterThanOrEqual(4);
+      expect(t.events.length).toBeGreaterThanOrEqual(8);
+      expect(t.quotations.length).toBeGreaterThanOrEqual(10);
+      expect(t.quotations.filter((x) => x.who !== 'the narrator').length, 'spoken quotations').toBeGreaterThanOrEqual(6);
+      expect(t.context.length).toBeGreaterThanOrEqual(6);
+      for (const x of t.quotations) {
+        if (x.who !== 'the narrator') expect(names.has(x.who), `${x.who} is a character`).toBe(true);
+        expect(t.themes, x.text).toContain(x.theme);
+        expect(new Set([x.reading, ...x.misreadings]).size, x.text).toBe(4);
+        // Typographic quotation marks and apostrophes, as in the rest of the course.
+        expect(x.text, x.text).not.toMatch(/['"]/);
+      }
+    });
+  }
 });

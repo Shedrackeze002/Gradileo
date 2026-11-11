@@ -17198,6 +17198,743 @@
       }
     ]
   },
+  "cx-7-1": {
+    "lessonId": "cx-7-1",
+    "title": "Time of Flight Mass Spectrometry",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The four stages",
+        "t": 20.119
+      },
+      {
+        "title": "Making the ions",
+        "t": 65.381
+      },
+      {
+        "title": "Relative atomic mass",
+        "t": 101.83
+      },
+      {
+        "title": "A common mistake",
+        "t": 136.437
+      },
+      {
+        "title": "Your turn",
+        "t": 149.228
+      },
+      {
+        "title": "Summary",
+        "t": 180.697
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-7-1:q",
+        "t": 161.938,
+        "prompt": "Chlorine’s mass spectrum has peaks at 35 and 37, with heights 3 and 1. What is its relative atomic mass?",
+        "choices": [
+          "36.0",
+          "35.5",
+          "35.0",
+          "36.5"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{(35 \\times 3) + (37 \\times 1)}{3 + 1} = \\dfrac{142}{4} = 35.5$"
+      }
+    ]
+  },
+  "cx-7-2": {
+    "lessonId": "cx-7-2",
+    "title": "Electron Configurations and Ionisation Energies",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sub-shells",
+        "t": 24.062
+      },
+      {
+        "title": "The d-block",
+        "t": 51.099
+      },
+      {
+        "title": "Ionisation energies",
+        "t": 78.355
+      },
+      {
+        "title": "A common mistake",
+        "t": 120.295
+      },
+      {
+        "title": "Your turn",
+        "t": 134.16
+      },
+      {
+        "title": "Summary",
+        "t": 174.123
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-7-2:q",
+        "t": 157.21,
+        "prompt": "The first five ionisation energies of an element, in kJ mol⁻¹, are 578, 1817, 2745, 11 577 and 14 842. Which group is it in?",
+        "choices": [
+          "Group 1",
+          "Group 2",
+          "Group 4",
+          "Group 3"
+        ],
+        "answer": 3,
+        "working": "The big jump comes after the **third** electron, so there are three outer electrons: Group 3 (aluminium)."
+      }
+    ]
+  },
+  "cx-7-3": {
+    "lessonId": "cx-7-3",
+    "title": "Dative Covalent Bonds",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a dative bond is",
+        "t": 21.069
+      },
+      {
+        "title": "More examples",
+        "t": 57.406
+      },
+      {
+        "title": "Shapes",
+        "t": 90.919
+      },
+      {
+        "title": "A common mistake",
+        "t": 122.047
+      },
+      {
+        "title": "Your turn",
+        "t": 135.941
+      },
+      {
+        "title": "Summary",
+        "t": 160.276
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-7-3:q",
+        "t": 142.353,
+        "prompt": "What is the shape of the oxonium ion, $\\ce{H3O+}$?",
+        "choices": [
+          "Trigonal pyramidal",
+          "Tetrahedral",
+          "Trigonal planar",
+          "Bent"
+        ],
+        "answer": 0,
+        "working": "Oxygen has three bonding pairs (one of them dative) and **one lone pair**, so the shape is trigonal pyramidal, about 107°."
+      }
+    ]
+  },
+  "cx-7-4": {
+    "lessonId": "cx-7-4",
+    "title": "The Maxwell–Boltzmann Distribution",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the curve",
+        "t": 23.171
+      },
+      {
+        "title": "Activation energy",
+        "t": 56.171
+      },
+      {
+        "title": "Temperature and catalysts",
+        "t": 74.341
+      },
+      {
+        "title": "A common mistake",
+        "t": 118.375
+      },
+      {
+        "title": "Your turn",
+        "t": 131.484
+      },
+      {
+        "title": "Summary",
+        "t": 157.657
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-7-4:q",
+        "t": 140.369,
+        "prompt": "How does a catalyst change the Maxwell–Boltzmann distribution for a reaction?",
+        "choices": [
+          "It moves the peak to the right",
+          "It makes the curve taller",
+          "It leaves the curve alone and lowers $E_a$",
+          "It increases the area under the curve"
+        ],
+        "answer": 2,
+        "working": "A catalyst provides a route with a **lower activation energy**. The energies of the molecules, and so the curve, are unchanged."
+      }
+    ]
+  },
+  "cx-8-1": {
+    "lessonId": "cx-8-1",
+    "title": "Periodicity: Trends Across Period 3",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Radius and ionisation energy",
+        "t": 26.276
+      },
+      {
+        "title": "Melting points",
+        "t": 64.461
+      },
+      {
+        "title": "A common mistake",
+        "t": 114.951
+      },
+      {
+        "title": "Your turn",
+        "t": 130.251
+      },
+      {
+        "title": "Summary",
+        "t": 155.199
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-8-1:q",
+        "t": 138.451,
+        "prompt": "Which Period 3 element has the highest melting point, and why?",
+        "choices": [
+          "Aluminium: it has the most delocalised electrons",
+          "Silicon: many strong covalent bonds must break",
+          "Sulfur: its $\\ce{S8}$ molecules are large",
+          "Argon: it has the most protons"
+        ],
+        "answer": 1,
+        "working": "Silicon has a **giant covalent** structure, so melting it breaks many strong covalent bonds."
+      }
+    ]
+  },
+  "cx-8-2": {
+    "lessonId": "cx-8-2",
+    "title": "Group 2, the Alkaline Earth Metals",
+    "duration": 166,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trends and reactions",
+        "t": 19.335
+      },
+      {
+        "title": "Solubility and uses",
+        "t": 55.232
+      },
+      {
+        "title": "The sulfate test",
+        "t": 94.246
+      },
+      {
+        "title": "Your turn",
+        "t": 113.074
+      },
+      {
+        "title": "Summary",
+        "t": 137.386
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-8-2:q",
+        "t": 120.739,
+        "prompt": "Which Group 2 compound is the least soluble in water?",
+        "choices": [
+          "Magnesium sulfate",
+          "Barium hydroxide",
+          "Calcium hydroxide",
+          "Barium sulfate"
+        ],
+        "answer": 3,
+        "working": "Sulfates get **less** soluble down the group, so barium sulfate is insoluble. Hydroxides go the other way."
+      }
+    ]
+  },
+  "cx-8-3": {
+    "lessonId": "cx-8-3",
+    "title": "Group 7, the Halogens",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trends and displacement",
+        "t": 23.947
+      },
+      {
+        "title": "Chlorine in water",
+        "t": 53.595
+      },
+      {
+        "title": "Testing for halides",
+        "t": 83.897
+      },
+      {
+        "title": "A common mistake",
+        "t": 121.567
+      },
+      {
+        "title": "Your turn",
+        "t": 136.468
+      },
+      {
+        "title": "Summary",
+        "t": 164.107
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-8-3:q",
+        "t": 145.805,
+        "prompt": "Bromine water is added to potassium iodide solution. What happens?",
+        "choices": [
+          "Iodine forms and the solution turns brown",
+          "No reaction, as bromine is below iodine",
+          "Chlorine gas is given off",
+          "A cream precipitate forms"
+        ],
+        "answer": 0,
+        "working": "Bromine is **above** iodine, so it is the stronger oxidising agent: $\\ce{Br2 + 2I- -> 2Br- + I2}$."
+      }
+    ]
+  },
+  "cx-9-1": {
+    "lessonId": "cx-9-1",
+    "title": "Reaction Mechanisms with Curly Arrows",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The cast",
+        "t": 19.381
+      },
+      {
+        "title": "Four mechanisms",
+        "t": 49.522
+      },
+      {
+        "title": "The major product",
+        "t": 99.886
+      },
+      {
+        "title": "Your turn",
+        "t": 122.441
+      },
+      {
+        "title": "Summary",
+        "t": 151.553
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-9-1:q",
+        "t": 133.953,
+        "prompt": "1-bromopropane is heated with potassium hydroxide dissolved in ethanol. What is the mechanism?",
+        "choices": [
+          "Nucleophilic substitution",
+          "Electrophilic addition",
+          "Elimination",
+          "Free-radical substitution"
+        ],
+        "answer": 2,
+        "working": "Hot hydroxide in **ethanol** acts as a **base**, removing $\\ce{H+}$ to form propene: elimination."
+      }
+    ]
+  },
+  "cx-9-2": {
+    "lessonId": "cx-9-2",
+    "title": "Halogenoalkanes and Ozone Depletion",
+    "duration": 174,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Substitution and elimination",
+        "t": 27.012
+      },
+      {
+        "title": "Which reacts fastest?",
+        "t": 57.686
+      },
+      {
+        "title": "CFCs and ozone",
+        "t": 78.041
+      },
+      {
+        "title": "Your turn",
+        "t": 119.518
+      },
+      {
+        "title": "Summary",
+        "t": 145.127
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-9-2:q",
+        "t": 128.054,
+        "prompt": "Which halogenoalkane reacts fastest with aqueous silver nitrate?",
+        "choices": [
+          "1-chlorobutane",
+          "1-iodobutane",
+          "1-fluorobutane",
+          "1-bromobutane"
+        ],
+        "answer": 1,
+        "working": "The C–I bond has the **lowest bond enthalpy**, so it breaks most easily."
+      }
+    ]
+  },
+  "cx-9-3": {
+    "lessonId": "cx-9-3",
+    "title": "E–Z Isomerism",
+    "duration": 162,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Restricted rotation",
+        "t": 22.67
+      },
+      {
+        "title": "Priority rules",
+        "t": 60.39
+      },
+      {
+        "title": "A common mistake",
+        "t": 90.236
+      },
+      {
+        "title": "Your turn",
+        "t": 104.152
+      },
+      {
+        "title": "Summary",
+        "t": 136.246
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-9-3:q",
+        "t": 119.469,
+        "prompt": "Carbon 1 carries Br and H; carbon 2 carries Cl and $\\ce{CH3}$. The Br and the Cl are on the same side. Which isomer is it?",
+        "choices": [
+          "The E isomer",
+          "Neither: it has no E–Z isomers",
+          "The E isomer, because $\\ce{CH3}$ is larger",
+          "The Z isomer"
+        ],
+        "answer": 3,
+        "working": "Br beats H, and Cl beats C. The two priority groups, Br and Cl, are on the **same side**: Z."
+      }
+    ]
+  },
+  "cx-9-4": {
+    "lessonId": "cx-9-4",
+    "title": "Alcohols: Production, Oxidation and Elimination",
+    "duration": 164,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Making ethanol",
+        "t": 24.824
+      },
+      {
+        "title": "Oxidation",
+        "t": 56.937
+      },
+      {
+        "title": "Elimination",
+        "t": 89.216
+      },
+      {
+        "title": "Your turn",
+        "t": 107.682
+      },
+      {
+        "title": "Summary",
+        "t": 134.9
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-9-4:q",
+        "t": 117.368,
+        "prompt": "Butan-2-ol is warmed with acidified potassium dichromate(VI). What forms?",
+        "choices": [
+          "Butanone, a ketone",
+          "Butanal, an aldehyde",
+          "Butanoic acid",
+          "Nothing: it does not react"
+        ],
+        "answer": 0,
+        "working": "Butan-2-ol is a **secondary** alcohol, so it is oxidised to a ketone, butanone."
+      }
+    ]
+  },
+  "cx-9-5": {
+    "lessonId": "cx-9-5",
+    "title": "Organic Analysis",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Test-tube reactions",
+        "t": 23.99
+      },
+      {
+        "title": "Infrared spectra",
+        "t": 55.553
+      },
+      {
+        "title": "Precise masses",
+        "t": 96.774
+      },
+      {
+        "title": "Your turn",
+        "t": 125.794
+      },
+      {
+        "title": "Summary",
+        "t": 157.064
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-9-5:q",
+        "t": 139.964,
+        "prompt": "An infrared spectrum has a very broad dip from 2500 to 3000 cm⁻¹ and a sharp dip at 1710 cm⁻¹. What is the compound?",
+        "choices": [
+          "An alcohol",
+          "An alkene",
+          "A carboxylic acid",
+          "A ketone"
+        ],
+        "answer": 2,
+        "working": "A very broad O–H at 2500–3000 **and** a C=O near 1700 together show a **carboxylic acid**."
+      }
+    ]
+  },
+  "cx-10-1": {
+    "lessonId": "cx-10-1",
+    "title": "Born–Haber Cycles and Lattice Enthalpies",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The steps",
+        "t": 25.894
+      },
+      {
+        "title": "Calculating",
+        "t": 58.963
+      },
+      {
+        "title": "Size, charge and dissolving",
+        "t": 92.553
+      },
+      {
+        "title": "A common mistake",
+        "t": 129.781
+      },
+      {
+        "title": "Your turn",
+        "t": 145.535
+      },
+      {
+        "title": "Summary",
+        "t": 172.339
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-10-1:q",
+        "t": 154.178,
+        "prompt": "Which compound has the most exothermic lattice formation enthalpy?",
+        "choices": [
+          "NaCl",
+          "MgO",
+          "NaI",
+          "KBr"
+        ],
+        "answer": 1,
+        "working": "$\\ce{Mg^2+}$ and $\\ce{O^2-}$ are small and **doubly charged**, so they attract each other most strongly."
+      }
+    ]
+  },
+  "cx-10-2": {
+    "lessonId": "cx-10-2",
+    "title": "Entropy and Gibbs Free Energy",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Entropy",
+        "t": 24.098
+      },
+      {
+        "title": "Calculating ΔS",
+        "t": 47.779
+      },
+      {
+        "title": "Feasibility",
+        "t": 73.403
+      },
+      {
+        "title": "A common mistake",
+        "t": 109.598
+      },
+      {
+        "title": "Your turn",
+        "t": 126.216
+      },
+      {
+        "title": "Summary",
+        "t": 164.703
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-10-2:q",
+        "t": 142.464,
+        "prompt": "A reaction has $\\Delta H = -50$ kJ mol⁻¹ and $\\Delta S = -100$ J K⁻¹ mol⁻¹. What is $\\Delta G$ at 300 K?",
+        "choices": [
+          "+29 950 kJ mol⁻¹",
+          "−80 kJ mol⁻¹",
+          "+50 kJ mol⁻¹",
+          "−20 kJ mol⁻¹"
+        ],
+        "answer": 3,
+        "working": "$\\Delta G = -50 - 300 \\times (-0.100) = -50 + 30 = -20$ kJ mol⁻¹, so it is feasible."
+      }
+    ]
+  },
+  "cx-10-3": {
+    "lessonId": "cx-10-3",
+    "title": "Rate Equations and the Arrhenius Equation",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Orders of reaction",
+        "t": 24.487
+      },
+      {
+        "title": "Finding k",
+        "t": 50.441
+      },
+      {
+        "title": "The Arrhenius equation",
+        "t": 79.312
+      },
+      {
+        "title": "A common mistake",
+        "t": 107.647
+      },
+      {
+        "title": "Your turn",
+        "t": 119.325
+      },
+      {
+        "title": "Summary",
+        "t": 156.711
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-10-3:q",
+        "t": 135.631,
+        "prompt": "A graph of ln k against 1/T has a gradient of −6000 K. With R = 8.31 J K⁻¹ mol⁻¹, what is the activation energy?",
+        "choices": [
+          "49.9 kJ mol⁻¹",
+          "722 kJ mol⁻¹",
+          "6.0 kJ mol⁻¹",
+          "0.72 kJ mol⁻¹"
+        ],
+        "answer": 0,
+        "working": "$E_a = 6000 \\times 8.31 = 49\\,860$ J mol⁻¹, which is 49.9 kJ mol⁻¹."
+      }
+    ]
+  },
   "e5-1-1": {
     "lessonId": "e5-1-1",
     "title": "Story Elements: Characters, Setting and Plot",
