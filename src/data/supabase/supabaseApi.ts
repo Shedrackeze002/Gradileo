@@ -81,6 +81,7 @@ import {
   toSubmission,
 } from './mappers.ts';
 import { STUDENT_EMAIL_DOMAIN } from '@/config.ts';
+import { markRecovery } from '@/features/auth/recovery.ts';
 import { duplicateClass, duplicateClassMessage } from '../classRules.ts';
 
 function browserTimeZone(): string {
@@ -124,6 +125,10 @@ export class SupabaseApi implements DataApi {
 
   constructor(url: string, anonKey: string) {
     this.client = createClient(url, anonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+    // A password-reset link signs its owner in; remember that they still have to choose a password.
+    this.client.auth.onAuthStateChange((event) => {
+      if (event === 'PASSWORD_RECOVERY') markRecovery();
+    });
   }
 
   private async uid(): Promise<string> {
@@ -182,7 +187,8 @@ export class SupabaseApi implements DataApi {
         cb(null);
         return;
       }
-      if (event !== 'SIGNED_IN' && event !== 'USER_UPDATED') return;
+      // A password link signs its owner in with PASSWORD_RECOVERY in place of SIGNED_IN.
+      if (event !== 'SIGNED_IN' && event !== 'USER_UPDATED' && event !== 'PASSWORD_RECOVERY') return;
       // Supabase says SIGNED_IN again each time the tab comes back into view. The profile is loaded
       // then, and a failed reload (a tablet still waking up) must not sign the page out.
       if (event === 'SIGNED_IN' && this.profile?.id === session.user.id) return cb(this.profile);
@@ -247,6 +253,16 @@ export class SupabaseApi implements DataApi {
 
   async changePassword(newPassword: string) {
     const { error } = await this.client.auth.updateUser({ password: newPassword });
+    fail(error);
+  }
+
+  async requestPasswordReset(email: string) {
+    const { error } = await this.client.auth.resetPasswordForEmail(email.trim(), { redirectTo: `${window.location.origin}${import.meta.env.BASE_URL}reset-password` });
+    fail(error);
+  }
+
+  async resendConfirmation(email: string) {
+    const { error } = await this.client.auth.resend({ type: 'signup', email: email.trim(), options: { emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}` } });
     fail(error);
   }
 
@@ -420,6 +436,10 @@ export class SupabaseApi implements DataApi {
   async createStudentAccounts(classId: string, names: string[]) {
     const res = await this.invoke<{ students: NewStudentCredential[] }>('create-students', { classId, names });
     return res.students;
+  }
+
+  resetStudentPassword(classId: string, studentId: string) {
+    return this.invoke<NewStudentCredential>('create-students', { action: 'reset_password', classId, studentId });
   }
 
   // ------------------------------------------------------------------ curriculum
@@ -721,6 +741,11 @@ export class SupabaseApi implements DataApi {
     const { data, error } = await this.client.from('submissions').select('*').eq('id', id).maybeSingle();
     fail(error);
     return data ? toSubmission(data) : null;
+  }
+
+  async serverNow() {
+    const res = await this.invoke<{ now: number }>('grade-submission', { action: 'now' });
+    return Number(res.now);
   }
 
   async startSubmission(assignmentId: string) {

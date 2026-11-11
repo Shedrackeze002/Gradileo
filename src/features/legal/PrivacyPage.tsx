@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <>
           <p>
             Gradileo (gradileo.com) is an online, mastery-based learning platform for teachers and learners anywhere in the world. It covers mathematics
-            from Grade 5 to Grade 12, and chemistry and English from Grade 10 to Grade 12. This policy explains what
+            and English from Grade 5 to Grade 12, and chemistry from Grade 10 to Grade 12. This policy explains what
             information Gradileo collects, how it is used and shared, and the choices you have. It applies to the Gradileo website and app.
           </p>
           <p>

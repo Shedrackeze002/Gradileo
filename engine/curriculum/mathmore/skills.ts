@@ -22,6 +22,13 @@ import { DISTRIBUTION_SKILLS } from './gen/distributions.ts';
 import { NUMBERSET_SKILLS } from './gen/numbersets.ts';
 import { OBJECT_SKILLS } from './gen/objects.ts';
 import { RELATION_SKILLS } from './gen/relations.ts';
+import { DISCRETE_SKILLS } from './gen/discrete.ts';
+import { FORMULAE_SKILLS } from './gen/formulae.ts';
+import { CIRCLE_SKILLS } from './gen/circles.ts';
+import { FINANCE_SKILLS } from './gen/finance.ts';
+import { THEOREM_SKILLS } from './gen/theorems.ts';
+import { INFERENCE_SKILLS } from './gen/inference.ts';
+import { VORONOI_SKILLS } from './gen/voronoi.ts';
 
 export const MATHMORE_SKILLS: SkillDef[] = [
   ...STATS_SKILLS,
@@ -47,4 +54,11 @@ export const MATHMORE_SKILLS: SkillDef[] = [
   ...NUMBERSET_SKILLS,
   ...OBJECT_SKILLS,
   ...RELATION_SKILLS,
+  ...DISCRETE_SKILLS,
+  ...FORMULAE_SKILLS,
+  ...CIRCLE_SKILLS,
+  ...FINANCE_SKILLS,
+  ...THEOREM_SKILLS,
+  ...INFERENCE_SKILLS,
+  ...VORONOI_SKILLS,
 ];

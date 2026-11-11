@@ -19,6 +19,7 @@ export default function SignupPage() {
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [resend, setResend] = useState<'idle' | 'busy' | 'sent'>('idle');
   const { setUser } = useAuth();
   const navigate = useNavigate();
   const config = useSignupConfig();
@@ -76,7 +77,28 @@ export default function SignupPage() {
           <Input label="Class code (if you have one)" value={joinCode} onChange={(e) => setJoinCode(e.target.value.toUpperCase())} placeholder="e.g. MATH10" hint="Optional. Without a code, we help you find the right course to study on your own." className="[&_input]:font-mono [&_input]:uppercase [&_input]:tracking-widest" />
         )}
         {error && <p className="rounded-xl bg-bad-soft px-3 py-2 text-sm text-bad-ink">{error}</p>}
-        {info && <p className="rounded-xl bg-good-soft px-3 py-2 text-sm text-good-ink">{info}</p>}
+        {info && (
+          <div className="rounded-xl bg-good-soft px-3 py-2 text-sm text-good-ink" role="status">
+            <p>{info}</p>
+            <button
+              type="button"
+              className="mt-1 font-semibold underline disabled:opacity-60"
+              disabled={resend !== 'idle'}
+              onClick={async () => {
+                setResend('busy');
+                try {
+                  await api().resendConfirmation(email);
+                  setResend('sent');
+                } catch (e) {
+                  setResend('idle');
+                  setError((e as Error).message);
+                }
+              }}
+            >
+              {resend === 'sent' ? 'Sent again. Check your inbox and your spam folder.' : resend === 'busy' ? 'Sending…' : 'No email? Send it again'}
+            </button>
+          </div>
+        )}
         <Button type="submit" className="w-full" size="lg" loading={busy}>
           Create account
         </Button>

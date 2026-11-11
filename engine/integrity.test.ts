@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cleanIntegrity, exitCount, exitsLeft, isLocked, mergeIntegrity, mustSubmit } from './integrity.ts';
+import { cleanIntegrity, exitCount, exitsLeft, isLocked, mergeIntegrity, mustSubmit, overtimeLabel, overtimeSeconds, storedIntegrity } from './integrity.ts';
 
 const ev = (kind: 'tab' | 'fullscreen' | 'camera', n = 1) => Array.from({ length: n }, (_, i) => ({ at: `2026-10-13T10:0${i}:00Z`, kind }));
 
@@ -27,5 +27,26 @@ describe('exam mode records', () => {
     expect(mustSubmit({ ...lock, onMaxExits: 'submit' }, { blurCount: 0, events: ev('tab', 2) })).toBe(true);
     expect(exitsLeft({ lockdown: true, maxExits: null }, { blurCount: 0, events: ev('tab', 9) })).toBeNull();
     expect(isLocked({ lockdown: false, maxExits: 1 }, { blurCount: 0, events: ev('tab', 9) })).toBe(false);
+  });
+
+  it('measures work that came in after the time limit, with a minute of slack', () => {
+    const start = '2026-11-11T10:00:00.000Z';
+    expect(overtimeSeconds(start, 30, '2026-11-11T10:29:00.000Z')).toBe(0);
+    expect(overtimeSeconds(start, 30, '2026-11-11T10:30:45.000Z')).toBe(0);
+    expect(overtimeSeconds(start, 30, '2026-11-11T10:42:00.000Z')).toBe(720);
+    expect(overtimeSeconds(start, null, '2026-11-12T10:00:00.000Z')).toBe(0);
+    expect(overtimeSeconds(null, 30, '2026-11-12T10:00:00.000Z')).toBe(0);
+    expect(overtimeLabel(61)).toBe('1 minute');
+    expect(overtimeLabel(720)).toBe('12 minutes');
+    expect(overtimeLabel(5 * 3600)).toBe('5 hours');
+    expect(overtimeLabel(3 * 86400)).toBe('3 days');
+  });
+
+  it('keeps what only the server writes when a stored record is read, and never from a student’s save', () => {
+    const raw = { blurCount: 1, awaitingStart: true, overtimeSeconds: 720.9 };
+    expect(storedIntegrity(raw)).toEqual({ blurCount: 1, awaitingStart: true, overtimeSeconds: 720 });
+    expect(cleanIntegrity(raw)).toEqual({ blurCount: 1 });
+    expect(mergeIntegrity({ blurCount: 0 }, raw)).toEqual({ blurCount: 1 });
+    expect(storedIntegrity({ blurCount: 0, overtimeSeconds: -5 })).toEqual({ blurCount: 0 });
   });
 });

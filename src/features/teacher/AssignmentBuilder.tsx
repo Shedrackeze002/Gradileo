@@ -157,6 +157,34 @@ function autoTitle(d: Draft): string {
   return label;
 }
 
+/**
+ * The accepted answers of a short-answer question, typed with commas between them. The box keeps
+ * the text as typed: rebuilding it from the list on every key would swallow each comma and space.
+ */
+function AcceptedAnswers({ accepted, onChange }: { accepted: string[]; onChange: (accepted: string[]) => void }) {
+  const [text, setText] = useState(() => accepted.join(', '));
+  return (
+    <Input
+      label="Accepted answers"
+      placeholder="Separate with commas, e.g. hypotenuse, the hypotenuse"
+      value={text}
+      onChange={(e) => {
+        setText(e.target.value);
+        onChange(e.target.value.split(',').map((x) => x.trim()).filter(Boolean));
+      }}
+      hint="Not case-sensitive."
+    />
+  );
+}
+
+/** A choice question without the choices left empty in the editor (students would see blank options). */
+function withoutEmptyChoices(q: CustomQuestion): CustomQuestion {
+  if (!q.choices) return q;
+  const choices = q.choices.filter((c) => c.md.trim());
+  const kept = new Set(choices.map((c) => c.id));
+  return { ...q, choices, correct: Array.isArray(q.correct) ? q.correct.filter((c) => kept.has(c)) : q.correct };
+}
+
 function validate(d: Draft): string[] {
   const errs: string[] = [];
   if (isQuestionType(d.type)) {
@@ -165,8 +193,10 @@ function validate(d: Draft): string[] {
       const n = `Question ${d.content.sections.reduce((s, x) => s + x.count, 0) + i + 1}`;
       if (!q.prompt.trim()) errs.push(`${n} needs a prompt.`);
       if ((q.kind === 'mc' || q.kind === 'multi') && (q.choices ?? []).filter((c) => c.md.trim()).length < 2) errs.push(`${n} needs at least two choices.`);
-      if (q.kind === 'mc' && !q.correct) errs.push(`${n}: mark the correct choice.`);
-      if (q.kind === 'multi' && !(Array.isArray(q.correct) && q.correct.length)) errs.push(`${n}: mark at least one correct choice.`);
+      // An empty choice is left out when the work is saved, so it cannot be the correct one.
+      const filled = new Set((q.choices ?? []).filter((c) => c.md.trim()).map((c) => c.id));
+      if (q.kind === 'mc' && !(typeof q.correct === 'string' && filled.has(q.correct))) errs.push(`${n}: mark the correct choice.`);
+      if (q.kind === 'multi' && !(Array.isArray(q.correct) && q.correct.some((c) => filled.has(c)))) errs.push(`${n}: mark at least one correct choice.`);
       if (q.kind === 'text' && !(q.accepted ?? []).length) errs.push(`${n} needs at least one accepted answer.`);
     });
   }
@@ -286,7 +316,7 @@ export default function AssignmentBuilder() {
       return;
     }
     const content: AssignmentContent = questionType
-      ? { sections: d.content.sections, custom: d.content.custom, shuffle: d.content.shuffle, lessonId: undefined }
+      ? { sections: d.content.sections, custom: d.content.custom.map(withoutEmptyChoices), shuffle: d.content.shuffle, lessonId: undefined }
       : { sections: [], custom: [], lessonId: d.content.lessonId, resourceUrl: d.content.resourceUrl?.trim() || undefined, readingText: d.content.readingText?.trim() || undefined };
     try {
       const saved = await save.mutateAsync({
@@ -407,7 +437,7 @@ export default function AssignmentBuilder() {
                     onClose={() => setAdvising(false)}
                   />
                 )}
-                <Select label="Feedback" value={d.settings.feedback} onChange={(e) => setSettings({ feedback: e.target.value as AssignmentSettings['feedback'] })} hint="Instant feedback lets students check each answer as they go.">
+                <Select label="Feedback" value={d.settings.feedback} onChange={(e) => setSettings({ feedback: e.target.value as AssignmentSettings['feedback'] })} hint={d.settings.feedback === 'after_due' && !d.dueAt ? 'No due date is set, so students will see their results as soon as they submit. Set a due date to hold results back.' : 'Instant feedback lets students check each answer as they go.'}>
                   <option value="instant">Instant, after each question</option>
                   <option value="after_submit">After they submit</option>
                   <option value="after_due">After the due date</option>
@@ -1027,7 +1057,7 @@ function QuestionEditor({ q, number, onChange, onRemove, onRegenerate, skillOpti
         </div>
       )}
       {q.kind === 'manual' && <RubricEditor q={q} onChange={onChange} />}
-      {q.kind === 'text' && <Input label="Accepted answers" placeholder="Separate with commas, e.g. hypotenuse, the hypotenuse" value={(q.accepted ?? []).join(', ')} onChange={(e) => onChange({ ...q, accepted: e.target.value.split(',').map((x) => x.trim()).filter(Boolean) })} hint="Not case-sensitive." />}
+      {q.kind === 'text' && <AcceptedAnswers key={q.id} accepted={q.accepted ?? []} onChange={(accepted) => onChange({ ...q, accepted })} />}
       <div className="flex flex-wrap items-center gap-3">
         {skillOptions.length > 0 && (
           <select className="input h-9 w-auto py-0 text-sm" value={q.skillId ?? ''} onChange={(e) => onChange({ ...q, skillId: e.target.value || undefined })} aria-label="Counts toward skill">

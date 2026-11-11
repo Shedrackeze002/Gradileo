@@ -95,6 +95,10 @@ export interface DataApi {
   signOut(): Promise<void>;
   updateProfile(patch: Partial<Pick<Profile, 'fullName' | 'avatarColor' | 'curriculum'>>): Promise<Profile>;
   changePassword(newPassword: string): Promise<void>;
+  /** Emails a link that lets the owner of the address choose a new password. Never says whether the account exists. */
+  requestPasswordReset(email: string): Promise<void>;
+  /** Sends the "confirm your address" email again to someone who signed up but has not confirmed. */
+  resendConfirmation(email: string): Promise<void>;
   /** A student without an email address may add one (theirs or a parent's) for class reminders. */
   getNotificationEmail(): Promise<NotificationEmail>;
   /** Sends a six-digit code to the address. */
@@ -136,6 +140,8 @@ export interface DataApi {
   getProfile(id: string): Promise<Profile | null>;
   removeStudent(classId: string, studentId: string): Promise<void>;
   createStudentAccounts(classId: string, names: string[]): Promise<NewStudentCredential[]>;
+  /** A teacher gives a student who signs in with a username a new temporary password. */
+  resetStudentPassword(classId: string, studentId: string): Promise<NewStudentCredential>;
 
   // Curriculum
   listPublications(classId: string): Promise<Publication[]>;
@@ -197,6 +203,8 @@ export interface DataApi {
   listSubmissions(filter: SubmissionFilter): Promise<Submission[]>;
   getSubmission(id: string): Promise<Submission | null>;
   startSubmission(assignmentId: string): Promise<Submission>;
+  /** The server's clock, in milliseconds. A time limit counts down against it, not the device's clock. */
+  serverNow(): Promise<number>;
   startPractice(classId: string, skillIds: string[]): Promise<Submission>;
   saveProgress(submissionId: string, patch: { responses: Record<number, StoredResponse>; items?: ItemRef[]; integrity?: Integrity }): Promise<void>;
   submit(submissionId: string, patch: { responses: Record<number, StoredResponse>; items: ItemRef[]; integrity?: Integrity }): Promise<Submission>;

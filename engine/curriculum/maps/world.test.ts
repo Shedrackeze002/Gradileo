@@ -23,11 +23,36 @@ describe('the WAEC, Kenya, South Africa, Cambridge and IB maps', () => {
     expect(getCourse('caps-grade-11')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Exponents and Surds', 'Euclidean Geometry: Circles', 'Finance, Growth and Decay']));
     expect(getCourse('igcse-extended')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Surds', 'Differentiation', 'Transformations and Vectors']));
     expect(getCourse('ib-aa-sl')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Circular Functions', 'Probability Distributions', 'Integration and Kinematics']));
-    expect(getCourse('waec-ss-1')!.gaps).toEqual(expect.arrayContaining(['Number bases', 'Modular arithmetic']));
-    expect(getCourse('kcse-form-4')!.gaps).toContain('Longitude and latitude');
-    expect(getCourse('caps-grade-12')!.gaps).toContain('Annuities, loans and sinking funds');
-    expect(getCourse('ib-ai-sl')!.gaps).toContain('Voronoi diagrams');
+    expect(getCourse('waec-ss-3')!.gaps).toEqual([]);
+    // More Mathematics Topics now teaches every topic these maps listed as a gap.
+    for (const system of ['ng', 'ke', 'za', 'cambridge', 'ib']) for (const c of mappedCourses(system)) expect([c.id, c.gaps]).toEqual([c.id, []]);
     expect(getCourse('kcse-form-1')!.gaps).toEqual([]);
+  });
+
+  it('teach the topics that More Mathematics Topics added for them', () => {
+    const lessons = (id: string) => getCourse(id)!.lessons.map((l) => l.id);
+    expect(getCourse('waec-ss-1')!.gaps).toEqual([]);
+    expect(lessons('waec-ss-1')).toEqual(expect.arrayContaining(['mx-23-1', 'mx-23-2', 'mx-23-3', 'mx-24-1', 'mx-24-2', 'mx-25-1', 'mx-25-2']));
+    expect(lessons('waec-ss-2')).toEqual(expect.arrayContaining(['mx-24-3', 'mx-25-4']));
+    expect(lessons('kcse-form-2')).toEqual(expect.arrayContaining(['mx-25-1', 'mx-25-2', 'mx-25-3', 'mx-25-4']));
+    expect(lessons('kcse-form-4')).toEqual(expect.arrayContaining(['mx-24-3', 'mx-25-6']));
+    expect(lessons('igcse-core')).toContain('mx-24-1');
+    expect(lessons('caps-grade-11')).toEqual(expect.arrayContaining(['mx-25-4', 'mx-26-1']));
+    expect(lessons('caps-grade-12')).toEqual(expect.arrayContaining(['mx-26-2', 'mx-26-3']));
+    expect(lessons('ib-ai-sl')).toEqual(expect.arrayContaining(['mx-26-2', 'mx-26-3']));
+    // Unit 27: the geometry theorems, vector geometry and transformation matrices.
+    expect(lessons('caps-grade-10')).toContain('mx-27-1');
+    expect(lessons('caps-grade-11')).toContain('mx-27-2');
+    expect(lessons('caps-grade-12')).toEqual(expect.arrayContaining(['mx-27-1', 'mx-27-3']));
+    expect(lessons('kcse-form-3')).toContain('mx-27-4');
+    expect(lessons('kcse-form-4')).toContain('mx-27-5');
+    expect(lessons('igcse-extended')).toContain('mx-27-4');
+    for (const id of ['caps-grade-10', 'caps-grade-11', 'kcse-form-3', 'igcse-extended']) expect(getCourse(id)!.gaps).toEqual([]);
+    // Units 28 and 29: statistics, the mid-ordinate rule and Voronoi diagrams.
+    expect(lessons('caps-grade-12')).toContain('mx-28-1');
+    expect(lessons('ib-aa-sl')).toEqual(expect.arrayContaining(['mx-28-1', 'mx-28-2']));
+    expect(lessons('ib-ai-sl')).toEqual(expect.arrayContaining(['mx-28-1', 'mx-28-2', 'mx-28-3', 'mx-28-4', 'mx-28-5', 'mx-29-2']));
+    expect(lessons('kcse-form-4')).toContain('mx-29-1');
   });
 
   it('recommend the course of the learner’s year in their own system', () => {

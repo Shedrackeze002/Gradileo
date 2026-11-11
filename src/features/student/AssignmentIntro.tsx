@@ -14,7 +14,7 @@ import { ReviewList } from '@/components/question/ReviewList.tsx';
 import { MasterySwatch } from '@/components/mastery/Mastery.tsx';
 import { dueLabel, fmtDateTime } from '@/lib/dates.ts';
 import { VideoEmbed } from '../lessons/LessonBlocks.tsx';
-import { bestSubmission, itemCount, percentTone, resultsVisible } from '../shared/derive.ts';
+import { bestSubmission, heldUntilDue, itemCount, percentTone, resultsVisible } from '../shared/derive.ts';
 import { TypeIcon } from '../shared/TypeIcon.tsx';
 import { cn } from '@/lib/cn.ts';
 
@@ -66,8 +66,8 @@ export default function AssignmentIntro() {
         title={as.title}
         subtitle={
           <span className={cn(due.tone === 'overdue' ? 'text-bad-ink' : due.tone === 'urgent' ? 'text-warn-ink' : '')}>
-            {due.text}
-            {as.dueAt ? ` · ${fmtDateTime(as.dueAt)}` : ''}
+            {/* "Due today at 3:00 PM · Fri, Nov 13 at 3:00 PM" adds the date; "Due Fri, Nov 13" would only repeat it. */}
+            {as.dueAt && !/today|tomorrow|Overdue|Was due/.test(due.text) ? `Due ${fmtDateTime(as.dueAt)}` : `${due.text}${as.dueAt ? ` · ${fmtDateTime(as.dueAt)}` : ''}`}
           </span>
         }
       />
@@ -133,7 +133,7 @@ export default function AssignmentIntro() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Eye className="h-4 w-4 text-ink-3" />
-                  {as.settings.feedback === 'instant' ? 'Instant feedback' : as.settings.feedback === 'after_submit' ? 'Results after you submit' : 'Results after the due date'}
+                  {as.settings.feedback === 'instant' ? 'Instant feedback' : heldUntilDue(as) ? 'Results after the due date' : 'Results after you submit'}
                 </li>
               </ul>
             )}

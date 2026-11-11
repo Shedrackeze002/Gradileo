@@ -39,6 +39,24 @@ serve(async (req) => {
   const body = await readJson(req);
   const classId = str(body.classId, 64);
   await requireTeacherOf(db, classId, me);
+
+  // A student who signs in with a username has no email address, so "Forgot password" cannot
+  // reach them: their teacher gives them a new temporary password instead.
+  if (str(body.action, 32) === 'reset_password') {
+    const studentId = str(body.studentId, 64);
+    const { data: enrolled } = await db.from('enrollments').select('student_id').eq('class_id', classId).eq('student_id', studentId).maybeSingle();
+    if (!enrolled) throw new HttpError(403, 'This student is not in your class.');
+    const { data: p } = await db.from('profiles').select('full_name, email, role, username, name_only').eq('id', studentId).maybeSingle();
+    if (!p || p.role !== 'student') throw new HttpError(404, 'Student not found.');
+    if (p.name_only) throw new HttpError(400, 'This student joined with the class link and has no password.');
+    const email = String(p.email ?? '').toLowerCase();
+    if (!email.endsWith(`@${DOMAIN}`)) throw new HttpError(400, 'This student signs in with an email address and can use "Forgot password" on the sign-in page.');
+    const pw = password();
+    const { error } = await db.auth.admin.updateUserById(studentId, { password: pw });
+    if (error) throw new Error(error.message);
+    return { fullName: p.full_name, username: p.username ?? email.slice(0, email.indexOf('@')), password: pw };
+  }
+
   const names = (Array.isArray(body.names) ? body.names : [])
     .map((n: unknown) => str(n, 80).trim())
     .filter(Boolean);
@@ -65,6 +83,10 @@ serve(async (req) => {
         if (/already|exists|registered/i.test(error.message)) continue;
         throw new Error(error.message);
       }
+      // The sign-up trigger runs before the account's app metadata is stored, so it cannot read
+      // the username; write it here, or the roster and the gradebook show the sign-in address.
+      const { error: e1 } = await db.from('profiles').update({ username }).eq('id', data.user.id);
+      if (e1) throw new Error(e1.message);
       const { error: e2 } = await db.from('enrollments').insert({ class_id: classId, student_id: data.user.id });
       if (e2) throw new Error(e2.message);
       students.push({ fullName, username, password: pw });

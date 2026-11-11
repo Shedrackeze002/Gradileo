@@ -22,6 +22,8 @@ import {
   itemFromRef,
   markResponse,
   mergeIntegrity,
+  overtimeLabel,
+  overtimeSeconds,
   processSubmission,
   TYPE_LABEL,
   validateRefs,
@@ -44,6 +46,9 @@ serve(async (req) => {
   const me = await getCaller(req, db);
   const body = await readJson(req);
   switch (body.action) {
+    case 'now':
+      // The page counts a time limit down against this clock, not the device's.
+      return { now: Date.now() };
     case 'start':
       return { submission: await start(db, me, str(body.assignmentId, 64)) };
     case 'submit':
@@ -75,7 +80,15 @@ async function start(db: Db, me: Caller, assignmentId: string): Promise<Row> {
 
   const { data: mine } = await db.from('submissions').select('*').eq('assignment_id', a.id).eq('student_id', me.id);
   const open = (mine ?? []).find((s: Row) => s.status === 'in_progress');
-  if (open) return open;
+  if (open) {
+    // An attempt the teacher reopened starts its clock now, when the student first opens it.
+    // Otherwise a timed quiz reopened in the morning would be out of time by the afternoon.
+    if (!open.integrity?.awaitingStart) return open;
+    const { awaitingStart: _waiting, ...integrity } = open.integrity as Row;
+    const { data: begun, error } = await db.from('submissions').update({ started_at: new Date().toISOString(), integrity }).eq('id', open.id).eq('status', 'in_progress').select().single();
+    if (error) throw new Error(error.message);
+    return begun;
+  }
   // A reopened attempt is kept for the record but does not use up an attempt.
   const used = (mine ?? []).filter((s: Row) => !s.reopened_at).length;
   const attempts = a.settings?.attempts as number | null;
@@ -100,12 +113,12 @@ function nextAttempt(mine: Row[]): number {
 }
 
 /** A new attempt with a fresh seed, so the generated questions are new. */
-function newAttempt(db: Db, a: Row, studentId: string, attempt: number) {
+function newAttempt(db: Db, a: Row, studentId: string, attempt: number, awaitingStart = false) {
   const seed = freshSeed();
   const items = isQuestionType(a.type as AssignmentType) ? buildItemRefs(a.content as AssignmentContent, seed) : [];
   return db
     .from('submissions')
-    .insert({ assignment_id: a.id, class_id: a.class_id, student_id: studentId, attempt, status: 'in_progress', seed, items, responses: {} })
+    .insert({ assignment_id: a.id, class_id: a.class_id, student_id: studentId, attempt, status: 'in_progress', seed, items, responses: {}, integrity: awaitingStart ? { blurCount: 0, awaitingStart: true } : { blurCount: 0 } })
     .select()
     .single();
 }
@@ -163,6 +176,9 @@ async function submit(db: Db, me: Caller, body: Record<string, unknown>): Promis
   const responses = cleanResponses(body.responses);
   // Exam mode records only grow; the teacher's extra allowance comes from the stored record.
   const integrity = mergeIntegrity(s.integrity, body.integrity ?? { ...cleanIntegrity(s.integrity), blurCount: Number(body.blurCount ?? 0) });
+  // The page ends a timed attempt itself; the server's clock says whether it really came in on time.
+  const over = a ? overtimeSeconds(s.started_at, a.settings?.timeLimitMinutes, now) : 0;
+  if (over) integrity.overtimeSeconds = over;
   const late = !!a?.due_at && new Date(now) > new Date(a.due_at);
 
   if (a && !isQuestionType(a.type as AssignmentType)) {
@@ -173,7 +189,7 @@ async function submit(db: Db, me: Caller, body: Record<string, unknown>): Promis
       .select()
       .single();
     if (error) throw new Error(error.message);
-    if (late) await tellTeacher(db, a, me, data);
+    if (late || over) await tellTeacher(db, a, me, data);
     return data;
   }
 
@@ -256,7 +272,7 @@ async function submit(db: Db, me: Caller, body: Record<string, unknown>): Promis
   }
 
   if (a) {
-    if (saved.pending_manual > 0 || saved.late || integrity.autoSubmitted) await tellTeacher(db, a, me, saved);
+    if (saved.pending_manual > 0 || saved.late || integrity.autoSubmitted || integrity.overtimeSeconds) await tellTeacher(db, a, me, saved);
     background(autopilot(db, a.class_id, me.id));
   } else {
     // Self-paced students have no teacher: the AI tutor may assign targeted practice after their own
@@ -274,7 +290,7 @@ async function tellTeacher(db: Db, a: Row, me: Caller, s: Row) {
     {
       user_id: c.teacher_id,
       kind: 'submission',
-      title: `${me.full_name} submitted ${a.title}${s.integrity?.autoSubmitted ? ' (automatically, after leaving exam mode)' : s.late ? ' (late)' : ''}`,
+      title: `${me.full_name} submitted ${a.title}${s.integrity?.autoSubmitted ? ' (automatically, after leaving exam mode)' : s.integrity?.overtimeSeconds ? ` (${overtimeLabel(s.integrity.overtimeSeconds)} after the time limit)` : s.late ? ' (late)' : ''}`,
       body: s.pending_manual > 0 ? `${score} · ${s.pending_manual} to grade` : score,
       link: s.pending_manual > 0 ? `/t/c/${c.id}/submissions/${s.id}` : `/t/c/${c.id}/assignments/${a.id}`,
       assignment_id: a.id,
@@ -396,7 +412,7 @@ async function reopen(db: Db, me: Caller, body: Record<string, unknown>): Promis
   const now = new Date().toISOString();
   const { data: marked } = await db.from('submissions').update({ reopened_at: now, reopened_by: me.id }).eq('id', s.id).is('reopened_at', null).select('id').maybeSingle();
   if (!marked) throw new HttpError(409, 'This attempt was already reopened.');
-  const { data: fresh, error } = await newAttempt(db, a, s.student_id, nextAttempt(mine ?? []));
+  const { data: fresh, error } = await newAttempt(db, a, s.student_id, nextAttempt(mine ?? []), true);
   if (error || !fresh) {
     // Put the old attempt back as it was, so the student is never left with nothing that counts.
     await db.from('submissions').update({ reopened_at: null, reopened_by: null }).eq('id', s.id);

@@ -1,8 +1,9 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider, useAuth } from './features/auth/AuthProvider.tsx';
 import { RequireAdmin, RequireRole } from './features/auth/RequireRole.tsx';
+import { onRecovery, recoveryPending } from './features/auth/recovery.ts';
 import { AppShell } from './components/layout/AppShell.tsx';
 import { PageSpinner, ToastProvider } from './components/ui/index.ts';
 import { ErrorBoundary } from './components/layout/ErrorBoundary.tsx';
@@ -10,6 +11,8 @@ import { ErrorBoundary } from './components/layout/ErrorBoundary.tsx';
 const Landing = lazy(() => import('./features/landing/LandingPage.tsx'));
 const Login = lazy(() => import('./features/auth/LoginPage.tsx'));
 const Signup = lazy(() => import('./features/auth/SignupPage.tsx'));
+const ForgotPassword = lazy(() => import('./features/auth/ForgotPasswordPage.tsx'));
+const ResetPassword = lazy(() => import('./features/auth/ResetPasswordPage.tsx'));
 const JoinWithName = lazy(() => import('./features/auth/JoinWithNamePage.tsx'));
 const Privacy = lazy(() => import('./features/legal/PrivacyPage.tsx'));
 const Terms = lazy(() => import('./features/legal/TermsPage.tsx'));
@@ -89,6 +92,21 @@ function HomeRedirect() {
   return <Navigate to={user.role === 'teacher' ? '/t' : '/s'} replace />;
 }
 
+/** Someone who arrived by a "choose a new password" link goes to that page, wherever the link landed. */
+function RecoveryRedirect() {
+  const { user } = useAuth();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const go = () => {
+      if (user && recoveryPending() && pathname !== '/reset-password') navigate('/reset-password', { replace: true });
+    };
+    go();
+    return onRecovery(go);
+  }, [user, pathname, navigate]);
+  return null;
+}
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -96,11 +114,14 @@ export default function App() {
         <AuthProvider>
           <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
             <ErrorBoundary>
+              <RecoveryRedirect />
               <Suspense fallback={<PageSpinner />}>
                 <Routes>
                   <Route path="/" element={<HomeRedirect />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
                   <Route path="/join/:code" element={<JoinWithName />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />

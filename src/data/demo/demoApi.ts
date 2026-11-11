@@ -21,7 +21,7 @@ import { classMastery, draftAssignment, draftContext, normalizeDraftRequest, nor
 import { markRequestFor, suggestMark, type MarkResult } from '@engine/ai/marking.ts';
 import type { SkillState } from '@engine/mastery.ts';
 import type { RubricLevels } from '@engine/rubric.ts';
-import { exitCount, isLocked, mergeIntegrity, type Integrity } from '@engine/integrity.ts';
+import { exitCount, isLocked, mergeIntegrity, overtimeLabel, overtimeSeconds, type Integrity } from '@engine/integrity.ts';
 import { DEMO_EMAIL_CODE } from './emailCode.ts';
 import type { AiConfigStatus, DataApi, SignUpInput, SubmissionFilter, TutorReply } from '../api.ts';
 import type {
@@ -81,6 +81,7 @@ import { uid, joinCode as makeJoinCode, friendlyPassword } from '@/lib/ids.ts';
 import { cleanNamePart, sameName } from '@/lib/names.ts';
 import { YOUTUBE_ID } from '@/video/youtube.ts';
 import { duplicateClass, duplicateClassMessage } from '../classRules.ts';
+import { STUDENT_EMAIL_DOMAIN } from '@/config.ts';
 
 const SESSION_KEY = 'educore-demo-session';
 const COLORS = ['#6a43e3', '#2a78d6', '#0c8c4a', '#b45309', '#d03b3b', '#c2417a', '#0e7c86', '#7a5af8'];
@@ -321,6 +322,15 @@ export class DemoApi implements DataApi {
     if (newPassword.length < 6) throw new Error('Use at least 6 characters.');
     this.me().password = newPassword;
     this.persist();
+  }
+
+  // The demo sends no email, so there is no link to follow.
+  async requestPasswordReset(_email: string) {
+    await delay(250);
+  }
+
+  async resendConfirmation(_email: string) {
+    await delay(250);
   }
 
   // The demo sends no email: the code is always DEMO_EMAIL_CODE, and the address lasts until the
@@ -1147,6 +1157,10 @@ export class DemoApi implements DataApi {
     return s;
   }
 
+  async serverNow() {
+    return Date.now();
+  }
+
   async startSubmission(assignmentId: string) {
     const me = this.me();
     const a = this.db.assignments.find((x) => x.id === assignmentId);
@@ -1154,7 +1168,16 @@ export class DemoApi implements DataApi {
     if (me.role !== 'student') throw new Error('Only students can start assignments.');
     const mine = this.db.submissions.filter((s) => s.assignmentId === a.id && s.studentId === me.id);
     const open = mine.find((s) => s.status === 'in_progress');
-    if (open) return open;
+    if (open) {
+      // An attempt the teacher reopened starts its clock when the student first opens it.
+      if (open.integrity?.awaitingStart) {
+        const { awaitingStart: _waiting, ...integrity } = open.integrity;
+        open.integrity = integrity;
+        open.startedAt = nowIso();
+        this.persist();
+      }
+      return open;
+    }
     const done = mine.filter((s) => s.status !== 'in_progress' && !s.reopenedAt).length;
     if (a.settings.attempts && done >= a.settings.attempts) throw new Error('You have used all of your attempts.');
     if (a.dueAt && new Date(a.dueAt) < new Date() && !a.allowLate) throw new Error('This assignment is closed.');
@@ -1162,7 +1185,7 @@ export class DemoApi implements DataApi {
   }
 
   /** A new attempt with a fresh seed, so the generated questions are new. */
-  private newAttempt(a: Assignment, studentId: string, attempt: number): Submission {
+  private newAttempt(a: Assignment, studentId: string, attempt: number, awaitingStart = false): Submission {
     const seed = freshSeed();
     const s: Submission = {
       id: uid('s'),
@@ -1183,7 +1206,7 @@ export class DemoApi implements DataApi {
       pendingManual: 0,
       late: false,
       feedback: null,
-      integrity: { blurCount: 0 },
+      integrity: awaitingStart ? { blurCount: 0, awaitingStart: true } : { blurCount: 0 },
     };
     this.db.submissions.push(s);
     this.persist();
@@ -1256,6 +1279,8 @@ export class DemoApi implements DataApi {
     const a = s.assignmentId ? this.db.assignments.find((x) => x.id === s.assignmentId) ?? null : null;
     const now = nowIso();
     s.integrity = mergeIntegrity(s.integrity, patch.integrity ?? s.integrity);
+    const over = a ? overtimeSeconds(s.startedAt, a.settings.timeLimitMinutes, now) : 0;
+    if (over) s.integrity.overtimeSeconds = over;
     if (a && !isQuestionType(a.type)) {
       Object.assign(s, { status: 'graded', submittedAt: now, score: 1, maxScore: 1, percent: 100, late: !!a.dueAt && new Date(now) > new Date(a.dueAt), responses: patch.responses });
       this.afterSubmit(s, a);
@@ -1297,10 +1322,10 @@ export class DemoApi implements DataApi {
 
   /** Tell the teacher about work that needs them: written answers to grade, or late work. */
   private afterSubmit(s: Submission, a: Assignment) {
-    if (!s.pendingManual && !s.late && !s.integrity.autoSubmitted) return;
+    if (!s.pendingManual && !s.late && !s.integrity.autoSubmitted && !s.integrity.overtimeSeconds) return;
     const c = this.db.classes.find((x) => x.id === a.classId)!;
     const student = this.db.users.find((u) => u.id === s.studentId)!;
-    this.notify(c.teacherId, 'submission', `${student.fullName} submitted ${a.title}${s.integrity.autoSubmitted ? ' (automatically, after leaving exam mode)' : s.late ? ' (late)' : ''}`, s.percent !== null && isQuestionType(a.type) ? `Score: ${Math.round(s.percent)}%${s.pendingManual ? ` · ${s.pendingManual} to grade` : ''}` : 'Completed.', s.pendingManual ? `/t/c/${c.id}/submissions/${s.id}` : `/t/c/${c.id}/assignments/${a.id}`, a.id);
+    this.notify(c.teacherId, 'submission', `${student.fullName} submitted ${a.title}${s.integrity.autoSubmitted ? ' (automatically, after leaving exam mode)' : s.integrity.overtimeSeconds ? ` (${overtimeLabel(s.integrity.overtimeSeconds)} after the time limit)` : s.late ? ' (late)' : ''}`, s.percent !== null && isQuestionType(a.type) ? `Score: ${Math.round(s.percent)}%${s.pendingManual ? ` · ${s.pendingManual} to grade` : ''}` : 'Completed.', s.pendingManual ? `/t/c/${c.id}/submissions/${s.id}` : `/t/c/${c.id}/assignments/${a.id}`, a.id);
   }
 
   /** If autopilot is on, let the AI assistant assign targeted practice for a weak skill. */
@@ -1359,7 +1384,7 @@ export class DemoApi implements DataApi {
     const mine = this.db.submissions.filter((x) => x.assignmentId === a.id && x.studentId === s.studentId);
     if (mine.some((x) => x.status === 'in_progress')) throw new Error('The student already has an attempt in progress.');
     s.reopenedAt = nowIso();
-    const fresh = this.newAttempt(a, s.studentId, mine.reduce((m, x) => Math.max(m, x.attempt), 0) + 1);
+    const fresh = this.newAttempt(a, s.studentId, mine.reduce((m, x) => Math.max(m, x.attempt), 0) + 1, true);
     this.notify(s.studentId, 'announcement', `Your teacher reopened ${a.title}`, 'You can start again with a new set of questions.', `/s/work/${a.id}`, a.id);
     this.persist();
     return { ...fresh };
@@ -1874,6 +1899,16 @@ export class DemoApi implements DataApi {
     if (disabled && u.platformAdmin && !this.db.users.some((x) => x.platformAdmin && !x.disabled && x.id !== userId)) throw new Error('Gradileo needs at least one administrator.');
     u.disabled = disabled;
     this.audit(disabled ? 'user_disabled' : 'user_enabled', u.id);
+  }
+
+  async resetStudentPassword(classId: string, studentId: string): Promise<NewStudentCredential> {
+    this.requireTeacherOf(classId);
+    if (!this.db.enrollments.some((e) => e.classId === classId && e.studentId === studentId)) throw new Error('This student is not in your class.');
+    const u = this.user(studentId);
+    if (!u.username || !u.email.toLowerCase().endsWith(`@${STUDENT_EMAIL_DOMAIN}`)) throw new Error('This student signs in with an email address and can use "Forgot password" on the sign-in page.');
+    u.password = friendlyPassword();
+    this.persist();
+    return { fullName: u.fullName, username: u.username, password: u.password };
   }
 
   async adminResetPassword(userId: string) {

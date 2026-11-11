@@ -115,3 +115,53 @@ test('exam mode records exits, locks the attempt at the limit, and the teacher u
   await expect(teacher.getByText('Left exam mode 2×')).toBeVisible();
   expect([...teacherErrors, ...studentErrors]).toEqual([]);
 });
+
+test('accepted answers take commas, empty choices are left out, and an answer given just before leaving is kept', async ({ page }) => {
+  const errors = trackErrors(page);
+  const title = `Own questions ${Date.now() % 100000}`;
+
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/c/c_math10a/assignments/new?type=homework');
+  await page.getByLabel('Title').fill(title);
+  // Typed key by key, as a teacher does: the box used to swallow every comma and space.
+  await page.getByRole('button', { name: 'Short answer', exact: true }).click();
+  await page.getByPlaceholder(/Explain why/).last().fill('Name the longest side of a right triangle.');
+  await page.getByLabel('Accepted answers').pressSequentially('hypotenuse, the hypotenuse');
+  await expect(page.getByLabel('Accepted answers')).toHaveValue('hypotenuse, the hypotenuse');
+  // A choice question with two of its four choices left empty.
+  await page.getByRole('button', { name: 'Choice', exact: true }).click();
+  await page.getByPlaceholder(/Explain why/).last().fill('Which is larger?');
+  await page.getByPlaceholder('Choice A').fill('one half');
+  await page.getByPlaceholder('Choice B').fill('one third');
+  await page.getByLabel('Mark choice 1 correct').click();
+  await page.getByRole('button', { name: 'Publish & notify students' }).click();
+  await page.waitForURL(/\/assignments\/a_/);
+  const assignmentId = page.url().split('/assignments/')[1];
+  await signOut(page);
+
+  await signInDemo(page, 'Student');
+  await page.goto(`/s/work/${assignmentId}`);
+  await page.getByRole('button', { name: /^Start/ }).click();
+  await page.waitForURL(/\/take$/);
+  // A student who cannot answer can still move on: the blank question offers a way past it.
+  await expect(page.getByRole('button', { name: 'Check answer' })).toBeDisabled();
+  await expect(page.getByRole('button', { name: /Skip for now/ })).toBeVisible();
+  // Answer and leave at once with the X: the answer is saved, not lost with the pending autosave.
+  await page.locator('main').getByRole('textbox').first().fill('The Hypotenuse');
+  await page.getByRole('button', { name: 'Save and exit' }).click();
+  await page.waitForURL(/\/s\/work\/a_[^/]+$/);
+  await page.getByRole('button', { name: /^Continue/ }).click();
+  await page.waitForURL(/\/take$/);
+  await page.getByRole('button', { name: 'Question 1', exact: true }).click();
+  await expect(page.locator('main').getByRole('textbox').first()).toHaveValue('The Hypotenuse');
+  await page.getByRole('button', { name: 'Check answer' }).click();
+  await expect(page.getByText('Correct!')).toBeVisible();
+  // Only the two choices the teacher wrote are offered.
+  await page.getByRole('button', { name: 'Question 2', exact: true }).click();
+  await expect(page.getByRole('radio')).toHaveCount(2);
+  // On the last question, left blank, the way on is Finish.
+  await expect(page.getByRole('button', { name: /Skip for now/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Finish' })).toBeVisible();
+
+  expect(errors).toEqual([]);
+});

@@ -100,6 +100,32 @@ items ship or decisions change.
   only on the last question, the footer reminds students that answers save automatically, and
   the confirmation says plainly that submitting ends the homework or exam and answers can no
   longer be changed ("Keep working" or "Yes, submit my exam").
+- End-to-end test of the live site (11 November 2026, the owner's request), with test accounts
+  in a test class, every role and flow, on desktop, phones and an iPad. Fixed from it: a reopened
+  attempt's clock now starts when the student first opens it (it started when the teacher pressed
+  Reopen, so a timed quiz or exam opened later was submitted empty at once); an answer given just
+  before leaving the work is saved (the pending autosave was dropped); the accepted-answers box
+  of a short-answer question takes commas and spaces as typed; empty choices are left out of a
+  choice question; leaving present mode closes a live question left open; a new student's study
+  coach no longer says they are "secure on what has been taught"; students a teacher creates
+  show their username, not the internal sign-in address; and the landing page says English
+  covers Grades 5 to 12.
+- The rest of the end-to-end test's findings (11 November 2026; the owner: "we need to fix every
+  issue found"). Sign-in has "Forgot password?", which emails a link to choose a new password
+  (`/forgot-password`, `/reset-password`), and "Send the confirmation email again"; a teacher
+  gives a student who signs in with a username a new temporary password from the student's page.
+  The server's clock now checks a time limit: work that comes in more than a minute after it is
+  still accepted (rejecting it would lose the answers) but is marked "over the time limit" for
+  the teacher, who is notified, and the countdown runs against the server's clock, not the
+  device's. Work whose results wait for the due date but has no due date shows them on
+  submission (they stayed hidden for good). With instant feedback, a blank question offers
+  "Skip for now" (or Finish on the last one). Wording: the due date is no longer printed twice,
+  the teacher's own questions are titled by their text in the review, AI reports name lessons by
+  title instead of their code, the Browse by topic page adds the learner's own year to a course
+  name, "Hardest skills" says when it starts listing, and Terms and Privacy say English covers
+  Grades 5 to 12. A student waiting to be let into a class no longer gets a refused request on
+  Settings. Found while fixing: onboarding offered English only from Grade 9; it now starts at
+  Grade 5.
 
 ## Next, in order
 
@@ -791,6 +817,33 @@ items ship or decisions change.
      variable; Spearman's rank correlation; the chi-squared tests; the t-test; and Voronoi
      diagrams. Next: fill these gaps in More Mathematics Topics, the most shared first, then their
      videos and tutor recordings.
+   - Built (11 November 2026): **the first 16 gap lessons**, in four new units of More Mathematics
+     Topics with 32 question generators. Unit 23: number bases, modular arithmetic and truth
+     tables. Unit 24: changing the subject of a formula, joint and partial variation, and linear
+     programming. Unit 25: segments of a circle, frustums, Heron's formula, cyclic quadrilaterals
+     and the alternate segment theorem, intersecting chords and common tangents, and longitude and
+     latitude. Unit 26: nominal and effective interest rates, annuities and sinking funds, present
+     value and loans, and shares and stocks. The maps teach them under their own unit names, so
+     WASSCE SS 1 to SS 3, KCSE Form 1 and Form 2, and IGCSE Core now list no gaps. Gaps still
+     listed: vector geometry (KCSE Form 3, IGCSE Extended); matrices and transformations and the
+     mid-ordinate rule (KCSE Form 4); the midpoint and proportionality theorems, the angle of
+     inclination, the tangent to a circle and the least squares regression line (CAPS); the
+     regression line and expected value (IB), and Voronoi diagrams, Spearman's rank correlation,
+     the chi-squared tests and the t-test (IB AI SL). Next: these lessons, then the videos and
+     tutor recordings for Units 23 to 26 and after.
+   - Built (11 November 2026): **five more gap lessons**, Unit 27 of More Mathematics Topics, with
+     10 question generators: the midpoint and proportionality theorems, the angle of inclination
+     of a line, the equation of a tangent to a circle, the ratio theorem and collinear points, and
+     matrices and transformations. CAPS Grades 10 and 11, KCSE Form 3 and IGCSE Extended now list
+     no gaps. Gaps still listed: the mid-ordinate rule (KCSE Form 4); the least squares regression
+     line (CAPS Grade 12); the regression line and expected value (IB), and Voronoi diagrams,
+     Spearman's rank correlation, the chi-squared tests and the t-test (IB AI SL). Next: a
+     statistics unit for these, then the videos and tutor recordings for Units 23 to 27.
+   - Built (11 November 2026): **the last seven gap lessons**, Units 28 and 29 of More Mathematics
+     Topics, with 14 question generators: the least squares regression line, expected value,
+     Spearman's rank correlation coefficient, the chi-squared tests, the t-test for two means, the
+     mid-ordinate rule and Voronoi diagrams. Every course in the WAEC, KCSE, CAPS, IGCSE and IB
+     maps now lists no gaps. Next: the videos and tutor recordings for Units 23 to 29.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
@@ -1201,8 +1254,12 @@ items ship or decisions change.
   Grade 7 text and the Grades 6 to 9 scope and sequence published by the Alberta Professional
   Learning Consortium) and Alberta Education's fact sheet. Still to do: check the Grades 8 and 9
   wording against new LearnAlberta when the final curriculum is published (its site refuses the
-  build environment), add videos and tutor recordings for the ten lessons, and in September 2027
-  make the new courses the first recommendation in Alberta.
+  build environment), and in September 2027 make the new courses the first recommendation in
+  Alberta. Videos (11 November 2026): one explainer for each of the ten lessons
+  (`src/content/mathmore/videos/mx-20-1.ts` to `mx-22-3.ts` and `mx-1-7.ts`), rendered and in
+  Drive (`Gradileo videos/More Topics/`); the Tutor voice workflow records the lessons after each
+  merge. A proposal for the next subject (the chemistry strand of junior science, or others) is
+  with the owner, and nothing is built until the owner chooses.
 - Done: the *Deploy Supabase backend* workflow works. Its secrets (`SUPABASE_ACCESS_TOKEN`,
   `SUPABASE_PROJECT_ID` and `SUPABASE_DB_PASSWORD`) were added on 14 October 2026. The first run
   failed at `supabase link`, which reads the project's secret API keys, so the workflow no longer
