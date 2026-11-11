@@ -100,7 +100,7 @@ export const TOPICS: Topic[] = [
   t(M, 'Mechanics', 'moments', 'Moments', ['mx-13-6']),
 
   // Chemistry.
-  t(C, 'Matter and bonding', 'matter', 'Matter and the particle model', ['c10-u1']),
+  t(C, 'Matter and bonding', 'matter', 'Matter and the particle model', ['c7-u1', 'c7-u2', 'c7-u3', 'c7-u4', 'c10-u1']),
   t(C, 'Matter and bonding', 'atoms', 'Atoms and the periodic table', ['c10-u2', 'cx-5-1', 'cx-5-2', 'cx-7-1', 'cx-7-2', 'cx-u8', 'cx-u11']),
   t(C, 'Matter and bonding', 'bonding', 'Bonding, names and formulas', ['c10-u3', 'c20-u1', 'cx-5-3', 'cx-7-3']),
   t(C, 'Matter and bonding', 'gases', 'Gases', ['c20-u2']),

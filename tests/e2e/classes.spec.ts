@@ -10,11 +10,11 @@ test('a teacher cannot add a course twice, and deletes a class made by mistake',
   await page.waitForURL(/\/t\/c\/c_/);
   const classUrl = page.url().replace(/\/$/, '');
 
-  // Adding Chemistry 10 again is refused, unless it is another section of the course.
+  // Adding Chemistry 7 again is refused, unless it is another section of the course.
   await page.goto('/t/new-class');
   await page.getByRole('tab', { name: 'Chemistry' }).click();
   await expect(page.getByText('You have this class')).toBeVisible();
-  await expect(page.getByRole('alert').getByText(/You already have Chemistry 10/)).toBeVisible();
+  await expect(page.getByRole('alert').getByText(/You already have Chemistry 7/)).toBeVisible();
   await expect(page.getByRole('button', { name: 'Create class' })).toBeDisabled();
   await page.getByLabel('Section or period').fill('Period 3');
   await expect(page.getByRole('button', { name: 'Create class' })).toBeEnabled();
@@ -25,7 +25,7 @@ test('a teacher cannot add a course twice, and deletes a class made by mistake',
   const dialog = page.getByRole('dialog');
   await expect(dialog.getByText('Nobody has joined this class yet.')).toBeVisible();
   await expect(dialog.getByRole('button', { name: 'Delete for good' })).toBeDisabled();
-  await dialog.getByLabel('Type Chemistry 10 to confirm').fill('Chemistry 10');
+  await dialog.getByLabel('Type Chemistry 7 to confirm').fill('Chemistry 7');
   await dialog.getByRole('button', { name: 'Delete for good' }).click();
   await page.waitForURL(/\/t\?all/);
   await expect(page.getByText('Class deleted')).toBeVisible();

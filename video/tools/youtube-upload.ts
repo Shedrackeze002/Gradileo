@@ -70,6 +70,7 @@ const MADE_FOR_KIDS: Record<string, boolean> = {
   'math-7': false,
   'math-8': false,
   'math-9': false,
+  'chem-7': false,
   'chem-10': false,
   'chem-20': false,
   'chem-30': false,
