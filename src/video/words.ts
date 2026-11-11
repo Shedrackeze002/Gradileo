@@ -44,9 +44,10 @@ export function speechText(say: string): string {
   // final "s" ("Tamar"). Of the rhetorical figures,
   // "synecdoche" comes out "scenic-dodge" and "litotes" "LIT-oats". Owen's "pararhyme" loses
   // its second "r" ("para-hime"). A news report's "five Ws" comes out "five W-tecas", so it is
-  // said "double-yous".
+  // said "double-yous". "Modulo" comes out "majulo", so it is spelled "mod-yoo-low".
   return words
     .replace(/\bWs\b/g, 'double-yous')
+    .replace(/\b([Mm])odulo\b/g, '$1od-yoo-low')
     .replace(/\b([Ll])ead\b(?=\s*\(|\s(?:two|four|one|ions?|atoms?|nitrate|iodide|chloride|bromide|oxide|sulfate|sulfide|carbonate|hydroxide|acetate|or nitrate|has|in)\b)/g, '$1ed')
     .replace(/\b(of|as|and) lead\b/g, '$1 led')
     .replace(/\b(GST|HST|EI)\b/g, (m) => m.split('').join(' '))

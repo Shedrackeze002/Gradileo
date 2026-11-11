@@ -27,8 +27,8 @@ test('a teacher makes a Grade 11 Chemistry class from the Chemistry tab and teac
   await page.goto('/t/new-class');
   await expect(page.getByRole('button', { name: /^Grade 11 Chemistry/ })).toHaveCount(0);
   await page.getByRole('tab', { name: 'Chemistry' }).click();
-  // The tab opens on the first chemistry course, Grade 10; Grade 11 is beside it.
-  await expect(page.getByLabel('Class name')).toHaveValue('Chemistry 10');
+  // The tab opens on the first chemistry course, Grade 7; Grade 11 is among the others.
+  await expect(page.getByLabel('Class name')).toHaveValue('Chemistry 7');
   await page.getByRole('button', { name: /^Grade 11 Chemistry/ }).click();
   await expect(page.getByLabel('Class name')).toHaveValue('Chemistry 11');
   await page.getByRole('button', { name: 'Create class' }).click();
@@ -68,5 +68,21 @@ test('a Grade 10 student who chooses chemistry starts Grade 10 Chemistry, and a 
   await page.getByRole('button', { name: 'Start Chemistry 10' }).click();
   await page.waitForURL(/\/s$/);
   await expect(page.getByText('Grade 10 Chemistry · Self-paced with your AI tutor')).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a teacher makes a Chemistry 7 class and teaches its chromatography lesson', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'Chemistry' }).click();
+  await page.getByRole('button', { name: /^Grade 7 Chemistry/ }).click();
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/lessons/c7-4-3`);
+  await expect(page.getByRole('heading', { name: 'Paper chromatography', exact: true })).toBeVisible();
+  await expect(page.locator('svg[role="img"][aria-label*="chromatogram"]').first()).toBeVisible();
+  await expect(page.getByText(/Check your understanding · /).first()).toBeVisible();
+  expect(await page.locator('.katex-error').count()).toBe(0);
   expect(errors).toEqual([]);
 });
