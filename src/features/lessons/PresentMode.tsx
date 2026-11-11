@@ -223,6 +223,11 @@ export default function PresentMode() {
   const live = useLiveQuestion(classId);
   const openLive = useOpenLiveQuestion(classId);
   const closeLive = useCloseLiveQuestion(classId);
+  // For leaving present mode, which must not be rebuilt each time an answer arrives.
+  const liveRef = useRef(live.data);
+  liveRef.current = live.data;
+  const closeLiveRef = useRef(closeLive.mutate);
+  closeLiveRef.current = closeLive.mutate;
   const [liveSlot, setLiveSlot] = useState<{ key: string; slideId: string } | null>(null);
   const liveOpen = live.data?.status === 'open' ? live.data : null;
   const liveCount = useLiveAnswers(liveOpen?.id, true).data?.length ?? 0;
@@ -296,6 +301,8 @@ export default function PresentMode() {
   }, [slide, build, step, ix, slides, goTo]);
 
   const exit = useCallback(() => {
+    // A question left open would stay on every student's screen after the lesson.
+    if (liveRef.current?.status === 'open') closeLiveRef.current(liveRef.current.id);
     forgetPlace(keepKey);
     if (document.fullscreenElement) void document.exitFullscreen();
     navigate(`/t/c/${classId}/lessons/${lessonId}`);

@@ -100,6 +100,18 @@ items ship or decisions change.
   only on the last question, the footer reminds students that answers save automatically, and
   the confirmation says plainly that submitting ends the homework or exam and answers can no
   longer be changed ("Keep working" or "Yes, submit my exam").
+- End-to-end test of the live site (11 November 2026, the owner's request), with test accounts
+  in a test class, every role and flow, on desktop, phones and an iPad. Fixed from it: a reopened
+  attempt's clock now starts when the student first opens it (it started when the teacher pressed
+  Reopen, so a timed quiz or exam opened later was submitted empty at once); an answer given just
+  before leaving the work is saved (the pending autosave was dropped); the accepted-answers box
+  of a short-answer question takes commas and spaces as typed; empty choices are left out of a
+  choice question; leaving present mode closes a live question left open; a new student's study
+  coach no longer says they are "secure on what has been taught"; students a teacher creates
+  show their username, not the internal sign-in address; and the landing page says English
+  covers Grades 5 to 12. Still open from the test, for the owner to decide: a "Forgot password"
+  link (there is none; only an administrator can reset a password), a way to send the
+  confirmation email again, and a time limit checked by the server as well as the page.
 
 ## Next, in order
 

@@ -170,7 +170,9 @@ export function analyzeStudent(ctx: StudentContext): InsightData {
     actions,
     studentNote: weak.length
       ? `Nice work so far, ${first}! Your next step is a short practice set on ${weak[0].name}. Use the hints and read the worked solution whenever you miss one — that is how mastery is built.`
-      : `Great work, ${first}! You are secure on what has been taught. Keep your skills sharp with a quick review and try a challenge set.`,
+      : attempted.length
+        ? `Great work, ${first}! You are secure on what has been taught. Keep your skills sharp with a quick review and try a challenge set.`
+        : `Welcome, ${first}! Open your first lesson, then try a short practice set on it. A few questions each day is the quickest way to build mastery.`,
   };
 }
 

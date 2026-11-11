@@ -186,7 +186,8 @@ export const toSubmission = (r: Row): Submission => ({
   pendingManual: r.pending_manual ?? 0,
   late: r.late,
   feedback: r.feedback,
-  integrity: cleanIntegrity(r.integrity),
+  // The server's "reopened, not opened yet" mark is kept for display; the player cleans it away before saving.
+  integrity: { ...cleanIntegrity(r.integrity), ...(r.integrity?.awaitingStart === true ? { awaitingStart: true } : {}) },
   masteryChanges: r.mastery_changes ?? undefined,
   reopenedAt: r.reopened_at ?? null,
 });
