@@ -21,9 +21,17 @@ export function bestSubmission(subs: Submission[]): Submission | null {
   return done.reduce((a, b) => ((b.percent ?? -1) > (a.percent ?? -1) ? b : a));
 }
 
+/**
+ * Results are held back until the due date. Work with no due date has nothing to wait for, so its
+ * results show once it is submitted (they used to stay hidden for good).
+ */
+export function heldUntilDue(a: Pick<Assignment, 'settings' | 'dueAt'>): boolean {
+  return a.settings.feedback === 'after_due' && !!a.dueAt;
+}
+
 export function resultsVisible(a: Assignment, now = new Date()): boolean {
-  if (a.settings.feedback !== 'after_due') return true;
-  return !!a.dueAt && new Date(a.dueAt) < now;
+  if (!heldUntilDue(a)) return true;
+  return new Date(a.dueAt!) < now;
 }
 
 export function studentWork(assignments: Assignment[], submissions: Submission[], now = new Date()): StudentWork[] {

@@ -109,9 +109,23 @@ items ship or decisions change.
   choice question; leaving present mode closes a live question left open; a new student's study
   coach no longer says they are "secure on what has been taught"; students a teacher creates
   show their username, not the internal sign-in address; and the landing page says English
-  covers Grades 5 to 12. Still open from the test, for the owner to decide: a "Forgot password"
-  link (there is none; only an administrator can reset a password), a way to send the
-  confirmation email again, and a time limit checked by the server as well as the page.
+  covers Grades 5 to 12.
+- The rest of the end-to-end test's findings (11 November 2026; the owner: "we need to fix every
+  issue found"). Sign-in has "Forgot password?", which emails a link to choose a new password
+  (`/forgot-password`, `/reset-password`), and "Send the confirmation email again"; a teacher
+  gives a student who signs in with a username a new temporary password from the student's page.
+  The server's clock now checks a time limit: work that comes in more than a minute after it is
+  still accepted (rejecting it would lose the answers) but is marked "over the time limit" for
+  the teacher, who is notified, and the countdown runs against the server's clock, not the
+  device's. Work whose results wait for the due date but has no due date shows them on
+  submission (they stayed hidden for good). With instant feedback, a blank question offers
+  "Skip for now" (or Finish on the last one). Wording: the due date is no longer printed twice,
+  the teacher's own questions are titled by their text in the review, AI reports name lessons by
+  title instead of their code, the Browse by topic page adds the learner's own year to a course
+  name, "Hardest skills" says when it starts listing, and Terms and Privacy say English covers
+  Grades 5 to 12. A student waiting to be let into a class no longer gets a refused request on
+  Settings. Found while fixing: onboarding offered English only from Grade 9; it now starts at
+  Grade 5.
 
 ## Next, in order
 

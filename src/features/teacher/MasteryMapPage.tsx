@@ -219,13 +219,14 @@ function SkillPanel({ skillId, students, maps, classId, onClose }: { skillId: st
 }
 
 function ClassSummary({ skills, students, maps }: { skills: string[]; students: Profile[]; maps: Map<string, Map<string, SkillState>> }) {
-  const rows = skills
-    .map((sid) => {
-      const c = countLevels(sid, students, maps);
-      const attempted = students.length - c.not_started;
-      return { sid, strong: c.proficient + c.mastered, attempted };
-    })
-    .filter((r) => r.attempted >= Math.min(3, students.length))
+  const need = Math.min(3, students.length);
+  const tried = skills.map((sid) => {
+    const c = countLevels(sid, students, maps);
+    const attempted = students.length - c.not_started;
+    return { sid, strong: c.proficient + c.mastered, attempted };
+  });
+  const rows = tried
+    .filter((r) => r.attempted >= need)
     .sort((a, b) => a.strong / Math.max(1, a.attempted) - b.strong / Math.max(1, b.attempted))
     .slice(0, 6);
   return (
@@ -234,7 +235,7 @@ function ClassSummary({ skills, students, maps }: { skills: string[]; students: 
         <div className="font-semibold">Hardest skills right now</div>
         <p className="mt-0.5 text-sm text-ink-3">Share of students who have attempted the skill and reached proficient.</p>
         <div className="mt-4 space-y-3">
-          {rows.length === 0 && <p className="text-sm text-ink-3">No attempts yet.</p>}
+          {rows.length === 0 && <p className="text-sm text-ink-3">{tried.some((r) => r.attempted > 0) ? `A skill is listed once ${need} students have tried it.` : 'No attempts yet.'}</p>}
           {rows.map((r) => {
             const p = Math.round((r.strong / Math.max(1, r.attempted)) * 100);
             return (

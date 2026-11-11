@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { extractJson, validateInsight } from './parse.ts';
 import { subjectName } from './prompt.ts';
-import { generateInsight } from './index.ts';
+import { generateInsight, nameLessons } from './index.ts';
+import { lessonById } from '../curriculum/index.ts';
 import type { AnalystInput } from './context.ts';
 import { emptySkillState } from '../mastery.ts';
 
@@ -84,5 +85,16 @@ describe('the subject in the prompts', () => {
     expect(subjectName('English Language Arts')).toBe('English Language Arts');
     expect(subjectName(undefined)).toBe('mathematics');
     expect(subjectName(' ')).toBe('mathematics');
+  });
+});
+
+describe('lesson codes in a report', () => {
+  it('become lesson titles in sentences, and stay as they are in id fields', () => {
+    const title = lessonById('m10c-1-1')!.title;
+    const out = nameLessons({ summary: 'Reteach m10c-1-1 before moving on.', actions: [{ lessonId: 'm10c-1-1', title: 'Reteach lesson m10c-1-1', rationale: 'x-1-2 is not a lesson.' }] });
+    expect(out.summary).toBe(`Reteach “${title}” before moving on.`);
+    expect(out.actions[0].lessonId).toBe('m10c-1-1');
+    expect(out.actions[0].title).toBe(`Reteach lesson “${title}”`);
+    expect(out.actions[0].rationale).toBe('x-1-2 is not a lesson.');
   });
 });

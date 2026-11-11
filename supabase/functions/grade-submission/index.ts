@@ -22,6 +22,8 @@ import {
   itemFromRef,
   markResponse,
   mergeIntegrity,
+  overtimeLabel,
+  overtimeSeconds,
   processSubmission,
   TYPE_LABEL,
   validateRefs,
@@ -44,6 +46,9 @@ serve(async (req) => {
   const me = await getCaller(req, db);
   const body = await readJson(req);
   switch (body.action) {
+    case 'now':
+      // The page counts a time limit down against this clock, not the device's.
+      return { now: Date.now() };
     case 'start':
       return { submission: await start(db, me, str(body.assignmentId, 64)) };
     case 'submit':
@@ -171,6 +176,9 @@ async function submit(db: Db, me: Caller, body: Record<string, unknown>): Promis
   const responses = cleanResponses(body.responses);
   // Exam mode records only grow; the teacher's extra allowance comes from the stored record.
   const integrity = mergeIntegrity(s.integrity, body.integrity ?? { ...cleanIntegrity(s.integrity), blurCount: Number(body.blurCount ?? 0) });
+  // The page ends a timed attempt itself; the server's clock says whether it really came in on time.
+  const over = a ? overtimeSeconds(s.started_at, a.settings?.timeLimitMinutes, now) : 0;
+  if (over) integrity.overtimeSeconds = over;
   const late = !!a?.due_at && new Date(now) > new Date(a.due_at);
 
   if (a && !isQuestionType(a.type as AssignmentType)) {
@@ -181,7 +189,7 @@ async function submit(db: Db, me: Caller, body: Record<string, unknown>): Promis
       .select()
       .single();
     if (error) throw new Error(error.message);
-    if (late) await tellTeacher(db, a, me, data);
+    if (late || over) await tellTeacher(db, a, me, data);
     return data;
   }
 
@@ -264,7 +272,7 @@ async function submit(db: Db, me: Caller, body: Record<string, unknown>): Promis
   }
 
   if (a) {
-    if (saved.pending_manual > 0 || saved.late || integrity.autoSubmitted) await tellTeacher(db, a, me, saved);
+    if (saved.pending_manual > 0 || saved.late || integrity.autoSubmitted || integrity.overtimeSeconds) await tellTeacher(db, a, me, saved);
     background(autopilot(db, a.class_id, me.id));
   } else {
     // Self-paced students have no teacher: the AI tutor may assign targeted practice after their own
@@ -282,7 +290,7 @@ async function tellTeacher(db: Db, a: Row, me: Caller, s: Row) {
     {
       user_id: c.teacher_id,
       kind: 'submission',
-      title: `${me.full_name} submitted ${a.title}${s.integrity?.autoSubmitted ? ' (automatically, after leaving exam mode)' : s.late ? ' (late)' : ''}`,
+      title: `${me.full_name} submitted ${a.title}${s.integrity?.autoSubmitted ? ' (automatically, after leaving exam mode)' : s.integrity?.overtimeSeconds ? ` (${overtimeLabel(s.integrity.overtimeSeconds)} after the time limit)` : s.late ? ' (late)' : ''}`,
       body: s.pending_manual > 0 ? `${score} · ${s.pending_manual} to grade` : score,
       link: s.pending_manual > 0 ? `/t/c/${c.id}/submissions/${s.id}` : `/t/c/${c.id}/assignments/${a.id}`,
       assignment_id: a.id,

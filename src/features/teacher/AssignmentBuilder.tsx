@@ -437,7 +437,7 @@ export default function AssignmentBuilder() {
                     onClose={() => setAdvising(false)}
                   />
                 )}
-                <Select label="Feedback" value={d.settings.feedback} onChange={(e) => setSettings({ feedback: e.target.value as AssignmentSettings['feedback'] })} hint="Instant feedback lets students check each answer as they go.">
+                <Select label="Feedback" value={d.settings.feedback} onChange={(e) => setSettings({ feedback: e.target.value as AssignmentSettings['feedback'] })} hint={d.settings.feedback === 'after_due' && !d.dueAt ? 'No due date is set, so students will see their results as soon as they submit. Set a due date to hold results back.' : 'Instant feedback lets students check each answer as they go.'}>
                   <option value="instant">Instant, after each question</option>
                   <option value="after_submit">After they submit</option>
                   <option value="after_due">After the due date</option>

@@ -61,7 +61,7 @@ function Rows({ items, responses, content, assignmentId, showSolutions = true, r
             <button type="button" onClick={() => setOpen(isOpen ? null : i)} className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-surface-2/60">
               {status === 'right' ? <CheckCircle2 className="h-5 w-5 shrink-0 text-good" /> : status === 'pending' ? <CircleDashed className="h-5 w-5 shrink-0 text-ink-3" /> : <XCircle className={cn('h-5 w-5 shrink-0', status === 'partial' ? 'text-warn' : 'text-bad')} />}
               <span className="w-8 text-sm font-semibold text-ink-3">Q{i + 1}</span>
-              <span className="min-w-0 flex-1 truncate text-sm font-medium">{manual ? 'Written response' : skillInfo(item.skillId)?.name ?? 'Question'}</span>
+              <span className="min-w-0 flex-1 truncate text-sm font-medium">{skillInfo(item.skillId)?.name ?? promptStart(item.prompt) ?? (manual ? 'Written response' : 'Question')}</span>
               {resp.hintsUsed > 0 && (
                 <span className="hidden items-center gap-1 text-xs text-warn-ink sm:inline-flex">
                   <Lightbulb className="h-3.5 w-3.5" /> {resp.hintsUsed} hint{resp.hintsUsed > 1 ? 's' : ''}
@@ -101,4 +101,15 @@ function Rows({ items, responses, content, assignmentId, showSolutions = true, r
 function Rubric({ criteria, levels, scored, points }: { criteria: ReturnType<typeof rubricOf>; levels: StoredResponse['rubric']; scored: boolean; points: number }) {
   if (!criteria) return null;
   return scored && levels ? <RubricResult criteria={criteria} levels={levels} points={points} /> : <RubricGuide criteria={criteria} />;
+}
+
+/** The start of a teacher's own question, as a row title (their questions have no skill to name them). */
+export function promptStart(prompt: string | undefined): string | undefined {
+  const text = (prompt ?? '')
+    .replace(/:::[\s\S]*?:::/g, ' ')
+    .replace(/[*_#>`$\\]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!text) return undefined;
+  return text.length > 70 ? `${text.slice(0, 69).trimEnd()}…` : text;
 }

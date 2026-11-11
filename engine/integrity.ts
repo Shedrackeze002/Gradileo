@@ -30,6 +30,43 @@ export interface Integrity {
    * and clears it; `cleanIntegrity` drops it, so a student's save never writes it.
    */
   awaitingStart?: boolean;
+  /**
+   * Seconds past the time limit when the attempt was submitted, measured by the server's clock.
+   * Only the server (or the demo) sets it, at submission; `cleanIntegrity` drops it.
+   */
+  overtimeSeconds?: number;
+}
+
+/** What only the server writes, kept when a stored record is read back. */
+export function storedIntegrity(raw: unknown): Integrity {
+  const r = raw && typeof raw === 'object' && !Array.isArray(raw) ? (raw as Record<string, unknown>) : {};
+  const out = cleanIntegrity(raw);
+  if (r.awaitingStart === true) out.awaitingStart = true;
+  const over = typeof r.overtimeSeconds === 'number' && Number.isFinite(r.overtimeSeconds) ? Math.floor(r.overtimeSeconds) : 0;
+  if (over > 0) out.overtimeSeconds = over;
+  return out;
+}
+
+/** Slack for the page to send the work when the countdown ends. */
+export const TIME_LIMIT_GRACE_SECONDS = 60;
+
+/** Seconds past the time limit, or 0 when the work came in on time (or there is no limit). */
+export function overtimeSeconds(startedAt: string | null | undefined, timeLimitMinutes: number | null | undefined, now: string | number | Date): number {
+  if (!startedAt || !timeLimitMinutes || timeLimitMinutes <= 0) return 0;
+  const start = new Date(startedAt).getTime();
+  if (!Number.isFinite(start)) return 0;
+  const over = Math.floor((new Date(now).getTime() - start) / 1000) - timeLimitMinutes * 60;
+  return over > TIME_LIMIT_GRACE_SECONDS ? over : 0;
+}
+
+/** "3 minutes", "2 hours", "4 days", for telling a teacher how far past the limit work came in. */
+export function overtimeLabel(seconds: number): string {
+  const unit = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+  const minutes = Math.max(1, Math.round(seconds / 60));
+  if (minutes < 120) return unit(minutes, 'minute');
+  const hours = Math.round(minutes / 60);
+  if (hours < 48) return unit(hours, 'hour');
+  return unit(Math.round(hours / 24), 'day');
 }
 
 export const MAX_EVENTS = 200;

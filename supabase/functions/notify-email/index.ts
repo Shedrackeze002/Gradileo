@@ -93,6 +93,8 @@ serve(async (req) => {
   const { data: profile } = await db.from('profiles').select('name_only').eq('id', me.id).maybeSingle();
   if (profile?.name_only) {
     const { count } = await db.from('enrollments').select('class_id', { count: 'exact', head: true }).eq('student_id', me.id);
+    // Settings asks on every visit: answer plainly instead of refusing, so the page can say why.
+    if (!count && action === 'get') return { email: null, pendingEmail: null, waitingForClass: true };
     if (!count) throw new HttpError(403, 'You can add an email address once your teacher has let you into the class.');
   }
 
