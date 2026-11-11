@@ -16284,6 +16284,6080 @@
       }
     ]
   },
+  "e5-1-1": {
+    "lessonId": "e5-1-1",
+    "title": "Story Elements: Characters, Setting and Plot",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The three story elements",
+        "t": 24.77
+      },
+      {
+        "title": "Finding the elements",
+        "t": 54.521
+      },
+      {
+        "title": "Who tells the story?",
+        "t": 84.812
+      },
+      {
+        "title": "Clues to the setting",
+        "t": 114.472
+      },
+      {
+        "title": "Your turn",
+        "t": 156.569
+      },
+      {
+        "title": "Summary",
+        "t": 183.608
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-1-1:q2",
+        "t": 162.991,
+        "prompt": "“The lanterns flickered as the knights rode across the castle bridge at midnight.” What is the setting?",
+        "choices": [
+          "The knights and their horses",
+          "A castle, at midnight, long ago",
+          "The knights ride across a bridge",
+          "A narrator who is one of the knights"
+        ],
+        "answer": 1,
+        "working": "The setting is where and when: a castle, at midnight, in a time of knights and lanterns. Choice A names characters, and Choice C is the plot."
+      }
+    ]
+  },
+  "e5-1-2": {
+    "lessonId": "e5-1-2",
+    "title": "Characters: Traits and Feelings",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Character traits",
+        "t": 23.684
+      },
+      {
+        "title": "Inferring a trait",
+        "t": 56.592
+      },
+      {
+        "title": "Feelings",
+        "t": 78.592
+      },
+      {
+        "title": "Characters change",
+        "t": 128.579
+      },
+      {
+        "title": "Your turn",
+        "t": 146.304
+      },
+      {
+        "title": "Summary",
+        "t": 175.506
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-1-2:q2",
+        "t": 153.298,
+        "prompt": "“Ana let her little brother go first on the swing, even though she had waited a long time.” Which trait does Ana show?",
+        "choices": [
+          "Nervous",
+          "Excited",
+          "Selfish",
+          "Patient and kind"
+        ],
+        "answer": 3,
+        "working": "She waits and lets her brother go first, so she is patient and kind. Nervous and excited are feelings, and selfish is the opposite of what she does."
+      }
+    ]
+  },
+  "e5-1-3": {
+    "lessonId": "e5-1-3",
+    "title": "Problem, Events and Solution",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Problem and solution",
+        "t": 19.774
+      },
+      {
+        "title": "The Crow and the Pitcher",
+        "t": 38.585
+      },
+      {
+        "title": "Beginning, middle and end",
+        "t": 64.574
+      },
+      {
+        "title": "A common mistake",
+        "t": 110.559
+      },
+      {
+        "title": "Your turn",
+        "t": 128.528
+      },
+      {
+        "title": "Summary",
+        "t": 156.764
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-1-3:q2",
+        "t": 135.554,
+        "prompt": "“Zara’s kite got stuck high in a tree. She asked her tall uncle to help, and he lifted it free with a long rake.” What is the solution?",
+        "choices": [
+          "Zara’s kite gets stuck in a tree.",
+          "Zara asks her tall uncle to help.",
+          "Zara has a kite.",
+          "Her uncle lifts the kite free with a rake."
+        ],
+        "answer": 3,
+        "working": "The solution is how the problem is solved. Choice A is the problem, and Choice B is an event on the way to the solution."
+      }
+    ]
+  },
+  "e5-1-4": {
+    "lessonId": "e5-1-4",
+    "title": "Fables, Folk Tales and Their Lessons",
+    "duration": 181,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fables and morals",
+        "t": 21.267
+      },
+      {
+        "title": "The Fox and the Grapes",
+        "t": 40.977
+      },
+      {
+        "title": "A common mistake",
+        "t": 66.752
+      },
+      {
+        "title": "Kinds of traditional tales",
+        "t": 86.428
+      },
+      {
+        "title": "Your turn",
+        "t": 128.024
+      },
+      {
+        "title": "Summary",
+        "t": 154.938
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-1-4:q2",
+        "t": 134.636,
+        "prompt": "A lion lets a tiny mouse go free. Later, the mouse chews through a net to save the lion. What is the best moral?",
+        "choices": [
+          "Lions are stronger than mice.",
+          "Even the small can help the great.",
+          "Mice have sharp teeth.",
+          "Nets are made of rope."
+        ],
+        "answer": 1,
+        "working": "A moral is a lesson for people. Choices A, C and D are facts, not lessons about how to live."
+      }
+    ]
+  },
+  "e5-2-1": {
+    "lessonId": "e5-2-1",
+    "title": "Rhyme and Rhythm",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Words that rhyme",
+        "t": 18.903
+      },
+      {
+        "title": "The rhyme pattern",
+        "t": 52.585
+      },
+      {
+        "title": "Every sound gets a letter",
+        "t": 84.333
+      },
+      {
+        "title": "Syllables and beats",
+        "t": 114.661
+      },
+      {
+        "title": "Your turn",
+        "t": 157.35
+      },
+      {
+        "title": "Summary",
+        "t": 185.616
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-2-1:q2",
+        "t": 164.637,
+        "prompt": "The last words of four lines of a poem are “sky”, “sun”, “high” and “fun”. What is the rhyme pattern?",
+        "choices": [
+          "AABB",
+          "ABAB",
+          "ABCB",
+          "ABBA"
+        ],
+        "answer": 1,
+        "working": "“sky” is A and “sun” is B. “high” rhymes with “sky” (A), and “fun” rhymes with “sun” (B): ABAB."
+      }
+    ]
+  },
+  "e5-2-2": {
+    "lessonId": "e5-2-2",
+    "title": "Similes and Metaphors",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Literal and figurative",
+        "t": 22.181
+      },
+      {
+        "title": "Similes",
+        "t": 50.216
+      },
+      {
+        "title": "Metaphors",
+        "t": 80.879
+      },
+      {
+        "title": "What a comparison means",
+        "t": 114.516
+      },
+      {
+        "title": "Your turn",
+        "t": 145.412
+      },
+      {
+        "title": "Summary",
+        "t": 170.117
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-2-2:q2",
+        "t": 151.424,
+        "prompt": "“When the bell rang, the hallway was a river of students.” What does the metaphor tell the reader?",
+        "choices": [
+          "The hallway was flooded with water.",
+          "The students were swimming.",
+          "A crowd of students flowed through the hallway together.",
+          "The hallway was very quiet."
+        ],
+        "answer": 2,
+        "working": "A river is long and flows steadily one way, so the students moved together in a long, steady stream."
+      }
+    ]
+  },
+  "e5-2-3": {
+    "lessonId": "e5-2-3",
+    "title": "Images and the Senses",
+    "duration": 166,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Imagery",
+        "t": 23.09
+      },
+      {
+        "title": "Seeing the wind",
+        "t": 54.186
+      },
+      {
+        "title": "Vivid words",
+        "t": 75.316
+      },
+      {
+        "title": "Your turn",
+        "t": 121.915
+      },
+      {
+        "title": "Summary",
+        "t": 146.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-2-3:q2",
+        "t": 128.554,
+        "prompt": "“The kettle whistled and the bacon sizzled in the pan.” Which sense does this image appeal to most?",
+        "choices": [
+          "Hearing",
+          "Sight",
+          "Touch",
+          "Taste"
+        ],
+        "answer": 0,
+        "working": "“Whistled” and “sizzled” are both sounds, so the image appeals to hearing."
+      }
+    ]
+  },
+  "e5-2-4": {
+    "lessonId": "e5-2-4",
+    "title": "Forms of Poetry",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lines and stanzas",
+        "t": 19.812
+      },
+      {
+        "title": "Four forms",
+        "t": 57.387
+      },
+      {
+        "title": "A limerick",
+        "t": 93.896
+      },
+      {
+        "title": "A haiku",
+        "t": 113.144
+      },
+      {
+        "title": "Your turn",
+        "t": 143.945
+      },
+      {
+        "title": "Summary",
+        "t": 171.077
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-2-4:q2",
+        "t": 154.2,
+        "prompt": "A poem has five funny lines that rhyme AABBA. What form is it?",
+        "choices": [
+          "A haiku",
+          "Free verse",
+          "An acrostic",
+          "A limerick"
+        ],
+        "answer": 3,
+        "working": "A limerick has five funny lines with the rhyme pattern AABBA."
+      }
+    ]
+  },
+  "e5-3-1": {
+    "lessonId": "e5-3-1",
+    "title": "Main Idea and Supporting Details",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Topic and main idea",
+        "t": 28.19
+      },
+      {
+        "title": "Finding the main idea",
+        "t": 60.208
+      },
+      {
+        "title": "Supporting details",
+        "t": 85.539
+      },
+      {
+        "title": "Common mistakes",
+        "t": 112.692
+      },
+      {
+        "title": "Your turn",
+        "t": 145.469
+      },
+      {
+        "title": "Summary",
+        "t": 172.708
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-3-1:q2",
+        "t": 153.072,
+        "prompt": "“Owls are skilled night hunters. Their large eyes see in dim light. Their soft feathers let them fly silently. Their sharp hearing finds mice under snow.” What is the main idea?",
+        "choices": [
+          "Owls have large eyes.",
+          "Owls have soft feathers.",
+          "Owls are skilled night hunters.",
+          "Mice live under the snow."
+        ],
+        "answer": 2,
+        "working": "Every other sentence gives one reason owls hunt well at night. Choices A and B are supporting details."
+      }
+    ]
+  },
+  "e5-3-2": {
+    "lessonId": "e5-3-2",
+    "title": "Text Features",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What text features are",
+        "t": 19.991
+      },
+      {
+        "title": "Pictures that teach",
+        "t": 50.145
+      },
+      {
+        "title": "The front and back of a book",
+        "t": 71.688
+      },
+      {
+        "title": "Where would you look?",
+        "t": 104.936
+      },
+      {
+        "title": "Your turn",
+        "t": 137.32
+      },
+      {
+        "title": "Summary",
+        "t": 159.542
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-3-2:q2",
+        "t": 143.213,
+        "prompt": "You want to see the order in which events happened in the history of flight, with their dates. Which text feature would help most?",
+        "choices": [
+          "A glossary",
+          "A timeline",
+          "A caption",
+          "A map"
+        ],
+        "answer": 1,
+        "working": "A timeline shows events in the order they happened, with dates."
+      }
+    ]
+  },
+  "e5-3-3": {
+    "lessonId": "e5-3-3",
+    "title": "Text Structures and Signal Words",
+    "duration": 158,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Structure and signal words",
+        "t": 16.912
+      },
+      {
+        "title": "Four text structures",
+        "t": 31.511
+      },
+      {
+        "title": "Naming the structure",
+        "t": 66.654
+      },
+      {
+        "title": "A common mistake",
+        "t": 82.874
+      },
+      {
+        "title": "Your turn",
+        "t": 105.603
+      },
+      {
+        "title": "Summary",
+        "t": 133.072
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-3-3:q2",
+        "t": 111.866,
+        "prompt": "“The river flooded the road. ____, the school bus had to take a longer route.” Which signal word fits best?",
+        "choices": [
+          "First",
+          "Both",
+          "Unlike",
+          "As a result"
+        ],
+        "answer": 3,
+        "working": "The flood caused the bus to change its route, so a cause-and-effect signal word is needed."
+      }
+    ]
+  },
+  "e5-3-4": {
+    "lessonId": "e5-3-4",
+    "title": "Fact, Opinion and the Author’s Purpose",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fact and opinion",
+        "t": 19.604
+      },
+      {
+        "title": "Testing a sentence",
+        "t": 67.999
+      },
+      {
+        "title": "The author’s purpose",
+        "t": 97.3
+      },
+      {
+        "title": "Your turn",
+        "t": 132.304
+      },
+      {
+        "title": "Summary",
+        "t": 157.205
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-3-4:q2",
+        "t": 138.543,
+        "prompt": "“Come to Maple Street Bakery! Our cinnamon rolls are the softest in the city, and this week every second roll is free.” What is the author’s purpose?",
+        "choices": [
+          "To persuade",
+          "To inform",
+          "To entertain",
+          "To describe a setting"
+        ],
+        "answer": 0,
+        "working": "It uses an opinion word (“softest”) and offers a deal, because it wants the reader to go to the bakery."
+      }
+    ]
+  },
+  "e5-4-1": {
+    "lessonId": "e5-4-1",
+    "title": "Prefixes and Suffixes",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Base words and prefixes",
+        "t": 20.545
+      },
+      {
+        "title": "Working out a new word",
+        "t": 57.397
+      },
+      {
+        "title": "Suffixes",
+        "t": 86.764
+      },
+      {
+        "title": "Two parts added",
+        "t": 123.318
+      },
+      {
+        "title": "Your turn",
+        "t": 142.396
+      },
+      {
+        "title": "Summary",
+        "t": 164.96
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-4-1:q2",
+        "t": 148.129,
+        "prompt": "What does the word “fearless” mean?",
+        "choices": [
+          "Full of fear",
+          "Afraid again",
+          "Without fear",
+          "A person who is afraid"
+        ],
+        "answer": 2,
+        "working": "fear + less: the suffix -less means “without”, so fearless means without fear."
+      }
+    ]
+  },
+  "e5-4-2": {
+    "lessonId": "e5-4-2",
+    "title": "Synonyms, Antonyms and Shades of Meaning",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Synonyms and antonyms",
+        "t": 18.969
+      },
+      {
+        "title": "Testing a synonym",
+        "t": 51.672
+      },
+      {
+        "title": "Shades of meaning",
+        "t": 84.911
+      },
+      {
+        "title": "Your turn",
+        "t": 123.597
+      },
+      {
+        "title": "Summary",
+        "t": 147.169
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-4-2:q2",
+        "t": 130.661,
+        "prompt": "Order these words from the weakest to the strongest: furious, annoyed, angry.",
+        "choices": [
+          "furious, angry, annoyed",
+          "angry, annoyed, furious",
+          "annoyed, furious, angry",
+          "annoyed, angry, furious"
+        ],
+        "answer": 3,
+        "working": "Annoyed is a little bit cross, angry is more, and furious is very, very angry."
+      }
+    ]
+  },
+  "e5-4-3": {
+    "lessonId": "e5-4-3",
+    "title": "Context Clues",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What context clues are",
+        "t": 17.509
+      },
+      {
+        "title": "Five kinds of clue",
+        "t": 38.314
+      },
+      {
+        "title": "Checking your guess",
+        "t": 91.497
+      },
+      {
+        "title": "A common mistake",
+        "t": 120.764
+      },
+      {
+        "title": "Your turn",
+        "t": 138.438
+      },
+      {
+        "title": "Summary",
+        "t": 163.362
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-4-3:q2",
+        "t": 146.105,
+        "prompt": "“The old bridge was so fragile that the town closed it, afraid it might break under a single car.” What does “fragile” mean?",
+        "choices": [
+          "Easily broken",
+          "Very long",
+          "Brand new",
+          "Painted red"
+        ],
+        "answer": 0,
+        "working": "The town was afraid the bridge might break under one car, so fragile means easily broken."
+      }
+    ]
+  },
+  "e5-4-4": {
+    "lessonId": "e5-4-4",
+    "title": "Homophones and Multiple-Meaning Words",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Homophones",
+        "t": 23.068
+      },
+      {
+        "title": "Choosing the right homophone",
+        "t": 65.628
+      },
+      {
+        "title": "Multiple-meaning words",
+        "t": 93.169
+      },
+      {
+        "title": "Your turn",
+        "t": 129.33
+      },
+      {
+        "title": "Summary",
+        "t": 160.719
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-4-4:q2",
+        "t": 135.906,
+        "prompt": "Which sentence uses the right homophone?",
+        "choices": [
+          "The children left there bikes by the gate.",
+          "We waited a whole weak for the parcel.",
+          "You’re coat is on the floor.",
+          "The parcel took a whole week to arrive."
+        ],
+        "answer": 3,
+        "working": "“Week” means seven days. A needs “their”, B needs “week”, and C needs “your” (“You are coat” makes no sense)."
+      }
+    ]
+  },
+  "e5-5-1": {
+    "lessonId": "e5-5-1",
+    "title": "Parts of Speech",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five parts of speech",
+        "t": 19.076
+      },
+      {
+        "title": "Labelling a sentence",
+        "t": 73.21
+      },
+      {
+        "title": "Adjective or adverb?",
+        "t": 103.525
+      },
+      {
+        "title": "Your turn",
+        "t": 141.154
+      },
+      {
+        "title": "Summary",
+        "t": 167.23
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-1:q2",
+        "t": 147.676,
+        "prompt": "“The noisy crowd cheered loudly.” Which word is an adverb?",
+        "choices": [
+          "noisy",
+          "loudly",
+          "crowd",
+          "cheered"
+        ],
+        "answer": 1,
+        "working": "“Loudly” tells how the crowd cheered, so it describes a verb. “Noisy” is an adjective, “crowd” a noun and “cheered” a verb."
+      }
+    ]
+  },
+  "e5-5-2": {
+    "lessonId": "e5-5-2",
+    "title": "Complete Sentences: Fragments and Run-ons",
+    "duration": 170,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subject and predicate",
+        "t": 16.481
+      },
+      {
+        "title": "Fragments and run-ons",
+        "t": 53.882
+      },
+      {
+        "title": "A common mistake",
+        "t": 94.969
+      },
+      {
+        "title": "Your turn",
+        "t": 114.155
+      },
+      {
+        "title": "Summary",
+        "t": 141.304
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-2:q2",
+        "t": 120.292,
+        "prompt": "Which of these is a complete sentence?",
+        "choices": [
+          "After the long walk home.",
+          "The rain stopped we went outside.",
+          "Jumped over the puddle.",
+          "The students in Room 4 planted a garden."
+        ],
+        "answer": 3,
+        "working": "D has a subject (the students in Room 4) and a predicate (planted a garden). A and C are fragments, and B is a run-on."
+      }
+    ]
+  },
+  "e5-5-3": {
+    "lessonId": "e5-5-3",
+    "title": "Subject-Verb Agreement and Verb Tense",
+    "duration": 171,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Agreement",
+        "t": 20.256
+      },
+      {
+        "title": "Finding the real subject",
+        "t": 54.731
+      },
+      {
+        "title": "Verb tense",
+        "t": 81.454
+      },
+      {
+        "title": "Irregular verbs",
+        "t": 100.137
+      },
+      {
+        "title": "Your turn",
+        "t": 119.672
+      },
+      {
+        "title": "Summary",
+        "t": 143.39
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-3:q2",
+        "t": 125.854,
+        "prompt": "“Yesterday Kai (catch) a huge fish.” Which form of the verb is correct?",
+        "choices": [
+          "catches",
+          "catched",
+          "caught",
+          "will catch"
+        ],
+        "answer": 2,
+        "working": "“Yesterday” tells us it is the past, and catch is irregular: its past form is “caught”."
+      }
+    ]
+  },
+  "e5-5-4": {
+    "lessonId": "e5-5-4",
+    "title": "Capital Letters and End Marks",
+    "duration": 166,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Capital letters",
+        "t": 19.836
+      },
+      {
+        "title": "Finding the missing capitals",
+        "t": 52.126
+      },
+      {
+        "title": "Four kinds of sentences",
+        "t": 84.015
+      },
+      {
+        "title": "Your turn",
+        "t": 113.007
+      },
+      {
+        "title": "Summary",
+        "t": 138.325
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-4:q2",
+        "t": 119.68,
+        "prompt": "“I wonder where my keys are” What kind of sentence is this, and how should it end?",
+        "choices": [
+          "A question, with a question mark",
+          "A statement, with a period",
+          "An exclamation, with an exclamation mark",
+          "A command, with an exclamation mark"
+        ],
+        "answer": 1,
+        "working": "It does not ask the reader anything; it tells what the speaker is wondering. So it is a statement and ends with a period."
+      }
+    ]
+  },
+  "e5-5-5": {
+    "lessonId": "e5-5-5",
+    "title": "Commas and Quotation Marks",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Commas",
+        "t": 16.577
+      },
+      {
+        "title": "Placing the commas",
+        "t": 58.713
+      },
+      {
+        "title": "Quotation marks",
+        "t": 94.553
+      },
+      {
+        "title": "Your turn",
+        "t": 129.628
+      },
+      {
+        "title": "Summary",
+        "t": 157.369
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-5-5:q2",
+        "t": 136.63,
+        "prompt": "Which is the correct way to write Omar’s question?",
+        "choices": [
+          "“Can we go to the park” asked Omar?",
+          "“Can we go to the park?” asked Omar.",
+          "“Can we go to the park.” asked Omar?",
+          "Can we go to the park? “asked Omar.”"
+        ],
+        "answer": 1,
+        "working": "The exact words “Can we go to the park” ask a question, so the question mark goes inside the closing quotation mark, and the sentence ends with a period."
+      }
+    ]
+  },
+  "e5-6-1": {
+    "lessonId": "e5-6-1",
+    "title": "The Paragraph",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of a paragraph",
+        "t": 16.761
+      },
+      {
+        "title": "A paragraph about recess",
+        "t": 44.679
+      },
+      {
+        "title": "Choosing a topic sentence",
+        "t": 72.195
+      },
+      {
+        "title": "Keeping to the topic",
+        "t": 101.724
+      },
+      {
+        "title": "Your turn",
+        "t": 123.474
+      },
+      {
+        "title": "Summary",
+        "t": 151.903
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-6-1:q2",
+        "t": 130.291,
+        "prompt": "“Penguins are birds that cannot fly. Their wings work like flippers for swimming. They waddle on land and slide on their bellies over ice. My uncle saw a penguin at the zoo last year.” Which sentence does not belong?",
+        "choices": [
+          "Penguins are birds that cannot fly.",
+          "Their wings work like flippers for swimming.",
+          "They waddle on land and slide on their bellies over ice.",
+          "My uncle saw a penguin at the zoo last year."
+        ],
+        "answer": 3,
+        "working": "The paragraph is about how penguins move, since they cannot fly. The sentence about the writer’s uncle wanders off topic."
+      }
+    ]
+  },
+  "e5-6-2": {
+    "lessonId": "e5-6-2",
+    "title": "Narrative Writing: Time Order and Showing",
+    "duration": 177,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a narrative is",
+        "t": 13.485
+      },
+      {
+        "title": "Time-order words",
+        "t": 30.485
+      },
+      {
+        "title": "Show, don’t tell",
+        "t": 70.864
+      },
+      {
+        "title": "A common mistake",
+        "t": 107.511
+      },
+      {
+        "title": "Your turn",
+        "t": 128.428
+      },
+      {
+        "title": "Summary",
+        "t": 155.25
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-6-2:q2",
+        "t": 135.829,
+        "prompt": "Which sentence shows that Ben was angry, without telling?",
+        "choices": [
+          "Ben was angry.",
+          "Ben was very, very mad.",
+          "Ben’s face turned red, and he slammed his book shut.",
+          "Ben felt anger."
+        ],
+        "answer": 2,
+        "working": "C describes actions (a red face, a slammed book) and lets the reader work out the feeling. The others name it."
+      }
+    ]
+  },
+  "e5-6-3": {
+    "lessonId": "e5-6-3",
+    "title": "Opinion Writing",
+    "duration": 159,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an opinion piece",
+        "t": 16.686
+      },
+      {
+        "title": "Strong and weak reasons",
+        "t": 47.07
+      },
+      {
+        "title": "Linking words",
+        "t": 85.793
+      },
+      {
+        "title": "Your turn",
+        "t": 112.03
+      },
+      {
+        "title": "Summary",
+        "t": 134.672
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-6-3:q2",
+        "t": 118.256,
+        "prompt": "“Dogs make great pets. ____, they can be trained to fetch, sit and shake hands.” Which linking word fits best?",
+        "choices": [
+          "For example",
+          "However",
+          "In conclusion",
+          "Although"
+        ],
+        "answer": 0,
+        "working": "The second sentence gives an example of why dogs are great pets."
+      }
+    ]
+  },
+  "e5-6-4": {
+    "lessonId": "e5-6-4",
+    "title": "Revising and Editing",
+    "duration": 172,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Revising and editing",
+        "t": 14.585
+      },
+      {
+        "title": "Editing with CUPS",
+        "t": 26.209
+      },
+      {
+        "title": "Editing a sentence",
+        "t": 56.293
+      },
+      {
+        "title": "Combining sentences",
+        "t": 90.33
+      },
+      {
+        "title": "Your turn",
+        "t": 120.07
+      },
+      {
+        "title": "Summary",
+        "t": 147.899
+      }
+    ],
+    "cues": [
+      {
+        "id": "e5-6-4:q2",
+        "t": 127.133,
+        "prompt": "“The bus was late. We missed the first bell.” Which is the best way to combine these sentences?",
+        "choices": [
+          "The bus was late we missed the first bell.",
+          "The bus was late, but we missed the first bell.",
+          "Although the bus was late, we missed the first bell.",
+          "The bus was late, so we missed the first bell."
+        ],
+        "answer": 3,
+        "working": "The first sentence causes the second, so join them with “so”. A is a run-on, and “but” and “although” suggest a contrast that is not there."
+      }
+    ]
+  },
+  "e6-1-1": {
+    "lessonId": "e6-1-1",
+    "title": "Plot and Conflict",
+    "duration": 208,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The five stages of a plot",
+        "t": 18.151
+      },
+      {
+        "title": "Placing an event",
+        "t": 62.657
+      },
+      {
+        "title": "Kinds of conflict",
+        "t": 93.704
+      },
+      {
+        "title": "Your turn",
+        "t": 147.77
+      },
+      {
+        "title": "Summary",
+        "t": 175.679
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-1-1:q2",
+        "t": 153.868,
+        "prompt": "“Everyone in the kingdom believed that girls could not be knights. Ana practised with a sword every night, determined to prove them wrong.” What kind of conflict is this?",
+        "choices": [
+          "Character against character",
+          "Character against nature",
+          "Character against self",
+          "Character against society"
+        ],
+        "answer": 3,
+        "working": "Ana is not fighting one person or the weather, and she does not doubt herself. She is pushing against what the whole community believes."
+      }
+    ]
+  },
+  "e6-1-2": {
+    "lessonId": "e6-1-2",
+    "title": "Character and Motive",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Motive",
+        "t": 22.62
+      },
+      {
+        "title": "Inferring a motive",
+        "t": 59.02
+      },
+      {
+        "title": "How characters change",
+        "t": 89.314
+      },
+      {
+        "title": "Your turn",
+        "t": 127.377
+      },
+      {
+        "title": "Summary",
+        "t": 155.578
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-1-2:q2",
+        "t": 132.976,
+        "prompt": "“Kai always made jokes about Sam’s old coat. Then, one afternoon, he found Sam crying behind the gym. After that, Kai never made a joke about anyone’s clothes again.” How does Kai change, and why?",
+        "choices": [
+          "He becomes unkind because Sam was crying.",
+          "He changes from unkind to thoughtful because he sees how his jokes hurt Sam.",
+          "He stays the same: he is a static character.",
+          "He becomes funnier because he tells new jokes."
+        ],
+        "answer": 1,
+        "working": "At the beginning Kai mocks Sam’s coat. Finding Sam crying shows him how much his jokes hurt, and at the end he never mocks anyone’s clothes again."
+      }
+    ]
+  },
+  "e6-1-3": {
+    "lessonId": "e6-1-3",
+    "title": "Point of View",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "First and third person",
+        "t": 16.886
+      },
+      {
+        "title": "Naming the point of view",
+        "t": 63.868
+      },
+      {
+        "title": "What a narrator can know",
+        "t": 83.117
+      },
+      {
+        "title": "Your turn",
+        "t": 139.78
+      },
+      {
+        "title": "Summary",
+        "t": 165.247
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-1-3:q2",
+        "t": 145.923,
+        "prompt": "“Amara stared at the test. She had studied all week, but now every answer seemed to slip away.” What is the point of view?",
+        "choices": [
+          "First person",
+          "Third person limited",
+          "Third person omniscient",
+          "An unreliable narrator"
+        ],
+        "answer": 1,
+        "working": "The narrator uses “she”, so it is third person, and we are told the thoughts of only one character, Amara."
+      }
+    ]
+  },
+  "e6-1-4": {
+    "lessonId": "e6-1-4",
+    "title": "Theme",
+    "duration": 163,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Topic and theme",
+        "t": 18.977
+      },
+      {
+        "title": "Finding the theme of a fable",
+        "t": 48.76
+      },
+      {
+        "title": "Evidence for a theme",
+        "t": 83.071
+      },
+      {
+        "title": "Your turn",
+        "t": 114.31
+      },
+      {
+        "title": "Summary",
+        "t": 141.249
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-1-4:q2",
+        "t": 121.237,
+        "prompt": "“Mia stared at the broken cookie jar. She could blame the cat. Instead, she went to find her mother. ‘I broke it,’ she said.” Theme: It is brave to admit your mistakes. Which part best supports it?",
+        "choices": [
+          "Mia stared at the broken cookie jar.",
+          "She could blame the cat.",
+          "There was a cookie jar in the kitchen.",
+          "Instead, she went to find her mother. ‘I broke it,’ she said."
+        ],
+        "answer": 3,
+        "working": "Going to her mother and admitting it is the brave act the theme describes. The first sentence only sets up the problem."
+      }
+    ]
+  },
+  "e6-2-1": {
+    "lessonId": "e6-2-1",
+    "title": "Personification and Hyperbole",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four figures of speech",
+        "t": 27.093
+      },
+      {
+        "title": "Naming a figure of speech",
+        "t": 67.561
+      },
+      {
+        "title": "What figures of speech add",
+        "t": 100.376
+      },
+      {
+        "title": "Your turn",
+        "t": 132.415
+      },
+      {
+        "title": "Summary",
+        "t": 156.487
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-2-1:q2",
+        "t": 137.979,
+        "prompt": "“I’m so hungry I could eat a horse.” Which figure of speech is this?",
+        "choices": [
+          "Simile",
+          "Hyperbole",
+          "Personification",
+          "Metaphor"
+        ],
+        "answer": 1,
+        "working": "No one could really eat a horse: it is a huge exaggeration that shows how hungry the speaker is."
+      }
+    ]
+  },
+  "e6-2-2": {
+    "lessonId": "e6-2-2",
+    "title": "Sound Devices and Repetition",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sound devices",
+        "t": 19.209
+      },
+      {
+        "title": "Hearing the devices",
+        "t": 63.24
+      },
+      {
+        "title": "Repetition and refrain",
+        "t": 103.649
+      },
+      {
+        "title": "Your turn",
+        "t": 147.122
+      },
+      {
+        "title": "Summary",
+        "t": 168.744
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-2-2:q2",
+        "t": 153.039,
+        "prompt": "“The bacon sizzled and the fire crackled.” Which sound device is used?",
+        "choices": [
+          "Alliteration",
+          "Assonance",
+          "Onomatopoeia",
+          "A refrain"
+        ],
+        "answer": 2,
+        "working": "“Sizzled” and “crackled” sound like the noises they name."
+      }
+    ]
+  },
+  "e6-2-3": {
+    "lessonId": "e6-2-3",
+    "title": "Stanzas and Rhyme Scheme",
+    "duration": 191,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming stanzas",
+        "t": 17.721
+      },
+      {
+        "title": "Writing a rhyme scheme",
+        "t": 50.924
+      },
+      {
+        "title": "Wordsworth’s daffodils",
+        "t": 70.431
+      },
+      {
+        "title": "Common rhyme schemes",
+        "t": 104.111
+      },
+      {
+        "title": "Your turn",
+        "t": 140.123
+      },
+      {
+        "title": "Summary",
+        "t": 167.31
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-2-3:q2",
+        "t": 146.549,
+        "prompt": "A four-line stanza ends with the words “night”, “street”, “white” and “feet”. What are its rhyme scheme and stanza name?",
+        "choices": [
+          "AABB, a couplet",
+          "ABBA, a quatrain",
+          "ABCB, a tercet",
+          "ABAB, a quatrain"
+        ],
+        "answer": 3,
+        "working": "“night” A, “street” B, “white” rhymes with night (A), “feet” with street (B): ABAB. Four lines make a quatrain."
+      }
+    ]
+  },
+  "e6-2-4": {
+    "lessonId": "e6-2-4",
+    "title": "Mood",
+    "duration": 155,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What mood is",
+        "t": 16.161
+      },
+      {
+        "title": "Describing the mood",
+        "t": 49.923
+      },
+      {
+        "title": "How words create mood",
+        "t": 66.675
+      },
+      {
+        "title": "Your turn",
+        "t": 111.124
+      },
+      {
+        "title": "Summary",
+        "t": 137.547
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-2-4:q2",
+        "t": 116.806,
+        "prompt": "“The candle flickered and went out. Somewhere in the dark house a door creaked open, a cold draught crept across the floor, and the footsteps on the stairs stopped.” What is the mood?",
+        "choices": [
+          "Cheerful",
+          "Peaceful",
+          "Frightening",
+          "Silly"
+        ],
+        "answer": 2,
+        "working": "The dark, the creaking door, the cold draught that “crept” and the footsteps that suddenly stop all create a frightening mood."
+      }
+    ]
+  },
+  "e6-3-1": {
+    "lessonId": "e6-3-1",
+    "title": "Summarizing",
+    "duration": 175,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a good summary does",
+        "t": 18.145
+      },
+      {
+        "title": "The monarch butterflies",
+        "t": 48.824
+      },
+      {
+        "title": "Key ideas and minor details",
+        "t": 71.73
+      },
+      {
+        "title": "Keep your opinion out",
+        "t": 109.721
+      },
+      {
+        "title": "Your turn",
+        "t": 126.598
+      },
+      {
+        "title": "Summary",
+        "t": 155.69
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-3-1:q2",
+        "t": 133.409,
+        "prompt": "Which is the best summary of the monarch passage?",
+        "choices": [
+          "Monarch butterflies lay their eggs on milkweed plants.",
+          "Monarchs are the most amazing insects in the world.",
+          "Some butterflies live in the forests of Mexico.",
+          "Monarchs migrate thousands of kilometres over several generations."
+        ],
+        "answer": 3,
+        "working": "D gives the main idea and the key surprise, briefly and objectively. A is a minor detail, and B is an opinion."
+      }
+    ]
+  },
+  "e6-3-2": {
+    "lessonId": "e6-3-2",
+    "title": "Text Structure and Graphic Organizers",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Five text structures",
+        "t": 18.056
+      },
+      {
+        "title": "Naming the structure",
+        "t": 53.798
+      },
+      {
+        "title": "Graphic organizers",
+        "t": 86.729
+      },
+      {
+        "title": "Your turn",
+        "t": 125.97
+      },
+      {
+        "title": "Summary",
+        "t": 152.564
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-3-2:q2",
+        "t": 133.212,
+        "prompt": "A passage explains that a river flooded, so farmers planted late, so the harvest was small. Which graphic organizer fits best?",
+        "choices": [
+          "A Venn diagram",
+          "A cause-and-effect chain",
+          "A web",
+          "A T-chart"
+        ],
+        "answer": 1,
+        "working": "Each event causes the next one: flood → late planting → small harvest."
+      }
+    ]
+  },
+  "e6-3-3": {
+    "lessonId": "e6-3-3",
+    "title": "Claims and Evidence",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Claim, reason and evidence",
+        "t": 22.321
+      },
+      {
+        "title": "Finding the claim",
+        "t": 59.058
+      },
+      {
+        "title": "Judging evidence",
+        "t": 79.048
+      },
+      {
+        "title": "A common mistake",
+        "t": 114.595
+      },
+      {
+        "title": "Your turn",
+        "t": 134.904
+      },
+      {
+        "title": "Summary",
+        "t": 161.411
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-3-3:q2",
+        "t": 141.554,
+        "prompt": "Claim: “Our school should start later in the morning.” Which is the strongest evidence?",
+        "choices": [
+          "My brother is always tired in the morning.",
+          "Everyone in my class hates getting up early.",
+          "A sleep researcher found that pupils who start later get better marks.",
+          "Mornings are the worst part of the day."
+        ],
+        "answer": 2,
+        "working": "C comes from an expert study and connects to the claim. A and B are anecdotes, and D is an opinion."
+      }
+    ]
+  },
+  "e6-3-4": {
+    "lessonId": "e6-3-4",
+    "title": "Author’s Purpose and Point of View",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The author’s purpose",
+        "t": 16.446
+      },
+      {
+        "title": "Naming the purpose",
+        "t": 53.264
+      },
+      {
+        "title": "Point of view and bias",
+        "t": 87.593
+      },
+      {
+        "title": "Your turn",
+        "t": 127.575
+      },
+      {
+        "title": "Summary",
+        "t": 152.796
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-3-4:q2",
+        "t": 134.596,
+        "prompt": "“Each year, shops hand out billions of wasteful plastic bags.” What is the author’s point of view on plastic bags?",
+        "choices": [
+          "The author likes them.",
+          "The author disapproves of them.",
+          "The author has no view.",
+          "The author wants more of them."
+        ],
+        "answer": 1,
+        "working": "“Billions” is a fact, but “wasteful” is a judgement: the author disapproves."
+      }
+    ]
+  },
+  "e6-4-1": {
+    "lessonId": "e6-4-1",
+    "title": "Advertising Techniques and Target Audience",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an advertisement is",
+        "t": 20.812
+      },
+      {
+        "title": "Advertising techniques",
+        "t": 44.671
+      },
+      {
+        "title": "Naming the technique",
+        "t": 84.143
+      },
+      {
+        "title": "The target audience",
+        "t": 115.971
+      },
+      {
+        "title": "Your turn",
+        "t": 152.405
+      },
+      {
+        "title": "Summary",
+        "t": 178.865
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-4-1:q2",
+        "t": 159.03,
+        "prompt": "“SafeRide car seats: because nothing matters more than keeping your little one safe.” Who is the target audience?",
+        "choices": [
+          "Teenagers",
+          "Young children",
+          "Parents of young children",
+          "Sports fans"
+        ],
+        "answer": 2,
+        "working": "A car seat is bought by adults, and “your little one” speaks to someone who looks after a small child."
+      }
+    ]
+  },
+  "e6-4-2": {
+    "lessonId": "e6-4-2",
+    "title": "Images and Headlines",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading images",
+        "t": 18.04
+      },
+      {
+        "title": "Reading an angle",
+        "t": 63.968
+      },
+      {
+        "title": "Loaded words in headlines",
+        "t": 89.05
+      },
+      {
+        "title": "A common mistake",
+        "t": 126.786
+      },
+      {
+        "title": "Your turn",
+        "t": 146.021
+      },
+      {
+        "title": "Summary",
+        "t": 172.876
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-4-2:q2",
+        "t": 152.543,
+        "prompt": "Which is a neutral version of the headline “Greedy Developers Destroy Beloved Woods”?",
+        "choices": [
+          "Developers Clear Woods for New Housing",
+          "Heartless Builders Ruin Our Forest",
+          "Beloved Woods Lost Forever",
+          "Shameful Plan Wipes Out Woods"
+        ],
+        "answer": 0,
+        "working": "“Greedy” and “beloved” are judgements, and “destroy” is a strong, negative verb. A keeps only the facts."
+      }
+    ]
+  },
+  "e6-5-1": {
+    "lessonId": "e6-5-1",
+    "title": "Greek and Latin Roots",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a root is",
+        "t": 20.691
+      },
+      {
+        "title": "Greek roots",
+        "t": 45.179
+      },
+      {
+        "title": "Latin roots",
+        "t": 72.434
+      },
+      {
+        "title": "Taking words apart",
+        "t": 98.829
+      },
+      {
+        "title": "Your turn",
+        "t": 141.046
+      },
+      {
+        "title": "Summary",
+        "t": 164.081
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-5-1:q2",
+        "t": 147.112,
+        "prompt": "The root “aud” means hear. What does “audible” most likely mean?",
+        "choices": [
+          "Able to be seen",
+          "Able to be heard",
+          "Able to be carried",
+          "Able to be broken"
+        ],
+        "answer": 1,
+        "working": "“aud” means hear, and the suffix -ible means able to be, so audible means able to be heard."
+      }
+    ]
+  },
+  "e6-5-2": {
+    "lessonId": "e6-5-2",
+    "title": "Denotation and Connotation",
+    "duration": 166,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Denotation and connotation",
+        "t": 24.607
+      },
+      {
+        "title": "Naming a connotation",
+        "t": 62.283
+      },
+      {
+        "title": "Choosing words on purpose",
+        "t": 85.169
+      },
+      {
+        "title": "Your turn",
+        "t": 117.512
+      },
+      {
+        "title": "Summary",
+        "t": 143.473
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-5-2:q2",
+        "t": 122.735,
+        "prompt": "A writer wants readers to admire a character who asks lots of questions. Which word fits best?",
+        "choices": [
+          "nosy",
+          "prying",
+          "interfering",
+          "inquisitive"
+        ],
+        "answer": 3,
+        "working": "“Nosy”, “prying” and “interfering” suggest getting into other people’s business. “Inquisitive” suggests a healthy wish to learn."
+      }
+    ]
+  },
+  "e6-5-3": {
+    "lessonId": "e6-5-3",
+    "title": "Idioms",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Idioms",
+        "t": 18.531
+      },
+      {
+        "title": "Working out an idiom",
+        "t": 55.679
+      },
+      {
+        "title": "Literal and figurative",
+        "t": 80.024
+      },
+      {
+        "title": "A common mistake",
+        "t": 112.037
+      },
+      {
+        "title": "Your turn",
+        "t": 134.739
+      },
+      {
+        "title": "Summary",
+        "t": 159.872
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-5-3:q2",
+        "t": 141.002,
+        "prompt": "“Maya bit off more than she could chew when she joined four clubs at once.” What does the idiom mean?",
+        "choices": [
+          "She ate too much food.",
+          "She took on more than she could manage.",
+          "She chewed her food slowly.",
+          "She enjoyed every club."
+        ],
+        "answer": 1,
+        "working": "Joining four clubs at once is a lot to manage: the idiom means taking on too much."
+      }
+    ]
+  },
+  "e6-6-1": {
+    "lessonId": "e6-6-1",
+    "title": "Pronouns: Subject, Object and Antecedent",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What is a pronoun?",
+        "t": 16.766
+      },
+      {
+        "title": "Subject and object pronouns",
+        "t": 56.747
+      },
+      {
+        "title": "Common mistakes",
+        "t": 93.496
+      },
+      {
+        "title": "Pronouns and antecedents",
+        "t": 126.332
+      },
+      {
+        "title": "Your turn",
+        "t": 170.958
+      },
+      {
+        "title": "Summary",
+        "t": 200.647
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-6-1:q2",
+        "t": 177.558,
+        "prompt": "Which sentence uses pronouns correctly?",
+        "choices": [
+          "Me and her walked to school.",
+          "The coach gave the prize to Sam and I.",
+          "She and I walked to school.",
+          "Give the book to myself."
+        ],
+        "answer": 2,
+        "working": "“She and I” are the subject, so subject pronouns are right. B needs “me” after “to”, and D needs “me”."
+      }
+    ]
+  },
+  "e6-6-2": {
+    "lessonId": "e6-6-2",
+    "title": "Progressive and Perfect Verb Tenses",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Tense and helping verbs",
+        "t": 16.515
+      },
+      {
+        "title": "Progressive tenses",
+        "t": 45.515
+      },
+      {
+        "title": "Perfect tenses",
+        "t": 74.735
+      },
+      {
+        "title": "Keeping tenses consistent",
+        "t": 125.174
+      },
+      {
+        "title": "Your turn",
+        "t": 156.87
+      },
+      {
+        "title": "Summary",
+        "t": 182.997
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-6-2:q2",
+        "t": 163.511,
+        "prompt": "“By the time we reached the station, the train ____.” Which verb is correct?",
+        "choices": [
+          "leaves",
+          "had left",
+          "is leaving",
+          "will leave"
+        ],
+        "answer": 1,
+        "working": "There are two past events, and the train left first, so it needs the past perfect: “had left”."
+      }
+    ]
+  },
+  "e6-6-3": {
+    "lessonId": "e6-6-3",
+    "title": "Simple and Compound Sentences",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Clauses",
+        "t": 16.019
+      },
+      {
+        "title": "Simple or compound?",
+        "t": 49.304
+      },
+      {
+        "title": "FANBOYS",
+        "t": 80.761
+      },
+      {
+        "title": "Avoiding a comma splice",
+        "t": 108.125
+      },
+      {
+        "title": "Your turn",
+        "t": 132.845
+      },
+      {
+        "title": "Summary",
+        "t": 161.046
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-6-3:q2",
+        "t": 139.113,
+        "prompt": "Which of these is a compound sentence?",
+        "choices": [
+          "After the storm, the streets were quiet.",
+          "Leo and Ana ran and jumped.",
+          "The bus was late, so we walked to school.",
+          "Because I was tired, I went to bed."
+        ],
+        "answer": 2,
+        "working": "C joins two independent clauses with a comma and “so”. A and B are simple, and D is complex."
+      }
+    ]
+  },
+  "e6-6-4": {
+    "lessonId": "e6-6-4",
+    "title": "Commas and Apostrophes",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two marks",
+        "t": 15.655
+      },
+      {
+        "title": "Apostrophes",
+        "t": 40.308
+      },
+      {
+        "title": "It’s and its",
+        "t": 74.422
+      },
+      {
+        "title": "Commas in sentences",
+        "t": 96.617
+      },
+      {
+        "title": "Your turn",
+        "t": 150.151
+      },
+      {
+        "title": "Summary",
+        "t": 179.867
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-6-4:q2",
+        "t": 156.551,
+        "prompt": "Which sentence is punctuated correctly?",
+        "choices": [
+          "The childrens’ coats were wet.",
+          "The dog wagged it’s tail.",
+          "The two girls’ bikes were by the gate.",
+          "Fresh carrot’s for sale."
+        ],
+        "answer": 2,
+        "working": "“Girls” is a plural ending in s, so it takes only an apostrophe. A should be “children’s”, B “its”, and D “carrots”."
+      }
+    ]
+  },
+  "e6-7-1": {
+    "lessonId": "e6-7-1",
+    "title": "Narrative Writing: Hooks and Dialogue",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hooking the reader",
+        "t": 17.357
+      },
+      {
+        "title": "Choosing a hook",
+        "t": 49.482
+      },
+      {
+        "title": "Writing dialogue",
+        "t": 79.697
+      },
+      {
+        "title": "Punctuating dialogue",
+        "t": 112.656
+      },
+      {
+        "title": "Your turn",
+        "t": 144.549
+      },
+      {
+        "title": "Summary",
+        "t": 168.903
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-7-1:q2",
+        "t": 150.775,
+        "prompt": "“Oh, sure, I’d love to clean the bathroom,” Omar muttered, rolling his eyes. What does this show about Omar?",
+        "choices": [
+          "He loves cleaning.",
+          "He is excited about the bathroom.",
+          "He is too tired to speak.",
+          "He does not want to clean it: he is being sarcastic."
+        ],
+        "answer": 3,
+        "working": "His words say he would love to, but “muttered” and “rolling his eyes” say the opposite."
+      }
+    ]
+  },
+  "e6-7-2": {
+    "lessonId": "e6-7-2",
+    "title": "Informational Writing",
+    "duration": 164,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Introduction, body and conclusion",
+        "t": 16.603
+      },
+      {
+        "title": "Planning a report",
+        "t": 49.434
+      },
+      {
+        "title": "Transitions",
+        "t": 84.723
+      },
+      {
+        "title": "Your turn",
+        "t": 114.666
+      },
+      {
+        "title": "Summary",
+        "t": 140.175
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-7-2:q2",
+        "t": 120.831,
+        "prompt": "“Frogs have smooth skin. ____, toads have dry, bumpy skin.” Which transition fits best?",
+        "choices": [
+          "For example",
+          "In contrast",
+          "As a result",
+          "First"
+        ],
+        "answer": 1,
+        "working": "The second sentence shows a difference from the first, so it needs a contrast transition."
+      }
+    ]
+  },
+  "e6-7-3": {
+    "lessonId": "e6-7-3",
+    "title": "Persuasive Writing: Claims and Counterclaims",
+    "duration": 166,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A clear, arguable claim",
+        "t": 17.969
+      },
+      {
+        "title": "Counterclaims and rebuttals",
+        "t": 56.375
+      },
+      {
+        "title": "A common mistake",
+        "t": 99.369
+      },
+      {
+        "title": "Your turn",
+        "t": 117.615
+      },
+      {
+        "title": "Summary",
+        "t": 145.436
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-7-3:q2",
+        "t": 125.588,
+        "prompt": "Which is the strongest claim for a one-page persuasive piece?",
+        "choices": [
+          "Libraries have books in them.",
+          "Our library should open on Sunday afternoons.",
+          "Something should be done about libraries.",
+          "Every library in the world should be rebuilt."
+        ],
+        "answer": 1,
+        "working": "B is arguable, specific and manageable. A is a fact, C is vague, and D is too big for one page."
+      }
+    ]
+  },
+  "e6-7-4": {
+    "lessonId": "e6-7-4",
+    "title": "Revising for Style",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Precise words",
+        "t": 19.651
+      },
+      {
+        "title": "Cutting weak words",
+        "t": 50.487
+      },
+      {
+        "title": "Sentence variety",
+        "t": 84.152
+      },
+      {
+        "title": "Your turn",
+        "t": 121.406
+      },
+      {
+        "title": "Summary",
+        "t": 155.375
+      }
+    ],
+    "cues": [
+      {
+        "id": "e6-7-4:q2",
+        "t": 130.38,
+        "prompt": "“I woke up. I got dressed. I ate breakfast.” Which is the best revision?",
+        "choices": [
+          "I woke up and I got dressed and I ate breakfast.",
+          "I woke up. I got dressed. I ate a very good breakfast.",
+          "When I woke up, I got dressed. After breakfast, I left for school.",
+          "I woke up, I got dressed, I ate breakfast."
+        ],
+        "answer": 2,
+        "working": "C joins the ideas and varies the openings. A is still repetitive, B adds a vague “very good”, and D is a string of comma splices."
+      }
+    ]
+  },
+  "e7-1-1": {
+    "lessonId": "e7-1-1",
+    "title": "Conflict and Suspense",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two families of conflict",
+        "t": 20.407
+      },
+      {
+        "title": "Finding both conflicts",
+        "t": 63.233
+      },
+      {
+        "title": "Building suspense",
+        "t": 106.793
+      },
+      {
+        "title": "Your turn",
+        "t": 154.321
+      },
+      {
+        "title": "Summary",
+        "t": 180.87
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-1-1:q2",
+        "t": 166.228,
+        "prompt": "“The bridge would close at midnight. It was 11:40, and the car still would not start.” Which way of building suspense is this?",
+        "choices": [
+          "A cliffhanger",
+          "Slowing down a moment",
+          "A ticking clock",
+          "An internal conflict"
+        ],
+        "answer": 2,
+        "working": "The bridge closes at midnight and time is running out, so the deadline creates the suspense."
+      }
+    ]
+  },
+  "e7-1-2": {
+    "lessonId": "e7-1-2",
+    "title": "Characterization",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Direct and indirect",
+        "t": 19.373
+      },
+      {
+        "title": "Five clues: STEAL",
+        "t": 60.401
+      },
+      {
+        "title": "Reading the clues",
+        "t": 92.062
+      },
+      {
+        "title": "Your turn",
+        "t": 127.898
+      },
+      {
+        "title": "Summary",
+        "t": 154.535
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-1-2:q2",
+        "t": 138.916,
+        "prompt": "“When Dev walked into the room, the younger children went quiet and moved out of his way.” Which STEAL clue is the writer using?",
+        "choices": [
+          "Speech",
+          "Looks",
+          "Thoughts",
+          "Effect on others"
+        ],
+        "answer": 3,
+        "working": "We learn about Dev from how the other children react to him, so this is the effect he has on others."
+      }
+    ]
+  },
+  "e7-1-3": {
+    "lessonId": "e7-1-3",
+    "title": "Setting and Mood",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What setting is",
+        "t": 15.966
+      },
+      {
+        "title": "Setting as the problem",
+        "t": 65.377
+      },
+      {
+        "title": "Setting and mood",
+        "t": 85.701
+      },
+      {
+        "title": "Mood is not tone",
+        "t": 112.957
+      },
+      {
+        "title": "Your turn",
+        "t": 126.993
+      },
+      {
+        "title": "Summary",
+        "t": 159.558
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-1-3:q2",
+        "t": 139.26,
+        "prompt": "“Every clock in the house had stopped at seven minutes past four. Dust lay thick on the wedding cake, and the curtains had not been opened in years.” What is the mood?",
+        "choices": [
+          "Gloomy and sad",
+          "Joyful and lively",
+          "Peaceful and calm",
+          "Funny and silly"
+        ],
+        "answer": 0,
+        "working": "Stopped clocks suggest time froze at a terrible moment, and the dust and closed curtains suggest grief and neglect."
+      }
+    ]
+  },
+  "e7-1-4": {
+    "lessonId": "e7-1-4",
+    "title": "Foreshadowing and Flashback",
+    "duration": 210,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Foreshadowing",
+        "t": 17.194
+      },
+      {
+        "title": "Spotting foreshadowing",
+        "t": 53.399
+      },
+      {
+        "title": "Flashback",
+        "t": 87.801
+      },
+      {
+        "title": "Forward or back?",
+        "t": 129.668
+      },
+      {
+        "title": "Your turn",
+        "t": 152.884
+      },
+      {
+        "title": "Summary",
+        "t": 181.635
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-1-4:q2",
+        "t": 164.367,
+        "prompt": "“As Grandpa handed her the old violin, Amara remembered the summer she was seven, sitting on his porch while he played until the stars came out.” What is the writer using?",
+        "choices": [
+          "Foreshadowing",
+          "A flashback",
+          "A cliffhanger",
+          "A symbol of the future"
+        ],
+        "answer": 1,
+        "working": "“Remembered the summer she was seven” takes us back to an earlier scene, so this is a flashback."
+      }
+    ]
+  },
+  "e7-1-5": {
+    "lessonId": "e7-1-5",
+    "title": "Theme and Symbol",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a symbol is",
+        "t": 20.635
+      },
+      {
+        "title": "Reading a symbol",
+        "t": 66.569
+      },
+      {
+        "title": "How a theme develops",
+        "t": 90.407
+      },
+      {
+        "title": "Your turn",
+        "t": 136.63
+      },
+      {
+        "title": "Summary",
+        "t": 169.631
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-1-5:q2",
+        "t": 147.951,
+        "prompt": "After his mother died, Eli kept the curtains in her room closed. At the end of the story he opens them, and sunlight fills the room. What do the curtains most likely symbolize?",
+        "choices": [
+          "The weather that day",
+          "Eli’s love of sunlight",
+          "A new house",
+          "His grief, and at the end his healing"
+        ],
+        "answer": 3,
+        "working": "The closed curtains are linked to Eli’s feelings after the death, and they change when he changes: opening them shows the theme of healing."
+      }
+    ]
+  },
+  "e7-2-1": {
+    "lessonId": "e7-2-1",
+    "title": "Imagery",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Images for every sense",
+        "t": 23.748
+      },
+      {
+        "title": "A poem made of one image",
+        "t": 59.736
+      },
+      {
+        "title": "What an image adds",
+        "t": 87.666
+      },
+      {
+        "title": "Your turn",
+        "t": 125.397
+      },
+      {
+        "title": "Summary",
+        "t": 155.62
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-2-1:q2",
+        "t": 138.183,
+        "prompt": "In “The Rime of the Ancient Mariner”, the ice around the ship “cracked and growled, and roared and howled”. Which sense does this image appeal to?",
+        "choices": [
+          "Sight",
+          "Touch",
+          "Smell",
+          "Sound"
+        ],
+        "answer": 3,
+        "working": "Cracked, growled, roared and howled are all noises: we hear the ice rather than see it."
+      }
+    ]
+  },
+  "e7-2-2": {
+    "lessonId": "e7-2-2",
+    "title": "Rhythm and Sound",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stressed syllables",
+        "t": 18.462
+      },
+      {
+        "title": "Counting beats",
+        "t": 50.909
+      },
+      {
+        "title": "The iamb",
+        "t": 74.593
+      },
+      {
+        "title": "Sound that matches meaning",
+        "t": 104.071
+      },
+      {
+        "title": "Your turn",
+        "t": 137.124
+      },
+      {
+        "title": "Summary",
+        "t": 167.341
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-2-2:q2",
+        "t": 148.665,
+        "prompt": "A poem about a racing train uses short words, a fast beat and many hard “k” and “t” sounds. What do the sounds do?",
+        "choices": [
+          "They make the poem rhyme.",
+          "They imitate the speed and clatter of the train.",
+          "They slow the reader down.",
+          "They make the mood peaceful."
+        ],
+        "answer": 1,
+        "working": "Short words and a quick beat make us read fast, and hard consonants sound like metal clattering."
+      }
+    ]
+  },
+  "e7-2-3": {
+    "lessonId": "e7-2-3",
+    "title": "The Ballad",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a ballad is",
+        "t": 22.748
+      },
+      {
+        "title": "Checking a ballad stanza",
+        "t": 66.036
+      },
+      {
+        "title": "Old words",
+        "t": 99.404
+      },
+      {
+        "title": "Your turn",
+        "t": 121.104
+      },
+      {
+        "title": "Summary",
+        "t": 152.457
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-2-3:q2",
+        "t": 132.256,
+        "prompt": "What is happening in this stanza?",
+        "choices": [
+          "The ship is sinking in a storm.",
+          "The sailors are arriving home.",
+          "There is no wind, so the ship is stuck.",
+          "The ship is racing to a wedding."
+        ],
+        "answer": 2,
+        "working": "The Mariner is speaking for the sailors. “Nor breath nor motion” means there is no wind, so the ship cannot move: it is becalmed."
+      }
+    ]
+  },
+  "e7-2-4": {
+    "lessonId": "e7-2-4",
+    "title": "The Sonnet and Free Verse",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Telling forms apart",
+        "t": 18.172
+      },
+      {
+        "title": "Free verse",
+        "t": 48.992
+      },
+      {
+        "title": "The Shakespearean sonnet",
+        "t": 90.373
+      },
+      {
+        "title": "Sonnet 18",
+        "t": 109.13
+      },
+      {
+        "title": "The turn",
+        "t": 132.124
+      },
+      {
+        "title": "Your turn",
+        "t": 175.363
+      },
+      {
+        "title": "Summary",
+        "t": 205.598
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-2-4:q2",
+        "t": 187.611,
+        "prompt": "A poem has 14 lines in iambic pentameter, and its last two lines rhyme with each other. What form is it most likely?",
+        "choices": [
+          "A ballad",
+          "Free verse",
+          "A limerick",
+          "A Shakespearean sonnet"
+        ],
+        "answer": 3,
+        "working": "Fourteen lines of iambic pentameter ending in a rhyming couplet is the shape of a Shakespearean sonnet."
+      }
+    ]
+  },
+  "e7-2-5": {
+    "lessonId": "e7-2-5",
+    "title": "Speaker and Tone",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The speaker",
+        "t": 18.663
+      },
+      {
+        "title": "Dickinson’s nobody",
+        "t": 45.989
+      },
+      {
+        "title": "Tone",
+        "t": 70.905
+      },
+      {
+        "title": "An open tone",
+        "t": 102.028
+      },
+      {
+        "title": "Your turn",
+        "t": 133.426
+      },
+      {
+        "title": "Summary",
+        "t": 160.76
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-2-5:q2",
+        "t": 143.371,
+        "prompt": "“Oh, wonderful. Another rainy Monday. Just what I needed.” What is the speaker’s tone?",
+        "choices": [
+          "Sarcastic",
+          "Admiring",
+          "Joyful",
+          "Frightened"
+        ],
+        "answer": 0,
+        "working": "The words “wonderful” and “just what I needed” say the opposite of what the speaker means, so the tone is sarcastic."
+      }
+    ]
+  },
+  "e7-3-1": {
+    "lessonId": "e7-3-1",
+    "title": "Reading a Script",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of a script",
+        "t": 17.89
+      },
+      {
+        "title": "A scene on the page",
+        "t": 61.135
+      },
+      {
+        "title": "What stage directions do",
+        "t": 95.08
+      },
+      {
+        "title": "Your turn",
+        "t": 140.021
+      },
+      {
+        "title": "Summary",
+        "t": 169.388
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-3-1:q2",
+        "t": 150.68,
+        "prompt": "Mira says “Because she never said why” while kneeling by the trunk. What does the stage direction show?",
+        "choices": [
+          "Mira is tired and needs to rest.",
+          "Mira is going to open the trunk.",
+          "Mira has dropped her torch.",
+          "Mira wants to leave the attic."
+        ],
+        "answer": 1,
+        "working": "Kneeling by the trunk as she speaks shows that she means to look inside: the direction shows her decision in action."
+      }
+    ]
+  },
+  "e7-3-2": {
+    "lessonId": "e7-3-2",
+    "title": "Dialogue, Asides and Monologues",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What dialogue does",
+        "t": 22.058
+      },
+      {
+        "title": "Subtext",
+        "t": 63.016
+      },
+      {
+        "title": "Three special speeches",
+        "t": 89.591
+      },
+      {
+        "title": "Monologue or soliloquy?",
+        "t": 133.593
+      },
+      {
+        "title": "Your turn",
+        "t": 157.588
+      },
+      {
+        "title": "Summary",
+        "t": 185.024
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-3-2:q2",
+        "t": 169.071,
+        "prompt": "Alone on stage at night, Lena paces and says, “Should I tell them the truth tomorrow? If I do, they may never trust me again.” What kind of speech is this?",
+        "choices": [
+          "An aside",
+          "Dialogue",
+          "A soliloquy",
+          "A stage direction"
+        ],
+        "answer": 2,
+        "working": "Lena is alone on stage, thinking aloud about a hard choice, so this is a soliloquy."
+      }
+    ]
+  },
+  "e7-4-1": {
+    "lessonId": "e7-4-1",
+    "title": "Claims, Reasons and Evidence",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an argument",
+        "t": 21.43
+      },
+      {
+        "title": "Taking one apart",
+        "t": 49.555
+      },
+      {
+        "title": "Kinds of evidence",
+        "t": 89.363
+      },
+      {
+        "title": "Relevant and reliable",
+        "t": 128.538
+      },
+      {
+        "title": "Your turn",
+        "t": 158.872
+      },
+      {
+        "title": "Summary",
+        "t": 190.965
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-4-1:q2",
+        "t": 169.237,
+        "prompt": "Claim: “Homework should be limited to one hour a night.” Which evidence is most relevant?",
+        "choices": [
+          "A study of how many students own phones",
+          "A famous athlete who says homework is boring",
+          "A study linking more than an hour of homework to worse sleep",
+          "My friend, who finished her homework in ten minutes"
+        ],
+        "answer": 2,
+        "working": "The sleep study is directly about the amount of homework. The phone study is off topic, the athlete is not an expert, and the friend is one anecdote."
+      }
+    ]
+  },
+  "e7-4-2": {
+    "lessonId": "e7-4-2",
+    "title": "Persuasive Techniques",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a technique is",
+        "t": 19.224
+      },
+      {
+        "title": "Five techniques",
+        "t": 39.344
+      },
+      {
+        "title": "Naming the technique",
+        "t": 83.157
+      },
+      {
+        "title": "The effect on the reader",
+        "t": 105.46
+      },
+      {
+        "title": "Your turn",
+        "t": 154.427
+      },
+      {
+        "title": "Summary",
+        "t": 186.755
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-4-2:q2",
+        "t": 166.759,
+        "prompt": "A charity letter describes one named child’s day in detail instead of giving figures. What is the most likely effect?",
+        "choices": [
+          "Readers trust the figures more.",
+          "Readers find the letter too long.",
+          "Readers feel nothing, because there are no facts.",
+          "Readers care more about one person, so they are more likely to give."
+        ],
+        "answer": 3,
+        "working": "Readers find it easier to care about one person than about a statistic, so the single story makes them feel more."
+      }
+    ]
+  },
+  "e7-4-3": {
+    "lessonId": "e7-4-3",
+    "title": "Fact, Opinion and Bias",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Fact and opinion",
+        "t": 20.107
+      },
+      {
+        "title": "Opinions dressed up as facts",
+        "t": 67.093
+      },
+      {
+        "title": "Bias",
+        "t": 88.528
+      },
+      {
+        "title": "Your turn",
+        "t": 130.807
+      },
+      {
+        "title": "Summary",
+        "t": 162.101
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-4-3:q2",
+        "t": 138,
+        "prompt": "Which headline is most balanced?",
+        "choices": [
+          "Heartless council destroys our beloved pool",
+          "Council votes 5–4 to close the old pool",
+          "Council finally rids town of useless pool",
+          "Pool lovers betrayed by greedy council"
+        ],
+        "answer": 1,
+        "working": "A, C and D use loaded words (heartless, beloved, useless, greedy). B simply states what happened."
+      }
+    ]
+  },
+  "e7-5-1": {
+    "lessonId": "e7-5-1",
+    "title": "How News Reports Work",
+    "duration": 206,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A report",
+        "t": 17.427
+      },
+      {
+        "title": "Features of a news report",
+        "t": 43.328
+      },
+      {
+        "title": "The five Ws",
+        "t": 82.942
+      },
+      {
+        "title": "The angle of a story",
+        "t": 117.467
+      },
+      {
+        "title": "Your turn",
+        "t": 152.341
+      },
+      {
+        "title": "Summary",
+        "t": 178.579
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-5-1:q2",
+        "t": 159.989,
+        "prompt": "Which sentence suggests the mayor is owning up to a failure?",
+        "choices": [
+          "The mayor said the plan was late.",
+          "The mayor explained the plan’s timetable.",
+          "The mayor admitted the plan was late.",
+          "The mayor described the plan."
+        ],
+        "answer": 2,
+        "working": "“Said” is neutral, but “admitted” suggests owning up to something that went wrong. Single words shape the angle too."
+      }
+    ]
+  },
+  "e7-5-2": {
+    "lessonId": "e7-5-2",
+    "title": "Judging Sources Online",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sources",
+        "t": 20.802
+      },
+      {
+        "title": "Four questions",
+        "t": 39.016
+      },
+      {
+        "title": "A suspicious post",
+        "t": 90.244
+      },
+      {
+        "title": "What does this text want?",
+        "t": 111.779
+      },
+      {
+        "title": "Your turn",
+        "t": 151.249
+      },
+      {
+        "title": "Summary",
+        "t": 179.158
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-5-2:q2",
+        "t": 160.443,
+        "prompt": "You find a claim about sleep on an anonymous blog. What is the best way to check it?",
+        "choices": [
+          "Trust it if it has lots of likes.",
+          "Cross-check it with reliable sources, such as a health organization.",
+          "Trust it because it is online.",
+          "Ask whether the blog looks colourful."
+        ],
+        "answer": 1,
+        "working": "Likes and looks do not prove anything. If independent, reliable sources say the same thing, the claim is more likely to be true."
+      }
+    ]
+  },
+  "e7-6-1": {
+    "lessonId": "e7-6-1",
+    "title": "Phrases and Clauses",
+    "duration": 175,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Phrase or clause?",
+        "t": 18.217
+      },
+      {
+        "title": "A common mistake",
+        "t": 57.34
+      },
+      {
+        "title": "Independent and dependent",
+        "t": 76.16
+      },
+      {
+        "title": "Your turn",
+        "t": 119.2
+      },
+      {
+        "title": "Summary",
+        "t": 148.842
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-6-1:q2",
+        "t": 128.975,
+        "prompt": "Which part is the independent clause?",
+        "choices": [
+          "When the rain stopped",
+          "the children ran outside",
+          "When the rain",
+          "stopped, the children"
+        ],
+        "answer": 1,
+        "working": "“When the rain stopped” has a subject and verb, but “when” makes it wait for more. “The children ran outside” makes sense on its own."
+      }
+    ]
+  },
+  "e7-6-2": {
+    "lessonId": "e7-6-2",
+    "title": "Complex Sentences",
+    "duration": 189,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subordinating conjunctions",
+        "t": 21.172
+      },
+      {
+        "title": "Joining two sentences",
+        "t": 61.593
+      },
+      {
+        "title": "Four sentence structures",
+        "t": 80.55
+      },
+      {
+        "title": "A common mistake",
+        "t": 112.838
+      },
+      {
+        "title": "Your turn",
+        "t": 131.585
+      },
+      {
+        "title": "Summary",
+        "t": 158.765
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-6-2:q2",
+        "t": 140.377,
+        "prompt": "What is the structure of this sentence?",
+        "choices": [
+          "Simple",
+          "Compound",
+          "Complex",
+          "Compound-complex"
+        ],
+        "answer": 3,
+        "working": "“If it rains” is a dependent clause, and “we will stay in” and “we will still have fun” are two independent clauses joined by “but”."
+      }
+    ]
+  },
+  "e7-6-3": {
+    "lessonId": "e7-6-3",
+    "title": "Fragments and Run-ons",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sentence fragments",
+        "t": 20.146
+      },
+      {
+        "title": "Fragments on purpose",
+        "t": 56.842
+      },
+      {
+        "title": "Run-ons and comma splices",
+        "t": 82.286
+      },
+      {
+        "title": "Your turn",
+        "t": 119.793
+      },
+      {
+        "title": "Summary",
+        "t": 149.23
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-6-3:q2",
+        "t": 127.789,
+        "prompt": "“Ravi was tired, he kept working.” Which is a correct fix?",
+        "choices": [
+          "Ravi was tired he kept working.",
+          "Ravi was tired, he, kept working.",
+          "Because Ravi was tired.",
+          "Ravi was tired, but he kept working."
+        ],
+        "answer": 3,
+        "working": "The original is a comma splice. A comma and the conjunction “but” join the two clauses correctly. A is a run-on, and C is a fragment."
+      }
+    ]
+  },
+  "e7-6-4": {
+    "lessonId": "e7-6-4",
+    "title": "Agreement",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subject–verb agreement",
+        "t": 17.596
+      },
+      {
+        "title": "Finding the subject",
+        "t": 64.133
+      },
+      {
+        "title": "Pronoun–antecedent agreement",
+        "t": 89.145
+      },
+      {
+        "title": "Unclear pronouns",
+        "t": 126.587
+      },
+      {
+        "title": "Your turn",
+        "t": 143.239
+      },
+      {
+        "title": "Summary",
+        "t": 166.921
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-6-4:q2",
+        "t": 150.437,
+        "prompt": "Which sentence is correct?",
+        "choices": [
+          "The basket of apples are heavy.",
+          "The basket of apples is heavy.",
+          "The basket of apples were heavy.",
+          "The basket of apples be heavy."
+        ],
+        "answer": 1,
+        "working": "Cross out “of apples”: the subject is “basket”, which is singular, so the verb is “is”."
+      }
+    ]
+  },
+  "e7-6-5": {
+    "lessonId": "e7-6-5",
+    "title": "Punctuating Clauses and Dialogue",
+    "duration": 207,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Commas with clauses",
+        "t": 19.067
+      },
+      {
+        "title": "A common mistake",
+        "t": 64.441
+      },
+      {
+        "title": "Punctuating dialogue",
+        "t": 84.779
+      },
+      {
+        "title": "Direct and reported speech",
+        "t": 130.597
+      },
+      {
+        "title": "Your turn",
+        "t": 149.666
+      },
+      {
+        "title": "Summary",
+        "t": 176.692
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-6-5:q2",
+        "t": 158.193,
+        "prompt": "Which sentence is punctuated correctly?",
+        "choices": [
+          "“Wait for me” called Leo.",
+          "“Wait for me”, called Leo.",
+          "“Wait for me,” called Leo.",
+          "“Wait for me,” Called Leo."
+        ],
+        "answer": 2,
+        "working": "The comma goes inside the closing quotation mark, and the tag “called Leo” does not start with a capital letter."
+      }
+    ]
+  },
+  "e7-7-1": {
+    "lessonId": "e7-7-1",
+    "title": "The Paragraph",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parts of a paragraph",
+        "t": 19.657
+      },
+      {
+        "title": "Choosing a topic sentence",
+        "t": 64.564
+      },
+      {
+        "title": "Unity and coherence",
+        "t": 100.458
+      },
+      {
+        "title": "Your turn",
+        "t": 131.696
+      },
+      {
+        "title": "Summary",
+        "t": 166.477
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-7-1:q2",
+        "t": 143.697,
+        "prompt": "A paragraph begins: “Parrots are a bigger commitment than most people realize.” Which of its sentences breaks the unity?",
+        "choices": [
+          "Many parrots can live for more than fifty years.",
+          "Some parrots need hours of attention every day.",
+          "Parrots can be noisy, especially in the morning.",
+          "My grandmother has a parrot called Rio."
+        ],
+        "answer": 3,
+        "working": "The main idea is that parrots are a big commitment. A long life, needing attention and noise all support it, but Rio adds nothing to the point."
+      }
+    ]
+  },
+  "e7-7-2": {
+    "lessonId": "e7-7-2",
+    "title": "The Essay",
+    "duration": 194,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The thesis statement",
+        "t": 21.035
+      },
+      {
+        "title": "Weak and strong",
+        "t": 57.297
+      },
+      {
+        "title": "Introduction, body and conclusion",
+        "t": 93.747
+      },
+      {
+        "title": "Your turn",
+        "t": 133.503
+      },
+      {
+        "title": "Summary",
+        "t": 166.401
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-7-2:q2",
+        "t": 143.351,
+        "prompt": "“Have you ever wondered where your rubbish goes? Every year, millions of tonnes end up in landfill. Our town should introduce weekly food-waste collections.” Which sentence is the thesis of this introduction?",
+        "choices": [
+          "Have you ever wondered where your rubbish goes?",
+          "Every year, millions of tonnes end up in landfill.",
+          "Our town should introduce weekly food-waste collections.",
+          "There is no thesis."
+        ],
+        "answer": 2,
+        "working": "The question is a hook and the landfill figure is background. “Our town should…” states the arguable main point, at the end of the introduction."
+      }
+    ]
+  },
+  "e7-7-3": {
+    "lessonId": "e7-7-3",
+    "title": "Showing and Pacing",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Show, don’t tell",
+        "t": 16.147
+      },
+      {
+        "title": "When to tell",
+        "t": 56.163
+      },
+      {
+        "title": "Pacing",
+        "t": 71.787
+      },
+      {
+        "title": "Your turn",
+        "t": 115.829
+      },
+      {
+        "title": "Summary",
+        "t": 144.558
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-7-3:q2",
+        "t": 123.741,
+        "prompt": "A story is about a rescue at sea. How should the writer pace it?",
+        "choices": [
+          "Show the trip out in detail, and summarize the rescue.",
+          "Summarize the trip out, and slow down for the storm and the rescue.",
+          "Tell everything in one paragraph.",
+          "Give every part exactly the same number of words."
+        ],
+        "answer": 1,
+        "working": "The trip out is not where the drama is, so summarize it. The storm and the rescue are the heart of the story, so slow down and show them."
+      }
+    ]
+  },
+  "e7-7-4": {
+    "lessonId": "e7-7-4",
+    "title": "Research and Citing Sources",
+    "duration": 196,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The research question",
+        "t": 17.81
+      },
+      {
+        "title": "Improving a question",
+        "t": 55.233
+      },
+      {
+        "title": "Using sources",
+        "t": 75.038
+      },
+      {
+        "title": "A paraphrase",
+        "t": 105.028
+      },
+      {
+        "title": "Your turn",
+        "t": 137.837
+      },
+      {
+        "title": "Summary",
+        "t": 168.331
+      }
+    ],
+    "cues": [
+      {
+        "id": "e7-7-4:q2",
+        "t": 145.559,
+        "prompt": "Which is the best research question for a two-page report?",
+        "choices": [
+          "Animals",
+          "What is the history of every animal on Earth?",
+          "How many legs does a spider have?",
+          "How do Arctic foxes survive the winter?"
+        ],
+        "answer": 3,
+        "working": "A is not a question, B is far too broad, and C is answered by one fact. D is focused and needs several sources."
+      }
+    ]
+  },
+  "e8-1-1": {
+    "lessonId": "e8-1-1",
+    "title": "Plot, Subplot and Plot Devices",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Main plot and subplot",
+        "t": 22.387
+      },
+      {
+        "title": "What a subplot does",
+        "t": 56.045
+      },
+      {
+        "title": "Four plot devices",
+        "t": 96.533
+      },
+      {
+        "title": "A twist is not just any surprise",
+        "t": 144.066
+      },
+      {
+        "title": "Your turn",
+        "t": 166.193
+      },
+      {
+        "title": "Summary",
+        "t": 197.191
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-1-1:q2",
+        "t": 178.987,
+        "prompt": "In “The Rime of the Ancient Mariner”, an old sailor stops a wedding guest in the street, then tells the long tale of his voyage, which fills almost the whole poem. Which plot device is this?",
+        "choices": [
+          "A red herring",
+          "A twist ending",
+          "A frame story",
+          "In medias res"
+        ],
+        "answer": 2,
+        "working": "The meeting in the street is the outer story, the frame, and the voyage is the inner story the Mariner tells."
+      }
+    ]
+  },
+  "e8-1-2": {
+    "lessonId": "e8-1-2",
+    "title": "Irony",
+    "duration": 238,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of irony",
+        "t": 17.299
+      },
+      {
+        "title": "Sarcasm and bad luck",
+        "t": 57.112
+      },
+      {
+        "title": "What irony does",
+        "t": 94.219
+      },
+      {
+        "title": "The Gift of the Magi",
+        "t": 135.764
+      },
+      {
+        "title": "Your turn",
+        "t": 172.246
+      },
+      {
+        "title": "Summary",
+        "t": 204.331
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-1-2:q2",
+        "t": 185.1,
+        "prompt": "In Romeo and Juliet, Romeo finds Juliet lying still and believes she is dead. The audience knows she has only taken a potion that makes her sleep. Which kind of irony is this?",
+        "choices": [
+          "Verbal irony",
+          "Sarcasm",
+          "Situational irony",
+          "Dramatic irony"
+        ],
+        "answer": 3,
+        "working": "The gap is between what the audience knows (she is asleep) and what the character believes (she is dead)."
+      }
+    ]
+  },
+  "e8-1-3": {
+    "lessonId": "e8-1-3",
+    "title": "Narrator and Point of View",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Narrator and point of view",
+        "t": 19.254
+      },
+      {
+        "title": "Limited or omniscient?",
+        "t": 67.598
+      },
+      {
+        "title": "How the narrator shapes a story",
+        "t": 99.369
+      },
+      {
+        "title": "The unreliable narrator",
+        "t": 140.117
+      },
+      {
+        "title": "Your turn",
+        "t": 163.719
+      },
+      {
+        "title": "Summary",
+        "t": 195.223
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-1-3:q2",
+        "t": 175.259,
+        "prompt": "A narrator says: “I stayed perfectly calm. Fine, I shouted a bit, and a plate got broken, but I was calm.” What can we conclude?",
+        "choices": [
+          "He is an omniscient narrator.",
+          "He is a reliable narrator.",
+          "He is a second-person narrator.",
+          "He is an unreliable narrator: his own details contradict his claim."
+        ],
+        "answer": 3,
+        "working": "He describes himself as calm, but in the same breath admits he shouted and broke a plate, so we should not trust his view of himself."
+      }
+    ]
+  },
+  "e8-1-4": {
+    "lessonId": "e8-1-4",
+    "title": "Theme Statements and Comparing Themes",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The theme statement",
+        "t": 17.418
+      },
+      {
+        "title": "Sharpening a theme",
+        "t": 51.389
+      },
+      {
+        "title": "Comparing themes",
+        "t": 93.895
+      },
+      {
+        "title": "Your turn",
+        "t": 133.701
+      },
+      {
+        "title": "Summary",
+        "t": 164.905
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-1-4:q2",
+        "t": 143.937,
+        "prompt": "Two stories are about loneliness. In the first, the main character ends still alone; in the second, she finds a friend. Which is the strongest comparison?",
+        "choices": [
+          "The first story is longer than the second.",
+          "I liked the second story more.",
+          "Both stories explore loneliness, but only the second suggests it can be overcome.",
+          "Both stories have a main character."
+        ],
+        "answer": 2,
+        "working": "C names the shared theme and the difference in one sentence. A and D describe surface details, and B is only a personal preference."
+      }
+    ]
+  },
+  "e8-2-1": {
+    "lessonId": "e8-2-1",
+    "title": "Figurative Language and Extended Metaphor",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Figurative language",
+        "t": 23.148
+      },
+      {
+        "title": "Figures of speech",
+        "t": 37.348
+      },
+      {
+        "title": "A polite gentleman",
+        "t": 66.005
+      },
+      {
+        "title": "Extended metaphor",
+        "t": 93.003
+      },
+      {
+        "title": "Your turn",
+        "t": 131.937
+      },
+      {
+        "title": "Summary",
+        "t": 160.446
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-2-1:q2",
+        "t": 142.625,
+        "prompt": "In the staircase metaphor, the mother’s life has had “tacks”, “splinters” and “boards torn up”. Together, what do these details show?",
+        "choices": [
+          "Her house needs repairs.",
+          "Her life has been a hard, painful climb.",
+          "She enjoys building stairs.",
+          "Her life has been easy and bright."
+        ],
+        "answer": 1,
+        "working": "Every detail adds to one image: climbing a broken, painful staircase stands for a hard life, and she has kept climbing."
+      }
+    ]
+  },
+  "e8-2-2": {
+    "lessonId": "e8-2-2",
+    "title": "Poetic Form and Metre",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Forms of poetry",
+        "t": 17.884
+      },
+      {
+        "title": "Why this form?",
+        "t": 51.241
+      },
+      {
+        "title": "Feet",
+        "t": 77.868
+      },
+      {
+        "title": "Counting feet",
+        "t": 111.011
+      },
+      {
+        "title": "Your turn",
+        "t": 146.116
+      },
+      {
+        "title": "Summary",
+        "t": 175.317
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-2-2:q2",
+        "t": 157.12,
+        "prompt": "A poem has no rhyme, but every line has a steady da-DUM beat with five beats. What form is it?",
+        "choices": [
+          "Free verse",
+          "A haiku",
+          "Rhyming couplets",
+          "Blank verse"
+        ],
+        "answer": 3,
+        "working": "Unrhymed lines of iambic pentameter are blank verse. Free verse has no regular beat at all."
+      }
+    ]
+  },
+  "e8-2-3": {
+    "lessonId": "e8-2-3",
+    "title": "Tone and Shifts in Poetry",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming the tone precisely",
+        "t": 17.832
+      },
+      {
+        "title": "Shifts",
+        "t": 66.977
+      },
+      {
+        "title": "Ozymandias",
+        "t": 83.373
+      },
+      {
+        "title": "Say why, not just where",
+        "t": 128.584
+      },
+      {
+        "title": "Your turn",
+        "t": 154.362
+      },
+      {
+        "title": "Summary",
+        "t": 184.651
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-2-3:q2",
+        "t": 165.525,
+        "prompt": "Frost’s poem delights in spring’s first gold, then says, “But only so an hour.” How does the tone shift?",
+        "choices": [
+          "From anger to joy",
+          "From mocking to arrogant",
+          "From delight to sad acceptance",
+          "It does not shift at all."
+        ],
+        "answer": 2,
+        "working": "“But” signals the turn: the poem moves from delight in spring’s beauty to sad acceptance that it cannot last."
+      }
+    ]
+  },
+  "e8-3-1": {
+    "lessonId": "e8-3-1",
+    "title": "Plot and Characters",
+    "duration": 232,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What the play is",
+        "t": 19.472
+      },
+      {
+        "title": "Four groups",
+        "t": 43.423
+      },
+      {
+        "title": "The plot",
+        "t": 84.947
+      },
+      {
+        "title": "A common mistake",
+        "t": 150.831
+      },
+      {
+        "title": "Your turn",
+        "t": 170.444
+      },
+      {
+        "title": "Summary",
+        "t": 202.359
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-3-1:q2",
+        "t": 180.576,
+        "prompt": "Helena knows Demetrius loves Hermia. Why does she tell him that Hermia is running away?",
+        "choices": [
+          "She wants Hermia to be caught and punished.",
+          "She hopes to win his thanks and his love.",
+          "Theseus orders her to tell him.",
+          "Puck’s potion makes her do it."
+        ],
+        "answer": 1,
+        "working": "Telling him seems to work against her, but she hopes he will be grateful, and that being near him in the wood will win him back."
+      }
+    ]
+  },
+  "e8-3-2": {
+    "lessonId": "e8-3-2",
+    "title": "Shakespeare’s Language",
+    "duration": 230,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Verse and prose",
+        "t": 19.709
+      },
+      {
+        "title": "Old words",
+        "t": 43.304
+      },
+      {
+        "title": "Changed meanings",
+        "t": 84.579
+      },
+      {
+        "title": "Who speaks what",
+        "t": 123.972
+      },
+      {
+        "title": "Your turn",
+        "t": 172.807
+      },
+      {
+        "title": "Summary",
+        "t": 200.667
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-3-2:q2",
+        "t": 181.844,
+        "prompt": "Which kind of speech do the mechanicals, such as Bottom and Quince, usually use?",
+        "choices": [
+          "Prose: ordinary sentences with no regular beat",
+          "Blank verse: unrhymed iambic pentameter",
+          "Rhyming couplets",
+          "Short, sung fairy lines"
+        ],
+        "answer": 0,
+        "working": "The mechanicals, such as Bottom and Quince, speak prose, the language of ordinary working people in the play."
+      }
+    ]
+  },
+  "e8-3-3": {
+    "lessonId": "e8-3-3",
+    "title": "Comedy and the Play Within the Play",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a comedy is",
+        "t": 21.654
+      },
+      {
+        "title": "The play within the play",
+        "t": 68.78
+      },
+      {
+        "title": "How it mirrors the main plot",
+        "t": 111.888
+      },
+      {
+        "title": "Puck’s epilogue",
+        "t": 143.003
+      },
+      {
+        "title": "Quote, then explain",
+        "t": 166.553
+      },
+      {
+        "title": "Your turn",
+        "t": 194.213
+      },
+      {
+        "title": "Summary",
+        "t": 225.03
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-3-3:q2",
+        "t": 205.101,
+        "prompt": "Helena says of Hermia: “And though she be but little, she is fierce.” What does the line reveal?",
+        "choices": [
+          "Hermia is younger than Helena.",
+          "Helena is afraid of the fairies.",
+          "Hermia is gentle and shy.",
+          "Hermia is small but has a fiery temper."
+        ],
+        "answer": 3,
+        "working": "Helena says this in Act 3 when Hermia, furious that both men now love Helena, turns on her. Though Hermia is small, she is fierce."
+      }
+    ]
+  },
+  "e8-4-1": {
+    "lessonId": "e8-4-1",
+    "title": "Building an Argument",
+    "duration": 237,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The parts of an argument",
+        "t": 19.723
+      },
+      {
+        "title": "Finding the parts",
+        "t": 60.162
+      },
+      {
+        "title": "Testing the warrant",
+        "t": 95.199
+      },
+      {
+        "title": "Answering the other side",
+        "t": 128.671
+      },
+      {
+        "title": "Your turn",
+        "t": 171.149
+      },
+      {
+        "title": "Summary",
+        "t": 207.175
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-4-1:q2",
+        "t": 187.111,
+        "prompt": "“Some argue that phones help in emergencies; however, students could still use them at break and lunch, and the school office can always reach parents.” What is the part after “however”?",
+        "choices": [
+          "The claim",
+          "A rebuttal",
+          "A concession",
+          "The warrant"
+        ],
+        "answer": 1,
+        "working": "“Some argue…” introduces a counterargument. The part after “however” shows why it does not change the conclusion, so it is a rebuttal."
+      }
+    ]
+  },
+  "e8-4-2": {
+    "lessonId": "e8-4-2",
+    "title": "Ethos, Pathos and Logos",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What an appeal is",
+        "t": 20.769
+      },
+      {
+        "title": "The three appeals",
+        "t": 39.642
+      },
+      {
+        "title": "Naming the appeal",
+        "t": 87.645
+      },
+      {
+        "title": "Choosing for the audience",
+        "t": 121.7
+      },
+      {
+        "title": "Your turn",
+        "t": 166.069
+      },
+      {
+        "title": "Summary",
+        "t": 203.891
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-4-2:q2",
+        "t": 178.513,
+        "prompt": "A speech for cycle helmets begins: “As a paramedic, I have attended hundreds of cycling accidents.” Which appeal is this?",
+        "choices": [
+          "Ethos: it shows the speaker can be trusted",
+          "Pathos: it makes us feel pity",
+          "Logos: it gives a statistic",
+          "None of them"
+        ],
+        "answer": 0,
+        "working": "The speaker shows their own experience as a paramedic, so the audience trusts them on the subject. That is ethos."
+      }
+    ]
+  },
+  "e8-4-3": {
+    "lessonId": "e8-4-3",
+    "title": "Evaluating Sources and Reasoning",
+    "duration": 226,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Primary and secondary sources",
+        "t": 19.174
+      },
+      {
+        "title": "Is it credible?",
+        "t": 43.732
+      },
+      {
+        "title": "Conflicts of interest",
+        "t": 84.433
+      },
+      {
+        "title": "Fallacies",
+        "t": 121.444
+      },
+      {
+        "title": "Your turn",
+        "t": 162.767
+      },
+      {
+        "title": "Summary",
+        "t": 192.912
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-4-3:q2",
+        "t": 171.853,
+        "prompt": "“I met a rude tourist once, so tourists are all rude.” Which fallacy is this?",
+        "choices": [
+          "Bandwagon",
+          "Attack on the person",
+          "Hasty generalization",
+          "False choice"
+        ],
+        "answer": 2,
+        "working": "The speaker has one example, and from it judges a whole group of millions of people. One case is far too few to support a claim about everyone."
+      }
+    ]
+  },
+  "e8-5-1": {
+    "lessonId": "e8-5-1",
+    "title": "Film Techniques",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What film techniques are",
+        "t": 18.267
+      },
+      {
+        "title": "Shots and angles",
+        "t": 37.529
+      },
+      {
+        "title": "Name it, then explain it",
+        "t": 76.694
+      },
+      {
+        "title": "Lighting, sound and editing",
+        "t": 97.513
+      },
+      {
+        "title": "Your turn",
+        "t": 155.3
+      },
+      {
+        "title": "Summary",
+        "t": 190.671
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-5-1:q2",
+        "t": 170.254,
+        "prompt": "Early in a film, a family eats dinner in warm, golden light. Later, the same house is shown empty, in cold blue light. What does the change suggest?",
+        "choices": [
+          "The film was shot at a different time of year.",
+          "The family has moved to a bigger house.",
+          "Nothing: lighting has no meaning.",
+          "The family’s happiness has been lost."
+        ],
+        "answer": 3,
+        "working": "Warm golden light suggests comfort; cold blue light suggests sadness or distance. The change shows the mood has turned for the worse."
+      }
+    ]
+  },
+  "e8-5-2": {
+    "lessonId": "e8-5-2",
+    "title": "News and Framing",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "News and opinion",
+        "t": 17.099
+      },
+      {
+        "title": "Telling them apart",
+        "t": 49.898
+      },
+      {
+        "title": "Framing",
+        "t": 84.318
+      },
+      {
+        "title": "A common mistake",
+        "t": 131.709
+      },
+      {
+        "title": "Your turn",
+        "t": 153.19
+      },
+      {
+        "title": "Summary",
+        "t": 193.455
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-5-2:q2",
+        "t": 166.094,
+        "prompt": "Two headlines report the same strike: “Workers fight for fair pay” and “Strike brings city to standstill”. How do they differ?",
+        "choices": [
+          "One of them must be false.",
+          "The first frames it as justice; the second as inconvenience.",
+          "The first is an advert; the second is news.",
+          "They frame the strike in exactly the same way."
+        ],
+        "answer": 1,
+        "working": "“Fair pay” puts the workers’ cause first; “standstill” puts the effect on everyone else first. Both may be accurate, but they lead readers to different feelings."
+      }
+    ]
+  },
+  "e8-6-1": {
+    "lessonId": "e8-6-1",
+    "title": "Active and Passive Voice",
+    "duration": 211,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Active and passive",
+        "t": 19.893
+      },
+      {
+        "title": "Passive to active",
+        "t": 63.313
+      },
+      {
+        "title": "A common mistake",
+        "t": 91.102
+      },
+      {
+        "title": "Choosing a voice",
+        "t": 114.538
+      },
+      {
+        "title": "Your turn",
+        "t": 156.201
+      },
+      {
+        "title": "Summary",
+        "t": 182.655
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-6-1:q2",
+        "t": 162.462,
+        "prompt": "Which sentence is in the passive voice?",
+        "choices": [
+          "The new bridge was opened by the mayor.",
+          "Amara was running for the bus.",
+          "The storm damaged three houses.",
+          "Our team won the match."
+        ],
+        "answer": 0,
+        "working": "In “The new bridge was opened by the mayor”, the subject (the bridge) receives the action, with was + opened. “Amara was running” is active: Amara does the running."
+      }
+    ]
+  },
+  "e8-6-2": {
+    "lessonId": "e8-6-2",
+    "title": "Misplaced and Dangling Modifiers",
+    "duration": 190,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a modifier is",
+        "t": 13.91
+      },
+      {
+        "title": "Fixing misplaced modifiers",
+        "t": 37.747
+      },
+      {
+        "title": "Dangling modifiers",
+        "t": 77.694
+      },
+      {
+        "title": "Check the word after the comma",
+        "t": 107.61
+      },
+      {
+        "title": "Your turn",
+        "t": 132.621
+      },
+      {
+        "title": "Summary",
+        "t": 164.664
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-6-2:q2",
+        "t": 140.573,
+        "prompt": "Which sentence fixes “Walking to school, the rain started.”?",
+        "choices": [
+          "The rain started, walking to school.",
+          "Walking to school, the rain was starting.",
+          "Walking to school, I felt the rain start.",
+          "Walking to school the rain started."
+        ],
+        "answer": 2,
+        "working": "The walker is never named in the original. Putting “I” straight after the comma gives the phrase the right word to describe."
+      }
+    ]
+  },
+  "e8-6-3": {
+    "lessonId": "e8-6-3",
+    "title": "Parallel Structure",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What parallel structure is",
+        "t": 19.781
+      },
+      {
+        "title": "Pairs and comparisons",
+        "t": 54.166
+      },
+      {
+        "title": "Fixing a list",
+        "t": 86.837
+      },
+      {
+        "title": "Watch the last item",
+        "t": 122.332
+      },
+      {
+        "title": "Your turn",
+        "t": 144.165
+      },
+      {
+        "title": "Summary",
+        "t": 173.761
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-6-3:q2",
+        "t": 156.184,
+        "prompt": "“On Saturday Ada had to wash the car, to feed the cat and she sang loudly.” Which item breaks the parallel structure?",
+        "choices": [
+          "to wash the car",
+          "to feed the cat",
+          "On Saturday",
+          "she sang loudly"
+        ],
+        "answer": 3,
+        "working": "The first two items are to + verb. “She sang loudly” is a whole clause, so it breaks the pattern."
+      }
+    ]
+  },
+  "e8-6-4": {
+    "lessonId": "e8-6-4",
+    "title": "Semicolons and Colons",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The semicolon",
+        "t": 14.801
+      },
+      {
+        "title": "More uses",
+        "t": 38.15
+      },
+      {
+        "title": "The colon",
+        "t": 84.601
+      },
+      {
+        "title": "A common mistake",
+        "t": 119.537
+      },
+      {
+        "title": "Your turn",
+        "t": 143.372
+      },
+      {
+        "title": "Summary",
+        "t": 172.851
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-6-4:q2",
+        "t": 153.465,
+        "prompt": "“The sign gave one clear warning ___ the bridge was closed.” Which mark fits the gap best?",
+        "choices": [
+          "a semicolon ( ; )",
+          "a colon ( : )",
+          "a comma ( , )",
+          "no mark at all"
+        ],
+        "answer": 1,
+        "working": "The second part tells us what the warning was, so it explains the first part. A colon announces an explanation: “The sign gave one clear warning: the bridge was closed.”"
+      }
+    ]
+  },
+  "e8-7-1": {
+    "lessonId": "e8-7-1",
+    "title": "The Argument Essay",
+    "duration": 197,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The thesis",
+        "t": 14.242
+      },
+      {
+        "title": "A strong thesis",
+        "t": 35.413
+      },
+      {
+        "title": "A common mistake",
+        "t": 79.119
+      },
+      {
+        "title": "The counterargument paragraph",
+        "t": 96.309
+      },
+      {
+        "title": "Your turn",
+        "t": 144.407
+      },
+      {
+        "title": "Summary",
+        "t": 172.156
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-7-1:q2",
+        "t": 151.719,
+        "prompt": "Which is the strongest thesis for an argument essay?",
+        "choices": [
+          "Our school should build a covered bike shelter so more students cycle.",
+          "This essay will discuss bikes at our school.",
+          "Some students cycle to school.",
+          "I think bikes are maybe quite good, sort of."
+        ],
+        "answer": 0,
+        "working": "It is arguable (people could disagree), specific (a covered bike shelter at our school) and confident (it takes a clear side)."
+      }
+    ]
+  },
+  "e8-7-2": {
+    "lessonId": "e8-7-2",
+    "title": "The Literary Paragraph",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Embedding a quotation",
+        "t": 22.122
+      },
+      {
+        "title": "Tips for embedding",
+        "t": 56.871
+      },
+      {
+        "title": "PEEL",
+        "t": 83.93
+      },
+      {
+        "title": "Summary or analysis?",
+        "t": 129.02
+      },
+      {
+        "title": "Your turn",
+        "t": 161.445
+      },
+      {
+        "title": "Summary",
+        "t": 186.994
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-7-2:q2",
+        "t": 168.232,
+        "prompt": "Which sentence embeds the quotation best?",
+        "choices": [
+          "“The course of true love never did run smooth.” Lysander.",
+          "Quote: the course of true love never did run smooth.",
+          "Lysander warns that “the course of true love never did run smooth.”",
+          "This quote is from Act 1, Scene 1."
+        ],
+        "answer": 2,
+        "working": "It leads in with who speaks (“Lysander warns that…”), and the quotation fits the grammar of the writer’s own sentence."
+      }
+    ]
+  },
+  "e8-7-3": {
+    "lessonId": "e8-7-3",
+    "title": "Narrative Voice",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What voice is",
+        "t": 18.369
+      },
+      {
+        "title": "Tools of voice",
+        "t": 55.583
+      },
+      {
+        "title": "Writing dialogue",
+        "t": 96.353
+      },
+      {
+        "title": "Subtext",
+        "t": 132.337
+      },
+      {
+        "title": "Your turn",
+        "t": 157.485
+      },
+      {
+        "title": "Summary",
+        "t": 191.146
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-7-3:q2",
+        "t": 169.466,
+        "prompt": "“And then the gates opened and the crowd roared and I ran and ran and I didn’t even feel my legs.” What does the rhythm show?",
+        "choices": [
+          "The narrator is bored by the race.",
+          "The narrator is an old person looking back calmly.",
+          "The narrator has made a punctuation mistake.",
+          "The narrator’s rush of excitement."
+        ],
+        "answer": 3,
+        "working": "The sentence piles up clauses with “and” without stopping for breath, so we feel the race, not just hear about it."
+      }
+    ]
+  },
+  "e8-7-4": {
+    "lessonId": "e8-7-4",
+    "title": "Using Research",
+    "duration": 231,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Plagiarism",
+        "t": 18.081
+      },
+      {
+        "title": "Quoting and paraphrasing",
+        "t": 38.301
+      },
+      {
+        "title": "Signal phrases",
+        "t": 81.537
+      },
+      {
+        "title": "Citing sources",
+        "t": 120.833
+      },
+      {
+        "title": "Your turn",
+        "t": 171.221
+      },
+      {
+        "title": "Summary",
+        "t": 201.266
+      }
+    ],
+    "cues": [
+      {
+        "id": "e8-7-4:q2",
+        "t": 181.535,
+        "prompt": "Sam reads an idea in a book and rewrites it fully in his own words. Does he need to cite the book?",
+        "choices": [
+          "No, because the words are now his own.",
+          "Yes, because the idea still belongs to the source.",
+          "Only if he copies more than ten words.",
+          "Only if the book is a website."
+        ],
+        "answer": 1,
+        "working": "Plagiarism covers ideas as well as words. A paraphrase still needs a citation, because the idea came from the book."
+      }
+    ]
+  },
+  "e9-1-1": {
+    "lessonId": "e9-1-1",
+    "title": "The Structure of a Novel",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Structure",
+        "t": 21.4
+      },
+      {
+        "title": "Kinds of structure",
+        "t": 37.173
+      },
+      {
+        "title": "Structure is a choice",
+        "t": 83.122
+      },
+      {
+        "title": "Pacing",
+        "t": 100.367
+      },
+      {
+        "title": "Your turn",
+        "t": 146.564
+      },
+      {
+        "title": "Summary",
+        "t": 186.049
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-1-1:q2",
+        "t": 164.825,
+        "prompt": "“The ball rose. It hung against the white sky for what felt like an hour. I could hear my own breath, the creak of the bench, a dog somewhere far away. Then it began to fall.” What is the effect of the pacing?",
+        "choices": [
+          "It speeds up the action to show it is unimportant.",
+          "It slows a key moment to build suspense.",
+          "It summarises many years quickly.",
+          "It is a flashback to the narrator’s childhood."
+        ],
+        "answer": 1,
+        "working": "In real life this takes about two seconds. Sensory details stretch it out, so we wait with the narrator and feel how much it matters."
+      }
+    ]
+  },
+  "e9-1-2": {
+    "lessonId": "e9-1-2",
+    "title": "Character Arcs and Foils",
+    "duration": 201,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Character arcs",
+        "t": 17.921
+      },
+      {
+        "title": "Scrooge’s arc",
+        "t": 60.716
+      },
+      {
+        "title": "Quote the change",
+        "t": 98.004
+      },
+      {
+        "title": "Foils",
+        "t": 116.215
+      },
+      {
+        "title": "Your turn",
+        "t": 145.529
+      },
+      {
+        "title": "Summary",
+        "t": 175.633
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-1-2:q2",
+        "t": 158.129,
+        "prompt": "Scrooge’s clerk, Bob Cratchit, is poor, with a large family and little money, yet he is warm and cheerful. What is his role?",
+        "choices": [
+          "He is the catalyst for Scrooge’s change.",
+          "He is a static narrator.",
+          "He is the novel’s villain.",
+          "He is a foil: his kindness in poverty shows how cold Scrooge is."
+        ],
+        "answer": 3,
+        "working": "Cratchit shares Scrooge’s world but differs in a key quality. His warmth despite poverty highlights Scrooge’s coldness despite wealth."
+      }
+    ]
+  },
+  "e9-1-3": {
+    "lessonId": "e9-1-3",
+    "title": "Symbol and Allegory",
+    "duration": 212,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Symbol and motif",
+        "t": 19.728
+      },
+      {
+        "title": "Reading a symbol",
+        "t": 45.444
+      },
+      {
+        "title": "Not everything is a symbol",
+        "t": 75.308
+      },
+      {
+        "title": "Allegory",
+        "t": 97.835
+      },
+      {
+        "title": "Your turn",
+        "t": 148.543
+      },
+      {
+        "title": "Summary",
+        "t": 183.883
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-1-3:q2",
+        "t": 162.17,
+        "prompt": "A lonely boy keeps a broken kite in his room. In *Animal Farm*, nearly every animal and event maps onto history. Which is true?",
+        "choices": [
+          "The kite is a symbol; Animal Farm is an allegory.",
+          "Both are allegories.",
+          "The kite is an allegory; Animal Farm is a motif.",
+          "Neither has a second meaning."
+        ],
+        "answer": 0,
+        "working": "The kite is one element standing for his lost hopes, so it is a symbol. In an allegory, the whole story is a system of meanings pointing to a second level."
+      }
+    ]
+  },
+  "e9-1-4": {
+    "lessonId": "e9-1-4",
+    "title": "Style: Diction and Syntax",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Diction",
+        "t": 17.319
+      },
+      {
+        "title": "Connotations",
+        "t": 53.626
+      },
+      {
+        "title": "Syntax",
+        "t": 92.71
+      },
+      {
+        "title": "Connect syntax to meaning",
+        "t": 139.356
+      },
+      {
+        "title": "Your turn",
+        "t": 157.97
+      },
+      {
+        "title": "Summary",
+        "t": 195.057
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-1-4:q2",
+        "t": 173.43,
+        "prompt": "“We spent the morning on the beach, building towers and digging moats and chasing the waves as they slid back down the sand. Then the siren.” What does the final fragment do?",
+        "choices": [
+          "It is a careless grammar mistake.",
+          "It slows the pace to show a lazy afternoon.",
+          "It shatters the peaceful mood, as the siren shatters the morning.",
+          "It shows the narrator is bored."
+        ],
+        "answer": 2,
+        "working": "The first sentence is long and flowing, like a happy morning. The sudden two-word fragment breaks that rhythm, just as the siren breaks the peace."
+      }
+    ]
+  },
+  "e9-2-1": {
+    "lessonId": "e9-2-1",
+    "title": "Close Reading a Poem",
+    "duration": 245,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What close reading is",
+        "t": 16.803
+      },
+      {
+        "title": "We Wear the Mask",
+        "t": 63.282
+      },
+      {
+        "title": "Adding context",
+        "t": 105.525
+      },
+      {
+        "title": "Imagery",
+        "t": 128.397
+      },
+      {
+        "title": "Dulce et Decorum Est",
+        "t": 152.108
+      },
+      {
+        "title": "Your turn",
+        "t": 188.647
+      },
+      {
+        "title": "Summary",
+        "t": 218.76
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-2-1:q2",
+        "t": 196.631,
+        "prompt": "What is the overall effect of Owen’s imagery in these lines?",
+        "choices": [
+          "It celebrates the soldiers as glorious heroes.",
+          "It strips away the idea that war is glorious, showing soldiers broken and suffering.",
+          "It describes a peaceful walk in the countryside.",
+          "It shows the soldiers are happy to be going home."
+        ],
+        "answer": 1,
+        "working": "Beggars, hags, sludge and blood-shod feet all show the soldiers as broken, filthy and suffering, the opposite of the glorious picture of war."
+      }
+    ]
+  },
+  "e9-2-2": {
+    "lessonId": "e9-2-2",
+    "title": "The Sonnet and Its Sounds",
+    "duration": 221,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of sonnet",
+        "t": 21.475
+      },
+      {
+        "title": "Remember",
+        "t": 64.031
+      },
+      {
+        "title": "Sound devices",
+        "t": 94.913
+      },
+      {
+        "title": "Say what the sound does",
+        "t": 133.136
+      },
+      {
+        "title": "Your turn",
+        "t": 155.878
+      },
+      {
+        "title": "Summary",
+        "t": 193.181
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-2-2:q2",
+        "t": 170.99,
+        "prompt": "Shakespeare’s Sonnet 116 ends: “If this be error and upon me proved, / I never writ, nor no man ever loved.” What form do these two lines take?",
+        "choices": [
+          "A rhyming couplet that stakes everything on the poem’s claim",
+          "An octave of eight lines",
+          "A sestet that begins the volta",
+          "Free verse with no rhyme"
+        ],
+        "answer": 0,
+        "working": "They are the final rhyming couplet of a Shakespearean sonnet. If true love can change, he says, he never wrote a word and no one ever loved, which is plainly impossible."
+      }
+    ]
+  },
+  "e9-2-3": {
+    "lessonId": "e9-2-3",
+    "title": "Metre and Rhythm",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Scansion",
+        "t": 19.505
+      },
+      {
+        "title": "Scanning a line",
+        "t": 50.557
+      },
+      {
+        "title": "Breaking the beat",
+        "t": 75.254
+      },
+      {
+        "title": "Enjambment and caesura",
+        "t": 110.619
+      },
+      {
+        "title": "Your turn",
+        "t": 141.112
+      },
+      {
+        "title": "Summary",
+        "t": 179.335
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-2-3:q2",
+        "t": 156.406,
+        "prompt": "Owen writes: “Men marched asleep. Many had lost their boots / But limped on, blood-shod. All went lame; all blind;” What do the many caesuras do?",
+        "choices": [
+          "They make the lines flow smoothly and quickly.",
+          "They make the march sound cheerful.",
+          "They turn the lines into a rhyming couplet.",
+          "They break the rhythm into halting steps, like the stumbling soldiers."
+        ],
+        "answer": 3,
+        "working": "“All went lame; all blind;” is broken into tiny phrases. Each pause makes the reader stop and start again, mirroring the soldiers’ exhausted, stumbling march."
+      }
+    ]
+  },
+  "e9-3-1": {
+    "lessonId": "e9-3-1",
+    "title": "Plot and Characters",
+    "duration": 261,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What the play is",
+        "t": 18.278
+      },
+      {
+        "title": "The characters",
+        "t": 39.966
+      },
+      {
+        "title": "The plot",
+        "t": 85.136
+      },
+      {
+        "title": "Prospero is not simply a hero",
+        "t": 162.811
+      },
+      {
+        "title": "Your turn",
+        "t": 195.247
+      },
+      {
+        "title": "Summary",
+        "t": 230.716
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-3-1:q2",
+        "t": 208.396,
+        "prompt": "Antonio urges Sebastian to kill his brother, the King. Caliban urges Stephano to kill Prospero. Why do these plots matter?",
+        "choices": [
+          "They show that the island is cursed.",
+          "They are comic scenes with no link to the main plot.",
+          "They echo Antonio’s old betrayal, so Prospero’s choice to forgive stands out more.",
+          "They prove that Caliban is the play’s hero."
+        ],
+        "answer": 2,
+        "working": "Twelve years ago Antonio seized power by betraying his brother. Both new plots repeat that crime, so Prospero’s final choice of mercy over revenge stands out all the more."
+      }
+    ]
+  },
+  "e9-3-2": {
+    "lessonId": "e9-3-2",
+    "title": "Power, Freedom and Forgiveness",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Themes",
+        "t": 18.702
+      },
+      {
+        "title": "Forgiveness",
+        "t": 73.988
+      },
+      {
+        "title": "Key lines",
+        "t": 110.961
+      },
+      {
+        "title": "Who, when, to whom",
+        "t": 147.54
+      },
+      {
+        "title": "Your turn",
+        "t": 165.914
+      },
+      {
+        "title": "Summary",
+        "t": 209.676
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-3-2:q2",
+        "t": 183.022,
+        "prompt": "Miranda sees the lords, including Antonio and Sebastian, and cries: “O brave new world, / That has such people in’t!” Prospero replies: “’Tis new to thee.” What does his reply suggest?",
+        "choices": [
+          "He agrees that the lords are all good.",
+          "He knows these men are not as good as she thinks.",
+          "He is angry that she has met Ferdinand.",
+          "He does not hear what she says."
+        ],
+        "answer": 1,
+        "working": "Brave means fine or splendid. Among the people she admires are men who plotted murder, so Prospero’s dry reply sets her innocence beside his experience."
+      }
+    ]
+  },
+  "e9-3-3": {
+    "lessonId": "e9-3-3",
+    "title": "Soliloquies, Songs and Staging",
+    "duration": 229,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Speeches to the audience",
+        "t": 21.232
+      },
+      {
+        "title": "Prospero’s farewell",
+        "t": 51.488
+      },
+      {
+        "title": "Songs and verse",
+        "t": 96.593
+      },
+      {
+        "title": "Staging matters",
+        "t": 150.94
+      },
+      {
+        "title": "Your turn",
+        "t": 169.183
+      },
+      {
+        "title": "Summary",
+        "t": 199.056
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-3-3:q2",
+        "t": 178.418,
+        "prompt": "Why might Shakespeare give Caliban, often called a monster, beautiful verse such as “the isle is full of noises, / Sounds and sweet airs”?",
+        "choices": [
+          "To show his deep love for the island and complicate the idea that he is only a beast",
+          "To show that he is a comic character, like Stephano",
+          "Because all servants in Shakespeare speak in verse",
+          "To show that he is lying"
+        ],
+        "answer": 0,
+        "working": "Verse usually marks serious feeling. Gentle, musical lines from Caliban reveal a depth and love of beauty beyond the “monster” others see."
+      }
+    ]
+  },
+  "e9-4-1": {
+    "lessonId": "e9-4-1",
+    "title": "Rhetorical Devices",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four devices",
+        "t": 15.982
+      },
+      {
+        "title": "Devices together",
+        "t": 76.272
+      },
+      {
+        "title": "Small words, big effects",
+        "t": 111.666
+      },
+      {
+        "title": "Name it, then explain it",
+        "t": 147.592
+      },
+      {
+        "title": "Your turn",
+        "t": 164.631
+      },
+      {
+        "title": "Summary",
+        "t": 192.901
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-4-1:q2",
+        "t": 173.269,
+        "prompt": "“It was the best of times, it was the worst of times.” Which device is this?",
+        "choices": [
+          "Anaphora only",
+          "A rhetorical question",
+          "Onomatopoeia",
+          "Antithesis: opposite ideas in a balanced structure"
+        ],
+        "answer": 3,
+        "working": "“Best” and “worst” are opposites, set side by side in two balanced clauses. That is antithesis, and it sharpens the contrast."
+      }
+    ]
+  },
+  "e9-4-2": {
+    "lessonId": "e9-4-2",
+    "title": "Analysing a Speech",
+    "duration": 216,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rhetorical situation",
+        "t": 16.073
+      },
+      {
+        "title": "The Gettysburg Address",
+        "t": 37.833
+      },
+      {
+        "title": "How a speech is structured",
+        "t": 86.127
+      },
+      {
+        "title": "Structure is not just order",
+        "t": 117.897
+      },
+      {
+        "title": "Your turn",
+        "t": 135.714
+      },
+      {
+        "title": "Summary",
+        "t": 178.102
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-4-2:q2",
+        "t": 151.598,
+        "prompt": "Lincoln ends: “government of the people, by the people, for the people, shall not perish from the earth.” Why end this way?",
+        "choices": [
+          "To list events in order",
+          "To change the subject",
+          "To close on democracy as a call to action",
+          "To make the speech longer"
+        ],
+        "answer": 2,
+        "working": "Past, present and future build to this vision, and the final tricolon gives it a memorable rhythm. The speech ends as a call to action for the living."
+      }
+    ]
+  },
+  "e9-4-3": {
+    "lessonId": "e9-4-3",
+    "title": "Sound and Faulty Reasoning",
+    "duration": 209,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Premises and reasoning",
+        "t": 15.661
+      },
+      {
+        "title": "Testing the argument",
+        "t": 62.888
+      },
+      {
+        "title": "Four more fallacies",
+        "t": 102.432
+      },
+      {
+        "title": "Your turn",
+        "t": 152.39
+      },
+      {
+        "title": "Summary",
+        "t": 181.727
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-4-3:q2",
+        "t": 164.21,
+        "prompt": "“If we allow phones at lunch, next they’ll be in every lesson, and soon nobody will learn anything.” Which fallacy is this?",
+        "choices": [
+          "Circular reasoning",
+          "Slippery slope",
+          "Straw man",
+          "False appeal to authority"
+        ],
+        "answer": 1,
+        "working": "It claims, without evidence, that one small step will lead to an extreme result. That is a slippery slope."
+      }
+    ]
+  },
+  "e9-5-1": {
+    "lessonId": "e9-5-1",
+    "title": "Advertising and Its Audience",
+    "duration": 222,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Target audience",
+        "t": 20.039
+      },
+      {
+        "title": "Same product, different audience",
+        "t": 55.885
+      },
+      {
+        "title": "Advertising techniques",
+        "t": 93.353
+      },
+      {
+        "title": "Look for the label",
+        "t": 127.825
+      },
+      {
+        "title": "Your turn",
+        "t": 157.515
+      },
+      {
+        "title": "Summary",
+        "t": 196.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-5-1:q2",
+        "t": 170.249,
+        "prompt": "An advert reads: “Fresh. Natural. Yours. Only 100 bottles left this week!” Which two techniques does it combine?",
+        "choices": [
+          "Glittering generalities and scarcity",
+          "Testimonial and bandwagon",
+          "Bandwagon and a slogan only",
+          "Testimonial and scarcity"
+        ],
+        "answer": 0,
+        "working": "“Fresh. Natural. Yours.” are pleasant words with no checkable promise. “Only 100 bottles left” pushes you to buy before it is too late."
+      }
+    ]
+  },
+  "e9-5-2": {
+    "lessonId": "e9-5-2",
+    "title": "Misinformation and Checking Sources",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Misinformation",
+        "t": 16.005
+      },
+      {
+        "title": "A viral photo",
+        "t": 68.793
+      },
+      {
+        "title": "Checking a claim",
+        "t": 100.751
+      },
+      {
+        "title": "Your turn",
+        "t": 144.314
+      },
+      {
+        "title": "Summary",
+        "t": 175.217
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-5-2:q2",
+        "t": 154.658,
+        "prompt": "Two websites report the same shocking claim, word for word. Does this confirm it is true?",
+        "choices": [
+          "Yes, two sources always confirm a claim.",
+          "Yes, if both websites look professional.",
+          "Yes, if the claim has been shared many times.",
+          "No: one may have copied the other, so look for independent confirmation."
+        ],
+        "answer": 3,
+        "working": "Two copies are not two sources. Identical wording suggests copying, so look for independent confirmation from trustworthy sources."
+      }
+    ]
+  },
+  "e9-6-1": {
+    "lessonId": "e9-6-1",
+    "title": "Verbals",
+    "duration": 192,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of verbal",
+        "t": 17.788
+      },
+      {
+        "title": "Gerund or participle?",
+        "t": 55.588
+      },
+      {
+        "title": "Verbal phrases",
+        "t": 84.944
+      },
+      {
+        "title": "Don’t let it dangle",
+        "t": 120.257
+      },
+      {
+        "title": "Your turn",
+        "t": 137.562
+      },
+      {
+        "title": "Summary",
+        "t": 166.245
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-6-1:q2",
+        "t": 144.879,
+        "prompt": "In “Reading late at night keeps me awake”, what is “Reading”?",
+        "choices": [
+          "A participle describing “night”",
+          "An infinitive",
+          "A gerund: an -ing form used as a noun",
+          "The main verb of the sentence"
+        ],
+        "answer": 2,
+        "working": "“Reading late at night” is the subject of the sentence: the thing that keeps me awake. An -ing form used as a noun is a gerund. The main verb is “keeps”."
+      }
+    ]
+  },
+  "e9-6-2": {
+    "lessonId": "e9-6-2",
+    "title": "Sentence Variety",
+    "duration": 181,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Clauses",
+        "t": 16.786
+      },
+      {
+        "title": "Four sentence types",
+        "t": 38.805
+      },
+      {
+        "title": "Why variety matters",
+        "t": 71.003
+      },
+      {
+        "title": "A fragment on purpose",
+        "t": 104.329
+      },
+      {
+        "title": "Your turn",
+        "t": 121.986
+      },
+      {
+        "title": "Summary",
+        "t": 153.538
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-6-2:q2",
+        "t": 132.073,
+        "prompt": "“Although it was late, Ada kept reading, but her eyes were closing.” What type of sentence is this?",
+        "choices": [
+          "Simple",
+          "Compound-complex",
+          "Complex",
+          "Compound"
+        ],
+        "answer": 1,
+        "working": "Main clauses: “Ada kept reading” and “her eyes were closing” (two). Subordinate clause: “Although it was late” (one). Two main clauses plus a subordinate clause make it compound-complex."
+      }
+    ]
+  },
+  "e9-6-3": {
+    "lessonId": "e9-6-3",
+    "title": "Agreement in Hard Cases",
+    "duration": 203,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Subject-verb agreement",
+        "t": 20.665
+      },
+      {
+        "title": "Hard cases",
+        "t": 38.386
+      },
+      {
+        "title": "Collective nouns",
+        "t": 75.526
+      },
+      {
+        "title": "Pronouns and antecedents",
+        "t": 104.674
+      },
+      {
+        "title": "Your turn",
+        "t": 148.8
+      },
+      {
+        "title": "Summary",
+        "t": 176.26
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-6-3:q2",
+        "t": 157.544,
+        "prompt": "Which verb completes the sentence? “The list of names ___ on the door.”",
+        "choices": [
+          "is, because the subject is “list”",
+          "are, because “names” is plural",
+          "were, because there are many names",
+          "be, because it is formal"
+        ],
+        "answer": 0,
+        "working": "Cross out the phrase “of names”. What is on the door? The list. “List” is singular, so: The list of names is on the door."
+      }
+    ]
+  },
+  "e9-6-4": {
+    "lessonId": "e9-6-4",
+    "title": "Punctuation for Effect",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Punctuation for effect",
+        "t": 17.624
+      },
+      {
+        "title": "Dashes or brackets?",
+        "t": 60.623
+      },
+      {
+        "title": "Close the pair",
+        "t": 90.925
+      },
+      {
+        "title": "Reading the effect",
+        "t": 110.693
+      },
+      {
+        "title": "Your turn",
+        "t": 143.982
+      },
+      {
+        "title": "Summary",
+        "t": 173.76
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-6-4:q2",
+        "t": 155.111,
+        "prompt": "Why might a writer choose “He opened the box—empty.” rather than “He opened the box, which was empty.”?",
+        "choices": [
+          "Because a dash is always more correct than a comma",
+          "To make the sentence quieter and calmer",
+          "Because brackets cannot be used in stories",
+          "The dash makes a sharper pause, so the reveal hits harder."
+        ],
+        "answer": 3,
+        "working": "The dash creates a sharp pause before the single word “empty”, so the surprise lands with more force than it would in a smooth clause."
+      }
+    ]
+  },
+  "e9-7-1": {
+    "lessonId": "e9-7-1",
+    "title": "The Analytical Essay",
+    "duration": 215,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The analytical thesis",
+        "t": 15.794
+      },
+      {
+        "title": "What, how and why",
+        "t": 61.966
+      },
+      {
+        "title": "Structuring the essay",
+        "t": 97.415
+      },
+      {
+        "title": "A conclusion is not a full stop",
+        "t": 134.912
+      },
+      {
+        "title": "Your turn",
+        "t": 158.844
+      },
+      {
+        "title": "Summary",
+        "t": 187.747
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-7-1:q2",
+        "t": 165.618,
+        "prompt": "Which is the strongest analytical thesis?",
+        "choices": [
+          "“Dulce et Decorum Est” is a poem by Wilfred Owen.",
+          "In this essay I will talk about Owen’s poem.",
+          "Owen’s broken rhythm and images of decay expose the lie that war is glorious.",
+          "War is bad, and Owen thinks so too."
+        ],
+        "answer": 2,
+        "working": "It is arguable and precise: it names the writer’s methods (broken rhythm, images of decay) and their effect (exposing the lie that war is glorious)."
+      }
+    ]
+  },
+  "e9-7-2": {
+    "lessonId": "e9-7-2",
+    "title": "The Personal Essay",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The personal essay",
+        "t": 16.847
+      },
+      {
+        "title": "Reflection",
+        "t": 60.808
+      },
+      {
+        "title": "Avoid the ready-made moral",
+        "t": 94.96
+      },
+      {
+        "title": "Your turn",
+        "t": 118.283
+      },
+      {
+        "title": "Summary",
+        "t": 151.107
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-7-2:q2",
+        "t": 127.618,
+        "prompt": "Which is the stronger opening for a personal essay about moving to a new country?",
+        "choices": [
+          "“This essay is about moving to a new country.”",
+          "“The first English word I learned was ‘sorry’.”",
+          "“Many people move to new countries.”",
+          "“I will now describe my move.”"
+        ],
+        "answer": 1,
+        "working": "It gives a specific, surprising detail that drops the reader into the experience and hints at what the essay will explore: the feeling of not belonging."
+      }
+    ]
+  },
+  "e9-7-3": {
+    "lessonId": "e9-7-3",
+    "title": "Timed Writing",
+    "duration": 186,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading the prompt",
+        "t": 16.947
+      },
+      {
+        "title": "Unpicking a prompt",
+        "t": 59.926
+      },
+      {
+        "title": "Planning and time",
+        "t": 91.497
+      },
+      {
+        "title": "Your turn",
+        "t": 133.051
+      },
+      {
+        "title": "Summary",
+        "t": 163.68
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-7-3:q2",
+        "t": 142.3,
+        "prompt": "“To what extent is Prospero a good ruler?” What does the command word ask you to do?",
+        "choices": [
+          "Make a judgement that weighs evidence on both sides",
+          "Retell the plot in order",
+          "List only the ways he is a good ruler",
+          "Describe Shakespeare’s life"
+        ],
+        "answer": 0,
+        "working": "“To what extent” asks for a judgement. A strong answer weighs the evidence that Prospero is a good ruler against the evidence that he is harsh, then decides."
+      }
+    ]
+  },
+  "e9-7-4": {
+    "lessonId": "e9-7-4",
+    "title": "Revising for Style",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Concision",
+        "t": 16.541
+      },
+      {
+        "title": "Precise words",
+        "t": 54.504
+      },
+      {
+        "title": "A thesaurus is not a shortcut",
+        "t": 98.619
+      },
+      {
+        "title": "Your turn",
+        "t": 114.621
+      },
+      {
+        "title": "Summary",
+        "t": 149.847
+      }
+    ],
+    "cues": [
+      {
+        "id": "e9-7-4:q2",
+        "t": 126.808,
+        "prompt": "Which is the best revision of: “In my personal opinion, I think that the main character is a person who is very brave.”?",
+        "choices": [
+          "“In my opinion, I think he is very brave.”",
+          "“It is my opinion that he is brave.”",
+          "“The main character is a person who is brave.”",
+          "“The main character is fearless.”"
+        ],
+        "answer": 3,
+        "working": "“In my personal opinion” and “I think” say the same thing, and the essay is already your opinion, so cut both. “A person who is very brave” shrinks to one precise adjective."
+      }
+    ]
+  },
   "e10-1-1": {
     "lessonId": "e10-1-1",
     "title": "Plot and Conflict",

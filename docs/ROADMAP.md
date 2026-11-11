@@ -729,8 +729,10 @@ items ship or decisions change.
      Rossetti's "Remember", Dunbar's "We Wear the Mask", Owen's "Dulce et Decorum Est", Poe's
      "The Raven", Lincoln's Gettysburg Address and Douglass's 1852 Fourth of July speech. A Grade 9
      learner is placed in it, with Grade 8 offered, and Grade 10 English now offers Grade 9 first.
-     English now runs from Grade 5 to Grade 12. Next: videos for every new lesson (Grades 5 to 9),
-     after the maths videos.
+     English now runs from Grade 5 to Grade 12. Videos (11 November 2026, PR #147): all 122
+     lessons of Grades 5 to 9 have an explainer video, rendered and in Drive (`Gradileo
+     videos/English 5` to `English 9`), not made for kids; they go on YouTube with the scheduled
+     uploads.
    - Built (4 November 2026), step 3, the second map: **UK GCSE Mathematics, Foundation and
      Higher** (`engine/curriculum/maps/uk.ts`), each built from Gradileo's lessons in the order of a
      Year 10 and 11 scheme of work, with the GCSE content references (N, A, R, G, P, S) in each
