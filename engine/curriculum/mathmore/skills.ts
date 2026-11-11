@@ -18,6 +18,10 @@ import { SAMPLING_SKILLS } from './gen/sampling.ts';
 import { NORMAL_SKILLS } from './gen/normal.ts';
 import { PURE_SKILLS } from './gen/pure.ts';
 import { CALCULUS_SKILLS } from './gen/calculus.ts';
+import { DISTRIBUTION_SKILLS } from './gen/distributions.ts';
+import { NUMBERSET_SKILLS } from './gen/numbersets.ts';
+import { OBJECT_SKILLS } from './gen/objects.ts';
+import { RELATION_SKILLS } from './gen/relations.ts';
 import { DISCRETE_SKILLS } from './gen/discrete.ts';
 import { FORMULAE_SKILLS } from './gen/formulae.ts';
 import { CIRCLE_SKILLS } from './gen/circles.ts';
@@ -43,6 +47,10 @@ export const MATHMORE_SKILLS: SkillDef[] = [
   ...NORMAL_SKILLS,
   ...PURE_SKILLS,
   ...CALCULUS_SKILLS,
+  ...DISTRIBUTION_SKILLS,
+  ...NUMBERSET_SKILLS,
+  ...OBJECT_SKILLS,
+  ...RELATION_SKILLS,
   ...DISCRETE_SKILLS,
   ...FORMULAE_SKILLS,
   ...CIRCLE_SKILLS,
