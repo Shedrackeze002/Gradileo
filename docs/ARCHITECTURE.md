@@ -169,7 +169,10 @@ them from the map's tab. Lesson content, practice, videos and tutor recordings a
 or skill id, so they need nothing new; `loadCourseSkills` loads a mapped course's generators from
 the courses its lessons come from, and `courseLesson(courseId, lessonId)` gives a lesson as the
 class's course numbers it. The maps are `us.ts` (US Common Core, Grade 6 to Precalculus) and `uk.ts` (UK GCSE,
-Foundation and Higher, and A level Mathematics, Years 12 and 13). To add a map, write its file next to them, add it to
+Foundation and Higher, and A level Mathematics, Years 12 and 13), `waec.ts` (WASSCE General Mathematics, SS 1 to
+SS 3, for Nigeria and, through `alsoFor`, Ghana), `kenya.ts` (KCSE, Form 1 to Form 4), `caps.ts` (South Africa,
+Grades 10 to 12), `cambridge.ts` (IGCSE Core and Extended) and `ib.ts` (IB Diploma, Analysis and Approaches SL and
+Applications and Interpretation SL). To add a map, write its file next to them, add it to
 `CURRICULUM_MAPS`, give each course a `PREREQUISITE`, and run `npm test` (the map tests check every
 lesson id). A gap is filled with a lesson in **More Mathematics Topics** (`engine/curriculum/mathmore/`,
 `math-more`, lesson ids `mx-…`): a course of the lessons the maps need that Gradileo's grade courses

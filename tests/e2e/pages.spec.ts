@@ -154,6 +154,23 @@ test('a teacher starts a class on GCSE Higher, which teaches every topic, and op
   expect(errors).toEqual([]);
 });
 
+test('a teacher starts a class on KCSE Form 3 from the Kenya tab, which lists the topics Gradileo does not teach yet', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  for (const name of ['WAEC (WASSCE)', 'South Africa CAPS', 'Cambridge IGCSE', 'IB Diploma']) await expect(page.getByRole('tab', { name })).toBeVisible();
+  await page.getByRole('tab', { name: 'Kenya KCSE' }).click();
+  const course = page.getByRole('button', { name: /^KCSE Mathematics: Form 3 \(Kenya\)/ });
+  await course.click();
+  await expect(course.getByText(/Not in Gradileo yet: .*Joint and partial variation/)).toBeVisible();
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
+  await expect(page.getByText('Commercial Arithmetic II').first()).toBeVisible();
+  await expect(page.getByText('Graphical Methods').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test('a teacher starts a class on A level Year 13, which lists the topics Gradileo does not teach yet', async ({ page }) => {
   const errors = trackErrors(page);
   await signInDemo(page, 'Teacher');
@@ -502,8 +519,10 @@ test('a learner outside Canada gives their country and year, and sees the course
   await expect(page.getByText('Which class are you in?')).toBeVisible();
   await page.getByRole('button', { name: 'SS 1', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
-  await expect(page.getByRole('heading', { name: 'Grade 10 Mathematics', exact: true })).toBeVisible();
+  // A learner in SS 1 is offered WASSCE General Mathematics, built from Gradileo's lessons.
+  await expect(page.getByRole('heading', { name: 'WASSCE Mathematics: SS 1 (WAEC)', exact: true })).toBeVisible();
   await expect(page.getByText('Usually taken in SS 1.')).toBeVisible();
+  await expect(page.getByText(/Not in Gradileo yet: Number bases/)).toBeVisible();
   expect(errors).toEqual([]);
 });
 
