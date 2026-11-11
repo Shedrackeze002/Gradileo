@@ -174,7 +174,7 @@ Foundation and Higher, and A level Mathematics, Years 12 and 13). To add a map, 
 lesson id). A gap is filled with a lesson in **More Mathematics Topics** (`engine/curriculum/mathmore/`,
 `math-more`, lesson ids `mx-…`): a course of the lessons the maps need that Gradileo's grade courses
 do not teach (box plots, scientific notation, the equation of a circle, complex numbers, vectors,
-matrices, conic sections, and the GCSE topics such as bounds, iteration, bearings, loci and histograms, and A level mechanics and statistics). It is marked `extra`, so it
+matrices, conic sections, and the GCSE topics such as bounds, iteration, bearings, loci and histograms, and A level mechanics, statistics and pure topics). It is marked `extra`, so it
 is not in `LISTED_COURSES`, but its lessons are filed under topics (`TOPIC_COURSES`) and each lesson
 carries its own level (`LessonMeta.grade`), since the course spans Grades 6 to 12. Add the lesson to
 the map's unit and take the topic off the map's `gaps`.

@@ -16,6 +16,7 @@ import { MECHANICS_SKILLS } from './gen/mechanics.ts';
 import { FORCES_SKILLS } from './gen/forces.ts';
 import { SAMPLING_SKILLS } from './gen/sampling.ts';
 import { NORMAL_SKILLS } from './gen/normal.ts';
+import { PURE_SKILLS } from './gen/pure.ts';
 
 export const MATHMORE_SKILLS: SkillDef[] = [
   ...STATS_SKILLS,
@@ -35,4 +36,5 @@ export const MATHMORE_SKILLS: SkillDef[] = [
   ...FORCES_SKILLS,
   ...SAMPLING_SKILLS,
   ...NORMAL_SKILLS,
+  ...PURE_SKILLS,
 ];

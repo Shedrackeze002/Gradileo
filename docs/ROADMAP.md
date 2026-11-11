@@ -671,6 +671,18 @@ items ship or decisions change.
      values for the correlation test are worked out from the t distribution and stated in each
      question, as the tables print them. The maps now list 17 gaps, all pure. These lessons also
      need their videos and tutor recordings. Next: the pure topics.
+   - Built (11 November 2026), step 4, part 6: **the A level pure gaps outside calculus are filled.**
+     Eleven lessons in More Mathematics Topics, in three new units, with 22 question generators:
+     proof by exhaustion, the area of a triangle as ½ab sin C, and logarithmic graphs for y = axⁿ
+     and y = kbˣ (Unit 16, Year 12); proof by contradiction, partial fractions (including improper
+     fractions), sigma notation and recurrence relations, the binomial expansion for any rational n
+     and its validity, and vectors in three dimensions (Unit 17, Year 13); and small-angle
+     approximations, sec, cosec, cot and the inverse trigonometric functions, and R sin(θ ± α)
+     (Unit 18, Year 13). Year 12 has no gaps left; Year 13 gains "Proof", "The Binomial Expansion"
+     and "Vectors", and the other lessons join the existing units. The maps now list 6 gaps, all
+     calculus and numerical methods. These lessons also need their videos and tutor recordings.
+     Next: parametric differentiation, Newton–Raphson, the trapezium rule, integration by parts and
+     with partial fractions, and differential equations.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
