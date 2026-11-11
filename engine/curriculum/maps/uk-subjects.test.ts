@@ -36,7 +36,8 @@ describe('the UK map’s chemistry and English courses', () => {
     expect(LISTED_COURSES).not.toContain(moreEnglish);
     const language = getCourse('uk-gcse-english-language')!;
     for (const l of moreEnglish.lessons) expect(language.lessons.some((x) => x.id === l.id), `GCSE English Language teaches ${l.id}`).toBe(true);
-    expect(language.gaps!.some((g) => /Evaluating a statement|Summarising|Comparing how/.test(g))).toBe(false);
+    // GCSE English Language now teaches every part of the specification.
+    expect(language.gaps).toEqual([]);
     const literature = getCourse('uk-gcse-english-literature')!;
     expect(literature.units.find((u) => u.title === 'Shakespeare: Macbeth')!.lessons).toEqual(['e11-3-1', 'e11-3-2', 'e11-3-3', 'e11-3-4']);
     // Texts still in copyright stay a gap: Gradileo teaches from the public domain only.

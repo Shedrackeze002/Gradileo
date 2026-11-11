@@ -16594,6 +16594,112 @@
       }
     ]
   },
+  "cx-3-1": {
+    "lessonId": "cx-3-1",
+    "title": "Empirical and Molecular Formulae",
+    "duration": 254,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of formula",
+        "t": 24.077
+      },
+      {
+        "title": "From masses to a formula",
+        "t": 54.866
+      },
+      {
+        "title": "A worked example",
+        "t": 81.951
+      },
+      {
+        "title": "A common mistake",
+        "t": 126.898
+      },
+      {
+        "title": "The molecular formula",
+        "t": 145.659
+      },
+      {
+        "title": "Your turn",
+        "t": 183.17
+      },
+      {
+        "title": "Summary",
+        "t": 221.239
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-3-1:q",
+        "t": 196.652,
+        "prompt": "A compound contains $4.8\\ \\text{g}$ of magnesium and $3.2\\ \\text{g}$ of oxygen. What is its empirical formula? (Mg = 24, O = 16)",
+        "choices": [
+          "$\\ce{Mg2O}$",
+          "$\\ce{MgO2}$",
+          "$\\ce{MgO}$",
+          "$\\ce{Mg3O2}$"
+        ],
+        "answer": 2,
+        "working": "Mg: $4.8 \\div 24 = 0.2$. O: $3.2 \\div 16 = 0.2$. The ratio is $1 : 1$."
+      }
+    ]
+  },
+  "cx-3-2": {
+    "lessonId": "cx-3-2",
+    "title": "Atom Economy",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What atom economy measures",
+        "t": 21.189
+      },
+      {
+        "title": "Calculating it",
+        "t": 56.074
+      },
+      {
+        "title": "A common mistake",
+        "t": 96.247
+      },
+      {
+        "title": "Atom economy and yield",
+        "t": 111.601
+      },
+      {
+        "title": "Your turn",
+        "t": 149.985
+      },
+      {
+        "title": "Summary",
+        "t": 190.908
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-3-2:q",
+        "t": 170.084,
+        "prompt": "In $\\ce{2PbO + C -> 2Pb + CO2}$ the reactants total 458 and the lead totals 414. What is the atom economy for making lead?",
+        "choices": [
+          "90.4%",
+          "45.2%",
+          "9.6%",
+          "110.6%"
+        ],
+        "answer": 0,
+        "working": "$\\dfrac{414}{458} \\times 100 = 90.4\\%$"
+      }
+    ]
+  },
   "e5-1-1": {
     "lessonId": "e5-1-1",
     "title": "Story Elements: Characters, Setting and Plot",
@@ -27356,6 +27462,112 @@
         ],
         "answer": 1,
         "working": "B uses a precise verb and names what the storm does. A, C and D lean on vague verbs and filler words."
+      }
+    ]
+  },
+  "ex-1-1": {
+    "lessonId": "ex-1-1",
+    "title": "Evaluating a Statement: How Far Do You Agree?",
+    "duration": 247,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What evaluating means",
+        "t": 25.355
+      },
+      {
+        "title": "Evidence for the statement",
+        "t": 56.407
+      },
+      {
+        "title": "Evidence against the statement",
+        "t": 94.687
+      },
+      {
+        "title": "Methods and their effect",
+        "t": 129.054
+      },
+      {
+        "title": "A common mistake",
+        "t": 159.365
+      },
+      {
+        "title": "Your turn",
+        "t": 182.146
+      },
+      {
+        "title": "Summary",
+        "t": 213.09
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-1-1:q",
+        "t": 190.682,
+        "prompt": "Which is the best opening sentence for an evaluation of the statement?",
+        "choices": [
+          "In this extract a girl called Asha walks down a long school corridor.",
+          "I really enjoyed this extract because it is tense and interesting.",
+          "It depends on the reader whether Asha seems nervous and alone.",
+          "I agree to a large extent, because the school seems empty and hostile until the final sentence."
+        ],
+        "answer": 3,
+        "working": "It says how far the writer agrees, and why. The others describe, give an opinion with no evidence, or refuse to judge."
+      }
+    ]
+  },
+  "ex-1-2": {
+    "lessonId": "ex-1-2",
+    "title": "Summarising the Differences between Two Texts",
+    "duration": 233,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What the question asks for",
+        "t": 24.629
+      },
+      {
+        "title": "Stating a difference",
+        "t": 59.296
+      },
+      {
+        "title": "Evidence and inference",
+        "t": 98.809
+      },
+      {
+        "title": "Two common mistakes",
+        "t": 148.958
+      },
+      {
+        "title": "Your turn",
+        "t": 173.717
+      },
+      {
+        "title": "Summary",
+        "t": 203.118
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-1-2:q",
+        "t": 180.864,
+        "prompt": "Which is a fair inference about the writer of Source A?",
+        "choices": [
+          "He dislikes listening to music.",
+          "He pays little attention to his surroundings.",
+          "He lives a long way from his school.",
+          "He is fitter than the writer of Source B."
+        ],
+        "answer": 1,
+        "working": "He cannot name one street on a walk he makes every day. Nothing in the text supports the others."
       }
     ]
   },
