@@ -1,6 +1,7 @@
 /** Helpers shared by the More Mathematics Topics generators. */
-import { fmt, fmtGroupTex, roundTo } from '../../../math/numbers.ts';
-import { retry } from '../../helpers.ts';
+import { fmt, fmtFixed, fmtGroupTex, roundTo } from '../../../math/numbers.ts';
+import { numPart, retry } from '../../helpers.ts';
+import type { Part } from '../../../types.ts';
 import type { Rng } from '../../../rng.ts';
 
 export const NAMES = [
@@ -59,3 +60,22 @@ export function wholeMeanValues(rng: Rng, lo: number, hi: number, n: number): nu
 export const listTex = (vs: number[]) => `$${vs.map((v) => fmt(v)).join(',\\ \\ ')}$`;
 /** A sum inside maths, negatives in brackets. */
 export const plus = (a: number[]) => a.map(sp).join(' + ');
+
+// ---------------------------------------------------------------------------
+// A level answers: exact when they can be, otherwise to 3 significant figures.
+// ---------------------------------------------------------------------------
+
+/** The decimal places that round v to `sf` significant figures (never fewer than 0). */
+export const sfDecimals = (v: number, sf = 3) => (v === 0 ? 0 : Math.max(0, sf - 1 - Math.floor(Math.log10(Math.abs(v)) + 1e-12)));
+/** Whether v needs no rounding at 3 significant figures (2.5, 9.8, 1250). */
+export const isNice = (v: number) => Math.abs(roundTo(v, sfDecimals(v)) - v) < 1e-9;
+/** v to 3 significant figures (or exactly, when it is nice). */
+export const s3 = (v: number) => (isNice(v) ? fmt(v) : fmtFixed(v, sfDecimals(v)));
+/** "= 2.5" when exact, otherwise "\approx 2.57". */
+export const eq3 = (v: number) => (isNice(v) ? `= ${fmt(v)}` : `\\approx ${s3(v)}`);
+/** A numeric answer: exact when it is nice, otherwise to 3 significant figures. */
+export function sfPart(v: number, opts: { label?: string; suffix?: string } = {}): Part {
+  return isNice(v) ? numPart(roundTo(v, sfDecimals(v)), { ...opts, exact: false }) : numPart(v, { ...opts, decimals: sfDecimals(v) });
+}
+/** The sentence that tells students how to round. */
+export const SF_TEXT = 'Give any answer that is not exact to 3 significant figures.';

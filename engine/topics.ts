@@ -91,6 +91,10 @@ export const TOPICS: Topic[] = [
   t(M, 'Calculus', 'derivatives', 'Derivatives and differentiation rules', ['m31-u3', 'm31-u4', 'm31-u5']),
   t(M, 'Calculus', 'derivative-applications', 'Applications of derivatives', ['m31-u6', 'm31-u7']),
   t(M, 'Calculus', 'integrals', 'Antiderivatives and integrals', ['m31-u8', 'm31-u9']),
+  // Mechanics.
+  t(M, 'Mechanics', 'kinematics', 'Motion: kinematics and projectiles', ['mx-8-3', 'm31-6-4', 'mx-12-2', 'mx-12-3', 'mx-13-4', 'mx-13-5']),
+  t(M, 'Mechanics', 'forces', 'Forces and Newton’s laws', ['mx-12-1', 'mx-12-4', 'mx-12-5', 'mx-13-1', 'mx-13-2', 'mx-13-3']),
+  t(M, 'Mechanics', 'moments', 'Moments', ['mx-13-6']),
 
   // Chemistry.
   t(C, 'Matter and bonding', 'matter', 'Matter and the particle model', ['c10-u1']),

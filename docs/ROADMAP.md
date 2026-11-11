@@ -642,6 +642,18 @@ items ship or decisions change.
      (units, suvat, forces and Newton's laws, connected particles, projectiles, resolving forces,
      friction, inclined planes, 2D kinematics, moments). Next: fill these gaps, mechanics and
      statistics first, then the pure topics.
+   - Built (11 November 2026), step 4, part 4: **the A level mechanics gaps are filled.** Eleven
+     lessons in More Mathematics Topics, in two new units, with 22 question generators: quantities,
+     units and modelling, the constant acceleration formulae, vertical motion under gravity,
+     Newton's laws and lifts, and connected particles (Unit 12, Year 12); resolving forces and
+     equilibrium, friction, inclined planes, projectiles, kinematics in two dimensions with vectors
+     and calculus, and moments (Unit 13, Year 13). Each is filed in the A level units that teach it
+     (Year 12 gains "Quantities and Units in Mechanics" and "Forces and Newton's Laws"; Year 13
+     gains "Moments", "Forces and Friction", "Projectiles", "Applications of Forces" and "Further
+     Kinematics") and under a new Mechanics strand in Browse by topic. Every question states
+     g = 9.8 m/s² and asks for 3 significant figures where an answer is not exact. The maps now
+     list 26 gaps. These lessons also need their videos and tutor recordings. Next: the statistics
+     gaps, then the pure topics.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
