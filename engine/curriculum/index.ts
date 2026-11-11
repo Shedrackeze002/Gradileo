@@ -39,12 +39,17 @@ import { MATHMORE } from './mathmore/course.ts';
 import { buildMappedCourse, type CurriculumMap } from './maps/build.ts';
 import { US_MAP } from './maps/us.ts';
 import { UK_MAP } from './maps/uk.ts';
+import { WAEC_MAP } from './maps/waec.ts';
+import { KENYA_MAP } from './maps/kenya.ts';
+import { CAPS_MAP } from './maps/caps.ts';
+import { CAMBRIDGE_MAP } from './maps/cambridge.ts';
+import { IB_MAP } from './maps/ib.ts';
 
 /** Gradileo's own courses, youngest grade first (the order of course pickers and tabs). */
 const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, MATHMORE, CHEM10, CHEM20, CHEM30, ENG5, ENG6, ENG7, ENG8, ENG9, ENG10, ENG20, ENG30];
 
 /** The school systems with a curriculum map, the first map first. */
-export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP, UK_MAP];
+export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP, UK_MAP, WAEC_MAP, KENYA_MAP, CAPS_MAP, CAMBRIDGE_MAP, IB_MAP];
 
 /** Courses of other school systems built from Gradileo's lessons ("Algebra I"), in their maps' order. */
 export const MAPPED_COURSES: CourseMeta[] = CURRICULUM_MAPS.flatMap((m) => m.courses.map((c) => buildMappedCourse(m, c, OWN_COURSES)));
@@ -61,9 +66,11 @@ export const LISTED_COURSES: CourseMeta[] = OWN_COURSES.filter((c) => !c.draft &
 /** The courses whose lessons are filed under topics: the listed courses and the courses of extra lessons. */
 export const TOPIC_COURSES: CourseMeta[] = OWN_COURSES.filter((c) => !c.draft);
 
-/** A school system's mapped courses ("us": Grade 6 to Precalculus). */
+/** A school system's mapped courses ("us": Grade 6 to Precalculus; "gh" shares Nigeria's WAEC map). */
 export function mappedCourses(curriculumId: string | null | undefined): CourseMeta[] {
-  return curriculumId ? MAPPED_COURSES.filter((c) => c.map === curriculumId) : [];
+  if (!curriculumId) return [];
+  const map = CURRICULUM_MAPS.find((m) => m.curriculum === curriculumId || m.alsoFor?.includes(curriculumId));
+  return map ? MAPPED_COURSES.filter((c) => c.map === map.curriculum) : [];
 }
 
 /** The subjects of the listed courses, in the order of the courses (Mathematics first). */

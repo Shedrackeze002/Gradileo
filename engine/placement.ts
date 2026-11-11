@@ -82,6 +82,25 @@ export const PREREQUISITE: Record<string, string | null> = {
   // A level Mathematics follows GCSE Higher, and its second year follows its first.
   'uk-a-level-year-1': 'uk-gcse-higher',
   'uk-a-level-year-2': 'uk-a-level-year-1',
+  // WASSCE General Mathematics follows junior secondary school, a year at a time.
+  'waec-ss-1': 'math-9',
+  'waec-ss-2': 'waec-ss-1',
+  'waec-ss-3': 'waec-ss-2',
+  // Kenya's KCSE Mathematics follows primary school, a form at a time.
+  'kcse-form-1': 'math-8',
+  'kcse-form-2': 'kcse-form-1',
+  'kcse-form-3': 'kcse-form-2',
+  'kcse-form-4': 'kcse-form-3',
+  // South Africa's CAPS Mathematics follows Grade 9, a grade at a time.
+  'caps-grade-10': 'math-9',
+  'caps-grade-11': 'caps-grade-10',
+  'caps-grade-12': 'caps-grade-11',
+  // Cambridge IGCSE: both tiers follow lower secondary (Years 7 to 9).
+  'igcse-core': 'math-8',
+  'igcse-extended': 'math-9',
+  // The IB Diploma's standard level courses follow MYP 5.
+  'ib-aa-sl': 'math-10c',
+  'ib-ai-sl': 'math-10c',
 };
 
 /** For a UK learner in Year 10 or 11: the GCSE tier, Higher unless they want extra support. */
@@ -108,6 +127,64 @@ function ukALevel(g: number): Recommendation {
   }
   return rec('uk-a-level-year-2', [where, 'The second year adds functions, radians and further trigonometry, series, and further differentiation and integration.'], [
     { courseId: 'uk-a-level-year-1', why: 'If you have not finished the first year of A level yet.' },
+  ]);
+}
+
+/** For a learner in Nigeria or Ghana in senior secondary school: the year of WASSCE General Mathematics. */
+function waec(g: number, a: PlacementAnswers): Recommendation {
+  const n = g - 9;
+  const year = a.year ?? `SS ${n}`;
+  const where = `WASSCE General Mathematics (Core Mathematics in Ghana) is the course every senior secondary student takes. This is its ${year} year, with its units in the order of a WASSCE scheme of work.`;
+  const alternatives: CourseChoice[] = [];
+  if (n < 3) alternatives.push({ courseId: `waec-ss-${n + 1}`, why: `If you have already finished the ${year} topics.` });
+  if (n > 1) alternatives.push({ courseId: `waec-ss-${n - 1}`, why: 'If last year’s topics still feel new.' });
+  else alternatives.push({ courseId: 'math-9', why: 'If you want to review junior secondary mathematics first.' });
+  return rec(`waec-ss-${n}`, [where], alternatives);
+}
+
+/** For a learner in Kenya in Form 1 to Form 4: the form's KCSE Mathematics. */
+function kcse(g: number): Recommendation {
+  const n = g - 8;
+  const where = `KCSE Mathematics is the course of Forms 1 to 4. This is Form ${n}, with the topics of the syllabus in its order and under its names.`;
+  const alternatives: CourseChoice[] = [];
+  if (n < 4) alternatives.push({ courseId: `kcse-form-${n + 1}`, why: `If you have already finished the Form ${n} topics.` });
+  if (n > 1) alternatives.push({ courseId: `kcse-form-${n - 1}`, why: `If the Form ${n - 1} topics still feel new.` });
+  return rec(`kcse-form-${n}`, [where], alternatives);
+}
+
+/** For a South African learner in Grades 10 to 12 who takes Mathematics (not Mathematical Literacy). */
+function caps(g: number): Recommendation {
+  const where = `Mathematics in Grades 10 to 12 follows CAPS. This is Grade ${g}, with its topics in the order of the CAPS teaching plan.`;
+  const alternatives: CourseChoice[] = [];
+  if (g < 12) alternatives.push({ courseId: `caps-grade-${g + 1}`, why: `If you have already finished the Grade ${g} topics.` });
+  if (g > 10) alternatives.push({ courseId: `caps-grade-${g - 1}`, why: `If the Grade ${g - 1} topics still feel new.` });
+  alternatives.push({ courseId: g === 10 ? 'math-10-3' : g === 11 ? 'math-20-3' : 'math-30-3', why: 'If you take Mathematical Literacy: a practical course on measurement, finance and data.' });
+  return rec(`caps-grade-${g}`, [where], alternatives);
+}
+
+/** For a Cambridge learner in Year 10 or 11: IGCSE Mathematics, Extended unless they want extra support. */
+function igcse(a: PlacementAnswers): Recommendation {
+  const where = 'Cambridge IGCSE Mathematics is the course of Years 10 and 11, with its units in the order of the syllabus.';
+  if (a.support || a.feeling === 'struggling') {
+    return rec('igcse-core', [where, 'The Core papers cover number, algebra, geometry, trigonometry, probability and statistics from the basics.'], [
+      { courseId: 'igcse-extended', why: 'If your school has entered you for the Extended papers.' },
+    ]);
+  }
+  return rec('igcse-extended', [where, 'The Extended papers add surds, functions, differentiation, the sine and cosine rules, vectors and more.'], [
+    { courseId: 'igcse-core', why: 'If your school has entered you for the Core papers, or the basics still feel new.' },
+  ]);
+}
+
+/** For an IB Diploma learner: one of the two standard level courses, by their plans. */
+function ibDiploma(a: PlacementAnswers): Recommendation {
+  const where = 'The IB Diploma has two mathematics courses, each taken over DP 1 and DP 2. This is the standard level course, with its units in the order of the guide.';
+  if (a.plan === 'university-stem' || a.calculus) {
+    return rec('ib-aa-sl', [where, 'Analysis and Approaches builds algebra, functions, trigonometry and calculus, for learners heading for mathematics, science or engineering.', CHECK], [
+      { courseId: 'ib-ai-sl', why: 'If you take Applications and Interpretation.' },
+    ]);
+  }
+  return rec('ib-ai-sl', [where, 'Applications and Interpretation builds modelling, statistics and the use of technology, for learners who want mathematics in practical settings.', CHECK], [
+    { courseId: 'ib-aa-sl', why: 'If you take Analysis and Approaches.' },
   ]);
 }
 
@@ -214,6 +291,16 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
   // A UK learner in Year 12 or 13 heading for university, or not sure yet, gets A level Mathematics.
   const studying = !a.plan || a.plan === 'university-stem' || a.plan === 'university-other' || a.plan === 'not-sure';
   if (a.curriculum === 'uk' && g >= 11 && !a.support && studying) return ukALevel(Math.min(12, g));
+  // Senior secondary learners in Nigeria and Ghana get WASSCE General Mathematics, which every student takes.
+  if ((a.curriculum === 'ng' || a.curriculum === 'gh') && g >= 10) return waec(Math.min(12, g), a);
+  // A learner in Kenya who gives a form (not a grade of the new curriculum) gets that form's KCSE Mathematics.
+  if (a.curriculum === 'ke' && a.year?.startsWith('Form') && g >= 9) return kcse(Math.min(12, g));
+  // A South African learner in Grades 10 to 12 heading for further study gets CAPS Mathematics.
+  if (a.curriculum === 'za' && g >= 10 && !a.support && studying) return caps(Math.min(12, g));
+  // A Cambridge learner in Year 10 or 11 gets IGCSE Mathematics: Extended, or Core with extra support.
+  if (a.curriculum === 'cambridge' && (g === 9 || g === 10)) return igcse(a);
+  // An IB Diploma learner gets Analysis and Approaches or Applications and Interpretation at standard level.
+  if (a.curriculum === 'ib' && g >= 11 && !a.support) return ibDiploma(a);
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));
     return rec(`math-${grade}`, [`Grade ${grade} Mathematics covers the mathematics of your grade, so you learn what your class is learning.`]);
