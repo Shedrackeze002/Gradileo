@@ -161,7 +161,7 @@ test('a teacher starts a class on A level Year 13, which lists the topics Gradil
   await page.getByRole('tab', { name: 'UK GCSE and A level' }).click();
   const course = page.getByRole('button', { name: /^A level Mathematics: Year 13 \(UK\)/ });
   await course.click();
-  await expect(course.getByText(/Not in Gradileo yet/)).toBeVisible();
+  await expect(course.getByText(/Not in Gradileo yet/)).toHaveCount(0);
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
   await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
@@ -176,6 +176,8 @@ test('a teacher starts a class on A level Year 13, which lists the topics Gradil
   await expect(page.getByText('Testing for correlation').first()).toBeVisible();
   await page.goto(page.url().replace(/mx-15-1$/, 'mx-18-3'));
   await expect(page.getByText('Using the form').first()).toBeVisible();
+  await page.goto(page.url().replace(/mx-18-3$/, 'mx-19-4'));
+  await expect(page.getByText('Definite integrals by parts').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 

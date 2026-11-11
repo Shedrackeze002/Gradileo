@@ -79,6 +79,12 @@ export const OUTCOMES: Outcome[] = [
   { code: 'TR1', strand: 'Pure: further trigonometry', text: 'Use the small-angle approximations for sine, cosine and tangent.' },
   { code: 'TR2', strand: 'Pure: further trigonometry', text: 'Use sec, cosec and cot, and arcsin, arccos and arctan with their ranges.' },
   { code: 'TR3', strand: 'Pure: further trigonometry', text: 'Write a sin θ + b cos θ as R sin(θ ± α) or R cos(θ ± α), and use it to find greatest values and solve equations.' },
+  { code: 'CL1', strand: 'Pure: further calculus and numerical methods', text: 'Differentiate curves given parametrically, and differentiate sin x and cos x from first principles.' },
+  { code: 'CL2', strand: 'Pure: further calculus and numerical methods', text: 'Locate roots by a change of sign, and approximate them with the Newton–Raphson method.' },
+  { code: 'CL3', strand: 'Pure: further calculus and numerical methods', text: 'Estimate definite integrals with the trapezium rule, and say whether the estimate is too big or too small.' },
+  { code: 'CL4', strand: 'Pure: further calculus and numerical methods', text: 'Integrate by parts.' },
+  { code: 'CL5', strand: 'Pure: further calculus and numerical methods', text: 'Integrate rational functions by splitting them into partial fractions.' },
+  { code: 'CL6', strand: 'Pure: further calculus and numerical methods', text: 'Solve separable first-order differential equations, and use them to model growth, decay and cooling.' },
 ];
 
 const L = (
@@ -392,6 +398,30 @@ export const LESSONS: LessonMeta[] = [
     ['mx-r-alpha', 'mx-r-alpha-apply'],
     ['Write a sin θ + b cos θ in the form R sin(θ ± α) or R cos(θ ± α)', 'Use it to find greatest and least values and to solve equations'],
     ['harmonic form', 'amplitude', 'compound angle']),
+  L('mx-19-1', 'mx-u19', '19.1', 'Parametric Differentiation and First Principles', 12, ['CL1'],
+    ['mx-parametric-gradient', 'mx-first-principles-trig'],
+    ['Find dy/dx for a curve given by parametric equations, and the equation of a tangent', 'Differentiate sin x and cos x from first principles'],
+    ['parameter', 'parametric equations', 'first principles', 'chord']),
+  L('mx-19-2', 'mx-u19', '19.2', 'Locating Roots and the Newton–Raphson Method', 12, ['CL2'],
+    ['mx-change-of-sign', 'mx-newton-raphson'],
+    ['Show that a root lies in an interval by a change of sign, and know when this fails', 'Use the Newton–Raphson method to approximate a root'],
+    ['root', 'change of sign', 'continuous', 'Newton–Raphson method', 'iteration']),
+  L('mx-19-3', 'mx-u19', '19.3', 'The Trapezium Rule', 12, ['CL3'],
+    ['mx-trapezium', 'mx-trapezium-error'],
+    ['Estimate a definite integral with the trapezium rule', 'Decide whether the estimate is an overestimate or an underestimate, and find its percentage error'],
+    ['trapezium rule', 'strip', 'ordinate', 'overestimate', 'underestimate']),
+  L('mx-19-4', 'mx-u19', '19.4', 'Integration by Parts', 12, ['CL4'],
+    ['mx-parts-indefinite', 'mx-parts-definite'],
+    ['Integrate products such as x eˣ, x sin x and x ln x by parts', 'Evaluate definite integrals by parts'],
+    ['integration by parts', 'product']),
+  L('mx-19-5', 'mx-u19', '19.5', 'Integrating with Partial Fractions', 12, ['CL5'],
+    ['mx-pf-integrate', 'mx-pf-ln-form'],
+    ['Split a fraction into partial fractions and integrate each part', 'Write the answer as a single logarithm'],
+    ['partial fractions', 'natural logarithm']),
+  L('mx-19-6', 'mx-u19', '19.6', 'Separable Differential Equations', 12, ['CL6'],
+    ['mx-separable-solve', 'mx-de-model'],
+    ['Solve first-order differential equations by separating the variables', 'Model growth, decay and cooling with differential equations'],
+    ['differential equation', 'separating the variables', 'general solution', 'particular solution']),
 ];
 
 export const UNITS: UnitMeta[] = [
@@ -413,6 +443,7 @@ export const UNITS: UnitMeta[] = [
   { id: 'mx-u16', number: 16, title: 'Pure: Proof, Triangles and Logarithmic Graphs', description: 'Proof by exhaustion and counterexamples, the area of a triangle as ½ab sin C, and logarithmic graphs of y = axⁿ and y = kbˣ.', outcomes: ['PF1', 'PF2', 'PF3'], lessons: [], color: 'amber' },
   { id: 'mx-u17', number: 17, title: 'Pure: Proof, Algebra and Vectors', description: 'Proof by contradiction, partial fractions, sigma notation and recurrence relations, the binomial expansion for any rational n, and vectors in three dimensions.', outcomes: ['AL1', 'AL2', 'AL3', 'AL4', 'AL5'], lessons: [], color: 'sky' },
   { id: 'mx-u18', number: 18, title: 'Pure: Further Trigonometry', description: 'Small-angle approximations, sec, cosec and cot, the inverse trigonometric functions, and R sin(θ ± α).', outcomes: ['TR1', 'TR2', 'TR3'], lessons: [], color: 'orange' },
+  { id: 'mx-u19', number: 19, title: 'Pure: Further Calculus and Numerical Methods', description: 'Parametric differentiation and first principles for sin x and cos x, locating roots and the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and separable differential equations.', outcomes: ['CL1', 'CL2', 'CL3', 'CL4', 'CL5', 'CL6'], lessons: [], color: 'fuchsia' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
@@ -423,7 +454,7 @@ export const MATHMORE: CourseMeta = {
   shortTitle: 'More Topics',
   grade: 10,
   subject: 'Mathematics',
-  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: dot plots and box plots, mean absolute deviation, two-way tables, scientific notation, linear and exponential growth, cross-sections and solids of revolution, two-column proofs, the equation of a circle, experiments and simulation, complex numbers, polynomial identities, vectors and matrices, polar form, conic sections and parametric equations; and for GCSE, error intervals and bounds, recurring decimals, quadratic sequences, iteration, gradients and areas under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and pressure, bearings, loci, arcs and sectors, 3D trigonometry, frequency trees, histograms and cumulative frequency; and for A level, mechanics: the constant acceleration formulae, Newton’s laws, connected particles, forces at angles and friction, inclined planes, projectiles and moments; and statistics: sampling methods, coding, outliers, discrete random variables, the binomial distribution and its hypothesis tests, correlation, the inverse normal distribution, the normal approximation and tests for a normal mean; and pure: proof by exhaustion and contradiction, ½ab sin C, logarithmic graphs, partial fractions, sigma notation and recurrence relations, the binomial expansion for rational n, 3D vectors, small-angle approximations, reciprocal and inverse trigonometric functions and R sin(θ ± α).',
+  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: dot plots and box plots, mean absolute deviation, two-way tables, scientific notation, linear and exponential growth, cross-sections and solids of revolution, two-column proofs, the equation of a circle, experiments and simulation, complex numbers, polynomial identities, vectors and matrices, polar form, conic sections and parametric equations; and for GCSE, error intervals and bounds, recurring decimals, quadratic sequences, iteration, gradients and areas under graphs, trigonometric graphs in degrees, direct and inverse proportion, density and pressure, bearings, loci, arcs and sectors, 3D trigonometry, frequency trees, histograms and cumulative frequency; and for A level, mechanics: the constant acceleration formulae, Newton’s laws, connected particles, forces at angles and friction, inclined planes, projectiles and moments; and statistics: sampling methods, coding, outliers, discrete random variables, the binomial distribution and its hypothesis tests, correlation, the inverse normal distribution, the normal approximation and tests for a normal mean; and pure: proof by exhaustion and contradiction, ½ab sin C, logarithmic graphs, partial fractions, sigma notation and recurrence relations, the binomial expansion for rational n, 3D vectors, small-angle approximations, reciprocal and inverse trigonometric functions, R sin(θ ± α), parametric differentiation, the Newton–Raphson method, the trapezium rule, integration by parts and with partial fractions, and differential equations.',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
