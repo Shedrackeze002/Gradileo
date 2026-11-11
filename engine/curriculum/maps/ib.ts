@@ -45,7 +45,7 @@ export const IB_MAP: CurriculumMap = {
       units: [
         { title: 'Number and Algebra', description: 'Standard form, arithmetic and geometric sequences and series, the laws of exponents, and an introduction to logarithms (topic 1).', members: ['mx-2-1', 'mx-2-2', 'm201-1-1', 'm201-1-2', 'm201-1-3', 'm201-1-4', 'm10c-3-5', 'm301-7-4'] },
         { title: 'Approximation and Error', description: 'Rounding, upper and lower bounds, and percentage error (topic 1).', members: ['mx-7-1', 'mx-7-2', 'm303-1-1'] },
-        { title: 'Financial Mathematics', description: 'Simple and compound interest, and growth and depreciation (topic 1).', members: ['m203-7-1', 'm302-6-4'] },
+        { title: 'Financial Mathematics', description: 'Simple and compound interest, and growth and depreciation (topic 1). Annuities and the repayment of loans.', members: ['m203-7-1', 'm302-6-4', 'mx-26-2', 'mx-26-3'] },
         { title: 'Systems of Equations', description: 'Solving systems of linear equations, and how many solutions they have (topic 1).', members: ['m10c-8-1', 'm10c-8-4'] },
         { title: 'Functions and Straight Lines', description: 'The equations of straight lines, parallel and perpendicular lines, functions with their domain and range, and the inverse of a function (topic 2).', members: ['m10c-7-1', 'm10c-7-2', 'm10c-7-4', 'm10c-5-3', 'm10c-5-4', 'm301-1-4'] },
         { title: 'Modelling with Functions', description: 'Linear, quadratic, cubic, exponential and sinusoidal models, and direct and inverse variation (topic 2).', members: ['mx-2-3', 'm202-6-2', 'm202-6-3', 'm302-5-1', 'm302-5-2', 'm302-6-1', 'mx-9-1', 'm302-7-1', 'm302-7-2'] },
@@ -56,7 +56,7 @@ export const IB_MAP: CurriculumMap = {
         { title: 'Differentiation', description: 'The derivative as a gradient and a rate of change, differentiating polynomials, tangents and normals, stationary points, and optimization (topic 5).', members: ['m31-3-1', 'm31-4-1', 'm31-6-1', 'm31-6-2', 'm31-7-1'] },
         { title: 'Integration', description: 'Antiderivatives of polynomials, definite integrals and the area under a curve, and the trapezoidal rule (topic 5).', members: ['m31-8-1', 'm31-8-3', 'mx-19-3'] },
       ],
-      gaps: ['Annuities and amortization', 'Voronoi diagrams', 'The regression line of y on x', 'The expected value of a discrete random variable', 'Spearman’s rank correlation coefficient', 'The chi-squared tests for independence and goodness of fit', 'The t-test for two means'],
+      gaps: ['Voronoi diagrams', 'The regression line of y on x', 'The expected value of a discrete random variable', 'Spearman’s rank correlation coefficient', 'The chi-squared tests for independence and goodness of fit', 'The t-test for two means'],
     },
   ],
 };
