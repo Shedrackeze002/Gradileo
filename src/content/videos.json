@@ -17935,6 +17935,53 @@
       }
     ]
   },
+  "cx-10-4": {
+    "lessonId": "cx-10-4",
+    "title": "The Equilibrium Constant Kp",
+    "duration": 174,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Partial pressures",
+        "t": 24.732
+      },
+      {
+        "title": "Calculating Kp",
+        "t": 43.541
+      },
+      {
+        "title": "What changes Kp?",
+        "t": 83.255
+      },
+      {
+        "title": "Your turn",
+        "t": 113.068
+      },
+      {
+        "title": "Summary",
+        "t": 152.136
+      }
+    ],
+    "cues": [
+      {
+        "id": "cx-10-4:q",
+        "t": 129.391,
+        "prompt": "An equilibrium mixture has 1.0 mol of nitrogen, 3.0 mol of hydrogen and 1.0 mol of ammonia at 200 kPa. What is the partial pressure of hydrogen?",
+        "choices": [
+          "600 kPa",
+          "67 kPa",
+          "120 kPa",
+          "3.0 kPa"
+        ],
+        "answer": 2,
+        "working": "Mole fraction $= \\dfrac{3.0}{5.0} = 0.60$, so $p = 0.60 \\times 200 = 120$ kPa."
+      }
+    ]
+  },
   "e5-1-1": {
     "lessonId": "e5-1-1",
     "title": "Story Elements: Characters, Setting and Plot",
