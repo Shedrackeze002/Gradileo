@@ -171,13 +171,14 @@ the courses its lessons come from, and `courseLesson(courseId, lessonId)` gives 
 class's course numbers it. The maps are `us.ts` (US Common Core, Grade 6 to Precalculus) and `uk.ts` (UK GCSE,
 Foundation and Higher, and A level Mathematics, Years 12 and 13), `waec.ts` (WASSCE General Mathematics, SS 1 to
 SS 3, for Nigeria and, through `alsoFor`, Ghana), `kenya.ts` (KCSE, Form 1 to Form 4), `caps.ts` (South Africa,
-Grades 10 to 12), `cambridge.ts` (IGCSE Core and Extended) and `ib.ts` (IB Diploma, Analysis and Approaches SL and
-Applications and Interpretation SL). To add a map, write its file next to them, add it to
+Grades 10 to 12), `cambridge.ts` (IGCSE Core and Extended) `ib.ts` (IB Diploma, Analysis and Approaches SL and
+Applications and Interpretation SL) and `ab.ts` (Alberta's new Grades 7 to 9 curriculum, offered beside Math 7, 8
+and 9 until it is mandatory in September 2027). To add a map, write its file next to them, add it to
 `CURRICULUM_MAPS`, give each course a `PREREQUISITE`, and run `npm test` (the map tests check every
 lesson id). A gap is filled with a lesson in **More Mathematics Topics** (`engine/curriculum/mathmore/`,
 `math-more`, lesson ids `mx-…`): a course of the lessons the maps need that Gradileo's grade courses
 do not teach (box plots, scientific notation, the equation of a circle, complex numbers, vectors,
-matrices, conic sections, and the GCSE topics such as bounds, iteration, bearings, loci and histograms, and the A level mechanics, statistics, pure and calculus topics). It is marked `extra`, so it
+matrices, conic sections, and the GCSE topics such as bounds, iteration, bearings, loci and histograms, the A level mechanics, statistics, pure and calculus topics, and the topics Alberta's new Grades 7 to 9 add, such as absolute value, dilations, functions and set-builder notation). It is marked `extra`, so it
 is not in `LISTED_COURSES`, but its lessons are filed under topics (`TOPIC_COURSES`) and each lesson
 carries its own level (`LessonMeta.grade`), since the course spans Grades 6 to 12. Add the lesson to
 the map's unit and take the topic off the map's `gaps`.

@@ -101,6 +101,10 @@ export const PREREQUISITE: Record<string, string | null> = {
   // The IB Diploma's standard level courses follow MYP 5.
   'ib-aa-sl': 'math-10c',
   'ib-ai-sl': 'math-10c',
+  // Alberta's new Grades 7 to 9 curriculum: Grade 7 follows Grade 6, which is already on the new K–6 curriculum.
+  'ab-grade-7': 'math-6',
+  'ab-grade-8': 'ab-grade-7',
+  'ab-grade-9': 'ab-grade-8',
 };
 
 /** For a UK learner in Year 10 or 11: the GCSE tier, Higher unless they want extra support. */
@@ -303,7 +307,9 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
   if (a.curriculum === 'ib' && g >= 11 && !a.support) return ibDiploma(a);
   if (g <= 9) {
     const grade = Math.min(9, Math.max(5, g));
-    return rec(`math-${grade}`, [`Grade ${grade} Mathematics covers the mathematics of your grade, so you learn what your class is learning.`]);
+    // Alberta's new Grades 7 to 9 curriculum is optional until September 2027, so it is offered beside the course most classes still follow.
+    const pilot = a.curriculum === 'ab' && grade >= 7 ? [{ courseId: `ab-grade-${grade}`, why: 'If your school is piloting Alberta’s new Grades 7 to 9 mathematics curriculum.' }] : [];
+    return rec(`math-${grade}`, [`Grade ${grade} Mathematics covers the mathematics of your grade, so you learn what your class is learning.`], pilot);
   }
   const plan = a.plan ?? 'not-sure';
   if (g === 10) {

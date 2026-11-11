@@ -18,6 +18,10 @@ import { SAMPLING_SKILLS } from './gen/sampling.ts';
 import { NORMAL_SKILLS } from './gen/normal.ts';
 import { PURE_SKILLS } from './gen/pure.ts';
 import { CALCULUS_SKILLS } from './gen/calculus.ts';
+import { DISTRIBUTION_SKILLS } from './gen/distributions.ts';
+import { NUMBERSET_SKILLS } from './gen/numbersets.ts';
+import { OBJECT_SKILLS } from './gen/objects.ts';
+import { RELATION_SKILLS } from './gen/relations.ts';
 
 export const MATHMORE_SKILLS: SkillDef[] = [
   ...STATS_SKILLS,
@@ -39,4 +43,8 @@ export const MATHMORE_SKILLS: SkillDef[] = [
   ...NORMAL_SKILLS,
   ...PURE_SKILLS,
   ...CALCULUS_SKILLS,
+  ...DISTRIBUTION_SKILLS,
+  ...NUMBERSET_SKILLS,
+  ...OBJECT_SKILLS,
+  ...RELATION_SKILLS,
 ];

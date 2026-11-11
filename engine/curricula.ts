@@ -34,6 +34,8 @@ export const CURRICULA: Curriculum[] = [
   { id: 'scotland', name: 'United Kingdom: Scotland', question: 'Which year are you in?', years: [{ label: 'P6', grade: 5 }, { label: 'P7', grade: 6 }, ...numbered('S', 1, 6, -6).map((y) => ({ ...y, label: y.label.replace(' ', '') }))] },
   { id: 'ni', name: 'United Kingdom: Northern Ireland', question: 'Which year are you in?', years: numbered('Year', 7, 14, 2) },
   { id: 'ca', name: 'Canada', question: 'Which grade are you in?', years: grades(), sameAsGrades: true },
+  // Alberta has its own entry for its new Grades 7 to 9 mathematics curriculum (`curriculum/maps/ab.ts`).
+  { id: 'ab', name: 'Canada: Alberta', question: 'Which grade are you in?', years: grades(), sameAsGrades: true },
   {
     id: 'ng',
     name: 'Nigeria',
@@ -99,7 +101,8 @@ export function levelIn(curriculumId: string | null | undefined, grade: number):
 const ZONES: Array<[RegExp, string]> = [
   [/^Europe\/London$/, 'uk'],
   [/^Europe\/(Dublin)$/, 'ie'],
-  [/^America\/(Toronto|Vancouver|Edmonton|Winnipeg|Regina|Halifax|St_Johns|Moncton|Whitehorse|Yellowknife|Iqaluit)$/, 'ca'],
+  [/^America\/Edmonton$/, 'ab'],
+  [/^America\/(Toronto|Vancouver|Winnipeg|Regina|Halifax|St_Johns|Moncton|Whitehorse|Yellowknife|Iqaluit)$/, 'ca'],
   [/^(America\/(New_York|Chicago|Denver|Phoenix|Los_Angeles|Anchorage|Detroit|Boise|Indiana\/.*|Kentucky\/.*)|Pacific\/Honolulu)$/, 'us'],
   [/^Africa\/Lagos$/, 'ng'],
   [/^Africa\/Accra$/, 'gh'],
