@@ -1220,8 +1220,12 @@ items ship or decisions change.
   Grade 7 text and the Grades 6 to 9 scope and sequence published by the Alberta Professional
   Learning Consortium) and Alberta Education's fact sheet. Still to do: check the Grades 8 and 9
   wording against new LearnAlberta when the final curriculum is published (its site refuses the
-  build environment), add videos and tutor recordings for the ten lessons, and in September 2027
-  make the new courses the first recommendation in Alberta.
+  build environment), and in September 2027 make the new courses the first recommendation in
+  Alberta. Videos (11 November 2026): one explainer for each of the ten lessons
+  (`src/content/mathmore/videos/mx-20-1.ts` to `mx-22-3.ts` and `mx-1-7.ts`), rendered and in
+  Drive (`Gradileo videos/More Topics/`); the Tutor voice workflow records the lessons after each
+  merge. A proposal for the next subject (the chemistry strand of junior science, or others) is
+  with the owner, and nothing is built until the owner chooses.
 - Done: the *Deploy Supabase backend* workflow works. Its secrets (`SUPABASE_ACCESS_TOKEN`,
   `SUPABASE_PROJECT_ID` and `SUPABASE_DB_PASSWORD`) were added on 14 October 2026. The first run
   failed at `supabase link`, which reads the project's secret API keys, so the workflow no longer
