@@ -12,6 +12,8 @@ import { GRAPH_SKILLS } from './gen/graphs.ts';
 import { PROPORTION_SKILLS } from './gen/proportion.ts';
 import { MEASURE_SKILLS } from './gen/measures.ts';
 import { FREQUENCY_SKILLS } from './gen/frequency.ts';
+import { MECHANICS_SKILLS } from './gen/mechanics.ts';
+import { FORCES_SKILLS } from './gen/forces.ts';
 
 export const MATHMORE_SKILLS: SkillDef[] = [
   ...STATS_SKILLS,
@@ -27,4 +29,6 @@ export const MATHMORE_SKILLS: SkillDef[] = [
   ...PROPORTION_SKILLS,
   ...MEASURE_SKILLS,
   ...FREQUENCY_SKILLS,
+  ...MECHANICS_SKILLS,
+  ...FORCES_SKILLS,
 ];

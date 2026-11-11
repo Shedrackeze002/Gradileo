@@ -49,9 +49,11 @@ describe('curriculum maps', () => {
     const year2 = getCourse('uk-a-level-year-2')!;
     expect(year1.units.map((u) => u.title)).toContain('Exponentials and Logarithms');
     expect(year2.units.map((u) => u.title)).toContain('Trigonometry and Modelling');
-    // Mechanics and hypothesis testing are the largest topics still to write.
+    // Mechanics is taught in both years, so it is no longer a gap.
+    expect(year1.units.map((u) => u.title)).toContain('Forces and Newton’s Laws');
+    expect(year2.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Moments', 'Projectiles', 'Applications of Forces']));
+    expect([...year1.gaps!, ...year2.gaps!].filter((g) => /mechanics|Newton’s laws|pulley|Projectile|friction|inclined|Moments|Kinematics/i.test(g))).toEqual([]);
     expect(year1.gaps).toContain('The binomial distribution');
-    expect(year2.gaps).toContain('Moments');
     const uk = (grade: number, more = {}) => recommendCourse({ subject: 'Mathematics', grade, curriculum: 'uk', plan: 'university-stem', feeling: 'ok', ...more });
     expect(uk(11).courseId).toBe('uk-a-level-year-1');
     expect(uk(11).prerequisite).toBe('uk-gcse-higher');
