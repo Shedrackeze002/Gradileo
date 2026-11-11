@@ -1056,7 +1056,10 @@ items ship or decisions change.
   from the teacher, or a name-only account let into a class, can add an email address in Settings
   (theirs or a parent's). It counts once the six-digit code sent to it is typed back (5 codes an
   hour, 5 tries a code, 15 minutes each); reminders then go there, and it can be changed or removed.
-  Only the student sees it (`notification_emails`, the `notify-email` function).
+  Only the student sees it (`notification_emails`, the `notify-email` function). 11 November: the
+  owner chose to make it a parent's or guardian's address (many students are under 13): the code
+  email goes to the parent and explains the request, and the parent agrees by giving the student
+  the code.
 - Visitor counts (6 November 2026): Cloudflare reported 18,032 page views on gradileo.com in the
   month after it went live (13 October), but the zone's count includes bots, and Supabase had only
   8 accounts (1 teacher, 7 students, 6 of them since 13 October). Built: Cloudflare Web Analytics

@@ -1,8 +1,9 @@
 /**
  * notify-email: lets a student whose account has no email address (a username made by the teacher,
- * or a name-only class-link account once a teacher has let them in) add one, theirs or a parent's,
- * so class reminders reach it by email. The address is used only after the six-digit code sent to
- * it is typed back, so nobody can make Gradileo email an address they do not control.
+ * or a name-only class-link account once a teacher has let them in) add a parent's or guardian's
+ * email, so class reminders reach it. The code goes to the parent, who agrees by giving it to the
+ * student; the address is used only once the code is typed back, so nobody can make Gradileo email
+ * an address whose owner did not agree.
  *
  * Body: { action: 'get' }
  *       { action: 'request', email }   sends a code (at most 5 an hour; each lasts 15 minutes)
@@ -55,21 +56,24 @@ async function sendCode(db: Db, to: string, code: string, name: string) {
   const replyTo = s.email_reply_to || Deno.env.get('EMAIL_REPLY_TO');
   if (!apiKey || !from) throw new HttpError(503, 'Email is not set up on this Gradileo server yet.');
   const who = name.trim() || 'A Gradileo student';
+  const safe = who.replace(/[&<>"']/g, '');
   const text =
-    `Your Gradileo code is ${code}. It works for ${CODE_MINUTES} minutes.\n\n` +
-    `${who} asked for reminders about their class work to be sent to this address. ` +
-    'If you did not expect this, ignore this email and nothing more will be sent.';
+    `${who} asked for reminders about their class work on Gradileo to be sent to this address, as their parent or guardian.\n\n` +
+    `If you agree, give them this code to type in: ${code}\nIt works for ${CODE_MINUTES} minutes.\n\n` +
+    'We use this address only for reminders from their classes, and it can be removed at any time in Settings. ' +
+    'If you do not agree, or did not expect this, ignore this email and nothing more will be sent.';
   const html = `<div style="font-family:system-ui,sans-serif;max-width:520px;margin:auto;padding:24px;color:#14161f">
     <div style="font-size:12px;font-weight:700;color:#6a43e3;letter-spacing:.06em;text-transform:uppercase">Gradileo</div>
-    <p style="margin:12px 0 6px;color:#4b5060">Your code is</p>
+    <p style="margin:12px 0;color:#14161f;line-height:1.5"><strong>${safe}</strong> asked for reminders about their class work on Gradileo to be sent to this address, as their parent or guardian.</p>
+    <p style="margin:0 0 6px;color:#4b5060">If you agree, give them this code to type in:</p>
     <div style="font-size:32px;font-weight:700;letter-spacing:.2em">${code}</div>
     <p style="margin:6px 0 18px;color:#4b5060">It works for ${CODE_MINUTES} minutes.</p>
-    <p style="margin:0;color:#4b5060;line-height:1.5">${who.replace(/[&<>"']/g, '')} asked for reminders about their class work to be sent to this address. If you did not expect this, ignore this email and nothing more will be sent.</p>
+    <p style="margin:0;font-size:13px;color:#8a8fa0;line-height:1.5">We use this address only for reminders from their classes, and it can be removed at any time in Settings. If you do not agree, or did not expect this, ignore this email and nothing more will be sent.</p>
   </div>`;
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from, to: [to], ...(replyTo ? { reply_to: replyTo } : {}), subject: `Your Gradileo code: ${code}`, html, text }),
+    body: JSON.stringify({ from, to: [to], ...(replyTo ? { reply_to: replyTo } : {}), subject: `${who} asked for Gradileo reminders at this address`, html, text }),
   });
   if (!res.ok) {
     console.error('code email failed', res.status, await res.text());
