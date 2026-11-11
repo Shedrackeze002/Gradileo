@@ -42,7 +42,7 @@ test('a teacher makes a Grade 11 Chemistry class from the Chemistry tab and teac
   expect(errors).toEqual([]);
 });
 
-test('a Grade 10 student who chooses chemistry starts Grade 10 Chemistry, and a Grade 11 student is offered a check first', async ({ page }) => {
+test('a Grade 10 or 11 student who chooses chemistry is offered a check on the course before, and can skip it', async ({ page }) => {
   const errors = trackErrors(page);
   await page.goto('/signup');
   await page.getByLabel('Full name').fill('Marie Learner');
@@ -64,8 +64,8 @@ test('a Grade 10 student who chooses chemistry starts Grade 10 Chemistry, and a 
   await page.getByRole('button', { name: 'Grade 10', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 10 Chemistry', exact: true })).toBeVisible();
-  await expect(page.getByText('Chemistry 10 is the first course, so there is no placement check.')).toBeVisible();
-  await page.getByRole('button', { name: 'Start Chemistry 10' }).click();
+  await expect(page.getByText(/6 questions on Chemistry 9 skills/)).toBeVisible();
+  await page.getByRole('button', { name: 'Skip the check and start' }).click();
   await page.waitForURL(/\/s$/);
   await expect(page.getByText('Grade 10 Chemistry · Self-paced with your AI tutor')).toBeVisible();
   expect(errors).toEqual([]);

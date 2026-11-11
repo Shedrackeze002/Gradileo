@@ -59,7 +59,8 @@ export const PREREQUISITE: Record<string, string | null> = {
   'math-31': 'math-30-1',
   'chem-7': null,
   'chem-8': 'chem-7',
-  'chem-10': null,
+  'chem-9': 'chem-8',
+  'chem-10': 'chem-9',
   'chem-20': 'chem-10',
   'chem-30': 'chem-20',
   'eng-5': null,
@@ -325,12 +326,17 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
         { courseId: 'chem-10', why: 'If you have already studied atoms, the periodic table and word equations.' },
       ]);
     }
-    if (g <= 10) {
-      const reasons = ['Grade 10 Chemistry is the first full chemistry course: the particle model, atoms and the periodic table, bonding, chemical reactions, and moles, acids and bases.'];
-      if (g < 10) reasons.push('It is usually taken in Grade 10, so a few ideas will be new; it starts from what matter is made of.');
-      const others = [{ courseId: 'chem-20', why: 'If you have already studied atoms, bonding and balancing equations.' }];
-      if (g < 10) others.unshift({ courseId: 'chem-8', why: 'If you want to start with atoms, elements, the periodic table and simple reactions.' });
-      return rec('chem-10', reasons, others);
+    if (g === 9) {
+      return rec('chem-9', ['Grade 9 Chemistry covers atomic structure, formulas and names of compounds, reactions and the conservation of mass, and acids and bases.'], [
+        { courseId: 'chem-8', why: 'If you want to start with atoms, elements, the periodic table and simple reactions.' },
+        { courseId: 'chem-10', why: 'If you have already studied atomic structure, balancing equations and pH.' },
+      ]);
+    }
+    if (g === 10) {
+      return rec('chem-10', ['Grade 10 Chemistry is the first full chemistry course: the particle model, atoms and the periodic table, bonding, chemical reactions, and moles, acids and bases.'], [
+        { courseId: 'chem-9', why: 'If you want to start with atomic structure, formulas and names, and simple equations.' },
+        { courseId: 'chem-20', why: 'If you have already studied atoms, bonding and balancing equations.' },
+      ]);
     }
     if (g >= 12) {
       return rec('chem-30', ['Grade 12 Chemistry covers thermochemistry, electrochemistry, organic compounds and their reactions, and equilibrium with acids and bases.'], [
