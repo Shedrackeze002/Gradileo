@@ -28,8 +28,14 @@ describe('the UK map’s chemistry and English courses', () => {
 
   it('build the two English GCSEs from English lessons only', () => {
     expect(titles('English')).toEqual(['GCSE English Language', 'GCSE English Literature']);
-    const own = new Set(LISTED_COURSES.filter((c) => c.subject === 'English').flatMap((c) => c.lessons.map((l) => l.id)));
+    const moreEnglish = getCourse('eng-more')!;
+    const own = new Set([...LISTED_COURSES.filter((c) => c.subject === 'English'), moreEnglish].flatMap((c) => c.lessons.map((l) => l.id)));
     for (const c of mappedCourses('uk').filter((c) => c.subject === 'English')) for (const l of c.lessons) expect(own.has(l.id), `${c.id} ${l.id}`).toBe(true);
+    // Gaps are filled from More English Topics, an extra course that no picker lists.
+    expect(LISTED_COURSES).not.toContain(moreEnglish);
+    const language = getCourse('uk-gcse-english-language')!;
+    for (const l of moreEnglish.lessons) expect(language.lessons.some((x) => x.id === l.id), `GCSE English Language teaches ${l.id}`).toBe(true);
+    expect(language.gaps!.some((g) => /Evaluating a statement|Summarising|Comparing how/.test(g))).toBe(false);
     const literature = getCourse('uk-gcse-english-literature')!;
     expect(literature.units.find((u) => u.title === 'Shakespeare: Macbeth')!.lessons).toEqual(['e11-3-1', 'e11-3-2', 'e11-3-3', 'e11-3-4']);
     // Texts still in copyright stay a gap: Gradileo teaches from the public domain only.

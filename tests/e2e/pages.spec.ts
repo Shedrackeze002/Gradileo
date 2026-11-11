@@ -162,7 +162,7 @@ test('a teacher starts a class on KCSE Form 3 from the Kenya tab, which lists th
   await page.getByRole('tab', { name: 'Kenya KCSE' }).click();
   const course = page.getByRole('button', { name: /^KCSE Mathematics: Form 3 \(Kenya\)/ });
   await course.click();
-  await expect(course.getByText(/Not in Gradileo yet: .*Joint and partial variation/)).toBeVisible();
+  await expect(course.getByText(/Not in Gradileo yet: Vector geometry/)).toBeVisible();
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
   await page.goto(`${page.url().replace(/\/$/, '')}/curriculum`);
@@ -522,7 +522,8 @@ test('a learner outside Canada gives their country and year, and sees the course
   // A learner in SS 1 is offered WASSCE General Mathematics, built from Gradileo's lessons.
   await expect(page.getByRole('heading', { name: 'WASSCE Mathematics: SS 1 (WAEC)', exact: true })).toBeVisible();
   await expect(page.getByText('Usually taken in SS 1.')).toBeVisible();
-  await expect(page.getByText(/Not in Gradileo yet: Number bases/)).toBeVisible();
+  // Its gaps are filled by lessons in More Mathematics Topics, so it lists none.
+  await expect(page.getByText(/Not in Gradileo yet/)).toHaveCount(0);
   expect(errors).toEqual([]);
 });
 

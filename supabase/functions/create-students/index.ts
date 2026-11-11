@@ -65,6 +65,10 @@ serve(async (req) => {
         if (/already|exists|registered/i.test(error.message)) continue;
         throw new Error(error.message);
       }
+      // The sign-up trigger runs before the account's app metadata is stored, so it cannot read
+      // the username; write it here, or the roster and the gradebook show the sign-in address.
+      const { error: e1 } = await db.from('profiles').update({ username }).eq('id', data.user.id);
+      if (e1) throw new Error(e1.message);
       const { error: e2 } = await db.from('enrollments').insert({ class_id: classId, student_id: data.user.id });
       if (e2) throw new Error(e2.message);
       students.push({ fullName, username, password: pw });

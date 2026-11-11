@@ -100,6 +100,18 @@ items ship or decisions change.
   only on the last question, the footer reminds students that answers save automatically, and
   the confirmation says plainly that submitting ends the homework or exam and answers can no
   longer be changed ("Keep working" or "Yes, submit my exam").
+- End-to-end test of the live site (11 November 2026, the owner's request), with test accounts
+  in a test class, every role and flow, on desktop, phones and an iPad. Fixed from it: a reopened
+  attempt's clock now starts when the student first opens it (it started when the teacher pressed
+  Reopen, so a timed quiz or exam opened later was submitted empty at once); an answer given just
+  before leaving the work is saved (the pending autosave was dropped); the accepted-answers box
+  of a short-answer question takes commas and spaces as typed; empty choices are left out of a
+  choice question; leaving present mode closes a live question left open; a new student's study
+  coach no longer says they are "secure on what has been taught"; students a teacher creates
+  show their username, not the internal sign-in address; and the landing page says English
+  covers Grades 5 to 12. Still open from the test, for the owner to decide: a "Forgot password"
+  link (there is none; only an administrator can reset a password), a way to send the
+  confirmation email again, and a time limit checked by the server as well as the page.
 
 ## Next, in order
 
@@ -732,8 +744,18 @@ items ship or decisions change.
      (Unit 3). **GCSE Chemistry** now has 50 lessons and lists 10 gaps, down from 16 (the
      atmosphere, using resources, the Haber process, fuel cells, the history of the atom, the
      transition metals and the forms of carbon remain), and **A level Chemistry Year 12** lists
-     12, down from 13. The new lessons have no videos or tutor recordings yet. Next: the GCSE
-     English Language gaps, then the rest of GCSE Chemistry.
+     12, down from 13. The new lessons have no videos or tutor recordings yet.
+   - Built (11 November 2026), step 3, the first English gaps filled: **More English Topics**
+     (`engine/curriculum/engmore/`, `eng-more`, lesson ids `ex-…`), the same kind of course for
+     English. Four lessons in two units, with 8 question generators: evaluating a statement about
+     a text ("how far do you agree?"), summarising the differences between two texts, comparing
+     two writers' viewpoints and methods, and writing an article, a formal letter and a speech.
+     Its texts (five pairs of a modern and a nineteenth-century source, and five fiction
+     extracts) were written for the lessons, so nothing depends on a text in copyright. **GCSE
+     English Language** now has 37 lessons and lists 4 gaps, down from 8 (nineteenth-century
+     non-fiction, descriptive writing from a picture, spelling and spoken language remain). The
+     new lessons have no videos or tutor recordings yet. Next: the rest of GCSE Chemistry (the
+     atmosphere, using resources), then GCSE English Literature's nineteenth-century novel.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1
@@ -760,6 +782,20 @@ items ship or decisions change.
      variable; Spearman's rank correlation; the chi-squared tests; the t-test; and Voronoi
      diagrams. Next: fill these gaps in More Mathematics Topics, the most shared first, then their
      videos and tutor recordings.
+   - Built (11 November 2026): **the first 16 gap lessons**, in four new units of More Mathematics
+     Topics with 32 question generators. Unit 23: number bases, modular arithmetic and truth
+     tables. Unit 24: changing the subject of a formula, joint and partial variation, and linear
+     programming. Unit 25: segments of a circle, frustums, Heron's formula, cyclic quadrilaterals
+     and the alternate segment theorem, intersecting chords and common tangents, and longitude and
+     latitude. Unit 26: nominal and effective interest rates, annuities and sinking funds, present
+     value and loans, and shares and stocks. The maps teach them under their own unit names, so
+     WASSCE SS 1 to SS 3, KCSE Form 1 and Form 2, and IGCSE Core now list no gaps. Gaps still
+     listed: vector geometry (KCSE Form 3, IGCSE Extended); matrices and transformations and the
+     mid-ordinate rule (KCSE Form 4); the midpoint and proportionality theorems, the angle of
+     inclination, the tangent to a circle and the least squares regression line (CAPS); the
+     regression line and expected value (IB), and Voronoi diagrams, Spearman's rank correlation,
+     the chi-squared tests and the t-test (IB AI SL). Next: these lessons, then the videos and
+     tutor recordings for Units 23 to 26 and after.
    - In progress (4 November 2026, the owner's go-ahead): **More Mathematics Topics videos**, 30
      explainers for its 23 lessons (`src/content/mathmore/videos/`, PR #122), each with its own
      grade on YouTube. Scripts and stills are done; units are rendering and going to Drive, then the
