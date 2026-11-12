@@ -5,6 +5,7 @@ export const PRIDE: LitText = {
   title: 'Pride and Prejudice',
   author: 'Jane Austen',
   date: '1813',
+  source: 'Jane Austen, Pride and Prejudice, 1813. Quoted from Project Gutenberg eBook #1342.',
   part: 'Chapter',
   characters: [
     { name: 'Elizabeth Bennet', is: 'the lively, quick-witted second daughter of the Bennet family, who is too quick to judge' },

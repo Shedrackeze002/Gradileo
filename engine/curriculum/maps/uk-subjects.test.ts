@@ -42,19 +42,19 @@ describe('the UK map’s chemistry and English courses', () => {
     expect(LISTED_COURSES).not.toContain(moreEnglish);
     const language = getCourse('uk-gcse-english-language')!;
     const literatureMap = getCourse('uk-gcse-english-literature')!;
-    // Units 1 to 4 fill GCSE English Language; Units 5 to 7 are the Literature set texts.
+    // Units 1 to 4 fill GCSE English Language; Units 5 to 10 are the Literature texts and poems.
     for (const l of moreEnglish.lessons) {
-      const course = l.unitId < 'ex-u5' ? language : literatureMap;
+      const course = Number(l.unitId.slice('ex-u'.length)) < 5 ? language : literatureMap;
       expect(course.lessons.some((x) => x.id === l.id), `${course.id} teaches ${l.id}`).toBe(true);
     }
     // GCSE English Language now teaches every part of the specification.
     expect(language.gaps).toEqual([]);
     const literature = getCourse('uk-gcse-english-literature')!;
     expect(literature.units.find((u) => u.title === 'Shakespeare: Macbeth')!.lessons).toEqual(['e11-3-1', 'e11-3-2', 'e11-3-3', 'e11-3-4']);
-    // Texts still in copyright stay a gap: Gradileo teaches from the public domain only.
-    expect(literature.gaps!.some((g) => /public domain/.test(g))).toBe(true);
-    // Every set text in the public domain is taught: only the anthology poems and copyright texts remain.
-    expect(literature.gaps!.some((g) => /Christmas Carol|Jekyll|Frankenstein|Much Ado/.test(g))).toBe(false);
+    // Every part is taught: texts still in copyright in our own words, without quoting them.
+    expect(literature.gaps).toEqual([]);
+    expect(literature.units.find((u) => u.title === 'Modern Drama: An Inspector Calls')!.lessons).toEqual(['ex-10-1']);
+    expect(literature.units.find((u) => u.title === 'Anthology Poetry: Power and Conflict')!.lessons).toEqual(['ex-8-1', 'ex-8-2', 'ex-8-3']);
     expect(literature.units.find((u) => u.title === 'Shakespeare: Julius Caesar')!.lessons).toEqual(['ex-7-3']);
     expect(getCourse('uk-gcse-english-language')!.units.map((u) => u.title)).toEqual(expect.arrayContaining(['Reading Fiction: Structure', 'Writing to Present a Viewpoint', 'Technical Accuracy']));
   });

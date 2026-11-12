@@ -5,6 +5,7 @@ export const JANE_EYRE: LitText = {
   title: 'Jane Eyre',
   author: 'Charlotte Brontë',
   date: '1847',
+  source: 'Charlotte Brontë, Jane Eyre: An Autobiography, 1847. Quoted from Project Gutenberg eBook #1260.',
   part: 'Chapter',
   characters: [
     { name: 'Jane', is: 'the novel’s narrator, an orphan who grows from a rebellious child into an independent governess' },

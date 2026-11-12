@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { EXTRACTS, PAIRS, TASKS } from './gen/texts.ts';
-import { SET_TEXTS } from './gen/litskills.ts';
+import { MODERN_SET, SET_TEXTS } from './gen/litskills.ts';
+import { POEM_LESSONS } from './gen/poemskills.ts';
+import { POWER_POEMS, POWER_THEMES } from './gen/poems/power.ts';
+import { LOVE_POEMS, LOVE_THEMES } from './gen/poems/love.ts';
 
 // The questions quote the texts, so every quotation must be in its text word for word.
 describe('More English Topics: the practice texts', () => {
@@ -61,5 +64,71 @@ describe('More English Topics: the set texts', () => {
         expect(x.text, x.text).not.toMatch(/['"]/);
       }
     });
+  }
+});
+
+// The modern texts are still in copyright, so they are never quoted: their key moments are told in
+// our own words, and each credits its writer and first publication or performance.
+describe('More English Topics: the modern texts', () => {
+  for (const { key, text: t, play } of MODERN_SET) {
+    it(`${key}: has the data each kind of question needs, and no quotations`, () => {
+      expect(t.quotations).toEqual([]);
+      expect(new Set(t.characters.map((c) => c.name)).size).toBe(t.characters.length);
+      expect(t.characters.length).toBeGreaterThanOrEqual(6);
+      expect(t.themes.length).toBeGreaterThanOrEqual(5);
+      expect(t.events.length).toBeGreaterThanOrEqual(8);
+      // A novel's plot skill asks which chapter an event happens in.
+      if (!play) expect(new Set(t.events.map((e) => e.where)).size).toBeGreaterThanOrEqual(4);
+      expect(t.moments!.length).toBeGreaterThanOrEqual(4);
+      expect(t.context.length).toBeGreaterThanOrEqual(3);
+      expect(t.source).toContain(t.author);
+      for (const m of t.moments!) {
+        expect(t.themes, m.what).toContain(m.theme);
+        expect(new Set([m.reading, ...m.misreadings]).size, m.what).toBe(4);
+        // No quoted words from the text.
+        expect(m.what, m.what).not.toMatch(/[“”"]/);
+      }
+    });
+  }
+});
+
+// The anthology poems: those in the public domain are quoted from the edition each names (checked
+// word for word against it), and those still in copyright are described in our own words only.
+describe('More English Topics: the anthology poems', () => {
+  const clusters = [
+    { poems: POWER_POEMS, themes: POWER_THEMES },
+    { poems: LOVE_POEMS, themes: LOVE_THEMES },
+  ];
+  it('cover each cluster of fifteen poems once', () => {
+    for (const { poems } of clusters) {
+      expect(poems.length).toBe(15);
+      expect(new Set(poems.map((p) => p.title)).size).toBe(15);
+    }
+    const taught = POEM_LESSONS.flatMap((l) => l.set.poems);
+    expect(taught.length).toBe(30);
+    expect(new Set(taught).size).toBe(30);
+  });
+
+  for (const { poems, themes } of clusters) {
+    for (const p of poems) {
+      it(`${p.title}: has the data each kind of question needs`, () => {
+        expect(p.themes.length).toBeGreaterThanOrEqual(2);
+        for (const t of p.themes) expect(themes, t).toContain(t);
+        expect(p.context.length).toBeGreaterThanOrEqual(1);
+        expect(p.about).not.toContain(p.title);
+        // Exactly one of quotations (public domain) and moments (in copyright).
+        expect(!!p.quotations?.length).toBe(!p.moments?.length);
+        for (const x of p.quotations ?? []) {
+          expect(p.themes.concat(themes), x.text).toContain(x.theme);
+          expect(new Set([x.reading, ...x.misreadings]).size, x.text).toBe(4);
+          expect(x.text, x.text).not.toMatch(/['"]/);
+        }
+        for (const m of p.moments ?? []) {
+          expect(themes, m.what).toContain(m.theme);
+          expect(new Set([m.reading, ...m.misreadings]).size, m.what).toBe(4);
+          expect(m.what, m.what).not.toMatch(/[“”"]/);
+        }
+      });
+    }
   }
 });

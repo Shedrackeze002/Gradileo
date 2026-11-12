@@ -34,6 +34,23 @@ export interface Quotation {
   misreadings: [string, string, string];
 }
 
+/**
+ * A key moment of a text still in copyright, told in our own words rather than quoted, so that
+ * the questions on it never reproduce the writer's text.
+ */
+export interface Moment {
+  /** What happens, in our own words (“Birling tells his guests that war will never come.”). */
+  what: string;
+  /** Where it happens: “Act 1”, “Chapter 10”. */
+  where: string;
+  /** The theme it shows best, one of the text's `themes`. */
+  theme: string;
+  /** What it suggests, as a full sentence. */
+  reading: string;
+  /** Three plausible misreadings, each as full as `reading`. */
+  misreadings: [string, string, string];
+}
+
 export interface BankQuestion {
   ask: string;
   right: string;
@@ -52,7 +69,12 @@ export interface LitText {
   /** The main events, in the order they happen, each with where it happens. */
   events: Array<{ where: string; what: string }>;
   themes: string[];
+  /** Key quotations: only for texts in the public domain (empty for a text still in copyright). */
   quotations: Quotation[];
+  /** Key moments in our own words, for a text still in copyright. */
+  moments?: Moment[];
+  /** The text the lesson credits: its first publication or performance, and the edition quoted. */
+  source: string;
   /** Questions on the text's context and the writer's methods. */
   context: BankQuestion[];
 }
@@ -151,6 +173,32 @@ export function readingOf(t: LitText) {
       parts: [part(mc(rng, x.reading, x.misreadings))],
       hints: ['Read the words closely: which reading does every part of the quotation support?', 'Wrong readings often fit only one word, or misjudge the speaker’s tone.'],
       solution: [x.reading],
+    };
+  };
+}
+
+/** Which theme does this moment show best? (A text in copyright: the moment is in our own words.) */
+export function momentTheme(t: LitText) {
+  return (rng: Rng): GenOutput => {
+    const m = rng.pick(t.moments ?? []);
+    return {
+      prompt: `In ${ital(t)} (${m.where}): ${m.what}\n\nWhich theme does this moment show best?`,
+      parts: [part(mc(rng, m.theme, rng.sample(t.themes.filter((th) => th !== m.theme), 3)))],
+      hints: ['Ask what the moment is really about, beyond what happens in the story.', 'More than one theme may be nearby; choose the one this moment shows most clearly.'],
+      solution: [`It shows ${m.theme.toLowerCase()}. ${m.reading}`],
+    };
+  };
+}
+
+/** What does this moment suggest? */
+export function momentReading(t: LitText) {
+  return (rng: Rng): GenOutput => {
+    const m = rng.pick(t.moments ?? []);
+    return {
+      prompt: `In ${ital(t)} (${m.where}): ${m.what}\n\nWhich is the best reading of this moment?`,
+      parts: [part(mc(rng, m.reading, m.misreadings))],
+      hints: ['Think about why the writer includes this moment: what does it show about the characters or the ideas?', 'Wrong readings often fit only part of the moment, or ignore what the writer wants the audience to feel.'],
+      solution: [m.reading],
     };
   };
 }

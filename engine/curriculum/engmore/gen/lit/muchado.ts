@@ -5,6 +5,7 @@ export const MUCH_ADO: LitText = {
   title: 'Much Ado About Nothing',
   author: 'William Shakespeare',
   date: 'first performed about 1598',
+  source: 'William Shakespeare, Much Ado About Nothing, first printed in 1600. Quoted from Project Gutenberg eBook #1519.',
   part: 'Act',
   characters: [
     { name: 'Beatrice', is: 'Leonato’s sharp-tongued niece, who swears she will never marry and fights a “merry war” of wit with Benedick' },

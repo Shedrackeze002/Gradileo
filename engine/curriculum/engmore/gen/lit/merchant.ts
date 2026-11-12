@@ -5,6 +5,7 @@ export const MERCHANT: LitText = {
   title: 'The Merchant of Venice',
   author: 'William Shakespeare',
   date: 'first performed about 1597',
+  source: 'William Shakespeare, The Merchant of Venice, first printed in 1600. Quoted from Project Gutenberg eBook #1515.',
   part: 'Act',
   characters: [
     { name: 'Shylock', is: 'a Jewish moneylender in Venice, scorned by the Christians, who lends money on the bond of a pound of flesh' },
