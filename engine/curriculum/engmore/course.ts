@@ -6,7 +6,9 @@
  * course to take on its own, so it is not offered in the course pickers (`extra`), and each lesson
  * carries its own level (`grade`). Units 1 to 4 use texts written for these lessons; Units 5 to 7
  * teach the GCSE English Literature set texts in the public domain, quoting each word for word from
- * its Project Gutenberg edition.
+ * its Project Gutenberg edition. Units 8 and 9 teach two clusters of the AQA poetry anthology,
+ * quoting only the poems in the public domain, and Unit 10 teaches four modern texts. Works still in
+ * copyright are described in our own words and never quoted, and every lesson credits its sources.
  */
 import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
 
@@ -23,6 +25,10 @@ export const OUTCOMES: Outcome[] = [
   { code: 'LN2', strand: 'Literature: nineteenth-century novels', text: 'Explain how key quotations from a nineteenth-century novel show its themes, and relate the novel to its context and the writer’s methods.' },
   { code: 'LS1', strand: 'Literature: Shakespeare', text: 'Know the characters and the plot of a Shakespeare play, and who speaks its key lines.' },
   { code: 'LS2', strand: 'Literature: Shakespeare', text: 'Explain how key quotations from a Shakespeare play show its themes, and relate the play to its context and Shakespeare’s methods.' },
+  { code: 'LP1', strand: 'Literature: poetry anthology', text: 'Know what each poem of an anthology cluster is about, who wrote it, and which poem key lines come from.' },
+  { code: 'LP2', strand: 'Literature: poetry anthology', text: 'Explain the themes, form and methods of the poems of an anthology cluster, compare poems that share a theme, and relate each poem to its context.' },
+  { code: 'LM1', strand: 'Literature: modern prose and drama', text: 'Know the characters and the plot of a modern play or novel.' },
+  { code: 'LM2', strand: 'Literature: modern prose and drama', text: 'Explain how key moments of a modern play or novel show its themes, and relate the text to its context and the writer’s methods.' },
 ];
 
 const L = (
@@ -123,6 +129,52 @@ export const LESSONS: LessonMeta[] = [
     ['ex-caesar-plot', 'ex-caesar-themes'],
     ['Know who the characters of Julius Caesar are, the order of the main events, and who says the key lines', 'Explain what key quotations show about the play’s themes, and relate the play to its context and the writer’s methods'],
     ['rhetoric', 'conspiracy', 'tragic hero', 'omen', 'republic']),
+
+  // ---------------- Unit 8: Poetry Anthology: Power and Conflict ----------------
+  L('ex-8-1', 'ex-u8', '8.1', 'Power and Conflict: Ozymandias, London and The Prelude', 10, ['LP1', 'LP2'],
+    ['ex-power-1-poems', 'ex-power-1-themes'],
+    ['Know what Ozymandias, London and the extract from The Prelude are about, and which poem key lines come from', 'Explain the themes key lines show, compare the poems with others in the cluster, and relate them to their context'],
+    ['Romantic', 'sonnet', 'irony', 'dramatic monologue', 'sublime']),
+  L('ex-8-2', 'ex-u8', '8.2', 'Power and Conflict: My Last Duchess, The Charge of the Light Brigade and Exposure', 10, ['LP1', 'LP2'],
+    ['ex-power-2-poems', 'ex-power-2-themes'],
+    ['Know what My Last Duchess, The Charge of the Light Brigade and Exposure are about, and which poem key lines come from', 'Explain the themes key lines show, compare the poems with others in the cluster, and relate them to their context'],
+    ['dramatic monologue', 'enjambment', 'dactyl', 'pararhyme', 'refrain']),
+  L('ex-8-3', 'ex-u8', '8.3', 'Power and Conflict: the Modern Poems', 10, ['LP1', 'LP2'],
+    ['ex-power-3-poems', 'ex-power-3-methods'],
+    ['Know who wrote each of the more recent Power and Conflict poems and what each is about', 'Explain the form and key moments of each poem, and relate it to its context'],
+    ['free verse', 'persona', 'in medias res', 'volta', 'caesura']),
+
+  // ---------------- Unit 9: Poetry Anthology: Love and Relationships ----------------
+  L('ex-9-1', 'ex-u9', '9.1', 'Love and Relationships: When We Two Parted, Love’s Philosophy and Porphyria’s Lover', 10, ['LP1', 'LP2'],
+    ['ex-love-1-poems', 'ex-love-1-themes'],
+    ['Know what When We Two Parted, Love’s Philosophy and Porphyria’s Lover are about, and which poem key lines come from', 'Explain the themes key lines show, compare the poems with others in the cluster, and relate them to their context'],
+    ['Romantic', 'personification', 'rhetorical question', 'dramatic monologue', 'pathetic fallacy']),
+  L('ex-9-2', 'ex-u9', '9.2', 'Love and Relationships: Sonnet 29, Neutral Tones and The Farmer’s Bride', 10, ['LP1', 'LP2'],
+    ['ex-love-2-poems', 'ex-love-2-themes'],
+    ['Know what Sonnet 29, Neutral Tones and The Farmer’s Bride are about, and which poem key lines come from', 'Explain the themes key lines show, compare the poems with others in the cluster, and relate them to their context'],
+    ['Petrarchan sonnet', 'extended metaphor', 'cyclical structure', 'dialect', 'simile']),
+  L('ex-9-3', 'ex-u9', '9.3', 'Love and Relationships: the Modern Poems', 10, ['LP1', 'LP2'],
+    ['ex-love-3-poems', 'ex-love-3-methods'],
+    ['Know who wrote each of the more recent Love and Relationships poems and what each is about', 'Explain the form and key moments of each poem, and relate it to its context'],
+    ['free verse', 'extended metaphor', 'sonnet', 'nostalgia', 'persona']),
+
+  // ---------------- Unit 10: Modern Prose and Drama ----------------
+  L('ex-10-1', 'ex-u10', '10.1', 'An Inspector Calls', 10, ['LM1', 'LM2'],
+    ['ex-inspector-plot', 'ex-inspector-themes'],
+    ['Know who the characters of An Inspector Calls are and the order of the main events', 'Explain what key moments show about the play’s themes, and relate the play to its context and the writer’s methods'],
+    ['dramatic irony', 'social responsibility', 'capitalism', 'socialism', 'well-made play']),
+  L('ex-10-2', 'ex-u10', '10.2', 'Blood Brothers', 10, ['LM1', 'LM2'],
+    ['ex-blood-brothers-plot', 'ex-blood-brothers-themes'],
+    ['Know who the characters of Blood Brothers are and the order of the main events', 'Explain what key moments show about the play’s themes, and relate the play to its context and the writer’s methods'],
+    ['narrator', 'superstition', 'class', 'foreshadowing', 'musical']),
+  L('ex-10-3', 'ex-u10', '10.3', 'Lord of the Flies', 10, ['LM1', 'LM2'],
+    ['ex-lord-of-the-flies-plot', 'ex-lord-of-the-flies-themes'],
+    ['Know who the characters of Lord of the Flies are, the order of the main events and the chapter each happens in', 'Explain what key moments show about the novel’s themes, and relate the novel to its context and the writer’s methods'],
+    ['allegory', 'civilisation', 'savagery', 'symbol', 'microcosm']),
+  L('ex-10-4', 'ex-u10', '10.4', 'Animal Farm', 10, ['LM1', 'LM2'],
+    ['ex-animal-farm-plot', 'ex-animal-farm-themes'],
+    ['Know who the characters of Animal Farm are, the order of the main events and the chapter each happens in', 'Explain what key moments show about the novella’s themes, and relate the novella to its context and the writer’s methods'],
+    ['allegory', 'fable', 'propaganda', 'revolution', 'totalitarianism']),
 ];
 
 export const UNITS: UnitMeta[] = [
@@ -133,6 +185,9 @@ export const UNITS: UnitMeta[] = [
   { id: 'ex-u5', number: 5, title: 'Nineteenth-Century Novels: Dickens and Stevenson', description: 'A Christmas Carol, The Strange Case of Dr Jekyll and Mr Hyde and Great Expectations: their characters and plots, key quotations and themes, and their context.', outcomes: ['LN1', 'LN2'], lessons: [], color: 'emerald' },
   { id: 'ex-u6', number: 6, title: 'Nineteenth-Century Novels: Shelley, Brontë, Austen and Conan Doyle', description: 'Frankenstein, Jane Eyre, Pride and Prejudice and The Sign of Four: their characters and plots, key quotations and themes, and their context.', outcomes: ['LN1', 'LN2'], lessons: [], color: 'teal' },
   { id: 'ex-u7', number: 7, title: 'Shakespeare: Comedy, Justice and Tragedy', description: 'Much Ado About Nothing, The Merchant of Venice and Julius Caesar: their characters and plots, key speeches and themes, and their context.', outcomes: ['LS1', 'LS2'], lessons: [], color: 'orange' },
+  { id: 'ex-u8', number: 8, title: 'Poetry Anthology: Power and Conflict', description: 'The fifteen poems of the AQA Power and Conflict cluster: what each is about, its form, its themes and its context, with the poems in the public domain quoted from cited editions.', outcomes: ['LP1', 'LP2'], lessons: [], color: 'rose' },
+  { id: 'ex-u9', number: 9, title: 'Poetry Anthology: Love and Relationships', description: 'The fifteen poems of the AQA Love and Relationships cluster: what each is about, its form, its themes and its context, with the poems in the public domain quoted from cited editions.', outcomes: ['LP1', 'LP2'], lessons: [], color: 'fuchsia' },
+  { id: 'ex-u10', number: 10, title: 'Modern Prose and Drama', description: 'An Inspector Calls, Blood Brothers, Lord of the Flies and Animal Farm: their characters and plots, key moments and themes, and their context, discussed in our own words.', outcomes: ['LM1', 'LM2'], lessons: [], color: 'indigo' },
 ];
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
 
@@ -142,7 +197,7 @@ export const ENGMORE: CourseMeta = {
   shortTitle: 'More English',
   grade: 10,
   subject: 'English',
-  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: evaluating a statement about a text, summarising and comparing two texts, writing an article, a formal letter and a speech, nineteenth-century non-fiction, descriptive writing, spelling and spoken language, and the GCSE English Literature set texts in the public domain: seven nineteenth-century novels and three Shakespeare plays.',
+  description: 'Topics that school systems around the world teach and Gradileo’s grade courses do not: evaluating a statement about a text, summarising and comparing two texts, writing an article, a formal letter and a speech, nineteenth-century non-fiction, descriptive writing, spelling and spoken language, and GCSE English Literature: seven nineteenth-century novels, three Shakespeare plays, two clusters of the AQA poetry anthology and four modern texts.',
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,

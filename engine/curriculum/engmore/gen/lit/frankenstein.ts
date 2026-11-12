@@ -5,6 +5,7 @@ export const FRANKENSTEIN: LitText = {
   title: 'Frankenstein',
   author: 'Mary Shelley',
   date: '1818, revised in 1831',
+  source: 'Mary Wollstonecraft Shelley, Frankenstein; or, The Modern Prometheus, 1818. Quoted from Project Gutenberg eBook #84.',
   part: 'Chapter',
   characters: [
     { name: 'Victor Frankenstein', is: 'a young scientist from Geneva who builds a living being and then abandons it in horror' },

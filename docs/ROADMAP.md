@@ -820,6 +820,19 @@ items ship or decisions change.
      lesson pages, was checked word for word against the text's Project Gutenberg edition. The
      Literature map files each text as its own unit, so its only gaps are the anthology poems and
      the texts still in copyright. Ten explainer videos come with them.
+   - Built (12 November 2026), step 3, **GCSE English Literature anthology poems and modern
+     texts, with references**: More English Topics gains Unit 8 (AQA Power and Conflict), Unit 9
+     (AQA Love and Relationships) and Unit 10 (*An Inspector Calls*, *Blood Brothers*, *Lord of the
+     Flies* and *Animal Farm*). The owner asked that others' work is never plagiarised and always
+     credited, so every English Literature lesson that quotes a text now ends with a References
+     section naming the author, the first publication and the edition quoted. Only works in the
+     public domain are quoted (the twelve older anthology poems, each checked word for word against
+     its Project Gutenberg edition); the eighteen anthology poems and four modern texts still in
+     copyright are described in our own words, never quoted, and each is credited. Poems are data
+     in `engmore/gen/poems/` with generators in `engmore/gen/poetry.ts`; the modern texts use
+     `moments` (key moments in our own words) in `engmore/gen/lit/modern.ts`. The Literature map
+     now has **no gaps**. Not covered: AQA's third cluster, Worlds and Lives. Ten explainer videos
+     come with the new lessons.
    - Built (11 November 2026), step 3, maps four to eight: **WAEC, Kenya, South Africa, Cambridge
      IGCSE and the IB Diploma**, 14 courses built from Gradileo's lessons, each under the
      syllabus's own unit names and in its order. `maps/waec.ts`: WASSCE General Mathematics, SS 1

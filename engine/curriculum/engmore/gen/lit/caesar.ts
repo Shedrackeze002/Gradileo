@@ -5,6 +5,7 @@ export const CAESAR: LitText = {
   title: 'Julius Caesar',
   author: 'William Shakespeare',
   date: 'first performed in 1599',
+  source: 'William Shakespeare, Julius Caesar, first printed in the First Folio, 1623. Quoted from Project Gutenberg eBook #1522.',
   part: 'Act',
   characters: [
     { name: 'Julius Caesar', is: 'the great Roman general and ruler, whom some fear wants to be crowned king' },

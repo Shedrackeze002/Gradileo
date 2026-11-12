@@ -5,6 +5,7 @@ export const SIGN_OF_FOUR: LitText = {
   title: 'The Sign of Four',
   author: 'Arthur Conan Doyle',
   date: '1890',
+  source: 'Arthur Conan Doyle, The Sign of the Four, 1890. Quoted from Project Gutenberg eBook #2097.',
   part: 'Chapter',
   characters: [
     { name: 'Sherlock Holmes', is: 'a brilliant consulting detective who solves cases by observation and reasoning, and takes cocaine when bored' },

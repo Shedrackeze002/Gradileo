@@ -5,6 +5,7 @@ export const CAROL: LitText = {
   title: 'A Christmas Carol',
   author: 'Charles Dickens',
   date: '1843',
+  source: 'Charles Dickens, A Christmas Carol, 1843. Quoted from Project Gutenberg eBook #46.',
   part: 'Stave',
   characters: [
     { name: 'Ebenezer Scrooge', is: 'a rich, miserly moneylender who hates Christmas until four ghosts visit him on Christmas Eve' },

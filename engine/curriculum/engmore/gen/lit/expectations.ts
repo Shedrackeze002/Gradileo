@@ -5,6 +5,7 @@ export const EXPECTATIONS: LitText = {
   title: 'Great Expectations',
   author: 'Charles Dickens',
   date: '1861',
+  source: 'Charles Dickens, Great Expectations, 1861. Quoted from Project Gutenberg eBook #1400.',
   part: 'Chapter',
   characters: [
     { name: 'Pip', is: 'the novel’s narrator, an orphan raised by his sister who comes into a fortune and learns what it costs him' },

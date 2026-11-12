@@ -5,6 +5,7 @@ export const JEKYLL: LitText = {
   title: 'The Strange Case of Dr Jekyll and Mr Hyde',
   author: 'Robert Louis Stevenson',
   date: '1886',
+  source: 'Robert Louis Stevenson, The Strange Case of Dr Jekyll and Mr Hyde, 1886. Quoted from Project Gutenberg eBook #43.',
   part: 'Chapter',
   characters: [
     { name: 'Dr Jekyll', is: 'a respected, wealthy doctor and scientist who makes a drug that turns him into another man' },

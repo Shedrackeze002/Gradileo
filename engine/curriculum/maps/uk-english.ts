@@ -7,8 +7,10 @@
  * of writing, AO6 technical accuracy).
  *
  * GCSE English Literature: a Shakespeare play, a nineteenth-century novel, a modern text and
- * poetry. Gradileo teaches only from texts in the public domain, so the modern texts schools
- * choose (and the anthology poems still in copyright) stay outside the map; the gaps say so.
+ * poetry. Gradileo quotes only texts in the public domain, from the editions each lesson credits;
+ * the modern texts and the anthology poems still in copyright are taught in our own words, crediting
+ * their writers, and never quoted. The anthology clusters mapped are Power and Conflict and Love and
+ * Relationships (AQA's Worlds and Lives cluster is not taught yet).
  * A level English is not mapped yet.
  */
 import type { MapCourse } from './build.ts';
@@ -39,7 +41,7 @@ export const UK_ENGLISH_COURSES: MapCourse[] = [
     shortTitle: 'GCSE English Literature',
     grade: 10,
     subject: 'English',
-    description: 'A Shakespeare play (Romeo and Juliet, Macbeth, The Tempest, Much Ado About Nothing, The Merchant of Venice or Julius Caesar), a nineteenth-century novel, the methods of poetry, unseen poems and comparing poems, and writing about literature, in the order of a Year 10 and 11 scheme of work.',
+    description: 'A Shakespeare play (Romeo and Juliet, Macbeth, The Tempest, Much Ado About Nothing, The Merchant of Venice or Julius Caesar), a nineteenth-century novel, a modern text (An Inspector Calls, Blood Brothers, Lord of the Flies or Animal Farm), the anthology poems of Power and Conflict and of Love and Relationships, the methods of poetry, unseen poems and comparing poems, and writing about literature, in the order of a Year 10 and 11 scheme of work.',
     units: [
       { title: 'Shakespeare: Romeo and Juliet', description: 'Shakespeare’s language, the characters and their motives, soliloquy and dramatic irony, and the themes of the play.', members: ['e10-u3'] },
       { title: 'Shakespeare: Macbeth', description: 'The language and imagery of the play, ambition and character, the supernatural and the play’s dramatic devices, and tragedy and theme.', members: ['e11-u3'] },
@@ -54,13 +56,16 @@ export const UK_ENGLISH_COURSES: MapCourse[] = [
       { title: 'The Nineteenth-Century Novel: Jane Eyre', description: 'Jane, Rochester and St John, the five homes of the plot, independence, class and gender, and the first-person narrator.', members: ['ex-6-2'] },
       { title: 'The Nineteenth-Century Novel: Pride and Prejudice', description: 'Elizabeth and Darcy, first impressions, marriage and money, class, and Austen’s irony.', members: ['ex-6-3'] },
       { title: 'The Nineteenth-Century Novel: The Sign of Four', description: 'Holmes, Watson and Jonathan Small, reason and detection, greed and treasure, and the novel and the British Empire.', members: ['ex-6-4'] },
+      { title: 'Modern Drama: An Inspector Calls', description: 'The Birlings, Gerald and the Inspector, the chain of events that led to a young woman’s death, social responsibility and class, and Priestley’s purpose in 1945.', members: ['ex-10-1'] },
+      { title: 'Modern Drama: Blood Brothers', description: 'Mrs Johnstone, Mrs Lyons and the twins, the Narrator and the songs, class, fate and superstition, and the play’s Liverpool setting.', members: ['ex-10-2'] },
+      { title: 'Modern Prose: Lord of the Flies', description: 'Ralph, Jack, Piggy and Simon, the island and the beast, civilisation and savagery, and Golding’s view of human nature after the Second World War.', members: ['ex-10-3'] },
+      { title: 'Modern Prose: Animal Farm', description: 'The pigs and the other animals, the revolution and its betrayal, propaganda and power, and Orwell’s allegory of the Russian Revolution.', members: ['ex-10-4'] },
       { title: 'Poetry: Language, Form and Structure', description: 'Imagery and figurative language, sound and rhythm, form, the sonnet, the speaker’s voice and irony.', members: ['e10-2-1', 'e10-2-2', 'e10-2-3', 'e11-2-2', 'e11-2-3'] },
+      { title: 'Anthology Poetry: Power and Conflict', description: 'The fifteen poems of the cluster, from Ozymandias and London to Remains and Kamikaze: what each is about, its form and methods, its themes and its context, and comparing poems.', members: ['ex-8-1', 'ex-8-2', 'ex-8-3'] },
+      { title: 'Anthology Poetry: Love and Relationships', description: 'The fifteen poems of the cluster, from When We Two Parted and Porphyria’s Lover to Follower and Singh Song!: what each is about, its form and methods, its themes and its context, and comparing poems.', members: ['ex-9-1', 'ex-9-2', 'ex-9-3'] },
       { title: 'Unseen Poetry and Comparing Poems', description: 'Reading a poem closely, approaching a poem never read before, comparing two poems, and poems of war and conflict.', members: ['e10-2-4', 'e12-2-4', 'e11-2-4', 'e12-2-2'] },
       { title: 'Writing About Literature', description: 'A thesis, evidence and analysis, the literary essay, a text in its context, the comparative essay and the essay written under a time limit.', members: ['e10-6-2', 'e11-6-1', 'e12-1-2', 'e11-6-2', 'e11-6-6'] },
     ],
-    gaps: [
-      'The anthology poems that are in the public domain, read one by one (Ozymandias, London, My Last Duchess and others)',
-      'Modern prose and drama, and the anthology poems still in copyright: Gradileo teaches only from texts in the public domain',
-    ],
+    gaps: [],
   },
 ];

@@ -27,7 +27,8 @@ describe('English choices', () => {
         for (let seed = 1; seed <= SEEDS; seed++) {
           for (const p of s.generate(seed, d).parts) {
             const a = p.answer;
-            if (a.kind !== 'mc' || a.choices.length < 3) continue;
+            // Choices set out in a grid are labels too (titles, names), whatever their length.
+            if (a.kind !== 'mc' || a.choices.length < 3 || a.layout === 'grid') continue;
             const lengths = a.choices.map((c) => plain(c.md).length);
             const k = a.choices.findIndex((c) => c.id === a.correct);
             if (lengths[k] < MIN_LENGTH) continue;
