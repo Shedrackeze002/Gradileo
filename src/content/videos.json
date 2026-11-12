@@ -30238,6 +30238,484 @@
       }
     ]
   },
+  "ex-8-1": {
+    "lessonId": "ex-8-1",
+    "title": "Power and Conflict: Ozymandias, London and The Prelude",
+    "duration": 171,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Ozymandias",
+        "t": 21.584
+      },
+      {
+        "title": "London",
+        "t": 53.588
+      },
+      {
+        "title": "The Prelude",
+        "t": 82.283
+      },
+      {
+        "title": "Context",
+        "t": 108.62
+      },
+      {
+        "title": "Your turn",
+        "t": 121.118
+      },
+      {
+        "title": "Summary",
+        "t": 149.579
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-8-1:q",
+        "t": 130.654,
+        "prompt": "The last line of “Ozymandias” is: *“The lone and level sands stretch far away.”* What does it suggest?",
+        "choices": [
+          "That the king’s empire still stretches far away",
+          "That nature and time outlast every empire",
+          "That the traveller is lost in the desert",
+          "That the statue will soon be rebuilt"
+        ],
+        "answer": 1,
+        "working": "Only empty sand is left: nature and time outlast the king and everything he built."
+      }
+    ]
+  },
+  "ex-8-2": {
+    "lessonId": "ex-8-2",
+    "title": "Power and Conflict: My Last Duchess, The Charge of the Light Brigade and Exposure",
+    "duration": 180,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "My Last Duchess",
+        "t": 19.927
+      },
+      {
+        "title": "The Charge of the Light Brigade",
+        "t": 55.804
+      },
+      {
+        "title": "Exposure",
+        "t": 85.995
+      },
+      {
+        "title": "A common mistake",
+        "t": 112.265
+      },
+      {
+        "title": "Your turn",
+        "t": 129.043
+      },
+      {
+        "title": "Summary",
+        "t": 159.992
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-8-2:q",
+        "t": 140.878,
+        "prompt": "The duke’s first words are: *“That’s my last Duchess painted on the wall, / Looking as if she were alive.”* What do they suggest?",
+        "choices": [
+          "That the duke has just painted the portrait himself",
+          "That his wife is away on a long visit",
+          "That she was one of his possessions, and is now dead",
+          "That he is selling the painting to the visitor"
+        ],
+        "answer": 2,
+        "working": "“My” and “last” suggest a possession in a series, and “as if she were alive” hints at her death."
+      }
+    ]
+  },
+  "ex-8-3": {
+    "lessonId": "ex-8-3",
+    "title": "Power and Conflict: the Modern Poems",
+    "duration": 160,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Nature and war",
+        "t": 19.1
+      },
+      {
+        "title": "After the fighting",
+        "t": 48.02
+      },
+      {
+        "title": "Power, identity and history",
+        "t": 79.727
+      },
+      {
+        "title": "Your turn",
+        "t": 113.024
+      },
+      {
+        "title": "Summary",
+        "t": 140.613
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-8-3:q",
+        "t": 121.4,
+        "prompt": "Which two poems show conflict following someone home as memory?",
+        "choices": [
+          "Remains and War Photographer",
+          "Tissue and Storm on the Island",
+          "Kamikaze and Checking Out Me History",
+          "Bayonet Charge and The Émigrée"
+        ],
+        "answer": 0,
+        "working": "The soldier in “Remains” and the photographer in “War Photographer” are both home, but the memories return."
+      }
+    ]
+  },
+  "ex-9-1": {
+    "lessonId": "ex-9-1",
+    "title": "Love and Relationships: When We Two Parted, Love’s Philosophy and Porphyria’s Lover",
+    "duration": 139,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "When We Two Parted",
+        "t": 18.843
+      },
+      {
+        "title": "Love’s Philosophy",
+        "t": 43.173
+      },
+      {
+        "title": "Porphyria’s Lover",
+        "t": 63.608
+      },
+      {
+        "title": "Your turn",
+        "t": 90.458
+      },
+      {
+        "title": "Summary",
+        "t": 119.924
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-9-1:q",
+        "t": 101.574,
+        "prompt": "“Porphyria’s Lover” opens: *“The rain set early in to-night, / The sullen wind was soon awake”*. What does the weather do?",
+        "choices": [
+          "It shows that Porphyria will not visit",
+          "It sets a cheerful, romantic scene",
+          "It explains why the cottage is cold",
+          "It reflects the speaker’s dark mood"
+        ],
+        "answer": 3,
+        "working": "This is pathetic fallacy: the sullen storm mirrors the speaker’s mind."
+      }
+    ]
+  },
+  "ex-9-2": {
+    "lessonId": "ex-9-2",
+    "title": "Love and Relationships: Sonnet 29, Neutral Tones and The Farmer’s Bride",
+    "duration": 134,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sonnet 29",
+        "t": 19.78
+      },
+      {
+        "title": "Neutral Tones",
+        "t": 41.829
+      },
+      {
+        "title": "The Farmer’s Bride",
+        "t": 67.542
+      },
+      {
+        "title": "Your turn",
+        "t": 88.19
+      },
+      {
+        "title": "Summary",
+        "t": 113.882
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-9-2:q",
+        "t": 96.377,
+        "prompt": "Why does “Neutral Tones” end with the same images it began with?",
+        "choices": [
+          "Because Hardy ran out of new images",
+          "To show that the speaker is trapped in the memory",
+          "To show that the couple have made up",
+          "Because the poem is a sonnet"
+        ],
+        "answer": 1,
+        "working": "The cyclical structure brings him back to the pond: he cannot escape that moment."
+      }
+    ]
+  },
+  "ex-9-3": {
+    "lessonId": "ex-9-3",
+    "title": "Love and Relationships: the Modern Poems",
+    "duration": 146,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Parents and children",
+        "t": 19.288
+      },
+      {
+        "title": "Grandparents and memory",
+        "t": 57.012
+      },
+      {
+        "title": "Romantic love",
+        "t": 76.961
+      },
+      {
+        "title": "Your turn",
+        "t": 101.205
+      },
+      {
+        "title": "Summary",
+        "t": 127.668
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-9-3:q",
+        "t": 108.235,
+        "prompt": "Which two poems show a parent letting a child go?",
+        "choices": [
+          "Winter Swans and Singh Song!",
+          "Eden Rock and Letters from Yorkshire",
+          "Walking Away and Mother, any distance",
+          "Follower and Climbing My Grandfather"
+        ],
+        "answer": 2,
+        "working": "In both, a child leaves: Day-Lewis writes as the parent, Armitage as the son."
+      }
+    ]
+  },
+  "ex-10-1": {
+    "lessonId": "ex-10-1",
+    "title": "An Inspector Calls",
+    "duration": 149,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plot",
+        "t": 21.326
+      },
+      {
+        "title": "Dramatic irony",
+        "t": 62.214
+      },
+      {
+        "title": "Context",
+        "t": 80.86
+      },
+      {
+        "title": "Your turn",
+        "t": 103.56
+      },
+      {
+        "title": "Summary",
+        "t": 131.54
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-10-1:q",
+        "t": 115.177,
+        "prompt": "When the Inspector seems to be a hoax, Mr and Mrs Birling celebrate, but Sheila and Eric stay ashamed. What does this suggest?",
+        "choices": [
+          "The young can change, but the old refuse to",
+          "Sheila and Eric are afraid of the police",
+          "The parents were right all along",
+          "The family will now be friends with the Inspector"
+        ],
+        "answer": 0,
+        "working": "Priestley places his hope in the young, who have learned from the evening."
+      }
+    ]
+  },
+  "ex-10-2": {
+    "lessonId": "ex-10-2",
+    "title": "Blood Brothers",
+    "duration": 132,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plot",
+        "t": 21.608
+      },
+      {
+        "title": "The Narrator",
+        "t": 56.053
+      },
+      {
+        "title": "Context",
+        "t": 72.332
+      },
+      {
+        "title": "Your turn",
+        "t": 84.762
+      },
+      {
+        "title": "Summary",
+        "t": 112.494
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-10-2:q",
+        "t": 94.496,
+        "prompt": "Twins with the same nature end up with very different lives. What does Russell suggest?",
+        "choices": [
+          "That Eddie was born cleverer than Mickey",
+          "That superstition really does decide our fate",
+          "That Mickey chose to waste his chances",
+          "That class and money shape who we become"
+        ],
+        "answer": 3,
+        "working": "The twins share the same nature; only their upbringing and class differ."
+      }
+    ]
+  },
+  "ex-10-3": {
+    "lessonId": "ex-10-3",
+    "title": "Lord of the Flies",
+    "duration": 138,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plot",
+        "t": 22.181
+      },
+      {
+        "title": "Symbols",
+        "t": 61.242
+      },
+      {
+        "title": "Context",
+        "t": 79.561
+      },
+      {
+        "title": "Your turn",
+        "t": 92.264
+      },
+      {
+        "title": "Summary",
+        "t": 118.461
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-10-3:q",
+        "t": 101.752,
+        "prompt": "The naval officer is shocked to find the children at war. What is ironic about him?",
+        "choices": [
+          "He is too young to be an officer",
+          "He is himself fighting a war",
+          "He has come to the wrong island",
+          "He does not speak their language"
+        ],
+        "answer": 1,
+        "working": "The adult world has the same savagery, on a larger scale."
+      }
+    ]
+  },
+  "ex-10-4": {
+    "lessonId": "ex-10-4",
+    "title": "Animal Farm",
+    "duration": 146,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The plot",
+        "t": 22.25
+      },
+      {
+        "title": "Propaganda",
+        "t": 61.972
+      },
+      {
+        "title": "Context",
+        "t": 82.737
+      },
+      {
+        "title": "Your turn",
+        "t": 100.998
+      },
+      {
+        "title": "Summary",
+        "t": 126.379
+      }
+    ],
+    "cues": [
+      {
+        "id": "ex-10-4:q",
+        "t": 110.122,
+        "prompt": "At the end, the animals cannot tell the pigs from the farmers. What does this show?",
+        "choices": [
+          "That the pigs have made peace with the humans for good",
+          "That the animals’ eyesight is failing",
+          "That the pigs have become the tyrants they replaced",
+          "That the farmers have become kinder"
+        ],
+        "answer": 2,
+        "working": "The revolution has come full circle: the pigs are now the masters."
+      }
+    ]
+  },
   "m5-1-1": {
     "lessonId": "m5-1-1",
     "title": "Place Value to Millions and Thousandths, Part 1: Place Value to the Millions",
