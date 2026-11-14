@@ -1205,10 +1205,20 @@ items ship or decisions change.
        works"). The engine and samples are merged (pull request #185).
      - Plan: `docs/PLAN-PHYSICS.md`, sent to the owner on 14 November 2026: Grade 10, 11 and 12
        Physics (`phys-10`, `phys-20`, `phys-30`), 27 + 30 + 30 lessons, with the animation each
-       unit needs. It is awaiting the owner's approval.
-     - Next: once the owner approves the plan, build Grade 10 Physics (lessons and questions,
-       Physics as a subject in the app), then its videos unit by unit; the samples become the
-       videos of their lessons and stay off YouTube until then.
+       unit needs.
+     - Decision (the owner, 14 November 2026): the plan is approved, with no changes.
+     - Built (14 November 2026): **Grade 10 Physics** (`phys-10`, `engine/curriculum/phys10/`,
+       lesson ids `p10-…`): 5 units, 27 lessons and 54 skills. Unit 1 Describing Motion (pull
+       request #188), Units 2 and 3 Forces and Newton's Laws, and Work, Energy and Power (#189),
+       Units 4 and 5 Waves, Sound and Light, and Electricity (#190). Every constant, rate and
+       price is stated in its question. **Physics is a subject in the app**: a Physics tab for
+       new classes, a Physics choice on "Find your course" (every grade is recommended Grade 10
+       Physics, the first course, with no placement check), and seven physics topics on "Browse
+       by topic".
+     - Next: the Grade 10 videos, unit by unit, with each unit's animation built first (motion
+       in two dimensions, energy bars, waves, rays, circuits); the two samples become the videos
+       of their lessons and stay off YouTube until then. Then Grade 11 Physics (`phys-20`) and
+       Grade 12 Physics (`phys-30`); the lessons have no videos or tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

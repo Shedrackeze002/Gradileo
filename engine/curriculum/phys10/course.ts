@@ -3,9 +3,6 @@
  * (docs/PLAN-PHYSICS.md, approved by the owner on 14 November 2026), written for learners anywhere
  * who have never studied physics: describing motion, forces, work, energy and power, waves, sound
  * and light, and electricity, at the level most school systems teach in Grades 9 and 10.
- *
- * It is a draft until Physics is added as a subject in the app (placement, topics and the
- * pages that list the subjects); all five units are written.
  */
 import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
 
@@ -174,5 +171,4 @@ export const PHYS10: CourseMeta = {
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
-  draft: true,
 };

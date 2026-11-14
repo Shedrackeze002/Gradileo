@@ -21,6 +21,7 @@ export interface Topic {
 
 const M = 'Mathematics';
 const C = 'Chemistry';
+const P = 'Physics';
 const E = 'English';
 const t = (subject: string, strand: string, id: string, name: string, members: string[]): Topic => ({ id, name, subject, strand, members });
 
@@ -114,6 +115,15 @@ export const TOPICS: Topic[] = [
   t(C, 'Energy, equilibrium and organic chemistry', 'electrochemistry', 'Electrochemistry', ['c30-u2', 'cx-1-4', 'cx-6-3']),
   t(C, 'Energy, equilibrium and organic chemistry', 'organic', 'Organic chemistry', ['c30-u3', 'cx-u9', 'cx-u12']),
   t(C, 'Energy, equilibrium and organic chemistry', 'equilibrium', 'Chemical equilibrium', ['c30-u4', 'cx-10-4']),
+
+  // Physics.
+  t(P, 'Motion, forces and energy', 'describing-motion', 'Describing motion', ['p10-u1']),
+  t(P, 'Motion, forces and energy', 'newtons-laws', 'Forces and Newton’s laws', ['p10-u2']),
+  t(P, 'Motion, forces and energy', 'work-energy-power', 'Work, energy and power', ['p10-u3']),
+  t(P, 'Waves and electricity', 'waves-sound', 'Waves and sound', ['p10-4-1', 'p10-4-2', 'p10-4-3']),
+  t(P, 'Waves and electricity', 'light-spectrum', 'Light and the electromagnetic spectrum', ['p10-4-4', 'p10-4-5']),
+  t(P, 'Waves and electricity', 'current-resistance', 'Current, voltage and resistance', ['p10-5-1', 'p10-5-2']),
+  t(P, 'Waves and electricity', 'circuits-power', 'Circuits and electrical power', ['p10-5-3', 'p10-5-4', 'p10-5-5']),
 
   // English.
   t(E, 'Reading', 'fiction', 'Fiction and short stories', ['e5-u1', 'e6-u1', 'e7-u1', 'e8-u1', 'e9-u1', 'e10-u1', 'e11-u1', 'e12-u1', 'ex-1-1', 'ex-u5', 'ex-u6', 'ex-10-3', 'ex-10-4']),

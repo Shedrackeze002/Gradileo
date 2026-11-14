@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <>
           <p>
             Gradileo (gradileo.com) is an online, mastery-based learning platform for teachers and learners anywhere in the world. It covers mathematics
-            and English from Grade 5 to Grade 12, and chemistry from Grade 10 to Grade 12. This policy explains what
+            and English from Grade 5 to Grade 12, chemistry from Grade 10 to Grade 12, and physics in Grade 10. This policy explains what
             information Gradileo collects, how it is used and shared, and the choices you have. It applies to the Gradileo website and app.
           </p>
           <p>
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
 
       <Section id="ai" title="3. The AI features">
         <p>
-          Gradileo’s AI features work the same way in mathematics, chemistry and English. Each one sends an AI model provider (MiniMax) only what that
+          Gradileo’s AI features work the same way in mathematics, chemistry, physics and English. Each one sends an AI model provider (MiniMax) only what that
           feature needs. Gradileo does not add a student’s email address or surname from their account, but anything a student or teacher types, such
           as a written answer, a question to the tutor or a teacher’s note, is sent as it was typed. What the teacher’s AI tools write about a student
           goes to the teacher first, and the AI tutor answers the student directly. The details for each feature are below.
