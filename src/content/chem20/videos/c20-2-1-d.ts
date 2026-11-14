@@ -1,21 +1,56 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { diffusionTube, gasBox, tag } from './lib/c20-2a-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// Hydrogen and oxygen at the same temperature: light, fast molecules beside heavy, slow ones.
-const pair = figure(
-  'hm',
-  [
-    gasBox({ name: 'h', at: [0, 0], w: 5, h: 5, count: 7, r: 0.18, speed: 1.4, seed: 31 }),
-    tag('h-l', [2.5, -0.3], '\\text{hydrogen, } \\ce{H2}', { place: 'below', tone: 'adj', group: 'h-p' }),
-    gasBox({ name: 'o', at: [6.5, 0], w: 5, h: 5, count: 7, r: 0.36, speed: 0.35, seed: 32, tone: 'opp' }),
-    tag('o-l', [9, -0.3], '\\text{oxygen, } \\ce{O2}', { place: 'below', tone: 'opp', group: 'o-p' }),
+// The particles here are simulated (src/video/particles.ts): every kind gets the same energy at a
+// given temperature, so a kind with more `mass` moves more slowly.
+
+/** Gas particles that barely attract one another, with no weight to speak of. */
+const GAS = { bond: 0.15, heavy: 0 } as const;
+
+/** Hydrogen and oxygen at the same temperature: light, fast molecules beside heavy, slow ones. */
+const pair: ParticlesEl = {
+  kind: 'particles',
+  id: 'hm',
+  boxes: [
+    { id: 'h', state: 'gas', width: 8, height: 8, temp: 1.6, kinds: [{ n: 10, tone: 'adj', size: 0.75, mass: 1, ...GAS }], follow: 2, label: 'hydrogen, H₂' },
+    { id: 'o', state: 'gas', width: 8, height: 8, temp: 1.6, kinds: [{ n: 10, tone: 'opp', size: 1.2, mass: 16, ...GAS }], follow: 2, label: 'oxygen, O₂' },
   ],
-  360,
-);
+  clips: {},
+  thermometers: true,
+  height: 400,
+};
 
-// Ammonia and hydrogen chloride diffusing towards each other along a tube.
-const tube = figure('tb', [diffusionTube()], 330);
+/**
+ * Ammonia (blue, left) and hydrogen chloride (orange, right) held in cotton wool at the two ends
+ * of a tube of air (purple), until a clip lets them go; where they meet they settle as solid
+ * ammonium chloride. Masses are the molecules' in tens: 1.7, 2.9 for air, 3.65.
+ */
+const tube: ParticlesEl = {
+  kind: 'particles',
+  id: 'tb',
+  boxes: [
+    {
+      id: 't',
+      state: 'gas',
+      width: 24,
+      height: 4,
+      temp: 1.6,
+      apart: true,
+      ends: 0.1,
+      hold: [0, 2],
+      kinds: [
+        { n: 12, tone: 'adj', mass: 1.7, ...GAS },
+        { n: 10, tone: 'brand', mass: 2.9, ...GAS },
+        { n: 12, tone: 'opp', mass: 3.65, ...GAS },
+        { n: 0, tone: 'theta', size: 1.3, bond: 3, heavy: 0 },
+      ],
+      reactions: [{ a: 0, b: 2, to: [3, 3], settle: true }],
+      endLabels: ['ammonia, NH₃', 'hydrogen chloride, HCl'],
+    },
+  ],
+  clips: { go: { phases: [{ dur: 12, release: ['t'] }] } },
+  seed: 1,
+  height: 330,
+};
 
 const video: Explainer = {
   id: 'c20-2-1-d',
@@ -37,17 +72,18 @@ const video: Explainer = {
     {
       chapter: 'Average kinetic energy',
       layout: 'split',
-      leftWidth: 640,
+      leftWidth: 780,
       left: [pair],
       right: [
         { kind: 'callout', id: 'key', tone: 'key', title: 'Average kinetic energy', md: 'It depends **only on the Kelvin temperature**: not on which gas it is, its pressure, or how much gas there is.' },
         { kind: 'math', id: 'm', size: 'lg', lines: ['E_\\text{k} = \\tfrac{1}{2}mv^2'] },
       ],
       lines: [
-        { say: 'The particles in a gas do not all move at the same speed. Collisions keep speeding some up and slowing others down, so at any moment there is a spread of speeds.' },
+        { say: 'The particles in a gas do not all move at the same speed. Collisions keep speeding some up and slowing others down, so at any moment there is a spread of speeds.', show: 'hm' },
         { say: 'That is why the theory speaks of the average kinetic energy, and that average depends only on the Kelvin temperature: not on which gas it is, its pressure, or how much gas there is.', show: 'key' },
-        { say: 'So at the same temperature, hydrogen molecules and oxygen molecules have the same average kinetic energy.', show: ['hm.h-box', 'hm.h-p', 'hm.h-l', 'hm.o-box', 'hm.o-p', 'hm.o-l'] },
-        { say: 'Kinetic energy is one half m v squared. So the lighter molecules must move faster to carry the same energy: a smaller m needs a larger v.', caption: 'Kinetic energy is ½mv². So the lighter molecules must move faster to carry the same energy: a smaller m needs a larger v.', show: ['m', 'hm.h-v', 'hm.o-v'], focus: ['m', 'hm.h-v'] },
+        { say: 'So hydrogen and oxygen at the same temperature, as the two thermometers show, have the same average kinetic energy. Yet the light hydrogen molecules dart about, while the heavy oxygen molecules move slowly.', show: ['hm.labels', 'hm.thermo'], focus: 'hm.thermo' },
+        { say: 'Kinetic energy is one half m v squared. So the lighter molecules must move faster to carry the same energy: a smaller m needs a larger v.', caption: 'Kinetic energy is ½mv². So the lighter molecules must move faster to carry the same energy: a smaller m needs a larger v.', show: 'm', focus: 'm' },
+        { say: 'Follow one molecule in each box. In the same time, the hydrogen molecule covers far more ground than the oxygen molecule.', show: 'hm.trail', focus: ['hm.h', 'hm.o'] },
       ],
     },
     {
@@ -81,9 +117,9 @@ const video: Explainer = {
       layout: 'center',
       main: [tube, { kind: 'math', id: 'eq', size: 'lg', lines: ['\\ce{NH3 + HCl -> NH4Cl}'] }],
       lines: [
-        { say: 'A classic demonstration shows the difference. Cotton wool soaked in ammonia solution goes in one end of a long glass tube, and cotton wool soaked in hydrochloric acid in the other.', show: ['tb.tube', 'tb.nh3', 'tb.hcl'] },
-        { say: 'Ammonia gas and hydrogen chloride gas diffuse towards each other. Where they meet, they react to form a white ring of solid ammonium chloride.', show: ['tb.paths', 'tb.ring', 'eq'] },
-        { say: 'The ring forms nearer the hydrochloric acid end. The lighter ammonia molecules, about seventeen, travel farther in the same time than the heavier hydrogen chloride molecules, about thirty-six point five.', focus: 'tb.paths' },
+        { say: 'A classic demonstration shows the difference. Cotton wool soaked in ammonia solution goes in one end of a long glass tube, and cotton wool soaked in hydrochloric acid in the other, with air between them.', show: ['tb', 'tb.labels'] },
+        { say: 'Ammonia gas and hydrogen chloride gas diffuse towards each other through the air. Where they meet, they react to form solid ammonium chloride: a white ring in a real tube, shown here in yellow.', show: 'eq', play: 'tb.go' },
+        { say: 'The ring forms nearer the hydrochloric acid end. The lighter ammonia molecules, about seventeen, travel farther in the same time than the heavier hydrogen chloride molecules, about thirty-six point five.', show: 'tb.middle', focus: 'tb.middle' },
       ],
     },
     {

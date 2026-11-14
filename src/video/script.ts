@@ -365,9 +365,11 @@ export interface ParticleBox {
    * solid that stays solid in a hot liquid) and how strongly gravity pulls it (`heavy`, 1). A kind
    * can be bigger or smaller (`size`, its diameter, 1 by default: sand grains held back by a
    * filter), pulled by a magnet (`magnetic`), or carried up a paper strip by the solvent (`rise`,
-   * how fast compared with the solvent itself, 0 to 1).
+   * how fast compared with the solvent itself, 0 to 1). A kind's `mass` (1 by default) sets how
+   * fast it moves at a given temperature: every kind gets the same energy, so a kind 16 times as
+   * heavy moves a quarter as fast (oxygen beside hydrogen).
    */
-  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number; size?: number; magnetic?: boolean; rise?: number }>;
+  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number; mass?: number; size?: number; magnetic?: boolean; rise?: number }>;
   /**
    * How strongly particles of different kinds attract one another (between their own bonds by
    * default). Stronger than the solute's own bond, a lump dissolves; much weaker, it stays whole.
@@ -411,9 +413,11 @@ export interface ParticleBox {
    * hits an oxygen atom becomes one water molecule. Atoms are never made or lost: only
    * joined differently, so the mass is the same after. Particles react a little way apart (1.6
    * times their mean diameter); `reach` sets that distance, about 1.15 for touching only, so a gas
-   * reacts with the surface of a lump and not the particles just under it.
+   * reacts with the surface of a lump and not the particles just under it. With `settle`, the
+   * two made stay still where they formed, as a solid deposited from two gases (the white ring of
+   * ammonium chloride in a tube).
    */
-  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number; reach?: number }>;
+  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number; reach?: number; settle?: boolean }>;
   /**
    * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
    * made of these atoms (kinds, by place), the first bonded to each of the others round it. A
@@ -426,10 +430,21 @@ export interface ParticleBox {
   tally?: { kinds: number[]; label: string };
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
   lump?: boolean | number;
-  /** Hold the first kind still (a lump, keeping its shape), until a phase lets it go (`release`). */
-  hold?: boolean;
+  /**
+   * Hold the first kind still (a lump, keeping its shape), or the kinds listed (gases soaked into
+   * cotton wool at the ends of a tube), until a phase lets them go (`release`).
+   */
+  hold?: boolean | number[];
   /** With several kinds, start them apart (the first kind on the left) instead of mixed. */
   apart?: boolean;
+  /**
+   * With `apart` and three kinds or more, pack the first kind into this fraction of the box at its
+   * left end, and the last kind that has particles into the same at its right end, with the kinds
+   * between filling the middle: two gases soaked into cotton wool at the two ends of a tube of air.
+   */
+  ends?: number;
+  /** With `ends`, what is at the left and right ends, written under them with the labels. */
+  endLabels?: [string, string];
   /** Its starting temperature; the usual one for its state otherwise. */
   temp?: Temp;
   /** Inside width and height, in particle diameters (10 by 10 by default). */
@@ -495,7 +510,7 @@ export interface ParticlePhase {
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
@@ -506,8 +521,9 @@ export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'la
  * thermometer by each box), `gauge` (a pressure gauge on the box `gauge.box`), `hits` (a flash
  * wherever a particle hits a wall), `rate` (wall hits each second, under each box), `trail` (the
  * path of each box's followed particle), `labels`, `flow` (an arrow of heat between two boxes,
- * thinner as their temperatures meet; set `flow` up) and `width` (a bracket over each box's
- * particles, with dashed marks as wide as they were when the element was shown, to see expansion)
+ * thinner as their temperatures meet; set `flow` up), `width` (a bracket over each box's
+ * particles, with dashed marks as wide as they were when the element was shown, to see expansion),
+ * `middle` (a dashed line down the middle of each box, to see which end something is nearer)
  * and `count` (how many particles of each box's first kind have broken away on their own: "8 of 16
  * dissolved").
  * Emphasising a box's id makes it glow.

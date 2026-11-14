@@ -107,6 +107,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const count = part('count');
   const tally = part('tally');
   const width = part('width');
+  const middle = part('middle');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
 
@@ -340,6 +341,23 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
               />
             )}
             {b.label && <Text x={X(bw / 2)} y={floor + 30} size={26} opacity={labels}>{b.label}</Text>}
+            {/* What is packed at each end of a box with `ends` (under the ends, with the labels). */}
+            {b.endLabels &&
+              b.endLabels.map((t, k) => {
+                const e = (b.ends ?? 0.1) * bw;
+                return (
+                  <Text key={k} x={X(k ? bw - e / 2 : e / 2)} y={floor + 30} size={24} color={TONES[(b.kinds?.[k ? b.kinds.length - 1 : 0]?.tone ?? (k ? 'opp' : 'adj')) as keyof typeof TONES]} anchor={k ? 'end' : 'start'} opacity={labels}>
+                    {t}
+                  </Text>
+                );
+              })}
+            {/* A dashed line down the middle of the box, to see which end something is nearer. */}
+            {middle > 0 && (
+              <g opacity={middle}>
+                <line x1={X(bw / 2)} x2={X(bw / 2)} y1={wallTop - 10} y2={floor + 6} stroke={INK3} strokeWidth={2.5} strokeDasharray="8 8" />
+                <Text x={X(bw / 2)} y={wallTop - 28} size={20} color={INK3}>middle</Text>
+              </g>
+            )}
             {el.volume?.box === b.id && (
               <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={26} color={TONES.adj} opacity={volume}>
                 {`volume ${(el.volume.start * (f.lidY / bh) / (b.lid ?? 1)).toFixed(el.volume.decimals ?? 2)} ${el.volume.unit ?? 'L'}`}

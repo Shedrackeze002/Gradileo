@@ -258,6 +258,24 @@ describe('particles: molecules and reactions', () => {
     expect(burnt.temp).toBeGreaterThan(0.6);
   });
 
+  it('moves a heavy kind more slowly than a light one at the same temperature', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'gas', temp: 1.6, heatColor: [0.5, 3], kinds: [{ n: 10 }, { n: 10, mass: 16 }] }] });
+    // How far each kind goes in a short moment, averaged over several moments.
+    const dist = [0, 0];
+    for (let t = 2; t < 8; t += 0.5) {
+      const [a] = particlesAt(e, [], t);
+      const [b] = particlesAt(e, [], t + 0.05);
+      a.x.forEach((x, i) => (dist[a.kind[i]] += Math.hypot(b.x[i] - x, b.y[i] - a.y[i])));
+    }
+    // Four times as fast in theory (the square root of 16); collisions blur it a little.
+    expect(dist[0] / dist[1]).toBeGreaterThan(2.5);
+    // The same energy each, so both kinds look equally hot.
+    const [f] = particlesAt(e, [], 6);
+    const ke = [0, 1].map((k) => mean(f.ke!.filter((_, i) => f.kind[i] === k)));
+    expect(ke[0] / ke[1]).toBeGreaterThan(0.5);
+    expect(ke[0] / ke[1]).toBeLessThan(2);
+  });
+
   it('breaks a reacting lump into separate pieces, and lets only its surface react', () => {
     const solid = (id: string, pieces: number) => ({
       id,

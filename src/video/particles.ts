@@ -138,8 +138,12 @@ interface BoxSim {
   kinds: number;
   /** How strongly gravity pulls each kind (1 for the usual). */
   heavy: Float64Array;
+  /** Each kind's mass (1 for the usual): at one temperature, heavier particles move more slowly. */
+  mass: Float64Array;
   /** Particles held still (a lump not yet dropped in). */
   held: Uint8Array;
+  /** Particles made by a reaction that settles: held still for good, where they formed. */
+  stuck: Uint8Array;
   /** Each kind's diameter, whether a magnet pulls it, and how fast the solvent carries it up paper. */
   size: Float64Array;
   magnetic: Uint8Array;
@@ -215,10 +219,11 @@ function gravityAt(temp: number) {
 
 /** The forces on every particle: gravity, one another, and a stirrer if the box is being stirred. */
 function forces(s: BoxSim, temp: number, sigma = 1, stir = 0, w = 10, h = 10, magnet = 0) {
-  const { fx, fy, n, kind, heavy } = s;
+  const { fx, fy, n, kind, heavy, mass } = s;
   fx.fill(0);
   const g = gravityAt(temp);
-  for (let i = 0; i < n; i++) fy[i] = -g * heavy[kind[i]];
+  // Gravity pulls in proportion to mass, so it gives every particle of a kind the same fall.
+  for (let i = 0; i < n; i++) fy[i] = -g * heavy[kind[i]] * mass[kind[i]];
   forcesBetween(s, sigma);
   if (stir) {
     // A stirrer turns the liquid round the middle of the box.
@@ -313,6 +318,13 @@ function react(s: BoxSim, divider?: number) {
       }
       kind[i] = r.to[0];
       kind[j] = r.to[1];
+      if (r.settle)
+        for (const k of [i, j]) {
+          s.held[k] = 1;
+          s.stuck[k] = 1;
+          vx[k] = 0;
+          vy[k] = 0;
+        }
       if (r.join) addBond(s, i, j, true);
       for (const c of carried) {
         addBond(s, j, c, true);
@@ -327,7 +339,7 @@ function react(s: BoxSim, divider?: number) {
         if (r.heat > 0)
           for (const k of [i, j]) {
             const a = s.rnd() * 2 * Math.PI;
-            const v = Math.sqrt(r.heat * n);
+            const v = Math.sqrt((r.heat * n) / s.mass[kind[k]]);
             vx[k] += v * Math.cos(a);
             vy[k] += v * Math.sin(a);
           }
@@ -358,7 +370,7 @@ function measuredTemp(s: BoxSim) {
   let m = 0;
   for (let i = 0; i < s.n; i++) {
     if (s.gone[i] || s.held[i]) continue;
-    e += s.vx[i] * s.vx[i] + s.vy[i] * s.vy[i];
+    e += s.mass[s.kind[i]] * (s.vx[i] * s.vx[i] + s.vy[i] * s.vy[i]);
     m++;
   }
   return m ? e / (2 * m) : 0;
@@ -506,7 +518,9 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     eps: new Float64Array(kinds.length * kinds.length),
     kinds: kinds.length,
     heavy: new Float64Array(kinds.map((k) => k.heavy ?? 1)),
+    mass: new Float64Array(kinds.map((k) => k.mass ?? 1)),
     held: new Uint8Array(n),
+    stuck: new Uint8Array(n),
     size: new Float64Array(kinds.map((k) => k.size ?? 1)),
     magnetic: new Uint8Array(kinds.map((k) => (k.magnetic ? 1 : 0))),
     rise: new Float64Array(kinds.map((k) => k.rise ?? 0)),
@@ -543,9 +557,14 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
   // (Kinds after the first two may start with none: the products of a reaction.)
   const split = b.divider !== undefined && b.apart === true && kinds.length >= 2 && kinds.slice(2).every((k) => k.n === 0);
   const dot = Math.ceil(Math.sqrt(n)) * spacing + 1;
+  // With `ends`, the first kind is packed at the left end and the last that has particles at the right.
+  const right = [...kinds].reverse().find((k) => k.n > 0)?.n ?? 0;
+  const ends = b.ends !== undefined && b.apart === true && kinds.length >= 3 ? b.ends * w : 0;
   const regions: Array<[x0: number, x1: number, from: number, to: number]> = split
     ? [[0, b.divider! * w, 0, kinds[0].n], [b.divider! * w, w, kinds[0].n, n]]
-    : b.wall
+    : ends
+      ? [[0, ends, 0, kinds[0].n], [ends, w - ends, kinds[0].n, n - right], [w - ends, w, n - right, n]]
+      : b.wall
       ? [[0, b.wall.at * w - 0.2, 0, n]]
       : b.paper
         ? [[w / 2 - dot / 2, w / 2 + dot / 2, 0, n]]
@@ -602,15 +621,18 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       s.kind[i] = s.kind[j];
       s.kind[j] = t;
     }
-  } else if (b.apart && kinds.length > 1 && !split) {
+  } else if (b.apart && kinds.length > 1 && !split && !ends) {
     const order = Array.from({ length: n }, (_, i) => i).sort((a, c) => s.x[a] - s.x[c]);
     let at = 0;
     kinds.forEach((kd, ki) => {
       for (let i = 0; i < kd.n; i++) s.kind[order[at++]] = ki;
     });
   }
-  // Held particles (the first kind) keep still until a clip lets them go.
-  if (b.hold) for (let i = 0; i < n; i++) s.held[i] = s.kind[i] === 0 ? 1 : 0;
+  // Held particles (the first kind, or the kinds listed) keep still until a clip lets them go.
+  if (b.hold) {
+    const kept = b.hold === true ? [0] : b.hold;
+    for (let i = 0; i < n; i++) s.held[i] = kept.includes(s.kind[i]) ? 1 : 0;
+  }
   // No particle starts inside a divider: each is moved out to the side it is nearer.
   if (b.divider !== undefined) {
     const d = b.divider * w;
@@ -618,8 +640,9 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
   }
   const t0 = tempOf(b.temp, TEMPS[b.state]);
   for (let i = 0; i < n; i++) {
-    s.vx[i] = gauss(rnd) * Math.sqrt(t0);
-    s.vy[i] = gauss(rnd) * Math.sqrt(t0);
+    const m = s.mass[s.kind[i]];
+    s.vx[i] = gauss(rnd) * Math.sqrt(t0 / m);
+    s.vy[i] = gauss(rnd) * Math.sqrt(t0 / m);
     s.ke[i] = t0;
   }
   forces(s, tempOf(b.temp, TEMPS[b.state]));
@@ -680,8 +703,9 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
       continue;
     }
     const rad = 0.5 * size[kind[i]];
-    vx[i] += fx[i] * half;
-    vy[i] += fy[i] * half;
+    const im = 1 / s.mass[kind[i]];
+    vx[i] += fx[i] * half * im;
+    vy[i] += fy[i] * half * im;
     const was = x[i];
     const wasY = y[i];
     x[i] += vx[i] * DT;
@@ -779,20 +803,25 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   const smooth = DT / 1.2;
   for (let i = 0; i < n; i++) {
     if (held[i] || gone[i]) continue;
-    vx[i] += fx[i] * half;
-    vy[i] += fy[i] * half;
+    // A heavier particle is pushed less by the same force, and the thermostat gives it the same
+    // energy (so less speed) as a light one.
+    const m = s.mass[kind[i]];
+    const im = 1 / m;
+    const sm = Math.sqrt(im);
+    vx[i] += fx[i] * half * im;
+    vy[i] += fy[i] * half * im;
     if (zones) {
       const z = zones.find((zz) => x[i] >= zz.x0 && x[i] < zz.x1 && y[i] >= zz.y0 && y[i] < zz.y1);
       if (z) {
-        const c = Math.sqrt((1 - c1 * c1) * z.temp);
+        const c = Math.sqrt((1 - c1 * c1) * z.temp) * sm;
         vx[i] = c1 * vx[i] + c * gauss(rnd);
         vy[i] = c1 * vy[i] + c * gauss(rnd);
       }
     } else if (!o.bath || inBath(i)) {
-      vx[i] = c1 * vx[i] + c2 * gauss(rnd);
-      vy[i] = c1 * vy[i] + c2 * gauss(rnd);
+      vx[i] = c1 * vx[i] + c2 * sm * gauss(rnd);
+      vy[i] = c1 * vy[i] + c2 * sm * gauss(rnd);
     }
-    s.ke[i] += ((vx[i] * vx[i] + vy[i] * vy[i]) / 2 - s.ke[i]) * smooth;
+    s.ke[i] += ((m * (vx[i] * vx[i] + vy[i] * vy[i])) / 2 - s.ke[i]) * smooth;
   }
 }
 
@@ -916,6 +945,7 @@ function cloneSim(s: BoxSim): BoxSim {
     kind: s.kind.slice(),
     ke: s.ke.slice(),
     held: s.held.slice(),
+    stuck: s.stuck.slice(),
     gone: s.gone.slice(),
     bonds: s.bonds.map((bd) => ({ ...bd })),
     bonded: new Set(s.bonded),
@@ -1008,7 +1038,7 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     el.boxes.forEach((b, bi) => {
       const { h } = boxSize(b);
       const s = c!.boxes[bi];
-      if (ctl.released[b.id] !== undefined && s.held.some((v) => v)) s.held.fill(0);
+      if (ctl.released[b.id] !== undefined && s.held.some((v, i) => v && !s.stuck[i])) for (let i = 0; i < s.n; i++) if (!s.stuck[i]) s.held[i] = 0;
       // Heat from reactions leaks away to the surroundings.
       if (s.warm) s.warm *= Math.exp(-COOL * DT);
       step(s, optsFor(b, ctl), (s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]), ctl.lid[b.id] * h, a, true);
