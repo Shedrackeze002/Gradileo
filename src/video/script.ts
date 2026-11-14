@@ -12,6 +12,8 @@
  */
 
 /** The name on every frame, thumbnail and YouTube description. */
+import { checkAtoms } from './atoms.ts';
+
 export const BRAND = 'Gradileo';
 
 /** Colours with a fixed meaning in every video (trigonometry uses the first four). */
@@ -536,7 +538,61 @@ export interface ParticlesEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl;
+/** An atom in an atoms element: its nucleus, written with its symbol, and its electrons in shells. */
+export interface AtomSpec {
+  id: string;
+  /** The symbol on its nucleus ("Na"). */
+  symbol: string;
+  protons: number;
+  /** How many electrons it starts with (as many as its protons by default; 0 to fill it in a clip). */
+  electrons?: number;
+  /** Where its nucleus starts, in the element's units (a shell is about 0.6 wide). */
+  at: [number, number];
+  /** The nucleus's colour, and its electrons' (so they can be followed when given or shared). */
+  tone?: Tone;
+  /** Its name, under it ("sodium"), shown with the `labels` part. */
+  name?: string;
+  /** Write its name and arrangement above it instead (where another atom is close below). */
+  labelAbove?: boolean;
+}
+
+/** A stretch of an atoms clip: everything in it happens together, over `dur` seconds. */
+export interface AtomsPhase {
+  dur: number;
+  /** Electrons added one by one, inside shells first, until each named atom has this many. */
+  fill?: Record<string, number>;
+  /** Outer electrons passed from one atom to another (or lost, drifting away, with `to: null`). */
+  give?: Array<{ from: string; to: string | null; n: number }>;
+  /** Atoms slid to new places. */
+  move?: Record<string, [number, number]>;
+  /** A covalent bond: `n` outer electrons of each atom go to sit where their shells overlap. */
+  share?: Array<{ a: string; b: string; n: number }>;
+}
+
+/** What an atoms element can show besides the atoms: each is a part ("at.arrangement"). */
+export const ATOM_PARTS = ['labels', 'arrangement', 'charges'] as const;
+
+/**
+ * Atoms with their electrons circling in shells, for electron arrangements, ions and bonding (see
+ * src/video/atoms.ts). Showing the element shows the atoms; `labels` adds each one's name,
+ * `arrangement` its electrons shell by shell ("2, 8, 1") and `charges` its charge once it has
+ * one ("Na+"). A line plays a clip (`play: 'at.fill'`) and the electrons move as the narrator
+ * speaks; the next clip carries on from where the last one ended. Emphasising an atom's id makes
+ * it glow.
+ */
+export interface AtomsEl {
+  kind: 'atoms';
+  id: string;
+  atoms: AtomSpec[];
+  /** The width and height of the scene, in the units the atoms are placed in. */
+  span: [number, number];
+  clips: Record<string, { phases: AtomsPhase[] }>;
+  /** For the thumbnail: the clip to show, played to its end. */
+  poster?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | AtomsEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -740,7 +796,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -764,6 +820,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...PARTICLE_PARTS, ...e.boxes.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkParticles(e).map((p) => `Scene ${si + 1}: particles "${e.id}": ${p}`));
+      }
+      if (e.kind === 'atoms') {
+        diagrams.set(e.id, new Set<string>([...ATOM_PARTS, ...e.atoms.map((a) => a.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkAtoms(e).map((p) => `Scene ${si + 1}: atoms "${e.id}": ${p}`));
       }
       if (e.kind !== 'diagram') continue;
       const parts = new Set<string>();
@@ -795,7 +856,7 @@ export function checkScript(x: Explainer): string[] {
         const [el, clip] = target.split('.');
         const m = motions.get(el);
         if (!m) problems.push(`Scene ${si + 1}, line ${li + 1}: no motion "${el}" to play.`);
-        else if (!clip || !(clip in m.clips)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${m.kind === 'particles' ? 'particles' : 'motion'} "${el}" has no clip "${clip ?? ''}".`);
+        else if (!clip || !(clip in m.clips)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${m.kind === 'motion' ? 'motion' : m.kind} "${el}" has no clip "${clip ?? ''}".`);
       }
     });
   });

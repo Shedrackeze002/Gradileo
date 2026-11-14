@@ -3,7 +3,7 @@
  * stage shows at any moment. Rendering is a pure function of that state, so the same script and
  * narration always give the same frames, and a frame that has not changed can be reused.
  */
-import { asList, captionOf, plainMarkdown, sceneElements, type El, type Explainer, type MotionEl, type ParticlesEl, type TryEl } from './script.ts';
+import { asList, captionOf, plainMarkdown, sceneElements, type El, type Explainer, type AtomsEl, type MotionEl, type ParticlesEl, type TryEl } from './script.ts';
 
 /**
  * Timing, in seconds. The pauses give a viewer time to read each new step before the narrator
@@ -48,6 +48,7 @@ export function revealTime(kind: El['kind']): number {
     case 'math':
     case 'motion':
     case 'particles':
+    case 'atoms':
       return 0.8;
     default:
       return 0.6;
@@ -96,8 +97,8 @@ const r3 = (x: number) => Math.round(x * 1000) / 1000;
 /** After a clip ends, before the next line starts. */
 const AFTER_PLAY = 0.4;
 
-/** An element that plays clips: a motion, or boxes of particles. */
-export type Playable = MotionEl | ParticlesEl;
+/** An element that plays clips: a motion, boxes of particles, or atoms. */
+export type Playable = MotionEl | ParticlesEl | AtomsEl;
 
 /** How long a clip runs in the video, in seconds (slow motion stretches a motion's phase). */
 export function clipSeconds(el: Playable, clip: string): number {
@@ -120,7 +121,7 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
     for (const e of sceneElements(s)) {
       kinds[e.id] = e.kind;
       if (e.kind === 'try') tries.set(e.id, e);
-      if (e.kind === 'motion' || e.kind === 'particles') motions.set(e.id, e);
+      if (e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms') motions.set(e.id, e);
     }
     if (s.chapter) {
       chapter = s.chapter;
@@ -285,8 +286,8 @@ export function stateAt(tl: Timeline, t: number): FrameState {
     }
     const timer = timers[el];
     els[el] = { p: q(p), parts, whole: st.whole, focus: fs, ...(timer ? { timer: q(clamp01((t - timer.at) / timer.dur)) } : {}), ...(plays[el] ? { plays: plays[el] } : {}) };
-    // Particles move all the time they are on screen, so their frames carry the time.
-    if (s.kinds[el] === 'particles') {
+    // Particles and electrons move all the time they are on screen, so their frames carry the time.
+    if (s.kinds[el] === 'particles' || s.kinds[el] === 'atoms') {
       els[el].age = q(t - st.at);
       els[el].started = (starts[el] ?? []).map(([c, at]) => [c, q(at - st.at)]);
     }

@@ -236,15 +236,44 @@ See `src/video/script.ts` for every element and option. In short:
     pencil line; a phase's `run: { b: 1 }` soaks the solvent up it, carrying each kind up at its
     `rise` (a fraction of the solvent's speed), so the dyes part into spots. Give the dyes
     `heavy: 0`, `cross: 0` and a temperature of about 0.005, so each spot keeps still.
+  - `molecules: [{ atoms: [0, 1, 1], n: 7, bent: true }]` starts molecules whose atoms are bonded
+    (drawn with a line between them); `bent` keeps a three-atom molecule at water's angle. The
+    atoms' kinds are listed in `kinds` with `n: 0`. `src/video/reactions.ts` has the atoms in the
+    videos' colours (`ATOM.H`, `O`, `C`, `Ne`) and ready-made burning boxes (`hydrogenBurning`,
+    `carbonBurning`: light them with a phase's `heat` of about 2 and 2.5).
+  - `reactions: [{ a: 0, b: 1, to: [2, 3], join: true, energy: 1.5, heat: 0.3 }]` turns a pair of
+    kinds `a` and `b` that hit hard enough (`energy`) into kinds `to`, joined with `join`; `heat`
+    warms the box, which then cools back slowly. `free` and `carry` let molecules swap partners
+    (see `hydrogenBurning`); `reach: 1.15` makes only touching particles react, so a gas reacts
+    with a lump's surface and not the layer under it. `waits: true` holds the reactions until a
+    phase's `release`, and `tally: { kinds: [2], label: 'new molecules' }` shows a running count
+    under the box (the part `tally`). A gas box with a reacting lump can break it into pieces
+    with `lump: 4` and `cols: 2`; give it `hold: true` so the pieces do not drift together before
+    the clip lets them go.
   Emphasising a box's id makes it glow. Keep to a few dozen particles a box (120 at most): every
   frame of a moving scene is drawn afresh. See `src/content/chem7/videos/c7-2-1.ts` (the three
   states, pistons), `c7-2-2.ts` (melting, boiling, condensing on a cold can), `c7-2-3.ts` (heat
   flow, conduction), `c7-2-4.ts` (expansion, diffusion), `c7-3-2.ts` to `c7-3-4.ts` (dissolving,
   saturation, stirring and heating), `c7-4-1.ts` to `c7-4-3.ts` (sieving, magnets, filtering,
   evaporation, distillation, chromatography) and
-  `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge).
+  `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge), and the reactions in
+  `src/content/chem8/videos/` and `src/content/chem9/videos/c9-3-1.ts`, `c9-3-4.ts` (rates side by
+  side) and `c9-4-3.ts` (neutralization).
   In chemistry, every scene that describes particles moving, mixing, reacting or being squeezed
   shows it with `particles` (the owner's rule of 14 November 2026).
+
+- `atoms` (`src/video/atoms.ts`) draws atoms as a nucleus with electrons circling in shells, for
+  electron arrangements, ions and bonding. Each atom has a `symbol`, `protons`, a place `at` in
+  the element's `span` (a shell is about 0.6 units wide; the fourth shell's radius is 2.8) and
+  `electrons` to start with (as many as its protons by default; 0 to fill it on screen). A clip's
+  phases can `fill: { na: 11 }` (electrons added one by one, inside shells first), `give: [{ from:
+  'na', to: 'cl', n: 1 }]` (outer electrons passed across in an arc, or lost with `to: null`),
+  `move` atoms, and `share: [{ a: 'o', b: 'h1', n: 1 }]` (a covalent bond: move the atoms first so
+  their outer shells overlap; the shared pair sits in the overlap and the other outer electrons
+  move clear of the bonds). Each electron keeps the colour of the atom it came from. The parts
+  `labels`, `arrangement` ("2, 8, 1") and `charges` ("Na⁺") show under and beside each atom
+  (`labelAbove` puts them above it). See `src/content/chem9/videos/c9-1-3.ts` (filling shells),
+  `c9-1-4.ts` (ions) and `c9-2-1.ts` (ionic and covalent bonding).
 
 - `quote` sets a passage of prose or verse off from the narration, for the English videos: one
   entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)

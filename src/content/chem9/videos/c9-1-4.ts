@@ -1,10 +1,30 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
+
+// The atoms here are drawn by src/video/atoms.ts: electrons circle in shells; a clip takes one
+// away or adds one, and the charge appears as the protons and electrons stop balancing.
+
+/** A sodium atom that loses its outer electron, and a chlorine atom that gains one. */
+const ions: AtomsEl = {
+  kind: 'atoms',
+  id: 'io',
+  span: [13, 6.4],
+  atoms: [
+    { id: 'na', symbol: 'Na', protons: 11, at: [3.2, 3.2], tone: 'brand', name: 'sodium' },
+    { id: 'cl', symbol: 'Cl', protons: 17, at: [9.6, 3.2], tone: 'good', name: 'chlorine' },
+  ],
+  clips: {
+    lose: { phases: [{ dur: 1 }, { dur: 2.5, give: [{ from: 'na', to: null, n: 1 }] }] },
+    gain: { phases: [{ dur: 1 }, { dur: 1.5, fill: { cl: 18 } }] },
+  },
+  poster: 'lose',
+  height: 400,
+};
 
 const video: Explainer = {
   id: 'c9-1-4',
   lessonId: 'c9-1-4',
   title: 'Ions',
-  thumbnail: 'groups',
+  thumbnail: 'io',
   summary:
     'An ion is an atom that has lost or gained electrons. Metals lose electrons to become positive ions and non-metals gain them to become negative ions, reaching a full outer shell. The charge follows from the group, protons never change, and electrons equal protons minus the charge.',
   scenes: [
@@ -20,13 +40,13 @@ const video: Explainer = {
       chapter: 'How ions form',
       layout: 'center',
       main: [
+        ions,
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Ion', md: 'An atom that has **lost or gained electrons**, so it has a charge. Metals **lose** electrons: positive ions. Non-metals **gain** electrons: negative ions.' },
-        { kind: 'math', id: 'na', size: 'md', lines: ['\\text{Na: } 2,8,1 \\;\\rightarrow\\; \\text{Na}^{+}\\text{: } 2,8', '\\text{Cl: } 2,8,7 \\;\\rightarrow\\; \\text{Cl}^{-}\\text{: } 2,8,8'] },
       ],
       lines: [
-        { say: 'An ion is an atom that has lost or gained electrons, so it has an electric charge. Atoms do this to reach a full outer shell, like the nearest noble gas.', show: 'def' },
-        { say: 'Sodium is two, eight, one. It loses its one outer electron, leaving two, eight, a full shell like neon. Now it has eleven protons but only ten electrons, so it is N a plus.', show: 'na.0' },
-        { say: 'Chlorine is two, eight, seven. It gains one electron to make two, eight, eight, like argon. With seventeen protons and eighteen electrons, it is C l minus, a chloride ion.', show: 'na.1' },
+        { say: 'An ion is an atom that has lost or gained electrons, so it has an electric charge. Atoms do this to reach a full outer shell, like the nearest noble gas.', show: ['io', 'io.labels', 'io.arrangement', 'def'] },
+        { say: 'Sodium is two, eight, one. It loses its one outer electron, leaving two, eight, a full shell like neon. Now it has eleven protons but only ten electrons, so it is N a plus.', play: 'io.lose', show: 'io.charges', focus: 'io.na' },
+        { say: 'Chlorine is two, eight, seven. It gains one electron to make two, eight, eight, like argon. With seventeen protons and eighteen electrons, it is C l minus, a chloride ion.', play: 'io.gain', focus: 'io.cl' },
       ],
     },
     {

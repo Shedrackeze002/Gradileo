@@ -1,10 +1,62 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
+
+// The atoms here are drawn by src/video/atoms.ts: electrons circle in shells, and a clip adds
+// them one by one, filling each shell before the next.
+
+/** Carbon and sodium, empty, to be filled. */
+const first: AtomsEl = {
+  kind: 'atoms',
+  id: 'f',
+  span: [12, 6.6],
+  atoms: [
+    { id: 'c', symbol: 'C', protons: 6, electrons: 0, at: [3, 3.3], tone: 'adj', name: 'carbon' },
+    { id: 'na', symbol: 'Na', protons: 11, electrons: 0, at: [8.8, 3.3], tone: 'brand', name: 'sodium' },
+  ],
+  clips: {
+    carbon: { phases: [{ dur: 1.6, fill: { c: 2 } }, { dur: 2.4, fill: { c: 6 } }] },
+    sodium: { phases: [{ dur: 1.4, fill: { na: 2 } }, { dur: 3.6, fill: { na: 10 } }, { dur: 1.2, fill: { na: 11 } }] },
+  },
+  poster: 'sodium',
+  height: 460,
+};
+
+/** Aluminium, chlorine and calcium, each filled in turn. */
+const more: AtomsEl = {
+  kind: 'atoms',
+  id: 'm',
+  span: [19, 6.4],
+  atoms: [
+    { id: 'al', symbol: 'Al', protons: 13, electrons: 0, at: [3, 3.2], tone: 'hyp', name: 'aluminium' },
+    { id: 'cl', symbol: 'Cl', protons: 17, electrons: 0, at: [9.3, 3.2], tone: 'good', name: 'chlorine' },
+    { id: 'ca', symbol: 'Ca', protons: 20, electrons: 0, at: [15.9, 3.2], tone: 'theta', name: 'calcium' },
+  ],
+  clips: {
+    al: { phases: [{ dur: 0.8, fill: { al: 2 } }, { dur: 2, fill: { al: 10 } }, { dur: 1, fill: { al: 13 } }] },
+    cl: { phases: [{ dur: 0.8, fill: { cl: 2 } }, { dur: 1.6, fill: { cl: 10 } }, { dur: 1.6, fill: { cl: 17 } }] },
+    ca: { phases: [{ dur: 0.8, fill: { ca: 2 } }, { dur: 1.6, fill: { ca: 10 } }, { dur: 1.6, fill: { ca: 18 } }, { dur: 1, fill: { ca: 20 } }] },
+  },
+  height: 460,
+};
+
+/** Group 1: lithium, sodium and potassium, each with one outer electron. */
+const group: AtomsEl = {
+  kind: 'atoms',
+  id: 'g',
+  span: [17, 6.4],
+  atoms: [
+    { id: 'li', symbol: 'Li', protons: 3, at: [2.2, 3.2], tone: 'bad', name: 'lithium' },
+    { id: 'na', symbol: 'Na', protons: 11, at: [7.6, 3.2], tone: 'brand', name: 'sodium' },
+    { id: 'k', symbol: 'K', protons: 19, at: [13.9, 3.2], tone: 'adj', name: 'potassium' },
+  ],
+  clips: {},
+  height: 420,
+};
 
 const video: Explainer = {
   id: 'c9-1-3',
   lessonId: 'c9-1-3',
   title: 'Electron Arrangements',
-  thumbnail: 'arr',
+  thumbnail: 'f',
   summary:
     'For the first 20 elements, shells hold 2, then 8, then 8 electrons, filling from the inside out. The number of shells gives the period and the number of outer electrons gives the group. Elements in a group have the same number of outer electrons, so they react alike, and full outer shells make the noble gases unreactive.',
   scenes: [
@@ -18,40 +70,38 @@ const video: Explainer = {
     },
     {
       chapter: 'Filling the shells',
-      layout: 'center',
-      main: [
-        { kind: 'callout', id: 'rule', tone: 'definition', title: 'Shells fill from the inside out', md: 'First shell: up to **2**. Second: up to **8**. Third: up to **8**. Then the fourth.' },
-        {
-          kind: 'table',
-          id: 'arr',
-          head: ['Element', 'Atomic number', 'Arrangement'],
-          rows: [
-            ['carbon', '6', '2, 4'],
-            ['sodium', '11', '2, 8, 1'],
-            ['aluminium', '13', '2, 8, 3'],
-            ['chlorine', '17', '2, 8, 7'],
-            ['calcium', '20', '2, 8, 8, 2'],
-          ],
-        },
-      ],
+      layout: 'split',
+      leftWidth: 400,
+      left: [{ kind: 'callout', id: 'rule', tone: 'definition', title: 'Shells fill from the inside out', md: 'First shell: up to **2**.\n\nSecond: up to **8**.\n\nThird: up to **8**.\n\nThen the fourth.' }],
+      right: [first],
       lines: [
-        { say: 'Electrons occupy shells around the nucleus. For the first twenty elements, the first shell holds up to two electrons, the second up to eight, and the third up to eight. Any more go into the fourth.', show: 'rule' },
-        { say: 'Carbon has six electrons: two in the first shell and four in the second. We write that as two, four.', show: ['arr', 'arr.0'], focus: 'arr.0' },
-        { say: 'Sodium has eleven: two, then eight, then one left over. So sodium is two, eight, one.', show: 'arr.1', focus: 'arr.1' },
-        { say: 'Aluminium has thirteen: two, eight, and three in the third shell.', show: 'arr.2', focus: 'arr.2' },
-        { say: 'Chlorine is two, eight, seven, and calcium, with twenty, is two, eight, eight, two. A quick check: the numbers always add up to the atomic number.', show: ['arr.3', 'arr.4'], focus: 'arr.4' },
+        { say: 'Electrons occupy shells around the nucleus. For the first twenty elements, the first shell holds up to two electrons, the second up to eight, and the third up to eight. Any more go into the fourth.', show: ['rule', 'f', 'f.labels'] },
+        { say: 'Carbon has six electrons. The first two fill the first shell, and the other four go into the second. We write that as two, four.', play: 'f.carbon', show: 'f.arrangement', focus: 'f.c' },
+        { say: 'Sodium has eleven. Two fill the first shell, eight fill the second, and the one left over starts a third shell. So sodium is two, eight, one.', play: 'f.sodium', focus: 'f.na' },
+      ],
+    },
+    {
+      chapter: 'More arrangements',
+      layout: 'center',
+      main: [more],
+      lines: [
+        { say: 'Aluminium has thirteen electrons: two, eight, and three in the third shell.', show: ['m', 'm.labels', 'm.arrangement'], play: 'm.al', focus: 'm.al' },
+        { say: 'Chlorine has seventeen: two, eight, seven.', play: 'm.cl', focus: 'm.cl' },
+        { say: 'And calcium, with twenty, fills the third shell with eight, then starts a fourth: two, eight, eight, two. A quick check: the numbers always add up to the atomic number.', play: 'm.ca', focus: 'm.ca' },
       ],
     },
     {
       chapter: 'Shells and the periodic table',
-      layout: 'center',
-      main: [
+      layout: 'split',
+      leftWidth: 420,
+      left: [
         { kind: 'callout', id: 'per', tone: 'key', title: 'Period', md: 'The number of **occupied shells**.' },
         { kind: 'callout', id: 'grp', tone: 'key', title: 'Group', md: 'From the number of **outer electrons**: 1 → group 1, 2 → group 2, 3 to 8 → groups 13 to 18.' },
       ],
+      right: [group],
       lines: [
-        { say: 'An electron arrangement tells you where an element sits in the periodic table. The number of occupied shells is the period. Sodium has three shells, so it is in period three.', show: 'per' },
-        { say: 'The number of outer electrons gives the group. One outer electron means group one, two means group two, and three to eight outer electrons mean groups thirteen to eighteen.', show: 'grp' },
+        { say: 'An electron arrangement tells you where an element sits in the periodic table. The number of occupied shells is the period. Sodium has three shells, so it is in period three.', show: ['per', 'g', 'g.labels', 'g.arrangement'], focus: 'g.na' },
+        { say: 'The number of outer electrons gives the group. Lithium, sodium and potassium each have one outer electron, so they are all in group one. One outer electron means group one, two means group two, and three to eight mean groups thirteen to eighteen.', show: 'grp', focus: ['g.li', 'g.na', 'g.k'] },
         { say: 'Reactions involve the outer electrons. Elements in the same group have the same number of outer electrons, so they react in similar ways. The noble gases have full outer shells, which are very stable, so they hardly react at all.' },
       ],
     },
