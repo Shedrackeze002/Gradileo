@@ -101,6 +101,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const rate = part('rate');
   const volume = part('volume');
   const flow = part('flow');
+  const count = part('count');
   const width = part('width');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
@@ -298,6 +299,14 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
               <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={26} color={TONES.adj} opacity={volume}>
                 {`volume ${(el.volume.start * (f.lidY / bh) / (b.lid ?? 1)).toFixed(el.volume.decimals ?? 2)} ${el.volume.unit ?? 'L'}`}
               </Text>
+            )}
+            {/* A stirring rod, swept to and fro while the box is stirred. */}
+            {f.stir > 0.02 && (() => {
+              const sx = X(bw / 2 + Math.sin(now * 5) * bw * 0.18);
+              return <line x1={sx} y1={wallTop - 30} x2={sx + Math.sin(now * 5) * 14} y2={Y(1.2)} stroke="rgb(200 210 255 / 0.85)" strokeWidth={9} strokeLinecap="round" opacity={clamp01(f.stir / 0.4)} />;
+            })()}
+            {count > 0 && b.kinds && b.kinds.length > 1 && (
+              <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={count}>{`${f.loose} of ${b.kinds[0].n} dissolved`}</Text>
             )}
             {rate > 0 && (
               <Text x={X(bw / 2)} y={floor + 30 + (b.label ? 32 : 0) + (el.volume?.box === b.id ? 32 : 0)} size={20} color={TONES.theta} opacity={rate}>{`${f.hitRate} wall hits a second`}</Text>

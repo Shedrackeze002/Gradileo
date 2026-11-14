@@ -126,6 +126,37 @@ describe('particles: dividers, baths and expansion', () => {
   });
 });
 
+describe('particles: dissolving', () => {
+  const WATER = { n: 44, heavy: 0.2, tone: 'adj' } as const;
+  const lump = (id: string, solid: { bond: number; heavy: number }, cross: number, temp = 0.7) =>
+    ({ id, state: 'liquid', kinds: [{ n: 14, ...solid }, WATER], lump: true, hold: true, cross, width: 12, height: 9, temp }) as const;
+
+  it('holds a lump until it is let go, then water dissolves sugar but not sand', () => {
+    const e = el({ boxes: [lump('s', { bond: 1.5, heavy: 0.2 }, 1.8), lump('d', { bond: 3, heavy: 3 }, 1)], clips: { drop: { phases: [{ dur: 1, release: ['s', 'd'] }, { dur: 11 }] } }, speed: 4 });
+    const [a] = particlesAt(e, [['drop', 2]], 0);
+    const [b] = particlesAt(e, [['drop', 2]], 1.9);
+    // Held still: the lump's particles have not moved at all, and none has come loose.
+    a.kind.forEach((k, i) => k === 0 && expect([b.x[i], b.y[i]]).toEqual([a.x[i], a.y[i]]));
+    expect(b.loose).toBe(0);
+    const [sugar, sand] = particlesAt(e, [['drop', 2]], 16);
+    expect(sugar.loose).toBeGreaterThanOrEqual(12);
+    expect(sand.loose).toBe(0);
+  });
+
+  it('dissolves a stirred lump faster than a still one', () => {
+    const e = el({ boxes: [lump('a', { bond: 1.5, heavy: 0.2 }, 1.8, 0.6), lump('b', { bond: 1.5, heavy: 0.2 }, 1.8, 0.6)], clips: { go: { phases: [{ dur: 1, release: ['a', 'b'], stir: { b: 2 } }, { dur: 11 }] } }, speed: 4, seed: 5 });
+    const [still, stirred] = particlesAt(e, [['go', 0]], 5);
+    expect(stirred.stir).toBeGreaterThan(1);
+    expect(stirred.loose).toBeGreaterThan(still.loose + 4);
+  });
+
+  it('checks lumps, letting go and stirring', () => {
+    expect(checkParticles(el({ boxes: [{ id: 'b', state: 'liquid', n: 20, lump: true }] }))).toEqual(['box "b": a lump or held particles need two kinds (the lump first, then what is round it).']);
+    expect(checkParticles(el({ boxes: [{ id: 'b', state: 'liquid', kinds: [{ n: 5 }, { n: 20 }] }], clips: { go: { phases: [{ dur: 1, release: ['b'] }] } } }))).toEqual(['clip "go", phase 1 lets go of a lump that box "b" does not hold.']);
+    expect(checkParticles(el({ clips: { go: { phases: [{ dur: 1, stir: { x: 2 } }] } } }))).toEqual(['clip "go", phase 1 names no box "x".']);
+  });
+});
+
 describe('particles: scripts and timing', () => {
   const video = (p: ParticlesEl, lines: Explainer['scenes'][number]['lines']): Explainer => ({
     id: 'x',

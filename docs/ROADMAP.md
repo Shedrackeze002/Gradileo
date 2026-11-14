@@ -1242,9 +1242,16 @@ items ship or decisions change.
        a gas expanding and contracting, two gases and two liquids mixing when a divider is lifted).
        The element gained dividers, baths (heating or cooling one side), heat colours, a heat-flow
        arrow, thermometer marks and visible expansion. Convection and radiation are still a table.
-     - Next: Chemistry 7, Units 3 and 4 (mixtures, dissolving, solubility and the rate of
-       dissolving; separating mixtures), which need kinds of particle that attract differently, a
-       stirrer, filters and chromatography; then Chemistry 8 and 9, the gases unit, the rest of the
+     - Done (14 November 2026): Chemistry 7, Unit 3 remade: `c7-3-1` (pure water beside salt
+       water), `c7-3-2` (a lump of sugar dissolving in water while sand stays whole; a concentrated
+       and a dilute solution), `c7-3-3` (a little sugar dissolving completely, a lot leaving a lump
+       behind as the water is saturated, and sand) and `c7-3-4` (a stirred lump against a still
+       one, hot water against cold). The element gained kinds that attract differently, lumps that
+       are held and dropped in, stirring, a dissolved count and a faster speed. Not animated: a
+       powder against a lump, and a mixture melting over a range (the simulation does not show
+       either clearly), so those stay in words.
+     - Next: Chemistry 7, Unit 4 (separating mixtures), which needs filters and chromatography;
+       then Chemistry 8 and 9, the gases unit, the rest of the
        motion lessons, the lessons about structures, and animated openings for the calculation
        lessons. Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the

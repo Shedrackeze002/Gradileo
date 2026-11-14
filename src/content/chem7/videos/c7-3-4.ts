@@ -1,10 +1,50 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts): the same lump of sugar dropped into
+// water in two boxes at once, with one thing different. The simulation runs faster than usual
+// (`speed`), as real dissolving takes minutes.
+
+/** A sugar lump in water, held until it is dropped in. */
+const cup = (id: string, label: string, temp = 0.7): ParticleBox => ({
+  id,
+  state: 'liquid',
+  kinds: [{ n: 14, bond: 1.5, heavy: 0.2, tone: 'theta', name: 'sugar' }, { n: 44, heavy: 0.2, tone: 'adj', name: 'water' }],
+  lump: true,
+  hold: true,
+  cross: 1.8,
+  width: 12,
+  height: 9,
+  temp,
+  label,
+});
+
+/** The same lump in still water and in stirred water. */
+const stirring: ParticlesEl = {
+  kind: 'particles',
+  id: 's',
+  boxes: [cup('a', 'not stirred', 0.6), cup('b', 'stirred', 0.6)],
+  clips: { go: { phases: [{ dur: 1, release: ['a', 'b'], stir: { b: 2 } }, { dur: 11 }, { dur: 1, stir: { b: 0 } }] } },
+  speed: 4,
+  seed: 5,
+  height: 420,
+};
+
+/** The same lump in cold water and in hot water. */
+const heating: ParticlesEl = {
+  kind: 'particles',
+  id: 'h',
+  boxes: [cup('a', 'cold water', 0.55), cup('b', 'hot water', 0.85)],
+  clips: { go: { phases: [{ dur: 1, release: ['a', 'b'] }, { dur: 12 }] } },
+  speed: 4,
+  seed: 11,
+  height: 420,
+};
 
 const video: Explainer = {
   id: 'c7-3-4',
   lessonId: 'c7-3-4',
   title: 'How Fast Things Dissolve',
-  thumbnail: 'vars',
+  thumbnail: 's',
   summary:
     'Stirring, heating the solvent and using smaller pieces all make a solid dissolve faster. They change the rate, not how much can dissolve in total. In a fair test, change only the independent variable, measure the dependent variable, and keep the controlled variables the same; repeat and average to make results more reliable.',
   scenes: [
@@ -14,6 +54,25 @@ const video: Explainer = {
       lines: [
         { say: 'Why do we stir sugar into tea? And why does sugar vanish so much faster in hot tea than in iced tea?', show: 'title' },
         { say: 'In this video, you will find what changes the rate of dissolving, and how to design a fair test to find out.' },
+      ],
+    },
+    {
+      chapter: 'Stirring',
+      layout: 'center',
+      main: [stirring],
+      lines: [
+        { say: 'The rate of dissolving is how quickly a solute dissolves. We measure it by timing how long a fixed mass takes to dissolve: the shorter the time, the faster the rate.' },
+        { say: 'Here are two identical lumps of sugar, about to go into the same water. We will stir one of them.', show: ['s', 's.labels'] },
+        { say: 'Watch the count under each box. Stirring sweeps the water past the lump, bringing fresh water particles to the sugar and carrying the dissolved sugar away, so the stirred lump dissolves much faster.', play: 's.go', show: 's.count', focus: 's.b' },
+      ],
+    },
+    {
+      chapter: 'Heating',
+      layout: 'center',
+      main: [heating],
+      lines: [
+        { say: 'Now two more identical lumps, one in cold water and one in hot water. Look how much faster the water particles move in the hot water.', show: ['h', 'h.labels'] },
+        { say: 'In the hot water, the particles move faster, so they hit the sugar more often and harder, and pull it apart sooner. The sugar in the hot water dissolves faster.', play: 'h.go', show: 'h.count', focus: 'h.b' },
       ],
     },
     {
@@ -32,8 +91,7 @@ const video: Explainer = {
         { kind: 'callout', id: 'oops', tone: 'mistake', title: 'Faster is not more', md: 'Stirring makes sugar dissolve **faster**, but it does not let **more** dissolve. That is the solubility.' },
       ],
       lines: [
-        { say: 'The rate of dissolving is how quickly a solute dissolves. We measure it by timing how long a fixed mass takes to dissolve: the shorter the time, the faster the rate.' },
-        { say: 'Stirring helps, because it brings fresh solvent to the solid and carries dissolved particles away.', show: 'ways.0' },
+        { say: 'So stirring helps, because it brings fresh solvent to the solid and carries dissolved particles away.', show: 'ways.0' },
         { say: 'Heating the solvent helps, because its particles move faster, so they hit the solid more often and harder.', show: 'ways.1' },
         { say: 'And smaller pieces help, because they have more surface touching the solvent. Granulated sugar dissolves faster than a sugar cube of the same mass.', show: 'ways.2' },
         { say: 'But faster is not more. Stirring does not let more sugar dissolve in total. That limit is the solubility, which depends on temperature.', show: 'oops' },

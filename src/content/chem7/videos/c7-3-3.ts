@@ -1,10 +1,41 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts): water can only pull so many sugar
+// particles away before it holds all it can, so a big lump is left partly undissolved, while sand
+// never dissolves at all. The simulation runs faster than usual (`speed`).
+
+/** A lump of `n` particles in water, held until it is dropped in. */
+const cup = (id: string, n: number, water: number, label: string, solid = { bond: 2, heavy: 0.5, tone: 'theta' as const }, cross = 1.8): ParticleBox => ({
+  id,
+  state: 'liquid',
+  kinds: [{ n, ...solid }, { n: water, heavy: 0.2, tone: 'adj' }],
+  lump: true,
+  hold: true,
+  cross,
+  width: 10,
+  height: 9,
+  temp: 0.7,
+  label,
+});
+
+const three: ParticlesEl = {
+  kind: 'particles',
+  id: 'p',
+  boxes: [
+    cup('a', 5, 40, 'a little sugar'),
+    cup('b', 24, 34, 'a lot of sugar'),
+    cup('c', 14, 36, 'sand', { bond: 4, heavy: 3, tone: 'opp' }, 1),
+  ],
+  clips: { drop: { phases: [{ dur: 1, release: ['a', 'b', 'c'] }, { dur: 12 }] } },
+  speed: 4,
+  height: 400,
+};
 
 const video: Explainer = {
   id: 'c7-3-3',
   lessonId: 'c7-3-3',
   title: 'Solubility',
-  thumbnail: 't',
+  thumbnail: 'p',
   summary:
     'Solubility is the most solute that can dissolve in a fixed amount of solvent, often 100 g of water, at a given temperature. For most solids it rises with temperature. Scale a table value to other masses of water; any extra solute stays undissolved, and cooling a saturated solution gives crystals. A saturated solution can dissolve no more solute; an unsaturated one can.',
   scenes: [
@@ -45,14 +76,21 @@ const video: Explainer = {
     {
       chapter: 'Saturated or unsaturated?',
       layout: 'center',
-      main: [
-        { kind: 'callout', id: 'sat', tone: 'definition', title: 'Saturated and unsaturated', md: 'A **saturated** solution holds as much solute as it can. An **unsaturated** one could still dissolve more.' },
-        { kind: 'callout', id: 'oops', tone: 'mistake', title: 'Insoluble is not saturated', md: 'Sand at the bottom never dissolved at all. Sugar at the bottom is there because **no more** can dissolve.' },
-      ],
+      main: [three, { kind: 'callout', id: 'sat', tone: 'definition', title: 'Saturated and unsaturated', md: 'A **saturated** solution holds as much solute as it can. An **unsaturated** one could still dissolve more.' }],
       lines: [
-        { say: 'A saturated solution holds as much solute as it can at that temperature. Any extra stays undissolved. An unsaturated solution could still dissolve more.', show: 'sat' },
+        { say: 'Here are three boxes of water. Into the first goes a little sugar, into the second a lot of sugar, and into the third some sand.', show: ['p', 'p.labels'] },
+        { say: 'Watch. The little sugar dissolves completely. In the second box, the water pulls sugar particles away until it holds as much as it can, and then the rest of the lump just sits at the bottom.', play: 'p.drop', show: 'p.count', focus: ['p.a', 'p.b'] },
+        { say: 'The second solution is saturated: it holds as much solute as it can at that temperature, and any extra stays undissolved. The first is unsaturated: it could still dissolve more.', show: 'sat', focus: 'p.b' },
         { say: 'To tell which you have, add a little more solute and stir. If it dissolves, the solution was unsaturated.' },
-        { say: 'Do not confuse saturated with insoluble. Sand at the bottom of a glass never dissolved at all. Sugar at the bottom of sugary water is there because no more can dissolve.', show: 'oops' },
+      ],
+    },
+    {
+      chapter: 'Insoluble is not saturated',
+      layout: 'center',
+      main: [{ ...three, id: 'q2' }, { kind: 'callout', id: 'oops', tone: 'mistake', title: 'Insoluble is not saturated', md: 'Sand at the bottom never dissolved at all. Sugar at the bottom is there because **no more** can dissolve.' }],
+      lines: [
+        { say: 'Do not confuse saturated with insoluble. Both boxes on the right have solid left at the bottom, but for different reasons.', show: ['q2', 'q2.labels'], play: 'q2.drop' },
+        { say: 'The sand never dissolved at all, because sand is insoluble. The sugar at the bottom of the sugary water is there because no more can dissolve.', show: 'oops', focus: ['q2.b', 'q2.c'] },
       ],
     },
     {
