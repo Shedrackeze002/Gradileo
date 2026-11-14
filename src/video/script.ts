@@ -407,15 +407,19 @@ export interface ParticleBox {
    * `carry` too, the `a` atom's old partners stay with it, joined to the `b` atom instead (bent,
    * like water, or in a straight line with `line`, like carbon dioxide): a hydrogen molecule that
    * hits an oxygen atom becomes one water molecule. Atoms are never made or lost: only
-   * joined differently, so the mass is the same after.
+   * joined differently, so the mass is the same after. Particles react a little way apart (1.6
+   * times their mean diameter); `reach` sets that distance, about 1.15 for touching only, so a gas
+   * reacts with the surface of a lump and not the particles just under it.
    */
-  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number }>;
+  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number; reach?: number }>;
   /**
    * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
    * made of these atoms (kinds, by place), the first bonded to each of the others round it. A
    * `bent` molecule of three atoms is bent like water; otherwise the atoms sit in a line.
    */
   molecules?: Array<{ atoms: number[]; n: number; bent?: boolean }>;
+  /** Hold the reactions back until a phase lets the box go (`release`), so they start on cue. */
+  waits?: boolean;
   /** What the part `tally` counts under the box: the particles of these kinds, and what to call them. */
   tally?: { kinds: number[]; label: string };
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
@@ -478,7 +482,7 @@ export interface ParticlePhase {
   lid?: Record<string, number>;
   /** Boxes whose divider is lifted out as the phase starts. */
   lift?: string[];
-  /** Boxes whose held lump is let go as the phase starts. */
+  /** Boxes whose held lump (or waiting reactions) are let go as the phase starts. */
   release?: string[];
   /** How hard to stir each box (0 stops; 2 stirs briskly), reached steadily over the phase. */
   stir?: Record<string, number>;
@@ -708,7 +712,6 @@ export function checkParticles(e: ParticlesEl): string[] {
       if (!m.atoms.every(ok) || m.atoms.length < 2) problems.push(`box "${b.id}": a molecule needs two atoms or more, of kinds the box has.`);
       if (m.bent && m.atoms.length !== 3) problems.push(`box "${b.id}": only a molecule of three atoms can be bent.`);
     }
-    if (b.molecules && typeof b.lump === 'number') problems.push(`box "${b.id}": with molecules, only one lump.`);
     if (b.molecules && (b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box (with a lump, if you like).`);
     if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
   }
@@ -719,7 +722,7 @@ export function checkParticles(e: ParticlesEl): string[] {
       for (const id of ph.lift ?? []) if (!e.boxes.find((b) => b.id === id)?.divider) problems.push(`clip "${name}", phase ${pi + 1} lifts a divider that box "${id}" does not have.`);
       for (const id of ph.release ?? []) {
         const b = e.boxes.find((bb) => bb.id === id);
-        if (!b?.hold && !b?.filter) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
+        if (!b?.hold && !b?.filter && !b?.waits) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
       }
       for (const id of [...Object.keys(ph.stir ?? {}), ...Object.keys(ph.magnet ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const id of Object.keys(ph.run ?? {})) if (!e.boxes.find((b) => b.id === id)?.paper) problems.push(`clip "${name}", phase ${pi + 1} runs solvent up box "${id}", which is not paper.`);

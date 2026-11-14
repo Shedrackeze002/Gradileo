@@ -258,6 +258,33 @@ describe('particles: molecules and reactions', () => {
     expect(burnt.temp).toBeGreaterThan(0.6);
   });
 
+  it('breaks a reacting lump into separate pieces, and lets only its surface react', () => {
+    const solid = (id: string, pieces: number) => ({
+      id,
+      state: 'gas' as const,
+      width: 22,
+      height: 9,
+      temp: 0.7,
+      hold: true,
+      lump: pieces === 1 ? true : pieces,
+      cols: pieces === 1 ? 6 : 2,
+      cross: 0.2,
+      kinds: [{ n: 24, bond: 6, heavy: 3 }, { ...O, n: 24 }, { ...O }, { ...O }],
+      reactions: [{ a: 1, b: 0, to: [3, 2] as [number, number], join: true, energy: 1, reach: 1.15 }],
+      tally: { kinds: [2], label: 'new' },
+    });
+    const e = el({ boxes: [solid('a', 1), solid('b', 4)], clips: { go: { phases: [{ dur: 1, release: ['a', 'b'] }, { dur: 13 }] } }, seed: 8 });
+    // Four pieces of six, side by side along the floor with gaps between them.
+    const [, start] = particlesAt(e, [], 1);
+    const xs = start.x.filter((_, i) => start.kind[i] === 0).sort((p, q) => p - q);
+    const gaps = xs.slice(1).map((x, i) => x - xs[i]).filter((g) => g > 2);
+    expect(gaps.length).toBe(3);
+    // Nothing reacts until the clip lets go; then the pieces, with more surface, react faster.
+    expect(particlesAt(e, [['go', 2]], 1.9).map((f) => f.tally)).toEqual([0, 0]);
+    const [lump, pieces] = particlesAt(e, [['go', 2]], 10).map((f) => f.tally);
+    expect(pieces).toBeGreaterThan(lump);
+  });
+
   it('checks reactions, molecules and tallies', () => {
     const b = { id: 'b', state: 'gas' as const, kinds: [{ n: 4 }, { n: 4 }] };
     expect(checkParticles(el({ boxes: [{ ...b, reactions: [{ a: 0, b: 2, to: [1, 1] }] }] }))).toEqual(['box "b": a reaction names a kind it does not have.']);

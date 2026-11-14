@@ -288,6 +288,8 @@ function react(s: BoxSim, divider?: number) {
       const dx = x[i] - x[j];
       const dy = y[i] - y[j];
       const d = Math.hypot(dx, dy) || 1;
+      // With `reach`, only a pair this close (a multiple of their mean diameter) reacts: touching.
+      if (r.reach !== undefined && d * d > r.reach * r.reach * s.sig2[kind[i] * s.kinds + kind[j]]) continue;
       const closing = -((vx[i] - vx[j]) * dx + (vy[i] - vy[j]) * dy) / d;
       if (0.25 * Math.max(0, closing) ** 2 < (r.energy ?? 0)) continue;
       // Two atoms of one molecule never react with each other.
@@ -413,21 +415,30 @@ function forcesBetween(s: BoxSim, sigma: number) {
  */
 function placeMolecules(s: BoxSim, b: ParticleBox, kinds: NonNullable<ParticleBox['kinds']>, mols: NonNullable<ParticleBox['molecules']>, w: number) {
   const units: number[][] = [];
-  // With `lump`, the first kind starts as a block on the floor in the middle, the rest above it.
+  // With `lump`, the first kind starts as a block on the floor in the middle (or, with `lump: 3`,
+  // as three smaller blocks spread along the floor), the rest above it.
   const lumpN = b.lump ? kinds[0].n : 0;
   let at = 0;
   let floor = 0.5;
   if (lumpN) {
+    const pieces = b.lump === true ? 1 : Math.max(1, b.lump || 1);
     const sp = 1.12 * (kinds[0].size ?? 1);
-    const cols = Math.min(Math.floor((w - 1) / sp) + 1, b.cols ?? Math.max(1, Math.round(Math.sqrt(lumpN * 1.6))));
     const rowH = (sp * Math.sqrt(3)) / 2;
-    for (let i = 0; i < lumpN; i++) {
-      const r = Math.floor(i / cols);
-      s.kind[at] = 0;
-      s.x[at] = w / 2 - ((cols - 1) * sp) / 2 + (i % cols) * sp + (r % 2 ? sp / 2 : 0) - sp / 4;
-      s.y[at++] = 0.56 * (sp / 1.12) + r * rowH;
+    const per = Math.floor(lumpN / pieces);
+    let top = 0;
+    for (let L = 0; L < pieces; L++) {
+      const count = L === pieces - 1 ? lumpN - per * (pieces - 1) : per;
+      const cx = (w * (L + 0.5)) / pieces;
+      const cols = Math.min(Math.floor((w / pieces - 1) / sp) + 1, b.cols ?? Math.max(1, Math.round(Math.sqrt(count * 1.6))));
+      for (let i = 0; i < count; i++) {
+        const r = Math.floor(i / cols);
+        s.kind[at] = 0;
+        s.x[at] = cx - ((cols - 1) * sp) / 2 + (i % cols) * sp + (r % 2 ? sp / 2 : 0) - sp / 4;
+        s.y[at++] = 0.56 * (sp / 1.12) + r * rowH;
+      }
+      top = Math.max(top, Math.ceil(count / cols));
     }
-    floor = 0.56 * (sp / 1.12) + Math.ceil(lumpN / cols) * rowH + 0.6;
+    floor = 0.56 * (sp / 1.12) + top * rowH + 0.6;
   }
   kinds.forEach((kd, ki) => {
     if (ki > 0 || !lumpN) for (let i = 0; i < kd.n; i++) units.push([ki]);
@@ -523,7 +534,9 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       s.sig2[a * kinds.length + c] = (((ka.size ?? 1) + (kb.size ?? 1)) / 2) ** 2;
     }),
   );
-  if (mols.length) placeMolecules(s, b, kinds, mols, w);
+  // Molecules, and a gas that reacts with a lump, are placed unit by unit.
+  const units = mols.length > 0 || (b.state === 'gas' && !!b.lump && !!b.reactions?.length);
+  if (units) placeMolecules(s, b, kinds, mols, w);
   const spacing = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1));
   // Two kinds kept apart by a divider start on its two sides; behind a wall, all start on its
   // left; on paper, as a small dot in the middle; otherwise the whole box is one region.
@@ -539,7 +552,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
         : [[0, w, 0, n]];
   // Where the bottom row starts: on the filter, on paper's start line, or on the floor.
   const base = b.filter ? b.filter.at * h : b.paper ? PAPER_START - 0.56 : 0;
-  for (const [x0, x1, from, to] of mols.length ? [] : regions) {
+  for (const [x0, x1, from, to] of units ? [] : regions) {
     const m = to - from;
     const rw = x1 - x0;
     if (b.state === 'gas') {
@@ -567,7 +580,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     }
   }
   // A lump: the first kind starts as a block on the floor in the middle, the rest round it.
-  if (b.lump && kinds.length > 1 && !mols.length) {
+  if (b.lump && kinds.length > 1 && !units) {
     // `lump: 3` makes three smaller lumps spread along the floor, with the same particles between them.
     const m = b.lump === true ? 1 : b.lump;
     s.kind.fill(1);
@@ -582,7 +595,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
         taken.add(order[i]);
       }
     }
-  } else if (!b.apart && kinds.length > 1 && !mols.length) {
+  } else if (!b.apart && kinds.length > 1 && !units) {
     for (let i = n - 1; i > 0; i--) {
       const j = Math.floor(rnd() * (i + 1));
       const t = s.kind[i];
@@ -941,7 +954,7 @@ function optsFor(b: ParticleBox, ctl?: Controls): StepOpts {
     wall: b.wall && { x: b.wall.at * w, top: b.wall.height * h },
     zones: ctl && b.zones?.map((z) => ({ x0: z.x[0] * w, x1: z.x[1] * w, y0: z.y[0] * h, y1: z.y[1] * h, temp: z.temp === undefined ? temp : tempOf(z.temp, temp) })),
     escape: ctl ? b.escape : false,
-    react: !!ctl,
+    react: !!ctl && (!b.waits || ctl.released[b.id] !== undefined),
   };
 }
 
