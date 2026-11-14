@@ -70,6 +70,7 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
   const power = part('power');
   const counted = part('charge');
   const clock = part('clock');
+  const transferred = part('transferred');
   const series = el.layout === 'series';
   const electrons = el.carriers === 'electrons';
   const pace = el.pace ?? 40;
@@ -175,7 +176,8 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
   for (const { part: cp, x, y } of places) {
     const s: PartState = state.parts[cp.id];
     const glow = st?.focus[cp.id] ?? 0;
-    const lit = cp.kind === 'lamp' ? clamp01(s.power / full) : 0;
+    // The eye does not follow power in proportion: a lamp at a quarter of its power is drawn half as bright, so it is dim but still alight.
+    const lit = cp.kind === 'lamp' ? Math.sqrt(clamp01(s.power / full)) : 0;
     const body =
       cp.kind === 'lamp' ? (
         <g>
@@ -192,17 +194,29 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
         <rect x={x - (series ? 44 : 17)} y={y - (series ? 17 : 44)} width={series ? 88 : 34} height={series ? 34 : 88} rx={4} fill={BACK} stroke={s.broken ? TONES.bad : INK} strokeWidth={3.5} />
       );
     // Beside it: its name, then the voltage across it and its power. Under a component in a loop, to the right of one on a rung.
+    // In a loop the voltage is read by a voltmeter joined across the component, in parallel with it.
     const lines: Array<{ text: string; color: string; opacity: number }> = [
       { text: cp.label ?? ohms(s.ohms), color: INK, opacity: 1 },
       { text: reading(s.volts, 'V'), color: VOLTAGE, opacity: voltage },
       { text: reading(s.power, 'W'), color: POWER, opacity: power },
     ].filter((l) => l.opacity > 0);
+    const metered = series && voltage > 0;
+    const reach = Math.min(62, (x1 - x0) / (n + 1) / 2 - 8);
     out.push(
       <g key={`part-${cp.id}`} style={glow > 0 ? { filter: `drop-shadow(0 0 ${14 * glow}px #fff)` } : undefined}>
+        {metered && (
+          <g opacity={voltage}>
+            <polyline points={`${x - reach},${y} ${x - reach},${y + 62} ${x + reach},${y + 62} ${x + reach},${y}`} fill="none" stroke={VOLTAGE} strokeWidth={2.5} strokeLinejoin="round" opacity={0.75} />
+            <circle cx={x - reach} cy={y} r={4.5} fill={VOLTAGE} />
+            <circle cx={x + reach} cy={y} r={4.5} fill={VOLTAGE} />
+            <circle cx={x} cy={y + 62} r={17} fill={BACK} stroke={VOLTAGE} strokeWidth={3} />
+            <Text x={x} y={y + 62.5} size={18} color={VOLTAGE}>V</Text>
+          </g>
+        )}
         {body}
         {lines.map((l, k) =>
           series ? (
-            <Text key={k} x={x} y={k === 0 ? y - 46 : y + 24 + 26 * k} size={21} color={l.color} opacity={l.opacity}>{l.text}</Text>
+            <Text key={k} x={x} y={k === 0 ? y - 46 : y + (metered ? 70 : 24) + 26 * k} size={21} color={l.color} opacity={l.opacity}>{l.text}</Text>
           ) : (
             <Text key={k} x={x + 40} y={y + 26 * (k - (lines.length - 1) / 2)} anchor="start" size={21} color={l.color} opacity={l.opacity}>{l.text}</Text>
           ),
@@ -250,13 +264,17 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
         {row('conventional', 28, 1, CHARGE)}
         {electrons && row('electrons', 54, -1, ELECTRON)}
         {lines.map((l, k) => (
-          <Text key={k} x={tx} y={yb + 28 * (k - (lines.length - 1) / 2)} size={21} color={l.c}>{l.t}</Text>
+          <Text key={k} x={tx} y={yb + (series ? 34 : 0) + 28 * (k - (lines.length - 1) / 2)} size={21} color={l.c}>{l.t}</Text>
         ))}
       </g>,
     );
   }
 
   if (counted > 0) out.push(<Text key="counted" x={8} y={h - 16} anchor="start" size={22} color={CHARGE} opacity={counted}>{`Charge passed: ${reading(state.charge, 'C', true)}`}</Text>);
+  if (transferred > 0) {
+    const joules = el.parts.reduce((sum, cp) => sum + state.parts[cp.id].energy, 0);
+    out.push(<Text key="transferred" x={8} y={20} anchor="start" size={22} color={POWER} opacity={transferred}>{`Energy transferred: ${Math.round(joules)} J`}</Text>);
+  }
   if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
   if (state.note)
     out.push(

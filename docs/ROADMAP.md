@@ -1232,12 +1232,22 @@ items ship or decisions change.
        curved tracks (`path`: a hill through points, a ramp or a pendulum), so a roller coaster
        trades height for speed, a car on a rough track ends with all its energy as heat, two
        motors do the same work in different times, and a motor's efficiency is read off its bars.
-     - In progress (14 November 2026): **Unit 4, Waves, Sound and Light**. The engine has a
-       `wave` element (a rope and a tube of particles, drawn from one rule: each place does what
-       the source did a little earlier) and a `rays` element (a ray at a mirror or a boundary,
-       with the normal, the angles and marching wavefronts); the script of lesson 4.1 is written.
-     - Next: the other Unit 4 scripts and their render; then Unit 5 (circuits), its animation
-       built first. `phys-sample-momentum`
+     - Scripts done (14 November 2026): **Unit 4, Waves, Sound and Light** (`p10-4-1` to
+       `p10-4-5`). The engine has a `wave` element (a rope and a tube of particles, drawn from one
+       rule: each place does what the source did a little earlier) and a `rays` element (a ray at
+       a mirror or a boundary, with the normal, the angles and marching wavefronts).
+     - Scripts done (14 November 2026): **Unit 5, Electricity** (`p10-5-1` to `p10-5-5`). The
+       engine has a `circuit` element: a battery, a switch, lamps and resistors in series or in
+       parallel, solved from the supply voltage and the resistances, with charges that move with
+       the current and split at a junction, lamps that glow with their power, ammeters,
+       voltmeters, and counters of charge and energy.
+     - A fault found and fixed (14 November 2026): videos rendered in a second working copy whose
+       `node_modules` is a link were drawn in the browser's own fonts, because the page server
+       refused the font files. That was Units 2 and 3 (in Drive, none on YouTube) and the first
+       render of Unit 4. `video/build.ts` now serves the linked folder and fails when the stage
+       cannot load a file. In progress: Units 2, 3 and 4 are being rendered again and replaced in
+       Drive.
+     - Next: check the new renders of Units 2 to 4, then render Unit 5. `phys-sample-momentum`
        becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then Grade 11
        Physics (`phys-20`) and Grade 12 Physics (`phys-30`); the lessons have no tutor recordings
        yet.

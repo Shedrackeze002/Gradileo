@@ -703,7 +703,7 @@ export interface CircuitClip {
 }
 
 /** What a circuit element can show over its wires; each is a part ("c.current"). */
-export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage', 'power', 'charge', 'clock'] as const;
+export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage', 'power', 'charge', 'transferred', 'clock'] as const;
 
 /**
  * A circuit, for the physics videos (src/video/circuit.ts): a battery, a switch, and lamps or
@@ -715,8 +715,10 @@ export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage
  * element shows the circuit; showing a part adds it: `charges` (the moving charges), `energy`
  * (the charges are bright where they carry energy from the battery and dim once they have given
  * it up), `arrows` (the direction of conventional current), `current` (ammeters with their
- * readings), `voltage` (the voltage across each component), `power` (the power of each
- * component), `charge` (the charge that has passed the ammeter since the start) and `clock`.
+ * readings), `voltage` (the voltage across each component, on a voltmeter joined across it in a
+ * loop), `power` (the power of each component), `charge` (the charge that has passed the ammeter
+ * since the start), `transferred` (the energy the components have transferred since the start)
+ * and `clock`.
  * Emphasising a component's id makes it glow.
  */
 export interface CircuitEl {
