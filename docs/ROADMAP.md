@@ -1268,8 +1268,14 @@ items ship or decisions change.
        are held and dropped in, stirring, a dissolved count and a faster speed. Not animated: a
        powder against a lump, and a mixture melting over a range (the simulation does not show
        either clearly), so those stay in words.
-     - Next: Chemistry 7, Unit 4 (separating mixtures), which needs filters and chromatography;
-       then Chemistry 8 and 9, the gases unit, the rest of the
+     - Done (14 November 2026): Chemistry 7, Unit 4 remade: `c7-4-1` (gravel and sand shaken
+       through a sieve, a magnet pulling iron out of sand, sand caught on filter paper while water
+       runs through, and salt water running straight through), `c7-4-2` (water evaporating out of
+       a dish and the salt crystallizing as it cools; a still boiling salt water and condensing
+       pure water on the cold side) and `c7-4-3` (an ink and two dyes run up chromatography paper).
+       The element gained particle sizes, filters and sieves, magnets, an open top that particles
+       leave by, a low wall, hot and cold zones, and chromatography paper.
+     - Next: Chemistry 8 and 9, the gases unit, the rest of the
        motion lessons, the lessons about structures, and animated openings for the calculation
        lessons. Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
