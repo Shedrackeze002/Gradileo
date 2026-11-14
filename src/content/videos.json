@@ -241,7 +241,7 @@
   "c7-2-2": {
     "lessonId": "c7-2-2",
     "title": "Changes of State",
-    "duration": 195,
+    "duration": 270,
     "voice": "af_heart",
     "chapters": [
       {
@@ -249,30 +249,30 @@
         "t": 0
       },
       {
-        "title": "Naming the changes",
+        "title": "Melting and boiling",
         "t": 21.482
       },
       {
         "title": "Water on a cold can",
-        "t": 67.316
+        "t": 116.072
       },
       {
         "title": "Melting and boiling points",
-        "t": 88.2
+        "t": 160.858
       },
       {
         "title": "Your turn",
-        "t": 134.039
+        "t": 209.298
       },
       {
         "title": "Summary",
-        "t": 164.741
+        "t": 240
       }
     ],
     "cues": [
       {
         "id": "c7-2-2:q",
-        "t": 147.82,
+        "t": 223.079,
         "prompt": "Oxygen melts at −218 °C and boils at −183 °C. What state is oxygen in at −200 °C?",
         "choices": [
           "A liquid",
@@ -288,7 +288,7 @@
   "c7-2-3": {
     "lessonId": "c7-2-3",
     "title": "Temperature and Heat",
-    "duration": 193,
+    "duration": 290,
     "voice": "af_heart",
     "chapters": [
       {
@@ -300,26 +300,38 @@
         "t": 16.136
       },
       {
-        "title": "Heat",
-        "t": 58.859
+        "title": "The Celsius scale",
+        "t": 51.036
       },
       {
-        "title": "How heat moves",
-        "t": 92.594
+        "title": "Heat",
+        "t": 79.952
+      },
+      {
+        "title": "Cold does not flow",
+        "t": 125.182
+      },
+      {
+        "title": "Conduction",
+        "t": 159.032
+      },
+      {
+        "title": "Convection and radiation",
+        "t": 205.733
       },
       {
         "title": "Your turn",
-        "t": 137.615
+        "t": 234.163
       },
       {
         "title": "Summary",
-        "t": 164.527
+        "t": 261.075
       }
     ],
     "cues": [
       {
         "id": "c7-2-3:q",
-        "t": 144.98,
+        "t": 241.528,
         "prompt": "How does the Sun’s heat reach Earth across empty space?",
         "choices": [
           "By conduction",
@@ -335,7 +347,7 @@
   "c7-2-4": {
     "lessonId": "c7-2-4",
     "title": "Expansion and Diffusion",
-    "duration": 188,
+    "duration": 269,
     "voice": "af_heart",
     "chapters": [
       {
@@ -347,26 +359,34 @@
         "t": 19.893
       },
       {
+        "title": "The particles do not grow",
+        "t": 74.077
+      },
+      {
         "title": "Expansion in everyday life",
-        "t": 50.38
+        "t": 95.827
       },
       {
         "title": "Diffusion",
-        "t": 87.478
+        "t": 132.925
+      },
+      {
+        "title": "How fast is diffusion?",
+        "t": 177.449
       },
       {
         "title": "Your turn",
-        "t": 126.088
+        "t": 207.365
       },
       {
         "title": "Summary",
-        "t": 156.728
+        "t": 238.005
       }
     ],
     "cues": [
       {
         "id": "c7-2-4:q",
-        "t": 138.034,
+        "t": 219.311,
         "prompt": "A tea bag is put into hot water and another into cold water. In which cup does the colour spread faster, and why?",
         "choices": [
           "The cold water, because its particles are closer together.",
