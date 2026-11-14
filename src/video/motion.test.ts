@@ -334,6 +334,7 @@ describe('motion: energy', () => {
   it('asks for a height before it shows potential energy', () => {
     expect(checkMotion(el({ energy: { max: 10, bars: ['potential'] } }))).toHaveLength(1);
     expect(checkMotion(el({ energy: { max: 10, bars: ['kinetic'], of: ['nobody'] } }))).toHaveLength(1);
+    expect(checkMotion(el({ energy: { max: 10, bars: ['kinetic'], labels: { nobody: 'A' } } }))).toHaveLength(1);
   });
 });
 
@@ -375,6 +376,23 @@ describe('motion: a curved track', () => {
     expect(e.kinetic + e.potential + e.heat).toBeCloseTo(49, 2);
     // Heat is friction × the distance travelled along the track.
     expect(e.heat).toBeCloseTo(3 * s.travelled.b, 2);
+  });
+
+  it('counts the work of a push up a ramp as the height gained', () => {
+    // A 10 kg trolley pushed at a steady 1 m/s up a ramp 4 m along and 3 m high (5 m long): the
+    // push that balances gravity along the slope is 98 × 3 ÷ 5 N, and its work is mgh = 294 J.
+    const ramp = el({
+      span: [0, 5],
+      path: { g: 9.8, points: [[0, 0], [4, 3]] },
+      bodies: [{ id: 'b', shape: 'cart', mass: 10, x: 0 }],
+      energy: { max: 300, bars: ['work', 'potential'] },
+      clips: { up: { phases: [{ dur: 5, set: { b: 1 }, forces: [{ on: 'b', name: 'Push', n: (98 * 3) / 5 }] }] } },
+    });
+    const s = motionAt(ramp, [['up', 5]]);
+    expect(s.bodies.b.x).toBeCloseTo(5, 6);
+    expect(s.energy.b.work).toBeCloseTo(294, 3);
+    expect(s.energy.b.potential).toBeCloseTo(294, 3);
+    expect(s.energy.b.heat).toBeCloseTo(0, 3);
   });
 
   it('holds a body that friction can hold on the slope', () => {

@@ -55,8 +55,8 @@ const pendulum: MotionEl = {
 
 // A 10 kg car on a model roller coaster: 5 m up at the start (490 J), over a second hill 2 m high
 // (196 J of potential energy, so 294 J of kinetic energy), and up a last hill as high as the first.
-// It passes the second hilltop after 1.8553 s, the valley after it at 2.3746 s, and comes to rest
-// for an instant at the far end after 3.7105 s.
+// It passes the second hilltop after 1.8553 s, and comes to rest for an instant at the far end
+// after 3.7105 s.
 const coaster: MotionEl = {
   kind: 'motion',
   id: 'sim',
@@ -69,8 +69,7 @@ const coaster: MotionEl = {
   poster: 'hill',
   clips: {
     hill: { phases: [{ dur: 1.8553, slow: 2.5, note: 'Slow motion' }] },
-    valley: { phases: [{ dur: 2.3746 - 1.8553, slow: 2.5, note: 'Slow motion' }] },
-    climb: { phases: [{ dur: 3.7105 - 2.3746, slow: 2.5, note: 'Slow motion' }] },
+    climb: { phases: [{ dur: 3.7105 - 1.8553, slow: 2.5, note: 'Slow motion' }] },
   },
 };
 
@@ -152,8 +151,7 @@ const video: Explainer = {
         { say: 'Back to the roller coaster. This model car has a mass of ten kilograms, and it starts at rest, five metres up. Ten, times nine point eight, times five, gives it four hundred and ninety joules of potential energy.', show: ['sim', 'sim.height', 'sim.energy', 'sim.total'] },
         { say: 'There is no engine, and we will ignore friction. Let it go, and stop it at the top of the second hill.', show: 'sim.velocity', play: 'sim.hill', playDelay: 3 },
         { say: 'This hill is two metres high, so the car has one hundred and ninety-six joules of potential energy here. The total is still four hundred and ninety, so the rest must be kinetic energy. Four hundred and ninety, take away one hundred and ninety-six, is two hundred and ninety-four joules.', show: 'share' },
-        { say: 'On to the bottom of the next dip, where every joule is kinetic again.', play: 'sim.valley', playDelay: 0.8 },
-        { say: 'How high can the car climb now? Watch the last hill.', play: 'sim.climb', playDelay: 1.5 },
+        { say: 'Now let it run on. In the next dip, every joule is kinetic again. So how high can the car climb on the last hill?', play: 'sim.climb', playDelay: 1 },
         { say: 'It stops exactly five metres up, as high as it started and no higher. It has no energy left to climb any further.', focus: 'sim.car' },
       ],
     },
