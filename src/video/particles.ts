@@ -419,7 +419,7 @@ function placeMolecules(s: BoxSim, b: ParticleBox, kinds: NonNullable<ParticleBo
   let floor = 0.5;
   if (lumpN) {
     const sp = 1.12 * (kinds[0].size ?? 1);
-    const cols = Math.min(Math.floor((w - 1) / sp) + 1, Math.max(1, Math.round(Math.sqrt(lumpN * 1.6))));
+    const cols = Math.min(Math.floor((w - 1) / sp) + 1, b.cols ?? Math.max(1, Math.round(Math.sqrt(lumpN * 1.6))));
     const rowH = (sp * Math.sqrt(3)) / 2;
     for (let i = 0; i < lumpN; i++) {
       const r = Math.floor(i / cols);

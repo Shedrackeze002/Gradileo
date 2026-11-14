@@ -709,7 +709,7 @@ export function checkParticles(e: ParticlesEl): string[] {
       if (m.bent && m.atoms.length !== 3) problems.push(`box "${b.id}": only a molecule of three atoms can be bent.`);
     }
     if (b.molecules && typeof b.lump === 'number') problems.push(`box "${b.id}": with molecules, only one lump.`);
-    if (b.molecules && (b.hold || b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box (with a lump, if you like).`);
+    if (b.molecules && (b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box (with a lump, if you like).`);
     if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
   }
   for (const [name, clip] of Object.entries(e.clips)) {
