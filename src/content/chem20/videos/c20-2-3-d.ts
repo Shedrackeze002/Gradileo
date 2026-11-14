@@ -1,18 +1,16 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { gasBox, tag } from './lib/c20-2a-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// The worked example: 210 kPa and 8.4 L, squeezed to 5.2 L.
-const cylinder = figure(
-  'c',
-  [
-    gasBox({ name: 'a', at: [0, 0], w: 3.6, h: 4.2, count: 7, r: 0.24, speed: 0, seed: 71, top: 'piston', walls: 5.2 }),
-    tag('a-l', [1.8, -0.3], '\\begin{gathered}210\\ \\text{kPa}\\\\ 8.4\\ \\text{L}\\end{gathered}', { place: 'below', group: 'a-p' }),
-    gasBox({ name: 'b', at: [5.4, 0], w: 3.6, h: 2.6, count: 7, r: 0.24, speed: 0, seed: 72, top: 'piston', walls: 5.2, push: '\\text{push}' }),
-    tag('b-l', [7.2, -0.3], '\\begin{gathered}P_2 = {?}\\\\ 5.2\\ \\text{L}\\end{gathered}', { place: 'below', group: 'b-p' }),
-  ],
-  440,
-);
+// The worked example (simulated, src/video/particles.ts): 210 kPa and 8.4 L, squeezed to 5.2 L,
+// when the gauge reads 339 kPa.
+const cylinder: ParticlesEl = {
+  kind: 'particles',
+  id: 'c',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 10, temp: 1.6, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }] }],
+  clips: { push: { phases: [{ dur: 5, lid: { b: 5.2 / 8.4 } }] } },
+  gauge: { box: 'b', start: 210 },
+  volume: { box: 'b', start: 8.4, decimals: 1 },
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c20-2-3-d',
@@ -41,11 +39,12 @@ const video: Explainer = {
         { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['P_2 = \\dfrac{P_1V_1}{V_2} = \\dfrac{210 \\times 8.4}{5.2}', '\\phantom{P_2} = 339.23\\ldots', 'P_2 = 339\\ \\text{kPa}'] },
       ],
       lines: [
-        { say: 'A gas in a cylinder with a movable piston is at two hundred ten kilopascals, with a volume of eight point four litres. At the same temperature, what pressure would make its volume five point two litres? Give the pressure to the nearest whole number.', show: ['q', 'c.a-box', 'c.a-piston', 'c.a-p', 'c.a-l'] },
-        { say: 'First, the direction. The volume gets smaller, so the pressure must rise above two hundred ten kilopascals.', show: ['c.b-box', 'c.b-piston', 'c.b-push', 'c.b-p', 'c.b-l'] },
+        { say: 'A gas in a cylinder with a movable piston is at two hundred ten kilopascals, with a volume of eight point four litres. At the same temperature, what pressure would make its volume five point two litres? Give the pressure to the nearest whole number.', show: ['q', 'c', 'c.gauge', 'c.volume'] },
+        { say: 'First, the direction. The volume gets smaller, so the pressure must rise above two hundred ten kilopascals.' },
         { say: 'Solve Boyle’s law for P two: P two equals P one V one over V two. That is two hundred ten times eight point four, over five point two.', caption: 'Solve Boyle’s law for P₂: P₂ = P₁V₁/V₂. That is 210 × 8.4, over 5.2.', show: 'm.0', focus: 'm.0' },
         { say: 'The calculator shows three hundred thirty-nine point two three, and so on.', show: 'm.1', focus: 'm.1' },
         { say: 'To the nearest whole number, the new pressure is three hundred thirty-nine kilopascals. It is higher than before, as expected.', show: 'm.2', focus: 'm.2' },
+        { say: 'In the cylinder, push the piston in to five point two litres, and the gauge climbs to three hundred thirty-nine kilopascals.', play: 'c.push', focus: ['c.gauge', 'c.volume'] },
       ],
     },
     {

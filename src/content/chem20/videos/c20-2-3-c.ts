@@ -1,18 +1,16 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { gasBox, tag } from './lib/c20-2a-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// The worked example: 6.0 L at 120 kPa, then the pressure doubles to 240 kPa.
-const cylinder = figure(
-  'c',
-  [
-    gasBox({ name: 'a', at: [0, 0], w: 3.6, h: 4.8, count: 7, r: 0.24, speed: 0, seed: 61, top: 'piston', walls: 5.8 }),
-    tag('a-l', [1.8, -0.3], '\\begin{gathered}120\\ \\text{kPa}\\\\ 6.0\\ \\text{L}\\end{gathered}', { place: 'below', group: 'a-p' }),
-    gasBox({ name: 'b', at: [5.4, 0], w: 3.6, h: 2.4, count: 7, r: 0.24, speed: 0, seed: 62, top: 'piston', walls: 5.8 }),
-    tag('b-l', [7.2, -0.3], '\\begin{gathered}240\\ \\text{kPa}\\\\ V_2 = {?}\\end{gathered}', { place: 'below', group: 'b-p' }),
-  ],
-  440,
-);
+// The worked example (simulated, src/video/particles.ts): 6.0 L at 120 kPa, pushed in until the
+// pressure doubles to 240 kPa, when the volume reads 3.00 L.
+const cylinder: ParticlesEl = {
+  kind: 'particles',
+  id: 'c',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 10, temp: 1.6, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }] }],
+  clips: { push: { phases: [{ dur: 5, lid: { b: 0.5 } }] } },
+  gauge: { box: 'b', start: 120 },
+  volume: { box: 'b', start: 6, decimals: 2 },
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c20-2-3-c',
@@ -65,10 +63,11 @@ const video: Explainer = {
         { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['V_2 = \\dfrac{P_1V_1}{P_2} = \\dfrac{120 \\times 6.0}{240}', '\\phantom{V_2} = 3.00\\ \\text{L}'] },
       ],
       lines: [
-        { say: 'A gas in a cylinder with a movable piston has a volume of six point zero litres at one hundred twenty kilopascals. The pressure changes to two hundred forty kilopascals, while the temperature stays the same. What is the new volume, to the nearest hundredth?', show: ['q', 'c.a-box', 'c.a-piston', 'c.a-p', 'c.a-l'] },
-        { say: 'First, predict. The pressure has doubled, so the volume should halve, to about three litres.', show: ['c.b-box', 'c.b-piston', 'c.b-p', 'c.b-l'] },
+        { say: 'A gas in a cylinder with a movable piston has a volume of six point zero litres at one hundred twenty kilopascals. The pressure changes to two hundred forty kilopascals, while the temperature stays the same. What is the new volume, to the nearest hundredth?', show: ['q', 'c', 'c.gauge', 'c.volume'] },
+        { say: 'First, predict. The pressure has doubled, so the volume should halve, to about three litres.' },
         { say: 'V two equals P one V one over P two: one hundred twenty times six point zero, over two hundred forty.', caption: 'V₂ = P₁V₁/P₂: 120 × 6.0, over 240.', show: 'm.0', focus: 'm.0' },
         { say: 'That is three point zero zero litres. The pressure went up, so the volume went down, just as predicted.', show: 'm.1', focus: 'm.1' },
+        { say: 'Watch the cylinder check it. Push the piston in until the gauge reads two hundred forty kilopascals, and the volume is three point zero zero litres.', play: 'c.push', focus: ['c.gauge', 'c.volume'] },
       ],
     },
     {
