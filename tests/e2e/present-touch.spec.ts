@@ -79,16 +79,16 @@ test('on a touch screen the presentation stays put, panels still scroll, and a p
   await expect(page.locator('html')).toHaveClass(/screen-lock/);
 
   /** Sends a one-finger touch to the element at a point; true when the page cancelled it. */
-  const touch = (type: 'touchstart' | 'touchmove' | 'touchend', x: number, y: number, id = 1) =>
+  const touch = (type: 'touchstart' | 'touchmove' | 'touchend', x: number, y: number, id = 1, radius = 12) =>
     page.evaluate(
-      ([type, x, y, id]) => {
+      ([type, x, y, id, radius]) => {
         const target = document.elementFromPoint(x as number, y as number)!;
-        const t = new Touch({ identifier: id as number, target, clientX: x as number, clientY: y as number });
+        const t = new Touch({ identifier: id as number, target, clientX: x as number, clientY: y as number, radiusX: radius as number, radiusY: radius as number });
         const e = new TouchEvent(type as string, { touches: type === 'touchend' ? [] : [t], changedTouches: [t], bubbles: true, cancelable: true });
         target.dispatchEvent(e);
         return e.defaultPrevented;
       },
-      [type, x, y, id] as const,
+      [type, x, y, id, radius] as const,
     );
   const pen = (type: 'pointerdown' | 'pointerup', x: number, y: number) =>
     page.evaluate(([type, x, y]) => document.elementFromPoint(x as number, y as number)!.dispatchEvent(new PointerEvent(type as string, { pointerType: 'pen', clientX: x as number, clientY: y as number, bubbles: true })), [type, x, y] as const);
@@ -107,9 +107,28 @@ test('on a touch screen the presentation stays put, panels still scroll, and a p
   expect(await touch('touchstart', nx, ny, 2)).toBe(true);
   expect(await touch('touchend', nx, ny, 2)).toBe(true);
   await pen('pointerup', sx + 30, sy);
-  await page.waitForTimeout(900);
+  await page.waitForTimeout(1600);
   expect(await touch('touchstart', nx, ny, 3)).toBe(false);
   expect(await touch('touchend', nx, ny, 3)).toBe(false);
+
+  // With the pencil lifted, a hand moving on can still brush a button. The broad side of a hand
+  // presses nothing, nor do two contacts side by side, nor a hand that rests; a fingertip does.
+  expect(await touch('touchstart', nx, ny, 5, 45)).toBe(true);
+  expect(await touch('touchend', nx, ny, 5, 45)).toBe(true);
+  expect(await touch('touchstart', nx - 60, ny, 6)).toBe(false);
+  expect(await touch('touchstart', nx, ny, 7)).toBe(true);
+  expect(await touch('touchend', nx - 60, ny, 6)).toBe(true);
+  expect(await touch('touchend', nx, ny, 7)).toBe(true);
+  expect(await touch('touchstart', nx, ny, 8)).toBe(false);
+  await page.waitForTimeout(800);
+  expect(await touch('touchend', nx, ny, 8)).toBe(true);
+  expect(await touch('touchstart', nx, ny, 9)).toBe(false);
+  expect(await touch('touchend', nx, ny, 9)).toBe(false);
+
+  // The drawing log, for a device where the cause of lost writing cannot be seen from outside.
+  await page.getByRole('button', { name: 'Slide settings' }).click();
+  await expect(page.getByRole('button', { name: 'Copy drawing log' })).toBeVisible();
+  await page.keyboard.press('Escape');
 
   // The slide overview is longer than the screen and still scrolls under a finger.
   await page.keyboard.press('o');
