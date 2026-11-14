@@ -45,12 +45,13 @@ function gradesOf(subject: string, curriculum?: string) {
 }
 /**
  * The first level a student can say they are at: the grade of the subject's youngest course
- * (Grade 5 for mathematics and English), and a year before it for chemistry, which starts at Grade 10.
+ * (Grade 5 for mathematics and English), and a year before it for chemistry and physics, whose first
+ * courses start from the basics.
  */
 const firstGrade = (subject: string) => {
   const grades = COURSES.filter((c) => c.subject === subject).map((c) => c.grade);
   const youngest = grades.length ? Math.min(...grades) : 5;
-  return subject === 'Chemistry' ? youngest - 1 : youngest;
+  return subject === 'Chemistry' || subject === 'Physics' ? youngest - 1 : youngest;
 };
 
 /** The learner's time zone, for a first guess at where they go to school. */
@@ -190,7 +191,7 @@ function About({ initial, saved, onDone }: { initial: PlacementAnswers | null; s
   const [calculus, setCalculus] = useState<boolean | null>(initial?.calculus ?? null);
   const [feeling, setFeeling] = useState<Feeling | null>(initial?.feeling ?? null);
   const [support, setSupport] = useState(initial?.support ?? false);
-  // Plans, calculus and how it feels choose between mathematics courses; chemistry and English go by the grade alone.
+  // Plans, calculus and how it feels choose between mathematics courses; chemistry, physics and English go by the grade alone.
   const maths = subject === 'Mathematics';
   const system = curriculumById(curriculum);
   const years = system ? yearsFor(system, firstGrade(subject)) : [];
@@ -214,7 +215,7 @@ function About({ initial, saved, onDone }: { initial: PlacementAnswers | null; s
       <CardBody className="space-y-7">
         {SUBJECTS.length > 1 && (
           <Question label="What do you want to study?">
-            <div className={cn('grid grid-cols-2 gap-2', SUBJECTS.length > 2 ? 'sm:w-[34rem] sm:grid-cols-3' : 'sm:w-96')}>
+            <div className={cn('grid grid-cols-2 gap-2', SUBJECTS.length > 3 ? 'sm:w-[40rem] sm:grid-cols-4' : SUBJECTS.length > 2 ? 'sm:w-[34rem] sm:grid-cols-3' : 'sm:w-96')}>
               {SUBJECTS.map((s) => (
                 <Choice key={s} selected={subject === s} onClick={() => chooseSubject(s)}>
                   {s}

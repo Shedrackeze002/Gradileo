@@ -16,7 +16,7 @@ export default function TermsPage() {
       intro={
         <p>
           These terms explain the rules for using Gradileo (gradileo.com), an online, mastery-based learning platform for teachers and learners anywhere
-          in the world, covering mathematics and English from Grade 5 to Grade 12 and chemistry from Grade 10 to Grade 12.
+          in the world, covering mathematics and English from Grade 5 to Grade 12, chemistry from Grade 10 to Grade 12 and physics in Grade 10.
           By creating an account or using Gradileo, you agree to these terms and to our{' '}
           <Link className="text-brand hover:underline" to="/privacy">
             Privacy Policy

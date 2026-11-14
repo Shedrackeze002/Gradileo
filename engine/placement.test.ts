@@ -23,7 +23,7 @@ describe('course placement', () => {
   });
 
   it('recommends a course in the subject the student chose', () => {
-    expect(SUBJECTS).toEqual(['Mathematics', 'Chemistry', 'English']);
+    expect(SUBJECTS).toEqual(['Mathematics', 'Chemistry', 'Physics', 'English']);
     for (const subject of SUBJECTS)
       for (const grade of [5, 9, 10, 11, 12]) {
         const r = recommendCourse({ subject, grade, plan: 'university-stem' });
@@ -41,6 +41,10 @@ describe('course placement', () => {
     expect(recommendCourse({ subject: 'Chemistry', grade: 11 })).toMatchObject({ courseId: 'chem-20', prerequisite: 'chem-10' });
     expect(recommendCourse({ subject: 'Chemistry', grade: 12 })).toMatchObject({ courseId: 'chem-30', prerequisite: 'chem-20' });
     expect(recommendCourse({ subject: 'Mathematics', grade: 11, plan: 'university-stem' }).courseId).toBe('math-20-1');
+    // Physics has one course so far, Grade 10 Physics, which starts from the basics, so there is no check before it.
+    for (const grade of [9, 10, 11, 12]) expect(recommendCourse({ subject: 'Physics', grade })).toMatchObject({ courseId: 'phys-10', prerequisite: null, alternatives: [] });
+    expect(recommendCourse({ subject: 'Physics', grade: 10 }).reasons).toHaveLength(1);
+    expect(recommendCourse({ subject: 'Physics', grade: 12 }).reasons.join(' ')).toContain('Grade 11 and Grade 12 Physics are being written');
     // English runs Grades 5 to 12: each later course checks the one before's skills first.
     expect(recommendCourse({ subject: 'English', grade: 5 })).toMatchObject({ courseId: 'eng-5', prerequisite: null });
     expect(recommendCourse({ subject: 'English', grade: 6 })).toMatchObject({ courseId: 'eng-6', prerequisite: 'eng-5' });

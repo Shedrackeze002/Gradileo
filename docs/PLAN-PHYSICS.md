@@ -3,8 +3,12 @@
 The owner chose high school Physics, Grades 10 to 12, as the next subject on 14 November 2026,
 with one rule for its videos: show the idea happening, never narrate over still slides. The owner
 watched two sample videos and approved the animated style the same day. This is the plan of the
-courses, sent to the owner on 14 November 2026. **It is awaiting the owner's approval; nothing
-below is built until then.**
+courses, sent to the owner on 14 November 2026 and **approved by the owner the same day, with no
+changes**.
+
+**Progress.** Grade 10 Physics is built (14 November 2026): all five units, 27 lessons and 54
+skills, and Physics is a subject in the app. Its videos come next, unit by unit, then Grades 11
+and 12.
 
 ## Shape
 

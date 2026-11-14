@@ -63,6 +63,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'chem-10': 'chem-9',
   'chem-20': 'chem-10',
   'chem-30': 'chem-20',
+  'phys-10': null,
   'eng-5': null,
   'eng-6': 'eng-5',
   'eng-7': 'eng-6',
@@ -346,6 +347,13 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
     return rec('chem-20', ['Grade 11 Chemistry covers chemical bonding and the shapes of molecules, gases, solutions, acids and bases, and stoichiometry.'], [
       { courseId: 'chem-10', why: 'Start here if chemistry is new to you.' },
     ]);
+  }
+  if (a.subject === 'Physics') {
+    // Grade 10 Physics is the only physics course so far, and Grades 11 and 12 will build on it.
+    const reasons = ['Grade 10 Physics is the first physics course: describing motion, forces and Newton’s laws, work, energy and power, waves, sound and light, and electricity.'];
+    if (g < 10) reasons.push('It is usually taken in Grade 10, so some lessons will be a stretch; each one starts from the basics.');
+    if (g > 10) reasons.push('Grade 11 and Grade 12 Physics are being written, and both build on this course.');
+    return rec('phys-10', reasons);
   }
   // A US learner gets the Common Core course of their grade (Grade 6 to Precalculus).
   if (a.curriculum === 'us' && g >= 6) return usCourse(Math.min(12, g), a);
