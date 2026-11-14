@@ -302,7 +302,8 @@ export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clo
  * carries on from where the last one ended. Showing the element shows the tracks and bodies;
  * showing a part adds it: `velocity` (an arrow over each body), `readout` (speed and acceleration
  * under it), `net` (the net force), `bars` (a momentum bar for each body), `total` (a bar for
- * their total momentum), `graph` (a velocity-time or distance-time graph that draws itself as the bodies move), `clock` and `strobe` (a mark at each body's place at equal time steps),
+ * their total momentum), `graph` (a velocity-time or distance-time graph that draws itself as the
+ * bodies move), `clock` and `strobe` (a mark at each body's place at equal time steps),
  * `distance` (how far each body has travelled, with its path drawn under a single track) and
  * `displacement` (an arrow under a single track from where the body started to where it is now).
  * Emphasising a body's id makes it glow. See src/video/motion.ts.
