@@ -27,6 +27,7 @@ import { InkSurface } from '@/features/whiteboard/InkSurface.tsx';
 import { usePageLock } from '@/features/whiteboard/pageLock.ts';
 import { useScreenLock } from '@/features/whiteboard/screenLock.ts';
 import { InkToolbar, useInkTools } from '@/features/whiteboard/InkToolbar.tsx';
+import { inkLog, inkLogText } from '@/features/whiteboard/inkLog.ts';
 import { Whiteboard } from '@/features/whiteboard/Whiteboard.tsx';
 import { useLessonContent } from './LessonView.tsx';
 import { PresentTimer } from './PresentTimer.tsx';
@@ -260,6 +261,12 @@ export default function PresentMode() {
     keepPlace(keepKey, { slide: pos.id, step: pos.step, drawing, board: boardOpen, notes: ink });
   }, [keepKey, pos.id, pos.step, drawing, boardOpen, notes]);
   const note = (slide && notes[slide.id]) || inkDoc();
+  const noteStrokes = note.strokes.length;
+  const noteUndo = note.past.length;
+  const noteRedo = note.future.length;
+  useEffect(() => {
+    if (drawing) inkLog('slide ink', { slide: ix + 1, strokes: noteStrokes, undo: noteUndo, redo: noteRedo, mode: tools.mode, penOnly: tools.penOnly });
+  }, [drawing, ix, noteStrokes, noteUndo, noteRedo, tools.mode, tools.penOnly]);
   const editNote = useCallback((fn: (d: InkDoc) => InkDoc) => slide && setNotes((n) => ({ ...n, [slide.id]: fn(n[slide.id] ?? inkDoc()) })), [slide]);
   const [stageRef, scale] = useStageScale();
 
@@ -465,6 +472,19 @@ export default function PresentMode() {
                   label={<span className="text-sm">Students can ask questions</span>}
                   description={<span className="text-xs">From their own devices, while you present</span>}
                 />
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  className="w-full"
+                  onClick={() =>
+                    void navigator.clipboard.writeText(inkLogText()).then(
+                      () => toast({ kind: 'success', title: 'Drawing log copied', body: 'Paste it into a message to support. It holds no ink or text, only what the pencil and the buttons did.' }),
+                      () => toast({ kind: 'error', title: 'Could not copy the drawing log', body: 'Your browser did not allow copying.' }),
+                    )
+                  }
+                >
+                  Copy drawing log
+                </Button>
                 {demoApi() && presentation && (
                   <Button size="sm" variant="secondary" className="w-full" onClick={() => void demoApi()!.simulateClassQuestion(classId)}>
                     Ask a sample student question
