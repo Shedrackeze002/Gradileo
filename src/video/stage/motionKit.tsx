@@ -94,14 +94,14 @@ function joules(n: number, max: number): string {
  */
 export function EnergyBars({ el, state, x, y, w, opacity, total, stacked = false }: { el: MotionEl; state: MotionState; x: number; y: number; w: number; opacity: number; total: number; stacked?: boolean }) {
   if (!el.energy) return null;
-  const { bars, max, names } = el.energy;
+  const { bars, max, names, labels } = el.energy;
   const bodies = energyBodies(el);
   const rows = bodies.flatMap((b) =>
     bars.map((bar) => {
       const e = state.energy[b.id];
       const value = bar === 'total' ? e.kinetic + e.potential + e.heat : e[bar];
       const name = names?.[bar] ?? ENERGY[bar].name;
-      return { key: `${b.id}-${bar}`, bar, value, name: bodies.length > 1 ? `${b.label ?? b.id}: ${name.toLowerCase()}` : name };
+      return { key: `${b.id}-${bar}`, bar, value, name: bodies.length > 1 ? `${labels?.[b.id] ?? b.label ?? b.id}: ${name.toLowerCase()}` : name };
     }),
   );
   const labelW = stacked ? 0 : 290;

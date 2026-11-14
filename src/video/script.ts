@@ -368,9 +368,10 @@ export interface MotionEl {
    * energy is m × g × height, with the height measured from the ground of a drop or a lift (and
    * `g` given here), or from the zero of a curved track's points (with the path's own g). The
    * force named "Weight" is gravity: its work is the change in potential energy, and is not
-   * counted as work done on the body.
+   * counted as work done on the body. `names` renames a bar ("Energy supplied" for the work), and
+   * with several bodies `labels` names each one in front of its bars (its own label otherwise).
    */
-  energy?: { of?: string[]; max: number; bars: EnergyBar[]; g?: number; names?: Partial<Record<EnergyBar, string>> };
+  energy?: { of?: string[]; max: number; bars: EnergyBar[]; g?: number; names?: Partial<Record<EnergyBar, string>>; labels?: Record<string, string> };
   /** Seconds between strobe marks (0.5 by default). */
   strobe?: number;
   /** For the thumbnail: the clip to show, part way through. */
@@ -628,6 +629,7 @@ export function checkMotion(e: MotionEl): string[] {
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
   for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
   for (const id of e.energy?.of ?? []) if (!ids.has(id)) problems.push(`the energy bars name no body "${id}".`);
+  for (const id of Object.keys(e.energy?.labels ?? {})) if (!ids.has(id)) problems.push(`the energy bars label no body "${id}".`);
   if (e.energy && !(e.energy.max > 0)) problems.push('the energy bars need a largest energy above zero.');
   if (e.energy?.bars.includes('potential') && !e.path && !(e.vertical && (e.energy.g ?? 0) > 0)) problems.push('potential energy needs a curved track, or a drop or a lift with g given.');
   if (e.path) {

@@ -128,6 +128,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   const foot = 26;
   const BIG = 40;
   const beside = Boolean(el.graph ?? el.energy);
+  const heights = !up && Boolean(el.energy?.bars.includes('potential'));
   const cw = (beside ? w * 0.5 : w) / lanes.length;
   const S = (h - top - foot - 2 * BIG) / (el.span[1] - el.span[0]);
   // Where the foot of a body is when it has fallen `m` metres (or, in a lift, when it is `m` metres
@@ -154,11 +155,13 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
         )}
       </g>,
     );
-    const every = [1, 2, 5, 10, 20, 50, 100, 200, 500].find((n) => n * S >= 34) ?? 1000;
+    const every = [0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].find((n) => n * S >= 34) ?? 1000;
     for (let m = Math.ceil(el.span[0] / every) * every; m <= el.span[1] + 1e-9; m += every) {
-      out.push(<line key={`tick${li}-${m}`} x1={rx - 7} y1={Y(m)} x2={rx} y2={Y(m)} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
+      // A drop with a bar for potential energy is read by height, so its ruler counts up from the ground.
+      const at = heights ? el.span[1] - m : m;
+      out.push(<line key={`tick${li}-${m}`} x1={rx - 7} y1={Y(at)} x2={rx} y2={Y(at)} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
       out.push(
-        <text key={`num${li}-${m}`} x={rx - 12} y={Y(m)} fill={INK3} fontSize={15} textAnchor="end" dominantBaseline="central" style={{ fontFamily: FONT }}>
+        <text key={`num${li}-${m}`} x={rx - 12} y={Y(at)} fill={INK3} fontSize={15} textAnchor="end" dominantBaseline="central" style={{ fontFamily: FONT }}>
           {m + every > el.span[1] + 1e-9 ? `${m} m` : m}
         </text>,
       );
@@ -224,17 +227,24 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
     // balanced forces are two arrows of one length. Hundreds of newtons are written whole.
     const whole = mine.some((force) => Math.abs(force.n) >= 100);
     const newtons = (n: number) => (whole ? String(Math.round(n) + 0) : live(n));
+    const downward = (force: (typeof mine)[number]) => (up ? force.n < 0 : force.n > 0);
     for (const force of mine) {
       const size = Math.abs(force.n);
       const fc = TONES[force.tone ?? (force.drag || force.resist ? 'bad' : 'hyp')];
       const grow = force.drag ? 1 : easeOut(force.age / 0.35);
       const len = (force.drag ? size * fs : Math.max(12, size * fs)) * grow;
-      const down = up ? force.n < 0 : force.n > 0;
+      const down = downward(force);
       const y0 = down ? cy + r + 2 : cy - r - 3;
       const mid = Math.max(14, len / 2);
-      out.push(<Arrow key={`f-${b.id}-${force.name}`} x={cx} y={y0} len={down ? -len : len} axis="y" color={fc} />);
+      // Two forces the same way (weight and friction on a load being lifted) stand side by side,
+      // the first with its name on its left.
+      const same = mine.filter((other) => downward(other) === down);
+      const place = same.indexOf(force);
+      const fx = cx + (same.length > 1 ? (place - (same.length - 1) / 2) * 0.9 * r : 0);
+      const left = same.length > 1 && place === 0;
+      out.push(<Arrow key={`f-${b.id}-${force.name}`} x={fx} y={y0} len={down ? -len : len} axis="y" color={fc} />);
       out.push(
-        <Text key={`ft-${b.id}-${force.name}`} x={cx + 18} y={down ? y0 + mid : y0 - mid} anchor="start" color={fc} opacity={force.drag ? clamp01(len / 10) : clamp01(grow * 1.5)}>
+        <Text key={`ft-${b.id}-${force.name}`} x={fx + (left ? -18 : 18)} y={down ? y0 + mid : y0 - mid} anchor={left ? 'end' : 'start'} color={fc} opacity={force.drag ? clamp01(len / 10) : clamp01(grow * 1.5)}>
           {`${force.name} ${force.drag ? newtons(size) : short(size)} N`}
         </Text>,
       );

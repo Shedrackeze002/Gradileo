@@ -24,19 +24,25 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
   const track = trackOf(el.path!);
   const vs = el.velocityScale ?? 12;
 
-  // The bars keep their room from the start, so the track does not jump when they appear.
-  const barsH = energyRows(el) ? energyRows(el) * ENERGY_ROW + 30 : 0;
+  // The bars keep their room from the start, so the track does not jump when they appear: under a
+  // hill, which is wide, and beside a pendulum, which is tall.
+  const beside = Boolean(track.pivot) && energyRows(el) > 0;
+  const barsH = energyRows(el) && !beside ? energyRows(el) * ENERGY_ROW + 30 : 0;
+  const tw = beside ? w * 0.52 : w;
   // The track's box in metres: a hill stands on the level its heights are measured from.
   const xs = track.outline.map((q) => q[0]);
   const ys = [...track.outline.map((q) => q[1]), 0, ...(track.pivot ? [track.pivot[1]] : [])];
   const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
   // Room over the track for the body, its velocity arrow and the label over that.
+  // Under a pendulum, room for the velocity arrow and the speed under its bob.
   const head = track.pivot ? 34 : 120;
   const top = 44;
-  const foot = h - barsH - 30;
-  const S = Math.min((w - 150) / (x1 - x0), (foot - top - head) / (y1 - y0));
-  const X = (m: number) => w / 2 + (m - (x0 + x1) / 2) * S;
+  const foot = h - barsH - (track.pivot ? 96 : 30);
+  const S = Math.min((tw - 150) / (x1 - x0), (foot - top - head) / (y1 - y0));
+  const X = (m: number) => tw / 2 + (m - (x0 + x1) / 2) * S;
   const Y = (m: number) => foot - (m - y0) * S;
+  // The note of a phase sits over the track, or over the bars when they are beside it.
+  const noteX = beside ? tw + 150 : w / 2;
   const out: ReactElement[] = [];
 
   const label = el.lanes?.[0]?.label;
@@ -86,10 +92,14 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
     // How high the body is: from the level heights are measured from, up to where it touches the track.
     if (height > 0 && at.y > 0.02) {
       const side = at.x < (x0 + x1) / 2 ? -1 : 1;
+      // The length of the line that can be seen: a pendulum's bob covers the top of it. The label
+      // sits half way down it, or near the foot of a hill, clear of the track; it fades when the
+      // line is too short to hold it.
+      const seen = at.y * S - (track.pivot ? r : 0);
       out.push(
         <g key={`h-${b.id}`} opacity={height}>
           <line x1={tx} y1={ty} x2={tx} y2={Y(0)} stroke={INK2} strokeWidth={2} strokeDasharray="6 6" />
-          <Text x={tx + side * 12} y={(ty + Y(0)) / 2} anchor={side < 0 ? 'end' : 'start'} size={20} color={INK2} opacity={clamp01((at.y * S) / 30)}>
+          <Text x={tx + side * 12} y={track.pivot ? Y(0) - seen / 2 : Y(0) - 18} anchor={side < 0 ? 'end' : 'start'} size={20} color={INK2} opacity={clamp01((seen - 26) / 20)}>
             {`h = ${live(at.y)} m`}
           </Text>
         </g>,
@@ -118,26 +128,43 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
       </g>,
     );
 
-    // The velocity arrow rides over the body, along the track, with the speed over it.
+    // The velocity arrow rides over the body, along the track, with the speed over it; under a
+    // pendulum's bob instead, clear of its string.
     if (vel > 0) {
       const moving = Math.abs(s.v) >= 0.05;
-      const [ax, ay] = [cx - at.sin * (r + 20), cy - at.cos * (r + 20)];
+      const side = track.pivot ? -1 : 1;
+      const [ax, ay] = [cx - side * at.sin * (r + 20), cy - side * at.cos * (r + 20)];
       if (moving) out.push(<Arrow key={`v-${b.id}`} x={ax - Math.sign(s.v) * at.cos * Math.min(40, (Math.abs(s.v) * vs) / 2)} y={ay + Math.sign(s.v) * at.sin * Math.min(40, (Math.abs(s.v) * vs) / 2)} len={s.v * vs} turn={tilt} color={VELOCITY} weight={6} opacity={vel} />);
+      // A bob at rest at the end of its swing says so on its inner side, level with it.
+      const inner = at.sin > 0 ? -1 : 1;
       out.push(
-        <Text key={`vt-${b.id}`} x={cx - at.sin * (r + 50)} y={cy - at.cos * (r + 50) - (moving ? 0 : -24)} color={VELOCITY} opacity={vel}>
-          {moving ? `${el.speedWord ? 'speed' : 'v'} = ${live(Math.abs(s.v))} m/s` : 'at rest'}
-        </Text>,
+        track.pivot && !moving ? (
+          <Text key={`vt-${b.id}`} x={cx + inner * (r + 14)} y={cy} anchor={inner < 0 ? 'end' : 'start'} color={VELOCITY} opacity={vel}>
+            at rest
+          </Text>
+        ) : (
+          <Text key={`vt-${b.id}`} x={cx - side * at.sin * (r + 50)} y={cy - side * at.cos * (r + 50) + (moving ? 0 : 24)} color={VELOCITY} opacity={vel}>
+            {moving ? `${el.speedWord ? 'speed' : 'v'} = ${live(Math.abs(s.v))} m/s` : 'at rest'}
+          </Text>
+        ),
       );
     }
   }
 
-  if (el.energy && (energy > 0 || total > 0)) out.push(<EnergyBars key="energy" el={el} state={state} x={0} y={h - barsH + 26} w={w} opacity={energy} total={total} />);
+  if (el.energy && (energy > 0 || total > 0))
+    out.push(
+      beside ? (
+        <EnergyBars key="energy" el={el} state={state} x={tw + 30} y={Math.max(top, (top + foot - energyRows(el) * 62) / 2)} w={w - tw - 30} opacity={energy} total={total} stacked />
+      ) : (
+        <EnergyBars key="energy" el={el} state={state} x={0} y={h - barsH + 26} w={w} opacity={energy} total={total} />
+      ),
+    );
   if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
   if (state.note)
     out.push(
       <g key="note">
-        <rect x={w / 2 - 120} y={0} width={240} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
-        <Text x={w / 2} y={19.5} size={19} color="#fff">
+        <rect x={noteX - 120} y={0} width={240} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
+        <Text x={noteX} y={19.5} size={19} color="#fff">
           {state.note}
         </Text>
       </g>,
