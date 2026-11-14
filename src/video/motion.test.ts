@@ -131,6 +131,12 @@ describe('motion: collisions conserve momentum', () => {
     expect(clipSeconds(e, 'hit')).toBeGreaterThan(5);
   });
 
+  it('can leave the forces of a full-speed collision undrawn, and they still act', () => {
+    const e = el({ bodies: [a, b], clips: { hit: { phases: collision(a, b, { type: 'stick', after: 1, hidden: true }) } } });
+    expect(motionAt(e, [['hit', 1.5]]).forces.every((f) => f.hidden)).toBe(true);
+    expect(motionAt(e, [['hit', clipSeconds(e, 'hit')]]).bodies.b.v).toBeCloseTo(1);
+  });
+
   it('refuses a body that never catches up', () => {
     expect(() => collision({ ...a, v: 0 }, b, { type: 'stick', after: 1 })).toThrow(/catch up/);
   });

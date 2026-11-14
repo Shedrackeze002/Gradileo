@@ -255,6 +255,8 @@ export interface MotionForce {
    * it, so a body slowed to rest stays at rest.
    */
   resist?: boolean;
+  /** Acts, but no arrow is drawn (the forces of a collision too quick to read at full speed). */
+  hidden?: boolean;
 }
 
 /** A stretch of a clip during which the same forces act. */

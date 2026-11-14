@@ -38,7 +38,7 @@ const two: MotionEl = {
 
 /** A collision on one track, in three clips: the approach, the touch (slowed if asked) and after. */
 function crash(a: MotionBody, b: MotionBody, o: { type: 'stick' | 'bounce'; after: number; slow?: number; max: number; height?: number }): MotionEl {
-  const [approach, touch, away] = collision(a, b, { type: o.type, after: o.after, slow: o.slow, note: o.slow ? 'Slow motion' : undefined, names: ['Force on blue', 'Force on orange'] });
+  const [approach, touch, away] = collision(a, b, { type: o.type, after: o.after, slow: o.slow, note: o.slow ? 'Slow motion' : undefined, names: ['Force on blue', 'Force on orange'], hidden: !o.slow });
   return {
     kind: 'motion',
     id: 'sim',
@@ -63,7 +63,7 @@ const orange = (mass: number, x: number): MotionBody => ({ id: 'orange', shape: 
 
 // Blue, 2 kg at 3 m/s, meets orange, 4 kg at rest: they couple and roll on at 1 m/s.
 const couple = () => crash(blue(2, 3), orange(4, 5.6), { type: 'stick', after: 2.6, max: 7.5 });
-const coupleSlow = () => crash(blue(2, 3, 2.4), orange(4, 5.6), { type: 'stick', after: 2.4, slow: 110, max: 7.5 });
+const coupleSlow = () => crash(blue(2, 3, 2.4), orange(4, 5.6), { type: 'stick', after: 2.4, slow: 165, max: 7.5 });
 // Equal carts, 1 kg each: blue stops and orange leaves with all the momentum.
 const bounce = () => crash(blue(1, 4), orange(1, 4.6), { type: 'bounce', after: 1, max: 5 });
 // The "Your turn" collision: 3 kg at 4 m/s meets 1 kg at rest, and they couple at 3 m/s.
@@ -90,7 +90,7 @@ const video: Explainer = {
     {
       chapter: 'What momentum is',
       layout: 'center',
-      main: [{ kind: 'text', id: 'def', size: 'lg', md: '[[theta:Momentum]] is **mass × velocity**: $p = m \\times v$, measured in **kg·m/s**.' }, one],
+      main: [{ kind: 'text', id: 'def', size: 'lg', md: '[[theta:Momentum]] is **mass × velocity**: $p = m \\times v$' }, one],
       lines: [
         { say: 'Momentum is how much motion an object has. To find it, multiply the mass by the velocity.', show: 'def' },
         { say: 'This cart has a mass of two kilograms, and it rolls to the right at three metres per second.', show: ['sim', 'sim.velocity'], play: 'sim.roll', playDelay: 1.2 },

@@ -176,6 +176,8 @@ export interface CollisionOptions {
   note?: string;
   /** Names for the two forces while they touch ("A on B", "B on A"). */
   names?: [onFirst: string, onSecond: string];
+  /** Draw no arrows for the forces: at full speed they would only flash for a few frames. */
+  hidden?: boolean;
 }
 
 /**
@@ -206,8 +208,8 @@ export function collision(a: MotionBody, b: MotionBody, o: CollisionOptions): Mo
       contact: [a.id, b.id],
       note: o.note,
       forces: [
-        { on: a.id, name: onA, n: -force, tone: 'bad' as const },
-        { on: b.id, name: onB, n: force, tone: 'good' as const },
+        { on: a.id, name: onA, n: -force, tone: 'bad' as const, ...(o.hidden ? { hidden: true } : {}) },
+        { on: b.id, name: onB, n: force, tone: 'good' as const, ...(o.hidden ? { hidden: true } : {}) },
       ],
     },
     { dur: o.after },

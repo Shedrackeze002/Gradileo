@@ -201,7 +201,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const g = ground(b.lane ?? 0);
     const dir = Math.sign(s.v);
     // No lines where a force arrow leaves the back of the body (the push of a collision).
-    const clearBack = !state.forces.some((f) => f.on === b.id && f.axis !== 'y' && !f.resist && Math.sign(f.n) === -dir);
+    const clearBack = !state.forces.some((f) => f.on === b.id && f.axis !== 'y' && !f.resist && !f.hidden && Math.sign(f.n) === -dir);
     const back = dir > 0 ? k.left - 8 : k.right + 8;
     const len = Math.min(90, Math.abs(s.v) * 11);
     const c = tone(b);
@@ -287,7 +287,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   const side: Record<string, number> = {};
   for (const f of state.forces) {
     const b = el.bodies.find((q) => q.id === f.on);
-    if (!b || Math.abs(f.n) < 1e-9) continue;
+    if (!b || f.hidden || Math.abs(f.n) < 1e-9) continue;
     const k = box(b);
     const g = ground(b.lane ?? 0);
     const c = TONES[f.tone ?? (f.resist ? 'bad' : 'opp')];
