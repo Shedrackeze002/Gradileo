@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { inkLog } from './inkLog.ts';
 
 /**
  * Present mode on a touch screen, above all an iPad with a pencil, where the teacher writes on
@@ -8,13 +9,23 @@ import { useEffect } from 'react';
  *    still scrolls under one finger;
  *  - a palm presses nothing. While the pencil writes, and for a moment after it lifts, any other
  *    touch is a hand: it cannot press the toolbar, Next or anything else it rests on. A hand that
- *    was already resting on the screen when the pencil lands counts as one too.
+ *    was already resting on the screen when the pencil lands counts as one too. So does a contact
+ *    too broad for a fingertip, a touch that lands beside another one (the side of a hand lands
+ *    as two or three), and one that stays down too long to be a tap. Without these, a hand moving to
+ *    the next line with the pencil lifted could press Undo, Clear or another tool on its way, and
+ *    the writing vanished.
  * The pencil itself is told apart by Safari's `touchType` ("stylus"), or elsewhere by landing
  * where the pen's own pointer event just did.
  */
 
 /** How long after the pencil lifts a touch is still taken for the hand that held it. */
-export const PALM_MS = 800;
+export const PALM_MS = 1500;
+/** A contact with radii whose product is above this is too broad for a fingertip (CSS pixels). */
+export const PALM_RADII = 35 * 35;
+/** A touch landing this close to another that is still down is part of the same hand (CSS pixels). */
+export const HAND_SPAN = 220;
+/** A touch that stays down longer than this is a resting hand, not a tap. */
+export const REST_MS = 700;
 
 let holders = 0;
 let release: (() => void) | null = null;
@@ -57,16 +68,19 @@ export class PalmGuard {
   private penDown = false;
   private penAt = -Infinity;
   private penPoint: { x: number; y: number; t: number } | null = null;
-  /** Touches on the screen that are not the pen. */
-  private live = new Set<number>();
+  /** Touches on the screen that are not the pen, with when and where each landed. */
+  private live = new Map<number, { t: number; x: number; y: number }>();
   private palms = new Set<number>();
+  /** Whether a pencil has been used at all: only then are touches judged by more than their timing. */
+  private penSeen = false;
 
   pen(type: string, x: number, y: number, now: number) {
     this.penAt = now;
+    this.penSeen = true;
     if (type === 'pointerdown') {
       this.penDown = true;
       this.penPoint = { x, y, t: now };
-      for (const id of this.live) this.palms.add(id);
+      for (const id of this.live.keys()) this.palms.add(id);
     } else if (type === 'pointerup' || type === 'pointercancel') this.penDown = false;
   }
 
@@ -77,19 +91,33 @@ export class PalmGuard {
     return !!p && now - p.t < 120 && Math.abs(t.clientX - p.x) < 4 && Math.abs(t.clientY - p.y) < 4;
   }
 
-  /** A touch starts; true when it is a palm. */
-  start(id: number, now: number): boolean {
+  /** A touch starts; true when it is a palm. `radii` is the product of its two contact radii. */
+  start(id: number, now: number, radii = 0, x = NaN, y = NaN): boolean {
     // A touch whose end never came may have left its number behind; a new touch starts afresh.
     this.palms.delete(id);
-    this.live.add(id);
+    this.live.delete(id);
     if (this.penDown || now - this.penAt < PALM_MS) this.palms.add(id);
+    else if (this.penSeen && radii > PALM_RADII) this.palms.add(id);
+    else if (this.penSeen) {
+      // Contacts side by side are one hand, every one of them. (A finger of the other hand, far
+      // from the resting one, still presses.)
+      for (const [other, o] of this.live) {
+        if (Math.hypot(o.x - x, o.y - y) < HAND_SPAN) {
+          this.palms.add(id);
+          this.palms.add(other);
+        }
+      }
+    }
+    this.live.set(id, { t: now, x, y });
     return this.palms.has(id);
   }
 
   /** A touch ends; true when it was a palm, so what it rests on must not be pressed. */
-  end(id: number): boolean {
+  end(id: number, now = -Infinity): boolean {
+    const since = this.live.get(id);
     this.live.delete(id);
-    return this.palms.delete(id);
+    const rested = this.penSeen && since !== undefined && now - since.t > REST_MS;
+    return this.palms.delete(id) || rested;
   }
 }
 
@@ -108,7 +136,7 @@ function install(): () => void {
     let palm = false;
     for (const t of Array.from(e.changedTouches)) {
       const pen = guard.isPen(t as Touch & { touchType?: string }, now);
-      if (!pen && guard.start(t.identifier, now)) palm = true;
+      if (!pen && guard.start(t.identifier, now, (t.radiusX || 0) * (t.radiusY || 0), t.clientX, t.clientY)) palm = true;
       else if (canScroll(t.target)) scrolls.add(t.identifier);
     }
     // Cancelling the start stops the palm from scrolling the page or pressing a button.
@@ -122,9 +150,15 @@ function install(): () => void {
   };
   const onEnd = (e: TouchEvent) => {
     let palm = false;
+    const now = performance.now();
     for (const t of Array.from(e.changedTouches)) {
-      if (guard.end(t.identifier)) palm = true;
-      scrolls.delete(t.identifier);
+      const scrolled = scrolls.delete(t.identifier);
+      const stylus = (t as Touch & { touchType?: string }).touchType === 'stylus';
+      // A finger scrolling a panel stays down a long time and is no palm.
+      const hand = guard.end(t.identifier, scrolled ? -Infinity : now) && !stylus;
+      if (hand) palm = true;
+      const button = t.target instanceof Element ? t.target.closest('button') : null;
+      if (button) inkLog(e.type === 'touchend' ? 'touch off a button' : 'touch cancelled on a button', { button: button.getAttribute('aria-label') ?? button.textContent, by: stylus ? 'pencil' : 'hand', blocked: hand, radius: `${Math.round(t.radiusX || 0)}x${Math.round(t.radiusY || 0)}` });
     }
     // A hand that rested on a button before the pencil landed must not press it when it lifts.
     if (palm && e.type === 'touchend' && e.cancelable) e.preventDefault();
