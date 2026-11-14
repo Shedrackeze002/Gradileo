@@ -403,10 +403,12 @@ export interface ParticleBox {
    * gives the pair that much extra energy (a reaction that gives out heat). With `free`, each of
    * the two first lets go of the atoms it was bonded to, and those become the kinds in `free`
    * (the first for the `a` atom's old partners, the second for the `b` atom's; `null` keeps that
-   * atom's bonds): so a hydrogen molecule meeting an oxygen molecule can swap partners. Atoms are never made or lost: only
+   * atom's bonds): so a hydrogen molecule meeting an oxygen molecule can swap partners. With
+   * `carry` too, the `a` atom's old partners stay with it, joined to the `b` atom instead (bent,
+   * like water): a hydrogen molecule that hits an oxygen atom becomes one water molecule. Atoms are never made or lost: only
    * joined differently, so the mass is the same after.
    */
-  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; energy?: number; heat?: number }>;
+  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; energy?: number; heat?: number }>;
   /**
    * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
    * made of these atoms (kinds, by place), the first bonded to each of the others round it. A

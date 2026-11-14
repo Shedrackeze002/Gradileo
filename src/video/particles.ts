@@ -262,7 +262,7 @@ interface Bond {
 const BOND_K = 150;
 const BOND_R = 0.85;
 /** How fast a box warmed by its reactions cools back to its surroundings (a fraction each unit of time). */
-const COOL = 0.08;
+const COOL = 0.03;
 /** How close two particles must come to react (a multiple of their mean diameter). */
 const REACT_R = 1.6;
 
@@ -290,8 +290,10 @@ function react(s: BoxSim) {
       if (0.25 * Math.max(0, closing) ** 2 < (r.energy ?? 0)) continue;
       // Two atoms of one molecule never react with each other.
       if (s.bonded.has(Math.min(i, j) * n + Math.max(i, j))) continue;
+      const carried: number[] = [];
       if (r.free) {
-        // Each lets go of its old partners, which become the reaction's `free` kinds.
+        // Each lets go of its old partners, which become the reaction's `free` kinds; with
+        // `carry`, the `a` atom's partners come along, joined to the `b` atom instead.
         s.bonds = s.bonds.filter((bd) => {
           const at: number = bd.i === i || bd.j === i ? 0 : bd.i === j || bd.j === j ? 1 : -1;
           if (at < 0 || r.free![at] === null) return true;
@@ -299,6 +301,7 @@ function react(s: BoxSim) {
           if (bd.show) {
             kind[other] = r.free![at]!;
             used.add(other);
+            if (at === 0 && r.carry) carried.push(other);
           }
           s.bonded.delete(Math.min(bd.i, bd.j) * n + Math.max(bd.i, bd.j));
           return false;
@@ -307,6 +310,12 @@ function react(s: BoxSim) {
       kind[i] = r.to[0];
       kind[j] = r.to[1];
       if (r.join) addBond(s, i, j, true);
+      for (const c of carried) {
+        addBond(s, j, c, true);
+        // A hidden bond bends the new molecule the way water is bent.
+        const len = s.bonds[s.bonds.length - 1].len;
+        addBond(s, i, c, false, 2 * len * Math.sin((52.5 * Math.PI) / 180));
+      }
       if (r.heat) {
         // The box warms by `heat` (or cools, if it is below zero), and the energy given out sends
         // the pair off faster, in random directions.

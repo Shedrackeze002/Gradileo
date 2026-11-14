@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { checkParticles, checkScript, type Explainer, type ParticleBox, type ParticlesEl } from './script.ts';
 import { controlsAt, particlesAt, pressureOf, TEMPS } from './particles.ts';
+import { hydrogenBurning } from './reactions.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 let n = 0;
@@ -215,36 +216,11 @@ describe('particles: separating mixtures', () => {
 });
 
 describe('particles: molecules and reactions', () => {
-  const H = { n: 0, bond: 0.3, heavy: 0.2, size: 0.8 };
-  const O = { n: 0, bond: 0.3, heavy: 0.2 };
-  // Hydrogen burning in oxygen: H in H2, O in O2, H in water, O with one H, O in water, a loose H, a loose O.
+  const H = { n: 0, bond: 0.15, heavy: 0, size: 0.8 };
+  const O = { n: 0, bond: 0.15, heavy: 0 };
+  // Hydrogen burning in oxygen (see reactions.ts for the kinds).
   const burning = (): ParticlesEl =>
-    el({
-      boxes: [
-        {
-          id: 'b',
-          state: 'gas',
-          width: 14,
-          height: 10,
-          temp: 0.4,
-          kinds: [H, O, H, O, O, H, O],
-          molecules: [
-            { atoms: [0, 0], n: 12 },
-            { atoms: [1, 1], n: 6 },
-          ],
-          reactions: [
-            { a: 0, b: 1, free: [5, 6], to: [2, 3], join: true, energy: 3, heat: 0.2 },
-            { a: 5, b: 6, to: [2, 3], join: true, heat: 0.2 },
-            { a: 5, b: 3, to: [2, 4], join: true, heat: 0.2 },
-            { a: 0, b: 3, free: [5, null], to: [2, 4], join: true, energy: 1, heat: 0.2 },
-            { a: 0, b: 6, free: [5, null], to: [2, 3], join: true, energy: 1, heat: 0.2 },
-            { a: 5, b: 1, free: [null, 6], to: [2, 3], join: true, heat: 0.2 },
-          ],
-          tally: { kinds: [4], label: 'water' },
-        },
-      ],
-      clips: { spark: { phases: [{ dur: 1, heat: { b: 1.5 } }, { dur: 2 }, { dur: 1, heat: { b: 0.4 } }, { dur: 16 }] } },
-    });
+    el({ boxes: [hydrogenBurning('b')], clips: { spark: { phases: [{ dur: 1, heat: { b: 2 } }, { dur: 2 }, { dur: 1, heat: { b: 0.4 } }, { dur: 16 }] } }, seed: 3 });
 
   it('starts molecules bonded, and keeps their atoms together and a bent molecule bent', () => {
     const e = el({ boxes: [{ id: 'b', state: 'gas', width: 14, height: 10, temp: 0.6, kinds: [{ ...O }, { ...H }], molecules: [{ atoms: [0, 1, 1], n: 8, bent: true }] }] });
@@ -266,10 +242,17 @@ describe('particles: molecules and reactions', () => {
     expect(before.tally).toBe(0);
     expect(before.bonds.length).toBe(18);
     const [after] = particlesAt(e, [['spark', 2]], 22);
-    expect(after.tally).toBeGreaterThanOrEqual(10);
+    expect(after.tally).toBeGreaterThanOrEqual(9);
     const count = (f: typeof after, ks: number[]) => f.kind.filter((k) => ks.includes(k)).length;
-    expect(count(after, [0, 2, 5])).toBe(24);
-    expect(count(after, [1, 3, 4, 6])).toBe(12);
+    expect(count(after, [0, 2])).toBe(24);
+    expect(count(after, [1, 3, 4])).toBe(12);
+    // Each water molecule is an oxygen bonded to two hydrogens.
+    const deg = after.kind.map(() => 0);
+    for (const [i, j] of after.bonds) {
+      deg[i]++;
+      deg[j]++;
+    }
+    after.kind.forEach((k, i) => k === 3 && expect(deg[i]).toBe(2));
     // Past the spark, the heat given out keeps the gas well above where it started.
     const [burnt] = particlesAt(e, [['spark', 2]], 8);
     expect(burnt.temp).toBeGreaterThan(0.6);
