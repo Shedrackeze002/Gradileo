@@ -5,7 +5,7 @@
  * of the hits each second and the trail of one followed particle.
  */
 import type { ParticleBox, ParticlesEl, Tone } from '../script.ts';
-import { boxSize, FLASH, particlesAt, pressureOf, type BoxFrame, type PlayAt } from '../particles.ts';
+import { boxSize, FLASH, particlesAt, pressureOf, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
@@ -17,6 +17,17 @@ const HOT = TONES.bad;
 const KIND_TONES: Tone[] = ['adj', 'opp', 'good', 'hyp'];
 /** The hottest temperature a thermometer shows (a gas is about 4). */
 const THERMO_MAX = 5;
+/** The width of the strip a bath heats or cools (as in particles.ts). */
+const BATH_W = 2;
+/** How far up its tube a thermometer reads (on a square-root scale, so a solid and a liquid are not crowded at the bottom). */
+const thermoLevel = (t: number) => Math.sqrt(clamp01(t / THERMO_MAX));
+
+/** A colour part way between two "#rrggbb" or "rgb(r g b)" colours. */
+function mix(a: string, b: string, k: number) {
+  const rgb = (c: string) => (c.startsWith('#') ? [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16)) : (c.match(/[\d.]+/g) ?? []).slice(0, 3).map(Number));
+  const [p, q] = [rgb(a), rgb(b)];
+  return `rgb(${p.map((v, i) => Math.round(v + (q[i] - v) * k)).join(' ')})`;
+}
 
 function Text({ x, y, children, color = INK, size = 22, anchor = 'middle', weight = 600, opacity = 1 }: { x: number; y: number; children: string; color?: string; size?: number; anchor?: 'start' | 'middle' | 'end'; weight?: number; opacity?: number }) {
   return (
@@ -27,7 +38,7 @@ function Text({ x, y, children, color = INK, size = 22, anchor = 'middle', weigh
 }
 
 /** A thermometer: a tube with a bulb, filled to the temperature. */
-function Thermometer({ x, top, bottom, level, opacity }: { x: number; top: number; bottom: number; level: number; opacity: number }) {
+function Thermometer({ x, top, bottom, level, opacity, marks = [] }: { x: number; top: number; bottom: number; level: number; opacity: number; marks?: Array<{ level: number; label: string }> }) {
   const bulb = 15;
   const tube = 9;
   const y0 = bottom - bulb;
@@ -38,9 +49,19 @@ function Thermometer({ x, top, bottom, level, opacity }: { x: number; top: numbe
       <circle cx={x} cy={y0 + 4} r={bulb + 3} fill="#15123a" stroke={INK3} strokeWidth={2.5} />
       <rect x={x - tube + 3} y={y0 - fill} width={2 * tube - 6} height={fill + 6} rx={tube - 3} fill={HOT} />
       <circle cx={x} cy={y0 + 4} r={bulb - 2} fill={HOT} style={{ filter: `drop-shadow(0 0 ${4 + 10 * level}px ${HOT})` }} />
-      {[0.25, 0.5, 0.75].map((k) => (
+      {(marks.length ? [] : [0.25, 0.5, 0.75]).map((k) => (
         <line key={k} x1={x + tube + 3} x2={x + tube + 11} y1={y0 - (y0 - top - 6) * k} y2={y0 - (y0 - top - 6) * k} stroke={INK3} strokeWidth={2} />
       ))}
+      {marks.map((m) => {
+        const y = y0 - (y0 - top - 6) * m.level;
+        const past = level >= m.level;
+        return (
+          <g key={m.label}>
+            <line x1={x - tube - 3} x2={x + tube + 14} y1={y} y2={y} stroke={past ? TONES.theta : INK3} strokeWidth={3} />
+            <Text x={x + tube + 20} y={y} size={19} anchor="start" color={past ? TONES.theta : INK3} weight={600}>{m.label}</Text>
+          </g>
+        );
+      })}
     </g>
   );
 }
@@ -79,16 +100,19 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const labels = part('labels');
   const rate = part('rate');
   const volume = part('volume');
+  const flow = part('flow');
+  const width = part('width');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
 
   // Room beside each box for its thermometer, and beside the gauge's box for the gauge; they keep
   // their room from the start so the boxes do not move when they appear.
   const hasThermo = !!el.thermometers;
-  const THERMO_W = hasThermo ? 56 : 0;
+  const marks = typeof el.thermometers === 'object' ? (el.thermometers.marks ?? []) : [];
+  const THERMO_W = hasThermo ? (marks.length ? 150 : 56) : 0;
   const GAUGE_R = 70;
   const GAUGE_W = el.gauge ? 2 * GAUGE_R + 40 : 0;
-  const GAP = 70;
+  const GAP = el.flow ? 170 : 70;
   const TOP = el.boxes.some((b) => b.piston) ? 56 : 24;
   const BOTTOM = 76;
   const sizes = el.boxes.map(boxSize);
@@ -99,6 +123,15 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const totalW = sumW * S + fixed;
   let left = (w - totalW) / 2;
   const floor = TOP + maxH * S;
+  // Where each box's left wall is, worked out before they are drawn (the heat arrow needs them).
+  const boxLefts: number[] = [];
+  {
+    let l = left;
+    for (const [bi, b] of el.boxes.entries()) {
+      boxLefts.push(l);
+      l += sizes[bi].w * S + THERMO_W + (el.gauge?.box === b.id ? GAUGE_W : 0) + GAP;
+    }
+  }
 
   return (
     <svg width={w} height={h} style={{ overflow: 'visible', opacity: p }}>
@@ -110,7 +143,37 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
             <stop offset="100%" stopColor={TONES[t]} stopOpacity={0.75} />
           </radialGradient>
         ))}
+        {/* The shine on a particle coloured by its heat, laid over its plain colour. */}
+        <radialGradient id={`pg-${el.id}-shine`} cx="35%" cy="32%" r="70%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity={0.9} />
+          <stop offset="30%" stopColor="#ffffff" stopOpacity={0} />
+          <stop offset="100%" stopColor="#000000" stopOpacity={0.2} />
+        </radialGradient>
       </defs>
+      {flow > 0 && el.flow && (() => {
+        // The arrow sits in the gap between the two boxes and points from the hotter to the cooler;
+        // it thins as their temperatures meet.
+        const ia = el.boxes.findIndex((b) => b.id === el.flow!.from);
+        const ib = el.boxes.findIndex((b) => b.id === el.flow!.to);
+        const lo = Math.min(ia, ib);
+        const gapLeft = boxLefts[lo] + sizes[lo].w * S + THERMO_W;
+        const gapRight = boxLefts[lo + 1];
+        const t0 = (i: number) => tempOf(el.boxes[i].temp, TEMPS[el.boxes[i].state]);
+        const diff = frames[ia].temp - frames[ib].temp;
+        const k = clamp01(Math.abs(diff) / Math.max(1e-6, Math.abs(t0(ia) - t0(ib))));
+        const dir = (diff >= 0 ? ia < ib : ib < ia) ? 1 : -1;
+        const y = TOP + (maxH * S) / 2;
+        const [x1, x2] = dir > 0 ? [gapLeft + 14, gapRight - 14] : [gapRight - 14, gapLeft + 14];
+        const thick = 4 + 14 * k;
+        const head = 12 + 14 * k;
+        return (
+          <g opacity={flow * (0.25 + 0.75 * clamp01(k * 4))}>
+            <line x1={x1} y1={y} x2={x2 - dir * head} y2={y} stroke={HOT} strokeWidth={thick} strokeLinecap="round" />
+            <path d={`M ${x2} ${y} L ${x2 - dir * head * 1.3} ${y - head} L ${x2 - dir * head * 1.3} ${y + head} Z`} fill={HOT} />
+            <Text x={(x1 + x2) / 2} y={y - 22 - head} size={24} color={HOT}>{el.flow.label ?? 'heat'}</Text>
+          </g>
+        );
+      })()}
       {el.boxes.map((b: ParticleBox, bi) => {
         const f = frames[bi];
         const { w: bw, h: bh } = sizes[bi];
@@ -128,9 +191,29 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
         const trailPts = f.trail;
         return (
           <g key={b.id}>
-            {/* The box: glass walls and floor, tinted inside. */}
-            <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill="rgb(120 140 255 / 0.06)" />
-            <path d={`M ${X(0)} ${wallTop} L ${X(0)} ${floor} L ${X(bw)} ${floor} L ${X(bw)} ${wallTop}`} {...glass} />
+            {/* The box: glass walls and floor, tinted inside (none for a bare box). */}
+            {!b.bare && <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill="rgb(120 140 255 / 0.06)" />}
+            {!b.bare && <path d={`M ${X(0)} ${wallTop} L ${X(0)} ${floor} L ${X(bw)} ${floor} L ${X(bw)} ${wallTop}`} {...glass} />}
+            {/* The side where a box is heated or cooled, tinted red when hotter than it began and blue when colder. */}
+            {b.bath && (() => {
+              const t0 = tempOf(b.temp, TEMPS[b.state]);
+              const k = clamp01(Math.abs(f.temp - t0) / Math.max(0.05, t0));
+              const tint = f.temp >= t0 ? HOT : TONES.adj;
+              const [x, y, ww, hh] = b.bath === 'left' ? [X(0), wallTop, BATH_W * S, floor - wallTop] : b.bath === 'right' ? [X(bw - BATH_W), wallTop, BATH_W * S, floor - wallTop] : [X(0), Y(BATH_W), bw * S, BATH_W * S];
+              const grad = `pb-${el.id}-${b.id}`;
+              const [x1, y1, x2, y2] = b.bath === 'left' ? [0, 0, 1, 0] : b.bath === 'right' ? [1, 0, 0, 0] : [0, 1, 0, 0];
+              return (
+                <g opacity={0.15 + 0.6 * k}>
+                  <defs>
+                    <linearGradient id={grad} x1={x1} y1={y1} x2={x2} y2={y2}>
+                      <stop offset="0%" stopColor={tint} stopOpacity={0.75} />
+                      <stop offset="100%" stopColor={tint} stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <rect x={x} y={y} width={ww} height={hh} fill={`url(#${grad})`} />
+                </g>
+              );
+            })()}
             {/* The trail of the followed particle, fading towards its oldest point. */}
             {trail > 0 &&
               trailPts.slice(1).map(([x, y], i) => {
@@ -139,9 +222,39 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
               })}
             {f.x.map((x, i) => {
               const followed = b.follow === i;
+              if (f.ke && b.heatColor && !followed) {
+                // Blue when moving as slowly as at the first temperature, red as fast as at the second.
+                const [lo, hi] = b.heatColor.map((t) => tempOf(t, TEMPS.liquid));
+                const k = clamp01((f.ke[i] - lo) / (hi - lo));
+                return (
+                  <g key={i}>
+                    <circle cx={X(x)} cy={Y(f.y[i])} r={r} fill={k < 0.5 ? mix(TONES.adj, TONES.theta, k * 2) : mix(TONES.theta, TONES.bad, k * 2 - 1)} />
+                    <circle cx={X(x)} cy={Y(f.y[i])} r={r} fill={`url(#pg-${el.id}-shine)`} />
+                  </g>
+                );
+              }
               const t = followed ? 'theta' : toneOf(f.kind[i]);
               return <circle key={i} cx={X(x)} cy={Y(f.y[i])} r={r} fill={`url(#pg-${el.id}-${t})`} style={followed ? { filter: `drop-shadow(0 0 8px ${TONES.theta})` } : undefined} />;
             })}
+            {/* A divider across the box, slid up and out when it is lifted. */}
+            {f.divider && f.divider.out < 1 && (
+              <line x1={X(f.divider.x)} x2={X(f.divider.x)} y1={floor - 3 - f.divider.out * (floor - wallTop)} y2={wallTop - f.divider.out * (floor - wallTop)} {...glass} opacity={1 - f.divider.out} />
+            )}
+            {/* A bracket over the particles' width, with dashed marks as wide as they were at first. */}
+            {width > 0 && b.state !== 'gas' && (() => {
+              const top = Y(Math.max(...f.y)) - r - 18;
+              const [a, z] = [X(f.span[0]) - r, X(f.span[1]) + r];
+              return (
+                <g opacity={width}>
+                  {/* The first width, centred on where the particles are now (a solid may drift a little). */}
+                  {[-1, 1].map((k) => {
+                    const xx = X((f.span[0] + f.span[1]) / 2 + (k * (f.span0[1] - f.span0[0])) / 2) + k * r;
+                    return <line key={k} x1={xx} x2={xx} y1={floor - 2} y2={top - 14} stroke={INK3} strokeWidth={2.5} strokeDasharray="7 7" />;
+                  })}
+                  <path d={`M ${a} ${top + 10} L ${a} ${top} L ${z} ${top} L ${z} ${top + 10}`} fill="none" stroke={TONES.theta} strokeWidth={4} strokeLinejoin="round" />
+                </g>
+              );
+            })()}
             {/* A flash wherever a particle has just hit a wall. */}
             {hits > 0 &&
               f.hits.map((hh, i) => {
@@ -155,10 +268,19 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 <rect x={X(bw / 2) - 7} y={TOP - 44} width={14} height={lidY - 14 - (TOP - 44)} fill="rgb(120 116 170)" />
                 <rect x={X(bw / 2) - 60} y={TOP - 50} width={120} height={14} rx={7} fill="rgb(120 116 170)" stroke={INK} strokeWidth={2} />
               </g>
-            ) : b.open ? null : (
+            ) : b.open || b.bare ? null : (
               <line x1={X(0)} y1={lidY} x2={X(bw)} y2={lidY} {...glass} />
             )}
-            {hasThermo && <Thermometer x={X(bw) + THERMO_W / 2 + 6} top={wallTop + 10} bottom={floor} level={f.temp / THERMO_MAX} opacity={thermo} />}
+            {hasThermo && (
+              <Thermometer
+                x={X(bw) + (marks.length ? 34 : THERMO_W / 2 + 6)}
+                top={wallTop + 10}
+                bottom={floor}
+                level={thermoLevel(f.temp)}
+                opacity={thermo}
+                marks={marks.map((m) => ({ level: thermoLevel(tempOf(m.at, 0)), label: m.label }))}
+              />
+            )}
             {el.gauge?.box === b.id && (
               <Gauge
                 cx={X(bw) + THERMO_W + GAUGE_W / 2}

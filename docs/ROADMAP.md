@@ -1233,10 +1233,20 @@ items ship or decisions change.
        reading, wall-hit flashes and a followed particle's trail. Two remade samples for the owner
        to judge: `c7-2-1` (Solids, Liquids and Gases) and `c20-2-3` (Boyle's law: a syringe squeezed
        from 100 to 400 kPa).
-     - Next: once the owner approves the samples, remake the rest in the order of the report: the
-       lessons whose idea is motion first (Chemistry 7 to 9, then the gases unit, then the rest),
-       then the lessons about structures, then animated openings for the calculation lessons. Then
-       put chemistry back in the upload task.
+     - Decision (the owner, 14 November 2026): the two samples are approved ("this is great"). The
+       element and samples are merged (pull request #187), and both videos replaced in Drive.
+     - Done (14 November 2026): Chemistry 7, Unit 2 remade: `c7-2-2` (a box melted, boiled,
+       condensed and frozen in turn, with a thermometer marked "melts" and "boils"; water vapour
+       condensing on a cold wall), `c7-2-3` (fast and slow air, hot water warming cold water with a
+       heat arrow, a hand melting ice, a bar conducting heat from one end) and `c7-2-4` (a solid and
+       a gas expanding and contracting, two gases and two liquids mixing when a divider is lifted).
+       The element gained dividers, baths (heating or cooling one side), heat colours, a heat-flow
+       arrow, thermometer marks and visible expansion. Convection and radiation are still a table.
+     - Next: Chemistry 7, Units 3 and 4 (mixtures, dissolving, solubility and the rate of
+       dissolving; separating mixtures), which need kinds of particle that attract differently, a
+       stirrer, filters and chromatography; then Chemistry 8 and 9, the gases unit, the rest of the
+       motion lessons, the lessons about structures, and animated openings for the calculation
+       lessons. Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.

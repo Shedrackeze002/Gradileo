@@ -62,6 +62,8 @@ export interface Controls {
   temp: Record<string, number>;
   /** The lid's height as a fraction of the box's full height (1 = the top). */
   lid: Record<string, number>;
+  /** When each lifted divider was lifted (the element's age); a divider not in it still stands. */
+  lifted: Record<string, number>;
 }
 
 /** A play of a clip: its name and the element's age (seconds since shown) when it started. */
@@ -71,6 +73,7 @@ export type PlayAt = [clip: string, startAge: number];
 export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Controls {
   const temp: Record<string, number> = {};
   const lid: Record<string, number> = {};
+  const lifted: Record<string, number> = {};
   for (const b of el.boxes) {
     temp[b.id] = tempOf(b.temp, TEMPS[b.state]);
     lid[b.id] = b.lid ?? 1;
@@ -82,12 +85,13 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
     for (const ph of clip.phases) {
       if (age <= t) break;
       const k = Math.min(1, (age - t) / ph.dur);
+      for (const id of ph.lift ?? []) if (lifted[id] === undefined) lifted[id] = t;
       for (const [id, v] of Object.entries(ph.heat ?? {})) temp[id] += (tempOf(v, temp[id]) - temp[id]) * k;
       for (const [id, v] of Object.entries(ph.lid ?? {})) lid[id] += (v - lid[id]) * k;
       t += ph.dur;
     }
   }
-  return { temp, lid };
+  return { temp, lid, lifted };
 }
 
 export interface Hit {
@@ -108,6 +112,8 @@ interface BoxSim {
   fy: Float64Array;
   /** Which kind each particle is (an index into the box's kinds). */
   kind: Uint8Array;
+  /** Each particle's kinetic energy, smoothed over a moment (for colouring it by heat). */
+  ke: Float64Array;
   rnd: () => number;
   /** The lid's actual height (it cannot be pushed into a liquid or solid). */
   lidY: number;
@@ -126,6 +132,13 @@ export interface BoxFrame {
   /** Wall hits each second of video, over the last two seconds. */
   hitRate: number;
   trail: Array<[number, number]>;
+  /** Each particle's smoothed kinetic energy, as a temperature (only for a box with `heatColor`). */
+  ke?: number[];
+  /** The divider's place across the box, and how far it has been lifted out (0 to 1). */
+  divider?: { x: number; out: number };
+  /** The left and right ends of the particles now, and when the element was shown. */
+  span: [number, number];
+  span0: [number, number];
 }
 
 /**
@@ -137,19 +150,39 @@ function gravityAt(temp: number) {
   return GRAVITY * Math.min(1, (0.6 / temp) ** 2);
 }
 
-function forces(s: BoxSim, temp: number) {
-  const { n, x, y, fx, fy } = s;
+function forces(s: BoxSim, temp: number, sigma = 1) {
+  const { fx, fy } = s;
   fx.fill(0);
   fy.fill(-gravityAt(temp));
+  forcesBetween(s, sigma);
+}
+
+/** The temperature the particles of a box are at, from how fast they move (kinetic energy = T in 2D). */
+function measuredTemp(s: BoxSim) {
+  let e = 0;
+  for (let i = 0; i < s.n; i++) e += s.vx[i] * s.vx[i] + s.vy[i] * s.vy[i];
+  return e / (2 * s.n);
+}
+
+/**
+ * The forces between particles. `sigma` is the distance they settle apart, as a multiple of the
+ * usual: a box that shows expansion widens it as it is heated (see `expand`), while the particles
+ * are drawn the same size, so the spaces between them grow.
+ */
+function forcesBetween(s: BoxSim, sigma: number) {
+  const { n, x, y, fx, fy } = s;
+  const s2 = sigma * sigma;
+  const cut2 = CUT2 * s2;
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j < n; j++) {
       const dx = x[i] - x[j];
       const dy = y[i] - y[j];
       let r2 = dx * dx + dy * dy;
-      if (r2 > CUT2) continue;
-      if (r2 < 0.5) r2 = 0.5; // never let two particles overlap far enough to explode apart
+      if (r2 > cut2) continue;
+      if (r2 < 0.5 * s2) r2 = 0.5 * s2; // never let two particles overlap far enough to explode apart
       const i2 = 1 / r2;
-      const i6 = i2 * i2 * i2;
+      const q2 = s2 * i2;
+      const i6 = q2 * q2 * q2;
       const f = 24 * i6 * (2 * i6 - 1) * i2;
       fx[i] += f * dx;
       fy[i] += f * dy;
@@ -174,6 +207,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     fx: new Float64Array(n),
     fy: new Float64Array(n),
     kind: new Uint8Array(n),
+    ke: new Float64Array(n),
     rnd,
     lidY: (b.lid ?? 1) * h,
     hits: [],
@@ -184,27 +218,36 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     for (let i = 0; i < kd.n; i++) s.kind[k++] = ki;
   });
   const spacing = 1.12;
-  if (b.state === 'gas') {
-    // A loose grid through the whole box, jiggled, so no two start too close.
-    const top = s.lidY - 0.5;
-    const cols = Math.max(1, Math.round(Math.sqrt((n * (w - 1)) / (top - 0.5))));
-    const rows = Math.ceil(n / cols);
-    const gx = (w - 1) / cols;
-    const gy = (top - 0.5) / rows;
-    for (let i = 0; i < n; i++) {
-      s.x[i] = 0.5 + gx * ((i % cols) + 0.5 + (rnd() - 0.5) * 0.4);
-      s.y[i] = 0.5 + gy * (Math.floor(i / cols) + 0.5 + (rnd() - 0.5) * 0.4);
-    }
-  } else {
-    // Rows packed tightly at the bottom, in the middle of the box.
-    const cols = Math.min(Math.floor((w - 1) / spacing) + 1, Math.max(1, Math.round(Math.sqrt(n * 1.6))));
-    const rowH = spacing * Math.sqrt(3) / 2;
-    const width = (cols - 1) * spacing;
-    for (let i = 0; i < n; i++) {
-      const r = Math.floor(i / cols);
-      const c = i % cols;
-      s.x[i] = w / 2 - width / 2 + c * spacing + (r % 2 ? spacing / 2 : 0) - spacing / 4;
-      s.y[i] = 0.56 + r * rowH;
+  // Two kinds kept apart by a divider start on its two sides; otherwise the whole box is one region.
+  const split = b.divider !== undefined && b.apart === true && kinds.length === 2;
+  const regions: Array<[x0: number, x1: number, from: number, to: number]> = split
+    ? [[0, b.divider! * w, 0, kinds[0].n], [b.divider! * w, w, kinds[0].n, n]]
+    : [[0, w, 0, n]];
+  for (const [x0, x1, from, to] of regions) {
+    const m = to - from;
+    const rw = x1 - x0;
+    if (b.state === 'gas') {
+      // A loose grid through the whole region, jiggled, so no two start too close.
+      const top = s.lidY - 0.5;
+      const cols = Math.max(1, Math.round(Math.sqrt((m * (rw - 1)) / (top - 0.5))));
+      const rows = Math.ceil(m / cols);
+      const gx = (rw - 1) / cols;
+      const gy = (top - 0.5) / rows;
+      for (let j = 0; j < m; j++) {
+        s.x[from + j] = x0 + 0.5 + gx * ((j % cols) + 0.5 + (rnd() - 0.5) * 0.4);
+        s.y[from + j] = 0.5 + gy * (Math.floor(j / cols) + 0.5 + (rnd() - 0.5) * 0.4);
+      }
+    } else {
+      // Rows packed tightly at the bottom, in the middle of the region.
+      const cols = Math.min(Math.floor((rw - 1) / spacing) + 1, b.cols ?? Math.max(1, Math.round(Math.sqrt(m * 1.6))));
+      const rowH = spacing * Math.sqrt(3) / 2;
+      const width = (cols - 1) * spacing;
+      for (let j = 0; j < m; j++) {
+        const r = Math.floor(j / cols);
+        const c = j % cols;
+        s.x[from + j] = x0 + rw / 2 - width / 2 + c * spacing + (r % 2 ? spacing / 2 : 0) - spacing / 4;
+        s.y[from + j] = 0.56 + r * rowH;
+      }
     }
   }
   // Mix the kinds through the box unless they start apart (`apart`: the first kind on the left).
@@ -215,31 +258,64 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       s.kind[i] = s.kind[j];
       s.kind[j] = t;
     }
-  } else if (b.apart && kinds.length > 1) {
+  } else if (b.apart && kinds.length > 1 && !split) {
     const order = Array.from({ length: n }, (_, i) => i).sort((a, c) => s.x[a] - s.x[c]);
     let at = 0;
     kinds.forEach((kd, ki) => {
       for (let i = 0; i < kd.n; i++) s.kind[order[at++]] = ki;
     });
   }
+  // No particle starts inside a divider: each is moved out to the side it is nearer.
+  if (b.divider !== undefined) {
+    const d = b.divider * w;
+    for (let i = 0; i < n; i++) if (Math.abs(s.x[i] - d) < 0.55) s.x[i] = s.x[i] < d ? d - 0.55 : d + 0.55;
+  }
   const t0 = tempOf(b.temp, TEMPS[b.state]);
   for (let i = 0; i < n; i++) {
     s.vx[i] = gauss(rnd) * Math.sqrt(t0);
     s.vy[i] = gauss(rnd) * Math.sqrt(t0);
+    s.ke[i] = t0;
   }
   forces(s, tempOf(b.temp, TEMPS[b.state]));
   return s;
 }
 
+/** How a box is stepped, besides its temperature and lid. */
+interface StepOpts {
+  w: number;
+  firm: boolean;
+  /** Where a standing divider is across the box (in particle units). */
+  divider?: number;
+  bath?: ParticleBox['bath'];
+  /** How far apart the particles settle, as a multiple of the usual (for `expand`). */
+  sigma?: number;
+}
+
+/** The strip along a side where a box with a `bath` is held at its temperature. */
+const BATH = 2;
+const BATH_GAMMA = 4;
+
 /** One step of the simulation (velocity Verlet, then the thermostat and the walls). */
-function step(s: BoxSim, w: number, temp: number, lidTarget: number, firm: boolean, age: number, record: boolean) {
+function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: number, record: boolean) {
   const { n, x, y, vx, vy, fx, fy, rnd } = s;
+  const { w, firm, divider } = o;
   const half = DT / 2;
   for (let i = 0; i < n; i++) {
     vx[i] += fx[i] * half;
     vy[i] += fy[i] * half;
+    const was = x[i];
     x[i] += vx[i] * DT;
     y[i] += vy[i] * DT;
+    // A standing divider keeps each particle on its own side.
+    if (divider !== undefined) {
+      if (was < divider && x[i] > divider - 0.5) {
+        x[i] = 2 * (divider - 0.5) - x[i];
+        vx[i] = -Math.abs(vx[i]);
+      } else if (was >= divider && x[i] < divider + 0.5) {
+        x[i] = 2 * (divider + 0.5) - x[i];
+        vx[i] = Math.abs(vx[i]);
+      }
+    }
   }
   // The lid follows its target, but in a box of solid or liquid (`firm`) it cannot squash the
   // particles: it rests just above the highest particle that is touching others below it.
@@ -272,14 +348,21 @@ function step(s: BoxSim, w: number, temp: number, lidTarget: number, firm: boole
       if (record) s.hits.push({ at: age, x: x[i], y: lid, wall: 'lid' });
     }
   }
-  forces(s, temp);
-  const c1 = Math.exp(-GAMMA * DT);
+  // With a bath, gravity follows how hot the particles really are, not the bath's temperature.
+  forces(s, o.bath ? measuredTemp(s) : temp, o.sigma);
+  // A bath holds its strip firmly, as a flame or ice would, so heat goes in or out quickly there.
+  const c1 = Math.exp(-(o.bath ? BATH_GAMMA : GAMMA) * DT);
   const c2 = Math.sqrt((1 - c1 * c1) * temp);
+  const inBath = (i: number) => (o.bath === 'left' ? x[i] < BATH : o.bath === 'right' ? x[i] > w - BATH : y[i] < BATH);
+  const smooth = DT / 1.2;
   for (let i = 0; i < n; i++) {
     vx[i] += fx[i] * half;
     vy[i] += fy[i] * half;
-    vx[i] = c1 * vx[i] + c2 * gauss(rnd);
-    vy[i] = c1 * vy[i] + c2 * gauss(rnd);
+    if (!o.bath || inBath(i)) {
+      vx[i] = c1 * vx[i] + c2 * gauss(rnd);
+      vy[i] = c1 * vy[i] + c2 * gauss(rnd);
+    }
+    s.ke[i] += ((vx[i] * vx[i] + vy[i] * vy[i]) / 2 - s.ke[i]) * smooth;
   }
 }
 
@@ -306,6 +389,18 @@ interface Cache {
   boxes: BoxSim[];
   /** The followed particle's trail points so far, per box: [age, x, y]. */
   trails: Array<Array<[number, number, number]>>;
+  /** Each box's particles' left and right ends as the element was shown. */
+  spans: Array<[number, number]>;
+}
+
+function spanOf(s: BoxSim): [number, number] {
+  let lo = Infinity;
+  let hi = -Infinity;
+  for (let i = 0; i < s.n; i++) {
+    lo = Math.min(lo, s.x[i]);
+    hi = Math.max(hi, s.x[i]);
+  }
+  return [lo, hi];
 }
 
 const caches = new Map<string, Cache>();
@@ -321,6 +416,7 @@ function cloneSim(s: BoxSim): BoxSim {
     fx: s.fx.slice(),
     fy: s.fy.slice(),
     kind: s.kind.slice(),
+    ke: s.ke.slice(),
     // The random numbers carry on from the same point each time the warmed state is reused.
     rnd: forkRandom(s),
     hits: [],
@@ -343,7 +439,9 @@ function warmBoxes(el: ParticlesEl): BoxSim[] {
       const t = tempOf(b.temp, TEMPS[b.state]);
       // Every box settles before it is seen: a solid's loose edge particles drop into place.
       const steps = Math.round(WARM / DT);
-      for (let k = 0; k < steps; k++) step(s, w, t, s.lidY, false, 0, false);
+      // The whole box is held at its temperature while it settles, even one with a bath.
+      const o: StepOpts = { w, firm: false, divider: b.divider === undefined ? undefined : b.divider * w };
+      for (let k = 0; k < steps; k++) step(s, o, t, s.lidY, 0, false);
       seeds.set(s, (el.seed ?? 7) * 31 + bi);
       return s;
     });
@@ -367,7 +465,8 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     c.age <= age + 1e-9 &&
     played.every(([clip, at]) => at >= c!.age || c!.played.some(([k, t]) => k === clip && Math.abs(t - at) < 1e-6));
   if (!usable) {
-    c = { key, played: [], age: 0, boxes: warmBoxes(el), trails: el.boxes.map(() => []) };
+    const boxes = warmBoxes(el);
+    c = { key, played: [], age: 0, boxes, trails: el.boxes.map(() => []), spans: boxes.map(spanOf) };
     caches.set(el.id, c);
   }
   c = c!;
@@ -380,7 +479,9 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     el.boxes.forEach((b, bi) => {
       const { w, h } = boxSize(b);
       const s = c!.boxes[bi];
-      step(s, w, ctl.temp[b.id], ctl.lid[b.id] * h, b.state !== 'gas', a, true);
+      const standing = b.divider !== undefined && ctl.lifted[b.id] === undefined;
+      const sigma = b.expand ? 1 + b.expand * Math.max(0, ctl.temp[b.id] - tempOf(b.temp, TEMPS[b.state])) : 1;
+      step(s, { w, firm: b.state !== 'gas', divider: standing ? b.divider! * w : undefined, bath: b.bath, sigma }, ctl.temp[b.id], ctl.lid[b.id] * h, a, true);
       while (s.hits.length && s.hits[0].at < a - 2.5) s.hits.shift();
       const tr = c!.trails[bi];
       if (b.follow !== undefined && (!tr.length || a - tr[tr.length - 1][0] >= TRAIL_STEP - 1e-9)) {
@@ -404,6 +505,10 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       hits: recent.filter((hh) => hh.at > age - FLASH),
       hitRate: Math.round(recent.length / 2),
       trail: c!.trails[bi].map(([, x, y]) => [x, y] as [number, number]),
+      ke: b.heatColor ? Array.from(s.ke) : undefined,
+      divider: b.divider === undefined ? undefined : { x: b.divider * boxSize(b).w, out: ctl.lifted[b.id] === undefined ? 0 : Math.min(1, (age - ctl.lifted[b.id]) / 0.6) },
+      span: spanOf(s),
+      span0: c!.spans[bi],
     };
   });
 }
