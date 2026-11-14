@@ -388,8 +388,21 @@ export interface ParticleBox {
   state: 'solid' | 'liquid' | 'gas';
   /** How many particles (30 by default). */
   n?: number;
-  /** Several kinds of particle (a mixture, or two gases side by side), each with its count and colour. */
-  kinds?: Array<{ n: number; tone?: Tone; name?: string }>;
+  /**
+   * Several kinds of particle (a mixture, or two gases side by side), each with its count and
+   * colour, how strongly its particles attract one another (`bond`, 1 by default: 2.5 makes a
+   * solid that stays solid in a hot liquid) and how strongly gravity pulls it (`heavy`, 1).
+   */
+  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number }>;
+  /**
+   * How strongly particles of different kinds attract one another (between their own bonds by
+   * default). Stronger than the solute's own bond, a lump dissolves; much weaker, it stays whole.
+   */
+  cross?: number;
+  /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
+  lump?: boolean | number;
+  /** Hold the first kind still (a lump, keeping its shape), until a phase lets it go (`release`). */
+  hold?: boolean;
   /** With several kinds, start them apart (the first kind on the left) instead of mixed. */
   apart?: boolean;
   /** Its starting temperature; the usual one for its state otherwise. */
@@ -403,11 +416,38 @@ export interface ParticleBox {
   piston?: boolean;
   /** Draw no lid (a beaker): the particles still stay inside. */
   open?: boolean;
+  /** Draw no box at all, only the particles (a metal bar); they still keep to its space. */
+  bare?: boolean;
+  /** How many particles to a row as they start (a solid bar many particles long). */
+  cols?: number;
+  /**
+   * Show expansion more clearly than real solids do: for each degree of the simulation's
+   * temperature above its start, the particles settle this fraction further apart (0.8 is about
+   * 9% for a solid warmed from 0.03 to 0.14; much hotter and its rows start to slide). They are drawn the same size, so the gaps grow.
+   */
+  expand?: number;
   /** A particle to follow: it is drawn in yellow, with a trail when the part `trail` is shown. */
   follow?: number;
   /** The name under the box. */
   label?: string;
   tone?: Tone;
+  /**
+   * A wall across the box at this fraction of its width, keeping the particles on either side
+   * apart until a clip lifts it (`lift`), to let two gases or liquids mix by diffusion.
+   */
+  divider?: number;
+  /**
+   * Where the box is heated or cooled: only the particles in a strip along this side are held at
+   * the box's temperature, and the rest keep their energy and pass it on by bumping into one
+   * another. A bar heated at one end conducts heat along itself; a gas by a cold wall condenses on
+   * it. The whole box is held at its temperature otherwise.
+   */
+  bath?: 'left' | 'right' | 'floor';
+  /**
+   * Colour each particle by how fast it is moving, from blue (as at the first temperature) to red
+   * (as at the second), to see heat spread.
+   */
+  heatColor?: [Temp, Temp];
 }
 
 /** A stretch of a particle clip: temperatures and lids move steadily to these values over `dur` seconds. */
@@ -417,10 +457,16 @@ export interface ParticlePhase {
   heat?: Record<string, Temp>;
   /** New lid heights (fractions of the box's height), by box id. */
   lid?: Record<string, number>;
+  /** Boxes whose divider is lifted out as the phase starts. */
+  lift?: string[];
+  /** Boxes whose held lump is let go as the phase starts. */
+  release?: string[];
+  /** How hard to stir each box (0 stops; 2 stirs briskly), reached steadily over the phase. */
+  stir?: Record<string, number>;
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
@@ -430,7 +476,12 @@ export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'la
  * change temperatures or move a lid, and the next line waits for it. Parts: `thermo` (a
  * thermometer by each box), `gauge` (a pressure gauge on the box `gauge.box`), `hits` (a flash
  * wherever a particle hits a wall), `rate` (wall hits each second, under each box), `trail` (the
- * path of each box's followed particle) and `labels`. Emphasising a box's id makes it glow.
+ * path of each box's followed particle), `labels`, `flow` (an arrow of heat between two boxes,
+ * thinner as their temperatures meet; set `flow` up) and `width` (a bracket over each box's
+ * particles, with dashed marks as wide as they were when the element was shown, to see expansion)
+ * and `count` (how many particles of each box's first kind have broken away on their own: "8 of 16
+ * dissolved").
+ * Emphasising a box's id makes it glow.
  */
 export interface ParticlesEl {
   kind: 'particles';
@@ -441,8 +492,18 @@ export interface ParticlesEl {
   gauge?: { box: string; start: number; unit?: string };
   /** A volume reading under one box, `start` (in `unit`, L by default) with the lid where it starts. */
   volume?: { box: string; start: number; unit?: string; decimals?: number };
-  /** Keep room for a thermometer by each box (the part `thermo` shows them). */
-  thermometers?: boolean;
+  /**
+   * Keep room for a thermometer by each box (the part `thermo` shows them), with marks at these
+   * temperatures if given ("melts", "boils").
+   */
+  thermometers?: boolean | { marks?: Array<{ at: Temp; label: string }> };
+  /** Heat flowing from one box to the next one along (the part `flow` shows it). */
+  flow?: { from: string; to: string; label?: string };
+  /**
+   * Seconds of simulation for each second of video, as a multiple of the usual. Liquids are
+   * sluggish, so dissolving needs about 6 to happen while the narrator speaks.
+   */
+  speed?: number;
   /** Changes the starting arrangement, if one looks wrong. */
   seed?: number;
   height?: number;
@@ -597,6 +658,7 @@ function particlePartReady(e: ParticlesEl, part: string): boolean {
   if (part === 'thermo') return !!e.thermometers;
   if (part === 'gauge') return !!e.gauge;
   if (part === 'volume') return !!e.volume;
+  if (part === 'flow') return !!e.flow;
   return true;
 }
 
@@ -614,10 +676,20 @@ export function checkParticles(e: ParticlesEl): string[] {
   }
   if (e.gauge && !ids.has(e.gauge.box)) problems.push(`the gauge is on no box "${e.gauge.box}".`);
   if (e.volume && !ids.has(e.volume.box)) problems.push(`the volume reading is on no box "${e.volume.box}".`);
+  if (e.flow) {
+    const at = (id: string) => e.boxes.findIndex((b) => b.id === id);
+    if (at(e.flow.from) < 0 || at(e.flow.to) < 0) problems.push(`the heat flow names a box that is not there.`);
+    else if (Math.abs(at(e.flow.from) - at(e.flow.to)) !== 1) problems.push(`the heat flow must join two boxes side by side.`);
+  }
+  for (const b of e.boxes) if ((b.lump || b.hold) && (b.kinds?.length ?? 0) < 2) problems.push(`box "${b.id}": a lump or held particles need two kinds (the lump first, then what is round it).`);
+  for (const b of e.boxes) if (b.divider !== undefined && !(b.divider > 0.1 && b.divider < 0.9)) problems.push(`box "${b.id}": a divider must be between 0.1 and 0.9 of the way across.`);
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     clip.phases.forEach((ph, pi) => {
       if (!(ph.dur > 0)) problems.push(`clip "${name}", phase ${pi + 1} needs a length above zero.`);
+      for (const id of ph.lift ?? []) if (!e.boxes.find((b) => b.id === id)?.divider) problems.push(`clip "${name}", phase ${pi + 1} lifts a divider that box "${id}" does not have.`);
+      for (const id of ph.release ?? []) if (!e.boxes.find((b) => b.id === id)?.hold) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
+      for (const id of Object.keys(ph.stir ?? {})) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const id of [...Object.keys(ph.heat ?? {}), ...Object.keys(ph.lid ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const v of Object.values(ph.lid ?? {})) if (!(v > 0.2 && v <= 1)) problems.push(`clip "${name}", phase ${pi + 1}: a lid must be between 0.2 and 1.`);
     });
@@ -680,7 +752,7 @@ export function checkScript(x: Explainer): string[] {
       for (const target of [...asList(l.show), ...asList(l.hide), ...asList(l.focus)]) {
         const [el, part] = target.split('.');
         if (!ids.has(el)) problems.push(`Scene ${si + 1}, line ${li + 1}: no element "${target}".`);
-        else if (part !== undefined && motions.get(el)?.kind === 'particles' && !particlePartReady(motions.get(el) as ParticlesEl, part)) problems.push(`Scene ${si + 1}, line ${li + 1}: particles "${el}" shows "${part}" but does not set it up (thermometers, gauge or volume).`);
+        else if (part !== undefined && motions.get(el)?.kind === 'particles' && !particlePartReady(motions.get(el) as ParticlesEl, part)) problems.push(`Scene ${si + 1}, line ${li + 1}: particles "${el}" shows "${part}" but does not set it up (thermometers, gauge, volume or flow).`);
         else if (part !== undefined && diagrams.has(el) && !diagrams.get(el)!.has(part)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${screens.has(el) ? 'screen' : motions.has(el) ? 'motion' : 'diagram'} "${el}" has no part "${part}".`);
       }
       for (const target of asList(l.play)) {

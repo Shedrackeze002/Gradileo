@@ -241,7 +241,7 @@
   "c7-2-2": {
     "lessonId": "c7-2-2",
     "title": "Changes of State",
-    "duration": 195,
+    "duration": 270,
     "voice": "af_heart",
     "chapters": [
       {
@@ -249,30 +249,30 @@
         "t": 0
       },
       {
-        "title": "Naming the changes",
+        "title": "Melting and boiling",
         "t": 21.482
       },
       {
         "title": "Water on a cold can",
-        "t": 67.316
+        "t": 116.072
       },
       {
         "title": "Melting and boiling points",
-        "t": 88.2
+        "t": 160.858
       },
       {
         "title": "Your turn",
-        "t": 134.039
+        "t": 209.298
       },
       {
         "title": "Summary",
-        "t": 164.741
+        "t": 240
       }
     ],
     "cues": [
       {
         "id": "c7-2-2:q",
-        "t": 147.82,
+        "t": 223.079,
         "prompt": "Oxygen melts at −218 °C and boils at −183 °C. What state is oxygen in at −200 °C?",
         "choices": [
           "A liquid",
@@ -288,7 +288,7 @@
   "c7-2-3": {
     "lessonId": "c7-2-3",
     "title": "Temperature and Heat",
-    "duration": 193,
+    "duration": 290,
     "voice": "af_heart",
     "chapters": [
       {
@@ -300,26 +300,38 @@
         "t": 16.136
       },
       {
-        "title": "Heat",
-        "t": 58.859
+        "title": "The Celsius scale",
+        "t": 51.036
       },
       {
-        "title": "How heat moves",
-        "t": 92.594
+        "title": "Heat",
+        "t": 79.952
+      },
+      {
+        "title": "Cold does not flow",
+        "t": 125.182
+      },
+      {
+        "title": "Conduction",
+        "t": 159.032
+      },
+      {
+        "title": "Convection and radiation",
+        "t": 205.733
       },
       {
         "title": "Your turn",
-        "t": 137.615
+        "t": 234.163
       },
       {
         "title": "Summary",
-        "t": 164.527
+        "t": 261.075
       }
     ],
     "cues": [
       {
         "id": "c7-2-3:q",
-        "t": 144.98,
+        "t": 241.528,
         "prompt": "How does the Sun’s heat reach Earth across empty space?",
         "choices": [
           "By conduction",
@@ -335,7 +347,7 @@
   "c7-2-4": {
     "lessonId": "c7-2-4",
     "title": "Expansion and Diffusion",
-    "duration": 188,
+    "duration": 269,
     "voice": "af_heart",
     "chapters": [
       {
@@ -347,26 +359,34 @@
         "t": 19.893
       },
       {
+        "title": "The particles do not grow",
+        "t": 74.077
+      },
+      {
         "title": "Expansion in everyday life",
-        "t": 50.38
+        "t": 95.827
       },
       {
         "title": "Diffusion",
-        "t": 87.478
+        "t": 132.925
+      },
+      {
+        "title": "How fast is diffusion?",
+        "t": 177.449
       },
       {
         "title": "Your turn",
-        "t": 126.088
+        "t": 207.365
       },
       {
         "title": "Summary",
-        "t": 156.728
+        "t": 238.005
       }
     ],
     "cues": [
       {
         "id": "c7-2-4:q",
-        "t": 138.034,
+        "t": 219.311,
         "prompt": "A tea bag is put into hot water and another into cold water. In which cup does the colour spread faster, and why?",
         "choices": [
           "The cold water, because its particles are closer together.",
@@ -382,7 +402,7 @@
   "c7-3-1": {
     "lessonId": "c7-3-1",
     "title": "Pure Substances and Mixtures",
-    "duration": 187,
+    "duration": 197,
     "voice": "af_heart",
     "chapters": [
       {
@@ -395,25 +415,25 @@
       },
       {
         "title": "A test for purity",
-        "t": 60.864
+        "t": 70.776
       },
       {
         "title": "Four kinds of mixture",
-        "t": 91.233
+        "t": 101.145
       },
       {
         "title": "Your turn",
-        "t": 129.402
+        "t": 139.314
       },
       {
         "title": "Summary",
-        "t": 156.462
+        "t": 166.374
       }
     ],
     "cues": [
       {
         "id": "c7-3-1:q",
-        "t": 139.321,
+        "t": 149.233,
         "prompt": "A mixture looks cloudy, but even after a week nothing has settled. What kind of mixture is it?",
         "choices": [
           "A colloid",
@@ -429,7 +449,7 @@
   "c7-3-2": {
     "lessonId": "c7-3-2",
     "title": "Solutions and Concentration",
-    "duration": 205,
+    "duration": 270,
     "voice": "af_heart",
     "chapters": [
       {
@@ -437,30 +457,38 @@
         "t": 0
       },
       {
-        "title": "Solute, solvent and solution",
+        "title": "Dissolving",
         "t": 19.734
       },
       {
+        "title": "Solute, solvent and solution",
+        "t": 58.877
+      },
+      {
         "title": "Mass is conserved",
-        "t": 65.144
+        "t": 104.287
       },
       {
         "title": "Concentration",
-        "t": 92.39
+        "t": 135.575
+      },
+      {
+        "title": "Concentrated and dilute",
+        "t": 173.848
       },
       {
         "title": "Your turn",
-        "t": 142.334
+        "t": 206.875
       },
       {
         "title": "Summary",
-        "t": 173.173
+        "t": 237.714
       }
     ],
     "cues": [
       {
         "id": "c7-3-2:q",
-        "t": 153.719,
+        "t": 218.26,
         "prompt": "10 g of sugar is dissolved to make 500 mL of solution. What is the concentration?",
         "choices": [
           "5 g/L",
@@ -476,7 +504,7 @@
   "c7-3-3": {
     "lessonId": "c7-3-3",
     "title": "Solubility",
-    "duration": 184,
+    "duration": 223,
     "voice": "af_heart",
     "chapters": [
       {
@@ -496,18 +524,22 @@
         "t": 86.131
       },
       {
+        "title": "Insoluble is not saturated",
+        "t": 134.27
+      },
+      {
         "title": "Your turn",
-        "t": 122.205
+        "t": 160.569
       },
       {
         "title": "Summary",
-        "t": 153.616
+        "t": 191.98
       }
     ],
     "cues": [
       {
         "id": "c7-3-3:q",
-        "t": 135.396,
+        "t": 173.76,
         "prompt": "At 20 °C, 36 g of salt dissolves in 100 g of water. 30 g of salt is stirred into 100 g of water at 20 °C. Which is true?",
         "choices": [
           "The solution is saturated, and 6 g stays as solid.",
@@ -523,7 +555,7 @@
   "c7-3-4": {
     "lessonId": "c7-3-4",
     "title": "How Fast Things Dissolve",
-    "duration": 199,
+    "duration": 249,
     "voice": "af_heart",
     "chapters": [
       {
@@ -531,30 +563,38 @@
         "t": 0
       },
       {
-        "title": "Three ways to dissolve faster",
+        "title": "Stirring",
         "t": 17.256
       },
       {
+        "title": "Heating",
+        "t": 53.341
+      },
+      {
+        "title": "Three ways to dissolve faster",
+        "t": 79.38
+      },
+      {
         "title": "Fair tests",
-        "t": 69.148
+        "t": 119.5
       },
       {
         "title": "Designing a test",
-        "t": 97.337
+        "t": 147.689
       },
       {
         "title": "Your turn",
-        "t": 138.964
+        "t": 189.316
       },
       {
         "title": "Summary",
-        "t": 169.795
+        "t": 220.147
       }
     ],
     "cues": [
       {
         "id": "c7-3-4:q",
-        "t": 150.408,
+        "t": 200.76,
         "prompt": "A student times how long sugar takes to dissolve with and without stirring. What is the dependent variable?",
         "choices": [
           "Whether the water is stirred",

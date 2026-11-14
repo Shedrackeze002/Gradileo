@@ -190,9 +190,39 @@ See `src/video/script.ts` for every element and option. In short:
   (wall hits each second), and, when the element sets them up, `thermo` (`thermometers: true`),
   `gauge` (`gauge: { box, start }`, a pressure in kPa that follows P × V and the temperature, so
   it agrees with the numbers said) and `volume` (`volume: { box, start }`, in litres).
+  Thermometers can carry marks (`thermometers: { marks: [{ at: 0.33, label: 'melts' }] }`; this
+  simulation melts at about 0.33 and boils at about 0.9). More, for heat and mixing:
+  - `divider: 0.5` stands a wall across a box (with `apart`, each kind starts on its own side) until
+    a phase lifts it (`lift: ['b']`): two gases or liquids then mix by diffusion.
+  - `bath: 'left' | 'right' | 'floor'` heats or cools only a strip along that side (tinted red or
+    blue); the rest of the box gets the heat by particles bumping into one another, so a bar
+    conducts heat along itself and a gas condenses on a cold wall.
+  - `heatColor: [cold, hot]` colours each particle by how fast it moves, blue to red.
+  - `flow: { from, to }` on the element, with the part `flow`, draws an arrow of heat between two
+    boxes side by side that thins as their temperatures meet.
+  - `expand: 0.8` lets a solid's particles settle further apart as it warms (more than a real
+    solid, so it shows), and the part `width` draws a bracket over it with dashed marks as wide
+    as it was at first. Keep such a solid low and wide (`cols`), below about 0.15, or its rows slide.
+  - `bare` draws no box (a metal bar) and `cols` sets the particles to a row as they start.
+  More, for dissolving:
+  - Each kind can have its own `bond` (how strongly its particles hold on to one another, 1 by
+    default) and `heavy` (how strongly gravity pulls it), and a box's `cross` sets how strongly
+    the first kind and the others attract. With a `cross` above the solute's own `bond`, water pulls
+    a lump apart (sugar: `bond: 1.5, heavy: 0.2, cross: 1.8`); much weaker, it stays whole (sand:
+    `bond: 4, heavy: 3, cross: 1`). Water dissolves well with `heavy: 0.2` at a temperature of 0.7.
+  - `lump: true` (or a number of smaller lumps) starts the first kind as a lump on the floor, and
+    `hold` keeps it still until a phase lets it go (`release: ['b']`), so it is seen dropping in.
+  - A phase's `stir: { b: 2 }` swirls the box (a rod is drawn), and `stir: { b: 0 }` stops it.
+  - The part `count` shows "8 of 14 dissolved" under each box: particles of the first kind that
+    have broken away from the lump (a dissolved particle stays counted until it joins a real lump
+    again, so a few that brush together do not make the count jump).
+  - `speed: 4` on the element runs the simulation faster than usual, as real dissolving is slow.
   Emphasising a box's id makes it glow. Keep to a few dozen particles a box (120 at most): every
   frame of a moving scene is drawn afresh. See `src/content/chem7/videos/c7-2-1.ts` (the three
-  states, pistons) and `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge).
+  states, pistons), `c7-2-2.ts` (melting, boiling, condensing on a cold can), `c7-2-3.ts` (heat
+  flow, conduction), `c7-2-4.ts` (expansion, diffusion), `c7-3-2.ts` to `c7-3-4.ts` (dissolving,
+  saturation, stirring and heating) and
+  `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge).
   In chemistry, every scene that describes particles moving, mixing, reacting or being squeezed
   shows it with `particles` (the owner's rule of 14 November 2026).
 
