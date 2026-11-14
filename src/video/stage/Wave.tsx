@@ -35,6 +35,16 @@ function Measure({ x1, y1, x2, y2, color, opacity = 1 }: { x1: number; y1: numbe
   );
 }
 
+/**
+ * Which neighbouring pair of crests to measure the wavelength between: the first, from `from`
+ * on, whose label is clear of the lane's own label at the top left.
+ */
+function pairFrom(xs: number[], from: number, f: Frame, lane: WaveLane): number {
+  const clear = lane.label ? lane.label.length * 11.5 + 110 : 0;
+  for (let k = from; k + 1 < xs.length; k++) if ((f.X(xs[k]) + f.X(xs[k + 1])) / 2 > clear) return k;
+  return Math.min(from, Math.max(0, xs.length - 2));
+}
+
 /** The step between the numbers of a ruler that is `length` long: at most twelve of them. */
 function rulerStep(length: number): number {
   for (const step of [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500]) if (length / step <= 12) return step;
@@ -85,7 +95,8 @@ function Front({ el, lane, state, f, y1, y2, opacity }: { el: WaveEl; lane: Wave
 /** A rope: the wave is the shape of the rope, and each bead on it only moves up and down. */
 function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el: WaveEl; lane: WaveLane; state: LaneState; f: Frame; y0: number; color: string; glow: number; parts: Parts; mark: number; passed: number }) {
   const out: ReactElement[] = [];
-  const most = largestAmplitude(el, lane) || 1;
+  // Lanes of one kind share a scale, so a larger amplitude looks larger beside a smaller one.
+  const most = Math.max(...el.lanes.filter((l) => l.kind === lane.kind).map((l) => largestAmplitude(el, l))) || 1;
   const ampPx = Math.min(f.laneH * 0.27, 76);
   const scale = ampPx / most;
   const metres = (px: number) => el.span[0] + ((px - f.left) / (f.right - f.left)) * (el.span[1] - el.span[0]);
@@ -118,13 +129,13 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
     out.push(
       <g key="amplitude" opacity={parts.amplitude}>
         <Measure x1={f.X(x)} y1={y0} x2={f.X(x)} y2={y0 - a * scale} color={NET} />
-        <Text x={f.X(x)} y={y0 - a * scale - 22} size={20} color={NET}>{`amplitude ${short(a)} ${unit}`}</Text>
+        <Text x={f.X(x)} y={y0 - a * scale - 22} size={20} color={NET}>{el.values === false ? 'amplitude' : `amplitude ${short(a)} ${unit}`}</Text>
       </g>,
     );
   }
 
   // The wavelength: from one crest to the next (past the crest the amplitude is measured at, when there is room).
-  const from = parts.amplitude > 0 && crests.length >= 3 ? 1 : 0;
+  const from = pairFrom(crests, parts.amplitude > 0 && crests.length >= 3 ? 1 : 0, f, lane);
   if (parts.wavelength > 0 && crests.length >= 2) {
     const [a, b] = crests.slice(from);
     const y = y0 - Math.max(Math.abs(state.at(a)), Math.abs(state.at(b))) * scale - 20;
@@ -133,7 +144,7 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
         <line x1={f.X(a)} y1={y - 9} x2={f.X(a)} y2={y0 - Math.abs(state.at(a)) * scale - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
         <line x1={f.X(b)} y1={y - 9} x2={f.X(b)} y2={y0 - Math.abs(state.at(b)) * scale - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
         <Measure x1={f.X(a)} y1={y} x2={f.X(b)} y2={y} color={INK} />
-        <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{`wavelength ${short(b - a)} m`}</Text>
+        <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{el.values === false ? 'wavelength' : `wavelength ${short(b - a)} m`}</Text>
       </g>,
     );
   }
@@ -186,10 +197,11 @@ function Post({ f, x, y1, y2, passed, opacity }: { f: Frame; x: number; y1: numb
  */
 function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el: WaveEl; lane: WaveLane; state: LaneState; f: Frame; y0: number; color: string; glow: number; parts: Parts; mark: number; passed: number }) {
   const out: ReactElement[] = [];
-  const most = largestAmplitude(el, lane) || 1;
+  // Lanes of one kind share a scale, so a larger amplitude looks larger beside a smaller one.
+  const most = Math.max(...el.lanes.filter((l) => l.kind === lane.kind).map((l) => largestAmplitude(el, l))) || 1;
   const pxPerMetre = (f.right - f.left) / (el.span[1] - el.span[0]);
   // The particles never pass each other: their largest swing is well under a wavelength ÷ 2π.
-  const swing = Math.min(26, (0.6 * shortestWavelength(el, lane) * pxPerMetre) / TAU);
+  const swing = Math.min(26, (0.6 * Math.min(...el.lanes.filter((l) => l.kind === lane.kind).map((l) => shortestWavelength(el, l))) * pxPerMetre) / TAU);
   const scale = swing / most;
   const tubeH = Math.max(54, Math.min(f.laneH - 96, 118));
   const rows = Math.max(3, Math.floor(tubeH / 19));
@@ -200,17 +212,25 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
   const top = y0 - tubeH / 2;
 
   out.push(<rect key="tube" x={f.left - 34} y={top - 5} width={f.right - f.left + 40} height={tubeH + 10} rx={10} fill="rgb(255 255 255 / 0.04)" stroke={`rgb(255 255 255 / ${0.16 + 0.3 * glow})`} strokeWidth={1.5} />);
+  // How squashed the air is at a place, from −1 (most spread out) to 1 (most crowded): how fast
+  // the displacement falls along the strip, against the most it ever does.
+  const steepest = (most * TAU) / Math.min(...el.lanes.filter((l) => l.kind === lane.kind).map((l) => shortestWavelength(el, l)));
+  const half = step / pxPerMetre;
+  const crowding = (x: number) => Math.max(-1, Math.min(1, (state.at(x - half) - state.at(x + half)) / (2 * half) / steepest));
   const dots: ReactElement[] = [];
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       // Every other row is half a step along, so the particles do not stand in a grid.
       const px = f.left + 12 + c * step + (r % 2 ? step / 2 : 0);
-      if (px > f.right - 4) continue;
-      dots.push(<circle key={`${r}-${c}`} cx={(px + state.at(metres(px)) * scale).toFixed(1)} cy={top + gap * (r + 0.5)} r={4} />);
+      const at = px + state.at(metres(px)) * scale;
+      if (px > f.right - 4 || at > f.right + 2) continue;
+      // Crowded particles are a little brighter and the spread-out ones dimmer, so a compression shows from a distance.
+      const q = crowding(metres(px));
+      dots.push(<circle key={`${r}-${c}`} cx={at.toFixed(1)} cy={top + gap * (r + 0.5)} r={(4 + 0.7 * q).toFixed(2)} fillOpacity={(0.7 + 0.3 * q).toFixed(2)} />);
     }
   }
   out.push(
-    <g key="dots" fill={color} fillOpacity={0.9} style={glow > 0 ? { filter: `drop-shadow(0 0 ${8 * glow}px ${color})` } : undefined}>
+    <g key="dots" fill={color} style={glow > 0 ? { filter: `drop-shadow(0 0 ${8 * glow}px ${color})` } : undefined}>
       {dots}
     </g>,
   );
@@ -229,14 +249,14 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
 
   // The wavelength: from the middle of one compression to the middle of the next.
   if (parts.wavelength > 0 && squeezed.length >= 2) {
-    const [a, b] = squeezed;
+    const [a, b] = squeezed.slice(pairFrom(squeezed, 0, f, lane));
     const y = top - 22;
     out.push(
       <g key="wavelength" opacity={parts.wavelength}>
         <line x1={f.X(a)} y1={y - 9} x2={f.X(a)} y2={top - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
         <line x1={f.X(b)} y1={y - 9} x2={f.X(b)} y2={top - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
         <Measure x1={f.X(a)} y1={y} x2={f.X(b)} y2={y} color={INK} />
-        <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{`wavelength ${short(b - a)} m`}</Text>
+        <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{el.values === false ? 'wavelength' : `wavelength ${short(b - a)} m`}</Text>
       </g>,
     );
   }

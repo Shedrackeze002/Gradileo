@@ -141,7 +141,7 @@ describe('wave: a wave that bounces back', () => {
     expect(back.at(4.75)).toBeCloseTo(-out.at(7.25));
     expect(back.at(8)).toBeCloseTo(0);
     // It is back at the source after 24 m ÷ 4 m/s = 6 s.
-    expect(Math.abs(waveAt(burst, [['clap', 6.1]]).lanes.rope.at(0.15))).toBeGreaterThan(1);
+    expect(Math.abs(waveAt(burst, [['clap', 6.1]]).lanes.rope.at(0.35))).toBeCloseTo(2);
   });
 
   it('keeps the far end still', () => {

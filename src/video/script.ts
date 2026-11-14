@@ -451,6 +451,8 @@ export interface WaveEl {
   amplitudeUnit?: string;
   /** `false` leaves out the ruler of distance under the strips. */
   ruler?: boolean;
+  /** `false` leaves the sizes off the amplitude and the wavelength, for a picture that is not to scale. */
+  values?: boolean;
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
   height?: number;
