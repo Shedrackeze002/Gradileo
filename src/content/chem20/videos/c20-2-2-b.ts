@@ -1,9 +1,21 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { barometer } from './lib/c20-2a-figures.ts';
 
 // A mercury barometer at sea level: the air holds up a column about 760 mm high.
 const baro = figure('b', [barometer()], 560);
+
+/**
+ * A column of air (simulated, src/video/particles.ts) with no lid, pulled down by gravity: crowded
+ * at the bottom, thin higher up, every particle hitting the ground adding to the pressure there.
+ */
+const air: ParticlesEl = {
+  kind: 'particles',
+  id: 'air',
+  boxes: [{ id: 'a', state: 'gas', width: 8, height: 14, temp: 1.2, open: true, kinds: [{ n: 24, size: 0.7, bond: 0.15, heavy: 3.5, tone: 'adj' }], label: 'air above the ground' }],
+  clips: {},
+  height: 560,
+};
 
 const video: Explainer = {
   id: 'c20-2-2-b',
@@ -24,8 +36,10 @@ const video: Explainer = {
     },
     {
       chapter: 'The pressure of the air',
-      layout: 'center',
-      main: [
+      layout: 'split',
+      leftWidth: 420,
+      left: [air],
+      right: [
         {
           kind: 'bullets',
           id: 'b',
@@ -37,9 +51,10 @@ const video: Explainer = {
         },
       ],
       lines: [
+        { say: 'Here is a column of air, its particles flying about but pulled down by gravity. They crowd together near the ground, and every one that hits the ground gives it a push.', show: ['air', 'air.labels', 'air.hits'], focus: 'air.hits' },
         { say: 'At sea level, the pressure of the atmosphere is about one hundred one kilopascals. That is a force of about one hundred one thousand newtons on every square metre, roughly the weight of a ten-tonne mass.', show: 'b.0' },
         { say: 'We do not feel it, because the air pushes equally from every side, and the fluids in our bodies push back out just as hard.', show: 'b.1' },
-        { say: 'Higher up, there is less air above, so atmospheric pressure falls. Near the tops of the highest mountains, it is only about a third of its value at sea level. It also rises and falls a little with the weather.', show: 'b.2' },
+        { say: 'Higher up, there is less air above, so atmospheric pressure falls. Look at the top of the column: the particles are fewer and farther apart. Near the tops of the highest mountains, the pressure is only about a third of its value at sea level. It also rises and falls a little with the weather.', show: 'b.2', focus: 'air' },
       ],
     },
     {

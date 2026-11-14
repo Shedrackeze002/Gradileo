@@ -70,7 +70,7 @@ function Thermometer({ x, top, bottom, level, opacity, marks = [] }: { x: number
 }
 
 /** A dial gauge: the needle sweeps from `0` to `max` and the reading is written under it. */
-function Gauge({ cx, cy, r, value, max, unit, opacity, glow }: { cx: number; cy: number; r: number; value: number; max: number; unit: string; opacity: number; glow: number }) {
+function Gauge({ cx, cy, r, value, max, unit, opacity, glow, decimals = 0 }: { cx: number; cy: number; r: number; value: number; max: number; unit: string; opacity: number; glow: number; decimals?: number }) {
   const a0 = (-225 * Math.PI) / 180;
   const sweep = (270 * Math.PI) / 180;
   const at = (k: number, rr: number): [number, number] => [cx + rr * Math.cos(a0 + sweep * k), cy + rr * Math.sin(a0 + sweep * k)];
@@ -86,7 +86,7 @@ function Gauge({ cx, cy, r, value, max, unit, opacity, glow }: { cx: number; cy:
       })}
       <line x1={cx} y1={cy} x2={nx} y2={ny} stroke={TONES.theta} strokeWidth={5} strokeLinecap="round" />
       <circle cx={cx} cy={cy} r={7} fill={TONES.theta} />
-      <Text x={cx} y={cy + r * 0.5} size={22}>{`${Math.round(value)} ${unit}`}</Text>
+      <Text x={cx} y={cy + r * 0.5} size={22}>{`${value.toFixed(decimals)} ${unit}`}</Text>
       <Text x={cx} y={cy - r - 18} size={19} color={INK3} weight={500}>pressure</Text>
     </g>
   );
@@ -336,6 +336,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 value={pressureOf(el, b, f.temp, f.lidY / bh)}
                 max={(el.gauge.start ?? 100) * 5}
                 unit={el.gauge.unit ?? 'kPa'}
+                decimals={el.gauge.decimals}
                 opacity={gauge}
                 glow={st?.focus.gauge ?? 0}
               />

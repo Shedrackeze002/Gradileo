@@ -1,11 +1,24 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+/**
+ * A gas under a piston (simulated, src/video/particles.ts) with a gauge in atmospheres: pushing the
+ * piston in to 1/1.75 of the height raises the reading from 1.00 atm to 1.75 atm.
+ */
+const pump: ParticlesEl = {
+  kind: 'particles',
+  id: 'pump',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 9, temp: 1.6, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }] }],
+  clips: { push: { phases: [{ dur: 4, lid: { b: 1 / 1.75 } }] } },
+  gauge: { box: 'b', start: 1, unit: 'atm', decimals: 2 },
+  height: 470,
+};
 
 const video: Explainer = {
   id: 'c20-2-2-c',
   lessonId: 'c20-2-2',
   title: 'Pressure and Temperature, Part 3: Converting Pressure Units',
   thumbnailTitle: 'Converting Pressure Units',
-  thumbnail: false,
+  thumbnail: 'pump',
   summary:
     'To convert a pressure, multiply by a conversion factor from 1 atm = 101.325 kPa = 760 mm Hg, with the unit you want on top and the unit you have on the bottom. For example, 1.75 atm = 177 kPa and 735 mm Hg = 98.0 kPa. Converting to mm Hg makes the number bigger; converting to atm makes it smaller.',
   scenes: [
@@ -15,6 +28,18 @@ const video: Explainer = {
       lines: [
         { say: 'The same pressure can be written as one atmosphere, as one hundred one point three two five kilopascals, or as seven hundred sixty millimetres of mercury.', show: 'title' },
         { say: 'In this part, you will convert pressures from one of these units to another, using conversion factors.' },
+      ],
+    },
+    {
+      chapter: 'One pressure, many units',
+      layout: 'split',
+      leftWidth: 560,
+      left: [pump],
+      right: [{ kind: 'math', id: 'r', size: 'lg', align: 'left', lines: ['1.00\\ \\text{atm} \\;\\to\\; 1.75\\ \\text{atm}', '1.75\\ \\text{atm} = \\ ?\\ \\text{kPa}'] }],
+      lines: [
+        { say: 'Here is a gas in a cylinder, with a gauge that reads in atmospheres. Right now it reads one point zero zero.', show: ['pump', 'pump.gauge', 'pump.hits'] },
+        { say: 'Push the piston in, and the same particles have less room, so they hit the walls more often. The reading climbs to one point seven five atmospheres.', play: 'pump.push', show: 'r.0', focus: 'pump.gauge' },
+        { say: 'Another gauge could show the same pressure in kilopascals, or in millimetres of mercury. The pressure does not change: only the number and the unit do. You will find this one in kilopascals in a moment.', show: 'r.1', focus: 'r.1' },
       ],
     },
     {

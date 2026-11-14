@@ -533,8 +533,11 @@ export interface ParticlesEl {
   id: string;
   boxes: ParticleBox[];
   clips: Record<string, { phases: ParticlePhase[] }>;
-  /** A pressure gauge on one box, reading `start` (in `unit`, kPa by default) as the box starts. */
-  gauge?: { box: string; start: number; unit?: string };
+  /**
+   * A pressure gauge on one box, reading `start` (in `unit`, kPa by default) as the box starts,
+   * to `decimals` places (none by default).
+   */
+  gauge?: { box: string; start: number; unit?: string; decimals?: number };
   /** A volume reading under one box, `start` (in `unit`, L by default) with the lid where it starts. */
   volume?: { box: string; start: number; unit?: string; decimals?: number };
   /**
