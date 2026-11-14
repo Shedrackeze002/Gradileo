@@ -258,3 +258,163 @@ describe('motion: air resistance', () => {
     expect(s.forces.find((f) => f.name === 'Air resistance')!.age).toBeCloseTo(3);
   });
 });
+
+describe('motion: energy', () => {
+  it('counts the work of a push, and what friction turns to heat', () => {
+    // A 2 kg block pushed with 10 N against 4 N of friction: a = 3 m/s², so 6 m in 2 s.
+    const pushed = el({
+      clips: { push: { phases: [{ dur: 2, forces: [{ on: 'b', name: 'Push', n: 10 }, { on: 'b', name: 'Friction', n: -4, resist: true }] }] } },
+    });
+    const e = motionAt(pushed, [['push', 2]]).energy.b;
+    expect(e.work).toBeCloseTo(60, 6);
+    expect(e.heat).toBeCloseTo(24, 6);
+    expect(e.kinetic).toBeCloseTo(36, 6);
+    expect(e.potential).toBe(0);
+  });
+
+  it('turns all the kinetic energy to heat when friction stops a body', () => {
+    const sliding = el({ bodies: [{ ...block, v: 6 }], clips: { go: { phases: [{ dur: 5, forces: [{ on: 'b', name: 'Friction', n: -4, resist: true }] }] } } });
+    const e = motionAt(sliding, [['go', 5]]).energy.b;
+    expect(e.kinetic).toBe(0);
+    expect(e.heat).toBeCloseTo(36, 6);
+    expect(e.work).toBe(0);
+  });
+
+  it('trades potential energy for kinetic energy in a drop, and keeps the total', () => {
+    // A 2 kg ball dropped 2.5 m on Earth: 49 J, and 7 m/s as it lands.
+    const drop = el({
+      vertical: true,
+      span: [0, 2.5],
+      bodies: [{ id: 'b', shape: 'ball', mass: 2, x: 0 }],
+      energy: { max: 50, bars: ['kinetic', 'potential', 'total'], g: 9.8 },
+      clips: { fall: { phases: [{ dur: 1, forces: [{ on: 'b', name: 'Weight', n: 19.6 }] }] } },
+    });
+    expect(checkMotion(drop)).toEqual([]);
+    expect(motionAt(drop).energy.b).toEqual({ kinetic: 0, potential: 49, work: 0, heat: 0 });
+    const t = Math.sqrt((2 * 2.5) / 9.8);
+    const half = motionAt(drop, [['fall', t / 2]]).energy.b;
+    expect(half.kinetic + half.potential).toBeCloseTo(49, 6);
+    const landed = motionAt(drop, [['fall', t]]);
+    expect(landed.bodies.b.v).toBeCloseTo(7, 6);
+    expect(landed.energy.b.kinetic).toBeCloseTo(49, 5);
+    expect(landed.energy.b.potential).toBeCloseTo(0, 5);
+    expect(landed.energy.b.heat).toBe(0);
+  });
+
+  it('stores the work of a steady lift as potential energy', () => {
+    // A 20 kg crate lifted 5 m at a steady 1 m/s: 196 N × 5 m = 980 J.
+    const lift = el({
+      vertical: 'up',
+      span: [0, 6],
+      bodies: [{ id: 'b', shape: 'block', mass: 20, x: 0 }],
+      energy: { max: 1000, bars: ['work', 'potential'], g: 9.8 },
+      clips: { up: { phases: [{ dur: 5, set: { b: 1 }, forces: [{ on: 'b', name: 'Lift', n: 196 }, { on: 'b', name: 'Weight', n: -196 }] }] } },
+    });
+    const s = motionAt(lift, [['up', 5]]);
+    expect(s.bodies.b.x).toBeCloseTo(5, 9);
+    expect(s.energy.b.work).toBeCloseTo(980, 6);
+    expect(s.energy.b.potential).toBeCloseTo(980, 6);
+    expect(s.energy.b.heat).toBe(0);
+  });
+
+  it('counts what air resistance turns to heat', () => {
+    const fall = el({
+      vertical: true,
+      span: [0, 40],
+      bodies: [{ id: 'b', shape: 'ball', mass: 1, x: 0 }],
+      energy: { max: 400, bars: ['kinetic', 'potential', 'heat', 'total'], g: 9.8 },
+      clips: { go: { phases: [{ dur: 5, forces: [{ on: 'b', name: 'Weight', n: 9.8 }, { on: 'b', name: 'Air resistance', n: 0, drag: 2.45 }] }] } },
+    });
+    const start = motionAt(fall).energy.b;
+    const e = motionAt(fall, [['go', 5]]).energy.b;
+    expect(e.heat).toBeGreaterThan(0);
+    expect(e.kinetic + e.potential + e.heat).toBeCloseTo(start.potential, 5);
+  });
+
+  it('asks for a height before it shows potential energy', () => {
+    expect(checkMotion(el({ energy: { max: 10, bars: ['potential'] } }))).toHaveLength(1);
+    expect(checkMotion(el({ energy: { max: 10, bars: ['kinetic'], of: ['nobody'] } }))).toHaveLength(1);
+  });
+});
+
+describe('motion: a curved track', () => {
+  // A 2 kg ball let go 2.5 m up a hill that runs down to level ground.
+  const hill = el({
+    span: [0, 14],
+    path: { g: 9.8, points: [[0, 2.5], [5, 0], [12, 0]] },
+    bodies: [{ id: 'b', shape: 'ball', mass: 2, x: 0 }],
+    energy: { max: 50, bars: ['kinetic', 'potential', 'total'] },
+    clips: { go: { phases: [{ dur: 4 }] }, rough: { reset: true, phases: [{ dur: 6, forces: [{ on: 'b', name: 'Friction', n: -3, resist: true }] }] } },
+  });
+
+  it('is a valid motion', () => {
+    expect(checkMotion(hill)).toEqual([]);
+    expect(checkMotion(el({ path: { g: 9.8, points: [[0, 1], [4, 0]] }, vertical: true }))).toContain('a curved track cannot also be a drop.');
+  });
+
+  it('reaches the foot of the hill at the speed the height gives', () => {
+    // mgh = ½mv²: v = √(2 × 9.8 × 2.5) = 7 m/s, whatever the shape of the hill.
+    const s = motionAt(hill, [['go', 4]]);
+    expect(s.energy.b.potential).toBeCloseTo(0, 6);
+    expect(s.bodies.b.v).toBeCloseTo(7, 3);
+    expect(s.energy.b.kinetic).toBeCloseTo(49, 2);
+  });
+
+  it('keeps the total energy all the way down', () => {
+    for (const t of [0, 0.4, 0.8, 1.2, 1.6, 2.4, 4]) {
+      const e = motionAt(hill, [['go', t]]).energy.b;
+      expect(e.kinetic + e.potential).toBeCloseTo(49, 2);
+      expect(e.heat).toBeCloseTo(0, 2);
+    }
+  });
+
+  it('turns energy to heat with friction, and stops', () => {
+    const s = motionAt(hill, [['rough', 6]]);
+    const e = s.energy.b;
+    expect(e.heat).toBeGreaterThan(10);
+    expect(e.kinetic + e.potential + e.heat).toBeCloseTo(49, 2);
+    // Heat is friction × the distance travelled along the track.
+    expect(e.heat).toBeCloseTo(3 * s.travelled.b, 2);
+  });
+
+  it('holds a body that friction can hold on the slope', () => {
+    const held = el({ ...hill, clips: { stay: { phases: [{ dur: 2, forces: [{ on: 'b', name: 'Friction', n: -40, resist: true }] }] } } });
+    expect(motionAt(held, [['stay', 2]]).bodies.b).toEqual({ x: 0, v: 0, a: 0 });
+  });
+});
+
+describe('motion: a pendulum', () => {
+  const swing = (angle: number) =>
+    el({
+      span: [-3, 3],
+      path: { g: 9.8, swing: { length: 2, angle: 60 } },
+      bodies: [{ id: 'b', shape: 'ball', mass: 0.5, x: (-2 * angle * Math.PI) / 180 }],
+      energy: { max: 6, bars: ['kinetic', 'potential', 'total'] },
+      clips: { go: { phases: [{ dur: 12 }] } },
+    });
+
+  it('swings with the period 2π√(L ÷ g) when the swing is small', () => {
+    const small = swing(3);
+    const period = 2 * Math.PI * Math.sqrt(2 / 9.8);
+    const start = small.bodies[0].x;
+    expect(motionAt(small, [['go', period / 2]]).bodies.b.x).toBeCloseTo(-start, 3);
+    expect(motionAt(small, [['go', period]]).bodies.b.x).toBeCloseTo(start, 3);
+    expect(motionAt(small, [['go', period / 4]]).bodies.b.x).toBeCloseTo(0, 3);
+  });
+
+  it('is fastest at the bottom, where all its energy is kinetic', () => {
+    // Let go at 60 degrees on a 2 m string: 1 m up, so 0.5 × 9.8 × 1 = 4.9 J.
+    const wide = swing(60);
+    const top = motionAt(wide).energy.b;
+    expect(top.potential).toBeCloseTo(4.9, 6);
+    expect(top.kinetic).toBe(0);
+    let fastest = { kinetic: 0, potential: 0 };
+    for (let t = 0; t <= 12; t += 0.02) {
+      const e = motionAt(wide, [['go', t]]).energy.b;
+      expect(e.kinetic + e.potential).toBeCloseTo(4.9, 3);
+      if (e.kinetic > fastest.kinetic) fastest = e;
+    }
+    expect(fastest.kinetic).toBeCloseTo(4.9, 2);
+    expect(fastest.potential).toBeCloseTo(0, 2);
+  });
+});
