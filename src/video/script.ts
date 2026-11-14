@@ -340,14 +340,42 @@ export interface ParticleBox {
   /**
    * Several kinds of particle (a mixture, or two gases side by side), each with its count and
    * colour, how strongly its particles attract one another (`bond`, 1 by default: 2.5 makes a
-   * solid that stays solid in a hot liquid) and how strongly gravity pulls it (`heavy`, 1).
+   * solid that stays solid in a hot liquid) and how strongly gravity pulls it (`heavy`, 1). A kind
+   * can be bigger or smaller (`size`, its diameter, 1 by default: sand grains held back by a
+   * filter), pulled by a magnet (`magnetic`), or carried up a paper strip by the solvent (`rise`,
+   * how fast compared with the solvent itself, 0 to 1).
    */
-  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number }>;
+  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number; size?: number; magnetic?: boolean; rise?: number }>;
   /**
    * How strongly particles of different kinds attract one another (between their own bonds by
    * default). Stronger than the solute's own bond, a lump dissolves; much weaker, it stays whole.
    */
   cross?: number;
+  /**
+   * A filter (or sieve) across the box at this fraction of its height, with holes this wide:
+   * the particles start above it, and it holds them all until a phase lets them through
+   * (`release`); then particles smaller than the holes pass and bigger ones stay on it.
+   */
+  filter?: { at: number; holes: number };
+  /** An open top the particles can leave by (evaporation): one that reaches the top is gone. */
+  escape?: boolean;
+  /**
+   * A low wall standing across the box at this fraction of its width, this fraction of its height
+   * tall, that never lifts: the particles start on its left, and only a gas can get over it (a
+   * still, with the flask on the left and the collecting side on the right).
+   */
+  wall?: { at: number; height: number };
+  /**
+   * Parts of the box (fractions of its width and height) held at their own temperatures, the
+   * rest of the box only passing heat on by bumping: a hot plate under a flask, a cold condenser.
+   * A zone with no `temp` follows the box's temperature (so a clip heats it).
+   */
+  zones?: Array<{ x: [number, number]; y: [number, number]; temp?: Temp }>;
+  /**
+   * A strip of chromatography paper: no glass, the particles start as a dot near the bottom, and
+   * a phase's `run` sends the solvent up the paper, carrying each kind up at its `rise`.
+   */
+  paper?: boolean;
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
   lump?: boolean | number;
   /** Hold the first kind still (a lump, keeping its shape), until a phase lets it go (`release`). */
@@ -412,6 +440,10 @@ export interface ParticlePhase {
   release?: string[];
   /** How hard to stir each box (0 stops; 2 stirs briskly), reached steadily over the phase. */
   stir?: Record<string, number>;
+  /** How strongly a magnet over each box pulls its magnetic kinds (0 takes it away; 1 is strong). */
+  magnet?: Record<string, number>;
+  /** How fast the solvent runs up each paper box (0 stops it; 1 is the usual). */
+  run?: Record<string, number>;
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
@@ -624,13 +656,19 @@ export function checkParticles(e: ParticlesEl): string[] {
   }
   for (const b of e.boxes) if ((b.lump || b.hold) && (b.kinds?.length ?? 0) < 2) problems.push(`box "${b.id}": a lump or held particles need two kinds (the lump first, then what is round it).`);
   for (const b of e.boxes) if (b.divider !== undefined && !(b.divider > 0.1 && b.divider < 0.9)) problems.push(`box "${b.id}": a divider must be between 0.1 and 0.9 of the way across.`);
+  for (const b of e.boxes) if (b.wall && !(b.wall.at > 0.1 && b.wall.at < 0.9 && b.wall.height > 0 && b.wall.height < 1)) problems.push(`box "${b.id}": a wall must stand between 0.1 and 0.9 of the way across, and be lower than the box.`);
+  for (const b of e.boxes) if (b.filter && !(b.filter.at > 0.1 && b.filter.at < 0.9)) problems.push(`box "${b.id}": a filter must be between 0.1 and 0.9 of the way up.`);
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     clip.phases.forEach((ph, pi) => {
       if (!(ph.dur > 0)) problems.push(`clip "${name}", phase ${pi + 1} needs a length above zero.`);
       for (const id of ph.lift ?? []) if (!e.boxes.find((b) => b.id === id)?.divider) problems.push(`clip "${name}", phase ${pi + 1} lifts a divider that box "${id}" does not have.`);
-      for (const id of ph.release ?? []) if (!e.boxes.find((b) => b.id === id)?.hold) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
-      for (const id of Object.keys(ph.stir ?? {})) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
+      for (const id of ph.release ?? []) {
+        const b = e.boxes.find((bb) => bb.id === id);
+        if (!b?.hold && !b?.filter) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
+      }
+      for (const id of [...Object.keys(ph.stir ?? {}), ...Object.keys(ph.magnet ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
+      for (const id of Object.keys(ph.run ?? {})) if (!e.boxes.find((b) => b.id === id)?.paper) problems.push(`clip "${name}", phase ${pi + 1} runs solvent up box "${id}", which is not paper.`);
       for (const id of [...Object.keys(ph.heat ?? {}), ...Object.keys(ph.lid ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const v of Object.values(ph.lid ?? {})) if (!(v > 0.2 && v <= 1)) problems.push(`clip "${name}", phase ${pi + 1}: a lid must be between 0.2 and 1.`);
     });
