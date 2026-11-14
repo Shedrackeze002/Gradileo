@@ -173,9 +173,25 @@ See `src/video/script.ts` for every element and option. In short:
   (wall hits each second), and, when the element sets them up, `thermo` (`thermometers: true`),
   `gauge` (`gauge: { box, start }`, a pressure in kPa that follows P × V and the temperature, so
   it agrees with the numbers said) and `volume` (`volume: { box, start }`, in litres).
+  Thermometers can carry marks (`thermometers: { marks: [{ at: 0.33, label: 'melts' }] }`; this
+  simulation melts at about 0.33 and boils at about 0.9). More, for heat and mixing:
+  - `divider: 0.5` stands a wall across a box (with `apart`, each kind starts on its own side) until
+    a phase lifts it (`lift: ['b']`): two gases or liquids then mix by diffusion.
+  - `bath: 'left' | 'right' | 'floor'` heats or cools only a strip along that side (tinted red or
+    blue); the rest of the box gets the heat by particles bumping into one another, so a bar
+    conducts heat along itself and a gas condenses on a cold wall.
+  - `heatColor: [cold, hot]` colours each particle by how fast it moves, blue to red.
+  - `flow: { from, to }` on the element, with the part `flow`, draws an arrow of heat between two
+    boxes side by side that thins as their temperatures meet.
+  - `expand: 0.8` lets a solid's particles settle further apart as it warms (more than a real
+    solid, so it shows), and the part `width` draws a bracket over it with dashed marks as wide
+    as it was at first. Keep such a solid low and wide (`cols`), below about 0.15, or its rows slide.
+  - `bare` draws no box (a metal bar) and `cols` sets the particles to a row as they start.
   Emphasising a box's id makes it glow. Keep to a few dozen particles a box (120 at most): every
   frame of a moving scene is drawn afresh. See `src/content/chem7/videos/c7-2-1.ts` (the three
-  states, pistons) and `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge).
+  states, pistons), `c7-2-2.ts` (melting, boiling, condensing on a cold can), `c7-2-3.ts` (heat
+  flow, conduction), `c7-2-4.ts` (expansion, diffusion) and
+  `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge).
   In chemistry, every scene that describes particles moving, mixing, reacting or being squeezed
   shows it with `particles` (the owner's rule of 14 November 2026).
 
