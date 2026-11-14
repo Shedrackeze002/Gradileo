@@ -1198,9 +1198,9 @@ items ship or decisions change.
        velocity-time graph that draws itself, slow motion and live momentum bars
        (`src/video/motion.ts`, `video/README.md`). Two sample videos for the owner to judge the
        style: `phys-sample-forces` (what a force does, Newton's second law, friction and net
-       force) and `phys-sample-momentum` (momentum, two collisions, conservation), in
-       `src/content/physics/videos/`. They are samples: not lessons of a course, and not on
-       YouTube.
+       force; since moved to `p10-2-3`) and `phys-sample-momentum` (momentum, two collisions,
+       conservation), in `src/content/physics/videos/`. They are samples: not lessons of a
+       course, and not on YouTube.
      - Decision (the owner, 14 November 2026): the style of the two samples is approved ("this
        works"). The engine and samples are merged (pull request #185).
      - Plan: `docs/PLAN-PHYSICS.md`, sent to the owner on 14 November 2026: Grade 10, 11 and 12
@@ -1215,10 +1215,21 @@ items ship or decisions change.
        new classes, a Physics choice on "Find your course" (every grade is recommended Grade 10
        Physics, the first course, with no placement check), and seven physics topics on "Browse
        by topic".
-     - Next: the Grade 10 videos, unit by unit, with each unit's animation built first (motion
-       in two dimensions, energy bars, waves, rays, circuits); the two samples become the videos
-       of their lessons and stay off YouTube until then. Then Grade 11 Physics (`phys-20`) and
-       Grade 12 Physics (`phys-30`); the lessons have no videos or tutor recordings yet.
+     - Done (14 November 2026): **the five videos of Unit 1, Describing Motion** (`p10-1-1` to
+       `p10-1-5`), rendered and in Drive. The engine gained what they needed: the distance
+       travelled drawn leg by leg, a displacement arrow, a distance-time graph, and "speed ="
+       for videos that come before velocity is taught. `phys-10` is in the uploader's
+       `MADE_FOR_KIDS` list; the YouTube upload task still has to be given the course.
+     - Written (14 November 2026), not yet rendered: **the seven videos of Unit 2, Forces and
+       Newton's Laws** (`p10-2-1` to `p10-2-6`, with lesson 2.5 in two parts). The sample
+       `phys-sample-forces` is now the video of lesson 2.3 (`p10-2-3`). The engine gained a drop
+       (`vertical`) and air resistance (`drag`), so a skydiver reaches terminal velocity, a
+       parachute opens, and a hammer and a feather fall on Earth and on the Moon.
+     - Next: render Unit 2; then the videos of Units 3 to 5, each unit's animation built first
+       (energy bars with a ramp and a pendulum, waves, rays, circuits). `phys-sample-momentum`
+       becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then Grade 11
+       Physics (`phys-20`) and Grade 12 Physics (`phys-30`); the lessons have no tutor recordings
+       yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

@@ -246,7 +246,9 @@ export function stateAt(tl: Timeline, t: number): FrameState {
       const cur = shown[el];
       if (!cur || cur.hiddenAt !== null) continue;
       // A part shown on its own can be hidden on its own; anything else hides the whole element.
-      if (part !== undefined && part in cur.parts && !cur.whole) {
+      // Showing a whole motion does not show its parts (the velocity arrows, the readout), so
+      // one of those can be hidden while the motion stays.
+      if (part !== undefined && part in cur.parts && (!cur.whole || s.kinds[el] === 'motion')) {
         if (!(part in cur.partHidden)) cur.partHidden[part] = ev.t;
       } else cur.hiddenAt = ev.t;
     } else if (ev.kind === 'focus') {

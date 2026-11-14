@@ -1,8 +1,9 @@
 import type { Explainer, MotionEl, MotionForce } from '@/video/script.ts';
 
-// A sample of the animated physics videos (not yet a lesson of a course): what a force does to a
-// block, shown by moving the block with the forces drawn on it. Every number on the screen comes
-// from the motion itself (src/video/motion.ts), so the picture cannot disagree with the physics.
+// Lesson 2.3 (first made as the sample that set the style of the physics videos): what a net
+// force does to a block, two fair tests (a bigger force, a bigger mass), F = ma, and friction
+// taking its share of a push. Every number on the screen comes from the motion itself
+// (src/video/motion.ts), so the picture cannot disagree with the physics.
 
 const push = (on: string, n: number): MotionForce => ({ on, name: 'Push', n, tone: 'opp' });
 
@@ -73,22 +74,19 @@ const floor: MotionEl = {
 };
 
 const video: Explainer = {
-  id: 'phys-sample-forces',
-  lessonId: '',
-  label: 'Forces and Motion',
-  tags: ['physics', 'forces', 'Newton’s second law', 'net force', 'friction', 'acceleration', 'F = ma', 'high school physics'],
-  title: 'What a Force Does: Newton’s Second Law',
-  thumbnailTitle: 'What a Force Does',
+  id: 'p10-2-3',
+  lessonId: 'p10-2-3',
+  title: 'Newton’s Second Law',
   thumbnail: 'sim',
   summary:
     'A force changes an object’s velocity. Watch a block speed up under a steady push, compare a bigger force and a bigger mass in two fair tests, and see how friction and the net force decide the acceleration: net force = mass × acceleration.',
   scenes: [
     {
       layout: 'center',
-      main: [{ kind: 'title', id: 'title', kicker: 'Forces and Motion', title: 'What a Force Does', subtitle: 'Newton’s second law, shown in motion' }],
+      main: [{ kind: 'title', id: 'title', kicker: 'Forces and Newton’s Laws', title: 'Newton’s Second Law', subtitle: 'What a net force does to an object' }],
       lines: [
         { say: 'Push a box across the floor, and it starts to move. Push harder, and it picks up speed more quickly.', show: 'title' },
-        { say: 'In this video, you will watch what a force really does to an object, and see where one of the most famous rules in physics comes from.' },
+        { say: 'The first law says what happens when the net force is zero. In this lesson, you will watch what happens when it is not, and see where one of the most famous rules in physics comes from.' },
       ],
     },
     {

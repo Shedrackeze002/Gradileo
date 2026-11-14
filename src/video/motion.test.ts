@@ -172,3 +172,89 @@ describe('motion in a script', () => {
     expect(checkMotion(bad)).toEqual(['clip "c", phase 1: a force acts on no body "z".', 'clip "c", phase 1: the vertical forces on "b" do not balance.']);
   });
 });
+
+describe('motion: distance and displacement', () => {
+  // A cart goes 8 m to the right at 4 m/s, then 3 m back at 1.5 m/s.
+  const cart: MotionBody = { id: 'c', shape: 'cart', mass: 1, x: 1 };
+  const trip = el({ bodies: [cart], clips: { out: { phases: [{ dur: 2, set: { c: 4 } }] }, back: { phases: [{ dur: 2, set: { c: -1.5 } }] } } });
+
+  it('counts every metre travelled, whichever way the body went', () => {
+    const s = motionAt(trip, [['out', 2], ['back', 2]]);
+    expect(s.bodies.c.x).toBeCloseTo(6);
+    expect(s.travelled.c).toBeCloseTo(11);
+    // It started at 1 m and turned round at 9 m.
+    expect(s.turns.c).toEqual([1, 9]);
+  });
+
+  it('keeps a distance trace for the graph, which never falls', () => {
+    const { path } = motionAt(trip, [['out', 2], ['back', 2]]);
+    expect(path.c[0]).toEqual([0, 0]);
+    const [t, d] = path.c[path.c.length - 1];
+    expect(t).toBeCloseTo(4);
+    expect(d).toBeCloseTo(11);
+    for (let i = 1; i < path.c.length; i++) expect(path.c[i][1]).toBeGreaterThanOrEqual(path.c[i - 1][1]);
+  });
+
+  it('finds where a body turns round under a steady force', () => {
+    // Thrown to the right at 4 m/s against a 2 N force on 1 kg: it stops after 2 s, 4 m on, and comes back.
+    const thrown = el({ bodies: [{ ...cart, v: 4 }], clips: { go: { phases: [{ dur: 3, forces: [{ on: 'c', name: 'Pull', n: -2 }] }] } } });
+    const s = motionAt(thrown, [['go', 3]]);
+    expect(s.turns.c[1]).toBeCloseTo(5);
+    expect(s.bodies.c.x).toBeCloseTo(4);
+    expect(s.travelled.c).toBeCloseTo(5);
+  });
+
+  it('starts the count again when a clip puts the bodies back', () => {
+    const again = el({ bodies: [cart], clips: { out: { phases: [{ dur: 2, set: { c: 4 } }] }, redo: { reset: true, phases: [{ dur: 1, set: { c: 2 } }] } } });
+    const s = motionAt(again, [['out', 2], ['redo', 1]]);
+    expect(s.travelled.c).toBeCloseTo(2);
+    expect(s.turns.c).toEqual([1]);
+  });
+});
+
+describe('motion: air resistance', () => {
+  // A 1 kg ball falling: 9.8 N of weight, and 2.45 N of air resistance for each metre per second,
+  // so its terminal velocity is 4 m/s. In a drop, x is the distance fallen.
+  const ball: MotionBody = { id: 'ball', shape: 'ball', mass: 1, x: 0 };
+  const weight = { on: 'ball', name: 'Weight', n: 9.8 };
+  const air = (drag: number) => ({ on: 'ball', name: 'Air resistance', n: 0, drag });
+  const fall = el({ vertical: true, span: [0, 40], bodies: [ball], clips: { go: { phases: [{ dur: 10, forces: [weight, air(2.45)] }] } } });
+
+  it('starts a fall at the acceleration the weight alone gives', () => {
+    expect(motionAt(fall, [['go', 0.001]]).bodies.ball.a).toBeCloseTo(9.8, 1);
+  });
+
+  it('closes on the terminal velocity, where the air resistance equals the weight', () => {
+    const s = motionAt(fall, [['go', 10]]);
+    expect(s.bodies.ball.v).toBeCloseTo(4, 5);
+    expect(s.bodies.ball.a).toBeCloseTo(0, 5);
+    // The arrow drawn for the air resistance is as large as the weight, and points up.
+    expect(s.forces.find((f) => f.name === 'Air resistance')!.n).toBeCloseTo(-9.8, 4);
+  });
+
+  it('never passes the terminal velocity on the way', () => {
+    const { trace } = motionAt(fall, [['go', 10]]);
+    for (let i = 1; i < trace.ball.length; i++) {
+      expect(trace.ball[i][1]).toBeGreaterThanOrEqual(trace.ball[i - 1][1] - 1e-9);
+      expect(trace.ball[i][1]).toBeLessThanOrEqual(4 + 1e-9);
+    }
+  });
+
+  it('falls the distance the exact solution gives', () => {
+    // x = vT × t − vT × τ × (1 − e^(−t/τ)), with vT = 4 m/s and τ = mass ÷ drag.
+    const tau = 1 / 2.45;
+    expect(motionAt(fall, [['go', 2]]).bodies.ball.x).toBeCloseTo(4 * 2 - 4 * tau * (1 - Math.exp(-2 / tau)), 6);
+  });
+
+  it('slows a body that is faster than its new terminal velocity (a parachute opening)', () => {
+    const chute = el({ vertical: true, span: [0, 40], bodies: [{ ...ball, v: 4 }], clips: { open: { phases: [{ dur: 5, forces: [weight, air(9.8)] }] } } });
+    expect(motionAt(chute, [['open', 0.001]]).bodies.ball.a).toBeLessThan(0);
+    expect(motionAt(chute, [['open', 5]]).bodies.ball.v).toBeCloseTo(1, 5);
+  });
+
+  it('keeps one arrow for the air resistance as it grows', () => {
+    // The arrow's age carries on from step to step: it does not start again each time its size changes.
+    const s = motionAt(fall, [['go', 3]]);
+    expect(s.forces.find((f) => f.name === 'Air resistance')!.age).toBeCloseTo(3);
+  });
+});

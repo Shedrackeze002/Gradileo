@@ -156,6 +156,34 @@ describe('hiding a part', () => {
   });
 });
 
+describe('hiding a part of a motion', () => {
+  const x: Explainer = {
+    id: 'demo-3',
+    lessonId: 'demo-3',
+    title: 'Demo',
+    summary: 'A demo.',
+    scenes: [
+      {
+        layout: 'center',
+        main: [{ kind: 'motion', id: 'm', span: [0, 10], bodies: [{ id: 'b', shape: 'block', mass: 1, x: 1 }], clips: {} }],
+        lines: [
+          { say: 'One.', show: ['m', 'm.readout'] },
+          { say: 'Two.', hide: 'm.readout' },
+        ],
+      },
+    ],
+  };
+  const tl = compile(x, { '0.0': 1, '0.1': 1 });
+
+  it('hides the readout and keeps the motion, though the motion was shown whole', () => {
+    expect(checkScript(x)).toEqual([]);
+    expect(ownPart(stateAt(tl, 3.35).els.m, 'readout')).toBe(1);
+    const after = stateAt(tl, 4.4).els.m;
+    expect(after.p).toBe(1);
+    expect(ownPart(after, 'readout')).toBe(0);
+  });
+});
+
 describe('youtubeChapters', () => {
   const tl = (chapters: Array<{ title: string; t: number }>, duration: number) => ({ ...compile(script, durations), chapters, duration });
 

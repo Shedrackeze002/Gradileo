@@ -151,9 +151,26 @@ See `src/video/script.ts` for every element and option. In short:
   phases of a collision (approach, touch, after) with the equal and opposite forces that change
   the velocities, so momentum is conserved by the forces, not typed in. Showing the element shows
   the tracks and bodies; its parts add `velocity`, `readout` (acceleration), `net` (net force),
-  `strobe`, `clock`, `graph` (velocity against time, drawing itself) and `bars` and `total`
-  (momentum). Colours are fixed in every physics video: velocity green, net force and total
-  momentum yellow, friction red, an applied force orange, weight pink, the normal force blue.
+  `strobe`, `clock`, `graph` (velocity against time, drawing itself, or distance against time
+  with `graph: { y: 'distance' }`), `distance` (how far each body has travelled, with its path
+  drawn leg by leg under a single track), `displacement` (an arrow under a single track from where
+  the body started to where it is now, with its sign) and `bars` and `total` (momentum). The
+  displacement's label sits beside its arrow, so leave about 300 px of track free on one side.
+  `speedWord: true` writes "speed =" beside the velocity arrow, for videos that come before
+  velocity is taught. Before forces are taught, move bodies with the helpers in
+  `src/content/phys10/videos/lib/track.ts` (`run`, `halt`, and `drive` and `brake`, forces that
+  act without an arrow). `vertical: true` turns the track to point down the screen, for a drop: a
+  body's `x` is then the distance it has fallen, each lane is a column with a ruler and the ground
+  at its foot, weight (a positive force) hangs below the body and what resists the fall rises from
+  its top, and the graph takes the right half. A force with `drag` is air resistance: `drag`
+  newtons for each metre per second, so it grows with the speed and the body closes on its
+  terminal velocity (weight ÷ drag). A fall never quite reaches that velocity, and the two forces
+  agree to the nearest newton only after about seven times (mass ÷ drag) seconds: run the clip that
+  long, with `slow: 0.5` (and a `note` saying so) to play a long fall twice as fast. A force with
+  `hidden` acts without an arrow. A part of a motion can be hidden again while the motion stays
+  (`hide: 'sim.readout'`). Colours are fixed in every physics video: velocity green, net force and
+  total momentum yellow, friction red, an applied force orange, weight pink, the normal force
+  blue, displacement violet, and the path travelled pale grey.
   Check a motion part way through with `--stills --quick --at 48.5,51` (times in seconds).
   The owner asked (14 November 2026) that science videos show the idea happening, not narrate
   over still slides: in physics, every scene that describes motion or a force plays it.
