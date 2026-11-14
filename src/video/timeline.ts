@@ -3,7 +3,7 @@
  * stage shows at any moment. Rendering is a pure function of that state, so the same script and
  * narration always give the same frames, and a frame that has not changed can be reused.
  */
-import { asList, captionOf, plainMarkdown, sceneElements, type El, type Explainer, type MotionEl, type ParticlesEl, type TryEl } from './script.ts';
+import { asList, captionOf, plainMarkdown, sceneElements, type El, type Explainer, type MotionEl, type ParticlesEl, type TryEl, type WaveEl } from './script.ts';
 
 /**
  * Timing, in seconds. The pauses give a viewer time to read each new step before the narrator
@@ -48,6 +48,7 @@ export function revealTime(kind: El['kind']): number {
     case 'math':
     case 'motion':
     case 'particles':
+    case 'wave':
       return 0.8;
     default:
       return 0.6;
@@ -96,8 +97,8 @@ const r3 = (x: number) => Math.round(x * 1000) / 1000;
 /** After a clip ends, before the next line starts. */
 const AFTER_PLAY = 0.4;
 
-/** An element that plays clips: a motion, or boxes of particles. */
-export type Playable = MotionEl | ParticlesEl;
+/** An element that plays clips: a motion, boxes of particles, or waves. */
+export type Playable = MotionEl | ParticlesEl | WaveEl;
 
 /** How long a clip runs in the video, in seconds (slow motion stretches a motion's phase). */
 export function clipSeconds(el: Playable, clip: string): number {
@@ -120,7 +121,7 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
     for (const e of sceneElements(s)) {
       kinds[e.id] = e.kind;
       if (e.kind === 'try') tries.set(e.id, e);
-      if (e.kind === 'motion' || e.kind === 'particles') motions.set(e.id, e);
+      if (e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave') motions.set(e.id, e);
     }
     if (s.chapter) {
       chapter = s.chapter;
@@ -248,7 +249,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
       // A part shown on its own can be hidden on its own; anything else hides the whole element.
       // Showing a whole motion does not show its parts (the velocity arrows, the readout), so
       // one of those can be hidden while the motion stays.
-      if (part !== undefined && part in cur.parts && (!cur.whole || s.kinds[el] === 'motion')) {
+      if (part !== undefined && part in cur.parts && (!cur.whole || s.kinds[el] === 'motion' || s.kinds[el] === 'wave')) {
         if (!(part in cur.partHidden)) cur.partHidden[part] = ev.t;
       } else cur.hiddenAt = ev.t;
     } else if (ev.kind === 'focus') {

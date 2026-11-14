@@ -379,6 +379,80 @@ export interface MotionEl {
   height?: number;
 }
 
+/** One wave of a `wave` element, on its own strip. */
+export interface WaveLane {
+  id: string;
+  /**
+   * `transverse`: the points of a rope move up and down as the wave runs along it. `longitudinal`:
+   * particles move back and forth along the line of travel, as in sound or a pulse on a spring.
+   */
+  kind: 'transverse' | 'longitudinal';
+  /** A label at the strip's top left. */
+  label?: string;
+  /** Waves sent out each second, in hertz. */
+  frequency: number;
+  /** The amplitude, in the element's `amplitudeUnit`. */
+  amplitude: number;
+  /** How fast the wave travels, in metres per second: the wavelength is the speed ÷ the frequency. */
+  speed: number;
+  /** The wave already fills the strip when it first appears; otherwise it starts at the source and runs in. */
+  full?: boolean;
+  tone?: Tone;
+}
+
+/** A stretch of a wave clip. */
+export interface WavePhase {
+  /** How long it lasts, in seconds of the wave's own time. */
+  dur: number;
+  /** Slow motion: seconds of video for each second of the wave (1 by default). */
+  slow?: number;
+  /** New settings for a lane's source as the phase starts, by lane id: the change travels in from the source. */
+  set?: Record<string, { frequency?: number; amplitude?: number }>;
+  /** A short note shown over the wave ("Slow motion"). */
+  note?: string;
+}
+
+export interface WaveClip {
+  phases: WavePhase[];
+  /** Start every wave again from the beginning first. */
+  reset?: boolean;
+}
+
+/** What a wave element can show over its waves; each is a part ("w.wavelength"). */
+export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'labels', 'clock'] as const;
+
+/**
+ * Travelling waves, for the physics videos: each lane is a strip with a source at its left end,
+ * and what the source does travels along the strip at the wave's speed (src/video/wave.ts). The
+ * waves run only while a clip plays (`play: 'w.go'`), and the next clip carries on from where the
+ * last one stopped, so a wave can be frozen to measure it. Showing the element shows the strips;
+ * showing a part adds it: `particle` (one marked point of each wave and the line it keeps to, to
+ * see that it only moves about its own place), `amplitude` and `wavelength` (measured on the wave
+ * as it stands), `count` (a post at the mark, with the complete waves that have passed it),
+ * `speed` (an arrow with the wave's speed), `frequency` (the source's frequency, under it), `labels` (the names of a longitudinal wave's
+ * compressions and rarefactions, or a transverse wave's crests and troughs) and `clock`.
+ * Emphasising a lane's id makes it glow.
+ */
+export interface WaveEl {
+  kind: 'wave';
+  id: string;
+  /** The stretch shown, in metres: [left, right]. The sources are at the left. */
+  span: [number, number];
+  lanes: WaveLane[];
+  clips: Record<string, WaveClip>;
+  /** Where the marked point and the counting post are, in metres (the middle otherwise). */
+  mark?: number;
+  /** What the marked point is called ("a leaf"). */
+  markLabel?: string;
+  /** The unit amplitudes are given and written in ("cm"; metres otherwise). */
+  amplitudeUnit?: string;
+  /** `false` leaves out the ruler of distance under the strips. */
+  ruler?: boolean;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
 /** A temperature for a particle box: a number, or the usual one for a state. */
 export type Temp = number | 'solid' | 'liquid' | 'gas';
 
@@ -542,7 +616,7 @@ export interface ParticlesEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -687,6 +761,33 @@ export function checkMotion(e: MotionEl): string[] {
   return problems;
 }
 
+/** Problems with a wave element: lanes that cannot run, clips that set no lane, a mark off the strip. */
+export function checkWave(e: WaveEl): string[] {
+  const problems: string[] = [];
+  if (!(e.span[1] > e.span[0])) problems.push('the span must run from left to right.');
+  if (!e.lanes.length) problems.push('it has no lanes.');
+  const ids = new Set<string>();
+  for (const l of e.lanes) {
+    if (ids.has(l.id)) problems.push(`the lane id "${l.id}" is used twice.`);
+    ids.add(l.id);
+    if ((WAVE_PARTS as readonly string[]).includes(l.id)) problems.push(`the lane id "${l.id}" is the name of a part.`);
+    if (!(l.speed > 0)) problems.push(`lane "${l.id}" needs a speed above zero.`);
+    if (!(l.frequency >= 0) || !(l.amplitude >= 0)) problems.push(`lane "${l.id}" needs a frequency and an amplitude of zero or more.`);
+  }
+  if (e.mark !== undefined && !(e.mark >= e.span[0] && e.mark <= e.span[1])) problems.push('the mark is off the strip.');
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      for (const [id, set] of Object.entries(ph.set ?? {})) {
+        if (!ids.has(id)) problems.push(`clip "${name}" sets no lane "${id}".`);
+        if ((set.frequency ?? 0) < 0 || (set.amplitude ?? 0) < 0) problems.push(`clip "${name}" sets a frequency or an amplitude below zero.`);
+      }
+    }
+  }
+  return problems;
+}
+
 /** Whether a particles element is set up to show this part (a thermometer, gauge or volume needs its option). */
 function particlePartReady(e: ParticlesEl, part: string): boolean {
   if (part === 'thermo') return !!e.thermometers;
@@ -744,7 +845,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -763,6 +864,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...MOTION_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkMotion(e).map((p) => `Scene ${si + 1}: motion "${e.id}": ${p}`));
+      }
+      if (e.kind === 'wave') {
+        diagrams.set(e.id, new Set<string>([...WAVE_PARTS, ...e.lanes.map((l) => l.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkWave(e).map((p) => `Scene ${si + 1}: wave "${e.id}": ${p}`));
       }
       if (e.kind === 'particles') {
         diagrams.set(e.id, new Set<string>([...PARTICLE_PARTS, ...e.boxes.map((b) => b.id)]));
@@ -793,13 +899,13 @@ export function checkScript(x: Explainer): string[] {
         const [el, part] = target.split('.');
         if (!ids.has(el)) problems.push(`Scene ${si + 1}, line ${li + 1}: no element "${target}".`);
         else if (part !== undefined && motions.get(el)?.kind === 'particles' && !particlePartReady(motions.get(el) as ParticlesEl, part)) problems.push(`Scene ${si + 1}, line ${li + 1}: particles "${el}" shows "${part}" but does not set it up (thermometers, gauge, volume or flow).`);
-        else if (part !== undefined && diagrams.has(el) && !diagrams.get(el)!.has(part)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${screens.has(el) ? 'screen' : motions.has(el) ? 'motion' : 'diagram'} "${el}" has no part "${part}".`);
+        else if (part !== undefined && diagrams.has(el) && !diagrams.get(el)!.has(part)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${screens.has(el) ? 'screen' : motions.has(el) ? motions.get(el)!.kind : 'diagram'} "${el}" has no part "${part}".`);
       }
       for (const target of asList(l.play)) {
         const [el, clip] = target.split('.');
         const m = motions.get(el);
         if (!m) problems.push(`Scene ${si + 1}, line ${li + 1}: no motion "${el}" to play.`);
-        else if (!clip || !(clip in m.clips)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${m.kind === 'particles' ? 'particles' : 'motion'} "${el}" has no clip "${clip ?? ''}".`);
+        else if (!clip || !(clip in m.clips)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${m.kind} "${el}" has no clip "${clip ?? ''}".`);
       }
     });
   });
