@@ -1226,14 +1226,18 @@ items ship or decisions change.
        `phys-sample-forces` is now the video of lesson 2.3 (`p10-2-3`). The engine gained a drop
        (`vertical`) and air resistance (`drag`), so a skydiver reaches terminal velocity, a
        parachute opens, and a hammer and a feather fall on Earth and on the Moon.
-     - Written (14 November 2026), not yet rendered: **the six videos of Unit 3, Work, Energy
-       and Power** (`p10-3-1` to `p10-3-6`). The engine gained energy bars measured from the
+     - Done (14 November 2026): **the six videos of Unit 3, Work, Energy
+       and Power** (`p10-3-1` to `p10-3-6`), rendered and in Drive. The engine gained energy bars measured from the
        motion (work, kinetic, potential, heat and the total), a lift (`vertical: 'up'`) and
        curved tracks (`path`: a hill through points, a ramp or a pendulum), so a roller coaster
        trades height for speed, a car on a rough track ends with all its energy as heat, two
        motors do the same work in different times, and a motor's efficiency is read off its bars.
-     - Next: render Unit 3; then the videos of Units 4 and 5, each unit's animation built first
-       (waves, rays, circuits). `phys-sample-momentum`
+     - In progress (14 November 2026): **Unit 4, Waves, Sound and Light**. The engine has a
+       `wave` element (a rope and a tube of particles, drawn from one rule: each place does what
+       the source did a little earlier) and a `rays` element (a ray at a mirror or a boundary,
+       with the normal, the angles and marching wavefronts); the script of lesson 4.1 is written.
+     - Next: the other Unit 4 scripts and their render; then Unit 5 (circuits), its animation
+       built first. `phys-sample-momentum`
        becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then Grade 11
        Physics (`phys-20`) and Grade 12 Physics (`phys-30`); the lessons have no tutor recordings
        yet.

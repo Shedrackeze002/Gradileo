@@ -193,6 +193,37 @@ See `src/video/script.ts` for every element and option. In short:
   The owner asked (14 November 2026) that science videos show the idea happening, not narrate
   over still slides: in physics, every scene that describes motion or a force plays it.
 
+- `wave` (`src/video/wave.ts`) is for travelling waves. Each lane is a strip with a source at its
+  left end, and everything comes from one rule: a place does what the source did the travel time
+  ago. A `transverse` lane is a rope whose beads move up and down; a `longitudinal` lane is a tube
+  of particles that move back and forth and crowd into compressions. A lane has a `frequency`
+  (hertz), an `amplitude` and a `speed` (metres per second), so its wavelength is the speed ÷ the
+  frequency; `full: true` fills the strip from the start, and otherwise the wave runs in from the
+  source. The waves move only while a clip plays, and stand still between clips, to be measured.
+  A phase can `set` a lane's frequency or amplitude, and the change travels in from the source
+  (a higher frequency arrives as a shorter wavelength); `slow` plays it in slow motion.
+  `reflect: true` bounces the wave back from the right end, for an echo (send a short burst by
+  setting the amplitude to 0 after a moment). Showing the element shows the strips; the parts are
+  `particle` (one marked point, at `mark`, and the line it keeps to), `amplitude`, `wavelength`,
+  `count` (a post at the mark and the complete waves that have passed it), `speed`, `frequency`,
+  `front` (the front of a wave that started at the source, and how far it has travelled),
+  `labels` (crest and trough, or compression and rarefaction) and `clock`. Show the measures on
+  a wave that is standing still: on a moving wave they jump from crest to crest. `values: false`
+  leaves the numbers off, for a picture that is not to scale (the electromagnetic spectrum), and
+  `ruler: false` leaves out the ruler. Lanes of one kind share a scale, so a louder sound looks
+  larger beside a quieter one.
+
+- `rays` (`src/video/rays.ts`) is for light meeting a surface: a `mirror`, where the angle of
+  reflection equals the angle of incidence, or a `boundary` between two materials with their
+  `speeds`, where the angle of refraction follows from them (the slower material is shaded). A
+  clip turns the incoming ray (`to`, in degrees from the normal) and the outgoing ray follows;
+  the sizes of the angles are written at the edges, where they can be read while the ray turns.
+  The parts are `normal`, `angles`, `toSurface` (the angle to the surface, which is not the angle
+  of incidence), `fronts` (a wide beam whose wavefronts march while a clip plays, closer together
+  where the wave is slower, each front in one piece across the boundary) and, on a mirror with
+  `behind: true`, `image` (the lamp's image, as far behind the mirror as the lamp is in front).
+  Light is yellow, the angle of incidence blue, reflection orange and refraction pink.
+
 - `particles` (`src/video/particles.ts`) is for chemistry: boxes of particles that really move.
   Each box is a small simulation in which the particles pull on their neighbours and push apart up
   close, and a thermostat holds the box at its temperature, so a cold box settles into rows that

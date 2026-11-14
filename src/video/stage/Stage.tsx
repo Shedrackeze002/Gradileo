@@ -1,13 +1,15 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type DiagramEl, type El, type Explainer, type MotionEl, type ParticlesEl, type ScreenEl, type TriangleEl, type SimilarEl } from '../script.ts';
+import { BRAND, type DiagramEl, type El, type Explainer, type MotionEl, type ParticlesEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
 import { clipSeconds, type ElState, type FrameState } from '../timeline.ts';
 import { DiagramView } from './Diagram.tsx';
 import { MotionView } from './Motion.tsx';
 import { ParticlesView } from './Particles.tsx';
+import { RaysView } from './Rays.tsx';
 import { BulletsView, CalcView, CalloutView, MathView, QuoteView, TableView, TextView, TitleView, TryView } from './elements.tsx';
 import { ScreenView } from './Screen.tsx';
 import { rich, TONES } from './tex.ts';
 import { SimilarView, TriangleView } from './Triangle.tsx';
+import { WaveView } from './Wave.tsx';
 
 function Logo({ size = 30 }: { size?: number }) {
   return (
@@ -57,6 +59,10 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <MotionView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'particles':
       return <ParticlesView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
+    case 'rays':
+      return <RaysView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
+    case 'wave':
+      return <WaveView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'calc':
       return <CalcView el={el} st={st} />;
     case 'try':
@@ -130,19 +136,19 @@ function aspect(d: DiagramEl) {
 }
 
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave' || e.kind === 'rays';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
   const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || fig?.kind === 'motion';
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || fig?.kind === 'motion' || fig?.kind === 'wave';
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
     <div className="v-stage">
       {wide && (
-        <div style={{ position: 'absolute', left: 60, top: fig.kind === 'motion' ? 300 : 330 }}>
+        <div style={{ position: 'absolute', left: 60, top: fig.kind === 'motion' || fig.kind === 'wave' ? 300 : 330 }}>
           {fig.kind === 'motion' ? (
             // A motion is caught part way through its poster clip, with its forces and velocities drawn.
             // A drop takes the full height and width, without its graph, strobe marks or phase notes.
@@ -153,6 +159,9 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
               h={fig.vertical ? 320 : Math.min(320, 150 + 130 * (fig.lanes?.length ?? 1))}
               plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
             />
+          ) : fig.kind === 'wave' ? (
+            // Waves are caught part way through their poster clip, without the ruler or the notes.
+            <WaveView el={{ ...fig, ruler: false, lanes: fig.lanes.slice(0, 2), clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }} st={{ ...FULL, parts: {} }} w={1160} h={320} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
           ) : (
             <DiagramView el={fig as DiagramEl} st={FULL} w={1160} h={280} />
           )}
@@ -177,6 +186,9 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
           ) : fig.kind === 'particles' ? (
             // Particles are caught a few seconds after they start moving, with their labels.
             <ParticlesView el={fig} st={{ ...FULL, parts: { labels: 1 } }} w={560} h={440} age={6} played={[]} />
+          ) : fig.kind === 'rays' ? (
+            // Rays are shown with the normal and the angles marked, part way through the poster clip.
+            <RaysView el={{ ...fig, media: undefined }} st={{ ...FULL, parts: { normal: 1, angles: 1 } }} w={560} h={440} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
           ) : fig.kind === 'similar' ? (
             <SimilarView el={fig} st={FULL} w={500} h={480} />
           ) : null}
