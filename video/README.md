@@ -158,6 +158,27 @@ See `src/video/script.ts` for every element and option. In short:
   The owner asked (14 November 2026) that science videos show the idea happening, not narrate
   over still slides: in physics, every scene that describes motion or a force plays it.
 
+- `particles` (`src/video/particles.ts`) is for chemistry: boxes of particles that really move.
+  Each box is a small simulation in which the particles pull on their neighbours and push apart up
+  close, and a thermostat holds the box at its temperature, so a cold box settles into rows that
+  vibrate (a solid), a warmer one slides about at the bottom (a liquid) and a hot one flies apart
+  and fills the box (a gas). Nothing is drawn by hand, so heating a box melts and then boils it on
+  its own. Give each box a `state` (and `n`, `width`, `height`, `temp` if needed), a `piston` or an
+  `open` top, `kinds` for a mixture (each with its colour) and `follow` for a particle drawn in
+  yellow. The particles move all the time the element is on screen; a line plays a clip
+  (`play: 'p.heat'`) whose phases move temperatures (`heat: { b: 'gas' }`) or lids
+  (`lid: { b: 0.5 }`, a fraction of the box's height) steadily over `dur` seconds, and the next
+  line waits for it. A lid cannot squash a solid or a liquid: it stops on them. Parts: `labels`,
+  `trail` (the followed particle's path), `hits` (a flash where a particle hits a wall), `rate`
+  (wall hits each second), and, when the element sets them up, `thermo` (`thermometers: true`),
+  `gauge` (`gauge: { box, start }`, a pressure in kPa that follows P × V and the temperature, so
+  it agrees with the numbers said) and `volume` (`volume: { box, start }`, in litres).
+  Emphasising a box's id makes it glow. Keep to a few dozen particles a box (120 at most): every
+  frame of a moving scene is drawn afresh. See `src/content/chem7/videos/c7-2-1.ts` (the three
+  states, pistons) and `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge).
+  In chemistry, every scene that describes particles moving, mixing, reacting or being squeezed
+  shows it with `particles` (the owner's rule of 14 November 2026).
+
 - `quote` sets a passage of prose or verse off from the narration, for the English videos: one
   entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)
   under it; lines can be shown one at a time (`q.0`). Quote only what the lesson already quotes,

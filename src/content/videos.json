@@ -1,4 +1,2007 @@
 {
+  "c7-1-1": {
+    "lessonId": "c7-1-1",
+    "title": "Working Safely in the Lab",
+    "duration": 178,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hazard symbols",
+        "t": 21.118
+      },
+      {
+        "title": "Rules for working safely",
+        "t": 70.34
+      },
+      {
+        "title": "Your turn",
+        "t": 117.493
+      },
+      {
+        "title": "Summary",
+        "t": 145.897
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-1-1:q",
+        "t": 126.084,
+        "prompt": "A bottle’s label shows a flame sitting on top of a circle. What does it warn?",
+        "choices": [
+          "The substance catches fire very easily by itself.",
+          "The substance makes other things burn more fiercely.",
+          "The substance is poisonous if swallowed.",
+          "The substance is a gas kept under pressure."
+        ],
+        "answer": 1,
+        "working": "A flame over a circle marks an oxidizer: it feeds a fire. A plain flame would mean flammable."
+      }
+    ]
+  },
+  "c7-1-2": {
+    "lessonId": "c7-1-2",
+    "title": "What Is Matter?",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The test for matter",
+        "t": 19.167
+      },
+      {
+        "title": "Properties",
+        "t": 66.24
+      },
+      {
+        "title": "Using properties as clues",
+        "t": 110.538
+      },
+      {
+        "title": "Your turn",
+        "t": 144.412
+      },
+      {
+        "title": "Summary",
+        "t": 169.51
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-1-2:q",
+        "t": 149.858,
+        "prompt": "Which of these is NOT matter?",
+        "choices": [
+          "The steam from a kettle",
+          "The air inside a football",
+          "The helium in a party balloon",
+          "The sound of a bell"
+        ],
+        "answer": 3,
+        "working": "Sound is energy carried by vibrations; it has no mass. Steam, air and helium all have mass and take up space."
+      }
+    ]
+  },
+  "c7-1-3": {
+    "lessonId": "c7-1-3",
+    "title": "Measuring Mass and Volume",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Reading a measuring cylinder",
+        "t": 22.72
+      },
+      {
+        "title": "Volume by displacement",
+        "t": 63.909
+      },
+      {
+        "title": "Changing units",
+        "t": 101.094
+      },
+      {
+        "title": "Your turn",
+        "t": 136.248
+      },
+      {
+        "title": "Summary",
+        "t": 167.123
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-1-3:q",
+        "t": 149.679,
+        "prompt": "A measuring cylinder holds 60 mL of water. A key is dropped in and the level rises to 67 mL. What is the volume of the key?",
+        "choices": [
+          "7 cm³",
+          "67 cm³",
+          "127 cm³",
+          "60 cm³"
+        ],
+        "answer": 0,
+        "working": "The rise in the level is the key’s volume: 67 − 60 = 7 mL, and 1 mL = 1 cm³."
+      }
+    ]
+  },
+  "c7-1-4": {
+    "lessonId": "c7-1-4",
+    "title": "Density",
+    "duration": 213,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What density is",
+        "t": 22.454
+      },
+      {
+        "title": "Identifying a substance",
+        "t": 58.487
+      },
+      {
+        "title": "Floating and sinking",
+        "t": 97.695
+      },
+      {
+        "title": "Your turn",
+        "t": 148.027
+      },
+      {
+        "title": "Summary",
+        "t": 180.461
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-1-4:q",
+        "t": 160.611,
+        "prompt": "A stone has a mass of 60 g and a volume of 24 cm³. What is its density, and does it float in water?",
+        "choices": [
+          "0.4 g/cm³, so it floats",
+          "2.5 g/cm³, so it floats",
+          "2.5 g/cm³, so it sinks",
+          "36 g/cm³, so it sinks"
+        ],
+        "answer": 2,
+        "working": "60 ÷ 24 = 2.5 g/cm³. That is more than 1 g/cm³, the density of water, so the stone sinks."
+      }
+    ]
+  },
+  "c7-2-1": {
+    "lessonId": "c7-2-1",
+    "title": "Solids, Liquids and Gases",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The particle model",
+        "t": 24.446
+      },
+      {
+        "title": "Solids",
+        "t": 58.967
+      },
+      {
+        "title": "Liquids",
+        "t": 91.072
+      },
+      {
+        "title": "Gases",
+        "t": 123.276
+      },
+      {
+        "title": "Squashing",
+        "t": 154.459
+      },
+      {
+        "title": "Your turn",
+        "t": 193.433
+      },
+      {
+        "title": "Summary",
+        "t": 221.58
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-2-1:q",
+        "t": 201.749,
+        "prompt": "Why can the air in a sealed syringe be pushed in, but water cannot?",
+        "choices": [
+          "Air particles shrink when they are pushed, but water particles cannot.",
+          "Air particles are far apart, but water particles are already touching.",
+          "Water particles are held in fixed rows, but air particles are not.",
+          "Water particles do not move, but air particles move quickly."
+        ],
+        "answer": 1,
+        "working": "In a gas the particles are far apart, so they can be pushed closer. In a liquid they already touch, so there is no space to push them into."
+      }
+    ]
+  },
+  "c7-2-2": {
+    "lessonId": "c7-2-2",
+    "title": "Changes of State",
+    "duration": 195,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming the changes",
+        "t": 21.482
+      },
+      {
+        "title": "Water on a cold can",
+        "t": 67.316
+      },
+      {
+        "title": "Melting and boiling points",
+        "t": 88.2
+      },
+      {
+        "title": "Your turn",
+        "t": 134.039
+      },
+      {
+        "title": "Summary",
+        "t": 164.741
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-2-2:q",
+        "t": 147.82,
+        "prompt": "Oxygen melts at −218 °C and boils at −183 °C. What state is oxygen in at −200 °C?",
+        "choices": [
+          "A liquid",
+          "A solid",
+          "A gas",
+          "A solid and a gas at once"
+        ],
+        "answer": 0,
+        "working": "−200 °C is warmer than −218 °C but colder than −183 °C, so it lies between the melting and boiling points: oxygen is a liquid."
+      }
+    ]
+  },
+  "c7-2-3": {
+    "lessonId": "c7-2-3",
+    "title": "Temperature and Heat",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Temperature",
+        "t": 16.136
+      },
+      {
+        "title": "Heat",
+        "t": 58.859
+      },
+      {
+        "title": "How heat moves",
+        "t": 92.594
+      },
+      {
+        "title": "Your turn",
+        "t": 137.615
+      },
+      {
+        "title": "Summary",
+        "t": 164.527
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-2-3:q",
+        "t": 144.98,
+        "prompt": "How does the Sun’s heat reach Earth across empty space?",
+        "choices": [
+          "By conduction",
+          "By convection",
+          "By sound waves",
+          "By radiation"
+        ],
+        "answer": 3,
+        "working": "Conduction and convection both need particles. Space is empty, so only radiation, which travels as rays, can cross it."
+      }
+    ]
+  },
+  "c7-2-4": {
+    "lessonId": "c7-2-4",
+    "title": "Expansion and Diffusion",
+    "duration": 188,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Expansion and contraction",
+        "t": 19.893
+      },
+      {
+        "title": "Expansion in everyday life",
+        "t": 50.38
+      },
+      {
+        "title": "Diffusion",
+        "t": 87.478
+      },
+      {
+        "title": "Your turn",
+        "t": 126.088
+      },
+      {
+        "title": "Summary",
+        "t": 156.728
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-2-4:q",
+        "t": 138.034,
+        "prompt": "A tea bag is put into hot water and another into cold water. In which cup does the colour spread faster, and why?",
+        "choices": [
+          "The cold water, because its particles are closer together.",
+          "Both the same, because diffusion does not depend on temperature.",
+          "The hot water, because its particles move faster.",
+          "The hot water, because its particles are bigger."
+        ],
+        "answer": 2,
+        "working": "The colour spreads by diffusion, which is faster when the particles move faster: in the hot water. Particles never get bigger."
+      }
+    ]
+  },
+  "c7-3-1": {
+    "lessonId": "c7-3-1",
+    "title": "Pure Substances and Mixtures",
+    "duration": 187,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pure or mixture?",
+        "t": 17.85
+      },
+      {
+        "title": "A test for purity",
+        "t": 60.864
+      },
+      {
+        "title": "Four kinds of mixture",
+        "t": 91.233
+      },
+      {
+        "title": "Your turn",
+        "t": 129.402
+      },
+      {
+        "title": "Summary",
+        "t": 156.462
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-3-1:q",
+        "t": 139.321,
+        "prompt": "A mixture looks cloudy, but even after a week nothing has settled. What kind of mixture is it?",
+        "choices": [
+          "A colloid",
+          "A solution",
+          "A suspension",
+          "A mechanical mixture"
+        ],
+        "answer": 0,
+        "working": "It is cloudy, so not a solution. Nothing settles, so not a suspension. Cloudy and never settling: a colloid."
+      }
+    ]
+  },
+  "c7-3-2": {
+    "lessonId": "c7-3-2",
+    "title": "Solutions and Concentration",
+    "duration": 205,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solute, solvent and solution",
+        "t": 19.734
+      },
+      {
+        "title": "Mass is conserved",
+        "t": 65.144
+      },
+      {
+        "title": "Concentration",
+        "t": 92.39
+      },
+      {
+        "title": "Your turn",
+        "t": 142.334
+      },
+      {
+        "title": "Summary",
+        "t": 173.173
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-3-2:q",
+        "t": 153.719,
+        "prompt": "10 g of sugar is dissolved to make 500 mL of solution. What is the concentration?",
+        "choices": [
+          "5 g/L",
+          "20 g/L",
+          "0.02 g/L",
+          "50 g/L"
+        ],
+        "answer": 1,
+        "working": "500 mL = 0.5 L, and 10 ÷ 0.5 = 20 g/L."
+      }
+    ]
+  },
+  "c7-3-3": {
+    "lessonId": "c7-3-3",
+    "title": "Solubility",
+    "duration": 184,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Solubility",
+        "t": 20.81
+      },
+      {
+        "title": "Using the table",
+        "t": 50.189
+      },
+      {
+        "title": "Saturated or unsaturated?",
+        "t": 86.131
+      },
+      {
+        "title": "Your turn",
+        "t": 122.205
+      },
+      {
+        "title": "Summary",
+        "t": 153.616
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-3-3:q",
+        "t": 135.396,
+        "prompt": "At 20 °C, 36 g of salt dissolves in 100 g of water. 30 g of salt is stirred into 100 g of water at 20 °C. Which is true?",
+        "choices": [
+          "The solution is saturated, and 6 g stays as solid.",
+          "The solution is saturated, and nothing more can dissolve.",
+          "None of the salt dissolves, because salt is insoluble.",
+          "All the salt dissolves, and the solution is unsaturated."
+        ],
+        "answer": 3,
+        "working": "30 g is less than the 36 g that can dissolve, so it all dissolves, and another 6 g could still dissolve."
+      }
+    ]
+  },
+  "c7-3-4": {
+    "lessonId": "c7-3-4",
+    "title": "How Fast Things Dissolve",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three ways to dissolve faster",
+        "t": 17.256
+      },
+      {
+        "title": "Fair tests",
+        "t": 69.148
+      },
+      {
+        "title": "Designing a test",
+        "t": 97.337
+      },
+      {
+        "title": "Your turn",
+        "t": 138.964
+      },
+      {
+        "title": "Summary",
+        "t": 169.795
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-3-4:q",
+        "t": 150.408,
+        "prompt": "A student times how long sugar takes to dissolve with and without stirring. What is the dependent variable?",
+        "choices": [
+          "Whether the water is stirred",
+          "The volume of water",
+          "The time the sugar takes to dissolve",
+          "The mass of sugar"
+        ],
+        "answer": 2,
+        "working": "The dependent variable is what is measured: the time. Stirring is the independent variable; the volume and mass are controlled."
+      }
+    ]
+  },
+  "c7-4-1": {
+    "lessonId": "c7-4-1",
+    "title": "Sieving, Magnets and Filtering",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sieving and magnets",
+        "t": 21.728
+      },
+      {
+        "title": "Filtration",
+        "t": 63.826
+      },
+      {
+        "title": "What a filter cannot do",
+        "t": 101.725
+      },
+      {
+        "title": "Your turn",
+        "t": 139.421
+      },
+      {
+        "title": "Summary",
+        "t": 166.92
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-4-1:q",
+        "t": 146.367,
+        "prompt": "Which mixture can be separated by filtration?",
+        "choices": [
+          "Sugar dissolved in water",
+          "Chalk powder stirred into water",
+          "Salt dissolved in water",
+          "Iron filings mixed with sulfur"
+        ],
+        "answer": 1,
+        "working": "Chalk is insoluble, so the filter paper catches it. Dissolved sugar and salt pass through, and iron and sulfur are both dry solids, best separated with a magnet."
+      }
+    ]
+  },
+  "c7-4-2": {
+    "lessonId": "c7-4-2",
+    "title": "Evaporation and Distillation",
+    "duration": 204,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Evaporation",
+        "t": 21.33
+      },
+      {
+        "title": "Crystallization",
+        "t": 58.192
+      },
+      {
+        "title": "Distillation",
+        "t": 104.926
+      },
+      {
+        "title": "Your turn",
+        "t": 145.989
+      },
+      {
+        "title": "Summary",
+        "t": 171.623
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-4-2:q",
+        "t": 154.133,
+        "prompt": "Salt water is distilled. What is collected in the beaker at the end?",
+        "choices": [
+          "Pure water",
+          "Salty water, saltier than before",
+          "Dry salt crystals",
+          "Steam"
+        ],
+        "answer": 0,
+        "working": "Only the water boils. It condenses in the condenser and collects as pure water; the salt stays in the flask."
+      }
+    ]
+  },
+  "c7-4-3": {
+    "lessonId": "c7-4-3",
+    "title": "Chromatography and Choosing a Method",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Paper chromatography",
+        "t": 23.01
+      },
+      {
+        "title": "Reading a chromatogram",
+        "t": 68.134
+      },
+      {
+        "title": "Choosing a method",
+        "t": 99.412
+      },
+      {
+        "title": "Your turn",
+        "t": 141.78
+      },
+      {
+        "title": "Summary",
+        "t": 170.863
+      }
+    ],
+    "cues": [
+      {
+        "id": "c7-4-3:q",
+        "t": 151.321,
+        "prompt": "You want to keep both the salt and the water from salt water. Which method should you use?",
+        "choices": [
+          "Evaporation",
+          "Filtration",
+          "Chromatography",
+          "Distillation"
+        ],
+        "answer": 3,
+        "working": "Evaporation loses the water to the air, and filtration cannot catch dissolved salt. Distillation keeps the salt in the flask and collects the water."
+      }
+    ]
+  },
+  "c8-1-1": {
+    "lessonId": "c8-1-1",
+    "title": "Atoms and Elements",
+    "duration": 199,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Atoms and elements",
+        "t": 24.509
+      },
+      {
+        "title": "Chemical symbols",
+        "t": 90.818
+      },
+      {
+        "title": "Your turn",
+        "t": 139.24
+      },
+      {
+        "title": "Summary",
+        "t": 168.723
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-1-1:q",
+        "t": 147.571,
+        "prompt": "Which of these is written correctly as the symbol for a single element?",
+        "choices": [
+          "CL",
+          "mg",
+          "Zn",
+          "CO"
+        ],
+        "answer": 2,
+        "working": "A symbol is a capital letter, then a small letter if there is one. Zn is zinc. CO has two capitals, so it is two elements: carbon and oxygen."
+      }
+    ]
+  },
+  "c8-1-2": {
+    "lessonId": "c8-1-2",
+    "title": "Compounds and Molecules",
+    "duration": 200,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Compounds and molecules",
+        "t": 22.702
+      },
+      {
+        "title": "New properties",
+        "t": 68.525
+      },
+      {
+        "title": "Particle diagrams",
+        "t": 99.044
+      },
+      {
+        "title": "Your turn",
+        "t": 133.115
+      },
+      {
+        "title": "Summary",
+        "t": 166.09
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-1-2:q",
+        "t": 146.004,
+        "prompt": "A box holds identical particles. Each is one carbon atom joined to two oxygen atoms. What does it show?",
+        "choices": [
+          "a compound",
+          "an element",
+          "a mixture of two elements",
+          "a mixture of three substances"
+        ],
+        "answer": 0,
+        "working": "All the particles are the same, so it is one substance. Each has two kinds of atom joined, so it is a compound: carbon dioxide."
+      }
+    ]
+  },
+  "c8-1-3": {
+    "lessonId": "c8-1-3",
+    "title": "Elements, Compounds and Mixtures",
+    "duration": 181,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of matter",
+        "t": 25.686
+      },
+      {
+        "title": "Compounds and mixtures compared",
+        "t": 65.579
+      },
+      {
+        "title": "Your turn",
+        "t": 117.078
+      },
+      {
+        "title": "Summary",
+        "t": 148.826
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-1-3:q",
+        "t": 127.604,
+        "prompt": "A grey-and-yellow powder is tested with a magnet, and grey specks are pulled out. What is the powder?",
+        "choices": [
+          "a compound of iron and sulfur",
+          "a mixture of iron and sulfur",
+          "a single element",
+          "a compound that is magnetic"
+        ],
+        "answer": 1,
+        "working": "The iron still has its own property, magnetism, so it is not joined. In a compound the iron would no longer be magnetic."
+      }
+    ]
+  },
+  "c8-1-4": {
+    "lessonId": "c8-1-4",
+    "title": "Chemical Formulas",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a formula tells you",
+        "t": 19.571
+      },
+      {
+        "title": "Counting atoms",
+        "t": 70.412
+      },
+      {
+        "title": "Your turn",
+        "t": 114.542
+      },
+      {
+        "title": "Summary",
+        "t": 141.494
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-1-4:q",
+        "t": 123.523,
+        "prompt": "How many hydrogen atoms does the formula $\\ce{Ca(OH)2}$ show?",
+        "choices": [
+          "1",
+          "3",
+          "4",
+          "2"
+        ],
+        "answer": 3,
+        "working": "There is 1 hydrogen atom inside the bracket, and the 2 after the bracket doubles it: 1 × 2 = 2."
+      }
+    ]
+  },
+  "c8-2-1": {
+    "lessonId": "c8-2-1",
+    "title": "Organizing the Elements",
+    "duration": 174,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Groups and periods",
+        "t": 21.131
+      },
+      {
+        "title": "Mendeleev’s table",
+        "t": 75.985
+      },
+      {
+        "title": "Your turn",
+        "t": 116.237
+      },
+      {
+        "title": "Summary",
+        "t": 146.388
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-2-1:q",
+        "t": 124.534,
+        "prompt": "In which period and group is the element with atomic number 12?",
+        "choices": [
+          "period 3, group 2",
+          "period 2, group 3",
+          "period 3, group 12",
+          "period 2, group 12"
+        ],
+        "answer": 0,
+        "working": "12 is between 11 and 18, so it is in period 3. Period 3 starts at 11 in group 1, so 12 is in group 2. It is magnesium."
+      }
+    ]
+  },
+  "c8-2-2": {
+    "lessonId": "c8-2-2",
+    "title": "Metals and Non-metals",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Properties",
+        "t": 22.204
+      },
+      {
+        "title": "Using the table",
+        "t": 71.552
+      },
+      {
+        "title": "Your turn",
+        "t": 110.538
+      },
+      {
+        "title": "Summary",
+        "t": 141.804
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-2-2:q",
+        "t": 122.478,
+        "prompt": "An element is a yellow solid that shatters when hit and does not conduct electricity. What is it most likely to be?",
+        "choices": [
+          "a metal",
+          "a metalloid",
+          "a non-metal",
+          "a liquid metal"
+        ],
+        "answer": 2,
+        "working": "It is dull, brittle and an insulator: all non-metal properties. It could be sulfur."
+      }
+    ]
+  },
+  "c8-2-3": {
+    "lessonId": "c8-2-3",
+    "title": "Families of Elements",
+    "duration": 165,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Group 1: the alkali metals",
+        "t": 23.759
+      },
+      {
+        "title": "Halogens and noble gases",
+        "t": 62.828
+      },
+      {
+        "title": "Your turn",
+        "t": 103.219
+      },
+      {
+        "title": "Summary",
+        "t": 132.45
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-2-3:q",
+        "t": 113.829,
+        "prompt": "Helium and hydrogen are both less dense than air. Why are party balloons filled with helium?",
+        "choices": [
+          "helium is a metal",
+          "helium is unreactive, so it cannot burn",
+          "helium is an alkali metal",
+          "hydrogen is denser than air"
+        ],
+        "answer": 1,
+        "working": "Hydrogen is flammable and can explode. Helium is a noble gas, so it does not react and cannot burn."
+      }
+    ]
+  },
+  "c8-2-4": {
+    "lessonId": "c8-2-4",
+    "title": "Patterns in the Periodic Table",
+    "duration": 174,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Trends",
+        "t": 22.655
+      },
+      {
+        "title": "Elements at work",
+        "t": 72.487
+      },
+      {
+        "title": "Your turn",
+        "t": 116.37
+      },
+      {
+        "title": "Summary",
+        "t": 144.4
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-2-4:q",
+        "t": 126.834,
+        "prompt": "Fluorine is at the top of group 17 and iodine is lower down. Which is more reactive?",
+        "choices": [
+          "iodine, because reactivity rises down every group",
+          "they are equally reactive",
+          "neither: halogens do not react",
+          "fluorine, because halogens get less reactive down the group"
+        ],
+        "answer": 3,
+        "working": "Halogens get less reactive down group 17, so fluorine, at the top, is the most reactive."
+      }
+    ]
+  },
+  "c8-3-1": {
+    "lessonId": "c8-3-1",
+    "title": "Physical and Chemical Changes",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of change",
+        "t": 19.712
+      },
+      {
+        "title": "Can it be reversed?",
+        "t": 70.436
+      },
+      {
+        "title": "Your turn",
+        "t": 109.131
+      },
+      {
+        "title": "Summary",
+        "t": 136.714
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-3-1:q",
+        "t": 115.224,
+        "prompt": "Which of these is a chemical change?",
+        "choices": [
+          "butter melting",
+          "milk going sour",
+          "salt dissolving",
+          "water boiling"
+        ],
+        "answer": 1,
+        "working": "Sour milk contains new substances made as it goes off, and it cannot be turned back. The others make no new substance."
+      }
+    ]
+  },
+  "c8-3-2": {
+    "lessonId": "c8-3-2",
+    "title": "Signs of a Chemical Reaction",
+    "duration": 165,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Signs of a reaction",
+        "t": 18.177
+      },
+      {
+        "title": "Reactants and products",
+        "t": 63.966
+      },
+      {
+        "title": "Your turn",
+        "t": 101.626
+      },
+      {
+        "title": "Summary",
+        "t": 136.755
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-3-2:q",
+        "t": 115.933,
+        "prompt": "Limestone, calcium carbonate, is heated and breaks down into calcium oxide and carbon dioxide. What is the reactant?",
+        "choices": [
+          "calcium oxide",
+          "carbon dioxide",
+          "calcium carbonate",
+          "calcium oxide and carbon dioxide"
+        ],
+        "answer": 2,
+        "working": "The reaction starts with calcium carbonate alone. Calcium oxide and carbon dioxide are the products."
+      }
+    ]
+  },
+  "c8-3-3": {
+    "lessonId": "c8-3-3",
+    "title": "Word Equations",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Word equations",
+        "t": 19.29
+      },
+      {
+        "title": "Naming compounds",
+        "t": 77.307
+      },
+      {
+        "title": "Your turn",
+        "t": 115.071
+      },
+      {
+        "title": "Summary",
+        "t": 144.086
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-3-3:q",
+        "t": 123.448,
+        "prompt": "Calcium reacts with chlorine. Which is the correct word equation?",
+        "choices": [
+          "calcium + chlorine → calcium chloride",
+          "calcium chloride → calcium + chlorine",
+          "calcium + chlorine → chlorine calcide",
+          "calcium + chloride → calcium chlorine"
+        ],
+        "answer": 0,
+        "working": "The reactants go on the left. The metal comes first in the name, and chlorine becomes chloride."
+      }
+    ]
+  },
+  "c8-4-1": {
+    "lessonId": "c8-4-1",
+    "title": "Burning",
+    "duration": 175,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Combustion",
+        "t": 21.5
+      },
+      {
+        "title": "The fire triangle",
+        "t": 72.01
+      },
+      {
+        "title": "Your turn",
+        "t": 112.43
+      },
+      {
+        "title": "Summary",
+        "t": 142.579
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-4-1:q",
+        "t": 125.565,
+        "prompt": "Firefighters cut a wide strip of trees out of a forest, ahead of a wildfire. Which side of the fire triangle does this remove?",
+        "choices": [
+          "heat",
+          "oxygen",
+          "carbon dioxide",
+          "fuel"
+        ],
+        "answer": 3,
+        "working": "The trees are what burns. With no trees in the strip, the fire runs out of fuel when it reaches it."
+      }
+    ]
+  },
+  "c8-4-2": {
+    "lessonId": "c8-4-2",
+    "title": "Rusting and Corrosion",
+    "duration": 173,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What makes iron rust",
+        "t": 21.217
+      },
+      {
+        "title": "Stopping rust",
+        "t": 82.447
+      },
+      {
+        "title": "Your turn",
+        "t": 112.254
+      },
+      {
+        "title": "Summary",
+        "t": 138.306
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-4-2:q",
+        "t": 119.541,
+        "prompt": "Why is a bicycle chain oiled rather than painted?",
+        "choices": [
+          "oil adds zinc to the chain",
+          "paint lets water through",
+          "oil keeps out water and air but lets the chain move",
+          "chains are made of aluminium"
+        ],
+        "answer": 2,
+        "working": "Paint would crack and flake off the moving links. Oil is a barrier that still lets the links move freely."
+      }
+    ]
+  },
+  "c8-4-3": {
+    "lessonId": "c8-4-3",
+    "title": "Metals and Alloys",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Choosing a metal",
+        "t": 24.055
+      },
+      {
+        "title": "Alloys",
+        "t": 65.936
+      },
+      {
+        "title": "Your turn",
+        "t": 116.322
+      },
+      {
+        "title": "Summary",
+        "t": 142.606
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-4-3:q",
+        "t": 123.427,
+        "prompt": "Why is an alloy usually harder than the pure metal?",
+        "choices": [
+          "atoms of a different size stop the layers sliding",
+          "the atoms in an alloy are all the same size",
+          "alloys contain no metal atoms",
+          "alloys are always heavier"
+        ],
+        "answer": 0,
+        "working": "In a pure metal, same-sized atoms form layers that slide easily. Different-sized atoms in an alloy disrupt the layers."
+      }
+    ]
+  },
+  "c8-4-4": {
+    "lessonId": "c8-4-4",
+    "title": "Polymers, Ceramics and Composites",
+    "duration": 172,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three kinds of material",
+        "t": 20.342
+      },
+      {
+        "title": "Choosing a material",
+        "t": 84.34
+      },
+      {
+        "title": "Your turn",
+        "t": 113.333
+      },
+      {
+        "title": "Summary",
+        "t": 143.821
+      }
+    ],
+    "cues": [
+      {
+        "id": "c8-4-4:q",
+        "t": 121.266,
+        "prompt": "Which material is best for the covering of electrical wires?",
+        "choices": [
+          "copper",
+          "PVC plastic",
+          "glass",
+          "steel"
+        ],
+        "answer": 1,
+        "working": "The covering must be a flexible insulator. PVC is a polymer that is flexible and does not conduct electricity."
+      }
+    ]
+  },
+  "c9-1-1": {
+    "lessonId": "c9-1-1",
+    "title": "Inside the Atom",
+    "duration": 202,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three particles",
+        "t": 20.407
+      },
+      {
+        "title": "How the model changed",
+        "t": 68.09
+      },
+      {
+        "title": "Your turn",
+        "t": 133.498
+      },
+      {
+        "title": "Summary",
+        "t": 165.335
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-1-1:q",
+        "t": 142.909,
+        "prompt": "In the gold foil experiment, what did the few alpha particles that bounced back show?",
+        "choices": [
+          "electrons are negative",
+          "there is a tiny, dense, positive nucleus",
+          "atoms are solid spheres",
+          "neutrons have no charge"
+        ],
+        "answer": 1,
+        "working": "Spread-out positive charge could only nudge an alpha particle. Throwing it back needs a small, dense, positive centre."
+      }
+    ]
+  },
+  "c9-1-2": {
+    "lessonId": "c9-1-2",
+    "title": "Atomic Number, Mass Number and Isotopes",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two numbers",
+        "t": 20.695
+      },
+      {
+        "title": "Isotopes",
+        "t": 67.901
+      },
+      {
+        "title": "Your turn",
+        "t": 117.704
+      },
+      {
+        "title": "Summary",
+        "t": 146.476
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-1-2:q",
+        "t": 128.899,
+        "prompt": "Potassium has atomic number 19 and mass number 39. How many neutrons are in the atom?",
+        "choices": [
+          "19",
+          "39",
+          "58",
+          "20"
+        ],
+        "answer": 3,
+        "working": "Neutrons = mass number − atomic number = 39 − 19 = 20."
+      }
+    ]
+  },
+  "c9-1-3": {
+    "lessonId": "c9-1-3",
+    "title": "Electron Arrangements",
+    "duration": 177,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Filling the shells",
+        "t": 20.385
+      },
+      {
+        "title": "Shells and the periodic table",
+        "t": 69.032
+      },
+      {
+        "title": "Your turn",
+        "t": 114.78
+      },
+      {
+        "title": "Summary",
+        "t": 142.472
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-1-3:q",
+        "t": 124.242,
+        "prompt": "An element has the arrangement 2, 8, 6. Which group and period is it in?",
+        "choices": [
+          "group 16, period 3",
+          "group 6, period 2",
+          "group 3, period 6",
+          "group 18, period 3"
+        ],
+        "answer": 0,
+        "working": "Three shells, so period 3. Six outer electrons, so group 16. It is sulfur."
+      }
+    ]
+  },
+  "c9-1-4": {
+    "lessonId": "c9-1-4",
+    "title": "Ions",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How ions form",
+        "t": 20
+      },
+      {
+        "title": "Charges from the group",
+        "t": 63.837
+      },
+      {
+        "title": "Your turn",
+        "t": 119.454
+      },
+      {
+        "title": "Summary",
+        "t": 149.069
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-1-4:q",
+        "t": 130.536,
+        "prompt": "Magnesium has atomic number 12. How many electrons are in a $\\text{Mg}^{2+}$ ion?",
+        "choices": [
+          "12",
+          "14",
+          "10",
+          "2"
+        ],
+        "answer": 2,
+        "working": "Electrons = protons − charge = 12 − 2 = 10. The 12 protons do not change."
+      }
+    ]
+  },
+  "c9-2-1": {
+    "lessonId": "c9-2-1",
+    "title": "Ionic and Covalent Bonding",
+    "duration": 185,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of bond",
+        "t": 22.746
+      },
+      {
+        "title": "Bonding and properties",
+        "t": 71.62
+      },
+      {
+        "title": "Your turn",
+        "t": 118.36
+      },
+      {
+        "title": "Summary",
+        "t": 152.408
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-2-1:q",
+        "t": 131.72,
+        "prompt": "A white solid melts at 770 °C, and its solution conducts electricity. What kind of bonding does it have?",
+        "choices": [
+          "covalent",
+          "no bonding",
+          "metallic only",
+          "ionic"
+        ],
+        "answer": 3,
+        "working": "A high melting point means strong forces in a lattice; conducting in solution means ions that can move."
+      }
+    ]
+  },
+  "c9-2-2": {
+    "lessonId": "c9-2-2",
+    "title": "Formulas of Ionic Compounds",
+    "duration": 193,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Balancing the charges",
+        "t": 20.151
+      },
+      {
+        "title": "Polyatomic ions",
+        "t": 80.023
+      },
+      {
+        "title": "Your turn",
+        "t": 128.162
+      },
+      {
+        "title": "Summary",
+        "t": 160.606
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-2-2:q",
+        "t": 138.915,
+        "prompt": "What is the formula of magnesium nitrate, made of $\\text{Mg}^{2+}$ and $\\ce{NO3-}$ ions?",
+        "choices": [
+          "$\\ce{MgNO3}$",
+          "$\\ce{Mg(NO3)2}$",
+          "$\\ce{MgNO32}$",
+          "$\\ce{Mg2NO3}$"
+        ],
+        "answer": 1,
+        "working": "One $\\text{Mg}^{2+}$ needs two $\\ce{NO3-}$ ions, and two nitrate ions go in brackets."
+      }
+    ]
+  },
+  "c9-2-3": {
+    "lessonId": "c9-2-3",
+    "title": "Naming Compounds",
+    "duration": 169,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Naming ionic compounds",
+        "t": 18.166
+      },
+      {
+        "title": "Naming covalent compounds",
+        "t": 70.386
+      },
+      {
+        "title": "Your turn",
+        "t": 112.751
+      },
+      {
+        "title": "Summary",
+        "t": 136.185
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-2-3:q",
+        "t": 119.897,
+        "prompt": "What is the formula of dinitrogen monoxide?",
+        "choices": [
+          "$\\ce{N2O}$",
+          "$\\ce{NO2}$",
+          "$\\ce{N2O2}$",
+          "$\\ce{NO}$"
+        ],
+        "answer": 0,
+        "working": "\"Di\" means 2 nitrogen atoms and \"mono\" means 1 oxygen atom."
+      }
+    ]
+  },
+  "c9-2-4": {
+    "lessonId": "c9-2-4",
+    "title": "Relative Formula Mass",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Relative formula mass",
+        "t": 18.041
+      },
+      {
+        "title": "Percentage by mass",
+        "t": 81.121
+      },
+      {
+        "title": "Your turn",
+        "t": 119.684
+      },
+      {
+        "title": "Summary",
+        "t": 148.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-2-4:q",
+        "t": 133.109,
+        "prompt": "Find $M_r$ of magnesium oxide, MgO. ($A_r$: Mg = 24, O = 16.)",
+        "choices": [
+          "24",
+          "16",
+          "40",
+          "56"
+        ],
+        "answer": 2,
+        "working": "$M_r = 24 + 16 = 40$."
+      }
+    ]
+  },
+  "c9-3-1": {
+    "lessonId": "c9-3-1",
+    "title": "Conservation of Mass",
+    "duration": 179,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The law",
+        "t": 21.349
+      },
+      {
+        "title": "Open and closed systems",
+        "t": 67.035
+      },
+      {
+        "title": "Your turn",
+        "t": 109.068
+      },
+      {
+        "title": "Summary",
+        "t": 147.59
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-3-1:q",
+        "t": 125.38,
+        "prompt": "A tablet fizzes in water in an open cup. The reading falls from 152.4 g to 151.6 g. What has happened?",
+        "choices": [
+          "0.8 g of mass was destroyed",
+          "0.8 g of carbon dioxide escaped",
+          "0.8 g of oxygen joined the cup",
+          "the balance is broken"
+        ],
+        "answer": 1,
+        "working": "152.4 − 151.6 = 0.8 g. The gas made by the reaction left the open cup; mass was conserved."
+      }
+    ]
+  },
+  "c9-3-2": {
+    "lessonId": "c9-3-2",
+    "title": "Balancing Equations",
+    "duration": 171,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Counting atoms",
+        "t": 24.958
+      },
+      {
+        "title": "Balancing",
+        "t": 60.023
+      },
+      {
+        "title": "Your turn",
+        "t": 112.29
+      },
+      {
+        "title": "Summary",
+        "t": 144.576
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-3-2:q",
+        "t": 120.872,
+        "prompt": "Which is the balanced equation for magnesium burning: $\\ce{Mg + O2 -> MgO}$?",
+        "choices": [
+          "$\\ce{Mg + O2 -> MgO2}$",
+          "$\\ce{Mg + O2 -> 2MgO}$",
+          "$\\ce{Mg + O -> MgO}$",
+          "$\\ce{2Mg + O2 -> 2MgO}$"
+        ],
+        "answer": 3,
+        "working": "Put 2 in front of MgO to balance oxygen, then 2 in front of Mg to balance magnesium."
+      }
+    ]
+  },
+  "c9-3-3": {
+    "lessonId": "c9-3-3",
+    "title": "Types of Reaction",
+    "duration": 182,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four types",
+        "t": 22.063
+      },
+      {
+        "title": "The reactivity series",
+        "t": 72.431
+      },
+      {
+        "title": "Your turn",
+        "t": 119.269
+      },
+      {
+        "title": "Summary",
+        "t": 148.122
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-3-3:q",
+        "t": 124.672,
+        "prompt": "Which of these will react?",
+        "choices": [
+          "copper + zinc sulfate",
+          "silver + iron sulfate",
+          "magnesium + lead nitrate",
+          "gold + copper sulfate"
+        ],
+        "answer": 2,
+        "working": "Only magnesium is higher in the series than the metal in the compound, so only it can displace lead."
+      }
+    ]
+  },
+  "c9-3-4": {
+    "lessonId": "c9-3-4",
+    "title": "Rates of Reaction",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What changes the rate",
+        "t": 16.872
+      },
+      {
+        "title": "Collision theory",
+        "t": 66.438
+      },
+      {
+        "title": "Your turn",
+        "t": 116.281
+      },
+      {
+        "title": "Summary",
+        "t": 144.743
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-3-4:q",
+        "t": 124.959,
+        "prompt": "Why does powdered marble react with acid faster than a single lump?",
+        "choices": [
+          "the powder has a larger surface area",
+          "the powder is hotter",
+          "the powder is a catalyst",
+          "the acid is more concentrated"
+        ],
+        "answer": 0,
+        "working": "More marble particles are exposed to the acid, so there are more collisions each second."
+      }
+    ]
+  },
+  "c9-4-1": {
+    "lessonId": "c9-4-1",
+    "title": "Acids, Bases and Indicators",
+    "duration": 183,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Acids, bases and alkalis",
+        "t": 21.636
+      },
+      {
+        "title": "Indicators",
+        "t": 80.108
+      },
+      {
+        "title": "Your turn",
+        "t": 119.861
+      },
+      {
+        "title": "Summary",
+        "t": 147.473
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-4-1:q",
+        "t": 128.984,
+        "prompt": "A solution turns red litmus blue and phenolphthalein pink. What is it?",
+        "choices": [
+          "an acid",
+          "pure water",
+          "a neutral salt solution",
+          "an alkali"
+        ],
+        "answer": 3,
+        "working": "Both changes happen only in alkalis."
+      }
+    ]
+  },
+  "c9-4-2": {
+    "lessonId": "c9-4-2",
+    "title": "The pH Scale",
+    "duration": 176,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The pH scale",
+        "t": 20.416
+      },
+      {
+        "title": "Comparing pH",
+        "t": 76.389
+      },
+      {
+        "title": "Your turn",
+        "t": 116.131
+      },
+      {
+        "title": "Summary",
+        "t": 145.828
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-4-2:q",
+        "t": 126.031,
+        "prompt": "How many times more acidic is a solution of pH 3 than one of pH 6?",
+        "choices": [
+          "3 times",
+          "1000 times",
+          "30 times",
+          "300 times"
+        ],
+        "answer": 1,
+        "working": "6 − 3 = 3 steps, and $10^3 = 1000$."
+      }
+    ]
+  },
+  "c9-4-3": {
+    "lessonId": "c9-4-3",
+    "title": "Neutralization",
+    "duration": 165,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Neutralization",
+        "t": 21.207
+      },
+      {
+        "title": "Everyday neutralization",
+        "t": 70.037
+      },
+      {
+        "title": "Your turn",
+        "t": 108.553
+      },
+      {
+        "title": "Summary",
+        "t": 135.553
+      }
+    ],
+    "cues": [
+      {
+        "id": "c9-4-3:q",
+        "t": 117.955,
+        "prompt": "Which salt is made when nitric acid neutralizes potassium hydroxide?",
+        "choices": [
+          "potassium chloride",
+          "potassium sulfate",
+          "potassium nitrate",
+          "hydrogen nitrate"
+        ],
+        "answer": 2,
+        "working": "The metal, potassium, comes from the base; nitric acid makes nitrates."
+      }
+    ]
+  },
   "c10-1-1": {
     "lessonId": "c10-1-1",
     "title": "States of Matter and the Particle Model, Part 1: The Particle Model",
@@ -6391,7 +8394,7 @@
   "c20-2-3": {
     "lessonId": "c20-2-3",
     "title": "Boyle's Law, Part 1: Pressure and Volume",
-    "duration": 241,
+    "duration": 272,
     "voice": "af_heart",
     "chapters": [
       {
@@ -6404,25 +8407,25 @@
       },
       {
         "title": "The graph",
-        "t": 76.213
+        "t": 106.293
       },
       {
         "title": "Boyle’s law",
-        "t": 117.098
+        "t": 147.178
       },
       {
         "title": "Your turn",
-        "t": 168.039
+        "t": 198.119
       },
       {
         "title": "Summary",
-        "t": 209.542
+        "t": 239.622
       }
     ],
     "cues": [
       {
         "id": "c20-2-3:q",
-        "t": 183.276,
+        "t": 213.356,
         "prompt": "A gas has a volume of $6.0\\ \\text{L}$. The pressure on it is **tripled**, while the temperature and the amount of gas stay the same. What is its new volume?",
         "choices": [
           "$18\\ \\text{L}$",
@@ -119696,2001 +121699,6 @@
         ],
         "answer": 1,
         "working": "The midpoint of $PQ$ is $(3, 0)$ and $PQ$ is horizontal, so the perpendicular bisector is the vertical line $x = 3$."
-      }
-    ]
-  },
-  "c7-1-1": {
-    "lessonId": "c7-1-1",
-    "title": "Working Safely in the Lab",
-    "duration": 178,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Hazard symbols",
-        "t": 21.118
-      },
-      {
-        "title": "Rules for working safely",
-        "t": 70.34
-      },
-      {
-        "title": "Your turn",
-        "t": 117.493
-      },
-      {
-        "title": "Summary",
-        "t": 145.897
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-1-1:q",
-        "t": 126.084,
-        "prompt": "A bottle’s label shows a flame sitting on top of a circle. What does it warn?",
-        "choices": [
-          "The substance catches fire very easily by itself.",
-          "The substance makes other things burn more fiercely.",
-          "The substance is poisonous if swallowed.",
-          "The substance is a gas kept under pressure."
-        ],
-        "answer": 1,
-        "working": "A flame over a circle marks an oxidizer: it feeds a fire. A plain flame would mean flammable."
-      }
-    ]
-  },
-  "c7-1-2": {
-    "lessonId": "c7-1-2",
-    "title": "What Is Matter?",
-    "duration": 202,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "The test for matter",
-        "t": 19.167
-      },
-      {
-        "title": "Properties",
-        "t": 66.24
-      },
-      {
-        "title": "Using properties as clues",
-        "t": 110.538
-      },
-      {
-        "title": "Your turn",
-        "t": 144.412
-      },
-      {
-        "title": "Summary",
-        "t": 169.51
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-1-2:q",
-        "t": 149.858,
-        "prompt": "Which of these is NOT matter?",
-        "choices": [
-          "The steam from a kettle",
-          "The air inside a football",
-          "The helium in a party balloon",
-          "The sound of a bell"
-        ],
-        "answer": 3,
-        "working": "Sound is energy carried by vibrations; it has no mass. Steam, air and helium all have mass and take up space."
-      }
-    ]
-  },
-  "c7-1-3": {
-    "lessonId": "c7-1-3",
-    "title": "Measuring Mass and Volume",
-    "duration": 199,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Reading a measuring cylinder",
-        "t": 22.72
-      },
-      {
-        "title": "Volume by displacement",
-        "t": 63.909
-      },
-      {
-        "title": "Changing units",
-        "t": 101.094
-      },
-      {
-        "title": "Your turn",
-        "t": 136.248
-      },
-      {
-        "title": "Summary",
-        "t": 167.123
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-1-3:q",
-        "t": 149.679,
-        "prompt": "A measuring cylinder holds 60 mL of water. A key is dropped in and the level rises to 67 mL. What is the volume of the key?",
-        "choices": [
-          "7 cm³",
-          "67 cm³",
-          "127 cm³",
-          "60 cm³"
-        ],
-        "answer": 0,
-        "working": "The rise in the level is the key’s volume: 67 − 60 = 7 mL, and 1 mL = 1 cm³."
-      }
-    ]
-  },
-  "c7-1-4": {
-    "lessonId": "c7-1-4",
-    "title": "Density",
-    "duration": 213,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "What density is",
-        "t": 22.454
-      },
-      {
-        "title": "Identifying a substance",
-        "t": 58.487
-      },
-      {
-        "title": "Floating and sinking",
-        "t": 97.695
-      },
-      {
-        "title": "Your turn",
-        "t": 148.027
-      },
-      {
-        "title": "Summary",
-        "t": 180.461
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-1-4:q",
-        "t": 160.611,
-        "prompt": "A stone has a mass of 60 g and a volume of 24 cm³. What is its density, and does it float in water?",
-        "choices": [
-          "0.4 g/cm³, so it floats",
-          "2.5 g/cm³, so it floats",
-          "2.5 g/cm³, so it sinks",
-          "36 g/cm³, so it sinks"
-        ],
-        "answer": 2,
-        "working": "60 ÷ 24 = 2.5 g/cm³. That is more than 1 g/cm³, the density of water, so the stone sinks."
-      }
-    ]
-  },
-  "c7-2-1": {
-    "lessonId": "c7-2-1",
-    "title": "Solids, Liquids and Gases",
-    "duration": 180,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "The three states",
-        "t": 20.921
-      },
-      {
-        "title": "The particle model",
-        "t": 53.293
-      },
-      {
-        "title": "Two common mistakes",
-        "t": 99.888
-      },
-      {
-        "title": "Your turn",
-        "t": 119.837
-      },
-      {
-        "title": "Summary",
-        "t": 147.984
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-2-1:q",
-        "t": 128.153,
-        "prompt": "Why can the air in a sealed syringe be pushed in, but water cannot?",
-        "choices": [
-          "Air particles shrink when they are pushed, but water particles cannot.",
-          "Air particles are far apart, but water particles are already touching.",
-          "Water particles are held in fixed rows, but air particles are not.",
-          "Water particles do not move, but air particles move quickly."
-        ],
-        "answer": 1,
-        "working": "In a gas the particles are far apart, so they can be pushed closer. In a liquid they already touch, so there is no space to push them into."
-      }
-    ]
-  },
-  "c7-2-2": {
-    "lessonId": "c7-2-2",
-    "title": "Changes of State",
-    "duration": 195,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Naming the changes",
-        "t": 21.482
-      },
-      {
-        "title": "Water on a cold can",
-        "t": 67.316
-      },
-      {
-        "title": "Melting and boiling points",
-        "t": 88.2
-      },
-      {
-        "title": "Your turn",
-        "t": 134.039
-      },
-      {
-        "title": "Summary",
-        "t": 164.741
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-2-2:q",
-        "t": 147.82,
-        "prompt": "Oxygen melts at −218 °C and boils at −183 °C. What state is oxygen in at −200 °C?",
-        "choices": [
-          "A liquid",
-          "A solid",
-          "A gas",
-          "A solid and a gas at once"
-        ],
-        "answer": 0,
-        "working": "−200 °C is warmer than −218 °C but colder than −183 °C, so it lies between the melting and boiling points: oxygen is a liquid."
-      }
-    ]
-  },
-  "c7-2-3": {
-    "lessonId": "c7-2-3",
-    "title": "Temperature and Heat",
-    "duration": 193,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Temperature",
-        "t": 16.136
-      },
-      {
-        "title": "Heat",
-        "t": 58.859
-      },
-      {
-        "title": "How heat moves",
-        "t": 92.594
-      },
-      {
-        "title": "Your turn",
-        "t": 137.615
-      },
-      {
-        "title": "Summary",
-        "t": 164.527
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-2-3:q",
-        "t": 144.98,
-        "prompt": "How does the Sun’s heat reach Earth across empty space?",
-        "choices": [
-          "By conduction",
-          "By convection",
-          "By sound waves",
-          "By radiation"
-        ],
-        "answer": 3,
-        "working": "Conduction and convection both need particles. Space is empty, so only radiation, which travels as rays, can cross it."
-      }
-    ]
-  },
-  "c7-2-4": {
-    "lessonId": "c7-2-4",
-    "title": "Expansion and Diffusion",
-    "duration": 188,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Expansion and contraction",
-        "t": 19.893
-      },
-      {
-        "title": "Expansion in everyday life",
-        "t": 50.38
-      },
-      {
-        "title": "Diffusion",
-        "t": 87.478
-      },
-      {
-        "title": "Your turn",
-        "t": 126.088
-      },
-      {
-        "title": "Summary",
-        "t": 156.728
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-2-4:q",
-        "t": 138.034,
-        "prompt": "A tea bag is put into hot water and another into cold water. In which cup does the colour spread faster, and why?",
-        "choices": [
-          "The cold water, because its particles are closer together.",
-          "Both the same, because diffusion does not depend on temperature.",
-          "The hot water, because its particles move faster.",
-          "The hot water, because its particles are bigger."
-        ],
-        "answer": 2,
-        "working": "The colour spreads by diffusion, which is faster when the particles move faster: in the hot water. Particles never get bigger."
-      }
-    ]
-  },
-  "c7-3-1": {
-    "lessonId": "c7-3-1",
-    "title": "Pure Substances and Mixtures",
-    "duration": 187,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Pure or mixture?",
-        "t": 17.85
-      },
-      {
-        "title": "A test for purity",
-        "t": 60.864
-      },
-      {
-        "title": "Four kinds of mixture",
-        "t": 91.233
-      },
-      {
-        "title": "Your turn",
-        "t": 129.402
-      },
-      {
-        "title": "Summary",
-        "t": 156.462
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-3-1:q",
-        "t": 139.321,
-        "prompt": "A mixture looks cloudy, but even after a week nothing has settled. What kind of mixture is it?",
-        "choices": [
-          "A colloid",
-          "A solution",
-          "A suspension",
-          "A mechanical mixture"
-        ],
-        "answer": 0,
-        "working": "It is cloudy, so not a solution. Nothing settles, so not a suspension. Cloudy and never settling: a colloid."
-      }
-    ]
-  },
-  "c7-3-2": {
-    "lessonId": "c7-3-2",
-    "title": "Solutions and Concentration",
-    "duration": 205,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Solute, solvent and solution",
-        "t": 19.734
-      },
-      {
-        "title": "Mass is conserved",
-        "t": 65.144
-      },
-      {
-        "title": "Concentration",
-        "t": 92.39
-      },
-      {
-        "title": "Your turn",
-        "t": 142.334
-      },
-      {
-        "title": "Summary",
-        "t": 173.173
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-3-2:q",
-        "t": 153.719,
-        "prompt": "10 g of sugar is dissolved to make 500 mL of solution. What is the concentration?",
-        "choices": [
-          "5 g/L",
-          "20 g/L",
-          "0.02 g/L",
-          "50 g/L"
-        ],
-        "answer": 1,
-        "working": "500 mL = 0.5 L, and 10 ÷ 0.5 = 20 g/L."
-      }
-    ]
-  },
-  "c7-3-3": {
-    "lessonId": "c7-3-3",
-    "title": "Solubility",
-    "duration": 184,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Solubility",
-        "t": 20.81
-      },
-      {
-        "title": "Using the table",
-        "t": 50.189
-      },
-      {
-        "title": "Saturated or unsaturated?",
-        "t": 86.131
-      },
-      {
-        "title": "Your turn",
-        "t": 122.205
-      },
-      {
-        "title": "Summary",
-        "t": 153.616
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-3-3:q",
-        "t": 135.396,
-        "prompt": "At 20 °C, 36 g of salt dissolves in 100 g of water. 30 g of salt is stirred into 100 g of water at 20 °C. Which is true?",
-        "choices": [
-          "The solution is saturated, and 6 g stays as solid.",
-          "The solution is saturated, and nothing more can dissolve.",
-          "None of the salt dissolves, because salt is insoluble.",
-          "All the salt dissolves, and the solution is unsaturated."
-        ],
-        "answer": 3,
-        "working": "30 g is less than the 36 g that can dissolve, so it all dissolves, and another 6 g could still dissolve."
-      }
-    ]
-  },
-  "c7-3-4": {
-    "lessonId": "c7-3-4",
-    "title": "How Fast Things Dissolve",
-    "duration": 199,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Three ways to dissolve faster",
-        "t": 17.256
-      },
-      {
-        "title": "Fair tests",
-        "t": 69.148
-      },
-      {
-        "title": "Designing a test",
-        "t": 97.337
-      },
-      {
-        "title": "Your turn",
-        "t": 138.964
-      },
-      {
-        "title": "Summary",
-        "t": 169.795
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-3-4:q",
-        "t": 150.408,
-        "prompt": "A student times how long sugar takes to dissolve with and without stirring. What is the dependent variable?",
-        "choices": [
-          "Whether the water is stirred",
-          "The volume of water",
-          "The time the sugar takes to dissolve",
-          "The mass of sugar"
-        ],
-        "answer": 2,
-        "working": "The dependent variable is what is measured: the time. Stirring is the independent variable; the volume and mass are controlled."
-      }
-    ]
-  },
-  "c7-4-1": {
-    "lessonId": "c7-4-1",
-    "title": "Sieving, Magnets and Filtering",
-    "duration": 199,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Sieving and magnets",
-        "t": 21.728
-      },
-      {
-        "title": "Filtration",
-        "t": 63.826
-      },
-      {
-        "title": "What a filter cannot do",
-        "t": 101.725
-      },
-      {
-        "title": "Your turn",
-        "t": 139.421
-      },
-      {
-        "title": "Summary",
-        "t": 166.92
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-4-1:q",
-        "t": 146.367,
-        "prompt": "Which mixture can be separated by filtration?",
-        "choices": [
-          "Sugar dissolved in water",
-          "Chalk powder stirred into water",
-          "Salt dissolved in water",
-          "Iron filings mixed with sulfur"
-        ],
-        "answer": 1,
-        "working": "Chalk is insoluble, so the filter paper catches it. Dissolved sugar and salt pass through, and iron and sulfur are both dry solids, best separated with a magnet."
-      }
-    ]
-  },
-  "c7-4-2": {
-    "lessonId": "c7-4-2",
-    "title": "Evaporation and Distillation",
-    "duration": 204,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Evaporation",
-        "t": 21.33
-      },
-      {
-        "title": "Crystallization",
-        "t": 58.192
-      },
-      {
-        "title": "Distillation",
-        "t": 104.926
-      },
-      {
-        "title": "Your turn",
-        "t": 145.989
-      },
-      {
-        "title": "Summary",
-        "t": 171.623
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-4-2:q",
-        "t": 154.133,
-        "prompt": "Salt water is distilled. What is collected in the beaker at the end?",
-        "choices": [
-          "Pure water",
-          "Salty water, saltier than before",
-          "Dry salt crystals",
-          "Steam"
-        ],
-        "answer": 0,
-        "working": "Only the water boils. It condenses in the condenser and collects as pure water; the salt stays in the flask."
-      }
-    ]
-  },
-  "c7-4-3": {
-    "lessonId": "c7-4-3",
-    "title": "Chromatography and Choosing a Method",
-    "duration": 202,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Paper chromatography",
-        "t": 23.01
-      },
-      {
-        "title": "Reading a chromatogram",
-        "t": 68.134
-      },
-      {
-        "title": "Choosing a method",
-        "t": 99.412
-      },
-      {
-        "title": "Your turn",
-        "t": 141.78
-      },
-      {
-        "title": "Summary",
-        "t": 170.863
-      }
-    ],
-    "cues": [
-      {
-        "id": "c7-4-3:q",
-        "t": 151.321,
-        "prompt": "You want to keep both the salt and the water from salt water. Which method should you use?",
-        "choices": [
-          "Evaporation",
-          "Filtration",
-          "Chromatography",
-          "Distillation"
-        ],
-        "answer": 3,
-        "working": "Evaporation loses the water to the air, and filtration cannot catch dissolved salt. Distillation keeps the salt in the flask and collects the water."
-      }
-    ]
-  },
-  "c8-1-1": {
-    "lessonId": "c8-1-1",
-    "title": "Atoms and Elements",
-    "duration": 199,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Atoms and elements",
-        "t": 24.509
-      },
-      {
-        "title": "Chemical symbols",
-        "t": 90.818
-      },
-      {
-        "title": "Your turn",
-        "t": 139.24
-      },
-      {
-        "title": "Summary",
-        "t": 168.723
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-1-1:q",
-        "t": 147.571,
-        "prompt": "Which of these is written correctly as the symbol for a single element?",
-        "choices": [
-          "CL",
-          "mg",
-          "Zn",
-          "CO"
-        ],
-        "answer": 2,
-        "working": "A symbol is a capital letter, then a small letter if there is one. Zn is zinc. CO has two capitals, so it is two elements: carbon and oxygen."
-      }
-    ]
-  },
-  "c8-1-2": {
-    "lessonId": "c8-1-2",
-    "title": "Compounds and Molecules",
-    "duration": 200,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Compounds and molecules",
-        "t": 22.702
-      },
-      {
-        "title": "New properties",
-        "t": 68.525
-      },
-      {
-        "title": "Particle diagrams",
-        "t": 99.044
-      },
-      {
-        "title": "Your turn",
-        "t": 133.115
-      },
-      {
-        "title": "Summary",
-        "t": 166.09
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-1-2:q",
-        "t": 146.004,
-        "prompt": "A box holds identical particles. Each is one carbon atom joined to two oxygen atoms. What does it show?",
-        "choices": [
-          "a compound",
-          "an element",
-          "a mixture of two elements",
-          "a mixture of three substances"
-        ],
-        "answer": 0,
-        "working": "All the particles are the same, so it is one substance. Each has two kinds of atom joined, so it is a compound: carbon dioxide."
-      }
-    ]
-  },
-  "c8-1-3": {
-    "lessonId": "c8-1-3",
-    "title": "Elements, Compounds and Mixtures",
-    "duration": 181,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Three kinds of matter",
-        "t": 25.686
-      },
-      {
-        "title": "Compounds and mixtures compared",
-        "t": 65.579
-      },
-      {
-        "title": "Your turn",
-        "t": 117.078
-      },
-      {
-        "title": "Summary",
-        "t": 148.826
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-1-3:q",
-        "t": 127.604,
-        "prompt": "A grey-and-yellow powder is tested with a magnet, and grey specks are pulled out. What is the powder?",
-        "choices": [
-          "a compound of iron and sulfur",
-          "a mixture of iron and sulfur",
-          "a single element",
-          "a compound that is magnetic"
-        ],
-        "answer": 1,
-        "working": "The iron still has its own property, magnetism, so it is not joined. In a compound the iron would no longer be magnetic."
-      }
-    ]
-  },
-  "c8-1-4": {
-    "lessonId": "c8-1-4",
-    "title": "Chemical Formulas",
-    "duration": 173,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "What a formula tells you",
-        "t": 19.571
-      },
-      {
-        "title": "Counting atoms",
-        "t": 70.412
-      },
-      {
-        "title": "Your turn",
-        "t": 114.542
-      },
-      {
-        "title": "Summary",
-        "t": 141.494
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-1-4:q",
-        "t": 123.523,
-        "prompt": "How many hydrogen atoms does the formula $\\ce{Ca(OH)2}$ show?",
-        "choices": [
-          "1",
-          "3",
-          "4",
-          "2"
-        ],
-        "answer": 3,
-        "working": "There is 1 hydrogen atom inside the bracket, and the 2 after the bracket doubles it: 1 × 2 = 2."
-      }
-    ]
-  },
-  "c8-2-1": {
-    "lessonId": "c8-2-1",
-    "title": "Organizing the Elements",
-    "duration": 174,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Groups and periods",
-        "t": 21.131
-      },
-      {
-        "title": "Mendeleev’s table",
-        "t": 75.985
-      },
-      {
-        "title": "Your turn",
-        "t": 116.237
-      },
-      {
-        "title": "Summary",
-        "t": 146.388
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-2-1:q",
-        "t": 124.534,
-        "prompt": "In which period and group is the element with atomic number 12?",
-        "choices": [
-          "period 3, group 2",
-          "period 2, group 3",
-          "period 3, group 12",
-          "period 2, group 12"
-        ],
-        "answer": 0,
-        "working": "12 is between 11 and 18, so it is in period 3. Period 3 starts at 11 in group 1, so 12 is in group 2. It is magnesium."
-      }
-    ]
-  },
-  "c8-2-2": {
-    "lessonId": "c8-2-2",
-    "title": "Metals and Non-metals",
-    "duration": 173,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Properties",
-        "t": 22.204
-      },
-      {
-        "title": "Using the table",
-        "t": 71.552
-      },
-      {
-        "title": "Your turn",
-        "t": 110.538
-      },
-      {
-        "title": "Summary",
-        "t": 141.804
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-2-2:q",
-        "t": 122.478,
-        "prompt": "An element is a yellow solid that shatters when hit and does not conduct electricity. What is it most likely to be?",
-        "choices": [
-          "a metal",
-          "a metalloid",
-          "a non-metal",
-          "a liquid metal"
-        ],
-        "answer": 2,
-        "working": "It is dull, brittle and an insulator: all non-metal properties. It could be sulfur."
-      }
-    ]
-  },
-  "c8-2-3": {
-    "lessonId": "c8-2-3",
-    "title": "Families of Elements",
-    "duration": 165,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Group 1: the alkali metals",
-        "t": 23.759
-      },
-      {
-        "title": "Halogens and noble gases",
-        "t": 62.828
-      },
-      {
-        "title": "Your turn",
-        "t": 103.219
-      },
-      {
-        "title": "Summary",
-        "t": 132.45
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-2-3:q",
-        "t": 113.829,
-        "prompt": "Helium and hydrogen are both less dense than air. Why are party balloons filled with helium?",
-        "choices": [
-          "helium is a metal",
-          "helium is unreactive, so it cannot burn",
-          "helium is an alkali metal",
-          "hydrogen is denser than air"
-        ],
-        "answer": 1,
-        "working": "Hydrogen is flammable and can explode. Helium is a noble gas, so it does not react and cannot burn."
-      }
-    ]
-  },
-  "c8-2-4": {
-    "lessonId": "c8-2-4",
-    "title": "Patterns in the Periodic Table",
-    "duration": 174,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Trends",
-        "t": 22.655
-      },
-      {
-        "title": "Elements at work",
-        "t": 72.487
-      },
-      {
-        "title": "Your turn",
-        "t": 116.37
-      },
-      {
-        "title": "Summary",
-        "t": 144.4
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-2-4:q",
-        "t": 126.834,
-        "prompt": "Fluorine is at the top of group 17 and iodine is lower down. Which is more reactive?",
-        "choices": [
-          "iodine, because reactivity rises down every group",
-          "they are equally reactive",
-          "neither: halogens do not react",
-          "fluorine, because halogens get less reactive down the group"
-        ],
-        "answer": 3,
-        "working": "Halogens get less reactive down group 17, so fluorine, at the top, is the most reactive."
-      }
-    ]
-  },
-  "c8-3-1": {
-    "lessonId": "c8-3-1",
-    "title": "Physical and Chemical Changes",
-    "duration": 169,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Two kinds of change",
-        "t": 19.712
-      },
-      {
-        "title": "Can it be reversed?",
-        "t": 70.436
-      },
-      {
-        "title": "Your turn",
-        "t": 109.131
-      },
-      {
-        "title": "Summary",
-        "t": 136.714
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-3-1:q",
-        "t": 115.224,
-        "prompt": "Which of these is a chemical change?",
-        "choices": [
-          "butter melting",
-          "milk going sour",
-          "salt dissolving",
-          "water boiling"
-        ],
-        "answer": 1,
-        "working": "Sour milk contains new substances made as it goes off, and it cannot be turned back. The others make no new substance."
-      }
-    ]
-  },
-  "c8-3-2": {
-    "lessonId": "c8-3-2",
-    "title": "Signs of a Chemical Reaction",
-    "duration": 165,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Signs of a reaction",
-        "t": 18.177
-      },
-      {
-        "title": "Reactants and products",
-        "t": 63.966
-      },
-      {
-        "title": "Your turn",
-        "t": 101.626
-      },
-      {
-        "title": "Summary",
-        "t": 136.755
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-3-2:q",
-        "t": 115.933,
-        "prompt": "Limestone, calcium carbonate, is heated and breaks down into calcium oxide and carbon dioxide. What is the reactant?",
-        "choices": [
-          "calcium oxide",
-          "carbon dioxide",
-          "calcium carbonate",
-          "calcium oxide and carbon dioxide"
-        ],
-        "answer": 2,
-        "working": "The reaction starts with calcium carbonate alone. Calcium oxide and carbon dioxide are the products."
-      }
-    ]
-  },
-  "c8-3-3": {
-    "lessonId": "c8-3-3",
-    "title": "Word Equations",
-    "duration": 173,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Word equations",
-        "t": 19.29
-      },
-      {
-        "title": "Naming compounds",
-        "t": 77.307
-      },
-      {
-        "title": "Your turn",
-        "t": 115.071
-      },
-      {
-        "title": "Summary",
-        "t": 144.086
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-3-3:q",
-        "t": 123.448,
-        "prompt": "Calcium reacts with chlorine. Which is the correct word equation?",
-        "choices": [
-          "calcium + chlorine → calcium chloride",
-          "calcium chloride → calcium + chlorine",
-          "calcium + chlorine → chlorine calcide",
-          "calcium + chloride → calcium chlorine"
-        ],
-        "answer": 0,
-        "working": "The reactants go on the left. The metal comes first in the name, and chlorine becomes chloride."
-      }
-    ]
-  },
-  "c8-4-1": {
-    "lessonId": "c8-4-1",
-    "title": "Burning",
-    "duration": 175,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Combustion",
-        "t": 21.5
-      },
-      {
-        "title": "The fire triangle",
-        "t": 72.01
-      },
-      {
-        "title": "Your turn",
-        "t": 112.43
-      },
-      {
-        "title": "Summary",
-        "t": 142.579
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-4-1:q",
-        "t": 125.565,
-        "prompt": "Firefighters cut a wide strip of trees out of a forest, ahead of a wildfire. Which side of the fire triangle does this remove?",
-        "choices": [
-          "heat",
-          "oxygen",
-          "carbon dioxide",
-          "fuel"
-        ],
-        "answer": 3,
-        "working": "The trees are what burns. With no trees in the strip, the fire runs out of fuel when it reaches it."
-      }
-    ]
-  },
-  "c8-4-2": {
-    "lessonId": "c8-4-2",
-    "title": "Rusting and Corrosion",
-    "duration": 173,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "What makes iron rust",
-        "t": 21.217
-      },
-      {
-        "title": "Stopping rust",
-        "t": 82.447
-      },
-      {
-        "title": "Your turn",
-        "t": 112.254
-      },
-      {
-        "title": "Summary",
-        "t": 138.306
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-4-2:q",
-        "t": 119.541,
-        "prompt": "Why is a bicycle chain oiled rather than painted?",
-        "choices": [
-          "oil adds zinc to the chain",
-          "paint lets water through",
-          "oil keeps out water and air but lets the chain move",
-          "chains are made of aluminium"
-        ],
-        "answer": 2,
-        "working": "Paint would crack and flake off the moving links. Oil is a barrier that still lets the links move freely."
-      }
-    ]
-  },
-  "c8-4-3": {
-    "lessonId": "c8-4-3",
-    "title": "Metals and Alloys",
-    "duration": 176,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Choosing a metal",
-        "t": 24.055
-      },
-      {
-        "title": "Alloys",
-        "t": 65.936
-      },
-      {
-        "title": "Your turn",
-        "t": 116.322
-      },
-      {
-        "title": "Summary",
-        "t": 142.606
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-4-3:q",
-        "t": 123.427,
-        "prompt": "Why is an alloy usually harder than the pure metal?",
-        "choices": [
-          "atoms of a different size stop the layers sliding",
-          "the atoms in an alloy are all the same size",
-          "alloys contain no metal atoms",
-          "alloys are always heavier"
-        ],
-        "answer": 0,
-        "working": "In a pure metal, same-sized atoms form layers that slide easily. Different-sized atoms in an alloy disrupt the layers."
-      }
-    ]
-  },
-  "c8-4-4": {
-    "lessonId": "c8-4-4",
-    "title": "Polymers, Ceramics and Composites",
-    "duration": 172,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Three kinds of material",
-        "t": 20.342
-      },
-      {
-        "title": "Choosing a material",
-        "t": 84.34
-      },
-      {
-        "title": "Your turn",
-        "t": 113.333
-      },
-      {
-        "title": "Summary",
-        "t": 143.821
-      }
-    ],
-    "cues": [
-      {
-        "id": "c8-4-4:q",
-        "t": 121.266,
-        "prompt": "Which material is best for the covering of electrical wires?",
-        "choices": [
-          "copper",
-          "PVC plastic",
-          "glass",
-          "steel"
-        ],
-        "answer": 1,
-        "working": "The covering must be a flexible insulator. PVC is a polymer that is flexible and does not conduct electricity."
-      }
-    ]
-  },
-  "c9-1-1": {
-    "lessonId": "c9-1-1",
-    "title": "Inside the Atom",
-    "duration": 202,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Three particles",
-        "t": 20.407
-      },
-      {
-        "title": "How the model changed",
-        "t": 68.09
-      },
-      {
-        "title": "Your turn",
-        "t": 133.498
-      },
-      {
-        "title": "Summary",
-        "t": 165.335
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-1-1:q",
-        "t": 142.909,
-        "prompt": "In the gold foil experiment, what did the few alpha particles that bounced back show?",
-        "choices": [
-          "electrons are negative",
-          "there is a tiny, dense, positive nucleus",
-          "atoms are solid spheres",
-          "neutrons have no charge"
-        ],
-        "answer": 1,
-        "working": "Spread-out positive charge could only nudge an alpha particle. Throwing it back needs a small, dense, positive centre."
-      }
-    ]
-  },
-  "c9-1-2": {
-    "lessonId": "c9-1-2",
-    "title": "Atomic Number, Mass Number and Isotopes",
-    "duration": 179,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Two numbers",
-        "t": 20.695
-      },
-      {
-        "title": "Isotopes",
-        "t": 67.901
-      },
-      {
-        "title": "Your turn",
-        "t": 117.704
-      },
-      {
-        "title": "Summary",
-        "t": 146.476
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-1-2:q",
-        "t": 128.899,
-        "prompt": "Potassium has atomic number 19 and mass number 39. How many neutrons are in the atom?",
-        "choices": [
-          "19",
-          "39",
-          "58",
-          "20"
-        ],
-        "answer": 3,
-        "working": "Neutrons = mass number − atomic number = 39 − 19 = 20."
-      }
-    ]
-  },
-  "c9-1-3": {
-    "lessonId": "c9-1-3",
-    "title": "Electron Arrangements",
-    "duration": 177,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Filling the shells",
-        "t": 20.385
-      },
-      {
-        "title": "Shells and the periodic table",
-        "t": 69.032
-      },
-      {
-        "title": "Your turn",
-        "t": 114.78
-      },
-      {
-        "title": "Summary",
-        "t": 142.472
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-1-3:q",
-        "t": 124.242,
-        "prompt": "An element has the arrangement 2, 8, 6. Which group and period is it in?",
-        "choices": [
-          "group 16, period 3",
-          "group 6, period 2",
-          "group 3, period 6",
-          "group 18, period 3"
-        ],
-        "answer": 0,
-        "working": "Three shells, so period 3. Six outer electrons, so group 16. It is sulfur."
-      }
-    ]
-  },
-  "c9-1-4": {
-    "lessonId": "c9-1-4",
-    "title": "Ions",
-    "duration": 182,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "How ions form",
-        "t": 20
-      },
-      {
-        "title": "Charges from the group",
-        "t": 63.837
-      },
-      {
-        "title": "Your turn",
-        "t": 119.454
-      },
-      {
-        "title": "Summary",
-        "t": 149.069
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-1-4:q",
-        "t": 130.536,
-        "prompt": "Magnesium has atomic number 12. How many electrons are in a $\\text{Mg}^{2+}$ ion?",
-        "choices": [
-          "12",
-          "14",
-          "10",
-          "2"
-        ],
-        "answer": 2,
-        "working": "Electrons = protons − charge = 12 − 2 = 10. The 12 protons do not change."
-      }
-    ]
-  },
-  "c9-2-1": {
-    "lessonId": "c9-2-1",
-    "title": "Ionic and Covalent Bonding",
-    "duration": 185,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Two kinds of bond",
-        "t": 22.746
-      },
-      {
-        "title": "Bonding and properties",
-        "t": 71.62
-      },
-      {
-        "title": "Your turn",
-        "t": 118.36
-      },
-      {
-        "title": "Summary",
-        "t": 152.408
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-2-1:q",
-        "t": 131.72,
-        "prompt": "A white solid melts at 770 °C, and its solution conducts electricity. What kind of bonding does it have?",
-        "choices": [
-          "covalent",
-          "no bonding",
-          "metallic only",
-          "ionic"
-        ],
-        "answer": 3,
-        "working": "A high melting point means strong forces in a lattice; conducting in solution means ions that can move."
-      }
-    ]
-  },
-  "c9-2-2": {
-    "lessonId": "c9-2-2",
-    "title": "Formulas of Ionic Compounds",
-    "duration": 193,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Balancing the charges",
-        "t": 20.151
-      },
-      {
-        "title": "Polyatomic ions",
-        "t": 80.023
-      },
-      {
-        "title": "Your turn",
-        "t": 128.162
-      },
-      {
-        "title": "Summary",
-        "t": 160.606
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-2-2:q",
-        "t": 138.915,
-        "prompt": "What is the formula of magnesium nitrate, made of $\\text{Mg}^{2+}$ and $\\ce{NO3-}$ ions?",
-        "choices": [
-          "$\\ce{MgNO3}$",
-          "$\\ce{Mg(NO3)2}$",
-          "$\\ce{MgNO32}$",
-          "$\\ce{Mg2NO3}$"
-        ],
-        "answer": 1,
-        "working": "One $\\text{Mg}^{2+}$ needs two $\\ce{NO3-}$ ions, and two nitrate ions go in brackets."
-      }
-    ]
-  },
-  "c9-2-3": {
-    "lessonId": "c9-2-3",
-    "title": "Naming Compounds",
-    "duration": 169,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Naming ionic compounds",
-        "t": 18.166
-      },
-      {
-        "title": "Naming covalent compounds",
-        "t": 70.386
-      },
-      {
-        "title": "Your turn",
-        "t": 112.751
-      },
-      {
-        "title": "Summary",
-        "t": 136.185
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-2-3:q",
-        "t": 119.897,
-        "prompt": "What is the formula of dinitrogen monoxide?",
-        "choices": [
-          "$\\ce{N2O}$",
-          "$\\ce{NO2}$",
-          "$\\ce{N2O2}$",
-          "$\\ce{NO}$"
-        ],
-        "answer": 0,
-        "working": "\"Di\" means 2 nitrogen atoms and \"mono\" means 1 oxygen atom."
-      }
-    ]
-  },
-  "c9-2-4": {
-    "lessonId": "c9-2-4",
-    "title": "Relative Formula Mass",
-    "duration": 176,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Relative formula mass",
-        "t": 18.041
-      },
-      {
-        "title": "Percentage by mass",
-        "t": 81.121
-      },
-      {
-        "title": "Your turn",
-        "t": 119.684
-      },
-      {
-        "title": "Summary",
-        "t": 148.861
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-2-4:q",
-        "t": 133.109,
-        "prompt": "Find $M_r$ of magnesium oxide, MgO. ($A_r$: Mg = 24, O = 16.)",
-        "choices": [
-          "24",
-          "16",
-          "40",
-          "56"
-        ],
-        "answer": 2,
-        "working": "$M_r = 24 + 16 = 40$."
-      }
-    ]
-  },
-  "c9-3-1": {
-    "lessonId": "c9-3-1",
-    "title": "Conservation of Mass",
-    "duration": 179,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "The law",
-        "t": 21.349
-      },
-      {
-        "title": "Open and closed systems",
-        "t": 67.035
-      },
-      {
-        "title": "Your turn",
-        "t": 109.068
-      },
-      {
-        "title": "Summary",
-        "t": 147.59
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-3-1:q",
-        "t": 125.38,
-        "prompt": "A tablet fizzes in water in an open cup. The reading falls from 152.4 g to 151.6 g. What has happened?",
-        "choices": [
-          "0.8 g of mass was destroyed",
-          "0.8 g of carbon dioxide escaped",
-          "0.8 g of oxygen joined the cup",
-          "the balance is broken"
-        ],
-        "answer": 1,
-        "working": "152.4 − 151.6 = 0.8 g. The gas made by the reaction left the open cup; mass was conserved."
-      }
-    ]
-  },
-  "c9-3-2": {
-    "lessonId": "c9-3-2",
-    "title": "Balancing Equations",
-    "duration": 171,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Counting atoms",
-        "t": 24.958
-      },
-      {
-        "title": "Balancing",
-        "t": 60.023
-      },
-      {
-        "title": "Your turn",
-        "t": 112.29
-      },
-      {
-        "title": "Summary",
-        "t": 144.576
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-3-2:q",
-        "t": 120.872,
-        "prompt": "Which is the balanced equation for magnesium burning: $\\ce{Mg + O2 -> MgO}$?",
-        "choices": [
-          "$\\ce{Mg + O2 -> MgO2}$",
-          "$\\ce{Mg + O2 -> 2MgO}$",
-          "$\\ce{Mg + O -> MgO}$",
-          "$\\ce{2Mg + O2 -> 2MgO}$"
-        ],
-        "answer": 3,
-        "working": "Put 2 in front of MgO to balance oxygen, then 2 in front of Mg to balance magnesium."
-      }
-    ]
-  },
-  "c9-3-3": {
-    "lessonId": "c9-3-3",
-    "title": "Types of Reaction",
-    "duration": 182,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Four types",
-        "t": 22.063
-      },
-      {
-        "title": "The reactivity series",
-        "t": 72.431
-      },
-      {
-        "title": "Your turn",
-        "t": 119.269
-      },
-      {
-        "title": "Summary",
-        "t": 148.122
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-3-3:q",
-        "t": 124.672,
-        "prompt": "Which of these will react?",
-        "choices": [
-          "copper + zinc sulfate",
-          "silver + iron sulfate",
-          "magnesium + lead nitrate",
-          "gold + copper sulfate"
-        ],
-        "answer": 2,
-        "working": "Only magnesium is higher in the series than the metal in the compound, so only it can displace lead."
-      }
-    ]
-  },
-  "c9-3-4": {
-    "lessonId": "c9-3-4",
-    "title": "Rates of Reaction",
-    "duration": 176,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "What changes the rate",
-        "t": 16.872
-      },
-      {
-        "title": "Collision theory",
-        "t": 66.438
-      },
-      {
-        "title": "Your turn",
-        "t": 116.281
-      },
-      {
-        "title": "Summary",
-        "t": 144.743
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-3-4:q",
-        "t": 124.959,
-        "prompt": "Why does powdered marble react with acid faster than a single lump?",
-        "choices": [
-          "the powder has a larger surface area",
-          "the powder is hotter",
-          "the powder is a catalyst",
-          "the acid is more concentrated"
-        ],
-        "answer": 0,
-        "working": "More marble particles are exposed to the acid, so there are more collisions each second."
-      }
-    ]
-  },
-  "c9-4-1": {
-    "lessonId": "c9-4-1",
-    "title": "Acids, Bases and Indicators",
-    "duration": 183,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Acids, bases and alkalis",
-        "t": 21.636
-      },
-      {
-        "title": "Indicators",
-        "t": 80.108
-      },
-      {
-        "title": "Your turn",
-        "t": 119.861
-      },
-      {
-        "title": "Summary",
-        "t": 147.473
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-4-1:q",
-        "t": 128.984,
-        "prompt": "A solution turns red litmus blue and phenolphthalein pink. What is it?",
-        "choices": [
-          "an acid",
-          "pure water",
-          "a neutral salt solution",
-          "an alkali"
-        ],
-        "answer": 3,
-        "working": "Both changes happen only in alkalis."
-      }
-    ]
-  },
-  "c9-4-2": {
-    "lessonId": "c9-4-2",
-    "title": "The pH Scale",
-    "duration": 176,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "The pH scale",
-        "t": 20.416
-      },
-      {
-        "title": "Comparing pH",
-        "t": 76.389
-      },
-      {
-        "title": "Your turn",
-        "t": 116.131
-      },
-      {
-        "title": "Summary",
-        "t": 145.828
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-4-2:q",
-        "t": 126.031,
-        "prompt": "How many times more acidic is a solution of pH 3 than one of pH 6?",
-        "choices": [
-          "3 times",
-          "1000 times",
-          "30 times",
-          "300 times"
-        ],
-        "answer": 1,
-        "working": "6 − 3 = 3 steps, and $10^3 = 1000$."
-      }
-    ]
-  },
-  "c9-4-3": {
-    "lessonId": "c9-4-3",
-    "title": "Neutralization",
-    "duration": 165,
-    "voice": "af_heart",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "t": 0
-      },
-      {
-        "title": "Neutralization",
-        "t": 21.207
-      },
-      {
-        "title": "Everyday neutralization",
-        "t": 70.037
-      },
-      {
-        "title": "Your turn",
-        "t": 108.553
-      },
-      {
-        "title": "Summary",
-        "t": 135.553
-      }
-    ],
-    "cues": [
-      {
-        "id": "c9-4-3:q",
-        "t": 117.955,
-        "prompt": "Which salt is made when nitric acid neutralizes potassium hydroxide?",
-        "choices": [
-          "potassium chloride",
-          "potassium sulfate",
-          "potassium nitrate",
-          "hydrogen nitrate"
-        ],
-        "answer": 2,
-        "working": "The metal, potassium, comes from the base; nitric acid makes nitrates."
       }
     ]
   }
