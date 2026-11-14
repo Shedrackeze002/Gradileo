@@ -1208,8 +1208,25 @@ items ship or decisions change.
        unit needs. It is awaiting the owner's approval.
      - Next: once the owner approves the plan, build Grade 10 Physics (lessons and questions,
        Physics as a subject in the app), then its videos unit by unit; the samples become the
-       videos of their lessons and stay off YouTube until then. Chemistry's videos are being
-       checked against the same rule in a separate piece of work.
+       videos of their lessons and stay off YouTube until then.
+   - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
+     of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
+     and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
+     was on YouTube yet. Report: https://claude.ai/artifact/QNwFeWE5Fc9StBnvDCXSrb (per-video list in
+     the project files, `video-audit/chemistry-videos.csv`).
+     - Decision (the owner, 14 November 2026): chemistry stays off YouTube until it is remade; the
+       upload task leaves the chemistry courses out until then.
+     - Done (14 November 2026): a `particles` element for the video engine (`src/video/particles.ts`,
+       `video/README.md`): boxes of simulated particles that vibrate in rows, slide or fly and hit the
+       walls according to their temperature, melt and boil when heated, and can be squeezed by a
+       piston (which stops on a solid or liquid), with thermometers, a pressure gauge, a volume
+       reading, wall-hit flashes and a followed particle's trail. Two remade samples for the owner
+       to judge: `c7-2-1` (Solids, Liquids and Gases) and `c20-2-3` (Boyle's law: a syringe squeezed
+       from 100 to 400 kPa).
+     - Next: once the owner approves the samples, remake the rest in the order of the report: the
+       lessons whose idea is motion first (Chemistry 7 to 9, then the gases unit, then the rest),
+       then the lessons about structures, then animated openings for the calculation lessons. Then
+       put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
