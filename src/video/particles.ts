@@ -271,7 +271,7 @@ const REACT_R = 1.6;
  * reaction joins, and hitting hard enough, becomes the reaction's products (each particle reacts at
  * most once a step).
  */
-function react(s: BoxSim) {
+function react(s: BoxSim, divider?: number) {
   const { contacts, kind, x, y, vx, vy, n, held, gone } = s;
   if (!contacts.length) return;
   const used = new Set<number>();
@@ -279,6 +279,8 @@ function react(s: BoxSim) {
     let i = contacts[c];
     let j = contacts[c + 1];
     if (used.has(i) || used.has(j) || held[i] || held[j] || gone[i] || gone[j]) continue;
+    // Nothing reacts through a standing divider.
+    if (divider !== undefined && (x[i] - divider) * (x[j] - divider) < 0) continue;
     for (const r of s.reactions) {
       if (kind[i] === r.b && kind[j] === r.a && r.a !== r.b) [i, j] = [j, i];
       if (kind[i] !== r.a || kind[j] !== r.b) continue;
@@ -510,7 +512,8 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
   const spacing = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1));
   // Two kinds kept apart by a divider start on its two sides; behind a wall, all start on its
   // left; on paper, as a small dot in the middle; otherwise the whole box is one region.
-  const split = b.divider !== undefined && b.apart === true && kinds.length === 2;
+  // (Kinds after the first two may start with none: the products of a reaction.)
+  const split = b.divider !== undefined && b.apart === true && kinds.length >= 2 && kinds.slice(2).every((k) => k.n === 0);
   const dot = Math.ceil(Math.sqrt(n)) * spacing + 1;
   const regions: Array<[x0: number, x1: number, from: number, to: number]> = split
     ? [[0, b.divider! * w, 0, kinds[0].n], [b.divider! * w, w, kinds[0].n, n]]
@@ -740,7 +743,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   // or goes over the wall anyway, and the dissolved solid must stay at the bottom.
   const gravityTemp = o.escape || o.wall ? 0 : o.bath || zones ? measuredTemp(s) : temp;
   forces(s, gravityTemp, o.sigma, o.stir ?? 0, w, lid, o.magnet ?? 0);
-  if (o.react) react(s);
+  if (o.react) react(s, o.divider);
   // A bath holds its strip firmly, as a flame or ice would, so heat goes in or out quickly there.
   const c1 = Math.exp(-(o.bath || zones ? BATH_GAMMA : GAMMA) * DT);
   const c2 = Math.sqrt((1 - c1 * c1) * temp);
