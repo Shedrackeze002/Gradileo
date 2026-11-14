@@ -3,7 +3,7 @@
  * stage shows at any moment. Rendering is a pure function of that state, so the same script and
  * narration always give the same frames, and a frame that has not changed can be reused.
  */
-import { asList, captionOf, plainMarkdown, sceneElements, type El, type Explainer, type TryEl } from './script.ts';
+import { asList, captionOf, plainMarkdown, sceneElements, type El, type Explainer, type MotionEl, type TryEl } from './script.ts';
 
 /**
  * Timing, in seconds. The pauses give a viewer time to read each new step before the narrator
@@ -46,6 +46,7 @@ export function revealTime(kind: El['kind']): number {
     case 'screen':
       return 1;
     case 'math':
+    case 'motion':
       return 0.8;
     default:
       return 0.6;
@@ -55,7 +56,9 @@ export function revealTime(kind: El['kind']): number {
 export type TimelineEvent =
   | { t: number; kind: 'show' | 'hide'; target: string }
   | { t: number; kind: 'focus'; el: string; parts: string[] }
-  | { t: number; kind: 'timer'; target: string; dur: number };
+  | { t: number; kind: 'timer'; target: string; dur: number }
+  /** A motion element's clip starts and runs for `dur` seconds of video. */
+  | { t: number; kind: 'play'; el: string; clip: string; dur: number };
 
 export interface TimedLine {
   /** "scene.line", the key of the line's narration. */
@@ -89,6 +92,14 @@ export interface Timeline {
 
 const r3 = (x: number) => Math.round(x * 1000) / 1000;
 
+/** After a clip ends, before the next line starts. */
+const AFTER_PLAY = 0.4;
+
+/** How long a motion clip runs in the video, in seconds (slow motion stretches a phase). */
+export function clipSeconds(el: MotionEl, clip: string): number {
+  return el.clips[clip].phases.reduce((n, ph) => n + ph.dur * (ph.freeze ? 1 : (ph.slow ?? 1)), 0);
+}
+
 /** `durations` maps each line's key ("scene.line") to the length of its narration in seconds. */
 export function compile(x: Explainer, durations: Record<string, number>): Timeline {
   const scenes: Timeline['scenes'] = [];
@@ -101,9 +112,11 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
     const start = t;
     const kinds: Record<string, El['kind']> = {};
     const tries = new Map<string, TryEl>();
+    const motions = new Map<string, MotionEl>();
     for (const e of sceneElements(s)) {
       kinds[e.id] = e.kind;
       if (e.kind === 'try') tries.set(e.id, e);
+      if (e.kind === 'motion') motions.set(e.id, e);
     }
     if (s.chapter) {
       chapter = s.chapter;
@@ -126,6 +139,17 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
         focus.set(el, parts);
       }
       for (const [el, parts] of focus) events.push({ t: at, kind: 'focus', el, parts });
+      // A clip plays while the line is spoken; the next line waits for the motion to finish.
+      let playsEnd = 0;
+      for (const target of asList(l.play)) {
+        const [el, clip] = target.split('.');
+        const m = motions.get(el);
+        if (!m || !m.clips[clip]) throw new Error(`Line ${key} plays "${target}", which is not a motion's clip.`);
+        const from = r3(t + (l.playDelay ?? 0));
+        const len = r3(clipSeconds(m, clip));
+        events.push({ t: from, kind: 'play', el, clip, dur: len });
+        playsEnd = Math.max(playsEnd, from + len + AFTER_PLAY);
+      }
       const end = r3(t + dur);
       lines.push({ key, say: l.say, caption: captionOf(l), start: at, end });
       // A "Your turn" shown on this line counts down once the line is spoken; Gradileo pauses there.
@@ -142,9 +166,11 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
           ...(q.working ? { working: plainMarkdown(q.working) } : {}),
         });
       }
-      t = end + TIMING.gap + (asList(l.show).length ? TIMING.settle : 0) + (l.wait ?? 0);
+      t = Math.max(end + TIMING.gap + (asList(l.show).length ? TIMING.settle : 0), playsEnd) + (l.wait ?? 0);
     });
     t += TIMING.sceneOut - TIMING.gap;
+    // A delayed clip can start after the events of the line that follows it.
+    events.sort((a, b) => a.t - b.t);
     scenes.push({ start: r3(start), end: r3(t), chapter, kinds, events });
   });
   return { id: x.id, duration: r3(t), scenes, lines, chapters, cues };
@@ -161,6 +187,8 @@ export interface ElState {
   focus: Record<string, number>;
   /** A "Your turn" countdown (0 to 1). */
   timer?: number;
+  /** A motion's clips played so far, in order, each with the seconds of it played. */
+  plays?: Array<[clip: string, seconds: number]>;
 }
 
 export interface FrameState {
@@ -188,6 +216,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
   const shown: Record<string, { at: number; hiddenAt: number | null; whole: boolean; parts: Record<string, number>; partHidden: Record<string, number> }> = {};
   const focus: Record<string, Record<string, { on: number | null; off: number | null }>> = {};
   const timers: Record<string, { at: number; dur: number }> = {};
+  const plays: Record<string, Array<[string, number]>> = {};
   for (const ev of s.events) {
     if (ev.t > t) break;
     if (ev.kind === 'show') {
@@ -215,6 +244,9 @@ export function stateAt(tl: Timeline, t: number): FrameState {
       for (const part of ev.parts) if (!f[part] || f[part].on === null) f[part] = { on: ev.t, off: null };
     } else if (ev.kind === 'timer') {
       timers[ev.target] = { at: ev.t, dur: ev.dur };
+    } else if (ev.kind === 'play') {
+      // Past its end a clip stays at its last moment, so the frames after it can be reused.
+      (plays[ev.el] ??= []).push([ev.clip, q(Math.min(t - ev.t, ev.dur))]);
     }
   }
   const els: Record<string, ElState> = {};
@@ -238,7 +270,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
       if (e > 0) fs[part] = q(e);
     }
     const timer = timers[el];
-    els[el] = { p: q(p), parts, whole: st.whole, focus: fs, ...(timer ? { timer: q(clamp01((t - timer.at) / timer.dur)) } : {}) };
+    els[el] = { p: q(p), parts, whole: st.whole, focus: fs, ...(timer ? { timer: q(clamp01((t - timer.at) / timer.dur)) } : {}), ...(plays[el] ? { plays: plays[el] } : {}) };
   }
   return { scene: si, fade, chapter: s.chapter, els };
 }

@@ -1,7 +1,8 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type DiagramEl, type El, type Explainer, type ScreenEl, type TriangleEl, type SimilarEl } from '../script.ts';
-import type { ElState, FrameState } from '../timeline.ts';
+import { BRAND, type DiagramEl, type El, type Explainer, type MotionEl, type ScreenEl, type TriangleEl, type SimilarEl } from '../script.ts';
+import { clipSeconds, type ElState, type FrameState } from '../timeline.ts';
 import { DiagramView } from './Diagram.tsx';
+import { MotionView } from './Motion.tsx';
 import { BulletsView, CalcView, CalloutView, MathView, QuoteView, TableView, TextView, TitleView, TryView } from './elements.tsx';
 import { ScreenView } from './Screen.tsx';
 import { rich, TONES } from './tex.ts';
@@ -51,6 +52,8 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <SimilarView el={el} st={st} {...fig} />;
     case 'diagram':
       return <DiagramView el={el} st={st} w={fig.w} h={el.height ?? fig.h} />;
+    case 'motion':
+      return <MotionView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'calc':
       return <CalcView el={el} st={st} />;
     case 'try':
@@ -119,20 +122,25 @@ function aspect(d: DiagramEl) {
 }
 
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
   const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = fig?.kind === 'diagram' && aspect(fig) > 2.4;
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || fig?.kind === 'motion';
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
     <div className="v-stage">
       {wide && (
-        <div style={{ position: 'absolute', left: 60, top: 330 }}>
-          <DiagramView el={fig} st={FULL} w={1160} h={280} />
+        <div style={{ position: 'absolute', left: 60, top: fig.kind === 'motion' ? 300 : 330 }}>
+          {fig.kind === 'motion' ? (
+            // A motion is caught part way through its poster clip, with its forces and velocities drawn.
+            <MotionView el={{ ...fig, momentumMax: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })) }} st={{ ...FULL, parts: { velocity: 1, strobe: 1 } }} w={1160} h={Math.min(320, 150 + 130 * (fig.lanes?.length ?? 1))} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
+          ) : (
+            <DiagramView el={fig as DiagramEl} st={FULL} w={1160} h={280} />
+          )}
         </div>
       )}
       {/* A picture of the app is wider than a figure, so the title beside it wraps sooner. */}
@@ -151,9 +159,9 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             <DiagramView el={fig} st={FULL} w={500} h={480} />
           ) : fig.kind === 'screen' ? (
             <ScreenView el={fig} st={{ ...FULL, parts: {} }} w={580} h={400} />
-          ) : (
+          ) : fig.kind === 'similar' ? (
             <SimilarView el={fig} st={FULL} w={500} h={480} />
-          )}
+          ) : null}
         </div>
       )}
       <div style={{ position: 'absolute', left: 80, bottom: 60, display: 'flex', alignItems: 'center', gap: 16 }}>

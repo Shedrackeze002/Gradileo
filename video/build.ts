@@ -11,6 +11,8 @@
  * question cues in src/content/videos.json for the lesson player.
  *
  * --stills  saves a picture of the end of each scene instead of the MP4 (for checking the design).
+ * --at 12,14.5  with --stills, saves a picture at each of these times in seconds as well (for
+ *              checking a motion part way through, which the end of a scene does not show).
  * --quick   estimates the narration from the words instead of voicing it (with --stills).
  * --no-qa   skips the Whisper pronunciation check.
  * --thumbnail  makes only the thumbnail (after a change to the script's figures or the design).
@@ -44,7 +46,7 @@ const option = (name: string, fallback: string) => {
   const i = args.indexOf(`--${name}`);
   return i >= 0 && args[i + 1] ? args[i + 1] : fallback;
 };
-const ids = args.filter((a, i) => !a.startsWith('--') && !(i > 0 && ['--voice', '--speed', '--fps', '--pace'].includes(args[i - 1])));
+const ids = args.filter((a, i) => !a.startsWith('--') && !(i > 0 && ['--voice', '--speed', '--fps', '--pace', '--at'].includes(args[i - 1])));
 // Speed 0.85 gives about 150 to 155 spoken words a minute on plain sentences, a calm teaching pace
 // (Kokoro's speed is not proportional: 1 gave about 175, which felt rushed, and 0.9 only about 165).
 const oldPace = option('pace', 'calm') === 'old';
@@ -212,6 +214,10 @@ async function main() {
         for (const [si, s] of tl.scenes.entries()) {
           await seek(page, s.end - 0.4);
           await page.screenshot({ path: path.join(dir, 'stills', `scene-${String(si + 1).padStart(2, '0')}.png`) });
+        }
+        for (const at of option('at', '').split(',').filter(Boolean).map(Number)) {
+          await seek(page, at);
+          await page.screenshot({ path: path.join(dir, 'stills', `at-${at.toFixed(1).padStart(6, '0')}.png`) });
         }
         log(`${id}: stills in ${path.relative(ROOT, path.join(dir, 'stills'))}`);
       } else {

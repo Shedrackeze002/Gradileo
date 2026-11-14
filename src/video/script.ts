@@ -218,7 +218,114 @@ export interface ScreenEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl;
+/** A body in a motion element: a block that slides, a cart that rolls or a ball. */
+export interface MotionBody {
+  id: string;
+  shape: 'block' | 'cart' | 'ball';
+  /** Mass in kilograms: it sets the acceleration a force gives, and the momentum. */
+  mass: number;
+  /** What is written on the body ("2 kg" from its mass otherwise). */
+  label?: string;
+  /** Where its centre starts, in metres along the track. */
+  x: number;
+  /** Its starting velocity in metres per second (to the right is positive); at rest otherwise. */
+  v?: number;
+  /** Its length in metres (0.9 for a block, 1.1 for a cart, 0.6 for a ball). */
+  width?: number;
+  tone?: Tone;
+  /** The track it is on, counted from the top (0 by default). */
+  lane?: number;
+}
+
+/**
+ * A force on a body, drawn as an arrow from the body whose length is its size. Forces along the
+ * track (the default) accelerate the body: a = F ÷ m from the sum of them. Vertical forces
+ * (weight, the normal force) are drawn but must balance.
+ */
+export interface MotionForce {
+  on: string;
+  /** Its name beside the arrow ("Push"); the size in newtons is added. */
+  name: string;
+  /** Newtons, signed: to the right or up is positive. */
+  n: number;
+  axis?: 'x' | 'y';
+  tone?: Tone;
+  /**
+   * Friction, or any force that only resists motion: it acts while the body moves and stops with
+   * it, so a body slowed to rest stays at rest.
+   */
+  resist?: boolean;
+}
+
+/** A stretch of a clip during which the same forces act. */
+export interface MotionPhase {
+  /** How long it lasts, in seconds of the motion's own time. */
+  dur: number;
+  /** Slow motion: seconds of video for each second of the motion (1 by default). */
+  slow?: number;
+  /**
+   * Hold the motion still for `dur` seconds of video while the forces appear, to name them before
+   * anything moves. Nothing is worked out from the forces of a frozen phase.
+   */
+  freeze?: boolean;
+  forces?: MotionForce[];
+  /** Velocities given at the start of the phase, in metres per second, by body id. */
+  set?: Record<string, number>;
+  /** A flash where these two bodies touch, as the phase starts (a collision). */
+  contact?: [string, string];
+  /** A short note shown over the track ("Slow motion"). */
+  note?: string;
+}
+
+export interface MotionClip {
+  phases: MotionPhase[];
+  /** Put every body back at its start first (to play the motion again). */
+  reset?: boolean;
+}
+
+/** What a motion element can show over its bodies; each is a part ("sim.velocity"). */
+export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph'] as const;
+
+/**
+ * Bodies moving along straight tracks under forces, for the physics videos: the motion is worked
+ * out from the forces drawn (a = F ÷ m), so what the viewer sees is what the physics says. A line
+ * plays a clip (`play: 'sim.push'`) and the bodies move while the narrator speaks; the next clip
+ * carries on from where the last one ended. Showing the element shows the tracks and bodies;
+ * showing a part adds it: `velocity` (an arrow over each body), `readout` (speed and acceleration
+ * under it), `net` (the net force), `bars` (a momentum bar for each body), `total` (a bar for
+ * their total momentum), `graph` (a velocity-time graph that draws itself as the bodies move), `clock` and `strobe` (a mark at each body's place at equal time steps). Emphasising a body's id
+ * makes it glow. See src/video/motion.ts.
+ */
+export interface MotionEl {
+  kind: 'motion';
+  id: string;
+  /** The stretch of track shown, in metres: [left, right]. */
+  span: [number, number];
+  /** One entry per track, top to bottom (one smooth track otherwise); a label sits at its top left, or right. */
+  lanes?: Array<{ surface?: 'smooth' | 'rough'; label?: string; labelSide?: 'left' | 'right' }>;
+  bodies: MotionBody[];
+  clips: Record<string, MotionClip>;
+  /** Pixels of arrow for each newton (4 by default). */
+  forceScale?: number;
+  /** Pixels of arrow for each metre per second (24 by default). */
+  velocityScale?: number;
+  /** The largest momentum the bars must fit, in kg·m/s; the bars are given room when it is set. */
+  momentumMax?: number;
+  /** `false` when the total's bar is never shown, so no room is kept for it. */
+  momentumTotal?: boolean;
+  /**
+   * A velocity-time graph of these bodies, above a single track on its right: `seconds` and `max`
+   * (metres per second) are the lengths of its axes.
+   */
+  graph?: { of: string[]; seconds: number; max: number };
+  /** Seconds between strobe marks (0.5 by default). */
+  strobe?: number;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -232,6 +339,12 @@ export interface Line {
    * and the element id alone ("tri") clears it.
    */
   focus?: string | string[];
+  /**
+   * Start a motion element's clip as the line starts ("sim.push"); the next line waits for it to
+   * finish. `playDelay` holds it back that many seconds into the line.
+   */
+  play?: string | string[];
+  playDelay?: number;
   /** Extra seconds after the line, for example while a "Your turn" counts down. */
   wait?: number;
 }
@@ -318,6 +431,36 @@ export function captionOf(l: Line): string {
   return l.caption ?? l.say.replace(/"([A-Za-z])"/g, '$1');
 }
 
+/** Problems with a motion element: unknown bodies, forces that do not balance vertically. */
+export function checkMotion(e: MotionEl): string[] {
+  const problems: string[] = [];
+  const ids = new Set(e.bodies.map((b) => b.id));
+  if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
+  for (const b of e.bodies) {
+    if (!(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if ((MOTION_PARTS as readonly string[]).includes(b.id)) problems.push(`body id "${b.id}" is the name of a part.`);
+    if ((b.lane ?? 0) >= (e.lanes?.length ?? 1)) problems.push(`body "${b.id}" is on a lane that does not exist.`);
+  }
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
+      const up = new Map<string, number>();
+      for (const f of ph.forces ?? []) {
+        if (!ids.has(f.on)) problems.push(`${where}: a force acts on no body "${f.on}".`);
+        if (f.axis === 'y') up.set(f.on, (up.get(f.on) ?? 0) + f.n);
+      }
+      // Bodies stay on their track, so the forces drawn up and down must cancel.
+      for (const [id, sum] of up) if (Math.abs(sum) > 1e-9) problems.push(`${where}: the vertical forces on "${id}" do not balance.`);
+      for (const id of [...Object.keys(ph.set ?? {}), ...(ph.contact ?? [])]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+    });
+  }
+  return problems;
+}
+
 export function checkScript(x: Explainer): string[] {
   const problems: string[] = [];
   if (!x.scenes.length) problems.push('The script has no scenes.');
@@ -325,6 +468,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
+    const motions = new Map<string, MotionEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -337,6 +481,12 @@ export function checkScript(x: Explainer): string[] {
         // A screen's parts are its spots.
         diagrams.set(e.id, new Set(e.spots ?? []));
         screens.add(e.id);
+      }
+      if (e.kind === 'motion') {
+        // A motion's parts are what it can show over its bodies, and the bodies themselves.
+        diagrams.set(e.id, new Set<string>([...MOTION_PARTS, ...e.bodies.map((b) => b.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkMotion(e).map((p) => `Scene ${si + 1}: motion "${e.id}": ${p}`));
       }
       if (e.kind !== 'diagram') continue;
       const parts = new Set<string>();
@@ -361,7 +511,13 @@ export function checkScript(x: Explainer): string[] {
       for (const target of [...asList(l.show), ...asList(l.hide), ...asList(l.focus)]) {
         const [el, part] = target.split('.');
         if (!ids.has(el)) problems.push(`Scene ${si + 1}, line ${li + 1}: no element "${target}".`);
-        else if (part !== undefined && diagrams.has(el) && !diagrams.get(el)!.has(part)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${screens.has(el) ? 'screen' : 'diagram'} "${el}" has no part "${part}".`);
+        else if (part !== undefined && diagrams.has(el) && !diagrams.get(el)!.has(part)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${screens.has(el) ? 'screen' : motions.has(el) ? 'motion' : 'diagram'} "${el}" has no part "${part}".`);
+      }
+      for (const target of asList(l.play)) {
+        const [el, clip] = target.split('.');
+        const m = motions.get(el);
+        if (!m) problems.push(`Scene ${si + 1}, line ${li + 1}: no motion "${el}" to play.`);
+        else if (!clip || !(clip in m.clips)) problems.push(`Scene ${si + 1}, line ${li + 1}: motion "${el}" has no clip "${clip ?? ''}".`);
       }
     });
   });

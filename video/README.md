@@ -37,6 +37,7 @@ npx tsx video/build.ts m10c-2-1 m10c-2-1-b      # build these videos
 npx tsx video/build.ts m10c-2-1 --stills         # a picture of the end of each scene, no MP4
 npx tsx video/build.ts m10c-2-1 --stills --quick # the same, with the narration estimated
 npx tsx video/build.ts m10c-2-1 --thumbnail      # only the thumbnail, after a design change
+npx tsx video/build.ts m10c-2-1 --stills --at 48.5,51  # and a picture at these seconds too
 ```
 
 Options: `--voice af_heart` (a Kokoro voice), `--speed 1`, `--fps 30`, `--no-qa`. Narration is
@@ -136,6 +137,26 @@ See `src/video/script.ts` for every element and option. In short:
   of coloured marbles, grouped by colour) and `normalCurve` (a bell curve with an axis numbered at
   each standard deviation, `d.axis`, `d.curve` and `d.mean`, and shaded regions between numbers of
   standard deviations, each a part by its id, with a percent label that `labelAt` can move).
+
+- `motion` (`src/video/motion.ts`) is for physics, and for anything that has to be seen moving:
+  blocks, carts and balls on straight tracks, moved by the forces drawn on them. A clip is a list
+  of phases; in each phase the forces listed act, every body accelerates at a = F ÷ m, and the
+  arrows, velocities, strobe marks, momentum bars and graph all come from that one calculation, so
+  the picture cannot disagree with the physics. A line plays a clip while the narrator speaks
+  (`play: 'sim.push'`, with `playDelay` seconds to start it on the right word) and the next line
+  waits for it to end; the next clip carries on from where the last one stopped, and a clip with
+  `reset` puts the bodies back first. A phase with `freeze` holds everything still while its
+  forces appear, to name them before anything moves; `slow: 100` plays a phase in slow motion;
+  a force with `resist` is friction (it stops with the body). `collision(a, b, …)` gives the three
+  phases of a collision (approach, touch, after) with the equal and opposite forces that change
+  the velocities, so momentum is conserved by the forces, not typed in. Showing the element shows
+  the tracks and bodies; its parts add `velocity`, `readout` (acceleration), `net` (net force),
+  `strobe`, `clock`, `graph` (velocity against time, drawing itself) and `bars` and `total`
+  (momentum). Colours are fixed in every physics video: velocity green, net force and total
+  momentum yellow, friction red, an applied force orange, weight pink, the normal force blue.
+  Check a motion part way through with `--stills --quick --at 48.5,51` (times in seconds).
+  The owner asked (14 November 2026) that science videos show the idea happening, not narrate
+  over still slides: in physics, every scene that describes motion or a force plays it.
 
 - `quote` sets a passage of prose or verse off from the narration, for the English videos: one
   entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)
