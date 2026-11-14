@@ -347,6 +347,11 @@ export interface MotionEl {
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
+   * A sketch, not a measurement: the tracks have no ruler, a force is named without its size, and a
+   * ball carries its label inside it and does not roll (two charges that repel or attract).
+   */
+  plain?: boolean;
+  /**
    * A drop: the tracks point down the screen, one column for each lane with the ground at its
    * foot. A body's `x` is then the distance it has fallen in metres and `span` the fall shown, so
    * weight is a force with a positive `n` (drawn downwards) and air resistance points up. The
@@ -671,7 +676,72 @@ export interface RaysEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl;
+/** A component of a circuit element: a lamp, which glows with the power it gets, or a resistor. */
+export interface CircuitPart {
+  id: string;
+  kind: 'lamp' | 'resistor';
+  /** Its resistance in ohms. */
+  ohms: number;
+  /** What is written beside it (its resistance otherwise). */
+  label?: string;
+}
+
+/** A stretch of a circuit clip. */
+export interface CircuitPhase {
+  /** How long it lasts, in seconds. */
+  dur: number;
+  /** Slow motion: seconds of video for each second of the circuit's own time (1 by default). */
+  slow?: number;
+  /** Changes as the phase starts: the switch, the supply voltage, a component's resistance, or the components that have broken. */
+  set?: { closed?: boolean; volts?: number; ohms?: Record<string, number>; broken?: string[] };
+  /** A short note shown over the circuit. */
+  note?: string;
+}
+
+export interface CircuitClip {
+  phases: CircuitPhase[];
+}
+
+/** What a circuit element can show over its wires; each is a part ("c.current"). */
+export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage', 'power', 'charge', 'clock'] as const;
+
+/**
+ * A circuit, for the physics videos (src/video/circuit.ts): a battery, a switch, and lamps or
+ * resistors in one loop (`series`) or each on its own branch across the supply (`parallel`). The
+ * currents and voltages are worked out from the supply voltage and the resistances, and the
+ * charges drawn on the wires move at a speed in proportion to the current where they are, so
+ * they split at a junction and no charge is lost. Time runs only while a clip plays; a phase can
+ * close or open the switch, change the supply or a resistance, or break a component. Showing the
+ * element shows the circuit; showing a part adds it: `charges` (the moving charges), `energy`
+ * (the charges are bright where they carry energy from the battery and dim once they have given
+ * it up), `arrows` (the direction of conventional current), `current` (ammeters with their
+ * readings), `voltage` (the voltage across each component), `power` (the power of each
+ * component), `charge` (the charge that has passed the ammeter since the start) and `clock`.
+ * Emphasising a component's id makes it glow.
+ */
+export interface CircuitEl {
+  kind: 'circuit';
+  id: string;
+  /** The supply voltage, in volts. */
+  volts: number;
+  layout: 'series' | 'parallel';
+  /** The components: in order round the loop, or one on each branch. Up to four. */
+  parts: CircuitPart[];
+  /** The switch starts open, so no current flows until a clip closes it. */
+  open?: boolean;
+  /** `electrons` draws the charges as electrons, drifting from the negative terminal round to the positive. */
+  carriers?: 'conventional' | 'electrons';
+  /** How far a charge moves for each coulomb that passes, in pixels (40 otherwise). */
+  pace?: number;
+  /** The power at which a lamp is fully bright, in watts (the most any lamp gets at the start otherwise). */
+  bright?: number;
+  clips: Record<string, CircuitClip>;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -816,6 +886,33 @@ export function checkMotion(e: MotionEl): string[] {
   return problems;
 }
 
+/** Problems with a circuit element: components that cannot be solved, clips that change what is not there. */
+export function checkCircuit(e: CircuitEl): string[] {
+  const problems: string[] = [];
+  if (!(e.volts >= 0)) problems.push('the supply voltage must be zero or more.');
+  if (e.parts.length < 1 || e.parts.length > 4) problems.push('it needs one to four components.');
+  const ids = new Set<string>();
+  for (const part of e.parts) {
+    if (ids.has(part.id)) problems.push(`the component id "${part.id}" is used twice.`);
+    ids.add(part.id);
+    if ((CIRCUIT_PARTS as readonly string[]).includes(part.id)) problems.push(`the component id "${part.id}" is the name of a part.`);
+    if (!(part.ohms > 0)) problems.push(`component "${part.id}" needs a resistance above zero.`);
+  }
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.set?.volts !== undefined && !(ph.set.volts >= 0)) problems.push(`clip "${name}" sets a supply voltage below zero.`);
+      for (const [id, ohms] of Object.entries(ph.set?.ohms ?? {})) {
+        if (!ids.has(id)) problems.push(`clip "${name}" sets the resistance of "${id}", which is not a component.`);
+        if (!(ohms > 0)) problems.push(`clip "${name}" sets a resistance that is not above zero.`);
+      }
+      for (const id of ph.set?.broken ?? []) if (!ids.has(id)) problems.push(`clip "${name}" breaks "${id}", which is not a component.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a rays element: angles a ray cannot have, a boundary without its two speeds. */
 export function checkRays(e: RaysEl): string[] {
   const problems: string[] = [];
@@ -918,7 +1015,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl | RaysEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -937,6 +1034,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...MOTION_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkMotion(e).map((p) => `Scene ${si + 1}: motion "${e.id}": ${p}`));
+      }
+      if (e.kind === 'circuit') {
+        diagrams.set(e.id, new Set<string>([...CIRCUIT_PARTS, ...e.parts.map((part) => part.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkCircuit(e).map((p) => `Scene ${si + 1}: circuit "${e.id}": ${p}`));
       }
       if (e.kind === 'rays') {
         diagrams.set(e.id, new Set<string>(RAYS_PARTS));
