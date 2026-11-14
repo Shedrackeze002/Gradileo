@@ -257,7 +257,11 @@ working side by side, a "Your turn" question, a summary); each narrated line sho
 hides elements as it is spoken. Figures are right triangles (`triangle`), similar triangles, and
 diagrams drawn to scale from named points (`diagram`: lines, angles, labels and scenery such as a
 cliff, the sea, a tower or a person), each part of which can be shown, emphasised or hidden as it is
-named. `video/build.ts` voices every line with Kokoro, an open-weight
+named. A `motion` element (`src/video/motion.ts`) moves blocks and carts along tracks by the
+forces drawn on them (a = F ÷ m in each phase of a clip, with collisions worked out from the equal
+and opposite forces between the bodies); a line plays a clip (`play: 'sim.push'`), `compile` records
+when it starts and how long it runs, and `stateAt` gives the element the seconds of each clip
+played, so motion is as deterministic as everything else. `video/build.ts` voices every line with Kokoro, an open-weight
 text-to-speech model that runs on the CPU (cached per line in `video/.cache`), so a video's timing
 comes from its narration (`compile` in `src/video/timeline.ts`). It then opens
 `video/stage.html` in Chromium through Vite and, for every frame, asks the stage to draw the state

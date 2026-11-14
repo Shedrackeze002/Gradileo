@@ -1189,6 +1189,22 @@ items ship or decisions change.
      rate stated in the question. Canada-wide contexts (Canadian dollars, CPP and EI with their rates,
      provincial parks) stay for now. The rendered videos keep their old settings and course names;
      new and re-rendered videos use the new ones.
+   - Decision (the owner, 14 November 2026): **high school Physics, Grades 10 to 12**, is the next
+     subject, and its videos (and chemistry's from now on) must show the idea happening: forces as
+     arrows acting on objects, objects speeding up and slowing down, carts colliding and passing
+     momentum on. No narration over still slides.
+     - Done (14 November 2026): the video engine can show motion. A `motion` element moves blocks
+       and carts by the forces drawn on them, with velocity arrows, strobe marks, a clock, a
+       velocity-time graph that draws itself, slow motion and live momentum bars
+       (`src/video/motion.ts`, `video/README.md`). Two sample videos for the owner to judge the
+       style: `phys-sample-forces` (what a force does, Newton's second law, friction and net
+       force) and `phys-sample-momentum` (momentum, two collisions, conservation), in
+       `src/content/physics/videos/`. They are samples: not lessons of a course, and not on
+       YouTube.
+     - Next: the owner approves or changes the style. Then a plan of the Physics courses (names,
+       units and lessons, checked against several curricula) comes to the owner before building,
+       and the samples become the videos of their lessons. Chemistry's videos are being checked
+       against the same rule in a separate piece of work.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
