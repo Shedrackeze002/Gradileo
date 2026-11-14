@@ -157,7 +157,9 @@ See `src/video/script.ts` for every element and option. In short:
   the body started to where it is now, with its sign) and `bars` and `total` (momentum). The
   displacement's label sits beside its arrow, so leave about 300 px of track free on one side.
   `speedWord: true` writes "speed =" beside the velocity arrow, for videos that come before
-  velocity is taught. Before forces are taught, move bodies with the helpers in
+  velocity is taught. `plain: true` makes a sketch of it, not a measurement: no rulers, forces
+  named without their sizes, and balls that carry their label inside (two charges that repel or
+  attract). Before forces are taught, move bodies with the helpers in
   `src/content/phys10/videos/lib/track.ts` (`run`, `halt`, and `drive` and `brake`, forces that
   act without an arrow). `vertical: true` turns the track to point down the screen, for a drop: a
   body's `x` is then the distance it has fallen, each lane is a column with a ruler and the ground
@@ -223,6 +225,24 @@ See `src/video/script.ts` for every element and option. In short:
   where the wave is slower, each front in one piece across the boundary) and, on a mirror with
   `behind: true`, `image` (the lamp's image, as far behind the mirror as the lamp is in front).
   Light is yellow, the angle of incidence blue, reflection orange and refraction pink.
+
+- `circuit` (`src/video/circuit.ts`) is for electricity: a battery of `volts`, a switch, and up to
+  four `parts` (each a `lamp` or a `resistor` with its `ohms`), in one loop (`layout: 'series'`)
+  or each on its own branch across the supply (`'parallel'`). Nothing is typed in: the currents,
+  voltages and powers follow from the supply voltage and the resistances, so the readings on
+  screen are right by construction, and a lamp glows with the power it gets (`bright` sets the
+  power of a fully bright lamp, when two circuits are compared). The charges drawn on the wires
+  move only while a clip plays, at a speed in proportion to the current where they are, so they
+  split at a junction and speed up when the current rises. A phase can `set` the switch
+  (`closed`), the supply (`volts`), a resistance (`ohms`) or the components that have failed
+  (`broken`); `open: true` starts with the switch open. The parts are `charges`, `energy` (the
+  charges are bright where they still carry energy and dim once they have given it up), `arrows`
+  (the direction of conventional current; with `carriers: 'electrons'` the charges are electrons
+  drifting the other way), `current` (ammeters and their readings), `voltage` (in a loop, a
+  voltmeter across each component), `power`, `charge` (a counter of the charge passed, for
+  Q = It), `transferred` (a counter of the energy transferred, for E = Pt) and `clock`. To compare
+  two circuits, put one on each side of a `split` scene with `leftWidth: 544`. Charge and
+  current are yellow, electrons blue, voltage pink and power orange.
 
 - `particles` (`src/video/particles.ts`) is for chemistry: boxes of particles that really move.
   Each box is a small simulation in which the particles pull on their neighbours and push apart up

@@ -378,7 +378,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
       </g>,
     );
     const every = S >= 46 ? 1 : S >= 24 ? 2 : 5;
-    for (let m = Math.ceil(el.span[0]); m <= Math.floor(el.span[1]); m++) {
+    for (let m = Math.ceil(el.span[0]); !el.plain && m <= Math.floor(el.span[1]); m++) {
       const major = m % every === 0;
       out.push(<line key={`tick${li}-${m}`} x1={X(m)} y1={g + (rough ? 12 : 9)} x2={X(m)} y2={g + (major ? 22 : 16)} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
       if (major)
@@ -493,8 +493,8 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
         <g key={b.id} style={glow}>
           <circle cx={k.cx} cy={g - r} r={r - 1.5} fill="#1b1846" />
           <circle cx={k.cx} cy={g - r} r={r - 1.5} fill={c} fillOpacity={0.3} stroke={c} strokeWidth={3} />
-          <line x1={k.cx} y1={g - r} x2={k.cx + (r - 5) * Math.cos((turn * Math.PI) / 180)} y2={g - r + (r - 5) * Math.sin((turn * Math.PI) / 180)} stroke={c} strokeWidth={3} strokeLinecap="round" opacity={0.8} />
-          <Text x={k.cx} y={k.top - 16} size={20} weight={700}>
+          {!el.plain && <line x1={k.cx} y1={g - r} x2={k.cx + (r - 5) * Math.cos((turn * Math.PI) / 180)} y2={g - r + (r - 5) * Math.sin((turn * Math.PI) / 180)} stroke={c} strokeWidth={3} strokeLinecap="round" opacity={0.8} />}
+          <Text x={k.cx} y={el.plain ? g - r + 1 : k.top - 16} size={el.plain ? Math.min(34, r * 1.2) : 20} weight={700}>
             {label}
           </Text>
         </g>,
@@ -513,7 +513,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const c = TONES[f.tone ?? (f.resist ? 'bad' : 'opp')];
     const grow = easeOut(f.age / 0.35);
     const len = Math.max(26, Math.abs(f.n) * fs) * grow * Math.sign(f.n);
-    const text = `${f.name} ${short(Math.abs(f.n))} N`;
+    const text = el.plain ? f.name : `${f.name} ${short(Math.abs(f.n))} N`;
     if (f.axis === 'y') {
       // Weight hangs from the middle of the body; the normal force rises from its top.
       const y0 = f.n > 0 ? k.top - 2 : k.mid + BLOCK_H * 0.22;
