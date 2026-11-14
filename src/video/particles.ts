@@ -314,9 +314,9 @@ function react(s: BoxSim, divider?: number) {
       if (r.join) addBond(s, i, j, true);
       for (const c of carried) {
         addBond(s, j, c, true);
-        // A hidden bond bends the new molecule the way water is bent.
+        // A hidden bond bends the new molecule the way water is bent (or holds it straight).
         const len = s.bonds[s.bonds.length - 1].len;
-        addBond(s, i, c, false, 2 * len * Math.sin((52.5 * Math.PI) / 180));
+        addBond(s, i, c, false, r.line ? 2 * len : 2 * len * Math.sin((52.5 * Math.PI) / 180));
       }
       if (r.heat) {
         // The box warms by `heat` (or cools, if it is below zero), and the energy given out sends
@@ -413,8 +413,24 @@ function forcesBetween(s: BoxSim, sigma: number) {
  */
 function placeMolecules(s: BoxSim, b: ParticleBox, kinds: NonNullable<ParticleBox['kinds']>, mols: NonNullable<ParticleBox['molecules']>, w: number) {
   const units: number[][] = [];
+  // With `lump`, the first kind starts as a block on the floor in the middle, the rest above it.
+  const lumpN = b.lump ? kinds[0].n : 0;
+  let at = 0;
+  let floor = 0.5;
+  if (lumpN) {
+    const sp = 1.12 * (kinds[0].size ?? 1);
+    const cols = Math.min(Math.floor((w - 1) / sp) + 1, Math.max(1, Math.round(Math.sqrt(lumpN * 1.6))));
+    const rowH = (sp * Math.sqrt(3)) / 2;
+    for (let i = 0; i < lumpN; i++) {
+      const r = Math.floor(i / cols);
+      s.kind[at] = 0;
+      s.x[at] = w / 2 - ((cols - 1) * sp) / 2 + (i % cols) * sp + (r % 2 ? sp / 2 : 0) - sp / 4;
+      s.y[at++] = 0.56 * (sp / 1.12) + r * rowH;
+    }
+    floor = 0.56 * (sp / 1.12) + Math.ceil(lumpN / cols) * rowH + 0.6;
+  }
   kinds.forEach((kd, ki) => {
-    for (let i = 0; i < kd.n; i++) units.push([ki]);
+    if (ki > 0 || !lumpN) for (let i = 0; i < kd.n; i++) units.push([ki]);
   });
   for (const m of mols) for (let i = 0; i < m.n; i++) units.push(m.atoms);
   const bent = new Set(mols.filter((m) => m.bent).map((m) => m.atoms));
@@ -425,15 +441,14 @@ function placeMolecules(s: BoxSim, b: ParticleBox, kinds: NonNullable<ParticleBo
   }
   const cell = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1)) * (mols.some((m) => m.atoms.length > 1) ? 2.2 : 1);
   const m = units.length;
-  const top = b.state === 'gas' ? s.lidY - 0.5 : Math.min(s.lidY - 0.5, 0.5 + Math.ceil(m / Math.max(1, Math.floor((w - 1) / cell))) * cell);
-  const cols = Math.max(1, Math.min(Math.floor((w - 1) / cell), Math.round(Math.sqrt((m * (w - 1)) / (top - 0.5)))));
+  const top = b.state === 'gas' ? s.lidY - 0.5 : Math.min(s.lidY - 0.5, floor + Math.ceil(m / Math.max(1, Math.floor((w - 1) / cell))) * cell);
+  const cols = Math.max(1, Math.min(Math.floor((w - 1) / cell), Math.round(Math.sqrt((m * (w - 1)) / (top - floor)))));
   const rows = Math.ceil(m / cols);
   const gx = (w - 1) / cols;
-  const gy = (top - 0.5) / rows;
-  let at = 0;
+  const gy = (top - floor) / rows;
   units.forEach((atoms, u) => {
     const cx = 0.5 + gx * ((u % cols) + 0.5 + (s.rnd() - 0.5) * 0.2);
-    const cy = 0.5 + gy * (Math.floor(u / cols) + 0.5 + (s.rnd() - 0.5) * 0.2);
+    const cy = floor + gy * (Math.floor(u / cols) + 0.5 + (s.rnd() - 0.5) * 0.2);
     const first = at;
     s.kind[at] = atoms[0];
     s.x[at] = cx;
@@ -552,7 +567,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     }
   }
   // A lump: the first kind starts as a block on the floor in the middle, the rest round it.
-  if (b.lump && kinds.length > 1) {
+  if (b.lump && kinds.length > 1 && !mols.length) {
     // `lump: 3` makes three smaller lumps spread along the floor, with the same particles between them.
     const m = b.lump === true ? 1 : b.lump;
     s.kind.fill(1);

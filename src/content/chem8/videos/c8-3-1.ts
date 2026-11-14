@@ -1,11 +1,11 @@
 import { ATOM, hydrogenBurning } from '@/video/reactions.ts';
-import type { Explainer, ParticlesEl } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
 
 // The particles here are simulated (src/video/particles.ts): water boiling beside hydrogen
 // burning. Boiling only moves the water molecules apart; burning joins atoms up in new molecules.
 
 /** Liquid water: water molecules close together, until it is heated. */
-const water = { id: 'w', state: 'liquid', width: 10, height: 10, temp: 0.3, kinds: [{ ...ATOM.O, bond: 1, heavy: 1 }, { ...ATOM.H, bond: 1, heavy: 1 }], molecules: [{ atoms: [0, 1, 1], n: 10, bent: true }], label: 'water' } as const;
+const water: ParticleBox = { id: 'w', state: 'liquid', width: 10, height: 10, temp: 0.3, kinds: [{ ...ATOM.O, bond: 1, heavy: 1 }, { ...ATOM.H, bond: 1, heavy: 1 }], molecules: [{ atoms: [0, 1, 1], n: 10, bent: true }], label: 'water' };
 
 const changes: ParticlesEl = {
   kind: 'particles',

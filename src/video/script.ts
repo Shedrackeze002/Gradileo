@@ -405,10 +405,11 @@ export interface ParticleBox {
    * (the first for the `a` atom's old partners, the second for the `b` atom's; `null` keeps that
    * atom's bonds): so a hydrogen molecule meeting an oxygen molecule can swap partners. With
    * `carry` too, the `a` atom's old partners stay with it, joined to the `b` atom instead (bent,
-   * like water): a hydrogen molecule that hits an oxygen atom becomes one water molecule. Atoms are never made or lost: only
+   * like water, or in a straight line with `line`, like carbon dioxide): a hydrogen molecule that
+   * hits an oxygen atom becomes one water molecule. Atoms are never made or lost: only
    * joined differently, so the mass is the same after.
    */
-  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; energy?: number; heat?: number }>;
+  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number }>;
   /**
    * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
    * made of these atoms (kinds, by place), the first bonded to each of the others round it. A
@@ -707,7 +708,8 @@ export function checkParticles(e: ParticlesEl): string[] {
       if (!m.atoms.every(ok) || m.atoms.length < 2) problems.push(`box "${b.id}": a molecule needs two atoms or more, of kinds the box has.`);
       if (m.bent && m.atoms.length !== 3) problems.push(`box "${b.id}": only a molecule of three atoms can be bent.`);
     }
-    if (b.molecules && (b.lump || b.hold || b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box.`);
+    if (b.molecules && typeof b.lump === 'number') problems.push(`box "${b.id}": with molecules, only one lump.`);
+    if (b.molecules && (b.hold || b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box (with a lump, if you like).`);
     if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
   }
   for (const [name, clip] of Object.entries(e.clips)) {

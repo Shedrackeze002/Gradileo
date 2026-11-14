@@ -46,3 +46,26 @@ export function hydrogenBurning(id: string, over: Partial<ParticleBox> = {}): Pa
     ...over,
   };
 }
+
+/**
+ * A lump of carbon (charcoal) in oxygen, ready to burn once a clip heats it to about 2.5: an oxygen
+ * molecule that hits a carbon atom hard enough takes it, and it leaves as carbon dioxide. Each
+ * reaction warms the box. The kinds: 0 C in the lump, 1 O in O2, 2 C in CO2 (the tally counts
+ * these), 3 O in CO2. `oxygen` is how many oxygen molecules there are (10 by default).
+ */
+export function carbonBurning(id: string, over: Partial<ParticleBox> = {}, oxygen = 10): ParticleBox {
+  const { C, O } = ATOM;
+  return {
+    id,
+    state: 'gas',
+    width: 12,
+    height: 10,
+    temp: 0.4,
+    lump: true,
+    kinds: [{ n: 16, bond: 14, heavy: 3, tone: 'brand', name: 'carbon' }, O, C, O],
+    molecules: oxygen ? [{ atoms: [1, 1], n: oxygen }] : [],
+    reactions: [{ a: 1, b: 0, free: [3, null], carry: true, line: true, to: [3, 2], join: true, energy: 4.5, heat: 0.25 }],
+    tally: { kinds: [2], label: 'carbon dioxide molecules' },
+    ...over,
+  };
+}

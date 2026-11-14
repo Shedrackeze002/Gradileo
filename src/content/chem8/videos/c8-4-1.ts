@@ -1,10 +1,39 @@
-import type { Explainer } from '@/video/script.ts';
+import { carbonBurning } from '@/video/reactions.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts): carbon burning in oxygen. An oxygen
+// molecule that hits a hot carbon atom hard enough takes it away as carbon dioxide, and the heat
+// given out keeps the rest of the lump hot enough to burn.
+
+/** Heats a box to light it, then leaves it to burn by itself. */
+const light = (...ids: string[]) => ({
+  phases: [{ dur: 1, heat: Object.fromEntries(ids.map((id) => [id, 2.5])) }, { dur: 2 }, { dur: 1, heat: Object.fromEntries(ids.map((id) => [id, 0.4])) }, { dur: 10 }],
+});
+
+const burning: ParticlesEl = {
+  kind: 'particles',
+  id: 'c',
+  boxes: [carbonBurning('b', { label: 'carbon in oxygen' })],
+  clips: { light: light('b') },
+  thermometers: true,
+  height: 440,
+};
+
+/** The fire triangle: a lump with no heat, one with no oxygen, and one with all three. */
+const triangle: ParticlesEl = {
+  kind: 'particles',
+  id: 'ft',
+  boxes: [carbonBurning('nh', { label: 'no heat' }), carbonBurning('no', { label: 'no oxygen' }, 0), carbonBurning('all', { label: 'fuel, heat and oxygen' })],
+  clips: { light: light('no', 'all') },
+  thermometers: true,
+  height: 300,
+};
 
 const video: Explainer = {
   id: 'c8-4-1',
   lessonId: 'c8-4-1',
   title: 'Burning',
-  thumbnail: 'tri',
+  thumbnail: 'c',
   summary:
     'Combustion is a fuel reacting with oxygen, giving out heat and light. Fuels of carbon and hydrogen burn to carbon dioxide and water, and carbon dioxide turns limewater cloudy. Too little oxygen gives poisonous carbon monoxide. A fire needs fuel, heat and oxygen, the fire triangle; remove one to put it out. Never use water on burning oil.',
   scenes: [
@@ -31,10 +60,32 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Burning up close',
+      layout: 'center',
+      main: [burning],
+      lines: [
+        { say: 'Let’s watch carbon burn. Charcoal is almost pure carbon. Here is a lump of carbon, in purple, with oxygen molecules, in red, all around it. At room temperature, nothing happens.', show: ['c', 'c.labels', 'c.thermo'] },
+        { say: 'Now we heat it. Oxygen molecules that hit the hot carbon hard enough react with it: each carbon atom joins with two oxygen atoms, and leaves as a molecule of carbon dioxide.', play: 'c.light', show: 'c.tally' },
+        { say: 'Look at the thermometer. The reaction gives out heat, which keeps the carbon hot enough to go on burning. That is why a fire keeps going once it is lit.', focus: 'c.b' },
+      ],
+    },
+    {
       chapter: 'The fire triangle',
       layout: 'center',
       main: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Fire triangle', md: 'A fire needs **fuel**, **heat** and **oxygen**. Remove any one side, and the fire goes out.' },
+        triangle,
+      ],
+      lines: [
+        { say: 'A fire needs three things at once: fuel, heat and oxygen. These are the three sides of the fire triangle. Take away any one side, and the fire goes out.', show: 'def' },
+        { say: 'Here are three lumps of carbon. The first has oxygen round it but is not heated. The second is heated, but has no oxygen. The third is heated, with oxygen round it.', show: ['ft', 'ft.labels', 'ft.thermo', 'ft.tally'], play: 'ft.light' },
+        { say: 'Only the third burns, because only it has all three sides of the triangle: fuel, heat and oxygen.', focus: 'ft.all' },
+      ],
+    },
+    {
+      chapter: 'Putting fires out',
+      layout: 'center',
+      main: [
         {
           kind: 'table',
           id: 'tri',
@@ -47,7 +98,6 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'A fire needs three things at once: fuel, heat and oxygen. These are the three sides of the fire triangle. Take away any one side, and the fire goes out.', show: 'def' },
         { say: 'Spraying water on burning wood cools it, so it removes the heat.', show: ['tri', 'tri.0'], focus: 'tri.0' },
         { say: 'A fire blanket over a burning pan cuts off the oxygen.', show: 'tri.1', focus: 'tri.1' },
         { say: 'And turning off the gas supply removes the fuel.', show: 'tri.2', focus: 'tri.2' },
