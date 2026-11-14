@@ -3,7 +3,7 @@
  * stage shows at any moment. Rendering is a pure function of that state, so the same script and
  * narration always give the same frames, and a frame that has not changed can be reused.
  */
-import { asList, captionOf, plainMarkdown, sceneElements, type El, type Explainer, type MotionEl, type TryEl } from './script.ts';
+import { asList, captionOf, plainMarkdown, sceneElements, type El, type Explainer, type MotionEl, type ParticlesEl, type TryEl } from './script.ts';
 
 /**
  * Timing, in seconds. The pauses give a viewer time to read each new step before the narrator
@@ -47,6 +47,7 @@ export function revealTime(kind: El['kind']): number {
       return 1;
     case 'math':
     case 'motion':
+    case 'particles':
       return 0.8;
     default:
       return 0.6;
@@ -95,9 +96,12 @@ const r3 = (x: number) => Math.round(x * 1000) / 1000;
 /** After a clip ends, before the next line starts. */
 const AFTER_PLAY = 0.4;
 
-/** How long a motion clip runs in the video, in seconds (slow motion stretches a phase). */
-export function clipSeconds(el: MotionEl, clip: string): number {
-  return el.clips[clip].phases.reduce((n, ph) => n + ph.dur * (ph.freeze ? 1 : (ph.slow ?? 1)), 0);
+/** An element that plays clips: a motion, or boxes of particles. */
+export type Playable = MotionEl | ParticlesEl;
+
+/** How long a clip runs in the video, in seconds (slow motion stretches a motion's phase). */
+export function clipSeconds(el: Playable, clip: string): number {
+  return (el.clips[clip].phases as Array<{ dur: number; slow?: number; freeze?: boolean }>).reduce((n, ph) => n + ph.dur * (ph.freeze ? 1 : (ph.slow ?? 1)), 0);
 }
 
 /** `durations` maps each line's key ("scene.line") to the length of its narration in seconds. */
@@ -112,11 +116,11 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
     const start = t;
     const kinds: Record<string, El['kind']> = {};
     const tries = new Map<string, TryEl>();
-    const motions = new Map<string, MotionEl>();
+    const motions = new Map<string, Playable>();
     for (const e of sceneElements(s)) {
       kinds[e.id] = e.kind;
       if (e.kind === 'try') tries.set(e.id, e);
-      if (e.kind === 'motion') motions.set(e.id, e);
+      if (e.kind === 'motion' || e.kind === 'particles') motions.set(e.id, e);
     }
     if (s.chapter) {
       chapter = s.chapter;
@@ -189,6 +193,12 @@ export interface ElState {
   timer?: number;
   /** A motion's clips played so far, in order, each with the seconds of it played. */
   plays?: Array<[clip: string, seconds: number]>;
+  /**
+   * For elements that move all the time they are shown (particles): seconds since the element
+   * appeared, and each clip played with the age it started at.
+   */
+  age?: number;
+  started?: Array<[clip: string, age: number]>;
 }
 
 export interface FrameState {
@@ -217,6 +227,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
   const focus: Record<string, Record<string, { on: number | null; off: number | null }>> = {};
   const timers: Record<string, { at: number; dur: number }> = {};
   const plays: Record<string, Array<[string, number]>> = {};
+  const starts: Record<string, Array<[string, number]>> = {};
   for (const ev of s.events) {
     if (ev.t > t) break;
     if (ev.kind === 'show') {
@@ -247,6 +258,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
     } else if (ev.kind === 'play') {
       // Past its end a clip stays at its last moment, so the frames after it can be reused.
       (plays[ev.el] ??= []).push([ev.clip, q(Math.min(t - ev.t, ev.dur))]);
+      (starts[ev.el] ??= []).push([ev.clip, ev.t]);
     }
   }
   const els: Record<string, ElState> = {};
@@ -271,6 +283,11 @@ export function stateAt(tl: Timeline, t: number): FrameState {
     }
     const timer = timers[el];
     els[el] = { p: q(p), parts, whole: st.whole, focus: fs, ...(timer ? { timer: q(clamp01((t - timer.at) / timer.dur)) } : {}), ...(plays[el] ? { plays: plays[el] } : {}) };
+    // Particles move all the time they are on screen, so their frames carry the time.
+    if (s.kinds[el] === 'particles') {
+      els[el].age = q(t - st.at);
+      els[el].started = (starts[el] ?? []).map(([c, at]) => [c, q(at - st.at)]);
+    }
   }
   return { scene: si, fade, chapter: s.chapter, els };
 }

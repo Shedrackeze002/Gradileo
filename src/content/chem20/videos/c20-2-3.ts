@@ -1,20 +1,22 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { boyleGraph, gasBox, tag } from './lib/c20-2a-figures.ts';
+import { boyleGraph } from './lib/c20-2a-figures.ts';
 
-// The same air at 100, 200 and 400 kPa: each doubling of the pressure halves the volume.
-const syringes = figure(
-  's',
-  [
-    gasBox({ name: 'a', at: [0, 0], w: 3.2, h: 4.4, count: 6, r: 0.22, speed: 0, seed: 41, top: 'piston', walls: 5.4 }),
-    tag('a-l', [1.6, -0.3], '\\begin{gathered}100\\ \\text{kPa}\\\\ 2.00\\ \\text{L}\\end{gathered}', { place: 'below', group: 'a-p' }),
-    gasBox({ name: 'b', at: [4.4, 0], w: 3.2, h: 2.2, count: 6, r: 0.22, speed: 0, seed: 42, top: 'piston', walls: 5.4 }),
-    tag('b-l', [6, -0.3], '\\begin{gathered}200\\ \\text{kPa}\\\\ 1.00\\ \\text{L}\\end{gathered}', { place: 'below', group: 'b-p' }),
-    gasBox({ name: 'c', at: [8.8, 0], w: 3.2, h: 1.1, count: 6, r: 0.22, speed: 0, seed: 43, top: 'piston', walls: 5.4 }),
-    tag('c-l', [10.4, -0.3], '\\begin{gathered}400\\ \\text{kPa}\\\\ 0.50\\ \\text{L}\\end{gathered}', { place: 'below', group: 'c-p' }),
-  ],
-  480,
-);
+// The same air at 100, 200 and 400 kPa: a piston squeezes it, the gauge reads the pressure and the
+// particles (simulated in src/video/particles.ts) are crowded into less space, hitting the walls
+// more often. Each doubling of the pressure halves the volume.
+const syringe: ParticlesEl = {
+  kind: 'particles',
+  id: 's',
+  boxes: [{ id: 'a', state: 'gas', n: 16, width: 14, height: 16, piston: true }],
+  gauge: { box: 'a', start: 100 },
+  volume: { box: 'a', start: 2 },
+  clips: {
+    double: { phases: [{ dur: 5, lid: { a: 0.5 } }] },
+    again: { phases: [{ dur: 4, lid: { a: 0.25 } }] },
+  },
+  height: 600,
+};
 
 const graph = figure('g', [boyleGraph()], 500);
 
@@ -38,8 +40,8 @@ const video: Explainer = {
     {
       chapter: 'Measuring pressure and volume',
       layout: 'split',
-      leftWidth: 560,
-      left: [syringes],
+      leftWidth: 600,
+      left: [syringe],
       right: [
         {
           kind: 'table',
@@ -56,10 +58,13 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Imagine a sample of air trapped in a gas syringe, sealed at the tip. No gas can get in or out, and the temperature is kept the same throughout.' },
-        { say: 'The pressure on the gas is raised step by step, and its volume is measured each time.', show: ['t', 't.0', 't.1', 't.2', 't.3', 't.4', 't.5'] },
-        { say: 'When the pressure doubles, from one hundred to two hundred kilopascals, the volume halves, from two point zero zero to one point zero zero litres.', show: ['s.a-box', 's.a-piston', 's.a-p', 's.a-l', 's.b-box', 's.b-piston', 's.b-p', 's.b-l'], focus: ['t.2', 't.3'] },
-        { say: 'When the pressure is multiplied by four, from one hundred to four hundred kilopascals, the volume is divided by four.', show: ['s.c-box', 's.c-piston', 's.c-p', 's.c-l'], focus: ['t.2', 't.5'] },
+        { say: 'Imagine a sample of air trapped in a gas syringe, sealed at the tip. No gas can get in or out, and the temperature is kept the same throughout.', show: ['s', 's.gauge', 's.volume'] },
+        { say: 'The gauge reads the pressure on the gas: one hundred kilopascals to start with, and the gas takes up two point zero zero litres.', focus: 's.gauge' },
+        { say: 'The pressure is raised step by step, and the volume is measured each time.', show: ['t', 't.0', 't.1', 't.2', 't.3', 't.4', 't.5'] },
+        { say: 'Watch the walls as well. Each flash is a particle hitting them, and the number under the syringe counts the hits each second.', show: ['s.hits', 's.rate'] },
+        { say: 'Watch the pressure double, from one hundred to two hundred kilopascals. The volume halves, from two point zero zero to one point zero zero litres.', play: 's.double', focus: ['t.2', 't.3'] },
+        { say: 'Now multiply the pressure by four in all, to four hundred kilopascals. The volume is divided by four, to zero point five zero litres.', play: 's.again', focus: ['t.2', 't.5'] },
+        { say: 'Squeezed into a quarter of the space, the particles hit the walls far more often. In part two, you will see how those hits make the pressure.', focus: 's.rate' },
         { say: 'And in every row, the pressure times the volume comes to the same number: two hundred kilopascal litres.', focus: 't' },
       ],
     },

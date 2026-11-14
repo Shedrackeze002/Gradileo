@@ -327,7 +327,77 @@ export interface MotionEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl;
+/** A temperature for a particle box: a number, or the usual one for a state. */
+export type Temp = number | 'solid' | 'liquid' | 'gas';
+
+/** One box of particles in a `particles` element. */
+export interface ParticleBox {
+  id: string;
+  /** How the particles start: in rows (solid), packed at the bottom (liquid) or through the box (gas). */
+  state: 'solid' | 'liquid' | 'gas';
+  /** How many particles (30 by default). */
+  n?: number;
+  /** Several kinds of particle (a mixture, or two gases side by side), each with its count and colour. */
+  kinds?: Array<{ n: number; tone?: Tone; name?: string }>;
+  /** With several kinds, start them apart (the first kind on the left) instead of mixed. */
+  apart?: boolean;
+  /** Its starting temperature; the usual one for its state otherwise. */
+  temp?: Temp;
+  /** Inside width and height, in particle diameters (10 by 10 by default). */
+  width?: number;
+  height?: number;
+  /** Where the lid starts, as a fraction of the box's height (1, the top, by default). */
+  lid?: number;
+  /** Draw the lid as a piston with a handle, to push in or pull out. */
+  piston?: boolean;
+  /** Draw no lid (a beaker): the particles still stay inside. */
+  open?: boolean;
+  /** A particle to follow: it is drawn in yellow, with a trail when the part `trail` is shown. */
+  follow?: number;
+  /** The name under the box. */
+  label?: string;
+  tone?: Tone;
+}
+
+/** A stretch of a particle clip: temperatures and lids move steadily to these values over `dur` seconds. */
+export interface ParticlePhase {
+  dur: number;
+  /** New temperatures, by box id. */
+  heat?: Record<string, Temp>;
+  /** New lid heights (fractions of the box's height), by box id. */
+  lid?: Record<string, number>;
+}
+
+/** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate'] as const;
+
+/**
+ * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
+ * jostle one another (src/video/particles.ts), so solids vibrate in rows, liquids slide and gases
+ * fly and bounce off the walls, and heating or squeezing a box changes them as it would. The
+ * particles move whenever the element is on screen; a line plays a clip (`play: 'p.heat'`) to
+ * change temperatures or move a lid, and the next line waits for it. Parts: `thermo` (a
+ * thermometer by each box), `gauge` (a pressure gauge on the box `gauge.box`), `hits` (a flash
+ * wherever a particle hits a wall), `rate` (wall hits each second, under each box), `trail` (the
+ * path of each box's followed particle) and `labels`. Emphasising a box's id makes it glow.
+ */
+export interface ParticlesEl {
+  kind: 'particles';
+  id: string;
+  boxes: ParticleBox[];
+  clips: Record<string, { phases: ParticlePhase[] }>;
+  /** A pressure gauge on one box, reading `start` (in `unit`, kPa by default) as the box starts. */
+  gauge?: { box: string; start: number; unit?: string };
+  /** A volume reading under one box, `start` (in `unit`, L by default) with the lid where it starts. */
+  volume?: { box: string; start: number; unit?: string; decimals?: number };
+  /** Keep room for a thermometer by each box (the part `thermo` shows them). */
+  thermometers?: boolean;
+  /** Changes the starting arrangement, if one looks wrong. */
+  seed?: number;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -463,6 +533,39 @@ export function checkMotion(e: MotionEl): string[] {
   return problems;
 }
 
+/** Whether a particles element is set up to show this part (a thermometer, gauge or volume needs its option). */
+function particlePartReady(e: ParticlesEl, part: string): boolean {
+  if (part === 'thermo') return !!e.thermometers;
+  if (part === 'gauge') return !!e.gauge;
+  if (part === 'volume') return !!e.volume;
+  return true;
+}
+
+/** Problems with a particles element: clips that name no box, a gauge on no box, a bad lid. */
+export function checkParticles(e: ParticlesEl): string[] {
+  const problems: string[] = [];
+  const ids = new Set(e.boxes.map((b) => b.id));
+  if (ids.size !== e.boxes.length) problems.push('two boxes share an id.');
+  for (const b of e.boxes) {
+    if ((PARTICLE_PARTS as readonly string[]).includes(b.id)) problems.push(`box id "${b.id}" is the name of a part.`);
+    if (b.lid !== undefined && !(b.lid > 0.2 && b.lid <= 1)) problems.push(`box "${b.id}": a lid must be between 0.2 and 1.`);
+    const n = b.kinds ? b.kinds.reduce((s, k) => s + k.n, 0) : (b.n ?? 30);
+    if (n > 120) problems.push(`box "${b.id}" has ${n} particles; keep it to 120 so frames draw quickly.`);
+    if (b.follow !== undefined && !(b.follow >= 0 && b.follow < n)) problems.push(`box "${b.id}" follows a particle it does not have.`);
+  }
+  if (e.gauge && !ids.has(e.gauge.box)) problems.push(`the gauge is on no box "${e.gauge.box}".`);
+  if (e.volume && !ids.has(e.volume.box)) problems.push(`the volume reading is on no box "${e.volume.box}".`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    clip.phases.forEach((ph, pi) => {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}", phase ${pi + 1} needs a length above zero.`);
+      for (const id of [...Object.keys(ph.heat ?? {}), ...Object.keys(ph.lid ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
+      for (const v of Object.values(ph.lid ?? {})) if (!(v > 0.2 && v <= 1)) problems.push(`clip "${name}", phase ${pi + 1}: a lid must be between 0.2 and 1.`);
+    });
+  }
+  return problems;
+}
+
 export function checkScript(x: Explainer): string[] {
   const problems: string[] = [];
   if (!x.scenes.length) problems.push('The script has no scenes.');
@@ -470,7 +573,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -489,6 +592,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...MOTION_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkMotion(e).map((p) => `Scene ${si + 1}: motion "${e.id}": ${p}`));
+      }
+      if (e.kind === 'particles') {
+        diagrams.set(e.id, new Set<string>([...PARTICLE_PARTS, ...e.boxes.map((b) => b.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkParticles(e).map((p) => `Scene ${si + 1}: particles "${e.id}": ${p}`));
       }
       if (e.kind !== 'diagram') continue;
       const parts = new Set<string>();
@@ -513,13 +621,14 @@ export function checkScript(x: Explainer): string[] {
       for (const target of [...asList(l.show), ...asList(l.hide), ...asList(l.focus)]) {
         const [el, part] = target.split('.');
         if (!ids.has(el)) problems.push(`Scene ${si + 1}, line ${li + 1}: no element "${target}".`);
+        else if (part !== undefined && motions.get(el)?.kind === 'particles' && !particlePartReady(motions.get(el) as ParticlesEl, part)) problems.push(`Scene ${si + 1}, line ${li + 1}: particles "${el}" shows "${part}" but does not set it up (thermometers, gauge or volume).`);
         else if (part !== undefined && diagrams.has(el) && !diagrams.get(el)!.has(part)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${screens.has(el) ? 'screen' : motions.has(el) ? 'motion' : 'diagram'} "${el}" has no part "${part}".`);
       }
       for (const target of asList(l.play)) {
         const [el, clip] = target.split('.');
         const m = motions.get(el);
         if (!m) problems.push(`Scene ${si + 1}, line ${li + 1}: no motion "${el}" to play.`);
-        else if (!clip || !(clip in m.clips)) problems.push(`Scene ${si + 1}, line ${li + 1}: motion "${el}" has no clip "${clip ?? ''}".`);
+        else if (!clip || !(clip in m.clips)) problems.push(`Scene ${si + 1}, line ${li + 1}: ${m.kind === 'particles' ? 'particles' : 'motion'} "${el}" has no clip "${clip ?? ''}".`);
       }
     });
   });
