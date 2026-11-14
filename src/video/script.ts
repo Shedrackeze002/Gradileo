@@ -337,8 +337,21 @@ export interface ParticleBox {
   state: 'solid' | 'liquid' | 'gas';
   /** How many particles (30 by default). */
   n?: number;
-  /** Several kinds of particle (a mixture, or two gases side by side), each with its count and colour. */
-  kinds?: Array<{ n: number; tone?: Tone; name?: string }>;
+  /**
+   * Several kinds of particle (a mixture, or two gases side by side), each with its count and
+   * colour, how strongly its particles attract one another (`bond`, 1 by default: 2.5 makes a
+   * solid that stays solid in a hot liquid) and how strongly gravity pulls it (`heavy`, 1).
+   */
+  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number }>;
+  /**
+   * How strongly particles of different kinds attract one another (between their own bonds by
+   * default). Stronger than the solute's own bond, a lump dissolves; much weaker, it stays whole.
+   */
+  cross?: number;
+  /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
+  lump?: boolean | number;
+  /** Hold the first kind still (a lump, keeping its shape), until a phase lets it go (`release`). */
+  hold?: boolean;
   /** With several kinds, start them apart (the first kind on the left) instead of mixed. */
   apart?: boolean;
   /** Its starting temperature; the usual one for its state otherwise. */
@@ -395,10 +408,14 @@ export interface ParticlePhase {
   lid?: Record<string, number>;
   /** Boxes whose divider is lifted out as the phase starts. */
   lift?: string[];
+  /** Boxes whose held lump is let go as the phase starts. */
+  release?: string[];
+  /** How hard to stir each box (0 stops; 2 stirs briskly), reached steadily over the phase. */
+  stir?: Record<string, number>;
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
@@ -410,7 +427,9 @@ export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'la
  * wherever a particle hits a wall), `rate` (wall hits each second, under each box), `trail` (the
  * path of each box's followed particle), `labels`, `flow` (an arrow of heat between two boxes,
  * thinner as their temperatures meet; set `flow` up) and `width` (a bracket over each box's
- * particles, with dashed marks as wide as they were when the element was shown, to see expansion).
+ * particles, with dashed marks as wide as they were when the element was shown, to see expansion)
+ * and `count` (how many particles of each box's first kind have broken away on their own: "8 of 16
+ * dissolved").
  * Emphasising a box's id makes it glow.
  */
 export interface ParticlesEl {
@@ -429,6 +448,11 @@ export interface ParticlesEl {
   thermometers?: boolean | { marks?: Array<{ at: Temp; label: string }> };
   /** Heat flowing from one box to the next one along (the part `flow` shows it). */
   flow?: { from: string; to: string; label?: string };
+  /**
+   * Seconds of simulation for each second of video, as a multiple of the usual. Liquids are
+   * sluggish, so dissolving needs about 6 to happen while the narrator speaks.
+   */
+  speed?: number;
   /** Changes the starting arrangement, if one looks wrong. */
   seed?: number;
   height?: number;
@@ -598,12 +622,15 @@ export function checkParticles(e: ParticlesEl): string[] {
     if (at(e.flow.from) < 0 || at(e.flow.to) < 0) problems.push(`the heat flow names a box that is not there.`);
     else if (Math.abs(at(e.flow.from) - at(e.flow.to)) !== 1) problems.push(`the heat flow must join two boxes side by side.`);
   }
+  for (const b of e.boxes) if ((b.lump || b.hold) && (b.kinds?.length ?? 0) < 2) problems.push(`box "${b.id}": a lump or held particles need two kinds (the lump first, then what is round it).`);
   for (const b of e.boxes) if (b.divider !== undefined && !(b.divider > 0.1 && b.divider < 0.9)) problems.push(`box "${b.id}": a divider must be between 0.1 and 0.9 of the way across.`);
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     clip.phases.forEach((ph, pi) => {
       if (!(ph.dur > 0)) problems.push(`clip "${name}", phase ${pi + 1} needs a length above zero.`);
       for (const id of ph.lift ?? []) if (!e.boxes.find((b) => b.id === id)?.divider) problems.push(`clip "${name}", phase ${pi + 1} lifts a divider that box "${id}" does not have.`);
+      for (const id of ph.release ?? []) if (!e.boxes.find((b) => b.id === id)?.hold) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
+      for (const id of Object.keys(ph.stir ?? {})) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const id of [...Object.keys(ph.heat ?? {}), ...Object.keys(ph.lid ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const v of Object.values(ph.lid ?? {})) if (!(v > 0.2 && v <= 1)) problems.push(`clip "${name}", phase ${pi + 1}: a lid must be between 0.2 and 1.`);
     });

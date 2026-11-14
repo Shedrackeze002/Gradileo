@@ -1,10 +1,29 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts): pure water has one kind of particle,
+// and salt water has two kinds, moving about among each other without joining.
+
+const WATER = { heavy: 0.2, tone: 'adj', name: 'water' } as const;
+
+/** Pure water beside salt water. */
+const kinds: ParticlesEl = {
+  kind: 'particles',
+  id: 'p',
+  boxes: [
+    { id: 'pure', state: 'liquid', kinds: [{ n: 50, ...WATER }], width: 12, height: 8, temp: 0.7, label: 'pure: distilled water' },
+    { id: 'mix', state: 'liquid', kinds: [{ n: 9, heavy: 0.2, bond: 1.2, tone: 'theta', name: 'salt' }, { n: 41, ...WATER }], cross: 1.8, width: 12, height: 8, temp: 0.7, label: 'mixture: salt water' },
+  ],
+  clips: {},
+  speed: 2,
+  seed: 3,
+  height: 300,
+};
 
 const video: Explainer = {
   id: 'c7-3-1',
   lessonId: 'c7-3-1',
   title: 'Pure Substances and Mixtures',
-  thumbnail: 'kinds',
+  thumbnail: 'p',
   summary:
     'A pure substance contains only one substance; a mixture contains two or more substances that are not chemically joined. A pure substance melts and boils at fixed temperatures, while a mixture melts over a range. Mechanical mixtures have parts you can see, suspensions are cloudy and settle, colloids are cloudy and never settle, and solutions are clear and the same all through.',
   scenes: [
@@ -20,12 +39,13 @@ const video: Explainer = {
       chapter: 'Pure or mixture?',
       layout: 'center',
       main: [
+        kinds,
         { kind: 'callout', id: 'pure', tone: 'definition', title: 'Pure substance', md: 'Contains only **one** substance: distilled water, oxygen, table salt, copper.' },
         { kind: 'callout', id: 'mix', tone: 'definition', title: 'Mixture', md: '**Two or more** substances mixed but **not chemically joined**: air, sea water, orange juice, soil.' },
       ],
       lines: [
-        { say: 'A pure substance contains only one substance, made of only one kind of particle. Distilled water, oxygen gas, table salt and copper are pure substances.', show: 'pure' },
-        { say: 'A mixture contains two or more substances that are mixed together but not chemically joined. Each keeps its own properties, and they can be separated again.', show: 'mix' },
+        { say: 'A pure substance contains only one substance, made of only one kind of particle. In distilled water, every particle is a water particle. Distilled water, oxygen gas, table salt and copper are pure substances.', show: ['p', 'p.labels', 'pure'], focus: 'p.pure' },
+        { say: 'A mixture contains two or more substances that are mixed together but not chemically joined. In salt water, the yellow salt particles move about among the blue water particles. Each keeps its own properties, and they can be separated again.', show: 'mix', focus: 'p.mix' },
         { say: 'In everyday talk, pure means nothing added. Pure orange juice has nothing added, but it is still a mixture of water, sugars, acids and much more. And tap water has minerals dissolved in it, so only distilled water is pure.' },
       ],
     },
