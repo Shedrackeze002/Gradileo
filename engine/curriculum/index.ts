@@ -40,6 +40,7 @@ import { ENG20 } from './eng20/course.ts';
 import { ENG30 } from './eng30/course.ts';
 import { MATHMORE } from './mathmore/course.ts';
 import { CHEMMORE } from './chemmore/course.ts';
+import { PHYS10 } from './phys10/course.ts';
 import { ENGMORE } from './engmore/course.ts';
 import { buildMappedCourse, type CurriculumMap } from './maps/build.ts';
 import { US_MAP } from './maps/us.ts';
@@ -52,7 +53,7 @@ import { IB_MAP } from './maps/ib.ts';
 import { AB_MAP } from './maps/ab.ts';
 
 /** Gradileo's own courses, youngest grade first (the order of course pickers and tabs). */
-const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, MATHMORE, CHEM7, CHEM8, CHEM9, CHEM10, CHEM20, CHEM30, CHEMMORE, ENG5, ENG6, ENG7, ENG8, ENG9, ENG10, ENG20, ENG30, ENGMORE];
+const OWN_COURSES: CourseMeta[] = [MATH5, MATH6, MATH7, MATH8, MATH9, MATH10C, MATH10_3, MATH10_4, MATH20_1, MATH20_2, MATH20_3, MATH20_4, MATH30_1, MATH30_2, MATH30_3, MATH31, MATHMORE, CHEM7, CHEM8, CHEM9, CHEM10, CHEM20, CHEM30, CHEMMORE, PHYS10, ENG5, ENG6, ENG7, ENG8, ENG9, ENG10, ENG20, ENG30, ENGMORE];
 
 /** The school systems with a curriculum map, the first map first. */
 export const CURRICULUM_MAPS: CurriculumMap[] = [US_MAP, UK_MAP, WAEC_MAP, KENYA_MAP, CAPS_MAP, CAMBRIDGE_MAP, IB_MAP, AB_MAP];
@@ -108,6 +109,7 @@ const LOADERS: Record<string, () => Promise<SkillDef[]>> = {
   'chem-20': () => import('./chem20/skills.ts').then((m) => m.CHEM20_SKILLS),
   'chem-30': () => import('./chem30/skills.ts').then((m) => m.CHEM30_SKILLS),
   'chem-more': () => import('./chemmore/skills.ts').then((m) => m.CHEMMORE_SKILLS),
+  'phys-10': () => import('./phys10/skills.ts').then((m) => m.PHYS10_SKILLS),
   'eng-more': () => import('./engmore/skills.ts').then((m) => m.ENGMORE_SKILLS),
   'eng-5': () => import('./eng5/skills.ts').then((m) => m.ENG5_SKILLS),
   'eng-6': () => import('./eng6/skills.ts').then((m) => m.ENG6_SKILLS),
