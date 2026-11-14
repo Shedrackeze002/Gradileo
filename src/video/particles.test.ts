@@ -214,6 +214,77 @@ describe('particles: separating mixtures', () => {
   });
 });
 
+describe('particles: molecules and reactions', () => {
+  const H = { n: 0, bond: 0.3, heavy: 0.2, size: 0.8 };
+  const O = { n: 0, bond: 0.3, heavy: 0.2 };
+  // Hydrogen burning in oxygen: H in H2, O in O2, H in water, O with one H, O in water, a loose H, a loose O.
+  const burning = (): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'b',
+          state: 'gas',
+          width: 14,
+          height: 10,
+          temp: 0.4,
+          kinds: [H, O, H, O, O, H, O],
+          molecules: [
+            { atoms: [0, 0], n: 12 },
+            { atoms: [1, 1], n: 6 },
+          ],
+          reactions: [
+            { a: 0, b: 1, free: [5, 6], to: [2, 3], join: true, energy: 3, heat: 0.2 },
+            { a: 5, b: 6, to: [2, 3], join: true, heat: 0.2 },
+            { a: 5, b: 3, to: [2, 4], join: true, heat: 0.2 },
+            { a: 0, b: 3, free: [5, null], to: [2, 4], join: true, energy: 1, heat: 0.2 },
+            { a: 0, b: 6, free: [5, null], to: [2, 3], join: true, energy: 1, heat: 0.2 },
+            { a: 5, b: 1, free: [null, 6], to: [2, 3], join: true, heat: 0.2 },
+          ],
+          tally: { kinds: [4], label: 'water' },
+        },
+      ],
+      clips: { spark: { phases: [{ dur: 1, heat: { b: 1.5 } }, { dur: 2 }, { dur: 1, heat: { b: 0.4 } }, { dur: 16 }] } },
+    });
+
+  it('starts molecules bonded, and keeps their atoms together and a bent molecule bent', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'gas', width: 14, height: 10, temp: 0.6, kinds: [{ ...O }, { ...H }], molecules: [{ atoms: [0, 1, 1], n: 8, bent: true }] }] });
+    const [f] = particlesAt(e, [], 8);
+    expect(f.x.length).toBe(24);
+    expect(f.bonds.length).toBe(16);
+    for (const [i, j] of f.bonds) expect(Math.hypot(f.x[i] - f.x[j], f.y[i] - f.y[j])).toBeLessThan(1);
+    // Each oxygen's two hydrogens stay about 105 degrees apart.
+    for (let m = 0; m < 8; m++) {
+      const [o, a, c] = [3 * m, 3 * m + 1, 3 * m + 2];
+      const ang = Math.abs(Math.atan2(f.y[a] - f.y[o], f.x[a] - f.x[o]) - Math.atan2(f.y[c] - f.y[o], f.x[c] - f.x[o]));
+      expect((Math.min(ang, 2 * Math.PI - ang) * 180) / Math.PI).toBeGreaterThan(80);
+    }
+  });
+
+  it('burns hydrogen only once it is sparked, keeps every atom, and gets hotter as it burns', () => {
+    const e = burning();
+    const [before] = particlesAt(e, [['spark', 2]], 2);
+    expect(before.tally).toBe(0);
+    expect(before.bonds.length).toBe(18);
+    const [after] = particlesAt(e, [['spark', 2]], 22);
+    expect(after.tally).toBeGreaterThanOrEqual(10);
+    const count = (f: typeof after, ks: number[]) => f.kind.filter((k) => ks.includes(k)).length;
+    expect(count(after, [0, 2, 5])).toBe(24);
+    expect(count(after, [1, 3, 4, 6])).toBe(12);
+    // Past the spark, the heat given out keeps the gas well above where it started.
+    const [burnt] = particlesAt(e, [['spark', 2]], 8);
+    expect(burnt.temp).toBeGreaterThan(0.6);
+  });
+
+  it('checks reactions, molecules and tallies', () => {
+    const b = { id: 'b', state: 'gas' as const, kinds: [{ n: 4 }, { n: 4 }] };
+    expect(checkParticles(el({ boxes: [{ ...b, reactions: [{ a: 0, b: 2, to: [1, 1] }] }] }))).toEqual(['box "b": a reaction names a kind it does not have.']);
+    expect(checkParticles(el({ boxes: [{ ...b, reactions: [{ a: 0, b: 1, to: [1, 1], free: [null, 3] }] }] }))).toEqual(['box "b": a reaction names a kind it does not have.']);
+    expect(checkParticles(el({ boxes: [{ ...b, molecules: [{ atoms: [0, 1], n: 2, bent: true }] }] }))).toEqual(['box "b": only a molecule of three atoms can be bent.']);
+    expect(checkParticles(el({ boxes: [{ ...b, molecules: [{ atoms: [0], n: 2 }] }] }))).toEqual(['box "b": a molecule needs two atoms or more, of kinds the box has.']);
+    expect(checkParticles(el({ boxes: [{ ...b, tally: { kinds: [5], label: 'x' } }] }))).toEqual(['box "b": the tally counts a kind it does not have.']);
+  });
+});
+
 describe('particles: scripts and timing', () => {
   const video = (p: ParticlesEl, lines: Explainer['scenes'][number]['lines']): Explainer => ({
     id: 'x',

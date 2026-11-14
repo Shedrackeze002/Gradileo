@@ -396,6 +396,25 @@ export interface ParticleBox {
    * a phase's `run` sends the solvent up the paper, carrying each kind up at its `rise`.
    */
   paper?: boolean;
+  /**
+   * Reactions between kinds (by their place in `kinds`): when a particle of kind `a` meets one of
+   * kind `b` hard enough (their collision energy above `energy`, 0 by default), they become kinds
+   * `to` and, with `join`, are bonded into one molecule, drawn with a line between them. `heat`
+   * gives the pair that much extra energy (a reaction that gives out heat). With `free`, each of
+   * the two first lets go of the atoms it was bonded to, and those become the kinds in `free`
+   * (the first for the `a` atom's old partners, the second for the `b` atom's; `null` keeps that
+   * atom's bonds): so a hydrogen molecule meeting an oxygen molecule can swap partners. Atoms are never made or lost: only
+   * joined differently, so the mass is the same after.
+   */
+  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; energy?: number; heat?: number }>;
+  /**
+   * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
+   * made of these atoms (kinds, by place), the first bonded to each of the others round it. A
+   * `bent` molecule of three atoms is bent like water; otherwise the atoms sit in a line.
+   */
+  molecules?: Array<{ atoms: number[]; n: number; bent?: boolean }>;
+  /** What the part `tally` counts under the box: the particles of these kinds, and what to call them. */
+  tally?: { kinds: number[]; label: string };
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
   lump?: boolean | number;
   /** Hold the first kind still (a lump, keeping its shape), until a phase lets it go (`release`). */
@@ -467,7 +486,7 @@ export interface ParticlePhase {
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
@@ -663,7 +682,7 @@ export function checkParticles(e: ParticlesEl): string[] {
   for (const b of e.boxes) {
     if ((PARTICLE_PARTS as readonly string[]).includes(b.id)) problems.push(`box id "${b.id}" is the name of a part.`);
     if (b.lid !== undefined && !(b.lid > 0.2 && b.lid <= 1)) problems.push(`box "${b.id}": a lid must be between 0.2 and 1.`);
-    const n = b.kinds ? b.kinds.reduce((s, k) => s + k.n, 0) : (b.n ?? 30);
+    const n = (b.kinds ? b.kinds.reduce((s, k) => s + k.n, 0) : (b.n ?? 30)) + (b.molecules ?? []).reduce((s, m) => s + m.n * m.atoms.length, 0);
     if (n > 120) problems.push(`box "${b.id}" has ${n} particles; keep it to 120 so frames draw quickly.`);
     if (b.follow !== undefined && !(b.follow >= 0 && b.follow < n)) problems.push(`box "${b.id}" follows a particle it does not have.`);
   }
@@ -678,6 +697,17 @@ export function checkParticles(e: ParticlesEl): string[] {
   for (const b of e.boxes) if (b.divider !== undefined && !(b.divider > 0.1 && b.divider < 0.9)) problems.push(`box "${b.id}": a divider must be between 0.1 and 0.9 of the way across.`);
   for (const b of e.boxes) if (b.wall && !(b.wall.at > 0.1 && b.wall.at < 0.9 && b.wall.height > 0 && b.wall.height < 1)) problems.push(`box "${b.id}": a wall must stand between 0.1 and 0.9 of the way across, and be lower than the box.`);
   for (const b of e.boxes) if (b.filter && !(b.filter.at > 0.1 && b.filter.at < 0.9)) problems.push(`box "${b.id}": a filter must be between 0.1 and 0.9 of the way up.`);
+  for (const b of e.boxes) {
+    const k = b.kinds?.length ?? 1;
+    const ok = (i: number) => Number.isInteger(i) && i >= 0 && i < k;
+    for (const r of b.reactions ?? []) if (![r.a, r.b, ...r.to].every(ok) || !(r.free ?? []).every((f) => f === null || ok(f))) problems.push(`box "${b.id}": a reaction names a kind it does not have.`);
+    for (const m of b.molecules ?? []) {
+      if (!m.atoms.every(ok) || m.atoms.length < 2) problems.push(`box "${b.id}": a molecule needs two atoms or more, of kinds the box has.`);
+      if (m.bent && m.atoms.length !== 3) problems.push(`box "${b.id}": only a molecule of three atoms can be bent.`);
+    }
+    if (b.molecules && (b.lump || b.hold || b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box.`);
+    if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
+  }
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     clip.phases.forEach((ph, pi) => {
