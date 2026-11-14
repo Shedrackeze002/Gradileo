@@ -5,7 +5,7 @@ import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
 // never dissolves at all. The simulation runs faster than usual (`speed`).
 
 /** A lump of `n` particles in water, held until it is dropped in. */
-const cup = (id: string, n: number, water: number, label: string, solid = { bond: 2, heavy: 0.5, tone: 'theta' as const }, cross = 1.8): ParticleBox => ({
+const cup = (id: string, n: number, water: number, label: string, solid: { bond: number; heavy: number; tone: 'theta' | 'opp' } = { bond: 2, heavy: 0.5, tone: 'theta' }, cross = 1.8): ParticleBox => ({
   id,
   state: 'liquid',
   kinds: [{ n, ...solid }, { n: water, heavy: 0.2, tone: 'adj' }],

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { checkParticles, checkScript, type Explainer, type ParticlesEl } from './script.ts';
+import { checkParticles, checkScript, type Explainer, type ParticleBox, type ParticlesEl } from './script.ts';
 import { controlsAt, particlesAt, pressureOf, TEMPS } from './particles.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
@@ -128,8 +128,7 @@ describe('particles: dividers, baths and expansion', () => {
 
 describe('particles: dissolving', () => {
   const WATER = { n: 44, heavy: 0.2, tone: 'adj' } as const;
-  const lump = (id: string, solid: { bond: number; heavy: number }, cross: number, temp = 0.7) =>
-    ({ id, state: 'liquid', kinds: [{ n: 14, ...solid }, WATER], lump: true, hold: true, cross, width: 12, height: 9, temp }) as const;
+  const lump = (id: string, solid: { bond: number; heavy: number }, cross: number, temp = 0.7): ParticleBox => ({ id, state: 'liquid', kinds: [{ n: 14, ...solid }, { ...WATER }], lump: true, hold: true, cross, width: 12, height: 9, temp });
 
   it('holds a lump until it is let go, then water dissolves sugar but not sand', () => {
     const e = el({ boxes: [lump('s', { bond: 1.5, heavy: 0.2 }, 1.8), lump('d', { bond: 3, heavy: 3 }, 1)], clips: { drop: { phases: [{ dur: 1, release: ['s', 'd'] }, { dur: 11 }] } }, speed: 4 });
