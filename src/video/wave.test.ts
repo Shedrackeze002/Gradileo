@@ -125,6 +125,31 @@ describe('wave: clips', () => {
   });
 });
 
+describe('wave: a wave that bounces back', () => {
+  // A short burst (one wave, a quarter of a second) sent along 12 m to a wall, at 4 m/s.
+  const burst = el({ lanes: [{ ...rope, frequency: 4, reflect: true }], clips: { clap: { phases: [{ dur: 0.25 }, { dur: 8, set: { rope: { amplitude: 0 } } }] } } });
+
+  it('comes back from the far end turned over, after the time to go there and back', () => {
+    // After 2 s the burst is between 7 m and 8 m, on its way out.
+    const out = waveAt(burst, [['clap', 2]]).lanes.rope;
+    expect(Math.abs(out.at(7.25))).toBeCloseTo(2);
+    expect(out.at(3)).toBeCloseTo(0);
+    // After 5 s it has gone 20 m: to the wall and 8 m back, so it is between 4 m and 5 m.
+    const back = waveAt(burst, [['clap', 5]]).lanes.rope;
+    expect(back.front).toBeCloseTo(20);
+    // The part of the burst that was at 7.25 m is now at 4.75 m: the burst comes back the other way round, and turned over.
+    expect(back.at(4.75)).toBeCloseTo(-out.at(7.25));
+    expect(back.at(8)).toBeCloseTo(0);
+    // It is back at the source after 24 m ÷ 4 m/s = 6 s.
+    expect(Math.abs(waveAt(burst, [['clap', 6.1]]).lanes.rope.at(0.15))).toBeGreaterThan(1);
+  });
+
+  it('keeps the far end still', () => {
+    const steady = el({ lanes: [{ ...rope, reflect: true }] });
+    for (const t of [3.1, 4.4, 6.75]) expect(waveAt(steady, [['go', t]]).lanes.rope.at(12)).toBeCloseTo(0);
+  });
+});
+
 describe('wave: a longitudinal wave', () => {
   const air: WaveLane = { id: 'air', kind: 'longitudinal', frequency: 2, amplitude: 0.1, speed: 4, full: true };
   const tube = el({ lanes: [air] });

@@ -143,9 +143,11 @@ export function waveAt(el: WaveEl, plays: Array<[clip: string, seconds: number]>
       speed: lane.speed,
       reached: (x) => sent(x) >= earliest,
       at(x) {
-        const t = sent(x);
-        if (t < earliest) return 0;
-        return stretchAt(list, t).amplitude * Math.sin(phaseAt(list, t));
+        // What the source sent at a time, and nothing from before it started.
+        const value = (t: number) => (t < earliest ? 0 : stretchAt(list, t).amplitude * Math.sin(phaseAt(list, t)));
+        // A wave that bounces off the right end comes back turned over: it has travelled to the
+        // end and back to this place, and the end itself stays still.
+        return value(sent(x)) - (lane.reflect ? value(time - (2 * span1 - x0 - x) / lane.speed) : 0);
       },
       crests: places(list, lane, x0, time, back, x0 - pad, span1 + pad, long ? 0 : Math.PI / 2),
       troughs: places(list, lane, x0, time, back, x0 - pad, span1 + pad, long ? Math.PI : (3 * Math.PI) / 2),

@@ -1,9 +1,10 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type DiagramEl, type El, type Explainer, type MotionEl, type ParticlesEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
+import { BRAND, type DiagramEl, type El, type Explainer, type MotionEl, type ParticlesEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
 import { clipSeconds, type ElState, type FrameState } from '../timeline.ts';
 import { DiagramView } from './Diagram.tsx';
 import { MotionView } from './Motion.tsx';
 import { ParticlesView } from './Particles.tsx';
+import { RaysView } from './Rays.tsx';
 import { BulletsView, CalcView, CalloutView, MathView, QuoteView, TableView, TextView, TitleView, TryView } from './elements.tsx';
 import { ScreenView } from './Screen.tsx';
 import { rich, TONES } from './tex.ts';
@@ -58,6 +59,8 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <MotionView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'particles':
       return <ParticlesView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
+    case 'rays':
+      return <RaysView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
     case 'wave':
       return <WaveView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'calc':
@@ -133,7 +136,7 @@ function aspect(d: DiagramEl) {
 }
 
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | WaveEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave' || e.kind === 'rays';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
   const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
   const title = x.thumbnailTitle ?? x.title;
@@ -183,6 +186,9 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
           ) : fig.kind === 'particles' ? (
             // Particles are caught a few seconds after they start moving, with their labels.
             <ParticlesView el={fig} st={{ ...FULL, parts: { labels: 1 } }} w={560} h={440} age={6} played={[]} />
+          ) : fig.kind === 'rays' ? (
+            // Rays are shown with the normal and the angles marked, part way through the poster clip.
+            <RaysView el={{ ...fig, media: undefined }} st={{ ...FULL, parts: { normal: 1, angles: 1 } }} w={560} h={440} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
           ) : fig.kind === 'similar' ? (
             <SimilarView el={fig} st={FULL} w={500} h={480} />
           ) : null}

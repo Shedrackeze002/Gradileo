@@ -397,6 +397,8 @@ export interface WaveLane {
   speed: number;
   /** The wave already fills the strip when it first appears; otherwise it starts at the source and runs in. */
   full?: boolean;
+  /** The wave bounces back from the right end of the strip (a wall, a cliff), turned over, and the two add up. */
+  reflect?: boolean;
   tone?: Tone;
 }
 
@@ -419,7 +421,7 @@ export interface WaveClip {
 }
 
 /** What a wave element can show over its waves; each is a part ("w.wavelength"). */
-export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'labels', 'clock'] as const;
+export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock'] as const;
 
 /**
  * Travelling waves, for the physics videos: each lane is a strip with a source at its left end,
@@ -429,7 +431,8 @@ export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'spee
  * showing a part adds it: `particle` (one marked point of each wave and the line it keeps to, to
  * see that it only moves about its own place), `amplitude` and `wavelength` (measured on the wave
  * as it stands), `count` (a post at the mark, with the complete waves that have passed it),
- * `speed` (an arrow with the wave's speed), `frequency` (the source's frequency, under it), `labels` (the names of a longitudinal wave's
+ * `speed` (an arrow with the wave's speed), `frequency` (the source's frequency, under it), `front`
+ * (a marker on the front of a wave that started at the source, with how far it has travelled), `labels` (the names of a longitudinal wave's
  * compressions and rarefactions, or a transverse wave's crests and troughs) and `clock`.
  * Emphasising a lane's id makes it glow.
  */
@@ -616,7 +619,57 @@ export interface ParticlesEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl;
+/** A stretch of a rays clip. */
+export interface RayPhase {
+  /** How long it lasts, in seconds. */
+  dur: number;
+  /** Turn the incoming ray to this angle of incidence over the phase, in degrees from the normal. */
+  to?: number;
+  /** Slow motion: seconds of video for each second of the light's own time (1 by default). */
+  slow?: number;
+  /** A short note shown over the picture. */
+  note?: string;
+}
+
+export interface RayClip {
+  phases: RayPhase[];
+}
+
+/** What a rays element can show over its rays; each is a part ("r.normal"). */
+export const RAYS_PARTS = ['normal', 'angles', 'toSurface', 'fronts', 'image'] as const;
+
+/**
+ * A ray of light meeting a surface, for the physics videos (src/video/rays.ts). At a `mirror` the
+ * ray reflects, with the angle of reflection equal to the angle of incidence. At a `boundary` it
+ * passes into a second material and bends: the angle of refraction comes from the two speeds
+ * (sin r ÷ sin i = the second speed ÷ the first), so a ray that slows bends towards the normal and
+ * one that speeds up bends away. A clip turns the incoming ray (`to`), and the outgoing ray and the
+ * angles follow it. Showing the element shows the surface and the rays; showing a part adds it:
+ * `normal` (the line at right angles to the surface), `angles` (the angles from the normal, with
+ * their sizes), `toSurface` (the angle between the incoming ray and the surface, which is not the
+ * angle of incidence), `fronts` (a wide beam with its wavefronts marching along it while a clip
+ * plays: closer together where the light is slower) and, at a mirror with room `behind` it,
+ * `image` (where the lamp seems to be: as far behind the mirror as the lamp is in front).
+ */
+export interface RaysEl {
+  kind: 'rays';
+  id: string;
+  surface: 'mirror' | 'boundary';
+  /** The angle of incidence to start with, in degrees from the normal (0 to 85). */
+  angle: number;
+  /** At a boundary: the wave's speed before and after it, in any one unit (only their ratio matters). */
+  speeds?: [number, number];
+  /** At a boundary: what the two materials are called ("Air", "Glass"). The slower one is shaded. */
+  media?: [string, string];
+  /** At a mirror: put it across the middle of the picture, with room behind it for the image. */
+  behind?: boolean;
+  clips: Record<string, RayClip>;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -761,6 +814,24 @@ export function checkMotion(e: MotionEl): string[] {
   return problems;
 }
 
+/** Problems with a rays element: angles a ray cannot have, a boundary without its two speeds. */
+export function checkRays(e: RaysEl): string[] {
+  const problems: string[] = [];
+  const ok = (a: number) => a >= 0 && a <= 85;
+  if (!ok(e.angle)) problems.push('the angle of incidence must be from 0 to 85 degrees.');
+  if (e.surface === 'boundary' && !(e.speeds && e.speeds[0] > 0 && e.speeds[1] > 0)) problems.push('a boundary needs the two speeds, both above zero.');
+  if (e.surface === 'mirror' && (e.speeds || e.media)) problems.push('a mirror has no second material: leave out the speeds and the media.');
+  if (e.surface === 'boundary' && e.behind) problems.push('only a mirror has an image behind it.');
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.to !== undefined && !ok(ph.to)) problems.push(`clip "${name}" turns the ray to an angle outside 0 to 85 degrees.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a wave element: lanes that cannot run, clips that set no lane, a mark off the strip. */
 export function checkWave(e: WaveEl): string[] {
   const problems: string[] = [];
@@ -845,7 +916,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl | RaysEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -864,6 +935,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...MOTION_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkMotion(e).map((p) => `Scene ${si + 1}: motion "${e.id}": ${p}`));
+      }
+      if (e.kind === 'rays') {
+        diagrams.set(e.id, new Set<string>(RAYS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkRays(e).map((p) => `Scene ${si + 1}: rays "${e.id}": ${p}`));
       }
       if (e.kind === 'wave') {
         diagrams.set(e.id, new Set<string>([...WAVE_PARTS, ...e.lanes.map((l) => l.id)]));

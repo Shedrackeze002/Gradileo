@@ -9,7 +9,7 @@ import type { ReactElement } from 'react';
 import type { Tone, WaveEl, WaveLane } from '../script.ts';
 import { largestAmplitude, shortestWavelength, waveAt, type LaneState } from '../wave.ts';
 import { ownPart, type ElState } from '../timeline.ts';
-import { Arrow, BODY_TONES, clamp01, Clock, FONT, INK2, NET, short, Text, VELOCITY } from './motionKit.tsx';
+import { Arrow, BODY_TONES, clamp01, Clock, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
 
@@ -60,6 +60,26 @@ interface Parts {
   speed: number;
   labels: number;
   frequency: number;
+  front: number;
+}
+
+/**
+ * The front of a wave that started at the source: a marker where it has got to (on its way back,
+ * after bouncing off the far end) and the distance it has travelled so far.
+ */
+function Front({ el, lane, state, f, y1, y2, opacity }: { el: WaveEl; lane: WaveLane; state: LaneState; f: Frame; y1: number; y2: number; opacity: number }) {
+  const length = el.span[1] - el.span[0];
+  const d = state.front;
+  if (!Number.isFinite(d) || d <= 0 || d > (lane.reflect ? 2 : 1) * length + 1e-9) return null;
+  const back = d > length;
+  const x = f.X(el.span[0] + (back ? 2 * length - d : d));
+  const left = back ? x > f.left + 230 : x > f.right - 230;
+  return (
+    <g opacity={opacity}>
+      <line x1={x} y1={y1} x2={x} y2={y2} stroke={INK} strokeWidth={3} strokeLinecap="round" />
+      <Text x={x + (left ? -12 : 12)} y={y1 + 6} size={20} anchor={left ? 'end' : 'start'}>{`travelled ${d >= 100 ? Math.round(d) : live(d)} m`}</Text>
+    </g>
+  );
 }
 
 /** A rope: the wave is the shape of the rope, and each bead on it only moves up and down. */
@@ -143,6 +163,9 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
     );
   }
   if (parts.count > 0) out.push(<Post key="count" f={f} x={f.X(mark)} y1={y0 - ampPx - 30} y2={y0 + ampPx + 14} passed={passed} opacity={parts.count} />);
+  if (parts.front > 0) out.push(<Front key="front" el={el} lane={lane} state={state} f={f} y1={y0 - ampPx - 30} y2={y0 + ampPx + 14} opacity={parts.front} />);
+  // A wall the rope is tied to, when the wave bounces back from the end.
+  if (lane.reflect) out.push(<rect key="wall" x={f.right} y={y0 - ampPx - 18} width={12} height={2 * ampPx + 36} rx={3} fill={INK3} />);
   return <>{out}</>;
 }
 
@@ -254,6 +277,9 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
     );
   }
   if (parts.count > 0) out.push(<Post key="count" f={f} x={f.X(mark)} y1={top - 34} y2={top + tubeH + 8} passed={passed} opacity={parts.count} />);
+  if (parts.front > 0) out.push(<Front key="front" el={el} lane={lane} state={state} f={f} y1={top - 34} y2={top + tubeH + 8} opacity={parts.front} />);
+  // A wall at the far end, when the wave bounces back from it.
+  if (lane.reflect) out.push(<rect key="wall" x={f.right + 6} y={top - 16} width={14} height={tubeH + 32} rx={3} fill={INK3} />);
   return <>{out}</>;
 }
 
@@ -271,7 +297,7 @@ export function WaveView({ el, st, w, h, plays }: { el: WaveEl; st: ElState | un
   const X = (x: number) => left + ((x - el.span[0]) / (el.span[1] - el.span[0])) * (right - left);
   const f: Frame = { X, left, right, top, laneH, w };
   const mark = el.mark ?? (el.span[0] + el.span[1]) / 2;
-  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency') };
+  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front') };
   const out: ReactElement[] = [];
 
   el.lanes.forEach((lane, i) => {
