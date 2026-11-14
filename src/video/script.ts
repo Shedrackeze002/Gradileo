@@ -257,13 +257,20 @@ export interface MotionForce {
   resist?: boolean;
   /** Acts, but no arrow is drawn (the forces of a collision too quick to read at full speed). */
   hidden?: boolean;
+  /**
+   * Air resistance: newtons for each metre per second of the body's velocity, acting against its
+   * motion (`n` is not used; give 0). It grows as the body speeds up, so a falling body settles
+   * at the terminal velocity where it equals the other forces. Not for a body that also has
+   * friction (`resist`) on it.
+   */
+  drag?: number;
 }
 
 /** A stretch of a clip during which the same forces act. */
 export interface MotionPhase {
   /** How long it lasts, in seconds of the motion's own time. */
   dur: number;
-  /** Slow motion: seconds of video for each second of the motion (1 by default). */
+  /** Slow motion: seconds of video for each second of the motion (1 by default; 0.5 plays it twice as fast). */
   slow?: number;
   /**
    * Hold the motion still for `dur` seconds of video while the forces appear, to name them before
@@ -286,7 +293,7 @@ export interface MotionClip {
 }
 
 /** What a motion element can show over its bodies; each is a part ("sim.velocity"). */
-export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph'] as const;
+export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement'] as const;
 
 /**
  * Bodies moving along straight tracks under forces, for the physics videos: the motion is worked
@@ -295,8 +302,11 @@ export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clo
  * carries on from where the last one ended. Showing the element shows the tracks and bodies;
  * showing a part adds it: `velocity` (an arrow over each body), `readout` (speed and acceleration
  * under it), `net` (the net force), `bars` (a momentum bar for each body), `total` (a bar for
- * their total momentum), `graph` (a velocity-time graph that draws itself as the bodies move), `clock` and `strobe` (a mark at each body's place at equal time steps). Emphasising a body's id
- * makes it glow. See src/video/motion.ts.
+ * their total momentum), `graph` (a velocity-time or distance-time graph that draws itself as the
+ * bodies move), `clock` and `strobe` (a mark at each body's place at equal time steps),
+ * `distance` (how far each body has travelled, with its path drawn under a single track) and
+ * `displacement` (an arrow under a single track from where the body started to where it is now).
+ * Emphasising a body's id makes it glow. See src/video/motion.ts.
  */
 export interface MotionEl {
   kind: 'motion';
@@ -316,10 +326,20 @@ export interface MotionEl {
   /** `false` when the total's bar is never shown, so no room is kept for it. */
   momentumTotal?: boolean;
   /**
-   * A velocity-time graph of these bodies, above a single track on its right: `seconds` and `max`
-   * (metres per second) are the lengths of its axes.
+   * A graph of these bodies against time, above a single track on its right: `seconds` and `max`
+   * are the lengths of its axes. It plots velocity (in metres per second) unless `y` is
+   * `'distance'`, the distance travelled in metres.
    */
-  graph?: { of: string[]; seconds: number; max: number };
+  graph?: { of: string[]; seconds: number; max: number; y?: 'velocity' | 'distance' };
+  /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
+  speedWord?: boolean;
+  /**
+   * A drop: the tracks point down the screen, one column for each lane with the ground at its
+   * foot. A body's `x` is then the distance it has fallen in metres and `span` the fall shown, so
+   * weight is a force with a positive `n` (drawn downwards) and air resistance points up. The
+   * parts are `velocity`, `readout`, `net`, `clock`, `strobe` and `graph` (with one column).
+   */
+  vertical?: boolean;
   /** Seconds between strobe marks (0.5 by default). */
   strobe?: number;
   /** For the thumbnail: the clip to show, part way through. */

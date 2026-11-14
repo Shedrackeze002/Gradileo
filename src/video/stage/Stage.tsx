@@ -118,6 +118,11 @@ export function fullScene(x: Explainer, si: number): FrameState {
 }
 
 /** How many times wider than tall a diagram's points spread. */
+/** A motion's clips without the notes of their phases ("Slow motion"), which a thumbnail has no use for. */
+function withoutNotes(clips: MotionEl['clips']): MotionEl['clips'] {
+  return Object.fromEntries(Object.entries(clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }]));
+}
+
 function aspect(d: DiagramEl) {
   const pts = Object.values(d.points);
   const span = (k: 0 | 1) => Math.max(...pts.map((p) => p[k])) - Math.min(...pts.map((p) => p[k]));
@@ -140,7 +145,14 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
         <div style={{ position: 'absolute', left: 60, top: fig.kind === 'motion' ? 300 : 330 }}>
           {fig.kind === 'motion' ? (
             // A motion is caught part way through its poster clip, with its forces and velocities drawn.
-            <MotionView el={{ ...fig, momentumMax: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })) }} st={{ ...FULL, parts: { velocity: 1, strobe: 1 } }} w={1160} h={Math.min(320, 150 + 130 * (fig.lanes?.length ?? 1))} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
+            // A drop takes the full height and width, without its graph, strobe marks or phase notes.
+            <MotionView
+              el={{ ...fig, momentumMax: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })), ...(fig.vertical ? { graph: undefined, clips: withoutNotes(fig.clips) } : {}) }}
+              st={{ ...FULL, parts: fig.vertical ? { velocity: 1 } : { velocity: 1, strobe: 1 } }}
+              w={1160}
+              h={fig.vertical ? 320 : Math.min(320, 150 + 130 * (fig.lanes?.length ?? 1))}
+              plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
+            />
           ) : (
             <DiagramView el={fig as DiagramEl} st={FULL} w={1160} h={280} />
           )}
