@@ -1201,10 +1201,15 @@ items ship or decisions change.
        force) and `phys-sample-momentum` (momentum, two collisions, conservation), in
        `src/content/physics/videos/`. They are samples: not lessons of a course, and not on
        YouTube.
-     - Next: the owner approves or changes the style. Then a plan of the Physics courses (names,
-       units and lessons, checked against several curricula) comes to the owner before building,
-       and the samples become the videos of their lessons. Chemistry's videos are being checked
-       against the same rule in a separate piece of work.
+     - Decision (the owner, 14 November 2026): the style of the two samples is approved ("this
+       works"). The engine and samples are merged (pull request #185).
+     - Plan: `docs/PLAN-PHYSICS.md`, sent to the owner on 14 November 2026: Grade 10, 11 and 12
+       Physics (`phys-10`, `phys-20`, `phys-30`), 27 + 30 + 30 lessons, with the animation each
+       unit needs. It is awaiting the owner's approval.
+     - Next: once the owner approves the plan, build Grade 10 Physics (lessons and questions,
+       Physics as a subject in the app), then its videos unit by unit; the samples become the
+       videos of their lessons and stay off YouTube until then. Chemistry's videos are being
+       checked against the same rule in a separate piece of work.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
