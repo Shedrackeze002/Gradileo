@@ -1,33 +1,53 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { gasBox, tag } from './lib/c20-2a-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// Particles hitting the walls of their container.
-const walls = figure('w', [gasBox({ w: 6, h: 6, count: 9, speed: 1.1, seed: 12, hits: 6 })], 460);
+// The particles here are simulated (src/video/particles.ts): they move by themselves, and a clip
+// pushes a piston in or heats or cools a box.
 
-// A gas under a piston, then pushed in: the same particles, with less empty space.
-const squeeze = figure(
-  'sq',
-  [
-    gasBox({ name: 'a', at: [0, 0], w: 4, h: 6, count: 8, speed: 0, seed: 5, top: 'piston', walls: 7 }),
-    tag('a-l', [2, -0.3], '\\text{before}', { place: 'below', group: 'a-p' }),
-    gasBox({ name: 'b', at: [6.5, 0], w: 4, h: 2.6, count: 8, speed: 0, seed: 6, top: 'piston', walls: 7, push: '\\text{push}' }),
-    tag('b-l', [8.5, -0.3], '\\text{pushed in}', { place: 'below', group: 'b-p' }),
+/** Gas particles that barely attract one another, with no weight to speak of. */
+const GAS = { bond: 0.15, heavy: 0 } as const;
+
+/** Particles hitting the walls of their container. */
+const walls: ParticlesEl = {
+  kind: 'particles',
+  id: 'w',
+  boxes: [{ id: 'b', state: 'gas', width: 10, height: 10, temp: 1.6, kinds: [{ n: 14, ...GAS }] }],
+  clips: {},
+  height: 470,
+};
+
+/** A gas under a piston, to push in: the same particles, with less empty space. */
+const squeeze: ParticlesEl = {
+  kind: 'particles',
+  id: 'sq',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 10, temp: 1.6, piston: true, kinds: [{ n: 12, ...GAS }] }],
+  clips: { push: { phases: [{ dur: 4, lid: { b: 0.4 } }] } },
+  height: 470,
+};
+
+/** A rigid can, heated, and a balloon (a piston, for its rubber), cooled. */
+const can: ParticlesEl = {
+  kind: 'particles',
+  id: 'cn',
+  boxes: [
+    { id: 'c', state: 'gas', width: 7, height: 8, temp: 1.2, kinds: [{ n: 10, ...GAS }], label: 'rigid can' },
+    { id: 'b', state: 'gas', width: 7, height: 8, temp: 1.6, piston: true, kinds: [{ n: 10, ...GAS }], label: 'balloon' },
   ],
-  460,
-);
+  clips: {
+    heat: { phases: [{ dur: 4, heat: { c: 3.6 } }] },
+    cold: { phases: [{ dur: 4, heat: { b: 0.6 }, lid: { b: 0.62 } }] },
+  },
+  thermometers: true,
+  height: 420,
+};
 
-// The same rigid can of gas, cool and then hot: the same space, faster particles.
-const can = figure(
-  'cn',
-  [
-    gasBox({ name: 'cool', at: [0, 0], w: 5, h: 5, count: 7, speed: 0.5, seed: 21 }),
-    tag('cool-l', [2.5, -0.3], '\\text{cool}', { place: 'below', tone: 'adj', group: 'cool-p' }),
-    gasBox({ name: 'hot', at: [6.5, 0], w: 5, h: 5, count: 7, speed: 1.3, seed: 21, hits: 4 }),
-    tag('hot-l', [9, -0.3], '\\text{heated}', { place: 'below', tone: 'opp', group: 'hot-p' }),
-  ],
-  380,
-);
+/** Perfume (orange) and air (blue) kept apart until the wall between them is lifted. */
+const spread: ParticlesEl = {
+  kind: 'particles',
+  id: 'df',
+  boxes: [{ id: 'g', state: 'gas', kinds: [{ n: 8, tone: 'opp', ...GAS }, { n: 18, tone: 'adj', ...GAS }], apart: true, divider: 0.3, width: 11, height: 9, temp: 1.6, label: 'perfume and air' }],
+  clips: { lift: { phases: [{ dur: 12, lift: ['g'] }] } },
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c20-2-1-c',
@@ -59,10 +79,10 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Start with pressure, the push a gas exerts on the walls of its container. Why does a gas push at all?', show: ['w.box', 'w.p', 'w.v'] },
-        { say: 'The particles move constantly and randomly, so they keep running into the walls.', show: ['s.0', 'w.hits'], focus: 'w.hits' },
+        { say: 'Start with pressure, the push a gas exerts on the walls of its container. Why does a gas push at all?', show: 'w' },
+        { say: 'The particles move constantly and randomly, so they keep running into the walls.', show: ['s.0', 'w.hits'] },
         { say: 'Each collision gives the wall a tiny push.', show: 's.1' },
-        { say: 'An enormous number of collisions every second add up to a steady push over the whole wall.', show: 's.2', focus: 'w' },
+        { say: 'An enormous number of collisions every second add up to a steady push over the whole wall. The number under the box counts the hits each second.', show: ['s.2', 'w.rate'] },
       ],
     },
     {
@@ -78,8 +98,8 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'A gas can be compressed much more easily than a liquid or a solid, because its particles are far apart, with mostly empty space between them.', show: ['sq.a-box', 'sq.a-piston', 'sq.a-p', 'sq.a-l'] },
-        { say: 'Squeezing a gas only shrinks the empty space. In a liquid or a solid, the particles are already touching, so there is almost no space to remove.', show: ['sq.b-box', 'sq.b-piston', 'sq.b-push', 'sq.b-p', 'sq.b-l', 's.0'] },
+        { say: 'A gas can be compressed much more easily than a liquid or a solid, because its particles are far apart, with mostly empty space between them.', show: 'sq' },
+        { say: 'Squeezing a gas only shrinks the empty space. In a liquid or a solid, the particles are already touching, so there is almost no space to remove.', show: 's.0', play: 'sq.push' },
         { say: 'The same empty space explains the low density of a gas: a litre of gas holds far fewer particles than a litre of liquid.', show: 's.1' },
         { say: 'And a gas fills its container because nothing holds its particles together. They move in straight lines until they hit something, so they spread out until they meet the walls.', show: 's.2' },
       ],
@@ -97,22 +117,24 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'A sealed, rigid can of gas is heated. A higher temperature means a greater average kinetic energy, so the particles move faster.', show: ['cn.cool-box', 'cn.cool-p', 'cn.cool-v', 'cn.cool-l', 'cn.hot-box', 'cn.hot-p', 'cn.hot-v', 'cn.hot-l'], focus: 'cn.hot-v' },
-        { say: 'The can is rigid, so the particles have the same space to move in. Moving faster, they reach the walls more often, and each collision is harder. So the pressure rises.', show: ['s.0', 'cn.hot-hits'], focus: 'cn.hot-hits' },
-        { say: 'Now take a balloon from a warm room into the cold outdoors. The particles inside slow down, so they hit the rubber less often and less hard.', show: 's.1', focus: 'cn' },
+        { say: 'A sealed, rigid can of gas is heated. A higher temperature means a greater average kinetic energy, so the particles move faster.', show: ['cn', 'cn.labels', 'cn.thermo'], play: 'cn.heat', focus: 'cn.c' },
+        { say: 'The can is rigid, so the particles have the same space to move in. Moving faster, they reach the walls more often, and each collision is harder. So the pressure rises.', show: ['s.0', 'cn.hits', 'cn.rate'], focus: 'cn.c' },
+        { say: 'Now take a balloon from a warm room into the cold outdoors. The particles inside slow down, so they hit the rubber less often and less hard.', show: 's.1', play: 'cn.cold', focus: 'cn.b' },
         { say: 'The air outside and the stretched rubber now push in harder than the gas pushes out, so the balloon is squeezed smaller, until the pushes balance. At the same pressure, slower particles need less room.' },
       ],
     },
     {
       chapter: 'Diffusion',
-      layout: 'center',
-      main: [
-        { kind: 'callout', id: 'def', tone: 'definition', title: 'Diffusion', md: '**Diffusion** is the spreading of the particles of one substance through another by their own random motion, until the two are evenly mixed.' },
-        { kind: 'callout', id: 'oops', tone: 'mistake', title: 'Particles do not change size', md: 'Gas particles never grow when heated or shrink when cooled. What changes is **how fast** they move and **how often** they hit things.' },
+      layout: 'split',
+      leftWidth: 500,
+      left: [spread],
+      right: [
+        { kind: 'callout', id: 'def', tone: 'definition', title: 'Diffusion', md: 'The spreading of one substance through another by the **random motion** of its particles, until the two are evenly mixed.' },
+        { kind: 'callout', id: 'oops', tone: 'mistake', title: 'Particles do not change size', md: 'Heated or cooled, they stay the same size. What changes is **how fast** they move.' },
       ],
       lines: [
-        { say: 'Why does the smell of perfume spread across a room, even when the air seems still? The particles move constantly and randomly, so they spread out on their own. No draught is needed.', show: 'def' },
-        { say: 'This is diffusion. It is much slower than the speeds of the particles suggest, because each perfume molecule keeps colliding with air molecules and changing direction.' },
+        { say: 'Why does the smell of perfume spread across a room, even when the air seems still? The particles move constantly and randomly, so they spread out on their own. No draught is needed. Here, perfume particles in orange are kept apart from the air, in blue. Let’s lift the wall.', show: ['df', 'df.labels'], play: 'df.lift' },
+        { say: 'This is diffusion. It is much slower than the speeds of the particles suggest, because each perfume molecule keeps colliding with air molecules and changing direction.', show: 'def' },
         { say: 'One last warning. Gas particles never grow when they are heated, or shrink when they are cooled. A balloon shrinks in the cold because its particles slow down, not because they get smaller.', show: 'oops' },
       ],
     },

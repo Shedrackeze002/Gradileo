@@ -1,22 +1,29 @@
-import type { Explainer } from '@/video/script.ts';
-import { particles } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { gasBox, tag } from './lib/c20-2a-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// A liquid, close together at the bottom of an open container, beside a gas that fills a closed one.
-const states = figure(
-  'st',
-  [
-    particles({ name: 'liq', state: 'liquid', at: [0, 0], size: 5, seed: 4, open: true, kinds: [{ id: 'p', tone: 'adj', count: 16 }] }),
-    tag('liq-l', [2.5, -0.3], '\\text{liquid}', { place: 'below', group: 'liq-p' }),
-    gasBox({ name: 'gas', at: [7, 0], w: 5, h: 5, count: 9, r: 0.3, speed: 0, seed: 3 }),
-    tag('gas-l', [9.5, -0.3], '\\text{gas}', { place: 'below', group: 'gas-p' }),
+// The particles here are simulated (src/video/particles.ts): they move by themselves, and a clip
+// pushes a piston in or heats a box.
+
+/** A liquid and a gas under pistons, to push both in. */
+const states: ParticlesEl = {
+  kind: 'particles',
+  id: 'st',
+  boxes: [
+    { id: 'l', state: 'liquid', n: 30, width: 8, height: 9, piston: true, label: 'liquid' },
+    { id: 'g', state: 'gas', n: 14, width: 8, height: 9, piston: true, label: 'gas' },
   ],
-  360,
-);
+  clips: { push: { phases: [{ dur: 4, lid: { l: 0.4, g: 0.4 } }] } },
+  height: 400,
+};
 
-// Gas particles moving in straight lines, with marks where they hit the walls.
-const moving = figure('m', [gasBox({ w: 6, h: 6, count: 9, speed: 1.1, seed: 12, hits: 4 })], 470);
+/** A gas, with one particle followed in yellow, flashes where particles hit the walls, and a heat clip. */
+const moving: ParticlesEl = {
+  kind: 'particles',
+  id: 'm',
+  boxes: [{ id: 'b', state: 'gas', width: 10, height: 10, temp: 1.6, kinds: [{ n: 12, bond: 0.15, heavy: 0 }], follow: 3 }],
+  clips: { warm: { phases: [{ dur: 4, heat: { b: 4.2 } }] } },
+  thermometers: true,
+  height: 480,
+};
 
 const video: Explainer = {
   id: 'c20-2-1',
@@ -54,9 +61,9 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'A solid keeps its own shape, and a liquid keeps its own volume. A gas keeps neither. Whatever it is made of, every gas shares four properties.', show: ['st.liq-box', 'st.liq-p', 'st.liq-l', 'st.gas-box', 'st.gas-p', 'st.gas-l'] },
-        { say: 'First, a gas fills its container. It has no fixed shape or volume: it spreads out to fill whatever space it is given.', show: 'b.0', focus: 'st.gas-p' },
-        { say: 'Second, a gas is easily compressed. Block the tip of a syringe and push the plunger, and the air inside is squeezed into a much smaller space. Liquids and solids hardly compress at all.', show: 'b.1', focus: 'st' },
+        { say: 'A solid keeps its own shape, and a liquid keeps its own volume. A gas keeps neither. Whatever it is made of, every gas shares four properties.', show: ['st', 'st.labels'] },
+        { say: 'First, a gas fills its container. It has no fixed shape or volume: it spreads out to fill whatever space it is given.', show: 'b.0', focus: 'st.g' },
+        { say: 'Second, a gas is easily compressed. Block the tip of a syringe and push the plunger, and the air inside is squeezed into a much smaller space. Liquids and solids hardly compress at all. Watch both pistons push in: the gas squeezes into a much smaller space, but the liquid stops the piston at once.', show: 'b.1', play: 'st.push' },
         { say: 'Third, a gas has a low density. A litre of air has a mass of only about one point two grams. A litre of liquid water has a mass of about a thousand grams.', show: 'b.2' },
         { say: 'Fourth, gases mix and diffuse. Two gases mix completely and evenly without being stirred. That is how the smell of cooking spreads from the kitchen through a whole house.', show: 'b.3' },
       ],
@@ -93,11 +100,11 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'One. Gas particles move constantly and randomly, in straight lines between collisions. Each arrow shows the way a particle is moving.', show: ['m.box', 'm.p', 'm.v', 'k.0'], focus: 'm.v' },
-        { say: 'Two. Gas particles are very small compared with the distances between them.', show: 'k.1', focus: 'm.p' },
-        { say: 'Three. Collisions between gas particles, and with the walls, lose no kinetic energy overall.', show: ['k.2', 'm.hits'], focus: 'm.hits' },
+        { say: 'One. Gas particles move constantly and randomly, in straight lines between collisions. Follow the yellow particle as it races across the box.', show: ['m', 'm.trail', 'k.0'], focus: 'm.trail' },
+        { say: 'Two. Gas particles are very small compared with the distances between them.', show: 'k.1', focus: 'm.b' },
+        { say: 'Three. Collisions between gas particles, and with the walls, lose no kinetic energy overall. Each flash is a particle bouncing off a wall, as fast as it arrived.', show: ['k.2', 'm.hits'] },
         { say: 'Four. In an ideal gas, the particles do not attract or repel each other.', show: 'k.3', focus: 'm' },
-        { say: 'Five. The average kinetic energy of the particles is proportional to the Kelvin temperature.', show: 'k.4' },
+        { say: 'Five. The average kinetic energy of the particles is proportional to the Kelvin temperature. Heat the gas, and watch its particles speed up.', show: ['k.4', 'm.thermo'], play: 'm.warm' },
         { say: 'The Kelvin scale, which starts at the coldest temperature possible, is the subject of the next lesson. For now, a higher temperature means faster particles.' },
       ],
     },
