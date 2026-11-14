@@ -1220,13 +1220,20 @@ items ship or decisions change.
        travelled drawn leg by leg, a displacement arrow, a distance-time graph, and "speed ="
        for videos that come before velocity is taught. `phys-10` is in the uploader's
        `MADE_FOR_KIDS` list; the YouTube upload task still has to be given the course.
-     - Written (14 November 2026), not yet rendered: **the seven videos of Unit 2, Forces and
-       Newton's Laws** (`p10-2-1` to `p10-2-6`, with lesson 2.5 in two parts). The sample
+     - Done (14 November 2026): **the seven videos of Unit 2, Forces and
+       Newton's Laws** (`p10-2-1` to `p10-2-6`, with lesson 2.5 in two parts), rendered and in
+       Drive. The sample
        `phys-sample-forces` is now the video of lesson 2.3 (`p10-2-3`). The engine gained a drop
        (`vertical`) and air resistance (`drag`), so a skydiver reaches terminal velocity, a
        parachute opens, and a hammer and a feather fall on Earth and on the Moon.
-     - Next: render Unit 2; then the videos of Units 3 to 5, each unit's animation built first
-       (energy bars with a ramp and a pendulum, waves, rays, circuits). `phys-sample-momentum`
+     - Written (14 November 2026), not yet rendered: **the six videos of Unit 3, Work, Energy
+       and Power** (`p10-3-1` to `p10-3-6`). The engine gained energy bars measured from the
+       motion (work, kinetic, potential, heat and the total), a lift (`vertical: 'up'`) and
+       curved tracks (`path`: a hill through points, a ramp or a pendulum), so a roller coaster
+       trades height for speed, a car on a rough track ends with all its energy as heat, two
+       motors do the same work in different times, and a motor's efficiency is read off its bars.
+     - Next: render Unit 3; then the videos of Units 4 and 5, each unit's animation built first
+       (waves, rays, circuits). `phys-sample-momentum`
        becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then Grade 11
        Physics (`phys-20`) and Grade 12 Physics (`phys-30`); the lessons have no tutor recordings
        yet.

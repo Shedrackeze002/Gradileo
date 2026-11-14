@@ -32,7 +32,7 @@ const test = (o: { masses: [number, number]; forces: [number, number]; span: num
     kind: 'motion',
     id: 'sim',
     span: [0, o.span],
-    height: 470,
+    height: 500,
     lanes: [
       { surface: 'smooth', label: 'Trolley A', labelSide: 'right' },
       { surface: 'smooth', label: 'Trolley B', labelSide: 'right' },
@@ -52,9 +52,9 @@ const test = (o: { masses: [number, number]; forces: [number, number]; span: num
 };
 
 // Twice the mass at the same speed: 4 kg and 8 kg, both brought to 5 m/s. 50 J and 100 J.
-const masses = test({ masses: [4, 8], forces: [10, 20], span: 9, max: 240, velocityScale: 18 });
+const masses = test({ masses: [4, 8], forces: [10, 20], span: 12, max: 240, velocityScale: 18 });
 // Twice the speed with the same mass: 4 kg at 5 m/s and at 10 m/s. 50 J and 200 J.
-const speeds = test({ masses: [4, 4], forces: [10, 20], span: 16, max: 240, velocityScale: 10 });
+const speeds = test({ masses: [4, 4], forces: [10, 20], span: 21, max: 240, velocityScale: 10 });
 
 // Two 1000 kg cars, at 10 m/s and at 20 m/s, braking with the same 5000 N: car A stops in 10 m
 // (2 s) and car B in 40 m (4 s). 50 kJ and 200 kJ become heat in the brakes.
@@ -63,10 +63,11 @@ const cars: MotionEl = {
   kind: 'motion',
   id: 'sim',
   span: [0, 46],
-  height: 540,
+  height: 600,
   lanes: [
-    { surface: 'rough', label: 'Car A: 10 m/s', labelSide: 'right' },
-    { surface: 'rough', label: 'Car B: 20 m/s', labelSide: 'right' },
+    // No labels: each car's letter is on it, and its speed over it.
+    { surface: 'rough' },
+    { surface: 'rough' },
   ],
   bodies: [
     { id: 'a', shape: 'cart', mass: 1000, label: 'A', x: 3, v: 10, lane: 0, width: 4.2, tone: 'adj' },

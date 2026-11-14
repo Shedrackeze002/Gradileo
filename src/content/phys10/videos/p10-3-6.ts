@@ -18,10 +18,11 @@ const shaft = (friction: number, label: string): MotionEl => ({
   kind: 'motion',
   id: 'sim',
   vertical: 'up',
-  span: [0, 5],
-  height: 420,
+  // The shaft runs a little past the 5 m the load rises, to leave room for the arrow over it.
+  span: [0, 6],
+  height: 400,
   lanes: [{ label }],
-  bodies: [{ id: 'load', shape: 'block', mass: 10, x: 0, width: 0.9, tone: 'adj' }],
+  bodies: [{ id: 'load', shape: 'block', mass: 10, x: 0, width: 1.4, tone: 'adj' }],
   energy: { max: 1100, bars: ['work', 'potential', 'heat'], g: G, names: { work: 'Energy supplied', potential: 'Useful: stored as height', heat: 'Wasted: heat' } },
   forceScale: 0.3,
   velocityScale: 30,
@@ -59,7 +60,7 @@ const video: Explainer = {
     {
       chapter: 'Useful and wasted energy',
       layout: 'center',
-      main: [dry, { kind: 'math', id: 'sum', size: 'md', lines: ['\\opp{\\text{total energy in}} = \\hyp{\\text{useful energy out}} + \\bad{\\text{wasted energy}} \\qquad \\opp{980} = \\hyp{490} + \\bad{490}'] }],
+      main: [dry, { kind: 'math', id: 'sum', size: 'md', lines: ['\\opp{\\text{total energy in}} = \\hyp{\\text{useful energy out}} + \\bad{\\text{wasted energy}}', '\\opp{980} = \\hyp{490} + \\bad{490}'] }],
       lines: [
         { say: 'A motor pulls a ten kilogram load up a shaft, five metres high. On Earth, g is nine point eight newtons per kilogram, so the load weighs ninety-eight newtons. The rails of the shaft rub against it, with ninety-eight newtons of friction.', show: 'sim', play: 'sim.ready', playDelay: 8 },
         { say: 'So the motor must pull with one hundred and ninety-six newtons. Watch where its energy goes as the load rises.', show: 'sim.energy', play: 'sim.up', playDelay: 3 },

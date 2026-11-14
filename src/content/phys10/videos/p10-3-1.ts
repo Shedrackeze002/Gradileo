@@ -22,7 +22,8 @@ const smooth: MotionEl = {
   poster: 'push',
   clips: {
     ready: { phases: [{ dur: 1, freeze: true, forces: [push(80)] }] },
-    push: { phases: [{ dur: Math.sqrt(5), forces: [push(80)] }] },
+    // The push ends after 5 m, and its arrow goes.
+    push: { phases: [{ dur: Math.sqrt(5), forces: [push(80)] }, { dur: 0.001 }] },
   },
 };
 
@@ -102,7 +103,7 @@ const video: Explainer = {
     {
       chapter: 'Where the energy goes',
       layout: 'center',
-      main: [rough, { kind: 'math', id: 'heat', size: 'md', lines: ['W = Fd = \\opp{60} \\times 5 = \\opp{300\\ \\text{J}} \;\\rightarrow\; \\bad{300\\ \\text{J of heat}}'] }],
+      main: [rough, { kind: 'math', id: 'heat', size: 'md', lines: ['W = Fd = \\opp{60} \\times 5 = \\opp{300\\ \\text{J}} \\quad\\rightarrow\\quad \\bad{300\\ \\text{J of heat}}'] }],
       lines: [
         { say: 'Real floors are rough. Here the first crate is already sliding at a steady speed. The student pushes with sixty newtons, which is just enough to balance friction.', show: ['sim', 'sim.velocity'] },
         { say: 'Watch the work over the next five metres, and watch where it goes.', show: ['sim.distance', 'sim.energy'], play: 'sim.push', playDelay: 1.5 },
@@ -137,7 +138,7 @@ const video: Explainer = {
           id: 'end',
           check: true,
           items: [
-            'Work = force × distance moved in the direction of the force: W = Fd',
+            'Work = force × distance moved along the force: W = Fd',
             'Work is in joules: 1 J is 1 N moving an object 1 m',
             'No movement along the force means no work is done',
             'Doing work transfers energy: to motion, to height or to heat',

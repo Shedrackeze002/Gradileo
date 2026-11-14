@@ -240,7 +240,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
       // the first with its name on its left.
       const same = mine.filter((other) => downward(other) === down);
       const place = same.indexOf(force);
-      const fx = cx + (same.length > 1 ? (place - (same.length - 1) / 2) * 0.9 * r : 0);
+      const fx = cx + (same.length > 1 ? (place - (same.length - 1) / 2) * Math.max(30, 0.9 * r) : 0);
       const left = same.length > 1 && place === 0;
       out.push(<Arrow key={`f-${b.id}-${force.name}`} x={fx} y={y0} len={down ? -len : len} axis="y" color={fc} />);
       out.push(

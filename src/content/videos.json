@@ -122008,5 +122008,374 @@
         "working": "The distance is the area under the line, a triangle: $\\tfrac{1}{2} \\times 4 \\times 12 = 24\\ \\text{m}$."
       }
     ]
+  },
+  "p10-2-1": {
+    "lessonId": "p10-2-1",
+    "title": "Forces and Net Force",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a force is",
+        "t": 18.881
+      },
+      {
+        "title": "Naming the forces",
+        "t": 63.068
+      },
+      {
+        "title": "Net force",
+        "t": 104.107
+      },
+      {
+        "title": "Forces that add",
+        "t": 142.043
+      },
+      {
+        "title": "Balanced forces",
+        "t": 170.449
+      },
+      {
+        "title": "Your turn",
+        "t": 194.526
+      },
+      {
+        "title": "Summary",
+        "t": 227.439
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-1:q",
+        "t": 208.916,
+        "prompt": "Two people push a cart east with forces of 40 N and 30 N. Friction acts west with 50 N. What is the net force on the cart?",
+        "choices": [
+          "20 N east",
+          "120 N east",
+          "20 N west",
+          "70 N east"
+        ],
+        "answer": 0,
+        "working": "Take east as positive: $40 + 30 - 50 = +20\\ \\text{N}$, so the net force is 20 N east."
+      }
+    ]
+  },
+  "p10-2-2": {
+    "lessonId": "p10-2-2",
+    "title": "Newton’s First Law and Inertia",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why things stop",
+        "t": 20.2
+      },
+      {
+        "title": "Newton’s first law",
+        "t": 61.394
+      },
+      {
+        "title": "Balanced forces",
+        "t": 93.473
+      },
+      {
+        "title": "Inertia",
+        "t": 135.872
+      },
+      {
+        "title": "Inertia on a bus",
+        "t": 180.463
+      },
+      {
+        "title": "Your turn",
+        "t": 225.147
+      },
+      {
+        "title": "Summary",
+        "t": 258.112
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-2:q",
+        "t": 238.512,
+        "prompt": "A crate is pushed across a level floor at a steady velocity with a push of 85 N. How large is the friction on the crate?",
+        "choices": [
+          "0 N",
+          "less than 85 N",
+          "more than 85 N",
+          "85 N"
+        ],
+        "answer": 3,
+        "working": "A steady velocity means the net force is zero, so the friction must cancel the push exactly: 85 N."
+      }
+    ]
+  },
+  "p10-2-3": {
+    "lessonId": "p10-2-3",
+    "title": "Newton’s Second Law",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A force changes motion",
+        "t": 21.544
+      },
+      {
+        "title": "A bigger force",
+        "t": 78.446
+      },
+      {
+        "title": "A bigger mass",
+        "t": 117.537
+      },
+      {
+        "title": "Newton’s second law",
+        "t": 149.114
+      },
+      {
+        "title": "Friction and net force",
+        "t": 190.075
+      },
+      {
+        "title": "Your turn",
+        "t": 274.668
+      },
+      {
+        "title": "Summary",
+        "t": 308.97
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-3:q",
+        "t": 288.408,
+        "prompt": "A 4 kg box is pushed across a floor with a force of 30 N. Friction on the box is 6 N. What is its acceleration?",
+        "choices": [
+          "$9\\ \\text{m/s}^2$",
+          "$7.5\\ \\text{m/s}^2$",
+          "$6\\ \\text{m/s}^2$",
+          "$24\\ \\text{m/s}^2$"
+        ],
+        "answer": 2,
+        "working": "Net force $= 30 - 6 = 24\\ \\text{N}$, and $a = 24 \\div 4 = 6\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p10-2-4": {
+    "lessonId": "p10-2-4",
+    "title": "Mass, Weight and Gravity",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mass and weight",
+        "t": 24.684
+      },
+      {
+        "title": "Gravitational field strength",
+        "t": 74.715
+      },
+      {
+        "title": "Other worlds",
+        "t": 120.544
+      },
+      {
+        "title": "Your turn",
+        "t": 168.009
+      },
+      {
+        "title": "Summary",
+        "t": 203.727
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-4:q",
+        "t": 183.288,
+        "prompt": "An astronaut has a mass of 80 kg. On the Moon, g = 1.6 N/kg. What are the astronaut’s mass and weight on the Moon?",
+        "choices": [
+          "13 kg and 128 N",
+          "80 kg and 128 N",
+          "80 kg and 784 N",
+          "128 kg and 80 N"
+        ],
+        "answer": 1,
+        "working": "The mass does not change: 80 kg. Weight $= mg = 80 \\times 1.6 = 128\\ \\text{N}$."
+      }
+    ]
+  },
+  "p10-2-5": {
+    "lessonId": "p10-2-5",
+    "title": "Friction and Air Resistance, Part 1: Friction",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Against the sliding",
+        "t": 18.152
+      },
+      {
+        "title": "More friction, less friction",
+        "t": 46.822
+      },
+      {
+        "title": "Useful, or a nuisance?",
+        "t": 83.84
+      },
+      {
+        "title": "Stopping by friction",
+        "t": 116.772
+      },
+      {
+        "title": "Your turn",
+        "t": 156.292
+      },
+      {
+        "title": "Summary",
+        "t": 194.209
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-5:q",
+        "t": 172.416,
+        "prompt": "A 4 kg sledge slides across snow at 10 m/s. The only force along the ground is friction of 8 N. How long does the sledge take to stop?",
+        "choices": [
+          "$5\\ \\text{s}$",
+          "$1.25\\ \\text{s}$",
+          "$20\\ \\text{s}$",
+          "$3.2\\ \\text{s}$"
+        ],
+        "answer": 0,
+        "working": "Deceleration $= 8 \\div 4 = 2\\ \\text{m/s}^2$. Time $= 10 \\div 2 = 5\\ \\text{s}$."
+      }
+    ]
+  },
+  "p10-2-5-b": {
+    "lessonId": "p10-2-5",
+    "title": "Friction and Air Resistance, Part 2: Air Resistance",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A skydiver’s fall",
+        "t": 18.049
+      },
+      {
+        "title": "The parachute",
+        "t": 100.092
+      },
+      {
+        "title": "Do heavy things fall faster?",
+        "t": 140.502
+      },
+      {
+        "title": "Your turn",
+        "t": 175.6
+      },
+      {
+        "title": "Summary",
+        "t": 223.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-5-b:q",
+        "t": 196.074,
+        "prompt": "On Earth, g = 9.8 N/kg. A 60 kg skydiver is falling, and at one moment the air resistance is 288 N. What is the skydiver’s acceleration at that moment?",
+        "choices": [
+          "$9.8\\ \\text{m/s}^2$",
+          "$4.8\\ \\text{m/s}^2$",
+          "$14.6\\ \\text{m/s}^2$",
+          "$5\\ \\text{m/s}^2$"
+        ],
+        "answer": 3,
+        "working": "Weight $= 60 \\times 9.8 = 588\\ \\text{N}$. Net force $= 588 - 288 = 300\\ \\text{N}$ downwards. $a = 300 \\div 60 = 5\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p10-2-6": {
+    "lessonId": "p10-2-6",
+    "title": "Newton’s Third Law",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A push back",
+        "t": 16.761
+      },
+      {
+        "title": "A third-law pair",
+        "t": 56.235
+      },
+      {
+        "title": "Equal forces, different accelerations",
+        "t": 91.809
+      },
+      {
+        "title": "Rockets",
+        "t": 134.513
+      },
+      {
+        "title": "Balanced forces are not a pair",
+        "t": 158.134
+      },
+      {
+        "title": "A collision",
+        "t": 187.837
+      },
+      {
+        "title": "Your turn",
+        "t": 218.934
+      },
+      {
+        "title": "Summary",
+        "t": 259.021
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-6:q",
+        "t": 237.673,
+        "prompt": "Two skaters stand at rest on smooth ice. A 60 kg skater pushes a 30 kg skater with a force of 90 N. What is the acceleration of the 60 kg skater while they push?",
+        "choices": [
+          "$3\\ \\text{m/s}^2$",
+          "$1.5\\ \\text{m/s}^2$",
+          "$0\\ \\text{m/s}^2$",
+          "$0.67\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "By the third law, the 60 kg skater also feels 90 N. $a = 90 \\div 60 = 1.5\\ \\text{m/s}^2$."
+      }
+    ]
   }
 }
