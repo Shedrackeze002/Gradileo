@@ -121745,5 +121745,272 @@
         "working": "The midpoint of $PQ$ is $(3, 0)$ and $PQ$ is horizontal, so the perpendicular bisector is the vertical line $x = 3$."
       }
     ]
+  },
+  "p10-1-1": {
+    "lessonId": "p10-1-1",
+    "title": "Quantities, Units and Vectors",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A number needs a unit",
+        "t": 17.637
+      },
+      {
+        "title": "SI units",
+        "t": 52.299
+      },
+      {
+        "title": "Prefixes",
+        "t": 80.851
+      },
+      {
+        "title": "Kilometres per hour",
+        "t": 132.159
+      },
+      {
+        "title": "Scalars and vectors",
+        "t": 182.796
+      },
+      {
+        "title": "Your turn",
+        "t": 227.551
+      },
+      {
+        "title": "Summary",
+        "t": 258.902
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-1-1:q",
+        "t": 237.338,
+        "prompt": "A car travels at 90 km/h. What is its speed in metres per second?",
+        "choices": [
+          "$324\\ \\text{m/s}$",
+          "$25\\ \\text{m/s}$",
+          "$9\\ \\text{m/s}$",
+          "$250\\ \\text{m/s}$"
+        ],
+        "answer": 1,
+        "working": "Divide by 3.6: $90 \\div 3.6 = 25\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p10-1-2": {
+    "lessonId": "p10-1-2",
+    "title": "Speed, Distance and Time",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What speed means",
+        "t": 16.748
+      },
+      {
+        "title": "A faster cart",
+        "t": 45.505
+      },
+      {
+        "title": "The speed formula",
+        "t": 72.554
+      },
+      {
+        "title": "Finding a distance or a time",
+        "t": 100.541
+      },
+      {
+        "title": "Average speed",
+        "t": 141.39
+      },
+      {
+        "title": "Your turn",
+        "t": 208.422
+      },
+      {
+        "title": "Summary",
+        "t": 251.381
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-1-2:q",
+        "t": 224.312,
+        "prompt": "A runner covers 240 m in the first 40 s of a run, then 160 m in the next 60 s. What is the runner’s average speed for the whole run?",
+        "choices": [
+          "$6\\ \\text{m/s}$",
+          "$4.3\\ \\text{m/s}$",
+          "$0.25\\ \\text{m/s}$",
+          "$4\\ \\text{m/s}$"
+        ],
+        "answer": 3,
+        "working": "Total distance $= 240 + 160 = 400\\ \\text{m}$. Total time $= 40 + 60 = 100\\ \\text{s}$. Average speed $= 400 \\div 100 = 4\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p10-1-3": {
+    "lessonId": "p10-1-3",
+    "title": "Displacement and Velocity",
+    "duration": 292,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Distance and displacement",
+        "t": 20.113
+      },
+      {
+        "title": "Positive and negative",
+        "t": 67.711
+      },
+      {
+        "title": "Velocity",
+        "t": 112.965
+      },
+      {
+        "title": "Average speed and average velocity",
+        "t": 163.114
+      },
+      {
+        "title": "Your turn",
+        "t": 216.155
+      },
+      {
+        "title": "Summary",
+        "t": 262.394
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-1-3:q",
+        "t": 234.563,
+        "prompt": "A swimmer swims one 50 m length of a pool in 40 s, then turns and swims 50 m back to the start in 60 s. What are the average speed and the average velocity for the whole swim?",
+        "choices": [
+          "speed 1 m/s, velocity 0 m/s",
+          "speed 1 m/s, velocity 1 m/s",
+          "speed 0 m/s, velocity 1 m/s",
+          "speed 2 m/s, velocity 0 m/s"
+        ],
+        "answer": 0,
+        "working": "Distance $= 50 + 50 = 100\\ \\text{m}$ and time $= 40 + 60 = 100\\ \\text{s}$, so the average speed is $1\\ \\text{m/s}$. The swimmer ends at the start, so the displacement is $0\\ \\text{m}$ and the average velocity is $0\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p10-1-4": {
+    "lessonId": "p10-1-4",
+    "title": "Acceleration",
+    "duration": 294,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A changing velocity",
+        "t": 20.801
+      },
+      {
+        "title": "Fast or accelerating?",
+        "t": 64.414
+      },
+      {
+        "title": "The acceleration formula",
+        "t": 106.486
+      },
+      {
+        "title": "Slowing down",
+        "t": 145.709
+      },
+      {
+        "title": "Predicting a velocity",
+        "t": 187.086
+      },
+      {
+        "title": "Your turn",
+        "t": 228.079
+      },
+      {
+        "title": "Summary",
+        "t": 261.469
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-1-4:q",
+        "t": 240.317,
+        "prompt": "A car speeds up from 6 m/s to 21 m/s in 5 s. What is its acceleration?",
+        "choices": [
+          "$5.4\\ \\text{m/s}^2$",
+          "$4.2\\ \\text{m/s}^2$",
+          "$3\\ \\text{m/s}^2$",
+          "$15\\ \\text{m/s}^2$"
+        ],
+        "answer": 2,
+        "working": "Change in velocity $= 21 - 6 = 15\\ \\text{m/s}$. Acceleration $= 15 \\div 5 = 3\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p10-1-5": {
+    "lessonId": "p10-1-5",
+    "title": "Motion Graphs",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Distance-time graphs",
+        "t": 20.593
+      },
+      {
+        "title": "A curved line",
+        "t": 74.575
+      },
+      {
+        "title": "Velocity-time graphs",
+        "t": 95.472
+      },
+      {
+        "title": "The area under the line",
+        "t": 151.55
+      },
+      {
+        "title": "Your turn",
+        "t": 195.161
+      },
+      {
+        "title": "Summary",
+        "t": 229.817
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-1-5:q",
+        "t": 210.427,
+        "prompt": "On a velocity-time graph, a straight line rises from 0 m/s to 12 m/s in 4 s. How far does the object travel in those 4 s?",
+        "choices": [
+          "$48\\ \\text{m}$",
+          "$24\\ \\text{m}$",
+          "$3\\ \\text{m}$",
+          "$16\\ \\text{m}$"
+        ],
+        "answer": 1,
+        "working": "The distance is the area under the line, a triangle: $\\tfrac{1}{2} \\times 4 \\times 12 = 24\\ \\text{m}$."
+      }
+    ]
   }
 }

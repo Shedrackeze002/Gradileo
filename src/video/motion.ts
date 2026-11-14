@@ -29,6 +29,12 @@ export interface MotionState {
   marks: Record<string, number[]>;
   /** Each body's velocity against time so far, as [seconds, metres per second], for a graph. */
   trace: Record<string, Array<[number, number]>>;
+  /** Each body's distance travelled against time so far, as [seconds, metres], for a graph. */
+  path: Record<string, Array<[number, number]>>;
+  /** How far each body has travelled along the track, in metres: every metre counts, whichever way it went. */
+  travelled: Record<string, number>;
+  /** Where each body started, then every place it turned round, in metres. */
+  turns: Record<string, number[]>;
   /** The slow-motion factor of the phase being played, and its note. */
   slow: number;
   note: string | null;
@@ -52,6 +58,17 @@ export function netForce(forces: MotionForce[], id: string, moving: (f: MotionFo
  */
 function advance(b: MotionBody, s: BodyState, forces: MotionForce[], dt: number): BodyState {
   const mine = forces.filter((f) => f.on === b.id && f.axis !== 'y');
+  const drag = mine.reduce((n, f) => n + (f.drag ?? 0), 0);
+  if (drag > 0) {
+    // Air resistance of `drag` newtons for each m/s: m dv/dt = F − drag × v, so the velocity
+    // closes on F ÷ drag, the terminal velocity, and never passes it.
+    const push = mine.filter((f) => !f.drag).reduce((n, f) => n + f.n, 0);
+    const terminal = push / drag;
+    const tau = b.mass / drag;
+    const e = Math.exp(-dt / tau);
+    const v = terminal + (s.v - terminal) * e;
+    return { x: s.x + terminal * dt + (s.v - terminal) * tau * (1 - e), v, a: (push - drag * v) / b.mass };
+  }
   const drive = mine.filter((f) => !f.resist).reduce((n, f) => n + f.n, 0);
   const resist = mine.filter((f) => f.resist).reduce((n, f) => n + Math.abs(f.n), 0);
   let { x, v } = s;
@@ -79,14 +96,17 @@ function advance(b: MotionBody, s: BodyState, forces: MotionForce[], dt: number)
 
 /** The forces that are acting on bodies as they are now: friction disappears with the motion. */
 function acting(el: MotionEl, bodies: Record<string, BodyState>, forces: MotionForce[]): MotionForce[] {
-  return forces.filter((f) => {
-    if (!f.resist) return true;
-    const b = el.bodies.find((q) => q.id === f.on);
-    if (!b) return false;
-    if (Math.abs(bodies[b.id].v) > EPS) return true;
-    // At rest, friction shows only while a push it is holding back acts.
-    return Math.abs(netForce(forces, b.id, (g) => !g.resist)) > EPS;
-  });
+  return forces
+    .filter((f) => {
+      if (!f.resist) return true;
+      const b = el.bodies.find((q) => q.id === f.on);
+      if (!b) return false;
+      if (Math.abs(bodies[b.id].v) > EPS) return true;
+      // At rest, friction shows only while a push it is holding back acts.
+      return Math.abs(netForce(forces, b.id, (g) => !g.resist)) > EPS;
+    })
+    // Air resistance is as large as the body is fast, and points against its motion.
+    .map((f) => (f.drag && bodies[f.on] ? { ...f, n: -f.drag * bodies[f.on].v + 0 } : f));
 }
 
 const start = (el: MotionEl): Record<string, BodyState> => Object.fromEntries(el.bodies.map((b) => [b.id, { x: b.x, v: b.v ?? 0, a: 0 }]));
@@ -99,6 +119,20 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   let marks: Record<string, number[]> = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
   const fresh = (): MotionState['trace'] => Object.fromEntries(el.bodies.map((b) => [b.id, [[0, b.v ?? 0] as [number, number]]]));
   let trace = fresh();
+  const freshPath = (): MotionState['path'] => Object.fromEntries(el.bodies.map((b) => [b.id, [[0, 0] as [number, number]]]));
+  let path = freshPath();
+  let travelled: Record<string, number> = Object.fromEntries(el.bodies.map((b) => [b.id, 0]));
+  let turns: Record<string, number[]> = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
+  // The way each body last moved (1 or -1), to notice when it turns round.
+  let heading: Record<string, number> = {};
+  const move = (id: string, from: number, to: number) => {
+    const dx = to - from;
+    if (Math.abs(dx) < EPS) return;
+    const way = Math.sign(dx);
+    if (heading[id] && heading[id] !== way) turns[id].push(Math.round(from * 1e9) / 1e9 + 0);
+    heading[id] = way;
+    travelled[id] += Math.abs(dx);
+  };
   let forces: MotionState['forces'] = [];
   let slow = 1;
   let note: string | null = null;
@@ -106,7 +140,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   // How long each force has been acting, in seconds of video: a force that carries on from one
   // phase or clip into the next keeps its arrow, and only a new one grows in.
   let ages = new Map<string, number>();
-  const keyOf = (f: MotionForce) => `${f.on}|${f.name}|${f.axis ?? 'x'}|${f.n}`;
+  const keyOf = (f: MotionForce) => `${f.on}|${f.name}|${f.axis ?? 'x'}|${f.drag ? 'drag' : f.n}`;
   for (const [name, seconds] of plays) {
     const clip = el.clips[name];
     if (!clip) throw new Error(`Motion "${el.id}" has no clip "${name}".`);
@@ -117,6 +151,10 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
       contact = null;
       ages = new Map();
       trace = fresh();
+      path = freshPath();
+      travelled = Object.fromEntries(el.bodies.map((b) => [b.id, 0]));
+      turns = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
+      heading = {};
     }
     let left = Math.max(0, seconds);
     for (const [pi, ph] of clip.phases.entries()) {
@@ -140,9 +178,24 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
         const next = (Math.floor((time + done) / step + EPS) + 1) * step - time;
         // Short steps, so the graph follows a body that friction stops part way through.
         const h = Math.min(dt, next, done + TRACE_STEP) - done;
-        for (const b of el.bodies) bodies[b.id] = advance(b, bodies[b.id], list, h);
+        for (const b of el.bodies) {
+          const before = bodies[b.id];
+          const after = advance(b, before, list, h);
+          if (before.v * after.v < -EPS) {
+            // It turned round inside the step: count the way out and the way back separately.
+            const a = (after.v - before.v) / h;
+            const t = -before.v / a;
+            const far = before.x + before.v * t + 0.5 * a * t * t;
+            move(b.id, before.x, far);
+            move(b.id, far, after.x);
+          } else move(b.id, before.x, after.x);
+          bodies[b.id] = after;
+        }
         done += h;
-        for (const b of el.bodies) trace[b.id].push([time + done, bodies[b.id].v]);
+        for (const b of el.bodies) {
+          trace[b.id].push([time + done, bodies[b.id].v]);
+          path[b.id].push([time + done, travelled[b.id]]);
+        }
         if (Math.abs(done - next) < EPS) for (const b of el.bodies) marks[b.id].push(bodies[b.id].x);
       }
       if (dt <= EPS && !ph.freeze) for (const b of el.bodies) bodies[b.id] = advance(b, bodies[b.id], list, 0);
@@ -161,7 +214,8 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   // Many short steps leave a little rounding noise (5.000000000000001 m): drop it.
   const tidy = (n: number) => Math.round(n * 1e9) / 1e9 + 0;
   for (const [id, b] of Object.entries(bodies)) bodies[id] = { x: tidy(b.x), v: tidy(b.v), a: tidy(b.a) };
-  return { bodies, forces, time: tidy(time), marks, trace, slow, note, contact };
+  for (const id of Object.keys(travelled)) travelled[id] = tidy(travelled[id]);
+  return { bodies, forces, time: tidy(time), marks, trace, path, travelled, turns, slow, note, contact };
 }
 
 export interface CollisionOptions {

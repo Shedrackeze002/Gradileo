@@ -36,7 +36,7 @@ systems teach in Grades 9 and 10. It needs Grade 9 mathematics only.
 | 4. Waves, Sound and Light | What a wave is · The wave equation · Sound · Reflection and refraction · The electromagnetic spectrum | Travelling waves whose particles only move up and down, compressions moving through air, rays bending into glass |
 | 5. Electricity | Charge and current · Voltage, resistance and Ohm's law · Series circuits · Parallel circuits · Electrical power and energy | Charges flowing around a circuit, slowing through a resistor and splitting at a junction, with live meters |
 
-The sample `phys-sample-forces` becomes the video of lesson 2.3.
+The sample `phys-sample-forces` is now the video of lesson 2.3 (`p10-2-3`).
 
 ## Grade 11 Physics: 30 lessons
 
