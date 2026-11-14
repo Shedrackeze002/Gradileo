@@ -1,12 +1,26 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { forceOnArea, gasBox } from './lib/c20-2a-figures.ts';
+import { forceOnArea } from './lib/c20-2a-figures.ts';
 
 // A box on the floor: its weight pushes down over the area it rests on.
 const crate = figure('f', [forceOnArea({ force: 'F = 120\\ \\text{N}', area: 'A = 0.040\\ \\text{m}^2' })], 420);
 
-// Gas particles hitting the walls of their container from every direction.
-const walls = figure('w', [gasBox({ w: 6, h: 6, count: 9, speed: 1.1, seed: 12, hits: 8 })], 460);
+/**
+ * Gas particles (simulated, src/video/particles.ts) hitting the walls of their container from every
+ * direction, under a piston, with a pressure gauge: squeezing the gas, then heating it, raises the
+ * pressure.
+ */
+const walls: ParticlesEl = {
+  kind: 'particles',
+  id: 'w',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 9, temp: 1.6, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }] }],
+  clips: {
+    squeeze: { phases: [{ dur: 4, lid: { b: 0.6 } }] },
+    heat: { phases: [{ dur: 4, heat: { b: 3.2 } }] },
+  },
+  gauge: { box: 'b', start: 100 },
+  height: 470,
+};
 
 const video: Explainer = {
   id: 'c20-2-2',
@@ -73,10 +87,11 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'In a gas, the force comes from collisions. Every second, an enormous number of particles hit each square centimetre of the wall, and each one gives it a tiny push.', show: ['w.box', 'w.p', 'w.v', 'w.hits', 's.0'], focus: 'w.hits' },
-        { say: 'Together, the pushes make a steady force. That force, divided by the area of the wall, is the gas pressure.' },
-        { say: 'The particles move in every direction, so a gas pushes on the top and sides of its container as hard as on the bottom.', show: 's.1', focus: 'w' },
-        { say: 'The pressure rises when the particles hit the walls more often, because there are more particles or less room. It also rises when they hit harder, because they move faster at a higher temperature.', show: 's.2' },
+        { say: 'In a gas, the force comes from collisions. Every second, an enormous number of particles hit each square centimetre of the wall, and each one gives it a tiny push.', show: ['w', 'w.hits', 's.0'], focus: 'w.hits' },
+        { say: 'Together, the pushes make a steady force. That force, divided by the area of the wall, is the gas pressure, and a gauge measures it.', show: 'w.gauge', focus: 'w.gauge' },
+        { say: 'The particles move in every direction, so a gas pushes on the top and sides of its container as hard as on the bottom. Watch the flashes: they come on every wall.', show: 's.1', focus: 'w.hits' },
+        { say: 'The pressure rises when the particles hit the walls more often. Push the piston in, and the same particles have less room, so they reach a wall sooner and hit it more often.', show: 's.2', play: 'w.squeeze', focus: 'w.gauge' },
+        { say: 'It also rises when they hit harder. Heat the gas, and the particles move faster, so each one hits the walls more often and gives a bigger push.', play: 'w.heat', focus: 'w.gauge' },
         { say: 'The gas laws in the coming lessons put numbers to these ideas.' },
       ],
     },
