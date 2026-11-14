@@ -1,10 +1,28 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts): each dye is a few particles in the
+// dot of ink, and as the solvent soaks up the paper it carries each dye up at its own pace (`rise`,
+// a fraction of the solvent's own speed), so they spread out into separate spots.
+
+const DYE_A = { n: 4, size: 0.8, bond: 1.5, heavy: 0, rise: 0.3, tone: 'hyp', name: 'dye A' } as const;
+const DYE_B = { n: 4, size: 0.8, bond: 1.5, heavy: 0, rise: 0.68, tone: 'good', name: 'dye B' } as const;
+
+/** A strip of chromatography paper with a dot of these dyes on its start line. */
+const strip = (id: string, label: string, kinds: ParticleBox['kinds']): ParticleBox => ({ id, state: 'solid', width: 4, height: 12, temp: 0.005, paper: true, cross: 0, kinds, label });
+
+const paper: ParticlesEl = {
+  kind: 'particles',
+  id: 'ch',
+  boxes: [strip('x', 'ink X', [{ ...DYE_A }, { ...DYE_B }]), strip('a', 'dye A', [{ ...DYE_A }]), strip('b', 'dye B', [{ ...DYE_B }])],
+  clips: { run: { phases: [{ dur: 1, run: { x: 1, a: 1, b: 1 } }, { dur: 11 }] } },
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c7-4-3',
   lessonId: 'c7-4-3',
   title: 'Chromatography and Choosing a Method',
-  thumbnail: 'choose',
+  thumbnail: 'ch',
   summary:
     'Paper chromatography separates the dyes in an ink: the solvent carries the dyes up the paper at different speeds. Each spot is one dye, and a pure dye gives one spot. Draw the start line in pencil and keep the ink dot above the solvent. Choose a separation method by asking whether the solid is dissolved and which part you want to keep; some mixtures need several steps.',
   scenes: [
@@ -18,8 +36,10 @@ const video: Explainer = {
     },
     {
       chapter: 'Paper chromatography',
-      layout: 'center',
-      main: [
+      layout: 'split',
+      leftWidth: 520,
+      left: [paper],
+      right: [
         {
           kind: 'bullets',
           id: 'steps',
@@ -32,9 +52,9 @@ const video: Explainer = {
         { kind: 'callout', id: 'oops', tone: 'mistake', title: 'Pencil, not pen', md: 'Pencil does not dissolve. A pen line would run up the paper and add extra spots.' },
       ],
       lines: [
-        { say: 'Paper chromatography separates the dyes in a mixture such as ink. First, draw a start line in pencil near the bottom of a strip of paper, and put a small dot of ink on it.', show: 'steps.0' },
+        { say: 'Paper chromatography separates the dyes in a mixture such as ink. First, draw a start line in pencil near the bottom of a strip of paper, and put a small dot of ink on it. Here are three strips: ink X, and two pure dyes, A and B.', show: ['ch', 'ch.labels', 'steps.0'] },
         { say: 'Then dip the bottom edge in a solvent, such as water, with the dot above the solvent, or the ink would just wash off into it.', show: 'steps.1' },
-        { say: 'The solvent soaks up the paper and carries the dyes with it. Different dyes travel at different speeds, so they spread out into separate spots.', show: 'steps.2' },
+        { say: 'Watch the solvent soak up the paper. It carries the dyes with it, but different dyes travel at different speeds, so the ink spreads out into separate spots.', play: 'ch.run', show: 'steps.2', focus: 'ch.x' },
         { say: 'The line is drawn in pencil because pencil does not dissolve. A line in pen would run up the paper and add extra spots.', show: 'oops' },
       ],
     },

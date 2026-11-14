@@ -68,6 +68,10 @@ export interface Controls {
   released: Record<string, number>;
   /** How hard each box is being stirred. */
   stir: Record<string, number>;
+  /** How strongly a magnet pulls on each box's magnetic kinds. */
+  magnet: Record<string, number>;
+  /** How fast the solvent is running up each paper box. */
+  run: Record<string, number>;
 }
 
 /** A play of a clip: its name and the element's age (seconds since shown) when it started. */
@@ -80,8 +84,12 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
   const lifted: Record<string, number> = {};
   const released: Record<string, number> = {};
   const stir: Record<string, number> = {};
+  const magnet: Record<string, number> = {};
+  const run: Record<string, number> = {};
   for (const b of el.boxes) {
     stir[b.id] = 0;
+    magnet[b.id] = 0;
+    run[b.id] = 0;
     temp[b.id] = tempOf(b.temp, TEMPS[b.state]);
     lid[b.id] = b.lid ?? 1;
   }
@@ -95,12 +103,14 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
       for (const id of ph.lift ?? []) if (lifted[id] === undefined) lifted[id] = t;
       for (const id of ph.release ?? []) if (released[id] === undefined) released[id] = t;
       for (const [id, v] of Object.entries(ph.stir ?? {})) stir[id] += (v - stir[id]) * k;
+      for (const [id, v] of Object.entries(ph.magnet ?? {})) magnet[id] += (v - magnet[id]) * k;
+      for (const [id, v] of Object.entries(ph.run ?? {})) run[id] += (v - run[id]) * k;
       for (const [id, v] of Object.entries(ph.heat ?? {})) temp[id] += (tempOf(v, temp[id]) - temp[id]) * k;
       for (const [id, v] of Object.entries(ph.lid ?? {})) lid[id] += (v - lid[id]) * k;
       t += ph.dur;
     }
   }
-  return { temp, lid, lifted, released, stir };
+  return { temp, lid, lifted, released, stir, magnet, run };
 }
 
 export interface Hit {
@@ -130,6 +140,18 @@ interface BoxSim {
   heavy: Float64Array;
   /** Particles held still (a lump not yet dropped in). */
   held: Uint8Array;
+  /** Each kind's diameter, whether a magnet pulls it, and how fast the solvent carries it up paper. */
+  size: Float64Array;
+  magnetic: Uint8Array;
+  rise: Float64Array;
+  /** How strongly each kind's particles hold on to one another. */
+  bond: Float64Array;
+  /** The square of the distance each pair of kinds settles apart (kinds × kinds). */
+  sig2: Float64Array;
+  /** Particles that have left the box (evaporated through an open top). */
+  gone: Uint8Array;
+  /** How far up a paper box the solvent has soaked. */
+  front: number;
   rnd: () => number;
   /** The lid's actual height (it cannot be pushed into a liquid or solid). */
   lidY: number;
@@ -159,6 +181,14 @@ export interface BoxFrame {
   loose: number;
   /** How hard the box is being stirred now. */
   stir: number;
+  /** How strongly a magnet over the box is pulling now. */
+  magnet: number;
+  /** The filter's height, and whether it lets the small particles through yet. */
+  filter?: { y: number; open: boolean };
+  /** How far up a paper box the solvent has soaked. */
+  front: number;
+  /** How many particles have left the box. */
+  goneCount: number;
 }
 
 /**
@@ -171,7 +201,7 @@ function gravityAt(temp: number) {
 }
 
 /** The forces on every particle: gravity, one another, and a stirrer if the box is being stirred. */
-function forces(s: BoxSim, temp: number, sigma = 1, stir = 0, w = 10, h = 10) {
+function forces(s: BoxSim, temp: number, sigma = 1, stir = 0, w = 10, h = 10, magnet = 0) {
   const { fx, fy, n, kind, heavy } = s;
   fx.fill(0);
   const g = gravityAt(temp);
@@ -189,13 +219,36 @@ function forces(s: BoxSim, temp: number, sigma = 1, stir = 0, w = 10, h = 10) {
       fy[i] += (stir * dx) / r;
     }
   }
+  if (magnet) {
+    // A magnet above the middle of the box pulls its magnetic particles up towards it.
+    const cx = w / 2;
+    const cy = h + 1.5;
+    for (let i = 0; i < n; i++) {
+      if (!s.magnetic[kind[i]]) continue;
+      const dx = cx - s.x[i];
+      const dy = cy - s.y[i];
+      const r = Math.max(1, Math.hypot(dx, dy));
+      fx[i] += (MAGNET * magnet * dx) / r;
+      fy[i] += (MAGNET * magnet * dy) / r;
+    }
+  }
 }
+
+/** How hard a magnet at full strength pulls. */
+const MAGNET = 5;
+/** How fast the solvent soaks up paper at the usual `run` (particle diameters a simulated second). */
+const RUN_SPEED = 0.5;
 
 /** The temperature the particles of a box are at, from how fast they move (kinetic energy = T in 2D). */
 function measuredTemp(s: BoxSim) {
   let e = 0;
-  for (let i = 0; i < s.n; i++) e += s.vx[i] * s.vx[i] + s.vy[i] * s.vy[i];
-  return e / (2 * s.n);
+  let m = 0;
+  for (let i = 0; i < s.n; i++) {
+    if (s.gone[i] || s.held[i]) continue;
+    e += s.vx[i] * s.vx[i] + s.vy[i] * s.vy[i];
+    m++;
+  }
+  return m ? e / (2 * m) : 0;
 }
 
 /**
@@ -204,15 +257,16 @@ function measuredTemp(s: BoxSim) {
  * are drawn the same size, so the spaces between them grow.
  */
 function forcesBetween(s: BoxSim, sigma: number) {
-  const { n, x, y, fx, fy, kind, eps, kinds } = s;
-  const s2 = sigma * sigma;
-  const cut2 = CUT2 * s2;
+  const { n, x, y, fx, fy, kind, eps, kinds, sig2 } = s;
+  const sg2 = sigma * sigma;
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j < n; j++) {
       const dx = x[i] - x[j];
       const dy = y[i] - y[j];
       let r2 = dx * dx + dy * dy;
-      if (r2 > cut2) continue;
+      // Two kinds of different sizes settle apart by the mean of their diameters.
+      const s2 = sg2 * sig2[kind[i] * kinds + kind[j]];
+      if (r2 > CUT2 * s2) continue;
       if (r2 < 0.5 * s2) r2 = 0.5 * s2; // never let two particles overlap far enough to explode apart
       const i2 = 1 / r2;
       const q2 = s2 * i2;
@@ -246,6 +300,13 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     kinds: kinds.length,
     heavy: new Float64Array(kinds.map((k) => k.heavy ?? 1)),
     held: new Uint8Array(n),
+    size: new Float64Array(kinds.map((k) => k.size ?? 1)),
+    magnetic: new Uint8Array(kinds.map((k) => (k.magnetic ? 1 : 0))),
+    rise: new Float64Array(kinds.map((k) => k.rise ?? 0)),
+    bond: new Float64Array(kinds.map((k) => k.bond ?? 1)),
+    sig2: new Float64Array(kinds.length * kinds.length),
+    gone: new Uint8Array(n),
+    front: PAPER_START - 0.6,
     rnd,
     lidY: (b.lid ?? 1) * h,
     hits: [],
@@ -258,14 +319,23 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
   kinds.forEach((ka, a) =>
     kinds.forEach((kb, c) => {
       s.eps[a * kinds.length + c] = a === c ? (ka.bond ?? 1) : (b.cross ?? Math.sqrt((ka.bond ?? 1) * (kb.bond ?? 1)));
+      s.sig2[a * kinds.length + c] = (((ka.size ?? 1) + (kb.size ?? 1)) / 2) ** 2;
     }),
   );
-  const spacing = 1.12;
-  // Two kinds kept apart by a divider start on its two sides; otherwise the whole box is one region.
+  const spacing = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1));
+  // Two kinds kept apart by a divider start on its two sides; behind a wall, all start on its
+  // left; on paper, as a small dot in the middle; otherwise the whole box is one region.
   const split = b.divider !== undefined && b.apart === true && kinds.length === 2;
+  const dot = Math.ceil(Math.sqrt(n)) * spacing + 1;
   const regions: Array<[x0: number, x1: number, from: number, to: number]> = split
     ? [[0, b.divider! * w, 0, kinds[0].n], [b.divider! * w, w, kinds[0].n, n]]
-    : [[0, w, 0, n]];
+    : b.wall
+      ? [[0, b.wall.at * w - 0.2, 0, n]]
+      : b.paper
+        ? [[w / 2 - dot / 2, w / 2 + dot / 2, 0, n]]
+        : [[0, w, 0, n]];
+  // Where the bottom row starts: on the filter, on paper's start line, or on the floor.
+  const base = b.filter ? b.filter.at * h : b.paper ? PAPER_START - 0.56 : 0;
   for (const [x0, x1, from, to] of regions) {
     const m = to - from;
     const rw = x1 - x0;
@@ -282,14 +352,14 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       }
     } else {
       // Rows packed tightly at the bottom, in the middle of the region.
-      const cols = Math.min(Math.floor((rw - 1) / spacing) + 1, b.cols ?? Math.max(1, Math.round(Math.sqrt(m * 1.6))));
+      const cols = Math.min(Math.floor((rw - 1) / spacing) + 1, b.cols ?? Math.max(1, Math.round(Math.sqrt(m * (b.paper ? 1 : 1.6)))));
       const rowH = spacing * Math.sqrt(3) / 2;
       const width = (cols - 1) * spacing;
       for (let j = 0; j < m; j++) {
         const r = Math.floor(j / cols);
         const c = j % cols;
         s.x[from + j] = x0 + rw / 2 - width / 2 + c * spacing + (r % 2 ? spacing / 2 : 0) - spacing / 4;
-        s.y[from + j] = 0.56 + r * rowH;
+        s.y[from + j] = base + 0.56 * (spacing / 1.12) + r * rowH;
       }
     }
   }
@@ -351,37 +421,87 @@ interface StepOpts {
   sigma?: number;
   /** How hard the box is stirred. */
   stir?: number;
+  /** How strongly a magnet pulls. */
+  magnet?: number;
+  /** A filter's height, the size of its holes, and whether it lets small particles through yet. */
+  filter?: { y: number; holes: number; open: boolean };
+  /** A low wall that never lifts: where it stands and how tall it is. */
+  wall?: { x: number; top: number };
+  /** Parts of the box held at their own temperatures (in particle units). */
+  zones?: Array<{ x0: number; x1: number; y0: number; y1: number; temp: number }>;
+  /** Particles reaching the top leave the box. */
+  escape?: boolean;
+  /** How fast the solvent runs up paper. */
+  run?: number;
 }
 
 /** The strip along a side where a box with a `bath` is held at its temperature. */
 const BATH = 2;
 const BATH_GAMMA = 4;
+/** How high a paper box's dot starts (its start line is just below). */
+export const PAPER_START = 1.8;
+/** Half the thickness of a wall. */
+const WALL = 0.15;
 
 /** One step of the simulation (velocity Verlet, then the thermostat and the walls). */
 function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: number, record: boolean) {
-  const { n, x, y, vx, vy, fx, fy, rnd } = s;
-  const { w, firm, divider } = o;
+  const { n, x, y, vx, vy, fx, fy, rnd, kind, size, gone } = s;
+  const { w, firm, divider, wall, filter } = o;
   const half = DT / 2;
   const held = s.held;
+  // The solvent soaks up paper, and carries each kind below its front up at the kind's own pace.
+  // Once the solvent reaches the top of the paper, nothing moves on.
+  const run = o.run ?? 0;
+  const was = s.front;
+  if (run) s.front = Math.min(s.lidY - 0.5, s.front + run * RUN_SPEED * DT);
+  const soak = s.front - was;
   for (let i = 0; i < n; i++) {
-    if (held[i]) {
+    if (held[i] || gone[i]) {
       vx[i] = 0;
       vy[i] = 0;
       continue;
     }
+    const rad = 0.5 * size[kind[i]];
     vx[i] += fx[i] * half;
     vy[i] += fy[i] * half;
     const was = x[i];
+    const wasY = y[i];
     x[i] += vx[i] * DT;
     y[i] += vy[i] * DT;
+    if (soak > 0 && s.rise[kind[i]] && y[i] < s.front) y[i] += soak * s.rise[kind[i]];
     // A standing divider keeps each particle on its own side.
     if (divider !== undefined) {
-      if (was < divider && x[i] > divider - 0.5) {
-        x[i] = 2 * (divider - 0.5) - x[i];
+      if (was < divider && x[i] > divider - rad) {
+        x[i] = 2 * (divider - rad) - x[i];
         vx[i] = -Math.abs(vx[i]);
-      } else if (was >= divider && x[i] < divider + 0.5) {
-        x[i] = 2 * (divider + 0.5) - x[i];
+      } else if (was >= divider && x[i] < divider + rad) {
+        x[i] = 2 * (divider + rad) - x[i];
         vx[i] = Math.abs(vx[i]);
+      }
+    }
+    // A low wall: a particle coming down onto it bounces off its top; below its top, it is a divider.
+    if (wall) {
+      if (wasY >= wall.top + rad && y[i] < wall.top + rad && Math.abs(x[i] - wall.x) < rad + WALL) {
+        y[i] = 2 * (wall.top + rad) - y[i];
+        vy[i] = Math.abs(vy[i]);
+      } else if (y[i] < wall.top + rad) {
+        if (was < wall.x && x[i] > wall.x - rad - WALL) {
+          x[i] = 2 * (wall.x - rad - WALL) - x[i];
+          vx[i] = -Math.abs(vx[i]);
+        } else if (was >= wall.x && x[i] < wall.x + rad + WALL) {
+          x[i] = 2 * (wall.x + rad + WALL) - x[i];
+          vx[i] = Math.abs(vx[i]);
+        }
+      }
+    }
+    // A filter holds back particles too big for its holes (and every particle until it is opened).
+    if (filter && (!filter.open || 2 * rad > filter.holes)) {
+      if (wasY >= filter.y && y[i] < filter.y + rad) {
+        y[i] = 2 * (filter.y + rad) - y[i];
+        vy[i] = Math.abs(vy[i]);
+      } else if (wasY < filter.y && y[i] > filter.y - rad) {
+        y[i] = 2 * (filter.y - rad) - y[i];
+        vy[i] = -Math.abs(vy[i]);
       }
     }
   }
@@ -390,44 +510,66 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   let lid = lidTarget;
   if (firm && lidTarget < s.lidY) {
     let top = 0;
-    for (let i = 0; i < n; i++) if (y[i] > top && crowded(s, i)) top = y[i];
+    for (let i = 0; i < n; i++) if (!gone[i] && y[i] > top && crowded(s, i)) top = y[i];
     lid = Math.max(lidTarget, Math.min(s.lidY, top + 0.62));
   }
   const lidV = (lid - s.lidY) / DT;
   s.lidY = lid;
   for (let i = 0; i < n; i++) {
-    if (x[i] < 0.5) {
-      x[i] = 1 - x[i];
+    if (gone[i]) continue;
+    const rad = 0.5 * size[kind[i]];
+    if (x[i] < rad) {
+      x[i] = 2 * rad - x[i];
       vx[i] = Math.abs(vx[i]);
       if (record) s.hits.push({ at: age, x: 0, y: y[i], wall: 'left' });
-    } else if (x[i] > w - 0.5) {
-      x[i] = 2 * (w - 0.5) - x[i];
+    } else if (x[i] > w - rad) {
+      x[i] = 2 * (w - rad) - x[i];
       vx[i] = -Math.abs(vx[i]);
       if (record) s.hits.push({ at: age, x: w, y: y[i], wall: 'right' });
     }
-    if (y[i] < 0.5) {
-      y[i] = 1 - y[i];
+    if (y[i] < rad) {
+      y[i] = 2 * rad - y[i];
       vy[i] = Math.abs(vy[i]);
       if (record) s.hits.push({ at: age, x: x[i], y: 0, wall: 'floor' });
-    } else if (y[i] > lid - 0.5) {
-      y[i] = lid - 0.5 - Math.min(0.2, y[i] - (lid - 0.5));
+    } else if (o.escape && y[i] > lid - rad && s.bond[kind[i]] < 2) {
+      // Out of the open top and away: it is put far off, where it touches nothing. (A kind
+      // bonded as strongly as a salt does not boil at these temperatures: one flung this high
+      // falls back.)
+      gone[i] = 1;
+      x[i] = -1e4 - 10 * i;
+      y[i] = -1e4;
+      vx[i] = 0;
+      vy[i] = 0;
+    } else if (y[i] > lid - rad) {
+      y[i] = lid - rad - Math.min(0.2, y[i] - (lid - rad));
       // A lid moving down pushes the particle it meets down with it.
       vy[i] = Math.min(-Math.abs(vy[i]), 2 * lidV - Math.abs(vy[i]));
       if (record) s.hits.push({ at: age, x: x[i], y: lid, wall: 'lid' });
     }
   }
-  // With a bath, gravity follows how hot the particles really are, not the bath's temperature.
-  forces(s, o.bath ? measuredTemp(s) : temp, o.sigma, o.stir ?? 0, w, lid);
+  const zones = o.zones;
+  // With a bath or zones, gravity follows how hot the particles really are, not the box's
+  // temperature. In an open dish or a still it keeps its full strength: there the hot gas leaves
+  // or goes over the wall anyway, and the dissolved solid must stay at the bottom.
+  const gravityTemp = o.escape || o.wall ? 0 : o.bath || zones ? measuredTemp(s) : temp;
+  forces(s, gravityTemp, o.sigma, o.stir ?? 0, w, lid, o.magnet ?? 0);
   // A bath holds its strip firmly, as a flame or ice would, so heat goes in or out quickly there.
-  const c1 = Math.exp(-(o.bath ? BATH_GAMMA : GAMMA) * DT);
+  const c1 = Math.exp(-(o.bath || zones ? BATH_GAMMA : GAMMA) * DT);
   const c2 = Math.sqrt((1 - c1 * c1) * temp);
   const inBath = (i: number) => (o.bath === 'left' ? x[i] < BATH : o.bath === 'right' ? x[i] > w - BATH : y[i] < BATH);
   const smooth = DT / 1.2;
   for (let i = 0; i < n; i++) {
-    if (held[i]) continue;
+    if (held[i] || gone[i]) continue;
     vx[i] += fx[i] * half;
     vy[i] += fy[i] * half;
-    if (!o.bath || inBath(i)) {
+    if (zones) {
+      const z = zones.find((zz) => x[i] >= zz.x0 && x[i] < zz.x1 && y[i] >= zz.y0 && y[i] < zz.y1);
+      if (z) {
+        const c = Math.sqrt((1 - c1 * c1) * z.temp);
+        vx[i] = c1 * vx[i] + c * gauss(rnd);
+        vy[i] = c1 * vy[i] + c * gauss(rnd);
+      }
+    } else if (!o.bath || inBath(i)) {
       vx[i] = c1 * vx[i] + c2 * gauss(rnd);
       vy[i] = c1 * vy[i] + c2 * gauss(rnd);
     }
@@ -439,7 +581,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
 function crowded(s: BoxSim, i: number) {
   let c = 0;
   for (let j = 0; j < s.n; j++) {
-    if (j === i) continue;
+    if (j === i || s.gone[j]) continue;
     const dx = s.x[i] - s.x[j];
     const dy = s.y[i] - s.y[j];
     if (dx * dx + dy * dy < 1.6 * 1.6 && ++c >= 2) return true;
@@ -484,7 +626,7 @@ const LOOSE_SECONDS = 2;
  */
 function looseCount(s: BoxSim, free?: Uint8Array) {
   const idx: number[] = [];
-  for (let i = 0; i < s.n; i++) if (s.kind[i] === 0) idx.push(i);
+  for (let i = 0; i < s.n; i++) if (s.kind[i] === 0 && !s.gone[i]) idx.push(i);
   const seen = new Uint8Array(idx.length);
   // A clump this big is a lump: six particles, or half the solute when there is more.
   const lump = Math.max(6, Math.ceil(idx.length / 2));
@@ -533,6 +675,7 @@ function spanOf(s: BoxSim): [number, number] {
   let lo = Infinity;
   let hi = -Infinity;
   for (let i = 0; i < s.n; i++) {
+    if (s.gone[i]) continue;
     lo = Math.min(lo, s.x[i]);
     hi = Math.max(hi, s.x[i]);
   }
@@ -554,6 +697,7 @@ function cloneSim(s: BoxSim): BoxSim {
     kind: s.kind.slice(),
     ke: s.ke.slice(),
     held: s.held.slice(),
+    gone: s.gone.slice(),
     // The random numbers carry on from the same point each time the warmed state is reused.
     rnd: forkRandom(s),
     hits: [],
@@ -566,18 +710,43 @@ function forkRandom(s: BoxSim) {
   return random(seeds.get(s) ?? 1);
 }
 
+/**
+ * How a box is stepped with the controls as they stand (or as it settles before it is seen, with
+ * no controls: no bath or zones, no stirring, a closed filter, nothing leaving the box).
+ */
+function optsFor(b: ParticleBox, ctl?: Controls): StepOpts {
+  const { w, h } = boxSize(b);
+  const standing = b.divider !== undefined && ctl?.lifted[b.id] === undefined;
+  const t0 = tempOf(b.temp, TEMPS[b.state]);
+  const temp = ctl ? ctl.temp[b.id] : t0;
+  return {
+    w,
+    firm: ctl ? b.state !== 'gas' : false,
+    divider: standing ? b.divider! * w : undefined,
+    bath: ctl ? b.bath : undefined,
+    sigma: ctl && b.expand ? 1 + b.expand * Math.max(0, temp - t0) : 1,
+    stir: ctl?.stir[b.id],
+    magnet: ctl?.magnet[b.id],
+    run: ctl?.run[b.id],
+    filter: b.filter && { y: b.filter.at * h, holes: b.filter.holes, open: ctl?.released[b.id] !== undefined },
+    wall: b.wall && { x: b.wall.at * w, top: b.wall.height * h },
+    zones: ctl && b.zones?.map((z) => ({ x0: z.x[0] * w, x1: z.x[1] * w, y0: z.y[0] * h, y1: z.y[1] * h, temp: z.temp === undefined ? temp : tempOf(z.temp, temp) })),
+    escape: ctl ? b.escape : false,
+  };
+}
+
 function warmBoxes(el: ParticlesEl): BoxSim[] {
   const key = JSON.stringify([el.id, el.boxes, el.seed]);
   let boxes = warmed.get(key);
   if (!boxes) {
     boxes = el.boxes.map((b, bi) => {
       const s = initBox(b, (el.seed ?? 7) * 101 + bi * 7919);
-      const { w } = boxSize(b);
       const t = tempOf(b.temp, TEMPS[b.state]);
       // Every box settles before it is seen: a solid's loose edge particles drop into place.
-      const steps = Math.round(WARM / DT);
+      // (Not a paper strip's dot, whose dyes would slowly sort themselves while it settled.)
+      const steps = b.paper ? 0 : Math.round(WARM / DT);
       // The whole box is held at its temperature while it settles, even one with a bath.
-      const o: StepOpts = { w, firm: false, divider: b.divider === undefined ? undefined : b.divider * w };
+      const o = optsFor(b);
       for (let k = 0; k < steps; k++) step(s, o, t, s.lidY, 0, false);
       seeds.set(s, (el.seed ?? 7) * 31 + bi);
       return s;
@@ -614,12 +783,10 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     const a = c.age + 1 / stepsPerSecond;
     const ctl = controlsAt(el, played, a);
     el.boxes.forEach((b, bi) => {
-      const { w, h } = boxSize(b);
+      const { h } = boxSize(b);
       const s = c!.boxes[bi];
-      const standing = b.divider !== undefined && ctl.lifted[b.id] === undefined;
       if (ctl.released[b.id] !== undefined && s.held.some((v) => v)) s.held.fill(0);
-      const sigma = b.expand ? 1 + b.expand * Math.max(0, ctl.temp[b.id] - tempOf(b.temp, TEMPS[b.state])) : 1;
-      step(s, { w, firm: b.state !== 'gas', divider: standing ? b.divider! * w : undefined, bath: b.bath, sigma, stir: ctl.stir[b.id] }, ctl.temp[b.id], ctl.lid[b.id] * h, a, true);
+      step(s, optsFor(b, ctl), ctl.temp[b.id], ctl.lid[b.id] * h, a, true);
       while (s.hits.length && s.hits[0].at < a - 2.5) s.hits.shift();
       const tr = c!.trails[bi];
       if (b.follow !== undefined && (!tr.length || a - tr[tr.length - 1][0] >= TRAIL_STEP - 1e-9)) {
@@ -639,21 +806,29 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     const s = c!.boxes[bi];
     // Hits are counted over the last two seconds, so the count does not flicker.
     const recent = s.hits.filter((hh) => hh.at > age - 2);
+    // Particles that have left the box are not drawn.
+    const here = (_: unknown, i: number) => !s.gone[i];
+    const goneCount = s.gone.reduce((m, g) => m + g, 0);
+    const keep = <T,>(a: ArrayLike<T>) => (goneCount ? Array.from(a).filter(here) : Array.from(a));
     return {
-      x: Array.from(s.x),
-      y: Array.from(s.y),
-      kind: Array.from(s.kind),
+      x: keep(s.x),
+      y: keep(s.y),
+      kind: keep(s.kind),
       lidY: s.lidY,
       temp: ctl.temp[b.id],
       hits: recent.filter((hh) => hh.at > age - FLASH),
       hitRate: Math.round(recent.length / 2),
       trail: c!.trails[bi].map(([, x, y]) => [x, y] as [number, number]),
-      ke: b.heatColor ? Array.from(s.ke) : undefined,
+      ke: b.heatColor ? keep(s.ke) : undefined,
       divider: b.divider === undefined ? undefined : { x: b.divider * boxSize(b).w, out: ctl.lifted[b.id] === undefined ? 0 : Math.min(1, (age - ctl.lifted[b.id]) / 0.6) },
       span: spanOf(s),
       loose: b.kinds && b.kinds.length > 1 ? looseAt(c!.loose[bi], s) : 0,
       stir: ctl.stir[b.id],
       span0: c!.spans[bi],
+      magnet: ctl.magnet[b.id],
+      filter: b.filter && { y: b.filter.at * boxSize(b).h, open: ctl.released[b.id] !== undefined },
+      front: s.front,
+      goneCount,
     };
   });
 }

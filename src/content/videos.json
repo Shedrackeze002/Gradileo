@@ -610,7 +610,7 @@
   "c7-4-1": {
     "lessonId": "c7-4-1",
     "title": "Sieving, Magnets and Filtering",
-    "duration": 199,
+    "duration": 234,
     "voice": "af_heart",
     "chapters": [
       {
@@ -618,30 +618,34 @@
         "t": 0
       },
       {
-        "title": "Sieving and magnets",
+        "title": "Sieving",
         "t": 21.728
       },
       {
+        "title": "Magnets",
+        "t": 52.518
+      },
+      {
         "title": "Filtration",
-        "t": 63.826
+        "t": 84.804
       },
       {
         "title": "What a filter cannot do",
-        "t": 101.725
+        "t": 128.319
       },
       {
         "title": "Your turn",
-        "t": 139.421
+        "t": 174.441
       },
       {
         "title": "Summary",
-        "t": 166.92
+        "t": 201.94
       }
     ],
     "cues": [
       {
         "id": "c7-4-1:q",
-        "t": 146.367,
+        "t": 181.387,
         "prompt": "Which mixture can be separated by filtration?",
         "choices": [
           "Sugar dissolved in water",
@@ -657,7 +661,7 @@
   "c7-4-2": {
     "lessonId": "c7-4-2",
     "title": "Evaporation and Distillation",
-    "duration": 204,
+    "duration": 229,
     "voice": "af_heart",
     "chapters": [
       {
@@ -669,26 +673,26 @@
         "t": 21.33
       },
       {
-        "title": "Crystallization",
-        "t": 58.192
+        "title": "How much solid?",
+        "t": 101.081
       },
       {
         "title": "Distillation",
-        "t": 104.926
+        "t": 122.018
       },
       {
         "title": "Your turn",
-        "t": 145.989
+        "t": 170.487
       },
       {
         "title": "Summary",
-        "t": 171.623
+        "t": 196.121
       }
     ],
     "cues": [
       {
         "id": "c7-4-2:q",
-        "t": 154.133,
+        "t": 178.631,
         "prompt": "Salt water is distilled. What is collected in the beaker at the end?",
         "choices": [
           "Pure water",
@@ -704,7 +708,7 @@
   "c7-4-3": {
     "lessonId": "c7-4-3",
     "title": "Chromatography and Choosing a Method",
-    "duration": 202,
+    "duration": 208,
     "voice": "af_heart",
     "chapters": [
       {
@@ -717,25 +721,25 @@
       },
       {
         "title": "Reading a chromatogram",
-        "t": 68.134
+        "t": 74.551
       },
       {
         "title": "Choosing a method",
-        "t": 99.412
+        "t": 105.829
       },
       {
         "title": "Your turn",
-        "t": 141.78
+        "t": 148.197
       },
       {
         "title": "Summary",
-        "t": 170.863
+        "t": 177.28
       }
     ],
     "cues": [
       {
         "id": "c7-4-3:q",
-        "t": 151.321,
+        "t": 157.738,
         "prompt": "You want to keep both the salt and the water from salt water. Which method should you use?",
         "choices": [
           "Evaporation",

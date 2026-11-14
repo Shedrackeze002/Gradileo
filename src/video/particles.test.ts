@@ -156,6 +156,64 @@ describe('particles: dissolving', () => {
   });
 });
 
+describe('particles: separating mixtures', () => {
+  const below = (f: ReturnType<typeof particlesAt>[number], k: number, y: number) => f.y.filter((yy, i) => f.kind[i] === k && yy < y).length;
+
+  it('holds everything on a filter until it is opened, then lets only the small particles through', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'liquid', width: 12, height: 12, temp: 0.5, filter: { at: 0.5, holes: 1.3 }, cross: 0.3, kinds: [{ n: 10, size: 1.6, heavy: 3 }, { n: 30, size: 0.8, heavy: 2 }] }], clips: { pour: { phases: [{ dur: 1, release: ['b'] }, { dur: 9 }] } } });
+    const [shut] = particlesAt(e, [['pour', 3]], 2.9);
+    expect(below(shut, 0, 6) + below(shut, 1, 6)).toBe(0);
+    expect(shut.filter).toEqual({ y: 6, open: false });
+    const [open] = particlesAt(e, [['pour', 3]], 10);
+    expect(below(open, 1, 6)).toBeGreaterThanOrEqual(25);
+    expect(below(open, 0, 6)).toBe(0);
+  });
+
+  it('pulls only the magnetic kind up to a magnet', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'liquid', width: 12, height: 9, temp: 0.15, cross: 0.3, kinds: [{ n: 10, bond: 0.4, heavy: 2, magnetic: true }, { n: 26, bond: 0.4, heavy: 2 }] }], clips: { go: { phases: [{ dur: 2, magnet: { b: 1 } }, { dur: 8 }] } } });
+    const [f] = particlesAt(e, [['go', 1]], 8);
+    const high = (k: number) => f.y.filter((y, i) => f.kind[i] === k && y > 6).length;
+    expect(f.magnet).toBe(1);
+    expect(high(0)).toBeGreaterThanOrEqual(8);
+    expect(high(1)).toBe(0);
+  });
+
+  it('lets water evaporate out of an open dish, leaving the salt behind', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'liquid', width: 12, height: 10, temp: 0.5, escape: true, bath: 'floor', cross: 2.4, kinds: [{ n: 10, bond: 2, heavy: 3 }, { n: 40, heavy: 0.3 }] }], clips: { heat: { phases: [{ dur: 2, heat: { b: 1.8 } }, { dur: 20 }] } } });
+    const [f] = particlesAt(e, [['heat', 0]], 24);
+    expect(f.goneCount).toBeGreaterThanOrEqual(25);
+    expect(f.kind.filter((k) => k === 0).length).toBe(10);
+    expect(f.x.length).toBe(50 - f.goneCount);
+  });
+
+  it('distils water over a wall into the cold side, and never the salt', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'liquid', width: 20, height: 12, temp: 0.5, wall: { at: 0.5, height: 0.5 }, cross: 1.6, zones: [{ x: [0, 0.5], y: [0, 0.17] }, { x: [0.6, 1], y: [0, 1], temp: 0.4 }], kinds: [{ n: 8, bond: 3, heavy: 6 }, { n: 30, heavy: 0.3 }] }], clips: { boil: { phases: [{ dur: 2, heat: { b: 1.6 } }, { dur: 18 }] } }, speed: 5 });
+    const [f] = particlesAt(e, [['boil', 0]], 20);
+    const right = (k: number) => f.x.filter((x, i) => f.kind[i] === k && x > 10.5).length;
+    expect(right(1)).toBeGreaterThanOrEqual(15);
+    expect(right(0)).toBe(0);
+  });
+
+  it('carries each dye up the paper at its own pace, stopping when the solvent reaches the top', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'solid', width: 4, height: 12, temp: 0.005, paper: true, cross: 0, kinds: [{ n: 4, size: 0.8, bond: 1.5, heavy: 0, rise: 0.3 }, { n: 4, size: 0.8, bond: 1.5, heavy: 0, rise: 0.7 }] }], clips: { run: { phases: [{ dur: 1, run: { b: 1 } }, { dur: 13 }] } } });
+    const meanY = (f: ReturnType<typeof particlesAt>[number], k: number) => mean(f.y.filter((_, i) => f.kind[i] === k));
+    const [a] = particlesAt(e, [['run', 0]], 14);
+    expect(a.front).toBeCloseTo(11.5, 5);
+    expect(meanY(a, 1) - meanY(a, 0)).toBeGreaterThan(2.5);
+    expect(meanY(a, 1)).toBeGreaterThan(6.5);
+    const [b] = particlesAt(e, [['run', 0]], 20);
+    expect(Math.abs(meanY(b, 1) - meanY(a, 1))).toBeLessThan(0.6);
+  });
+
+  it('checks filters, walls, magnets and paper', () => {
+    expect(checkParticles(el({ boxes: [{ id: 'b', state: 'liquid', filter: { at: 0.95, holes: 1 } }] }))).toEqual(['box "b": a filter must be between 0.1 and 0.9 of the way up.']);
+    expect(checkParticles(el({ boxes: [{ id: 'b', state: 'liquid', wall: { at: 0.5, height: 1.2 } }] }))).toEqual(['box "b": a wall must stand between 0.1 and 0.9 of the way across, and be lower than the box.']);
+    expect(checkParticles(el({ boxes: [{ id: 'b', state: 'liquid', filter: { at: 0.5, holes: 1 } }], clips: { go: { phases: [{ dur: 1, release: ['b'] }] } } }))).toEqual([]);
+    expect(checkParticles(el({ clips: { go: { phases: [{ dur: 1, magnet: { x: 1 } }] } } }))).toEqual(['clip "go", phase 1 names no box "x".']);
+    expect(checkParticles(el({ clips: { go: { phases: [{ dur: 1, run: { b: 1 } }] } } }))).toEqual(['clip "go", phase 1 runs solvent up box "b", which is not paper.']);
+  });
+});
+
 describe('particles: scripts and timing', () => {
   const video = (p: ParticlesEl, lines: Explainer['scenes'][number]['lines']): Explainer => ({
     id: 'x',

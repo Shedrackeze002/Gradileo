@@ -217,11 +217,31 @@ See `src/video/script.ts` for every element and option. In short:
     have broken away from the lump (a dissolved particle stays counted until it joins a real lump
     again, so a few that brush together do not make the count jump).
   - `speed: 4` on the element runs the simulation faster than usual, as real dissolving is slow.
+  More, for separating mixtures:
+  - A kind's `size` (its diameter, 1 by default) makes grains bigger or smaller.
+  - `filter: { at: 0.5, holes: 1.3 }` lays a filter or sieve across the box at that fraction of
+    its height. The particles start on it, and it holds them all until a phase opens it
+    (`release: ['b']`); then particles smaller than the holes fall through and bigger ones stay.
+  - A kind marked `magnetic` is pulled up towards a magnet drawn over the box while a phase's
+    `magnet: { b: 1 }` holds it there (`0` takes it away).
+  - `escape: true` gives the box an open top that particles leave by (evaporation): one that
+    reaches the top is gone. A kind with `bond` 2 or more (a salt) never leaves; it falls back.
+  - `wall: { at: 0.5, height: 0.5 }` stands a low wall that never lifts (a still): the particles
+    start on its left and only a gas gets over it.
+  - `zones: [{ x: [0, 0.5], y: [0, 0.17] }, { x: [0.6, 1], y: [0, 1], temp: 0.4 }]` hold parts of
+    the box at their own temperatures, tinted red or blue: a hot plate (no `temp`: it follows the
+    box's temperature, so a clip heats it) and a cold condenser. In a box with `escape` or a `wall`,
+    gravity keeps its full strength, so a dissolved solid stays at the bottom however hot it is.
+  - `paper: true` makes the box a strip of chromatography paper with the particles as a dot on a
+    pencil line; a phase's `run: { b: 1 }` soaks the solvent up it, carrying each kind up at its
+    `rise` (a fraction of the solvent's speed), so the dyes part into spots. Give the dyes
+    `heavy: 0`, `cross: 0` and a temperature of about 0.005, so each spot keeps still.
   Emphasising a box's id makes it glow. Keep to a few dozen particles a box (120 at most): every
   frame of a moving scene is drawn afresh. See `src/content/chem7/videos/c7-2-1.ts` (the three
   states, pistons), `c7-2-2.ts` (melting, boiling, condensing on a cold can), `c7-2-3.ts` (heat
   flow, conduction), `c7-2-4.ts` (expansion, diffusion), `c7-3-2.ts` to `c7-3-4.ts` (dissolving,
-  saturation, stirring and heating) and
+  saturation, stirring and heating), `c7-4-1.ts` to `c7-4-3.ts` (sieving, magnets, filtering,
+  evaporation, distillation, chromatography) and
   `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge).
   In chemistry, every scene that describes particles moving, mixing, reacting or being squeezed
   shows it with `particles` (the owner's rule of 14 November 2026).

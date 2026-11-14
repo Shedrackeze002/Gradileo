@@ -5,7 +5,7 @@
  * of the hits each second and the trail of one followed particle.
  */
 import type { ParticleBox, ParticlesEl, Tone } from '../script.ts';
-import { boxSize, FLASH, particlesAt, pressureOf, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
+import { boxSize, FLASH, PAPER_START, particlesAt, pressureOf, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
@@ -15,6 +15,9 @@ const FONT = "'Lexend Variable', 'Inter Variable', system-ui, sans-serif";
 const GLASS = 'rgb(176 196 255)';
 const HOT = TONES.bad;
 const KIND_TONES: Tone[] = ['adj', 'opp', 'good', 'hyp'];
+/** Chromatography paper, and the solvent soaking up it. */
+const PAPER = 'rgb(236 232 222)';
+const WET = 'rgb(150 185 235)';
 /** The hottest temperature a thermometer shows (a gas is about 4). */
 const THERMO_MAX = 5;
 /** The width of the strip a bath heats or cools (as in particles.ts). */
@@ -137,7 +140,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   return (
     <svg width={w} height={h} style={{ overflow: 'visible', opacity: p }}>
       <defs>
-        {[...KIND_TONES, 'theta' as Tone].map((t) => (
+        {[...new Set([...KIND_TONES, 'theta' as Tone, ...el.boxes.flatMap((b) => (b.kinds ?? []).map((k) => k.tone).filter((t): t is Tone => !!t))])].map((t) => (
           <radialGradient key={t} id={`pg-${el.id}-${t}`} cx="35%" cy="32%" r="70%">
             <stop offset="0%" stopColor="#ffffff" stopOpacity={0.9} />
             <stop offset="28%" stopColor={TONES[t]} />
@@ -186,6 +189,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
         const kinds = b.kinds ?? [{ n: f.x.length, tone: b.tone }];
         const toneOf = (k: number) => kinds[k]?.tone ?? KIND_TONES[k % KIND_TONES.length];
         const r = 0.47 * S;
+        const rOf = (k: number) => r * (kinds[k]?.size ?? 1);
         const lidY = Y(f.lidY);
         const wallTop = Y(bh) - 4;
         const glass = { stroke: GLASS, strokeWidth: 5 + 3 * glow, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, fill: 'none', style: { filter: `drop-shadow(0 0 ${6 + 14 * glow}px ${glow ? TONES.theta : GLASS}66)` } };
@@ -193,8 +197,25 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
         return (
           <g key={b.id}>
             {/* The box: glass walls and floor, tinted inside (none for a bare box). */}
-            {!b.bare && <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill="rgb(120 140 255 / 0.06)" />}
-            {!b.bare && <path d={`M ${X(0)} ${wallTop} L ${X(0)} ${floor} L ${X(bw)} ${floor} L ${X(bw)} ${wallTop}`} {...glass} />}
+            {!b.bare && !b.paper && <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill="rgb(120 140 255 / 0.06)" />}
+            {!b.bare && !b.paper && <path d={`M ${X(0)} ${wallTop} L ${X(0)} ${floor} L ${X(bw)} ${floor} L ${X(bw)} ${wallTop}`} {...glass} />}
+            {/* A paper strip: wet as far as the solvent has soaked, with a pencil start line under the dot. */}
+            {b.paper && (
+              <g style={{ filter: glow ? `drop-shadow(0 0 ${14 * glow}px ${TONES.theta})` : undefined }}>
+                <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill={PAPER} rx={4} />
+                <rect x={X(0)} y={Y(f.front)} width={bw * S} height={floor - Y(f.front)} fill={WET} opacity={0.45} />
+                <line x1={X(0)} x2={X(bw)} y1={Y(f.front)} y2={Y(f.front)} stroke={TONES.adj} strokeWidth={3} opacity={0.8} />
+                <rect x={X(0)} y={Y(0.6)} width={bw * S} height={floor - Y(0.6)} fill={TONES.adj} opacity={0.55} />
+                <line x1={X(0.4)} x2={X(bw - 0.4)} y1={Y(PAPER_START - 0.7)} y2={Y(PAPER_START - 0.7)} stroke="rgb(90 90 100)" strokeWidth={2.5} />
+              </g>
+            )}
+            {/* Parts of the box held hot or cold: a hot plate tinted red, a condenser blue. */}
+            {b.zones?.map((z, zi) => {
+              const t0 = tempOf(b.temp, TEMPS[b.state]);
+              const zt = z.temp === undefined ? f.temp : tempOf(z.temp, f.temp);
+              const k = clamp01(Math.abs(zt - t0) / Math.max(0.05, t0));
+              return <rect key={zi} x={X(z.x[0] * bw)} y={Y(z.y[1] * bh)} width={(z.x[1] - z.x[0]) * bw * S} height={(z.y[1] - z.y[0]) * bh * S} fill={zt >= t0 ? HOT : TONES.adj} opacity={0.06 + 0.22 * k} />;
+            })}
             {/* The side where a box is heated or cooled, tinted red when hotter than it began and blue when colder. */}
             {b.bath && (() => {
               const t0 = tempOf(b.temp, TEMPS[b.state]);
@@ -229,18 +250,37 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 const k = clamp01((f.ke[i] - lo) / (hi - lo));
                 return (
                   <g key={i}>
-                    <circle cx={X(x)} cy={Y(f.y[i])} r={r} fill={k < 0.5 ? mix(TONES.adj, TONES.theta, k * 2) : mix(TONES.theta, TONES.bad, k * 2 - 1)} />
-                    <circle cx={X(x)} cy={Y(f.y[i])} r={r} fill={`url(#pg-${el.id}-shine)`} />
+                    <circle cx={X(x)} cy={Y(f.y[i])} r={rOf(f.kind[i])} fill={k < 0.5 ? mix(TONES.adj, TONES.theta, k * 2) : mix(TONES.theta, TONES.bad, k * 2 - 1)} />
+                    <circle cx={X(x)} cy={Y(f.y[i])} r={rOf(f.kind[i])} fill={`url(#pg-${el.id}-shine)`} />
                   </g>
                 );
               }
               const t = followed ? 'theta' : toneOf(f.kind[i]);
-              return <circle key={i} cx={X(x)} cy={Y(f.y[i])} r={r} fill={`url(#pg-${el.id}-${t})`} style={followed ? { filter: `drop-shadow(0 0 8px ${TONES.theta})` } : undefined} />;
+              return <circle key={i} cx={X(x)} cy={Y(f.y[i])} r={rOf(f.kind[i])} fill={`url(#pg-${el.id}-${t})`} style={followed ? { filter: `drop-shadow(0 0 8px ${TONES.theta})` } : undefined} />;
             })}
             {/* A divider across the box, slid up and out when it is lifted. */}
             {f.divider && f.divider.out < 1 && (
               <line x1={X(f.divider.x)} x2={X(f.divider.x)} y1={floor - 3 - f.divider.out * (floor - wallTop)} y2={wallTop - f.divider.out * (floor - wallTop)} {...glass} opacity={1 - f.divider.out} />
             )}
+            {/* A low wall that never lifts (a still's flask on the left, the collecting side on the right). */}
+            {b.wall && <line x1={X(b.wall.at * bw)} x2={X(b.wall.at * bw)} y1={floor - 3} y2={Y(b.wall.height * bh)} {...glass} />}
+            {/* A filter or sieve: a mesh across the box, dashed for its holes. */}
+            {f.filter && (
+              <line x1={X(0) + 3} x2={X(bw) - 3} y1={Y(f.filter.y) + 3} y2={Y(f.filter.y) + 3} stroke={f.filter.open ? 'rgb(225 220 205)' : INK3} strokeWidth={6} strokeDasharray={`${0.6 * S} ${0.25 * S}`} />
+            )}
+            {/* A magnet held over the box while it pulls. */}
+            {f.magnet > 0.02 && (() => {
+              const mx = X(bw / 2);
+              const top = wallTop - 96 + 30 * clamp01(f.magnet);
+              const arm = 26;
+              return (
+                <g opacity={clamp01(f.magnet / 0.3)}>
+                  <path d={`M ${mx - 2.2 * arm} ${top + 70} L ${mx - 2.2 * arm} ${top + 18} A ${2.2 * arm} ${2.2 * arm} 0 0 1 ${mx + 2.2 * arm} ${top + 18} L ${mx + 2.2 * arm} ${top + 70}`} fill="none" stroke="rgb(214 64 72)" strokeWidth={arm} />
+                  <rect x={mx - 2.2 * arm - arm / 2} y={top + 56} width={arm} height={18} fill="rgb(200 205 220)" />
+                  <rect x={mx + 2.2 * arm - arm / 2} y={top + 56} width={arm} height={18} fill="rgb(200 205 220)" />
+                </g>
+              );
+            })()}
             {/* A bracket over the particles' width, with dashed marks as wide as they were at first. */}
             {width > 0 && b.state !== 'gas' && (() => {
               const top = Y(Math.max(...f.y)) - r - 18;
@@ -269,7 +309,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 <rect x={X(bw / 2) - 7} y={TOP - 44} width={14} height={lidY - 14 - (TOP - 44)} fill="rgb(120 116 170)" />
                 <rect x={X(bw / 2) - 60} y={TOP - 50} width={120} height={14} rx={7} fill="rgb(120 116 170)" stroke={INK} strokeWidth={2} />
               </g>
-            ) : b.open || b.bare ? null : (
+            ) : b.open || b.bare || b.escape || b.paper ? null : (
               <line x1={X(0)} y1={lidY} x2={X(bw)} y2={lidY} {...glass} />
             )}
             {hasThermo && (
