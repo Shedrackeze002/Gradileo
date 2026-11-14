@@ -1,10 +1,66 @@
-import type { Explainer } from '@/video/script.ts';
+import { hydrogenBurning } from '@/video/reactions.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). The count under each box is every
+// atom still in it, which stands for its mass: a reaction only rearranges atoms, so the count
+// changes only when atoms leave an open container.
+
+/** Hydrogen burning in a sealed flask, with every atom counted. */
+const sealed: ParticlesEl = {
+  kind: 'particles',
+  id: 'c',
+  boxes: [hydrogenBurning('b', { tally: { kinds: [0, 1, 2, 3, 4], label: 'atoms' }, label: 'hydrogen and oxygen, sealed' })],
+  clips: { spark: { phases: [{ dur: 1, heat: { b: 2 } }, { dur: 2 }, { dur: 1, heat: { b: 0.4 } }, { dur: 10 }] } },
+  thermometers: true,
+  seed: 3,
+  height: 420,
+};
+
+/** Particles dissolved in the acid (the water itself is not drawn). */
+const DISSOLVED = { n: 0, bond: 0.15, heavy: 1 } as const;
+
+/**
+ * A solid fizzing in acid: an acid particle that hits the solid takes an atom of it into the
+ * solution and is set loose; two loose ones join as a gas molecule that rises. With `open`, gas
+ * that reaches the top leaves.
+ */
+const fizz = (id: string, label: string, open: boolean): ParticleBox => ({
+  id,
+  state: 'liquid',
+  width: 10,
+  height: 11,
+  temp: 0.5,
+  escape: open,
+  lump: true,
+  hold: true,
+  kinds: [
+    { n: 14, bond: 3, heavy: 2, tone: 'good', name: 'solid' },
+    { ...DISSOLVED, n: 18, size: 0.8, tone: 'theta', name: 'acid' },
+    { ...DISSOLVED, tone: 'good', name: 'dissolved solid' },
+    { ...DISSOLVED, size: 0.8, tone: 'theta', name: 'set loose' },
+    { ...DISSOLVED, size: 0.8, heavy: -1.5, tone: 'theta', name: 'gas' },
+  ],
+  reactions: [
+    { a: 1, b: 0, to: [3, 2], energy: 1.5 },
+    { a: 3, b: 3, to: [4, 4], join: true },
+  ],
+  tally: { kinds: [0, 1, 2, 3, 4], label: 'atoms' },
+  label,
+});
+
+const systems: ParticlesEl = {
+  kind: 'particles',
+  id: 'oc',
+  boxes: [fizz('o', 'open beaker', true), fizz('s', 'sealed flask', false)],
+  clips: { fizz: { phases: [{ dur: 1, release: ['o', 's'] }, { dur: 14 }] } },
+  height: 400,
+};
 
 const video: Explainer = {
   id: 'c9-3-1',
   lessonId: 'c9-3-1',
   title: 'Conservation of Mass',
-  thumbnail: 'open',
+  thumbnail: 'oc',
   summary:
     'Mass is conserved in every chemical reaction, because atoms are only rearranged, so the total mass of the reactants equals the total mass of the products. In an open container, gases escaping or joining make the mass seem to change; in a closed one it stays the same.',
   scenes: [
@@ -21,6 +77,26 @@ const video: Explainer = {
       layout: 'center',
       main: [
         { kind: 'math', id: 'law', size: 'md', lines: ['\\text{total mass of reactants} = \\text{total mass of products}'] },
+      ],
+      lines: [
+        { say: 'In a chemical reaction, mass is not created or destroyed. The total mass of the products equals the total mass of the reactants.', show: 'law' },
+        { say: 'This is because a reaction only rearranges atoms into new substances. Every atom that goes in comes out again.' },
+      ],
+    },
+    {
+      chapter: 'Counting atoms',
+      layout: 'center',
+      main: [sealed],
+      lines: [
+        { say: 'Let’s count. Here are hydrogen and oxygen molecules in a sealed flask: thirty-six atoms in all.', show: ['c', 'c.labels', 'c.tally', 'c.thermo'] },
+        { say: 'A spark sets them reacting. The molecules break apart, and their atoms join up again as water. Watch the count.', play: 'c.spark' },
+        { say: 'It never changes. The same thirty-six atoms are there, only joined differently, so the mass of the water made is the same as the mass of the gases it came from.', focus: 'c.b' },
+      ],
+    },
+    {
+      chapter: 'Using the law',
+      layout: 'center',
+      main: [
         {
           kind: 'math',
           id: 'ex',
@@ -29,14 +105,22 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'In a chemical reaction, mass is not created or destroyed. The total mass of the products equals the total mass of the reactants.', show: 'law' },
-        { say: 'This is because a reaction only rearranges atoms into new substances. Every atom that goes in comes out again.' },
         { say: 'So if fourteen grams of iron reacts completely with eight grams of sulfur, fourteen plus eight makes twenty-two grams of iron sulfide.', show: 'ex' },
         { say: 'It works backwards too. If six grams of magnesium burns to make ten grams of magnesium oxide, then ten take away six, or four grams of oxygen, must have joined it.' },
       ],
     },
     {
       chapter: 'Open and closed systems',
+      layout: 'center',
+      main: [systems],
+      lines: [
+        { say: 'Yet sometimes a balance reading does change. The reason is whether the system is open or closed.', show: ['oc', 'oc.labels', 'oc.tally'] },
+        { say: 'Here the same solid fizzes in acid in two containers, giving off a gas. On the left is an open beaker. Watch its count fall as the gas escapes into the air.', play: 'oc.fizz', focus: 'oc.o' },
+        { say: 'On the right is a sealed flask. The gas collects at the top, and the count stays the same.', focus: 'oc.s' },
+      ],
+    },
+    {
+      chapter: 'Balance readings',
       layout: 'center',
       main: [
         {
@@ -51,8 +135,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Yet sometimes a balance reading does change. The reason is whether the system is open or closed.', show: 'open' },
-        { say: 'When marble chips fizz in acid in an open beaker, the reading goes down, because carbon dioxide gas escapes into the air.', show: 'open.0', focus: 'open.0' },
+        { say: 'When marble chips fizz in acid in an open beaker, the reading goes down, because carbon dioxide gas escapes into the air.', show: ['open', 'open.0'], focus: 'open.0' },
         { say: 'When magnesium burns in an open crucible, the reading goes up, because oxygen from the air joins the magnesium.', show: 'open.1', focus: 'open.1' },
         { say: 'In a sealed flask, a closed system, nothing can get in or out, so the reading stays the same. Mass is never really lost. It has just moved somewhere you are not measuring.', show: 'open.2', focus: 'open.2' },
       ],
