@@ -11,6 +11,10 @@
  * it; hiding a part that was shown on its own hides just that part (to swap one label for another).
  */
 
+import { checkPath, type MotionPath } from './path.ts';
+
+export type { MotionPath };
+
 /** The name on every frame, thumbnail and YouTube description. */
 export const BRAND = 'Gradileo';
 
@@ -293,7 +297,14 @@ export interface MotionClip {
 }
 
 /** What a motion element can show over its bodies; each is a part ("sim.velocity"). */
-export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement'] as const;
+export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height'] as const;
+
+/**
+ * An energy bar of a motion element: the work done on the body by the forces pushing or lifting
+ * it, its kinetic energy, its gravitational potential energy, the energy that friction and air
+ * resistance have turned to heat, and the total of the last three.
+ */
+export type EnergyBar = 'work' | 'kinetic' | 'potential' | 'heat' | 'total';
 
 /**
  * Bodies moving along straight tracks under forces, for the physics videos: the motion is worked
@@ -304,9 +315,11 @@ export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clo
  * under it), `net` (the net force), `bars` (a momentum bar for each body), `total` (a bar for
  * their total momentum), `graph` (a velocity-time or distance-time graph that draws itself as the
  * bodies move), `clock` and `strobe` (a mark at each body's place at equal time steps),
- * `distance` (how far each body has travelled, with its path drawn under a single track) and
- * `displacement` (an arrow under a single track from where the body started to where it is now).
- * Emphasising a body's id makes it glow. See src/video/motion.ts.
+ * `distance` (how far each body has travelled, with its path drawn under a single track),
+ * `displacement` (an arrow under a single track from where the body started to where it is now),
+ * `energy` (the energy bars of `energy`; the bar for the total comes with `total`) and `height`
+ * (how high a body on a curved track is). Emphasising a body's id makes it glow. See
+ * src/video/motion.ts.
  */
 export interface MotionEl {
   kind: 'motion';
@@ -338,8 +351,27 @@ export interface MotionEl {
    * foot. A body's `x` is then the distance it has fallen in metres and `span` the fall shown, so
    * weight is a force with a positive `n` (drawn downwards) and air resistance points up. The
    * parts are `velocity`, `readout`, `net`, `clock`, `strobe` and `graph` (with one column).
+   * With `'up'`, for lifting, a body's `x` is its height above the ground instead: up is positive,
+   * so weight is a force with a negative `n`.
    */
-  vertical?: boolean;
+  vertical?: boolean | 'up';
+  /**
+   * A curved track instead of a straight one: a hill through given points, or the arc of a
+   * pendulum. A body's `x` is then its distance along the track in metres (from the left end of a
+   * hill, or from the lowest point of a pendulum's swing), and gravity pulls it along the slope.
+   * One lane; the parts are `velocity`, `energy`, `total`, `height` and `clock`.
+   */
+  path?: MotionPath;
+  /**
+   * Energy bars for the bodies listed in `of` (the first body otherwise): `bars` lists the bars
+   * in order, and `max` is the largest energy one must fit, in joules. Gravitational potential
+   * energy is m × g × height, with the height measured from the ground of a drop or a lift (and
+   * `g` given here), or from the zero of a curved track's points (with the path's own g). The
+   * force named "Weight" is gravity: its work is the change in potential energy, and is not
+   * counted as work done on the body. `names` renames a bar ("Energy supplied" for the work), and
+   * with several bodies `labels` names each one in front of its bars (its own label otherwise).
+   */
+  energy?: { of?: string[]; max: number; bars: EnergyBar[]; g?: number; names?: Partial<Record<EnergyBar, string>>; labels?: Record<string, string> };
   /** Seconds between strobe marks (0.5 by default). */
   strobe?: number;
   /** For the thumbnail: the clip to show, part way through. */
@@ -628,6 +660,15 @@ export function checkMotion(e: MotionEl): string[] {
   }
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
   for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
+  for (const id of e.energy?.of ?? []) if (!ids.has(id)) problems.push(`the energy bars name no body "${id}".`);
+  for (const id of Object.keys(e.energy?.labels ?? {})) if (!ids.has(id)) problems.push(`the energy bars label no body "${id}".`);
+  if (e.energy && !(e.energy.max > 0)) problems.push('the energy bars need a largest energy above zero.');
+  if (e.energy?.bars.includes('potential') && !e.path && !(e.vertical && (e.energy.g ?? 0) > 0)) problems.push('potential energy needs a curved track, or a drop or a lift with g given.');
+  if (e.path) {
+    problems.push(...checkPath(e.path));
+    if (e.vertical) problems.push('a curved track cannot also be a drop.');
+    if ((e.lanes?.length ?? 1) > 1) problems.push('a curved track has one lane.');
+  }
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     clip.phases.forEach((ph, pi) => {

@@ -168,9 +168,27 @@ See `src/video/script.ts` for every element and option. In short:
   agree to the nearest newton only after about seven times (mass ÷ drag) seconds: run the clip that
   long, with `slow: 0.5` (and a `note` saying so) to play a long fall twice as fast. A force with
   `hidden` acts without an arrow. A part of a motion can be hidden again while the motion stays
-  (`hide: 'sim.readout'`). Colours are fixed in every physics video: velocity green, net force and
+  (`hide: 'sim.readout'`). `vertical: 'up'` is a lift: a body's `x` is its height above the
+  ground, so weight is a negative force, and two forces the same way (weight and friction) are
+  drawn side by side; let the span run a little past the top of the lift, for the arrow over the
+  body. `path` is a curved track (`src/video/path.ts`, drawn by `stage/MotionPath.tsx`): a hill
+  through `points` (in metres across and up; it never overshoots them, so tops and valleys are
+  where you put them, and two points make a straight ramp) or a pendulum (`swing`, a length and
+  the largest angle). A body's `x` is then its distance along the track, gravity (`g`) pulls it
+  along the slope, and a force acts along the track; the parts are `velocity`, `height`,
+  `energy`, `total` and `clock`. `energy` adds energy bars, measured from the motion itself:
+  `work` (done by the forces that push or lift; the force named "Weight" is gravity and is not
+  counted), `kinetic`, `potential` (m × g × height: on a path, or in a drop or a lift with `g`
+  given), `heat` (what friction and air resistance have taken) and `total`, which comes in with
+  its own part (`sim.total`). `max` is the largest energy a bar must hold; `names` renames a bar
+  ("Energy supplied") and `labels` names each body when several are listed in `of`. The bars sit
+  under a track or a hill and beside a drop, a lift or a pendulum. To stop a motion at a moment
+  worth talking about (the top of a hill, the bottom of a swing), end the clip there: find the
+  time with a few lines of `motionAt` in a scratch file. Colours are fixed in every physics video: velocity green, net force and
   total momentum yellow, friction red, an applied force orange, weight pink, the normal force
-  blue, displacement violet, and the path travelled pale grey.
+  blue, displacement violet, and the path travelled pale grey; in the energy bars, kinetic
+  energy is green like velocity, potential energy pink like weight, work orange like an applied
+  force, heat red like friction, and the total yellow.
   Check a motion part way through with `--stills --quick --at 48.5,51` (times in seconds).
   The owner asked (14 November 2026) that science videos show the idea happening, not narrate
   over still slides: in physics, every scene that describes motion or a force plays it.

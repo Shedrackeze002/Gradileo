@@ -147,7 +147,7 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             // A motion is caught part way through its poster clip, with its forces and velocities drawn.
             // A drop takes the full height and width, without its graph, strobe marks or phase notes.
             <MotionView
-              el={{ ...fig, momentumMax: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })), ...(fig.vertical ? { graph: undefined, clips: withoutNotes(fig.clips) } : {}) }}
+              el={{ ...fig, momentumMax: undefined, energy: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })), ...(fig.vertical ? { graph: undefined, clips: withoutNotes(fig.clips) } : {}) }}
               st={{ ...FULL, parts: fig.vertical ? { velocity: 1 } : { velocity: 1, strobe: 1 } }}
               w={1160}
               h={fig.vertical ? 320 : Math.min(320, 150 + 130 * (fig.lanes?.length ?? 1))}

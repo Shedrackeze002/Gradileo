@@ -5,60 +5,20 @@
  * bars change as it moves.
  */
 import type { ReactElement } from 'react';
-import type { MotionBody, MotionEl, Tone } from '../script.ts';
+import type { MotionBody, MotionEl } from '../script.ts';
 import { motionAt, netForce, widthOf, type MotionState } from '../motion.ts';
 import { easeOut, ownPart, type ElState } from '../timeline.ts';
+import { Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
+import { PathView } from './MotionPath.tsx';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
 
-const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
-const FONT = "'Lexend Variable', 'Inter Variable', system-ui, sans-serif";
-const INK2 = 'rgb(201 198 232)';
-
-/** Body colours when the script gives none, by the body's place in the list. */
-const BODY_TONES: Tone[] = ['adj', 'opp', 'hyp', 'brand'];
-/** The colour of velocity, the net force and the total momentum in every physics video. */
-const VELOCITY = TONES.good;
-const NET = TONES.theta;
 /** Displacement is violet, and the path travelled a pale grey, in every physics video. */
 const DISPLACEMENT = TONES.brand;
 /** A changing number with its sign always written ("+5.0", "−3.0"), for a vector along the track. */
 const signed = (n: number) => (Math.abs(n) < 0.05 ? '0.0' : `${n > 0 ? '+' : '−'}${Math.abs(n).toFixed(1)}`);
 /** The step between the numbers on a graph's axis that reaches `max`. */
 const axisStep = (max: number) => (max <= 6 ? 1 : max <= 12 ? 2 : max <= 30 ? 5 : max <= 60 ? 10 : 20);
-
-/** A number for a label: whole when it is whole, one decimal otherwise. */
-const short = (n: number) => {
-  const r = Math.round(n * 10) / 10;
-  return Number.isInteger(r) ? String(r) : r.toFixed(1);
-};
-/** A changing number: always one decimal, so it does not jump about, and never "-0.0". */
-const live = (n: number) => (Math.abs(n) < 0.05 ? '0.0' : n.toFixed(1)).replace('-', '−');
-
-/** An arrow from (x, y) of the given signed length along x or y, growing from its tail. */
-function Arrow({ x, y, len, axis = 'x', color, weight = 9, opacity = 1 }: { x: number; y: number; len: number; axis?: 'x' | 'y'; color: string; weight?: number; opacity?: number }) {
-  const l = Math.abs(len);
-  if (l < 1) return null;
-  const s = Math.sign(len);
-  const head = Math.min(weight * 2.4, l);
-  const hw = weight * 1.35;
-  // Drawn along +x, then turned: up is negative y on the screen.
-  const angle = axis === 'x' ? (s > 0 ? 0 : 180) : s > 0 ? -90 : 90;
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${angle})`} opacity={opacity} style={{ filter: `drop-shadow(0 0 6px ${color}66)` }}>
-      {l > head && <line x1={0} y1={0} x2={l - head + 0.5} y2={0} stroke={color} strokeWidth={weight} strokeLinecap="round" />}
-      <polygon points={`${l},0 ${l - head},${hw} ${l - head},${-hw}`} fill={color} />
-    </g>
-  );
-}
-
-function Text({ x, y, children, color = INK, size = 21, anchor = 'middle', weight = 600, opacity = 1 }: { x: number; y: number; children: string; color?: string; size?: number; anchor?: 'start' | 'middle' | 'end'; weight?: number; opacity?: number }) {
-  return (
-    <text x={x} y={y} fill={color} fontSize={size} fontWeight={weight} textAnchor={anchor} dominantBaseline="central" opacity={opacity} style={{ fontFamily: FONT, fontVariantNumeric: 'tabular-nums', paintOrder: 'stroke', stroke: 'rgb(13 12 36 / 0.85)', strokeWidth: 4, strokeLinejoin: 'round' }}>
-      {children}
-    </text>
-  );
-}
 
 /** A wheel that turns as the cart rolls: `turn` is the angle in degrees. */
 function Wheel({ cx, cy, r, turn, color }: { cx: number; cy: number; r: number; turn: number; color: string }) {
@@ -144,7 +104,8 @@ function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionS
  * A drop: the same bodies, forces and clips, with the track turned to point down the screen. A
  * body's `x` is the distance it has fallen, so weight (a positive force) is drawn downwards and
  * air resistance upwards. Each lane is a column with a ruler of the distance fallen at its left
- * and the ground at its foot; a graph, when there is one, takes the right half.
+ * and the ground at its foot; a graph or energy bars, when there are any, take the right half.
+ * A lift (`vertical: 'up'`) is the same picture with `x` the height above the ground.
  */
 function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefined; w: number; h: number; state: MotionState }) {
   const p = st?.p ?? 0;
@@ -155,6 +116,10 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   const clock = part('clock');
   const strobe = part('strobe');
   const graph = part('graph');
+  const energy = part('energy');
+  const total = part('total');
+  // In a lift, `x` is the height above the ground: up the screen is positive.
+  const up = el.vertical === 'up';
   const lanes = el.lanes ?? [{}];
   const tone = (b: MotionBody) => TONES[b.tone ?? BODY_TONES[el.bodies.indexOf(b) % BODY_TONES.length]];
   const fs = el.forceScale ?? 4;
@@ -162,14 +127,17 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   const top = 58;
   const foot = 26;
   const BIG = 40;
-  const cw = (el.graph ? w * 0.5 : w) / lanes.length;
+  const beside = Boolean(el.graph ?? el.energy);
+  const heights = !up && Boolean(el.energy?.bars.includes('potential'));
+  const cw = (beside ? w * 0.5 : w) / lanes.length;
   const S = (h - top - foot - 2 * BIG) / (el.span[1] - el.span[0]);
-  // Where the foot of a body is when it has fallen `m` metres: every body lands on the same ground.
-  const Y = (m: number) => top + 2 * BIG + (m - el.span[0]) * S;
-  const ground = Y(el.span[1]);
+  // Where the foot of a body is when it has fallen `m` metres (or, in a lift, when it is `m` metres
+  // up): every body lands on the same ground.
+  const ground = top + 2 * BIG + (el.span[1] - el.span[0]) * S;
+  const Y = (m: number) => (up ? ground - (m - el.span[0]) * S : top + 2 * BIG + (m - el.span[0]) * S);
   const R = (b: MotionBody) => Math.max(24, Math.min(BIG, (widthOf(b) * S) / 2));
   // The note of a phase sits between the columns, or over the graph when there is one.
-  const noteX = el.graph ? w * 0.5 + 150 : w / 2;
+  const noteX = beside ? w * 0.5 + 150 : w / 2;
   const out: ReactElement[] = [];
 
   lanes.forEach((lane, li) => {
@@ -179,7 +147,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
       <g key={`col${li}`}>
         <rect x={rx - 7} y={ground} width={cw - 53} height={9} rx={3} fill="rgb(77 163 255 / 0.2)" />
         <line x1={rx - 7} y1={ground} x2={x0 + cw - 14} y2={ground} stroke="#bcd9ff" strokeWidth={3} strokeLinecap="round" />
-        <line x1={rx} y1={Y(el.span[0])} x2={rx} y2={ground} stroke={INK3} strokeWidth={1.5} opacity={0.7} />
+        <line x1={rx} y1={ground - (el.span[1] - el.span[0]) * S} x2={rx} y2={ground} stroke={INK3} strokeWidth={1.5} opacity={0.7} />
         {lane.label && (
           <text x={x0 + cw / 2} y={14} textAnchor="middle" fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             {lane.label}
@@ -187,11 +155,13 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
         )}
       </g>,
     );
-    const every = [1, 2, 5, 10, 20, 50, 100, 200, 500].find((n) => n * S >= 34) ?? 1000;
+    const every = [0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].find((n) => n * S >= 34) ?? 1000;
     for (let m = Math.ceil(el.span[0] / every) * every; m <= el.span[1] + 1e-9; m += every) {
-      out.push(<line key={`tick${li}-${m}`} x1={rx - 7} y1={Y(m)} x2={rx} y2={Y(m)} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
+      // A drop with a bar for potential energy is read by height, so its ruler counts up from the ground.
+      const at = heights ? el.span[1] - m : m;
+      out.push(<line key={`tick${li}-${m}`} x1={rx - 7} y1={Y(at)} x2={rx} y2={Y(at)} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
       out.push(
-        <text key={`num${li}-${m}`} x={rx - 12} y={Y(m)} fill={INK3} fontSize={15} textAnchor="end" dominantBaseline="central" style={{ fontFamily: FONT }}>
+        <text key={`num${li}-${m}`} x={rx - 12} y={Y(at)} fill={INK3} fontSize={15} textAnchor="end" dominantBaseline="central" style={{ fontFamily: FONT }}>
           {m + every > el.span[1] + 1e-9 ? `${m} m` : m}
         </text>,
       );
@@ -232,7 +202,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
 
     // Speed lines above a falling body, unless air resistance has its arrow there.
     if (Math.abs(s.v) >= 0.3 && !mine.some((f) => Math.sign(f.n) === -Math.sign(s.v))) {
-      const dir = Math.sign(s.v);
+      const dir = Math.sign(s.v) * (up ? -1 : 1);
       const len = Math.min(80, Math.abs(s.v) * 9);
       [0.2, 0.5, 0.8].forEach((f, i) => {
         const ph = (state.time * 2.6 + i * 0.37) % 1;
@@ -257,17 +227,24 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
     // balanced forces are two arrows of one length. Hundreds of newtons are written whole.
     const whole = mine.some((force) => Math.abs(force.n) >= 100);
     const newtons = (n: number) => (whole ? String(Math.round(n) + 0) : live(n));
+    const downward = (force: (typeof mine)[number]) => (up ? force.n < 0 : force.n > 0);
     for (const force of mine) {
       const size = Math.abs(force.n);
       const fc = TONES[force.tone ?? (force.drag || force.resist ? 'bad' : 'hyp')];
       const grow = force.drag ? 1 : easeOut(force.age / 0.35);
       const len = (force.drag ? size * fs : Math.max(12, size * fs)) * grow;
-      const down = force.n > 0;
+      const down = downward(force);
       const y0 = down ? cy + r + 2 : cy - r - 3;
       const mid = Math.max(14, len / 2);
-      out.push(<Arrow key={`f-${b.id}-${force.name}`} x={cx} y={y0} len={down ? -len : len} axis="y" color={fc} />);
+      // Two forces the same way (weight and friction on a load being lifted) stand side by side,
+      // the first with its name on its left.
+      const same = mine.filter((other) => downward(other) === down);
+      const place = same.indexOf(force);
+      const fx = cx + (same.length > 1 ? (place - (same.length - 1) / 2) * Math.max(30, 0.9 * r) : 0);
+      const left = same.length > 1 && place === 0;
+      out.push(<Arrow key={`f-${b.id}-${force.name}`} x={fx} y={y0} len={down ? -len : len} axis="y" color={fc} />);
       out.push(
-        <Text key={`ft-${b.id}-${force.name}`} x={cx + 18} y={down ? y0 + mid : y0 - mid} anchor="start" color={fc} opacity={force.drag ? clamp01(len / 10) : clamp01(grow * 1.5)}>
+        <Text key={`ft-${b.id}-${force.name}`} x={fx + (left ? -18 : 18)} y={down ? y0 + mid : y0 - mid} anchor={left ? 'end' : 'start'} color={fc} opacity={force.drag ? clamp01(len / 10) : clamp01(grow * 1.5)}>
           {`${force.name} ${force.drag ? newtons(size) : short(size)} N`}
         </Text>,
       );
@@ -279,7 +256,9 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
     if (vel > 0) rows.push([moving ? (el.speedWord ? `speed = ${live(Math.abs(s.v))} m/s` : `v = ${live(s.v)} m/s`) : 'at rest', VELOCITY, vel]);
     if (readout > 0) rows.push([`a = ${live(s.a)} m/s²`, INK2, readout]);
     if (net > 0) rows.push([`Net force ${newtons(Math.abs(netForce(state.forces, b.id)))} N`, NET, net]);
-    if (vel > 0 && moving) out.push(<Arrow key={`v-${b.id}`} x={cx - r - 20} y={cy - r} len={-s.v * vs} axis="y" color={VELOCITY} weight={6} opacity={vel} />);
+    // The velocity arrow starts level with the end of the body it is leaving.
+    const rise = (up ? 1 : -1) * s.v;
+    if (vel > 0 && moving) out.push(<Arrow key={`v-${b.id}`} x={cx - r - 20} y={rise > 0 ? cy + r : cy - r} len={rise * vs} axis="y" color={VELOCITY} weight={6} opacity={vel} />);
     rows.forEach(([text, color, opacity], i) => {
       out.push(
         <Text key={`row-${b.id}-${i}`} x={cx - r - 38} y={cy + (i - (rows.length - 1) / 2) * 30} anchor="end" color={color} size={i === 0 && vel > 0 ? 21 : 19} opacity={opacity}>
@@ -290,15 +269,12 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   }
 
   if (graph > 0 && el.graph) out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * 0.5 + 100, 88, w - 34, h - 78]} tone={tone} />);
-  if (clock > 0)
-    out.push(
-      <g key="clock" opacity={clock}>
-        <rect x={w - 170} y={0} width={170} height={38} rx={19} fill="rgb(255 255 255 / 0.07)" stroke="rgb(255 255 255 / 0.14)" />
-        <Text x={w - 85} y={19.5} size={19} color={INK2}>
-          {`t = ${state.time.toFixed(1)} s`}
-        </Text>
-      </g>,
-    );
+  // Energy bars take the right half when there is no graph, level with the middle of the fall.
+  else if (el.energy && (energy > 0 || total > 0)) {
+    const rowsH = energyRows(el) * 62;
+    out.push(<EnergyBars key="energy" el={el} state={state} x={w * 0.5 + 40} y={Math.max(top, (top + ground - rowsH) / 2)} w={w * 0.5 - 40} opacity={energy} total={total} stacked />);
+  }
+  if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
   if (state.note)
     out.push(
       <g key="note">
@@ -322,8 +298,10 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   const p = st?.p ?? 0;
   if (p <= 0) return <div style={{ width: w, height: h }} />;
   const state: MotionState = motionAt(el, plays ?? st?.plays ?? []);
+  if (el.path) return <PathView el={el} st={st} w={w} h={h} state={state} />;
   if (el.vertical) return <FallView el={el} st={st} w={w} h={h} state={state} />;
   const part = (name: string) => ownPart(st, name);
+  const energy = part('energy');
   const vel = part('velocity');
   const readout = part('readout');
   const net = part('net');
@@ -343,7 +321,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   // The bars keep their room from the start, so the tracks do not jump when they appear.
   const barRows = el.momentumMax ? el.bodies.length + (el.momentumTotal === false ? 0 : 1) : 0;
   const ROW = 44;
-  const barsH = barRows ? barRows * ROW + 50 : 0;
+  const barsH = barRows ? barRows * ROW + 50 : energyRows(el) ? energyRows(el) * ENERGY_ROW + 24 : 0;
   const top = 40;
   const laneH = (h - top - barsH) / lanes.length;
   // Under each track: the ruler, and on a single track room for the net force.
@@ -673,15 +651,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   }
 
   // The clock and the note of the phase ("Slow motion").
-  if (clock > 0)
-    out.push(
-      <g key="clock" opacity={clock}>
-        <rect x={w - 170} y={0} width={170} height={38} rx={19} fill="rgb(255 255 255 / 0.07)" stroke="rgb(255 255 255 / 0.14)" />
-        <Text x={w - 85} y={19.5} size={19} color={INK2}>
-          {`t = ${state.time.toFixed(1)} s`}
-        </Text>
-      </g>,
-    );
+  if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
   if (state.note)
     out.push(
       <g key="note">
@@ -694,6 +664,9 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
 
   // A velocity-time (or distance-time) graph that draws itself as the bodies move, above the track on the right.
   if (graph > 0 && el.graph) out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * 0.47, top + 44, w - 34, ground(0) - BLOCK_H - 150]} tone={tone} />);
+
+  // Energy bars, under the tracks.
+  if (el.energy && !el.momentumMax && (energy > 0 || total > 0)) out.push(<EnergyBars key="energy" el={el} state={state} x={0} y={h - barsH + 22} w={w} opacity={energy} total={total} />);
 
   // Momentum bars: one for each body and one for the total, which a collision leaves unchanged.
   if (bars > 0 && el.momentumMax) {
