@@ -250,13 +250,26 @@ See `src/video/script.ts` for every element and option. In short:
     under the box (the part `tally`). A gas box with a reacting lump can break it into pieces
     with `lump: 4` and `cols: 2`; give it `hold: true` so the pieces do not drift together before
     the clip lets them go.
+  More, for gases:
+  - A kind's `mass` (1 by default) makes its particles heavier: at the same temperature they move
+    more slowly, as heavy gas molecules do (give molecules' atoms their masses: H 1, C 12, O 16).
+    Weaken the atoms' `bond` to about 0.03 (H 0.05), or molecules of three atoms clump together.
+  - `piston: true` with `lid` draws the lid as a piston; a phase moving `lid` and `heat` together
+    holds the gauge steady (Charles's law). `gauge: { box, start, unit: 'atm', decimals: 2 }` reads
+    in another unit.
+  - `hold: [0, 2]` holds only those kinds still until a phase's `release` (`hold: true` is the first
+    kind). With `apart`, `ends: 0.1` starts the first and last kinds in strips that wide at the two
+    ends of a long tube and the rest between them, and `endLabels: ['NH₃', 'HCl']` names the ends.
+    A reaction with `settle: true` fixes the new particles where they formed (the white ring of
+    ammonium chloride), and the part `middle` marks the middle of the box.
   Emphasising a box's id makes it glow. Keep to a few dozen particles a box (120 at most): every
   frame of a moving scene is drawn afresh. See `src/content/chem7/videos/c7-2-1.ts` (the three
   states, pistons), `c7-2-2.ts` (melting, boiling, condensing on a cold can), `c7-2-3.ts` (heat
   flow, conduction), `c7-2-4.ts` (expansion, diffusion), `c7-3-2.ts` to `c7-3-4.ts` (dissolving,
   saturation, stirring and heating), `c7-4-1.ts` to `c7-4-3.ts` (sieving, magnets, filtering,
   evaporation, distillation, chromatography) and
-  `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge), and the reactions in
+  `src/content/chem20/videos/c20-2-1-d.ts` to `c20-2-7-d.ts` (the gas laws: masses, pistons,
+  gauges, the diffusion tube), and the reactions in
   `src/content/chem8/videos/` and `src/content/chem9/videos/c9-3-1.ts`, `c9-3-4.ts` (rates side by
   side) and `c9-4-3.ts` (neutralization).
   In chemistry, every scene that describes particles moving, mixing, reacting or being squeezed
