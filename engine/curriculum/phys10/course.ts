@@ -4,7 +4,8 @@
  * who have never studied physics: describing motion, forces, work, energy and power, waves, sound
  * and light, and electricity, at the level most school systems teach in Grades 9 and 10.
  *
- * It is a draft while its units are being written: Units 1 to 3 are here, and Units 4 and 5 follow.
+ * It is a draft until Physics is added as a subject in the app (placement, topics and the
+ * pages that list the subjects); all five units are written.
  */
 import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
 
@@ -107,12 +108,58 @@ export const LESSONS: LessonMeta[] = [
     ['p10-efficiency', 'p10-energy-transfers'],
     ['Calculate efficiency, useful energy and wasted energy', 'Identify the useful and wasted energy transfers of a device'],
     55, ['efficiency', 'useful energy', 'wasted energy']),
+
+  // ---------------- Unit 4: Waves, Sound and Light ----------------
+  L('p10-4-1', 'p10-u4', '4.1', 'What a Wave Is', ['10-D1'],
+    ['p10-wave-types', 'p10-wave-parts'],
+    ['Say what a wave transfers, and tell transverse waves from longitudinal waves', 'Name the parts of a wave, and read its amplitude and wavelength from a graph'],
+    55, ['wave', 'transverse', 'longitudinal', 'amplitude', 'wavelength', 'crest', 'trough']),
+  L('p10-4-2', 'p10-u4', '4.2', 'The Wave Equation', ['10-D1'],
+    ['p10-frequency-period', 'p10-wave-equation'],
+    ['Find a frequency from a count of waves, and change between frequency and period', 'Use wave speed = frequency × wavelength to find a speed, a frequency or a wavelength'],
+    60, ['frequency', 'hertz', 'period', 'wave speed', 'wave equation']),
+  L('p10-4-3', 'p10-u4', '4.3', 'Sound', ['10-D2'],
+    ['p10-sound', 'p10-echo'],
+    ['Describe how sound is made and travels, and link pitch to frequency and loudness to amplitude', 'Use the speed of sound to find distances and times, including for echoes'],
+    60, ['sound', 'vibration', 'pitch', 'loudness', 'echo', 'ultrasound']),
+  L('p10-4-4', 'p10-u4', '4.4', 'Reflection and Refraction', ['10-D2'],
+    ['p10-reflection', 'p10-refraction'],
+    ['Use the law of reflection, and describe the image in a plane mirror', 'Describe how light changes speed and direction when it passes from one material into another'],
+    65, ['ray', 'normal', 'angle of incidence', 'angle of reflection', 'plane mirror', 'refraction']),
+  L('p10-4-5', 'p10-u4', '4.5', 'The Electromagnetic Spectrum', ['10-D2'],
+    ['p10-em-spectrum', 'p10-em-waves'],
+    ['Order the waves of the electromagnetic spectrum, and give their uses and dangers', 'Use the speed of electromagnetic waves to find times, distances, wavelengths and frequencies'],
+    60, ['electromagnetic wave', 'electromagnetic spectrum', 'speed of light', 'radio waves', 'microwaves', 'infrared', 'ultraviolet', 'X-rays', 'gamma rays']),
+
+  // ---------------- Unit 5: Electricity ----------------
+  L('p10-5-1', 'p10-u5', '5.1', 'Charge and Current', ['10-E1'],
+    ['p10-charge', 'p10-current'],
+    ['Describe electric charge, conductors and insulators, and what an electric current is', 'Use charge = current × time to find a charge, a current or a time'],
+    60, ['electric charge', 'coulomb', 'conductor', 'insulator', 'electric current', 'ampere', 'conventional current']),
+  L('p10-5-2', 'p10-u5', '5.2', 'Voltage, Resistance and Ohm’s Law', ['10-E1'],
+    ['p10-resistance', 'p10-ohms-law'],
+    ['Describe voltage and resistance, how they are measured, and what changes the current in a circuit', 'Use voltage = current × resistance to find a voltage, a current or a resistance'],
+    65, ['voltage', 'potential difference', 'volt', 'resistance', 'ohm', 'ammeter', 'voltmeter', 'Ohm’s law']),
+  L('p10-5-3', 'p10-u5', '5.3', 'Series Circuits', ['10-E2'],
+    ['p10-series', 'p10-series-voltage'],
+    ['Find the total resistance and the current of resistors in series', 'Describe current and voltage in a series circuit, and find how the supply voltage is shared'],
+    60, ['series circuit', 'total resistance', 'supply voltage']),
+  L('p10-5-4', 'p10-u5', '5.4', 'Parallel Circuits', ['10-E2'],
+    ['p10-parallel', 'p10-parallel-resistance'],
+    ['Describe current and voltage in a parallel circuit, and find the branch currents', 'Find the total resistance of two resistors in parallel, and compare it with series'],
+    65, ['parallel circuit', 'branch', 'junction']),
+  L('p10-5-5', 'p10-u5', '5.5', 'Electrical Power and Energy', ['10-E2'],
+    ['p10-electrical-power', 'p10-electrical-energy'],
+    ['Use power = current × voltage to find a power, a current or a voltage', 'Find the energy an appliance transfers in joules and in kilowatt-hours, and what it costs'],
+    60, ['electrical power', 'watt', 'kilowatt-hour']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'p10-u1', number: 1, title: 'Describing Motion', description: 'Quantities and units, scalars and vectors, speed, displacement and velocity, acceleration, and distance-time and velocity-time graphs.', outcomes: ['10-A1', '10-A2'], lessons: [], color: 'sky' },
   { id: 'p10-u2', number: 2, title: 'Forces and Newton’s Laws', description: 'Kinds of force and net force, Newton’s three laws of motion, mass, weight and gravity, and friction and air resistance.', outcomes: ['10-B1', '10-B2'], lessons: [], color: 'rose' },
   { id: 'p10-u3', number: 3, title: 'Work, Energy and Power', description: 'Work, kinetic energy, gravitational potential energy, the conservation of energy, power and efficiency.', outcomes: ['10-C1', '10-C2'], lessons: [], color: 'amber' },
+  { id: 'p10-u4', number: 4, title: 'Waves, Sound and Light', description: 'Transverse and longitudinal waves, frequency, period and the wave equation, sound and echoes, reflection and refraction, and the electromagnetic spectrum.', outcomes: ['10-D1', '10-D2'], lessons: [], color: 'violet' },
+  { id: 'p10-u5', number: 5, title: 'Electricity', description: 'Charge and current, voltage, resistance and Ohm’s law, series and parallel circuits, and electrical power and energy.', outcomes: ['10-E1', '10-E2'], lessons: [], color: 'emerald' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
