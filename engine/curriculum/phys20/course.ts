@@ -13,6 +13,8 @@ export const OUTCOMES: Outcome[] = [
   { code: '20-B2', strand: 'Dynamics', text: 'Use Newton’s law of universal gravitation and the gravitational field strength.' },
   { code: '20-C1', strand: 'Circular Motion, Work and Energy', text: 'Describe uniform circular motion with period, speed, centripetal acceleration and centripetal force, and apply it to orbits.' },
   { code: '20-C2', strand: 'Circular Motion, Work and Energy', text: 'Calculate work, kinetic, gravitational and elastic potential energy, apply the conservation of mechanical energy, and calculate power and efficiency.' },
+  { code: '20-D1', strand: 'Oscillations and Waves', text: 'Describe simple harmonic motion, and calculate the periods of a mass on a spring and of a pendulum.' },
+  { code: '20-D2', strand: 'Oscillations and Waves', text: 'Describe mechanical waves, use the universal wave equation, and explain reflection, interference, standing waves, resonance and the Doppler effect.' },
 ];
 
 const L = (
@@ -124,12 +126,42 @@ export const LESSONS: LessonMeta[] = [
     ['p20-power', 'p20-efficiency'],
     ['Calculate power from work and time, and from force and speed', 'Calculate the efficiency of a machine, and use it to find an output, an input or a time'],
     65, ['power', 'watt', 'efficiency']),
+
+  L('p20-4-1', 'p20-u4', '4.1', 'Simple Harmonic Motion', ['20-D1'],
+    ['p20-shm-describe', 'p20-shm-force'],
+    ['Find the period, frequency and amplitude of an oscillation from a description or a graph', 'Use the restoring force to find the force, acceleration and displacement of an oscillating mass'],
+    65, ['oscillation', 'equilibrium position', 'amplitude', 'period', 'frequency', 'restoring force', 'simple harmonic motion']),
+  L('p20-4-2', 'p20-u4', '4.2', 'The Mass on a Spring', ['20-D1'],
+    ['p20-spring-period', 'p20-spring-energy'],
+    ['Find the period and frequency of a mass on a spring', 'Follow the energy of a mass on a spring, and find its speed at any point'],
+    70, ['spring constant', 'period', 'elastic potential energy', 'mechanical energy']),
+  L('p20-4-3', 'p20-u4', '4.3', 'The Pendulum', ['20-D1'],
+    ['p20-pendulum-period', 'p20-pendulum-g'],
+    ['Find the period of a simple pendulum and the length that gives a stated period', 'Explain what the period depends on, and use a pendulum to measure the acceleration due to gravity'],
+    65, ['simple pendulum', 'bob', 'period', 'acceleration due to gravity']),
+  L('p20-4-4', 'p20-u4', '4.4', 'Wave Properties and the Universal Wave Equation', ['20-D2'],
+    ['p20-wave-properties', 'p20-wave-equation'],
+    ['Describe transverse and longitudinal waves, and read the amplitude, wavelength and period of a wave', 'Use the universal wave equation to find the speed, frequency or wavelength of a wave'],
+    70, ['medium', 'transverse wave', 'longitudinal wave', 'crest', 'trough', 'wavelength', 'universal wave equation']),
+  L('p20-4-5', 'p20-u4', '4.5', 'Reflection, Superposition and Interference', ['20-D2'],
+    ['p20-reflection', 'p20-superposition'],
+    ['Describe how pulses reflect from fixed and free ends, and use echoes to find distances', 'Add overlapping waves, and tell constructive from destructive interference'],
+    70, ['reflection', 'echo', 'principle of superposition', 'constructive interference', 'destructive interference', 'path difference']),
+  L('p20-4-6', 'p20-u4', '4.6', 'Standing Waves and Resonance', ['20-D2'],
+    ['p20-standing-string', 'p20-resonance-air'],
+    ['Relate the loops of a standing wave on a string to its wavelength, frequency and speed', 'Explain resonance, and use the resonant lengths of an air column'],
+    70, ['standing wave', 'node', 'antinode', 'fundamental', 'harmonic', 'natural frequency', 'resonance']),
+  L('p20-4-7', 'p20-u4', '4.7', 'The Doppler Effect', ['20-D2'],
+    ['p20-doppler-describe', 'p20-doppler-calc'],
+    ['Explain how motion of a source or an observer changes the frequency heard', 'Calculate the frequency heard from a moving source'],
+    60, ['Doppler effect', 'source', 'observer', 'sonic boom']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'p20-u1', number: 1, title: 'Kinematics', description: 'Position, displacement and velocity, acceleration, motion graphs, the equations of motion, free fall, vectors in two dimensions, relative velocity and projectile motion.', outcomes: ['20-A1', '20-A2'], lessons: [], color: 'sky' },
   { id: 'p20-u2', number: 2, title: 'Dynamics', description: 'Free-body diagrams, Newton’s laws of motion, static and kinetic friction, inclined planes, connected objects, forces in two dimensions, universal gravitation and gravitational field strength.', outcomes: ['20-B1', '20-B2'], lessons: [], color: 'rose' },
   { id: 'p20-u3', number: 3, title: 'Circular Motion, Work and Energy', description: 'Uniform circular motion, centripetal force, orbits and satellites, work and force-displacement graphs, kinetic, gravitational and elastic energy, the conservation of mechanical energy, power and efficiency.', outcomes: ['20-C1', '20-C2'], lessons: [], color: 'amber' },
+  { id: 'p20-u4', number: 4, title: 'Oscillations and Waves', description: 'Simple harmonic motion, the mass on a spring, the pendulum, wave properties and the universal wave equation, reflection, superposition and interference, standing waves and resonance, and the Doppler effect.', outcomes: ['20-D1', '20-D2'], lessons: [], color: 'emerald' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
