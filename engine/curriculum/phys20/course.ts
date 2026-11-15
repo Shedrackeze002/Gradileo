@@ -11,6 +11,8 @@ export const OUTCOMES: Outcome[] = [
   { code: '20-A2', strand: 'Kinematics', text: 'Describe motion in two dimensions with vectors: components and resultants, relative velocity and projectile motion.' },
   { code: '20-B1', strand: 'Dynamics', text: 'Apply Newton’s laws of motion with free-body diagrams: friction, inclined planes, connected objects and forces in two dimensions.' },
   { code: '20-B2', strand: 'Dynamics', text: 'Use Newton’s law of universal gravitation and the gravitational field strength.' },
+  { code: '20-C1', strand: 'Circular Motion, Work and Energy', text: 'Describe uniform circular motion with period, speed, centripetal acceleration and centripetal force, and apply it to orbits.' },
+  { code: '20-C2', strand: 'Circular Motion, Work and Energy', text: 'Calculate work, kinetic, gravitational and elastic potential energy, apply the conservation of mechanical energy, and calculate power and efficiency.' },
 ];
 
 const L = (
@@ -93,11 +95,41 @@ export const LESSONS: LessonMeta[] = [
     ['p20-field', 'p20-field-distance'],
     ['Find gravitational field strengths and weights on the surfaces of planets', 'Find how the gravitational field strength falls with distance from the centre of a planet'],
     65, ['gravitational field', 'gravitational field strength', 'weight']),
+
+  L('p20-3-1', 'p20-u3', '3.1', 'Uniform Circular Motion', ['20-C1'],
+    ['p20-circular-speed', 'p20-centripetal-accel'],
+    ['Find the period, the frequency and the speed of an object that moves steadily round a circle', 'Find the centripetal acceleration of an object from its speed or its period'],
+    65, ['uniform circular motion', 'period', 'frequency', 'centripetal acceleration']),
+  L('p20-3-2', 'p20-u3', '3.2', 'Centripetal Force', ['20-C1'],
+    ['p20-centripetal-force', 'p20-circular-apply'],
+    ['Find the centripetal force on an object and name the force that provides it', 'Apply centripetal force to a car on a level bend and to motion in a vertical circle'],
+    70, ['centripetal force', 'tangent', 'vertical circle']),
+  L('p20-3-3', 'p20-u3', '3.3', 'Orbits and Satellites', ['20-C1'],
+    ['p20-orbit-speed', 'p20-orbit-period'],
+    ['Explain a circular orbit with gravity as the centripetal force, and find the speed of a satellite', 'Find the period of a satellite, and compare orbits with Kepler’s third law'],
+    70, ['orbit', 'satellite', 'orbital speed', 'Kepler’s third law']),
+  L('p20-3-4', 'p20-u3', '3.4', 'Work and Force-Displacement Graphs', ['20-C2'],
+    ['p20-work', 'p20-work-graph'],
+    ['Calculate the work done by a force along or at an angle to the displacement, and the net work', 'Find the work done from the area under a force-displacement graph'],
+    65, ['work', 'joule', 'net work', 'force-displacement graph']),
+  L('p20-3-5', 'p20-u3', '3.5', 'Kinetic, Gravitational and Elastic Energy', ['20-C2'],
+    ['p20-kinetic-potential', 'p20-elastic-energy'],
+    ['Calculate kinetic and gravitational potential energy, and use the work-energy theorem', 'Use Hooke’s law, and calculate the elastic potential energy stored in a spring'],
+    70, ['kinetic energy', 'gravitational potential energy', 'work-energy theorem', 'Hooke’s law', 'spring constant', 'elastic potential energy']),
+  L('p20-3-6', 'p20-u3', '3.6', 'Conservation of Mechanical Energy', ['20-C2'],
+    ['p20-conservation', 'p20-energy-loss'],
+    ['Use the conservation of mechanical energy to find speeds and heights when friction can be ignored', 'Find the mechanical energy lost to friction, and the speed or friction force that follows'],
+    70, ['mechanical energy', 'conservation of energy', 'thermal energy']),
+  L('p20-3-7', 'p20-u3', '3.7', 'Power and Efficiency', ['20-C2'],
+    ['p20-power', 'p20-efficiency'],
+    ['Calculate power from work and time, and from force and speed', 'Calculate the efficiency of a machine, and use it to find an output, an input or a time'],
+    65, ['power', 'watt', 'efficiency']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'p20-u1', number: 1, title: 'Kinematics', description: 'Position, displacement and velocity, acceleration, motion graphs, the equations of motion, free fall, vectors in two dimensions, relative velocity and projectile motion.', outcomes: ['20-A1', '20-A2'], lessons: [], color: 'sky' },
   { id: 'p20-u2', number: 2, title: 'Dynamics', description: 'Free-body diagrams, Newton’s laws of motion, static and kinetic friction, inclined planes, connected objects, forces in two dimensions, universal gravitation and gravitational field strength.', outcomes: ['20-B1', '20-B2'], lessons: [], color: 'rose' },
+  { id: 'p20-u3', number: 3, title: 'Circular Motion, Work and Energy', description: 'Uniform circular motion, centripetal force, orbits and satellites, work and force-displacement graphs, kinetic, gravitational and elastic energy, the conservation of mechanical energy, power and efficiency.', outcomes: ['20-C1', '20-C2'], lessons: [], color: 'amber' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
