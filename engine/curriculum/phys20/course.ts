@@ -9,6 +9,8 @@ import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
 export const OUTCOMES: Outcome[] = [
   { code: '20-A1', strand: 'Kinematics', text: 'Describe motion in one dimension with position, displacement, velocity and acceleration, in graphs and with the equations of uniformly accelerated motion.' },
   { code: '20-A2', strand: 'Kinematics', text: 'Describe motion in two dimensions with vectors: components and resultants, relative velocity and projectile motion.' },
+  { code: '20-B1', strand: 'Dynamics', text: 'Apply Newton’s laws of motion with free-body diagrams: friction, inclined planes, connected objects and forces in two dimensions.' },
+  { code: '20-B2', strand: 'Dynamics', text: 'Use Newton’s law of universal gravitation and the gravitational field strength.' },
 ];
 
 const L = (
@@ -57,10 +59,45 @@ export const LESSONS: LessonMeta[] = [
     ['p20-projectile-level', 'p20-projectile-angle'],
     ['Find the time of flight, the range and the landing velocity of an object launched horizontally', 'Find the time of flight, the greatest height and the range of an object launched at an angle'],
     75, ['projectile', 'trajectory', 'range', 'time of flight']),
+
+  // ---------------- Unit 2: Dynamics ----------------
+  L('p20-2-1', 'p20-u2', '2.1', 'Forces and Free-Body Diagrams', ['20-B1'],
+    ['p20-fbd', 'p20-net-force'],
+    ['Draw a free-body diagram, and find the weight of an object and the normal force on it', 'Find the net force of forces along one line, and use balanced forces to find an unknown force'],
+    60, ['free-body diagram', 'weight', 'normal force', 'tension', 'net force']),
+  L('p20-2-2', 'p20-u2', '2.2', 'Newton’s Laws of Motion', ['20-B1'],
+    ['p20-second-law', 'p20-vertical-forces'],
+    ['Apply Newton’s three laws, and use the second law with several forces and with the equations of motion', 'Find the tension in a cable or the reading of a scale when an object accelerates up or down'],
+    70, ['Newton’s first law', 'Newton’s second law', 'Newton’s third law', 'inertia', 'apparent weight']),
+  L('p20-2-3', 'p20-u2', '2.3', 'Static and Kinetic Friction', ['20-B1'],
+    ['p20-static-friction', 'p20-kinetic-friction'],
+    ['Find the greatest static friction force and decide whether an object starts to move', 'Find a kinetic friction force and the acceleration or stopping distance of a sliding object'],
+    65, ['static friction', 'kinetic friction', 'coefficient of friction']),
+  L('p20-2-4', 'p20-u2', '2.4', 'Forces on an Inclined Plane', ['20-B1'],
+    ['p20-incline-components', 'p20-incline-motion'],
+    ['Resolve a weight into components along and into a ramp, and find the normal force', 'Find the acceleration of an object on a ramp, with and without friction'],
+    70, ['inclined plane', 'component', 'normal force']),
+  L('p20-2-5', 'p20-u2', '2.5', 'Connected Objects and Tension', ['20-B1'],
+    ['p20-connected', 'p20-pulley'],
+    ['Find the acceleration of two objects joined by a string, and the tension in the string', 'Find the acceleration and the tension when objects are joined over a pulley'],
+    70, ['tension', 'system', 'pulley']),
+  L('p20-2-6', 'p20-u2', '2.6', 'Forces in Two Dimensions', ['20-B1'],
+    ['p20-pull-angle', 'p20-forces-2d'],
+    ['Resolve a force at an angle and find the normal force and the acceleration it gives', 'Add perpendicular forces, and find the tensions that hold an object in equilibrium'],
+    70, ['component', 'resultant', 'equilibrium', 'equilibrant']),
+  L('p20-2-7', 'p20-u2', '2.7', 'Universal Gravitation', ['20-B2'],
+    ['p20-gravitation', 'p20-inverse-square'],
+    ['Use Newton’s law of universal gravitation to find the force between two masses', 'Predict how the force changes when the masses or the distance between them change'],
+    65, ['universal gravitation', 'gravitational constant', 'inverse square law']),
+  L('p20-2-8', 'p20-u2', '2.8', 'Gravitational Field Strength', ['20-B2'],
+    ['p20-field', 'p20-field-distance'],
+    ['Find gravitational field strengths and weights on the surfaces of planets', 'Find how the gravitational field strength falls with distance from the centre of a planet'],
+    65, ['gravitational field', 'gravitational field strength', 'weight']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'p20-u1', number: 1, title: 'Kinematics', description: 'Position, displacement and velocity, acceleration, motion graphs, the equations of motion, free fall, vectors in two dimensions, relative velocity and projectile motion.', outcomes: ['20-A1', '20-A2'], lessons: [], color: 'sky' },
+  { id: 'p20-u2', number: 2, title: 'Dynamics', description: 'Free-body diagrams, Newton’s laws of motion, static and kinetic friction, inclined planes, connected objects, forces in two dimensions, universal gravitation and gravitational field strength.', outcomes: ['20-B1', '20-B2'], lessons: [], color: 'rose' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
