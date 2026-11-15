@@ -152,7 +152,9 @@ See `src/video/script.ts` for every element and option. In short:
   the velocities, so momentum is conserved by the forces, not typed in. Showing the element shows
   the tracks and bodies; its parts add `velocity`, `readout` (acceleration), `net` (net force),
   `strobe`, `clock`, `graph` (velocity against time, drawing itself, or distance against time
-  with `graph: { y: 'distance' }`), `distance` (how far each body has travelled, with its path
+  with `graph: { y: 'distance' }`, or the body's position on the ruler with `y: 'position'`; a
+  `min` below zero lets a velocity or a position go under the time axis, for a body that turns
+  round), `distance` (how far each body has travelled, with its path
   drawn leg by leg under a single track), `displacement` (an arrow under a single track from where
   the body started to where it is now, with its sign) and `bars` and `total` (momentum). The
   displacement's label sits beside its arrow, so leave about 300 px of track free on one side.
@@ -214,6 +216,27 @@ See `src/video/script.ts` for every element and option. In short:
   leaves the numbers off, for a picture that is not to scale (the electromagnetic spectrum), and
   `ruler: false` leaves out the ruler. Lanes of one kind share a scale, so a louder sound looks
   larger beside a quieter one.
+
+- `flight` (`src/video/flight.ts`) is for motion in two dimensions, drawn to one scale so that
+  every angle on screen is the true one. Give the `view` (left, right, bottom, top), the bodies
+  (each with where it starts, `at`, and its starting velocity, `v`) and the clips, whose phases
+  can `set` a velocity, `freeze`, play in slow motion or `stop` a body where it is. There are
+  three scenes. `ground` (the default) has a ground line with a ruler; with `gravity` a body in
+  flight keeps its horizontal velocity, gains g of downward velocity each second and stops where
+  it lands, a phase can `release` a body held at rest, and a `ledge` gives it somewhere to start
+  from. `river` has water between two banks; with a `stream` every body moves with its own
+  velocity plus the stream's (a boat points the way it is steered, not the way it travels), and
+  streaks drift with the current. `map` has a grid and a compass, for displacements. The parts
+  are `velocity` (green), `components` (its horizontal part blue and its vertical part orange,
+  each changing on its own), `own` (in a stream: the body's own velocity in blue and the
+  stream's in pink, head to tail, so that the green velocity closes the triangle), `trail`,
+  `strobe`, `shadows` (a mark that follows the body along the ground and one that follows it up
+  the wall, to take the two motions apart), `displacement` (purple, from where the body started),
+  `legs` (the two parts of the displacement), `angle`, `readout` (the numbers for the arrows
+  shown, in a column kept by giving `readout: {}`) and `clock`. To read the arrows of a
+  projectile as it lands, end the clip a moment before the landing time (`landingTime`), since
+  a body that has landed is at rest. Arrows that point down from a body near the ground need
+  room under the picture (`below`). A river has a ruler along its bank when `tick` is given.
 
 - `rays` (`src/video/rays.ts`) is for light meeting a surface: a `mirror`, where the angle of
   reflection equals the angle of incidence, or a `boundary` between two materials with their

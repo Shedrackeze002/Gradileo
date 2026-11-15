@@ -11,7 +11,7 @@ const steady: MotionEl = {
   kind: 'motion',
   id: 'sim',
   span: [0, 17],
-  height: 500,
+  height: 470,
   velocityScale: 16,
   graph: { of: ['cart'], seconds: 3, max: 8 },
   lanes: [{ surface: 'smooth', label: 'A constant acceleration' }],

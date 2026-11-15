@@ -1276,7 +1276,15 @@ items ship or decisions change.
      - Done (15 November 2026): **the five videos of Unit 5, Electricity** (`p10-5-1` to
        `p10-5-5`), rendered and in Drive. Grade 10 Physics now has a video for every lesson: 28
        videos in five units.
-     - Next: the videos of Grade 11 Physics (`phys-20`), then Grade 12 Physics (`phys-30`).
+     - Grade 11 videos, Unit 1 (15 November 2026): ten videos scripted for the eight Kinematics
+       lessons (relative velocity and projectile motion have two parts each). A new `flight`
+       element (`src/video/flight.ts`) draws motion in two dimensions to scale: a projectile with
+       its horizontal and vertical velocity arrows changing on their own, a boat carried by a
+       current with the velocity triangle drawn head to tail, and displacements on a map with
+       their east and north parts. The graph of a `motion` element can now plot position and go
+       below zero, for a cart that turns round.
+     - Next: render Unit 1 and move it to Drive, then the videos of Units 2 to 4, then Grade 12
+       Physics (`phys-30`).
        `phys-sample-momentum` becomes the first video of Grade 12 Unit A and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none

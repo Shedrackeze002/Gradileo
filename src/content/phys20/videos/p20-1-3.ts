@@ -15,6 +15,7 @@ const speedUp: MotionEl = {
   velocityScale: 14,
   lanes: [{ surface: 'smooth', label: 'Speeding up' }],
   bodies: [{ id: 'cart', shape: 'cart', mass: 1, label: 'A', x: 1, v: 2 }],
+  poster: 'go',
   clips: { go: { phases: [{ dur: 2, forces: [drive('cart', 4)] }] } },
 };
 
