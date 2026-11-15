@@ -1258,8 +1258,15 @@ items ship or decisions change.
        (`6.53e3`). Unit 3, Circular Motion, Work and Energy, is done as well: seven lessons
        (`p20-3-1` to `p20-3-7`) and 14 skills on uniform circular motion, centripetal force,
        orbits and Kepler's third law, work and force-displacement graphs, kinetic, gravitational
-       and elastic energy, the conservation of mechanical energy, power and efficiency. Unit 4
-       (Oscillations and Waves) is next.
+       and elastic energy, the conservation of mechanical energy, power and efficiency. Unit 4,
+       Oscillations and Waves, completes the course (15 November 2026): seven lessons
+       (`p20-4-1` to `p20-4-7`) and 14 skills on simple harmonic motion and its restoring force,
+       the period and energy of a mass on a spring, the pendulum and measuring $g$ with it, wave
+       properties and the universal wave equation, reflection and echoes, superposition and
+       interference, standing waves on a string, resonance in an air column, and the Doppler
+       effect; the speed of sound is stated in each question that needs it. The course has 30
+       lessons and 60 skills. Next for it: take it out of draft (the course lists, sign-up
+       placement with a check on Grade 10 Physics, and Browse by topic), then its videos.
      - Done (15 November 2026): Units 2, 3 and 4 of Grade 10 Physics were rendered again with the
        right fonts and replaced in Google Drive.
      - Next: render Unit 5. `phys-sample-momentum`
