@@ -122938,5 +122938,268 @@
         "working": "Distance = speed × time: $d = vt = 3.0 \\times 10^{8} \\times 500 = 1.5 \\times 10^{11}\\ \\text{m}$."
       }
     ]
+  },
+  "p10-5-1": {
+    "lessonId": "p10-5-1",
+    "title": "Charge and Current",
+    "duration": 326,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electric charge",
+        "t": 17.979
+      },
+      {
+        "title": "Charge that can move",
+        "t": 58.25
+      },
+      {
+        "title": "Electric current",
+        "t": 106.523
+      },
+      {
+        "title": "Charge, current and time",
+        "t": 166.603
+      },
+      {
+        "title": "Current is not used up",
+        "t": 222.703
+      },
+      {
+        "title": "Your turn",
+        "t": 259.151
+      },
+      {
+        "title": "Summary",
+        "t": 285.524
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-1:try",
+        "t": 270.139,
+        "prompt": "A current of 3 A flows through a heater for 20 s. How much charge passes through the heater?",
+        "choices": [
+          "23 C",
+          "6.7 C",
+          "60 C",
+          "0.15 C"
+        ],
+        "answer": 2,
+        "working": "Charge = current × time: $Q = It = 3 \\times 20 = 60\\ \\text{C}$."
+      }
+    ]
+  },
+  "p10-5-2": {
+    "lessonId": "p10-5-2",
+    "title": "Voltage, Resistance and Ohm’s Law",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Voltage",
+        "t": 20.809
+      },
+      {
+        "title": "Resistance",
+        "t": 70.978
+      },
+      {
+        "title": "Current and voltage",
+        "t": 113.485
+      },
+      {
+        "title": "Ohm’s law",
+        "t": 157.51
+      },
+      {
+        "title": "Your turn",
+        "t": 226.61
+      },
+      {
+        "title": "Summary",
+        "t": 258.52
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-2:try",
+        "t": 240.422,
+        "prompt": "A voltage of 6 V across a resistor drives a current of 0.5 A through it. What is the resistance of the resistor?",
+        "choices": [
+          "12 Ω",
+          "3 Ω",
+          "0.083 Ω",
+          "6.5 Ω"
+        ],
+        "answer": 0,
+        "working": "Resistance = voltage ÷ current: $R = \\dfrac{V}{I} = \\dfrac{6}{0.5} = 12\\ \\Omega$."
+      }
+    ]
+  },
+  "p10-5-3": {
+    "lessonId": "p10-5-3",
+    "title": "Series Circuits",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One loop, one current",
+        "t": 15.52
+      },
+      {
+        "title": "Sharing the voltage",
+        "t": 76.27
+      },
+      {
+        "title": "More lamps in series",
+        "t": 130.876
+      },
+      {
+        "title": "A break anywhere",
+        "t": 163.489
+      },
+      {
+        "title": "Your turn",
+        "t": 193.094
+      },
+      {
+        "title": "Summary",
+        "t": 225.308
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-3:try",
+        "t": 206.452,
+        "prompt": "Resistors of 3 Ω and 5 Ω are connected in series to a 24 V supply. What current flows in the circuit?",
+        "choices": [
+          "8 A",
+          "4.8 A",
+          "12.8 A",
+          "3 A"
+        ],
+        "answer": 3,
+        "working": "Total resistance: $3 + 5 = 8\\ \\Omega$. Current: $I = \\dfrac{V}{R} = \\dfrac{24}{8} = 3\\ \\text{A}$."
+      }
+    ]
+  },
+  "p10-5-4": {
+    "lessonId": "p10-5-4",
+    "title": "Parallel Circuits",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Branches",
+        "t": 19.03
+      },
+      {
+        "title": "Adding a branch",
+        "t": 90.453
+      },
+      {
+        "title": "Total resistance in parallel",
+        "t": 127.372
+      },
+      {
+        "title": "If one branch fails",
+        "t": 178.762
+      },
+      {
+        "title": "Your turn",
+        "t": 213.59
+      },
+      {
+        "title": "Summary",
+        "t": 245.918
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-4:try",
+        "t": 224.567,
+        "prompt": "Resistors of 12 Ω and 4 Ω are connected in parallel. What is their total resistance?",
+        "choices": [
+          "16 Ω",
+          "3 Ω",
+          "8 Ω",
+          "0.33 Ω"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{1}{R} = \\dfrac{1}{12} + \\dfrac{1}{4} = \\dfrac{1}{12} + \\dfrac{3}{12} = \\dfrac{4}{12} = \\dfrac{1}{3}$, so $R = 3\\ \\Omega$."
+      }
+    ]
+  },
+  "p10-5-5": {
+    "lessonId": "p10-5-5",
+    "title": "Electrical Power and Energy",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrical power",
+        "t": 19.459
+      },
+      {
+        "title": "Half the voltage",
+        "t": 63.396
+      },
+      {
+        "title": "Power in a resistor",
+        "t": 95.591
+      },
+      {
+        "title": "Electrical energy",
+        "t": 144.368
+      },
+      {
+        "title": "Kilowatt-hours and cost",
+        "t": 179.003
+      },
+      {
+        "title": "Your turn",
+        "t": 242.567
+      },
+      {
+        "title": "Summary",
+        "t": 271.619
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-5:try",
+        "t": 254.248,
+        "prompt": "A heater carries a current of 4 A when the voltage across it is 230 V. What is its power?",
+        "choices": [
+          "57.5 W",
+          "234 W",
+          "920 W",
+          "3680 W"
+        ],
+        "answer": 2,
+        "working": "Power = current × voltage: $P = IV = 4 \\times 230 = 920\\ \\text{W}$."
+      }
+    ]
   }
 }
