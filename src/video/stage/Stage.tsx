@@ -144,7 +144,8 @@ function aspect(d: DiagramEl) {
 
 /**
  * A flight on a thumbnail: caught part way through its poster clip, with its path, its strobe marks
- * and the parts of each velocity, and no panel or notes. It sits to the right of the logo, and its
+ * and the parts of each velocity (on a map, its displacement and the two parts of that), and no
+ * panel or notes. It sits to the right of the logo, and its
  * arrows are kept short enough to stay inside the picture.
  */
 function FlightThumb({ el, w, h }: { el: FlightEl; w: number; h: number }) {
@@ -153,7 +154,7 @@ function FlightThumb({ el, w, h }: { el: FlightEl; w: number; h: number }) {
   const now = flightAt(el, plays);
   const top = Math.max(1e-6, ...Object.values(now.bodies).map((b) => Math.max(Math.abs(b.vx), Math.abs(b.vy), Math.hypot(b.ownX, b.ownY))));
   const velocityScale = Math.min(el.velocityScale ?? 150 / Math.max(fastest(el), 1e-6), 100 / top);
-  return <FlightView el={{ ...el, readout: undefined, clips, velocityScale }} st={{ ...FULL, parts: { trail: 1, strobe: 1, ...(el.stream ? { own: 1, velocity: 1 } : { components: 1 }) } }} w={w} h={h} plays={plays} />;
+  return <FlightView el={{ ...el, readout: undefined, clips, velocityScale }} st={{ ...FULL, parts: { trail: 1, ...(el.scene === 'map' ? { displacement: 1, legs: 1, angle: 1 } : el.stream ? { strobe: 1, own: 1, velocity: 1 } : { strobe: 1, components: 1 }) } }} w={w} h={h} plays={plays} />;
 }
 
 /** Whether a flight's view is wide and flat (a projectile over level ground) and not tall (a river to cross). */
