@@ -1255,9 +1255,14 @@ items ship or decisions change.
        Newton's laws, friction, inclined planes, connected objects, forces in two dimensions,
        universal gravitation and field strength; $G$ and the masses and radii of planets are
        stated in each question, and answers in scientific notation are accepted as typed
-       (`6.53e3`). Units 3 and 4 (Circular Motion, Work and Energy; Oscillations and Waves) are
-       next.
-     - Next: check the new renders of Units 2 to 4, then render Unit 5. `phys-sample-momentum`
+       (`6.53e3`). Unit 3, Circular Motion, Work and Energy, is done as well: seven lessons
+       (`p20-3-1` to `p20-3-7`) and 14 skills on uniform circular motion, centripetal force,
+       orbits and Kepler's third law, work and force-displacement graphs, kinetic, gravitational
+       and elastic energy, the conservation of mechanical energy, power and efficiency. Unit 4
+       (Oscillations and Waves) is next.
+     - Done (15 November 2026): Units 2, 3 and 4 of Grade 10 Physics were rendered again with the
+       right fonts and replaced in Google Drive.
+     - Next: render Unit 5. `phys-sample-momentum`
        becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then the rest
        of Grade 11 Physics (`phys-20`), its videos, and Grade 12 Physics (`phys-30`); the lessons
        have no tutor recordings yet.

@@ -122675,5 +122675,268 @@
         "working": "Useful: $0.25 \\times 2000 = 500\\ \\text{J}$. Wasted: $2000 - 500 = 1500\\ \\text{J}$."
       }
     ]
+  },
+  "p10-4-1": {
+    "lessonId": "p10-4-1",
+    "title": "What a Wave Is",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Energy travels, matter stays",
+        "t": 19.506
+      },
+      {
+        "title": "Two kinds of wave",
+        "t": 70.683
+      },
+      {
+        "title": "Measuring a wave",
+        "t": 129.679
+      },
+      {
+        "title": "Your turn",
+        "t": 206.869
+      },
+      {
+        "title": "Summary",
+        "t": 244.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-1:q",
+        "t": 223.201,
+        "prompt": "On a frozen wave, one crest is at 2 m and the next crest is at 8 m. The crests are 4 cm above the rest position. What are the wavelength and the amplitude?",
+        "choices": [
+          "6 m and 8 cm",
+          "6 m and 4 cm",
+          "3 m and 4 cm",
+          "10 m and 8 cm"
+        ],
+        "answer": 1,
+        "working": "Wavelength: crest to crest, $8 - 2 = 6\\ \\text{m}$. Amplitude: rest position to crest, $4\\ \\text{cm}$."
+      }
+    ]
+  },
+  "p10-4-2": {
+    "lessonId": "p10-4-2",
+    "title": "The Wave Equation",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Frequency and period",
+        "t": 19.844
+      },
+      {
+        "title": "The wave equation",
+        "t": 62.899
+      },
+      {
+        "title": "Same speed, different frequency",
+        "t": 118.699
+      },
+      {
+        "title": "Using the equation",
+        "t": 158.05
+      },
+      {
+        "title": "Your turn",
+        "t": 208.759
+      },
+      {
+        "title": "Summary",
+        "t": 238.199
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-2:q",
+        "t": 220.316,
+        "prompt": "A water wave has a frequency of 5 Hz and a wavelength of 0.8 m. What is its speed?",
+        "choices": [
+          "0.16 m/s",
+          "5.8 m/s",
+          "6.25 m/s",
+          "4 m/s"
+        ],
+        "answer": 3,
+        "working": "Wave speed = frequency × wavelength: $v = f\\lambda = 5 \\times 0.8 = 4\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p10-4-3": {
+    "lessonId": "p10-4-3",
+    "title": "Sound",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How sound travels",
+        "t": 17.305
+      },
+      {
+        "title": "Pitch",
+        "t": 75.818
+      },
+      {
+        "title": "Loudness",
+        "t": 116.146
+      },
+      {
+        "title": "The speed of sound",
+        "t": 148.327
+      },
+      {
+        "title": "Echoes",
+        "t": 189.979
+      },
+      {
+        "title": "Your turn",
+        "t": 233.522
+      },
+      {
+        "title": "Summary",
+        "t": 273.825
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-3:q",
+        "t": 252.572,
+        "prompt": "Sound travels at 1500 m/s in sea water. A ship sends a pulse of sound straight down, and the echo from the sea bed returns 0.4 s later. How deep is the sea?",
+        "choices": [
+          "300 m",
+          "600 m",
+          "150 m",
+          "3750 m"
+        ],
+        "answer": 0,
+        "working": "Down and back: $1500 \\times 0.4 = 600\\ \\text{m}$. Halve it: $600 \\div 2 = 300\\ \\text{m}$."
+      }
+    ]
+  },
+  "p10-4-4": {
+    "lessonId": "p10-4-4",
+    "title": "Reflection and Refraction",
+    "duration": 365,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The law of reflection",
+        "t": 17.894
+      },
+      {
+        "title": "Measure from the normal",
+        "t": 72.999
+      },
+      {
+        "title": "The image in a mirror",
+        "t": 102.265
+      },
+      {
+        "title": "Refraction",
+        "t": 136.591
+      },
+      {
+        "title": "Leaving the glass",
+        "t": 197.025
+      },
+      {
+        "title": "Speed and wavelength",
+        "t": 237.334
+      },
+      {
+        "title": "Your turn",
+        "t": 294.232
+      },
+      {
+        "title": "Summary",
+        "t": 326.244
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-4:q",
+        "t": 305.846,
+        "prompt": "A ray of light makes an angle of 20° with the surface of a flat mirror. What is the angle of reflection?",
+        "choices": [
+          "20°",
+          "40°",
+          "70°",
+          "110°"
+        ],
+        "answer": 2,
+        "working": "The normal is at 90° to the mirror, so the angle of incidence is $90^\\circ - 20^\\circ = 70^\\circ$. The angle of reflection equals it: $70^\\circ$."
+      }
+    ]
+  },
+  "p10-4-5": {
+    "lessonId": "p10-4-5",
+    "title": "The Electromagnetic Spectrum",
+    "duration": 365,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One family of waves",
+        "t": 18.843
+      },
+      {
+        "title": "The spectrum in order",
+        "t": 80.146
+      },
+      {
+        "title": "Uses and dangers",
+        "t": 147.831
+      },
+      {
+        "title": "Using the speed of light",
+        "t": 208.343
+      },
+      {
+        "title": "Your turn",
+        "t": 279.731
+      },
+      {
+        "title": "Summary",
+        "t": 324.376
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-5:q",
+        "t": 297.323,
+        "prompt": "All electromagnetic waves travel at $3.0 \\times 10^{8}$ m/s in a vacuum. Light from the Sun takes 500 s to reach the Earth. How far away is the Sun?",
+        "choices": [
+          "$6.0 \\times 10^{5}$ m",
+          "$1.5 \\times 10^{11}$ m",
+          "$1.5 \\times 10^{6}$ m",
+          "$3.5 \\times 10^{8}$ m"
+        ],
+        "answer": 1,
+        "working": "Distance = speed × time: $d = vt = 3.0 \\times 10^{8} \\times 500 = 1.5 \\times 10^{11}\\ \\text{m}$."
+      }
+    ]
   }
 }
