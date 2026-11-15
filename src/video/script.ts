@@ -775,6 +775,8 @@ export interface FlightPhase {
   set?: Record<string, [number, number]>;
   /** Under gravity: let these bodies go as the phase starts (a ball dropped from rest). */
   release?: string[];
+  /** Stop these bodies where they are as the phase starts (a boat that has reached the far bank): the stream no longer carries them. */
+  stop?: string[];
   /** A short note shown over the picture ("Slow motion"). */
   note?: string;
 }
@@ -801,9 +803,11 @@ export const FLIGHT_PARTS = ['velocity', 'components', 'own', 'trail', 'strobe',
  * where each body was at equal time steps), `shadows` (a mark on the ground under the body and
  * one on the left wall beside it, with their own strobe marks: the two motions taken apart),
  * `displacement` (an arrow from where the body started to where it is), `legs` (the two parts of
- * that displacement, dashed), `angle` (the angle of the displacement, or of the velocity when no
- * displacement is shown, measured from the +x direction), `readout` (a panel of the numbers for
- * the arrows shown) and `clock`. Emphasising a body's id makes it glow.
+ * that displacement, dashed: along x and then along y, or for a body in a stream its own motion
+ * and then how far the stream has carried it), `angle` (the angle of the displacement, or of the
+ * velocity when no displacement is shown, measured from the x direction; for a body in a stream,
+ * the angle between the way it points and the way it travels), `readout` (a panel of the numbers
+ * for the arrows shown) and `clock`. Emphasising a body's id makes it glow.
  */
 export interface FlightEl {
   kind: 'flight';
@@ -821,12 +825,13 @@ export interface FlightEl {
   /**
    * A current or a wind: every body listed in `of` (all of them otherwise) is carried at this
    * velocity as well as its own. On a river the water lies between the two y values of `band`
-   * (the whole view otherwise), and marks drift with it so that the current is seen.
+   * (the whole view otherwise), and marks drift with it so that the current is seen. `name` is
+   * what the readout calls it ("Current" on a river and "Wind" otherwise).
    */
   stream?: { v: [number, number]; band?: [number, number]; of?: string[]; name?: string };
   /** The units written on the picture: metres and seconds otherwise. */
   units?: { length?: string; time?: string };
-  /** The gap between ruler or grid marks, in the length unit (chosen to suit the view otherwise). */
+  /** The gap between ruler or grid marks, in the length unit (chosen to suit the view otherwise). A river has a ruler along its banks only when this is given. */
   tick?: number;
   /** Pixels of arrow for each unit of velocity (chosen so the fastest starting velocity is about 150 pixels otherwise). */
   velocityScale?: number;
@@ -834,7 +839,11 @@ export interface FlightEl {
   strobe?: number;
   /** Pixels kept clear under the picture, for arrows that point down from a body near the ground. */
   below?: number;
-  /** The names of the two directions in the readout: "Horizontal" and "Vertical" otherwise ("East" and "North" on a map). */
+  /**
+   * The names of the two directions in the readout: "Horizontal" and "Vertical" otherwise ("East"
+   * and "North" on a map). With a stream they name the two legs of the displacement instead: the
+   * body's own motion and the drift ("Across the river" and "Downstream").
+   */
   axes?: [string, string];
   /**
    * Give this when a line shows `readout`: it keeps a column beside the picture for the panel of
@@ -1047,7 +1056,7 @@ export function checkFlight(e: FlightEl): string[] {
     clip.phases.forEach((ph, pi) => {
       const where = `clip "${name}", phase ${pi + 1}`;
       if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
-      for (const id of [...Object.keys(ph.set ?? {}), ...(ph.release ?? [])]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const id of [...Object.keys(ph.set ?? {}), ...(ph.release ?? []), ...(ph.stop ?? [])]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
       if (ph.release?.length && !e.gravity) problems.push(`${where} lets a body go, but there is no gravity.`);
     });
   }

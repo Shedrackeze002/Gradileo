@@ -147,14 +147,17 @@ function aspect(d: DiagramEl) {
  * and the parts of each velocity, and no panel or notes. It sits to the right of the logo, and its
  * arrows are kept short enough to stay inside the picture.
  */
-function FlightThumb({ el }: { el: FlightEl }) {
+function FlightThumb({ el, w, h }: { el: FlightEl; w: number; h: number }) {
   const plays: Array<[string, number]> = el.poster ? [[el.poster, clipSeconds(el, el.poster) * 0.7]] : [];
   const clips = Object.fromEntries(Object.entries(el.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }]));
   const now = flightAt(el, plays);
   const top = Math.max(1e-6, ...Object.values(now.bodies).map((b) => Math.max(Math.abs(b.vx), Math.abs(b.vy), Math.hypot(b.ownX, b.ownY))));
   const velocityScale = Math.min(el.velocityScale ?? 150 / Math.max(fastest(el), 1e-6), 100 / top);
-  return <FlightView el={{ ...el, readout: undefined, clips, velocityScale }} st={{ ...FULL, parts: { trail: 1, strobe: 1, ...(el.stream ? { own: 1, velocity: 1 } : { components: 1 }) } }} w={890} h={330} plays={plays} />;
+  return <FlightView el={{ ...el, readout: undefined, clips, velocityScale }} st={{ ...FULL, parts: { trail: 1, strobe: 1, ...(el.stream ? { own: 1, velocity: 1 } : { components: 1 }) } }} w={w} h={h} plays={plays} />;
 }
+
+/** Whether a flight's view is wide and flat (a projectile over level ground) and not tall (a river to cross). */
+const flatFlight = (el: FlightEl) => (el.view[1] - el.view[0]) / (el.view[3] - el.view[2]) > 1.5;
 
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
   const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight';
@@ -163,7 +166,7 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || fig?.kind === 'motion' || fig?.kind === 'wave' || fig?.kind === 'flight';
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || fig?.kind === 'motion' || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig));
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
@@ -184,7 +187,7 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             // Waves are caught part way through their poster clip, without the ruler or the notes.
             <WaveView el={{ ...fig, ruler: false, lanes: fig.lanes.slice(0, 2), clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }} st={{ ...FULL, parts: {} }} w={1160} h={320} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
           ) : fig.kind === 'flight' ? (
-            <FlightThumb el={fig} />
+            <FlightThumb el={fig} w={890} h={330} />
           ) : (
             <DiagramView el={fig as DiagramEl} st={FULL} w={1160} h={280} />
           )}
@@ -215,6 +218,8 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
           ) : fig.kind === 'circuit' ? (
             // A circuit is shown switched on, with its charges, part way through the poster clip.
             <CircuitView el={{ ...fig, open: false, clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }} st={{ ...FULL, parts: { charges: 1 } }} w={560} h={440} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
+          ) : fig.kind === 'flight' ? (
+            <FlightThumb el={fig} w={520} h={500} />
           ) : fig.kind === 'similar' ? (
             <SimilarView el={fig} st={FULL} w={500} h={480} />
           ) : null}

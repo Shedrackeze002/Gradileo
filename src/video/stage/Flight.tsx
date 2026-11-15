@@ -145,6 +145,23 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
         <line x1={px} y1={Y(b1)} x2={px + pw} y2={Y(b1)} stroke={INK2} strokeWidth={3} />
       </g>,
     );
+    // A ruler along the near bank, where there is land to write on (the last mark carries the unit), and its marks alone along the far bank.
+    if (el.tick !== undefined) {
+      const first = Math.ceil(x0 / tick + 0.15);
+      const last = Math.floor(x1 / tick - 0.15);
+      for (let k = first; k <= last; k++) {
+        const m = k * tick;
+        const name = k === last ? `${short(m)} ${len}` : short(m);
+        if (Y(b0) + 30 <= py + ph)
+          out.push(
+            <g key={`rn${k}`}>
+              <line x1={X(m)} y1={Y(b0) + 2} x2={X(m)} y2={Y(b0) + 10} stroke={INK3} strokeWidth={1.5} />
+              <Text x={X(m)} y={Y(b0) + 22} size={16} color={INK3} weight={500}>{name}</Text>
+            </g>,
+          );
+        if (Y(b1) - 12 >= py) out.push(<line key={`rf${k}`} x1={X(m)} y1={Y(b1) - 10} x2={X(m)} y2={Y(b1) - 2} stroke={INK3} strokeWidth={1.5} />);
+      }
+    }
   }
 
   // The stream: short streaks on a lattice, carried along at the stream's velocity.
@@ -216,10 +233,13 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
     const [dx, dy] = [s.x - ax, s.y - ay];
     const d = Math.hypot(dx, dy);
     if (legs > 0 && d * S > 4) {
+      // In a stream: the body's own motion, and then how far the stream has carried it. Otherwise along x, and then along y.
+      const inStream = carried(el, b);
+      const [mx, my] = inStream ? [s.x - s.driftX, s.y - s.driftY] : [s.x, ay];
       out.push(
         <g key={`legs-${b.id}`} opacity={legs}>
-          <line x1={X(ax)} y1={Y(ay)} x2={X(s.x)} y2={Y(ay)} stroke={ACROSS} strokeWidth={3.5} strokeDasharray="8 7" strokeLinecap="round" />
-          <line x1={X(s.x)} y1={Y(ay)} x2={X(s.x)} y2={Y(s.y)} stroke={UP} strokeWidth={3.5} strokeDasharray="8 7" strokeLinecap="round" />
+          <line x1={X(ax)} y1={Y(ay)} x2={X(mx)} y2={Y(my)} stroke={ACROSS} strokeWidth={3.5} strokeDasharray="8 7" strokeLinecap="round" />
+          <line x1={X(mx)} y1={Y(my)} x2={X(s.x)} y2={Y(s.y)} stroke={inStream ? STREAM : UP} strokeWidth={3.5} strokeDasharray="8 7" strokeLinecap="round" />
         </g>,
       );
     }
@@ -231,24 +251,29 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
         </g>,
       );
     }
-    // The angle: of the displacement at the start, or of the velocity at the body.
+    // The angle: of the displacement at the start, or of the velocity at the body, from the x
+    // direction on the side the vector leans to. For a body in a stream, with no displacement
+    // shown: between the way it points (its own velocity) and the way it travels.
     const ofVelocity = disp <= 0;
+    const steered = ofVelocity && carried(el, b) && !s.stopped;
     const [qx, qy] = ofVelocity ? [s.vx, s.vy] : [dx, dy];
     const [ox, oy] = ofVelocity ? [X(s.x), Y(s.y)] : [X(ax), Y(ay)];
-    const reach = ofVelocity ? Math.hypot(qx, qy) * vs : d * S;
-    if (angle > 0 && reach > 70 && Math.abs(qx) > 1e-9 && Math.abs(qy) > 1e-9) {
-      const a = Math.atan2(qy, qx);
-      // Measured from the horizontal on the side the vector leans to.
-      const base = qx >= 0 ? 0 : Math.PI;
-      const r = Math.min(58, reach * 0.45);
-      const mid = (a + base) / 2 + (Math.abs(a - base) > Math.PI ? Math.PI : 0);
-      const sweep = (qx >= 0) === (qy >= 0) ? 0 : 1;
-      const size = Math.abs(a - base) > Math.PI ? 2 * Math.PI - Math.abs(a - base) : Math.abs(a - base);
+    const ownSpeed = Math.hypot(s.ownX, s.ownY);
+    const reach = ofVelocity ? Math.min(Math.hypot(qx, qy), steered ? ownSpeed : Infinity) * vs : d * S;
+    const a = Math.atan2(qy, qx);
+    const base = steered ? Math.atan2(s.ownY, s.ownX) : qx >= 0 ? 0 : Math.PI;
+    // The turn from the base to the vector, between −180° and 180°.
+    const turned = Math.atan2(Math.sin(a - base), Math.cos(a - base));
+    if (angle > 0 && reach > 60 && Math.abs(turned) > 0.02 && Math.abs(turned) < Math.PI - 0.02) {
+      const r = Math.min(58, reach * 0.5);
+      const mid = base + turned / 2;
+      const far = Math.max(Math.hypot(qx, qy), ownSpeed) * vs;
       out.push(
         <g key={`angle-${b.id}`} opacity={angle}>
-          <line x1={ox} y1={oy} x2={ox + Math.cos(base) * (r + 26)} y2={oy} stroke={INK3} strokeWidth={2} strokeDasharray="5 6" />
-          <path d={`M${(ox + r * Math.cos(base)).toFixed(1)},${oy.toFixed(1)} A${r},${r} 0 0 ${sweep} ${(ox + r * Math.cos(a)).toFixed(1)},${(oy - r * Math.sin(a)).toFixed(1)}`} fill="none" stroke={TONES.theta} strokeWidth={4} strokeLinecap="round" />
-          <Text x={ox + (r + 30) * Math.cos(mid)} y={oy - (r + 30) * Math.sin(mid)} size={21} color={TONES.theta}>{degrees(size * DEG)}</Text>
+          {!steered && <line x1={ox} y1={oy} x2={ox + Math.cos(base) * (r + 26)} y2={oy} stroke={INK3} strokeWidth={2} strokeDasharray="5 6" />}
+          <path d={`M${(ox + r * Math.cos(base)).toFixed(1)},${(oy - r * Math.sin(base)).toFixed(1)} A${r},${r} 0 0 ${turned > 0 ? 0 : 1} ${(ox + r * Math.cos(a)).toFixed(1)},${(oy - r * Math.sin(a)).toFixed(1)}`} fill="none" stroke={TONES.theta} strokeWidth={4} strokeLinecap="round" />
+          {/* Between a heading and a track the label goes beyond the arrows, clear of the stream's arrow that joins their tips. */}
+          <Text x={ox + (steered ? far + 26 : r + 30) * Math.cos(mid)} y={oy - (steered ? far + 26 : r + 30) * Math.sin(mid)} size={21} color={TONES.theta}>{degrees(turned * DEG)}</Text>
         </g>,
       );
     }
@@ -289,22 +314,24 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
         </g>,
       );
     }
-    if (b.label) {
-      // The name sits over the body, or under it while it climbs, unless the script gives it a side
-      // (where it is lifted clear of the ground line once the body has landed).
-      const where = b.labelAt ?? (s.vy > 0 && by + 46 < py + ph ? 'below' : 'above');
-      const [lx, ly, anchor] = where === 'left' ? [bx - R - 12, by - (s.landed ? 16 : 0), 'end' as const] : where === 'right' ? [bx + R + 12, by - (s.landed ? 16 : 0), 'start' as const] : [bx, by + (where === 'below' ? 34 : -34), 'middle' as const];
-      out.push(<Text key={`name-${b.id}`} x={lx} y={ly} anchor={anchor} size={19} color={c}>{b.label}</Text>);
-    }
     const turn = (vx: number, vy: number) => Math.atan2(vy, vx) * DEG;
     // With a stream: the body's own velocity, then the stream's from its tip.
-    if (own > 0 && carried(el, b)) {
+    // Along one line (straight downstream or upstream) the three arrows would lie on top of each
+    // other, so the stream's arrow is lifted to one side of the body's own and the sum drawn on the other.
+    let aside: [number, number] = [0, 0];
+    let lifted = false;
+    if (own > 0 && carried(el, b) && !s.stopped) {
       const [sx, sy] = el.stream!.v;
       const ownLen = Math.hypot(s.ownX, s.ownY) * vs;
+      const flow = Math.hypot(sx, sy);
+      const inLine = flow > 0 && Math.abs(s.ownX * sy - s.ownY * sx) < 1e-9;
+      if (inLine) aside = [-sy / flow, -sx / flow];
+      lifted = inLine && ownLen >= 1;
+      const lift = inLine && ownLen >= 1 ? 20 : 0;
       out.push(
         <g key={`own-${b.id}`} opacity={own}>
           <Arrow x={bx} y={by} len={ownLen} turn={turn(s.ownX, s.ownY)} color={ACROSS} weight={7} />
-          <Arrow x={bx + s.ownX * vs} y={by - s.ownY * vs} len={Math.hypot(sx, sy) * vs} turn={turn(sx, sy)} color={STREAM} weight={7} />
+          <Arrow x={bx + s.ownX * vs + aside[0] * lift} y={by - s.ownY * vs + aside[1] * lift} len={flow * vs} turn={turn(sx, sy)} color={STREAM} weight={7} />
         </g>,
       );
     }
@@ -317,7 +344,15 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
         </g>,
       );
     }
-    if (vel > 0) out.push(<Arrow key={`vel-${b.id}`} x={bx} y={by} len={Math.hypot(s.vx, s.vy) * vs} turn={turn(s.vx, s.vy)} color={VELOCITY} weight={8} opacity={vel} />);
+    if (b.label) {
+      // The name sits over the body, or under it while it climbs, unless the script gives it a side
+      // (where it is lifted clear of the ground line once the body has landed). Over a lifted
+      // stream arrow it goes higher.
+      const where = b.labelAt ?? (s.vy > 0 && by + 46 < py + ph ? 'below' : 'above');
+      const [lx, ly, anchor] = where === 'left' ? [bx - R - 12, by - (s.landed ? 16 : 0), 'end' as const] : where === 'right' ? [bx + R + 12, by - (s.landed ? 16 : 0), 'start' as const] : [bx, by + (where === 'below' ? 34 : lifted ? -52 : -34), 'middle' as const];
+      out.push(<Text key={`name-${b.id}`} x={lx} y={ly} anchor={anchor} size={19} color={c}>{b.label}</Text>);
+    }
+    if (vel > 0) out.push(<Arrow key={`vel-${b.id}`} x={bx - aside[0] * 24} y={by - aside[1] * 24} len={Math.hypot(s.vx, s.vy) * vs} turn={turn(s.vx, s.vy)} color={VELOCITY} weight={8} opacity={vel} />);
   }
 
   // The panel: the numbers for the arrows shown, for one body.
@@ -325,17 +360,22 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
     const s = state.bodies[reader.id];
     const axes = el.axes ?? (scene === 'map' ? ['East', 'North'] : ['Horizontal', 'Vertical']);
     const rows: Array<{ name: string; value: string; color: string; show: number }> = [];
-    if (own > 0 && carried(el, reader)) {
-      rows.push({ name: `${reader.label ?? 'Its own'} velocity`, value: `${live(Math.hypot(s.ownX, s.ownY))} ${per}`, color: ACROSS, show: own });
-      rows.push({ name: el.stream!.name ?? 'Stream', value: `${live(Math.hypot(el.stream!.v[0], el.stream!.v[1]))} ${per}`, color: STREAM, show: own });
+    const inStream = carried(el, reader);
+    if (own > 0 && inStream) {
+      rows.push({ name: `Velocity relative to the ${scene === 'river' ? 'water' : 'air'}`, value: `${live(Math.hypot(s.ownX, s.ownY))} ${per}`, color: ACROSS, show: own });
+      rows.push({ name: el.stream!.name ?? (scene === 'river' ? 'Current' : 'Wind'), value: `${live(Math.hypot(el.stream!.v[0], el.stream!.v[1]))} ${per}`, color: STREAM, show: own });
     }
     if (comps > 0) {
       rows.push({ name: `${axes[0]} velocity`, value: `${live(s.vx)} ${per}`, color: ACROSS, show: comps });
       rows.push({ name: `${axes[1]} velocity`, value: `${live(s.vy)} ${per}`, color: UP, show: comps });
     }
-    if (vel > 0) rows.push({ name: el.stream && carried(el, reader) ? 'Velocity over the ground' : comps > 0 ? 'Speed' : 'Velocity', value: `${live(Math.hypot(s.vx, s.vy))} ${per}`, color: VELOCITY, show: vel });
+    if (vel > 0) rows.push({ name: inStream ? `Velocity relative to the ${scene === 'river' ? 'bank' : 'ground'}` : comps > 0 ? 'Speed' : 'Velocity', value: `${live(Math.hypot(s.vx, s.vy))} ${per}`, color: VELOCITY, show: vel });
     const [dx, dy] = [s.x - reader.at[0], s.y - reader.at[1]];
-    if (legs > 0) {
+    if (legs > 0 && inStream) {
+      const names = el.axes ?? ['Its own motion', 'Carried by the stream'];
+      rows.push({ name: names[0], value: `${live(Math.hypot(dx - s.driftX, dy - s.driftY))} ${len}`, color: ACROSS, show: legs });
+      rows.push({ name: names[1], value: `${live(Math.hypot(s.driftX, s.driftY))} ${len}`, color: STREAM, show: legs });
+    } else if (legs > 0) {
       rows.push({ name: axes[0], value: `${live(dx)} ${len}`, color: ACROSS, show: legs });
       rows.push({ name: axes[1], value: `${live(dy)} ${len}`, color: UP, show: legs });
     }

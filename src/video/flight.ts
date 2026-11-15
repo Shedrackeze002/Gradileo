@@ -18,9 +18,14 @@ export interface FlightBodyState {
   /** Its own velocity, through the water or the air (the same as vx and vy with no stream). */
   ownX: number;
   ownY: number;
+  /** How far the stream has carried it, as [x, y]: the rest of its displacement is its own doing. */
+  driftX: number;
+  driftY: number;
   /** Under gravity: in flight (let go or launched, and not yet landed), and landed. */
   flying: boolean;
   landed: boolean;
+  /** Stopped by a phase (a boat that has reached the bank): at rest, and no longer carried. */
+  stopped: boolean;
 }
 
 export interface FlightState {
@@ -70,7 +75,7 @@ export function flightAt(el: FlightEl, plays: Array<[clip: string, seconds: numb
     for (const b of el.bodies) {
       const [sx, sy] = drift(el, b);
       const [vx, vy] = b.v ?? [0, 0];
-      bodies[b.id] = { x: b.at[0], y: b.at[1], vx: vx + sx, vy: vy + sy, ownX: vx, ownY: vy, flying: g > 0 && !!b.v, landed: false };
+      bodies[b.id] = { x: b.at[0], y: b.at[1], vx: vx + sx, vy: vy + sy, ownX: vx, ownY: vy, driftX: 0, driftY: 0, flying: g > 0 && !!b.v, landed: false, stopped: false };
       trails[b.id] = [[b.at[0], b.at[1]]];
       marks[b.id] = [];
     }
@@ -101,9 +106,10 @@ export function flightAt(el: FlightEl, plays: Array<[clip: string, seconds: numb
         const v = ph.set?.[b.id];
         if (v) {
           const [sx, sy] = drift(el, b);
-          Object.assign(s, { ownX: v[0], ownY: v[1], vx: v[0] + sx, vy: v[1] + sy, landed: false, flying: g > 0 });
+          Object.assign(s, { ownX: v[0], ownY: v[1], vx: v[0] + sx, vy: v[1] + sy, landed: false, stopped: false, flying: g > 0 });
         }
         if (g > 0 && ph.release?.includes(b.id) && !s.landed) s.flying = true;
+        if (ph.stop?.includes(b.id)) Object.assign(s, { vx: 0, vy: 0, ownX: 0, ownY: 0, flying: false, stopped: true });
       }
       if (ph.freeze) continue;
       const tau = run / rate;
@@ -127,6 +133,9 @@ export function flightAt(el: FlightEl, plays: Array<[clip: string, seconds: numb
           if (!last || Math.hypot(last[0] - m[0], last[1] - m[1]) > 1e-9) marks[b.id].push(m);
         }
         const [x, y] = at(end);
+        const [sx, sy] = drift(el, b);
+        s.driftX += sx * end;
+        s.driftY += sy * end;
         const landed = falls && end < tau - 1e-12;
         Object.assign(s, landed ? { x, y: 0, vx: 0, vy: 0, ownX: 0, ownY: 0, flying: false, landed: true } : { x, y, vy: s.vy - (falls ? g * end : 0), ownY: s.ownY - (falls ? g * end : 0) });
       }
