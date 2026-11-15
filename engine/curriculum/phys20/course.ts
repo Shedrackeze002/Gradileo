@@ -176,5 +176,4 @@ export const PHYS20: CourseMeta = {
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
-  draft: true,
 };

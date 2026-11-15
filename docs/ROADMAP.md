@@ -1265,8 +1265,12 @@ items ship or decisions change.
        properties and the universal wave equation, reflection and echoes, superposition and
        interference, standing waves on a string, resonance in an air column, and the Doppler
        effect; the speed of sound is stated in each question that needs it. The course has 30
-       lessons and 60 skills. Next for it: take it out of draft (the course lists, sign-up
-       placement with a check on Grade 10 Physics, and Browse by topic), then its videos.
+       lessons and 60 skills. It is **listed** (15 November 2026): it has its place in the
+       course lists, sign-up recommends it from Grade 11 with a placement check on Grade 10
+       Physics (Grade 10 Physics stays the choice to Grade 10 and for anyone new to physics), and
+       its lessons are filed under the physics topics, with three new ones (vectors and
+       projectiles, gravitation and circular motion, oscillations). The placement note now gives
+       the true number of questions in a check. Next for it: its videos.
      - Done (15 November 2026): Units 2, 3 and 4 of Grade 10 Physics were rendered again with the
        right fonts and replaced in Google Drive.
      - Next: render Unit 5. `phys-sample-momentum`
