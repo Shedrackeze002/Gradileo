@@ -1247,10 +1247,15 @@ items ship or decisions change.
        render of Unit 4. `video/build.ts` now serves the linked folder and fails when the stage
        cannot load a file. In progress: Units 2, 3 and 4 are being rendered again and replaced in
        Drive.
+     - Started (14 November 2026): **Grade 11 Physics** (`phys-20`, `engine/curriculum/phys20/`,
+       `src/content/phys20/`), a draft course until its four units are written. Unit 1,
+       Kinematics, is done: eight lessons (`p20-1-1` to `p20-1-8`) and 16 skills, with
+       $g = 9.81\ \text{m/s}^2$ stated in every question that needs it. Units 2 to 4 (Dynamics;
+       Circular Motion, Work and Energy; Oscillations and Waves) are next.
      - Next: check the new renders of Units 2 to 4, then render Unit 5. `phys-sample-momentum`
-       becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then Grade 11
-       Physics (`phys-20`) and Grade 12 Physics (`phys-30`); the lessons have no tutor recordings
-       yet.
+       becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then the rest
+       of Grade 11 Physics (`phys-20`), its videos, and Grade 12 Physics (`phys-30`); the lessons
+       have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
