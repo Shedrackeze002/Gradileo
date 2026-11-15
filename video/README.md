@@ -403,7 +403,7 @@ player. `video/tools/drive-upload.ts gradileo-intro` puts it in `Gradileo videos
    350 to 450 words makes about four minutes). Check the scripts with
    `npx vitest run src/video/scripts.test.ts -t "<id prefix>"`.
 2. Check the layouts: `npx tsx video/build.ts <ids> --stills --quick` (in a cloud session, set
-   `CHROMIUM_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome` and `NODE_USE_ENV_PROXY=1`),
+   `CHROMIUM_PATH=$(ls /opt/pw-browsers/chromium-*/chrome-linux*/chrome | head -1)` and `NODE_USE_ENV_PROXY=1`),
    then `python3 video/tools/contact-sheet.py sheet.png <ids>` and look at every still: no clipped
    maths, overlapping labels or cut-off questions.
 3. Render unit by unit: `video/tools/render-units.sh <course dir> <unit id>...` (for example
