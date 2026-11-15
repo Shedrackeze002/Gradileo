@@ -313,7 +313,7 @@ export type EnergyBar = 'work' | 'kinetic' | 'potential' | 'heat' | 'total';
  * carries on from where the last one ended. Showing the element shows the tracks and bodies;
  * showing a part adds it: `velocity` (an arrow over each body), `readout` (speed and acceleration
  * under it), `net` (the net force), `bars` (a momentum bar for each body), `total` (a bar for
- * their total momentum), `graph` (a velocity-time or distance-time graph that draws itself as the
+ * their total momentum), `graph` (a velocity-time, distance-time or position-time graph that draws itself as the
  * bodies move), `clock` and `strobe` (a mark at each body's place at equal time steps),
  * `distance` (how far each body has travelled, with its path drawn under a single track),
  * `displacement` (an arrow under a single track from where the body started to where it is now),
@@ -340,10 +340,11 @@ export interface MotionEl {
   momentumTotal?: boolean;
   /**
    * A graph of these bodies against time, above a single track on its right: `seconds` and `max`
-   * are the lengths of its axes. It plots velocity (in metres per second) unless `y` is
-   * `'distance'`, the distance travelled in metres.
+   * are the lengths of its axes, and `min` (below zero) lets the line go under the time axis. It
+   * plots velocity (in metres per second) unless `y` is `'distance'`, the distance travelled in
+   * metres, or `'position'`, where the body is on the track's ruler.
    */
-  graph?: { of: string[]; seconds: number; max: number; y?: 'velocity' | 'distance' };
+  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' };
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
@@ -974,6 +975,8 @@ export function checkMotion(e: MotionEl): string[] {
   }
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
   for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
+  if (e.graph?.min !== undefined && !(e.graph.min < 0)) problems.push('the lowest value of the graph must be below zero (leave it out otherwise).');
+  if (e.graph?.min !== undefined && e.graph.y === 'distance') problems.push('a distance never falls below zero: leave out the lowest value of the graph.');
   for (const id of e.energy?.of ?? []) if (!ids.has(id)) problems.push(`the energy bars name no body "${id}".`);
   for (const id of Object.keys(e.energy?.labels ?? {})) if (!ids.has(id)) problems.push(`the energy bars label no body "${id}".`);
   if (e.energy && !(e.energy.max > 0)) problems.push('the energy bars need a largest energy above zero.');
