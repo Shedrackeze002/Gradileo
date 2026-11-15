@@ -4,32 +4,16 @@
  * relative velocity and projectile motion. Every number a question needs is in the question,
  * including g = 9.81 m/s², and every question that needs rounding says how far to round.
  */
-import { fixedChoice, numPart, part, skill, type GenOutput } from '../../helpers.ts';
+import { numPart, skill, type GenOutput } from '../../helpers.ts';
 // The question-bank helper was written for junior chemistry; it is not about chemistry.
 import { bank, either, fromBank, num, q, type Q, type Select } from '../../chemjr/bank.ts';
 import type { Rng } from '../../../rng.ts';
-import type { Figure, Part, SkillDef } from '../../../types.ts';
+import type { Figure, SkillDef } from '../../../types.ts';
+import { G, RAD, br, clean, direction, dpWords, round, rounded } from './common.ts';
 
 const L = (n: number) => `p20-1-${n}`;
-/** Drops the rounding noise of a product or quotient of decimals. */
-const clean = (x: number) => Math.round(x * 1e6) / 1e6;
-const round = (x: number, dp: number) => Math.round(x * 10 ** dp) / 10 ** dp;
-const RAD = Math.PI / 180;
-const G = 9.81;
 const G_NOTE = 'Use $g = 9.81\\ \\text{m/s}^2$ and ignore air resistance.';
 const ACC = 'm/s²';
-const dpWords = (dp: number) => (dp === 1 ? '1 decimal place' : `${dp} decimal places`);
-/**
- * A rounded answer. An answer within one in its last place is accepted, and so is one within half
- * of one percent, so a value carried from an earlier rounded step is not marked wrong.
- */
-const rounded = (value: number, dp: number, suffix: string, label?: string): Part => {
-  const v = round(value, dp);
-  return numPart(v, { decimals: dp, suffix, label, tolerance: Math.max(1.5 * 10 ** -dp, Math.abs(v) * 0.005) });
-};
-/** A number with its sign in brackets when it is negative, for a line of working. */
-const br = (x: number) => (x < 0 ? `(${num(x, 4)})` : num(x, 4));
-const direction = (options: [string, string], positive: boolean): Part => part(fixedChoice(options, positive ? 0 : 1), { label: 'Direction' });
 
 // ---------------------------------------------------------------------------- 1.1 position and displacement
 

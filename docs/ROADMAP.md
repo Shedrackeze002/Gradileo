@@ -1250,8 +1250,13 @@ items ship or decisions change.
      - Started (14 November 2026): **Grade 11 Physics** (`phys-20`, `engine/curriculum/phys20/`,
        `src/content/phys20/`), a draft course until its four units are written. Unit 1,
        Kinematics, is done: eight lessons (`p20-1-1` to `p20-1-8`) and 16 skills, with
-       $g = 9.81\ \text{m/s}^2$ stated in every question that needs it. Units 2 to 4 (Dynamics;
-       Circular Motion, Work and Energy; Oscillations and Waves) are next.
+       $g = 9.81\ \text{m/s}^2$ stated in every question that needs it. Unit 2, Dynamics, is
+       done too: eight lessons (`p20-2-1` to `p20-2-8`) and 16 skills on free-body diagrams,
+       Newton's laws, friction, inclined planes, connected objects, forces in two dimensions,
+       universal gravitation and field strength; $G$ and the masses and radii of planets are
+       stated in each question, and answers in scientific notation are accepted as typed
+       (`6.53e3`). Units 3 and 4 (Circular Motion, Work and Energy; Oscillations and Waves) are
+       next.
      - Next: check the new renders of Units 2 to 4, then render Unit 5. `phys-sample-momentum`
        becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then the rest
        of Grade 11 Physics (`phys-20`), its videos, and Grade 12 Physics (`phys-30`); the lessons
