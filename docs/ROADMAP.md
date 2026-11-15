@@ -1265,14 +1265,20 @@ items ship or decisions change.
        properties and the universal wave equation, reflection and echoes, superposition and
        interference, standing waves on a string, resonance in an air column, and the Doppler
        effect; the speed of sound is stated in each question that needs it. The course has 30
-       lessons and 60 skills. Next for it: take it out of draft (the course lists, sign-up
-       placement with a check on Grade 10 Physics, and Browse by topic), then its videos.
+       lessons and 60 skills. It is **listed** (15 November 2026): it has its place in the
+       course lists, sign-up recommends it from Grade 11 with a placement check on Grade 10
+       Physics (Grade 10 Physics stays the choice to Grade 10 and for anyone new to physics), and
+       its lessons are filed under the physics topics, with three new ones (vectors and
+       projectiles, gravitation and circular motion, oscillations). The placement note now gives
+       the true number of questions in a check. Next for it: its videos.
      - Done (15 November 2026): Units 2, 3 and 4 of Grade 10 Physics were rendered again with the
        right fonts and replaced in Google Drive.
-     - Next: render Unit 5. `phys-sample-momentum`
-       becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then the rest
-       of Grade 11 Physics (`phys-20`), its videos, and Grade 12 Physics (`phys-30`); the lessons
-       have no tutor recordings yet.
+     - Done (15 November 2026): **the five videos of Unit 5, Electricity** (`p10-5-1` to
+       `p10-5-5`), rendered and in Drive. Grade 10 Physics now has a video for every lesson: 28
+       videos in five units.
+     - Next: the videos of Grade 11 Physics (`phys-20`), then Grade 12 Physics (`phys-30`).
+       `phys-sample-momentum` becomes the first video of Grade 12 Unit A and stays off YouTube
+       until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
