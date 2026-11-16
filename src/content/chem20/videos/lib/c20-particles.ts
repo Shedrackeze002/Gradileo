@@ -529,6 +529,8 @@ export const titrating = (id: string, o: { weak?: boolean; seed?: number } = {},
   const H = { ...ATOM.H, name: undefined };
   const O = { ...ATOM.O, name: undefined };
   const acetate = { name: 'acetate ion', tone: 'opp', size: 1.3 } as const;
+  // A freed acetate ion is drawn green, so a molecule that loses its hydrogen visibly changes.
+  const freed = 'good' as const;
   return {
     kind: 'particles',
     id,
@@ -547,7 +549,7 @@ export const titrating = (id: string, o: { weak?: boolean; seed?: number } = {},
           H,
           H,
           { ...O, name: 'water' },
-          { n: 0, bond: 0.15, heavy: 0, ...acetate, ...(o.weak ? {} : { name: undefined }) },
+          { n: 0, bond: 0.15, heavy: 0, ...acetate, tone: freed, ...(o.weak ? {} : { name: undefined }) },
         ],
         molecules: [{ atoms: [3, 4], n: 8 }, ...(o.weak ? [{ atoms: [0, 1], n: 6 }] : [])],
         reserve: [2, 3, 4],

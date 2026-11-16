@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { ACETIC_CURVE, AMMONIA_CURVE, HCL_CURVE, titrationGraph } from './lib/c30-4b-figures.ts';
+import { titrating } from '@/content/chem20/videos/lib/c20-particles.ts';
 
 const EQ = '\\begin{gathered}\\text{equivalence}\\\\\\text{point}\\end{gathered}';
 
@@ -127,6 +128,15 @@ const video: Explainer = {
           show: ['g.eq', 't.2'],
           focus: ['g.eq', 't.2'],
         },
+      ],
+    },
+    {
+      chapter: 'Inside the flask',
+      layout: 'center',
+      main: [titrating('tw', { weak: true, seed: 17 })],
+      lines: [
+        { say: 'Inside the flask, acetic acid is mostly whole molecules, each holding its hydrogen. The burette adds sodium hydroxide. A hydroxide ion takes the hydrogen straight from a molecule and makes water, leaving an acetate ion. Part way, the flask holds acid and acetate together, a buffer, which is why the curve rises so gently there. Watch the pink indicator: it stays clear until the last acetic acid molecule has given up its hydrogen.', show: ['tw', 'tw.labels', 'tw.key', 'tw.tally'], play: 'tw.titrate' },
+        { say: 'At the equivalence point the flask holds acetate ions, which make it slightly basic, so the steep part is centred above p H seven. One drop more, and the indicator turned pink.', caption: 'At the equivalence point the flask holds acetate ions, which make it slightly basic, so the steep part is centred above pH 7. One drop more, and the indicator turned pink.', focus: 'tw.tally' },
       ],
     },
     {

@@ -1,5 +1,5 @@
 import type { ParticleBox, ParticlesEl } from '@/video/script.ts';
-import { hydrogenBurning } from '@/video/reactions.ts';
+import { ATOM, hydrogenBurning } from '@/video/reactions.ts';
 
 /**
  * Dinitrogen tetroxide and nitrogen dioxide in a sealed tube. Each nitrogen dioxide molecule is
@@ -158,3 +158,56 @@ export const endothermic = (id: string, o: { seed?: number; height?: number } = 
   ...n2o4(id, { seed: o.seed, height: o.height, heat: 0.04, label: 'dinitrogen tetroxide splitting' }),
   thermometers: true,
 });
+
+/**
+ * Sodium hydroxide dripped into water and into an acetic acid and acetate buffer (clip `drip`).
+ * In the buffer, each hydroxide ion takes the hydrogen from an acetic acid molecule, making water
+ * and an acetate ion, so no hydroxide ions build up; in the water, they all stay. With `drops`
+ * above the number of acid molecules (6), the buffer is used up and hydroxide ions build up there
+ * too. The kinds: 0 the acid's hydrogen, 1 the rest of the acid (or an acetate ion), 2 sodium ion,
+ * 3 and 4 a hydroxide ion's O and H, 5 and 6 a water molecule made, 7 an acetate ion.
+ */
+export const bufferVsWater = (id: string, o: { seed?: number; height?: number; drops?: number; only?: 'buffer' } = {}): ParticlesEl => {
+  const H = { ...ATOM.H, name: undefined };
+  const O = { ...ATOM.O, name: undefined };
+  const acetate = { bond: 0.15, heavy: 0, size: 1.3, tone: 'opp' as const };
+  const drops = o.drops ?? 5;
+  const box = (bid: string, buffer: boolean): ParticleBox => ({
+    id: bid,
+    state: 'gas',
+    width: 9,
+    height: 8,
+    temp: 0.5,
+    kinds: [
+      { ...H, n: 0 },
+      { ...acetate, n: 0, name: buffer ? 'acetic acid molecule' : undefined },
+      { n: drops, bond: 0.15, heavy: 0, tone: 'brand', name: 'sodium ion' },
+      { ...O, tone: 'adj', name: 'hydroxide ion' },
+      H,
+      H,
+      { ...O, name: 'water made' },
+      // Acetate ions are drawn green, so an acid molecule that loses its hydrogen visibly changes.
+      { ...acetate, tone: 'good' as const, n: buffer ? 6 : 0, name: buffer ? 'acetate ion' : undefined },
+    ],
+    molecules: [{ atoms: [3, 4], n: drops }, ...(buffer ? [{ atoms: [0, 1], n: 6 }] : [])],
+    reserve: [2, 3, 4],
+    reactions: buffer ? [{ a: 0, b: 3, free: [7, null] as [number, null], to: [5, 6] as [number, number], join: true }] : [],
+    // A hydroxide ion is drawn to an acid molecule's hydrogen, so it soon finds one.
+    ...(buffer ? { pairs: [{ kinds: [0, 3] as [number, number], bond: 2 }] } : {}),
+    tally: { kinds: [3], label: 'hydroxide ions left' },
+    label: buffer ? 'buffer: acetic acid and acetate' : 'pure water',
+  });
+  return {
+    kind: 'particles',
+    id,
+    boxes: o.only ? [box('b', true)] : [box('w', false), box('b', true)],
+    clips: { drip: { phases: [{ dur: 2 }, { dur: drops * 1.8, add: o.only ? { b: 2 * drops } : { w: 2 * drops, b: 2 * drops } }, { dur: 8 }] } },
+    key: true,
+    speed: 2,
+    seed: o.seed ?? 1,
+    height: o.height ?? 400,
+  };
+};
+
+/** Nine drops of sodium hydroxide into a buffer that holds six acetic acid molecules: past the sixth, it is used up. */
+export const bufferUsedUp = (id: string, o: { seed?: number; height?: number } = {}): ParticlesEl => bufferVsWater(id, { ...o, only: 'buffer', drops: 9 });

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { bufferPair } from './lib/c30-4b-figures.ts';
+import { bufferUsedUp, bufferVsWater } from './lib/c30-particles.ts';
 
 // An acetic acid–acetate buffer: added hydronium ions are taken up by the acetate ions, which
 // become acetic acid; added hydroxide ions are taken up by the acetic acid, which becomes acetate.
@@ -114,6 +115,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Base into a buffer, up close',
+      layout: 'center',
+      main: [bufferVsWater('bw', { seed: 2 })],
+      lines: [
+        { say: 'Here is the same addition up close. Sodium hydroxide drips into pure water on the left, and into an acetic acid and acetate buffer on the right, the same drops into each. Each drop brings a sodium ion and a hydroxide ion. Watch the count of hydroxide ions in each box as the drops fall. In the water, nothing reacts with them, so every hydroxide ion that lands simply stays. In the buffer, each one wanders until it meets an acetic acid molecule.', show: ['bw', 'bw.labels', 'bw.key', 'bw.tally'], play: 'bw.drip' },
+        { say: 'So in the water the count climbs and the p H shoots up. In the buffer, each hydroxide ion soon takes the hydrogen from an acetic acid molecule, making water and one more acetate ion, so hydroxide ions never build up.', caption: 'So in the water the count climbs and the pH shoots up. In the buffer, each hydroxide ion soon takes the hydrogen from an acetic acid molecule, making water and one more acetate ion, so hydroxide ions never build up.', focus: 'bw.tally' },
+      ],
+    },
+    {
       chapter: 'Not a wall',
       layout: 'center',
       main: [
@@ -132,6 +142,15 @@ const video: Explainer = {
           show: 'oops',
         },
         { say: 'The amount of acid or base a buffer can absorb is its capacity. More concentrated buffers have a larger capacity.' },
+      ],
+    },
+    {
+      chapter: 'Using up a buffer',
+      layout: 'center',
+      main: [bufferUsedUp('bu', { seed: 3 })],
+      lines: [
+        { say: 'Now a small buffer with only six acetic acid molecules, and nine drops of sodium hydroxide, so there are more drops than acid molecules. For the first drops, each hydroxide ion soon finds an acid molecule and is used up, so the count stays low. Keep watching the count as the acid molecules run out.', show: ['bu', 'bu.labels', 'bu.key', 'bu.tally'], play: 'bu.drip' },
+        { say: 'Once the six acid molecules have reacted, there is nothing left to take the next hydroxide ions, so they build up. The buffer has reached its capacity, and from here the p H rises sharply.', caption: 'Once the six acid molecules have reacted, there is nothing left to take the next hydroxide ions, so they build up. The buffer has reached its capacity, and from here the pH rises sharply.', focus: 'bu.tally' },
       ],
     },
     {
