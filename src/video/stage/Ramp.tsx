@@ -340,8 +340,10 @@ export function RampView({ el, st, w, h, plays }: { el: RampEl; st: ElState | un
             </Text>,
           );
       } else {
-        // On a tilted surface, friction's label stands clear of the surface line.
-        const off = f.kind === 'friction' ? 8 + 12 * clamp01(th / 10) : 0;
+        // On a tilted surface, friction's label stands clear of the surface line. When friction
+        // points up the surface its label runs on up the slope, so it is lifted by the rise under it.
+        const upSlope = f.kind === 'friction' && !into && th > 5 && Math.cos(rad(f.turn)) > 0;
+        const off = f.kind === 'friction' ? 8 + 12 * clamp01(th / 10) + (upSlope ? 0.8 * Math.tan(rad(th)) * text.length * 10.5 : 0) : 0;
         const at = into ? tail : tip;
         out.push(tipLabel(`t-${key}`, [at[0] + nrm[0] * off, at[1] + nrm[1] * off], into ? f.turn + 180 : f.turn, text, color, o * clamp01(grow * 1.5), aside < 0 ? -1 : side));
       }
