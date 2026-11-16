@@ -2,6 +2,11 @@ import type { Explainer } from '@/video/script.ts';
 import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { chargeRow } from './lib/c10-3-figures.ts';
+import { oneIon } from './lib/c10-atoms.ts';
+
+// A magnesium atom losing its two outer electrons, and an oxygen atom gaining two.
+const magnesium = oneIon('mga', { symbol: 'Mg', protons: 12, name: 'magnesium' }, 2, 280);
+const oxygen = oneIon('oxa', { symbol: 'O', protons: 8, name: 'oxygen' }, -2, 280);
 
 // The first 20 elements, metals (orange) and non-metals (blue) that form ions, with the charge of
 // each group's ions under its column.
@@ -80,13 +85,13 @@ const video: Explainer = {
     {
       chapter: 'Predicting an ion',
       layout: 'split',
-      left: [{ kind: 'math', id: 'mg', size: 'md', align: 'left', lines: ['\\text{Magnesium: group 2}', '\\text{2 outer electrons}', '\\text{a metal: loses both}', '\\text{charge } 2{+} \\;\\Rightarrow\\; \\ce{Mg^2+}'] }],
-      right: [{ kind: 'math', id: 'o', size: 'md', align: 'left', lines: ['\\text{Oxygen: group 16}', '\\text{6 outer electrons}', '\\text{a non-metal: gains } 8 - 6 = 2', '\\text{charge } 2{-} \\;\\Rightarrow\\; \\ce{O^2-}'] }],
+      left: [magnesium, { kind: 'math', id: 'mg', size: 'md', align: 'left', lines: ['\\text{Magnesium: group 2}', '\\text{2 outer electrons}', '\\text{a metal: loses both}', '\\text{charge } 2{+} \\;\\Rightarrow\\; \\ce{Mg^2+}'] }],
+      right: [oxygen, { kind: 'math', id: 'o', size: 'md', align: 'left', lines: ['\\text{Oxygen: group 16}', '\\text{6 outer electrons}', '\\text{a non-metal: gains } 8 - 6 = 2', '\\text{charge } 2{-} \\;\\Rightarrow\\; \\ce{O^2-}'] }],
       lines: [
-        { say: 'Let’s predict two ions. Magnesium is in group two, so its atoms have two outer electrons.', show: ['mg.0', 'mg.1'], focus: ['mg.0', 'mg.1'] },
-        { say: 'Magnesium is a metal, so its atoms lose both. Each electron lost leaves one extra positive charge, so the charge is two plus: the magnesium ion.', show: ['mg.2', 'mg.3'], focus: ['mg.2', 'mg.3'] },
-        { say: 'Oxygen is in group sixteen, so its atoms have six outer electrons.', show: ['o.0', 'o.1'], focus: ['o.0', 'o.1'] },
-        { say: 'Oxygen is a non-metal, so its atoms gain eight minus six, which is two electrons, to fill the outer shell. Each electron gained adds one negative charge, so the charge is two minus: the oxide ion.', show: ['o.2', 'o.3'], focus: ['o.2', 'o.3'] },
+        { say: 'Let’s predict two ions. Magnesium is in group two, so its atoms have two outer electrons.', show: ['mga', 'mga.labels', 'mga.arrangement', 'mg.0', 'mg.1'], focus: ['mg.0', 'mg.1'] },
+        { say: 'Magnesium is a metal, so its atoms lose both. Each electron lost leaves one extra positive charge, so the charge is two plus: the magnesium ion.', play: 'mga.ion', show: ['mg.2', 'mg.3', 'mga.charges'], focus: ['mg.2', 'mg.3'] },
+        { say: 'Oxygen is in group sixteen, so its atoms have six outer electrons.', show: ['oxa', 'oxa.labels', 'oxa.arrangement', 'o.0', 'o.1'], focus: ['o.0', 'o.1'] },
+        { say: 'Oxygen is a non-metal, so its atoms gain eight minus six, which is two electrons, to fill the outer shell. Each electron gained adds one negative charge, so the charge is two minus: the oxide ion.', play: 'oxa.ion', show: ['o.2', 'o.3', 'oxa.charges'], focus: ['o.2', 'o.3'] },
       ],
     },
     {
