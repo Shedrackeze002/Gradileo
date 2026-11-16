@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { checkParticles, checkScript, type Explainer, type ParticleBox, type ParticlesEl } from './script.ts';
 import { controlsAt, particlesAt, pressureOf, TEMPS } from './particles.ts';
+import { hydrogenBurning } from './reactions.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 let n = 0;
@@ -211,6 +212,86 @@ describe('particles: separating mixtures', () => {
     expect(checkParticles(el({ boxes: [{ id: 'b', state: 'liquid', filter: { at: 0.5, holes: 1 } }], clips: { go: { phases: [{ dur: 1, release: ['b'] }] } } }))).toEqual([]);
     expect(checkParticles(el({ clips: { go: { phases: [{ dur: 1, magnet: { x: 1 } }] } } }))).toEqual(['clip "go", phase 1 names no box "x".']);
     expect(checkParticles(el({ clips: { go: { phases: [{ dur: 1, run: { b: 1 } }] } } }))).toEqual(['clip "go", phase 1 runs solvent up box "b", which is not paper.']);
+  });
+});
+
+describe('particles: molecules and reactions', () => {
+  const H = { n: 0, bond: 0.15, heavy: 0, size: 0.8 };
+  const O = { n: 0, bond: 0.15, heavy: 0 };
+  // Hydrogen burning in oxygen (see reactions.ts for the kinds).
+  const burning = (): ParticlesEl =>
+    el({ boxes: [hydrogenBurning('b')], clips: { spark: { phases: [{ dur: 1, heat: { b: 2 } }, { dur: 2 }, { dur: 1, heat: { b: 0.4 } }, { dur: 16 }] } }, seed: 3 });
+
+  it('starts molecules bonded, and keeps their atoms together and a bent molecule bent', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'gas', width: 14, height: 10, temp: 0.6, kinds: [{ ...O }, { ...H }], molecules: [{ atoms: [0, 1, 1], n: 8, bent: true }] }] });
+    const [f] = particlesAt(e, [], 8);
+    expect(f.x.length).toBe(24);
+    expect(f.bonds.length).toBe(16);
+    for (const [i, j] of f.bonds) expect(Math.hypot(f.x[i] - f.x[j], f.y[i] - f.y[j])).toBeLessThan(1);
+    // Each oxygen's two hydrogens stay about 105 degrees apart.
+    for (let m = 0; m < 8; m++) {
+      const [o, a, c] = [3 * m, 3 * m + 1, 3 * m + 2];
+      const ang = Math.abs(Math.atan2(f.y[a] - f.y[o], f.x[a] - f.x[o]) - Math.atan2(f.y[c] - f.y[o], f.x[c] - f.x[o]));
+      expect((Math.min(ang, 2 * Math.PI - ang) * 180) / Math.PI).toBeGreaterThan(80);
+    }
+  });
+
+  it('burns hydrogen only once it is sparked, keeps every atom, and gets hotter as it burns', () => {
+    const e = burning();
+    const [before] = particlesAt(e, [['spark', 2]], 2);
+    expect(before.tally).toBe(0);
+    expect(before.bonds.length).toBe(18);
+    const [after] = particlesAt(e, [['spark', 2]], 22);
+    expect(after.tally).toBeGreaterThanOrEqual(9);
+    const count = (f: typeof after, ks: number[]) => f.kind.filter((k) => ks.includes(k)).length;
+    expect(count(after, [0, 2])).toBe(24);
+    expect(count(after, [1, 3, 4])).toBe(12);
+    // Each water molecule is an oxygen bonded to two hydrogens.
+    const deg = after.kind.map(() => 0);
+    for (const [i, j] of after.bonds) {
+      deg[i]++;
+      deg[j]++;
+    }
+    after.kind.forEach((k, i) => k === 3 && expect(deg[i]).toBe(2));
+    // Past the spark, the heat given out keeps the gas well above where it started.
+    const [burnt] = particlesAt(e, [['spark', 2]], 8);
+    expect(burnt.temp).toBeGreaterThan(0.6);
+  });
+
+  it('breaks a reacting lump into separate pieces, and lets only its surface react', () => {
+    const solid = (id: string, pieces: number) => ({
+      id,
+      state: 'gas' as const,
+      width: 22,
+      height: 9,
+      temp: 0.7,
+      hold: true,
+      lump: pieces === 1 ? true : pieces,
+      cols: pieces === 1 ? 6 : 2,
+      cross: 0.2,
+      kinds: [{ n: 24, bond: 6, heavy: 3 }, { ...O, n: 24 }, { ...O }, { ...O }],
+      reactions: [{ a: 1, b: 0, to: [3, 2] as [number, number], join: true, energy: 1, reach: 1.15 }],
+      tally: { kinds: [2], label: 'new' },
+    });
+    const e = el({ boxes: [solid('a', 1), solid('b', 4)], clips: { go: { phases: [{ dur: 1, release: ['a', 'b'] }, { dur: 13 }] } }, seed: 8 });
+    // Four pieces of six, side by side along the floor with gaps between them.
+    const [, start] = particlesAt(e, [], 1);
+    const xs = start.x.filter((_, i) => start.kind[i] === 0).sort((p, q) => p - q);
+    const gaps = xs.slice(1).map((x, i) => x - xs[i]).filter((g) => g > 2);
+    expect(gaps.length).toBe(3);
+    // Nothing reacts until the clip lets go; then the pieces, with more surface, react faster.
+    expect(particlesAt(e, [['go', 2]], 1.9).map((f) => f.tally)).toEqual([0, 0]);
+    const [lump, pieces] = particlesAt(e, [['go', 2]], 10).map((f) => f.tally);
+    expect(pieces).toBeGreaterThan(lump);
+  });
+
+  it('checks reactions, molecules and tallies', () => {
+    const b = { id: 'b', state: 'gas' as const, kinds: [{ n: 4 }, { n: 4 }] };
+    expect(checkParticles(el({ boxes: [{ ...b, reactions: [{ a: 0, b: 2, to: [1, 1] }] }] }))).toEqual(['box "b": a reaction names a kind it does not have.']);
+    expect(checkParticles(el({ boxes: [{ ...b, reactions: [{ a: 0, b: 1, to: [1, 1], free: [null, 3] }] }] }))).toEqual(['box "b": a reaction names a kind it does not have.']);
+    expect(checkParticles(el({ boxes: [{ ...b, molecules: [{ atoms: [0, 1], n: 2, bent: true }] }] }))).toEqual(['box "b": only a molecule of three atoms can be bent.']);
+    expect(checkParticles(el({ boxes: [{ ...b, molecules: [{ atoms: [0], n: 2 }] }] }))).toEqual(['box "b": a molecule needs two atoms or more, of kinds the box has.']);
+    expect(checkParticles(el({ boxes: [{ ...b, tally: { kinds: [5], label: 'x' } }] }))).toEqual(['box "b": the tally counts a kind it does not have.']);
   });
 });
 

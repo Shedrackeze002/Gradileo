@@ -105,6 +105,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const volume = part('volume');
   const flow = part('flow');
   const count = part('count');
+  const tally = part('tally');
   const width = part('width');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
@@ -242,6 +243,10 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 const [px, py] = trailPts[i];
                 return <line key={i} x1={X(px)} y1={Y(py)} x2={X(x)} y2={Y(y)} stroke={TONES.theta} strokeWidth={4} strokeLinecap="round" opacity={trail * 0.85 * ((i + 1) / trailPts.length)} />;
               })}
+            {/* Bonds joining atoms into molecules, under the atoms. */}
+            {f.bonds.map(([i, j]) => (
+              <line key={`b${i}-${j}`} x1={X(f.x[i])} y1={Y(f.y[i])} x2={X(f.x[j])} y2={Y(f.y[j])} stroke="rgb(230 232 255)" strokeWidth={0.32 * r} strokeLinecap="round" />
+            ))}
             {f.x.map((x, i) => {
               const followed = b.follow === i;
               if (f.ke && b.heatColor && !followed) {
@@ -347,6 +352,9 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
             })()}
             {count > 0 && b.kinds && b.kinds.length > 1 && (
               <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={count}>{`${f.loose} of ${b.kinds[0].n} dissolved`}</Text>
+            )}
+            {tally > 0 && b.tally && (
+              <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={tally}>{`${f.tally} ${b.tally.label}`}</Text>
             )}
             {rate > 0 && (
               <Text x={X(bw / 2)} y={floor + 30 + (b.label ? 32 : 0) + (el.volume?.box === b.id ? 32 : 0)} size={20} color={TONES.theta} opacity={rate}>{`${f.hitRate} wall hits a second`}</Text>

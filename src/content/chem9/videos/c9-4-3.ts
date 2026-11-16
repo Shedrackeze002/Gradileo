@@ -1,10 +1,44 @@
-import type { Explainer } from '@/video/script.ts';
+import { ATOM } from '@/video/reactions.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). A hydrogen ion that meets a hydroxide
+// ion joins it as a water molecule, giving out heat; the sodium and chloride ions take no part.
+
+const { H, O } = ATOM;
+const ION = { n: 8, bond: 0.15, heavy: 0 } as const;
+
+/** Hydrochloric acid and sodium hydroxide solution, just mixed: they react once the clip starts. */
+const mixing: ParticlesEl = {
+  kind: 'particles',
+  id: 'n',
+  boxes: [
+    {
+      id: 'b',
+      state: 'gas',
+      width: 11,
+      height: 9,
+      temp: 0.5,
+      waits: true,
+      // 0 hydrogen ion, 1 chloride ion, 2 sodium ion, 3 and 4 a hydroxide ion's O and H,
+      // 5 and 6 the hydrogen ion and the oxygen once they are water.
+      kinds: [{ ...H, n: 8, name: 'hydrogen ion' }, { ...ION, tone: 'good', name: 'chloride ion' }, { ...ION, tone: 'brand', name: 'sodium ion' }, O, H, H, O],
+      molecules: [{ atoms: [3, 4], n: 8 }],
+      reactions: [{ a: 0, b: 3, to: [5, 6], join: true, heat: 0.12 }],
+      tally: { kinds: [6], label: 'water molecules' },
+      label: 'acid + alkali',
+    },
+  ],
+  clips: { go: { phases: [{ dur: 1, release: ['b'] }, { dur: 13 }] } },
+  thermometers: true,
+  seed: 1,
+  height: 440,
+};
 
 const video: Explainer = {
   id: 'c9-4-3',
   lessonId: 'c9-4-3',
   title: 'Neutralization',
-  thumbnail: 'uses',
+  thumbnail: 'n',
   summary:
     'Neutralization is the reaction of an acid with a base to make a salt and water, as hydrogen ions and hydroxide ions join to make water. The salt takes its first name from the metal in the base and its second from the acid. Antacids, lime for soil and remedies for stings all use neutralization.',
   scenes: [
@@ -38,6 +72,17 @@ const video: Explainer = {
         { say: 'The salt takes its first name from the metal in the base, and its second name from the acid.', show: 'salts' },
         { say: 'Hydrochloric acid makes chlorides, sulfuric acid makes sulfates, and nitric acid makes nitrates.', show: ['salts.0', 'salts.1', 'salts.2'], focus: 'salts.2' },
         { say: 'So sulfuric acid and magnesium oxide make magnesium sulfate and water. And remember, in chemistry, a salt is any compound made this way. Table salt is just one of them.' },
+      ],
+    },
+    {
+      chapter: 'Neutralization up close',
+      layout: 'center',
+      main: [mixing],
+      lines: [
+        { say: 'Let’s zoom in as hydrochloric acid and sodium hydroxide solution are mixed. The acid gives hydrogen ions, in yellow, and chloride ions, in green.', show: ['n', 'n.labels', 'n.thermo'] },
+        { say: 'The alkali gives sodium ions, in purple, and hydroxide ions: a red oxygen joined to a hydrogen.' },
+        { say: 'Each time a hydrogen ion meets a hydroxide ion, they join to make a water molecule. Heat is given out, so the mixture warms up.', play: 'n.go', show: 'n.tally' },
+        { say: 'The sodium and chloride ions do not change. They are left in the water as the salt, sodium chloride. With equal amounts of acid and alkali, every hydrogen ion is used up, and the solution is neutral.' },
       ],
     },
     {

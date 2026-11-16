@@ -152,6 +152,15 @@ interface BoxSim {
   gone: Uint8Array;
   /** How far up a paper box the solvent has soaked. */
   front: number;
+  /** The reactions between kinds, and the pairs of particles bonded into molecules. */
+  reactions: NonNullable<ParticleBox['reactions']>;
+  bonds: Bond[];
+  /** The bonded pairs, as i × n + j with i < j, to find quickly. */
+  bonded: Set<number>;
+  /** Pairs close enough to react, found as the forces are worked out (i, j, i, j, ...). */
+  contacts: number[];
+  /** How much warmer (or colder) than its surroundings the box's reactions have made it. */
+  warm: number;
   rnd: () => number;
   /** The lid's actual height (it cannot be pushed into a liquid or solid). */
   lidY: number;
@@ -189,6 +198,10 @@ export interface BoxFrame {
   front: number;
   /** How many particles have left the box. */
   goneCount: number;
+  /** The bonded pairs, as places in x and y. */
+  bonds: Array<[number, number]>;
+  /** How many particles of the tallied kinds there are. */
+  tally: number;
 }
 
 /**
@@ -234,6 +247,106 @@ function forces(s: BoxSim, temp: number, sigma = 1, stir = 0, w = 10, h = 10, ma
   }
 }
 
+/**
+ * Two atoms held together: by a bond drawn as a line, or (`show` false) by a hidden one that only
+ * keeps a molecule's shape, such as the two hydrogens of a water molecule apart.
+ */
+interface Bond {
+  i: number;
+  j: number;
+  len: number;
+  show: boolean;
+}
+
+/** How stiffly a bond holds two atoms together, and how far apart (a fraction of their mean diameter). */
+const BOND_K = 150;
+const BOND_R = 0.85;
+/** How fast a box warmed by its reactions cools back to its surroundings (a fraction each unit of time). */
+const COOL = 0.03;
+/** How close two particles must come to react (a multiple of their mean diameter). */
+const REACT_R = 1.6;
+
+/**
+ * The reactions in a box this step: each pair of particles that came close enough, of kinds a
+ * reaction joins, and hitting hard enough, becomes the reaction's products (each particle reacts at
+ * most once a step).
+ */
+function react(s: BoxSim, divider?: number) {
+  const { contacts, kind, x, y, vx, vy, n, held, gone } = s;
+  if (!contacts.length) return;
+  const used = new Set<number>();
+  for (let c = 0; c < contacts.length; c += 2) {
+    let i = contacts[c];
+    let j = contacts[c + 1];
+    if (used.has(i) || used.has(j) || held[i] || held[j] || gone[i] || gone[j]) continue;
+    // Nothing reacts through a standing divider.
+    if (divider !== undefined && (x[i] - divider) * (x[j] - divider) < 0) continue;
+    for (const r of s.reactions) {
+      if (kind[i] === r.b && kind[j] === r.a && r.a !== r.b) [i, j] = [j, i];
+      if (kind[i] !== r.a || kind[j] !== r.b) continue;
+      // How hard they hit: the kinetic energy of their approach along the line between them.
+      const dx = x[i] - x[j];
+      const dy = y[i] - y[j];
+      const d = Math.hypot(dx, dy) || 1;
+      // With `reach`, only a pair this close (a multiple of their mean diameter) reacts: touching.
+      if (r.reach !== undefined && d * d > r.reach * r.reach * s.sig2[kind[i] * s.kinds + kind[j]]) continue;
+      const closing = -((vx[i] - vx[j]) * dx + (vy[i] - vy[j]) * dy) / d;
+      if (0.25 * Math.max(0, closing) ** 2 < (r.energy ?? 0)) continue;
+      // Two atoms of one molecule never react with each other.
+      if (s.bonded.has(Math.min(i, j) * n + Math.max(i, j))) continue;
+      const carried: number[] = [];
+      if (r.free) {
+        // Each lets go of its old partners, which become the reaction's `free` kinds; with
+        // `carry`, the `a` atom's partners come along, joined to the `b` atom instead.
+        s.bonds = s.bonds.filter((bd) => {
+          const at: number = bd.i === i || bd.j === i ? 0 : bd.i === j || bd.j === j ? 1 : -1;
+          if (at < 0 || r.free![at] === null) return true;
+          const other = bd.i === i || bd.i === j ? bd.j : bd.i;
+          if (bd.show) {
+            kind[other] = r.free![at]!;
+            used.add(other);
+            if (at === 0 && r.carry) carried.push(other);
+          }
+          s.bonded.delete(Math.min(bd.i, bd.j) * n + Math.max(bd.i, bd.j));
+          return false;
+        });
+      }
+      kind[i] = r.to[0];
+      kind[j] = r.to[1];
+      if (r.join) addBond(s, i, j, true);
+      for (const c of carried) {
+        addBond(s, j, c, true);
+        // A hidden bond bends the new molecule the way water is bent (or holds it straight).
+        const len = s.bonds[s.bonds.length - 1].len;
+        addBond(s, i, c, false, r.line ? 2 * len : 2 * len * Math.sin((52.5 * Math.PI) / 180));
+      }
+      if (r.heat) {
+        // The box warms by `heat` (or cools, if it is below zero), and the energy given out sends
+        // the pair off faster, in random directions.
+        s.warm += r.heat;
+        if (r.heat > 0)
+          for (const k of [i, j]) {
+            const a = s.rnd() * 2 * Math.PI;
+            const v = Math.sqrt(r.heat * n);
+            vx[k] += v * Math.cos(a);
+            vy[k] += v * Math.sin(a);
+          }
+      }
+      used.add(i);
+      used.add(j);
+      break;
+    }
+  }
+}
+
+/** Bonds atoms i and j, at the usual length for their sizes (or `len`). */
+function addBond(s: BoxSim, i: number, j: number, show: boolean, len?: number) {
+  const [a, c] = i < j ? [i, j] : [j, i];
+  const k = s.kind;
+  s.bonds.push({ i: a, j: c, len: len ?? BOND_R * Math.sqrt(s.sig2[k[a] * s.kinds + k[c]]), show });
+  s.bonded.add(a * s.n + c);
+}
+
 /** How hard a magnet at full strength pulls. */
 const MAGNET = 5;
 /** How fast the solvent soaks up paper at the usual `run` (particle diameters a simulated second). */
@@ -257,8 +370,10 @@ function measuredTemp(s: BoxSim) {
  * are drawn the same size, so the spaces between them grow.
  */
 function forcesBetween(s: BoxSim, sigma: number) {
-  const { n, x, y, fx, fy, kind, eps, kinds, sig2 } = s;
+  const { n, x, y, fx, fy, kind, eps, kinds, sig2, bonded } = s;
   const sg2 = sigma * sigma;
+  const reacting = s.reactions.length > 0;
+  s.contacts.length = 0;
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j < n; j++) {
       const dx = x[i] - x[j];
@@ -267,6 +382,8 @@ function forcesBetween(s: BoxSim, sigma: number) {
       // Two kinds of different sizes settle apart by the mean of their diameters.
       const s2 = sg2 * sig2[kind[i] * kinds + kind[j]];
       if (r2 > CUT2 * s2) continue;
+      if (bonded.size && bonded.has(i * n + j)) continue;
+      if (reacting && r2 < REACT_R * REACT_R * s2) s.contacts.push(i, j);
       if (r2 < 0.5 * s2) r2 = 0.5 * s2; // never let two particles overlap far enough to explode apart
       const i2 = 1 / r2;
       const q2 = s2 * i2;
@@ -278,13 +395,103 @@ function forcesBetween(s: BoxSim, sigma: number) {
       fy[j] -= f * dy;
     }
   }
+  // Atoms bonded into a molecule are held together by stiff springs.
+  for (const { i, j, len } of s.bonds) {
+    const dx = x[i] - x[j];
+    const dy = y[i] - y[j];
+    const r = Math.hypot(dx, dy);
+    const f = (-BOND_K * (r - len)) / Math.max(r, 1e-6);
+    fx[i] += f * dx;
+    fy[i] += f * dy;
+    fx[j] -= f * dx;
+    fy[j] -= f * dy;
+  }
+}
+
+/**
+ * Places a box's single particles and molecules mixed together: each takes a place on a loose
+ * grid (through the box for a gas, packed at the bottom otherwise), a molecule's atoms round its
+ * first, bonded to it.
+ */
+function placeMolecules(s: BoxSim, b: ParticleBox, kinds: NonNullable<ParticleBox['kinds']>, mols: NonNullable<ParticleBox['molecules']>, w: number) {
+  const units: number[][] = [];
+  // With `lump`, the first kind starts as a block on the floor in the middle (or, with `lump: 3`,
+  // as three smaller blocks spread along the floor), the rest above it.
+  const lumpN = b.lump ? kinds[0].n : 0;
+  let at = 0;
+  let floor = 0.5;
+  if (lumpN) {
+    const pieces = b.lump === true ? 1 : Math.max(1, b.lump || 1);
+    const sp = 1.12 * (kinds[0].size ?? 1);
+    const rowH = (sp * Math.sqrt(3)) / 2;
+    const per = Math.floor(lumpN / pieces);
+    let top = 0;
+    for (let L = 0; L < pieces; L++) {
+      const count = L === pieces - 1 ? lumpN - per * (pieces - 1) : per;
+      const cx = (w * (L + 0.5)) / pieces;
+      const cols = Math.min(Math.floor((w / pieces - 1) / sp) + 1, b.cols ?? Math.max(1, Math.round(Math.sqrt(count * 1.6))));
+      for (let i = 0; i < count; i++) {
+        const r = Math.floor(i / cols);
+        s.kind[at] = 0;
+        s.x[at] = cx - ((cols - 1) * sp) / 2 + (i % cols) * sp + (r % 2 ? sp / 2 : 0) - sp / 4;
+        s.y[at++] = 0.56 * (sp / 1.12) + r * rowH;
+      }
+      top = Math.max(top, Math.ceil(count / cols));
+    }
+    floor = 0.56 * (sp / 1.12) + top * rowH + 0.6;
+  }
+  kinds.forEach((kd, ki) => {
+    if (ki > 0 || !lumpN) for (let i = 0; i < kd.n; i++) units.push([ki]);
+  });
+  for (const m of mols) for (let i = 0; i < m.n; i++) units.push(m.atoms);
+  const bent = new Set(mols.filter((m) => m.bent).map((m) => m.atoms));
+  // Mixed in a random order.
+  for (let i = units.length - 1; i > 0; i--) {
+    const j = Math.floor(s.rnd() * (i + 1));
+    [units[i], units[j]] = [units[j], units[i]];
+  }
+  const cell = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1)) * (mols.some((m) => m.atoms.length > 1) ? 2.2 : 1);
+  const m = units.length;
+  const top = b.state === 'gas' ? s.lidY - 0.5 : Math.min(s.lidY - 0.5, floor + Math.ceil(m / Math.max(1, Math.floor((w - 1) / cell))) * cell);
+  const cols = Math.max(1, Math.min(Math.floor((w - 1) / cell), Math.round(Math.sqrt((m * (w - 1)) / (top - floor)))));
+  const rows = Math.ceil(m / cols);
+  const gx = (w - 1) / cols;
+  const gy = (top - floor) / rows;
+  units.forEach((atoms, u) => {
+    const cx = 0.5 + gx * ((u % cols) + 0.5 + (s.rnd() - 0.5) * 0.2);
+    const cy = floor + gy * (Math.floor(u / cols) + 0.5 + (s.rnd() - 0.5) * 0.2);
+    const first = at;
+    s.kind[at] = atoms[0];
+    s.x[at] = cx;
+    s.y[at++] = cy;
+    const spin = s.rnd() * 2 * Math.PI;
+    const k = atoms.length - 1;
+    // A bent molecule's two outer atoms 105 degrees apart, like water's; otherwise evenly round.
+    const step = bent.has(atoms) ? (105 * Math.PI) / 180 : (2 * Math.PI) / k;
+    for (let a = 1; a <= k; a++) {
+      s.kind[at] = atoms[a];
+      const len = BOND_R * Math.sqrt(s.sig2[atoms[0] * s.kinds + atoms[a]]);
+      s.x[at] = cx + len * Math.cos(spin + (a - 1) * step);
+      s.y[at] = cy + len * Math.sin(spin + (a - 1) * step);
+      addBond(s, first, at, true);
+      at++;
+    }
+    // Hidden bonds between neighbouring outer atoms keep the molecule's shape.
+    for (let a = 1; a < k; a++) {
+      const i = first + a;
+      const j = first + a + 1;
+      addBond(s, i, j, false, Math.hypot(s.x[i] - s.x[j], s.y[i] - s.y[j]));
+    }
+    if (k > 2) addBond(s, first + k, first + 1, false, Math.hypot(s.x[first + k] - s.x[first + 1], s.y[first + k] - s.y[first + 1]));
+  });
 }
 
 /** Places the particles of a box as it starts: rows at the bottom, or spread through the box for a gas. */
 function initBox(b: ParticleBox, seed: number): BoxSim {
   const { w, h } = boxSize(b);
   const kinds = b.kinds ?? [{ n: b.n ?? DEFAULT_N[b.state] }];
-  const n = kinds.reduce((s, k) => s + k.n, 0);
+  const mols = b.molecules ?? [];
+  const n = kinds.reduce((s, k) => s + k.n, 0) + mols.reduce((s, m) => s + m.n * m.atoms.length, 0);
   const rnd = random(seed);
   const s: BoxSim = {
     n,
@@ -307,6 +514,11 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     sig2: new Float64Array(kinds.length * kinds.length),
     gone: new Uint8Array(n),
     front: PAPER_START - 0.6,
+    reactions: b.reactions ?? [],
+    bonds: [],
+    bonded: new Set(),
+    contacts: [],
+    warm: 0,
     rnd,
     lidY: (b.lid ?? 1) * h,
     hits: [],
@@ -322,10 +534,14 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       s.sig2[a * kinds.length + c] = (((ka.size ?? 1) + (kb.size ?? 1)) / 2) ** 2;
     }),
   );
+  // Molecules, and a gas that reacts with a lump, are placed unit by unit.
+  const units = mols.length > 0 || (b.state === 'gas' && !!b.lump && !!b.reactions?.length);
+  if (units) placeMolecules(s, b, kinds, mols, w);
   const spacing = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1));
   // Two kinds kept apart by a divider start on its two sides; behind a wall, all start on its
   // left; on paper, as a small dot in the middle; otherwise the whole box is one region.
-  const split = b.divider !== undefined && b.apart === true && kinds.length === 2;
+  // (Kinds after the first two may start with none: the products of a reaction.)
+  const split = b.divider !== undefined && b.apart === true && kinds.length >= 2 && kinds.slice(2).every((k) => k.n === 0);
   const dot = Math.ceil(Math.sqrt(n)) * spacing + 1;
   const regions: Array<[x0: number, x1: number, from: number, to: number]> = split
     ? [[0, b.divider! * w, 0, kinds[0].n], [b.divider! * w, w, kinds[0].n, n]]
@@ -336,7 +552,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
         : [[0, w, 0, n]];
   // Where the bottom row starts: on the filter, on paper's start line, or on the floor.
   const base = b.filter ? b.filter.at * h : b.paper ? PAPER_START - 0.56 : 0;
-  for (const [x0, x1, from, to] of regions) {
+  for (const [x0, x1, from, to] of units ? [] : regions) {
     const m = to - from;
     const rw = x1 - x0;
     if (b.state === 'gas') {
@@ -364,7 +580,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     }
   }
   // A lump: the first kind starts as a block on the floor in the middle, the rest round it.
-  if (b.lump && kinds.length > 1) {
+  if (b.lump && kinds.length > 1 && !units) {
     // `lump: 3` makes three smaller lumps spread along the floor, with the same particles between them.
     const m = b.lump === true ? 1 : b.lump;
     s.kind.fill(1);
@@ -379,7 +595,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
         taken.add(order[i]);
       }
     }
-  } else if (!b.apart && kinds.length > 1) {
+  } else if (!b.apart && kinds.length > 1 && !units) {
     for (let i = n - 1; i > 0; i--) {
       const j = Math.floor(rnd() * (i + 1));
       const t = s.kind[i];
@@ -433,6 +649,8 @@ interface StepOpts {
   escape?: boolean;
   /** How fast the solvent runs up paper. */
   run?: number;
+  /** Let the box's reactions happen (not while it settles before it is seen). */
+  react?: boolean;
 }
 
 /** The strip along a side where a box with a `bath` is held at its temperature. */
@@ -553,6 +771,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   // or goes over the wall anyway, and the dissolved solid must stay at the bottom.
   const gravityTemp = o.escape || o.wall ? 0 : o.bath || zones ? measuredTemp(s) : temp;
   forces(s, gravityTemp, o.sigma, o.stir ?? 0, w, lid, o.magnet ?? 0);
+  if (o.react) react(s, o.divider);
   // A bath holds its strip firmly, as a flame or ice would, so heat goes in or out quickly there.
   const c1 = Math.exp(-(o.bath || zones ? BATH_GAMMA : GAMMA) * DT);
   const c2 = Math.sqrt((1 - c1 * c1) * temp);
@@ -698,6 +917,9 @@ function cloneSim(s: BoxSim): BoxSim {
     ke: s.ke.slice(),
     held: s.held.slice(),
     gone: s.gone.slice(),
+    bonds: s.bonds.map((bd) => ({ ...bd })),
+    bonded: new Set(s.bonded),
+    contacts: [],
     // The random numbers carry on from the same point each time the warmed state is reused.
     rnd: forkRandom(s),
     hits: [],
@@ -732,6 +954,7 @@ function optsFor(b: ParticleBox, ctl?: Controls): StepOpts {
     wall: b.wall && { x: b.wall.at * w, top: b.wall.height * h },
     zones: ctl && b.zones?.map((z) => ({ x0: z.x[0] * w, x1: z.x[1] * w, y0: z.y[0] * h, y1: z.y[1] * h, temp: z.temp === undefined ? temp : tempOf(z.temp, temp) })),
     escape: ctl ? b.escape : false,
+    react: !!ctl && (!b.waits || ctl.released[b.id] !== undefined),
   };
 }
 
@@ -786,7 +1009,9 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       const { h } = boxSize(b);
       const s = c!.boxes[bi];
       if (ctl.released[b.id] !== undefined && s.held.some((v) => v)) s.held.fill(0);
-      step(s, optsFor(b, ctl), ctl.temp[b.id], ctl.lid[b.id] * h, a, true);
+      // Heat from reactions leaks away to the surroundings.
+      if (s.warm) s.warm *= Math.exp(-COOL * DT);
+      step(s, optsFor(b, ctl), (s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]), ctl.lid[b.id] * h, a, true);
       while (s.hits.length && s.hits[0].at < a - 2.5) s.hits.shift();
       const tr = c!.trails[bi];
       if (b.follow !== undefined && (!tr.length || a - tr[tr.length - 1][0] >= TRAIL_STEP - 1e-9)) {
@@ -810,12 +1035,18 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     const here = (_: unknown, i: number) => !s.gone[i];
     const goneCount = s.gone.reduce((m, g) => m + g, 0);
     const keep = <T,>(a: ArrayLike<T>) => (goneCount ? Array.from(a).filter(here) : Array.from(a));
+    // A particle's place among those still drawn.
+    const visible = (i: number) => {
+      let m = 0;
+      for (let k = 0; k < i; k++) if (!s.gone[k]) m++;
+      return m;
+    };
     return {
       x: keep(s.x),
       y: keep(s.y),
       kind: keep(s.kind),
       lidY: s.lidY,
-      temp: ctl.temp[b.id],
+      temp: (s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]),
       hits: recent.filter((hh) => hh.at > age - FLASH),
       hitRate: Math.round(recent.length / 2),
       trail: c!.trails[bi].map(([, x, y]) => [x, y] as [number, number]),
@@ -829,6 +1060,8 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       filter: b.filter && { y: b.filter.at * boxSize(b).h, open: ctl.released[b.id] !== undefined },
       front: s.front,
       goneCount,
+      bonds: s.bonds.filter((bd) => bd.show && !s.gone[bd.i] && !s.gone[bd.j]).map(({ i, j }) => (goneCount ? [visible(i), visible(j)] : [i, j]) as [number, number]),
+      tally: b.tally ? s.kind.reduce((m, k, i) => m + (!s.gone[i] && b.tally!.kinds.includes(k) ? 1 : 0), 0) : 0,
     };
   });
 }

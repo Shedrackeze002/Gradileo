@@ -1347,7 +1347,17 @@ items ship or decisions change.
        pure water on the cold side) and `c7-4-3` (an ink and two dyes run up chromatography paper).
        The element gained particle sizes, filters and sieves, magnets, an open top that particles
        leave by, a low wall, hot and cold zones, and chromatography paper.
-     - Next: Chemistry 8 and 9, the gases unit, the rest of the
+     - Done (14 November 2026): Chemistry 8 and 9, the lessons where motion is the idea, remade:
+       `c8-1-2` (neon, oxygen and water as particles; hydrogen burning into water), `c8-3-1`
+       (boiling beside burning), `c8-3-2` (zinc fizzing in acid; a precipitate forming), `c8-4-1`
+       (carbon burning; the fire triangle as three boxes), `c8-4-2` (iron rusting only with water
+       and oxygen), `c9-3-1` (atoms counted in a sealed flask; open against sealed), `c9-3-4` (the
+       same reaction cold and hot, dilute and concentrated, as a lump and as pieces, without and
+       with a catalyst), `c9-4-3` (hydrogen and hydroxide ions joining as water as the mixture
+       warms), and with a new `atoms` element, `c9-1-3` (shells filling), `c9-1-4` (sodium and
+       chlorine becoming ions) and `c9-2-1` (ionic and covalent bonding). The particle element
+       gained molecules, reactions that give out heat, and a running count of products.
+     - Next: the gases unit, the rest of the
        motion lessons, the lessons about structures, and animated openings for the calculation
        lessons. Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
