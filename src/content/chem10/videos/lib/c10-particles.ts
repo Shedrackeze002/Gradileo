@@ -1,4 +1,4 @@
-import type { ParticleBox, ParticlesEl } from '@/video/script.ts';
+import type { ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
 import { ATOM, hydrogenBurning } from '@/video/reactions.ts';
 
 // Simulated particles for Chemistry 10 (src/video/particles.ts): they attract and jostle one
@@ -397,5 +397,85 @@ export const densitySqueeze = (id: string, height = 420): ParticlesEl => ({
   boxes: [{ id: 'g', state: 'gas', n: 22, width: 10, height: 9, temp: 1.6, piston: true, label: 'the same particles, the same mass' }],
   clips: { push: { phases: [{ dur: 5, lid: { g: 0.5 } }] } },
   volume: { box: 'g', start: 2, decimals: 1 },
+  height,
+});
+
+/**
+ * A solid lump fizzing in acid: an acid particle that hits the lump takes one of its particles into
+ * the solution and is set loose; two loose ones join as a gas molecule that rises. With `open`, gas
+ * that reaches the top leaves the beaker. With `count`, the tally under it counts every particle
+ * still inside, which stands for its mass. The kinds: 0 the solid, 1 acid, 2 dissolved solid,
+ * 3 set loose, 4 gas.
+ */
+export const fizzBox = (
+  id: string,
+  label: string,
+  solid: { tone: Tone; name: string; gas: string },
+  o: { open?: boolean; count?: boolean } = {},
+): ParticleBox => ({
+  id,
+  state: 'liquid',
+  width: 10,
+  height: 11,
+  temp: 0.5,
+  escape: !!o.open,
+  lump: true,
+  hold: true,
+  kinds: [
+    { n: 14, bond: 3, heavy: 2, tone: solid.tone, name: solid.name },
+    { ...DISSOLVED, n: 18, size: 0.8, tone: 'theta', name: 'acid' },
+    { ...DISSOLVED, tone: solid.tone, name: `dissolved ${solid.name}` },
+    { ...DISSOLVED, size: 0.8, tone: 'theta', name: 'set loose' },
+    { ...DISSOLVED, size: 0.8, heavy: -1.5, tone: 'theta', name: solid.gas },
+  ],
+  reactions: [
+    { a: 1, b: 0, to: [3, 2], energy: 1.5 },
+    { a: 3, b: 3, to: [4, 4], join: true },
+  ],
+  ...(o.count ? { tally: { kinds: [0, 1, 2, 3, 4], label: 'particles inside' } } : {}),
+  label,
+});
+
+const ZINC = { tone: 'brand', name: 'zinc', gas: 'hydrogen gas' } as const;
+const MARBLE = { tone: 'good', name: 'marble', gas: 'carbon dioxide gas' } as const;
+
+/** A piece of zinc fizzing in hydrochloric acid (clip `fizz`): hydrogen gas bubbles off. */
+export const zincInAcid = (id: string, height = 380): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [fizzBox('z', 'zinc in hydrochloric acid', ZINC)],
+  clips: { fizz: { phases: [{ dur: 1, release: ['z'] }, { dur: 13 }] } },
+  height,
+});
+
+/** Marble chips fizzing in acid in an open beaker (clip `fizz`): the carbon dioxide escapes. */
+export const marbleInAcid = (id: string, height = 380): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [fizzBox('m', 'marble chips in acid', MARBLE, { open: true })],
+  clips: { fizz: { phases: [{ dur: 1, release: ['m'] }, { dur: 13 }] } },
+  height,
+});
+
+/**
+ * Marble chips fizzing in an open beaker and in a sealed flask side by side (clip `fizz`), each with
+ * every particle inside counted: the open count falls as gas escapes; the sealed one never changes.
+ */
+export const openClosed = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [fizzBox('o', 'open beaker', MARBLE, { open: true, count: true }), fizzBox('s', 'sealed flask', MARBLE, { count: true })],
+  clips: { fizz: { phases: [{ dur: 1, release: ['o', 's'] }, { dur: 15 }] } },
+  height,
+});
+
+/** Hydrogen burning in a sealed flask (clip `spark`), with every atom counted: the count never changes. */
+export const sealedBurning = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [hydrogenBurning('b', { tally: { kinds: [0, 1, 2, 3, 4], label: 'atoms' }, label: 'hydrogen and oxygen, sealed' })],
+  clips: { spark: { phases: [{ dur: 1, heat: { b: 2 } }, { dur: 2 }, { dur: 1, heat: { b: 0.4 } }, { dur: 10 }] } },
+  thermometers: true,
+  seed: 3,
   height,
 });
