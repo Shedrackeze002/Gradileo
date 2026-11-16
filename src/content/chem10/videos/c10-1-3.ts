@@ -1,6 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { evaporation, filtration } from './lib/c10-1-figures.ts';
+import { evaporatingDish, filterPaper } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-3',
@@ -31,24 +30,25 @@ const video: Explainer = {
     {
       chapter: 'Filtration',
       layout: 'split',
-      leftWidth: 620,
-      left: [figure('f', [filtration()])],
+      leftWidth: 560,
+      left: [filterPaper('f')],
       right: [{ kind: 'callout', id: 'def', tone: 'definition', title: 'Filtrate and residue', md: 'The **filtrate** is the liquid that passes through the filter paper. The **residue** is the solid left on the paper.' }],
       lines: [
-        { say: 'Filtration separates a solid that does not dissolve from a liquid. The mixture is poured through filter paper in a funnel.', show: ['f.funnel', 'f.paper', 'f.paper-l', 'f.mixture'] },
-        { say: 'The paper has tiny holes. Water particles and dissolved particles pass through, but the grains of the insoluble solid are too big.', show: ['f.drip', 'f.residue'] },
-        { say: 'The liquid that passes through is called the filtrate. The solid left on the paper is called the residue.', show: ['f.filtrate', 'f.filtrate-l', 'f.residue-p', 'def'], focus: ['f.filtrate', 'f.residue'] },
+        { say: 'Filtration separates a solid that does not dissolve from a liquid. The mixture is poured through filter paper in a funnel. Here, grains of sand, in orange, and water, in blue, sit on the paper.', show: ['f', 'f.labels'] },
+        { say: 'The paper has tiny holes. Water particles and dissolved particles pass through, but the grains of the insoluble solid are too big. Watch.', play: 'f.pour', focus: 'f.a' },
+        { say: 'The liquid that passes through is called the filtrate. The solid left on the paper is called the residue.', show: 'def' },
       ],
     },
     {
       chapter: 'Evaporation',
       layout: 'split',
-      leftWidth: 680,
-      left: [figure('e', [evaporation()])],
+      leftWidth: 560,
+      left: [evaporatingDish('e')],
       right: [{ kind: 'callout', id: 'ev', tone: 'key', title: 'Evaporation', md: 'Heat the solution in an **evaporating dish** until **all** the solvent has evaporated; the dissolved solid is left behind.' }],
       lines: [
-        { say: 'Evaporation recovers a dissolved solid from a solution. The solution is heated in an evaporating dish, and the water escapes as a vapour.', show: ['e.stand', 'e.flame', 'e.heat-l', 'e.dish', 'e.solution', 'e.solution-l', 'e.vapour', 'e.vapour-l', 'ev'] },
-        { say: 'When all the solvent has evaporated, the solid is left behind in the dish.', hide: ['e.solution', 'e.solution-l'], show: ['e.solid', 'e.solid-l'], focus: 'e.solid' },
+        { say: 'Evaporation recovers a dissolved solid from a solution. The solution is heated in an evaporating dish. Here, salt particles, in yellow, are dissolved among water particles.', show: ['e', 'e.labels', 'ev'] },
+        { say: 'As it heats, the water particles speed up and escape into the air as a vapour. The salt particles stay behind.', play: 'e.heat', focus: 'e.a' },
+        { say: 'When nearly all the water has gone, let the dish cool. The salt is left behind in the dish, its particles locked together as a crystal.', play: 'e.cool' },
       ],
     },
     {
@@ -88,10 +88,12 @@ const video: Explainer = {
     },
     {
       chapter: 'What filter paper cannot do',
-      layout: 'center',
-      main: [{ kind: 'callout', id: 'oops', tone: 'mistake', title: 'Filter paper cannot catch dissolved particles', md: 'A dissolved solid passes straight through with the water: filtering salt water gives salt water. To get the salt back, **evaporate** the water; to get the water back, **distil** it.' }],
+      layout: 'split',
+      leftWidth: 560,
+      left: [filterPaper('s', true)],
+      right: [{ kind: 'callout', id: 'oops', tone: 'mistake', title: 'Filter paper cannot catch dissolved particles', md: 'A dissolved solid passes straight through with the water: filtering salt water gives salt water. To get the salt back, **evaporate** the water; to get the water back, **distil** it.' }],
       lines: [
-        { say: 'Watch out: a dissolved solid passes straight through filter paper with the water. Filtering salt water just gives salt water.', show: 'oops' },
+        { say: 'Watch out: a dissolved solid passes straight through filter paper with the water. Here is salt water on filter paper. Watch: the dissolved salt particles are as small as the water particles, so they go straight through. Filtering salt water just gives salt water.', show: ['oops', 's', 's.labels'], play: 's.pour' },
         { say: 'To get the salt back, evaporate the water. To get the water back, distil it, as the next part shows.' },
       ],
     },

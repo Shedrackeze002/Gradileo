@@ -189,3 +189,83 @@ export const sugarDissolving = (id: string, height = 420): ParticlesEl => ({
   speed: 4,
   height,
 });
+
+/**
+ * A mixture poured onto filter paper (the clip `pour` lets it through): sand and water, or with
+ * `salty`, salt water, whose dissolved salt is as small as the water and goes straight through.
+ */
+export const filterPaper = (id: string, salty = false, height = 440): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    salty
+      ? { id: 'a', state: 'liquid', width: 12, height: 12, temp: 0.5, filter: { at: 0.5, holes: 1.3 }, cross: 1.8, kinds: [{ n: 8, size: 0.8, bond: 1.2, heavy: 2, tone: 'theta', name: 'salt' }, { n: 32, size: 0.8, heavy: 2, tone: 'adj', name: 'water' }], label: 'salt water on filter paper' }
+      : { id: 'a', state: 'liquid', width: 12, height: 12, temp: 0.5, filter: { at: 0.5, holes: 1.3 }, cross: 0.3, kinds: [{ n: 10, size: 1.6, heavy: 3, tone: 'opp', name: 'sand' }, { n: 30, size: 0.8, heavy: 2, tone: 'adj', name: 'water' }], label: 'sand and water on filter paper' },
+  ],
+  clips: { pour: { phases: [{ dur: 1, release: ['a'] }, { dur: 9 }] } },
+  height,
+});
+
+/**
+ * Salt water in an open dish over a flame: the clip `heat` boils the water off into the air, and
+ * the clip `cool` lets the salt left behind lock together into a crystal.
+ */
+export const evaporatingDish = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'a', state: 'liquid', width: 12, height: 10, temp: 0.5, escape: true, bath: 'floor', cross: 2.4, kinds: [{ n: 10, bond: 2, heavy: 3, tone: 'theta', name: 'salt' }, { n: 40, heavy: 0.3, tone: 'adj', name: 'water' }], label: 'salt water in a dish' }],
+  clips: { heat: { phases: [{ dur: 2, heat: { a: 1.8 } }, { dur: 12 }] }, cool: { phases: [{ dur: 4, heat: { a: 0.3 } }, { dur: 5 }] } },
+  speed: 2.5,
+  height,
+});
+
+/**
+ * Salt water in a still: the flask heated on the left, the condenser cooled on the right, with a
+ * wall between. The clip `boil` boils the water over the wall, and `more` lets it keep condensing.
+ */
+export const still = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'a',
+      state: 'liquid',
+      width: 20,
+      height: 12,
+      temp: 0.5,
+      wall: { at: 0.5, height: 0.5 },
+      cross: 1.6,
+      zones: [{ x: [0, 0.5], y: [0, 0.17] }, { x: [0.6, 1], y: [0, 1], temp: 0.4 }],
+      kinds: [{ n: 8, bond: 3, heavy: 6, tone: 'theta', name: 'salt' }, { n: 30, ...WATER }],
+      label: 'flask (heated)  |  condenser (cooled)',
+    },
+  ],
+  clips: { boil: { phases: [{ dur: 2, heat: { a: 1.6 } }, { dur: 6 }] }, more: { phases: [{ dur: 10 }] } },
+  speed: 5,
+  height,
+});
+
+/** Iron filings and sand, with a magnet held over them by the clip `go`. */
+export const magnetSand = (id: string, height = 330): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'a', state: 'liquid', width: 12, height: 9, temp: 0.15, cross: 0.3, kinds: [{ n: 10, bond: 0.4, heavy: 2, magnetic: true, tone: 'hyp', name: 'iron' }, { n: 26, bond: 0.4, heavy: 2, tone: 'opp', name: 'sand' }], label: 'iron filings and sand' }],
+  clips: { go: { phases: [{ dur: 2, magnet: { a: 1 } }, { dur: 7 }] } },
+  height,
+});
+
+const DYE_A = { n: 4, size: 0.8, bond: 1.5, heavy: 0, rise: 0.3, tone: 'hyp', name: 'dye A' } as const;
+const DYE_B = { n: 4, size: 0.8, bond: 1.5, heavy: 0, rise: 0.68, tone: 'good', name: 'dye B' } as const;
+const strip = (id: string, label: string, kinds: ParticleBox['kinds']): ParticleBox => ({ id, state: 'solid', width: 4, height: 12, temp: 0.005, paper: true, cross: 0, kinds, label });
+
+/**
+ * Three strips of chromatography paper (ink X, dye A and dye B), each with a dot on its pencil line;
+ * the clip `run` soaks the solvent up them, and each dye travels at its own fraction of its speed.
+ */
+export const chromatography = (id: string, height = 460): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [strip('x', 'ink X', [{ ...DYE_A }, { ...DYE_B }]), strip('a', 'dye A', [{ ...DYE_A }]), strip('b', 'dye B', [{ ...DYE_B }])],
+  clips: { run: { phases: [{ dur: 1, run: { x: 1, a: 1, b: 1 } }, { dur: 11 }] } },
+  height,
+});

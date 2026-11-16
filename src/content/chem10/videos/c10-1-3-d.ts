@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { chromatogram } from './lib/c10-1-figures.ts';
+import { chromatography } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-3-d',
@@ -21,13 +22,16 @@ const video: Explainer = {
     },
     {
       chapter: 'The Rf value',
-      layout: 'center',
-      main: [
-        { kind: 'math', id: 'rf', size: 'lg', lines: ['R_f = \\dfrac{\\text{distance moved by the spot}}{\\text{distance moved by the solvent}}'] },
+      layout: 'split',
+      leftWidth: 440,
+      left: [chromatography('ch', 460)],
+      right: [
+        { kind: 'math', id: 'rf', size: 'md', lines: ['R_f = \\dfrac{\\text{distance moved by the spot}}{\\text{distance moved by the solvent}}'] },
         { kind: 'bullets', id: 'facts', items: ['Both distances are measured **from the baseline**.', 'No unit, and always **less than 1**.', 'In the same solvent and paper, a substance always has the **same** $R_f$ value.'] },
       ],
       lines: [
-        { say: 'The R f value of a substance is the distance its spot moves, divided by the distance the solvent moves.', caption: 'The Rf value of a substance is the distance its spot moves, divided by the distance the solvent moves.', show: 'rf' },
+        { say: 'The R f value of a substance is the distance its spot moves, divided by the distance the solvent moves.', caption: 'The Rf value of a substance is the distance its spot moves, divided by the distance the solvent moves.', show: ['rf', 'ch', 'ch.labels'] },
+        { say: 'Watch the solvent run up these strips. Each dye keeps to its own fraction of the solvent’s distance the whole way: dye B goes most of the way with the solvent, and dye A only about a third as far.', play: 'ch.run', focus: 'ch.x' },
         { say: 'Both distances are measured from the baseline, where the spots started.', show: 'facts.0' },
         { say: 'The R f value has no unit, and it is always less than one, because a spot can never travel further than the solvent.', caption: 'The Rf value has no unit, and it is always less than one, because a spot can never travel further than the solvent.', show: 'facts.1' },
         { say: 'In the same solvent, on the same kind of paper, a substance always has the same R f value, so the value can identify it.', caption: 'In the same solvent, on the same kind of paper, a substance always has the same Rf value, so the value can identify it.', show: 'facts.2' },
