@@ -479,3 +479,36 @@ export const sealedBurning = (id: string, height = 420): ParticlesEl => ({
   seed: 3,
   height,
 });
+
+/**
+ * Two reactions in solution, each pair of solutions kept apart by a divider until the clip `mix`
+ * lifts both: where a particle of one meets a particle of the other they join, and each reaction
+ * warms its box (left, exothermic) or cools it (right, endothermic), so the thermometers move apart.
+ */
+export const hotAndCold = (id: string, height = 400): ParticlesEl => {
+  const box = (bid: string, heat: number, a: Tone, b: Tone, label: string): ParticleBox => ({
+    id: bid,
+    state: 'liquid',
+    width: 10,
+    height: 10,
+    temp: 0.8,
+    divider: 0.5,
+    apart: true,
+    kinds: [
+      { ...DISSOLVED, n: 14, heavy: 0.1, tone: a, name: 'one reactant' },
+      { ...DISSOLVED, n: 14, heavy: 0.1, tone: b, name: 'the other reactant' },
+      { ...DISSOLVED, heavy: 0.1, tone: a, name: 'product' },
+      { ...DISSOLVED, heavy: 0.1, tone: b, name: 'product' },
+    ],
+    reactions: [{ a: 0, b: 1, to: [2, 3], join: true, heat }],
+    label,
+  });
+  return {
+    kind: 'particles',
+    id,
+    boxes: [box('ex', 0.06, 'bad', 'adj', 'exothermic'), box('en', -0.07, 'theta', 'good', 'endothermic')],
+    clips: { mix: { phases: [{ dur: 1, lift: ['ex', 'en'] }, { dur: 13 }] } },
+    thermometers: true,
+    height,
+  };
+};

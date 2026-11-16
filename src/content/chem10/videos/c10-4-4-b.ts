@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, energyLevels, labels, mol, row, stack } from './lib/c10-4-figures.ts';
+import { sealedBurning } from './lib/c10-particles.ts';
 
 // Hydrogen and chlorine: the bonds break (energy in), and new bonds form (energy out).
 const bondsRow = row({
@@ -56,6 +57,18 @@ const video: Explainer = {
         { say: 'Making bonds gives out energy, as the atoms pull together.', show: ['b.out', 'b.hcl1', 'b.hcl2', 'b.mk'], focus: 'b.out' },
         { say: 'If making the new bonds gives out more energy than breaking the old ones takes in, the reaction is exothermic. If breaking takes in more, it is endothermic.', focus: 'b' },
         { say: 'So the energy change is the energy taken in breaking bonds, minus the energy given out making bonds.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Watching bonds break and form',
+      layout: 'split',
+      leftWidth: 560,
+      left: [sealedBurning('hb', 440)],
+      right: [{ kind: 'callout', id: 'see', tone: 'key', title: 'More out than in', md: 'Breaking the bonds in $\\ce{H2}$ and $\\ce{O2}$ takes energy in. Making the bonds in water gives out **more**, so the particles speed up and the flask gets hotter: **exothermic**.' }],
+      lines: [
+        { say: 'Here is hydrogen burning in oxygen, in a sealed flask with a thermometer. Each molecule is two atoms held by a bond.', show: ['hb', 'hb.labels', 'hb.thermo'] },
+        { say: 'A little heat starts it. Each time molecules collide hard enough, their bonds break, and the atoms join up in new bonds, as water.', play: 'hb.spark' },
+        { say: 'Making the new bonds gives out more energy than breaking the old ones took in. The extra sends the particles flying faster, and the temperature climbs: the reaction is exothermic.', show: 'see', focus: 'hb.thermo' },
       ],
     },
     {
