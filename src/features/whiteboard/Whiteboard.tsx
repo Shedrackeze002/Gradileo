@@ -12,7 +12,8 @@ import { cn } from '@/lib/cn.ts';
 import { keepBoard, readBoard } from '@/features/lessons/presentPlace.ts';
 import { InkSurface } from './InkSurface.tsx';
 import { usePageLock } from './pageLock.ts';
-import { InkToolbar, type InkTools } from './InkToolbar.tsx';
+import { InkToolbar, pressLog, type InkTools } from './InkToolbar.tsx';
+import { inkLog } from './inkLog.ts';
 import { useBoardFit } from './useBoardFit.ts';
 
 interface PageState {
@@ -54,6 +55,11 @@ export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave, 
   const [fitRef, fit] = useBoardFit();
   const toast = useToast();
   const page = pages[Math.min(ix, pages.length - 1)];
+  const [headerLog] = useState(() => pressLog('board header'));
+  useEffect(() => {
+    if (open) inkLog('board', { page: ix + 1, of: pages.length, strokes: page.doc.strokes.length, undo: page.doc.past.length, redo: page.doc.future.length, mode: tools.mode, penOnly: tools.penOnly });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, ix, pages.length, page.doc, tools.mode, tools.penOnly]);
 
   const updatePage = useCallback(
     (fn: (p: PageState) => PageState) => {
@@ -71,6 +77,7 @@ export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave, 
       const tag = (e.target as HTMLElement)?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA') return;
       const mod = e.ctrlKey || e.metaKey;
+      inkLog('board key', { key: e.key.length === 1 ? e.key : e.key.slice(0, 12), mod });
       if (mod && e.key.toLowerCase() === 'z') {
         e.preventDefault();
         if (e.shiftKey) redo();
@@ -141,7 +148,7 @@ export function Whiteboard({ open, onClose, tools, lessonTitle, boards, onSave, 
 
   return (
     <div className={cn('fixed inset-0 z-50 flex select-none flex-col bg-canvas [-webkit-touch-callout:none]', !open && 'hidden')} role="dialog" aria-modal="true" aria-label="Whiteboard">
-      <header className="flex flex-wrap items-center gap-2 border-b border-line bg-surface px-3 py-2">
+      <header className="flex flex-wrap items-center gap-2 border-b border-line bg-surface px-3 py-2" {...headerLog}>
         {onSave ? (
           <input value={title} onChange={(e) => (setTitle(e.target.value), setDirty(true))} aria-label="Board name" maxLength={120} className="h-9 min-w-0 flex-1 select-text rounded-lg border border-transparent bg-transparent px-2 text-[15px] font-semibold hover:border-line focus:border-brand-300 focus:outline-none sm:max-w-xs" />
         ) : (

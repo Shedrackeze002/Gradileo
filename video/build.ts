@@ -21,7 +21,7 @@
  */
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { chromium, type Browser, type Page } from '@playwright/test';
 import { createServer } from 'vite';
@@ -178,7 +178,11 @@ async function main() {
   if (!ids.length) throw new Error('Name at least one video, for example: npx tsx video/build.ts m10c-2-1');
   useCache(CACHE);
   // No file watching or hot reload: editing a script while a video renders must not reload the stage.
-  const server = await createServer({ root: ROOT, configFile: path.join(ROOT, 'vite.config.ts'), logLevel: 'error', server: { port: 5199, strictPort: false, hmr: false, watch: null } });
+  // Vite serves a file by its real path and refuses one outside the root. In a second working copy
+  // whose node_modules is a link to the first one's, that refused the fonts, and the videos were
+  // drawn in the browser's own fonts; so the real folder is allowed as well.
+  const allow = [ROOT, realpathSync(path.join(ROOT, 'node_modules'))];
+  const server = await createServer({ root: ROOT, configFile: path.join(ROOT, 'vite.config.ts'), logLevel: 'error', server: { port: 5199, strictPort: false, hmr: false, watch: null, fs: { allow } } });
   await server.listen();
   const base = server.resolvedUrls?.local[0] ?? 'http://localhost:5199/';
   const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
@@ -204,10 +208,17 @@ async function main() {
       const page = await browser.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1.5 });
       const errors: string[] = [];
       page.on('pageerror', (e) => errors.push(e.message));
+      // A file the stage asked for and did not get (a font, say) changes how every frame looks.
+      page.on('response', (r) => void (r.status() >= 400 && errors.push(`${r.status()} for ${new URL(r.url()).pathname}`)));
+      page.on('requestfailed', (r) => errors.push(`could not load ${new URL(r.url()).pathname}`));
+      // A frame that failed to draw (a TeX mistake, say) must not end up in a video.
+      const sound = () => {
+        if (errors.length) throw new Error(`${id}: the stage reported errors:\n${[...new Set(errors)].join('\n')}`);
+      };
       await page.goto(`${base}video/stage.html`);
       await stage(page, id, tl);
-      // A frame that failed to draw (a TeX mistake, say) must not end up in a video.
-      if (errors.length) throw new Error(`${id}: the stage reported errors:\n${[...new Set(errors)].join('\n')}`);
+      await page.evaluate(() => document.fonts.ready);
+      sound();
       if (flag('stills')) {
         rmSync(path.join(dir, 'stills'), { recursive: true, force: true });
         mkdirSync(path.join(dir, 'stills'), { recursive: true });
@@ -219,12 +230,14 @@ async function main() {
           await seek(page, at);
           await page.screenshot({ path: path.join(dir, 'stills', `at-${at.toFixed(1).padStart(6, '0')}.png`) });
         }
+        sound();
         log(`${id}: stills in ${path.relative(ROOT, path.join(dir, 'stills'))}`);
       } else {
         const wav = path.join(CACHE, `${id}.wav`);
         writeWav(wav, track(tl, clips));
         log(`${id}: rendering at ${FPS} fps`);
         await renderVideo(page, tl, wav, path.join(dir, `${id}.mp4`));
+        sound();
         const cs = captions(tl.lines);
         writeFileSync(path.join(dir, 'captions.vtt'), toVtt(cs));
         writeFileSync(path.join(dir, 'captions.srt'), toSrt(cs));

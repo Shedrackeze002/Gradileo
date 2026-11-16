@@ -59,12 +59,12 @@ test('a Grade 10 or 11 student who chooses chemistry is offered a check on the c
   await page.getByRole('button', { name: 'Grade 11', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 11 Chemistry', exact: true })).toBeVisible();
-  await expect(page.getByText(/6 questions on Chemistry 10 skills/)).toBeVisible();
+  await expect(page.getByText(/5 questions on Chemistry 10 skills/)).toBeVisible();
   await page.getByRole('button', { name: 'Back' }).click();
   await page.getByRole('button', { name: 'Grade 10', exact: true }).click();
   await page.getByRole('button', { name: 'See my recommendation' }).click();
   await expect(page.getByRole('heading', { name: 'Grade 10 Chemistry', exact: true })).toBeVisible();
-  await expect(page.getByText(/6 questions on Chemistry 9 skills/)).toBeVisible();
+  await expect(page.getByText(/4 questions on Chemistry 9 skills/)).toBeVisible();
   await page.getByRole('button', { name: 'Skip the check and start' }).click();
   await page.waitForURL(/\/s$/);
   await expect(page.getByText('Grade 10 Chemistry · Self-paced with your AI tutor')).toBeVisible();

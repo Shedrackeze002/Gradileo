@@ -798,7 +798,7 @@
   "c8-1-2": {
     "lessonId": "c8-1-2",
     "title": "Compounds and Molecules",
-    "duration": 200,
+    "duration": 291,
     "voice": "af_heart",
     "chapters": [
       {
@@ -810,26 +810,34 @@
         "t": 22.702
       },
       {
+        "title": "Atoms and molecules up close",
+        "t": 40.968
+      },
+      {
         "title": "New properties",
-        "t": 68.525
+        "t": 88.771
+      },
+      {
+        "title": "Making a compound",
+        "t": 119.29
       },
       {
         "title": "Particle diagrams",
-        "t": 99.044
+        "t": 163.154
       },
       {
         "title": "Your turn",
-        "t": 133.115
+        "t": 224.379
       },
       {
         "title": "Summary",
-        "t": 166.09
+        "t": 257.354
       }
     ],
     "cues": [
       {
         "id": "c8-1-2:q",
-        "t": 146.004,
+        "t": 237.268,
         "prompt": "A box holds identical particles. Each is one carbon atom joined to two oxygen atoms. What does it show?",
         "choices": [
           "a compound",
@@ -1103,7 +1111,7 @@
   "c8-3-1": {
     "lessonId": "c8-3-1",
     "title": "Physical and Chemical Changes",
-    "duration": 169,
+    "duration": 229,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1115,22 +1123,26 @@
         "t": 19.712
       },
       {
-        "title": "Can it be reversed?",
+        "title": "Up close",
         "t": 70.436
       },
       {
+        "title": "Can it be reversed?",
+        "t": 131.029
+      },
+      {
         "title": "Your turn",
-        "t": 109.131
+        "t": 169.724
       },
       {
         "title": "Summary",
-        "t": 136.714
+        "t": 197.307
       }
     ],
     "cues": [
       {
         "id": "c8-3-1:q",
-        "t": 115.224,
+        "t": 175.817,
         "prompt": "Which of these is a chemical change?",
         "choices": [
           "butter melting",
@@ -1146,7 +1158,7 @@
   "c8-3-2": {
     "lessonId": "c8-3-2",
     "title": "Signs of a Chemical Reaction",
-    "duration": 165,
+    "duration": 198,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1159,21 +1171,21 @@
       },
       {
         "title": "Reactants and products",
-        "t": 63.966
+        "t": 96.319
       },
       {
         "title": "Your turn",
-        "t": 101.626
+        "t": 133.979
       },
       {
         "title": "Summary",
-        "t": 136.755
+        "t": 169.108
       }
     ],
     "cues": [
       {
         "id": "c8-3-2:q",
-        "t": 115.933,
+        "t": 148.286,
         "prompt": "Limestone, calcium carbonate, is heated and breaks down into calcium oxide and carbon dioxide. What is the reactant?",
         "choices": [
           "calcium oxide",
@@ -1232,7 +1244,7 @@
   "c8-4-1": {
     "lessonId": "c8-4-1",
     "title": "Burning",
-    "duration": 175,
+    "duration": 240,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1244,22 +1256,30 @@
         "t": 21.5
       },
       {
-        "title": "The fire triangle",
+        "title": "Burning up close",
         "t": 72.01
       },
       {
+        "title": "The fire triangle",
+        "t": 113.199
+      },
+      {
+        "title": "Putting fires out",
+        "t": 150.232
+      },
+      {
         "title": "Your turn",
-        "t": 112.43
+        "t": 177.908
       },
       {
         "title": "Summary",
-        "t": 142.579
+        "t": 208.057
       }
     ],
     "cues": [
       {
         "id": "c8-4-1:q",
-        "t": 125.565,
+        "t": 191.043,
         "prompt": "Firefighters cut a wide strip of trees out of a forest, ahead of a wildfire. Which side of the fire triangle does this remove?",
         "choices": [
           "heat",
@@ -1275,7 +1295,7 @@
   "c8-4-2": {
     "lessonId": "c8-4-2",
     "title": "Rusting and Corrosion",
-    "duration": 173,
+    "duration": 216,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1287,22 +1307,26 @@
         "t": 21.217
       },
       {
-        "title": "Stopping rust",
+        "title": "Rusting up close",
         "t": 82.447
       },
       {
+        "title": "Stopping rust",
+        "t": 125.816
+      },
+      {
         "title": "Your turn",
-        "t": 112.254
+        "t": 155.623
       },
       {
         "title": "Summary",
-        "t": 138.306
+        "t": 181.675
       }
     ],
     "cues": [
       {
         "id": "c8-4-2:q",
-        "t": 119.541,
+        "t": 162.91,
         "prompt": "Why is a bicycle chain oiled rather than painted?",
         "choices": [
           "oil adds zinc to the chain",
@@ -1490,7 +1514,7 @@
   "c9-1-3": {
     "lessonId": "c9-1-3",
     "title": "Electron Arrangements",
-    "duration": 177,
+    "duration": 195,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1502,22 +1526,26 @@
         "t": 20.385
       },
       {
+        "title": "More arrangements",
+        "t": 57.222
+      },
+      {
         "title": "Shells and the periodic table",
-        "t": 69.032
+        "t": 82.122
       },
       {
         "title": "Your turn",
-        "t": 114.78
+        "t": 133.388
       },
       {
         "title": "Summary",
-        "t": 142.472
+        "t": 161.08
       }
     ],
     "cues": [
       {
         "id": "c9-1-3:q",
-        "t": 124.242,
+        "t": 142.85,
         "prompt": "An element has the arrangement 2, 8, 6. Which group and period is it in?",
         "choices": [
           "group 16, period 3",
@@ -1533,7 +1561,7 @@
   "c9-1-4": {
     "lessonId": "c9-1-4",
     "title": "Ions",
-    "duration": 182,
+    "duration": 181,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1546,21 +1574,21 @@
       },
       {
         "title": "Charges from the group",
-        "t": 63.837
+        "t": 63.237
       },
       {
         "title": "Your turn",
-        "t": 119.454
+        "t": 118.854
       },
       {
         "title": "Summary",
-        "t": 149.069
+        "t": 148.469
       }
     ],
     "cues": [
       {
         "id": "c9-1-4:q",
-        "t": 130.536,
+        "t": 129.936,
         "prompt": "Magnesium has atomic number 12. How many electrons are in a $\\text{Mg}^{2+}$ ion?",
         "choices": [
           "12",
@@ -1576,7 +1604,7 @@
   "c9-2-1": {
     "lessonId": "c9-2-1",
     "title": "Ionic and Covalent Bonding",
-    "duration": 185,
+    "duration": 198,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1584,26 +1612,30 @@
         "t": 0
       },
       {
-        "title": "Two kinds of bond",
+        "title": "Ionic bonding",
         "t": 22.746
       },
       {
+        "title": "Covalent bonding",
+        "t": 54.369
+      },
+      {
         "title": "Bonding and properties",
-        "t": 71.62
+        "t": 84.542
       },
       {
         "title": "Your turn",
-        "t": 118.36
+        "t": 131.282
       },
       {
         "title": "Summary",
-        "t": 152.408
+        "t": 165.33
       }
     ],
     "cues": [
       {
         "id": "c9-2-1:q",
-        "t": 131.72,
+        "t": 144.642,
         "prompt": "A white solid melts at 770 °C, and its solution conducts electricity. What kind of bonding does it have?",
         "choices": [
           "covalent",
@@ -1748,7 +1780,7 @@
   "c9-3-1": {
     "lessonId": "c9-3-1",
     "title": "Conservation of Mass",
-    "duration": 179,
+    "duration": 241,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1760,22 +1792,34 @@
         "t": 21.349
       },
       {
+        "title": "Counting atoms",
+        "t": 42.932
+      },
+      {
+        "title": "Using the law",
+        "t": 79.175
+      },
+      {
         "title": "Open and closed systems",
-        "t": 67.035
+        "t": 105.078
+      },
+      {
+        "title": "Balance readings",
+        "t": 136.786
       },
       {
         "title": "Your turn",
-        "t": 109.068
+        "t": 170.917
       },
       {
         "title": "Summary",
-        "t": 147.59
+        "t": 209.44
       }
     ],
     "cues": [
       {
         "id": "c9-3-1:q",
-        "t": 125.38,
+        "t": 187.23,
         "prompt": "A tablet fizzes in water in an open cup. The reading falls from 152.4 g to 151.6 g. What has happened?",
         "choices": [
           "0.8 g of mass was destroyed",
@@ -1877,7 +1921,7 @@
   "c9-3-4": {
     "lessonId": "c9-3-4",
     "title": "Rates of Reaction",
-    "duration": 176,
+    "duration": 257,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1893,18 +1937,34 @@
         "t": 66.438
       },
       {
+        "title": "Temperature",
+        "t": 82.927
+      },
+      {
+        "title": "Concentration",
+        "t": 110.419
+      },
+      {
+        "title": "Surface area",
+        "t": 133.05
+      },
+      {
+        "title": "Catalysts",
+        "t": 162.077
+      },
+      {
         "title": "Your turn",
-        "t": 116.281
+        "t": 188.694
       },
       {
         "title": "Summary",
-        "t": 144.743
+        "t": 226.319
       }
     ],
     "cues": [
       {
         "id": "c9-3-4:q",
-        "t": 124.959,
+        "t": 206.535,
         "prompt": "Why does powdered marble react with acid faster than a single lump?",
         "choices": [
           "the powder has a larger surface area",
@@ -2006,7 +2066,7 @@
   "c9-4-3": {
     "lessonId": "c9-4-3",
     "title": "Neutralization",
-    "duration": 165,
+    "duration": 219,
     "voice": "af_heart",
     "chapters": [
       {
@@ -2018,22 +2078,26 @@
         "t": 21.207
       },
       {
-        "title": "Everyday neutralization",
+        "title": "Neutralization up close",
         "t": 70.037
       },
       {
+        "title": "Everyday neutralization",
+        "t": 124.35
+      },
+      {
         "title": "Your turn",
-        "t": 108.553
+        "t": 162.866
       },
       {
         "title": "Summary",
-        "t": 135.553
+        "t": 189.866
       }
     ],
     "cues": [
       {
         "id": "c9-4-3:q",
-        "t": 117.955,
+        "t": 172.268,
         "prompt": "Which salt is made when nitric acid neutralizes potassium hydroxide?",
         "choices": [
           "potassium chloride",
@@ -122010,6 +122074,1689 @@
         ],
         "answer": 1,
         "working": "The distance is the area under the line, a triangle: $\\tfrac{1}{2} \\times 4 \\times 12 = 24\\ \\text{m}$."
+      }
+    ]
+  },
+  "p10-2-1": {
+    "lessonId": "p10-2-1",
+    "title": "Forces and Net Force",
+    "duration": 258,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a force is",
+        "t": 18.881
+      },
+      {
+        "title": "Naming the forces",
+        "t": 63.068
+      },
+      {
+        "title": "Net force",
+        "t": 104.107
+      },
+      {
+        "title": "Forces that add",
+        "t": 142.043
+      },
+      {
+        "title": "Balanced forces",
+        "t": 170.449
+      },
+      {
+        "title": "Your turn",
+        "t": 194.526
+      },
+      {
+        "title": "Summary",
+        "t": 227.439
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-1:q",
+        "t": 208.916,
+        "prompt": "Two people push a cart east with forces of 40 N and 30 N. Friction acts west with 50 N. What is the net force on the cart?",
+        "choices": [
+          "20 N east",
+          "120 N east",
+          "20 N west",
+          "70 N east"
+        ],
+        "answer": 0,
+        "working": "Take east as positive: $40 + 30 - 50 = +20\\ \\text{N}$, so the net force is 20 N east."
+      }
+    ]
+  },
+  "p10-2-2": {
+    "lessonId": "p10-2-2",
+    "title": "Newton’s First Law and Inertia",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Why things stop",
+        "t": 20.2
+      },
+      {
+        "title": "Newton’s first law",
+        "t": 61.394
+      },
+      {
+        "title": "Balanced forces",
+        "t": 93.473
+      },
+      {
+        "title": "Inertia",
+        "t": 135.872
+      },
+      {
+        "title": "Inertia on a bus",
+        "t": 180.463
+      },
+      {
+        "title": "Your turn",
+        "t": 225.147
+      },
+      {
+        "title": "Summary",
+        "t": 258.112
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-2:q",
+        "t": 238.512,
+        "prompt": "A crate is pushed across a level floor at a steady velocity with a push of 85 N. How large is the friction on the crate?",
+        "choices": [
+          "0 N",
+          "less than 85 N",
+          "more than 85 N",
+          "85 N"
+        ],
+        "answer": 3,
+        "working": "A steady velocity means the net force is zero, so the friction must cancel the push exactly: 85 N."
+      }
+    ]
+  },
+  "p10-2-3": {
+    "lessonId": "p10-2-3",
+    "title": "Newton’s Second Law",
+    "duration": 336,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A force changes motion",
+        "t": 21.544
+      },
+      {
+        "title": "A bigger force",
+        "t": 78.446
+      },
+      {
+        "title": "A bigger mass",
+        "t": 117.537
+      },
+      {
+        "title": "Newton’s second law",
+        "t": 149.114
+      },
+      {
+        "title": "Friction and net force",
+        "t": 190.075
+      },
+      {
+        "title": "Your turn",
+        "t": 274.668
+      },
+      {
+        "title": "Summary",
+        "t": 308.97
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-3:q",
+        "t": 288.408,
+        "prompt": "A 4 kg box is pushed across a floor with a force of 30 N. Friction on the box is 6 N. What is its acceleration?",
+        "choices": [
+          "$9\\ \\text{m/s}^2$",
+          "$7.5\\ \\text{m/s}^2$",
+          "$6\\ \\text{m/s}^2$",
+          "$24\\ \\text{m/s}^2$"
+        ],
+        "answer": 2,
+        "working": "Net force $= 30 - 6 = 24\\ \\text{N}$, and $a = 24 \\div 4 = 6\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p10-2-4": {
+    "lessonId": "p10-2-4",
+    "title": "Mass, Weight and Gravity",
+    "duration": 234,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Mass and weight",
+        "t": 24.684
+      },
+      {
+        "title": "Gravitational field strength",
+        "t": 74.715
+      },
+      {
+        "title": "Other worlds",
+        "t": 120.544
+      },
+      {
+        "title": "Your turn",
+        "t": 168.009
+      },
+      {
+        "title": "Summary",
+        "t": 203.727
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-4:q",
+        "t": 183.288,
+        "prompt": "An astronaut has a mass of 80 kg. On the Moon, g = 1.6 N/kg. What are the astronaut’s mass and weight on the Moon?",
+        "choices": [
+          "13 kg and 128 N",
+          "80 kg and 128 N",
+          "80 kg and 784 N",
+          "128 kg and 80 N"
+        ],
+        "answer": 1,
+        "working": "The mass does not change: 80 kg. Weight $= mg = 80 \\times 1.6 = 128\\ \\text{N}$."
+      }
+    ]
+  },
+  "p10-2-5": {
+    "lessonId": "p10-2-5",
+    "title": "Friction and Air Resistance, Part 1: Friction",
+    "duration": 224,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Against the sliding",
+        "t": 18.152
+      },
+      {
+        "title": "More friction, less friction",
+        "t": 46.822
+      },
+      {
+        "title": "Useful, or a nuisance?",
+        "t": 83.84
+      },
+      {
+        "title": "Stopping by friction",
+        "t": 116.772
+      },
+      {
+        "title": "Your turn",
+        "t": 156.292
+      },
+      {
+        "title": "Summary",
+        "t": 194.209
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-5:q",
+        "t": 172.416,
+        "prompt": "A 4 kg sledge slides across snow at 10 m/s. The only force along the ground is friction of 8 N. How long does the sledge take to stop?",
+        "choices": [
+          "$5\\ \\text{s}$",
+          "$1.25\\ \\text{s}$",
+          "$20\\ \\text{s}$",
+          "$3.2\\ \\text{s}$"
+        ],
+        "answer": 0,
+        "working": "Deceleration $= 8 \\div 4 = 2\\ \\text{m/s}^2$. Time $= 10 \\div 2 = 5\\ \\text{s}$."
+      }
+    ]
+  },
+  "p10-2-5-b": {
+    "lessonId": "p10-2-5",
+    "title": "Friction and Air Resistance, Part 2: Air Resistance",
+    "duration": 256,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A skydiver’s fall",
+        "t": 18.049
+      },
+      {
+        "title": "The parachute",
+        "t": 100.092
+      },
+      {
+        "title": "Do heavy things fall faster?",
+        "t": 140.502
+      },
+      {
+        "title": "Your turn",
+        "t": 175.6
+      },
+      {
+        "title": "Summary",
+        "t": 223.286
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-5-b:q",
+        "t": 196.074,
+        "prompt": "On Earth, g = 9.8 N/kg. A 60 kg skydiver is falling, and at one moment the air resistance is 288 N. What is the skydiver’s acceleration at that moment?",
+        "choices": [
+          "$9.8\\ \\text{m/s}^2$",
+          "$4.8\\ \\text{m/s}^2$",
+          "$14.6\\ \\text{m/s}^2$",
+          "$5\\ \\text{m/s}^2$"
+        ],
+        "answer": 3,
+        "working": "Weight $= 60 \\times 9.8 = 588\\ \\text{N}$. Net force $= 588 - 288 = 300\\ \\text{N}$ downwards. $a = 300 \\div 60 = 5\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p10-2-6": {
+    "lessonId": "p10-2-6",
+    "title": "Newton’s Third Law",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A push back",
+        "t": 16.761
+      },
+      {
+        "title": "A third-law pair",
+        "t": 56.235
+      },
+      {
+        "title": "Equal forces, different accelerations",
+        "t": 91.809
+      },
+      {
+        "title": "Rockets",
+        "t": 134.513
+      },
+      {
+        "title": "Balanced forces are not a pair",
+        "t": 158.134
+      },
+      {
+        "title": "A collision",
+        "t": 187.837
+      },
+      {
+        "title": "Your turn",
+        "t": 218.934
+      },
+      {
+        "title": "Summary",
+        "t": 259.021
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-2-6:q",
+        "t": 237.673,
+        "prompt": "Two skaters stand at rest on smooth ice. A 60 kg skater pushes a 30 kg skater with a force of 90 N. What is the acceleration of the 60 kg skater while they push?",
+        "choices": [
+          "$3\\ \\text{m/s}^2$",
+          "$1.5\\ \\text{m/s}^2$",
+          "$0\\ \\text{m/s}^2$",
+          "$0.67\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "By the third law, the 60 kg skater also feels 90 N. $a = 90 \\div 60 = 1.5\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p10-3-1": {
+    "lessonId": "p10-3-1",
+    "title": "Work",
+    "duration": 219,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Work done by a force",
+        "t": 18.279
+      },
+      {
+        "title": "No movement, no work",
+        "t": 70.068
+      },
+      {
+        "title": "Where the energy goes",
+        "t": 114.543
+      },
+      {
+        "title": "Your turn",
+        "t": 156.197
+      },
+      {
+        "title": "Summary",
+        "t": 190.399
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-3-1:q",
+        "t": 169.694,
+        "prompt": "A force of 150 N does 900 J of work on a trolley. How far does the trolley move in the direction of the force?",
+        "choices": [
+          "6 m",
+          "60 m",
+          "750 m",
+          "1050 m"
+        ],
+        "answer": 0,
+        "working": "Work = force × distance, so distance $= \\dfrac{W}{F} = \\dfrac{900}{150} = 6\\ \\text{m}$."
+      }
+    ]
+  },
+  "p10-3-2": {
+    "lessonId": "p10-3-2",
+    "title": "Kinetic Energy",
+    "duration": 225,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The energy of motion",
+        "t": 23.532
+      },
+      {
+        "title": "Twice the mass",
+        "t": 74.001
+      },
+      {
+        "title": "Twice the speed",
+        "t": 100.162
+      },
+      {
+        "title": "Why speed is dangerous",
+        "t": 134.668
+      },
+      {
+        "title": "Your turn",
+        "t": 171.176
+      },
+      {
+        "title": "Summary",
+        "t": 199.663
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-3-2:q",
+        "t": 181.533,
+        "prompt": "A ball of mass 2 kg moves at 6 m/s. What is its kinetic energy?",
+        "choices": [
+          "6 J",
+          "12 J",
+          "18 J",
+          "36 J"
+        ],
+        "answer": 3,
+        "working": "$E_k = \\tfrac12 mv^2 = \\tfrac12 \\times 2 \\times 6^2 = \\tfrac12 \\times 2 \\times 36 = 36\\ \\text{J}$."
+      }
+    ]
+  },
+  "p10-3-3": {
+    "lessonId": "p10-3-3",
+    "title": "Gravitational Potential Energy",
+    "duration": 228,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lifting stores energy",
+        "t": 23.922
+      },
+      {
+        "title": "Getting the energy back",
+        "t": 84.832
+      },
+      {
+        "title": "Only the height counts",
+        "t": 117.408
+      },
+      {
+        "title": "Your turn",
+        "t": 162.384
+      },
+      {
+        "title": "Summary",
+        "t": 199.334
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-3-3:q",
+        "t": 180.012,
+        "prompt": "On Earth, g = 9.8 N/kg. A bucket of water of mass 5 kg is lifted through 10 m. How much gravitational potential energy does it gain?",
+        "choices": [
+          "50 J",
+          "490 J",
+          "980 J",
+          "4900 J"
+        ],
+        "answer": 1,
+        "working": "$E_p = mgh = 5 \\times 9.8 \\times 10 = 490\\ \\text{J}$."
+      }
+    ]
+  },
+  "p10-3-4": {
+    "lessonId": "p10-3-4",
+    "title": "Conservation of Energy",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A falling ball",
+        "t": 23.687
+      },
+      {
+        "title": "A pendulum",
+        "t": 99.441
+      },
+      {
+        "title": "A roller coaster",
+        "t": 150.535
+      },
+      {
+        "title": "Where does the energy go?",
+        "t": 214.881
+      },
+      {
+        "title": "Your turn",
+        "t": 267.888
+      },
+      {
+        "title": "Summary",
+        "t": 309.647
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-3-4:q",
+        "t": 287.119,
+        "prompt": "On Earth, g = 9.8 N/kg. A 4 kg ball is dropped from rest, 10 m above the ground. Ignore air resistance. How much kinetic energy does it have just before it lands?",
+        "choices": [
+          "40 J",
+          "98 J",
+          "392 J",
+          "3920 J"
+        ],
+        "answer": 2,
+        "working": "All of its potential energy becomes kinetic energy: $mgh = 4 \\times 9.8 \\times 10 = 392\\ \\text{J}$."
+      }
+    ]
+  },
+  "p10-3-5": {
+    "lessonId": "p10-3-5",
+    "title": "Power",
+    "duration": 239,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The same work, done faster",
+        "t": 18.88
+      },
+      {
+        "title": "Your own power",
+        "t": 88.967
+      },
+      {
+        "title": "Energy from power",
+        "t": 144.368
+      },
+      {
+        "title": "Your turn",
+        "t": 181.384
+      },
+      {
+        "title": "Summary",
+        "t": 209.646
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-3-5:q",
+        "t": 191.269,
+        "prompt": "A motor transfers 3000 J of energy in 20 s. What is its power?",
+        "choices": [
+          "150 W",
+          "300 W",
+          "3020 W",
+          "60 000 W"
+        ],
+        "answer": 0,
+        "working": "$P = \\dfrac{E}{t} = \\dfrac{3000}{20} = 150\\ \\text{W}$."
+      }
+    ]
+  },
+  "p10-3-6": {
+    "lessonId": "p10-3-6",
+    "title": "Efficiency and Energy Transfers",
+    "duration": 275,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Useful and wasted energy",
+        "t": 21.144
+      },
+      {
+        "title": "Efficiency",
+        "t": 78.208
+      },
+      {
+        "title": "A more efficient machine",
+        "t": 121.854
+      },
+      {
+        "title": "Useful or wasted?",
+        "t": 170.621
+      },
+      {
+        "title": "Your turn",
+        "t": 205.995
+      },
+      {
+        "title": "Summary",
+        "t": 243.008
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-3-6:q",
+        "t": 219.191,
+        "prompt": "A petrol engine is 25% efficient. It is supplied with 2000 J of energy. How much energy is wasted?",
+        "choices": [
+          "500 J",
+          "1500 J",
+          "1975 J",
+          "2500 J"
+        ],
+        "answer": 1,
+        "working": "Useful: $0.25 \\times 2000 = 500\\ \\text{J}$. Wasted: $2000 - 500 = 1500\\ \\text{J}$."
+      }
+    ]
+  },
+  "p10-4-1": {
+    "lessonId": "p10-4-1",
+    "title": "What a Wave Is",
+    "duration": 288,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Energy travels, matter stays",
+        "t": 19.506
+      },
+      {
+        "title": "Two kinds of wave",
+        "t": 70.683
+      },
+      {
+        "title": "Measuring a wave",
+        "t": 129.679
+      },
+      {
+        "title": "Your turn",
+        "t": 206.869
+      },
+      {
+        "title": "Summary",
+        "t": 244.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-1:q",
+        "t": 223.201,
+        "prompt": "On a frozen wave, one crest is at 2 m and the next crest is at 8 m. The crests are 4 cm above the rest position. What are the wavelength and the amplitude?",
+        "choices": [
+          "6 m and 8 cm",
+          "6 m and 4 cm",
+          "3 m and 4 cm",
+          "10 m and 8 cm"
+        ],
+        "answer": 1,
+        "working": "Wavelength: crest to crest, $8 - 2 = 6\\ \\text{m}$. Amplitude: rest position to crest, $4\\ \\text{cm}$."
+      }
+    ]
+  },
+  "p10-4-2": {
+    "lessonId": "p10-4-2",
+    "title": "The Wave Equation",
+    "duration": 265,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Frequency and period",
+        "t": 19.844
+      },
+      {
+        "title": "The wave equation",
+        "t": 62.899
+      },
+      {
+        "title": "Same speed, different frequency",
+        "t": 118.699
+      },
+      {
+        "title": "Using the equation",
+        "t": 158.05
+      },
+      {
+        "title": "Your turn",
+        "t": 208.759
+      },
+      {
+        "title": "Summary",
+        "t": 238.199
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-2:q",
+        "t": 220.316,
+        "prompt": "A water wave has a frequency of 5 Hz and a wavelength of 0.8 m. What is its speed?",
+        "choices": [
+          "0.16 m/s",
+          "5.8 m/s",
+          "6.25 m/s",
+          "4 m/s"
+        ],
+        "answer": 3,
+        "working": "Wave speed = frequency × wavelength: $v = f\\lambda = 5 \\times 0.8 = 4\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p10-4-3": {
+    "lessonId": "p10-4-3",
+    "title": "Sound",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "How sound travels",
+        "t": 17.305
+      },
+      {
+        "title": "Pitch",
+        "t": 75.818
+      },
+      {
+        "title": "Loudness",
+        "t": 116.146
+      },
+      {
+        "title": "The speed of sound",
+        "t": 148.327
+      },
+      {
+        "title": "Echoes",
+        "t": 189.979
+      },
+      {
+        "title": "Your turn",
+        "t": 233.522
+      },
+      {
+        "title": "Summary",
+        "t": 273.825
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-3:q",
+        "t": 252.572,
+        "prompt": "Sound travels at 1500 m/s in sea water. A ship sends a pulse of sound straight down, and the echo from the sea bed returns 0.4 s later. How deep is the sea?",
+        "choices": [
+          "300 m",
+          "600 m",
+          "150 m",
+          "3750 m"
+        ],
+        "answer": 0,
+        "working": "Down and back: $1500 \\times 0.4 = 600\\ \\text{m}$. Halve it: $600 \\div 2 = 300\\ \\text{m}$."
+      }
+    ]
+  },
+  "p10-4-4": {
+    "lessonId": "p10-4-4",
+    "title": "Reflection and Refraction",
+    "duration": 365,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The law of reflection",
+        "t": 17.894
+      },
+      {
+        "title": "Measure from the normal",
+        "t": 72.999
+      },
+      {
+        "title": "The image in a mirror",
+        "t": 102.265
+      },
+      {
+        "title": "Refraction",
+        "t": 136.591
+      },
+      {
+        "title": "Leaving the glass",
+        "t": 197.025
+      },
+      {
+        "title": "Speed and wavelength",
+        "t": 237.334
+      },
+      {
+        "title": "Your turn",
+        "t": 294.232
+      },
+      {
+        "title": "Summary",
+        "t": 326.244
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-4:q",
+        "t": 305.846,
+        "prompt": "A ray of light makes an angle of 20° with the surface of a flat mirror. What is the angle of reflection?",
+        "choices": [
+          "20°",
+          "40°",
+          "70°",
+          "110°"
+        ],
+        "answer": 2,
+        "working": "The normal is at 90° to the mirror, so the angle of incidence is $90^\\circ - 20^\\circ = 70^\\circ$. The angle of reflection equals it: $70^\\circ$."
+      }
+    ]
+  },
+  "p10-4-5": {
+    "lessonId": "p10-4-5",
+    "title": "The Electromagnetic Spectrum",
+    "duration": 365,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One family of waves",
+        "t": 18.843
+      },
+      {
+        "title": "The spectrum in order",
+        "t": 80.146
+      },
+      {
+        "title": "Uses and dangers",
+        "t": 147.831
+      },
+      {
+        "title": "Using the speed of light",
+        "t": 208.343
+      },
+      {
+        "title": "Your turn",
+        "t": 279.731
+      },
+      {
+        "title": "Summary",
+        "t": 324.376
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-4-5:q",
+        "t": 297.323,
+        "prompt": "All electromagnetic waves travel at $3.0 \\times 10^{8}$ m/s in a vacuum. Light from the Sun takes 500 s to reach the Earth. How far away is the Sun?",
+        "choices": [
+          "$6.0 \\times 10^{5}$ m",
+          "$1.5 \\times 10^{11}$ m",
+          "$1.5 \\times 10^{6}$ m",
+          "$3.5 \\times 10^{8}$ m"
+        ],
+        "answer": 1,
+        "working": "Distance = speed × time: $d = vt = 3.0 \\times 10^{8} \\times 500 = 1.5 \\times 10^{11}\\ \\text{m}$."
+      }
+    ]
+  },
+  "p10-5-1": {
+    "lessonId": "p10-5-1",
+    "title": "Charge and Current",
+    "duration": 326,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electric charge",
+        "t": 17.979
+      },
+      {
+        "title": "Charge that can move",
+        "t": 58.25
+      },
+      {
+        "title": "Electric current",
+        "t": 106.523
+      },
+      {
+        "title": "Charge, current and time",
+        "t": 166.603
+      },
+      {
+        "title": "Current is not used up",
+        "t": 222.703
+      },
+      {
+        "title": "Your turn",
+        "t": 259.151
+      },
+      {
+        "title": "Summary",
+        "t": 285.524
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-1:try",
+        "t": 270.139,
+        "prompt": "A current of 3 A flows through a heater for 20 s. How much charge passes through the heater?",
+        "choices": [
+          "23 C",
+          "6.7 C",
+          "60 C",
+          "0.15 C"
+        ],
+        "answer": 2,
+        "working": "Charge = current × time: $Q = It = 3 \\times 20 = 60\\ \\text{C}$."
+      }
+    ]
+  },
+  "p10-5-2": {
+    "lessonId": "p10-5-2",
+    "title": "Voltage, Resistance and Ohm’s Law",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Voltage",
+        "t": 20.809
+      },
+      {
+        "title": "Resistance",
+        "t": 70.978
+      },
+      {
+        "title": "Current and voltage",
+        "t": 113.485
+      },
+      {
+        "title": "Ohm’s law",
+        "t": 157.51
+      },
+      {
+        "title": "Your turn",
+        "t": 226.61
+      },
+      {
+        "title": "Summary",
+        "t": 258.52
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-2:try",
+        "t": 240.422,
+        "prompt": "A voltage of 6 V across a resistor drives a current of 0.5 A through it. What is the resistance of the resistor?",
+        "choices": [
+          "12 Ω",
+          "3 Ω",
+          "0.083 Ω",
+          "6.5 Ω"
+        ],
+        "answer": 0,
+        "working": "Resistance = voltage ÷ current: $R = \\dfrac{V}{I} = \\dfrac{6}{0.5} = 12\\ \\Omega$."
+      }
+    ]
+  },
+  "p10-5-3": {
+    "lessonId": "p10-5-3",
+    "title": "Series Circuits",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One loop, one current",
+        "t": 15.52
+      },
+      {
+        "title": "Sharing the voltage",
+        "t": 76.27
+      },
+      {
+        "title": "More lamps in series",
+        "t": 130.876
+      },
+      {
+        "title": "A break anywhere",
+        "t": 163.489
+      },
+      {
+        "title": "Your turn",
+        "t": 193.094
+      },
+      {
+        "title": "Summary",
+        "t": 225.308
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-3:try",
+        "t": 206.452,
+        "prompt": "Resistors of 3 Ω and 5 Ω are connected in series to a 24 V supply. What current flows in the circuit?",
+        "choices": [
+          "8 A",
+          "4.8 A",
+          "12.8 A",
+          "3 A"
+        ],
+        "answer": 3,
+        "working": "Total resistance: $3 + 5 = 8\\ \\Omega$. Current: $I = \\dfrac{V}{R} = \\dfrac{24}{8} = 3\\ \\text{A}$."
+      }
+    ]
+  },
+  "p10-5-4": {
+    "lessonId": "p10-5-4",
+    "title": "Parallel Circuits",
+    "duration": 281,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Branches",
+        "t": 19.03
+      },
+      {
+        "title": "Adding a branch",
+        "t": 90.453
+      },
+      {
+        "title": "Total resistance in parallel",
+        "t": 127.372
+      },
+      {
+        "title": "If one branch fails",
+        "t": 178.762
+      },
+      {
+        "title": "Your turn",
+        "t": 213.59
+      },
+      {
+        "title": "Summary",
+        "t": 245.918
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-4:try",
+        "t": 224.567,
+        "prompt": "Resistors of 12 Ω and 4 Ω are connected in parallel. What is their total resistance?",
+        "choices": [
+          "16 Ω",
+          "3 Ω",
+          "8 Ω",
+          "0.33 Ω"
+        ],
+        "answer": 1,
+        "working": "$\\dfrac{1}{R} = \\dfrac{1}{12} + \\dfrac{1}{4} = \\dfrac{1}{12} + \\dfrac{3}{12} = \\dfrac{4}{12} = \\dfrac{1}{3}$, so $R = 3\\ \\Omega$."
+      }
+    ]
+  },
+  "p10-5-5": {
+    "lessonId": "p10-5-5",
+    "title": "Electrical Power and Energy",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Electrical power",
+        "t": 19.459
+      },
+      {
+        "title": "Half the voltage",
+        "t": 63.396
+      },
+      {
+        "title": "Power in a resistor",
+        "t": 95.591
+      },
+      {
+        "title": "Electrical energy",
+        "t": 144.368
+      },
+      {
+        "title": "Kilowatt-hours and cost",
+        "t": 179.003
+      },
+      {
+        "title": "Your turn",
+        "t": 242.567
+      },
+      {
+        "title": "Summary",
+        "t": 271.619
+      }
+    ],
+    "cues": [
+      {
+        "id": "p10-5-5:try",
+        "t": 254.248,
+        "prompt": "A heater carries a current of 4 A when the voltage across it is 230 V. What is its power?",
+        "choices": [
+          "57.5 W",
+          "234 W",
+          "920 W",
+          "3680 W"
+        ],
+        "answer": 2,
+        "working": "Power = current × voltage: $P = IV = 4 \\times 230 = 920\\ \\text{W}$."
+      }
+    ]
+  },
+  "p20-1-1": {
+    "lessonId": "p20-1-1",
+    "title": "Scalars, Vectors and Displacement",
+    "duration": 236,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Scalars and vectors",
+        "t": 19.101
+      },
+      {
+        "title": "Position and displacement",
+        "t": 47.889
+      },
+      {
+        "title": "Distance and displacement",
+        "t": 97.651
+      },
+      {
+        "title": "A missing displacement",
+        "t": 136.103
+      },
+      {
+        "title": "Your turn",
+        "t": 171.435
+      },
+      {
+        "title": "Summary",
+        "t": 204.884
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-1:q",
+        "t": 181.595,
+        "prompt": "A dog runs 90 m east and then 60 m west. What is its displacement?",
+        "choices": [
+          "$30\\ \\text{m [E]}$",
+          "$150\\ \\text{m [E]}$",
+          "$30\\ \\text{m [W]}$",
+          "$60\\ \\text{m [W]}$"
+        ],
+        "answer": 0,
+        "working": "Take east as positive: $({+90}) + ({-60}) = {+30}\\ \\text{m}$, which is 30 m [E]. The distance travelled is $90 + 60 = 150\\ \\text{m}$."
+      }
+    ]
+  },
+  "p20-1-2": {
+    "lessonId": "p20-1-2",
+    "title": "Uniform Motion and Position-Time Graphs",
+    "duration": 250,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Uniform motion",
+        "t": 20.489
+      },
+      {
+        "title": "Position-time graphs",
+        "t": 70.338
+      },
+      {
+        "title": "Average velocity from the graph",
+        "t": 130.823
+      },
+      {
+        "title": "Your turn",
+        "t": 182.354
+      },
+      {
+        "title": "Summary",
+        "t": 219.917
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-2:q",
+        "t": 196.164,
+        "prompt": "On a position-time graph, a straight line falls from 20 m at $t = 2\\ \\text{s}$ to 5 m at $t = 7\\ \\text{s}$. What is the velocity?",
+        "choices": [
+          "$3\\ \\text{m/s}$",
+          "$-5\\ \\text{m/s}$",
+          "$-3\\ \\text{m/s}$",
+          "$-15\\ \\text{m/s}$"
+        ],
+        "answer": 2,
+        "working": "The slope is the velocity: $v = \\dfrac{5 - 20}{7 - 2} = \\dfrac{-15}{5} = -3\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p20-1-3": {
+    "lessonId": "p20-1-3",
+    "title": "Acceleration and Velocity-Time Graphs",
+    "duration": 257,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Acceleration",
+        "t": 19.261
+      },
+      {
+        "title": "Turning round",
+        "t": 49.802
+      },
+      {
+        "title": "Slope and area",
+        "t": 96.514
+      },
+      {
+        "title": "Below the time axis",
+        "t": 152.308
+      },
+      {
+        "title": "Your turn",
+        "t": 189.661
+      },
+      {
+        "title": "Summary",
+        "t": 226.456
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-3:q",
+        "t": 202.676,
+        "prompt": "A car's velocity changes from 20 m/s to 8 m/s in 4 s. What is its acceleration?",
+        "choices": [
+          "$3\\ \\text{m/s}^2$",
+          "$-3\\ \\text{m/s}^2$",
+          "$-12\\ \\text{m/s}^2$",
+          "$-7\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "$a = \\dfrac{\\Delta v}{\\Delta t} = \\dfrac{8 - 20}{4} = \\dfrac{-12}{4} = -3\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p20-1-4": {
+    "lessonId": "p20-1-4",
+    "title": "The Equations of Motion",
+    "duration": 246,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The five quantities",
+        "t": 19.194
+      },
+      {
+        "title": "From the velocity-time graph",
+        "t": 40.758
+      },
+      {
+        "title": "The four equations",
+        "t": 87.538
+      },
+      {
+        "title": "A stopping distance",
+        "t": 115.133
+      },
+      {
+        "title": "Your turn",
+        "t": 176.575
+      },
+      {
+        "title": "Summary",
+        "t": 217.53
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-4:q",
+        "t": 188.517,
+        "prompt": "A train starts from rest and accelerates at $2\\ \\text{m/s}^2$ for 5 s. How far does it travel?",
+        "choices": [
+          "$10\\ \\text{m}$",
+          "$50\\ \\text{m}$",
+          "$5\\ \\text{m}$",
+          "$25\\ \\text{m}$"
+        ],
+        "answer": 3,
+        "working": "Known: $u = 0$, $a = 2$, $t = 5$. The final velocity is not involved: $d = ut + \\tfrac{1}{2}at^2 = 0 + \\tfrac{1}{2} \\times 2 \\times 5^2 = 25\\ \\text{m}$."
+      }
+    ]
+  },
+  "p20-1-5": {
+    "lessonId": "p20-1-5",
+    "title": "Free Fall",
+    "duration": 253,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The acceleration due to gravity",
+        "t": 21.587
+      },
+      {
+        "title": "Dropped from rest",
+        "t": 63.09
+      },
+      {
+        "title": "Thrown straight up",
+        "t": 110.694
+      },
+      {
+        "title": "Your turn",
+        "t": 177.068
+      },
+      {
+        "title": "Summary",
+        "t": 218.964
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-5:q",
+        "t": 190.504,
+        "prompt": "A stone is dropped from rest. Use $g = 9.81\\ \\text{m/s}^2$. How far has it fallen after 2 s?",
+        "choices": [
+          "$19.6\\ \\text{m}$",
+          "$9.81\\ \\text{m}$",
+          "$39.2\\ \\text{m}$",
+          "$4.9\\ \\text{m}$"
+        ],
+        "answer": 0,
+        "working": "$d = \\tfrac{1}{2}gt^2 = \\tfrac{1}{2} \\times 9.81 \\times 2^2 = 19.6\\ \\text{m}$. (19.6 m/s is also its speed: $v = gt = 9.81 \\times 2$.)"
+      }
+    ]
+  },
+  "p20-1-6": {
+    "lessonId": "p20-1-6",
+    "title": "Vectors in Two Dimensions",
+    "duration": 267,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The components of a vector",
+        "t": 21.441
+      },
+      {
+        "title": "A negative component",
+        "t": 68.14
+      },
+      {
+        "title": "Adding at right angles",
+        "t": 96.813
+      },
+      {
+        "title": "Adding at any angle",
+        "t": 144.266
+      },
+      {
+        "title": "Your turn",
+        "t": 191.051
+      },
+      {
+        "title": "Summary",
+        "t": 229.31
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-6:q",
+        "t": 203.238,
+        "prompt": "A hiker walks 5 km east and then 12 km north. What is the size of the resultant displacement?",
+        "choices": [
+          "$17\\ \\text{km}$",
+          "$7\\ \\text{km}$",
+          "$13\\ \\text{km}$",
+          "$60\\ \\text{km}$"
+        ],
+        "answer": 2,
+        "working": "The two displacements are at right angles: $R = \\sqrt{5^2 + 12^2} = \\sqrt{169} = 13\\ \\text{km}$."
+      }
+    ]
+  },
+  "p20-1-7": {
+    "lessonId": "p20-1-7",
+    "title": "Relative Velocity, Part 1: Along One Line",
+    "duration": 269,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Carried by the current",
+        "t": 23.538
+      },
+      {
+        "title": "Downstream and upstream",
+        "t": 87.217
+      },
+      {
+        "title": "Seen from a moving object",
+        "t": 145.129
+      },
+      {
+        "title": "Your turn",
+        "t": 194.28
+      },
+      {
+        "title": "Summary",
+        "t": 233.601
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-7:q",
+        "t": 212.053,
+        "prompt": "A boat moves at 6 m/s relative to the water in a river that flows at 2 m/s. How long does it take to travel 120 m upstream, measured along the bank?",
+        "choices": [
+          "$15\\ \\text{s}$",
+          "$30\\ \\text{s}$",
+          "$20\\ \\text{s}$",
+          "$60\\ \\text{s}$"
+        ],
+        "answer": 1,
+        "working": "Upstream the current takes away: $6 - 2 = 4\\ \\text{m/s}$ relative to the bank. Time: $\\dfrac{120}{4} = 30\\ \\text{s}$."
+      }
+    ]
+  },
+  "p20-1-7-b": {
+    "lessonId": "p20-1-7",
+    "title": "Relative Velocity, Part 2: Crossing a Current",
+    "duration": 284,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pointing straight across",
+        "t": 21.979
+      },
+      {
+        "title": "Landing directly opposite",
+        "t": 103.643
+      },
+      {
+        "title": "Which way is faster?",
+        "t": 161.274
+      },
+      {
+        "title": "Your turn",
+        "t": 209.008
+      },
+      {
+        "title": "Summary",
+        "t": 248.608
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-7-b:q",
+        "t": 226.114,
+        "prompt": "A river is 60 m wide and flows at 2 m/s. A boat points straight across and moves at 4 m/s relative to the water. How far downstream does it land?",
+        "choices": [
+          "$15\\ \\text{m}$",
+          "$120\\ \\text{m}$",
+          "$67\\ \\text{m}$",
+          "$30\\ \\text{m}$"
+        ],
+        "answer": 3,
+        "working": "Crossing time: $t = \\dfrac{60}{4} = 15\\ \\text{s}$. Drift: $2 \\times 15 = 30\\ \\text{m}$."
+      }
+    ]
+  },
+  "p20-1-8": {
+    "lessonId": "p20-1-8",
+    "title": "Projectile Motion, Part 1: Launched Horizontally",
+    "duration": 314,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Dropped and thrown",
+        "t": 17.753
+      },
+      {
+        "title": "Horizontal and vertical",
+        "t": 52.057
+      },
+      {
+        "title": "Time of flight and range",
+        "t": 121.088
+      },
+      {
+        "title": "The landing velocity",
+        "t": 192.38
+      },
+      {
+        "title": "Your turn",
+        "t": 237.228
+      },
+      {
+        "title": "Summary",
+        "t": 277.306
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-8:q",
+        "t": 251.794,
+        "prompt": "A ball rolls off a table at 3 m/s and lands 0.40 s later. How far from the foot of the table does it land?",
+        "choices": [
+          "$0.78\\ \\text{m}$",
+          "$3.9\\ \\text{m}$",
+          "$1.2\\ \\text{m}$",
+          "$7.5\\ \\text{m}$"
+        ],
+        "answer": 2,
+        "working": "Horizontally the velocity is constant: $d_x = v_x t = 3 \\times 0.40 = 1.2\\ \\text{m}$."
+      }
+    ]
+  },
+  "p20-1-8-b": {
+    "lessonId": "p20-1-8",
+    "title": "Projectile Motion, Part 2: Launched at an Angle",
+    "duration": 273,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Splitting the launch velocity",
+        "t": 20.54
+      },
+      {
+        "title": "Up, over and down",
+        "t": 64.271
+      },
+      {
+        "title": "Time, height and range",
+        "t": 106.259
+      },
+      {
+        "title": "Checking the answer",
+        "t": 166.52
+      },
+      {
+        "title": "Your turn",
+        "t": 190.479
+      },
+      {
+        "title": "Summary",
+        "t": 235.778
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-1-8-b:q",
+        "t": 207.68,
+        "prompt": "A ball is thrown from level ground with a vertical velocity of 14.7 m/s and a horizontal velocity of 10 m/s. Use $g = 9.81\\ \\text{m/s}^2$. How long is it in the air?",
+        "choices": [
+          "$3.0\\ \\text{s}$",
+          "$1.5\\ \\text{s}$",
+          "$1.0\\ \\text{s}$",
+          "$2.0\\ \\text{s}$"
+        ],
+        "answer": 0,
+        "working": "Time to the top: $t = \\dfrac{14.7}{9.81} = 1.5\\ \\text{s}$. The trip down takes as long, so the time of flight is $3.0\\ \\text{s}$."
       }
     ]
   }

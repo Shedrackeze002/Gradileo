@@ -4,6 +4,7 @@ import { Circle, Eraser, Hand, Highlighter, MousePointer2, MoveUpRight, Pen, Rec
 import { INK_COLORS, INK_SIZES, SHAPE_KINDS, SHAPE_NAMES, type InkColor, type ShapeKind } from '@/lib/ink.ts';
 import { cn } from '@/lib/cn.ts';
 import type { InkMode } from './InkSurface.tsx';
+import { inkLog, pointerNote } from './inkLog.ts';
 import { useInkTheme } from './useInkTheme.ts';
 
 export interface InkTools {
@@ -94,6 +95,24 @@ function ToolButton({ on, label, text, onClick, children, disabled }: { on?: boo
 }
 
 /**
+ * Notes in the drawing log which button was pressed and by what (the pencil, a finger, a palm).
+ * Spread on the element that holds the buttons.
+ */
+export function pressLog(where: string) {
+  let last: ReturnType<typeof pointerNote> | undefined;
+  return {
+    onPointerDownCapture: (e: React.PointerEvent) => {
+      last = pointerNote(e);
+    },
+    onClickCapture: (e: React.MouseEvent) => {
+      const b = (e.target as Element).closest?.('button');
+      if (b) inkLog(where, { press: b.getAttribute('aria-label') ?? b.textContent, ...last });
+      last = undefined;
+    },
+  };
+}
+
+/**
  * The drawing toolbar. The shape picker opens beside it (above by default, or below where the
  * toolbar sits above the canvas), outside the toolbar so its sideways scrolling cannot clip it.
  */
@@ -101,6 +120,7 @@ export function InkToolbar({ tools, onUndo, onRedo, onClear, canUndo, canRedo, c
   const { palette } = useInkTheme();
   const [picking, setPicking] = useState(false);
   const box = useRef<HTMLDivElement>(null);
+  const [presses] = useState(() => pressLog('toolbar'));
   useEffect(() => {
     if (!picking) return;
     const away = (e: PointerEvent) => {
@@ -122,7 +142,7 @@ export function InkToolbar({ tools, onUndo, onRedo, onClear, canUndo, canRedo, c
   const sep = <span className="mx-0.5 h-7 w-px shrink-0 bg-line" />;
   const shapeOn = tools.mode === 'shape';
   return (
-    <div ref={box} className={cn('relative max-w-full', className)}>
+    <div ref={box} className={cn('relative max-w-full', className)} {...presses}>
       {picking && (
         <div role="group" aria-label="Shapes" data-ink-picker className={cn('absolute left-1/2 z-50 flex -translate-x-1/2 gap-0.5 rounded-2xl border border-line bg-surface p-1.5 shadow-pop', pickerSide === 'top' ? 'bottom-full mb-2' : 'top-full mt-2')}>
           {SHAPE_KINDS.map((k) => (
