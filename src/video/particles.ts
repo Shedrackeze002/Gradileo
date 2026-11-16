@@ -307,6 +307,9 @@ function react(s: BoxSim, divider?: number) {
       if (0.25 * Math.max(0, closing) ** 2 < (r.energy ?? 0)) continue;
       // Two atoms of one molecule never react with each other.
       if (s.bonded.has(Math.min(i, j) * n + Math.max(i, j))) continue;
+      // With `chance`, only that fraction of such meetings react (each step they touch), so a
+      // reaction can be slow without depending on a few very fast particles.
+      if (r.chance !== undefined && s.rnd() >= r.chance) continue;
       const carried: number[] = [];
       if (r.free) {
         // Each lets go of its old partners, which become the reaction's `free` kinds; with

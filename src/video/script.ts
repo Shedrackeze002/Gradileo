@@ -538,9 +538,11 @@ export interface ParticleBox {
    * times their mean diameter); `reach` sets that distance, about 1.15 for touching only, so a gas
    * reacts with the surface of a lump and not the particles just under it. With `settle`, the
    * two made stay still where they formed, as a solid deposited from two gases (the white ring of
-   * ammonium chloride in a tube).
+   * ammonium chloride in a tube). `chance` lets only that fraction of the meetings react (checked
+   * at each step of the simulation while they touch, so keep it small, about 0.001 to 0.02): a
+   * slow reaction, or one that runs both ways at steady rates (an equilibrium).
    */
-  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number; reach?: number; settle?: boolean }>;
+  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number; reach?: number; settle?: boolean; chance?: number }>;
   /**
    * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
    * made of these atoms (kinds, by place), the first bonded to each of the others round it. A

@@ -231,6 +231,13 @@ See `src/video/script.ts` for every element and option. In short:
     ion). `indicator: { acid: [0], base: [3], tone: 'hyp' }` tints the box once none of the acid
     kinds is left and some of the base is, as at the endpoint of a titration (`titrating` in
     `src/content/chem20/videos/lib/c20-particles.ts`).
+  - A reaction's `chance: 0.001` lets only that fraction of meetings react (checked at every step
+    while two particles touch, so keep it small), for a slow reaction, or one that runs both ways
+    at steady rates and settles part way: an equilibrium. Give such reactions `reach: 1.15` so that
+    only touching particles count, or a crowded box reacts at once. See `n2o4` in
+    `src/content/chem30/videos/lib/c30-particles.ts` (dinitrogen tetroxide pairs splitting into
+    nitrogen dioxide and pairing again). With few particles the count flickers by a few around
+    its settled value; say so in the narration.
   - Choose seeds by running the simulation in Chromium, not Node: the two can differ in the last
     bit of some maths functions, a reacting box magnifies that, and the video is drawn in
     Chromium. A seed that finishes a reaction in a Node probe may leave a particle over in the

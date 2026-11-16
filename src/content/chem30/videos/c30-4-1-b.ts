@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { particles } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { link, saturated, tag } from './lib/c30-4a-figures.ts';
+import { n2o4BothWays } from './lib/c30-particles.ts';
 
 // A sealed flask of saturated lead(II) iodide: radioactive solid is added, and radioactive iodide
 // ions later turn up in the solution while the mass of solid stays the same.
@@ -117,6 +118,15 @@ const video: Explainer = {
         { say: 'Flask one starts with one mole of dye-nitrogen tetroxide. Flask two, the same size and temperature, starts with two moles of nitrogen dioxide.', caption: 'Flask 1 starts with 1.00 mol of dinitrogen tetroxide. Flask 2, the same size and temperature, starts with 2.00 mol of nitrogen dioxide.', show: ['s.a-box', 's.a-n2o4', 's.ta', 's.la', 's.b-box', 's.b-no2', 's.tb', 's.lb'] },
         { say: 'Two moles of nitrogen dioxide is exactly what one mole of dye-nitrogen tetroxide would make, so both flasks hold the same atoms.', caption: 'Two moles of nitrogen dioxide is exactly what one mole of dinitrogen tetroxide would make, so both flasks hold the same atoms.', show: 't' },
         { say: 'Flask one gets there by the forward reaction, and flask two by the reverse reaction. They end with the same mixture: an equilibrium can be approached from either side.', show: ['s.fwd', 's.rev', 's.m-box', 's.m-n2o4', 's.m-no2', 's.lm'], focus: ['s.m-box', 's.lm'] },
+      ],
+    },
+    {
+      chapter: 'Both sides, up close',
+      layout: 'center',
+      main: [n2o4BothWays('bw', { seed: 4 })],
+      lines: [
+        { say: 'Here are two tubes up close, the same size and at the same temperature. The left one starts with only dye-nitrogen tetroxide, so its pairs split. The right one starts with only nitrogen dioxide, made of the same atoms, so its molecules pair up.', caption: 'Here are two tubes up close, the same size and at the same temperature. The left one starts with only dinitrogen tetroxide, so its pairs split. The right one starts with only nitrogen dioxide, made of the same atoms, so its molecules pair up.', show: ['bw', 'bw.labels', 'bw.key', 'bw.tally'], play: 'bw.go' },
+        { say: 'Soon both tubes hold about the same number of nitrogen dioxide molecules, flickering around the same value. One mixture, reached from either side.', focus: 'bw.tally' },
       ],
     },
     {

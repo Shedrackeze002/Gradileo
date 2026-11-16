@@ -397,6 +397,46 @@ describe('particles: a burette and an indicator', () => {
   });
 });
 
+describe('particles: slow reactions with a chance', () => {
+  // Two kinds that turn into each other on meeting: kind 0 + kind 0 gives 1 + 1, and back.
+  const both = (forward: number, back: number): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'b',
+          state: 'gas',
+          width: 10,
+          height: 8,
+          temp: 0.6,
+          kinds: [{ n: 40 }, { n: 0 }],
+          reactions: [
+            { a: 0, b: 0, to: [1, 1], chance: forward, reach: 1.15 },
+            { a: 1, b: 1, to: [0, 0], chance: back, reach: 1.15 },
+          ],
+          tally: { kinds: [1], label: 'made' },
+        },
+      ],
+      clips: {},
+      seed: 3,
+    });
+
+  it('reacts more slowly with a smaller chance', () => {
+    const fast = particlesAt(both(0.01, 0), [], 1)[0].tally!;
+    const slow = particlesAt(both(0.0005, 0), [], 1)[0].tally!;
+    expect(fast).toBeGreaterThan(slow);
+    expect(particlesAt(both(0.01, 0), [], 20)[0].tally).toBeGreaterThanOrEqual(36);
+  });
+
+  it('settles part way when the reaction runs both ways', () => {
+    const e = both(0.002, 0.002);
+    const late = [20, 24, 28, 32].map((t) => particlesAt(e, [], t)[0].tally!);
+    for (const v of late) {
+      expect(v).toBeGreaterThan(8);
+      expect(v).toBeLessThan(32);
+    }
+  });
+});
+
 describe('particles: tally labels', () => {
   it('makes a label singular for a count of one', () => {
     expect(singular('hydronium ions')).toBe('hydronium ion');

@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { particles } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { link, rateArrows, tag, vessel } from './lib/c30-4a-figures.ts';
+import { n2o4 } from './lib/c30-particles.ts';
 
 // A sealed tube of dinitrogen tetroxide: at the start 8 N₂O₄ molecules (grey pairs, each two NO₂
 // units joined); later 5 N₂O₄ and 6 brown NO₂, the same 16 NO₂ units.
@@ -81,6 +82,15 @@ const video: Explainer = {
         { say: 'As dye-nitrogen tetroxide is used up, the forward reaction slows down. Meanwhile nitrogen dioxide builds up, so the reverse reaction speeds up.', caption: 'As dinitrogen tetroxide is used up, the forward reaction slows down. Meanwhile nitrogen dioxide builds up, so the reverse reaction speeds up.', show: 'r.stage-1' },
         { say: 'Eventually the two rates are equal. Nitrogen dioxide is made exactly as fast as it is used up, and so is dye-nitrogen tetroxide.', caption: 'Eventually the two rates are equal. Nitrogen dioxide is made exactly as fast as it is used up, and so is dinitrogen tetroxide.', show: 'r.stage-2', focus: 'r.stage-2' },
         { say: 'This is dynamic equilibrium: equal forward and reverse rates, so the amounts stay constant. Dynamic, because both reactions keep going. Equilibrium, because nothing changes overall.', show: 'def', focus: 'r' },
+      ],
+    },
+    {
+      chapter: 'Inside the tube',
+      layout: 'center',
+      main: [n2o4('eq', { seed: 1 })],
+      lines: [
+        { say: 'Here is the tube up close. Each blue pair is a dye-nitrogen tetroxide molecule, colourless in real life, and each brown particle is a nitrogen dioxide molecule. At first there are only pairs, so molecules can only split, and the brown count climbs quickly. As it climbs, brown molecules start to meet and pair up again.', caption: 'Here is the tube up close. Each blue pair is a dinitrogen tetroxide molecule, colourless in real life, and each brown particle is a nitrogen dioxide molecule. At first there are only pairs, so molecules can only split, and the brown count climbs quickly. As it climbs, brown molecules start to meet and pair up again.', show: ['eq', 'eq.labels', 'eq.key', 'eq.tally'], play: 'eq.go' },
+        { say: 'Now the count flickers up and down by a few, as single molecules split and pair, but it stays around the same value. Pairs split as fast as new pairs form: this is dynamic equilibrium.', focus: 'eq.tally' },
       ],
     },
     {
