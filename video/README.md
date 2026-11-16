@@ -225,6 +225,16 @@ See `src/video/script.ts` for every element and option. In short:
     feels water only weakly (`cross: 1`).
   - `key: true` on the element keeps room to the right of the boxes for a key, a dot in each named
     kind's colour with its name (the part `key`), so viewers can tell the ions apart.
+  - `reserve: [2, 3, 4]` keeps those kinds out of the box at first, in a burette drawn above it, and
+    a phase's `add: { f: 8 }` pours that many units in over the phase from the burette's tip, one
+    molecule or particle at a time, taking turns between the kinds (a sodium ion, then a hydroxide
+    ion). `indicator: { acid: [0], base: [3], tone: 'hyp' }` tints the box once none of the acid
+    kinds is left and some of the base is, as at the endpoint of a titration (`titrating` in
+    `src/content/chem20/videos/lib/c20-particles.ts`).
+  - Choose seeds by running the simulation in Chromium, not Node: the two can differ in the last
+    bit of some maths functions, a reacting box magnifies that, and the video is drawn in
+    Chromium. A seed that finishes a reaction in a Node probe may leave a particle over in the
+    video, so check with stills (or bundle the probe with esbuild and run it in the browser).
   More, for separating mixtures:
   - A kind's `size` (its diameter, 1 by default) makes grains bigger or smaller.
   - `filter: { at: 0.5, holes: 1.3 }` lays a filter or sieve across the box at that fraction of

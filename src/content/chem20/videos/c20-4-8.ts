@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { buretteScale, rig } from './lib/c20-4b-figures.ts';
+import { titrating } from './lib/c20-particles.ts';
 
 // A burette over a conical flask, named part by part.
 const setup = (id: string) => figure(id, [rig()], 560);
@@ -96,6 +97,15 @@ const video: Explainer = {
         { say: 'The equivalence point is the moment when the titrant added has reacted exactly with the sample, in the mole ratio of the balanced equation.', show: 'def' },
         { say: 'The endpoint is the moment the indicator changes colour. A well-chosen indicator changes colour at, or within a drop of, the equivalence point.' },
         { say: 'One more tip: rinse the burette with titrant, and the pipette with sample, so no water dilutes them. The flask can be wet with distilled water, which changes the volume, but not the amount of sample.', show: 'note' },
+      ],
+    },
+    {
+      chapter: 'Inside the flask',
+      layout: 'center',
+      main: [titrating('tt', { seed: 29 })],
+      lines: [
+        { say: 'Here is what happens inside the flask. The hydrochloric acid holds hydrogen ions and chloride ions, and the burette adds sodium hydroxide. Each hydroxide ion that meets a hydrogen ion joins it to make a water molecule, so the hydrogen ions are used up. Near the end, the base goes in drop by drop.', show: ['tt', 'tt.labels', 'tt.key', 'tt.tally'], play: 'tt.titrate' },
+        { say: 'When the last hydrogen ion was used up, that was the equivalence point. The next drop had nothing left to react with, and the indicator turned pink. That colour change is the endpoint, one drop after the equivalence point.', focus: 'tt.f' },
       ],
     },
     {

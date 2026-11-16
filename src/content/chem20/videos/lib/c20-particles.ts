@@ -514,3 +514,54 @@ export const strongNeutralizing = (id: string, anion: Ion, cation: Ion, label: s
   seed: 1,
   height,
 });
+
+/**
+ * A titration (clip `titrate`): sodium hydroxide solution drips from a burette into an acid, a
+ * hydroxide ion and a sodium ion at a time, quickly at first and then drop by drop. Each hydroxide
+ * ion that meets the acid's hydrogen makes a water molecule; once the acid is used up, the next
+ * drop is left over and the indicator turns pink. A strong acid (hydrochloric) is all ions; a weak
+ * one (`weak`: acetic acid) is whole molecules, and the hydroxide ion takes the hydrogen straight
+ * from a molecule, leaving an acetate ion. The kinds: 0 the acid's hydrogen (an ion, or in a
+ * molecule), 1 its anion (or the rest of the molecule), 2 sodium ion, 3 and 4 a hydroxide ion's O
+ * and H, 5 and 6 the H and O of a water molecule made, 7 an acetate ion set free.
+ */
+export const titrating = (id: string, o: { weak?: boolean; seed?: number } = {}, height = 460): ParticlesEl => {
+  const H = { ...ATOM.H, name: undefined };
+  const O = { ...ATOM.O, name: undefined };
+  const acetate = { name: 'acetate ion', tone: 'opp', size: 1.3 } as const;
+  return {
+    kind: 'particles',
+    id,
+    boxes: [
+      {
+        id: 'f',
+        state: 'gas',
+        width: 11,
+        height: 9,
+        temp: 0.5,
+        kinds: [
+          o.weak ? { ...H, n: 0 } : { ...ATOM.H, n: 6, name: 'hydrogen ion' },
+          o.weak ? { n: 0, bond: 0.15, heavy: 0, size: acetate.size, tone: acetate.tone, name: 'acetic acid molecule' } : { n: 6, bond: 0.15, heavy: 0, size: 1.1, tone: 'good', name: 'chloride ion' },
+          { n: 8, bond: 0.15, heavy: 0, tone: 'brand', name: 'sodium ion' },
+          { ...O, tone: 'adj', name: 'hydroxide ion' },
+          H,
+          H,
+          { ...O, name: 'water' },
+          { n: 0, bond: 0.15, heavy: 0, ...acetate, ...(o.weak ? {} : { name: undefined }) },
+        ],
+        molecules: [{ atoms: [3, 4], n: 8 }, ...(o.weak ? [{ atoms: [0, 1], n: 6 }] : [])],
+        reserve: [2, 3, 4],
+        reactions: [{ a: 0, b: 3, ...(o.weak ? { free: [7, null] as [number, null] } : {}), to: [5, 6], join: true, heat: 0.05 }],
+        indicator: { acid: [0], base: [3], tone: 'hyp' },
+        tally: { kinds: [0], label: o.weak ? 'acid molecules left' : 'hydrogen ions left' },
+        label: o.weak ? 'acetic acid, with indicator' : 'hydrochloric acid, with indicator',
+      },
+    ],
+    // The burette's units take turns: a sodium ion, then a hydroxide ion, so two units are one drop.
+    clips: { titrate: { phases: [{ dur: 6, add: { f: 8 } }, { dur: 2 }, { dur: 6, add: { f: 4 } }, { dur: 3 }, { dur: 1.5, add: { f: 2 } }, { dur: 5 }] } },
+    key: true,
+    speed: 2,
+    seed: o.seed ?? 1,
+    height,
+  };
+};

@@ -72,6 +72,8 @@ export interface Controls {
   magnet: Record<string, number>;
   /** How fast the solvent is running up each paper box. */
   run: Record<string, number>;
+  /** How many reserved units have been poured into each box so far (a fraction while one falls). */
+  added: Record<string, number>;
 }
 
 /** A play of a clip: its name and the element's age (seconds since shown) when it started. */
@@ -86,7 +88,9 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
   const stir: Record<string, number> = {};
   const magnet: Record<string, number> = {};
   const run: Record<string, number> = {};
+  const added: Record<string, number> = {};
   for (const b of el.boxes) {
+    added[b.id] = 0;
     stir[b.id] = 0;
     magnet[b.id] = 0;
     run[b.id] = 0;
@@ -107,10 +111,11 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
       for (const [id, v] of Object.entries(ph.run ?? {})) run[id] += (v - run[id]) * k;
       for (const [id, v] of Object.entries(ph.heat ?? {})) temp[id] += (tempOf(v, temp[id]) - temp[id]) * k;
       for (const [id, v] of Object.entries(ph.lid ?? {})) lid[id] += (v - lid[id]) * k;
+      for (const [id, v] of Object.entries(ph.add ?? {})) added[id] += v * k;
       t += ph.dur;
     }
   }
-  return { temp, lid, lifted, released, stir, magnet, run };
+  return { temp, lid, lifted, released, stir, magnet, run, added };
 }
 
 export interface Hit {
@@ -154,6 +159,9 @@ interface BoxSim {
   sig2: Float64Array;
   /** Particles that have left the box (evaporated through an open top). */
   gone: Uint8Array;
+  /** Units (a molecule's particles, or one particle) still to be poured in, in order, and how many have been. */
+  units: number[][];
+  poured: number;
   /** How far up a paper box the solvent has soaked. */
   front: number;
   /** The reactions between kinds, and the pairs of particles bonded into molecules. */
@@ -527,6 +535,8 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     bond: new Float64Array(kinds.map((k) => k.bond ?? 1)),
     sig2: new Float64Array(kinds.length * kinds.length),
     gone: new Uint8Array(n),
+    units: [],
+    poured: 0,
     front: PAPER_START - 0.6,
     reactions: b.reactions ?? [],
     bonds: [],
@@ -660,6 +670,30 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
   if (b.divider !== undefined) {
     const d = b.divider * w;
     for (let i = 0; i < n; i++) if (Math.abs(s.x[i] - d) < 0.55) s.x[i] = s.x[i] < d ? d - 0.55 : d + 0.55;
+  }
+  // Reserved kinds wait outside the box, unit by unit, the units of each kind taking turns.
+  if (b.reserve?.length) {
+    const seen = new Uint8Array(n);
+    const byKind = new Map<number, number[][]>();
+    for (let i = 0; i < n; i++) {
+      if (seen[i] || !b.reserve.includes(s.kind[i])) continue;
+      const unit = [i];
+      seen[i] = 1;
+      for (let u = 0; u < unit.length; u++)
+        for (const bd of s.bonds) {
+          const o = bd.i === unit[u] ? bd.j : bd.j === unit[u] ? bd.i : -1;
+          if (o >= 0 && !seen[o]) {
+            seen[o] = 1;
+            unit.push(o);
+          }
+        }
+      for (const k of unit) s.gone[k] = 1;
+      const list = byKind.get(s.kind[i]) ?? [];
+      list.push(unit);
+      byKind.set(s.kind[i], list);
+    }
+    const lists = [...byKind.values()];
+    for (let r = 0; lists.some((l) => r < l.length); r++) for (const l of lists) if (r < l.length) s.units.push(l[r]);
   }
   const t0 = tempOf(b.temp, TEMPS[b.state]);
   for (let i = 0; i < n; i++) {
@@ -1062,6 +1096,18 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       const { h } = boxSize(b);
       const s = c!.boxes[bi];
       if (ctl.released[b.id] !== undefined && s.held.some((v, i) => v && !s.stuck[i])) for (let i = 0; i < s.n; i++) if (!s.stuck[i]) s.held[i] = 0;
+      // Pour in the next reserved units, each dropping in at the top middle.
+      for (const want = Math.min(s.units.length, Math.floor(ctl.added[b.id] + 1e-9)); s.poured < want; s.poured++) {
+        const unit = s.units[s.poured];
+        const cx = boxSize(b).w / 2 + (s.rnd() - 0.5) * 0.6;
+        unit.forEach((k, u) => {
+          s.gone[k] = 0;
+          s.x[k] = cx + (u - (unit.length - 1) / 2) * 0.8;
+          s.y[k] = ctl.lid[b.id] * h - 0.7;
+          s.vx[k] = 0;
+          s.vy[k] = -1.5;
+        });
+      }
       // Heat from reactions leaks away to the surroundings.
       if (s.warm) s.warm *= Math.exp(-COOL * DT);
       step(s, optsFor(b, ctl), (s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]), ctl.lid[b.id] * h, a, true);
@@ -1133,9 +1179,10 @@ export function pressureOf(el: ParticlesEl, b: ParticleBox, temp: number, lidFra
 
 /**
  * A tally's label for a count of one: its plural noun made singular ("1 hydronium ion", "1 unit of
- * silver chloride", "1 particle inside"). The noun is the last word before " of" or " inside".
+ * silver chloride", "1 particle inside"). The noun is the last word before " of", " inside" or
+ * " left".
  */
 export function singular(label: string): string {
-  const m = /^(.*?)s(\s+(?:of|inside)\b.*)?$/.exec(label);
+  const m = /^(.*?)s(\s+(?:of|inside|left)\b.*)?$/.exec(label);
   return m ? m[1] + (m[2] ?? '') : label;
 }

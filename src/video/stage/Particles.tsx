@@ -123,7 +123,8 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   // The key's entries: each named kind once (a reaction's product often shares its reactant's name).
   const keyItems = el.key ? [...new Map(el.boxes.flatMap((b) => (b.kinds ?? []).filter((k) => k.name).map((k) => [`${k.name}|${k.tone}`, { name: k.name!, tone: (k.tone ?? 'theta') as Tone, size: k.size ?? 1 }] as const))).values()] : [];
   const KEY_W = keyItems.length ? 60 + 13 * Math.max(...keyItems.map((k) => k.name.length)) : 0;
-  const TOP = el.boxes.some((b) => b.piston) ? 56 : 24;
+  // Room over the boxes for a piston's handle, or a burette's tube.
+  const TOP = el.boxes.some((b) => b.reserve?.length) ? 120 : el.boxes.some((b) => b.piston) ? 56 : 24;
   const BOTTOM = 76;
   const sizes = el.boxes.map(boxSize);
   const sumW = sizes.reduce((s, b) => s + b.w, 0);
@@ -205,6 +206,18 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
             {/* The box: glass walls and floor, tinted inside (none for a bare box). */}
             {!b.bare && !b.paper && <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill="rgb(120 140 255 / 0.06)" />}
             {!b.bare && !b.paper && <path d={`M ${X(0)} ${wallTop} L ${X(0)} ${floor} L ${X(bw)} ${floor} L ${X(bw)} ${wallTop}`} {...glass} />}
+            {/* An indicator's colour, once the acid is all used up and some base is left over. */}
+            {b.indicator && !f.kind.some((k) => b.indicator!.acid.includes(k)) && f.kind.some((k) => b.indicator!.base.includes(k)) && (
+              <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill={TONES[b.indicator.tone]} opacity={0.22} />
+            )}
+            {/* A burette over a box with reserved particles: they drop in from its tip. */}
+            {b.reserve?.length ? (
+              <g>
+                <rect x={X(bw / 2) - 9} y={wallTop - 110} width={18} height={84} rx={3} {...glass} strokeWidth={3} fill="rgb(120 140 255 / 0.18)" />
+                <line x1={X(bw / 2) - 16} x2={X(bw / 2) + 16} y1={wallTop - 22} y2={wallTop - 22} stroke={INK3} strokeWidth={5} strokeLinecap="round" />
+                <path d={`M ${X(bw / 2) - 5} ${wallTop - 26} L ${X(bw / 2) - 2} ${wallTop - 4} L ${X(bw / 2) + 2} ${wallTop - 4} L ${X(bw / 2) + 5} ${wallTop - 26} Z`} fill="rgb(120 140 255 / 0.18)" stroke={INK3} strokeWidth={2} />
+              </g>
+            ) : null}
             {/* A paper strip: wet as far as the solvent has soaked, with a pencil start line under the dot. */}
             {b.paper && (
               <g style={{ filter: glow ? `drop-shadow(0 0 ${14 * glow}px ${TONES.theta})` : undefined }}>

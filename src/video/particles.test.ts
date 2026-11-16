@@ -343,6 +343,60 @@ describe('particles: scripts and timing', () => {
   });
 });
 
+describe('particles: a burette and an indicator', () => {
+  // An acid (kinds 0, 1) titrated with a base (kind 2) from a burette; kind 3 is what they make.
+  const titration = (add: number): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'f',
+          state: 'gas',
+          width: 8,
+          height: 6,
+          temp: 0.6,
+          kinds: [{ n: 4 }, { n: 4 }, { n: 6 }, { n: 0 }],
+          reserve: [2],
+          reactions: [{ a: 0, b: 2, to: [3, 3] }],
+          indicator: { acid: [0], base: [2], tone: 'hyp' },
+        },
+      ],
+      clips: { go: { phases: [{ dur: 4, add: { f: add } }, { dur: 30 }] } },
+      speed: 2,
+      seed: 2,
+    });
+  const count = (f: { kind: number[] }, k: number) => f.kind.filter((x) => x === k).length;
+
+  it('keeps the reserved kinds out of the box until a phase pours them in', () => {
+    const e = titration(6);
+    const [start] = particlesAt(e, [['go', 0]], 0);
+    expect(count(start, 2)).toBe(0);
+    expect(count(start, 0)).toBe(4);
+    const [half] = particlesAt(e, [['go', 0]], 2.1);
+    expect(count(half, 2) + count(half, 3) / 2).toBe(3);
+  });
+
+  it('pours in only as many units as asked for', () => {
+    const [f] = particlesAt(titration(2), [['go', 0]], 30);
+    expect(count(f, 2) + count(f, 3) / 2).toBe(2);
+    expect(count(f, 0)).toBeGreaterThanOrEqual(2);
+  });
+
+  it('pours in the base, which uses up the acid and is left over past the endpoint', () => {
+    const [f] = particlesAt(titration(6), [['go', 0]], 34);
+    expect(count(f, 0)).toBe(0);
+    expect(count(f, 2)).toBe(2);
+  });
+
+  it('checks the burette and the indicator', () => {
+    const bad = el({ boxes: [{ id: 'f', state: 'gas', kinds: [{ n: 4 }], reserve: [3], indicator: { acid: [0], base: [5], tone: 'hyp' } }], clips: { go: { phases: [{ dur: 1, add: { g: 1 } }] } } });
+    expect(checkParticles(bad)).toEqual([
+      'box "f": the burette holds a kind the box does not have.',
+      'box "f": the indicator watches a kind the box does not have.',
+      'clip "go", phase 1 pours into box "g", which has no burette (`reserve`).',
+    ]);
+  });
+});
+
 describe('particles: tally labels', () => {
   it('makes a label singular for a count of one', () => {
     expect(singular('hydronium ions')).toBe('hydronium ion');

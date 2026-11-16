@@ -549,6 +549,16 @@ export interface ParticleBox {
   molecules?: Array<{ atoms: number[]; n: number; bent?: boolean }>;
   /** Hold the reactions back until a phase lets the box go (`release`), so they start on cue. */
   waits?: boolean;
+  /**
+   * Kinds kept out of the box at first, as in a burette above it: a phase's `add` pours them in,
+   * one unit (a molecule, or a single particle) at a time, alternating between the kinds' units.
+   */
+  reserve?: number[];
+  /**
+   * Tint the box in this colour, as an indicator would, once none of the `acid` kinds is left and
+   * some of the `base` kinds are (the endpoint of a titration).
+   */
+  indicator?: { acid: number[]; base: number[]; tone: Tone };
   /** What the part `tally` counts under the box: the particles of these kinds, and what to call them. */
   tally?: { kinds: number[]; label: string };
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
@@ -630,6 +640,8 @@ export interface ParticlePhase {
   lift?: string[];
   /** Boxes whose held lump (or waiting reactions) are let go as the phase starts. */
   release?: string[];
+  /** Pour this many of each box's reserved units in over the phase, evenly, from the top. */
+  add?: Record<string, number>;
   /** How hard to stir each box (0 stops; 2 stirs briskly), reached steadily over the phase. */
   stir?: Record<string, number>;
   /** How strongly a magnet over each box pulls its magnetic kinds (0 takes it away; 1 is strong). */
@@ -1639,6 +1651,8 @@ export function checkParticles(e: ParticlesEl): string[] {
     }
     if (b.molecules && (b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box (with a lump, if you like).`);
     if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
+    if (b.reserve && !b.reserve.every(ok)) problems.push(`box "${b.id}": the burette holds a kind the box does not have.`);
+    if (b.indicator && ![...b.indicator.acid, ...b.indicator.base].every(ok)) problems.push(`box "${b.id}": the indicator watches a kind the box does not have.`);
   }
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
@@ -1650,6 +1664,7 @@ export function checkParticles(e: ParticlesEl): string[] {
         if (!b?.hold && !b?.filter && !b?.waits) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
       }
       for (const id of [...Object.keys(ph.stir ?? {}), ...Object.keys(ph.magnet ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
+      for (const id of Object.keys(ph.add ?? {})) if (!e.boxes.find((b) => b.id === id)?.reserve?.length) problems.push(`clip "${name}", phase ${pi + 1} pours into box "${id}", which has no burette (\`reserve\`).`);
       for (const id of Object.keys(ph.run ?? {})) if (!e.boxes.find((b) => b.id === id)?.paper) problems.push(`clip "${name}", phase ${pi + 1} runs solvent up box "${id}", which is not paper.`);
       for (const id of [...Object.keys(ph.heat ?? {}), ...Object.keys(ph.lid ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const v of Object.values(ph.lid ?? {})) if (!(v > 0.2 && v <= 1)) problems.push(`clip "${name}", phase ${pi + 1}: a lid must be between 0.2 and 1.`);
