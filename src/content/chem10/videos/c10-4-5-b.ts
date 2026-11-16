@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { dots, plane, polyline } from '@/video/graph.ts';
 import { figure } from '@/video/solids.ts';
 import { gasGraph } from './lib/c10-4-figures.ts';
+import { runsOut } from './lib/c10-rates.ts';
 
 // The lesson's curve for marble powder: steep at first, levelling off at 80 cm³.
 const curve = figure('g', [gasGraph()], 480);
@@ -42,6 +43,18 @@ const video: Explainer = {
       lines: [
         { say: 'Watch a gas syringe as marble reacts with acid. The plunger shoots out at first, then creeps, then stops.', show: 'title' },
         { say: 'In this part, you will see how the rate changes as a reaction goes on, and find mean rates from a table of measurements.' },
+      ],
+    },
+    {
+      chapter: 'Watching a reaction slow down',
+      layout: 'split',
+      leftWidth: 560,
+      left: [runsOut('ro', 420)],
+      right: [{ kind: 'callout', id: 'k', tone: 'key', title: 'Why it slows', md: 'As reactant particles are used up, fewer are left to collide, so new molecules form **more and more slowly**. It stops when a reactant **runs out**.' }],
+      lines: [
+        { say: 'Here is a reaction between two gases, with a count of the new molecules made.', show: ['ro', 'ro.labels', 'ro.tally'] },
+        { say: 'At first there are plenty of reacting particles, so they collide often and the count shoots up. As they are used up, collisions get rarer, and the count climbs more and more slowly, until it all but stops.', play: 'ro.go' },
+        { say: 'That is the shape of every rate graph: steep at first, then less steep, then flat.', show: 'k' },
       ],
     },
     {

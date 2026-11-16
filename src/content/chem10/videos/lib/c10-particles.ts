@@ -512,3 +512,12 @@ export const hotAndCold = (id: string, height = 400): ParticlesEl => {
     height,
   };
 };
+
+/** Magnesium ribbon fizzing in hydrochloric acid (clip `fizz`): hydrogen gas bubbles off. */
+export const magnesiumInAcid = (id: string, height = 380): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [fizzBox('mg', 'magnesium in hydrochloric acid', { tone: 'opp', name: 'magnesium', gas: 'hydrogen gas' }, { open: true })],
+  clips: { fizz: { phases: [{ dur: 1, release: ['mg'] }, { dur: 13 }] } },
+  height,
+});

@@ -58,11 +58,25 @@ export const concentration = (id: string, height = 400) => pair(id, gases('a', '
 export const surface = (id: string, height = 400) => pair(id, solid('a', 'one lump', 1), solid('b', 'small pieces', 4), { seed: 8, height });
 export const catalyst = (id: string, height = 400) => pair(id, gases('a', 'no catalyst', { energy: 3.5 }), gases('b', 'with a catalyst', { energy: 0.6 }), { height });
 
-/** One box of the two gases reacting (clip `go`), with a flash wherever a particle hits a wall. */
+/** One box of the two gases reacting (clip `go`); most collisions are too gentle to react. */
 export const oneReaction = (id: string, height = 400): ParticlesEl => ({
   kind: 'particles',
   id,
-  boxes: [gases('a', 'A and B reacting', { n: 12 })],
+  boxes: [gases('a', 'A and B reacting', { n: 12, energy: 2.5 })],
   clips: { go: { phases: [{ dur: 1, release: ['a'] }, { dur: 15 }] } },
+  seed: 1,
+  height,
+});
+
+/**
+ * A fast reaction left to run (clip `go`): the count of new molecules climbs quickly at first, then
+ * more and more slowly as the reactants are used up, until it all but stops.
+ */
+export const runsOut = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [gases('a', 'A and B reacting', { n: 12, energy: 1.5 })],
+  clips: { go: { phases: [{ dur: 1, release: ['a'] }, { dur: 17 }] } },
+  seed: 1,
   height,
 });

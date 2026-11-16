@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { flaskOnBalance } from './lib/c10-4-figures.ts';
+import { magnesiumInAcid } from './lib/c10-particles.ts';
 
 // Marble chips fizzing in an open flask on a balance: the mass falls as carbon dioxide escapes.
 const flask = figure('fl', [flaskOnBalance({ readings: [] })], 480);
@@ -58,14 +59,16 @@ const video: Explainer = {
     },
     {
       chapter: 'Hydrogen in a gas syringe',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: 'Magnesium ribbon reacts with dilute hydrochloric acid, and $48\\ \\text{cm}^3$ of hydrogen is collected in a gas syringe in the first $30\\ \\text{s}$. What is the mean rate?' },
-        { kind: 'math', id: 'm', size: 'lg', lines: ['\\text{mean rate} = \\dfrac{48\\ \\text{cm}^3}{30\\ \\text{s}} = 1.6\\ \\text{cm}^3\\text{/s}'] },
+      layout: 'split',
+      leftWidth: 440,
+      left: [magnesiumInAcid('mg', 400)],
+      right: [
+        { kind: 'text', id: 'q', size: 'md', md: 'Magnesium ribbon reacts with dilute hydrochloric acid, and $48\\ \\text{cm}^3$ of hydrogen is collected in a gas syringe in the first $30\\ \\text{s}$. What is the mean rate?' },
+        { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\text{mean rate} = \\dfrac{48\\ \\text{cm}^3}{30\\ \\text{s}}', '= 1.6\\ \\text{cm}^3\\text{/s}'] },
       ],
       lines: [
-        { say: 'Magnesium ribbon reacts with dilute hydrochloric acid, and 48 cubic centimetres of hydrogen is collected in a gas syringe in the first 30 seconds.', show: 'q' },
-        { say: 'The mean rate is 48 cubic centimetres divided by 30 seconds, which is 1.6 cubic centimetres per second.', show: 'm', focus: 'm' },
+        { say: 'Magnesium ribbon reacts with dilute hydrochloric acid. Acid particles pull magnesium atoms into the solution, and hydrogen gas bubbles off. In a gas syringe, 48 cubic centimetres of hydrogen is collected in the first 30 seconds.', show: ['q', 'mg', 'mg.labels'], play: 'mg.fizz' },
+        { say: 'The mean rate is 48 cubic centimetres divided by 30 seconds, which is 1.6 cubic centimetres per second.', show: ['m.0', 'm.1'], focus: ['m.0', 'm.1'] },
       ],
     },
     {
