@@ -163,8 +163,10 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
         )}
       </g>,
     );
-    const every = [0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].find((n) => n * S >= 34) ?? 1000;
-    for (let m = Math.ceil(el.span[0] / every) * every; m <= el.span[1] + 1e-9; m += every) {
+    // A drop of two metres or less (a mass hung from a spring) is marked in parts of a metre.
+    const every = [...(el.span[1] - el.span[0] <= 2 ? [0.05, 0.1, 0.2] : []), 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].find((n) => n * S >= 34) ?? 1000;
+    for (let i = Math.ceil(el.span[0] / every - 1e-9); i * every <= el.span[1] + 1e-9; i++) {
+      const m = Math.round(i * every * 1000) / 1000;
       // A drop with a bar for potential energy is read by height, so its ruler counts up from the ground.
       const at = heights ? el.span[1] - m : m;
       out.push(<line key={`tick${li}-${m}`} x1={rx - 7} y1={Y(at)} x2={rx} y2={Y(at)} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
@@ -175,6 +177,24 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
       );
     }
   });
+
+  // A spring that hangs from a beam over the drop, with the body on its end.
+  const sprung = el.spring ? el.bodies.find((b) => b.id === el.spring!.on) : undefined;
+  if (el.spring && sprung) {
+    const cx = cw * (sprung.lane ?? 0) + cw / 2;
+    const beam = top - 14;
+    const end = Y(state.bodies[sprung.id].x) - 2 * R(sprung);
+    const turns = 10;
+    const [lead, amp] = [10, 12];
+    const run = Math.max(4, end - beam - 2 * lead);
+    const zig = Array.from({ length: 2 * turns + 1 }, (_, i) => `${cx + (i === 0 || i === 2 * turns ? 0 : i % 2 ? -amp : amp)},${beam + lead + (run * i) / (2 * turns)}`);
+    out.push(
+      <g key="spring">
+        <rect x={cx - 90} y={beam - 14} width={180} height={14} rx={3} fill="rgb(188 217 255 / 0.22)" stroke="#bcd9ff" strokeWidth={2} />
+        <polyline points={`${cx},${beam} ${zig.join(' ')} ${cx},${end}`} fill="none" stroke="#d9d4ff" strokeWidth={3.2} strokeLinejoin="round" strokeLinecap="round" />
+      </g>,
+    );
+  }
 
   for (const b of el.bodies) {
     const li = b.lane ?? 0;
@@ -239,8 +259,11 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
     for (const force of mine) {
       const size = Math.abs(force.n);
       const fc = TONES[force.tone ?? (force.drag || force.resist ? 'bad' : 'hyp')];
-      const grow = force.drag ? 1 : easeOut(force.age / 0.35);
-      const len = (force.drag ? size * fs : Math.max(12, size * fs)) * grow;
+      // The force of a spring grows from nothing with its extension, as air resistance does with speed.
+      const coil = force.name === SPRING;
+      if (coil && size * fs < 3) continue;
+      const grow = force.drag || coil ? 1 : easeOut(force.age / 0.35);
+      const len = (force.drag || coil ? size * fs : Math.max(12, size * fs)) * grow;
       const down = downward(force);
       const y0 = down ? cy + r + 2 : cy - r - 3;
       const mid = Math.max(14, len / 2);
@@ -248,12 +271,13 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
       // the first with its name on its left.
       const same = mine.filter((other) => downward(other) === down);
       const place = same.indexOf(force);
-      const fx = cx + (same.length > 1 ? (place - (same.length - 1) / 2) * Math.max(30, 0.9 * r) : 0);
+      // The pull of a spring would lie along its coil: its arrow stands just to the right of it.
+      const fx = cx + (same.length > 1 ? (place - (same.length - 1) / 2) * Math.max(30, 0.9 * r) : coil && !down ? Math.min(28, r - 10) : 0);
       const left = same.length > 1 && place === 0;
       out.push(<Arrow key={`f-${b.id}-${force.name}`} x={fx} y={y0} len={down ? -len : len} axis="y" color={fc} />);
       out.push(
-        <Text key={`ft-${b.id}-${force.name}`} x={fx + (left ? -18 : 18)} y={down ? y0 + mid : y0 - mid} anchor={left ? 'end' : 'start'} color={fc} opacity={force.drag ? clamp01(len / 10) : clamp01(grow * 1.5)}>
-          {`${force.name} ${force.drag ? newtons(size) : short(size)} N`}
+        <Text key={`ft-${b.id}-${force.name}`} x={fx + (left ? -18 : 18)} y={down ? y0 + mid : y0 - mid} anchor={left ? 'end' : 'start'} color={fc} opacity={force.drag || coil ? clamp01(len / 10) : clamp01(grow * 1.5)}>
+          {`${force.name} ${force.drag || coil ? newtons(size) : short(size)} N`}
         </Text>,
       );
     }
@@ -274,6 +298,30 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
         </Text>,
       );
     });
+  }
+
+  // The extension of a hanging spring: from where the foot of the body is at the spring's natural length to where it is now.
+  const extension = part('extension');
+  if (extension > 0 && el.spring && sprung) {
+    const cx = cw * (sprung.lane ?? 0) + cw / 2;
+    const r = R(sprung);
+    const [from, to] = [Y(el.spring.rest), Y(state.bodies[sprung.id].x)];
+    const x = state.bodies[sprung.id].x - el.spring.rest;
+    const ax = cx - r - 30;
+    out.push(
+      <g key="extension" opacity={extension}>
+        <line x1={cw * (sprung.lane ?? 0) + 52} y1={from} x2={cx + r + 16} y2={from} stroke={DISPLACEMENT} strokeWidth={2} strokeDasharray="6 6" opacity={0.8} />
+        <Text x={ax + 12} y={from - 16} anchor="end" color={DISPLACEMENT} size={18}>
+          natural length
+        </Text>
+        {Math.abs(to - from) >= 2 && <Arrow x={ax} y={from} len={from - to} axis="y" color={DISPLACEMENT} weight={6} />}
+        {Math.abs(to - from) >= 2 && (
+          <Text x={ax - 16} y={Math.max((from + to) / 2, from + 28)} anchor="end" color={DISPLACEMENT}>
+            {`x = ${Math.abs(x).toFixed(el.spring.decimals ?? 2)} m${x < -1e-9 ? ' (compressed)' : ''}`}
+          </Text>
+        )}
+      </g>,
+    );
   }
 
   if (graph > 0 && el.graph) out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * 0.5 + 100, 88, w - 34, h - 78]} tone={tone} />);
@@ -571,9 +619,10 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const key = `${f.on}${Math.sign(f.n)}`;
     const nth = side[key] ?? 0;
     side[key] = nth + 1;
-    // The spring's pull lies along its coil: its arrow is drawn just above the coil instead.
-    const overCoil = f.name === SPRING && sprung === b && f.n < 0;
-    const y = f.resist ? g - 12 : overCoil ? coilY(b) - 30 : k.mid - nth * 32 - (b.shape === 'cart' ? WHEEL * 0.7 : 0);
+    // A force towards the wall (the spring's pull, or a hand that holds the spring compressed) would
+    // lie along the coil: its arrow is drawn just above the coil instead.
+    const overCoil = sprung === b && f.n < 0;
+    const y = f.resist ? g - 12 : overCoil ? coilY(b) - 34 - nth * 32 : k.mid - nth * 32 - (b.shape === 'cart' ? WHEEL * 0.7 : 0);
     const x0 = f.n > 0 ? k.right + 3 : k.left - 3;
     out.push(<Arrow key={`f-${f.on}-${f.name}`} x={x0} y={y} len={len} color={c} />);
     out.push(

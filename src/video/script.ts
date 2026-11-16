@@ -281,7 +281,9 @@ export interface MotionForce {
  * A spring on a straight track, between a wall and one body. It obeys Hooke's law: it pulls or
  * pushes the body towards the place where it has its natural length, with k newtons for each metre
  * of extension, in every phase (it is not listed among a phase's forces). It is drawn as a coil
- * from the wall at the left end of the track, with its force as an arrow named "Spring".
+ * from the wall at the left end of the track, with its force as an arrow named "Spring". Over a
+ * drop (`vertical: true`) it hangs from a beam at the top instead, and `rest` is how far down the
+ * foot of the body is when the spring has its natural length.
  */
 export interface MotionSpring {
   /** The body on its end. */
@@ -1415,7 +1417,7 @@ export function checkMotion(e: MotionEl): string[] {
   if (e.spring) {
     if (!ids.has(e.spring.on)) problems.push(`the spring is tied to no body "${e.spring.on}".`);
     if (!(e.spring.k > 0)) problems.push('the spring needs a spring constant above zero.');
-    if (e.path || e.vertical || (e.lanes?.length ?? 1) > 1) problems.push('a spring lies along a single straight track.');
+    if (e.path || e.vertical === 'up' || (e.lanes?.length ?? 1) > 1) problems.push('a spring lies along a single straight track, or hangs over a single drop.');
     const tied = e.bodies.find((b) => b.id === e.spring!.on);
     if (tied && !(e.spring.rest - (tied.width ?? 1) / 2 > e.span[0])) problems.push('the spring needs room between the wall at the left end of the track and the body.');
   }
