@@ -857,7 +857,271 @@ export interface FlightEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl;
+/** A block on the surface of a ramp element. */
+export interface RampBody {
+  id: string;
+  /** Mass in kilograms. */
+  mass: number;
+  /** What is written on it ("8 kg" from its mass otherwise). */
+  label?: string;
+  /** Where its centre starts, in metres along the surface from its lower (left) end. */
+  x: number;
+  /** Its starting velocity along the surface in metres per second: up the slope, to the right, is positive. */
+  v?: number;
+  /** Its length along the surface in metres (1 by default). */
+  width?: number;
+  tone?: Tone;
+}
+
+/**
+ * A push or a pull on a block of a ramp element. These are the only forces a script gives: the
+ * weight, the normal force, friction and every tension are worked out from them.
+ */
+export interface RampForce {
+  on: string;
+  /** Its name beside the arrow ("Push"); the size in newtons is added. */
+  name: string;
+  /** Its size in newtons. */
+  n: number;
+  /**
+   * Its direction in degrees, anticlockwise from the direction up the surface (to the right on a
+   * level one): 0 by default, 180 points back down the surface, 30 slants up and away from it, and
+   * -20 presses down into it.
+   */
+  angle?: number;
+  tone?: Tone;
+}
+
+/** A stretch of a ramp clip during which the same pushes and pulls act. */
+export interface RampPhase {
+  /** How long it lasts, in seconds of the motion's own time. */
+  dur: number;
+  /** Slow motion: seconds of video for each second of the motion (1 by default). */
+  slow?: number;
+  /** Hold everything still for `dur` seconds of video, to name the forces before anything moves. */
+  freeze?: boolean;
+  forces?: RampForce[];
+  /** Velocities given at the start of the phase, in metres per second, by body id; everything tied to that body gets it too. */
+  set?: Record<string, number>;
+  /** Tilt the surface steadily to this angle, in degrees, during the phase. */
+  tilt?: number;
+  /** A short note shown over the picture ("Slow motion"). */
+  note?: string;
+}
+
+export interface RampClip {
+  phases: RampPhase[];
+  /** Put every body back at its start, and the surface at its first tilt (to play the motion again). */
+  reset?: boolean;
+}
+
+/** What a ramp element can show over its bodies; each is a part ("ramp.weight"). */
+export const RAMP_PARTS = ['weight', 'components', 'normal', 'friction', 'tension', 'net', 'velocity', 'readout', 'clock', 'strobe'] as const;
+
+/**
+ * Blocks on a surface, level or tilted, for the dynamics videos (src/video/ramp.ts): a box pushed
+ * across a floor with friction, a block on a ramp, blocks tied by strings, a block pulled by a body
+ * that hangs over a pulley, or two hanging bodies (a surface tilted to 90 degrees, which is not
+ * drawn). The script gives the masses, the tilt, the coefficients of friction and the pushes of
+ * each phase; the weight, the normal force, static or kinetic friction, the tensions and the
+ * motion are worked out from them. Showing the element shows the surface, the bodies and the
+ * pushes of the phase being played; showing a part adds it: `weight`, `normal`, `friction` and
+ * `tension` (each an arrow with its name and size), `components` (the two parts, dashed, of the
+ * weight on a tilted surface and of any push at an angle: along the surface and at right angles
+ * to it), `net` (the net force on each body), `velocity`, `readout` (the acceleration), `clock`
+ * and `strobe`. Emphasising a body's id makes it glow.
+ */
+export interface RampEl {
+  kind: 'ramp';
+  id: string;
+  /** The tilt of the surface in degrees: 0 is level, and it rises to the right. */
+  angle: number;
+  /** The length of the surface, in metres. */
+  length: number;
+  /** The gravitational field strength in newtons per kilogram (9.81 otherwise). */
+  g?: number;
+  /** The coefficients of static and kinetic friction between the blocks and the surface (smooth otherwise). */
+  friction?: [stat: number, kinetic: number];
+  bodies: RampBody[];
+  /** Light strings that tie neighbouring blocks together, as pairs of body ids. */
+  ropes?: Array<[string, string]>;
+  /**
+   * A body that hangs from a string over a pulley at the top (right) end of the surface, tied to
+   * the block nearest it. `drop` is how far under the pulley its centre starts, in metres (1 by
+   * default). Its velocity and acceleration are counted downwards.
+   */
+  hanging?: { id: string; mass: number; label?: string; tone?: Tone; drop?: number; width?: number };
+  /** Blocks whose weight and normal force are never drawn: on a level surface the two balance, and take no part in the motion. */
+  balanced?: string[];
+  /** How far the lower end of the surface stands above the ground, in metres (a table top; 0 otherwise). */
+  raise?: number;
+  /** Pixels kept clear above the highest point of the surface and under the ground, for arrows and labels ([150, 44] otherwise, and [150, 130] under a level floor). */
+  pad?: [top: number, bottom: number];
+  clips: Record<string, RampClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  /** Pixels of arrow for each newton (1.5 by default). */
+  forceScale?: number;
+  /** Pixels of arrow for each metre per second (24 by default). */
+  velocityScale?: number;
+  /** Seconds between strobe marks (0.5 by default). */
+  strobe?: number;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+/** A push or a pull on the object of a forces element. */
+export interface PlaneForce {
+  /** Its name beside the arrow ("Pull"); the size in newtons is added. */
+  name: string;
+  /** Its size in newtons. */
+  n: number;
+  /** Its direction in degrees, anticlockwise from the right of the picture (east): 90 is north, 180 west and -90 south. */
+  angle: number;
+  tone?: Tone;
+}
+
+/** A stretch of a forces clip during which the same forces act. */
+export interface ForcesPhase {
+  /** How long it lasts, in seconds of the motion's own time. */
+  dur: number;
+  /** Slow motion: seconds of video for each second of the motion (1 by default). */
+  slow?: number;
+  /** Hold everything still for `dur` seconds of video, to name the forces before anything moves. */
+  freeze?: boolean;
+  forces?: PlaneForce[];
+  /** Tilt the two cables steadily to these angles above the horizontal, in degrees, during the phase. */
+  cables?: [left: number, right: number];
+  /** A short note shown over the picture ("Slow motion"). */
+  note?: string;
+}
+
+export interface ForcesClip {
+  phases: ForcesPhase[];
+  /** Put the object back at its start and at rest, and the cables at their first angles. */
+  reset?: boolean;
+}
+
+/** What a forces element can show over its object; each is a part ("forces.net"). */
+export const FORCES_PARTS = ['components', 'net', 'velocity', 'readout', 'trail', 'angles', 'weight', 'tension', 'clock'] as const;
+
+/**
+ * One object with forces that point any way in a plane, for forces in two dimensions
+ * (src/video/forces.ts). Without `cables` it is seen from above on frictionless ice: the forces of
+ * the phase being played are drawn from its middle, they add to a net force, and it moves off
+ * along that force. With `cables` it hangs at rest from two cables at those angles above the
+ * horizontal: its weight is known, and the two tensions are worked out from the angles, so they
+ * change as a phase tilts the cables. Showing the element shows the object and the forces of the
+ * phase; showing a part adds it: `components` (the two parts, dashed, of every slanted force, head
+ * to tail), `net` (the net force, with its size and its angle from east), `velocity` (an arrow
+ * beside the net force), `readout` (the speed and the acceleration, as numbers), `trail`, `clock`,
+ * and for a hung object `weight`, `tension` and `angles`.
+ * Emphasising `body` makes the object glow.
+ */
+export interface ForcesEl {
+  kind: 'forces';
+  id: string;
+  body: { /** Mass in kilograms. */ mass: number; /** What is written on it ("10 kg" from its mass otherwise). */ label?: string; tone?: Tone };
+  /** The floor seen from above, in metres: [left, right, bottom, top]. The object starts at the origin. */
+  view?: [left: number, right: number, bottom: number, top: number];
+  /** Hang the object from two cables at these angles above the horizontal, in degrees: the left one, then the right one. */
+  cables?: [left: number, right: number];
+  /** The names of the two tensions ("Tension" otherwise). */
+  names?: [left: string, right: string];
+  /** The gravitational field strength in newtons per kilogram (9.81 otherwise). */
+  g?: number;
+  clips: Record<string, ForcesClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  /** Pixels of arrow for each newton (3 by default). */
+  forceScale?: number;
+  /** Pixels of arrow for each metre per second (24 by default). */
+  velocityScale?: number;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+/** A body of a gravity element: a planet drawn to scale, or a small ball. */
+export interface GravityBody {
+  id: string;
+  /** Mass in kilograms. */
+  mass: number;
+  /** What is written by it ("Earth"); its mass otherwise ("800 kg", "6.0 × 10²⁴ kg"). */
+  label?: string;
+  /** Where its centre starts, in metres (y is 0 otherwise). */
+  x: number;
+  y?: number;
+  /** Its radius in metres, drawn to scale (a planet). Without one it is a small ball. */
+  radius?: number;
+  /** The radius of the ball in pixels (16 by default); it swells as its mass grows. */
+  size?: number;
+  tone?: Tone;
+}
+
+/** A stretch of a gravity clip, during which bodies are carried to new places or change their mass. */
+export interface GravityPhase {
+  /** How long it lasts, in seconds of video. */
+  dur: number;
+  /** Where bodies are carried to during the phase, by id: a new x in metres, or [x, y]. */
+  to?: Record<string, number | [number, number]>;
+  /** The masses bodies have by the end of the phase, in kilograms, by id. */
+  mass?: Record<string, number>;
+  /** A short note shown over the picture. */
+  note?: string;
+}
+
+export interface GravityClip {
+  phases: GravityPhase[];
+  /** Put every body back at its start, with its first mass. */
+  reset?: boolean;
+}
+
+/** What a gravity element can show over its bodies; each is a part ("space.force"). */
+export const GRAVITY_PARTS = ['force', 'distance', 'radius', 'height', 'field', 'g'] as const;
+
+/**
+ * Bodies in space that attract one another, for universal gravitation, gravitational fields and
+ * orbits (src/video/gravity.ts). The script gives the masses and where the centres are, in
+ * kilograms and metres; the forces and the field strengths are worked out from Newton's law, and
+ * they change as a clip carries a body away or makes it heavier. Showing the element shows the
+ * bodies; showing a part adds it: `force` (the pull on each body, with its size: the two pulls of a
+ * pair are always equal), `distance` (the distance r between the centres of the first two bodies),
+ * `radius` and `height` (the radius of the first body, and how far the second is above its
+ * surface), `field` (arrows of the first body's field, shorter where it is weaker) and `g` (the
+ * field strength where each of the other bodies is). Emphasising a body's id makes it glow.
+ */
+export interface GravityEl {
+  kind: 'gravity';
+  id: string;
+  /** The first body is the one whose radius and field are shown. */
+  bodies: GravityBody[];
+  /** What the picture shows, in metres: [left, right, bottom, top]. */
+  view: [left: number, right: number, bottom: number, top: number];
+  /** The gravitational constant (6.67 × 10⁻¹¹ N·m²/kg² otherwise). */
+  G?: number;
+  /** Write distances in this unit and not in metres ({ metres: 6.37e6, symbol: 'R' } gives "r = 2 R"). */
+  unit?: { metres: number; symbol: string };
+  /** How many significant figures distances are written with (2 otherwise: "7.0 × 10⁶ m"). */
+  figures?: number;
+  /** Draw the pull on these bodies only (on every body otherwise). */
+  pulls?: string[];
+  /** Write every force in scientific notation ("6.53 × 10³ N"); otherwise only very large and very small ones. */
+  notation?: 'sci';
+  clips: Record<string, GravityClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  /** Pixels of arrow for each newton (otherwise the largest force at the start is 110 pixels long). */
+  forceScale?: number;
+  /** Pixels of field arrow for each newton per kilogram (otherwise 56 pixels at the surface of the first body). */
+  fieldScale?: number;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -1066,6 +1330,110 @@ export function checkFlight(e: FlightEl): string[] {
   return problems;
 }
 
+/** Problems with a ramp element: masses, tilts and coefficients that make no sense, strings and clips that name no body. */
+export function checkRamp(e: RampEl): string[] {
+  const problems: string[] = [];
+  const ids = new Set(e.bodies.map((b) => b.id));
+  if (!e.bodies.length) problems.push('it needs a block.');
+  if (e.hanging) {
+    if (ids.has(e.hanging.id)) problems.push('two bodies share an id.');
+    if (!(e.hanging.mass > 0)) problems.push(`body "${e.hanging.id}" needs a mass above zero.`);
+  }
+  if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
+  const all = new Set([...ids, ...(e.hanging ? [e.hanging.id] : [])]);
+  for (const id of all) if ((RAMP_PARTS as readonly string[]).includes(id)) problems.push(`body id "${id}" is the name of a part.`);
+  if (!(e.length > 0)) problems.push('the surface needs a length above zero.');
+  const tilt = (a: number) => a >= 0 && a <= 90;
+  if (!tilt(e.angle)) problems.push('the tilt must be from 0 to 90 degrees.');
+  if (e.angle === 90 && !e.hanging) problems.push('a surface tilted to 90 degrees needs a hanging body on the other side of its pulley.');
+  if (e.g !== undefined && !(e.g > 0)) problems.push('g must be above zero.');
+  if (e.friction && !(e.friction[0] >= e.friction[1] && e.friction[1] >= 0)) problems.push('the coefficients of friction are [static, kinetic], with the static one at least as large.');
+  for (const b of e.bodies) {
+    if (!(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if (b.x < 0 || b.x > e.length) problems.push(`body "${b.id}" starts off the surface.`);
+  }
+  const order = [...e.bodies].sort((a, b) => a.x - b.x).map((b) => b.id);
+  for (const [a, b] of e.ropes ?? []) {
+    if (!ids.has(a) || !ids.has(b)) problems.push(`a string ties no block "${ids.has(a) ? b : a}".`);
+    else if (Math.abs(order.indexOf(a) - order.indexOf(b)) !== 1) problems.push(`the string from "${a}" to "${b}" must tie two neighbours.`);
+  }
+  for (const id of e.balanced ?? []) if (!ids.has(id)) problems.push(`no block "${id}" to leave the weight off.`);
+  if (e.strobe !== undefined && !(e.strobe > 0)) problems.push('the strobe step must be above zero.');
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
+      for (const id of Object.keys(ph.set ?? {})) if (!all.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const f of ph.forces ?? []) {
+        if (!ids.has(f.on)) problems.push(`${where} pushes no block "${f.on}".`);
+        if (!(f.n > 0)) problems.push(`${where}: the force "${f.name}" needs a size above zero (turn it with its angle).`);
+      }
+      if (ph.tilt !== undefined && !tilt(ph.tilt)) problems.push(`${where} tilts the surface past 0 to 90 degrees.`);
+      if (ph.tilt !== undefined && ph.freeze) problems.push(`${where} cannot tilt the surface while it is frozen.`);
+      if (ph.tilt !== undefined && (e.hanging || e.angle === 90)) problems.push(`${where} cannot tilt a surface with a pulley.`);
+    });
+  }
+  return problems;
+}
+
+/** Problems with a forces element: a mass or a force of no size, cables that cannot hold a weight. */
+export function checkForces(e: ForcesEl): string[] {
+  const problems: string[] = [];
+  if (!(e.body.mass > 0)) problems.push('the object needs a mass above zero.');
+  if (e.g !== undefined && !(e.g > 0)) problems.push('g must be above zero.');
+  // Two cables hold a weight when neither hangs below the horizontal and they are not both level.
+  const holds = (c: [number, number]) => c[0] >= 0 && c[1] >= 0 && c[0] <= 90 && c[1] <= 90 && c[0] + c[1] >= 5;
+  if (e.cables && !holds(e.cables)) problems.push('the cables must be from 0 to 90 degrees above the horizontal, and not both level.');
+  if (!e.cables && !e.view) problems.push('it needs a view of the floor, or two cables to hang from.');
+  if (e.view && !(e.view[0] <= 0 && e.view[1] >= 0 && e.view[2] <= 0 && e.view[3] >= 0 && e.view[1] > e.view[0] && e.view[3] > e.view[2])) problems.push('the view is [left, right, bottom, top], around the origin where the object starts.');
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
+      for (const f of ph.forces ?? []) if (!(f.n > 0)) problems.push(`${where}: the force "${f.name}" needs a size above zero (turn it with its angle).`);
+      if (ph.cables && !e.cables) problems.push(`${where} tilts cables the object does not hang from.`);
+      if (ph.cables && !holds(ph.cables)) problems.push(`${where}: the cables must be from 0 to 90 degrees above the horizontal, and not both level.`);
+      if (ph.cables && ph.freeze) problems.push(`${where} cannot tilt the cables while it is frozen.`);
+    });
+  }
+  return problems;
+}
+
+/** Problems with a gravity element: masses of nothing, bodies on top of one another, clips that name no body. */
+export function checkGravity(e: GravityEl): string[] {
+  const problems: string[] = [];
+  const ids = new Set(e.bodies.map((b) => b.id));
+  if (!e.bodies.length) problems.push('it needs a body.');
+  if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
+  for (const id of ids) if ((GRAVITY_PARTS as readonly string[]).includes(id)) problems.push(`body id "${id}" is the name of a part.`);
+  for (const b of e.bodies) {
+    if (!(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if (b.radius !== undefined && !(b.radius > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
+  }
+  e.bodies.forEach((a, i) => {
+    for (const b of e.bodies.slice(i + 1)) if (a.x === b.x && (a.y ?? 0) === (b.y ?? 0)) problems.push(`bodies "${a.id}" and "${b.id}" start at the same place.`);
+  });
+  if (!(e.view[1] > e.view[0] && e.view[3] > e.view[2])) problems.push('the view is [left, right, bottom, top].');
+  if (e.G !== undefined && !(e.G > 0)) problems.push('G must be above zero.');
+  if (e.unit && !(e.unit.metres > 0)) problems.push('the unit of distance needs a size above zero.');
+  for (const id of e.pulls ?? []) if (!ids.has(id)) problems.push(`no body "${id}" to draw the pull on.`);
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
+      for (const id of [...Object.keys(ph.to ?? {}), ...Object.keys(ph.mass ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const [id, m] of Object.entries(ph.mass ?? {})) if (!(m > 0)) problems.push(`${where}: body "${id}" needs a mass above zero.`);
+    });
+  }
+  return problems;
+}
+
 /** Problems with a rays element: angles a ray cannot have, a boundary without its two speeds. */
 export function checkRays(e: RaysEl): string[] {
   const problems: string[] = [];
@@ -1168,7 +1536,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -1197,6 +1565,21 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...FLIGHT_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkFlight(e).map((p) => `Scene ${si + 1}: flight "${e.id}": ${p}`));
+      }
+      if (e.kind === 'ramp') {
+        diagrams.set(e.id, new Set<string>([...RAMP_PARTS, ...e.bodies.map((b) => b.id), ...(e.hanging ? [e.hanging.id] : [])]));
+        motions.set(e.id, e);
+        problems.push(...checkRamp(e).map((p) => `Scene ${si + 1}: ramp "${e.id}": ${p}`));
+      }
+      if (e.kind === 'forces') {
+        diagrams.set(e.id, new Set<string>([...FORCES_PARTS, 'body']));
+        motions.set(e.id, e);
+        problems.push(...checkForces(e).map((p) => `Scene ${si + 1}: forces "${e.id}": ${p}`));
+      }
+      if (e.kind === 'gravity') {
+        diagrams.set(e.id, new Set<string>([...GRAVITY_PARTS, ...e.bodies.map((b) => b.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkGravity(e).map((p) => `Scene ${si + 1}: gravity "${e.id}": ${p}`));
       }
       if (e.kind === 'rays') {
         diagrams.set(e.id, new Set<string>(RAYS_PARTS));

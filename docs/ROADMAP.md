@@ -1283,7 +1283,18 @@ items ship or decisions change.
        current with the velocity triangle drawn head to tail, and displacements on a map with
        their east and north parts. The graph of a `motion` element can now plot position and go
        below zero, for a cart that turns round.
-     - Next: render Unit 1 and move it to Drive, then the videos of Units 2 to 4, then Grade 12
+     - Done (16 November 2026): the ten videos of Unit 1 are rendered and in Drive.
+     - Grade 11 videos, Unit 2 (16 November 2026): eight videos scripted for the eight Dynamics
+       lessons (`p20-2-1` to `p20-2-8`), with three new elements. `ramp` (`src/video/ramp.ts`)
+       puts blocks on a level or tilted surface and works out the weight, the normal force,
+       static or kinetic friction, the tensions and the motion from the pushes a script gives: a
+       crate that will not move until the push beats static friction, a block on a slope with its
+       weight taken apart, blocks tied by strings and a body hanging over a pulley. `forces`
+       (`src/video/forces.ts`) adds forces in a plane, for a puck seen from above and a sign hung
+       from two cables whose tensions grow as the cables flatten. `gravity`
+       (`src/video/gravity.ts`) draws bodies in space with pulls and a field worked out from
+       Newton's law, so the force falls to a quarter as a body is carried to twice the distance.
+     - Next: render Unit 2 and move it to Drive, then the videos of Units 3 and 4, then Grade 12
        Physics (`phys-30`).
        `phys-sample-momentum` becomes the first video of Grade 12 Unit A and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
