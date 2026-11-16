@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { peDiagram } from './lib/c30-1b-figures.ts';
+import { endothermic } from './lib/c30-particles.ts';
 
 // The lesson's exothermic reaction (reactants 150 kJ, activated complex 225 kJ, products 50 kJ)
 // and its endothermic example (50 kJ, 200 kJ, 125 kJ).
@@ -94,6 +95,15 @@ const video: Explainer = {
         { say: 'The forward activation energy is two hundred minus fifty: one hundred fifty kilojoules.', show: ['e.fwd', 't.0'], focus: ['e.fwd', 't.0'] },
         { say: 'The reverse is two hundred minus one hundred twenty-five: seventy-five kilojoules.', show: ['e.rev', 't.1'], focus: ['e.rev', 't.1'] },
         { say: 'Delta H is one hundred twenty-five minus fifty: positive seventy-five kilojoules. And the forward minus the reverse, one hundred fifty minus seventy-five, checks.', show: ['e.dh', 't.2', 'm'], focus: ['e.dh', 't.2', 'm.0'] },
+      ],
+    },
+    {
+      chapter: 'An endothermic change, up close',
+      layout: 'center',
+      main: [endothermic('en', { seed: 3 })],
+      lines: [
+        { say: 'Here is an endothermic change up close. In this tube, blue pairs of dye-nitrogen tetroxide split into orange nitrogen dioxide molecules. Breaking each pair apart takes energy in, from the motion of the particles around it. Watch the thermometer.', caption: 'Here is an endothermic change up close. In this tube, blue pairs of dinitrogen tetroxide split into orange nitrogen dioxide molecules. Breaking each pair apart takes energy in, from the motion of the particles around it. Watch the thermometer.', show: ['en', 'en.labels', 'en.key', 'en.tally', 'en.thermo'], play: 'en.go' },
+        { say: 'As the count of nitrogen dioxide climbs, the tube cools: the energy has gone into the products, which sit higher on the diagram than the reactants. Then heat flows in from the surroundings and it warms back up.', focus: 'en.tally' },
       ],
     },
     {

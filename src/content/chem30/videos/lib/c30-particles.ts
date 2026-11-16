@@ -1,4 +1,5 @@
 import type { ParticleBox, ParticlesEl } from '@/video/script.ts';
+import { hydrogenBurning } from '@/video/reactions.ts';
 
 /**
  * Dinitrogen tetroxide and nitrogen dioxide in a sealed tube. Each nitrogen dioxide molecule is
@@ -111,3 +112,49 @@ export const n2o4Stress = (id: string, stress: Stress, o: { seed?: number; heigh
     height: o.height ?? 440,
   };
 };
+
+/**
+ * Hydrogen and oxygen at room temperature (clip `spark`): for 10 s the molecules only bounce
+ * apart, then a spark heats one moment of the box and the reaction spreads, its own heat keeping
+ * it going.
+ */
+export const sparked = (id: string, o: { seed?: number; height?: number } = {}): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [hydrogenBurning('b', { label: 'hydrogen and oxygen' })],
+  clips: { spark: { phases: [{ dur: 10 }, { dur: 1, heat: { b: 2 } }, { dur: 2 }, { dur: 1, heat: { b: 0.4 } }, { dur: 12 }] } },
+  thermometers: true,
+  seed: o.seed ?? 1,
+  height: o.height ?? 440,
+});
+
+/**
+ * The same warm mixture of hydrogen and oxygen twice (clip `go`): on the left the usual high
+ * barrier, on the right a lower one, as a catalyst gives. The particles move at the same speeds
+ * in both, but many more of their collisions have enough energy to react on the right. Little
+ * heat is given out, so neither box runs away.
+ */
+export const catalysed = (id: string, o: { seed?: number; height?: number; barrier?: number; lower?: number; temp?: number } = {}): ParticlesEl => {
+  const box = (bid: string, energy: number, label: string): ParticleBox => {
+    const b = hydrogenBurning(bid, { label, temp: o.temp ?? 0.5 });
+    return { ...b, width: 10, height: 8, reactions: b.reactions!.map((r, i) => ({ ...r, heat: 0.02, ...(i === 0 ? { energy } : {}) })) };
+  };
+  return {
+    kind: 'particles',
+    id,
+    boxes: [box('u', o.barrier ?? 4, 'no catalyst'), box('c', o.lower ?? 1.5, 'with a catalyst')],
+    clips: { go: { phases: [{ dur: 16 }] } },
+    thermometers: true,
+    seed: o.seed ?? 1,
+    height: o.height ?? 400,
+  };
+};
+
+/**
+ * Dinitrogen tetroxide splitting in a tube with a thermometer (clip `go`): each split takes energy
+ * in, so the tube cools as nitrogen dioxide builds up (an endothermic change).
+ */
+export const endothermic = (id: string, o: { seed?: number; height?: number } = {}): ParticlesEl => ({
+  ...n2o4(id, { seed: o.seed, height: o.height, heat: 0.04, label: 'dinitrogen tetroxide splitting' }),
+  thermometers: true,
+});

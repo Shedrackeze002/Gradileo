@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { peDiagram } from './lib/c30-1b-figures.ts';
+import { catalysed } from './lib/c30-particles.ts';
 
 // A sketch, with no scale: the top of the hump 75 kJ above the reactants, and the products 40 kJ
 // below them.
@@ -63,6 +64,15 @@ const video: Explainer = {
         { say: 'Without the catalyst, the reverse activation energy is one hundred twenty minus thirty: ninety kilojoules.', show: 'm.0', focus: 'm.0' },
         { say: 'The catalyst does not change delta H, so with it, the reverse activation energy is seventy minus thirty: forty kilojoules.', show: 'm.1', focus: 'm.1' },
         { say: 'The reverse activation energy fell by fifty kilojoules, the same amount as the forward activation energy.', show: 'm.2', focus: 'm.2' },
+      ],
+    },
+    {
+      chapter: 'A lower barrier, up close',
+      layout: 'center',
+      main: [catalysed('cl', { seed: 4 })],
+      lines: [
+        { say: 'Here is what a lower barrier means up close: hydrogen and oxygen in two boxes at the same temperature, the right one with a lower activation energy, as a catalyst gives. Watch the count of water molecules.', show: ['cl', 'cl.labels', 'cl.tally', 'cl.thermo'], play: 'cl.go' },
+        { say: 'On the right, many more collisions have enough energy to react, so water forms quickly. On the left, with the higher barrier, none of the collisions in this time is energetic enough.', focus: 'cl.tally' },
       ],
     },
     {

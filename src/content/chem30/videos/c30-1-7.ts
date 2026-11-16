@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { peDiagram } from './lib/c30-1b-figures.ts';
+import { sparked } from './lib/c30-particles.ts';
 
 // The lesson's exothermic reaction: reactants at 150 kJ, the activated complex at 225 kJ and
 // products at 50 kJ.
@@ -55,6 +56,15 @@ const video: Explainer = {
         { say: 'Collisions with less energy than the activation energy simply bounce apart.', show: 'b.0', focus: 'b.0' },
         { say: 'At room temperature, only a small fraction of collisions have enough energy.', show: 'b.1', focus: 'b.1' },
         { say: 'That is why a reaction with a large activation energy is slow, or does not start at all, until something such as a spark supplies the energy.', show: 'b.2', focus: 'b.2' },
+      ],
+    },
+    {
+      chapter: 'A spark, up close',
+      layout: 'center',
+      main: [sparked('sk', { seed: 2 })],
+      lines: [
+        { say: 'Here is a mixture of hydrogen and oxygen up close, at room temperature. The molecules collide all the time, but almost every collision is too gentle to reach the activation energy, so they simply bounce apart. Now a spark heats the mixture for a moment.', show: ['sk', 'sk.labels', 'sk.tally', 'sk.thermo'], play: 'sk.spark' },
+        { say: 'The fastest molecules now collide hard enough to react, and each reaction gives out heat, which makes the next collisions harder still. So the water count climbs on its own, long after the spark is gone.', focus: 'sk.tally' },
       ],
     },
     {
