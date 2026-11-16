@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { acidBox, frame, legend } from './lib/c20-3b-figures.ts';
+import { strongAndWeak } from './lib/c20-particles.ts';
 
 // A strong acid fully ionised (hydronium ions and anions only) beside a weak acid that is mostly whole molecules.
 const boxes = figure(
@@ -28,7 +29,7 @@ const video: Explainer = {
   lessonId: 'c20-3-8',
   title: 'Strong and Weak Acids and Bases, Part 1: Strong and Weak Acids',
   thumbnailTitle: 'Strong and Weak Acids',
-  thumbnail: 'f',
+  thumbnail: 'sw',
   summary:
     'A strong acid ionises completely in water, so no acid molecules are left; a weak acid ionises only partly, and most of its molecules stay whole. The six common strong acids are HCl, HBr, HI, HNO₃, H₂SO₄ and HClO₄; most other acids, including HF, HNO₂ and CH₃COOH, are weak.',
   scenes: [
@@ -52,6 +53,16 @@ const video: Explainer = {
         { say: 'In lesson three point six, an acid gave a hydrogen ion to water, forming the hydronium ion. This reaction is ionisation: molecules of the acid become ions. Acids differ in how far it goes.', caption: 'In lesson 3.6, an acid gave a hydrogen ion to water, forming the hydronium ion. This reaction is ionisation: molecules of the acid become ions. Acids differ in how far it goes.' },
         { say: 'A strong acid ionises completely. Every molecule gives its hydrogen ion to water, so no acid molecules are left. Hydrochloric acid is strong.', show: ['strong', 'm.0'], focus: 'm.0' },
         { say: 'A weak acid ionises only partly: only a small fraction of its molecules ionise, and most stay whole. Acetic acid is weak. The double arrow shows that its reaction goes both ways.', show: ['weak', 'm.1'], focus: 'm.1' },
+      ],
+    },
+    {
+      chapter: 'Watching them ionise',
+      layout: 'center',
+      main: [strongAndWeak('sw')],
+      lines: [
+        { say: 'Here are seven molecules of hydrochloric acid in water on the left, and seven of acetic acid on the right.', show: ['sw', 'sw.labels', 'sw.key'] },
+        { say: 'Watch what happens when an acid molecule meets a water molecule. Every hydrogen chloride molecule hands over its hydrogen, so all seven become hydronium ions and chloride ions.', play: 'sw.go', focus: 'sw.s', show: 'sw.tally' },
+        { say: 'Acetic acid holds on to its hydrogen much more tightly. Only now and then does a molecule ionise, and when a hydronium ion meets an acetate ion, the hydrogen goes back. So at any moment, only about one of its molecules is ionised.', focus: 'sw.w' },
       ],
     },
     {

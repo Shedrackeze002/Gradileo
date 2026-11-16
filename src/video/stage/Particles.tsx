@@ -5,7 +5,7 @@
  * of the hits each second and the trail of one followed particle.
  */
 import type { ParticleBox, ParticlesEl, Tone } from '../script.ts';
-import { boxSize, FLASH, PAPER_START, particlesAt, pressureOf, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
+import { boxSize, FLASH, PAPER_START, particlesAt, pressureOf, singular, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
@@ -377,7 +377,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
               <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={count}>{`${f.loose} of ${b.kinds[0].n} dissolved`}</Text>
             )}
             {tally > 0 && b.tally && (
-              <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={tally}>{`${f.tally} ${b.tally.label}`}</Text>
+              <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={tally}>{`${f.tally} ${f.tally === 1 ? singular(b.tally.label) : b.tally.label}`}</Text>
             )}
             {rate > 0 && (
               <Text x={X(bw / 2)} y={floor + 30 + (b.label ? 32 : 0) + (el.volume?.box === b.id ? 32 : 0)} size={20} color={TONES.theta} opacity={rate}>{`${f.hitRate} wall hits a second`}</Text>

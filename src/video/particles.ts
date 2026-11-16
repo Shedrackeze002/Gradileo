@@ -1130,3 +1130,12 @@ export function pressureOf(el: ParticlesEl, b: ParticleBox, temp: number, lidFra
   const l0 = b.lid ?? 1;
   return p0 * (temp / t0) * (l0 / lidFraction);
 }
+
+/**
+ * A tally's label for a count of one: its plural noun made singular ("1 hydronium ion", "1 unit of
+ * silver chloride", "1 particle inside"). The noun is the last word before " of" or " inside".
+ */
+export function singular(label: string): string {
+  const m = /^(.*?)s(\s+(?:of|inside)\b.*)?$/.exec(label);
+  return m ? m[1] + (m[2] ?? '') : label;
+}

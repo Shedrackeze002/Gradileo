@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkParticles, checkScript, type Explainer, type ParticleBox, type ParticlesEl } from './script.ts';
-import { controlsAt, particlesAt, pressureOf, TEMPS } from './particles.ts';
+import { controlsAt, particlesAt, pressureOf, singular, TEMPS } from './particles.ts';
 import { hydrogenBurning } from './reactions.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
@@ -340,5 +340,13 @@ describe('particles: scripts and timing', () => {
       'Scene 1, line 1: particles "q" shows "gauge" but does not set it up (thermometers, gauge, volume or flow).',
       'Scene 1, line 1: particles "q" has no clip "nope".',
     ]);
+  });
+});
+
+describe('particles: tally labels', () => {
+  it('makes a label singular for a count of one', () => {
+    expect(singular('hydronium ions')).toBe('hydronium ion');
+    expect(singular('units of silver chloride')).toBe('unit of silver chloride');
+    expect(singular('particles inside')).toBe('particle inside');
   });
 });

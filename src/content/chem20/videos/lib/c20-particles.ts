@@ -300,3 +300,93 @@ export const solubleAndNot = (id: string, height = 400): ParticlesEl => ({
   key: true,
   height,
 });
+
+/**
+ * An acid's molecules in water (clip `go`): a molecule that meets a water molecule gives it its
+ * hydrogen, making a hydronium ion and the acid's anion. In a strong acid (`weak` null) every
+ * molecule does so. In a weak one only `weak` of the molecules can ionise at all, and a hydronium
+ * ion that meets an anion gives the hydrogen back, so at any moment at most a few are ionised (a
+ * simulation that let every molecule try would, once one ionised, soon ionise far too many).
+ * The kinds: 0 H in the acid, 1 the rest of the acid, 2 water, 3 the H on a hydronium ion, 4 the
+ * water in it, 5 the anion, 6 the H of a weak acid's molecules that stay whole.
+ */
+const acidSolution = (id: string, label: string, anion: { name: string; tone: Tone; size?: number }, weak: number | null, n = 7): ParticleBox => ({
+  id,
+  state: 'gas',
+  width: 10,
+  height: 9,
+  temp: 0.5,
+  waits: true,
+  kinds: [
+    { n: 0, bond: 0.15, heavy: 0, size: 0.7, tone: 'theta', name: 'hydrogen' },
+    { n: 0, bond: 0.15, heavy: 0, size: anion.size ?? 1.1, tone: anion.tone },
+    { n: 20, bond: 0.15, heavy: 0, tone: 'adj', name: 'water' },
+    { n: 0, bond: 0.15, heavy: 0, size: 0.7, tone: 'theta', name: 'hydrogen' },
+    { n: 0, bond: 0.15, heavy: 0, tone: 'bad', name: 'hydronium ion' },
+    { n: 0, bond: 0.15, heavy: 0, size: anion.size ?? 1.1, tone: anion.tone, name: anion.name },
+    { n: 0, bond: 0.15, heavy: 0, size: 0.7, tone: 'theta', name: 'hydrogen' },
+  ],
+  molecules: weak === null ? [{ atoms: [0, 1], n }] : [{ atoms: [0, 1], n: weak }, { atoms: [6, 1], n: n - weak }],
+  reactions:
+    weak === null
+      ? [{ a: 0, b: 2, free: [5, null], to: [3, 4], join: true }]
+      : [
+          { a: 0, b: 2, free: [5, null], to: [3, 4], join: true, energy: 0.3 },
+          // The way back: an anion takes the hydrogen from a hydronium ion, hitting either part of it.
+          { a: 3, b: 5, free: [2, null], to: [0, 1], join: true },
+          { a: 4, b: 5, free: [0, null], carry: true, to: [2, 1] },
+        ],
+  // Ions of opposite charge attract, so a weak acid's ions soon meet again.
+  ...(weak === null ? {} : { pairs: [{ kinds: [4, 5] as [number, number], bond: 0.6 }, { kinds: [3, 5] as [number, number], bond: 0.6 }] }),
+  tally: { kinds: [4], label: 'hydronium ions' },
+  label,
+});
+
+/**
+ * Seven molecules each of hydrochloric acid and acetic acid in water (clip `go`): every hydrogen
+ * chloride molecule ionises, but only about one acetic acid molecule is ionised at a time.
+ */
+export const strongAndWeak = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    acidSolution('s', 'hydrochloric acid: strong', { name: 'chloride ion', tone: 'good' }, null),
+    acidSolution('w', 'acetic acid: weak', { name: 'acetate ion', tone: 'opp', size: 1.3 }, 1),
+  ],
+  clips: { go: { phases: [{ dur: 1, release: ['s', 'w'] }, { dur: 14 }] } },
+  key: true,
+  seed: 1,
+  height,
+});
+
+/**
+ * A solution diluted (clip `dilute`): water is added, so the lid rises from `from` of the box to the
+ * top and the same solute particles spread through more volume, read under the box from `start`
+ * (in `unit`). The water itself is not drawn.
+ */
+export const diluting = (id: string, v: { start: number; unit: string; from: number; n?: number }, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'd', state: 'gas', width: 10, height: 9, temp: 0.5, lid: v.from, kinds: [{ n: v.n ?? 8, bond: 0.05, heavy: 0, tone: 'theta', name: 'solute particle' }], label: `the same ${v.n ?? 8} solute particles` }],
+  clips: { dilute: { phases: [{ dur: 4, lid: { d: 1 } }, { dur: 3 }] } },
+  volume: { box: 'd', start: v.start, unit: v.unit, decimals: 1 },
+  key: true,
+  height,
+});
+
+/**
+ * Strength is not concentration (clip `go`): a dilute strong acid, with few molecules that all
+ * ionise, beside a concentrated weak acid, with many molecules of which only a few ionise.
+ */
+export const strengthAndConcentration = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    acidSolution('s', 'dilute, strong', { name: 'chloride ion', tone: 'good' }, null, 3),
+    acidSolution('w', 'concentrated, weak', { name: 'acetate ion', tone: 'opp', size: 1.3 }, 2, 12),
+  ],
+  clips: { go: { phases: [{ dur: 1, release: ['s', 'w'] }, { dur: 14 }] } },
+  key: true,
+  seed: 1,
+  height,
+});
