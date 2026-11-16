@@ -1,7 +1,9 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type CircuitEl, type DiagramEl, type El, type Explainer, type MotionEl, type ParticlesEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
+import { BRAND, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type MotionEl, type ParticlesEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
+import { fastest, flightAt } from '../flight.ts';
 import { clipSeconds, type ElState, type FrameState } from '../timeline.ts';
 import { CircuitView } from './Circuit.tsx';
+import { FlightView } from './Flight.tsx';
 import { DiagramView } from './Diagram.tsx';
 import { MotionView } from './Motion.tsx';
 import { ParticlesView } from './Particles.tsx';
@@ -62,6 +64,8 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <ParticlesView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
     case 'circuit':
       return <CircuitView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
+    case 'flight':
+      return <FlightView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'rays':
       return <RaysView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
     case 'wave':
@@ -138,20 +142,38 @@ function aspect(d: DiagramEl) {
   return span(0) / Math.max(span(1), 1e-6);
 }
 
+/**
+ * A flight on a thumbnail: caught part way through its poster clip, with its path, its strobe marks
+ * and the parts of each velocity (on a map, its displacement and the two parts of that), and no
+ * panel or notes. It sits to the right of the logo, and its
+ * arrows are kept short enough to stay inside the picture.
+ */
+function FlightThumb({ el, w, h }: { el: FlightEl; w: number; h: number }) {
+  const plays: Array<[string, number]> = el.poster ? [[el.poster, clipSeconds(el, el.poster) * 0.7]] : [];
+  const clips = Object.fromEntries(Object.entries(el.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }]));
+  const now = flightAt(el, plays);
+  const top = Math.max(1e-6, ...Object.values(now.bodies).map((b) => Math.max(Math.abs(b.vx), Math.abs(b.vy), Math.hypot(b.ownX, b.ownY))));
+  const velocityScale = Math.min(el.velocityScale ?? 150 / Math.max(fastest(el), 1e-6), 100 / top);
+  return <FlightView el={{ ...el, readout: undefined, clips, velocityScale }} st={{ ...FULL, parts: { trail: 1, ...(el.scene === 'map' ? { displacement: 1, legs: 1, angle: 1 } : el.stream ? { strobe: 1, own: 1, velocity: 1 } : { strobe: 1, components: 1 }) } }} w={w} h={h} plays={plays} />;
+}
+
+/** Whether a flight's view is wide and flat (a projectile over level ground) and not tall (a river to cross). */
+const flatFlight = (el: FlightEl) => (el.view[1] - el.view[0]) / (el.view[3] - el.view[2]) > 1.5;
+
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
   const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || fig?.kind === 'motion' || fig?.kind === 'wave';
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || fig?.kind === 'motion' || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig));
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
     <div className="v-stage">
       {wide && (
-        <div style={{ position: 'absolute', left: 60, top: fig.kind === 'motion' || fig.kind === 'wave' ? 300 : 330 }}>
+        <div style={{ position: 'absolute', left: fig.kind === 'flight' ? 330 : 60, top: fig.kind === 'motion' || fig.kind === 'wave' || fig.kind === 'flight' ? 300 : 330 }}>
           {fig.kind === 'motion' ? (
             // A motion is caught part way through its poster clip, with its forces and velocities drawn.
             // A drop takes the full height and width, without its graph, strobe marks or phase notes.
@@ -165,6 +187,8 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
           ) : fig.kind === 'wave' ? (
             // Waves are caught part way through their poster clip, without the ruler or the notes.
             <WaveView el={{ ...fig, ruler: false, lanes: fig.lanes.slice(0, 2), clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }} st={{ ...FULL, parts: {} }} w={1160} h={320} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
+          ) : fig.kind === 'flight' ? (
+            <FlightThumb el={fig} w={890} h={330} />
           ) : (
             <DiagramView el={fig as DiagramEl} st={FULL} w={1160} h={280} />
           )}
@@ -195,6 +219,8 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
           ) : fig.kind === 'circuit' ? (
             // A circuit is shown switched on, with its charges, part way through the poster clip.
             <CircuitView el={{ ...fig, open: false, clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }} st={{ ...FULL, parts: { charges: 1 } }} w={560} h={440} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
+          ) : fig.kind === 'flight' ? (
+            <FlightThumb el={fig} w={520} h={500} />
           ) : fig.kind === 'similar' ? (
             <SimilarView el={fig} st={FULL} w={500} h={480} />
           ) : null}

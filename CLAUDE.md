@@ -18,7 +18,7 @@
 ## Checks before pushing
 - `npm run typecheck`, `npm test`, `npm run build && node scripts/check-backend.mjs`
 - `npx playwright test` (in the cloud container set
-  `CHROMIUM_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome`)
+  `CHROMIUM_PATH=$(ls /opt/pw-browsers/chromium-*/chrome-linux*/chrome | head -1)`)
 - `npm run functions:check` when anything under `engine/` or `supabase/functions/` changes.
 
 ## Curriculum content

@@ -32,6 +32,8 @@ export interface MotionState {
   trace: Record<string, Array<[number, number]>>;
   /** Each body's distance travelled against time so far, as [seconds, metres], for a graph. */
   path: Record<string, Array<[number, number]>>;
+  /** Each body's position along the track against time so far, as [seconds, metres], for a graph. */
+  place: Record<string, Array<[number, number]>>;
   /** How far each body has travelled along the track, in metres: every metre counts, whichever way it went. */
   travelled: Record<string, number>;
   /** Where each body started, then every place it turned round, in metres. */
@@ -174,6 +176,8 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   let trace = fresh();
   const freshPath = (): MotionState['path'] => Object.fromEntries(el.bodies.map((b) => [b.id, [[0, 0] as [number, number]]]));
   let path = freshPath();
+  const freshPlace = (): MotionState['place'] => Object.fromEntries(el.bodies.map((b) => [b.id, [[0, b.x] as [number, number]]]));
+  let place = freshPlace();
   let travelled: Record<string, number> = Object.fromEntries(el.bodies.map((b) => [b.id, 0]));
   let turns: Record<string, number[]> = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
   // The way each body last moved (1 or -1), to notice when it turns round.
@@ -214,6 +218,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
       ages = new Map();
       trace = fresh();
       path = freshPath();
+      place = freshPlace();
       travelled = Object.fromEntries(el.bodies.map((b) => [b.id, 0]));
       turns = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
       heading = {};
@@ -263,6 +268,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
         for (const b of el.bodies) {
           trace[b.id].push([time + done, bodies[b.id].v]);
           path[b.id].push([time + done, travelled[b.id]]);
+          place[b.id].push([time + done, bodies[b.id].x]);
         }
         if (Math.abs(done - next) < EPS) for (const b of el.bodies) marks[b.id].push(bodies[b.id].x);
       }
@@ -288,7 +294,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   const energy: MotionState['energy'] = Object.fromEntries(
     el.bodies.map((b) => [b.id, { kinetic: joules(kineticOf(b, bodies[b.id].v)), potential: joules(potentialOf(b, bodies[b.id].x)), work: joules(spent[b.id].work), heat: Math.max(0, joules(spent[b.id].heat)) }]),
   );
-  return { bodies, forces, time: tidy(time), marks, trace, path, travelled, turns, slow, note, contact, energy };
+  return { bodies, forces, time: tidy(time), marks, trace, path, place, travelled, turns, slow, note, contact, energy };
 }
 
 export interface CollisionOptions {

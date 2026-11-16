@@ -195,6 +195,21 @@ describe('motion: distance and displacement', () => {
     for (let i = 1; i < path.c.length; i++) expect(path.c[i][1]).toBeGreaterThanOrEqual(path.c[i - 1][1]);
   });
 
+  it('keeps a position trace for the graph, which falls as the body comes back', () => {
+    const { place } = motionAt(trip, [['out', 2], ['back', 2]]);
+    expect(place.c[0]).toEqual([0, 1]);
+    const [t, x] = place.c[place.c.length - 1];
+    expect(t).toBeCloseTo(4);
+    expect(x).toBeCloseTo(6);
+    expect(Math.max(...place.c.map(([, at]) => at))).toBeCloseTo(9);
+  });
+
+  it('lets a graph go below zero only for a velocity or a position', () => {
+    expect(checkMotion({ ...trip, graph: { of: ['c'], seconds: 4, max: 10, min: -4, y: 'position' } })).toEqual([]);
+    expect(checkMotion({ ...trip, graph: { of: ['c'], seconds: 4, max: 10, min: 2 } })[0]).toMatch(/below zero/);
+    expect(checkMotion({ ...trip, graph: { of: ['c'], seconds: 4, max: 12, min: -2, y: 'distance' } })[0]).toMatch(/never falls below zero/);
+  });
+
   it('finds where a body turns round under a steady force', () => {
     // Thrown to the right at 4 m/s against a 2 N force on 1 kg: it stops after 2 s, 4 m on, and comes back.
     const thrown = el({ bodies: [{ ...cart, v: 4 }], clips: { go: { phases: [{ dur: 3, forces: [{ on: 'c', name: 'Pull', n: -2 }] }] } } });

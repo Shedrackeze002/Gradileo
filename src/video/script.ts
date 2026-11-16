@@ -313,7 +313,7 @@ export type EnergyBar = 'work' | 'kinetic' | 'potential' | 'heat' | 'total';
  * carries on from where the last one ended. Showing the element shows the tracks and bodies;
  * showing a part adds it: `velocity` (an arrow over each body), `readout` (speed and acceleration
  * under it), `net` (the net force), `bars` (a momentum bar for each body), `total` (a bar for
- * their total momentum), `graph` (a velocity-time or distance-time graph that draws itself as the
+ * their total momentum), `graph` (a velocity-time, distance-time or position-time graph that draws itself as the
  * bodies move), `clock` and `strobe` (a mark at each body's place at equal time steps),
  * `distance` (how far each body has travelled, with its path drawn under a single track),
  * `displacement` (an arrow under a single track from where the body started to where it is now),
@@ -340,10 +340,11 @@ export interface MotionEl {
   momentumTotal?: boolean;
   /**
    * A graph of these bodies against time, above a single track on its right: `seconds` and `max`
-   * are the lengths of its axes. It plots velocity (in metres per second) unless `y` is
-   * `'distance'`, the distance travelled in metres.
+   * are the lengths of its axes, and `min` (below zero) lets the line go under the time axis. It
+   * plots velocity (in metres per second) unless `y` is `'distance'`, the distance travelled in
+   * metres, or `'position'`, where the body is on the track's ruler.
    */
-  graph?: { of: string[]; seconds: number; max: number; y?: 'velocity' | 'distance' };
+  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' };
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
@@ -743,7 +744,120 @@ export interface CircuitEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl;
+/** A body of a flight element: something that moves over a flat picture. */
+export interface FlightBody {
+  id: string;
+  /** A ball (the default), a boat or an aircraft that points the way it is steered, or a plain dot (a walker on a map). */
+  shape?: 'ball' | 'boat' | 'plane' | 'dot';
+  /** A name written beside it. */
+  label?: string;
+  /** Where the name sits: over the body otherwise, or under it while it climbs. */
+  labelAt?: 'above' | 'below' | 'left' | 'right';
+  /** Where it starts, in the element's length unit: [x, y], with y up the screen. */
+  at: [number, number];
+  /**
+   * Its starting velocity, [vx, vy]. For a body carried by the stream this is its own velocity
+   * through the water or the air, and the stream's velocity is added to it. At rest otherwise.
+   * Under gravity, a body with a starting velocity is in flight from the first moment.
+   */
+  v?: [number, number];
+  tone?: Tone;
+}
+
+/** A stretch of a flight clip. */
+export interface FlightPhase {
+  /** How long it lasts, in the element's own time. */
+  dur: number;
+  /** Slow motion: seconds of video for each unit of the element's time (1 by default; 0.5 plays it twice as fast). */
+  slow?: number;
+  /** Hold everything still for `dur` seconds of video, to name the arrows before anything moves. */
+  freeze?: boolean;
+  /** Velocities given as the phase starts, by body id: [vx, vy]. Under gravity this also launches the body. */
+  set?: Record<string, [number, number]>;
+  /** Under gravity: let these bodies go as the phase starts (a ball dropped from rest). */
+  release?: string[];
+  /** Stop these bodies where they are as the phase starts (a boat that has reached the far bank): the stream no longer carries them. */
+  stop?: string[];
+  /** A short note shown over the picture ("Slow motion"). */
+  note?: string;
+}
+
+export interface FlightClip {
+  phases: FlightPhase[];
+  /** Put every body back at its start first, and clear its trail (to play the motion again). */
+  reset?: boolean;
+}
+
+/** What a flight element can show over its bodies; each is a part ("f.components"). */
+export const FLIGHT_PARTS = ['velocity', 'components', 'own', 'trail', 'strobe', 'shadows', 'displacement', 'legs', 'angle', 'readout', 'clock'] as const;
+
+/**
+ * Motion in two dimensions, for the physics videos (src/video/flight.ts): a projectile, a boat
+ * crossing a river, an aircraft in a wind, or a walk drawn on a map. The picture is to scale, so
+ * every angle on screen is the true one. With `gravity`, a body in flight accelerates downwards
+ * and stops where it lands on the ground (y = 0). With a `stream`, the bodies it carries move
+ * with their own velocity plus the stream's. Showing the element shows the scene and the bodies;
+ * showing a part adds it: `velocity` (an arrow on each body for its velocity over the ground),
+ * `components` (the horizontal and vertical parts of that velocity, as two arrows that change on
+ * their own), `own` (with a stream: the body's own velocity and the stream's, drawn head to tail
+ * so that the velocity arrow closes the triangle), `trail` (the path so far), `strobe` (a mark
+ * where each body was at equal time steps), `shadows` (a mark on the ground under the body and
+ * one on the left wall beside it, with their own strobe marks: the two motions taken apart),
+ * `displacement` (an arrow from where the body started to where it is), `legs` (the two parts of
+ * that displacement, dashed: along x and then along y, or for a body in a stream its own motion
+ * and then how far the stream has carried it), `angle` (the angle of the displacement, or of the
+ * velocity when no displacement is shown, measured from the x direction; for a body in a stream,
+ * the angle between the way it points and the way it travels), `readout` (a panel of the numbers
+ * for the arrows shown) and `clock`. Emphasising a body's id makes it glow.
+ */
+export interface FlightEl {
+  kind: 'flight';
+  id: string;
+  /** The region shown, in the length unit: [left, right, bottom, top]. */
+  view: [number, number, number, number];
+  bodies: FlightBody[];
+  clips: Record<string, FlightClip>;
+  /** `ground` (the default): a ground line at y = 0 with a ruler. `river`: water between two banks. `map`: a grid with a compass. */
+  scene?: 'ground' | 'river' | 'map';
+  /** The acceleration due to gravity, in length units per time unit squared, pulling bodies in flight down (none otherwise). */
+  gravity?: number;
+  /** A ledge to launch from: a block from the left edge of the view to this x, with its top at this y. */
+  ledge?: [number, number];
+  /**
+   * A current or a wind: every body listed in `of` (all of them otherwise) is carried at this
+   * velocity as well as its own. On a river the water lies between the two y values of `band`
+   * (the whole view otherwise), and marks drift with it so that the current is seen. `name` is
+   * what the readout calls it ("Current" on a river and "Wind" otherwise).
+   */
+  stream?: { v: [number, number]; band?: [number, number]; of?: string[]; name?: string };
+  /** The units written on the picture: metres and seconds otherwise. */
+  units?: { length?: string; time?: string };
+  /** The gap between ruler or grid marks, in the length unit (chosen to suit the view otherwise). A river has a ruler along its banks only when this is given. */
+  tick?: number;
+  /** Pixels of arrow for each unit of velocity (chosen so the fastest starting velocity is about 150 pixels otherwise). */
+  velocityScale?: number;
+  /** Time between strobe marks (0.5 by default). */
+  strobe?: number;
+  /** Pixels kept clear under the picture, for arrows that point down from a body near the ground. */
+  below?: number;
+  /**
+   * The names of the two directions in the readout: "Horizontal" and "Vertical" otherwise ("East"
+   * and "North" on a map). With a stream they name the two legs of the displacement instead: the
+   * body's own motion and the drift ("Across the river" and "Downstream").
+   */
+  axes?: [string, string];
+  /**
+   * Give this when a line shows `readout`: it keeps a column beside the picture for the panel of
+   * numbers. `of` is the body the panel describes (the first otherwise), and `side` the side of
+   * the picture the column is on (right otherwise).
+   */
+  readout?: { of?: string; side?: 'left' | 'right' };
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -861,6 +975,8 @@ export function checkMotion(e: MotionEl): string[] {
   }
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
   for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
+  if (e.graph?.min !== undefined && !(e.graph.min < 0)) problems.push('the lowest value of the graph must be below zero (leave it out otherwise).');
+  if (e.graph?.min !== undefined && e.graph.y === 'distance') problems.push('a distance never falls below zero: leave out the lowest value of the graph.');
   for (const id of e.energy?.of ?? []) if (!ids.has(id)) problems.push(`the energy bars name no body "${id}".`);
   for (const id of Object.keys(e.energy?.labels ?? {})) if (!ids.has(id)) problems.push(`the energy bars label no body "${id}".`);
   if (e.energy && !(e.energy.max > 0)) problems.push('the energy bars need a largest energy above zero.');
@@ -911,6 +1027,41 @@ export function checkCircuit(e: CircuitEl): string[] {
       }
       for (const id of ph.set?.broken ?? []) if (!ids.has(id)) problems.push(`clip "${name}" breaks "${id}", which is not a component.`);
     }
+  }
+  return problems;
+}
+
+/** Problems with a flight element: a view with no size, bodies outside it, clips that name no body. */
+export function checkFlight(e: FlightEl): string[] {
+  const problems: string[] = [];
+  const [x0, x1, y0, y1] = e.view;
+  if (!(x1 > x0 && y1 > y0)) problems.push('the view needs its right above its left, and its top above its bottom.');
+  const ids = new Set(e.bodies.map((b) => b.id));
+  if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
+  if (!e.bodies.length) problems.push('it needs a body.');
+  for (const b of e.bodies) {
+    if ((FLIGHT_PARTS as readonly string[]).includes(b.id)) problems.push(`body id "${b.id}" is the name of a part.`);
+    if (b.at[0] < x0 || b.at[0] > x1 || b.at[1] < y0 || b.at[1] > y1) problems.push(`body "${b.id}" starts outside the view.`);
+    if (e.gravity && b.at[1] < 0) problems.push(`body "${b.id}" starts below the ground.`);
+  }
+  if (e.gravity !== undefined && !(e.gravity > 0)) problems.push('gravity must be above zero.');
+  if (e.gravity && (e.scene ?? 'ground') !== 'ground') problems.push('gravity needs the ground scene.');
+  if (e.ledge && (e.scene ?? 'ground') !== 'ground') problems.push('a ledge needs the ground scene.');
+  if (e.stream) {
+    for (const id of e.stream.of ?? []) if (!ids.has(id)) problems.push(`the stream carries no body "${id}".`);
+    if (e.stream.band && !(e.stream.band[1] > e.stream.band[0])) problems.push('the stream needs its far bank above its near bank.');
+  }
+  if (e.readout?.of && !ids.has(e.readout.of)) problems.push(`the readout names no body "${e.readout.of}".`);
+  if (e.strobe !== undefined && !(e.strobe > 0)) problems.push('the strobe step must be above zero.');
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
+      for (const id of [...Object.keys(ph.set ?? {}), ...(ph.release ?? []), ...(ph.stop ?? [])]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      if (ph.release?.length && !e.gravity) problems.push(`${where} lets a body go, but there is no gravity.`);
+    });
   }
   return problems;
 }
@@ -1017,7 +1168,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -1041,6 +1192,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...CIRCUIT_PARTS, ...e.parts.map((part) => part.id)]));
         motions.set(e.id, e);
         problems.push(...checkCircuit(e).map((p) => `Scene ${si + 1}: circuit "${e.id}": ${p}`));
+      }
+      if (e.kind === 'flight') {
+        diagrams.set(e.id, new Set<string>([...FLIGHT_PARTS, ...e.bodies.map((b) => b.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkFlight(e).map((p) => `Scene ${si + 1}: flight "${e.id}": ${p}`));
       }
       if (e.kind === 'rays') {
         diagrams.set(e.id, new Set<string>(RAYS_PARTS));

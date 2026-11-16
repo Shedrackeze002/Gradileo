@@ -45,25 +45,30 @@ interface Box {
 /** A cart's bumper at each end, in metres: it squeezes when carts touch. */
 const BUMPER = 0.12;
 
-/** A graph against time that draws itself as the bodies move: their velocity, or the distance travelled. */
+/** A graph against time that draws itself as the bodies move: their velocity, the distance travelled, or their position on the track. */
 function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionState; opacity: number; box: [gx0: number, gy0: number, gx1: number, gy1: number]; tone: (b: MotionBody) => string }) {
   if (!el.graph) return null;
   const [gx0, gy0, gx1, gy1] = box;
-  const far = el.graph.y === 'distance';
-  const series = far ? state.path : state.trace;
+  const what = el.graph.y ?? 'velocity';
+  const far = what !== 'velocity';
+  const series = what === 'distance' ? state.path : what === 'position' ? state.place : state.trace;
   const { seconds, max } = el.graph;
+  const min = Math.min(0, el.graph.min ?? 0);
   const gx = (t: number) => gx0 + (Math.min(t, seconds) / seconds) * (gx1 - gx0);
-  const gy = (v: number) => gy1 - (Math.max(0, Math.min(v, max)) / max) * (gy1 - gy0);
-  const vStep = far || max > 12 ? axisStep(max) : max > 6 ? 2 : 1;
+  const gy = (v: number) => gy1 - ((Math.max(min, Math.min(v, max)) - min) / (max - min)) * (gy1 - gy0);
+  const range = max - min;
+  const vStep = far || range > 12 ? axisStep(range) : range > 6 ? 2 : 1;
   const tStep = seconds > 12 ? axisStep(seconds) : 1;
+  const values: number[] = [];
+  for (let v = Math.ceil(min / vStep - 1e-9) * vStep; v <= max + 1e-9; v += vStep) values.push(Math.round(v * 1e6) / 1e6 + 0);
   return (
     <g opacity={opacity}>
       <rect x={gx0 - 64} y={gy0 - 30} width={gx1 - gx0 + 98} height={gy1 - gy0 + 82} rx={16} fill="rgb(255 255 255 / 0.045)" stroke="rgb(255 255 255 / 0.1)" />
-      {Array.from({ length: Math.floor(max / vStep) + 1 }, (_, i) => i * vStep).map((v) => (
+      {values.map((v) => (
         <g key={`gv${v}`}>
           <line x1={gx0} y1={gy(v)} x2={gx1} y2={gy(v)} stroke={INK3} strokeWidth={1} opacity={v === 0 ? 0 : 0.28} />
           <text x={gx0 - 10} y={gy(v)} fill={INK3} fontSize={15} textAnchor="end" dominantBaseline="central" style={{ fontFamily: FONT }}>
-            {v}
+            {String(v).replace('-', '−')}
           </text>
         </g>
       ))}
@@ -76,9 +81,11 @@ function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionS
         </g>
       ))}
       <line x1={gx0} y1={gy0 - 8} x2={gx0} y2={gy1} stroke={INK2} strokeWidth={2} />
-      <line x1={gx0} y1={gy1} x2={gx1 + 8} y2={gy1} stroke={INK2} strokeWidth={2} />
+      {/* The time axis is the line of zero; its numbers stay along the bottom of the graph. */}
+      <line x1={gx0} y1={gy(0)} x2={gx1 + 8} y2={gy(0)} stroke={INK2} strokeWidth={2} />
+      {min < 0 && <line x1={gx0} y1={gy1} x2={gx1} y2={gy1} stroke={INK3} strokeWidth={1} opacity={0.28} />}
       <text x={gx0 - 46} y={(gy0 + gy1) / 2} fill={far ? INK : VELOCITY} fontSize={16} fontWeight={600} textAnchor="middle" transform={`rotate(-90 ${gx0 - 46} ${(gy0 + gy1) / 2})`} style={{ fontFamily: FONT }}>
-        {far ? 'distance (m)' : el.speedWord ? 'speed (m/s)' : 'velocity (m/s)'}
+        {what === 'distance' ? 'distance (m)' : what === 'position' ? 'position (m)' : el.speedWord ? 'speed (m/s)' : 'velocity (m/s)'}
       </text>
       <text x={(gx0 + gx1) / 2} y={gy1 + 40} fill={INK2} fontSize={16} fontWeight={600} textAnchor="middle" style={{ fontFamily: FONT }}>
         time (s)
@@ -90,7 +97,7 @@ function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionS
         const c = el.graph!.of.length > 1 ? tone(b) : far ? TONES.theta : VELOCITY;
         return (
           <g key={id}>
-            {!far && <polygon points={`${gx(0)},${gy1} ${pts.map(([t, v]) => `${gx(t)},${gy(v)}`).join(' ')} ${gx(last[0])},${gy1}`} fill={c} opacity={0.12} />}
+            {!far && <polygon points={`${gx(0)},${gy(0)} ${pts.map(([t, v]) => `${gx(t)},${gy(v)}`).join(' ')} ${gx(last[0])},${gy(0)}`} fill={c} opacity={0.12} />}
             <polyline points={pts.map(([t, v]) => `${gx(t)},${gy(v)}`).join(' ')} fill="none" stroke={c} strokeWidth={4} strokeLinejoin="round" strokeLinecap="round" style={{ filter: `drop-shadow(0 0 6px ${c}88)` }} />
             <circle cx={gx(last[0])} cy={gy(last[1])} r={7} fill={c} stroke="#0d0c24" strokeWidth={2} />
           </g>

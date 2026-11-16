@@ -9,7 +9,8 @@ changes**.
 **Progress.** Grade 10 Physics is built (14 November 2026): all five units, 27 lessons and 54
 skills, and Physics is a subject in the app. Grade 11 Physics is built and listed too (15 November
 2026): four units, 30 lessons and 60 skills, recommended from Grade 11 with a placement check on
-Grade 10 Physics. Next come the videos of Grade 11, then Grade 12.
+Grade 10 Physics. The videos of Grade 11 are being made, Unit 1 (Kinematics) first, and Grade 12
+follows.
 
 ## Shape
 
