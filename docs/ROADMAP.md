@@ -1220,16 +1220,73 @@ items ship or decisions change.
        travelled drawn leg by leg, a displacement arrow, a distance-time graph, and "speed ="
        for videos that come before velocity is taught. `phys-10` is in the uploader's
        `MADE_FOR_KIDS` list; the YouTube upload task still has to be given the course.
-     - Written (14 November 2026), not yet rendered: **the seven videos of Unit 2, Forces and
-       Newton's Laws** (`p10-2-1` to `p10-2-6`, with lesson 2.5 in two parts). The sample
+     - Done (14 November 2026): **the seven videos of Unit 2, Forces and
+       Newton's Laws** (`p10-2-1` to `p10-2-6`, with lesson 2.5 in two parts), rendered and in
+       Drive. The sample
        `phys-sample-forces` is now the video of lesson 2.3 (`p10-2-3`). The engine gained a drop
        (`vertical`) and air resistance (`drag`), so a skydiver reaches terminal velocity, a
        parachute opens, and a hammer and a feather fall on Earth and on the Moon.
-     - Next: render Unit 2; then the videos of Units 3 to 5, each unit's animation built first
-       (energy bars with a ramp and a pendulum, waves, rays, circuits). `phys-sample-momentum`
-       becomes the first video of Grade 12 Unit A and stays off YouTube until then. Then Grade 11
-       Physics (`phys-20`) and Grade 12 Physics (`phys-30`); the lessons have no tutor recordings
-       yet.
+     - Done (14 November 2026): **the six videos of Unit 3, Work, Energy
+       and Power** (`p10-3-1` to `p10-3-6`), rendered and in Drive. The engine gained energy bars measured from the
+       motion (work, kinetic, potential, heat and the total), a lift (`vertical: 'up'`) and
+       curved tracks (`path`: a hill through points, a ramp or a pendulum), so a roller coaster
+       trades height for speed, a car on a rough track ends with all its energy as heat, two
+       motors do the same work in different times, and a motor's efficiency is read off its bars.
+     - Scripts done (14 November 2026): **Unit 4, Waves, Sound and Light** (`p10-4-1` to
+       `p10-4-5`). The engine has a `wave` element (a rope and a tube of particles, drawn from one
+       rule: each place does what the source did a little earlier) and a `rays` element (a ray at
+       a mirror or a boundary, with the normal, the angles and marching wavefronts).
+     - Scripts done (14 November 2026): **Unit 5, Electricity** (`p10-5-1` to `p10-5-5`). The
+       engine has a `circuit` element: a battery, a switch, lamps and resistors in series or in
+       parallel, solved from the supply voltage and the resistances, with charges that move with
+       the current and split at a junction, lamps that glow with their power, ammeters,
+       voltmeters, and counters of charge and energy.
+     - A fault found and fixed (14 November 2026): videos rendered in a second working copy whose
+       `node_modules` is a link were drawn in the browser's own fonts, because the page server
+       refused the font files. That was Units 2 and 3 (in Drive, none on YouTube) and the first
+       render of Unit 4. `video/build.ts` now serves the linked folder and fails when the stage
+       cannot load a file. In progress: Units 2, 3 and 4 are being rendered again and replaced in
+       Drive.
+     - Started (14 November 2026): **Grade 11 Physics** (`phys-20`, `engine/curriculum/phys20/`,
+       `src/content/phys20/`), a draft course until its four units are written. Unit 1,
+       Kinematics, is done: eight lessons (`p20-1-1` to `p20-1-8`) and 16 skills, with
+       $g = 9.81\ \text{m/s}^2$ stated in every question that needs it. Unit 2, Dynamics, is
+       done too: eight lessons (`p20-2-1` to `p20-2-8`) and 16 skills on free-body diagrams,
+       Newton's laws, friction, inclined planes, connected objects, forces in two dimensions,
+       universal gravitation and field strength; $G$ and the masses and radii of planets are
+       stated in each question, and answers in scientific notation are accepted as typed
+       (`6.53e3`). Unit 3, Circular Motion, Work and Energy, is done as well: seven lessons
+       (`p20-3-1` to `p20-3-7`) and 14 skills on uniform circular motion, centripetal force,
+       orbits and Kepler's third law, work and force-displacement graphs, kinetic, gravitational
+       and elastic energy, the conservation of mechanical energy, power and efficiency. Unit 4,
+       Oscillations and Waves, completes the course (15 November 2026): seven lessons
+       (`p20-4-1` to `p20-4-7`) and 14 skills on simple harmonic motion and its restoring force,
+       the period and energy of a mass on a spring, the pendulum and measuring $g$ with it, wave
+       properties and the universal wave equation, reflection and echoes, superposition and
+       interference, standing waves on a string, resonance in an air column, and the Doppler
+       effect; the speed of sound is stated in each question that needs it. The course has 30
+       lessons and 60 skills. It is **listed** (15 November 2026): it has its place in the
+       course lists, sign-up recommends it from Grade 11 with a placement check on Grade 10
+       Physics (Grade 10 Physics stays the choice to Grade 10 and for anyone new to physics), and
+       its lessons are filed under the physics topics, with three new ones (vectors and
+       projectiles, gravitation and circular motion, oscillations). The placement note now gives
+       the true number of questions in a check. Next for it: its videos.
+     - Done (15 November 2026): Units 2, 3 and 4 of Grade 10 Physics were rendered again with the
+       right fonts and replaced in Google Drive.
+     - Done (15 November 2026): **the five videos of Unit 5, Electricity** (`p10-5-1` to
+       `p10-5-5`), rendered and in Drive. Grade 10 Physics now has a video for every lesson: 28
+       videos in five units.
+     - Grade 11 videos, Unit 1 (15 November 2026): ten videos scripted for the eight Kinematics
+       lessons (relative velocity and projectile motion have two parts each). A new `flight`
+       element (`src/video/flight.ts`) draws motion in two dimensions to scale: a projectile with
+       its horizontal and vertical velocity arrows changing on their own, a boat carried by a
+       current with the velocity triangle drawn head to tail, and displacements on a map with
+       their east and north parts. The graph of a `motion` element can now plot position and go
+       below zero, for a cart that turns round.
+     - Next: render Unit 1 and move it to Drive, then the videos of Units 2 to 4, then Grade 12
+       Physics (`phys-30`).
+       `phys-sample-momentum` becomes the first video of Grade 12 Unit A and stays off YouTube
+       until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

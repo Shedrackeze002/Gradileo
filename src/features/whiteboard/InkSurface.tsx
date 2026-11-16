@@ -20,6 +20,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { drawBackground, drawStroke, drawStrokes, hitStroke, pointerPressure, shapeStroke, StrokeBuilder, type BoardBackground, type InkColor, type ShapeKind, type Stroke } from '@/lib/ink.ts';
 import { cn } from '@/lib/cn.ts';
+import { inkLog, pointerNote } from './inkLog.ts';
 import { useInkTheme } from './useInkTheme.ts';
 
 export type InkMode = 'pen' | 'highlighter' | 'eraser' | 'shape' | 'pointer';
@@ -90,6 +91,11 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
   }, []);
 
   const scale = dims.w > 0 ? dims.w / unitsWide : 1;
+  useEffect(() => {
+    if (dims.w) inkLog('surface', { label, w: dims.w, h: dims.h });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dims]);
+  useEffect(() => () => inkLog('surface closed', { label }), [label]);
 
   const prepare = (c: HTMLCanvasElement | null) => {
     if (!c || dims.w === 0) return null;
@@ -245,6 +251,7 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
     }
     lockSelection(false);
     const { strokes: now, onCommit: commitFn } = latest.current;
+    inkLog(a.erasing ? 'erase end' : 'stroke end', { by: a.type, id: a.id, keep: commit, cancelled: wasCancelled || undefined, points: pts ? pts.length / 3 : undefined, erased: a.erasing ? erased.current.size : undefined, had: now.length });
     if (a.erasing) {
       const gone = erased.current;
       erased.current = new Set();
@@ -271,16 +278,18 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
     const l = latest.current;
     if (l.mode === 'pointer') {
       e.preventDefault();
+      inkLog('down in pointer mode', pointerNote(e));
       pointAt(e);
       return;
     }
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     if (e.pointerType === 'pen') l.onPen?.();
     if (e.pointerType === 'touch') {
-      if (l.penOnly || cur.current) return;
-      if (e.width > 0 && e.height > 0 && e.width * e.height > PALM_AREA) return;
+      const why = l.penOnly ? 'pen only' : cur.current ? 'a stroke is under way' : e.width > 0 && e.height > 0 && e.width * e.height > PALM_AREA ? 'a palm' : '';
+      if (why) return inkLog('touch ignored', { ...pointerNote(e), why });
     }
     if (cur.current) {
+      inkLog('down during a stroke', { ...pointerNote(e), stroke: `${cur.current.type}#${cur.current.id}` });
       // A pen landing while a resting hand is drawing: drop the hand's stroke and follow the pen.
       if (e.pointerType === 'pen' && cur.current.type === 'touch') finish(false);
       // A pen or mouse has one tip, so a new press means the last stroke's pointerup was lost.
@@ -294,6 +303,7 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
   /** Starts a stroke (or an erase, or a shape) under a pointer that is touching the surface. */
   const begin = (e: ReactPointerEvent<HTMLCanvasElement>) => {
     const l = latest.current;
+    inkLog('stroke start', { ...pointerNote(e), on: e.type, mode: l.mode, penOnly: l.penOnly });
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
     } catch {
@@ -365,6 +375,7 @@ export function InkSurface({ strokes, onCommit, mode, shape = 'rectangle', color
   };
 
   const onUp = (e: ReactPointerEvent<HTMLCanvasElement>) => {
+    if (e.type !== 'pointerup') inkLog(e.type, pointerNote(e));
     if (cur.current?.id === e.pointerId) finish(true, e.type === 'pointercancel');
   };
 

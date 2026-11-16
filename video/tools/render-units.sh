@@ -13,7 +13,8 @@
 set -u
 deadline=$(( $(date +%s) + ${RENDER_MINUTES:-100000} * 60 - 8 * 60 ))
 cd "$(dirname "$0")/../.."
-export CHROMIUM_PATH=${CHROMIUM_PATH:-/opt/pw-browsers/chromium-1194/chrome-linux/chrome}
+# The cloud container's Chromium moves to a new folder when its image is updated, so find it.
+export CHROMIUM_PATH=${CHROMIUM_PATH:-$(ls /opt/pw-browsers/chromium-*/chrome-linux*/chrome 2>/dev/null | head -1)}
 export NODE_USE_ENV_PROXY=1
 dir=${1:?usage: render-units.sh <course dir> <unit id>...}; shift
 for unit in "$@"; do

@@ -385,7 +385,7 @@ function CourseChoice({ rec, curriculum, courseId, onPick, onBack, onCheck, onSt
             <p className="flex gap-3 text-[15px] text-ink-2">
               <ClipboardCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
               <span>
-                A short placement check (6 questions on {getCourse(prerequisite)?.shortTitle} skills) shows whether you are ready for {course?.shortTitle} and which skills to review first. It is optional and is not graded.
+                A short placement check ({placementSkills(prerequisite).length} questions on {getCourse(prerequisite)?.shortTitle} skills) shows whether you are ready for {course?.shortTitle} and which skills to review first. It is optional and is not graded.
               </span>
             </p>
           ) : (
