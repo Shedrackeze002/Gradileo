@@ -1,53 +1,8 @@
 import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { arrow, bracket, tag } from './lib/c10-3-figures.ts';
+import { nobleGases, oneIon } from './lib/c10-atoms.ts';
 
-/** A Bohr diagram with room for its nucleus label ("11p⁺"). */
-const shells = (name: string, at: [number, number], protons: number, list: number[]) => atomShells({ name, at, nucleus: `${protons}\\text{p}^{+}`, shells: list, r: 1.7, gap: 1 });
-const twoLines = (a: string, b: string) => `\\begin{gathered}\\text{${a}}\\\\[-2pt] \\text{${b}}\\end{gathered}`;
-
-// The noble gases helium, neon and argon, each with a full outer shell.
-const noble = figure(
-  'ng',
-  [
-    shells('he', [0, 0], 2, [2]),
-    shells('ne', [8.5, 0], 10, [2, 8]),
-    shells('ar', [19, 0], 18, [2, 8, 8]),
-    tag('he-name', [0, -5.6], '\\text{helium: 2}'),
-    tag('ne-name', [8.5, -5.6], '\\text{neon: 2,8}'),
-    tag('ar-name', [19, -5.6], '\\text{argon: 2,8,8}'),
-  ],
-  420,
-);
-
-// A sodium atom (2,8,1) loses its outer electron and becomes a sodium ion (2,8).
-const sodium = figure(
-  'na',
-  [
-    shells('atom', [0, 0], 11, [2, 8, 1]),
-    arrow('move', [5.5, 0], [12.4, 0], { label: twoLines('loses', '1 electron') }),
-    shells('ion', [17.5, 0], 11, [2, 8]),
-    bracket({ name: 'ion', c: [17.5, 0], half: [4.1, 4.1], charge: '+' }),
-    tag('atom-name', [0, -5.6], '\\text{sodium atom: 2,8,1}'),
-    tag('ion-name', [17.5, -5.6], '\\text{sodium ion: 2,8}'),
-  ],
-  430,
-);
-
-// A chlorine atom (2,8,7) gains an electron and becomes a chloride ion (2,8,8).
-const chlorine = figure(
-  'cl',
-  [
-    shells('atom', [0, 0], 17, [2, 8, 7]),
-    arrow('move', [5.5, 0], [11.6, 0], { label: twoLines('gains', '1 electron') }),
-    shells('ion', [17.5, 0], 17, [2, 8, 8]),
-    bracket({ name: 'ion', c: [17.5, 0], half: [5.2, 5.2], charge: '-' }),
-    tag('atom-name', [0, -6.3], '\\text{chlorine atom: 2,8,7}'),
-    tag('ion-name', [17.5, -6.3], '\\text{chloride ion: 2,8,8}'),
-  ],
-  430,
-);
+const sodium = oneIon('na', { symbol: 'Na', protons: 11, name: 'sodium' }, 1, 340);
+const chlorine = oneIon('cl', { symbol: 'Cl', protons: 17, name: 'chlorine' }, -1, 340);
 
 const video: Explainer = {
   id: 'c10-3-1',
@@ -69,11 +24,11 @@ const video: Explainer = {
     {
       chapter: 'Full outer shells',
       layout: 'center',
-      main: [noble, { kind: 'text', id: 'rule', size: 'md', align: 'center', md: 'Shells hold up to **2** electrons, then **8**, then **8**.' }],
+      main: [nobleGases('ng', 360), { kind: 'text', id: 'rule', size: 'md', align: 'center', md: 'Shells hold up to **2** electrons, then **8**, then **8**.' }],
       lines: [
         { say: 'An atom has no overall charge: its positive protons and negative electrons are equal in number. The electrons sit in shells, up to two in the first, then eight, then eight.', show: 'rule' },
-        { say: 'The noble gases, in group eighteen, hardly react at all. Helium has two electrons, neon has two, eight, and argon has two, eight, eight.', show: ['ng.he-nucleus', 'ng.he-shell-1', 'ng.he-name', 'ng.ne-nucleus', 'ng.ne-shell-1', 'ng.ne-shell-2', 'ng.ne-name', 'ng.ar-nucleus', 'ng.ar-shell-1', 'ng.ar-shell-2', 'ng.ar-shell-3', 'ng.ar-name'] },
-        { say: 'Each one has a full outer shell, a very stable arrangement. Atoms of many other elements reach one by gaining or losing electrons.', focus: ['ng.he-shell-1', 'ng.ne-shell-2', 'ng.ar-shell-3'] },
+        { say: 'The noble gases, in group eighteen, hardly react at all. Helium has two electrons, neon has two, eight, and argon has two, eight, eight.', show: ['ng', 'ng.labels', 'ng.arrangement'] },
+        { say: 'Each one has a full outer shell, a very stable arrangement. Atoms of many other elements reach one by gaining or losing electrons.', focus: ['ng.he', 'ng.ne', 'ng.ar'] },
       ],
     },
     {
@@ -81,11 +36,11 @@ const video: Explainer = {
       layout: 'center',
       main: [sodium, { kind: 'math', id: 'm', size: 'md', lines: ['11\\text{ protons}, \\ 10\\text{ electrons} \\;\\Rightarrow\\; \\text{charge } 1{+}', '\\text{the sodium ion: } \\ce{Na+}'] }],
       lines: [
-        { say: 'A sodium atom has eleven protons, and eleven electrons arranged two, eight, one.', show: ['na.atom-nucleus', 'na.atom-shell-1', 'na.atom-shell-2', 'na.atom-shell-3', 'na.atom-name'] },
-        { say: 'To reach a full outer shell, it could gain seven electrons, or lose one. Losing one is far easier.', show: 'na.move', focus: ['na.atom-shell-3', 'na.move'] },
-        { say: 'That leaves two, eight: a full outer shell, like neon.', show: ['na.ion-nucleus', 'na.ion-shell-1', 'na.ion-shell-2', 'na.ion-name'], focus: 'na.ion-shell-2' },
-        { say: 'The nucleus has not changed: there are still eleven protons, but only ten electrons. One more positive charge than negative gives a charge of one plus.', show: 'm.0', focus: ['na.ion-nucleus', 'm.0'] },
-        { say: 'The sodium atom has become a sodium ion. We draw it in square brackets with its charge, and write it N A plus.', caption: 'The sodium atom has become a sodium ion. We draw it in square brackets with its charge, and write it Na⁺.', show: ['na.ion-bracket', 'm.1'], focus: ['na.ion-bracket', 'm.1'] },
+        { say: 'A sodium atom has eleven protons, and eleven electrons arranged two, eight, one.', show: ['na', 'na.labels', 'na.arrangement'] },
+        { say: 'To reach a full outer shell, it could gain seven electrons, or lose one. Losing one is far easier.', focus: 'na.a' },
+        { say: 'Watch the outer electron leave. That leaves two, eight: a full outer shell, like neon.', play: 'na.ion' },
+        { say: 'The nucleus has not changed: there are still eleven protons, but only ten electrons. One more positive charge than negative gives a charge of one plus.', show: ['m.0', 'na.charges'], focus: 'm.0' },
+        { say: 'The sodium atom has become a sodium ion. We write it N A plus.', caption: 'The sodium atom has become a sodium ion. We write it Na⁺.', show: 'm.1', focus: 'm.1' },
       ],
     },
     {
@@ -93,11 +48,11 @@ const video: Explainer = {
       layout: 'center',
       main: [chlorine, { kind: 'math', id: 'm', size: 'md', lines: ['17\\text{ protons}, \\ 18\\text{ electrons} \\;\\Rightarrow\\; \\text{charge } 1{-}', '\\text{the chloride ion: } \\ce{Cl-}'] }],
       lines: [
-        { say: 'A chlorine atom has seventeen protons, and seventeen electrons arranged two, eight, seven.', show: ['cl.atom-nucleus', 'cl.atom-shell-1', 'cl.atom-shell-2', 'cl.atom-shell-3', 'cl.atom-name'] },
-        { say: 'It could lose seven electrons, or gain one. It takes the shorter route, and gains one.', show: 'cl.move', focus: ['cl.atom-shell-3', 'cl.move'] },
-        { say: 'Now it has two, eight, eight, like argon.', show: ['cl.ion-nucleus', 'cl.ion-shell-1', 'cl.ion-shell-2', 'cl.ion-shell-3', 'cl.ion-name'], focus: 'cl.ion-shell-3' },
-        { say: 'Seventeen protons and eighteen electrons give one more negative charge than positive: a charge of one minus.', show: 'm.0', focus: 'm.0' },
-        { say: 'This is the chloride ion, C L minus. Notice its name, chloride. Part three explains why.', caption: 'This is the chloride ion, Cl⁻. Notice its name, chloride. Part three explains why.', show: ['cl.ion-bracket', 'm.1'], focus: ['cl.ion-bracket', 'm.1'] },
+        { say: 'A chlorine atom has seventeen protons, and seventeen electrons arranged two, eight, seven.', show: ['cl', 'cl.labels', 'cl.arrangement'] },
+        { say: 'It could lose seven electrons, or gain one. It takes the shorter route, and gains one. Watch it arrive.', play: 'cl.ion' },
+        { say: 'Now it has two, eight, eight, like argon.', focus: 'cl.a' },
+        { say: 'Seventeen protons and eighteen electrons give one more negative charge than positive: a charge of one minus.', show: ['m.0', 'cl.charges'], focus: 'm.0' },
+        { say: 'This is the chloride ion, C L minus. Notice its name, chloride. Part three explains why.', caption: 'This is the chloride ion, Cl⁻. Notice its name, chloride. Part three explains why.', show: 'm.1', focus: 'm.1' },
       ],
     },
     {
