@@ -614,6 +614,25 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
         taken.add(order[i]);
       }
     }
+    // An ionic lattice: each lump particle in turn takes the kind its placed neighbours have
+    // fewer of, so the two kinds alternate through the lump, half and half.
+    if (b.lumpMix !== undefined) {
+      const mix = b.lumpMix;
+      const lumped = Array.from({ length: n }, (_, i) => i).filter((i) => s.kind[i] === 0).sort((a, c) => s.y[a] - s.y[c] || s.x[a] - s.x[c]);
+      const placed: number[] = [];
+      let made = 0;
+      for (const i of lumped) {
+        let same = 0;
+        let other = 0;
+        for (const j of placed) if (Math.hypot(s.x[i] - s.x[j], s.y[i] - s.y[j]) < 1.3) s.kind[j] === 0 ? same++ : other++;
+        const half = made * 2 < placed.length;
+        if (same > other || (same === other && half)) {
+          s.kind[i] = mix;
+          made++;
+        }
+        placed.push(i);
+      }
+    }
   } else if (!b.apart && kinds.length > 1 && !units) {
     for (let i = n - 1; i > 0; i--) {
       const j = Math.floor(rnd() * (i + 1));

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { tester } from './lib/c20-3a-figures.ts';
+import { saltAndSugar } from './lib/c20-particles.ts';
 
 // The same tester in salt water (ions that move: the bulb lights) and in sugar water (whole
 // molecules: the bulb stays dark).
@@ -56,6 +57,16 @@ const video: Explainer = {
         { say: 'In sugar water, the bulb stays dark: there are no ions to carry the charge. Pure water conducts so poorly that the bulb stays dark in it, so any glow must come from the solute.', show: ['t.sugar-glass', 't.sugar-liquid', 't.sugar-circuit', 't.sugar-label', 't.sugar-mol'], focus: 't' },
         { say: 'So a substance whose solution conducts is an electrolyte: its solution contains ions that can move.', show: 'el' },
         { say: 'A non-electrolyte forms a solution with no ions, which does not conduct.', show: 'non' },
+      ],
+    },
+    {
+      chapter: 'Ions or molecules',
+      layout: 'center',
+      main: [saltAndSugar('ss', 400)],
+      lines: [
+        { say: 'Why the difference? Here are a crystal of salt and a lump of sugar, about to be dropped into water side by side.', show: ['ss', 'ss.labels'] },
+        { say: 'Water pulls the salt crystal apart into separate ions: positive sodium ions in purple, and negative chloride ions in green. Those charged particles can move, and carry a current.', play: 'ss.drop', focus: 'ss.a' },
+        { say: 'The sugar comes apart into whole sugar molecules, which carry no charge. Its solution has nothing to carry a current, so the bulb stays dark.', focus: 'ss.b' },
       ],
     },
     {

@@ -431,6 +431,12 @@ export interface ParticleBox {
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
   lump?: boolean | number;
   /**
+   * An ionic lattice: about half the lump's particles become this kind instead, each next to
+   * particles of the other kind (positive and negative ions side by side). Give this kind `n: 0`
+   * and list it after the kind round the lump, and hold both (`hold: [0, k]`).
+   */
+  lumpMix?: number;
+  /**
    * Hold the first kind still (a lump, keeping its shape), or the kinds listed (gases soaked into
    * cotton wool at the ends of a tube), until a phase lets them go (`release`).
    */

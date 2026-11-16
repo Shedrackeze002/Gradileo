@@ -212,6 +212,9 @@ See `src/video/script.ts` for every element and option. In short:
     `bond: 4, heavy: 3, cross: 1`). Water dissolves well with `heavy: 0.2` at a temperature of 0.7.
   - `lump: true` (or a number of smaller lumps) starts the first kind as a lump on the floor, and
     `hold` keeps it still until a phase lets it go (`release: ['b']`), so it is seen dropping in.
+  - `lumpMix: 2` builds the lump from two kinds, kind 0 and kind 2, set out alternately as in a
+    salt crystal (give kind 2 `n: 0` among the kinds and the ions it adds come from kind 0's count
+    split between them); `hold: [0, 2]` holds both.
   - A phase's `stir: { b: 2 }` swirls the box (a rod is drawn), and `stir: { b: 0 }` stops it.
   - The part `count` shows "8 of 14 dissolved" under each box: particles of the first kind that
     have broken away from the lump (a dissolved particle stays counted until it joins a real lump

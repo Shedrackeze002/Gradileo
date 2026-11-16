@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { beaker, tag, waterMolecule } from './lib/c20-3a-figures.ts';
+import { sugarDissolving } from './lib/c20-particles.ts';
 
 // Salt water: sodium ions and chloride ions spread evenly through the water.
 const saltWater = figure(
@@ -57,6 +58,18 @@ const video: Explainer = {
         { say: 'The solute is the substance that dissolves. The solvent is the substance it dissolves in.', show: 'parts' },
         { say: 'In salt water, sodium chloride is the solute, and water is the solvent. Its ions spread evenly through the water, and never settle out.', show: ['sw.na', 'sw.cl', 'sw.label', 'ex'], focus: ['sw.na', 'sw.cl'] },
         { say: 'A solution can hold more than one solute. Sea water holds many different salts, and a fizzy drink holds both sugar and carbon dioxide in the same water.', focus: 'sw' },
+      ],
+    },
+    {
+      chapter: 'Watching a solute dissolve',
+      layout: 'split',
+      leftWidth: 560,
+      left: [sugarDissolving('sd', 420)],
+      right: [{ kind: 'callout', id: 'k', tone: 'key', title: 'Solute into solvent', md: 'Water molecules (blue) pull sugar molecules (yellow) off the lump one by one, until they are spread **evenly** through the water: a solution.' }],
+      lines: [
+        { say: 'Here is a lump of sugar, the solute, about to go into water, the solvent. Each ball stands for one molecule.', show: ['sd', 'sd.labels'] },
+        { say: 'Drop it in. Water molecules crowd round the lump and pull its molecules away, one at a time, and they drift off through the water.', play: 'sd.drop' },
+        { say: 'In the end the sugar molecules are spread evenly all through the water. That is a solution: the same all the way through, with nothing left to settle out.', show: 'k' },
       ],
     },
     {
