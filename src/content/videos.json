@@ -798,7 +798,7 @@
   "c8-1-2": {
     "lessonId": "c8-1-2",
     "title": "Compounds and Molecules",
-    "duration": 200,
+    "duration": 291,
     "voice": "af_heart",
     "chapters": [
       {
@@ -810,26 +810,34 @@
         "t": 22.702
       },
       {
+        "title": "Atoms and molecules up close",
+        "t": 40.968
+      },
+      {
         "title": "New properties",
-        "t": 68.525
+        "t": 88.771
+      },
+      {
+        "title": "Making a compound",
+        "t": 119.29
       },
       {
         "title": "Particle diagrams",
-        "t": 99.044
+        "t": 163.154
       },
       {
         "title": "Your turn",
-        "t": 133.115
+        "t": 224.379
       },
       {
         "title": "Summary",
-        "t": 166.09
+        "t": 257.354
       }
     ],
     "cues": [
       {
         "id": "c8-1-2:q",
-        "t": 146.004,
+        "t": 237.268,
         "prompt": "A box holds identical particles. Each is one carbon atom joined to two oxygen atoms. What does it show?",
         "choices": [
           "a compound",
@@ -1103,7 +1111,7 @@
   "c8-3-1": {
     "lessonId": "c8-3-1",
     "title": "Physical and Chemical Changes",
-    "duration": 169,
+    "duration": 229,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1115,22 +1123,26 @@
         "t": 19.712
       },
       {
-        "title": "Can it be reversed?",
+        "title": "Up close",
         "t": 70.436
       },
       {
+        "title": "Can it be reversed?",
+        "t": 131.029
+      },
+      {
         "title": "Your turn",
-        "t": 109.131
+        "t": 169.724
       },
       {
         "title": "Summary",
-        "t": 136.714
+        "t": 197.307
       }
     ],
     "cues": [
       {
         "id": "c8-3-1:q",
-        "t": 115.224,
+        "t": 175.817,
         "prompt": "Which of these is a chemical change?",
         "choices": [
           "butter melting",
@@ -1146,7 +1158,7 @@
   "c8-3-2": {
     "lessonId": "c8-3-2",
     "title": "Signs of a Chemical Reaction",
-    "duration": 165,
+    "duration": 198,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1159,21 +1171,21 @@
       },
       {
         "title": "Reactants and products",
-        "t": 63.966
+        "t": 96.319
       },
       {
         "title": "Your turn",
-        "t": 101.626
+        "t": 133.979
       },
       {
         "title": "Summary",
-        "t": 136.755
+        "t": 169.108
       }
     ],
     "cues": [
       {
         "id": "c8-3-2:q",
-        "t": 115.933,
+        "t": 148.286,
         "prompt": "Limestone, calcium carbonate, is heated and breaks down into calcium oxide and carbon dioxide. What is the reactant?",
         "choices": [
           "calcium oxide",
@@ -1232,7 +1244,7 @@
   "c8-4-1": {
     "lessonId": "c8-4-1",
     "title": "Burning",
-    "duration": 175,
+    "duration": 240,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1244,22 +1256,30 @@
         "t": 21.5
       },
       {
-        "title": "The fire triangle",
+        "title": "Burning up close",
         "t": 72.01
       },
       {
+        "title": "The fire triangle",
+        "t": 113.199
+      },
+      {
+        "title": "Putting fires out",
+        "t": 150.232
+      },
+      {
         "title": "Your turn",
-        "t": 112.43
+        "t": 177.908
       },
       {
         "title": "Summary",
-        "t": 142.579
+        "t": 208.057
       }
     ],
     "cues": [
       {
         "id": "c8-4-1:q",
-        "t": 125.565,
+        "t": 191.043,
         "prompt": "Firefighters cut a wide strip of trees out of a forest, ahead of a wildfire. Which side of the fire triangle does this remove?",
         "choices": [
           "heat",
@@ -1275,7 +1295,7 @@
   "c8-4-2": {
     "lessonId": "c8-4-2",
     "title": "Rusting and Corrosion",
-    "duration": 173,
+    "duration": 216,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1287,22 +1307,26 @@
         "t": 21.217
       },
       {
-        "title": "Stopping rust",
+        "title": "Rusting up close",
         "t": 82.447
       },
       {
+        "title": "Stopping rust",
+        "t": 125.816
+      },
+      {
         "title": "Your turn",
-        "t": 112.254
+        "t": 155.623
       },
       {
         "title": "Summary",
-        "t": 138.306
+        "t": 181.675
       }
     ],
     "cues": [
       {
         "id": "c8-4-2:q",
-        "t": 119.541,
+        "t": 162.91,
         "prompt": "Why is a bicycle chain oiled rather than painted?",
         "choices": [
           "oil adds zinc to the chain",
@@ -1490,7 +1514,7 @@
   "c9-1-3": {
     "lessonId": "c9-1-3",
     "title": "Electron Arrangements",
-    "duration": 177,
+    "duration": 195,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1502,22 +1526,26 @@
         "t": 20.385
       },
       {
+        "title": "More arrangements",
+        "t": 57.222
+      },
+      {
         "title": "Shells and the periodic table",
-        "t": 69.032
+        "t": 82.122
       },
       {
         "title": "Your turn",
-        "t": 114.78
+        "t": 133.388
       },
       {
         "title": "Summary",
-        "t": 142.472
+        "t": 161.08
       }
     ],
     "cues": [
       {
         "id": "c9-1-3:q",
-        "t": 124.242,
+        "t": 142.85,
         "prompt": "An element has the arrangement 2, 8, 6. Which group and period is it in?",
         "choices": [
           "group 16, period 3",
@@ -1533,7 +1561,7 @@
   "c9-1-4": {
     "lessonId": "c9-1-4",
     "title": "Ions",
-    "duration": 182,
+    "duration": 181,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1546,21 +1574,21 @@
       },
       {
         "title": "Charges from the group",
-        "t": 63.837
+        "t": 63.237
       },
       {
         "title": "Your turn",
-        "t": 119.454
+        "t": 118.854
       },
       {
         "title": "Summary",
-        "t": 149.069
+        "t": 148.469
       }
     ],
     "cues": [
       {
         "id": "c9-1-4:q",
-        "t": 130.536,
+        "t": 129.936,
         "prompt": "Magnesium has atomic number 12. How many electrons are in a $\\text{Mg}^{2+}$ ion?",
         "choices": [
           "12",
@@ -1576,7 +1604,7 @@
   "c9-2-1": {
     "lessonId": "c9-2-1",
     "title": "Ionic and Covalent Bonding",
-    "duration": 185,
+    "duration": 198,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1584,26 +1612,30 @@
         "t": 0
       },
       {
-        "title": "Two kinds of bond",
+        "title": "Ionic bonding",
         "t": 22.746
       },
       {
+        "title": "Covalent bonding",
+        "t": 54.369
+      },
+      {
         "title": "Bonding and properties",
-        "t": 71.62
+        "t": 84.542
       },
       {
         "title": "Your turn",
-        "t": 118.36
+        "t": 131.282
       },
       {
         "title": "Summary",
-        "t": 152.408
+        "t": 165.33
       }
     ],
     "cues": [
       {
         "id": "c9-2-1:q",
-        "t": 131.72,
+        "t": 144.642,
         "prompt": "A white solid melts at 770 °C, and its solution conducts electricity. What kind of bonding does it have?",
         "choices": [
           "covalent",
@@ -1748,7 +1780,7 @@
   "c9-3-1": {
     "lessonId": "c9-3-1",
     "title": "Conservation of Mass",
-    "duration": 179,
+    "duration": 241,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1760,22 +1792,34 @@
         "t": 21.349
       },
       {
+        "title": "Counting atoms",
+        "t": 42.932
+      },
+      {
+        "title": "Using the law",
+        "t": 79.175
+      },
+      {
         "title": "Open and closed systems",
-        "t": 67.035
+        "t": 105.078
+      },
+      {
+        "title": "Balance readings",
+        "t": 136.786
       },
       {
         "title": "Your turn",
-        "t": 109.068
+        "t": 170.917
       },
       {
         "title": "Summary",
-        "t": 147.59
+        "t": 209.44
       }
     ],
     "cues": [
       {
         "id": "c9-3-1:q",
-        "t": 125.38,
+        "t": 187.23,
         "prompt": "A tablet fizzes in water in an open cup. The reading falls from 152.4 g to 151.6 g. What has happened?",
         "choices": [
           "0.8 g of mass was destroyed",
@@ -1877,7 +1921,7 @@
   "c9-3-4": {
     "lessonId": "c9-3-4",
     "title": "Rates of Reaction",
-    "duration": 176,
+    "duration": 257,
     "voice": "af_heart",
     "chapters": [
       {
@@ -1893,18 +1937,34 @@
         "t": 66.438
       },
       {
+        "title": "Temperature",
+        "t": 82.927
+      },
+      {
+        "title": "Concentration",
+        "t": 110.419
+      },
+      {
+        "title": "Surface area",
+        "t": 133.05
+      },
+      {
+        "title": "Catalysts",
+        "t": 162.077
+      },
+      {
         "title": "Your turn",
-        "t": 116.281
+        "t": 188.694
       },
       {
         "title": "Summary",
-        "t": 144.743
+        "t": 226.319
       }
     ],
     "cues": [
       {
         "id": "c9-3-4:q",
-        "t": 124.959,
+        "t": 206.535,
         "prompt": "Why does powdered marble react with acid faster than a single lump?",
         "choices": [
           "the powder has a larger surface area",
@@ -2006,7 +2066,7 @@
   "c9-4-3": {
     "lessonId": "c9-4-3",
     "title": "Neutralization",
-    "duration": 165,
+    "duration": 219,
     "voice": "af_heart",
     "chapters": [
       {
@@ -2018,22 +2078,26 @@
         "t": 21.207
       },
       {
-        "title": "Everyday neutralization",
+        "title": "Neutralization up close",
         "t": 70.037
       },
       {
+        "title": "Everyday neutralization",
+        "t": 124.35
+      },
+      {
         "title": "Your turn",
-        "t": 108.553
+        "t": 162.866
       },
       {
         "title": "Summary",
-        "t": 135.553
+        "t": 189.866
       }
     ],
     "cues": [
       {
         "id": "c9-4-3:q",
-        "t": 117.955,
+        "t": 172.268,
         "prompt": "Which salt is made when nitric acid neutralizes potassium hydroxide?",
         "choices": [
           "potassium chloride",
