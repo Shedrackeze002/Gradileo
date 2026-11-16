@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, beaker, solubilityCurve } from './lib/c20-3a-figures.ts';
+import { heatingSaturated, saturating } from './lib/c20-particles.ts';
 
 // An unsaturated solution beside a saturated one, with undissolved solid on the bottom: particles
 // leave the solid and join it again at the same rate.
@@ -64,6 +65,17 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Watching it fill up',
+      layout: 'center',
+      main: [saturating('sv')],
+      lines: [
+        { say: 'Here is the same amount of water in two boxes, with a little solid dropped into the first and a lot into the second.', show: ['sv', 'sv.labels'], play: 'sv.drop' },
+        { say: 'Water molecules pull particles off the solid. In the first box, every particle is pulled away, and the solution is unsaturated.', focus: 'sv.a' },
+        { say: 'In the second box, the water takes about as many particles as in the first, and then it holds all it can. The rest stays on the bottom, so this solution is saturated.', focus: 'sv.b' },
+        { say: 'Watch the bottom of the second box. Now and then a particle breaks off and another joins, so the amount dissolved stays the same.', focus: 'sv.b' },
+      ],
+    },
+    {
       chapter: 'Potassium nitrate',
       layout: 'split',
       leftWidth: 600,
@@ -109,6 +121,16 @@ const video: Explainer = {
         { say: 'Below the curve, the solution is unsaturated. Above it, there is more solute than can dissolve, and the extra stays as solid.', show: 'c.regions', focus: 'c.regions' },
         { say: 'Most solids dissolve better in hot water. At sixty degrees Celsius, about one hundred ten grams of potassium nitrate dissolves in one hundred grams of water.', show: ['c.p60', 't.1'], focus: 'c.p60' },
         { say: 'Gases do the opposite. They are less soluble in warm water, which is why a warm fizzy drink goes flat sooner than a cold one.', show: 't.2', focus: 't.2' },
+      ],
+    },
+    {
+      chapter: 'Heating a saturated solution',
+      layout: 'center',
+      main: [heatingSaturated('hs')],
+      lines: [
+        { say: 'Here is a saturated solution of potassium nitrate, with solid left on the bottom.', show: ['hs', 'hs.labels', 'hs.thermo'], play: 'hs.drop' },
+        { say: 'Now heat it. The particles move faster, and the hot water pulls more and more of them off the solid.', play: 'hs.heat', focus: 'hs.b' },
+        { say: 'At the higher temperature, the solid all dissolves. The solubility has risen, so the same water now holds much more.', focus: 'hs.b' },
       ],
     },
     {

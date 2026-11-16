@@ -76,6 +76,26 @@ const SUGAR = { bond: 1.5, heavy: 0.2, tone: 'theta', name: 'sugar molecule' } a
 const NA = { bond: 2, heavy: 0.5, tone: 'brand', name: 'sodium ion' } as const;
 const CL = { bond: 2, heavy: 0.5, tone: 'good', name: 'chloride ion' } as const;
 
+/**
+ * A lump of `n` particles of a solid in water, held until a clip drops it in. About five of its
+ * particles dissolve at the usual temperature, so a bigger lump leaves solid on the bottom, and
+ * nearly all of it dissolves at `HOT` (the water is held a little more firmly, so it stays liquid).
+ */
+const cup = (id: string, n: number, water: number, label: string, cross = 1.8): ParticleBox => ({
+  id,
+  state: 'liquid',
+  kinds: [{ n, bond: 2, heavy: 0.5, tone: 'theta', name: 'solute' }, { n: water, ...WATER, bond: 1.2 }],
+  lump: true,
+  hold: true,
+  cross,
+  width: 10,
+  height: 9,
+  temp: 0.7,
+  label,
+});
+/** The temperature the clip `heat` warms a saturated solution to. */
+const HOT = 1.6;
+
 /** A box of water with a lump of sugar in it, held until a clip drops it in. */
 const sugarBox = (id: string, label: string): ParticleBox => ({ id, state: 'liquid', kinds: [{ n: 14, ...SUGAR }, { n: 44, ...WATER }], lump: true, hold: true, cross: 1.8, width: 12, height: 9, temp: 0.7, label });
 
@@ -93,6 +113,37 @@ const saltBox = (id: string, label: string): ParticleBox => ({
   height: 9,
   temp: 0.7,
   label,
+});
+
+/**
+ * How much can dissolve (clip `drop`): a little solid all dissolves, but in the same water a lot of
+ * it leaves some undissolved on the bottom, because the water holds all it can (saturated).
+ */
+export const saturating = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [cup('a', 5, 40, 'a little solid: unsaturated', 1.5), cup('b', 24, 34, 'a lot of solid: saturated', 1.5)],
+  clips: { drop: { phases: [{ dur: 1, release: ['a', 'b'] }, { dur: 12 }] } },
+  // Slower than the other dissolving boxes, so the saturated lump still looks like a lump by the scene's end.
+  speed: 2,
+  height,
+});
+
+/**
+ * A saturated solution with solid left on the bottom (clip `drop`), heated (clip `heat`): the hot
+ * water dissolves the rest.
+ */
+export const heatingSaturated = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [cup('b', 24, 34, 'potassium nitrate in water')],
+  clips: {
+    drop: { phases: [{ dur: 1, release: ['b'] }, { dur: 9 }] },
+    heat: { phases: [{ dur: 3, heat: { b: HOT } }, { dur: 9 }] },
+  },
+  thermometers: true,
+  speed: 4,
+  height,
 });
 
 /** Sugar (the solute) dropped into water (the solvent) by the clip `drop`: it dissolves. */
@@ -161,5 +212,91 @@ export const acidIonising = (id: string, height = 420): ParticlesEl => ({
   ],
   clips: { go: { phases: [{ dur: 1, release: ['a'] }, { dur: 11 }] } },
   seed: 2,
+  height,
+});
+
+/** An ion or water molecule moving freely in a solution: held so loosely that it never clumps. */
+const free = (n: number, tone: Tone, name: string, size = 1) => ({ n, bond: 0.05, heavy: 0, size, tone, name });
+/** Silver chloride once it has formed: held very tightly, and heavy enough to sink. */
+const SOLID_AG = { n: 0, bond: 3, heavy: 1.5, tone: 'theta', name: 'silver ion' } as const;
+const SOLID_CL = { n: 0, bond: 3, heavy: 1.5, size: 1.1, tone: 'good', name: 'chloride ion' } as const;
+
+/**
+ * Silver nitrate and sodium chloride solutions just mixed (clip `mix`): wherever a silver ion meets
+ * a chloride ion they lock together and sink as solid silver chloride, a precipitate, while the
+ * sodium and nitrate ions keep moving freely in the water (spectator ions). The kinds: 0 silver,
+ * 1 nitrate, 2 sodium, 3 chloride, 4 water, then 5 and 6 the silver and chloride in the solid.
+ */
+export const precipitating = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'p',
+      state: 'gas',
+      width: 12,
+      height: 9,
+      temp: 0.5,
+      waits: true,
+      kinds: [
+        free(6, 'theta', 'silver ion'),
+        free(6, 'opp', 'nitrate ion', 1.1),
+        free(6, 'brand', 'sodium ion'),
+        free(6, 'good', 'chloride ion', 1.1),
+        free(16, 'adj', 'water', 0.8),
+        SOLID_AG,
+        SOLID_CL,
+      ],
+      reactions: [{ a: 0, b: 3, to: [5, 6], join: true }],
+      tally: { kinds: [5], label: 'units of silver chloride' },
+      label: 'silver nitrate + sodium chloride',
+    },
+  ],
+  clips: { mix: { phases: [{ dur: 1, release: ['p'] }, { dur: 12 }] } },
+  seed: 1,
+  speed: 2,
+  key: true,
+  height,
+});
+
+/**
+ * Potassium nitrate and sodium chloride solutions mixed: every pair of ions that could form is
+ * soluble, so nothing happens. The four kinds of ion just keep moving among the water molecules.
+ */
+export const noPrecipitate = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'n',
+      state: 'gas',
+      width: 12,
+      height: 9,
+      temp: 0.5,
+      kinds: [free(6, 'hyp', 'potassium ion'), free(6, 'opp', 'nitrate ion', 1.1), free(6, 'brand', 'sodium ion'), free(6, 'good', 'chloride ion', 1.1), free(16, 'adj', 'water', 0.8)],
+      label: 'potassium nitrate + sodium chloride',
+    },
+  ],
+  clips: {},
+  seed: 1,
+  key: true,
+  height,
+});
+
+/**
+ * A crystal of sodium chloride and one of silver chloride dropped into water side by side (clip
+ * `drop`): water pulls the sodium chloride apart, but the ions of silver chloride hold on to one
+ * another too tightly, so it stays a solid.
+ */
+export const solubleAndNot = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    saltBox('a', 'sodium chloride: high solubility'),
+    { ...saltBox('b', 'silver chloride: low solubility'), kinds: [{ n: 16, ...NA, bond: 4, heavy: 1, tone: 'theta', name: 'silver ion' }, { n: 44, ...WATER }, { n: 0, ...CL, bond: 4, heavy: 1 }], cross: 1, pairs: [{ kinds: [0, 2], bond: 4 }] },
+  ],
+  clips: { drop: { phases: [{ dur: 1, release: ['a', 'b'] }, { dur: 11 }] } },
+  speed: 4,
+  key: true,
   height,
 });

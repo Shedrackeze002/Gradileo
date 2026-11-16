@@ -548,6 +548,10 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       s.sig2[a * kinds.length + c] = (((ka.size ?? 1) + (kb.size ?? 1)) / 2) ** 2;
     }),
   );
+  for (const { kinds: [a, c], bond } of b.pairs ?? []) {
+    s.eps[a * kinds.length + c] = bond;
+    s.eps[c * kinds.length + a] = bond;
+  }
   // Molecules, and a gas that reacts with a lump, are placed unit by unit.
   const units = mols.length > 0 || (b.state === 'gas' && !!b.lump && !!b.reactions?.length);
   if (units) placeMolecules(s, b, kinds, mols, w);

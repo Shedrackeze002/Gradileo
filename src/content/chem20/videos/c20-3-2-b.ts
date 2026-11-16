@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { solubleAndNot } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-2-b',
@@ -40,6 +41,16 @@ const video: Explainer = {
         { say: 'The solubility rules sort ionic compounds by their anion. Nitrates and acetates all have high solubility, with no exceptions.', show: ['t.0', 't.1'], focus: ['t.0', 't.1'] },
         { say: 'Chlorides, bromides and iodides mostly have high solubility, except those of silver, lead two and copper one.', caption: 'Chlorides, bromides and iodides mostly have high solubility, except those of Ag⁺, Pb²⁺ and Cu⁺.', show: 't.2', focus: 't.2' },
         { say: 'Sulfates mostly have high solubility, except those of calcium, strontium, barium, lead two and silver.', caption: 'Sulfates mostly have high solubility, except those of Ca²⁺, Sr²⁺, Ba²⁺, Pb²⁺ and Ag⁺.', show: 't.3', focus: 't.3' },
+      ],
+    },
+    {
+      chapter: 'High and low solubility',
+      layout: 'center',
+      main: [solubleAndNot('sn')],
+      lines: [
+        { say: 'Here are two ionic crystals dropped into water: sodium chloride on the left, and silver chloride on the right.', show: ['sn', 'sn.labels', 'sn.key'], play: 'sn.drop' },
+        { say: 'Water molecules pull the sodium and chloride ions off the first crystal, one after another, so it dissolves. Sodium chloride has high solubility.', focus: 'sn.a' },
+        { say: 'The silver and chloride ions in the second crystal hold on to one another too tightly, so the water cannot pull them away. Silver chloride has low solubility.', focus: 'sn.b' },
       ],
     },
     {

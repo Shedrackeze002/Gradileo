@@ -376,6 +376,12 @@ export interface ParticleBox {
    */
   cross?: number;
   /**
+   * How strongly particular pairs of different kinds attract, in place of `cross` for those pairs:
+   * the two ions of a crystal that water cannot pull apart hold each other tightly
+   * (`pairs: [{ kinds: [0, 2], bond: 4 }]`) while each feels water only weakly (`cross: 1`).
+   */
+  pairs?: Array<{ kinds: [number, number]; bond: number }>;
+  /**
    * A filter (or sieve) across the box at this fraction of its height, with holes this wide:
    * the particles start above it, and it holds them all until a phase lets them through
    * (`release`); then particles smaller than the holes pass and bigger ones stay on it.
@@ -516,7 +522,7 @@ export interface ParticlePhase {
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle', 'key'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
@@ -529,9 +535,9 @@ export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'la
  * path of each box's followed particle), `labels`, `flow` (an arrow of heat between two boxes,
  * thinner as their temperatures meet; set `flow` up), `width` (a bracket over each box's
  * particles, with dashed marks as wide as they were when the element was shown, to see expansion),
- * `middle` (a dashed line down the middle of each box, to see which end something is nearer)
- * and `count` (how many particles of each box's first kind have broken away on their own: "8 of 16
- * dissolved").
+ * `middle` (a dashed line down the middle of each box, to see which end something is nearer),
+ * `count` (how many particles of each box's first kind have broken away on their own: "8 of 16
+ * dissolved"), `tally` (a box's running count) and `key` (each kind's colour and name; set `key` up).
  * Emphasising a box's id makes it glow.
  */
 export interface ParticlesEl {
@@ -551,6 +557,11 @@ export interface ParticlesEl {
    * temperatures if given ("melts", "boils").
    */
   thermometers?: boolean | { marks?: Array<{ at: Temp; label: string }> };
+  /**
+   * Keep room to the right of the boxes for a key: a dot in each named kind's colour, with its
+   * name (the part `key` shows it). Kinds with the same name and colour are listed once.
+   */
+  key?: boolean;
   /** Heat flowing from one box to the next one along (the part `flow` shows it). */
   flow?: { from: string; to: string; label?: string };
   /**

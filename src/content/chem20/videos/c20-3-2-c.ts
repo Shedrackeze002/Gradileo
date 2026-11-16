@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, beaker, tag } from './lib/c20-3a-figures.ts';
+import { precipitating } from './lib/c20-particles.ts';
 
 const ion = (id: string, at: [number, number], tex: string, plus: boolean, group: string) => ({ id, at, tex: `\\ce{${tex}}`, tone: plus ? ('opp' as const) : ('adj' as const), group });
 
@@ -48,7 +49,7 @@ const video: Explainer = {
   lessonId: 'c20-3-2',
   title: 'Solubility and Precipitates, Part 3: Predicting Precipitates',
   thumbnailTitle: 'Predicting Precipitates',
-  thumbnail: 'mix',
+  thumbnail: 'pp',
   summary:
     'When two solutions are mixed, the ions swap partners. A new compound with low solubility comes out of the solution as a precipitate: silver nitrate and sodium chloride give silver chloride, and lead(II) nitrate and potassium iodide give yellow lead(II) iodide.',
   scenes: [
@@ -72,6 +73,16 @@ const video: Explainer = {
         { say: 'Sodium chloride solution holds sodium ions and chloride ions.', show: ['mix.plus', 'mix.b-glass', 'mix.b-liquid', 'mix.b-ions', 'mix.b-label'], focus: 'mix.b-ions' },
         { say: 'Once the solutions are mixed, all four ions move about in the same water, and each cation meets the other anion. The ions swap partners: silver with chloride, and sodium with nitrate.', show: ['mix.arrow', 'mix.m-glass', 'mix.m-liquid', 'mix.m-label', 't'], focus: 'mix' },
         { say: 'Silver chloride has low solubility, so those ions come out of the solution together, as a white solid. Sodium nitrate has high solubility, so its ions stay dissolved.', show: ['mix.m-solid', 'mix.m-ions'], focus: 'mix.m-solid' },
+      ],
+    },
+    {
+      chapter: 'Watching a precipitate form',
+      layout: 'center',
+      main: [precipitating('pp')],
+      lines: [
+        { say: 'Here are the ions just after the two solutions are mixed: silver, nitrate, sodium and chloride ions, among water molecules.', show: ['pp', 'pp.labels', 'pp.key'] },
+        { say: 'Watch what happens when a silver ion meets a chloride ion. They lock together and sink, building up a solid on the bottom.', play: 'pp.mix', focus: 'pp.p' },
+        { say: 'That solid is silver chloride. The sodium ions and nitrate ions never lock together, so they keep moving freely in the water.', show: 'pp.tally' },
       ],
     },
     {

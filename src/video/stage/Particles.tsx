@@ -108,6 +108,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const tally = part('tally');
   const width = part('width');
   const middle = part('middle');
+  const keyPart = part('key');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
 
@@ -119,12 +120,15 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const GAUGE_R = 70;
   const GAUGE_W = el.gauge ? 2 * GAUGE_R + 40 : 0;
   const GAP = el.flow ? 170 : 70;
+  // The key's entries: each named kind once (a reaction's product often shares its reactant's name).
+  const keyItems = el.key ? [...new Map(el.boxes.flatMap((b) => (b.kinds ?? []).filter((k) => k.name).map((k) => [`${k.name}|${k.tone}`, { name: k.name!, tone: (k.tone ?? 'theta') as Tone, size: k.size ?? 1 }] as const))).values()] : [];
+  const KEY_W = keyItems.length ? 60 + 13 * Math.max(...keyItems.map((k) => k.name.length)) : 0;
   const TOP = el.boxes.some((b) => b.piston) ? 56 : 24;
   const BOTTOM = 76;
   const sizes = el.boxes.map(boxSize);
   const sumW = sizes.reduce((s, b) => s + b.w, 0);
   const maxH = Math.max(...sizes.map((b) => b.h));
-  const fixed = GAP * (el.boxes.length - 1) + THERMO_W * el.boxes.length + GAUGE_W;
+  const fixed = GAP * (el.boxes.length - 1) + THERMO_W * el.boxes.length + GAUGE_W + KEY_W;
   const S = Math.min((w - fixed - 40) / sumW, (h - TOP - BOTTOM) / maxH, 60);
   const totalW = sumW * S + fixed;
   let left = (w - totalW) / 2;
@@ -381,6 +385,21 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
           </g>
         );
       })}
+      {keyItems.length > 0 && keyPart > 0 && (() => {
+        // The key, to the right of the last box (its room is kept from the start).
+        const kx = (w + totalW) / 2 - KEY_W + 40;
+        const ky = TOP + (maxH * S) / 2 - ((keyItems.length - 1) * 44) / 2;
+        return (
+          <g opacity={keyPart}>
+            {keyItems.map((k, i) => (
+              <g key={k.name + k.tone}>
+                <circle cx={kx} cy={ky + i * 44} r={13 * Math.min(k.size, 1.1)} fill={`url(#pg-${el.id}-${k.tone})`} />
+                <Text x={kx + 26} y={ky + i * 44 + 8} size={22} anchor="start">{k.name}</Text>
+              </g>
+            ))}
+          </g>
+        );
+      })()}
     </svg>
   );
 }

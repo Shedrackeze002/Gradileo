@@ -220,6 +220,11 @@ See `src/video/script.ts` for every element and option. In short:
     have broken away from the lump (a dissolved particle stays counted until it joins a real lump
     again, so a few that brush together do not make the count jump).
   - `speed: 4` on the element runs the simulation faster than usual, as real dissolving is slow.
+  - `pairs: [{ kinds: [0, 2], bond: 4 }]` sets how strongly two kinds attract in place of `cross`:
+    a crystal of low solubility (silver chloride) keeps its ions held tightly together while each
+    feels water only weakly (`cross: 1`).
+  - `key: true` on the element keeps room to the right of the boxes for a key, a dot in each named
+    kind's colour with its name (the part `key`), so viewers can tell the ions apart.
   More, for separating mixtures:
   - A kind's `size` (its diameter, 1 by default) makes grains bigger or smaller.
   - `filter: { at: 0.5, holes: 1.3 }` lays a filter or sieve across the box at that fraction of
