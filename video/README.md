@@ -186,9 +186,31 @@ See `src/video/script.ts` for every element and option. In short:
   given), `heat` (what friction and air resistance have taken) and `total`, which comes in with
   its own part (`sim.total`). `max` is the largest energy a bar must hold; `names` renames a bar
   ("Energy supplied") and `labels` names each body when several are listed in `of`. The bars sit
-  under a track or a hill and beside a drop, a lift or a pendulum. To stop a motion at a moment
+  under a track or a hill and beside a drop, a lift or a pendulum. A bar whose `max` is 100 J or
+  more is written in whole joules, and a large one in kilojoules, so choose numbers whose total
+  does not sit on a rounding boundary (151.15 kJ flickers between 151.1 and 151.2).
+  A force with a `profile` changes as the body moves: its size at distances from where the body
+  started, as `[metres, newtons]` points joined by straight lines. The work it does is the area
+  under those points, and `graph: { y: 'force', metres: … }` draws the force-displacement graph
+  of one body, which fills in as the body moves with the work done so far written over it (`area`
+  renames it). `spring` puts a spring between the wall at the left end of a single straight track
+  and one body (`k` in newtons per metre, and `rest`, where the centre of the body is at the
+  natural length). It obeys Hooke's law in every phase without being listed among the forces: it
+  is drawn as a coil with its force as a violet arrow named "Spring", the part `extension` writes
+  x under the track, the energy bar `elastic` is ½kx², and the force graph plots its force
+  against its extension. `loose: true` is a launcher: it pushes while it is compressed and lets
+  go of the body at the natural length. With `vertical: true` the spring hangs from a beam over a
+  drop, and `rest` is how far down the foot of the body is at the natural length; the body then
+  settles mg ÷ k lower. A spring on its own swings for ever, so to bring a body to rest where the
+  forces balance, add a hidden force with `drag` (the lesson's numbers are not changed by it).
+  Hold a body against a spring with a force towards the wall; it is drawn above the coil. To stop a motion at a moment
   worth talking about (the top of a hill, the bottom of a swing), end the clip there: find the
-  time with a few lines of `motionAt` in a scratch file. Colours are fixed in every physics video: velocity green, net force and
+  time with a few lines of `motionAt` in a scratch file. A hill takes its scale from the smaller
+  of the room across and the room above the bars, so a low wide hill needs a tall element (about
+  440 px with three bars), and a hill with four bars fits best on the left of a split scene. A
+  hill that is tall for its width is drawn beside the title on the thumbnail. The note of a phase
+  ("Slow motion") sits at the top centre of the picture: give the element about 440 px of height
+  so that a velocity label does not pass under it. Colours are fixed in every physics video: velocity green, net force and
   total momentum yellow, friction red, an applied force orange, weight pink, the normal force
   blue, displacement violet, and the path travelled pale grey; in the energy bars, kinetic
   energy is green like velocity, potential energy pink like weight, work orange like an applied
@@ -250,7 +272,15 @@ See `src/video/script.ts` for every element and option. In short:
   motion, `set` a velocity or `tilt` the surface steadily (a block that stays put until the slope
   is steep enough). The parts are `weight`, `normal`, `friction`, `tension`, `components` (the two
   dashed parts of the weight on a slope, and of a push at an angle), `net`, `velocity`, `readout`
-  (the acceleration), `clock` and `strobe`. `balanced` lists blocks whose weight and normal force
+  (the acceleration), `clock`, `strobe`, `distance` (an arrow along the surface from where the
+  block started, with the metres moved) and `work`. `work: { rows, range }` adds bars of the work
+  each force has done on one block, measured as the block moves: the part of the force along the
+  motion times the distance, so friction's bar grows to the left of zero, the normal force stays
+  at nothing, and "Net" (their sum) is the kinetic energy gained. `rows` names the forces in
+  order ("Weight", "Normal force", "Friction", "Tension", the name of a push or a pull, "Net")
+  and `range` is the least and the greatest work a bar must hold. The bars take room under the
+  picture, so a ramp with long arrows and bars goes on the left of a split scene with a larger
+  `pad` and a smaller `forceScale`. `balanced` lists blocks whose weight and normal force
   are never drawn, `raise` stands the surface on a table, and `g` moves the block to another
   world. The picture takes its scale from the room left by `pad` (pixels kept clear above the
   surface and under the ground): long arrows need a larger pad or a smaller `forceScale`, and when
@@ -282,9 +312,34 @@ See `src/video/script.ts` for every element and option. In short:
   `pulls` limits which bodies get an arrow, `notation: 'sci'` writes every force in scientific
   notation, `figures` sets the significant figures of a distance, and `unit` writes distances in
   another unit (`{ metres: 6.37e6, symbol: '× Earth radius' }`). To make a pair attract with a
-  round number of newtons, work one mass out from the other in the script. A view more than about
+  round number of newtons, work one mass out from the other in the script. Bodies can also move
+  freely under gravity while a phase lets time run (`fly: true`, at `rate` seconds of motion for
+  each second of video): a body with `orbit: true` starts in a circular orbit round the first
+  body at the speed √(GM ÷ r), which is worked out; a body with a velocity `v`, or one that a
+  phase throws (`launch: { ball: [right, up] }`), falls until it lands on a planet or goes round
+  it, and the path of an earlier throw stays on the picture, faded, to compare. `mountain` puts a
+  mountain on the first body to throw from (Newton's cannon). The parts for these are `velocity`,
+  `trail`, `orbit` (the circle of each orbit), `clock` (in the unit given by `clock`, such as
+  minutes or days) and `turns` (the orbits completed). A view more than about
   2.4 times as wide as it is tall is drawn under the title on the thumbnail, and a square one
   beside it.
+
+- `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
+  seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
+  on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as
+  it falls. Give each body its mass, the radius `r` of its circle and its `speed` (or its
+  `period`); the centripetal acceleration v² ÷ r and the forces are worked out from them. `by`
+  says what turns the bodies: a `string` (tension, and the string is drawn), `friction` (a car on
+  a road, `shape: 'car'`) or a `track` (the normal force of a loop). A phase can change a speed
+  steadily (`speed`), play in slow motion, `freeze`, or `release` a body (the string breaks, the
+  tyres lose their grip), which then carries on in a straight line along the tangent. The parts
+  are `velocity` (green, along the tangent), `accel` (towards the centre), `force` (the real
+  forces: the one named by `by` and, in a vertical circle, the weight), `net`, `radius`,
+  `tangent`, `trail`, `strobe` (marks every eighth of a turn, with their arrows), `readout` (the
+  speed and the acceleration as numbers), `period`, `meter` (the force needed beside the greatest
+  the string or the road can give, `limit`), `clock` and `turns`. `disc` draws a turning platform
+  under the bodies (a roundabout), and `shift` moves the centre sideways to leave room for a body
+  that is let go.
 
 - `rays` (`src/video/rays.ts`) is for light meeting a surface: a `mirror`, where the angle of
   reflection equals the angle of incidence, or a `boundary` between two materials with their
