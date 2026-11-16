@@ -1,10 +1,11 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type ForcesEl, type GravityEl, type MotionEl, type ParticlesEl, type RampEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
+import { BRAND, type CircleEl, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type ForcesEl, type GravityEl, type MotionEl, type ParticlesEl, type RampEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
 import { fastest, flightAt } from '../flight.ts';
 import { clipSeconds, type ElState, type FrameState } from '../timeline.ts';
 import { CircuitView } from './Circuit.tsx';
 import { FlightView } from './Flight.tsx';
 import { heaviest, RampView } from './Ramp.tsx';
+import { CircleView } from './Circle.tsx';
 import { ForcesView } from './Forces.tsx';
 import { GravityView } from './Gravity.tsx';
 import { DiagramView } from './Diagram.tsx';
@@ -75,6 +76,8 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <ForcesView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'gravity':
       return <GravityView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
+    case 'circle':
+      return <CircleView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'rays':
       return <RaysView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
     case 'wave':
@@ -190,6 +193,13 @@ function GravityThumb({ el, w, h }: { el: GravityEl; w: number; h: number }) {
   return <GravityView el={{ ...el, label: undefined, clips }} st={{ ...FULL, parts: { force: 1, field: 1 } }} w={w} h={h} plays={plays} />;
 }
 
+/** Bodies on a circle on a thumbnail: part way through the poster clip, with the velocity and what turns each body, and no notes. */
+function CircleThumb({ el, w, h }: { el: CircleEl; w: number; h: number }) {
+  const plays: Array<[string, number]> = el.poster ? [[el.poster, clipSeconds(el, el.poster) * 0.7]] : [];
+  const clips = Object.fromEntries(Object.entries(el.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }]));
+  return <CircleView el={{ ...el, label: undefined, shift: 0, clips }} st={{ ...FULL, parts: { velocity: 1, strobe: 1, ...(el.by ? { force: 1 } : { accel: 1 }) } }} w={w} h={h} plays={plays} thumb />;
+}
+
 /** Whether a flight's view is wide and flat (a projectile over level ground) and not tall (a river to cross). */
 const flatFlight = (el: FlightEl) => (el.view[1] - el.view[0]) / (el.view[3] - el.view[2]) > 1.5;
 
@@ -197,7 +207,7 @@ const flatFlight = (el: FlightEl) => (el.view[1] - el.view[0]) / (el.view[3] - e
 const flatSpace = (el: GravityEl) => (el.view[1] - el.view[0]) / (el.view[3] - el.view[2]) > 2.4;
 
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'circle';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
   const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
   const title = x.thumbnailTitle ?? x.title;
@@ -263,6 +273,8 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             <RampThumb el={fig} w={560} h={470} />
           ) : fig.kind === 'forces' ? (
             <ForcesThumb el={fig} w={560} h={470} />
+          ) : fig.kind === 'circle' ? (
+            <CircleThumb el={fig} w={500} h={470} />
           ) : fig.kind === 'gravity' ? (
             <GravityThumb el={fig} w={560} h={470} />
           ) : fig.kind === 'similar' ? (
