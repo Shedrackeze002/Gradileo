@@ -386,3 +386,16 @@ export const floatOrSink = (id: string, height = 380): ParticlesEl => {
     height,
   };
 };
+
+/**
+ * A fixed mass of gas under a piston, with a volume reading: the clip `push` squeezes it into half
+ * the space, so the same mass fills half the volume and its density doubles.
+ */
+export const densitySqueeze = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'g', state: 'gas', n: 22, width: 10, height: 9, temp: 1.6, piston: true, label: 'the same particles, the same mass' }],
+  clips: { push: { phases: [{ dur: 5, lid: { g: 0.5 } }] } },
+  volume: { box: 'g', start: 2, decimals: 1 },
+  height,
+});
