@@ -545,7 +545,8 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
         </g>,
       );
     } else if (b.shape === 'cart') {
-      const bump = BUMPER * S;
+      // On a bench of two metres or less the bumpers keep to a share of the cart, so that it still has a body.
+      const bump = el.span[1] - el.span[0] <= 2 ? Math.min(BUMPER * S, 0.15 * (k.right - k.left)) : BUMPER * S;
       const bl = Math.max(2, bump - squeeze[b.id].l * S);
       const br = Math.max(2, bump - squeeze[b.id].r * S);
       const cl = k.left + bump;
