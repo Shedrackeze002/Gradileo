@@ -1,10 +1,30 @@
-import type { Explainer } from '@/video/script.ts';
+import { ATOM, hydrogenBurning } from '@/video/reactions.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts): water boiling beside hydrogen
+// burning. Boiling only moves the water molecules apart; burning joins atoms up in new molecules.
+
+/** Liquid water: water molecules close together, until it is heated. */
+const water: ParticleBox = { id: 'w', state: 'liquid', width: 10, height: 10, temp: 0.3, kinds: [{ ...ATOM.O, bond: 1, heavy: 1 }, { ...ATOM.H, bond: 1, heavy: 1 }], molecules: [{ atoms: [0, 1, 1], n: 10, bent: true }], label: 'water' };
+
+const changes: ParticlesEl = {
+  kind: 'particles',
+  id: 'pc',
+  boxes: [water, hydrogenBurning('h', { label: 'hydrogen and oxygen' })],
+  clips: {
+    boil: { phases: [{ dur: 4, heat: { w: 2.5 } }, { dur: 6 }] },
+    spark: { phases: [{ dur: 1, heat: { h: 2 } }, { dur: 2 }, { dur: 1, heat: { h: 0.4 } }, { dur: 8 }] },
+  },
+  thermometers: true,
+  seed: 7,
+  height: 440,
+};
 
 const video: Explainer = {
   id: 'c8-3-1',
   lessonId: 'c8-3-1',
   title: 'Physical and Chemical Changes',
-  thumbnail: 'chg',
+  thumbnail: 'pc',
   summary:
     'A physical change makes no new substance: changes of state, dissolving, breaking and cutting. A chemical change makes one or more new substances: burning, rusting, cooking and rotting. The key question is whether a new substance has been made. Most physical changes are easily reversed; most chemical changes are not.',
   scenes: [
@@ -38,6 +58,18 @@ const video: Explainer = {
         { say: 'Ice melting, sugar dissolving and a glass breaking are all physical changes. Paper burning, a nail rusting and a cake baking are chemical changes.', show: 'chg' },
         { say: 'So the key question is always the same: has a new substance been made?' },
         { say: 'Think of a candle. Melted wax is still wax, so melting is physical. But the burning wax reacts with oxygen to make carbon dioxide and water, so burning is chemical.' },
+      ],
+    },
+    {
+      chapter: 'Up close',
+      layout: 'center',
+      main: [changes],
+      lines: [
+        { say: 'Let’s look at both kinds of change up close. On the left is liquid water, its molecules close together. On the right is a mix of hydrogen and oxygen gas.', show: ['pc', 'pc.labels', 'pc.thermo'] },
+        { say: 'Let’s heat the water until it boils. Its molecules move faster and escape from one another into a gas. But look: every one is still a water molecule, one red oxygen atom joined to two yellow hydrogen atoms.', play: 'pc.boil', focus: 'pc.w' },
+        { say: 'No new substance has been made, so boiling is a physical change. Cool the steam, and it turns back into liquid water.', focus: 'pc.w' },
+        { say: 'Now a spark heats the gases. Their molecules break apart, and the atoms join up in a new way, as water molecules that were not there before.', play: 'pc.spark', show: 'pc.tally', focus: 'pc.h' },
+        { say: 'A new substance has been made, so this is a chemical change. And you cannot easily turn the water back into hydrogen and oxygen.', focus: 'pc.h' },
       ],
     },
     {

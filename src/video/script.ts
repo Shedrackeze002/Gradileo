@@ -16,6 +16,8 @@ import { checkPath, type MotionPath } from './path.ts';
 export type { MotionPath };
 
 /** The name on every frame, thumbnail and YouTube description. */
+import { checkAtoms } from './atoms.ts';
+
 export const BRAND = 'Gradileo';
 
 /** Colours with a fixed meaning in every video (trigonometry uses the first four). */
@@ -513,6 +515,32 @@ export interface ParticleBox {
    * a phase's `run` sends the solvent up the paper, carrying each kind up at its `rise`.
    */
   paper?: boolean;
+  /**
+   * Reactions between kinds (by their place in `kinds`): when a particle of kind `a` meets one of
+   * kind `b` hard enough (their collision energy above `energy`, 0 by default), they become kinds
+   * `to` and, with `join`, are bonded into one molecule, drawn with a line between them. `heat`
+   * gives the pair that much extra energy (a reaction that gives out heat). With `free`, each of
+   * the two first lets go of the atoms it was bonded to, and those become the kinds in `free`
+   * (the first for the `a` atom's old partners, the second for the `b` atom's; `null` keeps that
+   * atom's bonds): so a hydrogen molecule meeting an oxygen molecule can swap partners. With
+   * `carry` too, the `a` atom's old partners stay with it, joined to the `b` atom instead (bent,
+   * like water, or in a straight line with `line`, like carbon dioxide): a hydrogen molecule that
+   * hits an oxygen atom becomes one water molecule. Atoms are never made or lost: only
+   * joined differently, so the mass is the same after. Particles react a little way apart (1.6
+   * times their mean diameter); `reach` sets that distance, about 1.15 for touching only, so a gas
+   * reacts with the surface of a lump and not the particles just under it.
+   */
+  reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number; reach?: number }>;
+  /**
+   * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
+   * made of these atoms (kinds, by place), the first bonded to each of the others round it. A
+   * `bent` molecule of three atoms is bent like water; otherwise the atoms sit in a line.
+   */
+  molecules?: Array<{ atoms: number[]; n: number; bent?: boolean }>;
+  /** Hold the reactions back until a phase lets the box go (`release`), so they start on cue. */
+  waits?: boolean;
+  /** What the part `tally` counts under the box: the particles of these kinds, and what to call them. */
+  tally?: { kinds: number[]; label: string };
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
   lump?: boolean | number;
   /** Hold the first kind still (a lump, keeping its shape), until a phase lets it go (`release`). */
@@ -573,7 +601,7 @@ export interface ParticlePhase {
   lid?: Record<string, number>;
   /** Boxes whose divider is lifted out as the phase starts. */
   lift?: string[];
-  /** Boxes whose held lump is let go as the phase starts. */
+  /** Boxes whose held lump (or waiting reactions) are let go as the phase starts. */
   release?: string[];
   /** How hard to stir each box (0 stops; 2 stirs briskly), reached steadily over the phase. */
   stir?: Record<string, number>;
@@ -584,7 +612,7 @@ export interface ParticlePhase {
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
@@ -624,6 +652,60 @@ export interface ParticlesEl {
   speed?: number;
   /** Changes the starting arrangement, if one looks wrong. */
   seed?: number;
+  height?: number;
+}
+
+/** An atom in an atoms element: its nucleus, written with its symbol, and its electrons in shells. */
+export interface AtomSpec {
+  id: string;
+  /** The symbol on its nucleus ("Na"). */
+  symbol: string;
+  protons: number;
+  /** How many electrons it starts with (as many as its protons by default; 0 to fill it in a clip). */
+  electrons?: number;
+  /** Where its nucleus starts, in the element's units (a shell is about 0.6 wide). */
+  at: [number, number];
+  /** The nucleus's colour, and its electrons' (so they can be followed when given or shared). */
+  tone?: Tone;
+  /** Its name, under it ("sodium"), shown with the `labels` part. */
+  name?: string;
+  /** Write its name and arrangement above it instead (where another atom is close below). */
+  labelAbove?: boolean;
+}
+
+/** A stretch of an atoms clip: everything in it happens together, over `dur` seconds. */
+export interface AtomsPhase {
+  dur: number;
+  /** Electrons added one by one, inside shells first, until each named atom has this many. */
+  fill?: Record<string, number>;
+  /** Outer electrons passed from one atom to another (or lost, drifting away, with `to: null`). */
+  give?: Array<{ from: string; to: string | null; n: number }>;
+  /** Atoms slid to new places. */
+  move?: Record<string, [number, number]>;
+  /** A covalent bond: `n` outer electrons of each atom go to sit where their shells overlap. */
+  share?: Array<{ a: string; b: string; n: number }>;
+}
+
+/** What an atoms element can show besides the atoms: each is a part ("at.arrangement"). */
+export const ATOM_PARTS = ['labels', 'arrangement', 'charges'] as const;
+
+/**
+ * Atoms with their electrons circling in shells, for electron arrangements, ions and bonding (see
+ * src/video/atoms.ts). Showing the element shows the atoms; `labels` adds each one's name,
+ * `arrangement` its electrons shell by shell ("2, 8, 1") and `charges` its charge once it has
+ * one ("Na+"). A line plays a clip (`play: 'at.fill'`) and the electrons move as the narrator
+ * speaks; the next clip carries on from where the last one ended. Emphasising an atom's id makes
+ * it glow.
+ */
+export interface AtomsEl {
+  kind: 'atoms';
+  id: string;
+  atoms: AtomSpec[];
+  /** The width and height of the scene, in the units the atoms are placed in. */
+  span: [number, number];
+  clips: Record<string, { phases: AtomsPhase[] }>;
+  /** For the thumbnail: the clip to show, played to its end. */
+  poster?: string;
   height?: number;
 }
 
@@ -1121,7 +1203,7 @@ export interface GravityEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | AtomsEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -1496,7 +1578,7 @@ export function checkParticles(e: ParticlesEl): string[] {
   for (const b of e.boxes) {
     if ((PARTICLE_PARTS as readonly string[]).includes(b.id)) problems.push(`box id "${b.id}" is the name of a part.`);
     if (b.lid !== undefined && !(b.lid > 0.2 && b.lid <= 1)) problems.push(`box "${b.id}": a lid must be between 0.2 and 1.`);
-    const n = b.kinds ? b.kinds.reduce((s, k) => s + k.n, 0) : (b.n ?? 30);
+    const n = (b.kinds ? b.kinds.reduce((s, k) => s + k.n, 0) : (b.n ?? 30)) + (b.molecules ?? []).reduce((s, m) => s + m.n * m.atoms.length, 0);
     if (n > 120) problems.push(`box "${b.id}" has ${n} particles; keep it to 120 so frames draw quickly.`);
     if (b.follow !== undefined && !(b.follow >= 0 && b.follow < n)) problems.push(`box "${b.id}" follows a particle it does not have.`);
   }
@@ -1511,6 +1593,17 @@ export function checkParticles(e: ParticlesEl): string[] {
   for (const b of e.boxes) if (b.divider !== undefined && !(b.divider > 0.1 && b.divider < 0.9)) problems.push(`box "${b.id}": a divider must be between 0.1 and 0.9 of the way across.`);
   for (const b of e.boxes) if (b.wall && !(b.wall.at > 0.1 && b.wall.at < 0.9 && b.wall.height > 0 && b.wall.height < 1)) problems.push(`box "${b.id}": a wall must stand between 0.1 and 0.9 of the way across, and be lower than the box.`);
   for (const b of e.boxes) if (b.filter && !(b.filter.at > 0.1 && b.filter.at < 0.9)) problems.push(`box "${b.id}": a filter must be between 0.1 and 0.9 of the way up.`);
+  for (const b of e.boxes) {
+    const k = b.kinds?.length ?? 1;
+    const ok = (i: number) => Number.isInteger(i) && i >= 0 && i < k;
+    for (const r of b.reactions ?? []) if (![r.a, r.b, ...r.to].every(ok) || !(r.free ?? []).every((f) => f === null || ok(f))) problems.push(`box "${b.id}": a reaction names a kind it does not have.`);
+    for (const m of b.molecules ?? []) {
+      if (!m.atoms.every(ok) || m.atoms.length < 2) problems.push(`box "${b.id}": a molecule needs two atoms or more, of kinds the box has.`);
+      if (m.bent && m.atoms.length !== 3) problems.push(`box "${b.id}": only a molecule of three atoms can be bent.`);
+    }
+    if (b.molecules && (b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box (with a lump, if you like).`);
+    if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
+  }
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     clip.phases.forEach((ph, pi) => {
@@ -1518,7 +1611,7 @@ export function checkParticles(e: ParticlesEl): string[] {
       for (const id of ph.lift ?? []) if (!e.boxes.find((b) => b.id === id)?.divider) problems.push(`clip "${name}", phase ${pi + 1} lifts a divider that box "${id}" does not have.`);
       for (const id of ph.release ?? []) {
         const b = e.boxes.find((bb) => bb.id === id);
-        if (!b?.hold && !b?.filter) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
+        if (!b?.hold && !b?.filter && !b?.waits) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
       }
       for (const id of [...Object.keys(ph.stir ?? {}), ...Object.keys(ph.magnet ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const id of Object.keys(ph.run ?? {})) if (!e.boxes.find((b) => b.id === id)?.paper) problems.push(`clip "${name}", phase ${pi + 1} runs solvent up box "${id}", which is not paper.`);
@@ -1536,7 +1629,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -1595,6 +1688,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...PARTICLE_PARTS, ...e.boxes.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkParticles(e).map((p) => `Scene ${si + 1}: particles "${e.id}": ${p}`));
+      }
+      if (e.kind === 'atoms') {
+        diagrams.set(e.id, new Set<string>([...ATOM_PARTS, ...e.atoms.map((a) => a.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkAtoms(e).map((p) => `Scene ${si + 1}: atoms "${e.id}": ${p}`));
       }
       if (e.kind !== 'diagram') continue;
       const parts = new Set<string>();
