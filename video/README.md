@@ -238,6 +238,54 @@ See `src/video/script.ts` for every element and option. In short:
   a body that has landed is at rest. Arrows that point down from a body near the ground need
   room under the picture (`below`). A river has a ruler along its bank when `tick` is given.
 
+- `ramp` (`src/video/ramp.ts`) is for blocks on a surface, level or tilted: a box pushed across a
+  floor with friction, a block on an inclined plane, blocks tied by strings, a block pulled by a
+  body that hangs over a pulley (`hanging`), or two hanging bodies (a surface at 90 degrees, which
+  is not drawn). Give the `angle` and `length` of the surface, the bodies (each with a mass and
+  where it starts, `x`), the coefficients of `friction` (static, then kinetic) and the clips.
+  A phase gives only the pushes and pulls (`forces`, each `on` a body, with an `angle` from the
+  surface when it slants); the weight, the normal force, static or kinetic friction, every
+  tension and the motion are worked out from them, so the arrows always agree with the numbers of
+  the lesson. A phase can also `freeze` (to name the forces before anything moves), play in slow
+  motion, `set` a velocity or `tilt` the surface steadily (a block that stays put until the slope
+  is steep enough). The parts are `weight`, `normal`, `friction`, `tension`, `components` (the two
+  dashed parts of the weight on a slope, and of a push at an angle), `net`, `velocity`, `readout`
+  (the acceleration), `clock` and `strobe`. `balanced` lists blocks whose weight and normal force
+  are never drawn, `raise` stands the surface on a table, and `g` moves the block to another
+  world. The picture takes its scale from the room left by `pad` (pixels kept clear above the
+  surface and under the ground): long arrows need a larger pad or a smaller `forceScale`, and when
+  the labels of the weight and the normal force crowd a moving block, hide those two parts as it
+  goes.
+
+- `forces` (`src/video/forces.ts`) is for one object with forces that point any way in a plane.
+  Without `cables` it is seen from above on frictionless ice: the forces of the phase being played
+  (each with a size and an `angle` anticlockwise from east) are drawn from its middle, they add
+  to a net force, and it moves off along that force. With `cables` it hangs at rest from two
+  cables at those angles above the horizontal: the weight is known, the two tensions are worked
+  out from the angles, and they change as a phase tilts the cables (flatter cables, larger
+  tensions). The parts are `components` (the two dashed parts of every slanted force, head to
+  tail), `net` (with its size and its angle), `velocity`, `readout` (the speed and the
+  acceleration, as numbers), `trail` and `clock`, and for a hung object `weight`, `tension` and
+  `angles`. Beside a slanted push, show `readout` and not `velocity`: the velocity arrow lies
+  along the net force and crosses its label.
+
+- `gravity` (`src/video/gravity.ts`) is for bodies in space that attract one another: universal
+  gravitation, gravitational fields and, later, orbits. Give the `view` in metres (left, right,
+  bottom, top) and the bodies, in kilograms and metres; a body with a `radius` is a planet drawn
+  to scale, and one without is a small ball. Every force and field strength is worked out from
+  Newton's law with G = 6.67 × 10⁻¹¹ N·m²/kg², and follows as a clip carries a body somewhere
+  else (`to`) or changes its mass (`mass`), so the inverse square law is seen and not only said.
+  The parts are `force` (the pull on each body; the two pulls of a pair are always the same
+  length), `distance` (r, between the centres of the first two bodies), `radius` and `height`
+  (of the first body, and of the second above its surface), `field` (arrows of the first body's
+  field, shorter where it is weaker) and `g` (the field strength where each other body is).
+  `pulls` limits which bodies get an arrow, `notation: 'sci'` writes every force in scientific
+  notation, `figures` sets the significant figures of a distance, and `unit` writes distances in
+  another unit (`{ metres: 6.37e6, symbol: '× Earth radius' }`). To make a pair attract with a
+  round number of newtons, work one mass out from the other in the script. A view more than about
+  2.4 times as wide as it is tall is drawn under the title on the thumbnail, and a square one
+  beside it.
+
 - `rays` (`src/video/rays.ts`) is for light meeting a surface: a `mirror`, where the angle of
   reflection equals the angle of incidence, or a `boundary` between two materials with their
   `speeds`, where the angle of refraction follows from them (the slower material is shaded). A

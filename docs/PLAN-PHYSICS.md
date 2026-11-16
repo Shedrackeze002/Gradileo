@@ -9,8 +9,10 @@ changes**.
 **Progress.** Grade 10 Physics is built (14 November 2026): all five units, 27 lessons and 54
 skills, and Physics is a subject in the app. Grade 11 Physics is built and listed too (15 November
 2026): four units, 30 lessons and 60 skills, recommended from Grade 11 with a placement check on
-Grade 10 Physics. The videos of Grade 11 are being made, Unit 1 (Kinematics) first, and Grade 12
-follows.
+Grade 10 Physics. Grade 10 has a video for every lesson (28 videos). The videos of Grade 11 are
+being made one unit at a time: Unit 1 (Kinematics, ten videos) is rendered and in Drive
+(16 November 2026), Unit 2 (Dynamics, eight videos) is scripted, and Units 3 and 4 are next. Grade
+12 follows.
 
 ## Shape
 
@@ -76,12 +78,16 @@ built when the first unit that needs it is reached.
 | Piece | Shows | First needed in | State |
 |---|---|---|---|
 | Bodies on a straight track (`motion`) | Forces, velocity arrows, strobe marks, a clock, a velocity-time graph, momentum bars, collisions | Grade 10, Units 1 and 2 | Built |
-| Motion in two dimensions | Projectiles, ramps, pulleys, circular motion, orbits | Grade 10, Unit 3 | To build |
-| Energy bars | Kinetic and potential energy trading places while the total holds | Grade 10, Unit 3 | To build |
-| Springs and pendulums | Oscillation that traces its own curve | Grade 10, Unit 3 | To build |
-| Waves | Travelling waves, pulses, standing waves, wavefronts | Grade 10, Unit 4 | To build |
-| Rays | Reflection, refraction, mirrors and lenses | Grade 10, Unit 4 | To build |
-| Circuits | Charges flowing through wires, resistors and junctions, with meters | Grade 10, Unit 5 | To build |
+| Motion in two dimensions (`flight`) | Projectiles, a boat in a current, displacements on a map | Grade 11, Unit 1 | Built |
+| Blocks on a surface (`ramp`) | Friction, inclined planes, strings and pulleys, with every force worked out | Grade 11, Unit 2 | Built |
+| Forces in a plane (`forces`) | A puck seen from above, an object hung from two cables | Grade 11, Unit 2 | Built |
+| Bodies in space (`gravity`) | Universal gravitation, gravitational fields | Grade 11, Unit 2 | Built |
+| Circular motion and orbits | A ball on a string, a satellite in orbit | Grade 11, Unit 3 | To build |
+| Energy bars | Kinetic and potential energy trading places while the total holds | Grade 10, Unit 3 | Built (in `motion`) |
+| Springs and pendulums | Oscillation that traces its own curve | Grade 11, Unit 4 | To build |
+| Waves (`wave`) | Travelling waves and echoes; pulses, standing waves and wavefronts to come | Grade 10, Unit 4 | Built; more for Grade 11, Unit 4 |
+| Rays (`rays`) | Reflection and refraction; mirrors and lenses to come | Grade 10, Unit 4 | Built; more for Grade 12 |
+| Circuits (`circuit`) | Charges flowing through wires, resistors and junctions, with meters | Grade 10, Unit 5 | Built |
 | Charges and fields | Field lines, a charge moving in electric and magnetic fields | Grade 12, Unit B | To build |
 | Particles | Photons, scattering, radioactive decay | Grade 12, Unit C | To build, shared with chemistry's remake |
 
