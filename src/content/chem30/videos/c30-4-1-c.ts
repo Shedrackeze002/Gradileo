@@ -80,9 +80,9 @@ const video: Explainer = {
     {
       chapter: 'What the graph records',
       layout: 'center',
-      main: [n2o4Tube('cg', { seed: 1 })],
+      main: [n2o4Tube('cg', { seed: 6 })],
       lines: [
-        { say: 'A concentration graph records what happens inside the flask. Here, dye-nitrogen tetroxide pairs split, and the count of brown nitrogen dioxide molecules climbs, quickly at first and then more slowly, as pairs begin to form again.', caption: 'A concentration graph records what happens inside the flask. Here, dinitrogen tetroxide pairs split, and the count of brown nitrogen dioxide molecules climbs, quickly at first and then more slowly, as pairs begin to form again.', show: ['cg', 'cg.labels', 'cg.key', 'cg.tally'], play: 'cg.go' },
+        { say: 'A concentration graph records what happens inside the flask. Here, dye-nitrogen tetroxide pairs split, and the count of orange nitrogen dioxide molecules climbs, quickly at first and then more slowly, as pairs begin to form again.', caption: 'A concentration graph records what happens inside the flask. Here, dinitrogen tetroxide pairs split, and the count of orange nitrogen dioxide molecules climbs, quickly at first and then more slowly, as pairs begin to form again.', show: ['cg', 'cg.labels', 'cg.key', 'cg.tally'], play: 'cg.go' },
         { say: 'Then the count levels off, flickering around one value. On a graph, that is where the curve goes flat: the system has reached equilibrium.', focus: 'cg.tally' },
       ],
     },

@@ -109,10 +109,10 @@ const video: Explainer = {
     {
       chapter: 'Rates up close',
       layout: 'center',
-      main: [n2o4('rt', { seed: 1 })],
+      main: [n2o4('rt', { seed: 6 })],
       lines: [
-        { say: 'Here are the two rates up close. Every pair that splits is the forward reaction, and every two brown molecules that pair up is the reverse reaction. At first there are many pairs, and no brown molecules to pair up, so only splitting happens.', show: ['rt', 'rt.labels', 'rt.key', 'rt.tally'], play: 'rt.go' },
-        { say: 'As brown molecules build up, they meet more often, and pairing speeds up. When pairs form as fast as they split, the count stops climbing: the two rates are equal.', focus: 'rt.tally' },
+        { say: 'Here are the two rates up close. Every pair that splits is the forward reaction, and every two orange molecules that pair up is the reverse reaction. At first there are many pairs, and no orange molecules to pair up, so only splitting happens.', show: ['rt', 'rt.labels', 'rt.key', 'rt.tally'], play: 'rt.go' },
+        { say: 'As orange molecules build up, they meet more often, and pairing speeds up. When pairs form as fast as they split, the count stops climbing: the two rates are equal.', focus: 'rt.tally' },
       ],
     },
     {

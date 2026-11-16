@@ -437,6 +437,52 @@ describe('particles: slow reactions with a chance', () => {
   });
 });
 
+describe('particles: molecules that fall apart', () => {
+  // Pairs of kind 1 that fall apart into kind 0, which pair up again on touching.
+  const pairs = (o: { split: number; pair: number; energy?: number; temp?: number; lid?: number }): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'b',
+          state: 'gas',
+          width: 11,
+          height: 8,
+          temp: o.temp ?? 0.6,
+          kinds: [{ n: 0 }, { n: 0 }],
+          molecules: [{ atoms: [1, 1], n: 25 }],
+          breaks: [{ kinds: [1, 1], to: [0, 0], chance: o.split, energy: o.energy }],
+          reactions: [{ a: 0, b: 0, to: [1, 1], join: true, reach: 1.15, chance: o.pair }],
+          tally: { kinds: [0], label: 'single' },
+        },
+      ],
+      clips: {},
+      seed: 2,
+    });
+  const late = (e: ParticlesEl) => mean([24, 28, 32, 36, 40].map((t) => particlesAt(e, [], t)[0].tally!));
+
+  it('splits pairs without any meeting, and keeps every bond between whole pairs', () => {
+    const [f] = particlesAt(pairs({ split: 0.0005, pair: 0 }), [], 10);
+    expect(f.tally).toBeGreaterThan(20);
+    expect(f.bonds.length).toBe((50 - f.tally!) / 2);
+  });
+
+  it('settles part way when pairs split and re-form', () => {
+    const open = late(pairs({ split: 0.0001, pair: 0.0004 }));
+    expect(open).toBeGreaterThan(6);
+    expect(open).toBeLessThan(44);
+  });
+
+  it('splits more when hot, with an energy', () => {
+    const cold = late(pairs({ split: 0.0001 * Math.exp(1.5 / 0.6), pair: 0.0004, energy: 1.5, temp: 0.4 }));
+    const hot = late(pairs({ split: 0.0001 * Math.exp(1.5 / 0.6), pair: 0.0004, energy: 1.5, temp: 1 }));
+    expect(hot).toBeGreaterThan(cold + 4);
+  });
+
+  it('checks the kinds a break names', () => {
+    expect(checkParticles(el({ boxes: [{ id: 'b', state: 'gas', kinds: [{ n: 4 }], breaks: [{ kinds: [0, 2], to: [0, 0], chance: 0.1 }] }] }))).toEqual(['box "b": a break names a kind it does not have.']);
+  });
+});
+
 describe('particles: tally labels', () => {
   it('makes a label singular for a count of one', () => {
     expect(singular('hydronium ions')).toBe('hydronium ion');

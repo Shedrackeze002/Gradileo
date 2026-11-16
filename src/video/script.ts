@@ -544,6 +544,14 @@ export interface ParticleBox {
    */
   reactions?: Array<{ a: number; b: number; to: [number, number]; join?: boolean; free?: [number | null, number | null]; carry?: boolean; line?: boolean; energy?: number; heat?: number; reach?: number; settle?: boolean; chance?: number }>;
   /**
+   * Molecules that fall apart by themselves: each step of the simulation, a bond between atoms of
+   * `kinds` snaps with this `chance` (keep it small, about 0.0001 to 0.002), and the two atoms
+   * become the kinds in `to`. With `energy`, the chance is multiplied by e^(−energy / T), so it
+   * falls apart more often when hot. `heat` below zero cools the box each time (it takes energy
+   * in). Unlike a reaction, this needs no meeting, so squeezing a gas does not speed it up.
+   */
+  breaks?: Array<{ kinds: [number, number]; to: [number, number]; chance: number; energy?: number; heat?: number }>;
+  /**
    * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
    * made of these atoms (kinds, by place), the first bonded to each of the others round it. A
    * `bent` molecule of three atoms is bent like water; otherwise the atoms sit in a line.
@@ -1652,6 +1660,7 @@ export function checkParticles(e: ParticlesEl): string[] {
       if (m.bent && m.atoms.length !== 3) problems.push(`box "${b.id}": only a molecule of three atoms can be bent.`);
     }
     if (b.molecules && (b.apart || b.divider !== undefined || b.wall || b.filter || b.paper)) problems.push(`box "${b.id}": molecules can only start mixed through a plain box (with a lump, if you like).`);
+    for (const r of b.breaks ?? []) if (![...r.kinds, ...r.to].every(ok)) problems.push(`box "${b.id}": a break names a kind it does not have.`);
     if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
     if (b.reserve && !b.reserve.every(ok)) problems.push(`box "${b.id}": the burette holds a kind the box does not have.`);
     if (b.indicator && ![...b.indicator.acid, ...b.indicator.base].every(ok)) problems.push(`box "${b.id}": the indicator watches a kind the box does not have.`);

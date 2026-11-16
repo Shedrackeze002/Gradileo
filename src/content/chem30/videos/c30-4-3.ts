@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { rateArrows } from './lib/c30-4a-figures.ts';
+import { n2o4Stress } from './lib/c30-particles.ts';
 
 // A shift to the right: equal rates at equilibrium, a faster forward reaction just after a
 // reactant is added, then equal rates again at the new equilibrium.
@@ -72,6 +73,15 @@ const video: Explainer = {
         { say: 'Adding a reactant speeds up the forward reaction, so the system shifts right, using up some of what was added.', show: 'tb.0', focus: 'tb.0' },
         { say: 'Removing a product slows the reverse reaction, so the system also shifts right, replacing some of what was removed.', show: 'tb.1', focus: 'tb.1' },
         { say: 'Adding a product, or removing a reactant, does the opposite: the system shifts left.', show: ['tb.2', 'tb.3'], focus: ['tb.2', 'tb.3'] },
+      ],
+    },
+    {
+      chapter: 'Adding a product, up close',
+      layout: 'center',
+      main: [n2o4Stress('sp', 'more-no2', { seed: 10 })],
+      lines: [
+        { say: 'Here is a tube of dye-nitrogen tetroxide and nitrogen dioxide at equilibrium, up close. Each blue pair is a dye-nitrogen tetroxide molecule, and each orange particle is a nitrogen dioxide molecule. The count flickers around one value. Now more nitrogen dioxide, a product, drips in from above, and the count jumps.', caption: 'Here is a tube of dinitrogen tetroxide and nitrogen dioxide at equilibrium, up close. Each blue pair is a dinitrogen tetroxide molecule, and each orange particle is a nitrogen dioxide molecule. The count flickers around one value. Now more nitrogen dioxide, a product, drips in from above, and the count jumps.', show: ['sp', 'sp.labels', 'sp.key', 'sp.tally'], play: 'sp.stress' },
+        { say: 'With more of them about, nitrogen dioxide molecules meet and pair up more often, so the count falls again: the system shifts left. It does not fall all the way back, though. Only some of what was added is used up.', focus: 'sp.tally' },
       ],
     },
     {

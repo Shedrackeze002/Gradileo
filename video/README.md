@@ -235,9 +235,15 @@ See `src/video/script.ts` for every element and option. In short:
     while two particles touch, so keep it small), for a slow reaction, or one that runs both ways
     at steady rates and settles part way: an equilibrium. Give such reactions `reach: 1.15` so that
     only touching particles count, or a crowded box reacts at once. See `n2o4` in
-    `src/content/chem30/videos/lib/c30-particles.ts` (dinitrogen tetroxide pairs splitting into
-    nitrogen dioxide and pairing again). With few particles the count flickers by a few around
+    `src/content/chem30/videos/lib/c30-particles.ts` (nitrogen dioxide pairing up, with the
+    pairs splitting again through `breaks`, below). With few particles the count flickers by a few around
     its settled value; say so in the narration.
+  - A box's `breaks: [{ kinds: [1, 1], to: [0, 0], chance: 0.0001 }]` lets a molecule fall apart
+    by itself: each step a bond between those kinds snaps with that chance. Unlike a reaction it
+    needs no meeting, so squeezing a gas speeds up pairing but not splitting, and the mixture
+    shifts towards fewer molecules, as Le Chatelier says. With `energy` the chance is multiplied
+    by e^(−energy/T), so it splits more when hot. See `n2o4Stress` in
+    `src/content/chem30/videos/lib/c30-particles.ts` (adding, squeezing, heating and cooling).
   - Choose seeds by running the simulation in Chromium, not Node: the two can differ in the last
     bit of some maths functions, a reacting box magnifies that, and the video is drawn in
     Chromium. A seed that finishes a reaction in a Node probe may leave a particle over in the

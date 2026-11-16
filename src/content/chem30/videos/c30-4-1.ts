@@ -87,9 +87,9 @@ const video: Explainer = {
     {
       chapter: 'Inside the tube',
       layout: 'center',
-      main: [n2o4('eq', { seed: 1 })],
+      main: [n2o4('eq', { seed: 6 })],
       lines: [
-        { say: 'Here is the tube up close. Each blue pair is a dye-nitrogen tetroxide molecule, colourless in real life, and each brown particle is a nitrogen dioxide molecule. At first there are only pairs, so molecules can only split, and the brown count climbs quickly. As it climbs, brown molecules start to meet and pair up again.', caption: 'Here is the tube up close. Each blue pair is a dinitrogen tetroxide molecule, colourless in real life, and each brown particle is a nitrogen dioxide molecule. At first there are only pairs, so molecules can only split, and the brown count climbs quickly. As it climbs, brown molecules start to meet and pair up again.', show: ['eq', 'eq.labels', 'eq.key', 'eq.tally'], play: 'eq.go' },
+        { say: 'Here is the tube up close. Each blue pair is a dye-nitrogen tetroxide molecule, colourless in real life, and each orange particle is a nitrogen dioxide molecule. At first there are only pairs, so molecules can only split, and the orange count climbs quickly. As it climbs, orange molecules start to meet and pair up again.', caption: 'Here is the tube up close. Each blue pair is a dinitrogen tetroxide molecule, colourless in real life, and each orange particle is a nitrogen dioxide molecule. At first there are only pairs, so molecules can only split, and the orange count climbs quickly. As it climbs, orange molecules start to meet and pair up again.', show: ['eq', 'eq.labels', 'eq.key', 'eq.tally'], play: 'eq.go' },
         { say: 'Now the count flickers up and down by a few, as single molecules split and pair, but it stays around the same value. Pairs split as fast as new pairs form: this is dynamic equilibrium.', focus: 'eq.tally' },
       ],
     },

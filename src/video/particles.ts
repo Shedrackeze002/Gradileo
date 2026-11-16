@@ -166,6 +166,7 @@ interface BoxSim {
   front: number;
   /** The reactions between kinds, and the pairs of particles bonded into molecules. */
   reactions: NonNullable<ParticleBox['reactions']>;
+  breaks: NonNullable<ParticleBox['breaks']>;
   bonds: Bond[];
   /** The bonded pairs, as i × n + j with i < j, to find quickly. */
   bonded: Set<number>;
@@ -362,6 +363,30 @@ function react(s: BoxSim, divider?: number) {
   }
 }
 
+/**
+ * Molecules falling apart by themselves: each step, a bond between two kinds that a box's `breaks`
+ * names snaps with its chance (less at a low temperature, with `energy`), and the two atoms
+ * become the kinds in `to`.
+ */
+function breakApart(s: BoxSim, temp: number) {
+  const { kind, n } = s;
+  s.bonds = s.bonds.filter((bd) => {
+    if (!bd.show || s.gone[bd.i] || s.gone[bd.j]) return true;
+    for (const r of s.breaks) {
+      const [i, j] = kind[bd.i] === r.kinds[0] && kind[bd.j] === r.kinds[1] ? [bd.i, bd.j] : kind[bd.j] === r.kinds[0] && kind[bd.i] === r.kinds[1] ? [bd.j, bd.i] : [-1, -1];
+      if (i < 0) continue;
+      const p = r.chance * (r.energy ? Math.exp(-r.energy / Math.max(temp, 0.02)) : 1);
+      if (s.rnd() >= p) return true;
+      kind[i] = r.to[0];
+      kind[j] = r.to[1];
+      s.bonded.delete(Math.min(i, j) * n + Math.max(i, j));
+      if (r.heat) s.warm += r.heat;
+      return false;
+    }
+    return true;
+  });
+}
+
 /** Bonds atoms i and j, at the usual length for their sizes (or `len`). */
 function addBond(s: BoxSim, i: number, j: number, show: boolean, len?: number) {
   const [a, c] = i < j ? [i, j] : [j, i];
@@ -542,6 +567,7 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     poured: 0,
     front: PAPER_START - 0.6,
     reactions: b.reactions ?? [],
+    breaks: b.breaks ?? [],
     bonds: [],
     bonded: new Set(),
     contacts: [],
@@ -856,6 +882,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   const gravityTemp = o.escape || o.wall ? 0 : o.bath || zones ? measuredTemp(s) : temp;
   forces(s, gravityTemp, o.sigma, o.stir ?? 0, w, lid, o.magnet ?? 0);
   if (o.react) react(s, o.divider);
+  if (o.react && s.breaks.length) breakApart(s, temp);
   // A bath holds its strip firmly, as a flame or ice would, so heat goes in or out quickly there.
   const c1 = Math.exp(-(o.bath || zones ? BATH_GAMMA : GAMMA) * DT);
   const c2 = Math.sqrt((1 - c1 * c1) * temp);

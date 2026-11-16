@@ -123,7 +123,7 @@ const video: Explainer = {
     {
       chapter: 'Both sides, up close',
       layout: 'center',
-      main: [n2o4BothWays('bw', { seed: 4 })],
+      main: [n2o4BothWays('bw', { seed: 12 })],
       lines: [
         { say: 'Here are two tubes up close, the same size and at the same temperature. The left one starts with only dye-nitrogen tetroxide, so its pairs split. The right one starts with only nitrogen dioxide, made of the same atoms, so its molecules pair up.', caption: 'Here are two tubes up close, the same size and at the same temperature. The left one starts with only dinitrogen tetroxide, so its pairs split. The right one starts with only nitrogen dioxide, made of the same atoms, so its molecules pair up.', show: ['bw', 'bw.labels', 'bw.key', 'bw.tally'], play: 'bw.go' },
         { say: 'Soon both tubes hold about the same number of nitrogen dioxide molecules, flickering around the same value. One mixture, reached from either side.', focus: 'bw.tally' },
