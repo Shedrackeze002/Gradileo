@@ -1,11 +1,12 @@
 import type { Explainer } from '@/video/script.ts';
+import { boilingWater } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-4-b',
   lessonId: 'c10-1-4',
   title: 'Physical and Chemical Change, Part 2: Physical and Chemical Properties',
   thumbnailTitle: 'Physical and Chemical Properties',
-  thumbnail: false,
+  thumbnail: 'bw',
   summary:
     'Evidence can mislead: bubbles in boiling water and a glowing light bulb make no new substance, so always ask whether a new substance forms. Physical properties are observed or measured without making a new substance; chemical properties describe how a substance reacts, or does not react.',
   scenes: [
@@ -19,8 +20,10 @@ const video: Explainer = {
     },
     {
       chapter: 'When evidence misleads',
-      layout: 'center',
-      main: [
+      layout: 'split',
+      leftWidth: 440,
+      left: [boilingWater('bw', 420)],
+      right: [
         { kind: 'callout', id: 'key', tone: 'key', title: 'The real question', md: 'Is a **new substance** made?' },
         {
           kind: 'bullets',
@@ -35,7 +38,7 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Evidence can mislead you, so always come back to the real question: is a new substance made?', show: 'key' },
-        { say: 'Bubbles form when water boils, but the bubbles are water vapour: the same substance in a different state. Boiling is physical.', show: 'ex.0' },
+        { say: 'Bubbles form when water boils, but the bubbles are water vapour: the same substance in a different state. Watch the molecules: they fly apart, but every one is still a water molecule. Boiling is physical.', show: ['ex.0', 'bw', 'bw.thermo'], play: 'bw.boil' },
         { say: 'A glowing light bulb filament is still the same metal, and it stops glowing when it is switched off. Physical.', show: 'ex.1' },
         { say: 'Melting ice takes in energy, but melted ice is still water. And the fog around dry ice is tiny droplets of water condensed from the air. Both physical.', show: ['ex.2', 'ex.3'] },
         { say: 'So look for bubbles produced when substances are mixed, as when zinc is added to acid, or vinegar to baking soda.' },

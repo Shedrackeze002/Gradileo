@@ -1,5 +1,5 @@
 import type { ParticleBox, ParticlesEl } from '@/video/script.ts';
-import { ATOM } from '@/video/reactions.ts';
+import { ATOM, hydrogenBurning } from '@/video/reactions.ts';
 
 // Simulated particles for Chemistry 10 (src/video/particles.ts): they attract and jostle one
 // another, so a cold box settles into vibrating rows, a warm one slides about and a hot one flies
@@ -269,3 +269,120 @@ export const chromatography = (id: string, height = 460): ParticlesEl => ({
   clips: { run: { phases: [{ dur: 1, run: { x: 1, a: 1, b: 1 } }, { dur: 11 }] } },
   height,
 });
+
+/** Liquid water: water molecules close together, until it is heated. */
+const water = (id: string): ParticleBox => ({ id, state: 'liquid', width: 10, height: 10, temp: 0.3, kinds: [{ ...ATOM.O, bond: 1, heavy: 1 }, { ...ATOM.H, bond: 1, heavy: 1 }], molecules: [{ atoms: [0, 1, 1], n: 10, bent: true }], label: 'water' });
+
+/**
+ * Water boiling (clip `boil`: a physical change, every molecule still water) beside hydrogen and
+ * oxygen lit by a spark (clip `spark`: a chemical change, the atoms joined up as new water molecules,
+ * counted by the part `tally`).
+ */
+export const boilOrBurn = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [water('w'), hydrogenBurning('h', { label: 'hydrogen and oxygen' })],
+  clips: {
+    boil: { phases: [{ dur: 4, heat: { w: 2.5 } }, { dur: 6 }] },
+    spark: { phases: [{ dur: 1, heat: { h: 2 } }, { dur: 2 }, { dur: 1, heat: { h: 0.4 } }, { dur: 8 }] },
+  },
+  thermometers: true,
+  seed: 7,
+  height,
+});
+
+/** Water alone, boiled by the clip `boil`: its molecules fly apart, but every one is still water. */
+export const boilingWater = (id: string, height = 440): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [water('w')],
+  clips: { boil: { phases: [{ dur: 4, heat: { w: 2.5 } }, { dur: 6 }] } },
+  thermometers: true,
+  height,
+});
+
+/** Particles dissolved in water (the water itself is not drawn): they drift freely. */
+const DISSOLVED = { n: 0, bond: 0.15, heavy: 0.3 } as const;
+
+/**
+ * Two signs of a reaction: zinc fizzing in acid (clip `fizz`: hydrogen gas rises as bubbles), and two
+ * solutions mixed (clip `mix`: silver and chloride particles join into a precipitate that sinks).
+ */
+export const reactionSigns = (id: string, height = 360): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'z',
+      state: 'liquid',
+      width: 10,
+      height: 11,
+      temp: 0.5,
+      lump: true,
+      hold: true,
+      kinds: [
+        { n: 14, bond: 3, heavy: 2, tone: 'brand', name: 'zinc' },
+        { ...DISSOLVED, n: 18, size: 0.8, tone: 'theta', name: 'acid hydrogen' },
+        { ...DISSOLVED, tone: 'brand', name: 'dissolved zinc' },
+        { ...DISSOLVED, size: 0.8, tone: 'theta', name: 'loose hydrogen' },
+        { ...DISSOLVED, size: 0.8, heavy: -1.5, tone: 'theta', name: 'hydrogen gas' },
+      ],
+      reactions: [
+        { a: 1, b: 0, to: [3, 2], energy: 1.5 },
+        { a: 3, b: 3, to: [4, 4], join: true },
+      ],
+      label: 'zinc in acid',
+    },
+    {
+      id: 's',
+      state: 'liquid',
+      width: 10,
+      height: 11,
+      temp: 0.8,
+      divider: 0.5,
+      apart: true,
+      kinds: [
+        { ...DISSOLVED, n: 14, heavy: 0.1, tone: 'adj', name: 'silver' },
+        { ...DISSOLVED, n: 14, heavy: 0.1, tone: 'good', name: 'chloride' },
+        { n: 0, bond: 2.5, heavy: 2, tone: 'adj', name: 'solid silver chloride' },
+        { n: 0, bond: 2.5, heavy: 2, tone: 'good', name: 'solid silver chloride' },
+      ],
+      reactions: [{ a: 0, b: 1, to: [2, 3], join: true }],
+      label: 'two solutions',
+    },
+  ],
+  clips: {
+    fizz: { phases: [{ dur: 1, release: ['z'] }, { dur: 11 }] },
+    mix: { phases: [{ dur: 1, lift: ['s'] }, { dur: 11 }] },
+  },
+  height,
+});
+
+/**
+ * A lump in water, held on the floor until the clip `go` lets it go: a lump less dense than the
+ * water rises to the surface and floats; a denser one stays at the bottom. A few dozen particles
+ * cannot carry real buoyancy, so the floating lump gets a gentle upward pull (`heavy` below zero,
+ * as hydrogen gas bubbles do), in a beaker filled to the top. It runs faster than usual (`speed`).
+ */
+export const floatOrSink = (id: string, height = 380): ParticlesEl => {
+  const box = (bid: string, heavy: number, tone: 'adj' | 'opp' | 'hyp' | 'theta' | 'brand' | 'good', label: string): ParticleBox => ({
+    id: bid,
+    state: 'liquid',
+    width: 10,
+    height: 11,
+    temp: 0.7,
+    lump: true,
+    hold: true,
+    cross: 0.6,
+    kinds: [{ n: 9, bond: 4, heavy, tone, name: label }, { n: 46, heavy: 0.4, tone: 'adj', name: 'water' }],
+    label,
+  });
+  return {
+    kind: 'particles',
+    id,
+    boxes: [box('ice', -0.6, 'good', 'ice'), box('nail', 4, 'hyp', 'iron')],
+    clips: { go: { phases: [{ dur: 1, release: ['ice', 'nail'] }, { dur: 9 }] } },
+    speed: 3,
+    height,
+  };
+};

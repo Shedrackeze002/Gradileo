@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { cylinders, floatSink } from './lib/c10-1-figures.ts';
+import { cylinders } from './lib/c10-1-figures.ts';
+import { floatOrSink } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-4-d',
@@ -51,7 +52,7 @@ const video: Explainer = {
       chapter: 'Floating and sinking',
       layout: 'split',
       leftWidth: 520,
-      left: [figure('fs', [floatSink()])],
+      left: [floatOrSink('fs', 380)],
       right: [
         {
           kind: 'bullets',
@@ -60,10 +61,10 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Density also tells you whether an object floats. Water has a density of one point zero zero grams per cubic centimetre.', show: ['fs.beaker', 'fs.water', 'b.0'] },
-        { say: 'An object less dense than water floats in it. Ice, at zero point nine two, floats, with most of its volume under the surface.', show: ['fs.ice', 'fs.ice-l', 'b.1'], focus: 'fs.ice' },
-        { say: 'An object denser than water sinks. An iron nail, at seven point eight seven, goes straight to the bottom.', show: ['fs.nail', 'fs.nail-l', 'b.2'], focus: 'fs.nail' },
-        { say: 'In the same way, a liquid that does not mix with water and is less dense than water, such as oil, floats on top of it.', show: 'b.3', focus: 'fs' },
+        { say: 'Density also tells you whether an object floats. Water has a density of one point zero zero grams per cubic centimetre. Here, a lump of ice and a lump of iron are held at the bottom of two beakers of water.', show: ['fs', 'fs.labels', 'b.0'] },
+        { say: 'Let them go. An object less dense than water floats in it: the ice, at zero point nine two, rises to the top.', show: 'b.1', play: 'fs.go', focus: 'fs.ice' },
+        { say: 'An object denser than water sinks. The iron, at seven point eight seven, stays on the bottom.', show: 'b.2', focus: 'fs.nail' },
+        { say: 'In the same way, a liquid that does not mix with water and is less dense than water, such as oil, floats on top of it.', show: 'b.3' },
       ],
     },
     {
