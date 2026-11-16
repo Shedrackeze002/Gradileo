@@ -1,4 +1,5 @@
-import type { ParticlesEl } from '@/video/script.ts';
+import type { ParticleBox, ParticlesEl } from '@/video/script.ts';
+import { ATOM } from '@/video/reactions.ts';
 
 // Simulated particles for Chemistry 10 (src/video/particles.ts): they attract and jostle one
 // another, so a cold box settles into vibrating rows, a warm one slides about and a hot one flies
@@ -97,5 +98,94 @@ export const threeTemperatures = (id: string, height = 480): ParticlesEl => ({
     gas: { phases: [{ dur: 3, heat: { b: 2.5 } }, { dur: 1 }] },
   },
   thermometers: MARKS,
+  height,
+});
+
+/** Atoms as a gas, their pull on one another weakened so that molecules stay apart. */
+const H = { ...ATOM.H, size: 0.7, bond: 0.05 };
+const O = { ...ATOM.O, size: 0.9, bond: 0.05 };
+const N = { ...ATOM.Ne, name: 'nitrogen', tone: 'adj' as const, size: 0.9, bond: 0.05 };
+const gasBox = (b: Partial<ParticleBox>): ParticleBox => ({ id: 'x', state: 'gas', width: 8, height: 8, temp: 1.6, ...b });
+
+/** An element of single atoms (helium), an element of molecules (oxygen) and a compound (water). */
+export const substances = (id: string, height = 360): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    gasBox({ id: 'he', kinds: [{ n: 8, bond: 0.15, heavy: 0, tone: 'good', name: 'helium' }], label: 'element: helium, He' }),
+    gasBox({ id: 'ox', kinds: [O], molecules: [{ atoms: [0, 0], n: 6 }], label: 'element: oxygen, O₂' }),
+    gasBox({ id: 'cp', kinds: [O, H], molecules: [{ atoms: [0, 1, 1], n: 6, bent: true }], label: 'compound: water, H₂O' }),
+  ],
+  clips: {},
+  height,
+});
+
+/** Air: nitrogen and oxygen molecules and argon atoms, about 78%, 21% and 1%, moving among one another. */
+export const air = (id: string, height = 440): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    gasBox({
+      id: 'b',
+      width: 11,
+      height: 10,
+      kinds: [N, O, { n: 1, bond: 0.15, heavy: 0, tone: 'theta', name: 'argon' }],
+      molecules: [
+        { atoms: [0, 0], n: 11 },
+        { atoms: [1, 1], n: 3 },
+      ],
+      label: 'air',
+    }),
+  ],
+  clips: {},
+  height,
+});
+
+/**
+ * Iron and sulfur stirred together (a mixture), and grains of iron sulfide (a compound, a new
+ * substance). The clip `magnet` holds a magnet over both: it lifts only the free iron.
+ */
+export const ironSulfur = (id: string, height = 360): ParticlesEl => {
+  const grains = { bond: 0.4, heavy: 2 };
+  const iron = { ...grains, tone: 'hyp' as const, name: 'iron' };
+  const sulfur = { ...grains, tone: 'theta' as const, name: 'sulfur' };
+  return {
+    kind: 'particles',
+    id,
+    boxes: [
+      { id: 'm', state: 'liquid', width: 12, height: 9, temp: 0.15, cross: 0.3, kinds: [{ n: 10, ...iron, magnetic: true }, { n: 14, ...sulfur }], label: 'mixture: iron and sulfur' },
+      { id: 'c', state: 'liquid', width: 12, height: 9, temp: 0.15, kinds: [{ n: 16, ...grains, size: 1.2, tone: 'brand', name: 'iron sulfide' }], label: 'compound: iron sulfide, FeS' },
+    ],
+    clips: { magnet: { phases: [{ dur: 2, magnet: { m: 1, c: 1 } }, { dur: 6 }] } },
+    height,
+  };
+};
+
+const WATER = { heavy: 0.2, tone: 'adj' as const, name: 'water' };
+const SUGAR = { bond: 1.5, heavy: 0.2, tone: 'theta' as const, name: 'sugar' };
+
+/**
+ * Two mixtures in water: salt dissolved evenly all through it (homogeneous), and sand that sinks to
+ * the bottom (heterogeneous).
+ */
+export const twoMixtures = (id: string, height = 360): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    { id: 'homo', state: 'liquid', width: 10, height: 9, temp: 0.7, cross: 1.8, kinds: [{ n: 8, bond: 1.2, heavy: 0.2, tone: 'theta', name: 'salt' }, { n: 40, ...WATER }], label: 'salt water' },
+    { id: 'hetero', state: 'liquid', width: 10, height: 9, temp: 0.7, cross: 1, kinds: [{ n: 10, bond: 4, heavy: 3, size: 1.2, tone: 'opp', name: 'sand' }, { n: 40, ...WATER }], label: 'sand and water' },
+  ],
+  clips: {},
+  speed: 4,
+  height,
+});
+
+/** A lump of sugar held above the floor of a beaker of water; the clip `drop` lets it go and it dissolves. */
+export const sugarDissolving = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 's', state: 'liquid', kinds: [{ n: 14, ...SUGAR }, { n: 44, ...WATER }], lump: true, hold: true, cross: 1.8, width: 12, height: 9, temp: 0.7, label: 'sugar in water' }],
+  clips: { drop: { phases: [{ dur: 1, release: ['s'] }, { dur: 11 }] } },
+  speed: 4,
   height,
 });

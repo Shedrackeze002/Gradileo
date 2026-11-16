@@ -1,21 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
-import { particles } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { tag } from './lib/c10-1-figures.ts';
-
-// Helium atoms, oxygen molecules and the molecules of a compound, as gases.
-const kinds = figure(
-  'pm',
-  [
-    particles({ name: 'he', state: 'gas', at: [0, 0], size: 5, seed: 2, kinds: [{ id: 'p', tone: 'theta', count: 7 }] }),
-    tag('he-l', [2.5, -0.2], '\\text{element: helium}', { place: 'below', group: 'he-p' }),
-    particles({ name: 'ox', state: 'gas', at: [7, 0], size: 5, seed: 3, kinds: [{ id: 'p', tone: 'bad', count: 5, atoms: 2 }] }),
-    tag('ox-l', [9.5, -0.2], '\\text{element: oxygen}', { place: 'below', group: 'ox-p' }),
-    particles({ name: 'cp', state: 'gas', at: [14, 0], size: 5, seed: 4, kinds: [{ id: 'p', tone: 'adj', second: 'bad', count: 5, atoms: 2 }] }),
-    tag('cp-l', [16.5, -0.2], '\\text{compound}', { place: 'below', group: 'cp-p' }),
-  ],
-  360,
-);
+import { substances } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-2',
@@ -49,11 +33,11 @@ const video: Explainer = {
     {
       chapter: 'Elements and compounds',
       layout: 'center',
-      main: [kinds],
+      main: [substances('pm', 380)],
       lines: [
-        { say: 'An element is a pure substance made of only one kind of atom. In helium, every particle is a helium atom.', show: ['pm.he-box', 'pm.he-p'], focus: 'pm.he-p' },
-        { say: 'The atoms of some elements are joined in small groups called molecules. Oxygen gas is made of O two molecules: two oxygen atoms joined together. Oxygen is still an element, because every atom is the same kind.', caption: 'The atoms of some elements are joined in small groups called molecules. Oxygen gas is made of O₂ molecules: two oxygen atoms joined together. Oxygen is still an element, because every atom is the same kind.', show: ['pm.ox-box', 'pm.ox-p'], focus: 'pm.ox-p' },
-        { say: 'A compound is a pure substance made of two or more elements, chemically joined in a fixed ratio. Here, every molecule has two different kinds of atom, joined together.', show: ['pm.cp-box', 'pm.cp-p'], focus: 'pm.cp-p' },
+        { say: 'An element is a pure substance made of only one kind of atom. In helium, every particle is a helium atom, flying about on its own.', show: ['pm', 'pm.labels'], focus: 'pm.he' },
+        { say: 'The atoms of some elements are joined in small groups called molecules. Oxygen gas is made of O two molecules: two oxygen atoms joined together. Oxygen is still an element, because every atom is the same kind.', caption: 'The atoms of some elements are joined in small groups called molecules. Oxygen gas is made of O₂ molecules: two oxygen atoms joined together. Oxygen is still an element, because every atom is the same kind.', focus: 'pm.ox' },
+        { say: 'A compound is a pure substance made of two or more elements, chemically joined in a fixed ratio. In water, every molecule has two hydrogen atoms joined to one oxygen atom, and the atoms stay together as the molecule moves.', focus: 'pm.cp' },
       ],
     },
     {
