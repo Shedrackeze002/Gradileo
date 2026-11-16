@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, beaker, tag } from './lib/c10-5-figures.ts';
+import { neutralizing } from './lib/c10-particles.ts';
 
 // Hydrochloric acid and sodium hydroxide solution mix: the hydrogen and hydroxide ions make water,
 // and the sodium and chloride ions are left as the salt.
@@ -83,6 +84,18 @@ const video: Explainer = {
         { say: 'And an alkali such as sodium hydroxide forms hydroxide ions.', show: ['x.plus', 'x.b-glass', 'x.b-liquid', 'x.b-label', 'x.b-n0', 'x.b-n1', 'x.b-o0', 'x.b-o1'], focus: ['x.b-o0', 'x.b-o1'] },
         { say: 'When they mix, the hydrogen ions and the hydroxide ions join to make water. H plus, plus O H minus, gives H two O.', caption: 'When they mix, the hydrogen ions and the hydroxide ions join to make water. H⁺ + OH⁻ gives H₂O.', show: ['x.arrow', 'x.c-glass', 'x.c-liquid', 'x.c-water', 'm'], focus: ['x.c-water', 'm'] },
         { say: 'The ions that are left, the metal ion from the base and the negative ion from the acid, make up the salt. Here, sodium ions and chloride ions make sodium chloride.', show: ['x.c-salt', 'x.c-label'], focus: 'x.c-salt' },
+      ],
+    },
+    {
+      chapter: 'Neutralization up close',
+      layout: 'split',
+      leftWidth: 600,
+      left: [neutralizing('nz', 440)],
+      right: [{ kind: 'callout', id: 'k', tone: 'key', title: 'What you are watching', md: 'Each $\\ce{H+}$ joins an $\\ce{OH-}$ as a water molecule, giving out heat. The **sodium** and **chloride** ions take no part: they are the **salt**.' }],
+      lines: [
+        { say: 'Here is the reaction up close: hydrochloric acid and sodium hydroxide solution, just mixed, with a thermometer. The small yellow particles are hydrogen ions, and the red and yellow pairs are hydroxide ions.', show: ['nz', 'nz.labels', 'nz.tally', 'nz.thermo'] },
+        { say: 'Each time a hydrogen ion meets a hydroxide ion, they join as a water molecule. Watch the count of water molecules climb, and the temperature rise: neutralization gives out heat.', play: 'nz.go', focus: 'nz.b' },
+        { say: 'The sodium ions, in purple, and the chloride ions, in green, never take part. When the reaction is over, they are what is left in the water: dissolved sodium chloride, the salt.', show: 'k' },
       ],
     },
     {

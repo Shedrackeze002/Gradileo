@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { chargeBars } from './lib/c10-5-figures.ts';
+import { saltCrystals } from './lib/c10-particles.ts';
 
 // Calcium nitrate: one calcium ion (2+) balances two nitrate ions (1− each).
 const calcium = figure('c', [
@@ -33,6 +34,18 @@ const video: Explainer = {
       lines: [
         { say: 'You can now name the salt that an acid and a base make. But what is its formula?', show: 'title' },
         { say: 'A salt is an ionic compound, so its formula comes from the charges of its ions, as in lesson three point two. In this part, you will write the formulas of salts, and a balanced symbol equation.' },
+      ],
+    },
+    {
+      chapter: 'A salt crystal forming',
+      layout: 'split',
+      leftWidth: 560,
+      left: [saltCrystals('sc', 420)],
+      right: [{ kind: 'callout', id: 'k', tone: 'key', title: 'Ions in a fixed ratio', md: 'Sodium ions, $\\ce{Na+}$, and chloride ions, $\\ce{Cl-}$, lock together **one to one**, so the charges cancel: $\\ce{NaCl}$.' }],
+      lines: [
+        { say: 'After neutralization, the salt is dissolved in the water as separate ions. Here is sodium chloride solution in an evaporating dish: sodium ions in purple, chloride ions in green.', show: ['sc', 'sc.labels'] },
+        { say: 'Heat the dish, and the water particles escape as vapour. The ions stay behind.', play: 'sc.heat' },
+        { say: 'As it cools, the ions lock together as a crystal, one sodium ion for every chloride ion, so the charges cancel. That ratio is the formula: N A C L.', caption: 'As it cools, the ions lock together as a crystal, one sodium ion for every chloride ion, so the charges cancel. That ratio is the formula: NaCl.', play: 'sc.cool', show: 'k' },
       ],
     },
     {

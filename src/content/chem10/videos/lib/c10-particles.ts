@@ -521,3 +521,66 @@ export const magnesiumInAcid = (id: string, height = 380): ParticlesEl => ({
   clips: { fizz: { phases: [{ dur: 1, release: ['mg'] }, { dur: 13 }] } },
   height,
 });
+
+const ION = { n: 8, bond: 0.15, heavy: 0 } as const;
+
+/**
+ * Hydrochloric acid and sodium hydroxide solution, just mixed (clip `go`): a hydrogen ion that
+ * meets a hydroxide ion joins it as a water molecule, giving out heat; the sodium and chloride ions
+ * take no part and are left as the salt. As in Chemistry 9 (c9-4-3).
+ */
+export const neutralizing = (id: string, height = 440): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'b',
+      state: 'gas',
+      width: 11,
+      height: 9,
+      temp: 0.5,
+      waits: true,
+      // 0 hydrogen ion, 1 chloride ion, 2 sodium ion, 3 and 4 a hydroxide ion's O and H,
+      // 5 and 6 the hydrogen ion and the oxygen once they are water.
+      kinds: [{ ...ATOM.H, n: 8, name: 'hydrogen ion' }, { ...ION, tone: 'good', name: 'chloride ion' }, { ...ION, tone: 'brand', name: 'sodium ion' }, ATOM.O, ATOM.H, ATOM.H, ATOM.O],
+      molecules: [{ atoms: [3, 4], n: 8 }],
+      reactions: [{ a: 0, b: 3, to: [5, 6], join: true, heat: 0.12 }],
+      tally: { kinds: [6], label: 'water molecules' },
+      label: 'hydrochloric acid + sodium hydroxide',
+    },
+  ],
+  clips: { go: { phases: [{ dur: 1, release: ['b'] }, { dur: 13 }] } },
+  thermometers: true,
+  seed: 1,
+  height,
+});
+
+/**
+ * Sodium chloride solution in an evaporating dish: the clip `heat` drives the water off, and `cool`
+ * lets the sodium ions and chloride ions left behind lock together as a crystal, one of each.
+ */
+export const saltCrystals = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'a',
+      state: 'liquid',
+      width: 12,
+      height: 10,
+      temp: 0.5,
+      escape: true,
+      bath: 'floor',
+      cross: 2.4,
+      kinds: [
+        { n: 6, bond: 2, heavy: 3, tone: 'brand', name: 'sodium ion' },
+        { n: 6, bond: 2, heavy: 3, tone: 'good', name: 'chloride ion' },
+        { n: 40, heavy: 0.3, tone: 'adj', name: 'water' },
+      ],
+      label: 'sodium chloride solution',
+    },
+  ],
+  clips: { heat: { phases: [{ dur: 2, heat: { a: 1.8 } }, { dur: 12 }] }, cool: { phases: [{ dur: 4, heat: { a: 0.3 } }, { dur: 5 }] } },
+  speed: 2.5,
+  height,
+});
