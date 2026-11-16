@@ -144,8 +144,9 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   const ground = top + 2 * BIG + (el.span[1] - el.span[0]) * S;
   const Y = (m: number) => (up ? ground - (m - el.span[0]) * S : top + 2 * BIG + (m - el.span[0]) * S);
   const R = (b: MotionBody) => Math.max(24, Math.min(BIG, (widthOf(b) * S) / 2));
-  // The note of a phase sits between the columns, or over the graph when there is one.
-  const noteX = beside ? w * 0.5 + 150 : w / 2;
+  // The note of a phase sits between the columns, or over the graph when there is one; in a narrow
+  // picture it moves left to clear the clock.
+  const noteX = Math.min(beside ? w * 0.5 + 150 : w / 2, clock > 0 ? w - 302 : w);
   const out: ReactElement[] = [];
 
   lanes.forEach((lane, li) => {
@@ -277,7 +278,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
       out.push(<Arrow key={`f-${b.id}-${force.name}`} x={fx} y={y0} len={down ? -len : len} axis="y" color={fc} />);
       out.push(
         <Text key={`ft-${b.id}-${force.name}`} x={fx + (left ? -18 : 18)} y={down ? y0 + mid : y0 - mid} anchor={left ? 'end' : 'start'} color={fc} opacity={force.drag || coil ? clamp01(len / 10) : clamp01(grow * 1.5)}>
-          {`${force.name} ${force.drag || coil ? newtons(size) : short(size)} N`}
+          {`${force.name} ${force.drag || coil ? newtons(size) : size >= 999.5 ? Math.round(size) : short(size)} N`}
         </Text>,
       );
     }
