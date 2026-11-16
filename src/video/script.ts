@@ -1057,10 +1057,17 @@ export interface GravityBody {
   radius?: number;
   /** The radius of the ball in pixels (16 by default); it swells as its mass grows. */
   size?: number;
+  /**
+   * It starts in a circular orbit round the first body, anticlockwise: its speed is worked out,
+   * √(GM ÷ r). It moves while a phase lets time run (`fly`).
+   */
+  orbit?: boolean;
+  /** Or its starting velocity, in metres per second, as [right, up]: it falls freely under the pull of the bodies that stay where they are. */
+  v?: [number, number];
   tone?: Tone;
 }
 
-/** A stretch of a gravity clip, during which bodies are carried to new places or change their mass. */
+/** A stretch of a gravity clip, during which bodies are carried to new places, change their mass, or fly freely. */
 export interface GravityPhase {
   /** How long it lasts, in seconds of video. */
   dur: number;
@@ -1068,6 +1075,16 @@ export interface GravityPhase {
   to?: Record<string, number | [number, number]>;
   /** The masses bodies have by the end of the phase, in kilograms, by id. */
   mass?: Record<string, number>;
+  /**
+   * Bodies thrown as the phase starts, by id, each with a velocity in metres per second as
+   * [right, up]. A body that has flown before is put back where it started first, and the path it
+   * took stays on the picture, faded, to compare with the new one.
+   */
+  launch?: Record<string, [number, number]>;
+  /** Let time run: bodies in orbit and bodies that have been thrown move under gravity, `rate` seconds of motion for each second of video. */
+  fly?: boolean;
+  /** Seconds of the motion for each second of video in this phase (the element's `rate` otherwise). */
+  rate?: number;
   /** A short note shown over the picture. */
   note?: string;
 }
@@ -1079,7 +1096,7 @@ export interface GravityClip {
 }
 
 /** What a gravity element can show over its bodies; each is a part ("space.force"). */
-export const GRAVITY_PARTS = ['force', 'distance', 'radius', 'height', 'field', 'g'] as const;
+export const GRAVITY_PARTS = ['force', 'distance', 'radius', 'height', 'field', 'g', 'velocity', 'trail', 'orbit', 'clock', 'turns'] as const;
 
 /**
  * Bodies in space that attract one another, for universal gravitation, gravitational fields and
@@ -1090,7 +1107,11 @@ export const GRAVITY_PARTS = ['force', 'distance', 'radius', 'height', 'field', 
  * pair are always equal), `distance` (the distance r between the centres of the first two bodies),
  * `radius` and `height` (the radius of the first body, and how far the second is above its
  * surface), `field` (arrows of the first body's field, shorter where it is weaker) and `g` (the
- * field strength where each of the other bodies is). Emphasising a body's id makes it glow.
+ * field strength where each of the other bodies is). A body with `orbit` or a velocity, or one that
+ * a phase throws (`launch`), moves freely under gravity while a phase lets time run (`fly`): it
+ * orbits, or it falls until it lands on a planet. For those there are `velocity` (green, with the
+ * speed), `trail` (the path taken), `orbit` (the circle of each orbit), `clock` and `turns` (the
+ * orbits each body has completed). Emphasising a body's id makes it glow.
  */
 export interface GravityEl {
   kind: 'gravity';
@@ -1107,8 +1128,16 @@ export interface GravityEl {
   figures?: number;
   /** Draw the pull on these bodies only (on every body otherwise). */
   pulls?: string[];
-  /** Write every force in scientific notation ("6.53 × 10³ N"); otherwise only very large and very small ones. */
+  /** Write every force and speed in scientific notation ("6.53 × 10³ N"); otherwise only very large and very small ones. */
   notation?: 'sci';
+  /** Seconds of the motion for each second of video, while a phase lets time run (1 otherwise). */
+  rate?: number;
+  /** The unit of the clock ({ unit: 'min', seconds: 60 }; seconds otherwise). */
+  clock?: { unit: string; seconds: number };
+  /** A mountain on top of the first body, this many metres high, to throw things from (Newton's cannon). */
+  mountain?: number;
+  /** Pixels of arrow for each metre per second (otherwise the fastest body at the start, or the fastest throw, has an arrow of 80 pixels). */
+  velocityScale?: number;
   clips: Record<string, GravityClip>;
   /** A label at the top left of the picture. */
   label?: string;
@@ -1504,10 +1533,15 @@ export function checkGravity(e: GravityEl): string[] {
   if (!e.bodies.length) problems.push('it needs a body.');
   if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
   for (const id of ids) if ((GRAVITY_PARTS as readonly string[]).includes(id)) problems.push(`body id "${id}" is the name of a part.`);
-  for (const b of e.bodies) {
+  for (const [i, b] of e.bodies.entries()) {
     if (!(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
     if (b.radius !== undefined && !(b.radius > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
+    if ((b.orbit || b.v) && i === 0) problems.push('the first body stays where it is: the others orbit it or fall towards it.');
+    if (b.orbit && b.v) problems.push(`body "${b.id}" has an orbit and a velocity: give one.`);
   }
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be above zero.');
+  if (e.clock && !(e.clock.seconds > 0)) problems.push('the unit of the clock needs a length above zero.');
+  if (e.mountain !== undefined && !(e.mountain > 0 && e.bodies[0]?.radius)) problems.push('a mountain needs a height above zero, and a first body with a radius to stand on.');
   e.bodies.forEach((a, i) => {
     for (const b of e.bodies.slice(i + 1)) if (a.x === b.x && (a.y ?? 0) === (b.y ?? 0)) problems.push(`bodies "${a.id}" and "${b.id}" start at the same place.`);
   });
@@ -1521,8 +1555,11 @@ export function checkGravity(e: GravityEl): string[] {
     clip.phases.forEach((ph, pi) => {
       const where = `clip "${name}", phase ${pi + 1}`;
       if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
-      for (const id of [...Object.keys(ph.to ?? {}), ...Object.keys(ph.mass ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const id of [...Object.keys(ph.to ?? {}), ...Object.keys(ph.mass ?? {}), ...Object.keys(ph.launch ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
       for (const [id, m] of Object.entries(ph.mass ?? {})) if (!(m > 0)) problems.push(`${where}: body "${id}" needs a mass above zero.`);
+      if (ph.launch && e.bodies[0] && e.bodies[0].id in ph.launch) problems.push(`${where}: the first body stays where it is.`);
+      if (ph.fly && ph.to) problems.push(`${where} cannot carry a body while time runs.`);
+      if (ph.rate !== undefined && !(ph.rate > 0)) problems.push(`${where}: the rate must be above zero.`);
     });
   }
   return problems;

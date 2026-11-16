@@ -186,11 +186,15 @@ function ForcesThumb({ el, w, h }: { el: ForcesEl; w: number; h: number }) {
   return <ForcesView el={{ ...el, label: undefined, clips }} st={{ ...FULL, parts: { net: 1, trail: 1, weight: 1, tension: 1, angles: 1 } }} w={w} h={h} plays={plays} />;
 }
 
-/** Bodies in space on a thumbnail: part way through the poster clip, with the pull on each body and the field of the first. */
+/** Bodies in space on a thumbnail: part way through the poster clip, with the pull on each body and the field of the first, or the paths of bodies that fly. */
 function GravityThumb({ el, w, h }: { el: GravityEl; w: number; h: number }) {
-  const plays: Array<[string, number]> = el.poster ? [[el.poster, clipSeconds(el, el.poster) * 0.7]] : [];
+  // Bodies that fly (in orbit, or thrown) are shown with their paths: the clips before the poster are played through first, so the earlier throws are there too.
+  const flies = el.bodies.some((b) => b.orbit || b.v) || Object.values(el.clips).some((c) => c.phases.some((ph) => ph.launch));
+  const names = Object.keys(el.clips);
+  const before: Array<[string, number]> = flies && el.poster ? names.slice(0, names.indexOf(el.poster)).map((name) => [name, clipSeconds(el, name)]) : [];
+  const plays: Array<[string, number]> = el.poster ? [...before, [el.poster, clipSeconds(el, el.poster) * 0.7]] : [];
   const clips = Object.fromEntries(Object.entries(el.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }]));
-  return <GravityView el={{ ...el, label: undefined, clips }} st={{ ...FULL, parts: { force: 1, field: 1 } }} w={w} h={h} plays={plays} />;
+  return <GravityView el={{ ...el, label: undefined, clips }} st={{ ...FULL, parts: flies ? { force: 1, trail: 1, velocity: 1, orbit: 1 } : { force: 1, field: 1 } }} w={w} h={h} plays={plays} />;
 }
 
 /** Bodies on a circle on a thumbnail: part way through the poster clip, with the velocity and what turns each body, and no notes. */
@@ -276,7 +280,7 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
           ) : fig.kind === 'circle' ? (
             <CircleThumb el={fig} w={500} h={470} />
           ) : fig.kind === 'gravity' ? (
-            <GravityThumb el={fig} w={560} h={470} />
+            <GravityThumb el={fig} w={500} h={430} />
           ) : fig.kind === 'similar' ? (
             <SimilarView el={fig} st={FULL} w={500} h={480} />
           ) : null}
