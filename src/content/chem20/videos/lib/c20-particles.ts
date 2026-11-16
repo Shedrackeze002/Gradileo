@@ -1,5 +1,5 @@
 import type { ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
-import { hydrogenBurning } from '@/video/reactions.ts';
+import { ATOM, hydrogenBurning } from '@/video/reactions.ts';
 
 // Simulated particles for Chemistry 20 (src/video/particles.ts), shared by several videos.
 
@@ -415,5 +415,102 @@ export const limitingBurn = (id: string, boxes: Array<{ id: string; h2: number; 
   clips: { spark: { phases: [{ dur: 1, heat: Object.fromEntries(boxes.map((b) => [b.id, 2])) }, { dur: 4 }, { dur: 2, heat: Object.fromEntries(boxes.map((b) => [b.id, 0.9])) }, { dur: 10 }] } },
   thermometers: true,
   seed,
+  height,
+});
+
+type Ion = { name: string; tone: Tone; size?: number };
+
+/**
+ * Two solutions just mixed (clip `mix`): wherever a `cation` meets an `anion` they lock together,
+ * and once a cation holds `ratio` anions (one for silver bromide, two for lead(II) iodide, three for
+ * iron(III) hydroxide) the unit is complete and sinks as the precipitate. The two spectator ions keep
+ * moving freely. `n` is the number of cations; there are `ratio` times as many anions, and the
+ * spectators balance them. The kinds: 0 the cation, 1 the cation's spectator partner, 2 the
+ * anion's spectator partner, 3 the anion, 4 water, 5 an anion in a complete unit, 6 an anion held by
+ * a cation still collecting, then the cation holding one anion, two, and so on.
+ */
+export const precipitate = (
+  id: string,
+  ions: { cation: Ion; anion: Ion; withCation: Ion; withAnion: Ion },
+  o: { ratio?: number; n?: number; label: string; solid: string; seed?: number },
+  height = 420,
+): ParticlesEl => {
+  const r = o.ratio ?? 1;
+  const n = o.n ?? 6;
+  // A cation still collecting anions moves freely, like the ions round it; a complete unit is held
+  // tightly and sinks.
+  const stages = Array.from({ length: r }, (_, s) => (s === r - 1 ? { n: 0, bond: 3, heavy: 1.5 } : free(0, ions.cation.tone, ions.cation.name)));
+  const stageKinds = stages.map((k) => ({ ...k, size: ions.cation.size ?? 1, tone: ions.cation.tone, name: ions.cation.name }));
+  return {
+    kind: 'particles',
+    id,
+    boxes: [
+      {
+        id: 'p',
+        state: 'gas',
+        width: 12,
+        height: 9,
+        temp: 0.8,
+        waits: true,
+        kinds: [
+          free(n, ions.cation.tone, ions.cation.name, ions.cation.size),
+          free(n * r, ions.withCation.tone, ions.withCation.name, ions.withCation.size),
+          free(n * r, ions.withAnion.tone, ions.withAnion.name, ions.withAnion.size),
+          free(n * r, ions.anion.tone, ions.anion.name, ions.anion.size),
+          free(r > 1 ? 10 : 16, 'adj', 'water', 0.8),
+          { n: 0, bond: 3, heavy: 1.5, size: ions.anion.size ?? 1, tone: ions.anion.tone, name: ions.anion.name },
+          free(0, ions.anion.tone, ions.anion.name, ions.anion.size),
+          ...stageKinds,
+        ],
+        // A cation takes anions one at a time; the last one completes the unit.
+        reactions: Array.from({ length: r }, (_, s) => ({ a: s === 0 ? 0 : 6 + s, b: 3, to: [7 + s, s === r - 1 ? 5 : 6] as [number, number], join: true })),
+        tally: { kinds: [6 + r], label: `units of ${o.solid}` },
+        label: o.label,
+      },
+    ],
+    clips: { mix: { phases: [{ dur: 1, release: ['p'] }, { dur: 12 }] } },
+    key: true,
+    seed: o.seed ?? 1,
+    speed: 4,
+    height,
+  };
+};
+
+/**
+ * A strong acid and a strong base just mixed (clip `go`): each hydrogen ion that meets a hydroxide
+ * ion joins it as a water molecule, giving out heat, while the acid's anion and the base's cation
+ * take no part (spectators). The kinds: 0 hydrogen ion, 1 the acid's anion, 2 the base's cation, 3
+ * and 4 a hydroxide ion's O and H, 5 and 6 the hydrogen ion and the oxygen once they are water.
+ */
+export const strongNeutralizing = (id: string, anion: Ion, cation: Ion, label: string, height = 440): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'b',
+      state: 'gas',
+      width: 11,
+      height: 9,
+      temp: 0.5,
+      waits: true,
+      kinds: [
+        { ...ATOM.H, n: 8, name: 'hydrogen ion' },
+        { n: 8, bond: 0.15, heavy: 0, size: anion.size ?? 1, tone: anion.tone, name: anion.name },
+        { n: 8, bond: 0.15, heavy: 0, size: cation.size ?? 1, tone: cation.tone, name: cation.name },
+        { ...ATOM.O, name: 'oxygen' },
+        ATOM.H,
+        ATOM.H,
+        { ...ATOM.O, name: 'oxygen' },
+      ],
+      molecules: [{ atoms: [3, 4], n: 8 }],
+      reactions: [{ a: 0, b: 3, to: [5, 6], join: true, heat: 0.12 }],
+      tally: { kinds: [6], label: 'water molecules' },
+      label,
+    },
+  ],
+  clips: { go: { phases: [{ dur: 1, release: ['b'] }, { dur: 13 }] } },
+  thermometers: true,
+  key: true,
+  seed: 1,
   height,
 });

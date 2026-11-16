@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { gives, ionEq, mol, plus, row, stack, star, water } from './lib/c20-4a-figures.ts';
+import { strongNeutralizing } from './lib/c20-particles.ts';
 
 // The total ionic equation for nitric acid and potassium hydroxide, with strokes through the
 // spectator ions (the group "x").
@@ -25,7 +26,7 @@ const video: Explainer = {
   lessonId: 'c20-4-2',
   title: 'Net Ionic Equations, Part 4: Neutralisation of a Strong Acid and a Strong Base',
   thumbnailTitle: 'Strong Acid and Strong Base',
-  thumbnail: 'f',
+  thumbnail: 'nk',
   summary:
     'In a total ionic equation, a strong acid is written as hydronium ions and its anion, and a strong base as its metal ion and hydroxide ions. The acid’s anion and the base’s metal ion are spectators, so every neutralisation of a strong acid by a strong base has the same net ionic equation: H₃O⁺(aq) + OH⁻(aq) → 2H₂O(l).',
   scenes: [
@@ -63,6 +64,16 @@ const video: Explainer = {
         { say: 'In the total ionic equation, the hydronium, nitrate, potassium and hydroxide ions give two water molecules, with the potassium and nitrate ions still dissolved.', show: ['te.row-0', 'te.row-1'] },
         { say: 'The potassium ions and the nitrate ions are spectators. Cross them out.', show: 'te.x', focus: ['te.k', 'te.no3', 'te.k2', 'te.no32'] },
         { say: 'The net ionic equation: the hydronium ion plus the hydroxide ion gives two molecules of liquid water.', caption: 'The net ionic equation: H₃O⁺(aq) + OH⁻(aq) → 2H₂O(l).', show: 'n', focus: 'n' },
+      ],
+    },
+    {
+      chapter: 'Watching the ions react',
+      layout: 'center',
+      main: [strongNeutralizing('nk', { name: 'nitrate ion', tone: 'opp', size: 1.1 }, { name: 'potassium ion', tone: 'hyp' }, 'nitric acid + potassium hydroxide')],
+      lines: [
+        { say: 'Here are the ions of nitric acid and potassium hydroxide, just mixed. The yellow hydrogen ions are carried by water as hydronium ions.', show: ['nk', 'nk.labels', 'nk.key', 'nk.thermo'], play: 'nk.go' },
+        { say: 'Each hydrogen ion that meets a hydroxide ion joins it, making a water molecule, and the mixture warms up.', focus: 'nk.b', show: 'nk.tally' },
+        { say: 'The potassium ions and the nitrate ions never change. Only the hydrogen ions and the hydroxide ions react, and that is the net ionic equation.', focus: 'nk.b' },
       ],
     },
     {
