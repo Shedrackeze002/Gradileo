@@ -10,15 +10,17 @@
  */
 import type { ReactElement } from 'react';
 import type { RampEl, Tone } from '../script.ts';
-import { RAMP_G, rampAt, tilts, type RampArrow, type RampBodyState } from '../ramp.ts';
+import { FRICTION, NET_WORK, NORMAL, RAMP_G, rampAt, TENSION, tilts, WEIGHT, type RampArrow, type RampBodyState } from '../ramp.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Arrow, BODY_TONES, clamp01, Clock, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
 import { TONES } from './tex.ts';
-import { INK3 } from './Triangle.tsx';
+import { INK, INK3 } from './Triangle.tsx';
 
 const TRACK = '#bcd9ff';
 const ROPE = 'rgb(201 198 232 / 0.75)';
 const COLOR: Record<RampArrow['kind'], string> = { weight: TONES.hyp, normal: TONES.adj, friction: TONES.bad, applied: TONES.opp, tension: TONES.brand };
+/** Displacement is violet in every physics video. */
+const DISPLACEMENT = TONES.brand;
 const rad = (deg: number) => (deg * Math.PI) / 180;
 const easeOut = (x: number) => 1 - (1 - clamp01(x)) ** 3;
 /** Newtons for a label: whole from a thousand up and when the number is whole, one decimal otherwise. */
@@ -66,6 +68,8 @@ export function RampView({ el, st, w, h, plays }: { el: RampEl; st: ElState | un
   const readout = part('readout');
   const clock = part('clock');
   const strobe = part('strobe');
+  const distance = part('distance');
+  const work = part('work');
   const fs = el.forceScale ?? 1.5;
   const vs = el.velocityScale ?? 24;
   const upright = el.angle === 90;
@@ -400,6 +404,63 @@ export function RampView({ el, st, w, h, plays }: { el: RampEl; st: ElState | un
         </Text>,
       );
     }
+  }
+
+  // The displacement of the block whose work is shown (the first otherwise): an arrow under the surface, from where it started.
+  const worked = boxes.find((k) => k.id === (el.work?.of ?? el.bodies[0].id) && !k.hangs);
+  if (distance > 0 && worked) {
+    const b = el.bodies.find((q) => q.id === worked.id)!;
+    const drop = hi === 0 ? 50 : 30;
+    const under = (x: number): [number, number] => [A[0] + u[0] * x * S - nrm[0] * drop, A[1] + u[1] * x * S - nrm[1] * drop];
+    const [from, to] = [under(b.x), under(worked.s.x)];
+    const len = (worked.s.x - b.x) * S;
+    out.push(
+      <g key="distance" opacity={distance}>
+        <line x1={from[0] - nrm[0] * 9} y1={from[1] - nrm[1] * 9} x2={from[0] + nrm[0] * 9} y2={from[1] + nrm[1] * 9} stroke={DISPLACEMENT} strokeWidth={2.5} />
+        <Arrow x={from[0]} y={from[1]} len={len} turn={th} color={DISPLACEMENT} weight={7} />
+        <Text x={Math.max(from[0], to[0]) + 16} y={(len >= 0 ? to : from)[1]} anchor="start" color={DISPLACEMENT}>
+          {`d = ${Math.abs(worked.s.moved).toFixed(1)} m`}
+        </Text>
+      </g>,
+    );
+  }
+
+  // The work each force has done on that block: a bar to the right of zero for a force along the motion, and to the left for one against it.
+  if (work > 0 && el.work && worked) {
+    const { rows, range } = el.work;
+    const ROW = 40;
+    const y0 = h - rows.length * ROW + 4;
+    const [x0, x1] = [250, w - 150];
+    const zero = x0 + ((0 - range[0]) / (range[1] - range[0])) * (x1 - x0);
+    const colors: Record<string, string> = { [WEIGHT]: COLOR.weight, [NORMAL]: COLOR.normal, [FRICTION]: COLOR.friction, [TENSION]: COLOR.tension, [NET_WORK]: NET };
+    // A push keeps its colour after it has stopped: every clip is searched for it.
+    const pushTones: Record<string, Tone | undefined> = Object.fromEntries(Object.values(el.clips).flatMap((c) => c.phases.flatMap((ph) => (ph.forces ?? []).map((f) => [f.name, f.tone]))));
+    const whole = Math.max(Math.abs(range[0]), range[1]) >= 100;
+    out.push(
+      <g key="work" opacity={work}>
+        <rect x={x0} y={y0 - 4} width={x1 - x0} height={rows.length * ROW - 2} rx={8} fill="rgb(255 255 255 / 0.04)" />
+        {rows.map((name, i) => {
+          const j = worked.s.work[name] ?? 0;
+          const applied = worked.s.forces.find((f) => f.kind === 'applied' && f.name === name);
+          const c = colors[name] ?? TONES[applied?.tone ?? pushTones[name] ?? 'opp'];
+          const len = (Math.max(range[0], Math.min(range[1], j)) / (range[1] - range[0])) * (x1 - x0);
+          const y = y0 + i * ROW;
+          const text = Math.abs(j) < (whole ? 0.5 : 0.05) ? '0 J' : `${j > 0 ? '+' : '−'}${whole ? Math.round(Math.abs(j)) : Math.abs(j).toFixed(1)} J`;
+          return (
+            <g key={name}>
+              <Text x={x0 - 16} y={y + 14} anchor="end" size={20} color={name === NET_WORK ? NET : INK}>
+                {name === NET_WORK ? 'Net work' : `Work by ${name === FRICTION || name === TENSION ? '' : 'the '}${name.toLowerCase()}`}
+              </Text>
+              <rect x={Math.min(zero, zero + len)} y={y} width={Math.abs(len)} height={28} rx={Math.min(7, Math.abs(len) / 2)} fill={c} fillOpacity={0.8} />
+              <Text x={Math.max(zero, zero + len) + 12} y={y + 14} anchor="start" size={20} color={c}>
+                {text}
+              </Text>
+            </g>
+          );
+        })}
+        <line x1={zero} y1={y0 - 8} x2={zero} y2={y0 + rows.length * ROW - 6} stroke={INK3} strokeWidth={2} />
+      </g>,
+    );
   }
 
   if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);

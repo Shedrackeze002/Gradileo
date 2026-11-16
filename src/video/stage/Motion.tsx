@@ -6,9 +6,10 @@
  */
 import type { ReactElement } from 'react';
 import type { MotionBody, MotionEl } from '../script.ts';
-import { motionAt, netForce, widthOf, type MotionState } from '../motion.ts';
+import { motionAt, netForce, SPRING, widthOf, type MotionState } from '../motion.ts';
 import { easeOut, ownPart, type ElState } from '../timeline.ts';
 import { Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
+import { ForceGraph } from './ForceGraph.tsx';
 import { PathView } from './MotionPath.tsx';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
@@ -319,6 +320,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   const graph = part('graph');
   const distance = part('distance');
   const displacement = part('displacement');
+  const extension = part('extension');
 
   const lanes = el.lanes ?? [{}];
   const tone = (b: MotionBody) => TONES[b.tone ?? BODY_TONES[el.bodies.indexOf(b) % BODY_TONES.length]];
@@ -384,18 +386,46 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
         )}
       </g>,
     );
-    const every = S >= 46 ? 1 : S >= 24 ? 2 : 5;
-    for (let m = Math.ceil(el.span[0]); !el.plain && m <= Math.floor(el.span[1]); m++) {
-      const major = m % every === 0;
-      out.push(<line key={`tick${li}-${m}`} x1={X(m)} y1={g + (rough ? 12 : 9)} x2={X(m)} y2={g + (major ? 22 : 16)} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
+    // A track of two metres or less (a spring on a bench) is marked in tenths of a metre.
+    const tick = el.span[1] - el.span[0] <= 2 ? 0.1 : 1;
+    const gap = S * tick;
+    const every = gap >= 46 ? 1 : gap >= 24 ? 2 : 5;
+    const lastMajor = Math.floor(el.span[1] / tick / every + 1e-9) * every;
+    for (let i = Math.ceil(el.span[0] / tick - 1e-9); !el.plain && i <= Math.floor(el.span[1] / tick + 1e-9); i++) {
+      const m = Math.round(i * tick * 10) / 10;
+      const major = i % every === 0;
+      out.push(<line key={`tick${li}-${i}`} x1={X(m)} y1={g + (rough ? 12 : 9)} x2={X(m)} y2={g + (major ? 22 : 16)} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
       if (major)
         out.push(
-          <text key={`num${li}-${m}`} x={X(m)} y={g + 36} fill={INK3} fontSize={16} textAnchor="middle" style={{ fontFamily: FONT }}>
-            {m === Math.floor(el.span[1] / every) * every ? `${m} m` : m}
+          <text key={`num${li}-${i}`} x={X(m)} y={g + 36} fill={INK3} fontSize={16} textAnchor="middle" style={{ fontFamily: FONT }}>
+            {`${tick < 1 ? m.toFixed(1) : m}${i === lastMajor ? ' m' : ''}`}
           </text>,
         );
     }
   });
+
+  // A spring: a wall at the left end of the track, and a coil from it to the body (or, for a
+  // spring that only pushes, to a plate that stays at its natural length once the body has left).
+  const sprung = el.spring ? el.bodies.find((b) => b.id === el.spring!.on) : undefined;
+  const coilY = (b: MotionBody) => ground(b.lane ?? 0) - (b.shape === 'cart' ? WHEEL + 4 + CART_H / 2 - 8 : b.shape === 'ball' ? (widthOf(b) * S) / 2 : BLOCK_H * 0.3);
+  if (el.spring && sprung) {
+    const g = ground(sprung.lane ?? 0);
+    const y = coilY(sprung);
+    const here = state.bodies[sprung.id].x;
+    const end = X(el.spring.loose ? Math.min(here, el.spring.rest) : here) - (widthOf(sprung) * S) / 2;
+    const wall = X(el.span[0]);
+    const turns = 12;
+    const [lead, amp] = [12, 11];
+    const run = Math.max(4, end - wall - 2 * lead);
+    const zig = Array.from({ length: 2 * turns + 1 }, (_, i) => `${wall + lead + (run * i) / (2 * turns)},${y + (i === 0 || i === 2 * turns ? 0 : i % 2 ? -amp : amp)}`);
+    out.push(
+      <g key="spring">
+        <rect x={wall - 16} y={g - BLOCK_H * 1.25} width={16} height={BLOCK_H * 1.25} rx={3} fill="rgb(188 217 255 / 0.22)" stroke="#bcd9ff" strokeWidth={2} />
+        <polyline points={`${wall},${y} ${zig.join(' ')} ${end},${y}`} fill="none" stroke="#d9d4ff" strokeWidth={3.2} strokeLinejoin="round" strokeLinecap="round" />
+        {el.spring.loose && <rect x={end - 5} y={y - 20} width={5} height={40} rx={2} fill="#d9d4ff" />}
+      </g>,
+    );
+  }
 
   // Strobe marks: where each body was at equal time steps. Wide gaps mean it was moving fast.
   if (strobe > 0) {
@@ -519,7 +549,10 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const g = ground(b.lane ?? 0);
     const c = TONES[f.tone ?? (f.resist ? 'bad' : 'opp')];
     const grow = easeOut(f.age / 0.35);
-    const len = Math.max(26, Math.abs(f.n) * fs) * grow * Math.sign(f.n);
+    // A spring's force, or one that changes with distance, shrinks all the way to nothing: its arrow has no shortest length.
+    const changing = f.name === SPRING || Boolean(f.profile);
+    if (changing && Math.abs(f.n) * fs < 3) continue;
+    const len = (changing ? Math.abs(f.n) * fs : Math.max(26, Math.abs(f.n) * fs)) * grow * Math.sign(f.n);
     const text = el.plain ? f.name : `${f.name} ${short(Math.abs(f.n))} N`;
     if (f.axis === 'y') {
       // Weight hangs from the middle of the body; the normal force rises from its top.
@@ -538,7 +571,9 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const key = `${f.on}${Math.sign(f.n)}`;
     const nth = side[key] ?? 0;
     side[key] = nth + 1;
-    const y = f.resist ? g - 12 : k.mid - nth * 32 - (b.shape === 'cart' ? WHEEL * 0.7 : 0);
+    // The spring's pull lies along its coil: its arrow is drawn just above the coil instead.
+    const overCoil = f.name === SPRING && sprung === b && f.n < 0;
+    const y = f.resist ? g - 12 : overCoil ? coilY(b) - 30 : k.mid - nth * 32 - (b.shape === 'cart' ? WHEEL * 0.7 : 0);
     const x0 = f.n > 0 ? k.right + 3 : k.left - 3;
     out.push(<Arrow key={`f-${f.on}-${f.name}`} x={x0} y={y} len={len} color={c} />);
     out.push(
@@ -641,6 +676,28 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     }
   }
 
+  // The extension of the spring, under the track: from where its end is at its natural length to where it is now.
+  if (extension > 0 && el.spring && sprung) {
+    const g = ground(sprung.lane ?? 0);
+    const half = (widthOf(sprung) * S) / 2;
+    const here = el.spring.loose ? Math.min(state.bodies[sprung.id].x, el.spring.rest) : state.bodies[sprung.id].x;
+    const [from, to] = [X(el.spring.rest) - half, X(here) - half];
+    const x = here - el.spring.rest;
+    const y = g + 58;
+    out.push(
+      <g key="extension" opacity={extension}>
+        <line x1={from} y1={g - BLOCK_H * 1.25} x2={from} y2={y + 12} stroke={DISPLACEMENT} strokeWidth={2} strokeDasharray="6 6" opacity={0.8} />
+        <Text x={from} y={g - BLOCK_H * 1.25 - 16} color={DISPLACEMENT} size={18}>
+          natural length
+        </Text>
+        {Math.abs(to - from) >= 2 && <Arrow x={from} y={y} len={to - from} color={DISPLACEMENT} weight={6} />}
+        <Text x={Math.max(from, to) + 14} y={y + (Math.abs(to - from) >= 2 ? 0 : 0)} anchor="start" color={DISPLACEMENT}>
+          {`x = ${Math.abs(x).toFixed(el.spring.decimals ?? 2)} m${x < -1e-9 ? ' (compressed)' : ''}`}
+        </Text>
+      </g>,
+    );
+  }
+
   // A collision: a flash where the bodies touch.
   if (state.contact && state.contact.age < 0.7) {
     const { x, age } = state.contact;
@@ -670,7 +727,13 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     );
 
   // A velocity-time (or distance-time) graph that draws itself as the bodies move, above the track on the right.
-  if (graph > 0 && el.graph) out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * 0.47, top + 44, w - 34, ground(0) - BLOCK_H - 150]} tone={tone} />);
+  // A force-displacement graph stands over the track and shares its scale: the point on the line is straight above the body.
+  if (graph > 0 && el.graph?.y === 'force') {
+    const b = el.bodies.find((q) => q.id === el.graph!.of[0])!;
+    const from = el.spring?.on === b.id ? el.spring.rest : b.x;
+    out.push(<ForceGraph key="graph" el={el} state={state} opacity={graph} box={[X(from), top + 58, X(from + (el.graph.metres ?? 1)), box(b).top - 66]} />);
+  }
+  if (graph > 0 && el.graph && el.graph.y !== 'force') out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * 0.47, top + 44, w - 34, ground(0) - BLOCK_H - 150]} tone={tone} />);
 
   // Energy bars, under the tracks.
   if (el.energy && !el.momentumMax && (energy > 0 || total > 0)) out.push(<EnergyBars key="energy" el={el} state={state} x={0} y={h - barsH + 22} w={w} opacity={energy} total={total} />);

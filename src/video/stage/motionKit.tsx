@@ -27,6 +27,7 @@ export const ENERGY: Record<EnergyBar, { name: string; color: string }> = {
   work: { name: 'Work done', color: TONES.opp },
   kinetic: { name: 'Kinetic energy', color: VELOCITY },
   potential: { name: 'Potential energy', color: TONES.hyp },
+  elastic: { name: 'Elastic energy', color: TONES.brand },
   heat: { name: 'Heat', color: TONES.bad },
   total: { name: 'Total energy', color: NET },
 };
@@ -81,9 +82,10 @@ export const energyBodies = (el: MotionEl): MotionBody[] => (el.energy ? (el.ene
 export const energyRows = (el: MotionEl): number => energyBodies(el).length * (el.energy?.bars.length ?? 0);
 export const ENERGY_ROW = 40;
 
-/** Joules, or kilojoules when the bars reach ten thousand joules; whole numbers from a hundred up. */
+/** Joules, or kilojoules when the bars reach ten thousand joules; whole numbers from a hundred up, and two decimals when the bars hold less than ten joules. */
 function joules(n: number, max: number): string {
   if (max >= 10000) return `${live(n / 1000)} kJ`;
+  if (max < 10) return `${(Math.abs(n) < 0.005 ? 0 : n).toFixed(2).replace('-', '−')} J`;
   return max >= 100 ? `${Math.round(n) + 0} J` : `${live(n)} J`;
 }
 
@@ -99,7 +101,7 @@ export function EnergyBars({ el, state, x, y, w, opacity, total, stacked = false
   const rows = bodies.flatMap((b) =>
     bars.map((bar) => {
       const e = state.energy[b.id];
-      const value = bar === 'total' ? e.kinetic + e.potential + e.heat : e[bar];
+      const value = bar === 'total' ? e.kinetic + e.potential + e.elastic + e.heat : e[bar];
       const name = names?.[bar] ?? ENERGY[bar].name;
       return { key: `${b.id}-${bar}`, bar, value, name: bodies.length > 1 ? `${labels?.[b.id] ?? b.label ?? b.id}: ${name.toLowerCase()}` : name };
     }),

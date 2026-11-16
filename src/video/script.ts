@@ -268,6 +268,32 @@ export interface MotionForce {
    * friction (`resist`) on it.
    */
   drag?: number;
+  /**
+   * A force that changes as the body moves: its size in newtons at distances from where the body
+   * started, in metres, as [distance, newtons] points joined by straight lines (it stays at the
+   * last value beyond the last point). `n` is not used (give 0). The work it does is the area
+   * under these points, which a force-displacement graph (`graph: { y: 'force' }`) fills in.
+   */
+  profile?: Array<[number, number]>;
+}
+
+/**
+ * A spring on a straight track, between a wall and one body. It obeys Hooke's law: it pulls or
+ * pushes the body towards the place where it has its natural length, with k newtons for each metre
+ * of extension, in every phase (it is not listed among a phase's forces). It is drawn as a coil
+ * from the wall at the left end of the track, with its force as an arrow named "Spring".
+ */
+export interface MotionSpring {
+  /** The body on its end. */
+  on: string;
+  /** The spring constant, in newtons per metre. */
+  k: number;
+  /** Where the centre of the body is when the spring has its natural length, in metres along the track. */
+  rest: number;
+  /** Not tied to the body: it pushes while it is compressed and never pulls, so the body leaves it at its natural length (a launcher). */
+  loose?: boolean;
+  /** Decimal places of the extension that is written under the track (2 by default). */
+  decimals?: number;
 }
 
 /** A stretch of a clip during which the same forces act. */
@@ -297,14 +323,15 @@ export interface MotionClip {
 }
 
 /** What a motion element can show over its bodies; each is a part ("sim.velocity"). */
-export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height'] as const;
+export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height', 'extension'] as const;
 
 /**
  * An energy bar of a motion element: the work done on the body by the forces pushing or lifting
- * it, its kinetic energy, its gravitational potential energy, the energy that friction and air
- * resistance have turned to heat, and the total of the last three.
+ * it, its kinetic energy, its gravitational potential energy, the elastic potential energy of the
+ * spring it is on, the energy that friction and air resistance have turned to heat, and the total
+ * of the last four.
  */
-export type EnergyBar = 'work' | 'kinetic' | 'potential' | 'heat' | 'total';
+export type EnergyBar = 'work' | 'kinetic' | 'potential' | 'elastic' | 'heat' | 'total';
 
 /**
  * Bodies moving along straight tracks under forces, for the physics videos: the motion is worked
@@ -342,9 +369,16 @@ export interface MotionEl {
    * A graph of these bodies against time, above a single track on its right: `seconds` and `max`
    * are the lengths of its axes, and `min` (below zero) lets the line go under the time axis. It
    * plots velocity (in metres per second) unless `y` is `'distance'`, the distance travelled in
-   * metres, or `'position'`, where the body is on the track's ruler.
+   * metres, or `'position'`, where the body is on the track's ruler. With `y: 'force'` it is a
+   * force-displacement graph of one body instead: the force named in `force` (the body's first
+   * force with a `profile` otherwise, or the spring's) against the distance moved, or against the
+   * extension of the spring. `metres` is then the length of its displacement axis (`seconds` is
+   * not used; give 0), the area under the line fills in as the body moves, and the work done so
+   * far is written over it (`area` renames it: "Energy stored").
    */
-  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' };
+  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'force'; metres?: number; force?: string; area?: string };
+  /** A spring between the wall at the left end of a single straight track and one of the bodies. */
+  spring?: MotionSpring;
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
@@ -916,7 +950,7 @@ export interface RampClip {
 }
 
 /** What a ramp element can show over its bodies; each is a part ("ramp.weight"). */
-export const RAMP_PARTS = ['weight', 'components', 'normal', 'friction', 'tension', 'net', 'velocity', 'readout', 'clock', 'strobe'] as const;
+export const RAMP_PARTS = ['weight', 'components', 'normal', 'friction', 'tension', 'net', 'velocity', 'readout', 'clock', 'strobe', 'distance', 'work'] as const;
 
 /**
  * Blocks on a surface, level or tilted, for the dynamics videos (src/video/ramp.ts): a box pushed
@@ -957,6 +991,15 @@ export interface RampEl {
   raise?: number;
   /** Pixels kept clear above the highest point of the surface and under the ground, for arrows and labels ([150, 44] otherwise, and [150, 130] under a level floor). */
   pad?: [top: number, bottom: number];
+  /**
+   * Bars of the work each force has done on one block (the first otherwise), under the picture:
+   * `rows` names the forces in order ("Weight", "Normal force", "Friction", "Tension", the name of
+   * a push or a pull, and "Net" for their sum), and `range` is the least and the greatest work a
+   * bar must hold, in joules ([-400, 600]). Work is the part of a force along the motion times
+   * the distance moved, so a bar grows to the left of zero for a force that points against the
+   * motion. Keep 40 px under the ground for each row, and 50 more (`pad`).
+   */
+  work?: { of?: string; rows: string[]; range: [number, number] };
   clips: Record<string, RampClip>;
   /** A label at the top left of the picture. */
   label?: string;
@@ -1364,6 +1407,19 @@ export function checkMotion(e: MotionEl): string[] {
   for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
   if (e.graph?.min !== undefined && !(e.graph.min < 0)) problems.push('the lowest value of the graph must be below zero (leave it out otherwise).');
   if (e.graph?.min !== undefined && e.graph.y === 'distance') problems.push('a distance never falls below zero: leave out the lowest value of the graph.');
+  if (e.graph?.y === 'force') {
+    if (!((e.graph.metres ?? 0) > 0)) problems.push('a force-displacement graph needs the length of its displacement axis, in metres.');
+    if (e.graph.of.length !== 1) problems.push('a force-displacement graph is of one body.');
+    if (e.path || e.vertical || (e.lanes?.length ?? 1) > 1) problems.push('a force-displacement graph goes over a single straight track.');
+  } else if (e.graph && !(e.graph.seconds > 0)) problems.push('the graph needs the length of its time axis, in seconds.');
+  if (e.spring) {
+    if (!ids.has(e.spring.on)) problems.push(`the spring is tied to no body "${e.spring.on}".`);
+    if (!(e.spring.k > 0)) problems.push('the spring needs a spring constant above zero.');
+    if (e.path || e.vertical || (e.lanes?.length ?? 1) > 1) problems.push('a spring lies along a single straight track.');
+    const tied = e.bodies.find((b) => b.id === e.spring!.on);
+    if (tied && !(e.spring.rest - (tied.width ?? 1) / 2 > e.span[0])) problems.push('the spring needs room between the wall at the left end of the track and the body.');
+  }
+  if (e.energy?.bars.includes('elastic') && !e.spring) problems.push('elastic energy needs a spring.');
   for (const id of e.energy?.of ?? []) if (!ids.has(id)) problems.push(`the energy bars name no body "${id}".`);
   for (const id of Object.keys(e.energy?.labels ?? {})) if (!ids.has(id)) problems.push(`the energy bars label no body "${id}".`);
   if (e.energy && !(e.energy.max > 0)) problems.push('the energy bars need a largest energy above zero.');
@@ -1381,6 +1437,11 @@ export function checkMotion(e: MotionEl): string[] {
       const up = new Map<string, number>();
       for (const f of ph.forces ?? []) {
         if (!ids.has(f.on)) problems.push(`${where}: a force acts on no body "${f.on}".`);
+        if (f.profile) {
+          if (f.profile.length < 2 || f.profile.some(([d], i) => i > 0 && !(d > f.profile![i - 1][0]))) problems.push(`${where}: the points of a force that changes need distances that increase.`);
+          if (f.resist || f.drag || f.axis === 'y') problems.push(`${where}: a force that changes with distance pushes along the track, and is not friction or air resistance.`);
+          if (e.path || e.vertical) problems.push(`${where}: a force that changes with distance acts on a straight track.`);
+        }
         if (f.axis === 'y') up.set(f.on, (up.get(f.on) ?? 0) + f.n);
       }
       // Bodies stay on their track, so the forces drawn up and down must cancel.
@@ -1466,6 +1527,11 @@ export function checkRamp(e: RampEl): string[] {
   const all = new Set([...ids, ...(e.hanging ? [e.hanging.id] : [])]);
   for (const id of all) if ((RAMP_PARTS as readonly string[]).includes(id)) problems.push(`body id "${id}" is the name of a part.`);
   if (!(e.length > 0)) problems.push('the surface needs a length above zero.');
+  if (e.work) {
+    if (!e.work.rows.length) problems.push('the bars of work need a force to show.');
+    if (!(e.work.range[0] <= 0 && e.work.range[1] >= 0 && e.work.range[1] > e.work.range[0])) problems.push('the range of the bars of work is [least, greatest], with zero between them.');
+    if (e.work.of !== undefined && !ids.has(e.work.of)) problems.push(`the bars of work are of no block "${e.work.of}".`);
+  }
   const tilt = (a: number) => a >= 0 && a <= 90;
   if (!tilt(e.angle)) problems.push('the tilt must be from 0 to 90 degrees.');
   if (e.angle === 90 && !e.hanging) problems.push('a surface tilted to 90 degrees needs a hanging body on the other side of its pulley.');
