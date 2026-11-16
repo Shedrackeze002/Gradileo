@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { limitingBurn } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-4-6-b',
@@ -50,6 +51,16 @@ const video: Explainer = {
         { say: 'Each result counts how many rounds of the reaction that reactant can supply.' },
         { say: 'For ammonia, two point zero zero for nitrogen, and four point five zero over three, one point five zero, for hydrogen. Hydrogen is limiting.', show: 't.0', focus: 't.0' },
         { say: 'For thermite, zero point seven five zero for aluminium, and one point zero zero for iron three oxide. Aluminium is limiting, as before.', caption: 'For thermite, 0.750 for aluminium, and 1.00 for iron(III) oxide. Aluminium is limiting, as before.', show: 't.1', focus: 't.1' },
+      ],
+    },
+    {
+      chapter: 'More of it, but still limiting',
+      layout: 'center',
+      main: [limitingBurn('mm', [{ id: 'a', h2: 10, o2: 6, label: '10 hydrogen + 6 oxygen molecules' }], 6)],
+      lines: [
+        { say: 'Here are ten hydrogen molecules and six oxygen molecules, so there is more hydrogen than oxygen. Which runs out first?', show: ['mm', 'mm.labels', 'mm.thermo'] },
+        { say: 'Use the shortcut. Ten divided by two is five rounds for hydrogen, and six divided by one is six rounds for oxygen. Watch the reaction.', play: 'mm.spark', show: 'mm.tally', focus: 'mm.a' },
+        { say: 'After five rounds, all ten hydrogen molecules have become water, and some oxygen is left. Hydrogen was limiting, even though there was more of it.', focus: 'mm.a' },
       ],
     },
     {

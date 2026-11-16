@@ -1,4 +1,5 @@
 import type { ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
+import { hydrogenBurning } from '@/video/reactions.ts';
 
 // Simulated particles for Chemistry 20 (src/video/particles.ts), shared by several videos.
 
@@ -388,5 +389,31 @@ export const strengthAndConcentration = (id: string, height = 420): ParticlesEl 
   clips: { go: { phases: [{ dur: 1, release: ['s', 'w'] }, { dur: 14 }] } },
   key: true,
   seed: 1,
+  height,
+});
+
+/**
+ * Hydrogen and oxygen burned in sealed boxes side by side (clip `spark`), each with its own number
+ * of hydrogen and oxygen molecules: two hydrogen molecules use up one oxygen molecule, so whichever
+ * runs out first (the limiting reagent) stops the reaction, and the other is left over (in excess).
+ * The tally counts the water molecules made.
+ */
+export const limitingBurn = (id: string, boxes: Array<{ id: string; h2: number; o2: number; label: string }>, seed = 2, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: boxes.map((b) =>
+    hydrogenBurning(b.id, {
+      width: boxes.length > 1 ? 11 : 14,
+      molecules: [
+        { atoms: [0, 0], n: b.h2 },
+        { atoms: [1, 1], n: b.o2 },
+      ],
+      label: b.label,
+    }),
+  ),
+  // It cools only part of the way, so the last loose atoms still find a partner quickly.
+  clips: { spark: { phases: [{ dur: 1, heat: Object.fromEntries(boxes.map((b) => [b.id, 2])) }, { dur: 4 }, { dur: 2, heat: Object.fromEntries(boxes.map((b) => [b.id, 0.9])) }, { dur: 10 }] } },
+  thermometers: true,
+  seed,
   height,
 });

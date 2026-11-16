@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { limitingBurn } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-4-6-c',
@@ -39,6 +40,25 @@ const video: Explainer = {
         { say: 'First, find the limiting reagent. The zinc needs twice its amount of acid, one point zero zero zero moles, and there is only zero point eight zero zero. So the acid is limiting.', show: 'm.0', focus: 'm.0' },
         { say: 'The shortcut agrees: zero point five zero zero for zinc, and zero point four zero zero for the acid.', show: 'm.1', focus: 'm.1' },
         { say: 'Now use the limiting reagent in the mole ratio. Zinc chloride to the acid is one to two, so zero point eight zero zero times one half is zero point four zero zero moles of zinc chloride.', caption: 'Now use the limiting reagent in the mole ratio. Zinc chloride to the acid is 1 : 2, so 0.800 × ½ = 0.400 mol of zinc chloride.', show: 'm.2', focus: 'm.2' },
+      ],
+    },
+    {
+      chapter: 'More excess, the same product',
+      layout: 'center',
+      main: [
+        limitingBurn(
+          'ep',
+          [
+            { id: 'a', h2: 8, o2: 4, label: '8 hydrogen + 4 oxygen' },
+            { id: 'b', h2: 8, o2: 8, label: '8 hydrogen + 8 oxygen' },
+          ],
+          6,
+        ),
+      ],
+      lines: [
+        { say: 'Here are two boxes with eight hydrogen molecules each. The left box has four oxygen molecules, just enough. The right box has eight, twice as many.', show: ['ep', 'ep.labels', 'ep.thermo'] },
+        { say: 'Light both, and count the water molecules.', play: 'ep.spark', show: 'ep.tally' },
+        { say: 'Both boxes make eight water molecules. The extra oxygen on the right just sits there, so the amount of product is set by the limiting reagent, hydrogen.', focus: 'ep.b' },
       ],
     },
     {
