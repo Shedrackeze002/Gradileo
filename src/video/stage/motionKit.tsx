@@ -37,6 +37,8 @@ export const short = (n: number) => {
   const r = Math.round(n * 10) / 10;
   return Number.isInteger(r) ? String(r) : r.toFixed(1);
 };
+/** A length read off a picture: to the nearest thousandth, without trailing zeros (0.773, 0.8, 2). */
+export const fine = (n: number) => String(Math.round(n * 1000) / 1000);
 /** A changing number: always one decimal, so it does not jump about, and never "-0.0". */
 export const live = (n: number) => (Math.abs(n) < 0.05 ? '0.0' : n.toFixed(1)).replace('-', '−');
 

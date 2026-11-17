@@ -7,9 +7,9 @@
  */
 import type { ReactElement } from 'react';
 import type { Tone, WaveEl, WaveLane } from '../script.ts';
-import { largestAmplitude, shortestWavelength, waveAt, type LaneState } from '../wave.ts';
+import { largestAmplitude, shortestWavelength, standingOf, waveAt, type LaneState } from '../wave.ts';
 import { ownPart, type ElState } from '../timeline.ts';
-import { Arrow, BODY_TONES, clamp01, Clock, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
+import { Arrow, BODY_TONES, clamp01, Clock, fine, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
 
@@ -71,7 +71,14 @@ interface Parts {
   labels: number;
   frequency: number;
   front: number;
+  pulses: number;
+  sum: number;
+  nodes: number;
+  loop: number;
 }
+
+/** The colours of the outlines of single pulses, in order, when the script gives none. */
+const PULSE_TONES: Tone[] = ['opp', 'good', 'hyp', 'theta'];
 
 /**
  * The front of a wave that started at the source: a marker where it has got to (on its way back,
@@ -103,20 +110,57 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
   const Y = (x: number) => y0 - state.at(x) * scale;
   const unit = el.amplitudeUnit ?? 'm';
 
-  // The rest position, and the slot the source moves in.
-  out.push(<line key="rest" x1={f.left} y1={y0} x2={f.right} y2={y0} stroke={INK3} strokeWidth={2} strokeDasharray="3 9" opacity={0.55} />);
-  out.push(<rect key="slot" x={f.left - 10} y={y0 - ampPx - 16} width={20} height={2 * ampPx + 32} rx={10} fill="rgb(255 255 255 / 0.06)" stroke="rgb(255 255 255 / 0.16)" />);
+  // A standing wave is on a string between two fixed ends, which may stop short of the strip's end.
+  const standing = standingOf(el, lane);
+  const endPx = state.end !== undefined ? f.X(state.end) : f.right;
+  // How far the string moves at its widest: a wave that meets its own reflection moves twice as far as either.
+  const widest = (standing ? state.amplitude : lane.reflect && state.frequency > 0 ? 2 * state.amplitude : state.amplitude) * scale;
 
-  // The rope, and the beads on it.
-  const pts: string[] = [];
-  for (let px = f.left; px <= f.right + 0.01; px += 4) pts.push(`${px.toFixed(1)},${Y(metres(px)).toFixed(1)}`);
-  out.push(<polyline key="rope" points={pts.join(' ')} fill="none" stroke={color} strokeWidth={5 + 2.5 * glow} strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 ${6 + 10 * glow}px ${color}88)` }} />);
+  // The rest position, and the slot the source moves in (a standing wave's string is held at its left end instead).
+  out.push(<line key="rest" x1={f.left} y1={y0} x2={endPx} y2={y0} stroke={INK3} strokeWidth={2} strokeDasharray="3 9" opacity={0.55} />);
+  if (standing) {
+    out.push(<rect key="hold" x={f.left - 12} y={y0 - ampPx - 18} width={12} height={2 * ampPx + 36} rx={3} fill={INK3} />);
+    out.push(<rect key="hold2" x={endPx} y={y0 - ampPx - 18} width={12} height={2 * ampPx + 36} rx={3} fill={INK3} />);
+    // The two shapes the string swings between.
+    for (const side of [-1, 1]) {
+      const edge: string[] = [];
+      for (let px = f.left; px <= endPx + 0.01; px += 4) edge.push(`${px.toFixed(1)},${(y0 - side * state.amplitude * Math.sin(standing.k * (metres(px) - el.span[0])) * scale).toFixed(1)}`);
+      out.push(<polyline key={`edge${side}`} points={edge.join(' ')} fill="none" stroke={color} strokeWidth={2} strokeDasharray="5 7" opacity={0.4} />);
+    }
+  } else out.push(<rect key="slot" x={f.left - 10} y={y0 - ampPx - 16} width={20} height={2 * ampPx + 32} rx={10} fill="rgb(255 255 255 / 0.06)" stroke="rgb(255 255 255 / 0.16)" />);
+
+  // Each pulse on its own, under the rope that carries their sum.
+  if (parts.pulses > 0)
+    state.pulses.forEach((own, i) => {
+      const run: string[] = [];
+      for (let px = f.left; px <= f.right + 0.01; px += 4) {
+        const v = own(metres(px));
+        if (Math.abs(v) > 1e-4 * most) run.push(`${px.toFixed(1)},${(y0 - v * scale).toFixed(1)}`);
+      }
+      if (run.length > 1) out.push(<polyline key={`pulse${i}`} points={run.join(' ')} fill="none" stroke={TONES[lane.pulses?.[i]?.tone ?? PULSE_TONES[i % PULSE_TONES.length]]} strokeWidth={3} strokeDasharray="7 6" strokeLinecap="round" opacity={0.9 * parts.pulses} />);
+    });
+
+  // The rope, and the beads on it. Past a join it is another rope: heavier where the wave is slower.
+  const stretch = (from: number, to: number) => {
+    const pts: string[] = [];
+    for (let px = from; px <= to + 0.01; px += 4) pts.push(`${px.toFixed(1)},${Y(metres(px)).toFixed(1)}`);
+    if (to - from > 0.01 && (to - from) % 4 > 0.01) pts.push(`${to.toFixed(1)},${Y(metres(to)).toFixed(1)}`);
+    return pts.join(' ');
+  };
+  const joinPx = state.join !== undefined ? f.X(state.join) : undefined;
+  const rope = (key: string, from: number, to: number, width: number) => <polyline key={key} points={stretch(from, to)} fill="none" stroke={color} strokeWidth={width + 2.5 * glow} strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 ${6 + 10 * glow}px ${color}88)` }} />;
+  if (joinPx !== undefined) {
+    out.push(rope('rope', f.left, joinPx, 5));
+    out.push(rope('rope2', joinPx, f.right, (state.speed2 ?? state.speed) < state.speed ? 10 : 2.5));
+  } else out.push(rope('rope', f.left, endPx, 5));
   const beads = Math.floor((f.right - f.left) / 30);
   for (let i = 1; i <= beads; i++) {
     const px = f.left + (i * (f.right - f.left)) / (beads + 0.5);
+    if (px > endPx - 6) continue;
     out.push(<circle key={`b${i}`} cx={px} cy={Y(metres(px))} r={4.2} fill="#15123a" stroke={color} strokeWidth={2} />);
   }
-  out.push(<circle key="hand" cx={f.left} cy={Y(el.span[0])} r={11} fill={INK} stroke="#15123a" strokeWidth={2} />);
+  if (joinPx !== undefined) out.push(<circle key="knot" cx={joinPx} cy={Y(state.join!)} r={8} fill={INK} stroke="#15123a" strokeWidth={2} />);
+  if (!standing) out.push(<circle key="hand" cx={f.left} cy={Y(el.span[0])} r={11} fill={INK} stroke="#15123a" strokeWidth={2} />);
 
   const inView = (x: number) => f.X(x) >= f.left + 26 && f.X(x) <= f.right - 26;
   const crests = state.crests.filter(inView);
@@ -134,19 +178,85 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
     );
   }
 
-  // The wavelength: from one crest to the next (past the crest the amplitude is measured at, when there is room).
+  // The wavelength: from one crest to the next (past the crest the amplitude is measured at, when
+  // there is room). With a second medium it is measured on each side of the join.
   const from = pairFrom(crests, parts.amplitude > 0 && crests.length >= 3 ? 1 : 0, f, lane);
-  if (parts.wavelength > 0 && crests.length >= 2) {
-    const [a, b] = crests.slice(from);
-    const y = y0 - Math.max(Math.abs(state.at(a)), Math.abs(state.at(b))) * scale - 20;
+  const pairs: Array<[number, number]> = [];
+  if (state.join !== undefined) {
+    const before = crests.filter((x) => x <= state.join!);
+    const after = crests.filter((x) => x >= state.join!);
+    if (before.length >= 2) pairs.push([before[before.length - 2], before[before.length - 1]]);
+    if (after.length >= 2) pairs.push([after[0], after[1]]);
+  } else if (crests.length >= 2) pairs.push([crests[from], crests[from + 1]]);
+  if (parts.wavelength > 0)
+    pairs.forEach(([a, b], i) => {
+      const y = y0 - Math.max(Math.abs(state.at(a)), Math.abs(state.at(b))) * scale - 20;
+      out.push(
+        <g key={`wavelength${i}`} opacity={parts.wavelength}>
+          <line x1={f.X(a)} y1={y - 9} x2={f.X(a)} y2={y0 - Math.abs(state.at(a)) * scale - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
+          <line x1={f.X(b)} y1={y - 9} x2={f.X(b)} y2={y0 - Math.abs(state.at(b)) * scale - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
+          <Measure x1={f.X(a)} y1={y} x2={f.X(b)} y2={y} color={INK} />
+          <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{el.values === false ? 'wavelength' : `wavelength ${fine(b - a)} m`}</Text>
+        </g>,
+      );
+    });
+  // A standing wave has no crests that travel: its wavelength is two loops, from a node to the next but one.
+  if (parts.wavelength > 0 && standing && state.nodes.length >= 3) {
+    const [a, b] = [state.nodes[0], state.nodes[2]];
+    const y = y0 - widest - 52;
     out.push(
       <g key="wavelength" opacity={parts.wavelength}>
-        <line x1={f.X(a)} y1={y - 9} x2={f.X(a)} y2={y0 - Math.abs(state.at(a)) * scale - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
-        <line x1={f.X(b)} y1={y - 9} x2={f.X(b)} y2={y0 - Math.abs(state.at(b)) * scale - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
+        <line x1={f.X(a)} y1={y - 9} x2={f.X(a)} y2={y0 - 8} stroke={INK} strokeWidth={2} opacity={0.4} />
+        <line x1={f.X(b)} y1={y - 9} x2={f.X(b)} y2={y0 - 8} stroke={INK} strokeWidth={2} opacity={0.4} />
         <Measure x1={f.X(a)} y1={y} x2={f.X(b)} y2={y} color={INK} />
-        <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{el.values === false ? 'wavelength' : `wavelength ${short(b - a)} m`}</Text>
+        <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{el.values === false ? 'wavelength' : `wavelength ${fine(b - a)} m`}</Text>
       </g>,
     );
+  }
+
+  // The points that never move, and the points half way between them that move the most.
+  if (parts.nodes > 0 && state.nodes.length) {
+    const named = state.nodes[Math.min(1, state.nodes.length - 1)];
+    const most2 = state.antinodes[0];
+    out.push(
+      <g key="nodes" opacity={parts.nodes}>
+        {state.antinodes.map((x) => (
+          <line key={`a${x}`} x1={f.X(x)} y1={y0 - widest} x2={f.X(x)} y2={y0 + widest} stroke={NET} strokeWidth={2} strokeDasharray="4 5" opacity={0.75} />
+        ))}
+        {state.nodes.map((x) => (
+          <circle key={`n${x}`} cx={f.X(x)} cy={y0} r={7} fill="#fff" stroke="#15123a" strokeWidth={2.5} />
+        ))}
+        <Text x={f.X(named)} y={y0 + 26} size={20}>node</Text>
+        {most2 !== undefined && <Text x={f.X(most2)} y={y0 - widest - 20} size={20} color={NET}>antinode</Text>}
+      </g>,
+    );
+  }
+  // One loop of the pattern, from a node to the next: half a wavelength.
+  if (parts.loop > 0 && state.nodes.length >= 2) {
+    const k = Math.min(1, state.nodes.length - 2);
+    const [a, b] = [state.nodes[k], state.nodes[k + 1]];
+    const y = y0 + widest + 24;
+    out.push(
+      <g key="loop" opacity={parts.loop}>
+        <Measure x1={f.X(a)} y1={y} x2={f.X(b)} y2={y} color={INK2} />
+        <Text x={(f.X(a) + f.X(b)) / 2} y={y + 22} size={20} color={INK2}>{el.values === false ? 'half a wavelength' : `half a wavelength: ${fine(b - a)} m`}</Text>
+      </g>,
+    );
+  }
+
+  // Where pulses overlap, the rope carries their sum: its displacement where that is largest.
+  if (parts.sum > 0) {
+    let [best, where] = [0, f.left];
+    for (let px = f.left + 8; px <= f.right - 8; px += 2) {
+      const v = state.at(metres(px));
+      if (Math.abs(v) > Math.abs(best)) [best, where] = [v, px];
+    }
+    if (Math.abs(best) > 0.04 * most)
+      out.push(
+        <Text key="sum" x={where} y={y0 - best * scale - Math.sign(best) * 24} size={21} color={NET} opacity={parts.sum}>
+          {`${best > 0 ? '+' : '−'}${short(Math.abs(best))} ${unit}`}
+        </Text>,
+      );
   }
 
   // The names of the high and low points: on a crest nothing else is measured at, when there is one.
@@ -175,8 +285,11 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
   }
   if (parts.count > 0) out.push(<Post key="count" f={f} x={f.X(mark)} y1={y0 - ampPx - 30} y2={y0 + ampPx + 14} passed={passed} opacity={parts.count} />);
   if (parts.front > 0) out.push(<Front key="front" el={el} lane={lane} state={state} f={f} y1={y0 - ampPx - 30} y2={y0 + ampPx + 14} opacity={parts.front} />);
-  // A wall the rope is tied to, when the wave bounces back from the end.
-  if (lane.reflect) out.push(<rect key="wall" x={f.right} y={y0 - ampPx - 18} width={12} height={2 * ampPx + 36} rx={3} fill={INK3} />);
+  // A wall the rope is tied to, when the wave bounces back from a fixed end; at a free end, a ring that slides on a pole.
+  if (lane.reflect === 'free') {
+    out.push(<line key="pole" x1={f.right + 2} y1={y0 - ampPx - 22} x2={f.right + 2} y2={y0 + ampPx + 22} stroke={INK3} strokeWidth={5} strokeLinecap="round" />);
+    out.push(<circle key="ring" cx={f.right + 2} cy={Y(el.span[1])} r={10} fill="none" stroke={INK} strokeWidth={4} />);
+  } else if (lane.reflect) out.push(<rect key="wall" x={f.right} y={y0 - ampPx - 18} width={12} height={2 * ampPx + 36} rx={3} fill={INK3} />);
   return <>{out}</>;
 }
 
@@ -211,7 +324,13 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
   const metres = (px: number) => el.span[0] + (px - f.left) / pxPerMetre;
   const top = y0 - tubeH / 2;
 
-  out.push(<rect key="tube" x={f.left - 34} y={top - 5} width={f.right - f.left + 40} height={tubeH + 10} rx={10} fill="rgb(255 255 255 / 0.04)" stroke={`rgb(255 255 255 / ${0.16 + 0.3 * glow})`} strokeWidth={1.5} />);
+  // The air of a standing wave is in a tube that is closed at the left end and open at the right, where the column ends.
+  const standing = standingOf(el, lane);
+  const endPx = state.end !== undefined ? f.X(state.end) : f.right;
+  if (standing) {
+    out.push(<rect key="air" x={f.left} y={top - 5} width={endPx - f.left} height={tubeH + 10} fill="rgb(255 255 255 / 0.04)" />);
+    out.push(<path key="tube" d={`M ${endPx} ${top - 5} H ${f.left} V ${top + tubeH + 5} H ${endPx}`} fill="none" stroke={`rgb(255 255 255 / ${0.5 + 0.3 * glow})`} strokeWidth={3} strokeLinejoin="round" strokeLinecap="round" />);
+  } else out.push(<rect key="tube" x={f.left - 34} y={top - 5} width={f.right - f.left + 40} height={tubeH + 10} rx={10} fill="rgb(255 255 255 / 0.04)" stroke={`rgb(255 255 255 / ${0.16 + 0.3 * glow})`} strokeWidth={1.5} />);
   // How squashed the air is at a place, from −1 (most spread out) to 1 (most crowded): how fast
   // the displacement falls along the strip, against the most it ever does.
   const steepest = (most * TAU) / Math.min(...el.lanes.filter((l) => l.kind === lane.kind).map((l) => shortestWavelength(el, l)));
@@ -223,7 +342,7 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
       // Every other row is half a step along, so the particles do not stand in a grid.
       const px = f.left + 12 + c * step + (r % 2 ? step / 2 : 0);
       const at = px + state.at(metres(px)) * scale;
-      if (px > f.right - 4 || at > f.right + 2) continue;
+      if (px > f.right - 4 || at > f.right + 2 || (standing && px > endPx + 1)) continue;
       // Crowded particles are a little brighter and the spread-out ones dimmer, so a compression shows from a distance.
       const q = crowding(metres(px));
       dots.push(<circle key={`${r}-${c}`} cx={at.toFixed(1)} cy={top + gap * (r + 0.5)} r={(4 + 0.7 * q).toFixed(2)} fillOpacity={(0.7 + 0.3 * q).toFixed(2)} />);
@@ -236,12 +355,37 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
   );
   // The source: a plate that pushes and pulls the air next to it.
   const plate = f.left - 2 + state.at(el.span[0]) * scale;
-  out.push(
-    <g key="source">
-      <line x1={f.left - 34} y1={y0} x2={plate - 8} y2={y0} stroke={INK3} strokeWidth={6} strokeLinecap="round" />
-      <rect x={plate - 9} y={top} width={9} height={tubeH} rx={3} fill={INK} />
-    </g>,
-  );
+  if (!standing)
+    out.push(
+      <g key="source">
+        <line x1={f.left - 34} y1={y0} x2={plate - 8} y2={y0} stroke={INK3} strokeWidth={6} strokeLinecap="round" />
+        <rect x={plate - 9} y={top} width={9} height={tubeH} rx={3} fill={INK} />
+      </g>,
+    );
+  else out.push(<rect key="closed" x={f.left - 14} y={top - 12} width={14} height={tubeH + 24} rx={3} fill={INK3} />);
+
+  // How far the air moves at each place along a standing wave: nothing at a node, and most at an
+  // antinode. The two curves are drawn in the tube, closing on each node.
+  if (standing && parts.nodes > 0) {
+    const reach = tubeH / 2 - 8;
+    const curve = (side: number) => {
+      const pts: string[] = [];
+      for (let px = f.left; px <= endPx + 0.01; px += 4) pts.push(`${px.toFixed(1)},${(y0 - side * reach * Math.abs(Math.sin(standing.k * (metres(px) - el.span[0])))).toFixed(1)}`);
+      return pts.join(' ');
+    };
+    const y = top + tubeH + 14;
+    out.push(
+      <g key="nodes" opacity={parts.nodes}>
+        <polyline points={curve(1)} fill="none" stroke={NET} strokeWidth={2.5} opacity={0.85} />
+        <polyline points={curve(-1)} fill="none" stroke={NET} strokeWidth={2.5} opacity={0.85} />
+        {state.nodes.map((x) => (
+          <circle key={`n${x}`} cx={f.X(x)} cy={y0} r={6} fill="#fff" stroke="#15123a" strokeWidth={2.5} />
+        ))}
+        <Text x={f.X(state.nodes[0])} y={y + 14} size={19} anchor="start">node</Text>
+        <Text x={f.X(state.antinodes[state.antinodes.length - 1])} y={y + 14} size={19} color={NET} anchor="end">antinode</Text>
+      </g>,
+    );
+  }
 
   const inView = (x: number) => f.X(x) >= f.left + 26 && f.X(x) <= f.right - 26;
   const squeezed = state.crests.filter(inView);
@@ -256,7 +400,7 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
         <line x1={f.X(a)} y1={y - 9} x2={f.X(a)} y2={top - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
         <line x1={f.X(b)} y1={y - 9} x2={f.X(b)} y2={top - 6} stroke={INK} strokeWidth={2} opacity={0.6} />
         <Measure x1={f.X(a)} y1={y} x2={f.X(b)} y2={y} color={INK} />
-        <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{el.values === false ? 'wavelength' : `wavelength ${short(b - a)} m`}</Text>
+        <Text x={(f.X(a) + f.X(b)) / 2} y={y - 20} size={20}>{el.values === false ? 'wavelength' : `wavelength ${fine(b - a)} m`}</Text>
       </g>,
     );
   }
@@ -317,7 +461,7 @@ export function WaveView({ el, st, w, h, plays }: { el: WaveEl; st: ElState | un
   const X = (x: number) => left + ((x - el.span[0]) / (el.span[1] - el.span[0])) * (right - left);
   const f: Frame = { X, left, right, top, laneH, w };
   const mark = el.mark ?? (el.span[0] + el.span[1]) / 2;
-  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front') };
+  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front'), pulses: part('pulses'), sum: part('sum'), nodes: part('nodes'), loop: part('loop') };
   const out: ReactElement[] = [];
 
   el.lanes.forEach((lane, i) => {
@@ -335,12 +479,24 @@ export function WaveView({ el, st, w, h, plays }: { el: WaveEl; st: ElState | un
             {lane.label}
           </Text>
         )}
-        {parts.speed > 0 && (
+        {parts.speed > 0 && s.join === undefined && (
           <g opacity={parts.speed}>
             <Arrow x={w - 196} y={yTop + 14} len={58} color={VELOCITY} weight={6} />
             <Text x={w - 126} y={yTop + 14} anchor="start" size={20} color={VELOCITY}>{`${short(s.speed)} m/s`}</Text>
           </g>
         )}
+        {/* With a second medium, the speed in each is written over its own stretch of the strip. */}
+        {parts.speed > 0 &&
+          s.join !== undefined &&
+          [
+            [(left + X(s.join)) / 2, s.speed],
+            [(X(s.join) + right) / 2, s.speed2 ?? s.speed],
+          ].map(([x, v], k) => (
+            <g key={k} opacity={parts.speed}>
+              <Arrow x={x - 70} y={yTop + 14} len={Math.max(26, Math.min(58, 6 * v))} color={VELOCITY} weight={6} />
+              <Text x={x} y={yTop + 14} anchor="start" size={20} color={VELOCITY}>{`${short(v)} m/s`}</Text>
+            </g>
+          ))}
         {parts.frequency > 0 && (
           <Text x={left - 6} y={yTop + laneH - 8} anchor="middle" size={19} color={color} opacity={parts.frequency}>{`${short(s.frequency)} Hz`}</Text>
         )}

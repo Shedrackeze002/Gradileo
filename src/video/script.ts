@@ -457,8 +457,48 @@ export interface WaveLane {
   speed: number;
   /** The wave already fills the strip when it first appears; otherwise it starts at the source and runs in. */
   full?: boolean;
-  /** The wave bounces back from the right end of the strip (a wall, a cliff), turned over, and the two add up. */
-  reflect?: boolean;
+  /**
+   * The wave bounces back from the right end of the strip, and the two add up: `true` for a fixed
+   * end (a wall, a cliff), which turns the wave over, and `'free'` for a free end (a ring that
+   * slides on a pole), which sends it back the same way up.
+   */
+  reflect?: boolean | 'free';
+  /**
+   * Single pulses, instead of a steady wave or as well as one. A lane of pulses alone has a
+   * frequency of 0, and its `amplitude` is the height of its tallest pulse. Pulses that meet add
+   * up, and pass through each other.
+   */
+  pulses?: WavePulse[];
+  /**
+   * Another medium from `from` metres on (a heavier rope tied on), where the wave travels at this
+   * speed: the frequency stays the same, and the wavelength changes with the speed. A pulse is
+   * partly reflected at the join (turned over when the second medium is the slower one) and
+   * partly sent on. A steady wave is drawn without its reflected part, so that its wavelength can
+   * be read on each side. Transverse lanes only.
+   */
+  medium?: { from: number; speed: number };
+  /**
+   * A standing wave instead of a travelling one. On a transverse lane, a string fixed at both ends
+   * with this many `loops`. On a longitudinal lane, the air in a tube that is closed at the left
+   * end and open at the right, holding this many `quarters` of a wavelength (1, 3, 5, …).
+   * `length` is the length of the string or the air column in metres, from the left end (the
+   * whole strip otherwise). The lane's `frequency` must be the one that fits: loops × speed ÷ 2L,
+   * or quarters × speed ÷ 4L.
+   */
+  standing?: { loops?: number; quarters?: number; length?: number };
+  tone?: Tone;
+}
+
+/** A single pulse on a lane of a `wave` element. */
+export interface WavePulse {
+  /** How high its middle is, in the element's amplitude unit: negative for a trough. */
+  height: number;
+  /** How long it is, in metres (a tenth of the strip otherwise). */
+  width?: number;
+  /** When it starts to leave its end, in seconds of the wave's own time (0 otherwise). */
+  at?: number;
+  /** `'right'`: it comes in from the right end and travels left. From the left end otherwise. */
+  from?: 'left' | 'right';
   tone?: Tone;
 }
 
@@ -481,7 +521,7 @@ export interface WaveClip {
 }
 
 /** What a wave element can show over its waves; each is a part ("w.wavelength"). */
-export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock'] as const;
+export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock', 'pulses', 'sum', 'nodes', 'loop'] as const;
 
 /**
  * Travelling waves, for the physics videos: each lane is a strip with a source at its left end,
@@ -493,7 +533,11 @@ export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'spee
  * as it stands), `count` (a post at the mark, with the complete waves that have passed it),
  * `speed` (an arrow with the wave's speed), `frequency` (the source's frequency, under it), `front`
  * (a marker on the front of a wave that started at the source, with how far it has travelled), `labels` (the names of a longitudinal wave's
- * compressions and rarefactions, or a transverse wave's crests and troughs) and `clock`.
+ * compressions and rarefactions, or a transverse wave's crests and troughs) and `clock`. Where
+ * pulses meet: `pulses` (the outline of each pulse on its own, under the rope that carries their
+ * sum) and `sum` (the displacement of the rope where it is largest). On a standing wave, or a
+ * steady wave that meets its own reflection: `nodes` (the points that never move, and the points
+ * half way between them that move the most) and `loop` (the length of one loop, node to node).
  * Emphasising a lane's id makes it glow.
  */
 export interface WaveEl {
@@ -1806,6 +1850,26 @@ export function checkWave(e: WaveEl): string[] {
     if ((WAVE_PARTS as readonly string[]).includes(l.id)) problems.push(`the lane id "${l.id}" is the name of a part.`);
     if (!(l.speed > 0)) problems.push(`lane "${l.id}" needs a speed above zero.`);
     if (!(l.frequency >= 0) || !(l.amplitude >= 0)) problems.push(`lane "${l.id}" needs a frequency and an amplitude of zero or more.`);
+    for (const pulse of l.pulses ?? []) {
+      if (!(pulse.height !== 0) || (pulse.width !== undefined && !(pulse.width > 0)) || (pulse.at ?? 0) < 0) problems.push(`lane "${l.id}" has a pulse with no height, no width or a start before zero.`);
+      if (pulse.from === 'right' && (l.reflect || l.medium)) problems.push(`lane "${l.id}": a pulse from the right needs a plain strip, with no reflecting end and no second medium.`);
+    }
+    if (l.medium) {
+      if (l.kind !== 'transverse') problems.push(`lane "${l.id}": a second medium is for a transverse wave.`);
+      if (!(l.medium.speed > 0) || !(l.medium.from > e.span[0] && l.medium.from < e.span[1])) problems.push(`lane "${l.id}": the second medium needs a speed above zero and a start on the strip.`);
+      if (l.reflect) problems.push(`lane "${l.id}": a lane with a second medium has no reflecting end.`);
+    }
+    if (l.standing) {
+      const { loops, quarters, length = e.span[1] - e.span[0] } = l.standing;
+      if (l.pulses || l.reflect || l.medium) problems.push(`lane "${l.id}": a standing wave has no pulses, reflecting end or second medium of its own.`);
+      if (!(length > 0 && length <= e.span[1] - e.span[0] + 1e-9)) problems.push(`lane "${l.id}": the standing wave's length must fit the strip.`);
+      const whole = (n: number | undefined) => n !== undefined && Number.isInteger(n) && n >= 1;
+      if (l.kind === 'transverse' ? !whole(loops) : !(whole(quarters) && quarters! % 2 === 1)) problems.push(`lane "${l.id}": a string needs a whole number of loops, and an air column an odd number of quarter wavelengths.`);
+      else {
+        const fits = l.kind === 'transverse' ? (loops! * l.speed) / (2 * length) : (quarters! * l.speed) / (4 * length);
+        if (Math.abs(l.frequency - fits) > 0.01 * fits) problems.push(`lane "${l.id}": the frequency that fits this standing wave is ${Math.round(fits * 100) / 100} Hz.`);
+      }
+    }
   }
   if (e.mark !== undefined && !(e.mark >= e.span[0] && e.mark <= e.span[1])) problems.push('the mark is off the strip.');
   for (const [name, clip] of Object.entries(e.clips)) {
