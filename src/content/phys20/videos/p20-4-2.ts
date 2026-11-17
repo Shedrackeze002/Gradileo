@@ -61,7 +61,7 @@ const video: Explainer = {
     {
       chapter: 'A stiffer spring',
       layout: 'split',
-      leftWidth: 568,
+      leftWidth: 544,
       left: [soft],
       right: [stiff],
       lines: [
@@ -73,7 +73,7 @@ const video: Explainer = {
     {
       chapter: 'A larger mass',
       layout: 'split',
-      leftWidth: 568,
+      leftWidth: 544,
       left: [light],
       right: [heavy],
       lines: [
@@ -96,7 +96,7 @@ const video: Explainer = {
     {
       chapter: 'The amplitude does not matter',
       layout: 'split',
-      leftWidth: 568,
+      leftWidth: 544,
       left: [small],
       right: [large],
       lines: [

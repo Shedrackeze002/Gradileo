@@ -855,7 +855,8 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
         <Text x={X(zero) - 12} y={y1 + 12} anchor="end" color={INK2} size={18}>
           equilibrium
         </Text>
-        {A * S >= 6 && [-1, 1].map((k) => <line key={k} x1={X(zero + k * A)} y1={y0 + 14} x2={X(zero + k * A)} y2={y1 + 22} stroke={DISPLACEMENT} strokeWidth={2} strokeDasharray="3 7" opacity={0.75} />)}
+        {/* The line at the far extreme stops at the track when it would run through the word "equilibrium". */}
+        {A * S >= 6 && [-1, 1].map((k) => <line key={k} x1={X(zero + k * A)} y1={y0 + 14} x2={X(zero + k * A)} y2={k < 0 && A * S < 130 ? g + 10 : y1 + 22} stroke={DISPLACEMENT} strokeWidth={2} strokeDasharray="3 7" opacity={0.75} />)}
         {A * S >= 6 && <Arrow x={X(zero)} y={y1 + 12} len={A * S} color={DISPLACEMENT} weight={5} />}
         {A * S >= 6 && (
           <Text x={X(zero + A) + 14} y={y1 + 12} anchor="start" color={DISPLACEMENT} size={19}>
