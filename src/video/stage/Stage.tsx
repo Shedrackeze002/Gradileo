@@ -257,8 +257,15 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
               plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
             />
           ) : fig.kind === 'wave' ? (
-            // Waves are caught part way through their poster clip, without the ruler or the notes.
-            <WaveView el={{ ...fig, ruler: false, lanes: fig.lanes.slice(0, 2), clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }} st={{ ...FULL, parts: {} }} w={1160} h={320} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
+            // Waves are caught part way through their poster clip, without the ruler or the notes. A
+            // wave carries on from one clip to the next, so the clips before the poster are played through first.
+            <WaveView
+              el={{ ...fig, ruler: false, lanes: fig.lanes.slice(0, 2), clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }}
+              st={{ ...FULL, parts: {} }}
+              w={1160}
+              h={320}
+              plays={fig.poster ? [...Object.keys(fig.clips).slice(0, Object.keys(fig.clips).indexOf(fig.poster)).map((name): [string, number] => [name, clipSeconds(fig, name)]), [fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
+            />
           ) : fig.kind === 'flight' ? (
             <FlightThumb el={fig} w={890} h={330} />
           ) : fig.kind === 'gravity' ? (

@@ -495,7 +495,11 @@ export interface WavePulse {
   height: number;
   /** How long it is, in metres (a tenth of the strip otherwise). */
   width?: number;
-  /** When it starts to leave its end, in seconds of the wave's own time (0 otherwise). */
+  /**
+   * When it starts to leave its end, in seconds of the wave's own time (0 otherwise). It may be
+   * as early as minus half its length ÷ the speed, so that its middle leaves as the clock starts:
+   * the `front` marker and the clock then give the distance and the time of an echo exactly.
+   */
   at?: number;
   /** `'right'`: it comes in from the right end and travels left. From the left end otherwise. */
   from?: 'left' | 'right';
@@ -521,7 +525,7 @@ export interface WaveClip {
 }
 
 /** What a wave element can show over its waves; each is a part ("w.wavelength"). */
-export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock', 'pulses', 'sum', 'nodes', 'loop'] as const;
+export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock', 'pulses', 'sum', 'heights', 'pull', 'nodes', 'loop'] as const;
 
 /**
  * Travelling waves, for the physics videos: each lane is a strip with a source at its left end,
@@ -535,7 +539,9 @@ export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'spee
  * (a marker on the front of a wave that started at the source, with how far it has travelled), `labels` (the names of a longitudinal wave's
  * compressions and rarefactions, or a transverse wave's crests and troughs) and `clock`. Where
  * pulses meet: `pulses` (the outline of each pulse on its own, under the rope that carries their
- * sum) and `sum` (the displacement of the rope where it is largest). On a standing wave, or a
+ * sum), `sum` (the displacement of the rope where it is largest) and `heights` (the height of each
+ * hump on the rope, with its sign, for what a join or an end has made of a pulse). At a fixed end,
+ * `pull` shows the pair of forces there: the rope's pull on the wall, and the wall's on the rope. On a standing wave, or a
  * steady wave that meets its own reflection: `nodes` (the points that never move, and the points
  * half way between them that move the most) and `loop` (the length of one loop, node to node).
  * Emphasising a lane's id makes it glow.
@@ -557,6 +563,8 @@ export interface WaveEl {
   ruler?: boolean;
   /** `false` leaves the sizes off the amplitude and the wavelength, for a picture that is not to scale. */
   values?: boolean;
+  /** A clock in another unit: its name, and how many seconds one of it is ({ unit: 'ms', seconds: 0.001 }). */
+  clock?: { unit: string; seconds: number };
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
   height?: number;
@@ -1851,7 +1859,9 @@ export function checkWave(e: WaveEl): string[] {
     if (!(l.speed > 0)) problems.push(`lane "${l.id}" needs a speed above zero.`);
     if (!(l.frequency >= 0) || !(l.amplitude >= 0)) problems.push(`lane "${l.id}" needs a frequency and an amplitude of zero or more.`);
     for (const pulse of l.pulses ?? []) {
-      if (!(pulse.height !== 0) || (pulse.width !== undefined && !(pulse.width > 0)) || (pulse.at ?? 0) < 0) problems.push(`lane "${l.id}" has a pulse with no height, no width or a start before zero.`);
+      // A pulse may be half way out at time 0, so that its middle leaves the source as the clock starts.
+      const early = -(pulse.width ?? (e.span[1] - e.span[0]) / 10) / (2 * l.speed);
+      if (!(pulse.height !== 0) || (pulse.width !== undefined && !(pulse.width > 0)) || (pulse.at ?? 0) < early - 1e-9) problems.push(`lane "${l.id}" has a pulse with no height, no width or a middle that leaves before time zero.`);
       if (pulse.from === 'right' && (l.reflect || l.medium)) problems.push(`lane "${l.id}": a pulse from the right needs a plain strip, with no reflecting end and no second medium.`);
     }
     if (l.medium) {

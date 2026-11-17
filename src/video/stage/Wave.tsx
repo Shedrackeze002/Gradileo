@@ -73,6 +73,8 @@ interface Parts {
   front: number;
   pulses: number;
   sum: number;
+  heights: number;
+  pull: number;
   nodes: number;
   loop: number;
 }
@@ -91,10 +93,12 @@ function Front({ el, lane, state, f, y1, y2, opacity }: { el: WaveEl; lane: Wave
   const back = d > length;
   const x = f.X(el.span[0] + (back ? 2 * length - d : d));
   const left = back ? x > f.left + 230 : x > f.right - 230;
+  // Back near the source, the distance would sit on the lane's label at the top left: it goes under the strip instead.
+  const under = !left && lane.label !== undefined && x + 12 < lane.label.length * 11.5 + 24;
   return (
     <g opacity={opacity}>
-      <line x1={x} y1={y1} x2={x} y2={y2} stroke={INK} strokeWidth={3} strokeLinecap="round" />
-      <Text x={x + (left ? -12 : 12)} y={y1 + 6} size={20} anchor={left ? 'end' : 'start'}>{`travelled ${d >= 100 ? Math.round(d) : live(d)} m`}</Text>
+      <line x1={x} y1={y1} x2={x} y2={under ? y2 + 30 : y2} stroke={INK} strokeWidth={3} strokeLinecap="round" />
+      <Text x={x + (left ? -12 : 12)} y={under ? y2 + 20 : y1 + 6} size={20} anchor={left ? 'end' : 'start'}>{`travelled ${d >= 100 ? Math.round(d) : live(d)} m`}</Text>
     </g>
   );
 }
@@ -247,16 +251,60 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
   // Where pulses overlap, the rope carries their sum: its displacement where that is largest.
   if (parts.sum > 0) {
     let [best, where] = [0, f.left];
-    for (let px = f.left + 8; px <= f.right - 8; px += 2) {
+    // A free end moves the most of all, so it is looked at too.
+    for (let px = f.left + 8; px <= f.right - (lane.reflect === 'free' ? 0 : 8); px += 2) {
       const v = state.at(metres(px));
       if (Math.abs(v) > Math.abs(best)) [best, where] = [v, px];
     }
+    // At the end of the strip the number goes beside the rope, not over the ring.
+    const edge = where > f.right - 50;
     if (Math.abs(best) > 0.04 * most)
       out.push(
-        <Text key="sum" x={where} y={y0 - best * scale - Math.sign(best) * 24} size={21} color={NET} opacity={parts.sum}>
+        <Text key="sum" x={edge ? where - 20 : where} y={y0 - best * scale - Math.sign(best) * (edge ? 26 : 24)} size={21} color={NET} anchor={edge ? 'end' : 'middle'} opacity={parts.sum}>
           {`${best > 0 ? '+' : '−'}${short(Math.abs(best))} ${unit}`}
         </Text>,
       );
+  }
+
+  // The height of each hump on the rope, with its sign: what a join or an end has made of a pulse.
+  if (parts.heights > 0) {
+    const tips: Array<[px: number, v: number]> = [];
+    for (let px = f.left + 8; px <= f.right - 8; px += 2) {
+      const [a, v, b] = [state.at(metres(px - 2)), state.at(metres(px)), state.at(metres(px + 2))].map(Math.abs);
+      if (v < 0.04 * most || v < a || v <= b) continue;
+      const last = tips[tips.length - 1];
+      // Two tips close together are one hump: the higher of them is kept.
+      if (last && px - last[0] < 40) {
+        if (v > Math.abs(last[1])) tips[tips.length - 1] = [px, state.at(metres(px))];
+      } else tips.push([px, state.at(metres(px))]);
+    }
+    tips.forEach(([px, v], i) =>
+      out.push(
+        <Text key={`height${i}`} x={px} y={y0 - v * scale - Math.sign(v) * 24} size={21} color={NET} opacity={parts.heights}>
+          {`${v > 0 ? '+' : '−'}${short(Math.abs(v))} ${unit}`}
+        </Text>,
+      ),
+    );
+  }
+
+  // The pair of forces at a fixed end: the rope pulls on the wall (up, as a crest arrives), and
+  // the wall pulls back on the rope with an equal force the other way. The pull is as large as
+  // the rope is steep at the wall.
+  if (parts.pull > 0 && lane.reflect === true && state.join === undefined) {
+    const dx = (el.span[1] - el.span[0]) / 400;
+    const steepest = (2 * most * TAU) / shortestWavelength(el, lane);
+    const up = Math.max(-1, Math.min(1, state.at(el.span[1] - dx) / dx / steepest));
+    const len = 78 * up;
+    if (Math.abs(len) >= 4) {
+      const [onWall, onRope] = up > 0 ? ['up', 'down'] : ['down', 'up'];
+      out.push(
+        <g key="pull" opacity={parts.pull}>
+          <Arrow x={f.right - 16} y={y0} len={-len} axis="y" color={TONES.opp} weight={7} />
+          <Text x={f.right - 34} y={y0 + Math.sign(len) * (ampPx + 30)} size={20} anchor="end" color={TONES.opp}>{`the wall pulls the rope ${onRope}`}</Text>
+          <Text x={f.right - 34} y={y0 - Math.sign(len) * (ampPx + 30)} size={20} anchor="end" color={TONES.brand}>{`the rope pulls the wall ${onWall}`}</Text>
+        </g>,
+      );
+    }
   }
 
   // The names of the high and low points: on a crest nothing else is measured at, when there is one.
@@ -289,7 +337,14 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
   if (lane.reflect === 'free') {
     out.push(<line key="pole" x1={f.right + 2} y1={y0 - ampPx - 22} x2={f.right + 2} y2={y0 + ampPx + 22} stroke={INK3} strokeWidth={5} strokeLinecap="round" />);
     out.push(<circle key="ring" cx={f.right + 2} cy={Y(el.span[1])} r={10} fill="none" stroke={INK} strokeWidth={4} />);
-  } else if (lane.reflect) out.push(<rect key="wall" x={f.right} y={y0 - ampPx - 18} width={12} height={2 * ampPx + 36} rx={3} fill={INK3} />);
+  } else if (lane.reflect) {
+    out.push(<rect key="wall" x={f.right} y={y0 - ampPx - 18} width={12} height={2 * ampPx + 36} rx={3} fill={INK3} />);
+    if (parts.pull > 0 && state.join === undefined) {
+      const dx = (el.span[1] - el.span[0]) / 400;
+      const up = Math.max(-1, Math.min(1, state.at(el.span[1] - dx) / dx / ((2 * most * TAU) / shortestWavelength(el, lane))));
+      out.push(<Arrow key="pull-wall" x={f.right + 6} y={y0} len={78 * up} axis="y" color={TONES.brand} weight={7} opacity={parts.pull} />);
+    }
+  }
   return <>{out}</>;
 }
 
@@ -461,7 +516,7 @@ export function WaveView({ el, st, w, h, plays }: { el: WaveEl; st: ElState | un
   const X = (x: number) => left + ((x - el.span[0]) / (el.span[1] - el.span[0])) * (right - left);
   const f: Frame = { X, left, right, top, laneH, w };
   const mark = el.mark ?? (el.span[0] + el.span[1]) / 2;
-  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front'), pulses: part('pulses'), sum: part('sum'), nodes: part('nodes'), loop: part('loop') };
+  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front'), pulses: part('pulses'), sum: part('sum'), heights: part('heights'), pull: part('pull'), nodes: part('nodes'), loop: part('loop') };
   const out: ReactElement[] = [];
 
   el.lanes.forEach((lane, i) => {
@@ -526,7 +581,7 @@ export function WaveView({ el, st, w, h, plays }: { el: WaveEl; st: ElState | un
   }
 
   const clock = part('clock');
-  if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
+  if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time / (el.clock?.seconds ?? 1)} unit={el.clock?.unit ?? 's'} opacity={clock} />);
   if (state.note)
     out.push(
       <g key="note">

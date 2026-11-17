@@ -261,5 +261,8 @@ export function shortestWavelength(el: WaveEl, lane: WaveLane): number {
   for (const clip of Object.values(el.clips)) for (const ph of clip.phases) most = Math.max(most, ph.set?.[lane.id]?.frequency ?? 0);
   const standing = standingOf(el, lane);
   if (standing) return (2 * Math.PI) / standing.k;
-  return most > 0 ? Math.min(lane.speed, lane.medium?.speed ?? lane.speed) / most : Number.POSITIVE_INFINITY;
+  const slowest = Math.min(lane.speed, lane.medium?.speed ?? lane.speed);
+  // A single pulse is as steep as a wave of twice its length; in a slower medium it is shorter by the ratio of the speeds.
+  const pulses = (lane.pulses ?? []).map((pulse) => (2 * pulseWidth(el, pulse) * slowest) / lane.speed);
+  return Math.min(most > 0 ? slowest / most : Number.POSITIVE_INFINITY, ...pulses);
 }
