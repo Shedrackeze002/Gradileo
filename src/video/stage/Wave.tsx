@@ -75,6 +75,7 @@ interface Parts {
   sum: number;
   heights: number;
   pull: number;
+  motion: number;
   nodes: number;
   loop: number;
 }
@@ -162,6 +163,17 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
     const px = f.left + (i * (f.right - f.left)) / (beads + 0.5);
     if (px > endPx - 6) continue;
     out.push(<circle key={`b${i}`} cx={px} cy={Y(metres(px))} r={4.2} fill="#15123a" stroke={color} strokeWidth={2} />);
+  }
+  // How fast the points of the rope are moving, up or down: an arrow on each bead. A rope
+  // that is flat for an instant while two pulses cancel is moving fastest then.
+  if (parts.motion > 0) {
+    const fastest = ((most * TAU) / shortestWavelength(el, lane)) * lane.speed;
+    for (let i = 1; i <= beads; i++) {
+      const px = f.left + (i * (f.right - f.left)) / (beads + 0.5);
+      if (px > endPx - 6) continue;
+      const len = 34 * Math.max(-2, Math.min(2, state.rate(metres(px)) / fastest));
+      if (Math.abs(len) >= 5) out.push(<Arrow key={`m${i}`} x={px} y={Y(metres(px))} len={len} axis="y" color={VELOCITY} weight={5} opacity={parts.motion} />);
+    }
   }
   if (joinPx !== undefined) out.push(<circle key="knot" cx={joinPx} cy={Y(state.join!)} r={8} fill={INK} stroke="#15123a" strokeWidth={2} />);
   if (!standing) out.push(<circle key="hand" cx={f.left} cy={Y(el.span[0])} r={11} fill={INK} stroke="#15123a" strokeWidth={2} />);
@@ -258,9 +270,11 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
     }
     // At the end of the strip the number goes beside the rope, not over the ring.
     const edge = where > f.right - 50;
+    // With the outline of each pulse drawn, the number clears the tallest of them there too.
+    const tip = parts.pulses > 0 ? state.pulses.reduce((far, own) => (Math.sign(best) * own(metres(where)) > Math.sign(best) * far ? own(metres(where)) : far), best) : best;
     if (Math.abs(best) > 0.04 * most)
       out.push(
-        <Text key="sum" x={edge ? where - 20 : where} y={y0 - best * scale - Math.sign(best) * (edge ? 26 : 24)} size={21} color={NET} anchor={edge ? 'end' : 'middle'} opacity={parts.sum}>
+        <Text key="sum" x={edge ? where - 20 : where} y={y0 - tip * scale - Math.sign(best) * (edge ? 26 : 24)} size={21} color={NET} anchor={edge ? 'end' : 'middle'} opacity={parts.sum}>
           {`${best > 0 ? '+' : '−'}${short(Math.abs(best))} ${unit}`}
         </Text>,
       );
@@ -516,7 +530,7 @@ export function WaveView({ el, st, w, h, plays }: { el: WaveEl; st: ElState | un
   const X = (x: number) => left + ((x - el.span[0]) / (el.span[1] - el.span[0])) * (right - left);
   const f: Frame = { X, left, right, top, laneH, w };
   const mark = el.mark ?? (el.span[0] + el.span[1]) / 2;
-  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front'), pulses: part('pulses'), sum: part('sum'), heights: part('heights'), pull: part('pull'), nodes: part('nodes'), loop: part('loop') };
+  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front'), pulses: part('pulses'), sum: part('sum'), heights: part('heights'), pull: part('pull'), motion: part('motion'), nodes: part('nodes'), loop: part('loop') };
   const out: ReactElement[] = [];
 
   el.lanes.forEach((lane, i) => {

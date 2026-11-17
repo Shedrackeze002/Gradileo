@@ -124830,5 +124830,327 @@
         "working": "Useful energy out: $mgh = 4 \\times 9.81 \\times 10 = 392.4\\ \\text{J}$. Efficiency: $\\dfrac{392.4}{500} \\times 100\\% = 78.5\\%$."
       }
     ]
+  },
+  "p20-4-1": {
+    "lessonId": "p20-4-1",
+    "title": "Simple Harmonic Motion",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An oscillation",
+        "t": 18.236
+      },
+      {
+        "title": "Period and frequency",
+        "t": 82.242
+      },
+      {
+        "title": "The displacement-time graph",
+        "t": 140.787
+      },
+      {
+        "title": "Four amplitudes",
+        "t": 186.85
+      },
+      {
+        "title": "Your turn",
+        "t": 233.31
+      },
+      {
+        "title": "Summary",
+        "t": 270.765
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-1:q",
+        "t": 246.775,
+        "prompt": "A mass on a spring oscillates with an amplitude of 2 cm and a frequency of 5 Hz. How far does it travel in 4 s?",
+        "choices": [
+          "$160\\ \\text{cm}$",
+          "$40\\ \\text{cm}$",
+          "$80\\ \\text{cm}$",
+          "$20\\ \\text{cm}$"
+        ],
+        "answer": 0,
+        "working": "Oscillations: $5 \\times 4 = 20$. Each one covers four amplitudes: $4 \\times 2 = 8\\ \\text{cm}$. Distance: $20 \\times 8 = 160\\ \\text{cm}$."
+      }
+    ]
+  },
+  "p20-4-1-b": {
+    "lessonId": "p20-4-1",
+    "title": "Simple Harmonic Motion, Part 2: The Restoring Force",
+    "duration": 304,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The restoring force",
+        "t": 14.356
+      },
+      {
+        "title": "Simple harmonic motion",
+        "t": 52.882
+      },
+      {
+        "title": "The size of the force",
+        "t": 120.282
+      },
+      {
+        "title": "From an acceleration to a position",
+        "t": 172.625
+      },
+      {
+        "title": "Your turn",
+        "t": 227.364
+      },
+      {
+        "title": "Summary",
+        "t": 272.9
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-1-b:q",
+        "t": 244.992,
+        "prompt": "A 0.2 kg mass on a spring with a spring constant of 40 N/m is 5 cm from its equilibrium position. What is the size of its acceleration?",
+        "choices": [
+          "$1000\\ \\text{m/s}^2$",
+          "$10\\ \\text{m/s}^2$",
+          "$2\\ \\text{m/s}^2$",
+          "$0.4\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "Change the units: $x = 5\\ \\text{cm} = 0.05\\ \\text{m}$. Force: $F = kx = 40 \\times 0.05 = 2\\ \\text{N}$. Acceleration: $a = \\dfrac{F}{m} = \\dfrac{2}{0.2} = 10\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p20-4-2": {
+    "lessonId": "p20-4-2",
+    "title": "The Mass on a Spring",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A stiffer spring",
+        "t": 16.183
+      },
+      {
+        "title": "A larger mass",
+        "t": 45.131
+      },
+      {
+        "title": "The period",
+        "t": 73.578
+      },
+      {
+        "title": "The amplitude does not matter",
+        "t": 130.039
+      },
+      {
+        "title": "A spring constant from a timing",
+        "t": 163.148
+      },
+      {
+        "title": "Your turn",
+        "t": 224.635
+      },
+      {
+        "title": "Summary",
+        "t": 271.913
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-2:q",
+        "t": 236.916,
+        "prompt": "A 100 g mass oscillates on a spring with a spring constant of 40 N/m. What is its period?",
+        "choices": [
+          "$3.14\\ \\text{s}$",
+          "$0.05\\ \\text{s}$",
+          "$0.31\\ \\text{s}$",
+          "$9.93\\ \\text{s}$"
+        ],
+        "answer": 2,
+        "working": "Change the units: $m = 100\\ \\text{g} = 0.1\\ \\text{kg}$. Then $T = 2\\pi\\sqrt{\\dfrac{0.1}{40}} = 2\\pi\\sqrt{0.0025} = 2\\pi \\times 0.05 = 0.31\\ \\text{s}$."
+      }
+    ]
+  },
+  "p20-4-2-b": {
+    "lessonId": "p20-4-2",
+    "title": "The Mass on a Spring, Part 2: Energy in an Oscillation",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The energy swaps",
+        "t": 17.046
+      },
+      {
+        "title": "The total energy",
+        "t": 66.76
+      },
+      {
+        "title": "The greatest speed",
+        "t": 109.12
+      },
+      {
+        "title": "Part of the way out",
+        "t": 138.492
+      },
+      {
+        "title": "Twice the amplitude",
+        "t": 193.556
+      },
+      {
+        "title": "Your turn",
+        "t": 226.489
+      },
+      {
+        "title": "Summary",
+        "t": 278.248
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-2-b:q",
+        "t": 242.817,
+        "prompt": "A 0.2 kg mass oscillates on a spring with a spring constant of 80 N/m, with an amplitude of 5 cm, on a frictionless surface. What is its greatest speed?",
+        "choices": [
+          "$0.10\\ \\text{m/s}$",
+          "$100\\ \\text{m/s}$",
+          "$0.71\\ \\text{m/s}$",
+          "$1.0\\ \\text{m/s}$"
+        ],
+        "answer": 3,
+        "working": "Change the units: $A = 5\\ \\text{cm} = 0.05\\ \\text{m}$. Total energy: $E = \\dfrac{1}{2} \\times 80 \\times 0.05^2 = 0.10\\ \\text{J}$. At equilibrium it is all kinetic: $v = \\sqrt{\\dfrac{2 \\times 0.10}{0.2}} = \\sqrt{1} = 1.0\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p20-4-3": {
+    "lessonId": "p20-4-3",
+    "title": "The Pendulum",
+    "duration": 324,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What pulls the bob back",
+        "t": 19.506
+      },
+      {
+        "title": "The length",
+        "t": 66.95
+      },
+      {
+        "title": "The mass of the bob",
+        "t": 99.505
+      },
+      {
+        "title": "The width of the swing",
+        "t": 130.115
+      },
+      {
+        "title": "The period",
+        "t": 155.669
+      },
+      {
+        "title": "On the Moon",
+        "t": 214.66
+      },
+      {
+        "title": "Your turn",
+        "t": 250.668
+      },
+      {
+        "title": "Summary",
+        "t": 298.195
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-3:q",
+        "t": 264.511,
+        "prompt": "A simple pendulum is 0.5 m long. Use $g = 9.81\\ \\text{m/s}^2$. What is its period?",
+        "choices": [
+          "$1.42\\ \\text{s}$",
+          "$0.23\\ \\text{s}$",
+          "$27.8\\ \\text{s}$",
+          "$0.32\\ \\text{s}$"
+        ],
+        "answer": 0,
+        "working": "$T = 2\\pi\\sqrt{\\dfrac{L}{g}} = 2\\pi\\sqrt{\\dfrac{0.5}{9.81}} = 2\\pi\\sqrt{0.05097} = 2\\pi \\times 0.2258 = 1.42\\ \\text{s}$."
+      }
+    ]
+  },
+  "p20-4-3-b": {
+    "lessonId": "p20-4-3",
+    "title": "The Pendulum, Part 2: Measuring g",
+    "duration": 300,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A complete swing",
+        "t": 17.361
+      },
+      {
+        "title": "The length for a chosen period",
+        "t": 48.332
+      },
+      {
+        "title": "Gravity on another world",
+        "t": 95.495
+      },
+      {
+        "title": "An experiment",
+        "t": 150.715
+      },
+      {
+        "title": "Your turn",
+        "t": 225.165
+      },
+      {
+        "title": "Summary",
+        "t": 273.181
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-3-b:q",
+        "t": 240.868,
+        "prompt": "On a planet, a simple pendulum 0.5 m long makes 10 complete swings in 22.2 s. What is the acceleration due to gravity there?",
+        "choices": [
+          "$8.9\\ \\text{m/s}^2$",
+          "$4.0\\ \\text{m/s}^2$",
+          "$0.040\\ \\text{m/s}^2$",
+          "$400\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "Period: $T = \\dfrac{22.2}{10} = 2.22\\ \\text{s}$. Then $g = \\dfrac{4\\pi^2 L}{T^2} = \\dfrac{4\\pi^2 \\times 0.5}{2.22^2} = \\dfrac{19.74}{4.928} = 4.0\\ \\text{m/s}^2$."
+      }
+    ]
   }
 }

@@ -525,7 +525,7 @@ export interface WaveClip {
 }
 
 /** What a wave element can show over its waves; each is a part ("w.wavelength"). */
-export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock', 'pulses', 'sum', 'heights', 'pull', 'nodes', 'loop'] as const;
+export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock', 'pulses', 'sum', 'heights', 'pull', 'motion', 'nodes', 'loop'] as const;
 
 /**
  * Travelling waves, for the physics videos: each lane is a strip with a source at its left end,
@@ -541,7 +541,8 @@ export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'spee
  * pulses meet: `pulses` (the outline of each pulse on its own, under the rope that carries their
  * sum), `sum` (the displacement of the rope where it is largest) and `heights` (the height of each
  * hump on the rope, with its sign, for what a join or an end has made of a pulse). At a fixed end,
- * `pull` shows the pair of forces there: the rope's pull on the wall, and the wall's on the rope. On a standing wave, or a
+ * `pull` shows the pair of forces there: the rope's pull on the wall, and the wall's on the rope;
+ * `motion` puts an arrow on the points of a rope for how fast each is moving, up or down. On a standing wave, or a
  * steady wave that meets its own reflection: `nodes` (the points that never move, and the points
  * half way between them that move the most) and `loop` (the length of one loop, node to node).
  * Emphasising a lane's id makes it glow.
@@ -565,6 +566,90 @@ export interface WaveEl {
   values?: boolean;
   /** A clock in another unit: its name, and how many seconds one of it is ({ unit: 'ms', seconds: 0.001 }). */
   clock?: { unit: string; seconds: number };
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+/** A source of circular waves in a `ripples` element. */
+export interface RippleSource {
+  id: string;
+  /** What it is called in the picture ("Speaker A"). */
+  label?: string;
+  /** Where it is at time 0, in metres: [x, y]. */
+  at: [number, number];
+  /** Waves sent out each second. */
+  frequency: number;
+  /** Its velocity in metres per second, [vx, vy] (slower than the waves): the crests ahead of a moving source are crowded together. */
+  velocity?: [number, number];
+  /** Which side of it the label goes (above otherwise). */
+  side?: 'above' | 'below' | 'left' | 'right';
+  tone?: Tone;
+}
+
+/** Someone, or something, that receives the waves of a `ripples` element. */
+export interface RippleListener {
+  id: string;
+  label?: string;
+  /** Where it starts, in metres: [x, y]. */
+  at: [number, number];
+  /** Which side of it the label goes (above otherwise). */
+  side?: 'above' | 'below' | 'left' | 'right';
+}
+
+/** A stretch of a ripples clip. */
+export interface RipplePhase {
+  /** How long it lasts, in seconds of the waves' own time. */
+  dur: number;
+  /** Slow motion: seconds of video for each second of the waves (1 by default). */
+  slow?: number;
+  /** Listeners that walk to a new place during the phase, by id: [x, y] in metres. */
+  move?: Record<string, [number, number]>;
+  /** A short note shown over the picture while the phase plays ("Slow motion"). */
+  note?: string;
+}
+
+export interface RippleClip {
+  phases: RipplePhase[];
+  /** Start again from time 0, with the listeners back where they began. */
+  reset?: boolean;
+}
+
+export const RIPPLES_PARTS = ['paths', 'difference', 'traces', 'loudness', 'pattern', 'wavelength', 'heard', 'velocity', 'count', 'clock'] as const;
+
+/**
+ * Waves seen from above, spreading in circles from their sources (src/video/ripples.ts): each
+ * crest is a circle that grows at the speed of the waves, centred where its source was when it
+ * left. Two sources in step show interference, and a source that moves shows the Doppler effect.
+ * The waves run only while a clip plays, and the next clip carries on from where the last one
+ * stopped. Showing the element shows the crests, the sources and the listeners; showing a part
+ * adds it: `paths` (a line from each source to the first listener, with its length), `difference`
+ * (the path difference there, in metres and in wavelengths), `traces` (the wave that arrives from
+ * each source and their sum, against time), `loudness` (how large the sum is, as a bar, with
+ * "Loud" or "Quiet"), `pattern` (the whole picture shaded by how large the waves are when they
+ * are added: bright where they arrive in step), `wavelength` (measured between two crests: ahead
+ * of a moving source and behind it), `heard` (the frequency each listener receives), `velocity`
+ * (an arrow on a moving source, with its speed), `count` (the crests each listener has received
+ * since the start) and `clock`. When the picture leaves 380 pixels or more beside it and there
+ * is a listener, the picture sits on the left and `paths`, `difference`, `traces` and `loudness`
+ * are written in a panel on the right. Emphasising a source's id makes its crests glow.
+ */
+export interface RipplesEl {
+  kind: 'ripples';
+  id: string;
+  /** The region shown, in metres: [left, bottom, right, top]. */
+  view: [number, number, number, number];
+  /** The speed of the waves, in metres per second. */
+  speed: number;
+  sources: RippleSource[];
+  listeners?: RippleListener[];
+  /** The waves have been spreading for ever, so they fill the picture from the start (otherwise the sources start at time 0). */
+  full?: boolean;
+  /** Draw only one crest in every so many, where the wavelength is too short for the picture. */
+  every?: number;
+  /** A clock in another unit: its name, and how many seconds one of it is ({ unit: 'ms', seconds: 0.001 }). */
+  clock?: { unit: string; seconds: number };
+  clips: Record<string, RippleClip>;
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
   height?: number;
@@ -1439,7 +1524,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -1846,6 +1931,47 @@ export function checkRays(e: RaysEl): string[] {
   return problems;
 }
 
+/** What is wrong with a ripples element, if anything. */
+export function checkRipples(e: RipplesEl): string[] {
+  const problems: string[] = [];
+  const [x0, y0, x1, y1] = e.view;
+  if (!(x1 > x0) || !(y1 > y0)) problems.push('the view must run from left to right and from bottom to top.');
+  if (!(e.speed > 0)) problems.push('the waves need a speed above zero.');
+  if (!e.sources.length) problems.push('it has no sources.');
+  if (e.every !== undefined && !(Number.isInteger(e.every) && e.every >= 1)) problems.push('`every` must be a whole number, 1 or more.');
+  if (e.clock && !(e.clock.seconds > 0)) problems.push('the clock needs a unit of more than zero seconds.');
+  const inside = (p: [number, number]) => p[0] >= x0 && p[0] <= x1 && p[1] >= y0 && p[1] <= y1;
+  const ids = new Set<string>();
+  const taken = (id: string, what: string) => {
+    if (ids.has(id)) problems.push(`the id "${id}" is used twice.`);
+    ids.add(id);
+    if ((RIPPLES_PARTS as readonly string[]).includes(id)) problems.push(`the ${what} id "${id}" is the name of a part.`);
+  };
+  for (const s of e.sources) {
+    taken(s.id, 'source');
+    if (!(s.frequency > 0)) problems.push(`source "${s.id}" needs a frequency above zero.`);
+    if (s.velocity && Math.hypot(...s.velocity) >= e.speed) problems.push(`source "${s.id}" must move more slowly than the waves.`);
+  }
+  for (const l of e.listeners ?? []) {
+    taken(l.id, 'listener');
+    if (!inside(l.at)) problems.push(`listener "${l.id}" is outside the view.`);
+  }
+  const listeners = new Set((e.listeners ?? []).map((l) => l.id));
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase that lasts no time.`);
+      if (ph.slow !== undefined && !(ph.slow > 0)) problems.push(`clip "${name}" has a phase with a slow motion of zero or less.`);
+      for (const [id, to] of Object.entries(ph.move ?? {})) {
+        if (!listeners.has(id)) problems.push(`clip "${name}" moves a listener "${id}" that is not there.`);
+        else if (!inside(to)) problems.push(`clip "${name}" moves listener "${id}" out of the view.`);
+      }
+    }
+  }
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  return problems;
+}
+
 /** Problems with a wave element: lanes that cannot run, clips that set no lane, a mark off the strip. */
 export function checkWave(e: WaveEl): string[] {
   const problems: string[] = [];
@@ -1963,7 +2089,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -2022,6 +2148,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...WAVE_PARTS, ...e.lanes.map((l) => l.id)]));
         motions.set(e.id, e);
         problems.push(...checkWave(e).map((p) => `Scene ${si + 1}: wave "${e.id}": ${p}`));
+      }
+      if (e.kind === 'ripples') {
+        diagrams.set(e.id, new Set<string>([...RIPPLES_PARTS, ...e.sources.map((src) => src.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkRipples(e).map((p) => `Scene ${si + 1}: ripples "${e.id}": ${p}`));
       }
       if (e.kind === 'particles') {
         diagrams.set(e.id, new Set<string>([...PARTICLE_PARTS, ...e.boxes.map((b) => b.id)]));
