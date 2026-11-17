@@ -87,5 +87,8 @@ describe('checkPath', () => {
     expect(checkPath({ g: 9.8, points: [[0, 3], [0, 0]] })).toHaveLength(1);
     expect(checkPath({ g: 9.8, points: [[0, 3]] })).toHaveLength(1);
     expect(checkPath({ g: 0, swing: { length: 2, angle: 40 } })).toHaveLength(1);
+    // A pendulum drawn beside a longer one leaves room for that one's length.
+    expect(checkPath({ g: 9.8, swing: { length: 1, angle: 20, room: 2 } })).toEqual([]);
+    expect(checkPath({ g: 9.8, swing: { length: 1, angle: 20, room: 0.5 } })[0]).toMatch(/room left for a pendulum/);
   });
 });

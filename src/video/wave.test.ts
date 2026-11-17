@@ -171,6 +171,158 @@ describe('wave: a longitudinal wave', () => {
   });
 });
 
+describe('wave: single pulses', () => {
+  // One hump 2 m long, sent along 12 m at 4 m/s.
+  const hump = (height: number, more: Partial<WaveLane> = {}): WaveLane => ({ id: 'rope', kind: 'transverse', frequency: 0, amplitude: Math.abs(height), speed: 4, pulses: [{ height, width: 2 }], ...more });
+  const one = (height: number, more: Partial<WaveLane> = {}) => el({ lanes: [hump(height, more)] });
+
+  it('carries a pulse along at the speed of the wave', () => {
+    // The pulse starts to leave at time 0, so after 2 s its front is at 8 m and its middle at 7 m.
+    const s = waveAt(one(2), [['go', 2]]).lanes.rope;
+    expect(s.at(7)).toBeCloseTo(2);
+    expect(s.at(6.5)).toBeCloseTo(1);
+    expect(s.at(6)).toBeCloseTo(0);
+    expect(s.at(8)).toBeCloseTo(0);
+    // The distance travelled is measured to the middle of the pulse.
+    expect(s.front).toBeCloseTo(7);
+  });
+
+  it('lets a pulse start half a width early, so that its middle leaves the source as the clock starts', () => {
+    const early = el({ lanes: [{ ...hump(2), pulses: [{ height: 2, width: 2, at: -0.25 }] }] });
+    expect(checkWave(early)).toEqual([]);
+    const s = waveAt(early, [['go', 1.5]]).lanes.rope;
+    expect(s.at(6)).toBeCloseTo(2);
+    expect(s.front).toBeCloseTo(6);
+    expect(checkWave(el({ lanes: [{ ...hump(2), pulses: [{ height: 2, width: 2, at: -0.3 }] }] }))[0]).toMatch(/leaves before time zero/);
+  });
+
+  // Two pulses 2 m long from opposite ends of 10 m, at 2 m/s: their middles meet at 5 m after 3 s.
+  const pair = (left: number, right: number): WaveEl => ({
+    kind: 'wave',
+    id: 'w',
+    span: [0, 10],
+    lanes: [{ id: 'rope', kind: 'transverse', frequency: 0, amplitude: 5, speed: 2, pulses: [{ height: left, width: 2 }, { height: right, width: 2, from: 'right' }] }],
+    clips: { go: { phases: [{ dur: 10 }] } },
+  });
+
+  it('adds two pulses where they overlap, and lets each carry on unchanged', () => {
+    const meet = waveAt(pair(5, 3), [['go', 3]]).lanes.rope;
+    expect(meet.at(5)).toBeCloseTo(8);
+    expect(meet.pulses.map((own) => own(5))).toEqual([expect.closeTo(5), expect.closeTo(3)]);
+    expect(waveAt(pair(5, -3), [['go', 3]]).lanes.rope.at(5)).toBeCloseTo(2);
+    // Two seconds later each has gone 4 m farther: the 5 cm crest is at 9 m and the other at 1 m.
+    const after = waveAt(pair(5, 3), [['go', 5]]).lanes.rope;
+    expect(after.at(9)).toBeCloseTo(5);
+    expect(after.at(1)).toBeCloseTo(3);
+    expect(after.at(5)).toBeCloseTo(0);
+    expect(largestAmplitude(pair(5, 3), pair(5, 3).lanes[0])).toBe(8);
+    expect(largestAmplitude(pair(5, -3), pair(5, -3).lanes[0])).toBe(5);
+  });
+
+  it('leaves a flat rope moving when a crest meets an equal trough', () => {
+    const flat = waveAt(pair(4, -4), [['go', 3]]).lanes.rope;
+    for (const x of [4.2, 4.5, 5, 5.5, 5.8]) expect(flat.at(x)).toBeCloseTo(0);
+    // Each pulse moves the rope at 2 m/s × its slope; half a metre from the middle the two add to 8π units a second.
+    expect(flat.rate(5.5)).toBeCloseTo(8 * Math.PI, 2);
+    expect(flat.rate(4.5)).toBeCloseTo(-8 * Math.PI, 2);
+    expect(flat.rate(5)).toBeCloseTo(0, 2);
+  });
+
+  it('turns a pulse over at a fixed end, and sends it back the same way up from a free one', () => {
+    // After 5 s the middle of the pulse has gone 19 m: to the end at 12 m and 7 m back, to 5 m.
+    expect(waveAt(one(2, { reflect: true }), [['go', 5]]).lanes.rope.at(5)).toBeCloseTo(-2);
+    expect(waveAt(one(2, { reflect: 'free' }), [['go', 5]]).lanes.rope.at(5)).toBeCloseTo(2);
+    // As its middle arrives (3.25 s), a fixed end stays still and a free end is flicked twice as far.
+    expect(waveAt(one(2, { reflect: true }), [['go', 3.25]]).lanes.rope.at(12)).toBeCloseTo(0);
+    expect(waveAt(one(2, { reflect: 'free' }), [['go', 3.25]]).lanes.rope.at(12)).toBeCloseTo(4);
+    expect(largestAmplitude(one(2, { reflect: 'free' }), hump(2, { reflect: 'free' }))).toBe(4);
+  });
+
+  it('sends part of a pulse back from a join with a slower medium, turned over, and the rest on, shorter', () => {
+    // From 4 m/s into 2 m/s at 6 m: (2 − 4) ÷ (2 + 4) = −⅓ comes back, and 2 × 2 ÷ (4 + 2) = ⅔ goes on.
+    const joined = one(3, { medium: { from: 6, speed: 2 } });
+    const s = waveAt(joined, [['go', 3]]).lanes.rope;
+    expect(s.join).toBe(6);
+    expect(s.speed2).toBe(2);
+    // The middle reached the join after 1.75 s; 1.25 s later what went on is 2.5 m past it, and what came back 5 m before it.
+    expect(s.at(8.5)).toBeCloseTo(2);
+    expect(s.at(1)).toBeCloseTo(-1);
+    // In the slower medium the pulse is half as long: 1 m.
+    expect(s.at(8.75)).toBeCloseTo(1);
+    expect(s.at(9)).toBeCloseTo(0);
+    expect(shortestWavelength(joined, joined.lanes[0])).toBe(2);
+    expect(checkWave(joined)).toEqual([]);
+    expect(checkWave(one(3, { medium: { from: 6, speed: 2 }, reflect: true })).join(' ')).toMatch(/no reflecting end/);
+  });
+});
+
+describe('wave: standing waves', () => {
+  it('fits whole loops on a string, with a node at each end', () => {
+    // 0.8 m of string where waves travel at 240 m/s: two loops is one wavelength, so 300 Hz.
+    const string: WaveLane = { id: 'rope', kind: 'transverse', frequency: 300, amplitude: 2, speed: 240, standing: { loops: 2 } };
+    const w = el({ span: [0, 0.8], lanes: [string], clips: { go: { phases: [{ dur: 1 }] } } });
+    expect(checkWave(w)).toEqual([]);
+    // A quarter of a period in, every point is at its farthest.
+    const s = waveAt(w, [['go', 0.25 / 300]]).lanes.rope;
+    expect(s.frequency).toBeCloseTo(300);
+    expect(s.nodes).toEqual([0, 0.4, 0.8]);
+    expect(s.antinodes).toEqual([expect.closeTo(0.2), expect.closeTo(0.6)]);
+    expect(s.at(0.2)).toBeCloseTo(2);
+    expect(s.at(0.6)).toBeCloseTo(-2);
+    for (const t of [0.0004, 0.001, 0.0021]) expect(waveAt(w, [['go', t]]).lanes.rope.at(0.4)).toBeCloseTo(0);
+    expect(s.end).toBeCloseTo(0.8);
+    expect(shortestWavelength(w, string)).toBeCloseTo(0.8);
+    expect(checkWave(el({ span: [0, 0.8], lanes: [{ ...string, frequency: 280 }] }))[0]).toMatch(/frequency that fits this standing wave is 300 Hz/);
+    expect(checkWave(el({ span: [0, 0.8], lanes: [{ ...string, standing: { loops: 2, beyond: 0.01 } }] })).join(' ')).toMatch(/only an air column/);
+  });
+
+  it('fits an odd number of quarter wavelengths in an air column closed at one end', () => {
+    // 512 Hz at 340 m/s: three quarters of 0.664 m is 0.498 m.
+    const length = (3 * 340) / (4 * 512);
+    const air: WaveLane = { id: 'air', kind: 'longitudinal', frequency: 512, amplitude: 2, speed: 340, standing: { quarters: 3, length } };
+    const w = el({ span: [0, 0.9], lanes: [air], clips: { go: { phases: [{ dur: 1 }] } } });
+    expect(checkWave(w)).toEqual([]);
+    const s = waveAt(w, [['go', 0.25 / 512]]).lanes.air;
+    // A node at the closed end, an antinode at the open one, and half a wavelength between nodes.
+    expect(s.nodes).toEqual([0, expect.closeTo((2 * length) / 3)]);
+    expect(s.antinodes).toEqual([expect.closeTo(length / 3), expect.closeTo(length)]);
+    expect(s.at(0)).toBeCloseTo(0);
+    expect(Math.abs(s.at(length))).toBeCloseTo(2);
+    // Past the open end there is no column.
+    expect(s.at(0.7)).toBe(0);
+    expect(checkWave(el({ span: [0, 0.9], lanes: [{ ...air, standing: { quarters: 2, length } }] })).join(' ')).toMatch(/odd number of quarter wavelengths/);
+  });
+
+  it('lets the antinode sit a little beyond the open end of a tube', () => {
+    // 440 Hz where a quarter wavelength is 19.7 cm: the tube that resonates is 18.9 cm long.
+    const air: WaveLane = { id: 'air', kind: 'longitudinal', frequency: 440, amplitude: 2, speed: 440 * 0.788, standing: { quarters: 1, length: 0.189, beyond: 0.008 } };
+    const w = el({ span: [0, 0.3], lanes: [air], clips: { go: { phases: [{ dur: 1 }] } } });
+    expect(checkWave(w)).toEqual([]);
+    const s = waveAt(w, [['go', 0.25 / 440]]).lanes.air;
+    expect(s.frequency).toBeCloseTo(440);
+    expect(s.mouth).toBeCloseTo(0.189);
+    expect(s.end).toBeCloseTo(0.197);
+    expect(s.antinodes).toEqual([expect.closeTo(0.197)]);
+  });
+
+  it('finds the nodes of a steady wave that has met its own reflection', () => {
+    // 1 Hz at 4 m/s along 12 m: the reflection has come 4 m back after 4 s, and the nodes are half a wavelength apart.
+    const bounced: WaveLane = { ...rope, reflect: true };
+    const s = waveAt(el({ lanes: [bounced] }), [['go', 4]]).lanes.rope;
+    expect(s.nodes).toEqual([8, 10, 12]);
+    expect(s.antinodes).toEqual([9, 11]);
+    // Where the two waves add, the rope moves twice as far as either wave alone.
+    expect(largestAmplitude(el({ lanes: [bounced] }), bounced)).toBe(4);
+  });
+
+  it('drops the note of a clip that has finished, however its length rounds', () => {
+    // 4.125 ÷ 150 s of the wave at 250 times slower is 6.875 s of video, which is not exact in binary.
+    const w = el({ clips: { go: { phases: [{ dur: 4.125 / 150, slow: 250, note: 'Slow motion' }] } } });
+    expect(waveAt(w, [['go', 6.8]]).note).toBe('Slow motion');
+    expect(waveAt(w, [['go', 6.875]]).note).toBeUndefined();
+  });
+});
+
 describe('wave: measures and checks', () => {
   it('finds the largest amplitude and the shortest wavelength a lane ever has', () => {
     const w = el({ clips: { a: { phases: [{ dur: 1, set: { rope: { amplitude: 5 } } }] }, b: { phases: [{ dur: 1, set: { rope: { frequency: 4 } } }] } } });

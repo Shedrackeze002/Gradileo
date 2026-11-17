@@ -1306,9 +1306,15 @@ items ship or decisions change.
        launcher, a mass hanging on a spring) and tall hills beside the thumbnail title. `ramp`
        gained bars of the work each force does, for the work-energy theorem.
      - Done (16 November 2026): the thirteen videos of Unit 3 are rendered and in Drive.
-     - Next: the videos of Unit 4 (in progress: `motion` can now follow an oscillation about an
-       equilibrium position and trace its displacement-time graph), then Grade 12 Physics
-       (`phys-30`).
+     - Done (17 November 2026): **the fourteen videos of Unit 4, Oscillations and Waves**
+       (`p20-4-1` to `p20-4-7`, two for each lesson), so Grade 11 Physics has a video for every
+       lesson (45 videos). `motion` follows an oscillation about an equilibrium position, counts
+       its oscillations and traces its displacement-time graph; `wave` gained single pulses that
+       add where they overlap, fixed and free ends, a join between two ropes, and standing waves on
+       strings and in air columns; and the new `ripples` element draws waves from above, for the
+       interference of two speakers and the Doppler effect of a moving source (each crest is a
+       circle around the place it was sent from).
+     - Next: Grade 12 Physics (`phys-30`).
        `phys-sample-momentum` becomes the first video of Grade 12 Unit A and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none

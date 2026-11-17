@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkMotion, checkScript, type Explainer, type MotionBody, type MotionEl } from './script.ts';
-import { areaUnder, collision, motionAt, profileAt, SPRING } from './motion.ts';
+import { amplitudeOf, areaUnder, collision, displacementOf, motionAt, oscillations, profileAt, SPRING } from './motion.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 const block: MotionBody = { id: 'b', shape: 'block', mass: 2, x: 1 };
@@ -649,5 +649,33 @@ describe('motion: a spring', () => {
     expect(checkMotion({ ...sprung, graph: undefined, energy: undefined, vertical: 'up' }).join(' ')).toMatch(/hangs over a single drop/);
     expect(checkMotion({ ...sprung, graph: undefined, lanes: [{}, {}] }).join(' ')).toMatch(/single straight track/);
     expect(checkMotion({ ...sprung, spring: undefined, graph: undefined }).join(' ')).toMatch(/elastic energy needs a spring/);
+  });
+
+  it('counts the oscillations of a body, and measures its amplitude and displacement', () => {
+    // 0.5 kg on a spring of 4π² × 0.5 N/m has a period of exactly 1 s; it is let go 6 cm from the equilibrium position at 0.25 m.
+    const swinging = el({
+      span: [0, 0.5],
+      bodies: [{ id: 'b', shape: 'block', mass: 0.5, x: 0.31, width: 0.07 }],
+      spring: { on: 'b', k: 4 * Math.PI ** 2 * 0.5, rest: 0.25, hidden: true },
+      equilibrium: 0.25,
+      clips: { go: { phases: [{ dur: 5 }] } },
+    });
+    expect(checkMotion(swinging)).toEqual([]);
+    expect(oscillations(motionAt(swinging, [['go', 0.4]]), 'b')).toBe(0);
+    expect(oscillations(motionAt(swinging, [['go', 0.9]]), 'b')).toBe(0);
+    expect(oscillations(motionAt(swinging, [['go', 1.1]]), 'b')).toBe(1);
+    expect(oscillations(motionAt(swinging, [['go', 3.9]]), 'b')).toBe(3);
+    // Standing at the extreme where it started, it has finished that oscillation too.
+    expect(oscillations(motionAt(swinging, [['go', 4]]), 'b')).toBe(4);
+    const half = motionAt(swinging, [['go', 2.5]]);
+    expect(half.bodies.b.x).toBeCloseTo(0.19, 3);
+    expect(amplitudeOf(swinging, half, 'b')).toBeCloseTo(0.06, 3);
+    expect(displacementOf(swinging, half.bodies.b.x)).toBeCloseTo(-0.06, 3);
+    // Over a drop, upwards is positive.
+    expect(displacementOf({ ...swinging, vertical: true }, 0.31)).toBeCloseTo(-0.06);
+    // A spring that is not drawn pulls all the same; its force is marked as hidden.
+    const coil = motionAt(swinging, [['go', 2.5]]).forces.find((f) => f.name === SPRING)!;
+    expect(coil.hidden).toBe(true);
+    expect(coil.n).toBeCloseTo(4 * Math.PI ** 2 * 0.5 * 0.06, 2);
   });
 });
