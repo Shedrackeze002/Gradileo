@@ -1,11 +1,45 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The two worked examples, simulated (src/video/particles.ts): the Kelvin temperature is scaled
+// so the gas starts at 1.5.
+
+/** 5.0 L at 120 kPa and 288.15 K, squeezed to 3.0 L and then warmed to 333.15 K: 231 kPa. */
+const squeeze: ParticlesEl = {
+  kind: 'particles',
+  id: 'sq',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 11, temp: 1.5, lid: 0.85, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }] }],
+  clips: {
+    change: {
+      phases: [
+        { dur: 4, lid: { b: 0.85 * 0.6 } },
+        { dur: 4, heat: { b: (1.5 * 333.15) / 288.15 } },
+      ],
+    },
+  },
+  gauge: { box: 'b', start: 120 },
+  volume: { box: 'b', start: 5, decimals: 1 },
+  thermometers: true,
+  height: 480,
+};
+
+/** 4.0 L at 150 kPa and 298.15 K, to 6.5 L at 110 kPa: 355.30 K. */
+const expand: ParticlesEl = {
+  kind: 'particles',
+  id: 'ex',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 11, temp: 1.5, lid: 0.5, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }] }],
+  clips: { change: { phases: [{ dur: 6, heat: { b: (1.5 * 355.3) / 298.15 }, lid: { b: 0.5 * 1.625 } }] } },
+  gauge: { box: 'b', start: 150 },
+  volume: { box: 'b', start: 4, decimals: 1 },
+  thermometers: true,
+  height: 480,
+};
 
 const video: Explainer = {
   id: 'c20-2-5-c',
   lessonId: 'c20-2-5',
   title: 'The Combined Gas Law, Part 3: A New Pressure or Temperature',
   thumbnailTitle: 'A New Pressure or Temperature',
-  thumbnail: false,
+  thumbnail: 'sq',
   summary:
     'The combined gas law also gives a new pressure, P₂ = P₁ × (V₁/V₂) × (T₂/T₁), or a new temperature, T₂ = T₁ × (P₂/P₁) × (V₂/V₁). Change degrees Celsius to kelvins first, check that each fraction moves the answer the right way, and change a Kelvin answer back to degrees Celsius when the question asks for it.',
   scenes: [
@@ -19,18 +53,21 @@ const video: Explainer = {
     },
     {
       chapter: 'A new pressure',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: 'A gas occupies $5.0\\ \\text{L}$ at $120\\ \\text{kPa}$ and $15^\\circ\\text{C}$. It is moved into a $3.0\\ \\text{L}$ container and brought to $60^\\circ\\text{C}$. What is its new pressure, to the nearest whole number? Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.' },
+      layout: 'split',
+      leftWidth: 500,
+      left: [squeeze],
+      right: [
+        { kind: 'text', id: 'q', size: 'md', md: 'A gas occupies $5.0\\ \\text{L}$ at $120\\ \\text{kPa}$ and $15^\\circ\\text{C}$. It is moved into a $3.0\\ \\text{L}$ container and brought to $60^\\circ\\text{C}$. What is its new pressure, to the nearest whole number? Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.' },
         {
           kind: 'math',
           id: 'm',
-          size: 'lg',
+          size: 'md',
+          align: 'left',
           lines: [
             'T_1 = 15 + 273.15 = 288.15\\ \\text{K}',
             'T_2 = 60 + 273.15 = 333.15\\ \\text{K}',
-            'P_2 = P_1 \\times \\dfrac{V_1}{V_2} \\times \\dfrac{T_2}{T_1} = 120 \\times \\dfrac{5.0}{3.0} \\times \\dfrac{333.15}{288.15}',
-            '= 231.23\\ldots \\qquad P_2 = \\good{231\\ \\text{kPa}}',
+            'P_2 = 120 \\times \\dfrac{5.0}{3.0} \\times \\dfrac{333.15}{288.15}',
+            'P_2 = 231.23\\ldots \\approx \\good{231\\ \\text{kPa}}',
           ],
         },
       ],
@@ -38,28 +75,31 @@ const video: Explainer = {
         {
           say: 'A gas occupies five point zero litres at one hundred twenty kilopascals and fifteen degrees Celsius. It is moved into a three point zero litre container and brought to sixty degrees Celsius. What is its new pressure?',
           caption: 'A gas occupies 5.0 L at 120 kPa and 15°C. It is moved into a 3.0 L container and brought to 60°C. What is its new pressure?',
-          show: 'q',
+          show: ['q', 'sq', 'sq.gauge', 'sq.volume', 'sq.thermo'],
         },
         { say: 'First, the temperatures in kelvins: two hundred eighty-eight point one five, and three hundred thirty-three point one five.', caption: 'First, the temperatures in kelvins: 288.15 K, and 333.15 K.', show: ['m.0', 'm.1'], focus: ['m.0', 'm.1'] },
-        { say: 'Now think about the direction. A smaller volume crowds the particles together, and a higher temperature makes them hit harder. Both raise the pressure, so both fractions must be more than one.' },
+        { say: 'Now think about the direction. A smaller volume crowds the particles together, and a higher temperature makes them hit harder. Both raise the pressure, so both fractions must be more than one. Watch the gauge climb at each step.', play: 'sq.change', focus: 'sq.gauge' },
         { say: 'So P two is one hundred twenty, times five point zero over three point zero, times three hundred thirty-three point one five over two hundred eighty-eight point one five.', caption: 'So P₂ is 120 × 5.0/3.0 × 333.15/288.15.', show: 'm.2', focus: 'm.2' },
-        { say: 'That is two hundred thirty-one kilopascals, to the nearest whole number. It is higher than one hundred twenty, as it should be.', caption: 'That is 231 kPa, to the nearest whole number. It is higher than 120 kPa, as it should be.', show: 'm.3', focus: 'm.3' },
+        { say: 'That is two hundred thirty-one kilopascals, to the nearest whole number. It is higher than one hundred twenty, as it should be.', caption: 'That is 231 kPa, to the nearest whole number. It is higher than 120 kPa, as it should be.', show: 'm.3', focus: ['m.3', 'sq.gauge'] },
       ],
     },
     {
       chapter: 'A new temperature',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: 'A gas occupies $4.0\\ \\text{L}$ at $150\\ \\text{kPa}$ and $25^\\circ\\text{C}$. At what temperature in degrees Celsius will it occupy $6.5\\ \\text{L}$ at $110\\ \\text{kPa}$? Round to the nearest degree. Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.' },
+      layout: 'split',
+      leftWidth: 500,
+      left: [expand],
+      right: [
+        { kind: 'text', id: 'q', size: 'md', md: 'A gas occupies $4.0\\ \\text{L}$ at $150\\ \\text{kPa}$ and $25^\\circ\\text{C}$. At what temperature in degrees Celsius will it occupy $6.5\\ \\text{L}$ at $110\\ \\text{kPa}$? Round to the nearest degree. Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.' },
         {
           kind: 'math',
           id: 'm',
-          size: 'lg',
+          size: 'md',
+          align: 'left',
           lines: [
             'T_1 = 25 + 273.15 = 298.15\\ \\text{K}',
-            'T_2 = T_1 \\times \\dfrac{P_2}{P_1} \\times \\dfrac{V_2}{V_1}',
-            '= 298.15 \\times \\dfrac{110}{150} \\times \\dfrac{6.5}{4.0} = 355.30\\ \\text{K}',
-            '355.30 - 273.15 = 82.15^\\circ\\text{C} \\approx \\good{82^\\circ\\text{C}}',
+            'T_2 = 298.15 \\times \\dfrac{110}{150} \\times \\dfrac{6.5}{4.0}',
+            '\\phantom{T_2} = 355.30\\ \\text{K}',
+            'T_2 = 355.30 - 273.15 \\approx \\good{82^\\circ\\text{C}}',
           ],
         },
       ],
@@ -67,7 +107,7 @@ const video: Explainer = {
         {
           say: 'Now a new temperature. A gas occupies four point zero litres at one hundred fifty kilopascals and twenty-five degrees Celsius. At what temperature will it occupy six point five litres at one hundred ten kilopascals?',
           caption: 'Now a new temperature. A gas occupies 4.0 L at 150 kPa and 25°C. At what temperature will it occupy 6.5 L at 110 kPa?',
-          show: 'q',
+          show: ['q', 'ex', 'ex.gauge', 'ex.volume', 'ex.thermo'],
         },
         { say: 'Change the starting temperature to kelvins: two hundred ninety-eight point one five.', caption: 'Change the starting temperature to kelvins: 298.15 K.', show: 'm.0', focus: 'm.0' },
         {
@@ -82,6 +122,7 @@ const video: Explainer = {
           show: 'm.3',
           focus: 'm.3',
         },
+        { say: 'Check it in the cylinder. Warm the gas to eighty-two degrees Celsius while letting the piston out, and it reaches six point five litres at one hundred ten kilopascals.', play: 'ex.change', focus: ['ex.thermo', 'ex.volume', 'ex.gauge'] },
       ],
     },
     {

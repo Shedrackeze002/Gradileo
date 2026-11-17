@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { hbars, join, room, tag } from './lib/c30-1a-figures.ts';
+import { twoCups } from './lib/c30-particles.ts';
 
 // Four metals' specific heat capacities, with the unknown metal's value, 0.451, marked across them.
 const metals = figure(
@@ -110,6 +111,15 @@ const video: Explainer = {
           focus: 'm.2',
         },
         { say: 'If the water had released the heat instead, it would have cooled, and you would subtract.' },
+      ],
+    },
+    {
+      chapter: 'More water, smaller change',
+      layout: 'center',
+      main: [twoCups('mw', [{ metal: 16, water: 16, label: 'a little water' }, { metal: 16, water: 56, label: 'more water' }], { seed: 6 })],
+      lines: [
+        { say: 'Here is delta t equals Q over m c, up close. Two insulated cups hold the same hot metal lump, but the right cup has much more cold water. The lumps are the larger particles at the bottom. Each lump gives out about the same heat. Particles are coloured by speed, and each thermometer reads the water. Watch which thermometer climbs higher as the lumps cool.', caption: 'Here is Δt = Q/(mc), up close. Two insulated cups hold the same hot metal lump, but the right cup has much more cold water. The lumps are the larger particles at the bottom. Each lump gives out about the same heat. Particles are coloured by speed, and each thermometer reads the water. Watch which thermometer climbs higher as the lumps cool.', show: ['mw', 'mw.labels', 'mw.thermo'], play: 'mw.go' },
+        { say: 'The same heat is shared among many more water particles on the right, so each one speeds up less, and the temperature rises less. A larger mass in the denominator gives a smaller change in temperature.', focus: 'mw.thermo' },
       ],
     },
     {

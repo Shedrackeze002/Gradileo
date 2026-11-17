@@ -1,35 +1,46 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { shared, shellAtom, tag } from './lib/c10-3-figures.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 
-// Oxygen, O₂ (two shared pairs), and nitrogen, N₂ (three shared pairs), side by side.
-const pair = figure(
-  'mol',
-  [
-    shellAtom({ name: 'oa', at: [0, 0], symbol: 'O', spots: [[135, 'oo'], [225, 'oo']] }),
-    shellAtom({ name: 'ob', at: [1.7, 0], symbol: 'O', spots: [[45, 'xx'], [315, 'xx']] }),
-    shared({ name: 'o2', a: [0, 0], b: [1.7, 0], pairs: ['ox', 'ox'] }),
-    tag('o2-name', [0.85, -2.05], '\\ce{O2}\\text{: a double bond}'),
-    shellAtom({ name: 'na', at: [6.2, 0], symbol: 'N', spots: [[180, 'oo']] }),
-    shellAtom({ name: 'nb', at: [7.9, 0], symbol: 'N', spots: [[0, 'xx']] }),
-    shared({ name: 'n2', a: [6.2, 0], b: [7.9, 0], pairs: ['ox', 'ox', 'ox'] }),
-    tag('n2-name', [7.05, -2.05], '\\ce{N2}\\text{: a triple bond}'),
+// Oxygen, O2, and nitrogen, N2, side by side: each pair of atoms slides together, then shares
+// two pairs (clip o2, a double bond) or three pairs (clip n2, a triple bond).
+const pair: AtomsEl = {
+  kind: 'atoms',
+  id: 'mol',
+  span: [26, 7],
+  atoms: [
+    { id: 'oa', symbol: 'O', protons: 8, at: [2.2, 3.4], tone: 'bad', name: 'oxygen', labelAbove: true },
+    { id: 'ob', symbol: 'O', protons: 8, at: [10.8, 3.4], tone: 'opp', name: 'oxygen' },
+    { id: 'na', symbol: 'N', protons: 7, at: [15.2, 3.4], tone: 'adj', name: 'nitrogen', labelAbove: true },
+    { id: 'nb', symbol: 'N', protons: 7, at: [23.8, 3.4], tone: 'good', name: 'nitrogen' },
   ],
-  360,
-);
+  clips: {
+    o2: { phases: [{ dur: 2, move: { oa: [5.15, 3.4], ob: [7.85, 3.4] } }, { dur: 3, share: [{ a: 'oa', b: 'ob', n: 2 }] }] },
+    n2: { phases: [{ dur: 2, move: { na: [18.15, 3.4], nb: [20.85, 3.4] } }, { dur: 3.5, share: [{ a: 'na', b: 'nb', n: 3 }] }] },
+  },
+  poster: 'n2',
+  height: 300,
+};
 
-// Carbon dioxide, CO₂: carbon (crosses) shares two pairs with each oxygen (dots).
-const co2 = figure(
-  'co2',
-  [
-    shellAtom({ name: 'ol', at: [-1.7, 0], symbol: 'O', spots: [[135, 'oo'], [225, 'oo']] }),
-    shellAtom({ name: 'c', at: [0, 0], symbol: 'C' }),
-    shellAtom({ name: 'or', at: [1.7, 0], symbol: 'O', spots: [[45, 'oo'], [315, 'oo']] }),
-    shared({ name: 'left', a: [-1.7, 0], b: [0, 0], pairs: ['ox', 'ox'] }),
-    shared({ name: 'right', a: [1.7, 0], b: [0, 0], pairs: ['ox', 'ox'] }),
+// Carbon dioxide, CO2: each oxygen slides in and carbon shares two pairs with it (clip share).
+const co2: AtomsEl = {
+  kind: 'atoms',
+  id: 'co2',
+  span: [17, 7],
+  atoms: [
+    { id: 'ol', symbol: 'O', protons: 8, at: [1.8, 3.5], tone: 'bad', name: 'oxygen' },
+    { id: 'c', symbol: 'C', protons: 6, at: [8.5, 3.5], tone: 'brand', name: 'carbon' },
+    { id: 'or', symbol: 'O', protons: 8, at: [15.2, 3.5], tone: 'bad', name: 'oxygen' },
   ],
-  400,
-);
+  clips: {
+    share: {
+      phases: [
+        { dur: 2, move: { ol: [5.8, 3.5], or: [11.2, 3.5] } },
+        { dur: 3.5, share: [{ a: 'c', b: 'ol', n: 2 }, { a: 'c', b: 'or', n: 2 }] },
+      ],
+    },
+  },
+  poster: 'share',
+  height: 360,
+};
 
 const video: Explainer = {
   id: 'c10-3-3-c',
@@ -57,9 +68,9 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'A single bond is one shared pair of electrons. Two atoms can also share two pairs, a double bond, or three pairs, a triple bond.', show: 'def' },
-        { say: 'Each oxygen atom has six outer electrons, and needs two more. So the two atoms share two pairs: a double bond.', show: ['mol.oa-atom', 'mol.ob-atom', 'mol.o2-bond', 'mol.o2-name'], focus: 'mol.o2-bond' },
-        { say: 'Each nitrogen atom has five outer electrons, and needs three more. So the two atoms share three pairs: a triple bond.', show: ['mol.na-atom', 'mol.nb-atom', 'mol.n2-bond', 'mol.n2-name'], focus: 'mol.n2-bond' },
-        { say: 'Count the electrons in any circle, and you will find eight: every atom now has a full outer shell.', focus: 'mol' },
+        { say: 'Each oxygen atom has six outer electrons, and needs two more. So the two atoms share two pairs: a double bond.', show: ['mol', 'mol.labels'], play: 'mol.o2', focus: ['mol.oa', 'mol.ob'] },
+        { say: 'Each nitrogen atom has five outer electrons, and needs three more. So the two atoms share three pairs: a triple bond.', play: 'mol.n2', focus: ['mol.na', 'mol.nb'] },
+        { say: 'Count the electrons in any outer shell, shared ones included, and you will find eight: every atom now has a full outer shell.', show: 'mol.arrangement' },
       ],
     },
     {
@@ -69,10 +80,10 @@ const video: Explainer = {
       left: [co2],
       right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\ce{C}\\text{: 4 outer, needs 4}', '\\ce{O}\\text{: 6 outer, needs 2}', '\\text{shared pairs:}', '2 + 2 = 4', '\\text{bonding electrons:}', '4 \\times 2 = 8'] }],
       lines: [
-        { say: 'In carbon dioxide, carbon has four outer electrons and needs four more. Each oxygen has six and needs two more.', show: ['co2.ol-atom', 'co2.c-atom', 'co2.or-atom', 'm.0', 'm.1'], focus: ['m.0', 'm.1'] },
-        { say: 'So carbon shares two pairs with each oxygen atom: two double bonds.', show: ['co2.left-bond', 'co2.right-bond'], focus: ['co2.left-bond', 'co2.right-bond'] },
+        { say: 'In carbon dioxide, carbon has four outer electrons and needs four more. Each oxygen has six and needs two more.', show: ['co2', 'co2.labels', 'm.0', 'm.1'], focus: ['m.0', 'm.1'] },
+        { say: 'So carbon shares two pairs with each oxygen atom: two double bonds.', play: 'co2.share' },
         { say: 'Shared pairs: two plus two is four. Every shared pair is two electrons, so there are four times two, which is eight bonding electrons.', show: ['m.2', 'm.3', 'm.4', 'm.5'], focus: ['m.2', 'm.3', 'm.4', 'm.5'] },
-        { say: 'Now carbon counts four plus four, eight outer electrons, and each oxygen counts four plus four, eight as well.', focus: 'co2.c-atom' },
+        { say: 'Now carbon counts four plus four, eight outer electrons, and each oxygen counts four plus four, eight as well.', show: 'co2.arrangement', focus: 'co2.c' },
       ],
     },
     {

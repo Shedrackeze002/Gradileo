@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { particles } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, chain, motionBox, tag } from './lib/c30-1a-figures.ts';
+import { sparked } from './lib/c30-particles.ts';
 
 // The same water cool and hot: the particles move faster when it is hotter.
 const motion = figure(
@@ -111,6 +112,15 @@ const video: Explainer = {
         { say: 'Burning rearranges the atoms into carbon dioxide and water, which have less potential energy.', show: ['st.a0', 'st.b1'] },
         { say: 'The difference raises the kinetic energy of the hot gases in the flame, and then of the pot and the water.', show: ['st.a1', 'st.b2'] },
         { say: 'No energy is created: it only changes form, and moves from the system to the surroundings.', show: 'note' },
+      ],
+    },
+    {
+      chapter: 'A flame, up close',
+      layout: 'center',
+      main: [sparked('fl', { seed: 2 })],
+      lines: [
+        { say: 'Here is the same idea up close, with hydrogen burning in oxygen. At first the molecules only bounce off one another: their potential energy is locked in their bonds. Then a spark heats them for a moment, and the first molecules react. Watch how fast the particles move afterwards, and watch the thermometer as more and more water forms.', show: ['fl', 'fl.labels', 'fl.key', 'fl.tally', 'fl.thermo'], play: 'fl.spark' },
+        { say: 'The water molecules hold less potential energy than the hydrogen and oxygen did. The difference became kinetic energy: the particles fly faster, so the temperature rises. No energy was created, it only changed form.' },
       ],
     },
     {

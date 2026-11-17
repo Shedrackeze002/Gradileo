@@ -1,13 +1,28 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
 const RULE = 'Use $PV = nRT$ with $R = 8.314\\ \\text{kPa·L/(mol·K)}$.';
+
+/**
+ * The first worked example (simulated, src/video/particles.ts): 0.45 mol of gas under a piston at
+ * 120 kPa and 35 °C; its volume reading, 9.61 L, is shown once it has been worked out.
+ */
+const cylinder: ParticlesEl = {
+  kind: 'particles',
+  id: 'cy',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 11, temp: 1.6, lid: 0.8, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }], label: '0.45 mol at 35 °C' }],
+  clips: {},
+  gauge: { box: 'b', start: 120 },
+  volume: { box: 'b', start: 9.607, decimals: 2 },
+  thermometers: true,
+  height: 480,
+};
 
 const video: Explainer = {
   id: 'c20-2-7-b',
   lessonId: 'c20-2-7',
   title: 'The Ideal Gas Law, Part 2: Kelvins First',
   thumbnailTitle: 'Kelvins First',
-  thumbnail: false,
+  thumbnail: 'cy',
   summary:
     'Most questions give a temperature in degrees Celsius, and PV = nRT needs kelvins, so add 273.15 first: 0.45 mol at 120 kPa and 35 °C occupies 9.61 L, not the 1.09 L that 35 would give. Rearranged, n = PV/RT finds an amount and T = PV/nR finds a temperature, which comes out in kelvins: subtract 273.15 for degrees Celsius.',
   scenes: [
@@ -21,15 +36,17 @@ const video: Explainer = {
     },
     {
       chapter: 'Finding the volume',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: `What volume does $0.45\\ \\text{mol}$ of gas occupy at $120\\ \\text{kPa}$ and $35^\\circ\\text{C}$, to the nearest hundredth? ${RULE}` },
-        { kind: 'math', id: 'm', size: 'lg', lines: ['T = 35 + 273.15 = 308.15\\ \\text{K}', 'V = \\dfrac{nRT}{P} = \\dfrac{0.45 \\times 8.314 \\times 308.15}{120} = 9.607\\ \\text{L}', 'V = \\good{9.61\\ \\text{L}}'] },
+      layout: 'split',
+      leftWidth: 520,
+      left: [cylinder],
+      right: [
+        { kind: 'text', id: 'q', size: 'md', md: `What volume does $0.45\\ \\text{mol}$ of gas occupy at $120\\ \\text{kPa}$ and $35^\\circ\\text{C}$, to the nearest hundredth? ${RULE}` },
+        { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['T = 35 + 273.15 = 308.15\\ \\text{K}', 'V = \\dfrac{nRT}{P} = \\dfrac{0.45 \\times 8.314 \\times 308.15}{120}', 'V = 9.607\\ldots = \\good{9.61\\ \\text{L}}'] },
       ],
       lines: [
-        { say: 'What volume does zero point four five moles of gas occupy at one hundred twenty kilopascals and thirty-five degrees Celsius?', caption: 'What volume does 0.45 mol of gas occupy at 120 kPa and 35°C?', show: 'q' },
+        { say: 'What volume does zero point four five moles of gas occupy at one hundred twenty kilopascals and thirty-five degrees Celsius?', caption: 'What volume does 0.45 mol of gas occupy at 120 kPa and 35°C?', show: ['q', 'cy', 'cy.labels', 'cy.gauge', 'cy.thermo'] },
         { say: 'The ideal gas law needs kelvins, so change the temperature first. Thirty-five plus two hundred seventy-three point one five is three hundred eight point one five kelvins.', caption: 'The ideal gas law needs kelvins, so change the temperature first. 35 + 273.15 = 308.15 K.', show: 'm.0', focus: 'm.0' },
-        { say: 'Then V equals n R T over P: nine point six zero seven, or nine point six one litres to the nearest hundredth.', caption: 'Then V = nRT/P: 9.607, or 9.61 L to the nearest hundredth.', show: ['m.1', 'm.2'], focus: 'm.2' },
+        { say: 'Then V equals n R T over P: nine point six zero seven, or nine point six one litres to the nearest hundredth.', caption: 'Then V = nRT/P: 9.607, or 9.61 L to the nearest hundredth.', show: ['m.1', 'm.2', 'cy.volume'], focus: ['m.2', 'cy.volume'] },
       ],
     },
     {

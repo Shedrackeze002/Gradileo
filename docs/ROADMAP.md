@@ -1357,9 +1357,19 @@ items ship or decisions change.
        warms), and with a new `atoms` element, `c9-1-3` (shells filling), `c9-1-4` (sodium and
        chlorine becoming ions) and `c9-2-1` (ionic and covalent bonding). The particle element
        gained molecules, reactions that give out heat, and a running count of products.
-     - Next: the gases unit, the rest of the
-       motion lessons, the lessons about structures, and animated openings for the calculation
-       lessons. Then put chemistry back in the upload task.
+     - Done (17 November 2026, pull request #208): the rest of group 1, the lessons where motion is
+       the idea, scripted with up-close scenes. The gases unit (`c20-2`), Chemistry 10 and 20
+       (among them rates, solutions, precipitates, and a titration with a burette and an
+       indicator),
+       Chemistry 30 (cells and electrolysis with electrodes that plate and dissolve; organic
+       reactions with a new `molecules` element, ball-and-stick molecules whose breaking bonds turn
+       red and new bonds green) and the ten More Chemistry Topics videos (metals in acid,
+       displacement, electrolysis of solutions, a hydroxide precipitate, the Haber reaction, the
+       fuel cell, curly-arrow mechanisms, the nitration of benzene, doubling a concentration, a
+       cold and a hot gas with a live chart of their molecules' speeds, and a time-of-flight race).
+       Rendering, then Drive.
+     - Next: the lessons about structures (group 2), and animated openings for the calculation
+       lessons (group 3). Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.

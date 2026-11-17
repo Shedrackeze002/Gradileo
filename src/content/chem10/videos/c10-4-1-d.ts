@@ -1,20 +1,10 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { flaskOnBalance, labels } from './lib/c10-4-figures.ts';
+import { flaskOnBalance } from './lib/c10-4-figures.ts';
+import { openClosed } from './lib/c10-particles.ts';
 
-// A sealed flask and an open one, side by side.
-const both = figure(
-  'f',
-  [
-    flaskOnBalance({ name: 'c', stopper: true, readings: [] }),
-    flaskOnBalance({ name: 'o', at: [6.6, 0], readings: [] }),
-    labels([
-      { id: 'closed', at: [0, -0.3], tex: '\\text{closed}' },
-      { id: 'open', at: [6.6, -0.3], tex: '\\text{open}' },
-    ]),
-  ],
-  440,
-);
+// Marble chips fizzing in an open beaker and a sealed flask, every particle inside counted.
+const both = openClosed('oc', 420);
 // Marble chips in acid in an open flask: the reading before and after the fizzing.
 const marble = figure('fl', [flaskOnBalance({ readings: [{ id: 'r0', tex: '85.40\\ \\text{g}' }, { id: 'r1', tex: '84.52\\ \\text{g}' }] })], 500);
 
@@ -23,7 +13,7 @@ const video: Explainer = {
   lessonId: 'c10-4-1',
   title: 'Word Equations and Conservation of Mass, Part 4: Open and Closed Containers',
   thumbnailTitle: 'Open and Closed Containers',
-  thumbnail: 'f',
+  thumbnail: 'oc',
   summary:
     'Mass is conserved in every reaction, but in an open container a balance does not always show it: the mass falls when a gas escapes and rises when a gas from the air is taken in. In a sealed container the reading never changes.',
   scenes: [
@@ -45,8 +35,9 @@ const video: Explainer = {
         { kind: 'callout', id: 'open', tone: 'definition', title: 'Open system', md: 'Such as an open beaker: a gas can **escape** into the air or be **taken in** from it.' },
       ],
       lines: [
-        { say: 'In a closed system, such as a sealed flask, no substance can get in or out. So the total mass never changes.', show: ['closed', 'f.c-balance', 'f.c-flask', 'f.c-acid', 'f.c-chips', 'f.c-bubbles', 'f.c-stopper', 'f.closed'] },
-        { say: 'In an open system, such as an open beaker, a gas can escape into the air, or be taken in from it.', show: ['open', 'f.o-balance', 'f.o-flask', 'f.o-acid', 'f.o-chips', 'f.o-bubbles', 'f.o-gas', 'f.open'] },
+        { say: 'In a closed system, such as a sealed flask, no substance can get in or out. So the total mass never changes.', show: ['closed', 'oc', 'oc.labels', 'oc.tally'], focus: 'oc.s' },
+        { say: 'In an open system, such as an open beaker, a gas can escape into the air, or be taken in from it.', show: 'open', focus: 'oc.o' },
+        { say: 'Watch marble chips fizz in both, with every particle inside counted. In the open beaker, the gas bubbles out of the top, and the count falls. In the sealed flask, the gas is trapped, and the count stays the same.', play: 'oc.fizz' },
         { say: 'Mass is conserved in every reaction. But in an open container, a balance does not always show it.' },
       ],
     },

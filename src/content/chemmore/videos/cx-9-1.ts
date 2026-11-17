@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { electrophilicAddition, nucleophilicSubstitution } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-9-1',
@@ -41,6 +42,25 @@ const video: Explainer = {
         { say: 'In nucleophilic substitution, the hydroxide ion attacks the slightly positive carbon of a halogenoalkane, and the bromide ion leaves.', show: 't.1', focus: 't.1' },
         { say: 'In elimination, the same hydroxide ion, hot and in ethanol, acts as a base. It removes a hydrogen ion, and a double bond forms.', show: 't.2', focus: 't.2' },
         { say: 'In electrophilic addition, the double bond attacks the hydrogen of H B r. That leaves a carbocation, which the bromide ion then attacks.', caption: 'In electrophilic addition, the double bond attacks the hydrogen of HBr. That leaves a carbocation, which the bromide ion then attacks.', show: 't.3', focus: 't.3' },
+      ],
+    },
+    {
+      chapter: 'Nucleophilic substitution, up close',
+      layout: 'center',
+      main: [nucleophilicSubstitution('ns')],
+      lines: [
+        { say: 'Here is nucleophilic substitution up close. The carbon bonded to bromine is slightly positive, because bromine pulls the bond’s electrons towards itself. The hydroxide ion has a lone pair to give.', show: 'ns', play: 'ns.attack' },
+        { say: 'The curly arrows show what happens. One goes from the oxygen’s lone pair to the carbon, making a new bond. The other goes from the carbon to bromine bond to the bromine, which leaves with both electrons as a bromide ion.', play: 'ns.swap' },
+      ],
+    },
+    {
+      chapter: 'Electrophilic addition, up close',
+      layout: 'center',
+      main: [electrophilicAddition('ea')],
+      lines: [
+        { say: 'Now electrophilic addition up close. The double bond is rich in electrons. Watch the first two curly arrows: one from the double bond to the hydrogen of H B r, and one from the hydrogen to bromine bond to the bromine.', caption: 'Now electrophilic addition up close. The double bond is rich in electrons. Watch the first two curly arrows: one from the double bond to the hydrogen of HBr, and one from the H–Br bond to the bromine.', show: 'ea', play: 'ea.first' },
+        { say: 'The hydrogen joins one carbon, and the other carbon is left with a positive charge: a carbocation. The bromide ion uses a lone pair to attack it.' },
+        { say: 'That makes the last bond, and the product is bromoethane.', play: 'ea.second' },
       ],
     },
     {

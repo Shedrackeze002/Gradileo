@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { particles } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { settle, tag, timeGraph } from './lib/c30-4a-figures.ts';
+import { n2o4 as n2o4Tube } from './lib/c30-particles.ts';
 
 // Where an equilibrium lies: mostly reactants (grey) on the left, mostly products (orange) on the right.
 const position = figure(
@@ -74,6 +75,15 @@ const video: Explainer = {
       lines: [
         { say: 'Some reversible reactions settle with mostly products. Others hardly get started before the reverse reaction catches up.', show: ['p.l-box', 'p.l-r', 'p.l-p', 'p.r-box', 'p.r-r', 'p.r-p'] },
         { say: 'The equilibrium position describes this. Mostly products: the equilibrium lies to the right, and products are favoured. Mostly reactants: it lies to the left.', show: ['def', 'p.ll', 'p.rl'], focus: ['p.ll', 'p.rl'] },
+      ],
+    },
+    {
+      chapter: 'What the graph records',
+      layout: 'center',
+      main: [n2o4Tube('cg', { seed: 6 })],
+      lines: [
+        { say: 'A concentration graph records what happens inside the flask. Here, dye-nitrogen tetroxide pairs split, and the count of orange nitrogen dioxide molecules climbs, quickly at first and then more slowly, as pairs begin to form again.', caption: 'A concentration graph records what happens inside the flask. Here, dinitrogen tetroxide pairs split, and the count of orange nitrogen dioxide molecules climbs, quickly at first and then more slowly, as pairs begin to form again.', show: ['cg', 'cg.labels', 'cg.key', 'cg.tally'], play: 'cg.go' },
+        { say: 'Then the count levels off, flickering around one value. On a graph, that is where the curve goes flat: the system has reached equilibrium.', focus: 'cg.tally' },
       ],
     },
     {

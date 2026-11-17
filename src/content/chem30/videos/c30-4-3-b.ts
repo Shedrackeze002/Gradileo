@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { tag, timeGraph } from './lib/c30-4a-figures.ts';
+import { n2o4Stress } from './lib/c30-particles.ts';
 
 // The lesson's graph: H₂ + I₂ ⇌ 2HI at equilibrium (Kc = 49.0) with [H₂] = [I₂] = 0.10 and
 // [HI] = 0.70 mol/L. At 20 s hydrogen is added, raising [H₂] to 0.30; the system shifts right
@@ -53,6 +54,15 @@ const video: Explainer = {
         { say: 'At twenty seconds, hydrogen is added at constant volume. Its concentration jumps from zero point one zero to zero point three zero moles per litre: the stress.', caption: 'At twenty seconds, hydrogen is added at constant volume. Its concentration jumps from 0.10 to 0.30 mol/L: the stress.', show: ['g.add', 'g.h2', 'b.0'], focus: ['g.h2', 'b.0'] },
         { say: 'The system shifts right. Hydrogen falls, but only to about zero point two five, still higher than before. The change is only partly undone.', caption: 'The system shifts right. Hydrogen falls, but only to about 0.25, still higher than before. The change is only partly undone.', show: ['g.h2-lab', 'b.1'], focus: ['g.h2-lab', 'b.1'] },
         { say: 'Iodine falls to about zero point zero five, because it reacts with the extra hydrogen. And hydrogen iodide rises to about zero point eight zero.', caption: 'Iodine falls to about 0.05, because it reacts with the extra hydrogen. And hydrogen iodide rises to about 0.80.', show: ['g.i2-lab', 'g.hi-lab', 'b.2'], focus: ['g.i2', 'g.hi', 'b.2'] },
+      ],
+    },
+    {
+      chapter: 'Adding a reactant, up close',
+      layout: 'center',
+      main: [n2o4Stress('sr', 'more-n2o4', { seed: 15 })],
+      lines: [
+        { say: 'Here is a shift up close, with dye-nitrogen tetroxide as the reactant. The tube is at equilibrium, and the count of orange nitrogen dioxide molecules flickers around one value. Now more dye-nitrogen tetroxide drips in from above.', caption: 'Here is a shift up close, with dinitrogen tetroxide as the reactant. The tube is at equilibrium, and the count of orange nitrogen dioxide molecules flickers around one value. Now more dinitrogen tetroxide drips in from above.', show: ['sr', 'sr.labels', 'sr.key', 'sr.tally'], play: 'sr.stress' },
+        { say: 'With more pairs to split, the forward reaction runs faster for a while, and the count of nitrogen dioxide climbs. The system shifts right, using up some of what was added, until the two rates are equal again.', focus: 'sr.tally' },
       ],
     },
     {

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c30-2b-figures.ts';
+import { plating } from './lib/c30-cells.ts';
 
 // From a current and a time to a mass of metal: Faraday's law gives the electrons, the
 // half-reaction the amount of metal, and the molar mass its mass.
@@ -106,6 +107,15 @@ const video: Explainer = {
       lines: [
         { say: 'A common mistake skips the half-reaction, and treats every electron as one copper atom. That gives five point three three grams, twice the right answer.', show: ['oops', 'm.0'], focus: 'm.0' },
         { say: 'Always check how many electrons each ion needs. A copper two ion takes two, so the moles of copper are half the moles of electrons.', caption: 'Always check how many electrons each ion needs. A copper(II) ion takes two, so the moles of copper are half the moles of electrons.', show: 'm.1', focus: 'm.1' },
+      ],
+    },
+    {
+      chapter: 'Counting atoms, up close',
+      layout: 'center',
+      main: [plating('cp', { seed: 1 })],
+      lines: [
+        { say: 'Here is copper plating up close, with a count of the copper atoms plated onto the object. Each copper two ion that arrives at the cathode takes two electrons before it becomes a copper atom. Watch the count grow as the current flows.', caption: 'Here is copper plating up close, with a count of the copper atoms plated onto the object. Each Cu²⁺ ion that arrives at the cathode takes two electrons before it becomes a copper atom. Watch the count grow as the current flows.', show: ['cp', 'cp.labels', 'cp.key', 'cp.tally'], play: 'cp.run' },
+        { say: 'Every atom in that count used two electrons from the current. So the moles of copper are half the moles of electrons that passed. For silver, each ion takes one electron, and for aluminium, three.' },
       ],
     },
     {

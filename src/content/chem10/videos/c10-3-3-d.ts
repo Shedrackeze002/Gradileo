@@ -1,11 +1,29 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+import { ATOM } from '@/video/reactions.ts';
+
+// Carbon monoxide and carbon dioxide as gases, side by side, so the molecules can be counted as
+// they fly: one oxygen atom on each carbon, or two. The atoms carry their masses and attract only
+// weakly, so the molecules stay a gas and do not chain together.
+const C = { ...ATOM.C, mass: 12, bond: 0.03 };
+const O = { ...ATOM.O, mass: 16, size: 0.9, bond: 0.03 };
+const gases: ParticlesEl = {
+  kind: 'particles',
+  id: 'g',
+  boxes: [
+    { id: 'mo', state: 'gas', width: 8, height: 9, temp: 2.4, kinds: [C, O], molecules: [{ atoms: [0, 1], n: 6 }], label: 'carbon monoxide, CO' },
+    { id: 'di', state: 'gas', width: 8, height: 9, temp: 2.4, kinds: [C, O], molecules: [{ atoms: [0, 1, 1], n: 4 }], label: 'carbon dioxide, CO₂' },
+  ],
+  clips: {},
+  seed: 8,
+  height: 440,
+};
 
 const video: Explainer = {
   id: 'c10-3-3-d',
   lessonId: 'c10-3-3',
   title: 'Covalent Bonds and Molecular Names, Part 4: Naming Molecular Compounds',
   thumbnailTitle: 'Naming Molecular Compounds',
-  thumbnail: false,
+  thumbnail: 'g',
   summary:
     'Two non-metals can join in more than one way, so the name of a molecular compound counts its atoms with prefixes: mono 1, di 2, tri 3, tetra 4, penta 5, hexa 6. The first element never takes mono, the second ends in -ide and always has a prefix, and mono + oxide = monoxide: CO is carbon monoxide and N2O4 dinitrogen tetraoxide. Prefixes turn back into subscripts: nitrogen trifluoride is NF3.',
   scenes: [
@@ -15,6 +33,16 @@ const video: Explainer = {
       lines: [
         { say: 'Carbon and oxygen make two very different gases: carbon dioxide, which you breathe out, and carbon monoxide, which is poisonous. Their names have to tell them apart.', show: 'title' },
         { say: 'In this last part, you will name compounds of two non-metals with counting prefixes, and write their formulas from their names.' },
+      ],
+    },
+    {
+      chapter: 'One oxygen or two',
+      layout: 'center',
+      main: [gases],
+      lines: [
+        { say: 'Here are both gases, as their molecules fly around. Every molecule on the left has one carbon atom joined to one oxygen atom: carbon monoxide, C O.', caption: 'Here are both gases, as their molecules fly around. Every molecule on the left has one carbon atom joined to one oxygen atom: carbon monoxide, CO.', show: ['g', 'g.labels'], focus: 'g.mo' },
+        { say: 'Every molecule on the right has one carbon atom and two oxygen atoms: carbon dioxide, C O two.', caption: 'Every molecule on the right has one carbon atom and two oxygen atoms: carbon dioxide, CO₂.', focus: 'g.di' },
+        { say: 'Same two elements, different molecules. So the name has to count the atoms: mono for one oxygen, and di for two.' },
       ],
     },
     {

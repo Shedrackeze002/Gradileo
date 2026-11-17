@@ -1,18 +1,27 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { charlesGraph, gasBox, tag } from './lib/c20-2a-figures.ts';
+import { charlesGraph } from './lib/c20-2a-figures.ts';
 
-// A gas under a free piston, cool and then warmed: faster particles push the piston up.
-const pistons = figure(
-  'p',
-  [
-    gasBox({ name: 'cool', at: [0, 0], w: 4, h: 3, count: 7, r: 0.24, speed: 0.45, seed: 81, top: 'piston', walls: 6 }),
-    tag('cool-l', [2, -0.3], '\\text{cool}', { place: 'below', tone: 'adj', group: 'cool-p' }),
-    gasBox({ name: 'hot', at: [6, 0], w: 4, h: 4.8, count: 7, r: 0.24, speed: 1.1, seed: 82, top: 'piston', walls: 6, hits: 4 }),
-    tag('hot-l', [8, -0.3], '\\text{warmed}', { place: 'below', tone: 'opp', group: 'hot-p' }),
-  ],
-  460,
-);
+/**
+ * A gas under a free piston (simulated, src/video/particles.ts): warmed, its particles speed up
+ * (coloured by speed) and push the piston out, so that doubling the Kelvin temperature doubles the
+ * volume while the gauge holds steady; cooled, it shrinks back.
+ */
+const pistonGas = (id: string): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 12, temp: 1.2, lid: 0.45, piston: true, kinds: [{ n: 12, bond: 0.15, heavy: 0 }], heatColor: [0.5, 4] }],
+  clips: {
+    warm: { phases: [{ dur: 6, heat: { b: 2.4 }, lid: { b: 0.9 } }] },
+    cool: { phases: [{ dur: 6, heat: { b: 1.2 }, lid: { b: 0.45 } }] },
+  },
+  gauge: { box: 'b', start: 100 },
+  volume: { box: 'b', start: 1.5, decimals: 2 },
+  thermometers: true,
+  height: 500,
+});
+const pistons = pistonGas('p');
+const pistons2 = pistonGas('p2');
 
 const graph = figure('g', [charlesGraph()], 540);
 
@@ -46,9 +55,9 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Imagine a gas trapped under a piston that slides freely, so the pressure on the gas stays the same.', show: ['p.cool-box', 'p.cool-piston', 'p.cool-p', 'p.cool-l', 'b.0'] },
-        { say: 'As the gas is warmed, it pushes the piston out, and its volume grows.', show: ['p.hot-box', 'p.hot-piston', 'p.hot-p', 'p.hot-l', 'b.1'] },
-        { say: 'As it is cooled, its volume shrinks. So how exactly does the volume depend on the temperature?', show: 'b.2' },
+        { say: 'Imagine a gas trapped under a piston that slides freely, so the pressure on the gas stays the same.', show: ['p', 'p.gauge', 'p.volume', 'p.thermo', 'b.0'], focus: 'p.gauge' },
+        { say: 'As the gas is warmed, it pushes the piston out, and its volume grows. The gauge does not change.', show: 'b.1', play: 'p.warm', focus: ['p.thermo', 'p.volume'] },
+        { say: 'As it is cooled, its volume shrinks. So how exactly does the volume depend on the temperature?', show: 'b.2', play: 'p.cool', focus: 'p.volume' },
       ],
     },
     {
@@ -81,7 +90,7 @@ const video: Explainer = {
       chapter: 'Why a hotter gas takes more room',
       layout: 'split',
       leftWidth: 600,
-      left: [pistons],
+      left: [pistons2],
       right: [
         {
           kind: 'bullets',
@@ -90,9 +99,9 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'The kinetic molecular theory explains Charles’s law. When a gas is heated, its particles move faster on average, so they hit the walls more often and harder.', show: ['p.cool-box', 'p.cool-piston', 'p.cool-p', 'p.cool-v', 'p.cool-l', 'p.hot-box', 'p.hot-piston', 'p.hot-p', 'p.hot-v', 'p.hot-hits', 'p.hot-l', 'b.0'], focus: ['p.hot-v', 'p.hot-hits'] },
-        { say: 'In a balloon, or under a free piston, the walls can move, so the gas expands.', show: 'b.1', focus: 'p.hot-piston' },
-        { say: 'As it spreads out, its particles reach each part of the wall less often, until the pressure inside matches the pressure outside again. So a hotter gas at the same pressure takes up more room.', show: 'b.2', focus: 'p' },
+        { say: 'The kinetic molecular theory explains Charles’s law. When a gas is heated, its particles move faster on average, so they hit the walls more often and harder.', show: ['p2', 'p2.hits', 'p2.thermo', 'p2.gauge', 'b.0'], play: 'p2.warm', focus: 'p2.hits' },
+        { say: 'In a balloon, or under a free piston, the walls can move, so the gas expands.', show: 'b.1', focus: 'p2' },
+        { say: 'As it spreads out, its particles reach each part of the wall less often, until the pressure inside matches the pressure outside again. So a hotter gas at the same pressure takes up more room.', show: 'b.2', focus: 'p2.gauge' },
       ],
     },
     {

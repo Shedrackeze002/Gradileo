@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { cup, flow, join, room } from './lib/c30-1a-figures.ts';
+import { hotAndCold } from '@/content/chem10/videos/lib/c10-particles.ts';
 
 // Energy flowing out of the system (exothermic) and into it (endothermic).
 const flows = figure(
@@ -65,6 +66,15 @@ const video: Explainer = {
           show: 'fl.endo-note',
           focus: 'fl.endo-note',
         },
+      ],
+    },
+    {
+      chapter: 'Both directions, up close',
+      layout: 'center',
+      main: [hotAndCold('hc', 420)],
+      lines: [
+        { say: 'Here are two reactions in solution, side by side, with a thermometer by each. In each box the two reactants start apart, at the same temperature, and then the wall between them lifts. On the left, each pair that reacts releases energy. On the right, each pair that reacts absorbs energy from the particles around it. Watch the two thermometers.', show: ['hc', 'hc.labels', 'hc.thermo'], play: 'hc.mix' },
+        { say: 'On the left the particles speed up and the temperature rises: energy flows from the system to the surroundings, so that reaction is exothermic. On the right they slow down and the temperature falls: energy flows into the system, so that one is endothermic.' },
       ],
     },
     {

@@ -1,11 +1,26 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+/**
+ * The worked example (simulated, src/video/particles.ts): a gas under a free piston, 2.40 L at
+ * 300 K, warmed to 360 K, when the volume reads 2.88 L and the pressure has not changed.
+ */
+const balloon: ParticlesEl = {
+  kind: 'particles',
+  id: 'v',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 12, temp: 1.5, lid: 0.5, piston: true, kinds: [{ n: 12, bond: 0.15, heavy: 0 }] }],
+  clips: { warm: { phases: [{ dur: 5, heat: { b: 1.8 }, lid: { b: 0.6 } }] } },
+  gauge: { box: 'b', start: 100 },
+  volume: { box: 'b', start: 2.4, decimals: 2 },
+  thermometers: { marks: [{ at: 1.8, label: '360 K' }] },
+  height: 500,
+};
 
 const video: Explainer = {
   id: 'c20-2-4-b',
   lessonId: 'c20-2-4',
   title: "Charles's Law and Gay-Lussac's Law, Part 2: Using Charles's Law",
   thumbnailTitle: "Using Charles's Law",
-  thumbnail: false,
+  thumbnail: 'v',
   summary:
     "Solve Charles's law for the new volume, V₂ = V₁ × T₂/T₁, with both temperatures in kelvins: 3.50 L at 20 °C becomes 4.28 L at 85 °C. Using Celsius temperatures instead gives 14.9 L, which is far too large, because Celsius temperatures do not start at absolute zero.",
   scenes: [
@@ -19,17 +34,20 @@ const video: Explainer = {
     },
     {
       chapter: 'Kelvin temperatures',
-      layout: 'center',
-      main: [
-        { kind: 'math', id: 'law', size: 'lg', lines: ['V_2 = V_1 \\times \\dfrac{T_2}{T_1} \\qquad T_2 = T_1 \\times \\dfrac{V_2}{V_1}'] },
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: 'A balloon holds $2.40\\ \\text{L}$ of gas at $300\\ \\text{K}$. At the same pressure, what is its volume at $360\\ \\text{K}$, to the nearest hundredth?' },
-        { kind: 'math', id: 'm', size: 'lg', lines: ['\\dfrac{360}{300} = 1.2', 'V_2 = 2.40 \\times \\dfrac{360}{300} = 2.88\\ \\text{L}'] },
+      layout: 'split',
+      leftWidth: 560,
+      left: [balloon],
+      right: [
+        { kind: 'math', id: 'law', size: 'md', align: 'left', lines: ['V_2 = V_1 \\times \\dfrac{T_2}{T_1} \\qquad T_2 = T_1 \\times \\dfrac{V_2}{V_1}'] },
+        { kind: 'text', id: 'q', size: 'md', md: 'A balloon holds $2.40\\ \\text{L}$ of gas at $300\\ \\text{K}$. At the same pressure, what is its volume at $360\\ \\text{K}$, to the nearest hundredth?' },
+        { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\dfrac{360}{300} = 1.2', 'V_2 = 2.40 \\times \\dfrac{360}{300} = 2.88\\ \\text{L}'] },
       ],
       lines: [
         { say: 'Solve Charles’s law for the unknown. V two equals V one times T two over T one. Or, for a temperature, T two equals T one times V two over V one. Both temperatures must be in kelvins.', caption: 'Solve Charles’s law for the unknown. V₂ = V₁ × T₂/T₁. Or, for a temperature, T₂ = T₁ × V₂/V₁. Both temperatures must be in kelvins.', show: 'law' },
-        { say: 'A balloon holds two point four zero litres of gas at three hundred kelvins. At the same pressure, what is its volume at three hundred sixty kelvins, to the nearest hundredth?', show: 'q' },
+        { say: 'A balloon holds two point four zero litres of gas at three hundred kelvins. At the same pressure, what is its volume at three hundred sixty kelvins, to the nearest hundredth?', show: ['q', 'v', 'v.thermo', 'v.volume', 'v.gauge'] },
         { say: 'The Kelvin temperature is multiplied by three hundred sixty over three hundred, which is one point two. So the volume is multiplied by one point two as well.', show: 'm.0', focus: 'm.0' },
         { say: 'V two equals two point four zero times three hundred sixty over three hundred, which is two point eight eight litres.', caption: 'V₂ = 2.40 × 360/300, which is 2.88 L.', show: 'm.1', focus: 'm.1' },
+        { say: 'Warm the gas to three hundred sixty kelvins, and the piston slides out until the volume reads two point eight eight litres, with the pressure unchanged.', play: 'v.warm', focus: ['v.thermo', 'v.volume'] },
       ],
     },
     {

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { electrolytic } from './lib/c30-2b-figures.ts';
+import { aqueous } from './lib/c30-cells.ts';
 
 // Aqueous potassium iodide: water is reduced to hydrogen at the cathode, and iodide ions are
 // oxidised to iodine at the anode.
@@ -97,6 +98,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Potassium iodide, up close',
+      layout: 'center',
+      main: [aqueous('ki', 'potassium iodide', { seed: 2 })],
+      lines: [
+        { say: 'Here is potassium iodide solution up close, with water molecules among the ions. The cathode is on the left, the anode on the right. Watch the cathode closely: the potassium ions drift to it, but which particles actually react there? Then watch the iodide ions at the anode.', show: ['ki', 'ki.labels', 'ki.key'], play: 'ki.run' },
+        { say: 'The potassium ions gather at the cathode but never react. Water molecules are reduced instead, and hydrogen gas bubbles off. At the anode, iodide ions give up electrons, and the iodine they form stays in the solution, turning it brown.' },
+      ],
+    },
+    {
       chapter: 'Copper(II) sulfate solution',
       layout: 'split',
       leftWidth: 540,
@@ -124,6 +134,15 @@ const video: Explainer = {
         },
         { say: 'At the anode, sulfate ions are not oxidised, so water is. Oxygen gas bubbles off.', show: ['e.an-product', 'm.0'], focus: ['t.0', 'm.0', 'e.an-product'] },
         { say: 'The cell potential is plus zero point three four, minus plus one point two three: negative zero point eight nine volts. At least zero point eight nine volts is needed.', show: ['m.1', 'm.2'], focus: 'm.2' },
+      ],
+    },
+    {
+      chapter: 'Copper sulfate, up close',
+      layout: 'center',
+      main: [aqueous('cu', 'copper sulfate', { seed: 2 })],
+      lines: [
+        { say: 'Now copper two sulfate solution up close. Watch the cathode on the left, where the copper two ions arrive, and the anode on the right, where the sulfate ions gather beside the water molecules. Which of them gives up electrons there?', caption: 'Now copper(II) sulfate solution up close. Watch the cathode on the left, where the copper(II) ions arrive, and the anode on the right, where the sulfate ions gather beside the water molecules. Which of them gives up electrons there?', show: ['cu', 'cu.labels', 'cu.key'], play: 'cu.run' },
+        { say: 'This time the copper two ions are reduced, and copper builds up on the cathode. At the anode, the sulfate ions are not oxidised, so water molecules are, and oxygen gas bubbles away.', caption: 'This time the copper(II) ions are reduced, and copper builds up on the cathode. At the anode, the sulfate ions are not oxidised, so water molecules are, and oxygen gas bubbles away.' },
       ],
     },
     {

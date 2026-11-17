@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { distillation, separatingFunnel } from './lib/c10-1-figures.ts';
+import { magnetSand, still } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-3-b',
@@ -31,6 +32,19 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Inside the still',
+      layout: 'split',
+      leftWidth: 640,
+      left: [still('st', 400)],
+      right: [{ kind: 'bullets', id: 'in', items: ['In the flask, the water **boils**.', 'In the condenser, the steam **condenses**.', 'The salt **stays** in the flask.'] }],
+      lines: [
+        { say: 'Let’s look at the particles. On the left is salt water in the heated flask, and on the right, the cold condenser.', show: ['st', 'st.labels'] },
+        { say: 'As the flask is heated, the water particles speed up and escape as steam. The steam crosses into the condenser.', play: 'st.boil', show: 'in.0' },
+        { say: 'In the cold condenser, the water particles slow down and stick together again: the steam condenses back into liquid water.', play: 'st.more', show: 'in.1' },
+        { say: 'The salt particles never leave the flask, so the water collected is pure.', show: 'in.2', focus: 'st.a' },
+      ],
+    },
+    {
       chapter: 'Fractional distillation',
       layout: 'center',
       main: [figure('fd', [distillation({ column: true, solution: '\\text{ethanol and water}', distillate: '\\text{ethanol}' })], 560)],
@@ -39,6 +53,17 @@ const video: Explainer = {
         { say: 'A tall fractionating column above the flask helps to separate the vapours.', focus: ['fd.flask', 'fd.beads'] },
         { say: 'The liquid with the lowest boiling point reaches the top of the column, and distils over first. Here, that is ethanol. As the temperature rises, the next liquid follows.', focus: 'fd.distillate' },
         { say: 'Fractional distillation separates crude oil into fuels, and liquid air into nitrogen and oxygen.', focus: 'fd' },
+      ],
+    },
+    {
+      chapter: 'A magnet',
+      layout: 'split',
+      leftWidth: 560,
+      left: [magnetSand('mg', 360)],
+      right: [{ kind: 'callout', id: 'mag', tone: 'key', title: 'A magnet', md: 'Pulls **iron** or **steel** out of a mixture with non-magnetic solids.' }],
+      lines: [
+        { say: 'Some mixtures need simpler methods. A magnet pulls iron or steel out of a mixture with non-magnetic solids. Here are iron filings, in pink, mixed with sand.', show: ['mg', 'mg.labels', 'mag'] },
+        { say: 'Hold a magnet over them. The iron is pulled up out of the sand, and the sand is left behind.', play: 'mg.go' },
       ],
     },
     {
@@ -58,7 +83,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Some mixtures need simpler methods. A magnet pulls iron or steel out of a mixture with non-magnetic solids, such as iron filings from sand.', show: 'm.0' },
+        { say: 'So a magnet separates iron filings from sand.', show: 'm.0' },
         { say: 'A separating funnel separates liquids that do not mix, such as oil and water. They settle into two layers, with the denser liquid at the bottom.', show: ['sf', 'm.1'] },
         { say: 'Opening the tap at the bottom runs off the lower layer first.', focus: 'sf.lower' },
         { say: 'Decanting means carefully pouring a liquid off a dense solid that has settled to the bottom, such as water off gravel.', show: 'm.2', focus: 'sf' },

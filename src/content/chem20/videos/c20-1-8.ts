@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { link, pointer, tag, water } from './lib/c20-1b-figures.ts';
+import { link, pointer, water } from './lib/c20-1b-figures.ts';
+import { boilingWater } from './lib/c20-particles.ts';
 
 // Three water molecules: covalent bonds inside each, and dashed attractions between them.
 const between = figure('m', [
@@ -13,13 +14,8 @@ const between = figure('m', [
   pointer({ id: 'inter', from: [1.55, -0.6], to: [2.6, 1.3], tex: '\\begin{gathered}\\text{intermolecular}\\\\ \\text{force}\\end{gathered}', place: 'above', tone: 'good' }),
 ]);
 
-// Steam: the same molecules, far apart, each still whole.
-const steam = figure('m', [
-  water({ name: 's1', at: [0, 1.8], turn: 15, group: 'mol' }),
-  water({ name: 's2', at: [-2.6, -0.5], turn: -40, group: 'mol' }),
-  water({ name: 's3', at: [2.5, -0.3], turn: 60, group: 'mol' }),
-  tag({ id: 'name', at: [0, -3.1], tex: '\\text{steam: whole } \\ce{H2O} \\text{ molecules}', tone: 'theta' }),
-]);
+// Water boiling, simulated: the molecules fly apart from one another, but each stays whole.
+const steam = boilingWater('bw', 420);
 
 const video: Explainer = {
   id: 'c20-1-8',
@@ -68,7 +64,7 @@ const video: Explainer = {
         { kind: 'callout', id: 'oops', tone: 'mistake', title: 'Boiling does not break molecules apart', md: 'When water boils, its molecules do **not** split into hydrogen and oxygen. Only the attractions *between* the molecules are overcome.' },
       ],
       lines: [
-        { say: 'When water boils, its molecules move apart from one another, but each molecule stays whole. Steam is still made of H two O molecules.', caption: 'When water boils, its molecules move apart from one another, but each molecule stays whole. Steam is still made of H₂O molecules.', show: 'm' },
+        { say: 'When water boils, its molecules move apart from one another, but each molecule stays whole. Steam is still made of H two O molecules.', caption: 'When water boils, its molecules move apart from one another, but each molecule stays whole. Steam is still made of H₂O molecules.', show: ['bw', 'bw.labels', 'bw.thermo'], play: 'bw.boil' },
         { say: 'Boiling overcomes only the intermolecular forces. Breaking all the oxygen–hydrogen bonds in some water would take more than twenty times as much energy as boiling it.' },
         { say: 'So when water boils, its molecules do not split into hydrogen and oxygen. Only the attractions between the molecules are overcome. The bonds inside them stay as they were.', show: 'oops' },
       ],

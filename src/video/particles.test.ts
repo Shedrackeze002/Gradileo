@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkParticles, checkScript, type Explainer, type ParticleBox, type ParticlesEl } from './script.ts';
-import { controlsAt, particlesAt, pressureOf, TEMPS } from './particles.ts';
+import { controlsAt, particlesAt, pressureOf, singular, TEMPS } from './particles.ts';
 import { hydrogenBurning } from './reactions.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
@@ -258,6 +258,24 @@ describe('particles: molecules and reactions', () => {
     expect(burnt.temp).toBeGreaterThan(0.6);
   });
 
+  it('moves a heavy kind more slowly than a light one at the same temperature', () => {
+    const e = el({ boxes: [{ id: 'b', state: 'gas', temp: 1.6, heatColor: [0.5, 3], kinds: [{ n: 10 }, { n: 10, mass: 16 }] }] });
+    // How far each kind goes in a short moment, averaged over several moments.
+    const dist = [0, 0];
+    for (let t = 2; t < 8; t += 0.5) {
+      const [a] = particlesAt(e, [], t);
+      const [b] = particlesAt(e, [], t + 0.05);
+      a.x.forEach((x, i) => (dist[a.kind[i]] += Math.hypot(b.x[i] - x, b.y[i] - a.y[i])));
+    }
+    // Four times as fast in theory (the square root of 16); collisions blur it a little.
+    expect(dist[0] / dist[1]).toBeGreaterThan(2.5);
+    // The same energy each, so both kinds look equally hot.
+    const [f] = particlesAt(e, [], 6);
+    const ke = [0, 1].map((k) => mean(f.ke!.filter((_, i) => f.kind[i] === k)));
+    expect(ke[0] / ke[1]).toBeGreaterThan(0.5);
+    expect(ke[0] / ke[1]).toBeLessThan(2);
+  });
+
   it('breaks a reacting lump into separate pieces, and lets only its surface react', () => {
     const solid = (id: string, pieces: number) => ({
       id,
@@ -322,5 +340,295 @@ describe('particles: scripts and timing', () => {
       'Scene 1, line 1: particles "q" shows "gauge" but does not set it up (thermometers, gauge, volume or flow).',
       'Scene 1, line 1: particles "q" has no clip "nope".',
     ]);
+  });
+});
+
+describe('particles: a burette and an indicator', () => {
+  // An acid (kinds 0, 1) titrated with a base (kind 2) from a burette; kind 3 is what they make.
+  const titration = (add: number): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'f',
+          state: 'gas',
+          width: 8,
+          height: 6,
+          temp: 0.6,
+          kinds: [{ n: 4 }, { n: 4 }, { n: 6 }, { n: 0 }],
+          reserve: [2],
+          reactions: [{ a: 0, b: 2, to: [3, 3] }],
+          indicator: { acid: [0], base: [2], tone: 'hyp' },
+        },
+      ],
+      clips: { go: { phases: [{ dur: 4, add: { f: add } }, { dur: 30 }] } },
+      speed: 2,
+      seed: 2,
+    });
+  const count = (f: { kind: number[] }, k: number) => f.kind.filter((x) => x === k).length;
+
+  it('keeps the reserved kinds out of the box until a phase pours them in', () => {
+    const e = titration(6);
+    const [start] = particlesAt(e, [['go', 0]], 0);
+    expect(count(start, 2)).toBe(0);
+    expect(count(start, 0)).toBe(4);
+    const [half] = particlesAt(e, [['go', 0]], 2.1);
+    expect(count(half, 2) + count(half, 3) / 2).toBe(3);
+  });
+
+  it('pours in only as many units as asked for', () => {
+    const [f] = particlesAt(titration(2), [['go', 0]], 30);
+    expect(count(f, 2) + count(f, 3) / 2).toBe(2);
+    expect(count(f, 0)).toBeGreaterThanOrEqual(2);
+  });
+
+  it('pours in the base, which uses up the acid and is left over past the endpoint', () => {
+    const [f] = particlesAt(titration(6), [['go', 0]], 34);
+    expect(count(f, 0)).toBe(0);
+    expect(count(f, 2)).toBe(2);
+  });
+
+  it('checks the burette and the indicator', () => {
+    const bad = el({ boxes: [{ id: 'f', state: 'gas', kinds: [{ n: 4 }], reserve: [3], indicator: { acid: [0], base: [5], tone: 'hyp' } }], clips: { go: { phases: [{ dur: 1, add: { g: 1 } }] } } });
+    expect(checkParticles(bad)).toEqual([
+      'box "f": the burette holds a kind the box does not have.',
+      'box "f": the indicator watches a kind the box does not have.',
+      'clip "go", phase 1 pours into box "g", which has no burette (`reserve`).',
+    ]);
+  });
+});
+
+describe('particles: slow reactions with a chance', () => {
+  // Two kinds that turn into each other on meeting: kind 0 + kind 0 gives 1 + 1, and back.
+  const both = (forward: number, back: number): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'b',
+          state: 'gas',
+          width: 10,
+          height: 8,
+          temp: 0.6,
+          kinds: [{ n: 40 }, { n: 0 }],
+          reactions: [
+            { a: 0, b: 0, to: [1, 1], chance: forward, reach: 1.15 },
+            { a: 1, b: 1, to: [0, 0], chance: back, reach: 1.15 },
+          ],
+          tally: { kinds: [1], label: 'made' },
+        },
+      ],
+      clips: {},
+      seed: 3,
+    });
+
+  it('reacts more slowly with a smaller chance', () => {
+    const fast = particlesAt(both(0.01, 0), [], 1)[0].tally!;
+    const slow = particlesAt(both(0.0005, 0), [], 1)[0].tally!;
+    expect(fast).toBeGreaterThan(slow);
+    expect(particlesAt(both(0.01, 0), [], 20)[0].tally).toBeGreaterThanOrEqual(36);
+  });
+
+  it('settles part way when the reaction runs both ways', () => {
+    const e = both(0.002, 0.002);
+    const late = [20, 24, 28, 32].map((t) => particlesAt(e, [], t)[0].tally!);
+    for (const v of late) {
+      expect(v).toBeGreaterThan(8);
+      expect(v).toBeLessThan(32);
+    }
+  });
+});
+
+describe('particles: molecules that fall apart', () => {
+  // Pairs of kind 1 that fall apart into kind 0, which pair up again on touching.
+  const pairs = (o: { split: number; pair: number; energy?: number; temp?: number; lid?: number }): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'b',
+          state: 'gas',
+          width: 11,
+          height: 8,
+          temp: o.temp ?? 0.6,
+          kinds: [{ n: 0 }, { n: 0 }],
+          molecules: [{ atoms: [1, 1], n: 25 }],
+          breaks: [{ kinds: [1, 1], to: [0, 0], chance: o.split, energy: o.energy }],
+          reactions: [{ a: 0, b: 0, to: [1, 1], join: true, reach: 1.15, chance: o.pair }],
+          tally: { kinds: [0], label: 'single' },
+        },
+      ],
+      clips: {},
+      seed: 2,
+    });
+  const late = (e: ParticlesEl) => mean([24, 28, 32, 36, 40].map((t) => particlesAt(e, [], t)[0].tally!));
+
+  it('splits pairs without any meeting, and keeps every bond between whole pairs', () => {
+    const [f] = particlesAt(pairs({ split: 0.0005, pair: 0 }), [], 10);
+    expect(f.tally).toBeGreaterThan(20);
+    expect(f.bonds.length).toBe((50 - f.tally!) / 2);
+  });
+
+  it('settles part way when pairs split and re-form', () => {
+    const open = late(pairs({ split: 0.0001, pair: 0.0004 }));
+    expect(open).toBeGreaterThan(6);
+    expect(open).toBeLessThan(44);
+  });
+
+  it('splits more when hot, with an energy', () => {
+    const cold = late(pairs({ split: 0.0001 * Math.exp(1.5 / 0.6), pair: 0.0004, energy: 1.5, temp: 0.4 }));
+    const hot = late(pairs({ split: 0.0001 * Math.exp(1.5 / 0.6), pair: 0.0004, energy: 1.5, temp: 1 }));
+    expect(hot).toBeGreaterThan(cold + 4);
+  });
+
+  it('checks the kinds a break names', () => {
+    expect(checkParticles(el({ boxes: [{ id: 'b', state: 'gas', kinds: [{ n: 4 }], breaks: [{ kinds: [0, 2], to: [0, 0], chance: 0.1 }] }] }))).toEqual(['box "b": a break names a kind it does not have.']);
+  });
+});
+
+describe('particles: tally labels', () => {
+  it('makes a label singular for a count of one', () => {
+    expect(singular('hydronium ions')).toBe('hydronium ion');
+    expect(singular('units of silver chloride')).toBe('unit of silver chloride');
+    expect(singular('particles inside')).toBe('particle inside');
+  });
+});
+
+describe('particles: an insulated box', () => {
+  // A hot lump of heavy particles in cold water, with nothing holding either at a temperature.
+  const cup = (insulated = true): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'c',
+          state: 'liquid',
+          width: 12,
+          height: 9,
+          temp: 0.3,
+          insulated,
+          lump: true,
+          heatColor: [0.3, 1],
+          kinds: [
+            { n: 16, bond: 4, heavy: 0.1, mass: 30, temp: 1 },
+            { n: 44 },
+          ],
+        },
+      ],
+      clips: {},
+      seed: 1,
+    });
+  const temps = (e: ParticlesEl, t: number) => {
+    const f = particlesAt(e, [], t)[0];
+    const avg = (k: number) => mean(f.ke!.filter((_, i) => f.kind[i] === k));
+    return { metal: avg(0), water: avg(1), thermo: f.temp };
+  };
+
+  it('starts the lump hot and the water cold, and the thermometer reads the water', () => {
+    const t = temps(cup(), 0);
+    expect(t.metal).toBeGreaterThan(0.7);
+    expect(t.water).toBeLessThan(0.4);
+    expect(t.thermo).toBeCloseTo(t.water, 5);
+  });
+
+  it('passes heat from the lump to the water until they are about the same temperature', () => {
+    const late = mean([30, 32, 34, 36].map((t) => temps(cup(), t).water));
+    const lump = mean([30, 32, 34, 36].map((t) => temps(cup(), t).metal));
+    expect(late).toBeGreaterThan(0.38);
+    expect(late).toBeLessThan(0.6);
+    expect(Math.abs(lump - late)).toBeLessThan(0.2);
+  });
+
+  it('is refused for a kind with its own temperature in a box that is not insulated', () => {
+    expect(checkParticles(cup(false))).toEqual(['box "c": a kind starts at its own temperature only in an insulated box.']);
+  });
+});
+
+describe('particles: electrodes', () => {
+  /** A solution of metal ions (0) and negative ions (1) with a metal anode (2) to plate an object with metal (3). */
+  const cell = (dissolve: { kind: number; to: number; chance?: number } = { kind: 2, to: 0 }, plate = 16, plating = true): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'c',
+          state: 'liquid',
+          width: 13,
+          height: 9,
+          temp: 0.45,
+          kinds: [
+            { n: 8, bond: 1, heavy: 0.2, charge: 2 },
+            { n: 8, bond: 1, heavy: 0.2, size: 1.3, charge: -2 },
+            { n: 16, bond: 1, heavy: 0.2 },
+            { n: 0, bond: 1, heavy: 0.2 },
+            { n: 20, bond: 1, heavy: 0.2, size: 0.85 },
+          ],
+          electrodes: {
+            left: { rules: plating ? [{ kind: 0, to: 3, stick: true }] : [] },
+            right: { plate: { kind: 2, n: plate }, dissolve },
+          },
+        },
+      ],
+      clips: { run: { phases: [{ dur: 1, power: { c: 1 } }, { dur: 15 }] } },
+      seed: 1,
+    });
+  const count = (f: { kind: number[] }, k: number) => f.kind.filter((x) => x === k).length;
+  const meanX = (f: { x: number[]; kind: number[] }, k: number) => mean(f.x.filter((_, i) => f.kind[i] === k));
+  const at = (e: ParticlesEl, t: number, on = true) => particlesAt(e, on ? [['run', 0]] : [], t)[0];
+
+  it('starts the anode coated, against its wall', () => {
+    const f = at(cell(), 0, false);
+    const xs = f.x.filter((_, i) => f.kind[i] === 2);
+    expect(xs).toHaveLength(16);
+    expect(Math.min(...xs)).toBeGreaterThan(13 - 2.4);
+  });
+
+  it('drifts positive ions to the cathode and negative ions to the anode while the current flows', () => {
+    const on = at(cell(undefined, 16, false), 8);
+    const off = at(cell(undefined, 16, false), 8, false);
+    expect(meanX(on, 0)).toBeLessThan(meanX(off, 0) - 2);
+    expect(meanX(on, 1)).toBeGreaterThan(meanX(off, 1) + 2);
+  });
+
+  it('plates metal that stays on the cathode, and the anode loses an atom for each one', () => {
+    const f = at(cell(), 16);
+    const plated = f.x.filter((_, i) => f.kind[i] === 3);
+    expect(plated.length).toBeGreaterThan(2);
+    expect(plated.length).toBeLessThan(16);
+    expect(Math.max(...plated)).toBeLessThan(2.4);
+    expect(count(f, 2)).toBe(16 - plated.length);
+    expect(count(f, 0)).toBe(8);
+  });
+
+  it('changes nothing with the current off', () => {
+    const f = at(cell(), 16, false);
+    expect(count(f, 3)).toBe(0);
+    expect(count(f, 2)).toBe(16);
+  });
+
+  it('dissolves the anode now and then with a chance, with nothing plated', () => {
+    const f = at(cell({ kind: 2, to: 0, chance: 0.01 }, 16, false), 16);
+    expect(count(f, 3)).toBe(0);
+    expect(count(f, 2)).toBeLessThan(16);
+    expect(count(f, 0)).toBe(8 + 16 - count(f, 2));
+  });
+
+  it('checks the kinds an electrode names and the size of its coating', () => {
+    expect(checkParticles(cell({ kind: 7, to: 0 }))).toEqual(['box "c": an electrode names a kind the box does not have.']);
+    expect(checkParticles(cell(undefined, 17))).toEqual(["box \"c\": an electrode's coating needs more particles than its kind has."]);
+  });
+});
+
+describe('particles: a spread of speeds', () => {
+  const gas = (id: string, temp: number, spread = true): ParticleBox => ({ id, state: 'gas', width: 10, height: 8, temp, n: 60, ...(spread ? { spread: { at: 2, max: 3.5 } } : {}) });
+
+  it('gives each particle’s speed for a box with a spread, faster in the hotter box', () => {
+    const e = el({ boxes: [gas('a', 0.5), gas('b', 1.2), gas('c', 1.2, false)] });
+    const [cold, hot, plain] = particlesAt(e, [], 4);
+    expect(cold.speed).toHaveLength(60);
+    expect(plain.speed).toBeUndefined();
+    expect(mean(hot.speed!)).toBeGreaterThan(1.3 * mean(cold.speed!));
+    // A spread, not one speed: some slow and some fast, and more past the line when hotter.
+    expect(Math.min(...cold.speed!)).toBeLessThan(0.5 * mean(cold.speed!));
+    expect(hot.speed!.filter((v) => v >= 2).length).toBeGreaterThan(cold.speed!.filter((v) => v >= 2).length);
+  });
+
+  it('checks the line is on the axis', () => {
+    expect(checkParticles(el({ boxes: [{ id: 'a', state: 'gas', n: 10, spread: { at: 4 } }] }))).toEqual(["box \"a\": a spread's line must be between 0 and the fastest speed on its axis."]);
   });
 });

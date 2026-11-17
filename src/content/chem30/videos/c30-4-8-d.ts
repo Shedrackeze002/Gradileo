@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { indicatorBands, PHOSPHORIC_CURVE, titrationGraph } from './lib/c30-4b-figures.ts';
+import { titrating } from '@/content/chem20/videos/lib/c20-particles.ts';
 
 // The colour-change ranges of the lesson's indicators, with the pH at the equivalence point of
 // acetic acid with sodium hydroxide (8.7), hydrochloric acid with sodium hydroxide (7.0) and
@@ -66,6 +67,15 @@ const video: Explainer = {
           caption: 'For the colour change, the endpoint, to mark the equivalence point, choose the indicator whose range includes the pH at the equivalence point.',
           show: 'rule',
         },
+      ],
+    },
+    {
+      chapter: 'The endpoint, up close',
+      layout: 'center',
+      main: [titrating('te', { seed: 29 })],
+      lines: [
+        { say: 'Here is the endpoint up close. Sodium hydroxide drips into hydrochloric acid with an indicator. Each hydroxide ion that meets a hydrogen ion makes water, and the hydrogen ions are used up, quickly at first, then drop by drop. Near the end, the drops come slowly, the way you add them near the endpoint, and watch for the moment the indicator turns pink.', show: ['te', 'te.labels', 'te.key', 'te.tally'], play: 'te.titrate' },
+        { say: 'When the last hydrogen ion was used up, that was the equivalence point. The next drop had nothing to react with, and the indicator changed colour. A well-chosen indicator changes within that one drop.', focus: 'te.f' },
       ],
     },
     {

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, dotBeaker, tag } from './lib/c20-3b-figures.ts';
+import { diluting } from './lib/c20-particles.ts';
 
 // A tenfold dilution: 10.0 mL made up to 100.0 mL, the same solute in ten times the volume.
 const tenfold = figure(
@@ -46,6 +47,15 @@ const video: Explainer = {
         { say: 'Here, ten point zero millilitres of solution is made up to one hundred point zero millilitres. The volume grows ten times, so the dilution factor is ten.', caption: 'Here, 10.0 mL of solution is made up to 100.0 mL. The volume grows ten times, so the dilution factor is 10.', show: ['d.b1-glass', 'd.b1-liquid', 'd.b1-solute', 'd.b1-label', 'd.add', 'd.b2-glass', 'd.b2-liquid', 'd.b2-solute', 'd.b2-label'] },
         { say: 'The same solute is spread through ten times the volume, so the concentration falls by the same factor. Two point zero zero moles per litre becomes zero point two zero zero.', caption: 'The same solute is spread through ten times the volume, so the concentration falls by the same factor. 2.00 mol/L becomes 0.200 mol/L.', show: ['d.conc1', 'd.conc2'], focus: ['d.conc1', 'd.conc2'] },
         { say: 'This comes straight from c one V one equals c two V two: V two over V one equals c one over c two.', caption: 'This comes straight from c₁V₁ = c₂V₂: V₂/V₁ = c₁/c₂.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'A fivefold dilution',
+      layout: 'center',
+      main: [diluting('fv', { start: 10, unit: 'mL', from: 0.2 })],
+      lines: [
+        { say: 'Here, ten point zero millilitres of solution is made up to fifty point zero millilitres.', caption: 'Here, 10.0 mL of solution is made up to 50.0 mL.', show: ['fv', 'fv.labels', 'fv.volume', 'fv.key'], play: 'fv.dilute' },
+        { say: 'The volume grows five times, so the dilution factor is five. The same particles now fill five times the space, so the concentration is one fifth of what it was.', focus: 'fv.d' },
       ],
     },
     {

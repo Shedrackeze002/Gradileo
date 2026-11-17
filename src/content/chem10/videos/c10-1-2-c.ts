@@ -1,6 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { mixBeakers } from './lib/c10-1-figures.ts';
+import { twoMixtures } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-2-c',
@@ -23,14 +22,14 @@ const video: Explainer = {
       chapter: 'Two kinds of mixture',
       layout: 'split',
       leftWidth: 560,
-      left: [figure('mb', [mixBeakers()])],
+      left: [twoMixtures('mb', 380)],
       right: [
         { kind: 'callout', id: 'homo', tone: 'definition', title: 'Homogeneous mixture', md: 'The **same all the way through**: you cannot see its separate parts, even with a magnifying glass.' },
         { kind: 'callout', id: 'hetero', tone: 'definition', title: 'Heterogeneous mixture', md: '**Not** the same all the way through: you can see its different parts, or they separate into layers.' },
       ],
       lines: [
-        { say: 'A homogeneous mixture is the same all the way through. You cannot see its separate parts, even with a magnifying glass. Salt water is homogeneous.', show: ['mb.homo', 'homo'] },
-        { say: 'A heterogeneous mixture is not the same all the way through. You can see its different parts, or they separate into layers. Here, oil floats on water, with sand on the bottom.', show: ['mb.hetero', 'hetero'] },
+        { say: 'A homogeneous mixture is the same all the way through. You cannot see its separate parts, even with a magnifying glass. Salt water is homogeneous: its salt particles, in yellow, are spread evenly all through the water.', show: ['mb', 'mb.labels', 'homo'], focus: 'mb.homo' },
+        { say: 'A heterogeneous mixture is not the same all the way through. You can see its different parts, or they separate into layers. Sand in water is heterogeneous: the sand grains do not mix in, and they settle on the bottom.', show: 'hetero', focus: 'mb.hetero' },
       ],
     },
     {

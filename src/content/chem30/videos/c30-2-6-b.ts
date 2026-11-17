@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { cell, TONE } from './lib/c30-2b-figures.ts';
+import { voltaic } from './lib/c30-cells.ts';
 
 const bridge = '\\begin{gathered}\\text{salt bridge}\\\\ \\ce{KNO3(aq)}\\end{gathered}';
 const ions = { anion: '\\ce{NO3^-}', cation: '\\ce{K+}', toward: 'left' as const };
@@ -79,6 +80,15 @@ const video: Explainer = {
         { say: 'At the anode, zinc atoms become zinc ions and move into the solution. The zinc electrode loses mass, and the concentration of zinc ions rises.', show: [...base, 'c.l-role', 'c.r-role', 'c.electrons', 'c.l-ion', 'b.0'], focus: ['c.l-electrode', 'c.l-ion'] },
         { say: 'At the cathode, copper two ions take electrons and become copper atoms on the electrode. The copper electrode gains mass.', caption: 'At the cathode, copper(II) ions take electrons and become copper atoms on the electrode. The copper electrode gains mass.', show: ['c.r-ion', 'b.1'], focus: ['c.r-electrode', 'c.r-ion'] },
         { say: 'The concentration of copper two ions falls, so the blue colour of the solution fades.', caption: 'The concentration of copper(II) ions falls, so the blue colour of the solution fades.', focus: 'c.r-beaker' },
+      ],
+    },
+    {
+      chapter: 'The electrodes change, up close',
+      layout: 'center',
+      main: [voltaic('ve', { seed: 2 })],
+      lines: [
+        { say: 'Here are the electrodes changing, up close. Below each half-cell is a count: the zinc atoms left in the zinc electrode, and the copper atoms in the copper electrode. Watch the zinc atoms leave as ions, and the copper two ions arrive and stay. Notice too that the nitrate ions drift towards the zinc side.', caption: 'Here are the electrodes changing, up close. Below each half-cell is a count: the zinc atoms left in the zinc electrode, and the copper atoms in the copper electrode. Watch the zinc atoms leave as ions, and the copper(II) ions arrive and stay. Notice too that the nitrate ions drift towards the zinc side.', show: ['ve', 've.labels', 've.key', 've.tally'], play: 've.run' },
+        { say: 'The zinc count falls and the copper count rises: the anode loses mass, and the cathode gains it. As copper two ions are used up, fewer remain in the solution, which is why the blue colour fades. And the drifting nitrate ions are the start of the next idea: the ions that balance the charge.', caption: 'The zinc count falls and the copper count rises: the anode loses mass, and the cathode gains it. As copper(II) ions are used up, fewer remain in the solution, which is why the blue colour fades. And the drifting nitrate ions are the start of the next idea: the ions that balance the charge.' },
       ],
     },
     {

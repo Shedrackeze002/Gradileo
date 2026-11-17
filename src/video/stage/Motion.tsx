@@ -335,7 +335,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   if (state.note)
     out.push(
       <g key="note">
-        <rect x={noteX - 120} y={0} width={240} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
+        <rect x={noteX - noteW(state.note) / 2} y={0} width={noteW(state.note)} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
         <Text x={noteX} y={19.5} size={19} color="#fff">
           {state.note}
         </Text>
@@ -350,6 +350,9 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
     </div>
   );
 }
+
+/** How wide a phase's note pill is: 240 px, or wider for a long note. */
+const noteW = (note: string) => Math.max(240, 10.5 * note.length + 44);
 
 export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState | undefined; w: number; h: number; plays?: Array<[string, number]> }) {
   const p = st?.p ?? 0;
@@ -771,7 +774,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   if (state.note)
     out.push(
       <g key="note">
-        <rect x={w / 2 - 120} y={0} width={240} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
+        <rect x={w / 2 - noteW(state.note) / 2} y={0} width={noteW(state.note)} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
         <Text x={w / 2} y={19.5} size={19} color="#fff">
           {state.note}
         </Text>

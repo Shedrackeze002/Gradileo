@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { titrationCurve, type Band } from './lib/c20-4b-figures.ts';
+import { titrating } from './lib/c20-particles.ts';
 
 const eqLabel = '\\begin{gathered}\\text{equivalence}\\\\ \\text{point}\\end{gathered}';
 
@@ -68,6 +69,15 @@ const video: Explainer = {
         { say: 'Here it is at twenty-five point zero millilitres and p H seven. For a strong acid and a strong base, it is always at p H seven: the solution then holds only water and a neutral salt, sodium chloride.', caption: 'Here it is at 25.0 mL and pH 7. For a strong acid and a strong base, it is always at pH 7: the solution then holds only water and a neutral salt, sodium chloride.', show: 'g.eq', focus: 'g.eq' },
         { say: 'From the volume, find the acid’s concentration. Zero point one zero zero times zero point zero two five zero is zero point zero zero two five zero moles of base, and so of acid.', show: ['m.0', 'm.1'], focus: 'm.1' },
         { say: 'Over zero point zero two five zero zero litres, that is zero point one zero zero moles per litre, as expected.', show: 'm.2', focus: 'm.2' },
+      ],
+    },
+    {
+      chapter: 'Why the pH jumps',
+      layout: 'center',
+      main: [titrating('tj', { seed: 29 })],
+      lines: [
+        { say: 'Why is the curve flat for so long, and then so steep? Watch the hydrogen ions in the flask as the base goes in. At first there are plenty of them. Each drop of base removes only a few, so the p H rises slowly. Near the end, the same drop removes most of the few that are left.', caption: 'Why is the curve flat for so long, and then so steep? Watch the hydrogen ions in the flask as the base goes in. At first there are plenty of them. Each drop of base removes only a few, so the pH rises slowly. Near the end, the same drop removes most of the few that are left.', show: ['tj', 'tj.labels', 'tj.key', 'tj.tally'], play: 'tj.titrate' },
+        { say: 'So the p H climbs quickly. Once the hydrogen ions were all gone, one more drop left hydroxide ions over, the solution turned basic, and the indicator changed colour.', caption: 'So the pH climbs quickly. Once the hydrogen ions were all gone, one more drop left hydroxide ions over, the solution turned basic, and the indicator changed colour.', focus: 'tj.f' },
       ],
     },
     {

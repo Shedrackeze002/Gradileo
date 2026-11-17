@@ -1,11 +1,12 @@
 import type { Explainer } from '@/video/script.ts';
+import { neutralizing } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-5-4-b',
   lessonId: 'c10-5-4',
   title: 'Neutralization, Part 2: Naming Salts',
   thumbnailTitle: 'Naming Salts',
-  thumbnail: false,
+  thumbnail: 'nz',
   summary:
     'A salt’s name has two parts: the metal from the base, then a word from the acid. Hydrochloric acid makes chlorides, sulfuric acid sulfates and nitric acid nitrates, and metal oxides react just like metal hydroxides: sulfuric acid + magnesium oxide → magnesium sulfate + water. The second word is not an element’s name: sodium chloride, not sodium chlorine.',
   scenes: [
@@ -43,6 +44,18 @@ const video: Explainer = {
         { say: 'Hydrochloric acid makes chlorides, such as sodium chloride.', show: 't.0', focus: 't.0' },
         { say: 'Sulfuric acid makes sulfates, such as magnesium sulfate.', show: 't.1', focus: 't.1' },
         { say: 'And nitric acid makes nitrates, such as potassium nitrate.', show: 't.2', focus: 't.2' },
+      ],
+    },
+    {
+      chapter: 'Where the two parts come from',
+      layout: 'split',
+      leftWidth: 500,
+      left: [neutralizing('nz', 400)],
+      right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\text{sodium hydroxide} \\to \\textbf{sodium}', '\\text{hydrochloric acid} \\to \\textbf{chloride}', '\\Rightarrow\\ \\text{sodium chloride}'] }],
+      lines: [
+        { say: 'You can see both parts of a name in the reaction itself. Here hydrochloric acid and sodium hydroxide react: their hydrogen ions and hydroxide ions join as water.', show: ['nz', 'nz.labels', 'nz.tally'], play: 'nz.go' },
+        { say: 'Left behind are the sodium ions, in purple, which came from the base, and the chloride ions, in green, which came from the acid.', show: ['m.0', 'm.1'], focus: 'nz.b' },
+        { say: 'Together they make the salt, and its name puts them in that order: sodium chloride.', show: 'm.2', focus: 'm.2' },
       ],
     },
     {

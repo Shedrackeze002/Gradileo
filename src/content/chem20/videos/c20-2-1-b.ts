@@ -1,36 +1,39 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { collision, gasBox, join, zigzag } from './lib/c20-2a-figures.ts';
+import type { Explainer, MotionBody, MotionEl, ParticlesEl } from '@/video/script.ts';
+import { collision } from '@/video/motion.ts';
 
-// A fast particle hits a slow one of the same mass, and they swap speeds.
-const bump = figure('c', [collision()], 380);
+// The collision is worked out from the forces the two particles put on each other while they
+// touch (src/video/motion.ts); the gas is simulated (src/video/particles.ts).
 
-// One particle's path through a gas: short straight lines, a new direction at every collision.
-const path = figure(
-  'z',
-  [
-    join([
-      gasBox({ w: 7, h: 6, count: 0, speed: 0 }),
-      zigzag('zz', [
-        [0.8, 0.9],
-        [2.6, 2.1],
-        [1.6, 3.6],
-        [3.4, 4.6],
-        [4.6, 3.0],
-        [5.4, 4.9],
-        [6.2, 2.0],
-      ]),
-    ]),
-  ],
-  440,
-);
+const fast: MotionBody = { id: 'a', shape: 'ball', mass: 1, x: 0.8, v: 3, label: 'A', tone: 'adj' };
+const slow: MotionBody = { id: 'b', shape: 'ball', mass: 1, x: 2.6, v: 1, label: 'B', tone: 'opp' };
+
+/** A fast particle catches a slow one of the same mass: they swap speeds, and keep all their energy. */
+const bump: MotionEl = {
+  kind: 'motion',
+  id: 'c',
+  span: [0, 8],
+  bodies: [fast, slow],
+  velocityScale: 34,
+  poster: 'hit',
+  clips: { hit: { reset: true, phases: collision(fast, slow, { type: 'bounce', after: 1.1, hidden: true }) } },
+  height: 300,
+};
+
+/** A gas, with one particle followed in yellow: a zigzag of short straight lines. */
+const path: ParticlesEl = {
+  kind: 'particles',
+  id: 'z',
+  boxes: [{ id: 'b', state: 'gas', width: 10, height: 9, temp: 1.6, kinds: [{ n: 30, bond: 0.15, heavy: 0 }], follow: 5 }],
+  clips: {},
+  height: 440,
+};
 
 const video: Explainer = {
   id: 'c20-2-1-b',
   lessonId: 'c20-2-1',
   title: 'Gases and the Kinetic Molecular Theory, Part 2: Inside the Theory',
   thumbnailTitle: 'Inside the Theory',
-  thumbnail: 'c',
+  thumbnail: 'z',
   summary:
     'Kinetic energy is the energy of motion, ½mv². Collisions in a gas are elastic: no kinetic energy is lost overall, so the particles keep moving. An ideal gas follows the theory exactly, and a real gas is mostly empty space, with fast particles that zigzag between collisions.',
   scenes: [
@@ -58,13 +61,24 @@ const video: Explainer = {
     },
     {
       chapter: 'Elastic collisions',
-      layout: 'split',
-      leftWidth: 620,
-      left: [bump],
-      right: [{ kind: 'callout', id: 'def', tone: 'definition', title: 'Elastic collision', md: 'In an **elastic collision**, no kinetic energy is lost overall. One particle may speed up and the other slow down, but their **total** kinetic energy stays the same.' }],
+      layout: 'center',
+      main: [
+        bump,
+        {
+          kind: 'math',
+          id: 'ke',
+          size: 'md',
+          lines: [
+            '\\text{before: } \\tfrac{1}{2}(1)(3^2) + \\tfrac{1}{2}(1)(1^2) = 4.5 + 0.5 = 5\\ \\text{J}',
+            '\\text{after: } \\tfrac{1}{2}(1)(1^2) + \\tfrac{1}{2}(1)(3^2) = 0.5 + 4.5 = 5\\ \\text{J}',
+          ],
+        },
+        { kind: 'callout', id: 'def', tone: 'definition', title: 'Elastic collision', md: 'No kinetic energy is lost overall: one particle may speed up and the other slow down, but their **total** stays the same.' },
+      ],
       lines: [
         { say: 'In an elastic collision, no kinetic energy is lost overall.', show: 'def' },
-        { say: 'Here a fast particle hits a slow one. Afterwards, the first has slowed down and the second has sped up. But their total kinetic energy is the same after the collision as before.', show: ['c.before', 'c.after'] },
+        { say: 'Here a fast particle, at three metres per second, catches a slow one, at one metre per second. Both have a mass of one kilogram. Watch them collide.', show: ['c', 'c.velocity'], play: 'c.hit', playDelay: 0.8 },
+        { say: 'Afterwards, the first has slowed down and the second has sped up: they have swapped speeds. Their total kinetic energy is five joules before the collision, and five joules after.', show: ['ke', 'ke.0', 'ke.1'] },
         { say: 'The theory treats every collision in a gas, between particles or with the walls, as elastic. So, unlike the rubber ball, the particles never run down. They keep moving.' },
       ],
     },
@@ -95,11 +109,11 @@ const video: Explainer = {
         { kind: 'text', id: 'fast', size: 'md', md: 'In air at room temperature, molecules move at **hundreds of metres per second**, and collide **billions of times a second**.' },
       ],
       lines: [
-        { say: 'The second idea says that a gas is mostly empty space. About eighteen grams of liquid water fills about eighteen millilitres.', show: ['t', 't.0'] },
+        { say: 'The second idea says that a gas is mostly empty space. About eighteen grams of liquid water fills about eighteen millilitres.', show: ['z', 't', 't.0'] },
         { say: 'Boiled to steam at one hundred degrees Celsius and normal air pressure, the same molecules fill about thirty litres: well over a thousand times as much space.', show: 't.1' },
         { say: 'The molecules have not grown. The gaps between them have.' },
         { say: 'The particles are fast, too. At room temperature, the molecules in air move at hundreds of metres per second.', show: 'fast' },
-        { say: 'But each one collides with others billions of times a second, so its path is a zigzag of very short straight lines.', show: ['z.box', 'z.zz', 'z.zz-others'], focus: 'z.zz' },
+        { say: 'But each one collides with others billions of times a second, so its path is a zigzag of very short straight lines.', show: 'z.trail', focus: 'z.trail' },
       ],
     },
     {

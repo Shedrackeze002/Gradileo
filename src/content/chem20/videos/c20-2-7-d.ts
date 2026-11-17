@@ -1,28 +1,20 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { container, frame, tag } from './lib/c20-2b-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// Where the particles sit in a gas at low pressure, at high pressure, and at low temperature.
-const CLUMPS: [number, number][] = [
-  [0.9, 0.7], [1.45, 0.75], [1.15, 1.25],
-  [3.0, 1.0], [3.5, 1.35],
-  [2.2, 2.9], [2.75, 3.05], [2.4, 3.5],
-  [0.8, 3.4], [1.2, 3.85],
-  [3.6, 3.7],
-];
-const conditions = figure(
-  'c',
-  [
-    container({ name: 'low', at: [0, 0], w: 4.4, h: 4.4, count: 5, seed: 21 }),
-    tag('low-label', [2.2, -0.3], '\\text{low pressure}', { place: 'below', group: 'low-box' }),
-    container({ name: 'high', at: [6.4, 0], w: 4.4, h: 4.4, count: 24, seed: 22 }),
-    tag('high-label', [8.6, -0.3], '\\text{high pressure}', { place: 'below', group: 'high-box' }),
-    container({ name: 'cold', at: [12.8, 0], w: 4.4, h: 4.4, count: CLUMPS.length, spots: CLUMPS, seed: 23 }),
-    tag('cold-label', [15.0, -0.3], '\\text{low temperature}', { place: 'below', group: 'cold-box' }),
-    frame('room', [0, -1.1], [17.2, -1.1]),
+/**
+ * A real gas (simulated, src/video/particles.ts, whose particles do take up room and attract one
+ * another) at low pressure and high temperature, at high pressure, and cooled until it condenses.
+ */
+const conditions: ParticlesEl = {
+  kind: 'particles',
+  id: 'c',
+  boxes: [
+    { id: 'low', state: 'gas', width: 8, height: 8, temp: 2.4, kinds: [{ n: 5, heavy: 0 }], label: 'low pressure, hot' },
+    { id: 'high', state: 'gas', width: 8, height: 8, temp: 1.6, kinds: [{ n: 30, heavy: 0 }], label: 'high pressure' },
+    { id: 'cold', state: 'gas', width: 8, height: 8, temp: 1.6, kinds: [{ n: 12 }], label: 'cooled' },
   ],
-  380,
-);
+  clips: { cool: { phases: [{ dur: 7, heat: { cold: 0.25 } }] } },
+  height: 360,
+};
 
 const video: Explainer = {
   id: 'c20-2-7-d',
@@ -86,9 +78,9 @@ const video: Explainer = {
         { kind: 'callout', id: 'key', tone: 'key', title: 'Most like an ideal gas', md: 'Real gases behave most like an ideal gas at **high temperature and low pressure**. Cool a real gas enough, or squeeze it hard enough, and the attractions win: it **condenses** to a liquid.' },
       ],
       lines: [
-        { say: 'So real gases behave most like an ideal gas at high temperature and low pressure: particles far apart and moving fast.', show: ['c.low-box', 'c.low-p', 'key'], focus: 'c.low-p' },
-        { say: 'At high pressure, their own volume matters. At low temperature, attractions pull them together.', show: ['c.high-box', 'c.high-p', 'c.cold-box', 'c.cold-p'], focus: ['c.high-p', 'c.cold-p'] },
-        { say: 'Cool a real gas enough, or squeeze it hard enough, and the attractions win: it condenses to a liquid. An ideal gas would never condense.', focus: 'c' },
+        { say: 'So real gases behave most like an ideal gas at high temperature and low pressure: particles far apart and moving fast.', show: ['c', 'c.labels', 'key'], focus: 'c.low' },
+        { say: 'At high pressure, their own volume matters: the particles fill a noticeable part of the box. At low temperature, attractions pull them together.', focus: 'c.high' },
+        { say: 'Cool a real gas enough, or squeeze it hard enough, and the attractions win: it condenses to a liquid. An ideal gas would never condense.', play: 'c.cool', focus: 'c.cold' },
       ],
     },
     {

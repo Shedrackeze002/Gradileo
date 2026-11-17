@@ -1,18 +1,11 @@
 import type { Explainer } from '@/video/script.ts';
 import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
-import { balls, shared, shellAtom } from './lib/c10-3-figures.ts';
+import { balls } from './lib/c10-3-figures.ts';
+import { twoShare } from './lib/c10-atoms.ts';
 
-// Two chlorine atoms share one pair of electrons: a dot from one and a cross from the other.
-const chlorine = figure(
-  'cl2',
-  [
-    shellAtom({ name: 'a', at: [0, 0], symbol: 'Cl', spots: [[90, 'oo'], [180, 'oo'], [270, 'oo']] }),
-    shellAtom({ name: 'b', at: [1.7, 0], symbol: 'Cl', spots: [[90, 'xx'], [0, 'xx'], [270, 'xx']] }),
-    shared({ a: [0, 0], b: [1.7, 0], pairs: ['ox'] }),
-  ],
-  400,
-);
+// Two chlorine atoms slide together and share one pair of electrons, one from each atom.
+const chlorine = twoShare('cl2', { symbol: 'Cl', protons: 17, name: 'chlorine', tone: 'good' }, { symbol: 'Cl', protons: 17, name: 'chlorine', tone: 'adj' }, 3.7, 1, 400);
 
 // The first 20 elements: metals (orange) on the left, non-metals (blue) on the right.
 const table = figure('pt', [
@@ -71,8 +64,9 @@ const video: Explainer = {
       left: [chlorine],
       right: [{ kind: 'callout', id: 'def', tone: 'definition', title: 'Covalent bond', md: 'A pair of electrons shared between two atoms. Each atom counts the shared electrons as its own, which helps both fill their outer shells.' }],
       lines: [
-        { say: 'Non-metal atoms all hold on to their electrons tightly, so none of them can pull an electron right off another. Instead, they share.', show: ['cl2.a-atom', 'cl2.b-atom'] },
-        { say: 'A covalent bond is a pair of electrons shared between two atoms. Each atom counts the shared electrons as its own, which helps both fill their outer shells.', show: ['def', 'cl2.bond'], focus: 'cl2.bond' },
+        { say: 'Non-metal atoms all hold on to their electrons tightly, so none of them can pull an electron right off another. Each chlorine atom here has seven outer electrons, and needs one more.', show: ['cl2', 'cl2.labels', 'cl2.arrangement'] },
+        { say: 'So instead, they share. The atoms move together until their outer shells overlap, and each puts one electron into the overlap.', play: 'cl2.share' },
+        { say: 'A covalent bond is a pair of electrons shared between two atoms. Each atom counts the shared electrons as its own, which helps both fill their outer shells.', show: 'def' },
         { say: 'Here, two chlorine atoms share one pair, so each one counts eight outer electrons. Covalent bonds can join atoms of the same element: chlorine gas is made of these molecules.' },
       ],
     },

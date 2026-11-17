@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c20-4b-figures.ts';
+import { titrating } from './lib/c20-particles.ts';
 
 // Hydrochloric acid titrated with 0.150 mol/L sodium hydroxide: from the volume of base to the
 // amount of acid (then c = n/V gives its concentration).
@@ -56,6 +57,16 @@ const video: Explainer = {
         { say: 'Zero point zero two one four zero litres, times zero point one five zero, is zero point zero zero three two one zero moles of sodium hydroxide.', show: ['w.a1', 'w.n1', 'w.n1-value'], focus: 'w.a1' },
         { say: 'The ratio is one to one, so the same amount of acid was in the sample.', show: ['w.a2', 'w.n2', 'w.n2-value'], focus: 'w.a2' },
         { say: 'Divide by the sample’s volume, zero point zero two five zero zero litres: zero point one two eight moles per litre.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'One to one',
+      layout: 'center',
+      main: [titrating('tm', { seed: 29 })],
+      lines: [
+        { say: 'Why does the mole ratio matter? Watch the flask. Six hydrogen ions from the hydrochloric acid wait for the sodium hydroxide. Each hydroxide ion takes exactly one hydrogen ion and makes one water molecule, so the acid and the base react one to one.', show: ['tm', 'tm.labels', 'tm.key', 'tm.tally'], play: 'tm.titrate' },
+        { say: 'So at the equivalence point, the moles of base added equal the moles of acid in the flask. One drop more was left over, and the indicator turned pink.', focus: 'tm.f' },
+        { say: 'An acid with two hydrogens to give, such as sulfuric acid, would need twice as much base.' },
       ],
     },
     {

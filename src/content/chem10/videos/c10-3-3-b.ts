@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { shared, shellAtom, tag } from './lib/c10-3-figures.ts';
+import { shared, shellAtom } from './lib/c10-3-figures.ts';
+import { hydride, twoShare, waterShare } from './lib/c10-atoms.ts';
 
 // Hydrogen, H₂: two shells overlap, with one dot and one cross shared.
 const hydrogen = figure(
@@ -13,46 +14,14 @@ const hydrogen = figure(
   400,
 );
 
-// Hydrogen chloride, HCl: chlorine's seven dots and hydrogen's one cross; one shared pair.
-const hcl = figure(
-  'hcl',
-  [
-    shellAtom({ name: 'cl', at: [0, 0], symbol: 'Cl', spots: [[90, 'oo'], [180, 'oo'], [270, 'oo']] }),
-    shellAtom({ name: 'h', at: [1.7, 0], symbol: 'H' }),
-    shared({ a: [0, 0], b: [1.7, 0], pairs: ['ox'] }),
-  ],
-  400,
-);
+// Hydrogen chloride, HCl: the atoms slide together and share one pair, one electron from each.
+const hcl = twoShare('hcl', { symbol: 'Cl', protons: 17, name: 'chlorine', tone: 'good' }, { symbol: 'H', protons: 1, name: 'hydrogen', tone: 'adj' }, 2.8, 1, 380);
 
-// Water, H₂O: oxygen shares one pair with each hydrogen atom. The molecule is bent (the
-// hydrogen atoms about 104.5° apart), with oxygen's two lone pairs on the other side.
-const water = figure(
-  'h2o',
-  [
-    shellAtom({ name: 'ha', at: [-1.35, -1.05], symbol: 'H' }),
-    shellAtom({ name: 'o', at: [0, 0], symbol: 'O', spots: [[45, 'oo'], [135, 'oo']] }),
-    shellAtom({ name: 'hb', at: [1.35, -1.05], symbol: 'H' }),
-    shared({ name: 'left', a: [0, 0], b: [-1.35, -1.05], pairs: ['ox'] }),
-    shared({ name: 'right', a: [0, 0], b: [1.35, -1.05], pairs: ['ox'] }),
-  ],
-  380,
-);
+// Water, H2O: oxygen shares one pair with each hydrogen atom; the molecule is bent.
+const water = waterShare('h2o', 360);
 
-// Methane, CH₄: carbon shares one pair with each of four hydrogen atoms.
-const methane = figure(
-  'ch4',
-  [
-    shellAtom({ name: 'c', at: [0, 0], symbol: 'C' }),
-    ...([
-      ['h1', [0, 1.8]],
-      ['h2', [1.8, 0]],
-      ['h3', [0, -1.8]],
-      ['h4', [-1.8, 0]],
-    ] as [string, [number, number]][]).flatMap(([id, at]) => [shellAtom({ name: id, at, symbol: 'H' }), shared({ name: `${id}b`, a: [0, 0], b: at, pairs: ['ox'] })]),
-    tag('name', [0, -3.7], '\\ce{CH4}\\text{: four single bonds}'),
-  ],
-  500,
-);
+// Methane, CH4: carbon shares one pair with each of four hydrogen atoms.
+const methane = hydride('ch4', { symbol: 'C', protons: 6, name: 'carbon', tone: 'brand' }, 4, 440);
 
 const video: Explainer = {
   id: 'c10-3-3-b',
@@ -91,9 +60,9 @@ const video: Explainer = {
       left: [hcl],
       right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\ce{Cl}\\text{: 7 outer electrons, needs 1}', '\\ce{H}\\text{: 1 electron, needs 1}', '\\text{one shared pair}', '\\ce{Cl}\\text{ counts 8, } \\ce{H}\\text{ counts 2}'] }],
       lines: [
-        { say: 'In hydrogen chloride, chlorine has seven outer electrons and needs one more. Hydrogen needs one more as well.', show: ['hcl.cl-atom', 'hcl.h-atom', 'm.0', 'm.1'], focus: ['m.0', 'm.1'] },
-        { say: 'The overlap holds one dot from chlorine and one cross from hydrogen: one shared pair.', show: ['hcl.bond', 'm.2'], focus: ['hcl.bond', 'm.2'] },
-        { say: 'Now the circle of chlorine holds eight electrons, and the circle of hydrogen holds two.', show: 'm.3', focus: 'm.3' },
+        { say: 'In hydrogen chloride, chlorine has seven outer electrons and needs one more. Hydrogen needs one more as well.', show: ['hcl', 'hcl.labels', 'm.0', 'm.1'], focus: ['m.0', 'm.1'] },
+        { say: 'Watch them meet. Their outer shells overlap, and each puts one electron into the overlap: one shared pair. In a dot-and-cross diagram, that is one dot from chlorine and one cross from hydrogen.', play: 'hcl.share', show: 'm.2', focus: 'm.2' },
+        { say: 'Now the outer shell of chlorine holds eight electrons, and the shell of hydrogen holds two.', show: 'm.3', focus: 'm.3' },
       ],
     },
     {
@@ -101,9 +70,9 @@ const video: Explainer = {
       layout: 'center',
       main: [water, { kind: 'math', id: 'm', size: 'md', lines: ['\\ce{O}\\text{: 6 outer electrons, needs 2} \\;\\Rightarrow\\; \\text{two single bonds}'] }],
       lines: [
-        { say: 'In water, oxygen has six outer electrons and needs two more.', show: 'h2o.o-atom' },
-        { say: 'So it overlaps with two hydrogen atoms, sharing one pair with each: two single bonds.', show: ['h2o.ha-atom', 'h2o.hb-atom', 'h2o.left-bond', 'h2o.right-bond', 'm'], focus: ['h2o.left-bond', 'h2o.right-bond'] },
-        { say: 'Count the electrons in the circle of oxygen: four dots of its own, and two shared pairs. That is eight, a full outer shell.', focus: 'h2o.o-atom' },
+        { say: 'In water, oxygen has six outer electrons and needs two more.', show: ['h2o', 'h2o.labels', 'h2o.arrangement'] },
+        { say: 'So it overlaps with two hydrogen atoms, sharing one pair with each: two single bonds.', play: 'h2o.share', show: 'm' },
+        { say: 'Count the electrons in the outer shell of oxygen: four of its own, and two shared pairs. That is eight, a full outer shell. The molecule is bent, with oxygen’s other electrons on the far side.', focus: 'h2o.o' },
       ],
     },
     {
@@ -129,7 +98,7 @@ const video: Explainer = {
         { say: 'The number of bonds an atom usually forms is the number of electrons it needs to fill its outer shell.', show: 'ch4' },
         { say: 'Hydrogen needs one, so it forms one bond. Oxygen needs two, so it forms two. Chlorine needs one.', show: ['t.0', 't.1', 't.2'], focus: ['t.0', 't.1', 't.2'] },
         { say: 'Nitrogen has five outer electrons and needs three, so it forms three bonds, as in ammonia, N H three.', caption: 'Nitrogen has five outer electrons and needs three, so it forms three bonds, as in ammonia, NH₃.', show: 't.3', focus: 't.3' },
-        { say: 'And carbon has four and needs four, so it forms four bonds, as in methane, C H four.', caption: 'And carbon has four and needs four, so it forms four bonds, as in methane, CH₄.', show: 't.4', focus: ['t.4', 'ch4.h1b-bond', 'ch4.h2b-bond', 'ch4.h3b-bond', 'ch4.h4b-bond'] },
+        { say: 'And carbon has four and needs four, so it forms four bonds, as in methane, C H four.', caption: 'And carbon has four and needs four, so it forms four bonds, as in methane, CH₄.', show: 't.4', focus: ['t.4', 'ch4.c'], play: 'ch4.share' },
       ],
     },
     {

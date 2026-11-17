@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { link, tag, water } from './lib/c20-1b-figures.ts';
+import { sameTemperature } from './lib/c20-particles.ts';
 
 // A water molecule (centre, with its two lone pairs) and four neighbours: two whose hydrogen atoms
 // point at its lone pairs, and two whose oxygen atoms take its hydrogen atoms. Each hydrogen bond
@@ -50,6 +51,20 @@ const video: Explainer = {
         { say: 'Something special happens when hydrogen is bonded directly to nitrogen, oxygen or fluorine. These atoms are so electronegative that they pull the shared electrons well away from the small hydrogen atom, leaving it strongly delta plus.', caption: 'Something special happens when hydrogen is bonded directly to nitrogen, oxygen or fluorine. These atoms are so electronegative that they pull the shared electrons well away from the small hydrogen atom, leaving it strongly δ+.', show: ['m.w0-mol', 'm.w0-lp1', 'm.w0-lp2', 'm.plus', 'en'], focus: 'm.plus' },
         { say: 'That hydrogen is strongly attracted to a lone pair on a nitrogen, oxygen or fluorine atom of a neighbouring molecule. This attraction is called a hydrogen bond.', show: ['m.w4-mol', 'm.minus', 'm.hb4', 'def'], focus: 'm.hb4' },
         { say: 'For molecules of similar size, hydrogen bonds are the strongest of the three intermolecular forces.' },
+      ],
+    },
+    {
+      chapter: 'Water and hydrogen sulfide',
+      layout: 'center',
+      main: [
+        sameTemperature('ws', 0.55, [
+          { id: 's', label: 'hydrogen sulfide, H₂S', bond: 0.5, tone: 'theta' },
+          { id: 'w', label: 'water, H₂O', bond: 1.3, tone: 'adj' },
+        ], 400),
+      ],
+      lines: [
+        { say: 'See what hydrogen bonds do. Here are hydrogen sulfide and water at room temperature, each ball standing for a molecule. A hydrogen sulfide molecule even has more electrons than a water molecule.', show: ['ws', 'ws.labels', 'ws.thermo'] },
+        { say: 'Yet hydrogen sulfide is a gas: its molecules fly freely apart. Water molecules are held by hydrogen bonds as well, so at the same temperature they cling together as a liquid.', focus: 'ws.w' },
       ],
     },
     {

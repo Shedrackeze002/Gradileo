@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, ring, structure, tag } from './lib/c30-3b-figures.ts';
+import { chlorineSwaps, waterLeaves } from './lib/c30-molecules.ts';
 
 // Methane and chlorine in ultraviolet light: a chlorine atom (green) takes the place of a hydrogen
 // atom (orange), which leaves with the other chlorine atom as hydrogen chloride.
@@ -76,6 +77,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Substitution, up close',
+      layout: 'center',
+      main: [chlorineSwaps('cs')],
+      lines: [
+        { say: 'Here is methane and chlorine up close, the reaction that needs ultraviolet light. Watch which bonds break, in red, and which new bonds form, in green, as a chlorine atom swaps for a hydrogen atom.', show: 'cs', play: 'cs.go' },
+        { say: 'One chlorine atom pulls a hydrogen atom away, and they leave together as hydrogen chloride. The other chlorine atom takes that hydrogen atom’s place on the carbon, giving chloromethane. So two reactants make two products.', focus: ['cs.Clb', 'cs.H4'] },
+      ],
+    },
+    {
       chapter: 'Haloalkanes and benzene',
       layout: 'center',
       main: [
@@ -103,6 +113,15 @@ const video: Explainer = {
         { say: 'Alcohols lose water when they are heated with concentrated sulfuric acid, a reaction called dehydration. Here is ethanol.', show: 'd.al' },
         { say: 'The O H group, and a hydrogen atom from the next carbon, leave together as water.', caption: 'The OH group, and a hydrogen atom from the next carbon, leave together as water.', show: 'd.leave', focus: ['d.leave', 'd.al-H2', 'd.al-O', 'd.al-H4'] },
         { say: 'Each carbon has lost a bond, so they form a second bond to each other. Ethanol gives ethene and water.', show: ['d.arrow', 'd.en', 'd.p', 'd.w'], focus: ['d.en-C1-C2', 'd.en-C1-C2-2', 'd.w'] },
+      ],
+    },
+    {
+      chapter: 'Elimination, up close',
+      layout: 'center',
+      main: [waterLeaves('wl')],
+      lines: [
+        { say: 'Here is the dehydration of ethanol up close. Watch the O H group at the bottom, and the hydrogen atom below the next carbon.', caption: 'Here is the dehydration of ethanol up close. Watch the OH group at the bottom, and the hydrogen atom below the next carbon.', show: 'wl', play: 'wl.go' },
+        { say: 'They leave together as a water molecule, and the two carbons form a second bond to each other. So one reactant, ethanol, has given two products, ethene and water.', focus: ['wl.C1', 'wl.C2'] },
       ],
     },
     {

@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { particles } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { link, tag } from './lib/c30-4a-figures.ts';
+import { n2o4Stress } from './lib/c30-particles.ts';
 
 // N₂O₄ ⇌ 2NO₂ squeezed into half the space: 3 N₂O₄ and 6 NO₂ before; the same molecules just after
 // the squeeze (a box of half the area); then 4 N₂O₄ and 4 NO₂ after the shift to the left.
@@ -74,6 +75,15 @@ const video: Explainer = {
         { say: 'Dye-nitrogen tetroxide and brown nitrogen dioxide are at equilibrium in a syringe. The plunger is pushed in, halving the volume.', caption: 'Dinitrogen tetroxide and brown nitrogen dioxide are at equilibrium in a syringe. The plunger is pushed in, halving the volume.', show: ['eq', 's.a-box', 's.a-n2o4', 's.a-no2', 's.la'] },
         { say: 'At first the mixture looks darker, because the same gas is squeezed into half the space.', show: ['s.arr1', 's.b-box', 's.b-n2o4', 's.b-no2', 's.lb'], focus: 's.b-no2' },
         { say: 'There is one mole of gas on the left and two on the right, so the smaller volume favours the left. Some brown nitrogen dioxide pairs up into colourless dye-nitrogen tetroxide, and the colour fades a little.', caption: 'There is one mole of gas on the left and two on the right, so the smaller volume favours the left. Some brown nitrogen dioxide pairs up into colourless dinitrogen tetroxide, and the colour fades a little.', show: ['s.arr2', 's.c-box', 's.c-n2o4', 's.c-no2', 's.lc'], focus: 's.c-n2o4' },
+      ],
+    },
+    {
+      chapter: 'Squeezing, up close',
+      layout: 'center',
+      main: [n2o4Stress('sq', 'squeeze', { seed: 3 })],
+      lines: [
+        { say: 'Here is the syringe up close, at equilibrium. Blue pairs are dye-nitrogen tetroxide, and orange particles are nitrogen dioxide. Watch the count of nitrogen dioxide as the plunger squeezes the gas into half the space.', caption: 'Here is the syringe up close, at equilibrium. Blue pairs are dinitrogen tetroxide, and orange particles are nitrogen dioxide. Watch the count of nitrogen dioxide as the plunger squeezes the gas into half the space.', show: ['sq', 'sq.labels', 'sq.key', 'sq.tally'], play: 'sq.stress' },
+        { say: 'Crowded together, nitrogen dioxide molecules meet more often and pair up, while a pair still splits no faster than before. So the count falls: the system shifts left, towards fewer gas molecules.', focus: 'sq.tally' },
       ],
     },
     {

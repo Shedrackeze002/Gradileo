@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { speedSpread } from './lib/cx-particles.ts';
 
 const video: Explainer = {
   id: 'cx-7-4',
@@ -37,6 +38,16 @@ const video: Explainer = {
       lines: [
         { say: 'The activation energy is the minimum energy colliding particles need to react.', show: 'def' },
         { say: 'Only the molecules to the right of it on the curve can react. Most collisions fail, because most molecules have less energy than that.' },
+      ],
+    },
+    {
+      chapter: 'The spread, up close',
+      layout: 'center',
+      main: [speedSpread('ms')],
+      lines: [
+        { say: 'Here are real gas molecules, moving at two temperatures. Each one has its own speed, and every collision changes it, so the speeds are always spread out.', show: ['ms', 'ms.labels', 'ms.thermo'] },
+        { say: 'Under each box, the bars count how many molecules are moving at each speed right now, and the faster a molecule moves, the more energy it has. Very few are almost still, most are near the middle, and a few are very fast: the same shape as the curve.', show: 'ms.spread' },
+        { say: 'The dashed line marks the speed a molecule needs for its collision to have the activation energy. In the cooler gas, hardly any get past it. In the hotter gas, the peak moves right and spreads out, and many more molecules are beyond the line.' },
       ],
     },
     {

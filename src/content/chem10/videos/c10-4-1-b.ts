@@ -1,11 +1,12 @@
 import type { Explainer } from '@/video/script.ts';
+import { marbleInAcid } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-4-1-b',
   lessonId: 'c10-4-1',
   title: 'Word Equations and Conservation of Mass, Part 2: Identifying the Products',
   thumbnailTitle: 'Identifying the Products',
-  thumbnail: false,
+  thumbnail: 'mc',
   summary:
     'Simple tests identify a product that a description does not name: hydrogen burns with a squeaky pop, oxygen relights a glowing splint, carbon dioxide turns limewater milky, and water turns white anhydrous copper(II) sulfate blue. Name the product the test shows, then write the word equation.',
   scenes: [
@@ -43,14 +44,16 @@ const video: Explainer = {
     },
     {
       chapter: 'Marble chips in acid',
-      layout: 'center',
-      main: [
+      layout: 'split',
+      leftWidth: 440,
+      left: [marbleInAcid('mc', 420)],
+      right: [
         { kind: 'text', id: 'q', size: 'md', md: 'Marble chips, which are calcium carbonate, fizz in dilute hydrochloric acid, making calcium chloride and water. The gas given off turns limewater milky. Write the word equation.' },
         { kind: 'bullets', id: 's', items: ['A gas that turns limewater milky is **carbon dioxide**.', '**Reactants:** calcium carbonate and hydrochloric acid. **Products:** calcium chloride, water and carbon dioxide.'] },
         { kind: 'text', id: 'a', size: 'md', md: '**calcium carbonate + hydrochloric acid → calcium chloride + water + carbon dioxide**' },
       ],
       lines: [
-        { say: 'Here is an example. Marble chips, which are calcium carbonate, fizz in dilute hydrochloric acid, making calcium chloride and water. The gas given off turns limewater milky.', show: 'q' },
+        { say: 'Here is an example. Marble chips, which are calcium carbonate, fizz in dilute hydrochloric acid, making calcium chloride and water. The gas given off turns limewater milky.', show: ['q', 'mc', 'mc.labels'], play: 'mc.fizz' },
         { say: 'First, name the gas. A gas that turns limewater milky is carbon dioxide.', show: 's.0' },
         { say: 'Now sort the substances. Calcium carbonate and hydrochloric acid are used up, so they are the reactants. Calcium chloride, water and carbon dioxide are new, so they are the products.', show: 's.1' },
         { say: 'So calcium carbonate plus hydrochloric acid gives calcium chloride plus water plus carbon dioxide. A reaction can have three products, each separated by a plus sign.', show: 'a' },

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { titrationCurve } from './lib/c20-4b-figures.ts';
+import { titrating } from './lib/c20-particles.ts';
 
 const eqLabel = '\\begin{gathered}\\text{equivalence}\\\\ \\text{point}\\end{gathered}';
 
@@ -64,6 +65,15 @@ const video: Explainer = {
         { say: 'Then comes a gentle buffer region. Between about five and twenty millilitres, the mixture of acetic acid and acetate ions resists changes in p H.', caption: 'Then comes a gentle buffer region. Between about 5 and 20 mL, the mixture of acetic acid and acetate ions resists changes in pH.', show: ['b.1', 'g.buffer'], focus: 'g.buffer' },
         { say: 'The steep part is shorter, and the equivalence point is at about p H eight point seven, above seven. The solution then holds sodium acetate, and the acetate ions make it slightly basic.', caption: 'The steep part is shorter, and the equivalence point is at about pH 8.7, above 7. The solution then holds sodium acetate, and the acetate ions make it slightly basic.', show: ['b.2', 'g.curve-b', 'g.eq'], focus: 'g.eq' },
         { say: 'After that, the two curves are the same, because the excess sodium hydroxide decides the p H.', caption: 'After that, the two curves are the same, because the excess sodium hydroxide decides the pH.', show: ['b.3', 'g.curve-c'], focus: 'g' },
+      ],
+    },
+    {
+      chapter: 'Inside the vinegar',
+      layout: 'center',
+      main: [titrating('tw', { weak: true, seed: 17 })],
+      lines: [
+        { say: 'Inside the flask, acetic acid is mostly whole molecules, each holding on to its hydrogen. The burette adds sodium hydroxide. A hydroxide ion takes the hydrogen straight from a molecule and makes water, and what is left is an acetate ion. It takes the same amount of base as hydrochloric acid would, because each molecule still gives one hydrogen.', show: ['tw', 'tw.labels', 'tw.key', 'tw.tally'], play: 'tw.titrate' },
+        { say: 'At the equivalence point the flask holds acetate ions, which make it slightly basic. That is why the equivalence point is above p H seven. One drop more, and the indicator turned pink.', caption: 'At the equivalence point the flask holds acetate ions, which make it slightly basic. That is why the equivalence point is above pH 7. One drop more, and the indicator turned pink.', focus: 'tw.f' },
       ],
     },
     {

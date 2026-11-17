@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { hydrated, ionRows, latticeBlock, tag } from './lib/c20-3a-figures.ts';
+import { saltDissolving } from './lib/c20-particles.ts';
 
 // A corner of a sodium chloride crystal with water molecules at its surface, and a positive and a
 // negative ion that have left it, each surrounded by water molecules.
@@ -44,6 +45,18 @@ const video: Explainer = {
       lines: [
         { say: 'Solid sodium chloride does not conduct electricity, yet salt water does. Something happens to the crystal as it dissolves.', show: 'title' },
         { say: 'In this part, you will see a crystal come apart in water, and write dissociation equations that count the ions it releases.' },
+      ],
+    },
+    {
+      chapter: 'A crystal in water',
+      layout: 'split',
+      leftWidth: 560,
+      left: [saltDissolving('sx', 420)],
+      right: [{ kind: 'callout', id: 'k', tone: 'key', title: 'Dissociation', md: 'The ions in the crystal **separate** and spread through the water: sodium ions and chloride ions, one of each for every $\\ce{NaCl}$.' }],
+      lines: [
+        { say: 'Here is a crystal of sodium chloride: sodium ions in purple and chloride ions in green, packed side by side. Watch what water does to it.', show: ['sx', 'sx.labels'] },
+        { say: 'Water molecules, in blue, crowd round the crystal and tug at the ions on its surface. One by one, the ions come away and spread through the water.', play: 'sx.drop' },
+        { say: 'The ions that were held together in the solid are now separate, moving freely. This separating of ions is called dissociation.', show: 'k' },
       ],
     },
     {

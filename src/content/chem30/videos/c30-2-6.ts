@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { cell, halfCell, TONE, type HalfCell } from './lib/c30-2b-figures.ts';
+import { voltaic } from './lib/c30-cells.ts';
 
 // A strip of zinc standing in copper(II) sulfate solution: the electrons pass straight across.
 const strip = figure('h', [halfCell({ electrode: '\\text{Zn}', solution: '\\ce{CuSO4(aq)}', tone: 'adj', ion: '\\ce{Cu^2+}' })], 470);
@@ -79,6 +80,15 @@ const video: Explainer = {
         { say: 'A wire joins the electrodes, here through a voltmeter.', show: 'c.wire', focus: 'c.wire' },
         { say: 'A salt bridge joins the solutions. It is a tube of an electrolyte whose ions do not react, such as potassium nitrate, and its ions keep each solution neutral, which completes the circuit.', show: ['b.2', 'c.bridge'], focus: 'c.bridge' },
         { say: 'A porous cup does the same job: one half-cell stands in an unglazed porous pot, placed in the other, and ions pass through its pores.', show: 'b.3', focus: 'c' },
+      ],
+    },
+    {
+      chapter: 'Inside the cell, up close',
+      layout: 'center',
+      main: [voltaic('vc', { seed: 1 })],
+      lines: [
+        { say: 'Here is the zinc and copper cell up close, its two half-cells side by side. On the left, the zinc electrode stands in zinc nitrate solution. On the right, the copper electrode stands in copper two nitrate solution. A wire joins the two electrodes. Watch the zinc electrode, and watch the copper two ions near the copper electrode.', caption: 'Here is the zinc and copper cell up close, its two half-cells side by side. On the left, the zinc electrode stands in zinc nitrate solution. On the right, the copper electrode stands in copper(II) nitrate solution. A wire joins the two electrodes. Watch the zinc electrode, and watch the copper(II) ions near the copper electrode.', show: ['vc', 'vc.labels', 'vc.key', 'vc.tally'], play: 'vc.run' },
+        { say: 'Zinc atoms leave the zinc electrode as zinc ions, and their electrons travel through the wire. At the copper electrode, copper two ions take those electrons and become copper atoms on its surface. So the zinc electrode wears away, and the copper electrode grows.', caption: 'Zinc atoms leave the zinc electrode as zinc ions, and their electrons travel through the wire. At the copper electrode, copper(II) ions take those electrons and become copper atoms on its surface. So the zinc electrode wears away, and the copper electrode grows.' },
       ],
     },
     {

@@ -1,31 +1,43 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { container, frame, tag } from './lib/c20-2b-figures.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+import { ATOM } from '@/video/reactions.ts';
 
-// Equal volumes of hydrogen and carbon dioxide, each holding six molecules.
-const equal = figure(
-  'e',
-  [
-    container({ name: 'h2', at: [0, 0], w: 5, h: 5, molecule: 'H2', count: 6, seed: 5 }),
-    tag('h2-label', [2.5, -0.3], '\\text{hydrogen, } \\ce{H2}', { place: 'below', group: 'h2-box' }),
-    container({ name: 'co2', at: [7, 0], w: 5, h: 5, molecule: 'CO2', count: 6, seed: 3 }),
-    tag('co2-label', [9.5, -0.3], '\\text{carbon dioxide, } \\ce{CO2}', { place: 'below', group: 'co2-box' }),
-    frame('room', [0, -1.1], [12, -1.1]),
-  ],
-  440,
-);
+// Simulated gases (src/video/particles.ts). Atoms carry their masses (H 1, C 12, O 16), so at the
+// same temperature a carbon dioxide molecule, 22 times as heavy, moves far more slowly than a
+// hydrogen molecule. Their pull on one another is weakened, so molecules of three atoms each do
+// not stick together as a liquid would.
+const H = { ...ATOM.H, mass: 1, size: 0.7, bond: 0.05 };
+const C = { ...ATOM.C, mass: 12, bond: 0.03 };
+const O = { ...ATOM.O, mass: 16, size: 0.9, bond: 0.03 };
 
-// Twice the amount of gas in a cylinder with a piston takes up twice the volume.
-const doubled = figure(
-  'd',
-  [
-    container({ name: 'a', at: [0, 0], w: 3, h: 2.6, lid: 'piston', count: 4, seed: 2 }),
-    tag('a-label', [1.5, -0.3], '\\begin{gathered} n \\\\ V \\end{gathered}', { place: 'below' }),
-    container({ name: 'b', at: [4.6, 0], w: 3, h: 5.2, lid: 'piston', count: 8, seed: 6 }),
-    tag('b-label', [6.1, -0.3], '\\begin{gathered} 2n \\\\ 2V \\end{gathered}', { place: 'below' }),
+/** Equal volumes of hydrogen and carbon dioxide at the same temperature, six molecules each. */
+const pair = (id: string): ParticlesEl => {
+  const box = (b: Partial<ParticleBox>): ParticleBox => ({ id: 'x', state: 'gas', width: 9, height: 9, temp: 1.6, ...b });
+  return {
+    kind: 'particles',
+    id,
+    boxes: [
+      box({ id: 'h2', kinds: [H], molecules: [{ atoms: [0, 0], n: 6 }], label: 'hydrogen, H₂' }),
+      box({ id: 'co2', kinds: [C, O], molecules: [{ atoms: [0, 1, 1], n: 6 }], label: 'carbon dioxide, CO₂' }),
+    ],
+    clips: {},
+    thermometers: true,
+    height: 420,
+  };
+};
+const equal = pair('e');
+const equal2 = pair('e2');
+
+/** Twice the amount of gas, at the same temperature and pressure, takes up twice the volume. */
+const doubled: ParticlesEl = {
+  kind: 'particles',
+  id: 'd',
+  boxes: [
+    { id: 'a', state: 'gas', width: 6, height: 12, temp: 1.6, lid: 0.45, piston: true, kinds: [{ n: 6, bond: 0.15, heavy: 0 }], label: 'n, V' },
+    { id: 'b', state: 'gas', width: 6, height: 12, temp: 1.6, lid: 0.9, piston: true, kinds: [{ n: 12, bond: 0.15, heavy: 0 }], label: '2n, 2V' },
   ],
-  480,
-);
+  clips: {},
+  height: 480,
+};
 
 const video: Explainer = {
   id: 'c20-2-6',
@@ -50,14 +62,16 @@ const video: Explainer = {
       main: [equal, { kind: 'callout', id: 'idea', tone: 'key', title: "Avogadro's idea", md: '**Equal volumes** of gases, at the same temperature and pressure, contain **equal numbers of particles**, whichever gas they are.' }],
       lines: [
         { say: 'In eighteen eleven, the Italian scientist Amedeo Avogadro suggested that equal volumes of gases, at the same temperature and pressure, contain equal numbers of particles, whichever gas they are.', show: 'idea' },
-        { say: 'So a litre of hydrogen and a litre of carbon dioxide, side by side in the same room, hold the same number of molecules.', show: ['e.h2-box', 'e.h2-p', 'e.co2-box', 'e.co2-p'] },
-        { say: 'That is true even though each carbon dioxide molecule is about twenty-two times heavier than a hydrogen molecule.', focus: 'e.co2-p' },
+        { say: 'So a litre of hydrogen and a litre of carbon dioxide, side by side in the same room, hold the same number of molecules. Here, six of each, at the same temperature.', show: ['e', 'e.labels', 'e.thermo'] },
+        { say: 'That is true even though each carbon dioxide molecule is about twenty-two times heavier than a hydrogen molecule. You can see the heavy molecules lumbering about, while the light ones dart.', focus: 'e.co2' },
       ],
     },
     {
       chapter: 'Why it works',
-      layout: 'center',
-      main: [
+      layout: 'split',
+      leftWidth: 620,
+      left: [equal2],
+      right: [
         {
           kind: 'bullets',
           id: 'b',
@@ -70,9 +84,9 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'The kinetic molecular theory explains why. Gas particles are tiny compared with the spaces between them, so their own size hardly affects the volume.', show: 'b.0', focus: 'b.0' },
+        { say: 'The kinetic molecular theory explains why. Gas particles are tiny compared with the spaces between them, so their own size hardly affects the volume.', show: ['b.0', 'e2', 'e2.labels'], focus: 'b.0' },
         { say: 'At the same temperature, the particles of every gas have the same average kinetic energy.', show: 'b.1', focus: 'b.1' },
-        { say: 'Heavier particles move more slowly, but they hit harder. So, on average, each particle pushes on the walls just as hard.', show: 'b.2', focus: 'b.2' },
+        { say: 'Heavier particles move more slowly, but they hit harder. So, on average, each particle pushes on the walls just as hard.', show: ['b.2', 'e2.hits'], focus: ['b.2', 'e2.hits'] },
         { say: 'The room a gas needs depends only on how many particles there are.', show: 'b.3', focus: 'b.3' },
       ],
     },
@@ -87,8 +101,8 @@ const video: Explainer = {
         { kind: 'text', id: 'u', size: 'md', md: 'The volumes must be in the same unit.' },
       ],
       lines: [
-        { say: 'The amount of gas, n, is counted in moles. Part three recaps what a mole is.', show: ['d.a-box', 'd.a-piston', 'd.a-p', 'd.a-label'] },
-        { say: 'Double the amount of gas, and at the same temperature and pressure, the volume doubles too.', show: ['d.b-box', 'd.b-piston', 'd.b-p', 'd.b-label'], focus: 'd.b-p' },
+        { say: 'The amount of gas, n, is counted in moles. Part three recaps what a mole is.', show: ['d', 'd.labels'], focus: 'd.a' },
+        { say: 'Double the amount of gas, and at the same temperature and pressure, the volume doubles too: twice the particles need twice the room to hit the walls just as often.', show: 'd.hits', focus: 'd.b' },
         { say: 'This is Avogadro’s law. At constant temperature and pressure, the volume of a gas is directly proportional to the amount of gas.', show: 'def', focus: 'd' },
         { say: 'V one over n one equals V two over n two, with both volumes in the same unit.', caption: 'V₁/n₁ = V₂/n₂, with both volumes in the same unit.', show: ['m', 'u'] },
       ],

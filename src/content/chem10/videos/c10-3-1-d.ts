@@ -1,35 +1,11 @@
 import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { bracket, tag } from './lib/c10-3-figures.ts';
+import { oneIon } from './lib/c10-atoms.ts';
 
-const nucleus = (protons: number) => `${protons}\\text{p}^{+}`;
+/** An aluminium atom, 2,8,3, that loses its three outer electrons to become the aluminium ion. */
+const aluminium = oneIon('al', { symbol: 'Al', protons: 13, name: 'aluminium' }, 3, 420);
 
-// An aluminium atom, 2,8,3, whose outer shell is taken away to leave the aluminium ion, 2,8.
-const aluminium = figure(
-  'al',
-  [
-    atomShells({ at: [0, 0], nucleus: nucleus(13), shells: [2, 8, 3], r: 1.7, gap: 1 }),
-    bracket({ c: [0, 0], half: [4.0, 4.0], charge: '3{+}' }),
-    tag('name', [0, -5.4], '\\text{aluminium atom: 2,8,3}'),
-    tag('ion-name', [0, -5.4], '\\text{aluminium ion: 2,8}'),
-  ],
-  500,
-);
-
-// A sulfur atom, 2,8,6, and the sulfide ion, 2,8,8, drawn in the same place: the ion's outer
-// shell replaces the atom's.
-const sulfur = figure(
-  's',
-  [
-    atomShells({ name: 'atom', at: [0, 0], nucleus: nucleus(16), shells: [2, 8, 6], r: 1.7, gap: 1 }),
-    atomShells({ name: 'ion', at: [0, 0], nucleus: nucleus(16), shells: [2, 8, 8], r: 1.7, gap: 1 }),
-    bracket({ c: [0, 0], half: [5.0, 5.0], charge: '2{-}' }),
-    tag('name', [0, -6.3], '\\text{sulfur atom: 2,8,6}'),
-    tag('ion-name', [0, -6.3], '\\text{sulfide ion: 2,8,8}'),
-  ],
-  500,
-);
+/** A sulfur atom, 2,8,6, that gains two electrons to become the sulfide ion, 2,8,8. */
+const sulfur = oneIon('s', { symbol: 'S', protons: 16, name: 'sulfur' }, -2, 420);
 
 const video: Explainer = {
   id: 'c10-3-1-d',
@@ -68,10 +44,10 @@ const video: Explainer = {
       left: [aluminium],
       right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\ce{Al^3+}\\text{: atomic number 13}', '\\text{atom: 2,8,3}', '\\text{lost 3: } 13 - 3 = 10', '\\text{ion: 2,8 (like neon)}'] }],
       lines: [
-        { say: 'How many electrons are in A L three plus, and how are they arranged? Aluminium has atomic number thirteen.', caption: 'How many electrons are in Al³⁺, and how are they arranged? Aluminium has atomic number thirteen.', show: ['al.nucleus', 'al.name', 'm.0'], focus: 'm.0' },
-        { say: 'The atom has thirteen protons, and thirteen electrons arranged two, eight, three.', show: ['al.shell-1', 'al.shell-2', 'al.shell-3', 'm.1'], focus: 'm.1' },
-        { say: 'A charge of three plus means it has lost three electrons. Thirteen minus three is ten.', show: 'm.2', focus: ['m.2', 'al.shell-3'] },
-        { say: 'The three outer electrons have gone, leaving the shells two, eight, like neon. So the aluminium ion has ten electrons.', hide: ['al.shell-3', 'al.name'], show: ['al.bracket', 'al.ion-name', 'm.3'], focus: ['m.3', 'al.shell-2'] },
+        { say: 'How many electrons are in A L three plus, and how are they arranged? Aluminium has atomic number thirteen.', caption: 'How many electrons are in Al³⁺, and how are they arranged? Aluminium has atomic number thirteen.', show: ['al', 'al.labels', 'm.0'], focus: 'm.0' },
+        { say: 'The atom has thirteen protons, and thirteen electrons arranged two, eight, three.', show: ['al.arrangement', 'm.1'], focus: 'm.1' },
+        { say: 'A charge of three plus means it has lost three electrons. Thirteen minus three is ten.', show: 'm.2', focus: ['m.2', 'al.a'] },
+        { say: 'Watch the three outer electrons go, leaving the shells two, eight, like neon. So the aluminium ion has ten electrons.', play: 'al.ion', show: ['al.charges', 'm.3'], focus: 'm.3' },
       ],
     },
     {
@@ -81,10 +57,10 @@ const video: Explainer = {
       left: [sulfur],
       right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\ce{S^2-}\\text{: atomic number 16}', '\\text{atom: 2,8,6}', '\\text{gained 2: } 16 + 2 = 18', '\\text{ion: 2,8,8 (like argon)}'] }],
       lines: [
-        { say: 'Now the sulfide ion, S two minus. Sulfur has atomic number sixteen.', caption: 'Now the sulfide ion, S²⁻. Sulfur has atomic number sixteen.', show: ['s.atom-nucleus', 's.name', 'm.0'], focus: 'm.0' },
-        { say: 'The atom has sixteen electrons, arranged two, eight, six.', show: ['s.atom-shell-1', 's.atom-shell-2', 's.atom-shell-3', 'm.1'], focus: 'm.1' },
+        { say: 'Now the sulfide ion, S two minus. Sulfur has atomic number sixteen.', caption: 'Now the sulfide ion, S²⁻. Sulfur has atomic number sixteen.', show: ['s', 's.labels', 'm.0'], focus: 'm.0' },
+        { say: 'The atom has sixteen electrons, arranged two, eight, six.', show: ['s.arrangement', 'm.1'], focus: 'm.1' },
         { say: 'A charge of two minus means it has gained two electrons. Sixteen plus two is eighteen.', show: 'm.2', focus: 'm.2' },
-        { say: 'The two new electrons go into the outer shell, which now holds eight: two, eight, eight, like argon.', hide: ['s.atom-shell-3', 's.name'], show: ['s.ion-shell-3', 's.bracket', 's.ion-name', 'm.3'], focus: ['m.3', 's.ion-shell-3'] },
+        { say: 'The two new electrons go into the outer shell, which now holds eight: two, eight, eight, like argon.', play: 's.ion', show: ['s.charges', 'm.3'], focus: 'm.3' },
       ],
     },
     {

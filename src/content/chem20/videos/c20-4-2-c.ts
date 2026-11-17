@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { ionEq } from './lib/c20-4a-figures.ts';
+import { precipitate } from './lib/c20-particles.ts';
 
 // The total ionic equation for aluminium sulfate and barium nitrate, with strokes through the
 // spectator ions (the group "x").
@@ -65,6 +66,27 @@ const video: Explainer = {
       lines: [
         { say: 'Always check the atoms and the charge. The iron three ion plus one hydroxide ion cannot give iron three hydroxide: the solid holds three hydroxide ions.', caption: 'Always check the atoms and the charge. Fe³⁺(aq) + OH⁻(aq) → Fe(OH)₃(s) is not balanced: the solid holds three hydroxide ions.', show: ['oops', 'm.0'], focus: 'm.0' },
         { say: 'One iron three ion needs three hydroxide ions to make a neutral solid. Plus three, and three times minus one, make zero.', caption: 'One Fe³⁺ ion needs three OH⁻ ions to make a neutral solid: Fe³⁺(aq) + 3OH⁻(aq) → Fe(OH)₃(s). (3+) + 3(1−) = 0.', show: ['m.1', 'm.2'], focus: ['m.1', 'm.2'] },
+      ],
+    },
+    {
+      chapter: 'Three hydroxide ions for each iron ion',
+      layout: 'center',
+      main: [
+        precipitate(
+          'fh',
+          {
+            cation: { name: 'iron(III) ion', tone: 'opp', size: 1.1 },
+            anion: { name: 'hydroxide ion', tone: 'good' },
+            withCation: { name: 'nitrate ion', tone: 'hyp', size: 1.1 },
+            withAnion: { name: 'sodium ion', tone: 'brand' },
+          },
+          { ratio: 3, n: 3, label: 'iron(III) nitrate + sodium hydroxide', solid: 'iron(III) hydroxide', seed: 7 },
+        ),
+      ],
+      lines: [
+        { say: 'Watch iron three ions meet hydroxide ions. There are three times as many hydroxide ions, and three times as many sodium and nitrate ions to balance the charges.', show: ['fh', 'fh.labels', 'fh.key'], play: 'fh.mix' },
+        { say: 'Each iron three ion picks up hydroxide ions one at a time. Only when it holds three is the unit neutral and complete, and then it sinks as solid iron three hydroxide.', focus: 'fh.p', show: 'fh.tally' },
+        { say: 'That is why the net ionic equation needs a three in front of the hydroxide ion: one iron three ion takes three of them.', caption: 'That is why the net ionic equation needs a 3 in front of OH⁻: one Fe³⁺ ion takes three of them.', focus: 'fh.p' },
       ],
     },
     {

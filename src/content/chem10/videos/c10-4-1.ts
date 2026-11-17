@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, labels, mol, plus, row, stack } from './lib/c10-4-figures.ts';
+import { zincInAcid } from './lib/c10-particles.ts';
 
 // Magnesium burning: two magnesium atoms and an oxygen molecule become two units of magnesium oxide.
 const burn = row({ terms: [stack(mol('mg1', ['Mg']), mol('mg2', ['Mg'])), plus('p'), mol('o2', ['O', 'O']), arrow('arr'), stack(mol('mgo1', ['Mg', 'O']), mol('mgo2', ['Mg', 'O']))] });
@@ -52,6 +53,18 @@ const video: Explainer = {
       lines: [
         { say: 'A word equation names the reactants on the left of an arrow, and the products on the right, with a plus sign between substances on the same side. The arrow reads: react to form.', show: ['def', 'm.0'], focus: 'm.0' },
         { say: 'So for burning magnesium, the word equation is magnesium plus oxygen gives magnesium oxide.', show: 'm.1', focus: 'm.1' },
+      ],
+    },
+    {
+      chapter: 'A reaction up close',
+      layout: 'split',
+      leftWidth: 560,
+      left: [zincInAcid('zn', 420)],
+      right: [{ kind: 'callout', id: 'see', tone: 'tip', title: 'Used up, and new', md: 'The **zinc** and the **acid** are used up: the reactants. **Zinc chloride**, dissolved, and **hydrogen gas** are new: the products.' }],
+      lines: [
+        { say: 'Here is a reaction to watch before you write its equation. A piece of zinc sits in dilute hydrochloric acid.', show: ['zn', 'zn.labels'] },
+        { say: 'Particles of the acid pull zinc atoms off into the solution, where they make zinc chloride. The hydrogen left behind pairs up into molecules of hydrogen gas, which bubble away.', play: 'zn.fizz', focus: 'zn.z' },
+        { say: 'As it goes on, the zinc and the acid are used up: they are the reactants. Zinc chloride and hydrogen are new: they are the products.', show: 'see' },
       ],
     },
     {

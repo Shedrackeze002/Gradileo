@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { fuelCell } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-6-3',
@@ -49,6 +50,16 @@ const video: Explainer = {
         { say: 'With an acidic electrolyte, at the negative electrode, hydrogen loses electrons and forms hydrogen ions. Losing electrons is oxidation.', caption: 'With an acidic electrolyte, at the negative electrode, hydrogen loses electrons: 2H₂ → 4H⁺ + 4e⁻. Losing electrons is oxidation.', show: 't.0', focus: 't.0' },
         { say: 'At the positive electrode, oxygen gains those electrons and joins the hydrogen ions to make water. Gaining electrons is reduction.', caption: 'At the positive electrode, oxygen gains the electrons: O₂ + 4H⁺ + 4e⁻ → 2H₂O. Gaining electrons is reduction.', show: 't.1', focus: 't.1' },
         { say: 'Add the two halves, and the hydrogen ions and electrons cancel, leaving the overall equation.' },
+      ],
+    },
+    {
+      chapter: 'Inside the fuel cell, up close',
+      layout: 'center',
+      main: [fuelCell('fc')],
+      lines: [
+        { say: 'Here is a hydrogen fuel cell up close, with hydrogen fed in on the left, at the negative electrode, and oxygen on the right, at the positive electrode.', show: 'fc' },
+        { say: 'Each hydrogen molecule splits into two hydrogen ions. Their electrons leave through the wire, which is the current. The hydrogen ions cross the electrolyte to the oxygen side.', play: 'fc.cross' },
+        { say: 'There, the oxygen molecule takes the electrons back from the wire and joins the hydrogen ions. Two water molecules form, the only product.', play: 'fc.water' },
       ],
     },
     {

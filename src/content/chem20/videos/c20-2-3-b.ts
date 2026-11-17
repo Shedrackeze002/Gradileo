@@ -1,18 +1,22 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { gasBox, tag } from './lib/c20-2a-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// The same eight particles in a volume and in half of it: twice as many hits on each part of the wall.
-const halves = figure(
-  'h',
-  [
-    gasBox({ name: 'a', at: [0, 0], w: 4, h: 5, count: 8, speed: 0.45, seed: 51, top: 'piston', walls: 6, hits: 2 }),
-    tag('a-l', [2, -0.3], 'V,\\ P', { place: 'below', group: 'a-p' }),
-    gasBox({ name: 'b', at: [6, 0], w: 4, h: 2.5, count: 8, r: 0.22, speed: 0.45, seed: 52, top: 'piston', walls: 6, hits: 4, push: '\\text{push}' }),
-    tag('b-l', [8, -0.3], '\\tfrac{1}{2}V,\\ 2P', { place: 'below', group: 'b-p' }),
-  ],
-  470,
-);
+/**
+ * A gas under a piston (simulated, src/video/particles.ts), with a gauge and a thermometer: halving
+ * its volume doubles the pressure while the temperature, and so the particles' speed, stays put.
+ */
+const halves: ParticlesEl = {
+  kind: 'particles',
+  id: 'h',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 10, temp: 1.6, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }] }],
+  clips: {
+    halve: { phases: [{ dur: 4, lid: { b: 0.5 } }] },
+    expand: { phases: [{ dur: 4, lid: { b: 1 } }] },
+  },
+  gauge: { box: 'b', start: 100 },
+  volume: { box: 'b', start: 2 },
+  thermometers: true,
+  height: 480,
+};
 
 const video: Explainer = {
   id: 'c20-2-3-b',
@@ -48,11 +52,11 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'The pressure of a gas comes from its particles hitting the walls of the container.', show: ['h.a-box', 'h.a-piston', 'h.a-p', 'h.a-v', 'h.a-hits', 'h.a-l', 's.0'], focus: 'h.a-hits' },
-        { say: 'At constant temperature, the particles keep the same average speed, so each collision with a wall is just as hard as before. What changes is how often they hit.', show: 's.1', focus: 'h' },
-        { say: 'Halve the volume, and the same particles are packed into half the space. Each part of the wall now has twice as many particles close to it, so it is hit twice as often every second.', show: ['h.b-box', 'h.b-piston', 'h.b-push', 'h.b-p', 'h.b-v', 'h.b-hits', 'h.b-l'], focus: 'h.b-hits' },
-        { say: 'Twice as many collisions on each square centimetre of wall means twice the pressure.', show: 's.2' },
-        { say: 'Let the gas expand instead, and the particles spread out. They hit the walls less often, and the pressure falls.', focus: 'h.a-p' },
+        { say: 'The pressure of a gas comes from its particles hitting the walls of the container. Each flash is one hit.', show: ['h', 'h.hits', 'h.gauge', 'h.volume', 's.0'], focus: 'h.hits' },
+        { say: 'At constant temperature, the particles keep the same average speed, so each collision with a wall is just as hard as before. What changes is how often they hit.', show: ['s.1', 'h.thermo'], focus: 'h.thermo' },
+        { say: 'Halve the volume, and the same particles are packed into half the space. Each part of the wall now has twice as many particles close to it, so it is hit twice as often every second. The thermometer has not moved.', play: 'h.halve', focus: 'h.hits' },
+        { say: 'Twice as many collisions on each square centimetre of wall means twice the pressure: two hundred kilopascals instead of one hundred.', show: 's.2', focus: 'h.gauge' },
+        { say: 'Let the gas expand instead, and the particles spread out. They hit the walls less often, and the pressure falls.', play: 'h.expand', focus: 'h.gauge' },
       ],
     },
     {
