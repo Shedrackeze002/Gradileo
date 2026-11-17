@@ -113,6 +113,19 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
     </g>,
   );
 
+  // Where the source was when it sent each crest: the centre of that crest.
+  const centres = part('centres');
+  if (centres > 0)
+    for (const s of el.sources)
+      out.push(
+        <g key={`centres-${s.id}`} opacity={centres} fill={tone(s)}>
+          {crestsOf(el, s, state.time).map(({ centre }, i) => {
+            const [cx, cy] = at(centre);
+            return cx >= left && cx <= left + pw && cy >= top && cy <= top + ph ? <circle key={i} cx={cx} cy={cy} r={5} stroke="#15123a" strokeWidth={1.5} /> : null;
+          })}
+        </g>,
+      );
+
   // The path from each source to the first listener: from where the source was when what arrives now left it.
   const first = listeners[0];
   const here = first ? state.listeners[first.id] : undefined;
@@ -197,7 +210,9 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
     // A listener hears the first source; with several, the sum is in the panel.
     const s = el.sources[0];
     const a = arrival(el, s, where, state.time);
-    const n = received(el, s, where, state.time);
+    const n = received(el, s, where, state.time, l.at);
+    // What the listener receives is written under the dot; under the name too, when that is below.
+    const under = l.side === 'below' ? 54 : 28;
     out.push(
       <g key={`listener-${l.id}`}>
         <circle cx={x} cy={y} r={10} fill="#fff" stroke="#15123a" strokeWidth={3} />
@@ -207,10 +222,10 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
           </Text>
         )}
         {heard > 0 && a.arrived && (
-          <Text x={x} y={y + (l.side === 'below' ? -28 : 28)} size={21} color={NET} opacity={heard}>{`hears ${hertz(a.frequency)}`}</Text>
+          <Text x={x} y={y + under} size={21} color={NET} opacity={heard}>{`hears ${hertz(a.frequency)}`}</Text>
         )}
         {count > 0 && (
-          <Text x={x} y={y + (l.side === 'below' ? -28 : 28) * (heard > 0 ? 1.95 : 1)} size={20} color={INK2} opacity={count}>{`${n} ${n === 1 ? 'crest' : 'crests'} received`}</Text>
+          <Text x={x} y={y + under + (heard > 0 ? 27 : 0)} size={20} color={INK2} opacity={count}>{`${n} ${n === 1 ? 'crest' : 'crests'} received`}</Text>
         )}
       </g>,
     );

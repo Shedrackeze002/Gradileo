@@ -125152,5 +125152,225 @@
         "working": "Period: $T = \\dfrac{22.2}{10} = 2.22\\ \\text{s}$. Then $g = \\dfrac{4\\pi^2 L}{T^2} = \\dfrac{4\\pi^2 \\times 0.5}{2.22^2} = \\dfrac{19.74}{4.928} = 4.0\\ \\text{m/s}^2$."
       }
     ]
+  },
+  "p20-4-4": {
+    "lessonId": "p20-4-4",
+    "title": "Wave Properties",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a wave is",
+        "t": 16.399
+      },
+      {
+        "title": "Two kinds of wave",
+        "t": 51.622
+      },
+      {
+        "title": "Amplitude and wavelength",
+        "t": 100.898
+      },
+      {
+        "title": "Period and frequency",
+        "t": 141.238
+      },
+      {
+        "title": "A length, or a time?",
+        "t": 185.52
+      },
+      {
+        "title": "Your turn",
+        "t": 219.263
+      },
+      {
+        "title": "Summary",
+        "t": 251.522
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-4:q",
+        "t": 228.751,
+        "prompt": "20 complete waves pass a point in 8 s. What is the period of the waves?",
+        "choices": [
+          "$2.5\\ \\text{s}$",
+          "$160\\ \\text{s}$",
+          "$0.4\\ \\text{s}$",
+          "$12\\ \\text{s}$"
+        ],
+        "answer": 2,
+        "working": "The period is the time for one wave: $T = \\dfrac{8}{20} = 0.4\\ \\text{s}$. (The frequency is $\\dfrac{20}{8} = 2.5\\ \\text{Hz}$.)"
+      }
+    ]
+  },
+  "p20-4-4-b": {
+    "lessonId": "p20-4-4",
+    "title": "Wave Properties, Part 2: The Universal Wave Equation",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One wavelength in each period",
+        "t": 15.434
+      },
+      {
+        "title": "The wavelength of a sound",
+        "t": 70.121
+      },
+      {
+        "title": "Waves at a pier",
+        "t": 103.572
+      },
+      {
+        "title": "Who decides what",
+        "t": 139.786
+      },
+      {
+        "title": "Into a heavier rope",
+        "t": 179.713
+      },
+      {
+        "title": "Your turn",
+        "t": 230.878
+      },
+      {
+        "title": "Summary",
+        "t": 265.347
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-4-b:q",
+        "t": 242.639,
+        "prompt": "A wave travels along a spring at 12 m/s with a frequency of 8 Hz. What is its wavelength?",
+        "choices": [
+          "$96\\ \\text{m}$",
+          "$0.67\\ \\text{m}$",
+          "$20\\ \\text{m}$",
+          "$1.5\\ \\text{m}$"
+        ],
+        "answer": 3,
+        "working": "Rearrange $v = f\\lambda$: $\\lambda = \\dfrac{v}{f} = \\dfrac{12}{8} = 1.5\\ \\text{m}$."
+      }
+    ]
+  },
+  "p20-4-5": {
+    "lessonId": "p20-4-5",
+    "title": "Reflection and Echoes",
+    "duration": 305,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A fixed end",
+        "t": 18.884
+      },
+      {
+        "title": "A free end",
+        "t": 53.858
+      },
+      {
+        "title": "A join",
+        "t": 89.458
+      },
+      {
+        "title": "Echoes",
+        "t": 122.433
+      },
+      {
+        "title": "The time for an echo",
+        "t": 164.077
+      },
+      {
+        "title": "Echo sounding",
+        "t": 199.403
+      },
+      {
+        "title": "Your turn",
+        "t": 239.747
+      },
+      {
+        "title": "Summary",
+        "t": 278.897
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-5:q",
+        "t": 255.781,
+        "prompt": "A student shouts towards a cliff and hears the echo 2.4 s later. The speed of sound in the air is 340 m/s. How far away is the cliff?",
+        "choices": [
+          "$408\\ \\text{m}$",
+          "$816\\ \\text{m}$",
+          "$142\\ \\text{m}$",
+          "$283\\ \\text{m}$"
+        ],
+        "answer": 0,
+        "working": "The sound travels $vt = 340 \\times 2.4 = 816\\ \\text{m}$, there and back. So $d = \\dfrac{816}{2} = 408\\ \\text{m}$."
+      }
+    ]
+  },
+  "p20-4-5-b": {
+    "lessonId": "p20-4-5",
+    "title": "Reflection and Echoes, Part 2: Superposition and Interference",
+    "duration": 341,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two crests",
+        "t": 16.331
+      },
+      {
+        "title": "A crest and a trough",
+        "t": 70.126
+      },
+      {
+        "title": "Do waves that cancel disappear?",
+        "t": 115.151
+      },
+      {
+        "title": "Two speakers",
+        "t": 153.687
+      },
+      {
+        "title": "Your turn",
+        "t": 259.306
+      },
+      {
+        "title": "Summary",
+        "t": 307.9
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-5-b:q",
+        "t": 277.96,
+        "prompt": "Two speakers vibrate in step and give out sound of wavelength 0.8 m. A listener is 5.0 m from one speaker and 6.2 m from the other. What does the listener hear?",
+        "choices": [
+          "A loud sound: the path difference is 1.5 wavelengths",
+          "A quiet sound: the path difference is 1.5 wavelengths",
+          "A loud sound: the path difference is 14 wavelengths",
+          "A quiet sound: the path difference is 0.96 wavelengths"
+        ],
+        "answer": 1,
+        "working": "Path difference: $6.2 - 5.0 = 1.2\\ \\text{m}$. In wavelengths: $\\dfrac{1.2}{0.8} = 1.5$. That is an odd number of half wavelengths, so crest meets trough: destructive interference, and the sound is quiet."
+      }
+    ]
   }
 }

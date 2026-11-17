@@ -46,6 +46,8 @@ export function arrival(el: RipplesEl, s: RippleSource, p: Point, time: number):
   const [dx, dy] = [p[0] - now[0], p[1] - now[1]];
   const dv = dx * vx + dy * vy;
   const k = c * c - vx * vx - vy * vy;
+  // A source as fast as its waves, or faster, has left them behind: nothing of it is worked out for a listener.
+  if (!(k > 0)) return { from: now, path: 0, sent: time, arrived: false, frequency: s.frequency, signal: 0 };
   const u = (dv + Math.sqrt(dv * dv + k * (dx * dx + dy * dy))) / k;
   const sent = time - u;
   const from = sourceAt(s, sent);
@@ -82,10 +84,13 @@ export function crestsOf(el: RipplesEl, s: RippleSource, time: number): Array<{ 
   return out;
 }
 
-/** The crests of a source that have reached a place since time 0. */
-export function received(el: RipplesEl, s: RippleSource, p: Point, time: number): number {
+/**
+ * The crests of a source that have reached a listener since time 0: the listener is at `p` now,
+ * and was at `from` at time 0 (one who walks towards the source meets more crests on the way).
+ */
+export function received(el: RipplesEl, s: RippleSource, p: Point, time: number, from: Point = p): number {
   // Waves that have been spreading for ever were already passing at time 0; otherwise the first to arrive is crest 0.
-  const before = el.full ? newest(s, arrival(el, s, p, 0).sent) : -1;
+  const before = el.full ? newest(s, arrival(el, s, from, 0).sent) : -1;
   return Math.max(0, newest(s, arrival(el, s, p, time).sent) - before);
 }
 

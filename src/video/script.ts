@@ -591,7 +591,11 @@ export interface RippleSource {
   at: [number, number];
   /** Waves sent out each second. */
   frequency: number;
-  /** Its velocity in metres per second, [vx, vy] (slower than the waves): the crests ahead of a moving source are crowded together. */
+  /**
+   * Its velocity in metres per second, [vx, vy]: the crests ahead of a moving source are crowded
+   * together. It must be slower than the waves when the element has listeners; without them a
+   * faster source can be drawn, with its crests overlapping along a shock wave behind it.
+   */
   velocity?: [number, number];
   /** Which side of it the label goes (above otherwise). */
   side?: 'above' | 'below' | 'left' | 'right';
@@ -626,7 +630,7 @@ export interface RippleClip {
   reset?: boolean;
 }
 
-export const RIPPLES_PARTS = ['paths', 'difference', 'traces', 'loudness', 'pattern', 'wavelength', 'heard', 'velocity', 'count', 'clock'] as const;
+export const RIPPLES_PARTS = ['paths', 'difference', 'traces', 'loudness', 'pattern', 'wavelength', 'centres', 'heard', 'velocity', 'count', 'clock'] as const;
 
 /**
  * Waves seen from above, spreading in circles from their sources (src/video/ripples.ts): each
@@ -639,7 +643,8 @@ export const RIPPLES_PARTS = ['paths', 'difference', 'traces', 'loudness', 'patt
  * each source and their sum, against time), `loudness` (how large the sum is, as a bar, with
  * "Loud" or "Quiet"), `pattern` (the whole picture shaded by how large the waves are when they
  * are added: bright where they arrive in step), `wavelength` (measured between two crests: ahead
- * of a moving source and behind it), `heard` (the frequency each listener receives), `velocity`
+ * of a moving source and behind it), `centres` (a dot where the source was when it sent each
+ * crest), `heard` (the frequency each listener receives from a source that moves), `velocity`
  * (an arrow on a moving source, with its speed), `count` (the crests each listener has received
  * since the start) and `clock`. When the picture leaves 380 pixels or more beside it and there
  * is a listener, the picture sits on the left and `paths`, `difference`, `traces` and `loudness`
@@ -1961,7 +1966,8 @@ export function checkRipples(e: RipplesEl): string[] {
   for (const s of e.sources) {
     taken(s.id, 'source');
     if (!(s.frequency > 0)) problems.push(`source "${s.id}" needs a frequency above zero.`);
-    if (s.velocity && Math.hypot(...s.velocity) >= e.speed) problems.push(`source "${s.id}" must move more slowly than the waves.`);
+    // A source that outruns its waves can be drawn (its crests overlap along a shock wave), but nothing can be worked out for a listener.
+    if (s.velocity && Math.hypot(...s.velocity) >= e.speed && e.listeners?.length) problems.push(`source "${s.id}" must move more slowly than the waves when there are listeners.`);
   }
   for (const l of e.listeners ?? []) {
     taken(l.id, 'listener');
