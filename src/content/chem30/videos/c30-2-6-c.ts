@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { cell, TONE } from './lib/c30-2b-figures.ts';
+import { voltaic } from './lib/c30-cells.ts';
 
 // The lesson's cell with an inert electrode: nickel in nickel(II) nitrate, and platinum in a
 // solution of iron(III) and iron(II) ions.
@@ -85,6 +86,15 @@ const video: Explainer = {
           caption: 'Read from left to right, it tells the electrons’ story. Zinc is oxidised to zinc ions at the anode, and copper(II) ions are reduced to copper at the cathode.',
           show: 'key',
         },
+      ],
+    },
+    {
+      chapter: 'The notation, up close',
+      layout: 'center',
+      main: [voltaic('vn', { seed: 3 })],
+      lines: [
+        { say: 'Here is the same cell up close, laid out the way the notation reads: the anode on the left and the cathode on the right. Watch the left electrode, zinc solid, become zinc ions, and watch copper two ions on the right become copper solid.', caption: 'Here is the same cell up close, laid out the way the notation reads: the anode on the left and the cathode on the right. Watch the left electrode, Zn(s), become zinc ions, and watch Cu²⁺ ions on the right become Cu(s).', show: ['vn', 'vn.labels', 'vn.key', 'vn.tally'], play: 'vn.run' },
+        { say: 'Zinc solid, line, zinc ions: that is the left half-cell. Double line: the salt bridge between them. Copper two ions, line, copper solid: the right half-cell. Each line in the notation is a boundary you can see in the cell.', caption: 'Zn(s) | Zn²⁺: that is the left half-cell. The double line: the salt bridge between them. Cu²⁺ | Cu(s): the right half-cell. Each line in the notation is a boundary you can see in the cell.' },
       ],
     },
     {

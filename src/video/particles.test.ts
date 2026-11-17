@@ -539,3 +539,77 @@ describe('particles: an insulated box', () => {
     expect(checkParticles(cup(false))).toEqual(['box "c": a kind starts at its own temperature only in an insulated box.']);
   });
 });
+
+describe('particles: electrodes', () => {
+  /** A solution of metal ions (0) and negative ions (1) with a metal anode (2) to plate an object with metal (3). */
+  const cell = (dissolve: { kind: number; to: number; chance?: number } = { kind: 2, to: 0 }, plate = 16, plating = true): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'c',
+          state: 'liquid',
+          width: 13,
+          height: 9,
+          temp: 0.45,
+          kinds: [
+            { n: 8, bond: 1, heavy: 0.2, charge: 2 },
+            { n: 8, bond: 1, heavy: 0.2, size: 1.3, charge: -2 },
+            { n: 16, bond: 1, heavy: 0.2 },
+            { n: 0, bond: 1, heavy: 0.2 },
+            { n: 20, bond: 1, heavy: 0.2, size: 0.85 },
+          ],
+          electrodes: {
+            left: { rules: plating ? [{ kind: 0, to: 3, stick: true }] : [] },
+            right: { plate: { kind: 2, n: plate }, dissolve },
+          },
+        },
+      ],
+      clips: { run: { phases: [{ dur: 1, power: { c: 1 } }, { dur: 15 }] } },
+      seed: 1,
+    });
+  const count = (f: { kind: number[] }, k: number) => f.kind.filter((x) => x === k).length;
+  const meanX = (f: { x: number[]; kind: number[] }, k: number) => mean(f.x.filter((_, i) => f.kind[i] === k));
+  const at = (e: ParticlesEl, t: number, on = true) => particlesAt(e, on ? [['run', 0]] : [], t)[0];
+
+  it('starts the anode coated, against its wall', () => {
+    const f = at(cell(), 0, false);
+    const xs = f.x.filter((_, i) => f.kind[i] === 2);
+    expect(xs).toHaveLength(16);
+    expect(Math.min(...xs)).toBeGreaterThan(13 - 2.4);
+  });
+
+  it('drifts positive ions to the cathode and negative ions to the anode while the current flows', () => {
+    const on = at(cell(undefined, 16, false), 8);
+    const off = at(cell(undefined, 16, false), 8, false);
+    expect(meanX(on, 0)).toBeLessThan(meanX(off, 0) - 2);
+    expect(meanX(on, 1)).toBeGreaterThan(meanX(off, 1) + 2);
+  });
+
+  it('plates metal that stays on the cathode, and the anode loses an atom for each one', () => {
+    const f = at(cell(), 16);
+    const plated = f.x.filter((_, i) => f.kind[i] === 3);
+    expect(plated.length).toBeGreaterThan(2);
+    expect(plated.length).toBeLessThan(16);
+    expect(Math.max(...plated)).toBeLessThan(2.4);
+    expect(count(f, 2)).toBe(16 - plated.length);
+    expect(count(f, 0)).toBe(8);
+  });
+
+  it('changes nothing with the current off', () => {
+    const f = at(cell(), 16, false);
+    expect(count(f, 3)).toBe(0);
+    expect(count(f, 2)).toBe(16);
+  });
+
+  it('dissolves the anode now and then with a chance, with nothing plated', () => {
+    const f = at(cell({ kind: 2, to: 0, chance: 0.01 }, 16, false), 16);
+    expect(count(f, 3)).toBe(0);
+    expect(count(f, 2)).toBeLessThan(16);
+    expect(count(f, 0)).toBe(8 + 16 - count(f, 2));
+  });
+
+  it('checks the kinds an electrode names and the size of its coating', () => {
+    expect(checkParticles(cell({ kind: 7, to: 0 }))).toEqual(['box "c": an electrode names a kind the box does not have.']);
+    expect(checkParticles(cell(undefined, 17))).toEqual(["box \"c\": an electrode's coating needs more particles than its kind has."]);
+  });
+});

@@ -10,6 +10,9 @@ import { ownPart, type ElState } from '../timeline.ts';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
 
+/** An electrode's colour, unless it is given a tone: a grey metal. */
+const METAL = 'rgb(176 182 198)';
+
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 const FONT = "'Lexend Variable', 'Inter Variable', system-ui, sans-serif";
 const GLASS = 'rgb(176 196 255)';
@@ -255,6 +258,21 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 </g>
               );
             })()}
+            {/* Electrodes down the side walls, each named over its top ("cathode −", "anode +"). */}
+            {b.electrodes &&
+              ([['left', b.electrodes.left], ['right', b.electrodes.right]] as const).map(([sd, e]) => {
+                if (!e) return null;
+                const x = sd === 'left' ? X(0) + 3 : X(bw) - 3 - 0.28 * S;
+                const top = Y(0.94 * bh);
+                return (
+                  <g key={sd}>
+                    <rect x={x} y={top} width={0.28 * S} height={floor - 3 - top} rx={3} fill={e.tone ? TONES[e.tone] : METAL} opacity={0.9} />
+                    <Text x={sd === 'left' ? X(0) + 0.14 * S : X(bw) - 0.14 * S} y={wallTop - 16} size={20} anchor={sd === 'left' ? 'start' : 'end'} color={INK3}>
+                      {e.label ?? (sd === 'left' ? 'cathode −' : 'anode +')}
+                    </Text>
+                  </g>
+                );
+              })}
             {/* The trail of the followed particle, fading towards its oldest point. */}
             {trail > 0 &&
               trailPts.slice(1).map(([x, y], i) => {

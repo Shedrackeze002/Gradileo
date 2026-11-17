@@ -74,6 +74,8 @@ export interface Controls {
   run: Record<string, number>;
   /** How many reserved units have been poured into each box so far (a fraction while one falls). */
   added: Record<string, number>;
+  /** How strongly the current through each box's electrodes is flowing (0 off, 1 the usual). */
+  power: Record<string, number>;
 }
 
 /** A play of a clip: its name and the element's age (seconds since shown) when it started. */
@@ -89,8 +91,10 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
   const magnet: Record<string, number> = {};
   const run: Record<string, number> = {};
   const added: Record<string, number> = {};
+  const power: Record<string, number> = {};
   for (const b of el.boxes) {
     added[b.id] = 0;
+    power[b.id] = 0;
     stir[b.id] = 0;
     magnet[b.id] = 0;
     run[b.id] = 0;
@@ -109,13 +113,14 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
       for (const [id, v] of Object.entries(ph.stir ?? {})) stir[id] += (v - stir[id]) * k;
       for (const [id, v] of Object.entries(ph.magnet ?? {})) magnet[id] += (v - magnet[id]) * k;
       for (const [id, v] of Object.entries(ph.run ?? {})) run[id] += (v - run[id]) * k;
+      for (const [id, v] of Object.entries(ph.power ?? {})) power[id] += (v - power[id]) * k;
       for (const [id, v] of Object.entries(ph.heat ?? {})) temp[id] += (tempOf(v, temp[id]) - temp[id]) * k;
       for (const [id, v] of Object.entries(ph.lid ?? {})) lid[id] += (v - lid[id]) * k;
       for (const [id, v] of Object.entries(ph.add ?? {})) added[id] += v * k;
       t += ph.dur;
     }
   }
-  return { temp, lid, lifted, released, stir, magnet, run, added };
+  return { temp, lid, lifted, released, stir, magnet, run, added, power };
 }
 
 export interface Hit {
@@ -159,6 +164,10 @@ interface BoxSim {
   sig2: Float64Array;
   /** Particles that have left the box (evaporated through an open top). */
   gone: Uint8Array;
+  /** Each kind's charge (pushed along by the current between electrodes). */
+  charge: Float64Array;
+  /** Which electrode each particle is stuck on: 0 none, 1 the left, 2 the right. */
+  side: Uint8Array;
   /** Units (a molecule's particles, or one particle) still to be poured in, in order, and how many have been. */
   units: number[][];
   poured: number;
@@ -563,6 +572,8 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     bond: new Float64Array(kinds.map((k) => k.bond ?? 1)),
     sig2: new Float64Array(kinds.length * kinds.length),
     gone: new Uint8Array(n),
+    charge: new Float64Array(kinds.map((k) => k.charge ?? 0)),
+    side: new Uint8Array(n),
     units: [],
     poured: 0,
     front: PAPER_START - 0.6,
@@ -724,6 +735,29 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     const lists = [...byKind.values()];
     for (let r = 0; lists.some((l) => r < l.length); r++) for (const l of lists) if (r < l.length) s.units.push(l[r]);
   }
+  // An electrode coated with a metal: that many of its kind's particles stand in a column against
+  // the wall from the floor up, stuck on it (the rest of the box keeps clear of them).
+  for (const [sd, e] of [[1, b.electrodes?.left], [2, b.electrodes?.right]] as const) {
+    if (!e?.plate) continue;
+    const mine = Array.from({ length: n }, (_, i) => i).filter((i) => s.kind[i] === e.plate!.kind && !s.side[i]).slice(0, e.plate.n);
+    const d = 1.05 * (s.size[e.plate.kind] ?? 1);
+    const rows = Math.max(1, Math.floor((s.lidY - 0.6) / d));
+    mine.forEach((i, j) => {
+      const col = Math.floor(j / rows);
+      s.x[i] = sd === 1 ? 0.55 + col * d : w - 0.55 - col * d;
+      s.y[i] = 0.55 + (j % rows) * d;
+      s.held[i] = 1;
+      s.stuck[i] = 1;
+      s.side[i] = sd;
+    });
+    // Others that started where the coating now is are moved out of its way.
+    const edge = Math.ceil(mine.length / rows) * d + 0.6;
+    for (let i = 0; i < n; i++) {
+      if (s.side[i]) continue;
+      if (sd === 1 && s.x[i] < edge) s.x[i] = edge + (s.x[i] % 0.5);
+      if (sd === 2 && s.x[i] > w - edge) s.x[i] = w - edge - (s.x[i] % 0.5);
+    }
+  }
   const t0 = tempOf(b.temp, TEMPS[b.state]);
   for (let i = 0; i < n; i++) {
     const m = s.mass[s.kind[i]];
@@ -754,12 +788,15 @@ interface StepOpts {
   wall?: { x: number; top: number };
   /** Parts of the box held at their own temperatures (in particle units). */
   zones?: Array<{ x0: number; x1: number; y0: number; y1: number; temp: number }>;
-  /** Particles reaching the top leave the box. */
-  escape?: boolean;
+  /** Particles reaching the top leave the box (only those of the kinds listed, if a list). */
+  escape?: boolean | number[];
   /** How fast the solvent runs up paper. */
   run?: number;
   /** Let the box's reactions happen (not while it settles before it is seen). */
   react?: boolean;
+  /** How strongly a current flows between the electrodes (0 none), and what happens at them. */
+  power?: number;
+  electrodes?: ParticleBox['electrodes'];
   /** Hold no particle at any temperature: energy only passes between them as they collide. */
   insulated?: boolean;
   /** Temperatures for kinds held at their own, by kind (as an insulated box settles). */
@@ -863,7 +900,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
       y[i] = 2 * rad - y[i];
       vy[i] = Math.abs(vy[i]);
       if (record) s.hits.push({ at: age, x: x[i], y: 0, wall: 'floor' });
-    } else if (o.escape && y[i] > lid - rad && s.bond[kind[i]] < 2) {
+    } else if (o.escape && (o.escape === true || o.escape.includes(kind[i])) && y[i] > lid - rad && s.bond[kind[i]] < 2) {
       // Out of the open top and away: it is put far off, where it touches nothing. (A kind
       // bonded as strongly as a salt does not boil at these temperatures: one flung this high
       // falls back.)
@@ -885,7 +922,11 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   // or goes over the wall anyway, and the dissolved solid must stay at the bottom.
   const gravityTemp = o.escape || o.wall ? 0 : o.bath || zones ? measuredTemp(s) : temp;
   forces(s, gravityTemp, o.sigma, o.stir ?? 0, w, lid, o.magnet ?? 0);
+  // With the current on, positive ions are pushed towards the left electrode (the cathode) and
+  // negative ones towards the right (the anode).
+  if (o.power) for (let i = 0; i < n; i++) if (s.charge[kind[i]]) fx[i] -= s.charge[kind[i]] * FIELD * o.power;
   if (o.react) react(s, o.divider);
+  if (o.power && o.electrodes) atElectrodes(s, o.electrodes, o.power, w);
   if (o.react && s.breaks.length) breakApart(s, temp);
   // A bath holds its strip firmly, as a flame or ice would, so heat goes in or out quickly there.
   const c1 = Math.exp(-(o.bath || zones || o.kindTemps ? BATH_GAMMA : GAMMA) * DT);
@@ -1041,6 +1082,7 @@ function cloneSim(s: BoxSim): BoxSim {
     ke: s.ke.slice(),
     held: s.held.slice(),
     stuck: s.stuck.slice(),
+    side: s.side.slice(),
     gone: s.gone.slice(),
     bonds: s.bonds.map((bd) => ({ ...bd })),
     bonded: new Set(s.bonded),
@@ -1081,9 +1123,73 @@ function optsFor(b: ParticleBox, ctl?: Controls): StepOpts {
     escape: ctl ? b.escape : false,
     react: !!ctl && (!b.waits || ctl.released[b.id] !== undefined),
     insulated: ctl ? b.insulated : false,
+    power: ctl?.power[b.id],
+    electrodes: b.electrodes,
     // As an insulated box settles, a kind with its own temperature is held at it (a hot lump in cold water).
     kindTemps: !ctl && b.insulated ? b.kinds?.map((k) => (k.temp === undefined ? undefined : tempOf(k.temp, t0))) : undefined,
   };
+}
+
+/** How hard the current pushes a particle with a charge of 1. */
+const FIELD = 1.2;
+/** How far from its wall an electrode's coating can grow. */
+const COAT = 2.4;
+
+/**
+ * What happens at the electrodes while the current flows. A loose particle touching an electrode,
+ * or a particle already stuck on it, changes kind by that electrode's rule for it, and with `stick`
+ * stays there. And an electrode that `dissolve`s gives up its outermost stuck particle now and then,
+ * which leaves as another kind.
+ */
+function atElectrodes(s: BoxSim, es: NonNullable<ParticleBox['electrodes']>, power: number, w: number) {
+  const { n, x, y, kind, held, gone, side } = s;
+  const sides = [es.left, es.right] as const;
+  const stuckNow = [0, 0];
+  for (let i = 0; i < n; i++) {
+    if (held[i] || gone[i]) continue;
+    const rad = 0.5 * s.size[kind[i]];
+    let at = x[i] < rad + 0.2 ? 1 : x[i] > w - rad - 0.2 ? 2 : 0;
+    // Or a particle stuck on it, so a coating builds up, but only a few layers thick.
+    if (!at && (x[i] < COAT || x[i] > w - COAT))
+      for (let j = 0; j < n && !at; j++) {
+        if (!side[j] || gone[j]) continue;
+        const dx = x[i] - x[j];
+        const dy = y[i] - y[j];
+        if (dx * dx + dy * dy < 1.2 * 1.2) at = side[j];
+      }
+    if (!at) continue;
+    const rule = sides[at - 1]?.rules?.find((ru) => ru.kind === kind[i]);
+    if (!rule || (rule.chance !== undefined && s.rnd() >= rule.chance * power)) continue;
+    kind[i] = rule.to;
+    if (rule.stick) {
+      stuckNow[at - 1]++;
+      held[i] = 1;
+      s.stuck[i] = 1;
+      side[i] = at;
+      s.vx[i] = 0;
+      s.vy[i] = 0;
+    }
+  }
+  sides.forEach((e, si) => {
+    const d = e?.dissolve;
+    if (!d) return;
+    // With a chance, now and then; without one, an atom for each one the other electrode gained.
+    let leave = d.chance === undefined ? stuckNow[1 - si] : s.rnd() < d.chance * power ? 1 : 0;
+    for (; leave > 0; leave--) {
+      // The outermost particle of the coating (furthest from its wall) leaves.
+      let best = -1;
+      for (let i = 0; i < n; i++) {
+        if (side[i] !== si + 1 || kind[i] !== d.kind || gone[i]) continue;
+        if (best < 0 || (si === 0 ? x[i] > x[best] : x[i] < x[best])) best = i;
+      }
+      if (best < 0) return;
+      kind[best] = d.to;
+      held[best] = 0;
+      s.stuck[best] = 0;
+      side[best] = 0;
+      s.vx[best] = si === 0 ? 1.5 : -1.5;
+    }
+  });
 }
 
 /**

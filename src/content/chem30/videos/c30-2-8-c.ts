@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { electrolytic } from './lib/c30-2b-figures.ts';
+import { plating as platingCell } from './lib/c30-cells.ts';
 
 // Silver-plating a spoon: the spoon is the cathode, a bar of silver the anode, in silver nitrate solution.
 const plating = figure(
@@ -43,6 +44,15 @@ const video: Explainer = {
         { say: 'At the cathode, silver ions are reduced, and a layer of silver builds up on the spoon.', show: ['m.0', 'e.cat-product'], focus: ['m.0', 'e.cat-product'] },
         { say: 'The silver anode is not inert. Silver atoms are the strongest reducing agent present, so they are oxidised, and replace the silver ions plated onto the spoon.', show: ['m.1', 'e.an-product'], focus: ['m.1', 'e.an-product'] },
         { say: 'So the concentration of the solution stays the same, while silver moves from the bar to the spoon.', focus: 'e' },
+      ],
+    },
+    {
+      chapter: 'Silver plating, up close',
+      layout: 'center',
+      main: [platingCell('sp', { seed: 1, metal: 'silver', object: 'spoon' })],
+      lines: [
+        { say: 'Here is silver plating up close. The spoon is the cathode on the left, and a bar of silver is the anode on the right, in silver nitrate solution. Watch the silver ions plate onto the spoon, and watch the silver bar as the current flows.', show: ['sp', 'sp.labels', 'sp.key', 'sp.tally'], play: 'sp.run' },
+        { say: 'Silver ions take electrons at the spoon and build up a layer of silver. At the anode, silver atoms give up electrons and leave as new silver ions, replacing those used up. So silver moves from the bar to the spoon.' },
       ],
     },
     {

@@ -486,7 +486,7 @@ export interface ParticleBox {
    * fast it moves at a given temperature: every kind gets the same energy, so a kind 16 times as
    * heavy moves a quarter as fast (oxygen beside hydrogen).
    */
-  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number; mass?: number; size?: number; magnetic?: boolean; rise?: number; temp?: Temp }>;
+  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number; mass?: number; size?: number; magnetic?: boolean; rise?: number; temp?: Temp; charge?: number }>;
   /**
    * How strongly particles of different kinds attract one another (between their own bonds by
    * default). Stronger than the solute's own bond, a lump dissolves; much weaker, it stays whole.
@@ -504,8 +504,11 @@ export interface ParticleBox {
    * (`release`); then particles smaller than the holes pass and bigger ones stay on it.
    */
   filter?: { at: number; holes: number };
-  /** An open top the particles can leave by (evaporation): one that reaches the top is gone. */
-  escape?: boolean;
+  /**
+   * An open top the particles can leave by (evaporation): one that reaches the top is gone. With a
+   * list of kinds, only those leave (a gas bubbling out of a solution).
+   */
+  escape?: boolean | number[];
   /**
    * A low wall standing across the box at this fraction of its width, this fraction of its height
    * tall, that never lifts: the particles start on its left, and only a gas can get over it (a
@@ -644,6 +647,28 @@ export interface ParticleBox {
    * one (the water), so it shows the water warming as the lump cools.
    */
   insulated?: boolean;
+  /**
+   * Electrodes down the left and right walls (an electrolytic or a voltaic cell). While a phase
+   * turns the current on (`power`), kinds with a `charge` drift: positive ones to the left
+   * electrode (the cathode) and negative ones to the right (the anode). A particle that touches an
+   * electrode, or a particle stuck on it, and has a rule there changes kind (`chance` makes it
+   * happen only sometimes), and with `stick` stays on the electrode (a metal plating out). `plate`
+   * starts an electrode coated with that many particles of a kind, and `dissolve` lets its coating
+   * leave one particle at a time as another kind (a zinc anode giving zinc ions), about `chance`
+   * of the steps, or, without a `chance`, one for each particle that sticks on the other electrode
+   * (electroplating, where the anode loses an atom for every atom the object gains). `label` is
+   * written over the electrode ("cathode −" and "anode +" by default).
+   */
+  electrodes?: { left?: Electrode; right?: Electrode };
+}
+
+/** One electrode of a particle box (see `electrodes`). */
+export interface Electrode {
+  label?: string;
+  tone?: Tone;
+  rules?: Array<{ kind: number; to: number; stick?: boolean; chance?: number }>;
+  plate?: { kind: number; n: number };
+  dissolve?: { kind: number; to: number; chance?: number };
 }
 
 /** A stretch of a particle clip: temperatures and lids move steadily to these values over `dur` seconds. */
@@ -665,6 +690,8 @@ export interface ParticlePhase {
   magnet?: Record<string, number>;
   /** How fast the solvent runs up each paper box (0 stops it; 1 is the usual). */
   run?: Record<string, number>;
+  /** How strongly a current flows through each box's electrodes (0 off; 1 the usual), reached steadily. */
+  power?: Record<string, number>;
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
@@ -1644,6 +1671,13 @@ export function checkParticles(e: ParticlesEl): string[] {
     if ((PARTICLE_PARTS as readonly string[]).includes(b.id)) problems.push(`box id "${b.id}" is the name of a part.`);
     if (b.lid !== undefined && !(b.lid >= 0.2 && b.lid <= 1)) problems.push(`box "${b.id}": a lid must be between 0.2 and 1.`);
     if (!b.insulated && b.kinds?.some((k) => k.temp !== undefined)) problems.push(`box "${b.id}": a kind starts at its own temperature only in an insulated box.`);
+    const nk = (b.kinds ?? []).length;
+    for (const e of [b.electrodes?.left, b.electrodes?.right]) {
+      if (!e) continue;
+      const named = [...(e.rules ?? []).flatMap((ru) => [ru.kind, ru.to]), ...(e.plate ? [e.plate.kind] : []), ...(e.dissolve ? [e.dissolve.kind, e.dissolve.to] : [])];
+      if (named.some((k) => !Number.isInteger(k) || k < 0 || k >= nk)) problems.push(`box "${b.id}": an electrode names a kind the box does not have.`);
+      if (e.plate && e.plate.n > (b.kinds?.[e.plate.kind]?.n ?? 0)) problems.push(`box "${b.id}": an electrode's coating needs more particles than its kind has.`);
+    }
     const n = (b.kinds ? b.kinds.reduce((s, k) => s + k.n, 0) : (b.n ?? 30)) + (b.molecules ?? []).reduce((s, m) => s + m.n * m.atoms.length, 0);
     if (n > 120) problems.push(`box "${b.id}" has ${n} particles; keep it to 120 so frames draw quickly.`);
     if (b.follow !== undefined && !(b.follow >= 0 && b.follow < n)) problems.push(`box "${b.id}" follows a particle it does not have.`);
@@ -1682,7 +1716,7 @@ export function checkParticles(e: ParticlesEl): string[] {
         const b = e.boxes.find((bb) => bb.id === id);
         if (!b?.hold && !b?.filter && !b?.waits) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
       }
-      for (const id of [...Object.keys(ph.stir ?? {}), ...Object.keys(ph.magnet ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
+      for (const id of [...Object.keys(ph.stir ?? {}), ...Object.keys(ph.magnet ?? {}), ...Object.keys(ph.power ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const id of Object.keys(ph.add ?? {})) if (!e.boxes.find((b) => b.id === id)?.reserve?.length) problems.push(`clip "${name}", phase ${pi + 1} pours into box "${id}", which has no burette (\`reserve\`).`);
       for (const id of Object.keys(ph.run ?? {})) if (!e.boxes.find((b) => b.id === id)?.paper) problems.push(`clip "${name}", phase ${pi + 1} runs solvent up box "${id}", which is not paper.`);
       for (const id of [...Object.keys(ph.heat ?? {}), ...Object.keys(ph.lid ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);

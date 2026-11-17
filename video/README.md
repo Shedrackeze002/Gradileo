@@ -203,6 +203,17 @@ See `src/video/script.ts` for every element and option. In short:
     (`temp` on the kind: a hot metal lump in cold water), and the thermometer reads the kinds
     without one. Give a heavy kind a large `mass` (30 slows the heat passing on to about ten
     seconds) and divide its `heavy` by that mass, or the strong pull on it pumps energy in.
+  - `electrodes: { left, right }` puts an electrode down each side wall (a cell). A phase turns
+    the current on with `power: { b: 1 }`, and kinds with a `charge` then drift: positive ones to
+    the left electrode (the cathode) and negative ones to the right (the anode). Each electrode
+    has `rules` (`{ kind, to, stick?, chance? }`: a particle of that kind touching it becomes
+    `to`, and with `stick` stays on it as a coating up to a few layers thick), `plate: { kind, n }`
+    to start it coated, and `dissolve: { kind, to, chance? }` to let its coating leave as ions,
+    now and then with a `chance` (a zinc anode in a voltaic cell, where 0.0012 at power 0.4 loses
+    a few atoms in 16 seconds), or, without one, an atom for each one the other electrode gains
+    (electroplating). `label` is written above it. Give a gas that forms an `escape` list so only
+    it leaves by the open top. Chemistry 30's `lib/c30-cells.ts` has molten salt, aqueous,
+    plating and voltaic cells to copy.
   - `flow: { from, to }` on the element, with the part `flow`, draws an arrow of heat between two
     boxes side by side that thins as their temperatures meet.
   - `expand: 0.8` lets a solid's particles settle further apart as it warms (more than a real
@@ -262,6 +273,7 @@ See `src/video/script.ts` for every element and option. In short:
     `magnet: { b: 1 }` holds it there (`0` takes it away).
   - `escape: true` gives the box an open top that particles leave by (evaporation): one that
     reaches the top is gone. A kind with `bond` 2 or more (a salt) never leaves; it falls back.
+    `escape: [4]` lets only the kinds listed leave (a gas bubbling out of a solution).
   - `wall: { at: 0.5, height: 0.5 }` stands a low wall that never lifts (a still): the particles
     start on its left and only a gas gets over it.
   - `zones: [{ x: [0, 0.5], y: [0, 0.17] }, { x: [0.6, 1], y: [0, 1], temp: 0.4 }]` hold parts of
