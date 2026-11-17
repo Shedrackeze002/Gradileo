@@ -51,6 +51,8 @@ export interface LaneState {
   antinodes: number[];
   /** Where a standing wave's string or air column ends, in metres. */
   end?: number;
+  /** Where the tube of an air column ends: at `end`, or a little before it when the antinode sits beyond the open end. */
+  mouth?: number;
 }
 
 export interface WaveState {
@@ -88,7 +90,8 @@ export const pulseWidth = (el: WaveEl, pulse: WavePulse) => pulse.width ?? (el.s
 /** The length of a standing wave's string or air column, and the frequency that fits it. */
 export function standingOf(el: WaveEl, lane: WaveLane): { length: number; k: number; frequency: number } | undefined {
   if (!lane.standing) return undefined;
-  const length = lane.standing.length ?? el.span[1] - el.span[0];
+  // The standing wave in a tube reaches a little beyond its open end.
+  const length = (lane.standing.length ?? el.span[1] - el.span[0]) + (lane.standing.beyond ?? 0);
   // A string has a node at each end; an air column has one at its closed end, and an antinode at the open one.
   const halves = lane.kind === 'longitudinal' ? (lane.standing.quarters ?? 1) / 2 : (lane.standing.loops ?? 1);
   return { length, k: (halves * Math.PI) / length, frequency: (halves * lane.speed) / (2 * length) };
@@ -247,6 +250,7 @@ export function waveAt(el: WaveEl, plays: Array<[clip: string, seconds: number]>
       nodes: still,
       antinodes: loud,
       end: standing ? x0 + standing.length : undefined,
+      mouth: standing ? x0 + standing.length - (lane.standing?.beyond ?? 0) : undefined,
     };
     // Complete waves past the mark: the turns of phase that have gone by there since the start
     // (or, in a lane that starts empty, since the wave arrived).

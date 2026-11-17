@@ -78,6 +78,7 @@ interface Parts {
   motion: number;
   nodes: number;
   loop: number;
+  length: number;
 }
 
 /** The colours of the outlines of single pulses, in order, when the script gives none. */
@@ -247,6 +248,14 @@ function Rope({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
       </g>,
     );
   }
+  // The length of a standing wave's string, between its two fixed ends.
+  if (parts.length > 0 && standing && state.end !== undefined)
+    out.push(
+      <g key="length" opacity={parts.length}>
+        <Measure x1={f.left} y1={y0 + widest + 24} x2={endPx} y2={y0 + widest + 24} color={INK2} />
+        <Text x={(f.left + endPx) / 2} y={y0 + widest + 46} size={20} color={INK2}>{`L = ${fine(state.end - el.span[0])} m`}</Text>
+      </g>,
+    );
   // One loop of the pattern, from a node to the next: half a wavelength.
   if (parts.loop > 0 && state.nodes.length >= 2) {
     const k = Math.min(1, state.nodes.length - 2);
@@ -396,9 +405,19 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
   // The air of a standing wave is in a tube that is closed at the left end and open at the right, where the column ends.
   const standing = standingOf(el, lane);
   const endPx = state.end !== undefined ? f.X(state.end) : f.right;
+  // The tube itself stops at its mouth; the air just outside it moves too.
+  const mouthPx = state.mouth !== undefined ? f.X(state.mouth) : endPx;
   if (standing) {
-    out.push(<rect key="air" x={f.left} y={top - 5} width={endPx - f.left} height={tubeH + 10} fill="rgb(255 255 255 / 0.04)" />);
-    out.push(<path key="tube" d={`M ${endPx} ${top - 5} H ${f.left} V ${top + tubeH + 5} H ${endPx}`} fill="none" stroke={`rgb(255 255 255 / ${0.5 + 0.3 * glow})`} strokeWidth={3} strokeLinejoin="round" strokeLinecap="round" />);
+    out.push(<rect key="air" x={f.left} y={top - 5} width={mouthPx - f.left} height={tubeH + 10} fill="rgb(255 255 255 / 0.04)" />);
+    out.push(<path key="tube" d={`M ${mouthPx} ${top - 5} H ${f.left} V ${top + tubeH + 5} H ${mouthPx}`} fill="none" stroke={`rgb(255 255 255 / ${0.5 + 0.3 * glow})`} strokeWidth={3} strokeLinejoin="round" strokeLinecap="round" />);
+    // The length of the air column, from the closed end to the mouth of the tube.
+    if (parts.length > 0 && state.mouth !== undefined)
+      out.push(
+        <g key="length" opacity={parts.length}>
+          <Measure x1={f.left} y1={top - 24} x2={mouthPx} y2={top - 24} color={INK} />
+          <Text x={(f.left + mouthPx) / 2} y={top - 44} size={20}>{`${String(Math.round((state.mouth - el.span[0]) * 1000) / 10)} cm`}</Text>
+        </g>,
+      );
   } else out.push(<rect key="tube" x={f.left - 34} y={top - 5} width={f.right - f.left + 40} height={tubeH + 10} rx={10} fill="rgb(255 255 255 / 0.04)" stroke={`rgb(255 255 255 / ${0.16 + 0.3 * glow})`} strokeWidth={1.5} />);
   // How squashed the air is at a place, from −1 (most spread out) to 1 (most crowded): how fast
   // the displacement falls along the strip, against the most it ever does.
@@ -443,6 +462,11 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
       return pts.join(' ');
     };
     const y = top + tubeH + 14;
+    // The words go under the last tube only, where no other lane's label is in their way; under a
+    // column too short to hold both, "antinode" starts just past the open end.
+    const named = el.lanes[el.lanes.length - 1] === lane;
+    const [first, open] = [f.X(state.nodes[0]), f.X(state.antinodes[state.antinodes.length - 1])];
+    const narrow = open - first < 170;
     out.push(
       <g key="nodes" opacity={parts.nodes}>
         <polyline points={curve(1)} fill="none" stroke={NET} strokeWidth={2.5} opacity={0.85} />
@@ -450,8 +474,8 @@ function Tube({ el, lane, state, f, y0, color, glow, parts, mark, passed }: { el
         {state.nodes.map((x) => (
           <circle key={`n${x}`} cx={f.X(x)} cy={y0} r={6} fill="#fff" stroke="#15123a" strokeWidth={2.5} />
         ))}
-        <Text x={f.X(state.nodes[0])} y={y + 14} size={19} anchor="start">node</Text>
-        <Text x={f.X(state.antinodes[state.antinodes.length - 1])} y={y + 14} size={19} color={NET} anchor="end">antinode</Text>
+        {named && <Text x={first} y={y + 14} size={19} anchor="start">node</Text>}
+        {named && <Text x={narrow ? Math.max(open - 20, first + 62) : open} y={y + 14} size={19} color={NET} anchor={narrow ? 'start' : 'end'}>antinode</Text>}
       </g>,
     );
   }
@@ -530,7 +554,7 @@ export function WaveView({ el, st, w, h, plays }: { el: WaveEl; st: ElState | un
   const X = (x: number) => left + ((x - el.span[0]) / (el.span[1] - el.span[0])) * (right - left);
   const f: Frame = { X, left, right, top, laneH, w };
   const mark = el.mark ?? (el.span[0] + el.span[1]) / 2;
-  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front'), pulses: part('pulses'), sum: part('sum'), heights: part('heights'), pull: part('pull'), motion: part('motion'), nodes: part('nodes'), loop: part('loop') };
+  const parts: Parts = { particle: part('particle'), amplitude: part('amplitude'), wavelength: part('wavelength'), count: part('count'), speed: part('speed'), labels: part('labels'), frequency: part('frequency'), front: part('front'), pulses: part('pulses'), sum: part('sum'), heights: part('heights'), pull: part('pull'), motion: part('motion'), nodes: part('nodes'), loop: part('loop'), length: part('length') };
   const out: ReactElement[] = [];
 
   el.lanes.forEach((lane, i) => {

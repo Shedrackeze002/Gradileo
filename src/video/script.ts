@@ -485,7 +485,17 @@ export interface WaveLane {
    * whole strip otherwise). The lane's `frequency` must be the one that fits: loops × speed ÷ 2L,
    * or quarters × speed ÷ 4L.
    */
-  standing?: { loops?: number; quarters?: number; length?: number };
+  standing?: {
+    loops?: number;
+    quarters?: number;
+    length?: number;
+    /**
+     * For an air column: how far beyond the open end of the tube the antinode sits, in metres (0
+     * otherwise). The standing wave is `length + beyond` long, so a real tube resonates when it
+     * is a little shorter than a quarter of a wavelength.
+     */
+    beyond?: number;
+  };
   tone?: Tone;
 }
 
@@ -525,7 +535,7 @@ export interface WaveClip {
 }
 
 /** What a wave element can show over its waves; each is a part ("w.wavelength"). */
-export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock', 'pulses', 'sum', 'heights', 'pull', 'motion', 'nodes', 'loop'] as const;
+export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock', 'pulses', 'sum', 'heights', 'pull', 'motion', 'nodes', 'loop', 'length'] as const;
 
 /**
  * Travelling waves, for the physics videos: each lane is a strip with a source at its left end,
@@ -544,7 +554,8 @@ export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'spee
  * `pull` shows the pair of forces there: the rope's pull on the wall, and the wall's on the rope;
  * `motion` puts an arrow on the points of a rope for how fast each is moving, up or down. On a standing wave, or a
  * steady wave that meets its own reflection: `nodes` (the points that never move, and the points
- * half way between them that move the most) and `loop` (the length of one loop, node to node).
+ * half way between them that move the most), `loop` (the length of one loop, node to node) and
+ * `length` (the length of a standing wave's string, in metres, or of its tube, in centimetres).
  * Emphasising a lane's id makes it glow.
  */
 export interface WaveEl {
@@ -1996,9 +2007,12 @@ export function checkWave(e: WaveEl): string[] {
       if (l.reflect) problems.push(`lane "${l.id}": a lane with a second medium has no reflecting end.`);
     }
     if (l.standing) {
-      const { loops, quarters, length = e.span[1] - e.span[0] } = l.standing;
+      const { loops, quarters, beyond = 0 } = l.standing;
+      // The standing wave reaches a little beyond the open end of a tube.
+      const length = (l.standing.length ?? e.span[1] - e.span[0]) + beyond;
       if (l.pulses || l.reflect || l.medium) problems.push(`lane "${l.id}": a standing wave has no pulses, reflecting end or second medium of its own.`);
       if (!(length > 0 && length <= e.span[1] - e.span[0] + 1e-9)) problems.push(`lane "${l.id}": the standing wave's length must fit the strip.`);
+      if (beyond < 0 || (beyond > 0 && l.kind !== 'longitudinal')) problems.push(`lane "${l.id}": only an air column reaches beyond its open end, by zero or more.`);
       const whole = (n: number | undefined) => n !== undefined && Number.isInteger(n) && n >= 1;
       if (l.kind === 'transverse' ? !whole(loops) : !(whole(quarters) && quarters! % 2 === 1)) problems.push(`lane "${l.id}": a string needs a whole number of loops, and an air column an odd number of quarter wavelengths.`);
       else {
