@@ -15,9 +15,10 @@ import { checkPath, type MotionPath } from './path.ts';
 
 export type { MotionPath };
 
-/** The name on every frame, thumbnail and YouTube description. */
 import { checkAtoms } from './atoms.ts';
+import { checkMolecules } from './molecules.ts';
 
+/** The name on every frame, thumbnail and YouTube description. */
 export const BRAND = 'Gradileo';
 
 /** Colours with a fixed meaning in every video (trigonometry uses the first four). */
@@ -801,6 +802,50 @@ export interface AtomsEl {
   height?: number;
 }
 
+/** An atom of a molecules element: its symbol ("C"), drawn in its element's colour unless a `tone` is given. */
+export type MolAtom = string | { el: string; tone?: Tone };
+
+/** One arrangement of a molecules element. */
+export interface MolStage {
+  /** Where each atom is, by name, in the element's units (a bond is about 1 long); an atom left out is not there. */
+  at: Record<string, [number, number]>;
+  /** The bonds, by atom names: "C1=C2 C1-H1" (`-` single, `=` double, `#` triple). */
+  bonds: string;
+  /** Charges, by atom name ("O": -1 for a hydroxide ion), written beside the atom. */
+  charges?: Record<string, number>;
+  /** Names written in the scene ("ethene"), with their place in the element's units. */
+  names?: Array<{ text: string; at: [number, number]; tone?: Tone }>;
+}
+
+/** A stretch of a molecules clip: the molecules move to the arrangement `to` over `dur` seconds (or hold, without one). */
+export interface MolPhase {
+  dur: number;
+  to?: string;
+}
+
+/**
+ * Molecules as balls and sticks, for the organic chemistry videos (src/video/molecules.ts). Each
+ * stage is an arrangement of the atoms and their bonds, and a clip moves the molecules from one
+ * stage to the next: the atoms glide to their new places, a bond that breaks flashes red and fades
+ * in the first half of the move, and a new bond fades in green in the second half (and stays green
+ * for a moment), so the bonds broken and made can be seen. The atoms jiggle a little all the time.
+ * An atom's name is a part, so a line can focus on it.
+ */
+export interface MoleculesEl {
+  kind: 'molecules';
+  id: string;
+  atoms: Record<string, MolAtom>;
+  stages: Record<string, MolStage>;
+  /** The stage shown before any clip plays. */
+  start: string;
+  clips: Record<string, { phases: MolPhase[] }>;
+  /** The width and height of the scene, in the element's units. */
+  span: [number, number];
+  /** For the thumbnail: the clip to show, played to its end. */
+  poster?: string;
+  height?: number;
+}
+
 /** A stretch of a rays clip. */
 export interface RayPhase {
   /** How long it lasts, in seconds. */
@@ -1295,7 +1340,7 @@ export interface GravityEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | AtomsEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | AtomsEl | MoleculesEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -1733,7 +1778,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -1797,6 +1842,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...ATOM_PARTS, ...e.atoms.map((a) => a.id)]));
         motions.set(e.id, e);
         problems.push(...checkAtoms(e).map((p) => `Scene ${si + 1}: atoms "${e.id}": ${p}`));
+      }
+      if (e.kind === 'molecules') {
+        diagrams.set(e.id, new Set<string>(Object.keys(e.atoms)));
+        motions.set(e.id, e);
+        problems.push(...checkMolecules(e).map((p) => `Scene ${si + 1}: molecules "${e.id}": ${p}`));
       }
       if (e.kind !== 'diagram') continue;
       const parts = new Set<string>();

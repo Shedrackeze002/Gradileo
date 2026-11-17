@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, join, structure, tag, tube } from './lib/c30-3b-figures.ts';
+import { bromineAdds } from './lib/c30-molecules.ts';
 
 // Ethene and bromine give 1,2-dibromoethane, drawn as structural formulas: the double bond of
 // ethene opens, and one bromine atom joins each carbon.
@@ -88,6 +89,15 @@ const video: Explainer = {
         { say: 'The bromine molecule splits, and one bromine atom joins each carbon. The carbons are now held by a single bond.', show: ['f.arrow', 'f.p'], focus: ['f.p-Br1', 'f.p-Br2', 'f.p-C1-C2'] },
         { say: 'Two reactants have made one product.', show: 'm.0', focus: 'm.0' },
         { say: 'Its name is one, two dye-bromo-ethane: two bromine atoms, on carbons one and two of ethane.', caption: 'Its name is 1,2-dibromoethane: two bromine atoms, on carbons 1 and 2 of ethane.', show: 'm.1', focus: 'm.1' },
+      ],
+    },
+    {
+      chapter: 'Addition, up close',
+      layout: 'center',
+      main: [bromineAdds('ba')],
+      lines: [
+        { say: 'Here is the same reaction up close, with ethene on the left and a bromine molecule on the right. Watch the bonds as the molecules meet: a bond that breaks turns red and fades, and a new bond comes in green.', show: 'ba', play: 'ba.go' },
+        { say: 'One of the two bonds between the carbons breaks, and so does the bond between the two bromine atoms. Two new bonds form, one from each carbon to a bromine atom. So two molecules have become one.', focus: ['ba.Br1', 'ba.Br2'] },
       ],
     },
     {

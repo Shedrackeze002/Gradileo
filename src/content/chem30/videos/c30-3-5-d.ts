@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { threeKinds } from './lib/c30-molecules.ts';
 
 const video: Explainer = {
   id: 'c30-3-5-d',
@@ -38,6 +39,17 @@ const video: Explainer = {
         { say: 'In substitution, two reactants make two products, as one atom or group swaps for another.', show: 't.1', focus: 't.1' },
         { say: 'In elimination, one reactant gives two products, as a small molecule leaves and a double bond forms.', show: 't.2', focus: 't.2' },
         { say: 'Then compare the organic reactant and product. A multiple bond that becomes single means addition; a new one means elimination; one atom swapped means substitution.', show: 'tip', focus: 't' },
+      ],
+    },
+    {
+      chapter: 'All three, up close',
+      layout: 'center',
+      main: [threeKinds('tk')],
+      lines: [
+        { say: 'Here are all three kinds up close. First, addition: ethene and bromine. Count the molecules before and after, and watch what happens to the double bond.', show: 'tk', play: 'tk.add' },
+        { say: 'Two molecules became one, and the double bond became a single bond. Next, substitution: methane and chlorine. Watch a chlorine atom swap for a hydrogen atom, while that hydrogen atom leaves with the other chlorine atom.', play: 'tk.sub' },
+        { say: 'Two molecules became two new ones, with the same bonds except for one atom swapped. Last, elimination: ethanol, on its own. Watch a small molecule leave.', play: 'tk.elim' },
+        { say: 'One molecule became two, ethene and water, and a new double bond formed between the carbons.' },
       ],
     },
     {

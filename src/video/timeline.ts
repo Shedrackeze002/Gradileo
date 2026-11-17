@@ -3,7 +3,7 @@
  * stage shows at any moment. Rendering is a pure function of that state, so the same script and
  * narration always give the same frames, and a frame that has not changed can be reused.
  */
-import { asList, captionOf, plainMarkdown, sceneElements, type CircuitEl, type El, type Explainer, type FlightEl, type AtomsEl, type ForcesEl, type GravityEl, type MotionEl, type RampEl, type ParticlesEl, type RaysEl, type TryEl, type WaveEl } from './script.ts';
+import { asList, captionOf, plainMarkdown, sceneElements, type CircuitEl, type El, type Explainer, type FlightEl, type AtomsEl, type MoleculesEl, type ForcesEl, type GravityEl, type MotionEl, type RampEl, type ParticlesEl, type RaysEl, type TryEl, type WaveEl } from './script.ts';
 
 /**
  * Timing, in seconds. The pauses give a viewer time to read each new step before the narrator
@@ -49,6 +49,7 @@ export function revealTime(kind: El['kind']): number {
     case 'motion':
     case 'particles':
     case 'atoms':
+    case 'molecules':
     case 'wave':
     case 'rays':
     case 'circuit':
@@ -105,7 +106,7 @@ const r3 = (x: number) => Math.round(x * 1000) / 1000;
 const AFTER_PLAY = 0.4;
 
 /** An element that plays clips: a motion, boxes of particles, atoms, waves, rays, a circuit, a flight, a ramp, forces in a plane, or bodies in space. */
-export type Playable = MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl;
+export type Playable = MotionEl | ParticlesEl | AtomsEl | MoleculesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl;
 
 /** How long a clip runs in the video, in seconds (slow motion stretches a motion's phase). */
 export function clipSeconds(el: Playable, clip: string): number {
@@ -128,7 +129,7 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
     for (const e of sceneElements(s)) {
       kinds[e.id] = e.kind;
       if (e.kind === 'try') tries.set(e.id, e);
-      if (e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity') motions.set(e.id, e);
+      if (e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'molecules' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity') motions.set(e.id, e);
     }
     if (s.chapter) {
       chapter = s.chapter;
@@ -294,7 +295,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
     const timer = timers[el];
     els[el] = { p: q(p), parts, whole: st.whole, focus: fs, ...(timer ? { timer: q(clamp01((t - timer.at) / timer.dur)) } : {}), ...(plays[el] ? { plays: plays[el] } : {}) };
     // Particles and electrons move all the time they are on screen, so their frames carry the time.
-    if (s.kinds[el] === 'particles' || s.kinds[el] === 'atoms') {
+    if (s.kinds[el] === 'particles' || s.kinds[el] === 'atoms' || s.kinds[el] === 'molecules') {
       els[el].age = q(t - st.at);
       els[el].started = (starts[el] ?? []).map(([c, at]) => [c, q(at - st.at)]);
     }

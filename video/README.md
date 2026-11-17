@@ -335,6 +335,19 @@ See `src/video/script.ts` for every element and option. In short:
   `labels`, `arrangement` ("2, 8, 1") and `charges` ("Na⁺") show under and beside each atom
   (`labelAbove` puts them above it). See `src/content/chem9/videos/c9-1-3.ts` (filling shells),
   `c9-1-4.ts` (ions) and `c9-2-1.ts` (ionic and covalent bonding).
+- `molecules` (`src/video/molecules.ts`) draws molecules as balls and sticks, flat like a
+  structural formula, for organic reactions. `atoms` names each atom and its element (`{ C1: 'C',
+  H1: 'H' }`, coloured like a model kit, or `{ el: 'C', tone: 'good' }`), and each of `stages` is
+  an arrangement: `at` (each atom's place in the `span`, with bonds about 1 unit long and an atom
+  left out not there), `bonds` (`'C1=C2 C1-H1'`, with `-`, `=` and `#`), `charges` and `names`
+  (text placed in the scene). The element starts at `start`, and a clip's phases move it to a
+  stage (`{ dur: 2.6, to: 'product' }`) or hold (`{ dur: 0.6 }`): the atoms glide, a bond that
+  breaks turns red and fades in the first half, and a new bond comes in green in the second half
+  and stays green for a moment. A molecule only in one of the two stages fades in or out whole.
+  Let the reactants first move together (a stage where they touch), then make the product, so
+  each bond change can be seen; keep paths from crossing. A line can focus an atom (`m.Br1`). See
+  Chemistry 30's `lib/c30-molecules.ts` (addition, substitution, elimination, and
+  `oneAfterAnother` for several reactions in one element).
 
 - `quote` sets a passage of prose or verse off from the narration, for the English videos: one
   entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)
