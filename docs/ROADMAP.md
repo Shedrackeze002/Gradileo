@@ -1305,8 +1305,10 @@ items ship or decisions change.
        force-displacement graph whose area is the work, springs (Hooke's law, elastic energy, a
        launcher, a mass hanging on a spring) and tall hills beside the thumbnail title. `ramp`
        gained bars of the work each force does, for the work-energy theorem.
-     - Next: render Unit 3 and move it to Drive, then the videos of Unit 4, then Grade 12
-       Physics (`phys-30`).
+     - Done (16 November 2026): the thirteen videos of Unit 3 are rendered and in Drive.
+     - Next: the videos of Unit 4 (in progress: `motion` can now follow an oscillation about an
+       equilibrium position and trace its displacement-time graph), then Grade 12 Physics
+       (`phys-30`).
        `phys-sample-momentum` becomes the first video of Grade 12 Unit A and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none

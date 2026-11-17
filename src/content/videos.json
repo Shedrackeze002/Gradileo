@@ -124159,5 +124159,676 @@
         "working": "One radius above the surface is $1 + 1 = 2$ radii from the centre. The distance has doubled, so $g$ is divided by $2^2 = 4$: $\\dfrac{12}{4} = 3\\ \\text{N/kg}$."
       }
     ]
+  },
+  "p20-3-1": {
+    "lessonId": "p20-3-1",
+    "title": "Uniform Circular Motion",
+    "duration": 357,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Period and frequency",
+        "t": 20.607
+      },
+      {
+        "title": "The speed of a rider",
+        "t": 77.728
+      },
+      {
+        "title": "Same period, different speeds",
+        "t": 105.942
+      },
+      {
+        "title": "The velocity keeps turning",
+        "t": 136.697
+      },
+      {
+        "title": "The size of the acceleration",
+        "t": 200.224
+      },
+      {
+        "title": "From the period",
+        "t": 249.085
+      },
+      {
+        "title": "Your turn",
+        "t": 279.365
+      },
+      {
+        "title": "Summary",
+        "t": 318.447
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-1:q",
+        "t": 294.282,
+        "prompt": "A cyclist rides at a steady 6 m/s round a circular track of radius 12 m. What is the centripetal acceleration of the cyclist?",
+        "choices": [
+          "$0.5\\ \\text{m/s}^2$",
+          "$3\\ \\text{m/s}^2$",
+          "$2\\ \\text{m/s}^2$",
+          "$72\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "$a_c = \\dfrac{v^2}{r} = \\dfrac{6^2}{12} = \\dfrac{36}{12} = 3\\ \\text{m/s}^2$, towards the centre of the track."
+      }
+    ]
+  },
+  "p20-3-2": {
+    "lessonId": "p20-3-2",
+    "title": "Centripetal Force",
+    "duration": 308,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A force towards the centre",
+        "t": 21.805
+      },
+      {
+        "title": "When the string breaks",
+        "t": 76.953
+      },
+      {
+        "title": "A car on a bend",
+        "t": 122.374
+      },
+      {
+        "title": "Which force does the job?",
+        "t": 206.788
+      },
+      {
+        "title": "Your turn",
+        "t": 232.584
+      },
+      {
+        "title": "Summary",
+        "t": 274.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-2:q",
+        "t": 248.911,
+        "prompt": "A 2 kg puck on a string moves in a horizontal circle of radius 0.5 m on a frictionless table, at a steady 3 m/s. What is the tension in the string?",
+        "choices": [
+          "$12\\ \\text{N}$",
+          "$9\\ \\text{N}$",
+          "$18\\ \\text{N}$",
+          "$36\\ \\text{N}$"
+        ],
+        "answer": 3,
+        "working": "The tension is the centripetal force: $F_T = \\dfrac{mv^2}{r} = \\dfrac{2 \\times 3^2}{0.5} = \\dfrac{18}{0.5} = 36\\ \\text{N}$."
+      }
+    ]
+  },
+  "p20-3-2-b": {
+    "lessonId": "p20-3-2",
+    "title": "Centripetal Force, Part 2: Vertical Circles",
+    "duration": 308,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A circle that stands upright",
+        "t": 25.144
+      },
+      {
+        "title": "At the top and at the bottom",
+        "t": 72.094
+      },
+      {
+        "title": "The slowest speed at the top",
+        "t": 163.456
+      },
+      {
+        "title": "Your turn",
+        "t": 231.165
+      },
+      {
+        "title": "Summary",
+        "t": 274.48
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-2-b:q",
+        "t": 247.538,
+        "prompt": "A 2 kg ball on a string is whirled in a vertical circle of radius 0.5 m. It passes the lowest point at 4 m/s. Use $g = 9.81\\ \\text{N/kg}$. What is the tension in the string at the lowest point?",
+        "choices": [
+          "$83.6\\ \\text{N}$",
+          "$64\\ \\text{N}$",
+          "$44.4\\ \\text{N}$",
+          "$19.6\\ \\text{N}$"
+        ],
+        "answer": 0,
+        "working": "At the lowest point the weight points away from the centre: $F_T - mg = \\dfrac{mv^2}{r}$. So $F_T = \\dfrac{2 \\times 4^2}{0.5} + 2 \\times 9.81 = 64 + 19.62 = 83.6\\ \\text{N}$."
+      }
+    ]
+  },
+  "p20-3-3": {
+    "lessonId": "p20-3-3",
+    "title": "Orbits and Satellites",
+    "duration": 307,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Newton’s cannon",
+        "t": 15.252
+      },
+      {
+        "title": "Gravity is the centripetal force",
+        "t": 73.575
+      },
+      {
+        "title": "One speed for each orbit",
+        "t": 141.491
+      },
+      {
+        "title": "A height above the surface",
+        "t": 184.939
+      },
+      {
+        "title": "Your turn",
+        "t": 236.825
+      },
+      {
+        "title": "Summary",
+        "t": 274.084
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-3:q",
+        "t": 250.436,
+        "prompt": "Two satellites are in the same circular orbit round a planet. Satellite A has twice the mass of satellite B. How do their speeds compare?",
+        "choices": [
+          "A is twice as fast as B",
+          "A is half as fast as B",
+          "They have the same speed",
+          "A is four times as fast as B"
+        ],
+        "answer": 2,
+        "working": "The orbital speed is $v = \\sqrt{\\dfrac{GM}{r}}$, where $M$ is the mass of the planet. The mass of the satellite cancels, so two satellites in the same orbit have the same speed."
+      }
+    ]
+  },
+  "p20-3-3-b": {
+    "lessonId": "p20-3-3",
+    "title": "Orbits and Satellites, Part 2: Kepler’s Third Law",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The period of a satellite",
+        "t": 16.444
+      },
+      {
+        "title": "Farther out, much longer",
+        "t": 69.332
+      },
+      {
+        "title": "Kepler’s third law",
+        "t": 114.86
+      },
+      {
+        "title": "Your turn",
+        "t": 212.64
+      },
+      {
+        "title": "Summary",
+        "t": 262.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-3-b:q",
+        "t": 230.49,
+        "prompt": "Two satellites orbit the same planet. Satellite A has a period of 2 hours. The radius of satellite B’s orbit is 9 times the radius of A’s. What is the period of satellite B?",
+        "choices": [
+          "$18\\ \\text{h}$",
+          "$6\\ \\text{h}$",
+          "$162\\ \\text{h}$",
+          "$54\\ \\text{h}$"
+        ],
+        "answer": 3,
+        "working": "$T^2 \\propto r^3$, so multiplying $r$ by 9 multiplies $T^2$ by $9^3 = 729$, and $T$ by $\\sqrt{729} = 27$. The period is $2 \\times 27 = 54\\ \\text{h}$."
+      }
+    ]
+  },
+  "p20-3-4": {
+    "lessonId": "p20-3-4",
+    "title": "Work",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Force times displacement",
+        "t": 18.507
+      },
+      {
+        "title": "A force at an angle",
+        "t": 56.863
+      },
+      {
+        "title": "Positive, negative and zero",
+        "t": 113.788
+      },
+      {
+        "title": "A force that does no work",
+        "t": 190.947
+      },
+      {
+        "title": "Your turn",
+        "t": 225.939
+      },
+      {
+        "title": "Summary",
+        "t": 268.62
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-4:q",
+        "t": 242.02,
+        "prompt": "A rope pulls a box along level ground with a force of 50 N, at $60^\\circ$ above the horizontal. How much work does the rope do as the box moves 8 m?",
+        "choices": [
+          "$400\\ \\text{J}$",
+          "$200\\ \\text{J}$",
+          "$346\\ \\text{J}$",
+          "$0\\ \\text{J}$"
+        ],
+        "answer": 1,
+        "working": "$W = Fd\\cos\\theta = 50 \\times 8 \\times \\cos 60^\\circ = 400 \\times 0.5 = 200\\ \\text{J}$."
+      }
+    ]
+  },
+  "p20-3-4-b": {
+    "lessonId": "p20-3-4",
+    "title": "Work, Part 2: Force-Displacement Graphs",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A steady force",
+        "t": 20.394
+      },
+      {
+        "title": "A force that changes",
+        "t": 66.23
+      },
+      {
+        "title": "Three parts, and the average force",
+        "t": 110.988
+      },
+      {
+        "title": "A spring gives a triangle",
+        "t": 177.162
+      },
+      {
+        "title": "Your turn",
+        "t": 210.114
+      },
+      {
+        "title": "Summary",
+        "t": 256.504
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-4-b:q",
+        "t": 227.259,
+        "prompt": "A force on a cart, in the direction of its motion, is a steady 20 N for the first 3 m. It then falls steadily to zero over the next 2 m. How much work does the force do over the whole 5 m?",
+        "choices": [
+          "$100\\ \\text{J}$",
+          "$60\\ \\text{J}$",
+          "$80\\ \\text{J}$",
+          "$50\\ \\text{J}$"
+        ],
+        "answer": 2,
+        "working": "Rectangle: $20 \\times 3 = 60\\ \\text{J}$. Triangle: $\\tfrac{1}{2} \\times 2 \\times 20 = 20\\ \\text{J}$. The work is $60 + 20 = 80\\ \\text{J}$."
+      }
+    ]
+  },
+  "p20-3-5": {
+    "lessonId": "p20-3-5",
+    "title": "Kinetic and Potential Energy",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Kinetic energy",
+        "t": 21.981
+      },
+      {
+        "title": "The work-energy theorem",
+        "t": 68.149
+      },
+      {
+        "title": "Twice the speed, four times the energy",
+        "t": 124.491
+      },
+      {
+        "title": "Gravitational potential energy",
+        "t": 180.832
+      },
+      {
+        "title": "Your turn",
+        "t": 232.121
+      },
+      {
+        "title": "Summary",
+        "t": 272.919
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-5:q",
+        "t": 247.525,
+        "prompt": "A 2 kg ball is moving at 3 m/s. A net force then does 16 J of work on it, in the direction of its motion. What is its speed afterwards?",
+        "choices": [
+          "$5\\ \\text{m/s}$",
+          "$4\\ \\text{m/s}$",
+          "$7\\ \\text{m/s}$",
+          "$11\\ \\text{m/s}$"
+        ],
+        "answer": 0,
+        "working": "At the start, $E_k = \\tfrac{1}{2} \\times 2 \\times 3^2 = 9\\ \\text{J}$. The net work adds 16 J: $E_k = 25\\ \\text{J}$. So $v = \\sqrt{\\dfrac{2 \\times 25}{2}} = 5\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p20-3-5-b": {
+    "lessonId": "p20-3-5",
+    "title": "Kinetic and Potential Energy, Part 2: Springs and Elastic Energy",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hooke’s law",
+        "t": 14.59
+      },
+      {
+        "title": "The energy in a spring",
+        "t": 75.049
+      },
+      {
+        "title": "A compressed spring",
+        "t": 129.385
+      },
+      {
+        "title": "Measuring a spring constant",
+        "t": 176.655
+      },
+      {
+        "title": "Your turn",
+        "t": 237.225
+      },
+      {
+        "title": "Summary",
+        "t": 278.583
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-5-b:q",
+        "t": 251.137,
+        "prompt": "A spring with a spring constant of 200 N/m is stretched by 10 cm. How much elastic potential energy does it store?",
+        "choices": [
+          "$10\\,000\\ \\text{J}$",
+          "$20\\ \\text{J}$",
+          "$10\\ \\text{J}$",
+          "$1\\ \\text{J}$"
+        ],
+        "answer": 3,
+        "working": "Change the units: $x = 10\\ \\text{cm} = 0.1\\ \\text{m}$. Then $E_e = \\tfrac{1}{2}kx^2 = \\tfrac{1}{2} \\times 200 \\times 0.1^2 = 1\\ \\text{J}$."
+      }
+    ]
+  },
+  "p20-3-6": {
+    "lessonId": "p20-3-6",
+    "title": "Conservation of Mechanical Energy",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A fall from rest",
+        "t": 19.316
+      },
+      {
+        "title": "A roller coaster",
+        "t": 79.444
+      },
+      {
+        "title": "Coasting uphill",
+        "t": 141.426
+      },
+      {
+        "title": "A spring launcher",
+        "t": 187.102
+      },
+      {
+        "title": "Up a hill",
+        "t": 232.611
+      },
+      {
+        "title": "Your turn",
+        "t": 264.57
+      },
+      {
+        "title": "Summary",
+        "t": 310.273
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-6:q",
+        "t": 277.109,
+        "prompt": "A ball is dropped from rest, 5 m above the ground. Ignore air resistance and use $g = 9.81\\ \\text{m/s}^2$. With what speed does it reach the ground?",
+        "choices": [
+          "$49.1\\ \\text{m/s}$",
+          "$9.9\\ \\text{m/s}$",
+          "$98.1\\ \\text{m/s}$",
+          "$7.0\\ \\text{m/s}$"
+        ],
+        "answer": 1,
+        "working": "$mgh = \\tfrac{1}{2}mv^2$, and the mass cancels: $v = \\sqrt{2gh} = \\sqrt{2 \\times 9.81 \\times 5} = \\sqrt{98.1} = 9.9\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p20-3-6-b": {
+    "lessonId": "p20-3-6",
+    "title": "Conservation of Mechanical Energy, Part 2: When Friction Takes a Share",
+    "duration": 318,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Friction makes thermal energy",
+        "t": 19.027
+      },
+      {
+        "title": "Energy lost on a slide",
+        "t": 66.458
+      },
+      {
+        "title": "The speed at the bottom",
+        "t": 118.415
+      },
+      {
+        "title": "The force of friction",
+        "t": 168.762
+      },
+      {
+        "title": "Your turn",
+        "t": 239.563
+      },
+      {
+        "title": "Summary",
+        "t": 286.862
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-6-b:q",
+        "t": 257.938,
+        "prompt": "A 2 kg block slides from rest down a rough slope, dropping through a height of 5 m, and reaches the bottom at 8 m/s. Use $g = 9.81\\ \\text{m/s}^2$. How much mechanical energy is changed into thermal energy?",
+        "choices": [
+          "$34.1\\ \\text{J}$",
+          "$64\\ \\text{J}$",
+          "$98.1\\ \\text{J}$",
+          "$162.1\\ \\text{J}$"
+        ],
+        "answer": 0,
+        "working": "At the top, $E_g = 2 \\times 9.81 \\times 5 = 98.1\\ \\text{J}$. At the bottom, $E_k = \\tfrac{1}{2} \\times 2 \\times 8^2 = 64\\ \\text{J}$. The energy lost is $98.1 - 64 = 34.1\\ \\text{J}$."
+      }
+    ]
+  },
+  "p20-3-7": {
+    "lessonId": "p20-3-7",
+    "title": "Power",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rate of doing work",
+        "t": 17.591
+      },
+      {
+        "title": "Climbing stairs",
+        "t": 76.571
+      },
+      {
+        "title": "Force times speed",
+        "t": 116.208
+      },
+      {
+        "title": "How fast can a motor lift?",
+        "t": 163.023
+      },
+      {
+        "title": "The kilowatt-hour",
+        "t": 211.018
+      },
+      {
+        "title": "Your turn",
+        "t": 236.212
+      },
+      {
+        "title": "Summary",
+        "t": 281.744
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-7:q",
+        "t": 250.149,
+        "prompt": "A motor lifts a 50 kg crate through 6 m in 4 s, at a steady speed. Use $g = 9.81\\ \\text{m/s}^2$. What power does the motor develop against gravity?",
+        "choices": [
+          "$2943\\ \\text{W}$",
+          "$75\\ \\text{W}$",
+          "$735.8\\ \\text{W}$",
+          "$11\\,772\\ \\text{W}$"
+        ],
+        "answer": 2,
+        "working": "Work: $W = mgh = 50 \\times 9.81 \\times 6 = 2943\\ \\text{J}$. Power: $P = \\dfrac{W}{t} = \\dfrac{2943}{4} = 735.8\\ \\text{W}$."
+      }
+    ]
+  },
+  "p20-3-7-b": {
+    "lessonId": "p20-3-7",
+    "title": "Power, Part 2: Efficiency",
+    "duration": 345,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Useful and wasted energy",
+        "t": 20.231
+      },
+      {
+        "title": "A hoist",
+        "t": 83.722
+      },
+      {
+        "title": "Efficiency as a decimal",
+        "t": 131.261
+      },
+      {
+        "title": "The energy a fuel must supply",
+        "t": 188.477
+      },
+      {
+        "title": "Your turn",
+        "t": 263.42
+      },
+      {
+        "title": "Summary",
+        "t": 310.459
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-7-b:q",
+        "t": 277.525,
+        "prompt": "A motor takes in 500 J of electrical energy and lifts a 4 kg load through 10 m. Use $g = 9.81\\ \\text{m/s}^2$. What is the efficiency of the motor?",
+        "choices": [
+          "$127.4\\%$",
+          "$8\\%$",
+          "$21.5\\%$",
+          "$78.5\\%$"
+        ],
+        "answer": 3,
+        "working": "Useful energy out: $mgh = 4 \\times 9.81 \\times 10 = 392.4\\ \\text{J}$. Efficiency: $\\dfrac{392.4}{500} \\times 100\\% = 78.5\\%$."
+      }
+    ]
   }
 }
