@@ -239,10 +239,11 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
         <div style={{ position: 'absolute', left: fig.kind === 'flight' ? 330 : 60, top: fig.kind === 'motion' || fig.kind === 'wave' || fig.kind === 'flight' ? 300 : 330 }}>
           {fig.kind === 'motion' ? (
             // A motion is caught part way through its poster clip, with its forces and velocities drawn.
-            // A drop takes the full height and width, without its graph, strobe marks or phase notes.
+            // A drop takes the full height and width, without its graph, strobe marks or phase notes;
+            // an oscillation keeps the displacement graph it traces.
             <MotionView
-              el={{ ...fig, momentumMax: undefined, energy: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })), ...(fig.vertical ? { graph: undefined, clips: withoutNotes(fig.clips) } : {}) }}
-              st={{ ...FULL, parts: fig.vertical ? { velocity: 1 } : { velocity: 1, strobe: 1 } }}
+              el={{ ...fig, momentumMax: undefined, energy: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })), ...(fig.vertical ? { graph: fig.graph?.y === 'displacement' ? fig.graph : undefined, clips: withoutNotes(fig.clips) } : {}) }}
+              st={{ ...FULL, parts: fig.vertical ? (fig.graph?.y === 'displacement' ? { graph: 1 } : { velocity: 1 }) : { velocity: 1, strobe: 1 } }}
               w={1160}
               h={fig.vertical ? 320 : Math.min(320, 150 + 130 * (fig.lanes?.length ?? 1))}
               plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}

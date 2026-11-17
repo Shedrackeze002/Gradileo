@@ -77,6 +77,27 @@ export function Clock({ w, time, opacity, unit = 's' }: { w: number; time: numbe
   );
 }
 
+/** The complete oscillations counted so far, in a pill at the top left of a picture. */
+export function Count({ n, opacity, x = 0 }: { n: number; opacity: number; x?: number }) {
+  return (
+    <g opacity={opacity}>
+      <rect x={x} y={0} width={200} height={38} rx={19} fill="rgb(255 255 255 / 0.07)" stroke="rgb(255 255 255 / 0.14)" />
+      <Text x={x + 100} y={19.5} size={19} color={INK2}>
+        {`Oscillations: ${n}`}
+      </Text>
+    </g>
+  );
+}
+
+/** A displacement of an oscillation, written with its sign in metres or (`cm`) in centimetres. */
+export const offset = (m: number, cm?: boolean, sign = true): string => {
+  const [v, places] = cm ? [m * 100, 1] : [m, 2];
+  const zero = Math.abs(v) < 0.5 * 10 ** -places;
+  return `${zero || !sign ? '' : v > 0 ? '+' : '−'}${zero ? (0).toFixed(places) : Math.abs(v).toFixed(places)} ${cm ? 'cm' : 'm'}`;
+};
+/** The step between the numbers of a ruler that counts from an equilibrium position, at `S` pixels a metre and `room` pixels a number. */
+export const offsetStep = (S: number, room: number): number => [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10].find((n) => n * S >= room) ?? 20;
+
 /** The bodies whose energy is shown, and the rows of bars that takes. */
 export const energyBodies = (el: MotionEl): MotionBody[] => (el.energy ? (el.energy.of ? el.bodies.filter((b) => el.energy!.of!.includes(b.id)) : el.bodies.slice(0, 1)) : []);
 export const energyRows = (el: MotionEl): number => energyBodies(el).length * (el.energy?.bars.length ?? 0);
