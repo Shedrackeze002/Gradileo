@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { electronCount } from './lib/c30-2a-figures.ts';
+import { redox } from './lib/c30-atoms.ts';
 
 // Two aluminium atoms lose three electrons each; three copper(II) ions gain two each: six electrons.
 const six = figure(
@@ -50,6 +51,21 @@ const video: Explainer = {
         { say: 'The oxidation: aluminium gives aluminium ions plus three electrons.', caption: 'The oxidation: Al → Al³⁺ + 3e⁻.', show: 't.0' },
         { say: 'The reduction: copper two ions plus two electrons give copper.', caption: 'The reduction: Cu²⁺ + 2e⁻ → Cu.', show: 't.1' },
         { say: 'Three and two do not match. The smallest number both go into is six. So multiply the oxidation by two, and the reduction by three: six electrons each.', focus: 't' },
+      ],
+    },
+    {
+      chapter: 'Matching, up close',
+      layout: 'center',
+      main: [
+        redox('mc', [
+          { id: 'c1', symbol: 'Cl', protons: 17, name: 'chlorine', at: [3.4, 3.6], tone: 'good' },
+          { id: 'mg', symbol: 'Mg', protons: 12, name: 'magnesium', at: [11, 3.6], tone: 'brand' },
+          { id: 'c2', symbol: 'Cl', protons: 17, name: 'chlorine', at: [18.6, 3.6], tone: 'good' },
+        ], [{ from: 'mg', to: 'c1', n: 1 }, { from: 'mg', to: 'c2', n: 1 }], [22, 7.2]),
+      ],
+      lines: [
+        { say: 'Here is why the numbers must match, up close. A magnesium atom loses two electrons, but a chlorine atom can take only one. Watch where the magnesium atom’s two outer electrons go.', show: ['mc', 'mc.labels', 'mc.arrangement'], play: 'mc.give' },
+        { say: 'One goes to each chlorine atom. Two electrons lost, two electrons gained, so it takes two chlorine atoms for every magnesium atom. That is what multiplying a half-reaction does: it makes the electrons lost equal the electrons gained.', show: 'mc.charges' },
       ],
     },
     {
