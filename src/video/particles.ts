@@ -760,6 +760,10 @@ interface StepOpts {
   run?: number;
   /** Let the box's reactions happen (not while it settles before it is seen). */
   react?: boolean;
+  /** Hold no particle at any temperature: energy only passes between them as they collide. */
+  insulated?: boolean;
+  /** Temperatures for kinds held at their own, by kind (as an insulated box settles). */
+  kindTemps?: Array<number | undefined>;
 }
 
 /** The strip along a side where a box with a `bath` is held at its temperature. */
@@ -884,7 +888,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   if (o.react) react(s, o.divider);
   if (o.react && s.breaks.length) breakApart(s, temp);
   // A bath holds its strip firmly, as a flame or ice would, so heat goes in or out quickly there.
-  const c1 = Math.exp(-(o.bath || zones ? BATH_GAMMA : GAMMA) * DT);
+  const c1 = Math.exp(-(o.bath || zones || o.kindTemps ? BATH_GAMMA : GAMMA) * DT);
   const c2 = Math.sqrt((1 - c1 * c1) * temp);
   const inBath = (i: number) => (o.bath === 'left' ? x[i] < BATH : o.bath === 'right' ? x[i] > w - BATH : y[i] < BATH);
   const smooth = DT / 1.2;
@@ -897,7 +901,9 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
     const sm = Math.sqrt(im);
     vx[i] += fx[i] * half * im;
     vy[i] += fy[i] * half * im;
-    if (zones) {
+    if (o.insulated) {
+      // Nothing outside the box adds or takes energy.
+    } else if (zones) {
       const z = zones.find((zz) => x[i] >= zz.x0 && x[i] < zz.x1 && y[i] >= zz.y0 && y[i] < zz.y1);
       if (z) {
         const c = Math.sqrt((1 - c1 * c1) * z.temp) * sm;
@@ -905,8 +911,10 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
         vy[i] = c1 * vy[i] + c * gauss(rnd);
       }
     } else if (!o.bath || inBath(i)) {
-      vx[i] = c1 * vx[i] + c2 * sm * gauss(rnd);
-      vy[i] = c1 * vy[i] + c2 * sm * gauss(rnd);
+      const own = o.kindTemps?.[kind[i]];
+      const c = own === undefined ? c2 : Math.sqrt((1 - c1 * c1) * own);
+      vx[i] = c1 * vx[i] + c * sm * gauss(rnd);
+      vy[i] = c1 * vy[i] + c * sm * gauss(rnd);
     }
     s.ke[i] += ((m * (vx[i] * vx[i] + vy[i] * vy[i])) / 2 - s.ke[i]) * smooth;
   }
@@ -1072,7 +1080,27 @@ function optsFor(b: ParticleBox, ctl?: Controls): StepOpts {
     zones: ctl && b.zones?.map((z) => ({ x0: z.x[0] * w, x1: z.x[1] * w, y0: z.y[0] * h, y1: z.y[1] * h, temp: z.temp === undefined ? temp : tempOf(z.temp, temp) })),
     escape: ctl ? b.escape : false,
     react: !!ctl && (!b.waits || ctl.released[b.id] !== undefined),
+    insulated: ctl ? b.insulated : false,
+    // As an insulated box settles, a kind with its own temperature is held at it (a hot lump in cold water).
+    kindTemps: !ctl && b.insulated ? b.kinds?.map((k) => (k.temp === undefined ? undefined : tempOf(k.temp, t0))) : undefined,
   };
+}
+
+/**
+ * The temperature a box's thermometer reads. An insulated box is not held at one, so its
+ * thermometer reads how fast its particles move: those of the kinds without their own starting
+ * temperature (the water, not the hot lump put into it).
+ */
+function thermoTemp(b: ParticleBox, s: BoxSim, held: number) {
+  if (!b.insulated) return held;
+  let e = 0;
+  let m = 0;
+  for (let i = 0; i < s.n; i++) {
+    if (s.gone[i] || b.kinds?.[s.kind[i]]?.temp !== undefined) continue;
+    e += s.ke[i];
+    m++;
+  }
+  return m ? e / m : held;
 }
 
 function warmBoxes(el: ParticlesEl): BoxSim[] {
@@ -1175,7 +1203,7 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       y: keep(s.y),
       kind: keep(s.kind),
       lidY: s.lidY,
-      temp: (s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]),
+      temp: thermoTemp(b, s, s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]),
       hits: recent.filter((hh) => hh.at > age - FLASH),
       hitRate: Math.round(recent.length / 2),
       trail: c!.trails[bi].map(([, x, y]) => [x, y] as [number, number]),

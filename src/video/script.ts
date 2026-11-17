@@ -486,7 +486,7 @@ export interface ParticleBox {
    * fast it moves at a given temperature: every kind gets the same energy, so a kind 16 times as
    * heavy moves a quarter as fast (oxygen beside hydrogen).
    */
-  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number; mass?: number; size?: number; magnetic?: boolean; rise?: number }>;
+  kinds?: Array<{ n: number; tone?: Tone; name?: string; bond?: number; heavy?: number; mass?: number; size?: number; magnetic?: boolean; rise?: number; temp?: Temp }>;
   /**
    * How strongly particles of different kinds attract one another (between their own bonds by
    * default). Stronger than the solute's own bond, a lump dissolves; much weaker, it stays whole.
@@ -637,6 +637,13 @@ export interface ParticleBox {
    * (as at the second), to see heat spread.
    */
   heatColor?: [Temp, Temp];
+  /**
+   * Hold no particle at a temperature once it is seen (a calorimeter): energy only passes from
+   * particle to particle as they collide. A kind can start at its own temperature (`temp` on the
+   * kind: a hot metal lump dropped into cold water), and the thermometer reads the kinds without
+   * one (the water), so it shows the water warming as the lump cools.
+   */
+  insulated?: boolean;
 }
 
 /** A stretch of a particle clip: temperatures and lids move steadily to these values over `dur` seconds. */
@@ -1636,6 +1643,7 @@ export function checkParticles(e: ParticlesEl): string[] {
   for (const b of e.boxes) {
     if ((PARTICLE_PARTS as readonly string[]).includes(b.id)) problems.push(`box id "${b.id}" is the name of a part.`);
     if (b.lid !== undefined && !(b.lid >= 0.2 && b.lid <= 1)) problems.push(`box "${b.id}": a lid must be between 0.2 and 1.`);
+    if (!b.insulated && b.kinds?.some((k) => k.temp !== undefined)) problems.push(`box "${b.id}": a kind starts at its own temperature only in an insulated box.`);
     const n = (b.kinds ? b.kinds.reduce((s, k) => s + k.n, 0) : (b.n ?? 30)) + (b.molecules ?? []).reduce((s, m) => s + m.n * m.atoms.length, 0);
     if (n > 120) problems.push(`box "${b.id}" has ${n} particles; keep it to 120 so frames draw quickly.`);
     if (b.follow !== undefined && !(b.follow >= 0 && b.follow < n)) problems.push(`box "${b.id}" follows a particle it does not have.`);

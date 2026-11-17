@@ -269,3 +269,51 @@ export const breakAndForm = (id: string, o: { seed?: number; height?: number; he
   seed: o.seed ?? 1,
   height: o.height ?? 400,
 });
+
+/** One insulated cup: a hot metal lump (`metal` particles) in cold water (`water` particles). */
+const cupBox = (id: string, c: { metal: number; water: number; label: string; width?: number }, mass = 20): ParticleBox => ({
+  id,
+  state: 'liquid',
+  width: c.width ?? 12,
+  height: 9,
+  temp: 0.3,
+  insulated: true,
+  lump: true,
+  // The metal barely clings to the water, so the lump stays whole instead of dissolving.
+  cross: 0.6,
+  heatColor: [0.3, 1],
+  kinds: [
+    // Heavy particles pass on their energy slowly; the pull on them is divided by their mass, or
+    // the box gains energy.
+    { n: c.metal, bond: 4, heavy: 3 / mass, mass, size: 1.2, tone: 'theta', name: 'metal', temp: 1 },
+    { n: c.water, tone: 'adj', name: 'water' },
+  ],
+  label: c.label,
+});
+
+/**
+ * A hot metal lump in cold water in an insulated cup (clip `go`): no heat comes in or leaves, so
+ * the lump's particles pass their energy to the water's only by bumping into them. Each particle
+ * is coloured by how fast it moves (blue cold, red hot), and the thermometer reads the water. The
+ * lump cools a lot and the water warms a little, until they are at the same temperature.
+ */
+export const hotMetal = (id: string, o: { seed?: number; height?: number; metal?: number; water?: number; dur?: number; mass?: number; label?: string } = {}): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [cupBox('c', { metal: o.metal ?? 16, water: o.water ?? 44, label: o.label ?? 'hot metal in cold water' }, o.mass)],
+  clips: { go: { phases: [{ dur: o.dur ?? 18 }] } },
+  thermometers: true,
+  seed: o.seed ?? 1,
+  height: o.height ?? 420,
+});
+
+/** Two insulated cups side by side (clip `go`), each with a hot metal lump in cold water. */
+export const twoCups = (id: string, cups: [{ metal: number; water: number; label: string }, { metal: number; water: number; label: string }], o: { seed?: number; height?: number; dur?: number } = {}): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: cups.map((c, i) => cupBox(i ? 'b' : 'a', { ...c, width: 10 })),
+  clips: { go: { phases: [{ dur: o.dur ?? 18 }] } },
+  thermometers: true,
+  seed: o.seed ?? 1,
+  height: o.height ?? 400,
+});

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { cup, hbars, join, room, tag } from './lib/c30-1a-figures.ts';
+import { hotMetal } from './lib/c30-particles.ts';
 
 // How far the copper and the water change temperature as they reach 24.5 °C together.
 const changes = figure(
@@ -109,6 +110,15 @@ const video: Explainer = {
           focus: 'm.3',
         },
         { say: 'Divide, and the final temperature is twenty-four point five degrees Celsius.', show: 'm.4', focus: 'm.4' },
+      ],
+    },
+    {
+      chapter: 'Heat lost, heat gained, up close',
+      layout: 'center',
+      main: [hotMetal('hm', { seed: 3, label: 'hot copper in cold water' })],
+      lines: [
+        { say: 'Here is the same exchange up close. The hot copper lump, the larger particles packed at the bottom, sits in cold water in an insulated cup, so no heat comes in or leaves. Particles are coloured by speed: red is hot, blue is cold. The thermometer reads the water. Watch the lump cool as it passes its energy to the water particles that bump into it, and watch the thermometer.', show: ['hm', 'hm.labels', 'hm.thermo'], play: 'hm.go' },
+        { say: 'Every bit of energy the copper loses goes into the water, because nothing escapes the cup. Heat lost by the copper equals heat gained by the water. They stop exchanging heat once both reach the same final temperature.', focus: 'hm.thermo' },
       ],
     },
     {

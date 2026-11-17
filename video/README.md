@@ -198,6 +198,11 @@ See `src/video/script.ts` for every element and option. In short:
     blue); the rest of the box gets the heat by particles bumping into one another, so a bar
     conducts heat along itself and a gas condenses on a cold wall.
   - `heatColor: [cold, hot]` colours each particle by how fast it moves, blue to red.
+  - `insulated: true` holds no particle at a temperature once the box is seen (a calorimeter):
+    energy only passes between particles as they collide. A kind can start at its own temperature
+    (`temp` on the kind: a hot metal lump in cold water), and the thermometer reads the kinds
+    without one. Give a heavy kind a large `mass` (30 slows the heat passing on to about ten
+    seconds) and divide its `heavy` by that mass, or the strong pull on it pumps energy in.
   - `flow: { from, to }` on the element, with the part `flow`, draws an arrow of heat between two
     boxes side by side that thins as their temperatures meet.
   - `expand: 0.8` lets a solid's particles settle further apart as it warms (more than a real

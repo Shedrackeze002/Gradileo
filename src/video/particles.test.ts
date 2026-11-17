@@ -490,3 +490,52 @@ describe('particles: tally labels', () => {
     expect(singular('particles inside')).toBe('particle inside');
   });
 });
+
+describe('particles: an insulated box', () => {
+  // A hot lump of heavy particles in cold water, with nothing holding either at a temperature.
+  const cup = (insulated = true): ParticlesEl =>
+    el({
+      boxes: [
+        {
+          id: 'c',
+          state: 'liquid',
+          width: 12,
+          height: 9,
+          temp: 0.3,
+          insulated,
+          lump: true,
+          heatColor: [0.3, 1],
+          kinds: [
+            { n: 16, bond: 4, heavy: 0.1, mass: 30, temp: 1 },
+            { n: 44 },
+          ],
+        },
+      ],
+      clips: {},
+      seed: 1,
+    });
+  const temps = (e: ParticlesEl, t: number) => {
+    const f = particlesAt(e, [], t)[0];
+    const avg = (k: number) => mean(f.ke!.filter((_, i) => f.kind[i] === k));
+    return { metal: avg(0), water: avg(1), thermo: f.temp };
+  };
+
+  it('starts the lump hot and the water cold, and the thermometer reads the water', () => {
+    const t = temps(cup(), 0);
+    expect(t.metal).toBeGreaterThan(0.7);
+    expect(t.water).toBeLessThan(0.4);
+    expect(t.thermo).toBeCloseTo(t.water, 5);
+  });
+
+  it('passes heat from the lump to the water until they are about the same temperature', () => {
+    const late = mean([30, 32, 34, 36].map((t) => temps(cup(), t).water));
+    const lump = mean([30, 32, 34, 36].map((t) => temps(cup(), t).metal));
+    expect(late).toBeGreaterThan(0.38);
+    expect(late).toBeLessThan(0.6);
+    expect(Math.abs(lump - late)).toBeLessThan(0.2);
+  });
+
+  it('is refused for a kind with its own temperature in a box that is not insulated', () => {
+    expect(checkParticles(cup(false))).toEqual(['box "c": a kind starts at its own temperature only in an insulated box.']);
+  });
+});
