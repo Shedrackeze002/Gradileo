@@ -5,10 +5,10 @@
  */
 import type { ReactElement } from 'react';
 import type { MotionEl } from '../script.ts';
-import { widthOf, type MotionState } from '../motion.ts';
+import { oscillations, widthOf, type MotionState } from '../motion.ts';
 import { trackOf } from '../path.ts';
 import { ownPart, type ElState } from '../timeline.ts';
-import { Arrow, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, short, Text, toneOf, VELOCITY } from './motionKit.tsx';
+import { Arrow, clamp01, Clock, Count, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, short, Text, toneOf, VELOCITY } from './motionKit.tsx';
 import { INK3 } from './Triangle.tsx';
 
 const TRACK = '#bcd9ff';
@@ -160,6 +160,8 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
       ),
     );
   if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
+  const count = part('count');
+  if (count > 0) out.push(<Count key="count" n={oscillations(state, el.bodies[0].id)} opacity={count} />);
   if (state.note)
     out.push(
       <g key="note">

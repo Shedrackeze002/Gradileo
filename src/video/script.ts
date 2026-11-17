@@ -298,6 +298,8 @@ export interface MotionSpring {
   loose?: boolean;
   /** Decimal places of the extension that is written under the track (2 by default). */
   decimals?: number;
+  /** Its force acts, but no arrow is drawn for it (a video that describes an oscillation before its forces are taught). */
+  hidden?: boolean;
 }
 
 /** A stretch of a clip during which the same forces act. */
@@ -327,7 +329,7 @@ export interface MotionClip {
 }
 
 /** What a motion element can show over its bodies; each is a part ("sim.velocity"). */
-export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height', 'extension'] as const;
+export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height', 'extension', 'amplitude', 'count'] as const;
 
 /**
  * An energy bar of a motion element: the work done on the body by the forces pushing or lifting
@@ -380,9 +382,20 @@ export interface MotionEl {
    * not used; give 0), the area under the line fills in as the body moves, and the work done so
    * far is written over it (`area` renames it: "Energy stored").
    */
-  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'force'; metres?: number; force?: string; area?: string };
+  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'displacement' | 'force'; metres?: number; force?: string; area?: string };
   /** A spring between the wall at the left end of a single straight track and one of the bodies. */
   spring?: MotionSpring;
+  /**
+   * For an oscillation on a single straight track or over a single drop: where the body rests, in
+   * metres along the track. Displacement is then measured from here and not from where the body
+   * started (over a drop, upwards is positive), the ruler is numbered from here, the part
+   * `displacement` is an arrow from here to the body, `amplitude` marks the two extremes of the
+   * motion, and `graph: { y: 'displacement' }` traces the displacement against time. The part
+   * `count` (also for a pendulum) counts the complete oscillations of a body let go from rest.
+   */
+  equilibrium?: number;
+  /** Write the displacements of an oscillation in centimetres. */
+  cm?: boolean;
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
@@ -1496,6 +1509,11 @@ export function checkMotion(e: MotionEl): string[] {
     if (e.graph.of.length !== 1) problems.push('a force-displacement graph is of one body.');
     if (e.path || e.vertical || (e.lanes?.length ?? 1) > 1) problems.push('a force-displacement graph goes over a single straight track.');
   } else if (e.graph && !(e.graph.seconds > 0)) problems.push('the graph needs the length of its time axis, in seconds.');
+  if (e.graph?.y === 'displacement' && e.equilibrium === undefined) problems.push('a displacement graph needs an equilibrium position to measure from.');
+  if (e.equilibrium !== undefined) {
+    if (e.path || e.vertical === 'up' || (e.lanes?.length ?? 1) > 1) problems.push('an equilibrium position is for a single straight track, or a single drop.');
+    if (!(e.equilibrium > e.span[0] && e.equilibrium < e.span[1])) problems.push('the equilibrium position must be on the track.');
+  }
   if (e.spring) {
     if (!ids.has(e.spring.on)) problems.push(`the spring is tied to no body "${e.spring.on}".`);
     if (!(e.spring.k > 0)) problems.push('the spring needs a spring constant above zero.');
