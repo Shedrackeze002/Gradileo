@@ -112,3 +112,22 @@ export const doubleA = (id: string, o: { seed?: number; height?: number; chance?
  */
 export const hotAndCold = (id: string, o: { seed?: number; height?: number } = {}): ParticlesEl =>
   pair(id, gases('a', 'cold', { temp: 0.4, energy: 3, n: 12 }), gases('b', 'hot', { temp: 1.2, energy: 3, n: 12 }), { thermometers: true, seed: o.seed ?? 1, height: o.height ?? 400 });
+
+/**
+ * The same gas at a cooler and a hotter temperature, each with the spread of its molecules' speeds
+ * drawn under it (part `spread`) and a line at the speed a collision needs for the activation
+ * energy: the hotter gas's peak moves right and flattens, and many more molecules pass the line.
+ */
+export const speedSpread = (id: string, o: { seed?: number; height?: number } = {}): ParticlesEl => {
+  const box = (bid: string, label: string, temp: number): ParticleBox => ({
+    id: bid,
+    state: 'gas',
+    width: 10,
+    height: 8,
+    temp,
+    kinds: [{ n: 60, bond: 0.15, heavy: 0, size: 0.65, tone: 'adj', name: 'molecule' }],
+    spread: { at: 2, max: 3.5, bins: 14 },
+    label,
+  });
+  return { kind: 'particles', id, boxes: [box('a', 'cooler', 0.5), box('b', 'hotter', 1.2)], clips: {}, thermometers: true, seed: o.seed ?? 1, height: o.height ?? 620 };
+};

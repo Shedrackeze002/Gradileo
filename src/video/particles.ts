@@ -224,6 +224,8 @@ export interface BoxFrame {
   bonds: Array<[number, number]>;
   /** How many particles of the tallied kinds there are. */
   tally: number;
+  /** Each particle's speed now (only for a box with `spread`). */
+  speed?: number[];
 }
 
 /**
@@ -1336,6 +1338,7 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       goneCount,
       bonds: s.bonds.filter((bd) => bd.show && !s.gone[bd.i] && !s.gone[bd.j]).map(({ i, j }) => (goneCount ? [visible(i), visible(j)] : [i, j]) as [number, number]),
       tally: b.tally ? s.kind.reduce((m, k, i) => m + (!s.gone[i] && b.tally!.kinds.includes(k) ? 1 : 0), 0) : 0,
+      speed: b.spread ? keep(Array.from(s.vx, (vx, i) => Math.hypot(vx, s.vy[i]))) : undefined,
     };
   });
 }

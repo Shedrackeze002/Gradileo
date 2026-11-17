@@ -575,6 +575,13 @@ export interface ParticleBox {
   indicator?: { acid: number[]; base: number[]; tone: Tone };
   /** What the part `tally` counts under the box: the particles of these kinds, and what to call them. */
   tally?: { kinds: number[]; label: string };
+  /**
+   * The part `spread` draws a bar chart under the box of how many particles move at each speed (a
+   * Maxwell–Boltzmann spread), live, with a line at the speed `at` (the least a collision needs to
+   * react, for the activation energy) and a count of the particles faster than it. `max` is the
+   * fastest speed on the axis (3 by default) and `bins` the number of bars (12).
+   */
+  spread?: { at: number; max?: number; bins?: number; label?: string };
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
   lump?: boolean | number;
   /**
@@ -696,7 +703,7 @@ export interface ParticlePhase {
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle', 'key'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle', 'key', 'spread'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
@@ -1746,6 +1753,7 @@ export function checkParticles(e: ParticlesEl): string[] {
   for (const b of e.boxes) if (b.divider !== undefined && !(b.divider > 0.1 && b.divider < 0.9)) problems.push(`box "${b.id}": a divider must be between 0.1 and 0.9 of the way across.`);
   for (const b of e.boxes) if (b.wall && !(b.wall.at > 0.1 && b.wall.at < 0.9 && b.wall.height > 0 && b.wall.height < 1)) problems.push(`box "${b.id}": a wall must stand between 0.1 and 0.9 of the way across, and be lower than the box.`);
   for (const b of e.boxes) if (b.filter && !(b.filter.at > 0.1 && b.filter.at < 0.9)) problems.push(`box "${b.id}": a filter must be between 0.1 and 0.9 of the way up.`);
+  for (const b of e.boxes) if (b.spread && !(b.spread.at > 0 && b.spread.at < (b.spread.max ?? 3))) problems.push(`box "${b.id}": a spread's line must be between 0 and the fastest speed on its axis.`);
   for (const b of e.boxes) {
     const k = b.kinds?.length ?? 1;
     const ok = (i: number) => Number.isInteger(i) && i >= 0 && i < k;

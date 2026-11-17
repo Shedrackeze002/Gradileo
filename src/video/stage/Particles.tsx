@@ -112,6 +112,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const width = part('width');
   const middle = part('middle');
   const keyPart = part('key');
+  const spreadPart = part('spread');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
 
@@ -128,7 +129,9 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const KEY_W = keyItems.length ? 60 + 13 * Math.max(...keyItems.map((k) => k.name.length)) : 0;
   // Room over the boxes for a piston's handle, or a burette's tube.
   const TOP = el.boxes.some((b) => b.reserve?.length) ? 120 : el.boxes.some((b) => b.piston) ? 56 : 24;
-  const BOTTOM = 76;
+  // Room under the boxes for the labels, and for a spread of speeds.
+  const SPREAD_H = el.boxes.some((b) => b.spread) ? 190 : 0;
+  const BOTTOM = 76 + SPREAD_H;
   const sizes = el.boxes.map(boxSize);
   const sumW = sizes.reduce((s, b) => s + b.w, 0);
   const maxH = Math.max(...sizes.map((b) => b.h));
@@ -413,6 +416,33 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
             {rate > 0 && (
               <Text x={X(bw / 2)} y={floor + 30 + (b.label ? 32 : 0) + (el.volume?.box === b.id ? 32 : 0)} size={20} color={TONES.theta} opacity={rate}>{`${f.hitRate} wall hits a second`}</Text>
             )}
+            {spreadPart > 0 && b.spread && f.speed && (() => {
+              // How many particles move at each speed now: a bar for each band of speeds, those at
+              // least as fast as the line in yellow, on a scale fixed for the box so bars do not jump.
+              const { at, max = 3, bins = 12 } = b.spread;
+              const counts = Array<number>(bins).fill(0);
+              for (const v of f.speed) if (v < max) counts[Math.floor((v / max) * bins)]++;
+              const fast = f.speed.filter((v) => v >= at).length;
+              const yMax = Math.max(4, Math.ceil(f.speed.length * 0.28));
+              const top = floor + 96;
+              const axis = top + 124;
+              const cw = bw * S;
+              const bar = cw / bins;
+              const lineX = X(Math.min(1, at / max) * bw);
+              return (
+                <g opacity={spreadPart}>
+                  {counts.map((c, i) => (
+                    <rect key={i} x={X(0) + i * bar + 2} y={axis - (Math.min(c, yMax) / yMax) * 118} width={bar - 4} height={(Math.min(c, yMax) / yMax) * 118} rx={3} fill={(i + 0.5) * (max / bins) >= at ? TONES.theta : TONES.adj} opacity={0.85} />
+                  ))}
+                  <line x1={X(0)} x2={X(bw)} y1={axis} y2={axis} stroke={INK3} strokeWidth={2.5} />
+                  <line x1={X(0)} x2={X(0)} y1={axis} y2={top - 4} stroke={INK3} strokeWidth={2.5} />
+                  <line x1={lineX} x2={lineX} y1={axis} y2={top - 8} stroke={TONES.opp} strokeWidth={3} strokeDasharray="8 6" />
+                  <Text x={lineX + 8} y={top + 10} size={20} anchor="start" color={TONES.opp} weight={700}>{b.spread.label ?? 'Eₐ'}</Text>
+                  <Text x={X(0)} y={axis + 26} size={19} anchor="start" color={INK3}>{'speed →'}</Text>
+                  <Text x={X(bw)} y={axis + 26} size={20} anchor="end" color={TONES.theta} weight={700}>{`${fast} fast enough`}</Text>
+                </g>
+              );
+            })()}
           </g>
         );
       })}

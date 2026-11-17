@@ -299,6 +299,12 @@ See `src/video/script.ts` for every element and option. In short:
     with `lump: 4` and `cols: 2`; give it `hold: true` so the pieces do not drift together before
     the clip lets them go.
   More, for gases:
+  - `spread: { at: 2, max: 3.5, bins: 14 }` draws a live bar chart under the box of how many
+    particles move at each speed (the Maxwell–Boltzmann spread, part `spread`), with a dashed
+    line at the speed `at` for the activation energy and a count of the particles past it. In a
+    gas at temperature 0.5 almost none pass 2, and at 1.2 about a fifth do; use about 60 small
+    particles (`size: 0.65`) so the bars are smooth (`speedSpread` in the extra chemistry
+    course's `lib/cx-particles.ts`).
   - A kind's `mass` (1 by default) makes its particles heavier: at the same temperature they move
     more slowly, as heavy gas molecules do (give molecules' atoms their masses: H 1, C 12, O 16).
     Weaken the atoms' `bond` to about 0.03 (H 0.05), or molecules of three atoms clump together.

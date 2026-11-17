@@ -613,3 +613,22 @@ describe('particles: electrodes', () => {
     expect(checkParticles(cell(undefined, 17))).toEqual(["box \"c\": an electrode's coating needs more particles than its kind has."]);
   });
 });
+
+describe('particles: a spread of speeds', () => {
+  const gas = (id: string, temp: number, spread = true): ParticleBox => ({ id, state: 'gas', width: 10, height: 8, temp, n: 60, ...(spread ? { spread: { at: 2, max: 3.5 } } : {}) });
+
+  it('gives each particle’s speed for a box with a spread, faster in the hotter box', () => {
+    const e = el({ boxes: [gas('a', 0.5), gas('b', 1.2), gas('c', 1.2, false)] });
+    const [cold, hot, plain] = particlesAt(e, [], 4);
+    expect(cold.speed).toHaveLength(60);
+    expect(plain.speed).toBeUndefined();
+    expect(mean(hot.speed!)).toBeGreaterThan(1.3 * mean(cold.speed!));
+    // A spread, not one speed: some slow and some fast, and more past the line when hotter.
+    expect(Math.min(...cold.speed!)).toBeLessThan(0.5 * mean(cold.speed!));
+    expect(hot.speed!.filter((v) => v >= 2).length).toBeGreaterThan(cold.speed!.filter((v) => v >= 2).length);
+  });
+
+  it('checks the line is on the axis', () => {
+    expect(checkParticles(el({ boxes: [{ id: 'a', state: 'gas', n: 10, spread: { at: 4 } }] }))).toEqual(["box \"a\": a spread's line must be between 0 and the fastest speed on its axis."]);
+  });
+});
