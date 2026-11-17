@@ -223,14 +223,19 @@ function tallHill(el: MotionEl): boolean {
   return across / Math.max(up, 1e-6) < 3;
 }
 
+/** Whether a motion is a mass hung on a spring, with no graph beside it: it is tall, so it sits beside the title too. */
+const hungMass = (el: MotionEl) => Boolean(el.vertical) && el.equilibrium !== undefined && !el.graph;
+
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
   const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'circle';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
-  const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
+  // A figure that is named can be in the right-hand column of a scene; the first figure, which is used when none is named, is not looked for there.
+  const named = x.thumbnail ? [...figures, ...x.scenes.flatMap((s) => s.right ?? []).filter(isFigure)].find((e) => e.id === x.thumbnail) : undefined;
+  const fig = x.thumbnail === false ? undefined : named || figures[0];
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || (fig?.kind === 'gravity' && flatSpace(fig));
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig) && !hungMass(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || (fig?.kind === 'gravity' && flatSpace(fig));
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
@@ -243,7 +248,7 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             // an oscillation keeps the displacement graph it traces.
             <MotionView
               el={{ ...fig, momentumMax: undefined, energy: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })), ...(fig.vertical ? { graph: fig.graph?.y === 'displacement' ? fig.graph : undefined, clips: withoutNotes(fig.clips) } : fig.equilibrium !== undefined ? { clips: withoutNotes(fig.clips) } : {}) }}
-              st={{ ...FULL, parts: fig.vertical ? (fig.graph?.y === 'displacement' ? { graph: 1 } : { velocity: 1 }) : fig.equilibrium !== undefined ? { velocity: 1, amplitude: 1 } : { velocity: 1, strobe: 1 } }}
+              st={{ ...FULL, parts: fig.vertical ? (fig.graph?.y === 'displacement' ? { graph: 1 } : fig.equilibrium !== undefined ? { amplitude: 1 } : { velocity: 1 }) : fig.equilibrium !== undefined ? { velocity: 1, amplitude: 1 } : { velocity: 1, strobe: 1 } }}
               w={1160}
               h={fig.vertical ? 320 : Math.min(320, 150 + 130 * (fig.lanes?.length ?? 1))}
               plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
@@ -298,6 +303,9 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             <CircleThumb el={fig} w={500} h={470} />
           ) : fig.kind === 'gravity' ? (
             <GravityThumb el={fig} w={500} h={430} />
+          ) : fig.kind === 'motion' && hungMass(fig) ? (
+            // A mass hung on a spring, part way through its poster clip, with its amplitude marked.
+            <MotionView el={{ ...fig, energy: undefined, lanes: undefined, clips: withoutNotes(fig.clips) }} st={{ ...FULL, parts: { amplitude: 1 } }} w={440} h={500} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
           ) : fig.kind === 'motion' ? (
             // A tall hill, part way through its poster clip, with the speed and the height of its car.
             <MotionView el={{ ...fig, energy: undefined, clips: withoutNotes(fig.clips) }} st={{ ...FULL, parts: { velocity: 1, height: 1 } }} w={540} h={470} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />

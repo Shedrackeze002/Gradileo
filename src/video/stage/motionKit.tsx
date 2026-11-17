@@ -77,17 +77,28 @@ export function Clock({ w, time, opacity, unit = 's' }: { w: number; time: numbe
   );
 }
 
-/** The complete oscillations counted so far, in a pill at the top left of a picture. */
-export function Count({ n, opacity, x = 0 }: { n: number; opacity: number; x?: number }) {
+/**
+ * The complete oscillations counted so far, in a pill: at the top left of a wide picture, or
+ * (`under`, the width of the picture) under the clock at the top right of a narrow one, which
+ * leaves the top left to the note of a phase.
+ */
+export function Count({ n, opacity, under }: { n: number; opacity: number; under?: number }) {
+  const [x, y] = under === undefined ? [0, 0] : [under - 200, 46];
   return (
     <g opacity={opacity}>
-      <rect x={x} y={0} width={200} height={38} rx={19} fill="rgb(255 255 255 / 0.07)" stroke="rgb(255 255 255 / 0.14)" />
-      <Text x={x + 100} y={19.5} size={19} color={INK2}>
+      <rect x={x} y={y} width={200} height={38} rx={19} fill="rgb(255 255 255 / 0.07)" stroke="rgb(255 255 255 / 0.14)" />
+      <Text x={x + 100} y={y + 19.5} size={19} color={INK2}>
         {`Oscillations: ${n}`}
       </Text>
     </g>
   );
 }
+
+/**
+ * The label of a lane is set in capitals, unless it has a number in it: a label like "k = 20 N/m"
+ * carries a unit, and a unit in capitals is a different unit.
+ */
+export const labelCase = (label: string): 'uppercase' | 'none' => (/\d/.test(label) ? 'none' : 'uppercase');
 
 /** A displacement of an oscillation, written with its sign in metres or (`cm`) in centimetres. */
 export const offset = (m: number, cm?: boolean, sign = true): string => {

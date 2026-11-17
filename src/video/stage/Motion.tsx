@@ -8,7 +8,7 @@ import type { ReactElement } from 'react';
 import type { MotionBody, MotionEl } from '../script.ts';
 import { amplitudeOf, displacementOf, motionAt, netForce, oscillations, SPRING, widthOf, type MotionState } from '../motion.ts';
 import { easeOut, ownPart, type ElState } from '../timeline.ts';
-import { Count, offset, offsetStep, Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
+import { Count, labelCase, offset, offsetStep, Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
 import { ForceGraph } from './ForceGraph.tsx';
 import { PathView } from './MotionPath.tsx';
 import { TONES } from './tex.ts';
@@ -149,8 +149,11 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   const Y = (m: number) => (up ? ground - (m - el.span[0]) * S : top + 2 * BIG + (m - el.span[0]) * S);
   const R = (b: MotionBody) => Math.max(24, Math.min(BIG, (widthOf(b) * S) / 2));
   // The note of a phase sits between the columns, or over the graph when there is one; in a narrow
-  // picture it moves left to clear the clock.
-  const noteX = Math.min(beside ? w * 0.5 + 150 : w / 2, clock > 0 ? w - 302 : w);
+  // picture it moves left to clear the clock. A narrow picture of one column has its support in
+  // the way there, so the note goes under the clock (and under the count of the oscillations).
+  const tucked = !beside && lanes.length === 1 && clock > 0 && w - 302 < w / 2;
+  const noteX = tucked ? w - 120 : Math.min(beside ? w * 0.5 + 150 : w / 2, clock > 0 ? w - 302 : w);
+  const noteY = tucked ? (part('count') > 0 ? 92 : 46) : 0;
   const out: ReactElement[] = [];
 
   lanes.forEach((lane, li) => {
@@ -162,7 +165,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
         <line x1={rx - 7} y1={ground} x2={x0 + cw - 14} y2={ground} stroke="#bcd9ff" strokeWidth={3} strokeLinecap="round" />
         <line x1={rx} y1={ground - (el.span[1] - el.span[0]) * S} x2={rx} y2={ground} stroke={INK3} strokeWidth={1.5} opacity={0.7} />
         {lane.label && (
-          <text x={x0 + cw / 2} y={14} textAnchor="middle" fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <text x={x0 + cw / 2} y={14} textAnchor="middle" fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: labelCase(lane.label) }}>
             {lane.label}
           </text>
         )}
@@ -393,7 +396,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
     }
   }
   const count = part('count');
-  if (count > 0) out.push(<Count key="count" n={oscillations(state, (sprung ?? el.bodies[0]).id)} opacity={count} />);
+  if (count > 0) out.push(<Count key="count" n={oscillations(state, (sprung ?? el.bodies[0]).id)} opacity={count} under={beside ? w * 0.5 : w} />);
 
   if (graph > 0 && el.graph) out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * 0.5 + 100, 88, w - 34, h - 78]} tone={tone} />);
   // Energy bars take the right half when there is no graph, level with the middle of the fall.
@@ -405,8 +408,8 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   if (state.note)
     out.push(
       <g key="note">
-        <rect x={noteX - 120} y={0} width={240} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
-        <Text x={noteX} y={19.5} size={19} color="#fff">
+        <rect x={noteX - 120} y={noteY} width={240} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
+        <Text x={noteX} y={noteY + 19.5} size={19} color="#fff">
           {state.note}
         </Text>
       </g>,
@@ -499,7 +502,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
             <line key={i} x1={PAD - 8 + i * 11} y1={g + 11} x2={PAD - 2 + i * 11} y2={g + 2} stroke="#c9a08c" strokeWidth={1.6} opacity={0.75} />
           ))}
         {lane.label && (
-          <text x={lane.labelSide === 'right' ? w - PAD + 10 : PAD - 10} y={top + laneH * li + 14} textAnchor={lane.labelSide === 'right' ? 'end' : 'start'} fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <text x={lane.labelSide === 'right' ? w - PAD + 10 : PAD - 10} y={top + laneH * li + 14} textAnchor={lane.labelSide === 'right' ? 'end' : 'start'} fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: labelCase(lane.label) }}>
             {lane.label}
           </text>
         )}
