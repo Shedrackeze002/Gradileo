@@ -1,5 +1,7 @@
 import type { ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
 
+type ParticleKind = NonNullable<ParticleBox['kinds']>[number];
+
 // Electrochemical cells as particle boxes (src/video/particles.ts): ions drift to the electrodes
 // while a clip turns the current on (`power`), metal ions plate out on the cathode, and an anode
 // can dissolve. Positive ions always drift to the left electrode, negative ones to the right.
@@ -58,13 +60,28 @@ const GAS_UP = { n: 0, bond: 0.1, heavy: -0.4, size: 1.05 } as const;
  * An aqueous solution between two electrodes (clip `run`), where water competes with the ions.
  * In copper(II) sulfate, copper ions plate the cathode, and at the anode water gives oxygen, which
  * bubbles away. In potassium iodide, water gives hydrogen at the cathode (the potassium ions only
- * gather there), and at the anode iodide ions give iodine, which stays in the solution. The kinds:
+ * gather there), and at the anode iodide ions give iodine, which stays in the solution. Sodium
+ * chloride is the same, but its chlorine is a gas that bubbles away too. The kinds:
  * 0 the metal ion, 1 the negative ion, 2 water, 3 what forms at the cathode (copper, or hydrogen
- * atoms), 4 hydrogen in a molecule, 5 what forms at the anode (oxygen or iodine atoms), 6 the same
- * in a molecule.
+ * atoms), 4 hydrogen in a molecule, 5 what forms at the anode (oxygen, iodine or chlorine atoms),
+ * 6 the same in a molecule.
  */
-export const aqueous = (id: string, salt: 'copper sulfate' | 'potassium iodide', o: { seed?: number; height?: number } = {}): ParticlesEl => {
+export const aqueous = (id: string, salt: 'copper sulfate' | 'potassium iodide' | 'sodium chloride', o: { seed?: number; height?: number } = {}): ParticlesEl => {
   const cu = salt === 'copper sulfate';
+  const na = salt === 'sodium chloride';
+  // A halide solution gives hydrogen at the cathode and the halogen at the anode: iodine stays in
+  // the solution, but chlorine is a gas and bubbles away like the hydrogen.
+  const metalIon: ParticleKind = na ? { ...ION, n: 10, tone: 'adj', name: 'sodium ion, Na⁺', charge: 1 } : { ...ION, n: 10, tone: 'good', name: 'potassium ion, K⁺', charge: 1 };
+  const halide: ParticleKind = na ? { ...ION, n: 10, size: 1.25, tone: 'good', name: 'chloride ion, Cl⁻', charge: -1 } : { ...ION, n: 10, size: 1.3, tone: 'hyp', name: 'iodide ion, I⁻', charge: -1 };
+  const halogen: [ParticleKind, ParticleKind] = na
+    ? [
+        { ...GAS_UP, heavy: 0, tone: 'opp', name: 'chlorine' },
+        { ...GAS_UP, tone: 'opp', name: 'chlorine' },
+      ]
+    : [
+        { ...ION, size: 1.3, tone: 'opp', name: 'iodine' },
+        { ...ION, size: 1.3, tone: 'opp', name: 'iodine' },
+      ];
   return {
     kind: 'particles',
     id,
@@ -75,22 +92,26 @@ export const aqueous = (id: string, salt: 'copper sulfate' | 'potassium iodide',
         width: 13,
         height: 9,
         temp: 0.45,
-        escape: cu ? [6] : [4],
+        escape: cu ? [6] : na ? [4, 6] : [4],
         open: true,
         kinds: [
-          cu ? { ...ION, n: 10, tone: 'adj', name: 'copper(II) ion, Cu²⁺', charge: 2 } : { ...ION, n: 10, tone: 'good', name: 'potassium ion, K⁺', charge: 1 },
-          cu ? { ...ION, n: 10, size: 1.3, tone: 'hyp', name: 'sulfate ion, SO₄²⁻', charge: -2 } : { ...ION, n: 10, size: 1.3, tone: 'hyp', name: 'iodide ion, I⁻', charge: -1 },
+          cu ? { ...ION, n: 10, tone: 'adj', name: 'copper(II) ion, Cu²⁺', charge: 2 } : metalIon,
+          cu ? { ...ION, n: 10, size: 1.3, tone: 'hyp', name: 'sulfate ion, SO₄²⁻', charge: -2 } : halide,
           WATER,
           cu ? { ...ION, tone: 'opp', name: 'copper metal' } : { ...GAS_UP, heavy: 0, size: 0.8, tone: 'theta', name: 'hydrogen' },
           { ...GAS_UP, size: 0.8, tone: 'theta', name: 'hydrogen' },
-          cu ? { ...GAS_UP, heavy: 0, tone: 'bad', name: 'oxygen' } : { ...ION, size: 1.3, tone: 'opp', name: 'iodine' },
-          cu ? { ...GAS_UP, tone: 'bad', name: 'oxygen' } : { ...ION, size: 1.3, tone: 'opp', name: 'iodine' },
+          ...(cu
+            ? [
+                { ...GAS_UP, heavy: 0, tone: 'bad', name: 'oxygen' } as ParticleKind,
+                { ...GAS_UP, tone: 'bad', name: 'oxygen' } as ParticleKind,
+              ]
+            : halogen),
         ],
         reactions: cu ? [{ a: 5, b: 5, to: [6, 6], join: true }] : [{ a: 3, b: 3, to: [4, 4], join: true }, { a: 5, b: 5, to: [6, 6], join: true }],
         electrodes: cu
           ? { left: { rules: [{ kind: 0, to: 3, stick: true }] }, right: { rules: [{ kind: 2, to: 5, chance: 0.05 }] } }
           : { left: { rules: [{ kind: 2, to: 3, chance: 0.05 }] }, right: { rules: [{ kind: 1, to: 5 }] } },
-        label: cu ? 'copper(II) sulfate solution' : 'potassium iodide solution',
+        label: `${salt === 'copper sulfate' ? 'copper(II) sulfate' : salt} solution`,
       },
     ],
     clips: { run: { phases: [{ dur: 2 }, { dur: 2, power: { a: 1 } }, { dur: 16 }] } },

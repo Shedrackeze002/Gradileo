@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { precipitate } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'cx-2-2',
@@ -55,6 +56,26 @@ const video: Explainer = {
         { say: 'Most metal hydroxides do not dissolve. So adding sodium hydroxide solution gives a precipitate, and its colour identifies the metal ion. Copper two gives blue, iron two green, and iron three brown.', caption: 'Most metal hydroxides do not dissolve. So adding sodium hydroxide solution gives a precipitate, and its colour identifies the metal ion. Copper(II) gives blue, iron(II) green, and iron(III) brown.', show: ['t.0', 't.1', 't.2'] },
         { say: 'Calcium, magnesium and aluminium all give white. Add more sodium hydroxide, and only the aluminium precipitate dissolves.', show: ['t.3', 't.4'], focus: ['t.3', 't.4'] },
         { say: 'In the ionic equation, the number of hydroxide ions equals the charge on the metal ion. A copper ion, two plus, needs two hydroxide ions.', caption: 'In the ionic equation, the number of hydroxide ions equals the charge on the metal ion: Cu²⁺ + 2OH⁻ → Cu(OH)₂.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Copper(II) hydroxide, up close',
+      layout: 'center',
+      main: [
+        precipitate(
+          'cu',
+          {
+            cation: { name: 'copper(II) ion, Cu²⁺', tone: 'adj', size: 1.1 },
+            anion: { name: 'hydroxide ion, OH⁻', tone: 'good' },
+            withCation: { name: 'sulfate ion', tone: 'hyp', size: 1.2 },
+            withAnion: { name: 'sodium ion', tone: 'brand' },
+          },
+          { ratio: 2, n: 4, label: 'copper(II) sulfate + sodium hydroxide', solid: 'copper(II) hydroxide', seed: 1, water: 'theta' },
+        ),
+      ],
+      lines: [
+        { say: 'Here is the copper test up close: copper two sulfate solution and sodium hydroxide solution, just mixed. There are twice as many hydroxide ions as copper ions.', caption: 'Here is the copper test up close: copper(II) sulfate solution and sodium hydroxide solution, just mixed. There are twice as many hydroxide ions as copper ions.', show: ['cu', 'cu.labels', 'cu.key'], play: 'cu.mix' },
+        { say: 'Each copper ion picks up hydroxide ions one at a time. When it holds two, the unit is neutral and it sinks as blue copper two hydroxide, the precipitate. The sodium and sulfate ions stay dissolved.', caption: 'Each copper ion picks up hydroxide ions one at a time. When it holds two, the unit is neutral and it sinks as blue copper(II) hydroxide, the precipitate. The sodium and sulfate ions stay dissolved.', show: 'cu.tally', focus: 'cu.p' },
       ],
     },
     {

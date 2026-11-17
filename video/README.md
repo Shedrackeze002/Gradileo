@@ -345,9 +345,16 @@ See `src/video/script.ts` for every element and option. In short:
   breaks turns red and fades in the first half, and a new bond comes in green in the second half
   and stays green for a moment. A molecule only in one of the two stages fades in or out whole.
   Let the reactants first move together (a stage where they touch), then make the product, so
-  each bond change can be seen; keep paths from crossing. A line can focus an atom (`m.Br1`). See
+  each bond change can be seen; keep paths from crossing. A charge sits at the atom's upper right
+  unless a bond is in the way, then on the clearest side. A stage's `arrows` draw curly arrows
+  (`{ from: 'C1=C2', to: 'Br1' }`: from an atom, its lone pair, or a bond's middle, to an atom
+  or a bond; `bend` sets the curve and its side, 0.5 by default, negative for the other side),
+  and `rings` draw a circle for delocalised electrons inside the listed atoms (`[['C1', …,
+  'C6']]`); both fade in and out with their stage. A line can focus an atom (`m.Br1`). See
   Chemistry 30's `lib/c30-molecules.ts` (addition, substitution, elimination, and
-  `oneAfterAnother` for several reactions in one element).
+  `oneAfterAnother` for several reactions in one element) and the extra chemistry course's
+  `lib/cx-molecules.ts` (mechanisms with curly arrows, benzene's nitration, the Haber process and
+  the fuel cell).
 
 - `quote` sets a passage of prose or verse off from the narration, for the English videos: one
   entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)

@@ -88,6 +88,9 @@ export function MoleculesView({ el, st, w, h, age, played }: { el: MoleculesEl; 
           />
         );
       })}
+      {f.rings.map((r, i) => (
+        <circle key={i} cx={X(r.x)} cy={Y(r.y)} r={r.r * S} fill="none" stroke={STICK} strokeWidth={Math.max(4, 0.09 * S)} opacity={r.opacity} />
+      ))}
       {f.atoms.map((a) => {
         const look = atomLook(el, a.name);
         const glow = st?.focus[a.name] ?? 0;
@@ -99,10 +102,25 @@ export function MoleculesView({ el, st, w, h, age, played }: { el: MoleculesEl; 
               {a.el}
             </text>
             {a.charge !== 0 && (
-              <text x={X(a.x) + r * 0.8} y={Y(a.y) - r * 0.85} fill={a.charge > 0 ? TONES.adj : TONES.bad} opacity={a.chargeOpacity} fontSize={Math.max(22, 0.42 * S)} fontWeight={800} textAnchor="start" dominantBaseline="central" style={{ fontFamily: FONT, paintOrder: 'stroke', stroke: 'rgb(13 12 36 / 0.85)', strokeWidth: 5 }}>
+              <text x={X(a.x) + a.chargeDir[0] * r * 1.35} y={Y(a.y) + a.chargeDir[1] * r * 1.35} fill={a.charge > 0 ? TONES.adj : TONES.bad} opacity={a.chargeOpacity} fontSize={Math.max(22, 0.42 * S)} fontWeight={800} textAnchor="middle" dominantBaseline="central" style={{ fontFamily: FONT, paintOrder: 'stroke', stroke: 'rgb(13 12 36 / 0.85)', strokeWidth: 5 }}>
                 {[...chargeText(a.charge)].map((c) => SUPER[c] ?? c).join('')}
               </text>
             )}
+          </g>
+        );
+      })}
+      {f.arrows.map((a, i) => {
+        // The head points along the curve's last stretch (from the bend towards the end).
+        const [hx, hy] = [X(a.x2), Y(a.y2)];
+        const l = Math.hypot(X(a.x2) - X(a.cx), Y(a.y2) - Y(a.cy)) || 1;
+        const [ux, uy] = [(X(a.x2) - X(a.cx)) / l, (Y(a.y2) - Y(a.cy)) / l];
+        const head = Math.max(14, 0.22 * S);
+        const back = [hx - ux * head, hy - uy * head];
+        const pts = `${hx},${hy} ${back[0] - uy * head * 0.5},${back[1] + ux * head * 0.5} ${back[0] + uy * head * 0.5},${back[1] - ux * head * 0.5}`;
+        return (
+          <g key={i} opacity={a.opacity} style={{ filter: `drop-shadow(0 0 6px ${TONES.theta})` }}>
+            <path d={`M ${X(a.x1)} ${Y(a.y1)} Q ${X(a.cx)} ${Y(a.cy)} ${back[0]} ${back[1]}`} fill="none" stroke={TONES.theta} strokeWidth={Math.max(3.5, 0.06 * S)} strokeLinecap="round" />
+            <polygon points={pts} fill={TONES.theta} />
           </g>
         );
       })}

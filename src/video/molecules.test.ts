@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { MoleculesEl } from './script.ts';
-import { checkMolecules, FRESH, moleculesAt, parseBonds } from './molecules.ts';
+import { chargeDirection, checkMolecules, FRESH, moleculesAt, parseBonds } from './molecules.ts';
 
 /** Ethene and bromine: the second C–C bond and the Br–Br bond break, and two C–Br bonds form (clip `go`, 1 s then a 2 s move). */
 const el = (over: Partial<MoleculesEl> = {}): MoleculesEl => ({
@@ -75,6 +75,40 @@ describe('molecules', () => {
     const end = moleculesAt(el(), [['swap', 0]], 2.5);
     expect(end.atoms.map((a) => a.name)).toEqual(['X']);
     expect(atom(end, 'X').charge).toBe(1);
+  });
+
+  it('draws curly arrows and rings with their stage, fading them in and out with it', () => {
+    const e = el({
+      stages: {
+        a: { at: { C1: [1, 2], C2: [2, 2], Br1: [5, 1], Br2: [6, 1] }, bonds: 'C1=C2 Br1-Br2', arrows: [{ from: 'C1=C2', to: 'Br1' }], rings: [['C1', 'C2', 'Br1']] },
+        b: { at: { C1: [1, 2], C2: [2, 2], Br1: [1, 1], Br2: [2, 1] }, bonds: 'C1-C2 C1-Br1 C2-Br2' },
+      },
+      clips: { go: { phases: [{ dur: 1 }, { dur: 2, to: 'b' }] } },
+    });
+    const start = moleculesAt(e, [], 0.5);
+    expect(start.arrows).toHaveLength(1);
+    const [arrow] = start.arrows;
+    // From the middle of the C=C bond towards bromine, stopping short of the atom so the head shows.
+    expect(arrow.x1).toBeCloseTo(1.5, 0);
+    expect(Math.hypot(arrow.x2 - 5, arrow.y2 - 1)).toBeGreaterThan(0.4);
+    expect(start.rings).toHaveLength(1);
+    expect(start.rings[0].x).toBeCloseTo(8 / 3, 1);
+    const late = moleculesAt(e, [['go', 0]], 2.8);
+    expect(late.arrows).toHaveLength(0);
+    expect(late.rings).toHaveLength(0);
+    expect(checkMolecules({ ...e, stages: { ...e.stages, a: { ...e.stages.a, arrows: [{ from: 'C1', to: 'Q' }], rings: [['C1', 'C2']] } } })).toEqual([
+      'stage "a": an arrow starts or ends at "Q", which the stage does not place.',
+      'stage "a": a ring needs three or more atoms that the stage places.',
+    ]);
+  });
+
+  it('puts a charge at the upper right, or where it is clear of the atom’s bonds', () => {
+    const pos = new Map<string, [number, number]>([['N', [0, 0]], ['C', [-1, 0]], ['O1', [0.5, -0.87]], ['O2', [0.5, 0.87]], ['H', [3, 3]]]);
+    const line = (a: string, b: string) => ({ a, b, offset: 0, opacity: 1 });
+    const bonds = [line('N', 'C'), line('N', 'O1'), line('N', 'O2')];
+    expect(chargeDirection('H', pos, bonds).map((v) => +v.toFixed(2))).toEqual([0.71, -0.71]);
+    // Bonds to the left, upper right and lower right: the charge goes on the right, between them.
+    expect(chargeDirection('N', pos, bonds).map((v) => +v.toFixed(2))).toEqual([1, 0]);
   });
 
   it('checks stages, bonds and clips', () => {

@@ -425,14 +425,14 @@ type Ion = { name: string; tone: Tone; size?: number };
  * and once a cation holds `ratio` anions (one for silver bromide, two for lead(II) iodide, three for
  * iron(III) hydroxide) the unit is complete and sinks as the precipitate. The two spectator ions keep
  * moving freely. `n` is the number of cations; there are `ratio` times as many anions, and the
- * spectators balance them. The kinds: 0 the cation, 1 the cation's spectator partner, 2 the
+ * spectators balance them. `water` colours the water (blue unless a blue ion needs it). The kinds: 0 the cation, 1 the cation's spectator partner, 2 the
  * anion's spectator partner, 3 the anion, 4 water, 5 an anion in a complete unit, 6 an anion held by
  * a cation still collecting, then the cation holding one anion, two, and so on.
  */
 export const precipitate = (
   id: string,
   ions: { cation: Ion; anion: Ion; withCation: Ion; withAnion: Ion },
-  o: { ratio?: number; n?: number; label: string; solid: string; seed?: number },
+  o: { ratio?: number; n?: number; label: string; solid: string; seed?: number; water?: Tone },
   height = 420,
 ): ParticlesEl => {
   const r = o.ratio ?? 1;
@@ -457,7 +457,7 @@ export const precipitate = (
           free(n * r, ions.withCation.tone, ions.withCation.name, ions.withCation.size),
           free(n * r, ions.withAnion.tone, ions.withAnion.name, ions.withAnion.size),
           free(n * r, ions.anion.tone, ions.anion.name, ions.anion.size),
-          free(r > 1 ? 10 : 16, 'adj', 'water', 0.8),
+          free(r > 1 ? 10 : 16, o.water ?? 'adj', 'water', 0.8),
           { n: 0, bond: 3, heavy: 1.5, size: ions.anion.size ?? 1, tone: ions.anion.tone, name: ions.anion.name },
           free(0, ions.anion.tone, ions.anion.name, ions.anion.size),
           ...stageKinds,

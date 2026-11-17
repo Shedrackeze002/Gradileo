@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { doubleA, hotAndCold } from './lib/cx-particles.ts';
 
 const video: Explainer = {
   id: 'cx-10-3',
@@ -30,6 +31,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Doubling a concentration, up close',
+      layout: 'center',
+      main: [doubleA('da')],
+      lines: [
+        { say: 'Here is a simple one-step reaction up close: each A particle that hits a B particle hard enough makes a new molecule. The right-hand box has twice as much A, and the same amount of B.', show: ['da', 'da.labels', 'da.key', 'da.tally'], play: 'da.go' },
+        { say: 'With twice as many A particles, an A meets a B about twice as often, so in the same time about twice as many new molecules form. The rate doubles when A doubles: first order with respect to A.' },
+      ],
+    },
+    {
       chapter: 'Finding k',
       layout: 'center',
       main: [{ kind: 'math', id: 'm', size: 'md', lines: ['k = \\dfrac{\\text{rate}}{[\\ce{A}]^2[\\ce{B}]} = \\dfrac{4.0 \\times 10^{-4}}{0.20^2 \\times 0.10} = 0.10', '\\text{units: mol}^{-2}\\text{ dm}^{6}\\text{ s}^{-1}'] }],
@@ -46,6 +56,15 @@ const video: Explainer = {
         { say: 'The rate-determining step is the slowest step, and the rate equation contains the species that take part in it.' },
         { say: 'The rate constant rises with temperature, as the Arrhenius equation shows.', show: 'm.0', focus: 'm.0' },
         { say: 'Taking natural logs gives a straight line. Plot natural log k against one over T, and the gradient is minus the activation energy over R.', caption: 'Taking natural logs gives a straight line. Plot ln k against 1/T, and the gradient is −Ea/R.', show: ['m.1', 'm.2'], focus: ['m.1', 'm.2'] },
+      ],
+    },
+    {
+      chapter: 'Temperature, up close',
+      layout: 'center',
+      main: [hotAndCold('tp')],
+      lines: [
+        { say: 'Here is why the rate constant rises with temperature. The same reaction runs in a cold box and a hot box, with the same amounts of A and B.', show: ['tp', 'tp.labels', 'tp.key', 'tp.tally', 'tp.thermo'], play: 'tp.go' },
+        { say: 'In the hot box the particles move faster, so they collide more often, and far more of the collisions have at least the activation energy. That second effect is the bigger one, and it is the exponential term in the Arrhenius equation.' },
       ],
     },
     {

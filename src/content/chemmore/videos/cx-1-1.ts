@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { displacement, metalsInAcid } from './lib/cx-particles.ts';
 
 const video: Explainer = {
   id: 'cx-1-1',
@@ -48,6 +49,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Metals in acid, up close',
+      layout: 'center',
+      main: [metalsInAcid('ma')],
+      lines: [
+        { say: 'Here are three metals in the same dilute acid, up close: magnesium, zinc and copper. Watch the acid particles hit each metal, and count the hydrogen bubbles that rise.', show: ['ma', 'ma.labels', 'ma.key'], play: 'ma.fizz' },
+        { say: 'Magnesium fizzes fast: almost every hit takes a magnesium atom into the solution as an ion, and the hydrogen bubbles away. Zinc reacts more slowly, because fewer hits are hard enough. Copper does nothing at all, so it sits below hydrogen in the series.' },
+      ],
+    },
+    {
       chapter: 'Displacement reactions',
       layout: 'center',
       main: [
@@ -59,6 +69,15 @@ const video: Explainer = {
         { say: 'In a displacement reaction, a more reactive metal takes the place of a less reactive metal in a compound.', show: 'def' },
         { say: 'Put an iron nail into blue copper two sulfate solution. Iron is above copper in the series, so it pushes the copper out. A pink-brown coating of copper grows on the nail, and the blue colour fades.', caption: 'Put an iron nail into blue copper(II) sulfate solution. Iron is above copper in the series, so it pushes the copper out. A pink-brown coating of copper grows on the nail, and the blue colour fades.', show: 'eq', focus: 'eq' },
         { say: 'The reverse never happens. Copper in iron two sulfate solution does nothing, because a less reactive metal cannot displace a more reactive one.', caption: 'The reverse never happens. Copper in iron(II) sulfate solution does nothing, because a less reactive metal cannot displace a more reactive one.', show: 'no', focus: 'no' },
+      ],
+    },
+    {
+      chapter: 'Displacement, up close',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3 })],
+      lines: [
+        { say: 'Here is the iron nail up close, in blue copper two sulfate solution, beside a piece of copper in iron two sulfate solution. Watch what the copper ions do when they hit the iron.', caption: 'Here is the iron nail up close, in blue copper(II) sulfate solution, beside a piece of copper in iron(II) sulfate solution. Watch what the copper ions do when they hit the iron.', show: ['dp', 'dp.labels', 'dp.key', 'dp.tally'], play: 'dp.go' },
+        { say: 'Each copper ion that hits the iron becomes a copper atom that settles on and around the nail, while an iron atom leaves as an iron two ion. So a loose coating of copper builds up, and the blue copper ions are used up. On the right, nothing happens: copper cannot push out the more reactive iron.', caption: 'Each copper ion that hits the iron becomes a copper atom that settles on and around the nail, while an iron atom leaves as an iron(II) ion. So a loose coating of copper builds up, and the blue copper ions are used up. On the right, nothing happens: copper cannot push out the more reactive iron.' },
       ],
     },
     {

@@ -815,6 +815,14 @@ export interface MolStage {
   charges?: Record<string, number>;
   /** Names written in the scene ("ethene"), with their place in the element's units. */
   names?: Array<{ text: string; at: [number, number]; tone?: Tone }>;
+  /**
+   * Curly arrows (a mechanism): each from an atom (a lone pair on it) or a bond ("C1=C2", from its
+   * middle) to an atom or a bond, curving to one side by `bend` (0.5 by default; below zero for
+   * the other side). Give them to the stage before the move they explain.
+   */
+  arrows?: Array<{ from: string; to: string; bend?: number }>;
+  /** Rings of delocalised electrons (benzene), each drawn as a circle inside the atoms named. */
+  rings?: string[][];
 }
 
 /** A stretch of a molecules clip: the molecules move to the arrangement `to` over `dur` seconds (or hold, without one). */

@@ -668,6 +668,17 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
         taken.add(order[i]);
       }
     }
+    // With more than one other kind starting in the box (ions in a solution), they are mixed
+    // through the rest of it. With one, it simply fills the rest, using up no random numbers.
+    const others = kinds.flatMap((kd, ki) => (ki > 0 ? Array<number>(kd.n).fill(ki) : []));
+    if (new Set(others).size > 1) {
+      const rest = Array.from({ length: n }, (_, i) => i).filter((i) => !taken.has(i));
+      for (let i = others.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [others[i], others[j]] = [others[j], others[i]];
+      }
+      rest.forEach((i, k) => (s.kind[i] = others[k] ?? 1));
+    }
     // An ionic lattice: each lump particle in turn takes the kind its placed neighbours have
     // fewer of, so the two kinds alternate through the lump, half and half.
     if (b.lumpMix !== undefined) {
