@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { burnerCan, cup, join, room, systems } from './lib/c30-1a-figures.ts';
+import { systemInWater } from './lib/c30-particles.ts';
 
 // Zinc powder in copper(II) sulfate solution in a polystyrene cup: the reacting particles are the
 // system; the water, the cup, the thermometer and the air are the surroundings.
@@ -81,6 +82,15 @@ const video: Explainer = {
           focus: ['cup.liquid', 'cup.cups', 'cup.thermometer'],
         },
         { say: 'So a thermometer in the solution reads the temperature of the surroundings.', focus: ['cup.thermometer', 'cup.thermometer-tag'] },
+      ],
+    },
+    {
+      chapter: 'The system, up close',
+      layout: 'center',
+      main: [systemInWater('sw', { seed: 1 })],
+      lines: [
+        { say: 'Here is a reaction in a cup of water, up close. The red and yellow particles are the reactants, the system. The blue particles are the water, part of the surroundings, and the thermometer sits in the water too. Watch what happens as the reactants meet and react, and keep an eye on the thermometer.', show: ['sw', 'sw.labels', 'sw.key', 'sw.thermo'], play: 'sw.go' },
+        { say: 'Each pair that reacts releases energy, and that energy passes to the water particles around it, which move faster. So the water warms and the thermometer rises, even though it never touches the system directly. The system gave energy to its surroundings.', focus: 'sw.thermo' },
       ],
     },
     {

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { energyFlow } from './lib/c10-4-figures.ts';
+import { hotAndCold } from './lib/c10-particles.ts';
 
 // Energy flowing out of a reaction (exothermic) and into one (endothermic).
 const flow = figure(
@@ -37,6 +38,16 @@ const video: Explainer = {
         { say: 'Chemists split the world in two. The system is the reacting substances. The surroundings are everything else: the water they are dissolved in, the container, the thermometer and the air.', show: ['f.exo-box', 'f.endo-box'] },
         { say: 'An exothermic change gives out energy to its surroundings, usually as heat. The surroundings get warmer, so the temperature of the mixture rises.', show: ['f.exo-arrows', 'f.exo-title', 'f.exo-note'], focus: 'f.exo-arrows' },
         { say: 'An endothermic change takes in energy from its surroundings. The surroundings get colder, so the temperature falls, or the change keeps going only while energy is supplied: by heating, light or electricity.', show: ['f.endo-arrows', 'f.endo-title', 'f.endo-note'], focus: 'f.endo-arrows' },
+      ],
+    },
+    {
+      chapter: 'Watching the temperature',
+      layout: 'center',
+      main: [hotAndCold('hc', 420)],
+      lines: [
+        { say: 'Here are two reactions in solution, with a thermometer by each. In both, the two reactants start apart, at the same temperature.', show: ['hc', 'hc.labels', 'hc.thermo'] },
+        { say: 'Mix them. On the left, every pair of particles that reacts gives out energy: the particles speed up, and the temperature rises. That reaction is exothermic.', play: 'hc.mix', focus: 'hc.ex' },
+        { say: 'On the right, every pair that reacts takes energy in from the particles around it: they slow down, and the temperature falls. That reaction is endothermic.', focus: 'hc.en' },
       ],
     },
     {

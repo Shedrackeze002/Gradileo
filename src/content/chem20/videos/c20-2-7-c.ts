@@ -1,4 +1,40 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+import { ATOM } from '@/video/reactions.ts';
+
+/**
+ * The worked examples as simulated gases (src/video/particles.ts), each in a rigid container with a
+ * gauge, a volume reading and a thermometer. Atoms carry their masses (C 12, O 16, Cl 35.45) and pull
+ * on one another only weakly, so the molecules stay a gas; the heavy chlorine molecules move slowly.
+ */
+const C = { ...ATOM.C, mass: 12, bond: 0.03 };
+const O = { ...ATOM.O, mass: 16, size: 0.9, bond: 0.03 };
+const Cl = { ...ATOM.Ne, name: 'chlorine', tone: 'adj' as const, mass: 35.45, size: 1.1, bond: 0.03 };
+const box = (b: Partial<ParticleBox>): ParticleBox => ({ id: 'g', state: 'gas', width: 8, height: 9, temp: 2, ...b });
+
+/** 10.0 L of carbon dioxide at 150 kPa and 25 °C: 26.6 g. */
+const carbonDioxide: ParticlesEl = {
+  kind: 'particles',
+  id: 'co',
+  boxes: [box({ kinds: [C, O], molecules: [{ atoms: [0, 1, 1], n: 5 }], label: 'carbon dioxide at 25 °C' })],
+  clips: {},
+  gauge: { box: 'g', start: 150 },
+  volume: { box: 'g', start: 10, decimals: 1 },
+  seed: 3,
+  thermometers: true,
+  height: 420,
+};
+
+/** 2.746 g of an unknown gas in 1.20 L at 80 kPa and 25 °C: chlorine. */
+const unknown: ParticlesEl = {
+  kind: 'particles',
+  id: 'un',
+  boxes: [box({ kinds: [Cl], molecules: [{ atoms: [0, 0], n: 6 }], label: 'unknown gas, 2.746 g' })],
+  clips: {},
+  gauge: { box: 'g', start: 80 },
+  volume: { box: 'g', start: 1.2, decimals: 2 },
+  thermometers: true,
+  height: 420,
+};
 
 const RULE = 'Use $PV = nRT$ with $R = 8.314\\ \\text{kPa·L/(mol·K)}$.';
 
@@ -7,7 +43,7 @@ const video: Explainer = {
   lessonId: 'c20-2-7',
   title: 'The Ideal Gas Law, Part 3: Mass and Molar Mass',
   thumbnailTitle: 'Mass and Molar Mass',
-  thumbnail: false,
+  thumbnail: 'un',
   summary:
     'The ideal gas law gives an amount, n = PV/RT, and the molar mass turns it into a mass, m = n × M. Knowing the mass of a sample as well, M = m/n gives its molar mass, and the closest molar mass among the possible gases identifies it: a 2.746 g sample in 1.20 L at 80 kPa and 25 °C is 70.9 g/mol, chlorine.',
   scenes: [
@@ -21,23 +57,26 @@ const video: Explainer = {
     },
     {
       chapter: 'Finding a mass',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: `What mass of carbon dioxide, $\\ce{CO2}$, is in a $10.0\\ \\text{L}$ container at $150\\ \\text{kPa}$ and $25^\\circ\\text{C}$, to the nearest tenth? ${RULE} Use C $12.01\\ \\text{g/mol}$, O $16.00\\ \\text{g/mol}$.` },
+      layout: 'split',
+      leftWidth: 440,
+      left: [carbonDioxide],
+      right: [
+        { kind: 'text', id: 'q', size: 'md', md: `What mass of carbon dioxide, $\\ce{CO2}$, is in a $10.0\\ \\text{L}$ container at $150\\ \\text{kPa}$ and $25^\\circ\\text{C}$, to the nearest tenth? ${RULE} Use C $12.01\\ \\text{g/mol}$, O $16.00\\ \\text{g/mol}$.` },
         {
           kind: 'math',
           id: 'm',
           size: 'md',
+          align: 'left',
           lines: [
             'T = 25 + 273.15 = 298.15\\ \\text{K}',
-            'n = \\dfrac{PV}{RT} = \\dfrac{150 \\times 10.0}{8.314 \\times 298.15} = 0.6051\\ \\text{mol}',
+            'n = \\dfrac{150 \\times 10.0}{8.314 \\times 298.15} = 0.6051\\ \\text{mol}',
             'M = 12.01 + 2 \\times 16.00 = 44.01\\ \\text{g/mol}',
-            'm = n \\times M = 0.6051 \\times 44.01 = 26.63 \\approx \\good{26.6\\ \\text{g}}',
+            'm = 0.6051 \\times 44.01 = \\good{26.6\\ \\text{g}}',
           ],
         },
       ],
       lines: [
-        { say: 'What mass of carbon dioxide is in a ten point zero litre container at one hundred fifty kilopascals and twenty-five degrees Celsius?', caption: 'What mass of carbon dioxide is in a 10.0 L container at 150 kPa and 25°C?', show: 'q' },
+        { say: 'What mass of carbon dioxide is in a ten point zero litre container at one hundred fifty kilopascals and twenty-five degrees Celsius?', caption: 'What mass of carbon dioxide is in a 10.0 L container at 150 kPa and 25°C?', show: ['q', 'co', 'co.labels', 'co.gauge', 'co.volume', 'co.thermo'] },
         { say: 'Kelvins first: two hundred ninety-eight point one five. Then the amount, n equals P V over R T: zero point six zero five one moles.', caption: 'Kelvins first: 298.15 K. Then the amount, n = PV/RT: 0.6051 mol.', show: ['m.0', 'm.1'], focus: 'm.1' },
         { say: 'The molar mass of carbon dioxide is forty-four point zero one grams per mole. The mass is the amount times the molar mass: twenty-six point six grams, to the nearest tenth.', caption: 'The molar mass of carbon dioxide is 44.01 g/mol. The mass is the amount times the molar mass: 26.6 g, to the nearest tenth.', show: ['m.2', 'm.3'], focus: 'm.3' },
       ],
@@ -85,17 +124,21 @@ const video: Explainer = {
     },
     {
       chapter: 'A gas to identify',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: `A $2.746\\ \\text{g}$ sample of a gas occupies $1.20\\ \\text{L}$ at $80\\ \\text{kPa}$ and $25^\\circ\\text{C}$. What is its molar mass, to the nearest tenth? Is it argon, carbon dioxide, sulfur dioxide or chlorine? ${RULE}` },
+      layout: 'split',
+      leftWidth: 440,
+      left: [unknown],
+      right: [
+        { kind: 'text', id: 'q', size: 'md', md: `A $2.746\\ \\text{g}$ sample of a gas occupies $1.20\\ \\text{L}$ at $80\\ \\text{kPa}$ and $25^\\circ\\text{C}$. What is its molar mass, to the nearest tenth? Is it argon, carbon dioxide, sulfur dioxide or chlorine? ${RULE}` },
         {
           kind: 'math',
           id: 'm',
-          size: 'lg',
+          size: 'md',
+          align: 'left',
           lines: [
-            'n = \\dfrac{PV}{RT} = \\dfrac{80 \\times 1.20}{8.314 \\times 298.15} = 0.03873\\ \\text{mol}',
-            'M = \\dfrac{m}{n} = \\dfrac{2.746}{0.03873} = 70.9\\ \\text{g/mol}',
-            '\\ce{Ar}\\ 39.95 \\quad \\ce{CO2}\\ 44.01 \\quad \\ce{SO2}\\ 64.06 \\quad \\good{\\ce{Cl2}\\ 70.90}',
+            'n = \\dfrac{80 \\times 1.20}{8.314 \\times 298.15} = 0.03873\\ \\text{mol}',
+            'M = \\dfrac{2.746}{0.03873} = 70.9\\ \\text{g/mol}',
+            '\\ce{Ar}\\ 39.95 \\qquad \\ce{CO2}\\ 44.01',
+            '\\ce{SO2}\\ 64.06 \\qquad \\good{\\ce{Cl2}\\ 70.90}',
           ],
         },
       ],
@@ -103,10 +146,10 @@ const video: Explainer = {
         {
           say: 'A two point seven four six gram sample of a gas occupies one point two zero litres at eighty kilopascals and twenty-five degrees Celsius. Is it argon, carbon dioxide, sulfur dioxide or chlorine?',
           caption: 'A 2.746 g sample of a gas occupies 1.20 L at 80 kPa and 25°C. Is it argon, carbon dioxide, sulfur dioxide or chlorine?',
-          show: 'q',
+          show: ['q', 'un', 'un.labels', 'un.gauge', 'un.volume', 'un.thermo'],
         },
         { say: 'The amount is zero point zero three eight seven three moles, so the molar mass is seventy point nine grams per mole.', caption: 'The amount is 0.03873 mol, so the molar mass is 70.9 g/mol.', show: ['m.0', 'm.1'], focus: 'm.1' },
-        { say: 'Chlorine, at seventy point nine zero grams per mole, is the closest match. The gas is chlorine.', caption: 'Chlorine, at 70.90 g/mol, is the closest match. The gas is chlorine.', show: 'm.2', focus: 'm.2' },
+        { say: 'Chlorine, at seventy point nine zero grams per mole, is the closest match. The gas is chlorine.', caption: 'Chlorine, at 70.90 g/mol, is the closest match. The gas is chlorine.', show: ['m.2', 'm.3'], focus: ['m.3', 'un.g'] },
       ],
     },
     {

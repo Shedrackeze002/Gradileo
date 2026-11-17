@@ -1,11 +1,12 @@
 import type { Explainer } from '@/video/script.ts';
+import { boilOrBurn, reactionSigns } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-4',
   lessonId: 'c10-1-4',
   title: 'Physical and Chemical Change, Part 1: Physical and Chemical Changes',
   thumbnailTitle: 'Physical or Chemical Change?',
-  thumbnail: false,
+  thumbnail: 'pc',
   summary:
     'In a physical change no new substance is made, and the change is usually easy to reverse; in a chemical change new substances are made, and it is usually hard to reverse. Evidence of a chemical change: a gas given off when nothing is boiling, a colour change, a precipitate, or energy given out or taken in.',
   scenes: [
@@ -44,6 +45,16 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Both changes up close',
+      layout: 'center',
+      main: [boilOrBurn('pc', 440)],
+      lines: [
+        { say: 'Let’s look at both kinds of change up close. On the left is liquid water, its molecules close together. On the right is a mix of hydrogen and oxygen gas.', show: ['pc', 'pc.labels', 'pc.thermo'] },
+        { say: 'Heat the water until it boils. Its molecules move faster and escape from one another into a gas. But every one is still a water molecule: one red oxygen atom joined to two yellow hydrogen atoms. That is a physical change.', play: 'pc.boil', focus: 'pc.w' },
+        { say: 'Now a spark heats the gases. Their molecules break apart, and the atoms join up in a new way, as water molecules that were not there before. A new substance has been made: that is a chemical change.', play: 'pc.spark', show: 'pc.tally', focus: 'pc.h' },
+      ],
+    },
+    {
       chapter: 'The evidence',
       layout: 'center',
       main: [
@@ -67,6 +78,15 @@ const video: Explainer = {
         { say: 'A precipitate: a solid that forms when two solutions are mixed. Two colourless solutions can give a bright yellow solid.', show: 't.2', focus: 't.2' },
         { say: 'Energy given out or taken in, as heat, light or sound, or the mixture cools. Magnesium burns with a dazzling white light.', show: 't.3', focus: 't.3' },
         { say: 'And a change that is hard to reverse: a cooked egg cannot be uncooked.', show: 't.4', focus: 't.4' },
+      ],
+    },
+    {
+      chapter: 'Two signs up close',
+      layout: 'center',
+      main: [reactionSigns('sg', 400)],
+      lines: [
+        { say: 'Here are two of these signs up close. On the left, a piece of zinc sits in acid. Particles of the acid pull zinc atoms off into the solution, and two of the hydrogen particles set free join as a molecule of hydrogen gas, which rises as a bubble.', show: ['sg', 'sg.labels'], play: 'sg.fizz', focus: 'sg.z' },
+        { say: 'On the right, one solution has silver particles dissolved in it, and the other has chloride particles. Mix them, and where a silver particle meets a chloride particle, they join into a new solid that clumps together and sinks: a precipitate.', play: 'sg.mix', focus: 'sg.s' },
       ],
     },
     {

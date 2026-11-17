@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { hbars, join, room, tag } from './lib/c30-1a-figures.ts';
+import { hotMetal } from './lib/c30-particles.ts';
 
 // The specific heat capacities used in this unit, in J/(g·°C): water's is by far the largest.
 const capacities = figure(
@@ -57,6 +58,15 @@ const video: Explainer = {
         { say: 'It flows from hotter to colder, and is measured in joules or kilojoules.' },
         { say: 'Heat is not temperature. A bathtub of warm water holds far more energy than a cup of boiling water, though the cup is hotter.', show: 'tub' },
         { say: 'The heat a substance gains or loses depends on how much of it there is, what it is made of, and how far its temperature changes.', show: 'three' },
+      ],
+    },
+    {
+      chapter: 'Heat, up close',
+      layout: 'center',
+      main: [hotMetal('hm', { seed: 6 })],
+      lines: [
+        { say: 'Here is heat moving, up close. A hot lump of metal, the larger particles packed at the bottom, sits in a cup of cold water, and the cup lets no heat in or out. Each particle is coloured by how fast it moves: red is fast and hot, blue is slow and cold. The thermometer reads the water. Watch the red lump, and watch the water around it as the particles bump into one another.', show: ['hm', 'hm.labels', 'hm.thermo'], play: 'hm.go' },
+        { say: 'Every time a fast metal particle hits a slow water particle, it passes on some of its energy. So the lump cools and the water warms, until both are at the same temperature. That energy on the move, from hotter to colder, is heat.', focus: 'hm.thermo' },
       ],
     },
     {

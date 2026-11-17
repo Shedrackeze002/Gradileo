@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { gasTest, phStrip } from './lib/c10-5-figures.ts';
+import { marbleInAcid } from './lib/c10-particles.ts';
 
 // The gas from an acid and a metal carbonate, bubbled through limewater.
 const test = figure('g', [gasTest()]);
@@ -34,6 +35,17 @@ const video: Explainer = {
       lines: [
         { say: 'Drop a piece of chalk into an acid, and it fizzes. Chalk is calcium carbonate, and it neutralizes the acid, giving off a gas.', show: 'title' },
         { say: 'In this last part, you will see what acids and metal carbonates make, how to test for the gas, and how to neutralize an acid safely.' },
+      ],
+    },
+    {
+      chapter: 'A carbonate fizzing',
+      layout: 'split',
+      leftWidth: 480,
+      left: [marbleInAcid('mc', 420)],
+      right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\text{acid} + \\text{metal carbonate}', '\\to \\text{salt} + \\text{water}', '\\quad + \\text{carbon dioxide}'] }],
+      lines: [
+        { say: 'Here are marble chips, which are calcium carbonate like chalk, in dilute acid.', show: ['mc', 'mc.labels'] },
+        { say: 'Acid particles pull the carbonate apart at its surface. Calcium ions go into the solution, and carbon dioxide gas forms and bubbles out of the beaker: that is the fizzing.', play: 'mc.fizz', show: ['m.0', 'm.1', 'm.2'] },
       ],
     },
     {

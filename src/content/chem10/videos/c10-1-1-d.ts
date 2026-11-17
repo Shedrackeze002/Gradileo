@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { heatingCurve } from './lib/c10-1-figures.ts';
+import { threeTemperatures } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-1-d',
@@ -48,15 +49,19 @@ const video: Explainer = {
     },
     {
       chapter: 'Melting and boiling points',
-      layout: 'center',
-      main: [
-        { kind: 'callout', id: 'def', tone: 'definition', title: 'Melting point and boiling point', md: 'The **melting point** is the temperature at which a substance melts; a liquid freezes at the same temperature. The **boiling point** is the temperature at which a liquid boils. Each pure substance has its own fixed melting and boiling points.' },
-        { kind: 'bullets', id: 'rule', items: ['Below its melting point, a substance is a **solid**.', 'Between its melting point and its boiling point, it is a **liquid**.', 'Above its boiling point, it is a **gas**.'] },
+      layout: 'split',
+      leftWidth: 440,
+      left: [threeTemperatures('tp', 460)],
+      right: [
+        { kind: 'callout', id: 'def', tone: 'definition', title: 'Melting point and boiling point', md: 'The **melting point** is the temperature at which a substance melts; a liquid freezes at the same temperature. The **boiling point** is the temperature at which a liquid boils.' },
+        { kind: 'bullets', id: 'rule', items: ['Below the melting point: **solid**.', 'Between the two: **liquid**.', 'Above the boiling point: **gas**.'] },
       ],
       lines: [
         { say: 'The melting point is the temperature at which a substance melts. A liquid freezes at that same temperature. The boiling point is the temperature at which a liquid boils.', show: 'def' },
         { say: 'Each pure substance has its own fixed melting and boiling points, so you can tell its state at any temperature.' },
-        { say: 'Below its melting point, it is a solid. Between its melting and boiling points, a liquid. And above its boiling point, a gas.', show: 'rule' },
+        { say: 'Below its melting point, it is a solid: here the thermometer is below the melting mark, and the particles vibrate in rows.', show: ['rule.0', 'tp', 'tp.thermo'] },
+        { say: 'Warm it to between its melting and boiling points, and it is a liquid.', show: 'rule.1', play: 'tp.liquid' },
+        { say: 'And above its boiling point, it is a gas.', show: 'rule.2', play: 'tp.gas' },
       ],
     },
     {

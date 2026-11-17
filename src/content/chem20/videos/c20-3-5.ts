@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, dotBeaker } from './lib/c20-3b-figures.ts';
+import { diluting } from './lib/c20-particles.ts';
 
 // 25.0 mL of solution diluted to 100.0 mL: the same solute particles spread through four times the volume.
 const dilute = figure(
@@ -42,6 +43,16 @@ const video: Explainer = {
         { say: 'Here are twenty-five point zero millilitres of a solution. Each dot stands for some solute particles.', caption: 'Here are 25.0 mL of a solution. Each dot stands for some solute particles.', show: ['d.b1-glass', 'd.b1-liquid', 'd.b1-solute', 'd.b1-label'] },
         { say: 'Add water, up to one hundred point zero millilitres. The volume is four times larger, but nothing is added to the solute or taken from it.', caption: 'Add water, up to 100.0 mL. The volume is four times larger, but nothing is added to the solute or taken from it.', show: ['d.add', 'd.b2-glass', 'd.b2-liquid', 'd.b2-label'] },
         { say: 'The same particles are spread through more solution, so the concentration is lower.', show: 'd.b2-solute', focus: 'd.b2-solute' },
+      ],
+    },
+    {
+      chapter: 'Watching a dilution',
+      layout: 'center',
+      main: [diluting('dl', { start: 25, unit: 'mL', from: 0.25 })],
+      lines: [
+        { say: 'Watch the solute particles as the water goes in. The solution starts at twenty-five point zero millilitres.', caption: 'Watch the solute particles as the water goes in. The solution starts at 25.0 mL.', show: ['dl', 'dl.labels', 'dl.volume', 'dl.key'] },
+        { say: 'Adding water raises the volume to one hundred point zero millilitres, and the particles spread out to fill it.', caption: 'Adding water raises the volume to 100.0 mL, and the particles spread out to fill it.', play: 'dl.dilute', focus: 'dl.d' },
+        { say: 'There are still exactly eight solute particles, so the amount of solute has not changed. They are just four times as spread out, so the concentration is one quarter of what it was.', focus: 'dl.d' },
       ],
     },
     {

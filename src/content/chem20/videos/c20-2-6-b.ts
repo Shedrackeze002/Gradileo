@@ -1,18 +1,20 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { container, tag } from './lib/c20-2b-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// The container before and after gas is added: the added molecules in green.
-const adding = figure(
-  'f',
-  [
-    container({ name: 'a', at: [0, 0], w: 3.2, h: 2.94, lid: 'piston', count: 6, seed: 4 }),
-    tag('a-label', [1.6, -0.3], '\\begin{gathered} 0.40\\ \\text{mol} \\\\ 9.8\\ \\text{L} \\end{gathered}', { place: 'below' }),
-    container({ name: 'b', at: [4.8, 0], w: 3.2, h: 4.95, lid: 'piston', count: 10, seed: 9, added: { count: 4, tone: 'good' } }),
-    tag('b-label', [6.4, -0.3], '\\begin{gathered} 0.673\\ \\text{mol} \\\\ 16.5\\ \\text{L} \\end{gathered}', { place: 'below' }),
+/**
+ * The container before and after gas is added (simulated, src/video/particles.ts): six particles in
+ * 9.8 L, then ten (the four added in green) in 16.5 L, at the same temperature and pressure.
+ */
+const GAS = { bond: 0.15, heavy: 0 } as const;
+const adding: ParticlesEl = {
+  kind: 'particles',
+  id: 'f',
+  boxes: [
+    { id: 'a', state: 'gas', width: 6, height: 12, temp: 1.6, lid: 0.5, piston: true, kinds: [{ n: 6, ...GAS }], label: '0.40 mol, 9.8 L' },
+    { id: 'b', state: 'gas', width: 6, height: 12, temp: 1.6, lid: (0.5 * 16.5) / 9.8, piston: true, kinds: [{ n: 6, ...GAS }, { n: 4, tone: 'good', ...GAS }], label: '0.673 mol, 16.5 L' },
   ],
-  500,
-);
+  clips: {},
+  height: 500,
+};
 
 const video: Explainer = {
   id: 'c20-2-6-b',
@@ -90,9 +92,9 @@ const video: Explainer = {
         { kind: 'callout', id: 'oops', tone: 'mistake', title: 'The total is not the amount added', md: '$0.673\\ \\text{mol}$ is what the container holds **after** the gas is added. Subtract the $0.40\\ \\text{mol}$ that was there to begin with: $0.273\\ \\text{mol}$ is added.' },
       ],
       lines: [
-        { say: 'Here is the container before the gas is added: zero point four zero moles in nine point eight litres.', caption: 'Here is the container before the gas is added: 0.40 mol in 9.8 L.', show: ['f.a-box', 'f.a-piston', 'f.a-p', 'f.a-label'] },
-        { say: 'Afterwards, it holds zero point six seven three moles in sixteen point five litres. That is the total, not the amount added.', caption: 'Afterwards, it holds 0.673 mol in 16.5 L. That is the total, not the amount added.', show: ['f.b-box', 'f.b-piston', 'f.b-p', 'f.b-new', 'f.b-label'], focus: ['f.b-p', 'f.b-new'] },
-        { say: 'The question asks how much is added, so subtract the zero point four zero moles that were there to begin with.', caption: 'The question asks how much is added, so subtract the 0.40 mol that was there to begin with.', show: 'oops', focus: 'f.b-new' },
+        { say: 'Here is the container before the gas is added: zero point four zero moles in nine point eight litres.', caption: 'Here is the container before the gas is added: 0.40 mol in 9.8 L.', show: ['f', 'f.labels'], focus: 'f.a' },
+        { say: 'Afterwards, it holds zero point six seven three moles in sixteen point five litres. That is the total, not the amount added.', caption: 'Afterwards, it holds 0.673 mol in 16.5 L. That is the total, not the amount added.', focus: 'f.b' },
+        { say: 'The question asks how much is added, so subtract the zero point four zero moles that were there to begin with.', caption: 'The question asks how much is added, so subtract the 0.40 mol that was there to begin with.', show: 'oops', focus: 'f.b' },
       ],
     },
     {

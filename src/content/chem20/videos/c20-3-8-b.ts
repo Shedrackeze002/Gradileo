@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { strengthAndConcentration } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-8-b',
@@ -37,6 +38,16 @@ const video: Explainer = {
         { say: 'Any acid can be made concentrated or dilute, by changing how much of it is dissolved. But nothing you do to the solution changes whether the acid is strong or weak.' },
         { say: 'So all four combinations exist. Six point zero moles per litre hydrochloric acid is strong and concentrated. Zero point zero zero one zero moles per litre acetic acid is weak and dilute.', caption: 'So all four combinations exist. 6.0 mol/L hydrochloric acid is strong and concentrated. 0.0010 mol/L acetic acid is weak and dilute.', show: 't' },
         { say: 'A dilute strong acid can even hold fewer hydronium ions than a concentrated weak acid. So to compare strengths fairly, compare solutions of the same concentration.' },
+      ],
+    },
+    {
+      chapter: 'Dilute and strong, concentrated and weak',
+      layout: 'center',
+      main: [strengthAndConcentration('sc')],
+      lines: [
+        { say: 'Here is a dilute solution of a strong acid on the left, with only three molecules, and a concentrated solution of a weak acid on the right, with twelve.', show: ['sc', 'sc.labels', 'sc.key'] },
+        { say: 'The strong acid ionises completely: all three of its molecules become ions, even though there are only a few of them.', play: 'sc.go', focus: 'sc.s', show: 'sc.tally' },
+        { say: 'The weak acid has many more molecules, but only a few of them are ionised at a time. Strength says what fraction ionises. Concentration says how much acid there is.', focus: 'sc.w' },
       ],
     },
     {

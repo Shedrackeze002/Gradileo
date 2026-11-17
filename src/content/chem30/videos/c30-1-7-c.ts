@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { peDiagram } from './lib/c30-1b-figures.ts';
+import { catalysed } from './lib/c30-particles.ts';
 
 // The lesson's reaction without a catalyst (grey: top of the hump at 225 kJ) and with one (green:
 // 175 kJ); reactants at 150 kJ and products at 50 kJ on both. The short catalysed arrow leaves no
@@ -83,6 +84,15 @@ const video: Explainer = {
         { say: 'Why is the reaction faster? At the same temperature, the particles have the same spread of energies as before.', show: 'key' },
         { say: 'But with a lower barrier, a much larger fraction of the collisions that already happen have enough energy to react.' },
         { say: 'So a catalyst does not heat the reactants, or give the particles more energy, and it does not change how much energy the reaction releases or absorbs. It only lowers the barrier.', show: 'oops' },
+      ],
+    },
+    {
+      chapter: 'Two barriers, up close',
+      layout: 'center',
+      main: [catalysed('ct', { seed: 4 })],
+      lines: [
+        { say: 'Here is the same mixture of hydrogen and oxygen in two boxes, at the same temperature. The right box has a lower barrier, as a catalyst would give. The catalyst itself is not drawn. Watch the count of water molecules in each.', show: ['ct', 'ct.labels', 'ct.tally', 'ct.thermo'], play: 'ct.go' },
+        { say: 'The particles started at the same temperature, so they move at the same speeds in both boxes. But on the right, many more collisions get over the lower barrier, so water forms there, while the left box makes none at all in this time.', focus: 'ct.tally' },
       ],
     },
     {

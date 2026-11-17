@@ -1,11 +1,12 @@
 import type { Explainer } from '@/video/script.ts';
+import { boilingRace } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-1-8-d',
   lessonId: 'c20-1-8',
   title: 'Intermolecular Forces, Part 4: Comparing Boiling Points',
   thumbnailTitle: 'Comparing Boiling Points',
-  thumbnail: false,
+  thumbnail: 'br',
   summary:
     'To compare boiling points, ask in order: does only one substance form hydrogen bonds, is one polar and the other not, and which has more electrons? Hydrogen bonds give water (100 °C) a far higher boiling point than hydrogen sulfide (about −60 °C), and methanol boils much higher than ethane though both have 18 electrons; a very large molecule such as iodine can still beat a small polar one.',
   scenes: [
@@ -105,6 +106,21 @@ const video: Explainer = {
         { say: 'Methanol boils at about sixty-five degrees Celsius, but ethane at about minus eighty-nine. Why?' },
         { say: 'Methanol has six plus four plus eight: eighteen electrons. Ethane has twelve plus six: also eighteen. So their London forces are similar.', show: ['m.0', 'm.1'], focus: ['m.0', 'm.1'] },
         { say: 'But methanol has a hydrogen bonded directly to oxygen, so its molecules form hydrogen bonds, while ethane is non-polar, with London forces only. Hydrogen bonds hold methanol molecules together much more strongly.', show: ['m.2', 'm.3'], focus: ['m.2', 'm.3'] },
+      ],
+    },
+    {
+      chapter: 'Heating them side by side',
+      layout: 'center',
+      main: [
+        boilingRace('br', [
+          { id: 'e', label: 'ethane: London forces', bond: 0.5, tone: 'theta' },
+          { id: 'm', label: 'methanol: hydrogen bonds too', bond: 1.15, tone: 'adj' },
+        ], 400),
+      ],
+      lines: [
+        { say: 'Here are the two liquids, cold, warmed side by side by the same heater. Each ball stands for a molecule.', show: ['br', 'br.labels', 'br.thermo'] },
+        { say: 'Ethane molecules attract one another only by London forces, so they escape first: the ethane boils away while the methanol is still a liquid.', play: 'br.heat', focus: 'br.e' },
+        { say: 'Methanol molecules are held by hydrogen bonds as well, so they need to be much hotter before they break free.', focus: 'br.m' },
       ],
     },
     {

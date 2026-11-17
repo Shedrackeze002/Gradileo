@@ -1,6 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { stateBoxes } from './lib/c10-1-figures.ts';
+import { followOne, threeStates } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-1',
@@ -45,13 +44,13 @@ const video: Explainer = {
     {
       chapter: 'Three states of matter',
       layout: 'center',
-      main: [figure('st', [stateBoxes()], 420)],
+      main: [threeStates('st', 440)],
       lines: [
-        { say: 'The three states of matter are solid, liquid and gas. The same substance can be in any of them: water can be ice, liquid water or steam.', show: 'st' },
+        { say: 'The three states of matter are solid, liquid and gas. The same substance can be in any of them: water can be ice, liquid water or steam. Here are the same particles in each state.', show: ['st', 'st.labels'] },
         { say: 'From one state to another, only the arrangement and movement of the particles change.' },
-        { say: 'In a solid, the particles are packed closely together, usually in a regular pattern. Strong forces hold each one in place, so they can only vibrate about fixed positions.', show: 'st.solid', focus: 'st.solid' },
-        { say: 'In a liquid, the particles are still close together and touching, but arranged randomly. The forces are weaker, so they can slide past one another.', show: 'st.liquid', focus: 'st.liquid' },
-        { say: 'In a gas, the particles are far apart compared with their size, and the forces between them are very weak. They move quickly in all directions, in straight lines, until they hit something.', show: 'st.gas', focus: 'st.gas' },
+        { say: 'In a solid, the particles are packed closely together, usually in a regular pattern. Strong forces hold each one in place, so they can only vibrate about fixed positions.', focus: 'st.s' },
+        { say: 'In a liquid, the particles are still close together and touching, but arranged randomly. The forces are weaker, so they can slide past one another.', focus: 'st.l' },
+        { say: 'In a gas, the particles are far apart compared with their size, and the forces between them are very weak. They move quickly in all directions, in straight lines, until they hit something.', focus: 'st.g' },
       ],
     },
     {
@@ -74,11 +73,12 @@ const video: Explainer = {
     },
     {
       chapter: 'Solid particles still move',
-      layout: 'center',
-      main: [{ kind: 'callout', id: 'oops', tone: 'mistake', title: 'Particles in a solid still move', md: 'A solid stays still, but its particles **vibrate** all the time. They just cannot leave their positions. The particles of every substance are always moving.' }],
+      layout: 'split',
+      left: [followOne('v', 'solid', 40)],
+      right: [{ kind: 'callout', id: 'oops', tone: 'mistake', title: 'Particles in a solid still move', md: 'A solid stays still, but its particles **vibrate** all the time. They just cannot leave their positions. The particles of every substance are always moving.' }],
       lines: [
-        { say: 'Because a solid stays still, it is tempting to say that its particles do not move.', show: 'oops' },
-        { say: 'In fact, they vibrate all the time. They just cannot leave their positions. The particles of every substance are always moving.' },
+        { say: 'Because a solid stays still, it is tempting to say that its particles do not move.', show: ['oops', 'v'] },
+        { say: 'In fact, they vibrate all the time. Follow the yellow particle: it shakes back and forth, but it never leaves its position. The particles of every substance are always moving.', show: 'v.trail', focus: 'v.trail' },
       ],
     },
     {

@@ -1,9 +1,33 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { weatherBalloon } from './lib/c20-2b-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// A weather balloon near the ground, and much larger high above it.
-const balloon = figure('b', [weatherBalloon({ low: '\\text{near the ground}', high: '\\begin{gathered}\\text{high up: lower}\\\\ \\text{pressure, colder}\\end{gathered}' })], 520);
+// Simulated gases (src/video/particles.ts) with a gauge, a volume reading and a thermometer.
+
+/** The pressure doubled and the Kelvin temperature halved at once: a quarter of the volume. */
+const quarter: ParticlesEl = {
+  kind: 'particles',
+  id: 'qv',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 12, temp: 1.6, lid: 0.9, piston: true, kinds: [{ n: 12, bond: 0.15, heavy: 0 }] }],
+  clips: { change: { phases: [{ dur: 6, heat: { b: 0.8 }, lid: { b: 0.225 } }] } },
+  gauge: { box: 'b', start: 100 },
+  volume: { box: 'b', start: 4, decimals: 2 },
+  thermometers: true,
+  height: 500,
+};
+
+/**
+ * The gas in a rising weather balloon: the pressure outside halves while its Kelvin temperature
+ * falls by a fifth, so it swells to 1.6 times its volume.
+ */
+const balloon: ParticlesEl = {
+  kind: 'particles',
+  id: 'b',
+  boxes: [{ id: 'g', state: 'gas', width: 8, height: 12, temp: 1.5, lid: 0.55, piston: true, kinds: [{ n: 12, bond: 0.15, heavy: 0 }], label: 'gas in the balloon' }],
+  clips: { climb: { phases: [{ dur: 7, heat: { g: 1.2 }, lid: { g: 0.88 } }] } },
+  gauge: { box: 'g', start: 100 },
+  volume: { box: 'g', start: 1, decimals: 2 },
+  thermometers: true,
+  height: 520,
+};
 
 const video: Explainer = {
   id: 'c20-2-5-d',
@@ -50,15 +74,17 @@ const video: Explainer = {
     },
     {
       chapter: 'Two changes at once',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: 'The pressure of a gas is **doubled** and its Kelvin temperature is **halved**. The amount of gas stays the same. What happens to its volume?' },
-        { kind: 'math', id: 'm', size: 'lg', lines: ['\\dfrac{V_2}{V_1} = \\dfrac{T_2/T_1}{P_2/P_1} = \\dfrac{\\tfrac{1}{2}}{2} = \\good{\\tfrac{1}{4}}'] },
+      layout: 'split',
+      leftWidth: 500,
+      left: [quarter],
+      right: [
+        { kind: 'text', id: 'q', size: 'md', md: 'The pressure of a gas is **doubled** and its Kelvin temperature is **halved**. The amount of gas stays the same. What happens to its volume?' },
+        { kind: 'math', id: 'm', size: 'lg', align: 'left', lines: ['\\dfrac{V_2}{V_1} = \\dfrac{T_2/T_1}{P_2/P_1} = \\dfrac{\\tfrac{1}{2}}{2} = \\good{\\tfrac{1}{4}}'] },
       ],
       lines: [
-        { say: 'The pressure of a gas is doubled and its Kelvin temperature is halved. What happens to its volume?', show: 'q' },
+        { say: 'The pressure of a gas is doubled and its Kelvin temperature is halved. What happens to its volume?', show: ['q', 'qv', 'qv.gauge', 'qv.volume', 'qv.thermo'] },
         { say: 'The temperature factor is one half, and the pressure factor is two. One half divided by two is one quarter. So the volume is multiplied by one quarter.', show: 'm', focus: 'm' },
-        { say: 'Both changes shrink the gas: the higher pressure squeezes it, and the lower temperature slows its particles.' },
+        { say: 'Both changes shrink the gas: the higher pressure squeezes it, and the lower temperature slows its particles. Here, four litres becomes one litre.', play: 'qv.change', focus: ['qv.gauge', 'qv.thermo', 'qv.volume'] },
       ],
     },
     {
@@ -76,9 +102,9 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Now the weather balloon from part one. As it climbs, the falling pressure lets it swell, and the falling temperature makes it shrink.', show: ['b.ground', 'b.low', 'b.low-label', 'b.rise', 'b.high', 'b.high-label'] },
-        { say: 'But the pressure falls by a much larger fraction than the Kelvin temperature does. Dividing by the small pressure factor outweighs multiplying by the temperature factor.', show: 'note' },
-        { say: 'So the balloon keeps growing, until it bursts high in the atmosphere.', focus: 'b.high' },
+        { say: 'Now the weather balloon from part one. As it climbs, the falling pressure lets it swell, and the falling temperature makes it shrink.', show: ['b', 'b.labels', 'b.gauge', 'b.volume', 'b.thermo'] },
+        { say: 'But the pressure falls by a much larger fraction than the Kelvin temperature does. Here the pressure halves, while the Kelvin temperature falls by only a fifth. Dividing by the small pressure factor outweighs multiplying by the temperature factor.', show: 'note', play: 'b.climb', focus: ['b.gauge', 'b.thermo'] },
+        { say: 'So the balloon keeps growing, until it bursts high in the atmosphere.', focus: 'b.volume' },
       ],
     },
     {

@@ -1,13 +1,14 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { chromatogram, chromatographyTank } from './lib/c10-1-figures.ts';
+import { chromatography } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-3-c',
   lessonId: 'c10-1-3',
   title: 'Separating Mixtures, Part 3: Paper Chromatography',
   thumbnailTitle: 'Paper Chromatography',
-  thumbnail: 'cg',
+  thumbnail: 'ch',
   summary:
     'Paper chromatography separates the dissolved substances in a mixture, such as the dyes in an ink. Spots go on a pencil baseline, the paper stands in a little solvent below the baseline, and the solvent carries each substance a different distance. A pure substance gives one spot; a mixture gives a spot for each substance.',
   scenes: [
@@ -45,16 +46,17 @@ const video: Explainer = {
     {
       chapter: 'Running it',
       layout: 'split',
-      leftWidth: 620,
-      left: [figure('cg', [chromatogram()])],
+      leftWidth: 560,
+      left: [chromatography('ch', 460)],
       right: [
         { kind: 'callout', id: 'why', tone: 'key', title: 'Why the spots separate', md: 'Substances that **dissolve better** in the solvent, or **stick less** to the paper, travel further.' },
         { kind: 'text', id: 'front', size: 'md', align: 'left', md: 'Take the paper out before the solvent reaches the top, and mark the **solvent front** in pencil. The pattern of spots is a **chromatogram**.' },
       ],
       lines: [
-        { say: 'The solvent soaks up the paper, carrying the dissolved substances with it. Substances that dissolve better in the solvent, or stick less to the paper, travel further.', show: ['cg.paper', 'cg.baseline', 'cg.names', 'why'] },
-        { say: 'Before the solvent reaches the top, the paper is taken out, and the furthest point the solvent reached, called the solvent front, is marked in pencil.', show: ['cg.front', 'front'], focus: 'cg.front' },
-        { say: 'The pattern of spots is called a chromatogram. This one has an ink, X, and two dyes, A and B.', show: ['cg.x-spots', 'cg.a-spot', 'cg.b-spot'], focus: 'cg' },
+        { say: 'Here are three strips: an ink, X, and two dyes, A and B, each spotted on its baseline.', show: ['ch', 'ch.labels'] },
+        { say: 'Watch the solvent soak up the paper, carrying the dissolved substances with it. Substances that dissolve better in the solvent, or stick less to the paper, travel further, so the ink spreads out into separate spots.', show: 'why', play: 'ch.run', focus: 'ch.x' },
+        { say: 'Before the solvent reaches the top, the paper is taken out, and the furthest point the solvent reached, called the solvent front, is marked in pencil.', show: 'front' },
+        { say: 'The pattern of spots is called a chromatogram. Ink X gave two spots; dyes A and B gave one each.', focus: ['ch.x', 'ch.a', 'ch.b'] },
       ],
     },
     {

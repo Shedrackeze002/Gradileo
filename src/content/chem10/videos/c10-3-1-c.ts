@@ -1,19 +1,8 @@
 import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { bracket, tag } from './lib/c10-3-figures.ts';
+import { oneIon } from './lib/c10-atoms.ts';
 
-// A potassium atom, 2,8,8,1, whose outer shell is taken away to leave the potassium ion.
-const potassium = figure(
-  'k',
-  [
-    atomShells({ at: [0, 0], nucleus: '19\\text{p}^{+}', shells: [2, 8, 8, 1], r: 1.7, gap: 1 }),
-    bracket({ c: [0, 0], half: [5.0, 5.0], charge: '+' }),
-    tag('name', [0, -6.4], '\\text{potassium atom: 2,8,8,1}'),
-    tag('ion-name', [0, -6.4], '\\text{potassium ion: 2,8,8}'),
-  ],
-  520,
-);
+/** A potassium atom, 2,8,8,1, that loses its outer electron to become the potassium ion. */
+const potassium = oneIon('k', { symbol: 'K', protons: 19, name: 'potassium' }, 1, 440);
 
 const video: Explainer = {
   id: 'c10-3-1-c',
@@ -82,10 +71,10 @@ const video: Explainer = {
       left: [potassium],
       right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['19\\text{ electrons: 2,8,8,1}', '\\text{1 outer electron: a metal}', '\\text{loses 1, leaving 2,8,8}', '\\ce{K+}, \\text{ the potassium ion}'] }],
       lines: [
-        { say: 'You can also find the ion from the atomic number alone. Potassium has atomic number nineteen.', show: ['k.nucleus', 'k.name'] },
-        { say: 'Nineteen electrons fill the shells as two, eight, eight, one.', show: ['k.shell-1', 'k.shell-2', 'k.shell-3', 'k.shell-4', 'm.0'], focus: 'm.0' },
-        { say: 'One outer electron means potassium is a metal in group one, so the atom loses that electron.', show: 'm.1', focus: ['m.1', 'k.shell-4'] },
-        { say: 'It is left with two, eight, eight, a full outer shell like argon, and a charge of one plus.', hide: ['k.shell-4', 'k.name'], show: ['m.2', 'k.bracket', 'k.ion-name'], focus: ['m.2', 'k.shell-3'] },
+        { say: 'You can also find the ion from the atomic number alone. Potassium has atomic number nineteen.', show: ['k', 'k.labels'] },
+        { say: 'Nineteen electrons fill the shells as two, eight, eight, one.', show: ['k.arrangement', 'm.0'], focus: 'm.0' },
+        { say: 'One outer electron means potassium is a metal in group one, so the atom loses that electron.', show: 'm.1', focus: ['m.1', 'k.a'] },
+        { say: 'It is left with two, eight, eight, a full outer shell like argon, and a charge of one plus.', play: 'k.ion', show: ['m.2', 'k.charges'], focus: 'm.2' },
         { say: 'So potassium forms K plus, the potassium ion.', caption: 'So potassium forms K⁺, the potassium ion.', show: 'm.3', focus: 'm.3' },
       ],
     },

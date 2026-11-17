@@ -1,9 +1,22 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { kelvinGraph } from './lib/c20-2a-figures.ts';
 
 // Kelvin against Celsius temperature: a line of slope 1 that meets 0 K at −273.15 °C.
 const scales = figure('k', [kelvinGraph()]);
+
+/**
+ * A gas (simulated, src/video/particles.ts) cooled steadily towards absolute zero: its particles,
+ * coloured by speed, slow from red to blue and almost stop, and its thermometer falls to the bottom.
+ */
+const cooling: ParticlesEl = {
+  kind: 'particles',
+  id: 'ice',
+  boxes: [{ id: 'b', state: 'gas', width: 9, height: 9, temp: 1.6, kinds: [{ n: 14, bond: 0.15, heavy: 0 }], heatColor: [0.05, 1.6], follow: 4 }],
+  clips: { cool: { phases: [{ dur: 9, heat: { b: 0.01 } }] } },
+  thermometers: { marks: [{ at: 1.6, label: '20 °C' }, { at: 0.01, label: 'absolute zero' }] },
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c20-2-2-d',
@@ -24,14 +37,16 @@ const video: Explainer = {
     },
     {
       chapter: 'Absolute zero',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 't', size: 'lg', align: 'center', md: 'Temperature measures the **average kinetic energy** of the particles.' },
+      layout: 'split',
+      leftWidth: 600,
+      left: [cooling],
+      right: [
+        { kind: 'text', id: 't', size: 'md', md: 'Temperature measures the **average kinetic energy** of the particles.' },
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Absolute zero', md: 'The lowest temperature possible, $-273.15^\\circ\\text{C}$. The particles would have the **least kinetic energy possible**. It can be approached very closely, but never quite reached.' },
       ],
       lines: [
-        { say: 'Temperature measures the average kinetic energy of the particles. The hotter a gas, the faster its particles move on average.', show: 't' },
-        { say: 'Cool a gas, and its particles slow down. Keep cooling it, and you approach a temperature at which the particles would have the least kinetic energy they can have. Nothing can be colder than that.' },
+        { say: 'Temperature measures the average kinetic energy of the particles. The hotter a gas, the faster its particles move on average. Here, the fastest particles are red, and the slowest blue.', show: ['t', 'ice', 'ice.thermo', 'ice.trail'] },
+        { say: 'Cool a gas, and its particles slow down. Keep cooling it, and you approach a temperature at which the particles would have the least kinetic energy they can have. Nothing can be colder than that.', play: 'ice.cool', focus: 'ice.thermo' },
         { say: 'This is absolute zero, minus two hundred seventy-three point one five degrees Celsius. It can be approached very closely, but never quite reached.', show: 'def' },
       ],
     },

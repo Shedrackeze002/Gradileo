@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { gift } from './lib/c30-2a-figures.ts';
+import { redox } from './lib/c30-atoms.ts';
 
 // Iron gives two electrons to a copper(II) ion: iron is the reducing agent, the copper(II) ion the oxidising agent.
 const nail = figure('g', [gift({ giver: '\\ce{Fe}', taker: '\\ce{Cu^2+}', giverAfter: '\\ce{Fe^2+}', takerAfter: '\\ce{Cu}', electrons: '\\ce{2e-}' })], 420);
@@ -32,6 +33,20 @@ const video: Explainer = {
       lines: [
         { say: 'An oxidising agent takes electrons from another substance, causing it to be oxidised. By taking electrons, the oxidising agent is itself reduced.', show: 'oa' },
         { say: 'A reducing agent gives electrons to another substance, causing it to be reduced. By giving electrons away, the reducing agent is itself oxidised.', show: 'ra' },
+      ],
+    },
+    {
+      chapter: 'Two agents, up close',
+      layout: 'center',
+      main: [
+        redox('cs', [
+          { id: 'ca', symbol: 'Ca', protons: 20, name: 'calcium', at: [5, 3.6], tone: 'brand' },
+          { id: 's', symbol: 'S', protons: 16, name: 'sulfur', at: [15, 3.6], tone: 'theta' },
+        ], [{ from: 'ca', to: 's', n: 2 }]),
+      ],
+      lines: [
+        { say: 'Here are the two agents up close, with calcium and sulfur. Calcium has two outer electrons; sulfur has six, two short of a full shell. Watch which atom gives and which atom takes.', show: ['cs', 'cs.labels', 'cs.arrangement'], play: 'cs.give' },
+        { say: 'Calcium gives its two electrons, so calcium is the reducing agent, and it is itself oxidised. Sulfur takes them, so sulfur is the oxidising agent, and it is itself reduced.', show: 'cs.charges' },
       ],
     },
     {

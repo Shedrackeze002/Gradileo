@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { haber } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-6-2',
@@ -29,6 +30,15 @@ const video: Explainer = {
         { say: 'The nitrogen comes from the air, and the hydrogen is made from natural gas.', show: 'b.0' },
         { say: 'The gases pass over an iron catalyst at about four hundred fifty degrees Celsius and two hundred atmospheres.', caption: 'The gases pass over an iron catalyst at about 450 °C and 200 atmospheres.', show: 'b.1' },
         { say: 'Only some react on each pass. The ammonia is cooled, so it liquefies and is removed, and the unreacted gases are recycled.', show: 'b.2' },
+      ],
+    },
+    {
+      chapter: 'The reaction, up close',
+      layout: 'center',
+      main: [haber('hb')],
+      lines: [
+        { say: 'Here is the Haber reaction up close: one nitrogen molecule and three hydrogen molecules. Watch the bonds that break, in red, and the bonds that form, in green.', show: 'hb', play: 'hb.go' },
+        { say: 'The triple bond in nitrogen is very strong, which is why an iron catalyst and a high temperature are needed to break it. The three hydrogen bonds break too, and six new nitrogen to hydrogen bonds form, making two ammonia molecules.', caption: 'The triple bond in nitrogen is very strong, which is why an iron catalyst and a high temperature are needed to break it. The three H–H bonds break too, and six new N–H bonds form, making two ammonia molecules.' },
       ],
     },
     {

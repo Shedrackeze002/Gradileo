@@ -1,19 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
-import { particles } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { room, tag } from './lib/c10-1-figures.ts';
-
-// Sugar particles spread out between the water particles of a solution.
-const solution = figure(
-  'sol',
-  [
-    particles({ state: 'liquid', size: 4.5, open: true, seed: 6, kinds: [{ id: 'water', tone: 'adj', count: 22 }, { id: 'sugar', tone: 'theta', count: 5 }] }),
-    tag('water-l', [4.8, 1.0], '\\text{water: the solvent}', { place: 'right', tone: 'adj', group: 'water' }),
-    tag('sugar-l', [4.8, 2.4], '\\text{sugar: the solute}', { place: 'right', tone: 'theta', group: 'sugar' }),
-    room('room', [0, 0], [10.4, 0]),
-  ],
-  400,
-);
+import { sugarDissolving } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-2-d',
@@ -36,12 +22,13 @@ const video: Explainer = {
       chapter: 'Solute and solvent',
       layout: 'split',
       leftWidth: 600,
-      left: [solution],
+      left: [sugarDissolving('sol', 440)],
       right: [{ kind: 'callout', id: 'def', tone: 'definition', title: 'Solution', md: 'A homogeneous mixture of a **solute**, the substance that dissolves, in a **solvent**, the substance it dissolves in. With water as the solvent, it is an **aqueous** solution.' }],
       lines: [
-        { say: 'Many homogeneous mixtures are solutions: one substance dissolved in another.', show: 'def' },
+        { say: 'Many homogeneous mixtures are solutions: one substance dissolved in another.', show: ['def', 'sol', 'sol.labels'] },
         { say: 'The solute is the substance that dissolves, and the solvent is the substance it dissolves in. A solution with water as its solvent is an aqueous solution.' },
-        { say: 'When sugar dissolves in water, the sugar particles spread out between the water particles. Sugar is the solute, and water is the solvent.', show: 'sol' },
+        { say: 'Here is a lump of sugar, in yellow, about to drop into water, in blue. Watch the water particles pull the sugar particles off the lump, until they are spread out between the water particles.', play: 'sol.drop' },
+        { say: 'The sugar has dissolved. Sugar is the solute, and water is the solvent.', focus: 'sol.s' },
       ],
     },
     {

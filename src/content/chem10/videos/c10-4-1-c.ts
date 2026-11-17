@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, mol, plus, row, stack, water } from './lib/c10-4-figures.ts';
+import { sealedBurning } from './lib/c10-particles.ts';
 
 // Hydrogen burning: two hydrogen molecules and one oxygen molecule become two water molecules.
 const burn = row({ terms: [stack(mol('h1', ['H', 'H']), mol('h2', ['H', 'H'])), plus('p'), mol('o2', ['O', 'O']), arrow('arr'), stack(water('w1'), water('w2'))] });
@@ -33,6 +34,18 @@ const video: Explainer = {
         { say: 'Count the hydrogen atoms: four before the reaction, and four after.', show: 't.0', focus: ['t.0', 'h.h1', 'h.h2'] },
         { say: 'Count the oxygen atoms: two before, and two after.', show: 't.1', focus: ['t.1', 'h.o2'] },
         { say: 'In a reaction, the atoms of the reactants are only rearranged. Since the atoms are the same, so is their total mass.', focus: ['h.w1', 'h.w2'] },
+      ],
+    },
+    {
+      chapter: 'Every atom counted',
+      layout: 'split',
+      leftWidth: 560,
+      left: [sealedBurning('sb', 440)],
+      right: [{ kind: 'callout', id: 'see', tone: 'tip', title: 'Watch the count', md: 'The molecules break apart and their atoms join up again as water, but no atom gets in or out. The count, and so the mass, never changes.' }],
+      lines: [
+        { say: 'Now watch it happen. Here are hydrogen and oxygen molecules in a sealed flask, with every atom inside counted: thirty-six in all.', show: ['sb', 'sb.labels', 'sb.tally', 'sb.thermo'] },
+        { say: 'Heat sets them reacting. The molecules break apart, and their atoms join up again as water. Keep an eye on the count.', play: 'sb.spark' },
+        { say: 'It never changes. The same thirty-six atoms are there, only joined differently, so the water has the same mass as the gases it came from.', show: 'see', focus: 'sb.b' },
       ],
     },
     {

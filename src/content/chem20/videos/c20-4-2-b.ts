@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { beaker, ionEq, tag } from './lib/c20-4a-figures.ts';
+import { precipitate } from './lib/c20-particles.ts';
 
 const ion = (id: string, at: [number, number], tex: string, plus: boolean) => ({ id, at, tex: `\\ce{${tex}}`, tone: plus ? ('opp' as const) : ('adj' as const), group: 'spect' });
 
@@ -42,7 +43,7 @@ const video: Explainer = {
   lessonId: 'c20-4-2',
   title: 'Net Ionic Equations, Part 2: Spotting Spectators and Counting Ions',
   thumbnailTitle: 'Spotting Spectators and Counting Ions',
-  thumbnail: 'sw',
+  thumbnail: 'bs',
   summary:
     'In a precipitation, the two ions that form the solid react and the other two are spectators: for barium chloride and sodium sulfate, Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s), with Na⁺ and Cl⁻ as spectators. The number of each ion is the coefficient times the number of that ion in one formula unit, and a polyatomic ion stays whole.',
   scenes: [
@@ -74,6 +75,27 @@ const video: Explainer = {
         { say: 'The sodium ions and the chloride ions are dissolved before the reaction, and still dissolved after it. They are the spectators.', show: ['b.1', 'sw.spect'], focus: 'sw.spect' },
         { say: 'So the net ionic equation is: the barium ion plus the sulfate ion gives solid barium sulfate.', caption: 'So the net ionic equation is Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s).', show: 'b.2', focus: 'b.2' },
         { say: 'A shortcut: of the four ions, the two that make the precipitate react. The other two are the spectators, the ions of the dissolved product, sodium chloride.', show: 'tip' },
+      ],
+    },
+    {
+      chapter: 'Watching barium sulfate form',
+      layout: 'center',
+      main: [
+        precipitate(
+          'bs',
+          {
+            cation: { name: 'barium ion', tone: 'good' },
+            anion: { name: 'sulfate ion', tone: 'opp', size: 1.3 },
+            withCation: { name: 'chloride ion', tone: 'hyp', size: 1.1 },
+            withAnion: { name: 'sodium ion', tone: 'brand' },
+          },
+          { label: 'barium chloride + sodium sulfate', solid: 'barium sulfate', seed: 3 },
+        ),
+      ],
+      lines: [
+        { say: 'Here is the mixture of barium chloride and sodium sulfate solutions, ion by ion. Watch which ions end up in the solid.', show: ['bs', 'bs.labels', 'bs.key'], play: 'bs.mix' },
+        { say: 'The barium ions and the sulfate ions lock together and sink. They are the ions that react.', focus: 'bs.p', show: 'bs.tally' },
+        { say: 'The sodium ions and the chloride ions are still moving freely when it is over. They are the spectators.', focus: 'bs.p' },
       ],
     },
     {

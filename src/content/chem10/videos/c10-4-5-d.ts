@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { gasGraph, lumpAndPowder } from './lib/c10-4-figures.ts';
+import { surface } from './lib/c10-rates.ts';
 
 // A lump of 36 particles, 20 at its surface, beside the same particles as nine small pieces.
 const lp = figure('lp', [lumpAndPowder()], 420);
@@ -35,6 +36,15 @@ const video: Explainer = {
         { say: 'In this lump of thirty-six particles, only the twenty on the outside, in orange, can be reached.', focus: 'lp.lump-surface' },
         { say: 'Break the same lump into small pieces, and every particle is now on a surface.', show: ['lp.split', 'lp.powder', 'lp.powder-label'], focus: 'lp.powder' },
         { say: 'A larger surface area exposes more of the solid’s particles, so collisions with them happen more often, and the reaction is faster.', show: 'k' },
+      ],
+    },
+    {
+      chapter: 'Lump or pieces, side by side',
+      layout: 'center',
+      main: [surface('sa', 400)],
+      lines: [
+        { say: 'Here is the same solid as one lump, and broken into small pieces, in the same gas. The count shows how many particles of the solid have reacted.', show: ['sa', 'sa.labels', 'sa.tally'] },
+        { say: 'The gas can only reach the outside of the lump, so it reacts slowly. The small pieces show far more surface to the gas, so collisions with the solid happen more often, and the count races ahead.', play: 'sa.go', focus: 'sa.b' },
       ],
     },
     {

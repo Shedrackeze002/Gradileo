@@ -1,18 +1,33 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { gasBox, tag } from './lib/c20-2a-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// The same rigid container, cool and then heated: the walls cannot move, so the pressure rises.
-const rigid = figure(
-  'r',
-  [
-    gasBox({ name: 'cool', at: [0, 0], w: 5, h: 5, count: 7, speed: 0.5, seed: 91, hits: 2 }),
-    tag('cool-l', [2.5, -0.3], '\\text{cool}', { place: 'below', tone: 'adj', group: 'cool-p' }),
-    gasBox({ name: 'hot', at: [6.5, 0], w: 5, h: 5, count: 7, speed: 1.3, seed: 91, hits: 6 }),
-    tag('hot-l', [9, -0.3], '\\text{heated}', { place: 'below', tone: 'opp', group: 'hot-p' }),
-  ],
-  380,
-);
+/**
+ * A gas in a rigid container (simulated, src/video/particles.ts), coloured by speed: heated, its
+ * particles speed up and hit the walls more often and harder, and with the walls fixed the pressure
+ * doubles as the Kelvin temperature doubles; cooled, it falls back.
+ */
+const rigid: ParticlesEl = {
+  kind: 'particles',
+  id: 'r',
+  boxes: [{ id: 'b', state: 'gas', width: 9, height: 9, temp: 1.2, kinds: [{ n: 14, bond: 0.15, heavy: 0 }], heatColor: [0.5, 4] }],
+  clips: {
+    heat: { phases: [{ dur: 5, heat: { b: 2.4 } }] },
+    cool: { phases: [{ dur: 5, heat: { b: 1.2 } }] },
+  },
+  gauge: { box: 'b', start: 100 },
+  thermometers: true,
+  height: 440,
+};
+
+/** The aerosol can of the worked example: 250 kPa at 295.15 K, warmed to 338.15 K. */
+const can: ParticlesEl = {
+  kind: 'particles',
+  id: 'can',
+  boxes: [{ id: 'b', state: 'gas', width: 7, height: 10, temp: 1.6, kinds: [{ n: 14, bond: 0.15, heavy: 0 }], label: 'sealed can' }],
+  clips: { heat: { phases: [{ dur: 5, heat: { b: (1.6 * 338.15) / 295.15 } }] } },
+  gauge: { box: 'b', start: 250 },
+  thermometers: { marks: [{ at: (1.6 * 338.15) / 295.15, label: '65 °C' }] },
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c20-2-4-c',
@@ -44,9 +59,9 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'A gas in a rigid container, such as a steel gas cylinder or an aerosol can, cannot expand.', show: ['r.cool-box', 'r.cool-p', 'r.cool-v', 'r.cool-hits', 'r.cool-l', 'b.0'] },
-        { say: 'When it is heated, its particles move faster, and hit the walls more often and harder.', show: ['r.hot-box', 'r.hot-p', 'r.hot-v', 'r.hot-hits', 'r.hot-l', 'b.1'], focus: ['r.hot-v', 'r.hot-hits'] },
-        { say: 'The walls cannot move outwards, so the pressure rises. Cooling the gas does the opposite.', show: 'b.2', focus: 'r' },
+        { say: 'A gas in a rigid container, such as a steel gas cylinder or an aerosol can, cannot expand.', show: ['r', 'r.hits', 'r.thermo', 'r.gauge', 'b.0'] },
+        { say: 'When it is heated, its particles move faster, and hit the walls more often and harder.', show: 'b.1', play: 'r.heat', focus: ['r.thermo', 'r.hits'] },
+        { say: 'The walls cannot move outwards, so the pressure rises: doubling the Kelvin temperature has doubled it. Cooling the gas does the opposite.', show: 'b.2', play: 'r.cool', playDelay: 4, focus: 'r.gauge' },
         { say: 'Measured in kelvins, the pressure of the gas is directly proportional to its temperature. And graphs of pressure against Celsius temperature point back to absolute zero, too.' },
       ],
     },
@@ -66,16 +81,19 @@ const video: Explainer = {
     },
     {
       chapter: 'A heated aerosol can',
-      layout: 'center',
-      main: [
-        { kind: 'text', id: 'q', size: 'md', align: 'center', md: 'The gas in a sealed aerosol can is at $250\\ \\text{kPa}$ and $22^\\circ\\text{C}$. What is its pressure at $65^\\circ\\text{C}$, to the nearest whole number? Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.' },
-        { kind: 'math', id: 'm', size: 'lg', lines: ['T_1 = 22 + 273.15 = 295.15\\ \\text{K}', 'T_2 = 65 + 273.15 = 338.15\\ \\text{K}', 'P_2 = 250 \\times \\dfrac{338.15}{295.15} = 286.42\\ldots', 'P_2 = 286\\ \\text{kPa}'] },
+      layout: 'split',
+      leftWidth: 520,
+      left: [can],
+      right: [
+        { kind: 'text', id: 'q', size: 'md', md: 'The gas in a sealed aerosol can is at $250\\ \\text{kPa}$ and $22^\\circ\\text{C}$. What is its pressure at $65^\\circ\\text{C}$, to the nearest whole number? Use $T(\\text{K}) = T(^\\circ\\text{C}) + 273.15$.' },
+        { kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['T_1 = 22 + 273.15 = 295.15\\ \\text{K}', 'T_2 = 65 + 273.15 = 338.15\\ \\text{K}', 'P_2 = 250 \\times \\dfrac{338.15}{295.15} = 286.42\\ldots', 'P_2 = 286\\ \\text{kPa}'] },
       ],
       lines: [
-        { say: 'The gas in a sealed aerosol can is at two hundred fifty kilopascals and twenty-two degrees Celsius. What is its pressure at sixty-five degrees Celsius, to the nearest whole number?', show: 'q' },
+        { say: 'The gas in a sealed aerosol can is at two hundred fifty kilopascals and twenty-two degrees Celsius. What is its pressure at sixty-five degrees Celsius, to the nearest whole number?', show: ['q', 'can', 'can.labels', 'can.thermo', 'can.gauge'] },
         { say: 'Change both temperatures to kelvins. T one is two hundred ninety-five point one five kelvins, and T two is three hundred thirty-eight point one five kelvins.', show: ['m.0', 'm.1'], focus: ['m.0', 'm.1'] },
         { say: 'P two equals two hundred fifty, times three hundred thirty-eight point one five over two hundred ninety-five point one five. That is two hundred eighty-six point four two.', show: 'm.2', focus: 'm.2' },
         { say: 'To the nearest whole number, the pressure is two hundred eighty-six kilopascals. The can got hotter, so the pressure went up.', show: 'm.3', focus: 'm.3' },
+        { say: 'Warm the can to sixty-five degrees Celsius, and its gauge climbs from two hundred fifty to two hundred eighty-six kilopascals.', play: 'can.heat', focus: ['can.thermo', 'can.gauge'] },
       ],
     },
     {

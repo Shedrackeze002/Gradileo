@@ -1,23 +1,19 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { arrow, container, frame, tag } from './lib/c20-2b-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// One gas in one state, with its four quantities: pressure on the piston, volume, amount and temperature.
-const state = figure(
-  's',
-  [
-    container({ at: [0, 0], w: 3.6, h: 3.6, lid: 'piston', count: 7, seed: 12 }),
-    arrow('p-arrow', [0.75, 5.9], [0.75, 3.95], { tone: 'opp', group: 'pres' }),
-    tag('p-label', [0.75, 5.9], 'P', { place: 'above', tone: 'opp', group: 'pres' }),
-    arrow('v-up', [4.3, 1.8], [4.3, 3.6], { tone: 'adj', weight: 2.5, group: 'vol' }),
-    arrow('v-down', [4.3, 1.8], [4.3, 0], { tone: 'adj', weight: 2.5, group: 'vol' }),
-    tag('v-label', [4.4, 1.8], 'V', { place: 'right', tone: 'adj', group: 'vol' }),
-    tag('n-label', [1.8, -0.3], 'n\\ \\text{mol of gas}', { place: 'below', tone: 'good', group: 'amt' }),
-    tag('t-label', [1.8, -1.0], 'T\\ \\text{in kelvins}', { place: 'below', tone: 'theta', group: 'temp' }),
-    frame('room', [-0.6, -1.8], [5.4, 6.6]),
-  ],
-  520,
-);
+/**
+ * One gas in one state (simulated, src/video/particles.ts), with its four quantities on show: the
+ * pressure on its gauge, the volume under the piston, the amount of gas, and its temperature.
+ */
+const state: ParticlesEl = {
+  kind: 'particles',
+  id: 's',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 11, temp: 1.6, lid: 0.8, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }], label: 'n mol of gas' }],
+  clips: {},
+  gauge: { box: 'b', start: 100 },
+  volume: { box: 'b', start: 2.5, decimals: 2 },
+  thermometers: true,
+  height: 500,
+};
 
 const video: Explainer = {
   id: 'c20-2-7',
@@ -63,7 +59,7 @@ const video: Explainer = {
     {
       chapter: 'The gas constant',
       layout: 'split',
-      leftWidth: 460,
+      leftWidth: 520,
       left: [state],
       right: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Ideal gas law', md: 'For a gas in one state, $PV = nRT$.' },
@@ -81,7 +77,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Picture one gas in one state. P is its pressure, V its volume, n the amount of gas, and T its Kelvin temperature.', show: ['def', 's.box', 's.piston', 's.p', 's.pres', 's.vol', 's.amt', 's.temp', 't.0', 't.1', 't.2', 't.3'] },
+        { say: 'Picture one gas in one state. P is its pressure, V its volume, n the amount of gas, and T its Kelvin temperature.', show: ['def', 's', 's.gauge', 's.volume', 's.labels', 's.thermo', 't.0', 't.1', 't.2', 't.3'] },
         { say: 'R is the gas constant: eight point three one four kilopascal litres per mole kelvin. It is the same for every gas.', caption: 'R is the gas constant: 8.314 kPa·L/(mol·K). It is the same for every gas.', show: 't.4', focus: 't.4' },
         { say: 'Its units decide the units of everything else: pressure in kilopascals, volume in litres, amount in moles, and temperature in kelvins.', focus: ['t.0', 't.1', 't.2', 't.3'] },
       ],

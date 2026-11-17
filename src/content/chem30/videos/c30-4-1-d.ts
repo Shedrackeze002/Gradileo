@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { dots } from '@/video/graph.ts';
 import { figure } from '@/video/solids.ts';
 import { join, settle, timeGraph } from './lib/c30-4a-figures.ts';
+import { n2o4 } from './lib/c30-particles.ts';
 
 const TIME = '\\text{Time (s)}';
 const RATE = '\\text{Rate (mol/(L·s))}';
@@ -103,6 +104,15 @@ const video: Explainer = {
         { say: 'The forward rate starts high, and falls as dye-nitrogen tetroxide is used up.', caption: 'The forward rate starts high, and falls as dinitrogen tetroxide is used up.', show: ['g.fwd', 'g.fwd-lab', 'b.0'], focus: 'g.fwd' },
         { say: 'The reverse rate starts at zero, because there is no nitrogen dioxide at first. It rises as nitrogen dioxide builds up.', show: ['g.rev', 'g.rev-lab', 'b.1'], focus: 'g.rev' },
         { say: 'Equilibrium is reached where the two curves meet, at forty seconds. From then on they stay together: both reactions continue, at the same rate.', show: ['g.eq', 'b.2'], focus: ['g.eq', 'b.2'] },
+      ],
+    },
+    {
+      chapter: 'Rates up close',
+      layout: 'center',
+      main: [n2o4('rt', { seed: 6 })],
+      lines: [
+        { say: 'Here are the two rates up close. Every pair that splits is the forward reaction, and every two orange molecules that pair up is the reverse reaction. At first there are many pairs, and no orange molecules to pair up, so only splitting happens.', show: ['rt', 'rt.labels', 'rt.key', 'rt.tally'], play: 'rt.go' },
+        { say: 'As orange molecules build up, they meet more often, and pairing speeds up. When pairs form as fast as they split, the count stops climbing: the two rates are equal.', focus: 'rt.tally' },
       ],
     },
     {

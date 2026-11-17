@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { timeOfFlight } from './lib/cx-motion.ts';
 
 const video: Explainer = {
   id: 'cx-7-1',
@@ -41,6 +42,16 @@ const video: Explainer = {
         { say: 'In electrospray ionisation, the sample is sprayed from a charged needle, and each molecule gains a proton. It is gentle, so big molecules stay whole, and the ion is one mass unit heavier than the molecule.', show: 'b.0' },
         { say: 'In electron impact, fast electrons knock an electron out of each particle. This often breaks molecules into fragments.', show: 'b.1' },
         { say: 'Because every ion has the same kinetic energy, the time of flight is proportional to the square root of the mass.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'The race, up close',
+      layout: 'center',
+      main: [timeOfFlight('tof')],
+      lines: [
+        { say: 'Here are two ions with the same charge, racing down the tube: one of mass twenty five, and one of mass one hundred.', show: ['tof', 'tof.clock'] },
+        { say: 'The electric field pushes both with the same force over the same short distance, so both gain the same kinetic energy. The light one leaves at two metres per second, the heavy one at only one.', play: 'tof.push' },
+        { say: 'Then they drift to the detector. The lighter ion arrives at five point two five seconds, and the heavier one at ten point five: four times the mass takes twice the time.', caption: 'Then they drift to the detector. The lighter ion arrives at 5.25 s, and the heavier one at 10.5 s: four times the mass takes twice the time.', play: 'tof.drift' },
       ],
     },
     {

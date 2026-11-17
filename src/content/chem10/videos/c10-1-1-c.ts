@@ -1,13 +1,14 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { stateChanges } from './lib/c10-1-figures.ts';
+import { coldGlass, stateCycle } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-1-c',
   lessonId: 'c10-1-1',
   title: 'States of Matter and the Particle Model, Part 3: Changes of State',
   thumbnailTitle: 'Changes of State',
-  thumbnail: 'cs',
+  thumbnail: 'p',
   summary:
     'The six changes of state: melting, freezing, evaporation or boiling, condensation, sublimation and deposition. Melting, evaporation, boiling and sublimation take in energy; freezing, condensation and deposition give it out. Dew, frost and dry ice are everyday examples.',
   scenes: [
@@ -17,6 +18,26 @@ const video: Explainer = {
       lines: [
         { say: 'Dew on the grass, frost on a car window, steam from a kettle: each one is a substance changing state.', show: 'title' },
         { say: 'In this part, you will name all six changes of state, and see which ones take in energy.' },
+      ],
+    },
+    {
+      chapter: 'Watching a change of state',
+      layout: 'split',
+      leftWidth: 520,
+      left: [stateCycle('p', 500)],
+      right: [
+        {
+          kind: 'bullets',
+          id: 'w',
+          items: ['Heat a solid: it **melts**.', 'Keep heating: the liquid **boils**.', 'Cool the gas: it **condenses**.', 'Keep cooling: the liquid **freezes**.'],
+        },
+      ],
+      lines: [
+        { say: 'Let’s watch one substance change state. Here are its particles as a solid, vibrating in rows, with a thermometer beside them.', show: ['p', 'p.thermo'] },
+        { say: 'Heat it. The particles vibrate harder, until they break out of their rows and slide past one another. The solid has melted.', show: 'w.0', play: 'p.melt' },
+        { say: 'Keep heating. The particles move faster still, until they escape from one another altogether. The liquid has boiled into a gas.', show: 'w.1', play: 'p.boil' },
+        { say: 'Now cool it. The gas particles slow down, and when they meet they stick together again. The gas condenses into a liquid.', show: 'w.2', play: 'p.condense' },
+        { say: 'Cool it further, and the particles settle back into rows. The liquid freezes. The particles were the same all the way round: only their arrangement and movement changed.', show: 'w.3', play: 'p.freeze' },
       ],
     },
     {
@@ -57,8 +78,10 @@ const video: Explainer = {
     },
     {
       chapter: 'Everyday changes',
-      layout: 'center',
-      main: [
+      layout: 'split',
+      leftWidth: 540,
+      left: [coldGlass('v', 440)],
+      right: [
         {
           kind: 'bullets',
           id: 'ex',
@@ -71,7 +94,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Now the glass of iced water. Water vapour in the air touches the cold glass, gives out energy to it, and condenses into droplets.', show: 'ex.0' },
+        { say: 'Now the glass of iced water. Water vapour in the air touches the cold glass, gives out energy to it, and condenses into droplets. Here the right-hand wall is the cold glass. Watch the water particles slow down as they touch it, and gather on it.', show: ['ex.0', 'v', 'v.labels'], play: 'v.cool' },
         { say: 'And the water in the glass slowly evaporates, as the fastest particles at its surface escape into the air.', show: 'ex.1' },
         { say: 'Dry ice, solid carbon dioxide, sublimes: it turns straight into a gas without melting.', show: 'ex.2' },
         { say: 'Frost is the opposite: on a freezing night, water vapour turns straight into ice crystals on a cold surface, by deposition.', show: 'ex.3' },

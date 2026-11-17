@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { crowd, link, mol, star, type Placed } from './lib/c20-4b-figures.ts';
+import { limitingBurn } from './lib/c20-particles.ts';
 
 // The ammonia mixture shrunk to molecules in the same ratio, 2.00 : 4.50 = 4 : 9. Nine hydrogen
 // molecules are enough for three rounds of N₂ + 3H₂ → 2NH₃, so six ammonia molecules form and one
@@ -29,7 +30,7 @@ const video: Explainer = {
   lessonId: 'c20-4-6',
   title: 'Limiting and Excess Reagents, Part 1: Which Reactant Runs Out?',
   thumbnailTitle: 'Which Reactant Runs Out?',
-  thumbnail: 'd',
+  thumbnail: 'lr',
   summary:
     'The limiting reagent is the reactant used up first, so it decides how much product forms; an excess reagent is left over when the reaction stops. To find the limiting reagent, use the mole ratio to find how much of the second reactant the first one needs, and compare it with what is there: in N₂ + 3H₂ → 2NH₃, 2.00 mol of nitrogen needs 6.00 mol of hydrogen, so 4.50 mol of hydrogen runs out first.',
   scenes: [
@@ -54,6 +55,16 @@ const video: Explainer = {
         { say: 'An excess reagent is not used up completely. Some of it is left over when the reaction stops.', show: 'ex' },
         { say: 'In the factory, the wheels are the limiting reagent and the frames are in excess, even though there are fewer frames than wheels. What matters is how many of each one bicycle needs, and in a reaction, the coefficients say that.', show: 't' },
         { say: 'The word reagent simply means a substance used in a reaction. You will also see the term limiting reactant.' },
+      ],
+    },
+    {
+      chapter: 'Watching a reactant run out',
+      layout: 'center',
+      main: [limitingBurn('lr', [{ id: 'a', h2: 8, o2: 6, label: '8 hydrogen + 6 oxygen molecules' }], 5)],
+      lines: [
+        { say: 'Here are eight hydrogen molecules and six oxygen molecules in a sealed box. Each oxygen molecule can react with two hydrogen molecules, to make two water molecules.', show: ['lr', 'lr.labels', 'lr.thermo'] },
+        { say: 'Light it, and watch the hydrogen and oxygen turn into water.', play: 'lr.spark', show: 'lr.tally', focus: 'lr.a' },
+        { say: 'The reaction stops when the last hydrogen molecule is used up, after eight water molecules. Hydrogen is the limiting reagent. Oxygen is in excess: the oxygen atoms that found no hydrogen are still there.', focus: 'lr.a' },
       ],
     },
     {

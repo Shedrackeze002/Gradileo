@@ -1,4 +1,4 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { chain } from './lib/c20-2b-figures.ts';
 
@@ -42,6 +42,22 @@ const backward = figure(
   250,
 );
 
+/**
+ * One mole and 1.75 moles of nitrogen at STP (simulated, src/video/particles.ts): at the same
+ * temperature and pressure, the volume grows in step with the amount of gas.
+ */
+const GAS = { bond: 0.15, heavy: 0, tone: 'adj' } as const;
+const amounts: ParticlesEl = {
+  kind: 'particles',
+  id: 'am',
+  boxes: [
+    { id: 'a', state: 'gas', width: 6, height: 12, temp: 1.6, lid: 0.4, piston: true, kinds: [{ n: 4, ...GAS }], label: '1 mol: 22.4 L' },
+    { id: 'b', state: 'gas', width: 6, height: 12, temp: 1.6, lid: 0.7, piston: true, kinds: [{ n: 7, ...GAS }], label: '1.75 mol: 39.2 L' },
+  ],
+  clips: {},
+  height: 480,
+};
+
 const video: Explainer = {
   id: 'c20-2-6-d',
   lessonId: 'c20-2-6',
@@ -57,6 +73,17 @@ const video: Explainer = {
       lines: [
         { say: 'In part three, you met the molar volume: twenty-two point four litres per mole at S T P, and twenty-four point eight at S A T P.', caption: 'In part three, you met the molar volume: 22.4 L/mol at STP, and 24.8 L/mol at SATP.', show: 'title' },
         { say: 'In this part, you will use it to change between the amount, the volume and the mass of a gas.' },
+      ],
+    },
+    {
+      chapter: 'Volume follows amount',
+      layout: 'split',
+      leftWidth: 520,
+      left: [amounts],
+      right: [{ kind: 'text', id: 't', size: 'md', md: 'At STP, **every mole** of gas takes up $22.4\\ \\text{L}$. Twice the moles, twice the room.' }],
+      lines: [
+        { say: 'At S T P, every mole of gas takes up twenty-two point four litres. More gas, at the same temperature and pressure, needs proportionally more room, so its particles hit the walls just as often.', caption: 'At STP, every mole of gas takes up 22.4 L. More gas, at the same temperature and pressure, needs proportionally more room, so its particles hit the walls just as often.', show: ['am', 'am.hits', 't'], focus: 'am.a' },
+        { say: 'So one point seven five moles of nitrogen fills one point seven five times as much: thirty-nine point two litres.', caption: 'So 1.75 mol of nitrogen fills 1.75 times as much: 39.2 L.', show: 'am.labels', focus: 'am.b' },
       ],
     },
     {

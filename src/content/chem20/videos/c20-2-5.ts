@@ -1,19 +1,21 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { arrow, container, tag } from './lib/c20-2b-figures.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
 
-// The same gas before and after a change: a cylinder with a piston, then the piston lower down.
-const states = figure(
-  's',
-  [
-    container({ name: 'a', at: [0, 0], w: 3.2, h: 4.2, lid: 'piston', count: 6, seed: 3 }),
-    tag('a-label', [1.6, -0.35], '\\begin{gathered}\\text{before}\\\\ P_1,\\ V_1,\\ T_1\\end{gathered}', { place: 'below' }),
-    arrow('change', [3.9, 2.4], [5.7, 2.4], { tone: 'theta', label: '\\text{change}' }),
-    container({ name: 'b', at: [6.4, 0], w: 3.2, h: 2.6, lid: 'piston', count: 6, seed: 4 }),
-    tag('b-label', [8.0, -0.35], '\\begin{gathered}\\text{after}\\\\ P_2,\\ V_2,\\ T_2\\end{gathered}', { place: 'below' }),
-  ],
-  440,
-);
+/**
+ * A gas in a cylinder with a piston (simulated, src/video/particles.ts), with a gauge, a volume
+ * reading and a thermometer: in one change it is heated by a third (in kelvins) and squeezed to
+ * five eighths of its volume, so its pressure, volume and temperature all change at once (the
+ * pressure to 100 × 4/3 ÷ 5/8 ≈ 213 kPa).
+ */
+const states: ParticlesEl = {
+  kind: 'particles',
+  id: 's',
+  boxes: [{ id: 'b', state: 'gas', width: 8, height: 11, temp: 1.5, lid: 0.8, piston: true, kinds: [{ n: 14, bond: 0.15, heavy: 0 }] }],
+  clips: { change: { phases: [{ dur: 6, heat: { b: 2 }, lid: { b: 0.5 } }] } },
+  gauge: { box: 'b', start: 100 },
+  volume: { box: 'b', start: 4, decimals: 2 },
+  thermometers: true,
+  height: 480,
+};
 
 const video: Explainer = {
   id: 'c20-2-5',
@@ -67,8 +69,8 @@ const video: Explainer = {
         { kind: 'text', id: 'w', size: 'md', md: 'The pressure times the volume, divided by the Kelvin temperature, **stays the same**.' },
       ],
       lines: [
-        { say: 'Picture a gas in a cylinder with a movable piston. Before a change, it has a pressure, P one, a volume, V one, and a temperature, T one.', caption: 'Picture a gas in a cylinder with a movable piston. Before a change, it has a pressure, P₁, a volume, V₁, and a temperature, T₁.', show: ['s.a-box', 's.a-piston', 's.a-p', 's.a-label'] },
-        { say: 'After the change, all three can be different. No gas gets in or out, so the amount of gas is fixed.', show: ['s.change', 's.b-box', 's.b-piston', 's.b-p', 's.b-label'], focus: ['s.a-p', 's.b-p'] },
+        { say: 'Picture a gas in a cylinder with a movable piston. Before a change, it has a pressure, P one, a volume, V one, and a temperature, T one.', caption: 'Picture a gas in a cylinder with a movable piston. Before a change, it has a pressure, P₁, a volume, V₁, and a temperature, T₁.', show: ['s', 's.gauge', 's.volume', 's.thermo'] },
+        { say: 'Now heat it and push the piston in at the same time. After the change, all three are different. No gas gets in or out, so the amount of gas is fixed.', play: 's.change', focus: ['s.gauge', 's.volume', 's.thermo'] },
         { say: 'The combined gas law links them: P one V one over T one equals P two V two over T two.', caption: 'The combined gas law links them: P₁V₁/T₁ = P₂V₂/T₂.', show: ['def', 'm'], focus: 's' },
         { say: 'The pressure times the volume, divided by the Kelvin temperature, stays the same. Both temperatures must be in kelvins.', show: 'w' },
       ],

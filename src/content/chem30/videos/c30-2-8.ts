@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { electrolytic } from './lib/c30-2b-figures.ts';
+import { moltenSalt } from './lib/c30-cells.ts';
 
 // A general electrolytic cell: two electrodes in an electrolyte, joined to a power supply that
 // pushes electrons onto the cathode and pulls them from the anode.
@@ -103,6 +104,15 @@ const video: Explainer = {
         { say: 'The cathode reduces the metal ions. Each sodium ion takes an electron, and sodium metal forms.', show: ['m.0', 'e.cat-product'], focus: ['m.0', 'e.cat-product'] },
         { say: 'The anode oxidises the anions. Chloride ions give up electrons, and chlorine gas forms.', show: ['m.1', 'e.an-product'], focus: ['m.1', 'e.an-product'] },
         { say: 'The cell potential is the cathode, negative two point seven one, minus the anode, plus one point three six. That is negative four point zero seven volts.', show: ['m.2', 'm.3'], focus: 'm.3' },
+      ],
+    },
+    {
+      chapter: 'Molten salt, up close',
+      layout: 'center',
+      main: [moltenSalt('ms', { seed: 1 })],
+      lines: [
+        { say: 'Here is molten sodium chloride up close, with only sodium ions and chloride ions moving freely. The cathode is on the left, the anode on the right. Watch what happens when the power supply is switched on: which way each kind of ion drifts, and what it becomes at the electrode.', show: ['ms', 'ms.labels', 'ms.key', 'ms.tally'], play: 'ms.run' },
+        { say: 'The positive sodium ions drift to the negative cathode, where each takes an electron and becomes sodium metal. The negative chloride ions drift to the positive anode, where each gives up an electron. The chlorine atoms pair up into chlorine molecules, and the gas bubbles away.' },
       ],
     },
     {

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { beaker, tag } from './lib/c20-3a-figures.ts';
+import { noPrecipitate, precipitating } from './lib/c20-particles.ts';
 
 const ion = (id: string, at: [number, number], tex: string, plus: boolean, group?: string) => ({ id, at, tex: `\\ce{${tex}}`, tone: plus ? ('opp' as const) : ('adj' as const), ...(group ? { group } : {}) });
 
@@ -85,6 +86,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Ions that stay dissolved',
+      layout: 'center',
+      main: [noPrecipitate('np')],
+      lines: [
+        { say: 'Here is what no precipitate looks like, for potassium nitrate mixed with sodium chloride: potassium, nitrate, sodium and chloride ions among water molecules.', show: ['np', 'np.labels', 'np.key'] },
+        { say: 'The ions meet all the time, but every pair they could make has high solubility, so none of them lock together. They just keep moving about in the water.', focus: 'np.n' },
+      ],
+    },
+    {
       chapter: 'A shortcut',
       layout: 'center',
       main: [
@@ -106,6 +116,15 @@ const video: Explainer = {
         { say: 'All nitrates have high solubility, so that one never precipitates. Check only the other compound: the metal ion with the anion of the sodium or potassium salt.' },
         { say: 'Calcium nitrate and sodium carbonate give calcium carbonate, which precipitates. Copper two nitrate and sodium hydroxide give copper two hydroxide, which precipitates as well.', caption: 'Calcium nitrate and sodium carbonate give calcium carbonate, which precipitates. Copper(II) nitrate and sodium hydroxide give copper(II) hydroxide, which precipitates as well.', show: ['t.0', 't.1'], focus: ['t.0', 't.1'] },
         { say: 'Barium nitrate and potassium sulfate give barium sulfate. But magnesium nitrate and potassium chloride give magnesium chloride, which has high solubility, so no precipitate forms.', show: ['t.2', 't.3'], focus: ['t.2', 't.3'] },
+      ],
+    },
+    {
+      chapter: 'Watching the spectators',
+      layout: 'center',
+      main: [precipitating('ws')],
+      lines: [
+        { say: 'Now watch silver nitrate and sodium chloride again, and keep an eye on the sodium and nitrate ions.', show: ['ws', 'ws.labels', 'ws.key'] },
+        { say: 'The silver and chloride ions lock together and sink as silver chloride. The sodium and nitrate ions move about just as they did before the mixing, so they take no part.', play: 'ws.mix', focus: 'ws.p' },
       ],
     },
     {

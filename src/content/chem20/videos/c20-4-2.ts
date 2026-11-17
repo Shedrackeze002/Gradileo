@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { ionEq } from './lib/c20-4a-figures.ts';
+import { precipitate } from './lib/c20-particles.ts';
 
 // The total ionic equation for silver nitrate and potassium bromide, with strokes through the
 // spectator ions (the group "x").
@@ -22,7 +23,7 @@ const video: Explainer = {
   lessonId: 'c20-4-2',
   title: 'Net Ionic Equations, Part 1: Total and Net Ionic Equations',
   thumbnailTitle: 'Total and Net Ionic Equations',
-  thumbnail: 'te',
+  thumbnail: 'ab',
   summary:
     'A total ionic equation writes every dissolved ionic compound as its separate ions, while solids and water stay whole. Spectator ions appear unchanged on both sides; crossing them out leaves the net ionic equation, such as Ag⁺(aq) + Br⁻(aq) → AgBr(s) for silver nitrate and potassium bromide.',
   scenes: [
@@ -74,6 +75,27 @@ const video: Explainer = {
         { say: 'Step four: write what is left. The silver ion plus the bromide ion gives solid silver bromide. That is the net ionic equation.', caption: 'Step four: write what is left. Ag⁺(aq) + Br⁻(aq) → AgBr(s). That is the net ionic equation.', show: 'n.0', focus: 'n.0' },
         { say: 'Check it: one silver and one bromine atom on each side. Plus one and minus one make zero charge on the left, and the solid has no charge.', show: 'n.1', focus: 'n.1' },
         { say: 'So whenever silver ions meet bromide ions in water, silver bromide precipitates, whichever compounds they came from.' },
+      ],
+    },
+    {
+      chapter: 'Watching silver bromide form',
+      layout: 'center',
+      main: [
+        precipitate(
+          'ab',
+          {
+            cation: { name: 'silver ion', tone: 'theta' },
+            anion: { name: 'bromide ion', tone: 'bad', size: 1.15 },
+            withCation: { name: 'nitrate ion', tone: 'opp', size: 1.1 },
+            withAnion: { name: 'potassium ion', tone: 'hyp' },
+          },
+          { label: 'silver nitrate + potassium bromide', solid: 'silver bromide', seed: 3 },
+        ),
+      ],
+      lines: [
+        { say: 'Here are the two solutions just mixed: silver, nitrate, potassium and bromide ions among water molecules. Watch them.', show: ['ab', 'ab.labels', 'ab.key'], play: 'ab.mix' },
+        { say: 'Each silver ion that meets a bromide ion locks on to it, and they sink together as solid silver bromide.', focus: 'ab.p', show: 'ab.tally' },
+        { say: 'The potassium ions and the nitrate ions keep moving just as before. They are the spectators, and the net ionic equation leaves them out.', focus: 'ab.p' },
       ],
     },
     {

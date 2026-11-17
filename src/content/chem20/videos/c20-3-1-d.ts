@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, ionRows, molecule, tag } from './lib/c20-3a-figures.ts';
+import { acidIonising } from './lib/c20-particles.ts';
 
 // The ions in one formula unit of aluminium sulfate: two aluminium ions and three sulfate ions.
 const ions = figure(
@@ -124,6 +125,18 @@ const video: Explainer = {
         { say: 'When it dissolves, each molecule reacts with a water molecule. It gives a hydrogen ion to the water molecule, forming a hydronium ion, and a chloride ion.', show: ['hcl.plus1', 'hcl.water', 'hcl.arrow', 'hcl.h3o', 'hcl.plus2', 'hcl.cl'], focus: ['hcl.h3o', 'hcl.cl'] },
         { say: 'In symbols: H C L plus H two O gives H three O plus, and the chloride ion.', caption: 'In symbols: HCl(aq) + H₂O(l) → H₃O⁺(aq) + Cl⁻(aq).', show: 'm', focus: 'm' },
         { say: 'The hydronium ions are what make the solution acidic; a later lesson looks at them in depth. This formation of ions from a molecular substance is called ionisation.', show: 'def' },
+      ],
+    },
+    {
+      chapter: 'Hydrogen chloride in water',
+      layout: 'split',
+      leftWidth: 560,
+      left: [acidIonising('hi', 420)],
+      right: [{ kind: 'math', id: 'm2', size: 'md', align: 'left', lines: ['\\ce{HCl + H2O}', '\\ce{-> H3O+ + Cl-}'] }],
+      lines: [
+        { say: 'Watch it happen. Here are hydrogen chloride molecules, a hydrogen atom joined to a chlorine atom, among water molecules in blue.', show: ['hi', 'hi.labels', 'hi.tally'] },
+        { say: 'When a hydrogen chloride molecule meets a water molecule, the hydrogen leaves the chlorine and joins the water, making a hydronium ion. The chlorine is set free as a chloride ion.', play: 'hi.go', show: ['m2.0', 'm2.1'] },
+        { say: 'A solution of molecules has become a solution of ions, so it conducts. That is ionisation.' },
       ],
     },
     {

@@ -30,7 +30,9 @@ const mixing: ParticlesEl = {
   ],
   clips: { go: { phases: [{ dur: 1, release: ['b'] }, { dur: 13 }] } },
   thermometers: true,
-  seed: 1,
+  // Checked in Chromium with the voiced timing: every hydrogen ion is used up, as the narration says.
+  speed: 2,
+  seed: 9,
   height: 440,
 };
 

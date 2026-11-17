@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { n2o4Stress } from './lib/c30-particles.ts';
 
 const video: Explainer = {
   id: 'c30-4-3-d',
@@ -38,6 +39,24 @@ const video: Explainer = {
         { say: 'An endothermic forward reaction, with a positive delta H, takes energy in, so energy is a reactant.', caption: 'An endothermic forward reaction, with a positive ΔH, takes energy in, so energy is a reactant.', show: 'm.1', focus: 'm.1' },
         { say: 'Raising the temperature adds energy, so the system shifts in the direction that uses energy up: the endothermic direction. Lowering the temperature shifts it the exothermic way.', show: 'key', focus: 'key' },
         { say: 'For dye-nitrogen tetroxide, delta H is plus fifty-seven kilojoules, so energy is a reactant. In hot water, the system shifts right to use the energy up. More brown nitrogen dioxide forms, and the colour darkens.', caption: 'For dinitrogen tetroxide, ΔH is +57 kJ, so energy is a reactant. In hot water, the system shifts right to use the energy up. More brown nitrogen dioxide forms, and the colour darkens.', focus: 'm.1' },
+      ],
+    },
+    {
+      chapter: 'Heating, up close',
+      layout: 'center',
+      main: [n2o4Stress('sh', 'heat', { seed: 3 })],
+      lines: [
+        { say: 'Here is the tube up close, at equilibrium, with a thermometer beside it. Splitting a dye-nitrogen tetroxide pair takes energy in. Now the tube is heated, and the particles move faster.', caption: 'Here is the tube up close, at equilibrium, with a thermometer beside it. Splitting a dinitrogen tetroxide pair takes energy in. Now the tube is heated, and the particles move faster.', show: ['sh', 'sh.labels', 'sh.key', 'sh.tally', 'sh.thermo'], play: 'sh.stress' },
+        { say: 'Hot pairs split more often, so the count of nitrogen dioxide climbs, and settles higher than before: the system shifts right, the endothermic way, and the gas turns browner.', focus: 'sh.tally' },
+      ],
+    },
+    {
+      chapter: 'Cooling, up close',
+      layout: 'center',
+      main: [n2o4Stress('sc', 'cool', { seed: 4 })],
+      lines: [
+        { say: 'Now the opposite. The same tube, at equilibrium, is put in ice, and its particles slow down. Watch the thermometer fall, and keep an eye on the count of orange nitrogen dioxide molecules, which flickered around one value while the tube was warm.', show: ['sc', 'sc.labels', 'sc.key', 'sc.tally', 'sc.thermo'], play: 'sc.stress' },
+        { say: 'Cold pairs split less often, while orange molecules still pair up, so the count of nitrogen dioxide falls, and the colour fades. Cooling shifts the system left, the exothermic way.', focus: 'sc.tally' },
       ],
     },
     {

@@ -441,6 +441,22 @@ See `src/video/script.ts` for every element and option. In short:
     blue); the rest of the box gets the heat by particles bumping into one another, so a bar
     conducts heat along itself and a gas condenses on a cold wall.
   - `heatColor: [cold, hot]` colours each particle by how fast it moves, blue to red.
+  - `insulated: true` holds no particle at a temperature once the box is seen (a calorimeter):
+    energy only passes between particles as they collide. A kind can start at its own temperature
+    (`temp` on the kind: a hot metal lump in cold water), and the thermometer reads the kinds
+    without one. Give a heavy kind a large `mass` (30 slows the heat passing on to about ten
+    seconds) and divide its `heavy` by that mass, or the strong pull on it pumps energy in.
+  - `electrodes: { left, right }` puts an electrode down each side wall (a cell). A phase turns
+    the current on with `power: { b: 1 }`, and kinds with a `charge` then drift: positive ones to
+    the left electrode (the cathode) and negative ones to the right (the anode). Each electrode
+    has `rules` (`{ kind, to, stick?, chance? }`: a particle of that kind touching it becomes
+    `to`, and with `stick` stays on it as a coating up to a few layers thick), `plate: { kind, n }`
+    to start it coated, and `dissolve: { kind, to, chance? }` to let its coating leave as ions,
+    now and then with a `chance` (a zinc anode in a voltaic cell, where 0.0012 at power 0.4 loses
+    a few atoms in 16 seconds), or, without one, an atom for each one the other electrode gains
+    (electroplating). `label` is written above it. Give a gas that forms an `escape` list so only
+    it leaves by the open top. Chemistry 30's `lib/c30-cells.ts` has molten salt, aqueous,
+    plating and voltaic cells to copy.
   - `flow: { from, to }` on the element, with the part `flow`, draws an arrow of heat between two
     boxes side by side that thins as their temperatures meet.
   - `expand: 0.8` lets a solid's particles settle further apart as it warms (more than a real
@@ -455,11 +471,42 @@ See `src/video/script.ts` for every element and option. In short:
     `bond: 4, heavy: 3, cross: 1`). Water dissolves well with `heavy: 0.2` at a temperature of 0.7.
   - `lump: true` (or a number of smaller lumps) starts the first kind as a lump on the floor, and
     `hold` keeps it still until a phase lets it go (`release: ['b']`), so it is seen dropping in.
+  - `lumpMix: 2` builds the lump from two kinds, kind 0 and kind 2, set out alternately as in a
+    salt crystal (give kind 2 `n: 0` among the kinds and the ions it adds come from kind 0's count
+    split between them); `hold: [0, 2]` holds both.
   - A phase's `stir: { b: 2 }` swirls the box (a rod is drawn), and `stir: { b: 0 }` stops it.
   - The part `count` shows "8 of 14 dissolved" under each box: particles of the first kind that
     have broken away from the lump (a dissolved particle stays counted until it joins a real lump
     again, so a few that brush together do not make the count jump).
   - `speed: 4` on the element runs the simulation faster than usual, as real dissolving is slow.
+  - `pairs: [{ kinds: [0, 2], bond: 4 }]` sets how strongly two kinds attract in place of `cross`:
+    a crystal of low solubility (silver chloride) keeps its ions held tightly together while each
+    feels water only weakly (`cross: 1`).
+  - `key: true` on the element keeps room to the right of the boxes for a key, a dot in each named
+    kind's colour with its name (the part `key`), so viewers can tell the ions apart.
+  - `reserve: [2, 3, 4]` keeps those kinds out of the box at first, in a burette drawn above it, and
+    a phase's `add: { f: 8 }` pours that many units in over the phase from the burette's tip, one
+    molecule or particle at a time, taking turns between the kinds (a sodium ion, then a hydroxide
+    ion). `indicator: { acid: [0], base: [3], tone: 'hyp' }` tints the box once none of the acid
+    kinds is left and some of the base is, as at the endpoint of a titration (`titrating` in
+    `src/content/chem20/videos/lib/c20-particles.ts`).
+  - A reaction's `chance: 0.001` lets only that fraction of meetings react (checked at every step
+    while two particles touch, so keep it small), for a slow reaction, or one that runs both ways
+    at steady rates and settles part way: an equilibrium. Give such reactions `reach: 1.15` so that
+    only touching particles count, or a crowded box reacts at once. See `n2o4` in
+    `src/content/chem30/videos/lib/c30-particles.ts` (nitrogen dioxide pairing up, with the
+    pairs splitting again through `breaks`, below). With few particles the count flickers by a few around
+    its settled value; say so in the narration.
+  - A box's `breaks: [{ kinds: [1, 1], to: [0, 0], chance: 0.0001 }]` lets a molecule fall apart
+    by itself: each step a bond between those kinds snaps with that chance. Unlike a reaction it
+    needs no meeting, so squeezing a gas speeds up pairing but not splitting, and the mixture
+    shifts towards fewer molecules, as Le Chatelier says. With `energy` the chance is multiplied
+    by e^(−energy/T), so it splits more when hot. See `n2o4Stress` in
+    `src/content/chem30/videos/lib/c30-particles.ts` (adding, squeezing, heating and cooling).
+  - Choose seeds by running the simulation in Chromium, not Node: the two can differ in the last
+    bit of some maths functions, a reacting box magnifies that, and the video is drawn in
+    Chromium. A seed that finishes a reaction in a Node probe may leave a particle over in the
+    video, so check with stills (or bundle the probe with esbuild and run it in the browser).
   More, for separating mixtures:
   - A kind's `size` (its diameter, 1 by default) makes grains bigger or smaller.
   - `filter: { at: 0.5, holes: 1.3 }` lays a filter or sieve across the box at that fraction of
@@ -469,6 +516,7 @@ See `src/video/script.ts` for every element and option. In short:
     `magnet: { b: 1 }` holds it there (`0` takes it away).
   - `escape: true` gives the box an open top that particles leave by (evaporation): one that
     reaches the top is gone. A kind with `bond` 2 or more (a salt) never leaves; it falls back.
+    `escape: [4]` lets only the kinds listed leave (a gas bubbling out of a solution).
   - `wall: { at: 0.5, height: 0.5 }` stands a low wall that never lifts (a still): the particles
     start on its left and only a gas gets over it.
   - `zones: [{ x: [0, 0.5], y: [0, 0.17] }, { x: [0.6, 1], y: [0, 1], temp: 0.4 }]` hold parts of
@@ -493,13 +541,32 @@ See `src/video/script.ts` for every element and option. In short:
     under the box (the part `tally`). A gas box with a reacting lump can break it into pieces
     with `lump: 4` and `cols: 2`; give it `hold: true` so the pieces do not drift together before
     the clip lets them go.
+  More, for gases:
+  - `spread: { at: 2, max: 3.5, bins: 14 }` draws a live bar chart under the box of how many
+    particles move at each speed (the Maxwell–Boltzmann spread, part `spread`), with a dashed
+    line at the speed `at` for the activation energy and a count of the particles past it. In a
+    gas at temperature 0.5 almost none pass 2, and at 1.2 about a fifth do; use about 60 small
+    particles (`size: 0.65`) so the bars are smooth (`speedSpread` in the extra chemistry
+    course's `lib/cx-particles.ts`).
+  - A kind's `mass` (1 by default) makes its particles heavier: at the same temperature they move
+    more slowly, as heavy gas molecules do (give molecules' atoms their masses: H 1, C 12, O 16).
+    Weaken the atoms' `bond` to about 0.03 (H 0.05), or molecules of three atoms clump together.
+  - `piston: true` with `lid` draws the lid as a piston; a phase moving `lid` and `heat` together
+    holds the gauge steady (Charles's law). `gauge: { box, start, unit: 'atm', decimals: 2 }` reads
+    in another unit.
+  - `hold: [0, 2]` holds only those kinds still until a phase's `release` (`hold: true` is the first
+    kind). With `apart`, `ends: 0.1` starts the first and last kinds in strips that wide at the two
+    ends of a long tube and the rest between them, and `endLabels: ['NH₃', 'HCl']` names the ends.
+    A reaction with `settle: true` fixes the new particles where they formed (the white ring of
+    ammonium chloride), and the part `middle` marks the middle of the box.
   Emphasising a box's id makes it glow. Keep to a few dozen particles a box (120 at most): every
   frame of a moving scene is drawn afresh. See `src/content/chem7/videos/c7-2-1.ts` (the three
   states, pistons), `c7-2-2.ts` (melting, boiling, condensing on a cold can), `c7-2-3.ts` (heat
   flow, conduction), `c7-2-4.ts` (expansion, diffusion), `c7-3-2.ts` to `c7-3-4.ts` (dissolving,
   saturation, stirring and heating), `c7-4-1.ts` to `c7-4-3.ts` (sieving, magnets, filtering,
   evaporation, distillation, chromatography) and
-  `src/content/chem20/videos/c20-2-3.ts` (Boyle's law with a gauge), and the reactions in
+  `src/content/chem20/videos/c20-2-1-d.ts` to `c20-2-7-d.ts` (the gas laws: masses, pistons,
+  gauges, the diffusion tube), and the reactions in
   `src/content/chem8/videos/` and `src/content/chem9/videos/c9-3-1.ts`, `c9-3-4.ts` (rates side by
   side) and `c9-4-3.ts` (neutralization).
   In chemistry, every scene that describes particles moving, mixing, reacting or being squeezed
@@ -517,6 +584,26 @@ See `src/video/script.ts` for every element and option. In short:
   `labels`, `arrangement` ("2, 8, 1") and `charges` ("Na⁺") show under and beside each atom
   (`labelAbove` puts them above it). See `src/content/chem9/videos/c9-1-3.ts` (filling shells),
   `c9-1-4.ts` (ions) and `c9-2-1.ts` (ionic and covalent bonding).
+- `molecules` (`src/video/molecules.ts`) draws molecules as balls and sticks, flat like a
+  structural formula, for organic reactions. `atoms` names each atom and its element (`{ C1: 'C',
+  H1: 'H' }`, coloured like a model kit, or `{ el: 'C', tone: 'good' }`), and each of `stages` is
+  an arrangement: `at` (each atom's place in the `span`, with bonds about 1 unit long and an atom
+  left out not there), `bonds` (`'C1=C2 C1-H1'`, with `-`, `=` and `#`), `charges` and `names`
+  (text placed in the scene). The element starts at `start`, and a clip's phases move it to a
+  stage (`{ dur: 2.6, to: 'product' }`) or hold (`{ dur: 0.6 }`): the atoms glide, a bond that
+  breaks turns red and fades in the first half, and a new bond comes in green in the second half
+  and stays green for a moment. A molecule only in one of the two stages fades in or out whole.
+  Let the reactants first move together (a stage where they touch), then make the product, so
+  each bond change can be seen; keep paths from crossing. A charge sits at the atom's upper right
+  unless a bond is in the way, then on the clearest side. A stage's `arrows` draw curly arrows
+  (`{ from: 'C1=C2', to: 'Br1' }`: from an atom, its lone pair, or a bond's middle, to an atom
+  or a bond; `bend` sets the curve and its side, 0.5 by default, negative for the other side),
+  and `rings` draw a circle for delocalised electrons inside the listed atoms (`[['C1', …,
+  'C6']]`); both fade in and out with their stage. A line can focus an atom (`m.Br1`). See
+  Chemistry 30's `lib/c30-molecules.ts` (addition, substitution, elimination, and
+  `oneAfterAnother` for several reactions in one element) and the extra chemistry course's
+  `lib/cx-molecules.ts` (mechanisms with curly arrows, benzene's nitration, the Haber process and
+  the fuel cell).
 
 - `quote` sets a passage of prose or verse off from the narration, for the English videos: one
   entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)

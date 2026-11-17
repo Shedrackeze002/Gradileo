@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { nitration } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-12-4',
@@ -37,6 +38,16 @@ const video: Explainer = {
         { say: 'Addition would destroy the delocalised ring, so benzene reacts by electrophilic substitution instead.' },
         { say: 'To nitrate it, warm it to about fifty degrees with concentrated nitric and sulfuric acids. They make the electrophile, the nitronium ion.', caption: 'To nitrate it, warm it to about 50 °C with concentrated nitric and sulfuric acids. They make the electrophile, the nitronium ion, NO₂⁺.', show: 'm.0', focus: 'm.0' },
         { say: 'The nitronium ion replaces a hydrogen, giving nitrobenzene, which is used to make dyes and explosives.', show: 'm.1', focus: 'm.1' },
+      ],
+    },
+    {
+      chapter: 'Nitration, up close',
+      layout: 'center',
+      main: [nitration('nt')],
+      lines: [
+        { say: 'Here is the nitration of benzene up close, with the ring of delocalised electrons drawn as a circle. The nitronium ion is the electrophile. Watch the curly arrow from the ring to the nitrogen.', show: 'nt', play: 'nt.attack' },
+        { say: 'Two of the ring’s electrons make a bond to the nitrogen. For a moment, the ring is broken and carries a positive charge, and that carbon holds both a hydrogen and the nitro group.', focus: 'nt.C1' },
+        { say: 'Then the carbon to hydrogen bond gives its electrons back to the ring, and the hydrogen leaves as a hydrogen ion. The delocalised ring is restored, which is why benzene substitutes instead of adding.', caption: 'Then the C–H bond gives its electrons back to the ring, and the hydrogen leaves as a hydrogen ion. The delocalised ring is restored, which is why benzene substitutes instead of adding.', play: 'nt.restore' },
       ],
     },
     {

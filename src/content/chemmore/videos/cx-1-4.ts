@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { aqueous } from '../../chem30/videos/lib/c30-cells.ts';
 
 const video: Explainer = {
   id: 'cx-1-4',
@@ -66,6 +67,24 @@ const video: Explainer = {
         { say: 'Take sodium chloride solution. Sodium is more reactive than hydrogen, so hydrogen forms at the cathode. Chloride ions are present, so chlorine forms at the anode. Sodium hydroxide solution is left behind.', show: 't.0' },
         { say: 'Now copper two sulfate solution. Copper is less reactive than hydrogen, so copper coats the cathode. There are no halide ions, so oxygen forms at the anode.', caption: 'Now copper(II) sulfate solution. Copper is less reactive than hydrogen, so copper coats the cathode. There are no halide ions, so oxygen forms at the anode.', show: 't.1', focus: 't.1' },
         { say: 'Always check whether the compound is molten or dissolved. Molten sodium chloride gives sodium at the cathode, but the solution gives hydrogen.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Sodium chloride solution, up close',
+      layout: 'center',
+      main: [aqueous('na', 'sodium chloride', { seed: 2 })],
+      lines: [
+        { say: 'Here is sodium chloride solution up close, with the cathode on the left and the anode on the right. Besides the sodium ions and chloride ions, there are water molecules, and water can give up hydrogen too. Watch which particles change at each electrode once the current flows.', show: ['na', 'na.labels', 'na.key'], play: 'na.run' },
+        { say: 'The sodium ions gather at the cathode, but they do not change. Water gives up hydrogen there instead, and the hydrogen bubbles away. At the anode, chloride ions give up electrons, and the chlorine atoms pair up into chlorine gas.' },
+      ],
+    },
+    {
+      chapter: 'Copper(II) sulfate solution, up close',
+      layout: 'center',
+      main: [aqueous('cu', 'copper sulfate', { seed: 2 })],
+      lines: [
+        { say: 'And here is copper two sulfate solution, again with the cathode on the left and the anode on the right. This time there are copper ions instead of sodium ions, and sulfate ions instead of chloride ions. Watch the cathode closely, and the bubbles that form at the anode.', caption: 'And here is copper(II) sulfate solution, again with the cathode on the left and the anode on the right. This time there are copper ions instead of sodium ions, and sulfate ions instead of chloride ions. Watch the cathode closely, and the bubbles that form at the anode.', show: ['cu', 'cu.labels', 'cu.key'], play: 'cu.run' },
+        { say: 'This time the copper ions win at the cathode: they take electrons and coat it with copper. With no halide ions, water gives up oxygen at the anode, and the oxygen bubbles away.' },
       ],
     },
     {

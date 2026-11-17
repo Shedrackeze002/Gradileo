@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { gift } from './lib/c30-2a-figures.ts';
+import { redox } from './lib/c30-atoms.ts';
 
 // An iron atom gives two electrons to a copper(II) ion: one is oxidised, the other reduced.
 const nail = figure('g', [gift({ giver: '\\ce{Fe}', taker: '\\ce{Cu^2+}', giverAfter: '\\ce{Fe^2+}', takerAfter: '\\ce{Cu}', electrons: '\\ce{2e-}' })], 460);
@@ -57,6 +58,20 @@ const video: Explainer = {
           show: ['t.1', 'g.taker-after'],
           focus: ['t.1', 'g.taker-after'],
         },
+      ],
+    },
+    {
+      chapter: 'Two halves, up close',
+      layout: 'center',
+      main: [
+        redox('nc', [
+          { id: 'na', symbol: 'Na', protons: 11, name: 'sodium', at: [5, 3.6], tone: 'brand' },
+          { id: 'cl', symbol: 'Cl', protons: 17, name: 'chlorine', at: [15, 3.6], tone: 'good' },
+        ], [{ from: 'na', to: null, n: 1 }, { fill: 'cl', to: 18 }]),
+      ],
+      lines: [
+        { say: 'Here are the two halves up close, with sodium and chlorine. First the oxidation half: watch the sodium atom lose its one outer electron. Then the reduction half: watch the chlorine atom take one electron into its outer shell.', show: ['nc', 'nc.labels', 'nc.arrangement'], play: 'nc.give' },
+        { say: 'Sodium gives a sodium ion plus one electron, so in its half-reaction the electron is a product. Chlorine plus one electron gives a chloride ion, so in its half-reaction the electron is a reactant. Put the halves together, and the electron simply moves from sodium to chlorine.', caption: 'Na → Na⁺ + e⁻, so in its half-reaction the electron is a product. Cl + e⁻ → Cl⁻, so in its half-reaction the electron is a reactant. Put the halves together, and the electron simply moves from sodium to chlorine.', show: 'nc.charges' },
       ],
     },
     {

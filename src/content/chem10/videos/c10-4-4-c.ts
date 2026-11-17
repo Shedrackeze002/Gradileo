@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { energyLevels } from './lib/c10-4-figures.ts';
+import { catalyst } from './lib/c10-rates.ts';
 
 // The lesson's worked example: reactants 120 kJ, top of the hump 200 kJ, products 40 kJ.
 const read = figure('d', [energyLevels({ reactants: 120, peak: 200, products: 40, per: 40, step: 40, max: 240 })], 460);
@@ -63,6 +64,16 @@ const video: Explainer = {
         { say: 'A catalyst speeds up a reaction without being used up. It does this by giving the reaction a different route, with a lower activation energy.', show: 'def' },
         { say: 'The grey curve is a reaction without a catalyst. The green curve is the same reaction with a catalyst: its hump is lower.', show: ['c.axes', 'c.curve', 'c.reactants', 'c.products', 'c.no-cat', 'c.cat-curve', 'c.cat'], focus: 'c.cat-curve' },
         { say: 'But the reactants and the products stay exactly where they were. So a catalyst does not change the energy change.', show: 'k', focus: ['c.reactants', 'c.products'] },
+      ],
+    },
+    {
+      chapter: 'A catalyst at work',
+      layout: 'center',
+      main: [catalyst('ca', 420)],
+      lines: [
+        { say: 'Here is the same reaction twice. A blue and a yellow particle join only if they collide hard enough to get over the hump, the activation energy. The count shows how many new molecules have formed.', show: ['ca', 'ca.labels', 'ca.tally'] },
+        { say: 'Without a catalyst, few collisions are hard enough, so the count creeps up. With a catalyst, the hump is lower, so many more collisions succeed, and the count races ahead.', play: 'ca.go', focus: 'ca.b' },
+        { say: 'The products are the same either way, and so is the energy change. The catalyst only lowers the hump.' },
       ],
     },
     {

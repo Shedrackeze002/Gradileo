@@ -1,11 +1,12 @@
 import type { Explainer } from '@/video/script.ts';
+import { densitySqueeze } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-4-c',
   lessonId: 'c10-1-4',
   title: 'Physical and Chemical Change, Part 3: Density',
   thumbnailTitle: 'Density',
-  thumbnail: false,
+  thumbnail: 'sq',
   summary:
     'Density is mass per unit volume: ρ = m/V, in g/cm³ for solids and g/mL for liquids (1 mL = 1 cm³). Rearranged, m = ρV and V = m/ρ. A block of metal of mass 81.0 g and volume 30.0 cm³ has a density of 2.70 g/cm³, which identifies it as aluminium; 250 mL of ethanol at 0.79 g/mL has a mass of 197.5 g.',
   scenes: [
@@ -28,6 +29,18 @@ const video: Explainer = {
         { say: 'The density of a substance is its mass per unit volume. Its symbol is rho, a Greek letter, and rho equals m over V: the mass divided by the volume.', caption: 'The density of a substance is its mass per unit volume. Its symbol is ρ (rho), a Greek letter, and ρ = m/V: the mass divided by the volume.', show: ['def', 'm'] },
         { say: 'For solids, density is usually measured in grams per cubic centimetre, and for liquids, in grams per millilitre. One millilitre is one cubic centimetre, so the two units are the same.' },
         { say: 'Rearranging the formula gives the mass, which is density times volume, or the volume, which is mass divided by density.', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Squeezing changes the density',
+      layout: 'split',
+      leftWidth: 560,
+      left: [densitySqueeze('sq', 420)],
+      right: [{ kind: 'math', id: 'r', size: 'md', align: 'left', lines: ['\\text{same } m', 'V \\text{ halves}', '\\Rightarrow\\ \\rho = \\dfrac{m}{V} \\text{ doubles}'] }],
+      lines: [
+        { say: 'Watch what density means with a gas under a piston. It holds a fixed number of particles, so its mass stays the same.', show: ['sq', 'sq.labels', 'sq.volume', 'r.0'] },
+        { say: 'Push the piston down. The same particles now fill half the volume, two litres down to one.', play: 'sq.push', show: 'r.1', focus: 'sq.volume' },
+        { say: 'The same mass in half the volume is twice the mass in every cubic centimetre: the density has doubled. Solids and liquids barely squeeze, so their densities hardly change.', show: 'r.2', focus: 'r.2' },
       ],
     },
     {

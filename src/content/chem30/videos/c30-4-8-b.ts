@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { phDrops } from './lib/c30-4b-figures.ts';
+import { bufferVsWater } from './lib/c30-particles.ts';
 
 // The same 0.010 mol of HCl added to 1.00 L of an acetic acid–acetate buffer (pH 4.74 to 4.66)
 // and to 1.00 L of pure water (pH 7.00 to 2.00).
@@ -101,6 +102,15 @@ const video: Explainer = {
           show: ['m.3', 'd.water', 'd.water-drop'],
           focus: ['m.3', 'd.water-drop'],
         },
+      ],
+    },
+    {
+      chapter: 'Resisting, up close',
+      layout: 'center',
+      main: [bufferVsWater('br', { seed: 2 })],
+      lines: [
+        { say: 'Here is the resistance up close: the same drops of sodium hydroxide into pure water on the left, and into an acetic acid and acetate buffer on the right. Each drop brings a sodium ion and a hydroxide ion. Watch the hydroxide ions in each box, and the count of how many are left, as the drops keep falling.', show: ['br', 'br.labels', 'br.key', 'br.tally'], play: 'br.drip' },
+        { say: 'In the water they all stay, and the p H shoots up. In the buffer, acetic acid molecules use them up, and only the ratio of acid to acetate changes, a little at a time, so the p H hardly moves.', caption: 'In the water they all stay, and the pH shoots up. In the buffer, acetic acid molecules use them up, and only the ratio of acid to acetate changes, a little at a time, so the pH hardly moves.', focus: 'br.tally' },
       ],
     },
     {

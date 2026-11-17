@@ -1,23 +1,14 @@
 import type { Explainer } from '@/video/script.ts';
-import { particles } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
-import { energyLevels, labels } from './lib/c10-4-figures.ts';
+import { energyLevels } from './lib/c10-4-figures.ts';
+import { concentration, oneReaction, temperature } from './lib/c10-rates.ts';
 
-// Two kinds of reacting particles moving about in a container.
-const box = figure('p', [particles({ state: 'gas', seed: 11, kinds: [{ id: 'a', tone: 'adj', count: 6 }, { id: 'b', tone: 'bad', count: 6 }] })], 440);
-// The same volume with few acid particles (dilute) and with many (concentrated).
-const conc = figure(
-  'c',
-  [
-    particles({ name: 'lo', state: 'gas', size: 6, seed: 3, kinds: [{ id: 'acid', tone: 'bad', count: 3 }, { id: 'other', tone: 'adj', count: 4 }] }),
-    particles({ name: 'hi', at: [7.5, 0], state: 'gas', size: 6, seed: 5, kinds: [{ id: 'acid', tone: 'bad', count: 9 }, { id: 'other', tone: 'adj', count: 4 }] }),
-    labels([
-      { id: 'lo-label', at: [3, -0.2], tex: '\\text{dilute}' },
-      { id: 'hi-label', at: [10.5, -0.2], tex: '\\text{concentrated}' },
-    ]),
-  ],
-  400,
-);
+// Two kinds of reacting particles moving about in a container; most collisions just bounce.
+const box = oneReaction('p', 420);
+// The same reaction with few particles (dilute) and with many (concentrated), started together.
+const conc = concentration('c', 400);
+// The same reaction cold and hot, started together.
+const hot = temperature('tp', 420);
 // The energy diagram with and without a catalyst, from lesson 4.4.
 const cat = figure('e', [energyLevels({ reactants: 250, peak: 400, products: 100, per: 100, step: 100, max: 500, catalyst: 300 })], 440);
 
@@ -45,9 +36,9 @@ const video: Explainer = {
       left: [box],
       right: [{ kind: 'callout', id: 'def', tone: 'definition', title: 'Collision theory', md: 'Particles react only when they **collide**, and only if the collision has at least the **activation energy**. The rate depends on how **often** particles collide and what **fraction** of the collisions succeed.' }],
       lines: [
-        { say: 'Picture the reacting particles, always moving and bumping into each other.', show: ['p.box', 'p.a', 'p.b'] },
+        { say: 'Here are the reacting particles, always moving and bumping into each other and into the walls.', show: ['p', 'p.labels', 'p.tally'] },
         { say: 'Particles react only when they collide, and only if the collision has at least the activation energy that you met in lesson four point four.', show: 'def' },
-        { say: 'Most collisions are too gentle, and the particles just bounce apart.' },
+        { say: 'Watch. Most collisions are too gentle, and the particles just bounce apart. Only now and then is a collision hard enough, and a blue and a yellow particle join as a new molecule.', play: 'p.go' },
         { say: 'So the rate depends on two things: how often the particles collide, and what fraction of the collisions have enough energy to succeed. Anything that increases either one makes the reaction faster.' },
       ],
     },
@@ -64,9 +55,18 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Here are two acid solutions of the same volume. The concentrated one has many more acid particles, shown in red.', show: ['c.lo-box', 'c.lo-acid', 'c.lo-other', 'c.hi-box', 'c.hi-acid', 'c.hi-other', 'c.lo-label', 'c.hi-label'] },
-        { say: 'With more reacting particles in the same volume, they collide more often, so the reaction is faster.', show: 'b.0', focus: 'c.hi-acid' },
+        { say: 'Here is the same reaction twice, in the same volume. The concentrated one has many more reacting particles.', show: ['c', 'c.labels', 'c.tally'] },
+        { say: 'With more reacting particles in the same volume, they collide more often, so new molecules form faster. Watch the counts.', show: 'b.0', play: 'c.go', focus: 'c.b' },
         { say: 'Pressure does the same for gases. Squeeze a gas into a smaller space, and its particles are crowded together, so they collide more often.', show: 'b.1' },
+      ],
+    },
+    {
+      chapter: 'Cold and hot',
+      layout: 'center',
+      main: [hot],
+      lines: [
+        { say: 'Now the same reaction cold and hot, with the same number of particles in each.', show: ['tp', 'tp.labels', 'tp.tally', 'tp.thermo'] },
+        { say: 'In the hot box, the particles move faster. They collide more often, and far more of the collisions are hard enough to react.', play: 'tp.go', focus: 'tp.b' },
       ],
     },
     {

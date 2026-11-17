@@ -72,6 +72,10 @@ export interface Controls {
   magnet: Record<string, number>;
   /** How fast the solvent is running up each paper box. */
   run: Record<string, number>;
+  /** How many reserved units have been poured into each box so far (a fraction while one falls). */
+  added: Record<string, number>;
+  /** How strongly the current through each box's electrodes is flowing (0 off, 1 the usual). */
+  power: Record<string, number>;
 }
 
 /** A play of a clip: its name and the element's age (seconds since shown) when it started. */
@@ -86,7 +90,11 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
   const stir: Record<string, number> = {};
   const magnet: Record<string, number> = {};
   const run: Record<string, number> = {};
+  const added: Record<string, number> = {};
+  const power: Record<string, number> = {};
   for (const b of el.boxes) {
+    added[b.id] = 0;
+    power[b.id] = 0;
     stir[b.id] = 0;
     magnet[b.id] = 0;
     run[b.id] = 0;
@@ -105,12 +113,14 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
       for (const [id, v] of Object.entries(ph.stir ?? {})) stir[id] += (v - stir[id]) * k;
       for (const [id, v] of Object.entries(ph.magnet ?? {})) magnet[id] += (v - magnet[id]) * k;
       for (const [id, v] of Object.entries(ph.run ?? {})) run[id] += (v - run[id]) * k;
+      for (const [id, v] of Object.entries(ph.power ?? {})) power[id] += (v - power[id]) * k;
       for (const [id, v] of Object.entries(ph.heat ?? {})) temp[id] += (tempOf(v, temp[id]) - temp[id]) * k;
       for (const [id, v] of Object.entries(ph.lid ?? {})) lid[id] += (v - lid[id]) * k;
+      for (const [id, v] of Object.entries(ph.add ?? {})) added[id] += v * k;
       t += ph.dur;
     }
   }
-  return { temp, lid, lifted, released, stir, magnet, run };
+  return { temp, lid, lifted, released, stir, magnet, run, added, power };
 }
 
 export interface Hit {
@@ -138,8 +148,12 @@ interface BoxSim {
   kinds: number;
   /** How strongly gravity pulls each kind (1 for the usual). */
   heavy: Float64Array;
+  /** Each kind's mass (1 for the usual): at one temperature, heavier particles move more slowly. */
+  mass: Float64Array;
   /** Particles held still (a lump not yet dropped in). */
   held: Uint8Array;
+  /** Particles made by a reaction that settles: held still for good, where they formed. */
+  stuck: Uint8Array;
   /** Each kind's diameter, whether a magnet pulls it, and how fast the solvent carries it up paper. */
   size: Float64Array;
   magnetic: Uint8Array;
@@ -150,10 +164,18 @@ interface BoxSim {
   sig2: Float64Array;
   /** Particles that have left the box (evaporated through an open top). */
   gone: Uint8Array;
+  /** Each kind's charge (pushed along by the current between electrodes). */
+  charge: Float64Array;
+  /** Which electrode each particle is stuck on: 0 none, 1 the left, 2 the right. */
+  side: Uint8Array;
+  /** Units (a molecule's particles, or one particle) still to be poured in, in order, and how many have been. */
+  units: number[][];
+  poured: number;
   /** How far up a paper box the solvent has soaked. */
   front: number;
   /** The reactions between kinds, and the pairs of particles bonded into molecules. */
   reactions: NonNullable<ParticleBox['reactions']>;
+  breaks: NonNullable<ParticleBox['breaks']>;
   bonds: Bond[];
   /** The bonded pairs, as i × n + j with i < j, to find quickly. */
   bonded: Set<number>;
@@ -202,6 +224,8 @@ export interface BoxFrame {
   bonds: Array<[number, number]>;
   /** How many particles of the tallied kinds there are. */
   tally: number;
+  /** Each particle's speed now (only for a box with `spread`). */
+  speed?: number[];
 }
 
 /**
@@ -215,10 +239,11 @@ function gravityAt(temp: number) {
 
 /** The forces on every particle: gravity, one another, and a stirrer if the box is being stirred. */
 function forces(s: BoxSim, temp: number, sigma = 1, stir = 0, w = 10, h = 10, magnet = 0) {
-  const { fx, fy, n, kind, heavy } = s;
+  const { fx, fy, n, kind, heavy, mass } = s;
   fx.fill(0);
   const g = gravityAt(temp);
-  for (let i = 0; i < n; i++) fy[i] = -g * heavy[kind[i]];
+  // Gravity pulls in proportion to mass, so it gives every particle of a kind the same fall.
+  for (let i = 0; i < n; i++) fy[i] = -g * heavy[kind[i]] * mass[kind[i]];
   forcesBetween(s, sigma);
   if (stir) {
     // A stirrer turns the liquid round the middle of the box.
@@ -294,6 +319,9 @@ function react(s: BoxSim, divider?: number) {
       if (0.25 * Math.max(0, closing) ** 2 < (r.energy ?? 0)) continue;
       // Two atoms of one molecule never react with each other.
       if (s.bonded.has(Math.min(i, j) * n + Math.max(i, j))) continue;
+      // With `chance`, only that fraction of such meetings react (each step they touch), so a
+      // reaction can be slow without depending on a few very fast particles.
+      if (r.chance !== undefined && s.rnd() >= r.chance) continue;
       const carried: number[] = [];
       if (r.free) {
         // Each lets go of its old partners, which become the reaction's `free` kinds; with
@@ -313,6 +341,13 @@ function react(s: BoxSim, divider?: number) {
       }
       kind[i] = r.to[0];
       kind[j] = r.to[1];
+      if (r.settle)
+        for (const k of [i, j]) {
+          s.held[k] = 1;
+          s.stuck[k] = 1;
+          vx[k] = 0;
+          vy[k] = 0;
+        }
       if (r.join) addBond(s, i, j, true);
       for (const c of carried) {
         addBond(s, j, c, true);
@@ -327,7 +362,7 @@ function react(s: BoxSim, divider?: number) {
         if (r.heat > 0)
           for (const k of [i, j]) {
             const a = s.rnd() * 2 * Math.PI;
-            const v = Math.sqrt(r.heat * n);
+            const v = Math.sqrt((r.heat * n) / s.mass[kind[k]]);
             vx[k] += v * Math.cos(a);
             vy[k] += v * Math.sin(a);
           }
@@ -337,6 +372,30 @@ function react(s: BoxSim, divider?: number) {
       break;
     }
   }
+}
+
+/**
+ * Molecules falling apart by themselves: each step, a bond between two kinds that a box's `breaks`
+ * names snaps with its chance (less at a low temperature, with `energy`), and the two atoms
+ * become the kinds in `to`.
+ */
+function breakApart(s: BoxSim, temp: number) {
+  const { kind, n } = s;
+  s.bonds = s.bonds.filter((bd) => {
+    if (!bd.show || s.gone[bd.i] || s.gone[bd.j]) return true;
+    for (const r of s.breaks) {
+      const [i, j] = kind[bd.i] === r.kinds[0] && kind[bd.j] === r.kinds[1] ? [bd.i, bd.j] : kind[bd.j] === r.kinds[0] && kind[bd.i] === r.kinds[1] ? [bd.j, bd.i] : [-1, -1];
+      if (i < 0) continue;
+      const p = r.chance * (r.energy ? Math.exp(-r.energy / Math.max(temp, 0.02)) : 1);
+      if (s.rnd() >= p) return true;
+      kind[i] = r.to[0];
+      kind[j] = r.to[1];
+      s.bonded.delete(Math.min(i, j) * n + Math.max(i, j));
+      if (r.heat) s.warm += r.heat;
+      return false;
+    }
+    return true;
+  });
 }
 
 /** Bonds atoms i and j, at the usual length for their sizes (or `len`). */
@@ -358,7 +417,7 @@ function measuredTemp(s: BoxSim) {
   let m = 0;
   for (let i = 0; i < s.n; i++) {
     if (s.gone[i] || s.held[i]) continue;
-    e += s.vx[i] * s.vx[i] + s.vy[i] * s.vy[i];
+    e += s.mass[s.kind[i]] * (s.vx[i] * s.vx[i] + s.vy[i] * s.vy[i]);
     m++;
   }
   return m ? e / (2 * m) : 0;
@@ -506,15 +565,22 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     eps: new Float64Array(kinds.length * kinds.length),
     kinds: kinds.length,
     heavy: new Float64Array(kinds.map((k) => k.heavy ?? 1)),
+    mass: new Float64Array(kinds.map((k) => k.mass ?? 1)),
     held: new Uint8Array(n),
+    stuck: new Uint8Array(n),
     size: new Float64Array(kinds.map((k) => k.size ?? 1)),
     magnetic: new Uint8Array(kinds.map((k) => (k.magnetic ? 1 : 0))),
     rise: new Float64Array(kinds.map((k) => k.rise ?? 0)),
     bond: new Float64Array(kinds.map((k) => k.bond ?? 1)),
     sig2: new Float64Array(kinds.length * kinds.length),
     gone: new Uint8Array(n),
+    charge: new Float64Array(kinds.map((k) => k.charge ?? 0)),
+    side: new Uint8Array(n),
+    units: [],
+    poured: 0,
     front: PAPER_START - 0.6,
     reactions: b.reactions ?? [],
+    breaks: b.breaks ?? [],
     bonds: [],
     bonded: new Set(),
     contacts: [],
@@ -534,6 +600,10 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       s.sig2[a * kinds.length + c] = (((ka.size ?? 1) + (kb.size ?? 1)) / 2) ** 2;
     }),
   );
+  for (const { kinds: [a, c], bond } of b.pairs ?? []) {
+    s.eps[a * kinds.length + c] = bond;
+    s.eps[c * kinds.length + a] = bond;
+  }
   // Molecules, and a gas that reacts with a lump, are placed unit by unit.
   const units = mols.length > 0 || (b.state === 'gas' && !!b.lump && !!b.reactions?.length);
   if (units) placeMolecules(s, b, kinds, mols, w);
@@ -543,9 +613,14 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
   // (Kinds after the first two may start with none: the products of a reaction.)
   const split = b.divider !== undefined && b.apart === true && kinds.length >= 2 && kinds.slice(2).every((k) => k.n === 0);
   const dot = Math.ceil(Math.sqrt(n)) * spacing + 1;
+  // With `ends`, the first kind is packed at the left end and the last that has particles at the right.
+  const right = [...kinds].reverse().find((k) => k.n > 0)?.n ?? 0;
+  const ends = b.ends !== undefined && b.apart === true && kinds.length >= 3 ? b.ends * w : 0;
   const regions: Array<[x0: number, x1: number, from: number, to: number]> = split
     ? [[0, b.divider! * w, 0, kinds[0].n], [b.divider! * w, w, kinds[0].n, n]]
-    : b.wall
+    : ends
+      ? [[0, ends, 0, kinds[0].n], [ends, w - ends, kinds[0].n, n - right], [w - ends, w, n - right, n]]
+      : b.wall
       ? [[0, b.wall.at * w - 0.2, 0, n]]
       : b.paper
         ? [[w / 2 - dot / 2, w / 2 + dot / 2, 0, n]]
@@ -595,6 +670,36 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
         taken.add(order[i]);
       }
     }
+    // With more than one other kind starting in the box (ions in a solution), they are mixed
+    // through the rest of it. With one, it simply fills the rest, using up no random numbers.
+    const others = kinds.flatMap((kd, ki) => (ki > 0 ? Array<number>(kd.n).fill(ki) : []));
+    if (new Set(others).size > 1) {
+      const rest = Array.from({ length: n }, (_, i) => i).filter((i) => !taken.has(i));
+      for (let i = others.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [others[i], others[j]] = [others[j], others[i]];
+      }
+      rest.forEach((i, k) => (s.kind[i] = others[k] ?? 1));
+    }
+    // An ionic lattice: each lump particle in turn takes the kind its placed neighbours have
+    // fewer of, so the two kinds alternate through the lump, half and half.
+    if (b.lumpMix !== undefined) {
+      const mix = b.lumpMix;
+      const lumped = Array.from({ length: n }, (_, i) => i).filter((i) => s.kind[i] === 0).sort((a, c) => s.y[a] - s.y[c] || s.x[a] - s.x[c]);
+      const placed: number[] = [];
+      let made = 0;
+      for (const i of lumped) {
+        let same = 0;
+        let other = 0;
+        for (const j of placed) if (Math.hypot(s.x[i] - s.x[j], s.y[i] - s.y[j]) < 1.3) s.kind[j] === 0 ? same++ : other++;
+        const half = made * 2 < placed.length;
+        if (same > other || (same === other && half)) {
+          s.kind[i] = mix;
+          made++;
+        }
+        placed.push(i);
+      }
+    }
   } else if (!b.apart && kinds.length > 1 && !units) {
     for (let i = n - 1; i > 0; i--) {
       const j = Math.floor(rnd() * (i + 1));
@@ -602,24 +707,75 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       s.kind[i] = s.kind[j];
       s.kind[j] = t;
     }
-  } else if (b.apart && kinds.length > 1 && !split) {
+  } else if (b.apart && kinds.length > 1 && !split && !ends) {
     const order = Array.from({ length: n }, (_, i) => i).sort((a, c) => s.x[a] - s.x[c]);
     let at = 0;
     kinds.forEach((kd, ki) => {
       for (let i = 0; i < kd.n; i++) s.kind[order[at++]] = ki;
     });
   }
-  // Held particles (the first kind) keep still until a clip lets them go.
-  if (b.hold) for (let i = 0; i < n; i++) s.held[i] = s.kind[i] === 0 ? 1 : 0;
+  // Held particles (the first kind, or the kinds listed) keep still until a clip lets them go.
+  if (b.hold) {
+    const kept = b.hold === true ? [0] : b.hold;
+    for (let i = 0; i < n; i++) s.held[i] = kept.includes(s.kind[i]) ? 1 : 0;
+  }
   // No particle starts inside a divider: each is moved out to the side it is nearer.
   if (b.divider !== undefined) {
     const d = b.divider * w;
     for (let i = 0; i < n; i++) if (Math.abs(s.x[i] - d) < 0.55) s.x[i] = s.x[i] < d ? d - 0.55 : d + 0.55;
   }
+  // Reserved kinds wait outside the box, unit by unit, the units of each kind taking turns.
+  if (b.reserve?.length) {
+    const seen = new Uint8Array(n);
+    const byKind = new Map<number, number[][]>();
+    for (let i = 0; i < n; i++) {
+      if (seen[i] || !b.reserve.includes(s.kind[i])) continue;
+      const unit = [i];
+      seen[i] = 1;
+      for (let u = 0; u < unit.length; u++)
+        for (const bd of s.bonds) {
+          const o = bd.i === unit[u] ? bd.j : bd.j === unit[u] ? bd.i : -1;
+          if (o >= 0 && !seen[o]) {
+            seen[o] = 1;
+            unit.push(o);
+          }
+        }
+      for (const k of unit) s.gone[k] = 1;
+      const list = byKind.get(s.kind[i]) ?? [];
+      list.push(unit);
+      byKind.set(s.kind[i], list);
+    }
+    const lists = [...byKind.values()];
+    for (let r = 0; lists.some((l) => r < l.length); r++) for (const l of lists) if (r < l.length) s.units.push(l[r]);
+  }
+  // An electrode coated with a metal: that many of its kind's particles stand in a column against
+  // the wall from the floor up, stuck on it (the rest of the box keeps clear of them).
+  for (const [sd, e] of [[1, b.electrodes?.left], [2, b.electrodes?.right]] as const) {
+    if (!e?.plate) continue;
+    const mine = Array.from({ length: n }, (_, i) => i).filter((i) => s.kind[i] === e.plate!.kind && !s.side[i]).slice(0, e.plate.n);
+    const d = 1.05 * (s.size[e.plate.kind] ?? 1);
+    const rows = Math.max(1, Math.floor((s.lidY - 0.6) / d));
+    mine.forEach((i, j) => {
+      const col = Math.floor(j / rows);
+      s.x[i] = sd === 1 ? 0.55 + col * d : w - 0.55 - col * d;
+      s.y[i] = 0.55 + (j % rows) * d;
+      s.held[i] = 1;
+      s.stuck[i] = 1;
+      s.side[i] = sd;
+    });
+    // Others that started where the coating now is are moved out of its way.
+    const edge = Math.ceil(mine.length / rows) * d + 0.6;
+    for (let i = 0; i < n; i++) {
+      if (s.side[i]) continue;
+      if (sd === 1 && s.x[i] < edge) s.x[i] = edge + (s.x[i] % 0.5);
+      if (sd === 2 && s.x[i] > w - edge) s.x[i] = w - edge - (s.x[i] % 0.5);
+    }
+  }
   const t0 = tempOf(b.temp, TEMPS[b.state]);
   for (let i = 0; i < n; i++) {
-    s.vx[i] = gauss(rnd) * Math.sqrt(t0);
-    s.vy[i] = gauss(rnd) * Math.sqrt(t0);
+    const m = s.mass[s.kind[i]];
+    s.vx[i] = gauss(rnd) * Math.sqrt(t0 / m);
+    s.vy[i] = gauss(rnd) * Math.sqrt(t0 / m);
     s.ke[i] = t0;
   }
   forces(s, tempOf(b.temp, TEMPS[b.state]));
@@ -645,12 +801,19 @@ interface StepOpts {
   wall?: { x: number; top: number };
   /** Parts of the box held at their own temperatures (in particle units). */
   zones?: Array<{ x0: number; x1: number; y0: number; y1: number; temp: number }>;
-  /** Particles reaching the top leave the box. */
-  escape?: boolean;
+  /** Particles reaching the top leave the box (only those of the kinds listed, if a list). */
+  escape?: boolean | number[];
   /** How fast the solvent runs up paper. */
   run?: number;
   /** Let the box's reactions happen (not while it settles before it is seen). */
   react?: boolean;
+  /** How strongly a current flows between the electrodes (0 none), and what happens at them. */
+  power?: number;
+  electrodes?: ParticleBox['electrodes'];
+  /** Hold no particle at any temperature: energy only passes between them as they collide. */
+  insulated?: boolean;
+  /** Temperatures for kinds held at their own, by kind (as an insulated box settles). */
+  kindTemps?: Array<number | undefined>;
 }
 
 /** The strip along a side where a box with a `bath` is held at its temperature. */
@@ -680,8 +843,9 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
       continue;
     }
     const rad = 0.5 * size[kind[i]];
-    vx[i] += fx[i] * half;
-    vy[i] += fy[i] * half;
+    const im = 1 / s.mass[kind[i]];
+    vx[i] += fx[i] * half * im;
+    vy[i] += fy[i] * half * im;
     const was = x[i];
     const wasY = y[i];
     x[i] += vx[i] * DT;
@@ -749,7 +913,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
       y[i] = 2 * rad - y[i];
       vy[i] = Math.abs(vy[i]);
       if (record) s.hits.push({ at: age, x: x[i], y: 0, wall: 'floor' });
-    } else if (o.escape && y[i] > lid - rad && s.bond[kind[i]] < 2) {
+    } else if (o.escape && (o.escape === true || o.escape.includes(kind[i])) && y[i] > lid - rad && s.bond[kind[i]] < 2) {
       // Out of the open top and away: it is put far off, where it touches nothing. (A kind
       // bonded as strongly as a salt does not boil at these temperatures: one flung this high
       // falls back.)
@@ -771,28 +935,42 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   // or goes over the wall anyway, and the dissolved solid must stay at the bottom.
   const gravityTemp = o.escape || o.wall ? 0 : o.bath || zones ? measuredTemp(s) : temp;
   forces(s, gravityTemp, o.sigma, o.stir ?? 0, w, lid, o.magnet ?? 0);
+  // With the current on, positive ions are pushed towards the left electrode (the cathode) and
+  // negative ones towards the right (the anode).
+  if (o.power) for (let i = 0; i < n; i++) if (s.charge[kind[i]]) fx[i] -= s.charge[kind[i]] * FIELD * o.power;
   if (o.react) react(s, o.divider);
+  if (o.power && o.electrodes) atElectrodes(s, o.electrodes, o.power, w);
+  if (o.react && s.breaks.length) breakApart(s, temp);
   // A bath holds its strip firmly, as a flame or ice would, so heat goes in or out quickly there.
-  const c1 = Math.exp(-(o.bath || zones ? BATH_GAMMA : GAMMA) * DT);
+  const c1 = Math.exp(-(o.bath || zones || o.kindTemps ? BATH_GAMMA : GAMMA) * DT);
   const c2 = Math.sqrt((1 - c1 * c1) * temp);
   const inBath = (i: number) => (o.bath === 'left' ? x[i] < BATH : o.bath === 'right' ? x[i] > w - BATH : y[i] < BATH);
   const smooth = DT / 1.2;
   for (let i = 0; i < n; i++) {
     if (held[i] || gone[i]) continue;
-    vx[i] += fx[i] * half;
-    vy[i] += fy[i] * half;
-    if (zones) {
+    // A heavier particle is pushed less by the same force, and the thermostat gives it the same
+    // energy (so less speed) as a light one.
+    const m = s.mass[kind[i]];
+    const im = 1 / m;
+    const sm = Math.sqrt(im);
+    vx[i] += fx[i] * half * im;
+    vy[i] += fy[i] * half * im;
+    if (o.insulated) {
+      // Nothing outside the box adds or takes energy.
+    } else if (zones) {
       const z = zones.find((zz) => x[i] >= zz.x0 && x[i] < zz.x1 && y[i] >= zz.y0 && y[i] < zz.y1);
       if (z) {
-        const c = Math.sqrt((1 - c1 * c1) * z.temp);
+        const c = Math.sqrt((1 - c1 * c1) * z.temp) * sm;
         vx[i] = c1 * vx[i] + c * gauss(rnd);
         vy[i] = c1 * vy[i] + c * gauss(rnd);
       }
     } else if (!o.bath || inBath(i)) {
-      vx[i] = c1 * vx[i] + c2 * gauss(rnd);
-      vy[i] = c1 * vy[i] + c2 * gauss(rnd);
+      const own = o.kindTemps?.[kind[i]];
+      const c = own === undefined ? c2 : Math.sqrt((1 - c1 * c1) * own);
+      vx[i] = c1 * vx[i] + c * sm * gauss(rnd);
+      vy[i] = c1 * vy[i] + c * sm * gauss(rnd);
     }
-    s.ke[i] += ((vx[i] * vx[i] + vy[i] * vy[i]) / 2 - s.ke[i]) * smooth;
+    s.ke[i] += ((m * (vx[i] * vx[i] + vy[i] * vy[i])) / 2 - s.ke[i]) * smooth;
   }
 }
 
@@ -916,6 +1094,8 @@ function cloneSim(s: BoxSim): BoxSim {
     kind: s.kind.slice(),
     ke: s.ke.slice(),
     held: s.held.slice(),
+    stuck: s.stuck.slice(),
+    side: s.side.slice(),
     gone: s.gone.slice(),
     bonds: s.bonds.map((bd) => ({ ...bd })),
     bonded: new Set(s.bonded),
@@ -955,7 +1135,91 @@ function optsFor(b: ParticleBox, ctl?: Controls): StepOpts {
     zones: ctl && b.zones?.map((z) => ({ x0: z.x[0] * w, x1: z.x[1] * w, y0: z.y[0] * h, y1: z.y[1] * h, temp: z.temp === undefined ? temp : tempOf(z.temp, temp) })),
     escape: ctl ? b.escape : false,
     react: !!ctl && (!b.waits || ctl.released[b.id] !== undefined),
+    insulated: ctl ? b.insulated : false,
+    power: ctl?.power[b.id],
+    electrodes: b.electrodes,
+    // As an insulated box settles, a kind with its own temperature is held at it (a hot lump in cold water).
+    kindTemps: !ctl && b.insulated ? b.kinds?.map((k) => (k.temp === undefined ? undefined : tempOf(k.temp, t0))) : undefined,
   };
+}
+
+/** How hard the current pushes a particle with a charge of 1. */
+const FIELD = 1.2;
+/** How far from its wall an electrode's coating can grow. */
+const COAT = 2.4;
+
+/**
+ * What happens at the electrodes while the current flows. A loose particle touching an electrode,
+ * or a particle already stuck on it, changes kind by that electrode's rule for it, and with `stick`
+ * stays there. And an electrode that `dissolve`s gives up its outermost stuck particle now and then,
+ * which leaves as another kind.
+ */
+function atElectrodes(s: BoxSim, es: NonNullable<ParticleBox['electrodes']>, power: number, w: number) {
+  const { n, x, y, kind, held, gone, side } = s;
+  const sides = [es.left, es.right] as const;
+  const stuckNow = [0, 0];
+  for (let i = 0; i < n; i++) {
+    if (held[i] || gone[i]) continue;
+    const rad = 0.5 * s.size[kind[i]];
+    let at = x[i] < rad + 0.2 ? 1 : x[i] > w - rad - 0.2 ? 2 : 0;
+    // Or a particle stuck on it, so a coating builds up, but only a few layers thick.
+    if (!at && (x[i] < COAT || x[i] > w - COAT))
+      for (let j = 0; j < n && !at; j++) {
+        if (!side[j] || gone[j]) continue;
+        const dx = x[i] - x[j];
+        const dy = y[i] - y[j];
+        if (dx * dx + dy * dy < 1.2 * 1.2) at = side[j];
+      }
+    if (!at) continue;
+    const rule = sides[at - 1]?.rules?.find((ru) => ru.kind === kind[i]);
+    if (!rule || (rule.chance !== undefined && s.rnd() >= rule.chance * power)) continue;
+    kind[i] = rule.to;
+    if (rule.stick) {
+      stuckNow[at - 1]++;
+      held[i] = 1;
+      s.stuck[i] = 1;
+      side[i] = at;
+      s.vx[i] = 0;
+      s.vy[i] = 0;
+    }
+  }
+  sides.forEach((e, si) => {
+    const d = e?.dissolve;
+    if (!d) return;
+    // With a chance, now and then; without one, an atom for each one the other electrode gained.
+    let leave = d.chance === undefined ? stuckNow[1 - si] : s.rnd() < d.chance * power ? 1 : 0;
+    for (; leave > 0; leave--) {
+      // The outermost particle of the coating (furthest from its wall) leaves.
+      let best = -1;
+      for (let i = 0; i < n; i++) {
+        if (side[i] !== si + 1 || kind[i] !== d.kind || gone[i]) continue;
+        if (best < 0 || (si === 0 ? x[i] > x[best] : x[i] < x[best])) best = i;
+      }
+      if (best < 0) return;
+      kind[best] = d.to;
+      held[best] = 0;
+      s.stuck[best] = 0;
+      side[best] = 0;
+      s.vx[best] = si === 0 ? 1.5 : -1.5;
+    }
+  });
+}
+
+/**
+ * The temperature a box's thermometer reads. An insulated box is not held at one, so its
+ * thermometer reads how fast its particles move: those of the kinds without their own starting
+ * temperature (the water, not the hot lump put into it).
+ */
+function thermoTemp(b: ParticleBox, s: BoxSim, held: number) {
+  if (!b.insulated) return held;
+  let e = 0;
+  let m = 0;
+  for (let i = 0; i < s.n; i++) {
+    if (s.gone[i] || b.kinds?.[s.kind[i]]?.temp !== undefined) continue;
+    e += s.ke[i];
+    m++;
+  }
+  return m ? e / m : held;
 }
 
 function warmBoxes(el: ParticlesEl): BoxSim[] {
@@ -1008,7 +1272,19 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     el.boxes.forEach((b, bi) => {
       const { h } = boxSize(b);
       const s = c!.boxes[bi];
-      if (ctl.released[b.id] !== undefined && s.held.some((v) => v)) s.held.fill(0);
+      if (ctl.released[b.id] !== undefined && s.held.some((v, i) => v && !s.stuck[i])) for (let i = 0; i < s.n; i++) if (!s.stuck[i]) s.held[i] = 0;
+      // Pour in the next reserved units, each dropping in at the top middle.
+      for (const want = Math.min(s.units.length, Math.floor(ctl.added[b.id] + 1e-9)); s.poured < want; s.poured++) {
+        const unit = s.units[s.poured];
+        const cx = boxSize(b).w / 2 + (s.rnd() - 0.5) * 0.6;
+        unit.forEach((k, u) => {
+          s.gone[k] = 0;
+          s.x[k] = cx + (u - (unit.length - 1) / 2) * 0.8;
+          s.y[k] = ctl.lid[b.id] * h - 0.7;
+          s.vx[k] = 0;
+          s.vy[k] = -1.5;
+        });
+      }
       // Heat from reactions leaks away to the surroundings.
       if (s.warm) s.warm *= Math.exp(-COOL * DT);
       step(s, optsFor(b, ctl), (s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]), ctl.lid[b.id] * h, a, true);
@@ -1046,7 +1322,7 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       y: keep(s.y),
       kind: keep(s.kind),
       lidY: s.lidY,
-      temp: (s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]),
+      temp: thermoTemp(b, s, s.warm ? Math.max(0.02, ctl.temp[b.id] + s.warm) : ctl.temp[b.id]),
       hits: recent.filter((hh) => hh.at > age - FLASH),
       hitRate: Math.round(recent.length / 2),
       trail: c!.trails[bi].map(([, x, y]) => [x, y] as [number, number]),
@@ -1062,6 +1338,7 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       goneCount,
       bonds: s.bonds.filter((bd) => bd.show && !s.gone[bd.i] && !s.gone[bd.j]).map(({ i, j }) => (goneCount ? [visible(i), visible(j)] : [i, j]) as [number, number]),
       tally: b.tally ? s.kind.reduce((m, k, i) => m + (!s.gone[i] && b.tally!.kinds.includes(k) ? 1 : 0), 0) : 0,
+      speed: b.spread ? keep(Array.from(s.vx, (vx, i) => Math.hypot(vx, s.vy[i]))) : undefined,
     };
   });
 }
@@ -1076,4 +1353,14 @@ export function pressureOf(el: ParticlesEl, b: ParticleBox, temp: number, lidFra
   const t0 = tempOf(b.temp, TEMPS[b.state]);
   const l0 = b.lid ?? 1;
   return p0 * (temp / t0) * (l0 / lidFraction);
+}
+
+/**
+ * A tally's label for a count of one: its plural noun made singular ("1 hydronium ion", "1 unit of
+ * silver chloride", "1 particle inside"). The noun is the last word before " of", " inside" or
+ * " left".
+ */
+export function singular(label: string): string {
+  const m = /^(.*?)s(\s+(?:of|inside|left)\b.*)?$/.exec(label);
+  return m ? m[1] + (m[2] ?? '') : label;
 }

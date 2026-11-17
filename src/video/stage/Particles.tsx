@@ -5,10 +5,13 @@
  * of the hits each second and the trail of one followed particle.
  */
 import type { ParticleBox, ParticlesEl, Tone } from '../script.ts';
-import { boxSize, FLASH, PAPER_START, particlesAt, pressureOf, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
+import { boxSize, FLASH, PAPER_START, particlesAt, pressureOf, singular, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
+
+/** An electrode's colour, unless it is given a tone: a grey metal. */
+const METAL = 'rgb(176 182 198)';
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 const FONT = "'Lexend Variable', 'Inter Variable', system-ui, sans-serif";
@@ -70,7 +73,7 @@ function Thermometer({ x, top, bottom, level, opacity, marks = [] }: { x: number
 }
 
 /** A dial gauge: the needle sweeps from `0` to `max` and the reading is written under it. */
-function Gauge({ cx, cy, r, value, max, unit, opacity, glow }: { cx: number; cy: number; r: number; value: number; max: number; unit: string; opacity: number; glow: number }) {
+function Gauge({ cx, cy, r, value, max, unit, opacity, glow, decimals = 0 }: { cx: number; cy: number; r: number; value: number; max: number; unit: string; opacity: number; glow: number; decimals?: number }) {
   const a0 = (-225 * Math.PI) / 180;
   const sweep = (270 * Math.PI) / 180;
   const at = (k: number, rr: number): [number, number] => [cx + rr * Math.cos(a0 + sweep * k), cy + rr * Math.sin(a0 + sweep * k)];
@@ -86,7 +89,7 @@ function Gauge({ cx, cy, r, value, max, unit, opacity, glow }: { cx: number; cy:
       })}
       <line x1={cx} y1={cy} x2={nx} y2={ny} stroke={TONES.theta} strokeWidth={5} strokeLinecap="round" />
       <circle cx={cx} cy={cy} r={7} fill={TONES.theta} />
-      <Text x={cx} y={cy + r * 0.5} size={22}>{`${Math.round(value)} ${unit}`}</Text>
+      <Text x={cx} y={cy + r * 0.5} size={22}>{`${value.toFixed(decimals)} ${unit}`}</Text>
       <Text x={cx} y={cy - r - 18} size={19} color={INK3} weight={500}>pressure</Text>
     </g>
   );
@@ -107,6 +110,9 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const count = part('count');
   const tally = part('tally');
   const width = part('width');
+  const middle = part('middle');
+  const keyPart = part('key');
+  const spreadPart = part('spread');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
 
@@ -118,12 +124,18 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const GAUGE_R = 70;
   const GAUGE_W = el.gauge ? 2 * GAUGE_R + 40 : 0;
   const GAP = el.flow ? 170 : 70;
-  const TOP = el.boxes.some((b) => b.piston) ? 56 : 24;
-  const BOTTOM = 76;
+  // The key's entries: each named kind once (a reaction's product often shares its reactant's name).
+  const keyItems = el.key ? [...new Map(el.boxes.flatMap((b) => (b.kinds ?? []).filter((k) => k.name).map((k) => [`${k.name}|${k.tone}`, { name: k.name!, tone: (k.tone ?? 'theta') as Tone, size: k.size ?? 1 }] as const))).values()] : [];
+  const KEY_W = keyItems.length ? 60 + 13 * Math.max(...keyItems.map((k) => k.name.length)) : 0;
+  // Room over the boxes for a piston's handle, or a burette's tube.
+  const TOP = el.boxes.some((b) => b.reserve?.length) ? 120 : el.boxes.some((b) => b.piston) ? 56 : 24;
+  // Room under the boxes for the labels, and for a spread of speeds.
+  const SPREAD_H = el.boxes.some((b) => b.spread) ? 190 : 0;
+  const BOTTOM = 76 + SPREAD_H;
   const sizes = el.boxes.map(boxSize);
   const sumW = sizes.reduce((s, b) => s + b.w, 0);
   const maxH = Math.max(...sizes.map((b) => b.h));
-  const fixed = GAP * (el.boxes.length - 1) + THERMO_W * el.boxes.length + GAUGE_W;
+  const fixed = GAP * (el.boxes.length - 1) + THERMO_W * el.boxes.length + GAUGE_W + KEY_W;
   const S = Math.min((w - fixed - 40) / sumW, (h - TOP - BOTTOM) / maxH, 60);
   const totalW = sumW * S + fixed;
   let left = (w - totalW) / 2;
@@ -200,6 +212,18 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
             {/* The box: glass walls and floor, tinted inside (none for a bare box). */}
             {!b.bare && !b.paper && <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill="rgb(120 140 255 / 0.06)" />}
             {!b.bare && !b.paper && <path d={`M ${X(0)} ${wallTop} L ${X(0)} ${floor} L ${X(bw)} ${floor} L ${X(bw)} ${wallTop}`} {...glass} />}
+            {/* An indicator's colour, once the acid is all used up and some base is left over. */}
+            {b.indicator && !f.kind.some((k) => b.indicator!.acid.includes(k)) && f.kind.some((k) => b.indicator!.base.includes(k)) && (
+              <rect x={X(0)} y={wallTop} width={bw * S} height={floor - wallTop} fill={TONES[b.indicator.tone]} opacity={0.22} />
+            )}
+            {/* A burette over a box with reserved particles: they drop in from its tip. */}
+            {b.reserve?.length ? (
+              <g>
+                <rect x={X(bw / 2) - 9} y={wallTop - 110} width={18} height={84} rx={3} {...glass} strokeWidth={3} fill="rgb(120 140 255 / 0.18)" />
+                <line x1={X(bw / 2) - 16} x2={X(bw / 2) + 16} y1={wallTop - 22} y2={wallTop - 22} stroke={INK3} strokeWidth={5} strokeLinecap="round" />
+                <path d={`M ${X(bw / 2) - 5} ${wallTop - 26} L ${X(bw / 2) - 2} ${wallTop - 4} L ${X(bw / 2) + 2} ${wallTop - 4} L ${X(bw / 2) + 5} ${wallTop - 26} Z`} fill="rgb(120 140 255 / 0.18)" stroke={INK3} strokeWidth={2} />
+              </g>
+            ) : null}
             {/* A paper strip: wet as far as the solvent has soaked, with a pencil start line under the dot. */}
             {b.paper && (
               <g style={{ filter: glow ? `drop-shadow(0 0 ${14 * glow}px ${TONES.theta})` : undefined }}>
@@ -237,6 +261,21 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 </g>
               );
             })()}
+            {/* Electrodes down the side walls, each named over its top ("cathode −", "anode +"). */}
+            {b.electrodes &&
+              ([['left', b.electrodes.left], ['right', b.electrodes.right]] as const).map(([sd, e]) => {
+                if (!e) return null;
+                const x = sd === 'left' ? X(0) + 3 : X(bw) - 3 - 0.28 * S;
+                const top = Y(0.94 * bh);
+                return (
+                  <g key={sd}>
+                    <rect x={x} y={top} width={0.28 * S} height={floor - 3 - top} rx={3} fill={e.tone ? TONES[e.tone] : METAL} opacity={0.9} />
+                    <Text x={sd === 'left' ? X(0) + 0.14 * S : X(bw) - 0.14 * S} y={wallTop - 16} size={20} anchor={sd === 'left' ? 'start' : 'end'} color={INK3}>
+                      {e.label ?? (sd === 'left' ? 'cathode −' : 'anode +')}
+                    </Text>
+                  </g>
+                );
+              })}
             {/* The trail of the followed particle, fading towards its oldest point. */}
             {trail > 0 &&
               trailPts.slice(1).map(([x, y], i) => {
@@ -335,11 +374,29 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 value={pressureOf(el, b, f.temp, f.lidY / bh)}
                 max={(el.gauge.start ?? 100) * 5}
                 unit={el.gauge.unit ?? 'kPa'}
+                decimals={el.gauge.decimals}
                 opacity={gauge}
                 glow={st?.focus.gauge ?? 0}
               />
             )}
             {b.label && <Text x={X(bw / 2)} y={floor + 30} size={26} opacity={labels}>{b.label}</Text>}
+            {/* What is packed at each end of a box with `ends` (under the ends, with the labels). */}
+            {b.endLabels &&
+              b.endLabels.map((t, k) => {
+                const e = (b.ends ?? 0.1) * bw;
+                return (
+                  <Text key={k} x={X(k ? bw - e / 2 : e / 2)} y={floor + 30} size={24} color={TONES[(b.kinds?.[k ? b.kinds.length - 1 : 0]?.tone ?? (k ? 'opp' : 'adj')) as keyof typeof TONES]} anchor={k ? 'end' : 'start'} opacity={labels}>
+                    {t}
+                  </Text>
+                );
+              })}
+            {/* A dashed line down the middle of the box, to see which end something is nearer. */}
+            {middle > 0 && (
+              <g opacity={middle}>
+                <line x1={X(bw / 2)} x2={X(bw / 2)} y1={wallTop - 10} y2={floor + 6} stroke={INK3} strokeWidth={2.5} strokeDasharray="8 8" />
+                <Text x={X(bw / 2)} y={wallTop - 28} size={20} color={INK3}>middle</Text>
+              </g>
+            )}
             {el.volume?.box === b.id && (
               <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={26} color={TONES.adj} opacity={volume}>
                 {`volume ${(el.volume.start * (f.lidY / bh) / (b.lid ?? 1)).toFixed(el.volume.decimals ?? 2)} ${el.volume.unit ?? 'L'}`}
@@ -354,14 +411,56 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
               <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={count}>{`${f.loose} of ${b.kinds[0].n} dissolved`}</Text>
             )}
             {tally > 0 && b.tally && (
-              <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={tally}>{`${f.tally} ${b.tally.label}`}</Text>
+              <Text x={X(bw / 2)} y={floor + (b.label ? 62 : 30)} size={24} color={TONES.theta} opacity={tally}>{`${f.tally} ${f.tally === 1 ? singular(b.tally.label) : b.tally.label}`}</Text>
             )}
             {rate > 0 && (
               <Text x={X(bw / 2)} y={floor + 30 + (b.label ? 32 : 0) + (el.volume?.box === b.id ? 32 : 0)} size={20} color={TONES.theta} opacity={rate}>{`${f.hitRate} wall hits a second`}</Text>
             )}
+            {spreadPart > 0 && b.spread && f.speed && (() => {
+              // How many particles move at each speed now: a bar for each band of speeds, those at
+              // least as fast as the line in yellow, on a scale fixed for the box so bars do not jump.
+              const { at, max = 3, bins = 12 } = b.spread;
+              const counts = Array<number>(bins).fill(0);
+              for (const v of f.speed) if (v < max) counts[Math.floor((v / max) * bins)]++;
+              const fast = f.speed.filter((v) => v >= at).length;
+              const yMax = Math.max(4, Math.ceil(f.speed.length * 0.28));
+              const top = floor + 96;
+              const axis = top + 124;
+              const cw = bw * S;
+              const bar = cw / bins;
+              const lineX = X(Math.min(1, at / max) * bw);
+              return (
+                <g opacity={spreadPart}>
+                  {counts.map((c, i) => (
+                    <rect key={i} x={X(0) + i * bar + 2} y={axis - (Math.min(c, yMax) / yMax) * 118} width={bar - 4} height={(Math.min(c, yMax) / yMax) * 118} rx={3} fill={(i + 0.5) * (max / bins) >= at ? TONES.theta : TONES.adj} opacity={0.85} />
+                  ))}
+                  <line x1={X(0)} x2={X(bw)} y1={axis} y2={axis} stroke={INK3} strokeWidth={2.5} />
+                  <line x1={X(0)} x2={X(0)} y1={axis} y2={top - 4} stroke={INK3} strokeWidth={2.5} />
+                  <line x1={lineX} x2={lineX} y1={axis} y2={top - 8} stroke={TONES.opp} strokeWidth={3} strokeDasharray="8 6" />
+                  <Text x={lineX + 8} y={top + 10} size={20} anchor="start" color={TONES.opp} weight={700}>{b.spread.label ?? 'Eₐ'}</Text>
+                  <Text x={X(0)} y={axis + 26} size={19} anchor="start" color={INK3}>{'speed →'}</Text>
+                  <Text x={X(bw)} y={axis + 26} size={20} anchor="end" color={TONES.theta} weight={700}>{`${fast} fast enough`}</Text>
+                </g>
+              );
+            })()}
           </g>
         );
       })}
+      {keyItems.length > 0 && keyPart > 0 && (() => {
+        // The key, to the right of the last box (its room is kept from the start).
+        const kx = (w + totalW) / 2 - KEY_W + 40;
+        const ky = TOP + (maxH * S) / 2 - ((keyItems.length - 1) * 44) / 2;
+        return (
+          <g opacity={keyPart}>
+            {keyItems.map((k, i) => (
+              <g key={k.name + k.tone}>
+                <circle cx={kx} cy={ky + i * 44} r={13 * Math.min(k.size, 1.1)} fill={`url(#pg-${el.id}-${k.tone})`} />
+                <Text x={kx + 26} y={ky + i * 44 + 8} size={22} anchor="start">{k.name}</Text>
+              </g>
+            ))}
+          </g>
+        );
+      })()}
     </svg>
   );
 }

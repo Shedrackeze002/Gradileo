@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { cloud, link, model, tag } from './lib/c20-1b-figures.ts';
+import { sameTemperature } from './lib/c20-particles.ts';
 
 // Two chlorine molecules as electron clouds: spread evenly, then pushed to one side for an instant
 // (δ+ and δ−), the first disturbing the second so that the two attract.
@@ -91,6 +92,23 @@ const video: Explainer = {
         { say: 'To count the electrons in a molecule, add up the atomic numbers of its atoms. The halogens show the pattern clearly.', show: 'note' },
         { say: 'Fluorine, with eighteen electrons, boils at about minus one hundred eighty-eight degrees Celsius, and chlorine, with thirty-four, at about minus thirty-four. Both are gases.', show: ['t.0', 't.1'], focus: ['t.0', 't.1'] },
         { say: 'Bromine, with seventy, is a liquid that boils at about fifty-nine degrees. And iodine, with one hundred six, is a solid that boils at about one hundred eighty-four.', show: ['t.2', 't.3'], focus: ['t.2', 't.3'] },
+      ],
+    },
+    {
+      chapter: 'Three halogens at room temperature',
+      layout: 'center',
+      main: [
+        sameTemperature('hx', 0.55, [
+          { id: 'cl', label: 'chlorine, 34 electrons', bond: 0.45, tone: 'good' },
+          { id: 'br', label: 'bromine, 70 electrons', bond: 1, tone: 'bad' },
+          { id: 'i', label: 'iodine, 106 electrons', bond: 2, tone: 'brand' },
+        ], 400),
+      ],
+      lines: [
+        { say: 'Here are chlorine, bromine and iodine, all at the same temperature. Each ball stands for a whole molecule, and the thermometers read the same.', show: ['hx', 'hx.labels', 'hx.thermo'] },
+        { say: 'Chlorine molecules have the fewest electrons and the weakest London forces, so they fly apart: a gas.', focus: 'hx.cl' },
+        { say: 'Bromine molecules attract one another more strongly, so they slide past each other as a liquid.', focus: 'hx.br' },
+        { say: 'And iodine molecules, with the most electrons, hold on hardest of all: at the same temperature, they stay locked together as a solid.', focus: 'hx.i' },
       ],
     },
     {

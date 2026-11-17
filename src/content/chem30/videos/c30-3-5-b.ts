@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, structure } from './lib/c30-3b-figures.ts';
+import { hydrogenAddsTwice, hydrogenBromideAdds } from './lib/c30-molecules.ts';
 
 // Propene, with carbon 1 and its two hydrogen atoms in green, and carbon 2 and its one hydrogen
 // atom in orange.
@@ -115,6 +116,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'The rule, up close',
+      layout: 'center',
+      main: [hydrogenBromideAdds('hb')],
+      lines: [
+        { say: 'Here is propene and hydrogen bromide up close. Carbon one, marked in green, has two hydrogen atoms, and carbon two, in orange, has only one. Watch which carbon the new hydrogen atom joins.', caption: 'Here is propene and hydrogen bromide up close. Carbon 1, marked in green, has two hydrogen atoms, and carbon 2, in orange, has only one. Watch which carbon the new hydrogen atom joins.', show: 'hb', play: 'hb.go' },
+        { say: 'The hydrogen atom joins carbon one, the carbon that already had more hydrogen atoms, and the bromine atom joins carbon two. So the product is two-bromo-propane.', caption: 'The hydrogen atom joins carbon 1, the carbon that already had more hydrogen atoms, and the bromine atom joins carbon 2. So the product is 2-bromopropane.', focus: ['hb.Hx', 'hb.Br'] },
+      ],
+    },
+    {
       chapter: 'Water, and alike carbons',
       layout: 'center',
       main: [
@@ -138,6 +148,16 @@ const video: Explainer = {
         { say: 'An alkyne has a triple bond, and it can add twice. Here is ethyne.', show: 'a.yne' },
         { say: 'One molecule of hydrogen turns the triple bond into a double bond, and ethyne becomes ethene.', show: ['a.s1', 'a.ene', 'm.0'], focus: ['a.ene-H3', 'a.ene-H4', 'm.0'] },
         { say: 'A second molecule of hydrogen turns the double bond into a single bond, and ethene becomes ethane. Each step is an addition.', show: ['a.s2', 'a.ane', 'm.1'], focus: ['a.ane-H5', 'a.ane-H6', 'm.1'] },
+      ],
+    },
+    {
+      chapter: 'Adding twice, up close',
+      layout: 'center',
+      main: [hydrogenAddsTwice('tw')],
+      lines: [
+        { say: 'Here is ethyne up close, with the triple bond between its carbons, and two hydrogen molecules waiting. Watch the first hydrogen molecule add.', show: 'tw', play: 'tw.first' },
+        { say: 'One of the three bonds between the carbons breaks, and a hydrogen atom joins each carbon. Ethyne has become ethene. It still has a double bond, so it can add again.', play: 'tw.second' },
+        { say: 'The second hydrogen molecule opens the double bond too, and ethene becomes ethane, with a single bond between the carbons. So an alkyne adds two molecules.' },
       ],
     },
     {

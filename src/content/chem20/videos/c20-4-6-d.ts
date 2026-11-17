@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { massBar, room } from './lib/c20-4b-figures.ts';
+import { limitingBurn } from './lib/c20-particles.ts';
 
 // The masses before and after methane burns in too little oxygen: both bars are 64.0 g long.
 const masses = figure(
@@ -73,6 +74,16 @@ const video: Explainer = {
         { say: 'The oxygen uses half its amount of methane: one point five zero zero times one half is zero point seven five zero zero moles.', show: 't.1', focus: 't.1' },
         { say: 'So zero point nine nine six nine minus zero point seven five zero zero, or zero point two four six nine moles of methane, is left over, and no oxygen.', show: 't.2', focus: 't.2' },
         { say: 'Times sixteen point zero five grams per mole, that is three point nine six grams of methane.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Counting what is left',
+      layout: 'center',
+      main: [limitingBurn('lf', [{ id: 'a', h2: 12, o2: 4, label: '12 hydrogen + 4 oxygen molecules' }])],
+      lines: [
+        { say: 'Here are twelve hydrogen molecules and four oxygen molecules. Four rounds use up the oxygen, so oxygen is limiting and hydrogen is in excess.', show: ['lf', 'lf.labels', 'lf.thermo'] },
+        { say: 'Each round uses two hydrogen molecules, so four rounds use eight. Watch the reaction.', play: 'lf.spark', show: 'lf.tally', focus: 'lf.a' },
+        { say: 'Twelve at the start, minus eight used, leaves four hydrogen molecules, still floating in the box. That is the subtraction you do for the excess reagent.', focus: 'lf.a' },
       ],
     },
     {

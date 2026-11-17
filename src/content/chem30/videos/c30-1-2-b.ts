@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { pan } from './lib/c30-1a-figures.ts';
+import { twoCups } from './lib/c30-particles.ts';
 
 // An aluminium saucepan and the water in it, both warming from 18.0 °C to 100.0 °C.
 const saucepan = figure('pan', [pan({ water: '\\begin{gathered}\\text{water}\\\\ 1200\\ \\text{g}\\end{gathered}', metal: '\\text{aluminium: } 500\\ \\text{g}', top: '\\text{both: } \\Delta t = 82.0^\\circ\\text{C}' })], 460);
@@ -59,6 +60,15 @@ const video: Explainer = {
           focus: 'm.2',
         },
         { say: 'That is forty-two point four kilojoules, lost by the block.', show: 'm.3', focus: 'm.3' },
+      ],
+    },
+    {
+      chapter: 'A bigger block, up close',
+      layout: 'center',
+      main: [twoCups('bb', [{ metal: 6, water: 34, label: 'small hot block' }, { metal: 24, water: 34, label: 'big hot block' }], { seed: 2 })],
+      lines: [
+        { say: 'Why does the mass matter? Here are two insulated cups with the same cold water. On the left a small hot block, on the right a big one, both at the same temperature: the blocks are the larger particles at the bottom. Particles are coloured by speed, red hot and blue cold, and each thermometer reads the water. Watch the two thermometers as each block cools to the water around it.', show: ['bb', 'bb.labels', 'bb.thermo'], play: 'bb.go' },
+        { say: 'The big block has four times as many particles, so it had far more energy to give, and its water warmed much more. The heat a block gives out depends on its mass, as well as on how far it cools.', focus: 'bb.thermo' },
       ],
     },
     {

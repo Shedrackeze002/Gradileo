@@ -1,36 +1,12 @@
 import type { Explainer } from '@/video/script.ts';
-import { particles } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { room, tag } from './lib/c10-1-figures.ts';
-
-// Air: nitrogen and oxygen molecules and an argon atom, mixed but not joined.
-const air = figure(
-  'air',
-  [
-    particles({
-      state: 'gas',
-      size: 6,
-      seed: 8,
-      kinds: [
-        { id: 'n2', tone: 'adj', count: 8, atoms: 2 },
-        { id: 'o2', tone: 'bad', count: 2, atoms: 2 },
-        { id: 'ar', tone: 'theta', count: 1 },
-      ],
-    }),
-    tag('n2-l', [6.3, 4.8], '\\text{nitrogen, }\\ce{N2}', { place: 'right', tone: 'adj', group: 'n2' }),
-    tag('o2-l', [6.3, 3.0], '\\text{oxygen, }\\ce{O2}', { place: 'right', tone: 'bad', group: 'o2' }),
-    tag('ar-l', [6.3, 1.2], '\\text{argon, }\\ce{Ar}', { place: 'right', tone: 'theta', group: 'ar' }),
-    room('room', [0, 0], [10.6, 0]),
-  ],
-  420,
-);
+import { air, ironSulfur } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-2-b',
   lessonId: 'c10-1-2',
   title: 'Pure Substances and Mixtures, Part 2: Mixtures',
   thumbnailTitle: 'Mixtures',
-  thumbnail: 'air',
+  thumbnail: 'fe',
   summary:
     'A mixture contains substances that are not chemically joined: each keeps its own properties, they can be in any proportions, and physical methods separate them. Air is a mixture of gases. Iron and sulfur stirred together make a mixture; heated, they make the compound iron sulfide.',
   scenes: [
@@ -46,7 +22,7 @@ const video: Explainer = {
       chapter: 'What a mixture is',
       layout: 'split',
       leftWidth: 600,
-      left: [air],
+      left: [air('air', 440)],
       right: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Mixture', md: 'Two or more substances **not chemically joined**. Each keeps its own properties, they can be in **any proportions**, and **physical methods** can separate them.' },
         { kind: 'text', id: 'dry', size: 'md', md: 'Dry air by volume: about $78\\%$ nitrogen, $21\\%$ oxygen, $1\\%$ argon and other gases.' },
@@ -54,12 +30,22 @@ const video: Explainer = {
       lines: [
         { say: 'A mixture contains two or more substances that are not chemically joined.', show: 'def' },
         { say: 'Each substance keeps its own properties, the substances can be present in any proportions, and physical methods can separate them, such as filtering, evaporating, or using a magnet.' },
-        { say: 'Air is a mixture of gases. Nitrogen molecules, oxygen molecules and argon atoms move about among each other, but they are not joined to each other.', show: ['air.box', 'air.n2', 'air.o2', 'air.ar'] },
+        { say: 'Air is a mixture of gases. Nitrogen molecules, oxygen molecules and argon atoms move about among each other, but they are not joined to each other.', show: ['air', 'air.labels'] },
         { say: 'The composition of air varies a little from place to place, but dry air is about seventy-eight percent nitrogen, twenty-one percent oxygen, and one percent argon and other gases, by volume.', show: 'dry' },
       ],
     },
     {
       chapter: 'Iron and sulfur',
+      layout: 'center',
+      main: [ironSulfur('fe', 380)],
+      lines: [
+        { say: 'Iron and sulfur show the difference. Stirred together, they make a grey-yellow mixture: pink iron grains among yellow sulfur grains.', show: ['fe', 'fe.labels'], focus: 'fe.m' },
+        { say: 'Heated together, they react to form a black solid, iron sulfide, F e S. This is a compound, a new substance, shown here in purple. In it, every iron atom is joined to a sulfur atom.', caption: 'Heated together, they react to form a black solid, iron sulfide, FeS. This is a compound, a new substance, shown here in purple. In it, every iron atom is joined to a sulfur atom.', focus: 'fe.c' },
+        { say: 'Now hold a magnet over both. The iron in the mixture is still magnetic, so the magnet pulls it out. The magnet does not attract the iron sulfide, and no physical method can separate it.', play: 'fe.magnet' },
+      ],
+    },
+    {
+      chapter: 'Mixture or compound',
       layout: 'center',
       main: [
         {
@@ -75,9 +61,7 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Iron and sulfur show the difference. Stirred together, they make a grey-yellow mixture. The iron is still magnetic, and a magnet pulls it out.', show: 't' },
-        { say: 'Heated together, they react to form a black solid, iron sulfide, F e S. This is a compound. A magnet does not attract it, and no physical method can separate it.', caption: 'Heated together, they react to form a black solid, iron sulfide, FeS. This is a compound. A magnet does not attract it, and no physical method can separate it.' },
-        { say: 'In the mixture, the elements are not joined, and they can be in any proportions. In the compound, they are joined in a fixed ratio: one iron atom for each sulfur atom.', focus: ['t.0', 't.1'] },
+        { say: 'Here is the difference side by side. In the mixture, the elements are not joined, and they can be in any proportions. In the compound, they are joined in a fixed ratio: one iron atom for each sulfur atom.', show: 't', focus: ['t.0', 't.1'] },
         { say: 'The mixture has the properties of iron and sulfur, and a magnet separates it. The compound has new properties, and only a chemical reaction can break it down.', focus: ['t.2', 't.3'] },
       ],
     },

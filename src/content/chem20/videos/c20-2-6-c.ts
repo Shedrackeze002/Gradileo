@@ -1,22 +1,28 @@
-import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { container, frame, tag } from './lib/c20-2b-figures.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+import { ATOM } from '@/video/reactions.ts';
 
-// One mole each of four gases at STP: the same volume and number of molecules, different masses.
-const GASES = [
-  { id: 'h2', molecule: 'H2', tex: '\\begin{gathered}\\ce{H2}\\\\ 2.02\\ \\text{g}\\end{gathered}' },
-  { id: 'n2', molecule: 'N2', tex: '\\begin{gathered}\\ce{N2}\\\\ 28.02\\ \\text{g}\\end{gathered}' },
-  { id: 'o2', molecule: 'O2', tex: '\\begin{gathered}\\ce{O2}\\\\ 32.00\\ \\text{g}\\end{gathered}' },
-  { id: 'co2', molecule: 'CO2', tex: '\\begin{gathered}\\ce{CO2}\\\\ 44.01\\ \\text{g}\\end{gathered}' },
-] as const;
-const moles = figure(
-  'g',
-  GASES.flatMap((g, i) => [
-    container({ name: g.id, at: [i * 5.2, 0], w: 4.2, h: 4.2, molecule: g.molecule, count: 4, seed: 11 + i }),
-    tag(`${g.id}-label`, [i * 5.2 + 2.1, -0.3], g.tex, { place: 'below', group: `${g.id}-mass` }),
-  ]).concat(frame('room', [0, -1.6], [19.8, -1.6])),
-  380,
-);
+/**
+ * One mole each of four gases at STP (simulated, src/video/particles.ts): the same volume and number
+ * of molecules, but different masses, so the heavier molecules move more slowly. Atoms carry their
+ * masses (H 1, N 14, O 16, C 12) and pull on one another only weakly, so the molecules stay a gas.
+ */
+const H = { ...ATOM.H, mass: 1, size: 0.7, bond: 0.05 };
+const N = { ...ATOM.Ne, name: 'nitrogen', tone: 'adj' as const, mass: 14, size: 0.9, bond: 0.03 };
+const O = { ...ATOM.O, mass: 16, size: 0.9, bond: 0.03 };
+const C = { ...ATOM.C, mass: 12, bond: 0.03 };
+const box = (b: Partial<ParticleBox>): ParticleBox => ({ id: 'x', state: 'gas', width: 7, height: 7, temp: 1.6, ...b });
+const moles: ParticlesEl = {
+  kind: 'particles',
+  id: 'g',
+  boxes: [
+    box({ id: 'h2', kinds: [H], molecules: [{ atoms: [0, 0], n: 4 }], label: 'H₂: 2.02 g' }),
+    box({ id: 'n2', kinds: [N], molecules: [{ atoms: [0, 0], n: 4 }], label: 'N₂: 28.02 g' }),
+    box({ id: 'o2', kinds: [O], molecules: [{ atoms: [0, 0], n: 4 }], label: 'O₂: 32.00 g' }),
+    box({ id: 'co2', kinds: [C, O], molecules: [{ atoms: [0, 1, 1], n: 4 }], label: 'CO₂: 44.01 g' }),
+  ],
+  clips: {},
+  height: 340,
+};
 
 const video: Explainer = {
   id: 'c20-2-6-c',
@@ -107,8 +113,8 @@ const video: Explainer = {
       layout: 'center',
       main: [moles, { kind: 'text', id: 'k', size: 'md', md: 'At STP, one mole of each gas fills $22.4\\ \\text{L}$.' }],
       lines: [
-        { say: 'So at S T P, one mole of hydrogen, nitrogen, oxygen or carbon dioxide fills twenty-two point four litres, with the same number of molecules.', caption: 'So at STP, one mole of hydrogen, nitrogen, oxygen or carbon dioxide fills 22.4 L, with the same number of molecules.', show: ['g.h2-box', 'g.h2-p', 'g.n2-box', 'g.n2-p', 'g.o2-box', 'g.o2-p', 'g.co2-box', 'g.co2-p', 'k'] },
-        { say: 'The volumes are the same, but the masses are not: from two point zero two grams for hydrogen, to forty-four point zero one grams for carbon dioxide.', caption: 'The volumes are the same, but the masses are not: from 2.02 g for hydrogen, to 44.01 g for carbon dioxide.', show: ['g.h2-mass', 'g.n2-mass', 'g.o2-mass', 'g.co2-mass'] },
+        { say: 'So at S T P, one mole of hydrogen, nitrogen, oxygen or carbon dioxide fills twenty-two point four litres, with the same number of molecules.', caption: 'So at STP, one mole of hydrogen, nitrogen, oxygen or carbon dioxide fills 22.4 L, with the same number of molecules.', show: ['g', 'k'] },
+        { say: 'The volumes are the same, but the masses are not: from two point zero two grams for hydrogen, to forty-four point zero one grams for carbon dioxide.', caption: 'The volumes are the same, but the masses are not: from 2.02 g for hydrogen, to 44.01 g for carbon dioxide.', show: 'g.labels' },
       ],
     },
     {

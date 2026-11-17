@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { gift, nailBeaker } from './lib/c30-2a-figures.ts';
+import { redox } from './lib/c30-atoms.ts';
 
 // Each magnesium atom gives two electrons to an oxygen atom, as magnesium burns.
 const burn = figure('g', [gift({ giver: '\\ce{Mg}', taker: '\\ce{O}', giverAfter: '\\ce{Mg^2+}', takerAfter: '\\ce{O^2-}', electrons: '\\ce{2e-}', words: false })], 460);
@@ -71,6 +72,20 @@ const video: Explainer = {
         { say: 'Oxidation is a loss of electrons. A substance that loses electrons is oxidised: magnesium was oxidised.', show: 'ox' },
         { say: 'Reduction is a gain of electrons. A substance that gains electrons is reduced: oxygen was reduced.', show: 'red' },
         { say: 'To remember which is which, think of oil rig. Oxidation is loss, reduction is gain, of electrons.', caption: 'To remember which is which, think of OIL RIG. Oxidation Is Loss, Reduction Is Gain, of electrons.', show: 'tip' },
+      ],
+    },
+    {
+      chapter: 'Loss and gain, up close',
+      layout: 'center',
+      main: [
+        redox('mo', [
+          { id: 'mg', symbol: 'Mg', protons: 12, name: 'magnesium', at: [5, 3.6], tone: 'brand' },
+          { id: 'o', symbol: 'O', protons: 8, name: 'oxygen', at: [15, 3.6], tone: 'bad' },
+        ], [{ from: 'mg', to: 'o', n: 2 }]),
+      ],
+      lines: [
+        { say: 'Here is magnesium meeting oxygen, atom by atom. Magnesium has two electrons in its outer shell, and oxygen has six. Watch the two outer electrons of the magnesium atom.', show: ['mo', 'mo.labels', 'mo.arrangement'], play: 'mo.give' },
+        { say: 'They move across to the oxygen atom. Magnesium has lost two electrons, so it is oxidised, and becomes a magnesium ion with a charge of two plus. Oxygen has gained two electrons, so it is reduced, and becomes an oxide ion with a charge of two minus.', caption: 'They move across to the oxygen atom. Magnesium has lost two electrons, so it is oxidised, and becomes a magnesium ion, Mg²⁺. Oxygen has gained two electrons, so it is reduced, and becomes an oxide ion, O²⁻.', show: 'mo.charges' },
       ],
     },
     {
