@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { levels } from './lib/c30-1a-figures.ts';
+import { breakAndForm } from './lib/c30-particles.ts';
 
 // Hydrogen and chlorine: breaking the bonds climbs 679 kJ to separate atoms, forming the bonds of
 // 2HCl falls 864 kJ, and the products end 185 kJ below the reactants (1 unit is about 128 kJ).
@@ -59,6 +60,15 @@ const video: Explainer = {
           caption: 'If forming the new bonds releases more, ΔH is negative: exothermic. If breaking the old bonds absorbs more, ΔH is positive: endothermic.',
           show: 't',
         },
+      ],
+    },
+    {
+      chapter: 'Breaking and forming, up close',
+      layout: 'center',
+      main: [breakAndForm('bf', { seed: 1 })],
+      lines: [
+        { say: 'Here are both up close, with dinitrogen tetroxide, a molecule made of two nitrogen dioxide molecules joined by one bond. On the left, the tube starts with only dinitrogen tetroxide, and its molecules break apart. On the right, it starts with only nitrogen dioxide, and its molecules pair up, forming that bond. Watch the two thermometers as the bonds break on the left and form on the right.', show: ['bf', 'bf.labels', 'bf.key', 'bf.tally', 'bf.thermo'], play: 'bf.go' },
+        { say: 'Breaking the bonds absorbed energy from the particles around them, so the left tube cooled. Forming the bonds released energy, so the right tube warmed. The same bond, broken or formed, moves the same energy in opposite directions.' },
       ],
     },
     {

@@ -211,3 +211,61 @@ export const bufferVsWater = (id: string, o: { seed?: number; height?: number; d
 
 /** Nine drops of sodium hydroxide into a buffer that holds six acetic acid molecules: past the sixth, it is used up. */
 export const bufferUsedUp = (id: string, o: { seed?: number; height?: number } = {}): ParticlesEl => bufferVsWater(id, { ...o, only: 'buffer', drops: 9 });
+
+/**
+ * Two dissolved reactants (the system) among water particles (the surroundings), with a
+ * thermometer (clip `go`): the reactions wait until the clip starts, and each one releases energy
+ * that speeds up the particles around it, so the water warms and the thermometer rises.
+ */
+export const systemInWater = (id: string, o: { seed?: number; height?: number } = {}): ParticlesEl => {
+  const solute = { n: 0, bond: 0.15, heavy: 0.1 } as const;
+  return {
+    kind: 'particles',
+    id,
+    boxes: [
+      {
+        id: 'w',
+        state: 'liquid',
+        width: 12,
+        height: 9,
+        temp: 0.6,
+        waits: true,
+        kinds: [
+          { ...solute, n: 9, tone: 'bad', name: 'reactant (system)' },
+          { ...solute, n: 9, tone: 'theta', name: 'reactant (system)' },
+          { ...solute, tone: 'bad', name: 'product (system)' },
+          { ...solute, tone: 'theta', name: 'product (system)' },
+          { n: 34, tone: 'adj', name: 'water (surroundings)' },
+        ],
+        reactions: [{ a: 0, b: 1, to: [2, 3], join: true, heat: 0.1 }],
+        label: 'a reaction in a cup of water',
+      },
+    ],
+    // The cup is insulated, so the water keeps the energy it is given: the box is held warmer as
+    // the reactions go, instead of cooling back.
+    clips: { go: { phases: [{ dur: 1, release: ['w'] }, { dur: 6, heat: { w: 1.4 } }, { dur: 7 }] } },
+    key: true,
+    thermometers: true,
+    seed: o.seed ?? 1,
+    height: o.height ?? 420,
+  };
+};
+
+/**
+ * Bonds broken and bonds formed side by side (clip `go`): on the left, dinitrogen tetroxide
+ * splits, each break absorbing energy, so its tube cools; on the right, nitrogen dioxide pairs up,
+ * each new bond releasing energy, so its tube warms.
+ */
+export const breakAndForm = (id: string, o: { seed?: number; height?: number; heat?: number } = {}): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    n2o4Box('a', { dimers: 20, heat: o.heat ?? 0.04, label: 'bonds breaking' }),
+    n2o4Box('b', { free: 40, heat: o.heat ?? 0.04, label: 'bonds forming' }),
+  ],
+  clips: { go: { phases: [{ dur: 16 }] } },
+  key: true,
+  thermometers: true,
+  seed: o.seed ?? 1,
+  height: o.height ?? 400,
+});
