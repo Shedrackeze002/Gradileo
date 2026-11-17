@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkMotion, checkScript, type Explainer, type MotionBody, type MotionEl } from './script.ts';
-import { collision, motionAt } from './motion.ts';
+import { areaUnder, collision, motionAt, profileAt, SPRING } from './motion.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 const block: MotionBody = { id: 'b', shape: 'block', mass: 2, x: 1 };
@@ -305,7 +305,7 @@ describe('motion: energy', () => {
       clips: { fall: { phases: [{ dur: 1, forces: [{ on: 'b', name: 'Weight', n: 19.6 }] }] } },
     });
     expect(checkMotion(drop)).toEqual([]);
-    expect(motionAt(drop).energy.b).toEqual({ kinetic: 0, potential: 49, work: 0, heat: 0 });
+    expect(motionAt(drop).energy.b).toEqual({ kinetic: 0, potential: 49, elastic: 0, work: 0, heat: 0 });
     const t = Math.sqrt((2 * 2.5) / 9.8);
     const half = motionAt(drop, [['fall', t / 2]]).energy.b;
     expect(half.kinetic + half.potential).toBeCloseTo(49, 6);
@@ -449,5 +449,205 @@ describe('motion: a pendulum', () => {
     }
     expect(fastest.kinetic).toBeCloseTo(4.9, 2);
     expect(fastest.potential).toBeCloseTo(0, 2);
+  });
+});
+
+describe('motion: a force that changes with distance', () => {
+  // A push of 40 N for the first 4 m that then falls away to nothing over the next 4 m.
+  const points: Array<[number, number]> = [[0, 40], [4, 40], [8, 0]];
+  const eased = el({
+    span: [0, 40],
+    graph: { of: ['b'], seconds: 0, max: 50, y: 'force', metres: 8 },
+    clips: { go: { phases: [{ dur: 3, forces: [{ on: 'b', name: 'Push', n: 0, profile: points }] }] } },
+  });
+
+  it('reads the force between its points, and keeps the last value beyond them', () => {
+    expect(profileAt(points, -1)).toBe(40);
+    expect(profileAt(points, 2)).toBe(40);
+    expect(profileAt(points, 6)).toBeCloseTo(20);
+    expect(profileAt(points, 9)).toBe(0);
+  });
+
+  it('does the work that is the area under its points', () => {
+    expect(areaUnder(points, 0, 4)).toBeCloseTo(160);
+    expect(areaUnder(points, 0, 8)).toBeCloseTo(240);
+    expect(areaUnder(points, 4, 6)).toBeCloseTo(60);
+    expect(areaUnder(points, 6, 4)).toBeCloseTo(-60);
+    expect(areaUnder(points, 0, 20)).toBeCloseTo(240);
+  });
+
+  it('is a valid motion', () => {
+    expect(checkMotion(eased)).toEqual([]);
+  });
+
+  it('gives the body the kinetic energy of the area so far', () => {
+    // a = 40 ÷ 2 = 20 m/s² at first, so the 4 m mark comes at √0.4 s, with 160 J.
+    const s = motionAt(eased, [['go', Math.sqrt(0.4)]]);
+    expect(s.bodies.b.x - 1).toBeCloseTo(4, 3);
+    expect(s.energy.b.work).toBeCloseTo(160, 1);
+    expect(s.energy.b.kinetic).toBeCloseTo(160, 1);
+    // Past the last point there is no push left: 240 J in all, and a steady √240 m/s.
+    const end = motionAt(eased, [['go', 3]]);
+    expect(end.energy.b.work).toBeCloseTo(240, 3);
+    expect(end.energy.b.kinetic).toBeCloseTo(240, 3);
+    expect(end.energy.b.heat).toBeCloseTo(0, 3);
+    expect(end.bodies.b.v).toBeCloseTo(Math.sqrt(240), 4);
+    expect(end.bodies.b.a).toBeCloseTo(0, 6);
+  });
+
+  it('draws the arrow at the size that belongs to where the body is', () => {
+    const s = motionAt(eased, [['go', Math.sqrt(0.4)]]);
+    expect(s.forces.find((f) => f.name === 'Push')!.n).toBeCloseTo(40, 1);
+    expect(motionAt(eased, [['go', 3]]).forces.find((f) => f.name === 'Push')!.n).toBe(0);
+  });
+
+  it('keeps the force against the distance moved for a force-displacement graph', () => {
+    const { pull } = motionAt(eased, [['go', 3]]);
+    expect(pull.b[0]).toEqual([0, 40]);
+    const [d, n] = pull.b[pull.b.length - 1];
+    expect(d).toBeGreaterThan(8);
+    expect(n).toBe(0);
+    // The points lie on the line that was given, and the distance never goes back.
+    for (let i = 1; i < pull.b.length; i++) {
+      expect(pull.b[i][0]).toBeGreaterThanOrEqual(pull.b[i - 1][0]);
+      expect(pull.b[i][1]).toBeCloseTo(profileAt(points, pull.b[i][0]), 6);
+    }
+    expect(motionAt(eased).pull.b).toEqual([]);
+  });
+
+  it('reports a force or a graph that cannot be drawn', () => {
+    const withForce = (f: object) => el({ clips: { go: { phases: [{ dur: 1, forces: [{ on: 'b', name: 'Push', n: 0, ...f }] }] } } });
+    expect(checkMotion(withForce({ profile: [[0, 40]] }))[0]).toMatch(/distances that increase/);
+    expect(checkMotion(withForce({ profile: [[0, 40], [4, 40], [4, 0]] }))[0]).toMatch(/distances that increase/);
+    expect(checkMotion(withForce({ profile: points, resist: true }))[0]).toMatch(/is not friction or air resistance/);
+    expect(checkMotion({ ...withForce({ profile: points }), vertical: true }).join(' ')).toMatch(/acts on a straight track/);
+    expect(checkMotion({ ...eased, graph: { of: ['b'], seconds: 0, max: 50, y: 'force' } })[0]).toMatch(/length of its displacement axis/);
+    expect(checkMotion({ ...eased, graph: { of: ['b', 'b'], seconds: 0, max: 50, y: 'force', metres: 8 } })[0]).toMatch(/is of one body/);
+    expect(checkMotion({ ...eased, graph: { of: ['b'], seconds: 0, max: 50 } })[0]).toMatch(/length of its time axis/);
+  });
+});
+
+describe('motion: a spring', () => {
+  // A 0.5 kg block on a spring of 200 N/m, let go 0.1 m beyond the natural length: 1 J stored,
+  // and a period of 2π√(m ÷ k) = π ÷ 10 s.
+  const T = Math.PI / 10;
+  const sprung = el({
+    span: [0, 4],
+    bodies: [{ id: 'b', shape: 'block', mass: 0.5, x: 2.1, width: 0.4 }],
+    spring: { on: 'b', k: 200, rest: 2 },
+    energy: { max: 1.2, bars: ['elastic', 'kinetic', 'total'] },
+    graph: { of: ['b'], seconds: 0, max: 25, y: 'force', metres: 0.12 },
+    clips: { go: { phases: [{ dur: 2 }] }, hold: { phases: [{ dur: 1, freeze: true }] } },
+  });
+
+  it('is a valid motion', () => {
+    expect(checkMotion(sprung)).toEqual([]);
+  });
+
+  it('pulls back with k times the extension (Hooke\'s law)', () => {
+    const s = motionAt(sprung, [['hold', 1]]);
+    expect(s.forces).toEqual([expect.objectContaining({ on: 'b', name: SPRING, n: expect.closeTo(-20, 9) })]);
+    expect(s.energy.b.elastic).toBeCloseTo(1, 9);
+    expect(s.energy.b.kinetic).toBe(0);
+  });
+
+  it('is fastest at the natural length, where all the energy is kinetic', () => {
+    const s = motionAt(sprung, [['go', T / 4]]);
+    expect(s.bodies.b.x).toBeCloseTo(2, 4);
+    // ½ × 0.5 × v² = 1 J, so 2 m/s, back towards the wall.
+    expect(s.bodies.b.v).toBeCloseTo(-2, 3);
+    expect(s.energy.b.kinetic).toBeCloseTo(1, 3);
+    expect(s.energy.b.elastic).toBeCloseTo(0, 3);
+    // Its force has shrunk to nothing there.
+    expect(Math.abs(s.forces.find((f) => f.name === SPRING)?.n ?? 0)).toBeLessThan(0.01);
+  });
+
+  it('swings as far the other way, and comes back after one period', () => {
+    const half = motionAt(sprung, [['go', T / 2]]);
+    expect(half.bodies.b.x).toBeCloseTo(1.9, 4);
+    expect(half.forces.find((f) => f.name === SPRING)!.n).toBeCloseTo(20, 2);
+    const back = motionAt(sprung, [['go', T]]);
+    expect(back.bodies.b.x).toBeCloseTo(2.1, 4);
+    expect(back.bodies.b.v).toBeCloseTo(0, 2);
+  });
+
+  it('keeps the total of elastic and kinetic energy, and makes no heat', () => {
+    for (const t of [0.03, 0.11, 0.4, 1.3, 2]) {
+      const e = motionAt(sprung, [['go', t]]).energy.b;
+      expect(e.elastic + e.kinetic).toBeCloseTo(1, 4);
+      expect(e.heat).toBeCloseTo(0, 4);
+      expect(e.work).toBe(0);
+    }
+  });
+
+  it('keeps the size of its force against its extension for the graph', () => {
+    const { pull } = motionAt(sprung, [['go', T / 4]]);
+    expect(pull.b[0][0]).toBeCloseTo(0.1, 9);
+    expect(pull.b[0][1]).toBeCloseTo(20, 9);
+    for (const [x, n] of pull.b) expect(n).toBeCloseTo(200 * x, 6);
+  });
+
+  it('comes to rest where a steady pull equals kx, when something damps it', () => {
+    // The lesson's pull of 25 N on a spring of 250 N/m: 0.1 m, and 1.25 J stored.
+    const pulled = el({
+      span: [0, 4],
+      bodies: [{ id: 'b', shape: 'block', mass: 0.5, x: 2, width: 0.4 }],
+      spring: { on: 'b', k: 250, rest: 2 },
+      clips: { pull: { phases: [{ dur: 3, forces: [{ on: 'b', name: 'Pull', n: 25 }, { on: 'b', name: 'Damping', n: 0, drag: 22, hidden: true }] }] } },
+    });
+    expect(checkMotion(pulled)).toEqual([]);
+    const s = motionAt(pulled, [['pull', 3]]);
+    expect(s.bodies.b.x - 2).toBeCloseTo(0.1, 4);
+    expect(s.bodies.b.v).toBeCloseTo(0, 4);
+    expect(s.energy.b.elastic).toBeCloseTo(1.25, 3);
+    // The pull did 25 × 0.1 = 2.5 J: half is stored, and the damping took the other half.
+    expect(s.energy.b.work).toBeCloseTo(2.5, 3);
+    expect(s.energy.b.heat).toBeCloseTo(1.25, 3);
+  });
+
+  it('lets go of a body that is not tied to it, at the speed its energy gives', () => {
+    // A launcher of 500 N/m pressed in 0.1 m behind a 0.25 kg cart: 2.5 J, so √20 m/s.
+    const launcher = el({
+      span: [0, 6],
+      bodies: [{ id: 'b', shape: 'cart', mass: 0.25, x: 0.4, width: 0.24 }],
+      spring: { on: 'b', k: 500, rest: 0.5, loose: true },
+      energy: { max: 3, bars: ['elastic', 'kinetic'] },
+      clips: { go: { phases: [{ dur: 1 }] } },
+    });
+    expect(checkMotion(launcher)).toEqual([]);
+    expect(motionAt(launcher).energy.b.elastic).toBeCloseTo(2.5, 9);
+    const s = motionAt(launcher, [['go', 1]]);
+    expect(s.bodies.b.v).toBeCloseTo(Math.sqrt(20), 3);
+    expect(s.bodies.b.a).toBeCloseTo(0, 6);
+    expect(s.bodies.b.x).toBeGreaterThan(0.5);
+    expect(s.energy.b.elastic).toBe(0);
+    expect(s.energy.b.kinetic).toBeCloseTo(2.5, 3);
+    expect(s.forces).toEqual([]);
+  });
+
+  it('hangs over a drop, and settles where the spring holds the weight', () => {
+    // 1.5 kg on 117.72 N/m: mg ÷ k = 0.125 m below the natural length.
+    const weight = { on: 'm', name: 'Weight', n: 1.5 * 9.81 };
+    const hanging = el({
+      vertical: true,
+      span: [0, 0.4],
+      bodies: [{ id: 'm', shape: 'block', mass: 1.5, x: 0.1, width: 0.09 }],
+      spring: { on: 'm', k: 117.72, rest: 0.1, decimals: 3 },
+      clips: { down: { phases: [{ dur: 4, forces: [weight, { on: 'm', name: 'Damping', n: 0, drag: 12, hidden: true }] }] } },
+    });
+    expect(checkMotion(hanging)).toEqual([]);
+    const s = motionAt(hanging, [['down', 4]]);
+    expect(s.bodies.m.x - 0.1).toBeCloseTo(0.125, 4);
+    expect(s.bodies.m.v).toBeCloseTo(0, 4);
+    expect(s.forces.find((f) => f.name === SPRING)!.n).toBeCloseTo(-1.5 * 9.81, 3);
+  });
+
+  it('reports a spring that cannot be drawn', () => {
+    expect(checkMotion({ ...sprung, spring: { on: 'c', k: 200, rest: 2 } }).join(' ')).toMatch(/tied to no body "c"/);
+    expect(checkMotion({ ...sprung, spring: { on: 'b', k: 0, rest: 2 } }).join(' ')).toMatch(/spring constant above zero/);
+    expect(checkMotion({ ...sprung, spring: { on: 'b', k: 200, rest: 0.1 } }).join(' ')).toMatch(/room between the wall/);
+    expect(checkMotion({ ...sprung, graph: undefined, energy: undefined, vertical: 'up' }).join(' ')).toMatch(/hangs over a single drop/);
+    expect(checkMotion({ ...sprung, graph: undefined, lanes: [{}, {}] }).join(' ')).toMatch(/single straight track/);
+    expect(checkMotion({ ...sprung, spring: undefined, graph: undefined }).join(' ')).toMatch(/elastic energy needs a spring/);
   });
 });

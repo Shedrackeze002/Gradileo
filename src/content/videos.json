@@ -123759,5 +123759,405 @@
         "working": "Time to the top: $t = \\dfrac{14.7}{9.81} = 1.5\\ \\text{s}$. The trip down takes as long, so the time of flight is $3.0\\ \\text{s}$."
       }
     ]
+  },
+  "p20-2-1": {
+    "lessonId": "p20-2-1",
+    "title": "Forces and Free-Body Diagrams",
+    "duration": 305,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Four forces",
+        "t": 22.201
+      },
+      {
+        "title": "Finding the normal force",
+        "t": 86.181
+      },
+      {
+        "title": "Net force",
+        "t": 141.791
+      },
+      {
+        "title": "A steady velocity",
+        "t": 184.805
+      },
+      {
+        "title": "Your turn",
+        "t": 217.106
+      },
+      {
+        "title": "Summary",
+        "t": 267.887
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-2-1:q",
+        "t": 236.857,
+        "prompt": "A 15 kg box rests on a level floor. A rope pulls straight up on it with 40 N, which is not enough to lift it. Use $g = 9.81\\ \\text{m/s}^2$. What is the normal force on the box?",
+        "choices": [
+          "$187.2\\ \\text{N}$",
+          "$107.2\\ \\text{N}$",
+          "$147.2\\ \\text{N}$",
+          "$40\\ \\text{N}$"
+        ],
+        "answer": 1,
+        "working": "Weight: $15 \\times 9.81 = 147.15\\ \\text{N}$. The forces up balance the forces down: $F_N + 40 = 147.15$, so $F_N = 107.2\\ \\text{N}$."
+      }
+    ]
+  },
+  "p20-2-2": {
+    "lessonId": "p20-2-2",
+    "title": "Newton’s Laws of Motion",
+    "duration": 316,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The first law",
+        "t": 24.229
+      },
+      {
+        "title": "The second law",
+        "t": 60.557
+      },
+      {
+        "title": "The third law",
+        "t": 103.245
+      },
+      {
+        "title": "In a lift",
+        "t": 144.543
+      },
+      {
+        "title": "Your turn",
+        "t": 227.701
+      },
+      {
+        "title": "Summary",
+        "t": 281.048
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-2-2:q",
+        "t": 245.952,
+        "prompt": "A cable pulls upwards with a force of 1500 N on a 130 kg load. Use $g = 9.81\\ \\text{m/s}^2$. What is the acceleration of the load?",
+        "choices": [
+          "$11.5\\ \\text{m/s}^2$",
+          "$9.81\\ \\text{m/s}^2$",
+          "$21.3\\ \\text{m/s}^2$",
+          "$1.73\\ \\text{m/s}^2$"
+        ],
+        "answer": 3,
+        "working": "Weight: $130 \\times 9.81 = 1275.3\\ \\text{N}$. Net force: $1500 - 1275.3 = 224.7\\ \\text{N}$ upwards. $a = \\dfrac{224.7}{130} = 1.73\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p20-2-3": {
+    "lessonId": "p20-2-3",
+    "title": "Static and Kinetic Friction",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Static friction",
+        "t": 18.415
+      },
+      {
+        "title": "Kinetic friction",
+        "t": 90.409
+      },
+      {
+        "title": "Sliding to a stop",
+        "t": 151.828
+      },
+      {
+        "title": "Your turn",
+        "t": 193.262
+      },
+      {
+        "title": "Summary",
+        "t": 241.231
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-2-3:q",
+        "t": 212.742,
+        "prompt": "A 25 kg crate rests on a level floor. The coefficient of static friction is 0.4. Use $g = 9.81\\ \\text{m/s}^2$. What is the greatest static friction on the crate?",
+        "choices": [
+          "$98.1\\ \\text{N}$",
+          "$10\\ \\text{N}$",
+          "$245\\ \\text{N}$",
+          "$62.5\\ \\text{N}$"
+        ],
+        "answer": 0,
+        "working": "$F_N = mg = 25 \\times 9.81 = 245.25\\ \\text{N}$, so $F_{f,\\,\\text{max}} = \\mu_s F_N = 0.4 \\times 245.25 = 98.1\\ \\text{N}$."
+      }
+    ]
+  },
+  "p20-2-4": {
+    "lessonId": "p20-2-4",
+    "title": "Forces on an Inclined Plane",
+    "duration": 280,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Splitting the weight",
+        "t": 17.429
+      },
+      {
+        "title": "A steeper ramp",
+        "t": 84.03
+      },
+      {
+        "title": "Sliding without friction",
+        "t": 130.118
+      },
+      {
+        "title": "Sliding with friction",
+        "t": 161.989
+      },
+      {
+        "title": "Your turn",
+        "t": 203.428
+      },
+      {
+        "title": "Summary",
+        "t": 246.665
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-2-4:q",
+        "t": 219.815,
+        "prompt": "A block slides down a frictionless ramp inclined at 20° to the horizontal. Use $g = 9.81\\ \\text{m/s}^2$. What is its acceleration?",
+        "choices": [
+          "$9.22\\ \\text{m/s}^2$",
+          "$9.81\\ \\text{m/s}^2$",
+          "$3.36\\ \\text{m/s}^2$",
+          "$3.57\\ \\text{m/s}^2$"
+        ],
+        "answer": 2,
+        "working": "$a = g\\sin\\theta = 9.81 \\times \\sin 20^\\circ = 3.36\\ \\text{m/s}^2$. (The cosine gives 9.22, which is the part of $g$ into the ramp.)"
+      }
+    ]
+  },
+  "p20-2-5": {
+    "lessonId": "p20-2-5",
+    "title": "Connected Objects and Tension",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two blocks and a string",
+        "t": 25.981
+      },
+      {
+        "title": "Over a pulley",
+        "t": 95.677
+      },
+      {
+        "title": "Two hanging masses",
+        "t": 162.038
+      },
+      {
+        "title": "Your turn",
+        "t": 225.332
+      },
+      {
+        "title": "Summary",
+        "t": 273.345
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-2-5:q",
+        "t": 244.356,
+        "prompt": "A 4 kg block on a frictionless table is joined over a pulley to a hanging 1 kg mass. Use $g = 9.81\\ \\text{m/s}^2$. What is the acceleration of the masses?",
+        "choices": [
+          "$9.81\\ \\text{m/s}^2$",
+          "$1.96\\ \\text{m/s}^2$",
+          "$2.45\\ \\text{m/s}^2$",
+          "$7.85\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "The weight of the hanging mass speeds up both masses: $a = \\dfrac{1 \\times 9.81}{1 + 4} = 1.96\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p20-2-6": {
+    "lessonId": "p20-2-6",
+    "title": "Forces in Two Dimensions",
+    "duration": 362,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A force at an angle",
+        "t": 25.085
+      },
+      {
+        "title": "One direction at a time",
+        "t": 58.993
+      },
+      {
+        "title": "With friction",
+        "t": 111.762
+      },
+      {
+        "title": "Two forces at right angles",
+        "t": 156.914
+      },
+      {
+        "title": "Equilibrium",
+        "t": 209.141
+      },
+      {
+        "title": "Your turn",
+        "t": 278.08
+      },
+      {
+        "title": "Summary",
+        "t": 322.85
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-2-6:q",
+        "t": 293.143,
+        "prompt": "Two forces act on a 5 kg puck on frictionless ice: 6 N east and 8 N north. What is the size of its acceleration?",
+        "choices": [
+          "$2.8\\ \\text{m/s}^2$",
+          "$1.4\\ \\text{m/s}^2$",
+          "$10\\ \\text{m/s}^2$",
+          "$2\\ \\text{m/s}^2$"
+        ],
+        "answer": 3,
+        "working": "Net force: $\\sqrt{6^2 + 8^2} = \\sqrt{100} = 10\\ \\text{N}$. Then $a = \\dfrac{10}{5} = 2\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p20-2-7": {
+    "lessonId": "p20-2-7",
+    "title": "Universal Gravitation",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The law of gravitation",
+        "t": 22.072
+      },
+      {
+        "title": "A planet and a satellite",
+        "t": 81.983
+      },
+      {
+        "title": "The inverse square law",
+        "t": 145.447
+      },
+      {
+        "title": "Changing a mass as well",
+        "t": 183.73
+      },
+      {
+        "title": "Your turn",
+        "t": 221.275
+      },
+      {
+        "title": "Summary",
+        "t": 260.513
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-2-7:q",
+        "t": 236.213,
+        "prompt": "The gravitational force between two objects is 80 N. The distance between their centres is doubled, and the masses stay the same. What is the force now?",
+        "choices": [
+          "$20\\ \\text{N}$",
+          "$40\\ \\text{N}$",
+          "$160\\ \\text{N}$",
+          "$320\\ \\text{N}$"
+        ],
+        "answer": 0,
+        "working": "The force is proportional to $\\dfrac{1}{r^2}$, so doubling $r$ divides the force by $2^2 = 4$: $\\dfrac{80}{4} = 20\\ \\text{N}$."
+      }
+    ]
+  },
+  "p20-2-8": {
+    "lessonId": "p20-2-8",
+    "title": "Gravitational Field Strength",
+    "duration": 328,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The force on each kilogram",
+        "t": 24.432
+      },
+      {
+        "title": "Where g comes from",
+        "t": 95.315
+      },
+      {
+        "title": "Field strength and distance",
+        "t": 168.205
+      },
+      {
+        "title": "Your turn",
+        "t": 249.452
+      },
+      {
+        "title": "Summary",
+        "t": 292.007
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-2-8:q",
+        "t": 265.038,
+        "prompt": "At the surface of a planet, the gravitational field strength is 12 N/kg. What is the field strength at a height of one planet radius above the surface?",
+        "choices": [
+          "$6\\ \\text{N/kg}$",
+          "$12\\ \\text{N/kg}$",
+          "$3\\ \\text{N/kg}$",
+          "$4\\ \\text{N/kg}$"
+        ],
+        "answer": 2,
+        "working": "One radius above the surface is $1 + 1 = 2$ radii from the centre. The distance has doubled, so $g$ is divided by $2^2 = 4$: $\\dfrac{12}{4} = 3\\ \\text{N/kg}$."
+      }
+    ]
   }
 }

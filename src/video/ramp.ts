@@ -10,6 +10,12 @@
 import type { RampEl, RampForce, Tone } from './script.ts';
 
 export const RAMP_G = 9.81;
+/** The names of the forces a ramp works out, as they are written beside their arrows and in the table of work. */
+export const WEIGHT = 'Weight';
+export const NORMAL = 'Normal force';
+export const FRICTION = 'Friction';
+export const TENSION = 'Tension';
+export const NET_WORK = 'Net';
 
 /** A force on a body as it is drawn: its size in newtons and the way it points on the screen. */
 export interface RampArrow {
@@ -37,6 +43,13 @@ export interface RampBodyState {
   net: number;
   /** The normal force on a block, in newtons. */
   normal: number;
+  /** How far it has moved from where it started, in metres, signed like the velocity. */
+  moved: number;
+  /**
+   * The work each force has done on it so far, in joules, by the name of the force ("Weight",
+   * "Normal force", "Friction", "Tension" and the name of each push or pull), and `Net`, their sum.
+   */
+  work: Record<string, number>;
 }
 
 export interface RampState {
@@ -130,13 +143,20 @@ function solve(el: RampEl, chain: string[], angle: number, v: number, pushes: Ra
 }
 
 type Moving = Record<string, { x: number; v: number }>;
+type Works = Record<string, Record<string, number>>;
 
-/** Moves one chain through `dt` seconds with the surface at one angle: friction can stop it, and never turns it round. */
-function advance(el: RampEl, chain: string[], angle: number, now: Moving, pushes: RampForce[], dt: number): void {
+/**
+ * Moves one chain through `dt` seconds with the surface at one angle: friction can stop it, and
+ * never turns it round. The work of every force on each body is added to `works` as it goes:
+ * the part of the force along the motion, times the distance moved.
+ */
+function advance(el: RampEl, chain: string[], angle: number, now: Moving, pushes: RampForce[], dt: number, works: Works): void {
+  const g = el.g ?? RAMP_G;
+  const all = rampBodies(el);
   let left = dt;
   for (let turn = 0; turn < 4 && left > EPS; turn++) {
     const v = now[chain[0]].v;
-    const { a, friction } = solve(el, chain, angle, v, pushes);
+    const { a, friction, tension } = solve(el, chain, angle, v, pushes);
     const rubbing = friction.some((f) => Math.abs(f) > EPS);
     let h = left;
     let stops = false;
@@ -144,10 +164,20 @@ function advance(el: RampEl, chain: string[], angle: number, now: Moving, pushes
       h = -v / a;
       stops = true;
     }
-    for (const id of chain) {
+    const dx = v * h + 0.5 * a * h * h;
+    chain.forEach((id, i) => {
       const s = now[id];
-      now[id] = { x: s.x + v * h + 0.5 * a * h * h, v: stops ? 0 : v + a * h };
-    }
+      now[id] = { x: s.x + dx, v: stops ? 0 : v + a * h };
+      const m = all.find((b) => b.id === id)!;
+      const w = works[id];
+      const add = (name: string, along: number) => (w[name] = (w[name] ?? 0) + along * dx);
+      // A hanging body moves straight down, along its weight; a block's weight has a part down the surface.
+      add(WEIGHT, m.hangs ? m.mass * g : -m.mass * g * Math.sin(rad(angle)));
+      add(TENSION, (i < chain.length - 1 ? tension[i] : 0) - (i > 0 ? tension[i - 1] : 0));
+      if (m.hangs) return;
+      add(FRICTION, friction[i]);
+      for (const f of pushes) if (f.on === id) add(f.name, f.n * Math.cos(rad(f.angle ?? 0)));
+    });
     left -= h;
   }
 }
@@ -163,6 +193,9 @@ export function rampAt(el: RampEl, plays: Array<[clip: string, seconds: number]>
   let angle = el.angle;
   let time = 0;
   let marks: Record<string, number[]> = Object.fromEntries(ids.map((id) => [id, [now[id].x]]));
+  const origin = start(el);
+  const freshWorks = (): Works => Object.fromEntries(ids.map((id) => [id, {}]));
+  let works = freshWorks();
   let pushes: RampForce[] = [];
   let slow = 1;
   let note: string | null = null;
@@ -179,6 +212,7 @@ export function rampAt(el: RampEl, plays: Array<[clip: string, seconds: number]>
       time = 0;
       marks = Object.fromEntries(ids.map((id) => [id, [now[id].x]]));
       ages = new Map();
+      works = freshWorks();
     }
     let left = Math.max(0, seconds);
     for (const [pi, ph] of clip.phases.entries()) {
@@ -196,7 +230,7 @@ export function rampAt(el: RampEl, plays: Array<[clip: string, seconds: number]>
         const next = (Math.floor((time + done) / step + EPS) + 1) * step - time;
         const h = Math.min(dt, next, to === from ? Infinity : done + TILT_STEP) - done;
         const mid = from + ((to - from) * (done + h / 2)) / ph.dur;
-        for (const chain of groups) advance(el, chain, mid, now, pushes, h);
+        for (const chain of groups) advance(el, chain, mid, now, pushes, h, works);
         done += h;
         if (Math.abs(done - next) < EPS) for (const id of ids) marks[id].push(now[id].x);
       }
@@ -214,27 +248,33 @@ export function rampAt(el: RampEl, plays: Array<[clip: string, seconds: number]>
   const g = el.g ?? RAMP_G;
   const all = rampBodies(el);
   const bodies: RampState['bodies'] = {};
+  // Work to a millionth of a joule (many short steps leave a little noise), with the sum of them all.
+  const worked = (id: string): Record<string, number> => {
+    const w: Record<string, number> = Object.fromEntries(Object.entries(works[id]).map(([name, j]) => [name, Math.round(j * 1e6) / 1e6 + 0]));
+    return { ...w, [NORMAL]: 0, [NET_WORK]: Math.round(Object.values(works[id]).reduce((n, j) => n + j, 0) * 1e6) / 1e6 + 0 };
+  };
   for (const chain of groups) {
     const v = now[chain[0]].v;
     const s = solve(el, chain, angle, v, pushes);
     chain.forEach((id, i) => {
       const m = all.find((b) => b.id === id)!;
-      const forces: RampArrow[] = [{ kind: 'weight', name: 'Weight', n: m.mass * g, turn: -90 }];
+      const moved = tidy(now[id].x - origin[id].x);
+      const forces: RampArrow[] = [{ kind: 'weight', name: WEIGHT, n: m.mass * g, turn: -90 }];
       // A string pulls a block up the surface towards the pulley or the block ahead, and back
       // towards the block behind. It pulls the hanging body straight up.
       const ahead = i < chain.length - 1 ? s.tension[i] : 0;
       const behind = i > 0 ? s.tension[i - 1] : 0;
       if (m.hangs) {
         if (behind > EPS) forces.push({ kind: 'tension', name: 'Tension', n: behind, turn: 90 });
-        bodies[id] = { x: tidy(now[id].x), v: tidy(v), a: tidy(s.a), forces, net: tidy(m.mass * g - behind), normal: 0 };
+        bodies[id] = { x: tidy(now[id].x), v: tidy(v), a: tidy(s.a), forces, net: tidy(m.mass * g - behind), normal: 0, moved, work: worked(id) };
         return;
       }
-      if (s.normal[i] > EPS) forces.push({ kind: 'normal', name: 'Normal force', n: s.normal[i], turn: angle + 90 });
-      if (Math.abs(s.friction[i]) > EPS) forces.push({ kind: 'friction', name: 'Friction', n: Math.abs(s.friction[i]), turn: s.friction[i] > 0 ? angle : angle + 180 });
+      if (s.normal[i] > EPS) forces.push({ kind: 'normal', name: NORMAL, n: s.normal[i], turn: angle + 90 });
+      if (Math.abs(s.friction[i]) > EPS) forces.push({ kind: 'friction', name: FRICTION, n: Math.abs(s.friction[i]), turn: s.friction[i] > 0 ? angle : angle + 180 });
       for (const f of pushes) if (f.on === id && f.n > EPS) forces.push({ kind: 'applied', name: f.name, n: f.n, turn: angle + (f.angle ?? 0), tone: f.tone, age: ages.get(keyOf(f)) ?? 0 });
       if (ahead > EPS) forces.push({ kind: 'tension', name: 'Tension', n: ahead, turn: angle });
       if (behind > EPS) forces.push({ kind: 'tension', name: 'Tension', n: behind, turn: angle + 180 });
-      bodies[id] = { x: tidy(now[id].x), v: tidy(v), a: tidy(s.a), forces, net: tidy(s.drive[i] + s.friction[i] + ahead - behind), normal: tidy(s.normal[i]) };
+      bodies[id] = { x: tidy(now[id].x), v: tidy(v), a: tidy(s.a), forces, net: tidy(s.drive[i] + s.friction[i] + ahead - behind), normal: tidy(s.normal[i]), moved, work: worked(id) };
     });
   }
   return { angle: tidy(angle), bodies, time: tidy(time), marks, slow, note };

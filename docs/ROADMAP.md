@@ -1294,7 +1294,18 @@ items ship or decisions change.
        from two cables whose tensions grow as the cables flatten. `gravity`
        (`src/video/gravity.ts`) draws bodies in space with pulls and a field worked out from
        Newton's law, so the force falls to a quarter as a body is carried to twice the distance.
-     - Next: render Unit 2 and move it to Drive, then the videos of Units 3 and 4, then Grade 12
+     - Done (16 November 2026): the eight videos of Unit 2 are rendered and in Drive.
+     - Grade 11 videos, Unit 3 (16 November 2026): thirteen videos scripted for the seven lessons
+       of Circular Motion, Work and Energy (`p20-3-1` to `p20-3-7`; every lesson but the first has
+       two parts). A new `circle` element (`src/video/circle.ts`) shows uniform circular motion: a
+       ball on a string with its velocity along the tangent and its acceleration towards the
+       centre, a car on a bend held by friction, a vertical loop, and a string that breaks.
+       `gravity` gained orbits and thrown bodies (a satellite, Newton's cannon, a clock in
+       minutes or days). `motion` gained forces that change with distance and the
+       force-displacement graph whose area is the work, springs (Hooke's law, elastic energy, a
+       launcher, a mass hanging on a spring) and tall hills beside the thumbnail title. `ramp`
+       gained bars of the work each force does, for the work-energy theorem.
+     - Next: render Unit 3 and move it to Drive, then the videos of Unit 4, then Grade 12
        Physics (`phys-30`).
        `phys-sample-momentum` becomes the first video of Grade 12 Unit A and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.

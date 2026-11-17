@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkGravity, checkScript, type Explainer, type GravityEl } from './script.ts';
-import { attraction, BIG_G, fieldStrength, gravityAt, written } from './gravity.ts';
+import { attraction, BIG_G, fieldStrength, gravityAt, orbitalPeriod, orbitalSpeed, written } from './gravity.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 // The lesson's planet and satellite: 6.0 × 10²⁴ kg and 800 kg, with their centres 7.0 × 10⁶ m apart.
@@ -94,6 +94,96 @@ describe('universal gravitation', () => {
     expect(s.bodies.b.force.angle).toBe(180);
   });
 
+  it('keeps a satellite in a circular orbit, at the one speed for its radius', () => {
+    // The lesson's satellite: 7.56 × 10³ m/s, and once round in 5.82 × 10³ s (97 minutes).
+    expect(orbitalSpeed(6.0e24, 7.0e6)).toBeCloseTo(7561.2, 0);
+    expect(orbitalPeriod(6.0e24, 7.0e6)).toBeCloseTo(5816.9, 0);
+    const T = orbitalPeriod(6.0e24, 7.0e6);
+    const el = orbit({ bodies: [{ id: 'planet', mass: 6.0e24, x: 0, radius: 6.4e6 }, { id: 'sat', mass: 800, x: 7.0e6, orbit: true }], rate: T / 8, clips: { round: { phases: [{ dur: 8, fly: true }] }, wait: { phases: [{ dur: 2 }] } } });
+    // It starts moving up the picture, at right angles to the pull of the planet.
+    const start = gravityAt(el).bodies.sat;
+    expect(start.flying).toBe(true);
+    expect(start.v[0]).toBeCloseTo(0, 6);
+    expect(start.v[1]).toBeCloseTo(7561.2, 0);
+    expect(start.force.angle).toBe(180);
+    // A quarter of the way round it is above the planet, still as far from it and as fast.
+    const quarter = gravityAt(el, [['round', 2]]).bodies.sat;
+    expect(quarter.x / 7.0e6).toBeCloseTo(0, 4);
+    expect(quarter.y / 7.0e6).toBeCloseTo(1, 4);
+    expect(quarter.speed).toBeCloseTo(start.speed, 1);
+    expect(quarter.force.n).toBeCloseTo(attraction(6.0e24, 800, 7.0e6), 0);
+    // After one period it is back where it began, and has been round once.
+    const once = gravityAt(el, [['round', 8]]);
+    expect(once.time).toBeCloseTo(T, 6);
+    expect(once.bodies.sat.x / 7.0e6).toBeCloseTo(1, 4);
+    expect(once.bodies.sat.y / 7.0e6).toBeCloseTo(0, 3);
+    expect(once.bodies.sat.turns).toBeCloseTo(1, 3);
+    expect(once.bodies.sat.trail.length).toBeGreaterThan(20);
+    // Time stands still in a phase that does not let it run.
+    expect(gravityAt(el, [['round', 2], ['wait', 2]]).bodies.sat.y).toBeCloseTo(quarter.y, 3);
+  });
+
+  it('follows Kepler’s third law: four times the radius, eight times the period', () => {
+    expect(orbitalPeriod(6.0e24, 4 * 7.0e6) / orbitalPeriod(6.0e24, 7.0e6)).toBeCloseTo(8, 9);
+    expect(orbitalSpeed(6.0e24, 4 * 7.0e6) / orbitalSpeed(6.0e24, 7.0e6)).toBeCloseTo(0.5, 9);
+    const T = orbitalPeriod(6.0e24, 7.0e6);
+    const el = orbit({
+      bodies: [{ id: 'planet', mass: 6.0e24, x: 0, radius: 6.4e6 }, { id: 'inner', mass: 800, x: 7.0e6, orbit: true }, { id: 'outer', mass: 800, x: -28.0e6, orbit: true }],
+      rate: T,
+      clips: { go: { phases: [{ dur: 8, fly: true }] }, fast: { phases: [{ dur: 4, fly: true, rate: 2 * T }] } },
+    });
+    const s = gravityAt(el, [['go', 8]]).bodies;
+    expect(s.inner.turns).toBeCloseTo(8, 2);
+    expect(s.outer.turns).toBeCloseTo(1, 2);
+    expect(s.outer.x / 28.0e6).toBeCloseTo(-1, 3);
+    // A phase can run the clock at its own rate.
+    expect(gravityAt(el, [['fast', 4]]).bodies.inner.turns).toBeCloseTo(8, 2);
+  });
+
+  it('throws a ball from Newton’s mountain: too slow and it lands, fast enough and it orbits', () => {
+    const M = 5.97e24;
+    const top = 1.12 * R;
+    const round = orbitalSpeed(M, top);
+    const el: GravityEl = {
+      kind: 'gravity',
+      id: 's',
+      bodies: [{ id: 'earth', mass: M, x: 0, radius: R }, { id: 'ball', mass: 10, x: 0, y: top }],
+      view: [-2 * R, 2 * R, -2 * R, 2 * R],
+      mountain: 0.12 * R,
+      rate: 400,
+      clips: {
+        slow: { phases: [{ dur: 3, fly: true, launch: { ball: [4000, 0] } }] },
+        faster: { phases: [{ dur: 3, fly: true, launch: { ball: [6000, 0] } }] },
+        orbit: { phases: [{ dur: 15, fly: true, launch: { ball: [round, 0] } }] },
+      },
+    };
+    expect(checkGravity(el)).toEqual([]);
+    // Before it is thrown, the ball sits on the mountain top.
+    const rest = gravityAt(el).bodies.ball;
+    expect([rest.flying, rest.speed]).toEqual([false, 0]);
+    // Thrown at 4000 m/s it falls round to the right, and stops on the ground.
+    const down = gravityAt(el, [['slow', 3]]).bodies.ball;
+    expect(down.landed).toBe(true);
+    expect(down.flying).toBe(false);
+    expect(Math.hypot(down.x, down.y) / R).toBeCloseTo(1, 3);
+    expect(down.x).toBeGreaterThan(0);
+    // Faster, it lands farther round, and the first path stays as a ghost.
+    const second = gravityAt(el, [['slow', 3], ['faster', 3]]);
+    const far = second.bodies.ball;
+    expect(far.landed).toBe(true);
+    expect(Math.atan2(far.x, far.y)).toBeGreaterThan(Math.atan2(down.x, down.y));
+    expect(second.ghosts).toHaveLength(1);
+    // At the speed of a circular orbit it never comes down: after one period it is back at the mountain top.
+    const T = orbitalPeriod(M, top);
+    const up = gravityAt(el, [['slow', 3], ['faster', 3], ['orbit', T / 400]]);
+    expect(up.ghosts).toHaveLength(2);
+    expect(up.bodies.ball.landed).toBe(false);
+    expect(up.bodies.ball.flying).toBe(true);
+    expect(up.bodies.ball.x / top).toBeCloseTo(0, 3);
+    expect(up.bodies.ball.y / top).toBeCloseTo(1, 3);
+    expect(up.bodies.ball.speed).toBeCloseTo(round, 0);
+  });
+
   it('writes numbers as they are written in the lessons', () => {
     expect(written(144)).toEqual({ text: '144', power: null });
     expect(written(16)).toEqual({ text: '16', power: null });
@@ -120,6 +210,14 @@ describe('universal gravitation', () => {
     expect(checkGravity(orbit({ poster: 'fly' }))[0]).toMatch(/no clip "fly"/);
     expect(checkGravity(orbit({ clips: { go: { phases: [{ dur: 1, to: { moon: 3 } }] } } }))[0]).toMatch(/names no body "moon"/);
     expect(checkGravity(orbit({ clips: { go: { phases: [{ dur: 0, mass: { sat: -1 } }] } } }))).toHaveLength(2);
+    expect(checkGravity(orbit({ bodies: [{ id: 'a', mass: 1, x: 0, orbit: true }, { id: 'b', mass: 1, x: 1 }], clips: {} }))[0]).toMatch(/first body stays where it is/);
+    expect(checkGravity(orbit({ bodies: [{ id: 'a', mass: 1, x: 0 }, { id: 'b', mass: 1, x: 1, orbit: true, v: [0, 1] }], clips: {} }))[0]).toMatch(/an orbit and a velocity/);
+    expect(checkGravity(orbit({ rate: 0 }))[0]).toMatch(/rate must be above zero/);
+    expect(checkGravity(orbit({ clock: { unit: 'h', seconds: 0 } }))[0]).toMatch(/unit of the clock/);
+    expect(checkGravity(orbit({ mountain: 1e5, bodies: [{ id: 'a', mass: 1, x: 0 }, { id: 'b', mass: 1, x: 1 }], clips: {} }))[0]).toMatch(/a mountain needs/);
+    expect(checkGravity(orbit({ clips: { go: { phases: [{ dur: 1, fly: true, launch: { planet: [1, 0] } }] } } }))[0]).toMatch(/first body stays where it is/);
+    expect(checkGravity(orbit({ clips: { go: { phases: [{ dur: 1, fly: true, to: { sat: 9e6 } }] } } }))[0]).toMatch(/cannot carry a body while time runs/);
+    expect(checkGravity(orbit({ clips: { go: { phases: [{ dur: 1, fly: true, rate: -1 }] } } }))[0]).toMatch(/rate must be above zero/);
     expect(() => gravityAt(orbit(), [['fly', 1]])).toThrow(/no clip "fly"/);
   });
 
@@ -142,7 +240,7 @@ describe('universal gravitation', () => {
       ],
     };
     expect(checkScript(x)).toEqual([]);
-    expect(checkScript({ ...x, scenes: [{ ...x.scenes[0], lines: [{ say: 'No such part.', show: ['s', 's.orbit'] }] }] })[0]).toMatch(/gravity "s" has no part "orbit"/);
+    expect(checkScript({ ...x, scenes: [{ ...x.scenes[0], lines: [{ say: 'No such part.', show: ['s', 's.moon'] }] }] })[0]).toMatch(/gravity "s" has no part "moon"/);
     const tl = compile(x, { '0.0': 3, '0.1': 2, '0.2': 2 });
     const during = stateAt(tl, tl.lines[2].start + 2).els.s;
     expect(gravityAt(orbit(), during.plays).bodies.sat.x).toBeCloseTo(10.5e6, 3);

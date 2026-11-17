@@ -152,12 +152,16 @@ See `src/video/script.ts` for every element and option. In short:
   the velocities, so momentum is conserved by the forces, not typed in. Showing the element shows
   the tracks and bodies; its parts add `velocity`, `readout` (acceleration), `net` (net force),
   `strobe`, `clock`, `graph` (velocity against time, drawing itself, or distance against time
-  with `graph: { y: 'distance' }`), `distance` (how far each body has travelled, with its path
+  with `graph: { y: 'distance' }`, or the body's position on the ruler with `y: 'position'`; a
+  `min` below zero lets a velocity or a position go under the time axis, for a body that turns
+  round), `distance` (how far each body has travelled, with its path
   drawn leg by leg under a single track), `displacement` (an arrow under a single track from where
   the body started to where it is now, with its sign) and `bars` and `total` (momentum). The
   displacement's label sits beside its arrow, so leave about 300 px of track free on one side.
   `speedWord: true` writes "speed =" beside the velocity arrow, for videos that come before
-  velocity is taught. Before forces are taught, move bodies with the helpers in
+  velocity is taught. `plain: true` makes a sketch of it, not a measurement: no rulers, forces
+  named without their sizes, and balls that carry their label inside (two charges that repel or
+  attract). Before forces are taught, move bodies with the helpers in
   `src/content/phys10/videos/lib/track.ts` (`run`, `halt`, and `drive` and `brake`, forces that
   act without an arrow). `vertical: true` turns the track to point down the screen, for a drop: a
   body's `x` is then the distance it has fallen, each lane is a column with a ruler and the ground
@@ -168,12 +172,203 @@ See `src/video/script.ts` for every element and option. In short:
   agree to the nearest newton only after about seven times (mass ÷ drag) seconds: run the clip that
   long, with `slow: 0.5` (and a `note` saying so) to play a long fall twice as fast. A force with
   `hidden` acts without an arrow. A part of a motion can be hidden again while the motion stays
-  (`hide: 'sim.readout'`). Colours are fixed in every physics video: velocity green, net force and
+  (`hide: 'sim.readout'`). `vertical: 'up'` is a lift: a body's `x` is its height above the
+  ground, so weight is a negative force, and two forces the same way (weight and friction) are
+  drawn side by side; let the span run a little past the top of the lift, for the arrow over the
+  body. `path` is a curved track (`src/video/path.ts`, drawn by `stage/MotionPath.tsx`): a hill
+  through `points` (in metres across and up; it never overshoots them, so tops and valleys are
+  where you put them, and two points make a straight ramp) or a pendulum (`swing`, a length and
+  the largest angle). A body's `x` is then its distance along the track, gravity (`g`) pulls it
+  along the slope, and a force acts along the track; the parts are `velocity`, `height`,
+  `energy`, `total` and `clock`. `energy` adds energy bars, measured from the motion itself:
+  `work` (done by the forces that push or lift; the force named "Weight" is gravity and is not
+  counted), `kinetic`, `potential` (m × g × height: on a path, or in a drop or a lift with `g`
+  given), `heat` (what friction and air resistance have taken) and `total`, which comes in with
+  its own part (`sim.total`). `max` is the largest energy a bar must hold; `names` renames a bar
+  ("Energy supplied") and `labels` names each body when several are listed in `of`. The bars sit
+  under a track or a hill and beside a drop, a lift or a pendulum. A bar whose `max` is 100 J or
+  more is written in whole joules, and a large one in kilojoules, so choose numbers whose total
+  does not sit on a rounding boundary (151.15 kJ flickers between 151.1 and 151.2).
+  A force with a `profile` changes as the body moves: its size at distances from where the body
+  started, as `[metres, newtons]` points joined by straight lines. The work it does is the area
+  under those points, and `graph: { y: 'force', metres: … }` draws the force-displacement graph
+  of one body, which fills in as the body moves with the work done so far written over it (`area`
+  renames it). `spring` puts a spring between the wall at the left end of a single straight track
+  and one body (`k` in newtons per metre, and `rest`, where the centre of the body is at the
+  natural length). It obeys Hooke's law in every phase without being listed among the forces: it
+  is drawn as a coil with its force as a violet arrow named "Spring", the part `extension` writes
+  x under the track, the energy bar `elastic` is ½kx², and the force graph plots its force
+  against its extension. `loose: true` is a launcher: it pushes while it is compressed and lets
+  go of the body at the natural length. With `vertical: true` the spring hangs from a beam over a
+  drop, and `rest` is how far down the foot of the body is at the natural length; the body then
+  settles mg ÷ k lower. A spring on its own swings for ever, so to bring a body to rest where the
+  forces balance, add a hidden force with `drag` (the lesson's numbers are not changed by it).
+  Hold a body against a spring with a force towards the wall; it is drawn above the coil. To stop a motion at a moment
+  worth talking about (the top of a hill, the bottom of a swing), end the clip there: find the
+  time with a few lines of `motionAt` in a scratch file. A hill takes its scale from the smaller
+  of the room across and the room above the bars, so a low wide hill needs a tall element (about
+  440 px with three bars), and a hill with four bars fits best on the left of a split scene. A
+  hill that is tall for its width is drawn beside the title on the thumbnail. The note of a phase
+  ("Slow motion") sits at the top centre of the picture: give the element about 440 px of height
+  so that a velocity label does not pass under it. Colours are fixed in every physics video: velocity green, net force and
   total momentum yellow, friction red, an applied force orange, weight pink, the normal force
-  blue, displacement violet, and the path travelled pale grey.
+  blue, displacement violet, and the path travelled pale grey; in the energy bars, kinetic
+  energy is green like velocity, potential energy pink like weight, work orange like an applied
+  force, heat red like friction, and the total yellow.
   Check a motion part way through with `--stills --quick --at 48.5,51` (times in seconds).
   The owner asked (14 November 2026) that science videos show the idea happening, not narrate
   over still slides: in physics, every scene that describes motion or a force plays it.
+
+- `wave` (`src/video/wave.ts`) is for travelling waves. Each lane is a strip with a source at its
+  left end, and everything comes from one rule: a place does what the source did the travel time
+  ago. A `transverse` lane is a rope whose beads move up and down; a `longitudinal` lane is a tube
+  of particles that move back and forth and crowd into compressions. A lane has a `frequency`
+  (hertz), an `amplitude` and a `speed` (metres per second), so its wavelength is the speed ÷ the
+  frequency; `full: true` fills the strip from the start, and otherwise the wave runs in from the
+  source. The waves move only while a clip plays, and stand still between clips, to be measured.
+  A phase can `set` a lane's frequency or amplitude, and the change travels in from the source
+  (a higher frequency arrives as a shorter wavelength); `slow` plays it in slow motion.
+  `reflect: true` bounces the wave back from the right end, for an echo (send a short burst by
+  setting the amplitude to 0 after a moment). Showing the element shows the strips; the parts are
+  `particle` (one marked point, at `mark`, and the line it keeps to), `amplitude`, `wavelength`,
+  `count` (a post at the mark and the complete waves that have passed it), `speed`, `frequency`,
+  `front` (the front of a wave that started at the source, and how far it has travelled),
+  `labels` (crest and trough, or compression and rarefaction) and `clock`. Show the measures on
+  a wave that is standing still: on a moving wave they jump from crest to crest. `values: false`
+  leaves the numbers off, for a picture that is not to scale (the electromagnetic spectrum), and
+  `ruler: false` leaves out the ruler. Lanes of one kind share a scale, so a louder sound looks
+  larger beside a quieter one.
+
+- `flight` (`src/video/flight.ts`) is for motion in two dimensions, drawn to one scale so that
+  every angle on screen is the true one. Give the `view` (left, right, bottom, top), the bodies
+  (each with where it starts, `at`, and its starting velocity, `v`) and the clips, whose phases
+  can `set` a velocity, `freeze`, play in slow motion or `stop` a body where it is. There are
+  three scenes. `ground` (the default) has a ground line with a ruler; with `gravity` a body in
+  flight keeps its horizontal velocity, gains g of downward velocity each second and stops where
+  it lands, a phase can `release` a body held at rest, and a `ledge` gives it somewhere to start
+  from. `river` has water between two banks; with a `stream` every body moves with its own
+  velocity plus the stream's (a boat points the way it is steered, not the way it travels), and
+  streaks drift with the current. `map` has a grid and a compass, for displacements. The parts
+  are `velocity` (green), `components` (its horizontal part blue and its vertical part orange,
+  each changing on its own), `own` (in a stream: the body's own velocity in blue and the
+  stream's in pink, head to tail, so that the green velocity closes the triangle), `trail`,
+  `strobe`, `shadows` (a mark that follows the body along the ground and one that follows it up
+  the wall, to take the two motions apart), `displacement` (purple, from where the body started),
+  `legs` (the two parts of the displacement), `angle`, `readout` (the numbers for the arrows
+  shown, in a column kept by giving `readout: {}`) and `clock`. To read the arrows of a
+  projectile as it lands, end the clip a moment before the landing time (`landingTime`), since
+  a body that has landed is at rest. Arrows that point down from a body near the ground need
+  room under the picture (`below`). A river has a ruler along its bank when `tick` is given.
+
+- `ramp` (`src/video/ramp.ts`) is for blocks on a surface, level or tilted: a box pushed across a
+  floor with friction, a block on an inclined plane, blocks tied by strings, a block pulled by a
+  body that hangs over a pulley (`hanging`), or two hanging bodies (a surface at 90 degrees, which
+  is not drawn). Give the `angle` and `length` of the surface, the bodies (each with a mass and
+  where it starts, `x`), the coefficients of `friction` (static, then kinetic) and the clips.
+  A phase gives only the pushes and pulls (`forces`, each `on` a body, with an `angle` from the
+  surface when it slants); the weight, the normal force, static or kinetic friction, every
+  tension and the motion are worked out from them, so the arrows always agree with the numbers of
+  the lesson. A phase can also `freeze` (to name the forces before anything moves), play in slow
+  motion, `set` a velocity or `tilt` the surface steadily (a block that stays put until the slope
+  is steep enough). The parts are `weight`, `normal`, `friction`, `tension`, `components` (the two
+  dashed parts of the weight on a slope, and of a push at an angle), `net`, `velocity`, `readout`
+  (the acceleration), `clock`, `strobe`, `distance` (an arrow along the surface from where the
+  block started, with the metres moved) and `work`. `work: { rows, range }` adds bars of the work
+  each force has done on one block, measured as the block moves: the part of the force along the
+  motion times the distance, so friction's bar grows to the left of zero, the normal force stays
+  at nothing, and "Net" (their sum) is the kinetic energy gained. `rows` names the forces in
+  order ("Weight", "Normal force", "Friction", "Tension", the name of a push or a pull, "Net")
+  and `range` is the least and the greatest work a bar must hold. The bars take room under the
+  picture, so a ramp with long arrows and bars goes on the left of a split scene with a larger
+  `pad` and a smaller `forceScale`. `balanced` lists blocks whose weight and normal force
+  are never drawn, `raise` stands the surface on a table, and `g` moves the block to another
+  world. The picture takes its scale from the room left by `pad` (pixels kept clear above the
+  surface and under the ground): long arrows need a larger pad or a smaller `forceScale`, and when
+  the labels of the weight and the normal force crowd a moving block, hide those two parts as it
+  goes.
+
+- `forces` (`src/video/forces.ts`) is for one object with forces that point any way in a plane.
+  Without `cables` it is seen from above on frictionless ice: the forces of the phase being played
+  (each with a size and an `angle` anticlockwise from east) are drawn from its middle, they add
+  to a net force, and it moves off along that force. With `cables` it hangs at rest from two
+  cables at those angles above the horizontal: the weight is known, the two tensions are worked
+  out from the angles, and they change as a phase tilts the cables (flatter cables, larger
+  tensions). The parts are `components` (the two dashed parts of every slanted force, head to
+  tail), `net` (with its size and its angle), `velocity`, `readout` (the speed and the
+  acceleration, as numbers), `trail` and `clock`, and for a hung object `weight`, `tension` and
+  `angles`. Beside a slanted push, show `readout` and not `velocity`: the velocity arrow lies
+  along the net force and crosses its label.
+
+- `gravity` (`src/video/gravity.ts`) is for bodies in space that attract one another: universal
+  gravitation, gravitational fields and, later, orbits. Give the `view` in metres (left, right,
+  bottom, top) and the bodies, in kilograms and metres; a body with a `radius` is a planet drawn
+  to scale, and one without is a small ball. Every force and field strength is worked out from
+  Newton's law with G = 6.67 × 10⁻¹¹ N·m²/kg², and follows as a clip carries a body somewhere
+  else (`to`) or changes its mass (`mass`), so the inverse square law is seen and not only said.
+  The parts are `force` (the pull on each body; the two pulls of a pair are always the same
+  length), `distance` (r, between the centres of the first two bodies), `radius` and `height`
+  (of the first body, and of the second above its surface), `field` (arrows of the first body's
+  field, shorter where it is weaker) and `g` (the field strength where each other body is).
+  `pulls` limits which bodies get an arrow, `notation: 'sci'` writes every force in scientific
+  notation, `figures` sets the significant figures of a distance, and `unit` writes distances in
+  another unit (`{ metres: 6.37e6, symbol: '× Earth radius' }`). To make a pair attract with a
+  round number of newtons, work one mass out from the other in the script. Bodies can also move
+  freely under gravity while a phase lets time run (`fly: true`, at `rate` seconds of motion for
+  each second of video): a body with `orbit: true` starts in a circular orbit round the first
+  body at the speed √(GM ÷ r), which is worked out; a body with a velocity `v`, or one that a
+  phase throws (`launch: { ball: [right, up] }`), falls until it lands on a planet or goes round
+  it, and the path of an earlier throw stays on the picture, faded, to compare. `mountain` puts a
+  mountain on the first body to throw from (Newton's cannon). The parts for these are `velocity`,
+  `trail`, `orbit` (the circle of each orbit), `clock` (in the unit given by `clock`, such as
+  minutes or days) and `turns` (the orbits completed). A view more than about
+  2.4 times as wide as it is tall is drawn under the title on the thumbnail, and a square one
+  beside it.
+
+- `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
+  seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
+  on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as
+  it falls. Give each body its mass, the radius `r` of its circle and its `speed` (or its
+  `period`); the centripetal acceleration v² ÷ r and the forces are worked out from them. `by`
+  says what turns the bodies: a `string` (tension, and the string is drawn), `friction` (a car on
+  a road, `shape: 'car'`) or a `track` (the normal force of a loop). A phase can change a speed
+  steadily (`speed`), play in slow motion, `freeze`, or `release` a body (the string breaks, the
+  tyres lose their grip), which then carries on in a straight line along the tangent. The parts
+  are `velocity` (green, along the tangent), `accel` (towards the centre), `force` (the real
+  forces: the one named by `by` and, in a vertical circle, the weight), `net`, `radius`,
+  `tangent`, `trail`, `strobe` (marks every eighth of a turn, with their arrows), `readout` (the
+  speed and the acceleration as numbers), `period`, `meter` (the force needed beside the greatest
+  the string or the road can give, `limit`), `clock` and `turns`. `disc` draws a turning platform
+  under the bodies (a roundabout), and `shift` moves the centre sideways to leave room for a body
+  that is let go.
+
+- `rays` (`src/video/rays.ts`) is for light meeting a surface: a `mirror`, where the angle of
+  reflection equals the angle of incidence, or a `boundary` between two materials with their
+  `speeds`, where the angle of refraction follows from them (the slower material is shaded). A
+  clip turns the incoming ray (`to`, in degrees from the normal) and the outgoing ray follows;
+  the sizes of the angles are written at the edges, where they can be read while the ray turns.
+  The parts are `normal`, `angles`, `toSurface` (the angle to the surface, which is not the angle
+  of incidence), `fronts` (a wide beam whose wavefronts march while a clip plays, closer together
+  where the wave is slower, each front in one piece across the boundary) and, on a mirror with
+  `behind: true`, `image` (the lamp's image, as far behind the mirror as the lamp is in front).
+  Light is yellow, the angle of incidence blue, reflection orange and refraction pink.
+
+- `circuit` (`src/video/circuit.ts`) is for electricity: a battery of `volts`, a switch, and up to
+  four `parts` (each a `lamp` or a `resistor` with its `ohms`), in one loop (`layout: 'series'`)
+  or each on its own branch across the supply (`'parallel'`). Nothing is typed in: the currents,
+  voltages and powers follow from the supply voltage and the resistances, so the readings on
+  screen are right by construction, and a lamp glows with the power it gets (`bright` sets the
+  power of a fully bright lamp, when two circuits are compared). The charges drawn on the wires
+  move only while a clip plays, at a speed in proportion to the current where they are, so they
+  split at a junction and speed up when the current rises. A phase can `set` the switch
+  (`closed`), the supply (`volts`), a resistance (`ohms`) or the components that have failed
+  (`broken`); `open: true` starts with the switch open. The parts are `charges`, `energy` (the
+  charges are bright where they still carry energy and dim once they have given it up), `arrows`
+  (the direction of conventional current; with `carriers: 'electrons'` the charges are electrons
+  drifting the other way), `current` (ammeters and their readings), `voltage` (in a loop, a
+  voltmeter across each component), `power`, `charge` (a counter of the charge passed, for
+  Q = It), `transferred` (a counter of the energy transferred, for E = Pt) and `clock`. To compare
+  two circuits, put one on each side of a `split` scene with `leftWidth: 544`. Charge and
+  current are yellow, electrons blue, voltage pink and power orange.
 
 - `particles` (`src/video/particles.ts`) is for chemistry: boxes of particles that really move.
   Each box is a small simulation in which the particles pull on their neighbours and push apart up
@@ -427,7 +622,7 @@ player. `video/tools/drive-upload.ts gradileo-intro` puts it in `Gradileo videos
    350 to 450 words makes about four minutes). Check the scripts with
    `npx vitest run src/video/scripts.test.ts -t "<id prefix>"`.
 2. Check the layouts: `npx tsx video/build.ts <ids> --stills --quick` (in a cloud session, set
-   `CHROMIUM_PATH=/opt/pw-browsers/chromium-1194/chrome-linux/chrome` and `NODE_USE_ENV_PROXY=1`),
+   `CHROMIUM_PATH=$(ls /opt/pw-browsers/chromium-*/chrome-linux*/chrome | head -1)` and `NODE_USE_ENV_PROXY=1`),
    then `python3 video/tools/contact-sheet.py sheet.png <ids>` and look at every still: no clipped
    maths, overlapping labels or cut-off questions.
 3. Render unit by unit: `video/tools/render-units.sh <course dir> <unit id>...` (for example
