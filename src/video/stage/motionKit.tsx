@@ -80,15 +80,15 @@ export function Clock({ w, time, opacity, unit = 's' }: { w: number; time: numbe
 /**
  * The complete oscillations counted so far, in a pill: at the top left of a wide picture, or
  * (`under`, the width of the picture) under the clock at the top right of a narrow one, which
- * leaves the top left to the note of a phase.
+ * leaves the top left to the note of a phase. A pendulum's are called swings (`word`).
  */
-export function Count({ n, opacity, under }: { n: number; opacity: number; under?: number }) {
+export function Count({ n, opacity, under, word = 'Oscillations' }: { n: number; opacity: number; under?: number; word?: string }) {
   const [x, y] = under === undefined ? [0, 0] : [under - 200, 46];
   return (
     <g opacity={opacity}>
       <rect x={x} y={y} width={200} height={38} rx={19} fill="rgb(255 255 255 / 0.07)" stroke="rgb(255 255 255 / 0.14)" />
       <Text x={x + 100} y={y + 19.5} size={19} color={INK2}>
-        {`Oscillations: ${n}`}
+        {`${word}: ${n}`}
       </Text>
     </g>
   );

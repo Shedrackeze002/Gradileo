@@ -329,7 +329,7 @@ export interface MotionClip {
 }
 
 /** What a motion element can show over its bodies; each is a part ("sim.velocity"). */
-export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height', 'extension', 'amplitude', 'count'] as const;
+export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height', 'extension', 'amplitude', 'count', 'restoring', 'length'] as const;
 
 /**
  * An energy bar of a motion element: the work done on the body by the forces pushing or lifting
@@ -416,7 +416,10 @@ export interface MotionEl {
    * A curved track instead of a straight one: a hill through given points, or the arc of a
    * pendulum. A body's `x` is then its distance along the track in metres (from the left end of a
    * hill, or from the lowest point of a pendulum's swing), and gravity pulls it along the slope.
-   * One lane; the parts are `velocity`, `energy`, `total`, `height` and `clock`.
+   * One lane; the parts are `velocity`, `energy`, `total`, `height`, `clock` and `count` (the
+   * complete swings so far), and for a pendulum `length` (the length of its string, written beside
+   * it) and `restoring` (the weight of the bob, and the part of it along the swing that pulls the
+   * bob back: `forceScale` is the pixels to a newton).
    */
   path?: MotionPath;
   /**

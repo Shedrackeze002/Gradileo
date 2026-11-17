@@ -223,6 +223,9 @@ function tallHill(el: MotionEl): boolean {
   return across / Math.max(up, 1e-6) < 3;
 }
 
+/** Whether a motion is a pendulum with a narrow swing, which is taller than it is wide: it sits beside the title too. */
+const tallSwing = (el: MotionEl) => Boolean(el.path && 'swing' in el.path && 2 * Math.sin((el.path.swing.angle * Math.PI) / 180) < 1.5);
+
 /** Whether a motion is a mass hung on a spring, with no graph beside it: it is tall, so it sits beside the title too. */
 const hungMass = (el: MotionEl) => Boolean(el.vertical) && el.equilibrium !== undefined && !el.graph;
 
@@ -235,7 +238,7 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig) && !hungMass(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || (fig?.kind === 'gravity' && flatSpace(fig));
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig) && !hungMass(fig) && !tallSwing(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || (fig?.kind === 'gravity' && flatSpace(fig));
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
@@ -303,6 +306,9 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             <CircleThumb el={fig} w={500} h={470} />
           ) : fig.kind === 'gravity' ? (
             <GravityThumb el={fig} w={500} h={430} />
+          ) : fig.kind === 'motion' && tallSwing(fig) ? (
+            // A pendulum, part way through its poster clip, with its length and what pulls its bob back (or how fast the bob is moving).
+            <MotionView el={{ ...fig, energy: undefined, lanes: undefined, clips: withoutNotes(fig.clips) }} st={{ ...FULL, parts: fig.forceScale ? { length: 1, restoring: 1 } : { length: 1, velocity: 1 } }} w={500} h={470} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
           ) : fig.kind === 'motion' && hungMass(fig) ? (
             // A mass hung on a spring, part way through its poster clip, with its amplitude marked.
             <MotionView el={{ ...fig, energy: undefined, lanes: undefined, clips: withoutNotes(fig.clips) }} st={{ ...FULL, parts: { amplitude: 1 } }} w={440} h={500} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
