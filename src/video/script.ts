@@ -1635,7 +1635,7 @@ export function checkParticles(e: ParticlesEl): string[] {
   if (ids.size !== e.boxes.length) problems.push('two boxes share an id.');
   for (const b of e.boxes) {
     if ((PARTICLE_PARTS as readonly string[]).includes(b.id)) problems.push(`box id "${b.id}" is the name of a part.`);
-    if (b.lid !== undefined && !(b.lid > 0.2 && b.lid <= 1)) problems.push(`box "${b.id}": a lid must be between 0.2 and 1.`);
+    if (b.lid !== undefined && !(b.lid >= 0.2 && b.lid <= 1)) problems.push(`box "${b.id}": a lid must be between 0.2 and 1.`);
     const n = (b.kinds ? b.kinds.reduce((s, k) => s + k.n, 0) : (b.n ?? 30)) + (b.molecules ?? []).reduce((s, m) => s + m.n * m.atoms.length, 0);
     if (n > 120) problems.push(`box "${b.id}" has ${n} particles; keep it to 120 so frames draw quickly.`);
     if (b.follow !== undefined && !(b.follow >= 0 && b.follow < n)) problems.push(`box "${b.id}" follows a particle it does not have.`);
@@ -1678,7 +1678,7 @@ export function checkParticles(e: ParticlesEl): string[] {
       for (const id of Object.keys(ph.add ?? {})) if (!e.boxes.find((b) => b.id === id)?.reserve?.length) problems.push(`clip "${name}", phase ${pi + 1} pours into box "${id}", which has no burette (\`reserve\`).`);
       for (const id of Object.keys(ph.run ?? {})) if (!e.boxes.find((b) => b.id === id)?.paper) problems.push(`clip "${name}", phase ${pi + 1} runs solvent up box "${id}", which is not paper.`);
       for (const id of [...Object.keys(ph.heat ?? {}), ...Object.keys(ph.lid ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
-      for (const v of Object.values(ph.lid ?? {})) if (!(v > 0.2 && v <= 1)) problems.push(`clip "${name}", phase ${pi + 1}: a lid must be between 0.2 and 1.`);
+      for (const v of Object.values(ph.lid ?? {})) if (!(v >= 0.2 && v <= 1)) problems.push(`clip "${name}", phase ${pi + 1}: a lid must be between 0.2 and 1.`);
     });
   }
   return problems;
