@@ -1,11 +1,12 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type AtomsEl, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type ForcesEl, type GravityEl, type MotionEl, type ParticlesEl, type RampEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
+import { BRAND, type AtomsEl, type CircleEl, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type ForcesEl, type GravityEl, type MotionEl, type ParticlesEl, type RampEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
 import { fastest, flightAt } from '../flight.ts';
 import { clipSeconds, type ElState, type FrameState } from '../timeline.ts';
 import { CircuitView } from './Circuit.tsx';
 import { FlightView } from './Flight.tsx';
 import { AtomsView } from './Atoms.tsx';
 import { heaviest, RampView } from './Ramp.tsx';
+import { CircleView } from './Circle.tsx';
 import { ForcesView } from './Forces.tsx';
 import { GravityView } from './Gravity.tsx';
 import { DiagramView } from './Diagram.tsx';
@@ -78,6 +79,8 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <ForcesView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'gravity':
       return <GravityView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
+    case 'circle':
+      return <CircleView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'rays':
       return <RaysView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
     case 'wave':
@@ -186,11 +189,22 @@ function ForcesThumb({ el, w, h }: { el: ForcesEl; w: number; h: number }) {
   return <ForcesView el={{ ...el, label: undefined, clips }} st={{ ...FULL, parts: { net: 1, trail: 1, weight: 1, tension: 1, angles: 1 } }} w={w} h={h} plays={plays} />;
 }
 
-/** Bodies in space on a thumbnail: part way through the poster clip, with the pull on each body and the field of the first. */
+/** Bodies in space on a thumbnail: part way through the poster clip, with the pull on each body and the field of the first, or the paths of bodies that fly. */
 function GravityThumb({ el, w, h }: { el: GravityEl; w: number; h: number }) {
+  // Bodies that fly (in orbit, or thrown) are shown with their paths: the clips before the poster are played through first, so the earlier throws are there too.
+  const flies = el.bodies.some((b) => b.orbit || b.v) || Object.values(el.clips).some((c) => c.phases.some((ph) => ph.launch));
+  const names = Object.keys(el.clips);
+  const before: Array<[string, number]> = flies && el.poster ? names.slice(0, names.indexOf(el.poster)).map((name) => [name, clipSeconds(el, name)]) : [];
+  const plays: Array<[string, number]> = el.poster ? [...before, [el.poster, clipSeconds(el, el.poster) * 0.7]] : [];
+  const clips = Object.fromEntries(Object.entries(el.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }]));
+  return <GravityView el={{ ...el, label: undefined, clips }} st={{ ...FULL, parts: flies ? { force: 1, trail: 1, velocity: 1, orbit: 1 } : { force: 1, field: 1 } }} w={w} h={h} plays={plays} />;
+}
+
+/** Bodies on a circle on a thumbnail: part way through the poster clip, with the velocity and what turns each body, and no notes. */
+function CircleThumb({ el, w, h }: { el: CircleEl; w: number; h: number }) {
   const plays: Array<[string, number]> = el.poster ? [[el.poster, clipSeconds(el, el.poster) * 0.7]] : [];
   const clips = Object.fromEntries(Object.entries(el.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }]));
-  return <GravityView el={{ ...el, label: undefined, clips }} st={{ ...FULL, parts: { force: 1, field: 1 } }} w={w} h={h} plays={plays} />;
+  return <CircleView el={{ ...el, label: undefined, shift: 0, clips }} st={{ ...FULL, parts: { velocity: 1, strobe: 1, ...(el.by ? { force: 1 } : { accel: 1 }) } }} w={w} h={h} plays={plays} thumb />;
 }
 
 /** Whether a flight's view is wide and flat (a projectile over level ground) and not tall (a river to cross). */
@@ -199,14 +213,24 @@ const flatFlight = (el: FlightEl) => (el.view[1] - el.view[0]) / (el.view[3] - e
 /** Whether a view of space is wide and flat (a planet and its satellite side by side). */
 const flatSpace = (el: GravityEl) => (el.view[1] - el.view[0]) / (el.view[3] - el.view[2]) > 2.4;
 
+/** Whether a motion is along a hill that is tall for its width (a roller coaster): it sits beside the title, not under it. */
+function tallHill(el: MotionEl): boolean {
+  if (!el.path || !('points' in el.path)) return false;
+  const pts = el.path.points;
+  const across = Math.max(...pts.map((q) => q[0])) - Math.min(...pts.map((q) => q[0]));
+  // A hill stands on the level its heights are measured from.
+  const up = Math.max(...pts.map((q) => q[1]), 0) - Math.min(...pts.map((q) => q[1]), 0);
+  return across / Math.max(up, 1e-6) < 3;
+}
+
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'circle';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
   const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || fig?.kind === 'motion' || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || (fig?.kind === 'gravity' && flatSpace(fig));
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || (fig?.kind === 'gravity' && flatSpace(fig));
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
@@ -269,8 +293,13 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             <RampThumb el={fig} w={560} h={470} />
           ) : fig.kind === 'forces' ? (
             <ForcesThumb el={fig} w={560} h={470} />
+          ) : fig.kind === 'circle' ? (
+            <CircleThumb el={fig} w={500} h={470} />
           ) : fig.kind === 'gravity' ? (
-            <GravityThumb el={fig} w={560} h={470} />
+            <GravityThumb el={fig} w={500} h={430} />
+          ) : fig.kind === 'motion' ? (
+            // A tall hill, part way through its poster clip, with the speed and the height of its car.
+            <MotionView el={{ ...fig, energy: undefined, clips: withoutNotes(fig.clips) }} st={{ ...FULL, parts: { velocity: 1, height: 1 } }} w={540} h={470} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
           ) : fig.kind === 'similar' ? (
             <SimilarView el={fig} st={FULL} w={500} h={480} />
           ) : null}

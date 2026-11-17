@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkRamp, checkScript, type Explainer, type RampEl } from './script.ts';
-import { chains, rampAt } from './ramp.ts';
+import { chains, FRICTION, NET_WORK, NORMAL, rampAt, TENSION, WEIGHT } from './ramp.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 const G = 9.81;
@@ -213,6 +213,128 @@ describe('ramp: strings and a pulley', () => {
     expect(s.bodies.light.normal).toBe(0);
     expect(force(atwood, [['go', 1]], 'light', 'tension')[0].n).toBeCloseTo(3 * (G + (2 * G) / 8));
     expect(force(atwood, [['go', 1]], 'light', 'normal')).toEqual([]);
+  });
+});
+
+describe('ramp: the work of each force', () => {
+  // A 20 kg box pushed with 70 N along a floor where kinetic friction is 0.25 × 20 × 9.81 = 49.05 N.
+  const pushed = floor({
+    friction: [0.3, 0.25],
+    bodies: [{ id: 'box', mass: 20, x: 1 }],
+    work: { rows: ['Push', FRICTION, NET_WORK], range: [-400, 600] },
+    clips: { push: { phases: [{ dur: 5, forces: [{ on: 'box', name: 'Push', n: 70 }] }] } },
+  });
+  // The box has moved 8 m when ½ × a × t² = 8, with a = (70 − 49.05) ÷ 20.
+  const at8 = Math.sqrt(16 / ((70 - 49.05) / 20));
+
+  it('is the force times the distance moved, and less than nothing for friction', () => {
+    expect(checkRamp(pushed)).toEqual([]);
+    const { moved, work } = rampAt(pushed, [['push', at8]]).bodies.box;
+    expect(moved).toBeCloseTo(8, 6);
+    expect(work.Push).toBeCloseTo(560, 4);
+    expect(work[FRICTION]).toBeCloseTo(-392.4, 4);
+    expect(work[NET_WORK]).toBeCloseTo(167.6, 4);
+  });
+
+  it('counts nothing for the forces at right angles to the motion', () => {
+    const { work } = rampAt(pushed, [['push', at8]]).bodies.box;
+    expect(work[NORMAL]).toBe(0);
+    expect(work[WEIGHT]).toBeCloseTo(0, 9);
+    expect(work[TENSION]).toBeCloseTo(0, 9);
+  });
+
+  it('adds up to the kinetic energy gained (the work-energy theorem)', () => {
+    for (const t of [0.5, 1.7, at8, 5]) {
+      const { v, work } = rampAt(pushed, [['push', t]]).bodies.box;
+      expect(work[NET_WORK]).toBeCloseTo(0.5 * 20 * v * v, 4);
+    }
+  });
+
+  it('starts from nothing, and has done no work while the box stays put', () => {
+    expect(rampAt(pushed).bodies.box).toMatchObject({ moved: 0, work: { [NORMAL]: 0, [NET_WORK]: 0 } });
+    // 40 N cannot beat static friction of 0.5 × 12 × 9.81 N: no distance, so no work.
+    const held = rampAt(floor(), [['lean', 1]]).bodies.box;
+    expect(held.moved).toBe(0);
+    expect(held.work.Push ?? 0).toBe(0);
+    expect(held.work[NET_WORK]).toBe(0);
+  });
+
+  it('counts only the part of a pull that lies along the motion', () => {
+    // The lesson's sled, pulled with 80 N at 30°: over 10 m, 80 × cos 30° × 10 = 693 J.
+    const sled = floor({
+      friction: [0.1, 0.1],
+      length: 16,
+      bodies: [{ id: 'box', mass: 20, x: 2 }],
+      clips: { pull: { phases: [{ dur: 2, forces: [{ on: 'box', name: 'Pull', n: 80, angle: 30 }] }] } },
+    });
+    const { moved, work } = rampAt(sled, [['pull', 2]]).bodies.box;
+    expect(work.Pull).toBeCloseTo(80 * cos(30) * moved, 4);
+    expect((work.Pull / moved) * 10).toBeCloseTo(693, 0);
+    // Friction is 0.1 of a normal force that the pull has made smaller.
+    expect(work[FRICTION]).toBeCloseTo(-0.1 * (20 * G - 40) * moved, 4);
+  });
+
+  it('lets the weight do the work on a slope, where friction takes a share', () => {
+    // A 20 kg crate on a slope with sin θ = 0.4, against 42.48 N of friction: over 10 m the
+    // weight does 784.8 J, friction −424.8 J, and 360 J is left as kinetic energy.
+    const angle = (Math.asin(0.4) * 180) / Math.PI;
+    const mu = 42.48 / (20 * G * cos(angle));
+    const crate = slope({
+      angle,
+      length: 13.5,
+      friction: [mu, mu],
+      bodies: [{ id: 'b', mass: 20, x: 12.5 }],
+      work: { rows: [WEIGHT, FRICTION, NET_WORK], range: [-500, 850] },
+      clips: { go: { phases: [{ dur: 10 / 3 }] } },
+    });
+    expect(checkRamp(crate)).toEqual([]);
+    // a = 360 ÷ 10 ÷ 20 = 1.8 m/s² down the slope: 10 m takes 10 ÷ 3 s, and it ends at 6 m/s.
+    const { moved, v, work } = rampAt(crate, [['go', 10 / 3]]).bodies.b;
+    expect(moved).toBeCloseTo(-10, 5);
+    expect(v).toBeCloseTo(-6, 5);
+    expect(work[WEIGHT]).toBeCloseTo(784.8, 3);
+    expect(work[FRICTION]).toBeCloseTo(-424.8, 3);
+    expect(work[NET_WORK]).toBeCloseTo(360, 3);
+  });
+
+  it('gives tied blocks equal and opposite work from the string between them', () => {
+    const tied = floor({
+      friction: [0, 0],
+      bodies: [
+        { id: 'a', mass: 2, x: 2 },
+        { id: 'b', mass: 3, x: 4 },
+      ],
+      ropes: [['a', 'b']],
+      clips: { pull: { phases: [{ dur: 1.5, forces: [{ on: 'b', name: 'Pull', n: 20 }] }] } },
+    });
+    const s = rampAt(tied, [['pull', 1.5]]);
+    // a = 20 ÷ 5 = 4 m/s², so 4.5 m; the tension is 2 × 4 = 8 N.
+    expect(s.bodies.a.moved).toBeCloseTo(4.5, 6);
+    expect(s.bodies.a.work[TENSION]).toBeCloseTo(36, 4);
+    expect(s.bodies.b.work[TENSION]).toBeCloseTo(-36, 4);
+    expect(s.bodies.b.work.Pull).toBeCloseTo(90, 4);
+    expect(s.bodies.a.work[NET_WORK] + s.bodies.b.work[NET_WORK]).toBeCloseTo(90, 4);
+  });
+
+  it('starts the count again when a clip puts the blocks back', () => {
+    const again = floor({
+      friction: [0.3, 0.25],
+      bodies: [{ id: 'box', mass: 20, x: 1 }],
+      clips: {
+        push: { phases: [{ dur: 5, forces: [{ on: 'box', name: 'Push', n: 70 }] }] },
+        back: { reset: true, phases: [{ dur: 1, forces: [{ on: 'box', name: 'Push', n: 70 }] }] },
+      },
+    });
+    const s = rampAt(again, [['push', at8], ['back', 1]]).bodies.box;
+    expect(s.moved).toBeCloseTo(0.5 * ((70 - 49.05) / 20), 6);
+    expect(s.work.Push).toBeCloseTo(70 * s.moved, 4);
+  });
+
+  it('reports bars of work that cannot be drawn', () => {
+    expect(checkRamp({ ...pushed, work: { rows: [], range: [-400, 600] } })[0]).toMatch(/need a force to show/);
+    expect(checkRamp({ ...pushed, work: { rows: ['Push'], range: [100, 600] } })[0]).toMatch(/zero between them/);
+    expect(checkRamp({ ...pushed, work: { rows: ['Push'], range: [0, 0] } })[0]).toMatch(/zero between them/);
+    expect(checkRamp({ ...pushed, work: { of: 'crate', rows: ['Push'], range: [-400, 600] } })[0]).toMatch(/of no block "crate"/);
   });
 });
 

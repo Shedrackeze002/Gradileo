@@ -4,13 +4,14 @@
  * that matters, between the centres, is marked under the picture. The pull on each body is a pink
  * arrow, as weight is in every physics video, with its size beside it: the two arrows of a pair
  * are always the same length. The field of the first body is a ring of thin arrows that shorten
- * with the square of the distance.
+ * with the square of the distance. A body in orbit, or one thrown from a mountain, leaves a dotted
+ * trail, and its velocity is green, as in every physics video.
  */
 import type { ReactElement } from 'react';
 import type { GravityEl, Tone } from '../script.ts';
 import { BIG_G, fieldStrength, gravityAt, written } from '../gravity.ts';
 import { ownPart, type ElState } from '../timeline.ts';
-import { Arrow, BODY_TONES, clamp01, FONT, INK2, Text } from './motionKit.tsx';
+import { Arrow, BODY_TONES, clamp01, Clock, FONT, INK2, Text, VELOCITY } from './motionKit.tsx';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
 
@@ -64,6 +65,7 @@ export function GravityView({ el, st, w, h, plays }: { el: GravityEl; st: ElStat
   const height = part('height');
   const field = part('field');
   const gPart = part('g');
+  const [vel, trail, orbit, clock, turns] = ['velocity', 'trail', 'orbit', 'clock', 'turns'].map(part);
   const G = el.G ?? BIG_G;
   const out: ReactElement[] = [];
 
@@ -76,6 +78,11 @@ export function GravityView({ el, st, w, h, plays }: { el: GravityEl; st: ElStat
   const X = (x: number) => ox + (x - x0) * S;
   const Y = (y: number) => oy + (y1 - y) * S;
   const clip = `space-${el.id}`;
+  /** Where a label of about that width must be put so that it stays inside the panel. */
+  const within = (x: number, anchor: 'start' | 'middle' | 'end', wide: number) => {
+    const left = anchor === 'start' ? x : anchor === 'end' ? x - wide : x - wide / 2;
+    return x + Math.max(0, ox + 10 - left) - Math.max(0, left + wide - (ox + pw - 10));
+  };
 
   if (el.label)
     out.push(
@@ -105,6 +112,9 @@ export function GravityView({ el, st, w, h, plays }: { el: GravityEl; st: ElStat
   });
   const source = boxes[0];
   const fs = el.forceScale ?? 110 / Math.max(1e-300, ...Object.values(first.bodies).map((b) => b.force.n));
+  // The fastest body at the start, or the fastest throw of any clip, has a velocity arrow of 80 pixels.
+  const throws = Object.values(el.clips).flatMap((c) => c.phases.flatMap((ph) => Object.values(ph.launch ?? {}).map((v) => Math.hypot(v[0], v[1]))));
+  const vs = el.velocityScale ?? 80 / Math.max(1e-300, ...Object.values(first.bodies).map((b) => b.speed), ...throws);
 
   // The field of the first body: rings of arrows towards it, each as long as the field is strong there.
   if (field > 0 && source) {
@@ -134,6 +144,24 @@ export function GravityView({ el, st, w, h, plays }: { el: GravityEl; st: ElStat
       </g>,
     );
   }
+
+  // A mountain on the first body, to throw from; the paths of earlier throws, faded; and the trail and the orbit of each body.
+  const paths: ReactElement[] = [];
+  const line = (pts: Array<[number, number]>) => pts.map(([x, y]) => `${X(x).toFixed(1)},${Y(y).toFixed(1)}`).join(' ');
+  if (el.mountain && source?.planet) {
+    const [bx, by, half] = [source.c[0], source.c[1] - source.r, Math.max(10, el.mountain * S * 0.42)];
+    paths.push(<polygon key="mountain" points={`${bx - half},${by + 6} ${bx},${by - el.mountain * S + 6} ${bx + half},${by + 6}`} fill="#1b1846" stroke={source.color} strokeWidth={3} strokeLinejoin="round" />);
+  }
+  if (trail > 0) {
+    state.ghosts.forEach((g, i) => paths.push(<polyline key={`ghost-${i}`} points={line(g)} fill="none" stroke={INK2} strokeWidth={3} strokeLinecap="round" strokeDasharray="2 8" opacity={0.5 * trail} />));
+    for (const k of boxes) if (k.s.trail.length > 1) paths.push(<polyline key={`trail-${k.b.id}`} points={line(k.s.trail)} fill="none" stroke={k.color} strokeWidth={3.5} strokeLinecap="round" strokeDasharray="2 8" opacity={0.9 * trail} />);
+  }
+  if (orbit > 0 && source) for (const k of boxes) if (k.b.orbit) paths.push(<circle key={`orbit-${k.b.id}`} cx={source.c[0]} cy={source.c[1]} r={Math.hypot(k.c[0] - source.c[0], k.c[1] - source.c[1])} fill="none" stroke={INK3} strokeWidth={2} strokeDasharray="5 8" opacity={0.85 * orbit} />);
+  out.push(
+    <g key="paths" clipPath={`url(#${clip})`}>
+      {paths}
+    </g>,
+  );
 
   // The bodies: a planet to scale, cut off at the edge of the picture, or a small ball.
   for (const k of boxes) {
@@ -184,9 +212,9 @@ export function GravityView({ el, st, w, h, plays }: { el: GravityEl; st: ElStat
       }
       if (height > 0) {
         out.push(<Span key="h" a={m} b={b} opacity={height} />);
-        // Over a short stretch the words would not fit: they start at its near end.
+        // Over a short stretch the words would not fit: they start at its near end, on the other side of the line from the radius.
         const wide = Math.hypot(b[0] - m[0], b[1] - m[1]) >= 200;
-        labels.push(<Num key="h-t" x={(wide ? (m[0] + b[0]) / 2 : m[0] + 8) + n[0] * 20} y={(wide ? (m[1] + b[1]) / 2 : m[1]) + n[1] * 20} pre="height " n={(metres - source.b.radius!) / unit.metres} unit={unit.symbol} figures={el.figures ?? 2} anchor={wide ? 'middle' : 'start'} color={other.color} opacity={height} />);
+        labels.push(<Num key="h-t" x={within((wide ? (m[0] + b[0]) / 2 : m[0] + 8) + n[0] * (wide ? 20 : -25), wide ? 'middle' : 'start', 200)} y={(wide ? (m[1] + b[1]) / 2 : m[1]) + n[1] * (wide ? 20 : -25)} pre="height " n={(metres - source.b.radius!) / unit.metres} unit={unit.symbol} figures={el.figures ?? 2} anchor={wide ? 'middle' : 'start'} color={other.color} opacity={height} />);
       }
     }
   }
@@ -214,13 +242,51 @@ export function GravityView({ el, st, w, h, plays }: { el: GravityEl; st: ElStat
       const from = k.planet ? 0 : k.r;
       out.push(<Arrow key={`f-${k.b.id}`} x={k.c[0] + dx * from} y={k.c[1] + dy * from} len={len} turn={k.s.force.angle} color={PULL} opacity={force} />);
       if (k.planet) labels.push(<Num key={`f-t-${k.b.id}`} x={k.c[0] + (dx * len) / 2} y={k.c[1] + (dy * len) / 2 + 28} n={k.s.force.n} unit="N" sci={el.notation === 'sci'} color={PULL} opacity={force} />);
-      else {
+      else if (k.s.flying && k.s.speed > 0) {
+        // A body in flight has its velocity arrow too: the size of the pull goes beside the middle of its arrow, behind the body.
+        const [tx, ty] = [-k.s.v[0] / k.s.speed, k.s.v[1] / k.s.speed];
+        const [mx, my] = [k.c[0] + dx * (from + Math.max(len * 0.55, 40)), k.c[1] + dy * (from + Math.max(len * 0.55, 40))];
+        const flat = Math.abs(tx) >= 0.35;
+        labels.push(<Num key={`f-t-${k.b.id}`} x={mx + tx * (flat ? 18 : 0)} y={my + (flat ? ty * 18 : Math.sign(ty || 1) * 26)} anchor={flat ? (tx > 0 ? 'start' : 'end') : 'middle'} n={k.s.force.n} unit="N" sci={el.notation === 'sci'} color={PULL} opacity={force} />);
+      } else {
         labels.push(<Num key={`f-t-${k.b.id}`} x={k.c[0]} y={rows} n={k.s.force.n} unit="N" sci={el.notation === 'sci'} color={PULL} opacity={force} />);
         rows -= 30;
       }
     }
     if (gPart > 0 && i > 0 && !k.planet) labels.push(<Num key={`g-${k.b.id}`} x={k.c[0]} y={rows} pre="g = " n={k.s.g} unit="N/kg" color={FIELD} opacity={gPart} />);
+    // The velocity of a body that is flying, from its edge, with the speed past its tip.
+    if (vel > 0 && k.s.flying && k.s.speed * vs >= 1) {
+      const len = Math.max(12, k.s.speed * vs);
+      const [dx, dy] = [k.s.v[0] / k.s.speed, -k.s.v[1] / k.s.speed];
+      out.push(<Arrow key={`v-${k.b.id}`} x={k.c[0] + dx * k.r} y={k.c[1] + dy * k.r} len={len} turn={(Math.atan2(k.s.v[1], k.s.v[0]) * 180) / Math.PI} color={VELOCITY} weight={7} opacity={vel} />);
+      const tip: [number, number] = [k.c[0] + dx * (k.r + len), k.c[1] + dy * (k.r + len)];
+      const flat = Math.abs(dx) >= 0.35;
+      const anchor = flat ? (dx > 0 ? 'start' : 'end') : 'middle';
+      const at = tip[0] + (flat ? Math.sign(dx) * 12 : 0);
+      // Near the edge of the picture the speed moves in, and goes past the tip of the arrow instead of beside it.
+      const lx = within(at, anchor, el.notation === 'sci' ? 150 : 100);
+      const moved = Math.abs(lx - at) > 1;
+      labels.push(<Num key={`v-t-${k.b.id}`} x={lx} y={tip[1] + (flat && !moved ? dy * 12 : (Math.sign(dy) || 1) * 20)} anchor={anchor} n={k.s.speed >= 1000 ? Math.round(k.s.speed) : k.s.speed} unit="m/s" sci={el.notation === 'sci'} color={VELOCITY} opacity={vel} />);
+    }
   }
+  // How many times each body in orbit has been round, in the top left corner of the picture.
+  if (turns > 0)
+    boxes
+      .filter((k) => k.b.orbit)
+      .forEach((k, i) => {
+        const n = Math.floor(k.s.turns + 1e-6);
+        labels.push(
+          <Text key={`turns-${k.b.id}`} x={ox + 18} y={oy + 26 + i * 30} anchor="start" size={20} color={k.color} opacity={turns}>
+            {`${k.b.label ?? k.b.id}: ${n} ${n === 1 ? 'orbit' : 'orbits'}`}
+          </Text>,
+        );
+      });
+  if (clock > 0)
+    out.push(
+      <g key="clock" transform={`translate(${ox + pw - w - 12} ${oy + 12})`}>
+        <Clock w={w} time={state.time / (el.clock?.seconds ?? 1)} unit={el.clock?.unit ?? 's'} opacity={clock} />
+      </g>,
+    );
   out.push(<g key="labels">{labels}</g>);
 
   if (state.note)

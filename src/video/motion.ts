@@ -34,6 +34,11 @@ export interface MotionState {
   path: Record<string, Array<[number, number]>>;
   /** Each body's position along the track against time so far, as [seconds, metres], for a graph. */
   place: Record<string, Array<[number, number]>>;
+  /**
+   * For a force-displacement graph: the force on each body against the distance it has moved (or,
+   * for a body on a spring, the size of the spring's force against its extension), as [metres, newtons].
+   */
+  pull: Record<string, Array<[number, number]>>;
   /** How far each body has travelled along the track, in metres: every metre counts, whichever way it went. */
   travelled: Record<string, number>;
   /** Where each body started, then every place it turned round, in metres. */
@@ -52,6 +57,8 @@ export interface Energy {
   kinetic: number;
   /** mass × g × height, where the motion has a height (a drop, a lift or a curved track). */
   potential: number;
+  /** ½ × k × extension², for the body on a spring. */
+  elastic: number;
   /** The work done on the body so far by the forces that push, pull or lift it. */
   work: number;
   /** The energy friction and air resistance have turned to heat so far. */
@@ -64,13 +71,44 @@ export interface Slope {
   sin: (s: number) => number;
 }
 
+/** The size of a force that changes with distance, at a distance from where the body started. */
+export function profileAt(points: Array<[number, number]>, d: number): number {
+  if (d <= points[0][0]) return points[0][1];
+  for (let i = 1; i < points.length; i++) {
+    const [d0, n0] = points[i - 1];
+    const [d1, n1] = points[i];
+    if (d <= d1) return n0 + ((n1 - n0) * (d - d0)) / (d1 - d0);
+  }
+  return points[points.length - 1][1];
+}
+
+/** The work a force that changes with distance does between two distances: the area under its points. */
+export function areaUnder(points: Array<[number, number]>, from: number, to: number): number {
+  if (to < from) return -areaUnder(points, to, from);
+  const cuts = [from, ...points.map(([d]) => d).filter((d) => d > from && d < to), to];
+  let area = 0;
+  for (let i = 1; i < cuts.length; i++) area += 0.5 * (profileAt(points, cuts[i - 1]) + profileAt(points, cuts[i])) * (cuts[i] - cuts[i - 1]);
+  return area;
+}
+
+/** The force of a motion's spring on its body when the body's centre is at x, in newtons along the track. */
+export function springForce(el: MotionEl, x: number): number {
+  if (!el.spring) return 0;
+  const stretch = x - el.spring.rest;
+  return el.spring.loose && stretch > 0 ? 0 : -el.spring.k * stretch + 0;
+}
+
 const EPS = 1e-9;
 /** The longest step between points of a velocity graph, in seconds. */
 const TRACE_STEP = 0.05;
 /** The longest step in working out motion along a curved track, in seconds. */
 const SLOPE_STEP = 0.002;
+/** The longest step for a body on a spring, or pushed by a force that changes with distance. */
+const FIELD_STEP = 0.0005;
 /** The name of the force that is gravity: its work is the change in potential energy. */
 const WEIGHT = 'Weight';
+/** The name of the force of a motion's spring. */
+export const SPRING = 'Spring';
 
 /** The sum of the forces on a body along the track, in newtons. */
 export function netForce(forces: MotionForce[], id: string, moving: (f: MotionForce) => boolean = () => true): number {
@@ -81,20 +119,22 @@ export function netForce(forces: MotionForce[], id: string, moving: (f: MotionFo
  * Moves one body through `dt` seconds of a phase. A resisting force (friction) acts only while
  * the body moves: once it has brought the body to rest, the body stays at rest unless the other
  * forces are larger than it. On a curved track (`slope`), gravity pulls along the slope as well,
- * and the motion is worked out in short steps, since the slope changes as the body moves.
+ * and a spring or a force that changes with distance (`field`, newtons at each place) depends on
+ * where the body is: the motion is then worked out in short steps.
  */
-function advance(b: MotionBody, s: BodyState, forces: MotionForce[], dt: number, slope?: Slope): BodyState {
+function advance(b: MotionBody, s: BodyState, forces: MotionForce[], dt: number, slope?: Slope, field?: (x: number) => number): BodyState {
   const mine = forces.filter((f) => f.on === b.id && f.axis !== 'y');
-  if (slope) {
-    const push = mine.filter((f) => !f.resist).reduce((n, f) => n + f.n, 0);
-    // The most that friction can slow the body, as an acceleration.
+  if (slope || field) {
+    const push = mine.filter((f) => !f.resist && !f.drag && !f.profile).reduce((n, f) => n + f.n, 0);
+    // The most that friction can slow the body, as an acceleration, and air resistance for each m/s.
     const grip = mine.filter((f) => f.resist).reduce((n, f) => n + Math.abs(f.n), 0) / b.mass;
-    const pull = (x: number) => push / b.mass - slope.g * slope.sin(x);
-    const steps = Math.max(1, Math.ceil(dt / SLOPE_STEP));
+    const drag = mine.reduce((n, f) => n + (f.drag ?? 0), 0) / b.mass;
+    const pull = (x: number) => (push + (field ? field(x) : 0)) / b.mass - (slope ? slope.g * slope.sin(x) : 0);
+    const steps = Math.max(1, Math.ceil(dt / (field ? FIELD_STEP : SLOPE_STEP)));
     const h = dt / steps;
     let { x, v } = s;
     for (let i = 0; i < steps && h > 0; i++) {
-      const a0 = pull(x);
+      const a0 = pull(x) - drag * v;
       const atRest = Math.abs(v) < EPS;
       // At rest, friction holds the body unless the slope and the push beat it.
       if (atRest && Math.abs(a0) <= grip) {
@@ -103,13 +143,14 @@ function advance(b: MotionBody, s: BodyState, forces: MotionForce[], dt: number,
       }
       const way = atRest ? Math.sign(a0) : Math.sign(v);
       const x1 = x + v * h + 0.5 * (a0 - way * grip) * h * h;
-      let v1 = v + 0.5 * (a0 + pull(x1) - 2 * way * grip) * h;
+      // Air resistance at the end of the step is found with the velocity it is about to have.
+      let v1 = (v + 0.5 * (a0 + pull(x1) - 2 * way * grip) * h) / (1 + 0.5 * drag * h);
       // Friction never turns a body round: it stops the body, and the next step decides whether it stays.
       if (grip > 0 && !atRest && v1 * v < 0) v1 = 0;
       x = x1;
       v = v1;
     }
-    const a0 = pull(x);
+    const a0 = pull(x) - drag * v;
     const a = Math.abs(v) < EPS ? (Math.abs(a0) <= grip ? 0 : a0 - Math.sign(a0) * grip) : a0 - Math.sign(v) * grip;
     return { x, v, a };
   }
@@ -151,7 +192,9 @@ function advance(b: MotionBody, s: BodyState, forces: MotionForce[], dt: number,
 
 /** The forces that are acting on bodies as they are now: friction disappears with the motion. */
 function acting(el: MotionEl, bodies: Record<string, BodyState>, forces: MotionForce[]): MotionForce[] {
-  return forces
+  const spring = el.spring && bodies[el.spring.on] ? springForce(el, bodies[el.spring.on].x) : 0;
+  const coil: MotionForce[] = el.spring && Math.abs(spring) > 1e-6 ? [{ on: el.spring.on, name: SPRING, n: spring, tone: 'brand' }] : [];
+  return [...coil, ...forces]
     .filter((f) => {
       if (!f.resist) return true;
       const b = el.bodies.find((q) => q.id === f.on);
@@ -160,8 +203,13 @@ function acting(el: MotionEl, bodies: Record<string, BodyState>, forces: MotionF
       // At rest, friction shows only while a push it is holding back acts.
       return Math.abs(netForce(forces, b.id, (g) => !g.resist)) > EPS;
     })
-    // Air resistance is as large as the body is fast, and points against its motion.
-    .map((f) => (f.drag && bodies[f.on] ? { ...f, n: -f.drag * bodies[f.on].v + 0 } : f));
+    // Air resistance is as large as the body is fast, and points against its motion; a force
+    // that changes with distance has the size that belongs to where the body is.
+    .map((f) => {
+      const b = el.bodies.find((q) => q.id === f.on);
+      if (f.profile && b && bodies[b.id]) return { ...f, n: profileAt(f.profile, bodies[b.id].x - b.x) };
+      return f.drag && bodies[f.on] ? { ...f, n: -f.drag * bodies[f.on].v + 0 } : f;
+    });
 }
 
 const start = (el: MotionEl): Record<string, BodyState> => Object.fromEntries(el.bodies.map((b) => [b.id, { x: b.x, v: b.v ?? 0, a: 0 }]));
@@ -178,6 +226,16 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   let path = freshPath();
   const freshPlace = (): MotionState['place'] => Object.fromEntries(el.bodies.map((b) => [b.id, [[0, b.x] as [number, number]]]));
   let place = freshPlace();
+  // For a force-displacement graph: the force named (or the first that changes with distance, or the spring's).
+  const graphed = (list: MotionForce[], b: MotionBody, x: number): [number, number] | null => {
+    if (el.graph?.y !== 'force' || !el.graph.of.includes(b.id)) return null;
+    const f = list.find((q) => q.on === b.id && (el.graph!.force ? q.name === el.graph!.force : q.profile));
+    if (f) return [x - b.x, f.profile ? profileAt(f.profile, x - b.x) : f.n];
+    if (el.spring?.on === b.id && (!el.graph.force || el.graph.force === SPRING)) return [Math.abs(x - el.spring.rest), Math.abs(springForce(el, x))];
+    return null;
+  };
+  const freshPull = (): MotionState['pull'] => Object.fromEntries(el.bodies.map((b) => [b.id, [] as Array<[number, number]>]));
+  let pull = freshPull();
   let travelled: Record<string, number> = Object.fromEntries(el.bodies.map((b) => [b.id, 0]));
   let turns: Record<string, number[]> = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
   // The way each body last moved (1 or -1), to notice when it turns round.
@@ -197,6 +255,14 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   const heightOf = (x: number) => (track ? track.at(x).y : el.vertical === 'up' ? x - el.span[0] : el.vertical ? el.span[1] - x : 0);
   const kineticOf = (b: MotionBody, v: number) => 0.5 * b.mass * v * v;
   const potentialOf = (b: MotionBody, x: number) => b.mass * g * heightOf(x);
+  const elasticOf = (b: MotionBody, x: number) => (el.spring?.on === b.id ? 0.5 * el.spring.k * (el.spring.loose && x > el.spring.rest ? 0 : (x - el.spring.rest) ** 2) : 0);
+  // What depends on where a body is: its spring, and any force on it that changes with distance.
+  const fieldOf = (b: MotionBody, list: MotionForce[]): ((x: number) => number) | undefined => {
+    const changing = list.filter((f) => f.on === b.id && f.profile);
+    const sprung = el.spring?.on === b.id;
+    if (!changing.length && !sprung) return undefined;
+    return (x) => (sprung ? springForce(el, x) : 0) + changing.reduce((n, f) => n + profileAt(f.profile!, x - b.x), 0);
+  };
   const freshEnergy = (): Record<string, { work: number; heat: number }> => Object.fromEntries(el.bodies.map((b) => [b.id, { work: 0, heat: 0 }]));
   let spent = freshEnergy();
   let forces: MotionState['forces'] = [];
@@ -206,7 +272,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   // How long each force has been acting, in seconds of video: a force that carries on from one
   // phase or clip into the next keeps its arrow, and only a new one grows in.
   let ages = new Map<string, number>();
-  const keyOf = (f: MotionForce) => `${f.on}|${f.name}|${f.axis ?? 'x'}|${f.drag ? 'drag' : f.n}`;
+  const keyOf = (f: MotionForce) => `${f.on}|${f.name}|${f.axis ?? 'x'}|${f.drag ? 'drag' : f.profile || f.name === SPRING ? 'changing' : f.n}`;
   for (const [name, seconds] of plays) {
     const clip = el.clips[name];
     if (!clip) throw new Error(`Motion "${el.id}" has no clip "${name}".`);
@@ -219,6 +285,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
       trace = fresh();
       path = freshPath();
       place = freshPlace();
+      pull = freshPull();
       travelled = Object.fromEntries(el.bodies.map((b) => [b.id, 0]));
       turns = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
       heading = {};
@@ -242,18 +309,26 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
       let done = 0;
       // A velocity set at the start of the phase is a step on the graph.
       if (ph.set) for (const id of Object.keys(ph.set)) trace[id].push([time, bodies[id].v]);
+      const plot = () => {
+        for (const b of el.bodies) {
+          const at = graphed(list, b, bodies[b.id].x);
+          if (at) pull[b.id].push(at);
+        }
+      };
+      if (dt > EPS) plot();
       while (done < dt - EPS) {
         const next = (Math.floor((time + done) / step + EPS) + 1) * step - time;
         // Short steps, so the graph follows a body that friction stops part way through.
         const h = Math.min(dt, next, done + TRACE_STEP) - done;
         for (const b of el.bodies) {
           const before = bodies[b.id];
-          const after = advance(b, before, list, h, slope);
-          // The work of the forces that push or lift the body. What it does not gain as kinetic
-          // or potential energy, friction and air resistance have turned to heat.
-          const work = list.reduce((n, f) => (f.on === b.id && f.axis !== 'y' && !f.resist && !f.drag && f.name !== WEIGHT ? n + f.n * (after.x - before.x) : n), 0);
+          const after = advance(b, before, list, h, slope, fieldOf(b, list));
+          // The work of the forces that push or lift the body (for one that changes with distance,
+          // the area under its points). What the body does not gain as kinetic or potential
+          // energy, friction and air resistance have turned to heat.
+          const work = list.reduce((n, f) => (f.on === b.id && f.axis !== 'y' && !f.resist && !f.drag && f.name !== WEIGHT ? n + (f.profile ? areaUnder(f.profile, before.x - b.x, after.x - b.x) : f.n * (after.x - before.x)) : n), 0);
           spent[b.id].work += work;
-          spent[b.id].heat += work - (kineticOf(b, after.v) - kineticOf(b, before.v)) - (potentialOf(b, after.x) - potentialOf(b, before.x));
+          spent[b.id].heat += work - (kineticOf(b, after.v) - kineticOf(b, before.v)) - (potentialOf(b, after.x) - potentialOf(b, before.x)) - (elasticOf(b, after.x) - elasticOf(b, before.x));
           if (before.v * after.v < -EPS) {
             // It turned round inside the step: count the way out and the way back separately.
             const a = (after.v - before.v) / h;
@@ -270,9 +345,10 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
           path[b.id].push([time + done, travelled[b.id]]);
           place[b.id].push([time + done, bodies[b.id].x]);
         }
+        plot();
         if (Math.abs(done - next) < EPS) for (const b of el.bodies) marks[b.id].push(bodies[b.id].x);
       }
-      if (dt <= EPS && !ph.freeze) for (const b of el.bodies) bodies[b.id] = advance(b, bodies[b.id], list, 0, slope);
+      if (dt <= EPS && !ph.freeze) for (const b of el.bodies) bodies[b.id] = advance(b, bodies[b.id], list, 0, slope, fieldOf(b, list));
       if (ph.freeze) for (const b of el.bodies) bodies[b.id] = { ...bodies[b.id], a: 0 };
       time += dt;
       const age = ph.freeze ? Math.min(left, ph.dur) : dt * k;
@@ -292,9 +368,9 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   // Energies to a millionth of a joule: the short steps of a curved track leave a little noise.
   const joules = (n: number) => Math.round(n * 1e6) / 1e6 + 0;
   const energy: MotionState['energy'] = Object.fromEntries(
-    el.bodies.map((b) => [b.id, { kinetic: joules(kineticOf(b, bodies[b.id].v)), potential: joules(potentialOf(b, bodies[b.id].x)), work: joules(spent[b.id].work), heat: Math.max(0, joules(spent[b.id].heat)) }]),
+    el.bodies.map((b) => [b.id, { kinetic: joules(kineticOf(b, bodies[b.id].v)), potential: joules(potentialOf(b, bodies[b.id].x)), elastic: joules(elasticOf(b, bodies[b.id].x)), work: joules(spent[b.id].work), heat: Math.max(0, joules(spent[b.id].heat)) }]),
   );
-  return { bodies, forces, time: tidy(time), marks, trace, path, place, travelled, turns, slow, note, contact, energy };
+  return { bodies, forces, time: tidy(time), marks, trace, path, place, pull, travelled, turns, slow, note, contact, energy };
 }
 
 export interface CollisionOptions {

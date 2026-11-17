@@ -270,6 +270,34 @@ export interface MotionForce {
    * friction (`resist`) on it.
    */
   drag?: number;
+  /**
+   * A force that changes as the body moves: its size in newtons at distances from where the body
+   * started, in metres, as [distance, newtons] points joined by straight lines (it stays at the
+   * last value beyond the last point). `n` is not used (give 0). The work it does is the area
+   * under these points, which a force-displacement graph (`graph: { y: 'force' }`) fills in.
+   */
+  profile?: Array<[number, number]>;
+}
+
+/**
+ * A spring on a straight track, between a wall and one body. It obeys Hooke's law: it pulls or
+ * pushes the body towards the place where it has its natural length, with k newtons for each metre
+ * of extension, in every phase (it is not listed among a phase's forces). It is drawn as a coil
+ * from the wall at the left end of the track, with its force as an arrow named "Spring". Over a
+ * drop (`vertical: true`) it hangs from a beam at the top instead, and `rest` is how far down the
+ * foot of the body is when the spring has its natural length.
+ */
+export interface MotionSpring {
+  /** The body on its end. */
+  on: string;
+  /** The spring constant, in newtons per metre. */
+  k: number;
+  /** Where the centre of the body is when the spring has its natural length, in metres along the track. */
+  rest: number;
+  /** Not tied to the body: it pushes while it is compressed and never pulls, so the body leaves it at its natural length (a launcher). */
+  loose?: boolean;
+  /** Decimal places of the extension that is written under the track (2 by default). */
+  decimals?: number;
 }
 
 /** A stretch of a clip during which the same forces act. */
@@ -299,14 +327,15 @@ export interface MotionClip {
 }
 
 /** What a motion element can show over its bodies; each is a part ("sim.velocity"). */
-export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height'] as const;
+export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height', 'extension'] as const;
 
 /**
  * An energy bar of a motion element: the work done on the body by the forces pushing or lifting
- * it, its kinetic energy, its gravitational potential energy, the energy that friction and air
- * resistance have turned to heat, and the total of the last three.
+ * it, its kinetic energy, its gravitational potential energy, the elastic potential energy of the
+ * spring it is on, the energy that friction and air resistance have turned to heat, and the total
+ * of the last four.
  */
-export type EnergyBar = 'work' | 'kinetic' | 'potential' | 'heat' | 'total';
+export type EnergyBar = 'work' | 'kinetic' | 'potential' | 'elastic' | 'heat' | 'total';
 
 /**
  * Bodies moving along straight tracks under forces, for the physics videos: the motion is worked
@@ -344,9 +373,16 @@ export interface MotionEl {
    * A graph of these bodies against time, above a single track on its right: `seconds` and `max`
    * are the lengths of its axes, and `min` (below zero) lets the line go under the time axis. It
    * plots velocity (in metres per second) unless `y` is `'distance'`, the distance travelled in
-   * metres, or `'position'`, where the body is on the track's ruler.
+   * metres, or `'position'`, where the body is on the track's ruler. With `y: 'force'` it is a
+   * force-displacement graph of one body instead: the force named in `force` (the body's first
+   * force with a `profile` otherwise, or the spring's) against the distance moved, or against the
+   * extension of the spring. `metres` is then the length of its displacement axis (`seconds` is
+   * not used; give 0), the area under the line fills in as the body moves, and the work done so
+   * far is written over it (`area` renames it: "Energy stored").
    */
-  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' };
+  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'force'; metres?: number; force?: string; area?: string };
+  /** A spring between the wall at the left end of a single straight track and one of the bodies. */
+  spring?: MotionSpring;
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
@@ -998,7 +1034,7 @@ export interface RampClip {
 }
 
 /** What a ramp element can show over its bodies; each is a part ("ramp.weight"). */
-export const RAMP_PARTS = ['weight', 'components', 'normal', 'friction', 'tension', 'net', 'velocity', 'readout', 'clock', 'strobe'] as const;
+export const RAMP_PARTS = ['weight', 'components', 'normal', 'friction', 'tension', 'net', 'velocity', 'readout', 'clock', 'strobe', 'distance', 'work'] as const;
 
 /**
  * Blocks on a surface, level or tilted, for the dynamics videos (src/video/ramp.ts): a box pushed
@@ -1039,6 +1075,15 @@ export interface RampEl {
   raise?: number;
   /** Pixels kept clear above the highest point of the surface and under the ground, for arrows and labels ([150, 44] otherwise, and [150, 130] under a level floor). */
   pad?: [top: number, bottom: number];
+  /**
+   * Bars of the work each force has done on one block (the first otherwise), under the picture:
+   * `rows` names the forces in order ("Weight", "Normal force", "Friction", "Tension", the name of
+   * a push or a pull, and "Net" for their sum), and `range` is the least and the greatest work a
+   * bar must hold, in joules ([-400, 600]). Work is the part of a force along the motion times
+   * the distance moved, so a bar grows to the left of zero for a force that points against the
+   * motion. Keep 40 px under the ground for each row, and 50 more (`pad`).
+   */
+  work?: { of?: string; rows: string[]; range: [number, number] };
   clips: Record<string, RampClip>;
   /** A label at the top left of the picture. */
   label?: string;
@@ -1139,10 +1184,17 @@ export interface GravityBody {
   radius?: number;
   /** The radius of the ball in pixels (16 by default); it swells as its mass grows. */
   size?: number;
+  /**
+   * It starts in a circular orbit round the first body, anticlockwise: its speed is worked out,
+   * √(GM ÷ r). It moves while a phase lets time run (`fly`).
+   */
+  orbit?: boolean;
+  /** Or its starting velocity, in metres per second, as [right, up]: it falls freely under the pull of the bodies that stay where they are. */
+  v?: [number, number];
   tone?: Tone;
 }
 
-/** A stretch of a gravity clip, during which bodies are carried to new places or change their mass. */
+/** A stretch of a gravity clip, during which bodies are carried to new places, change their mass, or fly freely. */
 export interface GravityPhase {
   /** How long it lasts, in seconds of video. */
   dur: number;
@@ -1150,6 +1202,16 @@ export interface GravityPhase {
   to?: Record<string, number | [number, number]>;
   /** The masses bodies have by the end of the phase, in kilograms, by id. */
   mass?: Record<string, number>;
+  /**
+   * Bodies thrown as the phase starts, by id, each with a velocity in metres per second as
+   * [right, up]. A body that has flown before is put back where it started first, and the path it
+   * took stays on the picture, faded, to compare with the new one.
+   */
+  launch?: Record<string, [number, number]>;
+  /** Let time run: bodies in orbit and bodies that have been thrown move under gravity, `rate` seconds of motion for each second of video. */
+  fly?: boolean;
+  /** Seconds of the motion for each second of video in this phase (the element's `rate` otherwise). */
+  rate?: number;
   /** A short note shown over the picture. */
   note?: string;
 }
@@ -1161,7 +1223,7 @@ export interface GravityClip {
 }
 
 /** What a gravity element can show over its bodies; each is a part ("space.force"). */
-export const GRAVITY_PARTS = ['force', 'distance', 'radius', 'height', 'field', 'g'] as const;
+export const GRAVITY_PARTS = ['force', 'distance', 'radius', 'height', 'field', 'g', 'velocity', 'trail', 'orbit', 'clock', 'turns'] as const;
 
 /**
  * Bodies in space that attract one another, for universal gravitation, gravitational fields and
@@ -1172,7 +1234,11 @@ export const GRAVITY_PARTS = ['force', 'distance', 'radius', 'height', 'field', 
  * pair are always equal), `distance` (the distance r between the centres of the first two bodies),
  * `radius` and `height` (the radius of the first body, and how far the second is above its
  * surface), `field` (arrows of the first body's field, shorter where it is weaker) and `g` (the
- * field strength where each of the other bodies is). Emphasising a body's id makes it glow.
+ * field strength where each of the other bodies is). A body with `orbit` or a velocity, or one that
+ * a phase throws (`launch`), moves freely under gravity while a phase lets time run (`fly`): it
+ * orbits, or it falls until it lands on a planet. For those there are `velocity` (green, with the
+ * speed), `trail` (the path taken), `orbit` (the circle of each orbit), `clock` and `turns` (the
+ * orbits each body has completed). Emphasising a body's id makes it glow.
  */
 export interface GravityEl {
   kind: 'gravity';
@@ -1189,8 +1255,16 @@ export interface GravityEl {
   figures?: number;
   /** Draw the pull on these bodies only (on every body otherwise). */
   pulls?: string[];
-  /** Write every force in scientific notation ("6.53 × 10³ N"); otherwise only very large and very small ones. */
+  /** Write every force and speed in scientific notation ("6.53 × 10³ N"); otherwise only very large and very small ones. */
   notation?: 'sci';
+  /** Seconds of the motion for each second of video, while a phase lets time run (1 otherwise). */
+  rate?: number;
+  /** The unit of the clock ({ unit: 'min', seconds: 60 }; seconds otherwise). */
+  clock?: { unit: string; seconds: number };
+  /** A mountain on top of the first body, this many metres high, to throw things from (Newton's cannon). */
+  mountain?: number;
+  /** Pixels of arrow for each metre per second (otherwise the fastest body at the start, or the fastest throw, has an arrow of 80 pixels). */
+  velocityScale?: number;
   clips: Record<string, GravityClip>;
   /** A label at the top left of the picture. */
   label?: string;
@@ -1203,7 +1277,101 @@ export interface GravityEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | AtomsEl;
+/** A body of a circle element: something that goes round a circle. */
+export interface CircleBody {
+  id: string;
+  /** Mass in kilograms. */
+  mass: number;
+  /** What is written on it (its mass otherwise: "0.5 kg"). */
+  label?: string;
+  /** The radius of its circle, in metres. */
+  r: number;
+  /** Its speed in metres per second (in a vertical circle, the speed where it starts). Give this or the period. */
+  speed?: number;
+  /** The time for one turn, in seconds. */
+  period?: number;
+  /** Where it starts, in degrees anticlockwise from the right of the picture (0 otherwise; -90 is the lowest point of a vertical circle). */
+  at?: number;
+  /** Drawn as a ball (the default) or as a car, seen from above, that points the way it is going. */
+  shape?: 'ball' | 'car';
+  tone?: Tone;
+}
+
+/** A stretch of a circle clip. */
+export interface CirclePhase {
+  /** How long it lasts, in seconds of the motion's own time. */
+  dur: number;
+  /** Slow motion: seconds of video for each second of the motion (1 by default). */
+  slow?: number;
+  /** Hold everything still for `dur` seconds of video. */
+  freeze?: boolean;
+  /** Speeds the bodies reach, steadily, by the end of the phase, in metres per second, by body id. */
+  speed?: Record<string, number>;
+  /** Bodies let go as the phase starts (the string breaks, the tyres lose their grip): each carries on in a straight line. */
+  release?: string[];
+  /** A short note shown over the picture ("The string breaks"). */
+  note?: string;
+}
+
+export interface CircleClip {
+  phases: CirclePhase[];
+  /** Put every body back at its start, on its circle, at its first speed. */
+  reset?: boolean;
+}
+
+/** What a circle element can show over its bodies; each is a part ("spin.velocity"). */
+export const CIRCLE_PARTS = ['velocity', 'accel', 'force', 'net', 'radius', 'tangent', 'trail', 'strobe', 'readout', 'period', 'meter', 'clock', 'turns'] as const;
+
+/**
+ * Bodies that move round a circle, for circular motion (src/video/circle.ts): seen from above on a
+ * level surface, where each keeps a steady speed, or (`vertical`) on a circle that stands upright,
+ * where gravity makes it slow down as it climbs and speed up as it falls. The script gives each
+ * body's mass, radius and speed (or period); the centripetal acceleration and the forces are worked
+ * out from them. `by` says what turns the bodies: a `string` (tension, and the string is drawn),
+ * `friction` (a car on a road) or a `track` (the normal force of a loop). Showing the element
+ * shows the circle and the bodies; showing a part adds it: `velocity` (green, along the tangent),
+ * `accel` (the centripetal acceleration, towards the centre), `force` (the real forces: the one
+ * named by `by` and, in a vertical circle, the weight), `net` (the net force), `radius`, `tangent`
+ * (a dashed line along the velocity), `trail`, `strobe` (marks left every eighth of a turn, with
+ * the arrows shown), `readout` (the speed and the acceleration, as numbers), `period`, `meter` (the
+ * force needed beside the greatest the string or the road can give, `limit`), `clock` and `turns`.
+ * Emphasising a body's id makes it glow.
+ */
+export interface CircleEl {
+  kind: 'circle';
+  id: string;
+  bodies: CircleBody[];
+  /** What turns the bodies; with none, only the net force can be drawn. */
+  by?: 'string' | 'friction' | 'track';
+  /** A circle that stands upright, so that the weight of each body matters. */
+  vertical?: boolean;
+  /** The gravitational field strength in newtons per kilogram (9.81 otherwise). */
+  g?: number;
+  /** The bodies go round clockwise (anticlockwise otherwise). */
+  clockwise?: boolean;
+  /** A turning platform under the bodies (a roundabout), of this radius in metres; it turns with the first body. */
+  disc?: number;
+  /** The greatest force the string or the road can give, in newtons, for the meter. */
+  limit?: number;
+  /** How far the picture reaches from the centre, in metres (a little more than the largest circle otherwise). */
+  span?: number;
+  /** Move the centre of the circle sideways, in pixels (to leave room for a body that is let go). */
+  shift?: number;
+  clips: Record<string, CircleClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  /** Pixels of arrow for each newton (otherwise the largest force at the start is 90 pixels long). */
+  forceScale?: number;
+  /** Pixels of arrow for each metre per second (otherwise the fastest body at the start has an arrow of 90 pixels). */
+  velocityScale?: number;
+  /** Pixels of arrow for each metre per second squared (otherwise the largest at the start is 70 pixels long). */
+  accelScale?: number;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -1323,6 +1491,19 @@ export function checkMotion(e: MotionEl): string[] {
   for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
   if (e.graph?.min !== undefined && !(e.graph.min < 0)) problems.push('the lowest value of the graph must be below zero (leave it out otherwise).');
   if (e.graph?.min !== undefined && e.graph.y === 'distance') problems.push('a distance never falls below zero: leave out the lowest value of the graph.');
+  if (e.graph?.y === 'force') {
+    if (!((e.graph.metres ?? 0) > 0)) problems.push('a force-displacement graph needs the length of its displacement axis, in metres.');
+    if (e.graph.of.length !== 1) problems.push('a force-displacement graph is of one body.');
+    if (e.path || e.vertical || (e.lanes?.length ?? 1) > 1) problems.push('a force-displacement graph goes over a single straight track.');
+  } else if (e.graph && !(e.graph.seconds > 0)) problems.push('the graph needs the length of its time axis, in seconds.');
+  if (e.spring) {
+    if (!ids.has(e.spring.on)) problems.push(`the spring is tied to no body "${e.spring.on}".`);
+    if (!(e.spring.k > 0)) problems.push('the spring needs a spring constant above zero.');
+    if (e.path || e.vertical === 'up' || (e.lanes?.length ?? 1) > 1) problems.push('a spring lies along a single straight track, or hangs over a single drop.');
+    const tied = e.bodies.find((b) => b.id === e.spring!.on);
+    if (tied && !(e.spring.rest - (tied.width ?? 1) / 2 > e.span[0])) problems.push('the spring needs room between the wall at the left end of the track and the body.');
+  }
+  if (e.energy?.bars.includes('elastic') && !e.spring) problems.push('elastic energy needs a spring.');
   for (const id of e.energy?.of ?? []) if (!ids.has(id)) problems.push(`the energy bars name no body "${id}".`);
   for (const id of Object.keys(e.energy?.labels ?? {})) if (!ids.has(id)) problems.push(`the energy bars label no body "${id}".`);
   if (e.energy && !(e.energy.max > 0)) problems.push('the energy bars need a largest energy above zero.');
@@ -1340,6 +1521,11 @@ export function checkMotion(e: MotionEl): string[] {
       const up = new Map<string, number>();
       for (const f of ph.forces ?? []) {
         if (!ids.has(f.on)) problems.push(`${where}: a force acts on no body "${f.on}".`);
+        if (f.profile) {
+          if (f.profile.length < 2 || f.profile.some(([d], i) => i > 0 && !(d > f.profile![i - 1][0]))) problems.push(`${where}: the points of a force that changes need distances that increase.`);
+          if (f.resist || f.drag || f.axis === 'y') problems.push(`${where}: a force that changes with distance pushes along the track, and is not friction or air resistance.`);
+          if (e.path || e.vertical) problems.push(`${where}: a force that changes with distance acts on a straight track.`);
+        }
         if (f.axis === 'y') up.set(f.on, (up.get(f.on) ?? 0) + f.n);
       }
       // Bodies stay on their track, so the forces drawn up and down must cancel.
@@ -1425,6 +1611,11 @@ export function checkRamp(e: RampEl): string[] {
   const all = new Set([...ids, ...(e.hanging ? [e.hanging.id] : [])]);
   for (const id of all) if ((RAMP_PARTS as readonly string[]).includes(id)) problems.push(`body id "${id}" is the name of a part.`);
   if (!(e.length > 0)) problems.push('the surface needs a length above zero.');
+  if (e.work) {
+    if (!e.work.rows.length) problems.push('the bars of work need a force to show.');
+    if (!(e.work.range[0] <= 0 && e.work.range[1] >= 0 && e.work.range[1] > e.work.range[0])) problems.push('the range of the bars of work is [least, greatest], with zero between them.');
+    if (e.work.of !== undefined && !ids.has(e.work.of)) problems.push(`the bars of work are of no block "${e.work.of}".`);
+  }
   const tilt = (a: number) => a >= 0 && a <= 90;
   if (!tilt(e.angle)) problems.push('the tilt must be from 0 to 90 degrees.');
   if (e.angle === 90 && !e.hanging) problems.push('a surface tilted to 90 degrees needs a hanging body on the other side of its pulley.');
@@ -1492,10 +1683,15 @@ export function checkGravity(e: GravityEl): string[] {
   if (!e.bodies.length) problems.push('it needs a body.');
   if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
   for (const id of ids) if ((GRAVITY_PARTS as readonly string[]).includes(id)) problems.push(`body id "${id}" is the name of a part.`);
-  for (const b of e.bodies) {
+  for (const [i, b] of e.bodies.entries()) {
     if (!(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
     if (b.radius !== undefined && !(b.radius > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
+    if ((b.orbit || b.v) && i === 0) problems.push('the first body stays where it is: the others orbit it or fall towards it.');
+    if (b.orbit && b.v) problems.push(`body "${b.id}" has an orbit and a velocity: give one.`);
   }
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be above zero.');
+  if (e.clock && !(e.clock.seconds > 0)) problems.push('the unit of the clock needs a length above zero.');
+  if (e.mountain !== undefined && !(e.mountain > 0 && e.bodies[0]?.radius)) problems.push('a mountain needs a height above zero, and a first body with a radius to stand on.');
   e.bodies.forEach((a, i) => {
     for (const b of e.bodies.slice(i + 1)) if (a.x === b.x && (a.y ?? 0) === (b.y ?? 0)) problems.push(`bodies "${a.id}" and "${b.id}" start at the same place.`);
   });
@@ -1509,8 +1705,51 @@ export function checkGravity(e: GravityEl): string[] {
     clip.phases.forEach((ph, pi) => {
       const where = `clip "${name}", phase ${pi + 1}`;
       if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
-      for (const id of [...Object.keys(ph.to ?? {}), ...Object.keys(ph.mass ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const id of [...Object.keys(ph.to ?? {}), ...Object.keys(ph.mass ?? {}), ...Object.keys(ph.launch ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
       for (const [id, m] of Object.entries(ph.mass ?? {})) if (!(m > 0)) problems.push(`${where}: body "${id}" needs a mass above zero.`);
+      if (ph.launch && e.bodies[0] && e.bodies[0].id in ph.launch) problems.push(`${where}: the first body stays where it is.`);
+      if (ph.fly && ph.to) problems.push(`${where} cannot carry a body while time runs.`);
+      if (ph.rate !== undefined && !(ph.rate > 0)) problems.push(`${where}: the rate must be above zero.`);
+    });
+  }
+  return problems;
+}
+
+/** The speed of a body of a circle element at its start, in metres per second. */
+export const circleSpeed = (b: CircleBody): number => b.speed ?? (2 * Math.PI * b.r) / (b.period ?? Infinity);
+
+export function checkCircle(e: CircleEl): string[] {
+  const problems: string[] = [];
+  const ids = new Set(e.bodies.map((b) => b.id));
+  if (!e.bodies.length) problems.push('it needs a body.');
+  if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
+  for (const id of ids) if ((CIRCLE_PARTS as readonly string[]).includes(id)) problems.push(`body id "${id}" is the name of a part.`);
+  const g = e.g ?? 9.81;
+  if (!(g > 0)) problems.push('g must be above zero.');
+  for (const b of e.bodies) {
+    if (!(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if (!(b.r > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
+    if ((b.speed === undefined) === (b.period === undefined)) problems.push(`body "${b.id}" needs a speed or a period (one of them).`);
+    else if (!(circleSpeed(b) > 0)) problems.push(`body "${b.id}" needs a speed above zero.`);
+    else if (e.vertical) {
+      // Energy is conserved round an upright circle: the body must still be fast enough at the top to stay on it.
+      const top = circleSpeed(b) ** 2 + 2 * g * b.r * (Math.sin(((b.at ?? 0) * Math.PI) / 180) - 1);
+      if (top < g * b.r - 1e-9) problems.push(`body "${b.id}" is too slow to stay on its circle at the top (it needs ${Math.sqrt(g * b.r).toFixed(2)} m/s there).`);
+    }
+  }
+  if (e.disc !== undefined && !(e.disc > 0)) problems.push('the platform needs a radius above zero.');
+  if (e.limit !== undefined && !(e.limit > 0)) problems.push('the greatest force must be above zero.');
+  if (e.span !== undefined && !(e.span > 0)) problems.push('the span must be above zero.');
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
+      for (const id of [...Object.keys(ph.speed ?? {}), ...(ph.release ?? [])]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const [id, v] of Object.entries(ph.speed ?? {})) if (!(v > 0)) problems.push(`${where}: body "${id}" needs a speed above zero.`);
+      if (e.vertical && (ph.speed || ph.release)) problems.push(`${where}: on an upright circle gravity sets the speed, and a body cannot be let go.`);
+      if (ph.freeze && ph.speed) problems.push(`${where} cannot change a speed while it is frozen.`);
     });
   }
   return problems;
@@ -1629,7 +1868,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -1673,6 +1912,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...GRAVITY_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkGravity(e).map((p) => `Scene ${si + 1}: gravity "${e.id}": ${p}`));
+      }
+      if (e.kind === 'circle') {
+        diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkCircle(e).map((p) => `Scene ${si + 1}: circle "${e.id}": ${p}`));
       }
       if (e.kind === 'rays') {
         diagrams.set(e.id, new Set<string>(RAYS_PARTS));
