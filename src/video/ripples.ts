@@ -143,8 +143,9 @@ export function ripplesAt(el: RipplesEl, plays: Array<[clip: string, seconds: nu
         const from = listeners[id];
         if (from) listeners[id] = [from[0] + (to[0] - from[0]) * eased, from[1] + (to[1] - from[1]) * eased];
       }
-      // The note of the phase that is playing; it goes when the clip has finished.
-      note = left < video ? ph.note : undefined;
+      // The note of the phase that is playing; it goes when the clip has finished (to within the
+      // thousandth of a second that the times of a video are kept to).
+      note = left < video - 0.002 ? ph.note : undefined;
       left -= video;
     }
   }

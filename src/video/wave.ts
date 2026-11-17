@@ -149,8 +149,9 @@ export function waveAt(el: WaveEl, plays: Array<[clip: string, seconds: number]>
       }
       const run = Math.min(left, video);
       time += run / slow;
-      // The note of the phase that is playing; it goes when the clip has finished.
-      note = left < video ? ph.note : undefined;
+      // The note of the phase that is playing; it goes when the clip has finished (to within the
+      // thousandth of a second that the times of a video are kept to).
+      note = left < video - 0.002 ? ph.note : undefined;
       left -= video;
     }
   }
@@ -263,9 +264,11 @@ export function largestAmplitude(el: WaveEl, lane: WaveLane): number {
   const heights = (lane.pulses ?? []).map((pulse) => pulse.height);
   const up = heights.filter((n) => n > 0).reduce((a, b) => a + b, 0);
   const down = -heights.filter((n) => n < 0).reduce((a, b) => a + b, 0);
-  let most = Math.max(lane.amplitude, up, down, lane.reflect === 'free' ? 2 * Math.max(0, ...heights.map(Math.abs)) : 0);
-  for (const clip of Object.values(el.clips)) for (const ph of clip.phases) most = Math.max(most, ph.set?.[lane.id]?.amplitude ?? 0);
-  return most;
+  let steady = lane.amplitude;
+  for (const clip of Object.values(el.clips)) for (const ph of clip.phases) steady = Math.max(steady, ph.set?.[lane.id]?.amplitude ?? 0);
+  // A steady wave that meets its own reflection stands, and its antinodes move twice as far as either wave.
+  const meets = lane.reflect && !lane.standing && lane.frequency > 0 ? 2 : 1;
+  return Math.max(meets * steady, up, down, lane.reflect === 'free' ? 2 * Math.max(0, ...heights.map(Math.abs)) : 0);
 }
 
 /** The shortest wavelength a lane ever has, in metres. */
