@@ -243,6 +243,12 @@ export interface MotionBody {
   tone?: Tone;
   /** The track it is on, counted from the top (0 by default). */
   lane?: number;
+  /**
+   * A wall, or anything else that stays where it is: a block drawn as a tall hatched slab, with no
+   * velocity label and no momentum bar. Give it a very large mass (a million kilograms), so that
+   * a ball that bounces off it leaves it at rest.
+   */
+  fixed?: boolean;
 }
 
 /**
@@ -371,6 +377,11 @@ export interface MotionEl {
   velocityScale?: number;
   /** The largest momentum the bars must fit, in kg·m/s; the bars are given room when it is set. */
   momentumMax?: number;
+  /**
+   * The most negative momentum the bars must fit (a number below zero), for bodies that move to
+   * the left: the zero line then sits part way along, and a negative bar grows to its left.
+   */
+  momentumMin?: number;
   /** `false` when the total's bar is never shown, so no room is kept for it. */
   momentumTotal?: boolean;
   /**
@@ -1873,7 +1884,9 @@ export function checkMotion(e: MotionEl): string[] {
     if (!(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
     if ((MOTION_PARTS as readonly string[]).includes(b.id)) problems.push(`body id "${b.id}" is the name of a part.`);
     if ((b.lane ?? 0) >= (e.lanes?.length ?? 1)) problems.push(`body "${b.id}" is on a lane that does not exist.`);
+    if (b.fixed && b.shape !== 'block') problems.push(`body "${b.id}": only a block can be fixed (a wall).`);
   }
+  if (e.momentumMin !== undefined && !(e.momentumMin < 0)) problems.push('the least momentum of the bars must be below zero (leave it out otherwise).');
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
   for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
   if (e.graph?.min !== undefined && !(e.graph.min < 0)) problems.push('the lowest value of the graph must be below zero (leave it out otherwise).');

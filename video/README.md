@@ -157,6 +157,10 @@ See `src/video/script.ts` for every element and option. In short:
   round), `distance` (how far each body has travelled, with its path
   drawn leg by leg under a single track), `displacement` (an arrow under a single track from where
   the body started to where it is now, with its sign) and `bars` and `total` (momentum). The
+  bars run from zero to `momentumMax`; for a body that moves to the left, `momentumMin` (a number
+  below zero) moves the zero line part way along, and a negative bar grows to its left. A body
+  with `fixed: true` is a wall: a tall hatched slab with no velocity label and no bar (give it a
+  mass of a million kilograms, and a hidden force on the ball for the moment of the bounce). The
   displacement's label sits beside its arrow, so leave about 300 px of track free on one side.
   `speedWord: true` writes "speed =" beside the velocity arrow, for videos that come before
   velocity is taught. `plain: true` makes a sketch of it, not a measurement: no rulers, forces

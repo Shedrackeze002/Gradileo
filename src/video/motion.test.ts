@@ -210,6 +210,12 @@ describe('motion: distance and displacement', () => {
     expect(checkMotion({ ...trip, graph: { of: ['c'], seconds: 4, max: 12, min: -2, y: 'distance' } })[0]).toMatch(/never falls below zero/);
   });
 
+  it('lets the momentum bars go below zero, and only a block be a wall', () => {
+    expect(checkMotion({ ...trip, momentumMax: 4, momentumMin: -4 })).toEqual([]);
+    expect(checkMotion({ ...trip, momentumMax: 4, momentumMin: 1 })[0]).toMatch(/below zero/);
+    expect(checkMotion({ ...trip, bodies: trip.bodies.map((b) => ({ ...b, shape: 'ball' as const, fixed: true })) })[0]).toMatch(/only a block/);
+  });
+
   it('finds where a body turns round under a steady force', () => {
     // Thrown to the right at 4 m/s against a 2 N force on 1 kg: it stops after 2 s, 4 m on, and comes back.
     const thrown = el({ bodies: [{ ...cart, v: 4 }], clips: { go: { phases: [{ dur: 3, forces: [{ on: 'c', name: 'Pull', n: -2 }] }] } } });

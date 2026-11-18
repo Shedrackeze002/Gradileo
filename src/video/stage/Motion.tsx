@@ -453,7 +453,8 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   const vs = el.velocityScale ?? 24;
 
   // The bars keep their room from the start, so the tracks do not jump when they appear.
-  const barRows = el.momentumMax ? el.bodies.length + (el.momentumTotal === false ? 0 : 1) : 0;
+  const barBodies = el.bodies.filter((b) => !b.fixed);
+  const barRows = el.momentumMax ? barBodies.length + (el.momentumTotal === false ? 0 : 1) : 0;
   const ROW = 44;
   const barsH = barRows ? barRows * ROW + 50 : energyRows(el) ? energyRows(el) * ENERGY_ROW + 24 : 0;
   const top = 40;
@@ -486,7 +487,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const g = ground(b.lane ?? 0);
     const half = (widthOf(b) * S) / 2;
     const cx = X(x);
-    const height = b.shape === 'block' ? BLOCK_H : b.shape === 'cart' ? CART_H + WHEEL + 4 : half * 2;
+    const height = b.fixed ? BLOCK_H * 1.3 : b.shape === 'block' ? BLOCK_H : b.shape === 'cart' ? CART_H + WHEEL + 4 : half * 2;
     return { left: cx - half, right: cx + half, top: g - height, cx, mid: g - height / 2 };
   };
 
@@ -626,7 +627,24 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const f = st?.focus[b.id] ?? 0;
     const glow = f > 0 ? { filter: `drop-shadow(0 0 ${16 * f}px ${c})` } : undefined;
     const label = b.label ?? `${short(b.mass)} kg`;
-    if (b.shape === 'block') {
+    if (b.fixed) {
+      // A wall: a tall slab with slanted hatching, the mark of something that does not move.
+      const wide = k.right - k.left;
+      const tall = g - k.top;
+      const marks = Math.floor(tall / 22);
+      out.push(
+        <g key={b.id} style={glow}>
+          <rect x={k.left} y={k.top} width={wide} height={tall} rx={5} fill="#1b1846" />
+          <rect x={k.left} y={k.top} width={wide} height={tall} rx={5} fill={c} fillOpacity={0.22} stroke={c} strokeWidth={3} />
+          {Array.from({ length: marks }, (_, i) => (
+            <line key={i} x1={k.left + 5} y1={k.top + 26 + i * 22} x2={k.right - 5} y2={k.top + 8 + i * 22} stroke={c} strokeWidth={2.5} strokeLinecap="round" opacity={0.55} />
+          ))}
+          <Text x={k.cx} y={k.top - 18} size={20} weight={700}>
+            {label}
+          </Text>
+        </g>,
+      );
+    } else if (b.shape === 'block') {
       out.push(
         <g key={b.id} style={glow}>
           <rect x={k.left} y={k.top} width={k.right - k.left} height={BLOCK_H - 1.5} rx={10} fill="#1b1846" />
@@ -737,6 +755,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   }
 
   for (const b of el.bodies) {
+    if (b.fixed) continue;
     const s = state.bodies[b.id];
     const k = box(b);
     const g = ground(b.lane ?? 0);
@@ -917,11 +936,15 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   // Momentum bars: one for each body and one for the total, which a collision leaves unchanged.
   if (bars > 0 && el.momentumMax) {
     const y0 = h - barsH + 40;
-    const x0 = 170;
-    const full = w - x0 - 220;
+    const left = 170;
+    const room = w - left - 220;
+    // With negative momentum to show, the zero line sits part way along and the bars share the room.
+    const low = Math.min(0, el.momentumMin ?? 0);
+    const full = (room * el.momentumMax) / (el.momentumMax - low);
+    const x0 = left + room - full;
     const rows = [
-      ...el.bodies.map((b) => ({ name: b.label ?? b.id, p: b.mass * state.bodies[b.id].v, c: tone(b) })),
-      { name: 'Total', p: el.bodies.reduce((n, b) => n + b.mass * state.bodies[b.id].v, 0), c: NET },
+      ...barBodies.map((b) => ({ name: b.label ?? b.id, p: b.mass * state.bodies[b.id].v, c: tone(b) })),
+      { name: 'Total', p: barBodies.reduce((n, b) => n + b.mass * state.bodies[b.id].v, 0), c: NET },
     ];
     out.push(
       <g key="bars" opacity={bars}>
@@ -936,12 +959,12 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
           if (last && total <= 0) return null;
           return (
             <g key={r.name} opacity={last ? total : 1}>
-              <Text x={x0 - 16} y={y + 18} anchor="end" color={last ? NET : INK}>
+              <Text x={left - 16} y={y + 18} anchor="end" color={last ? NET : INK}>
                 {r.name}
               </Text>
-              <rect x={x0} y={y + 2} width={full} height={32} rx={8} fill="rgb(255 255 255 / 0.05)" />
+              <rect x={left} y={y + 2} width={room} height={32} rx={8} fill="rgb(255 255 255 / 0.05)" />
               <rect x={r.p < 0 ? x0 - len : x0} y={y + 2} width={Math.max(0, len)} height={32} rx={8} fill={r.c} fillOpacity={last ? 0.85 : 0.75} />
-              <Text x={x0 + Math.max(len, 0) + 14} y={y + 18} anchor="start" color={r.c}>
+              <Text x={x0 + (r.p < 0 ? 0 : Math.max(len, 0)) + 14} y={y + 18} anchor="start" color={r.c}>
                 {`${live(r.p)} kg·m/s`}
               </Text>
             </g>
