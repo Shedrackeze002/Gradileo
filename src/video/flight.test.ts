@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkFlight, checkScript, type Explainer, type FlightEl } from './script.ts';
-import { carried, fastest, flightAt, landingTime } from './flight.ts';
+import { carried, fastest, flightAt, landingTime, momentumOf, touchTime } from './flight.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 const G = 9.81;
@@ -217,5 +217,144 @@ describe('flight: checks', () => {
     expect(flightAt(ball(), during.plays).bodies.b.x).toBeCloseTo(4);
     // The next line waits for the clip to end.
     expect(tl.lines[2].start - tl.lines[1].start).toBeGreaterThanOrEqual(2);
+  });
+});
+
+// Momentum in two dimensions: a view from above of bodies with a mass.
+describe('collisions and explosions seen from above', () => {
+  // The lesson's crossroads: 1200 kg east at 20 m/s meets 1800 kg north at 10 m/s, and they lock together.
+  const crossroads = (over: Partial<FlightEl> = {}): FlightEl => ({
+    kind: 'flight',
+    id: 'f',
+    scene: 'map',
+    view: [-50, 50, -40, 40],
+    collisions: { stick: true },
+    momentum: { max: 30000 },
+    bodies: [
+      { id: 'a', shape: 'car', mass: 1200, radius: 2, at: [-40, 0], v: [20, 0] },
+      { id: 'b', shape: 'car', mass: 1800, radius: 2, at: [0, -20], v: [0, 10] },
+    ],
+    clips: { crash: { phases: [{ dur: 4 }] } },
+    ...over,
+  });
+
+  it('locks two cars together with the velocity that conserves momentum each way', () => {
+    expect(checkFlight(crossroads())).toEqual([]);
+    const before = flightAt(crossroads(), [['crash', 1]]);
+    expect(momentumOf(crossroads(), before).total).toEqual([24000, 18000]);
+    expect(before.hit).toBeUndefined();
+    const after = flightAt(crossroads(), [['crash', 3]]);
+    for (const id of ['a', 'b']) {
+      expect(after.bodies[id].vx).toBeCloseTo(8);
+      expect(after.bodies[id].vy).toBeCloseTo(6);
+    }
+    const p = momentumOf(crossroads(), after);
+    expect(p.total[0]).toBeCloseTo(24000);
+    expect(p.total[1]).toBeCloseTo(18000);
+    expect(p.of.a[0]).toBeCloseTo(9600);
+    expect(p.of.b[1]).toBeCloseTo(10800);
+    // They touched when their centres were 4 m apart, and a car keeps pointing the way it was driven.
+    expect(after.hit!.t).toBeGreaterThan(1.8);
+    expect(after.hit!.t).toBeLessThan(2);
+    expect(after.bodies.a.heading).toBe(0);
+    expect(after.bodies.b.heading).toBe(90);
+    // The centre of mass moves steadily through the crash.
+    const [c1, c3] = [momentumOf(crossroads(), before).centre!, p.centre!];
+    expect((c3[0] - c1[0]) / 2).toBeCloseTo(8);
+    expect((c3[1] - c1[1]) / 2).toBeCloseTo(6);
+  });
+
+  // The lesson's glancing collision: 0.5 kg at 4 m/s strikes 0.5 kg at rest off centre, so that the
+  // line through their centres points 46.94° south of east, with a restitution of 0.5035.
+  const SOUTH = (46.936 * Math.PI) / 180;
+  const glance = (over: Partial<FlightEl> = {}): FlightEl => ({
+    kind: 'flight',
+    id: 'f',
+    scene: 'map',
+    view: [-4, 4, -3, 3],
+    collisions: { restitution: 0.50345 },
+    bodies: [
+      { id: 'a', shape: 'puck', mass: 0.5, radius: 0.3, at: [-3, 0.6 * Math.sin(SOUTH)], v: [4, 0] },
+      { id: 'b', shape: 'puck', mass: 0.5, radius: 0.3, at: [0, 0] },
+    ],
+    clips: { hit: { phases: [{ dur: 1.5 }] } },
+    ...over,
+  });
+
+  it('turns two pucks aside in a glancing collision, with both directions balanced', () => {
+    expect(checkFlight(glance())).toEqual([]);
+    const s = flightAt(glance(), [['hit', 1.4]]);
+    const [a, b] = [s.bodies.a, s.bodies.b];
+    expect(Math.hypot(a.vx, a.vy)).toBeCloseTo(3, 2);
+    expect((Math.atan2(a.vy, a.vx) * 180) / Math.PI).toBeCloseTo(30, 1);
+    expect(Math.hypot(b.vx, b.vy)).toBeCloseTo(2.05, 2);
+    expect((Math.atan2(b.vy, b.vx) * 180) / Math.PI).toBeCloseTo(-46.9, 1);
+    const p = momentumOf(glance(), s);
+    expect(p.total[0]).toBeCloseTo(2);
+    expect(p.total[1]).toBeCloseTo(0);
+    expect(p.of.a[1]).toBeCloseTo(0.75, 2);
+    expect(p.of.b[1]).toBeCloseTo(-0.75, 2);
+    // 4.0 J before and 3.3 J after: the collision is inelastic.
+    expect(0.25 * (a.vx ** 2 + a.vy ** 2 + b.vx ** 2 + b.vy ** 2)).toBeCloseTo(3.3, 1);
+  });
+
+  it('sends equal pucks off at right angles when the collision is elastic', () => {
+    const s = flightAt(glance({ collisions: {} }), [['hit', 1.4]]);
+    const [a, b] = [s.bodies.a, s.bodies.b];
+    expect(a.vx * b.vx + a.vy * b.vy).toBeCloseTo(0);
+    expect(0.25 * (a.vx ** 2 + a.vy ** 2 + b.vx ** 2 + b.vy ** 2)).toBeCloseTo(4);
+    // Head on, the first puck stops.
+    const head = flightAt(glance({ collisions: {}, bodies: [{ ...glance().bodies[0], at: [-3, 0] }, glance().bodies[1]] }), [['hit', 1.4]]);
+    expect(head.bodies.a.vx).toBeCloseTo(0);
+    expect(head.bodies.b.vx).toBeCloseTo(4);
+  });
+
+  it('finds when two discs touch, and that discs which miss or part never do', () => {
+    const at = (x: number, y: number, vx: number, vy: number) => ({ ...flightAt(glance()).bodies.a, x, y, vx, vy });
+    expect(touchTime(at(-3, 0, 4, 0), 0.3, at(0, 0, 0, 0), 0.3, 5)).toBeCloseTo(0.6);
+    expect(touchTime(at(-3, 0, 4, 0), 0.3, at(0, 0, 0, 0), 0.3, 0.5)).toBeUndefined();
+    expect(touchTime(at(-3, 0.7, 4, 0), 0.3, at(0, 0, 0, 0), 0.3, 5)).toBeUndefined();
+    expect(touchTime(at(-3, 0, -4, 0), 0.3, at(0, 0, 0, 0), 0.3, 5)).toBeUndefined();
+  });
+
+  // The lesson's shell: at rest, it breaks into 2 kg going east at 6 m/s, 3 kg going north at 3 m/s and a third piece of 1.5 kg.
+  const shell = (over: Partial<FlightEl> = {}): FlightEl => ({
+    kind: 'flight',
+    id: 'f',
+    scene: 'map',
+    view: [-10, 10, -8, 8],
+    momentum: { max: 15, min: -15 },
+    bodies: [
+      { id: 'east', shape: 'puck', mass: 2, at: [0.5, 0] },
+      { id: 'north', shape: 'puck', mass: 3, at: [0, 0.6] },
+      { id: 'third', shape: 'puck', mass: 1.5, at: [-0.4, -0.4] },
+    ],
+    clips: { burst: { phases: [{ dur: 0.5 }, { dur: 1, kick: { east: [12, 0], north: [0, 9], third: [-12, -9] } }] } },
+    ...over,
+  });
+
+  it('blows a shell at rest into pieces whose momenta add to zero', () => {
+    expect(checkFlight(shell())).toEqual([]);
+    expect(flightAt(shell(), [['burst', 0.4]]).bodies.third.vx).toBe(0);
+    const s = flightAt(shell(), [['burst', 1.5]]);
+    expect(s.bodies.east.vx).toBeCloseTo(6);
+    expect(s.bodies.north.vy).toBeCloseTo(3);
+    expect(Math.hypot(s.bodies.third.vx, s.bodies.third.vy)).toBeCloseTo(10);
+    expect((Math.atan2(-s.bodies.third.vy, -s.bodies.third.vx) * 180) / Math.PI).toBeCloseTo(36.87, 1);
+    const p = momentumOf(shell(), s);
+    expect(p.total[0]).toBeCloseTo(0);
+    expect(p.total[1]).toBeCloseTo(0);
+    expect(s.hit!.t).toBeCloseTo(0.5);
+  });
+
+  it('refuses an explosion that makes momentum, and collisions it cannot work out', () => {
+    const lopsided = shell({ clips: { burst: { phases: [{ dur: 1, kick: { east: [12, 0], north: [0, 9] } }] } } });
+    expect(checkFlight(lopsided).join(' ')).toMatch(/impulses of an explosion must add up to zero/);
+    expect(checkFlight(shell({ bodies: [...shell().bodies.slice(0, 2), { id: 'third', at: [-0.4, -0.4] }] })).join(' ')).toMatch(/kicks body "third", which has no mass/);
+    expect(checkFlight(crossroads({ gravity: 9.81, scene: 'ground' })).join(' ')).toMatch(/no gravity and no stream/);
+    expect(checkFlight(crossroads({ collisions: { restitution: 1.2 } })).join(' ')).toMatch(/restitution of a collision is from 0 to 1/);
+    expect(checkFlight(glance({ bodies: [glance().bodies[0], { ...glance().bodies[1], at: [-2.8, 0.3] }] })).join(' ')).toMatch(/start inside each other/);
+    expect(checkFlight(crossroads({ readout: {} })).join(' ')).toMatch(/one or the other/);
+    expect(checkFlight(crossroads({ bodies: [{ id: 'a', shape: 'car', at: [0, 0] }, crossroads().bodies[1]] })).join(' ')).toMatch(/is a car, so it needs a mass/);
   });
 });

@@ -1280,8 +1280,19 @@ export interface CircuitEl {
 /** A body of a flight element: something that moves over a flat picture. */
 export interface FlightBody {
   id: string;
-  /** A ball (the default), a boat or an aircraft that points the way it is steered, or a plain dot (a walker on a map). */
-  shape?: 'ball' | 'boat' | 'plane' | 'dot';
+  /**
+   * A ball (the default), a boat or an aircraft that points the way it is steered, or a plain dot
+   * (a walker on a map). Seen from above, for collisions: a `puck`, a disc drawn to scale with its
+   * label inside, or a `car`, which points the way it was last driven.
+   */
+  shape?: 'ball' | 'boat' | 'plane' | 'dot' | 'puck' | 'car';
+  /**
+   * Its mass in kilograms. A body with a mass has momentum (the bars and the triangle of
+   * `momentum`), takes part in the element's `collisions`, and can be given a `kick`.
+   */
+  mass?: number;
+  /** For a body with a mass: its radius in the length unit (0.5 by default). Two such bodies touch when their centres are the sum of their radii apart. */
+  radius?: number;
   /** A name written beside it. */
   label?: string;
   /** Where the name sits: over the body otherwise, or under it while it climbs. */
@@ -1311,6 +1322,12 @@ export interface FlightPhase {
   release?: string[];
   /** Stop these bodies where they are as the phase starts (a boat that has reached the far bank): the stream no longer carries them. */
   stop?: string[];
+  /**
+   * An explosion: impulses given to bodies with a mass as the phase starts, in kg·m/s by body id,
+   * as [east, north]. Each changes its body's velocity by the impulse ÷ the mass. The pieces push
+   * only on each other, so the impulses of one phase must add up to zero.
+   */
+  kick?: Record<string, [number, number]>;
   /** A short note shown over the picture ("Slow motion"). */
   note?: string;
 }
@@ -1322,7 +1339,7 @@ export interface FlightClip {
 }
 
 /** What a flight element can show over its bodies; each is a part ("f.components"). */
-export const FLIGHT_PARTS = ['velocity', 'components', 'own', 'trail', 'strobe', 'shadows', 'displacement', 'legs', 'angle', 'readout', 'clock'] as const;
+export const FLIGHT_PARTS = ['velocity', 'components', 'own', 'trail', 'strobe', 'shadows', 'displacement', 'legs', 'angle', 'readout', 'clock', 'speed', 'bars', 'total', 'sum'] as const;
 
 /**
  * Motion in two dimensions, for the physics videos (src/video/flight.ts): a projectile, a boat
@@ -1342,6 +1359,14 @@ export const FLIGHT_PARTS = ['velocity', 'components', 'own', 'trail', 'strobe',
  * velocity when no displacement is shown, measured from the x direction; for a body in a stream,
  * the angle between the way it points and the way it travels), `readout` (a panel of the numbers
  * for the arrows shown) and `clock`. Emphasising a body's id makes it glow.
+ *
+ * Momentum in two dimensions is a view from above (the `map` scene) of bodies with a `mass`. With
+ * `collisions` they collide as discs, pushed by equal and opposite impulses, and a phase's `kick`
+ * is an explosion; either way the momentum is shared out by the forces between the bodies and is
+ * never typed in. The parts for it are `speed` (the speed written at the tip of each velocity
+ * arrow), `bars` (with `momentum`: a bar for each body's momentum in each of the two directions),
+ * `total` (the bars of the two totals) and `sum` (the total momentum drawn at the centre of mass:
+ * its two parts head to tail, and the total closing the triangle).
  */
 export interface FlightEl {
   kind: 'flight';
@@ -1385,6 +1410,28 @@ export interface FlightEl {
    * the picture the column is on (right otherwise).
    */
   readout?: { of?: string; side?: 'left' | 'right' };
+  /**
+   * What happens when two bodies with a mass touch (with no gravity and no stream). They are
+   * smooth discs, so each pushes the other along the line through their centres, and where one
+   * strikes the other off centre both are turned aside. They part at `restitution` times the
+   * speed at which they closed along that line (1 by default: an elastic collision), or with
+   * `stick` they lock together and move as one.
+   */
+  collisions?: { restitution?: number; stick?: boolean };
+  /**
+   * Momentum bars in a column on the right of the picture, for the bodies with a mass: one group
+   * for each direction (named by `axes`), with a bar for each body (the part `bars`) and one for
+   * their total (`total`). `max` is the largest momentum a bar must fit, in kg·m/s, and `min` (a
+   * number below zero) the most negative: the zero line then sits part way along. `scale` is the
+   * pixels of arrow for each kg·m/s in the triangle of the part `sum` (chosen from `max` otherwise).
+   */
+  momentum?: { max: number; min?: number; scale?: number };
+  /** On a map: two roads this wide, in the length unit, that cross at the origin (one runs east and the other north). */
+  roads?: number;
+  /** Decimal places of the angles written on the picture (none by default). */
+  angleDecimals?: number;
+  /** Decimal places of the speeds written by the part `speed` (1 by default); from 10 units up they keep one place. */
+  speedDecimals?: number;
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
   height?: number;
@@ -1994,6 +2041,7 @@ export function checkFlight(e: FlightEl): string[] {
   const [x0, x1, y0, y1] = e.view;
   if (!(x1 > x0 && y1 > y0)) problems.push('the view needs its right above its left, and its top above its bottom.');
   const ids = new Set(e.bodies.map((b) => b.id));
+  const massive = new Set(e.bodies.filter((b) => b.mass !== undefined).map((b) => b.id));
   if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
   if (!e.bodies.length) problems.push('it needs a body.');
   for (const b of e.bodies) {
@@ -2016,9 +2064,37 @@ export function checkFlight(e: FlightEl): string[] {
     clip.phases.forEach((ph, pi) => {
       const where = `clip "${name}", phase ${pi + 1}`;
       if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
-      for (const id of [...Object.keys(ph.set ?? {}), ...(ph.release ?? []), ...(ph.stop ?? [])]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const id of [...Object.keys(ph.set ?? {}), ...(ph.release ?? []), ...(ph.stop ?? []), ...Object.keys(ph.kick ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
       if (ph.release?.length && !e.gravity) problems.push(`${where} lets a body go, but there is no gravity.`);
+      if (ph.kick) {
+        const kicks = Object.entries(ph.kick);
+        for (const [id] of kicks) if (ids.has(id) && !massive.has(id)) problems.push(`${where} kicks body "${id}", which has no mass.`);
+        const size = Math.max(...kicks.map(([, j]) => Math.hypot(j[0], j[1])), 0);
+        const [sx, sy] = kicks.reduce(([x, y], [, j]) => [x + j[0], y + j[1]], [0, 0]);
+        if (Math.hypot(sx, sy) > 1e-6 * Math.max(1, size)) problems.push(`${where}: the impulses of an explosion must add up to zero.`);
+      }
     });
+  }
+  for (const b of e.bodies) {
+    if (b.mass !== undefined && !(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if (b.radius !== undefined && !(b.radius > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
+    if ((b.shape === 'puck' || b.shape === 'car') && b.mass === undefined) problems.push(`body "${b.id}" is a ${b.shape}, so it needs a mass.`);
+  }
+  if (e.collisions) {
+    if (e.gravity || e.stream) problems.push('collisions are for a view from above, with no gravity and no stream.');
+    if (massive.size < 2) problems.push('collisions need two bodies with a mass.');
+    const r = e.collisions.restitution;
+    if (r !== undefined && !(r >= 0 && r <= 1)) problems.push('the restitution of a collision is from 0 to 1.');
+    const round = e.bodies.filter((b) => b.mass !== undefined);
+    for (let i = 0; i < round.length; i++)
+      for (let j = i + 1; j < round.length; j++)
+        if (Math.hypot(round[i].at[0] - round[j].at[0], round[i].at[1] - round[j].at[1]) < (round[i].radius ?? 0.5) + (round[j].radius ?? 0.5) - 1e-9) problems.push(`bodies "${round[i].id}" and "${round[j].id}" start inside each other.`);
+  }
+  if (e.momentum) {
+    if (!(e.momentum.max > 0)) problems.push('the largest momentum of the bars must be above zero.');
+    if (e.momentum.min !== undefined && !(e.momentum.min < 0)) problems.push('the least momentum of the bars must be below zero.');
+    if (!massive.size) problems.push('momentum bars need a body with a mass.');
+    if (e.readout) problems.push('the momentum bars take the column of the readout: give one or the other.');
   }
   return problems;
 }

@@ -179,7 +179,17 @@ function FlightThumb({ el, w, h }: { el: FlightEl; w: number; h: number }) {
   const now = flightAt(el, plays);
   const top = Math.max(1e-6, ...Object.values(now.bodies).map((b) => Math.max(Math.abs(b.vx), Math.abs(b.vy), Math.hypot(b.ownX, b.ownY))));
   const velocityScale = Math.min(el.velocityScale ?? 150 / Math.max(fastest(el), 1e-6), 100 / top);
-  return <FlightView el={{ ...el, readout: undefined, clips, velocityScale }} st={{ ...FULL, parts: { trail: 1, ...(el.scene === 'map' ? { displacement: 1, legs: 1, angle: 1 } : el.stream ? { strobe: 1, own: 1, velocity: 1 } : { strobe: 1, components: 1 }) } }} w={w} h={h} plays={plays} />;
+  // Bodies with a mass (a collision seen from above) show their paths and velocities, without the column of momentum bars.
+  // They are framed closely about where they met, without the names that the bars need.
+  const collides = el.bodies.some((b) => b.mass !== undefined);
+  if (collides) {
+    const big = Math.max(...el.bodies.map((b) => b.radius ?? 0.5));
+    const [cx, cy] = now.hit ? [now.hit.x, now.hit.y] : [(el.view[0] + el.view[1]) / 2, (el.view[2] + el.view[3]) / 2];
+    const view: FlightEl['view'] = [cx - 10.5 * big, cx + 10.5 * big, cy - 3.2 * big, cy + 4.2 * big];
+    const bodies = el.bodies.map((b) => ({ ...b, label: b.shape === 'puck' ? b.label : undefined }));
+    return <FlightView el={{ ...el, view, bodies, tick: undefined, readout: undefined, momentum: undefined, clips, velocityScale }} st={{ ...FULL, parts: { trail: 1, velocity: 1 } }} w={w} h={h} plays={plays} />;
+  }
+  return <FlightView el={{ ...el, readout: undefined, momentum: undefined, clips, velocityScale }} st={{ ...FULL, parts: { trail: 1, ...(el.scene === 'map' ? { displacement: 1, legs: 1, angle: 1 } : el.stream ? { strobe: 1, own: 1, velocity: 1 } : { strobe: 1, components: 1 }) } }} w={w} h={h} plays={plays} />;
 }
 
 /**
