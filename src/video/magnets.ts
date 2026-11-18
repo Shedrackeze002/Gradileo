@@ -8,8 +8,9 @@
  * rows of wires make the field of a solenoid and two magnets make the field between their poles.
  * The force on a wire is F = BIL, at right angles to the field and to the current. A wire that has
  * a mass moves under that force (and its weight), and the coil of a motor is turned about its axle
- * by the forces on its two sides, step by step, while a clip plays. A pure function of the clips
- * and the seconds played, like the rest of the stage.
+ * by the forces on its two sides, step by step, while a clip plays. A magnet that is pushed into a
+ * coil changes the flux through its turns, and the emf induced is the rate of that change. A pure
+ * function of the clips and the seconds played, like the rest of the stage.
  */
 import { linesBetween, type LineSource } from './fieldlines.ts';
 import type { MagnetsEl } from './script.ts';
@@ -47,13 +48,16 @@ const deg = (r: number) => (r * 180) / Math.PI;
 /** Everything in an element that has a place. */
 const placed = (el: MagnetsEl) => [...(el.bars ?? []), ...(el.wires ?? []), ...(el.iron ?? []), ...(el.compasses ?? []), ...(el.probes ?? [])];
 
+/** The clips played so far, in order, each with the seconds of video it has run for. */
+export type MagnetPlays = Array<[clip: string, seconds: number]>;
+
 /**
  * The state of a magnets element after its clips: `plays` lists each clip played so far, in order,
  * with the seconds of video it has run for. Within a phase each thing eases from where it was to
  * where the phase puts it. A wire with a mass and a coil move while a clip plays, under the forces
  * on them, at `rate` seconds of the model for each second of video.
  */
-export function magnetsAt(el: MagnetsEl, plays: Array<[clip: string, seconds: number]> = []): MagnetsState {
+export function magnetsAt(el: MagnetsEl, plays: MagnetPlays = []): MagnetsState {
   const state: MagnetsState = {
     time: 0,
     at: Object.fromEntries(placed(el).map((o) => [o.id, [o.at[0], o.at[1]] as Point])),
@@ -354,6 +358,85 @@ export function barForce(el: MagnetsEl, state: MagnetsState, id: string): Point 
     }
   }
   return [fx, fy];
+}
+
+/** Where the turns that are drawn of the pickup coil cross its axis: evenly spaced along its length. */
+export function pickupTurns(el: MagnetsEl): number[] {
+  const k = el.pickup;
+  if (!k) return [];
+  const drawn = k.drawn ?? 7;
+  return Array.from({ length: drawn }, (_, j) => k.at[0] - k.long / 2 + ((j + 0.5) / drawn) * k.long);
+}
+
+/**
+ * The flux of the bar magnets through the pickup coil, added over its turns, counted along +x (in
+ * T × length unit², for each turn that is drawn). A pole of strength p sends the flux
+ * 2πp(1 − z ÷ √(z² + a²)) through a turn of radius a that is a distance z along the axis from it,
+ * and inside the magnet all of the flux of a pole, 4πp, runs from the south pole to the north pole,
+ * so the flux through a turn is greatest when the turn is round the middle of the magnet.
+ */
+export function pickupFlux(el: MagnetsEl, state: MagnetsState): number {
+  const k = el.pickup;
+  if (!k) return 0;
+  const turns = pickupTurns(el);
+  let flux = 0;
+  for (const b of el.bars ?? []) {
+    const [north, south] = polesOf({ ...el, bars: [b] }, state);
+    const p = poleStrength(el, north.q);
+    for (const x of turns) {
+      for (const [pole, sign] of [[north, 1], [south, -1]] as const) {
+        const z = x - pole.x;
+        flux += sign * 2 * Math.PI * p * (1 - Math.abs(z) / Math.hypot(z, k.radius)) * Math.sign(z);
+      }
+      // Inside the magnet the flux runs from the south pole to the north pole.
+      if ((x - north.x) * (x - south.x) < 0) flux += 4 * Math.PI * p * Math.sign(north.x - south.x);
+    }
+  }
+  return flux;
+}
+
+/** The plays, with this many seconds more (or fewer) of the last clip. */
+const shifted = (plays: MagnetPlays, by: number): MagnetPlays => plays.map(([name, seconds], i) => (i === plays.length - 1 ? [name, Math.max(0, seconds + by)] : [name, seconds]));
+
+/**
+ * What the pickup coil does at this moment. `emf` is the emf induced in it, minus the rate at which
+ * the flux through it changes (Faraday's law): it is positive when the induced current makes a
+ * field along +x inside the coil, so that the right-hand end of the coil is a north pole. `drag`
+ * is the push of the coil on the magnet along x, which is always against the motion of the magnet
+ * (Lenz's law): the work done against it is the electrical energy, so it is emf² ÷ speed. Bar
+ * magnets are given no strength of their own, so both have no unit; only their signs and how
+ * they compare from moment to moment are drawn.
+ */
+export function pickupAt(el: MagnetsEl, plays: MagnetPlays = []): { emf: number; drag: number } {
+  if (!el.pickup || !plays.length || !el.bars?.length) return { emf: 0, drag: 0 };
+  const dt = 1 / 240;
+  const [before, after] = [magnetsAt(el, shifted(plays, -dt)), magnetsAt(el, shifted(plays, dt))];
+  const gap = (after.time - before.time) * (el.rate ?? 1);
+  if (!(gap > 0)) return { emf: 0, drag: 0 };
+  const emf = -(pickupFlux(el, after) - pickupFlux(el, before)) / gap;
+  const id = el.bars[0].id;
+  const v = (after.at[id][0] - before.at[id][0]) / gap;
+  return { emf, drag: Math.abs(v) > 1e-9 ? -(emf * emf) / v : 0 };
+}
+
+const pickupPeaks = new WeakMap<MagnetsEl, { emf: number; drag: number }>();
+/** The largest emf and the largest push of the pickup coil in any clip (the clips played in the order they are written): what swings the needle right across. */
+export function pickupPeak(el: MagnetsEl): { emf: number; drag: number } {
+  const known = pickupPeaks.get(el);
+  if (known) return known;
+  const top = { emf: 0, drag: 0 };
+  const done: MagnetPlays = [];
+  for (const [name, clip] of Object.entries(el.clips)) {
+    const total = clip.phases.reduce((n, ph) => n + ph.dur, 0);
+    for (let t = 0; t <= total; t += 1 / 30) {
+      const now = pickupAt(el, [...done, [name, t]]);
+      top.emf = Math.max(top.emf, Math.abs(now.emf));
+      top.drag = Math.max(top.drag, Math.abs(now.drag));
+    }
+    done.push([name, total]);
+  }
+  pickupPeaks.set(el, top);
+  return top;
 }
 
 const peaks = new WeakMap<MagnetsEl, number>();

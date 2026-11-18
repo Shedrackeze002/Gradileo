@@ -537,6 +537,34 @@ See `src/video/script.ts` for every element and option. In short:
   wire between two field lines (they are spread evenly over the `span`), and give it
   `labelAt: 'right'`, so that its label and its force arrow stay clear.
 
+  For induction, `pickup: { id, at, long, radius }` is a coil seen from the side, joined to a
+  meter whose needle rests in the middle. Put a bar magnet on its axis and carry it in and out
+  with a clip: the flux of the magnet through the turns is worked out from its poles, and the
+  needle swings with the rate at which that flux changes, one way as the magnet goes in and the
+  other way as it comes out, and further for a faster push (the fastest change in any clip
+  swings it right across). The magnet goes inside the coil, behind the near half of each turn.
+  Three parts go with it: `current` (which way the induced current goes round the turns),
+  `poles` (the poles that current gives the two ends of the coil) and `force` (the push of the
+  coil on the magnet, always against its motion: Lenz's law). `posterAt` catches the poster
+  clip part way through for the thumbnail, while the needle is swung over.
+
+- `induction` (`src/video/induction.ts`) is a circuit in a magnetic field that points through
+  the page, seen face on: `tesla` is the field (negative goes into the page, drawn as crosses;
+  positive comes out, drawn as dots; `region` keeps it to part of the picture). Give it a
+  `loop` (a rectangle of wire with `turns`, joined to a meter that reads the emf) or `rails`
+  (two level rails joined at the left by a resistor of `ohms`, with a `rod` that slides along
+  them). The flux Φ = BA, the emf N ΔΦ ÷ Δt, the current ε ÷ R and the force F = BIL on the rod
+  are all worked out, so nothing is typed in. Parts: `field`, `flux` (the area the field passes
+  through, shaded, and the flux in webers, or milliwebers with `milli`), `emf`, `current`
+  (arrowheads that go round the circuit the way the current does), `velocity`, `force` and
+  `charge` (the ends of the rod its charges are pushed to). A phase changes the field
+  (`tesla`) or the speed of the rod (`speed`) at a steady rate, so a field that rises steadily
+  gives a steady emf, and `free: true` lets go of a rod that has a `mass`, which then slows
+  down under the force on it. `rate` is the seconds of the model for each second of video. A
+  clip with `reset: true` starts from the first picture again, so the rod can cross once in
+  each line of narration. The meter of a coil shows the sign of the emf (positive drives a
+  current anticlockwise). Leave room to the right of a coil for its meter (about 200 pixels).
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as

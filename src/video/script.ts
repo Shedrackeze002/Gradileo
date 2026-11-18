@@ -2038,6 +2038,25 @@ export interface MagnetCoil {
   commutator?: boolean;
 }
 
+/**
+ * A coil joined to a sensitive meter, in a magnets element, seen from the side: its axis lies along
+ * x, and a bar magnet on that axis can be pushed into it. The flux of the magnet through its turns
+ * is worked out from the poles, and while that flux changes an emf is induced: the needle of the
+ * meter swings, further for a faster change, one way as the flux grows and the other way as it falls.
+ */
+export interface MagnetPickup {
+  id: string;
+  /** Its centre, [x, y], in the element's length unit. */
+  at: [number, number];
+  /** Its length along the axis, and the radius of its turns. */
+  long: number;
+  radius: number;
+  /** How many turns are drawn (7 otherwise). */
+  drawn?: number;
+  /** Where the middle of the meter is, [x, y] (under the coil otherwise). */
+  meter?: [number, number];
+}
+
 /** A place in a magnets element: a compass, whose needle turns to the field there, or a probe, which shows the field there as an arrow. */
 export interface MagnetPoint {
   id: string;
@@ -2078,7 +2097,7 @@ export interface MagnetsClip {
 }
 
 /** What a magnets element can show; each is a part ("mag.lines"). */
-export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force', 'weight'] as const;
+export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force', 'weight', 'current', 'poles'] as const;
 
 /**
  * Magnets, wires and compasses seen from above (src/video/magnets.ts): the magnetic field of bar
@@ -2090,7 +2109,9 @@ export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force', 
  * each probe, an arrow along the field, with its strength in teslas when the picture has no bar
  * magnet), `distance` (from the first wire to each probe) and `force` (the push or pull between
  * bar magnets, and the force of the field on each wire and on each side of the coil, F = BIL) and
- * `weight` (the weight of each wire that has a mass). A clip carries things about, turns a magnet,
+ * `weight` (the weight of each wire that has a mass). With a `pickup` coil, `current` shows which
+ * way the induced current goes round its turns, `poles` the poles that current gives the coil, and
+ * `force` the push of the coil on the magnet, against its motion. A clip carries things about, turns a magnet,
  * changes a current or lines up the domains of a piece of iron; while it plays, a wire with a mass
  * moves under the forces on it, and the coil of a motor turns. North is red, south is blue, the
  * field is violet, a current is yellow, a force is orange and a weight is pink. Emphasising an id
@@ -2123,6 +2144,8 @@ export interface MagnetsEl {
   yoke?: { faces: [number, number]; span: [number, number]; thick?: number; base?: number };
   /** The coil of a motor. */
   coil?: MagnetCoil;
+  /** A coil joined to a meter, for a bar magnet to be pushed into. The bar magnets must lie on its axis. */
+  pickup?: MagnetPickup;
   /** Gravity, in m/s², down the screen: the picture is then seen from the side, and a wire with a mass has a weight. */
   g?: number;
   /** Seconds of the model for each second of video, while wires and the coil move (1 otherwise). */
@@ -2139,9 +2162,107 @@ export interface MagnetsEl {
   figures?: number;
   /** The parts drawn on the thumbnail (the field lines and the compasses otherwise). */
   thumb?: string[];
-  /** For the thumbnail: the clip to show, at its end. */
+  /** For the thumbnail: the clip to show, at its end, or this far through it (`posterAt`, from 0 to 1). */
   poster?: string;
+  posterAt?: number;
   clips: Record<string, MagnetsClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  height?: number;
+}
+
+/** A coil seen face on, in an induction element: a rectangle of wire, joined to a meter that reads the emf induced in it. */
+export interface InductionLoop {
+  id: string;
+  /** Its sides: [left, right, bottom, top], in the element's length unit. */
+  rect: [number, number, number, number];
+  /** How many turns it has (1 otherwise). */
+  turns?: number;
+  /** The resistance of its circuit in ohms: an induced current then flows round it (the meter reads the emf, and no current flows, otherwise). */
+  ohms?: number;
+}
+
+/** Two level rails in an induction element, joined at their left ends by a resistor, with a rod that slides along them. */
+export interface InductionRails {
+  id: string;
+  /** Where the rails start (at the resistor) and end: two values of x. */
+  x: [number, number];
+  /** Where the two rails are: two values of y, the lower one first. */
+  y: [number, number];
+  /** The resistance that joins the rails, in ohms (the rod and the rails have none). */
+  ohms: number;
+  /** Where the rod starts: a value of x. */
+  rod: number;
+  /** The speed of the rod at the start, in metres per second (at rest otherwise): positive is to the right. */
+  speed?: number;
+  /** The mass of the rod in kilograms, for a phase that lets it go (`free`). */
+  mass?: number;
+}
+
+/** A stretch of an induction clip: the field changes steadily, the rod is brought steadily to a speed, or the rod is let go. */
+export interface InductionPhase {
+  /** How long it lasts, in seconds of video. */
+  dur: number;
+  /** The field by its end, in teslas: it changes at a steady rate. */
+  tesla?: number;
+  /** The speed of the rod by its end, in metres per second: it changes at a steady rate, as if a hand moved the rod. */
+  speed?: number;
+  /** Let the rod go: only the magnetic force on it acts, so it slows down. The rod needs a mass. */
+  free?: boolean;
+}
+
+export interface InductionClip {
+  /** Start again from the first picture: the field and the rod go back to where they began before the clip plays. */
+  reset?: boolean;
+  phases: InductionPhase[];
+}
+
+/** What an induction element can show; each is a part ("ind.flux"). */
+export const INDUCTION_PARTS = ['field', 'flux', 'emf', 'current', 'velocity', 'force', 'charge'] as const;
+
+/**
+ * A circuit in a magnetic field that points through the page (src/video/induction.ts): a coil seen
+ * face on (`loop`), or two rails with a rod that slides along them (`rails`). The flux through the
+ * circuit is Φ = BA, and while it changes an emf is induced, ε = NΔΦ ÷ Δt (Faraday's law): for a
+ * rod of length L that moves at v across a field B, ε = BLv. The induced current flows the way
+ * that opposes the change (Lenz's law), and the field pushes back on the rod with F = BIL.
+ * Showing the element shows the circuit; showing a part adds it: `field` (a dot where the field
+ * comes out of the page and a cross where it goes in, larger in a stronger field, with its
+ * strength), `flux` (the area of the circuit that the field passes through, and the flux), `emf`
+ * (the emf, on the meter of a coil or beside the rod), `current` (arrowheads that go round the
+ * circuit the way the current does, and its size), `velocity` and `force` (of the rod) and
+ * `charge` (the ends of the rod the field pushes its charges to). A clip changes the field or the
+ * speed of the rod at a steady rate, or lets the rod go. The field is violet, a current is yellow,
+ * a velocity is green and a force is orange. Emphasising an id makes that thing glow.
+ */
+export interface InductionEl {
+  kind: 'induction';
+  id: string;
+  /** The part of the plane that is drawn: [left, right, bottom, top], in the length unit. */
+  view: [number, number, number, number];
+  /** The length unit: how many metres it is, and its symbol (metres otherwise). */
+  length?: { metres: number; symbol: string };
+  /** The field at the start, in teslas: positive comes out of the page, negative goes into it. */
+  tesla: number;
+  /** Where the field is: [left, right, bottom, top] (everywhere otherwise). */
+  region?: [number, number, number, number];
+  /** Give a coil or the rails, not both. */
+  loop?: InductionLoop;
+  rails?: InductionRails;
+  /** Seconds of the model for each second of video (1 otherwise). */
+  rate?: number;
+  /** Write the flux in milliwebers (webers otherwise). */
+  milli?: boolean;
+  /** How long a velocity arrow is, in pixels for each metre per second, and a force arrow, in pixels for each newton. */
+  velocityScale?: number;
+  forceScale?: number;
+  /** Significant figures of what is written (2 otherwise). */
+  figures?: number;
+  /** The parts drawn on the thumbnail (the field and the current otherwise). */
+  thumb?: string[];
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  clips: Record<string, InductionClip>;
   /** A label at the top left of the picture. */
   label?: string;
   height?: number;
@@ -2241,7 +2362,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -2857,6 +2978,48 @@ export function checkParticles(e: ParticlesEl): string[] {
   return problems;
 }
 
+/** Problems with an induction element: a view with no size, no circuit or two, a circuit outside the view, clips that ask for what the circuit cannot do. */
+export function checkInduction(e: InductionEl): string[] {
+  const problems: string[] = [];
+  const [x0, x1, y0, y1] = e.view;
+  if (!(x1 > x0 && y1 > y0)) problems.push('the view needs its right above its left, and its top above its bottom.');
+  if (e.length && !(e.length.metres > 0)) problems.push('the length unit must be more than zero metres.');
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
+  if (!Number.isFinite(e.tesla)) problems.push('the field needs a strength in teslas.');
+  if (e.region && !(e.region[1] > e.region[0] && e.region[3] > e.region[2])) problems.push('the field needs a region with its right above its left, and its top above its bottom.');
+  if (Boolean(e.loop) === Boolean(e.rails)) problems.push('it needs a coil or two rails, and not both.');
+  const circuit = e.loop ?? e.rails;
+  if (circuit && (INDUCTION_PARTS as readonly string[]).includes(circuit.id)) problems.push(`the id "${circuit.id}" is the name of a part.`);
+  if (e.loop) {
+    const [l, r, b, t] = e.loop.rect;
+    if (!(r > l && t > b)) problems.push('the coil needs its right above its left, and its top above its bottom.');
+    if (l < x0 || r > x1 || b < y0 || t > y1) problems.push('the coil is outside the view.');
+    if (e.loop.turns !== undefined && !(Number.isInteger(e.loop.turns) && e.loop.turns >= 1)) problems.push('the coil needs a whole number of turns.');
+    if (e.loop.ohms !== undefined && !(e.loop.ohms > 0)) problems.push('the coil needs a resistance above zero.');
+  }
+  if (e.rails) {
+    const k = e.rails;
+    if (!(k.x[1] > k.x[0] && k.y[1] > k.y[0])) problems.push('the rails need their end to the right of their start, and the upper rail above the lower one.');
+    if (k.x[0] < x0 || k.x[1] > x1 || k.y[0] < y0 || k.y[1] > y1) problems.push('the rails are outside the view.');
+    if (!(k.ohms > 0)) problems.push('the rails need a resistance above zero between them.');
+    if (!(k.rod > k.x[0] && k.rod < k.x[1])) problems.push('the rod must start on the rails.');
+    if (k.mass !== undefined && !(k.mass > 0)) problems.push('the rod needs a mass above zero.');
+  }
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  for (const part of e.thumb ?? []) if (!(INDUCTION_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.tesla !== undefined && !Number.isFinite(ph.tesla)) problems.push(`clip "${name}" needs a field in teslas.`);
+      if ((ph.speed !== undefined || ph.free) && !e.rails) problems.push(`clip "${name}" moves a rod, and the picture has no rails.`);
+      if (ph.speed !== undefined && ph.free) problems.push(`clip "${name}" lets the rod go and sets its speed in the same phase.`);
+      if (ph.free && e.rails && e.rails.mass === undefined) problems.push(`clip "${name}" lets the rod go, so the rod needs a mass.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a magnets element: a view with no size, ids used twice, things outside the view, clips that name nothing. */
 export function checkMagnets(e: MagnetsEl): string[] {
   const problems: string[] = [];
@@ -2889,6 +3052,19 @@ export function checkMagnets(e: MagnetsEl): string[] {
     if (c.at[0] - c.radius < x0 || c.at[0] + c.radius > x1 || c.at[1] - c.radius < y0 || c.at[1] + c.radius > y1) problems.push('the coil turns outside the view.');
     if (e.yoke && (c.at[0] - c.radius < e.yoke.faces[0] || c.at[0] + c.radius > e.yoke.faces[1] || c.at[1] - c.radius < e.yoke.span[0] || c.at[1] + c.radius > e.yoke.span[1])) problems.push('the coil turns outside the gap between the poles.');
   }
+  if (e.pickup) {
+    const k = e.pickup;
+    ids.add(k.id);
+    if ((MAGNETS_PARTS as readonly string[]).includes(k.id)) problems.push(`the id "${k.id}" is the name of a part.`);
+    if (!(k.long > 0 && k.radius > 0)) problems.push('the pickup coil needs a length and a radius above zero.');
+    if (k.drawn !== undefined && !(Number.isInteger(k.drawn) && k.drawn >= 2)) problems.push('the pickup coil needs two or more turns drawn.');
+    if (k.at[0] - k.long / 2 < x0 || k.at[0] + k.long / 2 > x1 || k.at[1] - k.radius < y0 || k.at[1] + k.radius > y1) problems.push('the pickup coil is outside the view.');
+    if (!bars.length) problems.push('a pickup coil needs a bar magnet to induce an emf in it.');
+    for (const b of bars) {
+      if (b.at[1] !== k.at[1] || (b.angle ?? 0) % 180 !== 0) problems.push(`bar "${b.id}" must lie along the axis of the pickup coil.`);
+      if (!(b.thick < 2 * k.radius)) problems.push(`bar "${b.id}" is too thick to go into the pickup coil.`);
+    }
+  }
   for (const o of all) {
     if (ids.has(o.id)) problems.push(`the id "${o.id}" is used twice.`);
     ids.add(o.id);
@@ -2904,6 +3080,7 @@ export function checkMagnets(e: MagnetsEl): string[] {
   if (e.earth !== undefined && (!bars.length || !(e.earth > 0))) problems.push('the Earth needs a bar magnet inside it and a radius above zero.');
   for (const [sx, sy] of e.seeds ?? []) if (sx < x0 || sx > x1 || sy < y0 || sy > y1) problems.push(`the seed at (${sx}, ${sy}) is outside the view.`);
   if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1 && e.poster !== undefined)) problems.push('`posterAt` needs a poster clip, and a part of it from 0 to 1.');
   for (const part of e.thumb ?? []) if (!(MAGNETS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
   const named = (group: Array<{ id: string }>) => new Set(group.map((o) => o.id));
   const [barIds, wireIds, ironIds] = [named(bars), named(wires), named(iron)];
@@ -2914,10 +3091,13 @@ export function checkMagnets(e: MagnetsEl): string[] {
       for (const [id, [tx, ty]] of Object.entries(ph.to ?? {})) {
         if (!ids.has(id)) problems.push(`clip "${name}" moves "${id}", which is not in the picture.`);
         else if (id === e.coil?.id) problems.push(`clip "${name}" moves the coil, which stays on its axle.`);
+        else if (id === e.pickup?.id) problems.push(`clip "${name}" moves the pickup coil: move the magnet instead.`);
+        else if (e.pickup && barIds.has(id) && ty !== e.pickup.at[1]) problems.push(`clip "${name}" moves "${id}" off the axis of the pickup coil.`);
         else if (wires.some((w) => w.id === id && w.mass !== undefined)) problems.push(`clip "${name}" moves "${id}", which has a mass and moves by itself.`);
         else if (tx < x0 || tx > x1 || ty < y0 || ty > y1) problems.push(`clip "${name}" moves "${id}" outside the view.`);
       }
       for (const id of Object.keys(ph.turn ?? {})) if (!barIds.has(id)) problems.push(`clip "${name}" turns "${id}", which is not a bar magnet.`);
+      if (e.pickup && Object.keys(ph.turn ?? {}).length) problems.push(`clip "${name}" turns a magnet, which must stay along the axis of the pickup coil.`);
       for (const id of Object.keys(ph.amps ?? {})) if (!wireIds.has(id) && id !== e.coil?.id) problems.push(`clip "${name}" sets the current of "${id}", which is not a wire.`);
       for (const [id, order] of Object.entries(ph.order ?? {})) {
         if (!ironIds.has(id)) problems.push(`clip "${name}" lines up "${id}", which is not a piece of iron.`);
@@ -3082,7 +3262,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -3135,9 +3315,15 @@ export function checkScript(x: Explainer): string[] {
         problems.push(...checkCharges(e, played).map((p) => `Scene ${si + 1}: charges "${e.id}": ${p}`));
       }
       if (e.kind === 'magnets') {
-        diagrams.set(e.id, new Set<string>([...MAGNETS_PARTS, ...[...(e.bars ?? []), ...(e.wires ?? []), ...(e.iron ?? []), ...(e.compasses ?? []), ...(e.probes ?? []), ...(e.coil ? [e.coil] : [])].map((o) => o.id)]));
+        diagrams.set(e.id, new Set<string>([...MAGNETS_PARTS, ...[...(e.bars ?? []), ...(e.wires ?? []), ...(e.iron ?? []), ...(e.compasses ?? []), ...(e.probes ?? []), ...(e.coil ? [e.coil] : []), ...(e.pickup ? [e.pickup] : [])].map((o) => o.id)]));
         motions.set(e.id, e);
         problems.push(...checkMagnets(e).map((p) => `Scene ${si + 1}: magnets "${e.id}": ${p}`));
+      }
+      if (e.kind === 'induction') {
+        const circuit = e.loop ?? e.rails;
+        diagrams.set(e.id, new Set<string>([...INDUCTION_PARTS, ...(circuit ? [circuit.id] : [])]));
+        motions.set(e.id, e);
+        problems.push(...checkInduction(e).map((p) => `Scene ${si + 1}: induction "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
