@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkParticles, checkScript, type Explainer, type ParticleBox, type ParticlesEl } from './script.ts';
-import { controlsAt, particlesAt, pressureOf, singular, TEMPS } from './particles.ts';
+import { controlsAt, particlesAt, pressureOf, shearLine, singular, TEMPS } from './particles.ts';
 import { hydrogenBurning } from './reactions.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
@@ -686,5 +686,47 @@ describe('particles: pouring into a liquid', () => {
     expect(light.x).toHaveLength(54);
     expect(m(light, 1)).toBeGreaterThan(m(light, 0) + 2);
     expect(m(dense, 1)).toBeLessThan(m(dense, 0));
+  });
+});
+
+describe('particles: pushing a metal and an alloy', () => {
+  const bar = (id: string, alloy: boolean): ParticlesEl => ({
+    kind: 'particles',
+    id,
+    boxes: [
+      {
+        id: 'b',
+        state: 'solid',
+        width: 20,
+        height: 6,
+        cols: 12,
+        bare: true,
+        ...(alloy ? { pin: [1] } : {}),
+        kinds: alloy ? [{ n: 36, bond: 3 }, { n: 12, bond: 3, size: 1.35 }] : [{ n: 48, bond: 3 }],
+      },
+    ],
+    clips: { push: { phases: [{ dur: 4, push: { b: 0.7 } }, { dur: 1.5, push: { b: 0 } }] } },
+  });
+  /** How far the top half has slid past the bottom half, following each particle. */
+  const slid = (e: ParticlesEl) => {
+    const [a] = particlesAt(e, [['push', 0]], 0);
+    const [b] = particlesAt(e, [['push', 0]], 7);
+    const mid = shearLine(a.y);
+    const top = a.x.map((_, i) => a.y[i] > mid);
+    const shift = (want: boolean) => mean(a.x.flatMap((x, i) => (top[i] === want ? [b.x[i] - x] : [])));
+    return shift(true) - shift(false);
+  };
+
+  it('slides the rows of a pure metal over one another', () => {
+    expect(slid(bar(`push-pure-${n++}`, false))).toBeGreaterThan(2);
+  });
+
+  it('jams an alloy, whose pinned atoms stop the rows sliding', () => {
+    expect(Math.abs(slid(bar(`push-alloy-${n++}`, true)))).toBeLessThan(0.6);
+  });
+
+  it('checks that only a solid is pushed or pinned', () => {
+    const e: ParticlesEl = { kind: 'particles', id: 'x', boxes: [{ id: 'b', state: 'liquid', n: 10, pin: [0] }], clips: { c: { phases: [{ dur: 1, push: { b: 1 } }] } } };
+    expect(checkParticles(e).join(' ')).toMatch(/only a solid can have pinned atoms.*pushes box "b", which is not a solid/);
   });
 });

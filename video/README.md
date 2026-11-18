@@ -476,6 +476,11 @@ See `src/video/script.ts` for every element and option. In short:
     (`release: ['b']`); then particles smaller than the holes fall through and bigger ones stay.
   - A kind marked `magnetic` is pulled up towards a magnet drawn over the box while a phase's
     `magnet: { b: 1 }` holds it there (`0` takes it away).
+  - A phase's `push: { b: 0.7 }` pushes a solid sideways, its top half to the right and its bottom
+    half to the left, as a hammer blow does (arrows show the push; `0` lets go). Each half moves at
+    a steady pace once it gives. Metal atoms with `bond` about 3 slide over one another and stay
+    moved; `pin: [1]` fixes that kind's atoms where they settled, spread evenly through the rows
+    (the bigger atoms of an alloy), so the rows jam and the bar hardly gives. See `c8-4-3.ts`.
   - `escape: true` gives the box an open top that particles leave by (evaporation): one that
     reaches the top is gone. A kind with `bond` 2 or more (a salt) never leaves; it falls back.
     `escape: [4]` lets only the kinds listed leave (a gas bubbling out of a solution).

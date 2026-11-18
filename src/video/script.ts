@@ -644,6 +644,11 @@ export interface ParticleBox {
    * cotton wool at the ends of a tube), until a phase lets them go (`release`).
    */
   hold?: boolean | number[];
+  /**
+   * Kinds fixed in place once the box has settled, so a push (`push` in a phase) cannot slide the
+   * rows past them: the odd-sized atoms of an alloy, which jam its layers.
+   */
+  pin?: number[];
   /** With several kinds, start them apart (the first kind on the left) instead of mixed. */
   apart?: boolean;
   /**
@@ -749,6 +754,11 @@ export interface ParticlePhase {
   run?: Record<string, number>;
   /** How strongly a current flows through each box's electrodes (0 off; 1 the usual), reached steadily. */
   power?: Record<string, number>;
+  /**
+   * Push each box's solid sideways (1 is a firm push; 0 lets go), its top half to the right and its
+   * bottom half to the left, as a hammer blow does: the rows of a metal slide over one another.
+   */
+  push?: Record<string, number>;
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
@@ -2053,6 +2063,8 @@ export function checkParticles(e: ParticlesEl): string[] {
     for (const r of b.breaks ?? []) if (![...r.kinds, ...r.to].every(ok)) problems.push(`box "${b.id}": a break names a kind it does not have.`);
     if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
     if (b.reserve && !b.reserve.every(ok)) problems.push(`box "${b.id}": the burette holds a kind the box does not have.`);
+    if (b.pin && !b.pin.every(ok)) problems.push(`box "${b.id}": it pins a kind it does not have.`);
+    if (b.pin && b.state !== 'solid') problems.push(`box "${b.id}": only a solid can have pinned atoms.`);
     if (b.indicator && ![...b.indicator.acid, ...b.indicator.base].every(ok)) problems.push(`box "${b.id}": the indicator watches a kind the box does not have.`);
   }
   for (const [name, clip] of Object.entries(e.clips)) {
@@ -2064,6 +2076,7 @@ export function checkParticles(e: ParticlesEl): string[] {
         const b = e.boxes.find((bb) => bb.id === id);
         if (!b?.hold && !b?.filter && !b?.waits) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
       }
+      for (const id of Object.keys(ph.push ?? {})) if (e.boxes.find((b) => b.id === id)?.state !== 'solid') problems.push(`clip "${name}", phase ${pi + 1} pushes box "${id}", which is not a solid.`);
       for (const id of [...Object.keys(ph.stir ?? {}), ...Object.keys(ph.magnet ?? {}), ...Object.keys(ph.power ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const id of Object.keys(ph.add ?? {})) if (!e.boxes.find((b) => b.id === id)?.reserve?.length) problems.push(`clip "${name}", phase ${pi + 1} pours into box "${id}", which has no burette (\`reserve\`).`);
       for (const id of Object.keys(ph.run ?? {})) if (!e.boxes.find((b) => b.id === id)?.paper) problems.push(`clip "${name}", phase ${pi + 1} runs solvent up box "${id}", which is not paper.`);

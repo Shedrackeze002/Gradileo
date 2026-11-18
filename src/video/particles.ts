@@ -76,6 +76,8 @@ export interface Controls {
   added: Record<string, number>;
   /** How strongly the current through each box's electrodes is flowing (0 off, 1 the usual). */
   power: Record<string, number>;
+  /** How hard each box's solid is being pushed: its top half one way and its bottom half the other. */
+  push: Record<string, number>;
 }
 
 /** A play of a clip: its name and the element's age (seconds since shown) when it started. */
@@ -92,7 +94,9 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
   const run: Record<string, number> = {};
   const added: Record<string, number> = {};
   const power: Record<string, number> = {};
+  const push: Record<string, number> = {};
   for (const b of el.boxes) {
+    push[b.id] = 0;
     added[b.id] = 0;
     power[b.id] = 0;
     stir[b.id] = 0;
@@ -114,13 +118,14 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
       for (const [id, v] of Object.entries(ph.magnet ?? {})) magnet[id] += (v - magnet[id]) * k;
       for (const [id, v] of Object.entries(ph.run ?? {})) run[id] += (v - run[id]) * k;
       for (const [id, v] of Object.entries(ph.power ?? {})) power[id] += (v - power[id]) * k;
+      for (const [id, v] of Object.entries(ph.push ?? {})) push[id] += (v - push[id]) * k;
       for (const [id, v] of Object.entries(ph.heat ?? {})) temp[id] += (tempOf(v, temp[id]) - temp[id]) * k;
       for (const [id, v] of Object.entries(ph.lid ?? {})) lid[id] += (v - lid[id]) * k;
       for (const [id, v] of Object.entries(ph.add ?? {})) added[id] += v * k;
       t += ph.dur;
     }
   }
-  return { temp, lid, lifted, released, stir, magnet, run, added, power };
+  return { temp, lid, lifted, released, stir, magnet, run, added, power, push };
 }
 
 export interface Hit {
@@ -214,6 +219,8 @@ export interface BoxFrame {
   stir: number;
   /** How strongly a magnet over the box is pulling now. */
   magnet: number;
+  /** How hard the solid is being pushed now (its top half right, its bottom half left). */
+  push: number;
   /** The filter's height, and whether it lets the small particles through yet. */
   filter?: { y: number; open: boolean };
   /** How far up a paper box the solvent has soaked. */
@@ -271,6 +278,58 @@ function forces(s: BoxSim, temp: number, sigma = 1, stir = 0, w = 10, h = 10, ma
       fx[i] += (MAGNET * magnet * dx) / r;
       fy[i] += (MAGNET * magnet * dy) / r;
     }
+  }
+}
+
+/**
+ * Where a pushed solid splits into its top and bottom halves: the widest gap between rows near
+ * its middle, so a whole row always stays on one side.
+ */
+export function shearLine(heights: number[]): number {
+  const ys = [...heights].sort((p, q) => p - q);
+  let best = Math.floor(ys.length / 2);
+  let gap = -1;
+  for (let k = Math.floor(ys.length / 3); k < Math.ceil((2 * ys.length) / 3) && k < ys.length - 1; k++) {
+    // Gaps nearer the middle win a near tie, so the halves come out about even.
+    const g = ys[k + 1] - ys[k] - Math.abs(k + 0.5 - ys.length / 2) * 1e-3;
+    if (g > gap) (gap = g), (best = k);
+  }
+  return ys.length > 1 ? (ys[best] + ys[best + 1]) / 2 : ys[0];
+}
+
+/** How hard a push of 1 pushes each particle (a shear: the top half one way, the bottom the other). */
+const PUSH_F = 6;
+/** The steady pace (particle diameters a second) a push of 1 moves each half at, once it gives. */
+const PUSH_V = 1;
+
+/**
+ * Pushes a solid sideways, its top half to the right and its bottom half to the left, as a hammer
+ * blow or a bend does: in a metal the rows of atoms slide over one another; atoms of another size
+ * (an alloy) jam the rows, so it hardly gives.
+ */
+function shear(s: BoxSim, push: number) {
+  const ys: number[] = [];
+  for (let i = 0; i < s.n; i++) if (!s.gone[i] && !s.held[i]) ys.push(s.y[i]);
+  if (!ys.length) return;
+  const mid = shearLine(ys);
+  // A hand pushes at a steady pace, not ever faster: each half is pushed only while it moves
+  // slower than PUSH_V, so a metal that gives slides steadily and one that jams stays put.
+  let top = 0;
+  let bot = 0;
+  let nt = 0;
+  let nb = 0;
+  for (let i = 0; i < s.n; i++) {
+    if (s.gone[i] || s.held[i]) continue;
+    if (s.y[i] > mid) (top += s.vx[i]), nt++;
+    else (bot += s.vx[i]), nb++;
+  }
+  const pushTop = nt && top / nt < PUSH_V * push;
+  const pushBot = nb && bot / nb > -PUSH_V * push;
+  for (let i = 0; i < s.n; i++) {
+    if (s.gone[i] || s.held[i]) continue;
+    if (s.y[i] > mid) {
+      if (pushTop) s.fx[i] += push * PUSH_F;
+    } else if (pushBot) s.fx[i] -= push * PUSH_F;
   }
 }
 
@@ -726,6 +785,29 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       for (let i = 0; i < kd.n; i++) s.kind[order[at++]] = ki;
     });
   }
+  // Pinned kinds are spread evenly through a solid's rows, staggered from row to row, so every
+  // part of it is held and no loose end can be pushed off on its own.
+  if (b.pin?.length && b.state === 'solid' && !units && !b.lump) {
+    const pinned = Array.from({ length: n }, (_, i) => i).filter((i) => b.pin!.includes(s.kind[i]));
+    const kindsOf = pinned.map((i) => s.kind[i]);
+    const free = Array.from({ length: n }, (_, i) => i).filter((i) => !b.pin!.includes(s.kind[i])).map((i) => s.kind[i]);
+    const rows = new Map<number, number[]>();
+    for (let i = 0; i < n; i++) {
+      const r = Math.round(s.y[i] * 4);
+      rows.set(r, [...(rows.get(r) ?? []), i]);
+    }
+    const chosen = new Set<number>();
+    let left = pinned.length;
+    [...rows.keys()].sort((a, c) => a - c).forEach((r, ri, all) => {
+      const row = rows.get(r)!.sort((a, c) => s.x[a] - s.x[c]);
+      const want = ri === all.length - 1 ? left : Math.min(left, Math.round((pinned.length * row.length) / n));
+      for (let j = 0; j < want; j++) chosen.add(row[Math.min(row.length - 1, Math.max(0, Math.round(((j + 0.5 + (ri % 2 ? 0.25 : -0.25)) * row.length) / want)))]);
+      left -= want;
+    });
+    let a = 0;
+    let c = 0;
+    for (let i = 0; i < n; i++) s.kind[i] = chosen.has(i) && a < kindsOf.length ? kindsOf[a++] : (free[c++] ?? kindsOf[a++]);
+  }
   // In a liquid or solid, kinds kept back to pour in later take the top places, so what is in
   // the box from the start is packed at the bottom, with no gaps where they were.
   if (b.reserve?.length && b.state !== 'gas' && !units && !b.lump) {
@@ -819,6 +901,8 @@ interface StepOpts {
   stir?: number;
   /** How strongly a magnet pulls. */
   magnet?: number;
+  /** How hard the solid is pushed, its top half to the right and its bottom half to the left. */
+  push?: number;
   /** A filter's height, the size of its holes, and whether it lets small particles through yet. */
   filter?: { y: number; holes: number; open: boolean };
   /** A low wall that never lifts: where it stands and how tall it is. */
@@ -959,6 +1043,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   // or goes over the wall anyway, and the dissolved solid must stay at the bottom.
   const gravityTemp = o.escape || o.wall ? 0 : o.bath || zones ? measuredTemp(s) : temp;
   forces(s, gravityTemp, o.sigma, o.stir ?? 0, w, lid, o.magnet ?? 0);
+  if (o.push) shear(s, o.push);
   // With the current on, positive ions are pushed towards the left electrode (the cathode) and
   // negative ones towards the right (the anode).
   if (o.power) for (let i = 0; i < n; i++) if (s.charge[kind[i]]) fx[i] -= s.charge[kind[i]] * FIELD * o.power;
@@ -1169,6 +1254,7 @@ function optsFor(b: ParticleBox, ctl?: Controls): StepOpts {
     sigma: ctl && b.expand ? 1 + b.expand * Math.max(0, temp - t0) : 1,
     stir: ctl?.stir[b.id],
     magnet: ctl?.magnet[b.id],
+    push: ctl?.push[b.id],
     run: ctl?.run[b.id],
     filter: b.filter && { y: b.filter.at * h, holes: b.filter.holes, open: ctl?.released[b.id] !== undefined },
     wall: b.wall && { x: b.wall.at * w, top: b.wall.height * h },
@@ -1275,6 +1361,9 @@ function warmBoxes(el: ParticlesEl): BoxSim[] {
       // The whole box is held at its temperature while it settles, even one with a bath.
       const o = optsFor(b);
       for (let k = 0; k < steps; k++) step(s, o, t, s.lidY, 0, false);
+      // Pinned kinds (the odd-sized atoms of an alloy) are fixed where they settled, so a push
+      // cannot slide the rows past them.
+      if (b.pin) for (let i = 0; i < s.n; i++) if (b.pin.includes(s.kind[i])) (s.held[i] = 1), (s.stuck[i] = 1);
       seeds.set(s, (el.seed ?? 7) * 31 + bi);
       return s;
     });
@@ -1387,6 +1476,7 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       stir: ctl.stir[b.id],
       span0: c!.spans[bi],
       magnet: ctl.magnet[b.id],
+      push: ctl.push[b.id],
       filter: b.filter && { y: b.filter.at * boxSize(b).h, open: ctl.released[b.id] !== undefined },
       front: s.front,
       goneCount,
