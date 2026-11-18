@@ -18,7 +18,8 @@ Unit B, Forces and Fields, has its ten lessons and twenty skills, and Unit C, El
 Radiation, has its eight lessons and sixteen skills, and Unit D, Atomic and Nuclear Physics, has
 its seven lessons and fourteen skills. Grade 12 Physics is listed for classes and sign-up
 (18 November 2026): it is recommended in Grade 12, with a placement check on Grade 11 Physics.
-Its videos come next, unit by unit.
+Its videos are being made unit by unit: the nine videos of Unit A, Momentum and Impulse, are
+rendered and in Drive (18 November 2026), and Units B to D come next.
 
 ## Shape
 
@@ -73,7 +74,8 @@ this level.
 | C. Electromagnetic Radiation | The electromagnetic spectrum and the speed of light · Reflection and curved mirrors · Refraction and Snell's law · Lenses · Diffraction and interference · The photoelectric effect · The Compton effect and photon momentum · Wave-particle duality | Rays tracing through mirrors and lenses to build the image, waves spreading through two slits, photons freeing electrons only above the threshold frequency |
 | D. Atomic and Nuclear Physics | Cathode rays and the electron · Rutherford's nucleus · The Bohr model and spectra · The nucleus and isotopes · Radioactive decay · Half-life · Fission, fusion and binding energy | Alpha particles scattering off a nucleus, an electron dropping between energy levels and giving out a photon, a sample decaying while its half-life curve draws itself |
 
-The sample `phys-sample-momentum` becomes the opening video of Unit A.
+The sample `phys-sample-momentum` was retired when Unit A's nine videos were made (18 November
+2026): its collisions are in `p30-1-3`.
 
 ## Animation
 
@@ -84,7 +86,7 @@ built when the first unit that needs it is reached.
 | Piece | Shows | First needed in | State |
 |---|---|---|---|
 | Bodies on a straight track (`motion`) | Forces, velocity arrows, strobe marks, a clock, a velocity-time graph, momentum bars, collisions | Grade 10, Units 1 and 2 | Built |
-| Motion in two dimensions (`flight`) | Projectiles, a boat in a current, displacements on a map | Grade 11, Unit 1 | Built |
+| Motion in two dimensions (`flight`) | Projectiles, a boat in a current, displacements on a map; collisions and explosions seen from above, with momentum bars for east and north | Grade 11, Unit 1; Grade 12, Unit A | Built |
 | Blocks on a surface (`ramp`) | Friction, inclined planes, strings and pulleys, with every force worked out | Grade 11, Unit 2 | Built |
 | Forces in a plane (`forces`) | A puck seen from above, an object hung from two cables | Grade 11, Unit 2 | Built |
 | Bodies in space (`gravity`) | Universal gravitation, gravitational fields | Grade 11, Unit 2 | Built |
@@ -113,7 +115,8 @@ built when the first unit that needs it is reached.
 3. Grade 11 lessons and questions, then its videos.
 4. Grade 12 lessons and questions, then its videos.
 
-The two samples stay off YouTube until their lessons exist.
+The two samples stayed off YouTube: one became the video of lesson 2.3 of Grade 10, and the other
+was retired when Grade 12 Unit A's videos were made.
 
 ## Choices the owner may change
 

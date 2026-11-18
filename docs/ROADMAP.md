@@ -1199,8 +1199,9 @@ items ship or decisions change.
        (`src/video/motion.ts`, `video/README.md`). Two sample videos for the owner to judge the
        style: `phys-sample-forces` (what a force does, Newton's second law, friction and net
        force; since moved to `p10-2-3`) and `phys-sample-momentum` (momentum, two collisions,
-       conservation), in `src/content/physics/videos/`. They are samples: not lessons of a
-       course, and not on YouTube.
+       conservation; retired on 18 November 2026, when the videos of Grade 12 Unit 1 took its
+       place), in `src/content/physics/videos/`. They were samples: not lessons of a course, and
+       never on YouTube.
      - Decision (the owner, 14 November 2026): the style of the two samples is approved ("this
        works"). The engine and samples are merged (pull request #185).
      - Plan: `docs/PLAN-PHYSICS.md`, sent to the owner on 14 November 2026: Grade 10, 11 and 12
@@ -1354,10 +1355,21 @@ items ship or decisions change.
        topics (a new group, Fields, atoms and nuclei, and new topics for momentum, mirrors and
        lenses, and diffraction and interference), and two end-to-end tests cover a Grade 12
        class and a Grade 12 sign-up.
-     - Next: the videos of Grade 12 Physics, unit by unit, starting with Unit 1, Momentum and
-       Impulse.
-       `phys-sample-momentum` becomes the first video of Grade 12 Unit 1 and stays off YouTube
-       until then. The physics lessons have no tutor recordings yet.
+     - Done (18 November 2026): **the nine videos of Grade 12 Unit 1, Momentum and Impulse**
+       (`p30-1-1` to `p30-1-5-b`), rendered and in Drive: momentum, impulse, force-time graphs,
+       the conservation of momentum, recoil and explosions, kinetic energy in collisions (with
+       the ballistic pendulum), elastic collisions, momentum at right angles, and glancing
+       collisions and explosions. The sample `phys-sample-momentum` is retired: its collisions
+       are in `p30-1-3`. `motion` gained a force-time graph whose area is the impulse, bars for
+       a system's kinetic energy and what a collision loses, three collisions side by side, and
+       a pendulum's rise in centimetres. `flight` gained a view from above for momentum in two
+       dimensions: cars and pucks with a mass that collide as discs (pushed along the line
+       through their centres, so a glancing blow turns both aside, and with `stick` they lock
+       together), explosions given as impulses that must add up to zero, bars for the east and
+       north momentum of each body and of the total, and the total momentum drawn as a triangle
+       at the centre of mass. Nothing after a collision is typed in.
+     - Next: the videos of Grade 12 Units 2 to 4 (Forces and Fields first, which needs the
+       charges-and-fields picture). The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
