@@ -1331,8 +1331,17 @@ items ship or decisions change.
        induction, generators and transformers. Every constant a question needs is stated in the
        question, and directions use one right-hand rule (thumb along the velocity or current,
        fingers along the field, palm along the force).
-     - Next: Units 3 and 4 of Grade 12 Physics (Electromagnetic Radiation, Atomic and Nuclear
-       Physics), the listing for classes and sign-up, and then its videos.
+     - Built (18 November 2026): Unit 3 of Grade 12 Physics, **Electromagnetic Radiation**, eight
+       lessons and sixteen question types: electromagnetic waves, the spectrum and the speed of
+       light (with radar echoes and Michelson's rotating mirror), reflection and curved mirrors,
+       refraction and Snell's law, total internal reflection and dispersion, lenses, Young's
+       double slit and diffraction gratings, photons and the photoelectric effect, the momentum
+       of a photon and the Compton effect, and de Broglie waves and wave-particle duality. The
+       mirror and lens questions share one sign convention (negative image distance for a
+       virtual image, negative focal length for a diverging mirror or lens), and every constant
+       is stated in the question.
+     - Next: Unit 4 of Grade 12 Physics (Atomic and Nuclear Physics), the listing for classes
+       and sign-up, and then its videos.
        `phys-sample-momentum` becomes the first video of Grade 12 Unit 1 and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none

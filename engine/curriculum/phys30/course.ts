@@ -14,6 +14,8 @@ export const OUTCOMES: Outcome[] = [
   { code: '30-B1', strand: 'Forces and Fields', text: 'Explain electric charge and how objects are charged, and apply Coulomb’s law to the forces between point charges.' },
   { code: '30-B2', strand: 'Forces and Fields', text: 'Describe electric fields and potential difference, analyse the motion of charges in uniform electric fields, and analyse circuits with resistors in series and in parallel.' },
   { code: '30-B3', strand: 'Forces and Fields', text: 'Describe magnetic fields, find the magnetic forces on moving charges and on current-carrying conductors, and explain electromagnetic induction, motors and generators.' },
+  { code: '30-C1', strand: 'Electromagnetic Radiation', text: 'Describe electromagnetic radiation as a wave: its spectrum and speed, its reflection and refraction, the images formed by mirrors and lenses, and its diffraction and interference.' },
+  { code: '30-C2', strand: 'Electromagnetic Radiation', text: 'Describe electromagnetic radiation as photons: explain the photoelectric effect and the Compton effect, and relate the wave and particle behaviour of light and of matter.' },
 ];
 
 const L = (
@@ -92,11 +94,46 @@ export const LESSONS: LessonMeta[] = [
     ['p30-induction', 'p30-generator'],
     ['Use Faraday’s law and Lenz’s law to find the size and the direction of an induced emf', 'Explain how generators and transformers work, and use the turns and power rules of an ideal transformer'],
     75, ['electromagnetic induction', 'magnetic flux', 'Faraday’s law', 'Lenz’s law', 'generator', 'slip rings', 'transformer']),
+
+  // ---------------- Unit 3: Electromagnetic Radiation ----------------
+  L('p30-3-1', 'p30-u3', '3.1', 'The Electromagnetic Spectrum and the Speed of Light', ['30-C1'],
+    ['p30-em-waves', 'p30-light-speed'],
+    ['Describe how electromagnetic waves are produced, and put the regions of the spectrum in order', 'Use c = fλ, and explain how the speed of light has been measured'],
+    65, ['electromagnetic wave', 'spectrum', 'frequency', 'wavelength', 'speed of light']),
+  L('p30-3-2', 'p30-u3', '3.2', 'Reflection and Curved Mirrors', ['30-C1'],
+    ['p30-mirror-rays', 'p30-mirror-equation'],
+    ['Use the law of reflection and ray diagrams to describe the images in concave and convex mirrors', 'Use the mirror equation and the magnification to find where an image is and how large it is'],
+    75, ['law of reflection', 'concave mirror', 'convex mirror', 'focus', 'real image', 'virtual image', 'magnification']),
+  L('p30-3-3', 'p30-u3', '3.3', 'Refraction and Snell’s Law', ['30-C1'],
+    ['p30-snell', 'p30-critical-angle'],
+    ['Relate the refractive index to the speed of light, and use Snell’s law to find angles and wavelengths', 'Find critical angles, and explain total internal reflection and dispersion'],
+    75, ['refraction', 'refractive index', 'Snell’s law', 'critical angle', 'total internal reflection', 'dispersion']),
+  L('p30-3-4', 'p30-u3', '3.4', 'Lenses', ['30-C1'],
+    ['p30-lens-rays', 'p30-lens-equation'],
+    ['Use ray diagrams to describe the images formed by converging and diverging lenses', 'Use the thin lens equation and the magnification to find where an image is and how large it is'],
+    75, ['converging lens', 'diverging lens', 'focal length', 'thin lens equation', 'magnifying glass']),
+  L('p30-3-5', 'p30-u3', '3.5', 'Diffraction and Interference', ['30-C1'],
+    ['p30-double-slit', 'p30-grating'],
+    ['Explain the fringes of Young’s double-slit experiment, and use them to find the wavelength of light', 'Use d sin θ = nλ for a diffraction grating'],
+    75, ['diffraction', 'interference', 'path difference', 'fringe', 'diffraction grating', 'order']),
+  L('p30-3-6', 'p30-u3', '3.6', 'The Photoelectric Effect', ['30-C2'],
+    ['p30-photon', 'p30-photoelectric'],
+    ['Find the energy of a photon from its frequency or its wavelength, in joules and in electronvolts', 'Explain the photoelectric effect with photons, and use the work function, the threshold frequency and the stopping voltage'],
+    75, ['photon', 'quantum', 'Planck’s constant', 'photoelectric effect', 'work function', 'threshold frequency', 'stopping voltage']),
+  L('p30-3-7', 'p30-u3', '3.7', 'The Compton Effect and Photon Momentum', ['30-C2'],
+    ['p30-photon-momentum', 'p30-compton'],
+    ['Find the momentum of a photon, and the force that light exerts on a surface', 'Explain the Compton effect as a collision, and find the change in wavelength of a scattered photon'],
+    70, ['photon momentum', 'radiation pressure', 'Compton effect', 'scattering']),
+  L('p30-3-8', 'p30-u3', '3.8', 'Wave-Particle Duality', ['30-C2'],
+    ['p30-de-broglie', 'p30-duality'],
+    ['Find the de Broglie wavelength of a moving particle', 'Say which experiments show the wave behaviour and which the particle behaviour of light and of matter'],
+    65, ['de Broglie wavelength', 'matter wave', 'electron diffraction', 'wave-particle duality']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'p30-u1', number: 1, title: 'Momentum and Impulse', description: 'Momentum as a vector, impulse and force-time graphs, the conservation of momentum, elastic and inelastic collisions, and collisions and explosions in two dimensions.', outcomes: ['30-A1', '30-A2'], lessons: [], color: 'sky' },
   { id: 'p30-u2', number: 2, title: 'Forces and Fields', description: 'Electric charge and Coulomb’s law, electric fields and potential difference, charges moving between plates, circuits, magnetic fields and forces, motors, and electromagnetic induction.', outcomes: ['30-B1', '30-B2', '30-B3'], lessons: [], color: 'rose' },
+  { id: 'p30-u3', number: 3, title: 'Electromagnetic Radiation', description: 'The electromagnetic spectrum and the speed of light, mirrors, refraction and lenses, diffraction and interference, photons and the photoelectric effect, the Compton effect, and wave-particle duality.', outcomes: ['30-C1', '30-C2'], lessons: [], color: 'amber' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
