@@ -1399,8 +1399,15 @@ items ship or decisions change.
        its domains lining up, and rows of wires make the field of a solenoid. The field-line
        tracer is shared with `charges` (`src/video/fieldlines.ts`). The videos: `p30-2-7`
        (Magnets and Magnetic Fields) and `p30-2-7-b` (The Magnetic Field of a Current).
-     - Next: the videos of lessons 2.8 to 2.10 (the force on a moving charge, the force on a
-       wire and the motor, and induction), then Units 3 and 4. The physics lessons have no tutor
+     - Done (18 November 2026): **the videos of lesson 2.8**, two more. The `charges` picture
+       can have a magnetic field through it (`magnetic`, into or out of the page, over the whole
+       view or a region), and a moving charge is turned by qvB step by step, so it follows a
+       circle at a constant speed, two charges of opposite sign curve opposite ways, an ion goes
+       straight through crossed fields only at the speed E ÷ B, and two isotopes land at
+       different places on the detector of a mass spectrometer. The videos: `p30-2-8` (The Force
+       on a Moving Charge) and `p30-2-8-b` (Charges Moving in Circles).
+     - Next: the videos of lessons 2.9 and 2.10 (the force on a wire and the motor, and
+       induction), then Units 3 and 4. The physics lessons have no tutor
        recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9

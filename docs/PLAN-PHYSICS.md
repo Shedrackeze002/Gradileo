@@ -96,7 +96,7 @@ built when the first unit that needs it is reached.
 | Waves (`wave`) | Travelling waves and echoes; pulses, standing waves and wavefronts to come | Grade 10, Unit 4 | Built; more for Grade 11, Unit 4 |
 | Rays (`rays`) | Reflection and refraction; mirrors and lenses to come | Grade 10, Unit 4 | Built; more for Grade 12 |
 | Circuits (`circuit`) | Charges flowing through wires, resistors and junctions, with meters; a resistor in series with parallel branches, and a battery with internal resistance | Grade 10, Unit 5; Grade 12, Unit B | Built |
-| Charges and fields (`charges`) | Electrons that cross between objects, Coulomb's law and the net force; field lines, parallel plates, potential and a charge moving in an electric field | Grade 12, Unit B | Built; a magnetic field across the picture to add for lesson 2.8 |
+| Charges and fields (`charges`) | Electrons that cross between objects, Coulomb's law and the net force; field lines, parallel plates, potential and a charge moving in an electric field; a magnetic field into or out of the page, so a charge moves in a circle (velocity selector, mass spectrometer) | Grade 12, Unit B | Built |
 | Magnets and currents (`magnets`) | Bar magnets, compasses, iron domains, the Earth's field, and the field of a wire and of a solenoid; the force on a wire, the motor and induction to come | Grade 12, Unit B | Fields built; forces and induction to build | |
 | Particles | Photons, scattering, radioactive decay | Grade 12, Unit C | To build, shared with chemistry's remake |
 

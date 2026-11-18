@@ -530,3 +530,129 @@ describe('a charges element in a script', () => {
     expect(chargesAt(pair(), during.plays).bodies.b.x).toBeCloseTo(0.45, 6);
   });
 });
+
+describe('a charge in a magnetic field', () => {
+  // The lesson's proton: 3.0 × 10⁶ m/s across a field of 0.50 T that goes into the page.
+  const [mass, charge, speed, field] = [1.67e-27, 1.6e-19, 3.0e6, 0.5];
+  const period = (2 * Math.PI * mass) / (charge * field);
+  const radius = (mass * speed) / (charge * field);
+  const proton = (over: Partial<ChargesEl> = {}, body: Partial<ChargeBody> = {}) =>
+    points([{ id: 'p', charge: 1, x: 0, y: 0, mass, v: [speed, 0], ...body }], { unit: 'e', view: [-0.2, 0.2, -0.05, 0.2], magnetic: { tesla: -field }, rate: period / 4, clips: { go: { phases: [{ dur: 4, fly: true }] } }, ...over });
+
+  it('feels the force qvB, at right angles to its velocity', () => {
+    const p = chargesAt(proton()).bodies.p;
+    expect(p.from.magnetic.n).toBeCloseTo(2.4e-13, 18);
+    // East through a field into the page: the force on a positive charge is to the north.
+    expect(p.from.magnetic.angle).toBeCloseTo(90, 9);
+    expect(p.force.n).toBeCloseTo(2.4e-13, 18);
+  });
+
+  it('feels the opposite force when it is negative, and none when it is at rest or has no charge', () => {
+    expect(chargesAt(proton({}, { charge: -1 })).bodies.p.from.magnetic.angle).toBeCloseTo(-90, 9);
+    expect(chargesAt(proton({}, { v: [0, 0] })).bodies.p.from.magnetic).toBeUndefined();
+    expect(chargesAt(proton({}, { charge: 0 })).bodies.p.from.magnetic).toBeUndefined();
+    // A field out of the page pushes the other way.
+    expect(chargesAt(proton({ magnetic: { tesla: field } })).bodies.p.from.magnetic.angle).toBeCloseTo(-90, 9);
+  });
+
+  it('turns in a circle of radius mv ÷ qB, and keeps its speed', () => {
+    const el = proton();
+    const start = chargesAt(el).bodies.p;
+    expect(start.orbit!.r).toBeCloseTo(0.0626, 4);
+    expect(start.orbit!.r).toBeCloseTo(radius, 12);
+    expect([start.orbit!.x, start.orbit!.y]).toEqual([0, start.orbit!.r]);
+    // A quarter of the way round it is level with the centre, and going north.
+    const quarter = chargesAt(el, [['go', 1]]).bodies.p;
+    expect(quarter.x).toBeCloseTo(radius, 6);
+    expect(quarter.y).toBeCloseTo(radius, 6);
+    expect(quarter.v[0] / speed).toBeCloseTo(0, 5);
+    expect(quarter.v[1] / speed).toBeCloseTo(1, 5);
+    expect(quarter.orbit!.x).toBeCloseTo(0, 6);
+    expect(quarter.orbit!.y).toBeCloseTo(radius, 6);
+    for (const t of [0.7, 1.9, 3.3, 4]) expect(chargesAt(el, [['go', t]]).bodies.p.speed / speed).toBeCloseTo(1, 9);
+    // After one period, 2πm ÷ qB, it is back where it started.
+    const round = chargesAt(el, [['go', 4]]).bodies.p;
+    expect(round.x).toBeCloseTo(0, 6);
+    expect(round.y).toBeCloseTo(0, 6);
+  });
+
+  it('takes the same time to go round whatever its speed', () => {
+    const el = points(
+      [
+        { id: 'slow', charge: 1, x: 0, y: 0, mass, v: [speed / 2, 0] },
+        { id: 'fast', charge: 1, x: 0, y: -0.02, mass, v: [speed, 0], test: true },
+      ],
+      { unit: 'e', view: [-0.2, 0.2, -0.05, 0.2], magnetic: { tesla: -field }, rate: period / 4, clips: { go: { phases: [{ dur: 4, fly: true }] } } },
+    );
+    const half = chargesAt(el, [['go', 2]]).bodies;
+    expect(half.slow.y).toBeCloseTo(radius, 6);
+    expect(half.fast.y).toBeCloseTo(-0.02 + 2 * radius, 6);
+    const round = chargesAt(el, [['go', 4]]).bodies;
+    expect([round.slow.x, round.slow.y].map((n) => Math.abs(n) < 1e-6)).toEqual([true, true]);
+    expect(Math.abs(round.fast.x) < 1e-6 && Math.abs(round.fast.y + 0.02) < 1e-6).toBe(true);
+  });
+
+  it('is not turned outside the region of the field, and a phase can change the field', () => {
+    const el = proton({ magnetic: { tesla: -field, region: [0.05, 0.2, -0.05, 0.2] }, clips: { go: { phases: [{ dur: 1, fly: true, rate: 0.04 / speed }] }, more: { phases: [{ dur: 1, tesla: -1 }] } } });
+    const out = chargesAt(el, [['go', 1]]).bodies.p;
+    expect(out.x).toBeCloseTo(0.04, 9);
+    expect(out.y).toBeCloseTo(0, 12);
+    expect(out.from.magnetic).toBeUndefined();
+    expect(out.orbit).toBeNull();
+    expect(chargesAt(el).tesla).toBe(-0.5);
+    expect(chargesAt(el, [['more', 0.5]]).tesla).toBeCloseTo(-0.75, 9);
+    expect(chargesAt(el, [['more', 1]]).tesla).toBe(-1);
+    expect(chargesAt(pair()).tesla).toBeNull();
+  });
+
+  it('goes straight through crossed fields only at the speed E ÷ B', () => {
+    // 6.0 × 10⁴ N/C downwards between level plates, and 0.20 T into the page: 3.0 × 10⁵ m/s passes.
+    const selector = (v: number) =>
+      points([{ id: 'ion', charge: 1, x: -0.15, y: 0, mass: 3.33e-26, v: [v, 0] }], {
+        unit: 'e',
+        view: [-0.2, 0.2, -0.1, 0.1],
+        plates: { at: [0.05, -0.05], across: 'y', span: [-0.15, 0.15], volts: 6000 },
+        magnetic: { tesla: -0.2, region: [-0.15, 0.15, -0.05, 0.05] },
+        rate: 2.5e-7,
+        clips: { go: { phases: [{ dur: 2, fly: true }] } },
+      });
+    const right = chargesAt(selector(3.0e5), [['go', 2]]).bodies.ion;
+    expect(right.x).toBeCloseTo(0, 6);
+    expect(right.y).toBeCloseTo(0, 6);
+    expect(right.force.n / right.from.field.n).toBeCloseTo(0, 5);
+    expect(right.from.field.angle).toBeCloseTo(-90, 9);
+    expect(right.from.magnetic.angle).toBeCloseTo(90, 4);
+    // A slower ion is pulled down by the electric force, and a faster one pushed up by the magnetic force.
+    expect(chargesAt(selector(2.0e5), [['go', 2]]).bodies.ion.y).toBeLessThan(-0.003);
+    expect(chargesAt(selector(4.0e5), [['go', 2]]).bodies.ion.y).toBeGreaterThan(0.003);
+  });
+
+  it('stops on the detector, a diameter from where it came in', () => {
+    // The lesson's neon ions: 3.0 × 10⁵ m/s into 0.40 T, on a path of radius 0.156 m.
+    const el = points([{ id: 'ion', charge: 1, x: -0.15, y: -0.05, mass: 3.33e-26, v: [0, 3.0e5] }], {
+      unit: 'e',
+      view: [-0.2, 0.2, -0.1, 0.2],
+      magnetic: { tesla: 0.4, region: [-0.2, 0.2, 0, 0.2], screen: 'bottom' },
+      rate: 1e-6,
+      clips: { go: { phases: [{ dur: 3, fly: true }] } },
+    });
+    const r = (3.33e-26 * 3.0e5) / (1.6e-19 * 0.4);
+    expect(r).toBeCloseTo(0.156, 3);
+    // Going in, it passes the detector; it turns to the east in a field out of the page. (It meets the edge of the field part of the way through a step, so its path is right to within a step: less than a millimetre.)
+    const top = chargesAt(el, [['go', 0.05 / 0.3 + (Math.PI * r) / 0.6]]).bodies.ion;
+    expect(top.x).toBeCloseTo(-0.15 + r, 3);
+    expect(top.y).toBeCloseTo(r, 3);
+    const landed = chargesAt(el, [['go', 3]]).bodies.ion;
+    expect(landed.x).toBeCloseTo(-0.15 + 2 * r, 3);
+    expect(landed.y).toBeCloseTo(0, 12);
+    expect(landed.speed).toBe(0);
+  });
+
+  it('is checked', () => {
+    expect(checkCharges(proton())).toEqual([]);
+    expect(checkCharges(proton({ magnetic: { tesla: 0.4, region: [0, 0.1, 0, 0.1], screen: 'top' } }))).toEqual([]);
+    expect(checkCharges(proton({ magnetic: { tesla: 0.4, screen: 'top' } }))).toContain('a detector is a side of the region of the magnetic field, so the field needs a region.');
+    expect(checkCharges(proton({ magnetic: { tesla: 0.4, region: [0.1, 0, 0, 0.1] } }))).toContain('the region of the magnetic field is [left, right, bottom, top].');
+    expect(checkCharges(pair({ clips: { b: { phases: [{ dur: 1, tesla: 1 }] } } }))[0]).toMatch(/changes the magnetic field, but the element has none/);
+  });
+});

@@ -1824,6 +1824,22 @@ export interface ChargePlates {
   levels?: number;
 }
 
+/**
+ * A uniform magnetic field at right angles to the picture, in a charges element. A charge that
+ * moves across it feels the force F = qvB, at right angles to its velocity, so it turns in a
+ * circle without changing its speed.
+ */
+export interface ChargeMagnet {
+  /** The field strength in teslas: out of the page when it is above zero (drawn as dots), and into the page when below (crosses). */
+  tesla: number;
+  /** Where the field is: [left, right, bottom, top] (the whole picture otherwise). */
+  region?: [left: number, right: number, bottom: number, top: number];
+  /** A side of the region that is a detector: a body that leaves the field through it stops there. */
+  screen?: 'left' | 'right' | 'bottom' | 'top';
+  /** How many significant figures the field strength is written with (2 otherwise). */
+  figures?: number;
+}
+
 /** A stretch of a charges clip: bodies are carried, electrons cross from one to another, or time runs. */
 export interface ChargesPhase {
   /** How long it lasts, in seconds of video. */
@@ -1846,6 +1862,8 @@ export interface ChargesPhase {
   volts?: number;
   /** Where the two plates are by the end of the phase. */
   plates?: [first: number, second: number];
+  /** The strength of the magnetic field by the end of the phase, in teslas. */
+  tesla?: number;
   /** Velocities that bodies are given as the phase starts, in metres per second, by id: [right, up]. */
   launch?: Record<string, [number, number]>;
   /** Seconds of the motion for each second of video in this phase (the element's `rate` otherwise). */
@@ -1861,7 +1879,7 @@ export interface ChargesClip {
 }
 
 /** What a charges element can show over its bodies; each is a part ("lab.force"). */
-export const CHARGES_PARTS = ['charge', 'force', 'net', 'angle', 'distance', 'velocity', 'lines', 'field', 'netfield', 'potential', 'gap', 'energy', 'trail'] as const;
+export const CHARGES_PARTS = ['charge', 'force', 'net', 'angle', 'distance', 'velocity', 'lines', 'field', 'netfield', 'potential', 'gap', 'energy', 'trail', 'magnetic', 'radius'] as const;
 
 /** The units a charge can be given in, in coulombs (`e` is the elementary charge: "+e", "−2e"). */
 export const CHARGE_UNITS = { C: 1, mC: 1e-3, μC: 1e-6, nC: 1e-9, e: 1.6e-19 } as const;
@@ -1878,7 +1896,9 @@ export const CHARGE_UNITS = { C: 1, mC: 1e-3, μC: 1e-6, nC: 1e-9, e: 1.6e-19 } 
  * `net` their sum, `angle` the angle of the sum from the east-west line, and `distance` the
  * distance r between the centres of the pairs in `spans` (the first two bodies otherwise). A body
  * with a mass moves under the forces on it while a phase lets time run (`fly`), with `velocity`
- * for its speed. Emphasising a body's id makes it glow.
+ * for its speed. A magnetic field at right angles to the picture (`magnetic`) pushes a moving
+ * charge sideways, F = qvB: the part `magnetic` draws the field, as dots or crosses, and `radius`
+ * the radius of the circle each charge is on. Emphasising a body's id makes it glow.
  */
 export interface ChargesEl {
   kind: 'charges';
@@ -1933,6 +1953,8 @@ export interface ChargesEl {
   plates?: ChargePlates;
   /** A uniform field over the whole picture, in newtons per coulomb, at `angle` degrees anticlockwise from the right (0 otherwise). */
   uniform?: { field: number; angle?: number; lines?: number };
+  /** A uniform magnetic field into or out of the page, over the whole picture or a part of it. */
+  magnetic?: ChargeMagnet;
   /** The gravitational field strength, in newtons per kilogram: bodies with a mass then have a weight (none otherwise). */
   g?: number;
   /** How many field lines leave, or end on, the largest charge of the element (12 otherwise); a smaller charge has fewer in proportion. */
@@ -2895,6 +2917,13 @@ export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips
   if (e.uniform && !(e.uniform.field > 0)) problems.push('a uniform field needs a strength above zero (turn it with `angle`).');
   if (e.plates && e.uniform) problems.push('give plates or a uniform field, not both.');
   if (e.g !== undefined && !(e.g > 0)) problems.push('g must be above zero.');
+  if (e.magnetic) {
+    const m = e.magnetic;
+    if (!Number.isFinite(m.tesla)) problems.push('the magnetic field needs a strength in teslas.');
+    if (m.region && !(m.region[1] > m.region[0] && m.region[3] > m.region[2])) problems.push('the region of the magnetic field is [left, right, bottom, top].');
+    if (m.screen && !m.region) problems.push('a detector is a side of the region of the magnetic field, so the field needs a region.');
+    if (m.figures !== undefined && !(Number.isInteger(m.figures) && m.figures > 0)) problems.push('the magnetic field is written with a whole number of figures above zero.');
+  }
   if (e.lines !== undefined && !(Number.isInteger(e.lines) && e.lines > 0)) problems.push('a charge has a whole number of field lines above zero.');
   const shapes = new Map(e.bodies.map((b) => [b.id, b.shape ?? 'point']));
   for (const [name, clip] of Object.entries(e.clips)) {
@@ -2911,6 +2940,8 @@ export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips
       if (ph.volts !== undefined && !Number.isFinite(ph.volts)) problems.push(`${where} needs a potential difference in volts.`);
       if (ph.plates && ph.plates[0] === ph.plates[1]) problems.push(`${where} puts the two plates at the same place.`);
       if (ph.plates && ph.fly) problems.push(`${where} cannot move the plates while time runs.`);
+      if (ph.tesla !== undefined && !e.magnetic) problems.push(`${where} changes the magnetic field, but the element has none.`);
+      if (ph.tesla !== undefined && !Number.isFinite(ph.tesla)) problems.push(`${where} needs a magnetic field in teslas.`);
       for (const id of Object.keys(ph.launch ?? {})) {
         if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
         else if (!e.bodies.find((b) => b.id === id)?.mass) problems.push(`${where}: body "${id}" needs a mass to be thrown.`);
