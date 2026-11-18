@@ -1,5 +1,6 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
+import { polarShare, twoShare } from '../../chem10/videos/lib/c10-atoms.ts';
 import { model, tag } from './lib/c20-1b-figures.ts';
 
 // Hydrogen chloride: chlorine pulls the shared pair towards itself (the arrow under the bond), so
@@ -97,6 +98,16 @@ const video: Explainer = {
         { say: 'Anything with a positive end and a negative end like this is called a dipole, which means two poles.' },
         { say: 'A dipole is a pair of equal and opposite partial charges, delta plus and delta minus, a small distance apart. A polar bond is a dipole, and so is a polar molecule.', caption: 'A dipole is a pair of equal and opposite partial charges, δ+ and δ−, a small distance apart. A polar bond is a dipole, and so is a polar molecule.', show: 'dipole' },
         { say: 'A polar molecule has an uneven spread of charge: one side is partly negative, and the opposite side partly positive. A non-polar molecule has its charge spread evenly, with no negative or positive side.', show: 'polar' },
+      ],
+    },
+    {
+      chapter: 'Two atoms, up close',
+      layout: 'split',
+      left: [twoShare('cc', { symbol: 'Cl', protons: 17, name: 'chlorine', tone: 'good' }, { symbol: 'Cl', protons: 17, name: 'chlorine', tone: 'adj' }, 3.7, 1, 400)],
+      right: [polarShare('hc', { symbol: 'H', protons: 1, name: 'hydrogen', tone: 'good' }, { symbol: 'Cl', protons: 17, name: 'chlorine', tone: 'adj' }, 2.8, 0.6, 400)],
+      lines: [
+        { say: 'Here it is up close. Two chlorine atoms share a pair of electrons. They pull equally, so the pair stays in the middle, and neither end is charged.', show: 'cc', play: 'cc.share' },
+        { say: 'A hydrogen atom and a chlorine atom share a pair too, but chlorine pulls it closer. So chlorine becomes delta minus, and hydrogen delta plus.', caption: 'A hydrogen atom and a chlorine atom share a pair too, but chlorine pulls it closer. So chlorine becomes δ−, and hydrogen δ+.', show: ['hc', 'hc.charges'], play: 'hc.go' },
       ],
     },
     {

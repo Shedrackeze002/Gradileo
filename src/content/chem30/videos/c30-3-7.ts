@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { column, room } from './lib/c30-3b-figures.ts';
+import { boilingRace } from '../../chem20/videos/lib/c20-particles.ts';
 
 // A fractionating column: crude oil vapour enters at the bottom, the column is hot at the bottom
 // and cool at the top, and each fraction is drawn off at its own height.
@@ -80,6 +81,22 @@ const video: Explainer = {
         { say: 'As the vapour rises, it cools. Each hydrocarbon condenses at the level where the temperature falls below its boiling point, and trays at different heights collect the liquids.', show: ['c.f1', 'c.f2', 'c.f3', 'c.f4'], focus: ['c.f1', 'c.f2', 'c.f3', 'c.f4'] },
         { say: 'Large molecules, with strong London dispersion forces between them and high boiling points, condense near the bottom. The largest do not vaporise at all, and leave the bottom as bitumen.', show: ['c.f5', 'b.0'], focus: ['c.f4', 'c.f5', 'b.0'] },
         { say: 'Small molecules stay as gases, and rise to the top.', show: ['c.f0', 'b.1'], focus: ['c.f0', 'b.1'] },
+      ],
+    },
+    {
+      chapter: 'Small molecules boil first',
+      layout: 'center',
+      main: [
+        boilingRace('fr', [
+          { id: 'g', label: 'refinery gas', bond: 0.45, tone: 'theta' },
+          { id: 'p', label: 'petrol', bond: 0.8, tone: 'opp' },
+          { id: 'd', label: 'diesel', bond: 1.2, tone: 'adj' },
+        ], 400),
+      ],
+      lines: [
+        { say: 'Here is why the fractions separate. Three fractions are warmed side by side by the same heater. Each ball stands for a molecule.', show: ['fr', 'fr.labels', 'fr.thermo'] },
+        { say: 'The small molecules of refinery gas attract one another weakly, so they escape first. Petrol molecules are bigger, and hold on longer. Diesel molecules are bigger still, so diesel boils last.', play: 'fr.heat' },
+        { say: 'In the column, the same thing sorts them by height: the bigger the molecules, the lower down they condense.' },
       ],
     },
     {

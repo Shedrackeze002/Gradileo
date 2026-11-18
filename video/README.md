@@ -599,8 +599,11 @@ See `src/video/script.ts` for every element and option. In short:
   'na', to: 'cl', n: 1 }]` (outer electrons passed across in an arc, or lost with `to: null`),
   `move` atoms, and `share: [{ a: 'o', b: 'h1', n: 1 }]` (a covalent bond: move the atoms first so
   their outer shells overlap; the shared pair sits in the overlap and the other outer electrons
-  move clear of the bonds). Each electron keeps the colour of the atom it came from. The parts
-  `labels`, `arrangement` ("2, 8, 1") and `charges` ("Na⁺") show under and beside each atom
+  move clear of the bonds), and `pull: [{ to: 'cl', from: 'h', by: 0.5 }]` (a polar bond: the
+  shared electrons slide that far towards `to`'s nucleus, as a more electronegative atom pulls
+  them; `by: 0` moves them back). Each electron keeps the colour of the atom it came from. The parts
+  `labels`, `arrangement` ("2, 8, 1") and `charges` ("Na⁺", or δ+ and δ− over the two atoms of a pulled
+  bond) show under and beside each atom
   (`labelAbove` puts them above it). See `src/content/chem9/videos/c9-1-3.ts` (filling shells),
   `c9-1-4.ts` (ions) and `c9-2-1.ts` (ionic and covalent bonding).
 - `molecules` (`src/video/molecules.ts`) draws molecules as balls and sticks, flat like a

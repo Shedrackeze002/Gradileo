@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { spreading } from './lib/c20-molecules.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { ringAround } from './lib/c20-1b-figures.ts';
@@ -80,6 +81,15 @@ const video: Explainer = {
         { say: 'The theory is called valence-shell electron-pair repulsion theory, or vesper for short. The electron groups around a central atom repel each other, so they spread out as far apart as possible.', caption: 'The theory is called valence-shell electron-pair repulsion theory, or VSEPR for short. The electron groups around a central atom repel each other, so they spread out as far apart as possible.', show: 'vsepr' },
         { say: 'An electron group is a region of electrons around the central atom. Each bonded atom counts as one group, whether the bond is single, double or triple.', show: 'group' },
         { say: 'And each lone pair on the central atom counts as one group.' },
+      ],
+    },
+    {
+      chapter: 'Groups spreading out',
+      layout: 'center',
+      main: [spreading('sp')],
+      lines: [
+        { say: 'Watch it happen. Here are carbon dioxide, boron trifluoride and methane, with their outer atoms crowded together on one side.', show: 'sp' },
+        { say: 'The electron groups repel, so they spread out as far apart as they can: two groups end up opposite each other, three in a flat triangle, and four at the corners of a tetrahedron.', play: 'sp.go' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hclAndAmmonia } from './lib/c30-protons.ts';
 import { figure } from '@/video/solids.ts';
 import { pairEq } from './lib/c30-4a-figures.ts';
 
@@ -61,6 +62,15 @@ const video: Explainer = {
         { say: 'Acetic acid loses a proton and becomes acetate. Acetic acid is the acid, and acetate is its conjugate base.', show: ['e.r0', 'e.r2', 'e.pair1'], focus: ['e.r0', 'e.r2', 'e.pair1'] },
         { say: 'The carbonate ion gains the proton and becomes hydrogen carbonate. Carbonate is the base, and hydrogen carbonate is its conjugate acid.', show: ['e.r1', 'e.r3', 'e.pair2'], focus: ['e.r1', 'e.r3', 'e.pair2'] },
         { say: 'Watch out: the acid and base on the same side are never a pair. Acetic acid and carbonate differ by much more than one proton.', show: 'oops', focus: 'e' },
+      ],
+    },
+    {
+      chapter: 'The white smoke, up close',
+      layout: 'center',
+      main: [hclAndAmmonia('pt')],
+      lines: [
+        { say: 'Here is the reaction in the white smoke, up close: a hydrogen chloride molecule meets an ammonia molecule.', show: 'pt' },
+        { say: 'Hydrogen chloride gives its proton to the nitrogen. What is left of the acid, the chloride ion, is its conjugate base. What the base becomes, the ammonium ion, is its conjugate acid.', play: 'pt.go' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { strongNeutralizing } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-6-d',
@@ -29,6 +30,16 @@ const video: Explainer = {
         { say: 'Add a base to an acid, and the hydroxide ions take the hydrogen ions from the hydronium ions, forming water.', show: 'm' },
         { say: 'The ions that made one solution acidic and the other basic are used up. This is neutralisation: the reaction of an acid with a base. An acid and a hydroxide base make a salt and water.', show: 'def' },
         { say: 'A salt is an ionic compound. The salt from a neutralisation is made of the metal ion from the base, and the anion from the acid.', show: 'salt' },
+      ],
+    },
+    {
+      chapter: 'Neutralisation, up close',
+      layout: 'center',
+      main: [strongNeutralizing('nn', { name: 'chloride ion', tone: 'good', size: 1.1 }, { name: 'sodium ion', tone: 'hyp' }, 'hydrochloric acid + sodium hydroxide')],
+      lines: [
+        { say: 'Here is hydrochloric acid and sodium hydroxide, just mixed, up close.', show: ['nn', 'nn.labels', 'nn.key', 'nn.thermo'], play: 'nn.go' },
+        { say: 'Each hydrogen ion that meets a hydroxide ion joins it, making a water molecule, and the mixture warms up.', show: 'nn.tally' },
+        { say: 'The sodium ions and chloride ions are left in the water. They are the salt, sodium chloride, and it is there once the water evaporates.' },
       ],
     },
     {

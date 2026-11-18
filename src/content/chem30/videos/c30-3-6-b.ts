@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { structure, tag } from './lib/c30-3b-figures.ts';
+import { esterification } from './lib/c30-organic.ts';
 
 // Methyl propanoate, CH3–CH2–COO–CH3: the acid part (the C=O carbon and the carbons on its side) in
 // blue, and the alcohol part (the chain joined through the other oxygen) in orange.
@@ -117,6 +118,15 @@ const video: Explainer = {
         { say: 'Which acid and which alcohol make ethyl metha-no-ate? Metha-no-ate comes from methanoic acid.', caption: 'Which acid and which alcohol make ethyl methanoate? Methanoate comes from methanoic acid.', show: ['q', 'm.0'], focus: 'm.0' },
         { say: 'Ethyl comes from ethanol. So the ester is made from methanoic acid and ethanol.', show: 'm.1', focus: 'm.1' },
         { say: 'Esters are not only in fruits and perfumes. Fats and vegetable oils are esters too, made from long-chain carboxylic acids and an alcohol called glycerol.', show: 'fat' },
+      ],
+    },
+    {
+      chapter: 'Ethyl methanoate, made',
+      layout: 'center',
+      main: [esterification('em', { n: 1, m: 2, acid: 'methanoic acid', alcohol: 'ethanol', ester: 'ethyl methanoate' })],
+      lines: [
+        { say: 'Here it is happening: methanoic acid, with one carbon, and ethanol, with two.', show: 'em' },
+        { say: 'Water leaves, and the two join through an oxygen atom. The ethyl group from the alcohol, and the metha-no-ate part from the acid: ethyl metha-no-ate.', caption: 'Water leaves, and the two join through an oxygen atom. The ethyl group from the alcohol, and the methanoate part from the acid: ethyl methanoate.', play: 'em.go' },
       ],
     },
     {

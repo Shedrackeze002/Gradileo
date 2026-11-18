@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { chargeBars } from './lib/c20-1a-figures.ts';
+import { precipitate } from './lib/c20-particles.ts';
 
 // Iron(III) oxide: three O²⁻ make 6−, so the two iron ions share 6+, 3+ each.
 const bars = figure('bars', [chargeBars({ plus: { count: 2, size: 3, tex: '\\ce{Fe^3+}' }, minus: { count: 3, size: 2, tex: '\\ce{O^2-}' } })], 300);
@@ -85,6 +86,41 @@ const video: Explainer = {
         { say: 'In F E C L three, three chloride ions give three minus, so the iron ion is three plus: iron three chloride.', caption: 'In FeCl₃, three chloride ions give 3−, so the iron ion is 3+: iron(III) chloride.', show: ['m.0', 'm.1'], focus: ['m.0', 'm.1'] },
         { say: 'Now F E two O three. Each oxide ion is two minus, so three of them give six minus.', caption: 'Now Fe₂O₃. Each oxide ion is 2−, so three of them give 6−.', show: ['m.2', 'bars.m0', 'bars.m1', 'bars.m2', 'bars.m-total'], focus: 'm.2' },
         { say: 'The two iron ions must give six plus between them, so each is three plus: iron three oxide.', caption: 'The two iron ions must give 6+ between them, so each is 3+: iron(III) oxide.', show: ['m.3', 'bars.p0', 'bars.p1', 'bars.p-total'], focus: 'm.3' },
+      ],
+    },
+    {
+      chapter: 'Iron(II) and iron(III), up close',
+      layout: 'split',
+      leftWidth: 560,
+      left: [
+        precipitate(
+          'f2',
+          {
+            cation: { name: 'iron(II) ion', tone: 'good', size: 1.1 },
+            anion: { name: 'hydroxide ion', tone: 'theta' },
+            withCation: { name: 'sulfate ion', tone: 'hyp', size: 1.1 },
+            withAnion: { name: 'sodium ion', tone: 'brand' },
+          },
+          { ratio: 2, n: 3, label: 'iron(II)', solid: 'iron(II) hydroxide', seed: 3 },
+          440,
+        ),
+      ],
+      right: [
+        precipitate(
+          'f3',
+          {
+            cation: { name: 'iron(III) ion', tone: 'opp', size: 1.1 },
+            anion: { name: 'hydroxide ion', tone: 'theta' },
+            withCation: { name: 'nitrate ion', tone: 'hyp', size: 1.1 },
+            withAnion: { name: 'sodium ion', tone: 'brand' },
+          },
+          { ratio: 3, n: 3, label: 'iron(III)', solid: 'iron(III) hydroxide', seed: 7 },
+          440,
+        ),
+      ],
+      lines: [
+        { say: 'Here is why the charge matters, up close. Iron two ions on the left, and iron three ions on the right, each meeting hydroxide ions, which are one minus.', caption: 'Here is why the charge matters, up close. Fe²⁺ ions on the left, and Fe³⁺ ions on the right, each meeting hydroxide ions, which are 1−.', show: ['f2', 'f2.labels', 'f2.key', 'f3', 'f3.labels', 'f3.key'] },
+        { say: 'An iron two ion is complete, with no charge left, once it holds two hydroxide ions. An iron three ion needs three. So iron two hydroxide is F E, O H in brackets, two, and iron three hydroxide is F E, O H in brackets, three.', caption: 'An Fe²⁺ ion is complete, with no charge left, once it holds two OH⁻ ions. An Fe³⁺ ion needs three. So iron(II) hydroxide is Fe(OH)₂, and iron(III) hydroxide is Fe(OH)₃.', show: ['f2.tally', 'f3.tally'], play: ['f2.mix', 'f3.mix'] },
       ],
     },
     {

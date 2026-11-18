@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { ladder, wireBeaker } from './lib/c30-2a-figures.ts';
+import { displacement } from '../../chemmore/videos/lib/cx-particles.ts';
 
 // A copper wire in silver nitrate grows silver needles and the solution turns blue; a silver wire
 // in copper(II) nitrate does not change.
@@ -88,6 +89,15 @@ const video: Explainer = {
         },
         { say: 'Testing pairs like this puts oxidising agents in order of strength: silver ions first, then copper two ions, then zinc ions.', caption: 'Testing pairs like this puts oxidising agents in order of strength: Ag⁺ first, then Cu²⁺, then Zn²⁺.', show: ['t.head', 't.ag', 't.cu', 't.zn', 't.oa-arrow'], focus: 't.oa-arrow' },
         { say: 'Beside each ion is the metal it becomes, and the metals run the other way. Zinc gives up electrons most easily, so it is the strongest reducing agent of the three.', show: 't.ra-arrow', focus: 't.ra-arrow' },
+      ],
+    },
+    {
+      chapter: 'Zinc and copper, up close',
+      layout: 'center',
+      main: [displacement('zc', { metal: 'zinc', seed: 3 })],
+      lines: [
+        { say: 'Here is that second pair up close: zinc in copper two sulfate solution, beside copper in zinc sulfate solution.', caption: 'Here is that second pair up close: zinc in copper(II) sulfate solution, beside copper in zinc sulfate solution.', show: ['zc', 'zc.labels', 'zc.key', 'zc.tally'], play: 'zc.go' },
+        { say: 'Each copper two ion that hits the zinc takes two electrons from a zinc atom. It becomes a copper atom, and the zinc atom goes into the solution as a zinc ion. On the right, the zinc ions hit the copper again and again, and nothing happens.', caption: 'Each Cu²⁺ ion that hits the zinc takes two electrons from a zinc atom. It becomes a copper atom, and the zinc atom goes into the solution as a zinc ion. On the right, the zinc ions hit the copper again and again, and nothing happens.' },
       ],
     },
     {

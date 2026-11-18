@@ -1,16 +1,28 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { bondPair, enTable } from './lib/c20-1a-figures.ts';
+import { enTable } from './lib/c20-1a-figures.ts';
 
-// A tug-of-war: hydrogen shares its pair evenly; in hydrogen chloride the pair sits nearer chlorine.
-const tug = figure(
-  'tug',
-  [
-    bondPair({ name: 'hh', at: [0, 2.6], a: 'H', b: 'H', t: 0.5, label: '\\text{hydrogen: shared evenly}' }),
-    bondPair({ name: 'hcl', at: [0, 0], a: 'H', b: 'Cl', t: 0.68, label: '\\text{hydrogen chloride: pulled towards Cl}' }),
+// A tug-of-war (src/video/atoms.ts): two hydrogen atoms (top) share a pair evenly in the clip `hh`;
+// a hydrogen and a chlorine atom (bottom) share a pair in `hcl`, and in `pull` chlorine draws the
+// shared pair towards itself.
+const tug: AtomsEl = {
+  kind: 'atoms',
+  id: 'tug',
+  span: [10, 10.6],
+  atoms: [
+    { id: 'h1', symbol: 'H', protons: 1, at: [1.4, 2], tone: 'good', name: 'hydrogen' },
+    { id: 'h2', symbol: 'H', protons: 1, at: [8.6, 2], tone: 'good' },
+    { id: 'h3', symbol: 'H', protons: 1, at: [1.4, 7.4], tone: 'good', name: 'hydrogen' },
+    { id: 'cl', symbol: 'Cl', protons: 17, at: [7.6, 7.4], tone: 'adj', name: 'chlorine' },
   ],
-  460,
-);
+  clips: {
+    hh: { phases: [{ dur: 1.6, move: { h1: [4.3, 2], h2: [5.7, 2] } }, { dur: 1.6, share: [{ a: 'h1', b: 'h2', n: 1 }] }] },
+    hcl: { phases: [{ dur: 1.6, move: { h3: [3.6, 7.4], cl: [6.4, 7.4] } }, { dur: 1.6, share: [{ a: 'h3', b: 'cl', n: 1 }] }] },
+    pull: { phases: [{ dur: 2.2, pull: [{ to: 'cl', from: 'h3', by: 0.6 }] }, { dur: 0.4 }] },
+  },
+  poster: 'pull',
+  height: 520,
+};
 
 // The course's electronegativity values, with a few cells ringed.
 const values = figure('en', [enTable({ highlights: [{ id: 'key', cells: ['H', 'C', 'N', 'O', 'Cl'], tone: 'theta' }] })], 600);
@@ -53,8 +65,9 @@ const video: Explainer = {
       left: [tug],
       right: [{ kind: 'callout', id: 'def', tone: 'definition', title: 'Electronegativity', md: 'How strongly an atom in a bond attracts the **shared electrons**. It has no units. On the **Pauling scale**, fluorine is highest, at $4.0$.' }],
       lines: [
-        { say: 'Picture a bond as a tug-of-war over the shared electrons. Two hydrogen atoms pull equally, so the pair sits in the middle.', show: ['tug.hh-a', 'tug.hh-b', 'tug.hh-pair', 'tug.hh-label'] },
-        { say: 'In hydrogen chloride, chlorine pulls harder, so the shared pair sits closer to the chlorine atom.', show: ['tug.hcl-a', 'tug.hcl-b', 'tug.hcl-pair', 'tug.hcl-label'], focus: 'tug.hcl-pair' },
+        { say: 'Picture a bond as a tug-of-war over the shared electrons. Two hydrogen atoms pull equally, so the pair sits in the middle.', show: ['tug', 'tug.labels'], play: 'tug.hh' },
+        { say: 'A hydrogen atom and a chlorine atom share a pair too, but here chlorine pulls harder.', play: 'tug.hcl' },
+        { say: 'So the shared pair slides away from the middle and sits closer to the chlorine atom.', play: 'tug.pull' },
         { say: 'How hard an atom pulls is its electronegativity: how strongly an atom in a bond attracts the shared electrons. It is a number with no units.', show: 'def' },
         { say: 'Most books use the Pauling scale, on which fluorine has the highest value, four point zero.' },
       ],

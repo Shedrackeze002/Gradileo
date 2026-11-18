@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { waterAndAcid } from '../../chem10/videos/lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-6',
@@ -64,6 +65,16 @@ const video: Explainer = {
         { say: 'The p H scale measures how acidic or basic a solution is. Below seven is acidic, seven is neutral, and above seven is basic. You will meet it properly in lesson three point seven.', caption: 'The pH scale measures how acidic or basic a solution is. Below 7 is acidic, 7 is neutral, and above 7 is basic. You will meet it properly in lesson 3.7.', show: 't.1', focus: 't.1' },
         { say: 'Acidic and basic solutions both conduct electricity, because they contain ions. A neutral solution conducts only if it has ions too: salt water does, but sugar water does not.', show: 't.2', focus: 't.2' },
         { say: 'And the two groups cancel out: an acid neutralises a base, and a base neutralises an acid.', show: 't.3', focus: 't.3' },
+      ],
+    },
+    {
+      chapter: 'Water or acid, up close',
+      layout: 'center',
+      main: [waterAndAcid('wa')],
+      lines: [
+        { say: 'Here is pure water, and hydrochloric acid, each with a few drops of phenolphthalein. Both are colourless, so this one test cannot tell them apart.', show: ['wa', 'wa.labels', 'wa.key', 'wa.tally'] },
+        { say: 'Add one drop of sodium hydroxide to each. The water turns pink at once. The acid stays colourless, because its hydrogen ions use up the hydroxide.', play: 'wa.drop' },
+        { say: 'Keep adding drops. Only once every hydrogen ion is used up does the acid turn pink too.', play: 'wa.more' },
       ],
     },
     {
