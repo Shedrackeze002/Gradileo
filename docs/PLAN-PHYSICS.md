@@ -96,7 +96,7 @@ built when the first unit that needs it is reached.
 | Waves (`wave`) | Travelling waves and echoes; pulses, standing waves and wavefronts to come | Grade 10, Unit 4 | Built; more for Grade 11, Unit 4 |
 | Rays (`rays`) | Reflection and refraction; mirrors and lenses to come | Grade 10, Unit 4 | Built; more for Grade 12 |
 | Circuits (`circuit`) | Charges flowing through wires, resistors and junctions, with meters | Grade 10, Unit 5 | Built |
-| Charges and fields | Field lines, a charge moving in electric and magnetic fields | Grade 12, Unit B | To build |
+| Charges and fields (`charges`) | Electrons that cross between objects, Coulomb's law and the net force; field lines and a charge moving in electric and magnetic fields to come | Grade 12, Unit B | Charges and forces built; fields to build |
 | Particles | Photons, scattering, radioactive decay | Grade 12, Unit C | To build, shared with chemistry's remake |
 
 ## What physics needs that the platform does not have

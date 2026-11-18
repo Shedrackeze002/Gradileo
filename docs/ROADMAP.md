@@ -1368,8 +1368,19 @@ items ship or decisions change.
        together), explosions given as impulses that must add up to zero, bars for the east and
        north momentum of each body and of the total, and the total momentum drawn as a triangle
        at the centre of mass. Nothing after a collision is typed in.
-     - Next: the videos of Grade 12 Units 2 to 4 (Forces and Fields first, which needs the
-       charges-and-fields picture). The physics lessons have no tutor recordings yet.
+     - Started (18 November 2026): **the videos of Grade 12 Unit 2, Forces and Fields**. A new
+       picture, `charges` (`src/video/charges.ts`), shows charge as electrons that move: a rod, a
+       cloth, a metal sphere on a stand and an atom carry + marks that stay put and electron dots
+       that cross from one body to another, down a ground wire, or to the far side of a metal
+       sphere when a charged rod comes near, and the charge written by each body is counted from
+       its electrons. Point charges get the forces of Coulomb's law, their vector sum and its
+       angle, and can fly apart or together. The first four videos are scripted: `p30-2-1`
+       (Electric Charge), `p30-2-1-b` (Charging Objects: friction, contact and induction),
+       `p30-2-2` (Coulomb's Law) and `p30-2-2-b` (The Net Electric Force).
+     - Next: the videos of lessons 2.3 to 2.10 (electric fields and field lines, potential
+       difference and parallel plates, charges moving in a field, circuits, then magnetic fields
+       and forces, the motor and induction), then Units 3 and 4. The physics lessons have no
+       tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

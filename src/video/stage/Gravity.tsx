@@ -21,9 +21,9 @@ const rad = (deg: number) => (deg * Math.PI) / 180;
 const minus = (s: string) => s.replace('-', '−');
 const frac = (x: number) => x - Math.floor(x);
 
-/** A number with its unit, with the power of ten raised when it is in scientific notation ("6.53 × 10³ N"). */
-function Num({ x, y, pre = '', n, unit, figures = 3, sci = false, color = INK, size = 21, anchor = 'middle', opacity = 1 }: { x: number; y: number; pre?: string; n: number; unit: string; figures?: number; sci?: boolean; color?: string; size?: number; anchor?: 'start' | 'middle' | 'end'; opacity?: number }) {
-  const { text, power } = written(n, figures, sci);
+/** A number with its unit, with the power of ten raised when it is in scientific notation ("6.53 × 10³ N"); `keep` keeps its trailing zeros ("1.50 N"). */
+export function Num({ x, y, pre = '', n, unit, figures = 3, sci = false, keep = false, color = INK, size = 21, anchor = 'middle', opacity = 1 }: { x: number; y: number; pre?: string; n: number; unit: string; figures?: number; sci?: boolean; keep?: boolean; color?: string; size?: number; anchor?: 'start' | 'middle' | 'end'; opacity?: number }) {
+  const { text, power } = written(n, figures, sci, keep);
   return (
     <text x={x} y={y} fill={color} fontSize={size} fontWeight={600} textAnchor={anchor} dominantBaseline="central" opacity={opacity} style={{ fontFamily: FONT, fontVariantNumeric: 'tabular-nums', paintOrder: 'stroke', stroke: 'rgb(13 12 36 / 0.85)', strokeWidth: 4, strokeLinejoin: 'round' }}>
       {`${pre}${minus(text)}`}
@@ -41,7 +41,7 @@ function Num({ x, y, pre = '', n, unit, figures = 3, sci = false, color = INK, s
 }
 
 /** A dimension line between two points, with a tick at each end. */
-function Span({ a, b, opacity }: { a: [number, number]; b: [number, number]; opacity: number }) {
+export function Span({ a, b, opacity }: { a: [number, number]; b: [number, number]; opacity: number }) {
   const len = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1;
   const n: [number, number] = [(-(b[1] - a[1]) / len) * 7, ((b[0] - a[0]) / len) * 7];
   return (

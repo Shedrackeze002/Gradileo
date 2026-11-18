@@ -1739,6 +1739,154 @@ export interface GravityEl {
   height?: number;
 }
 
+/** A body of a charges element: a small charged ball, a metal sphere on an insulating stand, a rod, a cloth, or an atom. */
+export interface ChargeBody {
+  id: string;
+  /**
+   * What it is. A `point` (the default) is a small ball that carries its charge as a number. A
+   * `sphere` is a metal ball, a conductor: its electrons move over the whole of it, so they lean
+   * towards a positive body that is near and away from a negative one. A `rod` and a `cloth` are
+   * insulators: their charges stay where they are put. An `atom` has its + marks in its nucleus and
+   * its electrons circling in two shells, two in the first and up to eight in the second.
+   */
+  shape?: 'point' | 'sphere' | 'rod' | 'cloth' | 'atom';
+  /** Its charge at the start, in the element's unit of charge. */
+  charge: number;
+  /** Where its centre starts (y is 0 otherwise). */
+  x: number;
+  y?: number;
+  /** What it is called, written by it ("A", "Glass rod"). */
+  label?: string;
+  /** Where its name and charge are written: over it (the default), under it, or to one side. */
+  labelAt?: 'above' | 'below' | 'left' | 'right';
+  /** The radius of a sphere or of an atom, or half the length of a rod or a cloth, in the units of the view. A point is drawn to scale with one, and 20 pixels otherwise. */
+  radius?: number;
+  /** Half the thickness of a rod or a cloth (otherwise a rod is a fifth as thick as it is long, and a cloth three fifths). */
+  thick?: number;
+  /** A rod or a cloth turned anticlockwise, in degrees. Its working end, where electrons arrive and leave first, is the right-hand end before it is turned. */
+  turn?: number;
+  /**
+   * Draw its charges: this many + marks, which never move, and an electron for each, less the ones
+   * it has lost and plus the ones it has gained. Each mark stands for the element's `mark` of
+   * charge, so the charge must be a whole number of marks.
+   */
+  pairs?: number;
+  /** A sphere stands on an insulating stand unless this is false. */
+  stand?: boolean;
+  /** The side of a sphere its ground wire is joined to (the right otherwise). */
+  wire?: 'left' | 'right';
+  /** Its mass in kilograms: it moves under the electric forces on it while a phase lets time run (`fly`). */
+  mass?: number;
+  /** A test charge: it feels the forces of the others, but they are drawn and worked out as if it were not there. */
+  test?: boolean;
+  tone?: Tone;
+}
+
+/** A stretch of a charges clip: bodies are carried, electrons cross from one to another, or time runs. */
+export interface ChargesPhase {
+  /** How long it lasts, in seconds of video. */
+  dur: number;
+  /** Where bodies are carried to during the phase, by id: a new x, or [x, y]. */
+  to?: Record<string, number | [number, number]>;
+  /** The charges that bodies without marks have by the end of the phase, by id. */
+  charge?: Record<string, number>;
+  /**
+   * Electrons that cross during the phase, one after another, each standing for one mark of
+   * charge: from a body to a body, or to and from the ground (`'ground'`) along the wire of a
+   * sphere that is grounded.
+   */
+  electrons?: Array<{ from: string; to: string; n: number }>;
+  /** Join spheres to the ground with a wire (true), or take the wire away (false), as the phase starts. */
+  ground?: Record<string, boolean>;
+  /** Let time run: bodies with a mass move under the electric forces on them, until they touch another body. */
+  fly?: boolean;
+  /** Seconds of the motion for each second of video in this phase (the element's `rate` otherwise). */
+  rate?: number;
+  /** A short note shown over the picture. */
+  note?: string;
+}
+
+export interface ChargesClip {
+  phases: ChargesPhase[];
+  /** Put every body back at its start, with its first charge. */
+  reset?: boolean;
+}
+
+/** What a charges element can show over its bodies; each is a part ("lab.force"). */
+export const CHARGES_PARTS = ['charge', 'force', 'net', 'angle', 'distance', 'velocity'] as const;
+
+/** The units a charge can be given in, in coulombs (`e` is the elementary charge: "+e", "−2e"). */
+export const CHARGE_UNITS = { C: 1, mC: 1e-3, μC: 1e-6, nC: 1e-9, e: 1.6e-19 } as const;
+
+/**
+ * Charged bodies, for electric charge, the ways of charging an object and Coulomb's law
+ * (src/video/charges.ts). A body with `pairs` shows its charges: + marks that stay where they are,
+ * and electrons that move. A phase sends electrons from one body to another (`electrons`), so
+ * rubbing, touching and grounding are seen as what they are, and the charge written by each body
+ * (`charge`) follows the electrons it holds. The electrons of a metal sphere lean towards a
+ * positive body that is brought near and away from a negative one. The forces are worked out from
+ * Coulomb's law, F = k q₁ q₂ ÷ r², with the charges in the element's `unit` and the distances of
+ * the view in metres: `force` draws each force on a body from each of the others, with its size,
+ * `net` their sum, `angle` the angle of the sum from the east-west line, and `distance` the
+ * distance r between the centres of the pairs in `spans` (the first two bodies otherwise). A body
+ * with a mass moves under the forces on it while a phase lets time run (`fly`), with `velocity`
+ * for its speed. Emphasising a body's id makes it glow.
+ */
+export interface ChargesEl {
+  kind: 'charges';
+  id: string;
+  bodies: ChargeBody[];
+  /** What the picture shows, in metres: [left, right, bottom, top]. */
+  view: [left: number, right: number, bottom: number, top: number];
+  /** The unit the charges are given and written in (microcoulombs otherwise). */
+  unit?: keyof typeof CHARGE_UNITS;
+  /** The charge that one mark stands for, in the element's unit (for bodies with `pairs`). */
+  mark?: number;
+  /** How many decimal places charges are written with (none otherwise: "+12 nC"). */
+  decimals?: number;
+  /** Coulomb's constant (8.99 × 10⁹ N·m²/C² otherwise). */
+  k?: number;
+  /** Write distances in this unit and not in metres ({ metres: 0.01, symbol: 'cm' }). */
+  length?: { metres: number; symbol: string };
+  /** How many significant figures distances are written with (2 otherwise: "0.30 m"). */
+  figures?: number;
+  /** The pairs of bodies whose distance apart is marked (the first two bodies otherwise). */
+  spans?: Array<[string, string]>;
+  /** Draw the forces on these bodies only (on every body otherwise). */
+  pulls?: string[];
+  /** Draw the forces without their sizes (a picture that is not to scale). */
+  plain?: boolean;
+  /** Write every force in scientific notation ("8.22 × 10⁻⁸ N"); otherwise only very large and very small ones. */
+  notation?: 'sci';
+  /** How many significant figures forces are written with (3 otherwise: "1.50 N"). */
+  forceFigures?: number;
+  /** Or how many decimal places, so that forces that are added line up ("1.35 N", "1.01 N", "0.34 N"). */
+  forceDecimals?: number;
+  /**
+   * Mark each distance on a dashed line that joins the two bodies, with its size near the second
+   * body of the pair, and not on a dimension line beside them: for bodies that are not all in a row.
+   */
+  join?: boolean;
+  /** How many decimal places the angle of a net force is written with (1 otherwise). */
+  angleDecimals?: number;
+  /** Seconds of the motion for each second of video, while a phase lets time run (1 otherwise). */
+  rate?: number;
+  /** The height of the table that the stands of the spheres are on (otherwise a little below the lowest sphere). */
+  floor?: number;
+  /** The charge that, at two and a half radii from the centre of a sphere, makes its electrons lean half way (four marks otherwise). */
+  sway?: number;
+  /** Pixels of arrow for each newton (otherwise the largest force of the element is 110 pixels long). */
+  forceScale?: number;
+  /** Pixels of arrow for each metre per second (60 otherwise). */
+  velocityScale?: number;
+  clips: Record<string, ChargesClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
 /** A body of a circle element: something that goes round a circle. */
 export interface CircleBody {
   id: string;
@@ -1833,7 +1981,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -2447,6 +2595,100 @@ export function checkParticles(e: ParticlesEl): string[] {
   return problems;
 }
 
+/** Problems with a charges element: marks that do not add up, electrons sent from a body that has none, clips that name no body. */
+export function checkCharges(e: ChargesEl): string[] {
+  const problems: string[] = [];
+  const ids = new Set(e.bodies.map((b) => b.id));
+  const whole = (n: number) => Math.abs(n - Math.round(n)) < 1e-6;
+  if (!e.bodies.length) problems.push('it needs a body.');
+  if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
+  for (const id of ids) if ((CHARGES_PARTS as readonly string[]).includes(id) || id === 'ground') problems.push(`body id "${id}" is the name of a part, or of the ground.`);
+  if (e.unit !== undefined && !(e.unit in CHARGE_UNITS)) problems.push(`the unit of charge is one of ${Object.keys(CHARGE_UNITS).join(', ')}.`);
+  if (e.mark !== undefined && !(e.mark > 0)) problems.push('a mark stands for a charge above zero.');
+  const marked = new Map<string, number>();
+  for (const b of e.bodies) {
+    const shape = b.shape ?? 'point';
+    if (shape !== 'point' && !(b.radius !== undefined && b.radius > 0)) problems.push(`body "${b.id}" needs a radius (half its length, for a rod or a cloth) above zero.`);
+    if (b.radius !== undefined && !(b.radius > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
+    if (b.thick !== undefined && !(b.thick > 0)) problems.push(`body "${b.id}" needs a thickness above zero.`);
+    if (b.mass !== undefined && !(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if (b.pairs !== undefined) {
+      if (shape === 'point') problems.push(`body "${b.id}" is a point: a sphere, a rod, a cloth or an atom shows its charges.`);
+      else if (shape === 'atom' && b.pairs > 10) problems.push(`atom "${b.id}" has room for ten electrons in its two shells, so it can have ten protons at most.`);
+      else if (!e.mark) problems.push(`body "${b.id}" shows its charges, so the element needs the charge of one mark (\`mark\`).`);
+      else if (!(Number.isInteger(b.pairs) && b.pairs > 0)) problems.push(`body "${b.id}" needs a whole number of pairs above zero.`);
+      else if (!whole(b.charge / e.mark)) problems.push(`the charge of body "${b.id}" is not a whole number of marks.`);
+      else if (b.pairs - Math.round(b.charge / e.mark) < 0) problems.push(`body "${b.id}" has too few pairs for its charge: it cannot lose more electrons than it has.`);
+      else marked.set(b.id, b.pairs - Math.round(b.charge / e.mark));
+    }
+    if (shape === 'atom' && b.pairs === undefined) problems.push(`atom "${b.id}" needs its number of protons (\`pairs\`).`);
+    if (b.wire && shape !== 'sphere') problems.push(`body "${b.id}" is not a sphere: only a sphere is joined to the ground.`);
+  }
+  e.bodies.forEach((a, i) => {
+    for (const b of e.bodies.slice(i + 1)) if (a.x === b.x && (a.y ?? 0) === (b.y ?? 0)) problems.push(`bodies "${a.id}" and "${b.id}" start at the same place.`);
+  });
+  if (!(e.view[1] > e.view[0] && e.view[3] > e.view[2])) problems.push('the view is [left, right, bottom, top].');
+  if (e.k !== undefined && !(e.k > 0)) problems.push('k must be above zero.');
+  if (e.length && !(e.length.metres > 0)) problems.push('the unit of distance needs a size above zero.');
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be above zero.');
+  if (e.sway !== undefined && !(e.sway > 0)) problems.push('the sway must be above zero.');
+  if (e.forceDecimals !== undefined && !(Number.isInteger(e.forceDecimals) && e.forceDecimals >= 0)) problems.push('forces are written with a whole number of decimal places.');
+  for (const id of e.pulls ?? []) if (!ids.has(id)) problems.push(`no body "${id}" to draw the forces on.`);
+  for (const pair of e.spans ?? []) for (const id of pair) if (!ids.has(id)) problems.push(`no body "${id}" to mark a distance from.`);
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  // The electrons each body holds are followed through the clips in the order they are written, as a video plays them.
+  const shapes = new Map(e.bodies.map((b) => [b.id, b.shape ?? 'point']));
+  const first = new Map(marked);
+  const grounded = new Set<string>();
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    if (clip.reset) {
+      for (const [id, n] of first) marked.set(id, n);
+      grounded.clear();
+    }
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
+      for (const id of [...Object.keys(ph.to ?? {}), ...Object.keys(ph.charge ?? {}), ...Object.keys(ph.ground ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const id of Object.keys(ph.charge ?? {})) if (marked.has(id)) problems.push(`${where}: body "${id}" shows its charges, so its charge changes as electrons cross (\`electrons\`).`);
+      for (const [id, on] of Object.entries(ph.ground ?? {})) {
+        if (shapes.get(id) !== 'sphere') problems.push(`${where}: body "${id}" is not a sphere: only a sphere is joined to the ground.`);
+        if (on) grounded.add(id);
+        else grounded.delete(id);
+      }
+      if (ph.fly && ph.to) problems.push(`${where} cannot carry a body while time runs.`);
+      if (ph.fly && !e.bodies.some((b) => b.mass)) problems.push(`${where} lets time run, but no body has a mass.`);
+      if (ph.rate !== undefined && !(ph.rate > 0)) problems.push(`${where}: the rate must be above zero.`);
+      const gives = new Set<string>();
+      const takes = new Set<string>();
+      for (const t of ph.electrons ?? []) {
+        if (!(Number.isInteger(t.n) && t.n > 0)) problems.push(`${where} sends a whole number of electrons above zero.`);
+        if (t.from === t.to) problems.push(`${where} sends electrons from "${t.from}" to itself.`);
+        for (const id of [t.from, t.to]) {
+          if (id === 'ground') continue;
+          if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+          else if (!marked.has(id)) problems.push(`${where}: body "${id}" does not show its charges (\`pairs\`), so no electron can be seen to cross.`);
+        }
+        const other = t.from === 'ground' ? t.to : t.to === 'ground' ? t.from : null;
+        if (t.from === 'ground' && t.to === 'ground') problems.push(`${where} sends electrons from the ground to the ground.`);
+        else if (other !== null && ids.has(other) && !grounded.has(other)) problems.push(`${where}: body "${other}" is not joined to the ground.`);
+        if (marked.has(t.from)) {
+          gives.add(t.from);
+          marked.set(t.from, marked.get(t.from)! - t.n);
+          if (marked.get(t.from)! < 0) problems.push(`${where}: body "${t.from}" has no more electrons to give.`);
+        }
+        if (marked.has(t.to)) {
+          takes.add(t.to);
+          marked.set(t.to, marked.get(t.to)! + t.n);
+          if (shapes.get(t.to) === 'atom' && marked.get(t.to)! > 10) problems.push(`${where}: atom "${t.to}" has room for ten electrons at most.`);
+        }
+      }
+      for (const id of gives) if (takes.has(id)) problems.push(`${where}: body "${id}" gives and takes electrons at once; use two phases.`);
+    });
+  }
+  return problems;
+}
+
 export function checkScript(x: Explainer): string[] {
   const problems: string[] = [];
   if (!x.scenes.length) problems.push('The script has no scenes.');
@@ -2454,7 +2696,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -2498,6 +2740,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...GRAVITY_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkGravity(e).map((p) => `Scene ${si + 1}: gravity "${e.id}": ${p}`));
+      }
+      if (e.kind === 'charges') {
+        diagrams.set(e.id, new Set<string>([...CHARGES_PARTS, ...e.bodies.map((b) => b.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkCharges(e).map((p) => `Scene ${si + 1}: charges "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
