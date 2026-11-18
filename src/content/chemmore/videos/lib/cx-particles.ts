@@ -49,7 +49,12 @@ export const metalsInAcid = (id: string, o: { seed?: number; height?: number } =
  * goes into the solution as an iron(II) ion. The kinds: 0 the lump's metal, 1 the metal ion in
  * the solution, 2 sulfate ion, then (displacing only) 3 copper made, 4 iron(II) ion made.
  */
-const metalInSolution = (id: string, displacing: boolean): ParticleBox => ({
+const METALS = {
+  iron: { atom: 'iron atom', ion: 'iron(II) ion, Fe²⁺', salt: 'iron(II) sulfate' },
+  zinc: { atom: 'zinc atom', ion: 'zinc ion, Zn²⁺', salt: 'zinc sulfate' },
+};
+
+const metalInSolution = (id: string, displacing: boolean, metal: keyof typeof METALS = 'iron'): ParticleBox => ({
   id,
   state: 'liquid',
   width: 10,
@@ -61,27 +66,30 @@ const metalInSolution = (id: string, displacing: boolean): ParticleBox => ({
   cross: 0.2,
   kinds: displacing
     ? [
-        { n: 14, bond: 3, heavy: 2, tone: 'brand', name: 'iron atom' },
+        { n: 14, bond: 3, heavy: 2, tone: 'brand', name: METALS[metal].atom },
         { ...DISSOLVED, n: 12, tone: 'adj', name: 'copper(II) ion, Cu²⁺' },
         { ...DISSOLVED, n: 12, size: 1.2, tone: 'hyp', name: 'sulfate ion' },
         { n: 0, bond: 1.2, heavy: 3, tone: 'opp', name: 'copper atom' },
-        { ...DISSOLVED, tone: 'good', name: 'iron(II) ion, Fe²⁺' },
+        { ...DISSOLVED, tone: 'good', name: METALS[metal].ion },
       ]
     : [
         { n: 14, bond: 3, heavy: 2, tone: 'opp', name: 'copper atom' },
-        { ...DISSOLVED, n: 12, tone: 'good', name: 'iron(II) ion, Fe²⁺' },
+        { ...DISSOLVED, n: 12, tone: 'good', name: METALS[metal].ion },
         { ...DISSOLVED, n: 12, size: 1.2, tone: 'hyp', name: 'sulfate ion' },
       ],
   reactions: displacing ? [{ a: 1, b: 0, to: [3, 4], energy: 0, chance: 0.03 }] : [],
   ...(displacing ? { tally: { kinds: [3], label: 'copper atoms made' } } : {}),
-  label: displacing ? 'iron in copper(II) sulfate' : 'copper in iron(II) sulfate',
+  label: displacing ? `${metal} in copper(II) sulfate` : `copper in ${METALS[metal].salt}`,
 });
 
-/** An iron nail in copper(II) sulfate solution beside copper in iron(II) sulfate solution (clip `go`): only the first reacts. */
-export const displacement = (id: string, o: { seed?: number; height?: number } = {}): ParticlesEl => ({
+/**
+ * An iron nail in copper(II) sulfate solution beside copper in iron(II) sulfate solution (clip
+ * `go`): only the first reacts. `metal: 'zinc'` uses zinc and zinc sulfate instead of iron.
+ */
+export const displacement = (id: string, o: { seed?: number; height?: number; metal?: keyof typeof METALS } = {}): ParticlesEl => ({
   kind: 'particles',
   id,
-  boxes: [metalInSolution('fe', true), metalInSolution('cu', false)],
+  boxes: [metalInSolution('fe', true, o.metal), metalInSolution('cu', false, o.metal)],
   clips: { go: { phases: [{ dur: 1, release: ['fe', 'cu'] }, { dur: 16 }] } },
   key: true,
   seed: o.seed ?? 1,

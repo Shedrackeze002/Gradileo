@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { bendOrIsomer } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, DX, grouped, rowStructure, skeleton, step, tag, zigzag } from './lib/c30-3a-figures.ts';
 
@@ -76,6 +77,15 @@ const video: Explainer = {
         { say: 'How are these two related? The first has a four-carbon chain, with a methyl group on carbon two: two-methylbutane.', caption: 'How are these two related? The first has a four-carbon chain, with a methyl group on carbon 2: 2-methylbutane.', show: ['m.0', 'b.l-all', 'b.l-name'] },
         { say: 'In the second, the longest chain runs from one end, through the middle carbon and into the ethyl group: four carbons, with a methyl group on carbon two. It is also two-methylbutane.', caption: 'In the second, the longest chain runs from one end, through the middle carbon and into the ethyl group: four carbons, with a methyl group on carbon 2. It is also 2-methylbutane.', show: ['m.1', 'b.r-long', 'b.r-end'], focus: 'b.r-long' },
         { say: 'So they are the same compound, drawn two ways. They are not isomers of each other.', show: ['b.r-name', 'm.2'], focus: 'm.2' },
+      ],
+    },
+    {
+      chapter: 'Bent or rearranged, up close',
+      layout: 'center',
+      main: [bendOrIsomer('bo')],
+      lines: [
+        { say: 'Here is pentane, up close. Bend the chain, and no bond breaks. It is still pentane, just drawn another way.', show: 'bo', play: 'bo.bend' },
+        { say: 'But move a carbon so that one bond breaks and another forms, and you have a different compound: an isomer.', play: 'bo.iso' },
       ],
     },
     {

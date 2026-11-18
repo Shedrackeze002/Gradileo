@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure, type Part } from '@/video/solids.ts';
 import { grouped, rowStructure, tag } from './lib/c30-3a-figures.ts';
+import { boilingRace } from '../../chem20/videos/lib/c20-particles.ts';
 
 const CH2 = { symbol: 'C', up: 'H', down: 'H' } as const;
 
@@ -96,6 +97,21 @@ const video: Explainer = {
         { say: 'The alkane, butane, has only dispersion forces. It boils at about minus one degree Celsius.', caption: 'The alkane, butane, has only dispersion forces. It boils at about −1 °C.', focus: 't.0' },
         { say: 'The ether, aldehyde and ketone are polar, so dipole-dipole forces raise their boiling points, to between seven and fifty-six degrees.', caption: 'The ether, aldehyde and ketone are polar, so dipole–dipole forces raise their boiling points, to between 7 and 56 °C.', show: ['t.1', 't.2', 't.3'], focus: ['t.1', 't.2', 't.3'] },
         { say: 'The alcohol and the acid can hydrogen bond, so they boil highest. The acid boils at about one hundred eighteen degrees: pairs of acid molecules hold together by two hydrogen bonds.', caption: 'The alcohol and the acid can hydrogen bond, so they boil highest. The acid boils at about 118 °C: pairs of acid molecules hold together by two hydrogen bonds.', show: ['t.4', 't.5'], focus: ['t.4', 't.5'] },
+      ],
+    },
+    {
+      chapter: 'Heating them side by side',
+      layout: 'center',
+      main: [
+        boilingRace('br', [
+          { id: 'b', label: 'butane', bond: 0.5, tone: 'theta' },
+          { id: 'k', label: 'propanone', bond: 0.8, tone: 'opp' },
+          { id: 'o', label: 'propan-1-ol', bond: 1.15, tone: 'adj' },
+        ], 400),
+      ],
+      lines: [
+        { say: 'Here are three liquids of about the same size, warmed side by side by the same heater. Each ball stands for a molecule.', show: ['br', 'br.labels', 'br.thermo'] },
+        { say: 'Butane molecules attract one another only by dispersion forces, so they escape first. The ketone, propanone, is polar, so it holds on longer. Propan-one-ol molecules hydrogen bond, so it boils last.', caption: 'Butane molecules attract one another only by dispersion forces, so they escape first. The ketone, propanone, is polar, so it holds on longer. Propan-1-ol molecules hydrogen bond, so it boils last.', play: 'br.heat' },
       ],
     },
     {

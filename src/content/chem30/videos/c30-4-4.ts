@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hfAndWater } from './lib/c30-protons.ts';
 import { atomShells, lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { link, showAll, tag } from './lib/c30-4a-figures.ts';
@@ -87,6 +88,15 @@ const video: Explainer = {
         { say: 'When hydrogen fluoride dissolves, it gives a proton to a water molecule. The proton lands on one of the lone pairs of oxygen.', show: [...reactants, 'd.move'], focus: 'd.move' },
         { say: 'Hydrogen fluoride loses a proton, so it is the acid. Water gains one, so it is the base.', show: ['d.acid', 'd.base'], focus: ['d.acid', 'd.base'] },
         { say: 'The water molecule becomes a hydronium ion, H three O plus, and a fluoride ion is left behind.', caption: 'The water molecule becomes a hydronium ion, H₃O⁺, and a fluoride ion is left behind.', show: products, focus: ['d.h3o-H0', 'd.h3o-bracket'] },
+      ],
+    },
+    {
+      chapter: 'A proton changes hands, up close',
+      layout: 'center',
+      main: [hfAndWater('pt', { conjugates: false })],
+      lines: [
+        { say: 'Here is that proton changing hands, up close: a hydrogen fluoride molecule and a water molecule. The green ball is the hydrogen that will move.', show: 'pt' },
+        { say: 'Hydrogen fluoride moves up to the water molecule. Its hydrogen leaves as a bare proton, without its electron, and bonds to the oxygen. Water becomes a hydronium ion, and a fluoride ion is left behind.', play: 'pt.go' },
       ],
     },
     {

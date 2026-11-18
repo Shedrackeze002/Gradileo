@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { ethaneToEthene } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, grouped, ringAt, rowStructure, skeleton, tag, zigzag } from './lib/c30-3a-figures.ts';
 
@@ -97,6 +98,15 @@ const video: Explainer = {
         { say: 'Compare propane and propene. Propane has only single bonds between its three carbons. It holds as many hydrogen atoms as its carbons can, eight, so it is saturated.', show: ['f.propane', 'f.pa-name'] },
         { say: 'Propene has a double bond, and only six hydrogen atoms. It could hold two more, so it is unsaturated.', show: ['f.propene', 'f.pe-name'], focus: ['f.pe-bond-a1-a2-0', 'f.pe-bond-a1-a2-1'] },
         { say: 'So saturated hydrocarbons, the alkanes and cycloalkanes, have only single bonds between carbons. Unsaturated ones, the alkenes, alkynes and cycloalkenes, have at least one double or triple bond.', show: 'def', focus: 'f' },
+      ],
+    },
+    {
+      chapter: 'Saturated to unsaturated, up close',
+      layout: 'center',
+      main: [ethaneToEthene('ee')],
+      lines: [
+        { say: 'Here is ethane, up close. Each carbon atom has four single bonds, the most it can have, so ethane is saturated.', show: 'ee' },
+        { say: 'Take away two hydrogen atoms, and the two carbon atoms share a second pair of electrons: a double bond. That is ethene, an unsaturated hydrocarbon.', play: 'ee.go' },
       ],
     },
     {

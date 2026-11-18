@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, brackets, structure, type GridAtom } from './lib/c30-3b-figures.ts';
+import { ethenePolymer } from './lib/c30-organic.ts';
 
 /** A chain of six carbons with a bond left open at each end (`end` long), a hydrogen atom above each carbon and `below` under each. */
 function chain(name: string, below: string[], unit = 1.3, end = 1) {
@@ -78,6 +79,15 @@ const video: Explainer = {
         { say: 'Each double bond opens, and the carbons link to the neighbouring monomers. No other product forms, so the polymer has the same atoms as all the monomers together.', show: ['f.arrow', 'f.ch'] },
         { say: 'The repeating unit has the monomer’s atoms, with a single bond between its two carbons and a bond out at each end. The letter n is the number of units, often thousands.', show: ['f.unit', 'm'], focus: ['f.unit', 'm.1'] },
         { say: 'The polymer is named poly, then the monomer in brackets: poly ethene, also called polyethylene.', caption: 'The polymer is named poly, then the monomer in brackets: poly(ethene), also called polyethylene.' },
+      ],
+    },
+    {
+      chapter: 'Poly(ethene), up close',
+      layout: 'center',
+      main: [ethenePolymer('pe')],
+      lines: [
+        { say: 'Watch it happen, with every atom drawn. Here are three ethene molecules, each with a carbon–carbon double bond.', show: 'pe' },
+        { say: 'Each double bond opens, and the carbons link up with their neighbours, into one long chain. Every atom is still there, and nothing else forms.', play: 'pe.go' },
       ],
     },
     {

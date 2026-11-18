@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { waterAndWater } from './lib/c30-protons.ts';
 import { figure } from '@/video/solids.ts';
 import { ladder } from './lib/c30-4a-figures.ts';
 
@@ -34,6 +35,15 @@ const video: Explainer = {
         { say: 'But it was an acid when ammonia dissolved: it gave a proton away.', show: 'm.1', focus: 'm.1' },
         { say: 'A particle like this is amphiprotic. It can act as an acid or as a base, depending on what it reacts with, because it has a proton to give away and can also accept one.', show: 'def' },
         { say: 'Water, hydrogen carbonate, dye-hydrogen phosphate, hydrogen phosphate and hydrogen sulfite are all amphiprotic.', caption: 'Water, hydrogen carbonate, dihydrogen phosphate, hydrogen phosphate and hydrogen sulfite are all amphiprotic.', focus: 'def' },
+      ],
+    },
+    {
+      chapter: 'Water and water, up close',
+      layout: 'center',
+      main: [waterAndWater('pt')],
+      lines: [
+        { say: 'Here are two water molecules, up close. One can give a proton to the other.', show: 'pt' },
+        { say: 'The one that gives the proton is the acid, and becomes a hydroxide ion. The one that takes it is the base, and becomes a hydronium ion. The same substance, water, plays both roles.', play: 'pt.go' },
       ],
     },
     {

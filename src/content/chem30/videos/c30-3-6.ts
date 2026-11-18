@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { bath, ring, room, structure, tag, tube } from './lib/c30-3b-figures.ts';
+import { esterification } from './lib/c30-organic.ts';
 
 // Ethanoic acid and ethanol, drawn so that the acid's OH group faces the alcohol's OH group: the
 // OH of the acid and the H of the alcohol (in orange, ringed) leave as water.
@@ -112,6 +113,15 @@ const video: Explainer = {
         { say: 'The acid and the alcohol join through an oxygen atom. The carbon of the acid’s carboxyl group bonds to the oxygen atom of the alcohol.', show: 'e.es', focus: ['e.es-Cb-Os', 'e.es-Os'] },
         { say: 'Water is the other product.', show: ['e.plus', 'e.w'] },
         { say: 'Here is the equation, with the condensed formulas. The ester link is C O O, in the middle of the ester. This ester is called ethyl etha-no-ate.', caption: 'Here is the equation, with the condensed formulas. The ester link is COO, in the middle of the ester. This ester is called ethyl ethanoate.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Esterification, up close',
+      layout: 'center',
+      main: [esterification('es', { n: 2, m: 2, acid: 'ethanoic acid', alcohol: 'ethanol', ester: 'ethyl ethanoate' })],
+      lines: [
+        { say: 'Here is the whole reaction up close, with every atom drawn: ethanoic acid on the left, and ethanol on the right. The atoms that will leave are shaded.', show: 'es' },
+        { say: 'The ethanol comes up to the acid. The O H of the acid and the H of the alcohol leave together as water, and the acid’s carbon bonds to the alcohol’s oxygen. That is ethyl etha-no-ate.', caption: 'The ethanol comes up to the acid. The OH of the acid and the H of the alcohol leave together as water, and the acid’s carbon bonds to the alcohol’s oxygen. That is ethyl ethanoate.', play: 'es.go' },
       ],
     },
     {

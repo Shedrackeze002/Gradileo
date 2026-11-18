@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { sulfurToAcid } from './lib/c30-organic.ts';
 
 const video: Explainer = {
   id: 'c30-3-7-d',
@@ -39,6 +40,16 @@ const video: Explainer = {
         { say: 'Incomplete combustion makes carbon monoxide, which is poisonous: it binds to haemoglobin in the blood more strongly than oxygen does. It also makes soot, which blackens buildings and damages the lungs.', show: ['t.1', 't.2'], focus: ['t.1', 't.2'] },
         { say: 'Sulfur impurities in coal and oil burn to sulfur dioxide. It dissolves in water in the air to form acids: acid deposition, or acid rain.', show: 't.3', focus: 't.3' },
         { say: 'And at the high temperature of an engine, nitrogen and oxygen from the air react to form nitrogen oxides, which cause acid deposition and smog.', show: 't.4', focus: 't.4' },
+      ],
+    },
+    {
+      chapter: 'From sulfur to acid rain',
+      layout: 'center',
+      main: [sulfurToAcid('sa')],
+      lines: [
+        { say: 'Here is how sulfur becomes acid rain. A sulfur atom from an impurity in the fuel meets oxygen in the flame.', show: 'sa' },
+        { say: 'It burns to sulfur dioxide, a gas that leaves with the exhaust.', play: 'sa.burn' },
+        { say: 'In the air, sulfur dioxide reacts with water to form sulfurous acid, H two S O three. That falls as acid rain.', caption: 'In the air, sulfur dioxide reacts with water to form sulfurous acid, H₂SO₃. That falls as acid rain.', play: 'sa.rain' },
       ],
     },
     {

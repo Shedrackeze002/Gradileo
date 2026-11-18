@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { ladder, type LadderRow } from './lib/c30-2a-figures.ts';
+import { metalsInAcid } from '../../chemmore/videos/lib/cx-particles.ts';
 
 const ROWS: LadderRow[] = [
   { id: 'ag', oa: '\\ce{Ag+}', e: '\\ce{e-}', ra: '\\ce{Ag}', E: '+0.80' },
@@ -94,6 +95,15 @@ const video: Explainer = {
           show: 't.zn-ra-box',
           focus: ['t.h-oa-box', 't.zn-ra-box'],
         },
+      ],
+    },
+    {
+      chapter: 'Metals in acid, up close',
+      layout: 'center',
+      main: [metalsInAcid('ma')],
+      lines: [
+        { say: 'Here are three metals in the same dilute acid, up close: magnesium, zinc and copper.', show: ['ma', 'ma.labels', 'ma.key'], play: 'ma.fizz' },
+        { say: 'Hydrogen ions are above magnesium and zinc in the table, so they take electrons from those metals, and hydrogen bubbles away. Hydrogen ions are below copper, so copper does nothing at all.' },
       ],
     },
     {

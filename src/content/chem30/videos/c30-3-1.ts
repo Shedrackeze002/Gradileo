@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { chainsAndRings } from './lib/c30-organic.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, grouped, ringAt, rowStructure, skeleton, step, tag, zigzag } from './lib/c30-3a-figures.ts';
@@ -124,6 +125,16 @@ const video: Explainer = {
         { say: 'First, carbon has four valence electrons, so it forms four covalent bonds, as in methane.', show: ['b.0', 'w.four'], focus: 'w.four' },
         { say: 'Second, carbon atoms bond strongly to each other, in chains of any length, branched chains and rings. Here, each corner is a carbon atom.', show: ['b.1', 'w.ch-chain', 'w.ch-ring'], focus: ['w.ch-chain', 'w.ch-ring'] },
         { say: 'Third, two carbon atoms can share one, two or three pairs of electrons, making single, double and triple bonds.', show: ['b.2', ...CC], focus: ['w.cc-bond-s1-s2', 'w.cc-bond-d1-d2', 'w.cc-bond-t1-t2'] },
+      ],
+    },
+    {
+      chapter: 'Chains and rings, up close',
+      layout: 'center',
+      main: [chainsAndRings('cr')],
+      lines: [
+        { say: 'Here is that idea up close: six carbon atoms.', show: 'cr' },
+        { say: 'Carbon atoms bond to each other, one after another, to make a chain.', play: 'cr.chain' },
+        { say: 'And a chain can close on itself to make a ring. That is why carbon forms so many compounds.', play: 'cr.ring' },
       ],
     },
     {

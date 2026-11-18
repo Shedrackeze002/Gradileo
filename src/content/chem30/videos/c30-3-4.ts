@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { grouped, rowStructure, tag } from './lib/c30-3a-figures.ts';
+import { swapGroups } from './lib/c30-organic.ts';
 
 const CH2 = { symbol: 'C', up: 'H', down: 'H' } as const;
 
@@ -55,6 +56,16 @@ const video: Explainer = {
         { say: 'The difference is one small group of atoms: the O H group of ethanol.', caption: 'The difference is one small group of atoms: the OH group of ethanol.', focus: ['e.ol-a3', 'e.ol-a4'] },
         { say: 'A group like this is called a functional group: an atom or group of atoms that gives an organic molecule its typical properties and reactions.', show: 'def' },
         { say: 'Compounds with the same functional group belong to the same family, and behave alike.' },
+      ],
+    },
+    {
+      chapter: 'Swapping in a group, up close',
+      layout: 'center',
+      main: [swapGroups('sg')],
+      lines: [
+        { say: 'Here is the idea up close. Start with ethane, an alkane.', show: 'sg' },
+        { say: 'Replace one hydrogen atom with an O H group, a hydroxyl group, and the molecule becomes ethanol, an alcohol.', caption: 'Replace one hydrogen atom with an OH group, a hydroxyl group, and the molecule becomes ethanol, an alcohol.', play: 'sg.oh' },
+        { say: 'Put a chlorine atom there instead, and it becomes chloroethane, a haloalkane. The group decides the family.', play: 'sg.cl' },
       ],
     },
     {
