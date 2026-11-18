@@ -1,16 +1,16 @@
 import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
+import { fillRow } from './lib/c10-atoms.ts';
 
-// Helium (2), neon (2,8) and argon (2,8,8): full outer shells.
-const noble = figure(
+// Helium (2), neon (2,8) and argon (2,8,8) (src/video/atoms.ts): the clip `fill` fills each to a
+// full outer shell.
+const noble = fillRow(
   'ng',
   [
-    atomShells({ name: 'he', at: [0, 0], nucleus: '\\text{He}', shells: [2], r: 0.9, gap: 0.9 }),
-    atomShells({ name: 'ne', at: [5.6, 0], nucleus: '\\text{Ne}', shells: [2, 8], r: 0.9, gap: 0.9 }),
-    atomShells({ name: 'ar', at: [13, 0], nucleus: '\\text{Ar}', shells: [2, 8, 8], r: 0.9, gap: 0.9 }),
+    ['he', 'He', 2, 'helium', 'good'],
+    ['ne', 'Ne', 10, 'neon', 'good'],
+    ['ar', 'Ar', 18, 'argon', 'good'],
   ],
-  320,
+  { gap: 6, each: 1.6, height: 340 },
 );
 
 const video: Explainer = {
@@ -80,8 +80,8 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'The noble gases in group eighteen have full outer shells: two electrons for helium, and eight for the others.', show: ['ng.he-nucleus', 'ng.he-shell-1', 'ng.ne-nucleus', 'ng.ne-shell-1', 'ng.ne-shell-2', 'ng.ar-nucleus', 'ng.ar-shell-1', 'ng.ar-shell-2', 'ng.ar-shell-3'] },
-        { say: 'A full outer shell is very stable, so they hardly gain, lose or share electrons. They are colourless gases of single atoms, and they hardly react at all.', focus: ['ng.he-shell-1', 'ng.ne-shell-2', 'ng.ar-shell-3'] },
+        { say: 'The noble gases in group eighteen have full outer shells: two electrons for helium, and eight for the others. Watch each shell fill up.', show: ['ng', 'ng.labels', 'ng.arrangement'], play: 'ng.fill' },
+        { say: 'A full outer shell is very stable, so they hardly gain, lose or share electrons. They are colourless gases of single atoms, and they hardly react at all.', focus: 'ng' },
         { say: 'That makes them useful. Helium fills balloons and airships: it is much less dense than air, and unlike hydrogen it cannot burn.', show: 'b.0', focus: 'b.0' },
         { say: 'Argon fills some light bulbs and surrounds the metal in welding, so the hot metal cannot react with oxygen. And neon glows red-orange in advertising signs.', show: ['b.1', 'b.2'], focus: ['b.1', 'b.2'] },
         { say: 'Their boiling points rise down the group, from helium, the lowest of any element.' },

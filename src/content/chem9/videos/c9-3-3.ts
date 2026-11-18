@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { displacement } from '../../chemmore/videos/lib/cx-particles.ts';
 
 const video: Explainer = {
   id: 'c9-3-3',
@@ -51,6 +52,16 @@ const video: Explainer = {
         { say: 'A metal displaces another metal from its compound only if it is higher in the series.', show: 'rule' },
         { say: 'Put an iron nail into blue copper sulfate solution. Iron is above copper, so it displaces it. A brown coating of copper forms on the nail, and the blue colour fades.' },
         { say: 'But copper in zinc sulfate does nothing, because copper is below zinc. And gold is so unreactive that it is found in the ground as the pure metal.' },
+      ],
+    },
+    {
+      chapter: 'Displacement, up close',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3 })],
+      lines: [
+        { say: 'Here is the iron nail up close, in blue copper sulfate solution, beside a piece of copper in iron sulfate solution. Watch what the copper ions do when they hit the iron.', caption: 'Here is the iron nail up close, in blue copper(II) sulfate solution, beside a piece of copper in iron(II) sulfate solution. Watch what the copper ions do when they hit the iron.', show: ['dp', 'dp.labels', 'dp.key'] },
+        { say: 'Each copper ion that hits the iron becomes a copper atom that settles on the nail, while an iron atom leaves as an iron ion. So a coating of copper builds up, and the blue copper ions are used up.', play: 'dp.go', show: 'dp.tally', focus: 'dp.fe' },
+        { say: 'On the right, nothing happens. Copper is below iron in the series, so it cannot push the more reactive iron out of its compound.', focus: 'dp.cu' },
       ],
     },
     {

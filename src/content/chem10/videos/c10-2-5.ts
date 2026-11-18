@@ -1,4 +1,4 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 
@@ -19,6 +19,32 @@ const table = figure(
   ],
   480,
 );
+
+// Sodium and magnesium (src/video/atoms.ts): in the clip `lose` sodium loses its one outer
+// electron, then magnesium loses its two, one at a time.
+const twoAtoms: AtomsEl = {
+  kind: 'atoms',
+  id: 'at',
+  span: [12, 7],
+  atoms: [
+    { id: 'na', symbol: 'Na', protons: 11, at: [3, 3.5], tone: 'opp', name: 'sodium' },
+    { id: 'mg', symbol: 'Mg', protons: 12, at: [8.8, 3.5], tone: 'theta', name: 'magnesium' },
+  ],
+  clips: {
+    lose: {
+      phases: [
+        { dur: 0.4 },
+        { dur: 1.4, give: [{ from: 'na', to: null, n: 1 }] },
+        { dur: 1 },
+        { dur: 1.4, give: [{ from: 'mg', to: null, n: 1 }] },
+        { dur: 1.4, give: [{ from: 'mg', to: null, n: 1 }] },
+        { dur: 0.6 },
+      ],
+    },
+  },
+  poster: 'lose',
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c10-2-5',
@@ -68,8 +94,10 @@ const video: Explainer = {
     },
     {
       chapter: 'Alkaline earth metals',
-      layout: 'center',
-      main: [
+      layout: 'split',
+      leftWidth: 620,
+      left: [twoAtoms],
+      right: [
         {
           kind: 'bullets',
           id: 'b',
@@ -81,8 +109,8 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'The alkaline earth metals in group two have two outer electrons. They are harder and denser than the group one metals beside them.', show: 'b.0', focus: 'b.0' },
-        { say: 'They are also less reactive, because they must lose two electrons instead of one.', show: 'b.1', focus: 'b.1' },
+        { say: 'The alkaline earth metals in group two have two outer electrons. They are harder and denser than the group one metals beside them.', show: ['b.0', 'at', 'at.labels', 'at.arrangement'], focus: 'b.0' },
+        { say: 'They are also less reactive, because they must lose two electrons instead of one. Watch sodium lose its one, then magnesium its two.', show: ['b.1', 'at.charges'], play: 'at.lose', focus: 'b.1' },
         { say: 'Like group one, they become more reactive down the group. Magnesium reacts only very slowly with cold water, while calcium, below it, fizzes steadily.', show: 'b.2', focus: 'b.2' },
       ],
     },

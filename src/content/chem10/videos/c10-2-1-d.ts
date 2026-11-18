@@ -1,4 +1,22 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
+
+/**
+ * Sulfur, chlorine and argon side by side (src/video/atoms.ts): one more proton each, and the clip
+ * fills each with as many electrons as it has protons.
+ */
+const neighbours: AtomsEl = {
+  kind: 'atoms',
+  id: 'nb',
+  span: [24, 8],
+  atoms: [
+    { id: 's', symbol: 'S', protons: 16, electrons: 0, at: [4, 4], tone: 'theta', name: 'sulfur, 16' },
+    { id: 'cl', symbol: 'Cl', protons: 17, electrons: 0, at: [12, 4], tone: 'good', name: 'chlorine, 17' },
+    { id: 'ar', symbol: 'Ar', protons: 18, electrons: 0, at: [20, 4], tone: 'adj', name: 'argon, 18' },
+  ],
+  clips: { fill: { phases: [{ dur: 0.3 }, { dur: 6, fill: { s: 16, cl: 17, ar: 18 } }, { dur: 0.7 }] } },
+  poster: 'fill',
+  height: 420,
+};
 
 const video: Explainer = {
   id: 'c10-2-1-d',
@@ -33,6 +51,16 @@ const video: Explainer = {
         { say: 'Sometimes a question gives you the protons directly. Sometimes you have to find them first.' },
         { say: 'From the electrons: a neutral atom has as many protons as electrons.', show: 'r.0', focus: 'r.0' },
         { say: 'From the mass number and the neutrons: the protons are the mass number minus the neutrons. Then look up the element with that atomic number.', show: 'r.1', focus: 'r.1' },
+      ],
+    },
+    {
+      chapter: 'One proton apart, up close',
+      layout: 'center',
+      main: [neighbours],
+      lines: [
+        { say: 'Here are three neighbours in the periodic table, up close: sulfur with sixteen protons, chlorine with seventeen, and argon with eighteen.', show: ['nb', 'nb.labels'] },
+        { say: 'Each neutral atom gathers as many electrons as it has protons, so each ends up with one more electron than the last.', play: 'nb.fill', show: 'nb.arrangement' },
+        { say: 'Just one proton more turns a yellow solid, sulfur, into a poisonous green gas, chlorine, and then into argon, a gas that hardly reacts at all. The protons decide the element.', focus: 'nb.cl' },
       ],
     },
     {

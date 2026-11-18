@@ -1,4 +1,8 @@
 import type { Explainer } from '@/video/script.ts';
+import { alkaliInWater } from '../../chem10/videos/lib/c10-particles.ts';
+
+// The particles here are simulated (src/video/particles.ts); see alkaliInWater.
+const group1 = alkaliInWater('g1');
 
 const video: Explainer = {
   id: 'c8-2-3',
@@ -36,7 +40,16 @@ const video: Explainer = {
         { say: 'The alkali metals are group one: lithium, sodium, potassium and the elements below. They are soft enough to cut with a knife, and very reactive, so they are stored under oil.', show: 'eq' },
         { say: 'With water, they give off hydrogen gas and make a hydroxide, which dissolves to give an alkaline solution. That is how they got their name.' },
         { say: 'Lithium fizzes steadily. Sodium melts into a ball and whizzes around. Potassium bursts into a lilac flame.', show: ['water', 'water.0', 'water.1', 'water.2'] },
-        { say: 'So the alkali metals get more reactive down the group.' },
+      ],
+    },
+    {
+      chapter: 'Group 1, up close',
+      layout: 'center',
+      main: [group1],
+      lines: [
+        { say: 'Let’s watch all three in water, up close: lithium, sodium and potassium, each a small piece in the same amount of water.', show: ['g1', 'g1.labels', 'g1.thermo'] },
+        { say: 'Where water meets the metal, hydrogen is set loose and bubbles away, and the metal dissolves. Lithium reacts slowly, sodium faster, and potassium fastest of all.', play: 'g1.drop' },
+        { say: 'Potassium also gives out the most heat, so its water warms fastest. So the alkali metals get more reactive down the group.', focus: 'g1.k' },
       ],
     },
     {

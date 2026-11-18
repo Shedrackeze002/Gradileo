@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import type { Part } from '@/video/solids.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, LETTER_TONE, mol, plus, row } from './lib/c10-4-figures.ts';
+import { sparkedHydrogen } from './lib/c10-particles.ts';
 
 // The four patterns as balls: each letter is an element, and touching balls are a compound.
 const L = (id: string, letters: string[]) => mol(id, letters, { tones: letters.map((l) => LETTER_TONE[l]) });
@@ -78,6 +79,16 @@ const video: Explainer = {
         { say: 'Zinc pushes copper out of copper two sulfate: a single displacement. And silver nitrate and sodium chloride swap partners: a double displacement.', caption: 'Zinc pushes copper out of copper(II) sulfate: a single displacement. And silver nitrate and sodium chloride swap partners: a double displacement.', show: ['t.2', 't.3'] },
         { say: 'The fifth type is combustion: a fuel burns in oxygen and gives out energy. Methane is a hydrocarbon, a compound of carbon and hydrogen only, so in plenty of oxygen it burns completely to carbon dioxide and water.', show: 't.4', focus: 't.4' },
         { say: 'Fuels that also contain oxygen, such as ethanol, burn to the same products.' },
+      ],
+    },
+    {
+      chapter: 'Synthesis, up close',
+      layout: 'center',
+      main: [sparkedHydrogen('sy')],
+      lines: [
+        { say: 'Here is a synthesis reaction up close: hydrogen molecules and oxygen molecules, two elements.', show: ['sy', 'sy.labels', 'sy.key', 'sy.thermo'] },
+        { say: 'A spark sets it off. The atoms swap partners, and the two elements join into one compound, water. Each reaction gives out heat, which sets off the next.', show: 'sy.tally', play: 'sy.spark' },
+        { say: 'No atoms are made or lost: every hydrogen and oxygen atom ends up in a water molecule.' },
       ],
     },
     {

@@ -471,6 +471,12 @@ See `src/video/script.ts` for every element and option. In short:
     `bond: 4, heavy: 3, cross: 1`). Water dissolves well with `heavy: 0.2` at a temperature of 0.7.
   - `lump: true` (or a number of smaller lumps) starts the first kind as a lump on the floor, and
     `hold` keeps it still until a phase lets it go (`release: ['b']`), so it is seen dropping in.
+  - `above: 0.3` starts the lump on top of the liquid instead of on the floor, held just clear of
+    it (`hold`), so a `release` drops it in: give it `bond: 10` so it stays whole, and a large
+    `heavy` (10) to sink it or a small one (0.1) to float it, in water at about 0.47. `level: true`
+    on the box, with the part `level`, draws a yellow line at the liquid's surface and a dashed one
+    where it started, so the rise when a stone sinks is seen (displacement: Chemistry 7's
+    `c7-1-3.ts`, floating and sinking in `c7-1-4.ts`).
   - `lumpMix: 2` builds the lump from two kinds, kind 0 and kind 2, set out alternately as in a
     salt crystal (give kind 2 `n: 0` among the kinds and the ions it adds come from kind 0's count
     split between them); `hold: [0, 2]` holds both.
@@ -490,6 +496,10 @@ See `src/video/script.ts` for every element and option. In short:
     ion). `indicator: { acid: [0], base: [3], tone: 'hyp' }` tints the box once none of the acid
     kinds is left and some of the base is, as at the endpoint of a titration (`titrating` in
     `src/content/chem20/videos/lib/c20-particles.ts`).
+    Into a liquid, each unit waits until the one before has moved clear of the tip, and what starts
+    in the box is packed at the bottom: pour a liquid that does not mix (`cross: 0.3`, the poured
+    kind's `bond: 2`) onto water at 0.5, and a light one (`heavy: 0.6`) lies on top while a dense
+    one (`heavy: 5`) sinks through (`layers` in Chemistry 7's `c7-1-4.ts`).
   - A reaction's `chance: 0.001` lets only that fraction of meetings react (checked at every step
     while two particles touch, so keep it small), for a slow reaction, or one that runs both ways
     at steady rates and settles part way: an equilibrium. Give such reactions `reach: 1.15` so that
@@ -514,6 +524,11 @@ See `src/video/script.ts` for every element and option. In short:
     (`release: ['b']`); then particles smaller than the holes fall through and bigger ones stay.
   - A kind marked `magnetic` is pulled up towards a magnet drawn over the box while a phase's
     `magnet: { b: 1 }` holds it there (`0` takes it away).
+  - A phase's `push: { b: 0.7 }` pushes a solid sideways, its top half to the right and its bottom
+    half to the left, as a hammer blow does (arrows show the push; `0` lets go). Each half moves at
+    a steady pace once it gives. Metal atoms with `bond` about 3 slide over one another and stay
+    moved; `pin: [1]` fixes that kind's atoms where they settled, spread evenly through the rows
+    (the bigger atoms of an alloy), so the rows jam and the bar hardly gives. See `c8-4-3.ts`.
   - `escape: true` gives the box an open top that particles leave by (evaporation): one that
     reaches the top is gone. A kind with `bond` 2 or more (a salt) never leaves; it falls back.
     `escape: [4]` lets only the kinds listed leave (a gas bubbling out of a solution).
@@ -532,6 +547,10 @@ See `src/video/script.ts` for every element and option. In short:
     atoms' kinds are listed in `kinds` with `n: 0`. `src/video/reactions.ts` has the atoms in the
     videos' colours (`ATOM.H`, `O`, `C`, `Ne`) and ready-made burning boxes (`hydrogenBurning`,
     `carbonBurning`: light them with a phase's `heat` of about 2 and 2.5).
+  - `molecules: [{ atoms: Array(16).fill(0), n: 1, chain: true }]` is a polymer chain: each atom
+    bonded to the next, free to bend, laid along the floor at the start. Give each chain its own
+    kind (and colour) so the chains can be told apart, `size: 0.8` so the bonds show, and a `temp`
+    of about 0.4 so they wriggle. See `c8-4-4.ts`.
   - `reactions: [{ a: 0, b: 1, to: [2, 3], join: true, energy: 1.5, heat: 0.3 }]` turns a pair of
     kinds `a` and `b` that hit hard enough (`energy`) into kinds `to`, joined with `join`; `heat`
     warms the box, which then cools back slowly. `free` and `carry` let molecules swap partners
@@ -604,6 +623,17 @@ See `src/video/script.ts` for every element and option. In short:
   `oneAfterAnother` for several reactions in one element) and the extra chemistry course's
   `lib/cx-molecules.ts` (mechanisms with curly arrows, benzene's nitration, the Haber process and
   the fuel cell).
+
+- `scatter` (`src/video/scatter.ts`) is Rutherford's gold foil: a source fires alpha particles
+  at a foil of gold nuclei, and each nucleus pushes them away with an inverse-square force, so
+  their paths are worked out, not drawn. Give the number of `shots` and the clips, whose phases
+  `fire` that many shots evenly through the phase; end each clip with a phase of about 5 seconds
+  that fires none, or the last shots stop in mid-flight when it ends. Every shot keeps clear of the
+  nuclei and goes straight through, except those in `close` (`{ shot, miss }`, by firing order
+  from 0), aimed past a nucleus by `miss`: 0.03 turns a shot by about 27°, 0.008 by about 76°, and
+  −0.0005 throws it back. Each shot leaves a faint track (a bent one stays bright). The parts are
+  `labels`, `atoms` (each gold atom's size round its tiny nucleus: mostly empty space) and `count`
+  (straight through, turned aside, bounced back). See Chemistry 9's `c9-1-1.ts`.
 
 - `quote` sets a passage of prose or verse off from the narration, for the English videos: one
   entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)

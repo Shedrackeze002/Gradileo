@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { corrosiveAcid } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-5-b',
@@ -40,6 +41,16 @@ const video: Explainer = {
         { say: 'The exclamation mark means harmful or irritant: it irritates the skin, eyes or airways, or harms you in larger amounts. Keep it off your skin and out of your eyes.', show: 't.2', focus: 't.2' },
         { say: 'The health hazard pictogram shows a person’s head and chest, with a star-shaped burst on the chest. The substance may cause cancer, damage organs or cause breathing problems. Do not breathe in its dust or vapour.', show: 't.3', focus: 't.3' },
         { say: 'The environment pictogram shows a dead tree and a dead fish. The substance, such as copper two sulfate, is poisonous to fish and other water life, so never pour it down the sink.', caption: 'The environment pictogram shows a dead tree and a dead fish. The substance, such as copper(II) sulfate, is poisonous to fish and other water life, so never pour it down the sink.', show: 't.4', focus: 't.4' },
+      ],
+    },
+    {
+      chapter: 'Corrosion, up close',
+      layout: 'center',
+      main: [corrosiveAcid('ca')],
+      lines: [
+        { say: 'Here is what corrosive means, up close: a concentrated acid on a piece of metal.', show: ['ca', 'ca.labels'] },
+        { say: 'Each acid particle that hits the metal reacts with it and carries a piece away, so the metal is eaten away, particle by particle, while hydrogen gas bubbles off.', play: 'ca.fizz' },
+        { say: 'A corrosive substance attacks skin and eyes in the same way, by reacting with them, which is why a splash must be washed off at once.' },
       ],
     },
     {

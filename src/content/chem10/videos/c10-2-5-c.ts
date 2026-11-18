@@ -1,19 +1,20 @@
-import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { tag } from './lib/c10-2-figures.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 
-// Fluorine and chlorine: seven outer electrons each, the outer shell further out in chlorine.
-const twoAtoms = figure(
-  'at',
-  [
-    atomShells({ name: 'f', at: [0, 0], nucleus: '\\text{F}', shells: [2, 7], r: 0.9, gap: 0.9 }),
-    tag({ id: 'f-name', at: [0, -4.2], tex: '\\text{fluorine, 2,7}' }),
-    atomShells({ name: 'cl', at: [7.6, 0], nucleus: '\\text{Cl}', shells: [2, 8, 7], r: 0.9, gap: 0.9 }),
-    tag({ id: 'cl-name', at: [7.6, -4.2], tex: '\\text{chlorine, 2,8,7}' }),
+// Fluorine and chlorine (src/video/atoms.ts): seven outer electrons each, the outer shell further
+// out in chlorine. In the clip `gain` each takes one more electron and becomes an ion: fluorine
+// first, as it attracts the electron more strongly.
+const twoAtoms: AtomsEl = {
+  kind: 'atoms',
+  id: 'at',
+  span: [12, 6.5],
+  atoms: [
+    { id: 'f', symbol: 'F', protons: 9, at: [3, 3.25], tone: 'theta', name: 'fluorine' },
+    { id: 'cl', symbol: 'Cl', protons: 17, at: [8.6, 3.25], tone: 'good', name: 'chlorine' },
   ],
-  460,
-);
+  clips: { gain: { phases: [{ dur: 0.4 }, { dur: 1.2, fill: { f: 10 } }, { dur: 1.2 }, { dur: 1.2, fill: { cl: 18 } }, { dur: 0.6 }] } },
+  poster: 'gain',
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c10-2-5-c',
@@ -47,8 +48,8 @@ const video: Explainer = {
       lines: [
         {
           say: 'The halogens in group seventeen have seven outer electrons, one short of a full shell.',
-          show: ['b.0', 'at.f-nucleus', 'at.f-shell-1', 'at.f-shell-2', 'at.f-name', 'at.cl-nucleus', 'at.cl-shell-1', 'at.cl-shell-2', 'at.cl-shell-3', 'at.cl-name'],
-          focus: ['b.0', 'at.f-shell-2', 'at.cl-shell-3'],
+          show: ['b.0', 'at', 'at.labels', 'at.arrangement'],
+          focus: ['b.0', 'at'],
         },
         { say: 'Their name means salt-former, because they react with metals to make salts, such as sodium chloride.', show: 'b.1', focus: 'b.1' },
         { say: 'Fluorine, chlorine, bromine and iodine all exist as molecules of two atoms, and they are toxic.', show: ['b.2', 'b.3'], focus: ['b.2', 'b.3'] },
@@ -94,12 +95,8 @@ const video: Explainer = {
         },
       ],
       lines: [
-        {
-          say: 'A halogen reacts by gaining one electron to fill its outer shell.',
-          show: ['b.0', 'at.f-nucleus', 'at.f-shell-1', 'at.f-shell-2', 'at.f-name', 'at.cl-nucleus', 'at.cl-shell-1', 'at.cl-shell-2', 'at.cl-shell-3', 'at.cl-name'],
-          focus: 'b.0',
-        },
-        { say: 'Going down the group, the atoms get larger, so the outer shell is further from the nucleus, and an extra electron is attracted less strongly.', show: 'b.1', focus: ['b.1', 'at.f-shell-2', 'at.cl-shell-3'] },
+        { say: 'A halogen reacts by gaining one electron to fill its outer shell. Watch fluorine and chlorine each take one.', show: ['b.0', 'at', 'at.labels', 'at.arrangement', 'at.charges'], play: 'at.gain', focus: 'b.0' },
+        { say: 'Going down the group, the atoms get larger, so the outer shell is further from the nucleus, and an extra electron is attracted less strongly.', show: 'b.1', focus: 'b.1' },
         { say: 'The larger halogens gain an electron less readily, so they are less reactive.' },
       ],
     },

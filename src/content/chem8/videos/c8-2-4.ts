@@ -1,4 +1,28 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). Four alkali metals are warmed together,
+// always at the same temperature. Their atoms hold on to one another less tightly down the group,
+// so rubidium's rows break up into a liquid first, then potassium's, sodium's and lithium's last.
+
+const metal = (id: string, name: string, tone: Tone, bond: number): ParticleBox => ({
+  id,
+  state: 'solid',
+  width: 6,
+  height: 7,
+  n: 18,
+  kinds: [{ n: 18, bond, tone, name }],
+  label: name,
+});
+
+const melting: ParticlesEl = {
+  kind: 'particles',
+  id: 'mt',
+  boxes: [metal('li', 'lithium', 'good', 3.5), metal('na', 'sodium', 'opp', 2.1), metal('k', 'potassium', 'brand', 1.35), metal('rb', 'rubidium', 'hyp', 0.85)],
+  clips: { warm: { phases: [{ dur: 12, heat: { li: 0.95, na: 0.95, k: 0.95, rb: 0.95 } }, { dur: 2 }] } },
+  thermometers: true,
+  height: 380,
+};
+
 
 const video: Explainer = {
   id: 'c8-2-4',
@@ -39,6 +63,16 @@ const video: Explainer = {
         { say: 'Here are the melting points of the alkali metals. Lithium melts at one hundred and eighty-one degrees, sodium at ninety-eight, potassium at sixty-three, and rubidium at thirty-nine.', show: ['mp.0', 'mp.1', 'mp.2', 'mp.3'] },
         { say: 'The melting point falls down the group, and it falls by less each time: eighty-three, then thirty-five, then twenty-four. So the next fall should be smaller still, about ten degrees.' },
         { say: 'That predicts about twenty-nine degrees for caesium. The real value is twenty-eight and a half degrees, so caesium would melt on a hot day.', show: 'mp.4', focus: 'mp.4' },
+      ],
+    },
+    {
+      chapter: 'Melting, up close',
+      layout: 'center',
+      main: [melting],
+      lines: [
+        { say: 'Why does the melting point fall? Let’s warm four alkali metals together, up close, so they are always at the same temperature.', show: ['mt', 'mt.labels', 'mt.thermo'] },
+        { say: 'As the temperature rises, rubidium’s atoms break out of their rows first, then potassium’s, then sodium’s. Lithium holds on longest.', play: 'mt.warm' },
+        { say: 'Down the group, the atoms hold on to one another less tightly, so less heat is needed to melt the metal. That is why the melting point falls.' },
       ],
     },
     {

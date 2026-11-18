@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
+import { alkaliInWater } from './lib/c10-particles.ts';
 
 const table = figure(
   'pt',
@@ -52,6 +53,16 @@ const video: Explainer = {
         { say: 'Lithium, sodium and potassium, in group one, each have one outer electron, and all three react with water to give off hydrogen.', show: ['pt.g1', 'b.0'], focus: 'b.0' },
         { say: 'Fluorine, chlorine and bromine, in group seventeen, each have seven outer electrons, and all three react with sodium to make a white salt.', show: ['pt.g17', 'b.1'], focus: 'b.1' },
         { say: 'Neighbours across a period, such as sodium and magnesium, are much less alike.', show: 'pt.pair', focus: 'pt.pair' },
+      ],
+    },
+    {
+      chapter: 'Group one, up close',
+      layout: 'center',
+      main: [alkaliInWater('g1')],
+      lines: [
+        { say: 'Let’s watch group one up close: small pieces of lithium, sodium and potassium, each in water.', show: ['g1', 'g1.labels', 'g1.thermo'] },
+        { say: 'All three do the same thing. Where water meets the metal, hydrogen is set loose and bubbles away, and the metal dissolves.', play: 'g1.drop' },
+        { say: 'Each has one outer electron, so each reacts in the same way. Only the speed changes down the group.' },
       ],
     },
     {

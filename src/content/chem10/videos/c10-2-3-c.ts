@@ -1,21 +1,22 @@
-import type { Explainer } from '@/video/script.ts';
-import { atomShells, periodicTable } from '@/video/chem.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
+import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
-import { tag } from './lib/c10-2-figures.ts';
 
-// Lithium, sodium and potassium: one more shell each time, and one outer electron each.
-const group1 = figure(
-  'g1',
-  [
-    atomShells({ name: 'li', at: [0, 0], nucleus: '\\text{Li}', shells: [2, 1], r: 0.9, gap: 0.8 }),
-    tag({ id: 'li-arr', at: [0, -5], tex: '\\text{2,1}' }),
-    atomShells({ name: 'na', at: [7, 0], nucleus: '\\text{Na}', shells: [2, 8, 1], r: 0.9, gap: 0.8 }),
-    tag({ id: 'na-arr', at: [7, -5], tex: '\\text{2,8,1}' }),
-    atomShells({ name: 'k', at: [15.6, 0], nucleus: '\\text{K}', shells: [2, 8, 8, 1], r: 0.9, gap: 0.8 }),
-    tag({ id: 'k-arr', at: [15.6, -5], tex: '\\text{2,8,8,1}' }),
+// Lithium, sodium and potassium (src/video/atoms.ts): their electrons arrive in the clip `fill`,
+// one more shell each time, and each ends with one outer electron.
+const group1: AtomsEl = {
+  kind: 'atoms',
+  id: 'g1',
+  span: [22, 8],
+  atoms: [
+    { id: 'li', symbol: 'Li', protons: 3, electrons: 0, at: [3, 4], tone: 'opp', name: 'lithium' },
+    { id: 'na', symbol: 'Na', protons: 11, electrons: 0, at: [10, 4], tone: 'opp', name: 'sodium' },
+    { id: 'k', symbol: 'K', protons: 19, electrons: 0, at: [18, 4], tone: 'opp', name: 'potassium' },
   ],
-  440,
-);
+  clips: { fill: { phases: [{ dur: 0.3 }, { dur: 6.5, fill: { li: 3, na: 11, k: 19 } }, { dur: 0.5 }] } },
+  poster: 'fill',
+  height: 440,
+};
 
 const table = figure(
   'pt',
@@ -56,11 +57,8 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'The outer electrons, also called valence electrons, are the electrons in the outermost occupied shell: the last number in the arrangement. They are the ones that meet other atoms when atoms react.', show: 'def' },
-        {
-          say: 'Lithium is two, one. Sodium is two, eight, one. Potassium is two, eight, eight, one.',
-          show: ['g1.li-nucleus', 'g1.li-shell-1', 'g1.li-shell-2', 'g1.li-arr', 'g1.na-nucleus', 'g1.na-shell-1', 'g1.na-shell-2', 'g1.na-shell-3', 'g1.na-arr', 'g1.k-nucleus', 'g1.k-shell-1', 'g1.k-shell-2', 'g1.k-shell-3', 'g1.k-shell-4', 'g1.k-arr'],
-        },
-        { say: 'Each one has one outer electron. Elements in the same group have the same number of outer electrons, and that is why they behave alike.', focus: ['g1.li-shell-2', 'g1.na-shell-3', 'g1.k-shell-4'] },
+        { say: 'Lithium is two, one. Sodium is two, eight, one. Potassium is two, eight, eight, one. Watch their electrons fill the shells.', show: ['g1', 'g1.labels', 'g1.arrangement'], play: 'g1.fill' },
+        { say: 'Each one has one outer electron. Elements in the same group have the same number of outer electrons, and that is why they behave alike.', focus: 'g1' },
       ],
     },
     {

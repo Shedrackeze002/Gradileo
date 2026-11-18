@@ -5,7 +5,7 @@
  * of the hits each second and the trail of one followed particle.
  */
 import type { ParticleBox, ParticlesEl, Tone } from '../script.ts';
-import { boxSize, FLASH, PAPER_START, particlesAt, pressureOf, singular, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
+import { boxSize, FLASH, PAPER_START, particlesAt, pressureOf, shearLine, singular, tempOf, TEMPS, type BoxFrame, type PlayAt } from '../particles.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
@@ -113,6 +113,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const middle = part('middle');
   const keyPart = part('key');
   const spreadPart = part('spread');
+  const levelPart = part('level');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
 
@@ -325,6 +326,35 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 </g>
               );
             })()}
+            {/* A push on a solid: an arrow at the left end of its top half pointing right, and one
+                at the right end of its bottom half pointing left, each following the end it pushes. */}
+            {f.push > 0.02 && f.x.length > 1 && (() => {
+              const mid = shearLine(f.y);
+              const top = f.x.map((x, i) => [x, f.y[i]]).filter(([, y]) => y > mid);
+              const bot = f.x.map((x, i) => [x, f.y[i]]).filter(([, y]) => y <= mid);
+              if (!top.length || !bot.length) return null;
+              const yT = Y(top.reduce((sum, [, y]) => sum + y, 0) / top.length);
+              const yB = Y(bot.reduce((sum, [, y]) => sum + y, 0) / bot.length);
+              const xL = X(Math.min(...top.map(([x]) => x))) - r - 10;
+              const xR = X(Math.max(...bot.map(([x]) => x))) + r + 10;
+              const len = 58;
+              const head = (x: number, y: number, dir: number) => `M ${x} ${y} L ${x - dir * 16} ${y - 11} L ${x - dir * 16} ${y + 11} Z`;
+              return (
+                <g opacity={clamp01(f.push / 0.3)}>
+                  <line x1={xL - len} x2={xL - 12} y1={yT} y2={yT} stroke={TONES.theta} strokeWidth={7} strokeLinecap="round" />
+                  <path d={head(xL, yT, 1)} fill={TONES.theta} />
+                  <line x1={xR + len} x2={xR + 12} y1={yB} y2={yB} stroke={TONES.theta} strokeWidth={7} strokeLinecap="round" />
+                  <path d={head(xR, yB, -1)} fill={TONES.theta} />
+                </g>
+              );
+            })()}
+            {/* The liquid's surface now, and a dashed line where it was at first. */}
+            {levelPart > 0 && f.level && (
+              <g opacity={levelPart}>
+                <line x1={X(0) - 10} x2={X(bw) + 10} y1={Y(f.level.start)} y2={Y(f.level.start)} stroke={INK3} strokeWidth={2.5} strokeDasharray="8 7" />
+                <line x1={X(0) - 14} x2={X(bw) + 14} y1={Y(f.level.now)} y2={Y(f.level.now)} stroke={TONES.theta} strokeWidth={4} strokeLinecap="round" />
+              </g>
+            )}
             {/* A bracket over the particles' width, with dashed marks as wide as they were at first. */}
             {width > 0 && b.state !== 'gas' && (() => {
               const top = Y(Math.max(...f.y)) - r - 18;

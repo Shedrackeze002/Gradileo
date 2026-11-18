@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { burningPair } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-4-3-b',
@@ -76,6 +77,16 @@ const video: Explainer = {
         { say: 'Pentane, C five H twelve, is a hydrocarbon, so it burns to carbon dioxide and water.', caption: 'Pentane, C₅H₁₂, is a hydrocarbon, so it burns to carbon dioxide and water.', show: 'm.0', focus: 'm.0' },
         { say: 'Carbon: five C O two. Hydrogen: twelve atoms, so six H two O. Oxygen: five times two, plus six, is sixteen atoms, which is eight O two.', caption: 'Carbon: 5CO₂. Hydrogen: twelve atoms, so 6H₂O. Oxygen: five times two, plus six, is sixteen atoms, which is 8O₂.', show: ['m.1', 'm.2', 'm.3'], focus: 'm.3' },
         { say: 'With too little oxygen, burning is incomplete, and carbon monoxide, a toxic gas, or soot forms as well. Here, the burning is complete.' },
+      ],
+    },
+    {
+      chapter: 'Burning, up close',
+      layout: 'center',
+      main: [burningPair('bp')],
+      lines: [
+        { say: 'Let’s watch the atoms in burning, up close: carbon in oxygen on the left, and hydrogen in oxygen on the right.', show: ['bp', 'bp.labels', 'bp.thermo'] },
+        { say: 'Light them both. Each carbon atom leaves with two oxygen atoms, as carbon dioxide, and the hydrogen atoms join oxygen as water.', play: 'bp.light' },
+        { say: 'That is why a hydrocarbon, made of carbon and hydrogen, burns completely to carbon dioxide and water.' },
       ],
     },
     {

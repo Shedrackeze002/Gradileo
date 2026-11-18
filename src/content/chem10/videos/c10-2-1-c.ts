@@ -1,6 +1,4 @@
 import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
 
 const video: Explainer = {
   id: 'c10-2-1-c',
@@ -50,16 +48,26 @@ const video: Explainer = {
       chapter: 'Sodium-23',
       layout: 'split',
       leftWidth: 560,
-      left: [figure('na', [atomShells({ protons: 11, neutrons: 12, shells: [2, 8, 1] })], 520)],
+      left: [
+        {
+          kind: 'atoms',
+          id: 'na',
+          span: [9, 9],
+          atoms: [{ id: 'na', symbol: 'Na', protons: 11, electrons: 0, at: [4.5, 4.5], tone: 'opp', name: 'sodium-23' }],
+          clips: { fill: { phases: [{ dur: 0.3 }, { dur: 5.5, fill: { na: 11 } }, { dur: 0.7 }] } },
+          poster: 'fill',
+          height: 500,
+        },
+      ],
       right: [
         { kind: 'text', id: 'q', size: 'md', md: 'How many protons, neutrons and electrons are in a neutral atom of **sodium-23**? (Atomic number of sodium: $11$.)' },
         { kind: 'math', id: 'm', size: 'lg', align: 'left', lines: ['\\text{protons} = 11', '\\text{electrons} = 11', '\\text{neutrons} = 23 - 11 = 12'] },
       ],
       lines: [
         { say: 'An atom can be named by its element and its mass number, such as sodium-23. How many protons, neutrons and electrons does it have? The atomic number of sodium is eleven.', show: 'q' },
-        { say: 'The atomic number is eleven, so the atom has eleven protons.', show: ['m.0', 'na.nucleus'], focus: 'm.0' },
-        { say: 'The atom is neutral, so it also has eleven electrons.', show: ['m.1', 'na.shell-1', 'na.shell-2', 'na.shell-3'], focus: 'm.1' },
-        { say: 'The mass number is twenty-three, so the neutrons are twenty-three minus eleven: twelve.', show: 'm.2', focus: ['m.2', 'na.nucleus'] },
+        { say: 'The atomic number is eleven, so the atom has eleven protons.', show: ['m.0', 'na', 'na.labels'], focus: 'm.0' },
+        { say: 'The atom is neutral, so it also has eleven electrons. Watch them fill the shells: two, then eight, then one.', show: ['m.1', 'na.arrangement'], play: 'na.fill', focus: 'm.1' },
+        { say: 'The mass number is twenty-three, so the neutrons are twenty-three minus eleven: twelve.', show: 'm.2', focus: 'm.2' },
       ],
     },
     {

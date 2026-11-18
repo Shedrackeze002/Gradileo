@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { graphite, metal } from './lib/c10-3-figures.ts';
+import { hammeredCopper } from './lib/c10-particles.ts';
 
 // One layer of graphite: each carbon joined to three others, with electrons free to move.
 const layer = figure('gr', [graphite({ cols: 4, rows: 3 })], 460);
@@ -74,6 +75,15 @@ const video: Explainer = {
         { say: 'Metals are malleable. Layers of metal ions can slide over each other without the metal breaking, because the sea of electrons still holds them together. So metals can be hammered into sheets and drawn into wires.', show: 'b.1' },
         { say: 'The attraction between the ions and the electron sea is strong, so melting points are usually high. Iron melts at about one thousand five hundred and forty degrees Celsius, though mercury is a liquid at room temperature.', show: 'b.2' },
         { say: 'And metals do not dissolve in water, although a few very reactive ones, such as sodium, react with it.', show: 'b.3' },
+      ],
+    },
+    {
+      chapter: 'Malleable, up close',
+      layout: 'center',
+      main: [hammeredCopper('hc')],
+      lines: [
+        { say: 'Here is a bar of copper up close. Watch what a hammer blow does to it.', show: ['hc', 'hc.labels', 'hc.key'] },
+        { say: 'The top rows are pushed one way and the bottom rows the other. The layers of ions slide over one another, and the bar changes shape, but it stays in one piece.', play: 'hc.hit' },
       ],
     },
     {

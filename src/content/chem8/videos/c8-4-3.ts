@@ -1,4 +1,34 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). Both bars get the same push, their
+// top rows to the right and their bottom rows to the left. In pure copper the rows slide over one
+// another; in brass the bigger zinc atoms sit fixed among the rows and jam them, so it hardly gives.
+
+/** A metal's atoms: held in rows, but able to slide. */
+const METAL = { bond: 3, tone: 'opp' } as const;
+
+const layers: ParticlesEl = {
+  kind: 'particles',
+  id: 'sl',
+  boxes: [
+    { id: 'cu', state: 'solid', width: 20, height: 6, cols: 12, bare: true, kinds: [{ n: 48, ...METAL, name: 'copper' }], label: 'pure copper' },
+    {
+      id: 'br',
+      state: 'solid',
+      width: 20,
+      height: 6,
+      cols: 12,
+      bare: true,
+      pin: [1],
+      kinds: [{ n: 36, ...METAL, name: 'copper' }, { n: 12, bond: 3, size: 1.35, tone: 'adj', name: 'zinc' }],
+      label: 'brass, an alloy',
+    },
+  ],
+  clips: { push: { phases: [{ dur: 4, push: { cu: 0.7, br: 0.7 } }, { dur: 1.5, push: { cu: 0, br: 0 } }] } },
+  key: true,
+  height: 360,
+};
+
 
 const video: Explainer = {
   id: 'c8-4-3',
@@ -57,9 +87,17 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'An alloy is a mixture of a metal with one or more other elements. Steel is iron with a little carbon, and brass is copper and zinc.', show: 'alloys' },
-        { say: 'In a pure metal, the atoms are all the same size, and they sit in neat layers that slide over one another easily, so the metal is soft.' },
-        { say: 'In an alloy, atoms of a different size disrupt the layers, so they cannot slide as easily. That is why alloys are usually harder than pure metals.' },
         { say: 'Pure gold is too soft for everyday jewellery, so it is alloyed with copper or silver. Pure gold is twenty-four carat, and eighteen carat gold has eighteen parts of gold in every twenty-four. That is seventy-five percent gold.', show: 'carat' },
+      ],
+    },
+    {
+      chapter: 'Layers, up close',
+      layout: 'center',
+      main: [layers],
+      lines: [
+        { say: 'Why are alloys harder? Let’s look up close. In pure copper, the atoms are all the same size, and they sit in neat layers. In brass, bigger zinc atoms sit among the copper.', show: ['sl', 'sl.labels', 'sl.key'] },
+        { say: 'Now push both the same way, the top one way and the bottom the other. In pure copper, the layers slide over one another easily, so the metal is soft and bends.', play: 'sl.push', focus: 'sl.cu' },
+        { say: 'In brass, the bigger zinc atoms disrupt the layers, so they cannot slide. That is why alloys are usually harder than pure metals.', focus: 'sl.br' },
       ],
     },
     {

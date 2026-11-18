@@ -1,4 +1,28 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts).
+
+/** A chemical's vapour leaving an open bottle (the left of the box) and spreading through the air. */
+const vapour: ParticlesEl = {
+  kind: 'particles',
+  id: 'v',
+  boxes: [
+    {
+      id: 'a',
+      state: 'gas',
+      kinds: [{ n: 14, tone: 'opp', name: 'vapour' }, { n: 22, tone: 'adj', name: 'air' }],
+      apart: true,
+      divider: 0.2,
+      width: 18,
+      height: 7,
+      temp: 0.8,
+      label: 'vapour leaving an open bottle',
+    },
+  ],
+  clips: { open: { phases: [{ dur: 14, lift: ['a'] }] } },
+  key: true,
+  height: 360,
+};
 
 const video: Explainer = {
   id: 'c7-1-1',
@@ -63,6 +87,16 @@ const video: Explainer = {
         { say: 'Never eat, drink or taste anything in a lab. To smell a chemical, never sniff it directly. Waft the air towards your nose with your hand.', show: 'rules.2' },
         { say: 'When you heat a test tube, point its open end away from everyone, in case the liquid spits out.', show: 'rules.3' },
         { say: 'And tell your teacher straight away about any spill, breakage, cut or burn. If acid splashes on your skin, rinse it under running water for several minutes.', show: 'rules.4' },
+      ],
+    },
+    {
+      chapter: 'Wafting, up close',
+      layout: 'center',
+      main: [vapour],
+      lines: [
+        { say: 'Wafting makes sense once you picture the particles. On the left, a bottle has just been opened, and its orange vapour particles are crowded at its mouth.', show: ['v', 'v.labels', 'v.key'] },
+        { say: 'Let’s watch. The vapour spreads out into the air on its own, but it stays most crowded close to the bottle. Put your nose right over the mouth, and you breathe in a strong dose all at once.', play: 'v.open' },
+        { say: 'Wafting brings you only the thin edge of it, a few particles mixed with plenty of air: enough to smell, and not enough to harm you.' },
       ],
     },
     {

@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
+import { periodTwo } from './lib/c10-atoms.ts';
 
 // The main groups of periods 1 to 4, with their atomic numbers.
 const table = () =>
@@ -61,6 +62,16 @@ const video: Explainer = {
         { say: 'The order runs across each row from left to right, then on to the start of the next row, like the words on a page.' },
         { say: 'A group is a vertical column. The groups are numbered from one on the left to eighteen on the right.', show: ['g', 'pt.g17'] },
         { say: 'A period is a horizontal row, numbered from one at the top to seven at the bottom. This table shows only the main groups of the first four periods.', show: ['p', 'pt.p4'] },
+      ],
+    },
+    {
+      chapter: 'Across a period, up close',
+      layout: 'center',
+      main: [periodTwo('p2')],
+      lines: [
+        { say: 'Here is period two, up close: eight atoms, from lithium, atomic number three, to neon, atomic number ten.', show: ['p2', 'p2.labels'] },
+        { say: 'Watch their electrons arrive. Each atom along the row has one more proton, and so one more electron, than the one before it.', play: 'p2.fill', show: 'p2.arrangement' },
+        { say: 'That is the order of the table: across a period, the atomic number goes up by one at every step.' },
       ],
     },
     {

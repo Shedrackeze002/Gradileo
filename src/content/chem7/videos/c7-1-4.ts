@@ -1,4 +1,57 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). Each lump's particles are the same
+// size as the water's; `heavy` sets how hard gravity pulls each one, so a lump of heavy particles
+// is denser than the water and sinks, and a lump of light ones floats.
+
+/** Water with a lump of solid held just above it, to drop in. */
+const lumpOver = (id: string, heavy: number, tone: 'theta' | 'opp', name: string, label: string): ParticleBox => ({
+  id,
+  state: 'liquid',
+  kinds: [{ n: 12, bond: 10, heavy, tone, name }, { n: 44, heavy: 1, tone: 'adj', name: 'water' }],
+  lump: true,
+  above: 0.3,
+  hold: true,
+  cross: 0.3,
+  width: 10,
+  height: 11,
+  temp: 0.47,
+  level: id === 'b',
+  label,
+});
+
+/** Water with another liquid in a tube over it, to pour in. */
+const pourOnto = (id: string, liquid: { heavy: number; tone: 'theta' | 'hyp'; name: string }, label: string): ParticleBox => ({
+  id,
+  state: 'liquid',
+  kinds: [{ n: 36, heavy: 1, tone: 'adj', name: 'water' }, { n: 18, bond: 2, ...liquid }],
+  reserve: [1],
+  cross: 0.3,
+  width: 10,
+  height: 12,
+  temp: 0.5,
+  label,
+});
+
+/** Oil and syrup poured onto water: one stays on top, the other sinks through. */
+const layers: ParticlesEl = {
+  kind: 'particles',
+  id: 'ly',
+  boxes: [pourOnto('o', { heavy: 0.6, tone: 'theta', name: 'oil' }, 'oil onto water'), pourOnto('s', { heavy: 5, tone: 'hyp', name: 'syrup' }, 'syrup onto water')],
+  clips: { pour: { phases: [{ dur: 6, add: { o: 18, s: 18 } }, { dur: 10 }] } },
+  key: true,
+  speed: 2,
+  height: 460,
+};
+
+/** A light lump and a dense one dropped onto water. */
+const floatSink: ParticlesEl = {
+  kind: 'particles',
+  id: 'fs',
+  boxes: [lumpOver('a', 0.1, 'theta', 'cork', 'less dense than water'), lumpOver('b', 10, 'opp', 'iron', 'denser than water')],
+  clips: { drop: { phases: [{ dur: 0.6, release: ['a', 'b'] }, { dur: 8 }] } },
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c7-1-4',
@@ -55,6 +108,27 @@ const video: Explainer = {
         { say: 'So a huge log floats while a small pebble sinks. Floating depends on density, not on size. Ice, at zero point nine two, floats just below the surface, which is why most of an iceberg is underwater.' },
         { say: 'A toy has a mass of thirty grams and a volume of forty cubic centimetres. Its density is zero point seven five, which is less than one, so it floats.', show: 'toy', focus: 'toy' },
         { say: 'Liquids that do not mix stack up the same way. Honey sinks below water, and vegetable oil floats on top.', show: 'lay' },
+      ],
+    },
+    {
+      chapter: 'Floating, up close',
+      layout: 'center',
+      main: [floatSink],
+      lines: [
+        { say: 'Let’s watch floating and sinking up close. Each box holds water, the blue particles, with a lump of solid held just above it.', show: ['fs', 'fs.labels'] },
+        { say: 'The particles of the two lumps are the same size, but each orange particle has far more mass than a water particle, and each yellow one far less. So the orange lump is denser than water, and the yellow lump is less dense.' },
+        { say: 'Let’s drop them in. The dense lump pushes the water aside and sinks straight to the bottom, and the water rises round it.', play: 'fs.drop', show: 'fs.level', focus: 'fs.b' },
+        { say: 'The light lump cannot push its way down. Gravity pulls the water particles harder than the lump’s, so the water stays underneath, and the lump floats.', focus: 'fs.a' },
+      ],
+    },
+    {
+      chapter: 'Layers, up close',
+      layout: 'center',
+      main: [layers],
+      lines: [
+        { say: 'Liquids work the same way. Here are two beakers of water, with oil in the tube over one and syrup over the other.', show: ['ly', 'ly.labels', 'ly.key'] },
+        { say: 'Let’s pour them in. The oil is less dense than water, so it stays on top as a layer of its own. The syrup is denser, so it sinks through the water and gathers at the bottom.', play: 'ly.pour' },
+        { say: 'Neither mixes with the water, so each ends up in a layer, with the densest liquid at the bottom and the least dense at the top.' },
       ],
     },
     {

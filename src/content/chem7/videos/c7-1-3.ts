@@ -1,4 +1,33 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). The stone's particles hold tightly
+// together and are pulled down far harder than the water's, so the stone sinks and the water it
+// pushes aside raises the level (the part `level`).
+
+/** A stone held over water in a cylinder, to lower in. */
+const stone: ParticlesEl = {
+  kind: 'particles',
+  id: 'd',
+  boxes: [
+    {
+      id: 'c',
+      state: 'liquid',
+      kinds: [{ n: 10, bond: 10, heavy: 10, tone: 'opp', name: 'stone' }, { n: 44, heavy: 1, tone: 'adj', name: 'water' }],
+      lump: true,
+      above: 0.3,
+      hold: true,
+      cross: 0.3,
+      width: 9,
+      height: 12,
+      temp: 0.47,
+      level: true,
+      label: 'a stone lowered into water',
+    },
+  ],
+  clips: { drop: { phases: [{ dur: 0.6, release: ['c'] }, { dur: 9 }] } },
+  key: true,
+  height: 480,
+};
 
 const video: Explainer = {
   id: 'c7-1-3',
@@ -41,6 +70,16 @@ const video: Explainer = {
         { say: 'A box has a volume you can calculate. But what about a stone or a key? For a solid that sinks, we use displacement.', show: 'def' },
         { say: 'A sinking solid pushes aside, or displaces, a volume of water equal to its own volume. So its volume is the final reading minus the first reading.', show: 'm.0', focus: 'm.0' },
         { say: 'A cylinder holds thirty-five millilitres of water. A stone is lowered in, and the level rises to forty-eight. The stone’s volume is thirteen cubic centimetres.', show: 'm.1', focus: 'm.1' },
+      ],
+    },
+    {
+      chapter: 'Displacement, up close',
+      layout: 'center',
+      main: [stone],
+      lines: [
+        { say: 'Here is displacement up close. The blue particles are water in a cylinder, and the orange ones are a stone held just above it. The dashed line marks the water level now.', show: ['d', 'd.labels', 'd.key', 'd.level'] },
+        { say: 'Let’s lower the stone in. It sinks, and every water particle in its way has to move. They cannot go down through the stone, so they are pushed up, and the level rises.', play: 'd.drop', focus: 'd.c' },
+        { say: 'The water now fills the space below the yellow line, stone and all. So the rise from the dashed line to the yellow line is exactly the space the stone takes up: its volume.' },
       ],
     },
     {

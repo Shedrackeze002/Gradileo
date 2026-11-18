@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { fireAndPressure } from './lib/c10-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { hazardFrame } from './lib/c10-1-figures.ts';
 
@@ -56,6 +57,16 @@ const video: Explainer = {
         { say: 'The flame over circle shows a flame above a circle. It marks an oxidizer, such as potassium nitrate. An oxidizer does not need to burn itself, but it releases oxygen that makes other materials burn faster and hotter. Store it away from paper, fuels and anything that burns.', show: 't.1', focus: 't.1' },
         { say: 'The exploding bomb shows a bomb bursting apart. The substance can explode if it is heated, struck or rubbed, like fireworks. Never heat, grind or strike it.', show: 't.2', focus: 't.2' },
         { say: 'The gas cylinder marks a gas under pressure, such as a cylinder of oxygen or carbon dioxide. The container may burst if heated, so keep it upright, secured, and away from heat.', show: 't.3', focus: 't.3' },
+      ],
+    },
+    {
+      chapter: 'Fire and pressure, up close',
+      layout: 'center',
+      main: [fireAndPressure('fp')],
+      lines: [
+        { say: 'Let’s see two of these hazards up close. On the left, a flammable gas mixed with oxygen. On the right, a gas sealed in a cylinder.', show: ['fp', 'fp.labels', 'fp.thermo', 'fp.gauge'] },
+        { say: 'A single spark makes a few molecules react. Each reaction gives out heat, and that heat sets off the next, so the fire spreads through the whole gas in moments.', play: 'fp.spark' },
+        { say: 'Now warm the cylinder. Its particles speed up and hit the walls harder and more often, so the pressure climbs, until the cylinder may burst. That is why both are kept away from heat.', play: 'fp.warm', focus: 'fp.gauge' },
       ],
     },
     {

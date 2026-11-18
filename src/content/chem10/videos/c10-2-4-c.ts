@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
+import { hammeredCopper } from './lib/c10-particles.ts';
 
 // Metals in blue and non-metals in pink; the metalloids between them are left grey.
 const table = figure(
@@ -71,6 +72,16 @@ const video: Explainer = {
         { say: 'Solid metals are malleable: they can be hammered into shape. And they are ductile: they can be drawn into wires. Solid non-metals are brittle, so they break or crumble.', show: 't.2', focus: 't.2' },
         { say: 'Metals are solids at room temperature, except mercury, which is a liquid. Many non-metals are gases, bromine is a liquid, and the rest are solids.', show: 't.3', focus: 't.3' },
         { say: 'And metals usually have high melting points, while non-metals usually have low ones.', show: 't.4', focus: 't.4' },
+      ],
+    },
+    {
+      chapter: 'Hammering, up close',
+      layout: 'center',
+      main: [hammeredCopper('hit')],
+      lines: [
+        { say: 'Why can a metal be hammered into shape? Here is a bar of copper, up close. Its atoms sit in neat layers.', show: ['hit', 'hit.labels', 'hit.key'] },
+        { say: 'Now hit it, pushing the top one way and the bottom the other. The layers of atoms slide over one another, but they stay held together.', play: 'hit.hit' },
+        { say: 'So the copper changes shape without breaking: it is malleable. A solid non-metal cannot do this, so it shatters instead.' },
       ],
     },
     {

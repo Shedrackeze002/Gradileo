@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import type { Part } from '@/video/solids.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, mol, plus, row } from './lib/c10-4-figures.ts';
+import { displacement, metalsInAcid } from '../../chemmore/videos/lib/cx-particles.ts';
 
 // The reactivity order the lesson uses, most reactive at the top, with an arrow up the side.
 const METALS = ['magnesium', 'zinc', 'iron', 'hydrogen', 'copper', 'silver'];
@@ -66,6 +67,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Displacement, up close',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3 })],
+      lines: [
+        { say: 'Here is the same idea up close, with iron, which is also above copper. On the left, iron in copper two sulfate solution. On the right, copper in iron two sulfate solution.', caption: 'Here is the same idea up close, with iron, which is also above copper. On the left, iron in copper(II) sulfate solution. On the right, copper in iron(II) sulfate solution.', show: ['dp', 'dp.labels', 'dp.key'] },
+        { say: 'Each copper ion that hits the iron takes an iron atom’s place. Copper builds up as a solid, and iron goes into the solution as ions. On the right, nothing happens: copper is less reactive than iron.', show: 'dp.tally', play: 'dp.go' },
+      ],
+    },
+    {
       chapter: 'Metals in acid',
       layout: 'split',
       leftWidth: 440,
@@ -78,6 +88,15 @@ const video: Explainer = {
         { say: 'Hydrogen is in the list because metals react with acids by displacing the hydrogen of the acid.', show: ['rs.up', 'rs.up-label', ...METALS.map((m) => `rs.${m}`)], focus: 'rs.hydrogen' },
         { say: 'A metal above hydrogen reacts with a dilute acid to make a salt and hydrogen. A metal below hydrogen, such as copper, does not react.', show: 'rule' },
         { say: 'Iron filings are added to dilute hydrochloric acid. Iron is above hydrogen, so it displaces the hydrogen. Iron forms iron two compounds here, so iron plus hydrochloric acid gives iron two chloride plus hydrogen.', caption: 'Iron filings are added to dilute hydrochloric acid. Iron is above hydrogen, so it displaces the hydrogen. Iron forms iron(II) compounds here, so iron plus hydrochloric acid gives iron(II) chloride plus hydrogen.', show: 'm', focus: ['m', 'rs.iron'] },
+      ],
+    },
+    {
+      chapter: 'Metals in acid, up close',
+      layout: 'center',
+      main: [metalsInAcid('ma')],
+      lines: [
+        { say: 'Now magnesium, zinc and copper in the same dilute acid, up close.', show: ['ma', 'ma.labels', 'ma.key'] },
+        { say: 'Magnesium, near the top of the series, fizzes fast. Zinc fizzes more steadily. Copper, below hydrogen, does not react at all.', play: 'ma.fizz' },
       ],
     },
     {
