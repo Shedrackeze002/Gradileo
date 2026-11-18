@@ -6,13 +6,15 @@
  * field where it is, a piece of iron shows its domains as small arrows, and a force is orange.
  * The poles of the magnet that makes a uniform field are drawn from one end, with a balance under
  * them if the element has one, and the coil of a motor is an arm on an axle with a wire at each
- * end, a split ring round the axle and two brushes. A pickup coil is seen from the side, with the
+ * end, a split ring round the axle and two brushes. The coil of a generator has two slip rings
+ * instead, drawn one inside the other, and a graph beside it on which the emf at the brushes draws
+ * itself as the coil is turned. A pickup coil is seen from the side, with the
  * far half of each turn behind the magnet and the near half in front of it, and a meter whose
  * needle rests in the middle and swings either way.
  */
 import type { ReactElement } from 'react';
 import type { MagnetsEl } from '../script.ts';
-import { balanceReading, barForce, coilSides, fieldAt, magnetLines, magnetsAt, peakBarForce, pickupAt, pickupPeak, wireForce } from '../magnets.ts';
+import { balanceReading, barForce, coilEmf, coilOutput, coilSides, fieldAt, magnetLines, magnetsAt, peakBarForce, pickupAt, pickupPeak, wireForce } from '../magnets.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Num, Span } from './Gravity.tsx';
 import { Arrow, clamp01, FONT, INK2, Text } from './motionKit.tsx';
@@ -58,7 +60,7 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
   const played = plays ?? st?.plays ?? [];
   const state = magnetsAt(el, played);
   const part = (name: string) => ownPart(st, name);
-  const [linesPart, compassPart, fieldPart, distancePart, forcePart, weightPart, currentPart, polesPart] = ['lines', 'compass', 'field', 'distance', 'force', 'weight', 'current', 'poles'].map(part);
+  const [linesPart, compassPart, fieldPart, distancePart, forcePart, weightPart, currentPart, polesPart, tracePart] = ['lines', 'compass', 'field', 'distance', 'force', 'weight', 'current', 'poles', 'trace'].map(part);
   const glow = (id: string) => ((st?.focus[id] ?? 0) > 0 ? { filter: `drop-shadow(0 0 ${14 * (st?.focus[id] ?? 0)}px #fff)` } : undefined);
   const [bars, wires, iron] = [el.bars ?? [], el.wires ?? [], el.iron ?? []];
   const figures = el.figures ?? 2;
@@ -391,8 +393,39 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
     const [ax, ay] = fieldAt(el, state, state.at[c.id][0], state.at[c.id][1]);
     const along = Math.hypot(ax, ay) > 0 ? deg(Math.atan2(ay, ax)) : 0;
     const amps = state.amps[c.id];
+    const driven = c.drive !== undefined;
+    const emf = driven ? coilEmf(el, state) : 0;
+    // Which brush is positive. A motor is fed from outside: the current goes in at the positive brush. A generator is the
+    // source: the end of the coil that the induced current comes out of is positive, and with slip rings the first side is
+    // always joined to the brush on the side the field points to; with a split ring, to whichever brush its half touches.
+    const forward = driven ? (c.slip ? emf : emf * Math.cos(rad(state.spin.angle - along))) : -amps;
+    const quiet = driven ? 0.03 * (el.trace?.volts ?? 0) : 1e-9;
+    const turning = state.spin.omega;
+    const reach = c.radius * S;
+    // The lamp joined across the brushes of a generator hangs under the gap; it is as bright as the power it is given, (ε ÷ peak)².
+    const lampY = el.yoke ? Y(el.yoke.span[0]) + 27 : cy + reach + 44;
+    const [bx0, by0] = fieldAt(el, state, state.at[c.id][0], state.at[c.id][1]);
+    const peak = 2 * (c.turns ?? 1) * Math.hypot(bx0, by0) * c.metres * c.radius * (el.length?.metres ?? 1) * Math.abs(turning);
+    const bright = peak > 0 ? clamp01((emf / peak) ** 2) : 0;
     out.push(
       <g key={`coil-${c.id}`} style={glow(c.id)}>
+        {driven && c.load !== undefined && (
+          // The circuit of the generator: a lead from each brush, behind the coil, to a lamp.
+          <>
+            <path d={`M${cx - R - 15},${cy} H${cx - R - 32} V${lampY} H${cx - 15} M${cx + R + 15},${cy} H${cx + R + 32} V${lampY} H${cx + 15}`} fill="none" stroke={INK3} strokeWidth={3} strokeLinejoin="round" />
+            <circle cx={cx} cy={lampY} r={15 + 14 * bright} fill={CURRENT} opacity={0.3 * bright} />
+            <circle cx={cx} cy={lampY} r={15} fill={BACK} stroke={INK2} strokeWidth={2.5} />
+            <circle cx={cx} cy={lampY} r={15} fill={CURRENT} opacity={0.95 * bright} />
+            <path d={`M${cx - 9},${lampY - 9} L${cx + 9},${lampY + 9} M${cx - 9},${lampY + 9} L${cx + 9},${lampY - 9}`} stroke={bright > 0.5 ? '#0d0c24' : INK2} strokeWidth={2.2} strokeLinecap="round" />
+          </>
+        )}
+        {driven && Math.abs(turning) > 1e-9 && reach > 110 && (
+          // The hand that turns the coil: an arrow part of the way round the axle, the way the coil is turned.
+          <g opacity={0.9}>
+            <path d={`M${on(turning > 0 ? 62 : 118, reach * 0.62)} A${reach * 0.62},${reach * 0.62} 0 0 ${turning > 0 ? 0 : 1} ${on(turning > 0 ? 118 : 62, reach * 0.62)}`} fill="none" stroke={INK2} strokeWidth={3} strokeLinecap="round" />
+            <polygon points="11,0 -7,7 -7,-7" transform={`translate(${on(turning > 0 ? 118 : 62, reach * 0.62).replace(',', ' ')}) rotate(${turning > 0 ? -208 : 28})`} fill={INK2} />
+          </g>
+        )}
         {ends.map((end, k) => (
           <line key={k} x1={cx} y1={cy} x2={end[0]} y2={end[1]} stroke={tones[k]} strokeWidth={6} strokeLinecap="round" />
         ))}
@@ -407,14 +440,31 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
               <rect x={cx + R + 6} y={cy - 13} width={14} height={26} rx={2} fill="#3b3866" stroke={INK2} strokeWidth={2} />
               <rect x={cx - R - 20} y={cy - 13} width={14} height={26} rx={2} fill="#3b3866" stroke={INK2} strokeWidth={2} />
             </g>
-            {Math.abs(amps) > 1e-9 &&
-              [1, -1].map((side) => (
-                <Text key={side} x={cx + side * (R + 13) * Math.cos(rad(along))} y={cy - side * (R + 13) * Math.sin(rad(along)) + 32} size={25} color={INK} weight={700}>
-                  {side * amps > 0 ? '−' : '+'}
-                </Text>
-              ))}
           </>
         )}
+        {c.slip && (
+          <>
+            {/* Two slip rings on the axle, drawn one inside the other. Each is joined to one end of the coil and turns with it (the dark mark shows it turning), and each always touches its own brush. */}
+            <circle cx={cx} cy={cy} r={R + 1} fill={BACK} />
+            <circle cx={cx} cy={cy} r={R - 4} fill="none" stroke={tones[0]} strokeWidth={8} />
+            <circle cx={cx} cy={cy} r={14} fill="none" stroke={tones[1]} strokeWidth={8} />
+            <circle cx={cx + (R - 4) * Math.cos(rad(state.spin.angle))} cy={cy - (R - 4) * Math.sin(rad(state.spin.angle))} r={2.6} fill="#0d0c24" />
+            <circle cx={cx - 14 * Math.cos(rad(state.spin.angle))} cy={cy + 14 * Math.sin(rad(state.spin.angle))} r={2.6} fill="#0d0c24" />
+            <g transform={`rotate(${-along} ${cx} ${cy})`}>
+              <rect x={cx + R + 1} y={cy - 13} width={14} height={26} rx={2} fill="#3b3866" stroke={INK2} strokeWidth={2} />
+              {/* The other brush reaches past the outer ring to the inner one. */}
+              <rect x={cx - R - 15} y={cy - 13} width={14} height={26} rx={2} fill="#3b3866" stroke={INK2} strokeWidth={2} />
+              <rect x={cx - R - 3} y={cy - 5} width={R + 3 - 18} height={10} rx={2} fill="#3b3866" stroke={INK2} strokeWidth={2} />
+            </g>
+          </>
+        )}
+        {(c.commutator || c.slip) &&
+          Math.abs(forward) > quiet &&
+          [1, -1].map((side) => (
+            <Text key={side} x={cx + side * (R + 13) * Math.cos(rad(along))} y={cy - side * (R + 13) * Math.sin(rad(along)) + 32} size={25} color={INK} weight={700}>
+              {side * forward > 0 ? '+' : '−'}
+            </Text>
+          ))}
         <circle cx={cx} cy={cy} r={5.5} fill={INK2} stroke="#0d0c24" strokeWidth={1.5} />
         {ends.map((end, k) => (
           <Ring key={k} cx={end[0]} cy={end[1]} amps={sides[k].amps} />
@@ -431,8 +481,58 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
       });
       // The two forces are the same size, and they turn with the coil, so their size is written once, in the bottom corner where no arrow reaches (a small picture, like the thumbnail, has no room for it).
       const f = Math.hypot(...(sides[0]?.force ?? [0, 0]));
-      if (f > 0 && pw >= 900) out.push(<Num key="turn-size" x={ox + 22} y={oy + ph - 22} pre="F = " n={f} unit="N on each side" figures={figures} keep anchor="start" color={PUSH} opacity={forcePart} />);
+      if (f > 0 && pw >= 900 && !driven) out.push(<Num key="turn-size" x={ox + 22} y={oy + ph - 22} pre="F = " n={f} unit="N on each side" figures={figures} keep anchor="start" color={PUSH} opacity={forcePart} />);
     }
+    // How fast a generator is turned, over the gap between the poles.
+    if (driven && pw >= 900 && Math.abs(turning) > 1e-9) {
+      const over = el.yoke ? Y(el.yoke.span[1]) - 24 : cy - reach - 40;
+      out.push(<Num key="turns" x={cx} y={over} n={Math.abs(turning) / (2 * Math.PI)} unit="turns each second" figures={figures} keep color={INK2} size={20} />);
+    }
+  }
+
+  // The emf at the brushes of a generator, drawn against time as the coil turns: the trace starts again from the left after each sweep.
+  if (el.trace && tracePart > 0) {
+    const t = el.trace;
+    const [gl, gr, gt, gb] = [X(t.at[0]), X(t.at[1]), Y(t.span[1]), Y(t.span[0])];
+    const mid = (gt + gb) / 2;
+    const TX = (seconds: number) => gl + (seconds / t.seconds) * (gr - gl);
+    // The emf named for the trace is drawn a little inside the box, so that a peak of that size has room above it.
+    const half = ((gb - gt) / 2) * 0.86;
+    const TY = (volts: number) => mid - Math.max(-1.14, Math.min(1.14, volts / t.volts)) * half;
+    const now = coilOutput(el, state);
+    const last = state.trace[state.trace.length - 1];
+    const small = pw < 900;
+    const time = (seconds: number) => (t.seconds >= 1 ? `${Number(seconds.toPrecision(3))} s` : `${Number((seconds * 1000).toPrecision(3))} ms`);
+    out.push(
+      <g key="trace" opacity={tracePart}>
+        <rect x={gl} y={gt} width={gr - gl} height={gb - gt} rx={4} fill="rgb(13 12 36 / 0.72)" />
+        {[-1, -0.5, 0.5, 1].map((f) => (
+          <line key={f} x1={gl} y1={mid - f * half} x2={gr} y2={mid - f * half} stroke={INK3} strokeWidth={1.5} strokeDasharray="4 7" opacity={0.6} />
+        ))}
+        {[0.25, 0.5, 0.75, 1].map((f) => (
+          <line key={f} x1={TX(f * t.seconds)} y1={gt} x2={TX(f * t.seconds)} y2={gb} stroke={INK3} strokeWidth={1.5} strokeDasharray="4 7" opacity={f === 1 ? 0 : 0.6} />
+        ))}
+        <path d={`M${gl},${gt} V${gb} M${gl},${mid} H${gr}`} fill="none" stroke={INK2} strokeWidth={2.5} strokeLinecap="round" />
+        {!small && (
+          <>
+            {[1, 0.5, 0, -0.5, -1].map((f) => (
+              <Text key={f} x={gl - 12} y={mid - f * half} anchor="end" size={18} color={INK2}>
+                {f === 0 ? '0' : `${f < 0 ? '−' : ''}${Number(Math.abs(f * t.volts).toPrecision(3))} V`}
+              </Text>
+            ))}
+            {[0.5, 1].map((f) => (
+              <Text key={f} x={TX(f * t.seconds)} y={gb + 20} anchor={f === 1 ? 'end' : 'middle'} size={18} color={INK2}>
+                {time(f * t.seconds)}
+              </Text>
+            ))}
+            <Text x={gl} y={gt - 22} anchor="start" size={19} color={INK2}>Emf at the brushes</Text>
+            <Num x={gr} y={gt - 22} pre="ε = " n={Math.abs(now) < 0.005 * t.volts ? 0 : now} unit="V" figures={figures} keep anchor="end" color={CURRENT} />
+          </>
+        )}
+        {state.trace.length > 1 && <polyline points={state.trace.map(([seconds, volts]) => `${TX(seconds).toFixed(1)},${TY(volts).toFixed(1)}`).join(' ')} fill="none" stroke={CURRENT} strokeWidth={3.5} strokeLinejoin="round" strokeLinecap="round" />}
+        {last && <circle cx={TX(last[0])} cy={TY(last[1])} r={6} fill={CURRENT} stroke="#0d0c24" strokeWidth={1.5} />}
+      </g>,
+    );
   }
 
   // Compasses: the red end of the needle points along the field.

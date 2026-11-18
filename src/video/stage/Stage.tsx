@@ -1,5 +1,5 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type AtomsEl, type MoleculesEl, type ScatterEl, type CircleEl, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type ForcesEl, type GravityEl, type ChargesEl, type MagnetsEl, type InductionEl, type MotionEl, type ParticlesEl, type RampEl, type RaysEl, type RipplesEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
+import { BRAND, type AtomsEl, type MoleculesEl, type ScatterEl, type CircleEl, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type ForcesEl, type GravityEl, type ChargesEl, type MagnetsEl, type InductionEl, type TransformerEl, type PowerlineEl, type MotionEl, type ParticlesEl, type RampEl, type RaysEl, type RipplesEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
 import { fastest, flightAt } from '../flight.ts';
 import { clipSeconds, type ElState, type FrameState } from '../timeline.ts';
 import { CircuitView } from './Circuit.tsx';
@@ -15,6 +15,7 @@ import { GravityView } from './Gravity.tsx';
 import { ChargesView } from './Charges.tsx';
 import { MagnetsView } from './Magnets.tsx';
 import { InductionView } from './Induction.tsx';
+import { PowerlineView, TransformerView } from './Transformer.tsx';
 import { DiagramView } from './Diagram.tsx';
 import { MotionView } from './Motion.tsx';
 import { ParticlesView } from './Particles.tsx';
@@ -96,6 +97,10 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <MagnetsView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'induction':
       return <InductionView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
+    case 'transformer':
+      return <TransformerView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 400 : 440)} />;
+    case 'powerline':
+      return <PowerlineView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 360 : 400)} />;
     case 'circle':
       return <CircleView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'rays':
@@ -247,6 +252,23 @@ function ChargesThumb({ el, w, h }: { el: ChargesEl; w: number; h: number }) {
   return <ChargesView el={{ ...el, label: undefined, clips, view }} st={{ ...FULL, parts: el.thumb ? Object.fromEntries(el.thumb.map((part) => [part, 1])) : marked ? { charge: 1 } : { charge: 1, force: 1, net: 1 } }} w={w} h={h} plays={plays} age={2} />;
 }
 
+/** The clips of a transformer or a power line up to a point part way through its poster clip. */
+function posterPlays(el: TransformerEl | PowerlineEl): Array<[string, number]> {
+  const names = Object.keys(el.clips);
+  return el.poster ? [...names.slice(0, names.indexOf(el.poster)).map((name): [string, number] => [name, clipSeconds(el, name)]), [el.poster, clipSeconds(el, el.poster) * 0.7]] : [];
+}
+
+/** A transformer on a thumbnail: part way through the poster clip, with the flux in the core and the two voltages (or the parts the element asks for). The picture is 400 high and its core is in the middle, so a wide thumbnail has room to spare on each side. */
+function TransformerThumb({ el, w, h }: { el: TransformerEl; w: number; h: number }) {
+  const across = (400 * w) / h;
+  return <TransformerView el={{ ...el, label: undefined }} st={{ ...FULL, parts: Object.fromEntries((el.thumb ?? ['flux', 'voltage']).map((part) => [part, 1])) }} w={w} h={h} plays={posterPlays(el)} crop={[568 - across / 2, 568 + across / 2]} />;
+}
+
+/** A power line on a thumbnail: part way through the poster clip, with its voltage, its current and the power it wastes (or the parts the element asks for). */
+function PowerlineThumb({ el, w, h }: { el: PowerlineEl; w: number; h: number }) {
+  return <PowerlineView el={{ ...el, label: undefined }} st={{ ...FULL, parts: Object.fromEntries((el.thumb ?? ['voltage', 'current', 'loss']).map((part) => [part, 1])) }} w={w} h={h} plays={posterPlays(el)} />;
+}
+
 /** Magnets on a thumbnail: at the end of the poster clip, with the field lines and the compasses (or the parts the element asks for). */
 function MagnetsThumb({ el, w, h }: { el: MagnetsEl; w: number; h: number }) {
   const names = Object.keys(el.clips);
@@ -291,7 +313,7 @@ const tallSwing = (el: MotionEl) => Boolean(el.path && 'swing' in el.path && 2 *
 const hungMass = (el: MotionEl) => Boolean(el.vertical) && el.equilibrium !== undefined && !el.graph;
 
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | CircleEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'molecules' || e.kind === 'scatter' || e.kind === 'wave' || e.kind === 'ripples' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'charges' || e.kind === 'magnets' || e.kind === 'induction' || e.kind === 'circle';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | CircleEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'molecules' || e.kind === 'scatter' || e.kind === 'wave' || e.kind === 'ripples' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'charges' || e.kind === 'magnets' || e.kind === 'induction' || e.kind === 'transformer' || e.kind === 'powerline' || e.kind === 'circle';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
   // A figure that is named can be in the right-hand column of a scene; the first figure, which is used when none is named, is not looked for there.
   const named = x.thumbnail ? [...figures, ...x.scenes.flatMap((s) => s.right ?? []).filter(isFigure)].find((e) => e.id === x.thumbnail) : undefined;
@@ -299,13 +321,13 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig) && !hungMass(fig) && !tallSwing(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || ((fig?.kind === 'gravity' || fig?.kind === 'charges' || fig?.kind === 'magnets' || fig?.kind === 'induction') && flatSpace(fig));
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig) && !hungMass(fig) && !tallSwing(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || ((fig?.kind === 'gravity' || fig?.kind === 'charges' || fig?.kind === 'magnets' || fig?.kind === 'induction') && flatSpace(fig)) || fig?.kind === 'transformer' || fig?.kind === 'powerline';
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
     <div className="v-stage">
       {wide && (
-        <div style={{ position: 'absolute', left: fig.kind === 'flight' ? 330 : 60, top: fig.kind === 'motion' || fig.kind === 'wave' || fig.kind === 'flight' ? 300 : 330 }}>
+        <div style={{ position: 'absolute', left: fig.kind === 'flight' ? 330 : 60, top: fig.kind === 'motion' || fig.kind === 'wave' || fig.kind === 'flight' || fig.kind === 'transformer' ? 300 : 330 }}>
           {fig.kind === 'motion' ? (
             // A motion is caught part way through its poster clip, with its forces and velocities drawn.
             // A drop takes the full height and width, without its graph, strobe marks or phase notes;
@@ -338,6 +360,10 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             <MagnetsThumb el={fig} w={1160} h={255} />
           ) : fig.kind === 'induction' ? (
             <InductionThumb el={fig} w={1160} h={255} />
+          ) : fig.kind === 'transformer' ? (
+            <TransformerThumb el={fig} w={1160} h={290} />
+          ) : fig.kind === 'powerline' ? (
+            <PowerlineThumb el={fig} w={1160} h={255} />
           ) : (
             <DiagramView el={fig as DiagramEl} st={FULL} w={1160} h={280} />
           )}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkMagnets, checkScript, type Explainer, type MagnetsEl } from './script.ts';
-import { balanceReading, barForce, coilSides, coilTorque, fieldAt, magnetLines, magnetsAt, MU0, peakBarForce, pickupAt, pickupFlux, pickupPeak, pickupTurns, polesOf, wireForce } from './magnets.ts';
+import { balanceReading, barForce, coilEmf, coilOutput, coilSides, coilTorque, fieldAt, magnetLines, magnetsAt, MU0, peakBarForce, pickupAt, pickupFlux, pickupPeak, pickupTurns, polesOf, wireForce } from './magnets.ts';
 import { linesBetween } from './fieldlines.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
@@ -711,5 +711,143 @@ describe('a magnet and a pickup coil', () => {
     expect(checkMagnets(pickup({ poster: 'in', posterAt: 0.7 }))).toEqual([]);
     expect(checkMagnets(pickup({ posterAt: 0.7 })).join(' ')).toContain('posterAt');
     expect(checkMagnets(pickup({ poster: 'in', posterAt: 1.5 })).join(' ')).toContain('posterAt');
+  });
+});
+
+// The lesson's generator: a coil of 100 turns, each side 4.0 cm long and 2.0 cm from the axle, turned 50 times each second in 0.20 T.
+const generator = (over: Partial<NonNullable<MagnetsEl['coil']>> = {}, rest: Partial<MagnetsEl> = {}) =>
+  picture({
+    view: [-7, 7, -3, 3],
+    uniform: [0.2, 0],
+    yoke: { faces: [-5.7, -1.1], span: [-2.3, 2.3] },
+    coil: { id: 'c', at: [-3.4, 0], radius: 2, angle: 90, amps: 0, turns: 100, metres: 0.04, drive: 50, slip: true, ...over },
+    trace: { at: [2, 6.6], span: [-2, 2], volts: 20, seconds: 0.04 },
+    // One second of video is 5 ms: the coil turns once in four seconds.
+    rate: 0.005,
+    clips: { run: { phases: [{ dur: 8 }] }, faster: { phases: [{ dur: 4, drive: 100 }, { dur: 4 }] } },
+    ...rest,
+  });
+/** The greatest emf of the coil at 50 turns each second: 2NBLrω. */
+const PEAK = 2 * 100 * 0.2 * 0.04 * 0.02 * (2 * Math.PI * 50);
+
+describe('the coil of a generator', () => {
+  it('has no emf when its plane is at right angles to the field: the sides move along the field lines', () => {
+    const el = generator();
+    expect(coilEmf(el, magnetsAt(el))).toBeCloseTo(0, 9);
+  });
+
+  it('has the greatest emf, 2NBLrω, when its plane lies along the field', () => {
+    const el = generator();
+    // A quarter of a turn takes one second of video.
+    expect(coilEmf(el, magnetsAt(el, [['run', 1]]))).toBeCloseTo(PEAK, 3);
+    expect(PEAK).toBeCloseTo(10.05, 2);
+  });
+
+  it('reverses its emf every half turn, and comes back after a whole turn', () => {
+    const el = generator();
+    expect(coilEmf(el, magnetsAt(el, [['run', 3]]))).toBeCloseTo(-PEAK, 3);
+    expect(coilEmf(el, magnetsAt(el, [['run', 2]]))).toBeCloseTo(0, 2);
+    expect(coilEmf(el, magnetsAt(el, [['run', 5]]))).toBeCloseTo(PEAK, 3);
+    expect(magnetsAt(el, [['run', 4]]).spin?.angle).toBeCloseTo(90 + 360, 6);
+  });
+
+  it('follows a sine curve as it turns steadily', () => {
+    const el = generator();
+    for (const t of [0.4, 1.3, 2.9, 6.1]) expect(coilEmf(el, magnetsAt(el, [['run', t]]))).toBeCloseTo(PEAK * Math.sin((2 * Math.PI * t) / 4), 3);
+  });
+
+  it('is the rate at which the flux through the coil changes (Faraday\'s law)', () => {
+    const el = generator();
+    // Φ = B × area × cos of the angle the coil has turned from the upright place, for each of the 100 turns.
+    const linked = (t: number) => 100 * 0.2 * (0.04 * 0.04) * Math.cos((2 * Math.PI * t) / 4);
+    const [t, h] = [1.7, 1e-4];
+    const rate = (linked(t + h) - linked(t - h)) / (2 * h * 0.005);
+    expect(Math.abs(coilEmf(el, magnetsAt(el, [['run', t]])))).toBeCloseTo(Math.abs(rate), 3);
+  });
+
+  it('gives the emf of the coil unchanged through slip rings, and one sign only through a commutator', () => {
+    const [ac, dc] = [generator(), generator({ slip: undefined, commutator: true })];
+    let [low, least] = [0, 0];
+    for (let t = 0; t <= 8; t += 0.05) {
+      low = Math.min(low, coilOutput(ac, magnetsAt(ac, [['run', t]])));
+      least = Math.min(least, coilOutput(dc, magnetsAt(dc, [['run', t]])));
+    }
+    expect(low).toBeCloseTo(-PEAK, 2);
+    expect(least).toBe(0);
+    expect(coilOutput(dc, magnetsAt(dc, [['run', 3]]))).toBeCloseTo(PEAK, 3);
+  });
+
+  it('doubles its greatest emf and its frequency when it is turned twice as fast', () => {
+    const el = generator();
+    const fast = magnetsAt(el, [['faster', 8]]);
+    expect(fast.spin?.omega).toBeCloseTo(2 * Math.PI * 100, 9);
+    let top = 0;
+    for (let t = 4; t <= 8; t += 0.02) top = Math.max(top, Math.abs(coilEmf(el, magnetsAt(el, [['faster', t]]))));
+    expect(top).toBeCloseTo(2 * PEAK, 1);
+    // At 100 turns each second a whole turn takes two seconds of video.
+    expect(magnetsAt(el, [['faster', 8]]).spin!.angle - magnetsAt(el, [['faster', 6]]).spin!.angle).toBeCloseTo(360, 6);
+  });
+
+  it('keeps the speed it is turned at, whatever the forces on it', () => {
+    const el = generator({ load: 5 });
+    expect(magnetsAt(el, [['run', 8]]).spin?.omega).toBeCloseTo(2 * Math.PI * 50, 12);
+  });
+
+  it('carries no current with nothing joined to it, and ε ÷ R with a load', () => {
+    const open = generator();
+    expect(coilSides(open, magnetsAt(open, [['run', 1]])).map((side) => side.amps)).toEqual([0, -0]);
+    const el = generator({ load: 5 });
+    const [a, b] = coilSides(el, magnetsAt(el, [['run', 1]]));
+    expect(a.amps).toBeCloseTo(PEAK / 5, 3);
+    expect(b.amps).toBeCloseTo(-PEAK / 5, 3);
+  });
+
+  it('is pushed back by the field when it gives a current: the forces oppose the turning (Lenz\'s law)', () => {
+    const el = generator({ load: 5 });
+    for (const t of [0.5, 1, 1.6, 2.7, 3.3]) {
+      const state = magnetsAt(el, [['run', t]]);
+      expect(coilTorque(el, state)).toBeLessThan(0);
+    }
+    // At the greatest emf each side feels NBIL, straight against its motion.
+    const [a] = coilSides(el, magnetsAt(el, [['run', 1]]));
+    expect(a.at[0]).toBeCloseTo(-5.4, 6);
+    expect(a.force[1]).toBeCloseTo(100 * 0.2 * (PEAK / 5) * 0.04, 3);
+  });
+
+  it('takes as much work to turn as the electrical energy it gives: torque × ω = ε²÷R', () => {
+    const el = generator({ load: 5 });
+    for (const t of [0.7, 1, 2.2]) {
+      const state = magnetsAt(el, [['run', t]]);
+      expect(-coilTorque(el, state) * state.spin!.omega).toBeCloseTo(coilEmf(el, state) ** 2 / 5, 6);
+    }
+  });
+
+  it('draws its emf against time, and starts the trace again after each sweep', () => {
+    const el = generator();
+    expect(magnetsAt(el).trace).toEqual([]);
+    const part = magnetsAt(el, [['run', 3]]);
+    expect(part.model).toBeCloseTo(0.015, 9);
+    // A point is added every fourth step, so the last one is at most three steps old.
+    expect(part.trace[part.trace.length - 1][0]).toBeCloseTo(0.015, 3);
+    expect(Math.max(...part.trace.map((point) => point[1]))).toBeCloseTo(PEAK, 2);
+    // One sweep is 40 ms, eight seconds of video; half a second into the next clip the trace has started again.
+    const again = magnetsAt(el, [['run', 8], ['run', 0.5]]);
+    expect(again.trace[again.trace.length - 1][0]).toBeCloseTo(0.0025, 3);
+    expect(again.trace.length).toBeLessThan(40);
+  });
+
+  it('is checked: a driven coil carries no current of its own, and a trace needs a generator', () => {
+    expect(checkMagnets(generator())).toEqual([]);
+    expect(checkMagnets(generator({ load: 5 }))).toEqual([]);
+    expect(checkMagnets(generator({ slip: undefined, commutator: true }))).toEqual([]);
+    expect(checkMagnets(generator({ amps: 1 })).join(' ')).toContain('amps: 0');
+    expect(checkMagnets(generator({ commutator: true })).join(' ')).toContain('not both');
+    expect(checkMagnets(generator({ load: 0 })).join(' ')).toContain('resistance above zero');
+    expect(checkMagnets(generator({}, { clips: { run: { phases: [{ dur: 2, amps: { c: 1 } }] } } })).join(' ')).toContain('coil that is driven');
+    expect(checkMagnets(generator({}, { trace: { at: [2, 8], span: [-2, 2], volts: 20, seconds: 0.04 } })).join(' ')).toContain('inside the view');
+    expect(checkMagnets(generator({}, { trace: { at: [2, 6.6], span: [-2, 2], volts: 0, seconds: 0.04 } })).join(' ')).toContain('above zero');
+    expect(checkMagnets(motor({ slip: true })).join(' ')).toContain('only a coil that is driven');
+    expect(checkMagnets(motor({}, { trace: { at: [-3, 3], span: [-2, 2], volts: 20, seconds: 0.04 } })).join(' ')).toContain('needs a coil that is driven');
+    expect(checkMagnets(motor({}, { clips: { run: { phases: [{ dur: 2, drive: 20 }] } } })).join(' ')).toContain('no generator');
   });
 });

@@ -2015,6 +2015,8 @@ export interface MagnetWire {
 /**
  * The coil of a motor in a magnets element, seen from one end: two sides, one each side of the
  * axle, that carry the same current opposite ways. The forces on them turn the coil about the axle.
+ * With `drive` it is the coil of a generator instead: something outside turns it at a steady rate,
+ * and an emf is induced in its sides as they cut across the field.
  */
 export interface MagnetCoil {
   id: string;
@@ -2030,12 +2032,21 @@ export interface MagnetCoil {
   turns?: number;
   /** The length of each side that lies in the field, in metres. */
   metres: number;
-  /** Its moment of inertia about the axle, in kg·m²: how hard it is to set turning. */
-  inertia: number;
+  /** Its moment of inertia about the axle, in kg·m²: how hard it is to set turning. A motor needs it; a coil that is driven does not. */
+  inertia?: number;
   /** The friction at the axle, in newton metres for each radian per second (none otherwise). */
   friction?: number;
   /** A split-ring commutator and two brushes: the current in the coil is reversed every half turn. */
   commutator?: boolean;
+  /**
+   * A generator: the coil is turned from outside at this many turns each second (anticlockwise is
+   * positive), whatever the forces on it. Give it `amps: 0`: the only current is the induced one.
+   */
+  drive?: number;
+  /** For a generator: the resistance joined across its brushes, in ohms. The induced current ε ÷ R then flows in the coil, and the field pushes back on its sides. */
+  load?: number;
+  /** For a generator: two slip rings, each joined to one end of the coil and touching its own brush, so the output alternates as the emf does. (With `commutator` the output always has the same sign.) */
+  slip?: boolean;
 }
 
 /**
@@ -2088,6 +2099,8 @@ export interface MagnetsPhase {
   turn?: Record<string, number>;
   /** The current a wire (or the coil) carries by its end, in amperes. */
   amps?: Record<string, number>;
+  /** How fast the coil of a generator is turned by its end, in turns per second. */
+  drive?: number;
   /** How far the domains of a piece of iron are lined up by its end (0 to 1). */
   order?: Record<string, number>;
 }
@@ -2097,7 +2110,7 @@ export interface MagnetsClip {
 }
 
 /** What a magnets element can show; each is a part ("mag.lines"). */
-export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force', 'weight', 'current', 'poles'] as const;
+export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force', 'weight', 'current', 'poles', 'trace'] as const;
 
 /**
  * Magnets, wires and compasses seen from above (src/video/magnets.ts): the magnetic field of bar
@@ -2111,7 +2124,8 @@ export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force', 
  * bar magnets, and the force of the field on each wire and on each side of the coil, F = BIL) and
  * `weight` (the weight of each wire that has a mass). With a `pickup` coil, `current` shows which
  * way the induced current goes round its turns, `poles` the poles that current gives the coil, and
- * `force` the push of the coil on the magnet, against its motion. A clip carries things about, turns a magnet,
+ * `force` the push of the coil on the magnet, against its motion. With a coil that is driven (a
+ * generator), `trace` draws the emf at its brushes against time. A clip carries things about, turns a magnet,
  * changes a current or lines up the domains of a piece of iron; while it plays, a wire with a mass
  * moves under the forces on it, and the coil of a motor turns. North is red, south is blue, the
  * field is violet, a current is yellow, a force is orange and a weight is pink. Emphasising an id
@@ -2146,6 +2160,12 @@ export interface MagnetsEl {
   coil?: MagnetCoil;
   /** A coil joined to a meter, for a bar magnet to be pushed into. The bar magnets must lie on its axis. */
   pickup?: MagnetPickup;
+  /**
+   * For a generator: a graph of the emf at its brushes against time, drawn between two values of
+   * x (`at`) and two of y (`span`). `volts` is the emf at the top of the graph, and `seconds` the
+   * time (of the model) that one sweep across it takes; the trace then starts again from the left.
+   */
+  trace?: { at: [number, number]; span: [number, number]; volts: number; seconds: number };
   /** Gravity, in m/s², down the screen: the picture is then seen from the side, and a wire with a mass has a weight. */
   g?: number;
   /** Seconds of the model for each second of video, while wires and the coil move (1 otherwise). */
@@ -2268,6 +2288,112 @@ export interface InductionEl {
   height?: number;
 }
 
+/** One step of a transformer clip. */
+export interface TransformerPhase {
+  /** Seconds of video. */
+  dur: number;
+  /** Close (true) or open (false) the switch of the supply as the phase starts. */
+  on?: boolean;
+  /** Wind the secondary coil to this many turns by the end of the phase. */
+  secondary?: number;
+}
+
+export interface TransformerClip {
+  phases: TransformerPhase[];
+}
+
+/** What a transformer element can show; each is a part ("tr.flux"). */
+export const TRANSFORMER_PARTS = ['flux', 'turns', 'voltage', 'current', 'power'] as const;
+
+/**
+ * A transformer (src/video/transformer.ts): an iron core with a primary coil on the left, joined
+ * to its supply, and a secondary coil on the right. The same flux passes through every turn of
+ * both coils, so Vs ÷ Vp = Ns ÷ Np, and an ideal transformer passes on all of the power:
+ * VpIp = VsIs. Parts: `flux` (the flux in the core, which brightens as it grows and turns round
+ * when it reverses), `turns` (the turns of each coil), `voltage` (a screen beside each coil that
+ * draws its voltage against time, both to one scale, with the voltage written over it), `current`
+ * (the current in each coil, which needs a `load`) and `power` (the power in each coil). A clip
+ * runs the supply; a phase can close or open the switch, or wind turns on or off the secondary.
+ * With `dc` the supply is a battery and a switch: the secondary then gives one short kick each
+ * time the switch moves, and nothing while the current is steady. The flux is violet, and a
+ * voltage is yellow.
+ */
+export interface TransformerEl {
+  kind: 'transformer';
+  id: string;
+  /** The turns on the primary coil and on the secondary coil. */
+  turns: [number, number];
+  /** The voltage of the supply across the primary coil, in volts. */
+  volts: number;
+  /** The frequency of an alternating supply, in hertz (50 otherwise). */
+  hertz?: number;
+  /** A battery and a switch in place of the alternating supply. */
+  dc?: boolean;
+  /** Whether the supply is joined at the start (an alternating supply is, and a battery is not, otherwise). */
+  on?: boolean;
+  /** With a battery: the seconds of the model that its current takes to settle after the switch moves (0.004 otherwise). */
+  settle?: number;
+  /** The resistance of the lamp across the secondary coil, in ohms (nothing is joined to it otherwise). */
+  load?: number;
+  /** Seconds of the model for each second of video (0.005 otherwise, so 50 Hz is one cycle in four seconds). */
+  rate?: number;
+  /** The seconds of the model that one sweep of the two screens takes (two cycles otherwise). */
+  sweep?: number;
+  /** Significant figures of what is written (2 otherwise). */
+  figures?: number;
+  /** The parts drawn on the thumbnail (the flux otherwise). */
+  thumb?: string[];
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  clips: Record<string, TransformerClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  height?: number;
+}
+
+/** One step of a power line clip. */
+export interface PowerlinePhase {
+  /** Seconds of video. */
+  dur: number;
+  /** Step the voltage of the line up or down to this many volts by the end of the phase. */
+  volts?: number;
+}
+
+export interface PowerlineClip {
+  phases: PowerlinePhase[];
+}
+
+/** What a power line element can show; each is a part ("line.loss"). */
+export const POWERLINE_PARTS = ['voltage', 'current', 'loss'] as const;
+
+/**
+ * A power line (src/video/transformer.ts): a power station sends a fixed power P to a town along
+ * a line of resistance R, with a transformer at each end. At a line voltage V the current is
+ * I = P ÷ V, and the power wasted as heat in the line is I²R. Parts: `voltage` (the voltage of
+ * the line), `current` (the current, as a number and as dots that move along the line, faster for
+ * a larger current) and `loss` (the power wasted, as a number, as a glow on the line and as its
+ * share of a bar that stands for the power sent). A clip steps the voltage up or down. A current
+ * is yellow and heat is orange.
+ */
+export interface PowerlineEl {
+  kind: 'powerline';
+  id: string;
+  /** The power the station sends, in watts. */
+  watts: number;
+  /** The resistance of the line, in ohms. */
+  ohms: number;
+  /** The voltage of the line at the start, in volts. */
+  volts: number;
+  /** The parts drawn on the thumbnail (all three otherwise). */
+  thumb?: string[];
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  clips: Record<string, PowerlineClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  height?: number;
+}
+
 /** A body of a circle element: something that goes round a circle. */
 export interface CircleBody {
   id: string;
@@ -2362,7 +2488,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3020,6 +3146,50 @@ export function checkInduction(e: InductionEl): string[] {
   return problems;
 }
 
+/** Problems with a transformer element: coils with no turns, a supply with no voltage, clips that ask for what the supply cannot do. */
+export function checkTransformer(e: TransformerEl): string[] {
+  const problems: string[] = [];
+  if (!e.turns.every((n) => Number.isInteger(n) && n >= 1)) problems.push('each coil needs a whole number of turns.');
+  if (!(e.volts > 0)) problems.push('the supply needs a voltage above zero.');
+  if (e.hertz !== undefined && !(e.hertz > 0)) problems.push('the supply needs a frequency above zero.');
+  if (e.dc && e.hertz !== undefined) problems.push('a battery has no frequency.');
+  if (e.settle !== undefined && !(e.dc && e.settle > 0)) problems.push('only a battery has a time to settle, and it must be more than zero.');
+  if (e.load !== undefined && !(e.load > 0)) problems.push('the lamp needs a resistance above zero.');
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
+  if (e.sweep !== undefined && !(e.sweep > 0)) problems.push('a sweep of the screens must take more than zero seconds.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  for (const part of e.thumb ?? []) if (!(TRANSFORMER_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.secondary !== undefined && !(Number.isInteger(ph.secondary) && ph.secondary >= 1)) problems.push(`clip "${name}" needs a whole number of turns for the secondary coil.`);
+    }
+  }
+  return problems;
+}
+
+/** Problems with a power line element: no power, no resistance, a voltage of zero, or a line that wastes more than it is sent. */
+export function checkPowerline(e: PowerlineEl): string[] {
+  const problems: string[] = [];
+  if (!(e.watts > 0)) problems.push('the station needs a power above zero.');
+  if (!(e.ohms > 0)) problems.push('the line needs a resistance above zero.');
+  if (!(e.volts > 0)) problems.push('the line needs a voltage above zero.');
+  const wasteful = (volts: number) => e.watts > 0 && e.ohms > 0 && volts > 0 && (e.watts / volts) ** 2 * e.ohms >= e.watts;
+  if (wasteful(e.volts)) problems.push('at this voltage the line would waste all of the power it is sent.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  for (const part of e.thumb ?? []) if (!(POWERLINE_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.volts !== undefined && !(ph.volts > 0)) problems.push(`clip "${name}" needs a voltage above zero.`);
+      if (ph.volts !== undefined && wasteful(ph.volts)) problems.push(`clip "${name}" steps the line down to a voltage at which it would waste all of the power.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a magnets element: a view with no size, ids used twice, things outside the view, clips that name nothing. */
 export function checkMagnets(e: MagnetsEl): string[] {
   const problems: string[] = [];
@@ -3046,11 +3216,22 @@ export function checkMagnets(e: MagnetsEl): string[] {
     const c = e.coil;
     ids.add(c.id);
     if ((MAGNETS_PARTS as readonly string[]).includes(c.id)) problems.push(`the id "${c.id}" is the name of a part.`);
-    if (!(c.radius > 0 && c.metres > 0 && c.inertia > 0)) problems.push('the coil needs a radius, a length and a moment of inertia above zero.');
+    if (!(c.radius > 0 && c.metres > 0)) problems.push('the coil needs a radius and a length above zero.');
+    if (c.drive === undefined && !(c.inertia !== undefined && c.inertia > 0)) problems.push('the coil of a motor needs a moment of inertia above zero.');
+    if (c.drive !== undefined && c.amps !== 0) problems.push('a coil that is driven carries only the induced current: give it `amps: 0`.');
+    if (c.drive === undefined && (c.load !== undefined || c.slip)) problems.push('only a coil that is driven (a generator) has a load or slip rings.');
+    if (c.load !== undefined && !(c.load > 0)) problems.push('the load of the generator needs a resistance above zero.');
+    if (c.slip && c.commutator) problems.push('the coil has slip rings or a commutator, not both.');
     if (c.turns !== undefined && !(Number.isInteger(c.turns) && c.turns >= 1)) problems.push('the coil needs a whole number of turns.');
     if (c.friction !== undefined && !(c.friction >= 0)) problems.push('the friction of the coil cannot be below zero.');
     if (c.at[0] - c.radius < x0 || c.at[0] + c.radius > x1 || c.at[1] - c.radius < y0 || c.at[1] + c.radius > y1) problems.push('the coil turns outside the view.');
     if (e.yoke && (c.at[0] - c.radius < e.yoke.faces[0] || c.at[0] + c.radius > e.yoke.faces[1] || c.at[1] - c.radius < e.yoke.span[0] || c.at[1] + c.radius > e.yoke.span[1])) problems.push('the coil turns outside the gap between the poles.');
+  }
+  if (e.trace) {
+    const { at, span, volts, seconds } = e.trace;
+    if (e.coil?.drive === undefined) problems.push('a trace needs a coil that is driven (a generator).');
+    if (!(at[1] > at[0] && at[0] >= x0 && at[1] <= x1 && span[1] > span[0] && span[0] >= y0 && span[1] <= y1)) problems.push('the trace needs a place inside the view: two values of x and two of y, the smaller first.');
+    if (!(volts > 0 && seconds > 0)) problems.push('the trace needs an emf and a time above zero.');
   }
   if (e.pickup) {
     const k = e.pickup;
@@ -3099,6 +3280,8 @@ export function checkMagnets(e: MagnetsEl): string[] {
       for (const id of Object.keys(ph.turn ?? {})) if (!barIds.has(id)) problems.push(`clip "${name}" turns "${id}", which is not a bar magnet.`);
       if (e.pickup && Object.keys(ph.turn ?? {}).length) problems.push(`clip "${name}" turns a magnet, which must stay along the axis of the pickup coil.`);
       for (const id of Object.keys(ph.amps ?? {})) if (!wireIds.has(id) && id !== e.coil?.id) problems.push(`clip "${name}" sets the current of "${id}", which is not a wire.`);
+      if (ph.drive !== undefined && e.coil?.drive === undefined) problems.push(`clip "${name}" changes how fast the coil is driven, and the picture has no generator.`);
+      if (e.coil?.drive !== undefined && e.coil.id in (ph.amps ?? {})) problems.push(`clip "${name}" sets the current of a coil that is driven.`);
       for (const [id, order] of Object.entries(ph.order ?? {})) {
         if (!ironIds.has(id)) problems.push(`clip "${name}" lines up "${id}", which is not a piece of iron.`);
         if (!(order >= 0 && order <= 1)) problems.push(`clip "${name}" needs an order from 0 to 1.`);
@@ -3262,7 +3445,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -3324,6 +3507,16 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...INDUCTION_PARTS, ...(circuit ? [circuit.id] : [])]));
         motions.set(e.id, e);
         problems.push(...checkInduction(e).map((p) => `Scene ${si + 1}: induction "${e.id}": ${p}`));
+      }
+      if (e.kind === 'transformer') {
+        diagrams.set(e.id, new Set<string>(TRANSFORMER_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkTransformer(e).map((p) => `Scene ${si + 1}: transformer "${e.id}": ${p}`));
+      }
+      if (e.kind === 'powerline') {
+        diagrams.set(e.id, new Set<string>(POWERLINE_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkPowerline(e).map((p) => `Scene ${si + 1}: power line "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

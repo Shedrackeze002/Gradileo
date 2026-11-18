@@ -1423,8 +1423,17 @@ items ship or decisions change.
        (ε = BLv, I = ε ÷ R, and the force BIL back on the rod, which slows a rod that is let
        go). The videos: `p30-2-10` (Electromagnetic Induction) and `p30-2-10-b` (Moving
        Conductors and Lenz's Law).
-     - Next: the last two videos of lesson 2.10 (the generator, transformers), then Units 3 and
-       4. The physics lessons have no tutor recordings yet.
+     - Done (18 November 2026): **the last two videos of lesson 2.10, so Unit 2 has its 24
+       videos.** The coil of the `magnets` picture can be turned from outside (`drive`): the emf
+       induced in it draws itself on a graph beside it as it turns (`trace`), slip rings give an
+       alternating output and a split ring a direct one, and with a lamp across the brushes the
+       forces on its sides oppose the turning. Two new pictures (`src/video/transformer.ts`): a
+       `transformer` is two coils on an iron core with a screen for each voltage (the turns rule,
+       VpIp = VsIs, and a battery that gives only a kick as its switch is closed or opened), and
+       a `powerline` is a power station joined to a town, where stepping the voltage up ten
+       times cuts the power wasted in the line a hundred times. The videos: `p30-2-10-c` (The
+       Generator) and `p30-2-10-d` (Transformers).
+     - Next: the videos of Units 3 and 4. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
