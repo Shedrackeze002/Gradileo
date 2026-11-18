@@ -1314,8 +1314,16 @@ items ship or decisions change.
        strings and in air columns; and the new `ripples` element draws waves from above, for the
        interference of two speakers and the Doppler effect of a moving source (each crest is a
        circle around the place it was sent from).
-     - Next: Grade 12 Physics (`phys-30`).
-       `phys-sample-momentum` becomes the first video of Grade 12 Unit A and stays off YouTube
+     - Started (18 November 2026): **Grade 12 Physics** (`phys-30`, `engine/curriculum/phys30/`,
+       `p30-…`), a draft course until all four units are in, so it is not yet listed for classes
+       or sign-up. Unit 1, Momentum and Impulse, has five lessons and ten question types:
+       momentum and the change in momentum, impulse and force-time graphs, the conservation of
+       momentum in collisions and explosions, kinetic energy in elastic and inelastic collisions
+       (with the ballistic pendulum), and collisions and explosions in two dimensions, worked by
+       components. No question gives objects more kinetic energy after a collision than before.
+     - Next: Units 2 to 4 of Grade 12 Physics (Forces and Fields, Electromagnetic Radiation,
+       Atomic and Nuclear Physics), the listing for classes and sign-up, and then its videos.
+       `phys-sample-momentum` becomes the first video of Grade 12 Unit 1 and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9

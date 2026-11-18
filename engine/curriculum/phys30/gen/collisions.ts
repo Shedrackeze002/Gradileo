@@ -188,7 +188,7 @@ function movingSplit(rng: Rng): GenOutput {
   const what = rng.pick(['firework', 'shell']);
   const c = retry(
     () => ({ m1: rng.pick([1, 2, 3]), m2: rng.pick([1, 2, 3, 4]), u: rng.pick([2, 3, 4, 5, 6]), v1: rng.pick([8, 10, 12, 15, -2, -4]) }),
-    (t) => Math.abs(((t.m1 + t.m2) * t.u - t.m1 * t.v1) / t.m2 - t.v1) >= 1,
+    (t) => Math.abs(((t.m1 + t.m2) * t.u - t.m1 * t.v1) / t.m2 - t.v1) >= 1 && (t.m1 + t.m2) * t.u !== t.m1 * t.v1,
   );
   const M = c.m1 + c.m2;
   const p = M * c.u;
@@ -544,7 +544,7 @@ function glancing(rng: Rng) {
       const v2 = Math.hypot(x2, y1) / m2;
       return { m1, m2, u, v1, th1, x1, y1, x2, v2, th2: Math.atan2(y1, x2) / RAD, lost: ke(m1, u) - ke(m1, v1) - ke(m2, v2) };
     },
-    (t) => t.lost >= 0.05 && t.th2 >= 10 && t.th2 <= 80,
+    (t) => t.lost >= 0.05 && t.th2 >= 10 && t.th2 <= 80 && t.v2 >= 0.3,
   );
 }
 
