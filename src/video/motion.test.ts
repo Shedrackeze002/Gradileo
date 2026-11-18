@@ -216,6 +216,16 @@ describe('motion: distance and displacement', () => {
     expect(checkMotion({ ...trip, bodies: trip.bodies.map((b) => ({ ...b, shape: 'ball' as const, fixed: true })) })[0]).toMatch(/only a block/);
   });
 
+  it('shares momentum in a bounce that loses some energy', () => {
+    // The lesson's carts: 2 kg at 4 m/s meets 1 kg at -1 m/s, and they part at half the closing speed.
+    const a: MotionBody = { id: 'a', shape: 'cart', mass: 2, x: 1, v: 4, width: 1.3 };
+    const b: MotionBody = { id: 'b', shape: 'cart', mass: 1, x: 5.8, v: -1, width: 1.1 };
+    const el: MotionEl = { kind: 'motion', id: 'm', span: [0, 9.6], bodies: [a, b], clips: { hit: { phases: collision(a, b, { type: 'bounce', restitution: 0.5, after: 0.5 }) } } };
+    const end = motionAt(el, [['hit', 5]]);
+    expect(end.bodies.a.v).toBeCloseTo(1.5, 9);
+    expect(end.bodies.b.v).toBeCloseTo(4, 9);
+  });
+
   it('follows a force that changes with time, and keeps its force-time graph', () => {
     // The net force on a 15 kg cart rises to 30 N in 2 s and falls to zero 4 s later: an impulse of 90 N·s.
     const el: MotionEl = {

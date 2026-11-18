@@ -149,7 +149,9 @@ See `src/video/script.ts` for every element and option. In short:
   forces appear, to name them before anything moves; `slow: 100` plays a phase in slow motion;
   a force with `resist` is friction (it stops with the body). `collision(a, b, …)` gives the three
   phases of a collision (approach, touch, after) with the equal and opposite forces that change
-  the velocities, so momentum is conserved by the forces, not typed in. Showing the element shows
+  the velocities, so momentum is conserved by the forces, not typed in (`type: 'stick'` or
+  `'bounce'`; `restitution: 0.5` makes a bounce that parts at half the closing speed). Showing
+  the element shows
   the tracks and bodies; its parts add `velocity`, `readout` (acceleration), `net` (net force),
   `strobe`, `clock`, `graph` (velocity against time, drawing itself, or distance against time
   with `graph: { y: 'distance' }`, or the body's position on the ruler with `y: 'position'`; a

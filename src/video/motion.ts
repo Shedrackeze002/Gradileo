@@ -417,6 +417,12 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
 export interface CollisionOptions {
   /** They stick together, or bounce apart with no energy lost. */
   type: 'stick' | 'bounce';
+  /**
+   * For a bounce that loses some kinetic energy: the speed at which the two part, as a share of
+   * the speed at which they met (1 by default, an elastic collision; 0.5 parts them at half the
+   * closing speed).
+   */
+  restitution?: number;
   /** Seconds of motion shown after they part or join. */
   after: number;
   /** Slow motion while they touch (seconds of video for each second of motion). */
@@ -444,10 +450,13 @@ export function collision(a: MotionBody, b: MotionBody, o: CollisionOptions): Mo
   if (!(closing > 0) || gap < 0) throw new Error(`"${a.id}" does not catch up with "${b.id}".`);
   const squeeze = o.squeeze ?? 0.16;
   // With a steady force the gap closes at a falling pace: it squeezes closing·t/2 if they end
-  // together, and closing·t/4 at most if they bounce (the pace of closing reverses half way).
-  const touch = o.type === 'stick' ? (2 * squeeze) / closing : (4 * squeeze) / closing;
+  // together, and closing·t/4 at most if they bounce with no loss (the pace of closing reverses
+  // half way); in between, the pace reaches zero a share 1/(1 + e) of the way through.
+  const e = o.type === 'stick' ? 0 : (o.restitution ?? 1);
+  const touch = (2 * (1 + e) * squeeze) / closing;
   const total = a.mass + b.mass;
-  const vbAfter = o.type === 'stick' ? (a.mass * va + b.mass * vb) / total : (2 * a.mass * va + (b.mass - a.mass) * vb) / total;
+  // Momentum is shared so that the two part at `e` times the speed at which they met.
+  const vbAfter = (a.mass * va + b.mass * vb + a.mass * e * closing) / total;
   const force = (b.mass * (vbAfter - vb)) / touch;
   const [onA, onB] = o.names ?? [`${b.label ?? b.id} on ${a.label ?? a.id}`, `${a.label ?? a.id} on ${b.label ?? b.id}`];
   return [
