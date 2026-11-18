@@ -4,10 +4,13 @@
  * with a dot when its current comes out of the page and a cross when it goes in. The field is
  * violet: its lines, and an arrow at each probe. A compass needle points its red end along the
  * field where it is, a piece of iron shows its domains as small arrows, and a force is orange.
+ * The poles of the magnet that makes a uniform field are drawn from one end, with a balance under
+ * them if the element has one, and the coil of a motor is an arm on an axle with a wire at each
+ * end, a split ring round the axle and two brushes.
  */
 import type { ReactElement } from 'react';
 import type { MagnetsEl } from '../script.ts';
-import { barForce, fieldAt, magnetLines, magnetsAt, peakBarForce, wireForce } from '../magnets.ts';
+import { balanceReading, barForce, coilSides, fieldAt, magnetLines, magnetsAt, peakBarForce, wireForce } from '../magnets.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Num, Span } from './Gravity.tsx';
 import { Arrow, clamp01, FONT, INK2, Text } from './motionKit.tsx';
@@ -19,6 +22,7 @@ const SOUTH = TONES.adj;
 const FIELD = TONES.brand;
 const CURRENT = TONES.theta;
 const PUSH = TONES.opp;
+const WEIGHT = TONES.hyp;
 const BACK = '#17143c';
 const rad = (deg: number) => (deg * Math.PI) / 180;
 const deg = (r: number) => (r * 180) / Math.PI;
@@ -35,12 +39,23 @@ function beside(x: number, y: number, side: 'above' | 'below' | 'left' | 'right'
   return { x, y: y + (side === 'above' ? -gap : gap), anchor: 'middle' };
 }
 
+/** A wire seen end-on: a ring, with a dot when its current comes out of the page and a cross when it goes in. */
+function Ring({ cx, cy, amps }: { cx: number; cy: number; amps: number }) {
+  return (
+    <>
+      <circle cx={cx} cy={cy} r={13} fill={BACK} stroke={CURRENT} strokeWidth={3.5} />
+      {amps > 1e-9 && <circle cx={cx} cy={cy} r={4.5} fill={CURRENT} />}
+      {amps < -1e-9 && <path d={`M${cx - 6},${cy - 6} L${cx + 6},${cy + 6} M${cx - 6},${cy + 6} L${cx + 6},${cy - 6}`} stroke={CURRENT} strokeWidth={3} strokeLinecap="round" />}
+    </>
+  );
+}
+
 export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElState | undefined; w: number; h: number; plays?: Array<[string, number]> }) {
   const p = st?.p ?? 0;
   if (p <= 0) return <div style={{ width: w, height: h }} />;
   const state = magnetsAt(el, plays ?? st?.plays ?? []);
   const part = (name: string) => ownPart(st, name);
-  const [linesPart, compassPart, fieldPart, distancePart, forcePart] = ['lines', 'compass', 'field', 'distance', 'force'].map(part);
+  const [linesPart, compassPart, fieldPart, distancePart, forcePart, weightPart] = ['lines', 'compass', 'field', 'distance', 'force', 'weight'].map(part);
   const glow = (id: string) => ((st?.focus[id] ?? 0) > 0 ? { filter: `drop-shadow(0 0 ${14 * (st?.focus[id] ?? 0)}px #fff)` } : undefined);
   const [bars, wires, iron] = [el.bars ?? [], el.wires ?? [], el.iron ?? []];
   const figures = el.figures ?? 2;
@@ -120,6 +135,50 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
     );
   }
 
+  // The magnet that makes the uniform field, seen from one end: a pole each side of the gap, joined under it when it is a U.
+  if (el.yoke) {
+    const { faces, span } = el.yoke;
+    const T = (el.yoke.thick ?? (x1 - x0) / 8) * S;
+    const B = (el.yoke.base ?? 0) * S;
+    const [xl, xr, yt, yb] = [X(faces[0]), X(faces[1]), Y(span[1]), Y(span[0])];
+    const mid = (xl + xr) / 2;
+    const [left, right] = (el.uniform?.[0] ?? 1) > 0 ? [NORTH, SOUTH] : [SOUTH, NORTH];
+    const letter = Math.min(26, Math.max(15, T * 0.5));
+    out.push(
+      <g key="yoke">
+        <path d={`M${xl - T},${yt} H${xl} V${yb} H${mid} V${yb + B} H${xl - T} Z`} fill={left} />
+        <path d={`M${xr + T},${yt} H${xr} V${yb} H${mid} V${yb + B} H${xr + T} Z`} fill={right} />
+        {B > 0 ? (
+          <path d={`M${xl - T},${yt} H${xl} V${yb} H${xr} V${yt} H${xr + T} V${yb + B} H${xl - T} Z`} fill="none" stroke="#0d0c24" strokeWidth={2} strokeLinejoin="round" />
+        ) : (
+          <>
+            <rect x={xl - T} y={yt} width={T} height={yb - yt} fill="none" stroke="#0d0c24" strokeWidth={2} />
+            <rect x={xr} y={yt} width={T} height={yb - yt} fill="none" stroke="#0d0c24" strokeWidth={2} />
+          </>
+        )}
+        <Text x={xl - T / 2} y={(yt + yb) / 2} size={letter} color="#fff" weight={700}>{left === NORTH ? 'N' : 'S'}</Text>
+        <Text x={xr + T / 2} y={(yt + yb) / 2} size={letter} color="#fff" weight={700}>{right === NORTH ? 'N' : 'S'}</Text>
+      </g>,
+    );
+    // The balance the magnet stands on: a pan, and a display that reads in grams.
+    const reading = balanceReading(el, state);
+    if (el.balance && reading !== null) {
+      const under = yb + B;
+      const [l, r] = [xl - T - 24, xr + T + 24];
+      out.push(
+        <g key="balance">
+          <rect x={l} y={under} width={r - l} height={8} rx={3} fill={INK2} />
+          <rect x={mid - 18} y={under + 8} width={36} height={9} fill="#55527a" />
+          <rect x={l + 26} y={under + 17} width={r - l - 52} height={48} rx={9} fill="#2a2752" stroke={INK3} strokeWidth={2} />
+          <rect x={mid - 86} y={under + 24} width={172} height={34} rx={5} fill="#0d0c24" stroke="rgb(188 217 255 / 0.35)" strokeWidth={1.5} />
+          <text x={mid} y={under + 42} fill={TONES.good} fontSize={23} fontWeight={600} textAnchor="middle" dominantBaseline="central" style={{ fontFamily: FONT, fontVariantNumeric: 'tabular-nums' }}>
+            {`${reading.toFixed(el.balance.decimals ?? 2)} g`}
+          </text>
+        </g>,
+      );
+    }
+  }
+
   // Pieces of iron: each domain is a small arrow, and they turn to the field as they are lined up.
   for (const b of iron) {
     const [cx, cy] = [X(state.at[b.id][0]), Y(state.at[b.id][1])];
@@ -191,11 +250,13 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
     const r = 13;
     const name = wire.label ?? `${Number(Math.abs(amps).toPrecision(3))} A`;
     const at = beside(cx, cy, wire.labelAt ?? 'above', r + (wire.labelAt === 'left' || wire.labelAt === 'right' ? 10 : 18));
+    // The supports a wire rests on stay where it started: a cradle on two legs, with room between them for the weight arrow.
+    const [sx, sy] = [X(wire.at[0]), Y(wire.at[1]) + r + 3];
+    const foot = el.yoke && wire.at[0] >= el.yoke.faces[0] && wire.at[0] <= el.yoke.faces[1] && wire.at[1] >= el.yoke.span[0] ? Y(el.yoke.span[0]) : sy + 30;
     out.push(
       <g key={`wire-${wire.id}`} style={glow(wire.id)}>
-        <circle cx={cx} cy={cy} r={r} fill={BACK} stroke={CURRENT} strokeWidth={3.5} />
-        {amps > 1e-9 && <circle cx={cx} cy={cy} r={4.5} fill={CURRENT} />}
-        {amps < -1e-9 && <path d={`M${cx - 6},${cy - 6} L${cx + 6},${cy + 6} M${cx - 6},${cy + 6} L${cx + 6},${cy - 6}`} stroke={CURRENT} strokeWidth={3} strokeLinecap="round" />}
+        {wire.rests && <path d={`M${sx - 19},${sy - 6} V${foot} M${sx + 19},${sy - 6} V${foot} M${sx - 19},${sy} H${sx + 19}`} fill="none" stroke={INK3} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />}
+        <Ring cx={cx} cy={cy} amps={amps} />
         {name && <Text x={at.x} y={at.y} anchor={at.anchor} size={20} color={CURRENT}>{name}</Text>}
       </g>,
     );
@@ -219,6 +280,77 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
         </g>,
       );
     }
+
+  // The weight of each wire that has a mass, down the screen.
+  if (weightPart > 0 && el.g !== undefined && el.g > 0)
+    for (const wire of wires) {
+      if (wire.mass === undefined) continue;
+      const weight = wire.mass * el.g;
+      const [cx, cy] = [X(state.at[wire.id][0]), Y(state.at[wire.id][1])];
+      const len = el.forceScale ? Math.min(220, weight * el.forceScale) : 80;
+      out.push(
+        <g key={`weight-${wire.id}`} opacity={weightPart}>
+          <Arrow x={cx} y={cy + 16} len={len} turn={-90} color={WEIGHT} />
+          <Num x={cx + 32} y={cy + 16 + len * 0.62} pre="mg = " n={weight} unit="N" figures={figures} keep anchor="start" color={WEIGHT} />
+        </g>,
+      );
+    }
+
+  // The coil of a motor, seen from one end: an arm through the axle with a wire at each end. The first side is on the lighter half of the arm.
+  if (el.coil && state.spin) {
+    const c = el.coil;
+    const sides = coilSides(el, state);
+    const [cx, cy] = [X(state.at[c.id][0]), Y(state.at[c.id][1])];
+    const ends = sides.map((side): [number, number] => [X(side.at[0]), Y(side.at[1])]);
+    const tones = ['#f1eefc', '#8d88b5'];
+    const R = 30;
+    const on = (a: number, radius: number) => `${(cx + radius * Math.cos(rad(a))).toFixed(1)},${(cy - radius * Math.sin(rad(a))).toFixed(1)}`;
+    const [ax, ay] = fieldAt(el, state, state.at[c.id][0], state.at[c.id][1]);
+    const along = Math.hypot(ax, ay) > 0 ? deg(Math.atan2(ay, ax)) : 0;
+    const amps = state.amps[c.id];
+    out.push(
+      <g key={`coil-${c.id}`} style={glow(c.id)}>
+        {ends.map((end, k) => (
+          <line key={k} x1={cx} y1={cy} x2={end[0]} y2={end[1]} stroke={tones[k]} strokeWidth={6} strokeLinecap="round" />
+        ))}
+        {c.commutator && (
+          <>
+            {/* The split ring turns with the coil: each half is joined to one side. The brushes stay where they are, along the field. */}
+            <circle cx={cx} cy={cy} r={R} fill={BACK} />
+            {[0, 180].map((half, k) => (
+              <path key={k} d={`M${on(state.spin!.angle + half - 74, R)} A${R},${R} 0 0 0 ${on(state.spin!.angle + half + 74, R)}`} fill="none" stroke={tones[k]} strokeWidth={10} />
+            ))}
+            <g transform={`rotate(${-along} ${cx} ${cy})`}>
+              <rect x={cx + R + 6} y={cy - 13} width={14} height={26} rx={2} fill="#3b3866" stroke={INK2} strokeWidth={2} />
+              <rect x={cx - R - 20} y={cy - 13} width={14} height={26} rx={2} fill="#3b3866" stroke={INK2} strokeWidth={2} />
+            </g>
+            {Math.abs(amps) > 1e-9 &&
+              [1, -1].map((side) => (
+                <Text key={side} x={cx + side * (R + 13) * Math.cos(rad(along))} y={cy - side * (R + 13) * Math.sin(rad(along)) + 32} size={25} color={INK} weight={700}>
+                  {side * amps > 0 ? '−' : '+'}
+                </Text>
+              ))}
+          </>
+        )}
+        <circle cx={cx} cy={cy} r={5.5} fill={INK2} stroke="#0d0c24" strokeWidth={1.5} />
+        {ends.map((end, k) => (
+          <Ring key={k} cx={end[0]} cy={end[1]} amps={sides[k].amps} />
+        ))}
+      </g>,
+    );
+    if (forcePart > 0) {
+      sides.forEach((side, k) => {
+        const f = Math.hypot(...side.force);
+        const len = el.forceScale ? Math.min(220, f * el.forceScale) : 80;
+        if (!(f > 0) || len < 2) return;
+        const [ux, uy] = [side.force[0] / f, -side.force[1] / f];
+        out.push(<Arrow key={`turn-${k}`} x={ends[k][0] + ux * 16} y={ends[k][1] + uy * 16} len={len} turn={deg(Math.atan2(side.force[1], side.force[0]))} color={PUSH} opacity={forcePart} />);
+      });
+      // The two forces are the same size, and they turn with the coil, so their size is written once, in the bottom corner where no arrow reaches (a small picture, like the thumbnail, has no room for it).
+      const f = Math.hypot(...(sides[0]?.force ?? [0, 0]));
+      if (f > 0 && pw >= 900) out.push(<Num key="turn-size" x={ox + 22} y={oy + ph - 22} pre="F = " n={f} unit="N on each side" figures={figures} keep anchor="start" color={PUSH} opacity={forcePart} />);
+    }
+  }
 
   // Compasses: the red end of the needle points along the field.
   if (compassPart > 0)

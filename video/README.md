@@ -517,6 +517,25 @@ See `src/video/script.ts` for every element and option. In short:
   inside its turns and away from the wires, where a line would wobble. `poster` names the clip
   whose end the thumbnail shows, and `thumb` the parts drawn on it. North is red, south blue,
   the field violet (`\brand`), a current yellow and a force orange.
+  For the force on a wire and the motor, `yoke: { faces, span }` draws the two poles of the
+  magnet that makes the uniform field, seen from one end (a north pole face at one x and a south
+  pole face at the other; `base` joins them under the gap into a U), and the field is then only
+  in the gap between them. A wire with a `mass` (and its `metres` in the field) moves under
+  F = BIL while a clip plays, at `rate` seconds of the model for each second of video; with `g`
+  on the element it also has a weight (part `weight`), and `rests: true` puts it on supports it
+  cannot fall through, so it floats when BIL = mg and rises with more current. A wire that
+  leaves the gap coasts, and stops at the edge of the picture. `balance: { grams }` stands the
+  magnet on a balance, whose reading rises by F ÷ g when the field pushes a fixed wire up
+  (Newton's third law). `coil` is the coil of a motor seen along its axle: two sides a `radius`
+  from the axle that carry `amps` opposite ways, each pushed with NBIL (`turns`, `metres`), and
+  turned about the axle by those forces against its `inertia` and `friction`. With fixed wires
+  it swings to the place where its plane is at right angles to the field, rocks and stops;
+  `commutator: true` draws the split ring and the brushes and reverses the current every half
+  turn, so it keeps turning, and a phase that reverses its `amps` turns it the other way. The
+  coil moves only while a clip plays, and the next line waits for a clip to end, so give each
+  line a clip a little longer than the line and the coil never stops between lines. Keep a
+  wire between two field lines (they are spread evenly over the `span`), and give it
+  `labelAt: 'right'`, so that its label and its force arrow stay clear.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

@@ -2003,9 +2003,39 @@ export interface MagnetWire {
   amps: number;
   /** The length of it that lies in the field, in metres: the force on it is then written in newtons (in newtons for each metre otherwise). */
   metres?: number;
+  /** Its mass in kilograms: it then moves under the force on it (and its weight, when the element has `g`) while a clip plays. It needs `metres`. */
+  mass?: number;
+  /** It lies on supports, so it cannot go below where it starts. */
+  rests?: boolean;
   /** A name written beside it (its current otherwise). */
   label?: string;
   labelAt?: 'above' | 'below' | 'left' | 'right';
+}
+
+/**
+ * The coil of a motor in a magnets element, seen from one end: two sides, one each side of the
+ * axle, that carry the same current opposite ways. The forces on them turn the coil about the axle.
+ */
+export interface MagnetCoil {
+  id: string;
+  /** Its axle, [x, y]. */
+  at: [number, number];
+  /** How far each side is from the axle, in the element's length unit. */
+  radius: number;
+  /** The angle of the first side at the start, in degrees anticlockwise from the right (0 otherwise). */
+  angle?: number;
+  /** The current in the coil, in amperes: positive comes out of the page in the first side (with a commutator, in the side that is further along the field). */
+  amps: number;
+  /** How many turns it has (1 otherwise): the force on a side is NBIL. */
+  turns?: number;
+  /** The length of each side that lies in the field, in metres. */
+  metres: number;
+  /** Its moment of inertia about the axle, in kg·m²: how hard it is to set turning. */
+  inertia: number;
+  /** The friction at the axle, in newton metres for each radian per second (none otherwise). */
+  friction?: number;
+  /** A split-ring commutator and two brushes: the current in the coil is reversed every half turn. */
+  commutator?: boolean;
 }
 
 /** A place in a magnets element: a compass, whose needle turns to the field there, or a probe, which shows the field there as an arrow. */
@@ -2037,7 +2067,7 @@ export interface MagnetsPhase {
   to?: Record<string, [number, number]>;
   /** The angle a bar has by its end, in degrees. */
   turn?: Record<string, number>;
-  /** The current a wire carries by its end, in amperes. */
+  /** The current a wire (or the coil) carries by its end, in amperes. */
   amps?: Record<string, number>;
   /** How far the domains of a piece of iron are lined up by its end (0 to 1). */
   order?: Record<string, number>;
@@ -2048,7 +2078,7 @@ export interface MagnetsClip {
 }
 
 /** What a magnets element can show; each is a part ("mag.lines"). */
-export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force'] as const;
+export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force', 'weight'] as const;
 
 /**
  * Magnets, wires and compasses seen from above (src/video/magnets.ts): the magnetic field of bar
@@ -2059,10 +2089,12 @@ export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force'] 
  * `compass` (the compasses, whose needles point along the field where they are), `field` (at
  * each probe, an arrow along the field, with its strength in teslas when the picture has no bar
  * magnet), `distance` (from the first wire to each probe) and `force` (the push or pull between
- * bar magnets, and the force of the field on each wire, F = BIL). A clip carries things about,
- * turns a magnet, changes a current or lines up the domains of a piece of iron. North is red,
- * south is blue, the field is violet, a current is yellow and a force is orange. Emphasising an
- * id makes that thing glow.
+ * bar magnets, and the force of the field on each wire and on each side of the coil, F = BIL) and
+ * `weight` (the weight of each wire that has a mass). A clip carries things about, turns a magnet,
+ * changes a current or lines up the domains of a piece of iron; while it plays, a wire with a mass
+ * moves under the forces on it, and the coil of a motor turns. North is red, south is blue, the
+ * field is violet, a current is yellow, a force is orange and a weight is pink. Emphasising an id
+ * makes that thing glow.
  */
 export interface MagnetsEl {
   kind: 'magnets';
@@ -2081,6 +2113,22 @@ export interface MagnetsEl {
   /** A uniform field added everywhere, in teslas: [Bx, By]. `uniformLines` straight lines are drawn for it when there is nothing else to make a field (7 otherwise). */
   uniform?: [number, number];
   uniformLines?: number;
+  /**
+   * The magnet that makes the uniform field, seen from one end: a north pole face at one of the
+   * `faces` (two values of x) and a south pole face at the other, between the two heights of
+   * `span`. The field is then only in the gap between them. `thick` is how wide each pole is drawn
+   * (an eighth of the view otherwise), and `base` the thickness of the bar that joins the poles
+   * under the gap, when the magnet is a U (no bar otherwise). The uniform field must point along x.
+   */
+  yoke?: { faces: [number, number]; span: [number, number]; thick?: number; base?: number };
+  /** The coil of a motor. */
+  coil?: MagnetCoil;
+  /** Gravity, in m/s², down the screen: the picture is then seen from the side, and a wire with a mass has a weight. */
+  g?: number;
+  /** Seconds of the model for each second of video, while wires and the coil move (1 otherwise). */
+  rate?: number;
+  /** A balance under the magnet: it reads this many grams with no current, and more or less as the wires push back on the magnet. It needs `g` and a `yoke`. */
+  balance?: { grams: number; decimals?: number };
   /** Draw the Earth round the first bar magnet: a disc of this radius, with the geographic poles named. */
   earth?: number;
   /** How long the arrow of a probe is, in pixels for each tesla (every arrow is 64 pixels long otherwise). */
@@ -2820,6 +2868,27 @@ export function checkMagnets(e: MagnetsEl): string[] {
   const all = [...bars, ...wires, ...iron, ...points];
   if (!bars.length && !wires.length && !e.uniform) problems.push('it needs a bar magnet, a wire or a uniform field.');
   const ids = new Set<string>();
+  if (e.g !== undefined && !(e.g >= 0)) problems.push('gravity cannot be below zero.');
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
+  if (e.yoke) {
+    const { faces, span, thick, base } = e.yoke;
+    if (!e.uniform || e.uniform[0] === 0 || e.uniform[1] !== 0) problems.push('the poles of a magnet need a uniform field along x between them.');
+    if (!(faces[1] > faces[0] && faces[0] > x0 && faces[1] < x1)) problems.push('the pole faces need two values of x inside the view, the left one first.');
+    if (!(span[1] > span[0] && span[0] >= y0 && span[1] <= y1)) problems.push('the poles need a span inside the view, its bottom first.');
+    if (thick !== undefined && !(thick > 0)) problems.push('the poles need a thickness above zero.');
+    if (base !== undefined && !(base > 0 && span[0] - base >= y0)) problems.push('the bar that joins the poles needs a thickness above zero, and room under the gap.');
+  }
+  if (e.balance && !(e.g !== undefined && e.g > 0 && e.yoke)) problems.push('a balance needs gravity and the poles of a magnet to stand on it.');
+  if (e.coil) {
+    const c = e.coil;
+    ids.add(c.id);
+    if ((MAGNETS_PARTS as readonly string[]).includes(c.id)) problems.push(`the id "${c.id}" is the name of a part.`);
+    if (!(c.radius > 0 && c.metres > 0 && c.inertia > 0)) problems.push('the coil needs a radius, a length and a moment of inertia above zero.');
+    if (c.turns !== undefined && !(Number.isInteger(c.turns) && c.turns >= 1)) problems.push('the coil needs a whole number of turns.');
+    if (c.friction !== undefined && !(c.friction >= 0)) problems.push('the friction of the coil cannot be below zero.');
+    if (c.at[0] - c.radius < x0 || c.at[0] + c.radius > x1 || c.at[1] - c.radius < y0 || c.at[1] + c.radius > y1) problems.push('the coil turns outside the view.');
+    if (e.yoke && (c.at[0] - c.radius < e.yoke.faces[0] || c.at[0] + c.radius > e.yoke.faces[1] || c.at[1] - c.radius < e.yoke.span[0] || c.at[1] + c.radius > e.yoke.span[1])) problems.push('the coil turns outside the gap between the poles.');
+  }
   for (const o of all) {
     if (ids.has(o.id)) problems.push(`the id "${o.id}" is used twice.`);
     ids.add(o.id);
@@ -2830,6 +2899,8 @@ export function checkMagnets(e: MagnetsEl): string[] {
   for (const b of bars) if (b.lines !== undefined && !(Number.isInteger(b.lines) && b.lines >= 2)) problems.push(`bar "${b.id}" needs a whole number of field lines, two or more.`);
   for (const b of iron) if (b.order !== undefined && !(b.order >= 0 && b.order <= 1)) problems.push(`iron "${b.id}" needs an order from 0 to 1.`);
   for (const w of wires) if (w.metres !== undefined && !(w.metres > 0)) problems.push(`wire "${w.id}" needs a length above zero.`);
+  for (const w of wires) if (w.mass !== undefined && !(w.mass > 0 && w.metres !== undefined)) problems.push(`wire "${w.id}" needs a mass above zero, and the length of it that is in the field.`);
+  for (const w of wires) if (w.rests && w.mass === undefined) problems.push(`wire "${w.id}" rests on supports, so it needs a mass.`);
   if (e.earth !== undefined && (!bars.length || !(e.earth > 0))) problems.push('the Earth needs a bar magnet inside it and a radius above zero.');
   for (const [sx, sy] of e.seeds ?? []) if (sx < x0 || sx > x1 || sy < y0 || sy > y1) problems.push(`the seed at (${sx}, ${sy}) is outside the view.`);
   if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
@@ -2842,10 +2913,12 @@ export function checkMagnets(e: MagnetsEl): string[] {
       if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
       for (const [id, [tx, ty]] of Object.entries(ph.to ?? {})) {
         if (!ids.has(id)) problems.push(`clip "${name}" moves "${id}", which is not in the picture.`);
+        else if (id === e.coil?.id) problems.push(`clip "${name}" moves the coil, which stays on its axle.`);
+        else if (wires.some((w) => w.id === id && w.mass !== undefined)) problems.push(`clip "${name}" moves "${id}", which has a mass and moves by itself.`);
         else if (tx < x0 || tx > x1 || ty < y0 || ty > y1) problems.push(`clip "${name}" moves "${id}" outside the view.`);
       }
       for (const id of Object.keys(ph.turn ?? {})) if (!barIds.has(id)) problems.push(`clip "${name}" turns "${id}", which is not a bar magnet.`);
-      for (const id of Object.keys(ph.amps ?? {})) if (!wireIds.has(id)) problems.push(`clip "${name}" sets the current of "${id}", which is not a wire.`);
+      for (const id of Object.keys(ph.amps ?? {})) if (!wireIds.has(id) && id !== e.coil?.id) problems.push(`clip "${name}" sets the current of "${id}", which is not a wire.`);
       for (const [id, order] of Object.entries(ph.order ?? {})) {
         if (!ironIds.has(id)) problems.push(`clip "${name}" lines up "${id}", which is not a piece of iron.`);
         if (!(order >= 0 && order <= 1)) problems.push(`clip "${name}" needs an order from 0 to 1.`);
@@ -3062,7 +3135,7 @@ export function checkScript(x: Explainer): string[] {
         problems.push(...checkCharges(e, played).map((p) => `Scene ${si + 1}: charges "${e.id}": ${p}`));
       }
       if (e.kind === 'magnets') {
-        diagrams.set(e.id, new Set<string>([...MAGNETS_PARTS, ...[...(e.bars ?? []), ...(e.wires ?? []), ...(e.iron ?? []), ...(e.compasses ?? []), ...(e.probes ?? [])].map((o) => o.id)]));
+        diagrams.set(e.id, new Set<string>([...MAGNETS_PARTS, ...[...(e.bars ?? []), ...(e.wires ?? []), ...(e.iron ?? []), ...(e.compasses ?? []), ...(e.probes ?? []), ...(e.coil ? [e.coil] : [])].map((o) => o.id)]));
         motions.set(e.id, e);
         problems.push(...checkMagnets(e).map((p) => `Scene ${si + 1}: magnets "${e.id}": ${p}`));
       }

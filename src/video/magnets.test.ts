@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkMagnets, checkScript, type Explainer, type MagnetsEl } from './script.ts';
-import { barForce, fieldAt, magnetLines, magnetsAt, MU0, peakBarForce, polesOf, wireForce } from './magnets.ts';
+import { balanceReading, barForce, coilSides, coilTorque, fieldAt, magnetLines, magnetsAt, MU0, peakBarForce, polesOf, wireForce } from './magnets.ts';
 import { linesBetween } from './fieldlines.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
@@ -342,5 +342,263 @@ describe('a magnets element in a video', () => {
     const tl = compile(video, { '0.0': 2, '0.1': 4 });
     const during = stateAt(tl, tl.lines[1].start + 1).els.m;
     expect(magnetsAt(el, during.plays).at.a[0]).toBeCloseTo(-2.25, 6);
+  });
+});
+
+// The lesson's wire between the poles of a magnet: 0.50 m of it in a field of 0.30 T, carrying 4.0 A out of the page.
+const gap = (over: Partial<MagnetsEl> = {}) =>
+  picture({
+    uniform: [0.3, 0],
+    yoke: { faces: [-3, 3], span: [-2, 2] },
+    wires: [{ id: 'w', at: [0, -1], amps: 4, metres: 0.5, mass: 0.02 }],
+    rate: 0.01,
+    clips: { go: { phases: [{ dur: 1 }] }, long: { phases: [{ dur: 20 }] } },
+    ...over,
+  });
+
+// The lesson's wire that floats: 20 g and 0.50 m long, across a field of 0.40 T, resting on supports.
+const float = (amps: number, rests = true) =>
+  picture({
+    uniform: [0.4, 0],
+    g: 9.81,
+    wires: [{ id: 'w', at: [0, 0], amps: 0, metres: 0.5, mass: 0.02, rests }],
+    rate: 0.05,
+    clips: { on: { phases: [{ dur: 2, amps: { w: amps } }, { dur: 2 }] } },
+  });
+
+describe('a wire in the gap of a magnet', () => {
+  it('is pushed with F = BIL, at right angles to the field and to the current', () => {
+    const el = gap();
+    const [fx, fy] = wireForce(el, magnetsAt(el), 'w');
+    expect(fx).toBeCloseTo(0, 9);
+    expect(fy).toBeCloseTo(0.6, 9);
+    const back = gap({ wires: [{ id: 'w', at: [0, -1], amps: -4, metres: 0.5 }] });
+    expect(wireForce(back, magnetsAt(back), 'w')[1]).toBeCloseTo(-0.6, 9);
+  });
+
+  it('feels no force outside the gap, where there is no field', () => {
+    const el = gap({ wires: [{ id: 'w', at: [0, 2.5], amps: 4, metres: 0.5 }] });
+    expect(fieldAt(el, magnetsAt(el), 0, 2.5)).toEqual([0, 0]);
+    expect(size(wireForce(el, magnetsAt(el), 'w'))).toBe(0);
+    // In the gap: the field of the magnet, and a little from the wire itself.
+    expect(fieldAt(el, magnetsAt(el), 0, 0)[0]).toBeCloseTo(0.3, 4);
+  });
+
+  it('speeds up under the force while a clip plays: a = F ÷ m', () => {
+    const el = gap();
+    // 0.01 s of the model: v = 30 × 0.01 = 0.30 m/s, and ½at² = 0.15 cm.
+    const state = magnetsAt(el, [['go', 1]]);
+    expect(state.v.w[1]).toBeCloseTo(0.3, 6);
+    expect(state.at.w[1] - -1).toBeCloseTo(0.15, 2);
+    expect(state.at.w[0]).toBe(0);
+    expect(magnetsAt(el).at.w).toEqual([0, -1]);
+  });
+
+  it('coasts once it has left the gap, and is stopped at the edge of the picture', () => {
+    const el = gap();
+    // It leaves the gap after 3 cm, which takes 0.0447 s of the model.
+    const out = magnetsAt(el, [['long', 4.6]]);
+    const later = magnetsAt(el, [['long', 4.7]]);
+    expect(out.at.w[1]).toBeGreaterThan(2);
+    expect(later.v.w[1]).toBeCloseTo(out.v.w[1], 9);
+    const end = magnetsAt(el, [['long', 20]]);
+    expect(end.at.w[1]).toBeCloseTo(3 - 12 * 0.025, 9);
+    expect(end.v.w[1]).toBe(0);
+  });
+
+  it('draws the field lines straight across the gap, from the north pole face to the south', () => {
+    const el = gap({ uniformLines: 5, wires: [] });
+    const lines = magnetLines(el, magnetsAt(el));
+    expect(lines).toHaveLength(5);
+    for (const line of lines) {
+      expect(line.points[0][0]).toBe(-3);
+      expect(line.points.at(-1)![0]).toBeGreaterThan(2.95);
+      expect(line.points.at(-1)![0]).toBeLessThan(3.05);
+      expect(line.points.at(-1)![1]).toBeCloseTo(line.points[0][1], 2);
+    }
+    const reversed = gap({ uniform: [-0.3, 0] });
+    expect(magnetLines(reversed, magnetsAt(reversed))[0].points[0][0]).toBe(3);
+  });
+});
+
+describe('a wire that floats', () => {
+  it('has a magnetic force equal to its weight at I = mg ÷ BL', () => {
+    const el = float(0.981);
+    const state = magnetsAt(el, [['on', 4]]);
+    expect(wireForce(el, state, 'w')[1]).toBeCloseTo(0.02 * 9.81, 9);
+    // It stays on its supports all the way: the force never passes its weight.
+    expect(state.at.w).toEqual([0, 0]);
+    expect(state.v.w).toEqual([0, 0]);
+  });
+
+  it('rises with a larger current, and stays down with a smaller one', () => {
+    expect(magnetsAt(float(1.2), [['on', 4]]).at.w[1]).toBeGreaterThan(0.5);
+    expect(magnetsAt(float(0.5), [['on', 4]]).at.w[1]).toBe(0);
+  });
+
+  it('falls with too small a current when nothing holds it up', () => {
+    expect(magnetsAt(float(0.5, false), [['on', 4]]).at.w[1]).toBeLessThan(-0.5);
+  });
+});
+
+describe('a magnet on a balance', () => {
+  // The lesson's measurement: 10 cm of wire in the field, 2.0 A, and the reading rises by 1.02 g.
+  const el = picture({
+    uniform: [0.05, 0],
+    g: 9.81,
+    yoke: { faces: [-2, 2], span: [-1, 2], base: 0.6 },
+    balance: { grams: 250 },
+    wires: [{ id: 'w', at: [0, 0.5], amps: 0, metres: 0.1 }],
+    clips: { on: { phases: [{ dur: 2, amps: { w: 2 } }] }, back: { phases: [{ dur: 2, amps: { w: -2 } }] } },
+  });
+
+  it('reads the mass of the magnet with no current', () => {
+    expect(balanceReading(el, magnetsAt(el))).toBe(250);
+  });
+
+  it('reads more when the wire is pushed up, by Newton\'s third law', () => {
+    const state = magnetsAt(el, [['on', 2]]);
+    expect(wireForce(el, state, 'w')[1]).toBeCloseTo(0.01, 9);
+    expect(balanceReading(el, state)).toBeCloseTo(251.02, 2);
+  });
+
+  it('reads less when the current is reversed', () => {
+    expect(balanceReading(el, magnetsAt(el, [['on', 2], ['back', 2]]))).toBeCloseTo(248.98, 2);
+  });
+
+  it('is not there without gravity', () => {
+    expect(balanceReading({ ...el, g: undefined }, magnetsAt(el))).toBeNull();
+  });
+});
+
+// The lesson's motor coil: 100 turns, sides 4.0 cm long and 2 cm from the axle, 1.5 A, in a field of 0.20 T.
+const motor = (over: Partial<NonNullable<MagnetsEl['coil']>> = {}, rest: Partial<MagnetsEl> = {}) =>
+  picture({
+    uniform: [0.2, 0],
+    yoke: { faces: [-4, 4], span: [-2.9, 2.9] },
+    coil: { id: 'c', at: [0, 0], radius: 2, amps: 1.5, turns: 100, metres: 0.04, inertia: 2e-4, friction: 2e-3, ...over },
+    rate: 0.05,
+    clips: { run: { phases: [{ dur: 10 }] }, back: { phases: [{ dur: 1, amps: { c: -1.5 } }, { dur: 9 }] } },
+    ...rest,
+  });
+
+describe('the coil of a motor', () => {
+  it('has two opposite forces of NBIL on its sides', () => {
+    const el = motor();
+    const [a, b] = coilSides(el, magnetsAt(el));
+    expect(a.at).toEqual([2, 0]);
+    expect(b.at[0]).toBeCloseTo(-2, 12);
+    expect(a.amps).toBe(1.5);
+    expect(b.amps).toBe(-1.5);
+    expect(a.force[1]).toBeCloseTo(1.2, 9);
+    expect(b.force[1]).toBeCloseTo(-1.2, 9);
+    expect(a.force[0]).toBeCloseTo(0, 12);
+  });
+
+  it('has the largest turning effect when its plane is along the field, and none when it is at right angles', () => {
+    const flat = motor();
+    expect(coilTorque(flat, magnetsAt(flat))).toBeCloseTo(2 * 0.02 * 1.2, 9);
+    const upright = motor({ angle: 90 });
+    expect(coilTorque(upright, magnetsAt(upright))).toBeCloseTo(0, 9);
+    const tilted = motor({ angle: 60 });
+    expect(coilTorque(tilted, magnetsAt(tilted))).toBeCloseTo(0.048 * 0.5, 9);
+  });
+
+  it('rocks about the upright place and stops there without a commutator', () => {
+    const el = motor();
+    let top = 0;
+    for (let t = 0.25; t <= 10; t += 0.25) top = Math.max(top, magnetsAt(el, [['run', t]]).spin!.angle);
+    // It swings past the upright, but never as far as half a turn.
+    expect(top).toBeGreaterThan(95);
+    expect(top).toBeLessThan(180);
+    const end = magnetsAt(el, [['run', 10], ['run', 10], ['run', 10]]).spin!;
+    expect(end.angle).toBeCloseTo(90, 0);
+    expect(Math.abs(end.omega)).toBeLessThan(0.5);
+  });
+
+  it('is turned back past the upright place without a commutator', () => {
+    const past = motor({ angle: 200 });
+    expect(coilTorque(past, magnetsAt(past))).toBeLessThan(0);
+  });
+
+  it('keeps turning the same way with a commutator, which reverses its current every half turn', () => {
+    const el = motor({ commutator: true });
+    const past = motor({ commutator: true, angle: 200 });
+    expect(coilTorque(past, magnetsAt(past))).toBeCloseTo(0.048 * Math.abs(Math.cos((200 * Math.PI) / 180)), 9);
+    let last = 0;
+    for (let t = 0.5; t <= 10; t += 0.5) {
+      const state = magnetsAt(el, [['run', t]]);
+      expect(state.spin!.angle).toBeGreaterThan(last);
+      last = state.spin!.angle;
+      // The side that is further along the field always carries the current out of the page.
+      for (const side of coilSides(el, state)) if (Math.abs(side.at[0]) > 0.05) expect(Math.sign(side.amps)).toBe(Math.sign(side.at[0]));
+    }
+    expect(last).toBeGreaterThan(270);
+  });
+
+  it('settles at the speed where the turning effect matches the friction', () => {
+    const el = motor({ commutator: true });
+    const turned = (plays: number) => magnetsAt(el, Array.from({ length: plays }, (): [string, number] => ['run', 10])).spin!.angle;
+    // Each clip is 0.5 s of the model. The mean speed stops growing, below the speed the largest torque could keep up.
+    const [early, late] = [(turned(4) - turned(2)) * (Math.PI / 180), (turned(8) - turned(6)) * (Math.PI / 180)];
+    expect(late / early).toBeGreaterThan(0.97);
+    expect(late / early).toBeLessThan(1.03);
+    expect(late).toBeLessThan(0.048 / 2e-3);
+    expect(late).toBeGreaterThan(0.4 * (0.048 / 2e-3));
+  });
+
+  it('turns the other way when the current is reversed', () => {
+    const el = motor({ commutator: true, amps: -1.5 });
+    expect(magnetsAt(el, [['run', 5]]).spin!.angle).toBeLessThan(-120);
+    const turned = motor({ commutator: true });
+    const state = magnetsAt(turned, [['run', 4], ['back', 10]]);
+    expect(state.amps.c).toBe(-1.5);
+    expect(state.spin!.omega).toBeLessThan(0);
+  });
+
+  it('keeps its energy when there is no friction: ½Jω² is the work the forces have done', () => {
+    const el = motor({ friction: 0 });
+    for (const t of [0.4, 0.8, 1.3]) {
+      const { angle, omega } = magnetsAt(el, [['run', t]]).spin!;
+      const work = 0.048 * Math.sin((angle * Math.PI) / 180);
+      expect(0.5 * 2e-4 * omega * omega).toBeCloseTo(work, 3);
+    }
+  });
+
+  it('does not move until a clip plays', () => {
+    const el = motor();
+    expect(magnetsAt(el).spin).toEqual({ angle: 0, omega: 0 });
+    expect(magnetsAt(bar()).spin).toBeNull();
+  });
+});
+
+describe('checking wires that move, a balance and a coil', () => {
+  it('passes the pictures above', () => {
+    for (const el of [gap(), float(1), motor(), motor({ commutator: true })]) expect(checkMagnets(el)).toEqual([]);
+  });
+
+  it('finds a wire with a mass but no length, and a clip that carries a wire that moves by itself', () => {
+    expect(checkMagnets(gap({ wires: [{ id: 'w', at: [0, -1], amps: 4, mass: 0.02 }] })).join(' ')).toContain('needs a mass above zero, and the length');
+    expect(checkMagnets(gap({ wires: [{ id: 'w', at: [0, -1], amps: 4, metres: 0.5, rests: true }] })).join(' ')).toContain('so it needs a mass');
+    expect(checkMagnets(gap({ clips: { go: { phases: [{ dur: 1, to: { w: [0, 1] } }] } } })).join(' ')).toContain('moves by itself');
+  });
+
+  it('finds poles with no field along x between them, or outside the view', () => {
+    expect(checkMagnets(gap({ uniform: [0, 0.3] })).join(' ')).toContain('uniform field along x');
+    expect(checkMagnets(gap({ yoke: { faces: [-7, 3], span: [-2, 2] } })).join(' ')).toContain('pole faces');
+    expect(checkMagnets(gap({ yoke: { faces: [-3, 3], span: [-2, 2], base: 2 } })).join(' ')).toContain('room under the gap');
+  });
+
+  it('finds a balance with no gravity, and a rate of zero', () => {
+    expect(checkMagnets(gap({ balance: { grams: 250 } })).join(' ')).toContain('a balance needs gravity');
+    expect(checkMagnets(gap({ rate: 0 })).join(' ')).toContain('rate');
+  });
+
+  it('finds a coil that turns outside the gap, has no inertia, or is carried by a clip', () => {
+    expect(checkMagnets(motor({ radius: 4.5 })).join(' ')).toContain('outside the gap');
+    expect(checkMagnets(motor({ inertia: 0 })).join(' ')).toContain('moment of inertia');
+    expect(checkMagnets(motor({ turns: 2.5 })).join(' ')).toContain('whole number of turns');
+    expect(checkMagnets(motor({}, { clips: { run: { phases: [{ dur: 2, to: { c: [1, 0] } }] } } })).join(' ')).toContain('stays on its axle');
+    expect(checkMagnets(motor({}, { clips: { run: { phases: [{ dur: 2, amps: { x: 1 } }] } } })).join(' ')).toContain('not a wire');
   });
 });
