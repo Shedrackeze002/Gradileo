@@ -16,6 +16,8 @@ export const OUTCOMES: Outcome[] = [
   { code: '30-B3', strand: 'Forces and Fields', text: 'Describe magnetic fields, find the magnetic forces on moving charges and on current-carrying conductors, and explain electromagnetic induction, motors and generators.' },
   { code: '30-C1', strand: 'Electromagnetic Radiation', text: 'Describe electromagnetic radiation as a wave: its spectrum and speed, its reflection and refraction, the images formed by mirrors and lenses, and its diffraction and interference.' },
   { code: '30-C2', strand: 'Electromagnetic Radiation', text: 'Describe electromagnetic radiation as photons: explain the photoelectric effect and the Compton effect, and relate the wave and particle behaviour of light and of matter.' },
+  { code: '30-D1', strand: 'Atomic and Nuclear Physics', text: 'Describe how the electron and the nucleus were discovered, and use the Bohr model to explain the energy levels and the line spectrum of hydrogen.' },
+  { code: '30-D2', strand: 'Atomic and Nuclear Physics', text: 'Describe the nucleus, radioactive decay and half-life, and relate mass defect and binding energy to the energy released by fission and fusion.' },
 ];
 
 const L = (
@@ -128,12 +130,41 @@ export const LESSONS: LessonMeta[] = [
     ['p30-de-broglie', 'p30-duality'],
     ['Find the de Broglie wavelength of a moving particle', 'Say which experiments show the wave behaviour and which the particle behaviour of light and of matter'],
     65, ['de Broglie wavelength', 'matter wave', 'electron diffraction', 'wave-particle duality']),
+  L('p30-4-1', 'p30-u4', '4.1', 'Cathode Rays and the Electron', ['30-D1'],
+    ['p30-cathode-rays', 'p30-charge-mass'],
+    ['Describe cathode rays, and explain how Thomson showed that they are particles smaller than atoms', 'Use balanced fields and a circular path to find the speed and the charge-to-mass ratio of a particle'],
+    70, ['cathode ray', 'electron', 'charge-to-mass ratio', 'Thomson’s model']),
+  L('p30-4-2', 'p30-u4', '4.2', 'Rutherford’s Nucleus', ['30-D1'],
+    ['p30-rutherford', 'p30-closest-approach'],
+    ['Describe the gold foil experiment, and explain what its results show about the atom', 'Use the conservation of energy to find how close an alpha particle can come to a nucleus'],
+    70, ['alpha particle', 'scattering', 'nucleus', 'nuclear model', 'closest approach']),
+  L('p30-4-3', 'p30-u4', '4.3', 'The Bohr Model and Spectra', ['30-D1'],
+    ['p30-energy-levels', 'p30-spectra'],
+    ['Use the energy levels of hydrogen to find the photons that an atom gives out and absorbs', 'Tell continuous, emission and absorption spectra apart, and explain line spectra with energy levels'],
+    75, ['energy level', 'ground state', 'excited state', 'emission spectrum', 'absorption spectrum', 'ionization energy']),
+  L('p30-4-4', 'p30-u4', '4.4', 'The Nucleus and Isotopes', ['30-D2'],
+    ['p30-nuclide', 'p30-strong-force'],
+    ['Read the notation for a nucleus, and count the protons, neutrons and electrons of an atom or an ion', 'Explain how the strong nuclear force holds a nucleus together, and estimate the size of a nucleus'],
+    65, ['proton', 'neutron', 'nucleon', 'atomic number', 'mass number', 'isotope', 'strong nuclear force']),
+  L('p30-4-5', 'p30-u4', '4.5', 'Radioactive Decay', ['30-D2'],
+    ['p30-decay-equations', 'p30-radiation'],
+    ['Write and balance the equations of alpha, beta and gamma decay', 'Compare the penetration, the ionizing power and the uses of the three kinds of radiation'],
+    70, ['radioactive decay', 'alpha decay', 'beta decay', 'gamma ray', 'positron', 'neutrino', 'ionizing radiation']),
+  L('p30-4-6', 'p30-u4', '4.6', 'Half-Life', ['30-D2'],
+    ['p30-half-life', 'p30-dating'],
+    ['Find how much of a radioactive isotope is left after a given time', 'Use activity, allow for background radiation, and find the age of a sample by carbon dating'],
+    70, ['half-life', 'activity', 'becquerel', 'background radiation', 'carbon dating']),
+  L('p30-4-7', 'p30-u4', '4.7', 'Fission, Fusion and Binding Energy', ['30-D2'],
+    ['p30-mass-defect', 'p30-fission-fusion'],
+    ['Find the mass defect and the binding energy of a nucleus with E = mc²', 'Explain fission, fusion and chain reactions, and find the energy that a nuclear reaction releases'],
+    75, ['mass defect', 'binding energy', 'atomic mass unit', 'fission', 'fusion', 'chain reaction']),
 ];
 
 export const UNITS: UnitMeta[] = [
   { id: 'p30-u1', number: 1, title: 'Momentum and Impulse', description: 'Momentum as a vector, impulse and force-time graphs, the conservation of momentum, elastic and inelastic collisions, and collisions and explosions in two dimensions.', outcomes: ['30-A1', '30-A2'], lessons: [], color: 'sky' },
   { id: 'p30-u2', number: 2, title: 'Forces and Fields', description: 'Electric charge and Coulomb’s law, electric fields and potential difference, charges moving between plates, circuits, magnetic fields and forces, motors, and electromagnetic induction.', outcomes: ['30-B1', '30-B2', '30-B3'], lessons: [], color: 'rose' },
   { id: 'p30-u3', number: 3, title: 'Electromagnetic Radiation', description: 'The electromagnetic spectrum and the speed of light, mirrors, refraction and lenses, diffraction and interference, photons and the photoelectric effect, the Compton effect, and wave-particle duality.', outcomes: ['30-C1', '30-C2'], lessons: [], color: 'amber' },
+  { id: 'p30-u4', number: 4, title: 'Atomic and Nuclear Physics', description: 'Cathode rays and the electron, Rutherford’s nucleus, the Bohr model and spectra, the nucleus and its isotopes, radioactive decay and half-life, and the energy of fission and fusion.', outcomes: ['30-D1', '30-D2'], lessons: [], color: 'emerald' },
 ];
 
 for (const u of UNITS) u.lessons = LESSONS.filter((l) => l.unitId === u.id).map((l) => l.id);
