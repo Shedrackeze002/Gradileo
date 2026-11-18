@@ -17,6 +17,7 @@ export type { MotionPath };
 
 import { checkAtoms } from './atoms.ts';
 import { checkMolecules } from './molecules.ts';
+import { checkScatter } from './scatter.ts';
 
 /** The name on every frame, thumbnail and YouTube description. */
 export const BRAND = 'Gradileo';
@@ -763,9 +764,11 @@ export interface ParticleBox {
   /**
    * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
    * made of these atoms (kinds, by place), the first bonded to each of the others round it. A
-   * `bent` molecule of three atoms is bent like water; otherwise the atoms sit in a line.
+   * `bent` molecule of three atoms is bent like water; otherwise the atoms sit in a line. A
+   * `chain` (a polymer) is bonded end to end instead, each atom to the next, and bends freely;
+   * chains start laid along the box one above another.
    */
-  molecules?: Array<{ atoms: number[]; n: number; bent?: boolean }>;
+  molecules?: Array<{ atoms: number[]; n: number; bent?: boolean; chain?: boolean }>;
   /** Hold the reactions back until a phase lets the box go (`release`), so they start on cue. */
   waits?: boolean;
   /**
@@ -790,6 +793,18 @@ export interface ParticleBox {
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
   lump?: boolean | number;
   /**
+   * The lump starts on top of the rest instead of on the floor, raised this far above them (in
+   * particle widths; 0 rests on the surface), so a phase's `release` drops it in: a dense lump
+   * sinks and the liquid rises round it, and a light one floats.
+   */
+  above?: number;
+  /**
+   * The part `level` draws a line at the liquid's surface (the particles not in the lump), with a
+   * dashed line where it was when the element was shown, so a lump dropped in is seen to raise it
+   * (measuring a volume by displacement).
+   */
+  level?: boolean;
+  /**
    * An ionic lattice: about half the lump's particles become this kind instead, each next to
    * particles of the other kind (positive and negative ions side by side). Give this kind `n: 0`
    * and list it after the kind round the lump, and hold both (`hold: [0, k]`).
@@ -800,6 +815,11 @@ export interface ParticleBox {
    * cotton wool at the ends of a tube), until a phase lets them go (`release`).
    */
   hold?: boolean | number[];
+  /**
+   * Kinds fixed in place once the box has settled, so a push (`push` in a phase) cannot slide the
+   * rows past them: the odd-sized atoms of an alloy, which jam its layers.
+   */
+  pin?: number[];
   /** With several kinds, start them apart (the first kind on the left) instead of mixed. */
   apart?: boolean;
   /**
@@ -905,10 +925,15 @@ export interface ParticlePhase {
   run?: Record<string, number>;
   /** How strongly a current flows through each box's electrodes (0 off; 1 the usual), reached steadily. */
   power?: Record<string, number>;
+  /**
+   * Push each box's solid sideways (1 is a firm push; 0 lets go), its top half to the right and its
+   * bottom half to the left, as a hammer blow does: the rows of a metal slide over one another.
+   */
+  push?: Record<string, number>;
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle', 'key', 'spread'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle', 'key', 'spread', 'level'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
@@ -1061,6 +1086,41 @@ export interface MoleculesEl {
   clips: Record<string, { phases: MolPhase[] }>;
   /** The width and height of the scene, in the element's units. */
   span: [number, number];
+  /** For the thumbnail: the clip to show, played to its end. */
+  poster?: string;
+  height?: number;
+}
+
+/** A stretch of a scatter clip: `fire` more shots leave evenly through it. */
+export interface ScatterPhase {
+  dur: number;
+  fire?: number;
+}
+
+/** What a scatter element can show; each is a part ("g.labels"). */
+export const SCATTER_PARTS = ['labels', 'atoms', 'count'] as const;
+
+/**
+ * Alpha particles fired at a thin gold foil, Rutherford's experiment (src/video/scatter.ts). Every
+ * nucleus pushes each alpha particle away, harder the closer it is, so one that passes far from the
+ * nuclei goes straight on, one that passes close is turned aside, and one aimed almost straight at
+ * a nucleus bounces back. A clip's phases fire the shots, one after another, each leaving a faint
+ * track. `close` aims chosen shots at a nucleus, missing it by a little (0.004 bounces back, about
+ * 0.03 turns a shot by some tens of degrees); every other shot keeps clear of the nuclei. The
+ * parts: `labels` (the source, the foil and a nucleus named), `atoms` (each gold atom's size
+ * round its tiny nucleus, to show the atom is mostly empty space) and `count` (how many went
+ * straight through, were turned aside and bounced back).
+ */
+export interface ScatterEl {
+  kind: 'scatter';
+  id: string;
+  /** How many alpha particles there are to fire. */
+  shots: number;
+  /** Columns of gold atoms in the foil (3 by default). */
+  columns?: number;
+  /** Shots aimed close to a nucleus, by their place in the firing order (from 0). */
+  close?: Array<{ shot: number; miss: number }>;
+  clips: Record<string, { phases: ScatterPhase[] }>;
   /** For the thumbnail: the clip to show, played to its end. */
   poster?: string;
   height?: number;
@@ -1692,7 +1752,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl | MoleculesEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -2246,6 +2306,8 @@ export function checkParticles(e: ParticlesEl): string[] {
     for (const r of b.breaks ?? []) if (![...r.kinds, ...r.to].every(ok)) problems.push(`box "${b.id}": a break names a kind it does not have.`);
     if (b.tally && !b.tally.kinds.every(ok)) problems.push(`box "${b.id}": the tally counts a kind it does not have.`);
     if (b.reserve && !b.reserve.every(ok)) problems.push(`box "${b.id}": the burette holds a kind the box does not have.`);
+    if (b.pin && !b.pin.every(ok)) problems.push(`box "${b.id}": it pins a kind it does not have.`);
+    if (b.pin && b.state !== 'solid') problems.push(`box "${b.id}": only a solid can have pinned atoms.`);
     if (b.indicator && ![...b.indicator.acid, ...b.indicator.base].every(ok)) problems.push(`box "${b.id}": the indicator watches a kind the box does not have.`);
   }
   for (const [name, clip] of Object.entries(e.clips)) {
@@ -2257,6 +2319,7 @@ export function checkParticles(e: ParticlesEl): string[] {
         const b = e.boxes.find((bb) => bb.id === id);
         if (!b?.hold && !b?.filter && !b?.waits) problems.push(`clip "${name}", phase ${pi + 1} lets go of a lump that box "${id}" does not hold.`);
       }
+      for (const id of Object.keys(ph.push ?? {})) if (e.boxes.find((b) => b.id === id)?.state !== 'solid') problems.push(`clip "${name}", phase ${pi + 1} pushes box "${id}", which is not a solid.`);
       for (const id of [...Object.keys(ph.stir ?? {}), ...Object.keys(ph.magnet ?? {}), ...Object.keys(ph.power ?? {})]) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no box "${id}".`);
       for (const id of Object.keys(ph.add ?? {})) if (!e.boxes.find((b) => b.id === id)?.reserve?.length) problems.push(`clip "${name}", phase ${pi + 1} pours into box "${id}", which has no burette (\`reserve\`).`);
       for (const id of Object.keys(ph.run ?? {})) if (!e.boxes.find((b) => b.id === id)?.paper) problems.push(`clip "${name}", phase ${pi + 1} runs solvent up box "${id}", which is not paper.`);
@@ -2274,7 +2337,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -2348,6 +2411,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...ATOM_PARTS, ...e.atoms.map((a) => a.id)]));
         motions.set(e.id, e);
         problems.push(...checkAtoms(e).map((p) => `Scene ${si + 1}: atoms "${e.id}": ${p}`));
+      }
+      if (e.kind === 'scatter') {
+        diagrams.set(e.id, new Set<string>(SCATTER_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkScatter(e).map((p) => `Scene ${si + 1}: scatter "${e.id}": ${p}`));
       }
       if (e.kind === 'molecules') {
         diagrams.set(e.id, new Set<string>(Object.keys(e.atoms)));

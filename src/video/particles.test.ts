@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkParticles, checkScript, type Explainer, type ParticleBox, type ParticlesEl } from './script.ts';
-import { controlsAt, particlesAt, pressureOf, singular, TEMPS } from './particles.ts';
+import { controlsAt, particlesAt, pressureOf, shearLine, singular, TEMPS } from './particles.ts';
 import { hydrogenBurning } from './reactions.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
@@ -630,5 +630,119 @@ describe('particles: a spread of speeds', () => {
 
   it('checks the line is on the axis', () => {
     expect(checkParticles(el({ boxes: [{ id: 'a', state: 'gas', n: 10, spread: { at: 4 } }] }))).toEqual(["box \"a\": a spread's line must be between 0 and the fastest speed on its axis."]);
+  });
+});
+
+describe('particles: a lump dropped from above, and the level', () => {
+  const lumpOver = (id: string, heavy: number): ParticleBox => ({
+    id,
+    state: 'liquid',
+    kinds: [{ n: 12, bond: 10, heavy }, { n: 44, heavy: 1 }],
+    lump: true,
+    above: 0.3,
+    hold: true,
+    cross: 0.3,
+    width: 10,
+    height: 11,
+    temp: 0.47,
+    level: true,
+  });
+  const e = el({ boxes: [lumpOver('a', 0.1), lumpOver('b', 10)], clips: { drop: { phases: [{ dur: 0.6, release: ['a', 'b'] }, { dur: 10 }] } } });
+  const lumpY = (f: ReturnType<typeof particlesAt>[number]) => mean(f.y.filter((_, i) => f.kind[i] === 0));
+  const waterTop = (f: ReturnType<typeof particlesAt>[number]) => Math.max(...f.y.filter((_, i) => f.kind[i] === 1).sort((p, q) => p - q).slice(0, 40));
+
+  it('starts the lump above the liquid, held there', () => {
+    const [a] = particlesAt(e, [], 2);
+    expect(Math.min(...a.y.filter((_, i) => a.kind[i] === 0))).toBeGreaterThan(waterTop(a));
+  });
+
+  it('sinks a dense lump and floats a light one, and the level rises round the dense one', () => {
+    const [a, b] = particlesAt(e, [['drop', 0]], 10);
+    expect(lumpY(b)).toBeLessThan(0.6 * lumpY(a));
+    expect(Math.min(...a.y.filter((_, i) => a.kind[i] === 0))).toBeGreaterThan(0.5 * waterTop(a));
+    expect(b.level!.now).toBeGreaterThan(b.level!.start + 0.4);
+  });
+
+  it('gives no level for a box without one', () => {
+    const [f] = particlesAt(el({ boxes: [{ id: 'a', state: 'liquid', n: 20 }] }), [], 1);
+    expect(f.level).toBeUndefined();
+  });
+});
+
+describe('particles: pouring into a liquid', () => {
+  const box = (heavy: number): ParticleBox => ({ id: 'a', state: 'liquid', kinds: [{ n: 36, heavy: 1 }, { n: 18, bond: 2, heavy }], reserve: [1], cross: 0.3, width: 10, height: 12, temp: 0.5 });
+
+  it('packs what starts in the box at the bottom, and keeps the reserved kind out of it', () => {
+    const [f] = particlesAt(el({ boxes: [box(5)] }), [], 0.5);
+    expect(f.x).toHaveLength(36);
+    expect(Math.max(...f.y)).toBeLessThan(7);
+  });
+
+  it('lets a light liquid lie on top and a dense one sink through', () => {
+    const go = { pour: { phases: [{ dur: 6, add: { a: 18 } }, { dur: 10 }] } };
+    const [light] = particlesAt(el({ boxes: [box(0.6)], clips: go }), [['pour', 0]], 16);
+    const [dense] = particlesAt(el({ boxes: [box(5)], clips: go }), [['pour', 0]], 16);
+    const m = (f: ReturnType<typeof particlesAt>[number], k: number) => mean(f.y.filter((_, i) => f.kind[i] === k));
+    expect(light.x).toHaveLength(54);
+    expect(m(light, 1)).toBeGreaterThan(m(light, 0) + 2);
+    expect(m(dense, 1)).toBeLessThan(m(dense, 0));
+  });
+});
+
+describe('particles: pushing a metal and an alloy', () => {
+  const bar = (id: string, alloy: boolean): ParticlesEl => ({
+    kind: 'particles',
+    id,
+    boxes: [
+      {
+        id: 'b',
+        state: 'solid',
+        width: 20,
+        height: 6,
+        cols: 12,
+        bare: true,
+        ...(alloy ? { pin: [1] } : {}),
+        kinds: alloy ? [{ n: 36, bond: 3 }, { n: 12, bond: 3, size: 1.35 }] : [{ n: 48, bond: 3 }],
+      },
+    ],
+    clips: { push: { phases: [{ dur: 4, push: { b: 0.7 } }, { dur: 1.5, push: { b: 0 } }] } },
+  });
+  /** How far the top half has slid past the bottom half, following each particle. */
+  const slid = (e: ParticlesEl) => {
+    const [a] = particlesAt(e, [['push', 0]], 0);
+    const [b] = particlesAt(e, [['push', 0]], 7);
+    const mid = shearLine(a.y);
+    const top = a.x.map((_, i) => a.y[i] > mid);
+    const shift = (want: boolean) => mean(a.x.flatMap((x, i) => (top[i] === want ? [b.x[i] - x] : [])));
+    return shift(true) - shift(false);
+  };
+
+  it('slides the rows of a pure metal over one another', () => {
+    expect(slid(bar(`push-pure-${n++}`, false))).toBeGreaterThan(2);
+  });
+
+  it('jams an alloy, whose pinned atoms stop the rows sliding', () => {
+    expect(Math.abs(slid(bar(`push-alloy-${n++}`, true)))).toBeLessThan(0.6);
+  });
+
+  it('checks that only a solid is pushed or pinned', () => {
+    const e: ParticlesEl = { kind: 'particles', id: 'x', boxes: [{ id: 'b', state: 'liquid', n: 10, pin: [0] }], clips: { c: { phases: [{ dur: 1, push: { b: 1 } }] } } };
+    expect(checkParticles(e).join(' ')).toMatch(/only a solid can have pinned atoms.*pushes box "b", which is not a solid/);
+  });
+});
+
+describe('particles: polymer chains', () => {
+  it('bonds a chain end to end and keeps it in one piece as it moves', () => {
+    const e: ParticlesEl = {
+      kind: 'particles',
+      id: `chain-${n++}`,
+      boxes: [{ id: 'b', state: 'solid', width: 13, height: 8, temp: 0.4, kinds: [{ n: 0, bond: 1, size: 0.8 }], molecules: [{ atoms: Array(16).fill(0), n: 2, chain: true }] }],
+      clips: {},
+    };
+    const [f] = particlesAt(e, [], 6);
+    expect(f.x.length).toBe(32);
+    // Each atom stays next to the one before it along its chain.
+    for (let i = 1; i < 32; i++) if (i !== 16) expect(Math.hypot(f.x[i] - f.x[i - 1], f.y[i] - f.y[i - 1])).toBeLessThan(1.3);
+    expect(f.bonds.length).toBe(30);
   });
 });

@@ -1,4 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
+import { goldFoilShots } from './lib/c9-scatter.ts';
+
+const foil = goldFoilShots('g');
 
 const video: Explainer = {
   id: 'c9-1-1',
@@ -64,6 +67,18 @@ const video: Explainer = {
         { say: 'Then Ernest Rutherford’s team fired positive alpha particles at very thin gold foil. Most went straight through, so most of an atom is empty space. But a very few bounced back.', show: 'foil' },
         { say: 'Only a tiny, dense, positive centre could throw an alpha particle back. So in nineteen eleven, Rutherford proposed the nucleus.', show: 'models.2', focus: 'models.2' },
         { say: 'In nineteen thirteen, Niels Bohr put the electrons in fixed shells, and in nineteen thirty-two, James Chadwick found the neutron.', show: 'models.3', focus: 'models.3' },
+      ],
+    },
+    {
+      chapter: 'The gold foil, up close',
+      layout: 'center',
+      main: [foil],
+      lines: [
+        { say: 'Here is Rutherford’s experiment up close. On the left, a source fires alpha particles at a sheet of gold foil only a few atoms thick.', show: ['g', 'g.labels'] },
+        { say: 'Let’s fire them, one at a time. Each alpha particle flies straight at the gold, and almost every one goes straight through, as if nothing were in the way.', play: 'g.first', show: 'g.count' },
+        { say: 'Keep firing. Now and then one is pushed off to the side. And very rarely, one comes straight back towards the source.', play: 'g.rest' },
+        { say: 'Here is why. Each gold atom is mostly empty space, with almost all of its mass in a tiny nucleus at its centre. The nucleus is positive, so it pushes the positive alpha particles away.', show: 'g.atoms' },
+        { say: 'Most alpha particles never come near a nucleus, so they go straight through. Only one aimed almost straight at a nucleus is pushed back.' },
       ],
     },
     {

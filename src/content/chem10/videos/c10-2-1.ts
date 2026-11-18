@@ -1,4 +1,4 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { ballAtom, pointer } from './lib/c10-2-figures.ts';
 
@@ -16,6 +16,17 @@ const lithium = () =>
     ],
     520,
   );
+
+/** The lithium atom alive (src/video/atoms.ts): its three electrons circling in their two shells. */
+const liveLithium: AtomsEl = {
+  kind: 'atoms',
+  id: 'live',
+  span: [6, 4.4],
+  atoms: [{ id: 'li', symbol: 'Li', protons: 3, electrons: 0, at: [3, 2.2], tone: 'opp', name: 'lithium' }],
+  clips: { fill: { phases: [{ dur: 0.5 }, { dur: 3.5, fill: { li: 3 } }, { dur: 1 }] } },
+  poster: 'fill',
+  height: 460,
+};
 
 const video: Explainer = {
   id: 'c10-2-1',
@@ -49,6 +60,15 @@ const video: Explainer = {
         { say: 'At the centre is the nucleus. It holds the protons, in orange, and the neutrons, in grey.', show: ['nuc', 'atom.nucleus', 'atom.proton', 'atom.neutron'], focus: ['atom.protons', 'atom.neutrons'] },
         { say: 'The electrons, the blue dots, move around the nucleus in regions called shells.', show: 'atom.electron', focus: ['atom.shell-1', 'atom.shell-2'] },
         { say: 'This atom has three protons, four neutrons and three electrons. Only the commonest kind of hydrogen atom has no neutron.', focus: 'atom' },
+      ],
+    },
+    {
+      chapter: 'The atom, up close',
+      layout: 'center',
+      main: [liveLithium],
+      lines: [
+        { say: 'Now let’s watch a lithium atom up close. The nucleus sits at the centre, holding almost all of the atom’s mass.', show: ['live', 'live.labels'] },
+        { say: 'Here come its three electrons. They never sit still: they race around the nucleus, two in the first shell and one in the second.', play: 'live.fill', show: 'live.arrangement' },
       ],
     },
     {

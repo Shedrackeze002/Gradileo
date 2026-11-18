@@ -1,6 +1,4 @@
 import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
 
 const video: Explainer = {
   id: 'c10-2-3',
@@ -24,17 +22,25 @@ const video: Explainer = {
       chapter: 'Electron shells',
       layout: 'split',
       leftWidth: 560,
-      left: [figure('ca', [atomShells({ nucleus: '\\text{Ca}', shells: [2, 8, 8, 2] })], 540)],
+      left: [{
+          kind: 'atoms',
+          id: 'ca',
+          span: [6.8, 6.8],
+          atoms: [{ id: 'a', symbol: 'Ca', protons: 20, electrons: 0, at: [3.4, 3.4], tone: 'good', name: 'calcium' }],
+          clips: { s1: { phases: [{ dur: 1.2, fill: { a: 2 } }, { dur: 0.4 }] }, s2: { phases: [{ dur: 2.8, fill: { a: 10 } }, { dur: 0.4 }] }, s3: { phases: [{ dur: 2.8, fill: { a: 18 } }, { dur: 0.4 }] }, s4: { phases: [{ dur: 3.4, fill: { a: 20 } }, { dur: 0.4 }] } },
+          poster: 's4',
+          height: 540,
+        }],
       right: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Electron shell', md: 'An **electron shell**, or **energy level**, is a region at a particular distance from the nucleus where electrons are found.' },
         { kind: 'bullets', id: 'b', items: ['first shell: up to **2** electrons', 'second shell: up to **8**', 'third shell: **8**, then the fourth shell takes the next **2**'] },
       ],
       lines: [
-        { say: 'An electron shell, or energy level, is a region at a particular distance from the nucleus where electrons are found.', show: ['def', 'ca.nucleus'] },
+        { say: 'An electron shell, or energy level, is a region at a particular distance from the nucleus where electrons are found.', show: ['def', 'ca', 'ca.labels'] },
         { say: 'The shell closest to the nucleus has the lowest energy, and it fills first.' },
-        { say: 'Each shell holds only a limited number of electrons. For the first twenty elements, the first shell holds up to two,', show: ['b.0', 'ca.shell-1'], focus: ['b.0', 'ca.shell-1'] },
-        { say: 'the second shell holds up to eight,', show: ['b.1', 'ca.shell-2'], focus: ['b.1', 'ca.shell-2'] },
-        { say: 'and the third shell holds eight. Then the nineteenth and twentieth electrons go into the fourth shell.', show: ['b.2', 'ca.shell-3', 'ca.shell-4'], focus: ['b.2', 'ca.shell-3', 'ca.shell-4'] },
+        { say: 'Each shell holds only a limited number of electrons. For the first twenty elements, the first shell holds up to two,', show: ['b.0', 'ca.arrangement'], play: 'ca.s1', focus: 'b.0' },
+        { say: 'the second shell holds up to eight,', show: 'b.1', play: 'ca.s2', focus: 'b.1' },
+        { say: 'and the third shell holds eight. Then the nineteenth and twentieth electrons go into the fourth shell.', show: 'b.2', play: 'ca.s4', focus: 'b.2' },
         { say: 'Electrons fill the shells from the inside out: a new shell starts only when the one inside it is full.', focus: 'ca' },
       ],
     },
@@ -42,16 +48,24 @@ const video: Explainer = {
       chapter: 'Electron arrangement',
       layout: 'split',
       leftWidth: 560,
-      left: [figure('na', [atomShells({ nucleus: '\\text{Na}', shells: [2, 8, 1] })], 520)],
+      left: [{
+          kind: 'atoms',
+          id: 'na',
+          span: [5.6, 5.6],
+          atoms: [{ id: 'a', symbol: 'Na', protons: 11, electrons: 0, at: [2.8, 2.8], tone: 'opp', name: 'sodium' }],
+          clips: { s1: { phases: [{ dur: 1.2, fill: { a: 2 } }, { dur: 0.4 }] }, s2: { phases: [{ dur: 2.8, fill: { a: 10 } }, { dur: 0.4 }] }, s3: { phases: [{ dur: 0.9, fill: { a: 11 } }, { dur: 0.4 }] } },
+          poster: 's3',
+          height: 520,
+        }],
       right: [
         { kind: 'callout', id: 'def', tone: 'definition', title: 'Electron arrangement', md: 'The number of electrons in each shell, from the innermost shell outwards, separated by commas.' },
         { kind: 'text', id: 'arr', size: 'xl', md: 'Sodium: **2,8,1**' },
       ],
       lines: [
         { say: 'The electron arrangement of an atom lists the number of electrons in each shell, from the innermost shell outwards, separated by commas.', show: 'def' },
-        { say: 'Sodium has eleven electrons, arranged two, eight, one: two in the first shell,', show: ['arr', 'na.nucleus', 'na.shell-1'], focus: 'na.shell-1' },
-        { say: 'eight in the second,', show: 'na.shell-2', focus: 'na.shell-2' },
-        { say: 'and one in the third.', show: 'na.shell-3', focus: 'na.shell-3' },
+        { say: 'Sodium has eleven electrons, arranged two, eight, one: two in the first shell,', show: ['arr', 'na', 'na.labels', 'na.arrangement'], play: 'na.s1', focus: 'na' },
+        { say: 'eight in the second,', play: 'na.s2', focus: 'na' },
+        { say: 'and one in the third.', play: 'na.s3', focus: 'na' },
         { say: 'A shell diagram like this one shows the same thing as a picture: the nucleus at the centre, each shell as a ring, and each electron as a dot on its ring.', focus: 'na' },
       ],
     },
@@ -59,7 +73,15 @@ const video: Explainer = {
       chapter: 'Chlorine, step by step',
       layout: 'split',
       leftWidth: 560,
-      left: [figure('cl', [atomShells({ nucleus: '\\text{Cl}', shells: [2, 8, 7] })], 520)],
+      left: [{
+          kind: 'atoms',
+          id: 'cl',
+          span: [5.6, 5.6],
+          atoms: [{ id: 'a', symbol: 'Cl', protons: 17, electrons: 0, at: [2.8, 2.8], tone: 'good', name: 'chlorine' }],
+          clips: { s1: { phases: [{ dur: 1.2, fill: { a: 2 } }, { dur: 0.4 }] }, s2: { phases: [{ dur: 2.8, fill: { a: 10 } }, { dur: 0.4 }] }, s3: { phases: [{ dur: 2.6, fill: { a: 17 } }, { dur: 0.4 }] } },
+          poster: 's3',
+          height: 520,
+        }],
       right: [
         {
           kind: 'math',
@@ -70,10 +92,10 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Write the electron arrangement of chlorine, atomic number seventeen. A neutral chlorine atom has seventeen electrons.', show: ['m.0', 'cl.nucleus'], focus: 'm.0' },
-        { say: 'The first shell takes two, leaving seventeen minus two: fifteen.', show: ['m.1', 'cl.shell-1'], focus: ['m.1', 'cl.shell-1'] },
-        { say: 'The second shell takes eight, leaving fifteen minus eight: seven.', show: ['m.2', 'cl.shell-2'], focus: ['m.2', 'cl.shell-2'] },
-        { say: 'The third shell takes the last seven. So chlorine is two, eight, seven.', show: ['m.3', 'm.4', 'cl.shell-3'], focus: ['m.4', 'cl.shell-3'] },
+        { say: 'Write the electron arrangement of chlorine, atomic number seventeen. A neutral chlorine atom has seventeen electrons.', show: ['m.0', 'cl', 'cl.labels'], focus: 'm.0' },
+        { say: 'The first shell takes two, leaving seventeen minus two: fifteen.', show: ['m.1', 'cl.arrangement'], play: 'cl.s1', focus: 'm.1' },
+        { say: 'The second shell takes eight, leaving fifteen minus eight: seven.', show: 'm.2', play: 'cl.s2', focus: 'm.2' },
+        { say: 'The third shell takes the last seven. So chlorine is two, eight, seven.', show: ['m.3', 'm.4'], play: 'cl.s3', focus: 'm.4' },
         { say: 'Check: two plus eight plus seven is seventeen, and no shell holds more than it should.' },
       ],
     },

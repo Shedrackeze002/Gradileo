@@ -1,31 +1,26 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { barGraph } from '@/video/charts.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure, type Part } from '@/video/solids.ts';
-import { tag } from './lib/c10-2-figures.ts';
+import { figure } from '@/video/solids.ts';
+import { alkaliInWater } from './lib/c10-particles.ts';
 
 // The melting points of the alkali metals, in degrees Celsius.
 const melting = figure('mp', [{ points: { pad: [-1.6, 0] }, items: [] }, barGraph({ categories: ['Li', 'Na', 'K', 'Rb', 'Cs'], values: [181, 98, 63, 39, 28], max: 200, step: 50, tone: 'opp', titles: { y: 'melting point (°C)' } })], 500);
 
-/** A dashed line from the edge of a nucleus at `c` (radius r) up to its outer electron at height R. */
-const reach = (id: string, c: [number, number], r: number, R: number): Part => ({
-  points: { [`${id}-a`]: [c[0], c[1] + r], [`${id}-b`]: [c[0], c[1] + R] },
-  items: [{ kind: 'line', id, from: `${id}-a`, to: `${id}-b`, tone: 'opp', dashed: true, weight: 3 }],
-});
-
-// Lithium and potassium: the single outer electron is much further out in potassium.
-const twoAtoms = figure(
-  'at',
-  [
-    atomShells({ name: 'li', at: [0, 0], nucleus: '\\text{Li}', shells: [2, 1], r: 0.8, gap: 0.7 }),
-    reach('li-reach', [0, 0], 0.8, 2.2),
-    tag({ id: 'li-name', at: [0, -4.4], tex: '\\text{lithium}' }),
-    atomShells({ name: 'k', at: [6.8, 0], nucleus: '\\text{K}', shells: [2, 8, 8, 1], r: 0.8, gap: 0.7 }),
-    reach('k-reach', [6.8, 0], 0.8, 3.6),
-    tag({ id: 'k-name', at: [6.8, -4.4], tex: '\\text{potassium}' }),
+// Lithium and potassium (src/video/atoms.ts): one outer electron each, much further out in
+// potassium. In the clip `lose` each loses it and becomes an ion: potassium first, as its electron
+// is held less strongly.
+const twoAtoms: AtomsEl = {
+  kind: 'atoms',
+  id: 'at',
+  span: [12, 7],
+  atoms: [
+    { id: 'li', symbol: 'Li', protons: 3, at: [3, 3.5], tone: 'brand', name: 'lithium' },
+    { id: 'k', symbol: 'K', protons: 19, at: [8.4, 3.5], tone: 'opp', name: 'potassium' },
   ],
-  480,
-);
+  clips: { lose: { phases: [{ dur: 0.4 }, { dur: 1.4, give: [{ from: 'k', to: null, n: 1 }] }, { dur: 1.4 }, { dur: 1.4, give: [{ from: 'li', to: null, n: 1 }] }, { dur: 0.6 }] } },
+  poster: 'lose',
+  height: 480,
+};
 
 const video: Explainer = {
   id: 'c10-2-5-b',
@@ -105,6 +100,16 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Down the group, up close',
+      layout: 'center',
+      main: [alkaliInWater('g1')],
+      lines: [
+        { say: 'Let’s watch it up close: small pieces of lithium, sodium and potassium, each in water.', show: ['g1', 'g1.labels', 'g1.thermo'] },
+        { say: 'Lithium gives off hydrogen slowly, sodium faster, and potassium fastest of all, getting hottest as it goes.', play: 'g1.drop' },
+        { say: 'Same reaction, faster each step down the group.' },
+      ],
+    },
+    {
       chapter: 'Why reactivity increases',
       layout: 'split',
       leftWidth: 620,
@@ -115,9 +120,9 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Reactivity describes how readily an element takes part in chemical reactions: how quickly and vigorously it reacts.', show: 'def' },
-        { say: 'Each alkali metal reacts by losing its single outer electron.', show: ['b.0', 'at.li-nucleus', 'at.li-shell-1', 'at.li-shell-2', 'at.li-name', 'at.k-nucleus', 'at.k-shell-1', 'at.k-shell-2', 'at.k-shell-3', 'at.k-shell-4', 'at.k-name'], focus: 'b.0' },
-        { say: 'Going down the group, the atoms have more shells, so the outer electron is further from the nucleus, and is held less strongly.', show: ['b.1', 'at.li-reach', 'at.k-reach'], focus: ['b.1', 'at.li-reach', 'at.k-reach'] },
-        { say: 'It is lost more easily, so the metal reacts more readily.' },
+        { say: 'Each alkali metal reacts by losing its single outer electron.', show: ['b.0', 'at', 'at.labels', 'at.arrangement'], focus: 'b.0' },
+        { say: 'Going down the group, the atoms have more shells, so the outer electron is further from the nucleus, and is held less strongly.', show: 'b.1', focus: ['b.1', 'at'] },
+        { say: 'It is lost more easily, so the metal reacts more readily. Watch potassium lose its electron first.', show: 'at.charges', play: 'at.lose' },
       ],
     },
     {

@@ -1,4 +1,41 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). In the mixture, iron and sulfur are
+// separate grains and the iron is magnetic; in iron sulfide each iron atom is bonded to a sulfur
+// atom, and the compound is not magnetic, so a magnet over the boxes pulls only the loose iron.
+
+/** Grains of a powder: they barely stick, and settle on the floor. */
+const GRAIN = { bond: 0.4, heavy: 2 } as const;
+
+const magnet: ParticlesEl = {
+  kind: 'particles',
+  id: 'm',
+  boxes: [
+    {
+      id: 'mix',
+      state: 'liquid',
+      width: 11,
+      height: 9,
+      temp: 0.15,
+      cross: 0.3,
+      kinds: [{ n: 10, ...GRAIN, magnetic: true, tone: 'hyp', name: 'iron' }, { n: 12, ...GRAIN, tone: 'theta', name: 'sulfur' }],
+      label: 'iron and sulfur: a mixture',
+    },
+    {
+      id: 'cmp',
+      state: 'liquid',
+      width: 11,
+      height: 9,
+      temp: 0.15,
+      kinds: [{ n: 0, ...GRAIN, tone: 'hyp', name: 'iron' }, { n: 0, ...GRAIN, tone: 'theta', name: 'sulfur' }],
+      molecules: [{ atoms: [0, 1], n: 10 }],
+      label: 'iron sulfide: a compound',
+    },
+  ],
+  clips: { go: { phases: [{ dur: 2, magnet: { mix: 1, cmp: 1 } }, { dur: 7 }] } },
+  key: true,
+  height: 420,
+};
 
 const video: Explainer = {
   id: 'c8-1-3',
@@ -60,6 +97,16 @@ const video: Explainer = {
         { say: 'In the mixture, each part keeps its own properties: the iron is still grey and magnetic. The compound is a new black solid with properties of its own.', show: 'cmp.1', focus: 'cmp.1' },
         { say: 'A mixture can have any amount of each part. But in a compound the elements are always joined in the same proportions. Every water molecule is two hydrogen atoms to one oxygen atom.', show: 'cmp.2', focus: 'cmp.2' },
         { say: 'Finally, a mixture is easy to separate, here with a magnet. A compound can only be split by another chemical reaction.', show: 'cmp.3', focus: 'cmp.3' },
+      ],
+    },
+    {
+      chapter: 'A magnet, up close',
+      layout: 'center',
+      main: [magnet],
+      lines: [
+        { say: 'Let’s test both with a magnet, up close. On the left, grains of iron and sulfur are just stirred together. On the right, in iron sulfide, every iron atom is joined to a sulfur atom.', show: ['m', 'm.labels', 'm.key'] },
+        { say: 'Here comes the magnet. In the mixture, the iron is still magnetic, so the iron grains jump up out of the sulfur.', play: 'm.go', focus: 'm.mix' },
+        { say: 'In the compound, nothing moves. The iron is chemically joined to sulfur, and iron sulfide is not magnetic, so a magnet cannot separate it.', focus: 'm.cmp' },
       ],
     },
     {

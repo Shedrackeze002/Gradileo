@@ -1,4 +1,8 @@
 import type { Explainer } from '@/video/script.ts';
+import { hammeredCopper } from '../../chem10/videos/lib/c10-particles.ts';
+
+// The particles here are simulated (src/video/particles.ts); see hammeredCopper.
+const hit = hammeredCopper('hit');
 
 const video: Explainer = {
   id: 'c8-2-2',
@@ -39,6 +43,16 @@ const video: Explainer = {
         { say: 'Metals are malleable, which means they can be hammered into shape, and ductile, which means they can be drawn into wires. Solid non-metals are brittle: they shatter when hit.', show: 'props.2', focus: 'props.2' },
         { say: 'Metals are solids at room temperature, while many non-metals are gases, like oxygen and nitrogen.', show: 'props.3', focus: 'props.3' },
         { say: 'There are exceptions. Mercury is a metal, but it is a liquid. And graphite, a form of carbon, is a non-metal that conducts electricity.', show: 'exc' },
+      ],
+    },
+    {
+      chapter: 'Hitting, up close',
+      layout: 'center',
+      main: [hit],
+      lines: [
+        { say: 'Why can a metal be hammered into shape? Let’s look at a bar of copper, up close. Its atoms sit in neat layers.', show: ['hit', 'hit.labels', 'hit.key'] },
+        { say: 'Now hit it, pushing the top one way and the bottom the other. The layers of atoms slide over one another, but they stay held together.', play: 'hit.hit' },
+        { say: 'So the copper changes shape without breaking. That is what malleable means. A solid non-metal, like sulfur, cannot do this: it shatters instead.' },
       ],
     },
     {

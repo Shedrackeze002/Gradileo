@@ -76,6 +76,8 @@ export interface Controls {
   added: Record<string, number>;
   /** How strongly the current through each box's electrodes is flowing (0 off, 1 the usual). */
   power: Record<string, number>;
+  /** How hard each box's solid is being pushed: its top half one way and its bottom half the other. */
+  push: Record<string, number>;
 }
 
 /** A play of a clip: its name and the element's age (seconds since shown) when it started. */
@@ -92,7 +94,9 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
   const run: Record<string, number> = {};
   const added: Record<string, number> = {};
   const power: Record<string, number> = {};
+  const push: Record<string, number> = {};
   for (const b of el.boxes) {
+    push[b.id] = 0;
     added[b.id] = 0;
     power[b.id] = 0;
     stir[b.id] = 0;
@@ -114,13 +118,14 @@ export function controlsAt(el: ParticlesEl, played: PlayAt[], age: number): Cont
       for (const [id, v] of Object.entries(ph.magnet ?? {})) magnet[id] += (v - magnet[id]) * k;
       for (const [id, v] of Object.entries(ph.run ?? {})) run[id] += (v - run[id]) * k;
       for (const [id, v] of Object.entries(ph.power ?? {})) power[id] += (v - power[id]) * k;
+      for (const [id, v] of Object.entries(ph.push ?? {})) push[id] += (v - push[id]) * k;
       for (const [id, v] of Object.entries(ph.heat ?? {})) temp[id] += (tempOf(v, temp[id]) - temp[id]) * k;
       for (const [id, v] of Object.entries(ph.lid ?? {})) lid[id] += (v - lid[id]) * k;
       for (const [id, v] of Object.entries(ph.add ?? {})) added[id] += v * k;
       t += ph.dur;
     }
   }
-  return { temp, lid, lifted, released, stir, magnet, run, added, power };
+  return { temp, lid, lifted, released, stir, magnet, run, added, power, push };
 }
 
 export interface Hit {
@@ -214,6 +219,8 @@ export interface BoxFrame {
   stir: number;
   /** How strongly a magnet over the box is pulling now. */
   magnet: number;
+  /** How hard the solid is being pushed now (its top half right, its bottom half left). */
+  push: number;
   /** The filter's height, and whether it lets the small particles through yet. */
   filter?: { y: number; open: boolean };
   /** How far up a paper box the solvent has soaked. */
@@ -226,6 +233,8 @@ export interface BoxFrame {
   tally: number;
   /** Each particle's speed now (only for a box with `spread`). */
   speed?: number[];
+  /** The liquid's surface now and when the element was shown (only for a box with `level`). */
+  level?: { now: number; start: number };
 }
 
 /**
@@ -269,6 +278,58 @@ function forces(s: BoxSim, temp: number, sigma = 1, stir = 0, w = 10, h = 10, ma
       fx[i] += (MAGNET * magnet * dx) / r;
       fy[i] += (MAGNET * magnet * dy) / r;
     }
+  }
+}
+
+/**
+ * Where a pushed solid splits into its top and bottom halves: the widest gap between rows near
+ * its middle, so a whole row always stays on one side.
+ */
+export function shearLine(heights: number[]): number {
+  const ys = [...heights].sort((p, q) => p - q);
+  let best = Math.floor(ys.length / 2);
+  let gap = -1;
+  for (let k = Math.floor(ys.length / 3); k < Math.ceil((2 * ys.length) / 3) && k < ys.length - 1; k++) {
+    // Gaps nearer the middle win a near tie, so the halves come out about even.
+    const g = ys[k + 1] - ys[k] - Math.abs(k + 0.5 - ys.length / 2) * 1e-3;
+    if (g > gap) (gap = g), (best = k);
+  }
+  return ys.length > 1 ? (ys[best] + ys[best + 1]) / 2 : ys[0];
+}
+
+/** How hard a push of 1 pushes each particle (a shear: the top half one way, the bottom the other). */
+const PUSH_F = 6;
+/** The steady pace (particle diameters a second) a push of 1 moves each half at, once it gives. */
+const PUSH_V = 1;
+
+/**
+ * Pushes a solid sideways, its top half to the right and its bottom half to the left, as a hammer
+ * blow or a bend does: in a metal the rows of atoms slide over one another; atoms of another size
+ * (an alloy) jam the rows, so it hardly gives.
+ */
+function shear(s: BoxSim, push: number) {
+  const ys: number[] = [];
+  for (let i = 0; i < s.n; i++) if (!s.gone[i] && !s.held[i]) ys.push(s.y[i]);
+  if (!ys.length) return;
+  const mid = shearLine(ys);
+  // A hand pushes at a steady pace, not ever faster: each half is pushed only while it moves
+  // slower than PUSH_V, so a metal that gives slides steadily and one that jams stays put.
+  let top = 0;
+  let bot = 0;
+  let nt = 0;
+  let nb = 0;
+  for (let i = 0; i < s.n; i++) {
+    if (s.gone[i] || s.held[i]) continue;
+    if (s.y[i] > mid) (top += s.vx[i]), nt++;
+    else (bot += s.vx[i]), nb++;
+  }
+  const pushTop = nt && top / nt < PUSH_V * push;
+  const pushBot = nb && bot / nb > -PUSH_V * push;
+  for (let i = 0; i < s.n; i++) {
+    if (s.gone[i] || s.held[i]) continue;
+    if (s.y[i] > mid) {
+      if (pushTop) s.fx[i] += push * PUSH_F;
+    } else if (pushBot) s.fx[i] -= push * PUSH_F;
   }
 }
 
@@ -502,14 +563,38 @@ function placeMolecules(s: BoxSim, b: ParticleBox, kinds: NonNullable<ParticleBo
   kinds.forEach((kd, ki) => {
     if (ki > 0 || !lumpN) for (let i = 0; i < kd.n; i++) units.push([ki]);
   });
-  for (const m of mols) for (let i = 0; i < m.n; i++) units.push(m.atoms);
+  for (const m of mols) if (!m.chain) for (let i = 0; i < m.n; i++) units.push(m.atoms);
   const bent = new Set(mols.filter((m) => m.bent).map((m) => m.atoms));
   // Mixed in a random order.
   for (let i = units.length - 1; i > 0; i--) {
     const j = Math.floor(s.rnd() * (i + 1));
     [units[i], units[j]] = [units[j], units[i]];
   }
-  const cell = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1)) * (mols.some((m) => m.atoms.length > 1) ? 2.2 : 1);
+  // Chains (polymers) are laid first along the floor, each a gentle zigzag a row above the last,
+  // folding back at the walls; everything else starts above them.
+  const sp = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1));
+  for (const ch of mols.filter((mm) => mm.chain)) {
+    for (let c = 0; c < ch.n; c++) {
+      let x = 0.8 + s.rnd() * 0.6;
+      let dir = 1;
+      let y = floor;
+      for (let a = 0; a < ch.atoms.length; a++) {
+        if (a > 0) {
+          if ((dir > 0 && x + sp * 0.95 > w - 0.6) || (dir < 0 && x - sp * 0.95 < 0.6)) {
+            dir = -dir;
+            y += sp * 0.9;
+          } else x += dir * sp * 0.95;
+        }
+        s.kind[at] = ch.atoms[a];
+        s.x[at] = x;
+        s.y[at] = y + (a % 2 ? 0.25 : -0.25) * sp;
+        if (a > 0) addBond(s, at - 1, at, true);
+        at++;
+      }
+      floor = y + sp * 1.3;
+    }
+  }
+  const cell = sp * (mols.some((m) => !m.chain && m.atoms.length > 1) ? 2.2 : 1);
   const m = units.length;
   const top = b.state === 'gas' ? s.lidY - 0.5 : Math.min(s.lidY - 0.5, floor + Math.ceil(m / Math.max(1, Math.floor((w - 1) / cell))) * cell);
   const cols = Math.max(1, Math.min(Math.floor((w - 1) / cell), Math.round(Math.sqrt((m * (w - 1)) / (top - floor)))));
@@ -661,14 +746,24 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     s.kind.fill(1);
     const per = Math.floor(kinds[0].n / m);
     const taken = new Set<number>();
+    // With `above`, the lump is taken from the top of the stack and lifted clear of it.
+    const cy = b.above === undefined ? 0 : Math.max(...Array.from(s.y.subarray(0, n)));
     for (let L = 0; L < m; L++) {
       const cx = (w * (L + 0.5)) / m;
       const want = L === m - 1 ? kinds[0].n - per * (m - 1) : per;
-      const order = Array.from({ length: n }, (_, i) => i).filter((i) => !taken.has(i)).sort((a, c) => Math.hypot((s.x[a] - cx) * 0.8, s.y[a]) - Math.hypot((s.x[c] - cx) * 0.8, s.y[c]));
+      const order = Array.from({ length: n }, (_, i) => i).filter((i) => !taken.has(i)).sort((a, c) => Math.hypot((s.x[a] - cx) * 0.8, s.y[a] - cy) - Math.hypot((s.x[c] - cx) * 0.8, s.y[c] - cy));
       for (let i = 0; i < want; i++) {
         s.kind[order[i]] = 0;
         taken.add(order[i]);
       }
+    }
+    if (b.above !== undefined) {
+      // The rest settle a little lower without the lump's particles, so it is lifted by the gap
+      // between its lowest particle and the highest of the rest, plus `above`.
+      const lump = [...taken];
+      const rest = Array.from({ length: n }, (_, i) => i).filter((i) => !taken.has(i));
+      const lift = Math.max(0, Math.max(...rest.map((i) => s.y[i])) + spacing - Math.min(...lump.map((i) => s.y[i]))) + b.above;
+      for (const i of lump) s.y[i] = Math.min(s.lidY - 0.5, s.y[i] + lift);
     }
     // With more than one other kind starting in the box (ions in a solution), they are mixed
     // through the rest of it. With one, it simply fills the rest, using up no random numbers.
@@ -714,6 +809,38 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       for (let i = 0; i < kd.n; i++) s.kind[order[at++]] = ki;
     });
   }
+  // Pinned kinds are spread evenly through a solid's rows, staggered from row to row, so every
+  // part of it is held and no loose end can be pushed off on its own.
+  if (b.pin?.length && b.state === 'solid' && !units && !b.lump) {
+    const pinned = Array.from({ length: n }, (_, i) => i).filter((i) => b.pin!.includes(s.kind[i]));
+    const kindsOf = pinned.map((i) => s.kind[i]);
+    const free = Array.from({ length: n }, (_, i) => i).filter((i) => !b.pin!.includes(s.kind[i])).map((i) => s.kind[i]);
+    const rows = new Map<number, number[]>();
+    for (let i = 0; i < n; i++) {
+      const r = Math.round(s.y[i] * 4);
+      rows.set(r, [...(rows.get(r) ?? []), i]);
+    }
+    const chosen = new Set<number>();
+    let left = pinned.length;
+    [...rows.keys()].sort((a, c) => a - c).forEach((r, ri, all) => {
+      const row = rows.get(r)!.sort((a, c) => s.x[a] - s.x[c]);
+      const want = ri === all.length - 1 ? left : Math.min(left, Math.round((pinned.length * row.length) / n));
+      for (let j = 0; j < want; j++) chosen.add(row[Math.min(row.length - 1, Math.max(0, Math.round(((j + 0.5 + (ri % 2 ? 0.25 : -0.25)) * row.length) / want)))]);
+      left -= want;
+    });
+    let a = 0;
+    let c = 0;
+    for (let i = 0; i < n; i++) s.kind[i] = chosen.has(i) && a < kindsOf.length ? kindsOf[a++] : (free[c++] ?? kindsOf[a++]);
+  }
+  // In a liquid or solid, kinds kept back to pour in later take the top places, so what is in
+  // the box from the start is packed at the bottom, with no gaps where they were.
+  if (b.reserve?.length && b.state !== 'gas' && !units && !b.lump) {
+    const r = b.reserve;
+    const order = Array.from({ length: n }, (_, i) => i).sort((a, c) => s.y[a] - s.y[c] || s.x[a] - s.x[c]);
+    const ks = order.map((i) => s.kind[i]);
+    const sorted = [...ks.filter((k) => !r.includes(k)), ...ks.filter((k) => r.includes(k))];
+    order.forEach((i, j) => (s.kind[i] = sorted[j]));
+  }
   // Held particles (the first kind, or the kinds listed) keep still until a clip lets them go.
   if (b.hold) {
     const kept = b.hold === true ? [0] : b.hold;
@@ -741,6 +868,9 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
           }
         }
       for (const k of unit) s.gone[k] = 1;
+      // Out of reach until poured, so they push on nothing in the box. (A gas box keeps them where
+      // they were placed, as its videos were made with them there.)
+      if (b.state !== 'gas') for (const k of unit) s.y[k] = 1000 + 3 * k;
       const list = byKind.get(s.kind[i]) ?? [];
       list.push(unit);
       byKind.set(s.kind[i], list);
@@ -795,6 +925,8 @@ interface StepOpts {
   stir?: number;
   /** How strongly a magnet pulls. */
   magnet?: number;
+  /** How hard the solid is pushed, its top half to the right and its bottom half to the left. */
+  push?: number;
   /** A filter's height, the size of its holes, and whether it lets small particles through yet. */
   filter?: { y: number; holes: number; open: boolean };
   /** A low wall that never lifts: where it stands and how tall it is. */
@@ -935,6 +1067,7 @@ function step(s: BoxSim, o: StepOpts, temp: number, lidTarget: number, age: numb
   // or goes over the wall anyway, and the dissolved solid must stay at the bottom.
   const gravityTemp = o.escape || o.wall ? 0 : o.bath || zones ? measuredTemp(s) : temp;
   forces(s, gravityTemp, o.sigma, o.stir ?? 0, w, lid, o.magnet ?? 0);
+  if (o.push) shear(s, o.push);
   // With the current on, positive ions are pushed towards the left electrode (the cathode) and
   // negative ones towards the right (the anode).
   if (o.power) for (let i = 0; i < n; i++) if (s.charge[kind[i]]) fx[i] -= s.charge[kind[i]] * FIELD * o.power;
@@ -1003,6 +1136,10 @@ interface Cache {
   loose: Array<Array<[number, number]>>;
   /** Which of each box's solute particles are counted as dissolved (see looseCount). */
   free: Uint8Array[];
+  /** The liquid's surface, sampled like `loose` for a box with `level`: [age, height]. */
+  levels: Array<Array<[number, number]>>;
+  /** Each box's liquid surface as the element was shown. */
+  level0: number[];
 }
 
 /** The dissolved count is sampled this often (video seconds) and shown as the median of the last LOOSE_SECONDS. */
@@ -1068,6 +1205,18 @@ function looseAt(samples: Array<[number, number]>, s: BoxSim) {
   return v[Math.floor(v.length / 2)];
 }
 
+/**
+ * How high a box's liquid reaches: the top of the particles not in the lump, read at the
+ * ninetieth percentile so a particle or two that jumps clear does not count.
+ */
+function surfaceOf(s: BoxSim, b: ParticleBox) {
+  const ys: number[] = [];
+  for (let i = 0; i < s.n; i++) if (!s.gone[i] && !(b.lump && s.kind[i] === 0)) ys.push(s.y[i]);
+  if (!ys.length) return 0;
+  ys.sort((p, q) => p - q);
+  return ys[Math.floor(0.9 * (ys.length - 1))] + 0.45;
+}
+
 function spanOf(s: BoxSim): [number, number] {
   let lo = Infinity;
   let hi = -Infinity;
@@ -1129,6 +1278,7 @@ function optsFor(b: ParticleBox, ctl?: Controls): StepOpts {
     sigma: ctl && b.expand ? 1 + b.expand * Math.max(0, temp - t0) : 1,
     stir: ctl?.stir[b.id],
     magnet: ctl?.magnet[b.id],
+    push: ctl?.push[b.id],
     run: ctl?.run[b.id],
     filter: b.filter && { y: b.filter.at * h, holes: b.filter.holes, open: ctl?.released[b.id] !== undefined },
     wall: b.wall && { x: b.wall.at * w, top: b.wall.height * h },
@@ -1235,6 +1385,9 @@ function warmBoxes(el: ParticlesEl): BoxSim[] {
       // The whole box is held at its temperature while it settles, even one with a bath.
       const o = optsFor(b);
       for (let k = 0; k < steps; k++) step(s, o, t, s.lidY, 0, false);
+      // Pinned kinds (the odd-sized atoms of an alloy) are fixed where they settled, so a push
+      // cannot slide the rows past them.
+      if (b.pin) for (let i = 0; i < s.n; i++) if (b.pin.includes(s.kind[i])) (s.held[i] = 1), (s.stuck[i] = 1);
       seeds.set(s, (el.seed ?? 7) * 31 + bi);
       return s;
     });
@@ -1259,7 +1412,7 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     played.every(([clip, at]) => at >= c!.age || c!.played.some(([k, t]) => k === clip && Math.abs(t - at) < 1e-6));
   if (!usable) {
     const boxes = warmBoxes(el);
-    c = { key, played: [], age: 0, boxes, trails: el.boxes.map(() => []), spans: boxes.map(spanOf), loose: el.boxes.map(() => []), free: boxes.map((s) => new Uint8Array(s.n)) };
+    c = { key, played: [], age: 0, boxes, trails: el.boxes.map(() => []), spans: boxes.map(spanOf), loose: el.boxes.map(() => []), free: boxes.map((s) => new Uint8Array(s.n)), levels: el.boxes.map(() => []), level0: boxes.map((s, bi) => surfaceOf(s, el.boxes[bi])) };
     caches.set(el.id, c);
   }
   c = c!;
@@ -1276,6 +1429,15 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       // Pour in the next reserved units, each dropping in at the top middle.
       for (const want = Math.min(s.units.length, Math.floor(ctl.added[b.id] + 1e-9)); s.poured < want; s.poured++) {
         const unit = s.units[s.poured];
+        // Into a liquid, the next waits until the last has moved clear of the tip: a particle
+        // dropped on top of another would fly apart from it.
+        if (b.state !== 'gas') {
+          const tx = boxSize(b).w / 2;
+          const ty = ctl.lid[b.id] * h - 0.7;
+          let busy = false;
+          for (let i = 0; i < s.n && !busy; i++) if (!s.gone[i] && Math.abs(s.x[i] - tx) < 1.6 && Math.abs(s.y[i] - ty) < 1.2) busy = true;
+          if (busy) break;
+        }
         const cx = boxSize(b).w / 2 + (s.rnd() - 0.5) * 0.6;
         unit.forEach((k, u) => {
           s.gone[k] = 0;
@@ -1298,6 +1460,11 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       if (b.kinds && b.kinds.length > 1 && (!lo.length || a - lo[lo.length - 1][0] >= LOOSE_STEP - 1e-9)) {
         lo.push([a, looseCount(s, c!.free[bi])]);
         while (lo.length && lo[0][0] < a - LOOSE_SECONDS) lo.shift();
+      }
+      const lv = c!.levels[bi];
+      if (b.level && (!lv.length || a - lv[lv.length - 1][0] >= LOOSE_STEP - 1e-9)) {
+        lv.push([a, surfaceOf(s, b)]);
+        while (lv.length && lv[0][0] < a - 1) lv.shift();
       }
     });
     c.age = a;
@@ -1333,12 +1500,15 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       stir: ctl.stir[b.id],
       span0: c!.spans[bi],
       magnet: ctl.magnet[b.id],
+      push: ctl.push[b.id],
       filter: b.filter && { y: b.filter.at * boxSize(b).h, open: ctl.released[b.id] !== undefined },
       front: s.front,
       goneCount,
       bonds: s.bonds.filter((bd) => bd.show && !s.gone[bd.i] && !s.gone[bd.j]).map(({ i, j }) => (goneCount ? [visible(i), visible(j)] : [i, j]) as [number, number]),
       tally: b.tally ? s.kind.reduce((m, k, i) => m + (!s.gone[i] && b.tally!.kinds.includes(k) ? 1 : 0), 0) : 0,
       speed: b.spread ? keep(Array.from(s.vx, (vx, i) => Math.hypot(vx, s.vy[i]))) : undefined,
+      // The surface, averaged over the last second so it does not flicker.
+      level: b.level ? { now: c!.levels[bi].length ? c!.levels[bi].reduce((m, [, v]) => m + v, 0) / c!.levels[bi].length : c!.level0[bi], start: c!.level0[bi] } : undefined,
     };
   });
 }

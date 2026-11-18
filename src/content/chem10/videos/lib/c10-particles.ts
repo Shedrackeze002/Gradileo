@@ -1,5 +1,5 @@
 import type { ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
-import { ATOM, hydrogenBurning } from '@/video/reactions.ts';
+import { ATOM, carbonBurning, hydrogenBurning } from '@/video/reactions.ts';
 
 // Simulated particles for Chemistry 10 (src/video/particles.ts): they attract and jostle one
 // another, so a cold box settles into vibrating rows, a warm one slides about and a hot one flies
@@ -582,5 +582,255 @@ export const saltCrystals = (id: string, height = 420): ParticlesEl => ({
   ],
   clips: { heat: { phases: [{ dur: 2, heat: { a: 1.8 } }, { dur: 12 }] }, cool: { phases: [{ dur: 4, heat: { a: 0.3 } }, { dur: 5 }] } },
   speed: 2.5,
+  height,
+});
+
+/**
+ * Lithium, sodium and potassium in water (clip `drop`), shared with Chemistry 8. A water particle
+ * that meets the metal sets a hydrogen atom loose and leaves the metal dissolved (as its
+ * hydroxide), and two loose hydrogen atoms join as a gas molecule that rises out. Each metal reacts
+ * more readily than the one above it, and gives out more heat, so the bubbles and the thermometers
+ * rise faster down the group.
+ */
+export const alkaliInWater = (id: string, height = 420): ParticlesEl => {
+  const box = (bid: string, name: string, tone: Tone, chance: number, heat: number): ParticleBox => ({
+    id: bid,
+    state: 'liquid',
+    width: 8,
+    height: 11,
+    temp: 0.45,
+    escape: [4],
+    lump: true,
+    waits: true,
+    kinds: [
+      { n: 12, bond: 3, heavy: 2, tone, name: 'metal' },
+      { ...DISSOLVED, n: 20, size: 0.8, tone: 'adj', name: 'water' },
+      { ...DISSOLVED, size: 0.8, tone, name: 'dissolved metal' },
+      { ...DISSOLVED, size: 0.8, tone: 'theta', name: 'hydrogen atom' },
+      { ...DISSOLVED, size: 0.8, heavy: -1.5, tone: 'theta', name: 'hydrogen gas' },
+    ],
+    reactions: [
+      { a: 1, b: 0, to: [3, 2], chance, heat },
+      { a: 3, b: 3, to: [4, 4], join: true },
+    ],
+    label: name,
+  });
+  return {
+    kind: 'particles',
+    id,
+    boxes: [box('li', 'lithium', 'good', 0.0003, 0.01), box('na', 'sodium', 'opp', 0.0015, 0.03), box('k', 'potassium', 'brand', 0.008, 0.07)],
+    clips: { drop: { phases: [{ dur: 1, release: ['li', 'na', 'k'] }, { dur: 12 }] } },
+    thermometers: true,
+    height,
+  };
+};
+
+/**
+ * A copper bar hit (clip `hit`), shared with Chemistry 8: a push moves its top rows to the right and
+ * its bottom rows to the left, as a hammer blow does, and the rows of atoms slide over one another,
+ * so the bar changes shape but stays in one piece.
+ */
+export const hammeredCopper = (id: string, height = 360): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'cu', state: 'solid', width: 26, height: 6, cols: 14, bare: true, kinds: [{ n: 56, bond: 3, tone: 'opp', name: 'copper atom' }], label: 'copper, a metal' }],
+  clips: { hit: { phases: [{ dur: 4, push: { cu: 0.8 } }, { dur: 1.5, push: { cu: 0 } }] } },
+  key: true,
+  height,
+});
+
+/**
+ * Lab hazards, up close (Chemistry 10, lab safety). A sealed container of gas: warmed by the clip
+ * `warm`, its particles speed up (coloured by speed) and hit the walls harder and more often, so
+ * the gauge climbs.
+ */
+const sealedGas = (id: string, label: string): ParticleBox => ({
+  id,
+  state: 'gas',
+  width: 8,
+  height: 10,
+  temp: 0.8,
+  kinds: [{ n: 12, bond: 0.15, heavy: 0, name: 'gas particle' }],
+  heatColor: [0.5, 4],
+  label,
+});
+
+/** A gas sealed in a tube, heated by the clip `warm`: the pressure gauge climbs as it warms. */
+export const heatedSealed = (id: string, height = 440): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [sealedGas('g', 'gas in a sealed tube')],
+  clips: { warm: { phases: [{ dur: 7, heat: { g: 3.2 } }, { dur: 2 }] } },
+  gauge: { box: 'g', start: 100 },
+  thermometers: true,
+  height,
+});
+
+/**
+ * Two hazards side by side: a flammable gas mixed with oxygen, set off by a spark (clip `spark`:
+ * each reaction gives out heat that sets off the next), and a gas in a sealed cylinder, warmed
+ * (clip `warm`) so its pressure climbs.
+ */
+export const fireAndPressure = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [hydrogenBurning('h', { label: 'flammable gas and oxygen' }), sealedGas('g', 'gas in a sealed cylinder')],
+  clips: {
+    spark: { phases: [{ dur: 1, heat: { h: 2 } }, { dur: 2 }, { dur: 1, heat: { h: 0.4 } }, { dur: 7 }] },
+    warm: { phases: [{ dur: 7, heat: { g: 3.2 } }, { dur: 2 }] },
+  },
+  gauge: { box: 'g', start: 100 },
+  thermometers: true,
+  seed: 7,
+  height,
+});
+
+/** A corrosive acid on a piece of metal (clip `fizz`): the acid eats the metal away, particle by particle. */
+export const corrosiveAcid = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [fizzBox('c', 'a corrosive acid on a metal', { tone: 'opp', name: 'metal', gas: 'hydrogen gas' }, { open: true })],
+  clips: { fizz: { phases: [{ dur: 1, release: ['c'] }, { dur: 13 }] } },
+  height,
+});
+
+/**
+ * Concentrated acid and water, kept apart until the clip `mix` lifts the divider: wherever an acid
+ * particle meets a water particle the two cling together and give out heat, so the mixture warms.
+ */
+export const acidMeetsWater = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'm',
+      state: 'liquid',
+      width: 12,
+      height: 10,
+      temp: 0.6,
+      divider: 0.4,
+      apart: true,
+      kinds: [
+        { ...DISSOLVED, n: 12, heavy: 0.1, tone: 'theta', name: 'acid' },
+        { ...DISSOLVED, n: 20, heavy: 0.1, tone: 'adj', name: 'water' },
+        { ...DISSOLVED, heavy: 0.1, tone: 'theta', name: 'acid' },
+        { ...DISSOLVED, heavy: 0.1, tone: 'adj', name: 'water' },
+      ],
+      reactions: [{ a: 0, b: 1, to: [2, 3], join: true, heat: 0.14 }],
+      label: 'concentrated acid meeting water',
+    },
+  ],
+  clips: { mix: { phases: [{ dur: 1, lift: ['m'] }, { dur: 12 }] } },
+  thermometers: true,
+  key: true,
+  height,
+});
+
+/**
+ * Solids warmed together, always at the same temperature (clip `warm`, to `to`), whose particles
+ * hold on to one another with different strengths (`bond`). In the simulation a solid melts at
+ * about 0.33 × its `bond` and boils at about 0.9 × its `bond`, so the weakly held one melts and
+ * boils long before the strongly held ones even start to loosen.
+ */
+export const meltTogether = (id: string, subs: Array<{ id: string; label: string; bond: number; tone: Tone }>, to: number, height = 380): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: subs.map((s): ParticleBox => ({ id: s.id, state: 'solid', width: 6, height: 7, n: 18, kinds: [{ n: 18, bond: s.bond, tone: s.tone }], label: s.label })),
+  clips: { warm: { phases: [{ dur: 10, heat: Object.fromEntries(subs.map((s) => [s.id, to])) }, { dur: 2 }] } },
+  thermometers: true,
+  height,
+});
+
+/**
+ * Hydrogen and oxygen set off by a spark (clip `spark`): each reaction gives out heat that sets off
+ * the next, and two elements join into one compound, water (counted by the tally).
+ */
+export const sparkedHydrogen = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [hydrogenBurning('h', { label: 'hydrogen and oxygen' })],
+  clips: { spark: { phases: [{ dur: 1, heat: { h: 2 } }, { dur: 2 }, { dur: 1, heat: { h: 0.4 } }, { dur: 8 }] } },
+  thermometers: true,
+  key: true,
+  seed: 7,
+  height,
+});
+
+/**
+ * Carbon and hydrogen burning side by side (clip `light`): every carbon atom ends up in a carbon
+ * dioxide molecule, and every hydrogen atom in a water molecule.
+ */
+export const burningPair = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [carbonBurning('c', { label: 'carbon in oxygen', width: 10 }), hydrogenBurning('h', { label: 'hydrogen in oxygen', width: 10 })],
+  clips: { light: { phases: [{ dur: 1, heat: { c: 2.5, h: 2 } }, { dur: 2 }, { dur: 1, heat: { c: 0.4, h: 0.4 } }, { dur: 10 }] } },
+  thermometers: true,
+  seed: 5,
+  height,
+});
+
+/**
+ * An acid diluted (clip `dilute`): water is added, so the lid rises from a quarter of the box to
+ * the top and the same hydrogen ions spread through four times the volume (read under the box).
+ * The water itself is not drawn.
+ */
+export const dilutingAcid = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'd', state: 'gas', width: 10, height: 9, temp: 0.5, lid: 0.25, kinds: [{ n: 8, bond: 0.05, heavy: 0, size: 0.8, tone: 'theta', name: 'hydrogen ion' }], label: 'the same 8 hydrogen ions' }],
+  clips: { dilute: { phases: [{ dur: 4, lid: { d: 1 } }, { dur: 3 }] } },
+  volume: { box: 'd', start: 25, unit: 'mL', decimals: 0 },
+  key: true,
+  height,
+});
+
+/**
+ * A flask with phenolphthalein, holding `acid` hydrogen ions (with as many chloride ions), and
+ * sodium hydroxide waiting to be added a drop at a time (`add`: a sodium ion, then a hydroxide ion,
+ * so two units are one drop). Each hydroxide ion that meets a hydrogen ion makes water; the flask
+ * turns pink only once no hydrogen ion is left and a hydroxide ion is. The water already in the
+ * flask is not drawn. The kinds: 0 hydrogen ion, 1 chloride ion, 2 sodium ion, 3 and 4 a hydroxide
+ * ion's O and H, 5 and 6 the H and O of a water molecule made.
+ */
+const indicatorFlask = (id: string, label: string, acid: number): ParticleBox => ({
+  id,
+  state: 'gas',
+  width: 9,
+  height: 9,
+  temp: 0.5,
+  kinds: [
+    { ...ATOM.H, n: acid, name: 'hydrogen ion' },
+    { n: acid, bond: 0.15, heavy: 0, size: 1.1, tone: 'good', name: 'chloride ion' },
+    { n: 8, bond: 0.15, heavy: 0, tone: 'brand', name: 'sodium ion' },
+    { ...ATOM.O, tone: 'adj', name: 'hydroxide ion' },
+    { ...ATOM.H, name: undefined },
+    { ...ATOM.H, name: undefined },
+    { ...ATOM.O, name: 'water' },
+  ],
+  molecules: [{ atoms: [3, 4], n: 8 }],
+  reserve: [2, 3, 4],
+  reactions: [{ a: 0, b: 3, to: [5, 6], join: true }],
+  indicator: { acid: [0], base: [3], tone: 'hyp' },
+  tally: { kinds: [0], label: 'hydrogen ions left' },
+  label,
+});
+
+/**
+ * Pure water and hydrochloric acid, each with phenolphthalein and both colourless (clip `drop`):
+ * one drop of sodium hydroxide turns the water pink at once, but the acid stays colourless until
+ * enough drops (clip `more`) have used up all its hydrogen ions.
+ */
+export const waterAndAcid = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [indicatorFlask('w', 'pure water', 0), indicatorFlask('a', 'hydrochloric acid', 6)],
+  clips: {
+    drop: { phases: [{ dur: 1.5, add: { w: 2, a: 2 } }, { dur: 3 }] },
+    more: { phases: [{ dur: 9, add: { a: 14 } }, { dur: 7 }] },
+  },
+  key: true,
+  speed: 2,
+  seed: 2,
   height,
 });

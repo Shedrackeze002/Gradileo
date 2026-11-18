@@ -1,4 +1,20 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts): each box holds one kind of atom, at
+// a temperature that makes it a solid, a liquid or a gas.
+
+/** Three elements at room temperature: a solid, a liquid and a gas. */
+const states: ParticlesEl = {
+  kind: 'particles',
+  id: 'e',
+  boxes: [
+    { id: 'fe', state: 'solid', n: 30, width: 8, height: 8, tone: 'hyp', label: 'iron: a solid' },
+    { id: 'br', state: 'liquid', n: 30, width: 8, height: 8, tone: 'opp', label: 'bromine: a liquid' },
+    { id: 'he', state: 'gas', n: 12, width: 8, height: 8, tone: 'good', label: 'helium: a gas' },
+  ],
+  clips: {},
+  height: 380,
+};
 
 const video: Explainer = {
   id: 'c8-1-1',
@@ -29,6 +45,16 @@ const video: Explainer = {
         { say: 'So if you cut a gold ring in half, again and again, the smallest piece that is still gold is a single atom of gold.' },
         { say: 'Most elements are solids at room temperature, like iron and carbon. A few are gases, like oxygen and helium, and just two, mercury and bromine, are liquids.' },
         { say: 'Be careful: water, salt and air are not elements. Water and salt contain more than one kind of atom joined together, and air is a mixture of several gases.', show: 'oops' },
+      ],
+    },
+    {
+      chapter: 'Elements, up close',
+      layout: 'center',
+      main: [states],
+      lines: [
+        { say: 'Let’s look inside three elements. In each box, every particle is the same kind of atom: iron atoms on the left, bromine in the middle, and helium on the right.', show: ['e', 'e.labels'] },
+        { say: 'Iron’s atoms are packed in rows and only vibrate, so iron is a solid. Bromine’s slide past one another, so it is a liquid.', focus: ['e.fe', 'e.br'] },
+        { say: 'And helium’s atoms fly freely, far apart, so it is a gas. Three different states, but each one is a pure element, with just one kind of atom.', focus: 'e.he' },
       ],
     },
     {

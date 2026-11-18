@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { phStrip } from './lib/c10-5-figures.ts';
+import { dilutingAcid } from './lib/c10-particles.ts';
 
 // The pH scale, acidic, neutral and basic, with some everyday solutions marked at typical values.
 const scale = figure('s', [
@@ -131,6 +132,15 @@ const video: Explainer = {
         { say: 'Each unit is a factor of ten. Ten times ten times ten is a thousand, so solution A is a thousand times more acidic.', show: 'm.1', focus: 'm.1' },
         { say: 'Do not add, or multiply the difference by ten. Multiply by ten once for each unit.', show: 'oops' },
         { say: 'Adding water spreads an acid out, so its p H rises towards seven. A rise from two to three makes it ten times less acidic.', caption: 'Adding water spreads an acid out, so its pH rises towards 7. A rise from 2 to 3 makes it ten times less acidic.' },
+      ],
+    },
+    {
+      chapter: 'Adding water, up close',
+      layout: 'center',
+      main: [dilutingAcid('dl')],
+      lines: [
+        { say: 'Here is why adding water raises the p H, up close: the hydrogen ions in a small volume of acid.', caption: 'Here is why adding water raises the pH, up close: the hydrogen ions in a small volume of acid.', show: ['dl', 'dl.labels', 'dl.key', 'dl.volume'] },
+        { say: 'Add water. The same hydrogen ions spread out through four times the volume, so each millilitre holds only a quarter as many. The acid is less concentrated, and its p H rises towards seven.', caption: 'Add water. The same hydrogen ions spread out through four times the volume, so each millilitre holds only a quarter as many. The acid is less concentrated, and its pH rises towards 7.', play: 'dl.dilute' },
       ],
     },
     {

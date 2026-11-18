@@ -1,4 +1,41 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl, Tone } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). On the left, a polymer: long chain
+// molecules, each atom bonded to the next, that bend and slide past one another. On the right, a
+// ceramic: every atom held firmly to its neighbours in a rigid network. Both get the same push.
+
+const CHAINS: Tone[] = ['brand', 'hyp', 'good', 'theta'];
+
+const materials: ParticlesEl = {
+  kind: 'particles',
+  id: 'mat',
+  boxes: [
+    {
+      id: 'poly',
+      state: 'solid',
+      width: 13,
+      height: 8,
+      temp: 0.4,
+      // Each chain in its own colour, so the chains can be told apart.
+      kinds: CHAINS.map((tone) => ({ n: 0, bond: 1, size: 0.8, tone, name: 'polymer chain' })),
+      molecules: CHAINS.map((_, k) => ({ atoms: Array(16).fill(k), n: 1, chain: true })),
+      label: 'a polymer: long chains',
+    },
+    {
+      id: 'cer',
+      state: 'solid',
+      width: 13,
+      height: 8,
+      cols: 10,
+      cross: 40,
+      kinds: [{ n: 20, bond: 40, tone: 'opp', name: 'silicon' }, { n: 20, bond: 40, tone: 'adj', name: 'oxygen' }],
+      label: 'a ceramic: a rigid network',
+    },
+  ],
+  clips: { push: { phases: [{ dur: 4, push: { poly: 0.7, cer: 0.7 } }, { dur: 1.5, push: { poly: 0, cer: 0 } }] } },
+  height: 400,
+};
+
 
 const video: Explainer = {
   id: 'c8-4-4',
@@ -39,6 +76,16 @@ const video: Explainer = {
         { say: 'Ceramics are made by heating clay or minerals to high temperatures: pottery, china, brick and glass. They are hard and resist heat, but they are brittle, so they shatter.', show: 'kinds.1', focus: 'kinds.1' },
         { say: 'Composites combine two or more materials to get the best properties of each, like fibreglass and carbon fibre.', show: 'kinds.2', focus: 'kinds.2' },
         { say: 'Reinforced concrete is a composite. Concrete is strong when squeezed, but cracks when stretched. Steel rods set inside it are strong when stretched, so together they resist both.' },
+      ],
+    },
+    {
+      chapter: 'Polymers and ceramics, up close',
+      layout: 'center',
+      main: [materials],
+      lines: [
+        { say: 'Let’s compare a polymer and a ceramic, up close. In the polymer, the atoms are joined in long chains, which wriggle and bend. In the ceramic, every atom is held firmly to its neighbours in a rigid network.', show: ['mat', 'mat.labels'] },
+        { say: 'Now push both the same way. The polymer’s chains bend and slide past one another, so it gives without breaking: it is flexible.', play: 'mat.push', focus: 'mat.poly' },
+        { say: 'The ceramic’s network only tips a little, and springs straight back into shape when the push stops, so it is hard. But it cannot bend either, so a sharp blow makes it crack. That is why china shatters when dropped.', focus: 'mat.cer' },
       ],
     },
     {

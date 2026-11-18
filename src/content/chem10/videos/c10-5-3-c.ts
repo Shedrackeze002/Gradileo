@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { papers, phStrip } from './lib/c10-5-figures.ts';
+import { titrating } from '../../chem20/videos/lib/c20-particles.ts';
 
 // Litmus papers: blue turns red in an acid, red turns blue in a base.
 const litmus = figure('p', [
@@ -66,6 +67,15 @@ const video: Explainer = {
       lines: [
         { say: 'Here is litmus in a table. Blue litmus turns red only in an acid. Red litmus turns blue only in a base.', show: ['t.0', 't.1'] },
         { say: 'Phenolphthalein is a liquid indicator. A few drops are colourless in acidic and neutral solutions, and turn pink in basic ones.', show: 't.2', focus: 't.2' },
+      ],
+    },
+    {
+      chapter: 'Phenolphthalein, up close',
+      layout: 'center',
+      main: [titrating('ti')],
+      lines: [
+        { say: 'Let’s watch phenolphthalein up close, in hydrochloric acid, as sodium hydroxide is added a drop at a time.', show: ['ti', 'ti.labels', 'ti.key', 'ti.tally'] },
+        { say: 'Each hydroxide ion that meets a hydrogen ion makes a water molecule, and the flask stays colourless. Only once every hydrogen ion is used up, and a hydroxide ion is left over, does it turn pink.', play: 'ti.titrate' },
       ],
     },
     {

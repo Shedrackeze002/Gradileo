@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { molecular, network } from './lib/c10-3-figures.ts';
+import { boilingWater, meltTogether } from './lib/c10-particles.ts';
 
 // Iodine: small I₂ molecules, strong bonds inside each, weak forces (dashed) between them.
 const iodine = figure('mol', [molecular({ cols: 3, rows: 4 })], 460);
@@ -62,6 +63,15 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Water boiling, up close',
+      layout: 'center',
+      main: [boilingWater('bw')],
+      lines: [
+        { say: 'Let’s check that up close. Here is water, each molecule an oxygen atom with two hydrogen atoms.', show: ['bw', 'bw.labels', 'bw.thermo'] },
+        { say: 'Heat it until it boils. The molecules fly apart from one another, but every one stays whole: still H two O.', caption: 'Heat it until it boils. The molecules fly apart from one another, but every one stays whole: still H₂O.', play: 'bw.boil' },
+      ],
+    },
+    {
       chapter: 'Conducting and dissolving',
       layout: 'center',
       main: [
@@ -96,6 +106,16 @@ const video: Explainer = {
         { say: 'To melt one, many strong covalent bonds must break, not just weak forces between molecules. So diamond and quartz stay solid far above one thousand degrees Celsius.', show: 'b.0' },
         { say: 'They are hard. Diamond is the hardest natural substance, which is why diamond-tipped blades can cut glass and rock.', show: 'b.1' },
         { say: 'They do not conduct, because every outer electron is held in a bond between two atoms. And they do not dissolve: water cannot break the network apart.', show: ['b.2', 'b.3'] },
+      ],
+    },
+    {
+      chapter: 'Melting, up close',
+      layout: 'center',
+      main: [meltTogether('mt', [{ id: 'm', label: 'simple molecular', bond: 1, tone: 'hyp' }, { id: 'g', label: 'giant covalent', bond: 6, tone: 'good' }], 1.2)],
+      lines: [
+        { say: 'Let’s warm the two kinds of substance together, up close, so they are always at the same temperature.', show: ['mt', 'mt.labels', 'mt.thermo'] },
+        { say: 'The molecules are held to one another only weakly, so they soon break away: the simple molecular solid melts and then boils. The giant covalent one has not even started to melt.', play: 'mt.warm' },
+        { say: 'To melt it, strong covalent bonds all through the network must break, which takes a very high temperature.' },
       ],
     },
     {

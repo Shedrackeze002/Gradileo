@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { acidIonising } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c9-4-1',
@@ -29,6 +30,16 @@ const video: Explainer = {
         { say: 'A base is a substance that neutralizes an acid. An alkali is a base that dissolves in water. Alkalis release hydroxide ions, O H minus, and have a pH above seven.', show: 'base' },
         { say: 'So every alkali is a base, but not every base is an alkali. Copper oxide neutralizes acids, so it is a base, but it does not dissolve in water, so it is not an alkali.' },
         { say: 'Strong acids and alkalis are corrosive: they damage skin and eyes. So we never taste or touch them to find out. We use indicators instead.', show: 'safe' },
+      ],
+    },
+    {
+      chapter: 'An acid in water, up close',
+      layout: 'center',
+      main: [{ ...acidIonising('hi', 440), key: true }],
+      lines: [
+        { say: 'Here is what releasing hydrogen ions means. These are hydrogen chloride molecules, a hydrogen atom joined to a chlorine atom, among water molecules in blue.', show: ['hi', 'hi.labels', 'hi.key', 'hi.tally'] },
+        { say: 'When a hydrogen chloride molecule meets a water molecule, the hydrogen leaves the chlorine and joins the water. The water carries it as a hydrogen ion, and the chlorine is set free as a chloride ion.', play: 'hi.go' },
+        { say: 'Soon every molecule has split up. Those hydrogen ions moving through the water are what make the solution an acid.' },
       ],
     },
     {

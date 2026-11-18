@@ -1403,8 +1403,15 @@ items ship or decisions change.
        fuel cell, curly-arrow mechanisms, the nitration of benzene, doubling a concentration, a
        cold and a hot gas with a live chart of their molecules' speeds, and a time-of-flight race).
        Rendering, then Drive.
-     - Next: the lessons about structures (group 2), and animated openings for the calculation
-       lessons (group 3). Then put chemistry back in the upload task.
+     - In progress (18 November 2026, pull request #212): group 2, the lessons about structures.
+       Done: Chemistry 7 to 9, and all 31 group 2 videos of Chemistry 10 (inside the atom,
+       electron shells, the periodic table, families of elements, lab safety, bonding and
+       properties, reaction types, and acids, pH and indicators). New engine: a `push` that shears
+       a solid (malleable metals, alloys whose `pin`ned atoms jam the layers), polymer `chain`
+       molecules, and a `scatter` element for the gold foil. Electrons fill shell by shell, are
+       lost and gained as the narrator speaks.
+     - Next: the rest of group 2 (Chemistry 20 and 30 and More Chemistry Topics), then animated
+       openings for the calculation lessons (group 3). Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.

@@ -1,6 +1,4 @@
 import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
 
 /** A cell of the table of arrangements: the symbol in bold and the arrangement. */
 const cell = (sym: string, arr: string) => `**${sym}**\u00a0${arr}`;
@@ -26,7 +24,15 @@ const video: Explainer = {
       chapter: 'The fourth shell',
       layout: 'split',
       leftWidth: 560,
-      left: [figure('ca', [atomShells({ nucleus: '\\text{Ca}', shells: [2, 8, 8, 2] })], 540)],
+      left: [{
+          kind: 'atoms',
+          id: 'ca',
+          span: [6.8, 6.8],
+          atoms: [{ id: 'a', symbol: 'Ca', protons: 20, electrons: 0, at: [3.4, 3.4], tone: 'good', name: 'calcium' }],
+          clips: { s1: { phases: [{ dur: 1.2, fill: { a: 2 } }, { dur: 0.4 }] }, s2: { phases: [{ dur: 2.8, fill: { a: 10 } }, { dur: 0.4 }] }, s3: { phases: [{ dur: 2.8, fill: { a: 18 } }, { dur: 0.4 }] }, s4: { phases: [{ dur: 1.2, fill: { a: 20 } }, { dur: 0.4 }] } },
+          poster: 's4',
+          height: 540,
+        }],
       right: [
         {
           kind: 'math',
@@ -37,11 +43,11 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'Write the electron arrangement of calcium, atomic number twenty. A neutral calcium atom has twenty electrons.', show: ['m.0', 'ca.nucleus'], focus: 'm.0' },
-        { say: 'The first shell takes two, leaving eighteen.', show: ['m.1', 'ca.shell-1'], focus: ['m.1', 'ca.shell-1'] },
-        { say: 'The second shell takes eight, leaving ten.', show: ['m.2', 'ca.shell-2'], focus: ['m.2', 'ca.shell-2'] },
-        { say: 'The third shell takes eight, leaving two.', show: ['m.3', 'ca.shell-3'], focus: ['m.3', 'ca.shell-3'] },
-        { say: 'The last two go into the fourth shell. Calcium is two, eight, eight, two.', show: ['m.4', 'm.5', 'ca.shell-4'], focus: ['m.5', 'ca.shell-4'] },
+        { say: 'Write the electron arrangement of calcium, atomic number twenty. A neutral calcium atom has twenty electrons.', show: ['m.0', 'ca', 'ca.labels'], focus: 'm.0' },
+        { say: 'The first shell takes two, leaving eighteen.', show: ['m.1', 'ca.arrangement'], play: 'ca.s1', focus: 'm.1' },
+        { say: 'The second shell takes eight, leaving ten.', show: 'm.2', play: 'ca.s2', focus: 'm.2' },
+        { say: 'The third shell takes eight, leaving two.', show: 'm.3', play: 'ca.s3', focus: 'm.3' },
+        { say: 'The last two go into the fourth shell. Calcium is two, eight, eight, two.', show: ['m.4', 'm.5'], play: 'ca.s4', focus: 'm.5' },
       ],
     },
     {

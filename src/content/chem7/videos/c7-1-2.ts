@@ -1,4 +1,19 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). A helium atom has about a seventh of
+// the mass of an average air particle (`mass`), so at the same temperature it moves faster.
+
+/** Air and helium under pistons: both are particles that fill their box and push back. */
+const gases: ParticlesEl = {
+  kind: 'particles',
+  id: 'g',
+  boxes: [
+    { id: 'a', state: 'gas', kinds: [{ n: 18, tone: 'adj', name: 'air' }], height: 8, piston: true, label: 'air' },
+    { id: 'h', state: 'gas', kinds: [{ n: 18, mass: 0.15, size: 0.7, tone: 'theta', name: 'helium' }], height: 8, piston: true, label: 'helium' },
+  ],
+  clips: { push: { phases: [{ dur: 5, lid: { a: 0.5, h: 0.5 } }, { dur: 3 }] } },
+  height: 430,
+};
 
 const video: Explainer = {
   id: 'c7-1-2',
@@ -29,6 +44,16 @@ const video: Explainer = {
         { say: 'Solids, liquids and gases are all matter. Gases are easy to forget because most are invisible, but a blown-up balloon has a little more mass than an empty one, because the air inside has mass.', show: 'ex.0' },
         { say: 'Light, sound, heat and electricity are not matter. They are forms of energy. They have no mass, and they take up no space.', show: 'ex.1' },
         { say: 'Be careful with gases that are very light. Helium is so light that it lifts a balloon, but it still has mass, so it is still matter.', show: 'oops' },
+      ],
+    },
+    {
+      chapter: 'Gases, up close',
+      layout: 'center',
+      main: [gases],
+      lines: [
+        { say: 'Let’s look inside two gases. Each box holds particles that are far apart and fly in every direction: air on the left, and helium on the right.', show: ['g', 'g.labels'] },
+        { say: 'Every one of those particles has a little mass, so a box of gas has mass too. Helium’s particles are the lightest of all, which is why they dash about faster, but they are still particles, so helium is still matter.', show: 'g.hits' },
+        { say: 'A gas takes up space as well. Let’s push a piston into each box. The particles crowd together and hit the walls more often, so they push back. The piston cannot squash them away to nothing.', play: 'g.push' },
       ],
     },
     {

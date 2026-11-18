@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { testTube } from './lib/c10-1-figures.ts';
+import { heatedSealed } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-5-c',
@@ -54,6 +55,16 @@ const video: Explainer = {
         { say: 'When heating a liquid in a test tube, hold the tube in a test-tube holder, and heat it gently.', show: ['tt.tube', 'tt.holder', 'tt.flame', 'tube'] },
         { say: 'Point the open end away from yourself and everyone else. The liquid can boil suddenly, and shoot out of the tube.', show: 'tt.away', focus: 'tt.away' },
         { say: 'And never heat a container that is sealed. The gas inside expands as it warms, and can burst the container.', show: 'seal' },
+      ],
+    },
+    {
+      chapter: 'A sealed container, up close',
+      layout: 'center',
+      main: [heatedSealed('sg')],
+      lines: [
+        { say: 'Why does a sealed container burst? Here is the gas inside one, up close, with a gauge to read its pressure.', show: ['sg', 'sg.labels', 'sg.thermo', 'sg.gauge'] },
+        { say: 'Heat it, and the particles move faster. They hit the walls harder, and more often, so the pressure climbs.', show: 'sg.hits', play: 'sg.warm', focus: 'sg.gauge' },
+        { say: 'The gas has nowhere to go, so the pressure keeps rising as long as the heating goes on, until the container gives way.' },
       ],
     },
     {

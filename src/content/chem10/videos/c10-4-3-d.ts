@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, labels, mol, plus, row, stack } from './lib/c10-4-figures.ts';
+import { precipitate } from '../../chem20/videos/lib/c20-particles.ts';
 
 // Barium chloride and sodium sulfate swap partners: barium sulfate and sodium chloride.
 const tones = { Ba: 'theta', Cl: 'good', Na: 'brand', SO_4: 'hyp' } as const;
@@ -70,6 +71,27 @@ const video: Explainer = {
         { say: 'Swap partners. Barium with sulfate gives barium sulfate, and sodium with chloride gives sodium chloride.', show: ['sw.arr', 'sw.bs', 'sw.p2', 'sw.nc1', 'sw.nc2'] },
         { say: 'Sodium chloride dissolves. Barium sulfate does not, so it forms a white precipitate.', show: ['sw.solid', 'sw.stays'], focus: 'sw.bs' },
         { say: 'With state symbols, the barium sulfate is solid, and everything else is aqueous.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Barium sulfate, up close',
+      layout: 'center',
+      main: [
+        precipitate(
+          'bs',
+          {
+            cation: { name: 'barium ion', tone: 'theta' },
+            anion: { name: 'sulfate ion', tone: 'bad', size: 1.2 },
+            withCation: { name: 'chloride ion', tone: 'good', size: 1.1 },
+            withAnion: { name: 'sodium ion', tone: 'hyp' },
+          },
+          { label: 'barium chloride + sodium sulfate', solid: 'barium sulfate', seed: 3 },
+        ),
+      ],
+      lines: [
+        { say: 'Here are the two solutions just mixed, up close: barium, chloride, sodium and sulfate ions among water molecules.', show: ['bs', 'bs.labels', 'bs.key'], play: 'bs.mix' },
+        { say: 'Each barium ion that meets a sulfate ion locks on to it, and they sink together as the white solid, barium sulfate.', show: 'bs.tally' },
+        { say: 'The sodium and chloride ions keep moving freely. They stay dissolved, as sodium chloride solution.' },
       ],
     },
     {

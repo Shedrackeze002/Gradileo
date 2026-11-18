@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { indicatorBars } from './lib/c10-5-figures.ts';
+import { waterAndAcid } from './lib/c10-particles.ts';
 
 // Methyl orange and phenolphthalein across the pH scale, and where both clues are true.
 const clues = figure('b', [
@@ -50,6 +51,16 @@ const video: Explainer = {
         { say: 'Phenolphthalein is colourless in acidic and neutral solutions. So a colourless result does not prove that a solution is acidic. It could be neutral.', show: ['oops', 't.0'] },
         { say: 'In the same way, red litmus stays red in both acidic and neutral solutions.', show: 't.1' },
         { say: 'To show that a solution is acidic, use blue litmus, which turns red, or universal indicator.', show: 't.2', focus: 't.2' },
+      ],
+    },
+    {
+      chapter: 'Water or acid, up close',
+      layout: 'center',
+      main: [waterAndAcid('wa')],
+      lines: [
+        { say: 'Here is pure water, and hydrochloric acid, each with a few drops of phenolphthalein. Both are colourless, so the colour alone cannot tell them apart.', show: ['wa', 'wa.labels', 'wa.key', 'wa.tally'] },
+        { say: 'Add one drop of sodium hydroxide to each. The water turns pink at once. The acid stays colourless, because its hydrogen ions use up the hydroxide.', play: 'wa.drop' },
+        { say: 'Keep adding drops. Only once every hydrogen ion is used up does the acid turn pink too.', play: 'wa.more' },
       ],
     },
     {

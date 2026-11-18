@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, card } from './lib/c10-3-figures.ts';
+import { meltTogether } from './lib/c10-particles.ts';
 
 // The three questions, top to bottom, with the structure each answer points to.
 const flow = figure(
@@ -101,11 +102,27 @@ const video: Explainer = {
       ],
     },
     {
+      chapter: 'Melting points, up close',
+      layout: 'center',
+      main: [
+        meltTogether('mt', [
+          { id: 'p', label: 'P', bond: 2.4, tone: 'opp' },
+          { id: 'q', label: 'Q', bond: 0.5, tone: 'hyp' },
+          { id: 'r', label: 'R', bond: 4, tone: 'brand' },
+          { id: 's', label: 'S', bond: 6, tone: 'good' },
+        ], 0.7, 400),
+      ],
+      lines: [
+        { say: 'Let’s warm all four together, up close, so they are always at the same temperature.', show: ['mt', 'mt.labels', 'mt.thermo'] },
+        { say: 'Q melts almost at once, because its particles are held together only weakly. But P, R and S all stay solid.', play: 'mt.warm' },
+      ],
+    },
+    {
       chapter: 'Conductivity first',
       layout: 'center',
       main: [{ kind: 'callout', id: 'oops', tone: 'mistake', title: 'A high melting point alone is not enough', md: 'Ionic, giant covalent and most metallic substances all have high melting points. Look at conductivity first, as a solid and then when molten. Use the melting point last.' }],
       lines: [
-        { say: 'Notice that R and S, and even P, have high melting points. Ionic, giant covalent and most metallic substances all do, so the melting point alone cannot tell them apart.', show: 'oops' },
+        { say: 'So R and S, and even P, have high melting points. Ionic, giant covalent and most metallic substances all do, so the melting point alone cannot tell them apart.', show: 'oops' },
         { say: 'Look at conductivity first, as a solid and then when molten. Use the melting point last, to separate simple molecular from giant covalent.' },
       ],
     },

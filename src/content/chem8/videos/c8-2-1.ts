@@ -1,4 +1,10 @@
 import type { Explainer } from '@/video/script.ts';
+import { periodTwo } from '../../chem10/videos/lib/c10-atoms.ts';
+
+// The atoms here are drawn by src/video/atoms.ts. Period two, lithium to neon, starts with no
+// electrons; the clip fills each atom in turn, so each has one more proton and one more electron
+// than the one before it, and the atomic number steps up by one along the period.
+const period2 = periodTwo('p2');
 
 const video: Explainer = {
   id: 'c8-2-1',
@@ -37,6 +43,16 @@ const video: Explainer = {
         { say: 'A horizontal row is called a period. A vertical column is called a group, and the groups are numbered one to eighteen from left to right. Elements in the same group have similar chemical properties.' },
         { say: 'Period one holds just hydrogen and helium. Period two runs from lithium, number three, to neon, number ten, and period three from sodium, number eleven, to argon, number eighteen.', show: 'periods' },
         { say: 'In periods two and three there are only eight elements, in groups one and two, then thirteen to eighteen. The gap in between fills up from period four, with metals such as iron and copper.' },
+      ],
+    },
+    {
+      chapter: 'Period two, up close',
+      layout: 'center',
+      main: [period2],
+      lines: [
+        { say: 'Here is period two, up close: eight atoms, from lithium to neon. Each nucleus has a few more protons than the last.', show: ['p2', 'p2.labels'] },
+        { say: 'Watch the electrons arrive. Lithium has three, beryllium four, boron five, and so on along the row, until neon has ten.', play: 'p2.fill' },
+        { say: 'So each element has exactly one more proton than the one before it. Its atomic number goes up by one at every step along a period.', show: 'p2.arrangement' },
       ],
     },
     {
