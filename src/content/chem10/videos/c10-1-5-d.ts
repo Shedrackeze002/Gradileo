@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { acidMeetsWater } from './lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'c10-1-5-d',
@@ -41,10 +42,13 @@ const video: Explainer = {
     },
     {
       chapter: 'Acid to water',
-      layout: 'center',
-      main: [{ kind: 'callout', id: 'oops', tone: 'mistake', title: 'Never add water to concentrated acid', md: 'Mixing gives out a lot of heat. Water poured into acid can boil instantly and spit hot acid out. Add the **acid to the water**, slowly, so there is plenty of water to absorb the heat.' }],
+      layout: 'split',
+      leftWidth: 620,
+      left: [acidMeetsWater('mx')],
+      right: [{ kind: 'callout', id: 'oops', tone: 'mistake', title: 'Never add water to concentrated acid', md: 'Mixing gives out a lot of heat. Water poured into acid can boil instantly and spit hot acid out. Add the **acid to the water**, slowly, so there is plenty of water to absorb the heat.' }],
       lines: [
-        { say: 'Why does the order matter? Mixing a concentrated acid with water gives out a lot of heat.', show: 'oops' },
+        { say: 'Why does the order matter? Mixing a concentrated acid with water gives out a lot of heat.', show: ['oops', 'mx', 'mx.labels', 'mx.thermo', 'mx.key'] },
+        { say: 'Watch up close. Wherever an acid particle meets water, the two cling together and give out energy, and the mixture warms.', play: 'mx.mix' },
         { say: 'Pour water into the acid, and the first drops of water can boil instantly and spit hot acid out of the container. Add the acid to the water, a little at a time, and there is always plenty of water to absorb the heat.' },
       ],
     },

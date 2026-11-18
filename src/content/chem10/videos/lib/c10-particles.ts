@@ -638,3 +638,90 @@ export const hammeredCopper = (id: string, height = 360): ParticlesEl => ({
   key: true,
   height,
 });
+
+/**
+ * Lab hazards, up close (Chemistry 10, lab safety). A sealed container of gas: warmed by the clip
+ * `warm`, its particles speed up (coloured by speed) and hit the walls harder and more often, so
+ * the gauge climbs.
+ */
+const sealedGas = (id: string, label: string): ParticleBox => ({
+  id,
+  state: 'gas',
+  width: 8,
+  height: 10,
+  temp: 0.8,
+  kinds: [{ n: 12, bond: 0.15, heavy: 0, name: 'gas particle' }],
+  heatColor: [0.5, 4],
+  label,
+});
+
+/** A gas sealed in a tube, heated by the clip `warm`: the pressure gauge climbs as it warms. */
+export const heatedSealed = (id: string, height = 440): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [sealedGas('g', 'gas in a sealed tube')],
+  clips: { warm: { phases: [{ dur: 7, heat: { g: 3.2 } }, { dur: 2 }] } },
+  gauge: { box: 'g', start: 100 },
+  thermometers: true,
+  height,
+});
+
+/**
+ * Two hazards side by side: a flammable gas mixed with oxygen, set off by a spark (clip `spark`:
+ * each reaction gives out heat that sets off the next), and a gas in a sealed cylinder, warmed
+ * (clip `warm`) so its pressure climbs.
+ */
+export const fireAndPressure = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [hydrogenBurning('h', { label: 'flammable gas and oxygen' }), sealedGas('g', 'gas in a sealed cylinder')],
+  clips: {
+    spark: { phases: [{ dur: 1, heat: { h: 2 } }, { dur: 2 }, { dur: 1, heat: { h: 0.4 } }, { dur: 7 }] },
+    warm: { phases: [{ dur: 7, heat: { g: 3.2 } }, { dur: 2 }] },
+  },
+  gauge: { box: 'g', start: 100 },
+  thermometers: true,
+  seed: 7,
+  height,
+});
+
+/** A corrosive acid on a piece of metal (clip `fizz`): the acid eats the metal away, particle by particle. */
+export const corrosiveAcid = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [fizzBox('c', 'a corrosive acid on a metal', { tone: 'opp', name: 'metal', gas: 'hydrogen gas' }, { open: true })],
+  clips: { fizz: { phases: [{ dur: 1, release: ['c'] }, { dur: 13 }] } },
+  height,
+});
+
+/**
+ * Concentrated acid and water, kept apart until the clip `mix` lifts the divider: wherever an acid
+ * particle meets a water particle the two cling together and give out heat, so the mixture warms.
+ */
+export const acidMeetsWater = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    {
+      id: 'm',
+      state: 'liquid',
+      width: 12,
+      height: 10,
+      temp: 0.6,
+      divider: 0.4,
+      apart: true,
+      kinds: [
+        { ...DISSOLVED, n: 12, heavy: 0.1, tone: 'theta', name: 'acid' },
+        { ...DISSOLVED, n: 20, heavy: 0.1, tone: 'adj', name: 'water' },
+        { ...DISSOLVED, heavy: 0.1, tone: 'theta', name: 'acid' },
+        { ...DISSOLVED, heavy: 0.1, tone: 'adj', name: 'water' },
+      ],
+      reactions: [{ a: 0, b: 1, to: [2, 3], join: true, heat: 0.14 }],
+      label: 'concentrated acid meeting water',
+    },
+  ],
+  clips: { mix: { phases: [{ dur: 1, lift: ['m'] }, { dur: 12 }] } },
+  thermometers: true,
+  key: true,
+  height,
+});
