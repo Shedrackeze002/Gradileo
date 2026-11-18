@@ -135,7 +135,7 @@ export function Stage({ x, state, label }: { x: Explainer; state: FrameState; la
         {scene.layout === 'split' ? (
           <div className="v-split" style={scene.leftWidth ? { gridTemplateColumns: `${scene.leftWidth}px minmax(0, 1fr)` } : undefined}>
             <Column els={scene.left} state={state} area="left" className="v-col v-center" leftWidth={scene.leftWidth} />
-            <Column els={scene.right} state={state} area="right" className="v-col" leftWidth={scene.leftWidth} />
+            <Column els={scene.right} state={state} area="right" className={scene.centreRight ? 'v-col v-center' : 'v-col'} leftWidth={scene.leftWidth} />
           </div>
         ) : (
           <Column els={scene.main} state={state} area="main" className="v-col v-center" />

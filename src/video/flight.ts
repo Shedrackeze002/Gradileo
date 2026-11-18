@@ -48,8 +48,8 @@ export interface FlightState {
   /** The slow-motion factor of the phase being played, and its note. */
   slow: number;
   note: string | undefined;
-  /** The last collision or explosion: the element's time when it happened, and where. */
-  hit: { t: number; x: number; y: number } | undefined;
+  /** The last collision or explosion: the element's time when it happened, where, and the slow-motion factor of the phase it happened in. */
+  hit: { t: number; x: number; y: number; pace: number } | undefined;
 }
 
 /** Whether the stream carries a body. */
@@ -125,6 +125,7 @@ export function flightAt(el: FlightEl, plays: Array<[clip: string, seconds: numb
   let slow = 1;
   let note: string | undefined;
   let hit: FlightState['hit'];
+  let pace = 1;
   const massive = el.bodies.filter((b) => b.mass !== undefined);
   const start = () => {
     for (const b of el.bodies) {
@@ -161,7 +162,7 @@ export function flightAt(el: FlightEl, plays: Array<[clip: string, seconds: numb
       sb.vy += (impulse / mb) * ny;
       for (const s of [sa, sb]) Object.assign(s, { ownX: s.vx, ownY: s.vy, heading: headingOf(s.vx, s.vy, s.heading) });
     }
-    hit = { t: time, x: sa.x + nx * radiusOf(a), y: sa.y + ny * radiusOf(a) };
+    hit = { t: time, x: sa.x + nx * radiusOf(a), y: sa.y + ny * radiusOf(a), pace };
   };
 
   for (const [name, seconds] of plays) {
@@ -176,9 +177,12 @@ export function flightAt(el: FlightEl, plays: Array<[clip: string, seconds: numb
       const rate = ph.freeze ? 1 : (ph.slow ?? 1);
       const video = ph.dur * rate;
       const run = Math.min(left, video);
-      // The note and the pace of the phase that is playing; they go when the clip has finished.
-      note = left < video ? ph.note : undefined;
-      slow = left < video ? rate : 1;
+      // The note and the pace of the phase that is playing; they go when the clip has finished
+      // (the timeline rounds a clip's length to the millisecond, so allow for that).
+      const playing = left < video - 1e-3;
+      pace = rate;
+      note = playing ? ph.note : undefined;
+      slow = playing ? rate : 1;
       left -= video;
       // What the phase sets takes hold as it starts, frozen or not, so the arrows can be named first.
       for (const b of el.bodies) {
@@ -199,7 +203,7 @@ export function flightAt(el: FlightEl, plays: Array<[clip: string, seconds: numb
         Object.assign(s, { vx: s.vx + jx / b.mass!, vy: s.vy + jy / b.mass!, ownX: s.ownX + jx / b.mass!, ownY: s.ownY + jy / b.mass! });
         s.heading = headingOf(s.vx, s.vy, s.heading);
       }
-      if (kicked.length) hit = { t: time, x: kicked.reduce((n, b) => n + bodies[b.id].x, 0) / kicked.length, y: kicked.reduce((n, b) => n + bodies[b.id].y, 0) / kicked.length };
+      if (kicked.length) hit = { t: time, x: kicked.reduce((n, b) => n + bodies[b.id].x, 0) / kicked.length, y: kicked.reduce((n, b) => n + bodies[b.id].y, 0) / kicked.length, pace };
       if (ph.freeze) continue;
       const whole = run / rate;
       if (whole <= 0) continue;

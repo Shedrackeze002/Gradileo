@@ -1864,6 +1864,8 @@ export interface Scene {
   layout: 'center' | 'split';
   /** Width of the left column of a split scene in stage pixels (540 by default), for wide figures. */
   leftWidth?: number;
+  /** In a split scene: centre the right column as the left one is, for two figures side by side. */
+  centreRight?: boolean;
   main?: El[];
   left?: El[];
   right?: El[];

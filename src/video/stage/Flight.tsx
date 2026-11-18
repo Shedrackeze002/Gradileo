@@ -327,18 +327,24 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
     const base = steered ? Math.atan2(s.ownY, s.ownX) : qx >= 0 ? 0 : Math.PI;
     // The turn from the base to the vector, between −180° and 180°.
     const turned = Math.atan2(Math.sin(a - base), Math.cos(a - base));
-    if (angle > 0 && reach > 60 && Math.abs(turned) > 0.02 && Math.abs(turned) < Math.PI - 0.02) {
+    // A velocity straight along the other axis (due north on a map) needs no angle.
+    const square = ofVelocity && !steered && Math.abs(Math.abs(turned) - Math.PI / 2) < 0.02;
+    if (angle > 0 && reach > 60 && !square && Math.abs(turned) > 0.02 && Math.abs(turned) < Math.PI - 0.02) {
       // The arc clears a puck or a car that the arrow starts at the edge of.
       // Round bodies locked together it is wide enough to clear them all.
       const r = Math.max(Math.min(58, reach * 0.5), ofVelocity && edge(b) ? edge(b) + 20 : 0, ofVelocity && group(b).length > 1 ? 70 : 0);
       const mid = base + turned / 2;
       const far = Math.max(Math.hypot(qx, qy), ownSpeed) * vs;
+      // The label sits inside the angle. Beside a puck or a car the arrow is long, so a narrow
+      // angle's label moves out to where it clears both the arrow and the dashed line.
+      const clear = (28 * Math.abs(Math.sin(turned)) + 11 * Math.abs(Math.cos(turned)) + 6) / Math.sin(Math.abs(turned) / 2);
+      const at = steered ? far + 26 : ofVelocity && round(b) ? Math.min(150, Math.max(r + 30, clear)) : r + 30;
       out.push(
         <g key={`angle-${b.id}`} opacity={angle}>
           {!steered && <line x1={ox} y1={oy} x2={ox + Math.cos(base) * (r + 26)} y2={oy} stroke={INK3} strokeWidth={2} strokeDasharray="5 6" />}
           <path d={`M${(ox + r * Math.cos(base)).toFixed(1)},${(oy - r * Math.sin(base)).toFixed(1)} A${r},${r} 0 0 ${turned > 0 ? 0 : 1} ${(ox + r * Math.cos(a)).toFixed(1)},${(oy - r * Math.sin(a)).toFixed(1)}`} fill="none" stroke={TONES.theta} strokeWidth={4} strokeLinecap="round" />
           {/* Between a heading and a track the label goes beyond the arrows, clear of the stream's arrow that joins their tips. */}
-          <Text x={ox + (steered ? far + 26 : r + 30) * Math.cos(mid)} y={oy - (steered ? far + 26 : r + 30) * Math.sin(mid)} size={21} color={TONES.theta}>{degrees(turned * DEG, el.angleDecimals)}</Text>
+          <Text x={ox + at * Math.cos(mid)} y={oy - at * Math.sin(mid)} size={21} color={TONES.theta}>{degrees(turned * DEG, el.angleDecimals)}</Text>
         </g>,
       );
     }
@@ -485,8 +491,8 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
   }
 
   // A collision or an explosion: a flash where it happened.
-  if (state.hit && (state.time - state.hit.t) * state.slow < 0.7) {
-    const k = 1 - (1 - ((state.time - state.hit.t) * state.slow) / 0.7) ** 3;
+  if (state.hit && (state.time - state.hit.t) * state.hit.pace < 0.7) {
+    const k = 1 - (1 - ((state.time - state.hit.t) * state.hit.pace) / 0.7) ** 3;
     const [hx, hy] = [X(state.hit.x), Y(state.hit.y)];
     out.push(
       <g key="hit" opacity={1 - k}>
