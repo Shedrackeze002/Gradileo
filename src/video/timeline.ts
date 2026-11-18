@@ -98,7 +98,8 @@ export interface Cue {
 export interface Timeline {
   id: string;
   duration: number;
-  scenes: Array<{ start: number; end: number; chapter: string | null; kinds: Record<string, El['kind']>; events: TimelineEvent[] }>;
+  /** `aged` names the elements that move all the time they are shown, besides the kinds that always do (a charges picture with an atom in it). */
+  scenes: Array<{ start: number; end: number; chapter: string | null; kinds: Record<string, El['kind']>; aged?: string[]; events: TimelineEvent[] }>;
   lines: TimedLine[];
   chapters: Array<{ title: string; t: number }>;
   cues: Cue[];
@@ -128,10 +129,13 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
   x.scenes.forEach((s, si) => {
     const start = t;
     const kinds: Record<string, El['kind']> = {};
+    const aged: string[] = [];
     const tries = new Map<string, TryEl>();
     const motions = new Map<string, Playable>();
     for (const e of sceneElements(s)) {
       kinds[e.id] = e.kind;
+      // The electrons of an atom circle its nucleus whether or not a clip is playing.
+      if (e.kind === 'charges' && e.bodies.some((b) => b.shape === 'atom')) aged.push(e.id);
       if (e.kind === 'try') tries.set(e.id, e);
       if (e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'molecules' || e.kind === 'scatter' || e.kind === 'wave' || e.kind === 'ripples' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'charges' || e.kind === 'circle') motions.set(e.id, e);
     }
@@ -188,7 +192,7 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
     t += TIMING.sceneOut - TIMING.gap;
     // A delayed clip can start after the events of the line that follows it.
     events.sort((a, b) => a.t - b.t);
-    scenes.push({ start: r3(start), end: r3(t), chapter, kinds, events });
+    scenes.push({ start: r3(start), end: r3(t), chapter, kinds, ...(aged.length ? { aged } : {}), events });
   });
   return { id: x.id, duration: r3(t), scenes, lines, chapters, cues };
 }
@@ -302,7 +306,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
     if (s.kinds[el] === 'particles' || s.kinds[el] === 'atoms' || s.kinds[el] === 'molecules') {
       els[el].age = q(t - st.at);
       els[el].started = (starts[el] ?? []).map(([c, at]) => [c, q(at - st.at)]);
-    }
+    } else if (s.aged?.includes(el)) els[el].age = q(t - st.at);
   }
   return { scene: si, fade, chapter: s.chapter, els };
 }

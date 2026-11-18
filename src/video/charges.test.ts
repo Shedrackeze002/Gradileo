@@ -242,6 +242,9 @@ describe('a charges element in a script', () => {
     expect(checkCharges(bench({ bodies: [{ id: 'ball', shape: 'sphere', radius: 1, charge: 10, x: 0, pairs: 4 }], clips: {} }))[0]).toMatch(/too few pairs/);
     expect(checkCharges(bench({ bodies: [{ id: 'atom', shape: 'atom', radius: 1, charge: 0, x: 0, pairs: 11 }], clips: {} }))[0]).toMatch(/ten protons at most/);
     expect(checkCharges(bench({ bodies: [{ id: 'atom', shape: 'atom', radius: 1, charge: 0, x: 0 }], clips: {} }))[0]).toMatch(/number of protons/);
+    // Ten protons and a charge of one extra electron would be eleven electrons, and the two shells hold ten.
+    expect(checkCharges(bench({ bodies: [{ id: 'atom', shape: 'atom', radius: 1, charge: -2, x: 0, pairs: 10 }], clips: {} }))[0]).toMatch(/starts with more than ten electrons/);
+    expect(checkCharges(bench({ bodies: [{ id: 'atom', shape: 'atom', radius: 1, charge: 2, x: 0, pairs: 10 }], clips: {} }))).toEqual([]);
     expect(checkCharges(points([{ id: 'a', shape: 'rod', radius: 1, charge: 0, x: 0, wire: 'left' }]))[0]).toMatch(/only a sphere is joined/);
     expect(checkCharges(pair({ view: [5, 1, 0, 1] }))[0]).toMatch(/left, right, bottom, top/);
     expect(checkCharges(pair({ pulls: ['c'] }))[0]).toMatch(/no body "c" to draw/);
@@ -258,6 +261,40 @@ describe('a charges element in a script', () => {
     expect(checkCharges(clip([{ dur: 1, electrons: [{ from: 'rod', to: 'silk', n: 1 }, { from: 'silk', to: 'ball', n: 1 }] }]))[0]).toMatch(/gives and takes electrons at once/);
     expect(checkCharges(clip([{ dur: 1, electrons: [{ from: 'rod', to: 'rod', n: 1.5 }] }]))).toHaveLength(3);
     expect(() => chargesAt(pair(), [['fly', 1]])).toThrow(/no clip "fly"/);
+  });
+
+  it('follows the electrons through the clips in the order they are played', () => {
+    // Written in the order a video plays them, the clips are sound.
+    expect(checkCharges(bench())).toEqual([]);
+    // Rubbing twice would take eight electrons from a rod that has six, and each problem is told once.
+    expect(checkCharges(bench(), ['rub', 'rub', 'rub'])).toEqual(['clip "rub", phase 1: body "rod" has no more electrons to give.']);
+    // A sphere must be joined to the ground before electrons run along the wire, whatever order the clips are written in.
+    const wired = bench({ clips: { run: { phases: [{ dur: 1, electrons: [{ from: 'ground', to: 'ball', n: 2 }] }] }, join: { phases: [{ dur: 1, ground: { ball: true } }] } } });
+    expect(checkCharges(wired)[0]).toMatch(/body "ball" is not joined to the ground/);
+    expect(checkCharges(wired, ['join', 'run'])).toEqual([]);
+    const scene = (plays: string[]): Explainer => ({
+      id: 'charges-order',
+      lessonId: 'p30-2-1',
+      title: 'Charges',
+      summary: 'A test.',
+      scenes: [{ layout: 'center', main: [wired], lines: [{ say: 'A sphere on a stand.', show: 'c' }, ...plays.map((play) => ({ say: 'Watch the electrons.', play }))] }],
+    });
+    expect(checkScript(scene(['c.join', 'c.run']))).toEqual([]);
+    expect(checkScript(scene(['c.run', 'c.join']))[0]).toMatch(/Scene 1: charges "c": clip "run", phase 1: body "ball" is not joined to the ground/);
+  });
+
+  it('keeps the electrons of an atom circling between clips', () => {
+    const atom: ChargesEl = bench({ bodies: [{ id: 'na', shape: 'atom', radius: 1.5, charge: 0, x: 0, pairs: 3 }], clips: {} });
+    const x = (el: ChargesEl): Explainer => ({ id: 'charges-age', lessonId: 'p30-2-1', title: 'Charges', summary: 'A test.', scenes: [{ layout: 'center', main: [el], lines: [{ say: 'Here it is.', show: 'c' }, { say: 'Look at it.' }] }] });
+    const tl = compile(x(atom), { '0.0': 3, '0.1': 3 });
+    // No clip is playing, but the picture's age goes on, so each frame is drawn afresh and the electrons move.
+    const [early, late] = [stateAt(tl, 4).els.c, stateAt(tl, 5).els.c];
+    expect(late.age! - early.age!).toBeCloseTo(1, 6);
+    expect(chargesAt(atom, [], late.age).bodies.na.minus[2]).not.toEqual(chargesAt(atom, [], early.age).bodies.na.minus[2]);
+    // A picture with no atom stays still between clips, so its frames can be reused.
+    const still = compile(x(pair()), { '0.0': 3, '0.1': 3 });
+    expect(stateAt(still, 5).els.c.age).toBeUndefined();
+    expect(JSON.stringify(stateAt(still, 4))).toBe(JSON.stringify(stateAt(still, 5)));
   });
 
   it('plays in a script, with parts that can be shown one at a time', () => {

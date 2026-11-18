@@ -2595,8 +2595,13 @@ export function checkParticles(e: ParticlesEl): string[] {
   return problems;
 }
 
-/** Problems with a charges element: marks that do not add up, electrons sent from a body that has none, clips that name no body. */
-export function checkCharges(e: ChargesEl): string[] {
+/**
+ * Problems with a charges element: marks that do not add up, electrons sent from a body that has
+ * none, clips that name no body. The electrons each body holds, and the wires to the ground, are
+ * followed through the clips in `order`: the order a scene plays them in (a clip can be played
+ * twice), or the order they are written in when none is given.
+ */
+export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips)): string[] {
   const problems: string[] = [];
   const ids = new Set(e.bodies.map((b) => b.id));
   const whole = (n: number) => Math.abs(n - Math.round(n)) < 1e-6;
@@ -2619,6 +2624,7 @@ export function checkCharges(e: ChargesEl): string[] {
       else if (!(Number.isInteger(b.pairs) && b.pairs > 0)) problems.push(`body "${b.id}" needs a whole number of pairs above zero.`);
       else if (!whole(b.charge / e.mark)) problems.push(`the charge of body "${b.id}" is not a whole number of marks.`);
       else if (b.pairs - Math.round(b.charge / e.mark) < 0) problems.push(`body "${b.id}" has too few pairs for its charge: it cannot lose more electrons than it has.`);
+      else if (shape === 'atom' && b.pairs - Math.round(b.charge / e.mark) > 10) problems.push(`atom "${b.id}" starts with more than ten electrons: its two shells have room for ten.`);
       else marked.set(b.id, b.pairs - Math.round(b.charge / e.mark));
     }
     if (shape === 'atom' && b.pairs === undefined) problems.push(`atom "${b.id}" needs its number of protons (\`pairs\`).`);
@@ -2636,26 +2642,15 @@ export function checkCharges(e: ChargesEl): string[] {
   for (const id of e.pulls ?? []) if (!ids.has(id)) problems.push(`no body "${id}" to draw the forces on.`);
   for (const pair of e.spans ?? []) for (const id of pair) if (!ids.has(id)) problems.push(`no body "${id}" to mark a distance from.`);
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
-  // The electrons each body holds are followed through the clips in the order they are written, as a video plays them.
   const shapes = new Map(e.bodies.map((b) => [b.id, b.shape ?? 'point']));
-  const first = new Map(marked);
-  const grounded = new Set<string>();
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
-    if (clip.reset) {
-      for (const [id, n] of first) marked.set(id, n);
-      grounded.clear();
-    }
     clip.phases.forEach((ph, pi) => {
       const where = `clip "${name}", phase ${pi + 1}`;
       if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
       for (const id of [...Object.keys(ph.to ?? {}), ...Object.keys(ph.charge ?? {}), ...Object.keys(ph.ground ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
       for (const id of Object.keys(ph.charge ?? {})) if (marked.has(id)) problems.push(`${where}: body "${id}" shows its charges, so its charge changes as electrons cross (\`electrons\`).`);
-      for (const [id, on] of Object.entries(ph.ground ?? {})) {
-        if (shapes.get(id) !== 'sphere') problems.push(`${where}: body "${id}" is not a sphere: only a sphere is joined to the ground.`);
-        if (on) grounded.add(id);
-        else grounded.delete(id);
-      }
+      for (const id of Object.keys(ph.ground ?? {})) if (shapes.get(id) !== 'sphere') problems.push(`${where}: body "${id}" is not a sphere: only a sphere is joined to the ground.`);
       if (ph.fly && ph.to) problems.push(`${where} cannot carry a body while time runs.`);
       if (ph.fly && !e.bodies.some((b) => b.mass)) problems.push(`${where} lets time run, but no body has a mass.`);
       if (ph.rate !== undefined && !(ph.rate > 0)) problems.push(`${where}: the rate must be above zero.`);
@@ -2669,21 +2664,46 @@ export function checkCharges(e: ChargesEl): string[] {
           if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
           else if (!marked.has(id)) problems.push(`${where}: body "${id}" does not show its charges (\`pairs\`), so no electron can be seen to cross.`);
         }
-        const other = t.from === 'ground' ? t.to : t.to === 'ground' ? t.from : null;
         if (t.from === 'ground' && t.to === 'ground') problems.push(`${where} sends electrons from the ground to the ground.`);
-        else if (other !== null && ids.has(other) && !grounded.has(other)) problems.push(`${where}: body "${other}" is not joined to the ground.`);
-        if (marked.has(t.from)) {
-          gives.add(t.from);
-          marked.set(t.from, marked.get(t.from)! - t.n);
-          if (marked.get(t.from)! < 0) problems.push(`${where}: body "${t.from}" has no more electrons to give.`);
-        }
-        if (marked.has(t.to)) {
-          takes.add(t.to);
-          marked.set(t.to, marked.get(t.to)! + t.n);
-          if (shapes.get(t.to) === 'atom' && marked.get(t.to)! > 10) problems.push(`${where}: atom "${t.to}" has room for ten electrons at most.`);
-        }
+        if (marked.has(t.from)) gives.add(t.from);
+        if (marked.has(t.to)) takes.add(t.to);
       }
       for (const id of gives) if (takes.has(id)) problems.push(`${where}: body "${id}" gives and takes electrons at once; use two phases.`);
+    });
+  }
+  // What depends on what has gone before: the electrons each body holds, and which spheres are joined to the ground.
+  const first = new Map(marked);
+  const grounded = new Set<string>();
+  const told = new Set<string>();
+  const tell = (problem: string) => {
+    if (!told.has(problem)) problems.push(problem);
+    told.add(problem);
+  };
+  for (const name of order) {
+    const clip = e.clips[name];
+    if (!clip) continue;
+    if (clip.reset) {
+      for (const [id, n] of first) marked.set(id, n);
+      grounded.clear();
+    }
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      for (const [id, on] of Object.entries(ph.ground ?? {})) {
+        if (on) grounded.add(id);
+        else grounded.delete(id);
+      }
+      for (const t of ph.electrons ?? []) {
+        const other = t.from === 'ground' ? t.to : t.to === 'ground' ? t.from : null;
+        if (other !== null && other !== 'ground' && ids.has(other) && !grounded.has(other)) tell(`${where}: body "${other}" is not joined to the ground.`);
+        if (marked.has(t.from)) {
+          marked.set(t.from, marked.get(t.from)! - t.n);
+          if (marked.get(t.from)! < 0) tell(`${where}: body "${t.from}" has no more electrons to give.`);
+        }
+        if (marked.has(t.to)) {
+          marked.set(t.to, marked.get(t.to)! + t.n);
+          if (shapes.get(t.to) === 'atom' && marked.get(t.to)! > 10) tell(`${where}: atom "${t.to}" has room for ten electrons at most.`);
+        }
+      }
     });
   }
   return problems;
@@ -2744,7 +2764,9 @@ export function checkScript(x: Explainer): string[] {
       if (e.kind === 'charges') {
         diagrams.set(e.id, new Set<string>([...CHARGES_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
-        problems.push(...checkCharges(e).map((p) => `Scene ${si + 1}: charges "${e.id}": ${p}`));
+        // The clips are followed in the order the scene plays them (and a clip can be played twice).
+        const played = s.lines.flatMap((l) => asList(l.play)).map((target) => target.split('.')).filter(([el]) => el === e.id).map(([, clip]) => clip ?? '');
+        problems.push(...checkCharges(e, played).map((p) => `Scene ${si + 1}: charges "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
