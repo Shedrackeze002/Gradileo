@@ -1401,12 +1401,13 @@ items ship or decisions change.
        a solid (malleable metals, alloys whose `pin`ned atoms jam the layers), polymer `chain`
        molecules, and a `scatter` element for the gold foil. Electrons fill shell by shell, are
        lost and gained as the narrator speaks.
-     - In progress (18 November 2026): group 2 part 2, Chemistry 20. Done: atoms and ions,
-       ionic compounds, electronegativity and bond types (a new `pull` slides a shared pair
+     - Scripted (18 November 2026): group 2 part 2, all 26 Chemistry 20 videos: atoms and ions,
+       ionic and polyatomic ions, electronegativity and bond types (a new `pull` slides a shared pair
        towards the more electronegative atom, and δ+ and δ− appear), Lewis structures (methane,
        water, ammonia, double and triple bonds up close), polar molecules (carbon dioxide's pulls
-       cancel, water's do not), and acids and bases (indicators, hydronium ions, ions or
-       molecules, neutralisation).
+       cancel, water's do not; molecules turning to face a charged rod), shapes of molecules
+       (electron groups spreading out, lone pairs), and acids and bases (indicators, hydronium
+       ions, ions or molecules, neutralisation).
      - Next: the rest of group 2 (Chemistry 30 and More Chemistry Topics), then animated
        openings for the calculation lessons (group 3). Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
