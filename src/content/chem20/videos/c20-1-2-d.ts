@@ -1,6 +1,8 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, ionBox, ionRow, lattice, tag } from './lib/c20-1a-figures.ts';
+import { saltDissolving } from './lib/c20-particles.ts';
+import { moltenSalt } from '../../chem30/videos/lib/c30-cells.ts';
 
 // A slice of an ionic lattice: each ion surrounded by ions of the opposite charge.
 const crystal = figure('lat', [lattice({ cols: 5, rows: 5 })]);
@@ -91,6 +93,25 @@ const video: Explainer = {
         { say: 'An electric current needs charged particles that can move.', show: 't' },
         { say: 'In a solid, the ions are locked in the lattice, so a solid ionic compound does not conduct.', show: ['cond.s-box', 'cond.s-ions', 'cond.s-name'] },
         { say: 'When the compound is melted, or dissolved in water, the ions are free to move, and it conducts.', show: ['cond.l-box', 'cond.l-ions', 'cond.l-name'] },
+      ],
+    },
+    {
+      chapter: 'Molten salt, up close',
+      layout: 'center',
+      main: [moltenSalt('ms')],
+      lines: [
+        { say: 'Here is molten sodium chloride up close, between two electrodes. Its ions are free to move about.', show: ['ms', 'ms.labels', 'ms.key'] },
+        { say: 'Switch on the current. The positive sodium ions drift to the negative electrode, and the negative chloride ions drift to the positive one. The moving ions carry the current.', play: 'ms.run' },
+        { say: 'At the electrodes they change, into sodium metal and chlorine gas. This is electrolysis.' },
+      ],
+    },
+    {
+      chapter: 'Dissolving, up close',
+      layout: 'center',
+      main: [{ ...saltDissolving('sd'), key: true }],
+      lines: [
+        { say: 'And here is a crystal of sodium chloride dropped into water.', show: ['sd', 'sd.labels', 'sd.key'] },
+        { say: 'Water molecules pull the ions off the crystal, one by one, until they are spread all through the water. The ions are free to move, so the solution conducts.', play: 'sd.drop' },
       ],
     },
     {
