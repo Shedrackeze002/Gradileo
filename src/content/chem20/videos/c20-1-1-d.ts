@@ -1,18 +1,20 @@
-import type { Explainer } from '@/video/script.ts';
-import { atomShells } from '@/video/chem.ts';
-import { figure } from '@/video/solids.ts';
-import { bracket, tag } from './lib/c20-1a-figures.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 
-// The aluminium ion: 13 protons and 14 neutrons, and 10 electrons arranged 2, 8, in brackets with 3+.
-const aluminium = figure(
-  'al',
-  [
-    atomShells({ protons: 13, neutrons: 14, shells: [2, 8], r: 1.6, gap: 1.2 }),
-    bracket({ c: [0, 0], half: [4.4, 4.4], charge: '3+', tone: 'opp' }),
-    tag('name', [0, -5.5], '\\ce{^{27}_{13}Al^3+}\\text{: 2, 8}', { tone: 'opp' }),
-  ],
-  560,
-);
+// An aluminium atom (src/video/atoms.ts): in the clip `lose` its three valence electrons drift
+// away one at a time, leaving the aluminium ion, Al3+, with ten electrons, 2, 8.
+const aluminium: AtomsEl = {
+  kind: 'atoms',
+  id: 'al',
+  span: [8, 8],
+  atoms: [{ id: 'al', symbol: 'Al', protons: 13, at: [4, 4.2], tone: 'opp', name: 'aluminium' }],
+  clips: {
+    lose: {
+      phases: [{ dur: 0.4 }, { dur: 1.1, give: [{ from: 'al', to: null, n: 1 }] }, { dur: 1.1, give: [{ from: 'al', to: null, n: 1 }] }, { dur: 1.1, give: [{ from: 'al', to: null, n: 1 }] }, { dur: 0.5 }],
+    },
+  },
+  poster: 'lose',
+  height: 520,
+};
 
 const video: Explainer = {
   id: 'c20-1-1-d',
@@ -84,9 +86,9 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'Forming an ion changes only the electrons; the nucleus stays the same. So to count the electrons in an ion, start from the atomic number and take away the charge.', show: 'rule' },
-        { say: 'How many protons, neutrons and electrons are in this aluminium ion, with mass number twenty-seven and a charge of three plus? The atomic number is thirteen, so it has thirteen protons.', show: ['al.nucleus', 'al.name', 'm.0'], focus: ['m.0', 'al.nucleus'] },
+        { say: 'How many protons, neutrons and electrons are in this aluminium ion, with mass number twenty-seven and a charge of three plus? The atomic number is thirteen, so it has thirteen protons.', show: ['al', 'al.labels', 'al.arrangement', 'm.0'], focus: ['m.0', 'al'] },
         { say: 'The neutrons are twenty-seven minus thirteen, which is fourteen.', show: 'm.1', focus: 'm.1' },
-        { say: 'The electrons are thirteen minus three, which is ten, the same number as neon.', show: ['al.shell-1', 'al.shell-2', 'al.bracket', 'm.2'], focus: ['m.2', 'al.shell-2'] },
+        { say: 'The electrons are thirteen minus three, which is ten, the same number as neon.', show: ['al.charges', 'm.2'], play: 'al.lose', focus: ['m.2', 'al'] },
       ],
     },
     {

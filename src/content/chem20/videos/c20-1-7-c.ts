@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { model, SHAPES, tag } from './lib/c20-1b-figures.ts';
+import { rodTest } from './lib/c20-molecules.ts';
 
 const [top, left, front, back] = SHAPES.tetrahedral();
 const [t1, t2, t3] = SHAPES.trigonal();
@@ -147,6 +148,15 @@ const video: Explainer = {
         { say: 'Methane is non-polar too, with four identical outer atoms.', show: 't.0', focus: 't.0' },
         { say: 'But swap even one chlorine for a hydrogen, and the balance is lost. Chloromethane and chloroform are polar.', show: ['t.1', 't.2'], focus: ['t.1', 't.2'] },
         { say: 'So symmetry needs identical outer atoms as well as an even shape. If one outer atom is different, the pulls no longer balance.', focus: 't' },
+      ],
+    },
+    {
+      chapter: 'Chloroform and carbon tetrachloride, up close',
+      layout: 'center',
+      main: [rodTest('rt', 'chloroform')],
+      lines: [
+        { say: 'You can see the difference near a charged rod. Here are chloroform molecules on the left, and carbon tetrachloride molecules on the right.', show: 'rt' },
+        { say: 'Bring a negatively charged rod near. Each chloroform molecule turns its slightly positive hydrogen end towards the rod, because its pulls do not cancel. Carbon tetrachloride’s four equal pulls cancel, so its molecules do not turn.', play: 'rt.rod' },
       ],
     },
     {

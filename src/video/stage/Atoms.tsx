@@ -82,6 +82,11 @@ export function AtomsView({ el, st, w, h, age, played }: { el: AtomsEl; st: ElSt
                 {`${a.symbol}${[...chargeText(q)].map((c) => SUPER[c] ?? c).join('').replace('⁻', '⁻')}`}
               </text>
             )}
+            {charges > 0 && q === 0 && f.partials[i] !== 0 && (
+              <text x={X(cx)} y={below ? Y(cy - outer) - 34 : Y(cy + outer) + 34} fill={f.partials[i] > 0 ? TONES.adj : TONES.bad} opacity={charges} fontSize={30} fontWeight={800} textAnchor="middle" dominantBaseline="central" style={{ fontFamily: FONT, paintOrder: 'stroke', stroke: 'rgb(13 12 36 / 0.85)', strokeWidth: 5 }}>
+                {f.partials[i] > 0 ? 'δ+' : 'δ−'}
+              </text>
+            )}
           </g>
         );
       })}

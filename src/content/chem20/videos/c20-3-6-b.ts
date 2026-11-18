@@ -1,5 +1,6 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
+import { acidIonising } from './lib/c20-particles.ts';
 import { arrow, balls, tag, water } from './lib/c20-3b-figures.ts';
 
 // Hydrogen chloride gives its hydrogen ion (yellow) to a water molecule: a hydronium ion and a chloride ion.
@@ -57,6 +58,15 @@ const video: Explainer = {
         { say: 'But a hydrogen ion is a bare proton, and it never floats free in water. Hydrogen chloride is a molecular compound. In water, each molecule meets a water molecule.', show: ['f.hcl', 'f.w'] },
         { say: 'The hydrogen ion attaches at once to the water molecule, forming a hydronium ion, H three O plus. What is left of the acid is a chloride ion.', caption: 'The hydrogen ion attaches at once to the water molecule, forming a hydronium ion, H₃O⁺. What is left of the acid is a chloride ion.', show: ['f.go', 'f.h3o', 'f.cl'], focus: 'f.h3o' },
         { say: 'This is ionisation: a molecular substance reacting with water to form ions.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Hydronium ions, up close',
+      layout: 'center',
+      main: [{ ...acidIonising('ai'), key: true }],
+      lines: [
+        { say: 'Here it is up close: hydrogen chloride molecules among water molecules.', show: ['ai', 'ai.labels', 'ai.key', 'ai.tally'] },
+        { say: 'Each time a hydrogen chloride molecule meets a water molecule, its hydrogen leaves the chlorine and joins the water as a hydronium ion. The chlorine is set free as a chloride ion.', play: 'ai.go' },
       ],
     },
     {

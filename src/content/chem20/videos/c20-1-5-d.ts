@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
+import { twoShare } from '../../chem10/videos/lib/c10-atoms.ts';
 import { tag } from './lib/c20-1b-figures.ts';
 
 // Carbon dioxide twice: first with single bonds (carbon short of an octet), then with two double
@@ -186,6 +187,16 @@ const video: Explainer = {
       lines: [
         { say: 'When you count bonding pairs, a double bond counts as two, and a triple bond as three. Carbon dioxide shows two bonds, but it has four bonding pairs.', show: ['oops', 't.0'] },
         { say: 'The check still works: four plus four is eight, half of sixteen. Methanal, C H two O, also has four bonding pairs, with two lone pairs on oxygen.', caption: 'The check still works: four plus four is eight, half of sixteen. Methanal, CH₂O, also has four bonding pairs, with two lone pairs on oxygen.', show: ['t.1', 't.2'], focus: 't.2' },
+      ],
+    },
+    {
+      chapter: 'Double and triple bonds, up close',
+      layout: 'split',
+      left: [twoShare('o2', { symbol: 'O', protons: 8, name: 'oxygen', tone: 'bad' }, { symbol: 'O', protons: 8, name: 'oxygen', tone: 'opp' }, 2.5, 2, 420)],
+      right: [twoShare('n2', { symbol: 'N', protons: 7, name: 'nitrogen', tone: 'theta' }, { symbol: 'N', protons: 7, name: 'nitrogen', tone: 'brand' }, 2.5, 3, 420)],
+      lines: [
+        { say: 'Here are double and triple bonds, up close. Two oxygen atoms have six outer electrons each. They share two pairs, a double bond, and each ends up with eight.', show: 'o2', play: 'o2.share' },
+        { say: 'Two nitrogen atoms have five each, so they share three pairs: a triple bond. Again, each ends up with eight.', show: 'n2', play: 'n2.share' },
       ],
     },
     {

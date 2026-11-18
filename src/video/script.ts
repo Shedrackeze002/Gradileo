@@ -1014,6 +1014,12 @@ export interface AtomsPhase {
   move?: Record<string, [number, number]>;
   /** A covalent bond: `n` outer electrons of each atom go to sit where their shells overlap. */
   share?: Array<{ a: string; b: string; n: number }>;
+  /**
+   * A polar bond: the electrons shared between `to` and `from` slide towards `to`'s nucleus, `by`
+   * of the way (0 shares them equally, 1 is as close as they go), as a more electronegative atom
+   * pulls them. 0 moves them back to the middle.
+   */
+  pull?: Array<{ to: string; from: string; by: number }>;
 }
 
 /** What an atoms element can show besides the atoms: each is a part ("at.arrangement"). */

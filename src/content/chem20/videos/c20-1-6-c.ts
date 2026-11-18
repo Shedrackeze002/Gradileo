@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { model, SHAPES, tag } from './lib/c20-1b-figures.ts';
+import { lonePairs } from './lib/c20-molecules.ts';
 
 const [, left, front, back] = SHAPES.tetrahedral();
 const [b1, b2] = SHAPES.bent();
@@ -69,6 +70,16 @@ const video: Explainer = {
       lines: [
         { say: 'Ammonia and water both have four electron groups around the central atom, just like methane. Yet neither molecule is tetrahedral.', show: 'title' },
         { say: 'In this part, you will see how lone pairs change the shape and the bond angles, and then predict any shape in four steps.' },
+      ],
+    },
+    {
+      chapter: 'Lone pairs, up close',
+      layout: 'center',
+      main: [lonePairs('lp')],
+      lines: [
+        { say: 'Lone pairs repel too. Here are ammonia and water, with their electron groups crowded together. The yellow balls are the lone pairs.', show: 'lp' },
+        { say: 'Each has four groups, so they spread out to the corners of a tetrahedron, just like methane.', play: 'lp.spread' },
+        { say: 'But a shape is named from the atoms only. Leave out the lone pairs, and ammonia is a pyramid, trigonal pyramidal, while water is V-shaped.', play: 'lp.name' },
       ],
     },
     {

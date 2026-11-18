@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
+import { waterShare } from '../../chem10/videos/lib/c10-atoms.ts';
 import { ringAround, tag } from './lib/c20-1b-figures.ts';
 
 const H2O_ATOMS = [
@@ -116,6 +117,15 @@ const video: Explainer = {
         { say: 'Each bonding pair is drawn as a line between the two atoms.', hide: ['m.p-bond-O-H1', 'm.p-bond-O-H2'], show: ['m.w-bond-O-H1', 'm.w-bond-O-H2'], focus: ['m.w-bond-O-H1', 'm.w-bond-O-H2'] },
         { say: 'Oxygen also keeps two pairs to itself. A pair that belongs to one atom only is called a lone pair, and it is drawn as two dots.', show: 'm.w-O-dots', focus: 'm.w-O-dots' },
         { say: 'So water has two bonding pairs and two lone pairs: four pairs, holding its eight valence electrons.', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'Water, up close',
+      layout: 'center',
+      main: [waterShare('w', 460)],
+      lines: [
+        { say: 'Here is water up close: an oxygen atom with six electrons in its outer level, and two hydrogen atoms with one each.', show: ['w', 'w.labels', 'w.arrangement'] },
+        { say: 'Oxygen shares a pair with each hydrogen atom: those are the two bonding pairs. Its other four outer electrons stay its own, as the two lone pairs.', play: 'w.share' },
       ],
     },
     {

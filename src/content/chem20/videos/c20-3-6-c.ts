@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { saltAndSugar } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-6-c',
@@ -59,6 +60,16 @@ const video: Explainer = {
         { say: 'Salts such as sodium chloride, potassium nitrate and calcium chloride form ions, so their solutions conduct. But the ions are neither hydronium nor hydroxide, so the solutions are neutral.', show: 'b.0' },
         { say: 'Molecular compounds such as sucrose and ethanol form no ions at all. Their solutions are neutral too.', show: 'b.1' },
         { say: 'Not every salt is neutral, though. Some react with water to make an acidic or basic solution, as you will see in later chemistry courses.', show: 'b.2' },
+      ],
+    },
+    {
+      chapter: 'Ions or molecules, up close',
+      layout: 'center',
+      main: [{ ...saltAndSugar('ss', 400), key: true }],
+      lines: [
+        { say: 'Here is the difference up close: a crystal of salt and a lump of sugar, dropped into water side by side.', show: ['ss', 'ss.labels', 'ss.key'] },
+        { say: 'The salt, an ionic compound, comes apart into separate ions. The sugar, a molecular compound, comes apart into whole molecules, and every atom stays bonded inside them.', play: 'ss.drop' },
+        { say: 'A molecular compound with O H in its formula behaves the same way: the O H stays inside the molecule, so no hydroxide ions are set free.', caption: 'A molecular compound with OH in its formula behaves the same way: the OH stays inside the molecule, so no hydroxide ions are set free.' },
       ],
     },
     {

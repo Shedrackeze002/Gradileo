@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hydride } from '../../chem10/videos/lib/c10-atoms.ts';
 
 const video: Explainer = {
   id: 'c20-1-5',
@@ -44,6 +45,15 @@ const video: Explainer = {
         { say: 'Every Lewis structure starts with a count. For a main-group element, the valence electrons come from its group. In groups thirteen to eighteen, take away ten.', show: 'rule' },
         { say: 'Hydrogen has one valence electron, and boron three. Carbon and silicon have four, and nitrogen and phosphorus five.', show: ['t.0', 't.1', 't.2', 't.3'], focus: ['t.0', 't.1', 't.2', 't.3'] },
         { say: 'Oxygen and sulfur have six, and the halogens, fluorine, chlorine, bromine and iodine, have seven.', show: ['t.4', 't.5'], focus: ['t.4', 't.5'] },
+      ],
+    },
+    {
+      chapter: 'Valence electrons, up close',
+      layout: 'center',
+      main: [hydride('ch4', { symbol: 'C', protons: 6, name: 'carbon', tone: 'brand' }, 4, 460)],
+      lines: [
+        { say: 'Here is what that count means, up close. A carbon atom has two electrons in its first level, and four in its outer level: its four valence electrons.', show: 'ch4' },
+        { say: 'Four hydrogen atoms bring one each. Carbon shares a pair with each of them, so its outer level holds eight: four bonds.', play: 'ch4.share' },
       ],
     },
     {

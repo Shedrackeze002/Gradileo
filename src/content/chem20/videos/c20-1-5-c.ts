@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
+import { hydride } from '../../chem10/videos/lib/c10-atoms.ts';
 
 // Phosphorus trichloride: phosphorus in the centre with one lone pair, single bonds to three
 // chlorine atoms, each with three lone pairs.
@@ -145,6 +146,15 @@ const video: Explainer = {
         { say: 'The same steps give these molecules, which all have single bonds only.', show: 't' },
         { say: 'Oxygen difluoride, for example, has twenty electrons, or ten pairs: two bonds and eight lone pairs.', focus: 't.4' },
         { say: 'Look at the last column. Carbon keeps no lone pairs, nitrogen and phosphorus keep one, and oxygen keeps two. Each central atom ends with an octet.', focus: 't' },
+      ],
+    },
+    {
+      chapter: 'Ammonia, up close',
+      layout: 'center',
+      main: [hydride('nh3', { symbol: 'N', protons: 7, name: 'nitrogen', tone: 'theta' }, 3, 460)],
+      lines: [
+        { say: 'Here is ammonia, N H three, up close: a nitrogen atom with five electrons in its outer level, and three hydrogen atoms.', caption: 'Here is ammonia, NH₃, up close: a nitrogen atom with five electrons in its outer level, and three hydrogen atoms.', show: 'nh3' },
+        { say: 'Nitrogen shares a pair with each hydrogen: three bonding pairs. Its other two outer electrons stay together as a lone pair, so nitrogen has eight.', play: 'nh3.share' },
       ],
     },
     {

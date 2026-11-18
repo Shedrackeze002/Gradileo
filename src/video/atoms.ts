@@ -32,7 +32,7 @@ interface Electron {
   /** Its place in the shell (0 to the shell's size less 1). */
   slot: number;
   /** When it is shared: the other atom, and its place among the bond's electrons. */
-  bond?: { other: number; k: number; n: number };
+  bond?: { other: number; k: number; n: number; shift?: number };
   /** When it is drifting off on its own (given to no atom), the direction it leaves in. */
   away?: number;
   /** Where it sits on its shell once its atom has bonded (kept clear of the bonds); it no longer turns. */
@@ -61,6 +61,11 @@ export interface AtomsFrame {
   shells: number[][];
   /** For each atom, its charge: protons less electrons. */
   charges: number[];
+  /**
+   * For each atom, its partial charge in a polar bond (after a `pull`): -1 for the atom the shared
+   * pair was pulled towards (δ−), +1 for the atom it was pulled from (δ+), 0 otherwise.
+   */
+  partials: number[];
   /** For each atom, the electrons in each shell including any still appearing (so its ring is drawn). */
   rings: number[][];
 }
@@ -141,6 +146,15 @@ function apply(el: AtomsEl, prev: Arrangement, ph: AtomsPhase, end: number): { n
     next.frozen[a] ??= end;
     next.frozen[b] ??= end;
   }
+  // A polar bond: the shared electrons slide towards one nucleus (a positive shift is towards the
+  // atom listed later in the element).
+  for (const p of ph.pull ?? []) {
+    const [to, from] = [idx(p.to), idx(p.from)];
+    const shift = (to > from ? 1 : -1) * Math.max(0, Math.min(1, p.by));
+    for (const e of next.electrons) {
+      if (e.bond && ((e.atom === to && e.bond.other === from) || (e.atom === from && e.bond.other === to))) e.bond = { ...e.bond, shift };
+    }
+  }
   // A bonded atom's other outer electrons move round its shell, clear of its bonds.
   const bonded = new Set((ph.share ?? []).flatMap((s) => [idx(s.a), idx(s.b)]));
   for (const i of bonded) spreadLonePairs(next, i, end);
@@ -199,7 +213,10 @@ function place(el: AtomsEl, arr: Arrangement, e: Electron, t: number): [number, 
     const [bx, by] = arr.centres[hi];
     const d = Math.hypot(bx - ax, by - ay) || 1;
     const [ux, uy] = [(bx - ax) / d, (by - ay) / d];
-    const mid = (SHELL_R[outerShell(arr.electrons, lo)] + d - SHELL_R[outerShell(arr.electrons, hi)]) / 2;
+    const even = (SHELL_R[outerShell(arr.electrons, lo)] + d - SHELL_R[outerShell(arr.electrons, hi)]) / 2;
+    // A polar bond's electrons slide towards one nucleus, stopping short of it.
+    const shift = e.bond.shift ?? 0;
+    const mid = even + shift * (shift > 0 ? d - even - 0.55 : even - 0.55);
     const half = e.bond.n / 2;
     const at = 2 * (e.bond.k % half) + (e.bond.k < half ? 0 : 1);
     const off = (at - (e.bond.n - 1) / 2) * 0.42;
@@ -231,7 +248,7 @@ function timedPhases(el: AtomsEl, played: AtomsPlay[], age: number): Array<{ ph:
   return out;
 }
 
-function summary(el: AtomsEl, arr: Arrangement): Pick<AtomsFrame, 'shells' | 'charges'> {
+function summary(el: AtomsEl, arr: Arrangement): Pick<AtomsFrame, 'shells' | 'charges' | 'partials'> {
   const shells = el.atoms.map((_, i) => {
     const counts = SHELL_CAP.map(() => 0);
     for (const e of arr.electrons) if (!e.away && (e.atom === i || e.bond?.other === i)) counts[e.atom === i ? e.shell : outerShell(arr.electrons, i)]++;
@@ -239,7 +256,15 @@ function summary(el: AtomsEl, arr: Arrangement): Pick<AtomsFrame, 'shells' | 'ch
     return counts;
   });
   const charges = el.atoms.map((a, i) => a.protons - arr.electrons.filter((e) => e.atom === i && !e.away).length);
-  return { shells, charges };
+  // A positive shift pulls a shared pair towards the atom listed later, a negative one earlier.
+  const partials = el.atoms.map(() => 0);
+  for (const e of arr.electrons) {
+    if (e.away !== undefined || !e.bond?.shift) continue;
+    const [lo, hi] = [Math.min(e.atom, e.bond.other), Math.max(e.atom, e.bond.other)];
+    partials[e.bond.shift > 0 ? hi : lo] = -1;
+    if (partials[e.bond.shift > 0 ? lo : hi] === 0) partials[e.bond.shift > 0 ? lo : hi] = 1;
+  }
+  return { shells, charges, partials };
 }
 
 /** The atoms at `age` seconds after the element appeared, with these clips started. */
@@ -303,7 +328,7 @@ export function checkAtoms(el: AtomsEl): string[] {
   }
   for (const [name, clip] of Object.entries(el.clips)) {
     clip.phases.forEach((ph, pi) => {
-      const named = [...Object.keys(ph.move ?? {}), ...Object.keys(ph.fill ?? {}), ...(ph.give ?? []).flatMap((g) => [g.from, ...(g.to ? [g.to] : [])]), ...(ph.share ?? []).flatMap((s) => [s.a, s.b])];
+      const named = [...Object.keys(ph.move ?? {}), ...Object.keys(ph.fill ?? {}), ...(ph.give ?? []).flatMap((g) => [g.from, ...(g.to ? [g.to] : [])]), ...(ph.share ?? []).flatMap((s) => [s.a, s.b]), ...(ph.pull ?? []).flatMap((p) => [p.to, p.from])];
       for (const id of named) if (!ids.has(id)) problems.push(`clip "${name}", phase ${pi + 1} names no atom "${id}".`);
       if (!(ph.dur > 0)) problems.push(`clip "${name}", phase ${pi + 1} needs a length (dur).`);
       for (const [id, n] of Object.entries(ph.fill ?? {})) if (n > total) problems.push(`clip "${name}", phase ${pi + 1} fills atom "${id}" past what its shells hold.`);

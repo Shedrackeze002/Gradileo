@@ -1,5 +1,6 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
+import { waterShare } from '../../chem10/videos/lib/c10-atoms.ts';
 import { model, SHAPES, tag } from './lib/c20-1b-figures.ts';
 
 const [l1, l2] = SHAPES.linear();
@@ -113,6 +114,39 @@ const pair = figure('m', [
   tag({ id: 'n-verdict', at: [N0, -2.1], tex: '\\text{trigonal pyramidal: polar}', tone: 'theta' }),
 ]);
 
+// Carbon dioxide (src/video/atoms.ts): each oxygen shares two pairs with carbon (clip `share`), then
+// both oxygens pull their pairs outwards (`pull`), in opposite directions, so the pulls cancel.
+const co2Atoms: AtomsEl = {
+  kind: 'atoms',
+  id: 'ca',
+  span: [17, 7],
+  atoms: [
+    { id: 'ol', symbol: 'O', protons: 8, at: [1.8, 3.5], tone: 'bad' },
+    { id: 'c', symbol: 'C', protons: 6, at: [8.5, 3.5], tone: 'brand' },
+    { id: 'or', symbol: 'O', protons: 8, at: [15.2, 3.5], tone: 'bad' },
+  ],
+  clips: {
+    share: {
+      phases: [
+        { dur: 1.6, move: { ol: [5.8, 3.5], or: [11.2, 3.5] } },
+        { dur: 2.4, share: [{ a: 'c', b: 'ol', n: 2 }, { a: 'c', b: 'or', n: 2 }] },
+      ],
+    },
+    pull: { phases: [{ dur: 2.2, pull: [{ to: 'ol', from: 'c', by: 0.5 }, { to: 'or', from: 'c', by: 0.5 }] }, { dur: 0.4 }] },
+  },
+  poster: 'pull',
+  height: 340,
+};
+
+// Water: oxygen shares a pair with each hydrogen (clip `share`), then pulls both towards itself
+// (`pull`), so both pulls lean the same way.
+const water = waterShare('wa', 400);
+const waterAtoms: AtomsEl = {
+  ...water,
+  clips: { ...water.clips, pull: { phases: [{ dur: 2.2, pull: [{ to: 'o', from: 'h1', by: 0.55 }, { to: 'o', from: 'h2', by: 0.55 }] }, { dur: 0.4 }] } },
+  poster: 'pull',
+};
+
 const video: Explainer = {
   id: 'c20-1-7-b',
   lessonId: 'c20-1-7',
@@ -160,6 +194,18 @@ const video: Explainer = {
         { say: 'But water is V-shaped. Both bonds pull electron charge towards the oxygen at the point of the V, so the pulls lean the same way, and cannot cancel.', show: ['m.pulls', 's.1'], focus: ['m.pulls', 's.1'] },
         { say: 'So water is polar. The oxygen side is delta minus, and the side with the two hydrogens is delta plus.', caption: 'So water is polar. The oxygen side is δ−, and the side with the two hydrogens is δ+.', show: ['m.charges', 'm.verdict', 's.2'], focus: ['m.charges', 's.2'] },
         { say: 'So polar bonds do not always make a polar molecule. Carbon dioxide has two, and it is non-polar. The shape decides whether the pulls cancel.', show: 'oops' },
+      ],
+    },
+    {
+      chapter: 'Both molecules, up close',
+      layout: 'split',
+      left: [co2Atoms],
+      right: [waterAtoms],
+      lines: [
+        { say: 'Here are both molecules up close. In carbon dioxide, each oxygen shares two pairs with the carbon atom.', show: 'ca', play: 'ca.share' },
+        { say: 'Each oxygen pulls its shared pairs towards itself. The two pulls are equal and point in opposite directions, so they cancel.', show: 'ca.charges', play: 'ca.pull' },
+        { say: 'In water, oxygen pulls both shared pairs towards itself as well. But the two hydrogen atoms sit on the same side, so the pulls lean the same way: the oxygen side is delta minus, and the hydrogen side delta plus.', caption: 'In water, oxygen pulls both shared pairs towards itself as well. But the two hydrogen atoms sit on the same side, so the pulls lean the same way: the oxygen side is δ−, and the hydrogen side δ+.', show: ['wa', 'wa.charges'], play: ['wa.share'] },
+        { say: 'Watch the pairs slide towards the oxygen.', play: 'wa.pull' },
       ],
     },
     {

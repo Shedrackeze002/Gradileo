@@ -1,12 +1,20 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { bondPair, enScale } from './lib/c20-1a-figures.ts';
+import { enScale } from './lib/c20-1a-figures.ts';
+import { polarShare, waterShare } from '../../chem10/videos/lib/c10-atoms.ts';
 
-// Hydrogen chloride: the shared pair sits nearer chlorine, which is δ−; hydrogen is δ+.
-const hcl = figure('hcl', [bondPair({ a: 'H', b: 'Cl', t: 0.68, gap: 2.6, deltas: ['\\delta+', '\\delta-'] })], 380);
+// Hydrogen chloride (src/video/atoms.ts): in the clip `go` hydrogen and chlorine share a pair, and
+// chlorine pulls it towards itself; the `charges` part then marks chlorine δ− and hydrogen δ+.
+const hcl = polarShare('hcl', { symbol: 'H', protons: 1, name: 'hydrogen', tone: 'good' }, { symbol: 'Cl', protons: 17, name: 'chlorine', tone: 'adj' }, 2.8, 0.6, 400);
 
-// An O–H bond in water: the pair sits nearer oxygen, which is δ−; hydrogen is δ+.
-const oh = figure('oh', [bondPair({ a: 'O', b: 'H', t: 0.32, gap: 2.6, deltas: ['\\delta-', '\\delta+'] })], 380);
+// Water: oxygen shares a pair with each hydrogen (clip `share`), then pulls both pairs towards
+// itself (`pull`), so oxygen is δ− and each hydrogen δ+.
+const water = waterShare('oh', 400);
+const oh: AtomsEl = {
+  ...water,
+  clips: { ...water.clips, pull: { phases: [{ dur: 2.2, pull: [{ to: 'o', from: 'h1', by: 0.55 }, { to: 'o', from: 'h2', by: 0.55 }] }, { dur: 0.4 }] } },
+  poster: 'pull',
+};
 
 // Bonds on either side of the 1.7 line differ only a little; Al–I falls in the polar band.
 const scale = figure(
@@ -49,8 +57,8 @@ const video: Explainer = {
       lines: [
         { say: 'In a polar covalent bond, the more electronegative atom carries a small negative partial charge, written delta minus. The other atom carries a small positive partial charge, delta plus.', caption: 'In a polar covalent bond, the more electronegative atom carries a small negative partial charge, written δ−. The other atom carries a small positive partial charge, δ+.', show: 'def' },
         { say: 'These are smaller than the full charges of ions, because the electrons are still shared, not handed over.' },
-        { say: 'In hydrogen chloride, chlorine wins the tug-of-war, so the shared pair sits nearer to chlorine.', show: ['hcl.a', 'hcl.b', 'hcl.pair'], focus: 'hcl.pair' },
-        { say: 'So chlorine is the slightly negative end, delta minus, and hydrogen is the slightly positive end, delta plus.', caption: 'So chlorine is the slightly negative end, δ−, and hydrogen is the slightly positive end, δ+.', show: 'hcl.deltas', focus: 'hcl.deltas' },
+        { say: 'In hydrogen chloride, chlorine wins the tug-of-war, so the shared pair sits nearer to chlorine.', show: ['hcl', 'hcl.labels'], play: 'hcl.go' },
+        { say: 'So chlorine is the slightly negative end, delta minus, and hydrogen is the slightly positive end, delta plus.', caption: 'So chlorine is the slightly negative end, δ−, and hydrogen is the slightly positive end, δ+.', show: 'hcl.charges', focus: 'hcl' },
       ],
     },
     {
@@ -60,10 +68,10 @@ const video: Explainer = {
       left: [oh],
       right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\text{O } 3.4,\\ \\text{H } 2.2', '\\Delta\\text{EN} = 3.4 - 2.2 = 1.2', '0.5 \\le 1.2 < 1.7\\text{: polar covalent}', '\\overset{\\delta-}{\\text{O}}\\text{–}\\overset{\\delta+}{\\text{H}}'] }],
       lines: [
-        { say: 'Each water molecule has two bonds between oxygen and hydrogen. Classify one, and mark its partial charges. Oxygen is three point four, and hydrogen two point two.', show: ['m.0', 'oh.a', 'oh.b'], focus: 'm.0' },
+        { say: 'Each water molecule has two bonds between oxygen and hydrogen. Classify one, and mark its partial charges. Oxygen is three point four, and hydrogen two point two.', show: ['m.0', 'oh', 'oh.labels'], play: 'oh.share', focus: 'm.0' },
         { say: 'The difference is three point four minus two point two, which is one point two.', show: 'm.1', focus: 'm.1' },
-        { say: 'One point two is from zero point five up to one point seven, so the bond is polar covalent.', show: ['m.2', 'oh.pair'], focus: 'm.2' },
-        { say: 'Oxygen is more electronegative, so oxygen gets delta minus, and hydrogen gets delta plus.', caption: 'Oxygen is more electronegative, so oxygen gets δ−, and hydrogen gets δ+.', show: ['m.3', 'oh.deltas'], focus: ['m.3', 'oh.deltas'] },
+        { say: 'One point two is from zero point five up to one point seven, so the bond is polar covalent.', show: 'm.2', play: 'oh.pull', focus: 'm.2' },
+        { say: 'Oxygen is more electronegative, so oxygen gets delta minus, and hydrogen gets delta plus.', caption: 'Oxygen is more electronegative, so oxygen gets δ−, and hydrogen gets δ+.', show: ['m.3', 'oh.charges'], focus: ['m.3', 'oh'] },
       ],
     },
     {
