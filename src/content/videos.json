@@ -126311,5 +126311,323 @@
         "working": "A is positive, like B, so it pushes B east. C is negative, so it pulls B east as well. $0.40 + 0.40 = 0.80$ N east."
       }
     ]
+  },
+  "p30-2-3": {
+    "lessonId": "p30-2-3",
+    "title": "Electric Field Strength",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A field around a charge",
+        "t": 17.51
+      },
+      {
+        "title": "Measuring a field",
+        "t": 51.472
+      },
+      {
+        "title": "The force on a charge",
+        "t": 96.392
+      },
+      {
+        "title": "The field of a point charge",
+        "t": 140.478
+      },
+      {
+        "title": "Your turn",
+        "t": 192.996
+      },
+      {
+        "title": "Summary",
+        "t": 238.038
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-3:q",
+        "t": 209.576,
+        "prompt": "A test charge of +3.0 μC feels a force of 0.060 N towards the north at a point in an electric field. What is the electric field at that point?",
+        "choices": [
+          "$1.8 \\times 10^{-7}$ N/C, north",
+          "$5.0 \\times 10^{-5}$ N/C, north",
+          "$2.0 \\times 10^{4}$ N/C, south",
+          "$2.0 \\times 10^{4}$ N/C, north"
+        ],
+        "answer": 3,
+        "working": "$E = \\dfrac{F}{q} = \\dfrac{0.060}{3.0 \\times 10^{-6}} = 2.0 \\times 10^{4}$ N/C. The test charge is positive, so the field points the way the force does: north."
+      }
+    ]
+  },
+  "p30-2-3-b": {
+    "lessonId": "p30-2-3",
+    "title": "Field Lines and Adding Fields",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Field lines",
+        "t": 13.783
+      },
+      {
+        "title": "Two charges",
+        "t": 45.675
+      },
+      {
+        "title": "A uniform field",
+        "t": 77.839
+      },
+      {
+        "title": "Adding fields",
+        "t": 101.769
+      },
+      {
+        "title": "Where the field is zero",
+        "t": 160.447
+      },
+      {
+        "title": "Your turn",
+        "t": 207.4
+      },
+      {
+        "title": "Summary",
+        "t": 255.794
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-3-b:q",
+        "t": 228.153,
+        "prompt": "At a point P, the field of charge A is $3.0 \\times 10^{5}$ N/C towards the east, and the field of charge B is $5.0 \\times 10^{5}$ N/C towards the west. What is the net electric field at P?",
+        "choices": [
+          "$2.0 \\times 10^{5}$ N/C, west",
+          "$2.0 \\times 10^{5}$ N/C, east",
+          "$8.0 \\times 10^{5}$ N/C, west",
+          "$8.0 \\times 10^{5}$ N/C, east"
+        ],
+        "answer": 0,
+        "working": "The fields point opposite ways, so subtract: $5.0 \\times 10^{5} - 3.0 \\times 10^{5} = 2.0 \\times 10^{5}$ N/C, in the direction of the larger one, west."
+      }
+    ]
+  },
+  "p30-2-4": {
+    "lessonId": "p30-2-4",
+    "title": "Potential Difference",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stored energy",
+        "t": 15.027
+      },
+      {
+        "title": "Potential difference",
+        "t": 52.966
+      },
+      {
+        "title": "Which way charges fall",
+        "t": 106.308
+      },
+      {
+        "title": "Signs",
+        "t": 140.627
+      },
+      {
+        "title": "The electronvolt",
+        "t": 191.303
+      },
+      {
+        "title": "Your turn",
+        "t": 243.118
+      },
+      {
+        "title": "Summary",
+        "t": 272.21
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-4:q",
+        "t": 254.01,
+        "prompt": "How much energy does a 12 V battery give to 30 C of charge that passes through it?",
+        "choices": [
+          "0.40 J",
+          "360 J",
+          "2.5 J",
+          "42 J"
+        ],
+        "answer": 1,
+        "working": "$\\Delta E = q\\,\\Delta V = 30 \\times 12 = 360$ J."
+      }
+    ]
+  },
+  "p30-2-4-b": {
+    "lessonId": "p30-2-4",
+    "title": "The Field Between Parallel Plates",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A uniform field",
+        "t": 14.269
+      },
+      {
+        "title": "Volts per metre",
+        "t": 52.915
+      },
+      {
+        "title": "Closer plates",
+        "t": 108.234
+      },
+      {
+        "title": "Equal steps",
+        "t": 135.002
+      },
+      {
+        "title": "Your turn",
+        "t": 171.987
+      },
+      {
+        "title": "Summary",
+        "t": 209.823
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-4-b:q",
+        "t": 187.324,
+        "prompt": "Two parallel plates are 2.0 cm apart, with a potential difference of 500 V between them. What is the electric field between the plates?",
+        "choices": [
+          "10 V/m",
+          "250 V/m",
+          "25 000 V/m",
+          "1000 V/m"
+        ],
+        "answer": 2,
+        "working": "Change to metres: $d = 0.020$ m. $E = \\dfrac{\\Delta V}{d} = \\dfrac{500}{0.020} = 25\\,000$ V/m."
+      }
+    ]
+  },
+  "p30-2-5": {
+    "lessonId": "p30-2-5",
+    "title": "Charges Moving in a Uniform Field",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Constant acceleration",
+        "t": 24.827
+      },
+      {
+        "title": "Speed from a potential difference",
+        "t": 71.17
+      },
+      {
+        "title": "The gap does not matter",
+        "t": 107.756
+      },
+      {
+        "title": "Across the field",
+        "t": 141.826
+      },
+      {
+        "title": "The deflection",
+        "t": 178.491
+      },
+      {
+        "title": "Your turn",
+        "t": 222.226
+      },
+      {
+        "title": "Summary",
+        "t": 271.893
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-5:q",
+        "t": 245.182,
+        "prompt": "An alpha particle has a charge of $3.2 \\times 10^{-19}$ C and a mass of $6.6 \\times 10^{-27}$ kg. What is its acceleration in a uniform field of 3300 N/C?",
+        "choices": [
+          "$1.1 \\times 10^{-15}$ m/s²",
+          "$6.3 \\times 10^{-12}$ m/s²",
+          "$4.8 \\times 10^{7}$ m/s²",
+          "$1.6 \\times 10^{11}$ m/s²"
+        ],
+        "answer": 3,
+        "working": "$a = \\dfrac{qE}{m} = \\dfrac{3.2 \\times 10^{-19} \\times 3300}{6.6 \\times 10^{-27}} = 1.6 \\times 10^{11}$ m/s²."
+      }
+    ]
+  },
+  "p30-2-5-b": {
+    "lessonId": "p30-2-5",
+    "title": "Millikan's Oil Drops",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A drop between two plates",
+        "t": 13.892
+      },
+      {
+        "title": "Balance",
+        "t": 49.521
+      },
+      {
+        "title": "The charge of a drop",
+        "t": 82.218
+      },
+      {
+        "title": "Charge comes in steps",
+        "t": 119.303
+      },
+      {
+        "title": "Your turn",
+        "t": 166.109
+      },
+      {
+        "title": "Summary",
+        "t": 200.815
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-5-b:q",
+        "t": 179.156,
+        "prompt": "An oil drop has a charge of $6.4 \\times 10^{-19}$ C. How many excess electrons does it carry?",
+        "choices": [
+          "4",
+          "6",
+          "10",
+          "64"
+        ],
+        "answer": 0,
+        "working": "Divide by the elementary charge: $\\dfrac{6.4 \\times 10^{-19}}{1.60 \\times 10^{-19}} = 4.0$, so the drop carries 4 excess electrons."
+      }
+    ]
   }
 }
