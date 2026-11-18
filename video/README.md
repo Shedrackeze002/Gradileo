@@ -518,6 +518,31 @@ See `src/video/script.ts` for every element and option. In short:
   whose end the thumbnail shows, and `thumb` the parts drawn on it. North is red, south blue,
   the field violet (`\brand`), a current yellow and a force orange.
 
+- `magnets` (`src/video/magnets.ts`) is for magnetism: bar magnets, compasses, pieces of iron and
+  long straight wires seen end-on, in a `view` of [left, right, bottom, top]. Nothing is typed
+  in: the field at every point is worked out from what is in the picture, so each compass needle
+  points the right way and each field line follows the field. A bar (`bars`: `at`, `long`,
+  `thick`, and an `angle` for the way its north pole faces) is two poles, so its lines leave the
+  north pole and curve round to the south pole (`lines: 16` on a bar sets how many). A wire
+  (`wires`) carries `amps` out of the page (a dot) or, when negative, into it (a cross), and has
+  the field μ₀I ÷ 2πr round it by the right-hand rule; give `length: { metres: 0.01, symbol:
+  'cm' }` so the strengths come out in teslas. The lines round wires are closed loops, so they
+  start from `seeds`: one point on each loop that is wanted. Rows of wires make a solenoid, and
+  `uniform: [Bx, By]` adds a uniform field (drawn as straight lines when it is alone, or given a
+  tiny size to stand for the Earth's field, which turns the compasses until a current is
+  switched on). `iron` is a block drawn with its domains: arrows that point every way until a
+  phase raises its `order` to 1 and they turn to the field. `earth` draws the Earth round the
+  first bar, with the geographic poles named. The parts are `lines`, `compass`, `field` (an arrow
+  along the field at each of the `probes`, with "B = … T" when the picture has no bar magnet),
+  `distance` (from the first wire to each probe) and `force` (the push or pull between bar
+  magnets, and F = BIL on each wire, in newtons when the wire has `metres` in the field and in
+  newtons for each metre otherwise). A phase can carry anything to a new place (`to`), `turn` a
+  bar, change the `amps` of a wire or set the `order` of a piece of iron. A wire's label is its
+  current; `label: ''` leaves it bare, which a solenoid needs. Keep the seeds of a solenoid
+  inside its turns and away from the wires, where a line would wobble. `poster` names the clip
+  whose end the thumbnail shows, and `thumb` the parts drawn on it. North is red, south blue,
+  the field violet (`\brand`), a current yellow and a force orange.
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as
