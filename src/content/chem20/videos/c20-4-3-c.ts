@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c20-4a-figures.ts';
 
@@ -38,6 +39,16 @@ const video: Explainer = {
       lines: [
         { say: 'A balance measures grams, but chemists count particles in moles. The molar mass is the bridge between them.', show: 'title' },
         { say: 'In this part, you will change a mass into an amount in moles, and an amount back into a mass.' },
+      ],
+    },
+    {
+      chapter: 'One mole of methane',
+      layout: 'center',
+      main: [reaction('me', { from: [{ t: 'C', label: 'C: 12.01' }, { t: 'H', n: 4, label: 'H: 1.01 each' }], to: [{ t: 'CH4', label: 'CH₄' }], foot: { after: '1 mol CH₄ = 16.05 g' } })],
+      lines: [
+        { say: 'Here is one carbon atom and four hydrogen atoms.', show: 'me' },
+        { say: 'Watch them join into a methane molecule, with a molar mass of sixteen point zero five grams per mole.', caption: 'Watch them join into a methane molecule, with a molar mass of 16.05 g/mol.', play: 'me.go' },
+        { say: 'So sixteen point zero five grams of methane is one mole. Any other mass divided by that gives the amount in moles.', caption: 'So 16.05 g of methane is one mole. Any other mass divided by that gives the amount in moles.' },
       ],
     },
     {

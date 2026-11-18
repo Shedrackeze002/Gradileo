@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { growingChain } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { rowStructure, tag } from './lib/c30-3a-figures.ts';
 
@@ -28,6 +29,16 @@ const video: Explainer = {
       lines: [
         { say: 'Two bottles are both labelled C six H fourteen. One holds a liquid that boils at sixty-nine degrees Celsius, the other one that boils at fifty degrees Celsius. They are different compounds with the same formula.', caption: 'Two bottles are both labelled C₆H₁₄. One holds a liquid that boils at 69 °C, the other one that boils at 50 °C. They are different compounds with the same formula.', show: 'title' },
         { say: 'So chemists everywhere use one set of naming rules, agreed by eye-you-pack. This part names straight chains. Part two names branched alkanes, part three draws a structure from its name, and part four names alkenes and alkynes.', caption: 'So chemists everywhere use one set of naming rules, agreed by IUPAC. This part names straight chains. Part two names branched alkanes, part three draws a structure from its name, and part four names alkenes and alkynes.' },
+      ],
+    },
+    {
+      chapter: 'A chain growing',
+      layout: 'center',
+      main: [growingChain('gc')],
+      lines: [
+        { say: 'Here is a carbon chain, up close.', show: 'gc' },
+        { say: 'Watch it grow one carbon at a time.', play: 'gc.grow' },
+        { say: 'Each length has its own stem: meth for one carbon, eth for two, prop for three, but for four. An alkane adds the ending ane.' },
       ],
     },
     {

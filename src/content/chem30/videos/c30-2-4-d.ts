@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { voltaic } from './lib/c30-cells.ts';
 import { figure } from '@/video/solids.ts';
 import { breathTube } from './lib/c30-2a-figures.ts';
 
@@ -24,6 +25,16 @@ const video: Explainer = {
           show: 'title',
         },
         { say: 'This time both half-reactions contain water and hydrogen ions, and some of them cancel. In this part, you will balance the whole equation.' },
+      ],
+    },
+    {
+      chapter: 'Two halves, two places',
+      layout: 'center',
+      main: [voltaic('ve', { seed: 2 })],
+      lines: [
+        { say: 'Here is a zinc–copper cell, with the two halves of the reaction in separate beakers.', show: ['ve', 've.labels', 've.key', 've.tally'] },
+        { say: 'Zinc atoms give up electrons and go into solution, and copper ions take electrons and plate out.', play: 've.run' },
+        { say: 'The electrons lost on one side must all be gained on the other. That is the same matching we do when we add two half-reactions.' },
       ],
     },
     {

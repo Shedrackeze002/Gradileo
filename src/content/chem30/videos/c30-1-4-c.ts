@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { endothermic } from './lib/c30-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { twoLevels } from './lib/c30-1a-figures.ts';
 
@@ -26,6 +27,16 @@ const video: Explainer = {
       lines: [
         { say: 'A picture can say what an equation says. An enthalpy diagram shows at a glance whether a reaction releases energy or absorbs it, and how much.', show: 'title' },
         { say: 'In this part, you will draw enthalpy diagrams for exothermic and endothermic reactions, and read one back into an equation.' },
+      ],
+    },
+    {
+      chapter: 'Energy taken in',
+      layout: 'center',
+      main: [endothermic('en', { seed: 3 })],
+      lines: [
+        { say: 'Here is dinitrogen tetroxide in a tube, with a thermometer.', caption: 'Here is N₂O₄ in a tube, with a thermometer.', show: ['en', 'en.labels', 'en.key', 'en.tally', 'en.thermo'] },
+        { say: 'Each molecule that splits takes energy from the motion of the particles around it, so the thermometer falls.', play: 'en.go', focus: 'en.tally' },
+        { say: 'The products hold more energy than the reactant, so on an enthalpy diagram the arrow points up: endothermic.' },
       ],
     },
     {

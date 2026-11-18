@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { waterShare } from '../../chem10/videos/lib/c10-atoms.ts';
 
 const video: Explainer = {
   id: 'c30-2-2-b',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'Sulfur is minus two in hydrogen sulfide, the gas that smells of rotten eggs. In sulfuric acid, it is plus six.', show: 'title' },
         { say: 'In this part, you will find the oxidation number of the one atom the rules leave, in compounds and in polyatomic ions.' },
+      ],
+    },
+    {
+      chapter: 'Water, up close',
+      layout: 'center',
+      main: [waterShare('h2o', 400)],
+      lines: [
+        { say: 'Here is an oxygen atom and two hydrogen atoms.', show: ['h2o', 'h2o.labels', 'h2o.arrangement'] },
+        { say: 'Watch oxygen share a pair with each hydrogen.', play: 'h2o.share' },
+        { say: 'Oxygen is more electronegative, so in the bookkeeping it takes both pairs: oxygen is minus two, each hydrogen is plus one, and the total is zero.' },
       ],
     },
     {

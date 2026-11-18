@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { dilutingAcid } from '../../chem10/videos/lib/c10-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { ionisedGrid } from './lib/c30-4b-figures.ts';
 
@@ -31,6 +32,16 @@ const video: Explainer = {
           say: 'So measuring the p H of a weak acid of known concentration gives x, and from x, K A and the percent ionisation. This part works backwards.',
           caption: 'So measuring the pH of a weak acid of known concentration gives x, and from x, Ka and the percent ionisation. This part works backwards.',
         },
+      ],
+    },
+    {
+      chapter: 'Diluting a weak acid',
+      layout: 'center',
+      main: [dilutingAcid('dl')],
+      lines: [
+        { say: 'Here are the hydrogen ions in a small volume of acid.', show: ['dl', 'dl.labels', 'dl.key', 'dl.volume'] },
+        { say: 'Add water, and the particles spread through a bigger volume.', play: 'dl.dilute' },
+        { say: 'For a weak acid, diluting it also lets a larger share of its molecules ionise, so its percent ionisation rises.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { methaneBurning } from '../../chem30/videos/lib/c30-organic.ts';
 
 const RATIO = 'n(\\text{wanted}) = n(\\text{given}) \\times \\dfrac{\\text{wanted coefficient}}{\\text{given coefficient}}';
 
@@ -17,6 +18,16 @@ const video: Explainer = {
       lines: [
         { say: 'If you know the amount of one substance in a reaction, the balanced equation gives you the amount of every other substance.', show: 'title' },
         { say: 'In this part, you will use mole ratios to find amounts in moles, forwards, backwards, and from an equation that is not yet balanced.' },
+      ],
+    },
+    {
+      chapter: 'A fuel burning, up close',
+      layout: 'center',
+      main: [methaneBurning('mb')],
+      lines: [
+        { say: 'Here is methane, the simplest fuel, with two oxygen molecules.', show: 'mb' },
+        { say: 'Watch it burn to carbon dioxide and water.', play: 'mb.burn' },
+        { say: 'One methane needs two oxygens. That ratio, wanted over given, is what turns moles of one substance into moles of another, for methane, butane or any fuel.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { sugarDissolving } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-4',
@@ -16,6 +17,16 @@ const video: Explainer = {
         { say: 'A percentage tells you the mass of solute in a solution. But chemical reactions happen particle by particle.', show: 'title' },
         { say: 'So chemists count the solute in moles, and give the concentration in moles per litre.' },
         { say: 'This first part covers the formula. Later parts start from a mass, make a solution of known concentration, and find the concentration of each ion.' },
+      ],
+    },
+    {
+      chapter: 'Sugar spreading through water',
+      layout: 'center',
+      main: [sugarDissolving('sd')],
+      lines: [
+        { say: 'Here is a lump of sugar held above some water.', show: ['sd', 'sd.labels'] },
+        { say: 'Let it go, and the sugar molecules spread through the whole volume.', play: 'sd.drop' },
+        { say: 'Molar concentration counts the solute in moles and the solution in litres: how many moles of sugar there are in each litre.' },
       ],
     },
     {

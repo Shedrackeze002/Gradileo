@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { dilutingAcid } from '../../chem10/videos/lib/c10-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { twoScales } from './lib/c20-3b-figures.ts';
 
@@ -24,6 +25,16 @@ const video: Explainer = {
           caption: '0.10 mol/L hydrochloric acid has [H₃O⁺] = 0.10 mol/L; 0.10 mol/L sodium hydroxide, at 25 °C, has 1.0 × 10⁻¹³ mol/L: 10¹² times less.',
         },
         { say: 'Comparing numbers like these is awkward, so chemists use the p H scale. This part finds the p H from a concentration. Later parts go the other way, bring in p O H, and read the scale.', caption: 'Comparing numbers like these is awkward, so chemists use the pH scale. This part finds the pH from a concentration. Later parts go the other way, bring in pOH, and read the scale.' },
+      ],
+    },
+    {
+      chapter: 'Diluting an acid, up close',
+      layout: 'center',
+      main: [dilutingAcid('dl')],
+      lines: [
+        { say: 'Here are the hydrogen ions in a small volume of acid.', show: ['dl', 'dl.labels', 'dl.key', 'dl.volume'] },
+        { say: 'Add water. The same hydrogen ions spread out through four times the volume, so their concentration falls to a quarter.', play: 'dl.dilute' },
+        { say: 'Hydrogen ion concentrations range over huge powers of ten, from about one mole per litre down to tiny fractions, so the p H scale counts the powers of ten instead.', caption: 'Hydrogen ion concentrations range over huge powers of ten, from about one mole per litre down to tiny fractions, so the pH scale counts the powers of ten instead.' },
       ],
     },
     {

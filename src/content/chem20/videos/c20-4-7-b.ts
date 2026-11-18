@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { n2o4 } from '../../chem30/videos/lib/c30-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { filtration, room, yieldBars } from './lib/c20-4b-figures.ts';
 
@@ -23,6 +24,16 @@ const video: Explainer = {
       lines: [
         { say: 'A percent yield of one hundred percent is very rare, even for a careful chemist.', show: 'title' },
         { say: 'In this part, you will see why the actual yield falls short, and what it means when a yield comes out too high.' },
+      ],
+    },
+    {
+      chapter: 'A reaction that stops part way',
+      layout: 'center',
+      main: [n2o4('eq', { seed: 6 })],
+      lines: [
+        { say: 'Here is a tube of dinitrogen tetroxide, splitting into nitrogen dioxide.', caption: 'Here is a tube of N₂O₄, splitting into NO₂.', show: ['eq', 'eq.labels', 'eq.key', 'eq.tally'], play: 'eq.go' },
+        { say: 'Watch the count. It climbs, then levels off, because the products also turn back into the reactant. The reaction never finishes.', focus: 'eq.tally' },
+        { say: 'That is one reason a yield falls short. Others are product lost in transfers, side reactions and impure reactants.' },
       ],
     },
     {

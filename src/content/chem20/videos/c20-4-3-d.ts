@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c20-4a-figures.ts';
 
@@ -64,6 +65,16 @@ const video: Explainer = {
       lines: [
         { say: 'One mole of anything holds the same number of particles. That number turns an amount in moles into a count of molecules, and molecules into atoms.', show: 'title' },
         { say: 'In this last part, you will use Avogadro’s number to count molecules and atoms, starting from moles or from a mass.' },
+      ],
+    },
+    {
+      chapter: 'Counting the atoms inside',
+      layout: 'center',
+      main: [reaction('ws', { from: [{ t: 'H2O', n: 2 }], to: [{ t: 'H2', n: 2 }, { t: 'O2' }], counts: true })],
+      lines: [
+        { say: 'Here are two water molecules.', show: 'ws' },
+        { say: 'Watch them split up into hydrogen and oxygen.', play: 'ws.go' },
+        { say: 'Two molecules held six atoms. So a number of molecules, times the atoms in each, gives the number of atoms. The same works for a mole: six point zero two times ten to the twenty-three of them.', caption: 'Two molecules held six atoms. So a number of molecules, times the atoms in each, gives the number of atoms. The same works for a mole: 6.02 × 10²³ of them.' },
       ],
     },
     {

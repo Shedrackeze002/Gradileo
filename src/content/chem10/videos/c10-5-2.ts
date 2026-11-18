@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c10-5-figures.ts';
 
@@ -41,6 +42,16 @@ const video: Explainer = {
           show: 'title',
         },
         { say: 'The molar mass is the bridge between the mass you can weigh and the particles you cannot see. In this video, you will change mass into moles, and back. Later parts go on to particles, and to balanced equations.' },
+      ],
+    },
+    {
+      chapter: 'One water molecule, up close',
+      layout: 'center',
+      main: [reaction('wm', { from: [{ t: 'O', label: 'O: 16.00' }, { t: 'H', n: 2, label: 'H: 1.01 each' }], to: [{ t: 'H2O', label: 'H₂O' }], foot: { after: '16.00 + 2 × 1.01 = 18.02 g/mol' } })],
+      lines: [
+        { say: 'Here is one oxygen atom and two hydrogen atoms, each with its molar mass.', show: 'wm' },
+        { say: 'Watch them join into a water molecule. The masses add up to eighteen point zero two grams per mole.', caption: 'Watch them join into a water molecule. The masses add up to 18.02 g/mol.', play: 'wm.go' },
+        { say: 'So a mole of water molecules has a mass of eighteen point zero two grams. That link between moles and grams is what this part is about.', caption: 'So a mole of water molecules has a mass of 18.02 g. That link between moles and grams is what this part is about.' },
       ],
     },
     {

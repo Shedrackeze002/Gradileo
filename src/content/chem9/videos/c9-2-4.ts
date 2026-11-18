@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c9-2-4',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'Atoms are far too small to weigh one at a time, but chemists can still compare their masses.', show: 'title' },
         { say: 'In this video, you will work out the relative formula mass of a compound, and what percentage of its mass comes from each element.' },
+      ],
+    },
+    {
+      chapter: 'Adding up the masses',
+      layout: 'center',
+      main: [reaction('ma', { from: [{ t: 'C', label: 'C = 12' }, { t: 'O', n: 2, label: 'O = 16 each' }], to: [{ t: 'CO2', label: 'CO₂' }], foot: { after: 'Mr = 12 + 16 + 16 = 44' } })],
+      lines: [
+        { say: 'Here is a carbon atom, with a relative atomic mass of twelve, and two oxygen atoms, sixteen each.', show: 'ma' },
+        { say: 'Watch them join into one molecule of carbon dioxide. No atom is lost, so the molecule has all their mass: twelve plus sixteen plus sixteen, which is forty-four.', play: 'ma.go' },
+        { say: 'That total is the relative formula mass: add up the relative atomic masses of every atom in the formula.' },
       ],
     },
     {

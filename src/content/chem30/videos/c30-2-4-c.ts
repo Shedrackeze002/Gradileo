@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { redox } from './lib/c30-atoms.ts';
 
 const video: Explainer = {
   id: 'c30-2-4-c',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'Deep purple permanganate solution loses its colour as it reacts with iron two ions. Chemists use this reaction to measure how much iron a sample holds.', caption: 'Deep purple permanganate solution loses its colour as it reacts with iron(II) ions. Chemists use this reaction to measure how much iron a sample holds.', show: 'title' },
         { say: 'In this part, you will combine two balanced half-reactions into one balanced redox equation.' },
+      ],
+    },
+    {
+      chapter: 'Matching the electrons',
+      layout: 'center',
+      main: [redox('mc', [{ id: 'c1', symbol: 'Cl', protons: 17, name: 'chlorine', at: [4, 3.6], tone: 'good' }, { id: 'mg', symbol: 'Mg', protons: 12, name: 'magnesium', at: [10, 3.6], tone: 'opp' }, { id: 'c2', symbol: 'Cl', protons: 17, name: 'chlorine', at: [16, 3.6], tone: 'good' }], [{ from: 'mg', to: 'c1', n: 1 }, { from: 'mg', to: 'c2', n: 1 }])],
+      lines: [
+        { say: 'Here is a magnesium atom, which loses two electrons, and two chlorine atoms, which each gain one.', show: ['mc', 'mc.labels', 'mc.arrangement'] },
+        { say: 'Watch the electrons move: one to each chlorine.', play: 'mc.give' },
+        { say: 'Electrons lost must equal electrons gained, so the chlorine half-reaction is used twice. Multiplying a whole half-reaction to match the electrons is the key step.', show: 'mc.charges' },
       ],
     },
     {

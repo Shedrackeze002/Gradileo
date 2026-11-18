@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { nuclei } from './lib/c10-equations.ts';
 import { atomShells } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { tag } from './lib/c10-2-figures.ts';
@@ -41,6 +42,16 @@ const video: Explainer = {
         { say: 'Look up chlorine in the periodic table and you will find 35.45 beside it. But a mass number counts whole particles. How can a chlorine atom have a mass of 35.45?', show: 'title' },
         { say: 'The answer is that no atom does. Chlorine is a mixture of two kinds of atom, and 35.45 is their average.' },
         { say: 'In this part, you will meet these kinds of atom, called isotopes. Then you will find their average, and work backwards from it.' },
+      ],
+    },
+    {
+      chapter: 'Three nuclei, up close',
+      layout: 'center',
+      main: [nuclei('nu', [{ label: 'hydrogen-1', p: 1, n: 0 }, { label: 'hydrogen-2', p: 1, n: 1 }, { label: 'hydrogen-3', p: 1, n: 2 }])],
+      lines: [
+        { say: 'Here are the particles of three hydrogen nuclei, still apart.', show: 'nu' },
+        { say: 'Watch each nucleus come together. Every one has a single proton, so every one is hydrogen.', play: 'nu.build' },
+        { say: 'But they have no neutrons, one neutron and two neutrons, so their mass numbers are one, two and three. These are the three isotopes of hydrogen.' },
       ],
     },
     {

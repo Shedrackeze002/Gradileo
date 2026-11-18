@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { methaneBurning } from '../../chem30/videos/lib/c30-organic.ts';
 
 const video: Explainer = {
   id: 'c10-4-2-d',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'A camping stove burns propane, and a car engine burns a mixture of fuels. Their equations, and reactions of ions in solution, need a little planning.', show: 'title' },
         { say: 'In this part, you will balance combustion equations, keep polyatomic ions together, and double every coefficient when oxygen needs a half.' },
+      ],
+    },
+    {
+      chapter: 'A fuel burning, up close',
+      layout: 'center',
+      main: [methaneBurning('mb')],
+      lines: [
+        { say: 'Here is a molecule of methane, a fuel, with two oxygen molecules.', show: 'mb' },
+        { say: 'Watch it burn. The carbon atom ends up in carbon dioxide, and its four hydrogen atoms end up in two water molecules, which need all four oxygen atoms.', play: 'mb.burn' },
+        { say: 'Every fuel made of carbon and hydrogen burns this way, so we balance carbon first, then hydrogen, and oxygen last.' },
       ],
     },
     {

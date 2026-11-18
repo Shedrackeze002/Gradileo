@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { sparked } from './lib/c30-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { bomb, burnerCan, join, room } from './lib/c30-1a-figures.ts';
 
@@ -45,6 +46,16 @@ const video: Explainer = {
       lines: [
         { say: 'How much energy is in a spoonful of sugar? To find out, chemists burn it completely, sealed inside a steel container under water.', show: 'title' },
         { say: 'In this part, you will see how a bomb calorimeter works, and use it to find a molar enthalpy of combustion.' },
+      ],
+    },
+    {
+      chapter: 'Burning in a sealed vessel',
+      layout: 'center',
+      main: [sparked('fl', { seed: 2 })],
+      lines: [
+        { say: 'Here are hydrogen and oxygen sealed in a strong container, like the steel bomb of a bomb calorimeter.', show: ['fl', 'fl.labels', 'fl.key', 'fl.tally', 'fl.thermo'] },
+        { say: 'A spark sets off the reaction, and the energy it releases spreads through the container.', play: 'fl.spark' },
+        { say: 'Nothing escapes, so all of that energy ends up warming the calorimeter and the water around it, which is what we measure.' },
       ],
     },
     {

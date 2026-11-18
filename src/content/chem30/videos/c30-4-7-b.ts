@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { ammoniaAndWater } from './lib/c30-protons.ts';
 
 const video: Explainer = {
   id: 'c30-4-7-b',
@@ -18,6 +19,16 @@ const video: Explainer = {
           say: 'This part finds the p H of weak bases, and of salts whose ions are weak acids or bases.',
           caption: 'This part finds the pH of weak bases, and of salts whose ions are weak acids or bases.',
         },
+      ],
+    },
+    {
+      chapter: 'A weak base, up close',
+      layout: 'center',
+      main: [ammoniaAndWater('pt')],
+      lines: [
+        { say: 'Here is ammonia and water.', show: 'pt' },
+        { say: 'Watch ammonia take a proton from water, leaving a hydroxide ion.', play: 'pt.go' },
+        { say: 'A weak base makes hydroxide ions this way, a few at a time, so we use K b to find the hydroxide concentration, then the p H.', caption: 'A weak base makes hydroxide ions this way, a few at a time, so we use Kb to find the hydroxide concentration, then the pH.' },
       ],
     },
     {

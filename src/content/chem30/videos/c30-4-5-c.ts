@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { ammoniaAndWater } from './lib/c30-protons.ts';
 import { figure } from '@/video/solids.ts';
 import { LADDER_ROWS, ladder } from './lib/c30-4b-figures.ts';
 
@@ -46,6 +47,16 @@ const video: Explainer = {
       lines: [
         { say: 'So why does vinegar fizz on baking soda, but not on table salt?', show: 'title' },
         { say: 'This part writes the reaction between the strongest acid and base, and decides whether products or reactants are favoured.' },
+      ],
+    },
+    {
+      chapter: 'Which side wins?',
+      layout: 'center',
+      main: [ammoniaAndWater('pt')],
+      lines: [
+        { say: 'Here is ammonia and water.', show: 'pt' },
+        { say: 'Watch water give a proton to ammonia.', play: 'pt.go' },
+        { say: 'The products are a stronger acid and a stronger base than the reactants, so they mostly turn back. Reactions favour the side with the weaker acid and base.' },
       ],
     },
     {

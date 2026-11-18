@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { redox } from '../../chem30/videos/lib/c30-atoms.ts';
 import { figure } from '@/video/solids.ts';
 import { chargeBars } from './lib/c10-3-figures.ts';
 
@@ -22,6 +23,16 @@ const video: Explainer = {
       lines: [
         { say: 'Aluminium oxide is made of aluminium ions and oxide ions. But how many of each? The formula has to make their charges cancel.', show: 'title' },
         { say: 'In this part, you will write the formula of an ionic compound of two elements, using the fewest ions whose charges add up to zero.' },
+      ],
+    },
+    {
+      chapter: 'Aluminium meets oxygen',
+      layout: 'center',
+      main: [redox('ao', [{ id: 'o1', symbol: 'O', protons: 8, name: 'oxygen', at: [3, 4], tone: 'bad' }, { id: 'a1', symbol: 'Al', protons: 13, name: 'aluminium', at: [8, 4], tone: 'theta' }, { id: 'o2', symbol: 'O', protons: 8, name: 'oxygen', at: [13, 4], tone: 'bad' }, { id: 'a2', symbol: 'Al', protons: 13, name: 'aluminium', at: [18, 4], tone: 'theta' }, { id: 'o3', symbol: 'O', protons: 8, name: 'oxygen', at: [23, 4], tone: 'bad' }], [{ from: 'a1', to: 'o1', n: 2 }, { from: 'a1', to: 'o2', n: 1 }, { from: 'a2', to: 'o2', n: 1 }, { from: 'a2', to: 'o3', n: 2 }], [26, 8.4])],
+      lines: [
+        { say: 'Here are two aluminium atoms and three oxygen atoms. Each aluminium atom has three outer electrons to give, and each oxygen atom needs two.', show: ['ao', 'ao.labels', 'ao.arrangement'] },
+        { say: 'Watch the electrons move. Two aluminium atoms give six electrons in all, and three oxygen atoms take two each, which is also six.', play: 'ao.give' },
+        { say: 'So the ions come in the ratio two aluminium to three oxide, and the formula is A l two O three.', caption: 'So the ions come in the ratio two Al³⁺ to three O²⁻, and the formula is Al₂O₃.', show: 'ao.charges' },
       ],
     },
     {

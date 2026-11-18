@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { diluting } from './lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { beaker, molecule, tag } from './lib/c20-3a-figures.ts';
 
@@ -30,6 +31,16 @@ const video: Explainer = {
       lines: [
         { say: 'A swimming pool holds tens of thousands of litres of water. How much chlorine is in all of it?', show: 'title' },
         { say: 'In this part, you will use a quick rule for dilute solutions in water, both to find a concentration and to find a mass.' },
+      ],
+    },
+    {
+      chapter: 'Spreading through the water',
+      layout: 'center',
+      main: [diluting('dl', { start: 1, unit: 'L', from: 0.25, n: 5 })],
+      lines: [
+        { say: 'Here is a little chlorine solution, the kind added to a swimming pool, before it mixes with the rest of the water.', show: ['dl', 'dl.labels', 'dl.volume', 'dl.key'] },
+        { say: 'As it mixes in, the same particles spread through far more water.', play: 'dl.dilute' },
+        { say: 'In water, one part per million is one milligram of solute in every litre, so a pool test can read straight in milligrams per litre.' },
       ],
     },
     {

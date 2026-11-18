@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { alkaliInWater } from './lib/c10-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, mol, plus, row, stack, water } from './lib/c10-4-figures.ts';
 
@@ -25,6 +26,16 @@ const video: Explainer = {
       lines: [
         { say: 'Drop zinc into acid, and you see a solid fizzing in a liquid as a gas bubbles off. A symbol equation can show all of that.', show: 'title' },
         { say: 'In this part, you will add state symbols to an equation, tell a liquid from a solution, and balance the reaction of sodium with water.' },
+      ],
+    },
+    {
+      chapter: 'Solid, liquid, gas and aqueous',
+      layout: 'center',
+      main: [alkaliInWater('aw')],
+      lines: [
+        { say: 'Here are lithium, sodium and potassium dropped into water.', show: ['aw', 'aw.labels'] },
+        { say: 'Watch the solid metal react with the liquid water. Hydrogen gas bubbles away, and the metal hydroxide stays dissolved in the water.', play: 'aw.drop' },
+        { say: 'That one reaction has all four states: the metal is solid, the water is liquid, the hydrogen is a gas, and the hydroxide is aqueous, which means dissolved in water.' },
       ],
     },
     {

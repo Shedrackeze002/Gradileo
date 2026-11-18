@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { saltDissolving } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-4-b',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'In the laboratory, you weigh a solid on a balance. You cannot count its moles.', show: 'title' },
         { say: 'In this part, you will turn a mass into a concentration, and work out the mass of solid needed to make a solution.' },
+      ],
+    },
+    {
+      chapter: 'From a crystal to a solution',
+      layout: 'center',
+      main: [{ ...saltDissolving('sd'), key: true }],
+      lines: [
+        { say: 'Here is a weighed crystal of sodium chloride dropped into water.', show: ['sd', 'sd.labels', 'sd.key'] },
+        { say: 'It comes apart and spreads through the solution.', play: 'sd.drop' },
+        { say: 'We know its mass, so its molar mass gives the moles, and dividing by the volume in litres gives the concentration.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { waterAndWater } from '../../chem30/videos/lib/c30-protons.ts';
 import { figure } from '@/video/solids.ts';
 import { phStrip } from './lib/c20-3b-figures.ts';
 
@@ -22,6 +23,16 @@ const video: Explainer = {
       lines: [
         { say: 'Household ammonia is basic, so it is full of hydroxide ions. Yet it has a p H, which counts hydronium ions. How can that be?', caption: 'Household ammonia is basic, so it is full of hydroxide ions. Yet it has a pH, which counts hydronium ions. How can that be?', show: 'title' },
         { say: 'In this part, you will meet the p O H scale, and go between the p H and the hydroxide ion concentration.', caption: 'In this part, you will meet the pOH scale, and go between the pH and the hydroxide ion concentration.' },
+      ],
+    },
+    {
+      chapter: 'Water ionising, up close',
+      layout: 'center',
+      main: [waterAndWater('ww')],
+      lines: [
+        { say: 'Here are two water molecules, up close.', show: 'ww' },
+        { say: 'Every so often one water molecule hands a proton to another, making a hydronium ion and a hydroxide ion.', play: 'ww.go' },
+        { say: 'So even pure water holds a few hydroxide ions, and the p O H measures their concentration just as p H measures the hydrogen ions.', caption: 'So even pure water holds a few hydroxide ions, and the pOH measures their concentration just as pH measures the hydrogen ions.' },
       ],
     },
     {

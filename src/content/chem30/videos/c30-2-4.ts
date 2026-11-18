@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { displacement } from '../../chemmore/videos/lib/cx-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { breathTube } from './lib/c30-2a-figures.ts';
 
@@ -24,6 +25,16 @@ const video: Explainer = {
           show: 'title',
         },
         { say: 'In this lesson, you will balance equations like that one with the half-reaction method. This part balances one half-reaction in acidic solution. Later parts combine two.' },
+      ],
+    },
+    {
+      chapter: 'Electrons changing hands',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3 })],
+      lines: [
+        { say: 'Here is iron in copper two sulfate solution on the left, and copper in iron two sulfate solution on the right.', caption: 'Here is iron in copper(II) sulfate solution on the left, and copper in iron(II) sulfate solution on the right.', show: ['dp', 'dp.labels', 'dp.key'] },
+        { say: 'On the left, iron atoms give electrons to copper ions. Copper builds up, and iron goes into the solution.', show: 'dp.tally', play: 'dp.go' },
+        { say: 'Every redox reaction is two halves: one loses electrons, and the other gains them. We balance each half on its own first.' },
       ],
     },
     {

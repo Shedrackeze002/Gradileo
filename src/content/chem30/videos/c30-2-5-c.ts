@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { titrating } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c30-2-5-c',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'One titration can hide a mistake, such as an extra drop. And many samples are solids, like an iron ore, or too concentrated to titrate as they are.', show: 'title' },
         { say: 'In this part, you will average several trials, find the percent of iron in an ore, and handle a diluted sample.' },
+      ],
+    },
+    {
+      chapter: 'One trial, up close',
+      layout: 'center',
+      main: [titrating('tm')],
+      lines: [
+        { say: 'Here is one trial of a titration.', show: ['tm', 'tm.labels', 'tm.key', 'tm.tally'] },
+        { say: 'Watch it reach its end point.', play: 'tm.titrate' },
+        { say: 'A real result comes from several trials that agree closely. We average those volumes before we calculate.' },
       ],
     },
     {

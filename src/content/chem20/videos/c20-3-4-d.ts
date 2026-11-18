@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { beaker } from './lib/c20-3a-figures.ts';
 
@@ -34,6 +35,16 @@ const video: Explainer = {
       lines: [
         { say: 'A solution of calcium chloride holds no calcium chloride units at all. It holds calcium ions and chloride ions.', show: 'title' },
         { say: 'In this part, you will find the concentration of each ion, and go back from an ion to the compound.' },
+      ],
+    },
+    {
+      chapter: 'One compound, three ions',
+      layout: 'center',
+      main: [reaction('cc', { from: [{ t: 'CaCl2' }], to: [{ t: 'Ca2' }, { t: 'Clm', n: 2, label: '2Cl⁻' }], foot: { after: '1 mol CaCl₂ gives 1 mol Ca²⁺ and 2 mol Cl⁻' } })],
+      lines: [
+        { say: 'Here is one formula unit of calcium chloride: a calcium ion and two chloride ions.', show: 'cc' },
+        { say: 'Watch it dissolve. The ions separate and move off on their own.', play: 'cc.go' },
+        { say: 'Each unit gives one calcium ion and two chloride ions. So in a solution of calcium chloride, the chloride ions are twice as concentrated as the compound.' },
       ],
     },
     {

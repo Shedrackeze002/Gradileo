@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hotAndCold } from '../../chem10/videos/lib/c10-particles.ts';
 import { energyDiagram } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { twoLevels } from './lib/c30-1a-figures.ts';
@@ -27,6 +28,16 @@ const video: Explainer = {
       lines: [
         { say: 'Plants store the energy of sunlight in glucose. How would you write that energy change, every way you know?', show: 'title' },
         { say: 'In this part, you will use an enthalpy diagram with a mass, write photosynthesis all four ways, and tell an enthalpy diagram from a potential energy diagram.' },
+      ],
+    },
+    {
+      chapter: 'Warmer and cooler',
+      layout: 'center',
+      main: [hotAndCold('hc', 420)],
+      lines: [
+        { say: 'Here are two reactions in solution, each pair of solutions kept apart until the divider lifts.', show: ['hc', 'hc.labels', 'hc.thermo'] },
+        { say: 'Watch them mix. The left one warms its water, and the right one cools it.', play: 'hc.mix' },
+        { say: 'Left: products lower in energy, an arrow down on the enthalpy diagram. Right: products higher, an arrow up.' },
       ],
     },
     {

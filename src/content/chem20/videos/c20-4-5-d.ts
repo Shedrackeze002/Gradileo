@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { precipitating } from './lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { beaker, room } from './lib/c20-4b-figures.ts';
 
@@ -27,6 +28,16 @@ const video: Explainer = {
       lines: [
         { say: 'A reaction in solution is measured with a pipette or a burette, not a balance.', show: 'title' },
         { say: 'In this last part, you will use the volume and concentration of a solution in stoichiometry.' },
+      ],
+    },
+    {
+      chapter: 'Two solutions meeting',
+      layout: 'center',
+      main: [precipitating('pp')],
+      lines: [
+        { say: 'Here are silver nitrate and sodium chloride solutions just mixed.', show: ['pp', 'pp.labels', 'pp.key'] },
+        { say: 'Wherever a silver ion meets a chloride ion, they lock together and sink as silver chloride.', play: 'pp.mix' },
+        { say: 'The ions arrive in solution, so the moles come from concentration times volume. From there, the same mole ratio as always.' },
       ],
     },
     {

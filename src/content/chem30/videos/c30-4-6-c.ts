@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { strongAndWeak } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c30-4-6-c',
@@ -19,6 +20,16 @@ const video: Explainer = {
           show: 'title',
         },
         { say: 'This part answers all three questions with K A and K B.', caption: 'This part answers all three questions with Ka and Kb.' },
+      ],
+    },
+    {
+      chapter: 'Strong and weak, side by side',
+      layout: 'center',
+      main: [strongAndWeak('sw')],
+      lines: [
+        { say: 'Here are seven molecules each of hydrochloric acid and acetic acid in water.', show: ['sw', 'sw.labels', 'sw.key'] },
+        { say: 'Watch them meet water. Every hydrochloric acid molecule ionises, but only a few acetic acid molecules do.', show: 'sw.tally', play: 'sw.go' },
+        { say: 'The larger the K a, the more an acid ionises, and the stronger it is.', caption: 'The larger the Ka, the more an acid ionises, and the stronger it is.' },
       ],
     },
     {

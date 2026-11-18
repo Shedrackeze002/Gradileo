@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { balls } from './lib/c10-3-figures.ts';
 
@@ -48,6 +49,16 @@ const video: Explainer = {
       lines: [
         { say: 'Chalk, Epsom salts and many fertilizers contain ions made of several atoms joined together.', show: 'title' },
         { say: 'In this last part, you will meet five of these ions, name their compounds, and write their formulas, with brackets where they are needed.' },
+      ],
+    },
+    {
+      chapter: 'Ions that stay whole',
+      layout: 'center',
+      main: [reaction('ch', { from: [{ t: 'OH', label: 'OH⁻' }, { t: 'Ca2' }, { t: 'OH', label: 'OH⁻' }], to: [{ t: 'CaOH2' }], whole: true })],
+      lines: [
+        { say: 'Here is a calcium ion between two hydroxide ions. Each hydroxide ion is an oxygen atom and a hydrogen atom bonded together, with one negative charge on the pair.', show: 'ch' },
+        { say: 'Watch them come together as calcium hydroxide. Each hydroxide ion moves as one unit, and it never comes apart.', play: 'ch.go' },
+        { say: 'That is why we keep a polyatomic ion whole in a formula, and write brackets around it when we need two of them: C a, O H in brackets, two.', caption: 'That is why we keep a polyatomic ion whole in a formula, and write brackets around it when we need two of them: Ca(OH)₂.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { displacement } from '../../chemmore/videos/lib/cx-particles.ts';
 import type { DiagramTone } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { gives, mol, plus, room, row, star, water } from './lib/c20-4a-figures.ts';
@@ -33,6 +34,16 @@ const video: Explainer = {
       lines: [
         { say: 'Many reactions follow one of a few patterns. Recognise the pattern, and you know what to expect before you balance anything.', show: 'title' },
         { say: 'In this last part, you will sort reactions into five types, and predict the type from the reactants alone.' },
+      ],
+    },
+    {
+      chapter: 'One element replacing another',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3 })],
+      lines: [
+        { say: 'Here is iron in copper two sulfate solution on the left, and copper in iron two sulfate solution on the right.', caption: 'Here is iron in copper(II) sulfate solution on the left, and copper in iron(II) sulfate solution on the right.', show: ['dp', 'dp.labels', 'dp.key'] },
+        { say: 'On the left, each copper ion that hits the iron takes an iron atom’s place: copper builds up, and iron goes into solution. On the right, nothing happens.', show: 'dp.tally', play: 'dp.go' },
+        { say: 'An element taking the place of another in a compound is a single replacement, one of the five types of reaction in this part.' },
       ],
     },
     {

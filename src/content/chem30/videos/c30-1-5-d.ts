@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c30-1-5-d',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'Methane does not form cleanly from carbon and hydrogen, so its delta H cannot be measured that way. But carbon, hydrogen and methane all burn easily, and their combustions can be measured in a bomb calorimeter.', show: 'title' },
         { say: 'In this part, you will combine three equations, including some multiplied by fractions.' },
+      ],
+    },
+    {
+      chapter: 'Methane, atom by atom',
+      layout: 'center',
+      main: [reaction('me', { from: [{ t: 'C' }, { t: 'H2', n: 2 }], to: [{ t: 'CH4' }], counts: true })],
+      lines: [
+        { say: 'Here is a carbon atom and two hydrogen molecules.', show: 'me' },
+        { say: 'Watch them join into methane.', play: 'me.go' },
+        { say: 'This reaction is too slow to measure directly, but we can add up three combustion equations that start and end in the same place.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { propane, row, tag } from './lib/c20-4a-figures.ts';
 
@@ -33,6 +34,16 @@ const video: Explainer = {
       lines: [
         { say: 'Propane in a barbecue, octane in a car engine, ethanol in a camping stove: when a fuel burns in plenty of oxygen, it forms carbon dye-oxide and water.', caption: 'Propane in a barbecue, octane in a car engine, ethanol in a camping stove: when a fuel burns in plenty of oxygen, it forms carbon dioxide and water.', show: 'title' },
         { say: 'Oxygen turns up in both products, so these equations need a plan. In this part, you will balance burning fuels, including two that need extra care.' },
+      ],
+    },
+    {
+      chapter: 'Ethene burning, up close',
+      layout: 'center',
+      main: [reaction('eb', { from: [{ t: 'C2H4' }, { t: 'O2', n: 3 }], to: [{ t: 'CO2', n: 2 }, { t: 'H2O', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here is a molecule of ethene, a fuel, with three oxygen molecules.', show: 'eb' },
+        { say: 'Watch it burn. The two carbon atoms make two carbon dioxide molecules, and the four hydrogen atoms make two water molecules.', play: 'eb.go' },
+        { say: 'Those products hold six oxygen atoms, which is why three oxygen molecules were needed. Carbon first, then hydrogen, then oxygen.' },
       ],
     },
     {

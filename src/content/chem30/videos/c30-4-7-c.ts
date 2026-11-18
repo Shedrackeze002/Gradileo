@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hfAndWater } from './lib/c30-protons.ts';
 
 const video: Explainer = {
   id: 'c30-4-7-c',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'The approximation, c minus x is about c, is quick, but it is not always good enough.', caption: 'The approximation, c − x ≈ c, is quick, but it is not always good enough.', show: 'title' },
         { say: 'This part solves the full equation, with the quadratic formula, for an acid that ionises too much.' },
+      ],
+    },
+    {
+      chapter: 'Hydrofluoric acid, up close',
+      layout: 'center',
+      main: [hfAndWater('pt')],
+      lines: [
+        { say: 'Here is hydrogen fluoride and water.', show: 'pt' },
+        { say: 'Watch the proton move.', play: 'pt.go' },
+        { say: 'Hydrofluoric acid ionises more than most weak acids. When more than about five percent ionises, the usual shortcut is not accurate enough, and we solve the quadratic instead.' },
       ],
     },
     {

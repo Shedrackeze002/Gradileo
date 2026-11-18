@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c30-1-6',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'There are millions of possible reactions, and no data table could list the enthalpy change of every one. Instead, tables list one number for each compound: the energy change when it forms from its elements.', show: 'title' },
         { say: 'In this part, you will meet standard states, formation equations and standard enthalpies of formation. The later parts write formation equations, and use them to find delta H.' },
+      ],
+    },
+    {
+      chapter: 'Water from its elements',
+      layout: 'center',
+      main: [reaction('hb', { from: [{ t: 'H2', n: 2, label: '2H₂(g)' }, { t: 'O2', label: 'O₂(g)' }], to: [{ t: 'H2O', n: 2, label: '2H₂O(l)' }] })],
+      lines: [
+        { say: 'Here are hydrogen and oxygen, both as the gases they are at room conditions: their standard states.', show: 'hb' },
+        { say: 'Watch them react to make water.', play: 'hb.go' },
+        { say: 'Making a compound from its elements in their standard states is a formation reaction, and its energy change is the enthalpy of formation.' },
       ],
     },
     {

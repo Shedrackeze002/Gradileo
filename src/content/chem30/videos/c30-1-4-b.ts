@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c30-1-4-b',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'One reaction can have several molar enthalpies at once: one for each substance in its equation.', show: 'title' },
         { say: 'In this part, you will move between delta r H, for a whole equation, and the molar enthalpy of each substance in it.', caption: 'In this part, you will move between ΔrH, for a whole equation, and the molar enthalpy of each substance in it.' },
+      ],
+    },
+    {
+      chapter: 'Water from its elements',
+      layout: 'center',
+      main: [reaction('hb', { from: [{ t: 'H2', n: 2 }, { t: 'O2' }], to: [{ t: 'H2O', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here are two hydrogen molecules and one oxygen molecule.', show: 'hb' },
+        { say: 'Watch them react to make two water molecules.', play: 'hb.go' },
+        { say: 'The energy released belongs to the equation as written. Per mole of oxygen it is the whole amount, but per mole of hydrogen or of water it is half as much.' },
       ],
     },
     {

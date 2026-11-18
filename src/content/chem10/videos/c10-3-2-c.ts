@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { redox } from '../../chem30/videos/lib/c30-atoms.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, card, tag } from './lib/c10-3-figures.ts';
 
@@ -33,6 +34,16 @@ const video: Explainer = {
       lines: [
         { say: 'Potassium bromide, calcium sulfide, lithium nitride. The names of ionic compounds all follow one simple pattern.', show: 'title' },
         { say: 'In this part, you will name an ionic compound from its formula, and see why the name never counts the ions.' },
+      ],
+    },
+    {
+      chapter: 'Magnesium meets oxygen',
+      layout: 'center',
+      main: [redox('mo', [{ id: 'mg', symbol: 'Mg', protons: 12, name: 'magnesium', at: [5, 3.6], tone: 'opp' }, { id: 'o', symbol: 'O', protons: 8, name: 'oxygen', at: [15, 3.6], tone: 'bad' }], [{ from: 'mg', to: 'o', n: 2 }])],
+      lines: [
+        { say: 'Here are a magnesium atom and an oxygen atom.', show: ['mo', 'mo.labels', 'mo.arrangement'] },
+        { say: 'Watch magnesium give its two outer electrons to oxygen.', play: 'mo.give' },
+        { say: 'The metal ion keeps its name, magnesium, and the oxygen atom becomes an oxide ion. So the compound is magnesium oxide.', show: 'mo.charges' },
       ],
     },
     {

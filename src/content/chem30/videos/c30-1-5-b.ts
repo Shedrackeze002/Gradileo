@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { enthalpyLevels } from './lib/c30-1b-figures.ts';
 
@@ -45,6 +46,16 @@ const video: Explainer = {
       lines: [
         { say: 'A mountain top can be reached by a steep path or by a long winding one. Either way, the climb is the same height, because height depends only on where you start and where you finish.', show: 'title' },
         { say: "Enthalpy works in the same way. In this part, you will meet Hess's law, and see why it must be true." },
+      ],
+    },
+    {
+      chapter: 'Carbon to carbon dioxide',
+      layout: 'center',
+      main: [reaction('co', { from: [{ t: 'C' }, { t: 'O2' }], to: [{ t: 'CO2' }] })],
+      lines: [
+        { say: 'Here is a carbon atom and an oxygen molecule.', show: 'co' },
+        { say: 'Watch them make carbon dioxide in one step.', play: 'co.go' },
+        { say: 'Carbon can also burn to carbon monoxide first, which then burns to carbon dioxide. The start and the end are the same, so the total energy change must be the same either way.' },
       ],
     },
     {

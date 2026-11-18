@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { neutralizing } from '../../chem10/videos/lib/c10-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { phStrip, tag } from './lib/c20-3b-figures.ts';
 
@@ -51,6 +52,16 @@ const video: Explainer = {
       lines: [
         { say: 'Lemon juice has a p H of about two, and black coffee about five. Is lemon juice two and a half times as acidic? It is far more than that.', caption: 'Lemon juice has a pH of about 2, and black coffee about 5. Is lemon juice two and a half times as acidic? It is far more than that.', show: 'title' },
         { say: 'In this part, you will read the p H scale, compare two solutions on it, and classify a solution from its concentration.', caption: 'In this part, you will read the pH scale, compare two solutions on it, and classify a solution from its concentration.' },
+      ],
+    },
+    {
+      chapter: 'From acidic to neutral',
+      layout: 'center',
+      main: [neutralizing('nz')],
+      lines: [
+        { say: 'Here is hydrochloric acid with sodium hydroxide solution, just mixed.', show: ['nz', 'nz.labels', 'nz.tally'] },
+        { say: 'Each hydrogen ion that meets a hydroxide ion joins it as water.', play: 'nz.go' },
+        { say: 'With hydrogen ions left over the mixture is acidic, with hydroxide ions left over it is basic, and when they match it is neutral, at p H seven.', caption: 'With hydrogen ions left over the mixture is acidic, with hydroxide ions left over it is basic, and when they match it is neutral, at pH 7.' },
       ],
     },
     {

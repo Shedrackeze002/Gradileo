@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { redox } from './lib/c30-atoms.ts';
 
 const video: Explainer = {
   id: 'c30-2-4-b',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'The orange dye-chromate ion in the breath tester holds two chromium atoms. Each one turns into a green chromium three ion.', caption: 'The orange dichromate ion in the breath tester holds two chromium atoms. Each one turns into a green chromium(III) ion.', show: 'title' },
         { say: 'In this part, you will balance that half-reaction, then an oxidation, and see a mistake to avoid.' },
+      ],
+    },
+    {
+      chapter: 'Losing and gaining, up close',
+      layout: 'center',
+      main: [redox('nc', [{ id: 'na', symbol: 'Na', protons: 11, name: 'sodium', at: [5, 3.6], tone: 'brand' }, { id: 'cl', symbol: 'Cl', protons: 17, name: 'chlorine', at: [15, 3.6], tone: 'good' }], [{ from: 'na', to: null, n: 1 }, { fill: 'cl', to: 18 }])],
+      lines: [
+        { say: 'Here are a sodium atom and a chlorine atom.', show: ['nc', 'nc.labels', 'nc.arrangement'] },
+        { say: 'Watch sodium lose an electron, and chlorine gain one.', play: 'nc.give' },
+        { say: 'The atoms are the same before and after, but the charges are not. In a half-reaction, only electrons can fix the charge.', show: 'nc.charges' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { displacement } from '../../chemmore/videos/lib/cx-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { potentials } from './lib/c30-2b-figures.ts';
 
@@ -56,6 +57,16 @@ const video: Explainer = {
       lines: [
         { say: 'Does copper dissolve in hydrochloric acid? Can permanganate attack chloride ions? A cell potential answers both questions, even when no cell is ever built.', show: 'title' },
         { say: 'In this part, you will use the sign of a potential to decide whether a redox reaction is spontaneous.' },
+      ],
+    },
+    {
+      chapter: 'Which way does it go?',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3 })],
+      lines: [
+        { say: 'Here is iron in copper two sulfate solution on the left, and copper in iron two sulfate solution on the right.', caption: 'Here is iron in copper(II) sulfate solution on the left, and copper in iron(II) sulfate solution on the right.', show: ['dp', 'dp.labels', 'dp.key'] },
+        { say: 'Only the left one reacts.', show: 'dp.tally', play: 'dp.go' },
+        { say: 'Written as a cell, the left reaction has a positive potential, and it happens by itself. The reverse has a negative one, and it does not.' },
       ],
     },
     {

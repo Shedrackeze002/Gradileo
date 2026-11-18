@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c30-1-5-c',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'In the last part, the enthalpy changes added up because the equations added up. But given equations rarely add up as they stand: some must be turned around or multiplied first.', show: 'title' },
         { say: 'In this part, you will learn five steps for combining equations, and use them to find delta H for carbon burning to carbon monoxide.' },
+      ],
+    },
+    {
+      chapter: 'Carbon to carbon monoxide',
+      layout: 'center',
+      main: [reaction('cm', { from: [{ t: 'C', n: 2 }, { t: 'O2' }], to: [{ t: 'CO', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here are two carbon atoms and one oxygen molecule, with too little oxygen to make carbon dioxide.', show: 'cm' },
+        { say: 'Watch them make carbon monoxide.', play: 'cm.go' },
+        { say: 'This is one step of a longer route. Add its equation to the next step, and what appears on both sides cancels, leaving the overall reaction.' },
       ],
     },
     {
