@@ -107,6 +107,30 @@ const SLOPE_STEP = 0.002;
 const FIELD_STEP = 0.0005;
 /** The name of the force that is gravity: its work is the change in potential energy. */
 const WEIGHT = 'Weight';
+/**
+ * The complete oscillations a body has made since it was let go from rest: it is back where it
+ * started after every second time it turns round.
+ */
+export function oscillations(state: MotionState, id: string): number {
+  const t = state.turns[id];
+  let turned = t.length - 1;
+  // A body that stands at an extreme it has not left yet has finished that swing too.
+  if (t.length >= 2) {
+    const swing = Math.abs(t[t.length - 1] - t[t.length - 2]);
+    if (swing > 0 && Math.abs(state.bodies[id].x - t[t.length - 1]) >= 0.9995 * swing) turned++;
+  }
+  return Math.floor(turned / 2);
+}
+
+/** The largest displacement from the equilibrium position that a body has had so far, in metres. */
+export function amplitudeOf(el: MotionEl, state: MotionState, id: string): number {
+  const zero = el.equilibrium ?? state.turns[id][0];
+  return Math.max(...state.turns[id].map((x) => Math.abs(x - zero)), Math.abs(state.bodies[id].x - zero));
+}
+
+/** The displacement of a body from the equilibrium position, in metres: over a drop, upwards is positive. */
+export const displacementOf = (el: MotionEl, x: number): number => (el.vertical ? -1 : 1) * (x - (el.equilibrium ?? 0)) + 0;
+
 /** The name of the force of a motion's spring. */
 export const SPRING = 'Spring';
 
@@ -193,7 +217,7 @@ function advance(b: MotionBody, s: BodyState, forces: MotionForce[], dt: number,
 /** The forces that are acting on bodies as they are now: friction disappears with the motion. */
 function acting(el: MotionEl, bodies: Record<string, BodyState>, forces: MotionForce[]): MotionForce[] {
   const spring = el.spring && bodies[el.spring.on] ? springForce(el, bodies[el.spring.on].x) : 0;
-  const coil: MotionForce[] = el.spring && Math.abs(spring) > 1e-6 ? [{ on: el.spring.on, name: SPRING, n: spring, tone: 'brand' }] : [];
+  const coil: MotionForce[] = el.spring && Math.abs(spring) > 1e-6 ? [{ on: el.spring.on, name: SPRING, n: spring, tone: 'brand', ...(el.spring.hidden ? { hidden: true } : {}) }] : [];
   return [...coil, ...forces]
     .filter((f) => {
       if (!f.resist) return true;
@@ -217,6 +241,9 @@ const start = (el: MotionEl): Record<string, BodyState> => Object.fromEntries(el
 /** The state of a motion after its clips have been played for the seconds given, in order. */
 export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: number]> = []): MotionState {
   const step = el.strobe ?? 0.5;
+  // An oscillation is followed closely enough for its graph to be a smooth curve.
+  const quick = el.spring ? (2 * Math.PI * Math.sqrt((el.bodies.find((b) => b.id === el.spring!.on)?.mass ?? 1) / el.spring.k)) / 48 : TRACE_STEP;
+  const traceStep = Math.min(TRACE_STEP, quick);
   let bodies = start(el);
   let time = 0;
   let marks: Record<string, number[]> = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
@@ -319,7 +346,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
       while (done < dt - EPS) {
         const next = (Math.floor((time + done) / step + EPS) + 1) * step - time;
         // Short steps, so the graph follows a body that friction stops part way through.
-        const h = Math.min(dt, next, done + TRACE_STEP) - done;
+        const h = Math.min(dt, next, done + traceStep) - done;
         for (const b of el.bodies) {
           const before = bodies[b.id];
           const after = advance(b, before, list, h, slope, fieldOf(b, list));

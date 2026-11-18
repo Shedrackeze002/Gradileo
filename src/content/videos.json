@@ -124159,5 +124159,1446 @@
         "working": "One radius above the surface is $1 + 1 = 2$ radii from the centre. The distance has doubled, so $g$ is divided by $2^2 = 4$: $\\dfrac{12}{4} = 3\\ \\text{N/kg}$."
       }
     ]
+  },
+  "p20-3-1": {
+    "lessonId": "p20-3-1",
+    "title": "Uniform Circular Motion",
+    "duration": 357,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Period and frequency",
+        "t": 20.607
+      },
+      {
+        "title": "The speed of a rider",
+        "t": 77.728
+      },
+      {
+        "title": "Same period, different speeds",
+        "t": 105.942
+      },
+      {
+        "title": "The velocity keeps turning",
+        "t": 136.697
+      },
+      {
+        "title": "The size of the acceleration",
+        "t": 200.224
+      },
+      {
+        "title": "From the period",
+        "t": 249.085
+      },
+      {
+        "title": "Your turn",
+        "t": 279.365
+      },
+      {
+        "title": "Summary",
+        "t": 318.447
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-1:q",
+        "t": 294.282,
+        "prompt": "A cyclist rides at a steady 6 m/s round a circular track of radius 12 m. What is the centripetal acceleration of the cyclist?",
+        "choices": [
+          "$0.5\\ \\text{m/s}^2$",
+          "$3\\ \\text{m/s}^2$",
+          "$2\\ \\text{m/s}^2$",
+          "$72\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "$a_c = \\dfrac{v^2}{r} = \\dfrac{6^2}{12} = \\dfrac{36}{12} = 3\\ \\text{m/s}^2$, towards the centre of the track."
+      }
+    ]
+  },
+  "p20-3-2": {
+    "lessonId": "p20-3-2",
+    "title": "Centripetal Force",
+    "duration": 308,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A force towards the centre",
+        "t": 21.805
+      },
+      {
+        "title": "When the string breaks",
+        "t": 76.953
+      },
+      {
+        "title": "A car on a bend",
+        "t": 122.374
+      },
+      {
+        "title": "Which force does the job?",
+        "t": 206.788
+      },
+      {
+        "title": "Your turn",
+        "t": 232.584
+      },
+      {
+        "title": "Summary",
+        "t": 274.621
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-2:q",
+        "t": 248.911,
+        "prompt": "A 2 kg puck on a string moves in a horizontal circle of radius 0.5 m on a frictionless table, at a steady 3 m/s. What is the tension in the string?",
+        "choices": [
+          "$12\\ \\text{N}$",
+          "$9\\ \\text{N}$",
+          "$18\\ \\text{N}$",
+          "$36\\ \\text{N}$"
+        ],
+        "answer": 3,
+        "working": "The tension is the centripetal force: $F_T = \\dfrac{mv^2}{r} = \\dfrac{2 \\times 3^2}{0.5} = \\dfrac{18}{0.5} = 36\\ \\text{N}$."
+      }
+    ]
+  },
+  "p20-3-2-b": {
+    "lessonId": "p20-3-2",
+    "title": "Centripetal Force, Part 2: Vertical Circles",
+    "duration": 308,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A circle that stands upright",
+        "t": 25.144
+      },
+      {
+        "title": "At the top and at the bottom",
+        "t": 72.094
+      },
+      {
+        "title": "The slowest speed at the top",
+        "t": 163.456
+      },
+      {
+        "title": "Your turn",
+        "t": 231.165
+      },
+      {
+        "title": "Summary",
+        "t": 274.48
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-2-b:q",
+        "t": 247.538,
+        "prompt": "A 2 kg ball on a string is whirled in a vertical circle of radius 0.5 m. It passes the lowest point at 4 m/s. Use $g = 9.81\\ \\text{N/kg}$. What is the tension in the string at the lowest point?",
+        "choices": [
+          "$83.6\\ \\text{N}$",
+          "$64\\ \\text{N}$",
+          "$44.4\\ \\text{N}$",
+          "$19.6\\ \\text{N}$"
+        ],
+        "answer": 0,
+        "working": "At the lowest point the weight points away from the centre: $F_T - mg = \\dfrac{mv^2}{r}$. So $F_T = \\dfrac{2 \\times 4^2}{0.5} + 2 \\times 9.81 = 64 + 19.62 = 83.6\\ \\text{N}$."
+      }
+    ]
+  },
+  "p20-3-3": {
+    "lessonId": "p20-3-3",
+    "title": "Orbits and Satellites",
+    "duration": 307,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Newton’s cannon",
+        "t": 15.252
+      },
+      {
+        "title": "Gravity is the centripetal force",
+        "t": 73.575
+      },
+      {
+        "title": "One speed for each orbit",
+        "t": 141.491
+      },
+      {
+        "title": "A height above the surface",
+        "t": 184.939
+      },
+      {
+        "title": "Your turn",
+        "t": 236.825
+      },
+      {
+        "title": "Summary",
+        "t": 274.084
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-3:q",
+        "t": 250.436,
+        "prompt": "Two satellites are in the same circular orbit round a planet. Satellite A has twice the mass of satellite B. How do their speeds compare?",
+        "choices": [
+          "A is twice as fast as B",
+          "A is half as fast as B",
+          "They have the same speed",
+          "A is four times as fast as B"
+        ],
+        "answer": 2,
+        "working": "The orbital speed is $v = \\sqrt{\\dfrac{GM}{r}}$, where $M$ is the mass of the planet. The mass of the satellite cancels, so two satellites in the same orbit have the same speed."
+      }
+    ]
+  },
+  "p20-3-3-b": {
+    "lessonId": "p20-3-3",
+    "title": "Orbits and Satellites, Part 2: Kepler’s Third Law",
+    "duration": 295,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The period of a satellite",
+        "t": 16.444
+      },
+      {
+        "title": "Farther out, much longer",
+        "t": 69.332
+      },
+      {
+        "title": "Kepler’s third law",
+        "t": 114.86
+      },
+      {
+        "title": "Your turn",
+        "t": 212.64
+      },
+      {
+        "title": "Summary",
+        "t": 262.415
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-3-b:q",
+        "t": 230.49,
+        "prompt": "Two satellites orbit the same planet. Satellite A has a period of 2 hours. The radius of satellite B’s orbit is 9 times the radius of A’s. What is the period of satellite B?",
+        "choices": [
+          "$18\\ \\text{h}$",
+          "$6\\ \\text{h}$",
+          "$162\\ \\text{h}$",
+          "$54\\ \\text{h}$"
+        ],
+        "answer": 3,
+        "working": "$T^2 \\propto r^3$, so multiplying $r$ by 9 multiplies $T^2$ by $9^3 = 729$, and $T$ by $\\sqrt{729} = 27$. The period is $2 \\times 27 = 54\\ \\text{h}$."
+      }
+    ]
+  },
+  "p20-3-4": {
+    "lessonId": "p20-3-4",
+    "title": "Work",
+    "duration": 302,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Force times displacement",
+        "t": 18.507
+      },
+      {
+        "title": "A force at an angle",
+        "t": 56.863
+      },
+      {
+        "title": "Positive, negative and zero",
+        "t": 113.788
+      },
+      {
+        "title": "A force that does no work",
+        "t": 190.947
+      },
+      {
+        "title": "Your turn",
+        "t": 225.939
+      },
+      {
+        "title": "Summary",
+        "t": 268.62
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-4:q",
+        "t": 242.02,
+        "prompt": "A rope pulls a box along level ground with a force of 50 N, at $60^\\circ$ above the horizontal. How much work does the rope do as the box moves 8 m?",
+        "choices": [
+          "$400\\ \\text{J}$",
+          "$200\\ \\text{J}$",
+          "$346\\ \\text{J}$",
+          "$0\\ \\text{J}$"
+        ],
+        "answer": 1,
+        "working": "$W = Fd\\cos\\theta = 50 \\times 8 \\times \\cos 60^\\circ = 400 \\times 0.5 = 200\\ \\text{J}$."
+      }
+    ]
+  },
+  "p20-3-4-b": {
+    "lessonId": "p20-3-4",
+    "title": "Work, Part 2: Force-Displacement Graphs",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A steady force",
+        "t": 20.394
+      },
+      {
+        "title": "A force that changes",
+        "t": 66.23
+      },
+      {
+        "title": "Three parts, and the average force",
+        "t": 110.988
+      },
+      {
+        "title": "A spring gives a triangle",
+        "t": 177.162
+      },
+      {
+        "title": "Your turn",
+        "t": 210.114
+      },
+      {
+        "title": "Summary",
+        "t": 256.504
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-4-b:q",
+        "t": 227.259,
+        "prompt": "A force on a cart, in the direction of its motion, is a steady 20 N for the first 3 m. It then falls steadily to zero over the next 2 m. How much work does the force do over the whole 5 m?",
+        "choices": [
+          "$100\\ \\text{J}$",
+          "$60\\ \\text{J}$",
+          "$80\\ \\text{J}$",
+          "$50\\ \\text{J}$"
+        ],
+        "answer": 2,
+        "working": "Rectangle: $20 \\times 3 = 60\\ \\text{J}$. Triangle: $\\tfrac{1}{2} \\times 2 \\times 20 = 20\\ \\text{J}$. The work is $60 + 20 = 80\\ \\text{J}$."
+      }
+    ]
+  },
+  "p20-3-5": {
+    "lessonId": "p20-3-5",
+    "title": "Kinetic and Potential Energy",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Kinetic energy",
+        "t": 21.981
+      },
+      {
+        "title": "The work-energy theorem",
+        "t": 68.149
+      },
+      {
+        "title": "Twice the speed, four times the energy",
+        "t": 124.491
+      },
+      {
+        "title": "Gravitational potential energy",
+        "t": 180.832
+      },
+      {
+        "title": "Your turn",
+        "t": 232.121
+      },
+      {
+        "title": "Summary",
+        "t": 272.919
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-5:q",
+        "t": 247.525,
+        "prompt": "A 2 kg ball is moving at 3 m/s. A net force then does 16 J of work on it, in the direction of its motion. What is its speed afterwards?",
+        "choices": [
+          "$5\\ \\text{m/s}$",
+          "$4\\ \\text{m/s}$",
+          "$7\\ \\text{m/s}$",
+          "$11\\ \\text{m/s}$"
+        ],
+        "answer": 0,
+        "working": "At the start, $E_k = \\tfrac{1}{2} \\times 2 \\times 3^2 = 9\\ \\text{J}$. The net work adds 16 J: $E_k = 25\\ \\text{J}$. So $v = \\sqrt{\\dfrac{2 \\times 25}{2}} = 5\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p20-3-5-b": {
+    "lessonId": "p20-3-5",
+    "title": "Kinetic and Potential Energy, Part 2: Springs and Elastic Energy",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Hooke’s law",
+        "t": 14.59
+      },
+      {
+        "title": "The energy in a spring",
+        "t": 75.049
+      },
+      {
+        "title": "A compressed spring",
+        "t": 129.385
+      },
+      {
+        "title": "Measuring a spring constant",
+        "t": 176.655
+      },
+      {
+        "title": "Your turn",
+        "t": 237.225
+      },
+      {
+        "title": "Summary",
+        "t": 278.583
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-5-b:q",
+        "t": 251.137,
+        "prompt": "A spring with a spring constant of 200 N/m is stretched by 10 cm. How much elastic potential energy does it store?",
+        "choices": [
+          "$10\\,000\\ \\text{J}$",
+          "$20\\ \\text{J}$",
+          "$10\\ \\text{J}$",
+          "$1\\ \\text{J}$"
+        ],
+        "answer": 3,
+        "working": "Change the units: $x = 10\\ \\text{cm} = 0.1\\ \\text{m}$. Then $E_e = \\tfrac{1}{2}kx^2 = \\tfrac{1}{2} \\times 200 \\times 0.1^2 = 1\\ \\text{J}$."
+      }
+    ]
+  },
+  "p20-3-6": {
+    "lessonId": "p20-3-6",
+    "title": "Conservation of Mechanical Energy",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A fall from rest",
+        "t": 19.316
+      },
+      {
+        "title": "A roller coaster",
+        "t": 79.444
+      },
+      {
+        "title": "Coasting uphill",
+        "t": 141.426
+      },
+      {
+        "title": "A spring launcher",
+        "t": 187.102
+      },
+      {
+        "title": "Up a hill",
+        "t": 232.611
+      },
+      {
+        "title": "Your turn",
+        "t": 264.57
+      },
+      {
+        "title": "Summary",
+        "t": 310.273
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-6:q",
+        "t": 277.109,
+        "prompt": "A ball is dropped from rest, 5 m above the ground. Ignore air resistance and use $g = 9.81\\ \\text{m/s}^2$. With what speed does it reach the ground?",
+        "choices": [
+          "$49.1\\ \\text{m/s}$",
+          "$9.9\\ \\text{m/s}$",
+          "$98.1\\ \\text{m/s}$",
+          "$7.0\\ \\text{m/s}$"
+        ],
+        "answer": 1,
+        "working": "$mgh = \\tfrac{1}{2}mv^2$, and the mass cancels: $v = \\sqrt{2gh} = \\sqrt{2 \\times 9.81 \\times 5} = \\sqrt{98.1} = 9.9\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p20-3-6-b": {
+    "lessonId": "p20-3-6",
+    "title": "Conservation of Mechanical Energy, Part 2: When Friction Takes a Share",
+    "duration": 318,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Friction makes thermal energy",
+        "t": 19.027
+      },
+      {
+        "title": "Energy lost on a slide",
+        "t": 66.458
+      },
+      {
+        "title": "The speed at the bottom",
+        "t": 118.415
+      },
+      {
+        "title": "The force of friction",
+        "t": 168.762
+      },
+      {
+        "title": "Your turn",
+        "t": 239.563
+      },
+      {
+        "title": "Summary",
+        "t": 286.862
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-6-b:q",
+        "t": 257.938,
+        "prompt": "A 2 kg block slides from rest down a rough slope, dropping through a height of 5 m, and reaches the bottom at 8 m/s. Use $g = 9.81\\ \\text{m/s}^2$. How much mechanical energy is changed into thermal energy?",
+        "choices": [
+          "$34.1\\ \\text{J}$",
+          "$64\\ \\text{J}$",
+          "$98.1\\ \\text{J}$",
+          "$162.1\\ \\text{J}$"
+        ],
+        "answer": 0,
+        "working": "At the top, $E_g = 2 \\times 9.81 \\times 5 = 98.1\\ \\text{J}$. At the bottom, $E_k = \\tfrac{1}{2} \\times 2 \\times 8^2 = 64\\ \\text{J}$. The energy lost is $98.1 - 64 = 34.1\\ \\text{J}$."
+      }
+    ]
+  },
+  "p20-3-7": {
+    "lessonId": "p20-3-7",
+    "title": "Power",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The rate of doing work",
+        "t": 17.591
+      },
+      {
+        "title": "Climbing stairs",
+        "t": 76.571
+      },
+      {
+        "title": "Force times speed",
+        "t": 116.208
+      },
+      {
+        "title": "How fast can a motor lift?",
+        "t": 163.023
+      },
+      {
+        "title": "The kilowatt-hour",
+        "t": 211.018
+      },
+      {
+        "title": "Your turn",
+        "t": 236.212
+      },
+      {
+        "title": "Summary",
+        "t": 281.744
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-7:q",
+        "t": 250.149,
+        "prompt": "A motor lifts a 50 kg crate through 6 m in 4 s, at a steady speed. Use $g = 9.81\\ \\text{m/s}^2$. What power does the motor develop against gravity?",
+        "choices": [
+          "$2943\\ \\text{W}$",
+          "$75\\ \\text{W}$",
+          "$735.8\\ \\text{W}$",
+          "$11\\,772\\ \\text{W}$"
+        ],
+        "answer": 2,
+        "working": "Work: $W = mgh = 50 \\times 9.81 \\times 6 = 2943\\ \\text{J}$. Power: $P = \\dfrac{W}{t} = \\dfrac{2943}{4} = 735.8\\ \\text{W}$."
+      }
+    ]
+  },
+  "p20-3-7-b": {
+    "lessonId": "p20-3-7",
+    "title": "Power, Part 2: Efficiency",
+    "duration": 345,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Useful and wasted energy",
+        "t": 20.231
+      },
+      {
+        "title": "A hoist",
+        "t": 83.722
+      },
+      {
+        "title": "Efficiency as a decimal",
+        "t": 131.261
+      },
+      {
+        "title": "The energy a fuel must supply",
+        "t": 188.477
+      },
+      {
+        "title": "Your turn",
+        "t": 263.42
+      },
+      {
+        "title": "Summary",
+        "t": 310.459
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-3-7-b:q",
+        "t": 277.525,
+        "prompt": "A motor takes in 500 J of electrical energy and lifts a 4 kg load through 10 m. Use $g = 9.81\\ \\text{m/s}^2$. What is the efficiency of the motor?",
+        "choices": [
+          "$127.4\\%$",
+          "$8\\%$",
+          "$21.5\\%$",
+          "$78.5\\%$"
+        ],
+        "answer": 3,
+        "working": "Useful energy out: $mgh = 4 \\times 9.81 \\times 10 = 392.4\\ \\text{J}$. Efficiency: $\\dfrac{392.4}{500} \\times 100\\% = 78.5\\%$."
+      }
+    ]
+  },
+  "p20-4-1": {
+    "lessonId": "p20-4-1",
+    "title": "Simple Harmonic Motion",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "An oscillation",
+        "t": 18.236
+      },
+      {
+        "title": "Period and frequency",
+        "t": 82.242
+      },
+      {
+        "title": "The displacement-time graph",
+        "t": 140.787
+      },
+      {
+        "title": "Four amplitudes",
+        "t": 186.85
+      },
+      {
+        "title": "Your turn",
+        "t": 233.31
+      },
+      {
+        "title": "Summary",
+        "t": 270.765
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-1:q",
+        "t": 246.775,
+        "prompt": "A mass on a spring oscillates with an amplitude of 2 cm and a frequency of 5 Hz. How far does it travel in 4 s?",
+        "choices": [
+          "$160\\ \\text{cm}$",
+          "$40\\ \\text{cm}$",
+          "$80\\ \\text{cm}$",
+          "$20\\ \\text{cm}$"
+        ],
+        "answer": 0,
+        "working": "Oscillations: $5 \\times 4 = 20$. Each one covers four amplitudes: $4 \\times 2 = 8\\ \\text{cm}$. Distance: $20 \\times 8 = 160\\ \\text{cm}$."
+      }
+    ]
+  },
+  "p20-4-1-b": {
+    "lessonId": "p20-4-1",
+    "title": "Simple Harmonic Motion, Part 2: The Restoring Force",
+    "duration": 304,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The restoring force",
+        "t": 14.356
+      },
+      {
+        "title": "Simple harmonic motion",
+        "t": 52.882
+      },
+      {
+        "title": "The size of the force",
+        "t": 120.282
+      },
+      {
+        "title": "From an acceleration to a position",
+        "t": 172.625
+      },
+      {
+        "title": "Your turn",
+        "t": 227.364
+      },
+      {
+        "title": "Summary",
+        "t": 272.9
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-1-b:q",
+        "t": 244.992,
+        "prompt": "A 0.2 kg mass on a spring with a spring constant of 40 N/m is 5 cm from its equilibrium position. What is the size of its acceleration?",
+        "choices": [
+          "$1000\\ \\text{m/s}^2$",
+          "$10\\ \\text{m/s}^2$",
+          "$2\\ \\text{m/s}^2$",
+          "$0.4\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "Change the units: $x = 5\\ \\text{cm} = 0.05\\ \\text{m}$. Force: $F = kx = 40 \\times 0.05 = 2\\ \\text{N}$. Acceleration: $a = \\dfrac{F}{m} = \\dfrac{2}{0.2} = 10\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p20-4-2": {
+    "lessonId": "p20-4-2",
+    "title": "The Mass on a Spring",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A stiffer spring",
+        "t": 16.183
+      },
+      {
+        "title": "A larger mass",
+        "t": 45.131
+      },
+      {
+        "title": "The period",
+        "t": 73.578
+      },
+      {
+        "title": "The amplitude does not matter",
+        "t": 130.039
+      },
+      {
+        "title": "A spring constant from a timing",
+        "t": 163.148
+      },
+      {
+        "title": "Your turn",
+        "t": 224.635
+      },
+      {
+        "title": "Summary",
+        "t": 271.913
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-2:q",
+        "t": 236.916,
+        "prompt": "A 100 g mass oscillates on a spring with a spring constant of 40 N/m. What is its period?",
+        "choices": [
+          "$3.14\\ \\text{s}$",
+          "$0.05\\ \\text{s}$",
+          "$0.31\\ \\text{s}$",
+          "$9.93\\ \\text{s}$"
+        ],
+        "answer": 2,
+        "working": "Change the units: $m = 100\\ \\text{g} = 0.1\\ \\text{kg}$. Then $T = 2\\pi\\sqrt{\\dfrac{0.1}{40}} = 2\\pi\\sqrt{0.0025} = 2\\pi \\times 0.05 = 0.31\\ \\text{s}$."
+      }
+    ]
+  },
+  "p20-4-2-b": {
+    "lessonId": "p20-4-2",
+    "title": "The Mass on a Spring, Part 2: Energy in an Oscillation",
+    "duration": 309,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The energy swaps",
+        "t": 17.046
+      },
+      {
+        "title": "The total energy",
+        "t": 66.76
+      },
+      {
+        "title": "The greatest speed",
+        "t": 109.12
+      },
+      {
+        "title": "Part of the way out",
+        "t": 138.492
+      },
+      {
+        "title": "Twice the amplitude",
+        "t": 193.556
+      },
+      {
+        "title": "Your turn",
+        "t": 226.489
+      },
+      {
+        "title": "Summary",
+        "t": 278.248
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-2-b:q",
+        "t": 242.817,
+        "prompt": "A 0.2 kg mass oscillates on a spring with a spring constant of 80 N/m, with an amplitude of 5 cm, on a frictionless surface. What is its greatest speed?",
+        "choices": [
+          "$0.10\\ \\text{m/s}$",
+          "$100\\ \\text{m/s}$",
+          "$0.71\\ \\text{m/s}$",
+          "$1.0\\ \\text{m/s}$"
+        ],
+        "answer": 3,
+        "working": "Change the units: $A = 5\\ \\text{cm} = 0.05\\ \\text{m}$. Total energy: $E = \\dfrac{1}{2} \\times 80 \\times 0.05^2 = 0.10\\ \\text{J}$. At equilibrium it is all kinetic: $v = \\sqrt{\\dfrac{2 \\times 0.10}{0.2}} = \\sqrt{1} = 1.0\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p20-4-3": {
+    "lessonId": "p20-4-3",
+    "title": "The Pendulum",
+    "duration": 324,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What pulls the bob back",
+        "t": 19.506
+      },
+      {
+        "title": "The length",
+        "t": 66.95
+      },
+      {
+        "title": "The mass of the bob",
+        "t": 99.505
+      },
+      {
+        "title": "The width of the swing",
+        "t": 130.115
+      },
+      {
+        "title": "The period",
+        "t": 155.669
+      },
+      {
+        "title": "On the Moon",
+        "t": 214.66
+      },
+      {
+        "title": "Your turn",
+        "t": 250.668
+      },
+      {
+        "title": "Summary",
+        "t": 298.195
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-3:q",
+        "t": 264.511,
+        "prompt": "A simple pendulum is 0.5 m long. Use $g = 9.81\\ \\text{m/s}^2$. What is its period?",
+        "choices": [
+          "$1.42\\ \\text{s}$",
+          "$0.23\\ \\text{s}$",
+          "$27.8\\ \\text{s}$",
+          "$0.32\\ \\text{s}$"
+        ],
+        "answer": 0,
+        "working": "$T = 2\\pi\\sqrt{\\dfrac{L}{g}} = 2\\pi\\sqrt{\\dfrac{0.5}{9.81}} = 2\\pi\\sqrt{0.05097} = 2\\pi \\times 0.2258 = 1.42\\ \\text{s}$."
+      }
+    ]
+  },
+  "p20-4-3-b": {
+    "lessonId": "p20-4-3",
+    "title": "The Pendulum, Part 2: Measuring g",
+    "duration": 300,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A complete swing",
+        "t": 17.361
+      },
+      {
+        "title": "The length for a chosen period",
+        "t": 48.332
+      },
+      {
+        "title": "Gravity on another world",
+        "t": 95.495
+      },
+      {
+        "title": "An experiment",
+        "t": 150.715
+      },
+      {
+        "title": "Your turn",
+        "t": 225.165
+      },
+      {
+        "title": "Summary",
+        "t": 273.181
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-3-b:q",
+        "t": 240.868,
+        "prompt": "On a planet, a simple pendulum 0.5 m long makes 10 complete swings in 22.2 s. What is the acceleration due to gravity there?",
+        "choices": [
+          "$8.9\\ \\text{m/s}^2$",
+          "$4.0\\ \\text{m/s}^2$",
+          "$0.040\\ \\text{m/s}^2$",
+          "$400\\ \\text{m/s}^2$"
+        ],
+        "answer": 1,
+        "working": "Period: $T = \\dfrac{22.2}{10} = 2.22\\ \\text{s}$. Then $g = \\dfrac{4\\pi^2 L}{T^2} = \\dfrac{4\\pi^2 \\times 0.5}{2.22^2} = \\dfrac{19.74}{4.928} = 4.0\\ \\text{m/s}^2$."
+      }
+    ]
+  },
+  "p20-4-4": {
+    "lessonId": "p20-4-4",
+    "title": "Wave Properties",
+    "duration": 285,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What a wave is",
+        "t": 16.399
+      },
+      {
+        "title": "Two kinds of wave",
+        "t": 51.622
+      },
+      {
+        "title": "Amplitude and wavelength",
+        "t": 100.898
+      },
+      {
+        "title": "Period and frequency",
+        "t": 141.238
+      },
+      {
+        "title": "A length, or a time?",
+        "t": 185.52
+      },
+      {
+        "title": "Your turn",
+        "t": 219.263
+      },
+      {
+        "title": "Summary",
+        "t": 251.522
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-4:q",
+        "t": 228.751,
+        "prompt": "20 complete waves pass a point in 8 s. What is the period of the waves?",
+        "choices": [
+          "$2.5\\ \\text{s}$",
+          "$160\\ \\text{s}$",
+          "$0.4\\ \\text{s}$",
+          "$12\\ \\text{s}$"
+        ],
+        "answer": 2,
+        "working": "The period is the time for one wave: $T = \\dfrac{8}{20} = 0.4\\ \\text{s}$. (The frequency is $\\dfrac{20}{8} = 2.5\\ \\text{Hz}$.)"
+      }
+    ]
+  },
+  "p20-4-4-b": {
+    "lessonId": "p20-4-4",
+    "title": "Wave Properties, Part 2: The Universal Wave Equation",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "One wavelength in each period",
+        "t": 15.434
+      },
+      {
+        "title": "The wavelength of a sound",
+        "t": 70.121
+      },
+      {
+        "title": "Waves at a pier",
+        "t": 103.572
+      },
+      {
+        "title": "Who decides what",
+        "t": 139.786
+      },
+      {
+        "title": "Into a heavier rope",
+        "t": 179.713
+      },
+      {
+        "title": "Your turn",
+        "t": 230.878
+      },
+      {
+        "title": "Summary",
+        "t": 265.347
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-4-b:q",
+        "t": 242.639,
+        "prompt": "A wave travels along a spring at 12 m/s with a frequency of 8 Hz. What is its wavelength?",
+        "choices": [
+          "$96\\ \\text{m}$",
+          "$0.67\\ \\text{m}$",
+          "$20\\ \\text{m}$",
+          "$1.5\\ \\text{m}$"
+        ],
+        "answer": 3,
+        "working": "Rearrange $v = f\\lambda$: $\\lambda = \\dfrac{v}{f} = \\dfrac{12}{8} = 1.5\\ \\text{m}$."
+      }
+    ]
+  },
+  "p20-4-5": {
+    "lessonId": "p20-4-5",
+    "title": "Reflection and Echoes",
+    "duration": 305,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A fixed end",
+        "t": 18.884
+      },
+      {
+        "title": "A free end",
+        "t": 53.858
+      },
+      {
+        "title": "A join",
+        "t": 89.458
+      },
+      {
+        "title": "Echoes",
+        "t": 122.433
+      },
+      {
+        "title": "The time for an echo",
+        "t": 164.077
+      },
+      {
+        "title": "Echo sounding",
+        "t": 199.403
+      },
+      {
+        "title": "Your turn",
+        "t": 239.747
+      },
+      {
+        "title": "Summary",
+        "t": 278.897
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-5:q",
+        "t": 255.781,
+        "prompt": "A student shouts towards a cliff and hears the echo 2.4 s later. The speed of sound in the air is 340 m/s. How far away is the cliff?",
+        "choices": [
+          "$408\\ \\text{m}$",
+          "$816\\ \\text{m}$",
+          "$142\\ \\text{m}$",
+          "$283\\ \\text{m}$"
+        ],
+        "answer": 0,
+        "working": "The sound travels $vt = 340 \\times 2.4 = 816\\ \\text{m}$, there and back. So $d = \\dfrac{816}{2} = 408\\ \\text{m}$."
+      }
+    ]
+  },
+  "p20-4-5-b": {
+    "lessonId": "p20-4-5",
+    "title": "Reflection and Echoes, Part 2: Superposition and Interference",
+    "duration": 341,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two crests",
+        "t": 16.331
+      },
+      {
+        "title": "A crest and a trough",
+        "t": 70.126
+      },
+      {
+        "title": "Do waves that cancel disappear?",
+        "t": 115.151
+      },
+      {
+        "title": "Two speakers",
+        "t": 153.687
+      },
+      {
+        "title": "Your turn",
+        "t": 259.306
+      },
+      {
+        "title": "Summary",
+        "t": 307.9
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-5-b:q",
+        "t": 277.96,
+        "prompt": "Two speakers vibrate in step and give out sound of wavelength 0.8 m. A listener is 5.0 m from one speaker and 6.2 m from the other. What does the listener hear?",
+        "choices": [
+          "A loud sound: the path difference is 1.5 wavelengths",
+          "A quiet sound: the path difference is 1.5 wavelengths",
+          "A loud sound: the path difference is 14 wavelengths",
+          "A quiet sound: the path difference is 0.96 wavelengths"
+        ],
+        "answer": 1,
+        "working": "Path difference: $6.2 - 5.0 = 1.2\\ \\text{m}$. In wavelengths: $\\dfrac{1.2}{0.8} = 1.5$. That is an odd number of half wavelengths, so crest meets trough: destructive interference, and the sound is quiet."
+      }
+    ]
+  },
+  "p20-4-6": {
+    "lessonId": "p20-4-6",
+    "title": "Standing Waves",
+    "duration": 300,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A wave meets its reflection",
+        "t": 20.707
+      },
+      {
+        "title": "What fits on a string",
+        "t": 69.424
+      },
+      {
+        "title": "The spacing of the nodes",
+        "t": 118.459
+      },
+      {
+        "title": "The frequency of a harmonic",
+        "t": 146.719
+      },
+      {
+        "title": "The speed of the waves",
+        "t": 191.13
+      },
+      {
+        "title": "Your turn",
+        "t": 230.299
+      },
+      {
+        "title": "Summary",
+        "t": 271.695
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-6:q",
+        "t": 245.375,
+        "prompt": "A string 1.2 m long is fixed at both ends, and waves travel along it at 90 m/s. At what frequency does it vibrate with 2 loops?",
+        "choices": [
+          "$37.5\\ \\text{Hz}$",
+          "$150\\ \\text{Hz}$",
+          "$75\\ \\text{Hz}$",
+          "$108\\ \\text{Hz}$"
+        ],
+        "answer": 2,
+        "working": "Two loops fill the string: $\\lambda = \\dfrac{2L}{n} = \\dfrac{2 \\times 1.2}{2} = 1.2\\ \\text{m}$. Then $f = \\dfrac{v}{\\lambda} = \\dfrac{90}{1.2} = 75\\ \\text{Hz}$."
+      }
+    ]
+  },
+  "p20-4-6-b": {
+    "lessonId": "p20-4-6",
+    "title": "Standing Waves, Part 2: Resonance and Air Columns",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Natural frequency",
+        "t": 19.275
+      },
+      {
+        "title": "Resonance",
+        "t": 44.058
+      },
+      {
+        "title": "Air columns",
+        "t": 110.832
+      },
+      {
+        "title": "The shortest column",
+        "t": 154.379
+      },
+      {
+        "title": "Measuring the speed of sound",
+        "t": 190.682
+      },
+      {
+        "title": "Your turn",
+        "t": 253.275
+      },
+      {
+        "title": "Summary",
+        "t": 304.284
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-6-b:q",
+        "t": 272.455,
+        "prompt": "A tuning fork of frequency 256 Hz is held over a tube that is closed at one end. The speed of sound in the air is 340 m/s. What is the shortest air column that resonates?",
+        "choices": [
+          "$133\\ \\text{cm}$",
+          "$66.4\\ \\text{cm}$",
+          "$99.6\\ \\text{cm}$",
+          "$33.2\\ \\text{cm}$"
+        ],
+        "answer": 3,
+        "working": "Wavelength: $\\lambda = \\dfrac{v}{f} = \\dfrac{340}{256} = 1.328\\ \\text{m}$. The shortest column is a quarter of a wavelength: $L = \\dfrac{1.328}{4} = 0.332\\ \\text{m} = 33.2\\ \\text{cm}$."
+      }
+    ]
+  },
+  "p20-4-7": {
+    "lessonId": "p20-4-7",
+    "title": "The Doppler Effect",
+    "duration": 332,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A source at rest",
+        "t": 20.027
+      },
+      {
+        "title": "A source that moves",
+        "t": 48.22
+      },
+      {
+        "title": "What a listener receives",
+        "t": 85.39
+      },
+      {
+        "title": "As the source passes",
+        "t": 140.644
+      },
+      {
+        "title": "A listener who moves",
+        "t": 172.595
+      },
+      {
+        "title": "As fast as the waves",
+        "t": 218.698
+      },
+      {
+        "title": "Your turn",
+        "t": 251.945
+      },
+      {
+        "title": "Summary",
+        "t": 293.59
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-7:q",
+        "t": 267.404,
+        "prompt": "A train sounds a horn of 400 Hz as it moves at a steady speed towards a person, passes, and moves away. What does the person hear?",
+        "choices": [
+          "Steady and above 400 Hz, then steady and below",
+          "A note that rises, then falls",
+          "A steady 400 Hz, louder then quieter",
+          "Steady and below 400 Hz, then steady and above"
+        ],
+        "answer": 0,
+        "working": "Approaching, the distance shrinks, so the note is above 400 Hz, and it is steady because the speed is steady. As the train passes, the note drops to a steady frequency below 400 Hz."
+      }
+    ]
+  },
+  "p20-4-7-b": {
+    "lessonId": "p20-4-7",
+    "title": "The Doppler Effect, Part 2: Doppler Calculations",
+    "duration": 404,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the formula comes from",
+        "t": 21.293
+      },
+      {
+        "title": "Approaching, or moving away",
+        "t": 81.117
+      },
+      {
+        "title": "An approaching siren",
+        "t": 132.286
+      },
+      {
+        "title": "The siren moving away",
+        "t": 180.233
+      },
+      {
+        "title": "The speed of a source",
+        "t": 227.984
+      },
+      {
+        "title": "Using the Doppler effect",
+        "t": 282.976
+      },
+      {
+        "title": "Your turn",
+        "t": 319.332
+      },
+      {
+        "title": "Summary",
+        "t": 369.711
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-7-b:q",
+        "t": 338.275,
+        "prompt": "The speed of sound in the air is 340 m/s. A train sounds a whistle of frequency 800 Hz as it moves at 20 m/s directly away from a person. What frequency does the person hear?",
+        "choices": [
+          "$850\\ \\text{Hz}$",
+          "$755.6\\ \\text{Hz}$",
+          "$847.1\\ \\text{Hz}$",
+          "$752.9\\ \\text{Hz}$"
+        ],
+        "answer": 1,
+        "working": "The source is moving away, so the frequency heard is lower, and we add underneath: $f_{\\text{heard}} = f \\times \\dfrac{v}{v + v_s} = 800 \\times \\dfrac{340}{340 + 20} = 800 \\times 0.9444 = 755.6\\ \\text{Hz}$."
+      }
+    ]
   }
 }

@@ -215,6 +215,17 @@ See `src/video/script.ts` for every element and option. In short:
   blue, displacement violet, and the path travelled pale grey; in the energy bars, kinetic
   energy is green like velocity, potential energy pink like weight, work orange like an applied
   force, heat red like friction, and the total yellow.
+  For an oscillation, give `equilibrium` (where the body rests, on a single straight track or over
+  a single drop): displacement is then measured from there, the ruler is numbered from there, and
+  the parts are `displacement` (an arrow from there to the body), `amplitude` (the two extremes)
+  and `count` (the complete oscillations of a body let go from rest, also for a pendulum);
+  `graph: { y: 'displacement' }` traces the displacement against time, and `cm: true` writes
+  displacements in centimetres. A pendulum also has `length` (of its string) and `restoring` (the
+  weight of the bob, and the part of it along the swing that pulls the bob back). `spring: { hidden: true }` leaves the coil's force arrow off, for a
+  video that comes before the forces are taught. Pendulums side by side are drawn to one scale
+  when the shorter one's `swing` has `room`, the length of the longest. A period comes out exact
+  when the numbers are chosen for it (k = 4π²m gives 1 s), so a clip of whole periods ends where
+  it began.
   Check a motion part way through with `--stills --quick --at 48.5,51` (times in seconds).
   The owner asked (14 November 2026) that science videos show the idea happening, not narrate
   over still slides: in physics, every scene that describes motion or a force plays it.
@@ -238,6 +249,43 @@ See `src/video/script.ts` for every element and option. In short:
   leaves the numbers off, for a picture that is not to scale (the electromagnetic spectrum), and
   `ruler: false` leaves out the ruler. Lanes of one kind share a scale, so a louder sound looks
   larger beside a quieter one.
+  A lane with `frequency: 0` and `pulses` carries single humps instead (a `height`, negative for a
+  trough, and a `width` in metres; `from: 'right'` sends one from the other end, and `at: -width /
+  (2 × speed)` makes its middle leave as the clock starts, so `front` and the clock give an echo's
+  distance and time exactly). `reflect: true` is a fixed end, which turns a pulse over, and
+  `reflect: 'free'` a free end on a ring, which does not; `medium: { from, speed }` is a second
+  rope from `from` on, which sends part of a pulse back and the rest on. The parts for pulses are
+  `pulses` (each pulse on its own, dashed), `sum` (the height where they overlap), `heights` (the
+  signed height of each hump), `pull` (the pair of forces between a rope and a fixed end) and
+  `motion` (how fast each bead is moving, which shows where the energy is when a crest and a
+  trough cancel). `standing: { loops }` is a standing wave on a string with a node at each end,
+  and on a `longitudinal` lane `standing: { quarters, length }` is the air in a tube closed at the
+  left: the lane's `frequency` must be the one that fits (the check says what it is). `beyond`
+  puts the antinode a little outside the open end, as in a real tube. Their parts are `nodes`,
+  `loop` (half a wavelength) and `length`. A steady wave with `reflect` builds its own standing
+  wave as the reflection comes back. A standing wave freezes wherever its clip ends, so end clips
+  a quarter of a period after whole periods (`(n + 0.25) / f`), when it is at its widest. `clock:
+  { unit: 'ms', seconds: 0.001 }` counts in another unit.
+
+- `ripples` (`src/video/ripples.ts`) is for waves seen from above, spreading in circles. Give the
+  `view` (left, bottom, right, top, in metres), the `speed` of the waves, the `sources` (each `at`
+  a place, with a `frequency` and perhaps a `velocity`) and the `listeners`. Every crest is a
+  circle around the place where its source was when it sent that crest, which gives both
+  interference (two sources in step) and the Doppler effect (a source that moves). `full: true`
+  fills the picture from the start; otherwise the sources start at time 0. `every: 2` draws one
+  crest in two, where real sound has too many for the picture. A phase can `move` a listener to a
+  new place. The parts are `paths` (from each source to the first listener, with lengths),
+  `difference`, `traces` (the waves that arrive there and their sum), `loudness`, `pattern` (the
+  whole picture shaded by how large the summed waves are), `wavelength` (in front of a moving
+  source and behind it), `centres` (where each crest was sent from), `velocity`, `heard` (the
+  frequency each listener receives from a moving source), `count` (the crests each listener has
+  received since time 0, for comparing listeners over the same time) and `clock`. The first four
+  are written in a panel on the right, which appears when the picture leaves 380 px beside it:
+  choose the shape of the `view` for that (a wide view fills a centre scene and has no panel). A
+  source may be faster than its waves when there are no listeners, to draw a shock wave. Choose
+  numbers that come out round on the labels (2 Hz at 6 m/s from a source at 2 m/s is heard as
+  3 Hz and 1.5 Hz), and use the lesson's real numbers with heavy slow motion (`slow: 100`) for
+  the worked examples.
 
 - `flight` (`src/video/flight.ts`) is for motion in two dimensions, drawn to one scale so that
   every angle on screen is the true one. Give the `view` (left, right, bottom, top), the bodies
