@@ -1321,8 +1321,18 @@ items ship or decisions change.
        momentum in collisions and explosions, kinetic energy in elastic and inelastic collisions
        (with the ballistic pendulum), and collisions and explosions in two dimensions, worked by
        components. No question gives objects more kinetic energy after a collision than before.
-     - Next: Units 2 to 4 of Grade 12 Physics (Forces and Fields, Electromagnetic Radiation,
-       Atomic and Nuclear Physics), the listing for classes and sign-up, and then its videos.
+     - Built (18 November 2026): Unit 2 of Grade 12 Physics, **Forces and Fields**, ten lessons
+       and twenty question types: charge and the three ways of charging, Coulomb's law and the
+       net force of several charges, electric fields, potential difference and the electronvolt,
+       the field between parallel plates, charges accelerated and deflected between plates,
+       Millikan's oil drops, combined series-parallel circuits, emf and internal resistance,
+       magnets and the field of a current, the force on a moving charge (with the velocity
+       selector and the mass spectrometer), the motor effect and the direct current motor, and
+       induction, generators and transformers. Every constant a question needs is stated in the
+       question, and directions use one right-hand rule (thumb along the velocity or current,
+       fingers along the field, palm along the force).
+     - Next: Units 3 and 4 of Grade 12 Physics (Electromagnetic Radiation, Atomic and Nuclear
+       Physics), the listing for classes and sign-up, and then its videos.
        `phys-sample-momentum` becomes the first video of Grade 12 Unit 1 and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none

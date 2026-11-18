@@ -13,7 +13,8 @@ Grade 10 Physics. Grade 10 has a video for every lesson (28 videos), and so does
 (45 videos, 17 November 2026): Unit 1 (Kinematics, ten videos), Unit 2 (Dynamics, eight videos),
 Unit 3 (Circular Motion, Work and Energy, thirteen videos) and Unit 4 (Oscillations and Waves,
 fourteen videos) are rendered and in Drive. Grade 12 Physics was started on 18 November 2026 as a
-draft course (`phys-30`): Unit A, Momentum and Impulse, has its five lessons and ten skills.
+draft course (`phys-30`): Unit A, Momentum and Impulse, has its five lessons and ten skills, and
+Unit B, Forces and Fields, has its ten lessons and twenty skills. Units C and D are still to write.
 
 ## Shape
 
