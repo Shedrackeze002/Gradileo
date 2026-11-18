@@ -1,4 +1,17 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). A push moves the bar's top rows to the
+// right and its bottom rows to the left, as a hammer blow does: copper's rows of atoms slide over
+// one another, and the bar changes shape but stays in one piece.
+
+const hit: ParticlesEl = {
+  kind: 'particles',
+  id: 'hit',
+  boxes: [{ id: 'cu', state: 'solid', width: 26, height: 6, cols: 14, bare: true, kinds: [{ n: 56, bond: 3, tone: 'opp', name: 'copper atom' }], label: 'copper, a metal' }],
+  clips: { hit: { phases: [{ dur: 4, push: { cu: 0.8 } }, { dur: 1.5, push: { cu: 0 } }] } },
+  key: true,
+  height: 360,
+};
 
 const video: Explainer = {
   id: 'c8-2-2',
@@ -39,6 +52,16 @@ const video: Explainer = {
         { say: 'Metals are malleable, which means they can be hammered into shape, and ductile, which means they can be drawn into wires. Solid non-metals are brittle: they shatter when hit.', show: 'props.2', focus: 'props.2' },
         { say: 'Metals are solids at room temperature, while many non-metals are gases, like oxygen and nitrogen.', show: 'props.3', focus: 'props.3' },
         { say: 'There are exceptions. Mercury is a metal, but it is a liquid. And graphite, a form of carbon, is a non-metal that conducts electricity.', show: 'exc' },
+      ],
+    },
+    {
+      chapter: 'Hitting, up close',
+      layout: 'center',
+      main: [hit],
+      lines: [
+        { say: 'Why can a metal be hammered into shape? Let’s look at a bar of copper, up close. Its atoms sit in neat layers.', show: ['hit', 'hit.labels', 'hit.key'] },
+        { say: 'Now hit it, pushing the top one way and the bottom the other. The layers of atoms slide over one another, but they stay held together.', play: 'hit.hit' },
+        { say: 'So the copper changes shape without breaking. That is what malleable means. A solid non-metal, like sulfur, cannot do this: it shatters instead.' },
       ],
     },
     {
