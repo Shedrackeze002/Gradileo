@@ -1388,9 +1388,20 @@ items ship or decisions change.
        The videos: `p30-2-3` (Electric Field Strength), `p30-2-3-b` (Field Lines and Adding
        Fields), `p30-2-4` (Potential Difference), `p30-2-4-b` (The Field Between Parallel Plates),
        `p30-2-5` (Charges Moving in a Uniform Field) and `p30-2-5-b` (Millikan's Oil Drops).
-     - Next: the videos of lessons 2.6 to 2.10 (circuits, then magnetic fields and forces, the
-       motor and induction, which need a picture for magnetic fields), then Units 3 and 4. The
-       physics lessons have no tutor recordings yet.
+     - Done (18 November 2026): **the videos of lessons 2.6 and 2.7**, four more. The `circuit`
+       picture can put one component in series with a set of parallel branches (`lead`), and can
+       give its battery an internal resistance (`internal`), with a voltmeter across the
+       terminals and the lost volts shown, so `p30-2-6` (Combined Circuits) and `p30-2-6-b` (Emf
+       and Internal Resistance) work every reading out from the circuit. A new picture,
+       `magnets` (`src/video/magnets.ts`), works out the magnetic field of bar magnets and of
+       long straight wires seen end-on, and draws it with field lines, compasses whose needles
+       turn as they are carried about, and arrows with the field strength; a piece of iron shows
+       its domains lining up, and rows of wires make the field of a solenoid. The field-line
+       tracer is shared with `charges` (`src/video/fieldlines.ts`). The videos: `p30-2-7`
+       (Magnets and Magnetic Fields) and `p30-2-7-b` (The Magnetic Field of a Current).
+     - Next: the videos of lessons 2.8 to 2.10 (the force on a moving charge, the force on a
+       wire and the motor, and induction), then Units 3 and 4. The physics lessons have no tutor
+       recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

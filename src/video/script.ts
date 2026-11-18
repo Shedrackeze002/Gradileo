@@ -1237,7 +1237,7 @@ export interface CircuitClip {
 }
 
 /** What a circuit element can show over its wires; each is a part ("c.current"). */
-export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage', 'power', 'charge', 'transferred', 'clock'] as const;
+export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage', 'power', 'charge', 'transferred', 'clock', 'terminal', 'lost'] as const;
 
 /**
  * A circuit, for the physics videos (src/video/circuit.ts): a battery, a switch, and lamps or
@@ -1251,8 +1251,9 @@ export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage
  * it up), `arrows` (the direction of conventional current), `current` (ammeters with their
  * readings), `voltage` (the voltage across each component, on a voltmeter joined across it in a
  * loop), `power` (the power of each component), `charge` (the charge that has passed the ammeter
- * since the start), `transferred` (the energy the components have transferred since the start)
- * and `clock`.
+ * since the start), `transferred` (the energy the components have transferred since the start),
+ * `clock`, `terminal` (a voltmeter across the battery's terminals) and `lost` (the volts lost
+ * across the battery's internal resistance).
  * Emphasising a component's id makes it glow.
  */
 export interface CircuitEl {
@@ -1263,6 +1264,19 @@ export interface CircuitEl {
   layout: 'series' | 'parallel';
   /** The components: in order round the loop, or one on each branch. Up to four. */
   parts: CircuitPart[];
+  /**
+   * In a `parallel` layout: a component in series with the whole group of branches, drawn on the
+   * wire from the battery to the first junction. All of the battery current passes through it.
+   */
+  lead?: CircuitPart;
+  /**
+   * The internal resistance of the battery, in ohms. It is drawn as a small resistor inside the
+   * battery's case, and `volts` is then the emf. For a scene's main column (the names beside the
+   * battery need the wide margin).
+   */
+  internal?: number;
+  /** What is written beside the internal resistance (its value otherwise): "r = ?" while it is still to be found. */
+  internalLabel?: string;
   /** The switch starts open, so no current flows until a clip closes it. */
   open?: boolean;
   /** `electrons` draws the charges as electrons, drifting from the negative terminal round to the positive. */
@@ -1941,6 +1955,128 @@ export interface ChargesEl {
   height?: number;
 }
 
+/** A bar magnet of a magnets element. */
+export interface MagnetBar {
+  id: string;
+  /** Its centre, [x, y], in the element's length unit. */
+  at: [number, number];
+  /** Its length from end to end, and its thickness. */
+  long: number;
+  thick: number;
+  /** The way its north pole faces, in degrees anticlockwise from the right (0 otherwise). */
+  angle?: number;
+  /** How many field lines leave its north pole (12 otherwise): a stronger magnet has more. */
+  lines?: number;
+  /** A name written beside it. */
+  label?: string;
+  /** Draw its field but no bar (the magnet inside the Earth is drawn faintly instead). */
+  faint?: boolean;
+}
+
+/** A long straight wire of a magnets element, seen end-on. */
+export interface MagnetWire {
+  id: string;
+  at: [number, number];
+  /** Its current in amperes: positive comes out of the page (drawn as a dot), negative goes in (a cross). */
+  amps: number;
+  /** The length of it that lies in the field, in metres: the force on it is then written in newtons (in newtons for each metre otherwise). */
+  metres?: number;
+  /** A name written beside it (its current otherwise). */
+  label?: string;
+  labelAt?: 'above' | 'below' | 'left' | 'right';
+}
+
+/** A place in a magnets element: a compass, whose needle turns to the field there, or a probe, which shows the field there as an arrow. */
+export interface MagnetPoint {
+  id: string;
+  at: [number, number];
+  label?: string;
+  labelAt?: 'above' | 'below' | 'left' | 'right';
+}
+
+/** A piece of iron in a magnets element, drawn with its domains: small arrows that point every way until `order` lines them up. */
+export interface MagnetIron {
+  id: string;
+  at: [number, number];
+  long: number;
+  thick: number;
+  /** How many domains across and down ([8, 3] otherwise). */
+  cells?: [number, number];
+  /** How far its domains are lined up at the start, from 0 (every way) to 1 (all one way). */
+  order?: number;
+  label?: string;
+}
+
+/** A stretch of a magnets clip: things are carried or turned, currents change, or domains line up. */
+export interface MagnetsPhase {
+  /** How long it lasts, in seconds. */
+  dur: number;
+  /** Where bars, wires, compasses, probes and pieces of iron are by its end, by id. */
+  to?: Record<string, [number, number]>;
+  /** The angle a bar has by its end, in degrees. */
+  turn?: Record<string, number>;
+  /** The current a wire carries by its end, in amperes. */
+  amps?: Record<string, number>;
+  /** How far the domains of a piece of iron are lined up by its end (0 to 1). */
+  order?: Record<string, number>;
+}
+
+export interface MagnetsClip {
+  phases: MagnetsPhase[];
+}
+
+/** What a magnets element can show; each is a part ("mag.lines"). */
+export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force'] as const;
+
+/**
+ * Magnets, wires and compasses seen from above (src/video/magnets.ts): the magnetic field of bar
+ * magnets (two poles each) and of long straight wires seen end-on (B = μ₀I ÷ 2πr, circling the
+ * wire as the right-hand rule says), with a uniform field added if one is given. Showing the
+ * element shows the magnets, the wires and the iron; showing a part adds it: `lines` (the field
+ * lines: out of each north pole and round to a south pole, and round the wires from the `seeds`),
+ * `compass` (the compasses, whose needles point along the field where they are), `field` (at
+ * each probe, an arrow along the field, with its strength in teslas when the picture has no bar
+ * magnet), `distance` (from the first wire to each probe) and `force` (the push or pull between
+ * bar magnets, and the force of the field on each wire, F = BIL). A clip carries things about,
+ * turns a magnet, changes a current or lines up the domains of a piece of iron. North is red,
+ * south is blue, the field is violet, a current is yellow and a force is orange. Emphasising an
+ * id makes that thing glow.
+ */
+export interface MagnetsEl {
+  kind: 'magnets';
+  id: string;
+  /** The part of the plane that is drawn: [left, right, bottom, top], in the length unit. */
+  view: [number, number, number, number];
+  /** The length unit: how many metres it is, and its symbol (metres otherwise). */
+  length?: { metres: number; symbol: string };
+  bars?: MagnetBar[];
+  wires?: MagnetWire[];
+  compasses?: MagnetPoint[];
+  probes?: MagnetPoint[];
+  iron?: MagnetIron[];
+  /** Where the field lines that close on themselves start (the lines round wires): points [x, y]. */
+  seeds?: Array<[number, number]>;
+  /** A uniform field added everywhere, in teslas: [Bx, By]. `uniformLines` straight lines are drawn for it when there is nothing else to make a field (7 otherwise). */
+  uniform?: [number, number];
+  uniformLines?: number;
+  /** Draw the Earth round the first bar magnet: a disc of this radius, with the geographic poles named. */
+  earth?: number;
+  /** How long the arrow of a probe is, in pixels for each tesla (every arrow is 64 pixels long otherwise). */
+  fieldScale?: number;
+  /** How long a force arrow is, in pixels for each newton (or newton per metre) on a wire. */
+  forceScale?: number;
+  /** Significant figures of a field strength, a distance and a force (2 otherwise). */
+  figures?: number;
+  /** The parts drawn on the thumbnail (the field lines and the compasses otherwise). */
+  thumb?: string[];
+  /** For the thumbnail: the clip to show, at its end. */
+  poster?: string;
+  clips: Record<string, MagnetsClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  height?: number;
+}
+
 /** A body of a circle element: something that goes round a circle. */
 export interface CircleBody {
   id: string;
@@ -2035,7 +2171,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -2217,8 +2353,10 @@ export function checkCircuit(e: CircuitEl): string[] {
   const problems: string[] = [];
   if (!(e.volts >= 0)) problems.push('the supply voltage must be zero or more.');
   if (e.parts.length < 1 || e.parts.length > 4) problems.push('it needs one to four components.');
+  if (e.lead && e.layout !== 'parallel') problems.push('only a parallel layout has a component in series with its branches (`lead`).');
+  if (e.internal !== undefined && !(e.internal >= 0)) problems.push('the internal resistance must be zero or more.');
   const ids = new Set<string>();
-  for (const part of e.parts) {
+  for (const part of [...(e.lead ? [e.lead] : []), ...e.parts]) {
     if (ids.has(part.id)) problems.push(`the component id "${part.id}" is used twice.`);
     ids.add(part.id);
     if ((CIRCUIT_PARTS as readonly string[]).includes(part.id)) problems.push(`the component id "${part.id}" is the name of a part.`);
@@ -2649,6 +2787,52 @@ export function checkParticles(e: ParticlesEl): string[] {
   return problems;
 }
 
+/** Problems with a magnets element: a view with no size, ids used twice, things outside the view, clips that name nothing. */
+export function checkMagnets(e: MagnetsEl): string[] {
+  const problems: string[] = [];
+  const [x0, x1, y0, y1] = e.view;
+  if (!(x1 > x0 && y1 > y0)) problems.push('the view needs its right above its left, and its top above its bottom.');
+  if (e.length && !(e.length.metres > 0)) problems.push('the length unit must be more than zero metres.');
+  const [bars, wires, iron] = [e.bars ?? [], e.wires ?? [], e.iron ?? []];
+  const points = [...(e.compasses ?? []), ...(e.probes ?? [])];
+  const all = [...bars, ...wires, ...iron, ...points];
+  if (!bars.length && !wires.length && !e.uniform) problems.push('it needs a bar magnet, a wire or a uniform field.');
+  const ids = new Set<string>();
+  for (const o of all) {
+    if (ids.has(o.id)) problems.push(`the id "${o.id}" is used twice.`);
+    ids.add(o.id);
+    if ((MAGNETS_PARTS as readonly string[]).includes(o.id)) problems.push(`the id "${o.id}" is the name of a part.`);
+    if (o.at[0] < x0 || o.at[0] > x1 || o.at[1] < y0 || o.at[1] > y1) problems.push(`"${o.id}" starts outside the view.`);
+  }
+  for (const b of [...bars, ...iron]) if (!(b.long > 0 && b.thick > 0)) problems.push(`"${b.id}" needs a length and a thickness above zero.`);
+  for (const b of bars) if (b.lines !== undefined && !(Number.isInteger(b.lines) && b.lines >= 2)) problems.push(`bar "${b.id}" needs a whole number of field lines, two or more.`);
+  for (const b of iron) if (b.order !== undefined && !(b.order >= 0 && b.order <= 1)) problems.push(`iron "${b.id}" needs an order from 0 to 1.`);
+  for (const w of wires) if (w.metres !== undefined && !(w.metres > 0)) problems.push(`wire "${w.id}" needs a length above zero.`);
+  if (e.earth !== undefined && (!bars.length || !(e.earth > 0))) problems.push('the Earth needs a bar magnet inside it and a radius above zero.');
+  for (const [sx, sy] of e.seeds ?? []) if (sx < x0 || sx > x1 || sy < y0 || sy > y1) problems.push(`the seed at (${sx}, ${sy}) is outside the view.`);
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  for (const part of e.thumb ?? []) if (!(MAGNETS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  const named = (group: Array<{ id: string }>) => new Set(group.map((o) => o.id));
+  const [barIds, wireIds, ironIds] = [named(bars), named(wires), named(iron)];
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      for (const [id, [tx, ty]] of Object.entries(ph.to ?? {})) {
+        if (!ids.has(id)) problems.push(`clip "${name}" moves "${id}", which is not in the picture.`);
+        else if (tx < x0 || tx > x1 || ty < y0 || ty > y1) problems.push(`clip "${name}" moves "${id}" outside the view.`);
+      }
+      for (const id of Object.keys(ph.turn ?? {})) if (!barIds.has(id)) problems.push(`clip "${name}" turns "${id}", which is not a bar magnet.`);
+      for (const id of Object.keys(ph.amps ?? {})) if (!wireIds.has(id)) problems.push(`clip "${name}" sets the current of "${id}", which is not a wire.`);
+      for (const [id, order] of Object.entries(ph.order ?? {})) {
+        if (!ironIds.has(id)) problems.push(`clip "${name}" lines up "${id}", which is not a piece of iron.`);
+        if (!(order >= 0 && order <= 1)) problems.push(`clip "${name}" needs an order from 0 to 1.`);
+      }
+    }
+  }
+  return problems;
+}
+
 /**
  * Problems with a charges element: marks that do not add up, electrons sent from a body that has
  * none, clips that name no body. The electrons each body holds, and the wires to the ground, are
@@ -2794,7 +2978,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -2815,7 +2999,7 @@ export function checkScript(x: Explainer): string[] {
         problems.push(...checkMotion(e).map((p) => `Scene ${si + 1}: motion "${e.id}": ${p}`));
       }
       if (e.kind === 'circuit') {
-        diagrams.set(e.id, new Set<string>([...CIRCUIT_PARTS, ...e.parts.map((part) => part.id)]));
+        diagrams.set(e.id, new Set<string>([...CIRCUIT_PARTS, ...e.parts.map((part) => part.id), ...(e.lead ? [e.lead.id] : [])]));
         motions.set(e.id, e);
         problems.push(...checkCircuit(e).map((p) => `Scene ${si + 1}: circuit "${e.id}": ${p}`));
       }
@@ -2845,6 +3029,11 @@ export function checkScript(x: Explainer): string[] {
         // The clips are followed in the order the scene plays them (and a clip can be played twice).
         const played = s.lines.flatMap((l) => asList(l.play)).map((target) => target.split('.')).filter(([el]) => el === e.id).map(([, clip]) => clip ?? '');
         problems.push(...checkCharges(e, played).map((p) => `Scene ${si + 1}: charges "${e.id}": ${p}`));
+      }
+      if (e.kind === 'magnets') {
+        diagrams.set(e.id, new Set<string>([...MAGNETS_PARTS, ...[...(e.bars ?? []), ...(e.wires ?? []), ...(e.iron ?? []), ...(e.compasses ?? []), ...(e.probes ?? [])].map((o) => o.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkMagnets(e).map((p) => `Scene ${si + 1}: magnets "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
