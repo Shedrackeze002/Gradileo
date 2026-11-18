@@ -125372,5 +125372,233 @@
         "working": "Path difference: $6.2 - 5.0 = 1.2\\ \\text{m}$. In wavelengths: $\\dfrac{1.2}{0.8} = 1.5$. That is an odd number of half wavelengths, so crest meets trough: destructive interference, and the sound is quiet."
       }
     ]
+  },
+  "p20-4-6": {
+    "lessonId": "p20-4-6",
+    "title": "Standing Waves",
+    "duration": 300,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A wave meets its reflection",
+        "t": 20.707
+      },
+      {
+        "title": "What fits on a string",
+        "t": 69.424
+      },
+      {
+        "title": "The spacing of the nodes",
+        "t": 118.459
+      },
+      {
+        "title": "The frequency of a harmonic",
+        "t": 146.719
+      },
+      {
+        "title": "The speed of the waves",
+        "t": 191.13
+      },
+      {
+        "title": "Your turn",
+        "t": 230.299
+      },
+      {
+        "title": "Summary",
+        "t": 271.695
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-6:q",
+        "t": 245.375,
+        "prompt": "A string 1.2 m long is fixed at both ends, and waves travel along it at 90 m/s. At what frequency does it vibrate with 2 loops?",
+        "choices": [
+          "$37.5\\ \\text{Hz}$",
+          "$150\\ \\text{Hz}$",
+          "$75\\ \\text{Hz}$",
+          "$108\\ \\text{Hz}$"
+        ],
+        "answer": 2,
+        "working": "Two loops fill the string: $\\lambda = \\dfrac{2L}{n} = \\dfrac{2 \\times 1.2}{2} = 1.2\\ \\text{m}$. Then $f = \\dfrac{v}{\\lambda} = \\dfrac{90}{1.2} = 75\\ \\text{Hz}$."
+      }
+    ]
+  },
+  "p20-4-6-b": {
+    "lessonId": "p20-4-6",
+    "title": "Standing Waves, Part 2: Resonance and Air Columns",
+    "duration": 342,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Natural frequency",
+        "t": 19.275
+      },
+      {
+        "title": "Resonance",
+        "t": 44.058
+      },
+      {
+        "title": "Air columns",
+        "t": 110.832
+      },
+      {
+        "title": "The shortest column",
+        "t": 154.379
+      },
+      {
+        "title": "Measuring the speed of sound",
+        "t": 190.682
+      },
+      {
+        "title": "Your turn",
+        "t": 253.275
+      },
+      {
+        "title": "Summary",
+        "t": 304.284
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-6-b:q",
+        "t": 272.455,
+        "prompt": "A tuning fork of frequency 256 Hz is held over a tube that is closed at one end. The speed of sound in the air is 340 m/s. What is the shortest air column that resonates?",
+        "choices": [
+          "$133\\ \\text{cm}$",
+          "$66.4\\ \\text{cm}$",
+          "$99.6\\ \\text{cm}$",
+          "$33.2\\ \\text{cm}$"
+        ],
+        "answer": 3,
+        "working": "Wavelength: $\\lambda = \\dfrac{v}{f} = \\dfrac{340}{256} = 1.328\\ \\text{m}$. The shortest column is a quarter of a wavelength: $L = \\dfrac{1.328}{4} = 0.332\\ \\text{m} = 33.2\\ \\text{cm}$."
+      }
+    ]
+  },
+  "p20-4-7": {
+    "lessonId": "p20-4-7",
+    "title": "The Doppler Effect",
+    "duration": 332,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A source at rest",
+        "t": 20.027
+      },
+      {
+        "title": "A source that moves",
+        "t": 48.22
+      },
+      {
+        "title": "What a listener receives",
+        "t": 85.39
+      },
+      {
+        "title": "As the source passes",
+        "t": 140.644
+      },
+      {
+        "title": "A listener who moves",
+        "t": 172.595
+      },
+      {
+        "title": "As fast as the waves",
+        "t": 218.698
+      },
+      {
+        "title": "Your turn",
+        "t": 251.945
+      },
+      {
+        "title": "Summary",
+        "t": 293.59
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-7:q",
+        "t": 267.404,
+        "prompt": "A train sounds a horn of 400 Hz as it moves at a steady speed towards a person on a platform, passes the person, and moves away. What does the person hear?",
+        "choices": [
+          "A steady note above 400 Hz, then a steady note below 400 Hz",
+          "A note that rises steadily, then falls steadily",
+          "A steady 400 Hz that only gets louder, then quieter",
+          "A steady note below 400 Hz, then a steady note above 400 Hz"
+        ],
+        "answer": 0,
+        "working": "While the train approaches, the distance is shrinking, so the frequency received is higher than 400 Hz. The speed is steady, so the raised note is steady. As the train passes, the distance starts to grow, and the note drops to a steady frequency below 400 Hz."
+      }
+    ]
+  },
+  "p20-4-7-b": {
+    "lessonId": "p20-4-7",
+    "title": "The Doppler Effect, Part 2: Doppler Calculations",
+    "duration": 404,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Where the formula comes from",
+        "t": 21.293
+      },
+      {
+        "title": "Approaching, or moving away",
+        "t": 81.117
+      },
+      {
+        "title": "An approaching siren",
+        "t": 132.286
+      },
+      {
+        "title": "The siren moving away",
+        "t": 180.233
+      },
+      {
+        "title": "The speed of a source",
+        "t": 227.984
+      },
+      {
+        "title": "Using the Doppler effect",
+        "t": 282.976
+      },
+      {
+        "title": "Your turn",
+        "t": 319.332
+      },
+      {
+        "title": "Summary",
+        "t": 369.711
+      }
+    ],
+    "cues": [
+      {
+        "id": "p20-4-7-b:q",
+        "t": 338.275,
+        "prompt": "The speed of sound in the air is 340 m/s. A train sounds a whistle of frequency 800 Hz as it moves at 20 m/s directly away from a person. What frequency does the person hear?",
+        "choices": [
+          "$850\\ \\text{Hz}$",
+          "$755.6\\ \\text{Hz}$",
+          "$847.1\\ \\text{Hz}$",
+          "$752.9\\ \\text{Hz}$"
+        ],
+        "answer": 1,
+        "working": "The source is moving away, so the frequency heard is lower, and we add underneath: $f_{\\text{heard}} = f \\times \\dfrac{v}{v + v_s} = 800 \\times \\dfrac{340}{340 + 20} = 800 \\times 0.9444 = 755.6\\ \\text{Hz}$."
+      }
+    ]
   }
 }

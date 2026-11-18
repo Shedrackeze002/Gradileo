@@ -205,10 +205,10 @@ const video: Explainer = {
         {
           kind: 'try',
           id: 'q',
-          prompt: 'A train sounds a horn of 400 Hz as it moves at a steady speed towards a person on a platform, passes the person, and moves away. What does the person hear?',
-          choices: ['A steady note above 400 Hz, then a steady note below 400 Hz', 'A note that rises steadily, then falls steadily', 'A steady 400 Hz that only gets louder, then quieter', 'A steady note below 400 Hz, then a steady note above 400 Hz'],
+          prompt: 'A train sounds a horn of 400 Hz as it moves at a steady speed towards a person, passes, and moves away. What does the person hear?',
+          choices: ['Steady and above 400 Hz, then steady and below', 'A note that rises, then falls', 'A steady 400 Hz, louder then quieter', 'Steady and below 400 Hz, then steady and above'],
           answer: 0,
-          working: 'While the train approaches, the distance is shrinking, so the frequency received is higher than 400 Hz. The speed is steady, so the raised note is steady. As the train passes, the distance starts to grow, and the note drops to a steady frequency below 400 Hz.',
+          working: 'Approaching, the distance shrinks, so the note is above 400 Hz, and it is steady because the speed is steady. As the train passes, the note drops to a steady frequency below 400 Hz.',
         },
       ],
       lines: [
