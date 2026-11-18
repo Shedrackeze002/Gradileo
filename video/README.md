@@ -160,7 +160,14 @@ See `src/video/script.ts` for every element and option. In short:
   bars run from zero to `momentumMax`; for a body that moves to the left, `momentumMin` (a number
   below zero) moves the zero line part way along, and a negative bar grows to its left. A body
   with `fixed: true` is a wall: a tall hatched slab with no velocity label and no bar (give it a
-  mass of a million kilograms, and a hidden force on the ball for the moment of the bounce). The
+  mass of a million kilograms, and a hidden force on the ball for the moment of the bounce). A
+  force with `to` changes steadily through its phase, from `n` to `to` newtons (a force that rises
+  to a peak and falls again takes two phases), and `graph: { y: 'impulse', of: ['cart'], seconds,
+  max, force: 'Push' }` draws the force against time as it acts: the area under the line fills in
+  and the impulse so far is written over it (`ms: true` numbers the time axis in milliseconds,
+  for a collision played with `slow`). That graph and the momentum bars fit together in an
+  element 560 px high. Two bodies with the same label get bars with the same name, so name them
+  A and B when their bars are compared. The
   displacement's label sits beside its arrow, so leave about 300 px of track free on one side.
   `speedWord: true` writes "speed =" beside the velocity arrow, for videos that come before
   velocity is taught. `plain: true` makes a sketch of it, not a measurement: no rulers, forces

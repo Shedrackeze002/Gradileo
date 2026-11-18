@@ -285,6 +285,13 @@ export interface MotionForce {
    * under these points, which a force-displacement graph (`graph: { y: 'force' }`) fills in.
    */
   profile?: Array<[number, number]>;
+  /**
+   * A force that changes with time: it goes steadily from `n` at the start of the phase to this
+   * many newtons at its end. A force that rises to a peak and falls again takes two phases. On a
+   * force-time graph (`graph: { y: 'impulse' }`) it is a sloping line. Not for friction, air
+   * resistance or a force with a `profile`.
+   */
+  to?: number;
 }
 
 /**
@@ -393,9 +400,14 @@ export interface MotionEl {
    * force with a `profile` otherwise, or the spring's) against the distance moved, or against the
    * extension of the spring. `metres` is then the length of its displacement axis (`seconds` is
    * not used; give 0), the area under the line fills in as the body moves, and the work done so
-   * far is written over it (`area` renames it: "Energy stored").
+   * far is written over it (`area` renames it: "Energy stored"). With `y: 'impulse'` it is a
+   * force-time graph of one body: the force named in `force` (the net force along the track
+   * otherwise) against time, with `max` in newtons. The area under the line fills in while the
+   * force acts, and the impulse so far (that area, in N·s) is written over it. `ms: true` numbers
+   * the time axis of any of these graphs in milliseconds, for a collision (`seconds` stays in
+   * seconds: 0.006 for six milliseconds).
    */
-  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'displacement' | 'force'; metres?: number; force?: string; area?: string };
+  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'displacement' | 'force' | 'impulse'; metres?: number; force?: string; area?: string; ms?: boolean };
   /** A spring between the wall at the left end of a single straight track and one of the bodies. */
   spring?: MotionSpring;
   /**
@@ -1896,6 +1908,7 @@ export function checkMotion(e: MotionEl): string[] {
     if (e.graph.of.length !== 1) problems.push('a force-displacement graph is of one body.');
     if (e.path || e.vertical || (e.lanes?.length ?? 1) > 1) problems.push('a force-displacement graph goes over a single straight track.');
   } else if (e.graph && !(e.graph.seconds > 0)) problems.push('the graph needs the length of its time axis, in seconds.');
+  if (e.graph?.y === 'impulse' && e.graph.of.length !== 1) problems.push('a force-time graph is of one body.');
   if (e.graph?.y === 'displacement' && e.equilibrium === undefined) problems.push('a displacement graph needs an equilibrium position to measure from.');
   if (e.equilibrium !== undefined) {
     if (e.path || e.vertical === 'up' || (e.lanes?.length ?? 1) > 1) problems.push('an equilibrium position is for a single straight track, or a single drop.');
@@ -1931,6 +1944,8 @@ export function checkMotion(e: MotionEl): string[] {
           if (f.resist || f.drag || f.axis === 'y') problems.push(`${where}: a force that changes with distance pushes along the track, and is not friction or air resistance.`);
           if (e.path || e.vertical) problems.push(`${where}: a force that changes with distance acts on a straight track.`);
         }
+        if (f.to !== undefined && (f.resist || f.drag || f.profile || f.axis === 'y')) problems.push(`${where}: a force that changes with time pushes along the track, and is not friction, air resistance or a force that changes with distance.`);
+        if (f.to !== undefined && (e.path || e.spring)) problems.push(`${where}: a force that changes with time acts on a straight track with no spring.`);
         if (f.axis === 'y') up.set(f.on, (up.get(f.on) ?? 0) + f.n);
       }
       // Bodies stay on their track, so the forces drawn up and down must cancel.
