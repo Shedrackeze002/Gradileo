@@ -59,8 +59,8 @@ const video: Explainer = {
         {
           kind: 'atoms',
           id: 'atom',
-          span: [8, 7],
-          atoms: [{ id: 'li', symbol: 'Li', protons: 3, electrons: 0, at: [4, 3.5], tone: 'opp', name: 'lithium' }],
+          span: [6, 5],
+          atoms: [{ id: 'li', symbol: 'Li', protons: 3, electrons: 0, at: [3, 2.5], tone: 'opp', name: 'lithium' }],
           clips: { fill: { phases: [{ dur: 0.5 }, { dur: 3.5, fill: { li: 3 } }, { dur: 1 }] } },
           poster: 'fill',
           height: 460,
