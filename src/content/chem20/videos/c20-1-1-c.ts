@@ -1,32 +1,30 @@
-import type { Explainer } from '@/video/script.ts';
-import { atomShells, periodicTable } from '@/video/chem.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
+import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
-import { bracket, columnRow, tag } from './lib/c20-1a-figures.ts';
+import { columnRow } from './lib/c20-1a-figures.ts';
 
-// A sodium atom (2, 8, 1); losing its third level leaves the sodium ion (2, 8) in brackets.
-const sodium = figure(
-  'na',
-  [
-    atomShells({ name: 'a', protons: 11, neutrons: 12, shells: [2, 8, 1], r: 1.5, gap: 1.05 }),
-    bracket({ c: [0, 0], half: [4.05, 4.05], charge: '+', tone: 'opp' }),
-    tag('atom', [0, -5.3], '\\text{sodium atom: 2, 8, 1}', { tone: 'muted' }),
-    tag('ion', [0, -5.3], '\\text{sodium ion: 2, 8}', { tone: 'opp' }),
-  ],
-  560,
-);
+// A sodium atom (src/video/atoms.ts): in the clip `lose` its one valence electron drifts away,
+// leaving the sodium ion, 2, 8.
+const sodium: AtomsEl = {
+  kind: 'atoms',
+  id: 'na',
+  span: [8, 8],
+  atoms: [{ id: 'na', symbol: 'Na', protons: 11, at: [4, 4.2], tone: 'opp', name: 'sodium' }],
+  clips: { lose: { phases: [{ dur: 0.4 }, { dur: 1.6, give: [{ from: 'na', to: null, n: 1 }] }, { dur: 0.6 }] } },
+  poster: 'lose',
+  height: 520,
+};
 
-// A chlorine atom (2, 8, 7); gaining one electron gives the chloride ion (2, 8, 8) in brackets.
-const chlorine = figure(
-  'cl',
-  [
-    atomShells({ name: 'a', protons: 17, neutrons: 18, shells: [2, 8, 7], r: 1.6, gap: 1.0 }),
-    atomShells({ name: 'b', protons: 17, neutrons: 18, shells: [2, 8, 8], r: 1.6, gap: 1.0 }),
-    bracket({ c: [0, 0], half: [5.0, 5.0], charge: '-', tone: 'adj' }),
-    tag('atom', [0, -6.1], '\\text{chlorine atom: 2, 8, 7}', { tone: 'muted' }),
-    tag('ion', [0, -6.1], '\\text{chloride ion: 2, 8, 8}', { tone: 'adj' }),
-  ],
-  580,
-);
+// A chlorine atom: in the clip `gain` it takes one more electron, giving the chloride ion, 2, 8, 8.
+const chlorine: AtomsEl = {
+  kind: 'atoms',
+  id: 'cl',
+  span: [8, 8],
+  atoms: [{ id: 'cl', symbol: 'Cl', protons: 17, at: [4, 4.2], tone: 'good', name: 'chlorine' }],
+  clips: { gain: { phases: [{ dur: 0.4 }, { dur: 1.6, fill: { cl: 18 } }, { dur: 0.6 }] } },
+  poster: 'gain',
+  height: 520,
+};
 
 // The first 20 elements, with the charge of each group's ions under its column.
 const chargeTable = figure('pt', [
@@ -87,9 +85,9 @@ const video: Explainer = {
       left: [sodium],
       right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\text{11 protons, 11 electrons}', '\\text{loses 1: 2, 8, like neon}', '\\text{charge: } 11 - 10 = +1', '\\ce{Na+}\\text{, the sodium ion}'] }],
       lines: [
-        { say: 'Metals lose electrons. A sodium atom has eleven protons and eleven electrons, arranged two, eight, one.', show: ['na.a-nucleus', 'na.a-shell-1', 'na.a-shell-2', 'na.a-shell-3', 'na.atom', 'm.0'], focus: 'm.0' },
-        { say: 'Losing its one valence electron leaves ten electrons, arranged two, eight: the same arrangement as neon.', hide: ['na.a-shell-3', 'na.atom'], show: ['m.1', 'na.ion'], focus: ['m.1', 'na.a-shell-2'] },
-        { say: 'With eleven protons and only ten electrons, the ion has one more positive charge than negative: a charge of one plus.', show: ['m.2', 'na.bracket'], focus: ['m.2', 'na.bracket'] },
+        { say: 'Metals lose electrons. A sodium atom has eleven protons and eleven electrons, arranged two, eight, one.', show: ['na', 'na.labels', 'na.arrangement', 'm.0'], focus: 'm.0' },
+        { say: 'Losing its one valence electron leaves ten electrons, arranged two, eight: the same arrangement as neon.', show: 'm.1', play: 'na.lose', focus: ['m.1', 'na'] },
+        { say: 'With eleven protons and only ten electrons, the ion has one more positive charge than negative: a charge of one plus.', show: ['m.2', 'na.charges'], focus: ['m.2', 'na'] },
         { say: 'This is the sodium ion, N A plus. The square brackets show that the charge belongs to the whole ion.', caption: 'This is the sodium ion, written Na⁺. The square brackets show that the charge belongs to the whole ion.', show: 'm.3', focus: 'm.3' },
       ],
     },
@@ -100,9 +98,9 @@ const video: Explainer = {
       left: [chlorine],
       right: [{ kind: 'math', id: 'm', size: 'md', align: 'left', lines: ['\\text{17 protons, 17 electrons}', '\\text{gains 1: 2, 8, 8, like argon}', '\\text{charge: } 17 - 18 = -1', '\\ce{Cl-}\\text{, the chloride ion}'] }],
       lines: [
-        { say: 'Non-metals gain electrons. A chlorine atom has seventeen protons and seventeen electrons, arranged two, eight, seven.', show: ['cl.a-nucleus', 'cl.a-shell-1', 'cl.a-shell-2', 'cl.a-shell-3', 'cl.atom', 'm.0'], focus: 'm.0' },
-        { say: 'Gaining one electron gives eighteen electrons, arranged two, eight, eight: the same arrangement as argon.', hide: ['cl.a-shell-3', 'cl.atom'], show: ['cl.b-shell-3', 'cl.ion', 'm.1'], focus: ['m.1', 'cl.b-e-3-7'] },
-        { say: 'With seventeen protons and eighteen electrons, there is one more negative charge than positive: a charge of one minus.', show: ['m.2', 'cl.bracket'], focus: ['m.2', 'cl.bracket'] },
+        { say: 'Non-metals gain electrons. A chlorine atom has seventeen protons and seventeen electrons, arranged two, eight, seven.', show: ['cl', 'cl.labels', 'cl.arrangement', 'm.0'], focus: 'm.0' },
+        { say: 'Gaining one electron gives eighteen electrons, arranged two, eight, eight: the same arrangement as argon.', show: 'm.1', play: 'cl.gain', focus: ['m.1', 'cl'] },
+        { say: 'With seventeen protons and eighteen electrons, there is one more negative charge than positive: a charge of one minus.', show: ['m.2', 'cl.charges'], focus: ['m.2', 'cl'] },
         { say: 'This is the chloride ion, C L minus. Its name changes the ending of chlorine to chloride.', caption: 'This is the chloride ion, Cl⁻. Its name changes the ending of chlorine to chloride.', show: 'm.3', focus: 'm.3' },
       ],
     },

@@ -1,17 +1,17 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { atomShells } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { tag } from './lib/c20-1a-figures.ts';
 
-// A carbon-12 atom: 6 protons and 6 neutrons in the nucleus, 6 electrons arranged 2, 4.
-const carbon = figure(
-  'c',
-  [
-    atomShells({ protons: 6, neutrons: 6, shells: [2, 4], r: 1.5, gap: 1.2 }),
-    tag('name', [0, -4.4], '\\text{a carbon atom}', { tone: 'muted' }),
-  ],
-  520,
-);
+// A carbon atom (src/video/atoms.ts), its six electrons circling in two levels, 2 and 4.
+const carbon: AtomsEl = {
+  kind: 'atoms',
+  id: 'c',
+  span: [7, 7],
+  atoms: [{ id: 'c', symbol: 'C', protons: 6, at: [3.5, 3.6], tone: 'theta', name: 'a carbon atom' }],
+  clips: {},
+  height: 460,
+};
 
 // Chlorine-35 and chlorine-37: the same protons and electrons, different neutrons.
 const chlorine = figure(
@@ -62,10 +62,10 @@ const video: Explainer = {
         },
       ],
       lines: [
-        { say: 'An atom has a tiny, dense nucleus at its centre, surrounded by electrons. Here is a carbon atom.', show: ['c.nucleus', 'c.shell-1', 'c.shell-2', 'c.name'] },
-        { say: 'A proton has a charge of plus one and a relative mass of one. It sits in the nucleus.', show: 't.0', focus: ['t.0', 'c.nucleus'] },
-        { say: 'A neutron has no charge, and also a relative mass of one. It is in the nucleus too.', show: 't.1', focus: ['t.1', 'c.nucleus'] },
-        { say: 'An electron has a charge of minus one, and moves around the nucleus in energy levels.', show: 't.2', focus: ['t.2', 'c.shell-1', 'c.shell-2'] },
+        { say: 'An atom has a tiny, dense nucleus at its centre, surrounded by electrons. Here is a carbon atom.', show: ['c', 'c.labels'] },
+        { say: 'A proton has a charge of plus one and a relative mass of one. It sits in the nucleus.', show: 't.0', focus: ['t.0', 'c'] },
+        { say: 'A neutron has no charge, and also a relative mass of one. It is in the nucleus too.', show: 't.1', focus: ['t.1', 'c'] },
+        { say: 'An electron has a charge of minus one, and moves around the nucleus in energy levels.', show: ['t.2', 'c.arrangement'], focus: ['t.2', 'c'] },
         { say: 'Electrons are so light that we leave them out when we count mass. Protons and neutrons carry almost all of it.', focus: 't' },
       ],
     },

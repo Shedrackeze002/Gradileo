@@ -1,17 +1,19 @@
-import type { Explainer } from '@/video/script.ts';
-import { atomShells, periodicTable } from '@/video/chem.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
+import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { columnRow, tag } from './lib/c20-1a-figures.ts';
 
-// A sodium atom: 11 electrons arranged 2, 8, 1, with its one valence electron in the third level.
-const sodium = figure(
-  'na',
-  [
-    atomShells({ protons: 11, neutrons: 12, shells: [2, 8, 1], r: 1.5, gap: 1.05 }),
-    tag('name', [0, -5.2], '\\text{sodium: 2, 8, 1}', { tone: 'muted' }),
-  ],
-  560,
-);
+// A sodium atom (src/video/atoms.ts): in the clip `fill` its eleven electrons arrive level by
+// level, 2, then 8, then the single valence electron in the third level.
+const sodium: AtomsEl = {
+  kind: 'atoms',
+  id: 'na',
+  span: [8, 8],
+  atoms: [{ id: 'na', symbol: 'Na', protons: 11, electrons: 0, at: [4, 4.2], tone: 'opp', name: 'sodium' }],
+  clips: { fill: { phases: [{ dur: 0.3 }, { dur: 1.2, fill: { na: 2 } }, { dur: 3, fill: { na: 10 } }, { dur: 1, fill: { na: 11 } }, { dur: 0.4 }] } },
+  poster: 'fill',
+  height: 520,
+};
 
 // The first 20 elements, with the number of valence electrons under each main-group column.
 const valenceTable = (families: boolean) =>
@@ -66,9 +68,9 @@ const video: Explainer = {
       left: [sodium],
       right: [{ kind: 'callout', id: 'def', tone: 'definition', title: 'Valence electron', md: 'An electron in the **outermost occupied energy level** of an atom. Valence electrons are the electrons that take part in chemical bonding.' }],
       lines: [
-        { say: 'Electrons are arranged in energy levels, sometimes called shells, around the nucleus. A sodium atom has eleven electrons.', show: 'na.nucleus' },
-        { say: 'Two are in the first level, eight in the second, and one in the third.', show: ['na.shell-1', 'na.shell-2', 'na.shell-3', 'na.name'] },
-        { say: 'The electrons in the outermost level are the ones an atom uses when it reacts.', focus: 'na.shell-3' },
+        { say: 'Electrons are arranged in energy levels, sometimes called shells, around the nucleus. A sodium atom has eleven electrons.', show: ['na', 'na.labels'] },
+        { say: 'Two are in the first level, eight in the second, and one in the third.', show: 'na.arrangement', play: 'na.fill' },
+        { say: 'The electrons in the outermost level are the ones an atom uses when it reacts.', focus: 'na' },
         { say: 'These are valence electrons: electrons in the outermost occupied energy level. They take part in chemical bonding, and sodium has one.', show: 'def' },
       ],
     },
