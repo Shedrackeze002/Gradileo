@@ -1374,7 +1374,7 @@ items ship or decisions change.
        that cross from one body to another, down a ground wire, or to the far side of a metal
        sphere when a charged rod comes near, and the charge written by each body is counted from
        its electrons. Point charges get the forces of Coulomb's law, their vector sum and its
-       angle, and can fly apart or together. The first four videos are scripted: `p30-2-1`
+       angle, and can fly apart or together. The first four videos are rendered and in Drive: `p30-2-1`
        (Electric Charge), `p30-2-1-b` (Charging Objects: friction, contact and induction),
        `p30-2-2` (Coulomb's Law) and `p30-2-2-b` (The Net Electric Force).
      - Next: the videos of lessons 2.3 to 2.10 (electric fields and field lines, potential
