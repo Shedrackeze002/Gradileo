@@ -202,6 +202,17 @@ See `src/video/script.ts` for every element and option. In short:
   under a track or a hill and beside a drop, a lift or a pendulum. A bar whose `max` is 100 J or
   more is written in whole joules, and a large one in kilojoules, so choose numbers whose total
   does not sit on a rounding boundary (151.15 kJ flickers between 151.1 and 151.2).
+  For a collision, `system: ['kinetic', 'lost']` adds two bars for the bodies in `of` taken
+  together, which come in with `sim.total`: their total kinetic energy, and how much less that is
+  than at the start (what the collision has turned to heat and sound). Four energy bars under a
+  track with a "Slow motion" note need an element about 490 px high. A small body that goes right
+  inside a larger one listed after it (a bullet into a block, with a `squeeze` deeper than the
+  bullet is wide) is covered by it and loses its labels. `velocityDecimals: 2` writes velocities
+  under 10 m/s to two places (0.99 m/s, where 1.0 would hide the point), and `cm: true` on a
+  pendulum writes the height of its bob in centimetres beside the bob, for a rise too small to draw
+  a line under. To play one collision several ways at once, give each pair its own lane and lay
+  the phases of the collisions over one another (`src/content/phys30/videos/p30-1-4.ts`): the
+  touch times must match, so divide the `squeeze` by (1 + the restitution).
   A force with a `profile` changes as the body moves: its size at distances from where the body
   started, as `[metres, newtons]` points joined by straight lines. The work it does is the area
   under those points, and `graph: { y: 'force', metres: … }` draws the force-displacement graph

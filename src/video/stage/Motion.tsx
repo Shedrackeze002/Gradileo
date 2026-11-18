@@ -8,7 +8,7 @@ import type { ReactElement } from 'react';
 import type { MotionBody, MotionEl } from '../script.ts';
 import { amplitudeOf, displacementOf, motionAt, netForce, oscillations, SPRING, widthOf, type MotionState } from '../motion.ts';
 import { easeOut, ownPart, type ElState } from '../timeline.ts';
-import { Count, labelCase, offset, offsetStep, Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
+import { Count, labelCase, offset, offsetStep, Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, speedText, Text, VELOCITY } from './motionKit.tsx';
 import { ForceGraph, niceStep } from './ForceGraph.tsx';
 import { PathView } from './MotionPath.tsx';
 import { TONES } from './tex.ts';
@@ -758,10 +758,19 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     );
   }
 
+  // A body that has gone right inside one drawn after it (a bullet in a block) is covered by it:
+  // it moves with that body, whose labels now speak for both.
+  const covered = (b: MotionBody) =>
+    el.bodies.some((o, oi) => {
+      if (oi <= el.bodies.indexOf(b) || (o.lane ?? 0) !== (b.lane ?? 0) || widthOf(o) <= widthOf(b)) return false;
+      const [bx, ox] = [state.bodies[b.id].x, state.bodies[o.id].x];
+      return bx - widthOf(b) / 2 >= ox - widthOf(o) / 2 - 1e-6 && bx + widthOf(b) / 2 <= ox + widthOf(o) / 2 + 1e-6;
+    });
+
   // Two bodies close together on a track (coupled carts) take turns to have their labels higher.
   const raised: Record<string, number> = {};
   for (let lane = 0; lane < lanes.length; lane++) {
-    const row = el.bodies.filter((b) => (b.lane ?? 0) === lane).sort((p1, p2) => state.bodies[p1.id].x - state.bodies[p2.id].x);
+    const row = el.bodies.filter((b) => (b.lane ?? 0) === lane && !covered(b)).sort((p1, p2) => state.bodies[p1.id].x - state.bodies[p2.id].x);
     row.forEach((b, i) => {
       const near = i > 0 && (state.bodies[b.id].x - state.bodies[row[i - 1].id].x) * S < 132;
       raised[b.id] = near && !raised[row[i - 1].id] ? 1 : 0;
@@ -769,7 +778,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   }
 
   for (const b of el.bodies) {
-    if (b.fixed) continue;
+    if (b.fixed || covered(b)) continue;
     const s = state.bodies[b.id];
     const k = box(b);
     const g = ground(b.lane ?? 0);
@@ -781,7 +790,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
       y -= moving ? 26 : 6;
       out.push(
         <Text key={`vt-${b.id}`} x={k.cx} y={y} color={VELOCITY} opacity={vel}>
-          {moving ? (el.speedWord ? `speed = ${live(Math.abs(s.v))} m/s` : `v = ${live(s.v)} m/s`) : 'at rest'}
+          {moving ? (el.speedWord ? `speed = ${speedText(Math.abs(s.v), el.velocityDecimals)} m/s` : `v = ${speedText(s.v, el.velocityDecimals)} m/s`) : 'at rest'}
         </Text>,
       );
       y -= 30;

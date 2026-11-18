@@ -419,8 +419,10 @@ export interface MotionEl {
    * `count` (also for a pendulum) counts the complete oscillations of a body let go from rest.
    */
   equilibrium?: number;
-  /** Write the displacements of an oscillation in centimetres. */
+  /** Write the displacements of an oscillation in centimetres, or the height of a pendulum's bob (beside the bob, for a small rise). */
   cm?: boolean;
+  /** Decimal places of the velocities written over the bodies (1 by default); from 10 m/s up they keep one place. */
+  velocityDecimals?: number;
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
@@ -455,8 +457,11 @@ export interface MotionEl {
    * force named "Weight" is gravity: its work is the change in potential energy, and is not
    * counted as work done on the body. `names` renames a bar ("Energy supplied" for the work), and
    * with several bodies `labels` names each one in front of its bars (its own label otherwise).
+   * `system` adds bars for the bodies in `of` taken together, under the part `total`: `'kinetic'`
+   * is their total kinetic energy, and `'lost'` is how much less that is than at the start (the
+   * kinetic energy a collision has turned to heat and sound).
    */
-  energy?: { of?: string[]; max: number; bars: EnergyBar[]; g?: number; names?: Partial<Record<EnergyBar, string>>; labels?: Record<string, string> };
+  energy?: { of?: string[]; max: number; bars: EnergyBar[]; g?: number; names?: Partial<Record<EnergyBar, string>>; labels?: Record<string, string>; system?: Array<'kinetic' | 'lost'> };
   /** Seconds between strobe marks (0.5 by default). */
   strobe?: number;
   /** For the thumbnail: the clip to show, part way through. */
