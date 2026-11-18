@@ -567,6 +567,17 @@ See `src/video/script.ts` for every element and option. In short:
   `lib/cx-molecules.ts` (mechanisms with curly arrows, benzene's nitration, the Haber process and
   the fuel cell).
 
+- `scatter` (`src/video/scatter.ts`) is Rutherford's gold foil: a source fires alpha particles
+  at a foil of gold nuclei, and each nucleus pushes them away with an inverse-square force, so
+  their paths are worked out, not drawn. Give the number of `shots` and the clips, whose phases
+  `fire` that many shots evenly through the phase; end each clip with a phase of about 5 seconds
+  that fires none, or the last shots stop in mid-flight when it ends. Every shot keeps clear of the
+  nuclei and goes straight through, except those in `close` (`{ shot, miss }`, by firing order
+  from 0), aimed past a nucleus by `miss`: 0.03 turns a shot by about 27°, 0.008 by about 76°, and
+  −0.0005 throws it back. Each shot leaves a faint track (a bent one stays bright). The parts are
+  `labels`, `atoms` (each gold atom's size round its tiny nucleus: mostly empty space) and `count`
+  (straight through, turned aside, bounced back). See Chemistry 9's `c9-1-1.ts`.
+
 - `quote` sets a passage of prose or verse off from the narration, for the English videos: one
   entry in `lines` per line (Markdown), with an optional attribution (`by: 'Capulet, Act 4, Scene 5'`)
   under it; lines can be shown one at a time (`q.0`). Quote only what the lesson already quotes,

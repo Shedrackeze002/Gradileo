@@ -17,6 +17,7 @@ export type { MotionPath };
 
 import { checkAtoms } from './atoms.ts';
 import { checkMolecules } from './molecules.ts';
+import { checkScatter } from './scatter.ts';
 
 /** The name on every frame, thumbnail and YouTube description. */
 export const BRAND = 'Gradileo';
@@ -909,6 +910,41 @@ export interface MoleculesEl {
   height?: number;
 }
 
+/** A stretch of a scatter clip: `fire` more shots leave evenly through it. */
+export interface ScatterPhase {
+  dur: number;
+  fire?: number;
+}
+
+/** What a scatter element can show; each is a part ("g.labels"). */
+export const SCATTER_PARTS = ['labels', 'atoms', 'count'] as const;
+
+/**
+ * Alpha particles fired at a thin gold foil, Rutherford's experiment (src/video/scatter.ts). Every
+ * nucleus pushes each alpha particle away, harder the closer it is, so one that passes far from the
+ * nuclei goes straight on, one that passes close is turned aside, and one aimed almost straight at
+ * a nucleus bounces back. A clip's phases fire the shots, one after another, each leaving a faint
+ * track. `close` aims chosen shots at a nucleus, missing it by a little (0.004 bounces back, about
+ * 0.03 turns a shot by some tens of degrees); every other shot keeps clear of the nuclei. The
+ * parts: `labels` (the source, the foil and a nucleus named), `atoms` (each gold atom's size
+ * round its tiny nucleus, to show the atom is mostly empty space) and `count` (how many went
+ * straight through, were turned aside and bounced back).
+ */
+export interface ScatterEl {
+  kind: 'scatter';
+  id: string;
+  /** How many alpha particles there are to fire. */
+  shots: number;
+  /** Columns of gold atoms in the foil (3 by default). */
+  columns?: number;
+  /** Shots aimed close to a nucleus, by their place in the firing order (from 0). */
+  close?: Array<{ shot: number; miss: number }>;
+  clips: Record<string, { phases: ScatterPhase[] }>;
+  /** For the thumbnail: the clip to show, played to its end. */
+  poster?: string;
+  height?: number;
+}
+
 /** A stretch of a rays clip. */
 export interface RayPhase {
   /** How long it lasts, in seconds. */
@@ -1535,7 +1571,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl | MoleculesEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -2045,7 +2081,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | ScatterEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -2114,6 +2150,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...ATOM_PARTS, ...e.atoms.map((a) => a.id)]));
         motions.set(e.id, e);
         problems.push(...checkAtoms(e).map((p) => `Scene ${si + 1}: atoms "${e.id}": ${p}`));
+      }
+      if (e.kind === 'scatter') {
+        diagrams.set(e.id, new Set<string>(SCATTER_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkScatter(e).map((p) => `Scene ${si + 1}: scatter "${e.id}": ${p}`));
       }
       if (e.kind === 'molecules') {
         diagrams.set(e.id, new Set<string>(Object.keys(e.atoms)));

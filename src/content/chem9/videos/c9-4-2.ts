@@ -1,4 +1,32 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts): ions in water, held so loosely that
+// they never clump.
+
+/** A solution with this many hydrogen ions among the water molecules. */
+const solution = (id: string, ions: number, label: string): ParticleBox => ({
+  id,
+  state: 'gas',
+  width: 10,
+  height: 9,
+  temp: 0.5,
+  kinds: [
+    { n: ions, bond: 0.05, heavy: 0, size: 0.8, tone: 'bad', name: 'hydrogen ion' },
+    { n: 30, bond: 0.05, heavy: 0, tone: 'adj', name: 'water' },
+  ],
+  tally: { kinds: [0], label: 'hydrogen ions' },
+  label,
+});
+
+/** The same volume of two acids, one pH unit apart: ten times as many hydrogen ions in the lower. */
+const tenfold: ParticlesEl = {
+  kind: 'particles',
+  id: 'ph',
+  boxes: [solution('a', 10, 'pH 2'), solution('b', 1, 'pH 3')],
+  clips: {},
+  key: true,
+  height: 420,
+};
 
 const video: Explainer = {
   id: 'c9-4-2',
@@ -54,6 +82,16 @@ const video: Explainer = {
         { say: 'Lemon juice has a pH of two, and tomato juice a pH of four. The difference is two steps.', show: 'ex.0' },
         { say: 'Two steps means ten times ten, so lemon juice is one hundred times more acidic.', show: 'ex.1' },
         { say: 'Be careful not to get this backwards. A lower number means more acidic, so pH two is more acidic than pH five.' },
+      ],
+    },
+    {
+      chapter: 'Ten times, up close',
+      layout: 'center',
+      main: [tenfold],
+      lines: [
+        { say: 'Here is what a tenfold change looks like. Both boxes hold the same volume of solution. On the left the pH is two, and on the right it is three.', show: ['ph', 'ph.labels', 'ph.key'] },
+        { say: 'Count the red hydrogen ions moving among the water molecules. The pH two solution has ten of them for every one in the pH three solution.', show: 'ph.tally' },
+        { say: 'That is all pH measures: how many hydrogen ions there are. One step down the scale means ten times as many, so the solution is ten times more acidic.' },
       ],
     },
     {
