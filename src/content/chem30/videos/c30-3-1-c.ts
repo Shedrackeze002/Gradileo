@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { toLineFormula } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, grouped, rowStructure, skeleton, step, zigzag } from './lib/c30-3a-figures.ts';
 
@@ -75,6 +76,15 @@ const video: Explainer = {
         { say: 'Butane is C H three, C H two, C H two, C H three. The bonds between carbons are sometimes left out too.', caption: 'Butane is CH₃–CH₂–CH₂–CH₃. The bonds between carbons are sometimes left out too.', show: 'm.0', focus: 'm.0' },
         { say: 'A branch goes in brackets, after the carbon it is joined to.', show: 'm.1', focus: 'm.1' },
         { say: 'And a double or triple bond is a double or triple line, as in propene and pro-pine.', caption: 'And a double or triple bond is a double or triple line, as in propene and propyne.', show: 'm.2', focus: 'm.2' },
+      ],
+    },
+    {
+      chapter: 'From structural to line formula, up close',
+      layout: 'center',
+      main: [toLineFormula('lf')],
+      lines: [
+        { say: 'Here is butane with every atom drawn, the way a structural formula shows it.', show: 'lf' },
+        { say: 'A line formula leaves out the hydrogen atoms, and the letters for carbon, and draws the chain as a zigzag. Each corner and each end is a carbon atom.', play: 'lf.line' },
       ],
     },
     {

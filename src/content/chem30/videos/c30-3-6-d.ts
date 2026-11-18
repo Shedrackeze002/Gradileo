@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { block, structure, tag } from './lib/c30-3b-figures.ts';
+import { polyesterChain } from './lib/c30-organic.ts';
 
 // A diol (blue box with an OH group at each end) and a dicarboxylic acid (orange box with a COOH
 // group at each end) link into a polyester: each link is an ester link (green), and water is
@@ -55,6 +56,15 @@ const video: Explainer = {
         { say: 'Take a diol, a molecule with two O H groups, and a dye-carboxylic acid, with two C O O H groups.', caption: 'Take a diol, a molecule with two OH groups, and a dicarboxylic acid, with two COOH groups.', show: ['f.md', 'f.d', 'f.plus', 'f.ma', 'f.a'] },
         { say: 'An O H group of the diol reacts with a C O O H group of the acid, as in esterification: an ester link forms, and water is released.', caption: 'An OH group of the diol reacts with a COOH group of the acid, as in esterification: an ester link forms, and water is released.', show: ['f.c1', 'f.link1', 'f.c2', 'f.w1'], focus: ['f.link1', 'f.w1'] },
         { say: 'Each monomer still has a group at its other end, so the chain keeps growing, releasing water at every link. All the links are ester links: this is a polyester.', show: ['f.c0', 'f.link2', 'f.c3', 'f.c4', 'f.w2'], focus: ['f.link1', 'f.link2', 'f.w1', 'f.w2'] },
+      ],
+    },
+    {
+      chapter: 'A polyester, up close',
+      layout: 'center',
+      main: [polyesterChain('px', 380)],
+      lines: [
+        { say: 'Here it is up close. R stands for the rest of each monomer: a diol, a dye-carboxylic acid and another diol, with the atoms that will leave shaded.', caption: 'Here it is up close. R stands for the rest of each monomer: a diol, a dicarboxylic acid and another diol, with the atoms that will leave shaded.', show: 'px' },
+        { say: 'At each link, an O H from the acid and an H from the diol leave as water. Then the monomers close up, joined by ester links, and the chain can keep growing at both ends.', caption: 'At each link, an OH from the acid and an H from the diol leave as water. Then the monomers close up, joined by ester links, and the chain can keep growing at both ends.', play: 'px.go' },
       ],
     },
     {

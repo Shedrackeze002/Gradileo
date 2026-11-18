@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { pentaneIsomers } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, skeleton, step, tag, zigzag } from './lib/c30-3a-figures.ts';
 
@@ -76,6 +77,16 @@ const video: Explainer = {
         { say: 'On carbon three, it is the same compound again: numbered from the other end, the methyl group is on carbon two. So that is not new.', caption: 'On carbon 3, it is the same compound again: numbered from the other end, the methyl group is on carbon 2. So that is not new.', focus: 'f.b-c2-m' },
         { say: 'Then a chain of three, with two methyl groups. The only inner carbon is the middle one, so both go there: two, two-dye-methylpropane.', caption: 'Then a chain of three, with two methyl groups. The only inner carbon is the middle one, so both go there: 2,2-dimethylpropane.', show: ['f.c-all'] },
         { say: 'An ethyl group on the middle carbon would only make a longer chain. So C five H twelve has three isomers.', caption: 'An ethyl group on the middle carbon would only make a longer chain. So C₅H₁₂ has three isomers.', focus: 'f' },
+      ],
+    },
+    {
+      chapter: 'Three isomers, up close',
+      layout: 'center',
+      main: [pentaneIsomers('pi')],
+      lines: [
+        { say: 'Here are the five carbon atoms of pentane, up close, in a straight chain.', show: 'pi' },
+        { say: 'Move one end carbon onto the second carbon, and the chain is four long, with one branch: methylbutane.', play: 'pi.one' },
+        { say: 'Move another, and the chain is only three long, with two branches: dimethylpropane. Same formula, three structures.', play: 'pi.two' },
       ],
     },
     {

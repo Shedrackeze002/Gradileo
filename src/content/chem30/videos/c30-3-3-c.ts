@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hexaneIsomers } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, skeleton, step, tag, zigzag } from './lib/c30-3a-figures.ts';
 
@@ -72,6 +73,16 @@ const video: Explainer = {
         { say: 'One on carbon two and one on carbon three gives two, three-dye-methylbutane.', caption: 'One on carbon 2 and one on carbon 3 gives 2,3-dimethylbutane.', show: 'k.e-all' },
         { say: 'Could the two carbons go on as one ethyl group? Only on carbon two, and then the longest chain runs into the ethyl group: five carbons. It is three-methylpentane again.', caption: 'Could the two carbons go on as one ethyl group? Only on carbon 2, and then the longest chain runs into the ethyl group: five carbons. It is 3-methylpentane again.', show: 'k.f-all', focus: 'k.f-all' },
         { say: 'Finally, a chain of three carbons cannot hold three branches without one of them lengthening the chain. So we are done.' },
+      ],
+    },
+    {
+      chapter: 'Shortening the chain, up close',
+      layout: 'center',
+      main: [hexaneIsomers('hi')],
+      lines: [
+        { say: 'Here are the six carbon atoms of hexane, up close.', show: 'hi' },
+        { say: 'Move one end carbon to the second carbon: the longest chain is now five, two methyl pentane.', caption: 'Move one end carbon to the second carbon: the longest chain is now five, 2-methylpentane.', play: 'hi.one' },
+        { say: 'Move another to the third carbon: the longest chain is four, two three dimethyl butane.', caption: 'Move another to the third carbon: the longest chain is four, 2,3-dimethylbutane.', play: 'hi.two' },
       ],
     },
     {

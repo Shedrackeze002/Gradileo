@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, numberLabels, skeleton, step, zigzag } from './lib/c30-3a-figures.ts';
+import { movingGroup } from './lib/c30-organic.ts';
 
 // Butan-2-ol, drawn as CH3–CH2–CH(OH)–CH3 is written, numbered from the right, nearer the –OH.
 const z = zigzag('c', 4);
@@ -43,6 +44,15 @@ const video: Explainer = {
         { say: 'Then give the number of the carbon that carries the O H group: propan-one-ol or propan-two-ol. Methanol and ethanol need no number.', caption: 'Then give the number of the carbon that carries the –OH group: propan-1-ol or propan-2-ol. Methanol and ethanol need no number.' },
         { say: 'Name this alcohol. The chain holding the carbon with the O H group has four carbons, so butane becomes butanol.', caption: 'Name this alcohol. The chain holding the carbon with the –OH group has four carbons, so butane becomes butanol.', show: ['m.0', 'b.chain', 'b.oh'] },
         { say: 'Number from the right, nearer the O H group: it is on carbon two. The name is butan-two-ol, or in the older style, two-butanol.', caption: 'Number from the right, nearer the –OH group: it is on carbon 2. The name is butan-2-ol, or in the older style, 2-butanol.', show: ['b.n', 'm.1'], focus: ['b.n2', 'm.1'] },
+      ],
+    },
+    {
+      chapter: 'Moving the group, up close',
+      layout: 'center',
+      main: [movingGroup('mg')],
+      lines: [
+        { say: 'Here is why the number matters, up close. This is propan-one-ol: the O H group is on the end carbon, carbon one.', caption: 'Here is why the number matters, up close. This is propan-1-ol: the OH group is on the end carbon, carbon 1.', show: 'mg' },
+        { say: 'Move the O H group to the middle carbon, and the molecule is propan-two-ol: the same atoms, a different compound, so it needs a different name.', caption: 'Move the OH group to the middle carbon, and the molecule is propan-2-ol: the same atoms, a different compound, so it needs a different name.', play: 'mg.move' },
       ],
     },
     {

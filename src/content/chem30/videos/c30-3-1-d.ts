@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { growingChain } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { rowStructure } from './lib/c30-3a-figures.ts';
 
@@ -47,6 +48,16 @@ const video: Explainer = {
         { say: 'That makes two n plus two hydrogens. The general formula of the alkanes is C n H two n plus two.', caption: 'That makes 2n + 2 hydrogens. The general formula of the alkanes is CₙH₂ₙ₊₂.', show: 'm.2', focus: 'm.2' },
         { say: 'For butane, n is four. Two times four, plus two, is ten: C four H ten.', caption: 'For butane, n is 4. 2 × 4 + 2 = 10: C₄H₁₀.', show: 'm.3', focus: 'm.3' },
         { say: 'Branching does not change the count: pentane and two-methylbutane are both C five H twelve.', caption: 'Branching does not change the count: pentane and 2-methylbutane are both C₅H₁₂.', focus: 'b' },
+      ],
+    },
+    {
+      chapter: 'A chain grows, up close',
+      layout: 'center',
+      main: [growingChain('gc')],
+      lines: [
+        { say: 'Here is why alkanes follow C n H two n plus two. Start with methane, up close.', caption: 'Here is why alkanes follow CₙH₂ₙ₊₂. Start with methane, up close.', show: 'gc' },
+        { say: 'Each time the chain grows by one carbon atom, it gains two hydrogen atoms as well: one C H two unit. Methane, ethane, propane, butane.', caption: 'Each time the chain grows by one carbon atom, it gains two hydrogen atoms as well: one CH₂ unit. Methane, ethane, propane, butane.', play: 'gc.grow' },
+        { say: 'So every alkane has two hydrogen atoms for each carbon, plus one more at each end.' },
       ],
     },
     {

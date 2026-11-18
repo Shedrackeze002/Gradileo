@@ -2,6 +2,7 @@ import type { Explainer } from '@/video/script.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { grouped, rowStructure, tag } from './lib/c30-3a-figures.ts';
+import { notAHydroxide } from './lib/c30-organic.ts';
 
 const CH2 = { symbol: 'C', up: 'H', down: 'H' } as const;
 const CO = { symbol: 'C', up: '=O' } as const;
@@ -112,6 +113,15 @@ const video: Explainer = {
         { say: 'One more trap. The O H of an alcohol is joined to carbon by a covalent bond.', caption: 'One more trap. The –OH of an alcohol is joined to carbon by a covalent bond.', show: 'h.ol', focus: ['h.ol-a2', 'h.ol-a3'] },
         { say: 'It is not a hydroxide ion, O H minus, so alcohols are not bases. A solution of ethanol is neutral.', caption: 'It is not a hydroxide ion, OH⁻, so alcohols are not bases. A solution of ethanol is neutral.', show: ['h.oh', 'oops'] },
         { say: 'Compare a carboxylic acid. Its C O O H group can give away a hydrogen ion, which makes it a weak acid.', caption: 'Compare a carboxylic acid. Its –COOH group can give away a hydrogen ion, which makes it a weak acid.' },
+      ],
+    },
+    {
+      chapter: 'In water, up close',
+      layout: 'center',
+      main: [notAHydroxide('nh')],
+      lines: [
+        { say: 'Here is the difference up close: sodium hydroxide, an ionic compound, and ethanol, a molecule.', show: 'nh' },
+        { say: 'In water, sodium hydroxide comes apart into sodium ions and hydroxide ions. Ethanol’s O H group stays bonded to its carbon atom, so no hydroxide ions are set free, and ethanol is not a base.', caption: 'In water, sodium hydroxide comes apart into sodium ions and hydroxide ions. Ethanol’s OH group stays bonded to its carbon atom, so no hydroxide ions are set free, and ethanol is not a base.', play: 'nh.water' },
       ],
     },
     {

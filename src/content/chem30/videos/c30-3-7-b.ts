@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, room, structure, tag, type GridAtom } from './lib/c30-3b-figures.ts';
+import { cracking } from './lib/c30-organic.ts';
 
 /** A chain of carbon atoms only (hydrogens not shown), with a double bond after carbon `double` if given. */
 function carbons(name: string, n: number, at: [number, number], o: { double?: number; tone?: 'good' | 'adj' } = {}) {
@@ -59,6 +60,16 @@ const video: Explainer = {
         { say: 'Here is decane, with ten carbon atoms. Only its carbons are drawn here, to keep the picture simple.', caption: 'Here is decane, C₁₀H₂₂, with ten carbon atoms. Only its carbons are drawn here, to keep the picture simple.', show: ['f.big', 'f.big-name'] },
         { say: 'Cracking can break it into octane, an alkane with eight carbons, and ethene, an alkene with two.', show: ['f.arrow', 'f.alk', 'f.plus', 'f.ene', 'f.alk-name', 'f.ene-name'] },
         { say: 'The products are always a smaller alkane and one or more alkenes. Alkenes such as ethene and propene are used to make polymers and other chemicals, which is another reason cracking matters.', focus: ['f.ene', 'f.ene-name'] },
+      ],
+    },
+    {
+      chapter: 'Cracking, up close',
+      layout: 'center',
+      main: [cracking('ck')],
+      lines: [
+        { say: 'Here is a smaller example up close, with every atom drawn: hexane, C six H fourteen.', caption: 'Here is a smaller example up close, with every atom drawn: hexane, C₆H₁₄.', show: 'ck' },
+        { say: 'Heat breaks a carbon–carbon bond. One hydrogen atom moves across, and the two carbons left behind share a second pair: the products are butane, an alkane, and ethene, an alkene.', play: 'ck.crack' },
+        { say: 'Count them: six carbons and fourteen hydrogens before, and the same atoms after.' },
       ],
     },
     {

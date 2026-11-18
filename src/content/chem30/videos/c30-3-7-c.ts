@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { methaneBurning } from './lib/c30-organic.ts';
 
 const video: Explainer = {
   id: 'c30-3-7-c',
@@ -28,6 +29,15 @@ const video: Explainer = {
         { say: 'In complete combustion, a fuel burns in plenty of oxygen. Every carbon atom ends up in carbon dioxide, and every hydrogen atom in water.', show: 'full' },
         { say: 'In incomplete combustion, there is not enough oxygen. Some carbon ends up as carbon monoxide, or as carbon itself, which is soot.', show: 'part' },
         { say: 'The flame is yellow and smoky, and less energy is released.' },
+      ],
+    },
+    {
+      chapter: 'Complete combustion, up close',
+      layout: 'center',
+      main: [methaneBurning('mb', 420)],
+      lines: [
+        { say: 'Here is complete combustion up close, with the simplest fuel, methane, and two oxygen molecules.', show: 'mb' },
+        { say: 'Every bond breaks, and the atoms join up again. The carbon atom ends up in carbon dioxide, and the four hydrogen atoms in two water molecules.', play: 'mb.burn' },
       ],
     },
     {

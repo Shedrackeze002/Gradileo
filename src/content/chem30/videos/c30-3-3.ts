@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { butaneIsomers } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { grouped, rowStructure, tag } from './lib/c30-3a-figures.ts';
 
@@ -64,6 +65,15 @@ const video: Explainer = {
         { say: 'Structural isomers have their atoms joined in a different order. It can be a straight chain or a branched one, or a branch, a multiple bond or a functional group in a different place.', show: 'si' },
         { say: 'It can even be a different functional group. Ethanol and methoxymethane are both C two H six O.', caption: 'It can even be a different functional group. Ethanol and methoxymethane are both C₂H₆O.', show: ['e.ethanol', 'e.ether'] },
         { say: 'In ethanol, the oxygen is at the end of the chain. In methoxymethane, it sits between the two carbons. Ethanol boils at about seventy-eight degrees Celsius, and methoxymethane at about minus twenty-four.', caption: 'In ethanol, the oxygen is at the end of the chain. In methoxymethane, it sits between the two carbons. Ethanol boils at about 78 °C, and methoxymethane at about −24 °C.', focus: ['e.et-a3', 'e.mm-a2'] },
+      ],
+    },
+    {
+      chapter: 'Rearranging the carbons, up close',
+      layout: 'center',
+      main: [butaneIsomers('bi')],
+      lines: [
+        { say: 'Here are the four carbon atoms of butane, up close, in a straight chain. The hydrogen atoms are left out.', show: 'bi' },
+        { say: 'Move the end carbon to the middle of the chain. One bond breaks and a new one forms, and the same atoms now make methylpropane: an isomer of butane.', play: 'bi.iso' },
       ],
     },
     {
