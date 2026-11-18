@@ -226,6 +226,8 @@ export interface BoxFrame {
   tally: number;
   /** Each particle's speed now (only for a box with `spread`). */
   speed?: number[];
+  /** The liquid's surface now and when the element was shown (only for a box with `level`). */
+  level?: { now: number; start: number };
 }
 
 /**
@@ -661,14 +663,24 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
     s.kind.fill(1);
     const per = Math.floor(kinds[0].n / m);
     const taken = new Set<number>();
+    // With `above`, the lump is taken from the top of the stack and lifted clear of it.
+    const cy = b.above === undefined ? 0 : Math.max(...Array.from(s.y.subarray(0, n)));
     for (let L = 0; L < m; L++) {
       const cx = (w * (L + 0.5)) / m;
       const want = L === m - 1 ? kinds[0].n - per * (m - 1) : per;
-      const order = Array.from({ length: n }, (_, i) => i).filter((i) => !taken.has(i)).sort((a, c) => Math.hypot((s.x[a] - cx) * 0.8, s.y[a]) - Math.hypot((s.x[c] - cx) * 0.8, s.y[c]));
+      const order = Array.from({ length: n }, (_, i) => i).filter((i) => !taken.has(i)).sort((a, c) => Math.hypot((s.x[a] - cx) * 0.8, s.y[a] - cy) - Math.hypot((s.x[c] - cx) * 0.8, s.y[c] - cy));
       for (let i = 0; i < want; i++) {
         s.kind[order[i]] = 0;
         taken.add(order[i]);
       }
+    }
+    if (b.above !== undefined) {
+      // The rest settle a little lower without the lump's particles, so it is lifted by the gap
+      // between its lowest particle and the highest of the rest, plus `above`.
+      const lump = [...taken];
+      const rest = Array.from({ length: n }, (_, i) => i).filter((i) => !taken.has(i));
+      const lift = Math.max(0, Math.max(...rest.map((i) => s.y[i])) + spacing - Math.min(...lump.map((i) => s.y[i]))) + b.above;
+      for (const i of lump) s.y[i] = Math.min(s.lidY - 0.5, s.y[i] + lift);
     }
     // With more than one other kind starting in the box (ions in a solution), they are mixed
     // through the rest of it. With one, it simply fills the rest, using up no random numbers.
@@ -714,6 +726,15 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
       for (let i = 0; i < kd.n; i++) s.kind[order[at++]] = ki;
     });
   }
+  // In a liquid or solid, kinds kept back to pour in later take the top places, so what is in
+  // the box from the start is packed at the bottom, with no gaps where they were.
+  if (b.reserve?.length && b.state !== 'gas' && !units && !b.lump) {
+    const r = b.reserve;
+    const order = Array.from({ length: n }, (_, i) => i).sort((a, c) => s.y[a] - s.y[c] || s.x[a] - s.x[c]);
+    const ks = order.map((i) => s.kind[i]);
+    const sorted = [...ks.filter((k) => !r.includes(k)), ...ks.filter((k) => r.includes(k))];
+    order.forEach((i, j) => (s.kind[i] = sorted[j]));
+  }
   // Held particles (the first kind, or the kinds listed) keep still until a clip lets them go.
   if (b.hold) {
     const kept = b.hold === true ? [0] : b.hold;
@@ -741,6 +762,9 @@ function initBox(b: ParticleBox, seed: number): BoxSim {
           }
         }
       for (const k of unit) s.gone[k] = 1;
+      // Out of reach until poured, so they push on nothing in the box. (A gas box keeps them where
+      // they were placed, as its videos were made with them there.)
+      if (b.state !== 'gas') for (const k of unit) s.y[k] = 1000 + 3 * k;
       const list = byKind.get(s.kind[i]) ?? [];
       list.push(unit);
       byKind.set(s.kind[i], list);
@@ -1003,6 +1027,10 @@ interface Cache {
   loose: Array<Array<[number, number]>>;
   /** Which of each box's solute particles are counted as dissolved (see looseCount). */
   free: Uint8Array[];
+  /** The liquid's surface, sampled like `loose` for a box with `level`: [age, height]. */
+  levels: Array<Array<[number, number]>>;
+  /** Each box's liquid surface as the element was shown. */
+  level0: number[];
 }
 
 /** The dissolved count is sampled this often (video seconds) and shown as the median of the last LOOSE_SECONDS. */
@@ -1066,6 +1094,18 @@ function looseAt(samples: Array<[number, number]>, s: BoxSim) {
   if (!samples.length) return looseCount(s);
   const v = samples.map(([, n]) => n).sort((p, q) => p - q);
   return v[Math.floor(v.length / 2)];
+}
+
+/**
+ * How high a box's liquid reaches: the top of the particles not in the lump, read at the
+ * ninetieth percentile so a particle or two that jumps clear does not count.
+ */
+function surfaceOf(s: BoxSim, b: ParticleBox) {
+  const ys: number[] = [];
+  for (let i = 0; i < s.n; i++) if (!s.gone[i] && !(b.lump && s.kind[i] === 0)) ys.push(s.y[i]);
+  if (!ys.length) return 0;
+  ys.sort((p, q) => p - q);
+  return ys[Math.floor(0.9 * (ys.length - 1))] + 0.45;
 }
 
 function spanOf(s: BoxSim): [number, number] {
@@ -1259,7 +1299,7 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
     played.every(([clip, at]) => at >= c!.age || c!.played.some(([k, t]) => k === clip && Math.abs(t - at) < 1e-6));
   if (!usable) {
     const boxes = warmBoxes(el);
-    c = { key, played: [], age: 0, boxes, trails: el.boxes.map(() => []), spans: boxes.map(spanOf), loose: el.boxes.map(() => []), free: boxes.map((s) => new Uint8Array(s.n)) };
+    c = { key, played: [], age: 0, boxes, trails: el.boxes.map(() => []), spans: boxes.map(spanOf), loose: el.boxes.map(() => []), free: boxes.map((s) => new Uint8Array(s.n)), levels: el.boxes.map(() => []), level0: boxes.map((s, bi) => surfaceOf(s, el.boxes[bi])) };
     caches.set(el.id, c);
   }
   c = c!;
@@ -1276,6 +1316,15 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       // Pour in the next reserved units, each dropping in at the top middle.
       for (const want = Math.min(s.units.length, Math.floor(ctl.added[b.id] + 1e-9)); s.poured < want; s.poured++) {
         const unit = s.units[s.poured];
+        // Into a liquid, the next waits until the last has moved clear of the tip: a particle
+        // dropped on top of another would fly apart from it.
+        if (b.state !== 'gas') {
+          const tx = boxSize(b).w / 2;
+          const ty = ctl.lid[b.id] * h - 0.7;
+          let busy = false;
+          for (let i = 0; i < s.n && !busy; i++) if (!s.gone[i] && Math.abs(s.x[i] - tx) < 1.6 && Math.abs(s.y[i] - ty) < 1.2) busy = true;
+          if (busy) break;
+        }
         const cx = boxSize(b).w / 2 + (s.rnd() - 0.5) * 0.6;
         unit.forEach((k, u) => {
           s.gone[k] = 0;
@@ -1298,6 +1347,11 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       if (b.kinds && b.kinds.length > 1 && (!lo.length || a - lo[lo.length - 1][0] >= LOOSE_STEP - 1e-9)) {
         lo.push([a, looseCount(s, c!.free[bi])]);
         while (lo.length && lo[0][0] < a - LOOSE_SECONDS) lo.shift();
+      }
+      const lv = c!.levels[bi];
+      if (b.level && (!lv.length || a - lv[lv.length - 1][0] >= LOOSE_STEP - 1e-9)) {
+        lv.push([a, surfaceOf(s, b)]);
+        while (lv.length && lv[0][0] < a - 1) lv.shift();
       }
     });
     c.age = a;
@@ -1339,6 +1393,8 @@ export function particlesAt(el: ParticlesEl, played: PlayAt[], age: number): Box
       bonds: s.bonds.filter((bd) => bd.show && !s.gone[bd.i] && !s.gone[bd.j]).map(({ i, j }) => (goneCount ? [visible(i), visible(j)] : [i, j]) as [number, number]),
       tally: b.tally ? s.kind.reduce((m, k, i) => m + (!s.gone[i] && b.tally!.kinds.includes(k) ? 1 : 0), 0) : 0,
       speed: b.spread ? keep(Array.from(s.vx, (vx, i) => Math.hypot(vx, s.vy[i]))) : undefined,
+      // The surface, averaged over the last second so it does not flicker.
+      level: b.level ? { now: c!.levels[bi].length ? c!.levels[bi].reduce((m, [, v]) => m + v, 0) / c!.levels[bi].length : c!.level0[bi], start: c!.level0[bi] } : undefined,
     };
   });
 }

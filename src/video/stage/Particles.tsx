@@ -113,6 +113,7 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
   const middle = part('middle');
   const keyPart = part('key');
   const spreadPart = part('spread');
+  const levelPart = part('level');
   const now = age ?? st?.age ?? 0;
   const frames: BoxFrame[] = particlesAt(el, played ?? st?.started ?? [], now);
 
@@ -325,6 +326,13 @@ export function ParticlesView({ el, st, w, h, age, played }: { el: ParticlesEl; 
                 </g>
               );
             })()}
+            {/* The liquid's surface now, and a dashed line where it was at first. */}
+            {levelPart > 0 && f.level && (
+              <g opacity={levelPart}>
+                <line x1={X(0) - 10} x2={X(bw) + 10} y1={Y(f.level.start)} y2={Y(f.level.start)} stroke={INK3} strokeWidth={2.5} strokeDasharray="8 7" />
+                <line x1={X(0) - 14} x2={X(bw) + 14} y1={Y(f.level.now)} y2={Y(f.level.now)} stroke={TONES.theta} strokeWidth={4} strokeLinecap="round" />
+              </g>
+            )}
             {/* A bracket over the particles' width, with dashed marks as wide as they were at first. */}
             {width > 0 && b.state !== 'gas' && (() => {
               const top = Y(Math.max(...f.y)) - r - 18;

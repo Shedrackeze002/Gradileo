@@ -632,3 +632,59 @@ describe('particles: a spread of speeds', () => {
     expect(checkParticles(el({ boxes: [{ id: 'a', state: 'gas', n: 10, spread: { at: 4 } }] }))).toEqual(["box \"a\": a spread's line must be between 0 and the fastest speed on its axis."]);
   });
 });
+
+describe('particles: a lump dropped from above, and the level', () => {
+  const lumpOver = (id: string, heavy: number): ParticleBox => ({
+    id,
+    state: 'liquid',
+    kinds: [{ n: 12, bond: 10, heavy }, { n: 44, heavy: 1 }],
+    lump: true,
+    above: 0.3,
+    hold: true,
+    cross: 0.3,
+    width: 10,
+    height: 11,
+    temp: 0.47,
+    level: true,
+  });
+  const e = el({ boxes: [lumpOver('a', 0.1), lumpOver('b', 10)], clips: { drop: { phases: [{ dur: 0.6, release: ['a', 'b'] }, { dur: 10 }] } } });
+  const lumpY = (f: ReturnType<typeof particlesAt>[number]) => mean(f.y.filter((_, i) => f.kind[i] === 0));
+  const waterTop = (f: ReturnType<typeof particlesAt>[number]) => Math.max(...f.y.filter((_, i) => f.kind[i] === 1).sort((p, q) => p - q).slice(0, 40));
+
+  it('starts the lump above the liquid, held there', () => {
+    const [a] = particlesAt(e, [], 2);
+    expect(Math.min(...a.y.filter((_, i) => a.kind[i] === 0))).toBeGreaterThan(waterTop(a));
+  });
+
+  it('sinks a dense lump and floats a light one, and the level rises round the dense one', () => {
+    const [a, b] = particlesAt(e, [['drop', 0]], 10);
+    expect(lumpY(b)).toBeLessThan(0.6 * lumpY(a));
+    expect(Math.min(...a.y.filter((_, i) => a.kind[i] === 0))).toBeGreaterThan(0.5 * waterTop(a));
+    expect(b.level!.now).toBeGreaterThan(b.level!.start + 0.4);
+  });
+
+  it('gives no level for a box without one', () => {
+    const [f] = particlesAt(el({ boxes: [{ id: 'a', state: 'liquid', n: 20 }] }), [], 1);
+    expect(f.level).toBeUndefined();
+  });
+});
+
+describe('particles: pouring into a liquid', () => {
+  const box = (heavy: number): ParticleBox => ({ id: 'a', state: 'liquid', kinds: [{ n: 36, heavy: 1 }, { n: 18, bond: 2, heavy }], reserve: [1], cross: 0.3, width: 10, height: 12, temp: 0.5 });
+
+  it('packs what starts in the box at the bottom, and keeps the reserved kind out of it', () => {
+    const [f] = particlesAt(el({ boxes: [box(5)] }), [], 0.5);
+    expect(f.x).toHaveLength(36);
+    expect(Math.max(...f.y)).toBeLessThan(7);
+  });
+
+  it('lets a light liquid lie on top and a dense one sink through', () => {
+    const go = { pour: { phases: [{ dur: 6, add: { a: 18 } }, { dur: 10 }] } };
+    const [light] = particlesAt(el({ boxes: [box(0.6)], clips: go }), [['pour', 0]], 16);
+    const [dense] = particlesAt(el({ boxes: [box(5)], clips: go }), [['pour', 0]], 16);
+    const m = (f: ReturnType<typeof particlesAt>[number], k: number) => mean(f.y.filter((_, i) => f.kind[i] === k));
+    expect(light.x).toHaveLength(54);
+    expect(m(light, 1)).toBeGreaterThan(m(light, 0) + 2);
+    expect(m(dense, 1)).toBeLessThan(m(dense, 0));
+  });
+});

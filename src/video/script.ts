@@ -621,6 +621,18 @@ export interface ParticleBox {
   /** The first kind starts as a lump on the floor in the middle (or this many smaller lumps). */
   lump?: boolean | number;
   /**
+   * The lump starts on top of the rest instead of on the floor, raised this far above them (in
+   * particle widths; 0 rests on the surface), so a phase's `release` drops it in: a dense lump
+   * sinks and the liquid rises round it, and a light one floats.
+   */
+  above?: number;
+  /**
+   * The part `level` draws a line at the liquid's surface (the particles not in the lump), with a
+   * dashed line where it was when the element was shown, so a lump dropped in is seen to raise it
+   * (measuring a volume by displacement).
+   */
+  level?: boolean;
+  /**
    * An ionic lattice: about half the lump's particles become this kind instead, each next to
    * particles of the other kind (positive and negative ions side by side). Give this kind `n: 0`
    * and list it after the kind round the lump, and hold both (`hold: [0, k]`).
@@ -739,7 +751,7 @@ export interface ParticlePhase {
 }
 
 /** What a particles element can show besides its boxes; each is a part ("p.thermo"). */
-export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle', 'key', 'spread'] as const;
+export const PARTICLE_PARTS = ['thermo', 'gauge', 'volume', 'hits', 'trail', 'labels', 'rate', 'flow', 'width', 'count', 'tally', 'middle', 'key', 'spread', 'level'] as const;
 
 /**
  * Boxes of moving particles, for chemistry: a small simulation in which particles attract and
