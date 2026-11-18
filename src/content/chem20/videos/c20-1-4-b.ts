@@ -1,17 +1,30 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
-import { bondPair, enScale } from './lib/c20-1a-figures.ts';
+import { enScale } from './lib/c20-1a-figures.ts';
 
-// Three bonds: H–H shares evenly, H–Cl unevenly, and in Na–Cl chlorine takes the electrons.
-const kinds = figure(
-  'k',
-  [
-    bondPair({ name: 'np', at: [0, 0], a: 'H', b: 'H', t: 0.5, label: '\\text{non-polar covalent}' }),
-    bondPair({ name: 'p', at: [5.6, 0], a: 'H', b: 'Cl', t: 0.68, label: '\\text{polar covalent}' }),
-    bondPair({ name: 'i', at: [11.4, 0], a: 'Na', b: 'Cl', ions: ['+', '-'], label: '\\text{ionic}' }),
+// Three bonds (src/video/atoms.ts): two hydrogen atoms share a pair evenly (clip `np`), hydrogen
+// and chlorine share a pair that chlorine then pulls towards itself (`p`), and chlorine takes
+// sodium's electron outright, so the two become ions (`i`).
+const kinds: AtomsEl = {
+  kind: 'atoms',
+  id: 'k',
+  span: [23.6, 7.4],
+  atoms: [
+    { id: 'h1', symbol: 'H', protons: 1, at: [1.9, 3.7], tone: 'good' },
+    { id: 'h2', symbol: 'H', protons: 1, at: [3.3, 3.7], tone: 'good' },
+    { id: 'h3', symbol: 'H', protons: 1, at: [7, 3.7], tone: 'good' },
+    { id: 'cl', symbol: 'Cl', protons: 17, at: [9.8, 3.7], tone: 'adj' },
+    { id: 'na', symbol: 'Na', protons: 11, at: [15, 3.7], tone: 'opp' },
+    { id: 'cl2', symbol: 'Cl', protons: 17, at: [20.6, 3.7], tone: 'adj' },
   ],
-  320,
-);
+  clips: {
+    np: { phases: [{ dur: 1.8, share: [{ a: 'h1', b: 'h2', n: 1 }] }] },
+    p: { phases: [{ dur: 1.8, share: [{ a: 'h3', b: 'cl', n: 1 }] }, { dur: 2, pull: [{ to: 'cl', from: 'h3', by: 0.6 }] }] },
+    i: { phases: [{ dur: 2, give: [{ from: 'na', to: 'cl2', n: 1 }] }, { dur: 1.4, move: { na: [15.3, 3.7] } }] },
+  },
+  poster: 'i',
+  height: 330,
+};
 
 // The rule on a scale of ΔEN, with the two bonds of the worked example marked.
 const scale = figure(
@@ -68,10 +81,10 @@ const video: Explainer = {
         { kind: 'bullets', id: 'b', items: ['**Non-polar covalent**: shared equally, or almost equally.', '**Polar covalent**: shared unequally, nearer the more electronegative atom.', '**Ionic**: the more electronegative atom takes the electrons; ions form.'] },
       ],
       lines: [
-        { say: 'The size of the difference decides what happens to the shared electrons.' },
-        { say: 'In a non-polar covalent bond, the electrons are shared equally, or almost equally, because the atoms have the same, or nearly the same, electronegativity.', show: ['k.np-a', 'k.np-b', 'k.np-pair', 'k.np-label', 'b.0'], focus: 'b.0' },
-        { say: 'In a polar covalent bond, they are shared unequally: they spend more of their time near the more electronegative atom.', show: ['k.p-a', 'k.p-b', 'k.p-pair', 'k.p-label', 'b.1'], focus: 'b.1' },
-        { say: 'When the difference is large enough, the sharing stops. The more electronegative atom takes the electrons, and the bond is ionic, the attraction between oppositely charged ions.', show: ['k.i-a', 'k.i-b', 'k.i-pair', 'k.i-charges', 'k.i-label', 'b.2'], focus: 'b.2' },
+        { say: 'The size of the difference decides what happens to the shared electrons.', show: 'k' },
+        { say: 'In a non-polar covalent bond, the electrons are shared equally, or almost equally, because the atoms have the same, or nearly the same, electronegativity.', show: 'b.0', play: 'k.np', focus: 'b.0' },
+        { say: 'In a polar covalent bond, they are shared unequally: they spend more of their time near the more electronegative atom.', show: ['b.1', 'k.charges'], play: 'k.p', focus: 'b.1' },
+        { say: 'When the difference is large enough, the sharing stops. The more electronegative atom takes the electrons, and the bond is ionic, the attraction between oppositely charged ions.', show: 'b.2', play: 'k.i', focus: 'b.2' },
       ],
     },
     {

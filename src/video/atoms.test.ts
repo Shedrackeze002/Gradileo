@@ -66,6 +66,29 @@ describe('atoms', () => {
     expect(new Set(shared.map((p) => p.home))).toEqual(new Set([0, 1]));
   });
 
+  it('pulls the shared pair of a polar bond towards the atom that attracts it more', () => {
+    const e = el({
+      span: [10, 7],
+      atoms: [
+        { id: 'h', symbol: 'H', protons: 1, at: [3, 3] },
+        { id: 'cl', symbol: 'Cl', protons: 17, at: [5.8, 3] },
+      ],
+      clips: { share: { phases: [{ dur: 2, share: [{ a: 'h', b: 'cl', n: 1 }] }] }, pull: { phases: [{ dur: 2, pull: [{ to: 'cl', from: 'h', by: 0.6 }] }] } },
+    });
+    const even = atomsAt(e, [['share', 0]], 3);
+    const polar = atomsAt(e, [['share', 0], ['pull', 3]], 6);
+    // Hydrogen's one electron is in the bond: shared equally it sits half way across the overlap,
+    // pulled it sits nearer chlorine, and the atoms keep no charge.
+    const h = (f: ReturnType<typeof atomsAt>) => f.electrons.find((p) => p.home === 0)!;
+    expect(h(polar).x).toBeGreaterThan(h(even).x + 0.3);
+    expect(Math.abs(h(polar).y - h(even).y)).toBeLessThan(0.01);
+    expect(polar.charges).toEqual([0, 0]);
+    expect(polar.shells).toEqual(even.shells);
+    // Shared evenly there are no partial charges; pulled, chlorine is δ− and hydrogen δ+.
+    expect(even.partials).toEqual([0, 0]);
+    expect(polar.partials).toEqual([1, -1]);
+  });
+
   it('checks clips and atoms', () => {
     expect(checkAtoms(el({ clips: { x: { phases: [{ dur: 1, give: [{ from: 'k', to: 'cl', n: 1 }] }, { dur: 0 }] } } }))).toEqual([
       'clip "x", phase 1 names no atom "k".',

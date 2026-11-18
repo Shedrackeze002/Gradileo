@@ -65,6 +65,17 @@ export const twoShare = (id: string, a: Side, b: Side, gap: number, n = 1, heigh
   };
 };
 
+/**
+ * A polar bond: two atoms share a pair (clip `share`, as in `twoShare`), then the more
+ * electronegative one, `b`, pulls the shared pair `by` of the way towards its nucleus (clip `pull`;
+ * clip `go` plays both in turn). The `charges` part then marks `b` δ− and `a` δ+.
+ */
+export const polarShare = (id: string, a: Side, b: Side, gap: number, by: number, height = 380): AtomsEl => {
+  const el = twoShare(id, a, b, gap, 1, height);
+  const pull: AtomsPhase[] = [{ dur: 2.2, pull: [{ to: 'b', from: 'a', by }] }, { dur: 0.4 }];
+  return { ...el, clips: { ...el.clips, pull: { phases: pull }, go: { phases: [...el.clips.share.phases, ...pull] } }, poster: 'go' };
+};
+
 /** Water: an oxygen atom shares a pair with each of two hydrogen atoms (clip `share`), bent. */
 export const waterShare = (id: string, height = 400): AtomsEl => ({
   kind: 'atoms',
