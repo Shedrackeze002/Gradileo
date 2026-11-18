@@ -725,3 +725,18 @@ export const acidMeetsWater = (id: string, height = 420): ParticlesEl => ({
   key: true,
   height,
 });
+
+/**
+ * Solids warmed together, always at the same temperature (clip `warm`, to `to`), whose particles
+ * hold on to one another with different strengths (`bond`). In the simulation a solid melts at
+ * about 0.33 × its `bond` and boils at about 0.9 × its `bond`, so the weakly held one melts and
+ * boils long before the strongly held ones even start to loosen.
+ */
+export const meltTogether = (id: string, subs: Array<{ id: string; label: string; bond: number; tone: Tone }>, to: number, height = 380): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: subs.map((s): ParticleBox => ({ id: s.id, state: 'solid', width: 6, height: 7, n: 18, kinds: [{ n: 18, bond: s.bond, tone: s.tone }], label: s.label })),
+  clips: { warm: { phases: [{ dur: 10, heat: Object.fromEntries(subs.map((s) => [s.id, to])) }, { dur: 2 }] } },
+  thermometers: true,
+  height,
+});

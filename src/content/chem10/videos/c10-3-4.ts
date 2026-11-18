@@ -1,6 +1,8 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, ionBox, ionRow, lattice, tag } from './lib/c10-3-figures.ts';
+import { saltDissolving } from '../../chem20/videos/lib/c20-particles.ts';
+import { moltenSalt } from '../../chem30/videos/lib/c30-cells.ts';
 
 // A slice of an ionic lattice: every ion is held by the oppositely charged ions around it.
 const crystal = figure('lat', [lattice({ cols: 5, rows: 5 }), tag('key-na', [0.6, -1.25], '\\ce{Na+}', { tone: 'opp' }), tag('key-cl', [4.2, -1.25], '\\ce{Cl-}', { tone: 'adj' })], 470);
@@ -91,6 +93,25 @@ const video: Explainer = {
         { say: 'Ions carry charge, but in the solid they are locked in place. So solid sodium chloride does not conduct electricity.', show: ['st.solid-box', 'st.solid-ions', 'st.solid-name'] },
         { say: 'When the compound melts, we say it is molten. Now the ions are free to move, and it conducts.', show: ['st.molten-box', 'st.molten-ions', 'st.molten-name'] },
         { say: 'The same happens when it dissolves in water: the ions move through the water, and the solution conducts.' },
+      ],
+    },
+    {
+      chapter: 'Molten salt, up close',
+      layout: 'center',
+      main: [moltenSalt('ms')],
+      lines: [
+        { say: 'Here is molten sodium chloride up close, between two electrodes. Its ions are free to move about.', show: ['ms', 'ms.labels', 'ms.key'] },
+        { say: 'Switch on the current. The positive sodium ions drift to the negative electrode, and the negative chloride ions drift to the positive one. The moving ions carry the current.', play: 'ms.run' },
+        { say: 'At the electrodes they change, into sodium metal and chlorine gas. You will meet this again as electrolysis.' },
+      ],
+    },
+    {
+      chapter: 'Dissolving, up close',
+      layout: 'center',
+      main: [{ ...saltDissolving('sd'), key: true }],
+      lines: [
+        { say: 'Now a crystal of sodium chloride dropped into water, up close.', show: ['sd', 'sd.labels', 'sd.key'] },
+        { say: 'Water molecules pull the ions off the crystal, one by one, until they are spread all through the water. The ions are free to move, so the solution conducts.', play: 'sd.drop' },
       ],
     },
     {
