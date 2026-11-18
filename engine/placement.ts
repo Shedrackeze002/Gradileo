@@ -351,11 +351,15 @@ export function recommendCourse(a: PlacementAnswers): Recommendation {
     ]);
   }
   if (a.subject === 'Physics') {
-    // Physics goes by the grade: Grade 10 Physics to Grade 10, Grade 11 Physics from Grade 11 (Grade 12 Physics will follow it).
-    if (g >= 11) {
-      const reasons = ['Grade 11 Physics covers kinematics with vectors and projectiles, dynamics and gravitation, circular motion, work and energy, and oscillations and waves.'];
-      if (g > 11) reasons.push('Grade 12 Physics is being written, and it builds on this course.');
-      return rec('phys-20', reasons, [{ courseId: 'phys-10', why: 'Start here if physics is new to you.' }]);
+    // Physics goes by the grade: Grade 10 Physics to Grade 10, Grade 11 Physics in Grade 11 and Grade 12 Physics in Grade 12.
+    if (g >= 12) {
+      return rec('phys-30', ['Grade 12 Physics covers momentum and collisions, electric and magnetic forces and fields, light as a wave and as photons, and atomic and nuclear physics.'], [
+        { courseId: 'phys-20', why: 'Start here if vectors, projectiles, circular motion and waves are new to you.' },
+        { courseId: 'phys-10', why: 'Start here if physics is new to you.' },
+      ]);
+    }
+    if (g === 11) {
+      return rec('phys-20', ['Grade 11 Physics covers kinematics with vectors and projectiles, dynamics and gravitation, circular motion, work and energy, and oscillations and waves.'], [{ courseId: 'phys-10', why: 'Start here if physics is new to you.' }]);
     }
     const reasons = ['Grade 10 Physics is the first physics course: describing motion, forces and Newton’s laws, work, energy and power, waves, sound and light, and electricity.'];
     if (g < 10) reasons.push('It is usually taken in Grade 10, so some lessons will be a stretch; each one starts from the basics.');
