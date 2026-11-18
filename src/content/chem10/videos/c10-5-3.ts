@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { beaker } from './lib/c10-5-figures.ts';
+import { acidIonising } from '../../chem20/videos/lib/c20-particles.ts';
 
 // Hydrochloric acid in water: hydrogen ions and chloride ions.
 const acid = figure('a', [
@@ -58,6 +59,16 @@ const video: Explainer = {
         { say: 'An acid is a substance that forms hydrogen ions, H plus, when it dissolves in water.', caption: 'An acid is a substance that forms hydrogen ions, H⁺, when it dissolves in water.', show: 'def' },
         { say: 'Hydrochloric acid is an example. In water, it forms hydrogen ions, and chloride ions.', show: ['a.glass', 'a.liquid', 'a.label', 'a.h', 'a.cl'], focus: 'a.h' },
         { say: 'Acids react with many metals, giving off hydrogen gas. And they react with metal carbonates, such as chalk, giving off carbon dioxide.', focus: 'a' },
+      ],
+    },
+    {
+      chapter: 'An acid, up close',
+      layout: 'center',
+      main: [{ ...acidIonising('ai'), key: true }],
+      lines: [
+        { say: 'Here is hydrogen chloride dissolving in water, up close.', show: ['ai', 'ai.labels', 'ai.key'] },
+        { say: 'Each molecule that meets a water molecule hands over its hydrogen, which joins the water as a hydrogen ion, and leaves a chloride ion behind.', show: 'ai.tally', play: 'ai.go' },
+        { say: 'Those hydrogen ions are what make the solution an acid.' },
       ],
     },
     {

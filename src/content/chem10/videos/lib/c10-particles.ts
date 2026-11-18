@@ -769,3 +769,68 @@ export const burningPair = (id: string, height = 400): ParticlesEl => ({
   seed: 5,
   height,
 });
+
+/**
+ * An acid diluted (clip `dilute`): water is added, so the lid rises from a quarter of the box to
+ * the top and the same hydrogen ions spread through four times the volume (read under the box).
+ * The water itself is not drawn.
+ */
+export const dilutingAcid = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'd', state: 'gas', width: 10, height: 9, temp: 0.5, lid: 0.25, kinds: [{ n: 8, bond: 0.05, heavy: 0, size: 0.8, tone: 'theta', name: 'hydrogen ion' }], label: 'the same 8 hydrogen ions' }],
+  clips: { dilute: { phases: [{ dur: 4, lid: { d: 1 } }, { dur: 3 }] } },
+  volume: { box: 'd', start: 25, unit: 'mL', decimals: 0 },
+  key: true,
+  height,
+});
+
+/**
+ * A flask with phenolphthalein, holding `acid` hydrogen ions (with as many chloride ions), and
+ * sodium hydroxide waiting to be added a drop at a time (`add`: a sodium ion, then a hydroxide ion,
+ * so two units are one drop). Each hydroxide ion that meets a hydrogen ion makes water; the flask
+ * turns pink only once no hydrogen ion is left and a hydroxide ion is. The water already in the
+ * flask is not drawn. The kinds: 0 hydrogen ion, 1 chloride ion, 2 sodium ion, 3 and 4 a hydroxide
+ * ion's O and H, 5 and 6 the H and O of a water molecule made.
+ */
+const indicatorFlask = (id: string, label: string, acid: number): ParticleBox => ({
+  id,
+  state: 'gas',
+  width: 9,
+  height: 9,
+  temp: 0.5,
+  kinds: [
+    { ...ATOM.H, n: acid, name: 'hydrogen ion' },
+    { n: acid, bond: 0.15, heavy: 0, size: 1.1, tone: 'good', name: 'chloride ion' },
+    { n: 8, bond: 0.15, heavy: 0, tone: 'brand', name: 'sodium ion' },
+    { ...ATOM.O, tone: 'adj', name: 'hydroxide ion' },
+    { ...ATOM.H, name: undefined },
+    { ...ATOM.H, name: undefined },
+    { ...ATOM.O, name: 'water' },
+  ],
+  molecules: [{ atoms: [3, 4], n: 8 }],
+  reserve: [2, 3, 4],
+  reactions: [{ a: 0, b: 3, to: [5, 6], join: true }],
+  indicator: { acid: [0], base: [3], tone: 'hyp' },
+  tally: { kinds: [0], label: 'hydrogen ions left' },
+  label,
+});
+
+/**
+ * Pure water and hydrochloric acid, each with phenolphthalein and both colourless (clip `drop`):
+ * one drop of sodium hydroxide turns the water pink at once, but the acid stays colourless until
+ * enough drops (clip `more`) have used up all its hydrogen ions.
+ */
+export const waterAndAcid = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [indicatorFlask('w', 'pure water', 0), indicatorFlask('a', 'hydrochloric acid', 6)],
+  clips: {
+    drop: { phases: [{ dur: 1.5, add: { w: 2, a: 2 } }, { dur: 3 }] },
+    more: { phases: [{ dur: 9, add: { a: 14 } }, { dur: 7 }] },
+  },
+  key: true,
+  speed: 2,
+  seed: 2,
+  height,
+});
