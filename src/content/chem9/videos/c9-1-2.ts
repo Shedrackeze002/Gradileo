@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { nuclei } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c9-1-2',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'Every carbon atom has six protons, but not every carbon atom has the same mass.', show: 'title' },
         { say: 'In this video, you will use two numbers to count the protons, neutrons and electrons in any atom, and find out why some atoms of the same element are heavier than others.' },
+      ],
+    },
+    {
+      chapter: 'Two nuclei, up close',
+      layout: 'center',
+      main: [nuclei('nu', [{ label: 'carbon-12', p: 6, n: 6 }, { label: 'carbon-14', p: 6, n: 8 }])],
+      lines: [
+        { say: 'Here are the protons and neutrons of two carbon nuclei, still apart.', show: 'nu' },
+        { say: 'Watch each nucleus come together. Both have six protons, so both are carbon, with atomic number six.', play: 'nu.build' },
+        { say: 'But the first has six neutrons and the second has eight, so their mass numbers are twelve and fourteen. Same element, different numbers of neutrons: they are isotopes.' },
       ],
     },
     {

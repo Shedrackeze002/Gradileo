@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { redox } from '../../chem30/videos/lib/c30-atoms.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, curvedArrow, lattice, shellAtom, tag } from './lib/c10-3-figures.ts';
 
@@ -65,6 +66,16 @@ const video: Explainer = {
       lines: [
         { say: 'Table salt, classroom chalk and the lime used to make cement are all built from ions. When a metal reacts with a non-metal, the electrons the metal atoms lose are the very ones the non-metal atoms gain.', show: 'title' },
         { say: 'This part shows that transfer, and how the ions hold together. The later parts write the formulas and names of ionic compounds.' },
+      ],
+    },
+    {
+      chapter: 'An electron changes hands',
+      layout: 'center',
+      main: [redox('nc', [{ id: 'na', symbol: 'Na', protons: 11, name: 'sodium', at: [5, 3.6], tone: 'brand' }, { id: 'cl', symbol: 'Cl', protons: 17, name: 'chlorine', at: [15, 3.6], tone: 'good' }], [{ from: 'na', to: 'cl', n: 1 }])],
+      lines: [
+        { say: 'Here are a sodium atom and a chlorine atom, with their electrons in shells. Sodium has one outer electron, and chlorine has seven.', show: ['nc', 'nc.labels', 'nc.arrangement'] },
+        { say: 'Watch sodium’s outer electron move across to chlorine.', play: 'nc.give' },
+        { say: 'Now both have full outer shells. Sodium has become a positive ion and chlorine a negative chloride ion, and the opposite charges attract: that attraction is the ionic bond.', show: 'nc.charges' },
       ],
     },
     {

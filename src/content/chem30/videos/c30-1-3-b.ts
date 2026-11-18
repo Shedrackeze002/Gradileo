@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { strongNeutralizing } from '../../chem20/videos/lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, beaker, cup, tag } from './lib/c30-1a-figures.ts';
 
@@ -31,6 +32,16 @@ const video: Explainer = {
       lines: [
         { say: 'Mix hydrochloric acid with sodium hydroxide solution, and the mixture warms up. How much energy does each mole of acid release?', show: 'title' },
         { say: 'In this part, you will find that molar enthalpy of neutralisation from calorimetry data, and give it the right sign.' },
+      ],
+    },
+    {
+      chapter: 'Neutralisation, up close',
+      layout: 'center',
+      main: [strongNeutralizing('nn', { name: 'chloride ion', tone: 'good', size: 1.1 }, { name: 'sodium ion', tone: 'hyp' }, 'hydrochloric acid + sodium hydroxide')],
+      lines: [
+        { say: 'Here are hydrochloric acid and sodium hydroxide solution, just mixed.', show: ['nn', 'nn.labels', 'nn.key', 'nn.thermo'], play: 'nn.go' },
+        { say: 'Each hydrogen ion that meets a hydroxide ion joins it as water, and the mixture warms up.', show: 'nn.tally' },
+        { say: 'Energy flows out of the reaction into the water, so the reaction is exothermic and its enthalpy change is negative, even though the thermometer goes up.' },
       ],
     },
     {

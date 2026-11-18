@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure, type Part } from '@/video/solids.ts';
 import { balls, flow, tag, water, type Ball } from './lib/c10-5-figures.ts';
 
@@ -55,6 +56,16 @@ const video: Explainer = {
         },
         { say: 'Particles are far too small, and far too many, to count one by one. So chemists count them in huge bundles called moles.' },
         { say: 'In this video, you will meet the mole, and change moles into particles. Later parts count the atoms inside molecules, and find molar masses.' },
+      ],
+    },
+    {
+      chapter: 'Atoms react one by one',
+      layout: 'center',
+      main: [reaction('co', { from: [{ t: 'C' }, { t: 'O2' }], to: [{ t: 'CO2' }], foot: { before: 'one C atom for one O₂ molecule', after: 'one CO₂ molecule' } })],
+      lines: [
+        { say: 'Here is one carbon atom and one oxygen molecule.', show: 'co' },
+        { say: 'Watch them react: they make one molecule of carbon dioxide.', play: 'co.go' },
+        { say: 'Reactions happen atom by atom, so to make a real amount of carbon dioxide we need equal numbers of carbon atoms and oxygen molecules. Counting them one by one is impossible, so chemists count in huge bundles called moles.' },
       ],
     },
     {

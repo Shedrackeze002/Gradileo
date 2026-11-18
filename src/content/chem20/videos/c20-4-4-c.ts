@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow, type FlowNode } from './lib/c20-4a-figures.ts';
 
@@ -65,6 +66,16 @@ const video: Explainer = {
       lines: [
         { say: 'A balance measures mass, not moles. So to find the mass of iron a reaction makes from a mass of iron oxide, you pass through moles on the way.', show: 'title' },
         { say: 'In this part, you will find the mass of one substance in a reaction, from the amount or the mass of another.' },
+      ],
+    },
+    {
+      chapter: 'Magnesium oxide, atom by atom',
+      layout: 'center',
+      main: [reaction('mg', { from: [{ t: 'Mg', n: 2 }, { t: 'O2' }], to: [{ t: 'MgO', n: 2 }], counts: true, foot: { after: 'mass → moles → mole ratio → moles → mass' } })],
+      lines: [
+        { say: 'Here are two magnesium atoms and one oxygen molecule.', show: 'mg' },
+        { say: 'Watch them react to make two units of magnesium oxide.', play: 'mg.go' },
+        { say: 'Every magnesium atom ends up in the product. So from a mass of magnesium we find moles, use the mole ratio, and turn moles of product back into a mass.' },
       ],
     },
     {

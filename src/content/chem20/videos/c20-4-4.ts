@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { gives, mol, plus, row, stack, tag, water } from './lib/c20-4a-figures.ts';
 
@@ -25,6 +26,16 @@ const video: Explainer = {
         { say: 'A bicycle workshop needs exactly two wheels for every frame. To build fifty bicycles, it orders one hundred wheels and fifty frames: two to one by count, even though a frame weighs far more than a wheel.', show: 'title' },
         { say: 'A balanced equation is the same kind of parts list for a reaction, and chemists count its parts in moles.' },
         { say: 'This first part reads an equation in moles. Later parts use mole ratios, find the mass of one substance from the mass of another, and analyse a solution in the lab.' },
+      ],
+    },
+    {
+      chapter: 'An equation in molecules',
+      layout: 'center',
+      main: [reaction('am', { from: [{ t: 'N2' }, { t: 'H2', n: 3 }], to: [{ t: 'NH3', n: 2 }], foot: { after: '1 : 3 : 2' } })],
+      lines: [
+        { say: 'Here is one nitrogen molecule and three hydrogen molecules.', show: 'am' },
+        { say: 'Watch them react to make two ammonia molecules.', play: 'am.go' },
+        { say: 'One to three to two. Multiply every number by six point zero two times ten to the twenty-three and the ratio stays the same, so the coefficients count moles too.', caption: 'One to three to two. Multiply every number by 6.02 × 10²³ and the ratio stays the same, so the coefficients count moles too.' },
       ],
     },
     {

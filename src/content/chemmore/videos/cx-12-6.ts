@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { peptideLink } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-12-6',
@@ -36,6 +37,15 @@ const video: Explainer = {
         { say: 'The primary structure is the sequence of amino acids.', show: 'b.1' },
         { say: 'The secondary structure is a helix or a pleated sheet, held by hydrogen bonds between peptide links.', show: 'b.2' },
         { say: 'And the tertiary structure is the overall folded shape, held by hydrogen bonds, ionic bonds and disulfide bridges. An enzyme’s active site depends on that shape.', show: 'b.3' },
+      ],
+    },
+    {
+      chapter: 'A peptide link, up close',
+      layout: 'center',
+      main: [peptideLink('pp')],
+      lines: [
+        { say: 'Here are two glycine molecules, the simplest amino acid, with every atom drawn.', show: 'pp' },
+        { say: 'The O H of one carboxyl group and an H of the other’s amine group leave as water, and the carbon bonds to the nitrogen: a peptide link. Repeat that thousands of times, and you have a protein.', caption: 'The OH of one carboxyl group and an H of the other’s amine group leave as water, and the carbon bonds to the nitrogen: a peptide link. Repeat that thousands of times, and you have a protein.', play: 'pp.go' },
       ],
     },
     {

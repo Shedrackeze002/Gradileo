@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { limitingBurn } from './lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { yieldBars } from './lib/c20-4b-figures.ts';
 
@@ -21,6 +22,16 @@ const video: Explainer = {
         { say: 'A recipe that promises twenty-four cookies rarely gives exactly twenty-four. Some dough sticks to the bowl, one cookie burns, and another breaks on the way to the plate.', show: 'title' },
         { say: 'Chemical reactions are the same: the mass of product a chemist collects is almost always less than the stoichiometry predicts.' },
         { say: 'In this lesson, you will calculate the percent yield. This part names the yields and compares them. Later parts explain why yields fall short, find a theoretical yield, and plan for a known yield.' },
+      ],
+    },
+    {
+      chapter: 'How much can form?',
+      layout: 'center',
+      main: [limitingBurn('lb', [{ id: 'a', h2: 10, o2: 6, label: '10 hydrogen + 6 oxygen molecules' }], 6)],
+      lines: [
+        { say: 'Here are ten hydrogen molecules and six oxygen molecules in a sealed box.', show: ['lb', 'lb.labels', 'lb.thermo'] },
+        { say: 'Watch them react. Once the hydrogen runs out, no more water can form, however much oxygen is left.', show: 'lb.tally', play: 'lb.spark' },
+        { say: 'The most product the reactants can make is the theoretical yield. In real experiments we usually collect less: the actual yield.' },
       ],
     },
     {

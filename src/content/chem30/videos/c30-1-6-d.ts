@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c30-1-6-d',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'In a blast furnace, carbon monoxide takes the oxygen from iron ore to make iron. Does that reaction release energy or absorb it? A table of enthalpies of formation answers in a few lines.', show: 'title' },
         { say: 'In this part, you will work it out, avoid three common slips, and work backwards to an unknown enthalpy of formation.' },
+      ],
+    },
+    {
+      chapter: 'Breaking down limestone',
+      layout: 'center',
+      main: [reaction('lm', { from: [{ t: 'CaCO3' }], to: [{ t: 'CaO' }, { t: 'CO2' }] })],
+      lines: [
+        { say: 'Here is a unit of calcium carbonate.', show: 'lm' },
+        { say: 'Heat it, and it breaks down into calcium oxide and carbon dioxide.', play: 'lm.go' },
+        { say: 'This needs strong heating, which tells you the products hold more energy than the reactant: the enthalpy change is positive. Reading the sign like this is a quick check on any answer.' },
       ],
     },
     {

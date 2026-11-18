@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { restrictedRotation } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-9-3',
@@ -28,6 +29,15 @@ const video: Explainer = {
         { say: 'A single bond lets its carbons rotate. A double bond does not, because its pi bond restricts rotation.', caption: 'A single bond lets its carbons rotate. A double bond does not, because its π bond restricts rotation.', show: 'b.0' },
         { say: 'For E Z isomers, each carbon of the double bond must carry two different groups.', caption: 'For E–Z isomers, each carbon of the double bond must carry two different groups.', show: 'b.1' },
         { say: 'Bute-two-ene has a hydrogen and a methyl group on each carbon, so it has E Z isomers. Bute-one-ene does not, because carbon one carries two hydrogens.', caption: 'But-2-ene has an H and a CH₃ on each carbon, so it has E–Z isomers. But-1-ene does not, because carbon 1 carries two hydrogens.', show: 'b.2' },
+      ],
+    },
+    {
+      chapter: 'Turning about a bond',
+      layout: 'center',
+      main: [restrictedRotation('rr')],
+      lines: [
+        { say: 'Here is the difference up close. On the left, a single bond: its groups turn freely, so every arrangement is the same compound.', show: 'rr', play: 'rr.single' },
+        { say: 'On the right, a double bond. To turn, the pi bond would have to break first. Then a chlorine and a hydrogen swap sides, and the result is a different compound: the E isomer.', caption: 'On the right, a double bond. To turn, the π bond would have to break first. Then a chlorine and a hydrogen swap sides, and the result is a different compound: the E isomer.', play: 'rr.double' },
       ],
     },
     {

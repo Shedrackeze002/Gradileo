@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { alloyPush } from './lib/cx-particles.ts';
 
 const video: Explainer = {
   id: 'cx-6-1',
@@ -50,6 +51,15 @@ const video: Explainer = {
         { say: 'Bronze is copper and tin, brass is copper and zinc, and stainless steel contains chromium and nickel, so it does not rust.', show: ['t.0', 't.1', 't.2'], focus: ['t.0', 't.1', 't.2'] },
         { say: 'Pure gold is twenty-four carat, and too soft for jewellery. Eighteen carat gold is eighteen over twenty-four, which is seventy-five percent gold.', caption: 'Pure gold is 24 carat, and too soft for jewellery. 18 carat gold is 18 ÷ 24 = 75% gold.', show: 't.3', focus: 't.3' },
         { say: 'Other materials suit other jobs. Glass and clay ceramics are made by heating. Polymers depend on their monomers and the conditions. And composites, such as concrete and carbon fibre, set a reinforcement in a matrix.' },
+      ],
+    },
+    {
+      chapter: 'Alloys, up close',
+      layout: 'center',
+      main: [alloyPush('sl')],
+      lines: [
+        { say: 'Here is why an alloy is harder. Pure copper above, and brass below, with bigger zinc atoms among the copper.', show: ['sl', 'sl.labels', 'sl.key'] },
+        { say: 'Both get the same push. In copper the rows slide over one another, but in brass the zinc atoms jam the rows, so it hardly gives.', play: 'sl.push' },
       ],
     },
     {

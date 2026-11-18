@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { strongAndWeak } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c30-4-7',
@@ -23,6 +24,16 @@ const video: Explainer = {
           say: 'This part finds the p H of a weak acid from its equilibrium. Later parts do weak bases, salts, and more.',
           caption: 'This part finds the pH of a weak acid from its equilibrium. Later parts do weak bases, salts, and more.',
         },
+      ],
+    },
+    {
+      chapter: 'Only a few ionise',
+      layout: 'center',
+      main: [strongAndWeak('sw')],
+      lines: [
+        { say: 'Here are hydrochloric acid on the left and acetic acid on the right.', show: ['sw', 'sw.labels', 'sw.key'] },
+        { say: 'Watch them meet water. All of the strong acid ionises, but only a few weak acid molecules do.', show: 'sw.tally', play: 'sw.go' },
+        { say: 'So for a weak acid, the hydronium concentration is much smaller than the acid’s concentration, and we use K a to find it.', caption: 'So for a weak acid, the hydronium concentration is much smaller than the acid’s concentration, and we use Ka to find it.' },
       ],
     },
     {

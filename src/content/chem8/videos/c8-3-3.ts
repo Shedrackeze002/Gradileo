@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { methaneBurning } from '../../chem30/videos/lib/c30-organic.ts';
 
 const video: Explainer = {
   id: 'c8-3-3',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'Every reaction tells a short story: these substances went in, and these came out.', show: 'title' },
         { say: 'A word equation is that story written in one line. In this video, you will learn to write word equations, and to name the compounds a reaction makes.' },
+      ],
+    },
+    {
+      chapter: 'A reaction, up close',
+      layout: 'center',
+      main: [methaneBurning('mb')],
+      lines: [
+        { say: 'Here is a reaction up close: methane, the gas burned in a gas cooker, meeting oxygen from the air.', show: 'mb' },
+        { say: 'Every bond breaks, and the same atoms join up again in new ways: the carbon atom ends up in carbon dioxide, and the hydrogen atoms end up in water.', play: 'mb.burn' },
+        { say: 'A word equation says just that, in words: methane plus oxygen gives carbon dioxide plus water.' },
       ],
     },
     {

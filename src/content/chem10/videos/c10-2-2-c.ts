@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { isotopeMix } from './lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c10-2-2-c',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'The periodic table gives copper a relative atomic mass of 63.55. That number comes from copper’s two isotopes, measured very precisely.', show: 'title' },
         { say: 'In this part, you will use measured masses, and then work backwards from a relative atomic mass to find an abundance.' },
+      ],
+    },
+    {
+      chapter: 'A sample of boron',
+      layout: 'center',
+      main: [isotopeMix('bm', { name: 'boron-10', n: 5 }, { name: 'boron-11', n: 20 }, 'a sample of boron atoms')],
+      lines: [
+        { say: 'Here is a sample of boron atoms. Boron has two isotopes, boron ten and boron eleven.', caption: 'Here is a sample of boron atoms. Boron has two isotopes, boron-10 and boron-11.', show: ['bm', 'bm.labels', 'bm.key'] },
+        { say: 'Only about one atom in five is boron ten. The rest are boron eleven.', caption: 'Only about one atom in five is boron-10. The rest are boron-11.' },
+        { say: 'A mass spectrometer measures these proportions, and with the mass of each isotope they give boron a relative atomic mass of about ten point eight.', caption: 'A mass spectrometer measures these proportions, and with the mass of each isotope they give boron a relative atomic mass of about 10.8.' },
       ],
     },
     {

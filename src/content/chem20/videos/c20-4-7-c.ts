@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c20-4b-figures.ts';
 
@@ -43,6 +44,16 @@ const video: Explainer = {
       lines: [
         { say: 'Usually, nobody hands you the theoretical yield. You know the mass of reactant you used, and the mass of product you collected.', show: 'title' },
         { say: 'In this part, you will find the theoretical yield with gravimetric stoichiometry, then the percent yield.' },
+      ],
+    },
+    {
+      chapter: 'Limestone breaking down',
+      layout: 'center',
+      main: [reaction('lm', { from: [{ t: 'CaCO3', label: 'CaCO₃, 100.09 g/mol' }], to: [{ t: 'CaO', label: 'CaO, 56.08 g/mol' }, { t: 'CO2' }], foot: { after: '100.09 g of limestone → at most 56.08 g of lime' } })],
+      lines: [
+        { say: 'Here is one unit of calcium carbonate.', show: 'lm' },
+        { say: 'Watch it break down into calcium oxide, lime, and carbon dioxide.', play: 'lm.go' },
+        { say: 'One mole of limestone can give at most one mole of lime: one hundred point zero nine grams can give at most fifty-six point zero eight grams. That most is the theoretical yield.', caption: 'One mole of limestone can give at most one mole of lime: 100.09 g can give at most 56.08 g. That most is the theoretical yield.' },
       ],
     },
     {

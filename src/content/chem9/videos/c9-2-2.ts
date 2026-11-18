@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { redox } from '../../chem30/videos/lib/c30-atoms.ts';
 
 const video: Explainer = {
   id: 'c9-2-2',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'Why is salt N a C l, but calcium chloride C a C l two?', show: 'title' },
         { say: 'An ionic compound has no overall charge, so its ions must come in just the right numbers. In this video, you will learn to write the formula of any ionic compound.' },
+      ],
+    },
+    {
+      chapter: 'Magnesium meets chlorine',
+      layout: 'center',
+      main: [redox('mc', [{ id: 'c1', symbol: 'Cl', protons: 17, name: 'chlorine', at: [4, 3.6], tone: 'good' }, { id: 'mg', symbol: 'Mg', protons: 12, name: 'magnesium', at: [10, 3.6], tone: 'opp' }, { id: 'c2', symbol: 'Cl', protons: 17, name: 'chlorine', at: [16, 3.6], tone: 'good' }], [{ from: 'mg', to: 'c1', n: 1 }, { from: 'mg', to: 'c2', n: 1 }])],
+      lines: [
+        { say: 'Here is a magnesium atom between two chlorine atoms. Magnesium has two outer electrons to give, but each chlorine atom needs only one more.', show: ['mc', 'mc.labels', 'mc.arrangement'] },
+        { say: 'Watch the electrons move: one to each chlorine atom.', play: 'mc.give' },
+        { say: 'Now there is one magnesium ion with a charge of two plus and two chloride ions with a charge of one minus each, so the charges cancel. That is why the formula is M g C l two.', caption: 'Now there is one Mg²⁺ ion and two Cl⁻ ions, so the charges cancel. That is why the formula is MgCl₂.', show: 'mc.charges' },
       ],
     },
     {

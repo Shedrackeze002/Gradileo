@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, balls, pair, tag, water } from './lib/c10-5-figures.ts';
 
@@ -40,6 +41,16 @@ const video: Explainer = {
       lines: [
         { say: 'A balanced equation works like a recipe. It says how many particles of each substance react, and how many form.', show: 'title' },
         { say: 'In this part, you will read an equation in moles, and use its mole ratio to find the moles of another substance.' },
+      ],
+    },
+    {
+      chapter: 'Counting molecules in a reaction',
+      layout: 'center',
+      main: [reaction('am', { from: [{ t: 'N2' }, { t: 'H2', n: 3 }], to: [{ t: 'NH3', n: 2 }], foot: { after: '1 N₂ : 3 H₂ : 2 NH₃' } })],
+      lines: [
+        { say: 'Here is one nitrogen molecule and three hydrogen molecules.', show: 'am' },
+        { say: 'Watch them react to make two ammonia molecules.', play: 'am.go' },
+        { say: 'One to three to two. Scale that up by a mole and it stays the same: one mole of nitrogen reacts with three moles of hydrogen to make two moles of ammonia. That is a mole ratio.' },
       ],
     },
     {

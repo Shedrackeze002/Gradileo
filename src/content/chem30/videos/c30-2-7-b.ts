@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { displacement } from '../../chemmore/videos/lib/cx-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { potentials } from './lib/c30-2b-figures.ts';
 
@@ -36,6 +37,16 @@ const video: Explainer = {
       lines: [
         { say: 'Once every half-cell has a reduction potential, the voltage of any cell can be worked out on paper, before anyone builds it.', show: 'title' },
         { say: 'In this part, you will calculate standard cell potentials, and avoid two common mistakes.' },
+      ],
+    },
+    {
+      chapter: 'Zinc and copper ions',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3, metal: 'zinc' })],
+      lines: [
+        { say: 'Here is zinc in copper two sulfate solution on the left, and copper in zinc sulfate solution on the right.', caption: 'Here is zinc in copper(II) sulfate solution on the left, and copper in zinc sulfate solution on the right.', show: ['dp', 'dp.labels', 'dp.key'] },
+        { say: 'Only the left one reacts: copper ions take electrons from zinc.', show: 'dp.tally', play: 'dp.go' },
+        { say: 'In a cell this is the zinc–copper reaction, with copper as the cathode. Its cell potential is the cathode’s reduction potential minus the anode’s.' },
       ],
     },
     {

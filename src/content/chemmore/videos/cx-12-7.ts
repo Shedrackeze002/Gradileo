@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { threeKinds } from '../../chem30/videos/lib/c30-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-12-7',
@@ -25,6 +26,16 @@ const video: Explainer = {
         { say: 'Steam adds to an alkene to give an alcohol, and potassium cyanide turns a halogenoalkane into a nitrile, one carbon longer.', show: ['t.0', 't.1'], focus: ['t.0', 't.1'] },
         { say: 'Acidified dichromate oxidises alcohols: to an aldehyde if you distil, to an acid under reflux, or to a ketone from a secondary alcohol.', show: ['t.2', 't.3', 't.4'], focus: ['t.2', 't.3', 't.4'] },
         { say: 'And hydrogen with a nickel catalyst reduces a nitrile to an amine.', show: 't.5', focus: 't.5' },
+      ],
+    },
+    {
+      chapter: 'Three kinds of step',
+      layout: 'center',
+      main: [threeKinds('tk')],
+      lines: [
+        { say: 'Most steps are one of three kinds. In addition, two molecules join into one.', show: 'tk', play: 'tk.add' },
+        { say: 'In substitution, one atom or group swaps for another.', play: 'tk.sub' },
+        { say: 'And in elimination, a small molecule leaves, and a double bond forms.', play: 'tk.elim' },
       ],
     },
     {

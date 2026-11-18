@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { balls, frame, pair, tag, water } from './lib/c10-5-figures.ts';
 
@@ -33,6 +34,16 @@ const video: Explainer = {
       lines: [
         { say: 'In part one, you changed moles into particles, by multiplying by Avogadro’s number.', show: 'title' },
         { say: 'In this part, you will go the other way, from particles to moles. Then you will count the atoms inside molecules, where many mistakes happen.' },
+      ],
+    },
+    {
+      chapter: 'Splitting water, up close',
+      layout: 'center',
+      main: [reaction('ws', { from: [{ t: 'H2O', n: 2 }], to: [{ t: 'H2', n: 2 }, { t: 'O2' }], counts: true })],
+      lines: [
+        { say: 'Here are two water molecules, with their atoms counted underneath.', show: 'ws' },
+        { say: 'Watch them split up into hydrogen and oxygen.', play: 'ws.go' },
+        { say: 'Two water molecules held four hydrogen atoms and two oxygen atoms. In the same way, one mole of water molecules holds two moles of hydrogen atoms and one mole of oxygen atoms.' },
       ],
     },
     {

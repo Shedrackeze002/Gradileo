@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { sulfurToAcid } from '../../chem30/videos/lib/c30-organic.ts';
 
 const video: Explainer = {
   id: 'cx-4-2',
@@ -58,6 +59,16 @@ const video: Explainer = {
         { say: 'Incomplete combustion also makes soot, tiny particles of carbon that cause breathing problems and global dimming, by reflecting sunlight.', show: 't.1', focus: 't.1' },
         { say: 'Sulfur impurities in a fuel burn to sulfur dioxide, which causes acid rain.', show: 't.2', focus: 't.2' },
         { say: 'And at the high temperature inside an engine, nitrogen and oxygen from the air react to form oxides of nitrogen, which also cause acid rain.', show: 't.3', focus: 't.3' },
+      ],
+    },
+    {
+      chapter: 'From sulfur to acid rain',
+      layout: 'center',
+      main: [sulfurToAcid('sa')],
+      lines: [
+        { say: 'Here is how sulfur in a fuel becomes acid rain.', show: 'sa' },
+        { say: 'The sulfur atom burns in oxygen to sulfur dioxide, a gas that leaves with the exhaust.', play: 'sa.burn' },
+        { say: 'In the air, sulfur dioxide reacts with water to form sulfurous acid, H two S O three, which falls as acid rain.', caption: 'In the air, sulfur dioxide reacts with water to form sulfurous acid, H₂SO₃, which falls as acid rain.', play: 'sa.rain' },
       ],
     },
     {

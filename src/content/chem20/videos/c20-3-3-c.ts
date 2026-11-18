@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { diluting } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-3-c',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'Swimming-pool water may hold only a few milligrams of chlorine in each litre, and a drinking-water sample even less of an impurity such as lead.', show: 'title' },
         { say: 'In this part, you will see why chemists use parts per million for such dilute solutions, and calculate it from two masses.' },
+      ],
+    },
+    {
+      chapter: 'A few among many',
+      layout: 'center',
+      main: [diluting('dl', { start: 10, unit: 'mL', from: 0.2, n: 4 })],
+      lines: [
+        { say: 'Here are four solute particles in a small volume of water.', show: ['dl', 'dl.labels', 'dl.volume', 'dl.key'] },
+        { say: 'Add water, and the same four particles spread through five times the volume.', play: 'dl.dilute' },
+        { say: 'In real samples the solute can be so spread out that only a few particles in every million are solute. Percentages become tiny, so we count parts per million instead.' },
       ],
     },
     {

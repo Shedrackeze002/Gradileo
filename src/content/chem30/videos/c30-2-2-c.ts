@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { oval, tag } from './lib/c30-2a-figures.ts';
@@ -46,6 +47,16 @@ const video: Explainer = {
       lines: [
         { say: 'Hydrogen peroxide, used to bleach hair, is made of hydrogen and oxygen, just like water. But its oxygen is not minus two.', show: 'title' },
         { say: 'In this part, you will see why the rules make exceptions for peroxides and metal hydrides, and what an oxidation number that is not a whole number means.' },
+      ],
+    },
+    {
+      chapter: 'Hydrogen peroxide breaking down',
+      layout: 'center',
+      main: [reaction('hp', { from: [{ t: 'H2O2', n: 2 }], to: [{ t: 'H2O', n: 2 }, { t: 'O2' }], counts: true })],
+      lines: [
+        { say: 'Here are two molecules of hydrogen peroxide. Each oxygen is bonded to another oxygen, which is why its oxidation number is minus one, not minus two.', show: 'hp' },
+        { say: 'Watch them break down into water and oxygen.', play: 'hp.go' },
+        { say: 'Some oxygen atoms go down to minus two in water, and some go up to zero in oxygen gas. Peroxides are the exception to the usual rule for oxygen.' },
       ],
     },
     {

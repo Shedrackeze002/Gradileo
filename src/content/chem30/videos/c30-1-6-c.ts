@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { methaneBurning } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { enthalpyLevels } from './lib/c30-1b-figures.ts';
 
@@ -41,6 +42,16 @@ const video: Explainer = {
       lines: [
         { say: 'With Hess’s law, a short table of enthalpies of formation is enough to find delta H for any reaction between the compounds in it. The trick is a detour through the elements.', show: 'title' },
         { say: 'In this part, you will follow the detour, turn it into a formula, and use it for burning methane.' },
+      ],
+    },
+    {
+      chapter: 'Burning methane, up close',
+      layout: 'center',
+      main: [methaneBurning('mb')],
+      lines: [
+        { say: 'Here is a methane molecule and two oxygen molecules.', show: 'mb' },
+        { say: 'Watch every bond break and the atoms join up as carbon dioxide and water.', play: 'mb.burn' },
+        { say: 'We can imagine the same change as a detour: break everything down to the elements, then build the products from them. Enthalpies of formation measure each half of that detour.' },
       ],
     },
     {

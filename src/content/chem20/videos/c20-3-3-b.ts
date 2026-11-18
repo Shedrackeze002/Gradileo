@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { saltDissolving } from './lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, beaker, line, tag } from './lib/c20-3a-figures.ts';
 
@@ -34,6 +35,16 @@ const video: Explainer = {
       lines: [
         { say: 'When the solute is a liquid, measuring it by volume is easiest. When precision matters, chemists weigh everything on a balance instead.', show: 'title' },
         { say: 'In this part, you will find percent by volume and percent by mass, and see the trap in each.' },
+      ],
+    },
+    {
+      chapter: 'Salt dissolving, up close',
+      layout: 'center',
+      main: [{ ...saltDissolving('sd'), key: true }],
+      lines: [
+        { say: 'Here is a crystal of sodium chloride dropped into water.', show: ['sd', 'sd.labels', 'sd.key'] },
+        { say: 'Water molecules pull the ions off the crystal until they spread all through the water.', play: 'sd.drop' },
+        { say: 'The salt has not vanished. Its mass is still there, now part of the mass of the solution, and percent by mass compares the two.' },
       ],
     },
     {

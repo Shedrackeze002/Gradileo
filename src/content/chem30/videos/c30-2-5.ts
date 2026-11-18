@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { titrating } from '../../chem20/videos/lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { rig } from './lib/c30-2b-figures.ts';
 
@@ -22,6 +23,16 @@ const video: Explainer = {
       lines: [
         { say: 'How much iron is in an iron supplement tablet? How strong is a bottle of hydrogen peroxide disinfectant? A quality-control lab can answer both with one deep purple solution: potassium permanganate.', show: 'title' },
         { say: 'In this lesson, you will use redox titrations to find amounts and concentrations. This part shows how a permanganate titration works, and why it needs no indicator. Later parts turn titration data into concentrations, and analyse solid and diluted samples.' },
+      ],
+    },
+    {
+      chapter: 'A titration, up close',
+      layout: 'center',
+      main: [titrating('tm', { seed: 29 })],
+      lines: [
+        { say: 'Here is a titration up close: a solution added drop by drop from a burette.', show: ['tm', 'tm.labels', 'tm.key', 'tm.tally'] },
+        { say: 'Each drop reacts until the flask has none of the first reactant left, and the colour changes.', play: 'tm.titrate' },
+        { say: 'This one is an acid and a base. A redox titration works the same way, except electrons change hands, and permanganate is its own indicator.' },
       ],
     },
     {

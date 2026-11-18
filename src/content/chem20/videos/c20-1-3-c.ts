@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c20-1-3-c',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'The name of a molecular compound tells you its formula exactly, with no charges to balance. And a few compounds go by names that follow no rules at all.', show: 'title' },
         { say: 'In this part, you will turn names back into formulas, and learn the common names.' },
+      ],
+    },
+    {
+      chapter: 'Ammonia, atom by atom',
+      layout: 'center',
+      main: [reaction('am', { from: [{ t: 'N' }, { t: 'H', n: 3, label: '3 H' }], to: [{ t: 'NH3', label: 'NH₃, ammonia' }] })],
+      lines: [
+        { say: 'Here is one nitrogen atom and three hydrogen atoms.', show: 'am' },
+        { say: 'Watch them join into one molecule. By the prefix rules its name would be nitrogen trihydride, and its formula is N H three.', caption: 'Watch them join into one molecule. By the prefix rules its name would be nitrogen trihydride, and its formula is NH₃.', play: 'am.go' },
+        { say: 'But everyone calls it ammonia. A few molecules, like water, ammonia and methane, keep common names that you simply learn.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { n2o4 } from './lib/c30-particles.ts';
 
 const video: Explainer = {
   id: 'c30-4-2',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'A factory that makes ammonia needs to know how far its reaction goes. Will the equilibrium mixture be mostly ammonia, or mostly unreacted gas? One number, the equilibrium constant, answers that.', show: 'title' },
         { say: 'This part shows where that number comes from. Later parts cover solids and liquids, what the size of K tells you, ICE tables, and working backwards.' },
+      ],
+    },
+    {
+      chapter: 'An equilibrium, up close',
+      layout: 'center',
+      main: [n2o4('eq', { seed: 6 })],
+      lines: [
+        { say: 'Here is a sealed tube that starts with only dinitrogen tetroxide.', caption: 'Here is a sealed tube that starts with only N₂O₄.', show: ['eq', 'eq.labels', 'eq.key', 'eq.tally'], play: 'eq.go' },
+        { say: 'Pairs split, and new pairs form, until both happen at the same rate. The count settles.', focus: 'eq.tally' },
+        { say: 'Whatever amounts we start with, the concentrations at equilibrium always give the same value of one ratio: the equilibrium constant, K.' },
       ],
     },
     {

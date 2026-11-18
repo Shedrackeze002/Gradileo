@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { precipitating } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'cx-8-3',
@@ -51,6 +52,15 @@ const video: Explainer = {
         { say: 'Bromide gives cream, which dissolves only in concentrated ammonia.', show: 't.1', focus: 't.1' },
         { say: 'And iodide gives yellow, which does not dissolve at all.', show: 't.2', focus: 't.2' },
         { say: 'Down the group, the halide ions are also stronger reducing agents, so iodide reduces concentrated sulfuric acid all the way to hydrogen sulfide.' },
+      ],
+    },
+    {
+      chapter: 'Silver chloride, up close',
+      layout: 'center',
+      main: [precipitating('pr')],
+      lines: [
+        { say: 'Here is the chloride test up close: silver nitrate solution mixed with a solution of chloride ions.', show: ['pr', 'pr.labels', 'pr.key'] },
+        { say: 'Wherever a silver ion meets a chloride ion, they lock together and sink as solid silver chloride: the white precipitate.', show: 'pr.tally', play: 'pr.mix' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { methaneBurning } from '../../chem30/videos/lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { gives, mol, plus, row, stack, star, tag, water } from './lib/c20-4a-figures.ts';
 
@@ -27,6 +28,16 @@ const video: Explainer = {
       lines: [
         { say: 'A gas stove burns methane in oxygen, giving off carbon dye-oxide and water vapour. Not a single atom is made or destroyed: the atoms only change partners.', caption: 'A gas stove burns methane in oxygen, giving off carbon dioxide and water vapour. Not a single atom is made or destroyed: the atoms only change partners.', show: 'title' },
         { say: 'In this lesson, you will balance equations and sort reactions into types. This first part shows what a balanced equation is. Later parts balance step by step, balance burning fuels, and name five types of reactions.' },
+      ],
+    },
+    {
+      chapter: 'Methane burning, up close',
+      layout: 'center',
+      main: [methaneBurning('mb')],
+      lines: [
+        { say: 'Here is a methane molecule and two oxygen molecules.', show: 'mb' },
+        { say: 'Watch them react. Every bond breaks, and the same atoms join up as one carbon dioxide molecule and two water molecules.', play: 'mb.burn' },
+        { say: 'One, two, one, two: those numbers of molecules are the coefficients of the balanced equation.' },
       ],
     },
     {

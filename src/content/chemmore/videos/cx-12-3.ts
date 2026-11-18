@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { esterification } from '../../chem30/videos/lib/c30-organic.ts';
 
 const video: Explainer = {
   id: 'cx-12-3',
@@ -39,6 +40,15 @@ const video: Explainer = {
         { say: 'With water, you get a carboxylic acid. With an alcohol, an ester.', show: ['t.0', 't.1'], focus: ['t.0', 't.1'] },
         { say: 'With ammonia, an amide, and with a primary amine, an N-substituted amide.', show: ['t.2', 't.3'], focus: ['t.2', 't.3'] },
         { say: 'Acid anhydrides react in the same way, but give a carboxylic acid instead of H C l. Aspirin is made with ethanoic anhydride, which is cheaper and less corrosive.', caption: 'Acid anhydrides react in the same way, but give a carboxylic acid instead of HCl. Aspirin is made with ethanoic anhydride, which is cheaper and less corrosive.' },
+      ],
+    },
+    {
+      chapter: 'Acylation, up close',
+      layout: 'center',
+      main: [esterification('ac', { n: 2, m: 2, acid: 'ethanoyl chloride', alcohol: 'ethanol', ester: 'ethyl ethanoate', chloride: true })],
+      lines: [
+        { say: 'Here is ethanoyl chloride meeting ethanol, with every atom drawn.', show: 'ac' },
+        { say: 'The chlorine atom and the alcohol’s hydrogen leave as hydrogen chloride, and the carbon bonds to the alcohol’s oxygen: the ester ethyl etha-no-ate.', caption: 'The chlorine atom and the alcohol’s hydrogen leave as hydrogen chloride, and the carbon bonds to the alcohol’s oxygen: the ester ethyl ethanoate.', play: 'ac.go' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c20-4b-figures.ts';
 
@@ -43,6 +44,16 @@ const video: Explainer = {
       lines: [
         { say: 'Heating limestone gives off carbon dioxide. How much limestone does it take to make a given volume of the gas?', show: 'title' },
         { say: 'In this part, the path runs backwards, from a volume of gas to a mass of solid. You will also compare the volumes of two gases.' },
+      ],
+    },
+    {
+      chapter: 'Heating limestone, up close',
+      layout: 'center',
+      main: [reaction('lm', { from: [{ t: 'CaCO3' }], to: [{ t: 'CaO' }, { t: 'CO2' }] })],
+      lines: [
+        { say: 'Here is one unit of calcium carbonate, limestone.', show: 'lm' },
+        { say: 'Heat it, and it breaks down into calcium oxide and a molecule of carbon dioxide gas.', play: 'lm.go' },
+        { say: 'One mole of carbon dioxide for every mole of calcium carbonate. So a volume of gas collected can lead us back to the mass of limestone.' },
       ],
     },
     {

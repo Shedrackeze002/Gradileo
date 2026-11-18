@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { breakAndForm } from './lib/c30-particles.ts';
 
 const video: Explainer = {
   id: 'c30-1-4',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'A data table, a handbook and a textbook can each write the energy of burning methane in a different way. All of them say the same thing.', show: 'title' },
         { say: 'In this lesson, you will read and write each way, and move from one to another. This part puts the energy into the equation itself. Later parts cover molar enthalpies and enthalpy diagrams.' },
+      ],
+    },
+    {
+      chapter: 'Bonds breaking and forming',
+      layout: 'center',
+      main: [breakAndForm('bf', { seed: 1 })],
+      lines: [
+        { say: 'Here are bonds breaking on the left and bonds forming on the right, each with a thermometer.', show: ['bf', 'bf.labels', 'bf.key', 'bf.tally', 'bf.thermo'] },
+        { say: 'Watch the thermometers. Breaking bonds takes energy in, and forming bonds gives energy out.', play: 'bf.go' },
+        { say: 'Which wins decides whether a reaction releases or absorbs energy, and that energy can be written as part of the equation itself.' },
       ],
     },
     {

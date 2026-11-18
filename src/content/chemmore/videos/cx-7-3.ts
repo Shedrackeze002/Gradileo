@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hclAndAmmonia } from '../../chem30/videos/lib/c30-protons.ts';
 
 const video: Explainer = {
   id: 'cx-7-3',
@@ -28,6 +29,15 @@ const video: Explainer = {
         { say: 'The donor needs a lone pair, and the acceptor needs an empty orbital.' },
         { say: 'The nitrogen in ammonia has a lone pair, and a hydrogen ion has an empty orbital. So nitrogen donates its pair, making the ammonium ion.', caption: 'The nitrogen in ammonia has a lone pair, and H⁺ has an empty orbital. So nitrogen donates its pair, making NH₄⁺.', show: 'm', focus: 'm' },
         { say: 'Once it forms, the dative bond is just like the other three. All four N H bonds are identical.', caption: 'Once it forms, the dative bond is just like the other three. All four N–H bonds are identical.' },
+      ],
+    },
+    {
+      chapter: 'Ammonium, up close',
+      layout: 'center',
+      main: [hclAndAmmonia('pt')],
+      lines: [
+        { say: 'Here it is up close: an ammonia molecule and a hydrogen chloride molecule.', show: 'pt' },
+        { say: 'The hydrogen ion leaves its chloride behind, and the nitrogen’s lone pair forms the new bond to it. That is a dative bond, and the product is the ammonium ion.', play: 'pt.go' },
       ],
     },
     {

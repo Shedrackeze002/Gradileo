@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { diluting } from './lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { flask } from './lib/c20-3a-figures.ts';
 
@@ -23,6 +24,16 @@ const video: Explainer = {
       lines: [
         { say: 'To find the unknown concentration of a solution, chemists often react it with a solution whose concentration they know precisely.', show: 'title' },
         { say: 'In this part, you will meet the volumetric flask, and follow the steps that turn a weighed solid into a solution of known concentration.' },
+      ],
+    },
+    {
+      chapter: 'Making up to the mark',
+      layout: 'center',
+      main: [diluting('dl', { start: 50, unit: 'mL', from: 0.5 })],
+      lines: [
+        { say: 'Here is a dissolved solute in a little water, in a volumetric flask.', show: ['dl', 'dl.labels', 'dl.volume', 'dl.key'] },
+        { say: 'Water is added up to the mark, and the solute spreads through the whole volume.', play: 'dl.dilute' },
+        { say: 'The moles of solute never change, so making up to an exact volume gives an exact concentration: a standard solution.' },
       ],
     },
     {

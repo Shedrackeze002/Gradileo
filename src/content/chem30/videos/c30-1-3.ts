@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { systemInWater } from './lib/c30-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c30-1a-figures.ts';
 
@@ -28,6 +29,16 @@ const video: Explainer = {
       lines: [
         { say: 'An instant cold pack holds ammonium nitrate and a pouch of water. To design one, you need to know how much energy each mole of salt absorbs as it dissolves.', show: 'title' },
         { say: 'That number is a molar enthalpy. In this lesson, you will find molar enthalpies from calorimetry, and then use them.' },
+      ],
+    },
+    {
+      chapter: 'Energy into the water',
+      layout: 'center',
+      main: [systemInWater('sw', { seed: 1 })],
+      lines: [
+        { say: 'Here are two dissolved reactants, the system, among water molecules, the surroundings, with a thermometer.', show: ['sw', 'sw.labels', 'sw.key', 'sw.thermo'] },
+        { say: 'Each time the reactants meet, energy is released and the water molecules around them speed up, so the thermometer rises.', play: 'sw.go', focus: 'sw.thermo' },
+        { say: 'We cannot measure the system’s energy directly, but we can measure the water’s. Its temperature change tells us the heat, and dividing by the moles that reacted gives the molar enthalpy.' },
       ],
     },
     {

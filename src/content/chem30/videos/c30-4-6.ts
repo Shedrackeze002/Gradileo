@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hfAndWater } from './lib/c30-protons.ts';
 
 const video: Explainer = {
   id: 'c30-4-6',
@@ -19,6 +20,16 @@ const video: Explainer = {
           say: 'This part writes the acid and base ionisation constants, K A and K B. Part two links them through water, and part three uses them to compare acids and bases.',
           caption: 'This part writes the acid and base ionisation constants, Ka and Kb. Part two links them through water, and part three uses them to compare acids and bases.',
         },
+      ],
+    },
+    {
+      chapter: 'A weak acid, up close',
+      layout: 'center',
+      main: [hfAndWater('pt')],
+      lines: [
+        { say: 'Here is a hydrogen fluoride molecule and a water molecule.', show: 'pt' },
+        { say: 'Watch the proton move.', play: 'pt.go' },
+        { say: 'For a weak acid, only a small fraction of molecules do this at any moment. The acid ionisation constant, K a, measures how far it goes.', caption: 'For a weak acid, only a small fraction of molecules do this at any moment. The acid ionisation constant, Ka, measures how far it goes.' },
       ],
     },
     {

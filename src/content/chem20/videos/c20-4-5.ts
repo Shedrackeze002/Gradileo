@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c20-4b-figures.ts';
 
@@ -68,6 +69,16 @@ const video: Explainer = {
         { say: 'A car’s airbag fills in less than a tenth of a second, as a small charge of sodium azide breaks down into sodium and nitrogen gas.', show: 'title' },
         { say: 'Nobody can weigh the nitrogen as the bag fills, but its volume can be calculated.' },
         { say: 'In this lesson, you will do stoichiometry with gases and solutions. This part works with gases at S T P and S A T P. Later parts work backwards, use the ideal gas law, and use solutions.' },
+      ],
+    },
+    {
+      chapter: 'An airbag, up close',
+      layout: 'center',
+      main: [reaction('ab', { from: [{ t: 'NaN3', n: 2 }], to: [{ t: 'Na', n: 2 }, { t: 'N2', n: 3 }], counts: true })],
+      lines: [
+        { say: 'Here are two units of sodium azide, the solid inside an airbag.', show: 'ab' },
+        { say: 'Watch it break down. The sodium is left behind, and the nitrogen atoms pair up as three molecules of nitrogen gas.', play: 'ab.go' },
+        { say: 'A little solid makes a lot of gas, which fills the bag. Moles of gas, times the molar volume, tell us how much.' },
       ],
     },
     {

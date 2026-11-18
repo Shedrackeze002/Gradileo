@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { diffusion } from '../../chem10/videos/lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'cx-10-2',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'Ice melts on a warm day, even though melting takes in energy. Enthalpy alone cannot explain it. Nature also favours spreading out, and chemists measure that with entropy.', show: 'title' },
         { say: 'In this lesson, you will calculate entropy changes, and combine them with enthalpy to decide whether a reaction can happen.' },
+      ],
+    },
+    {
+      chapter: 'Spreading out by itself',
+      layout: 'center',
+      main: [diffusion('df', 420)],
+      lines: [
+        { say: 'Here are two gases and two liquids, each pair kept apart by a wall.', show: ['df', 'df.labels'] },
+        { say: 'Watch the walls lift. Nobody stirs them, but the particles spread out and mix by themselves, and they never unmix.', play: 'df.lift' },
+        { say: 'There are far more ways for the particles to be arranged when they are mixed than when they are separated. That number of ways is what entropy measures, and it tends to increase.' },
       ],
     },
     {

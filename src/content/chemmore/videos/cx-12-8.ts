@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { chromatography } from '../../chem10/videos/lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'cx-12-8',
@@ -49,6 +50,15 @@ const video: Explainer = {
         { say: 'In thin-layer chromatography, each spot is identified by its R f value: the distance the spot moved, divided by the distance the solvent moved.', caption: 'In thin-layer chromatography, each spot is identified by its Rf value: the distance the spot moved, divided by the distance the solvent moved.', show: 'm.0', focus: 'm.0' },
         { say: 'A spot that moves three point four centimetres while the solvent moves eight has an R f of zero point four three.', caption: 'A spot that moves 3.4 cm while the solvent moves 8.0 cm has an Rf of 0.43.', show: 'm.1', focus: 'm.1' },
         { say: 'Gas chromatography identifies each component by its retention time, the time it takes to pass through the column.' },
+      ],
+    },
+    {
+      chapter: 'Chromatography, up close',
+      layout: 'center',
+      main: [chromatography('ch', 440)],
+      lines: [
+        { say: 'Here is paper chromatography up close: an ink and two dyes, spotted on a pencil line.', show: ['ch', 'ch.labels'] },
+        { say: 'As the solvent soaks up the paper, each dye travels at its own speed, depending on how strongly it is held back. The ink splits into dyes that match A and B.', play: 'ch.run' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c20-1-3-b',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'Nitrogen and oxygen alone make at least four different compounds. A name like nitrogen oxide cannot tell them apart.', show: 'title' },
         { say: 'In this part, you will name molecular compounds with prefixes that count their atoms.' },
+      ],
+    },
+    {
+      chapter: 'Two nitrogen oxides',
+      layout: 'center',
+      main: [reaction('no', { from: [{ t: 'NO2', n: 2, label: 'nitrogen dioxide' }], to: [{ t: 'N2O4', label: 'dinitrogen tetroxide' }], counts: true, foot: { after: 'di = 2, tetra = 4' } })],
+      lines: [
+        { say: 'Here are two molecules of nitrogen dioxide: one nitrogen atom and two oxygen atoms each.', show: 'no' },
+        { say: 'Watch them pair up into one bigger molecule, with two nitrogen atoms and four oxygen atoms.', play: 'no.go' },
+        { say: 'Its name counts them: di for two nitrogens and tetra for four oxygens, so it is dinitrogen tetroxide. In molecular compounds, prefixes tell you how many of each atom there are.' },
       ],
     },
     {

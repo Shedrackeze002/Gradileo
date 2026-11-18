@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { saltCrystals } from '../../chem10/videos/lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'cx-1-3',
@@ -83,6 +84,16 @@ const video: Explainer = {
         { say: 'Filter. The spare solid stays in the filter paper, and the salt solution passes through.', show: 'b.2', focus: 'b.2' },
         { say: 'Heat the solution in an evaporating basin until crystals just start to form. Then leave it to cool, so crystals grow slowly, and pat them dry between filter papers.', show: ['b.3', 'b.4'], focus: ['b.3', 'b.4'] },
         { say: 'Do not boil the solution dry. That gives a powder, not crystals, and the hot solid may spit out of the basin.' },
+      ],
+    },
+    {
+      chapter: 'Crystals, up close',
+      layout: 'center',
+      main: [saltCrystals('sc', 420)],
+      lines: [
+        { say: 'Here is that last step up close, with a salt solution in an evaporating basin.', show: ['sc', 'sc.labels'] },
+        { say: 'Heating drives the water off as vapour, and the solution becomes more concentrated.', play: 'sc.heat' },
+        { say: 'As it cools, the ions left behind lock together in a regular pattern: a crystal.', play: 'sc.cool' },
       ],
     },
     {

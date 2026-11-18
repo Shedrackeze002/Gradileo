@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hydride } from '../../chem10/videos/lib/c10-atoms.ts';
 import { lewis, periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, tag } from './lib/c20-1a-figures.ts';
@@ -69,6 +70,16 @@ const video: Explainer = {
       lines: [
         { say: 'The water you drink, the carbon dioxide you breathe out, and the sugar in your food contain no metal at all. All their atoms are non-metals, and non-metal atoms do not hand electrons over. They share them.', show: 'title' },
         { say: 'This lesson names these molecular compounds and acids. This first part shows how sharing makes molecules. The later parts name molecular compounds, write their formulas, and name acids.' },
+      ],
+    },
+    {
+      chapter: 'Sharing electrons, up close',
+      layout: 'center',
+      main: [hydride('ch4', { symbol: 'C', protons: 6, name: 'carbon', tone: 'brand' }, 4, 440)],
+      lines: [
+        { say: 'Here is a carbon atom with four outer electrons, and four hydrogen atoms with one each.', show: 'ch4' },
+        { say: 'Watch them come together. Each hydrogen shares its electron with the carbon, and the carbon shares one of its own back, so each pair of shared electrons is a covalent bond.', play: 'ch4.share' },
+        { say: 'Nothing is handed over completely, so no ions form. The atoms stay joined as one molecule: methane.' },
       ],
     },
     {

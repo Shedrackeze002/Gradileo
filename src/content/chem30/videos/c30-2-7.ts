@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { voltaic } from './lib/c30-cells.ts';
 import { figure } from '@/video/solids.ts';
 import { cell, potentials, TONE } from './lib/c30-2b-figures.ts';
 
@@ -48,6 +49,16 @@ const video: Explainer = {
         { say: 'A zinc-copper cell makes about one point one volts, a cell in a car battery about two volts, and a lithium cell more than three volts.', show: 'title' },
         { say: 'The voltage of a cell measures how strongly the cathode pulls electrons compared with the anode, and it can be predicted from a table before the cell is ever built.' },
         { say: 'In this lesson, you will calculate standard cell potentials, and use them to decide whether a reaction is spontaneous. This part shows where the numbers in the table come from.' },
+      ],
+    },
+    {
+      chapter: 'A cell, up close',
+      layout: 'center',
+      main: [voltaic('ve', { seed: 2 })],
+      lines: [
+        { say: 'Here is a zinc–copper cell up close.', show: ['ve', 've.labels', 've.key', 've.tally'] },
+        { say: 'Zinc gives up electrons and dissolves, and copper ions take them and plate out.', play: 've.run' },
+        { say: 'How strongly each half pulls on electrons can be measured against one reference half-cell, the standard hydrogen electrode.' },
       ],
     },
     {

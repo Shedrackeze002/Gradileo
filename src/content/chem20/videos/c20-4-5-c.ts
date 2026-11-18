@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { heatedSealed } from '../../chem10/videos/lib/c10-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c20-4b-figures.ts';
 
@@ -43,6 +44,16 @@ const video: Explainer = {
       lines: [
         { say: 'Real reactions rarely happen at exactly S T P or S A T P. A lab might be at twenty-two degrees Celsius, with the air at ninety-eight kilopascals.', show: 'title' },
         { say: 'In this part, you will use the ideal gas law for the gas step. The stoichiometry before it does not change.' },
+      ],
+    },
+    {
+      chapter: 'A gas warming, up close',
+      layout: 'center',
+      main: [heatedSealed('sg')],
+      lines: [
+        { say: 'Here is a gas sealed in a tube, with a gauge to read its pressure.', show: ['sg', 'sg.labels', 'sg.thermo', 'sg.gauge'] },
+        { say: 'Warm it. The particles move faster and hit the walls harder and more often, so the pressure climbs.', show: 'sg.hits', play: 'sg.warm', focus: 'sg.gauge' },
+        { say: 'Pressure, volume, temperature and the amount of gas are all linked. The ideal gas law ties them together, so we can find moles at any conditions.' },
       ],
     },
     {

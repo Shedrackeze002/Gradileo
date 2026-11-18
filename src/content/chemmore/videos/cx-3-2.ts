@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'cx-3-2',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'A factory can run a reaction perfectly, losing not one gram, and still turn half of what it buys into waste. The reason is in the equation itself.', show: 'title' },
         { say: 'In this lesson, you will calculate the atom economy of a reaction, and see how it differs from the yield.' },
+      ],
+    },
+    {
+      chapter: 'Where the atoms end up',
+      layout: 'center',
+      main: [reaction('lm', { from: [{ t: 'CaCO3' }], to: [{ t: 'CaO', label: 'CaO, wanted', tone: 'good' }, { t: 'CO2', label: 'CO₂, waste', tone: 'bad' }], foot: { after: '56.08 of every 100.09 mass units end up in lime' } })],
+      lines: [
+        { say: 'Here is one unit of calcium carbonate, limestone. Heated, it breaks down to make lime, calcium oxide.', show: 'lm' },
+        { say: 'Watch where the atoms go. The calcium and one oxygen end up in the lime we want, but a carbon and two oxygens leave as carbon dioxide, a waste product.', play: 'lm.go' },
+        { say: 'Only fifty-six point zero eight of every one hundred point zero nine mass units end up in the product, so the atom economy is about fifty-six percent.', caption: 'Only 56.08 of every 100.09 mass units end up in the product, so the atom economy is about 56%.' },
       ],
     },
     {

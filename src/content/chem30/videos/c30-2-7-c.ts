@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { voltaic } from './lib/c30-cells.ts';
 import { figure } from '@/video/solids.ts';
 import { cell, TONE } from './lib/c30-2b-figures.ts';
 
@@ -29,6 +30,16 @@ const video: Explainer = {
       lines: [
         { say: 'Suppose a chemist has a metal that is not in the table. One cell, built with a half-cell that is in the table, and one voltmeter reading are enough to place it.', show: 'title' },
         { say: 'In this part, you will run the cell potential formula backwards, to find an unknown reduction potential.' },
+      ],
+    },
+    {
+      chapter: 'A cell with a known half',
+      layout: 'center',
+      main: [voltaic('ve', { seed: 2 })],
+      lines: [
+        { say: 'Here is a cell with copper on one side.', show: ['ve', 've.labels', 've.key', 've.tally'] },
+        { say: 'Watch the electrons flow from the metal that gives them up to the copper ions.', play: 've.run' },
+        { say: 'If we know one half’s potential and measure the cell, we can solve for the unknown half.' },
       ],
     },
     {
