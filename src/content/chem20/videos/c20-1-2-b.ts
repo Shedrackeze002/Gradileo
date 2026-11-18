@@ -1,4 +1,4 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, MoleculesEl } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { balls, tag } from './lib/c20-1a-figures.ts';
 
@@ -27,6 +27,37 @@ const sulfate = figure(
   ],
   480,
 );
+
+// Calcium hydroxide as balls and sticks (src/video/molecules.ts): in the clip `go` two hydroxide
+// ions, each an oxygen and a hydrogen atom bonded together, drift in to a calcium ion and stay whole.
+const caOH2: MoleculesEl = {
+  kind: 'molecules',
+  id: 'ch',
+  atoms: { Ca: { el: 'Ca', tone: 'opp' }, O1: 'O', H1: 'H', O2: 'O', H2: 'H' },
+  stages: {
+    apart: {
+      at: { Ca: [5.5, 2.6], O1: [1.6, 1.6], H1: [0.8, 1.0], O2: [9.4, 1.6], H2: [10.2, 1.0] },
+      bonds: 'O1-H1 O2-H2',
+      charges: { Ca: 2, O1: -1, O2: -1 },
+      names: [
+        { text: 'calcium ion', at: [5.5, 3.9], tone: 'opp' },
+        { text: 'hydroxide ion', at: [1.4, 2.8] },
+        { text: 'hydroxide ion', at: [9.6, 2.8] },
+      ],
+    },
+    together: {
+      at: { Ca: [5.5, 2.6], O1: [4.0, 2.6], H1: [3.2, 2.0], O2: [7.0, 2.6], H2: [7.8, 2.0] },
+      bonds: 'O1-H1 O2-H2',
+      charges: { Ca: 2, O1: -1, O2: -1 },
+      names: [{ text: 'calcium hydroxide: one Ca²⁺ and two whole OH⁻ ions', at: [5.5, 4.1] }],
+    },
+  },
+  start: 'apart',
+  clips: { go: { phases: [{ dur: 0.6 }, { dur: 2.8, to: 'together' }, { dur: 1 }] } },
+  span: [11, 4.8],
+  poster: 'go',
+  height: 380,
+};
 
 const video: Explainer = {
   id: 'c20-1-2-b',
@@ -99,6 +130,15 @@ const video: Explainer = {
         { say: 'The names follow patterns. A name ending like nitrate has one more oxygen atom than the matching name ending like nitrite. Nitrate has three oxygens and nitrite two; sulfate has four, and sulfite three.', show: 'm.0', focus: 'm.0' },
         { say: 'In the chlorine family, perchlorate has one more oxygen than chlorate, and hypochlorite has one fewer than chlorite.', show: ['m.1', 'm.2'], focus: ['m.1', 'm.2'] },
         { say: 'Adding hydrogen adds one H and makes the charge one less negative. Carbonate, two minus, becomes hydrogen carbonate, one minus. Phosphate becomes hydrogen phosphate, then dye-hydrogen phosphate.', caption: 'Adding hydrogen adds one H and makes the charge one less negative. Carbonate, 2−, becomes hydrogen carbonate, 1−. Phosphate becomes hydrogen phosphate, then dihydrogen phosphate.', show: 'm.3', focus: 'm.3' },
+      ],
+    },
+    {
+      chapter: 'Calcium hydroxide, up close',
+      layout: 'center',
+      main: [caOH2],
+      lines: [
+        { say: 'Here is calcium hydroxide, up close: a calcium ion, two plus, and two hydroxide ions, each one minus. Each hydroxide ion is an oxygen atom and a hydrogen atom, bonded together.', caption: 'Here is calcium hydroxide, up close: a calcium ion, 2+, and two hydroxide ions, each 1−. Each hydroxide ion is an oxygen atom and a hydrogen atom, bonded together.', show: 'ch' },
+        { say: 'It takes two hydroxide ions to balance the calcium ion’s two plus, and each one comes in whole. That is why the formula keeps O H together, in brackets, with a two after them.', caption: 'It takes two hydroxide ions to balance the calcium ion’s 2+, and each one comes in whole. That is why the formula keeps OH together, in brackets, with a 2 after them.', play: 'ch.go' },
       ],
     },
     {

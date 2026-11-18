@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { model, SHAPES, tag } from './lib/c20-1b-figures.ts';
+import { spreading } from './lib/c20-molecules.ts';
 
 const [l1, l2] = SHAPES.linear();
 const [t1, t2, t3] = SHAPES.trigonal();
@@ -122,6 +123,15 @@ const video: Explainer = {
       lines: [
         { say: 'In part one, you counted the electron groups around a central atom. Now you will use that count to predict a shape.', show: 'title' },
         { say: 'In this part, every group is a bonded atom. Two, three or four groups give three shapes, each with its own bond angle.' },
+      ],
+    },
+    {
+      chapter: 'Spreading out',
+      layout: 'center',
+      main: [spreading('sp')],
+      lines: [
+        { say: 'Here is the rule from part one in action: carbon dioxide, boron trifluoride and methane, with their outer atoms crowded together.', show: 'sp' },
+        { say: 'The groups repel and spread out as far as they can. Each of these molecules has no lone pairs, so its shape follows straight from the number of groups.', play: 'sp.go' },
       ],
     },
     {

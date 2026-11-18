@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { streamTest, tag } from './lib/c20-1b-figures.ts';
+import { rodTest } from './lib/c20-molecules.ts';
 
 // A burette letting a thin stream of liquid run into a beaker, and a charged plastic rod beside it:
 // the stream runs straight down, or bends towards the rod.
@@ -69,6 +70,15 @@ const video: Explainer = {
         { say: 'A stream of water bends towards the rod. Its polar molecules turn so that their oppositely charged ends face the rod, and they are pulled towards it.', hide: 'm.straight', show: ['m.bent', 'b.0'], focus: ['m.bent', 'b.0'] },
         { say: 'The stream bends towards a positively charged rod, and towards a negatively charged one, because the molecules simply turn the other way round.', show: 'b.1', focus: 'b.1' },
         { say: 'A stream of a non-polar liquid, such as hexane, does not bend noticeably. Its molecules have no charged sides to turn towards the rod.', hide: 'm.bent', show: ['m.straight', 'b.2'], focus: ['m.straight', 'b.2'] },
+      ],
+    },
+    {
+      chapter: 'The stream test, up close',
+      layout: 'center',
+      main: [rodTest('rt', 'water')],
+      lines: [
+        { say: 'Here is why, up close: water molecules on the left, and carbon tetrachloride, a non-polar liquid, on the right, each moving about every which way.', show: 'rt' },
+        { say: 'Bring a negatively charged rod near. Each water molecule turns its slightly positive hydrogen end to face the rod, so the water is pulled towards it. The carbon tetrachloride molecules have no charged sides, so nothing turns.', play: 'rt.rod' },
       ],
     },
     {
