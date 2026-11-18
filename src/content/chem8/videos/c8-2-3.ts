@@ -1,4 +1,45 @@
-import type { Explainer } from '@/video/script.ts';
+import type { Explainer, ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
+
+// The particles here are simulated (src/video/particles.ts). A piece of each alkali metal sits in
+// water: a water particle that meets the metal sets a hydrogen atom loose and leaves the metal
+// dissolved (as its hydroxide), and two loose hydrogen atoms join as a gas molecule that rises out.
+// Each metal reacts more readily than the one above it, and gives out more heat, so the bubbles
+// and the thermometers rise faster down the group.
+
+const DISSOLVED = { n: 0, bond: 0.15, heavy: 0.3 } as const;
+
+const alkali = (id: string, name: string, tone: Tone, chance: number, heat: number): ParticleBox => ({
+  id,
+  state: 'liquid',
+  width: 8,
+  height: 11,
+  temp: 0.45,
+  escape: [4],
+  lump: true,
+  waits: true,
+  kinds: [
+    { n: 12, bond: 3, heavy: 2, tone, name: 'metal' },
+    { ...DISSOLVED, n: 20, size: 0.8, tone: 'adj', name: 'water' },
+    { ...DISSOLVED, size: 0.8, tone, name: 'dissolved metal' },
+    { ...DISSOLVED, size: 0.8, tone: 'theta', name: 'hydrogen atom' },
+    { ...DISSOLVED, size: 0.8, heavy: -1.5, tone: 'theta', name: 'hydrogen gas' },
+  ],
+  reactions: [
+    { a: 1, b: 0, to: [3, 2], chance, heat },
+    { a: 3, b: 3, to: [4, 4], join: true },
+  ],
+  label: name,
+});
+
+const group1: ParticlesEl = {
+  kind: 'particles',
+  id: 'g1',
+  boxes: [alkali('li', 'lithium', 'good', 0.0003, 0.01), alkali('na', 'sodium', 'opp', 0.0015, 0.03), alkali('k', 'potassium', 'brand', 0.008, 0.07)],
+  clips: { drop: { phases: [{ dur: 1, release: ['li', 'na', 'k'] }, { dur: 12 }] } },
+  thermometers: true,
+  height: 420,
+};
+
 
 const video: Explainer = {
   id: 'c8-2-3',
@@ -36,7 +77,16 @@ const video: Explainer = {
         { say: 'The alkali metals are group one: lithium, sodium, potassium and the elements below. They are soft enough to cut with a knife, and very reactive, so they are stored under oil.', show: 'eq' },
         { say: 'With water, they give off hydrogen gas and make a hydroxide, which dissolves to give an alkaline solution. That is how they got their name.' },
         { say: 'Lithium fizzes steadily. Sodium melts into a ball and whizzes around. Potassium bursts into a lilac flame.', show: ['water', 'water.0', 'water.1', 'water.2'] },
-        { say: 'So the alkali metals get more reactive down the group.' },
+      ],
+    },
+    {
+      chapter: 'Group 1, up close',
+      layout: 'center',
+      main: [group1],
+      lines: [
+        { say: 'Let’s watch all three in water, up close: lithium, sodium and potassium, each a small piece in the same amount of water.', show: ['g1', 'g1.labels', 'g1.thermo'] },
+        { say: 'Where water meets the metal, hydrogen is set loose and bubbles away, and the metal dissolves. Lithium reacts slowly, sodium faster, and potassium fastest of all.', play: 'g1.drop' },
+        { say: 'Potassium also gives out the most heat, so its water warms fastest. So the alkali metals get more reactive down the group.', focus: 'g1.k' },
       ],
     },
     {
