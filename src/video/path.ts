@@ -10,9 +10,13 @@ export interface HillPath {
   points: Array<[x: number, y: number]>;
 }
 
-/** A pendulum: the length of its string in metres, and the largest angle of swing drawn, in degrees. */
+/**
+ * A pendulum: the length of its string in metres, and the largest angle of swing drawn, in degrees.
+ * `room` is the length of the longest pendulum it is shown beside: the picture leaves room under
+ * the support for that length, so that pendulums side by side are drawn to one scale.
+ */
 export interface SwingPath {
-  swing: { length: number; angle: number };
+  swing: { length: number; angle: number; room?: number };
 }
 
 /** A curved track, with the gravitational field strength there in newtons per kilogram. */
@@ -169,6 +173,7 @@ export function checkPath(path: MotionPath): string[] {
   if ('swing' in path) {
     if (!(path.swing.length > 0)) problems.push('a pendulum needs a length above zero.');
     if (!(path.swing.angle > 0 && path.swing.angle < 90)) problems.push('a pendulum swings through an angle between 0 and 90 degrees.');
+    if (path.swing.room !== undefined && !(path.swing.room >= path.swing.length)) problems.push('the room left for a pendulum must be its own length or more.');
   } else {
     if (path.points.length < 2) problems.push('a hill needs two points or more.');
     if (path.points.some((p, i) => i > 0 && p[0] <= path.points[i - 1][0])) problems.push('a hill’s points must run from left to right.');

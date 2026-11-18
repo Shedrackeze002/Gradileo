@@ -37,6 +37,8 @@ export const short = (n: number) => {
   const r = Math.round(n * 10) / 10;
   return Number.isInteger(r) ? String(r) : r.toFixed(1);
 };
+/** A length read off a picture: to the nearest thousandth, without trailing zeros (0.773, 0.8, 2). */
+export const fine = (n: number) => String(Math.round(n * 1000) / 1000);
 /** A changing number: always one decimal, so it does not jump about, and never "-0.0". */
 export const live = (n: number) => (Math.abs(n) < 0.05 ? '0.0' : n.toFixed(1)).replace('-', '−');
 
@@ -76,6 +78,38 @@ export function Clock({ w, time, opacity, unit = 's' }: { w: number; time: numbe
     </g>
   );
 }
+
+/**
+ * The complete oscillations counted so far, in a pill: at the top left of a wide picture, or
+ * (`under`, the width of the picture) under the clock at the top right of a narrow one, which
+ * leaves the top left to the note of a phase. A pendulum's are called swings (`word`).
+ */
+export function Count({ n, opacity, under, word = 'Oscillations' }: { n: number; opacity: number; under?: number; word?: string }) {
+  const [x, y] = under === undefined ? [0, 0] : [under - 200, 46];
+  return (
+    <g opacity={opacity}>
+      <rect x={x} y={y} width={200} height={38} rx={19} fill="rgb(255 255 255 / 0.07)" stroke="rgb(255 255 255 / 0.14)" />
+      <Text x={x + 100} y={y + 19.5} size={19} color={INK2}>
+        {`${word}: ${n}`}
+      </Text>
+    </g>
+  );
+}
+
+/**
+ * The label of a lane is set in capitals, unless it has a number in it: a label like "k = 20 N/m"
+ * carries a unit, and a unit in capitals is a different unit.
+ */
+export const labelCase = (label: string): 'uppercase' | 'none' => (/\d/.test(label) ? 'none' : 'uppercase');
+
+/** A displacement of an oscillation, written with its sign in metres or (`cm`) in centimetres. */
+export const offset = (m: number, cm?: boolean, sign = true): string => {
+  const [v, places] = cm ? [m * 100, 1] : [m, 2];
+  const zero = Math.abs(v) < 0.5 * 10 ** -places;
+  return `${zero || !sign ? '' : v > 0 ? '+' : '−'}${zero ? (0).toFixed(places) : Math.abs(v).toFixed(places)} ${cm ? 'cm' : 'm'}`;
+};
+/** The step between the numbers of a ruler that counts from an equilibrium position, at `S` pixels a metre and `room` pixels a number. */
+export const offsetStep = (S: number, room: number): number => [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10].find((n) => n * S >= room) ?? 20;
 
 /** The bodies whose energy is shown, and the rows of bars that takes. */
 export const energyBodies = (el: MotionEl): MotionBody[] => (el.energy ? (el.energy.of ? el.bodies.filter((b) => el.energy!.of!.includes(b.id)) : el.bodies.slice(0, 1)) : []);

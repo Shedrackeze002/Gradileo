@@ -5,10 +5,11 @@
  */
 import type { ReactElement } from 'react';
 import type { MotionEl } from '../script.ts';
-import { widthOf, type MotionState } from '../motion.ts';
+import { oscillations, widthOf, type MotionState } from '../motion.ts';
 import { trackOf } from '../path.ts';
 import { ownPart, type ElState } from '../timeline.ts';
-import { Arrow, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, short, Text, toneOf, VELOCITY } from './motionKit.tsx';
+import { Arrow, clamp01, Clock, Count, ENERGY_ROW, labelCase, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, toneOf, VELOCITY } from './motionKit.tsx';
+import { TONES } from './tex.ts';
 import { INK3 } from './Triangle.tsx';
 
 const TRACK = '#bcd9ff';
@@ -31,7 +32,9 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
   const tw = beside ? w * 0.52 : w;
   // The track's box in metres: a hill stands on the level its heights are measured from.
   const xs = track.outline.map((q) => q[0]);
-  const ys = [...track.outline.map((q) => q[1]), 0, ...(track.pivot ? [track.pivot[1]] : [])];
+  // A pendulum shown beside a longer one leaves room under its support for that length.
+  const room = 'swing' in el.path! ? el.path!.swing.room : undefined;
+  const ys = [...track.outline.map((q) => q[1]), 0, ...(track.pivot ? [track.pivot[1], ...(room ? [track.pivot[1] - room] : [])] : [])];
   const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
   // Room over the track for the body, its velocity arrow and the label over that.
   // Under a pendulum, room for the velocity arrow and the speed under its bob.
@@ -42,13 +45,14 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
   const X = (m: number) => tw / 2 + (m - (x0 + x1) / 2) * S;
   const Y = (m: number) => foot - (m - y0) * S;
   // The note of a phase sits over the track, or over the bars when they are beside it.
-  const noteX = beside ? tw + 150 : w / 2;
+  // In a narrow picture it moves left to clear the clock.
+  const noteX = Math.min(beside ? tw + 150 : w / 2, clock > 0 ? w - 302 : w);
   const out: ReactElement[] = [];
 
   const label = el.lanes?.[0]?.label;
   if (label)
     out.push(
-      <text key="label" x={0} y={14} fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+      <text key="label" x={0} y={14} fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: labelCase(label) }}>
         {label}
       </text>,
     );
@@ -128,6 +132,45 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
       </g>,
     );
 
+    // The length of a pendulum, beside the middle of its string.
+    const long = part('length');
+    if (long > 0 && track.pivot && 'swing' in el.path!) {
+      const [px, py] = [X(track.pivot[0]), Y(track.pivot[1])];
+      out.push(
+        <Text key={`len-${b.id}`} x={(px + cx) / 2 + 16} y={(py + cy) / 2} anchor="start" size={20} color={INK2} opacity={long}>
+          {`L = ${Math.round(el.path!.swing.length * 100) / 100} m`}
+        </Text>,
+      );
+    }
+
+    // What pulls a pendulum back: the weight of its bob points straight down, and the part of it
+    // along the swing (m × g × the sine of the angle) points along the arc, towards the lowest point.
+    const restoring = part('restoring');
+    if (restoring > 0 && track.pivot) {
+      const fs = el.forceScale ?? 12;
+      const W = b.mass * el.path!.g;
+      const F = W * at.sin;
+      const outer = at.sin < 0 ? -1 : 1;
+      // The label of the restoring force fades as the force does, near the lowest point.
+      const seen = clamp01((Math.abs(F) * fs - 10) / 12);
+      out.push(
+        <g key={`pull-${b.id}`} opacity={restoring}>
+          <line x1={cx} y1={cy + W * fs} x2={cx - F * fs * at.cos} y2={cy + F * fs * at.sin} stroke={INK3} strokeWidth={1.5} strokeDasharray="4 6" opacity={seen} />
+          <Arrow x={cx} y={cy} len={-W * fs} axis="y" color={TONES.hyp} weight={7} />
+          <Text x={cx} y={cy + W * fs + 20} color={TONES.hyp} size={19}>
+            {`Weight ${live(W)} N`}
+          </Text>
+          <Arrow x={cx} y={cy} len={-F * fs} turn={tilt} color={NET} weight={7} />
+          <Text x={cx + outer * (r + 16)} y={cy - 12} anchor={outer < 0 ? 'end' : 'start'} color={NET} size={19} opacity={seen}>
+            Restoring force
+          </Text>
+          <Text x={cx + outer * (r + 16)} y={cy + 12} anchor={outer < 0 ? 'end' : 'start'} color={NET} size={19} opacity={seen}>
+            {`${live(Math.abs(F))} N`}
+          </Text>
+        </g>,
+      );
+    }
+
     // The velocity arrow rides over the body, along the track, with the speed over it; under a
     // pendulum's bob instead, clear of its string.
     if (vel > 0) {
@@ -160,6 +203,8 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
       ),
     );
   if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
+  const count = part('count');
+  if (count > 0) out.push(<Count key="count" n={oscillations(state, el.bodies[0].id)} opacity={count} under={w} word={track.pivot ? 'Swings' : undefined} />);
   if (state.note)
     out.push(
       <g key="note">

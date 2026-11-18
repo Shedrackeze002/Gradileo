@@ -6,9 +6,9 @@
  */
 import type { ReactElement } from 'react';
 import type { MotionBody, MotionEl } from '../script.ts';
-import { motionAt, netForce, SPRING, widthOf, type MotionState } from '../motion.ts';
+import { amplitudeOf, displacementOf, motionAt, netForce, oscillations, SPRING, widthOf, type MotionState } from '../motion.ts';
 import { easeOut, ownPart, type ElState } from '../timeline.ts';
-import { Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
+import { Count, labelCase, offset, offsetStep, Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
 import { ForceGraph } from './ForceGraph.tsx';
 import { PathView } from './MotionPath.tsx';
 import { TONES } from './tex.ts';
@@ -52,14 +52,18 @@ function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionS
   const [gx0, gy0, gx1, gy1] = box;
   const what = el.graph.y ?? 'velocity';
   const far = what !== 'velocity';
-  const series = what === 'distance' ? state.path : what === 'position' ? state.place : state.trace;
+  const swing = what === 'displacement';
+  const unit = swing && el.cm ? 100 : 1;
+  const series: MotionState['trace'] =
+    what === 'distance' ? state.path : what === 'position' ? state.place : swing ? Object.fromEntries(Object.entries(state.place).map(([id, pts]) => [id, pts.map(([t, x]): [number, number] => [t, displacementOf(el, x) * unit])])) : state.trace;
   const { seconds, max } = el.graph;
   const min = Math.min(0, el.graph.min ?? 0);
   const gx = (t: number) => gx0 + (Math.min(t, seconds) / seconds) * (gx1 - gx0);
   const gy = (v: number) => gy1 - ((Math.max(min, Math.min(v, max)) - min) / (max - min)) * (gy1 - gy0);
   const range = max - min;
-  const vStep = far || range > 12 ? axisStep(range) : range > 6 ? 2 : 1;
-  const tStep = seconds > 12 ? axisStep(seconds) : 1;
+  // A displacement may be a few hundredths of a metre, and an oscillation takes a second or less.
+  const vStep = swing ? ([0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20].find((n) => range / n <= 6) ?? 50) : far || range > 12 ? axisStep(range) : range > 6 ? 2 : 1;
+  const tStep = seconds > 12 ? axisStep(seconds) : swing && seconds <= 1.5 ? 0.25 : swing && seconds <= 4 ? 0.5 : 1;
   const values: number[] = [];
   for (let v = Math.ceil(min / vStep - 1e-9) * vStep; v <= max + 1e-9; v += vStep) values.push(Math.round(v * 1e6) / 1e6 + 0);
   return (
@@ -73,7 +77,7 @@ function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionS
           </text>
         </g>
       ))}
-      {Array.from({ length: Math.floor(seconds / tStep) + 1 }, (_, i) => i * tStep).map((t) => (
+      {Array.from({ length: Math.floor(seconds / tStep + 1e-9) + 1 }, (_, i) => Math.round(i * tStep * 100) / 100).map((t) => (
         <g key={`gt${t}`}>
           <line x1={gx(t)} y1={gy1} x2={gx(t)} y2={gy1 + 6} stroke={INK3} strokeWidth={1.5} />
           <text x={gx(t)} y={gy1 + 20} fill={INK3} fontSize={15} textAnchor="middle" style={{ fontFamily: FONT }}>
@@ -86,7 +90,7 @@ function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionS
       <line x1={gx0} y1={gy(0)} x2={gx1 + 8} y2={gy(0)} stroke={INK2} strokeWidth={2} />
       {min < 0 && <line x1={gx0} y1={gy1} x2={gx1} y2={gy1} stroke={INK3} strokeWidth={1} opacity={0.28} />}
       <text x={gx0 - 46} y={(gy0 + gy1) / 2} fill={far ? INK : VELOCITY} fontSize={16} fontWeight={600} textAnchor="middle" transform={`rotate(-90 ${gx0 - 46} ${(gy0 + gy1) / 2})`} style={{ fontFamily: FONT }}>
-        {what === 'distance' ? 'distance (m)' : what === 'position' ? 'position (m)' : el.speedWord ? 'speed (m/s)' : 'velocity (m/s)'}
+        {what === 'distance' ? 'distance (m)' : what === 'position' ? 'position (m)' : swing ? `displacement (${el.cm ? 'cm' : 'm'})` : el.speedWord ? 'speed (m/s)' : 'velocity (m/s)'}
       </text>
       <text x={(gx0 + gx1) / 2} y={gy1 + 40} fill={INK2} fontSize={16} fontWeight={600} textAnchor="middle" style={{ fontFamily: FONT }}>
         time (s)
@@ -145,8 +149,11 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   const Y = (m: number) => (up ? ground - (m - el.span[0]) * S : top + 2 * BIG + (m - el.span[0]) * S);
   const R = (b: MotionBody) => Math.max(24, Math.min(BIG, (widthOf(b) * S) / 2));
   // The note of a phase sits between the columns, or over the graph when there is one; in a narrow
-  // picture it moves left to clear the clock.
-  const noteX = Math.min(beside ? w * 0.5 + 150 : w / 2, clock > 0 ? w - 302 : w);
+  // picture it moves left to clear the clock. A narrow picture of one column has its support in
+  // the way there, so the note goes under the clock (and under the count of the oscillations).
+  const tucked = !beside && lanes.length === 1 && clock > 0 && w - 302 < w / 2;
+  const noteX = tucked ? w - 120 : Math.min(beside ? w * 0.5 + 150 : w / 2, clock > 0 ? w - 302 : w);
+  const noteY = tucked ? (part('count') > 0 ? 92 : 46) : 0;
   const out: ReactElement[] = [];
 
   lanes.forEach((lane, li) => {
@@ -158,12 +165,31 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
         <line x1={rx - 7} y1={ground} x2={x0 + cw - 14} y2={ground} stroke="#bcd9ff" strokeWidth={3} strokeLinecap="round" />
         <line x1={rx} y1={ground - (el.span[1] - el.span[0]) * S} x2={rx} y2={ground} stroke={INK3} strokeWidth={1.5} opacity={0.7} />
         {lane.label && (
-          <text x={x0 + cw / 2} y={14} textAnchor="middle" fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <text x={x0 + cw / 2} y={14} textAnchor="middle" fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: labelCase(lane.label) }}>
             {lane.label}
           </text>
         )}
       </g>,
     );
+    // An oscillation is read from its equilibrium position: the ruler counts up and down from there.
+    if (el.equilibrium !== undefined) {
+      const u = offsetStep(S, 30);
+      for (let i = Math.ceil((el.span[0] - el.equilibrium) / u - 1e-9); el.equilibrium + i * u <= el.span[1] + 1e-9; i++) {
+        const y = Y(el.equilibrium + i * u);
+        out.push(<line key={`tick${li}-${i}`} x1={rx - 7} y1={y} x2={rx} y2={y} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
+        out.push(
+          <text key={`num${li}-${i}`} x={rx - 12} y={y} fill={INK3} fontSize={15} textAnchor="end" dominantBaseline="central" style={{ fontFamily: FONT }}>
+            {i === 0 ? '0' : `${i < 0 ? '+' : '−'}${Math.round(Math.abs(i) * u * (el.cm ? 100 : 1) * 100) / 100}`}
+          </text>,
+        );
+      }
+      out.push(
+        <text key={`unit${li}`} x={rx - 12} y={Y(el.span[0]) - 22} fill={INK3} fontSize={15} textAnchor="end" style={{ fontFamily: FONT }}>
+          {el.cm ? 'cm' : 'm'}
+        </text>,
+      );
+      return;
+    }
     // A drop of two metres or less (a mass hung from a spring) is marked in parts of a metre.
     const every = [...(el.span[1] - el.span[0] <= 2 ? [0.05, 0.1, 0.2] : []), 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500].find((n) => n * S >= 34) ?? 1000;
     for (let i = Math.ceil(el.span[0] / every - 1e-9); i * every <= el.span[1] + 1e-9; i++) {
@@ -325,6 +351,53 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
     );
   }
 
+  // An oscillation: the two extremes of the motion, and the displacement from the equilibrium
+  // position to where the foot of the body is now (upwards is positive).
+  const swinger = el.equilibrium !== undefined ? (sprung ?? el.bodies[0]) : undefined;
+  if (swinger && el.equilibrium !== undefined) {
+    const zero = el.equilibrium;
+    const cx = cw * (swinger.lane ?? 0) + cw / 2;
+    const r = R(swinger);
+    const x0 = cw * (swinger.lane ?? 0) + 52;
+    const amplitude = part('amplitude');
+    const displacement = part('displacement');
+    if (amplitude > 0) {
+      const A = amplitudeOf(el, state, swinger.id);
+      const ax = cx + r + 34;
+      out.push(
+        <g key="amplitude" opacity={amplitude}>
+          <line x1={x0} y1={Y(zero)} x2={ax + 14} y2={Y(zero)} stroke={INK2} strokeWidth={2} strokeDasharray="6 6" opacity={0.85} />
+          <Text x={x0 + 4} y={Y(zero) - 14} anchor="start" color={INK2} size={17}>
+            equilibrium
+          </Text>
+          {A * S >= 6 &&
+            [-1, 1].map((k) => <line key={k} x1={x0} y1={Y(zero + k * A)} x2={ax + 14} y2={Y(zero + k * A)} stroke={DISPLACEMENT} strokeWidth={2} strokeDasharray="3 7" opacity={0.75} />)}
+          {A * S >= 6 && <Arrow x={ax} y={Y(zero)} len={A * S} axis="y" color={DISPLACEMENT} weight={5} />}
+          {A * S >= 6 && (
+            <Text x={ax + 14} y={Y(zero - A / 2)} anchor="start" color={DISPLACEMENT} size={19}>
+              {`A = ${offset(A, el.cm, false)}`}
+            </Text>
+          )}
+        </g>,
+      );
+    }
+    if (displacement > 0) {
+      const here = state.bodies[swinger.id].x;
+      const [from, to] = [Y(zero), Y(here)];
+      const ax = cx - r - 30;
+      out.push(
+        <g key="displacement" opacity={displacement}>
+          {Math.abs(to - from) >= 2 && <Arrow x={ax} y={from} len={from - to} axis="y" color={DISPLACEMENT} weight={6} />}
+          <Text x={ax - 16} y={(from + to) / 2} anchor="end" color={DISPLACEMENT}>
+            {`x = ${offset(displacementOf(el, here), el.cm)}`}
+          </Text>
+        </g>,
+      );
+    }
+  }
+  const count = part('count');
+  if (count > 0) out.push(<Count key="count" n={oscillations(state, (sprung ?? el.bodies[0]).id)} opacity={count} under={beside ? w * 0.5 : w} />);
+
   if (graph > 0 && el.graph) out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * 0.5 + 100, 88, w - 34, h - 78]} tone={tone} />);
   // Energy bars take the right half when there is no graph, level with the middle of the fall.
   else if (el.energy && (energy > 0 || total > 0)) {
@@ -335,8 +408,8 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
   if (state.note)
     out.push(
       <g key="note">
-        <rect x={noteX - noteW(state.note) / 2} y={0} width={noteW(state.note)} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
-        <Text x={noteX} y={19.5} size={19} color="#fff">
+        <rect x={noteX - noteW(state.note) / 2} y={noteY} width={noteW(state.note)} height={38} rx={19} fill="rgb(167 139 250 / 0.2)" stroke="rgb(167 139 250 / 0.6)" />
+        <Text x={noteX} y={noteY + 19.5} size={19} color="#fff">
           {state.note}
         </Text>
       </g>,
@@ -432,12 +505,27 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
             <line key={i} x1={PAD - 8 + i * 11} y1={g + 11} x2={PAD - 2 + i * 11} y2={g + 2} stroke="#c9a08c" strokeWidth={1.6} opacity={0.75} />
           ))}
         {lane.label && (
-          <text x={lane.labelSide === 'right' ? w - PAD + 10 : PAD - 10} y={top + laneH * li + 14} textAnchor={lane.labelSide === 'right' ? 'end' : 'start'} fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <text x={lane.labelSide === 'right' ? w - PAD + 10 : PAD - 10} y={top + laneH * li + 14} textAnchor={lane.labelSide === 'right' ? 'end' : 'start'} fill={INK3} fontSize={18} fontWeight={600} style={{ fontFamily: FONT, letterSpacing: '0.08em', textTransform: labelCase(lane.label) }}>
             {lane.label}
           </text>
         )}
       </g>,
     );
+    // An oscillation is read from its equilibrium position: the ruler counts both ways from there.
+    if (el.equilibrium !== undefined && !el.plain) {
+      const u = offsetStep(S, 58);
+      const last = Math.floor((el.span[1] - el.equilibrium) / u + 1e-9);
+      for (let i = Math.ceil((el.span[0] - el.equilibrium) / u - 1e-9); i <= last; i++) {
+        const x = X(el.equilibrium + i * u);
+        out.push(<line key={`tick${li}-${i}`} x1={x} y1={g + (rough ? 12 : 9)} x2={x} y2={g + 22} stroke={INK3} strokeWidth={1.5} opacity={0.7} />);
+        out.push(
+          <text key={`num${li}-${i}`} x={x} y={g + 36} fill={INK3} fontSize={16} textAnchor="middle" style={{ fontFamily: FONT }}>
+            {`${i === 0 ? '0' : `${i > 0 ? '+' : '−'}${Math.round(Math.abs(i) * u * (el.cm ? 100 : 1) * 100) / 100}`}${i === last ? (el.cm ? ' cm' : ' m') : ''}`}
+          </text>,
+        );
+      }
+      return;
+    }
     // A track of two metres or less (a spring on a bench) is marked in tenths of a metre.
     const tick = el.span[1] - el.span[0] <= 2 ? 0.1 : 1;
     const gap = S * tick;
@@ -698,7 +786,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     for (const b of el.bodies) {
       const g = ground(b.lane ?? 0);
       const here = state.bodies[b.id].x;
-      const from = state.turns[b.id][0];
+      const from = el.equilibrium ?? state.turns[b.id][0];
       if (distance > 0) {
         const stops = [...state.turns[b.id], here];
         stops.slice(1).forEach((to, i) => {
@@ -723,7 +811,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
             <line x1={X(from)} y1={y - 9} x2={X(from)} y2={y + 9} stroke={DISPLACEMENT} strokeWidth={2.5} />
             <Arrow x={X(from)} y={y} len={len} color={DISPLACEMENT} weight={7} />
             <Text x={room ? right + 16 : Math.min(X(from), X(here)) - 16} y={y} anchor={room ? 'start' : 'end'} color={DISPLACEMENT}>
-              {`displacement = ${signed(here - from)} m`}
+              {el.equilibrium !== undefined ? `x = ${offset(here - from, el.cm)}` : `displacement = ${signed(here - from)} m`}
             </Text>
           </g>,
         );
@@ -752,6 +840,39 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
       </g>,
     );
   }
+
+  // An oscillation: the equilibrium position and the two extremes of the motion, marked through
+  // the middle of the body, with the amplitude between them under the ruler.
+  const amplitude = part('amplitude');
+  const swinger = el.equilibrium !== undefined ? (sprung ?? el.bodies[0]) : undefined;
+  if (swinger && el.equilibrium !== undefined && amplitude > 0) {
+    const zero = el.equilibrium;
+    const g = ground(swinger.lane ?? 0);
+    const A = amplitudeOf(el, state, swinger.id);
+    const [y0, y1] = [g - BLOCK_H * 1.25, g + 50];
+    const here = X(state.bodies[swinger.id].x);
+    out.push(
+      <g key="amplitude" opacity={amplitude}>
+        <line x1={X(zero)} y1={y0 + 14} x2={X(zero)} y2={y1 + 22} stroke={INK2} strokeWidth={2} strokeDasharray="6 6" opacity={0.85} />
+        {/* Its name sits under the ruler, clear of the velocity and the acceleration written over the body. */}
+        <Text x={X(zero) - 12} y={y1 + 12} anchor="end" color={INK2} size={18}>
+          equilibrium
+        </Text>
+        {/* The line at the far extreme stops at the track when it would run through the word "equilibrium". */}
+        {A * S >= 6 && [-1, 1].map((k) => <line key={k} x1={X(zero + k * A)} y1={y0 + 14} x2={X(zero + k * A)} y2={k < 0 && A * S < 130 ? g + 10 : y1 + 22} stroke={DISPLACEMENT} strokeWidth={2} strokeDasharray="3 7" opacity={0.75} />)}
+        {A * S >= 6 && <Arrow x={X(zero)} y={y1 + 12} len={A * S} color={DISPLACEMENT} weight={5} />}
+        {A * S >= 6 && (
+          <Text x={X(zero + A) + 14} y={y1 + 12} anchor="start" color={DISPLACEMENT} size={19}>
+            {`A = ${offset(A, el.cm, false)}`}
+          </Text>
+        )}
+        {/* The point of the body that is followed: its middle. */}
+        <path d={`M ${here} ${g + 3} l -7 11 h 14 z`} fill={DISPLACEMENT} />
+      </g>,
+    );
+  }
+  const count = part('count');
+  if (count > 0) out.push(<Count key="count" n={oscillations(state, (sprung ?? el.bodies[0]).id)} opacity={count} />);
 
   // A collision: a flash where the bodies touch.
   if (state.contact && state.contact.age < 0.7) {

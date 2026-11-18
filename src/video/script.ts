@@ -300,6 +300,8 @@ export interface MotionSpring {
   loose?: boolean;
   /** Decimal places of the extension that is written under the track (2 by default). */
   decimals?: number;
+  /** Its force acts, but no arrow is drawn for it (a video that describes an oscillation before its forces are taught). */
+  hidden?: boolean;
 }
 
 /** A stretch of a clip during which the same forces act. */
@@ -329,7 +331,7 @@ export interface MotionClip {
 }
 
 /** What a motion element can show over its bodies; each is a part ("sim.velocity"). */
-export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height', 'extension'] as const;
+export const MOTION_PARTS = ['velocity', 'readout', 'net', 'bars', 'total', 'clock', 'strobe', 'graph', 'distance', 'displacement', 'energy', 'height', 'extension', 'amplitude', 'count', 'restoring', 'length'] as const;
 
 /**
  * An energy bar of a motion element: the work done on the body by the forces pushing or lifting
@@ -382,9 +384,20 @@ export interface MotionEl {
    * not used; give 0), the area under the line fills in as the body moves, and the work done so
    * far is written over it (`area` renames it: "Energy stored").
    */
-  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'force'; metres?: number; force?: string; area?: string };
+  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'displacement' | 'force'; metres?: number; force?: string; area?: string };
   /** A spring between the wall at the left end of a single straight track and one of the bodies. */
   spring?: MotionSpring;
+  /**
+   * For an oscillation on a single straight track or over a single drop: where the body rests, in
+   * metres along the track. Displacement is then measured from here and not from where the body
+   * started (over a drop, upwards is positive), the ruler is numbered from here, the part
+   * `displacement` is an arrow from here to the body, `amplitude` marks the two extremes of the
+   * motion, and `graph: { y: 'displacement' }` traces the displacement against time. The part
+   * `count` (also for a pendulum) counts the complete oscillations of a body let go from rest.
+   */
+  equilibrium?: number;
+  /** Write the displacements of an oscillation in centimetres. */
+  cm?: boolean;
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
@@ -405,7 +418,10 @@ export interface MotionEl {
    * A curved track instead of a straight one: a hill through given points, or the arc of a
    * pendulum. A body's `x` is then its distance along the track in metres (from the left end of a
    * hill, or from the lowest point of a pendulum's swing), and gravity pulls it along the slope.
-   * One lane; the parts are `velocity`, `energy`, `total`, `height` and `clock`.
+   * One lane; the parts are `velocity`, `energy`, `total`, `height`, `clock` and `count` (the
+   * complete swings so far), and for a pendulum `length` (the length of its string, written beside
+   * it) and `restoring` (the weight of the bob, and the part of it along the swing that pulls the
+   * bob back: `forceScale` is the pixels to a newton).
    */
   path?: MotionPath;
   /**
@@ -443,8 +459,62 @@ export interface WaveLane {
   speed: number;
   /** The wave already fills the strip when it first appears; otherwise it starts at the source and runs in. */
   full?: boolean;
-  /** The wave bounces back from the right end of the strip (a wall, a cliff), turned over, and the two add up. */
-  reflect?: boolean;
+  /**
+   * The wave bounces back from the right end of the strip, and the two add up: `true` for a fixed
+   * end (a wall, a cliff), which turns the wave over, and `'free'` for a free end (a ring that
+   * slides on a pole), which sends it back the same way up.
+   */
+  reflect?: boolean | 'free';
+  /**
+   * Single pulses, instead of a steady wave or as well as one. A lane of pulses alone has a
+   * frequency of 0, and its `amplitude` is the height of its tallest pulse. Pulses that meet add
+   * up, and pass through each other.
+   */
+  pulses?: WavePulse[];
+  /**
+   * Another medium from `from` metres on (a heavier rope tied on), where the wave travels at this
+   * speed: the frequency stays the same, and the wavelength changes with the speed. A pulse is
+   * partly reflected at the join (turned over when the second medium is the slower one) and
+   * partly sent on. A steady wave is drawn without its reflected part, so that its wavelength can
+   * be read on each side. Transverse lanes only.
+   */
+  medium?: { from: number; speed: number };
+  /**
+   * A standing wave instead of a travelling one. On a transverse lane, a string fixed at both ends
+   * with this many `loops`. On a longitudinal lane, the air in a tube that is closed at the left
+   * end and open at the right, holding this many `quarters` of a wavelength (1, 3, 5, …).
+   * `length` is the length of the string or the air column in metres, from the left end (the
+   * whole strip otherwise). The lane's `frequency` must be the one that fits: loops × speed ÷ 2L,
+   * or quarters × speed ÷ 4L.
+   */
+  standing?: {
+    loops?: number;
+    quarters?: number;
+    length?: number;
+    /**
+     * For an air column: how far beyond the open end of the tube the antinode sits, in metres (0
+     * otherwise). The standing wave is `length + beyond` long, so a real tube resonates when it
+     * is a little shorter than a quarter of a wavelength.
+     */
+    beyond?: number;
+  };
+  tone?: Tone;
+}
+
+/** A single pulse on a lane of a `wave` element. */
+export interface WavePulse {
+  /** How high its middle is, in the element's amplitude unit: negative for a trough. */
+  height: number;
+  /** How long it is, in metres (a tenth of the strip otherwise). */
+  width?: number;
+  /**
+   * When it starts to leave its end, in seconds of the wave's own time (0 otherwise). It may be
+   * as early as minus half its length ÷ the speed, so that its middle leaves as the clock starts:
+   * the `front` marker and the clock then give the distance and the time of an echo exactly.
+   */
+  at?: number;
+  /** `'right'`: it comes in from the right end and travels left. From the left end otherwise. */
+  from?: 'left' | 'right';
   tone?: Tone;
 }
 
@@ -467,7 +537,7 @@ export interface WaveClip {
 }
 
 /** What a wave element can show over its waves; each is a part ("w.wavelength"). */
-export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock'] as const;
+export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'speed', 'frequency', 'front', 'labels', 'clock', 'pulses', 'sum', 'heights', 'pull', 'motion', 'nodes', 'loop', 'length'] as const;
 
 /**
  * Travelling waves, for the physics videos: each lane is a strip with a source at its left end,
@@ -479,7 +549,15 @@ export const WAVE_PARTS = ['particle', 'amplitude', 'wavelength', 'count', 'spee
  * as it stands), `count` (a post at the mark, with the complete waves that have passed it),
  * `speed` (an arrow with the wave's speed), `frequency` (the source's frequency, under it), `front`
  * (a marker on the front of a wave that started at the source, with how far it has travelled), `labels` (the names of a longitudinal wave's
- * compressions and rarefactions, or a transverse wave's crests and troughs) and `clock`.
+ * compressions and rarefactions, or a transverse wave's crests and troughs) and `clock`. Where
+ * pulses meet: `pulses` (the outline of each pulse on its own, under the rope that carries their
+ * sum), `sum` (the displacement of the rope where it is largest) and `heights` (the height of each
+ * hump on the rope, with its sign, for what a join or an end has made of a pulse). At a fixed end,
+ * `pull` shows the pair of forces there: the rope's pull on the wall, and the wall's on the rope;
+ * `motion` puts an arrow on the points of a rope for how fast each is moving, up or down. On a standing wave, or a
+ * steady wave that meets its own reflection: `nodes` (the points that never move, and the points
+ * half way between them that move the most), `loop` (the length of one loop, node to node) and
+ * `length` (the length of a standing wave's string, in metres, or of its tube, in centimetres).
  * Emphasising a lane's id makes it glow.
  */
 export interface WaveEl {
@@ -499,6 +577,97 @@ export interface WaveEl {
   ruler?: boolean;
   /** `false` leaves the sizes off the amplitude and the wavelength, for a picture that is not to scale. */
   values?: boolean;
+  /** A clock in another unit: its name, and how many seconds one of it is ({ unit: 'ms', seconds: 0.001 }). */
+  clock?: { unit: string; seconds: number };
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+/** A source of circular waves in a `ripples` element. */
+export interface RippleSource {
+  id: string;
+  /** What it is called in the picture ("Speaker A"). */
+  label?: string;
+  /** Where it is at time 0, in metres: [x, y]. */
+  at: [number, number];
+  /** Waves sent out each second. */
+  frequency: number;
+  /**
+   * Its velocity in metres per second, [vx, vy]: the crests ahead of a moving source are crowded
+   * together. It must be slower than the waves when the element has listeners; without them a
+   * faster source can be drawn, with its crests overlapping along a shock wave behind it.
+   */
+  velocity?: [number, number];
+  /** Which side of it the label goes (above otherwise). */
+  side?: 'above' | 'below' | 'left' | 'right';
+  tone?: Tone;
+}
+
+/** Someone, or something, that receives the waves of a `ripples` element. */
+export interface RippleListener {
+  id: string;
+  label?: string;
+  /** Where it starts, in metres: [x, y]. */
+  at: [number, number];
+  /** Which side of it the label goes (above otherwise). */
+  side?: 'above' | 'below' | 'left' | 'right';
+}
+
+/** A stretch of a ripples clip. */
+export interface RipplePhase {
+  /** How long it lasts, in seconds of the waves' own time. */
+  dur: number;
+  /** Slow motion: seconds of video for each second of the waves (1 by default). */
+  slow?: number;
+  /** Listeners that walk to a new place during the phase, by id: [x, y] in metres. */
+  move?: Record<string, [number, number]>;
+  /** A short note shown over the picture while the phase plays ("Slow motion"). */
+  note?: string;
+}
+
+export interface RippleClip {
+  phases: RipplePhase[];
+  /** Start again from time 0, with the listeners back where they began. */
+  reset?: boolean;
+}
+
+export const RIPPLES_PARTS = ['paths', 'difference', 'traces', 'loudness', 'pattern', 'wavelength', 'centres', 'heard', 'velocity', 'count', 'clock'] as const;
+
+/**
+ * Waves seen from above, spreading in circles from their sources (src/video/ripples.ts): each
+ * crest is a circle that grows at the speed of the waves, centred where its source was when it
+ * left. Two sources in step show interference, and a source that moves shows the Doppler effect.
+ * The waves run only while a clip plays, and the next clip carries on from where the last one
+ * stopped. Showing the element shows the crests, the sources and the listeners; showing a part
+ * adds it: `paths` (a line from each source to the first listener, with its length), `difference`
+ * (the path difference there, in metres and in wavelengths), `traces` (the wave that arrives from
+ * each source and their sum, against time), `loudness` (how large the sum is, as a bar, with
+ * "Loud" or "Quiet"), `pattern` (the whole picture shaded by how large the waves are when they
+ * are added: bright where they arrive in step), `wavelength` (measured between two crests: ahead
+ * of a moving source and behind it), `centres` (a dot where the source was when it sent each
+ * crest), `heard` (the frequency each listener receives from a source that moves), `velocity`
+ * (an arrow on a moving source, with its speed), `count` (the crests each listener has received
+ * since the start) and `clock`. When the picture leaves 380 pixels or more beside it and there
+ * is a listener, the picture sits on the left and `paths`, `difference`, `traces` and `loudness`
+ * are written in a panel on the right. Emphasising a source's id makes its crests glow.
+ */
+export interface RipplesEl {
+  kind: 'ripples';
+  id: string;
+  /** The region shown, in metres: [left, bottom, right, top]. */
+  view: [number, number, number, number];
+  /** The speed of the waves, in metres per second. */
+  speed: number;
+  sources: RippleSource[];
+  listeners?: RippleListener[];
+  /** The waves have been spreading for ever, so they fill the picture from the start (otherwise the sources start at time 0). */
+  full?: boolean;
+  /** Draw only one crest in every so many, where the wavelength is too short for the picture. */
+  every?: number;
+  /** A clock in another unit: its name, and how many seconds one of it is ({ unit: 'ms', seconds: 0.001 }). */
+  clock?: { unit: string; seconds: number };
+  clips: Record<string, RippleClip>;
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
   height?: number;
@@ -1583,7 +1752,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -1708,6 +1877,11 @@ export function checkMotion(e: MotionEl): string[] {
     if (e.graph.of.length !== 1) problems.push('a force-displacement graph is of one body.');
     if (e.path || e.vertical || (e.lanes?.length ?? 1) > 1) problems.push('a force-displacement graph goes over a single straight track.');
   } else if (e.graph && !(e.graph.seconds > 0)) problems.push('the graph needs the length of its time axis, in seconds.');
+  if (e.graph?.y === 'displacement' && e.equilibrium === undefined) problems.push('a displacement graph needs an equilibrium position to measure from.');
+  if (e.equilibrium !== undefined) {
+    if (e.path || e.vertical === 'up' || (e.lanes?.length ?? 1) > 1) problems.push('an equilibrium position is for a single straight track, or a single drop.');
+    if (!(e.equilibrium > e.span[0] && e.equilibrium < e.span[1])) problems.push('the equilibrium position must be on the track.');
+  }
   if (e.spring) {
     if (!ids.has(e.spring.on)) problems.push(`the spring is tied to no body "${e.spring.on}".`);
     if (!(e.spring.k > 0)) problems.push('the spring needs a spring constant above zero.');
@@ -1985,6 +2159,48 @@ export function checkRays(e: RaysEl): string[] {
   return problems;
 }
 
+/** What is wrong with a ripples element, if anything. */
+export function checkRipples(e: RipplesEl): string[] {
+  const problems: string[] = [];
+  const [x0, y0, x1, y1] = e.view;
+  if (!(x1 > x0) || !(y1 > y0)) problems.push('the view must run from left to right and from bottom to top.');
+  if (!(e.speed > 0)) problems.push('the waves need a speed above zero.');
+  if (!e.sources.length) problems.push('it has no sources.');
+  if (e.every !== undefined && !(Number.isInteger(e.every) && e.every >= 1)) problems.push('`every` must be a whole number, 1 or more.');
+  if (e.clock && !(e.clock.seconds > 0)) problems.push('the clock needs a unit of more than zero seconds.');
+  const inside = (p: [number, number]) => p[0] >= x0 && p[0] <= x1 && p[1] >= y0 && p[1] <= y1;
+  const ids = new Set<string>();
+  const taken = (id: string, what: string) => {
+    if (ids.has(id)) problems.push(`the id "${id}" is used twice.`);
+    ids.add(id);
+    if ((RIPPLES_PARTS as readonly string[]).includes(id)) problems.push(`the ${what} id "${id}" is the name of a part.`);
+  };
+  for (const s of e.sources) {
+    taken(s.id, 'source');
+    if (!(s.frequency > 0)) problems.push(`source "${s.id}" needs a frequency above zero.`);
+    // A source that outruns its waves can be drawn (its crests overlap along a shock wave), but nothing can be worked out for a listener.
+    if (s.velocity && Math.hypot(...s.velocity) >= e.speed && e.listeners?.length) problems.push(`source "${s.id}" must move more slowly than the waves when there are listeners.`);
+  }
+  for (const l of e.listeners ?? []) {
+    taken(l.id, 'listener');
+    if (!inside(l.at)) problems.push(`listener "${l.id}" is outside the view.`);
+  }
+  const listeners = new Set((e.listeners ?? []).map((l) => l.id));
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase that lasts no time.`);
+      if (ph.slow !== undefined && !(ph.slow > 0)) problems.push(`clip "${name}" has a phase with a slow motion of zero or less.`);
+      for (const [id, to] of Object.entries(ph.move ?? {})) {
+        if (!listeners.has(id)) problems.push(`clip "${name}" moves a listener "${id}" that is not there.`);
+        else if (!inside(to)) problems.push(`clip "${name}" moves listener "${id}" out of the view.`);
+      }
+    }
+  }
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  return problems;
+}
+
 /** Problems with a wave element: lanes that cannot run, clips that set no lane, a mark off the strip. */
 export function checkWave(e: WaveEl): string[] {
   const problems: string[] = [];
@@ -1997,6 +2213,31 @@ export function checkWave(e: WaveEl): string[] {
     if ((WAVE_PARTS as readonly string[]).includes(l.id)) problems.push(`the lane id "${l.id}" is the name of a part.`);
     if (!(l.speed > 0)) problems.push(`lane "${l.id}" needs a speed above zero.`);
     if (!(l.frequency >= 0) || !(l.amplitude >= 0)) problems.push(`lane "${l.id}" needs a frequency and an amplitude of zero or more.`);
+    for (const pulse of l.pulses ?? []) {
+      // A pulse may be half way out at time 0, so that its middle leaves the source as the clock starts.
+      const early = -(pulse.width ?? (e.span[1] - e.span[0]) / 10) / (2 * l.speed);
+      if (!(pulse.height !== 0) || (pulse.width !== undefined && !(pulse.width > 0)) || (pulse.at ?? 0) < early - 1e-9) problems.push(`lane "${l.id}" has a pulse with no height, no width or a middle that leaves before time zero.`);
+      if (pulse.from === 'right' && (l.reflect || l.medium)) problems.push(`lane "${l.id}": a pulse from the right needs a plain strip, with no reflecting end and no second medium.`);
+    }
+    if (l.medium) {
+      if (l.kind !== 'transverse') problems.push(`lane "${l.id}": a second medium is for a transverse wave.`);
+      if (!(l.medium.speed > 0) || !(l.medium.from > e.span[0] && l.medium.from < e.span[1])) problems.push(`lane "${l.id}": the second medium needs a speed above zero and a start on the strip.`);
+      if (l.reflect) problems.push(`lane "${l.id}": a lane with a second medium has no reflecting end.`);
+    }
+    if (l.standing) {
+      const { loops, quarters, beyond = 0 } = l.standing;
+      // The standing wave reaches a little beyond the open end of a tube.
+      const length = (l.standing.length ?? e.span[1] - e.span[0]) + beyond;
+      if (l.pulses || l.reflect || l.medium) problems.push(`lane "${l.id}": a standing wave has no pulses, reflecting end or second medium of its own.`);
+      if (!(length > 0 && length <= e.span[1] - e.span[0] + 1e-9)) problems.push(`lane "${l.id}": the standing wave's length must fit the strip.`);
+      if (beyond < 0 || (beyond > 0 && l.kind !== 'longitudinal')) problems.push(`lane "${l.id}": only an air column reaches beyond its open end, by zero or more.`);
+      const whole = (n: number | undefined) => n !== undefined && Number.isInteger(n) && n >= 1;
+      if (l.kind === 'transverse' ? !whole(loops) : !(whole(quarters) && quarters! % 2 === 1)) problems.push(`lane "${l.id}": a string needs a whole number of loops, and an air column an odd number of quarter wavelengths.`);
+      else {
+        const fits = l.kind === 'transverse' ? (loops! * l.speed) / (2 * length) : (quarters! * l.speed) / (4 * length);
+        if (Math.abs(l.frequency - fits) > 0.01 * fits) problems.push(`lane "${l.id}": the frequency that fits this standing wave is ${Math.round(fits * 100) / 100} Hz.`);
+      }
+    }
   }
   if (e.mark !== undefined && !(e.mark >= e.span[0] && e.mark <= e.span[1])) problems.push('the mark is off the strip.');
   for (const [name, clip] of Object.entries(e.clips)) {
@@ -2096,7 +2337,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | ScatterEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -2155,6 +2396,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...WAVE_PARTS, ...e.lanes.map((l) => l.id)]));
         motions.set(e.id, e);
         problems.push(...checkWave(e).map((p) => `Scene ${si + 1}: wave "${e.id}": ${p}`));
+      }
+      if (e.kind === 'ripples') {
+        diagrams.set(e.id, new Set<string>([...RIPPLES_PARTS, ...e.sources.map((src) => src.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkRipples(e).map((p) => `Scene ${si + 1}: ripples "${e.id}": ${p}`));
       }
       if (e.kind === 'particles') {
         diagrams.set(e.id, new Set<string>([...PARTICLE_PARTS, ...e.boxes.map((b) => b.id)]));

@@ -1,5 +1,5 @@
 /** One frame of an explainer video, drawn from the frame state; and the video's thumbnail. */
-import { BRAND, type AtomsEl, type MoleculesEl, type ScatterEl, type CircleEl, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type ForcesEl, type GravityEl, type MotionEl, type ParticlesEl, type RampEl, type RaysEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
+import { BRAND, type AtomsEl, type MoleculesEl, type ScatterEl, type CircleEl, type CircuitEl, type DiagramEl, type El, type Explainer, type FlightEl, type ForcesEl, type GravityEl, type MotionEl, type ParticlesEl, type RampEl, type RaysEl, type RipplesEl, type ScreenEl, type TriangleEl, type SimilarEl, type WaveEl } from '../script.ts';
 import { fastest, flightAt } from '../flight.ts';
 import { clipSeconds, type ElState, type FrameState } from '../timeline.ts';
 import { CircuitView } from './Circuit.tsx';
@@ -20,6 +20,7 @@ import { BulletsView, CalcView, CalloutView, MathView, QuoteView, TableView, Tex
 import { ScreenView } from './Screen.tsx';
 import { rich, TONES } from './tex.ts';
 import { SimilarView, TriangleView } from './Triangle.tsx';
+import { RipplesView } from './Ripples.tsx';
 import { WaveView } from './Wave.tsx';
 
 function Logo({ size = 30 }: { size?: number }) {
@@ -92,6 +93,8 @@ function ElView({ el, st, area, crowded, leftWidth }: { el: El; st: ElState | un
       return <RaysView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 520)} />;
     case 'wave':
       return <WaveView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
+    case 'ripples':
+      return <RipplesView el={el} st={st} w={area === 'main' ? BODY : fig.w} h={el.height ?? (crowded ? 380 : 540)} />;
     case 'calc':
       return <CalcView el={el} st={st} />;
     case 'try':
@@ -230,14 +233,22 @@ function tallHill(el: MotionEl): boolean {
   return across / Math.max(up, 1e-6) < 3;
 }
 
+/** Whether a motion is a pendulum with a narrow swing, which is taller than it is wide: it sits beside the title too. */
+const tallSwing = (el: MotionEl) => Boolean(el.path && 'swing' in el.path && 2 * Math.sin((el.path.swing.angle * Math.PI) / 180) < 1.5);
+
+/** Whether a motion is a mass hung on a spring, with no graph beside it: it is tall, so it sits beside the title too. */
+const hungMass = (el: MotionEl) => Boolean(el.vertical) && el.equilibrium !== undefined && !el.graph;
+
 export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
-  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'molecules' || e.kind === 'scatter' || e.kind === 'wave' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'circle';
+  const isFigure = (e: El): e is TriangleEl | SimilarEl | DiagramEl | ScreenEl | MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl => e.kind === 'triangle' || e.kind === 'similar' || e.kind === 'diagram' || e.kind === 'screen' || e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'molecules' || e.kind === 'scatter' || e.kind === 'wave' || e.kind === 'ripples' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'circle';
   const figures = x.scenes.flatMap((s) => [...(s.left ?? []), ...(s.main ?? [])]).filter(isFigure);
-  const fig = x.thumbnail === false ? undefined : (x.thumbnail && figures.find((e) => e.id === x.thumbnail)) || figures[0];
+  // A figure that is named can be in the right-hand column of a scene; the first figure, which is used when none is named, is not looked for there.
+  const named = x.thumbnail ? [...figures, ...x.scenes.flatMap((s) => s.right ?? []).filter(isFigure)].find((e) => e.id === x.thumbnail) : undefined;
+  const fig = x.thumbnail === false ? undefined : named || figures[0];
   const title = x.thumbnailTitle ?? x.title;
   // A wide, flat diagram (a ruler, a pair of lengths) goes under the title, across the thumbnail;
   // anything else sits to the right of it.
-  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || (fig?.kind === 'gravity' && flatSpace(fig));
+  const wide = (fig?.kind === 'diagram' && aspect(fig) > 2.4) || (fig?.kind === 'motion' && !tallHill(fig) && !hungMass(fig) && !tallSwing(fig)) || fig?.kind === 'wave' || (fig?.kind === 'flight' && flatFlight(fig)) || (fig?.kind === 'gravity' && flatSpace(fig));
   // A long title takes a smaller size, so it stays clear of the figure.
   const size = fig ? (title.length > 22 ? 76 : 88) : 104;
   return (
@@ -246,17 +257,26 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
         <div style={{ position: 'absolute', left: fig.kind === 'flight' ? 330 : 60, top: fig.kind === 'motion' || fig.kind === 'wave' || fig.kind === 'flight' ? 300 : 330 }}>
           {fig.kind === 'motion' ? (
             // A motion is caught part way through its poster clip, with its forces and velocities drawn.
-            // A drop takes the full height and width, without its graph, strobe marks or phase notes.
+            // A drop takes the full height and width, without its graph, strobe marks or phase notes;
+            // an oscillation keeps the displacement graph it traces.
             <MotionView
-              el={{ ...fig, momentumMax: undefined, energy: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })), ...(fig.vertical ? { graph: undefined, clips: withoutNotes(fig.clips) } : {}) }}
-              st={{ ...FULL, parts: fig.vertical ? { velocity: 1 } : { velocity: 1, strobe: 1 } }}
+              el={{ ...fig, momentumMax: undefined, energy: undefined, lanes: fig.lanes?.map((l) => ({ surface: l.surface })), ...(fig.vertical ? { graph: fig.graph?.y === 'displacement' ? fig.graph : undefined, clips: withoutNotes(fig.clips) } : fig.equilibrium !== undefined ? { clips: withoutNotes(fig.clips) } : {}) }}
+              st={{ ...FULL, parts: fig.vertical ? (fig.graph?.y === 'displacement' ? { graph: 1 } : fig.equilibrium !== undefined ? { amplitude: 1 } : { velocity: 1 }) : fig.equilibrium !== undefined ? { velocity: 1, amplitude: 1 } : { velocity: 1, strobe: 1 } }}
               w={1160}
               h={fig.vertical ? 320 : Math.min(320, 150 + 130 * (fig.lanes?.length ?? 1))}
               plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
             />
           ) : fig.kind === 'wave' ? (
-            // Waves are caught part way through their poster clip, without the ruler or the notes.
-            <WaveView el={{ ...fig, ruler: false, lanes: fig.lanes.slice(0, 2), clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }} st={{ ...FULL, parts: {} }} w={1160} h={320} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
+            // Waves are caught part way through their poster clip, without the ruler or the notes, and
+            // with the nodes of a standing pattern marked. A wave carries on from one clip to the
+            // next, so the clips before the poster are played through first.
+            <WaveView
+              el={{ ...fig, ruler: false, lanes: fig.lanes.slice(0, 2), clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }}
+              st={{ ...FULL, parts: { nodes: 1 } }}
+              w={1160}
+              h={320}
+              plays={fig.poster ? [...Object.keys(fig.clips).slice(0, Object.keys(fig.clips).indexOf(fig.poster)).map((name): [string, number] => [name, clipSeconds(fig, name)]), [fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
+            />
           ) : fig.kind === 'flight' ? (
             <FlightThumb el={fig} w={890} h={330} />
           ) : fig.kind === 'gravity' ? (
@@ -308,8 +328,23 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
             <ForcesThumb el={fig} w={560} h={470} />
           ) : fig.kind === 'circle' ? (
             <CircleThumb el={fig} w={500} h={470} />
+          ) : fig.kind === 'ripples' ? (
+            // Ripples are caught part way through their poster clip (after the clips before it), with the paths to the listener and no notes.
+            <RipplesView
+              el={{ ...fig, clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }}
+              st={{ ...FULL, parts: { paths: 1, velocity: 1 } }}
+              w={500}
+              h={470}
+              plays={fig.poster ? [...Object.keys(fig.clips).slice(0, Object.keys(fig.clips).indexOf(fig.poster)).map((name): [string, number] => [name, clipSeconds(fig, name)]), [fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
+            />
           ) : fig.kind === 'gravity' ? (
             <GravityThumb el={fig} w={500} h={430} />
+          ) : fig.kind === 'motion' && tallSwing(fig) ? (
+            // A pendulum, part way through its poster clip, with its length and what pulls its bob back (or how fast the bob is moving).
+            <MotionView el={{ ...fig, energy: undefined, lanes: undefined, clips: withoutNotes(fig.clips) }} st={{ ...FULL, parts: fig.forceScale ? { length: 1, restoring: 1 } : { length: 1, velocity: 1 } }} w={500} h={470} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
+          ) : fig.kind === 'motion' && hungMass(fig) ? (
+            // A mass hung on a spring, part way through its poster clip, with its amplitude marked.
+            <MotionView el={{ ...fig, energy: undefined, lanes: undefined, clips: withoutNotes(fig.clips) }} st={{ ...FULL, parts: { amplitude: 1 } }} w={440} h={500} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />
           ) : fig.kind === 'motion' ? (
             // A tall hill, part way through its poster clip, with the speed and the height of its car.
             <MotionView el={{ ...fig, energy: undefined, clips: withoutNotes(fig.clips) }} st={{ ...FULL, parts: { velocity: 1, height: 1 } }} w={540} h={470} plays={fig.poster ? [[fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []} />

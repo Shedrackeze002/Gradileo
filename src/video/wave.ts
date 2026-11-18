@@ -6,8 +6,13 @@
  * ago. Everything drawn comes from that one rule: crests moving along, the wavelength (speed ÷
  * frequency), a change of frequency travelling in from the source, and each point of the strip
  * only moving about its own rest position.
+ *
+ * The same rule carries single pulses, a wave into a second medium (where it travels at another
+ * speed, so the same number of waves each second are shorter or longer), and a wave back from the
+ * far end of the strip. A standing wave is written down directly: every point of it moves in
+ * step, by an amount that depends on where it is.
  */
-import type { WaveEl, WaveLane } from './script.ts';
+import type { WaveEl, WaveLane, WavePulse } from './script.ts';
 
 /** A stretch of time during which a lane's source keeps one frequency and amplitude. */
 interface Stretch {
@@ -26,14 +31,28 @@ export interface LaneState {
   speed: number;
   /** The displacement at a place, in the lane's own units; 0 where the wave has not arrived. */
   at(x: number): number;
+  /** How fast the medium is moving at a place, in the lane's own units per second: up (or forwards) is positive. */
+  rate(x: number): number;
   /** Whether the wave has reached a place. */
   reached(x: number): boolean;
   /** Where the crests (or, in a longitudinal wave, the middles of the compressions) are, from left to right. */
   crests: number[];
   /** Where the troughs (or the middles of the rarefactions) are, from left to right. */
   troughs: number[];
-  /** How far the front of the wave has travelled from the source, in metres (past the end when the wave started full). */
+  /** How far the front of the wave (or the middle of its first pulse) has travelled from the source, in metres (past the end when the wave started full). */
   front: number;
+  /** Each pulse on its own: its displacement at a place, with what a join or the far end has sent back of it. */
+  pulses: Array<(x: number) => number>;
+  /** In a lane with a second medium: where it starts, and the wave's speed in it. */
+  join?: number;
+  speed2?: number;
+  /** The points of a standing pattern that never move, and the points between them that move the most, from left to right. */
+  nodes: number[];
+  antinodes: number[];
+  /** Where a standing wave's string or air column ends, in metres. */
+  end?: number;
+  /** Where the tube of an air column ends: at `end`, or a little before it when the antinode sits beyond the open end. */
+  mouth?: number;
 }
 
 export interface WaveState {
@@ -46,6 +65,8 @@ export interface WaveState {
 }
 
 const TAU = 2 * Math.PI;
+/** The step of time over which a point's speed is measured, in seconds. */
+const SOON = 1e-6;
 
 /** The source's phase at a time, from the stretches of its history. */
 function phaseAt(stretches: Stretch[], t: number): number {
@@ -60,8 +81,24 @@ function stretchAt(stretches: Stretch[], t: number): Stretch {
   return s;
 }
 
-/** The places in [from, to] where the wave's phase is `target` (mod a whole turn), from left to right. */
-function places(stretches: Stretch[], lane: WaveLane, x0: number, time: number, earliest: number, from: number, to: number, target: number): number[] {
+/** A single hump: 1 at its middle, falling smoothly to 0 half a width either side. */
+const hump = (d: number, width: number) => (Math.abs(d) >= width / 2 ? 0 : Math.cos((Math.PI * d) / width) ** 2);
+
+/** How long a pulse is, in metres: a tenth of the strip when the script does not say. */
+export const pulseWidth = (el: WaveEl, pulse: WavePulse) => pulse.width ?? (el.span[1] - el.span[0]) / 10;
+
+/** The length of a standing wave's string or air column, and the frequency that fits it. */
+export function standingOf(el: WaveEl, lane: WaveLane): { length: number; k: number; frequency: number } | undefined {
+  if (!lane.standing) return undefined;
+  // The standing wave in a tube reaches a little beyond its open end.
+  const length = (lane.standing.length ?? el.span[1] - el.span[0]) + (lane.standing.beyond ?? 0);
+  // A string has a node at each end; an air column has one at its closed end, and an antinode at the open one.
+  const halves = lane.kind === 'longitudinal' ? (lane.standing.quarters ?? 1) / 2 : (lane.standing.loops ?? 1);
+  return { length, k: (halves * Math.PI) / length, frequency: (halves * lane.speed) / (2 * length) };
+}
+
+/** The places in [from, to] where the wave's phase is `target` (mod a whole turn), from left to right; `reach` says where what was sent a time ago has got to. */
+function places(stretches: Stretch[], reach: (dt: number) => number, time: number, earliest: number, from: number, to: number, target: number): number[] {
   const out: number[] = [];
   stretches.forEach((s, i) => {
     // This stretch was sent out between t0 and the start of the next one (or now).
@@ -74,7 +111,7 @@ function places(stretches: Stretch[], lane: WaveLane, x0: number, time: number, 
     for (let n = first; n <= last; n++) {
       const t = s.t0 + (target + TAU * n - s.phase0) / (TAU * s.frequency);
       if (t < earliest - 1e-9) continue;
-      const x = x0 + lane.speed * (time - t);
+      const x = reach(time - t);
       if (x >= from - 1e-9 && x <= to + 1e-9) out.push(x);
     }
   });
@@ -115,8 +152,9 @@ export function waveAt(el: WaveEl, plays: Array<[clip: string, seconds: number]>
       }
       const run = Math.min(left, video);
       time += run / slow;
-      // The note of the phase that is playing; it goes when the clip has finished.
-      note = left < video ? ph.note : undefined;
+      // The note of the phase that is playing; it goes when the clip has finished (to within the
+      // thousandth of a second that the times of a video are kept to).
+      note = left < video - 0.002 ? ph.note : undefined;
       left -= video;
     }
   }
@@ -127,37 +165,98 @@ export function waveAt(el: WaveEl, plays: Array<[clip: string, seconds: number]>
     const list = stretches[lane.id];
     // A lane that starts full has been running for ever; otherwise nothing was sent before time 0.
     const earliest = lane.full ? Number.NEGATIVE_INFINITY : 0;
-    const sent = (x: number) => time - (x - x0) / lane.speed;
-    const now = list[list.length - 1];
     const span1 = el.span[1];
+    const now = list[list.length - 1];
+    const v1 = lane.speed;
+    // A second medium from the join on: the wave takes longer (or less long) to cross each metre of it.
+    const join = lane.medium?.from;
+    const v2 = lane.medium?.speed ?? v1;
+    const delay = (x: number) => (join !== undefined && x > join ? (join - x0) / v1 + (x - join) / v2 : (x - x0) / v1);
+    const reach = (dt: number) => (join !== undefined && x0 + v1 * dt > join ? join + v2 * (dt - (join - x0) / v1) : x0 + v1 * dt);
+    // What a join sends back of a pulse and what it sends on, as parts of the pulse's height: a
+    // slower medium ahead sends back a pulse turned over.
+    const back2 = (v2 - v1) / (v2 + v1);
+    const on2 = (2 * v2) / (v1 + v2);
+    // What the far end sends back: turned over at a fixed end, the same way up at a free one.
+    const turn = lane.reflect === 'free' ? 1 : lane.reflect ? -1 : 0;
     // Crests are looked for a wavelength past each end, so a mark between two of them has both.
-    const pad = now.frequency > 0 ? lane.speed / Math.min(...list.map((s) => s.frequency).filter((f) => f > 0)) : 0;
-    const back = lane.full ? time - (span1 + pad - x0) / lane.speed : 0;
+    const pad = now.frequency > 0 ? Math.max(v1, v2) / Math.min(...list.map((s) => s.frequency).filter((f) => f > 0)) : 0;
+    const back = lane.full ? time - delay(span1 + pad) : 0;
     // In a longitudinal wave the particles crowd together where the displacement is falling
     // through zero along the strip (those behind have moved forward, those ahead back): that is
     // where the source's phase is a whole number of turns. Half a turn on, they are spread out.
     const long = lane.kind === 'longitudinal';
+    // What the source's steady shaking sent at a time, and nothing from before it started.
+    const steady = (t: number) => (t < earliest ? 0 : stretchAt(list, t).amplitude * Math.sin(phaseAt(list, t)));
+    // What the source did at a time to send one pulse: the pulse starts to leave at its `at`, and its middle half a width later.
+    const send = (pulse: WavePulse) => (t: number) => pulse.height * hump(v1 * (t - (pulse.at ?? 0)) - pulseWidth(el, pulse) / 2, pulseWidth(el, pulse));
+    const standing = standingOf(el, lane);
+    // The shape of the strip at a time: when what is at each place was sent, each pulse on its own, and the displacement.
+    const shapeAt = (when: number) => {
+      const sent = (x: number) => when - delay(x);
+      // Something the source sent, at a place: what has come straight there, and (`echo`) what a
+      // join or the far end has sent back, which has travelled to it and back to this place.
+      const carried = (source: (t: number) => number, x: number, echo: boolean): number => {
+        if (join !== undefined) return x > join ? on2 * source(sent(x)) : source(sent(x)) + (echo ? back2 * source(when - (2 * join - x0 - x) / v1) : 0);
+        return source(sent(x)) + (echo && turn ? turn * source(when - (2 * span1 - x0 - x) / v1) : 0);
+      };
+      const pulses = (lane.pulses ?? []).map((pulse) =>
+        pulse.from === 'right'
+          ? // A pulse from the right end travels left, and runs off at the source.
+            (x: number) => pulse.height * hump(x - (span1 + pulseWidth(el, pulse) / 2 - v1 * (when - (pulse.at ?? 0))), pulseWidth(el, pulse))
+          : (x: number) => carried(send(pulse), x, true),
+      );
+      const at = (x: number): number => {
+        // Every point of a standing wave moves in step, by an amount set by where it is.
+        if (standing) return x > x0 + standing.length + 1e-9 ? 0 : now.amplitude * Math.sin(standing.k * (x - x0)) * Math.sin(TAU * standing.frequency * when);
+        // A steady wave that bounces off the right end comes back and adds to itself; past a join
+        // it is drawn without its reflected part.
+        return carried(steady, x, join === undefined) + pulses.reduce((sum, own) => sum + own(x), 0);
+      };
+      return { sent, pulses, at };
+    };
+    const { sent, pulses, at } = shapeAt(time);
+    // A moment later, for how fast each point is moving.
+    const soon = shapeAt(time + SOON).at;
+    const wavelength = now.frequency > 0 ? v1 / now.frequency : 0;
+    // The points of a standing pattern that never move, and those half way between that move the
+    // most: all along a standing wave, and as far back from a reflecting end as the reflected wave has come.
+    const still: number[] = [];
+    const loud: number[] = [];
+    if (standing) {
+      const half = Math.PI / standing.k;
+      for (let x = x0; x <= x0 + standing.length + 1e-9; x += half) still.push(Math.round(x * 1e9) / 1e9);
+      for (let x = x0 + half / 2; x <= x0 + standing.length + 1e-9; x += half) loud.push(Math.round(x * 1e9) / 1e9);
+    } else if (turn && wavelength > 0 && join === undefined) {
+      const met = lane.full ? Number.POSITIVE_INFINITY : v1 * time - (span1 - x0);
+      const here = (x: number) => x >= x0 - 1e-9 && span1 - x <= met + 1e-9;
+      for (let x = span1 - (turn < 0 ? 0 : wavelength / 4); here(x); x -= wavelength / 2) still.unshift(Math.round(x * 1e9) / 1e9);
+      for (let x = span1 - (turn < 0 ? wavelength / 4 : 0); here(x); x -= wavelength / 2) loud.unshift(Math.round(x * 1e9) / 1e9);
+    }
+    const first = (lane.pulses ?? []).find((pulse) => pulse.from !== 'right');
     lanes[lane.id] = {
-      frequency: now.frequency,
+      frequency: standing ? standing.frequency : now.frequency,
       amplitude: now.amplitude,
-      speed: lane.speed,
-      reached: (x) => sent(x) >= earliest,
-      at(x) {
-        // What the source sent at a time, and nothing from before it started.
-        const value = (t: number) => (t < earliest ? 0 : stretchAt(list, t).amplitude * Math.sin(phaseAt(list, t)));
-        // A wave that bounces off the right end comes back turned over: it has travelled to the
-        // end and back to this place, and the end itself stays still.
-        return value(sent(x)) - (lane.reflect ? value(time - (2 * span1 - x0 - x) / lane.speed) : 0);
-      },
-      crests: places(list, lane, x0, time, back, x0 - pad, span1 + pad, long ? 0 : Math.PI / 2),
-      troughs: places(list, lane, x0, time, back, x0 - pad, span1 + pad, long ? Math.PI : (3 * Math.PI) / 2),
-      front: lane.full ? Number.POSITIVE_INFINITY : lane.speed * time,
+      speed: v1,
+      reached: (x) => Boolean(standing) || sent(x) >= earliest,
+      at,
+      rate: (x) => (soon(x) - at(x)) / SOON,
+      crests: standing ? [] : places(list, reach, time, back, x0 - pad, span1 + pad, long ? 0 : Math.PI / 2),
+      troughs: standing ? [] : places(list, reach, time, back, x0 - pad, span1 + pad, long ? Math.PI : (3 * Math.PI) / 2),
+      front: lane.full || standing ? Number.POSITIVE_INFINITY : first && !(now.frequency > 0) ? Math.max(0, v1 * (time - (first.at ?? 0)) - pulseWidth(el, first) / 2) : reach(time) - x0,
+      pulses,
+      join,
+      speed2: join !== undefined ? v2 : undefined,
+      nodes: still,
+      antinodes: loud,
+      end: standing ? x0 + standing.length : undefined,
+      mouth: standing ? x0 + standing.length - (lane.standing?.beyond ?? 0) : undefined,
     };
     // Complete waves past the mark: the turns of phase that have gone by there since the start
     // (or, in a lane that starts empty, since the wave arrived).
     const mark = el.mark ?? (el.span[0] + el.span[1]) / 2;
     const t = sent(mark);
-    const base = lane.full ? -(mark - x0) / lane.speed : 0;
+    const base = lane.full ? -delay(mark) : 0;
     passed[lane.id] = t <= base ? 0 : Math.floor((phaseAt(list, t) - phaseAt(list, base)) / TAU + 1e-9);
   }
   return { time, note, lanes, passed };
@@ -165,14 +264,25 @@ export function waveAt(el: WaveEl, plays: Array<[clip: string, seconds: number]>
 
 /** The largest amplitude a lane ever has, for giving it room. */
 export function largestAmplitude(el: WaveEl, lane: WaveLane): number {
-  let most = lane.amplitude;
-  for (const clip of Object.values(el.clips)) for (const ph of clip.phases) most = Math.max(most, ph.set?.[lane.id]?.amplitude ?? 0);
-  return most;
+  // Pulses that meet add up, and a free end is flicked twice as far as the pulse that reaches it.
+  const heights = (lane.pulses ?? []).map((pulse) => pulse.height);
+  const up = heights.filter((n) => n > 0).reduce((a, b) => a + b, 0);
+  const down = -heights.filter((n) => n < 0).reduce((a, b) => a + b, 0);
+  let steady = lane.amplitude;
+  for (const clip of Object.values(el.clips)) for (const ph of clip.phases) steady = Math.max(steady, ph.set?.[lane.id]?.amplitude ?? 0);
+  // A steady wave that meets its own reflection stands, and its antinodes move twice as far as either wave.
+  const meets = lane.reflect && !lane.standing && lane.frequency > 0 ? 2 : 1;
+  return Math.max(meets * steady, up, down, lane.reflect === 'free' ? 2 * Math.max(0, ...heights.map(Math.abs)) : 0);
 }
 
 /** The shortest wavelength a lane ever has, in metres. */
 export function shortestWavelength(el: WaveEl, lane: WaveLane): number {
   let most = lane.frequency;
   for (const clip of Object.values(el.clips)) for (const ph of clip.phases) most = Math.max(most, ph.set?.[lane.id]?.frequency ?? 0);
-  return most > 0 ? lane.speed / most : Number.POSITIVE_INFINITY;
+  const standing = standingOf(el, lane);
+  if (standing) return (2 * Math.PI) / standing.k;
+  const slowest = Math.min(lane.speed, lane.medium?.speed ?? lane.speed);
+  // A single pulse is as steep as a wave of twice its length; in a slower medium it is shorter by the ratio of the speeds.
+  const pulses = (lane.pulses ?? []).map((pulse) => (2 * pulseWidth(el, pulse) * slowest) / lane.speed);
+  return Math.min(most > 0 ? slowest / most : Number.POSITIVE_INFINITY, ...pulses);
 }

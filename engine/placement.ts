@@ -65,6 +65,7 @@ export const PREREQUISITE: Record<string, string | null> = {
   'chem-30': 'chem-20',
   'phys-10': null,
   'phys-20': 'phys-10',
+  'phys-30': 'phys-20',
   'eng-5': null,
   'eng-6': 'eng-5',
   'eng-7': 'eng-6',
