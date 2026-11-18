@@ -1,5 +1,5 @@
 import type { ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
-import { ATOM, hydrogenBurning } from '@/video/reactions.ts';
+import { ATOM, carbonBurning, hydrogenBurning } from '@/video/reactions.ts';
 
 // Simulated particles for Chemistry 10 (src/video/particles.ts): they attract and jostle one
 // another, so a cold box settles into vibrating rows, a warm one slides about and a hot one flies
@@ -738,5 +738,34 @@ export const meltTogether = (id: string, subs: Array<{ id: string; label: string
   boxes: subs.map((s): ParticleBox => ({ id: s.id, state: 'solid', width: 6, height: 7, n: 18, kinds: [{ n: 18, bond: s.bond, tone: s.tone }], label: s.label })),
   clips: { warm: { phases: [{ dur: 10, heat: Object.fromEntries(subs.map((s) => [s.id, to])) }, { dur: 2 }] } },
   thermometers: true,
+  height,
+});
+
+/**
+ * Hydrogen and oxygen set off by a spark (clip `spark`): each reaction gives out heat that sets off
+ * the next, and two elements join into one compound, water (counted by the tally).
+ */
+export const sparkedHydrogen = (id: string, height = 420): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [hydrogenBurning('h', { label: 'hydrogen and oxygen' })],
+  clips: { spark: { phases: [{ dur: 1, heat: { h: 2 } }, { dur: 2 }, { dur: 1, heat: { h: 0.4 } }, { dur: 8 }] } },
+  thermometers: true,
+  key: true,
+  seed: 7,
+  height,
+});
+
+/**
+ * Carbon and hydrogen burning side by side (clip `light`): every carbon atom ends up in a carbon
+ * dioxide molecule, and every hydrogen atom in a water molecule.
+ */
+export const burningPair = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [carbonBurning('c', { label: 'carbon in oxygen', width: 10 }), hydrogenBurning('h', { label: 'hydrogen in oxygen', width: 10 })],
+  clips: { light: { phases: [{ dur: 1, heat: { c: 2.5, h: 2 } }, { dur: 2 }, { dur: 1, heat: { c: 0.4, h: 0.4 } }, { dur: 10 }] } },
+  thermometers: true,
+  seed: 5,
   height,
 });
