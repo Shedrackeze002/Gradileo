@@ -6,8 +6,10 @@
  * magnet is two poles, one near each end: the field points away from the north pole and towards
  * the south pole, and falls with the square of the distance from each. Fields add as vectors, so
  * rows of wires make the field of a solenoid and two magnets make the field between their poles.
- * The force on a wire is F = BIL, at right angles to the field and to the current. A pure function
- * of the clips and the seconds played, like the rest of the stage.
+ * The force on a wire is F = BIL, at right angles to the field and to the current. A wire that has
+ * a mass moves under that force (and its weight), and the coil of a motor is turned about its axle
+ * by the forces on its two sides, step by step, while a clip plays. A pure function of the clips
+ * and the seconds played, like the rest of the stage.
  */
 import { linesBetween, type LineSource } from './fieldlines.ts';
 import type { MagnetsEl } from './script.ts';
@@ -28,11 +30,19 @@ export interface MagnetsState {
   amps: Record<string, number>;
   /** How far the domains of each piece of iron are lined up, from 0 to 1. */
   order: Record<string, number>;
+  /** The velocity of each wire that has a mass, in metres per second. */
+  v: Record<string, Point>;
+  /** The coil: the angle of its first side in degrees, and how fast it turns in radians per second (anticlockwise is positive). */
+  spin: { angle: number; omega: number } | null;
 }
+
+/** Steps of the model for each second of video, while a wire or a coil moves. */
+const STEPS = 240;
 
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x));
 const smooth = (x: number) => x * x * (3 - 2 * x);
 const rad = (deg: number) => (deg * Math.PI) / 180;
+const deg = (r: number) => (r * 180) / Math.PI;
 
 /** Everything in an element that has a place. */
 const placed = (el: MagnetsEl) => [...(el.bars ?? []), ...(el.wires ?? []), ...(el.iron ?? []), ...(el.compasses ?? []), ...(el.probes ?? [])];
@@ -40,7 +50,8 @@ const placed = (el: MagnetsEl) => [...(el.bars ?? []), ...(el.wires ?? []), ...(
 /**
  * The state of a magnets element after its clips: `plays` lists each clip played so far, in order,
  * with the seconds of video it has run for. Within a phase each thing eases from where it was to
- * where the phase puts it.
+ * where the phase puts it. A wire with a mass and a coil move while a clip plays, under the forces
+ * on them, at `rate` seconds of the model for each second of video.
  */
 export function magnetsAt(el: MagnetsEl, plays: Array<[clip: string, seconds: number]> = []): MagnetsState {
   const state: MagnetsState = {
@@ -49,23 +60,84 @@ export function magnetsAt(el: MagnetsEl, plays: Array<[clip: string, seconds: nu
     angle: Object.fromEntries((el.bars ?? []).map((b) => [b.id, b.angle ?? 0])),
     amps: Object.fromEntries((el.wires ?? []).map((w) => [w.id, w.amps])),
     order: Object.fromEntries((el.iron ?? []).map((b) => [b.id, b.order ?? 0])),
+    v: Object.fromEntries((el.wires ?? []).filter((w) => w.mass !== undefined).map((w) => [w.id, [0, 0] as Point])),
+    spin: el.coil ? { angle: el.coil.angle ?? 0, omega: 0 } : null,
   };
+  if (el.coil) {
+    state.at[el.coil.id] = [el.coil.at[0], el.coil.at[1]];
+    state.amps[el.coil.id] = el.coil.amps;
+  }
+  const moving = el.coil !== undefined || (el.wires ?? []).some((w) => w.mass !== undefined);
   for (const [name, seconds] of plays) {
     const clip = el.clips[name];
     if (!clip) continue;
     let left = seconds;
     for (const ph of clip.phases) {
       if (left <= 0) break;
-      const f = smooth(clamp01(left / ph.dur));
-      for (const [id, [x, y]] of Object.entries(ph.to ?? {})) if (id in state.at) state.at[id] = [state.at[id][0] + (x - state.at[id][0]) * f, state.at[id][1] + (y - state.at[id][1]) * f];
-      for (const [id, a] of Object.entries(ph.turn ?? {})) if (id in state.angle) state.angle[id] += (a - state.angle[id]) * f;
-      for (const [id, i] of Object.entries(ph.amps ?? {})) if (id in state.amps) state.amps[id] += (i - state.amps[id]) * f;
-      for (const [id, o] of Object.entries(ph.order ?? {})) if (id in state.order) state.order[id] += (o - state.order[id]) * f;
-      state.time += Math.min(left, ph.dur);
+      const from = { at: { ...state.at }, angle: { ...state.angle }, amps: { ...state.amps }, order: { ...state.order } };
+      /** Everything the phase carries, turns or changes, this far through it. */
+      const ease = (f: number) => {
+        for (const [id, [x, y]] of Object.entries(ph.to ?? {})) if (id in from.at) state.at[id] = [from.at[id][0] + (x - from.at[id][0]) * f, from.at[id][1] + (y - from.at[id][1]) * f];
+        for (const [id, a] of Object.entries(ph.turn ?? {})) if (id in from.angle) state.angle[id] = from.angle[id] + (a - from.angle[id]) * f;
+        for (const [id, i] of Object.entries(ph.amps ?? {})) if (id in from.amps) state.amps[id] = from.amps[id] + (i - from.amps[id]) * f;
+        for (const [id, o] of Object.entries(ph.order ?? {})) if (id in from.order) state.order[id] = from.order[id] + (o - from.order[id]) * f;
+      };
+      const played = Math.min(left, ph.dur);
+      if (moving) {
+        const steps = Math.max(1, Math.ceil(played * STEPS));
+        const h = played / steps;
+        for (let k = 0; k < steps; k++) {
+          ease(smooth(clamp01(((k + 0.5) * h) / ph.dur)));
+          advance(el, state, h * (el.rate ?? 1));
+        }
+      }
+      ease(smooth(clamp01(left / ph.dur)));
+      state.time += played;
       left -= ph.dur;
     }
   }
   return state;
+}
+
+/**
+ * Let a short time pass: each wire with a mass is pushed by the field (and pulled down the screen
+ * by its weight, when the element has `g`), and the coil is turned by the forces on its sides and
+ * slowed by friction. A wire that rests on supports cannot go below where it started, and a wire
+ * that reaches the edge of the picture is stopped there.
+ */
+function advance(el: MagnetsEl, state: MagnetsState, dt: number): void {
+  const metres = el.length?.metres ?? 1;
+  const [x0, x1, y0, y1] = el.view;
+  const edge = (x1 - x0) * 0.025;
+  for (const w of el.wires ?? []) {
+    if (w.mass === undefined) continue;
+    const [fx, fy] = wireForce(el, state, w.id);
+    const v = state.v[w.id];
+    v[0] += (fx / w.mass) * dt;
+    v[1] += (fy / w.mass - (el.g ?? 0)) * dt;
+    let [x, y] = state.at[w.id];
+    x += (v[0] * dt) / metres;
+    y += (v[1] * dt) / metres;
+    if (w.rests && y <= w.at[1]) {
+      y = w.at[1];
+      v[1] = Math.max(0, v[1]);
+    }
+    if (x < x0 + edge || x > x1 - edge) {
+      x = Math.min(x1 - edge, Math.max(x0 + edge, x));
+      v[0] = 0;
+    }
+    if (y < y0 + edge || y > y1 - edge) {
+      y = Math.min(y1 - edge, Math.max(y0 + edge, y));
+      v[1] = 0;
+    }
+    state.at[w.id] = [x, y];
+  }
+  if (el.coil && state.spin) {
+    // Friction is taken at the end of the step, so that a large friction cannot make the coil overshoot.
+    const drag = ((el.coil.friction ?? 0) * dt) / el.coil.inertia;
+    state.spin.omega = (state.spin.omega + (coilTorque(el, state) / el.coil.inertia) * dt) / (1 + drag);
+    state.spin.angle += deg(state.spin.omega * dt);
+  }
 }
 
 /**
@@ -88,10 +160,14 @@ export function polesOf(el: MagnetsEl, state: MagnetsState): Array<LineSource & 
   });
 }
 
+/** Whether a point is in the gap between the pole faces of the magnet (anywhere, when the picture has no such magnet). */
+const inGap = (el: MagnetsEl, x: number, y: number) => !el.yoke || (x >= el.yoke.faces[0] && x <= el.yoke.faces[1] && y >= el.yoke.span[0] && y <= el.yoke.span[1]);
+
 /** The field of the wires and the uniform field at a point, in teslas, leaving out one wire if asked. */
 function currentField(el: MagnetsEl, state: MagnetsState, x: number, y: number, without?: string): Point {
   const metres = el.length?.metres ?? 1;
-  let [bx, by] = el.uniform ?? [0, 0];
+  // Between the pole faces of a magnet the field is uniform; outside the gap there is none.
+  let [bx, by] = (inGap(el, x, y) && el.uniform) || [0, 0];
   for (const w of el.wires ?? []) {
     if (w.id === without) continue;
     const [dx, dy] = [x - state.at[w.id][0], y - state.at[w.id][1]];
@@ -147,8 +223,8 @@ export function magnetLines(el: MagnetsEl, state: MagnetsState): MagnetLine[] {
   const pad = wide * 0.05;
   const most = Math.ceil((4 * (wide + high)) / step);
   const outside = (x: number, y: number) => x < x0 - pad || x > x1 + pad || y < y0 - pad || y > y1 + pad;
-  /** Follow the field from a point, forwards or backwards, by the midpoint rule. */
-  const follow = (sx: number, sy: number, way: 1 | -1): MagnetLine => {
+  /** Follow the field from a point, forwards or backwards, by the midpoint rule (only as far as the edge of the gap of the magnet, if asked). */
+  const follow = (sx: number, sy: number, way: 1 | -1, inGapOnly = false): MagnetLine => {
     let [x, y] = [sx, sy];
     const points: Point[] = [[x, y]];
     for (let n = 0; n < most; n++) {
@@ -165,12 +241,17 @@ export function magnetLines(el: MagnetsEl, state: MagnetsState): MagnetLine[] {
         return { points, closed: true };
       }
       points.push([x, y]);
-      if (outside(x, y)) break;
+      if (outside(x, y) || (inGapOnly && !inGap(el, x, y))) break;
     }
     return { points, closed: false };
   };
   const seeds: Point[] = [...(el.seeds ?? [])];
-  if (!seeds.length && !poles.length && el.uniform && Math.hypot(...el.uniform) > 0) {
+  if (el.yoke && el.uniform && el.uniform[0] !== 0) {
+    // From the north pole face straight across the gap: the line ends where the field does, at the south pole face.
+    const { faces, span } = el.yoke;
+    const count = el.uniformLines ?? 7;
+    for (let j = 0; j < count; j++) lines.push({ points: follow(el.uniform[0] > 0 ? faces[0] : faces[1], span[0] + ((j + 0.5) / count) * (span[1] - span[0]), 1, true).points, closed: false });
+  } else if (!seeds.length && !poles.length && el.uniform && Math.hypot(...el.uniform) > 0) {
     // Straight across the picture, from the side the field comes from.
     const b = Math.hypot(...el.uniform);
     const [dx, dy] = [el.uniform[0] / b, el.uniform[1] / b];
@@ -202,6 +283,55 @@ export function wireForce(el: MagnetsEl, state: MagnetsState, id: string): Point
   // The current is along the line out of the page, so the force is the field turned a quarter turn anticlockwise.
   const k = state.amps[id] * (w.metres ?? 1);
   return [-by * k, bx * k];
+}
+
+/** One side of the coil of a motor: where it is, the current in it (positive comes out of the page) and the force on it, in newtons. */
+export interface CoilSide {
+  at: Point;
+  amps: number;
+  force: Point;
+}
+
+/**
+ * The two sides of the coil. The current goes along one side and comes back along the other, so
+ * the two currents are opposite, and each side of N turns feels F = NBIL. With a split-ring
+ * commutator the current in the coil is reversed each time the coil passes the place where it is
+ * at right angles to the field, so the side that is further along the field always carries the
+ * current the same way.
+ */
+export function coilSides(el: MagnetsEl, state: MagnetsState): CoilSide[] {
+  const c = el.coil;
+  if (!c || !state.spin) return [];
+  const a = rad(state.spin.angle);
+  const [cx, cy] = state.at[c.id];
+  const [ax, ay] = fieldAt(el, state, cx, cy);
+  const swapped = c.commutator === true && Math.cos(a) * ax + Math.sin(a) * ay < 0;
+  return ([1, -1] as const).map((side) => {
+    const at: Point = [cx + side * c.radius * Math.cos(a), cy + side * c.radius * Math.sin(a)];
+    const amps = side * (swapped ? -1 : 1) * state.amps[c.id];
+    const [bx, by] = fieldAt(el, state, at[0], at[1]);
+    const k = amps * (c.turns ?? 1) * c.metres;
+    return { at, amps, force: [-by * k, bx * k] as Point };
+  });
+}
+
+/** The turning effect of the two forces about the axle of the coil, in newton metres (anticlockwise is positive). */
+export function coilTorque(el: MagnetsEl, state: MagnetsState): number {
+  if (!el.coil) return 0;
+  const metres = el.length?.metres ?? 1;
+  const [cx, cy] = state.at[el.coil.id];
+  return coilSides(el, state).reduce((sum, side) => sum + ((side.at[0] - cx) * side.force[1] - (side.at[1] - cy) * side.force[0]) * metres, 0);
+}
+
+/**
+ * The reading of the balance the magnet stands on, in grams. The field pushes each wire, and by
+ * Newton's third law each wire pushes the magnet back with an equal force the other way: a wire
+ * that is pushed up presses the magnet down, and the reading rises by that force ÷ g.
+ */
+export function balanceReading(el: MagnetsEl, state: MagnetsState): number | null {
+  if (!el.balance || !(el.g !== undefined && el.g > 0)) return null;
+  const up = (el.wires ?? []).reduce((sum, w) => sum + (w.metres !== undefined ? wireForce(el, state, w.id)[1] : 0), 0);
+  return el.balance.grams + (1000 * up) / el.g;
 }
 
 /**

@@ -126943,5 +126943,107 @@
         "working": "$r = \\dfrac{mv}{qB} = \\dfrac{1.67 \\times 10^{-27} \\times 2.0 \\times 10^{6}}{1.60 \\times 10^{-19} \\times 0.25} = 0.084$ m, which is 8.4 cm."
       }
     ]
+  },
+  "p30-2-9": {
+    "lessonId": "p30-2-9",
+    "title": "The Force on a Wire",
+    "duration": 370,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The motor effect",
+        "t": 23.847
+      },
+      {
+        "title": "Which way?",
+        "t": 60.726
+      },
+      {
+        "title": "How large?",
+        "t": 107.521
+      },
+      {
+        "title": "A wire that floats",
+        "t": 171.088
+      },
+      {
+        "title": "Measuring a field",
+        "t": 222.912
+      },
+      {
+        "title": "Your turn",
+        "t": 288.937
+      },
+      {
+        "title": "Summary",
+        "t": 330.419
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-9:q",
+        "t": 307.797,
+        "prompt": "A straight wire 0.25 m long carries a current of 3.0 A at right angles to a magnetic field of 0.20 T. What is the size of the force on it?",
+        "choices": [
+          "0.017 N",
+          "2.4 N",
+          "3.75 N",
+          "0.15 N"
+        ],
+        "answer": 3,
+        "working": "$F = BIL = 0.20 \\times 3.0 \\times 0.25 = 0.15$ N."
+      }
+    ]
+  },
+  "p30-2-9-b": {
+    "lessonId": "p30-2-9",
+    "title": "The Electric Motor",
+    "duration": 305,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A coil in a field",
+        "t": 19.8
+      },
+      {
+        "title": "The commutator",
+        "t": 95.366
+      },
+      {
+        "title": "The force on one side",
+        "t": 178.291
+      },
+      {
+        "title": "Your turn",
+        "t": 226.655
+      },
+      {
+        "title": "Summary",
+        "t": 274.735
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-9-b:q",
+        "t": 249.335,
+        "prompt": "The coil of a motor has 50 turns. One side of it, 0.060 m long, lies at right angles to a magnetic field of 0.30 T. What is the force on that side when the current in the coil is 2.0 A?",
+        "choices": [
+          "1.8 N",
+          "0.036 N",
+          "30 N",
+          "500 N"
+        ],
+        "answer": 0,
+        "working": "$F = NBIL = 50 \\times 0.30 \\times 2.0 \\times 0.060 = 1.8$ N."
+      }
+    ]
   }
 }
