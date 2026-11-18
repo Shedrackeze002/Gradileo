@@ -126629,5 +126629,221 @@
         "working": "Divide by the elementary charge: $\\dfrac{6.4 \\times 10^{-19}}{1.60 \\times 10^{-19}} = 4.0$, so the drop carries 4 excess electrons."
       }
     ]
+  },
+  "p30-2-6": {
+    "lessonId": "p30-2-6",
+    "title": "Combined Circuits",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A parallel pair",
+        "t": 15.382
+      },
+      {
+        "title": "A circuit with both",
+        "t": 60.82
+      },
+      {
+        "title": "Inside the pair",
+        "t": 99.167
+      },
+      {
+        "title": "Power",
+        "t": 150.618
+      },
+      {
+        "title": "Your turn",
+        "t": 186.502
+      },
+      {
+        "title": "Summary",
+        "t": 224.852
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-6:q",
+        "t": 201.502,
+        "prompt": "A 9 V battery is connected to a 1 Ω resistor in series with a parallel pair of 6 Ω and 3 Ω. What is the current from the battery?",
+        "choices": [
+          "0.90 A",
+          "3.0 A",
+          "4.5 A",
+          "9.0 A"
+        ],
+        "answer": 1,
+        "working": "The pair of 6 Ω and 3 Ω is 2 Ω. In series with 1 Ω: $1 + 2 = 3\\ \\Omega$. So $I = \\dfrac{9}{3} = 3.0$ A."
+      }
+    ]
+  },
+  "p30-2-6-b": {
+    "lessonId": "p30-2-6",
+    "title": "Emf and Internal Resistance",
+    "duration": 315,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lost volts",
+        "t": 18.718
+      },
+      {
+        "title": "Terminal potential difference",
+        "t": 66.816
+      },
+      {
+        "title": "A larger current",
+        "t": 110.856
+      },
+      {
+        "title": "Finding the internal resistance",
+        "t": 158.295
+      },
+      {
+        "title": "Wasted power",
+        "t": 203.046
+      },
+      {
+        "title": "Your turn",
+        "t": 235.046
+      },
+      {
+        "title": "Summary",
+        "t": 281.446
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-6-b:q",
+        "t": 253.998,
+        "prompt": "A battery has an emf of 6.0 V and an internal resistance of 1.0 Ω. It is connected to a 2.0 Ω resistor. What is the potential difference across its terminals?",
+        "choices": [
+          "2.0 V",
+          "3.0 V",
+          "4.0 V",
+          "6.0 V"
+        ],
+        "answer": 2,
+        "working": "$I = \\dfrac{\\varepsilon}{R + r} = \\dfrac{6.0}{2.0 + 1.0} = 2.0$ A. Lost volts: $Ir = 2.0 \\times 1.0 = 2.0$ V. $V = 6.0 - 2.0 = 4.0$ V."
+      }
+    ]
+  },
+  "p30-2-7": {
+    "lessonId": "p30-2-7",
+    "title": "Magnets and Magnetic Fields",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two poles",
+        "t": 25.135
+      },
+      {
+        "title": "Poles come in pairs",
+        "t": 52.175
+      },
+      {
+        "title": "The magnetic field",
+        "t": 78.891
+      },
+      {
+        "title": "Why iron is magnetic",
+        "t": 131.3
+      },
+      {
+        "title": "The Earth",
+        "t": 172.134
+      },
+      {
+        "title": "Your turn",
+        "t": 199.945
+      },
+      {
+        "title": "Summary",
+        "t": 234.254
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-7:q",
+        "t": 213.964,
+        "prompt": "A small compass is placed just beyond the north pole of a bar magnet, on the line through both poles. Which way does the north end of its needle point?",
+        "choices": [
+          "Towards the north pole of the magnet",
+          "At right angles to the magnet",
+          "It keeps turning and never settles",
+          "Away from the north pole of the magnet"
+        ],
+        "answer": 3,
+        "working": "The field leaves a north pole, and a compass needle points along the field. So the north end of the needle points away from the north pole of the magnet: like poles repel."
+      }
+    ]
+  },
+  "p30-2-7-b": {
+    "lessonId": "p30-2-7",
+    "title": "The Magnetic Field of a Current",
+    "duration": 307,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A wire and a compass",
+        "t": 20.803
+      },
+      {
+        "title": "The right-hand rule",
+        "t": 57.332
+      },
+      {
+        "title": "How strong is the field?",
+        "t": 98.63
+      },
+      {
+        "title": "The solenoid",
+        "t": 140.004
+      },
+      {
+        "title": "The electromagnet",
+        "t": 200.396
+      },
+      {
+        "title": "Your turn",
+        "t": 230.745
+      },
+      {
+        "title": "Summary",
+        "t": 272.658
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-7-b:q",
+        "t": 245.257,
+        "prompt": "A long straight wire carries a current of 6.0 A. What is the magnetic field strength 3.0 cm from the wire? ($\\mu_0 = 4\\pi \\times 10^{-7}$ T·m/A)",
+        "choices": [
+          "$4.0 \\times 10^{-5}$ T",
+          "$8.0 \\times 10^{-5}$ T",
+          "$2.5 \\times 10^{-4}$ T",
+          "$1.3 \\times 10^{-3}$ T"
+        ],
+        "answer": 0,
+        "working": "Change to metres: $r = 0.030$ m. $B = \\dfrac{\\mu_0 I}{2\\pi r} = \\dfrac{4\\pi \\times 10^{-7} \\times 6.0}{2\\pi \\times 0.030} = 4.0 \\times 10^{-5}$ T."
+      }
+    ]
   }
 }
