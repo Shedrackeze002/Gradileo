@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { ladder, type LadderRow } from './lib/c30-2a-figures.ts';
+import { displacement } from '../../chemmore/videos/lib/cx-particles.ts';
 
 const ROWS: Record<string, LadderRow> = {
   o2: { id: 'o2', oa: '\\ce{O2 + 4H+}', e: '\\ce{4e-}', ra: '\\ce{2H2O}', E: '+1.23' },
@@ -88,6 +89,15 @@ const video: Explainer = {
           show: 'ans',
           focus: 'ans',
         },
+      ],
+    },
+    {
+      chapter: 'A metal in a solution of ions, up close',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3 })],
+      lines: [
+        { say: 'Here is a reaction of the same kind, up close: an iron nail in copper two sulfate solution, beside copper in iron two sulfate solution.', caption: 'Here is a reaction of the same kind, up close: an iron nail in copper(II) sulfate solution, beside copper in iron(II) sulfate solution.', show: ['dp', 'dp.labels', 'dp.key', 'dp.tally'], play: 'dp.go' },
+        { say: 'The copper two ions are above iron in the table, so each one that hits the nail takes two electrons from an iron atom, and copper builds up. Iron two ions are below copper, so nothing happens on the right.', caption: 'The Cu²⁺ ions are above iron in the table, so each one that hits the nail takes two electrons from an iron atom, and copper builds up. Fe²⁺ ions are below copper, so nothing happens on the right.' },
       ],
     },
     {

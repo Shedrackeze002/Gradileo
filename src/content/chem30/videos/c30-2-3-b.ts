@@ -1,4 +1,4 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { figure } from '@/video/solids.ts';
 import { ladder, type LadderRow } from './lib/c30-2a-figures.ts';
 
@@ -23,6 +23,24 @@ const table = figure('t', [ladder({ width: 1100, rowH: 46, arrows: true, rows: r
 const ends = figure('t', [ladder({ width: 1100, arrows: true, rows: rows('f', 'ag', 'zn', 'li') })], 350);
 // The four ions of the example.
 const four = figure('t', [ladder({ width: 1100, rows: rows('ag', 'cu', 'ni', 'zn') })], 350);
+
+// One half-reaction read both ways (src/video/atoms.ts): a magnesium ion gains two electrons and
+// becomes an atom (clip `gain`), and a magnesium atom loses two and becomes an ion (clip `lose`).
+const mgBothWays: AtomsEl = {
+  kind: 'atoms',
+  id: 'mg',
+  span: [17, 7.6],
+  atoms: [
+    { id: 'ion', symbol: 'Mg', protons: 12, electrons: 10, at: [4.2, 3.6], tone: 'opp', name: 'read forwards: gains 2 electrons' },
+    { id: 'atom', symbol: 'Mg', protons: 12, at: [12.8, 3.6], tone: 'opp', name: 'read backwards: loses 2 electrons' },
+  ],
+  clips: {
+    gain: { phases: [{ dur: 0.6 }, { dur: 2.2, fill: { ion: 12 } }, { dur: 0.8 }] },
+    lose: { phases: [{ dur: 0.6 }, { dur: 2.6, give: [{ from: 'atom', to: null, n: 2 }] }, { dur: 0.8 }] },
+  },
+  poster: 'lose',
+  height: 420,
+};
 
 const video: Explainer = {
   id: 'c30-2-3-b',
@@ -64,6 +82,16 @@ const video: Explainer = {
         { say: 'Strength runs in opposite directions on the two sides.', show: ['t.head', 't.f', 't.ag', 't.zn', 't.li', 't.oa-arrow', 't.ra-arrow'] },
         { say: 'Fluorine is the strongest oxidising agent, and fluoride ions, beside it, are the weakest reducing agent. They hold their electrons so tightly that almost nothing can take them.', show: ['t.f-oa-box', 't.f-ra-box', 'key'], focus: ['t.f-oa-box', 't.f-ra-box'] },
         { say: 'At the bottom, lithium gives up electrons most easily, and lithium ions, beside it, are the weakest oxidising agent.', show: ['t.li-ra-box', 't.li-oa-box'], focus: ['t.li-ra-box', 't.li-oa-box'] },
+      ],
+    },
+    {
+      chapter: 'Both directions, up close',
+      layout: 'center',
+      main: [mgBothWays],
+      lines: [
+        { say: 'Here is one row of the table, up close, read both ways. On the left, a magnesium ion. On the right, a magnesium atom.', show: ['mg', 'mg.labels', 'mg.charges'] },
+        { say: 'Read forwards, the magnesium ion gains two electrons and becomes a magnesium atom: a reduction.', play: 'mg.gain' },
+        { say: 'Read backwards, the magnesium atom loses two electrons and becomes a magnesium ion: an oxidation.', play: 'mg.lose' },
       ],
     },
     {
