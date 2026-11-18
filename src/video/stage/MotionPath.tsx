@@ -8,7 +8,7 @@ import type { MotionEl } from '../script.ts';
 import { oscillations, widthOf, type MotionState } from '../motion.ts';
 import { trackOf } from '../path.ts';
 import { ownPart, type ElState } from '../timeline.ts';
-import { Arrow, clamp01, Clock, Count, ENERGY_ROW, labelCase, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, toneOf, VELOCITY } from './motionKit.tsx';
+import { Arrow, clamp01, Clock, Count, ENERGY_ROW, labelCase, EnergyBars, energyRows, FONT, INK2, live, NET, short, speedText, Text, toneOf, VELOCITY } from './motionKit.tsx';
 import { TONES } from './tex.ts';
 import { INK3 } from './Triangle.tsx';
 
@@ -94,7 +94,16 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
     if (track.pivot) out.push(<line key={`string-${b.id}`} x1={X(track.pivot[0])} y1={Y(track.pivot[1])} x2={cx} y2={cy} stroke={INK2} strokeWidth={2.5} />);
 
     // How high the body is: from the level heights are measured from, up to where it touches the track.
-    if (height > 0 && at.y > 0.02) {
+    if (height > 0 && el.cm && track.pivot) {
+      // A small rise (a ballistic pendulum) is written in centimetres on the outer side of the bob,
+      // where a line down to the level would be hidden behind it.
+      const outer = at.sin < 0 ? -1 : 1;
+      out.push(
+        <Text key={`h-${b.id}`} x={cx + outer * (r + 14)} y={cy} anchor={outer < 0 ? 'end' : 'start'} size={20} color={INK2} opacity={height * clamp01(at.y * 400)}>
+          {`h = ${live(at.y * 100)} cm`}
+        </Text>,
+      );
+    } else if (height > 0 && at.y > 0.02) {
       const side = at.x < (x0 + x1) / 2 ? -1 : 1;
       // The length of the line that can be seen: a pendulum's bob covers the top of it. The label
       // sits half way down it, or near the foot of a hill, clear of the track; it fades when the
@@ -187,7 +196,7 @@ export function PathView({ el, st, w, h, state }: { el: MotionEl; st: ElState | 
           </Text>
         ) : (
           <Text key={`vt-${b.id}`} x={cx - side * at.sin * (r + 50)} y={cy - side * at.cos * (r + 50) + (moving ? 0 : 24)} color={VELOCITY} opacity={vel}>
-            {moving ? `${el.speedWord ? 'speed' : 'v'} = ${live(Math.abs(s.v))} m/s` : 'at rest'}
+            {moving ? `${el.speedWord ? 'speed' : 'v'} = ${speedText(Math.abs(s.v), el.velocityDecimals)} m/s` : 'at rest'}
           </Text>
         ),
       );

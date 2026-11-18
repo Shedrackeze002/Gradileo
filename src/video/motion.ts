@@ -39,6 +39,8 @@ export interface MotionState {
    * for a body on a spring, the size of the spring's force against its extension), as [metres, newtons].
    */
   pull: Record<string, Array<[number, number]>>;
+  /** For a force-time graph: the force on its body against time so far, as [seconds, newtons]. */
+  push: Record<string, Array<[number, number]>>;
   /** How far each body has travelled along the track, in metres: every metre counts, whichever way it went. */
   travelled: Record<string, number>;
   /** Where each body started, then every place it turned round, in metres. */
@@ -263,6 +265,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   };
   const freshPull = (): MotionState['pull'] => Object.fromEntries(el.bodies.map((b) => [b.id, [] as Array<[number, number]>]));
   let pull = freshPull();
+  let push = freshPull();
   let travelled: Record<string, number> = Object.fromEntries(el.bodies.map((b) => [b.id, 0]));
   let turns: Record<string, number[]> = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
   // The way each body last moved (1 or -1), to notice when it turns round.
@@ -299,7 +302,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   // How long each force has been acting, in seconds of video: a force that carries on from one
   // phase or clip into the next keeps its arrow, and only a new one grows in.
   let ages = new Map<string, number>();
-  const keyOf = (f: MotionForce) => `${f.on}|${f.name}|${f.axis ?? 'x'}|${f.drag ? 'drag' : f.profile || f.name === SPRING ? 'changing' : f.n}`;
+  const keyOf = (f: MotionForce) => `${f.on}|${f.name}|${f.axis ?? 'x'}|${f.drag ? 'drag' : f.profile || f.name === SPRING || f.to !== undefined ? 'changing' : f.n}`;
   for (const [name, seconds] of plays) {
     const clip = el.clips[name];
     if (!clip) throw new Error(`Motion "${el.id}" has no clip "${name}".`);
@@ -313,6 +316,7 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
       path = freshPath();
       place = freshPlace();
       pull = freshPull();
+      push = freshPull();
       travelled = Object.fromEntries(el.bodies.map((b) => [b.id, 0]));
       turns = Object.fromEntries(el.bodies.map((b) => [b.id, [b.x]]));
       heading = {};
@@ -331,6 +335,10 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
       // A frozen phase takes its time on the video only: the motion's own clock stands still.
       const dt = ph.freeze ? 0 : Math.min(left / k, ph.dur);
       const list = ph.forces ?? [];
+      // A force with `to` changes steadily through the phase: `at` gives the forces as they are a share of the way through it.
+      const ramped = list.some((f) => f.to !== undefined);
+      const at = (share: number): MotionForce[] => (ramped ? list.map((f) => (f.to === undefined ? f : { ...f, n: f.n + (f.to - f.n) * share })) : list);
+      const through = (t: number) => (ph.dur > 0 ? Math.min(1, t / ph.dur) : 1);
       // Strobe marks at equal steps of the motion's time; a body that changes pace inside a
       // phase (stopped by friction) is followed mark by mark.
       let done = 0;
@@ -338,8 +346,12 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
       if (ph.set) for (const id of Object.keys(ph.set)) trace[id].push([time, bodies[id].v]);
       const plot = () => {
         for (const b of el.bodies) {
-          const at = graphed(list, b, bodies[b.id].x);
-          if (at) pull[b.id].push(at);
+          const point = graphed(list, b, bodies[b.id].x);
+          if (point) pull[b.id].push(point);
+        }
+        if (el.graph?.y === 'impulse') {
+          const now = at(through(done));
+          for (const id of el.graph.of) push[id]?.push([time + done, now.reduce((n, f) => (f.on === id && f.axis !== 'y' && (!el.graph!.force || f.name === el.graph!.force) ? n + f.n : n), 0)]);
         }
       };
       if (dt > EPS) plot();
@@ -347,13 +359,15 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
         const next = (Math.floor((time + done) / step + EPS) + 1) * step - time;
         // Short steps, so the graph follows a body that friction stops part way through.
         const h = Math.min(dt, next, done + traceStep) - done;
+        // Over a short step, a force that changes steadily does what its value half way through would.
+        const during = at(through(done + h / 2));
         for (const b of el.bodies) {
           const before = bodies[b.id];
-          const after = advance(b, before, list, h, slope, fieldOf(b, list));
+          const after = advance(b, before, during, h, slope, fieldOf(b, during));
           // The work of the forces that push or lift the body (for one that changes with distance,
           // the area under its points). What the body does not gain as kinetic or potential
           // energy, friction and air resistance have turned to heat.
-          const work = list.reduce((n, f) => (f.on === b.id && f.axis !== 'y' && !f.resist && !f.drag && f.name !== WEIGHT ? n + (f.profile ? areaUnder(f.profile, before.x - b.x, after.x - b.x) : f.n * (after.x - before.x)) : n), 0);
+          const work = during.reduce((n, f) => (f.on === b.id && f.axis !== 'y' && !f.resist && !f.drag && f.name !== WEIGHT ? n + (f.profile ? areaUnder(f.profile, before.x - b.x, after.x - b.x) : f.n * (after.x - before.x)) : n), 0);
           spent[b.id].work += work;
           spent[b.id].heat += work - (kineticOf(b, after.v) - kineticOf(b, before.v)) - (potentialOf(b, after.x) - potentialOf(b, before.x)) - (elasticOf(b, after.x) - elasticOf(b, before.x));
           if (before.v * after.v < -EPS) {
@@ -375,11 +389,11 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
         plot();
         if (Math.abs(done - next) < EPS) for (const b of el.bodies) marks[b.id].push(bodies[b.id].x);
       }
-      if (dt <= EPS && !ph.freeze) for (const b of el.bodies) bodies[b.id] = advance(b, bodies[b.id], list, 0, slope, fieldOf(b, list));
+      if (dt <= EPS && !ph.freeze) for (const b of el.bodies) bodies[b.id] = advance(b, bodies[b.id], at(0), 0, slope, fieldOf(b, list));
       if (ph.freeze) for (const b of el.bodies) bodies[b.id] = { ...bodies[b.id], a: 0 };
       time += dt;
       const age = ph.freeze ? Math.min(left, ph.dur) : dt * k;
-      const now = acting(el, bodies, list);
+      const now = acting(el, bodies, at(through(dt)));
       ages = new Map(now.map((f) => [keyOf(f), (ages.get(keyOf(f)) ?? 0) + age]));
       forces = now.map((f) => ({ ...f, age: ages.get(keyOf(f))! }));
       slow = k;
@@ -397,12 +411,18 @@ export function motionAt(el: MotionEl, plays: Array<[clip: string, seconds: numb
   const energy: MotionState['energy'] = Object.fromEntries(
     el.bodies.map((b) => [b.id, { kinetic: joules(kineticOf(b, bodies[b.id].v)), potential: joules(potentialOf(b, bodies[b.id].x)), elastic: joules(elasticOf(b, bodies[b.id].x)), work: joules(spent[b.id].work), heat: Math.max(0, joules(spent[b.id].heat)) }]),
   );
-  return { bodies, forces, time: tidy(time), marks, trace, path, place, pull, travelled, turns, slow, note, contact, energy };
+  return { bodies, forces, time: tidy(time), marks, trace, path, place, pull, push, travelled, turns, slow, note, contact, energy };
 }
 
 export interface CollisionOptions {
   /** They stick together, or bounce apart with no energy lost. */
   type: 'stick' | 'bounce';
+  /**
+   * For a bounce that loses some kinetic energy: the speed at which the two part, as a share of
+   * the speed at which they met (1 by default, an elastic collision; 0.5 parts them at half the
+   * closing speed).
+   */
+  restitution?: number;
   /** Seconds of motion shown after they part or join. */
   after: number;
   /** Slow motion while they touch (seconds of video for each second of motion). */
@@ -430,10 +450,13 @@ export function collision(a: MotionBody, b: MotionBody, o: CollisionOptions): Mo
   if (!(closing > 0) || gap < 0) throw new Error(`"${a.id}" does not catch up with "${b.id}".`);
   const squeeze = o.squeeze ?? 0.16;
   // With a steady force the gap closes at a falling pace: it squeezes closing·t/2 if they end
-  // together, and closing·t/4 at most if they bounce (the pace of closing reverses half way).
-  const touch = o.type === 'stick' ? (2 * squeeze) / closing : (4 * squeeze) / closing;
+  // together, and closing·t/4 at most if they bounce with no loss (the pace of closing reverses
+  // half way); in between, the pace reaches zero a share 1/(1 + e) of the way through.
+  const e = o.type === 'stick' ? 0 : (o.restitution ?? 1);
+  const touch = (2 * (1 + e) * squeeze) / closing;
   const total = a.mass + b.mass;
-  const vbAfter = o.type === 'stick' ? (a.mass * va + b.mass * vb) / total : (2 * a.mass * va + (b.mass - a.mass) * vb) / total;
+  // Momentum is shared so that the two part at `e` times the speed at which they met.
+  const vbAfter = (a.mass * va + b.mass * vb + a.mass * e * closing) / total;
   const force = (b.mass * (vbAfter - vb)) / touch;
   const [onA, onB] = o.names ?? [`${b.label ?? b.id} on ${a.label ?? a.id}`, `${a.label ?? a.id} on ${b.label ?? b.id}`];
   return [

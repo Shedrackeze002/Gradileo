@@ -42,6 +42,9 @@ export const fine = (n: number) => String(Math.round(n * 1000) / 1000);
 /** A changing number: always one decimal, so it does not jump about, and never "-0.0". */
 export const live = (n: number) => (Math.abs(n) < 0.05 ? '0.0' : n.toFixed(1)).replace('-', '−');
 
+/** A velocity to `places` decimal places (one by default); from 10 m/s up it keeps one place, so a bullet is not 199.00 m/s. */
+export const speedText = (n: number, places = 1) => (places <= 1 || Math.abs(n) >= 10 ? live(n) : n.toFixed(places).replace('-', '−'));
+
 /** An arrow from (x, y) of the given signed length along x or y, growing from its tail; `turn` points it any way instead, in degrees anticlockwise from the right. */
 export function Arrow({ x, y, len, axis = 'x', turn, color, weight = 9, opacity = 1 }: { x: number; y: number; len: number; axis?: 'x' | 'y'; turn?: number; color: string; weight?: number; opacity?: number }) {
   const l = Math.abs(len);
@@ -113,7 +116,7 @@ export const offsetStep = (S: number, room: number): number => [0.01, 0.02, 0.05
 
 /** The bodies whose energy is shown, and the rows of bars that takes. */
 export const energyBodies = (el: MotionEl): MotionBody[] => (el.energy ? (el.energy.of ? el.bodies.filter((b) => el.energy!.of!.includes(b.id)) : el.bodies.slice(0, 1)) : []);
-export const energyRows = (el: MotionEl): number => energyBodies(el).length * (el.energy?.bars.length ?? 0);
+export const energyRows = (el: MotionEl): number => energyBodies(el).length * (el.energy?.bars.length ?? 0) + (el.energy?.system?.length ?? 0);
 export const ENERGY_ROW = 40;
 
 /** Joules, or kilojoules when the bars reach ten thousand joules; whole numbers from a hundred up, and two decimals when the bars hold less than ten joules. */
@@ -132,14 +135,21 @@ export function EnergyBars({ el, state, x, y, w, opacity, total, stacked = false
   if (!el.energy) return null;
   const { bars, max, names, labels } = el.energy;
   const bodies = energyBodies(el);
-  const rows = bodies.flatMap((b) =>
+  const own = bodies.flatMap((b) =>
     bars.map((bar) => {
       const e = state.energy[b.id];
       const value = bar === 'total' ? e.kinetic + e.potential + e.elastic + e.heat : e[bar];
       const name = names?.[bar] ?? ENERGY[bar].name;
-      return { key: `${b.id}-${bar}`, bar, value, name: bodies.length > 1 ? `${labels?.[b.id] ?? b.label ?? b.id}: ${name.toLowerCase()}` : name };
+      return { key: `${b.id}-${bar}`, bar, value, name: bodies.length > 1 ? `${labels?.[b.id] ?? b.label ?? b.id}: ${name.toLowerCase()}` : name, system: false };
     }),
   );
+  // The bodies taken together: their kinetic energy now, and how much less that is than at the start.
+  const moving = bodies.reduce((n, b) => n + state.energy[b.id].kinetic, 0);
+  const atStart = bodies.reduce((n, b) => n + 0.5 * b.mass * (b.v ?? 0) ** 2, 0);
+  const together = (el.energy.system ?? []).map((kind) =>
+    kind === 'kinetic' ? { key: 'system-kinetic', bar: 'total' as const, value: moving, name: 'Total kinetic energy', system: true } : { key: 'system-lost', bar: 'heat' as const, value: Math.max(0, atStart - moving), name: 'Kinetic energy lost', system: true },
+  );
+  const rows = [...own, ...together];
   const labelW = stacked ? 0 : 290;
   const x0 = x + labelW;
   const full = w - labelW - 130;
@@ -152,7 +162,7 @@ export function EnergyBars({ el, state, x, y, w, opacity, total, stacked = false
         const top = y + i * rowH + (stacked ? 26 : 0);
         const c = ENERGY[r.bar].color;
         return (
-          <g key={r.key} opacity={r.bar === 'total' ? total : opacity}>
+          <g key={r.key} opacity={r.bar === 'total' || r.system ? total : opacity}>
             {stacked ? (
               <Text x={x0} y={top - 13} anchor="start" size={19} color={r.bar === 'total' ? NET : INK}>
                 {r.name}

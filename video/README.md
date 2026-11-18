@@ -149,7 +149,9 @@ See `src/video/script.ts` for every element and option. In short:
   forces appear, to name them before anything moves; `slow: 100` plays a phase in slow motion;
   a force with `resist` is friction (it stops with the body). `collision(a, b, …)` gives the three
   phases of a collision (approach, touch, after) with the equal and opposite forces that change
-  the velocities, so momentum is conserved by the forces, not typed in. Showing the element shows
+  the velocities, so momentum is conserved by the forces, not typed in (`type: 'stick'` or
+  `'bounce'`; `restitution: 0.5` makes a bounce that parts at half the closing speed). Showing
+  the element shows
   the tracks and bodies; its parts add `velocity`, `readout` (acceleration), `net` (net force),
   `strobe`, `clock`, `graph` (velocity against time, drawing itself, or distance against time
   with `graph: { y: 'distance' }`, or the body's position on the ruler with `y: 'position'`; a
@@ -157,6 +159,17 @@ See `src/video/script.ts` for every element and option. In short:
   round), `distance` (how far each body has travelled, with its path
   drawn leg by leg under a single track), `displacement` (an arrow under a single track from where
   the body started to where it is now, with its sign) and `bars` and `total` (momentum). The
+  bars run from zero to `momentumMax`; for a body that moves to the left, `momentumMin` (a number
+  below zero) moves the zero line part way along, and a negative bar grows to its left. A body
+  with `fixed: true` is a wall: a tall hatched slab with no velocity label and no bar (give it a
+  mass of a million kilograms, and a hidden force on the ball for the moment of the bounce). A
+  force with `to` changes steadily through its phase, from `n` to `to` newtons (a force that rises
+  to a peak and falls again takes two phases), and `graph: { y: 'impulse', of: ['cart'], seconds,
+  max, force: 'Push' }` draws the force against time as it acts: the area under the line fills in
+  and the impulse so far is written over it (`ms: true` numbers the time axis in milliseconds,
+  for a collision played with `slow`). That graph and the momentum bars fit together in an
+  element 560 px high. Two bodies with the same label get bars with the same name, so name them
+  A and B when their bars are compared. The
   displacement's label sits beside its arrow, so leave about 300 px of track free on one side.
   `speedWord: true` writes "speed =" beside the velocity arrow, for videos that come before
   velocity is taught. `plain: true` makes a sketch of it, not a measurement: no rulers, forces
@@ -189,6 +202,17 @@ See `src/video/script.ts` for every element and option. In short:
   under a track or a hill and beside a drop, a lift or a pendulum. A bar whose `max` is 100 J or
   more is written in whole joules, and a large one in kilojoules, so choose numbers whose total
   does not sit on a rounding boundary (151.15 kJ flickers between 151.1 and 151.2).
+  For a collision, `system: ['kinetic', 'lost']` adds two bars for the bodies in `of` taken
+  together, which come in with `sim.total`: their total kinetic energy, and how much less that is
+  than at the start (what the collision has turned to heat and sound). Four energy bars under a
+  track with a "Slow motion" note need an element about 490 px high. A small body that goes right
+  inside a larger one listed after it (a bullet into a block, with a `squeeze` deeper than the
+  bullet is wide) is covered by it and loses its labels. `velocityDecimals: 2` writes velocities
+  under 10 m/s to two places (0.99 m/s, where 1.0 would hide the point), and `cm: true` on a
+  pendulum writes the height of its bob in centimetres beside the bob, for a rise too small to draw
+  a line under. To play one collision several ways at once, give each pair its own lane and lay
+  the phases of the collisions over one another (`src/content/phys30/videos/p30-1-4.ts`): the
+  touch times must match, so divide the `squeeze` by (1 + the restitution).
   A force with a `profile` changes as the body moves: its size at distances from where the body
   started, as `[metres, newtons]` points joined by straight lines. The work it does is the area
   under those points, and `graph: { y: 'force', metres: … }` draws the force-displacement graph
@@ -307,6 +331,35 @@ See `src/video/script.ts` for every element and option. In short:
   projectile as it lands, end the clip a moment before the landing time (`landingTime`), since
   a body that has landed is at rest. Arrows that point down from a body near the ground need
   room under the picture (`below`). A river has a ruler along its bank when `tick` is given.
+
+  Momentum in two dimensions is a `map` scene of bodies with a `mass`, seen from above. A `puck`
+  is a disc drawn to scale (its `radius`, 0.5 by default), with a name of one or two letters
+  written inside it, and a `car` points the way it is driving; `roads` draws a crossroads at the
+  origin. With `collisions` the bodies collide as smooth discs: each is pushed along the line
+  through the two centres, so a puck aimed off centre is turned aside, the two part at
+  `restitution` times the speed at which they closed (1 by default, which is elastic), and with
+  `stick` they lock together and share one arrow from their centre of mass. A phase's `kick`
+  is an explosion: an impulse in kg·m/s for each piece, and the check refuses impulses that do
+  not add up to zero. Nothing after a collision is typed in, so choose where the first body
+  starts to get the lesson's angles (see `p30-1-5-b.ts`, where ball A is offset by the two radii
+  times the sine of the angle that ball B must leave at). The parts for it are `speed` (the
+  speed at the tip of each velocity arrow, "at rest" over a body that is still; `speedDecimals`
+  sets the places), `bars` and `total` (with `momentum: { max, min }`: a column on the right with
+  a bar for each body's east momentum and north momentum, and for the two totals; give a `min`
+  below zero when anything moves west or south) and `sum` (the total momentum drawn at the centre
+  of mass as a triangle: east in blue, north in orange, the total in yellow; `momentum.scale` is
+  its pixels for each kg·m/s). While `sum` is shown for several bodies their names give way to its
+  numbers. `angle` draws the angle of each velocity from east or west, to `angleDecimals` places,
+  and leaves out a body moving due north or south; show it on a line after the collision. The
+  column of bars takes 42% of the width, so the picture is about 640 px wide: with two bodies the
+  column is 300 px tall and with three it is 390 px, which fits an element of height 440 with two
+  lines of maths under it. Keep the speed labels in mind when choosing the `view` and
+  `velocityScale`: a label sits about 60 px beyond the tip of its arrow, so two bodies that head
+  for the same point need short arrows, and a body that ends near the compass (top right) or the
+  scale note (bottom left) needs the view moved. An angle is drawn only for an arrow longer than
+  60 px. Without `momentum` the picture is centred with no column, and two such pictures go side
+  by side in a split scene with `centreRight: true` (an elastic collision beside an inelastic
+  one). The thumbnail of a view from above is cropped about the collision.
 
 - `ramp` (`src/video/ramp.ts`) is for blocks on a surface, level or tilted: a box pushed across a
   floor with friction, a block on an inclined plane, blocks tied by strings, a block pulled by a
