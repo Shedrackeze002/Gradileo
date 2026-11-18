@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkMagnets, checkScript, type Explainer, type MagnetsEl } from './script.ts';
-import { balanceReading, barForce, coilSides, coilTorque, fieldAt, magnetLines, magnetsAt, MU0, peakBarForce, polesOf, wireForce } from './magnets.ts';
+import { balanceReading, barForce, coilSides, coilTorque, fieldAt, magnetLines, magnetsAt, MU0, peakBarForce, pickupAt, pickupFlux, pickupPeak, pickupTurns, polesOf, wireForce } from './magnets.ts';
 import { linesBetween } from './fieldlines.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
@@ -600,5 +600,116 @@ describe('checking wires that move, a balance and a coil', () => {
     expect(checkMagnets(motor({ turns: 2.5 })).join(' ')).toContain('whole number of turns');
     expect(checkMagnets(motor({}, { clips: { run: { phases: [{ dur: 2, to: { c: [1, 0] } }] } } })).join(' ')).toContain('stays on its axle');
     expect(checkMagnets(motor({}, { clips: { run: { phases: [{ dur: 2, amps: { x: 1 } }] } } })).join(' ')).toContain('not a wire');
+  });
+});
+
+// A bar magnet on the axis of a coil that is joined to a meter: its north pole faces the coil.
+const pickup = (over: Partial<MagnetsEl> = {}) =>
+  picture({
+    view: [-7, 7, -3, 2],
+    bars: [{ id: 'b', at: [-4, 0], long: 3, thick: 0.8 }],
+    pickup: { id: 'k', at: [2.5, 0], long: 3, radius: 1 },
+    clips: {
+      in: { phases: [{ dur: 2, to: { b: [1, 0] } }] },
+      out: { phases: [{ dur: 2, to: { b: [-4, 0] } }] },
+      fast: { phases: [{ dur: 0.5, to: { b: [1, 0] } }] },
+    },
+    ...over,
+  });
+
+describe('a magnet and a pickup coil', () => {
+  it('has its turns evenly spaced along the coil', () => {
+    expect(pickupTurns(pickup())).toHaveLength(7);
+    expect(pickupTurns(pickup({ pickup: { id: 'k', at: [2.5, 0], long: 3, radius: 1, drawn: 3 } }))).toEqual([1.5, 2.5, 3.5]);
+    expect(pickupTurns(picture())).toEqual([]);
+  });
+
+  it('has more flux through the coil when the magnet is nearer, and most when the magnet is inside it', () => {
+    const el = pickup({ clips: { step: { phases: [{ dur: 1, to: { b: [-2, 0] } }, { dur: 1, to: { b: [2.5, 0] } }, { dur: 1, to: { b: [6, 0] } }] } } });
+    const [far, near, inside, past] = [0, 1, 2, 3].map((t) => pickupFlux(el, magnetsAt(el, [['step', t]])));
+    expect(far).toBeGreaterThan(0);
+    expect(near).toBeGreaterThan(far);
+    expect(inside).toBeGreaterThan(near);
+    expect(past).toBeLessThan(inside);
+    expect(past).toBeGreaterThan(0);
+  });
+
+  it('has a flux that does not jump as a pole passes through a turn', () => {
+    const el = pickup({ pickup: { id: 'k', at: [2.5, 0], long: 3, radius: 1, drawn: 2 }, clips: { through: { phases: [{ dur: 10, to: { b: [6, 0] } }] } } });
+    let last = pickupFlux(el, magnetsAt(el));
+    let jump = 0;
+    for (let t = 0.01; t <= 10; t += 0.01) {
+      const now = pickupFlux(el, magnetsAt(el, [['through', t]]));
+      jump = Math.max(jump, Math.abs(now - last));
+      last = now;
+    }
+    const top = pickupFlux(el, magnetsAt(el, [['through', 5.6]]));
+    expect(jump).toBeLessThan(top * 0.03);
+  });
+
+  it('reverses the flux when the magnet is turned end for end', () => {
+    const [el, turned] = [pickup(), pickup({ bars: [{ id: 'b', at: [-4, 0], long: 3, thick: 0.8, angle: 180 }] })];
+    expect(pickupFlux(turned, magnetsAt(turned))).toBeCloseTo(-pickupFlux(el, magnetsAt(el)), 12);
+  });
+
+  it('induces an emf only while the magnet moves', () => {
+    const el = pickup();
+    expect(pickupAt(el).emf).toBe(0);
+    expect(Math.abs(pickupAt(el, [['in', 1]]).emf)).toBeGreaterThan(0);
+    // As it comes to rest inside the coil there is a large flux, but almost no change.
+    expect(Math.abs(pickupAt(el, [['in', 2]]).emf)).toBeLessThan(pickupPeak(el).emf * 0.01);
+    expect(pickupAt(el, [['in', 5]]).emf).toBe(0);
+  });
+
+  it('is the rate at which the flux changes (Faraday\'s law)', () => {
+    const el = pickup();
+    const dt = 1e-3;
+    const rate = (pickupFlux(el, magnetsAt(el, [['in', 1 + dt]])) - pickupFlux(el, magnetsAt(el, [['in', 1 - dt]]))) / (2 * dt);
+    expect(pickupAt(el, [['in', 1]]).emf / -rate).toBeCloseTo(1, 2);
+  });
+
+  it('induces the opposite emf when the magnet is pulled out', () => {
+    const el = pickup();
+    const pushed = pickupAt(el, [['in', 1]]).emf;
+    const pulled = pickupAt(el, [['in', 2], ['out', 1]]).emf;
+    expect(pushed).toBeLessThan(0);
+    expect(pulled).toBeCloseTo(-pushed, 6);
+  });
+
+  it('induces a larger emf when the magnet moves faster: four times the speed, four times the emf', () => {
+    const el = pickup();
+    expect(pickupAt(el, [['fast', 0.25]]).emf / pickupAt(el, [['in', 1]]).emf).toBeCloseTo(4, 1);
+    expect(pickupPeak(el).emf).toBeGreaterThan(Math.abs(pickupAt(el, [['in', 1]]).emf) * 3.9);
+  });
+
+  it('pushes the magnet back as it goes in, and pulls it back as it comes out (Lenz\'s law)', () => {
+    const el = pickup();
+    // Going in, the magnet moves along +x: the push on it is along −x.
+    expect(pickupAt(el, [['in', 1]]).drag).toBeLessThan(0);
+    expect(pickupAt(el, [['in', 2], ['out', 1]]).drag).toBeGreaterThan(0);
+    expect(pickupAt(el, [['in', 3]]).drag).toBe(0);
+  });
+
+  it('makes the near end of the coil a north pole as a north pole comes towards it', () => {
+    // The flux along +x grows, so the field of the induced current is along −x: the emf is counted negative, and the left end is a north pole.
+    expect(pickupAt(pickup(), [['in', 0.8]]).emf).toBeLessThan(0);
+    const south = pickup({ bars: [{ id: 'b', at: [-4, 0], long: 3, thick: 0.8, angle: 180 }] });
+    expect(pickupAt(south, [['in', 0.8]]).emf).toBeGreaterThan(0);
+  });
+
+  it('is checked: the magnet must lie on the axis, fit inside the coil and stay on the axis', () => {
+    expect(checkMagnets(pickup())).toEqual([]);
+    expect(checkMagnets(pickup({ bars: [{ id: 'b', at: [-4, 0.5], long: 3, thick: 0.8 }] })).join(' ')).toContain('along the axis');
+    expect(checkMagnets(pickup({ bars: [{ id: 'b', at: [-4, 0], long: 3, thick: 0.8, angle: 90 }] })).join(' ')).toContain('along the axis');
+    expect(checkMagnets(pickup({ bars: [{ id: 'b', at: [-4, 0], long: 3, thick: 2.4 }] })).join(' ')).toContain('too thick');
+    expect(checkMagnets(pickup({ clips: { up: { phases: [{ dur: 1, to: { b: [0, 1] } }] } } })).join(' ')).toContain('off the axis');
+    expect(checkMagnets(pickup({ clips: { away: { phases: [{ dur: 1, to: { k: [0, 0] } }] } } })).join(' ')).toContain('move the magnet instead');
+    expect(checkMagnets(pickup({ clips: { round: { phases: [{ dur: 1, turn: { b: 90 } }] } } })).join(' ')).toContain('turns a magnet');
+    expect(checkMagnets(pickup({ bars: [] })).join(' ')).toContain('needs a bar magnet');
+    expect(checkMagnets(pickup({ pickup: { id: 'k', at: [6, 0], long: 3, radius: 1 } })).join(' ')).toContain('outside the view');
+    expect(checkMagnets(pickup({ pickup: { id: 'lines', at: [2.5, 0], long: 3, radius: 1 } })).join(' ')).toContain('name of a part');
+    expect(checkMagnets(pickup({ poster: 'in', posterAt: 0.7 }))).toEqual([]);
+    expect(checkMagnets(pickup({ posterAt: 0.7 })).join(' ')).toContain('posterAt');
+    expect(checkMagnets(pickup({ poster: 'in', posterAt: 1.5 })).join(' ')).toContain('posterAt');
   });
 });

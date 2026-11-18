@@ -6,11 +6,13 @@
  * field where it is, a piece of iron shows its domains as small arrows, and a force is orange.
  * The poles of the magnet that makes a uniform field are drawn from one end, with a balance under
  * them if the element has one, and the coil of a motor is an arm on an axle with a wire at each
- * end, a split ring round the axle and two brushes.
+ * end, a split ring round the axle and two brushes. A pickup coil is seen from the side, with the
+ * far half of each turn behind the magnet and the near half in front of it, and a meter whose
+ * needle rests in the middle and swings either way.
  */
 import type { ReactElement } from 'react';
 import type { MagnetsEl } from '../script.ts';
-import { balanceReading, barForce, coilSides, fieldAt, magnetLines, magnetsAt, peakBarForce, wireForce } from '../magnets.ts';
+import { balanceReading, barForce, coilSides, fieldAt, magnetLines, magnetsAt, peakBarForce, pickupAt, pickupPeak, wireForce } from '../magnets.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Num, Span } from './Gravity.tsx';
 import { Arrow, clamp01, FONT, INK2, Text } from './motionKit.tsx';
@@ -53,9 +55,10 @@ function Ring({ cx, cy, amps }: { cx: number; cy: number; amps: number }) {
 export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElState | undefined; w: number; h: number; plays?: Array<[string, number]> }) {
   const p = st?.p ?? 0;
   if (p <= 0) return <div style={{ width: w, height: h }} />;
-  const state = magnetsAt(el, plays ?? st?.plays ?? []);
+  const played = plays ?? st?.plays ?? [];
+  const state = magnetsAt(el, played);
   const part = (name: string) => ownPart(st, name);
-  const [linesPart, compassPart, fieldPart, distancePart, forcePart, weightPart] = ['lines', 'compass', 'field', 'distance', 'force', 'weight'].map(part);
+  const [linesPart, compassPart, fieldPart, distancePart, forcePart, weightPart, currentPart, polesPart] = ['lines', 'compass', 'field', 'distance', 'force', 'weight', 'current', 'poles'].map(part);
   const glow = (id: string) => ((st?.focus[id] ?? 0) > 0 ? { filter: `drop-shadow(0 0 ${14 * (st?.focus[id] ?? 0)}px #fff)` } : undefined);
   const [bars, wires, iron] = [el.bars ?? [], el.wires ?? [], el.iron ?? []];
   const figures = el.figures ?? 2;
@@ -204,6 +207,47 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
     );
   }
 
+  // The pickup coil, seen from the side: the far half of each turn (behind the magnet), the leads and the meter.
+  const pick = el.pickup
+    ? (() => {
+        const k = el.pickup;
+        const drawn = k.drawn ?? 7;
+        const [cx, cy] = [X(k.at[0]), Y(k.at[1])];
+        const [a, pitch] = [k.radius * S, (k.long * S) / drawn];
+        const left = cx - (k.long * S) / 2;
+        // The meter is smaller in a small picture (a thumbnail), so that it stays inside it.
+        const small = Math.max(0.55, Math.min(1, S / 80));
+        const [mx, my] = k.meter ? [X(k.meter[0]), Y(k.meter[1])] : [cx, cy + a + 104 * small];
+        const now = pickupAt(el, played);
+        const peak = pickupPeak(el);
+        // How far the needle swings, from −1 to 1: to the right while the flux along +x grows.
+        const swing = peak.emf > 0 ? Math.max(-1, Math.min(1, -now.emf / peak.emf)) : 0;
+        return { k, drawn, cx, cy, a, pitch, left, right: left + drawn * pitch, mx, my, now, peak, swing, small };
+      })()
+    : null;
+  if (pick) {
+    const { drawn, cy, a, pitch, left, right, mx, my, swing, small } = pick;
+    const turn = rad(52 * swing);
+    const [px, py] = [mx, my + 24];
+    out.push(
+      <g key="pickup-back" style={glow(pick.k.id)}>
+        {Array.from({ length: drawn }, (_, j) => (
+          <line key={j} x1={left + (j + 0.5) * pitch} y1={cy - a} x2={left + (j + 1) * pitch} y2={cy + a} stroke="#6f6a99" strokeWidth={5} strokeLinecap="round" />
+        ))}
+        <path d={`M${left},${cy + a} V${my} H${mx - 60 * small} M${right},${cy + a} V${my} H${mx + 60 * small}`} fill="none" stroke="#b9b4dc" strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
+        <g transform={`translate(${mx} ${my}) scale(${small}) translate(${-mx} ${-my})`}>
+          <rect x={mx - 62} y={my - 42} width={124} height={84} rx={12} fill="#2a2752" stroke={INK3} strokeWidth={2} />
+          <path d={`M${px - 46 * Math.sin(rad(52))},${py - 46 * Math.cos(rad(52))} A46,46 0 0 1 ${px + 46 * Math.sin(rad(52))},${py - 46 * Math.cos(rad(52))}`} fill="none" stroke={INK3} strokeWidth={2.5} />
+          {[-52, -26, 0, 26, 52].map((mark) => (
+            <line key={mark} x1={px + 46 * Math.sin(rad(mark))} y1={py - 46 * Math.cos(rad(mark))} x2={px + (mark === 0 ? 56 : 52) * Math.sin(rad(mark))} y2={py - (mark === 0 ? 56 : 52) * Math.cos(rad(mark))} stroke={mark === 0 ? INK : INK3} strokeWidth={mark === 0 ? 3 : 2} strokeLinecap="round" />
+          ))}
+          <line x1={px} y1={py} x2={px + 44 * Math.sin(turn)} y2={py - 44 * Math.cos(turn)} stroke={TONES.bad} strokeWidth={3.5} strokeLinecap="round" />
+          <circle cx={px} cy={py} r={5} fill={INK2} />
+        </g>
+      </g>,
+    );
+  }
+
   // Bar magnets: the north half red and the south half blue, each with its letter.
   for (const b of bars) {
     const [cx, cy] = [X(state.at[b.id][0]), Y(state.at[b.id][1])];
@@ -240,6 +284,45 @@ export function MagnetsView({ el, st, w, h, plays }: { el: MagnetsEl; st: ElStat
       const a = state.angle[b.id];
       const lift = Math.abs(Math.cos(rad(a))) * ((b.thick * S) / 2) + Math.abs(Math.sin(rad(a))) * ((b.long * S) / 2) + 18;
       out.push(<Arrow key={`push-${b.id}`} x={X(state.at[b.id][0])} y={Y(state.at[b.id][1]) - lift} len={Math.max(16, 90 * Math.sqrt(f / peak))} turn={deg(Math.atan2(fy, fx))} color={PUSH} opacity={forcePart} />);
+    }
+  }
+
+  // The near half of each turn of the pickup coil, in front of the magnet, with the induced current, the poles it gives the coil and its push on the magnet.
+  if (pick) {
+    const { k, drawn, cy, a, pitch, left, right, now, peak, swing } = pick;
+    const strength = clamp01(Math.abs(swing) / 0.12);
+    // The strand runs up the screen to the right. The induced current goes up it when the field it makes inside the coil is along −x.
+    const along = Math.atan2(-2 * a, pitch / 2);
+    const way = now.emf < 0 ? along : along + Math.PI;
+    out.push(
+      <g key="pickup-front" style={glow(k.id)}>
+        {Array.from({ length: drawn }, (_, j) => (
+          <line key={j} x1={left + j * pitch} y1={cy + a} x2={left + (j + 0.5) * pitch} y2={cy - a} stroke="#d9d5f2" strokeWidth={5} strokeLinecap="round" />
+        ))}
+        {currentPart > 0 &&
+          strength > 0 &&
+          Array.from({ length: drawn }, (_, j) => (
+            <polygon key={j} points="13,0 -8,8.5 -8,-8.5" transform={`translate(${left + (j + 0.25) * pitch} ${cy}) rotate(${deg(way)})`} fill={CURRENT} stroke="#0d0c24" strokeWidth={1.5} opacity={currentPart * strength} />
+          ))}
+        {polesPart > 0 &&
+          strength > 0 &&
+          [
+            [left - 2, now.emf > 0 ? 'S' : 'N'],
+            [right + 2, now.emf > 0 ? 'N' : 'S'],
+          ].map(([x, letter]) => (
+            <g key={letter as string} opacity={polesPart * strength}>
+              <rect x={(x as number) - 17} y={cy - a - 50} width={34} height={34} rx={7} fill={letter === 'N' ? NORTH : SOUTH} stroke="#0d0c24" strokeWidth={2} />
+              <Text x={x as number} y={cy - a - 33} size={22} color="#fff" weight={700}>{letter as string}</Text>
+            </g>
+          ))}
+      </g>,
+    );
+    // The coil pushes the magnet against its motion: an arrow over the end of the magnet that is further from the coil.
+    if (forcePart > 0 && peak.drag > 0 && Math.abs(now.drag) > peak.drag * 0.01 && bars.length) {
+      const b = bars[0];
+      const [bx, by] = [X(state.at[b.id][0]), Y(state.at[b.id][1])];
+      const end = bx + (bx < pick.cx ? -1 : 1) * ((b.long * S) / 2 - 22);
+      out.push(<Arrow key="drag" x={end} y={by - (b.thick * S) / 2 - 20} len={34 + 80 * Math.sqrt(Math.abs(now.drag) / peak.drag)} turn={now.drag > 0 ? 0 : 180} color={PUSH} opacity={forcePart} />);
     }
   }
 

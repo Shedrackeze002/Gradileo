@@ -127045,5 +127045,99 @@
         "working": "$F = NBIL = 50 \\times 0.30 \\times 2.0 \\times 0.060 = 1.8$ N."
       }
     ]
+  },
+  "p30-2-10": {
+    "lessonId": "p30-2-10",
+    "title": "Electromagnetic Induction",
+    "duration": 310,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A magnet and a coil",
+        "t": 24.422
+      },
+      {
+        "title": "Magnetic flux",
+        "t": 82.27
+      },
+      {
+        "title": "Faraday's law",
+        "t": 147.824
+      },
+      {
+        "title": "Your turn",
+        "t": 225.181
+      },
+      {
+        "title": "Summary",
+        "t": 274.227
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-10:q",
+        "t": 244.921,
+        "prompt": "The magnetic flux through each turn of a 500-turn coil falls steadily from 8.0 mWb to 2.0 mWb in 0.60 s. What is the size of the induced emf?",
+        "choices": [
+          "0.010 V",
+          "5.0 V",
+          "6.7 V",
+          "5000 V"
+        ],
+        "answer": 1,
+        "working": "$\\Delta\\Phi = 6.0$ mWb $= 0.0060$ Wb, so $\\varepsilon = N\\dfrac{\\Delta\\Phi}{\\Delta t} = 500 \\times \\dfrac{0.0060}{0.60} = 5.0$ V."
+      }
+    ]
+  },
+  "p30-2-10-b": {
+    "lessonId": "p30-2-10",
+    "title": "Moving Conductors and Lenz's Law",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A rod on rails",
+        "t": 25.566
+      },
+      {
+        "title": "Lenz's law",
+        "t": 107.051
+      },
+      {
+        "title": "The force on the rod",
+        "t": 152.966
+      },
+      {
+        "title": "Your turn",
+        "t": 211.868
+      },
+      {
+        "title": "Summary",
+        "t": 260.193
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-10-b:q",
+        "t": 233.554,
+        "prompt": "An aircraft with a wingspan of 40 m flies level at 250 m/s where the vertical part of the Earth's magnetic field is $5.0 \\times 10^{-5}$ T. What emf is induced between its wingtips?",
+        "choices": [
+          "0.0020 V",
+          "0.013 V",
+          "0.50 V",
+          "$2.0 \\times 10^{8}$ V"
+        ],
+        "answer": 2,
+        "working": "The wings cut across the vertical field: $\\varepsilon = BLv = 5.0 \\times 10^{-5} \\times 40 \\times 250 = 0.50$ V."
+      }
+    ]
   }
 }

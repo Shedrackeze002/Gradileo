@@ -1414,8 +1414,17 @@ items ship or decisions change.
        fixed wires it rocks and stops upright, and with a split-ring commutator it keeps
        turning. The videos: `p30-2-9` (The Force on a Wire) and `p30-2-9-b` (The Electric
        Motor).
-     - Next: the videos of lesson 2.10 (induction), then Units 3 and 4. The physics lessons have
-       no tutor recordings yet.
+     - Done (18 November 2026): **the first two videos of lesson 2.10** (induction). In the
+       `magnets` picture a bar magnet can be pushed into a coil that is joined to a meter
+       (`pickup`): the flux through the turns is worked out from the poles of the magnet, and
+       the needle swings with the rate at which it changes. A new picture, `induction`
+       (`src/video/induction.ts`), is a circuit in a field through the page: a coil in a field
+       that changes steadily (the meter reads N ΔΦ ÷ Δt), or a rod that slides along two rails
+       (ε = BLv, I = ε ÷ R, and the force BIL back on the rod, which slows a rod that is let
+       go). The videos: `p30-2-10` (Electromagnetic Induction) and `p30-2-10-b` (Moving
+       Conductors and Lenz's Law).
+     - Next: the last two videos of lesson 2.10 (the generator, transformers), then Units 3 and
+       4. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

@@ -97,7 +97,8 @@ built when the first unit that needs it is reached.
 | Rays (`rays`) | Reflection and refraction; mirrors and lenses to come | Grade 10, Unit 4 | Built; more for Grade 12 |
 | Circuits (`circuit`) | Charges flowing through wires, resistors and junctions, with meters; a resistor in series with parallel branches, and a battery with internal resistance | Grade 10, Unit 5; Grade 12, Unit B | Built |
 | Charges and fields (`charges`) | Electrons that cross between objects, Coulomb's law and the net force; field lines, parallel plates, potential and a charge moving in an electric field; a magnetic field into or out of the page, so a charge moves in a circle (velocity selector, mass spectrometer) | Grade 12, Unit B | Built |
-| Magnets and currents (`magnets`) | Bar magnets, compasses, iron domains, the Earth's field, and the field of a wire and of a solenoid; the force on a wire (a wire that floats, a magnet on a balance) and the motor coil with its commutator; induction to come | Grade 12, Unit B | Fields, the force on a wire and the motor built; induction to build | |
+| Magnets and currents (`magnets`) | Bar magnets, compasses, iron domains, the Earth's field, and the field of a wire and of a solenoid; the force on a wire (a wire that floats, a magnet on a balance) and the motor coil with its commutator; a magnet pushed into a coil joined to a meter | Grade 12, Unit B | Built; a generator to come |
+| Induction (`induction`) | A circuit in a field through the page: a coil in a changing field (Faraday's law) and a rod on rails (ε = BLv, Lenz's law, the force on the rod); a transformer to come | Grade 12, Unit B | Coil and rails built; transformer to build |
 | Particles | Photons, scattering, radioactive decay | Grade 12, Unit C | To build, shared with chemistry's remake |
 
 ## What physics needs that the platform does not have
