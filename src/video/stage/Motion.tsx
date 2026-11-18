@@ -958,7 +958,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
           const last = i === rows.length - 1;
           if (last && total <= 0) return null;
           return (
-            <g key={r.name} opacity={last ? total : 1}>
+            <g key={i} opacity={last ? total : 1}>
               <Text x={left - 16} y={y + 18} anchor="end" color={last ? NET : INK}>
                 {r.name}
               </Text>
