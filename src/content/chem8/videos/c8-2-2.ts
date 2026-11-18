@@ -1,17 +1,8 @@
-import type { Explainer, ParticlesEl } from '@/video/script.ts';
+import type { Explainer } from '@/video/script.ts';
+import { hammeredCopper } from '../../chem10/videos/lib/c10-particles.ts';
 
-// The particles here are simulated (src/video/particles.ts). A push moves the bar's top rows to the
-// right and its bottom rows to the left, as a hammer blow does: copper's rows of atoms slide over
-// one another, and the bar changes shape but stays in one piece.
-
-const hit: ParticlesEl = {
-  kind: 'particles',
-  id: 'hit',
-  boxes: [{ id: 'cu', state: 'solid', width: 26, height: 6, cols: 14, bare: true, kinds: [{ n: 56, bond: 3, tone: 'opp', name: 'copper atom' }], label: 'copper, a metal' }],
-  clips: { hit: { phases: [{ dur: 4, push: { cu: 0.8 } }, { dur: 1.5, push: { cu: 0 } }] } },
-  key: true,
-  height: 360,
-};
+// The particles here are simulated (src/video/particles.ts); see hammeredCopper.
+const hit = hammeredCopper('hit');
 
 const video: Explainer = {
   id: 'c8-2-2',

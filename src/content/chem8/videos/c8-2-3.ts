@@ -1,45 +1,8 @@
-import type { Explainer, ParticleBox, ParticlesEl, Tone } from '@/video/script.ts';
+import type { Explainer } from '@/video/script.ts';
+import { alkaliInWater } from '../../chem10/videos/lib/c10-particles.ts';
 
-// The particles here are simulated (src/video/particles.ts). A piece of each alkali metal sits in
-// water: a water particle that meets the metal sets a hydrogen atom loose and leaves the metal
-// dissolved (as its hydroxide), and two loose hydrogen atoms join as a gas molecule that rises out.
-// Each metal reacts more readily than the one above it, and gives out more heat, so the bubbles
-// and the thermometers rise faster down the group.
-
-const DISSOLVED = { n: 0, bond: 0.15, heavy: 0.3 } as const;
-
-const alkali = (id: string, name: string, tone: Tone, chance: number, heat: number): ParticleBox => ({
-  id,
-  state: 'liquid',
-  width: 8,
-  height: 11,
-  temp: 0.45,
-  escape: [4],
-  lump: true,
-  waits: true,
-  kinds: [
-    { n: 12, bond: 3, heavy: 2, tone, name: 'metal' },
-    { ...DISSOLVED, n: 20, size: 0.8, tone: 'adj', name: 'water' },
-    { ...DISSOLVED, size: 0.8, tone, name: 'dissolved metal' },
-    { ...DISSOLVED, size: 0.8, tone: 'theta', name: 'hydrogen atom' },
-    { ...DISSOLVED, size: 0.8, heavy: -1.5, tone: 'theta', name: 'hydrogen gas' },
-  ],
-  reactions: [
-    { a: 1, b: 0, to: [3, 2], chance, heat },
-    { a: 3, b: 3, to: [4, 4], join: true },
-  ],
-  label: name,
-});
-
-const group1: ParticlesEl = {
-  kind: 'particles',
-  id: 'g1',
-  boxes: [alkali('li', 'lithium', 'good', 0.0003, 0.01), alkali('na', 'sodium', 'opp', 0.0015, 0.03), alkali('k', 'potassium', 'brand', 0.008, 0.07)],
-  clips: { drop: { phases: [{ dur: 1, release: ['li', 'na', 'k'] }, { dur: 12 }] } },
-  thermometers: true,
-  height: 420,
-};
-
+// The particles here are simulated (src/video/particles.ts); see alkaliInWater.
+const group1 = alkaliInWater('g1');
 
 const video: Explainer = {
   id: 'c8-2-3',

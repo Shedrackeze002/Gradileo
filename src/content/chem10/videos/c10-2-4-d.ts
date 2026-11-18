@@ -1,6 +1,7 @@
 import type { Explainer } from '@/video/script.ts';
 import { periodicTable } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
+import { fillRow } from './lib/c10-atoms.ts';
 
 const METALS = ['Li', 'Be', 'Na', 'Mg', 'Al', 'K', 'Ca', 'Ga', 'Rb', 'Sr', 'In', 'Sn'];
 const METALLOIDS = ['B', 'Si', 'Ge', 'As', 'Sb', 'Te'];
@@ -74,6 +75,31 @@ const video: Explainer = {
         { say: 'Elements to the left of the staircase are metals, and elements to the right of it are non-metals.', show: ['pt.table', 'pt.metalloids', 'pt.metals', 'pt.nonmetals', 'b.0', 'b.1'] },
         { say: 'Moving across a period from left to right, the elements become less metallic.', show: 'b.2', focus: 'b.2' },
         { say: 'Moving down a group, they become more metallic. Group fourteen runs from carbon, a non-metal, through the metalloids silicon and germanium, to tin and lead, which are metals.', show: 'b.3', focus: 'b.3' },
+      ],
+    },
+    {
+      chapter: 'Across period three, up close',
+      layout: 'center',
+      main: [
+        fillRow(
+          'p3',
+          [
+            ['na', 'Na', 11, 'sodium', 'opp'],
+            ['mg', 'Mg', 12, 'magnesium', 'opp'],
+            ['al', 'Al', 13, 'aluminium', 'opp'],
+            ['si', 'Si', 14, 'silicon', 'brand'],
+            ['p', 'P', 15, 'phosphorus', 'adj'],
+            ['s', 'S', 16, 'sulfur', 'adj'],
+            ['cl', 'Cl', 17, 'chlorine', 'adj'],
+            ['ar', 'Ar', 18, 'argon', 'good'],
+          ],
+          { gap: 4.4, each: 1.2, height: 360 },
+        ),
+      ],
+      lines: [
+        { say: 'Why do elements become less metallic across a period? Here is period three, up close, from sodium to argon.', show: ['p3', 'p3.labels'] },
+        { say: 'Watch the outer shell fill. Sodium has one outer electron, magnesium two, aluminium three, and so on, up to eight in argon.', play: 'p3.fill', show: 'p3.arrangement' },
+        { say: 'Metals have few outer electrons, which they lose when they react. Further along the row, the atoms have more outer electrons, and they gain electrons instead, like non-metals. Silicon, in the middle with four, sits on the staircase.', focus: 'p3.si' },
       ],
     },
     {

@@ -1,31 +1,10 @@
-import type { AtomsEl, Explainer } from '@/video/script.ts';
+import type { Explainer } from '@/video/script.ts';
+import { periodTwo } from '../../chem10/videos/lib/c10-atoms.ts';
 
 // The atoms here are drawn by src/video/atoms.ts. Period two, lithium to neon, starts with no
 // electrons; the clip fills each atom in turn, so each has one more proton and one more electron
 // than the one before it, and the atomic number steps up by one along the period.
-
-const P2: Array<[string, string, number]> = [
-  ['li', 'Li', 3],
-  ['be', 'Be', 4],
-  ['b', 'B', 5],
-  ['c', 'C', 6],
-  ['n', 'N', 7],
-  ['o', 'O', 8],
-  ['f', 'F', 9],
-  ['ne', 'Ne', 10],
-];
-const NAMES: Record<string, string> = { li: 'lithium', be: 'beryllium', b: 'boron', c: 'carbon', n: 'nitrogen', o: 'oxygen', f: 'fluorine', ne: 'neon' };
-
-const period2: AtomsEl = {
-  kind: 'atoms',
-  id: 'p2',
-  span: [32, 6],
-  atoms: P2.map(([id, symbol, protons], i) => ({ id, symbol, protons, electrons: 0, at: [2 + i * 4, 3] as [number, number], tone: i < 2 ? 'opp' : i < 7 ? 'adj' : 'good', name: NAMES[id] })),
-  clips: { fill: { phases: [{ dur: 0.5 }, ...P2.map(([id, , protons]) => ({ dur: 1.4, fill: { [id]: protons } }))] } },
-  poster: 'fill',
-  height: 340,
-};
-
+const period2 = periodTwo('p2');
 
 const video: Explainer = {
   id: 'c8-2-1',

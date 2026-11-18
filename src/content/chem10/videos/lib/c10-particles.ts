@@ -584,3 +584,57 @@ export const saltCrystals = (id: string, height = 420): ParticlesEl => ({
   speed: 2.5,
   height,
 });
+
+/**
+ * Lithium, sodium and potassium in water (clip `drop`), shared with Chemistry 8. A water particle
+ * that meets the metal sets a hydrogen atom loose and leaves the metal dissolved (as its
+ * hydroxide), and two loose hydrogen atoms join as a gas molecule that rises out. Each metal reacts
+ * more readily than the one above it, and gives out more heat, so the bubbles and the thermometers
+ * rise faster down the group.
+ */
+export const alkaliInWater = (id: string, height = 420): ParticlesEl => {
+  const box = (bid: string, name: string, tone: Tone, chance: number, heat: number): ParticleBox => ({
+    id: bid,
+    state: 'liquid',
+    width: 8,
+    height: 11,
+    temp: 0.45,
+    escape: [4],
+    lump: true,
+    waits: true,
+    kinds: [
+      { n: 12, bond: 3, heavy: 2, tone, name: 'metal' },
+      { ...DISSOLVED, n: 20, size: 0.8, tone: 'adj', name: 'water' },
+      { ...DISSOLVED, size: 0.8, tone, name: 'dissolved metal' },
+      { ...DISSOLVED, size: 0.8, tone: 'theta', name: 'hydrogen atom' },
+      { ...DISSOLVED, size: 0.8, heavy: -1.5, tone: 'theta', name: 'hydrogen gas' },
+    ],
+    reactions: [
+      { a: 1, b: 0, to: [3, 2], chance, heat },
+      { a: 3, b: 3, to: [4, 4], join: true },
+    ],
+    label: name,
+  });
+  return {
+    kind: 'particles',
+    id,
+    boxes: [box('li', 'lithium', 'good', 0.0003, 0.01), box('na', 'sodium', 'opp', 0.0015, 0.03), box('k', 'potassium', 'brand', 0.008, 0.07)],
+    clips: { drop: { phases: [{ dur: 1, release: ['li', 'na', 'k'] }, { dur: 12 }] } },
+    thermometers: true,
+    height,
+  };
+};
+
+/**
+ * A copper bar hit (clip `hit`), shared with Chemistry 8: a push moves its top rows to the right and
+ * its bottom rows to the left, as a hammer blow does, and the rows of atoms slide over one another,
+ * so the bar changes shape but stays in one piece.
+ */
+export const hammeredCopper = (id: string, height = 360): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'cu', state: 'solid', width: 26, height: 6, cols: 14, bare: true, kinds: [{ n: 56, bond: 3, tone: 'opp', name: 'copper atom' }], label: 'copper, a metal' }],
+  clips: { hit: { phases: [{ dur: 4, push: { cu: 0.8 } }, { dur: 1.5, push: { cu: 0 } }] } },
+  key: true,
+  height,
+});

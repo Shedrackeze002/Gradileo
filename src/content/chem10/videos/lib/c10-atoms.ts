@@ -117,3 +117,40 @@ export const hydride = (id: string, centre: { symbol: string; protons: number; n
     height,
   };
 };
+
+/**
+ * Atoms that start with no electrons (`[id, symbol, protons, name, tone]`), in a row, and the clip
+ * `fill` gives each in turn as many electrons as it has protons: along a period, each has one more
+ * than the last; down a group, each has one more shell. Used by Chemistry 8 and Chemistry 10.
+ */
+export const fillRow = (id: string, row: Array<[string, string, number, string, Tone]>, o: { gap?: number; height?: number; each?: number } = {}): AtomsEl => {
+  const gap = o.gap ?? 4;
+  const tall = Math.max(...row.map(([, , p]) => (p > 18 ? 4 : p > 10 ? 3 : p > 2 ? 2 : 1)));
+  const h = 1.2 * tall + 2.4;
+  return {
+    kind: 'atoms',
+    id,
+    span: [gap * row.length, h],
+    atoms: row.map(([aid, symbol, protons, name, tone], i) => ({ id: aid, symbol, protons, electrons: 0, at: [gap / 2 + i * gap, h / 2] as [number, number], tone, name })),
+    clips: { fill: { phases: [{ dur: 0.5 }, ...row.map(([aid, , protons]) => ({ dur: o.each ?? 1.4, fill: { [aid]: protons } }))] } },
+    poster: 'fill',
+    height: o.height ?? 340,
+  };
+};
+
+/** Period two, lithium to neon, filling one atom after another (clip `fill`). */
+export const periodTwo = (id: string, height = 340): AtomsEl =>
+  fillRow(
+    id,
+    [
+      ['li', 'Li', 3, 'lithium', 'opp'],
+      ['be', 'Be', 4, 'beryllium', 'opp'],
+      ['b', 'B', 5, 'boron', 'adj'],
+      ['c', 'C', 6, 'carbon', 'adj'],
+      ['n', 'N', 7, 'nitrogen', 'adj'],
+      ['o', 'O', 8, 'oxygen', 'adj'],
+      ['f', 'F', 9, 'fluorine', 'adj'],
+      ['ne', 'Ne', 10, 'neon', 'good'],
+    ],
+    { height },
+  );
