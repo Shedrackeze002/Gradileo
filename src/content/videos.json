@@ -126845,5 +126845,103 @@
         "working": "Change to metres: $r = 0.030$ m. $B = \\dfrac{\\mu_0 I}{2\\pi r} = \\dfrac{4\\pi \\times 10^{-7} \\times 6.0}{2\\pi \\times 0.030} = 4.0 \\times 10^{-5}$ T."
       }
     ]
+  },
+  "p30-2-8": {
+    "lessonId": "p30-2-8",
+    "title": "The Force on a Moving Charge",
+    "duration": 321,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Only a moving charge",
+        "t": 24.715
+      },
+      {
+        "title": "Which way?",
+        "t": 115.419
+      },
+      {
+        "title": "The velocity selector",
+        "t": 166.495
+      },
+      {
+        "title": "Your turn",
+        "t": 231.319
+      },
+      {
+        "title": "Summary",
+        "t": 278.782
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-8:q",
+        "t": 249.78,
+        "prompt": "An electron (charge $1.60 \\times 10^{-19}$ C) moves at $5.0 \\times 10^{6}$ m/s at right angles to a magnetic field of 0.20 T. What is the size of the magnetic force on it?",
+        "choices": [
+          "$6.4 \\times 10^{-27}$ N",
+          "$1.6 \\times 10^{-13}$ N",
+          "$4.0 \\times 10^{-12}$ N",
+          "$1.0 \\times 10^{6}$ N"
+        ],
+        "answer": 1,
+        "working": "$F = qvB = 1.60 \\times 10^{-19} \\times 5.0 \\times 10^{6} \\times 0.20 = 1.6 \\times 10^{-13}$ N."
+      }
+    ]
+  },
+  "p30-2-8-b": {
+    "lessonId": "p30-2-8",
+    "title": "Charges Moving in Circles",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A circle",
+        "t": 15.594
+      },
+      {
+        "title": "What sets the radius?",
+        "t": 70.569
+      },
+      {
+        "title": "The time for one circle",
+        "t": 112.813
+      },
+      {
+        "title": "The mass spectrometer",
+        "t": 156.048
+      },
+      {
+        "title": "Your turn",
+        "t": 214.476
+      },
+      {
+        "title": "Summary",
+        "t": 263.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-8-b:q",
+        "t": 231.689,
+        "prompt": "A proton ($m = 1.67 \\times 10^{-27}$ kg, $q = 1.60 \\times 10^{-19}$ C) moves at $2.0 \\times 10^{6}$ m/s at right angles to a magnetic field of 0.25 T. What is the radius of its path?",
+        "choices": [
+          "1.2 cm",
+          "2.1 cm",
+          "8.4 cm",
+          "33 cm"
+        ],
+        "answer": 2,
+        "working": "$r = \\dfrac{mv}{qB} = \\dfrac{1.67 \\times 10^{-27} \\times 2.0 \\times 10^{6}}{1.60 \\times 10^{-19} \\times 0.25} = 0.084$ m, which is 8.4 cm."
+      }
+    ]
   }
 }
