@@ -21,7 +21,7 @@ const puck: FlightEl = {
 };
 
 /** Two cars that reach a crossroads together, one from the west and one from the south, and lock together. */
-function crossroads(o: { id: string; west: [kg: number, speed: number]; south: [kg: number, speed: number]; view: [number, number, number, number]; arrive: number; after: number; bars?: number; height?: number }): FlightEl {
+function crossroads(o: { id: string; west: [kg: number, speed: number]; south: [kg: number, speed: number]; view: [number, number, number, number]; arrive: number; after: number; bars?: number; height?: number; angleDecimals?: number; velocityScale?: number }): FlightEl {
   const [m1, v1] = o.west;
   const [m2, v2] = o.south;
   return {
@@ -32,10 +32,10 @@ function crossroads(o: { id: string; west: [kg: number, speed: number]; south: [
     poster: 'crash',
     height: o.height ?? 440,
     roads: 7,
-    velocityScale: 9,
-    angleDecimals: 1,
+    velocityScale: o.velocityScale ?? 9,
+    angleDecimals: o.angleDecimals ?? 0,
     collisions: { stick: true },
-    ...(o.bars ? { momentum: { max: o.bars } } : {}),
+    ...(o.bars ? { momentum: { max: o.bars, scale: 190 / o.bars } } : {}),
     bodies: [
       { id: 'east', shape: 'car', label: `${m1} kg`, mass: m1, radius: 2.4, labelAt: 'above', at: [-v1 * o.arrive, 0], v: [v1, 0], tone: 'adj' },
       { id: 'north', shape: 'car', label: `${m2} kg`, mass: m2, radius: 2.4, labelAt: 'right', at: [0, -v2 * o.arrive], v: [0, v2], tone: 'opp' },
@@ -45,7 +45,7 @@ function crossroads(o: { id: string; west: [kg: number, speed: number]; south: [
 }
 
 // The lesson's crash: 1200 kg east at 20 m/s and 1800 kg north at 10 m/s. The wreck moves at 10 m/s, 36.9° north of east.
-const crash = crossroads({ id: 'crash', west: [1200, 20], south: [1800, 10], view: [-28, 26, -14, 18], arrive: 1.2, after: 1, bars: 30000 });
+const crash = crossroads({ id: 'crash', west: [1200, 20], south: [1800, 10], view: [-28, 26, -14, 18], arrive: 1.2, after: 0.8, bars: 30000, angleDecimals: 1, velocityScale: 6.5 });
 
 // The lesson's skid marks: 1500 kg east at 12 m/s, and the wreck slides off at 40° north of east,
 // so the 1000 kg car was driving north at 18 000 × tan 40° ÷ 1000 = 15.1 m/s.

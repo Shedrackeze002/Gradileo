@@ -433,10 +433,11 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
     if (b.label && !(shape === 'puck' && b.label.length <= 2)) {
       // The name sits over the body, or under it while it climbs, unless the script gives it a side
       // (where it is lifted clear of the ground line once the body has landed). Over a lifted
-      // stream arrow it goes higher.
+      // stream arrow it goes higher. While the total momentum of several bodies is drawn at their
+      // centre of mass, their names give way to its numbers (the bars keep the names).
       const where = b.labelAt ?? (s.vy > 0 && by + 46 < py + ph ? 'below' : 'above');
       const [lx, ly, anchor] = where === 'left' ? [bx - R - 12, by - (s.landed ? 16 : 0), 'end' as const] : where === 'right' ? [bx + R + 12, by - (s.landed ? 16 : 0), 'start' as const] : [bx, by + (where === 'below' ? R + 19 : lifted ? -R - 37 : -R - 19), 'middle' as const];
-      out.push(<Text key={`name-${b.id}`} x={lx} y={ly} anchor={anchor} size={19} color={c}>{b.label}</Text>);
+      out.push(<Text key={`name-${b.id}`} x={lx} y={ly} anchor={anchor} size={19} color={c} opacity={massive.length > 1 ? 1 - sum : 1}>{b.label}</Text>);
     }
     // The velocity: from the body (the edge of a puck or a car), or once for bodies locked together, from their centre of mass.
     const fast = Math.hypot(s.vx, s.vy);
@@ -466,6 +467,7 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
     const size = Math.hypot(east, north);
     const most = el.momentum?.max ?? Math.hypot(moving.total[0], moving.total[1]);
     // Each side carries its size: the two parts outside the triangle, and the total on the far side of its arrow from the right angle.
+    // The east part's number sits past the middle of its arrow, clear of the bodies at the centre of mass.
     const both = Math.abs(east) > 30 && Math.abs(north) > 30;
     const away = east * north >= 0 ? 1 : -1;
     const [nx, ny] = size > 0 ? [(away * -north) / size, (away * -east) / size] : [0, 0];
@@ -475,7 +477,7 @@ export function FlightView({ el, st, w, h, plays }: { el: FlightEl; st: ElState 
         <Arrow x={cx + east} y={cy} len={north} axis="y" color={UP} weight={7} />
         <Arrow x={cx} y={cy} len={size} turn={Math.atan2(moving.total[1], moving.total[0]) * DEG} color={NET} weight={8} />
         {massive.length > 1 && <circle cx={cx} cy={cy} r={5} fill={NET} />}
-        {both && <Text x={cx + east / 2} y={cy + (north >= 0 ? 22 : -22)} size={19} color={ACROSS}>{momentumText(moving.total[0], most)}</Text>}
+        {both && <Text x={cx + east * 0.6} y={cy + (north >= 0 ? 22 : -22)} size={19} color={ACROSS}>{momentumText(moving.total[0], most)}</Text>}
         {both && <Text x={cx + east + (east >= 0 ? 14 : -14)} y={cy - north / 2} anchor={east >= 0 ? 'start' : 'end'} size={19} color={UP}>{momentumText(moving.total[1], most)}</Text>}
         {size > 40 && <Text x={cx + east / 2 + nx * 20} y={cy - north / 2 + ny * 20} anchor={nx < -0.3 ? 'end' : nx > 0.3 ? 'start' : 'middle'} size={19} color={NET}>{`${momentumText(Math.hypot(moving.total[0], moving.total[1]), most)} kg·m/s`}</Text>}
       </g>,
