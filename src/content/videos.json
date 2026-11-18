@@ -126099,5 +126099,217 @@
         "working": "The third piece has 3 kg·m/s west and 4 kg·m/s south: $\\sqrt{3^2 + 4^2} = 5\\ \\text{kg·m/s}$. Speed: $5 \\div 0.5 = 10\\ \\text{m/s}$."
       }
     ]
+  },
+  "p30-2-1": {
+    "lessonId": "p30-2-1",
+    "title": "Electric Charge",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of charge",
+        "t": 23.759
+      },
+      {
+        "title": "Where charge comes from",
+        "t": 55.81
+      },
+      {
+        "title": "Only electrons move",
+        "t": 95.718
+      },
+      {
+        "title": "Counting charge",
+        "t": 140.612
+      },
+      {
+        "title": "Conductors and insulators",
+        "t": 202.176
+      },
+      {
+        "title": "Your turn",
+        "t": 236.469
+      },
+      {
+        "title": "Summary",
+        "t": 271.15
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-1:q",
+        "t": 247.929,
+        "prompt": "A plastic comb gains $5.0 \\times 10^{10}$ electrons when it is run through dry hair. What is the charge of the comb? ($e = 1.60 \\times 10^{-19}$ C)",
+        "choices": [
+          "$+8.0\\ \\text{nC}$",
+          "$+3.2\\ \\text{nC}$",
+          "$-3.2\\ \\text{nC}$",
+          "$-8.0\\ \\text{nC}$"
+        ],
+        "answer": 3,
+        "working": "$q = Ne = 5.0 \\times 10^{10} \\times 1.60 \\times 10^{-19} = 8.0 \\times 10^{-9}$ C. The comb gained electrons, so its charge is $-8.0$ nC."
+      }
+    ]
+  },
+  "p30-2-1-b": {
+    "lessonId": "p30-2-1",
+    "title": "Charging Objects",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Charging by friction",
+        "t": 17.611
+      },
+      {
+        "title": "Charging by contact",
+        "t": 48.866
+      },
+      {
+        "title": "Sharing a charge",
+        "t": 80.133
+      },
+      {
+        "title": "Charging by induction",
+        "t": 112.149
+      },
+      {
+        "title": "The order matters",
+        "t": 156.959
+      },
+      {
+        "title": "Your turn",
+        "t": 181.96
+      },
+      {
+        "title": "Summary",
+        "t": 219.38
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-1-b:q",
+        "t": 198.366,
+        "prompt": "Two identical metal spheres on insulating stands carry charges of −10 nC and +2 nC. They are touched together and moved apart. What is the charge of each sphere?",
+        "choices": [
+          "$-4\\ \\text{nC}$",
+          "$-6\\ \\text{nC}$",
+          "$-8\\ \\text{nC}$",
+          "$+4\\ \\text{nC}$"
+        ],
+        "answer": 0,
+        "working": "Charge is conserved: the total is $(-10) + 2 = -8$ nC. Identical spheres share it equally, so each has $-4$ nC."
+      }
+    ]
+  },
+  "p30-2-2": {
+    "lessonId": "p30-2-2",
+    "title": "Coulomb's Law",
+    "duration": 320,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Coulomb's law",
+        "t": 22.259
+      },
+      {
+        "title": "A worked example",
+        "t": 63.9
+      },
+      {
+        "title": "An inverse square law",
+        "t": 120.52
+      },
+      {
+        "title": "Finding the distance",
+        "t": 156.293
+      },
+      {
+        "title": "Inside a hydrogen atom",
+        "t": 190.44
+      },
+      {
+        "title": "Your turn",
+        "t": 237.161
+      },
+      {
+        "title": "Summary",
+        "t": 282.106
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-2:q",
+        "t": 255.14,
+        "prompt": "Two point charges of +4.0 μC and +2.0 μC are 0.20 m apart. What force does each exert on the other? ($k = 8.99 \\times 10^{9}\\ \\text{N·m}^2/\\text{C}^2$)",
+        "choices": [
+          "0.36 N, a repulsion",
+          "1.8 N, a repulsion",
+          "1.8 N, an attraction",
+          "3.6 N, an attraction"
+        ],
+        "answer": 1,
+        "working": "$F = \\dfrac{8.99 \\times 10^{9} \\times 4.0 \\times 10^{-6} \\times 2.0 \\times 10^{-6}}{0.20^2} = \\dfrac{0.0719}{0.04} = 1.8$ N. Both charges are positive, so they repel."
+      }
+    ]
+  },
+  "p30-2-2-b": {
+    "lessonId": "p30-2-2",
+    "title": "The Net Electric Force",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 18.985
+      },
+      {
+        "title": "Three charges on a line",
+        "t": 47.887
+      },
+      {
+        "title": "Forces at right angles",
+        "t": 130.222
+      },
+      {
+        "title": "Your turn",
+        "t": 206.69
+      },
+      {
+        "title": "Summary",
+        "t": 260.022
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-2-b:q",
+        "t": 235.014,
+        "prompt": "Charge A (+4.0 μC) is 0.30 m west of charge B (+1.0 μC). Charge C (−4.0 μC) is 0.30 m east of B. Each of them exerts a force of 0.40 N on B. What is the net force on B?",
+        "choices": [
+          "0 N",
+          "0.40 N east",
+          "0.80 N east",
+          "0.80 N west"
+        ],
+        "answer": 2,
+        "working": "A is positive, like B, so it pushes B east. C is negative, so it pulls B east as well. $0.40 + 0.40 = 0.80$ N east."
+      }
+    ]
   }
 }

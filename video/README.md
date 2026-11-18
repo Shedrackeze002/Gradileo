@@ -425,6 +425,37 @@ See `src/video/script.ts` for every element and option. In short:
   2.4 times as wide as it is tall is drawn under the title on the thumbnail, and a square one
   beside it.
 
+- `charges` (`src/video/charges.ts`) is for electric charge and the electric force. Give the
+  `view` (left, right, bottom, top, in metres unless the bodies are drawn large for the eye) and
+  the `bodies`, each with a `charge` in `unit` (`μC` by default; also `C`, `mC`, `nC` and `e`,
+  the elementary charge). Positive is red, negative and every electron blue, an electric force
+  orange and a net force yellow. A body with no `shape` is a point charge with its sign on it,
+  and every force is worked out from Coulomb's law with k = 8.99 × 10⁹ N·m²/C², so the arrows
+  follow as a clip carries a body somewhere else (`to`) or changes its charge (`charge`), and
+  the two arrows of a pair are always the same length. The parts are `charge` (the charge
+  written by each body), `force` (each force on a body, named "from B" when a body with a label
+  has more than one), `net` (their vector sum), `angle` (of the net force, from the east-west
+  line), `distance` (between the first two bodies, or each pair in `spans`) and `velocity`.
+  `pulls` limits which bodies get arrows; `join: true` draws each distance as a dashed line
+  between the two bodies (for charges that are not on one line); `plain: true` is a picture that
+  is not to scale, with r for the distance and no numbers; `decimals` sets how a charge is
+  written, `figures` a distance, `forceFigures` or `forceDecimals` a force, and
+  `notation: 'sci'` writes forces in scientific notation. Bodies with a `mass` move under the
+  forces on them while a phase lets time run (`fly: true`), until they touch.
+  A body with `pairs` shows its charges instead: a `rod`, a `cloth`, a metal `sphere` on an
+  insulating stand, or an `atom` (`pairs` protons in the nucleus and the electrons on shells).
+  Each + mark and each electron dot stands for `mark` units of charge, the + marks never move,
+  and the charge written by a body is counted from the electrons on it, so charge is conserved
+  by construction. A phase moves electrons one after another (`electrons: [{ from: 'fur',
+  to: 'rod', n: 3 }]`, with `'ground'` for the earth), joins a sphere to the ground or cuts the
+  wire (`ground: { ball: true }`), and can show a `note` (the step of a method). The electrons
+  of a metal sphere lean away from a negative body near it, and towards a positive one, by
+  themselves (`sway` sets how easily); those of a rod or a cloth stay where they are. The check
+  follows the electrons through the clips in order, and refuses a body that gives more than it
+  has, or a sphere that sends electrons to the ground with no wire. A view more than about 2.4
+  times as wide as it is tall is drawn under the title on the thumbnail; a picture that shows its
+  electrons is drawn there as it is at the end of its `poster` clip.
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as

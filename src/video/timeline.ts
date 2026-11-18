@@ -3,7 +3,7 @@
  * stage shows at any moment. Rendering is a pure function of that state, so the same script and
  * narration always give the same frames, and a frame that has not changed can be reused.
  */
-import { asList, captionOf, plainMarkdown, sceneElements, type CircleEl, type CircuitEl, type El, type Explainer, type FlightEl, type AtomsEl, type MoleculesEl, type ScatterEl, type ForcesEl, type GravityEl, type MotionEl, type RampEl, type ParticlesEl, type RaysEl, type TryEl, type WaveEl, type RipplesEl } from './script.ts';
+import { asList, captionOf, plainMarkdown, sceneElements, type CircleEl, type CircuitEl, type El, type Explainer, type FlightEl, type AtomsEl, type MoleculesEl, type ScatterEl, type ForcesEl, type GravityEl, type ChargesEl, type MotionEl, type RampEl, type ParticlesEl, type RaysEl, type TryEl, type WaveEl, type RipplesEl } from './script.ts';
 
 /**
  * Timing, in seconds. The pauses give a viewer time to read each new step before the narrator
@@ -59,6 +59,7 @@ export function revealTime(kind: El['kind']): number {
     case 'ramp':
     case 'forces':
     case 'gravity':
+    case 'charges':
     case 'circle':
       return 0.8;
     default:
@@ -97,7 +98,8 @@ export interface Cue {
 export interface Timeline {
   id: string;
   duration: number;
-  scenes: Array<{ start: number; end: number; chapter: string | null; kinds: Record<string, El['kind']>; events: TimelineEvent[] }>;
+  /** `aged` names the elements that move all the time they are shown, besides the kinds that always do (a charges picture with an atom in it). */
+  scenes: Array<{ start: number; end: number; chapter: string | null; kinds: Record<string, El['kind']>; aged?: string[]; events: TimelineEvent[] }>;
   lines: TimedLine[];
   chapters: Array<{ title: string; t: number }>;
   cues: Cue[];
@@ -108,8 +110,8 @@ const r3 = (x: number) => Math.round(x * 1000) / 1000;
 /** After a clip ends, before the next line starts. */
 const AFTER_PLAY = 0.4;
 
-/** An element that plays clips: a motion, boxes of particles, atoms, waves, rays, a circuit, a flight, a ramp, forces in a plane, bodies in space, or bodies on a circle. */
-export type Playable = MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl;
+/** An element that plays clips: a motion, boxes of particles, atoms, waves, rays, a circuit, a flight, a ramp, forces in a plane, bodies in space, charged bodies, or bodies on a circle. */
+export type Playable = MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | CircleEl;
 
 /** How long a clip runs in the video, in seconds (slow motion stretches a motion's phase). */
 export function clipSeconds(el: Playable, clip: string): number {
@@ -127,12 +129,15 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
   x.scenes.forEach((s, si) => {
     const start = t;
     const kinds: Record<string, El['kind']> = {};
+    const aged: string[] = [];
     const tries = new Map<string, TryEl>();
     const motions = new Map<string, Playable>();
     for (const e of sceneElements(s)) {
       kinds[e.id] = e.kind;
+      // The electrons of an atom circle its nucleus whether or not a clip is playing.
+      if (e.kind === 'charges' && e.bodies.some((b) => b.shape === 'atom')) aged.push(e.id);
       if (e.kind === 'try') tries.set(e.id, e);
-      if (e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'molecules' || e.kind === 'scatter' || e.kind === 'wave' || e.kind === 'ripples' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'circle') motions.set(e.id, e);
+      if (e.kind === 'motion' || e.kind === 'particles' || e.kind === 'atoms' || e.kind === 'molecules' || e.kind === 'scatter' || e.kind === 'wave' || e.kind === 'ripples' || e.kind === 'rays' || e.kind === 'circuit' || e.kind === 'flight' || e.kind === 'ramp' || e.kind === 'forces' || e.kind === 'gravity' || e.kind === 'charges' || e.kind === 'circle') motions.set(e.id, e);
     }
     if (s.chapter) {
       chapter = s.chapter;
@@ -187,7 +192,7 @@ export function compile(x: Explainer, durations: Record<string, number>): Timeli
     t += TIMING.sceneOut - TIMING.gap;
     // A delayed clip can start after the events of the line that follows it.
     events.sort((a, b) => a.t - b.t);
-    scenes.push({ start: r3(start), end: r3(t), chapter, kinds, events });
+    scenes.push({ start: r3(start), end: r3(t), chapter, kinds, ...(aged.length ? { aged } : {}), events });
   });
   return { id: x.id, duration: r3(t), scenes, lines, chapters, cues };
 }
@@ -260,7 +265,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
       // A part shown on its own can be hidden on its own; anything else hides the whole element.
       // Showing a whole motion does not show its parts (the velocity arrows, the readout), so
       // one of those can be hidden while the motion stays.
-      if (part !== undefined && part in cur.parts && (!cur.whole || s.kinds[el] === 'motion' || s.kinds[el] === 'wave' || s.kinds[el] === 'ripples' || s.kinds[el] === 'rays' || s.kinds[el] === 'circuit' || s.kinds[el] === 'flight' || s.kinds[el] === 'ramp' || s.kinds[el] === 'forces' || s.kinds[el] === 'gravity' || s.kinds[el] === 'circle' || s.kinds[el] === 'scatter')) {
+      if (part !== undefined && part in cur.parts && (!cur.whole || s.kinds[el] === 'motion' || s.kinds[el] === 'wave' || s.kinds[el] === 'ripples' || s.kinds[el] === 'rays' || s.kinds[el] === 'circuit' || s.kinds[el] === 'flight' || s.kinds[el] === 'ramp' || s.kinds[el] === 'forces' || s.kinds[el] === 'gravity' || s.kinds[el] === 'charges' || s.kinds[el] === 'circle' || s.kinds[el] === 'scatter')) {
         if (!(part in cur.partHidden)) cur.partHidden[part] = ev.t;
       } else cur.hiddenAt = ev.t;
     } else if (ev.kind === 'focus') {
@@ -301,7 +306,7 @@ export function stateAt(tl: Timeline, t: number): FrameState {
     if (s.kinds[el] === 'particles' || s.kinds[el] === 'atoms' || s.kinds[el] === 'molecules') {
       els[el].age = q(t - st.at);
       els[el].started = (starts[el] ?? []).map(([c, at]) => [c, q(at - st.at)]);
-    }
+    } else if (s.aged?.includes(el)) els[el].age = q(t - st.at);
   }
   return { scene: si, fade, chapter: s.chapter, els };
 }
