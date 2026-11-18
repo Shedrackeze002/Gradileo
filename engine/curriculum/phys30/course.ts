@@ -3,8 +3,6 @@
  * four units of Alberta's Physics 30 (docs/PLAN-PHYSICS.md, approved by the owner on 14 November
  * 2026), written for learners anywhere, with one lesson on circuits and one on fission and fusion
  * added because most other school systems examine them at this level.
- *
- * The course is a draft until all four units are in: it is not listed for classes or sign-up.
  */
 import type { CourseMeta, LessonMeta, Outcome, UnitMeta } from '../../types.ts';
 
@@ -179,5 +177,4 @@ export const PHYS30: CourseMeta = {
   outcomes: OUTCOMES,
   units: UNITS,
   lessons: LESSONS,
-  draft: true,
 };

@@ -7,8 +7,9 @@ test('a teacher makes a Grade 10 Physics class from the Physics tab and teaches 
   await page.goto('/t/new-class');
   await expect(page.getByRole('button', { name: /^Grade 10 Physics/ })).toHaveCount(0);
   await page.getByRole('tab', { name: 'Physics' }).click();
-  // The tab opens on the first physics course, with Grade 11 Physics beside it.
+  // The tab opens on the first physics course, with Grade 11 and Grade 12 Physics beside it.
   await expect(page.getByRole('button', { name: /^Grade 11 Physics/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Grade 12 Physics/ })).toBeVisible();
   await expect(page.getByLabel('Class name')).toHaveValue('Physics 10');
   await page.getByRole('button', { name: 'Create class' }).click();
   await page.waitForURL(/\/t\/c\/c_/);
@@ -51,7 +52,7 @@ test('a Grade 10 student who chooses physics is recommended Grade 10 Physics wit
   await page.waitForURL(/\/s$/);
   await expect(page.getByText('Grade 10 Physics · Self-paced with your AI tutor')).toBeVisible();
 
-  // Browse by topic has a Physics tab, with both courses' units and lessons under its topics.
+  // Browse by topic has a Physics tab, with the units and lessons of all three courses under its topics.
   await page.goto('/s/topics');
   await page.getByRole('tab', { name: 'Physics' }).click();
   await expect(page.getByRole('region', { name: 'Motion, forces and energy' })).toBeVisible();
@@ -59,6 +60,9 @@ test('a Grade 10 student who chooses physics is recommended Grade 10 Physics wit
   await expect(page.getByRole('button', { name: /Circuits and electrical power/ })).toBeVisible();
   await expect(page.getByRole('button', { name: /Gravitation, circular motion and orbits/ })).toContainText('Grade 11');
   await expect(page.getByRole('button', { name: /Oscillations: springs and pendulums/ })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Fields, atoms and nuclei' })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Momentum, impulse and collisions/ })).toContainText('Grade 12');
+  await expect(page.getByRole('button', { name: /The nucleus, radioactivity and nuclear energy/ })).toBeVisible();
   expect(errors).toEqual([]);
 });
 
@@ -111,5 +115,61 @@ test('a Grade 11 student who chooses physics is recommended Grade 11 Physics, wi
   await page.waitForURL(/\/s$/);
   await expect(page.getByText('Grade 11 Physics · Self-paced with your AI tutor')).toBeVisible();
   await expect(page.getByText('Review from Physics 10')).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('a teacher makes a Grade 12 Physics class and opens lessons with scattering paths and a decay curve', async ({ page }) => {
+  const errors = trackErrors(page);
+  await signInDemo(page, 'Teacher');
+  await page.goto('/t/new-class');
+  await page.getByRole('tab', { name: 'Physics' }).click();
+  await page.getByRole('button', { name: /^Grade 12 Physics/ }).click();
+  await expect(page.getByLabel('Class name')).toHaveValue('Physics 12');
+  await page.getByRole('button', { name: 'Create class' }).click();
+  await page.waitForURL(/\/t\/c\/c_/);
+  await expect(page.getByText('Grade 12 Physics').first()).toBeVisible();
+  const classUrl = page.url().replace(/\/$/, '');
+  // A lesson with a diagram drawn on the plane: alpha particles turned aside by a nucleus.
+  await page.goto(`${classUrl}/lessons/p30-4-2`);
+  await expect(page.getByRole('heading', { name: 'Rutherford’s Nucleus', exact: true })).toBeVisible();
+  await expect(page.locator('svg[role="img"][aria-label*="alpha particles past a nucleus"]').first()).toBeVisible();
+  await expect(page.getByText(/Check your understanding · /).first()).toBeVisible();
+  expect(await page.locator('.katex-error').count()).toBe(0);
+  // A lesson with a graph: the decay curve of a radioactive sample.
+  await page.goto(`${classUrl}/lessons/p30-4-6`);
+  await expect(page.getByRole('heading', { name: 'Half-Life', exact: true })).toBeVisible();
+  await expect(page.locator('svg[role="img"][aria-label*="decay curve"]').first()).toBeVisible();
+  expect(await page.locator('.katex-error').count()).toBe(0);
+  // The first lesson of the course, with its momentum questions.
+  await page.goto(`${classUrl}/lessons/p30-1-1`);
+  await expect(page.getByRole('heading', { level: 1, name: 'Momentum', exact: true })).toBeVisible();
+  expect(await page.locator('.katex-error').count()).toBe(0);
+  expect(errors).toEqual([]);
+});
+
+test('a Grade 12 student who chooses physics is recommended Grade 12 Physics, with a placement check on Physics 11', async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.goto('/signup');
+  await page.getByLabel('Full name').fill('Lise Learner');
+  await page.getByLabel('Email').fill(`lise.${Date.now() % 100000}@example.ca`);
+  await page.getByLabel('Password').fill('secret12');
+  await page.getByRole('button', { name: 'Create account' }).click();
+  await page.waitForURL(/\/s\/welcome$/);
+  await page.getByRole('button', { name: 'Physics', exact: true }).click();
+  await page.getByLabel('Country or curriculum').selectOption('ca');
+  await page.getByRole('button', { name: 'Grade 12', exact: true }).click();
+  await page.getByRole('button', { name: 'See my recommendation' }).click();
+  await expect(page.getByRole('heading', { name: 'Grade 12 Physics', exact: true })).toBeVisible();
+  await expect(page.getByText('Start here if vectors, projectiles, circular motion and waves are new to you.')).toBeVisible();
+  // The check asks one question from each of the four units of Grade 11 Physics.
+  await expect(page.getByText(/A short placement check \(4 questions on Physics 11 skills\)/)).toBeVisible();
+  await page.getByRole('button', { name: 'Take the placement check' }).click();
+  await expect(page.getByText('Placement check · Physics 11')).toBeVisible();
+  for (let i = 0; i < 4; i++) await page.getByRole('button', { name: 'I have not learned this yet' }).click();
+  await expect(page.getByText('Start earlier')).toBeVisible();
+  await page.getByRole('button', { name: 'Start Physics 12 anyway' }).click();
+  await page.waitForURL(/\/s$/);
+  await expect(page.getByText('Grade 12 Physics · Self-paced with your AI tutor')).toBeVisible();
+  await expect(page.getByText('Review from Physics 11')).toBeVisible();
   expect(errors).toEqual([]);
 });

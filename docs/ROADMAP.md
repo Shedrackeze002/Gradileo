@@ -1348,8 +1348,14 @@ items ship or decisions change.
        activity and carbon dating, and mass defect, binding energy, fission and fusion. Every
        constant, half-life and nuclear mass is stated in the question. All four units, thirty
        lessons and sixty question types of Grade 12 Physics are now written.
-     - Next: list Grade 12 Physics for classes and sign-up (remove the draft flag, placement,
-       topics, end-to-end test), and then its videos.
+     - Done (18 November 2026): **Grade 12 Physics is listed** for classes and sign-up. The
+       draft flag is gone, a Grade 12 learner who picks Physics is recommended it with a check
+       on four Grade 11 Physics skills (one from each unit), its thirty lessons are filed under
+       topics (a new group, Fields, atoms and nuclei, and new topics for momentum, mirrors and
+       lenses, and diffraction and interference), and two end-to-end tests cover a Grade 12
+       class and a Grade 12 sign-up.
+     - Next: the videos of Grade 12 Physics, unit by unit, starting with Unit 1, Momentum and
+       Impulse.
        `phys-sample-momentum` becomes the first video of Grade 12 Unit 1 and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
