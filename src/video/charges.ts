@@ -8,8 +8,10 @@
  * with a mass moves under the forces on it while a phase lets time run. Two parallel plates with a
  * potential difference ΔV between them, a distance d apart, have a uniform field E = ΔV ÷ d in the
  * gap: a charge there feels the force qE wherever it is, and the potential falls evenly from one
- * plate to the other. A pure function of the clips and the seconds played, like the rest of the
- * stage.
+ * plate to the other. A magnetic field at right angles to the picture pushes a charge that moves
+ * across it with the force F = qvB, at right angles to its velocity, so the charge turns in a
+ * circle of radius r = mv ÷ qB and keeps its speed. A pure function of the clips and the seconds
+ * played, like the rest of the stage.
  */
 import { linesBetween, type FieldLine } from './fieldlines.ts';
 import { CHARGE_UNITS, type ChargeBody, type ChargesEl } from './script.ts';
@@ -43,8 +45,10 @@ export interface ChargeBodyState {
   lean: Point;
   /** The net force on it: its size in newtons and its direction in degrees anticlockwise from the right. */
   force: Vector;
-  /** The force on it from each of the other bodies, by id; from the field of the plates, or the uniform field (`field`); and its weight (`weight`). */
+  /** The force on it from each of the other bodies, by id; from the field of the plates, or the uniform field (`field`); from the magnetic field (`magnetic`); and its weight (`weight`). */
   from: Record<string, Vector>;
+  /** The circle the magnetic field turns it in, while it moves across the field: its centre, and its radius r = mv ÷ qB in metres. */
+  orbit: { x: number; y: number; r: number } | null;
   /** The electric field at its centre, in newtons per coulomb: of the other bodies and of the plates together. */
   field: Vector;
   /** The field there of each of the other bodies, by id, and of the plates or the uniform field (`field`). */
@@ -73,6 +77,8 @@ export interface ChargesState {
   floor: number | null;
   /** Where the two plates are, and the potential difference between them (the first less the second), in volts. */
   plates: { at: [number, number]; volts: number } | null;
+  /** The strength of the magnetic field, in teslas (out of the page when above zero), when the element has one. */
+  tesla: number | null;
   /** Seconds of the motion that have run. */
   time: number;
   note: string | null;
@@ -238,6 +244,10 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
     const e = pd / (at[1] - at[0]);
     return upright ? [e, 0] : [0, e];
   };
+  // The magnetic field: its strength, which a phase can change, and where it is.
+  let tesla = el.magnetic?.tesla ?? 0;
+  const region = el.magnetic?.region;
+  const inField = (x: number, y: number) => !!el.magnetic && (!region || (x >= region[0] && x <= region[1] && y >= region[2] && y <= region[3]));
   let hops: Hop[] = [];
   let time = 0;
   let note: string | null = null;
@@ -263,6 +273,7 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
       time = 0;
       gapAt = el.plates ? [el.plates.at[0], el.plates.at[1]] : [0, 0];
       volts = el.plates?.volts ?? 0;
+      tesla = el.magnetic?.tesla ?? 0;
     }
     let left = Math.max(0, seconds);
     for (const [pi, ph] of clip.phases.entries()) {
@@ -286,6 +297,10 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
       /** The potential difference a part of the way through the phase. */
       const voltsAt = (f: number) => (ph.volts === undefined ? voltsFrom : voltsFrom + (ph.volts - voltsFrom) * smooth(clamp01(f)));
       volts = voltsAt(dt / ph.dur);
+      const teslaFrom = tesla;
+      /** The magnetic field a part of the way through the phase. */
+      const teslaAt = (f: number) => (ph.tesla === undefined ? teslaFrom : teslaFrom + (ph.tesla - teslaFrom) * smooth(clamp01(f)));
+      tesla = teslaAt(dt / ph.dur);
       if (ph.plates) gapAt = [gapAt[0] + (ph.plates[0] - gapAt[0]) * part, gapAt[1] + (ph.plates[1] - gapAt[1]) * part];
       for (const [id, q] of Object.entries(ph.charge ?? {})) {
         const b = now.get(id)!;
@@ -342,7 +357,15 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
           }
           return [ax, ay];
         };
-        // Velocity Verlet: half a step of velocity, a step of position, and the other half step with the new forces.
+        // The magnetic force turns the velocity and never changes its size: for a time t the velocity turns through qBt ÷ m, clockwise for a positive charge in a field that comes out of the page.
+        let bz = teslaAt(0);
+        const spin = (o: (typeof all)[number], t: number) => {
+          if (bz === 0 || o.q === 0 || !inField(o.s.x, o.s.y)) return;
+          const a = ((o.q * bz) / o.b.mass!) * t;
+          const [c, sn] = [Math.cos(a), Math.sin(a)];
+          o.s.v = [o.s.v[0] * c + o.s.v[1] * sn, -o.s.v[0] * sn + o.s.v[1] * c];
+        };
+        // Velocity Verlet: half a step of velocity, a step of position, and the other half step with the new forces. The turn of the magnetic field is split the same way, either side of the step of position.
         const plate = el.plates;
         const [vx0, vx1, vy0, vy1] = el.view;
         for (const o of movers) if (!o.s.trail.length) o.s.trail = [[o.s.x, o.s.y]];
@@ -354,11 +377,13 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
           movers.forEach((o, i) => {
             if (o.s.stuck) return;
             o.s.v = [o.s.v[0] + (h / 2) * before[i][0], o.s.v[1] + (h / 2) * before[i][1]];
+            spin(o, h / 2);
             o.s.x += h * o.s.v[0];
             o.s.y += h * o.s.v[1];
           });
-          // The potential difference follows the phase while the bodies move.
+          // The potential difference and the magnetic field follow the phase while the bodies move.
           pd = voltsAt(((n + 1) / steps) * (dt / ph.dur));
+          bz = teslaAt(((n + 1) / steps) * (dt / ph.dur));
           // A body that reaches a plate stops on it, unless it goes through the hole in the middle; one that leaves the picture stops too.
           movers.forEach((o, i) => {
             if (o.s.stuck) return;
@@ -385,6 +410,19 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
                 o.s.on = pi;
               }
             }
+            // A body that leaves the magnetic field through the side that is a detector stops there.
+            if (!o.s.stuck && region && el.magnetic?.screen && inField(was[i][0], was[i][1]) && !inField(o.s.x, o.s.y)) {
+              const side = o.s.y < region[2] ? 'bottom' : o.s.y > region[3] ? 'top' : o.s.x < region[0] ? 'left' : 'right';
+              if (side === el.magnetic.screen) {
+                const level = side === 'bottom' || side === 'top';
+                const edge = side === 'bottom' ? region[2] : side === 'top' ? region[3] : side === 'left' ? region[0] : region[1];
+                const [from, to] = level ? [was[i][1], o.s.y] : [was[i][0], o.s.x];
+                const f = to === from ? 1 : clamp01((edge - from) / (to - from));
+                [o.s.x, o.s.y] = [was[i][0] + (o.s.x - was[i][0]) * f, was[i][1] + (o.s.y - was[i][1]) * f];
+                o.s.v = [0, 0];
+                o.s.stuck = true;
+              }
+            }
             const far = 0.15 * Math.max(vx1 - vx0, vy1 - vy0);
             if (!o.s.stuck && (o.s.x < vx0 - far || o.s.x > vx1 + far || o.s.y < vy0 - far || o.s.y > vy1 + far)) {
               o.s.v = [0, 0];
@@ -395,6 +433,7 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
           const after = movers.map(accel);
           movers.forEach((o, i) => {
             if (o.s.stuck) return;
+            spin(o, h / 2);
             o.s.v = [o.s.v[0] + (h / 2) * after[i][0], o.s.v[1] + (h / 2) * after[i][1]];
           });
           before = after;
@@ -505,6 +544,20 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
       from.weight = vector(0, -b.mass * el.g);
       fy -= b.mass * el.g;
     }
+    // The magnetic force on a charge that moves across the field, qvB, at right angles to its velocity; and the circle it turns the charge in.
+    let orbit: ChargeBodyState['orbit'] = null;
+    const speed = Math.hypot(s.v[0], s.v[1]);
+    if (tesla !== 0 && q !== 0 && speed > 0 && inField(at[0], at[1])) {
+      const [mx, my] = [q * unit * s.v[1] * tesla, -q * unit * s.v[0] * tesla];
+      const size = Math.hypot(mx, my);
+      from.magnetic = vector(mx, my);
+      fx += mx;
+      fy += my;
+      if (b.mass && size > 0) {
+        const r = (b.mass * speed * speed) / size;
+        orbit = { x: tidy(at[0] + (r * mx) / size), y: tidy(at[1] + (r * my) / size), r: tidy(r) };
+      }
+    }
     // The potential falls evenly from the first plate to the second; a body on a plate is at the potential of that plate.
     let potential: number | null = null;
     let stored: number | null = null;
@@ -525,6 +578,7 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
       lean: leans.get(b.id) ?? [0, 0],
       force: vector(fx, fy),
       from,
+      orbit,
       field: vector(ex, ey),
       fields,
       potential: potential === null ? null : tidy(potential),
@@ -532,7 +586,7 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
       stored: stored === null ? null : tidy(stored),
       trail: s.trail,
       v: [tidy(s.v[0]), tidy(s.v[1])],
-      speed: tidy(Math.hypot(s.v[0], s.v[1])),
+      speed: tidy(speed),
       wire: s.wire,
       wirePath: shapeOf(b) === 'sphere' ? wireOf(b, s) : [],
     };
@@ -546,7 +600,7 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
     else if (h.from === 'ground') flying.push(along([...bodies[h.to].wirePath].reverse().concat([where(h.to, 'minus', h.toIndex)]), f));
     else flying.push(along([where(h.from, 'minus', h.fromIndex), where(h.to, 'minus', h.toIndex)], f));
   }
-  return { bodies, flying, floor, plates: el.plates ? { at: [tidy(gapAt[0]), tidy(gapAt[1])], volts: tidy(volts) } : null, time: tidy(time), note };
+  return { bodies, flying, floor, plates: el.plates ? { at: [tidy(gapAt[0]), tidy(gapAt[1])], volts: tidy(volts) } : null, tesla: el.magnetic ? tidy(tesla) : null, time: tidy(time), note };
 }
 
 export interface ChargesPeaks {

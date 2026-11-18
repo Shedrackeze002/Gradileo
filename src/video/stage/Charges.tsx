@@ -6,7 +6,8 @@
  * electric force on a body is an orange arrow, with its size beside it, and the sum of several is
  * yellow, like every net force. Positive is red and negative is blue throughout. The electric
  * field is violet: the lines of the field of the charges, or of two parallel plates, and an arrow
- * for the field where each test charge is.
+ * for the field where each test charge is. A magnetic field at right angles to the picture is
+ * violet too: dots where it comes out of the page and crosses where it goes in.
  */
 import type { ReactElement } from 'react';
 import { CHARGE_UNITS, type ChargesEl, type Tone } from '../script.ts';
@@ -69,7 +70,7 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
   if (p <= 0) return <div style={{ width: w, height: h }} />;
   const state = chargesAt(el, plays ?? st?.plays ?? [], age ?? st?.age ?? 0);
   const part = (name: string) => ownPart(st, name);
-  const [chargePart, force, net, anglePart, distance, vel, linesPart, fieldPart, netField, potentialPart, gapPart, energyPart, trailPart] = ['charge', 'force', 'net', 'angle', 'distance', 'velocity', 'lines', 'field', 'netfield', 'potential', 'gap', 'energy', 'trail'].map(part);
+  const [chargePart, force, net, anglePart, distance, vel, linesPart, fieldPart, netField, potentialPart, gapPart, energyPart, trailPart, magneticPart, radiusPart] = ['charge', 'force', 'net', 'angle', 'distance', 'velocity', 'lines', 'field', 'netfield', 'potential', 'gap', 'energy', 'trail', 'magnetic', 'radius'].map(part);
   const peak = peaksOf(el);
   const unit = el.unit ?? 'μC';
   const out: ReactElement[] = [];
@@ -204,6 +205,63 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
       const [from, to] = upright ? [[X(a), Y(s0) + 26] as [number, number], [X(b), Y(s0) + 26] as [number, number]] : [[X(s0) - 26, Y(a)] as [number, number], [X(s0) - 26, Y(b)] as [number, number]];
       out.push(<Span key="gap" a={from} b={to} opacity={gapPart} />);
       labels.push(<Num key="gap-t" x={upright ? (from[0] + to[0]) / 2 : from[0] - 14} y={upright ? from[1] + 22 : (from[1] + to[1]) / 2} pre="d = " n={Math.abs(b - a) / length.metres} unit={length.symbol} figures={el.figures ?? 2} keep anchor={upright ? 'middle' : 'end'} opacity={gapPart} />);
+    }
+  }
+
+  // A magnetic field at right angles to the picture: a dot where it comes out of the page and a cross where it goes in, closer together in a stronger field.
+  if (el.magnetic && state.tesla !== null) {
+    const m = el.magnetic;
+    const [rx0, rx1, ry0, ry1] = m.region ?? el.view;
+    const [left, right, high, low] = [X(rx0), X(rx1), Y(ry1), Y(ry0)];
+    const tesla = state.tesla;
+    // The field at the start (or, when it starts at zero, the strongest it comes to have) has its marks 76 pixels apart.
+    let start = Math.abs(m.tesla);
+    if (!(start > 0)) for (const c of Object.values(el.clips)) for (const ph of c.phases) if (ph.tesla !== undefined) start = Math.max(start, Math.abs(ph.tesla));
+    const strength = start > 0 ? Math.abs(tesla) / start : 0;
+    if (magneticPart > 0) {
+      const marks: ReactElement[] = [];
+      if (strength > 1e-6) {
+        const pitch = Math.max(44, Math.min(120, 76 / Math.sqrt(strength)));
+        const [nx, ny] = [Math.max(1, Math.round((right - left) / pitch)), Math.max(1, Math.round((low - high) / pitch))];
+        for (let i = 0; i < nx; i++)
+          for (let j = 0; j < ny; j++) {
+            const [x, y] = [left + ((i + 0.5) / nx) * (right - left), high + ((j + 0.5) / ny) * (low - high)];
+            marks.push(
+              tesla > 0 ? (
+                <g key={`${i}-${j}`}>
+                  <circle cx={x} cy={y} r={7} fill="none" stroke={FIELD} strokeWidth={1.8} />
+                  <circle cx={x} cy={y} r={2.2} fill={FIELD} />
+                </g>
+              ) : (
+                <g key={`${i}-${j}`} stroke={FIELD} strokeWidth={2.2} strokeLinecap="round">
+                  <line x1={x - 5.5} y1={y - 5.5} x2={x + 5.5} y2={y + 5.5} />
+                  <line x1={x - 5.5} y1={y + 5.5} x2={x + 5.5} y2={y - 5.5} />
+                </g>
+              ),
+            );
+          }
+      }
+      out.push(
+        <g key="magnetic" clipPath={`url(#${clip})`}>
+          {m.region && <rect x={left} y={high} width={right - left} height={low - high} rx={8} fill={FIELD} fillOpacity={0.06 * magneticPart} stroke={FIELD} strokeOpacity={0.45 * magneticPart} strokeWidth={1.5} strokeDasharray="6 7" />}
+          <g opacity={0.5 * magneticPart}>{marks}</g>
+        </g>,
+      );
+      // Its strength and which way it points, in the top right corner of the field.
+      const size = Math.abs(tesla);
+      const figures = m.figures ?? 2;
+      const text = size < 1e-12 ? 'B = 0' : size < 0.01 ? `B = ${written(size * 1000, figures, false, true).text} mT` : `B = ${written(size, figures, false, true).text} T`;
+      labels.push(
+        <Text key="magnetic-t" x={right - 16} y={high + 24} anchor="end" color={FIELD} size={20} opacity={magneticPart}>
+          {size < 1e-12 ? text : `${text}, ${tesla > 0 ? 'out of the page' : 'into the page'}`}
+        </Text>,
+      );
+    }
+    // The detector: the side of the field that stops what comes out through it. It is drawn just outside the field, so that what lands rests on it, and a name beside a body that has landed is clear of it.
+    if (m.region && m.screen) {
+      const off = 14;
+      const [a, b] = m.screen === 'bottom' ? [[left, low + off], [right, low + off]] : m.screen === 'top' ? [[left, high - off], [right, high - off]] : m.screen === 'left' ? [[left - off, high], [left - off, low]] : [[right + off, high], [right + off, low]];
+      out.push(<line key="screen" x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={METAL} strokeWidth={5} strokeLinecap="round" />);
     }
   }
 
@@ -430,6 +488,30 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
       else labels.push(<Num key={`span-t-${i}`} x={tx} y={ty} pre={spans.length === 1 ? 'r = ' : ''} n={metres / length.metres} unit={length.symbol} figures={el.figures ?? 2} keep anchor={anchor} color={INK} opacity={distance} />);
     });
 
+  // The circle the magnetic field turns each charge in: its centre, and the radius from there to the charge.
+  if (radiusPart > 0)
+    for (const k of boxes) {
+      const orbit = k.s.orbit;
+      if (!orbit || !k.b.mass || (el.pulls && !el.pulls.includes(k.b.id))) continue;
+      const c: [number, number] = [X(orbit.x), Y(orbit.y)];
+      const d = Math.hypot(k.c[0] - c[0], k.c[1] - c[1]);
+      // A circle too large for the picture has its centre far outside it: nothing is drawn for it.
+      if (!(d > 30) || c[0] < ox || c[0] > ox + pw || c[1] < oy || c[1] > oy + ph) continue;
+      const u: [number, number] = [(k.c[0] - c[0]) / d, (k.c[1] - c[1]) / d];
+      // The size is written on the side of the radius that is higher on the screen.
+      const n: [number, number] = u[0] >= 0 ? [u[1], -u[0]] : [-u[1], u[0]];
+      const level = Math.abs(n[0]) <= 0.7;
+      out.push(
+        <g key={`radius-${k.b.id}`} opacity={radiusPart} stroke={INK2} strokeLinecap="round">
+          <line x1={c[0]} y1={c[1]} x2={k.c[0] - u[0] * (k.L + 4)} y2={k.c[1] - u[1] * (k.L + 4)} strokeWidth={2} strokeDasharray="5 7" />
+          <line x1={c[0] - 6} y1={c[1]} x2={c[0] + 6} y2={c[1]} strokeWidth={2.4} />
+          <line x1={c[0]} y1={c[1] - 6} x2={c[0]} y2={c[1] + 6} strokeWidth={2.4} />
+        </g>,
+      );
+      // The size is written near the centre, clear of the force arrow, which lies along the same line from the charge.
+      labels.push(<Num key={`radius-t-${k.b.id}`} x={c[0] + u[0] * d * 0.3 + n[0] * (level ? 0 : 14)} y={c[1] + u[1] * d * 0.3 + n[1] * (level ? 22 : 0)} pre="r = " n={orbit.r / length.metres} unit={length.symbol} figures={el.figures ?? 2} keep anchor={level ? 'middle' : n[0] > 0 ? 'start' : 'end'} color={INK2} opacity={radiusPart} />);
+    }
+
   // The name of each body and its charge, the forces on it, and its velocity.
   const fs = el.forceScale ?? 110 / Math.max(1e-300, peak.force);
   const es = el.fieldScale ?? 110 / Math.max(1e-300, peak.field);
@@ -438,7 +520,8 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
   for (const k of boxes) {
     const at = k.b.labelAt ?? 'above';
     const drawn = !el.pulls || el.pulls.includes(k.b.id);
-    const pushes = Object.entries(k.s.from).filter(([, f]) => f.n > 0);
+    // A force too small to see beside the largest of the picture (less than a millionth of it) is not drawn: the pull of one ion on another, beside the force of a field.
+    const pushes = Object.entries(k.s.from).filter(([, f]) => f.n > 1e-6 * peak.force);
     // The sum is drawn when there is more than one force to add, or when the forces themselves are not shown.
     const summed = drawn && net > 0 && k.s.force.n > 0 && (pushes.length > 1 || force <= 0);
     // The fields where a test charge is: of each charge that makes one there, and of the plates.
@@ -565,7 +648,7 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
     if (drawn && force > 0)
       for (const [id, f] of pushes) {
         const by = find(id)?.b.label;
-        const name = el.names ? (id === 'weight' ? 'Weight' : 'Electric force') : undefined;
+        const name = el.names ? (id === 'weight' ? 'Weight' : id === 'magnetic' ? 'Magnetic force' : 'Electric force') : undefined;
         arrow(`f-${k.b.id}-${id}`, f, fs, id === 'weight' ? WEIGHT : PUSH, force, { unit: 'N', figures: el.forceFigures ?? 3, decimals: el.forceDecimals, words: pushes.length > 1 && sources > 2 && by !== undefined ? ` from ${by}` : '', name }, 9);
       }
     if (summed) arrow(`net-${k.b.id}`, k.s.force, fs, NET, net, { unit: 'N', figures: el.forceFigures ?? 3, decimals: el.forceDecimals, name: el.names ? 'Net force' : undefined }, 10);

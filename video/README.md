@@ -479,6 +479,19 @@ See `src/video/script.ts` for every element and option. In short:
   have followed with no field. A body that starts on a plate has its centre on the face, and
   its label moves into the gap. Keep an arrow and its label clear of the far plate: start the
   body on the near side, or set `forceScale`, `fieldScale` or `velocityScale`.
+  `magnetic: { tesla }` puts a magnetic field through the picture: positive comes out of the
+  page (dots), negative goes into it (crosses), and `region: [left, right, bottom, top]` keeps
+  it to a part of the view (outlined with a dashed line). A body with a mass and a charge that
+  moves across the field feels qvB at right angles to its velocity, which is added to the other
+  forces on it, and while time runs its velocity is turned by exactly qB ÷ m each second, so
+  the path is a circle and the speed never changes. The part `magnetic` draws the field and
+  writes its strength, and `radius` marks the centre of the circle and writes r = mv ÷ qB for
+  each body in `pulls`. A phase can change the field (`tesla`), and `screen: 'bottom'` (or a
+  different side of the region) is a detector: a body that leaves the field through that side
+  stops there, as in a mass spectrometer. With plates round the same region, the picture is a
+  velocity selector. Set `rate` from the period 2πm ÷ qB (a clip that lasts a sixth of a period
+  turns a sixth of a circle). A force under a millionth of the picture's largest is not drawn,
+  so the tiny Coulomb forces between two ions do not clutter the picture.
 
 - `magnets` (`src/video/magnets.ts`) is for magnetism: bar magnets, compasses, pieces of iron and
   long straight wires seen end-on, in a `view` of [left, right, bottom, top]. Nothing is typed
