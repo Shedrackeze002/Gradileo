@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure, type Part } from '@/video/solids.ts';
 import { balls, frame, tag } from './lib/c10-5-figures.ts';
 
@@ -46,6 +47,16 @@ const video: Explainer = {
       lines: [
         { say: 'Some formulas have a group of atoms in brackets, with a small number after it. Calcium hydroxide and ammonium sulfate, a fertilizer, are two of them.', show: 'title' },
         { say: 'In this last part, you will count the atoms in formulas with brackets, and find their molar masses.' },
+      ],
+    },
+    {
+      chapter: 'A bracket, up close',
+      layout: 'center',
+      main: [reaction('cb', { from: [{ t: 'OH', label: 'OH⁻' }, { t: 'Ca2' }, { t: 'OH', label: 'OH⁻' }], to: [{ t: 'CaOH2' }], whole: true, foot: { after: 'Ca(OH)₂: 1 Ca, 2 O, 2 H' } })],
+      lines: [
+        { say: 'Here is a calcium ion and two hydroxide ions.', show: 'cb' },
+        { say: 'Watch them come together as calcium hydroxide. The hydroxide ion moves as one unit, so the formula puts it in brackets with a two after it.', play: 'cb.go' },
+        { say: 'Count the atoms: one calcium, two oxygens and two hydrogens. The two after the bracket multiplies everything inside it.' },
       ],
     },
     {

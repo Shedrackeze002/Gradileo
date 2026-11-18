@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { acidIonising } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-3-7-b',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'A p H meter reads three point seven five. What hydronium ion concentration does that mean?', caption: 'A pH meter reads 3.75. What hydronium ion concentration does that mean?', show: 'title' },
         { say: 'In part one, you found the p H from a concentration. In this part, you will go the other way, from the p H back to the hydronium ion concentration.', caption: 'In part one, you found the pH from a concentration. In this part, you will go the other way, from the pH back to the hydronium ion concentration.' },
+      ],
+    },
+    {
+      chapter: 'Where the hydrogen ions come from',
+      layout: 'center',
+      main: [{ ...acidIonising('ai'), key: true }],
+      lines: [
+        { say: 'Here is hydrogen chloride dissolving in water.', show: ['ai', 'ai.labels', 'ai.key'] },
+        { say: 'Each molecule hands over a hydrogen ion, and the count of hydrogen ions climbs.', show: 'ai.tally', play: 'ai.go' },
+        { say: 'A p H meter measures exactly this concentration, and in this part we turn a p H reading back into it.', caption: 'A pH meter measures exactly this concentration, and in this part we turn a pH reading back into it.' },
       ],
     },
     {

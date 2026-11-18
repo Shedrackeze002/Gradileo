@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { redox } from '../../chem30/videos/lib/c30-atoms.ts';
 
 const video: Explainer = {
   id: 'cx-10-1',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'You cannot measure the lattice enthalpy of sodium chloride directly. Nobody can collect a mole of gaseous ions and let them crash together. So chemists build a cycle of steps they can measure.', show: 'title' },
         { say: 'In this lesson, you will build Born Haber cycles, calculate lattice enthalpies, and explain how ionic compounds dissolve.', caption: 'In this lesson, you will build Born–Haber cycles, calculate lattice enthalpies, and explain how ionic compounds dissolve.' },
+      ],
+    },
+    {
+      chapter: 'Ions forming, up close',
+      layout: 'center',
+      main: [redox('nc', [{ id: 'na', symbol: 'Na', protons: 11, name: 'sodium', at: [5, 3.6], tone: 'brand' }, { id: 'cl', symbol: 'Cl', protons: 17, name: 'chlorine', at: [15, 3.6], tone: 'good' }], [{ from: 'na', to: 'cl', n: 1 }])],
+      lines: [
+        { say: 'Here are a sodium atom and a chlorine atom, both gaseous and far apart.', show: ['nc', 'nc.labels', 'nc.arrangement'] },
+        { say: 'Watch the electron move. Removing it from sodium takes energy, the ionisation energy, and chlorine taking it gives some back, the electron affinity.', play: 'nc.give' },
+        { say: 'Then the two oppositely charged ions pull together into a lattice, which releases a great deal more energy. A Born Haber cycle adds up every one of these steps.', caption: 'Then the two oppositely charged ions pull together into a lattice, which releases a great deal more energy. A Born–Haber cycle adds up every one of these steps.', show: 'nc.charges' },
       ],
     },
     {

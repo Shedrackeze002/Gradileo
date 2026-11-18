@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c9-2-3',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'Every compound has a name that tells a chemist what is in it.', show: 'title' },
         { say: 'Ionic and covalent compounds are named in slightly different ways. In this video, you will learn a few simple rules that name thousands of substances.' },
+      ],
+    },
+    {
+      chapter: 'Sodium meets chlorine',
+      layout: 'center',
+      main: [reaction('nc', { from: [{ t: 'Na', n: 2 }, { t: 'Cl2' }], to: [{ t: 'NaCl', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here are two sodium atoms and one chlorine molecule.', show: 'nc' },
+        { say: 'Watch them react. Each sodium atom gives an electron to a chlorine atom, and they end up as sodium ions and chloride ions, held together as sodium chloride.', play: 'nc.go' },
+        { say: 'Notice the name: the metal comes first and keeps its name, and chlorine becomes chloride.' },
       ],
     },
     {

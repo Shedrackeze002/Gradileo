@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { enthalpyLevels } from './lib/c30-1b-figures.ts';
 
@@ -36,6 +37,16 @@ const video: Explainer = {
       lines: [
         { say: 'How much energy is released when carbon burns to carbon monoxide? It cannot be measured cleanly, because some of the carbon always goes on to form carbon dioxide.', show: 'title' },
         { say: "Chemists find it by combining reactions that can be measured. This part shows how to reverse and multiply a thermochemical equation. The later parts combine equations with Hess's law." },
+      ],
+    },
+    {
+      chapter: 'A reaction run backwards',
+      layout: 'center',
+      main: [reaction('ws', { from: [{ t: 'H2O', n: 2 }], to: [{ t: 'H2', n: 2 }, { t: 'O2' }], counts: true })],
+      lines: [
+        { say: 'Here are two water molecules.', show: 'ws' },
+        { say: 'Watch them split back into hydrogen and oxygen: the reverse of burning hydrogen.', play: 'ws.go' },
+        { say: 'The same bonds that formed now have to break, so the same energy that was released must now be put in. Reverse an equation, and the sign of its enthalpy change flips.' },
       ],
     },
     {

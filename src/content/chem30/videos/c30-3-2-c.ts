@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { pentaneIsomers } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, DX, numberLabels, skeleton, step, tag, zigzag } from './lib/c30-3a-figures.ts';
 
@@ -61,6 +62,16 @@ const video: Explainer = {
       lines: [
         { say: 'Petrol is tested against a compound with three methyl branches on a five-carbon chain. Its name says exactly where each branch goes.', show: 'title' },
         { say: 'In this part, you will name repeated branches, avoid two common traps, and draw a structure from its name.' },
+      ],
+    },
+    {
+      chapter: 'Two branches, up close',
+      layout: 'center',
+      main: [pentaneIsomers('pi')],
+      lines: [
+        { say: 'Here is pentane, five carbons in a row.', show: 'pi' },
+        { say: 'Move one carbon to a branch.', play: 'pi.one' },
+        { say: 'Then another. With two methyl groups on the middle carbon, the name gets the prefix di and a number for each: two, two dimethylpropane.', caption: '…then another. With two methyl groups on the middle carbon, the name gets the prefix di and a number for each: 2,2-dimethylpropane.', play: 'pi.two' },
       ],
     },
     {

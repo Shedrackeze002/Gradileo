@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, mol, plus, row, stack, water } from './lib/c10-4-figures.ts';
 
@@ -21,6 +22,16 @@ const video: Explainer = {
       lines: [
         { say: 'Atoms are never made or destroyed in a reaction. So a correct symbol equation has the same atoms on both sides. We say it is balanced.', show: 'title' },
         { say: 'In this part, you will check whether an equation is balanced, and balance it step by step by changing coefficients.' },
+      ],
+    },
+    {
+      chapter: 'Making ammonia, up close',
+      layout: 'center',
+      main: [reaction('am', { from: [{ t: 'N2' }, { t: 'H2', n: 3 }], to: [{ t: 'NH3', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here is one nitrogen molecule and three hydrogen molecules.', show: 'am' },
+        { say: 'Watch the atoms rearrange. Two nitrogen atoms can only make two ammonia molecules, and those need six hydrogen atoms, which is three hydrogen molecules.', play: 'am.go' },
+        { say: 'So the balanced equation is N two plus three H two gives two N H three. The coefficients are the numbers of molecules you can see.', caption: 'So the balanced equation is N₂ + 3H₂ → 2NH₃. The coefficients are the numbers of molecules you can see.' },
       ],
     },
     {

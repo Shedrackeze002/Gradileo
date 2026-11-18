@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { ethaneToEthene } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, numberLabels, skeleton, step, zigzag } from './lib/c30-3a-figures.ts';
 
@@ -42,6 +43,16 @@ const video: Explainer = {
       lines: [
         { say: 'Moving a double bond one carbon along a chain makes a different compound, so its name must say where the bond is.', show: 'title' },
         { say: 'In this part, you will name alkenes and alkynes, with and without branches.' },
+      ],
+    },
+    {
+      chapter: 'A double bond, up close',
+      layout: 'center',
+      main: [ethaneToEthene('ee')],
+      lines: [
+        { say: 'Here is ethane, with single bonds only.', show: 'ee' },
+        { say: 'Watch two hydrogen atoms leave, and the carbons share a second pair: a double bond.', play: 'ee.go' },
+        { say: 'With a double bond, the ending changes from ane to ene: ethene. A triple bond takes the ending yne.' },
       ],
     },
     {

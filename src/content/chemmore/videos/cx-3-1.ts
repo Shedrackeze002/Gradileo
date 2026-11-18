@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'cx-3-1',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'Glucose and the acid in vinegar taste nothing alike. Yet an analysis of each gives exactly the same answer: one carbon atom and one oxygen atom for every two hydrogen atoms.', show: 'title' },
         { say: 'In this lesson, you will work out an empirical formula from masses, and turn it into a molecular formula.' },
+      ],
+    },
+    {
+      chapter: 'Ethene, atom by atom',
+      layout: 'center',
+      main: [reaction('et', { from: [{ t: 'C', n: 2, label: '2 C' }, { t: 'H', n: 4, label: '4 H' }], to: [{ t: 'C2H4' }], foot: { after: 'molecular formula C₂H₄, empirical formula CH₂' } })],
+      lines: [
+        { say: 'Here are two carbon atoms and four hydrogen atoms.', show: 'et' },
+        { say: 'Watch them join into one molecule of ethene, C two H four.', caption: 'Watch them join into one molecule of ethene, C₂H₄.', play: 'et.go' },
+        { say: 'The molecule holds two carbons and four hydrogens, but the simplest whole number ratio of carbon to hydrogen is one to two. So its molecular formula is C two H four, and its empirical formula is C H two.', caption: 'The molecule holds two carbons and four hydrogens, but the simplest whole number ratio of carbon to hydrogen is one to two. So its molecular formula is C₂H₄, and its empirical formula is CH₂.' },
       ],
     },
     {

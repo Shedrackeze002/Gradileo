@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { n2o4BothWays } from './lib/c30-particles.ts';
 
 const video: Explainer = {
   id: 'c30-4-2-b',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'Heat calcium carbonate in a closed container, and it reaches equilibrium with calcium oxide and carbon dye-oxide gas. Yet only one of the three appears in its equilibrium constant.', caption: 'Heat calcium carbonate in a closed container, and it reaches equilibrium with calcium oxide and carbon dioxide gas. Yet only one of the three appears in its equilibrium constant.', show: 'title' },
         { say: 'In this part, you will see what to leave out of the expression, and what the size of K C tells you.', caption: 'In this part, you will see what to leave out of the expression, and what the size of Kc tells you.' },
+      ],
+    },
+    {
+      chapter: 'From either side',
+      layout: 'center',
+      main: [n2o4BothWays('bw', { seed: 12 })],
+      lines: [
+        { say: 'Here are two tubes at the same temperature, one starting from each side of the reaction.', show: ['bw', 'bw.labels', 'bw.key', 'bw.tally'], play: 'bw.go' },
+        { say: 'They reach the same mixture.', focus: 'bw.tally' },
+        { say: 'A large K means the mixture is mostly products, and a small K means mostly reactants. Pure solids and liquids never change concentration, so they are left out.' },
       ],
     },
     {

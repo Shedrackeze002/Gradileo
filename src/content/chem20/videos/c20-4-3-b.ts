@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { aquaIon } from '../../chemmore/videos/lib/cx-molecules.ts';
 import { figure } from '@/video/solids.ts';
 import { heating, massBar, room } from './lib/c20-4a-figures.ts';
 
@@ -36,6 +37,16 @@ const video: Explainer = {
       lines: [
         { say: 'Blue crystals of copper two sulfate turn into a white powder when they are heated, and steam rises from them. The crystals were holding water.', show: 'title' },
         { say: 'In this part, you will meet hydrates, and find their molar masses, water included.' },
+      ],
+    },
+    {
+      chapter: 'Water held by an ion',
+      layout: 'center',
+      main: [aquaIon('aq')],
+      lines: [
+        { say: 'Here is a copper two ion with water molecules around it.', caption: 'Here is a Cu²⁺ ion with water molecules around it.', show: 'aq' },
+        { say: 'Watch the water molecules turn their oxygen atoms towards the ion and hold on.', play: 'aq.bind' },
+        { say: 'In blue copper sulfate crystals, water molecules are held like this, a fixed number for each copper ion. That water is part of the formula, so it counts in the molar mass of a hydrate.' },
       ],
     },
     {

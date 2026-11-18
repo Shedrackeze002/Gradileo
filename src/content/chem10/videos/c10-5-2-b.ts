@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c10-5-figures.ts';
 
@@ -35,6 +36,16 @@ const video: Explainer = {
       lines: [
         { say: 'In part one, you changed a mass into moles with the molar mass. But what if the molar mass is not given?', show: 'title' },
         { say: 'In this part, you will work it out first. Then you will go on from a mass all the way to a number of particles.' },
+      ],
+    },
+    {
+      chapter: 'One methane molecule, up close',
+      layout: 'center',
+      main: [reaction('me', { from: [{ t: 'C', label: 'C: 12.01' }, { t: 'H', n: 4, label: 'H: 1.01 each' }], to: [{ t: 'CH4', label: 'CH₄' }], foot: { after: '16.05 g/mol' } })],
+      lines: [
+        { say: 'Here is one carbon atom and four hydrogen atoms.', show: 'me' },
+        { say: 'Watch them join into a molecule of methane, with a molar mass of sixteen point zero five grams per mole.', caption: 'Watch them join into a molecule of methane, with a molar mass of 16.05 g/mol.', play: 'me.go' },
+        { say: 'So sixteen point zero five grams of methane is one mole, which is six point zero two times ten to the twenty-three molecules. Mass leads to moles, and moles lead to particles.', caption: 'So 16.05 g of methane is one mole, which is 6.02 × 10²³ molecules. Mass leads to moles, and moles lead to particles.' },
       ],
     },
     {

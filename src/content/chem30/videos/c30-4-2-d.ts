@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { n2o4Stress } from './lib/c30-particles.ts';
 
 const video: Explainer = {
   id: 'c30-4-2-d',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'Once K C is known, it can predict what a flask will hold at equilibrium, before anyone measures it.', caption: 'Once Kc is known, it can predict what a flask will hold at equilibrium, before anyone measures it.', show: 'title' },
         { say: 'In this part, you will solve for an unknown concentration in two kinds of problem with short algebra: a perfect square, and a very small K C.', caption: 'In this part, you will solve for an unknown concentration in two kinds of problem with short algebra: a perfect square, and a very small Kc.' },
+      ],
+    },
+    {
+      chapter: 'Back to the same K',
+      layout: 'center',
+      main: [n2o4Stress('sr', 'more-n2o4', { seed: 15 })],
+      lines: [
+        { say: 'Here is a tube at equilibrium.', show: ['sr', 'sr.labels', 'sr.key', 'sr.tally'] },
+        { say: 'Add more dinitrogen tetroxide, and the mixture shifts until the ratio is back to K.', caption: 'Add more N₂O₄, and the mixture shifts until the ratio is back to K.', play: 'sr.stress', focus: 'sr.tally' },
+        { say: 'K stays fixed at a given temperature, so if we know K and some concentrations, we can work backwards to the rest.' },
       ],
     },
     {

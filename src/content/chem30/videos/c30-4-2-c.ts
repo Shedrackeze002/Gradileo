@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { n2o4 } from './lib/c30-particles.ts';
 
 const HEAD = ['', '$[\\ce{SO2}]$', '$[\\ce{O2}]$', '$[\\ce{SO3}]$'];
 
@@ -17,6 +18,16 @@ const video: Explainer = {
       lines: [
         { say: 'An equilibrium constant comes from measurements: the concentrations in a mixture that has reached equilibrium.', show: 'title' },
         { say: 'In this part, you will calculate K C from equilibrium concentrations, and use an ICE table when only some of them are known.', caption: 'In this part, you will calculate Kc from equilibrium concentrations, and use an ICE table when only some of them are known.' },
+      ],
+    },
+    {
+      chapter: 'Initial, change, equilibrium',
+      layout: 'center',
+      main: [n2o4('eq', { seed: 6 })],
+      lines: [
+        { say: 'Here is a tube of dinitrogen tetroxide with nothing else at the start: the initial row of an ICE table.', caption: 'Here is a tube of N₂O₄ with nothing else at the start: the initial row of an ICE table.', show: ['eq', 'eq.labels', 'eq.key', 'eq.tally'], play: 'eq.go' },
+        { say: 'Each pair that splits makes two nitrogen dioxide molecules: that is the change row, in the ratio of the equation.', focus: 'eq.tally' },
+        { say: 'Where the count settles is the equilibrium row, and those values go into K.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hclAndAmmonia } from './lib/c30-protons.ts';
 import { figure } from '@/video/solids.ts';
 import { LADDER_ROWS, ladder } from './lib/c30-4b-figures.ts';
 
@@ -37,6 +38,16 @@ const video: Explainer = {
       lines: [
         { say: 'When two solutions are mixed, the beaker holds many particles: ions, molecules and a lot of water.', show: 'title' },
         { say: 'The main reaction is between just two of them: the strongest acid and the strongest base. This part shows how to find them.' },
+      ],
+    },
+    {
+      chapter: 'Strongest acid meets strongest base',
+      layout: 'center',
+      main: [hclAndAmmonia('pt')],
+      lines: [
+        { say: 'Here is hydrogen chloride and ammonia.', show: 'pt' },
+        { say: 'Watch the proton move from hydrogen chloride to ammonia.', play: 'pt.go' },
+        { say: 'In any mixture, the strongest acid present gives its proton to the strongest base present. Listing every particle first is how we find those two.' },
       ],
     },
     {

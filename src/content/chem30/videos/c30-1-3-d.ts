@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { methaneBurning } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chain, join, room } from './lib/c30-1a-figures.ts';
 
@@ -34,6 +35,16 @@ const video: Explainer = {
       lines: [
         { say: 'How much fuel should a camper pack to boil water for a week of meals? A molar enthalpy can answer that.', show: 'title' },
         { say: 'In this part, you will use a molar enthalpy to find the enthalpy change for any amount, and work backwards to an amount of fuel.' },
+      ],
+    },
+    {
+      chapter: 'One molecule at a time',
+      layout: 'center',
+      main: [methaneBurning('mb')],
+      lines: [
+        { say: 'Here is one methane molecule burning in oxygen.', show: 'mb' },
+        { say: 'Watch it react. Each molecule that burns releases the same small amount of energy.', play: 'mb.burn' },
+        { say: 'So the energy released is proportional to the amount burned: twice the moles, twice the energy. A molar enthalpy turns moles into energy.' },
       ],
     },
     {

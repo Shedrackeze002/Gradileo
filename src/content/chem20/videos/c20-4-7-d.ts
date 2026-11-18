@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { yieldBars } from './lib/c20-4b-figures.ts';
 
@@ -20,6 +21,16 @@ const video: Explainer = {
       lines: [
         { say: 'A chemist who knows that a process has a yield of eighty percent has to plan for it.', show: 'title' },
         { say: 'In this last part, you will work out how much reactant to use when the percent yield is known.' },
+      ],
+    },
+    {
+      chapter: 'Making ammonia, up close',
+      layout: 'center',
+      main: [reaction('am', { from: [{ t: 'N2' }, { t: 'H2', n: 3 }], to: [{ t: 'NH3', n: 2 }] })],
+      lines: [
+        { say: 'Here is a nitrogen molecule and three hydrogen molecules.', show: 'am' },
+        { say: 'Watch them make two ammonia molecules.', play: 'am.go' },
+        { say: 'In a real factory only part of the mixture reacts each time. If we know the yield, we can work out how much reactant to start with to make the ammonia we need.' },
       ],
     },
     {

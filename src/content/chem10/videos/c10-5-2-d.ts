@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c10-5-figures.ts';
 
@@ -65,6 +66,16 @@ const video: Explainer = {
       lines: [
         { say: 'A balance measures grams, but a balanced equation counts moles. So how much product can you make from a mass of reactant?', show: 'title' },
         { say: 'In this last part, you will go from the mass of one substance to the mass of another, through moles, in three steps.' },
+      ],
+    },
+    {
+      chapter: 'Burning magnesium, up close',
+      layout: 'center',
+      main: [reaction('mg', { from: [{ t: 'Mg', n: 2 }, { t: 'O2' }], to: [{ t: 'MgO', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here are two magnesium atoms and one oxygen molecule.', show: 'mg' },
+        { say: 'Watch them react to make two units of magnesium oxide.', play: 'mg.go' },
+        { say: 'Each magnesium atom ends up in one unit of magnesium oxide, so moles of magnesium become the same number of moles of magnesium oxide. From there we can turn moles back into grams.' },
       ],
     },
     {

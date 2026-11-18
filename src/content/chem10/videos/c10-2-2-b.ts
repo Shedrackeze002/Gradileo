@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { isotopeMix } from './lib/c10-equations.ts';
 import { barGraph, marbles } from '@/video/charts.ts';
 import { figure } from '@/video/solids.ts';
 import { tag } from './lib/c10-2-figures.ts';
@@ -31,6 +32,16 @@ const video: Explainer = {
       lines: [
         { say: 'In part one, you met chlorine’s two isotopes, chlorine-35 and chlorine-37. So where does the 35.45 in the periodic table come from?', show: 'title' },
         { say: 'In this part, you will find an element’s relative atomic mass from its isotopes.' },
+      ],
+    },
+    {
+      chapter: 'A sample of chlorine',
+      layout: 'center',
+      main: [isotopeMix('cm', { name: 'chlorine-35', n: 18 }, { name: 'chlorine-37', n: 6 }, 'a sample of chlorine atoms')],
+      lines: [
+        { say: 'Here is a sample of chlorine atoms, moving about. They are not all the same: some are chlorine thirty-five and some are chlorine thirty-seven.', caption: 'Here is a sample of chlorine atoms, moving about. They are not all the same: some are chlorine-35 and some are chlorine-37.', show: ['cm', 'cm.labels', 'cm.key'] },
+        { say: 'Count them and about three in every four are chlorine thirty-five. They react in exactly the same way, so every sample of chlorine has this same mixture.', caption: 'Count them and about three in every four are chlorine-35. They react in exactly the same way, so every sample of chlorine has this same mixture.' },
+        { say: 'So the average mass of a chlorine atom sits much closer to thirty-five than to thirty-seven. That average is the relative atomic mass.', caption: 'So the average mass of a chlorine atom sits much closer to 35 than to 37. That average is the relative atomic mass.' },
       ],
     },
     {

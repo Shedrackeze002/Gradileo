@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c30-1-6-b',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'A formation equation is like a recipe that makes exactly one serving. The product is fixed: one mole of the compound. The ingredients are its elements, each in its standard state.', show: 'title' },
         { say: 'In this part, you will write formation equations for two oxides, an alcohol and a carbonate.' },
+      ],
+    },
+    {
+      chapter: 'Magnesium oxide from its elements',
+      layout: 'center',
+      main: [reaction('mg', { from: [{ t: 'Mg', n: 2 }, { t: 'O2' }], to: [{ t: 'MgO', n: 2 }], foot: { after: 'per mole of MgO: Mg + ½O₂ → MgO' } })],
+      lines: [
+        { say: 'Here are two magnesium atoms and one oxygen molecule.', show: 'mg' },
+        { say: 'Watch them make two units of magnesium oxide.', play: 'mg.go' },
+        { say: 'A formation equation makes exactly one mole of the compound, so we halve everything: magnesium plus half an oxygen molecule gives magnesium oxide.', caption: 'A formation equation makes exactly one mole of the compound, so we halve everything: Mg + ½O₂ → MgO.' },
       ],
     },
     {

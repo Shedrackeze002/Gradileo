@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { massBar, room } from './lib/c20-4a-figures.ts';
 
@@ -51,6 +52,16 @@ const video: Explainer = {
         { say: 'A small sip of water, five point zero zero grams of it, holds about one point six seven times ten to the twenty-third water molecules. Counting them at one a second would take far longer than the universe has existed.', caption: 'A small sip of water, 5.00 g of it, holds about 1.67 × 10²³ water molecules. Counting them at one a second would take far longer than the universe has existed.', show: 'title' },
         { say: 'Yet a chemist counts them in a moment with a balance, because a mole of any substance has a known mass.' },
         { say: 'This first part finds molar masses. Later parts add hydrates, convert between mass and moles, and count molecules and atoms.' },
+      ],
+    },
+    {
+      chapter: 'Adding up a molar mass',
+      layout: 'center',
+      main: [reaction('am', { from: [{ t: 'N', label: 'N: 14.01' }, { t: 'H', n: 3, label: 'H: 1.01 each' }], to: [{ t: 'NH3', label: 'NH₃' }], foot: { after: '14.01 + 3 × 1.01 = 17.04 g/mol' } })],
+      lines: [
+        { say: 'Here is a nitrogen atom and three hydrogen atoms, each with its molar mass.', show: 'am' },
+        { say: 'Watch them join into ammonia. Every atom is still there, so the masses simply add.', play: 'am.go' },
+        { say: 'Fourteen point zero one plus three times one point zero one is seventeen point zero four grams per mole.', caption: 'Fourteen point zero one plus three times one point zero one is 17.04 g/mol.' },
       ],
     },
     {

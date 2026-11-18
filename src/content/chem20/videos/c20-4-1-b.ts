@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { gives, mol, plus, row, stack, star } from './lib/c20-4a-figures.ts';
 
@@ -35,6 +36,16 @@ const video: Explainer = {
       lines: [
         { say: 'Balancing an equation is organised trial and error. A few good habits keep it short.', show: 'title' },
         { say: 'In this part, you will learn six habits, and use them on a formation, on an equation with a polyatomic ion, and on a metal reacting with water.' },
+      ],
+    },
+    {
+      chapter: 'Sodium chloride from its elements',
+      layout: 'center',
+      main: [reaction('nc', { from: [{ t: 'Na', n: 2 }, { t: 'Cl2' }], to: [{ t: 'NaCl', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here are two sodium atoms and one chlorine molecule.', show: 'nc' },
+        { say: 'Watch them react to form sodium chloride.', play: 'nc.go' },
+        { say: 'One chlorine molecule brings two chlorine atoms, so it needs two sodium atoms, and makes two units of sodium chloride. That is a formation reaction, balanced.' },
       ],
     },
     {

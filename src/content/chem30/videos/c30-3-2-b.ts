@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { butaneIsomers } from './lib/c30-organic.ts';
 import { figure } from '@/video/solids.ts';
 import { chainBonds, numberLabels, skeleton, step, zigzag } from './lib/c30-3a-figures.ts';
 
@@ -43,6 +44,16 @@ const video: Explainer = {
       lines: [
         { say: 'Many alkanes are not straight chains: their carbon chains have branches. Each one needs a name that says exactly where its branches are.', show: 'title' },
         { say: 'In this part, you will learn the five steps for naming a branched alkane.' },
+      ],
+    },
+    {
+      chapter: 'A branch, up close',
+      layout: 'center',
+      main: [butaneIsomers('bi')],
+      lines: [
+        { say: 'Here are four carbon atoms in a straight chain: butane.', show: 'bi' },
+        { say: 'Watch one end carbon move to the middle as a branch.', play: 'bi.iso' },
+        { say: 'The longest chain now has three carbons with a methyl group on the second: methylpropane. The longest chain names the parent, and the branch is named in front.' },
       ],
     },
     {

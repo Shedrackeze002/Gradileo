@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { n2o4BothWays } from '../../chem30/videos/lib/c30-particles.ts';
 
 const video: Explainer = {
   id: 'cx-10-4',
@@ -14,6 +15,15 @@ const video: Explainer = {
       lines: [
         { say: 'For reactions between gases, it is easier to measure pressures than concentrations. So for gas equilibria, such as the Haber process, chemists use an equilibrium constant written in pressures, called K p.', caption: 'For reactions between gases, it is easier to measure pressures than concentrations. So for gas equilibria, such as the Haber process, chemists use an equilibrium constant written in pressures, called Kp.', show: 'title' },
         { say: 'In this lesson, you will calculate partial pressures and K p, and explain what changes it.', caption: 'In this lesson, you will calculate partial pressures and Kp, and explain what changes it.' },
+      ],
+    },
+    {
+      chapter: 'An equilibrium of gases',
+      layout: 'center',
+      main: [n2o4BothWays('bw', { seed: 12 })],
+      lines: [
+        { say: 'Here are two tubes of gas at the same temperature. The left one starts as dinitrogen tetroxide only, and the right one as nitrogen dioxide only.', caption: 'Here are two tubes of gas at the same temperature. The left one starts as N₂O₄ only, and the right one as NO₂ only.', show: ['bw', 'bw.labels', 'bw.key', 'bw.tally'], play: 'bw.go' },
+        { say: 'Both settle to the same mixture. Every molecule of each gas adds to the pressure, so we can describe that mixture by the partial pressure of each gas, and that is what K p uses.', caption: 'Both settle to the same mixture. Every molecule of each gas adds to the pressure, so we can describe that mixture by the partial pressure of each gas, and that is what Kp uses.', focus: 'bw.tally' },
       ],
     },
     {

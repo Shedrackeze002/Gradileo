@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { methaneBurning } from './lib/c30-organic.ts';
 
 /** A symbol with its oxidation number above it. */
 const on = (sym: string, v: string) => `\\overset{${v}}{\\mathrm{${sym}}}`;
@@ -20,6 +21,16 @@ const video: Explainer = {
       lines: [
         { say: 'Back to burning methane. No ion appears anywhere in the equation, so how can you tell that carbon is oxidised?', show: 'title' },
         { say: 'In this part, you will use changes in oxidation numbers to decide whether a reaction is redox, what is oxidised and reduced, and which reactants are the agents.' },
+      ],
+    },
+    {
+      chapter: 'Burning methane, up close',
+      layout: 'center',
+      main: [methaneBurning('mb')],
+      lines: [
+        { say: 'Here is methane meeting oxygen.', show: 'mb' },
+        { say: 'Watch the atoms swap partners.', play: 'mb.burn' },
+        { say: 'Carbon goes from minus four in methane to plus four in carbon dioxide, and oxygen goes from zero to minus two. One goes up and the other down, so this is a redox reaction.' },
       ],
     },
     {

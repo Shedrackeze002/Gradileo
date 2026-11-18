@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c9-3-2',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'A word equation names the substances in a reaction. A symbol equation goes further: it shows the formulas, and how many of each particle react.', show: 'title' },
         { say: 'Because atoms are never created or destroyed, a symbol equation must be balanced. In this video, you will learn to count atoms and balance equations.' },
+      ],
+    },
+    {
+      chapter: 'Hydrogen burning, up close',
+      layout: 'center',
+      main: [reaction('hb', { from: [{ t: 'H2', n: 2 }, { t: 'O2' }], to: [{ t: 'H2O', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here are two hydrogen molecules and one oxygen molecule, with the atoms counted underneath.', show: 'hb' },
+        { say: 'Watch the bonds break and the atoms join up as water. Every atom on the left ends up on the right.', play: 'hb.go' },
+        { say: 'Four hydrogen atoms and two oxygen atoms before, and the same after. That is what a balanced equation shows: two H two plus O two gives two H two O.', caption: 'Four hydrogen atoms and two oxygen atoms before, and the same after. That is what a balanced equation shows: 2H₂ + O₂ → 2H₂O.' },
       ],
     },
     {

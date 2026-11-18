@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { precipitate } from './lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { filtration, room } from './lib/c20-4a-figures.ts';
 
@@ -20,6 +21,16 @@ const video: Explainer = {
       lines: [
         { say: 'How much barium chloride is dissolved in a solution? It cannot be weighed while it is dissolved, but it can be turned into a solid that can.', show: 'title' },
         { say: 'In this last part, you will avoid a common slip, and analyse a solution by weighing a precipitate.' },
+      ],
+    },
+    {
+      chapter: 'A precipitate to weigh',
+      layout: 'center',
+      main: [precipitate('bs', { cation: { name: 'barium ion', tone: 'good', size: 1.1 }, anion: { name: 'sulfate ion', tone: 'hyp', size: 1.1 }, withCation: { name: 'chloride ion', tone: 'theta' }, withAnion: { name: 'sodium ion', tone: 'brand' } }, { n: 6, label: 'barium chloride + sodium sulfate', solid: 'barium sulfate', seed: 3 })],
+      lines: [
+        { say: 'Here is barium chloride solution just mixed with sodium sulfate solution.', show: ['bs', 'bs.labels', 'bs.key'] },
+        { say: 'Wherever a barium ion meets a sulfate ion, they lock together and sink as solid barium sulfate.', show: 'bs.tally', play: 'bs.mix' },
+        { say: 'Filter off that solid, dry it and weigh it, and stoichiometry tells you how much barium was in the solution. That is gravimetric analysis.' },
       ],
     },
     {

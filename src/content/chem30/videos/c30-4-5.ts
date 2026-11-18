@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { hfAndWater } from './lib/c30-protons.ts';
 import { figure } from '@/video/solids.ts';
 import { LADDER_ROWS, ladder } from './lib/c30-4b-figures.ts';
 
@@ -65,6 +66,16 @@ const video: Explainer = {
         {
           say: 'In this lesson, you will predict acid–base reactions with a table of relative acid strengths. This part reads the table. Parts two and three find the strongest acid and base in a mixture, and predict their reaction.',
         },
+      ],
+    },
+    {
+      chapter: 'A proton changes hands',
+      layout: 'center',
+      main: [hfAndWater('pt')],
+      lines: [
+        { say: 'Here is a hydrogen fluoride molecule and a water molecule.', show: 'pt' },
+        { say: 'Watch the proton move from the acid to the base.', play: 'pt.go' },
+        { say: 'Every acid–base reaction is a proton changing hands. A table of acid strengths tells us which way it goes.' },
       ],
     },
     {

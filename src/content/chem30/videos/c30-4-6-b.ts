@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { waterAndWater } from './lib/c30-protons.ts';
 
 const video: Explainer = {
   id: 'c30-4-6-b',
@@ -18,6 +19,16 @@ const video: Explainer = {
           say: 'One division answers it. This part links K A of an acid to K B of its conjugate base, through the ionisation of water.',
           caption: 'One division answers it. This part links Ka of an acid to Kb of its conjugate base, through the ionisation of water.',
         },
+      ],
+    },
+    {
+      chapter: 'Water with itself',
+      layout: 'center',
+      main: [waterAndWater('ww')],
+      lines: [
+        { say: 'Here are two water molecules.', show: 'ww' },
+        { say: 'Watch one give a proton to the other.', play: 'ww.go' },
+        { say: 'That self-ionisation has its own constant, K w. It links every acid’s K a to its conjugate base’s K b.', caption: 'That self-ionisation has its own constant, Kw. It links every acid’s Ka to its conjugate base’s Kb.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { acidIonising } from './lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'c20-1-3-d',
@@ -15,6 +16,16 @@ const video: Explainer = {
       lines: [
         { say: 'The acid in your stomach, the acid in vinegar and the acid in fizzy drinks each take their names from an ion you already know.', show: 'title' },
         { say: 'In this part, you will name acids two ways: by their classical names, and by their eye-you-pack names.', caption: 'In this part, you will name acids two ways: by their classical names, and by their IUPAC names.' },
+      ],
+    },
+    {
+      chapter: 'An acid in water, up close',
+      layout: 'center',
+      main: [{ ...acidIonising('ai'), key: true }],
+      lines: [
+        { say: 'Here is hydrogen chloride gas dissolving in water, up close.', show: ['ai', 'ai.labels', 'ai.key'] },
+        { say: 'Each molecule that meets a water molecule hands over its hydrogen as a hydrogen ion, and leaves a chloride ion behind.', show: 'ai.tally', play: 'ai.go' },
+        { say: 'Those hydrogen ions are what make a solution acidic, so in water hydrogen chloride is called hydrochloric acid.' },
       ],
     },
     {

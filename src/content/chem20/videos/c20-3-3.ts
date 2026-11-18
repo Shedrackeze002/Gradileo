@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { sugarDissolving } from './lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, beaker } from './lib/c20-3a-figures.ts';
 
@@ -29,6 +30,16 @@ const video: Explainer = {
       lines: [
         { say: 'Read the label on a bottle of vinegar or a bag of plant food, and you will usually find a percentage. A water-testing report gives parts per million instead.', show: 'title' },
         { say: 'Both answer the same question: how much of one substance is mixed into another? This first part explains concentration, and the percentage used most for solids in water.' },
+      ],
+    },
+    {
+      chapter: 'A solution forming, up close',
+      layout: 'center',
+      main: [sugarDissolving('sd')],
+      lines: [
+        { say: 'Here is a lump of sugar, the solute, held above some water, the solvent.', show: ['sd', 'sd.labels'] },
+        { say: 'Let it go, and the water pulls the sugar molecules off one by one until they are spread evenly through the solution.', play: 'sd.drop' },
+        { say: 'Concentration tells us how much solute there is in a given amount of that solution.' },
       ],
     },
     {

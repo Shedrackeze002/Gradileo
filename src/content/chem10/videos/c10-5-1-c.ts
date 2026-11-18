@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { balls, frame, tag, water } from './lib/c10-5-figures.ts';
 
@@ -26,6 +27,16 @@ const video: Explainer = {
       lines: [
         { say: 'A dozen eggs and a dozen watermelons hold the same number of things, but they have very different masses.', show: 'title' },
         { say: 'Moles work the same way. In this part, you will find the mass of one mole of a substance, its molar mass, by adding up the masses of its atoms.' },
+      ],
+    },
+    {
+      chapter: 'The mass of a molecule',
+      layout: 'center',
+      main: [reaction('mm', { from: [{ t: 'C', label: 'C: 12.01' }, { t: 'O', n: 2, label: 'O: 16.00 each' }], to: [{ t: 'CO2', label: 'CO₂' }], foot: { after: '12.01 + 2 × 16.00 = 44.01 g/mol' } })],
+      lines: [
+        { say: 'Here is one carbon atom and two oxygen atoms, each with its molar mass in grams per mole.', show: 'mm' },
+        { say: 'Watch them join into carbon dioxide. Every atom is still there, so the masses simply add.', play: 'mm.go' },
+        { say: 'Twelve point zero one, plus two times sixteen, gives forty-four point zero one grams per mole. That is the molar mass of carbon dioxide.', caption: 'Twelve point zero one, plus two times sixteen, gives 44.01 g/mol. That is the molar mass of carbon dioxide.' },
       ],
     },
     {

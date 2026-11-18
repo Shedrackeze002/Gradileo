@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from './lib/c10-equations.ts';
 import { figure } from '@/video/solids.ts';
 import { labels, row, stack, water } from './lib/c10-4-figures.ts';
 
@@ -31,6 +32,16 @@ const video: Explainer = {
       lines: [
         { say: 'A word equation says which substances react, but not how many particles of each take part. A symbol equation uses formulas instead, with numbers in front that count the particles.', show: 'title' },
         { say: 'In this lesson, you will balance symbol equations. This first part counts the atoms in a formula. Part two balances simple equations, part three adds state symbols, and part four balances fuels and polyatomic ions.' },
+      ],
+    },
+    {
+      chapter: 'Counting atoms, up close',
+      layout: 'center',
+      main: [reaction('hb', { from: [{ t: 'H2', n: 2 }, { t: 'O2' }], to: [{ t: 'H2O', n: 2 }], counts: true })],
+      lines: [
+        { say: 'Here are two hydrogen molecules and one oxygen molecule, with the atoms of each element counted underneath.', show: 'hb' },
+        { say: 'Watch them react. The bonds break, and the same atoms join up again as two water molecules.', play: 'hb.go' },
+        { say: 'Four hydrogen atoms and two oxygen atoms on each side. Nothing is made or lost, and that is what we check when we count atoms in an equation.' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { titrating } from '../../chem20/videos/lib/c20-particles.ts';
 import { figure } from '@/video/solids.ts';
 import { flow } from './lib/c30-2b-figures.ts';
 
@@ -42,6 +43,16 @@ const video: Explainer = {
       lines: [
         { say: 'A titration gives you a volume of titrant. Solution stoichiometry turns that volume into the concentration of the sample.', show: 'title' },
         { say: 'In this part, you will find the concentrations of iron two ions and of hydrogen peroxide from permanganate titrations, and avoid a common mistake with the mole ratio.', caption: 'In this part, you will find the concentrations of iron(II) ions and of hydrogen peroxide from permanganate titrations, and avoid a common mistake with the mole ratio.' },
+      ],
+    },
+    {
+      chapter: 'Counting to the end point',
+      layout: 'center',
+      main: [titrating('tm', { seed: 29 })],
+      lines: [
+        { say: 'Here is a titration up close.', show: ['tm', 'tm.labels', 'tm.key', 'tm.tally'] },
+        { say: 'Count the drops as they react. The colour changes only once the flask has nothing left to react with them.', play: 'tm.titrate' },
+        { say: 'The volume used gives the moles added, the balanced equation gives the mole ratio, and from that we find the unknown concentration.' },
       ],
     },
     {

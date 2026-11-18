@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { polarShare } from '../../chem10/videos/lib/c10-atoms.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { oval, tag } from './lib/c30-2a-figures.ts';
@@ -45,6 +46,16 @@ const video: Explainer = {
           show: 'title',
         },
         { say: 'To follow electrons through molecules, chemists keep count with oxidation numbers. This part explains them and gives the rules; later parts put them to work.' },
+      ],
+    },
+    {
+      chapter: 'A shared pair pulled aside',
+      layout: 'center',
+      main: [polarShare('hcl', { symbol: 'H', protons: 1, name: 'hydrogen', tone: 'good' }, { symbol: 'Cl', protons: 17, name: 'chlorine', tone: 'adj' }, 2.8, 0.6, 400)],
+      lines: [
+        { say: 'Here are a hydrogen atom and a chlorine atom.', show: ['hcl', 'hcl.labels'] },
+        { say: 'Watch them share a pair of electrons, and then chlorine pull the pair towards itself.', play: 'hcl.go' },
+        { say: 'Oxidation numbers pretend that the more electronegative atom takes the pair completely. So chlorine counts as minus one and hydrogen as plus one.' },
       ],
     },
     {

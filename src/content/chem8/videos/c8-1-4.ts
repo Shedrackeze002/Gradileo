@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { reaction } from '../../chem10/videos/lib/c10-equations.ts';
 
 const video: Explainer = {
   id: 'c8-1-4',
@@ -14,6 +15,16 @@ const video: Explainer = {
       lines: [
         { say: 'Chemists do not write two hydrogen atoms joined to one oxygen atom every time they mean water. They write H two O.', show: 'title' },
         { say: 'In this video, you will learn to read a chemical formula, and to count the atoms it shows, even with brackets.' },
+      ],
+    },
+    {
+      chapter: 'Atoms joining, up close',
+      layout: 'center',
+      main: [reaction('fj', { from: [{ t: 'C' }, { t: 'O', n: 3, label: '3 O' }, { t: 'H', n: 2, label: '2 H' }], to: [{ t: 'CO2' }, { t: 'H2O' }], counts: true })],
+      lines: [
+        { say: 'Here are some loose atoms: one carbon atom, three oxygen atoms and two hydrogen atoms.', show: 'fj' },
+        { say: 'Watch them join up. One carbon and two oxygens make a molecule of carbon dioxide, C O two. One oxygen and two hydrogens make a molecule of water, H two O.', caption: 'Watch them join up. One carbon and two oxygens make a molecule of carbon dioxide, CO₂. One oxygen and two hydrogens make a molecule of water, H₂O.', play: 'fj.go' },
+        { say: 'A formula says which atoms are in one molecule, and the small number after a symbol says how many of that atom there are.' },
       ],
     },
     {
