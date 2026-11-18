@@ -41,16 +41,20 @@ describe('course placement', () => {
     expect(recommendCourse({ subject: 'Chemistry', grade: 11 })).toMatchObject({ courseId: 'chem-20', prerequisite: 'chem-10' });
     expect(recommendCourse({ subject: 'Chemistry', grade: 12 })).toMatchObject({ courseId: 'chem-30', prerequisite: 'chem-20' });
     expect(recommendCourse({ subject: 'Mathematics', grade: 11, plan: 'university-stem' }).courseId).toBe('math-20-1');
-    // Physics goes by the grade: Grade 10 Physics starts from the basics, so there is no check before it, and Grade 11 Physics checks its skills.
+    // Physics goes by the grade: Grade 10 Physics starts from the basics, so there is no check before it, and each later course checks the one before's skills.
     expect(recommendCourse({ subject: 'Physics', grade: 9 })).toMatchObject({ courseId: 'phys-10', prerequisite: null, alternatives: [] });
     expect(recommendCourse({ subject: 'Physics', grade: 9 }).reasons).toHaveLength(2);
     expect(recommendCourse({ subject: 'Physics', grade: 10 })).toMatchObject({ courseId: 'phys-10', prerequisite: null });
     expect(recommendCourse({ subject: 'Physics', grade: 10 }).reasons).toHaveLength(1);
     expect(recommendCourse({ subject: 'Physics', grade: 10 }).alternatives.map((a) => a.courseId)).toEqual(['phys-20']);
-    for (const grade of [11, 12]) expect(recommendCourse({ subject: 'Physics', grade })).toMatchObject({ courseId: 'phys-20', prerequisite: 'phys-10' });
+    expect(recommendCourse({ subject: 'Physics', grade: 11 })).toMatchObject({ courseId: 'phys-20', prerequisite: 'phys-10' });
     expect(recommendCourse({ subject: 'Physics', grade: 11 }).alternatives.map((a) => a.courseId)).toEqual(['phys-10']);
     expect(recommendCourse({ subject: 'Physics', grade: 11 }).reasons).toHaveLength(1);
-    expect(recommendCourse({ subject: 'Physics', grade: 12 }).reasons.join(' ')).toContain('Grade 12 Physics is being written');
+    expect(recommendCourse({ subject: 'Physics', grade: 12 })).toMatchObject({ courseId: 'phys-30', prerequisite: 'phys-20' });
+    expect(recommendCourse({ subject: 'Physics', grade: 12 }).alternatives.map((a) => a.courseId)).toEqual(['phys-20', 'phys-10']);
+    expect(recommendCourse({ subject: 'Physics', grade: 12 }).reasons).toHaveLength(1);
+    // The check before Grade 12 Physics asks one skill from each of the four units of Grade 11 Physics.
+    expect(placementSkills('phys-20')).toHaveLength(4);
     // English runs Grades 5 to 12: each later course checks the one before's skills first.
     expect(recommendCourse({ subject: 'English', grade: 5 })).toMatchObject({ courseId: 'eng-5', prerequisite: null });
     expect(recommendCourse({ subject: 'English', grade: 6 })).toMatchObject({ courseId: 'eng-6', prerequisite: 'eng-5' });

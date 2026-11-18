@@ -1340,8 +1340,22 @@ items ship or decisions change.
        mirror and lens questions share one sign convention (negative image distance for a
        virtual image, negative focal length for a diverging mirror or lens), and every constant
        is stated in the question.
-     - Next: Unit 4 of Grade 12 Physics (Atomic and Nuclear Physics), the listing for classes
-       and sign-up, and then its videos.
+     - Built (18 November 2026): Unit 4 of Grade 12 Physics, **Atomic and Nuclear Physics**, seven
+       lessons and fourteen question types: cathode rays and Thomson's charge-to-mass ratio,
+       Rutherford's gold foil experiment and the distance of closest approach, the Bohr model
+       with the energy levels and line spectra of hydrogen, the nucleus, isotopes and the strong
+       force, alpha, beta and gamma decay with their equations and properties, half-life,
+       activity and carbon dating, and mass defect, binding energy, fission and fusion. Every
+       constant, half-life and nuclear mass is stated in the question. All four units, thirty
+       lessons and sixty question types of Grade 12 Physics are now written.
+     - Done (18 November 2026): **Grade 12 Physics is listed** for classes and sign-up. The
+       draft flag is gone, a Grade 12 learner who picks Physics is recommended it with a check
+       on four Grade 11 Physics skills (one from each unit), its thirty lessons are filed under
+       topics (a new group, Fields, atoms and nuclei, and new topics for momentum, mirrors and
+       lenses, and diffraction and interference), and two end-to-end tests cover a Grade 12
+       class and a Grade 12 sign-up.
+     - Next: the videos of Grade 12 Physics, unit by unit, starting with Unit 1, Momentum and
+       Impulse.
        `phys-sample-momentum` becomes the first video of Grade 12 Unit 1 and stays off YouTube
        until then. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
