@@ -4,11 +4,13 @@
  * electrons that move: they cross from a cloth to a rod, from a rod to a sphere, or down a wire to
  * the ground, and they lean to one side of a metal sphere when a charged body is near. The
  * electric force on a body is an orange arrow, with its size beside it, and the sum of several is
- * yellow, like every net force. Positive is red and negative is blue throughout.
+ * yellow, like every net force. Positive is red and negative is blue throughout. The electric
+ * field is violet: the lines of the field of the charges, or of two parallel plates, and an arrow
+ * for the field where each test charge is.
  */
 import type { ReactElement } from 'react';
-import type { ChargesEl, Tone } from '../script.ts';
-import { ATOM_NUCLEUS, ATOM_SHELLS, chargesAt, peakForce } from '../charges.ts';
+import { CHARGE_UNITS, type ChargesEl, type Tone } from '../script.ts';
+import { ATOM_NUCLEUS, ATOM_SHELLS, chargesAt, fieldLines, peaksOf, PLATE_HOLE } from '../charges.ts';
 import { written } from '../gravity.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Num, Span } from './Gravity.tsx';
@@ -19,7 +21,17 @@ import { INK, INK3 } from './Triangle.tsx';
 export const POSITIVE = TONES.bad;
 export const NEGATIVE = TONES.adj;
 const PUSH = TONES.opp;
+const WEIGHT = TONES.hyp;
+export const FIELD = TONES.brand;
 const METAL = '#c9c6e8';
+
+/** A whole number of five digits or more, with a space between each three ("15 000"). */
+const grouped = (text: string) => (/^-?\d{5,}$/.test(text) ? text.replace(/\B(?=(\d{3})+$)/g, ' ') : text);
+
+/** The head of an arrow on a field line, at a point, turned to an angle on the screen. */
+function Head({ x, y, turn, size = 9 }: { x: number; y: number; turn: number; size?: number }) {
+  return <polygon points={`${size},0 ${-size * 0.7},${size * 0.62} ${-size * 0.7},${-size * 0.62}`} transform={`translate(${x} ${y}) rotate(${turn})`} fill={FIELD} />;
+}
 const rad = (deg: number) => (deg * Math.PI) / 180;
 
 /** An electron: a blue dot with a minus sign on it. */
@@ -57,7 +69,8 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
   if (p <= 0) return <div style={{ width: w, height: h }} />;
   const state = chargesAt(el, plays ?? st?.plays ?? [], age ?? st?.age ?? 0);
   const part = (name: string) => ownPart(st, name);
-  const [chargePart, force, net, anglePart, distance, vel] = ['charge', 'force', 'net', 'angle', 'distance', 'velocity'].map(part);
+  const [chargePart, force, net, anglePart, distance, vel, linesPart, fieldPart, netField, potentialPart, gapPart, energyPart, trailPart] = ['charge', 'force', 'net', 'angle', 'distance', 'velocity', 'lines', 'field', 'netfield', 'potential', 'gap', 'energy', 'trail'].map(part);
+  const peak = peaksOf(el);
   const unit = el.unit ?? 'μC';
   const out: ReactElement[] = [];
 
@@ -94,6 +107,163 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
     </g>,
   );
 
+  const labels: ReactElement[] = [];
+  const length = el.length ?? { metres: 1, symbol: 'm' };
+  // A potential that is changing is written to the nearest volt, so that it does not flicker with decimals.
+  const volt = (v: number) => `${written(Math.abs(v) < 1e-9 ? 0 : Math.abs(v) >= 100 ? Math.round(v) : v, 3).text.replace('-', '−')} V`;
+
+  // Two parallel plates, with their charges on them, and the lines of the uniform field in the gap.
+  if (el.plates && state.plates) {
+    const pl = el.plates;
+    const upright = pl.across !== 'y';
+    const [a, b] = state.plates.at;
+    const pd = state.plates.volts;
+    const base = pl.base ?? 0;
+    const T = 22;
+    const [s0, s1] = pl.span;
+    const hole = PLATE_HOLE * (s1 - s0) * S;
+    // The field at the start (or, when the plates start with no potential difference, the strongest they come to have) has the number of lines given.
+    const fieldOf = (volts: number, at: [number, number]) => Math.abs(volts / (at[1] - at[0]));
+    let start = fieldOf(pl.volts, pl.at);
+    if (!(start > 0)) for (const clip of Object.values(el.clips)) for (const ph of clip.phases) if (ph.volts !== undefined) start = Math.max(start, fieldOf(ph.volts, pl.at));
+    const strength = start > 0 ? fieldOf(pd, [a, b]) / start : 0;
+    const marks = Math.min(16, Math.round(6 * strength));
+    const lines = Math.min(21, Math.round((pl.lines ?? 7) * strength));
+    /** A point given along the field and along the plates. */
+    const at = (c: number, o: number): [number, number] => (upright ? [X(c), Y(o)] : [X(o), Y(c)]);
+    [a, b].forEach((c, i) => {
+      // Each plate is drawn outside the gap, with its face on the gap.
+      const out1 = Math.sign(c - (i === 0 ? b : a)) * (upright ? 1 : -1);
+      const positive = (i === 0) === pd > 0;
+      const holed = pl.hole === (i === 0 ? 'first' : 'second');
+      const [p0, p1] = [at(c, s0), at(c, s1)];
+      const mid = at(c, (s0 + s1) / 2);
+      const pieces: Array<[[number, number], [number, number]]> = holed ? (upright ? [[p0, [mid[0], mid[1] + hole]], [[mid[0], mid[1] - hole], p1]] : [[p0, [mid[0] - hole, mid[1]]], [[mid[0] + hole, mid[1]], p1]]) : [[p0, p1]];
+      out.push(
+        <g key={`plate-${i}`}>
+          {pieces.map(([q0, q1], j) => {
+            const [x, y, wd, ht] = upright ? [Math.min(q0[0], q0[0] + out1 * T), Math.min(q0[1], q1[1]), T, Math.abs(q1[1] - q0[1])] : [Math.min(q0[0], q1[0]), Math.min(q0[1], q0[1] + out1 * T), Math.abs(q1[0] - q0[0]), T];
+            return (
+              <g key={j}>
+                <rect x={x} y={y} width={wd} height={ht} rx={5} fill="#1b1846" stroke={METAL} strokeWidth={2.5} />
+                <rect x={x} y={y} width={wd} height={ht} rx={5} fill="#fff" fillOpacity={0.06} />
+              </g>
+            );
+          })}
+          {Array.from({ length: Math.abs(pd) > 1e-9 ? marks : 0 }, (_, j) => {
+            const o = s0 + ((j + 0.5) / marks) * (s1 - s0);
+            if (holed && Math.abs(o - (s0 + s1) / 2) * S < hole + 8) return null;
+            const [mx, my] = at(c, o);
+            const [x, y] = upright ? [mx + (out1 * T) / 2, my] : [mx, my + (out1 * T) / 2];
+            return positive ? <Plus key={`m${j}`} x={x} y={y} r={6} /> : <line key={`m${j}`} x1={x - 5} y1={y} x2={x + 5} y2={y} stroke={NEGATIVE} strokeWidth={2.6} strokeLinecap="round" />;
+          })}
+        </g>,
+      );
+      if (potentialPart > 0) {
+        const v = base + (i === 0 ? pd : 0);
+        const other = base + (i === 0 ? 0 : pd);
+        const [x, y, anchor] = upright ? ([p1[0] + (out1 * T) / 2, Math.min(p0[1], p1[1]) - 20, 'middle'] as const) : ([Math.max(p0[0], p1[0]) + 14, p0[1] + (out1 * T) / 2, 'start'] as const);
+        labels.push(
+          <Text key={`volt-${i}`} x={x} y={y} anchor={anchor} color={Math.abs(v - other) < 1e-9 ? INK2 : v > other ? POSITIVE : NEGATIVE} opacity={potentialPart}>
+            {volt(v)}
+          </Text>,
+        );
+      }
+    });
+    if (linesPart > 0 && Math.abs(pd) > 1e-9)
+      out.push(
+        <g key="plate-lines" opacity={0.6 * linesPart}>
+          {Array.from({ length: lines }, (_, j) => {
+            const o = s0 + ((j + 0.5) / lines) * (s1 - s0);
+            // From the positive plate to the negative one.
+            const [from, to] = pd > 0 ? [at(a, o), at(b, o)] : [at(b, o), at(a, o)];
+            return (
+              <g key={j}>
+                <line x1={from[0]} y1={from[1]} x2={to[0]} y2={to[1]} stroke={FIELD} strokeWidth={2} />
+                <Head x={(from[0] + to[0]) / 2} y={(from[1] + to[1]) / 2} turn={(Math.atan2(to[1] - from[1], to[0] - from[0]) * 180) / Math.PI} />
+              </g>
+            );
+          })}
+        </g>,
+      );
+    // Lines of equal potential, evenly spaced between the plates.
+    if (potentialPart > 0)
+      for (let i = 1; i <= (pl.levels ?? 0); i++) {
+        const f = i / ((pl.levels ?? 0) + 1);
+        const c = b + (a - b) * f;
+        const [p0, p1] = [at(c, s0), at(c, s1)];
+        out.push(<line key={`level-${i}`} x1={p0[0]} y1={p0[1]} x2={p1[0]} y2={p1[1]} stroke={INK2} strokeWidth={1.5} strokeDasharray="4 7" opacity={0.7 * potentialPart} />);
+        labels.push(
+          <Text key={`level-t-${i}`} x={upright ? p1[0] : Math.max(p0[0], p1[0]) + 14} y={upright ? Math.min(p0[1], p1[1]) - 20 : p0[1]} anchor={upright ? 'middle' : 'start'} color={INK2} size={18} opacity={potentialPart}>
+            {volt(base + pd * f)}
+          </Text>,
+        );
+      }
+    // The distance between the plates, beside them.
+    if (gapPart > 0) {
+      const [from, to] = upright ? [[X(a), Y(s0) + 26] as [number, number], [X(b), Y(s0) + 26] as [number, number]] : [[X(s0) - 26, Y(a)] as [number, number], [X(s0) - 26, Y(b)] as [number, number]];
+      out.push(<Span key="gap" a={from} b={to} opacity={gapPart} />);
+      labels.push(<Num key="gap-t" x={upright ? (from[0] + to[0]) / 2 : from[0] - 14} y={upright ? from[1] + 22 : (from[1] + to[1]) / 2} pre="d = " n={Math.abs(b - a) / length.metres} unit={length.symbol} figures={el.figures ?? 2} keep anchor={upright ? 'middle' : 'end'} opacity={gapPart} />);
+    }
+  }
+
+  // A uniform field over the whole picture: straight lines, evenly spaced.
+  if (el.uniform && linesPart > 0) {
+    const a = rad(el.uniform.angle ?? 0);
+    const [dx, dy] = [Math.cos(a), -Math.sin(a)];
+    const [nx, ny] = [-dy, dx];
+    const [cx, cy] = [ox + pw / 2, oy + ph / 2];
+    const reach = (Math.abs(pw * dx) + Math.abs(ph * dy)) / 2 + 20;
+    const across = Math.abs(pw * nx) + Math.abs(ph * ny);
+    const count = el.uniform.lines ?? 7;
+    out.push(
+      <g key="uniform" clipPath={`url(#${clip})`} opacity={0.5 * linesPart}>
+        {Array.from({ length: count }, (_, j) => {
+          const t = ((j + 0.5) / count - 0.5) * across;
+          const [mx, my] = [cx + nx * t, cy + ny * t];
+          return (
+            <g key={j}>
+              <line x1={mx - dx * reach} y1={my - dy * reach} x2={mx + dx * reach} y2={my + dy * reach} stroke={FIELD} strokeWidth={2} />
+              {[-0.5, 0.5].map((f) => (
+                <Head key={f} x={mx + dx * reach * f} y={my + dy * reach * f} turn={(Math.atan2(dy, dx) * 180) / Math.PI} />
+              ))}
+            </g>
+          );
+        })}
+      </g>,
+    );
+  }
+
+  // The field lines of the charges themselves, drawn out from each charge as they appear.
+  if (!el.plates && !el.uniform && linesPart > 0) {
+    out.push(
+      <g key="field-lines" clipPath={`url(#${clip})`} opacity={0.75}>
+        {fieldLines(el, state).map((line, i) => {
+          const pts = line.points.map(([x, y]): [number, number] => [X(x), Y(y)]);
+          if (pts.length < 2) return null;
+          const lengths = pts.slice(1).map((q, j) => Math.hypot(q[0] - pts[j][0], q[1] - pts[j][1]));
+          const total = lengths.reduce((n, l) => n + l, 0);
+          // The arrow is half way along a line that joins two charges, and near the charge on one that leaves the picture.
+          const want = line.from !== null && line.to !== null ? total / 2 : line.from !== null ? Math.min(total / 2, 80) : Math.max(total / 2, total - 80);
+          let [left, j] = [want, 0];
+          while (j < lengths.length - 1 && left > lengths[j]) left -= lengths[j++];
+          const f = lengths[j] > 0 ? Math.min(1, left / lengths[j]) : 0;
+          const head: [number, number] = [pts[j][0] + (pts[j + 1][0] - pts[j][0]) * f, pts[j][1] + (pts[j + 1][1] - pts[j][1]) * f];
+          // A line grows from the charge it belongs to: out of a positive one, and back from a negative one.
+          const grown = total * clamp01(linesPart);
+          return (
+            <g key={i}>
+              <polyline points={pts.map((q) => `${q[0].toFixed(1)},${q[1].toFixed(1)}`).join(' ')} fill="none" stroke={FIELD} strokeWidth={2} strokeLinejoin="round" strokeDasharray={linesPart < 1 ? `${grown.toFixed(1)} ${(total + 10).toFixed(1)}` : undefined} strokeDashoffset={linesPart < 1 && line.from === null ? grown - total : undefined} />
+              <g opacity={clamp01(linesPart * 2 - 1)}>
+                <Head x={head[0]} y={head[1]} turn={(Math.atan2(pts[j + 1][1] - pts[j][1], pts[j + 1][0] - pts[j][0]) * 180) / Math.PI} />
+              </g>
+            </g>
+          );
+        })}
+      </g>,
+    );
+  }
+
   // Where each body is on the screen, how large it is drawn, and how far it reaches each way.
   const boxes = el.bodies.map((b) => {
     const s = state.bodies[b.id];
@@ -109,8 +279,10 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
       return 1 / Math.hypot(u / L, v / T);
     };
     const tone: Tone = b.tone ?? (shape === 'rod' ? 'brand' : 'theta');
-    const sign = Math.abs(s.charge) < 1e-9 ? INK2 : s.charge > 0 ? POSITIVE : NEGATIVE;
-    return { b, s, shape, turn, L, T, ex, ey, edge, c: [X(s.x), Y(s.y)] as [number, number], color: TONES[tone], sign, mark: Math.max(5.5, Math.min(10, shape === 'sphere' ? L * 0.13 : shape === 'atom' ? L * 0.085 : T * 0.34)) };
+    // A charge that would be written as zero is drawn with no sign (a charge on its way from positive to negative).
+    const none = Math.abs(s.charge) < (b.pairs !== undefined ? 1e-9 : 0.5 * 10 ** -(el.decimals ?? 0));
+    const sign = none ? INK2 : s.charge > 0 ? POSITIVE : NEGATIVE;
+    return { b, s, shape, none, turn, L, T, ex, ey, edge, c: [X(s.x), Y(s.y)] as [number, number], color: TONES[tone], sign, mark: Math.max(5.5, Math.min(10, shape === 'sphere' ? L * 0.13 : shape === 'atom' ? L * 0.085 : T * 0.34)) };
   });
   type Box = (typeof boxes)[number];
 
@@ -144,6 +316,13 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
     }
   }
 
+  // The path of each body that has moved, as a line of dots.
+  if (trailPart > 0)
+    for (const k of boxes) {
+      if (k.s.trail.length < 2) continue;
+      out.push(<polyline key={`trail-${k.b.id}`} points={k.s.trail.map(([x, y]) => `${X(x).toFixed(1)},${Y(y).toFixed(1)}`).join(' ')} fill="none" stroke={k.sign} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 9" opacity={0.85 * trailPart} clipPath={`url(#${clip})`} />);
+    }
+
   // The bodies, with their + marks and the electrons at rest on them.
   for (const k of boxes) {
     const f = st?.focus[k.b.id] ?? 0;
@@ -155,7 +334,7 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
         <g>
           <circle cx={k.c[0]} cy={k.c[1]} r={k.L} fill="#1b1846" stroke={k.sign} strokeWidth={3} strokeDasharray={k.b.test ? '4 4' : undefined} />
           <circle cx={k.c[0]} cy={k.c[1]} r={k.L} fill={k.sign} fillOpacity={0.35} />
-          {Math.abs(k.s.charge) > 1e-9 && (
+          {!k.none && (
             <g stroke="#fff" strokeWidth={Math.max(2.2, k.L * 0.16)} strokeLinecap="round">
               <line x1={k.c[0] - half} y1={k.c[1]} x2={k.c[0] + half} y2={k.c[1]} />
               {k.s.charge > 0 && <line x1={k.c[0]} y1={k.c[1] - half} x2={k.c[0]} y2={k.c[1] + half} />}
@@ -210,7 +389,6 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
   );
 
   // The distance between the centres of each pair that is marked, on the side of the line of centres that is lower on the screen.
-  const labels: ReactElement[] = [];
   const find = (id: string) => boxes.find((k) => k.b.id === id);
   const spans = (el.spans ?? (boxes.length > 1 ? [[boxes[0].b.id, boxes[1].b.id] as [string, string]] : [])).map(([a, b]) => [find(a), find(b)]).filter((pair): pair is [Box, Box] => !!pair[0] && !!pair[1]);
   if (distance > 0)
@@ -218,7 +396,6 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
       const d = Math.hypot(b.c[0] - a.c[0], b.c[1] - a.c[1]) || 1;
       const u: [number, number] = [(b.c[0] - a.c[0]) / d, (b.c[1] - a.c[1]) / d];
       const n: [number, number] = u[0] >= 0 ? [-u[1], u[0]] : [u[1], -u[0]];
-      const length = el.length ?? { metres: 1, symbol: 'm' };
       const metres = Math.hypot(b.s.x - a.s.x, b.s.y - a.s.y);
       if (el.join) {
         // A dashed line from edge to edge, with the distance beside it two thirds of the way along: clear of the arrows on the first body.
@@ -254,8 +431,9 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
     });
 
   // The name of each body and its charge, the forces on it, and its velocity.
-  const fs = el.forceScale ?? 110 / Math.max(1e-300, peakForce(el));
-  const vs = el.velocityScale ?? 60;
+  const fs = el.forceScale ?? 110 / Math.max(1e-300, peak.force);
+  const es = el.fieldScale ?? 110 / Math.max(1e-300, peak.field);
+  const vs = el.velocityScale ?? (peak.speed > 0 ? 90 / peak.speed : 60);
   const sources = el.bodies.filter((b) => !b.test).length;
   for (const k of boxes) {
     const at = k.b.labelAt ?? 'above';
@@ -263,18 +441,40 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
     const pushes = Object.entries(k.s.from).filter(([, f]) => f.n > 0);
     // The sum is drawn when there is more than one force to add, or when the forces themselves are not shown.
     const summed = drawn && net > 0 && k.s.force.n > 0 && (pushes.length > 1 || force <= 0);
-    const level = Math.abs(Math.sin(rad(k.s.force.angle))) < 0.35;
-    // A level sum goes over a force that points the same way, where the name of the body is: the name makes room for it.
-    const lift = summed && level && force > 0 && pushes.some(([, f]) => Math.abs(((f.angle - k.s.force.angle + 540) % 360) - 180) < 25) ? 24 * net : 0;
-    const lines = [k.b.label !== undefined ? { text: k.b.label, color: INK, opacity: 1 } : null, chargePart > 0 ? { text: chargeText(k.s.charge, unit, el.decimals ?? 0, k.b.pairs !== undefined), color: k.sign, opacity: chargePart } : null].filter((l): l is { text: string; color: string; opacity: number } => !!l);
+    // The fields where a test charge is: of each charge that makes one there, and of the plates.
+    const made = k.b.test ? Object.entries(k.s.fields).filter(([, f]) => f.n > 0) : [];
+    const fieldSum = k.b.test && netField > 0 && (made.length > 1 || fieldPart <= 0);
+    // A level arrow that points the same way as one already on the body goes over it, where the name of the body is: the name makes room for it.
+    let lift = 0;
+    const planned: number[] = [];
+    for (const [angle, opacity] of [
+      ...(drawn && force > 0 ? pushes.map(([, f]): [number, number] => [f.angle, force]) : []),
+      ...(summed ? [[k.s.force.angle, net] as [number, number]] : []),
+      ...(fieldPart > 0 ? made.map(([, f]): [number, number] => [f.angle, fieldPart]) : []),
+      ...(fieldSum && k.s.field.n > 1e-4 * peak.field ? [[k.s.field.angle, netField] as [number, number]] : []),
+    ]) {
+      const over = planned.filter((a) => Math.abs(((a - angle + 540) % 360) - 180) < 25).length;
+      if (Math.abs(Math.sin(rad(angle))) < 0.35 && over > 0) lift = Math.max(lift, (26 * over - 2) * opacity);
+      planned.push(angle);
+    }
+    // A body on an upright plate has its name and charge beside the plate, in the gap, and not over the plate's own marks.
+    let aside = 0;
+    if (el.plates && state.plates && el.plates.across !== 'y' && (at === 'above' || at === 'below')) {
+      const [first, second] = state.plates.at;
+      for (const [face, inward] of [[first, Math.sign(second - first)], [second, Math.sign(first - second)]] as const) {
+        const near = clamp01(1 - Math.abs(k.c[0] - X(face)) / 40);
+        if (near > 0) aside = inward * near * 48;
+      }
+    }
+    const lines = [k.b.label !== undefined ? { text: k.b.label, color: INK, opacity: 1 } : null, chargePart > 0 && !(k.b.test && Math.abs(k.s.charge) < 1e-9) ? { text: chargeText(k.s.charge, unit, el.decimals ?? 0, k.b.pairs !== undefined), color: k.sign, opacity: chargePart } : null].filter((l): l is { text: string; color: string; opacity: number } => !!l);
     lines.forEach((l, i) => {
       // The charge is written next to the body, and the name beyond it.
       const row = lines.length - 1 - i;
       const [x, y, anchor] =
         at === 'above'
-          ? ([k.c[0], k.c[1] - k.ey - 22 - lift - 28 * row * (lines[1]?.opacity ?? 1), 'middle'] as const)
+          ? ([k.c[0] + aside, k.c[1] - k.ey - 22 - lift - 28 * row * (lines[1]?.opacity ?? 1), 'middle'] as const)
           : at === 'below'
-            ? ([k.c[0], k.c[1] + k.ey + 24 + 28 * i, 'middle'] as const)
+            ? ([k.c[0] + aside, k.c[1] + k.ey + 24 + 28 * i, 'middle'] as const)
             : ([k.c[0] + (at === 'left' ? -1 : 1) * (k.ex + 14), k.c[1] + (lines.length > 1 ? (i === 0 ? -14 : 14) : 0), at === 'left' ? 'end' : 'start'] as const);
       labels.push(
         <Text key={`n-${k.b.id}-${i}`} x={x} y={y} anchor={anchor} color={l.color} opacity={l.opacity}>
@@ -286,9 +486,11 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
     const shown: number[] = [];
     /** How many arrows already drawn on this body point nearly the same way. */
     const beside = (angle: number) => shown.filter((a) => Math.abs(((a - angle + 540) % 360) - 180) < 25).length;
-    const arrow = (key: string, f: { n: number; angle: number }, color: string, opacity: number, words: string, weight: number) => {
+    type Tag = { unit: string; figures: number; decimals?: number; pre?: string; words?: string; name?: string };
+    const arrow = (key: string, f: { n: number; angle: number }, scale: number, color: string, opacity: number, tag: Tag, weight: number) => {
+      const words = tag.words ?? '';
       // A picture that is not to scale keeps its arrows short enough to read as two bodies come together.
-      const len = Math.min(el.plain ? 150 : Infinity, Math.max(10, f.n * fs));
+      const len = Math.min(el.plain ? 150 : Infinity, Math.max(10, f.n * scale));
       const [dx, dy] = [Math.cos(rad(f.angle)), -Math.sin(rad(f.angle))];
       const flat = Math.abs(dy) < 0.35;
       // A second arrow the same way goes beside the first: over it when they are level, to its left otherwise.
@@ -315,10 +517,10 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
       out.push(<Arrow key={key} x={from[0]} y={from[1]} len={len} turn={f.angle} color={color} weight={weight} opacity={opacity} />);
       if (el.plain) return;
       const side = dx > 0 ? 'start' : 'end';
-      const figures = el.forceFigures ?? 3;
+      const figures = tag.figures;
       // Two bodies that pull each other have their sizes written between them; when there is no room for both there, each goes under its own body, on the far side.
       const size = written(f.n, figures, el.notation === 'sci', true);
-      const wide = (size.text.length + (size.power !== null ? 5 + String(size.power).length * 0.7 : 0) + 2 + words.length) * 12;
+      const wide = tag.name ? tag.name.length * 12 : (size.text.length + (size.power !== null ? 5 + String(size.power).length * 0.7 : 0) + 2 + words.length + (tag.pre ?? '').length) * 12;
       const outward = flat && !behind && lane === 0 && facing && wide > (room + reach) / 2 - 12;
       const [x, y, anchor] = outward
         ? ([k.c[0] - Math.sign(dx) * 6, from[1] + k.ey + 14, dx > 0 ? 'end' : 'start'] as const)
@@ -330,13 +532,15 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
             ? // Straight up or down: beside the middle of the arrow, to its right (a second one the same way, to its left).
               ([(from[0] + tip[0]) / 2 + (lane > 0 ? -16 : 16), (from[1] + tip[1]) / 2, lane > 0 ? 'end' : 'start'] as const)
             : ([tip[0] + dx * 16, tip[1] + dy * 20, side] as const);
-      if (el.forceDecimals !== undefined)
+      // A name, a size with a fixed number of decimal places, a whole number with its thousands apart, or a size to so many figures.
+      const plainText = tag.name ?? (tag.decimals !== undefined ? `${tag.pre ?? ''}${f.n.toFixed(tag.decimals)} ${tag.unit}${words}` : size.power === null && grouped(size.text) !== size.text ? `${tag.pre ?? ''}${grouped(size.text)} ${tag.unit}${words}` : null);
+      if (plainText !== null)
         labels.push(
           <Text key={`${key}-t`} x={x} y={y} anchor={anchor} color={color} opacity={opacity}>
-            {`${f.n.toFixed(el.forceDecimals)} N${words}`}
+            {plainText}
           </Text>,
         );
-      else labels.push(<Num key={`${key}-t`} x={x} y={y} anchor={anchor} n={f.n} unit={`N${words}`} figures={figures} keep sci={el.notation === 'sci'} color={color} opacity={opacity} />);
+      else labels.push(<Num key={`${key}-t`} x={x} y={y} anchor={anchor} pre={tag.pre ?? ''} n={f.n} unit={`${tag.unit}${words}`} figures={figures} keep sci={el.notation === 'sci'} color={color} opacity={opacity} />);
     };
     if (summed && anglePart > 0) {
       const a = k.s.force.angle;
@@ -361,18 +565,75 @@ export function ChargesView({ el, st, w, h, plays, age }: { el: ChargesEl; st: E
     if (drawn && force > 0)
       for (const [id, f] of pushes) {
         const by = find(id)?.b.label;
-        arrow(`f-${k.b.id}-${id}`, f, PUSH, force, pushes.length > 1 && sources > 2 && by !== undefined ? ` from ${by}` : '', 9);
+        const name = el.names ? (id === 'weight' ? 'Weight' : 'Electric force') : undefined;
+        arrow(`f-${k.b.id}-${id}`, f, fs, id === 'weight' ? WEIGHT : PUSH, force, { unit: 'N', figures: el.forceFigures ?? 3, decimals: el.forceDecimals, words: pushes.length > 1 && sources > 2 && by !== undefined ? ` from ${by}` : '', name }, 9);
       }
-    if (summed) arrow(`net-${k.b.id}`, k.s.force, NET, net, '', 10);
-    if (vel > 0 && k.b.mass && k.s.speed * vs >= 1) {
+    if (summed) arrow(`net-${k.b.id}`, k.s.force, fs, NET, net, { unit: 'N', figures: el.forceFigures ?? 3, decimals: el.forceDecimals, name: el.names ? 'Net force' : undefined }, 10);
+    // The field where a test charge is: of each charge that makes it, and their sum.
+    if (k.b.test) {
+      const tag = { unit: 'N/C', figures: el.fieldFigures ?? 3 };
+      if (fieldPart > 0)
+        for (const [id, f] of made) {
+          const by = find(id)?.b.label;
+          arrow(`e-${k.b.id}-${id}`, f, es, FIELD, fieldPart, { ...tag, pre: made.length === 1 ? 'E = ' : '', words: made.length > 1 && by !== undefined ? ` from ${by}` : '' }, 7);
+        }
+      if (fieldSum) {
+        if (k.s.field.n > 1e-4 * peak.field) arrow(`en-${k.b.id}`, k.s.field, es, NET, netField, { ...tag, pre: 'E = ' }, 8);
+        else
+          labels.push(
+            <Text key={`en-${k.b.id}-0`} x={k.c[0]} y={k.c[1] - k.ey - 22 - 28 * lines.length - 6} color={NET} opacity={netField}>
+              E = 0
+            </Text>,
+          );
+      }
+    }
+    // A test charge with no charge only marks a path: its trail is drawn, but not its velocity.
+    if (vel > 0 && k.b.mass && k.s.speed * vs >= 1 && !(k.b.test && k.b.charge === 0)) {
       const len = Math.max(12, k.s.speed * vs);
       const [dx, dy] = [k.s.v[0] / k.s.speed, -k.s.v[1] / k.s.speed];
       const reach = k.edge(dx, dy) + 4;
       const flat = Math.abs(dy) < 0.35;
-      out.push(<Arrow key={`v-${k.b.id}`} x={k.c[0] + dx * reach} y={k.c[1] + dy * reach - (flat ? 26 * beside((Math.atan2(k.s.v[1], k.s.v[0]) * 180) / Math.PI) : 0)} len={len} turn={(Math.atan2(k.s.v[1], k.s.v[0]) * 180) / Math.PI} color={VELOCITY} weight={7} opacity={vel} />);
+      const lane = flat ? 26 * beside((Math.atan2(k.s.v[1], k.s.v[0]) * 180) / Math.PI) : 0;
+      out.push(<Arrow key={`v-${k.b.id}`} x={k.c[0] + dx * reach} y={k.c[1] + dy * reach - lane} len={len} turn={(Math.atan2(k.s.v[1], k.s.v[0]) * 180) / Math.PI} color={VELOCITY} weight={7} opacity={vel} />);
+      if (el.speedFigures) labels.push(<Num key={`v-${k.b.id}-t`} x={k.c[0] + dx * (reach + len) + (flat ? Math.sign(dx) * 12 : 14)} y={k.c[1] + dy * (reach + len) - lane} anchor={flat && dx < 0 ? 'end' : 'start'} n={k.s.speed} unit="m/s" figures={el.speedFigures} keep color={VELOCITY} opacity={vel} />);
     }
   }
   out.push(<g key="labels">{labels}</g>);
+
+  // The energy of the first body that can move: what it can still lose between the plates, and its kinetic energy.
+  const mover = boxes.find((k) => k.b.mass);
+  if (energyPart > 0 && mover && peak.energy > 0) {
+    const [bw, gap, tall] = [46, 58, Math.max(40, Math.min(150, ph - 150))];
+    const left = el.energyAt === 'left' ? ox + 46 : ox + pw - 46 - 2 * bw - gap;
+    const foot = oy + ph - 62;
+    // In electronvolts for a particle whose charge is counted in elementary charges; otherwise in the joules, or the part of a joule, that suits the largest value.
+    const inEv = (el.unit ?? 'μC') === 'e';
+    const [per, symbol] = inEv ? [CHARGE_UNITS.e, 'eV'] : peak.energy >= 1 ? [1, 'J'] : peak.energy >= 1e-3 ? [1e-3, 'mJ'] : peak.energy >= 1e-6 ? [1e-6, 'μJ'] : peak.energy >= 1e-9 ? [1e-9, 'nJ'] : [1, 'J'];
+    const bars: Array<[string, number, string]> = [
+      ['Potential', Math.max(0, mover.s.stored ?? 0), WEIGHT],
+      ['Kinetic', mover.s.kinetic, VELOCITY],
+    ];
+    out.push(
+      <g key="energy" opacity={energyPart}>
+        {bars.map(([name, joules, color], i) => {
+          const x = left + i * (bw + gap);
+          const high = tall * clamp01(joules / peak.energy);
+          // Three significant figures, so that the two numbers have room side by side while they change.
+          const shown = Math.abs(joules) < 5e-4 * peak.energy ? 0 : Number((joules / per).toPrecision(3));
+          return (
+            <g key={name}>
+              <rect x={x} y={foot - tall} width={bw} height={tall} rx={6} fill="rgb(255 255 255 / 0.05)" stroke={INK3} strokeOpacity={0.5} strokeWidth={1.5} />
+              <rect x={x} y={foot - high} width={bw} height={high} rx={Math.min(6, high / 2)} fill={color} fillOpacity={0.85} />
+              <Num x={x + bw / 2} y={foot - tall - 18} n={shown} unit={symbol} figures={3} color={color} size={18} />
+              <Text x={x + bw / 2} y={foot + 20} size={17} color={INK2}>
+                {name}
+              </Text>
+            </g>
+          );
+        })}
+      </g>,
+    );
+  }
 
   // The note of a phase, in the top left corner of the bench: the table and the stands are at the bottom.
   if (state.note) {

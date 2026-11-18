@@ -425,7 +425,8 @@ See `src/video/script.ts` for every element and option. In short:
   2.4 times as wide as it is tall is drawn under the title on the thumbnail, and a square one
   beside it.
 
-- `charges` (`src/video/charges.ts`) is for electric charge and the electric force. Give the
+- `charges` (`src/video/charges.ts`) is for electric charge, the electric force and the electric
+  field. Give the
   `view` (left, right, bottom, top, in metres unless the bodies are drawn large for the eye) and
   the `bodies`, each with a `charge` in `unit` (`μC` by default; also `C`, `mC`, `nC` and `e`,
   the elementary charge). Positive is red, negative and every electron blue, an electric force
@@ -451,10 +452,33 @@ See `src/video/script.ts` for every element and option. In short:
   wire (`ground: { ball: true }`), and can show a `note` (the step of a method). The electrons
   of a metal sphere lean away from a negative body near it, and towards a positive one, by
   themselves (`sway` sets how easily); those of a rod or a cloth stay where they are. The check
-  follows the electrons through the clips in order, and refuses a body that gives more than it
-  has, or a sphere that sends electrons to the ground with no wire. A view more than about 2.4
-  times as wide as it is tall is drawn under the title on the thumbnail; a picture that shows its
-  electrons is drawn there as it is at the end of its `poster` clip.
+  follows the electrons through the clips in the order a scene plays them, and refuses a body
+  that gives more than it has, or a sphere that sends electrons to the ground with no wire. A view
+  more than about 2.4 times as wide as it is tall is drawn under the title on the thumbnail; a
+  picture that shows its electrons is drawn there as it is at the end of its `poster` clip, and
+  `thumb` lists the parts to draw there.
+  The electric field is violet (`\brand` in maths). `lines` draws the field lines of the charges
+  in the picture, each followed step by step along the field, so they turn round when a charge
+  changes sign and bend away between like charges (`lines: 16` on the element sets how many the
+  largest charge has). A `test: true` body is a test charge: it feels the others, but they are
+  drawn and worked out as if it were not there, and the field is drawn where it is, with `field`
+  (the field of each charge there, "from A" when several) and `netfield` (their vector sum, or
+  "E = 0"). With `charge: 0` it only marks a point, P. `uniform: { field, angle }` puts a uniform
+  field over the whole picture, and `plates: { at, span, volts }` two parallel plates (upright,
+  or level with `across: 'y'`) with the field ΔV ÷ d in the gap and none outside; `base` is the
+  potential of the second plate, `hole` lets a body through one of them, and a phase can change
+  the `volts` or move the `plates`. With plates, `potential` writes the potential of each plate
+  (and `levels` dashed lines of equal potential between them), `gap` marks the distance d, and
+  `energy` draws two bars for the first body with a mass: the potential energy it can still lose
+  between the plates, and its kinetic energy (in eV when the unit is `e`). Bodies with a mass
+  fly under qE, under their weight when the element has `g`, and from a `v` of their own or a
+  `launch`; `trail` dots the path, `speedFigures` writes the speed by the velocity arrow, and
+  `names: true` names the forces ("Electric force", "Weight") in place of their sizes. `rate` is
+  the seconds of the model for each second of video (about 1e-9 for an electron between plates).
+  A test charge with no charge but a mass and a velocity marks the straight path a charge would
+  have followed with no field. A body that starts on a plate has its centre on the face, and
+  its label moves into the gap. Keep an arrow and its label clear of the far plate: start the
+  body on the near side, or set `forceScale`, `fieldScale` or `velocityScale`.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

@@ -238,7 +238,7 @@ function ChargesThumb({ el, w, h }: { el: ChargesEl; w: number; h: number }) {
   const more = Math.max(0, ((x1 - x0) * Math.min(h, 320)) / w - (y1 - y0));
   const table = el.floor !== undefined || el.bodies.some((b) => b.shape === 'sphere' && b.stand !== false);
   const view: ChargesEl['view'] = table ? [x0, x1, y0, y1 + more] : [x0, x1, y0 - more / 2, y1 + more / 2];
-  return <ChargesView el={{ ...el, label: undefined, clips, view }} st={{ ...FULL, parts: marked ? { charge: 1 } : { charge: 1, force: 1, net: 1 } }} w={w} h={h} plays={plays} age={2} />;
+  return <ChargesView el={{ ...el, label: undefined, clips, view }} st={{ ...FULL, parts: el.thumb ? Object.fromEntries(el.thumb.map((part) => [part, 1])) : marked ? { charge: 1 } : { charge: 1, force: 1, net: 1 } }} w={w} h={h} plays={plays} age={2} />;
 }
 
 /** Bodies on a circle on a thumbnail: part way through the poster clip, with the velocity and what turns each body, and no notes. */

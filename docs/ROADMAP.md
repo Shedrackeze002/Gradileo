@@ -1377,10 +1377,20 @@ items ship or decisions change.
        angle, and can fly apart or together. The first four videos are rendered and in Drive: `p30-2-1`
        (Electric Charge), `p30-2-1-b` (Charging Objects: friction, contact and induction),
        `p30-2-2` (Coulomb's Law) and `p30-2-2-b` (The Net Electric Force).
-     - Next: the videos of lessons 2.3 to 2.10 (electric fields and field lines, potential
-       difference and parallel plates, charges moving in a field, circuits, then magnetic fields
-       and forces, the motor and induction), then Units 3 and 4. The physics lessons have no
-       tutor recordings yet.
+     - Done (18 November 2026): **the videos of lessons 2.3 to 2.5**, six more. The `charges`
+       picture now draws the electric field: field lines followed step by step along the field of
+       the charges in the picture, the field at a test charge and the vector sum of two fields,
+       a uniform field, and two parallel plates with the field ΔV ÷ d between them, the potential
+       of each plate, lines of equal potential, and bars for the potential and kinetic energy of
+       a charge that moves in the gap. Charges fly under qE (and their weight), so an electron
+       leaves an electron gun at the speed energy gives, an electron that enters across the field
+       follows a parabola, and Millikan's oil drop falls, rises or hangs as the voltage is turned.
+       The videos: `p30-2-3` (Electric Field Strength), `p30-2-3-b` (Field Lines and Adding
+       Fields), `p30-2-4` (Potential Difference), `p30-2-4-b` (The Field Between Parallel Plates),
+       `p30-2-5` (Charges Moving in a Uniform Field) and `p30-2-5-b` (Millikan's Oil Drops).
+     - Next: the videos of lessons 2.6 to 2.10 (circuits, then magnetic fields and forces, the
+       motor and induction, which need a picture for magnetic fields), then Units 3 and 4. The
+       physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

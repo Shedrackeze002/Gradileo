@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkCharges, checkScript, type ChargeBody, type ChargesEl, type Explainer } from './script.ts';
-import { chargesAt, coulombForce, electronsIn, markAt, peakForce } from './charges.ts';
+import { chargesAt, coulombForce, electronsIn, fieldLines, markAt, peakForce, peaksOf } from './charges.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 /** Point charges, in microcoulombs and metres. */
@@ -225,6 +225,214 @@ describe('charged bodies that are free to move', () => {
   });
 });
 
+describe('the electric field', () => {
+  it('gives the field of each charge where a test charge is, and adds them as vectors', () => {
+    // The lesson's sphere: +4.0 μC, and a point 0.50 m from it.
+    const one = chargesAt(points([{ id: 'q', charge: 4, x: 0 }, { id: 'p', charge: 0, x: 0.5, test: true }])).bodies.p;
+    expect(one.field.n).toBeCloseTo(143840, 0);
+    expect(one.field.angle).toBeCloseTo(0, 6);
+    expect(one.force.n).toBe(0);
+    // Half way between +6.0 μC and +2.0 μC that are 0.60 m apart: the fields are opposite.
+    const mid = points([{ id: 'a', charge: 6, x: 0 }, { id: 'b', charge: 2, x: 0.6 }, { id: 'p', charge: 0, x: 0.3, test: true }], { clips: { flip: { phases: [{ dur: 1, charge: { b: -2 } }] } } });
+    const p = chargesAt(mid).bodies.p;
+    expect(p.fields.a.n / 1e5).toBeCloseTo(5.993, 3);
+    expect(p.fields.b.n / 1e5).toBeCloseTo(1.998, 3);
+    expect(p.field.n / 1e5).toBeCloseTo(3.996, 3);
+    expect(p.field.angle).toBeCloseTo(0, 6);
+    // With B negative, both fields point towards B and add.
+    expect(chargesAt(mid, [['flip', 1]]).bodies.p.field.n / 1e5).toBeCloseTo(7.991, 3);
+    expect(peaksOf(mid).field / 1e5).toBeCloseTo(7.991, 3);
+    // +2.0 μC and +8.0 μC that are 0.90 m apart: the field is zero 0.30 m from the smaller one.
+    expect(chargesAt(points([{ id: 'a', charge: 2, x: 0 }, { id: 'b', charge: 8, x: 0.9 }, { id: 'p', charge: 0, x: 0.3, test: true }])).bodies.p.field.n).toBeLessThan(1e-6);
+    // A test charge takes no part in the field of the others.
+    expect(chargesAt(points([{ id: 'q', charge: 4, x: 0 }, { id: 't', charge: 2, x: 0.25, test: true }, { id: 'p', charge: 0, x: 0.5, test: true }])).bodies.p.field.n).toBeCloseTo(143840, 0);
+  });
+
+  it('puts a charge in a uniform field: F = qE, along the field or against it', () => {
+    const el = points([{ id: 't', charge: 2, x: 0, test: true }, { id: 'e', charge: -1.6e-13, x: 0.5, test: true }], { uniform: { field: 15000, angle: 90 } });
+    const { t, e } = chargesAt(el).bodies;
+    expect(t.field.n).toBeCloseTo(15000, 6);
+    expect(t.from.field.n).toBeCloseTo(0.03, 9);
+    expect(t.from.field.angle).toBeCloseTo(90, 6);
+    expect(e.from.field.angle).toBeCloseTo(-90, 6);
+  });
+
+  it('draws field lines out of positive charges and into negative ones', () => {
+    const lines = (bodies: ChargeBody[]) => {
+      const el = points(bodies, { view: [-1, 1, -0.6, 0.6] });
+      return fieldLines(el, chargesAt(el));
+    };
+    // One positive charge: twelve straight lines, all leaving the picture.
+    const alone = lines([{ id: 'a', charge: 3, x: 0 }]);
+    expect(alone).toHaveLength(12);
+    expect(alone.every((l) => l.from === 0 && l.to === null)).toBe(true);
+    const [x, y] = alone[1].points[alone[1].points.length - 1];
+    expect(Math.atan2(y, x)).toBeCloseTo(Math.PI / 6, 6);
+    // One negative charge: the lines come in from outside.
+    const sink = lines([{ id: 'a', charge: -3, x: 0 }]);
+    expect(sink).toHaveLength(12);
+    expect(sink.every((l) => l.from === null && l.to === 0)).toBe(true);
+    expect(Math.hypot(...sink[0].points[0])).toBeGreaterThan(0.5);
+    // A dipole: twelve lines leave and twelve arrive, and most of them join the two charges.
+    const dipole = lines([{ id: 'a', charge: 3, x: -0.4 }, { id: 'b', charge: -3, x: 0.4 }]);
+    expect(dipole.filter((l) => l.from === 0)).toHaveLength(12);
+    expect(dipole.filter((l) => l.to === 1)).toHaveLength(12);
+    expect(dipole.filter((l) => l.from === 0 && l.to === 1).length).toBeGreaterThanOrEqual(7);
+    // Two like charges: no line of one ends on the other. A charge a third as large has a third of the lines.
+    const like = lines([{ id: 'a', charge: 6, x: -0.4 }, { id: 'b', charge: 2, x: 0.4 }]);
+    expect(like.filter((l) => l.from === 0)).toHaveLength(12);
+    expect(like.filter((l) => l.from === 1)).toHaveLength(4);
+    expect(like.every((l) => l.to === null)).toBe(true);
+    // A test charge has no lines of its own.
+    expect(lines([{ id: 'a', charge: 3, x: 0 }, { id: 'p', charge: 1, x: 0.4, test: true }])).toHaveLength(12);
+  });
+});
+
+describe('the field lines of two like charges', () => {
+  it('ends the two lines on the axis at the point of no field, with the picture the same above and below', () => {
+    const like = points([{ id: 'a', charge: 3, x: -0.3 }, { id: 'b', charge: 3, x: 0.3 }], { view: [-0.9, 0.9, -0.34, 0.34], lines: 16 });
+    const lines = fieldLines(like, chargesAt(like));
+    const ends = lines.map((l) => l.points[l.points.length - 1]);
+    // The line each charge sends at the other stays on the axis and stops short of the middle.
+    const inner = lines.filter((l) => l.points.every(([, y]) => y === 0) && Math.abs(l.points[l.points.length - 1][0]) < 0.3);
+    expect(inner).toHaveLength(2);
+    for (const l of inner) expect(Math.abs(l.points[l.points.length - 1][0])).toBeLessThan(0.02);
+    // As many lines end above the axis as below it.
+    expect(ends.filter(([, y]) => y > 1e-9).length).toBe(ends.filter(([, y]) => y < -1e-9).length);
+  });
+});
+
+describe('parallel plates', () => {
+  // The lesson's plates: 600 V across 3.0 cm, the positive one on the left, with a proton between them.
+  const PROTON = 1.67e-27;
+  const ELECTRON = 9.11e-31;
+  const plates = (over: Partial<ChargesEl> = {}, bodies: ChargeBody[] = [{ id: 'p', charge: 1, x: 0.01, mass: PROTON }]): ChargesEl => ({ kind: 'charges', id: 'c', unit: 'e', bodies, view: [-0.01, 0.04, -0.015, 0.015], plates: { at: [0, 0.03], span: [-0.01, 0.01], volts: 600 }, clips: {}, ...over });
+
+  it('has a uniform field ΔV ÷ d in the gap, and none outside it', () => {
+    const el = plates({ clips: { move: { phases: [{ dur: 1, to: { p: [0.025, 0.008] } }] }, out: { phases: [{ dur: 1, to: { p: [0.02, 0.012] } }] }, close: { phases: [{ dur: 1, plates: [0, 0.015] }] }, less: { phases: [{ dur: 1, volts: -300 }] } } });
+    const p = chargesAt(el).bodies.p;
+    expect(p.field.n).toBeCloseTo(20000, 6);
+    expect(p.field.angle).toBeCloseTo(0, 6);
+    expect(p.from.field.n / 1e-15).toBeCloseTo(3.2, 9);
+    // The force is the same wherever the proton is between the plates.
+    expect(chargesAt(el, [['move', 1]]).bodies.p.from.field.n / 1e-15).toBeCloseTo(3.2, 9);
+    expect(chargesAt(el, [['move', 1], ['out', 1]]).bodies.p.force.n).toBe(0);
+    // Plates half as far apart have twice the field; the other way round, the field turns round.
+    const near = chargesAt(el, [['close', 1]]);
+    expect(near.plates).toEqual({ at: [0, 0.015], volts: 600 });
+    expect(near.bodies.p.field.n).toBeCloseTo(40000, 6);
+    const turned = chargesAt(el, [['less', 1]]).bodies.p;
+    expect(turned.field.n).toBeCloseTo(10000, 6);
+    expect(turned.field.angle).toBeCloseTo(180, 6);
+  });
+
+  it('lets the potential fall evenly from one plate to the other, and counts the energy a charge can still lose', () => {
+    const el = plates({ plates: { at: [0, 0.03], span: [-0.01, 0.01], volts: 300, base: 100 } }, [{ id: 'p', charge: 1, x: 0.01, mass: PROTON }, { id: 'n', charge: -2, x: 0.03, y: 0.005 }]);
+    const { p, n } = chargesAt(el).bodies;
+    // A third of the way across, the potential has fallen by a third of 300 V, from 400 V.
+    expect(p.potential).toBeCloseTo(300, 9);
+    expect(p.stored! / 1.6e-19).toBeCloseTo(200, 9);
+    // A negative charge at the plate of lower potential can still lose 2 × 300 eV on its way to the other.
+    expect(n.potential).toBeCloseTo(100, 9);
+    expect(n.stored! / 1.6e-19).toBeCloseTo(600, 9);
+  });
+
+  it('accelerates a charge between the plates: a = qE ÷ m, and qΔV = ½mv²', () => {
+    // A proton in a field of 2000 N/C.
+    const slow = plates({ plates: { at: [0, 0.03], span: [-0.01, 0.01], volts: 60 }, rate: 1e-7, clips: { go: { phases: [{ dur: 1, fly: true }] } } });
+    const p = chargesAt(slow, [['go', 1]]).bodies.p;
+    expect(p.speed / 1e-7 / 1e11).toBeCloseTo(1.916, 3);
+    expect(p.kinetic + p.stored!).toBeCloseTo(chargesAt(slow).bodies.p.stored!, 22);
+    expect(p.trail.length).toBeGreaterThan(50);
+    // An electron from rest through 1000 V, out through a hole in the positive plate: 1.87 × 10⁷ m/s, however far apart the plates are.
+    for (const gap of [0.02, 0.01]) {
+      const gun = plates(
+        { view: [-0.01, 0.2, -0.015, 0.015], plates: { at: [gap, 0], span: [-0.01, 0.01], volts: 1000, hole: 'first' }, rate: 1e-9, clips: { go: { phases: [{ dur: 4, fly: true }] } } },
+        [{ id: 'e', charge: -1, x: 0, mass: ELECTRON }],
+      );
+      const e = chargesAt(gun, [['go', 4]]).bodies.e;
+      expect(e.x).toBeGreaterThan(gap);
+      expect(e.speed / 1e7).toBeCloseTo(1.874, 2);
+      expect(e.kinetic / 1.6e-19).toBeCloseTo(1000, 0);
+      expect(e.stored).toBeCloseTo(0, 25);
+    }
+    // A knob turned while the drop moves: it falls at 1200 V, is stopped by 2000 V, and is left at rest when the voltage is eased back to 1600 V.
+    const tuned = plates(
+      { g: 9.81, view: [-0.03, 0.03, -0.015, 0.015], plates: { at: [0.01, -0.01], across: 'y', span: [-0.02, 0.02], volts: 1200 }, rate: 0.028, clips: { tune: { phases: [{ dur: 1, fly: true }, { dur: 0.8, volts: 2000, fly: true }, { dur: 0.6, fly: true }, { dur: 0.8, volts: 1600, fly: true }, { dur: 2, fly: true }] } } },
+      [{ id: 'drop', charge: -5, x: 0, y: 0.004, mass: 6.53e-15 }],
+    );
+    const settled = chargesAt(tuned, [['tune', 5.2]]).bodies.drop;
+    expect(Math.abs(settled.v[1])).toBeLessThan(2e-3);
+    expect(Math.abs(settled.y)).toBeLessThan(1.5e-3);
+    // Without the hole it stops on the plate, at the potential of the plate.
+    const wall = plates({ plates: { at: [0.02, 0], span: [-0.01, 0.01], volts: 1000 }, rate: 1e-9, clips: { go: { phases: [{ dur: 4, fly: true }] } } }, [{ id: 'e', charge: -1, x: 0.001, mass: ELECTRON }]);
+    const stopped = chargesAt(wall, [['go', 4]]).bodies.e;
+    expect([stopped.x, stopped.speed, stopped.potential, stopped.stored]).toEqual([0.02, 0, 1000, 0]);
+  });
+
+  it('bends the path of a charge that enters across the field into a parabola', () => {
+    // The lesson's electron: 2.0 × 10⁷ m/s along plates 6.0 cm long, in a field of 4000 N/C that points down.
+    const el = plates(
+      { view: [-0.02, 0.1, -0.02, 0.02], plates: { at: [0.01, -0.01], across: 'y', span: [0, 0.06], volts: 80 }, rate: 1e-9, clips: { go: { phases: [{ dur: 3, fly: true }] }, on: { phases: [{ dur: 1, fly: true }] } } },
+      [{ id: 'e', charge: -1, x: 0, y: 0, mass: ELECTRON, v: [2e7, 0] }],
+    );
+    expect(chargesAt(el).bodies.e.field.angle).toBeCloseTo(-90, 6);
+    const e = chargesAt(el, [['go', 3]]).bodies.e;
+    expect(e.x).toBeCloseTo(0.06, 9);
+    // y = ½at², with a = qE ÷ m upward, against the field: 3.2 mm.
+    expect(e.y * 1000).toBeCloseTo(3.16, 2);
+    expect(e.v[0]).toBeCloseTo(2e7, 3);
+    // Past the plates there is no field, and it goes on in a straight line.
+    const later = chargesAt(el, [['go', 3], ['on', 1]]).bodies.e;
+    expect(later.v[1] / e.v[1]).toBeCloseTo(1, 2);
+    expect(later.force.n).toBe(0);
+  });
+
+  it('lets a test charge with no charge mark the straight path beside a charge that is deflected', () => {
+    const el = plates(
+      { view: [-0.02, 0.1, -0.02, 0.02], plates: { at: [0.006, -0.006], across: 'y', span: [0, 0.06], volts: 48 }, rate: 1e-9, clips: { go: { phases: [{ dur: 3.6, fly: true }] } } },
+      [
+        { id: 'n', charge: 0, x: -0.012, y: 0, mass: ELECTRON, v: [2e7, 0], test: true },
+        { id: 'e', charge: -1, x: -0.012, y: 0, mass: ELECTRON, v: [2e7, 0] },
+      ],
+    );
+    // The two start at the same place, and neither stops the other.
+    expect(checkCharges(el)).toEqual([]);
+    const { n, e } = chargesAt(el, [['go', 3.6]]).bodies;
+    expect([n.x, e.x].map((x) => Math.round(x * 1e6))).toEqual([60000, 60000]);
+    expect(n.y).toBe(0);
+    expect(e.y * 1000).toBeCloseTo(3.16, 2);
+    // Two charges may not start at the same place, and nor may a mark that shows its charges.
+    expect(checkCharges(plates({}, [{ id: 'a', charge: 1, x: 0.01 }, { id: 'b', charge: 0, x: 0.01 }]))[0]).toMatch(/start at the same place/);
+  });
+
+  it("holds Millikan's oil drop at rest when qE = mg, and lets it fall or rise otherwise", () => {
+    // 6.53 × 10⁻¹⁵ kg with five extra electrons, between plates 2.0 cm apart: 1600 V holds it.
+    const el = plates(
+      { g: 9.81, view: [-0.03, 0.03, -0.015, 0.015], plates: { at: [0.01, -0.01], across: 'y', span: [-0.02, 0.02], volts: 1600 }, rate: 0.02, clips: { wait: { phases: [{ dur: 2, fly: true }] }, less: { phases: [{ dur: 2, volts: 1200, fly: true }] }, more: { reset: true, phases: [{ dur: 2, volts: 2000, fly: true }] } } },
+      [{ id: 'drop', charge: -5, x: 0, y: 0, mass: 6.53e-15 }],
+    );
+    const drop = chargesAt(el).bodies.drop;
+    expect(drop.from.field.angle).toBeCloseTo(90, 6);
+    expect(drop.from.field.n / drop.from.weight.n).toBeCloseTo(1, 2);
+    expect(Math.abs(chargesAt(el, [['wait', 2]]).bodies.drop.y)).toBeLessThan(1e-5);
+    expect(chargesAt(el, [['wait', 2], ['less', 2]]).bodies.drop.y).toBeLessThan(-1e-4);
+    expect(chargesAt(el, [['more', 2]]).bodies.drop.y).toBeGreaterThan(1e-4);
+    expect(chargesAt(el, [['more', 2]]).plates?.volts).toBe(2000);
+  });
+
+  it('reports plates that cannot be drawn', () => {
+    expect(checkCharges(plates())).toEqual([]);
+    expect(checkCharges(plates({ plates: { at: [0, 0], span: [1, 0], volts: 600, lines: 0 } }))).toHaveLength(3);
+    expect(checkCharges(plates({ uniform: { field: 100 } }))[0]).toMatch(/plates or a uniform field/);
+    expect(checkCharges(points([{ id: 'a', charge: 1, x: 0 }], { clips: { c: { phases: [{ dur: 1, volts: 5 }] } } }))[0]).toMatch(/changes the plates, but the element has none/);
+    expect(checkCharges(plates({ clips: { c: { phases: [{ dur: 1, plates: [0, 0.01], fly: true }] } } }))[0]).toMatch(/cannot move the plates while time runs/);
+    expect(checkCharges(plates({ clips: { c: { phases: [{ dur: 1, launch: { q: [1, 0] } }] } } }))[0]).toMatch(/names no body "q"/);
+    expect(checkCharges(points([{ id: 'weight', charge: 1, x: 0, v: [1, 0] }]))).toHaveLength(2);
+    expect(checkCharges(points([{ id: 'a', charge: 1, x: 0 }], { g: 0, lines: 1.5, thumb: ['lines', 'orbit' as 'lines'] }))).toHaveLength(3);
+  });
+});
+
 describe('a charges element in a script', () => {
   it('reports a picture that cannot be drawn', () => {
     expect(checkCharges(pair())).toEqual([]);
@@ -232,7 +440,7 @@ describe('a charges element in a script', () => {
     expect(checkCharges(points([]))[0]).toMatch(/needs a body/);
     expect(checkCharges(points([{ id: 'a', charge: 1, x: 0 }, { id: 'a', charge: 1, x: 1 }]))[0]).toMatch(/share an id/);
     expect(checkCharges(points([{ id: 'force', charge: 1, x: 0 }]))[0]).toMatch(/name of a part/);
-    expect(checkCharges(points([{ id: 'ground', charge: 1, x: 0 }]))[0]).toMatch(/or of the ground/);
+    expect(checkCharges(points([{ id: 'ground', charge: 1, x: 0 }]))[0]).toMatch(/of the ground or of a force/);
     expect(checkCharges(points([{ id: 'a', charge: 1, x: 0 }, { id: 'b', charge: 1, x: 0 }]))[0]).toMatch(/same place/);
     expect(checkCharges(points([{ id: 'a', shape: 'sphere', charge: 0, x: 0 }]))[0]).toMatch(/needs a radius/);
     expect(checkCharges(points([{ id: 'a', charge: 1, x: 0, pairs: 3 }], { mark: 1 }))[0]).toMatch(/is a point/);
@@ -316,7 +524,7 @@ describe('a charges element in a script', () => {
       ],
     };
     expect(checkScript(x)).toEqual([]);
-    expect(checkScript({ ...x, scenes: [{ ...x.scenes[0], lines: [{ say: 'No such part.', show: ['c', 'c.field'] }] }] })[0]).toMatch(/charges "c" has no part "field"/);
+    expect(checkScript({ ...x, scenes: [{ ...x.scenes[0], lines: [{ say: 'No such part.', show: ['c', 'c.orbit'] }] }] })[0]).toMatch(/charges "c" has no part "orbit"/);
     const tl = compile(x, { '0.0': 3, '0.1': 2, '0.2': 2 });
     const during = stateAt(tl, tl.lines[2].start + 1).els.c;
     expect(chargesAt(pair(), during.plays).bodies.b.x).toBeCloseTo(0.45, 6);
