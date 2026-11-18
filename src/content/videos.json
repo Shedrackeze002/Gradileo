@@ -125600,5 +125600,504 @@
         "working": "The source is moving away, so the frequency heard is lower, and we add underneath: $f_{\\text{heard}} = f \\times \\dfrac{v}{v + v_s} = 800 \\times \\dfrac{340}{340 + 20} = 800 \\times 0.9444 = 755.6\\ \\text{Hz}$."
       }
     ]
+  },
+  "p30-1-1": {
+    "lessonId": "p30-1-1",
+    "title": "Momentum",
+    "duration": 356,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What momentum is",
+        "t": 23.603
+      },
+      {
+        "title": "Mass matters",
+        "t": 58.269
+      },
+      {
+        "title": "Momentum has a direction",
+        "t": 87.252
+      },
+      {
+        "title": "Change in momentum",
+        "t": 142.339
+      },
+      {
+        "title": "A rebound",
+        "t": 186.778
+      },
+      {
+        "title": "Bounce or stick",
+        "t": 241.281
+      },
+      {
+        "title": "Your turn",
+        "t": 278.514
+      },
+      {
+        "title": "Summary",
+        "t": 323.066
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-1:q",
+        "t": 297.139,
+        "prompt": "A 0.2 kg ball moving to the right at 10 m/s hits a wall and bounces straight back at 8 m/s. Take right as positive. What is the change in its momentum?",
+        "choices": [
+          "$-0.4\\ \\text{kg·m/s}$",
+          "$+0.4\\ \\text{kg·m/s}$",
+          "$-3.6\\ \\text{kg·m/s}$",
+          "$+3.6\\ \\text{kg·m/s}$"
+        ],
+        "answer": 2,
+        "working": "$u = +10$ and $v = -8$, so $\\Delta p = 0.2 \\times (-8 - 10) = -3.6\\ \\text{kg·m/s}$."
+      }
+    ]
+  },
+  "p30-1-2": {
+    "lessonId": "p30-1-2",
+    "title": "Impulse",
+    "duration": 348,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A force changes momentum",
+        "t": 20.599
+      },
+      {
+        "title": "Force and time",
+        "t": 76.971
+      },
+      {
+        "title": "Finding the force",
+        "t": 122.205
+      },
+      {
+        "title": "Making a stop safer",
+        "t": 172.668
+      },
+      {
+        "title": "An airbag",
+        "t": 218.561
+      },
+      {
+        "title": "Your turn",
+        "t": 279.171
+      },
+      {
+        "title": "Summary",
+        "t": 320.003
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-2:q",
+        "t": 294.381,
+        "prompt": "A 1200 kg car moving at 25 m/s brakes with a steady net force of 6000 N. How long does it take to stop?",
+        "choices": [
+          "$0.2\\ \\text{s}$",
+          "$2.5\\ \\text{s}$",
+          "$4\\ \\text{s}$",
+          "$5\\ \\text{s}$"
+        ],
+        "answer": 3,
+        "working": "$\\Delta p = 1200 \\times 25 = 30\\,000\\ \\text{kg·m/s}$, so $\\Delta t = \\dfrac{\\Delta p}{F} = \\dfrac{30\\,000}{6000} = 5\\ \\text{s}$."
+      }
+    ]
+  },
+  "p30-1-2-b": {
+    "lessonId": "p30-1-2",
+    "title": "Force-Time Graphs",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A steady force",
+        "t": 21.465
+      },
+      {
+        "title": "A force that changes",
+        "t": 55.616
+      },
+      {
+        "title": "A racket and a ball",
+        "t": 101.524
+      },
+      {
+        "title": "The average force",
+        "t": 162.729
+      },
+      {
+        "title": "Peak or area",
+        "t": 189.976
+      },
+      {
+        "title": "Your turn",
+        "t": 233.404
+      },
+      {
+        "title": "Summary",
+        "t": 278.565
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-2-b:q",
+        "t": 252.486,
+        "prompt": "The net force on a 4 kg cart at rest rises steadily from 0 to 40 N in 0.5 s, then falls steadily back to 0 in the next 0.5 s. How fast is the cart moving at the end?",
+        "choices": [
+          "$5\\ \\text{m/s}$",
+          "$10\\ \\text{m/s}$",
+          "$20\\ \\text{m/s}$",
+          "$40\\ \\text{m/s}$"
+        ],
+        "answer": 0,
+        "working": "The graph is a triangle: area $= \\tfrac{1}{2} \\times 1 \\times 40 = 20\\ \\text{N·s}$, so $v = \\dfrac{20}{4} = 5\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p30-1-3": {
+    "lessonId": "p30-1-3",
+    "title": "Conservation of Momentum",
+    "duration": 363,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A collision",
+        "t": 20.603
+      },
+      {
+        "title": "Why the total stays the same",
+        "t": 66.792
+      },
+      {
+        "title": "Solving a collision",
+        "t": 118.318
+      },
+      {
+        "title": "A head-on collision",
+        "t": 156.952
+      },
+      {
+        "title": "A bounce",
+        "t": 227.89
+      },
+      {
+        "title": "Your turn",
+        "t": 279.043
+      },
+      {
+        "title": "Check it",
+        "t": 316.614
+      },
+      {
+        "title": "Summary",
+        "t": 335.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-3:q",
+        "t": 293.786,
+        "prompt": "A 3 kg cart moving at 4 m/s hits a 1 kg cart that is at rest. The carts lock together. How fast do they move afterwards?",
+        "choices": [
+          "$1\\ \\text{m/s}$",
+          "$3\\ \\text{m/s}$",
+          "$4\\ \\text{m/s}$",
+          "$12\\ \\text{m/s}$"
+        ],
+        "answer": 1,
+        "working": "Before: $3 \\times 4 + 1 \\times 0 = 12\\ \\text{kg·m/s}$. After: $(3 + 1) \\times v = 12$, so $v = 3\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p30-1-3-b": {
+    "lessonId": "p30-1-3",
+    "title": "Recoil and Explosions",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pushing apart",
+        "t": 18.438
+      },
+      {
+        "title": "The lighter one leaves faster",
+        "t": 79.392
+      },
+      {
+        "title": "Recoil",
+        "t": 119.741
+      },
+      {
+        "title": "An explosion in flight",
+        "t": 177.223
+      },
+      {
+        "title": "Your turn",
+        "t": 235.244
+      },
+      {
+        "title": "Summary",
+        "t": 277.3
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-3-b:q",
+        "t": 251.959,
+        "prompt": "Two skaters stand at rest on smooth ice and push each other apart. The 40 kg skater moves away at 3 m/s. How fast does the 60 kg skater move?",
+        "choices": [
+          "$3\\ \\text{m/s}$",
+          "$4.5\\ \\text{m/s}$",
+          "$2\\ \\text{m/s}$",
+          "$1.2\\ \\text{m/s}$"
+        ],
+        "answer": 2,
+        "working": "The momenta are equal in size: $40 \\times 3 = 120\\ \\text{kg·m/s}$, so $v = \\dfrac{120}{60} = 2\\ \\text{m/s}$, the other way."
+      }
+    ]
+  },
+  "p30-1-4": {
+    "lessonId": "p30-1-4",
+    "title": "Kinetic Energy in Collisions",
+    "duration": 346,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sticking loses energy",
+        "t": 18.786
+      },
+      {
+        "title": "Three kinds of collision",
+        "t": 74.729
+      },
+      {
+        "title": "The ballistic pendulum",
+        "t": 139.444
+      },
+      {
+        "title": "The swing",
+        "t": 187.1
+      },
+      {
+        "title": "The speed of the bullet",
+        "t": 220.938
+      },
+      {
+        "title": "Your turn",
+        "t": 272.817
+      },
+      {
+        "title": "Summary",
+        "t": 317.77
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-4:q",
+        "t": 287.258,
+        "prompt": "A 1 kg cart moving at 4 m/s hits a 1 kg cart at rest, and the two stick together. How much kinetic energy is lost?",
+        "choices": [
+          "$0\\ \\text{J}$",
+          "$2\\ \\text{J}$",
+          "$8\\ \\text{J}$",
+          "$4\\ \\text{J}$"
+        ],
+        "answer": 3,
+        "working": "Momentum: $1 \\times 4 = 2v$, so $v = 2\\ \\text{m/s}$. Before: $\\tfrac{1}{2} \\times 1 \\times 4^2 = 8\\ \\text{J}$. After: $\\tfrac{1}{2} \\times 2 \\times 2^2 = 4\\ \\text{J}$."
+      }
+    ]
+  },
+  "p30-1-4-b": {
+    "lessonId": "p30-1-4",
+    "title": "Elastic Collisions",
+    "duration": 341,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two laws at once",
+        "t": 19.938
+      },
+      {
+        "title": "The two formulas",
+        "t": 76.128
+      },
+      {
+        "title": "Three cases",
+        "t": 131.631
+      },
+      {
+        "title": "Approach and separation",
+        "t": 177.017
+      },
+      {
+        "title": "When the formulas fail",
+        "t": 228.7
+      },
+      {
+        "title": "Your turn",
+        "t": 267.004
+      },
+      {
+        "title": "Summary",
+        "t": 312.591
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-4-b:q",
+        "t": 284.156,
+        "prompt": "A 1 kg cart moving at 6 m/s makes an elastic head-on collision with a 2 kg cart at rest. What is the velocity of the 2 kg cart just afterwards?",
+        "choices": [
+          "$4\\ \\text{m/s}$",
+          "$2\\ \\text{m/s}$",
+          "$6\\ \\text{m/s}$",
+          "$3\\ \\text{m/s}$"
+        ],
+        "answer": 0,
+        "working": "$v_2 = \\dfrac{2m_1}{m_1 + m_2}\\,u = \\dfrac{2 \\times 1}{1 + 2} \\times 6 = 4\\ \\text{m/s}$"
+      }
+    ]
+  },
+  "p30-1-5": {
+    "lessonId": "p30-1-5",
+    "title": "Momentum at Right Angles",
+    "duration": 362,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The components of a momentum",
+        "t": 25.437
+      },
+      {
+        "title": "A crash at a crossroads",
+        "t": 84.137
+      },
+      {
+        "title": "The speed of the wreck",
+        "t": 138.721
+      },
+      {
+        "title": "Working back from the skid marks",
+        "t": 183.086
+      },
+      {
+        "title": "Add them as vectors",
+        "t": 244.928
+      },
+      {
+        "title": "Your turn",
+        "t": 284.086
+      },
+      {
+        "title": "Summary",
+        "t": 328.751
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-5:q",
+        "t": 302.214,
+        "prompt": "A 2 kg puck slides east at 3 m/s, and a 1 kg puck slides north at 8 m/s. They collide and stick together. What is the size of their total momentum?",
+        "choices": [
+          "$14\\ \\text{kg·m/s}$",
+          "$10\\ \\text{kg·m/s}$",
+          "$2\\ \\text{kg·m/s}$",
+          "$48\\ \\text{kg·m/s}$"
+        ],
+        "answer": 1,
+        "working": "East: $2 \\times 3 = 6$. North: $1 \\times 8 = 8$. Total: $\\sqrt{6^2 + 8^2} = 10\\ \\text{kg·m/s}$."
+      }
+    ]
+  },
+  "p30-1-5-b": {
+    "lessonId": "p30-1-5",
+    "title": "Glancing Collisions and Explosions",
+    "duration": 385,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A glancing collision",
+        "t": 22.488
+      },
+      {
+        "title": "The speed of ball B",
+        "t": 107.185
+      },
+      {
+        "title": "Was it elastic?",
+        "t": 150.137
+      },
+      {
+        "title": "An explosion into three pieces",
+        "t": 209.89
+      },
+      {
+        "title": "Balance both directions",
+        "t": 266.967
+      },
+      {
+        "title": "Your turn",
+        "t": 303.319
+      },
+      {
+        "title": "Summary",
+        "t": 350.871
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-5-b:q",
+        "t": 323.771,
+        "prompt": "An object at rest explodes into three pieces. One piece has a momentum of 3 kg·m/s east, and another has 4 kg·m/s north. The third piece has a mass of 0.5 kg. What is its speed?",
+        "choices": [
+          "$14\\ \\text{m/s}$",
+          "$2.5\\ \\text{m/s}$",
+          "$10\\ \\text{m/s}$",
+          "$5\\ \\text{m/s}$"
+        ],
+        "answer": 2,
+        "working": "The third piece has 3 kg·m/s west and 4 kg·m/s south: $\\sqrt{3^2 + 4^2} = 5\\ \\text{kg·m/s}$. Speed: $5 \\div 0.5 = 10\\ \\text{m/s}$."
+      }
+    ]
   }
 }
