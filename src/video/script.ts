@@ -1775,11 +1775,39 @@ export interface ChargeBody {
   stand?: boolean;
   /** The side of a sphere its ground wire is joined to (the right otherwise). */
   wire?: 'left' | 'right';
-  /** Its mass in kilograms: it moves under the electric forces on it while a phase lets time run (`fly`). */
+  /** Its mass in kilograms: it moves under the forces on it while a phase lets time run (`fly`). */
   mass?: number;
-  /** A test charge: it feels the forces of the others, but they are drawn and worked out as if it were not there. */
+  /** Its velocity at the start, in metres per second, as [right, up] (at rest otherwise). */
+  v?: [number, number];
+  /**
+   * A test charge: it feels the forces of the others, but they are drawn and worked out as if it
+   * were not there. The electric field is drawn where each test charge is (`field`), so one with
+   * no charge at all marks a point of the field. With a mass and a velocity, a test charge with no
+   * charge marks a path instead: no force acts on it and nothing stops at it, so its trail is the
+   * straight line a charge beside it would have followed (it can start at the same place).
+   */
   test?: boolean;
   tone?: Tone;
+}
+
+/** Two parallel plates with a potential difference between them, and a uniform field in the gap. */
+export interface ChargePlates {
+  /** Where the two plates are, along the line the field points: the first is the positive one while `volts` is above zero. */
+  at: [first: number, second: number];
+  /** Upright plates, with the field along x (the default), or level ones, with the field along y. */
+  across?: 'x' | 'y';
+  /** How far the plates reach the other way: [from, to]. */
+  span: [from: number, to: number];
+  /** The potential difference between them in volts: the potential of the first plate less that of the second. */
+  volts: number;
+  /** The potential of the second plate, in volts (0 otherwise). */
+  base?: number;
+  /** A hole in the middle of a plate that lets a body through (the anode of an electron gun). */
+  hole?: 'first' | 'second';
+  /** How many field lines there are at the start (7 otherwise); a stronger field has more of them. */
+  lines?: number;
+  /** How many dashed lines of equal potential are drawn between the plates, evenly spaced, with the `potential` part (none otherwise). */
+  levels?: number;
 }
 
 /** A stretch of a charges clip: bodies are carried, electrons cross from one to another, or time runs. */
@@ -1798,8 +1826,14 @@ export interface ChargesPhase {
   electrons?: Array<{ from: string; to: string; n: number }>;
   /** Join spheres to the ground with a wire (true), or take the wire away (false), as the phase starts. */
   ground?: Record<string, boolean>;
-  /** Let time run: bodies with a mass move under the electric forces on them, until they touch another body. */
+  /** Let time run: bodies with a mass move under the forces on them, until they touch another body or a plate. */
   fly?: boolean;
+  /** The potential difference of the plates by the end of the phase, in volts. */
+  volts?: number;
+  /** Where the two plates are by the end of the phase. */
+  plates?: [first: number, second: number];
+  /** Velocities that bodies are given as the phase starts, in metres per second, by id: [right, up]. */
+  launch?: Record<string, [number, number]>;
   /** Seconds of the motion for each second of video in this phase (the element's `rate` otherwise). */
   rate?: number;
   /** A short note shown over the picture. */
@@ -1813,7 +1847,7 @@ export interface ChargesClip {
 }
 
 /** What a charges element can show over its bodies; each is a part ("lab.force"). */
-export const CHARGES_PARTS = ['charge', 'force', 'net', 'angle', 'distance', 'velocity'] as const;
+export const CHARGES_PARTS = ['charge', 'force', 'net', 'angle', 'distance', 'velocity', 'lines', 'field', 'netfield', 'potential', 'gap', 'energy', 'trail'] as const;
 
 /** The units a charge can be given in, in coulombs (`e` is the elementary charge: "+e", "−2e"). */
 export const CHARGE_UNITS = { C: 1, mC: 1e-3, μC: 1e-6, nC: 1e-9, e: 1.6e-19 } as const;
@@ -1877,8 +1911,28 @@ export interface ChargesEl {
   sway?: number;
   /** Pixels of arrow for each newton (otherwise the largest force of the element is 110 pixels long). */
   forceScale?: number;
-  /** Pixels of arrow for each metre per second (60 otherwise). */
+  /** Pixels of arrow for each metre per second (otherwise the greatest speed of the element is 90 pixels long). */
   velocityScale?: number;
+  /** Write the speed by each velocity arrow, with this many significant figures. */
+  speedFigures?: number;
+  /** Two parallel plates, with a uniform field between them. */
+  plates?: ChargePlates;
+  /** A uniform field over the whole picture, in newtons per coulomb, at `angle` degrees anticlockwise from the right (0 otherwise). */
+  uniform?: { field: number; angle?: number; lines?: number };
+  /** The gravitational field strength, in newtons per kilogram: bodies with a mass then have a weight (none otherwise). */
+  g?: number;
+  /** How many field lines leave, or end on, the largest charge of the element (12 otherwise); a smaller charge has fewer in proportion. */
+  lines?: number;
+  /** Pixels of arrow for each newton per coulomb (otherwise the strongest field at a test charge is 110 pixels long). */
+  fieldScale?: number;
+  /** How many significant figures a field strength is written with (3 otherwise). */
+  fieldFigures?: number;
+  /** Write the name of each force by its arrow ("Electric force", "Weight") and not its size. */
+  names?: boolean;
+  /** The side of the picture the energy bars are on (the right otherwise). */
+  energyAt?: 'left' | 'right';
+  /** The parts drawn on the thumbnail (otherwise the charges, and the forces unless the bodies show their electrons). */
+  thumb?: Array<(typeof CHARGES_PARTS)[number]>;
   clips: Record<string, ChargesClip>;
   /** A label at the top left of the picture. */
   label?: string;
@@ -2607,7 +2661,7 @@ export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips
   const whole = (n: number) => Math.abs(n - Math.round(n)) < 1e-6;
   if (!e.bodies.length) problems.push('it needs a body.');
   if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
-  for (const id of ids) if ((CHARGES_PARTS as readonly string[]).includes(id) || id === 'ground') problems.push(`body id "${id}" is the name of a part, or of the ground.`);
+  for (const id of ids) if ((CHARGES_PARTS as readonly string[]).includes(id) || id === 'ground' || id === 'weight') problems.push(`body id "${id}" is the name of a part, of the ground or of a force.`);
   if (e.unit !== undefined && !(e.unit in CHARGE_UNITS)) problems.push(`the unit of charge is one of ${Object.keys(CHARGE_UNITS).join(', ')}.`);
   if (e.mark !== undefined && !(e.mark > 0)) problems.push('a mark stands for a charge above zero.');
   const marked = new Map<string, number>();
@@ -2617,6 +2671,7 @@ export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips
     if (b.radius !== undefined && !(b.radius > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
     if (b.thick !== undefined && !(b.thick > 0)) problems.push(`body "${b.id}" needs a thickness above zero.`);
     if (b.mass !== undefined && !(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if (b.v && !b.mass) problems.push(`body "${b.id}" needs a mass to have a velocity.`);
     if (b.pairs !== undefined) {
       if (shape === 'point') problems.push(`body "${b.id}" is a point: a sphere, a rod, a cloth or an atom shows its charges.`);
       else if (shape === 'atom' && b.pairs > 10) problems.push(`atom "${b.id}" has room for ten electrons in its two shells, so it can have ten protons at most.`);
@@ -2631,7 +2686,9 @@ export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips
     if (b.wire && shape !== 'sphere') problems.push(`body "${b.id}" is not a sphere: only a sphere is joined to the ground.`);
   }
   e.bodies.forEach((a, i) => {
-    for (const b of e.bodies.slice(i + 1)) if (a.x === b.x && (a.y ?? 0) === (b.y ?? 0)) problems.push(`bodies "${a.id}" and "${b.id}" start at the same place.`);
+    // A test charge with no charge only marks a place or a path, so it can start where another body is.
+    const mark = (o: ChargeBody) => !!o.test && o.charge === 0 && o.pairs === undefined;
+    for (const b of e.bodies.slice(i + 1)) if (a.x === b.x && (a.y ?? 0) === (b.y ?? 0) && !mark(a) && !mark(b)) problems.push(`bodies "${a.id}" and "${b.id}" start at the same place.`);
   });
   if (!(e.view[1] > e.view[0] && e.view[3] > e.view[2])) problems.push('the view is [left, right, bottom, top].');
   if (e.k !== undefined && !(e.k > 0)) problems.push('k must be above zero.');
@@ -2642,6 +2699,19 @@ export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips
   for (const id of e.pulls ?? []) if (!ids.has(id)) problems.push(`no body "${id}" to draw the forces on.`);
   for (const pair of e.spans ?? []) for (const id of pair) if (!ids.has(id)) problems.push(`no body "${id}" to mark a distance from.`);
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const part of e.thumb ?? []) if (!(CHARGES_PARTS as readonly string[]).includes(part)) problems.push(`no part "${part}" to draw on the thumbnail.`);
+  if (e.plates) {
+    const pl = e.plates;
+    if (pl.at[0] === pl.at[1]) problems.push('the two plates are at the same place.');
+    if (!(pl.span[1] > pl.span[0])) problems.push('the span of the plates is [from, to].');
+    if (!Number.isFinite(pl.volts)) problems.push('the plates need a potential difference in volts.');
+    if (pl.lines !== undefined && !(Number.isInteger(pl.lines) && pl.lines > 0)) problems.push('the plates have a whole number of field lines above zero.');
+    if (pl.levels !== undefined && !(Number.isInteger(pl.levels) && pl.levels >= 0)) problems.push('the plates have a whole number of lines of equal potential.');
+  }
+  if (e.uniform && !(e.uniform.field > 0)) problems.push('a uniform field needs a strength above zero (turn it with `angle`).');
+  if (e.plates && e.uniform) problems.push('give plates or a uniform field, not both.');
+  if (e.g !== undefined && !(e.g > 0)) problems.push('g must be above zero.');
+  if (e.lines !== undefined && !(Number.isInteger(e.lines) && e.lines > 0)) problems.push('a charge has a whole number of field lines above zero.');
   const shapes = new Map(e.bodies.map((b) => [b.id, b.shape ?? 'point']));
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
@@ -2653,6 +2723,14 @@ export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips
       for (const id of Object.keys(ph.ground ?? {})) if (shapes.get(id) !== 'sphere') problems.push(`${where}: body "${id}" is not a sphere: only a sphere is joined to the ground.`);
       if (ph.fly && ph.to) problems.push(`${where} cannot carry a body while time runs.`);
       if (ph.fly && !e.bodies.some((b) => b.mass)) problems.push(`${where} lets time run, but no body has a mass.`);
+      if ((ph.volts !== undefined || ph.plates) && !e.plates) problems.push(`${where} changes the plates, but the element has none.`);
+      if (ph.volts !== undefined && !Number.isFinite(ph.volts)) problems.push(`${where} needs a potential difference in volts.`);
+      if (ph.plates && ph.plates[0] === ph.plates[1]) problems.push(`${where} puts the two plates at the same place.`);
+      if (ph.plates && ph.fly) problems.push(`${where} cannot move the plates while time runs.`);
+      for (const id of Object.keys(ph.launch ?? {})) {
+        if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+        else if (!e.bodies.find((b) => b.id === id)?.mass) problems.push(`${where}: body "${id}" needs a mass to be thrown.`);
+      }
       if (ph.rate !== undefined && !(ph.rate > 0)) problems.push(`${where}: the rate must be above zero.`);
       const gives = new Set<string>();
       const takes = new Set<string>();

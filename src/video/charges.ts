@@ -5,8 +5,11 @@
  * electrons from one body to another, or along a wire to the ground, and the charge of each body
  * is counted from the electrons it holds, so charge is conserved by construction. The electrons of
  * a metal sphere lean away from a negative body that is near and towards a positive one. A body
- * with a mass moves under the forces on it while a phase lets time run. A pure function of the
- * clips and the seconds played, like the rest of the stage.
+ * with a mass moves under the forces on it while a phase lets time run. Two parallel plates with a
+ * potential difference ΔV between them, a distance d apart, have a uniform field E = ΔV ÷ d in the
+ * gap: a charge there feels the force qE wherever it is, and the potential falls evenly from one
+ * plate to the other. A pure function of the clips and the seconds played, like the rest of the
+ * stage.
  */
 import { CHARGE_UNITS, type ChargeBody, type ChargesEl } from './script.ts';
 
@@ -35,12 +38,22 @@ export interface ChargeBodyState {
   minus: Point[];
   /** How far its electrons lean, and which way: a vector of length 0 (not at all) to 1. */
   lean: Point;
-  /** The net electric force on it: its size in newtons and its direction in degrees anticlockwise from the right. */
+  /** The net force on it: its size in newtons and its direction in degrees anticlockwise from the right. */
   force: Vector;
-  /** The force on it from each of the other bodies, by id. */
+  /** The force on it from each of the other bodies, by id; from the field of the plates, or the uniform field (`field`); and its weight (`weight`). */
   from: Record<string, Vector>;
-  /** The electric field at its centre from the other bodies, in newtons per coulomb. */
+  /** The electric field at its centre, in newtons per coulomb: of the other bodies and of the plates together. */
   field: Vector;
+  /** The field there of each of the other bodies, by id, and of the plates or the uniform field (`field`). */
+  fields: Record<string, Vector>;
+  /** The potential where it is, in volts, when there are plates. */
+  potential: number | null;
+  /** Its kinetic energy, in joules. */
+  kinetic: number;
+  /** The electric potential energy it can still lose between the plates, in joules: its charge times the potential difference to the plate it is pulled towards. */
+  stored: number | null;
+  /** Where it has been while time ran. */
+  trail: Point[];
   /** Its velocity in metres per second, as [right, up], and its speed. */
   v: Point;
   speed: number;
@@ -55,6 +68,8 @@ export interface ChargesState {
   flying: Point[];
   /** The height of the table, when a sphere stands on it. */
   floor: number | null;
+  /** Where the two plates are, and the potential difference between them (the first less the second), in volts. */
+  plates: { at: [number, number]; volts: number } | null;
   /** Seconds of the motion that have run. */
   time: number;
   note: string | null;
@@ -170,9 +185,15 @@ interface Live {
   m: number;
   v: Point;
   wire: number;
-  /** It has run into another body, and stays there. */
+  /** It has run into another body or a plate, and stays there. */
   stuck: boolean;
+  /** The plate it has landed on: the first (0) or the second (1). */
+  on: number | null;
+  trail: Point[];
 }
+
+/** The half width of the hole in a plate, as a part of the length of the plate. */
+export const PLATE_HOLE = 0.07;
 
 /** One electron on its way: which place it leaves and which it takes, and how far it has gone (0 to 1). */
 interface Hop {
@@ -195,8 +216,25 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
   const marked = (b: ChargeBody) => b.pairs !== undefined;
   const stands = el.bodies.filter((b) => shapeOf(b) === 'sphere' && b.stand !== false);
   const floor = el.floor ?? (stands.length ? Math.min(...stands.map((b) => (b.y ?? 0) - 1.9 * (b.radius ?? 0))) : null);
-  const start = () => new Map<string, Live>(el.bodies.map((b) => [b.id, { x: b.x, y: b.y ?? 0, q: b.charge, m: marked(b) ? (b.pairs ?? 0) - Math.round(b.charge / mark) : 0, v: [0, 0], wire: 0, stuck: false }]));
+  const start = () => new Map<string, Live>(el.bodies.map((b) => [b.id, { x: b.x, y: b.y ?? 0, q: b.charge, m: marked(b) ? (b.pairs ?? 0) - Math.round(b.charge / mark) : 0, v: b.v ? [b.v[0], b.v[1]] : [0, 0], wire: 0, stuck: false, on: null, trail: [] }]));
   let now = start();
+  // The plates: where they are and the potential difference between them, which a phase can change.
+  const upright = el.plates?.across !== 'y';
+  let gapAt: [number, number] = el.plates ? [el.plates.at[0], el.plates.at[1]] : [0, 0];
+  let volts = el.plates?.volts ?? 0;
+  /** The field that does not come from the bodies, at a point: of the plates, in the gap between them, or the uniform field everywhere. */
+  const outer = (x: number, y: number, at: [number, number], pd: number): Point => {
+    if (el.uniform) {
+      const a = ((el.uniform.angle ?? 0) * Math.PI) / 180;
+      return [el.uniform.field * Math.cos(a), el.uniform.field * Math.sin(a)];
+    }
+    if (!el.plates) return [0, 0];
+    const [c, o] = upright ? [x, y] : [y, x];
+    if (c < Math.min(at[0], at[1]) || c > Math.max(at[0], at[1]) || o < el.plates.span[0] || o > el.plates.span[1]) return [0, 0];
+    // From the plate at the higher potential to the other: ΔV ÷ d.
+    const e = pd / (at[1] - at[0]);
+    return upright ? [e, 0] : [0, e];
+  };
   let hops: Hop[] = [];
   let time = 0;
   let note: string | null = null;
@@ -220,6 +258,8 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
     if (clip.reset) {
       now = start();
       time = 0;
+      gapAt = el.plates ? [el.plates.at[0], el.plates.at[1]] : [0, 0];
+      volts = el.plates?.volts ?? 0;
     }
     let left = Math.max(0, seconds);
     for (const [pi, ph] of clip.phases.entries()) {
@@ -232,8 +272,18 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
         const b = now.get(id)!;
         const [x, y] = typeof to === 'number' ? [to, b.y] : to;
         // A body that is carried is held: it stops moving, and it can be let go again later.
-        now.set(id, { ...b, x: b.x + (x - b.x) * part, y: b.y + (y - b.y) * part, v: [0, 0], stuck: false });
+        now.set(id, { ...b, x: b.x + (x - b.x) * part, y: b.y + (y - b.y) * part, v: [0, 0], stuck: false, on: null, trail: [] });
       }
+      // A body that is thrown sets off as the phase starts.
+      for (const [id, v] of Object.entries(ph.launch ?? {})) {
+        const b = now.get(id)!;
+        if (dt > 0) now.set(id, { ...b, v: [v[0], v[1]], stuck: false, on: null });
+      }
+      const voltsFrom = volts;
+      /** The potential difference a part of the way through the phase. */
+      const voltsAt = (f: number) => (ph.volts === undefined ? voltsFrom : voltsFrom + (ph.volts - voltsFrom) * smooth(clamp01(f)));
+      volts = voltsAt(dt / ph.dur);
+      if (ph.plates) gapAt = [gapAt[0] + (ph.plates[0] - gapAt[0]) * part, gapAt[1] + (ph.plates[1] - gapAt[1]) * part];
       for (const [id, q] of Object.entries(ph.charge ?? {})) {
         const b = now.get(id)!;
         now.set(id, { ...b, q: b.q + (q - b.q) * part });
@@ -271,8 +321,13 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
         const all = el.bodies.map((b) => ({ b, s: now.get(b.id)!, q: chargeOf(b.id) * unit }));
         const movers = all.filter((o) => o.b.mass && !o.s.stuck);
         const reach = (b: ChargeBody) => b.radius ?? 0;
+        // A test charge with no charge only marks a place or a path: nothing stops at it, and it stops at nothing but a plate.
+        const mark = (b: ChargeBody) => !!b.test && b.charge === 0 && b.pairs === undefined;
+        let pd = volts;
         const accel = (o: (typeof all)[number]): Point => {
-          let [ax, ay] = [0, 0];
+          // The field of the plates and the weight, and then the pull of every other body.
+          const field = outer(o.s.x, o.s.y, gapAt, pd);
+          let [ax, ay] = [(o.q * field[0]) / o.b.mass!, (o.q * field[1]) / o.b.mass! - (el.g ?? 0)];
           for (const p of all) {
             if (p === o || p.b.test) continue;
             const [dx, dy] = [o.s.x - p.s.x, o.s.y - p.s.y];
@@ -285,13 +340,54 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
           return [ax, ay];
         };
         // Velocity Verlet: half a step of velocity, a step of position, and the other half step with the new forces.
+        const plate = el.plates;
+        const [vx0, vx1, vy0, vy1] = el.view;
+        for (const o of movers) if (!o.s.trail.length) o.s.trail = [[o.s.x, o.s.y]];
+        pd = voltsAt(0);
         let before = movers.map(accel);
         for (let n = 0; n < steps && movers.some((o) => !o.s.stuck); n++) {
+          const was = movers.map((o): Point => [o.s.x, o.s.y]);
+          const wasV = movers.map((o): Point => [o.s.v[0], o.s.v[1]]);
           movers.forEach((o, i) => {
             if (o.s.stuck) return;
             o.s.v = [o.s.v[0] + (h / 2) * before[i][0], o.s.v[1] + (h / 2) * before[i][1]];
             o.s.x += h * o.s.v[0];
             o.s.y += h * o.s.v[1];
+          });
+          // The potential difference follows the phase while the bodies move.
+          pd = voltsAt(((n + 1) / steps) * (dt / ph.dur));
+          // A body that reaches a plate stops on it, unless it goes through the hole in the middle; one that leaves the picture stops too.
+          movers.forEach((o, i) => {
+            if (o.s.stuck) return;
+            if (plate) {
+              const [c0, c1, o1] = upright ? [was[i][0], o.s.x, o.s.y] : [was[i][1], o.s.y, o.s.x];
+              for (const [pi, pc] of gapAt.entries()) {
+                // Its edge meets the plate before its centre does.
+                const face = pc + Math.sign(c0 - pc) * (o.b.radius ?? 0);
+                if (c0 === face || (c0 - face) * (c1 - face) > 0) continue;
+                if (o1 < plate.span[0] || o1 > plate.span[1]) continue;
+                const hole = plate.hole === (pi === 0 ? 'first' : 'second') && Math.abs(o1 - (plate.span[0] + plate.span[1]) / 2) < PLATE_HOLE * (plate.span[1] - plate.span[0]);
+                if (hole) {
+                  // It leaves the field part of the way through the step: its speed past the plate is the one that keeps its energy, ½mv² + qV.
+                  const fallen = pd * (clamp01((gapAt[1] - c0) / (gapAt[1] - gapAt[0])) - (pi === 0 ? 1 : 0));
+                  const squared = wasV[i][0] ** 2 + wasV[i][1] ** 2 + (2 * o.q * fallen) / o.b.mass!;
+                  const speed = Math.hypot(o.s.v[0], o.s.v[1]);
+                  if (squared > 0 && speed > 0) o.s.v = [(o.s.v[0] * Math.sqrt(squared)) / speed, (o.s.v[1] * Math.sqrt(squared)) / speed];
+                  continue;
+                }
+                if (upright) o.s.x = face;
+                else o.s.y = face;
+                o.s.v = [0, 0];
+                o.s.stuck = true;
+                o.s.on = pi;
+              }
+            }
+            const far = 0.15 * Math.max(vx1 - vx0, vy1 - vy0);
+            if (!o.s.stuck && (o.s.x < vx0 - far || o.s.x > vx1 + far || o.s.y < vy0 - far || o.s.y > vy1 + far)) {
+              o.s.v = [0, 0];
+              o.s.stuck = true;
+            }
+            if (n % 4 === 3 || n === steps - 1 || o.s.stuck) o.s.trail = [...o.s.trail, [o.s.x, o.s.y]];
           });
           const after = movers.map(accel);
           movers.forEach((o, i) => {
@@ -301,9 +397,9 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
           before = after;
           // A body that reaches another stops there, touching it.
           for (const o of movers) {
-            if (o.s.stuck) continue;
+            if (o.s.stuck || mark(o.b)) continue;
             for (const p of all) {
-              if (p === o) continue;
+              if (p === o || mark(p.b)) continue;
               // A little more than the two radii, so that their outlines meet and do not overlap.
               const gap = Math.max((reach(o.b) + reach(p.b)) * 1.08, (el.view[1] - el.view[0]) * 0.03);
               const [dx, dy] = [o.s.x - p.s.x, o.s.y - p.s.y];
@@ -374,6 +470,7 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
     const at = seats.get(b.id)!;
     const q = charge(b.id);
     const from: Record<string, Vector> = {};
+    const fields: Record<string, Vector> = {};
     let [fx, fy, ex, ey] = [0, 0, 0, 0];
     for (const o of el.bodies) {
       if (o.id === b.id || o.test) continue;
@@ -383,12 +480,38 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
       if (r < 1e-12) continue;
       // The field of a positive charge points away from it; the force on a charge is its charge times the field.
       const e = (k * charge(o.id) * unit) / r ** 3;
+      if (e !== 0) fields[o.id] = vector(e * dx, e * dy);
       ex += e * dx;
       ey += e * dy;
       const f = e * q * unit;
       if (f !== 0) from[o.id] = vector(f * dx, f * dy);
       fx += f * dx;
       fy += f * dy;
+    }
+    // The field of the plates, the force qE it gives, and the weight.
+    const [ox, oy] = outer(at[0], at[1], gapAt, volts);
+    if (ox !== 0 || oy !== 0) {
+      fields.field = vector(ox, oy);
+      ex += ox;
+      ey += oy;
+      if (q !== 0) from.field = vector(q * unit * ox, q * unit * oy);
+      fx += q * unit * ox;
+      fy += q * unit * oy;
+    }
+    if (el.g && b.mass) {
+      from.weight = vector(0, -b.mass * el.g);
+      fy -= b.mass * el.g;
+    }
+    // The potential falls evenly from the first plate to the second; a body on a plate is at the potential of that plate.
+    let potential: number | null = null;
+    let stored: number | null = null;
+    if (el.plates) {
+      const base = el.plates.base ?? 0;
+      const part = s.on !== null ? 1 - s.on : clamp01((gapAt[1] - (upright ? at[0] : at[1])) / (gapAt[1] - gapAt[0]));
+      potential = base + volts * part;
+      // What it can still lose: to the plate at the lower potential for a positive charge, and at the higher for a negative one.
+      const rest = q > 0 ? Math.min(base, base + volts) : Math.max(base, base + volts);
+      stored = q * unit * (potential - rest);
     }
     bodies[b.id] = {
       x: tidy(s.x),
@@ -400,6 +523,11 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
       force: vector(fx, fy),
       from,
       field: vector(ex, ey),
+      fields,
+      potential: potential === null ? null : tidy(potential),
+      kinetic: b.mass ? tidy(0.5 * b.mass * (s.v[0] ** 2 + s.v[1] ** 2)) : 0,
+      stored: stored === null ? null : tidy(stored),
+      trail: s.trail,
       v: [tidy(s.v[0]), tidy(s.v[1])],
       speed: tidy(Math.hypot(s.v[0], s.v[1])),
       wire: s.wire,
@@ -415,18 +543,38 @@ export function chargesAt(el: ChargesEl, plays: Array<[clip: string, seconds: nu
     else if (h.from === 'ground') flying.push(along([...bodies[h.to].wirePath].reverse().concat([where(h.to, 'minus', h.toIndex)]), f));
     else flying.push(along([where(h.from, 'minus', h.fromIndex), where(h.to, 'minus', h.toIndex)], f));
   }
-  return { bodies, flying, floor, time: tidy(time), note };
+  return { bodies, flying, floor, plates: el.plates ? { at: [tidy(gapAt[0]), tidy(gapAt[1])], volts: tidy(volts) } : null, time: tidy(time), note };
 }
 
-const peaks = new WeakMap<ChargesEl, number>();
+export interface ChargesPeaks {
+  /** The largest force, in newtons. */
+  force: number;
+  /** The strongest field at a test charge, in newtons per coulomb. */
+  field: number;
+  /** The greatest speed, in metres per second. */
+  speed: number;
+  /** The most energy a body has, kinetic and stored together, in joules. */
+  energy: number;
+}
 
-/** The largest force of an element, in newtons: at its start and at the end of each phase, with the clips played in the order they are written. */
-export function peakForce(el: ChargesEl): number {
+const peaks = new WeakMap<ChargesEl, ChargesPeaks>();
+
+/**
+ * The largest force, field, speed and energy of an element, to scale its arrows and bars by: at its
+ * start, at the end of each phase and, while time runs, at eight moments of the phase, with the
+ * clips played in the order they are written.
+ */
+export function peaksOf(el: ChargesEl): ChargesPeaks {
   const known = peaks.get(el);
   if (known !== undefined) return known;
-  let peak = 0;
+  const peak: ChargesPeaks = { force: 0, field: 0, speed: 0, energy: 0 };
   const look = (plays: Array<[string, number]>) => {
-    for (const b of Object.values(chargesAt(el, plays).bodies)) peak = Math.max(peak, b.force.n, ...Object.values(b.from).map((f) => f.n));
+    for (const [id, b] of Object.entries(chargesAt(el, plays).bodies)) {
+      peak.force = Math.max(peak.force, b.force.n, ...Object.values(b.from).map((f) => f.n));
+      if (el.bodies.find((o) => o.id === id)?.test) peak.field = Math.max(peak.field, b.field.n, ...Object.values(b.fields).map((f) => f.n));
+      peak.speed = Math.max(peak.speed, b.speed);
+      peak.energy = Math.max(peak.energy, b.kinetic + Math.max(0, b.stored ?? 0));
+    }
   };
   look([]);
   const before: Array<[string, number]> = [];
@@ -434,6 +582,7 @@ export function peakForce(el: ChargesEl): number {
     if (clip.reset) before.length = 0;
     let t = 0;
     for (const ph of clip.phases) {
+      if (ph.fly) for (let i = 1; i < 8; i++) look([...before, [name, t + (ph.dur * i) / 8]]);
       t += ph.dur;
       look([...before, [name, t]]);
     }
@@ -441,4 +590,116 @@ export function peakForce(el: ChargesEl): number {
   }
   peaks.set(el, peak);
   return peak;
+}
+
+/** The largest force of an element, in newtons. */
+export const peakForce = (el: ChargesEl): number => peaksOf(el).force;
+
+/** A field line: its points, in the direction of the field, and the bodies it leaves and ends on (by their place in the list of charges that make the field), when it does. */
+export interface FieldLine {
+  points: Point[];
+  from: number | null;
+  to: number | null;
+}
+
+const largest = new WeakMap<ChargesEl, number>();
+/** The largest charge an element ever has, at its start or by the end of a phase: the charge that has the full number of field lines. */
+function largestCharge(el: ChargesEl): number {
+  const known = largest.get(el);
+  if (known !== undefined) return known;
+  let top = Math.max(0, ...el.bodies.filter((b) => !b.test).map((b) => Math.abs(b.charge)));
+  for (const clip of Object.values(el.clips)) for (const ph of clip.phases) for (const [id, q] of Object.entries(ph.charge ?? {})) if (!el.bodies.find((b) => b.id === id)?.test) top = Math.max(top, Math.abs(q));
+  largest.set(el, top);
+  return top;
+}
+
+/**
+ * The field lines of the charges of an element (not its test charges), followed step by step along
+ * the field. They leave positive charges, evenly spaced round each, as many as the charge is large;
+ * they end on negative charges or leave the picture; and the lines that a negative charge is still
+ * owed are followed backwards from it. Each line is given in the direction of the field.
+ */
+export function fieldLines(el: ChargesEl, state: ChargesState): FieldLine[] {
+  const top = largestCharge(el);
+  const sources = el.bodies.filter((b) => !b.test).map((b) => ({ x: state.bodies[b.id].x, y: state.bodies[b.id].y, q: state.bodies[b.id].charge })).filter((o) => Math.abs(o.q) > 1e-9 * Math.max(top, 1e-300));
+  if (!sources.length || !(top > 0)) return [];
+  const [x0, x1, y0, y1] = el.view;
+  const wide = x1 - x0;
+  const [near, step, pad] = [wide * 0.02, wide / 500, wide * 0.05];
+  const full = el.lines ?? 12;
+  const count = (q: number) => Math.round((full * Math.abs(q)) / top);
+  const fieldAt = (x: number, y: number): Point => {
+    let [ex, ey] = [0, 0];
+    for (const o of sources) {
+      const [dx, dy] = [x - o.x, y - o.y];
+      const r = Math.hypot(dx, dy);
+      if (r < 1e-12) continue;
+      ex += (o.q * dx) / r ** 3;
+      ey += (o.q * dy) / r ** 3;
+    }
+    return [ex, ey];
+  };
+  // Where the field is this weak beside the largest charge a picture's width away, it has no direction worth following (the point between two like charges).
+  const faint = (1e-3 * top) / wide ** 2;
+  const most = Math.ceil((3 * (wide + (y1 - y0))) / step);
+  /** Follow the field from a point beside a charge, forwards or backwards, to another charge or out of the picture. */
+  const follow = (home: number, angle: number, way: 1 | -1): { points: Point[]; end: number | null } => {
+    // A line that sets off straight along an axis stays on it, so that one aimed at the point of no field between two like charges ends there and does not wander off to one side.
+    const [c, s] = [Math.cos(angle), Math.sin(angle)].map((v) => (Math.abs(v) < 1e-12 ? 0 : v));
+    let [x, y] = [sources[home].x + near * c, sources[home].y + near * s];
+    const points: Point[] = [[x, y]];
+    let [ux, uy] = [c, s];
+    for (let n = 0; n < most; n++) {
+      const [ex, ey] = fieldAt(x, y);
+      const e = Math.hypot(ex, ey);
+      // A field that turns right round within one step has passed through zero (the point between two like charges): the line ends there.
+      if (e < faint || way * (ex * ux + ey * uy) < 0) break;
+      [ux, uy] = [(way * ex) / e, (way * ey) / e];
+      // The midpoint rule: the direction half a step on is the direction of the whole step.
+      const [fx, fy] = fieldAt(x + (way * ex * step) / (2 * e), y + (way * ey * step) / (2 * e));
+      const f = Math.hypot(fx, fy);
+      if (f < faint) break;
+      x += (way * fx * step) / f;
+      y += (way * fy * step) / f;
+      const end = sources.findIndex((o, i) => i !== home && Math.hypot(x - o.x, y - o.y) < near);
+      if (end >= 0) {
+        const o = sources[end];
+        const r = Math.hypot(x - o.x, y - o.y) || 1;
+        points.push([o.x + ((x - o.x) * near) / r, o.y + ((y - o.y) * near) / r]);
+        return { points, end };
+      }
+      points.push([x, y]);
+      if (x < x0 - pad || x > x1 + pad || y < y0 - pad || y > y1 + pad) break;
+    }
+    return { points, end: null };
+  };
+  const lines: FieldLine[] = [];
+  const arrived = sources.map((): number[] => []);
+  sources.forEach((o, i) => {
+    if (o.q <= 0) return;
+    const n = count(o.q);
+    for (let j = 0; j < n; j++) {
+      const { points, end } = follow(i, (2 * Math.PI * j) / n, 1);
+      if (end !== null) arrived[end].push(Math.atan2(points[points.length - 1][1] - sources[end].y, points[points.length - 1][0] - sources[end].x));
+      lines.push({ points, from: i, to: end });
+    }
+  });
+  sources.forEach((o, i) => {
+    if (o.q >= 0) return;
+    const n = count(o.q);
+    // Its places are the mirror image of those of a positive charge; each line that has arrived takes the nearest one that is free.
+    const places = Array.from({ length: n }, (_, j) => Math.PI - (2 * Math.PI * j) / n);
+    const free = new Set(places.map((_, j) => j));
+    const apart = (a: number, b: number) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
+    for (const a of arrived[i]) {
+      let best = -1;
+      for (const j of free) if (best < 0 || apart(places[j], a) < apart(places[best], a)) best = j;
+      if (best >= 0) free.delete(best);
+    }
+    for (const j of free) {
+      const { points, end } = follow(i, places[j], -1);
+      lines.push({ points: points.reverse(), from: end, to: i });
+    }
+  });
+  return lines;
 }

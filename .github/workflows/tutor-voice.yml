@@ -95,8 +95,12 @@ jobs:
             package-lock.json
             video/package-lock.json
       - run: npm ci
+      # onnxruntime-node also downloads its graphics-card files when it is installed, and stops the
+      # install when that download is missing. A runner has no graphics card, so it is skipped.
       - run: npm ci
         working-directory: video
+        env:
+          ONNXRUNTIME_NODE_INSTALL_CUDA: skip
       - name: Install FFmpeg
         run: command -v ffmpeg || (sudo apt-get update -q && sudo apt-get install -y -q ffmpeg)
       - name: Keep the voice model between runs
