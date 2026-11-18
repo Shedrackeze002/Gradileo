@@ -12,7 +12,8 @@ skills, and Physics is a subject in the app. Grade 11 Physics is built and liste
 Grade 10 Physics. Grade 10 has a video for every lesson (28 videos), and so does Grade 11
 (45 videos, 17 November 2026): Unit 1 (Kinematics, ten videos), Unit 2 (Dynamics, eight videos),
 Unit 3 (Circular Motion, Work and Energy, thirteen videos) and Unit 4 (Oscillations and Waves,
-fourteen videos) are rendered and in Drive. Grade 12 is next.
+fourteen videos) are rendered and in Drive. Grade 12 Physics was started on 18 November 2026 as a
+draft course (`phys-30`): Unit A, Momentum and Impulse, has its five lessons and ten skills.
 
 ## Shape
 
