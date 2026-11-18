@@ -130,6 +130,95 @@ describe('circuit: branches', () => {
   });
 });
 
+// A 12 V supply, 4 Ω, then 6 Ω and 3 Ω on branches: the pair is 2 Ω, so 6 Ω in all and 2 A.
+const mixed = (over: Partial<CircuitEl> = {}): CircuitEl => ({
+  kind: 'circuit',
+  id: 'c',
+  volts: 12,
+  layout: 'parallel',
+  lead: { id: 's', kind: 'resistor', ohms: 4 },
+  parts: [
+    { id: 'a', kind: 'resistor', ohms: 6 },
+    { id: 'b', kind: 'resistor', ohms: 3 },
+  ],
+  clips: { run: { phases: [{ dur: 3 }] } },
+  ...over,
+});
+
+describe('circuit: a component in series with the branches', () => {
+  it('takes its share of the voltage first, and leaves the rest across every branch', () => {
+    const s = circuitAt(mixed());
+    expect(s.resistance).toBeCloseTo(6, 9);
+    expect(s.current).toBeCloseTo(2, 9);
+    expect(s.parts.s.volts).toBeCloseTo(8, 9);
+    expect(s.parts.a.volts).toBeCloseTo(4, 9);
+    expect(s.parts.b.volts).toBeCloseTo(4, 9);
+    expect(s.parts.a.current).toBeCloseTo(4 / 6, 9);
+    expect(s.parts.b.current).toBeCloseTo(4 / 3, 9);
+    expect(s.parts.s.current).toBeCloseTo(s.parts.a.current + s.parts.b.current, 9);
+  });
+
+  it('shares the power of the battery between all three', () => {
+    const s = circuitAt(mixed());
+    expect(s.parts.s.power).toBeCloseTo(16, 9);
+    expect(s.parts.s.power + s.parts.a.power + s.parts.b.power).toBeCloseTo(12 * 2, 9);
+    const later = circuitAt(mixed(), [['run', 3]]);
+    expect(later.parts.s.charge).toBeCloseTo(6, 9);
+    expect(later.parts.s.energy + later.parts.a.energy + later.parts.b.energy).toBeCloseTo(72, 9);
+  });
+
+  it('stops everything when the series component breaks, with the supply voltage across it', () => {
+    const s = circuitAt(mixed({ clips: { cut: { phases: [{ dur: 1, set: { broken: ['s'] } }] } } }), [['cut', 1]]);
+    expect(s.current).toBe(0);
+    expect(s.parts.s.volts).toBe(12);
+    expect(s.parts.a.volts).toBe(0);
+    expect(s.resistance).toBe(Number.POSITIVE_INFINITY);
+  });
+
+  it('belongs to a parallel layout only', () => {
+    expect(checkCircuit(mixed())).toEqual([]);
+    expect(checkCircuit(mixed({ layout: 'series' }))[0]).toMatch(/only a parallel layout/);
+    expect(checkCircuit(mixed({ lead: { id: 'a', kind: 'resistor', ohms: 4 } }))[0]).toMatch(/used twice/);
+    expect(checkCircuit(mixed({ clips: { x: { phases: [{ dur: 1, set: { ohms: { s: 2 } } }] } } }))).toEqual([]);
+  });
+});
+
+describe('circuit: a battery with an internal resistance', () => {
+  // An emf of 12 V and 0.5 Ω inside, driving 5.5 Ω: 2 A, 1 V lost and 11 V at the terminals.
+  const cell = (over: Partial<CircuitEl> = {}): CircuitEl => loop({ internal: 0.5, parts: [{ id: 'a', kind: 'resistor', ohms: 5.5 }], clips: {}, ...over });
+
+  it('loses Ir inside the battery, so the terminals have the emf less the lost volts', () => {
+    const s = circuitAt(cell());
+    expect(s.current).toBeCloseTo(2, 9);
+    expect(s.lost).toBeCloseTo(1, 9);
+    expect(s.terminal).toBeCloseTo(11, 9);
+    expect(s.parts.a.volts).toBeCloseTo(11, 9);
+    expect(s.resistance).toBeCloseTo(5.5, 9);
+  });
+
+  it('reads the emf at the terminals while no current flows', () => {
+    const s = circuitAt(cell({ open: true }));
+    expect(s.current).toBe(0);
+    expect(s.lost).toBe(0);
+    expect(s.terminal).toBe(12);
+  });
+
+  it('loses more volts when a second branch draws more current', () => {
+    const car = branches({ internal: 0.5, parts: [{ id: 'a', kind: 'lamp', ohms: 5.5 }, { id: 'b', kind: 'resistor', ohms: 1e9 }], clips: { start: { phases: [{ dur: 1, set: { ohms: { b: 0.6875 } } }] } } });
+    expect(circuitAt(car).terminal).toBeCloseTo(11, 6);
+    const s = circuitAt(car, [['start', 1]]);
+    expect(s.current).toBeCloseTo(10.8, 9);
+    expect(s.terminal).toBeCloseTo(6.6, 9);
+    expect(s.parts.a.current).toBeCloseTo(1.2, 9);
+  });
+
+  it('has the same terminal voltage as the supply when there is no internal resistance', () => {
+    expect(circuitAt(loop()).terminal).toBe(12);
+    expect(circuitAt(loop()).lost).toBe(0);
+    expect(checkCircuit(cell({ internal: -1 }))[0]).toMatch(/internal resistance/);
+  });
+});
+
 describe('circuit: lamps', () => {
   it('takes the most power any lamp gets at the start as full brightness', () => {
     expect(brightest(loop())).toBeCloseTo(16);

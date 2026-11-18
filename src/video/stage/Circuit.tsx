@@ -1,13 +1,14 @@
 /**
  * A circuit for the physics videos (src/video/circuit.ts works out its currents and voltages): a
  * battery on the left, a switch, and lamps or resistors along the top of one loop (series) or on
- * rungs between two rails (parallel). Charges are drawn all along the wires and move with the
+ * rungs between two rails (parallel), with at most one more on the wire that leads to the rungs. A
+ * battery with an internal resistance has it drawn inside its case. Charges are drawn all along the wires and move with the
  * current where they are, so they speed up when the current rises and split at a junction. A lamp
  * glows with the power it gets. Meters and readings are added as parts.
  */
 import type { ReactElement } from 'react';
 import type { CircuitEl, CircuitPart } from '../script.ts';
-import { brightest, circuitAt, type PartState } from '../circuit.ts';
+import { brightest, circuitAt, circuitParts, type PartState } from '../circuit.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Arrow, clamp01, Clock, INK2, Text } from './motionKit.tsx';
 import { TONES } from './tex.ts';
@@ -71,11 +72,16 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
   const counted = part('charge');
   const clock = part('clock');
   const transferred = part('transferred');
+  const terminal = part('terminal');
+  const lost = part('lost');
+  const inside = el.internal !== undefined;
+  const lead = el.layout === 'parallel' ? el.lead : undefined;
   const series = el.layout === 'series';
   const electrons = el.carriers === 'electrons';
   const pace = el.pace ?? 40;
   const top = 46;
-  const margin = w < 800 ? 84 : 170;
+  // The names beside a battery with an internal resistance need more room on its left.
+  const margin = w < 800 ? (inside ? 150 : 84) : 170;
   const x0 = margin;
   const x1 = w - margin;
   const y0 = top + 62;
@@ -87,10 +93,13 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
 
   // Where the components are, and the wires between them.
   const wires: Wire[] = [];
-  const places: Array<{ part: CircuitPart; x: number; y: number }> = [];
+  // A component lies along the wire in a loop and on the wire that leads to the branches, and stands upright on a rung.
+  const places: Array<{ part: CircuitPart; x: number; y: number; flat: boolean }> = [];
+  // How much of the supply's energy a charge still carries: all of it less the volts lost inside the battery, as it leaves.
+  const level = (volts: number) => (state.volts > 0 ? clamp01(volts / state.volts) : 1);
   let switchAt: Pt;
   if (series) {
-    el.parts.forEach((cp, k) => places.push({ part: cp, x: x0 + ((k + 1) * (x1 - x0)) / (n + 1), y: y0 }));
+    el.parts.forEach((cp, k) => places.push({ part: cp, x: x0 + ((k + 1) * (x1 - x0)) / (n + 1), y: y0, flat: true }));
     const loop: Pt[] = [[x0, yb - 12], [x0, y0], [x1, y0], [x1, y1], [x0, y1], [x0, yb + 12]];
     const round = lengthOf(loop) + 24;
     // Each charge has given up the voltages of the components it has passed.
@@ -101,25 +110,30 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
       flow: state.charge,
       round,
       spacing: round / Math.round(round / SPACING),
-      energy: (s) => (state.volts > 0 ? clamp01(1 - places.reduce((sum, c, k) => sum + (s > passed[k] ? state.parts[c.part.id].volts : 0), 0) / state.volts) : 0),
+      energy: (s) => (state.volts > 0 ? clamp01(1 - (state.lost + places.reduce((sum, c, k) => sum + (s > passed[k] ? state.parts[c.part.id].volts : 0), 0)) / state.volts) : 0),
     });
     switchAt = [(x0 + x1) / 2, y1];
   } else {
     const first = x0 + Math.min(300, (x1 - x0) * 0.42);
-    el.parts.forEach((cp, k) => places.push({ part: cp, x: n === 1 ? x1 : first + (k * (x1 - first)) / (n - 1), y: yb }));
+    el.parts.forEach((cp, k) => places.push({ part: cp, x: n === 1 ? x1 : first + (k * (x1 - first)) / (n - 1), y: yb, flat: false }));
     const xs = places.map((c) => c.x);
+    // The component in series with the branches, between the supply's ammeter and the first junction.
+    const leadX = x0 + 79 + (xs[0] - x0 - 79) / 2;
+    const atTop = level(state.terminal);
+    const atGroup = lead ? level(state.terminal - state.parts[lead.id].volts) : atTop;
     // From the first junction back through the battery and out to the first junction again.
     wires.push({ key: 'back', points: [[xs[0], y1], [x0, y1], [x0, yb + 12]], flow: state.charge, energy: () => 0 });
-    wires.push({ key: 'out', points: [[x0, yb - 12], [x0, y0], [xs[0], y0]], flow: state.charge, energy: () => 1 });
+    wires.push({ key: 'out', points: [[x0, yb - 12], [x0, y0], [xs[0], y0]], flow: state.charge, energy: (s) => (lead && s > yb - 12 - y0 + (leadX - x0) ? atGroup : atTop) });
     places.forEach((c, k) => {
-      wires.push({ key: `rung${k}`, points: [[c.x, y0], [c.x, y1]], flow: state.parts[c.part.id].charge, energy: (s) => (s < yb - y0 ? 1 : 0) });
+      wires.push({ key: `rung${k}`, points: [[c.x, y0], [c.x, y1]], flow: state.parts[c.part.id].charge, energy: (s) => (s < yb - y0 ? atGroup : 0) });
       if (k + 1 < n) {
         // The rails beyond a junction carry what the branches further on take.
         const beyond = places.slice(k + 1).reduce((sum, d) => sum + state.parts[d.part.id].charge, 0);
-        wires.push({ key: `top${k}`, points: [[c.x, y0], [xs[k + 1], y0]], flow: beyond, energy: () => 1 });
+        wires.push({ key: `top${k}`, points: [[c.x, y0], [xs[k + 1], y0]], flow: beyond, energy: () => atGroup });
         wires.push({ key: `foot${k}`, points: [[xs[k + 1], y1], [c.x, y1]], flow: beyond, energy: () => 0 });
       }
     });
+    if (lead) places.unshift({ part: lead, x: leadX, y: y0, flat: true });
     switchAt = [(x0 + xs[0]) / 2, y1];
   }
 
@@ -146,17 +160,46 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
     out.push(<g key="charges" opacity={charges}>{dots}</g>);
   }
 
-  // The battery: the long plate is the positive terminal, at the top.
-  out.push(
-    <g key="battery">
-      <rect x={x0 - 26} y={yb - 16} width={52} height={32} fill="rgb(13 12 36)" />
-      <line x1={x0 - 24} y1={yb - 10} x2={x0 + 24} y2={yb - 10} stroke={INK} strokeWidth={4} strokeLinecap="round" />
-      <line x1={x0 - 12} y1={yb + 10} x2={x0 + 12} y2={yb + 10} stroke={INK} strokeWidth={8} strokeLinecap="round" />
-      <Text x={x0 + 38} y={yb - 24} size={22} color={INK2}>+</Text>
-      <Text x={x0 + 38} y={yb + 24} size={22} color={INK2}>−</Text>
-      <Text x={x0 - 38} y={yb} anchor="end" size={22} color={VOLTAGE}>{reading(state.volts, 'V')}</Text>
-    </g>,
-  );
+  // The battery: the long plate is the positive terminal, at the top. An internal resistance is a
+  // small resistor on the wire above the plates, inside a dashed case with them; beside it are its
+  // name, the volts lost across it and the power wasted in it.
+  {
+    const beside = [
+      { text: el.internalLabel ?? `r = ${ohms(el.internal ?? 0)}`, color: INK, opacity: 1 },
+      { text: `${reading(state.lost, 'V')} lost`, color: VOLTAGE, opacity: lost },
+      { text: reading(state.current * state.lost, 'W'), color: POWER, opacity: power },
+    ].filter((l) => inside && l.opacity > 0);
+    out.push(
+      <g key="battery">
+        <rect x={x0 - 26} y={yb - 16} width={52} height={32} fill="rgb(13 12 36)" />
+        <line x1={x0 - 24} y1={yb - 10} x2={x0 + 24} y2={yb - 10} stroke={INK} strokeWidth={4} strokeLinecap="round" />
+        <line x1={x0 - 12} y1={yb + 10} x2={x0 + 12} y2={yb + 10} stroke={INK} strokeWidth={8} strokeLinecap="round" />
+        {inside && <rect x={x0 - 11} y={yb - 68} width={22} height={36} rx={3} fill={BACK} stroke={INK} strokeWidth={3} />}
+        {inside && <rect x={x0 - 30} y={yb - 80} width={60} height={110} rx={10} fill="none" stroke={INK3} strokeWidth={2} strokeDasharray="6 6" />}
+        <Text x={x0 + (inside ? 46 : 38)} y={yb - 24} size={22} color={INK2}>+</Text>
+        <Text x={x0 + (inside ? 46 : 38)} y={yb + 24} size={22} color={INK2}>−</Text>
+        <Text x={x0 - (inside ? 42 : 38)} y={yb + (inside ? 4 : 0)} anchor="end" size={22} color={VOLTAGE}>{`${inside ? 'ε = ' : ''}${reading(state.volts, 'V')}`}</Text>
+        {beside.map((l, k) => (
+          <Text key={k} x={x0 - 42} y={yb - 50 - 26 * (beside.length - 1 - k)} anchor="end" size={21} color={l.color} opacity={l.opacity}>{l.text}</Text>
+        ))}
+      </g>,
+    );
+  }
+
+  // A voltmeter across the battery's terminals, joined inside the circuit.
+  if (terminal > 0) {
+    const [ya, yz, xm] = [yb - 90, yb + 42, x0 + 86];
+    out.push(
+      <g key="terminal" opacity={terminal}>
+        <polyline points={`${x0},${ya} ${xm},${ya} ${xm},${yz} ${x0},${yz}`} fill="none" stroke={VOLTAGE} strokeWidth={2.5} strokeLinejoin="round" opacity={0.75} />
+        <circle cx={x0} cy={ya} r={4.5} fill={VOLTAGE} />
+        <circle cx={x0} cy={yz} r={4.5} fill={VOLTAGE} />
+        <circle cx={xm} cy={yb} r={17} fill={BACK} stroke={VOLTAGE} strokeWidth={3} />
+        <Text x={xm} y={yb + 0.5} size={18} color={VOLTAGE}>V</Text>
+        <Text x={xm + 26} y={yb} anchor="start" size={21} color={VOLTAGE}>{reading(state.terminal, 'V')}</Text>
+      </g>,
+    );
+  }
 
   // The switch: its arm lies along the wire when it is closed.
   {
@@ -173,7 +216,7 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
   }
 
   // The components, each with what is written beside it.
-  for (const { part: cp, x, y } of places) {
+  for (const { part: cp, x, y, flat } of places) {
     const s: PartState = state.parts[cp.id];
     const glow = st?.focus[cp.id] ?? 0;
     // The eye does not follow power in proportion: a lamp at a quarter of its power is drawn half as bright, so it is dim but still alight.
@@ -191,7 +234,7 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
           )}
         </g>
       ) : (
-        <rect x={x - (series ? 44 : 17)} y={y - (series ? 17 : 44)} width={series ? 88 : 34} height={series ? 34 : 88} rx={4} fill={BACK} stroke={s.broken ? TONES.bad : INK} strokeWidth={3.5} />
+        <rect x={x - (flat ? 44 : 17)} y={y - (flat ? 17 : 44)} width={flat ? 88 : 34} height={flat ? 34 : 88} rx={4} fill={BACK} stroke={s.broken ? TONES.bad : INK} strokeWidth={3.5} />
       );
     // Beside it: its name, then the voltage across it and its power. Under a component in a loop, to the right of one on a rung.
     // In a loop the voltage is read by a voltmeter joined across the component, in parallel with it.
@@ -215,7 +258,7 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
         )}
         {body}
         {lines.map((l, k) =>
-          series ? (
+          flat ? (
             <Text key={k} x={x} y={k === 0 ? y - 46 : y + (metered ? 70 : 24) + 26 * k} size={21} color={l.color} opacity={l.opacity}>{l.text}</Text>
           ) : (
             <Text key={k} x={x + 40} y={y + 26 * (k - (lines.length - 1) / 2)} anchor="start" size={21} color={l.color} opacity={l.opacity}>{l.text}</Text>
@@ -239,14 +282,14 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
       out.push(meter('a-back', x1 - 52, y1, state.current, x1 - 52, y1 + 36, 'middle'));
     } else {
       out.push(meter('a-out', x0 + 62, y0, state.current, x0 + 62, y0 - 34, 'middle'));
-      for (const c of places) out.push(meter(`a-${c.part.id}`, c.x, y0 + 46, state.parts[c.part.id].current, c.x + 28, y0 + 46, 'start'));
+      for (const c of places.filter((d) => !d.flat)) out.push(meter(`a-${c.part.id}`, c.x, y0 + 46, state.parts[c.part.id].current, c.x + 28, y0 + 46, 'start'));
     }
   }
 
   // Which way conventional current runs: arrows beside the wires, inside the loop, and its name. The electrons' arrows point the other way.
   if (arrows > 0) {
     const [sx] = switchAt;
-    const firstX = Math.min(...places.map((c) => c.x));
+    const firstX = Math.min(...places.filter((c) => series || !c.flat).map((c) => c.x));
     const room = (series ? firstX - 50 : firstX) - x0;
     const mid = x0 + (series ? room / 2 : (room + 50) / 2);
     const row = (key: string, inset: number, way: 1 | -1, color: string) => (
@@ -272,7 +315,7 @@ export function CircuitView({ el, st, w, h, plays }: { el: CircuitEl; st: ElStat
 
   if (counted > 0) out.push(<Text key="counted" x={8} y={h - 16} anchor="start" size={22} color={CHARGE} opacity={counted}>{`Charge passed: ${reading(state.charge, 'C', true)}`}</Text>);
   if (transferred > 0) {
-    const joules = el.parts.reduce((sum, cp) => sum + state.parts[cp.id].energy, 0);
+    const joules = circuitParts(el).reduce((sum, cp) => sum + state.parts[cp.id].energy, 0);
     out.push(<Text key="transferred" x={8} y={20} anchor="start" size={22} color={POWER} opacity={transferred}>{`Energy transferred: ${Math.round(joules)} J`}</Text>);
   }
   if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);

@@ -11,7 +11,10 @@
  * plate to the other. A pure function of the clips and the seconds played, like the rest of the
  * stage.
  */
+import { linesBetween, type FieldLine } from './fieldlines.ts';
 import { CHARGE_UNITS, type ChargeBody, type ChargesEl } from './script.ts';
+
+export type { FieldLine } from './fieldlines.ts';
 
 /** Coulomb's constant, in N·m²/C². */
 export const COULOMB_K = 8.99e9;
@@ -595,13 +598,6 @@ export function peaksOf(el: ChargesEl): ChargesPeaks {
 /** The largest force of an element, in newtons. */
 export const peakForce = (el: ChargesEl): number => peaksOf(el).force;
 
-/** A field line: its points, in the direction of the field, and the bodies it leaves and ends on (by their place in the list of charges that make the field), when it does. */
-export interface FieldLine {
-  points: Point[];
-  from: number | null;
-  to: number | null;
-}
-
 const largest = new WeakMap<ChargesEl, number>();
 /** The largest charge an element ever has, at its start or by the end of a phase: the charge that has the full number of field lines. */
 function largestCharge(el: ChargesEl): number {
@@ -623,83 +619,5 @@ export function fieldLines(el: ChargesEl, state: ChargesState): FieldLine[] {
   const top = largestCharge(el);
   const sources = el.bodies.filter((b) => !b.test).map((b) => ({ x: state.bodies[b.id].x, y: state.bodies[b.id].y, q: state.bodies[b.id].charge })).filter((o) => Math.abs(o.q) > 1e-9 * Math.max(top, 1e-300));
   if (!sources.length || !(top > 0)) return [];
-  const [x0, x1, y0, y1] = el.view;
-  const wide = x1 - x0;
-  const [near, step, pad] = [wide * 0.02, wide / 500, wide * 0.05];
-  const full = el.lines ?? 12;
-  const count = (q: number) => Math.round((full * Math.abs(q)) / top);
-  const fieldAt = (x: number, y: number): Point => {
-    let [ex, ey] = [0, 0];
-    for (const o of sources) {
-      const [dx, dy] = [x - o.x, y - o.y];
-      const r = Math.hypot(dx, dy);
-      if (r < 1e-12) continue;
-      ex += (o.q * dx) / r ** 3;
-      ey += (o.q * dy) / r ** 3;
-    }
-    return [ex, ey];
-  };
-  // Where the field is this weak beside the largest charge a picture's width away, it has no direction worth following (the point between two like charges).
-  const faint = (1e-3 * top) / wide ** 2;
-  const most = Math.ceil((3 * (wide + (y1 - y0))) / step);
-  /** Follow the field from a point beside a charge, forwards or backwards, to another charge or out of the picture. */
-  const follow = (home: number, angle: number, way: 1 | -1): { points: Point[]; end: number | null } => {
-    // A line that sets off straight along an axis stays on it, so that one aimed at the point of no field between two like charges ends there and does not wander off to one side.
-    const [c, s] = [Math.cos(angle), Math.sin(angle)].map((v) => (Math.abs(v) < 1e-12 ? 0 : v));
-    let [x, y] = [sources[home].x + near * c, sources[home].y + near * s];
-    const points: Point[] = [[x, y]];
-    let [ux, uy] = [c, s];
-    for (let n = 0; n < most; n++) {
-      const [ex, ey] = fieldAt(x, y);
-      const e = Math.hypot(ex, ey);
-      // A field that turns right round within one step has passed through zero (the point between two like charges): the line ends there.
-      if (e < faint || way * (ex * ux + ey * uy) < 0) break;
-      [ux, uy] = [(way * ex) / e, (way * ey) / e];
-      // The midpoint rule: the direction half a step on is the direction of the whole step.
-      const [fx, fy] = fieldAt(x + (way * ex * step) / (2 * e), y + (way * ey * step) / (2 * e));
-      const f = Math.hypot(fx, fy);
-      if (f < faint) break;
-      x += (way * fx * step) / f;
-      y += (way * fy * step) / f;
-      const end = sources.findIndex((o, i) => i !== home && Math.hypot(x - o.x, y - o.y) < near);
-      if (end >= 0) {
-        const o = sources[end];
-        const r = Math.hypot(x - o.x, y - o.y) || 1;
-        points.push([o.x + ((x - o.x) * near) / r, o.y + ((y - o.y) * near) / r]);
-        return { points, end };
-      }
-      points.push([x, y]);
-      if (x < x0 - pad || x > x1 + pad || y < y0 - pad || y > y1 + pad) break;
-    }
-    return { points, end: null };
-  };
-  const lines: FieldLine[] = [];
-  const arrived = sources.map((): number[] => []);
-  sources.forEach((o, i) => {
-    if (o.q <= 0) return;
-    const n = count(o.q);
-    for (let j = 0; j < n; j++) {
-      const { points, end } = follow(i, (2 * Math.PI * j) / n, 1);
-      if (end !== null) arrived[end].push(Math.atan2(points[points.length - 1][1] - sources[end].y, points[points.length - 1][0] - sources[end].x));
-      lines.push({ points, from: i, to: end });
-    }
-  });
-  sources.forEach((o, i) => {
-    if (o.q >= 0) return;
-    const n = count(o.q);
-    // Its places are the mirror image of those of a positive charge; each line that has arrived takes the nearest one that is free.
-    const places = Array.from({ length: n }, (_, j) => Math.PI - (2 * Math.PI * j) / n);
-    const free = new Set(places.map((_, j) => j));
-    const apart = (a: number, b: number) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
-    for (const a of arrived[i]) {
-      let best = -1;
-      for (const j of free) if (best < 0 || apart(places[j], a) < apart(places[best], a)) best = j;
-      if (best >= 0) free.delete(best);
-    }
-    for (const j of free) {
-      const { points, end } = follow(i, places[j], -1);
-      lines.push({ points: points.reverse(), from: end, to: i });
-    }
-  });
-  return lines;
+  return linesBetween(sources, el.view, el.lines ?? 12, top);
 }

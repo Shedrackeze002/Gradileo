@@ -480,6 +480,31 @@ See `src/video/script.ts` for every element and option. In short:
   its label moves into the gap. Keep an arrow and its label clear of the far plate: start the
   body on the near side, or set `forceScale`, `fieldScale` or `velocityScale`.
 
+- `magnets` (`src/video/magnets.ts`) is for magnetism: bar magnets, compasses, pieces of iron and
+  long straight wires seen end-on, in a `view` of [left, right, bottom, top]. Nothing is typed
+  in: the field at every point is worked out from what is in the picture, so each compass needle
+  points the right way and each field line follows the field. A bar (`bars`: `at`, `long`,
+  `thick`, and an `angle` for the way its north pole faces) is two poles, so its lines leave the
+  north pole and curve round to the south pole (`lines: 16` on a bar sets how many). A wire
+  (`wires`) carries `amps` out of the page (a dot) or, when negative, into it (a cross), and has
+  the field μ₀I ÷ 2πr round it by the right-hand rule; give `length: { metres: 0.01, symbol:
+  'cm' }` so the strengths come out in teslas. The lines round wires are closed loops, so they
+  start from `seeds`: one point on each loop that is wanted. Rows of wires make a solenoid, and
+  `uniform: [Bx, By]` adds a uniform field (drawn as straight lines when it is alone, or given a
+  tiny size to stand for the Earth's field, which turns the compasses until a current is
+  switched on). `iron` is a block drawn with its domains: arrows that point every way until a
+  phase raises its `order` to 1 and they turn to the field. `earth` draws the Earth round the
+  first bar, with the geographic poles named. The parts are `lines`, `compass`, `field` (an arrow
+  along the field at each of the `probes`, with "B = … T" when the picture has no bar magnet),
+  `distance` (from the first wire to each probe) and `force` (the push or pull between bar
+  magnets, and F = BIL on each wire, in newtons when the wire has `metres` in the field and in
+  newtons for each metre otherwise). A phase can carry anything to a new place (`to`), `turn` a
+  bar, change the `amps` of a wire or set the `order` of a piece of iron. A wire's label is its
+  current; `label: ''` leaves it bare, which a solenoid needs. Keep the seeds of a solenoid
+  inside its turns and away from the wires, where a line would wobble. `poster` names the clip
+  whose end the thumbnail shows, and `thumb` the parts drawn on it. North is red, south blue,
+  the field violet (`\brand`), a current yellow and a force orange.
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as
@@ -522,7 +547,13 @@ See `src/video/script.ts` for every element and option. In short:
   (the direction of conventional current; with `carriers: 'electrons'` the charges are electrons
   drifting the other way), `current` (ammeters and their readings), `voltage` (in a loop, a
   voltmeter across each component), `power`, `charge` (a counter of the charge passed, for
-  Q = It), `transferred` (a counter of the energy transferred, for E = Pt) and `clock`. To compare
+  Q = It), `transferred` (a counter of the energy transferred, for E = Pt) and `clock`. A
+  parallel circuit can have one more component in series with all its branches (`lead`), on the
+  wire from the battery to the first junction, for a circuit that mixes the two. `internal` gives
+  the battery an internal resistance, drawn inside a dashed case with its name (`internalLabel`
+  writes "r = ?" instead); `volts` is then the emf, and the parts `terminal` (a voltmeter across
+  the terminals) and `lost` (the lost volts) can be shown. Give such a circuit a `height` of 420
+  or more, in a scene's main column. To compare
   two circuits, put one on each side of a `split` scene with `leftWidth: 544`. Charge and
   current are yellow, electrons blue, voltage pink and power orange.
 

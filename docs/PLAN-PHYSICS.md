@@ -95,8 +95,9 @@ built when the first unit that needs it is reached.
 | Springs and pendulums | Hooke's law, elastic energy and a pendulum; oscillation that traces its own curve to come | Grade 11, Units 3 and 4 | Built (in `motion`); the traced curve to build for Unit 4 |
 | Waves (`wave`) | Travelling waves and echoes; pulses, standing waves and wavefronts to come | Grade 10, Unit 4 | Built; more for Grade 11, Unit 4 |
 | Rays (`rays`) | Reflection and refraction; mirrors and lenses to come | Grade 10, Unit 4 | Built; more for Grade 12 |
-| Circuits (`circuit`) | Charges flowing through wires, resistors and junctions, with meters | Grade 10, Unit 5 | Built |
-| Charges and fields (`charges`) | Electrons that cross between objects, Coulomb's law and the net force; field lines, parallel plates, potential and a charge moving in an electric field; magnetic fields to come | Grade 12, Unit B | Charges, forces and electric fields built; magnetic fields to build |
+| Circuits (`circuit`) | Charges flowing through wires, resistors and junctions, with meters; a resistor in series with parallel branches, and a battery with internal resistance | Grade 10, Unit 5; Grade 12, Unit B | Built |
+| Charges and fields (`charges`) | Electrons that cross between objects, Coulomb's law and the net force; field lines, parallel plates, potential and a charge moving in an electric field | Grade 12, Unit B | Built; a magnetic field across the picture to add for lesson 2.8 |
+| Magnets and currents (`magnets`) | Bar magnets, compasses, iron domains, the Earth's field, and the field of a wire and of a solenoid; the force on a wire, the motor and induction to come | Grade 12, Unit B | Fields built; forces and induction to build | |
 | Particles | Photons, scattering, radioactive decay | Grade 12, Unit C | To build, shared with chemistry's remake |
 
 ## What physics needs that the platform does not have
