@@ -15,7 +15,9 @@ Unit 3 (Circular Motion, Work and Energy, thirteen videos) and Unit 4 (Oscillati
 fourteen videos) are rendered and in Drive. Grade 12 Physics was started on 18 November 2026 as a
 draft course (`phys-30`): Unit A, Momentum and Impulse, has its five lessons and ten skills,
 Unit B, Forces and Fields, has its ten lessons and twenty skills, and Unit C, Electromagnetic
-Radiation, has its eight lessons and sixteen skills. Unit D is still to write.
+Radiation, has its eight lessons and sixteen skills, and Unit D, Atomic and Nuclear Physics, has
+its seven lessons and fourteen skills. All thirty lessons are written; the course is still a
+draft until it is listed for classes and sign-up, and its videos come after that.
 
 ## Shape
 
