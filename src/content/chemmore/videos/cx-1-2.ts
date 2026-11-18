@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { displacement } from './lib/cx-particles.ts';
 
 const video: Explainer = {
   id: 'cx-1-2',
@@ -81,6 +82,15 @@ const video: Explainer = {
       lines: [
         { say: 'Rich copper ores are running out, so two newer methods collect copper from low-grade ores. In phytomining, plants take up copper compounds through their roots. The plants are burned, and the ash is rich in copper.', show: 'b.0' },
         { say: 'In bioleaching, bacteria feed on the ore and produce a solution of copper ions. Both methods are slow, but they need far less digging and far less energy.', show: 'b.1' },
+      ],
+    },
+    {
+      chapter: 'Getting the copper out',
+      layout: 'center',
+      main: [displacement('dp', { seed: 3 })],
+      lines: [
+        { say: 'The copper ions in these solutions are collected with scrap iron. On the left, iron in copper two sulfate solution. On the right, copper in iron two sulfate solution.', caption: 'The copper ions in these solutions are collected with scrap iron. On the left, iron in copper(II) sulfate solution. On the right, copper in iron(II) sulfate solution.', show: ['dp', 'dp.labels', 'dp.key'] },
+        { say: 'Iron is more reactive than copper, so on the left iron atoms give their electrons to copper ions. Copper metal forms, and iron goes into solution. On the right, nothing happens.', show: 'dp.tally', play: 'dp.go' },
       ],
     },
     {

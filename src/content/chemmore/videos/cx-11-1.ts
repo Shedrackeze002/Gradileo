@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { oxideInWater } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-11-1',
@@ -34,6 +35,15 @@ const video: Explainer = {
         { say: 'Sodium and magnesium oxides are ionic. Their oxide ions react with water to make hydroxide ions, so they are basic.', show: 't.0', focus: 't.0' },
         { say: 'Aluminium oxide and silicon dioxide do not dissolve, so the water stays neutral.', show: 't.1', focus: 't.1' },
         { say: 'The phosphorus and sulfur oxides are simple molecules. They react with water to make acids, such as phosphoric and sulfuric acid.', show: 't.2', focus: 't.2' },
+      ],
+    },
+    {
+      chapter: 'An ionic oxide in water',
+      layout: 'center',
+      main: [oxideInWater('ox')],
+      lines: [
+        { say: 'Here is why sodium oxide gives an alkaline solution. Its oxide ion meets a water molecule.', show: 'ox' },
+        { say: 'The oxide ion takes a hydrogen ion from the water, and both become hydroxide ions. So the solution is alkaline.', play: 'ox.go' },
       ],
     },
     {

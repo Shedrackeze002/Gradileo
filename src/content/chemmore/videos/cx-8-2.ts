@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { precipitate } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'cx-8-2',
@@ -49,6 +50,25 @@ const video: Explainer = {
       lines: [
         { say: 'To test for sulfate ions, add acidified barium chloride. A white precipitate of barium sulfate shows sulfate is there.', show: 'm' },
         { say: 'The acid goes in first to remove carbonate ions, which would also give a white precipitate.' },
+      ],
+    },
+    {
+      chapter: 'The sulfate test, up close',
+      layout: 'center',
+      main: [precipitate(
+          'bs',
+          {
+            cation: { name: 'barium ion', tone: 'good', size: 1.1 },
+            anion: { name: 'sulfate ion', tone: 'hyp', size: 1.1 },
+            withCation: { name: 'chloride ion', tone: 'theta' },
+            withAnion: { name: 'sodium ion', tone: 'brand' },
+          },
+          { n: 6, label: 'barium chloride + sodium sulfate', solid: 'barium sulfate', seed: 3 },
+          420,
+        )],
+      lines: [
+        { say: 'Here is the test up close: barium chloride solution added to a solution with sulfate ions.', show: ['bs', 'bs.labels', 'bs.key'] },
+        { say: 'Wherever a barium ion meets a sulfate ion, they lock together and sink as solid barium sulfate: the white precipitate. The sodium and chloride ions stay dissolved.', show: 'bs.tally', play: 'bs.mix' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { graphene } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-5-3',
@@ -38,6 +39,15 @@ const video: Explainer = {
         { say: 'Graphene is a single layer of graphite, one atom thick. It is very strong, light, and an excellent conductor.', show: 'b.0' },
         { say: 'Fullerenes are hollow molecules of carbon. The first discovered was buckminsterfullerene, C sixty, a hollow sphere.', caption: 'Fullerenes are hollow molecules of carbon. The first discovered was buckminsterfullerene, C₆₀, a hollow sphere.', show: 'b.1' },
         { say: 'Carbon nanotubes are cylindrical fullerenes. They are very strong when pulled, and very light, so they reinforce materials such as tennis rackets.', show: 'b.2' },
+      ],
+    },
+    {
+      chapter: 'Graphene, up close',
+      layout: 'center',
+      main: [graphene('gr')],
+      lines: [
+        { say: 'Here are carbon atoms coming together as graphene.', show: 'gr' },
+        { say: 'Each carbon bonds to three others, in a flat sheet of hexagons just one atom thick. The fourth outer electron of each carbon is free to move, which is why graphene conducts.', play: 'gr.join' },
       ],
     },
     {

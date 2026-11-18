@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { recycledMetal } from './lib/cx-particles.ts';
 
 const video: Explainer = {
   id: 'cx-4-4',
@@ -47,6 +48,16 @@ const video: Explainer = {
         { say: 'Metals, glass and most plastics come from finite resources that are being used up. Reducing means using less in the first place.', show: 't.0', focus: 't.0' },
         { say: 'Reusing means using the same object again, without remaking it.', show: 't.1', focus: 't.1' },
         { say: 'Recycling means processing the material into a new product. It still needs energy for collecting, sorting and melting, but far less than starting from ore.', show: 't.2', focus: 't.2' },
+      ],
+    },
+    {
+      chapter: 'Recycling a metal, up close',
+      layout: 'center',
+      main: [recycledMetal('rm')],
+      lines: [
+        { say: 'Here is a metal being recycled, up close: scrap aluminium, its atoms held in place.', show: ['rm', 'rm.labels', 'rm.thermo'] },
+        { say: 'Heat it, and the atoms move fast enough to slide past one another: the metal melts.', play: 'rm.melt' },
+        { say: 'Pour it into a mould and let it cool, and the atoms lock together again in a new shape. No ore is mined, and far less energy is used.', play: 'rm.cast' },
       ],
     },
     {

@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { chiralCentre } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-12-1',
@@ -27,6 +28,15 @@ const video: Explainer = {
         { say: 'A chiral centre is a carbon atom bonded to four different groups.', show: 'def' },
         { say: 'In butan-two-ol, carbon two carries a hydrogen, an O H, a methyl and an ethyl group. All four are different, so it is a chiral centre.', caption: 'In butan-2-ol, carbon 2 carries H, OH, CH₃ and C₂H₅. All four are different, so it is a chiral centre.', show: 'b.0' },
         { say: 'In propan-two-ol, the central carbon has two identical methyl groups, so it is not chiral.', caption: 'In propan-2-ol, the central carbon has two identical CH₃ groups, so it is not chiral.', show: 'b.1' },
+      ],
+    },
+    {
+      chapter: 'Building a chiral centre',
+      layout: 'center',
+      main: [chiralCentre('cc')],
+      lines: [
+        { say: 'Here is a chiral centre being built. Methane’s carbon has four identical groups, all hydrogen atoms.', show: 'cc' },
+        { say: 'Swap one hydrogen for a methyl group, one for an O H group, and one for a C O O H group. Now the carbon holds four different groups: a chiral centre. This molecule is lactic acid.', caption: 'Swap one hydrogen for a methyl group, one for an OH group, and one for a COOH group. Now the carbon holds four different groups: a chiral centre. This molecule is lactic acid.', play: 'cc.swap' },
       ],
     },
     {

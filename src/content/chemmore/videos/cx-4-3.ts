@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { still } from '../../chem10/videos/lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'cx-4-3',
@@ -46,6 +47,16 @@ const video: Explainer = {
         { say: 'Where fresh water is scarce, sea water can be desalinated, which means removing the dissolved salts.', show: 'def' },
         { say: 'In distillation, the water is boiled and the steam is condensed, leaving the salt behind.', show: 't.0', focus: 't.0' },
         { say: 'In reverse osmosis, the water is forced at high pressure through a membrane that lets water molecules through but not the ions. Both methods need a great deal of energy.', show: 't.1', focus: 't.1' },
+      ],
+    },
+    {
+      chapter: 'Distillation, up close',
+      layout: 'center',
+      main: [still('st', 400)],
+      lines: [
+        { say: 'Here is distillation up close: sea water heated on the left, and a cold condenser on the right.', show: ['st', 'st.labels'] },
+        { say: 'Water molecules escape as steam, cross over and condense as pure water. The ions of the salt cannot escape, so they stay behind.', play: 'st.boil' },
+        { say: 'Keep heating, and more pure water collects, while the salt left behind gets more concentrated.', play: 'st.more' },
       ],
     },
     {

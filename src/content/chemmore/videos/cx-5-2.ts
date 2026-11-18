@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { precipitate } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'cx-5-2',
@@ -38,6 +39,41 @@ const video: Explainer = {
         { say: 'Transition metals form coloured compounds. Copper two sulfate is blue, and iron three compounds are orange-brown. Alkali metal compounds are white.', caption: 'Transition metals form coloured compounds. Copper(II) sulfate is blue, and iron(III) compounds are orange-brown. Alkali metal compounds are white.', show: 'b.0' },
         { say: 'They form ions with different charges. Iron forms both iron two plus and iron three plus ions.', caption: 'They form ions with different charges. Iron forms both Fe²⁺ and Fe³⁺ ions.', show: 'b.1' },
         { say: 'And they, and their compounds, are useful catalysts. Iron is the catalyst in the Haber process.', show: 'b.2' },
+      ],
+    },
+    {
+      chapter: 'Iron(II) and iron(III), up close',
+      layout: 'split',
+      leftWidth: 560,
+      left: [
+        precipitate(
+          'f2',
+          {
+            cation: { name: 'iron(II) ion', tone: 'good', size: 1.1 },
+            anion: { name: 'hydroxide ion', tone: 'theta' },
+            withCation: { name: 'sulfate ion', tone: 'hyp', size: 1.1 },
+            withAnion: { name: 'sodium ion', tone: 'brand' },
+          },
+          { ratio: 2, n: 3, label: 'iron(II)', solid: 'iron(II) hydroxide', seed: 3 },
+          380,
+        ),
+      ],
+      right: [
+        precipitate(
+          'f3',
+          {
+            cation: { name: 'iron(III) ion', tone: 'opp', size: 1.1 },
+            anion: { name: 'hydroxide ion', tone: 'theta' },
+            withCation: { name: 'nitrate ion', tone: 'hyp', size: 1.1 },
+            withAnion: { name: 'sodium ion', tone: 'brand' },
+          },
+          { ratio: 3, n: 3, label: 'iron(III)', solid: 'iron(III) hydroxide', seed: 7 },
+          380,
+        ),
+      ],
+      lines: [
+        { say: 'Here are the two iron ions up close, each meeting hydroxide ions. On the left, iron two ions.', caption: 'Here are the two iron ions up close, each meeting hydroxide ions. On the left, Fe²⁺ ions.', show: ['f2', 'f2.labels', 'f3', 'f3.labels'] },
+        { say: 'An iron two ion is complete once it holds two hydroxide ions, but an iron three ion needs three. The green iron two hydroxide and the orange-brown iron three hydroxide are different compounds, which is why the charge goes in the name.', caption: 'An Fe²⁺ ion is complete once it holds two OH⁻ ions, but an Fe³⁺ ion needs three. Green Fe(OH)₂ and orange-brown Fe(OH)₃ are different compounds, which is why the charge goes in the name.', show: ['f2.tally', 'f3.tally'], play: ['f2.mix', 'f3.mix'] },
       ],
     },
     {

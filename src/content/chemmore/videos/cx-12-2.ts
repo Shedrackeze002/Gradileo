@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { ketoneReduced } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-12-2',
@@ -34,6 +35,15 @@ const video: Explainer = {
         { say: 'An aldehyde is reduced to a primary alcohol.', show: 'm.0', focus: 'm.0' },
         { say: 'A ketone is reduced to a secondary alcohol. Propanone gives propan-two-ol.', caption: 'A ketone is reduced to a secondary alcohol. Propanone gives propan-2-ol.', show: 'm.1', focus: 'm.1' },
         { say: 'In the mechanism, the hydride ion attacks the slightly positive carbon, the pi electrons move onto the oxygen, and the oxygen then takes a hydrogen ion from water.', caption: 'In the mechanism, the hydride ion attacks the δ+ carbon, the π electrons move onto the oxygen, and the oxygen then takes H⁺ from water.' },
+      ],
+    },
+    {
+      chapter: 'The mechanism, up close',
+      layout: 'center',
+      main: [ketoneReduced('kr')],
+      lines: [
+        { say: 'Here is the mechanism up close, with propanone. The carbon of the C O double bond is slightly positive.', caption: 'Here is the mechanism up close, with propanone. The carbon of the C=O double bond is slightly positive.', show: 'kr' },
+        { say: 'The hydride ion attacks that carbon, and the pi electrons move onto the oxygen. Then the oxygen takes a hydrogen ion from water, giving propan-two-ol.', caption: 'The hydride ion attacks that carbon, and the π electrons move onto the oxygen. Then the oxygen takes a hydrogen ion from water, giving propan-2-ol.', play: 'kr.go' },
       ],
     },
     {

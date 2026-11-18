@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { nucleophilicSubstitution } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-9-2',
@@ -27,6 +28,15 @@ const video: Explainer = {
         { say: 'With potassium cyanide, it gives a nitrile, one carbon longer. That is a useful way to lengthen a chain.', show: 't.1', focus: 't.1' },
         { say: 'With excess ammonia, it gives an amine.', show: 't.2', focus: 't.2' },
         { say: 'But with hot hydroxide in ethanol, the hydroxide acts as a base, and an alkene forms instead.', show: 't.3', focus: 't.3' },
+      ],
+    },
+    {
+      chapter: 'Substitution, up close',
+      layout: 'center',
+      main: [nucleophilicSubstitution('ns')],
+      lines: [
+        { say: 'Here is substitution by hydroxide up close. The carbon bonded to the bromine is slightly positive, so the hydroxide ion’s lone pair attacks it.', show: 'ns', play: 'ns.attack' },
+        { say: 'The new bond forms as the carbon–bromine bond breaks, and the bromide ion leaves. The product is ethanol.', play: 'ns.swap' },
       ],
     },
     {

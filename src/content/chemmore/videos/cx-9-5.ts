@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { bromineAdds } from '../../chem30/videos/lib/c30-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-9-5',
@@ -27,6 +28,14 @@ const video: Explainer = {
         { say: 'A primary or secondary alcohol turns acidified dichromate from orange to green.', show: 't.1', focus: 't.1' },
         { say: 'An aldehyde gives a silver mirror with Tollens’ reagent, and a brick-red precipitate with Fehling’s solution. Ketones give neither.', show: 't.2', focus: 't.2' },
         { say: 'And a carboxylic acid fizzes with sodium hydrogencarbonate, giving carbon dioxide.', show: 't.3', focus: 't.3' },
+      ],
+    },
+    {
+      chapter: 'Bromine water, up close',
+      layout: 'center',
+      main: [bromineAdds('ba')],
+      lines: [
+        { say: 'Here is why bromine water loses its colour. The alkene’s double bond opens, and a bromine atom joins each carbon. The coloured bromine is used up, so the orange colour goes.', show: 'ba', play: 'ba.go' },
       ],
     },
     {

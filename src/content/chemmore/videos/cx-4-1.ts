@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { air } from '../../chem10/videos/lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'cx-4-1',
@@ -28,6 +29,15 @@ const video: Explainer = {
         { say: 'Dry air is about seventy-eight percent nitrogen, roughly four-fifths.', caption: 'Dry air is about 78% nitrogen, roughly four-fifths.', show: 't.0', focus: 't.0' },
         { say: 'About twenty-one percent is oxygen, roughly one-fifth.', caption: 'About 21% is oxygen, roughly one-fifth.', show: 't.1', focus: 't.1' },
         { say: 'Almost all the rest is argon, a noble gas, and there is a tiny amount of carbon dioxide, about four hundredths of one percent.', caption: 'Almost all the rest is argon, a noble gas, and there is a tiny amount of carbon dioxide, about 0.04%.', show: ['t.2', 't.3'], focus: ['t.2', 't.3'] },
+      ],
+    },
+    {
+      chapter: 'Air, up close',
+      layout: 'center',
+      main: [{ ...air('air', 440), key: true }],
+      lines: [
+        { say: 'Here is air up close. About four in every five molecules are nitrogen, about one in five are oxygen, and a few are argon atoms.', show: ['air', 'air.labels', 'air.key'] },
+        { say: 'They move fast and in every direction, mixing evenly, which is why the air has the same make-up almost everywhere.' },
       ],
     },
     {
