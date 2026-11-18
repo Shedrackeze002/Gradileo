@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { aquaIon } from './lib/cx-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-11-2',
@@ -27,6 +28,15 @@ const video: Explainer = {
         { say: 'A ligand donates a lone pair to a metal ion, forming a coordinate bond. The number of these bonds is the coordination number.', show: 'def' },
         { say: 'Water, ammonia and chloride each form one bond.', show: 'b.0' },
         { say: 'Bidentate ligands form two, and E D T A forms six.', caption: 'Bidentate ligands form two, and EDTA forms six.', show: ['b.1', 'b.2'] },
+      ],
+    },
+    {
+      chapter: 'Six ligands, up close',
+      layout: 'center',
+      main: [aquaIon('aq')],
+      lines: [
+        { say: 'Here is a copper two ion in water, up close.', caption: 'Here is a Cu²⁺ ion in water, up close.', show: 'aq' },
+        { say: 'Six water molecules turn their oxygen atoms towards it, and each donates a lone pair, forming a coordinate bond. That makes the complex ion, copper two with six waters: its coordination number is six.', caption: 'Six water molecules turn their oxygen atoms towards it, and each donates a lone pair, forming a coordinate bond. That makes the complex ion [Cu(H₂O)₆]²⁺: its coordination number is six.', play: 'aq.bind' },
       ],
     },
     {

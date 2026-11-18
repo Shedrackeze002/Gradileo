@@ -335,15 +335,18 @@ const shift = (at: Record<string, At>, dx: number, dy = 0): Record<string, At> =
 
 /**
  * Esterification with every atom drawn (clip `go`): a carboxylic acid with `n` carbons and an
- * alcohol with `m` carbons. The alcohol comes up to the acid, the acid's OH and the alcohol's H
+ * alcohol with `m` carbons (or, with `chloride`, an acyl chloride, which loses HCl instead of
+ * water). The alcohol comes up to the acid, the acid's OH and the alcohol's H
  * (shaded) leave together as water, and the acid's carbon bonds to the alcohol's oxygen.
  */
-export const esterification = (id: string, o: { n: number; m: number; acid: string; alcohol: string; ester: string; height?: number }): MoleculesEl => {
+export const esterification = (id: string, o: { n: number; m: number; acid: string; alcohol: string; ester: string; height?: number; chloride?: boolean }): MoleculesEl => {
   const { n, m } = o;
+  // An acyl chloride (`chloride`) loses its Cl instead of an OH, so hydrogen chloride leaves, not water.
+  const cl = !!o.chloride;
   const y = 2.4;
   const x0 = 1.2;
   const acid: Record<string, At> = { Al: [r3(x0 - 1), y] };
-  const atoms: Record<string, MolAtom> = { Al: 'H', Cb: 'C', Od: 'O', Oa: { el: 'O', tone: 'theta' }, Hx: { el: 'H', tone: 'theta' }, Ob: 'O', Hy: { el: 'H', tone: 'theta' }, Mr: 'H' };
+  const atoms: Record<string, MolAtom> = { Al: 'H', Cb: 'C', Od: 'O', Oa: { el: cl ? 'Cl' : 'O', tone: 'theta' }, ...(cl ? {} : { Hx: { el: 'H', tone: 'theta' } as MolAtom }), Ob: 'O', Hy: { el: 'H', tone: 'theta' }, Mr: 'H' };
   const acidBonds: string[] = [];
   for (let k = 1; k < n; k++) {
     const x = r3(x0 + (k - 1) * 1.3);
@@ -355,7 +358,10 @@ export const esterification = (id: string, o: { n: number; m: number; acid: stri
   acidBonds.push(n > 1 ? `A${n - 1}-Cb` : 'Al-Cb', 'Cb=Od');
   Object.assign(acid, { Cb: [cb, y], Od: [cb, 1.25] });
   const oa = r3(cb + 1.15);
-  const oh: Record<string, At> = { Oa: [oa, y], Hx: [r3(oa + 0.7), 3.0] };
+  const oh: Record<string, At> = cl ? { Oa: [r3(oa + 0.1), y] } : { Oa: [oa, y], Hx: [r3(oa + 0.7), 3.0] };
+  const leave = cl ? 'Cb-Oa' : 'Cb-Oa Oa-Hx';
+  const small = cl ? 'Oa-Hy' : 'Oa-Hx Oa-Hy';
+  const lost = (x: number, wy: number): Record<string, At> => (cl ? { Oa: [r3(x - 0.5), wy], Hy: [r3(x + 0.5), wy] } : { Oa: [x, wy], Hx: [r3(x - 0.7), r3(wy + 0.55)], Hy: [r3(x + 0.7), r3(wy + 0.55)] });
   // The alcohol, with its oxygen at x = 0.
   const alc: Record<string, At> = { Ob: [0, y], Hy: [0, 3.15] };
   const alcBonds: string[] = ['Ob-M1'];
@@ -383,24 +389,24 @@ export const esterification = (id: string, o: { n: number; m: number; acid: stri
     {
       apart: {
         at: { ...acid, ...oh, ...apartAlc },
-        bonds: `${A} Cb-Oa Oa-Hx Ob-Hy ${B}`,
+        bonds: `${A} ${leave} Ob-Hy ${B}`,
         names: [
           { text: o.acid, at: [acidMid, ny] },
           { text: o.alcohol, at: [r3(oa + 3.4 + (m * 1.3 + 1) / 2), ny] },
         ],
       },
-      meet: { at: { ...acid, ...oh, ...meetAlc }, bonds: `${A} Cb-Oa Oa-Hx Ob-Hy ${B}` },
+      meet: { at: { ...acid, ...oh, ...meetAlc }, bonds: `${A} ${leave} Ob-Hy ${B}` },
       split: {
-        at: { ...acid, ...meetAlc, Oa: [r3(oa + 0.9), 4.25], Hx: [r3(oa + 0.2), 4.8], Hy: [r3(oa + 1.6), 4.8] },
-        bonds: `${A} Oa-Hx Oa-Hy ${B}`,
-        names: [{ text: 'the acid’s OH and the alcohol’s H leave as water', at: [r3(width / 2), ny], tone: 'theta' }],
+        at: { ...acid, ...meetAlc, ...(cl ? lost(r3(oa + 0.9), 4.4) : lost(r3(oa + 0.9), 4.25)) },
+        bonds: `${A} ${small} ${B}`,
+        names: [{ text: cl ? 'the Cl and the alcohol’s H leave as HCl' : 'the acid’s OH and the alcohol’s H leave as water', at: [r3(width / 2), ny], tone: 'theta' }],
       },
       ester: {
-        at: { ...acid, ...esterAlc, Oa: [wx, 3.7], Hx: [r3(wx - 0.7), 4.25], Hy: [r3(wx + 0.7), 4.25] },
-        bonds: `${A} Cb-Ob Oa-Hx Oa-Hy ${B}`,
+        at: { ...acid, ...esterAlc, ...lost(wx, cl ? 4.0 : 3.7) },
+        bonds: `${A} Cb-Ob ${small} ${B}`,
         names: [
           { text: o.ester, at: [r3((x0 - 1 + oa + m * 1.3 + 1) / 2), ny], tone: 'good' },
-          { text: 'water', at: [wx, ny] },
+          { text: cl ? 'hydrogen chloride' : 'water', at: [wx, ny] },
         ],
       },
     },

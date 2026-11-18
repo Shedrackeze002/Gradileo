@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { goldFoilShots } from '../../chem9/videos/lib/c9-scatter.ts';
 
 const video: Explainer = {
   id: 'cx-5-1',
@@ -38,6 +39,16 @@ const video: Explainer = {
         { say: 'Rutherford’s team fired positive alpha particles at very thin gold foil. Most passed straight through, so most of the atom is empty space.', show: 't.0', focus: 't.0' },
         { say: 'A few were deflected, so the centre must be positively charged.', show: 't.1', focus: 't.1' },
         { say: 'And a very few bounced straight back. Only something tiny, dense and charged could do that, so the mass and positive charge must be in a tiny nucleus. The plum pudding model could not explain this, so it was replaced.', show: 't.2', focus: 't.2' },
+      ],
+    },
+    {
+      chapter: 'The experiment, up close',
+      layout: 'center',
+      main: [goldFoilShots('foil')],
+      lines: [
+        { say: 'Here is the experiment up close: alpha particles fired at the atoms of the foil.', show: ['foil', 'foil.labels'] },
+        { say: 'Fire them one at a time. Almost all of them fly straight through the empty space.', show: 'foil.count', play: 'foil.first' },
+        { say: 'Keep firing. A few pass close to a nucleus and are pushed aside, and a very few head straight for one and bounce back. Only a tiny, dense, positive nucleus could turn them round like that.', play: 'foil.rest' },
       ],
     },
     {

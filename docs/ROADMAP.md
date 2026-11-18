@@ -1431,13 +1431,20 @@ items ship or decisions change.
        cancel, water's do not; molecules turning to face a charged rod), shapes of molecules
        (electron groups spreading out, lone pairs), and acids and bases (indicators, hydronium
        ions, ions or molecules, neutralisation).
-     - Scripted (18 November 2026): group 2 part 3, all 28 Chemistry 30 videos: acids and bases
+     - Merged (18 November 2026, pull request #216): group 2 part 3, all 28 Chemistry 30 videos: acids and bases
        (a proton passing from acid to base, with conjugate pairs named), redox (zinc displacing
        copper, magnesium gaining and losing electrons), and organic chemistry atom by atom (chains
        growing and closing into rings, line formulas, isomers rearranging, functional groups
        swapped in and moved, esterification, poly(ethene) and a polyester forming, cracking,
        methane burning, and sulfur dioxide becoming acid rain).
-     - Next: the rest of group 2 (More Chemistry Topics, 30 videos), then animated
+     - Scripted (18 November 2026): group 2 part 4, all 30 More Chemistry Topics videos: graphene
+       forming, a copper(II) ion gaining six water ligands, rotation about a single bond but not a
+       double bond (Z to E only by breaking the π bond), a hydride ion reducing propanone with curly
+       arrows, two glycines joining by a peptide link, a chiral centre built group by group, an
+       oxide ion making hydroxide ions, acylation releasing HCl, brass resisting a push, recycling
+       aluminium, and particle scenes for gas tests, air, distillation, crystallisation and the
+       barium sulfate, silver chloride and hydroxide precipitates.
+     - Next: animated
        openings for the calculation lessons (group 3). Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every

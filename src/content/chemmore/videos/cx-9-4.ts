@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { waterLeaves } from '../../chem30/videos/lib/c30-molecules.ts';
 
 const video: Explainer = {
   id: 'cx-9-4',
@@ -48,6 +49,14 @@ const video: Explainer = {
       lines: [
         { say: 'Heating an alcohol with a concentrated acid catalyst removes water, giving an alkene. Propan-two-ol gives propene.', caption: 'Heating an alcohol with a concentrated acid catalyst removes water, giving an alkene. Propan-2-ol gives propene.', show: 'm' },
         { say: 'That means alkenes, and the polymers made from them, can come from crops instead of crude oil.' },
+      ],
+    },
+    {
+      chapter: 'Elimination, up close',
+      layout: 'center',
+      main: [waterLeaves('wl')],
+      lines: [
+        { say: 'Here is elimination up close, with ethanol. The O H group and a hydrogen atom from the next carbon leave together as water, and the two carbons form a double bond: ethene.', caption: 'Here is elimination up close, with ethanol. The OH group and a hydrogen atom from the next carbon leave together as water, and the two carbons form a double bond: ethene.', show: 'wl', play: 'wl.go' },
       ],
     },
     {

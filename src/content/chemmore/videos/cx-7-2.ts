@@ -1,4 +1,4 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 
 const video: Explainer = {
   id: 'cx-7-2',
@@ -52,6 +52,26 @@ const video: Explainer = {
         { say: 'Down a group it falls, because the outer electron is further from the nucleus and more shielded.', show: 'b.0' },
         { say: 'Across a period it rises, because the nuclear charge grows while the shielding stays about the same.', show: 'b.1' },
         { say: 'There are two dips across Period three. Aluminium’s outer electron is in a higher-energy p sub-shell, and in sulfur, two electrons share a p orbital and repel each other. Both are evidence for sub-shells.', caption: 'There are two dips across Period 3. Aluminium’s outer electron is in a higher-energy p sub-shell, and in sulfur, two electrons share a p orbital and repel each other. Both are evidence for sub-shells.', show: ['b.2', 'b.3'] },
+      ],
+    },
+    {
+      chapter: 'Down a group, up close',
+      layout: 'center',
+      main: [{
+          kind: 'atoms',
+          id: 'ie',
+          span: [14, 8.4],
+          atoms: [
+            { id: 'na', symbol: 'Na', protons: 11, at: [3.6, 4.2], tone: 'opp', name: 'sodium' },
+            { id: 'k', symbol: 'K', protons: 19, at: [10.2, 4.2], tone: 'good', name: 'potassium' },
+          ],
+          clips: { ion: { phases: [{ dur: 0.4 }, { dur: 1.6, give: [{ from: 'k', to: null, n: 1 }] }, { dur: 0.6 }, { dur: 2.6, give: [{ from: 'na', to: null, n: 1 }] }, { dur: 0.6 }] } },
+          poster: 'ion',
+          height: 440,
+        } satisfies AtomsEl],
+      lines: [
+        { say: 'Here are sodium and potassium, from the same group. Potassium has one more shell, so its outer electron is further from the nucleus, with more inner electrons shielding it.', show: ['ie', 'ie.labels', 'ie.arrangement'] },
+        { say: 'So potassium’s outer electron is pulled away more easily than sodium’s: potassium has the lower first ionisation energy.', show: 'ie.charges', play: 'ie.ion' },
       ],
     },
     {

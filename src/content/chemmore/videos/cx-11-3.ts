@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { precipitate } from '../../chem20/videos/lib/c20-particles.ts';
 
 const video: Explainer = {
   id: 'cx-11-3',
@@ -35,6 +36,25 @@ const video: Explainer = {
         { say: 'Copper gives a blue precipitate, which dissolves in excess ammonia to form a deep blue solution.', show: 't.1', focus: 't.1' },
         { say: 'Aluminium gives a white precipitate, which dissolves in excess sodium hydroxide, because aluminium hydroxide is amphoteric.', show: 't.3', focus: 't.3' },
         { say: 'With sodium carbonate, the two plus ions give metal carbonates, but the three plus ions are acidic enough to give hydroxides and bubbles of carbon dioxide.', caption: 'With sodium carbonate, the 2+ ions give metal carbonates, but the 3+ ions are acidic enough to give hydroxides and bubbles of carbon dioxide.' },
+      ],
+    },
+    {
+      chapter: 'Copper(II) hydroxide, up close',
+      layout: 'center',
+      main: [precipitate(
+          'cu',
+          {
+            cation: { name: 'copper(II) ion', tone: 'adj', size: 1.1 },
+            anion: { name: 'hydroxide ion', tone: 'good' },
+            withCation: { name: 'sulfate ion', tone: 'hyp', size: 1.1 },
+            withAnion: { name: 'sodium ion', tone: 'opp' },
+          },
+          { ratio: 2, n: 4, label: 'copper(II) sulfate + sodium hydroxide', solid: 'copper(II) hydroxide', seed: 3, water: 'theta' },
+          420,
+        )],
+      lines: [
+        { say: 'Here is copper two sulfate solution meeting sodium hydroxide, up close.', caption: 'Here is copper(II) sulfate solution meeting sodium hydroxide, up close.', show: ['cu', 'cu.labels', 'cu.key'] },
+        { say: 'Each copper two ion collects two hydroxide ions, and the neutral copper two hydroxide sinks: the blue precipitate.', caption: 'Each Cu²⁺ ion collects two OH⁻ ions, and the neutral Cu(OH)₂ sinks: the blue precipitate.', show: 'cu.tally', play: 'cu.mix' },
       ],
     },
     {

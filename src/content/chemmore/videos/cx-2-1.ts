@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { sparkedHydrogen } from '../../chem10/videos/lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'cx-2-1',
@@ -85,6 +86,15 @@ const video: Explainer = {
         { say: 'Oxygen makes other things burn better, so a glowing splint relights.', show: 't.1', focus: 't.1' },
         { say: 'Carbon dioxide turns limewater milky, because it makes tiny white particles of calcium carbonate. And chlorine bleaches damp litmus paper white.', show: ['t.2', 't.3'], focus: ['t.2', 't.3'] },
         { say: 'The two splint tests are easy to swap. A burning splint is for hydrogen, the gas that burns. A glowing splint is for oxygen, the gas that relights it.', show: 'm', focus: 'm' },
+      ],
+    },
+    {
+      chapter: 'The squeaky pop, up close',
+      layout: 'center',
+      main: [sparkedHydrogen('sy')],
+      lines: [
+        { say: 'Here is the hydrogen test up close: hydrogen molecules mixed with oxygen from the air.', show: ['sy', 'sy.labels', 'sy.key', 'sy.thermo'] },
+        { say: 'The flame sets off one reaction, which gives out heat that sets off the next, so the whole mixture reacts at once to make water. That fast reaction is the squeaky pop.', show: 'sy.tally', play: 'sy.spark' },
       ],
     },
     {

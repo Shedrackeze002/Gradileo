@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { ammoniaAndWater } from '../../chem30/videos/lib/c30-protons.ts';
 
 const video: Explainer = {
   id: 'cx-12-5',
@@ -35,6 +36,15 @@ const video: Explainer = {
         { say: 'The lone pair on the nitrogen accepts a hydrogen ion, so amines are bases.', show: 'm.0', focus: 'm.0' },
         { say: 'The more available the lone pair, the stronger the base. Alkyl groups push electron density onto the nitrogen, so alkyl amines are stronger bases than ammonia.', show: 'm.1', focus: 'm.1' },
         { say: 'In phenylamine, the lone pair is partly drawn into the benzene ring, so it is a weaker base than ammonia.' },
+      ],
+    },
+    {
+      chapter: 'A lone pair takes a proton',
+      layout: 'center',
+      main: [ammoniaAndWater('pt')],
+      lines: [
+        { say: 'Here is the simplest base of this kind, ammonia, meeting water.', show: 'pt' },
+        { say: 'The nitrogen’s lone pair takes a hydrogen ion from a water molecule, leaving a hydroxide ion. Amines do the same, and the more available the lone pair, the more readily it happens.', play: 'pt.go' },
       ],
     },
     {

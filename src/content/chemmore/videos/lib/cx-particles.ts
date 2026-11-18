@@ -139,3 +139,46 @@ export const speedSpread = (id: string, o: { seed?: number; height?: number } = 
   });
   return { kind: 'particles', id, boxes: [box('a', 'cooler', 0.5), box('b', 'hotter', 1.2)], clips: {}, thermometers: true, seed: o.seed ?? 1, height: o.height ?? 620 };
 };
+
+/** A metal's atoms: held in rows, but able to slide. */
+const METAL = { bond: 3, tone: 'opp' } as const;
+
+/**
+ * Pure copper and brass given the same push (clip `push`), as in Chemistry 8: in copper the rows of
+ * atoms slide over one another, but in brass the bigger zinc atoms sit fixed among the rows and jam
+ * them, so the alloy hardly gives.
+ */
+export const alloyPush = (id: string, height = 360): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [
+    { id: 'cu', state: 'solid', width: 20, height: 6, cols: 12, bare: true, kinds: [{ n: 48, ...METAL, name: 'copper' }], label: 'pure copper' },
+    {
+      id: 'br',
+      state: 'solid',
+      width: 20,
+      height: 6,
+      cols: 12,
+      bare: true,
+      pin: [1],
+      kinds: [{ n: 36, ...METAL, name: 'copper' }, { n: 12, bond: 3, size: 1.35, tone: 'adj', name: 'zinc' }],
+      label: 'brass, an alloy',
+    },
+  ],
+  clips: { push: { phases: [{ dur: 4, push: { cu: 0.7, br: 0.7 } }, { dur: 1.5, push: { cu: 0, br: 0 } }] } },
+  key: true,
+  height,
+});
+
+/**
+ * Recycling a metal (clips `melt` and `cast`): scrap aluminium is heated until its atoms slide past
+ * one another as a liquid, then cooled so they lock together again in a new shape.
+ */
+export const recycledMetal = (id: string, height = 400): ParticlesEl => ({
+  kind: 'particles',
+  id,
+  boxes: [{ id: 'al', state: 'solid', width: 10, height: 8, temp: 0.3, kinds: [{ n: 30, bond: 2, tone: 'theta', name: 'aluminium atom' }], label: 'scrap aluminium' }],
+  clips: { melt: { phases: [{ dur: 4, heat: { al: 1.3 } }, { dur: 2.5 }] }, cast: { phases: [{ dur: 5, heat: { al: 0.2 } }, { dur: 2 }] } },
+  thermometers: true,
+  height,
+});

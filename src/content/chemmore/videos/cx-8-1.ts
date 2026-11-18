@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { meltTogether } from '../../chem10/videos/lib/c10-particles.ts';
 
 const video: Explainer = {
   id: 'cx-8-1',
@@ -41,6 +42,25 @@ const video: Explainer = {
         { say: 'Silicon is giant covalent. Melting it breaks many strong covalent bonds, so it melts highest of all, at fourteen hundred fourteen degrees.', caption: 'Silicon is giant covalent. Melting it breaks many strong covalent bonds, so it melts highest of all, at 1414 °C.', show: 't.1', focus: 't.1' },
         { say: 'Phosphorus, sulfur and chlorine are simple molecules, held only by weak van der Waals forces. Sulfur’s rings of eight atoms are the biggest, so it melts highest of the three.', show: 't.2', focus: 't.2' },
         { say: 'And argon is single atoms, with the weakest forces of all.', show: 't.3', focus: 't.3' },
+      ],
+    },
+    {
+      chapter: 'Melting side by side',
+      layout: 'center',
+      main: [meltTogether(
+          'mt',
+          [
+            { id: 'na', label: 'sodium', bond: 1, tone: 'opp' },
+            { id: 'al', label: 'aluminium', bond: 2.6, tone: 'theta' },
+            { id: 'si', label: 'silicon', bond: 6, tone: 'good' },
+            { id: 's', label: 'sulfur', bond: 1.2, tone: 'hyp' },
+          ],
+          1,
+          360,
+        )],
+      lines: [
+        { say: 'Here are four Period three elements, warmed side by side.', show: ['mt', 'mt.labels', 'mt.thermo'] },
+        { say: 'Sodium melts first, then sulfur, then aluminium, with its stronger metallic bonding. Silicon, held by strong covalent bonds all through, is still solid at the end.', play: 'mt.warm' },
       ],
     },
     {
