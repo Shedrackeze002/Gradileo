@@ -1,4 +1,4 @@
-import type { Explainer } from '@/video/script.ts';
+import type { AtomsEl, Explainer } from '@/video/script.ts';
 import { lewis } from '@/video/chem.ts';
 import { figure } from '@/video/solids.ts';
 import { arrow, chargeBars, curvedArrow, lattice, tag } from './lib/c20-1a-figures.ts';
@@ -31,6 +31,24 @@ const crystal = figure('lat', [
 // Two Al³⁺ (3 + 3) cancel three O²⁻ (2 + 2 + 2).
 const bars = figure('bars', [chargeBars({ plus: { count: 2, size: 3, tex: '\\ce{Al^3+}' }, minus: { count: 3, size: 2, tex: '\\ce{O^2-}' } })], 300);
 
+// A sodium atom and a chlorine atom (src/video/atoms.ts): in the clip `give` sodium's one valence
+// electron moves to chlorine, and in `pull` the two ions, now oppositely charged, draw together.
+const naCl: AtomsEl = {
+  kind: 'atoms',
+  id: 'tr',
+  span: [13, 7],
+  atoms: [
+    { id: 'na', symbol: 'Na', protons: 11, at: [2.8, 3.5], tone: 'opp', name: 'sodium' },
+    { id: 'cl', symbol: 'Cl', protons: 17, at: [9.6, 3.5], tone: 'good', name: 'chlorine' },
+  ],
+  clips: {
+    give: { phases: [{ dur: 0.4 }, { dur: 2, give: [{ from: 'na', to: 'cl', n: 1 }] }, { dur: 0.6 }] },
+    pull: { phases: [{ dur: 1.6, move: { na: [3.9, 3.5], cl: [9.0, 3.5] } }, { dur: 0.6 }] },
+  },
+  poster: 'give',
+  height: 440,
+};
+
 const video: Explainer = {
   id: 'c20-1-2',
   lessonId: 'c20-1-2',
@@ -62,6 +80,16 @@ const video: Explainer = {
         { say: 'Each sodium atom gives its one valence electron to a chlorine atom.', show: 'dc.move', focus: ['dc.move', 'dc.na-a-dots'] },
         { say: 'Sodium becomes a sodium ion, one plus. Chlorine, now with eight valence electrons, becomes a chloride ion, one minus.', show: ['dc.react', 'dc.nai-a', 'dc.nai-bracket', 'dc.cli-a', 'dc.cli-a-dots', 'dc.cli-bracket', 'dc.nai-name', 'dc.cli-name'], focus: ['dc.nai-bracket', 'dc.cli-bracket'] },
         { say: 'Opposite charges attract. The attraction between the ions is called an ionic bond.', show: 'def' },
+      ],
+    },
+    {
+      chapter: 'Electron transfer, up close',
+      layout: 'center',
+      main: [naCl],
+      lines: [
+        { say: 'Here is the same transfer up close: a sodium atom and a chlorine atom, with all their electrons.', show: ['tr', 'tr.labels', 'tr.arrangement'] },
+        { say: 'Sodium’s one valence electron moves across to chlorine. Now sodium has two, eight, like neon, and chlorine has two, eight, eight, like argon.', show: 'tr.charges', play: 'tr.give' },
+        { say: 'The ions have opposite charges, so they pull together. That attraction is the ionic bond.', play: 'tr.pull' },
       ],
     },
     {
