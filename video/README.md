@@ -332,6 +332,35 @@ See `src/video/script.ts` for every element and option. In short:
   a body that has landed is at rest. Arrows that point down from a body near the ground need
   room under the picture (`below`). A river has a ruler along its bank when `tick` is given.
 
+  Momentum in two dimensions is a `map` scene of bodies with a `mass`, seen from above. A `puck`
+  is a disc drawn to scale (its `radius`, 0.5 by default), with a name of one or two letters
+  written inside it, and a `car` points the way it is driving; `roads` draws a crossroads at the
+  origin. With `collisions` the bodies collide as smooth discs: each is pushed along the line
+  through the two centres, so a puck aimed off centre is turned aside, the two part at
+  `restitution` times the speed at which they closed (1 by default, which is elastic), and with
+  `stick` they lock together and share one arrow from their centre of mass. A phase's `kick`
+  is an explosion: an impulse in kg·m/s for each piece, and the check refuses impulses that do
+  not add up to zero. Nothing after a collision is typed in, so choose where the first body
+  starts to get the lesson's angles (see `p30-1-5-b.ts`, where ball A is offset by the two radii
+  times the sine of the angle that ball B must leave at). The parts for it are `speed` (the
+  speed at the tip of each velocity arrow, "at rest" over a body that is still; `speedDecimals`
+  sets the places), `bars` and `total` (with `momentum: { max, min }`: a column on the right with
+  a bar for each body's east momentum and north momentum, and for the two totals; give a `min`
+  below zero when anything moves west or south) and `sum` (the total momentum drawn at the centre
+  of mass as a triangle: east in blue, north in orange, the total in yellow; `momentum.scale` is
+  its pixels for each kg·m/s). While `sum` is shown for several bodies their names give way to its
+  numbers. `angle` draws the angle of each velocity from east or west, to `angleDecimals` places,
+  and leaves out a body moving due north or south; show it on a line after the collision. The
+  column of bars takes 42% of the width, so the picture is about 640 px wide: with two bodies the
+  column is 300 px tall and with three it is 390 px, which fits an element of height 440 with two
+  lines of maths under it. Keep the speed labels in mind when choosing the `view` and
+  `velocityScale`: a label sits about 60 px beyond the tip of its arrow, so two bodies that head
+  for the same point need short arrows, and a body that ends near the compass (top right) or the
+  scale note (bottom left) needs the view moved. An angle is drawn only for an arrow longer than
+  60 px. Without `momentum` the picture is centred with no column, and two such pictures go side
+  by side in a split scene with `centreRight: true` (an elastic collision beside an inelastic
+  one). The thumbnail of a view from above is cropped about the collision.
+
 - `ramp` (`src/video/ramp.ts`) is for blocks on a surface, level or tilted: a box pushed across a
   floor with friction, a block on an inclined plane, blocks tied by strings, a block pulled by a
   body that hangs over a pulley (`hanging`), or two hanging bodies (a surface at 90 degrees, which
