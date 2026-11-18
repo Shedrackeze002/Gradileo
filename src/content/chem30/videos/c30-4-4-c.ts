@@ -1,4 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
+import { ammoniaAndWater } from './lib/c30-protons.ts';
 
 const video: Explainer = {
   id: 'c30-4-4-c',
@@ -42,6 +43,15 @@ const video: Explainer = {
         { say: 'To find a conjugate acid, do the opposite: add one H, and raise the charge by one.', show: 'key' },
         { say: 'The carbonate ion, C O three, two minus, becomes hydrogen carbonate, H C O three minus: the charge goes from minus two to minus one.', caption: 'The carbonate ion, CO₃²⁻, becomes hydrogen carbonate, HCO₃⁻: the charge goes from −2 to −1.', show: 'm.0', focus: 'm.0' },
         { say: 'Ammonia becomes ammonium, and water becomes hydronium, H three O plus.', caption: 'Ammonia becomes ammonium, and water becomes hydronium, H₃O⁺.', show: ['m.1', 'm.2'], focus: ['m.1', 'm.2'] },
+      ],
+    },
+    {
+      chapter: 'Conjugates, up close',
+      layout: 'center',
+      main: [ammoniaAndWater('pt')],
+      lines: [
+        { say: 'Here is ammonia in water, up close. Watch which particle loses the proton, and which gains it.', show: 'pt' },
+        { say: 'Water gives a proton to ammonia. Take away one proton from water, and you get its conjugate base, hydroxide. Add one proton to ammonia, and you get its conjugate acid, ammonium.', play: 'pt.go' },
       ],
     },
     {
