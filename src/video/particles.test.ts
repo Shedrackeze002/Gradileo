@@ -730,3 +730,19 @@ describe('particles: pushing a metal and an alloy', () => {
     expect(checkParticles(e).join(' ')).toMatch(/only a solid can have pinned atoms.*pushes box "b", which is not a solid/);
   });
 });
+
+describe('particles: polymer chains', () => {
+  it('bonds a chain end to end and keeps it in one piece as it moves', () => {
+    const e: ParticlesEl = {
+      kind: 'particles',
+      id: `chain-${n++}`,
+      boxes: [{ id: 'b', state: 'solid', width: 13, height: 8, temp: 0.4, kinds: [{ n: 0, bond: 1, size: 0.8 }], molecules: [{ atoms: Array(16).fill(0), n: 2, chain: true }] }],
+      clips: {},
+    };
+    const [f] = particlesAt(e, [], 6);
+    expect(f.x.length).toBe(32);
+    // Each atom stays next to the one before it along its chain.
+    for (let i = 1; i < 32; i++) if (i !== 16) expect(Math.hypot(f.x[i] - f.x[i - 1], f.y[i] - f.y[i - 1])).toBeLessThan(1.3);
+    expect(f.bonds.length).toBe(30);
+  });
+});

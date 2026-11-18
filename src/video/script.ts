@@ -595,9 +595,11 @@ export interface ParticleBox {
   /**
    * Molecules the box starts with, besides the single particles in `kinds`: `n` of them, each
    * made of these atoms (kinds, by place), the first bonded to each of the others round it. A
-   * `bent` molecule of three atoms is bent like water; otherwise the atoms sit in a line.
+   * `bent` molecule of three atoms is bent like water; otherwise the atoms sit in a line. A
+   * `chain` (a polymer) is bonded end to end instead, each atom to the next, and bends freely;
+   * chains start laid along the box one above another.
    */
-  molecules?: Array<{ atoms: number[]; n: number; bent?: boolean }>;
+  molecules?: Array<{ atoms: number[]; n: number; bent?: boolean; chain?: boolean }>;
   /** Hold the reactions back until a phase lets the box go (`release`), so they start on cue. */
   waits?: boolean;
   /**

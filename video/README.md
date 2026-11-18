@@ -499,6 +499,10 @@ See `src/video/script.ts` for every element and option. In short:
     atoms' kinds are listed in `kinds` with `n: 0`. `src/video/reactions.ts` has the atoms in the
     videos' colours (`ATOM.H`, `O`, `C`, `Ne`) and ready-made burning boxes (`hydrogenBurning`,
     `carbonBurning`: light them with a phase's `heat` of about 2 and 2.5).
+  - `molecules: [{ atoms: Array(16).fill(0), n: 1, chain: true }]` is a polymer chain: each atom
+    bonded to the next, free to bend, laid along the floor at the start. Give each chain its own
+    kind (and colour) so the chains can be told apart, `size: 0.8` so the bonds show, and a `temp`
+    of about 0.4 so they wriggle. See `c8-4-4.ts`.
   - `reactions: [{ a: 0, b: 1, to: [2, 3], join: true, energy: 1.5, heat: 0.3 }]` turns a pair of
     kinds `a` and `b` that hit hard enough (`energy`) into kinds `to`, joined with `join`; `heat`
     warms the box, which then cools back slowly. `free` and `carry` let molecules swap partners

@@ -563,14 +563,38 @@ function placeMolecules(s: BoxSim, b: ParticleBox, kinds: NonNullable<ParticleBo
   kinds.forEach((kd, ki) => {
     if (ki > 0 || !lumpN) for (let i = 0; i < kd.n; i++) units.push([ki]);
   });
-  for (const m of mols) for (let i = 0; i < m.n; i++) units.push(m.atoms);
+  for (const m of mols) if (!m.chain) for (let i = 0; i < m.n; i++) units.push(m.atoms);
   const bent = new Set(mols.filter((m) => m.bent).map((m) => m.atoms));
   // Mixed in a random order.
   for (let i = units.length - 1; i > 0; i--) {
     const j = Math.floor(s.rnd() * (i + 1));
     [units[i], units[j]] = [units[j], units[i]];
   }
-  const cell = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1)) * (mols.some((m) => m.atoms.length > 1) ? 2.2 : 1);
+  // Chains (polymers) are laid first along the floor, each a gentle zigzag a row above the last,
+  // folding back at the walls; everything else starts above them.
+  const sp = 1.12 * Math.max(...kinds.map((k) => k.size ?? 1));
+  for (const ch of mols.filter((mm) => mm.chain)) {
+    for (let c = 0; c < ch.n; c++) {
+      let x = 0.8 + s.rnd() * 0.6;
+      let dir = 1;
+      let y = floor;
+      for (let a = 0; a < ch.atoms.length; a++) {
+        if (a > 0) {
+          if ((dir > 0 && x + sp * 0.95 > w - 0.6) || (dir < 0 && x - sp * 0.95 < 0.6)) {
+            dir = -dir;
+            y += sp * 0.9;
+          } else x += dir * sp * 0.95;
+        }
+        s.kind[at] = ch.atoms[a];
+        s.x[at] = x;
+        s.y[at] = y + (a % 2 ? 0.25 : -0.25) * sp;
+        if (a > 0) addBond(s, at - 1, at, true);
+        at++;
+      }
+      floor = y + sp * 1.3;
+    }
+  }
+  const cell = sp * (mols.some((m) => !m.chain && m.atoms.length > 1) ? 2.2 : 1);
   const m = units.length;
   const top = b.state === 'gas' ? s.lidY - 0.5 : Math.min(s.lidY - 0.5, floor + Math.ceil(m / Math.max(1, Math.floor((w - 1) / cell))) * cell);
   const cols = Math.max(1, Math.min(Math.floor((w - 1) / cell), Math.round(Math.sqrt((m * (w - 1)) / (top - floor)))));
