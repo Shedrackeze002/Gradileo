@@ -1410,14 +1410,20 @@ items ship or decisions change.
        a solid (malleable metals, alloys whose `pin`ned atoms jam the layers), polymer `chain`
        molecules, and a `scatter` element for the gold foil. Electrons fill shell by shell, are
        lost and gained as the narrator speaks.
-     - Scripted (18 November 2026): group 2 part 2, all 26 Chemistry 20 videos: atoms and ions,
+     - Merged (18 November 2026, pull request #215): group 2 part 2, all 26 Chemistry 20 videos: atoms and ions,
        ionic and polyatomic ions, electronegativity and bond types (a new `pull` slides a shared pair
        towards the more electronegative atom, and δ+ and δ− appear), Lewis structures (methane,
        water, ammonia, double and triple bonds up close), polar molecules (carbon dioxide's pulls
        cancel, water's do not; molecules turning to face a charged rod), shapes of molecules
        (electron groups spreading out, lone pairs), and acids and bases (indicators, hydronium
        ions, ions or molecules, neutralisation).
-     - Next: the rest of group 2 (Chemistry 30 and More Chemistry Topics), then animated
+     - Scripted (18 November 2026): group 2 part 3, all 28 Chemistry 30 videos: acids and bases
+       (a proton passing from acid to base, with conjugate pairs named), redox (zinc displacing
+       copper, magnesium gaining and losing electrons), and organic chemistry atom by atom (chains
+       growing and closing into rings, line formulas, isomers rearranging, functional groups
+       swapped in and moved, esterification, poly(ethene) and a polyester forming, cracking,
+       methane burning, and sulfur dioxide becoming acid rain).
+     - Next: the rest of group 2 (More Chemistry Topics, 30 videos), then animated
        openings for the calculation lessons (group 3). Then put chemistry back in the upload task.
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
