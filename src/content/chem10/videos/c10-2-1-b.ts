@@ -1,6 +1,5 @@
 import type { Explainer } from '@/video/script.ts';
-import { figure } from '@/video/solids.ts';
-import { ballAtom, goldFoil, pointer } from './lib/c10-2-figures.ts';
+import { goldFoilShots } from '../../chem9/videos/lib/c9-scatter.ts';
 
 const video: Explainer = {
   id: 'c10-2-1-b',
@@ -22,20 +21,19 @@ const video: Explainer = {
     {
       chapter: 'The gold foil experiment',
       layout: 'center',
-      main: [figure('foil', [goldFoil()], 600)],
+      main: [goldFoilShots('foil')],
       lines: [
         {
           say: 'In nineteen oh nine, a team working with Ernest Rutherford fired tiny, fast-moving positive particles at a sheet of gold foil, far thinner than a human hair.',
           caption: 'In 1909, a team working with Ernest Rutherford fired tiny, fast-moving positive particles at a sheet of gold foil, far thinner than a human hair.',
-          show: ['foil.source', 'foil.foil'],
+          show: ['foil', 'foil.labels'],
         },
-        { say: 'Almost all of the particles passed straight through, as if the foil were not there.', show: 'foil.straight', focus: 'foil.straight' },
-        { say: 'A few were pushed off course.', show: 'foil.deflect', focus: 'foil.deflect' },
-        { say: 'And a very few bounced almost straight back.', show: 'foil.bounce', focus: 'foil.bounce' },
+        { say: 'Let’s fire them, one at a time. Almost all of the particles pass straight through, as if the foil were not there.', play: 'foil.first', show: 'foil.count' },
+        { say: 'Keep firing. A few are pushed off course. And a very few bounce almost straight back.', play: 'foil.rest' },
         {
           say: 'Rutherford explained this in nineteen eleven. Each atom has a tiny, heavy, positive nucleus, with a great deal of empty space around it. Only particles that came close to a nucleus were pushed away by its positive charge.',
           caption: 'Rutherford explained this in 1911. Each atom has a tiny, heavy, positive nucleus, with a great deal of empty space around it. Only particles that came close to a nucleus were pushed away by its positive charge.',
-          focus: 'foil',
+          show: 'foil.atoms',
         },
       ],
     },
@@ -58,15 +56,15 @@ const video: Explainer = {
       layout: 'split',
       leftWidth: 600,
       left: [
-        figure(
-          'atom',
-          [
-            ballAtom({ protons: 3, neutrons: 4, shells: [2, 1] }),
-            pointer({ id: 'nucleus', from: [0.75, 0.45], to: [3.3, 1.9], tex: '+3', place: 'above', tone: 'opp' }),
-            pointer({ id: 'electrons', from: [1.2, -2.6], to: [2.9, -3.3], tex: '-3', place: 'below', tone: 'adj' }),
-          ],
-          520,
-        ),
+        {
+          kind: 'atoms',
+          id: 'atom',
+          span: [8, 7],
+          atoms: [{ id: 'li', symbol: 'Li', protons: 3, electrons: 0, at: [4, 3.5], tone: 'opp', name: 'lithium' }],
+          clips: { fill: { phases: [{ dur: 0.5 }, { dur: 3.5, fill: { li: 3 } }, { dur: 1 }] } },
+          poster: 'fill',
+          height: 460,
+        },
       ],
       right: [
         {
@@ -79,9 +77,9 @@ const video: Explainer = {
       ],
       lines: [
         { say: 'The nucleus is positive, but an atom as a whole is neutral: it has no overall charge. Why?' },
-        { say: 'Take the lithium atom again: three protons, four neutrons and three electrons.', show: ['atom.protons', 'atom.neutrons', 'atom.shell-1', 'atom.shell-2'] },
-        { say: 'The three protons give plus three, and the neutrons add nothing. So the nucleus has a charge of plus three.', show: ['m.0', 'atom.nucleus'], focus: ['m.0', 'atom.protons'] },
-        { say: 'The three electrons give three times minus one: minus three.', show: ['m.1', 'atom.electrons'], focus: ['m.1', 'atom.shell-1', 'atom.shell-2'] },
+        { say: 'Take the lithium atom again: three protons and four neutrons in its nucleus. On its own, the nucleus has a charge.', show: ['atom', 'atom.labels', 'atom.charges'] },
+        { say: 'The three protons give plus three, and the neutrons add nothing. So the nucleus has a charge of plus three.', show: 'm.0', focus: 'm.0' },
+        { say: 'Now add the electrons, one at a time. Each one brings minus one, and three of them give minus three.', show: 'm.1', play: 'atom.fill', focus: 'm.1' },
         { say: 'Plus three and minus three make zero. A neutral atom has exactly as many electrons as protons, so the charges cancel.', show: 'm.2', focus: 'm.2' },
       ],
     },
