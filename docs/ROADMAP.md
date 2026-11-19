@@ -1511,7 +1511,7 @@ items ship or decisions change.
        oxide ion making hydroxide ions, acylation releasing HCl, brass resisting a push, recycling
        aluminium, and particle scenes for gas tests, air, distillation, crystallisation and the
        barium sulfate, silver chloride and hydroxide precipitates.
-     - Scripted (18 November 2026): group 3, an animated opener in all 116 calculation videos
+     - Merged (18 November 2026, pull request #220): group 3, an animated opener in all 116 calculation videos
        (Chemistry 8, 9, 10, 20, 30 and More Chemistry Topics). A new `reaction` scene draws every
        atom of an equation: the bonds break, the same atoms rejoin as the products, the molecules of
        each formula are stacked so a coefficient is what you see, and the atoms of each element are
@@ -1519,8 +1519,10 @@ items ship or decisions change.
        economy). Nuclei build from protons and neutrons (isotopes), isotope mixtures move as a gas
        (relative atomic mass), and the other openers reuse the particle, atom and molecule scenes
        (dissolving, diluting, titrations, cells, equilibria, proton transfer, enthalpy).
-     - Next: re-render group 3 and move it to Drive, then put chemistry back in the upload task
-       (needs the owner's go-ahead).
+     - Rendered (19 November 2026): every remade chemistry video, all three groups, is rendered
+       and in Drive; all 417 chemistry videos were checked complete there. The new lengths, chapter
+       times and question times are recorded in `src/content/videos.json`.
+     - Next: put chemistry back in the YouTube upload task (needs the owner's go-ahead).
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
