@@ -1558,6 +1558,20 @@ items ship or decisions change.
      permission; AQA forbids YouTube use and AI-made works, and the other UK and international boards
      need permission, so those courses get exam-style questions we write ourselves, labelled as such.
      Every video names its source and licence on screen and in its description.
+   - Owner's answers (19 November 2026): approved the pilot; Gradileo counts as non-commercial (the
+     site is free and the channel is not monetised), so CC BY-NC sources may be used with credit;
+     where copyright blocks a question word for word, we write our own question of the same
+     structure, format and difficulty instead; every video, real or written by us, cites the
+     original creators.
+   - Pilot built 19 November 2026: an exam video is a script in `src/content/exams/videos/` with an
+     `exam` field (the lesson it practises, the source, the licence and a link). The source shows
+     at the foot of every frame, the header reads "Exam Question · <unit>", and the YouTube
+     description carries the credit line. The four pilot videos: `xq-p20-2-2` (two people push a
+     car, OpenStax Physics 4.3), `xq-p20-2-4` (a skier on a slope, OpenStax Physics 5.4),
+     `xq-p20-2-5` (a person pushing a box, OpenStax Physics 4.4) and `xq-m8-3-1` (is point C always
+     between A and B, NAEP 2009 Grade 8, public domain). The maths sample is Math 8, not Math 9,
+     because the best public-domain item found was a Grade 8 one. They stay out of `videos.json`
+     and the upload queue until the owner approves them.
 
 ## Hosting
 

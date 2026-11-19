@@ -59,6 +59,19 @@ body {
   color: rgb(var(--v-ink-3));
 }
 
+.v-source {
+  position: absolute;
+  bottom: 14px;
+  left: 56px;
+  right: 56px;
+  text-align: center;
+  font-size: 13px;
+  color: rgb(var(--v-ink-3));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .v-chapter {
   border: 1px solid rgb(var(--v-brand) / 0.35);
   background: rgb(var(--v-brand) / 0.12);

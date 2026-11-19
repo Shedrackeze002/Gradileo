@@ -8,5 +8,7 @@ describe('video scripts', () => {
   it.each(Object.entries(scripts))('%s is a valid script named after its file', (file, mod) => {
     expect(checkScript(mod.default)).toEqual([]);
     expect(file.endsWith(`/${mod.default.id}.ts`)).toBe(true);
+    // Every exam question video credits its question (the owner's rule, 19 November 2026).
+    if (file.startsWith('/src/content/exams/')) expect(mod.default.exam?.source).toBeTruthy();
   });
 });
