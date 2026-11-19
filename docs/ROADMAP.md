@@ -1199,8 +1199,9 @@ items ship or decisions change.
        (`src/video/motion.ts`, `video/README.md`). Two sample videos for the owner to judge the
        style: `phys-sample-forces` (what a force does, Newton's second law, friction and net
        force; since moved to `p10-2-3`) and `phys-sample-momentum` (momentum, two collisions,
-       conservation), in `src/content/physics/videos/`. They are samples: not lessons of a
-       course, and not on YouTube.
+       conservation; retired on 18 November 2026, when the videos of Grade 12 Unit 1 took its
+       place), in `src/content/physics/videos/`. They were samples: not lessons of a course, and
+       never on YouTube.
      - Decision (the owner, 14 November 2026): the style of the two samples is approved ("this
        works"). The engine and samples are merged (pull request #185).
      - Plan: `docs/PLAN-PHYSICS.md`, sent to the owner on 14 November 2026: Grade 10, 11 and 12
@@ -1354,10 +1355,76 @@ items ship or decisions change.
        topics (a new group, Fields, atoms and nuclei, and new topics for momentum, mirrors and
        lenses, and diffraction and interference), and two end-to-end tests cover a Grade 12
        class and a Grade 12 sign-up.
-     - Next: the videos of Grade 12 Physics, unit by unit, starting with Unit 1, Momentum and
-       Impulse.
-       `phys-sample-momentum` becomes the first video of Grade 12 Unit 1 and stays off YouTube
-       until then. The physics lessons have no tutor recordings yet.
+     - Done (18 November 2026): **the nine videos of Grade 12 Unit 1, Momentum and Impulse**
+       (`p30-1-1` to `p30-1-5-b`), rendered and in Drive: momentum, impulse, force-time graphs,
+       the conservation of momentum, recoil and explosions, kinetic energy in collisions (with
+       the ballistic pendulum), elastic collisions, momentum at right angles, and glancing
+       collisions and explosions. The sample `phys-sample-momentum` is retired: its collisions
+       are in `p30-1-3`. `motion` gained a force-time graph whose area is the impulse, bars for
+       a system's kinetic energy and what a collision loses, three collisions side by side, and
+       a pendulum's rise in centimetres. `flight` gained a view from above for momentum in two
+       dimensions: cars and pucks with a mass that collide as discs (pushed along the line
+       through their centres, so a glancing blow turns both aside, and with `stick` they lock
+       together), explosions given as impulses that must add up to zero, bars for the east and
+       north momentum of each body and of the total, and the total momentum drawn as a triangle
+       at the centre of mass. Nothing after a collision is typed in.
+     - Started (18 November 2026): **the videos of Grade 12 Unit 2, Forces and Fields**. A new
+       picture, `charges` (`src/video/charges.ts`), shows charge as electrons that move: a rod, a
+       cloth, a metal sphere on a stand and an atom carry + marks that stay put and electron dots
+       that cross from one body to another, down a ground wire, or to the far side of a metal
+       sphere when a charged rod comes near, and the charge written by each body is counted from
+       its electrons. Point charges get the forces of Coulomb's law, their vector sum and its
+       angle, and can fly apart or together. The first four videos are rendered and in Drive: `p30-2-1`
+       (Electric Charge), `p30-2-1-b` (Charging Objects: friction, contact and induction),
+       `p30-2-2` (Coulomb's Law) and `p30-2-2-b` (The Net Electric Force).
+     - Done (18 November 2026): **the videos of lessons 2.3 to 2.5**, six more. The `charges`
+       picture now draws the electric field: field lines followed step by step along the field of
+       the charges in the picture, the field at a test charge and the vector sum of two fields,
+       a uniform field, and two parallel plates with the field ΔV ÷ d between them, the potential
+       of each plate, lines of equal potential, and bars for the potential and kinetic energy of
+       a charge that moves in the gap. Charges fly under qE (and their weight), so an electron
+       leaves an electron gun at the speed energy gives, an electron that enters across the field
+       follows a parabola, and Millikan's oil drop falls, rises or hangs as the voltage is turned.
+       The videos: `p30-2-3` (Electric Field Strength), `p30-2-3-b` (Field Lines and Adding
+       Fields), `p30-2-4` (Potential Difference), `p30-2-4-b` (The Field Between Parallel Plates),
+       `p30-2-5` (Charges Moving in a Uniform Field) and `p30-2-5-b` (Millikan's Oil Drops).
+     - Done (18 November 2026): **the videos of lessons 2.6 and 2.7**, four more. The `circuit`
+       picture can put one component in series with a set of parallel branches (`lead`), and can
+       give its battery an internal resistance (`internal`), with a voltmeter across the
+       terminals and the lost volts shown, so `p30-2-6` (Combined Circuits) and `p30-2-6-b` (Emf
+       and Internal Resistance) work every reading out from the circuit. A new picture,
+       `magnets` (`src/video/magnets.ts`), works out the magnetic field of bar magnets and of
+       long straight wires seen end-on, and draws it with field lines, compasses whose needles
+       turn as they are carried about, and arrows with the field strength; a piece of iron shows
+       its domains lining up, and rows of wires make the field of a solenoid. The field-line
+       tracer is shared with `charges` (`src/video/fieldlines.ts`). The videos: `p30-2-7`
+       (Magnets and Magnetic Fields) and `p30-2-7-b` (The Magnetic Field of a Current).
+     - Done (18 November 2026): **the videos of lesson 2.8**, two more. The `charges` picture
+       can have a magnetic field through it (`magnetic`, into or out of the page, over the whole
+       view or a region), and a moving charge is turned by qvB step by step, so it follows a
+       circle at a constant speed, two charges of opposite sign curve opposite ways, an ion goes
+       straight through crossed fields only at the speed E ÷ B, and two isotopes land at
+       different places on the detector of a mass spectrometer. The videos: `p30-2-8` (The Force
+       on a Moving Charge) and `p30-2-8-b` (Charges Moving in Circles).
+     - Done (18 November 2026): **the videos of lesson 2.9**, two more. The `magnets` picture
+       can draw the poles of the magnet that makes a uniform field (`yoke`), and a wire with a
+       mass moves under F = BIL, so a wire is thrown out of the gap, floats on its supports when
+       BIL = mg, and a magnet on a balance reads more when the field pushes a fixed wire up. The
+       coil of a motor (`coil`) is turned about its axle by the forces on its two sides: with
+       fixed wires it rocks and stops upright, and with a split-ring commutator it keeps
+       turning. The videos: `p30-2-9` (The Force on a Wire) and `p30-2-9-b` (The Electric
+       Motor).
+     - Done (18 November 2026): **the first two videos of lesson 2.10** (induction). In the
+       `magnets` picture a bar magnet can be pushed into a coil that is joined to a meter
+       (`pickup`): the flux through the turns is worked out from the poles of the magnet, and
+       the needle swings with the rate at which it changes. A new picture, `induction`
+       (`src/video/induction.ts`), is a circuit in a field through the page: a coil in a field
+       that changes steadily (the meter reads N ΔΦ ÷ Δt), or a rod that slides along two rails
+       (ε = BLv, I = ε ÷ R, and the force BIL back on the rod, which slows a rod that is let
+       go). The videos: `p30-2-10` (Electromagnetic Induction) and `p30-2-10-b` (Moving
+       Conductors and Lenz's Law).
+     - Next: the last two videos of lesson 2.10 (the generator, transformers), then Units 3 and
+       4. The physics lessons have no tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None

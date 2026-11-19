@@ -243,6 +243,12 @@ export interface MotionBody {
   tone?: Tone;
   /** The track it is on, counted from the top (0 by default). */
   lane?: number;
+  /**
+   * A wall, or anything else that stays where it is: a block drawn as a tall hatched slab, with no
+   * velocity label and no momentum bar. Give it a very large mass (a million kilograms), so that
+   * a ball that bounces off it leaves it at rest.
+   */
+  fixed?: boolean;
 }
 
 /**
@@ -279,6 +285,13 @@ export interface MotionForce {
    * under these points, which a force-displacement graph (`graph: { y: 'force' }`) fills in.
    */
   profile?: Array<[number, number]>;
+  /**
+   * A force that changes with time: it goes steadily from `n` at the start of the phase to this
+   * many newtons at its end. A force that rises to a peak and falls again takes two phases. On a
+   * force-time graph (`graph: { y: 'impulse' }`) it is a sloping line. Not for friction, air
+   * resistance or a force with a `profile`.
+   */
+  to?: number;
 }
 
 /**
@@ -371,6 +384,11 @@ export interface MotionEl {
   velocityScale?: number;
   /** The largest momentum the bars must fit, in kg·m/s; the bars are given room when it is set. */
   momentumMax?: number;
+  /**
+   * The most negative momentum the bars must fit (a number below zero), for bodies that move to
+   * the left: the zero line then sits part way along, and a negative bar grows to its left.
+   */
+  momentumMin?: number;
   /** `false` when the total's bar is never shown, so no room is kept for it. */
   momentumTotal?: boolean;
   /**
@@ -382,9 +400,14 @@ export interface MotionEl {
    * force with a `profile` otherwise, or the spring's) against the distance moved, or against the
    * extension of the spring. `metres` is then the length of its displacement axis (`seconds` is
    * not used; give 0), the area under the line fills in as the body moves, and the work done so
-   * far is written over it (`area` renames it: "Energy stored").
+   * far is written over it (`area` renames it: "Energy stored"). With `y: 'impulse'` it is a
+   * force-time graph of one body: the force named in `force` (the net force along the track
+   * otherwise) against time, with `max` in newtons. The area under the line fills in while the
+   * force acts, and the impulse so far (that area, in N·s) is written over it. `ms: true` numbers
+   * the time axis of any of these graphs in milliseconds, for a collision (`seconds` stays in
+   * seconds: 0.006 for six milliseconds).
    */
-  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'displacement' | 'force'; metres?: number; force?: string; area?: string };
+  graph?: { of: string[]; seconds: number; max: number; min?: number; y?: 'velocity' | 'distance' | 'position' | 'displacement' | 'force' | 'impulse'; metres?: number; force?: string; area?: string; ms?: boolean };
   /** A spring between the wall at the left end of a single straight track and one of the bodies. */
   spring?: MotionSpring;
   /**
@@ -396,8 +419,10 @@ export interface MotionEl {
    * `count` (also for a pendulum) counts the complete oscillations of a body let go from rest.
    */
   equilibrium?: number;
-  /** Write the displacements of an oscillation in centimetres. */
+  /** Write the displacements of an oscillation in centimetres, or the height of a pendulum's bob (beside the bob, for a small rise). */
   cm?: boolean;
+  /** Decimal places of the velocities written over the bodies (1 by default); from 10 m/s up they keep one place. */
+  velocityDecimals?: number;
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**
@@ -432,8 +457,11 @@ export interface MotionEl {
    * force named "Weight" is gravity: its work is the change in potential energy, and is not
    * counted as work done on the body. `names` renames a bar ("Energy supplied" for the work), and
    * with several bodies `labels` names each one in front of its bars (its own label otherwise).
+   * `system` adds bars for the bodies in `of` taken together, under the part `total`: `'kinetic'`
+   * is their total kinetic energy, and `'lost'` is how much less that is than at the start (the
+   * kinetic energy a collision has turned to heat and sound).
    */
-  energy?: { of?: string[]; max: number; bars: EnergyBar[]; g?: number; names?: Partial<Record<EnergyBar, string>>; labels?: Record<string, string> };
+  energy?: { of?: string[]; max: number; bars: EnergyBar[]; g?: number; names?: Partial<Record<EnergyBar, string>>; labels?: Record<string, string>; system?: Array<'kinetic' | 'lost'> };
   /** Seconds between strobe marks (0.5 by default). */
   strobe?: number;
   /** For the thumbnail: the clip to show, part way through. */
@@ -1209,7 +1237,7 @@ export interface CircuitClip {
 }
 
 /** What a circuit element can show over its wires; each is a part ("c.current"). */
-export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage', 'power', 'charge', 'transferred', 'clock'] as const;
+export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage', 'power', 'charge', 'transferred', 'clock', 'terminal', 'lost'] as const;
 
 /**
  * A circuit, for the physics videos (src/video/circuit.ts): a battery, a switch, and lamps or
@@ -1223,8 +1251,9 @@ export const CIRCUIT_PARTS = ['charges', 'energy', 'arrows', 'current', 'voltage
  * it up), `arrows` (the direction of conventional current), `current` (ammeters with their
  * readings), `voltage` (the voltage across each component, on a voltmeter joined across it in a
  * loop), `power` (the power of each component), `charge` (the charge that has passed the ammeter
- * since the start), `transferred` (the energy the components have transferred since the start)
- * and `clock`.
+ * since the start), `transferred` (the energy the components have transferred since the start),
+ * `clock`, `terminal` (a voltmeter across the battery's terminals) and `lost` (the volts lost
+ * across the battery's internal resistance).
  * Emphasising a component's id makes it glow.
  */
 export interface CircuitEl {
@@ -1235,6 +1264,19 @@ export interface CircuitEl {
   layout: 'series' | 'parallel';
   /** The components: in order round the loop, or one on each branch. Up to four. */
   parts: CircuitPart[];
+  /**
+   * In a `parallel` layout: a component in series with the whole group of branches, drawn on the
+   * wire from the battery to the first junction. All of the battery current passes through it.
+   */
+  lead?: CircuitPart;
+  /**
+   * The internal resistance of the battery, in ohms. It is drawn as a small resistor inside the
+   * battery's case, and `volts` is then the emf. For a scene's main column (the names beside the
+   * battery need the wide margin).
+   */
+  internal?: number;
+  /** What is written beside the internal resistance (its value otherwise): "r = ?" while it is still to be found. */
+  internalLabel?: string;
   /** The switch starts open, so no current flows until a clip closes it. */
   open?: boolean;
   /** `electrons` draws the charges as electrons, drifting from the negative terminal round to the positive. */
@@ -1252,8 +1294,19 @@ export interface CircuitEl {
 /** A body of a flight element: something that moves over a flat picture. */
 export interface FlightBody {
   id: string;
-  /** A ball (the default), a boat or an aircraft that points the way it is steered, or a plain dot (a walker on a map). */
-  shape?: 'ball' | 'boat' | 'plane' | 'dot';
+  /**
+   * A ball (the default), a boat or an aircraft that points the way it is steered, or a plain dot
+   * (a walker on a map). Seen from above, for collisions: a `puck`, a disc drawn to scale with its
+   * label inside, or a `car`, which points the way it was last driven.
+   */
+  shape?: 'ball' | 'boat' | 'plane' | 'dot' | 'puck' | 'car';
+  /**
+   * Its mass in kilograms. A body with a mass has momentum (the bars and the triangle of
+   * `momentum`), takes part in the element's `collisions`, and can be given a `kick`.
+   */
+  mass?: number;
+  /** For a body with a mass: its radius in the length unit (0.5 by default). Two such bodies touch when their centres are the sum of their radii apart. */
+  radius?: number;
   /** A name written beside it. */
   label?: string;
   /** Where the name sits: over the body otherwise, or under it while it climbs. */
@@ -1283,6 +1336,12 @@ export interface FlightPhase {
   release?: string[];
   /** Stop these bodies where they are as the phase starts (a boat that has reached the far bank): the stream no longer carries them. */
   stop?: string[];
+  /**
+   * An explosion: impulses given to bodies with a mass as the phase starts, in kg·m/s by body id,
+   * as [east, north]. Each changes its body's velocity by the impulse ÷ the mass. The pieces push
+   * only on each other, so the impulses of one phase must add up to zero.
+   */
+  kick?: Record<string, [number, number]>;
   /** A short note shown over the picture ("Slow motion"). */
   note?: string;
 }
@@ -1294,7 +1353,7 @@ export interface FlightClip {
 }
 
 /** What a flight element can show over its bodies; each is a part ("f.components"). */
-export const FLIGHT_PARTS = ['velocity', 'components', 'own', 'trail', 'strobe', 'shadows', 'displacement', 'legs', 'angle', 'readout', 'clock'] as const;
+export const FLIGHT_PARTS = ['velocity', 'components', 'own', 'trail', 'strobe', 'shadows', 'displacement', 'legs', 'angle', 'readout', 'clock', 'speed', 'bars', 'total', 'sum'] as const;
 
 /**
  * Motion in two dimensions, for the physics videos (src/video/flight.ts): a projectile, a boat
@@ -1314,6 +1373,14 @@ export const FLIGHT_PARTS = ['velocity', 'components', 'own', 'trail', 'strobe',
  * velocity when no displacement is shown, measured from the x direction; for a body in a stream,
  * the angle between the way it points and the way it travels), `readout` (a panel of the numbers
  * for the arrows shown) and `clock`. Emphasising a body's id makes it glow.
+ *
+ * Momentum in two dimensions is a view from above (the `map` scene) of bodies with a `mass`. With
+ * `collisions` they collide as discs, pushed by equal and opposite impulses, and a phase's `kick`
+ * is an explosion; either way the momentum is shared out by the forces between the bodies and is
+ * never typed in. The parts for it are `speed` (the speed written at the tip of each velocity
+ * arrow), `bars` (with `momentum`: a bar for each body's momentum in each of the two directions),
+ * `total` (the bars of the two totals) and `sum` (the total momentum drawn at the centre of mass:
+ * its two parts head to tail, and the total closing the triangle).
  */
 export interface FlightEl {
   kind: 'flight';
@@ -1357,6 +1424,28 @@ export interface FlightEl {
    * the picture the column is on (right otherwise).
    */
   readout?: { of?: string; side?: 'left' | 'right' };
+  /**
+   * What happens when two bodies with a mass touch (with no gravity and no stream). They are
+   * smooth discs, so each pushes the other along the line through their centres, and where one
+   * strikes the other off centre both are turned aside. They part at `restitution` times the
+   * speed at which they closed along that line (1 by default: an elastic collision), or with
+   * `stick` they lock together and move as one.
+   */
+  collisions?: { restitution?: number; stick?: boolean };
+  /**
+   * Momentum bars in a column on the right of the picture, for the bodies with a mass: one group
+   * for each direction (named by `axes`), with a bar for each body (the part `bars`) and one for
+   * their total (`total`). `max` is the largest momentum a bar must fit, in kg·m/s, and `min` (a
+   * number below zero) the most negative: the zero line then sits part way along. `scale` is the
+   * pixels of arrow for each kg·m/s in the triangle of the part `sum` (chosen from `max` otherwise).
+   */
+  momentum?: { max: number; min?: number; scale?: number };
+  /** On a map: two roads this wide, in the length unit, that cross at the origin (one runs east and the other north). */
+  roads?: number;
+  /** Decimal places of the angles written on the picture (none by default). */
+  angleDecimals?: number;
+  /** Decimal places of the speeds written by the part `speed` (1 by default); from 10 units up they keep one place. */
+  speedDecimals?: number;
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
   height?: number;
@@ -1664,6 +1753,521 @@ export interface GravityEl {
   height?: number;
 }
 
+/** A body of a charges element: a small charged ball, a metal sphere on an insulating stand, a rod, a cloth, or an atom. */
+export interface ChargeBody {
+  id: string;
+  /**
+   * What it is. A `point` (the default) is a small ball that carries its charge as a number. A
+   * `sphere` is a metal ball, a conductor: its electrons move over the whole of it, so they lean
+   * towards a positive body that is near and away from a negative one. A `rod` and a `cloth` are
+   * insulators: their charges stay where they are put. An `atom` has its + marks in its nucleus and
+   * its electrons circling in two shells, two in the first and up to eight in the second.
+   */
+  shape?: 'point' | 'sphere' | 'rod' | 'cloth' | 'atom';
+  /** Its charge at the start, in the element's unit of charge. */
+  charge: number;
+  /** Where its centre starts (y is 0 otherwise). */
+  x: number;
+  y?: number;
+  /** What it is called, written by it ("A", "Glass rod"). */
+  label?: string;
+  /** Where its name and charge are written: over it (the default), under it, or to one side. */
+  labelAt?: 'above' | 'below' | 'left' | 'right';
+  /** The radius of a sphere or of an atom, or half the length of a rod or a cloth, in the units of the view. A point is drawn to scale with one, and 20 pixels otherwise. */
+  radius?: number;
+  /** Half the thickness of a rod or a cloth (otherwise a rod is a fifth as thick as it is long, and a cloth three fifths). */
+  thick?: number;
+  /** A rod or a cloth turned anticlockwise, in degrees. Its working end, where electrons arrive and leave first, is the right-hand end before it is turned. */
+  turn?: number;
+  /**
+   * Draw its charges: this many + marks, which never move, and an electron for each, less the ones
+   * it has lost and plus the ones it has gained. Each mark stands for the element's `mark` of
+   * charge, so the charge must be a whole number of marks.
+   */
+  pairs?: number;
+  /** A sphere stands on an insulating stand unless this is false. */
+  stand?: boolean;
+  /** The side of a sphere its ground wire is joined to (the right otherwise). */
+  wire?: 'left' | 'right';
+  /** Its mass in kilograms: it moves under the forces on it while a phase lets time run (`fly`). */
+  mass?: number;
+  /** Its velocity at the start, in metres per second, as [right, up] (at rest otherwise). */
+  v?: [number, number];
+  /**
+   * A test charge: it feels the forces of the others, but they are drawn and worked out as if it
+   * were not there. The electric field is drawn where each test charge is (`field`), so one with
+   * no charge at all marks a point of the field. With a mass and a velocity, a test charge with no
+   * charge marks a path instead: no force acts on it and nothing stops at it, so its trail is the
+   * straight line a charge beside it would have followed (it can start at the same place).
+   */
+  test?: boolean;
+  tone?: Tone;
+}
+
+/** Two parallel plates with a potential difference between them, and a uniform field in the gap. */
+export interface ChargePlates {
+  /** Where the two plates are, along the line the field points: the first is the positive one while `volts` is above zero. */
+  at: [first: number, second: number];
+  /** Upright plates, with the field along x (the default), or level ones, with the field along y. */
+  across?: 'x' | 'y';
+  /** How far the plates reach the other way: [from, to]. */
+  span: [from: number, to: number];
+  /** The potential difference between them in volts: the potential of the first plate less that of the second. */
+  volts: number;
+  /** The potential of the second plate, in volts (0 otherwise). */
+  base?: number;
+  /** A hole in the middle of a plate that lets a body through (the anode of an electron gun). */
+  hole?: 'first' | 'second';
+  /** How many field lines there are at the start (7 otherwise); a stronger field has more of them. */
+  lines?: number;
+  /** How many dashed lines of equal potential are drawn between the plates, evenly spaced, with the `potential` part (none otherwise). */
+  levels?: number;
+}
+
+/**
+ * A uniform magnetic field at right angles to the picture, in a charges element. A charge that
+ * moves across it feels the force F = qvB, at right angles to its velocity, so it turns in a
+ * circle without changing its speed.
+ */
+export interface ChargeMagnet {
+  /** The field strength in teslas: out of the page when it is above zero (drawn as dots), and into the page when below (crosses). */
+  tesla: number;
+  /** Where the field is: [left, right, bottom, top] (the whole picture otherwise). */
+  region?: [left: number, right: number, bottom: number, top: number];
+  /** A side of the region that is a detector: a body that leaves the field through it stops there. */
+  screen?: 'left' | 'right' | 'bottom' | 'top';
+  /** How many significant figures the field strength is written with (2 otherwise). */
+  figures?: number;
+}
+
+/** A stretch of a charges clip: bodies are carried, electrons cross from one to another, or time runs. */
+export interface ChargesPhase {
+  /** How long it lasts, in seconds of video. */
+  dur: number;
+  /** Where bodies are carried to during the phase, by id: a new x, or [x, y]. */
+  to?: Record<string, number | [number, number]>;
+  /** The charges that bodies without marks have by the end of the phase, by id. */
+  charge?: Record<string, number>;
+  /**
+   * Electrons that cross during the phase, one after another, each standing for one mark of
+   * charge: from a body to a body, or to and from the ground (`'ground'`) along the wire of a
+   * sphere that is grounded.
+   */
+  electrons?: Array<{ from: string; to: string; n: number }>;
+  /** Join spheres to the ground with a wire (true), or take the wire away (false), as the phase starts. */
+  ground?: Record<string, boolean>;
+  /** Let time run: bodies with a mass move under the forces on them, until they touch another body or a plate. */
+  fly?: boolean;
+  /** The potential difference of the plates by the end of the phase, in volts. */
+  volts?: number;
+  /** Where the two plates are by the end of the phase. */
+  plates?: [first: number, second: number];
+  /** The strength of the magnetic field by the end of the phase, in teslas. */
+  tesla?: number;
+  /** Velocities that bodies are given as the phase starts, in metres per second, by id: [right, up]. */
+  launch?: Record<string, [number, number]>;
+  /** Seconds of the motion for each second of video in this phase (the element's `rate` otherwise). */
+  rate?: number;
+  /** A short note shown over the picture. */
+  note?: string;
+}
+
+export interface ChargesClip {
+  phases: ChargesPhase[];
+  /** Put every body back at its start, with its first charge. */
+  reset?: boolean;
+}
+
+/** What a charges element can show over its bodies; each is a part ("lab.force"). */
+export const CHARGES_PARTS = ['charge', 'force', 'net', 'angle', 'distance', 'velocity', 'lines', 'field', 'netfield', 'potential', 'gap', 'energy', 'trail', 'magnetic', 'radius'] as const;
+
+/** The units a charge can be given in, in coulombs (`e` is the elementary charge: "+e", "−2e"). */
+export const CHARGE_UNITS = { C: 1, mC: 1e-3, μC: 1e-6, nC: 1e-9, e: 1.6e-19 } as const;
+
+/**
+ * Charged bodies, for electric charge, the ways of charging an object and Coulomb's law
+ * (src/video/charges.ts). A body with `pairs` shows its charges: + marks that stay where they are,
+ * and electrons that move. A phase sends electrons from one body to another (`electrons`), so
+ * rubbing, touching and grounding are seen as what they are, and the charge written by each body
+ * (`charge`) follows the electrons it holds. The electrons of a metal sphere lean towards a
+ * positive body that is brought near and away from a negative one. The forces are worked out from
+ * Coulomb's law, F = k q₁ q₂ ÷ r², with the charges in the element's `unit` and the distances of
+ * the view in metres: `force` draws each force on a body from each of the others, with its size,
+ * `net` their sum, `angle` the angle of the sum from the east-west line, and `distance` the
+ * distance r between the centres of the pairs in `spans` (the first two bodies otherwise). A body
+ * with a mass moves under the forces on it while a phase lets time run (`fly`), with `velocity`
+ * for its speed. A magnetic field at right angles to the picture (`magnetic`) pushes a moving
+ * charge sideways, F = qvB: the part `magnetic` draws the field, as dots or crosses, and `radius`
+ * the radius of the circle each charge is on. Emphasising a body's id makes it glow.
+ */
+export interface ChargesEl {
+  kind: 'charges';
+  id: string;
+  bodies: ChargeBody[];
+  /** What the picture shows, in metres: [left, right, bottom, top]. */
+  view: [left: number, right: number, bottom: number, top: number];
+  /** The unit the charges are given and written in (microcoulombs otherwise). */
+  unit?: keyof typeof CHARGE_UNITS;
+  /** The charge that one mark stands for, in the element's unit (for bodies with `pairs`). */
+  mark?: number;
+  /** How many decimal places charges are written with (none otherwise: "+12 nC"). */
+  decimals?: number;
+  /** Coulomb's constant (8.99 × 10⁹ N·m²/C² otherwise). */
+  k?: number;
+  /** Write distances in this unit and not in metres ({ metres: 0.01, symbol: 'cm' }). */
+  length?: { metres: number; symbol: string };
+  /** How many significant figures distances are written with (2 otherwise: "0.30 m"). */
+  figures?: number;
+  /** The pairs of bodies whose distance apart is marked (the first two bodies otherwise). */
+  spans?: Array<[string, string]>;
+  /** Draw the forces on these bodies only (on every body otherwise). */
+  pulls?: string[];
+  /** Draw the forces without their sizes (a picture that is not to scale). */
+  plain?: boolean;
+  /** Write every force in scientific notation ("8.22 × 10⁻⁸ N"); otherwise only very large and very small ones. */
+  notation?: 'sci';
+  /** How many significant figures forces are written with (3 otherwise: "1.50 N"). */
+  forceFigures?: number;
+  /** Or how many decimal places, so that forces that are added line up ("1.35 N", "1.01 N", "0.34 N"). */
+  forceDecimals?: number;
+  /**
+   * Mark each distance on a dashed line that joins the two bodies, with its size near the second
+   * body of the pair, and not on a dimension line beside them: for bodies that are not all in a row.
+   */
+  join?: boolean;
+  /** How many decimal places the angle of a net force is written with (1 otherwise). */
+  angleDecimals?: number;
+  /** Seconds of the motion for each second of video, while a phase lets time run (1 otherwise). */
+  rate?: number;
+  /** The height of the table that the stands of the spheres are on (otherwise a little below the lowest sphere). */
+  floor?: number;
+  /** The charge that, at two and a half radii from the centre of a sphere, makes its electrons lean half way (four marks otherwise). */
+  sway?: number;
+  /** Pixels of arrow for each newton (otherwise the largest force of the element is 110 pixels long). */
+  forceScale?: number;
+  /** Pixels of arrow for each metre per second (otherwise the greatest speed of the element is 90 pixels long). */
+  velocityScale?: number;
+  /** Write the speed by each velocity arrow, with this many significant figures. */
+  speedFigures?: number;
+  /** Two parallel plates, with a uniform field between them. */
+  plates?: ChargePlates;
+  /** A uniform field over the whole picture, in newtons per coulomb, at `angle` degrees anticlockwise from the right (0 otherwise). */
+  uniform?: { field: number; angle?: number; lines?: number };
+  /** A uniform magnetic field into or out of the page, over the whole picture or a part of it. */
+  magnetic?: ChargeMagnet;
+  /** The gravitational field strength, in newtons per kilogram: bodies with a mass then have a weight (none otherwise). */
+  g?: number;
+  /** How many field lines leave, or end on, the largest charge of the element (12 otherwise); a smaller charge has fewer in proportion. */
+  lines?: number;
+  /** Pixels of arrow for each newton per coulomb (otherwise the strongest field at a test charge is 110 pixels long). */
+  fieldScale?: number;
+  /** How many significant figures a field strength is written with (3 otherwise). */
+  fieldFigures?: number;
+  /** Write the name of each force by its arrow ("Electric force", "Weight") and not its size. */
+  names?: boolean;
+  /** The side of the picture the energy bars are on (the right otherwise). */
+  energyAt?: 'left' | 'right';
+  /** The parts drawn on the thumbnail (otherwise the charges, and the forces unless the bodies show their electrons). */
+  thumb?: Array<(typeof CHARGES_PARTS)[number]>;
+  clips: Record<string, ChargesClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  height?: number;
+}
+
+/** A bar magnet of a magnets element. */
+export interface MagnetBar {
+  id: string;
+  /** Its centre, [x, y], in the element's length unit. */
+  at: [number, number];
+  /** Its length from end to end, and its thickness. */
+  long: number;
+  thick: number;
+  /** The way its north pole faces, in degrees anticlockwise from the right (0 otherwise). */
+  angle?: number;
+  /** How many field lines leave its north pole (12 otherwise): a stronger magnet has more. */
+  lines?: number;
+  /** A name written beside it. */
+  label?: string;
+  /** Draw its field but no bar (the magnet inside the Earth is drawn faintly instead). */
+  faint?: boolean;
+}
+
+/** A long straight wire of a magnets element, seen end-on. */
+export interface MagnetWire {
+  id: string;
+  at: [number, number];
+  /** Its current in amperes: positive comes out of the page (drawn as a dot), negative goes in (a cross). */
+  amps: number;
+  /** The length of it that lies in the field, in metres: the force on it is then written in newtons (in newtons for each metre otherwise). */
+  metres?: number;
+  /** Its mass in kilograms: it then moves under the force on it (and its weight, when the element has `g`) while a clip plays. It needs `metres`. */
+  mass?: number;
+  /** It lies on supports, so it cannot go below where it starts. */
+  rests?: boolean;
+  /** A name written beside it (its current otherwise). */
+  label?: string;
+  labelAt?: 'above' | 'below' | 'left' | 'right';
+}
+
+/**
+ * The coil of a motor in a magnets element, seen from one end: two sides, one each side of the
+ * axle, that carry the same current opposite ways. The forces on them turn the coil about the axle.
+ */
+export interface MagnetCoil {
+  id: string;
+  /** Its axle, [x, y]. */
+  at: [number, number];
+  /** How far each side is from the axle, in the element's length unit. */
+  radius: number;
+  /** The angle of the first side at the start, in degrees anticlockwise from the right (0 otherwise). */
+  angle?: number;
+  /** The current in the coil, in amperes: positive comes out of the page in the first side (with a commutator, in the side that is further along the field). */
+  amps: number;
+  /** How many turns it has (1 otherwise): the force on a side is NBIL. */
+  turns?: number;
+  /** The length of each side that lies in the field, in metres. */
+  metres: number;
+  /** Its moment of inertia about the axle, in kg·m²: how hard it is to set turning. */
+  inertia: number;
+  /** The friction at the axle, in newton metres for each radian per second (none otherwise). */
+  friction?: number;
+  /** A split-ring commutator and two brushes: the current in the coil is reversed every half turn. */
+  commutator?: boolean;
+}
+
+/**
+ * A coil joined to a sensitive meter, in a magnets element, seen from the side: its axis lies along
+ * x, and a bar magnet on that axis can be pushed into it. The flux of the magnet through its turns
+ * is worked out from the poles, and while that flux changes an emf is induced: the needle of the
+ * meter swings, further for a faster change, one way as the flux grows and the other way as it falls.
+ */
+export interface MagnetPickup {
+  id: string;
+  /** Its centre, [x, y], in the element's length unit. */
+  at: [number, number];
+  /** Its length along the axis, and the radius of its turns. */
+  long: number;
+  radius: number;
+  /** How many turns are drawn (7 otherwise). */
+  drawn?: number;
+  /** Where the middle of the meter is, [x, y] (under the coil otherwise). */
+  meter?: [number, number];
+}
+
+/** A place in a magnets element: a compass, whose needle turns to the field there, or a probe, which shows the field there as an arrow. */
+export interface MagnetPoint {
+  id: string;
+  at: [number, number];
+  label?: string;
+  labelAt?: 'above' | 'below' | 'left' | 'right';
+}
+
+/** A piece of iron in a magnets element, drawn with its domains: small arrows that point every way until `order` lines them up. */
+export interface MagnetIron {
+  id: string;
+  at: [number, number];
+  long: number;
+  thick: number;
+  /** How many domains across and down ([8, 3] otherwise). */
+  cells?: [number, number];
+  /** How far its domains are lined up at the start, from 0 (every way) to 1 (all one way). */
+  order?: number;
+  label?: string;
+}
+
+/** A stretch of a magnets clip: things are carried or turned, currents change, or domains line up. */
+export interface MagnetsPhase {
+  /** How long it lasts, in seconds. */
+  dur: number;
+  /** Where bars, wires, compasses, probes and pieces of iron are by its end, by id. */
+  to?: Record<string, [number, number]>;
+  /** The angle a bar has by its end, in degrees. */
+  turn?: Record<string, number>;
+  /** The current a wire (or the coil) carries by its end, in amperes. */
+  amps?: Record<string, number>;
+  /** How far the domains of a piece of iron are lined up by its end (0 to 1). */
+  order?: Record<string, number>;
+}
+
+export interface MagnetsClip {
+  phases: MagnetsPhase[];
+}
+
+/** What a magnets element can show; each is a part ("mag.lines"). */
+export const MAGNETS_PARTS = ['lines', 'compass', 'field', 'distance', 'force', 'weight', 'current', 'poles'] as const;
+
+/**
+ * Magnets, wires and compasses seen from above (src/video/magnets.ts): the magnetic field of bar
+ * magnets (two poles each) and of long straight wires seen end-on (B = μ₀I ÷ 2πr, circling the
+ * wire as the right-hand rule says), with a uniform field added if one is given. Showing the
+ * element shows the magnets, the wires and the iron; showing a part adds it: `lines` (the field
+ * lines: out of each north pole and round to a south pole, and round the wires from the `seeds`),
+ * `compass` (the compasses, whose needles point along the field where they are), `field` (at
+ * each probe, an arrow along the field, with its strength in teslas when the picture has no bar
+ * magnet), `distance` (from the first wire to each probe) and `force` (the push or pull between
+ * bar magnets, and the force of the field on each wire and on each side of the coil, F = BIL) and
+ * `weight` (the weight of each wire that has a mass). With a `pickup` coil, `current` shows which
+ * way the induced current goes round its turns, `poles` the poles that current gives the coil, and
+ * `force` the push of the coil on the magnet, against its motion. A clip carries things about, turns a magnet,
+ * changes a current or lines up the domains of a piece of iron; while it plays, a wire with a mass
+ * moves under the forces on it, and the coil of a motor turns. North is red, south is blue, the
+ * field is violet, a current is yellow, a force is orange and a weight is pink. Emphasising an id
+ * makes that thing glow.
+ */
+export interface MagnetsEl {
+  kind: 'magnets';
+  id: string;
+  /** The part of the plane that is drawn: [left, right, bottom, top], in the length unit. */
+  view: [number, number, number, number];
+  /** The length unit: how many metres it is, and its symbol (metres otherwise). */
+  length?: { metres: number; symbol: string };
+  bars?: MagnetBar[];
+  wires?: MagnetWire[];
+  compasses?: MagnetPoint[];
+  probes?: MagnetPoint[];
+  iron?: MagnetIron[];
+  /** Where the field lines that close on themselves start (the lines round wires): points [x, y]. */
+  seeds?: Array<[number, number]>;
+  /** A uniform field added everywhere, in teslas: [Bx, By]. `uniformLines` straight lines are drawn for it when there is nothing else to make a field (7 otherwise). */
+  uniform?: [number, number];
+  uniformLines?: number;
+  /**
+   * The magnet that makes the uniform field, seen from one end: a north pole face at one of the
+   * `faces` (two values of x) and a south pole face at the other, between the two heights of
+   * `span`. The field is then only in the gap between them. `thick` is how wide each pole is drawn
+   * (an eighth of the view otherwise), and `base` the thickness of the bar that joins the poles
+   * under the gap, when the magnet is a U (no bar otherwise). The uniform field must point along x.
+   */
+  yoke?: { faces: [number, number]; span: [number, number]; thick?: number; base?: number };
+  /** The coil of a motor. */
+  coil?: MagnetCoil;
+  /** A coil joined to a meter, for a bar magnet to be pushed into. The bar magnets must lie on its axis. */
+  pickup?: MagnetPickup;
+  /** Gravity, in m/s², down the screen: the picture is then seen from the side, and a wire with a mass has a weight. */
+  g?: number;
+  /** Seconds of the model for each second of video, while wires and the coil move (1 otherwise). */
+  rate?: number;
+  /** A balance under the magnet: it reads this many grams with no current, and more or less as the wires push back on the magnet. It needs `g` and a `yoke`. */
+  balance?: { grams: number; decimals?: number };
+  /** Draw the Earth round the first bar magnet: a disc of this radius, with the geographic poles named. */
+  earth?: number;
+  /** How long the arrow of a probe is, in pixels for each tesla (every arrow is 64 pixels long otherwise). */
+  fieldScale?: number;
+  /** How long a force arrow is, in pixels for each newton (or newton per metre) on a wire. */
+  forceScale?: number;
+  /** Significant figures of a field strength, a distance and a force (2 otherwise). */
+  figures?: number;
+  /** The parts drawn on the thumbnail (the field lines and the compasses otherwise). */
+  thumb?: string[];
+  /** For the thumbnail: the clip to show, at its end, or this far through it (`posterAt`, from 0 to 1). */
+  poster?: string;
+  posterAt?: number;
+  clips: Record<string, MagnetsClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  height?: number;
+}
+
+/** A coil seen face on, in an induction element: a rectangle of wire, joined to a meter that reads the emf induced in it. */
+export interface InductionLoop {
+  id: string;
+  /** Its sides: [left, right, bottom, top], in the element's length unit. */
+  rect: [number, number, number, number];
+  /** How many turns it has (1 otherwise). */
+  turns?: number;
+  /** The resistance of its circuit in ohms: an induced current then flows round it (the meter reads the emf, and no current flows, otherwise). */
+  ohms?: number;
+}
+
+/** Two level rails in an induction element, joined at their left ends by a resistor, with a rod that slides along them. */
+export interface InductionRails {
+  id: string;
+  /** Where the rails start (at the resistor) and end: two values of x. */
+  x: [number, number];
+  /** Where the two rails are: two values of y, the lower one first. */
+  y: [number, number];
+  /** The resistance that joins the rails, in ohms (the rod and the rails have none). */
+  ohms: number;
+  /** Where the rod starts: a value of x. */
+  rod: number;
+  /** The speed of the rod at the start, in metres per second (at rest otherwise): positive is to the right. */
+  speed?: number;
+  /** The mass of the rod in kilograms, for a phase that lets it go (`free`). */
+  mass?: number;
+}
+
+/** A stretch of an induction clip: the field changes steadily, the rod is brought steadily to a speed, or the rod is let go. */
+export interface InductionPhase {
+  /** How long it lasts, in seconds of video. */
+  dur: number;
+  /** The field by its end, in teslas: it changes at a steady rate. */
+  tesla?: number;
+  /** The speed of the rod by its end, in metres per second: it changes at a steady rate, as if a hand moved the rod. */
+  speed?: number;
+  /** Let the rod go: only the magnetic force on it acts, so it slows down. The rod needs a mass. */
+  free?: boolean;
+}
+
+export interface InductionClip {
+  /** Start again from the first picture: the field and the rod go back to where they began before the clip plays. */
+  reset?: boolean;
+  phases: InductionPhase[];
+}
+
+/** What an induction element can show; each is a part ("ind.flux"). */
+export const INDUCTION_PARTS = ['field', 'flux', 'emf', 'current', 'velocity', 'force', 'charge'] as const;
+
+/**
+ * A circuit in a magnetic field that points through the page (src/video/induction.ts): a coil seen
+ * face on (`loop`), or two rails with a rod that slides along them (`rails`). The flux through the
+ * circuit is Φ = BA, and while it changes an emf is induced, ε = NΔΦ ÷ Δt (Faraday's law): for a
+ * rod of length L that moves at v across a field B, ε = BLv. The induced current flows the way
+ * that opposes the change (Lenz's law), and the field pushes back on the rod with F = BIL.
+ * Showing the element shows the circuit; showing a part adds it: `field` (a dot where the field
+ * comes out of the page and a cross where it goes in, larger in a stronger field, with its
+ * strength), `flux` (the area of the circuit that the field passes through, and the flux), `emf`
+ * (the emf, on the meter of a coil or beside the rod), `current` (arrowheads that go round the
+ * circuit the way the current does, and its size), `velocity` and `force` (of the rod) and
+ * `charge` (the ends of the rod the field pushes its charges to). A clip changes the field or the
+ * speed of the rod at a steady rate, or lets the rod go. The field is violet, a current is yellow,
+ * a velocity is green and a force is orange. Emphasising an id makes that thing glow.
+ */
+export interface InductionEl {
+  kind: 'induction';
+  id: string;
+  /** The part of the plane that is drawn: [left, right, bottom, top], in the length unit. */
+  view: [number, number, number, number];
+  /** The length unit: how many metres it is, and its symbol (metres otherwise). */
+  length?: { metres: number; symbol: string };
+  /** The field at the start, in teslas: positive comes out of the page, negative goes into it. */
+  tesla: number;
+  /** Where the field is: [left, right, bottom, top] (everywhere otherwise). */
+  region?: [number, number, number, number];
+  /** Give a coil or the rails, not both. */
+  loop?: InductionLoop;
+  rails?: InductionRails;
+  /** Seconds of the model for each second of video (1 otherwise). */
+  rate?: number;
+  /** Write the flux in milliwebers (webers otherwise). */
+  milli?: boolean;
+  /** How long a velocity arrow is, in pixels for each metre per second, and a force arrow, in pixels for each newton. */
+  velocityScale?: number;
+  forceScale?: number;
+  /** Significant figures of what is written (2 otherwise). */
+  figures?: number;
+  /** The parts drawn on the thumbnail (the field and the current otherwise). */
+  thumb?: string[];
+  /** For the thumbnail: the clip to show, part way through. */
+  poster?: string;
+  clips: Record<string, InductionClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  height?: number;
+}
+
 /** A body of a circle element: something that goes round a circle. */
 export interface CircleBody {
   id: string;
@@ -1758,7 +2362,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -1789,6 +2393,8 @@ export interface Scene {
   layout: 'center' | 'split';
   /** Width of the left column of a split scene in stage pixels (540 by default), for wide figures. */
   leftWidth?: number;
+  /** In a split scene: centre the right column as the left one is, for two figures side by side. */
+  centreRight?: boolean;
   main?: El[];
   left?: El[];
   right?: El[];
@@ -1873,7 +2479,9 @@ export function checkMotion(e: MotionEl): string[] {
     if (!(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
     if ((MOTION_PARTS as readonly string[]).includes(b.id)) problems.push(`body id "${b.id}" is the name of a part.`);
     if ((b.lane ?? 0) >= (e.lanes?.length ?? 1)) problems.push(`body "${b.id}" is on a lane that does not exist.`);
+    if (b.fixed && b.shape !== 'block') problems.push(`body "${b.id}": only a block can be fixed (a wall).`);
   }
+  if (e.momentumMin !== undefined && !(e.momentumMin < 0)) problems.push('the least momentum of the bars must be below zero (leave it out otherwise).');
   if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
   for (const id of e.graph?.of ?? []) if (!ids.has(id)) problems.push(`the graph names no body "${id}".`);
   if (e.graph?.min !== undefined && !(e.graph.min < 0)) problems.push('the lowest value of the graph must be below zero (leave it out otherwise).');
@@ -1883,6 +2491,7 @@ export function checkMotion(e: MotionEl): string[] {
     if (e.graph.of.length !== 1) problems.push('a force-displacement graph is of one body.');
     if (e.path || e.vertical || (e.lanes?.length ?? 1) > 1) problems.push('a force-displacement graph goes over a single straight track.');
   } else if (e.graph && !(e.graph.seconds > 0)) problems.push('the graph needs the length of its time axis, in seconds.');
+  if (e.graph?.y === 'impulse' && e.graph.of.length !== 1) problems.push('a force-time graph is of one body.');
   if (e.graph?.y === 'displacement' && e.equilibrium === undefined) problems.push('a displacement graph needs an equilibrium position to measure from.');
   if (e.equilibrium !== undefined) {
     if (e.path || e.vertical === 'up' || (e.lanes?.length ?? 1) > 1) problems.push('an equilibrium position is for a single straight track, or a single drop.');
@@ -1918,6 +2527,8 @@ export function checkMotion(e: MotionEl): string[] {
           if (f.resist || f.drag || f.axis === 'y') problems.push(`${where}: a force that changes with distance pushes along the track, and is not friction or air resistance.`);
           if (e.path || e.vertical) problems.push(`${where}: a force that changes with distance acts on a straight track.`);
         }
+        if (f.to !== undefined && (f.resist || f.drag || f.profile || f.axis === 'y')) problems.push(`${where}: a force that changes with time pushes along the track, and is not friction, air resistance or a force that changes with distance.`);
+        if (f.to !== undefined && (e.path || e.spring)) problems.push(`${where}: a force that changes with time acts on a straight track with no spring.`);
         if (f.axis === 'y') up.set(f.on, (up.get(f.on) ?? 0) + f.n);
       }
       // Bodies stay on their track, so the forces drawn up and down must cancel.
@@ -1933,8 +2544,10 @@ export function checkCircuit(e: CircuitEl): string[] {
   const problems: string[] = [];
   if (!(e.volts >= 0)) problems.push('the supply voltage must be zero or more.');
   if (e.parts.length < 1 || e.parts.length > 4) problems.push('it needs one to four components.');
+  if (e.lead && e.layout !== 'parallel') problems.push('only a parallel layout has a component in series with its branches (`lead`).');
+  if (e.internal !== undefined && !(e.internal >= 0)) problems.push('the internal resistance must be zero or more.');
   const ids = new Set<string>();
-  for (const part of e.parts) {
+  for (const part of [...(e.lead ? [e.lead] : []), ...e.parts]) {
     if (ids.has(part.id)) problems.push(`the component id "${part.id}" is used twice.`);
     ids.add(part.id);
     if ((CIRCUIT_PARTS as readonly string[]).includes(part.id)) problems.push(`the component id "${part.id}" is the name of a part.`);
@@ -1961,6 +2574,7 @@ export function checkFlight(e: FlightEl): string[] {
   const [x0, x1, y0, y1] = e.view;
   if (!(x1 > x0 && y1 > y0)) problems.push('the view needs its right above its left, and its top above its bottom.');
   const ids = new Set(e.bodies.map((b) => b.id));
+  const massive = new Set(e.bodies.filter((b) => b.mass !== undefined).map((b) => b.id));
   if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
   if (!e.bodies.length) problems.push('it needs a body.');
   for (const b of e.bodies) {
@@ -1983,9 +2597,37 @@ export function checkFlight(e: FlightEl): string[] {
     clip.phases.forEach((ph, pi) => {
       const where = `clip "${name}", phase ${pi + 1}`;
       if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
-      for (const id of [...Object.keys(ph.set ?? {}), ...(ph.release ?? []), ...(ph.stop ?? [])]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const id of [...Object.keys(ph.set ?? {}), ...(ph.release ?? []), ...(ph.stop ?? []), ...Object.keys(ph.kick ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
       if (ph.release?.length && !e.gravity) problems.push(`${where} lets a body go, but there is no gravity.`);
+      if (ph.kick) {
+        const kicks = Object.entries(ph.kick);
+        for (const [id] of kicks) if (ids.has(id) && !massive.has(id)) problems.push(`${where} kicks body "${id}", which has no mass.`);
+        const size = Math.max(...kicks.map(([, j]) => Math.hypot(j[0], j[1])), 0);
+        const [sx, sy] = kicks.reduce(([x, y], [, j]) => [x + j[0], y + j[1]], [0, 0]);
+        if (Math.hypot(sx, sy) > 1e-6 * Math.max(1, size)) problems.push(`${where}: the impulses of an explosion must add up to zero.`);
+      }
     });
+  }
+  for (const b of e.bodies) {
+    if (b.mass !== undefined && !(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if (b.radius !== undefined && !(b.radius > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
+    if ((b.shape === 'puck' || b.shape === 'car') && b.mass === undefined) problems.push(`body "${b.id}" is a ${b.shape}, so it needs a mass.`);
+  }
+  if (e.collisions) {
+    if (e.gravity || e.stream) problems.push('collisions are for a view from above, with no gravity and no stream.');
+    if (massive.size < 2) problems.push('collisions need two bodies with a mass.');
+    const r = e.collisions.restitution;
+    if (r !== undefined && !(r >= 0 && r <= 1)) problems.push('the restitution of a collision is from 0 to 1.');
+    const round = e.bodies.filter((b) => b.mass !== undefined);
+    for (let i = 0; i < round.length; i++)
+      for (let j = i + 1; j < round.length; j++)
+        if (Math.hypot(round[i].at[0] - round[j].at[0], round[i].at[1] - round[j].at[1]) < (round[i].radius ?? 0.5) + (round[j].radius ?? 0.5) - 1e-9) problems.push(`bodies "${round[i].id}" and "${round[j].id}" start inside each other.`);
+  }
+  if (e.momentum) {
+    if (!(e.momentum.max > 0)) problems.push('the largest momentum of the bars must be above zero.');
+    if (e.momentum.min !== undefined && !(e.momentum.min < 0)) problems.push('the least momentum of the bars must be below zero.');
+    if (!massive.size) problems.push('momentum bars need a body with a mass.');
+    if (e.readout) problems.push('the momentum bars take the column of the readout: give one or the other.');
   }
   return problems;
 }
@@ -2336,6 +2978,283 @@ export function checkParticles(e: ParticlesEl): string[] {
   return problems;
 }
 
+/** Problems with an induction element: a view with no size, no circuit or two, a circuit outside the view, clips that ask for what the circuit cannot do. */
+export function checkInduction(e: InductionEl): string[] {
+  const problems: string[] = [];
+  const [x0, x1, y0, y1] = e.view;
+  if (!(x1 > x0 && y1 > y0)) problems.push('the view needs its right above its left, and its top above its bottom.');
+  if (e.length && !(e.length.metres > 0)) problems.push('the length unit must be more than zero metres.');
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
+  if (!Number.isFinite(e.tesla)) problems.push('the field needs a strength in teslas.');
+  if (e.region && !(e.region[1] > e.region[0] && e.region[3] > e.region[2])) problems.push('the field needs a region with its right above its left, and its top above its bottom.');
+  if (Boolean(e.loop) === Boolean(e.rails)) problems.push('it needs a coil or two rails, and not both.');
+  const circuit = e.loop ?? e.rails;
+  if (circuit && (INDUCTION_PARTS as readonly string[]).includes(circuit.id)) problems.push(`the id "${circuit.id}" is the name of a part.`);
+  if (e.loop) {
+    const [l, r, b, t] = e.loop.rect;
+    if (!(r > l && t > b)) problems.push('the coil needs its right above its left, and its top above its bottom.');
+    if (l < x0 || r > x1 || b < y0 || t > y1) problems.push('the coil is outside the view.');
+    if (e.loop.turns !== undefined && !(Number.isInteger(e.loop.turns) && e.loop.turns >= 1)) problems.push('the coil needs a whole number of turns.');
+    if (e.loop.ohms !== undefined && !(e.loop.ohms > 0)) problems.push('the coil needs a resistance above zero.');
+  }
+  if (e.rails) {
+    const k = e.rails;
+    if (!(k.x[1] > k.x[0] && k.y[1] > k.y[0])) problems.push('the rails need their end to the right of their start, and the upper rail above the lower one.');
+    if (k.x[0] < x0 || k.x[1] > x1 || k.y[0] < y0 || k.y[1] > y1) problems.push('the rails are outside the view.');
+    if (!(k.ohms > 0)) problems.push('the rails need a resistance above zero between them.');
+    if (!(k.rod > k.x[0] && k.rod < k.x[1])) problems.push('the rod must start on the rails.');
+    if (k.mass !== undefined && !(k.mass > 0)) problems.push('the rod needs a mass above zero.');
+  }
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  for (const part of e.thumb ?? []) if (!(INDUCTION_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.tesla !== undefined && !Number.isFinite(ph.tesla)) problems.push(`clip "${name}" needs a field in teslas.`);
+      if ((ph.speed !== undefined || ph.free) && !e.rails) problems.push(`clip "${name}" moves a rod, and the picture has no rails.`);
+      if (ph.speed !== undefined && ph.free) problems.push(`clip "${name}" lets the rod go and sets its speed in the same phase.`);
+      if (ph.free && e.rails && e.rails.mass === undefined) problems.push(`clip "${name}" lets the rod go, so the rod needs a mass.`);
+    }
+  }
+  return problems;
+}
+
+/** Problems with a magnets element: a view with no size, ids used twice, things outside the view, clips that name nothing. */
+export function checkMagnets(e: MagnetsEl): string[] {
+  const problems: string[] = [];
+  const [x0, x1, y0, y1] = e.view;
+  if (!(x1 > x0 && y1 > y0)) problems.push('the view needs its right above its left, and its top above its bottom.');
+  if (e.length && !(e.length.metres > 0)) problems.push('the length unit must be more than zero metres.');
+  const [bars, wires, iron] = [e.bars ?? [], e.wires ?? [], e.iron ?? []];
+  const points = [...(e.compasses ?? []), ...(e.probes ?? [])];
+  const all = [...bars, ...wires, ...iron, ...points];
+  if (!bars.length && !wires.length && !e.uniform) problems.push('it needs a bar magnet, a wire or a uniform field.');
+  const ids = new Set<string>();
+  if (e.g !== undefined && !(e.g >= 0)) problems.push('gravity cannot be below zero.');
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
+  if (e.yoke) {
+    const { faces, span, thick, base } = e.yoke;
+    if (!e.uniform || e.uniform[0] === 0 || e.uniform[1] !== 0) problems.push('the poles of a magnet need a uniform field along x between them.');
+    if (!(faces[1] > faces[0] && faces[0] > x0 && faces[1] < x1)) problems.push('the pole faces need two values of x inside the view, the left one first.');
+    if (!(span[1] > span[0] && span[0] >= y0 && span[1] <= y1)) problems.push('the poles need a span inside the view, its bottom first.');
+    if (thick !== undefined && !(thick > 0)) problems.push('the poles need a thickness above zero.');
+    if (base !== undefined && !(base > 0 && span[0] - base >= y0)) problems.push('the bar that joins the poles needs a thickness above zero, and room under the gap.');
+  }
+  if (e.balance && !(e.g !== undefined && e.g > 0 && e.yoke)) problems.push('a balance needs gravity and the poles of a magnet to stand on it.');
+  if (e.coil) {
+    const c = e.coil;
+    ids.add(c.id);
+    if ((MAGNETS_PARTS as readonly string[]).includes(c.id)) problems.push(`the id "${c.id}" is the name of a part.`);
+    if (!(c.radius > 0 && c.metres > 0 && c.inertia > 0)) problems.push('the coil needs a radius, a length and a moment of inertia above zero.');
+    if (c.turns !== undefined && !(Number.isInteger(c.turns) && c.turns >= 1)) problems.push('the coil needs a whole number of turns.');
+    if (c.friction !== undefined && !(c.friction >= 0)) problems.push('the friction of the coil cannot be below zero.');
+    if (c.at[0] - c.radius < x0 || c.at[0] + c.radius > x1 || c.at[1] - c.radius < y0 || c.at[1] + c.radius > y1) problems.push('the coil turns outside the view.');
+    if (e.yoke && (c.at[0] - c.radius < e.yoke.faces[0] || c.at[0] + c.radius > e.yoke.faces[1] || c.at[1] - c.radius < e.yoke.span[0] || c.at[1] + c.radius > e.yoke.span[1])) problems.push('the coil turns outside the gap between the poles.');
+  }
+  if (e.pickup) {
+    const k = e.pickup;
+    ids.add(k.id);
+    if ((MAGNETS_PARTS as readonly string[]).includes(k.id)) problems.push(`the id "${k.id}" is the name of a part.`);
+    if (!(k.long > 0 && k.radius > 0)) problems.push('the pickup coil needs a length and a radius above zero.');
+    if (k.drawn !== undefined && !(Number.isInteger(k.drawn) && k.drawn >= 2)) problems.push('the pickup coil needs two or more turns drawn.');
+    if (k.at[0] - k.long / 2 < x0 || k.at[0] + k.long / 2 > x1 || k.at[1] - k.radius < y0 || k.at[1] + k.radius > y1) problems.push('the pickup coil is outside the view.');
+    if (!bars.length) problems.push('a pickup coil needs a bar magnet to induce an emf in it.');
+    for (const b of bars) {
+      if (b.at[1] !== k.at[1] || (b.angle ?? 0) % 180 !== 0) problems.push(`bar "${b.id}" must lie along the axis of the pickup coil.`);
+      if (!(b.thick < 2 * k.radius)) problems.push(`bar "${b.id}" is too thick to go into the pickup coil.`);
+    }
+  }
+  for (const o of all) {
+    if (ids.has(o.id)) problems.push(`the id "${o.id}" is used twice.`);
+    ids.add(o.id);
+    if ((MAGNETS_PARTS as readonly string[]).includes(o.id)) problems.push(`the id "${o.id}" is the name of a part.`);
+    if (o.at[0] < x0 || o.at[0] > x1 || o.at[1] < y0 || o.at[1] > y1) problems.push(`"${o.id}" starts outside the view.`);
+  }
+  for (const b of [...bars, ...iron]) if (!(b.long > 0 && b.thick > 0)) problems.push(`"${b.id}" needs a length and a thickness above zero.`);
+  for (const b of bars) if (b.lines !== undefined && !(Number.isInteger(b.lines) && b.lines >= 2)) problems.push(`bar "${b.id}" needs a whole number of field lines, two or more.`);
+  for (const b of iron) if (b.order !== undefined && !(b.order >= 0 && b.order <= 1)) problems.push(`iron "${b.id}" needs an order from 0 to 1.`);
+  for (const w of wires) if (w.metres !== undefined && !(w.metres > 0)) problems.push(`wire "${w.id}" needs a length above zero.`);
+  for (const w of wires) if (w.mass !== undefined && !(w.mass > 0 && w.metres !== undefined)) problems.push(`wire "${w.id}" needs a mass above zero, and the length of it that is in the field.`);
+  for (const w of wires) if (w.rests && w.mass === undefined) problems.push(`wire "${w.id}" rests on supports, so it needs a mass.`);
+  if (e.earth !== undefined && (!bars.length || !(e.earth > 0))) problems.push('the Earth needs a bar magnet inside it and a radius above zero.');
+  for (const [sx, sy] of e.seeds ?? []) if (sx < x0 || sx > x1 || sy < y0 || sy > y1) problems.push(`the seed at (${sx}, ${sy}) is outside the view.`);
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1 && e.poster !== undefined)) problems.push('`posterAt` needs a poster clip, and a part of it from 0 to 1.');
+  for (const part of e.thumb ?? []) if (!(MAGNETS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  const named = (group: Array<{ id: string }>) => new Set(group.map((o) => o.id));
+  const [barIds, wireIds, ironIds] = [named(bars), named(wires), named(iron)];
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      for (const [id, [tx, ty]] of Object.entries(ph.to ?? {})) {
+        if (!ids.has(id)) problems.push(`clip "${name}" moves "${id}", which is not in the picture.`);
+        else if (id === e.coil?.id) problems.push(`clip "${name}" moves the coil, which stays on its axle.`);
+        else if (id === e.pickup?.id) problems.push(`clip "${name}" moves the pickup coil: move the magnet instead.`);
+        else if (e.pickup && barIds.has(id) && ty !== e.pickup.at[1]) problems.push(`clip "${name}" moves "${id}" off the axis of the pickup coil.`);
+        else if (wires.some((w) => w.id === id && w.mass !== undefined)) problems.push(`clip "${name}" moves "${id}", which has a mass and moves by itself.`);
+        else if (tx < x0 || tx > x1 || ty < y0 || ty > y1) problems.push(`clip "${name}" moves "${id}" outside the view.`);
+      }
+      for (const id of Object.keys(ph.turn ?? {})) if (!barIds.has(id)) problems.push(`clip "${name}" turns "${id}", which is not a bar magnet.`);
+      if (e.pickup && Object.keys(ph.turn ?? {}).length) problems.push(`clip "${name}" turns a magnet, which must stay along the axis of the pickup coil.`);
+      for (const id of Object.keys(ph.amps ?? {})) if (!wireIds.has(id) && id !== e.coil?.id) problems.push(`clip "${name}" sets the current of "${id}", which is not a wire.`);
+      for (const [id, order] of Object.entries(ph.order ?? {})) {
+        if (!ironIds.has(id)) problems.push(`clip "${name}" lines up "${id}", which is not a piece of iron.`);
+        if (!(order >= 0 && order <= 1)) problems.push(`clip "${name}" needs an order from 0 to 1.`);
+      }
+    }
+  }
+  return problems;
+}
+
+/**
+ * Problems with a charges element: marks that do not add up, electrons sent from a body that has
+ * none, clips that name no body. The electrons each body holds, and the wires to the ground, are
+ * followed through the clips in `order`: the order a scene plays them in (a clip can be played
+ * twice), or the order they are written in when none is given.
+ */
+export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips)): string[] {
+  const problems: string[] = [];
+  const ids = new Set(e.bodies.map((b) => b.id));
+  const whole = (n: number) => Math.abs(n - Math.round(n)) < 1e-6;
+  if (!e.bodies.length) problems.push('it needs a body.');
+  if (ids.size !== e.bodies.length) problems.push('two bodies share an id.');
+  for (const id of ids) if ((CHARGES_PARTS as readonly string[]).includes(id) || id === 'ground' || id === 'weight') problems.push(`body id "${id}" is the name of a part, of the ground or of a force.`);
+  if (e.unit !== undefined && !(e.unit in CHARGE_UNITS)) problems.push(`the unit of charge is one of ${Object.keys(CHARGE_UNITS).join(', ')}.`);
+  if (e.mark !== undefined && !(e.mark > 0)) problems.push('a mark stands for a charge above zero.');
+  const marked = new Map<string, number>();
+  for (const b of e.bodies) {
+    const shape = b.shape ?? 'point';
+    if (shape !== 'point' && !(b.radius !== undefined && b.radius > 0)) problems.push(`body "${b.id}" needs a radius (half its length, for a rod or a cloth) above zero.`);
+    if (b.radius !== undefined && !(b.radius > 0)) problems.push(`body "${b.id}" needs a radius above zero.`);
+    if (b.thick !== undefined && !(b.thick > 0)) problems.push(`body "${b.id}" needs a thickness above zero.`);
+    if (b.mass !== undefined && !(b.mass > 0)) problems.push(`body "${b.id}" needs a mass above zero.`);
+    if (b.v && !b.mass) problems.push(`body "${b.id}" needs a mass to have a velocity.`);
+    if (b.pairs !== undefined) {
+      if (shape === 'point') problems.push(`body "${b.id}" is a point: a sphere, a rod, a cloth or an atom shows its charges.`);
+      else if (shape === 'atom' && b.pairs > 10) problems.push(`atom "${b.id}" has room for ten electrons in its two shells, so it can have ten protons at most.`);
+      else if (!e.mark) problems.push(`body "${b.id}" shows its charges, so the element needs the charge of one mark (\`mark\`).`);
+      else if (!(Number.isInteger(b.pairs) && b.pairs > 0)) problems.push(`body "${b.id}" needs a whole number of pairs above zero.`);
+      else if (!whole(b.charge / e.mark)) problems.push(`the charge of body "${b.id}" is not a whole number of marks.`);
+      else if (b.pairs - Math.round(b.charge / e.mark) < 0) problems.push(`body "${b.id}" has too few pairs for its charge: it cannot lose more electrons than it has.`);
+      else if (shape === 'atom' && b.pairs - Math.round(b.charge / e.mark) > 10) problems.push(`atom "${b.id}" starts with more than ten electrons: its two shells have room for ten.`);
+      else marked.set(b.id, b.pairs - Math.round(b.charge / e.mark));
+    }
+    if (shape === 'atom' && b.pairs === undefined) problems.push(`atom "${b.id}" needs its number of protons (\`pairs\`).`);
+    if (b.wire && shape !== 'sphere') problems.push(`body "${b.id}" is not a sphere: only a sphere is joined to the ground.`);
+  }
+  e.bodies.forEach((a, i) => {
+    // A test charge with no charge only marks a place or a path, so it can start where another body is.
+    const mark = (o: ChargeBody) => !!o.test && o.charge === 0 && o.pairs === undefined;
+    for (const b of e.bodies.slice(i + 1)) if (a.x === b.x && (a.y ?? 0) === (b.y ?? 0) && !mark(a) && !mark(b)) problems.push(`bodies "${a.id}" and "${b.id}" start at the same place.`);
+  });
+  if (!(e.view[1] > e.view[0] && e.view[3] > e.view[2])) problems.push('the view is [left, right, bottom, top].');
+  if (e.k !== undefined && !(e.k > 0)) problems.push('k must be above zero.');
+  if (e.length && !(e.length.metres > 0)) problems.push('the unit of distance needs a size above zero.');
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be above zero.');
+  if (e.sway !== undefined && !(e.sway > 0)) problems.push('the sway must be above zero.');
+  if (e.forceDecimals !== undefined && !(Number.isInteger(e.forceDecimals) && e.forceDecimals >= 0)) problems.push('forces are written with a whole number of decimal places.');
+  for (const id of e.pulls ?? []) if (!ids.has(id)) problems.push(`no body "${id}" to draw the forces on.`);
+  for (const pair of e.spans ?? []) for (const id of pair) if (!ids.has(id)) problems.push(`no body "${id}" to mark a distance from.`);
+  if (e.poster && !(e.poster in e.clips)) problems.push(`no clip "${e.poster}" for the thumbnail.`);
+  for (const part of e.thumb ?? []) if (!(CHARGES_PARTS as readonly string[]).includes(part)) problems.push(`no part "${part}" to draw on the thumbnail.`);
+  if (e.plates) {
+    const pl = e.plates;
+    if (pl.at[0] === pl.at[1]) problems.push('the two plates are at the same place.');
+    if (!(pl.span[1] > pl.span[0])) problems.push('the span of the plates is [from, to].');
+    if (!Number.isFinite(pl.volts)) problems.push('the plates need a potential difference in volts.');
+    if (pl.lines !== undefined && !(Number.isInteger(pl.lines) && pl.lines > 0)) problems.push('the plates have a whole number of field lines above zero.');
+    if (pl.levels !== undefined && !(Number.isInteger(pl.levels) && pl.levels >= 0)) problems.push('the plates have a whole number of lines of equal potential.');
+  }
+  if (e.uniform && !(e.uniform.field > 0)) problems.push('a uniform field needs a strength above zero (turn it with `angle`).');
+  if (e.plates && e.uniform) problems.push('give plates or a uniform field, not both.');
+  if (e.g !== undefined && !(e.g > 0)) problems.push('g must be above zero.');
+  if (e.magnetic) {
+    const m = e.magnetic;
+    if (!Number.isFinite(m.tesla)) problems.push('the magnetic field needs a strength in teslas.');
+    if (m.region && !(m.region[1] > m.region[0] && m.region[3] > m.region[2])) problems.push('the region of the magnetic field is [left, right, bottom, top].');
+    if (m.screen && !m.region) problems.push('a detector is a side of the region of the magnetic field, so the field needs a region.');
+    if (m.figures !== undefined && !(Number.isInteger(m.figures) && m.figures > 0)) problems.push('the magnetic field is written with a whole number of figures above zero.');
+  }
+  if (e.lines !== undefined && !(Number.isInteger(e.lines) && e.lines > 0)) problems.push('a charge has a whole number of field lines above zero.');
+  const shapes = new Map(e.bodies.map((b) => [b.id, b.shape ?? 'point']));
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      if (!(ph.dur > 0)) problems.push(`${where} needs a length above zero.`);
+      for (const id of [...Object.keys(ph.to ?? {}), ...Object.keys(ph.charge ?? {}), ...Object.keys(ph.ground ?? {})]) if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+      for (const id of Object.keys(ph.charge ?? {})) if (marked.has(id)) problems.push(`${where}: body "${id}" shows its charges, so its charge changes as electrons cross (\`electrons\`).`);
+      for (const id of Object.keys(ph.ground ?? {})) if (shapes.get(id) !== 'sphere') problems.push(`${where}: body "${id}" is not a sphere: only a sphere is joined to the ground.`);
+      if (ph.fly && ph.to) problems.push(`${where} cannot carry a body while time runs.`);
+      if (ph.fly && !e.bodies.some((b) => b.mass)) problems.push(`${where} lets time run, but no body has a mass.`);
+      if ((ph.volts !== undefined || ph.plates) && !e.plates) problems.push(`${where} changes the plates, but the element has none.`);
+      if (ph.volts !== undefined && !Number.isFinite(ph.volts)) problems.push(`${where} needs a potential difference in volts.`);
+      if (ph.plates && ph.plates[0] === ph.plates[1]) problems.push(`${where} puts the two plates at the same place.`);
+      if (ph.plates && ph.fly) problems.push(`${where} cannot move the plates while time runs.`);
+      if (ph.tesla !== undefined && !e.magnetic) problems.push(`${where} changes the magnetic field, but the element has none.`);
+      if (ph.tesla !== undefined && !Number.isFinite(ph.tesla)) problems.push(`${where} needs a magnetic field in teslas.`);
+      for (const id of Object.keys(ph.launch ?? {})) {
+        if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+        else if (!e.bodies.find((b) => b.id === id)?.mass) problems.push(`${where}: body "${id}" needs a mass to be thrown.`);
+      }
+      if (ph.rate !== undefined && !(ph.rate > 0)) problems.push(`${where}: the rate must be above zero.`);
+      const gives = new Set<string>();
+      const takes = new Set<string>();
+      for (const t of ph.electrons ?? []) {
+        if (!(Number.isInteger(t.n) && t.n > 0)) problems.push(`${where} sends a whole number of electrons above zero.`);
+        if (t.from === t.to) problems.push(`${where} sends electrons from "${t.from}" to itself.`);
+        for (const id of [t.from, t.to]) {
+          if (id === 'ground') continue;
+          if (!ids.has(id)) problems.push(`${where} names no body "${id}".`);
+          else if (!marked.has(id)) problems.push(`${where}: body "${id}" does not show its charges (\`pairs\`), so no electron can be seen to cross.`);
+        }
+        if (t.from === 'ground' && t.to === 'ground') problems.push(`${where} sends electrons from the ground to the ground.`);
+        if (marked.has(t.from)) gives.add(t.from);
+        if (marked.has(t.to)) takes.add(t.to);
+      }
+      for (const id of gives) if (takes.has(id)) problems.push(`${where}: body "${id}" gives and takes electrons at once; use two phases.`);
+    });
+  }
+  // What depends on what has gone before: the electrons each body holds, and which spheres are joined to the ground.
+  const first = new Map(marked);
+  const grounded = new Set<string>();
+  const told = new Set<string>();
+  const tell = (problem: string) => {
+    if (!told.has(problem)) problems.push(problem);
+    told.add(problem);
+  };
+  for (const name of order) {
+    const clip = e.clips[name];
+    if (!clip) continue;
+    if (clip.reset) {
+      for (const [id, n] of first) marked.set(id, n);
+      grounded.clear();
+    }
+    clip.phases.forEach((ph, pi) => {
+      const where = `clip "${name}", phase ${pi + 1}`;
+      for (const [id, on] of Object.entries(ph.ground ?? {})) {
+        if (on) grounded.add(id);
+        else grounded.delete(id);
+      }
+      for (const t of ph.electrons ?? []) {
+        const other = t.from === 'ground' ? t.to : t.to === 'ground' ? t.from : null;
+        if (other !== null && other !== 'ground' && ids.has(other) && !grounded.has(other)) tell(`${where}: body "${other}" is not joined to the ground.`);
+        if (marked.has(t.from)) {
+          marked.set(t.from, marked.get(t.from)! - t.n);
+          if (marked.get(t.from)! < 0) tell(`${where}: body "${t.from}" has no more electrons to give.`);
+        }
+        if (marked.has(t.to)) {
+          marked.set(t.to, marked.get(t.to)! + t.n);
+          if (shapes.get(t.to) === 'atom' && marked.get(t.to)! > 10) tell(`${where}: atom "${t.to}" has room for ten electrons at most.`);
+        }
+      }
+    });
+  }
+  return problems;
+}
+
 export function checkScript(x: Explainer): string[] {
   const problems: string[] = [];
   if (!x.scenes.length) problems.push('The script has no scenes.');
@@ -2343,7 +3262,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -2364,7 +3283,7 @@ export function checkScript(x: Explainer): string[] {
         problems.push(...checkMotion(e).map((p) => `Scene ${si + 1}: motion "${e.id}": ${p}`));
       }
       if (e.kind === 'circuit') {
-        diagrams.set(e.id, new Set<string>([...CIRCUIT_PARTS, ...e.parts.map((part) => part.id)]));
+        diagrams.set(e.id, new Set<string>([...CIRCUIT_PARTS, ...e.parts.map((part) => part.id), ...(e.lead ? [e.lead.id] : [])]));
         motions.set(e.id, e);
         problems.push(...checkCircuit(e).map((p) => `Scene ${si + 1}: circuit "${e.id}": ${p}`));
       }
@@ -2387,6 +3306,24 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>([...GRAVITY_PARTS, ...e.bodies.map((b) => b.id)]));
         motions.set(e.id, e);
         problems.push(...checkGravity(e).map((p) => `Scene ${si + 1}: gravity "${e.id}": ${p}`));
+      }
+      if (e.kind === 'charges') {
+        diagrams.set(e.id, new Set<string>([...CHARGES_PARTS, ...e.bodies.map((b) => b.id)]));
+        motions.set(e.id, e);
+        // The clips are followed in the order the scene plays them (and a clip can be played twice).
+        const played = s.lines.flatMap((l) => asList(l.play)).map((target) => target.split('.')).filter(([el]) => el === e.id).map(([, clip]) => clip ?? '');
+        problems.push(...checkCharges(e, played).map((p) => `Scene ${si + 1}: charges "${e.id}": ${p}`));
+      }
+      if (e.kind === 'magnets') {
+        diagrams.set(e.id, new Set<string>([...MAGNETS_PARTS, ...[...(e.bars ?? []), ...(e.wires ?? []), ...(e.iron ?? []), ...(e.compasses ?? []), ...(e.probes ?? []), ...(e.coil ? [e.coil] : []), ...(e.pickup ? [e.pickup] : [])].map((o) => o.id)]));
+        motions.set(e.id, e);
+        problems.push(...checkMagnets(e).map((p) => `Scene ${si + 1}: magnets "${e.id}": ${p}`));
+      }
+      if (e.kind === 'induction') {
+        const circuit = e.loop ?? e.rails;
+        diagrams.set(e.id, new Set<string>([...INDUCTION_PARTS, ...(circuit ? [circuit.id] : [])]));
+        motions.set(e.id, e);
+        problems.push(...checkInduction(e).map((p) => `Scene ${si + 1}: induction "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

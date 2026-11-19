@@ -210,6 +210,47 @@ describe('motion: distance and displacement', () => {
     expect(checkMotion({ ...trip, graph: { of: ['c'], seconds: 4, max: 12, min: -2, y: 'distance' } })[0]).toMatch(/never falls below zero/);
   });
 
+  it('lets the momentum bars go below zero, and only a block be a wall', () => {
+    expect(checkMotion({ ...trip, momentumMax: 4, momentumMin: -4 })).toEqual([]);
+    expect(checkMotion({ ...trip, momentumMax: 4, momentumMin: 1 })[0]).toMatch(/below zero/);
+    expect(checkMotion({ ...trip, bodies: trip.bodies.map((b) => ({ ...b, shape: 'ball' as const, fixed: true })) })[0]).toMatch(/only a block/);
+  });
+
+  it('shares momentum in a bounce that loses some energy', () => {
+    // The lesson's carts: 2 kg at 4 m/s meets 1 kg at -1 m/s, and they part at half the closing speed.
+    const a: MotionBody = { id: 'a', shape: 'cart', mass: 2, x: 1, v: 4, width: 1.3 };
+    const b: MotionBody = { id: 'b', shape: 'cart', mass: 1, x: 5.8, v: -1, width: 1.1 };
+    const el: MotionEl = { kind: 'motion', id: 'm', span: [0, 9.6], bodies: [a, b], clips: { hit: { phases: collision(a, b, { type: 'bounce', restitution: 0.5, after: 0.5 }) } } };
+    const end = motionAt(el, [['hit', 5]]);
+    expect(end.bodies.a.v).toBeCloseTo(1.5, 9);
+    expect(end.bodies.b.v).toBeCloseTo(4, 9);
+  });
+
+  it('follows a force that changes with time, and keeps its force-time graph', () => {
+    // The net force on a 15 kg cart rises to 30 N in 2 s and falls to zero 4 s later: an impulse of 90 N·s.
+    const el: MotionEl = {
+      kind: 'motion',
+      id: 'm',
+      span: [0, 26],
+      bodies: [{ id: 'c', shape: 'cart', mass: 15, x: 2 }],
+      graph: { of: ['c'], y: 'impulse', seconds: 7, max: 40 },
+      clips: { go: { phases: [{ dur: 2, forces: [{ on: 'c', name: 'Push', n: 0, to: 30 }] }, { dur: 4, forces: [{ on: 'c', name: 'Push', n: 30, to: 0 }] }] } },
+    };
+    expect(checkMotion(el)).toEqual([]);
+    const peak = motionAt(el, [['go', 2]]);
+    expect(peak.bodies.c.v).toBeCloseTo(2, 9);
+    expect(peak.forces[0].n).toBeCloseTo(30, 9);
+    const end = motionAt(el, [['go', 6]]);
+    expect(end.bodies.c.v).toBeCloseTo(6, 9);
+    expect(end.bodies.c.x).toBeCloseTo(22, 1);
+    const area = end.push.c.reduce((n, [t, f], i, pts) => (i ? n + ((f + pts[i - 1][1]) / 2) * (t - pts[i - 1][0]) : 0), 0);
+    expect(area).toBeCloseTo(90, 6);
+    expect(motionAt(el).push.c).toEqual([]);
+    const rubbing: MotionEl = { ...el, clips: { go: { phases: [{ dur: 1, forces: [{ on: 'c', name: 'Friction', n: -2, to: 0, resist: true }] }] } } };
+    expect(checkMotion(rubbing)[0]).toMatch(/changes with time/);
+    expect(checkMotion({ ...el, graph: { of: ['c', 'c'], y: 'impulse', seconds: 7, max: 40 } })[0]).toMatch(/one body/);
+  });
+
   it('finds where a body turns round under a steady force', () => {
     // Thrown to the right at 4 m/s against a 2 N force on 1 kg: it stops after 2 s, 4 m on, and comes back.
     const thrown = el({ bodies: [{ ...cart, v: 4 }], clips: { go: { phases: [{ dur: 3, forces: [{ on: 'c', name: 'Pull', n: -2 }] }] } } });

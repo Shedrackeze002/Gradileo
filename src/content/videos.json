@@ -125600,5 +125600,1544 @@
         "working": "The source is moving away, so the frequency heard is lower, and we add underneath: $f_{\\text{heard}} = f \\times \\dfrac{v}{v + v_s} = 800 \\times \\dfrac{340}{340 + 20} = 800 \\times 0.9444 = 755.6\\ \\text{Hz}$."
       }
     ]
+  },
+  "p30-1-1": {
+    "lessonId": "p30-1-1",
+    "title": "Momentum",
+    "duration": 356,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "What momentum is",
+        "t": 23.603
+      },
+      {
+        "title": "Mass matters",
+        "t": 58.269
+      },
+      {
+        "title": "Momentum has a direction",
+        "t": 87.252
+      },
+      {
+        "title": "Change in momentum",
+        "t": 142.339
+      },
+      {
+        "title": "A rebound",
+        "t": 186.778
+      },
+      {
+        "title": "Bounce or stick",
+        "t": 241.281
+      },
+      {
+        "title": "Your turn",
+        "t": 278.514
+      },
+      {
+        "title": "Summary",
+        "t": 323.066
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-1:q",
+        "t": 297.139,
+        "prompt": "A 0.2 kg ball moving to the right at 10 m/s hits a wall and bounces straight back at 8 m/s. Take right as positive. What is the change in its momentum?",
+        "choices": [
+          "$-0.4\\ \\text{kg·m/s}$",
+          "$+0.4\\ \\text{kg·m/s}$",
+          "$-3.6\\ \\text{kg·m/s}$",
+          "$+3.6\\ \\text{kg·m/s}$"
+        ],
+        "answer": 2,
+        "working": "$u = +10$ and $v = -8$, so $\\Delta p = 0.2 \\times (-8 - 10) = -3.6\\ \\text{kg·m/s}$."
+      }
+    ]
+  },
+  "p30-1-2": {
+    "lessonId": "p30-1-2",
+    "title": "Impulse",
+    "duration": 348,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A force changes momentum",
+        "t": 20.599
+      },
+      {
+        "title": "Force and time",
+        "t": 76.971
+      },
+      {
+        "title": "Finding the force",
+        "t": 122.205
+      },
+      {
+        "title": "Making a stop safer",
+        "t": 172.668
+      },
+      {
+        "title": "An airbag",
+        "t": 218.561
+      },
+      {
+        "title": "Your turn",
+        "t": 279.171
+      },
+      {
+        "title": "Summary",
+        "t": 320.003
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-2:q",
+        "t": 294.381,
+        "prompt": "A 1200 kg car moving at 25 m/s brakes with a steady net force of 6000 N. How long does it take to stop?",
+        "choices": [
+          "$0.2\\ \\text{s}$",
+          "$2.5\\ \\text{s}$",
+          "$4\\ \\text{s}$",
+          "$5\\ \\text{s}$"
+        ],
+        "answer": 3,
+        "working": "$\\Delta p = 1200 \\times 25 = 30\\,000\\ \\text{kg·m/s}$, so $\\Delta t = \\dfrac{\\Delta p}{F} = \\dfrac{30\\,000}{6000} = 5\\ \\text{s}$."
+      }
+    ]
+  },
+  "p30-1-2-b": {
+    "lessonId": "p30-1-2",
+    "title": "Force-Time Graphs",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A steady force",
+        "t": 21.465
+      },
+      {
+        "title": "A force that changes",
+        "t": 55.616
+      },
+      {
+        "title": "A racket and a ball",
+        "t": 101.524
+      },
+      {
+        "title": "The average force",
+        "t": 162.729
+      },
+      {
+        "title": "Peak or area",
+        "t": 189.976
+      },
+      {
+        "title": "Your turn",
+        "t": 233.404
+      },
+      {
+        "title": "Summary",
+        "t": 278.565
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-2-b:q",
+        "t": 252.486,
+        "prompt": "The net force on a 4 kg cart at rest rises steadily from 0 to 40 N in 0.5 s, then falls steadily back to 0 in the next 0.5 s. How fast is the cart moving at the end?",
+        "choices": [
+          "$5\\ \\text{m/s}$",
+          "$10\\ \\text{m/s}$",
+          "$20\\ \\text{m/s}$",
+          "$40\\ \\text{m/s}$"
+        ],
+        "answer": 0,
+        "working": "The graph is a triangle: area $= \\tfrac{1}{2} \\times 1 \\times 40 = 20\\ \\text{N·s}$, so $v = \\dfrac{20}{4} = 5\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p30-1-3": {
+    "lessonId": "p30-1-3",
+    "title": "Conservation of Momentum",
+    "duration": 363,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A collision",
+        "t": 20.603
+      },
+      {
+        "title": "Why the total stays the same",
+        "t": 66.792
+      },
+      {
+        "title": "Solving a collision",
+        "t": 118.318
+      },
+      {
+        "title": "A head-on collision",
+        "t": 156.952
+      },
+      {
+        "title": "A bounce",
+        "t": 227.89
+      },
+      {
+        "title": "Your turn",
+        "t": 279.043
+      },
+      {
+        "title": "Check it",
+        "t": 316.614
+      },
+      {
+        "title": "Summary",
+        "t": 335.617
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-3:q",
+        "t": 293.786,
+        "prompt": "A 3 kg cart moving at 4 m/s hits a 1 kg cart that is at rest. The carts lock together. How fast do they move afterwards?",
+        "choices": [
+          "$1\\ \\text{m/s}$",
+          "$3\\ \\text{m/s}$",
+          "$4\\ \\text{m/s}$",
+          "$12\\ \\text{m/s}$"
+        ],
+        "answer": 1,
+        "working": "Before: $3 \\times 4 + 1 \\times 0 = 12\\ \\text{kg·m/s}$. After: $(3 + 1) \\times v = 12$, so $v = 3\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p30-1-3-b": {
+    "lessonId": "p30-1-3",
+    "title": "Recoil and Explosions",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Pushing apart",
+        "t": 18.438
+      },
+      {
+        "title": "The lighter one leaves faster",
+        "t": 79.392
+      },
+      {
+        "title": "Recoil",
+        "t": 119.741
+      },
+      {
+        "title": "An explosion in flight",
+        "t": 177.223
+      },
+      {
+        "title": "Your turn",
+        "t": 235.244
+      },
+      {
+        "title": "Summary",
+        "t": 277.3
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-3-b:q",
+        "t": 251.959,
+        "prompt": "Two skaters stand at rest on smooth ice and push each other apart. The 40 kg skater moves away at 3 m/s. How fast does the 60 kg skater move?",
+        "choices": [
+          "$3\\ \\text{m/s}$",
+          "$4.5\\ \\text{m/s}$",
+          "$2\\ \\text{m/s}$",
+          "$1.2\\ \\text{m/s}$"
+        ],
+        "answer": 2,
+        "working": "The momenta are equal in size: $40 \\times 3 = 120\\ \\text{kg·m/s}$, so $v = \\dfrac{120}{60} = 2\\ \\text{m/s}$, the other way."
+      }
+    ]
+  },
+  "p30-1-4": {
+    "lessonId": "p30-1-4",
+    "title": "Kinetic Energy in Collisions",
+    "duration": 346,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Sticking loses energy",
+        "t": 18.786
+      },
+      {
+        "title": "Three kinds of collision",
+        "t": 74.729
+      },
+      {
+        "title": "The ballistic pendulum",
+        "t": 139.444
+      },
+      {
+        "title": "The swing",
+        "t": 187.1
+      },
+      {
+        "title": "The speed of the bullet",
+        "t": 220.938
+      },
+      {
+        "title": "Your turn",
+        "t": 272.817
+      },
+      {
+        "title": "Summary",
+        "t": 317.77
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-4:q",
+        "t": 287.258,
+        "prompt": "A 1 kg cart moving at 4 m/s hits a 1 kg cart at rest, and the two stick together. How much kinetic energy is lost?",
+        "choices": [
+          "$0\\ \\text{J}$",
+          "$2\\ \\text{J}$",
+          "$8\\ \\text{J}$",
+          "$4\\ \\text{J}$"
+        ],
+        "answer": 3,
+        "working": "Momentum: $1 \\times 4 = 2v$, so $v = 2\\ \\text{m/s}$. Before: $\\tfrac{1}{2} \\times 1 \\times 4^2 = 8\\ \\text{J}$. After: $\\tfrac{1}{2} \\times 2 \\times 2^2 = 4\\ \\text{J}$."
+      }
+    ]
+  },
+  "p30-1-4-b": {
+    "lessonId": "p30-1-4",
+    "title": "Elastic Collisions",
+    "duration": 341,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two laws at once",
+        "t": 19.938
+      },
+      {
+        "title": "The two formulas",
+        "t": 76.128
+      },
+      {
+        "title": "Three cases",
+        "t": 131.631
+      },
+      {
+        "title": "Approach and separation",
+        "t": 177.017
+      },
+      {
+        "title": "When the formulas fail",
+        "t": 228.7
+      },
+      {
+        "title": "Your turn",
+        "t": 267.004
+      },
+      {
+        "title": "Summary",
+        "t": 312.591
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-4-b:q",
+        "t": 284.156,
+        "prompt": "A 1 kg cart moving at 6 m/s makes an elastic head-on collision with a 2 kg cart at rest. What is the velocity of the 2 kg cart just afterwards?",
+        "choices": [
+          "$4\\ \\text{m/s}$",
+          "$2\\ \\text{m/s}$",
+          "$6\\ \\text{m/s}$",
+          "$3\\ \\text{m/s}$"
+        ],
+        "answer": 0,
+        "working": "$v_2 = \\dfrac{2m_1}{m_1 + m_2}\\,u = \\dfrac{2 \\times 1}{1 + 2} \\times 6 = 4\\ \\text{m/s}$"
+      }
+    ]
+  },
+  "p30-1-5": {
+    "lessonId": "p30-1-5",
+    "title": "Momentum at Right Angles",
+    "duration": 362,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The components of a momentum",
+        "t": 25.437
+      },
+      {
+        "title": "A crash at a crossroads",
+        "t": 84.137
+      },
+      {
+        "title": "The speed of the wreck",
+        "t": 138.721
+      },
+      {
+        "title": "Working back from the skid marks",
+        "t": 183.086
+      },
+      {
+        "title": "Add them as vectors",
+        "t": 244.928
+      },
+      {
+        "title": "Your turn",
+        "t": 284.086
+      },
+      {
+        "title": "Summary",
+        "t": 328.751
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-5:q",
+        "t": 302.214,
+        "prompt": "A 2 kg puck slides east at 3 m/s, and a 1 kg puck slides north at 8 m/s. They collide and stick together. What is the size of their total momentum?",
+        "choices": [
+          "$14\\ \\text{kg·m/s}$",
+          "$10\\ \\text{kg·m/s}$",
+          "$2\\ \\text{kg·m/s}$",
+          "$48\\ \\text{kg·m/s}$"
+        ],
+        "answer": 1,
+        "working": "East: $2 \\times 3 = 6$. North: $1 \\times 8 = 8$. Total: $\\sqrt{6^2 + 8^2} = 10\\ \\text{kg·m/s}$."
+      }
+    ]
+  },
+  "p30-1-5-b": {
+    "lessonId": "p30-1-5",
+    "title": "Glancing Collisions and Explosions",
+    "duration": 385,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A glancing collision",
+        "t": 22.488
+      },
+      {
+        "title": "The speed of ball B",
+        "t": 107.185
+      },
+      {
+        "title": "Was it elastic?",
+        "t": 150.137
+      },
+      {
+        "title": "An explosion into three pieces",
+        "t": 209.89
+      },
+      {
+        "title": "Balance both directions",
+        "t": 266.967
+      },
+      {
+        "title": "Your turn",
+        "t": 303.319
+      },
+      {
+        "title": "Summary",
+        "t": 350.871
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-1-5-b:q",
+        "t": 323.771,
+        "prompt": "An object at rest explodes into three pieces. One piece has a momentum of 3 kg·m/s east, and another has 4 kg·m/s north. The third piece has a mass of 0.5 kg. What is its speed?",
+        "choices": [
+          "$14\\ \\text{m/s}$",
+          "$2.5\\ \\text{m/s}$",
+          "$10\\ \\text{m/s}$",
+          "$5\\ \\text{m/s}$"
+        ],
+        "answer": 2,
+        "working": "The third piece has 3 kg·m/s west and 4 kg·m/s south: $\\sqrt{3^2 + 4^2} = 5\\ \\text{kg·m/s}$. Speed: $5 \\div 0.5 = 10\\ \\text{m/s}$."
+      }
+    ]
+  },
+  "p30-2-1": {
+    "lessonId": "p30-2-1",
+    "title": "Electric Charge",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of charge",
+        "t": 23.759
+      },
+      {
+        "title": "Where charge comes from",
+        "t": 55.81
+      },
+      {
+        "title": "Only electrons move",
+        "t": 95.718
+      },
+      {
+        "title": "Counting charge",
+        "t": 140.612
+      },
+      {
+        "title": "Conductors and insulators",
+        "t": 202.176
+      },
+      {
+        "title": "Your turn",
+        "t": 236.469
+      },
+      {
+        "title": "Summary",
+        "t": 271.15
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-1:q",
+        "t": 247.929,
+        "prompt": "A plastic comb gains $5.0 \\times 10^{10}$ electrons when it is run through dry hair. What is the charge of the comb? ($e = 1.60 \\times 10^{-19}$ C)",
+        "choices": [
+          "$+8.0\\ \\text{nC}$",
+          "$+3.2\\ \\text{nC}$",
+          "$-3.2\\ \\text{nC}$",
+          "$-8.0\\ \\text{nC}$"
+        ],
+        "answer": 3,
+        "working": "$q = Ne = 5.0 \\times 10^{10} \\times 1.60 \\times 10^{-19} = 8.0 \\times 10^{-9}$ C. The comb gained electrons, so its charge is $-8.0$ nC."
+      }
+    ]
+  },
+  "p30-2-1-b": {
+    "lessonId": "p30-2-1",
+    "title": "Charging Objects",
+    "duration": 255,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Charging by friction",
+        "t": 17.611
+      },
+      {
+        "title": "Charging by contact",
+        "t": 48.866
+      },
+      {
+        "title": "Sharing a charge",
+        "t": 80.133
+      },
+      {
+        "title": "Charging by induction",
+        "t": 112.149
+      },
+      {
+        "title": "The order matters",
+        "t": 156.959
+      },
+      {
+        "title": "Your turn",
+        "t": 181.96
+      },
+      {
+        "title": "Summary",
+        "t": 219.38
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-1-b:q",
+        "t": 198.366,
+        "prompt": "Two identical metal spheres on insulating stands carry charges of −10 nC and +2 nC. They are touched together and moved apart. What is the charge of each sphere?",
+        "choices": [
+          "$-4\\ \\text{nC}$",
+          "$-6\\ \\text{nC}$",
+          "$-8\\ \\text{nC}$",
+          "$+4\\ \\text{nC}$"
+        ],
+        "answer": 0,
+        "working": "Charge is conserved: the total is $(-10) + 2 = -8$ nC. Identical spheres share it equally, so each has $-4$ nC."
+      }
+    ]
+  },
+  "p30-2-2": {
+    "lessonId": "p30-2-2",
+    "title": "Coulomb's Law",
+    "duration": 320,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Coulomb's law",
+        "t": 22.259
+      },
+      {
+        "title": "A worked example",
+        "t": 63.9
+      },
+      {
+        "title": "An inverse square law",
+        "t": 120.52
+      },
+      {
+        "title": "Finding the distance",
+        "t": 156.293
+      },
+      {
+        "title": "Inside a hydrogen atom",
+        "t": 190.44
+      },
+      {
+        "title": "Your turn",
+        "t": 237.161
+      },
+      {
+        "title": "Summary",
+        "t": 282.106
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-2:q",
+        "t": 255.14,
+        "prompt": "Two point charges of +4.0 μC and +2.0 μC are 0.20 m apart. What force does each exert on the other? ($k = 8.99 \\times 10^{9}\\ \\text{N·m}^2/\\text{C}^2$)",
+        "choices": [
+          "0.36 N, a repulsion",
+          "1.8 N, a repulsion",
+          "1.8 N, an attraction",
+          "3.6 N, an attraction"
+        ],
+        "answer": 1,
+        "working": "$F = \\dfrac{8.99 \\times 10^{9} \\times 4.0 \\times 10^{-6} \\times 2.0 \\times 10^{-6}}{0.20^2} = \\dfrac{0.0719}{0.04} = 1.8$ N. Both charges are positive, so they repel."
+      }
+    ]
+  },
+  "p30-2-2-b": {
+    "lessonId": "p30-2-2",
+    "title": "The Net Electric Force",
+    "duration": 289,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Three steps",
+        "t": 18.985
+      },
+      {
+        "title": "Three charges on a line",
+        "t": 47.887
+      },
+      {
+        "title": "Forces at right angles",
+        "t": 130.222
+      },
+      {
+        "title": "Your turn",
+        "t": 206.69
+      },
+      {
+        "title": "Summary",
+        "t": 260.022
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-2-b:q",
+        "t": 235.014,
+        "prompt": "Charge A (+4.0 μC) is 0.30 m west of charge B (+1.0 μC). Charge C (−4.0 μC) is 0.30 m east of B. Each of them exerts a force of 0.40 N on B. What is the net force on B?",
+        "choices": [
+          "0 N",
+          "0.40 N east",
+          "0.80 N east",
+          "0.80 N west"
+        ],
+        "answer": 2,
+        "working": "A is positive, like B, so it pushes B east. C is negative, so it pulls B east as well. $0.40 + 0.40 = 0.80$ N east."
+      }
+    ]
+  },
+  "p30-2-3": {
+    "lessonId": "p30-2-3",
+    "title": "Electric Field Strength",
+    "duration": 276,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A field around a charge",
+        "t": 17.51
+      },
+      {
+        "title": "Measuring a field",
+        "t": 51.472
+      },
+      {
+        "title": "The force on a charge",
+        "t": 96.392
+      },
+      {
+        "title": "The field of a point charge",
+        "t": 140.478
+      },
+      {
+        "title": "Your turn",
+        "t": 192.996
+      },
+      {
+        "title": "Summary",
+        "t": 238.038
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-3:q",
+        "t": 209.576,
+        "prompt": "A test charge of +3.0 μC feels a force of 0.060 N towards the north at a point in an electric field. What is the electric field at that point?",
+        "choices": [
+          "$1.8 \\times 10^{-7}$ N/C, north",
+          "$5.0 \\times 10^{-5}$ N/C, north",
+          "$2.0 \\times 10^{4}$ N/C, south",
+          "$2.0 \\times 10^{4}$ N/C, north"
+        ],
+        "answer": 3,
+        "working": "$E = \\dfrac{F}{q} = \\dfrac{0.060}{3.0 \\times 10^{-6}} = 2.0 \\times 10^{4}$ N/C. The test charge is positive, so the field points the way the force does: north."
+      }
+    ]
+  },
+  "p30-2-3-b": {
+    "lessonId": "p30-2-3",
+    "title": "Field Lines and Adding Fields",
+    "duration": 291,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Field lines",
+        "t": 13.783
+      },
+      {
+        "title": "Two charges",
+        "t": 45.675
+      },
+      {
+        "title": "A uniform field",
+        "t": 77.839
+      },
+      {
+        "title": "Adding fields",
+        "t": 101.769
+      },
+      {
+        "title": "Where the field is zero",
+        "t": 160.447
+      },
+      {
+        "title": "Your turn",
+        "t": 207.4
+      },
+      {
+        "title": "Summary",
+        "t": 255.794
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-3-b:q",
+        "t": 228.153,
+        "prompt": "At a point P, the field of charge A is $3.0 \\times 10^{5}$ N/C towards the east, and the field of charge B is $5.0 \\times 10^{5}$ N/C towards the west. What is the net electric field at P?",
+        "choices": [
+          "$2.0 \\times 10^{5}$ N/C, west",
+          "$2.0 \\times 10^{5}$ N/C, east",
+          "$8.0 \\times 10^{5}$ N/C, west",
+          "$8.0 \\times 10^{5}$ N/C, east"
+        ],
+        "answer": 0,
+        "working": "The fields point opposite ways, so subtract: $5.0 \\times 10^{5} - 3.0 \\times 10^{5} = 2.0 \\times 10^{5}$ N/C, in the direction of the larger one, west."
+      }
+    ]
+  },
+  "p30-2-4": {
+    "lessonId": "p30-2-4",
+    "title": "Potential Difference",
+    "duration": 312,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Stored energy",
+        "t": 15.027
+      },
+      {
+        "title": "Potential difference",
+        "t": 52.966
+      },
+      {
+        "title": "Which way charges fall",
+        "t": 106.308
+      },
+      {
+        "title": "Signs",
+        "t": 140.627
+      },
+      {
+        "title": "The electronvolt",
+        "t": 191.303
+      },
+      {
+        "title": "Your turn",
+        "t": 243.118
+      },
+      {
+        "title": "Summary",
+        "t": 272.21
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-4:q",
+        "t": 254.01,
+        "prompt": "How much energy does a 12 V battery give to 30 C of charge that passes through it?",
+        "choices": [
+          "0.40 J",
+          "360 J",
+          "2.5 J",
+          "42 J"
+        ],
+        "answer": 1,
+        "working": "$\\Delta E = q\\,\\Delta V = 30 \\times 12 = 360$ J."
+      }
+    ]
+  },
+  "p30-2-4-b": {
+    "lessonId": "p30-2-4",
+    "title": "The Field Between Parallel Plates",
+    "duration": 242,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A uniform field",
+        "t": 14.269
+      },
+      {
+        "title": "Volts per metre",
+        "t": 52.915
+      },
+      {
+        "title": "Closer plates",
+        "t": 108.234
+      },
+      {
+        "title": "Equal steps",
+        "t": 135.002
+      },
+      {
+        "title": "Your turn",
+        "t": 171.987
+      },
+      {
+        "title": "Summary",
+        "t": 209.823
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-4-b:q",
+        "t": 187.324,
+        "prompt": "Two parallel plates are 2.0 cm apart, with a potential difference of 500 V between them. What is the electric field between the plates?",
+        "choices": [
+          "10 V/m",
+          "250 V/m",
+          "25 000 V/m",
+          "1000 V/m"
+        ],
+        "answer": 2,
+        "working": "Change to metres: $d = 0.020$ m. $E = \\dfrac{\\Delta V}{d} = \\dfrac{500}{0.020} = 25\\,000$ V/m."
+      }
+    ]
+  },
+  "p30-2-5": {
+    "lessonId": "p30-2-5",
+    "title": "Charges Moving in a Uniform Field",
+    "duration": 306,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Constant acceleration",
+        "t": 24.827
+      },
+      {
+        "title": "Speed from a potential difference",
+        "t": 71.17
+      },
+      {
+        "title": "The gap does not matter",
+        "t": 107.756
+      },
+      {
+        "title": "Across the field",
+        "t": 141.826
+      },
+      {
+        "title": "The deflection",
+        "t": 178.491
+      },
+      {
+        "title": "Your turn",
+        "t": 222.226
+      },
+      {
+        "title": "Summary",
+        "t": 271.893
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-5:q",
+        "t": 245.182,
+        "prompt": "An alpha particle has a charge of $3.2 \\times 10^{-19}$ C and a mass of $6.6 \\times 10^{-27}$ kg. What is its acceleration in a uniform field of 3300 N/C?",
+        "choices": [
+          "$1.1 \\times 10^{-15}$ m/s²",
+          "$6.3 \\times 10^{-12}$ m/s²",
+          "$4.8 \\times 10^{7}$ m/s²",
+          "$1.6 \\times 10^{11}$ m/s²"
+        ],
+        "answer": 3,
+        "working": "$a = \\dfrac{qE}{m} = \\dfrac{3.2 \\times 10^{-19} \\times 3300}{6.6 \\times 10^{-27}} = 1.6 \\times 10^{11}$ m/s²."
+      }
+    ]
+  },
+  "p30-2-5-b": {
+    "lessonId": "p30-2-5",
+    "title": "Millikan's Oil Drops",
+    "duration": 227,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A drop between two plates",
+        "t": 13.892
+      },
+      {
+        "title": "Balance",
+        "t": 49.521
+      },
+      {
+        "title": "The charge of a drop",
+        "t": 82.218
+      },
+      {
+        "title": "Charge comes in steps",
+        "t": 119.303
+      },
+      {
+        "title": "Your turn",
+        "t": 166.109
+      },
+      {
+        "title": "Summary",
+        "t": 200.815
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-5-b:q",
+        "t": 179.156,
+        "prompt": "An oil drop has a charge of $6.4 \\times 10^{-19}$ C. How many excess electrons does it carry?",
+        "choices": [
+          "4",
+          "6",
+          "10",
+          "64"
+        ],
+        "answer": 0,
+        "working": "Divide by the elementary charge: $\\dfrac{6.4 \\times 10^{-19}}{1.60 \\times 10^{-19}} = 4.0$, so the drop carries 4 excess electrons."
+      }
+    ]
+  },
+  "p30-2-6": {
+    "lessonId": "p30-2-6",
+    "title": "Combined Circuits",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A parallel pair",
+        "t": 15.382
+      },
+      {
+        "title": "A circuit with both",
+        "t": 60.82
+      },
+      {
+        "title": "Inside the pair",
+        "t": 99.167
+      },
+      {
+        "title": "Power",
+        "t": 150.618
+      },
+      {
+        "title": "Your turn",
+        "t": 186.502
+      },
+      {
+        "title": "Summary",
+        "t": 224.852
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-6:q",
+        "t": 201.502,
+        "prompt": "A 9 V battery is connected to a 1 Ω resistor in series with a parallel pair of 6 Ω and 3 Ω. What is the current from the battery?",
+        "choices": [
+          "0.90 A",
+          "3.0 A",
+          "4.5 A",
+          "9.0 A"
+        ],
+        "answer": 1,
+        "working": "The pair of 6 Ω and 3 Ω is 2 Ω. In series with 1 Ω: $1 + 2 = 3\\ \\Omega$. So $I = \\dfrac{9}{3} = 3.0$ A."
+      }
+    ]
+  },
+  "p30-2-6-b": {
+    "lessonId": "p30-2-6",
+    "title": "Emf and Internal Resistance",
+    "duration": 315,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Lost volts",
+        "t": 18.718
+      },
+      {
+        "title": "Terminal potential difference",
+        "t": 66.816
+      },
+      {
+        "title": "A larger current",
+        "t": 110.856
+      },
+      {
+        "title": "Finding the internal resistance",
+        "t": 158.295
+      },
+      {
+        "title": "Wasted power",
+        "t": 203.046
+      },
+      {
+        "title": "Your turn",
+        "t": 235.046
+      },
+      {
+        "title": "Summary",
+        "t": 281.446
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-6-b:q",
+        "t": 253.998,
+        "prompt": "A battery has an emf of 6.0 V and an internal resistance of 1.0 Ω. It is connected to a 2.0 Ω resistor. What is the potential difference across its terminals?",
+        "choices": [
+          "2.0 V",
+          "3.0 V",
+          "4.0 V",
+          "6.0 V"
+        ],
+        "answer": 2,
+        "working": "$I = \\dfrac{\\varepsilon}{R + r} = \\dfrac{6.0}{2.0 + 1.0} = 2.0$ A. Lost volts: $Ir = 2.0 \\times 1.0 = 2.0$ V. $V = 6.0 - 2.0 = 4.0$ V."
+      }
+    ]
+  },
+  "p30-2-7": {
+    "lessonId": "p30-2-7",
+    "title": "Magnets and Magnetic Fields",
+    "duration": 268,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two poles",
+        "t": 25.135
+      },
+      {
+        "title": "Poles come in pairs",
+        "t": 52.175
+      },
+      {
+        "title": "The magnetic field",
+        "t": 78.891
+      },
+      {
+        "title": "Why iron is magnetic",
+        "t": 131.3
+      },
+      {
+        "title": "The Earth",
+        "t": 172.134
+      },
+      {
+        "title": "Your turn",
+        "t": 199.945
+      },
+      {
+        "title": "Summary",
+        "t": 234.254
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-7:q",
+        "t": 213.964,
+        "prompt": "A small compass is placed just beyond the north pole of a bar magnet, on the line through both poles. Which way does the north end of its needle point?",
+        "choices": [
+          "Towards the north pole of the magnet",
+          "At right angles to the magnet",
+          "It keeps turning and never settles",
+          "Away from the north pole of the magnet"
+        ],
+        "answer": 3,
+        "working": "The field leaves a north pole, and a compass needle points along the field. So the north end of the needle points away from the north pole of the magnet: like poles repel."
+      }
+    ]
+  },
+  "p30-2-7-b": {
+    "lessonId": "p30-2-7",
+    "title": "The Magnetic Field of a Current",
+    "duration": 307,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A wire and a compass",
+        "t": 20.803
+      },
+      {
+        "title": "The right-hand rule",
+        "t": 57.332
+      },
+      {
+        "title": "How strong is the field?",
+        "t": 98.63
+      },
+      {
+        "title": "The solenoid",
+        "t": 140.004
+      },
+      {
+        "title": "The electromagnet",
+        "t": 200.396
+      },
+      {
+        "title": "Your turn",
+        "t": 230.745
+      },
+      {
+        "title": "Summary",
+        "t": 272.658
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-7-b:q",
+        "t": 245.257,
+        "prompt": "A long straight wire carries a current of 6.0 A. What is the magnetic field strength 3.0 cm from the wire? ($\\mu_0 = 4\\pi \\times 10^{-7}$ T·m/A)",
+        "choices": [
+          "$4.0 \\times 10^{-5}$ T",
+          "$8.0 \\times 10^{-5}$ T",
+          "$2.5 \\times 10^{-4}$ T",
+          "$1.3 \\times 10^{-3}$ T"
+        ],
+        "answer": 0,
+        "working": "Change to metres: $r = 0.030$ m. $B = \\dfrac{\\mu_0 I}{2\\pi r} = \\dfrac{4\\pi \\times 10^{-7} \\times 6.0}{2\\pi \\times 0.030} = 4.0 \\times 10^{-5}$ T."
+      }
+    ]
+  },
+  "p30-2-8": {
+    "lessonId": "p30-2-8",
+    "title": "The Force on a Moving Charge",
+    "duration": 321,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Only a moving charge",
+        "t": 24.715
+      },
+      {
+        "title": "Which way?",
+        "t": 115.419
+      },
+      {
+        "title": "The velocity selector",
+        "t": 166.495
+      },
+      {
+        "title": "Your turn",
+        "t": 231.319
+      },
+      {
+        "title": "Summary",
+        "t": 278.782
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-8:q",
+        "t": 249.78,
+        "prompt": "An electron (charge $1.60 \\times 10^{-19}$ C) moves at $5.0 \\times 10^{6}$ m/s at right angles to a magnetic field of 0.20 T. What is the size of the magnetic force on it?",
+        "choices": [
+          "$6.4 \\times 10^{-27}$ N",
+          "$1.6 \\times 10^{-13}$ N",
+          "$4.0 \\times 10^{-12}$ N",
+          "$1.0 \\times 10^{6}$ N"
+        ],
+        "answer": 1,
+        "working": "$F = qvB = 1.60 \\times 10^{-19} \\times 5.0 \\times 10^{6} \\times 0.20 = 1.6 \\times 10^{-13}$ N."
+      }
+    ]
+  },
+  "p30-2-8-b": {
+    "lessonId": "p30-2-8",
+    "title": "Charges Moving in Circles",
+    "duration": 301,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A circle",
+        "t": 15.594
+      },
+      {
+        "title": "What sets the radius?",
+        "t": 70.569
+      },
+      {
+        "title": "The time for one circle",
+        "t": 112.813
+      },
+      {
+        "title": "The mass spectrometer",
+        "t": 156.048
+      },
+      {
+        "title": "Your turn",
+        "t": 214.476
+      },
+      {
+        "title": "Summary",
+        "t": 263.861
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-8-b:q",
+        "t": 231.689,
+        "prompt": "A proton ($m = 1.67 \\times 10^{-27}$ kg, $q = 1.60 \\times 10^{-19}$ C) moves at $2.0 \\times 10^{6}$ m/s at right angles to a magnetic field of 0.25 T. What is the radius of its path?",
+        "choices": [
+          "1.2 cm",
+          "2.1 cm",
+          "8.4 cm",
+          "33 cm"
+        ],
+        "answer": 2,
+        "working": "$r = \\dfrac{mv}{qB} = \\dfrac{1.67 \\times 10^{-27} \\times 2.0 \\times 10^{6}}{1.60 \\times 10^{-19} \\times 0.25} = 0.084$ m, which is 8.4 cm."
+      }
+    ]
+  },
+  "p30-2-9": {
+    "lessonId": "p30-2-9",
+    "title": "The Force on a Wire",
+    "duration": 370,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The motor effect",
+        "t": 23.847
+      },
+      {
+        "title": "Which way?",
+        "t": 60.726
+      },
+      {
+        "title": "How large?",
+        "t": 107.521
+      },
+      {
+        "title": "A wire that floats",
+        "t": 171.088
+      },
+      {
+        "title": "Measuring a field",
+        "t": 222.912
+      },
+      {
+        "title": "Your turn",
+        "t": 288.937
+      },
+      {
+        "title": "Summary",
+        "t": 330.419
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-9:q",
+        "t": 307.797,
+        "prompt": "A straight wire 0.25 m long carries a current of 3.0 A at right angles to a magnetic field of 0.20 T. What is the size of the force on it?",
+        "choices": [
+          "0.017 N",
+          "2.4 N",
+          "3.75 N",
+          "0.15 N"
+        ],
+        "answer": 3,
+        "working": "$F = BIL = 0.20 \\times 3.0 \\times 0.25 = 0.15$ N."
+      }
+    ]
+  },
+  "p30-2-9-b": {
+    "lessonId": "p30-2-9",
+    "title": "The Electric Motor",
+    "duration": 305,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A coil in a field",
+        "t": 19.8
+      },
+      {
+        "title": "The commutator",
+        "t": 95.366
+      },
+      {
+        "title": "The force on one side",
+        "t": 178.291
+      },
+      {
+        "title": "Your turn",
+        "t": 226.655
+      },
+      {
+        "title": "Summary",
+        "t": 274.735
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-9-b:q",
+        "t": 249.335,
+        "prompt": "The coil of a motor has 50 turns. One side of it, 0.060 m long, lies at right angles to a magnetic field of 0.30 T. What is the force on that side when the current in the coil is 2.0 A?",
+        "choices": [
+          "1.8 N",
+          "0.036 N",
+          "30 N",
+          "500 N"
+        ],
+        "answer": 0,
+        "working": "$F = NBIL = 50 \\times 0.30 \\times 2.0 \\times 0.060 = 1.8$ N."
+      }
+    ]
+  },
+  "p30-2-10": {
+    "lessonId": "p30-2-10",
+    "title": "Electromagnetic Induction",
+    "duration": 310,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A magnet and a coil",
+        "t": 24.422
+      },
+      {
+        "title": "Magnetic flux",
+        "t": 82.27
+      },
+      {
+        "title": "Faraday's law",
+        "t": 147.824
+      },
+      {
+        "title": "Your turn",
+        "t": 225.181
+      },
+      {
+        "title": "Summary",
+        "t": 274.227
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-10:q",
+        "t": 244.921,
+        "prompt": "The magnetic flux through each turn of a 500-turn coil falls steadily from 8.0 mWb to 2.0 mWb in 0.60 s. What is the size of the induced emf?",
+        "choices": [
+          "0.010 V",
+          "5.0 V",
+          "6.7 V",
+          "5000 V"
+        ],
+        "answer": 1,
+        "working": "$\\Delta\\Phi = 6.0$ mWb $= 0.0060$ Wb, so $\\varepsilon = N\\dfrac{\\Delta\\Phi}{\\Delta t} = 500 \\times \\dfrac{0.0060}{0.60} = 5.0$ V."
+      }
+    ]
+  },
+  "p30-2-10-b": {
+    "lessonId": "p30-2-10",
+    "title": "Moving Conductors and Lenz's Law",
+    "duration": 293,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A rod on rails",
+        "t": 25.566
+      },
+      {
+        "title": "Lenz's law",
+        "t": 107.051
+      },
+      {
+        "title": "The force on the rod",
+        "t": 152.966
+      },
+      {
+        "title": "Your turn",
+        "t": 211.868
+      },
+      {
+        "title": "Summary",
+        "t": 260.193
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-10-b:q",
+        "t": 233.554,
+        "prompt": "An aircraft with a wingspan of 40 m flies level at 250 m/s where the vertical part of the Earth's magnetic field is $5.0 \\times 10^{-5}$ T. What emf is induced between its wingtips?",
+        "choices": [
+          "0.0020 V",
+          "0.013 V",
+          "0.50 V",
+          "$2.0 \\times 10^{8}$ V"
+        ],
+        "answer": 2,
+        "working": "The wings cut across the vertical field: $\\varepsilon = BLv = 5.0 \\times 10^{-5} \\times 40 \\times 250 = 0.50$ V."
+      }
+    ]
   }
 }

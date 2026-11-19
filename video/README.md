@@ -149,7 +149,9 @@ See `src/video/script.ts` for every element and option. In short:
   forces appear, to name them before anything moves; `slow: 100` plays a phase in slow motion;
   a force with `resist` is friction (it stops with the body). `collision(a, b, …)` gives the three
   phases of a collision (approach, touch, after) with the equal and opposite forces that change
-  the velocities, so momentum is conserved by the forces, not typed in. Showing the element shows
+  the velocities, so momentum is conserved by the forces, not typed in (`type: 'stick'` or
+  `'bounce'`; `restitution: 0.5` makes a bounce that parts at half the closing speed). Showing
+  the element shows
   the tracks and bodies; its parts add `velocity`, `readout` (acceleration), `net` (net force),
   `strobe`, `clock`, `graph` (velocity against time, drawing itself, or distance against time
   with `graph: { y: 'distance' }`, or the body's position on the ruler with `y: 'position'`; a
@@ -157,6 +159,17 @@ See `src/video/script.ts` for every element and option. In short:
   round), `distance` (how far each body has travelled, with its path
   drawn leg by leg under a single track), `displacement` (an arrow under a single track from where
   the body started to where it is now, with its sign) and `bars` and `total` (momentum). The
+  bars run from zero to `momentumMax`; for a body that moves to the left, `momentumMin` (a number
+  below zero) moves the zero line part way along, and a negative bar grows to its left. A body
+  with `fixed: true` is a wall: a tall hatched slab with no velocity label and no bar (give it a
+  mass of a million kilograms, and a hidden force on the ball for the moment of the bounce). A
+  force with `to` changes steadily through its phase, from `n` to `to` newtons (a force that rises
+  to a peak and falls again takes two phases), and `graph: { y: 'impulse', of: ['cart'], seconds,
+  max, force: 'Push' }` draws the force against time as it acts: the area under the line fills in
+  and the impulse so far is written over it (`ms: true` numbers the time axis in milliseconds,
+  for a collision played with `slow`). That graph and the momentum bars fit together in an
+  element 560 px high. Two bodies with the same label get bars with the same name, so name them
+  A and B when their bars are compared. The
   displacement's label sits beside its arrow, so leave about 300 px of track free on one side.
   `speedWord: true` writes "speed =" beside the velocity arrow, for videos that come before
   velocity is taught. `plain: true` makes a sketch of it, not a measurement: no rulers, forces
@@ -189,6 +202,17 @@ See `src/video/script.ts` for every element and option. In short:
   under a track or a hill and beside a drop, a lift or a pendulum. A bar whose `max` is 100 J or
   more is written in whole joules, and a large one in kilojoules, so choose numbers whose total
   does not sit on a rounding boundary (151.15 kJ flickers between 151.1 and 151.2).
+  For a collision, `system: ['kinetic', 'lost']` adds two bars for the bodies in `of` taken
+  together, which come in with `sim.total`: their total kinetic energy, and how much less that is
+  than at the start (what the collision has turned to heat and sound). Four energy bars under a
+  track with a "Slow motion" note need an element about 490 px high. A small body that goes right
+  inside a larger one listed after it (a bullet into a block, with a `squeeze` deeper than the
+  bullet is wide) is covered by it and loses its labels. `velocityDecimals: 2` writes velocities
+  under 10 m/s to two places (0.99 m/s, where 1.0 would hide the point), and `cm: true` on a
+  pendulum writes the height of its bob in centimetres beside the bob, for a rise too small to draw
+  a line under. To play one collision several ways at once, give each pair its own lane and lay
+  the phases of the collisions over one another (`src/content/phys30/videos/p30-1-4.ts`): the
+  touch times must match, so divide the `squeeze` by (1 + the restitution).
   A force with a `profile` changes as the body moves: its size at distances from where the body
   started, as `[metres, newtons]` points joined by straight lines. The work it does is the area
   under those points, and `graph: { y: 'force', metres: … }` draws the force-displacement graph
@@ -308,6 +332,35 @@ See `src/video/script.ts` for every element and option. In short:
   a body that has landed is at rest. Arrows that point down from a body near the ground need
   room under the picture (`below`). A river has a ruler along its bank when `tick` is given.
 
+  Momentum in two dimensions is a `map` scene of bodies with a `mass`, seen from above. A `puck`
+  is a disc drawn to scale (its `radius`, 0.5 by default), with a name of one or two letters
+  written inside it, and a `car` points the way it is driving; `roads` draws a crossroads at the
+  origin. With `collisions` the bodies collide as smooth discs: each is pushed along the line
+  through the two centres, so a puck aimed off centre is turned aside, the two part at
+  `restitution` times the speed at which they closed (1 by default, which is elastic), and with
+  `stick` they lock together and share one arrow from their centre of mass. A phase's `kick`
+  is an explosion: an impulse in kg·m/s for each piece, and the check refuses impulses that do
+  not add up to zero. Nothing after a collision is typed in, so choose where the first body
+  starts to get the lesson's angles (see `p30-1-5-b.ts`, where ball A is offset by the two radii
+  times the sine of the angle that ball B must leave at). The parts for it are `speed` (the
+  speed at the tip of each velocity arrow, "at rest" over a body that is still; `speedDecimals`
+  sets the places), `bars` and `total` (with `momentum: { max, min }`: a column on the right with
+  a bar for each body's east momentum and north momentum, and for the two totals; give a `min`
+  below zero when anything moves west or south) and `sum` (the total momentum drawn at the centre
+  of mass as a triangle: east in blue, north in orange, the total in yellow; `momentum.scale` is
+  its pixels for each kg·m/s). While `sum` is shown for several bodies their names give way to its
+  numbers. `angle` draws the angle of each velocity from east or west, to `angleDecimals` places,
+  and leaves out a body moving due north or south; show it on a line after the collision. The
+  column of bars takes 42% of the width, so the picture is about 640 px wide: with two bodies the
+  column is 300 px tall and with three it is 390 px, which fits an element of height 440 with two
+  lines of maths under it. Keep the speed labels in mind when choosing the `view` and
+  `velocityScale`: a label sits about 60 px beyond the tip of its arrow, so two bodies that head
+  for the same point need short arrows, and a body that ends near the compass (top right) or the
+  scale note (bottom left) needs the view moved. An angle is drawn only for an arrow longer than
+  60 px. Without `momentum` the picture is centred with no column, and two such pictures go side
+  by side in a split scene with `centreRight: true` (an elastic collision beside an inelastic
+  one). The thumbnail of a view from above is cropped about the collision.
+
 - `ramp` (`src/video/ramp.ts`) is for blocks on a surface, level or tilted: a box pushed across a
   floor with friction, a block on an inclined plane, blocks tied by strings, a block pulled by a
   body that hangs over a pulley (`hanging`), or two hanging bodies (a surface at 90 degrees, which
@@ -372,6 +425,146 @@ See `src/video/script.ts` for every element and option. In short:
   2.4 times as wide as it is tall is drawn under the title on the thumbnail, and a square one
   beside it.
 
+- `charges` (`src/video/charges.ts`) is for electric charge, the electric force and the electric
+  field. Give the
+  `view` (left, right, bottom, top, in metres unless the bodies are drawn large for the eye) and
+  the `bodies`, each with a `charge` in `unit` (`μC` by default; also `C`, `mC`, `nC` and `e`,
+  the elementary charge). Positive is red, negative and every electron blue, an electric force
+  orange and a net force yellow. A body with no `shape` is a point charge with its sign on it,
+  and every force is worked out from Coulomb's law with k = 8.99 × 10⁹ N·m²/C², so the arrows
+  follow as a clip carries a body somewhere else (`to`) or changes its charge (`charge`), and
+  the two arrows of a pair are always the same length. The parts are `charge` (the charge
+  written by each body), `force` (each force on a body, named "from B" when a body with a label
+  has more than one), `net` (their vector sum), `angle` (of the net force, from the east-west
+  line), `distance` (between the first two bodies, or each pair in `spans`) and `velocity`.
+  `pulls` limits which bodies get arrows; `join: true` draws each distance as a dashed line
+  between the two bodies (for charges that are not on one line); `plain: true` is a picture that
+  is not to scale, with r for the distance and no numbers; `decimals` sets how a charge is
+  written, `figures` a distance, `forceFigures` or `forceDecimals` a force, and
+  `notation: 'sci'` writes forces in scientific notation. Bodies with a `mass` move under the
+  forces on them while a phase lets time run (`fly: true`), until they touch.
+  A body with `pairs` shows its charges instead: a `rod`, a `cloth`, a metal `sphere` on an
+  insulating stand, or an `atom` (`pairs` protons in the nucleus and the electrons on shells).
+  Each + mark and each electron dot stands for `mark` units of charge, the + marks never move,
+  and the charge written by a body is counted from the electrons on it, so charge is conserved
+  by construction. A phase moves electrons one after another (`electrons: [{ from: 'fur',
+  to: 'rod', n: 3 }]`, with `'ground'` for the earth), joins a sphere to the ground or cuts the
+  wire (`ground: { ball: true }`), and can show a `note` (the step of a method). The electrons
+  of a metal sphere lean away from a negative body near it, and towards a positive one, by
+  themselves (`sway` sets how easily); those of a rod or a cloth stay where they are. The check
+  follows the electrons through the clips in the order a scene plays them, and refuses a body
+  that gives more than it has, or a sphere that sends electrons to the ground with no wire. A view
+  more than about 2.4 times as wide as it is tall is drawn under the title on the thumbnail; a
+  picture that shows its electrons is drawn there as it is at the end of its `poster` clip, and
+  `thumb` lists the parts to draw there.
+  The electric field is violet (`\brand` in maths). `lines` draws the field lines of the charges
+  in the picture, each followed step by step along the field, so they turn round when a charge
+  changes sign and bend away between like charges (`lines: 16` on the element sets how many the
+  largest charge has). A `test: true` body is a test charge: it feels the others, but they are
+  drawn and worked out as if it were not there, and the field is drawn where it is, with `field`
+  (the field of each charge there, "from A" when several) and `netfield` (their vector sum, or
+  "E = 0"). With `charge: 0` it only marks a point, P. `uniform: { field, angle }` puts a uniform
+  field over the whole picture, and `plates: { at, span, volts }` two parallel plates (upright,
+  or level with `across: 'y'`) with the field ΔV ÷ d in the gap and none outside; `base` is the
+  potential of the second plate, `hole` lets a body through one of them, and a phase can change
+  the `volts` or move the `plates`. With plates, `potential` writes the potential of each plate
+  (and `levels` dashed lines of equal potential between them), `gap` marks the distance d, and
+  `energy` draws two bars for the first body with a mass: the potential energy it can still lose
+  between the plates, and its kinetic energy (in eV when the unit is `e`). Bodies with a mass
+  fly under qE, under their weight when the element has `g`, and from a `v` of their own or a
+  `launch`; `trail` dots the path, `speedFigures` writes the speed by the velocity arrow, and
+  `names: true` names the forces ("Electric force", "Weight") in place of their sizes. `rate` is
+  the seconds of the model for each second of video (about 1e-9 for an electron between plates).
+  A test charge with no charge but a mass and a velocity marks the straight path a charge would
+  have followed with no field. A body that starts on a plate has its centre on the face, and
+  its label moves into the gap. Keep an arrow and its label clear of the far plate: start the
+  body on the near side, or set `forceScale`, `fieldScale` or `velocityScale`.
+  `magnetic: { tesla }` puts a magnetic field through the picture: positive comes out of the
+  page (dots), negative goes into it (crosses), and `region: [left, right, bottom, top]` keeps
+  it to a part of the view (outlined with a dashed line). A body with a mass and a charge that
+  moves across the field feels qvB at right angles to its velocity, which is added to the other
+  forces on it, and while time runs its velocity is turned by exactly qB ÷ m each second, so
+  the path is a circle and the speed never changes. The part `magnetic` draws the field and
+  writes its strength, and `radius` marks the centre of the circle and writes r = mv ÷ qB for
+  each body in `pulls`. A phase can change the field (`tesla`), and `screen: 'bottom'` (or a
+  different side of the region) is a detector: a body that leaves the field through that side
+  stops there, as in a mass spectrometer. With plates round the same region, the picture is a
+  velocity selector. Set `rate` from the period 2πm ÷ qB (a clip that lasts a sixth of a period
+  turns a sixth of a circle). A force under a millionth of the picture's largest is not drawn,
+  so the tiny Coulomb forces between two ions do not clutter the picture.
+
+- `magnets` (`src/video/magnets.ts`) is for magnetism: bar magnets, compasses, pieces of iron and
+  long straight wires seen end-on, in a `view` of [left, right, bottom, top]. Nothing is typed
+  in: the field at every point is worked out from what is in the picture, so each compass needle
+  points the right way and each field line follows the field. A bar (`bars`: `at`, `long`,
+  `thick`, and an `angle` for the way its north pole faces) is two poles, so its lines leave the
+  north pole and curve round to the south pole (`lines: 16` on a bar sets how many). A wire
+  (`wires`) carries `amps` out of the page (a dot) or, when negative, into it (a cross), and has
+  the field μ₀I ÷ 2πr round it by the right-hand rule; give `length: { metres: 0.01, symbol:
+  'cm' }` so the strengths come out in teslas. The lines round wires are closed loops, so they
+  start from `seeds`: one point on each loop that is wanted. Rows of wires make a solenoid, and
+  `uniform: [Bx, By]` adds a uniform field (drawn as straight lines when it is alone, or given a
+  tiny size to stand for the Earth's field, which turns the compasses until a current is
+  switched on). `iron` is a block drawn with its domains: arrows that point every way until a
+  phase raises its `order` to 1 and they turn to the field. `earth` draws the Earth round the
+  first bar, with the geographic poles named. The parts are `lines`, `compass`, `field` (an arrow
+  along the field at each of the `probes`, with "B = … T" when the picture has no bar magnet),
+  `distance` (from the first wire to each probe) and `force` (the push or pull between bar
+  magnets, and F = BIL on each wire, in newtons when the wire has `metres` in the field and in
+  newtons for each metre otherwise). A phase can carry anything to a new place (`to`), `turn` a
+  bar, change the `amps` of a wire or set the `order` of a piece of iron. A wire's label is its
+  current; `label: ''` leaves it bare, which a solenoid needs. Keep the seeds of a solenoid
+  inside its turns and away from the wires, where a line would wobble. `poster` names the clip
+  whose end the thumbnail shows, and `thumb` the parts drawn on it. North is red, south blue,
+  the field violet (`\brand`), a current yellow and a force orange.
+  For the force on a wire and the motor, `yoke: { faces, span }` draws the two poles of the
+  magnet that makes the uniform field, seen from one end (a north pole face at one x and a south
+  pole face at the other; `base` joins them under the gap into a U), and the field is then only
+  in the gap between them. A wire with a `mass` (and its `metres` in the field) moves under
+  F = BIL while a clip plays, at `rate` seconds of the model for each second of video; with `g`
+  on the element it also has a weight (part `weight`), and `rests: true` puts it on supports it
+  cannot fall through, so it floats when BIL = mg and rises with more current. A wire that
+  leaves the gap coasts, and stops at the edge of the picture. `balance: { grams }` stands the
+  magnet on a balance, whose reading rises by F ÷ g when the field pushes a fixed wire up
+  (Newton's third law). `coil` is the coil of a motor seen along its axle: two sides a `radius`
+  from the axle that carry `amps` opposite ways, each pushed with NBIL (`turns`, `metres`), and
+  turned about the axle by those forces against its `inertia` and `friction`. With fixed wires
+  it swings to the place where its plane is at right angles to the field, rocks and stops;
+  `commutator: true` draws the split ring and the brushes and reverses the current every half
+  turn, so it keeps turning, and a phase that reverses its `amps` turns it the other way. The
+  coil moves only while a clip plays, and the next line waits for a clip to end, so give each
+  line a clip a little longer than the line and the coil never stops between lines. Keep a
+  wire between two field lines (they are spread evenly over the `span`), and give it
+  `labelAt: 'right'`, so that its label and its force arrow stay clear.
+
+  For induction, `pickup: { id, at, long, radius }` is a coil seen from the side, joined to a
+  meter whose needle rests in the middle. Put a bar magnet on its axis and carry it in and out
+  with a clip: the flux of the magnet through the turns is worked out from its poles, and the
+  needle swings with the rate at which that flux changes, one way as the magnet goes in and the
+  other way as it comes out, and further for a faster push (the fastest change in any clip
+  swings it right across). The magnet goes inside the coil, behind the near half of each turn.
+  Three parts go with it: `current` (which way the induced current goes round the turns),
+  `poles` (the poles that current gives the two ends of the coil) and `force` (the push of the
+  coil on the magnet, always against its motion: Lenz's law). `posterAt` catches the poster
+  clip part way through for the thumbnail, while the needle is swung over.
+
+- `induction` (`src/video/induction.ts`) is a circuit in a magnetic field that points through
+  the page, seen face on: `tesla` is the field (negative goes into the page, drawn as crosses;
+  positive comes out, drawn as dots; `region` keeps it to part of the picture). Give it a
+  `loop` (a rectangle of wire with `turns`, joined to a meter that reads the emf) or `rails`
+  (two level rails joined at the left by a resistor of `ohms`, with a `rod` that slides along
+  them). The flux Φ = BA, the emf N ΔΦ ÷ Δt, the current ε ÷ R and the force F = BIL on the rod
+  are all worked out, so nothing is typed in. Parts: `field`, `flux` (the area the field passes
+  through, shaded, and the flux in webers, or milliwebers with `milli`), `emf`, `current`
+  (arrowheads that go round the circuit the way the current does), `velocity`, `force` and
+  `charge` (the ends of the rod its charges are pushed to). A phase changes the field
+  (`tesla`) or the speed of the rod (`speed`) at a steady rate, so a field that rises steadily
+  gives a steady emf, and `free: true` lets go of a rod that has a `mass`, which then slows
+  down under the force on it. `rate` is the seconds of the model for each second of video. A
+  clip with `reset: true` starts from the first picture again, so the rod can cross once in
+  each line of narration. The meter of a coil shows the sign of the emf (positive drives a
+  current anticlockwise). Leave room to the right of a coil for its meter (about 200 pixels).
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as
@@ -414,7 +607,13 @@ See `src/video/script.ts` for every element and option. In short:
   (the direction of conventional current; with `carriers: 'electrons'` the charges are electrons
   drifting the other way), `current` (ammeters and their readings), `voltage` (in a loop, a
   voltmeter across each component), `power`, `charge` (a counter of the charge passed, for
-  Q = It), `transferred` (a counter of the energy transferred, for E = Pt) and `clock`. To compare
+  Q = It), `transferred` (a counter of the energy transferred, for E = Pt) and `clock`. A
+  parallel circuit can have one more component in series with all its branches (`lead`), on the
+  wire from the battery to the first junction, for a circuit that mixes the two. `internal` gives
+  the battery an internal resistance, drawn inside a dashed case with its name (`internalLabel`
+  writes "r = ?" instead); `volts` is then the emf, and the parts `terminal` (a voltmeter across
+  the terminals) and `lost` (the lost volts) can be shown. Give such a circuit a `height` of 420
+  or more, in a scene's main column. To compare
   two circuits, put one on each side of a `split` scene with `leftWidth: 544`. Charge and
   current are yellow, electrons blue, voltage pink and power orange.
 

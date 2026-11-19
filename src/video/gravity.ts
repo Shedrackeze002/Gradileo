@@ -57,11 +57,13 @@ export const fieldStrength = (mass: number, r: number, G = BIG_G) => (G * mass) 
 
 /**
  * A number as it is written beside an arrow: plain ("144", "2.45", "1226.3") or, when it is very
- * large or very small, in scientific notation, as a mantissa and a power of ten ("6.53", 3).
+ * large or very small, in scientific notation, as a mantissa and a power of ten ("6.53", 3). With
+ * `keep`, a plain number keeps every significant figure asked for ("1.50", "0.30").
  */
-export function written(n: number, figures = 3, scientific = false): { text: string; power: number | null } {
+export function written(n: number, figures = 3, scientific = false, keep = false): { text: string; power: number | null } {
   const size = Math.abs(n);
   if (size === 0) return { text: '0', power: null };
+  if (keep && !scientific && size >= 0.01 && Number(size.toPrecision(figures)) < 10 ** figures) return { text: n.toPrecision(figures), power: null };
   if (!scientific && size >= 0.01 && size < 1e5) return { text: size >= 99.95 ? n.toFixed(1).replace(/\.0$/, '') : String(Number(n.toPrecision(figures))), power: null };
   let power = Math.floor(Math.log10(size));
   let mantissa = n / 10 ** power;

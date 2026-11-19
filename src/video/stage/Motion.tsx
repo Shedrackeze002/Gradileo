@@ -8,8 +8,8 @@ import type { ReactElement } from 'react';
 import type { MotionBody, MotionEl } from '../script.ts';
 import { amplitudeOf, displacementOf, motionAt, netForce, oscillations, SPRING, widthOf, type MotionState } from '../motion.ts';
 import { easeOut, ownPart, type ElState } from '../timeline.ts';
-import { Count, labelCase, offset, offsetStep, Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, Text, VELOCITY } from './motionKit.tsx';
-import { ForceGraph } from './ForceGraph.tsx';
+import { Count, labelCase, offset, offsetStep, Arrow, BODY_TONES, clamp01, Clock, ENERGY_ROW, EnergyBars, energyRows, FONT, INK2, live, NET, short, speedText, Text, VELOCITY } from './motionKit.tsx';
+import { ForceGraph, niceStep } from './ForceGraph.tsx';
 import { PathView } from './MotionPath.tsx';
 import { TONES } from './tex.ts';
 import { INK, INK3 } from './Triangle.tsx';
@@ -46,24 +46,33 @@ interface Box {
 /** A cart's bumper at each end, in metres: it squeezes when carts touch. */
 const BUMPER = 0.12;
 
-/** A graph against time that draws itself as the bodies move: their velocity, the distance travelled, or their position on the track. */
+/** The area between a line of [x, y] points and the x axis. */
+const areaOf = (pts: Array<[number, number]>) => pts.reduce((n, [x, y], i) => (i ? n + ((y + pts[i - 1][1]) / 2) * (x - pts[i - 1][0]) : 0), 0);
+
+/**
+ * A graph against time that draws itself as the bodies move: their velocity, the distance travelled, or their position on the track.
+ * With `y: 'impulse'` it is the force on one body against time: the area under it is the impulse so far, written over the graph.
+ */
 function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionState; opacity: number; box: [gx0: number, gy0: number, gx1: number, gy1: number]; tone: (b: MotionBody) => string }) {
   if (!el.graph) return null;
   const [gx0, gy0, gx1, gy1] = box;
   const what = el.graph.y ?? 'velocity';
-  const far = what !== 'velocity';
+  const push = what === 'impulse';
+  const far = what !== 'velocity' && !push;
   const swing = what === 'displacement';
   const unit = swing && el.cm ? 100 : 1;
   const series: MotionState['trace'] =
-    what === 'distance' ? state.path : what === 'position' ? state.place : swing ? Object.fromEntries(Object.entries(state.place).map(([id, pts]) => [id, pts.map(([t, x]): [number, number] => [t, displacementOf(el, x) * unit])])) : state.trace;
+    push ? Object.fromEntries(el.graph.of.map((id) => [id, state.push[id]?.length ? state.push[id] : [[0, 0] as [number, number]]])) : what === 'distance' ? state.path : what === 'position' ? state.place : swing ? Object.fromEntries(Object.entries(state.place).map(([id, pts]) => [id, pts.map(([t, x]): [number, number] => [t, displacementOf(el, x) * unit])])) : state.trace;
   const { seconds, max } = el.graph;
   const min = Math.min(0, el.graph.min ?? 0);
   const gx = (t: number) => gx0 + (Math.min(t, seconds) / seconds) * (gx1 - gx0);
   const gy = (v: number) => gy1 - ((Math.max(min, Math.min(v, max)) - min) / (max - min)) * (gy1 - gy0);
   const range = max - min;
   // A displacement may be a few hundredths of a metre, and an oscillation takes a second or less.
-  const vStep = swing ? ([0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20].find((n) => range / n <= 6) ?? 50) : far || range > 12 ? axisStep(range) : range > 6 ? 2 : 1;
-  const tStep = seconds > 12 ? axisStep(seconds) : swing && seconds <= 1.5 ? 0.25 : swing && seconds <= 4 ? 0.5 : 1;
+  const vStep = push ? niceStep(range) : swing ? ([0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20].find((n) => range / n <= 6) ?? 50) : far || range > 12 ? axisStep(range) : range > 6 ? 2 : 1;
+  // A collision's time axis is numbered in milliseconds.
+  const ms = el.graph.ms ? 1000 : 1;
+  const tStep = el.graph.ms ? niceStep(seconds * 1000) / 1000 : seconds > 12 ? axisStep(seconds) : swing && seconds <= 1.5 ? 0.25 : swing && seconds <= 4 ? 0.5 : 1;
   const values: number[] = [];
   for (let v = Math.ceil(min / vStep - 1e-9) * vStep; v <= max + 1e-9; v += vStep) values.push(Math.round(v * 1e6) / 1e6 + 0);
   return (
@@ -77,11 +86,11 @@ function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionS
           </text>
         </g>
       ))}
-      {Array.from({ length: Math.floor(seconds / tStep + 1e-9) + 1 }, (_, i) => Math.round(i * tStep * 100) / 100).map((t) => (
+      {Array.from({ length: Math.floor(seconds / tStep + 1e-9) + 1 }, (_, i) => Math.round(i * tStep * 1e5) / 1e5).map((t) => (
         <g key={`gt${t}`}>
           <line x1={gx(t)} y1={gy1} x2={gx(t)} y2={gy1 + 6} stroke={INK3} strokeWidth={1.5} />
           <text x={gx(t)} y={gy1 + 20} fill={INK3} fontSize={15} textAnchor="middle" style={{ fontFamily: FONT }}>
-            {t}
+            {Math.round(t * ms * 100) / 100}
           </text>
         </g>
       ))}
@@ -89,22 +98,27 @@ function Graph({ el, state, opacity, box, tone }: { el: MotionEl; state: MotionS
       {/* The time axis is the line of zero; its numbers stay along the bottom of the graph. */}
       <line x1={gx0} y1={gy(0)} x2={gx1 + 8} y2={gy(0)} stroke={INK2} strokeWidth={2} />
       {min < 0 && <line x1={gx0} y1={gy1} x2={gx1} y2={gy1} stroke={INK3} strokeWidth={1} opacity={0.28} />}
-      <text x={gx0 - 46} y={(gy0 + gy1) / 2} fill={far ? INK : VELOCITY} fontSize={16} fontWeight={600} textAnchor="middle" transform={`rotate(-90 ${gx0 - 46} ${(gy0 + gy1) / 2})`} style={{ fontFamily: FONT }}>
-        {what === 'distance' ? 'distance (m)' : what === 'position' ? 'position (m)' : swing ? `displacement (${el.cm ? 'cm' : 'm'})` : el.speedWord ? 'speed (m/s)' : 'velocity (m/s)'}
+      <text x={gx0 - 46} y={(gy0 + gy1) / 2} fill={push ? TONES.opp : far ? INK : VELOCITY} fontSize={16} fontWeight={600} textAnchor="middle" transform={`rotate(-90 ${gx0 - 46} ${(gy0 + gy1) / 2})`} style={{ fontFamily: FONT }}>
+        {push ? 'force (N)' : what === 'distance' ? 'distance (m)' : what === 'position' ? 'position (m)' : swing ? `displacement (${el.cm ? 'cm' : 'm'})` : el.speedWord ? 'speed (m/s)' : 'velocity (m/s)'}
       </text>
       <text x={(gx0 + gx1) / 2} y={gy1 + 40} fill={INK2} fontSize={16} fontWeight={600} textAnchor="middle" style={{ fontFamily: FONT }}>
-        time (s)
+        {el.graph.ms ? 'time (ms)' : 'time (s)'}
       </text>
       {el.graph.of.map((id) => {
         const b = el.bodies.find((q) => q.id === id)!;
         const pts = series[id];
         const last = pts[pts.length - 1];
-        const c = el.graph!.of.length > 1 ? tone(b) : far ? TONES.theta : VELOCITY;
+        const c = push ? TONES.opp : el.graph!.of.length > 1 ? tone(b) : far ? TONES.theta : VELOCITY;
         return (
           <g key={id}>
-            {!far && <polygon points={`${gx(0)},${gy(0)} ${pts.map(([t, v]) => `${gx(t)},${gy(v)}`).join(' ')} ${gx(last[0])},${gy(0)}`} fill={c} opacity={0.12} />}
+            {!far && <polygon points={`${gx(pts[0][0])},${gy(0)} ${pts.map(([t, v]) => `${gx(t)},${gy(v)}`).join(' ')} ${gx(last[0])},${gy(0)}`} fill={c} opacity={push ? 0.32 : 0.12} />}
             <polyline points={pts.map(([t, v]) => `${gx(t)},${gy(v)}`).join(' ')} fill="none" stroke={c} strokeWidth={4} strokeLinejoin="round" strokeLinecap="round" style={{ filter: `drop-shadow(0 0 6px ${c}88)` }} />
             <circle cx={gx(last[0])} cy={gy(last[1])} r={7} fill={c} stroke="#0d0c24" strokeWidth={2} />
+            {push && (
+              <text x={gx1} y={gy0 - 8} fill={INK} fontSize={19} fontWeight={700} textAnchor="end" style={{ fontFamily: FONT }}>
+                {`${el.graph!.area ?? 'Impulse'} = area = ${areaOf(pts).toFixed(1).replace('-', '−')} N·s`}
+              </text>
+            )}
           </g>
         );
       })}
@@ -453,7 +467,8 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   const vs = el.velocityScale ?? 24;
 
   // The bars keep their room from the start, so the tracks do not jump when they appear.
-  const barRows = el.momentumMax ? el.bodies.length + (el.momentumTotal === false ? 0 : 1) : 0;
+  const barBodies = el.bodies.filter((b) => !b.fixed);
+  const barRows = el.momentumMax ? barBodies.length + (el.momentumTotal === false ? 0 : 1) : 0;
   const ROW = 44;
   const barsH = barRows ? barRows * ROW + 50 : energyRows(el) ? energyRows(el) * ENERGY_ROW + 24 : 0;
   const top = 40;
@@ -486,7 +501,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const g = ground(b.lane ?? 0);
     const half = (widthOf(b) * S) / 2;
     const cx = X(x);
-    const height = b.shape === 'block' ? BLOCK_H : b.shape === 'cart' ? CART_H + WHEEL + 4 : half * 2;
+    const height = b.fixed ? BLOCK_H * 1.3 : b.shape === 'block' ? BLOCK_H : b.shape === 'cart' ? CART_H + WHEEL + 4 : half * 2;
     return { left: cx - half, right: cx + half, top: g - height, cx, mid: g - height / 2 };
   };
 
@@ -626,7 +641,24 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const f = st?.focus[b.id] ?? 0;
     const glow = f > 0 ? { filter: `drop-shadow(0 0 ${16 * f}px ${c})` } : undefined;
     const label = b.label ?? `${short(b.mass)} kg`;
-    if (b.shape === 'block') {
+    if (b.fixed) {
+      // A wall: a tall slab with slanted hatching, the mark of something that does not move.
+      const wide = k.right - k.left;
+      const tall = g - k.top;
+      const marks = Math.floor(tall / 22);
+      out.push(
+        <g key={b.id} style={glow}>
+          <rect x={k.left} y={k.top} width={wide} height={tall} rx={5} fill="#1b1846" />
+          <rect x={k.left} y={k.top} width={wide} height={tall} rx={5} fill={c} fillOpacity={0.22} stroke={c} strokeWidth={3} />
+          {Array.from({ length: marks }, (_, i) => (
+            <line key={i} x1={k.left + 5} y1={k.top + 26 + i * 22} x2={k.right - 5} y2={k.top + 8 + i * 22} stroke={c} strokeWidth={2.5} strokeLinecap="round" opacity={0.55} />
+          ))}
+          <Text x={k.cx} y={k.top - 18} size={20} weight={700}>
+            {label}
+          </Text>
+        </g>,
+      );
+    } else if (b.shape === 'block') {
       out.push(
         <g key={b.id} style={glow}>
           <rect x={k.left} y={k.top} width={k.right - k.left} height={BLOCK_H - 1.5} rx={10} fill="#1b1846" />
@@ -692,7 +724,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const c = TONES[f.tone ?? (f.resist ? 'bad' : 'opp')];
     const grow = easeOut(f.age / 0.35);
     // A spring's force, or one that changes with distance, shrinks all the way to nothing: its arrow has no shortest length.
-    const changing = f.name === SPRING || Boolean(f.profile);
+    const changing = f.name === SPRING || Boolean(f.profile) || f.to !== undefined;
     if (changing && Math.abs(f.n) * fs < 3) continue;
     const len = (changing ? Math.abs(f.n) * fs : Math.max(26, Math.abs(f.n) * fs)) * grow * Math.sign(f.n);
     const text = el.plain ? f.name : `${f.name} ${short(Math.abs(f.n))} N`;
@@ -726,10 +758,19 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     );
   }
 
+  // A body that has gone right inside one drawn after it (a bullet in a block) is covered by it:
+  // it moves with that body, whose labels now speak for both.
+  const covered = (b: MotionBody) =>
+    el.bodies.some((o, oi) => {
+      if (oi <= el.bodies.indexOf(b) || (o.lane ?? 0) !== (b.lane ?? 0) || widthOf(o) <= widthOf(b)) return false;
+      const [bx, ox] = [state.bodies[b.id].x, state.bodies[o.id].x];
+      return bx - widthOf(b) / 2 >= ox - widthOf(o) / 2 - 1e-6 && bx + widthOf(b) / 2 <= ox + widthOf(o) / 2 + 1e-6;
+    });
+
   // Two bodies close together on a track (coupled carts) take turns to have their labels higher.
   const raised: Record<string, number> = {};
   for (let lane = 0; lane < lanes.length; lane++) {
-    const row = el.bodies.filter((b) => (b.lane ?? 0) === lane).sort((p1, p2) => state.bodies[p1.id].x - state.bodies[p2.id].x);
+    const row = el.bodies.filter((b) => (b.lane ?? 0) === lane && !covered(b)).sort((p1, p2) => state.bodies[p1.id].x - state.bodies[p2.id].x);
     row.forEach((b, i) => {
       const near = i > 0 && (state.bodies[b.id].x - state.bodies[row[i - 1].id].x) * S < 132;
       raised[b.id] = near && !raised[row[i - 1].id] ? 1 : 0;
@@ -737,6 +778,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   }
 
   for (const b of el.bodies) {
+    if (b.fixed || covered(b)) continue;
     const s = state.bodies[b.id];
     const k = box(b);
     const g = ground(b.lane ?? 0);
@@ -748,7 +790,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
       y -= moving ? 26 : 6;
       out.push(
         <Text key={`vt-${b.id}`} x={k.cx} y={y} color={VELOCITY} opacity={vel}>
-          {moving ? (el.speedWord ? `speed = ${live(Math.abs(s.v))} m/s` : `v = ${live(s.v)} m/s`) : 'at rest'}
+          {moving ? (el.speedWord ? `speed = ${speedText(Math.abs(s.v), el.velocityDecimals)} m/s` : `v = ${speedText(s.v, el.velocityDecimals)} m/s`) : 'at rest'}
         </Text>,
       );
       y -= 30;
@@ -909,7 +951,8 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
     const from = el.spring?.on === b.id ? el.spring.rest : b.x;
     out.push(<ForceGraph key="graph" el={el} state={state} opacity={graph} box={[X(from), top + 58, X(from + (el.graph.metres ?? 1)), box(b).top - 66]} />);
   }
-  if (graph > 0 && el.graph && el.graph.y !== 'force') out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * 0.47, top + 44, w - 34, ground(0) - BLOCK_H - 150]} tone={tone} />);
+  // A force-time graph is wider: its shape, and the area under it, are what the scene is about.
+  if (graph > 0 && el.graph && el.graph.y !== 'force') out.push(<Graph key="graph" el={el} state={state} opacity={graph} box={[w * (el.graph.y === 'impulse' ? 0.3 : 0.47), top + 44, w - 34, ground(0) - BLOCK_H - 150]} tone={tone} />);
 
   // Energy bars, under the tracks.
   if (el.energy && !el.momentumMax && (energy > 0 || total > 0)) out.push(<EnergyBars key="energy" el={el} state={state} x={0} y={h - barsH + 22} w={w} opacity={energy} total={total} />);
@@ -917,11 +960,15 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   // Momentum bars: one for each body and one for the total, which a collision leaves unchanged.
   if (bars > 0 && el.momentumMax) {
     const y0 = h - barsH + 40;
-    const x0 = 170;
-    const full = w - x0 - 220;
+    const left = 170;
+    const room = w - left - 220;
+    // With negative momentum to show, the zero line sits part way along and the bars share the room.
+    const low = Math.min(0, el.momentumMin ?? 0);
+    const full = (room * el.momentumMax) / (el.momentumMax - low);
+    const x0 = left + room - full;
     const rows = [
-      ...el.bodies.map((b) => ({ name: b.label ?? b.id, p: b.mass * state.bodies[b.id].v, c: tone(b) })),
-      { name: 'Total', p: el.bodies.reduce((n, b) => n + b.mass * state.bodies[b.id].v, 0), c: NET },
+      ...barBodies.map((b) => ({ name: b.label ?? b.id, p: b.mass * state.bodies[b.id].v, c: tone(b) })),
+      { name: 'Total', p: barBodies.reduce((n, b) => n + b.mass * state.bodies[b.id].v, 0), c: NET },
     ];
     out.push(
       <g key="bars" opacity={bars}>
@@ -935,13 +982,13 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
           const last = i === rows.length - 1;
           if (last && total <= 0) return null;
           return (
-            <g key={r.name} opacity={last ? total : 1}>
-              <Text x={x0 - 16} y={y + 18} anchor="end" color={last ? NET : INK}>
+            <g key={i} opacity={last ? total : 1}>
+              <Text x={left - 16} y={y + 18} anchor="end" color={last ? NET : INK}>
                 {r.name}
               </Text>
-              <rect x={x0} y={y + 2} width={full} height={32} rx={8} fill="rgb(255 255 255 / 0.05)" />
+              <rect x={left} y={y + 2} width={room} height={32} rx={8} fill="rgb(255 255 255 / 0.05)" />
               <rect x={r.p < 0 ? x0 - len : x0} y={y + 2} width={Math.max(0, len)} height={32} rx={8} fill={r.c} fillOpacity={last ? 0.85 : 0.75} />
-              <Text x={x0 + Math.max(len, 0) + 14} y={y + 18} anchor="start" color={r.c}>
+              <Text x={x0 + (r.p < 0 ? 0 : Math.max(len, 0)) + 14} y={y + 18} anchor="start" color={r.c}>
                 {`${live(r.p)} kg·m/s`}
               </Text>
             </g>
