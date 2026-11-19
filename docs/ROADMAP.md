@@ -1541,6 +1541,21 @@ items ship or decisions change.
      on Chemistry (a new `teacher-subjects` picture). Every picture was taken again from today's app.
    - Approved by the owner and published on YouTube (7 November 2026): https://youtu.be/VCPa_7uUjyM,
      public, with its thumbnail and YouTube's own captions.
+11. **Examination and Quiz questions video series** (the owner's request, 19 November 2026; next).
+   For every course, real final exam and quiz questions for each lesson, each solved in its own
+   step-by-step video with no length limit, broken down to the simplest steps (ELI5 style). Science
+   solutions are animated, never narrated over still slides.
+   - Plan written 19 November 2026 and waiting on the owner's yes:
+     https://claude.ai/artifact/E7RBdeTs8kS5W98nYzVevK. First pass: one worked question per lesson
+     (1,105 lessons in our 35 courses); a pilot of four videos (three for Physics 20 Unit 2, one
+     Math 9 sample) comes first.
+   - Licensing (checked 19 November 2026): real questions only from sources that allow YouTube use:
+     NAEP released items (public domain), England's KS2 tests (Open Government Licence) and OpenStax
+     Physics and Statistics (CC BY 4.0). OpenStax 2e maths and Chemistry, EngageNY and MCAS allow
+     non-commercial use only; Alberta, New York Regents, AP, WAEC, KCSE and NSC papers need written
+     permission; AQA forbids YouTube use and AI-made works, and the other UK and international boards
+     need permission, so those courses get exam-style questions we write ourselves, labelled as such.
+     Every video names its source and licence on screen and in its description.
 
 ## Hosting
 
