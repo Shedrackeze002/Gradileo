@@ -42,6 +42,9 @@ const video: Explainer = {
     source: 'OpenStax, Physics, Test Prep for section 4.3, Newton\'s Second Law of Motion',
     licence: 'CC BY 4.0, access for free at openstax.org',
     url: 'https://openstax.org/books/physics/pages/4-3-newtons-second-law-of-motion',
+    question:
+      'Two people push a 2,000-kg car to get it started. An acceleration of at least 5.0 m/s² is required to start the car. Assuming both people apply the same magnitude force, how much force will each need to apply if friction between the car and the road is 300 N?',
+    choices: ['4850 N', '5150 N', '97000 N', '10300 N'],
   },
   title: 'Exam Question: How Hard Must Two People Push a Car?',
   thumbnailTitle: 'Push a Car',

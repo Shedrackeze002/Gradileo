@@ -42,6 +42,9 @@ const video: Explainer = {
     source: 'OpenStax, Physics, Test Prep for section 4.4, Newton\'s Third Law of Motion',
     licence: 'CC BY 4.0, access for free at openstax.org',
     url: 'https://openstax.org/books/physics/pages/4-4-newtons-third-law-of-motion',
+    question:
+      'A person weighing 55 kg walks by applying 160 N of force on the ground, while pushing a 10-kg object. If the person accelerates at 2 m/s², what is the force of friction experienced by the system consisting of the person and the object?',
+    choices: ['30 N', '50 N', '270 N', '290 N'],
   },
   title: 'Exam Question: The Friction on a Person Pushing a Box',
   thumbnailTitle: 'Push and Friction',

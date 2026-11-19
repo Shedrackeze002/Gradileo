@@ -39,8 +39,11 @@ const video: Explainer = {
   exam: {
     lesson: 'm8-3-1',
     source: 'NAEP 2009 Grade 8 Sample Questions Booklet, mathematics question 2',
-    licence: 'public domain, U.S. Department of Education (NCES)',
+    licence: 'Public domain, U.S. Department of Education (NCES)',
     url: 'https://nces.ed.gov/nationsreportcard/pdf/demo_booklet/09SQ-G08-MRS.pdf',
+    question:
+      'Jaime knows the following facts about points A, B, and C.\n• Points A, B, and C are on the same line, but might not be in that order.\n• Point C is twice as far from point A as it is from point B.\nJaime concluded that point C is always between points A and B.\nIs Jaime’s conclusion correct?\nIn the space provided, use a diagram to explain your answer.',
+    choices: ['Yes', 'No'],
   },
   title: 'Exam Question: Is Point C Always Between A and B?',
   thumbnailTitle: 'Always Between?',
