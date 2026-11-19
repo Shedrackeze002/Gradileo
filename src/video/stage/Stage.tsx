@@ -150,6 +150,12 @@ export function Stage({ x, state, label }: { x: Explainer; state: FrameState; la
           <Column els={scene.main} state={state} area="main" className="v-col v-center" />
         )}
       </div>
+      {x.exam && (
+        // An exam question video credits its question on every frame.
+        <div className="v-source">
+          Question: {x.exam.source} · {x.exam.licence}
+        </div>
+      )}
     </div>
   );
 }

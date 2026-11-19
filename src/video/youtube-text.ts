@@ -1,6 +1,6 @@
 import { courseOfLesson, lessonById, unitById } from '../../engine/curriculum/index.ts';
 import type { CourseMeta } from '../../engine/types.ts';
-import { BRAND } from './script.ts';
+import { BRAND, type ExamSource } from './script.ts';
 import { clock } from './timeline.ts';
 
 export const SITE = 'https://gradileo.com/';
@@ -58,6 +58,8 @@ interface Video {
   lessonId: string;
   /** Tags of a video that teaches no lesson (the introduction). */
   tags?: string[];
+  /** An exam question video: its source and licence, and the lesson it practises. */
+  exam?: ExamSource;
 }
 
 export interface YoutubeFields {
@@ -68,12 +70,15 @@ export interface YoutubeFields {
 
 /** The title, description and tags for YouTube, with the chapters as listed there. */
 export function youtubeFields(x: Video, chapters: Array<{ title: string; t: number }> | null): YoutubeFields {
-  const lesson = lessonById(x.lessonId);
-  const course = courseOfLesson(x.lessonId);
+  // An exam question video is filed under the lesson it practises.
+  const lessonId = x.lessonId || x.exam?.lesson || '';
+  const lesson = lessonById(lessonId);
+  const course = courseOfLesson(lessonId);
   const unit = lesson ? unitById(lesson.unitId) : undefined;
   const grade = lesson?.grade ?? course?.grade ?? 0;
   const description = [
     x.summary,
+    ...(x.exam ? ['', `Question: ${x.exam.source}. ${x.exam.licence}.${x.exam.url ? ` ${x.exam.url}` : ''}`] : []),
     ...(unit || course ? ['', ...(unit ? [`Topic: ${unit.title}`] : []), ...(course ? [`Level: ${levelOf(course, grade)}`] : [])] : []),
     ...(chapters ? ['', 'Chapters', ...chapters.map((c) => `${clock(c.t)} ${c.title}`)] : []),
     '',
@@ -93,7 +98,7 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
     course && `Grade ${grade} ${us}`,
     course && `Year ${grade + 1} ${uk}`,
     course && (grade >= 9 ? `high school ${us}` : grade >= 6 ? `middle school ${us}` : `elementary ${us}`),
-    'explainer',
+    ...(x.exam ? ['exam question', 'worked solution', 'step by step'] : ['explainer']),
     course?.shortTitle,
     ...(x.tags ?? []),
   ]

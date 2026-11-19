@@ -143,6 +143,8 @@ export interface TryEl {
   answer: number | string;
   /** How the answer is worked out, shown with "answer". */
   working?: string;
+  /** The card's heading; "Your turn" when left out (an exam video says "The question"). */
+  kicker?: string;
 }
 
 /** A colour for a diagram part: a fixed video colour, white ink, or muted grey. */
@@ -2420,7 +2422,25 @@ export interface Explainer {
   thumbnail?: string | false;
   /** One or two sentences for the YouTube description. */
   summary: string;
+  /**
+   * An exam or quiz question video (roadmap item 11): the question it solves, where the question
+   * comes from and under what licence, and the lesson it practises. Its header reads "Exam
+   * Question" and its YouTube description carries the source line.
+   */
+  exam?: ExamSource;
   scenes: Scene[];
+}
+
+/** Where an exam question comes from. A question Gradileo wrote itself says so in `source`. */
+export interface ExamSource {
+  /** The lesson the question practises. */
+  lesson: string;
+  /** Who set the question and where ("OpenStax, Physics, Chapter 4.3, Problem 21"). */
+  source: string;
+  /** The licence it is used under ("CC BY 4.0", "Public domain"), with any credit the licence asks for. */
+  licence: string;
+  /** A link to the question as published. */
+  url?: string;
 }
 
 export const asList = (v: string | string[] | undefined): string[] => (v === undefined ? [] : Array.isArray(v) ? v : [v]);
@@ -3258,6 +3278,8 @@ export function checkCharges(e: ChargesEl, order: string[] = Object.keys(e.clips
 export function checkScript(x: Explainer): string[] {
   const problems: string[] = [];
   if (!x.scenes.length) problems.push('The script has no scenes.');
+  // An exam question video must always credit where its question comes from.
+  if (x.exam && (!x.exam.lesson || !x.exam.source.trim() || !x.exam.licence.trim())) problems.push('An exam question video needs its lesson, its source and its licence.');
   x.scenes.forEach((s, si) => {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();

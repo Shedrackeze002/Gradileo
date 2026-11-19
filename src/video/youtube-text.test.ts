@@ -88,4 +88,12 @@ describe('levelOf', () => {
     expect(chem.tags).toContain('high school chemistry');
     expect(chem.tags.filter((t) => /\bmaths?\b/i.test(t))).toEqual([]);
   });
+  it('gives an exam question video its source and licence, filed under the lesson it practises', () => {
+    const exam = { lesson: 'p20-2-4', source: 'OpenStax, Physics, section 5.4', licence: 'CC BY 4.0', url: 'https://openstax.org/books/physics/pages/5-4-inclined-planes' };
+    const f = youtubeFields({ title: 'A Skier on a Slope', summary: 'Kinetic friction on a slope.', lessonId: '', exam }, null);
+    expect(f.description).toContain('Question: OpenStax, Physics, section 5.4. CC BY 4.0. https://openstax.org/books/physics/pages/5-4-inclined-planes');
+    expect(f.description).toContain('Level: Grade 11');
+    expect(f.tags).toContain('exam question');
+    expect(f.tags).not.toContain('explainer');
+  });
 });
