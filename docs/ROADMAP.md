@@ -1572,6 +1572,10 @@ items ship or decisions change.
      between A and B, NAEP 2009 Grade 8, public domain). The maths sample is Math 8, not Math 9,
      because the best public-domain item found was a Grade 8 one. They stay out of `videos.json`
      and the upload queue until the owner approves them.
+   - Owner's rule after the pilot (19 November 2026): every exam video's YouTube description opens
+     with the whole question, word for word with its choices (our own full wording for a variant),
+     because students find a worked solution by searching for the exact question. `exam.question`
+     and `exam.choices` hold it in plain text, and `checkScript` refuses an exam video without it.
 
 ## Hosting
 

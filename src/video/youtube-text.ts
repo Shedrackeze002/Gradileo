@@ -76,9 +76,14 @@ export function youtubeFields(x: Video, chapters: Array<{ title: string; t: numb
   const course = courseOfLesson(lessonId);
   const unit = lesson ? unitById(lesson.unitId) : undefined;
   const grade = lesson?.grade ?? course?.grade ?? 0;
+  // An exam question video opens with the whole question, since people search for it word for word.
+  const question = x.exam
+    ? ['The question:', x.exam.question.trim(), ...(x.exam.choices ?? []).map((c, i) => `(${String.fromCharCode(65 + i)}) ${c}`), '']
+    : [];
   const description = [
+    ...question,
     x.summary,
-    ...(x.exam ? ['', `Question: ${x.exam.source}. ${x.exam.licence}.${x.exam.url ? ` ${x.exam.url}` : ''}`] : []),
+    ...(x.exam ? ['', `Source: ${x.exam.source}. ${x.exam.licence}.${x.exam.url ? ` ${x.exam.url}` : ''}`] : []),
     ...(unit || course ? ['', ...(unit ? [`Topic: ${unit.title}`] : []), ...(course ? [`Level: ${levelOf(course, grade)}`] : [])] : []),
     ...(chapters ? ['', 'Chapters', ...chapters.map((c) => `${clock(c.t)} ${c.title}`)] : []),
     '',

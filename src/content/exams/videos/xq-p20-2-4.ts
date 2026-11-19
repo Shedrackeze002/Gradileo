@@ -36,6 +36,9 @@ const video: Explainer = {
     source: 'OpenStax, Physics, Test Prep for section 5.4, Inclined Planes',
     licence: 'CC BY 4.0, access for free at openstax.org',
     url: 'https://openstax.org/books/physics/pages/5-4-inclined-planes',
+    question:
+      'A skier with a mass of 67 kg is skiing down a snowy slope with an incline of 37°. Find the friction if the coefficient of kinetic friction is 0.07.',
+    choices: ['27.66 N', '34.70 N', '36.71 N', '45.96 N'],
   },
   title: 'Exam Question: Friction on a Skier Going Down a Slope',
   thumbnailTitle: 'Friction on a Slope',

@@ -2441,6 +2441,14 @@ export interface ExamSource {
   licence: string;
   /** A link to the question as published. */
   url?: string;
+  /**
+   * The whole question, word for word as it was set (our own wording for a question we wrote), in
+   * plain text with no TeX: the YouTube description opens with it, because people find a worked
+   * solution by searching for the exact question.
+   */
+  question: string;
+  /** Its answer choices in plain text, for a multiple-choice question. */
+  choices?: string[];
 }
 
 export const asList = (v: string | string[] | undefined): string[] => (v === undefined ? [] : Array.isArray(v) ? v : [v]);
@@ -3279,7 +3287,7 @@ export function checkScript(x: Explainer): string[] {
   const problems: string[] = [];
   if (!x.scenes.length) problems.push('The script has no scenes.');
   // An exam question video must always credit where its question comes from.
-  if (x.exam && (!x.exam.lesson || !x.exam.source.trim() || !x.exam.licence.trim())) problems.push('An exam question video needs its lesson, its source and its licence.');
+  if (x.exam && (!x.exam.lesson || !x.exam.source.trim() || !x.exam.licence.trim() || !x.exam.question?.trim())) problems.push('An exam question video needs its lesson, its source, its licence and the whole question.');
   x.scenes.forEach((s, si) => {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();

@@ -9,6 +9,11 @@ describe('video scripts', () => {
     expect(checkScript(mod.default)).toEqual([]);
     expect(file.endsWith(`/${mod.default.id}.ts`)).toBe(true);
     // Every exam question video credits its question (the owner's rule, 19 November 2026).
-    if (file.startsWith('/src/content/exams/')) expect(mod.default.exam?.source).toBeTruthy();
+    // It also writes out the whole question for its YouTube description (the owner's rule, same day).
+    if (file.startsWith('/src/content/exams/')) {
+      expect(mod.default.exam?.source).toBeTruthy();
+      expect(mod.default.exam?.question.trim()).toBeTruthy();
+      expect(mod.default.exam?.question).not.toMatch(/[$\\]/);
+    }
   });
 });
