@@ -170,6 +170,9 @@ export function TryView({ el, st }: { el: TryEl; st?: ElState }) {
   const timer = st?.timer;
   const R = 26;
   const C = 2 * Math.PI * R;
+  // A long question (an exam question printed word for word, with sentence-long choices) is set
+  // in smaller type, so that it stays clear of the header and the source line.
+  const long = el.prompt.length + (el.choices ?? []).join('').length > 450;
   return (
     <Reveal p={p}>
       <div className="v-card" style={{ width: 980, padding: '28px 34px', textAlign: 'left', border: `2px solid rgb(167 139 250 / 0.55)`, background: 'linear-gradient(160deg, rgb(167 139 250 / 0.16), rgb(255 255 255 / 0.04))' }}>
@@ -187,7 +190,7 @@ export function TryView({ el, st }: { el: TryEl; st?: ElState }) {
             </div>
           )}
         </div>
-        <div className="v-rich" style={{ fontSize: 32, lineHeight: 1.4, marginTop: 14 }} {...html(rich(el.prompt))} />
+        <div className="v-rich" style={{ fontSize: long ? 28 : 32, lineHeight: 1.4, marginTop: 14 }} {...html(rich(el.prompt))} />
         {el.choices && (
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 22 }}>
             {el.choices.map((c, i) => {
@@ -201,7 +204,7 @@ export function TryView({ el, st }: { el: TryEl; st?: ElState }) {
                     alignItems: 'center',
                     padding: '14px 18px',
                     borderRadius: 16,
-                    fontSize: 28,
+                    fontSize: long ? 24 : 28,
                     border: `2px solid ${right && ans > 0 ? `rgb(52 211 153 / ${ans})` : 'rgb(255 255 255 / 0.14)'}`,
                     background: right ? `rgb(52 211 153 / ${0.16 * ans})` : 'rgb(255 255 255 / 0.04)',
                     opacity: right ? 1 : 1 - 0.55 * ans,

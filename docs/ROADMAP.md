@@ -1585,6 +1585,17 @@ items ship or decisions change.
      with the whole question, word for word with its choices (our own full wording for a variant),
      because students find a worked solution by searching for the exact question. `exam.question`
      and `exam.choices` hold it in plain text, and `checkScript` refuses an exam video without it.
+   - Scaling up (owner's "go", 20 November 2026): one exam video for every lesson, Physics first,
+     one or two units to a pull request. Physics 20 Unit 2 (Dynamics) is complete with eight: the
+     pilot's three and `xq-p20-2-1` (three forces, OpenStax 4.1), `xq-p20-2-3` (will a 50 N push move the
+     box, 5.4), `xq-p20-2-6` (two ropes pull a trolley, 5.1), `xq-p20-2-7` (where the Earth's and
+     the Moon's pulls balance, 7.2) and `xq-p20-2-8` (gravity on Rhea, 7.2). Unit 1 (Kinematics)
+     is complete with eight, `xq-p20-1-1` to `xq-p20-1-8`: Tiana's jog (OpenStax 2.1), the bird
+     that hops between branches (2.2), stop sign to stop sign (3.1), the swan's take-off (3.2), the
+     order of the equations for a falling object (3.2), a vector from its x-component (5.2), a boat
+     crossing a river (5.1) and a ball thrown at 40° that rises 10 m (5.3). Next: Physics 20 Units
+     3 and 4, then Physics 10 and Physics 30. Still to do: an exam panel on each lesson
+     page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
 ## Hosting
 
