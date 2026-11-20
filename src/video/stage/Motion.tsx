@@ -542,7 +542,10 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
       return;
     }
     // A track of two metres or less (a spring on a bench) is marked in tenths of a metre.
-    const tick = el.span[1] - el.span[0] <= 2 ? 0.1 : 1;
+    // A very long one (a jog of kilometres) is marked every 10, 100 or 1,000 metres instead, so
+    // that the marks stay at least 4 pixels apart.
+    let tick = el.span[1] - el.span[0] <= 2 ? 0.1 : 1;
+    while (S * tick < 4) tick *= 10;
     const gap = S * tick;
     // A long road is numbered every ten or twenty metres, so that the numbers do not run together.
     const every = gap >= 46 ? 1 : gap >= 24 ? 2 : gap >= 8 ? 5 : gap >= 4 ? 10 : 20;
