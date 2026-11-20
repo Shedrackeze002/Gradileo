@@ -997,7 +997,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
               <rect x={left} y={y + 2} width={room} height={32} rx={8} fill="rgb(255 255 255 / 0.05)" />
               <rect x={r.p < 0 ? x0 - len : x0} y={y + 2} width={Math.max(0, len)} height={32} rx={8} fill={r.c} fillOpacity={last ? 0.85 : 0.75} />
               <Text x={x0 + (r.p < 0 ? 0 : Math.max(len, 0)) + 14} y={y + 18} anchor="start" color={r.c}>
-                {`${live(r.p)} kg·m/s`}
+                {`${speedText(r.p, el.momentumDecimals)} kg·m/s`}
               </Text>
             </g>
           );
