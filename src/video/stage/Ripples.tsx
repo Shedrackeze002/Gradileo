@@ -3,11 +3,13 @@
  * is a circle that grows from where its source was when it left. Over the crests go the things a
  * lesson measures: the path from each source to a listener, the difference between the paths, the
  * waves that arrive there and their sum, the wavelength ahead of and behind a moving source, and
- * the frequency a listener receives.
+ * the frequency a listener receives. With a barrier, the sources are openings that straight waves
+ * arrive at, and a screen shows the fringes that two of them make.
  */
 import type { ReactElement } from 'react';
 import type { RippleListener, RippleSource, RipplesEl, Tone } from '../script.ts';
-import { arrival, crestsOf, loudness, received, ripplesAt, sourceAt, type Point } from '../ripples.ts';
+import { visibleColour } from '../light.ts';
+import { arrival, arriving, crestsOf, fringeAt, loudness, received, ripplesAt, settled, sourceAt, wavelengthOf, type Point } from '../ripples.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Arrow, BODY_TONES, clamp01, Clock, fine, INK2, NET, short, Text, VELOCITY } from './motionKit.tsx';
 import { TONES } from './tex.ts';
@@ -37,6 +39,34 @@ function Measure({ a, b, color }: { a: Point; b: Point; color: string }) {
   );
 }
 
+/**
+ * A crest beyond an opening in a barrier, at (x, y) with a half-width of `half` pixels: straight
+ * across the opening, and bent round each edge as far as the wavelength allows. `ratio` is the
+ * wavelength over the width of the opening: a narrow opening sends the crest out in every
+ * direction, and a wide one only a little way round its edges.
+ */
+function Beam({ x, y, r, half, ratio, opacity }: { x: number; y: number; r: number; half: number; ratio: number; opacity: number }) {
+  if (!(r > 0.5)) return null;
+  // The direction of the first dark band of one opening, and how far round the light is drawn.
+  const dark = ratio >= 1 ? Math.PI / 2 : Math.asin(ratio);
+  const edge = dark * (1.25 + 4 * Math.max(0, ratio - 1));
+  const parts: ReactElement[] = [<line key="flat" x1={x + r} y1={y - half} x2={x + r} y2={y + half} opacity={opacity.toFixed(2)} />];
+  const step = Math.PI / 20;
+  for (let i = 0; i < 10; i++) {
+    const [a, b] = [i * step, (i + 1) * step];
+    const fade = Math.max(0, 1 - ((a + b) / 2 / edge) ** 2);
+    if (fade <= 0.02) break;
+    for (const side of [-1, 1]) {
+      const cy = y + side * half;
+      parts.push(<path key={`${side}${i}`} d={`M${(x + r * Math.cos(a)).toFixed(1)},${(cy + side * r * Math.sin(a)).toFixed(1)} A${r.toFixed(1)},${r.toFixed(1)} 0 0 ${side > 0 ? 1 : 0} ${(x + r * Math.cos(b)).toFixed(1)},${(cy + side * r * Math.sin(b)).toFixed(1)}`} opacity={(opacity * fade).toFixed(2)} />);
+    }
+  }
+  return <g>{parts}</g>;
+}
+
+/** The width of a screen, in pixels. */
+const SCREEN = 18;
+
 /** Where a label goes beside a dot at (x, y). */
 function beside(x: number, y: number, side: RippleSource['side'], gap: number): { x: number; y: number; anchor: 'start' | 'middle' | 'end' } {
   if (side === 'left') return { x: x - gap, y, anchor: 'end' };
@@ -44,10 +74,12 @@ function beside(x: number, y: number, side: RippleSource['side'], gap: number): 
   return { x, y: y + (side === 'below' ? gap + 6 : -gap - 6), anchor: 'middle' };
 }
 
-export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElState | undefined; w: number; h: number; plays?: Array<[string, number]> }) {
+export function RipplesView({ el: given, st, w, h, plays }: { el: RipplesEl; st: ElState | undefined; w: number; h: number; plays?: Array<[string, number]> }) {
   const p = st?.p ?? 0;
   if (p <= 0) return <div style={{ width: w, height: h }} />;
-  const state = ripplesAt(el, plays ?? st?.plays ?? []);
+  const state = ripplesAt(given, plays ?? st?.plays ?? []);
+  // The picture as its clips have left it: its wavelength, its sources, its openings and its screen.
+  const el = settled(given, state);
   const part = (name: string) => ownPart(st, name);
   const [x0, y0, x1, y1] = el.view;
   const top = 46;
@@ -61,7 +93,18 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
   const X = (x: number) => left + (x - x0) * scale;
   const Y = (y: number) => top + (y1 - y) * scale;
   const at = ([x, y]: Point): Point => [X(x), Y(y)];
-  const tone = (s: RippleSource) => TONES[s.tone ?? SOURCE_TONES[el.sources.indexOf(s) % SOURCE_TONES.length]];
+  // Light is drawn in its own colour; a source keeps a tone of its own for its path and its trace.
+  const lit = el.light !== undefined ? `rgb(${visibleColour(el.light).join(' ')})` : undefined;
+  const tone = (s: RippleSource) => (s.tone ? TONES[s.tone] : (lit ?? TONES[SOURCE_TONES[el.sources.indexOf(s) % SOURCE_TONES.length]]));
+  const crest = (s: RippleSource) => lit ?? tone(s);
+  const sum = lit ?? NET;
+  const lambda = wavelengthOf(el);
+  /** A length for a label: light's in wavelengths, any other wave's in metres. */
+  const length = (m: number) => (lit ? `${metres(m / lambda)} λ` : `${metres(m)} m`);
+  // The waves are drawn from the barrier, when there is one, as far as the screen, when there is one.
+  const wall = el.barrier ? X(el.barrier.x) : undefined;
+  const face = el.screen !== undefined ? X(el.screen) : undefined;
+  const [from, to] = [wall ?? left, face ?? left + pw];
   const name = (s: RippleSource | RippleListener) => s.label ?? s.id;
   const clip = `ripples-${el.id}`;
   const out: ReactElement[] = [];
@@ -72,10 +115,10 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
   if (pattern > 0) {
     const cell = 10;
     const cells: ReactElement[] = [];
-    for (let px = 0; px < pw; px += cell)
+    for (let px = from - left; px < to - left; px += cell)
       for (let py = 0; py < ph; py += cell) {
         const loud = loudness(el, [x0 + (px + cell / 2) / scale, y1 - (py + cell / 2) / scale], state.time);
-        if (loud > 0.08) cells.push(<rect key={`c${px}-${py}`} x={left + px} y={top + py} width={cell} height={cell} fill={NET} opacity={(0.5 * loud * loud * pattern).toFixed(3)} />);
+        if (loud > 0.08) cells.push(<rect key={`c${px}-${py}`} x={left + px} y={top + py} width={cell} height={cell} fill={sum} opacity={(0.5 * loud * loud * pattern).toFixed(3)} />);
       }
     // Blurred a little, so the shading has no squares in it.
     inside.push(
@@ -85,24 +128,64 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
     );
   }
 
-  // The crests: circles that grow from where the source was when each left.
-  for (const s of el.sources) {
-    const glow = st?.focus[s.id] ?? 0;
-    const color = tone(s);
-    const far = Math.hypot(x1 - x0, y1 - y0);
+  // The straight crests that arrive at a barrier.
+  if (el.barrier && wall !== undefined)
     inside.push(
-      <g key={`crests-${s.id}`} fill="none" stroke={color} strokeWidth={2.5 + 1.5 * glow} style={glow > 0 ? { filter: `drop-shadow(0 0 ${8 * glow}px ${color})` } : undefined}>
-        {crestsOf(el, s, state.time).map(({ centre, radius }, i) => (
-          <circle key={i} cx={X(centre[0])} cy={Y(centre[1])} r={radius * scale} opacity={(0.9 * Math.max(0.35, 1 - (0.8 * radius) / far)).toFixed(2)} />
+      <g key="arriving" stroke={crest(el.sources[0])} strokeWidth={2.5} opacity={0.8}>
+        {arriving(el, state.time).map((x, i) => (
+          <line key={i} x1={X(x)} y1={top} x2={X(x)} y2={top + ph} />
         ))}
       </g>,
     );
+
+  // The crests: circles that grow from where the source was when each left. Beyond an opening
+  // with a width, each is straight across the opening and bent round its edges.
+  const waves: ReactElement[] = [];
+  const gap = el.barrier?.gap;
+  for (const s of el.sources) {
+    const glow = st?.focus[s.id] ?? 0;
+    const color = crest(s);
+    const far = Math.hypot(x1 - x0, y1 - y0);
+    const faint = (radius: number) => 0.9 * Math.max(0.35, 1 - (0.8 * radius) / far);
+    waves.push(
+      <g key={`crests-${s.id}`} fill="none" stroke={color} strokeWidth={2.5 + 1.5 * glow} style={glow > 0 ? { filter: `drop-shadow(0 0 ${8 * glow}px ${color})` } : undefined}>
+        {crestsOf(el, s, state.time).map(({ centre, radius }, i) =>
+          gap === undefined ? (
+            <circle key={i} cx={X(centre[0])} cy={Y(centre[1])} r={radius * scale} opacity={faint(radius).toFixed(2)} />
+          ) : (
+            <Beam key={i} x={X(centre[0])} y={Y(centre[1])} r={radius * scale} half={(gap / 2) * scale} ratio={lambda / gap} opacity={faint(radius)} />
+          ),
+        )}
+      </g>,
+    );
+  }
+  inside.push(
+    <g key="waves" clipPath={`url(#${clip}-waves)`}>
+      {waves}
+    </g>,
+  );
+
+  // The wall, with an opening at each source.
+  if (el.barrier && wall !== undefined) {
+    const open = Math.max(7, ((gap ?? 0) * scale) / 2);
+    const holes = el.sources.map((s) => Y(s.at[1])).sort((a, b) => a - b);
+    const blocks: ReactElement[] = [];
+    let start = top;
+    for (const hole of [...holes, Infinity]) {
+      const end = Math.min(top + ph, hole - open);
+      if (end > start) blocks.push(<rect key={blocks.length} x={wall - 5} y={start} width={10} height={end - start} fill="#b9c2ee" />);
+      start = hole + open;
+    }
+    inside.push(<g key="wall">{blocks}</g>);
   }
 
   out.push(
     <defs key="defs">
       <clipPath id={clip}>
         <rect x={left} y={top} width={pw} height={ph} rx={14} />
+      </clipPath>
+      <clipPath id={`${clip}-waves`}>
+        <rect x={from} y={top} width={Math.max(0, to - from)} height={ph} />
       </clipPath>
     </defs>,
   );
@@ -112,6 +195,61 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
       {inside}
     </g>,
   );
+
+  // The screen, lit where the waves arrive in step.
+  const fringes = part('fringes');
+  if (el.screen !== undefined && face !== undefined) {
+    const bands: ReactElement[] = [];
+    if (fringes > 0)
+      for (let py = 0; py < ph; py += 3) {
+        const loud = loudness(el, [el.screen, y1 - (py + 1.5) / scale], state.time);
+        if (loud > 0.03) bands.push(<rect key={py} x={face} y={top + py} width={SCREEN} height={3.4} fill={sum} opacity={(loud * loud * fringes).toFixed(3)} />);
+      }
+    out.push(
+      <g key="screen" clipPath={`url(#${clip})`}>
+        <rect x={face} y={top} width={SCREEN} height={ph} fill="#0a0820" />
+        {bands}
+        <line x1={face} y1={top} x2={face} y2={top + ph} stroke="#e8ecff" strokeWidth={2} opacity={0.7} />
+      </g>,
+    );
+    out.push(
+      <Text key="screen-name" x={face + SCREEN / 2} y={top - 16} size={18} color={INK2}>
+        Screen
+      </Text>,
+    );
+  }
+
+  // The bright fringes of two sources, numbered from the centre, and the three lengths that set how far apart they are.
+  const orders = part('orders');
+  const lengths = part('lengths');
+  if (face !== undefined && el.sources.length === 2 && (orders > 0 || lengths > 0)) {
+    const [a, b] = el.sources.map((s) => at(s.at));
+    const most = Math.ceil(Math.hypot(el.sources[0].at[0] - el.sources[1].at[0], el.sources[0].at[1] - el.sources[1].at[1]) / lambda) - 1;
+    if (orders > 0)
+      for (let n = -most; n <= most; n++) {
+        const y = fringeAt(el, n);
+        if (y === undefined || Y(y) < top + 12 || Y(y) > top + ph - 12) continue;
+        out.push(<Text key={`order${n}`} x={face + SCREEN + 30} y={Y(y)} anchor="start" size={19} opacity={orders}>{`n = ${Math.abs(n)}`}</Text>);
+      }
+    if (lengths > 0) {
+      const [f0, f1] = [fringeAt(el, 0), fringeAt(el, 1)];
+      const floor = top + ph - 24;
+      out.push(
+        <g key="lengths" opacity={lengths}>
+          <Measure a={[a[0] - 24, a[1]]} b={[b[0] - 24, b[1]]} color={INK} />
+          <Text x={a[0] - 46} y={(a[1] + b[1]) / 2} size={23}>d</Text>
+          <Measure a={[wall ?? a[0], floor]} b={[face, floor]} color={INK} />
+          <Text x={((wall ?? a[0]) + face) / 2} y={floor - 24} size={23}>L</Text>
+          {f0 !== undefined && f1 !== undefined && (
+            <g>
+              <Measure a={[face + SCREEN + 13, Y(f0)]} b={[face + SCREEN + 13, Y(f1)]} color={INK} />
+              <Text x={face + SCREEN + 30} y={(Y(f0) + Y(f1)) / 2} anchor="start" size={23}>Δx</Text>
+            </g>
+          )}
+        </g>,
+      );
+    }
+  }
 
   // Where the source was when it sent each crest: the centre of that crest.
   const centres = part('centres');
@@ -141,7 +279,7 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
       out.push(
         <g key={`path-${s.id}`} opacity={paths}>
           <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={tone(s)} strokeWidth={3} strokeDasharray="9 7" strokeLinecap="round" />
-          <Text x={a[0] + (b[0] - a[0]) * 0.45 + nx * 26} y={a[1] + (b[1] - a[1]) * 0.45 + ny * 26} size={21} color={tone(s)}>{`${metres(arrivals[i].path)} m`}</Text>
+          <Text x={a[0] + (b[0] - a[0]) * 0.45 + nx * 26} y={a[1] + (b[1] - a[1]) * 0.45 + ny * 26} size={21} color={tone(s)}>{length(arrivals[i].path)}</Text>
         </g>,
       );
     });
@@ -179,7 +317,7 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
   for (const s of el.sources) {
     const [x, y] = at(sourceAt(s, state.time));
     const color = tone(s);
-    const label = beside(x, y, s.side, 20);
+    const label = beside(x, y, s.side ?? (el.barrier ? 'left' : undefined), 20);
     const speed = Math.hypot(...(s.velocity ?? [0, 0]));
     out.push(
       <g key={`source-${s.id}`}>
@@ -189,8 +327,8 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
             <Text x={x} y={y + 30} size={20} color={VELOCITY}>{`${short(speed)} m/s`}</Text>
           </g>
         )}
-        <circle cx={x} cy={y} r={11} fill={color} stroke="#15123a" strokeWidth={3} />
-        <circle cx={x} cy={y} r={4} fill="#15123a" />
+        {!el.barrier && <circle cx={x} cy={y} r={11} fill={color} stroke="#15123a" strokeWidth={3} />}
+        {!el.barrier && <circle cx={x} cy={y} r={4} fill="#15123a" />}
         {s.label && (
           <Text x={label.x} y={label.y} anchor={label.anchor} size={20} color={color}>
             {s.label}
@@ -244,7 +382,7 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
         out.push(
           <g key={`row-${s.id}`} opacity={paths}>
             <circle cx={px + 9} cy={y} r={8} fill={tone(s)} />
-            <Text x={px + 28} y={y} anchor="start" size={22} color={tone(s)}>{`From ${name(s)}: ${metres(arrivals[i].path)} m`}</Text>
+            <Text x={px + 28} y={y} anchor="start" size={22} color={tone(s)}>{`From ${name(s)}: ${length(arrivals[i].path)}`}</Text>
           </g>,
         );
         y += 34;
@@ -254,11 +392,11 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
     // The path difference, and how many of the first source's wavelengths it is.
     if (difference > 0 && arrivals.length >= 2) {
       const diff = Math.abs(arrivals[1].path - arrivals[0].path);
-      const lambda = el.speed / el.sources[0].frequency;
+      const turns = metres(diff / lambda);
       out.push(
         <g key="difference" opacity={difference}>
-          <Text x={px} y={y} anchor="start" size={22}>{`Path difference: ${metres(diff)} m`}</Text>
-          <Text x={px} y={y + 34} anchor="start" size={24} color={NET}>{`= ${metres(diff / lambda)} wavelengths`}</Text>
+          <Text x={px} y={y} anchor="start" size={22}>{lit ? 'Path difference:' : `Path difference: ${metres(diff)} m`}</Text>
+          <Text x={px} y={y + 34} anchor="start" size={24} color={NET}>{`${lit ? '' : '= '}${turns} ${turns === '1' ? 'wavelength' : 'wavelengths'}`}</Text>
         </g>,
       );
     }
@@ -297,12 +435,12 @@ export function RipplesView({ el, st, w, h, plays }: { el: RipplesEl; st: ElStat
     if (loud > 0) {
       const level = loudness(el, here, state.time);
       const full = right - px - 120;
-      const word = level >= 0.85 ? 'Loud' : level <= 0.15 ? 'Quiet' : '';
+      const word = level >= 0.85 ? (lit ? 'Bright' : 'Loud') : level <= 0.15 ? (lit ? 'Dark' : 'Quiet') : '';
       out.push(
         <g key="loudness" opacity={loud}>
-          <Text x={px} y={y} anchor="start" size={20} color={INK2}>Loudness</Text>
+          <Text x={px} y={y} anchor="start" size={20} color={INK2}>{lit ? 'Brightness' : 'Loudness'}</Text>
           <rect x={px} y={y + 20} width={full} height={26} rx={7} fill="rgb(255 255 255 / 0.06)" />
-          <rect x={px} y={y + 20} width={full * level * level} height={26} rx={Math.min(7, (full * level * level) / 2)} fill={NET} fillOpacity={0.85} />
+          <rect x={px} y={y + 20} width={full * level * level} height={26} rx={Math.min(7, (full * level * level) / 2)} fill={sum} fillOpacity={0.85} />
           <Text x={px + full + 16} y={y + 33} anchor="start" size={24} color={NET}>
             {word}
           </Text>

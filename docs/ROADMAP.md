@@ -1461,7 +1461,15 @@ items ship or decisions change.
        inside the focus, so a camera becomes a projector and then a magnifying glass. A lens's
        readouts are written in one row along the foot of the picture. The videos: `p30-3-4`
        (Images in Lenses) and `p30-3-4-b` (The Thin Lens Equation).
-     - Next: the rest of Unit 3 (lessons 3.5 to 3.8), then Unit 4. The physics lessons have no
+     - Written (20 November 2026): **the two videos of lesson 3.5** (diffraction and
+       interference). The `ripples` picture gains a wall with openings, a screen and light: waves
+       spread through a gap that narrows, the light of two slits overlaps into fringes, and a
+       point walks up the screen while its two paths, their difference and the two waves that
+       arrive are shown. The `light` element gains a `grating`, true to d sin θ = n λ: broad
+       bands that sharpen as more slits are lit, two neighbouring slits close up, and white
+       light spread into spectra. The videos: `p30-3-5` (Young's Double-Slit Experiment) and
+       `p30-3-5-b` (Diffraction Gratings).
+     - Next: the rest of Unit 3 (lessons 3.6 to 3.8), then Unit 4. The physics lessons have no
        tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
