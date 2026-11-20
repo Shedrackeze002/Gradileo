@@ -2396,6 +2396,122 @@ export interface PowerlineEl {
   height?: number;
 }
 
+/** One step of a light clip. */
+export interface LightPhase {
+  /** Seconds of video. */
+  dur: number;
+  /** An electromagnetic wave: start (true) or stop (false) the charge that makes it, as the phase starts. */
+  on?: boolean;
+  /**
+   * An electromagnetic wave: bring the frequency of its source steadily to this many cycles for
+   * each second of video (the change travels out with the wave). A spinning mirror: bring it
+   * steadily to this many turns each second.
+   */
+  hertz?: number;
+  /** An electromagnetic wave with a filter: turn the filter steadily to this angle, in degrees from upright. */
+  filter?: number;
+  /** A spectrum: slide the pointer to this wavelength, in metres, by the same factor in each moment. */
+  to?: number;
+  /** A trip: send a flash from the source as the phase starts. */
+  send?: boolean;
+}
+
+export interface LightClip {
+  phases: LightPhase[];
+}
+
+/** An electromagnetic wave that leaves a charge driven up and down an aerial. */
+export interface LightWave {
+  /** The frequency of the charge, in cycles for each second of video. The wave crosses the picture at one speed, so a higher frequency is a shorter wavelength. */
+  hertz: number;
+  /** The seconds of video the wave takes to cross the picture (3 otherwise). */
+  cross?: number;
+  /** Whether the charge is driven at the start (it is, otherwise). */
+  on?: boolean;
+  /** The wave fills the picture from the start (otherwise it runs out from the aerial). */
+  full?: boolean;
+  /** A polarizing filter across the path: `at` is how far along the path it stands (0 to 1), and `angle` is how far it is turned from upright, in degrees. It passes the part of the electric field that is along its own direction. */
+  filter?: { at: number; angle: number };
+  /** The real frequency, in hertz, that `hertz` stands for: the part `values` then writes the real frequency and wavelength. */
+  real?: number;
+}
+
+/** A place something can be drawn at an end of a trip of light. */
+export type LightShape = 'sun' | 'earth' | 'moon' | 'dish' | 'plane' | 'lamp' | 'mirror';
+
+/** A flash of light that travels from a source to a target, and perhaps back again. */
+export interface LightTrip {
+  from: { shape: LightShape; label?: string };
+  to: { shape: LightShape; label?: string };
+  /** The distance between them, in metres. */
+  metres: number;
+  /** The flash is reflected, and the clock runs until it is back at the source. */
+  echo?: boolean;
+  /** The clock in another unit: its name, and how many seconds one of it is ({ unit: 'μs', seconds: 1e-6 }). */
+  clock?: { unit: string; seconds: number };
+  /** Distances in another unit: its name, and how many metres one of it is ({ unit: 'km', metres: 1000 }). */
+  length?: { unit: string; metres: number };
+}
+
+/** Michelson's measurement: a mirror with eight flat faces spins, and sends flashes of light to a fixed mirror far away and back. */
+export interface LightSpin {
+  /** The distance to the fixed mirror, in metres. */
+  metres: number;
+  /** The turns the mirror makes each second at the start (it is at rest otherwise, and the light is a steady beam). */
+  hertz?: number;
+}
+
+/** What a light element can show; each is a part ("em.magnetic"). */
+export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'values', 'scale', 'wave', 'made', 'use', 'visible', 'ionizing', 'arrows', 'clock', 'distance', 'travelled', 'turn', 'rate'] as const;
+
+/**
+ * Light as an electromagnetic wave (src/video/light.ts). One element is one of four pictures.
+ *
+ * `wave` is the wave that leaves a charge driven up and down an aerial: its electric field
+ * (yellow, part `electric`) is up and down, its magnetic field (violet, part `magnetic`) is at
+ * right angles to it, drawn towards and away from you, and both are at right angles to the way
+ * the wave travels. Parts: `wavelength`, `speed` and `values` (the real frequency and wavelength,
+ * with `real`). A phase can start or stop the charge, change its frequency, or turn a polarizing
+ * `filter`.
+ *
+ * `spectrum` is the electromagnetic spectrum, drawn to a scale on which each step is ten times
+ * shorter: a pointer slides along it, and a wave over it shortens as it goes. Parts: `wave`,
+ * `values` (the wavelength and the frequency at the pointer), `scale`, `made` and `use` (what
+ * makes the waves of that region, and one use of them), `visible` (the visible band drawn
+ * larger, from red to violet), `ionizing` and `arrows`.
+ *
+ * `trip` is a flash of light that travels from a source to a target at 3.00 × 10⁸ m/s, and back
+ * with `echo`. Parts: `clock`, `distance` and `travelled` (how far the flash has gone).
+ *
+ * `spin` is Michelson's measurement of the speed of light with a spinning mirror. At rest, the
+ * beam grows along the path to the detector while a clip plays. Once the mirror turns, each time a
+ * face is in place a flash leaves for a fixed mirror far away; when it returns, the mirror has
+ * turned, and the flash reaches the detector only if the next face stands where the first one
+ * was. Parts: `rate` (the turns each second), `clock` (the time of the round trip), `turn` (the
+ * share of a turn the mirror makes in that time) and `distance`.
+ */
+export interface LightEl {
+  kind: 'light';
+  id: string;
+  wave?: LightWave;
+  spectrum?: { /** The wavelength the pointer starts at, in metres. */ at: number };
+  trip?: LightTrip;
+  spin?: LightSpin;
+  /** Seconds of the model for each second of video, for a trip or a spinning mirror (a trip one way, or a round trip of the spinning mirror, takes 2.5 seconds of video otherwise). */
+  rate?: number;
+  /** Significant figures of what is written (3 otherwise). */
+  figures?: number;
+  /** The parts drawn on the thumbnail (the fields of a wave, the wave over a spectrum, the clock of a trip, the rate of a spinning mirror, otherwise). */
+  thumb?: string[];
+  /** For the thumbnail: the clip to show, part way through (`posterAt` of the way, 0.7 otherwise). */
+  poster?: string;
+  posterAt?: number;
+  clips: Record<string, LightClip>;
+  /** A label at the top left of the picture. */
+  label?: string;
+  height?: number;
+}
+
 /** A body of a circle element: something that goes round a circle. */
 export interface CircleBody {
   id: string;
@@ -2490,7 +2606,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3174,6 +3290,50 @@ export function checkInduction(e: InductionEl): string[] {
   return problems;
 }
 
+/** Problems with a light element: no picture or more than one, a wave with no frequency, a trip of no length, clips that ask for what the picture does not have. */
+export function checkLight(e: LightEl): string[] {
+  const problems: string[] = [];
+  const pictures = [e.wave, e.spectrum, e.trip, e.spin].filter((picture) => picture !== undefined).length;
+  if (pictures !== 1) problems.push('give it exactly one of `wave`, `spectrum`, `trip` and `spin`.');
+  const inSpectrum = (metres: number) => metres >= 1e-13 && metres <= 1e4;
+  if (e.wave) {
+    if (!(e.wave.hertz > 0)) problems.push('the wave needs a frequency above zero.');
+    if (e.wave.cross !== undefined && !(e.wave.cross > 0)) problems.push('the wave must take more than zero seconds to cross the picture.');
+    if (e.wave.filter && !(e.wave.filter.at > 0 && e.wave.filter.at < 1)) problems.push('the filter must stand part of the way along the path (between 0 and 1).');
+    if (e.wave.real !== undefined && !(e.wave.real > 0)) problems.push('the real frequency must be more than zero.');
+  }
+  if (e.spectrum && !inSpectrum(e.spectrum.at)) problems.push('the pointer must start at a wavelength between 10⁻¹³ m and 10⁴ m.');
+  if (e.trip) {
+    if (!(e.trip.metres > 0)) problems.push('the trip needs a distance above zero.');
+    if (e.trip.clock && !(e.trip.clock.seconds > 0)) problems.push('a unit of the clock must be more than zero seconds.');
+    if (e.trip.length && !(e.trip.length.metres > 0)) problems.push('a unit of length must be more than zero metres.');
+  }
+  if (e.spin) {
+    if (!(e.spin.metres > 0)) problems.push('the fixed mirror needs a distance above zero.');
+    if (e.spin.hertz !== undefined && !(e.spin.hertz >= 0)) problems.push('the spinning mirror cannot turn a negative number of times each second.');
+  }
+  if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
+  if (e.rate !== undefined && !e.trip && !e.spin) problems.push('only a trip or a spinning mirror has a rate.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(LIGHT_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.on !== undefined && !e.wave) problems.push(`clip "${name}" starts or stops a charge, and the picture is not a wave.`);
+      if (ph.hertz !== undefined && !e.wave && !e.spin) problems.push(`clip "${name}" sets a frequency, and the picture is not a wave or a spinning mirror.`);
+      if (ph.hertz !== undefined && e.wave && !(ph.hertz > 0)) problems.push(`clip "${name}" needs a frequency above zero.`);
+      if (ph.hertz !== undefined && e.spin && !(ph.hertz >= 0)) problems.push(`clip "${name}" cannot turn the mirror a negative number of times each second.`);
+      if (ph.filter !== undefined && !e.wave?.filter) problems.push(`clip "${name}" turns a filter, and the picture has none.`);
+      if (ph.to !== undefined && !e.spectrum) problems.push(`clip "${name}" slides a pointer, and the picture is not a spectrum.`);
+      if (ph.to !== undefined && e.spectrum && !inSpectrum(ph.to)) problems.push(`clip "${name}" slides the pointer off the spectrum (it runs from 10⁻¹³ m to 10⁴ m).`);
+      if (ph.send && !e.trip) problems.push(`clip "${name}" sends a flash, and the picture is not a trip.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a transformer element: coils with no turns, a supply with no voltage, clips that ask for what the supply cannot do. */
 export function checkTransformer(e: TransformerEl): string[] {
   const problems: string[] = [];
@@ -3475,7 +3635,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -3547,6 +3707,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(POWERLINE_PARTS));
         motions.set(e.id, e);
         problems.push(...checkPowerline(e).map((p) => `Scene ${si + 1}: power line "${e.id}": ${p}`));
+      }
+      if (e.kind === 'light') {
+        diagrams.set(e.id, new Set<string>(LIGHT_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkLight(e).map((p) => `Scene ${si + 1}: light "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

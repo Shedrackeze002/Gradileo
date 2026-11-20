@@ -19,7 +19,9 @@ Radiation, has its eight lessons and sixteen skills, and Unit D, Atomic and Nucl
 its seven lessons and fourteen skills. Grade 12 Physics is listed for classes and sign-up
 (18 November 2026): it is recommended in Grade 12, with a placement check on Grade 11 Physics.
 Its videos are being made unit by unit: the nine videos of Unit A, Momentum and Impulse, and the
-24 videos of Unit B, Forces and Fields, are made (18 November 2026), and Units C and D come next.
+24 videos of Unit B, Forces and Fields, are made (18 November 2026). Unit C was started on
+20 November 2026 with the two videos of lesson 3.1 (electromagnetic waves and the speed of light);
+the rest of Unit C and Unit D come next.
 
 ## Shape
 
@@ -100,6 +102,7 @@ built when the first unit that needs it is reached.
 | Magnets and currents (`magnets`) | Bar magnets, compasses, iron domains, the Earth's field, and the field of a wire and of a solenoid; the force on a wire (a wire that floats, a magnet on a balance) and the motor coil with its commutator; a magnet pushed into a coil joined to a meter; a coil turned as a generator, with slip rings or a split ring and a graph of its emf | Grade 12, Unit B | Built |
 | Induction (`induction`) | A circuit in a field through the page: a coil in a changing field (Faraday's law) and a rod on rails (ε = BLv, Lenz's law, the force on the rod) | Grade 12, Unit B | Built |
 | Transformers (`transformer`, `powerline`) | Two coils on an iron core with a screen for each voltage (the turns rule, power in and out, a battery that gives only a kick); a power line whose loss falls as its voltage is stepped up | Grade 12, Unit B | Built |
+| Light (`light`) | An electromagnetic wave leaving an aerial, with its two fields and a polarizing filter; the spectrum with a sliding pointer; a flash timed over a distance, and its echo; Michelson's spinning mirror | Grade 12, Unit C | Built |
 | Particles | Photons, scattering, radioactive decay | Grade 12, Unit C | To build, shared with chemistry's remake |
 
 ## What physics needs that the platform does not have
