@@ -1613,8 +1613,11 @@ items ship or decisions change.
      (13.3), the length of a closed tube (14.4) and the passing train horn (14.3). Physics 10
      Unit 1 (Describing Motion) is complete with five, `xq-p10-1-1` to `xq-p10-1-5`: the 10 km
      drive home in km/h and m/s (OpenStax 1.3), the fastball (2.2), the impossible displacement
-     (2.2), the subway train speeding up (3.1) and the jet car's position-time graph (2.3). Next:
-     Physics 10 Units 2 to 5, then Physics 30. Still to do: an exam panel on each lesson
+     (2.2), the subway train speeding up (3.1) and the jet car's position-time graph (2.3). Unit 2
+     (Forces and Newton's Laws) is complete with six, `xq-p10-2-1` to `xq-p10-2-6`: two forces in a
+     tug of war (OpenStax 4.1), the box that slides to a stop (4.2), the lawn mower's acceleration
+     (4.3), a weight on the Moon (4.3), the skydiver at terminal velocity (4.3) and the truck that
+     hits a sedan (4.4). Next: Physics 10 Units 3 to 5, then Physics 30. Still to do: an exam panel on each lesson
      page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
 ## Hosting
