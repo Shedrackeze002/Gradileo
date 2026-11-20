@@ -1625,8 +1625,12 @@ items ship or decisions change.
      the image in a mirror (16.1) and the frequency of yellow light (15.2). Unit 5 (Electricity) is
      complete with five, `xq-p10-5-1` to `xq-p10-5-5`: 10 nC in 3 microseconds (19.1), a headlight's
      resistance (19.1), two resistors in series (19.2), three resistors in parallel (19.3) and the
-     current in a 60 W bulb (19.4), so Physics 10 has an exam video for every lesson. Next: Physics
-     30. Still to do: an exam panel on each lesson
+     current in a 60 W bulb (19.4), so Physics 10 has an exam video for every lesson. Physics 30
+     Unit 1 (Momentum and Impulse) is complete with five, `xq-p30-1-1` to `xq-p30-1-5`: a football
+     player's momentum (8.1), the force of Venus Williams' serve (8.1), a goalie catching a puck
+     (8.3), two steel carts bouncing apart (8.3) and a collision in a dark room (8.3); the motion
+     element gained `momentumDecimals` for small momenta. Next: Physics 30 Units 2 to 4. Still to
+     do: an exam panel on each lesson
      page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
 ## Hosting
