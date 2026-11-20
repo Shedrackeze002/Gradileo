@@ -647,6 +647,25 @@ See `src/video/script.ts` for every element and option. In short:
   `poster` names the clip the thumbnail is taken from, `posterAt` the share of it that has
   played (0.7), and `thumb` the parts the thumbnail shows.
 
+- `optics` (`src/video/optics.ts`) is a curved mirror or a thin lens and the image it forms.
+  Give it the `device` (`concave` or `convex` for a mirror, `converging` or `diverging` for a
+  lens), the focal length `f` as a positive number (the device gives it its sign), an `object`
+  (`{ at, height }`, in centimetres unless `unit` says otherwise) and the `view`: how far the
+  picture reaches in front of the mirror or lens and beyond it, in the same units. The object
+  stands on the left, and a phase slides it to a new distance (`to`). Parts: `points` (F and C
+  for a mirror; F on each side of a lens, and 2F), the three rays `parallel` (yellow),
+  `focal` (orange) and `central` (green), `image` (solid when real, dashed when virtual),
+  `values` (do, di and m with their signs), `kind` ("Real, upside down, smaller") and `beam`
+  (rays parallel to the axis, for a picture with no object). The rays meet exactly where
+  1 ÷ f = 1 ÷ do + 1 ÷ di puts the image; a virtual image is found by dashed lines traced back,
+  and at the focus the rays leave parallel and there is no image. A ray that would miss the
+  mirror or lens fades out, so keep the object short enough (about a third of the height in
+  view) and leave room in `view` for the image you mean to show: a virtual image can be
+  several times the object's height. The readouts sit in the bottom corner behind a mirror, or
+  under the object's side of a lens, so leave about 16 units of view there. Light runs along
+  the rays only while a clip plays. With two lines of maths under it, give it a `height` of
+  about 330.
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as

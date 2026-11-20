@@ -1442,7 +1442,14 @@ items ship or decisions change.
        echo there and back); and Michelson's eight-faced mirror, where the returning light
        misses the detector at 300 turns each second and reaches it at 536. The videos:
        `p30-3-1` (Electromagnetic Waves) and `p30-3-1-b` (The Speed of Light).
-     - Next: the rest of Unit 3 (lessons 3.2 to 3.8), then Unit 4. The physics lessons have no
+     - Written (20 November 2026): **the two videos of lesson 3.2** (mirrors). A new picture,
+       `optics` (`src/video/optics.ts`), is a curved mirror or a thin lens with an object that
+       slides along the principal axis: the three rays of a ray diagram follow it and meet where
+       the mirror equation puts the image, real in front of the mirror or virtual behind it
+       (found by dashed lines traced back), and at the focus they leave parallel. The videos:
+       `p30-3-2` (Images in Mirrors) and `p30-3-2-b` (The Mirror Equation). The same picture
+       will serve the lenses of lesson 3.4.
+     - Next: the rest of Unit 3 (lessons 3.3 to 3.8), then Unit 4. The physics lessons have no
        tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9

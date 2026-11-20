@@ -2512,6 +2512,64 @@ export interface LightEl {
   height?: number;
 }
 
+/** One step of an optics clip. */
+export interface OpticsPhase {
+  /** How long it lasts, in seconds. */
+  dur: number;
+  /** Slide the object to this distance from the mirror or lens, starting and stopping gently. */
+  to?: number;
+}
+
+export interface OpticsClip {
+  phases: OpticsPhase[];
+}
+
+/** What an optics element can show; each is a part ("m.image"). */
+export const OPTICS_PARTS = ['points', 'parallel', 'focal', 'central', 'image', 'values', 'kind', 'beam'] as const;
+
+/**
+ * A curved mirror or a thin lens, and the image it forms (src/video/optics.ts). The object stands
+ * on the principal axis in front of the mirror or lens, on the left, and a clip slides it along
+ * the axis: the rays, the image and the readouts follow it, and light runs along the rays while a
+ * clip plays. Showing the element shows the axis, the mirror or lens and the object; showing a
+ * part adds it: `points` (the focus F and, for a mirror, the centre of curvature C; a lens has F
+ * on each side and 2F beyond), the three rays from the top of the object, `parallel` (yellow:
+ * parallel to the axis, then through the focus), `focal` (orange: through the focus, then
+ * parallel) and `central` (green: through C and back for a mirror, straight through the centre
+ * of a lens), `image` (solid for a real image, dashed for a virtual one), `values` (do, di and m,
+ * with their signs), `kind` (the image in words: "Real, upside down, smaller") and `beam` (rays
+ * parallel to the axis, which meet at the focus or spread as if from it). The rays meet exactly
+ * where 1 ÷ f = 1 ÷ do + 1 ÷ di puts the image; a ray that would miss the mirror or lens is not
+ * drawn.
+ */
+export interface OpticsEl {
+  kind: 'optics';
+  id: string;
+  /** What forms the image: a curved mirror, or a thin lens. */
+  device: 'concave' | 'convex' | 'converging' | 'diverging';
+  /** The focal length, as a positive number, in `unit`s (the element gives a convex mirror or a diverging lens its negative sign). */
+  f: number;
+  /** The object: how far it is from the mirror or lens at the start, and how tall it is. Leave it out for a picture of a beam only. */
+  object?: { at: number; height: number; label?: string };
+  /** The unit of every length ("cm" otherwise). */
+  unit?: string;
+  /** How far the picture reaches, in units: in front of the mirror or lens (the object's side), and beyond it. */
+  view: [front: number, beyond: number];
+  /** Where the principal axis lies, as a share of the height from the top (0.5 otherwise). */
+  axis?: number;
+  /** The most that the mirror or lens reaches above and below the axis, in units (as much as there is room for otherwise). */
+  aperture?: number;
+  /** The significant figures of the readouts (2 otherwise). */
+  figures?: number;
+  clips: Record<string, OpticsClip>;
+  /** For the thumbnail: the clip to show, the share of it that has played (0.7 otherwise), and the parts to show (the three rays, the points and the image otherwise). */
+  poster?: string;
+  posterAt?: number;
+  thumb?: Array<(typeof OPTICS_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
 /** A body of a circle element: something that goes round a circle. */
 export interface CircleBody {
   id: string;
@@ -2606,7 +2664,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3334,6 +3392,32 @@ export function checkLight(e: LightEl): string[] {
   return problems;
 }
 
+/** Problems with an optics element: no focal length, an object that is not in front or not in the picture, clips that slide an object that is not there. */
+export function checkOptics(e: OpticsEl): string[] {
+  const problems: string[] = [];
+  if (!(e.f > 0)) problems.push('the focal length is a positive number (the kind of mirror or lens gives it its sign).');
+  if (!(e.view[0] > 0 && e.view[1] >= 0)) problems.push('the picture needs room in front of the mirror or lens.');
+  if (e.object) {
+    if (!(e.object.at > 0)) problems.push('the object must stand in front of the mirror or lens.');
+    if (e.object.at > e.view[0]) problems.push('the object starts outside the picture.');
+    if (!(e.object.height > 0)) problems.push('the object needs a height above zero.');
+  }
+  if (e.axis !== undefined && !(e.axis > 0 && e.axis < 1)) problems.push('`axis` is a share of the height, between 0 and 1.');
+  if (e.aperture !== undefined && !(e.aperture > 0)) problems.push('the aperture must be more than zero.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(OPTICS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.to !== undefined && !e.object) problems.push(`clip "${name}" slides an object, and the picture has none.`);
+      if (ph.to !== undefined && e.object && !(ph.to > 0 && ph.to <= e.view[0])) problems.push(`clip "${name}" slides the object out of the picture, or through the mirror or lens.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a transformer element: coils with no turns, a supply with no voltage, clips that ask for what the supply cannot do. */
 export function checkTransformer(e: TransformerEl): string[] {
   const problems: string[] = [];
@@ -3635,7 +3719,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -3712,6 +3796,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(LIGHT_PARTS));
         motions.set(e.id, e);
         problems.push(...checkLight(e).map((p) => `Scene ${si + 1}: light "${e.id}": ${p}`));
+      }
+      if (e.kind === 'optics') {
+        diagrams.set(e.id, new Set<string>(OPTICS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkOptics(e).map((p) => `Scene ${si + 1}: optics "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));
