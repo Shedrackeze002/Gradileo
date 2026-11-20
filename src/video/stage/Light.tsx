@@ -452,6 +452,16 @@ function Shape({ shape, x, y, faces }: { shape: LightShape; x: number; y: number
           <circle cx={x + 6} cy={y - 12} r={3} fill="#a9aabb" />
         </g>
       );
+    case 'saturn':
+      // Tilted: the back of the rings, the planet, and then the front of the rings over it.
+      return (
+        <g transform={`rotate(-18 ${x} ${y})`}>
+          <path d={`M${x - 58},${y} A58,15 0 0 1 ${x + 58},${y}`} fill="none" stroke="#c9b48a" strokeWidth={5} />
+          <circle cx={x} cy={y} r={30} fill="#e0c48a" stroke="#f6e7c4" strokeWidth={2} />
+          <path d={`M${x - 27},${y - 10} h54 M${x - 29},${y + 4} h58`} stroke="#c7a46a" strokeWidth={4} strokeLinecap="round" />
+          <path d={`M${x - 58},${y} A58,15 0 0 0 ${x + 58},${y}`} fill="none" stroke="#c9b48a" strokeWidth={5} />
+        </g>
+      );
     case 'dish':
       return (
         <g>
@@ -495,7 +505,7 @@ function drawTrip(el: LightEl, plays: Array<[string, number]>, { out, top, HIGH,
   const mid = top + (HIGH - top) * 0.52;
   const [sx, tx] = [140, WIDE - 140];
   // The flash leaves the edge of the source, and stops at the edge of the target.
-  const reach: Record<LightShape, number> = { sun: 66, earth: 40, moon: 32, dish: 40, plane: 58, lamp: 44, mirror: 12 };
+  const reach: Record<LightShape, number> = { sun: 66, earth: 40, saturn: 38, moon: 32, dish: 40, plane: 58, lamp: 44, mirror: 12 };
   const [xa, xb] = [sx + reach[trip.from.shape], tx - reach[trip.to.shape]];
   const lengthUnit = (metres: number) => (trip.length ? { n: metres / trip.length.metres, unit: trip.length.unit } : { n: metres, unit: 'm' });
 
