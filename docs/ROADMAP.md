@@ -1622,6 +1622,49 @@ items ship or decisions change.
      with the whole question, word for word with its choices (our own full wording for a variant),
      because students find a worked solution by searching for the exact question. `exam.question`
      and `exam.choices` hold it in plain text, and `checkScript` refuses an exam video without it.
+   - Scaling up (owner's "go", 20 November 2026): one exam video for every lesson, Physics first,
+     one or two units to a pull request. Physics 20 Unit 2 (Dynamics) is complete with eight: the
+     pilot's three and `xq-p20-2-1` (three forces, OpenStax 4.1), `xq-p20-2-3` (will a 50 N push
+     move the box, 5.4), `xq-p20-2-6` (two ropes pull a trolley, 5.1), `xq-p20-2-7` (where the Earth's and
+     the Moon's pulls balance, 7.2) and `xq-p20-2-8` (gravity on Rhea, 7.2). Unit 1 (Kinematics)
+     is complete with eight, `xq-p20-1-1` to `xq-p20-1-8`: Tiana's jog (OpenStax 2.1), the bird
+     that hops between branches (2.2), stop sign to stop sign (3.1), the swan's take-off (3.2), the
+     order of the equations for a falling object (3.2), a vector from its x-component (5.2), a boat
+     crossing a river (5.1) and a ball thrown at 40° that rises 10 m (5.3). Unit 3 (Circular
+     Motion, Work and Energy) is complete with seven, `xq-p20-3-1` to `xq-p20-3-7`: the record that
+     spins fastest at its edge (OpenStax 6.1), the car on a curve (6.2), the Sun's mass from
+     Mercury's orbit (7.2), carrying books without doing work (9.1), the skater's push (9.1), the
+     falling apple (9.2) and the runner's power (9.1). Unit 4 (Oscillations and Waves) is complete
+     with seven, `xq-p20-4-1` to `xq-p20-4-7`: a car's springs (5.5), what sets the period of a
+     mass on a spring (5.5), g from a pendulum (5.5), the boat on a wave (13.2), two waves meeting
+     (13.3), the length of a closed tube (14.4) and the passing train horn (14.3). Physics 10
+     Unit 1 (Describing Motion) is complete with five, `xq-p10-1-1` to `xq-p10-1-5`: the 10 km
+     drive home in km/h and m/s (OpenStax 1.3), the fastball (2.2), the impossible displacement
+     (2.2), the subway train speeding up (3.1) and the jet car's position-time graph (2.3). Unit 2
+     (Forces and Newton's Laws) is complete with six, `xq-p10-2-1` to `xq-p10-2-6`: two forces in a
+     tug of war (OpenStax 4.1), the box that slides to a stop (4.2), the lawn mower's acceleration
+     (4.3), a weight on the Moon (4.3), the skydiver at terminal velocity (4.3) and the truck that
+     hits a sedan (4.4). Unit 3 (Energy) is complete with six, `xq-p10-3-1` to `xq-p10-3-6`: the
+     weightlifter's work (OpenStax 9.1), the bullet's kinetic energy (9.2), the child on a slide
+     (9.2), the rock falling from a cliff (9.2), the car's power and time (9.1) and a lever's
+     efficiency (9.3). Unit 4 (Waves, Sound and Light) is complete with five, `xq-p10-4-1` to
+     `xq-p10-4-5`: the bird on the waves (13.2), the bobbing seagull (13.2), the bat's call (14.1),
+     the image in a mirror (16.1) and the frequency of yellow light (15.2). Unit 5 (Electricity) is
+     complete with five, `xq-p10-5-1` to `xq-p10-5-5`: 10 nC in 3 microseconds (19.1), a headlight's
+     resistance (19.1), two resistors in series (19.2), three resistors in parallel (19.3) and the
+     current in a 60 W bulb (19.4), so Physics 10 has an exam video for every lesson. Physics 30
+     Unit 1 (Momentum and Impulse) is complete with five, `xq-p30-1-1` to `xq-p30-1-5`: a football
+     player's momentum (8.1), the force of Venus Williams' serve (8.1), a goalie catching a puck
+     (8.3), two steel carts bouncing apart (8.3) and a collision in a dark room (8.3); the motion
+     element gained `momentumDecimals` for small momenta. Unit 2 (Forces and Fields) is complete
+     with ten, `xq-p30-2-1` to `xq-p30-2-10`: charging ink droplets (18.1), Coulomb's torsion
+     balance (18.2), the field near a doorknob (18.3), the field between plates and an electron
+     through 100 V (College Physics 2e 19.2 and 19.1), a battery's terminal voltage (College
+     Physics 2e 21.2), the field near a wire, the force on an electron and on a wire (20.1) and
+     the emf of a falling flux (20.3). College Physics 2e is CC BY-NC-SA, which Gradileo may use
+     because it is non-commercial. Next: Physics 30 Units 3 and 4. Still to
+     do: an exam panel on each lesson
+     page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
 ## Hosting
 

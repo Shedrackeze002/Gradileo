@@ -19,7 +19,8 @@ const DISPLACEMENT = TONES.brand;
 /** A changing number with its sign always written ("+5.0", "−3.0"), for a vector along the track. */
 const signed = (n: number) => (Math.abs(n) < 0.05 ? '0.0' : `${n > 0 ? '+' : '−'}${Math.abs(n).toFixed(1)}`);
 /** The step between the numbers on a graph's axis that reaches `max`. */
-const axisStep = (max: number) => (max <= 6 ? 1 : max <= 12 ? 2 : max <= 30 ? 5 : max <= 60 ? 10 : 20);
+/** Past 120 (a jet car's 2,000 m) it grows with the axis, so that the numbers stay a few to a side. */
+const axisStep = (max: number) => (max <= 6 ? 1 : max <= 12 ? 2 : max <= 30 ? 5 : max <= 60 ? 10 : max <= 120 ? 20 : niceStep(max));
 
 /** A wheel that turns as the cart rolls: `turn` is the angle in degrees. */
 function Wheel({ cx, cy, r, turn, color }: { cx: number; cy: number; r: number; turn: number; color: string }) {
@@ -418,7 +419,7 @@ function FallView({ el, st, w, h, state }: { el: MotionEl; st: ElState | undefin
     const rowsH = energyRows(el) * 62;
     out.push(<EnergyBars key="energy" el={el} state={state} x={w * 0.5 + 40} y={Math.max(top, (top + ground - rowsH) / 2)} w={w * 0.5 - 40} opacity={energy} total={total} stacked />);
   }
-  if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
+  if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} decimals={el.clockDecimals} />);
   if (state.note)
     out.push(
       <g key="note">
@@ -542,10 +543,17 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
       return;
     }
     // A track of two metres or less (a spring on a bench) is marked in tenths of a metre.
-    const tick = el.span[1] - el.span[0] <= 2 ? 0.1 : 1;
+    // A very long one (a jog of kilometres) is marked every 10, 100 or 1,000 metres instead, so
+    // that the marks stay at least 4 pixels apart.
+    let tick = el.span[1] - el.span[0] <= 2 ? 0.1 : 1;
+    while (S * tick < 4) tick *= 10;
     const gap = S * tick;
     // A long road is numbered every ten or twenty metres, so that the numbers do not run together.
-    const every = gap >= 46 ? 1 : gap >= 24 ? 2 : gap >= 8 ? 5 : gap >= 4 ? 10 : 20;
+    let every = gap >= 46 ? 1 : gap >= 24 ? 2 : gap >= 8 ? 5 : gap >= 4 ? 10 : 20;
+    // Numbers of four figures or more (a drive of 2 or 10 km) need wider gaps, or they run together.
+    const figures = String(Math.round(Math.max(Math.abs(el.span[0]), Math.abs(el.span[1])))).length;
+    const STEPS = [1, 2, 5, 10, 20, 50, 100];
+    if (figures >= 4) while (gap * every < figures * 10 + 22 && every < 100) every = STEPS[STEPS.indexOf(every) + 1];
     const lastMajor = Math.floor(el.span[1] / tick / every + 1e-9) * every;
     for (let i = Math.ceil(el.span[0] / tick - 1e-9); !el.plain && i <= Math.floor(el.span[1] / tick + 1e-9); i++) {
       const m = Math.round(i * tick * 10) / 10;
@@ -933,7 +941,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
   }
 
   // The clock and the note of the phase ("Slow motion").
-  if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} />);
+  if (clock > 0) out.push(<Clock key="clock" w={w} time={state.time} opacity={clock} decimals={el.clockDecimals} />);
   if (state.note)
     out.push(
       <g key="note">
@@ -989,7 +997,7 @@ export function MotionView({ el, st, w, h, plays }: { el: MotionEl; st: ElState 
               <rect x={left} y={y + 2} width={room} height={32} rx={8} fill="rgb(255 255 255 / 0.05)" />
               <rect x={r.p < 0 ? x0 - len : x0} y={y + 2} width={Math.max(0, len)} height={32} rx={8} fill={r.c} fillOpacity={last ? 0.85 : 0.75} />
               <Text x={x0 + (r.p < 0 ? 0 : Math.max(len, 0)) + 14} y={y + 18} anchor="start" color={r.c}>
-                {`${live(r.p)} kg·m/s`}
+                {`${speedText(r.p, el.momentumDecimals)} kg·m/s`}
               </Text>
             </g>
           );
