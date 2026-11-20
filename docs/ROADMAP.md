@@ -1617,7 +1617,16 @@ items ship or decisions change.
      (Forces and Newton's Laws) is complete with six, `xq-p10-2-1` to `xq-p10-2-6`: two forces in a
      tug of war (OpenStax 4.1), the box that slides to a stop (4.2), the lawn mower's acceleration
      (4.3), a weight on the Moon (4.3), the skydiver at terminal velocity (4.3) and the truck that
-     hits a sedan (4.4). Next: Physics 10 Units 3 to 5, then Physics 30. Still to do: an exam panel on each lesson
+     hits a sedan (4.4). Unit 3 (Energy) is complete with six, `xq-p10-3-1` to `xq-p10-3-6`: the
+     weightlifter's work (OpenStax 9.1), the bullet's kinetic energy (9.2), the child on a slide
+     (9.2), the rock falling from a cliff (9.2), the car's power and time (9.1) and a lever's
+     efficiency (9.3). Unit 4 (Waves, Sound and Light) is complete with five, `xq-p10-4-1` to
+     `xq-p10-4-5`: the bird on the waves (13.2), the bobbing seagull (13.2), the bat's call (14.1),
+     the image in a mirror (16.1) and the frequency of yellow light (15.2). Unit 5 (Electricity) is
+     complete with five, `xq-p10-5-1` to `xq-p10-5-5`: 10 nC in 3 microseconds (19.1), a headlight's
+     resistance (19.1), two resistors in series (19.2), three resistors in parallel (19.3) and the
+     current in a 60 W bulb (19.4), so Physics 10 has an exam video for every lesson. Next: Physics
+     30. Still to do: an exam panel on each lesson
      page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
 ## Hosting
