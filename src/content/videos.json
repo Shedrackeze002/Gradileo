@@ -128629,5 +128629,115 @@
         "working": "$V_s = V_p \\times \\dfrac{N_s}{N_p} = 12 \\times \\dfrac{4000}{200} = 240$ V. The secondary has 20 times the turns, so it has 20 times the voltage."
       }
     ]
+  },
+  "p30-3-1": {
+    "lessonId": "p30-3-1",
+    "title": "Electromagnetic Waves",
+    "duration": 381,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A charge that is shaken",
+        "t": 18.36
+      },
+      {
+        "title": "A transverse wave",
+        "t": 78.592
+      },
+      {
+        "title": "Light is one of them",
+        "t": 130.992
+      },
+      {
+        "title": "The electromagnetic spectrum",
+        "t": 171.492
+      },
+      {
+        "title": "Polarization",
+        "t": 264.532
+      },
+      {
+        "title": "Your turn",
+        "t": 306.532
+      },
+      {
+        "title": "Summary",
+        "t": 337.789
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-1:q",
+        "t": 316.404,
+        "prompt": "X-rays and radio waves both cross a vacuum. Which statement about them is correct?",
+        "choices": [
+          "X-rays travel faster, because they carry more energy",
+          "They travel at the same speed, and X-rays have the higher frequency",
+          "They travel at the same speed, and X-rays have the longer wavelength",
+          "Radio waves travel faster, because their wavelength is longer"
+        ],
+        "answer": 1,
+        "working": "Every electromagnetic wave crosses a vacuum at $c = 3.00 \\times 10^{8}$ m/s. X-rays have a much shorter wavelength than radio waves, so their frequency is much higher."
+      }
+    ]
+  },
+  "p30-3-1-b": {
+    "lessonId": "p30-3-1",
+    "title": "The Speed of Light",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The wave equation for light",
+        "t": 19.817
+      },
+      {
+        "title": "Green light",
+        "t": 70.855
+      },
+      {
+        "title": "Light takes time",
+        "t": 106.635
+      },
+      {
+        "title": "Radar",
+        "t": 143.214
+      },
+      {
+        "title": "Measuring the speed of light",
+        "t": 176.283
+      },
+      {
+        "title": "Your turn",
+        "t": 249.983
+      },
+      {
+        "title": "Summary",
+        "t": 287.893
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-1-b:q",
+        "t": 263.549,
+        "prompt": "A laser pulse is sent from the Earth to a mirror on the Moon. It returns 2.56 s later. How far away is the Moon? Use $c = 3.00 \\times 10^{8}$ m/s.",
+        "choices": [
+          "$1.17 \\times 10^{8}$ m",
+          "$7.68 \\times 10^{8}$ m",
+          "$3.84 \\times 10^{8}$ m",
+          "$1.92 \\times 10^{8}$ m"
+        ],
+        "answer": 2,
+        "working": "The pulse travels $ct = 3.00 \\times 10^{8} \\times 2.56 = 7.68 \\times 10^{8}$ m. That is there and back, so the Moon is $7.68 \\times 10^{8} \\div 2 = 3.84 \\times 10^{8}$ m away."
+      }
+    ]
   }
 }

@@ -44,7 +44,8 @@ export function speechText(say: string): string {
   // final "s" ("Tamar"). Of the rhetorical figures,
   // "synecdoche" comes out "scenic-dodge" and "litotes" "LIT-oats". Owen's "pararhyme" loses
   // its second "r" ("para-hime"). A news report's "five Ws" comes out "five W-tecas", so it is
-  // said "double-yous". "Modulo" comes out "majulo", so it is spelled "mod-yoo-low".
+  // said "double-yous". "Modulo" comes out "majulo", so it is spelled "mod-yoo-low". The physicist
+  // Michelson comes out "Mitchelson", so the name is spelled with a "k".
   return words
     .replace(/\bWs\b/g, 'double-yous')
     .replace(/\b([Mm])odulo\b/g, '$1od-yoo-low')
@@ -81,6 +82,7 @@ export function speechText(say: string): string {
     .replace(/\bHoratian\b/g, 'Horayshan')
     .replace(/\bFleance\b/g, 'Flee-ance')
     .replace(/\bTomás\b/g, 'Tomahss')
+    .replace(/\bMichelson\b/g, 'Mikelson')
     .replace(/\b([Ss])ynecdoche\b/g, '$1in-eck-duh-kee')
     .replace(/\b([Ll])itotes\b/g, '$1ie-toe-teez')
     .replace(/\b([Pp])ararhyme/g, '$1ara-rhyme')
