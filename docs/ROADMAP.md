@@ -1433,7 +1433,17 @@ items ship or decisions change.
        a `powerline` is a power station joined to a town, where stepping the voltage up ten
        times cuts the power wasted in the line a hundred times. The videos: `p30-2-10-c` (The
        Generator) and `p30-2-10-d` (Transformers).
-     - Next: the videos of Units 3 and 4. The physics lessons have no tutor recordings yet.
+     - Started (20 November 2026): **the videos of Grade 12 Unit 3, Electromagnetic Radiation**,
+       with the two of lesson 3.1. A new picture, `light` (`src/video/light.ts`), shows light as
+       an electromagnetic wave in four ways: the wave an electron sends out when it is driven up
+       and down an aerial, with its electric and magnetic fields in step and at right angles (and
+       a polarizing filter that can be turned); the spectrum, with a pointer that slides from
+       radio waves to gamma rays; a flash timed over a distance (500 s from the Sun, a radar
+       echo there and back); and Michelson's eight-faced mirror, where the returning light
+       misses the detector at 300 turns each second and reaches it at 536. The videos:
+       `p30-3-1` (Electromagnetic Waves) and `p30-3-1-b` (The Speed of Light).
+     - Next: the rest of Unit 3 (lessons 3.2 to 3.8), then Unit 4. The physics lessons have no
+       tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9
      and More Chemistry Topics) had no picture at all, and the other 262 had still diagrams. None
