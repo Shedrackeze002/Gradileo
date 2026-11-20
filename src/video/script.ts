@@ -1183,7 +1183,7 @@ export interface RayClip {
 }
 
 /** What a rays element can show over its rays; each is a part ("r.normal"). */
-export const RAYS_PARTS = ['normal', 'angles', 'toSurface', 'fronts', 'image'] as const;
+export const RAYS_PARTS = ['normal', 'angles', 'toSurface', 'fronts', 'image', 'partial'] as const;
 
 /**
  * A ray of light meeting a surface, for the physics videos (src/video/rays.ts). At a `mirror` the
@@ -1195,8 +1195,10 @@ export const RAYS_PARTS = ['normal', 'angles', 'toSurface', 'fronts', 'image'] a
  * `normal` (the line at right angles to the surface), `angles` (the angles from the normal, with
  * their sizes), `toSurface` (the angle between the incoming ray and the surface, which is not the
  * angle of incidence), `fronts` (a wide beam with its wavefronts marching along it while a clip
- * plays: closer together where the light is slower) and, at a mirror with room `behind` it,
- * `image` (where the lamp seems to be: as far behind the mirror as the lamp is in front).
+ * plays: closer together where the light is slower), at a mirror with room `behind` it, `image`
+ * (where the lamp seems to be: as far behind the mirror as the lamp is in front) and, at a
+ * boundary, `partial` (the faint ray that is reflected while most of the light crosses; it
+ * brightens as the angle nears the critical angle, beyond which all of the light is reflected).
  */
 export interface RaysEl {
   kind: 'rays';
@@ -1210,6 +1212,8 @@ export interface RaysEl {
   media?: [string, string];
   /** At a mirror: put it across the middle of the picture, with room behind it for the image. */
   behind?: boolean;
+  /** At a boundary: the light comes up from below, so the first material is drawn under the second (light in water that meets the air above it). */
+  below?: boolean;
   clips: Record<string, RayClip>;
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
@@ -2418,6 +2422,8 @@ export interface LightPhase {
   to?: number;
   /** A trip: send a flash from the source as the phase starts. */
   send?: boolean;
+  /** A prism or a fibre: turn the incoming ray steadily to this angle, in degrees (from the normal of a prism's face, or from the axis of a fibre). */
+  angle?: number;
 }
 
 export interface LightClip {
@@ -2465,11 +2471,29 @@ export interface LightSpin {
   hertz?: number;
 }
 
+/** White light that crosses a glass prism and spreads into its colours. */
+export interface LightPrism {
+  /** The angle of incidence on the first face, in degrees from its normal (10 to 85). */
+  angle: number;
+  /** The angle at the top of the prism, in degrees (60 otherwise). */
+  apex?: number;
+  /** The refractive index of the glass for red light and for violet light ([1.50, 1.56] otherwise: the gap is drawn larger than that of real glass, so that the colours can be told apart). */
+  index?: [red: number, violet: number];
+}
+
+/** A ray of light inside an optical fibre: a core of glass in a cladding of lower refractive index. */
+export interface LightFibre {
+  /** The angle between the ray and the axis of the fibre as it enters, in degrees (1 to 80). */
+  angle: number;
+  /** The refractive indices of the core and of the cladding ([1.50, 1.20] otherwise). */
+  index?: [core: number, cladding: number];
+}
+
 /** What a light element can show; each is a part ("em.magnetic"). */
-export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'values', 'scale', 'wave', 'made', 'use', 'visible', 'ionizing', 'arrows', 'clock', 'distance', 'travelled', 'turn', 'rate'] as const;
+export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'values', 'scale', 'wave', 'made', 'use', 'visible', 'ionizing', 'arrows', 'clock', 'distance', 'travelled', 'turn', 'rate', 'names', 'angles'] as const;
 
 /**
- * Light as an electromagnetic wave (src/video/light.ts). One element is one of four pictures.
+ * Light as an electromagnetic wave (src/video/light.ts). One element is one of six pictures.
  *
  * `wave` is the wave that leaves a charge driven up and down an aerial: its electric field
  * (yellow, part `electric`) is up and down, its magnetic field (violet, part `magnetic`) is at
@@ -2493,6 +2517,15 @@ export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'valu
  * turned, and the flash reaches the detector only if the next face stands where the first one
  * was. Parts: `rate` (the turns each second), `clock` (the time of the round trip), `turn` (the
  * share of a turn the mirror makes in that time) and `distance`.
+ *
+ * `prism` is white light crossing a glass prism: it grows into the picture while a clip plays, and
+ * each colour is refracted twice by Snell's law with its own refractive index, so violet is bent
+ * the most and red the least. Part: `names` (the two ends of the spectrum).
+ *
+ * `fibre` is a ray inside an optical fibre with a gentle bend. Where it meets the wall at more
+ * than the critical angle it is totally reflected, and pulses of light run along it; at less,
+ * most of the light escapes into the cladding at each bounce. Parts: `names` (the core and the
+ * cladding) and `angles` (the angle at the wall beside the critical angle).
  */
 export interface LightEl {
   kind: 'light';
@@ -2501,6 +2534,8 @@ export interface LightEl {
   spectrum?: { /** The wavelength the pointer starts at, in metres. */ at: number };
   trip?: LightTrip;
   spin?: LightSpin;
+  prism?: LightPrism;
+  fibre?: LightFibre;
   /** Seconds of the model for each second of video, for a trip or a spinning mirror (a trip one way, or a round trip of the spinning mirror, takes 2.5 seconds of video otherwise). */
   rate?: number;
   /** Significant figures of what is written (3 otherwise). */
@@ -2512,6 +2547,64 @@ export interface LightEl {
   posterAt?: number;
   clips: Record<string, LightClip>;
   /** A label at the top left of the picture. */
+  label?: string;
+  height?: number;
+}
+
+/** One step of an optics clip. */
+export interface OpticsPhase {
+  /** How long it lasts, in seconds. */
+  dur: number;
+  /** Slide the object to this distance from the mirror or lens, starting and stopping gently. */
+  to?: number;
+}
+
+export interface OpticsClip {
+  phases: OpticsPhase[];
+}
+
+/** What an optics element can show; each is a part ("m.image"). */
+export const OPTICS_PARTS = ['points', 'parallel', 'focal', 'central', 'image', 'values', 'kind', 'beam'] as const;
+
+/**
+ * A curved mirror or a thin lens, and the image it forms (src/video/optics.ts). The object stands
+ * on the principal axis in front of the mirror or lens, on the left, and a clip slides it along
+ * the axis: the rays, the image and the readouts follow it, and light runs along the rays while a
+ * clip plays. Showing the element shows the axis, the mirror or lens and the object; showing a
+ * part adds it: `points` (the focus F and, for a mirror, the centre of curvature C; a lens has F
+ * on each side and 2F beyond), the three rays from the top of the object, `parallel` (yellow:
+ * parallel to the axis, then through the focus), `focal` (orange: through the focus, then
+ * parallel) and `central` (green: through C and back for a mirror, straight through the centre
+ * of a lens), `image` (solid for a real image, dashed for a virtual one), `values` (do, di and m,
+ * with their signs), `kind` (the image in words: "Real, upside down, smaller") and `beam` (rays
+ * parallel to the axis, which meet at the focus or spread as if from it). The rays meet exactly
+ * where 1 ÷ f = 1 ÷ do + 1 ÷ di puts the image; a ray that would miss the mirror or lens is not
+ * drawn.
+ */
+export interface OpticsEl {
+  kind: 'optics';
+  id: string;
+  /** What forms the image: a curved mirror, or a thin lens. */
+  device: 'concave' | 'convex' | 'converging' | 'diverging';
+  /** The focal length, as a positive number, in `unit`s (the element gives a convex mirror or a diverging lens its negative sign). */
+  f: number;
+  /** The object: how far it is from the mirror or lens at the start, and how tall it is. Leave it out for a picture of a beam only. */
+  object?: { at: number; height: number; label?: string };
+  /** The unit of every length ("cm" otherwise). */
+  unit?: string;
+  /** How far the picture reaches, in units: in front of the mirror or lens (the object's side), and beyond it. */
+  view: [front: number, beyond: number];
+  /** Where the principal axis lies, as a share of the height from the top (0.5 otherwise). */
+  axis?: number;
+  /** The most that the mirror or lens reaches above and below the axis, in units (as much as there is room for otherwise). */
+  aperture?: number;
+  /** The significant figures of the readouts (2 otherwise). */
+  figures?: number;
+  clips: Record<string, OpticsClip>;
+  /** For the thumbnail: the clip to show, the share of it that has played (0.7 otherwise), and the parts to show (the three rays, the points and the image otherwise). */
+  poster?: string;
+  posterAt?: number;
+  thumb?: Array<(typeof OPTICS_PARTS)[number]>;
   label?: string;
   height?: number;
 }
@@ -2610,7 +2703,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3071,6 +3164,7 @@ export function checkRays(e: RaysEl): string[] {
   if (e.surface === 'boundary' && !(e.speeds && e.speeds[0] > 0 && e.speeds[1] > 0)) problems.push('a boundary needs the two speeds, both above zero.');
   if (e.surface === 'mirror' && (e.speeds || e.media)) problems.push('a mirror has no second material: leave out the speeds and the media.');
   if (e.surface === 'boundary' && e.behind) problems.push('only a mirror has an image behind it.');
+  if (e.surface === 'mirror' && e.below) problems.push('only a boundary can be met from below.');
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     for (const ph of clip.phases) {
@@ -3297,8 +3391,8 @@ export function checkInduction(e: InductionEl): string[] {
 /** Problems with a light element: no picture or more than one, a wave with no frequency, a trip of no length, clips that ask for what the picture does not have. */
 export function checkLight(e: LightEl): string[] {
   const problems: string[] = [];
-  const pictures = [e.wave, e.spectrum, e.trip, e.spin].filter((picture) => picture !== undefined).length;
-  if (pictures !== 1) problems.push('give it exactly one of `wave`, `spectrum`, `trip` and `spin`.');
+  const pictures = [e.wave, e.spectrum, e.trip, e.spin, e.prism, e.fibre].filter((picture) => picture !== undefined).length;
+  if (pictures !== 1) problems.push('give it exactly one of `wave`, `spectrum`, `trip`, `spin`, `prism` and `fibre`.');
   const inSpectrum = (metres: number) => metres >= 1e-13 && metres <= 1e4;
   if (e.wave) {
     if (!(e.wave.hertz > 0)) problems.push('the wave needs a frequency above zero.');
@@ -3315,6 +3409,15 @@ export function checkLight(e: LightEl): string[] {
   if (e.spin) {
     if (!(e.spin.metres > 0)) problems.push('the fixed mirror needs a distance above zero.');
     if (e.spin.hertz !== undefined && !(e.spin.hertz >= 0)) problems.push('the spinning mirror cannot turn a negative number of times each second.');
+  }
+  if (e.prism) {
+    if (!(e.prism.angle >= 10 && e.prism.angle <= 85)) problems.push('the ray must meet the prism at 10° to 85° from the normal.');
+    if (e.prism.apex !== undefined && !(e.prism.apex >= 30 && e.prism.apex <= 90)) problems.push('the angle at the top of the prism must be from 30° to 90°.');
+    if (e.prism.index && !(e.prism.index[0] > 1 && e.prism.index[1] >= e.prism.index[0])) problems.push('the glass needs a refractive index above 1, and no smaller for violet light than for red.');
+  }
+  if (e.fibre) {
+    if (!(e.fibre.angle >= 1 && e.fibre.angle <= 80)) problems.push('the ray must enter the fibre at 1° to 80° from its axis.');
+    if (e.fibre.index && !(e.fibre.index[1] >= 1 && e.fibre.index[0] > e.fibre.index[1])) problems.push('the core needs a larger refractive index than the cladding, and neither can be less than 1.');
   }
   if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
   if (e.rate !== undefined && !e.trip && !e.spin) problems.push('only a trip or a spinning mirror has a rate.');
@@ -3333,6 +3436,35 @@ export function checkLight(e: LightEl): string[] {
       if (ph.to !== undefined && !e.spectrum) problems.push(`clip "${name}" slides a pointer, and the picture is not a spectrum.`);
       if (ph.to !== undefined && e.spectrum && !inSpectrum(ph.to)) problems.push(`clip "${name}" slides the pointer off the spectrum (it runs from 10⁻¹³ m to 10⁴ m).`);
       if (ph.send && !e.trip) problems.push(`clip "${name}" sends a flash, and the picture is not a trip.`);
+      if (ph.angle !== undefined && !e.prism && !e.fibre) problems.push(`clip "${name}" turns a ray, and the picture is not a prism or a fibre.`);
+      if (ph.angle !== undefined && e.prism && !(ph.angle >= 10 && ph.angle <= 85)) problems.push(`clip "${name}" turns the ray past what the prism can take (10° to 85°).`);
+      if (ph.angle !== undefined && e.fibre && !(ph.angle >= 1 && ph.angle <= 80)) problems.push(`clip "${name}" turns the ray past what the fibre can take (1° to 80°).`);
+    }
+  }
+  return problems;
+}
+
+/** Problems with an optics element: no focal length, an object that is not in front or not in the picture, clips that slide an object that is not there. */
+export function checkOptics(e: OpticsEl): string[] {
+  const problems: string[] = [];
+  if (!(e.f > 0)) problems.push('the focal length is a positive number (the kind of mirror or lens gives it its sign).');
+  if (!(e.view[0] > 0 && e.view[1] >= 0)) problems.push('the picture needs room in front of the mirror or lens.');
+  if (e.object) {
+    if (!(e.object.at > 0)) problems.push('the object must stand in front of the mirror or lens.');
+    if (e.object.at > e.view[0]) problems.push('the object starts outside the picture.');
+    if (!(e.object.height > 0)) problems.push('the object needs a height above zero.');
+  }
+  if (e.axis !== undefined && !(e.axis > 0 && e.axis < 1)) problems.push('`axis` is a share of the height, between 0 and 1.');
+  if (e.aperture !== undefined && !(e.aperture > 0)) problems.push('the aperture must be more than zero.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(OPTICS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.to !== undefined && !e.object) problems.push(`clip "${name}" slides an object, and the picture has none.`);
+      if (ph.to !== undefined && e.object && !(ph.to > 0 && ph.to <= e.view[0])) problems.push(`clip "${name}" slides the object out of the picture, or through the mirror or lens.`);
     }
   }
   return problems;
@@ -3639,7 +3771,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -3716,6 +3848,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(LIGHT_PARTS));
         motions.set(e.id, e);
         problems.push(...checkLight(e).map((p) => `Scene ${si + 1}: light "${e.id}": ${p}`));
+      }
+      if (e.kind === 'optics') {
+        diagrams.set(e.id, new Set<string>(OPTICS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkOptics(e).map((p) => `Scene ${si + 1}: optics "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

@@ -609,7 +609,7 @@ See `src/video/script.ts` for every element and option. In short:
   The check stops a line that would waste all the power it is sent.
 
 - `light` (`src/video/light.ts`) is light as an electromagnetic wave. One element is one of
-  four pictures, and time passes only while a clip plays.
+  six pictures, and time passes only while a clip plays.
   - `wave` is the wave an electron sends out when it is driven up and down an aerial, at `hertz`
     cycles for each second of video, taking `cross` seconds to cross the picture (3). The
     electric field is drawn up and down in yellow, and the magnetic field towards you and away in
@@ -644,8 +644,43 @@ See `src/video/script.ts` for every element and option. In short:
     takes 2.5 s of video unless a `rate` is given. Parts: `rate` (the turns each second),
     `turn` (the share of a turn made during the round trip), `clock` (the time of the round
     trip) and `distance`.
+  - `prism` (`{ angle, apex, index }`) is white light that meets a glass prism at `angle` degrees
+    from the normal of its first face, and lands on a screen. The light grows into the picture
+    while a clip plays, and each colour is refracted twice by Snell's law with its own index
+    (`index` is `[red, violet]`, 1.50 and 1.56 otherwise, a wider gap than real glass has so that
+    the colours can be told apart), so violet is bent the most. A phase turns the incoming ray
+    (`angle`). Parts: `names` (which end is bent least and which most) and `values` (the two
+    indices).
+  - `fibre` (`{ angle, index }`) is a ray that enters an optical fibre with a gentle bend at
+    `angle` degrees from its axis (`index` is `[core, cladding]`, 1.50 and 1.20 otherwise). Where
+    it meets the wall beyond the critical angle it is totally reflected, pulses of light run
+    along it and the detector at the far end lights; at less, three quarters of the light
+    escapes at each bounce. A phase turns the incoming ray (`angle`). Parts: `names` (the core
+    and the cladding, with their indices) and `angles` (the angle at the first bounce beside the
+    critical angle, and whether the light is held in).
   `poster` names the clip the thumbnail is taken from, `posterAt` the share of it that has
   played (0.7), and `thumb` the parts the thumbnail shows.
+
+- `optics` (`src/video/optics.ts`) is a curved mirror or a thin lens and the image it forms.
+  Give it the `device` (`concave` or `convex` for a mirror, `converging` or `diverging` for a
+  lens), the focal length `f` as a positive number (the device gives it its sign), an `object`
+  (`{ at, height }`, in centimetres unless `unit` says otherwise) and the `view`: how far the
+  picture reaches in front of the mirror or lens and beyond it, in the same units. The object
+  stands on the left, and a phase slides it to a new distance (`to`). Parts: `points` (F and C
+  for a mirror; F on each side of a lens, and 2F), the three rays `parallel` (yellow),
+  `focal` (orange) and `central` (green), `image` (solid when real, dashed when virtual),
+  `values` (do, di and m with their signs), `kind` ("Real, upside down, smaller") and `beam`
+  (rays parallel to the axis, for a picture with no object). The rays meet exactly where
+  1 ÷ f = 1 ÷ do + 1 ÷ di puts the image; a virtual image is found by dashed lines traced back,
+  and at the focus the rays leave parallel and there is no image. A ray that would miss the
+  mirror or lens fades out, so keep the object short enough (about a third of the height in
+  view) and leave room in `view` for the image you mean to show: a virtual image can be
+  several times the object's height. The readouts sit in the bottom corner behind a mirror, so
+  leave about 16 units of view there; a lens has them in one row along the foot of the picture,
+  on the object's side. `axis` moves the principal axis (a share of the height from the top),
+  to make room for a tall virtual image, and `aperture` keeps a lens short enough to clear its
+  readouts. Light runs along the rays only while a clip plays. With two lines of maths under
+  it, give it a `height` of about 330.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
@@ -673,6 +708,12 @@ See `src/video/script.ts` for every element and option. In short:
   of incidence), `fronts` (a wide beam whose wavefronts march while a clip plays, closer together
   where the wave is slower, each front in one piece across the boundary) and, on a mirror with
   `behind: true`, `image` (the lamp's image, as far behind the mirror as the lamp is in front).
+  At a boundary, `partial` adds the faint ray that is reflected while the rest of the light
+  crosses: its brightness follows Fresnel's equations, so it grows as the angle nears the
+  critical angle while the refracted ray dims, and beyond that angle all of the light is
+  reflected. `below: true` draws a boundary with the light coming up from underneath (light in
+  water that meets the air above it). To stop a ray at a critical angle, turn it to a hair
+  less than the angle, so that the refracted ray can still be drawn along the surface.
   Light is yellow, the angle of incidence blue, reflection orange and refraction pink.
 
 - `circuit` (`src/video/circuit.ts`) is for electricity: a battery of `volts`, a switch, and up to

@@ -128739,5 +128739,351 @@
         "working": "The pulse travels $ct = 3.00 \\times 10^{8} \\times 2.56 = 7.68 \\times 10^{8}$ m. That is there and back, so the Moon is $7.68 \\times 10^{8} \\div 2 = 3.84 \\times 10^{8}$ m away."
       }
     ]
+  },
+  "p30-3-2": {
+    "lessonId": "p30-3-2",
+    "title": "Images in Mirrors",
+    "duration": 351,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The law of reflection",
+        "t": 23.93
+      },
+      {
+        "title": "Real and virtual images",
+        "t": 59.293
+      },
+      {
+        "title": "Curved mirrors",
+        "t": 92.103
+      },
+      {
+        "title": "Three rays that find the image",
+        "t": 145.303
+      },
+      {
+        "title": "Moving the object",
+        "t": 194.864
+      },
+      {
+        "title": "A convex mirror",
+        "t": 243.264
+      },
+      {
+        "title": "Your turn",
+        "t": 278.071
+      },
+      {
+        "title": "Summary",
+        "t": 308.398
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-2:q",
+        "t": 287.915,
+        "prompt": "An object stands between $C$ and $F$ of a concave mirror. What is its image like?",
+        "choices": [
+          "Virtual, upright and larger",
+          "Real, upside down and smaller",
+          "Virtual, upright and smaller",
+          "Real, upside down and larger"
+        ],
+        "answer": 3,
+        "working": "Between $C$ and $F$, the reflected rays meet in front of the mirror, beyond $C$. The image is real, upside down and larger than the object."
+      }
+    ]
+  },
+  "p30-3-2-b": {
+    "lessonId": "p30-3-2",
+    "title": "The Mirror Equation",
+    "duration": 347,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The mirror equation",
+        "t": 17.809
+      },
+      {
+        "title": "What the signs mean",
+        "t": 59.809
+      },
+      {
+        "title": "A real image",
+        "t": 90.788
+      },
+      {
+        "title": "A magnifying mirror",
+        "t": 149.334
+      },
+      {
+        "title": "A convex mirror",
+        "t": 200.7
+      },
+      {
+        "title": "Two traps",
+        "t": 238.538
+      },
+      {
+        "title": "Your turn",
+        "t": 264.586
+      },
+      {
+        "title": "Summary",
+        "t": 307.727
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-2-b:q",
+        "t": 278.925,
+        "prompt": "An object is 36 cm from a concave mirror of focal length 12 cm. Where is its image, and what is the magnification?",
+        "choices": [
+          "18 cm in front of the mirror, $m = -0.50$",
+          "18 cm behind the mirror, $m = +0.50$",
+          "24 cm in front of the mirror, $m = -0.67$",
+          "9.0 cm in front of the mirror, $m = -0.25$"
+        ],
+        "answer": 0,
+        "working": "$\\tfrac{1}{d_i} = \\tfrac{1}{12} - \\tfrac{1}{36} = \\tfrac{2}{36}$, so $d_i = 18$ cm: a real image, in front of the mirror. Then $m = -\\tfrac{18}{36} = -0.50$."
+      }
+    ]
+  },
+  "p30-3-3": {
+    "lessonId": "p30-3-3",
+    "title": "Refraction and Snell's Law",
+    "duration": 388,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The refractive index",
+        "t": 19.21
+      },
+      {
+        "title": "Why light bends",
+        "t": 74.428
+      },
+      {
+        "title": "Snell's law",
+        "t": 137.028
+      },
+      {
+        "title": "Finding an index",
+        "t": 188.098
+      },
+      {
+        "title": "What changes, and what does not",
+        "t": 231.018
+      },
+      {
+        "title": "One trap",
+        "t": 287.477
+      },
+      {
+        "title": "Your turn",
+        "t": 310.077
+      },
+      {
+        "title": "Summary",
+        "t": 354.817
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-3:q",
+        "t": 325.594,
+        "prompt": "A ray of light in air strikes water, of refractive index 1.33, at 60.0° to the normal. What is the angle of refraction?",
+        "choices": [
+          "45.1°",
+          "40.6°",
+          "22.1°",
+          "79.8°"
+        ],
+        "answer": 1,
+        "working": "$1.00 \\times \\sin 60.0° = 1.33 \\times \\sin\\theta_2$, so $\\sin\\theta_2 = \\tfrac{0.8660}{1.33} = 0.6511$ and $\\theta_2 = 40.6°$."
+      }
+    ]
+  },
+  "p30-3-3-b": {
+    "lessonId": "p30-3-3",
+    "title": "Total Internal Reflection",
+    "duration": 382,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "From glass into air",
+        "t": 16.66
+      },
+      {
+        "title": "The critical angle",
+        "t": 76.36
+      },
+      {
+        "title": "Glass under water",
+        "t": 132.775
+      },
+      {
+        "title": "Does the ray escape?",
+        "t": 162.141
+      },
+      {
+        "title": "Optical fibres",
+        "t": 206.795
+      },
+      {
+        "title": "Dispersion",
+        "t": 262.395
+      },
+      {
+        "title": "Your turn",
+        "t": 297.395
+      },
+      {
+        "title": "Summary",
+        "t": 341.833
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-3-b:q",
+        "t": 310.309,
+        "prompt": "Light travels in diamond, of refractive index 2.42, towards a boundary with air. What is the critical angle?",
+        "choices": [
+          "65.6°",
+          "41.1°",
+          "24.4°",
+          "There is none: light always gets out of diamond"
+        ],
+        "answer": 2,
+        "working": "$\\sin\\theta_c = \\tfrac{n_2}{n_1} = \\tfrac{1.00}{2.42} = 0.4132$, so $\\theta_c = 24.4°$."
+      }
+    ]
+  },
+  "p30-3-4": {
+    "lessonId": "p30-3-4",
+    "title": "Images in Lenses",
+    "duration": 311,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two kinds of lens",
+        "t": 20.163
+      },
+      {
+        "title": "Three rays that find the image",
+        "t": 73.163
+      },
+      {
+        "title": "Moving the object",
+        "t": 128.663
+      },
+      {
+        "title": "A diverging lens",
+        "t": 199.463
+      },
+      {
+        "title": "Your turn",
+        "t": 232.126
+      },
+      {
+        "title": "Summary",
+        "t": 265.934
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-4:q",
+        "t": 243.049,
+        "prompt": "A converging lens is held closer to a stamp than its focal length. What is the image of the stamp like?",
+        "choices": [
+          "Real, upside down and larger",
+          "Real, upright and smaller",
+          "Virtual, upside down and larger",
+          "Virtual, upright and larger"
+        ],
+        "answer": 3,
+        "working": "Inside the focus, the rays spread apart beyond the lens. Traced back, they meet on the same side as the stamp, at a virtual, upright, larger image."
+      }
+    ]
+  },
+  "p30-3-4-b": {
+    "lessonId": "p30-3-4",
+    "title": "The Thin Lens Equation",
+    "duration": 364,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "The thin lens equation",
+        "t": 16.617
+      },
+      {
+        "title": "What the signs mean",
+        "t": 61.095
+      },
+      {
+        "title": "A magnifying glass",
+        "t": 93.409
+      },
+      {
+        "title": "A diverging lens",
+        "t": 149.407
+      },
+      {
+        "title": "A projector",
+        "t": 187.352
+      },
+      {
+        "title": "Two traps",
+        "t": 243.433
+      },
+      {
+        "title": "Your turn",
+        "t": 275.459
+      },
+      {
+        "title": "Summary",
+        "t": 322.554
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-3-4-b:q",
+        "t": 289.546,
+        "prompt": "An object is 20 cm from a diverging lens of focal length 20 cm. Where is its image, and what is the magnification?",
+        "choices": [
+          "10 cm from the lens, on the object's side; $m = +0.50$",
+          "10 cm from the lens, on the far side; $m = -0.50$",
+          "There is no image, since the object is at the focus",
+          "40 cm from the lens, on the object's side; $m = +2.0$"
+        ],
+        "answer": 0,
+        "working": "The lens is diverging, so $f = -20$ cm. $\\tfrac{1}{d_i} = \\tfrac{1}{-20} - \\tfrac{1}{20} = -\\tfrac{2}{20}$, so $d_i = -10$ cm: a virtual image. Then $m = -\\tfrac{-10}{20} = +0.50$."
+      }
+    ]
   }
 }

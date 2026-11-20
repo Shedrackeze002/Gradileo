@@ -1,5 +1,5 @@
 /**
- * Light as an electromagnetic wave (src/video/light.ts works out all four pictures).
+ * Light as an electromagnetic wave (src/video/light.ts works out all six pictures).
  *
  * A wave: an electron is driven up and down an aerial at the left, and the wave runs to the
  * right. Its electric field is yellow arrows that point up and down; its magnetic field is violet
@@ -13,10 +13,16 @@
  *
  * A spinning mirror: Michelson's eight-sided mirror, a light source over it, a detector under
  * it, and a fixed mirror far to the right.
+ *
+ * A prism: white light that comes in from the left, crosses a glass prism and lands on a screen
+ * as a spectrum, each colour on the path Snell's law gives it.
+ *
+ * A fibre: a lamp at one end of an optical fibre with a gentle bend, a ray that zigzags along the
+ * core, and a detector at the far end.
  */
 import type { ReactElement } from 'react';
 import type { LightEl, LightShape } from '../script.ts';
-import { C, FACE, REGIONS, TOLERANCE, chargeAt, fieldAt, lightWaveAt, realHertz, realMetres, regionOf, roundTrip, samplePixels, spectrumAt, spectrumShare, spinAt, tiltOf, tripAt, tripMetres, turnInTrip, visibleColour } from '../light.ts';
+import { C, FACE, FIBRE, PRISM_COLOURS, REGIONS, TOLERANCE, chargeAt, fibreAt, fibreCentre, fibreCritical, fibreIndex, fibrePath, fibreSlope, fieldAt, lightWaveAt, prismAt, prismIndex, prismPath, prismShape, realHertz, realMetres, reflectRay, regionOf, roundTrip, samplePixels, spectrumAt, spectrumShare, spinAt, tiltOf, tripAt, tripMetres, turnInTrip, visibleColour, type Vec } from '../light.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { Arrow, clamp01, FONT, INK2, Text } from './motionKit.tsx';
 import { TONES } from './tex.ts';
@@ -703,6 +709,269 @@ function drawSpin(el: LightEl, plays: Array<[string, number]>, { out, top, HIGH,
   if (clockPart > 0) out.push(<Text key="clock" x={WIDE - 36} y={HIGH - 30} anchor="end" size={21} color={INK2} opacity={clockPart}>{`Round trip: ${figuresOf(trip * 1e6, 3)} μs`}</Text>);
 }
 
+// ── A prism ───────────────────────────────────────────────────────────────────────────────────
+
+/** How fast light grows into the picture of a prism or a fibre, and how fast its bright stretches run, in pixels each second. */
+const GROW = 520;
+const FLOW = 150;
+
+const lengthOf = (pts: Vec[]) => pts.slice(1).reduce((sum, q, i) => sum + Math.hypot(q[0] - pts[i][0], q[1] - pts[i][1]), 0);
+const pathOf = (pts: Vec[]) => pts.map(([x, y], i) => `${i ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+
+function drawPrism(el: LightEl, plays: Array<[string, number]>, { out, top, HIGH, part }: Frame): void {
+  const state = prismAt(el, plays);
+  const [namesPart, valuesPart] = ['names', 'values'].map(part);
+  const shape = prismShape(el);
+  const mid = top + (HIGH - top) / 2;
+  // The sloping sides are as long as the room allows, up to 310 pixels.
+  const SIDE = Math.min(310, ((HIGH - top) * 0.66) / shape.top[1]);
+  const [px, base] = [392, mid + (SIDE * shape.top[1]) / 2 + 4];
+  const at = ([x, y]: Vec): Vec => [px + SIDE * x, base - SIDE * y];
+  const screen = WIDE - 92;
+  const box = { left: 30, right: screen, top: top + 14, bottom: HIGH - 14 };
+  /** Where a ray from a point on the picture, in a direction given with y upwards, meets the edge of the room (or the screen). */
+  const reach = (from: Vec, [dx, dy]: Vec): Vec => {
+    let t = 1e9;
+    if (dx > 1e-9) t = Math.min(t, (box.right - from[0]) / dx);
+    if (dx < -1e-9) t = Math.min(t, (box.left - from[0]) / dx);
+    if (dy > 1e-9) t = Math.min(t, (from[1] - box.top) / dy);
+    if (dy < -1e-9) t = Math.min(t, (from[1] - box.bottom) / dy);
+    return [from[0] + dx * t, from[1] - dy * t];
+  };
+
+  const white = prismPath(el, state.angle, 560);
+  const enter = at(white.enter);
+  const start = reach(enter, [-white.arrive[0], -white.arrive[1]]);
+  const arriving = Math.hypot(enter[0] - start[0], enter[1] - start[1]);
+  const grown = state.time * GROW;
+
+  out.push(
+    <g key="screen">
+      <line x1={screen + 3} y1={top + 40} x2={screen + 3} y2={HIGH - 22} stroke="#e8ecff" strokeWidth={5} strokeLinecap="round" />
+      <Text x={screen + 3} y={top + 20} size={18} color={INK2}>Screen</Text>
+    </g>,
+  );
+  out.push(
+    <g key="prism">
+      <polygon points={[shape.left, shape.top, shape.right].map((corner) => at(corner).join(',')).join(' ')} fill="rgb(150 190 255 / 0.13)" stroke="#cfe0ff" strokeWidth={2.5} strokeLinejoin="round" />
+      <Text x={px} y={Math.min(HIGH - 20, base + 24)} size={18} color={INK2}>Glass prism</Text>
+    </g>,
+  );
+
+  // The white light that arrives.
+  if (grown > 0)
+    out.push(
+      <g key="white">
+        <path d={pathOf([start, enter])} stroke="#fffdf2" strokeWidth={5} strokeLinecap="round" fill="none" strokeDasharray={`${Math.min(grown, arriving).toFixed(1)} 9999`} style={{ filter: `drop-shadow(0 0 6px ${LIGHT}aa)` }} />
+        <Text x={(start[0] + enter[0]) / 2 - 16} y={(start[1] + enter[1]) / 2 - 30} size={19} color="#fffdf2" opacity={clamp01(grown / 120)}>White light</Text>
+      </g>,
+    );
+
+  // Each colour takes its own path through the glass, and on to the screen.
+  const half = (((el.prism!.apex ?? 60) / 2) * Math.PI) / 180;
+  const colours: ReactElement[] = [];
+  const flows: ReactElement[] = [];
+  const ends: Array<{ nm: number; pts: Vec[]; lands: boolean }> = [];
+  let longest = 0;
+  for (const nm of PRISM_COLOURS) {
+    const path = prismPath(el, state.angle, nm);
+    const leave = at(path.leave);
+    let pts: Vec[];
+    let lands = false;
+    if (path.out) {
+      const end = reach(leave, path.out);
+      lands = end[0] >= screen - 0.5;
+      pts = [enter, leave, end];
+    } else {
+      // No light can leave by the second face: it is reflected down to the base of the prism.
+      const back = reflectRay(path.inside, [-Math.cos(half), -Math.sin(half)]);
+      const t = back[1] < -1e-9 ? -path.leave[1] / back[1] : 0;
+      pts = [enter, leave, at([path.leave[0] + back[0] * t, path.leave[1] + back[1] * t])];
+    }
+    const length = lengthOf(pts);
+    longest = Math.max(longest, length);
+    ends.push({ nm, pts, lands });
+    const colour = `rgb(${visibleColour(nm).join(' ')})`;
+    const shown = Math.max(0, Math.min(grown - arriving, length));
+    if (shown <= 0) continue;
+    colours.push(<path key={nm} d={pathOf(pts)} stroke={colour} strokeWidth={3.4} strokeLinejoin="round" fill="none" strokeDasharray={`${shown.toFixed(1)} 9999`} />);
+    flows.push(<path key={nm} d={pathOf(pts)} stroke={colour} strokeWidth={6} strokeLinejoin="round" strokeLinecap="round" fill="none" strokeDasharray="22 128" strokeDashoffset={(arriving - state.time * FLOW).toFixed(1)} />);
+    if (lands && shown >= length) colours.push(<circle key={`dot${nm}`} cx={screen} cy={pts[2][1]} r={6.5} fill={colour} />);
+  }
+  if (colours.length) out.push(<g key="colours" style={{ mixBlendMode: 'screen' }}>{colours}</g>);
+  // Once the light has reached the screen, brighter stretches run along it, so that the way it goes still shows.
+  const whole = clamp01((grown - arriving - longest) / 80);
+  if (whole > 0)
+    out.push(
+      <g key="flow" opacity={0.8 * whole} style={{ mixBlendMode: 'screen' }}>
+        <path d={pathOf([start, enter])} stroke="#fffdf2" strokeWidth={6} strokeLinecap="round" fill="none" strokeDasharray="22 128" strokeDashoffset={(-(state.time * FLOW)).toFixed(1)} />
+        {flows}
+      </g>,
+    );
+
+  if (namesPart > 0 && ends.length) {
+    const [red, violet] = [ends[0], ends[ends.length - 1]];
+    const along = ({ pts }: { pts: Vec[] }, share: number): Vec => [pts[1][0] + (pts[2][0] - pts[1][0]) * share, pts[1][1] + (pts[2][1] - pts[1][1]) * share];
+    const [r, v] = [along(red, 0.56), along(violet, 0.74)];
+    // Red is the less bent of the two, so its name goes on the outer side of the fan, and violet's on the other. The fan slopes, so each name is set to the side that the light leaves clear.
+    const side = r[1] <= v[1] ? -1 : 1;
+    const falls = (red.pts[2][1] - red.pts[1][1]) * side < 0;
+    out.push(
+      <g key="names" opacity={namesPart * whole}>
+        <Text x={r[0] + (falls ? 12 : -12)} y={r[1] + side * 30} anchor={falls ? 'start' : 'end'} size={20} color={`rgb(${visibleColour(660).join(' ')})`}>Red: bent least</Text>
+        <Text x={v[0] + (falls ? -12 : 12)} y={v[1] - side * 30} anchor={falls ? 'end' : 'start'} size={20} color={`rgb(${visibleColour(430).join(' ')})`}>Violet: bent most</Text>
+      </g>,
+    );
+  }
+  if (valuesPart > 0)
+    out.push(
+      <g key="values" opacity={valuesPart}>
+        <Text x={36} y={top + 32} anchor="start" size={20} color={INK2}>In this glass</Text>
+        <Text x={36} y={top + 60} anchor="start" size={21} color={`rgb(${visibleColour(660).join(' ')})`}>{`Red: n = ${prismIndex(el, 700).toFixed(2)}`}</Text>
+        <Text x={36} y={top + 88} anchor="start" size={21} color={`rgb(${visibleColour(430).join(' ')})`}>{`Violet: n = ${prismIndex(el, 400).toFixed(2)}`}</Text>
+      </g>,
+    );
+}
+
+// ── An optical fibre ──────────────────────────────────────────────────────────────────────────
+
+const CORE = '#9fd0ff';
+
+function drawFibre(el: LightEl, plays: Array<[string, number]>, { out, top, HIGH, part }: Frame): void {
+  const state = fibreAt(el, plays);
+  const path = fibrePath(el, state.angle);
+  const [namesPart, anglesPart] = ['names', 'angles'].map(part);
+  const mid = top + (HIGH - top) / 2 + 8;
+  const [x0, K] = [96, (WIDE - 192) / FIBRE.length];
+  const at = ([x, y]: Vec): Vec => [x0 + K * x, mid - K * y];
+  const COAT = 24;
+
+  // The core, and the cladding round it.
+  const wall = (offset: number): Vec[] => Array.from({ length: 101 }, (_, k) => at([k * 10, fibreCentre(k * 10) + offset]));
+  const band = (a: number, b: number) => [...wall(a), ...wall(b).reverse()].map((q) => `${q[0].toFixed(1)},${q[1].toFixed(1)}`).join(' ');
+  out.push(
+    <g key="fibre">
+      <polygon points={band(FIBRE.half + COAT, FIBRE.half)} fill="rgb(201 198 232 / 0.2)" />
+      <polygon points={band(-FIBRE.half, -FIBRE.half - COAT)} fill="rgb(201 198 232 / 0.2)" />
+      <polygon points={band(FIBRE.half, -FIBRE.half)} fill="rgb(120 190 255 / 0.13)" />
+      {[FIBRE.half + COAT, -FIBRE.half - COAT].map((offset) => (
+        <path key={offset} d={pathOf(wall(offset))} fill="none" stroke={INK3} strokeWidth={1.5} />
+      ))}
+      {[FIBRE.half, -FIBRE.half].map((offset) => (
+        <path key={offset} d={pathOf(wall(offset))} fill="none" stroke={CORE} strokeWidth={2.2} opacity={0.85} />
+      ))}
+    </g>,
+  );
+
+  // The ray: the corners of its path on the picture, and how far along it each one is.
+  const pts = path.points.map((q) => at(q.at));
+  const far: number[] = [0];
+  for (let i = 1; i < pts.length; i++) far.push(far[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  const total = far[far.length - 1];
+  const grown = Math.min(state.time * GROW, total);
+  /** The share of the light that is left on a stretch of the path. */
+  const strengthOf = (i: number) => path.points[i + 1].strength;
+  const rays: ReactElement[] = [];
+  for (let i = 0; i + 1 < pts.length && far[i] < grown; i++) {
+    const share = Math.min(1, (grown - far[i]) / (far[i + 1] - far[i] || 1));
+    const [a, b] = [pts[i], pts[i + 1]];
+    rays.push(<line key={i} x1={a[0]} y1={a[1]} x2={a[0] + (b[0] - a[0]) * share} y2={a[1] + (b[1] - a[1]) * share} stroke={LIGHT} strokeWidth={4} strokeLinecap="round" opacity={Math.max(0.1, strengthOf(i)) ** 0.7} />);
+  }
+  // The light that escapes into the cladding where the ray meets the wall at less than the critical angle.
+  const escapes: ReactElement[] = [];
+  path.bounces.forEach((bounce, j) => {
+    if (!bounce.escape || far[j + 1] > grown) return;
+    const here = pts[j + 1];
+    const before = path.points[j + 1].strength;
+    const len = 96 * Math.sqrt(before) * clamp01((grown - far[j + 1]) / 60);
+    escapes.push(<Dart key={j} from={here} to={[here[0] + bounce.escape[0] * len, here[1] - bounce.escape[1] * len]} color={TONES.opp} opacity={Math.max(0.25, before) ** 0.5} />);
+  });
+  out.push(
+    <g key="ray" style={{ filter: `drop-shadow(0 0 5px ${ELECTRIC}77)` }}>
+      {rays}
+    </g>,
+    <g key="escapes">{escapes}</g>,
+  );
+  // Pulses of light that run along the ray.
+  const pulses: ReactElement[] = [];
+  const GAP = 290;
+  for (let s = (state.time * 300) % GAP; s < grown; s += GAP) {
+    const i = Math.max(0, far.findIndex((d) => d > s) - 1);
+    if (i + 1 >= pts.length) break;
+    const share = (s - far[i]) / (far[i + 1] - far[i] || 1);
+    const [x, y] = [pts[i][0] + (pts[i + 1][0] - pts[i][0]) * share, pts[i][1] + (pts[i + 1][1] - pts[i][1]) * share];
+    const strength = strengthOf(i);
+    if (strength < 0.1) continue;
+    pulses.push(
+      <g key={pulses.length} opacity={strength ** 0.6}>
+        <circle cx={x} cy={y} r={14} fill={ELECTRIC} opacity={0.32} />
+        <circle cx={x} cy={y} r={6.5} fill="#fff8e0" />
+      </g>,
+    );
+  }
+  out.push(<g key="pulses">{pulses}</g>);
+
+  // The lamp at one end, and the detector at the other.
+  const [first, last] = [at([0, fibreCentre(0)]), at([FIBRE.length, fibreCentre(FIBRE.length)])];
+  const lit = path.through * clamp01((state.time * GROW - total) / 60);
+  out.push(
+    <g key="ends">
+      <Shape shape="lamp" x={first[0] - 46} y={first[1]} faces={1} />
+      <Text x={first[0] - 46} y={first[1] + 40} size={18} color={INK2}>Lamp</Text>
+      <circle cx={last[0] + 16} cy={last[1]} r={30 + 14 * lit} fill={ELECTRIC} opacity={0.34 * lit} />
+      <rect x={last[0] + 16} y={last[1] - 28} width={44} height={56} rx={7} fill="#3b3866" stroke={lit > 0.05 ? ELECTRIC : INK2} strokeWidth={2.5} />
+      <circle cx={last[0] + 16} cy={last[1]} r={9} fill={BACK} stroke={INK2} strokeWidth={2} />
+      <circle cx={last[0] + 16} cy={last[1]} r={9} fill={ELECTRIC} opacity={lit} />
+      <Text x={last[0] + 60} y={last[1] + 88} size={18} anchor="end" color={lit > 0.05 ? ELECTRIC : INK2}>{lit > 0.5 ? 'Detector: light!' : 'Detector'}</Text>
+    </g>,
+  );
+
+  const [core, cladding] = fibreIndex(el);
+  if (namesPart > 0)
+    out.push(
+      <g key="names" opacity={namesPart}>
+        <Text x={36} y={top + 30} anchor="start" size={20} color={CORE}>{`Core: glass, n = ${core.toFixed(2)}`}</Text>
+        <Text x={36} y={top + 58} anchor="start" size={20} color={INK2}>{`Cladding: n = ${cladding.toFixed(2)}`}</Text>
+      </g>,
+    );
+  if (anglesPart > 0) {
+    const critical = fibreCritical(el);
+    const bounce = path.bounces[0];
+    const marks: ReactElement[] = [];
+    if (bounce && far[1] <= grown) {
+      // The normal of the wall at the first bounce, and the angle between it and the ray that arrives.
+      const here = pts[1];
+      const slope = fibreSlope(bounce.at[0]);
+      const upper = bounce.at[1] > fibreCentre(bounce.at[0]);
+      const size = Math.hypot(slope, 1);
+      const inward: Vec = upper ? [slope / size, 1 / size] : [-slope / size, -1 / size];
+      const back: Vec = [(pts[0][0] - here[0]) / (far[1] || 1), (pts[0][1] - here[1]) / (far[1] || 1)];
+      const r = 40;
+      const [p1, p2]: Vec[] = [
+        [here[0] + back[0] * r, here[1] + back[1] * r],
+        [here[0] + inward[0] * r, here[1] + inward[1] * r],
+      ];
+      const sweep = back[0] * inward[1] - back[1] * inward[0] > 0 ? 1 : 0;
+      const middle: Vec = [back[0] + inward[0], back[1] + inward[1]];
+      const m = Math.hypot(middle[0], middle[1]) || 1;
+      marks.push(
+        <line key="normal" x1={here[0] - inward[0] * 26} y1={here[1] - inward[1] * 26} x2={here[0] + inward[0] * 84} y2={here[1] + inward[1] * 84} stroke={INK} strokeWidth={2.2} strokeDasharray="7 7" opacity={0.85} />,
+        <path key="arc" d={`M${p1[0].toFixed(1)},${p1[1].toFixed(1)} A${r},${r} 0 0 ${sweep} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`} fill="none" stroke={TONES.adj} strokeWidth={4} strokeLinecap="round" />,
+        <Text key="size" x={here[0] + (middle[0] / m) * 64} y={here[1] + (middle[1] / m) * 64} size={19} color={TONES.adj}>{`${bounce.incidence.toFixed(0)}°`}</Text>,
+      );
+    }
+    const kept = path.bounces.every((b) => b.total);
+    out.push(
+      <g key="angles" opacity={anglesPart}>
+        {marks}
+        {bounce && <Text x={36} y={HIGH - 30} anchor="start" size={21} color={TONES.adj}>{`Angle at the wall: ${bounce.incidence.toFixed(0)}°`}</Text>}
+        <Text x={372} y={HIGH - 30} anchor="start" size={21} color={INK2}>{`Critical angle: ${critical.toFixed(1)}°`}</Text>
+        <Text x={WIDE - 36} y={HIGH - 30} anchor="end" size={21} color={kept ? TONES.good : TONES.opp}>{kept ? 'All of the light is reflected' : 'Light escapes at each bounce'}</Text>
+      </g>,
+    );
+  }
+}
+
 /** `fit` is the height the picture is designed for: it is then drawn whole in a room of another shape (a thumbnail), with space to spare at the sides. */
 export function LightView({ el, st, w, h, plays, fit }: { el: LightEl; st: ElState | undefined; w: number; h: number; plays?: Array<[string, number]>; fit?: number }) {
   const p = st?.p ?? 0;
@@ -725,6 +994,8 @@ export function LightView({ el, st, w, h, plays, fit }: { el: LightEl; st: ElSta
   else if (el.spectrum) drawSpectrum(el, played, frame);
   else if (el.trip) drawTrip(el, played, frame);
   else if (el.spin) drawSpin(el, played, frame);
+  else if (el.prism) drawPrism(el, played, frame);
+  else if (el.fibre) drawFibre(el, played, frame);
   return (
     <div style={{ width: w, height: h, opacity: clamp01(p), transform: `translateY(${(1 - clamp01(p)) * 14}px)` }}>
       <svg width={w} height={h} viewBox={`${left} 0 ${across} ${HIGH}`} style={{ overflow: 'visible', display: 'block' }}>

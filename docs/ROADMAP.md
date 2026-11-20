@@ -1442,7 +1442,26 @@ items ship or decisions change.
        echo there and back); and Michelson's eight-faced mirror, where the returning light
        misses the detector at 300 turns each second and reaches it at 536. The videos:
        `p30-3-1` (Electromagnetic Waves) and `p30-3-1-b` (The Speed of Light).
-     - Next: the rest of Unit 3 (lessons 3.2 to 3.8), then Unit 4. The physics lessons have no
+     - Written (20 November 2026): **the two videos of lesson 3.2** (mirrors). A new picture,
+       `optics` (`src/video/optics.ts`), is a curved mirror or a thin lens with an object that
+       slides along the principal axis: the three rays of a ray diagram follow it and meet where
+       the mirror equation puts the image, real in front of the mirror or virtual behind it
+       (found by dashed lines traced back), and at the focus they leave parallel. The videos:
+       `p30-3-2` (Images in Mirrors) and `p30-3-2-b` (The Mirror Equation). The same picture
+       will serve the lenses of lesson 3.4.
+     - Written (20 November 2026): **the two videos of lesson 3.3** (refraction). The `rays`
+       picture gained the faint ray a boundary reflects (`partial`), which brightens to total
+       internal reflection at the critical angle, and can be drawn with the light coming from
+       below (`below`). The `light` picture gained a `prism`, which spreads white light into its
+       colours, and a `fibre`, which holds a ray in by total internal reflection until it is
+       sent in too steeply. The videos: `p30-3-3` (Refraction and Snell's Law) and `p30-3-3-b`
+       (Total Internal Reflection).
+     - Written (20 November 2026): **the two videos of lesson 3.4** (lenses), on the `optics`
+       picture with a converging or a diverging lens: one object slides in from beyond 2F to
+       inside the focus, so a camera becomes a projector and then a magnifying glass. A lens's
+       readouts are written in one row along the foot of the picture. The videos: `p30-3-4`
+       (Images in Lenses) and `p30-3-4-b` (The Thin Lens Equation).
+     - Next: the rest of Unit 3 (lessons 3.5 to 3.8), then Unit 4. The physics lessons have no
        tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9

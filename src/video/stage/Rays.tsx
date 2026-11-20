@@ -4,10 +4,12 @@
  * normal stands on it where the ray lands; the angles from the normal are drawn as arcs, each in
  * its own colour, with their sizes written at the edges of the picture so that they can be read
  * while the ray turns. A wide beam can be drawn over the ray, with its wavefronts marching along.
+ * At a boundary the faint ray that is reflected can be drawn too: it brightens, and the ray that
+ * crosses dims, as the angle nears the critical angle.
  */
 import type { ReactElement } from 'react';
 import type { RaysEl } from '../script.ts';
-import { fronts, raysAt } from '../rays.ts';
+import { fronts, raysAt, reflectedShare } from '../rays.ts';
 import { ownPart, type ElState } from '../timeline.ts';
 import { clamp01, INK2, Text } from './motionKit.tsx';
 import { TONES } from './tex.ts';
@@ -37,6 +39,7 @@ export function RaysView({ el, st, w, h, plays }: { el: RaysEl; st: ElState | un
   const angles = part('angles');
   const toSurface = part('toSurface');
   const beam = part('fronts');
+  const partial = part('partial');
   const mirror = el.surface === 'mirror';
   const top = 46;
   // The ray lands in the middle: at the foot of the picture on a mirror, half way up at a boundary.
@@ -45,8 +48,12 @@ export function RaysView({ el, st, w, h, plays }: { el: RaysEl; st: ElState | un
   const oy = low ? h - 40 : top + (h - top) / 2;
   const R = Math.min(low ? h - top - 64 : (h - top) / 2 - 14, w / 2 - 30);
   // From x along the surface and y up from it, to the screen.
+  // Light that comes from below is the same picture upside down.
+  const below = !mirror && el.below === true;
   const X = (x: number) => ox + x;
-  const Y = (y: number) => oy - y;
+  const Y = (y: number) => (below ? oy + y : oy - y);
+  // Where the names and the readouts of the first material go, and those of the second.
+  const [firstY, secondY] = below ? [h - 22, top + 22] : [top + 22, h - 22];
   const i = state.angle * RAD;
   const reflects = mirror || state.out === null;
   const o = (state.out ?? state.angle) * RAD;
@@ -59,13 +66,13 @@ export function RaysView({ el, st, w, h, plays }: { el: RaysEl; st: ElState | un
   if (!mirror) {
     const [before, after] = el.speeds!;
     const shade = 'rgb(77 163 255 / 0.14)';
-    if (after < before) out.push(<rect key="below" x={0} y={oy} width={w} height={h - oy} rx={14} fill={shade} />);
-    if (after > before) out.push(<rect key="above" x={0} y={top} width={w} height={oy - top} rx={14} fill={shade} />);
+    if (after < before !== below) out.push(<rect key="below" x={0} y={oy} width={w} height={h - oy} rx={14} fill={shade} />);
+    if (after > before !== below) out.push(<rect key="above" x={0} y={top} width={w} height={oy - top} rx={14} fill={shade} />);
     out.push(<line key="surface" x1={0} y1={oy} x2={w} y2={oy} stroke={INK2} strokeWidth={3} />);
     if (el.media) {
       out.push(
-        <Text key="m0" x={w - 14} y={top + 22} anchor="end" size={21} color={INK2}>{el.media[0]}</Text>,
-        <Text key="m1" x={14} y={h - 22} anchor="start" size={21} color={INK2}>{el.media[1]}</Text>,
+        <Text key="m0" x={w - 14} y={firstY} anchor="end" size={21} color={INK2}>{el.media[0]}</Text>,
+        <Text key="m1" x={14} y={secondY} anchor="start" size={21} color={INK2}>{el.media[1]}</Text>,
       );
     }
   } else {
@@ -114,19 +121,22 @@ export function RaysView({ el, st, w, h, plays }: { el: RaysEl; st: ElState | un
     );
 
   // The rays, each with an arrowhead half way along, and the lamp.
-  const ray = (key: string, [x1, y1]: [number, number], [x2, y2]: [number, number], forward: boolean) => {
+  const ray = (key: string, [x1, y1]: [number, number], [x2, y2]: [number, number], forward: boolean, strength = 1) => {
     const len = Math.hypot(x2 - x1, y2 - y1) || 1;
     const [ux, uy] = forward ? [(x2 - x1) / len, (y2 - y1) / len] : [(x1 - x2) / len, (y1 - y2) / len];
     const [mx, my] = [(x1 + x2) / 2 + ux * 9, (y1 + y2) / 2 + uy * 9];
     const head = (dx: number, dy: number) => `${X(mx + dx).toFixed(1)},${Y(my + dy).toFixed(1)}`;
     return (
-      <g key={key} style={{ filter: `drop-shadow(0 0 7px ${LIGHT}88)` }} opacity={beam > 0 ? 1 - 0.45 * beam : 1}>
+      <g key={key} style={{ filter: `drop-shadow(0 0 7px ${LIGHT}88)` }} opacity={(beam > 0 ? 1 - 0.45 * beam : 1) * strength}>
         <line x1={X(x1)} y1={Y(y1)} x2={X(x2)} y2={Y(y2)} stroke={LIGHT} strokeWidth={5} strokeLinecap="round" />
         <polygon points={`${head(0, 0)} ${head(-ux * 22 - uy * 10, -uy * 22 + ux * 10)} ${head(-ux * 22 + uy * 10, -uy * 22 - ux * 10)}`} fill={LIGHT} />
       </g>
     );
   };
-  out.push(ray('in', from, [0, 0], true), ray('out', [0, 0], to, true));
+  // At a boundary, a share of the light is reflected even while the rest crosses. Faint light is drawn brighter than its share, so that it can be seen at all.
+  const share = !mirror && !reflects && partial > 0 ? reflectedShare(state.angle, el.speeds![0], el.speeds![1]) : 0;
+  out.push(ray('in', from, [0, 0], true), ray('out', [0, 0], to, true, 1 - partial * 0.6 * share ** 0.6));
+  if (!mirror && !reflects && partial > 0) out.push(ray('partial', [0, 0], [R * Math.sin(i), R * Math.cos(i)], true, partial * (0.14 + 0.86 * share ** 0.6)));
   out.push(<circle key="lamp" cx={X(from[0])} cy={Y(from[1])} r={10} fill={LIGHT} stroke="#15123a" strokeWidth={2} style={{ filter: `drop-shadow(0 0 10px ${LIGHT})` }} />);
 
   // The image in a mirror: the reflected ray seems to come from a lamp as far behind the mirror as the real one is in front.
@@ -158,7 +168,7 @@ export function RaysView({ el, st, w, h, plays }: { el: RaysEl; st: ElState | un
     const room = clamp01((Math.abs(a2 - a1) - 28) / 7);
     return (
       <g key={key} opacity={opacity}>
-        <path d={`M${sx.toFixed(1)},${sy.toFixed(1)} A${r},${r} 0 0 ${a2 > a1 ? 0 : 1} ${ex.toFixed(1)},${ey.toFixed(1)}`} fill="none" stroke={color} strokeWidth={4.5} strokeLinecap="round" />
+        <path d={`M${sx.toFixed(1)},${sy.toFixed(1)} A${r},${r} 0 0 ${a2 > a1 !== below ? 0 : 1} ${ex.toFixed(1)},${ey.toFixed(1)}`} fill="none" stroke={color} strokeWidth={4.5} strokeLinecap="round" />
         {label && room > 0 && <Text x={lx} y={ly} size={20} color={color} opacity={room}>{label}</Text>}
       </g>
     );
@@ -170,11 +180,11 @@ export function RaysView({ el, st, w, h, plays }: { el: RaysEl; st: ElState | un
     // The sizes again, where they can be read while the ray turns.
     out.push(
       <g key="readout" opacity={angles}>
-        <Text x={14} y={top + 22} anchor="start" size={22} color={INCIDENCE}>{`Angle of incidence ${degrees(state.angle)}`}</Text>
+        <Text x={14} y={firstY} anchor="start" size={22} color={INCIDENCE}>{`Angle of incidence ${degrees(state.angle)}`}</Text>
         {reflects ? (
-          <Text x={mirror ? w - 14 : 14} y={mirror ? top + 22 : top + 54} anchor={mirror ? 'end' : 'start'} size={22} color={REFLECTION}>{`Angle of reflection ${degrees(state.angle)}`}</Text>
+          <Text x={mirror ? w - 14 : 14} y={mirror ? top + 22 : below ? firstY - 32 : firstY + 32} anchor={mirror ? 'end' : 'start'} size={22} color={REFLECTION}>{`Angle of reflection ${degrees(state.angle)}`}</Text>
         ) : (
-          <Text x={w - 14} y={h - 22} anchor="end" size={22} color={REFRACTION}>{`Angle of refraction ${degrees(state.out!)}`}</Text>
+          <Text x={w - 14} y={secondY} anchor="end" size={22} color={REFRACTION}>{`Angle of refraction ${degrees(state.out!)}`}</Text>
         )}
       </g>,
     );

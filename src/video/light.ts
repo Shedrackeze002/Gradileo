@@ -362,3 +362,197 @@ export function spinAt(el: LightEl, plays: Plays = []): SpinState {
   state.steady = state.hertz === 0 && tiltOf(state.angle) === 0;
   return state;
 }
+
+// ── Refraction of a ray ───────────────────────────────────────────────────────────────────────
+
+export type Vec = [number, number];
+
+const RAD = Math.PI / 180;
+const dot = (a: Vec, b: Vec) => a[0] * b[0] + a[1] * b[1];
+const unit = (a: Vec): Vec => {
+  const len = Math.hypot(a[0], a[1]) || 1;
+  return [a[0] / len, a[1] / len];
+};
+
+/**
+ * Snell's law for a ray: `d` is the unit direction it travels in, `normal` the unit normal of the
+ * surface on the side it comes from, and n1 and n2 the refractive indices before and after. The
+ * answer is the unit direction beyond the surface, or null when no light can cross (total
+ * internal reflection).
+ */
+export function refractRay(d: Vec, normal: Vec, n1: number, n2: number): Vec | null {
+  const cosi = -dot(d, normal);
+  const eta = n1 / n2;
+  const k = 1 - eta * eta * (1 - cosi * cosi);
+  if (k < 0) return null;
+  const c = eta * cosi - Math.sqrt(k);
+  return unit([eta * d[0] + c * normal[0], eta * d[1] + c * normal[1]]);
+}
+
+/** A ray reflected from a surface with the unit normal given. */
+export function reflectRay(d: Vec, normal: Vec): Vec {
+  const k = 2 * dot(d, normal);
+  return unit([d[0] - k * normal[0], d[1] - k * normal[1]]);
+}
+
+/** The angle between a ray and the normal of the surface it meets, in degrees. */
+export const incidenceOf = (d: Vec, normal: Vec) => Math.acos(Math.min(1, Math.abs(dot(d, normal)))) / RAD;
+
+/** Where a turn that starts and stops gently has reached, part way through. */
+const ease = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
+
+/** The seconds of video played and the angle of the incoming ray, after the clips of a prism or a fibre: a phase with `angle` turns the ray. */
+function turnedAt(el: LightEl, start: number, plays: Plays): { time: number; angle: number } {
+  let angle = start;
+  let time = 0;
+  for (const [name, seconds] of plays) {
+    const clip = el.clips[name];
+    if (!clip) continue;
+    let left = seconds;
+    for (const ph of clip.phases) {
+      if (left <= 0) break;
+      const run = Math.min(left, ph.dur);
+      time += run;
+      if (ph.angle !== undefined) angle += (ph.angle - angle) * ease(run / ph.dur);
+      left -= ph.dur;
+    }
+  }
+  return { time, angle };
+}
+
+// ── A prism ───────────────────────────────────────────────────────────────────────────────────
+
+/** The wavelengths a prism's light is drawn in, in nanometres, from red to violet. */
+export const PRISM_COLOURS = [700, 660, 620, 590, 560, 530, 500, 470, 440, 410];
+
+/** The refractive index of a prism's glass for a wavelength, in nanometres: it rises steadily from red (700 nm) to violet (400 nm). */
+export function prismIndex(el: LightEl, nm: number): number {
+  const [red, violet] = el.prism!.index ?? [1.5, 1.56];
+  return red + (violet - red) * Math.max(0, Math.min(1, (700 - nm) / 300));
+}
+
+/** The corners of a prism whose sloping sides are one unit long: the top, the bottom left and the bottom right, with y upwards from the base. */
+export function prismShape(el: LightEl): { top: Vec; left: Vec; right: Vec } {
+  const half = ((el.prism!.apex ?? 60) / 2) * RAD;
+  return { top: [0, Math.cos(half)], left: [-Math.sin(half), 0], right: [Math.sin(half), 0] };
+}
+
+export const prismAt = (el: LightEl, plays: Plays = []) => turnedAt(el, el.prism!.angle, plays);
+
+export interface PrismPath {
+  /** The refractive index of the glass for this light. */
+  index: number;
+  /** The direction the light arrives in, and where it enters the first face (half way up it). */
+  arrive: Vec;
+  enter: Vec;
+  /** Its direction inside the glass, and where it meets the second face. */
+  inside: Vec;
+  leave: Vec;
+  /** Its direction beyond the second face, or null when it cannot leave there. */
+  out: Vec | null;
+  /** The angle the light has been turned through altogether, in degrees. */
+  deviation: number | null;
+}
+
+/** The path of light of one wavelength through a prism, for an angle of incidence on its first face. */
+export function prismPath(el: LightEl, angle: number, nm: number): PrismPath {
+  const { top, left, right } = prismShape(el);
+  const half = ((el.prism!.apex ?? 60) / 2) * RAD;
+  const index = prismIndex(el, nm);
+  // The normals of the two sloping faces, pointing out of the glass.
+  const outLeft: Vec = [-Math.cos(half), Math.sin(half)];
+  const outRight: Vec = [Math.cos(half), Math.sin(half)];
+  // The ray arrives from the left, climbing: it is the inward normal of the first face turned through the angle of incidence.
+  const turn = -half + angle * RAD;
+  const arrive: Vec = [Math.cos(turn), Math.sin(turn)];
+  const enter: Vec = [(left[0] + top[0]) / 2, (left[1] + top[1]) / 2];
+  const inside = refractRay(arrive, outLeft, 1, index)!;
+  // Where the ray inside meets the second face, which runs from the top to the bottom right.
+  const edge: Vec = [right[0] - top[0], right[1] - top[1]];
+  const cross = inside[0] * edge[1] - inside[1] * edge[0];
+  const t = ((top[0] - enter[0]) * edge[1] - (top[1] - enter[1]) * edge[0]) / cross;
+  const leave: Vec = [enter[0] + inside[0] * t, enter[1] + inside[1] * t];
+  const out = refractRay(inside, [-outRight[0], -outRight[1]], index, 1);
+  const deviation = out ? Math.acos(Math.max(-1, Math.min(1, dot(arrive, out)))) / RAD : null;
+  return { index, arrive, enter, inside, leave, out, deviation };
+}
+
+// ── An optical fibre ──────────────────────────────────────────────────────────────────────────
+
+/** The fibre is drawn 1000 units long, with a core 46 units to each side of its centre line, which makes a gentle S-bend. */
+export const FIBRE = { length: 1000, half: 46, bend: 52 };
+
+/** The height of the centre line of the fibre at a place along it, and its slope there. */
+export const fibreCentre = (x: number) => FIBRE.bend * Math.cos((Math.PI * x) / FIBRE.length);
+export const fibreSlope = (x: number) => -((FIBRE.bend * Math.PI) / FIBRE.length) * Math.sin((Math.PI * x) / FIBRE.length);
+
+/** The refractive indices of a fibre's core and cladding, and the critical angle at the wall between them, in degrees. */
+export const fibreIndex = (el: LightEl): [number, number] => el.fibre!.index ?? [1.5, 1.2];
+export const fibreCritical = (el: LightEl) => Math.asin(fibreIndex(el)[1] / fibreIndex(el)[0]) / RAD;
+
+export const fibreAt = (el: LightEl, plays: Plays = []) => turnedAt(el, el.fibre!.angle, plays);
+
+export interface FibreBounce {
+  /** Where the ray meets the wall, and the angle between the ray and the wall's normal there, in degrees. */
+  at: Vec;
+  incidence: number;
+  /** Whether all of the light is reflected (the angle is more than the critical angle). */
+  total: boolean;
+  /** The direction of the light that escapes into the cladding, when some does. */
+  escape: Vec | null;
+}
+
+export interface FibrePath {
+  /** The corners of the ray's path, from where it enters, each with the share of the light that reaches it. */
+  points: Array<{ at: Vec; strength: number }>;
+  bounces: FibreBounce[];
+  /** The length of the path, in units. */
+  length: number;
+  /** The share of the light that reaches the far end. */
+  through: number;
+}
+
+/**
+ * The path of a ray that enters a fibre at an angle to its axis, in degrees. The ray is followed
+ * in short steps; at the wall it is reflected, wholly if it meets the wall at more than the
+ * critical angle, and otherwise only in part (a quarter of the light, for the picture), while the
+ * rest escapes into the cladding by Snell's law.
+ */
+export function fibrePath(el: LightEl, angle: number): FibrePath {
+  const [core, cladding] = fibreIndex(el);
+  const critical = fibreCritical(el);
+  let p: Vec = [0, fibreCentre(0)];
+  let d: Vec = [Math.cos(angle * RAD), Math.sin(angle * RAD)];
+  let strength = 1;
+  const points: FibrePath['points'] = [{ at: p, strength }];
+  const bounces: FibreBounce[] = [];
+  let length = 0;
+  const step = 1;
+  for (let k = 0; k < 20000 && p[0] < FIBRE.length && strength > 0.02 && bounces.length < 80; k++) {
+    const next: Vec = [p[0] + d[0] * step, p[1] + d[1] * step];
+    const off = next[1] - fibreCentre(next[0]);
+    if (Math.abs(off) <= FIBRE.half || next[0] <= 0) {
+      p = next;
+      length += step;
+      continue;
+    }
+    // The wall: its normal points into the core.
+    const slope = fibreSlope(next[0]);
+    const inward = unit(off > 0 ? [slope, -1] : [-slope, 1]);
+    // A ray that is already heading back into the core has just been reflected; let it go on.
+    if (dot(d, inward) >= 0) {
+      p = next;
+      length += step;
+      continue;
+    }
+    const incidence = incidenceOf(d, inward);
+    const total = incidence >= critical;
+    const escape = total ? null : refractRay(d, inward, core, cladding);
+    bounces.push({ at: p, incidence, total, escape });
+    points.push({ at: p, strength });
+    d = reflectRay(d, inward);
+    if (!total) strength *= 0.25;
+  }
+  points.push({ at: p, strength });
+  return { points, bounces, length, through: p[0] >= FIBRE.length ? strength : 0 };
+}

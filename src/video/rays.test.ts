@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { checkRays, checkScript, type Explainer, type RaysEl } from './script.ts';
-import { fronts, raysAt, refraction, type Piece } from './rays.ts';
+import { fronts, raysAt, reflectedShare, refraction, type Piece } from './rays.ts';
 import { clipSeconds, compile, stateAt } from './timeline.ts';
 
 const mirror = (over: Partial<RaysEl> = {}): RaysEl => ({ kind: 'rays', id: 'r', surface: 'mirror', angle: 40, clips: { turn: { phases: [{ dur: 2, to: 60 }, { dur: 2, to: 10 }] } }, ...over });
@@ -54,6 +54,28 @@ describe('rays: refraction', () => {
     expect(mid.time).toBeCloseTo(1.5);
     expect(mid.note).toBe('Slow motion');
     expect(raysAt(glass(), [['march', 8]])).toMatchObject({ time: 4, note: undefined });
+  });
+});
+
+describe('rays: the light a boundary reflects', () => {
+  it('is a few parts in a hundred along the normal: 4% for glass of index 1.5, either way', () => {
+    expect(reflectedShare(0, 3, 2)).toBeCloseTo(0.04);
+    expect(reflectedShare(0, 2, 3)).toBeCloseTo(0.04);
+    expect(reflectedShare(0.001, 3, 2)).toBeCloseTo(0.04, 4);
+    expect(reflectedShare(30, 3, 3)).toBe(0);
+  });
+
+  it('grows as the ray leans over, and is all of the light from the critical angle on', () => {
+    // From glass of index 1.52 into air: the critical angle is 41.1°.
+    const share = (angle: number) => reflectedShare(angle, 1, 1.52);
+    expect(share(20)).toBeGreaterThan(share(0));
+    expect(share(38)).toBeGreaterThan(share(20));
+    expect(share(41)).toBeGreaterThan(0.5);
+    expect(share(41.2)).toBe(1);
+    expect(share(60)).toBe(1);
+    for (const angle of [0, 10, 25, 40, 41.1]) expect(share(angle)).toBeLessThanOrEqual(1);
+    // Into the glass, no ray is ever wholly reflected.
+    expect(reflectedShare(85, 1.52, 1)).toBeLessThan(1);
   });
 });
 
@@ -121,6 +143,8 @@ describe('rays: checks', () => {
     expect(checkRays(glass({ speeds: undefined }))[0]).toMatch(/two speeds/);
     expect(checkRays(mirror({ speeds: [3, 2] }))[0]).toMatch(/no second material/);
     expect(checkRays(glass({ behind: true }))[0]).toMatch(/only a mirror/);
+    expect(checkRays(glass({ below: true }))).toEqual([]);
+    expect(checkRays(mirror({ below: true }))[0]).toMatch(/only a boundary/);
     expect(checkRays(mirror({ clips: { turn: { phases: [{ dur: 1, to: 120 }] } } }))[0]).toMatch(/outside 0 to 85/);
   });
 

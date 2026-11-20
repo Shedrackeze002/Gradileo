@@ -20,8 +20,8 @@ its seven lessons and fourteen skills. Grade 12 Physics is listed for classes an
 (18 November 2026): it is recommended in Grade 12, with a placement check on Grade 11 Physics.
 Its videos are being made unit by unit: the nine videos of Unit A, Momentum and Impulse, and the
 24 videos of Unit B, Forces and Fields, are made (18 November 2026). Unit C was started on
-20 November 2026 with the two videos of lesson 3.1 (electromagnetic waves and the speed of light);
-the rest of Unit C and Unit D come next.
+20 November 2026 with the videos of lessons 3.1 (electromagnetic waves and the speed of light) and
+3.2 (mirrors); the rest of Unit C and Unit D come next.
 
 ## Shape
 
@@ -96,13 +96,14 @@ built when the first unit that needs it is reached.
 | Energy bars | Kinetic and potential energy trading places while the total holds | Grade 10, Unit 3 | Built (in `motion`) |
 | Springs and pendulums | Hooke's law, elastic energy and a pendulum; oscillation that traces its own curve to come | Grade 11, Units 3 and 4 | Built (in `motion`); the traced curve to build for Unit 4 |
 | Waves (`wave`) | Travelling waves and echoes; pulses, standing waves and wavefronts to come | Grade 10, Unit 4 | Built; more for Grade 11, Unit 4 |
-| Rays (`rays`) | Reflection and refraction; mirrors and lenses to come | Grade 10, Unit 4 | Built; more for Grade 12 |
+| Rays (`rays`) | Reflection and refraction of one ray at a flat surface, with the faint reflected ray that grows into total internal reflection at the critical angle | Grade 10, Unit 4; Grade 12, Unit C | Built |
 | Circuits (`circuit`) | Charges flowing through wires, resistors and junctions, with meters; a resistor in series with parallel branches, and a battery with internal resistance | Grade 10, Unit 5; Grade 12, Unit B | Built |
 | Charges and fields (`charges`) | Electrons that cross between objects, Coulomb's law and the net force; field lines, parallel plates, potential and a charge moving in an electric field; a magnetic field into or out of the page, so a charge moves in a circle (velocity selector, mass spectrometer) | Grade 12, Unit B | Built |
 | Magnets and currents (`magnets`) | Bar magnets, compasses, iron domains, the Earth's field, and the field of a wire and of a solenoid; the force on a wire (a wire that floats, a magnet on a balance) and the motor coil with its commutator; a magnet pushed into a coil joined to a meter; a coil turned as a generator, with slip rings or a split ring and a graph of its emf | Grade 12, Unit B | Built |
 | Induction (`induction`) | A circuit in a field through the page: a coil in a changing field (Faraday's law) and a rod on rails (ε = BLv, Lenz's law, the force on the rod) | Grade 12, Unit B | Built |
 | Transformers (`transformer`, `powerline`) | Two coils on an iron core with a screen for each voltage (the turns rule, power in and out, a battery that gives only a kick); a power line whose loss falls as its voltage is stepped up | Grade 12, Unit B | Built |
-| Light (`light`) | An electromagnetic wave leaving an aerial, with its two fields and a polarizing filter; the spectrum with a sliding pointer; a flash timed over a distance, and its echo; Michelson's spinning mirror | Grade 12, Unit C | Built |
+| Mirrors and lenses (`optics`) | A curved mirror or a thin lens, an object that slides along the axis, the three rays that find its image, and the readouts of the mirror equation | Grade 12, Unit C | Built |
+| Light (`light`) | An electromagnetic wave leaving an aerial, with its two fields and a polarizing filter; the spectrum with a sliding pointer; a flash timed over a distance, and its echo; Michelson's spinning mirror; white light spread into colours by a prism; a ray held inside an optical fibre | Grade 12, Unit C | Built |
 | Particles | Photons, scattering, radioactive decay | Grade 12, Unit C | To build, shared with chemistry's remake |
 
 ## What physics needs that the platform does not have
