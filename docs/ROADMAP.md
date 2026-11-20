@@ -1603,8 +1603,15 @@ items ship or decisions change.
      is complete with eight, `xq-p20-1-1` to `xq-p20-1-8`: Tiana's jog (OpenStax 2.1), the bird
      that hops between branches (2.2), stop sign to stop sign (3.1), the swan's take-off (3.2), the
      order of the equations for a falling object (3.2), a vector from its x-component (5.2), a boat
-     crossing a river (5.1) and a ball thrown at 40° that rises 10 m (5.3). Next: Physics 20 Units
-     3 and 4, then Physics 10 and Physics 30. Still to do: an exam panel on each lesson
+     crossing a river (5.1) and a ball thrown at 40° that rises 10 m (5.3). Unit 3 (Circular
+     Motion, Work and Energy) is complete with seven, `xq-p20-3-1` to `xq-p20-3-7`: the record that
+     spins fastest at its edge (OpenStax 6.1), the car on a curve (6.2), the Sun's mass from
+     Mercury's orbit (7.2), carrying books without doing work (9.1), the skater's push (9.1), the
+     falling apple (9.2) and the runner's power (9.1). Unit 4 (Oscillations and Waves) is complete
+     with seven, `xq-p20-4-1` to `xq-p20-4-7`: a car's springs (5.5), what sets the period of a
+     mass on a spring (5.5), g from a pendulum (5.5), the boat on a wave (13.2), two waves meeting
+     (13.3), the length of a closed tube (14.4) and the passing train horn (14.3). Next: Physics 10,
+     then Physics 30. Still to do: an exam panel on each lesson
      page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
 ## Hosting
