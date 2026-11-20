@@ -1520,7 +1520,7 @@ items ship or decisions change.
        oxide ion making hydroxide ions, acylation releasing HCl, brass resisting a push, recycling
        aluminium, and particle scenes for gas tests, air, distillation, crystallisation and the
        barium sulfate, silver chloride and hydroxide precipitates.
-     - Scripted (18 November 2026): group 3, an animated opener in all 116 calculation videos
+     - Merged (18 November 2026, pull request #220): group 3, an animated opener in all 116 calculation videos
        (Chemistry 8, 9, 10, 20, 30 and More Chemistry Topics). A new `reaction` scene draws every
        atom of an equation: the bonds break, the same atoms rejoin as the products, the molecules of
        each formula are stacked so a coefficient is what you see, and the atoms of each element are
@@ -1528,8 +1528,10 @@ items ship or decisions change.
        economy). Nuclei build from protons and neutrons (isotopes), isotope mixtures move as a gas
        (relative atomic mass), and the other openers reuse the particle, atom and molecule scenes
        (dissolving, diluting, titrations, cells, equilibria, proton transfer, enthalpy).
-     - Next: re-render group 3 and move it to Drive, then put chemistry back in the upload task
-       (needs the owner's go-ahead).
+     - Rendered (19 November 2026): every remade chemistry video, all three groups, is rendered
+       and in Drive; all 417 chemistry videos were checked complete there. The new lengths, chapter
+       times and question times are recorded in `src/content/videos.json`.
+     - Next: put chemistry back in the YouTube upload task (needs the owner's go-ahead).
 10. **An introduction video for Gradileo** (the owner's idea, 15 October 2026), made when the
    platform is about 80% ready: why students, teachers and parents should use it, covering every
    feature, in the same style as the explainer videos.
@@ -1550,6 +1552,39 @@ items ship or decisions change.
      on Chemistry (a new `teacher-subjects` picture). Every picture was taken again from today's app.
    - Approved by the owner and published on YouTube (7 November 2026): https://youtu.be/VCPa_7uUjyM,
      public, with its thumbnail and YouTube's own captions.
+11. **Examination and Quiz questions video series** (the owner's request, 19 November 2026; next).
+   For every course, real final exam and quiz questions for each lesson, each solved in its own
+   step-by-step video with no length limit, broken down to the simplest steps (ELI5 style). Science
+   solutions are animated, never narrated over still slides.
+   - Plan written 19 November 2026 and waiting on the owner's yes:
+     https://claude.ai/artifact/E7RBdeTs8kS5W98nYzVevK. First pass: one worked question per lesson
+     (1,105 lessons in our 35 courses); a pilot of four videos (three for Physics 20 Unit 2, one
+     Math 9 sample) comes first.
+   - Licensing (checked 19 November 2026): real questions only from sources that allow YouTube use:
+     NAEP released items (public domain), England's KS2 tests (Open Government Licence) and OpenStax
+     Physics and Statistics (CC BY 4.0). OpenStax 2e maths and Chemistry, EngageNY and MCAS allow
+     non-commercial use only; Alberta, New York Regents, AP, WAEC, KCSE and NSC papers need written
+     permission; AQA forbids YouTube use and AI-made works, and the other UK and international boards
+     need permission, so those courses get exam-style questions we write ourselves, labelled as such.
+     Every video names its source and licence on screen and in its description.
+   - Owner's answers (19 November 2026): approved the pilot; Gradileo counts as non-commercial (the
+     site is free and the channel is not monetised), so CC BY-NC sources may be used with credit;
+     where copyright blocks a question word for word, we write our own question of the same
+     structure, format and difficulty instead; every video, real or written by us, cites the
+     original creators.
+   - Pilot built 19 November 2026: an exam video is a script in `src/content/exams/videos/` with an
+     `exam` field (the lesson it practises, the source, the licence and a link). The source shows
+     at the foot of every frame, the header reads "Exam Question · <unit>", and the YouTube
+     description carries the credit line. The four pilot videos: `xq-p20-2-2` (two people push a
+     car, OpenStax Physics 4.3), `xq-p20-2-4` (a skier on a slope, OpenStax Physics 5.4),
+     `xq-p20-2-5` (a person pushing a box, OpenStax Physics 4.4) and `xq-m8-3-1` (is point C always
+     between A and B, NAEP 2009 Grade 8, public domain). The maths sample is Math 8, not Math 9,
+     because the best public-domain item found was a Grade 8 one. They stay out of `videos.json`
+     and the upload queue until the owner approves them.
+   - Owner's rule after the pilot (19 November 2026): every exam video's YouTube description opens
+     with the whole question, word for word with its choices (our own full wording for a variant),
+     because students find a worked solution by searching for the exact question. `exam.question`
+     and `exam.choices` hold it in plain text, and `checkScript` refuses an exam video without it.
 
 ## Hosting
 

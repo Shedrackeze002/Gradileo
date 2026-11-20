@@ -49,6 +49,11 @@ const COURSE_LABELS = new Set(['math-10c', 'math-10-3', 'math-10-4', 'math-20-1'
  */
 function labelOf(x: Explainer): string {
   if (x.label) return x.label;
+  if (x.exam) {
+    const of = lessonById(x.exam.lesson);
+    const unit = of ? unitById(of.unitId) : undefined;
+    return unit ? `Exam Question · ${unit.title}` : 'Exam Question';
+  }
   const lesson = lessonById(x.lessonId);
   const course = courseOfLesson(x.lessonId);
   if (!lesson || !course) return x.lessonId;

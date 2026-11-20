@@ -175,7 +175,7 @@ export function TryView({ el, st }: { el: TryEl; st?: ElState }) {
       <div className="v-card" style={{ width: 980, padding: '28px 34px', textAlign: 'left', border: `2px solid rgb(167 139 250 / 0.55)`, background: 'linear-gradient(160deg, rgb(167 139 250 / 0.16), rgb(255 255 255 / 0.04))' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div className="v-display" style={{ color: TONES.brand, fontSize: 20, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700 }}>
-            Your turn
+            {el.kicker ?? 'Your turn'}
           </div>
           {timer !== undefined && ans === 0 && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, color: 'rgb(var(--v-ink-2))', fontSize: 20 }}>
