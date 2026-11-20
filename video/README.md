@@ -629,7 +629,7 @@ See `src/video/script.ts` for every element and option. In short:
     (longer wavelength, higher frequency) and `ionizing`. Show `arrows` or `ionizing`, not both:
     they share a row. It needs a `height` of 430.
   - `trip` is a flash that travels from one thing to another at 3.00 × 10⁸ m/s (`from` and `to`
-    each have a `shape`: `sun`, `earth`, `moon`, `dish`, `plane`, `lamp` or `mirror`, and a
+    each have a `shape`: `sun`, `earth`, `saturn`, `moon`, `dish`, `plane`, `lamp` or `mirror`, and a
     `label`), over `metres`, and back again with `echo: true`. A phase with `send: true` sends
     the flash. `rate` is the seconds of the model for each second of video (one way takes 2.5 s
     otherwise). `clock` and `length` give the units of the readouts (`{ unit: 'μs', seconds:

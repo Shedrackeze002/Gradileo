@@ -2447,7 +2447,7 @@ export interface LightWave {
 }
 
 /** A place something can be drawn at an end of a trip of light. */
-export type LightShape = 'sun' | 'earth' | 'moon' | 'dish' | 'plane' | 'lamp' | 'mirror';
+export type LightShape = 'sun' | 'earth' | 'saturn' | 'moon' | 'dish' | 'plane' | 'lamp' | 'mirror';
 
 /** A flash of light that travels from a source to a target, and perhaps back again. */
 export interface LightTrip {

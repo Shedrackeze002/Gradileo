@@ -1654,7 +1654,13 @@ items ship or decisions change.
      through 100 V (College Physics 2e 19.2 and 19.1), a battery's terminal voltage (College
      Physics 2e 21.2), the field near a wire, the force on an electron and on a wire (20.1) and
      the emf of a falling flux (20.3). College Physics 2e is CC BY-NC-SA, which Gradileo may use
-     because it is non-commercial. Next: Physics 30 Units 3 and 4. Still to
+     because it is non-commercial. Units 3 and 4 so far: Sunlight reaching Saturn (15.2; the light
+     element gained a `saturn` shape), Snell's law for carbon tetrachloride (16.2), the double-slit
+     wavelength (17.1), an electron's de Broglie wavelength (College Physics 2e 29.6), a magnet
+     bending a TV's cathode ray (22.5), an alpha particle's closest approach to gold (19.3), and,
+     with the new optics animation, a concave mirror's image (16.1) and a lens's apparent image
+     distance (16.3). Next: lessons 3.6 and 3.7 once the photon animation is on main, and 4.3 to
+     4.7 once their animations are built. Still to
      do: an exam panel on each lesson
      page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
