@@ -675,10 +675,12 @@ See `src/video/script.ts` for every element and option. In short:
   and at the focus the rays leave parallel and there is no image. A ray that would miss the
   mirror or lens fades out, so keep the object short enough (about a third of the height in
   view) and leave room in `view` for the image you mean to show: a virtual image can be
-  several times the object's height. The readouts sit in the bottom corner behind a mirror, or
-  under the object's side of a lens, so leave about 16 units of view there. Light runs along
-  the rays only while a clip plays. With two lines of maths under it, give it a `height` of
-  about 330.
+  several times the object's height. The readouts sit in the bottom corner behind a mirror, so
+  leave about 16 units of view there; a lens has them in one row along the foot of the picture,
+  on the object's side. `axis` moves the principal axis (a share of the height from the top),
+  to make room for a tall virtual image, and `aperture` keeps a lens short enough to clear its
+  readouts. Light runs along the rays only while a clip plays. With two lines of maths under
+  it, give it a `height` of about 330.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

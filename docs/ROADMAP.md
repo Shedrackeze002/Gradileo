@@ -1456,7 +1456,12 @@ items ship or decisions change.
        colours, and a `fibre`, which holds a ray in by total internal reflection until it is
        sent in too steeply. The videos: `p30-3-3` (Refraction and Snell's Law) and `p30-3-3-b`
        (Total Internal Reflection).
-     - Next: the rest of Unit 3 (lessons 3.4 to 3.8), then Unit 4. The physics lessons have no
+     - Written (20 November 2026): **the two videos of lesson 3.4** (lenses), on the `optics`
+       picture with a converging or a diverging lens: one object slides in from beyond 2F to
+       inside the focus, so a camera becomes a projector and then a magnifying glass. A lens's
+       readouts are written in one row along the foot of the picture. The videos: `p30-3-4`
+       (Images in Lenses) and `p30-3-4-b` (The Thin Lens Equation).
+     - Next: the rest of Unit 3 (lessons 3.5 to 3.8), then Unit 4. The physics lessons have no
        tutor recordings yet.
    - Done (14 November 2026): **the chemistry videos were checked against the same rule**, and none
      of the 417 met it: the engine could not move anything, 155 videos (all of Chemistry 7, 8 and 9

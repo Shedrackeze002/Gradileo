@@ -258,13 +258,18 @@ export function OpticsView({ el, st, w, h, plays, fit }: { el: OpticsEl; st: ElS
       );
     }
 
-    // The readouts sit in the corner the rays leave empty: behind a mirror, and under the object's side of a lens.
+    // The readouts sit in the corner the rays leave empty: behind a mirror, and under the object's side of a lens. A lens has names under its axis there, so its three values go in one row along the foot of the picture.
     const [valuesPart, kindPart] = [part('values'), part('kind')];
     const anchor = mirror ? 'end' : 'start';
     const tx = mirror ? WIDE - PAD - 8 : PAD + 8;
     const lines: ReactElement[] = [];
     let y = HIGH - 30;
-    if (valuesPart > 0) {
+    if (valuesPart > 0 && !mirror) {
+      lines.push(<Quantity key="do" x={tx} y={y} sub="do" value={`${figuresOf(state.at, figures)} ${unit}`} anchor={anchor} opacity={valuesPart} />);
+      lines.push(<Quantity key="di" x={tx + 180} y={y} sub="di" value={image.di === null ? 'none' : `${figuresOf(image.di, figures)} ${unit}`} anchor={anchor} color={IMAGE} opacity={valuesPart} />);
+      lines.push(<Quantity key="m" x={tx + 372} y={y} sub="m" value={image.m === null ? 'none' : figuresOf(image.m, figures, true)} anchor={anchor} opacity={valuesPart} />);
+      y -= 34;
+    } else if (valuesPart > 0) {
       lines.push(<Quantity key="m" x={tx} y={y} sub="m" value={image.m === null ? 'none' : figuresOf(image.m, figures, true)} anchor={anchor} opacity={valuesPart} />);
       lines.push(<Quantity key="di" x={tx} y={y - 30} sub="di" value={image.di === null ? 'none' : `${figuresOf(image.di, figures)} ${unit}`} anchor={anchor} color={IMAGE} opacity={valuesPart} />);
       lines.push(<Quantity key="do" x={tx} y={y - 60} sub="do" value={`${figuresOf(state.at, figures)} ${unit}`} anchor={anchor} opacity={valuesPart} />);
