@@ -609,7 +609,7 @@ See `src/video/script.ts` for every element and option. In short:
   The check stops a line that would waste all the power it is sent.
 
 - `light` (`src/video/light.ts`) is light as an electromagnetic wave. One element is one of
-  four pictures, and time passes only while a clip plays.
+  six pictures, and time passes only while a clip plays.
   - `wave` is the wave an electron sends out when it is driven up and down an aerial, at `hertz`
     cycles for each second of video, taking `cross` seconds to cross the picture (3). The
     electric field is drawn up and down in yellow, and the magnetic field towards you and away in
@@ -644,6 +644,20 @@ See `src/video/script.ts` for every element and option. In short:
     takes 2.5 s of video unless a `rate` is given. Parts: `rate` (the turns each second),
     `turn` (the share of a turn made during the round trip), `clock` (the time of the round
     trip) and `distance`.
+  - `prism` (`{ angle, apex, index }`) is white light that meets a glass prism at `angle` degrees
+    from the normal of its first face, and lands on a screen. The light grows into the picture
+    while a clip plays, and each colour is refracted twice by Snell's law with its own index
+    (`index` is `[red, violet]`, 1.50 and 1.56 otherwise, a wider gap than real glass has so that
+    the colours can be told apart), so violet is bent the most. A phase turns the incoming ray
+    (`angle`). Parts: `names` (which end is bent least and which most) and `values` (the two
+    indices).
+  - `fibre` (`{ angle, index }`) is a ray that enters an optical fibre with a gentle bend at
+    `angle` degrees from its axis (`index` is `[core, cladding]`, 1.50 and 1.20 otherwise). Where
+    it meets the wall beyond the critical angle it is totally reflected, pulses of light run
+    along it and the detector at the far end lights; at less, three quarters of the light
+    escapes at each bounce. A phase turns the incoming ray (`angle`). Parts: `names` (the core
+    and the cladding, with their indices) and `angles` (the angle at the first bounce beside the
+    critical angle, and whether the light is held in).
   `poster` names the clip the thumbnail is taken from, `posterAt` the share of it that has
   played (0.7), and `thumb` the parts the thumbnail shows.
 
@@ -692,6 +706,12 @@ See `src/video/script.ts` for every element and option. In short:
   of incidence), `fronts` (a wide beam whose wavefronts march while a clip plays, closer together
   where the wave is slower, each front in one piece across the boundary) and, on a mirror with
   `behind: true`, `image` (the lamp's image, as far behind the mirror as the lamp is in front).
+  At a boundary, `partial` adds the faint ray that is reflected while the rest of the light
+  crosses: its brightness follows Fresnel's equations, so it grows as the angle nears the
+  critical angle while the refracted ray dims, and beyond that angle all of the light is
+  reflected. `below: true` draws a boundary with the light coming up from underneath (light in
+  water that meets the air above it). To stop a ray at a critical angle, turn it to a hair
+  less than the angle, so that the refracted ray can still be drawn along the surface.
   Light is yellow, the angle of incidence blue, reflection orange and refraction pink.
 
 - `circuit` (`src/video/circuit.ts`) is for electricity: a battery of `volts`, a switch, and up to

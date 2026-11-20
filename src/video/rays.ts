@@ -25,6 +25,23 @@ export function refraction(angle: number, before: number, after: number): number
   return sin > 1 ? null : Math.asin(sin) / RAD;
 }
 
+/**
+ * The share of the light that a boundary reflects, for an angle of incidence and the speeds before
+ * and after (Fresnel's equations, for light that is not polarized). It is small for a ray along
+ * the normal, grows as the ray leans over, and is all of the light from the critical angle on.
+ */
+export function reflectedShare(angle: number, before: number, after: number): number {
+  const out = refraction(angle, before, after);
+  if (out === null) return 1;
+  const [a, b] = [angle * RAD, out * RAD];
+  // Along the normal the equations reduce to the difference of the speeds over their sum, squared.
+  if (a < 1e-6) return ((before - after) / (before + after)) ** 2;
+  if (Math.abs(before - after) < 1e-12) return 0;
+  const s = Math.sin(a - b) / Math.sin(a + b);
+  const t = Math.tan(a - b) / Math.tan(a + b);
+  return Math.min(1, (s * s + t * t) / 2);
+}
+
 /** Where a phase has turned the ray to, part way through: it starts and stops gently. */
 const ease = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
 

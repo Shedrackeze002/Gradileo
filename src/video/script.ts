@@ -1179,7 +1179,7 @@ export interface RayClip {
 }
 
 /** What a rays element can show over its rays; each is a part ("r.normal"). */
-export const RAYS_PARTS = ['normal', 'angles', 'toSurface', 'fronts', 'image'] as const;
+export const RAYS_PARTS = ['normal', 'angles', 'toSurface', 'fronts', 'image', 'partial'] as const;
 
 /**
  * A ray of light meeting a surface, for the physics videos (src/video/rays.ts). At a `mirror` the
@@ -1191,8 +1191,10 @@ export const RAYS_PARTS = ['normal', 'angles', 'toSurface', 'fronts', 'image'] a
  * `normal` (the line at right angles to the surface), `angles` (the angles from the normal, with
  * their sizes), `toSurface` (the angle between the incoming ray and the surface, which is not the
  * angle of incidence), `fronts` (a wide beam with its wavefronts marching along it while a clip
- * plays: closer together where the light is slower) and, at a mirror with room `behind` it,
- * `image` (where the lamp seems to be: as far behind the mirror as the lamp is in front).
+ * plays: closer together where the light is slower), at a mirror with room `behind` it, `image`
+ * (where the lamp seems to be: as far behind the mirror as the lamp is in front) and, at a
+ * boundary, `partial` (the faint ray that is reflected while most of the light crosses; it
+ * brightens as the angle nears the critical angle, beyond which all of the light is reflected).
  */
 export interface RaysEl {
   kind: 'rays';
@@ -1206,6 +1208,8 @@ export interface RaysEl {
   media?: [string, string];
   /** At a mirror: put it across the middle of the picture, with room behind it for the image. */
   behind?: boolean;
+  /** At a boundary: the light comes up from below, so the first material is drawn under the second (light in water that meets the air above it). */
+  below?: boolean;
   clips: Record<string, RayClip>;
   /** For the thumbnail: the clip to show, part way through. */
   poster?: string;
@@ -2414,6 +2418,8 @@ export interface LightPhase {
   to?: number;
   /** A trip: send a flash from the source as the phase starts. */
   send?: boolean;
+  /** A prism or a fibre: turn the incoming ray steadily to this angle, in degrees (from the normal of a prism's face, or from the axis of a fibre). */
+  angle?: number;
 }
 
 export interface LightClip {
@@ -2461,11 +2467,29 @@ export interface LightSpin {
   hertz?: number;
 }
 
+/** White light that crosses a glass prism and spreads into its colours. */
+export interface LightPrism {
+  /** The angle of incidence on the first face, in degrees from its normal (10 to 85). */
+  angle: number;
+  /** The angle at the top of the prism, in degrees (60 otherwise). */
+  apex?: number;
+  /** The refractive index of the glass for red light and for violet light ([1.50, 1.56] otherwise: the gap is drawn larger than that of real glass, so that the colours can be told apart). */
+  index?: [red: number, violet: number];
+}
+
+/** A ray of light inside an optical fibre: a core of glass in a cladding of lower refractive index. */
+export interface LightFibre {
+  /** The angle between the ray and the axis of the fibre as it enters, in degrees (1 to 80). */
+  angle: number;
+  /** The refractive indices of the core and of the cladding ([1.50, 1.20] otherwise). */
+  index?: [core: number, cladding: number];
+}
+
 /** What a light element can show; each is a part ("em.magnetic"). */
-export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'values', 'scale', 'wave', 'made', 'use', 'visible', 'ionizing', 'arrows', 'clock', 'distance', 'travelled', 'turn', 'rate'] as const;
+export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'values', 'scale', 'wave', 'made', 'use', 'visible', 'ionizing', 'arrows', 'clock', 'distance', 'travelled', 'turn', 'rate', 'names', 'angles'] as const;
 
 /**
- * Light as an electromagnetic wave (src/video/light.ts). One element is one of four pictures.
+ * Light as an electromagnetic wave (src/video/light.ts). One element is one of six pictures.
  *
  * `wave` is the wave that leaves a charge driven up and down an aerial: its electric field
  * (yellow, part `electric`) is up and down, its magnetic field (violet, part `magnetic`) is at
@@ -2489,6 +2513,15 @@ export const LIGHT_PARTS = ['electric', 'magnetic', 'wavelength', 'speed', 'valu
  * turned, and the flash reaches the detector only if the next face stands where the first one
  * was. Parts: `rate` (the turns each second), `clock` (the time of the round trip), `turn` (the
  * share of a turn the mirror makes in that time) and `distance`.
+ *
+ * `prism` is white light crossing a glass prism: it grows into the picture while a clip plays, and
+ * each colour is refracted twice by Snell's law with its own refractive index, so violet is bent
+ * the most and red the least. Part: `names` (the two ends of the spectrum).
+ *
+ * `fibre` is a ray inside an optical fibre with a gentle bend. Where it meets the wall at more
+ * than the critical angle it is totally reflected, and pulses of light run along it; at less,
+ * most of the light escapes into the cladding at each bounce. Parts: `names` (the core and the
+ * cladding) and `angles` (the angle at the wall beside the critical angle).
  */
 export interface LightEl {
   kind: 'light';
@@ -2497,6 +2530,8 @@ export interface LightEl {
   spectrum?: { /** The wavelength the pointer starts at, in metres. */ at: number };
   trip?: LightTrip;
   spin?: LightSpin;
+  prism?: LightPrism;
+  fibre?: LightFibre;
   /** Seconds of the model for each second of video, for a trip or a spinning mirror (a trip one way, or a round trip of the spinning mirror, takes 2.5 seconds of video otherwise). */
   rate?: number;
   /** Significant figures of what is written (3 otherwise). */
@@ -3125,6 +3160,7 @@ export function checkRays(e: RaysEl): string[] {
   if (e.surface === 'boundary' && !(e.speeds && e.speeds[0] > 0 && e.speeds[1] > 0)) problems.push('a boundary needs the two speeds, both above zero.');
   if (e.surface === 'mirror' && (e.speeds || e.media)) problems.push('a mirror has no second material: leave out the speeds and the media.');
   if (e.surface === 'boundary' && e.behind) problems.push('only a mirror has an image behind it.');
+  if (e.surface === 'mirror' && e.below) problems.push('only a boundary can be met from below.');
   for (const [name, clip] of Object.entries(e.clips)) {
     if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
     for (const ph of clip.phases) {
@@ -3351,8 +3387,8 @@ export function checkInduction(e: InductionEl): string[] {
 /** Problems with a light element: no picture or more than one, a wave with no frequency, a trip of no length, clips that ask for what the picture does not have. */
 export function checkLight(e: LightEl): string[] {
   const problems: string[] = [];
-  const pictures = [e.wave, e.spectrum, e.trip, e.spin].filter((picture) => picture !== undefined).length;
-  if (pictures !== 1) problems.push('give it exactly one of `wave`, `spectrum`, `trip` and `spin`.');
+  const pictures = [e.wave, e.spectrum, e.trip, e.spin, e.prism, e.fibre].filter((picture) => picture !== undefined).length;
+  if (pictures !== 1) problems.push('give it exactly one of `wave`, `spectrum`, `trip`, `spin`, `prism` and `fibre`.');
   const inSpectrum = (metres: number) => metres >= 1e-13 && metres <= 1e4;
   if (e.wave) {
     if (!(e.wave.hertz > 0)) problems.push('the wave needs a frequency above zero.');
@@ -3369,6 +3405,15 @@ export function checkLight(e: LightEl): string[] {
   if (e.spin) {
     if (!(e.spin.metres > 0)) problems.push('the fixed mirror needs a distance above zero.');
     if (e.spin.hertz !== undefined && !(e.spin.hertz >= 0)) problems.push('the spinning mirror cannot turn a negative number of times each second.');
+  }
+  if (e.prism) {
+    if (!(e.prism.angle >= 10 && e.prism.angle <= 85)) problems.push('the ray must meet the prism at 10° to 85° from the normal.');
+    if (e.prism.apex !== undefined && !(e.prism.apex >= 30 && e.prism.apex <= 90)) problems.push('the angle at the top of the prism must be from 30° to 90°.');
+    if (e.prism.index && !(e.prism.index[0] > 1 && e.prism.index[1] >= e.prism.index[0])) problems.push('the glass needs a refractive index above 1, and no smaller for violet light than for red.');
+  }
+  if (e.fibre) {
+    if (!(e.fibre.angle >= 1 && e.fibre.angle <= 80)) problems.push('the ray must enter the fibre at 1° to 80° from its axis.');
+    if (e.fibre.index && !(e.fibre.index[1] >= 1 && e.fibre.index[0] > e.fibre.index[1])) problems.push('the core needs a larger refractive index than the cladding, and neither can be less than 1.');
   }
   if (e.rate !== undefined && !(e.rate > 0)) problems.push('the rate must be more than zero.');
   if (e.rate !== undefined && !e.trip && !e.spin) problems.push('only a trip or a spinning mirror has a rate.');
@@ -3387,6 +3432,9 @@ export function checkLight(e: LightEl): string[] {
       if (ph.to !== undefined && !e.spectrum) problems.push(`clip "${name}" slides a pointer, and the picture is not a spectrum.`);
       if (ph.to !== undefined && e.spectrum && !inSpectrum(ph.to)) problems.push(`clip "${name}" slides the pointer off the spectrum (it runs from 10⁻¹³ m to 10⁴ m).`);
       if (ph.send && !e.trip) problems.push(`clip "${name}" sends a flash, and the picture is not a trip.`);
+      if (ph.angle !== undefined && !e.prism && !e.fibre) problems.push(`clip "${name}" turns a ray, and the picture is not a prism or a fibre.`);
+      if (ph.angle !== undefined && e.prism && !(ph.angle >= 10 && ph.angle <= 85)) problems.push(`clip "${name}" turns the ray past what the prism can take (10° to 85°).`);
+      if (ph.angle !== undefined && e.fibre && !(ph.angle >= 1 && ph.angle <= 80)) problems.push(`clip "${name}" turns the ray past what the fibre can take (1° to 80°).`);
     }
   }
   return problems;

@@ -3,10 +3,23 @@ import { checkLight, checkScript, type Explainer, type LightEl } from './script.
 import {
   C,
   FACE,
+  FIBRE,
+  PRISM_COLOURS,
   REGIONS,
   TOLERANCE,
   chargeAt,
+  fibreAt,
+  fibreCentre,
+  fibreCritical,
+  fibrePath,
   fieldAt,
+  incidenceOf,
+  prismAt,
+  prismIndex,
+  prismPath,
+  prismShape,
+  reflectRay,
+  refractRay,
   firstRate,
   lightWaveAt,
   realHertz,
@@ -380,6 +393,124 @@ describe('a spinning mirror', () => {
   });
 });
 
+// White light that meets a 60° prism at 50° to the normal of its first face.
+const prism = (over: Partial<NonNullable<LightEl['prism']>> = {}, clips: LightEl['clips'] = {}): LightEl => ({ kind: 'light', id: 'pr', prism: { angle: 50, ...over }, clips: { a: { phases: [{ dur: 6 }] }, turn: { phases: [{ dur: 4, angle: 64 }] }, ...clips } });
+// A ray that enters an optical fibre at 20° to its axis.
+const fibre = (over: Partial<NonNullable<LightEl['fibre']>> = {}, clips: LightEl['clips'] = {}): LightEl => ({ kind: 'light', id: 'fb', fibre: { angle: 20, ...over }, clips: { a: { phases: [{ dur: 6 }] }, steep: { phases: [{ dur: 4, angle: 50 }] }, ...clips } });
+const DEG = Math.PI / 180;
+
+describe('refraction of a ray', () => {
+  it("follows Snell's law: 40.0° in air is 25.0° in crown glass", () => {
+    const d = refractRay([Math.sin(40 * DEG), -Math.cos(40 * DEG)], [0, 1], 1, 1.52)!;
+    expect(Math.asin(d[0]) / DEG).toBeCloseTo(25.0, 1);
+    expect(d[1]).toBeLessThan(0);
+    expect(Math.hypot(d[0], d[1])).toBeCloseTo(1);
+    expect(incidenceOf(d, [0, 1])).toBeCloseTo(25.0, 1);
+  });
+
+  it('lets no light cross beyond the critical angle: 41.1° for crown glass in air', () => {
+    const from = (angle: number) => refractRay([Math.sin(angle * DEG), -Math.cos(angle * DEG)], [0, 1], 1.52, 1);
+    expect(from(41)).not.toBeNull();
+    expect(from(41.2)).toBeNull();
+    // A ray along the normal goes straight on.
+    expect(from(0)![0]).toBeCloseTo(0);
+  });
+
+  it('reflects a ray at the angle it arrives at', () => {
+    const d = reflectRay([Math.sin(55 * DEG), -Math.cos(55 * DEG)], [0, 1]);
+    expect(d[0]).toBeCloseTo(Math.sin(55 * DEG));
+    expect(d[1]).toBeCloseTo(Math.cos(55 * DEG));
+  });
+});
+
+describe('a prism', () => {
+  it('has an index that rises from red to violet', () => {
+    expect(prismIndex(prism(), 700)).toBeCloseTo(1.5);
+    expect(prismIndex(prism(), 400)).toBeCloseTo(1.56);
+    expect(prismIndex(prism(), 550)).toBeCloseTo(1.53);
+    expect(prismIndex(prism({ index: [1.5, 1.6] }), 400)).toBeCloseTo(1.6);
+    expect(PRISM_COLOURS[0]).toBeGreaterThan(PRISM_COLOURS[PRISM_COLOURS.length - 1]);
+  });
+
+  it('has sloping sides one unit long', () => {
+    const { top, left, right } = prismShape(prism());
+    expect(Math.hypot(top[0] - left[0], top[1] - left[1])).toBeCloseTo(1);
+    expect(Math.hypot(top[0] - right[0], top[1] - right[1])).toBeCloseTo(1);
+    expect(right[0] - left[0]).toBeCloseTo(1);
+    expect(prismShape(prism({ apex: 90 })).top[1]).toBeCloseTo(Math.SQRT1_2);
+  });
+
+  it('turns each colour by the angle that two refractions give', () => {
+    // Red light, n = 1.50, at 50° on a 60° prism: 30.7° inside, 29.3° at the second face, and 47.2° beyond it, so it is turned through 50 + 47.2 − 60 = 37.2°.
+    const red = prismPath(prism(), 50, 700);
+    expect(red.index).toBeCloseTo(1.5);
+    expect(incidenceOf(red.inside, [-Math.cos(30 * DEG), Math.sin(30 * DEG)])).toBeCloseTo(30.71, 1);
+    expect(red.deviation).toBeCloseTo(37.2, 0);
+    // The light enters half way up the first face, and leaves from the second.
+    expect(red.enter[0]).toBeCloseTo(-0.25);
+    expect(red.leave[0]).toBeGreaterThan(0);
+    expect(red.leave[1]).toBeCloseTo((0.5 - red.leave[0]) * Math.tan(60 * DEG));
+  });
+
+  it('bends violet the most and red the least', () => {
+    const turned = PRISM_COLOURS.map((nm) => prismPath(prism(), 50, nm).deviation!);
+    for (let i = 1; i < turned.length; i++) expect(turned[i]).toBeGreaterThan(turned[i - 1]);
+    expect(turned[turned.length - 1] - turned[0]).toBeGreaterThan(3);
+  });
+
+  it('cannot let the light out when it meets the second face beyond the critical angle', () => {
+    const path = prismPath(prism(), 10, 700);
+    expect(path.out).toBeNull();
+    expect(path.deviation).toBeNull();
+  });
+
+  it('turns the incoming ray while a clip plays', () => {
+    expect(prismAt(prism())).toEqual({ time: 0, angle: 50 });
+    expect(prismAt(prism(), [['a', 6]])).toEqual({ time: 6, angle: 50 });
+    expect(prismAt(prism(), [['a', 6], ['turn', 2]]).angle).toBeCloseTo(57);
+    expect(prismAt(prism(), [['a', 6], ['turn', 4]])).toEqual({ time: 10, angle: 64 });
+  });
+});
+
+describe('an optical fibre', () => {
+  it('has a critical angle set by its two indices', () => {
+    expect(fibreCritical(fibre())).toBeCloseTo(53.13, 1);
+    expect(fibreCritical(fibre({ index: [1.48, 1.46] }))).toBeCloseTo(80.6, 1);
+  });
+
+  it('holds in a ray that meets the wall beyond the critical angle, all the way round the bend', () => {
+    const path = fibrePath(fibre(), 20);
+    expect(path.bounces.length).toBeGreaterThanOrEqual(3);
+    for (const bounce of path.bounces) {
+      expect(bounce.total).toBe(true);
+      expect(bounce.escape).toBeNull();
+      expect(bounce.incidence).toBeGreaterThan(53.13);
+      // Every bounce is at the wall of the core.
+      expect(Math.abs(bounce.at[1] - fibreCentre(bounce.at[0]))).toBeCloseTo(FIBRE.half, 0);
+    }
+    expect(path.through).toBe(1);
+    expect(path.points[0].at).toEqual([0, fibreCentre(0)]);
+    expect(path.points[path.points.length - 1].at[0]).toBeGreaterThanOrEqual(FIBRE.length);
+    expect(path.length).toBeGreaterThan(FIBRE.length);
+  });
+
+  it('loses most of the light at each bounce when the ray is too steep', () => {
+    const path = fibrePath(fibre(), 50);
+    expect(path.bounces[0].total).toBe(false);
+    expect(path.bounces[0].incidence).toBeLessThan(53.13);
+    // The light that escapes bends away from the normal of the wall, by Snell's law.
+    const out = path.bounces[0].escape!;
+    expect(out[1]).toBeGreaterThan(0);
+    expect(path.points[2].strength).toBeCloseTo(0.25);
+    expect(path.through).toBe(0);
+  });
+
+  it('turns the incoming ray while a clip plays', () => {
+    expect(fibreAt(fibre())).toEqual({ time: 0, angle: 20 });
+    expect(fibreAt(fibre(), [['a', 6], ['steep', 4]])).toEqual({ time: 10, angle: 50 });
+  });
+});
+
 describe('the checks of a light element', () => {
   it('passes the pictures of the lesson', () => {
     expect(checkLight(wave())).toEqual([]);
@@ -389,6 +520,20 @@ describe('the checks of a light element', () => {
     expect(checkLight(radar())).toEqual([]);
     expect(checkLight(mirror())).toEqual([]);
     expect(checkLight(mirror({ hertz: 536 }))).toEqual([]);
+    expect(checkLight(prism())).toEqual([]);
+    expect(checkLight(prism({ apex: 45, index: [1.5, 1.6] }))).toEqual([]);
+    expect(checkLight(fibre())).toEqual([]);
+  });
+
+  it('keeps a prism and a fibre within what can be drawn', () => {
+    expect(checkLight(prism({ angle: 5 })).join(' ')).toContain('10° to 85°');
+    expect(checkLight(prism({ apex: 120 })).join(' ')).toContain('30° to 90°');
+    expect(checkLight(prism({ index: [1.6, 1.5] })).join(' ')).toContain('no smaller for violet');
+    expect(checkLight(prism({}, { far: { phases: [{ dur: 2, angle: 88 }] } })).join(' ')).toContain('past what the prism can take');
+    expect(checkLight(fibre({ angle: 85 })).join(' ')).toContain('1° to 80°');
+    expect(checkLight(fibre({ index: [1.2, 1.5] })).join(' ')).toContain('larger refractive index than the cladding');
+    expect(checkLight(fibre({}, { far: { phases: [{ dur: 2, angle: 0 }] } })).join(' ')).toContain('past what the fibre can take');
+    expect(checkLight(sun({ clips: { go: { phases: [{ dur: 8, angle: 30 }] } } })).join(' ')).toContain('not a prism or a fibre');
   });
 
   it('wants exactly one picture', () => {
