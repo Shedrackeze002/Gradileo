@@ -87,7 +87,7 @@ export function hertzIn(hertz: number): [number, string] {
 }
 
 /** A quantity written out: "λ = 3.05 m", or "f = 5.45 × 10¹⁴ Hz" with the power raised. */
-function Value({ x, y, pre, n, unit, figures = 3, color = INK, anchor = 'middle', size = 21, opacity = 1 }: { x: number; y: number; pre: string; n: number; unit: string; figures?: number; color?: string; anchor?: 'start' | 'middle' | 'end'; size?: number; opacity?: number }) {
+export function Value({ x, y, pre, n, unit, figures = 3, color = INK, anchor = 'middle', size = 21, opacity = 1 }: { x: number; y: number; pre: string; n: number; unit: string; figures?: number; color?: string; anchor?: 'start' | 'middle' | 'end'; size?: number; opacity?: number }) {
   const [mantissa, power] = written(n, figures);
   return (
     <text x={x} y={y} fill={color} fontSize={size} fontWeight={600} textAnchor={anchor} dominantBaseline="central" opacity={opacity} style={{ fontFamily: FONT, fontVariantNumeric: 'tabular-nums', paintOrder: 'stroke', stroke: 'rgb(13 12 36 / 0.85)', strokeWidth: 4, strokeLinejoin: 'round' }}>

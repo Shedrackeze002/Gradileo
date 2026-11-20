@@ -2675,6 +2675,72 @@ export interface OpticsEl {
   height?: number;
 }
 
+/** One step of a photons clip. */
+export interface PhotonsPhase {
+  /** How long it lasts, in seconds. */
+  dur: number;
+  /** Slide the wavelength of the light to this many nanometres, gently. */
+  nm?: number;
+  /** Slide the brightness to this many photons in each second. */
+  rate?: number;
+  /** In a tube: slide the supply to this many volts (the collecting plate is negative by so much). */
+  volts?: number;
+}
+
+export interface PhotonsClip {
+  phases: PhotonsPhase[];
+}
+
+/** What a photons element can show; each is a part ("tube.meter"). */
+export const PHOTONS_PARTS = ['names', 'values', 'energy', 'count', 'bars', 'graph', 'slope', 'fastest', 'meter'] as const;
+
+/**
+ * Light as a stream of photons (src/video/photons.ts), with the lessons' constants. The light
+ * sends out `rate` photons in each second of video, each drawn as a short packet of waves in
+ * the colour of its wavelength, and a phase can slide the wavelength, the brightness and the
+ * supply voltage.
+ *
+ * With no metal, the photons cross from a lamp to a detector. Parts: `names`, `values` (λ and
+ * f), `energy` (the energy of one photon, in joules and in electronvolts), `bars` (that energy
+ * on a scale of electronvolts) and `count` (the photons each second: the number drawn, or with
+ * `watts` the real number, power ÷ the energy of one photon).
+ *
+ * With a `metal`, the light lands on a plate, for the photoelectric effect. A photon with more
+ * energy than the work function frees one electron at once; the fastest leave with hf − W and
+ * the rest with a share of it, and speed goes with the square root of the kinetic energy. With a
+ * `tube`, a collecting plate faces the metal and a supply makes it negative: each electron slows
+ * steadily and crosses only if its kinetic energy is more than eV. Parts: `names`, `values`,
+ * `energy`, `bars` (hf beside W and the kinetic energy left over), `count` (the electrons freed
+ * each second), `fastest` (the fastest electrons marked, with their kinetic energy), `meter` (the
+ * supply and the electrons collected each second), `graph` (Ek max against f, with a dot that
+ * follows the light) and `slope` (the label "slope = h" on the graph).
+ */
+export interface PhotonsEl {
+  kind: 'photons';
+  id: string;
+  /** The wavelength of the light at the start, in nanometres. */
+  nm: number;
+  /** How bright the light is at the start: the photons it sends in each second of video. */
+  rate: number;
+  /** The power of the beam in watts, for the real count of photons each second. */
+  watts?: number;
+  /** The metal that the light lands on: its name and its work function in electronvolts. */
+  metal?: { name: string; work: number };
+  /** With a metal: a collecting plate that faces it, negative by so many volts at the start. */
+  tube?: { volts: number };
+  /** The reach of the graph: the greatest frequency, in units of 10¹⁴ Hz (12 otherwise), and the greatest kinetic energy, in electronvolts (3 otherwise). */
+  graph?: { hertz?: number; volts?: number };
+  /** The significant figures of the count of photons (2 otherwise). */
+  figures?: number;
+  clips: Record<string, PhotonsClip>;
+  /** For the thumbnail: the clip to show, the share of it that has played (0.7 otherwise), and the parts to show (the names, and the bars of a metal, otherwise). */
+  poster?: string;
+  posterAt?: number;
+  thumb?: Array<(typeof PHOTONS_PARTS)[number]>;
+  label?: string;
+  height?: number;
+}
+
 /** A body of a circle element: something that goes round a circle. */
 export interface CircleBody {
   id: string;
@@ -2769,7 +2835,7 @@ export interface CircleEl {
   height?: number;
 }
 
-export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
+export type El = TitleEl | TextEl | QuoteEl | MathEl | BulletsEl | CalloutEl | TableEl | TriangleEl | SimilarEl | DiagramEl | CalcEl | TryEl | ScreenEl | MotionEl | ParticlesEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | CircleEl | AtomsEl | MoleculesEl | ScatterEl;
 
 export interface Line {
   /** What the narrator says, written as it should be spoken. */
@@ -3572,6 +3638,32 @@ export function checkOptics(e: OpticsEl): string[] {
   return problems;
 }
 
+/** Problems with a photons element: light with no wavelength, a tube with no metal, a graph that is not a whole number of electronvolts high, clips that ask for what is not there. */
+export function checkPhotons(e: PhotonsEl): string[] {
+  const problems: string[] = [];
+  const colour = (nm: number) => nm >= 10 && nm <= 2000;
+  if (!colour(e.nm)) problems.push('the wavelength is in nanometres, from 10 to 2000.');
+  if (!(e.rate >= 0 && e.rate <= 12)) problems.push('the picture can draw from 0 to 12 photons each second.');
+  if (e.watts !== undefined && !(e.watts > 0)) problems.push('the power must be more than zero.');
+  if (e.metal && !(e.metal.work > 0)) problems.push('the work function must be more than zero.');
+  if (e.tube && !e.metal) problems.push('a tube needs a metal for the light to land on.');
+  if (e.graph?.hertz !== undefined && !(e.graph.hertz > 0)) problems.push('the graph must reach a frequency above zero.');
+  if (e.graph?.volts !== undefined && !(Number.isInteger(e.graph.volts) && e.graph.volts > 0)) problems.push('the graph reaches a whole number of electronvolts.');
+  if (e.poster !== undefined && !(e.poster in e.clips)) problems.push(`the poster clip "${e.poster}" is not a clip.`);
+  if (e.posterAt !== undefined && !(e.posterAt > 0 && e.posterAt <= 1)) problems.push('`posterAt` is a share of the poster clip, above 0 and up to 1.');
+  for (const part of e.thumb ?? []) if (!(PHOTONS_PARTS as readonly string[]).includes(part)) problems.push(`the thumbnail part "${part}" is not a part.`);
+  for (const [name, clip] of Object.entries(e.clips)) {
+    if (!clip.phases.length) problems.push(`clip "${name}" has no phases.`);
+    for (const ph of clip.phases) {
+      if (!(ph.dur > 0)) problems.push(`clip "${name}" has a phase with no duration.`);
+      if (ph.nm !== undefined && !colour(ph.nm)) problems.push(`clip "${name}" slides the wavelength out of range (10 to 2000 nm).`);
+      if (ph.rate !== undefined && !(ph.rate >= 0 && ph.rate <= 12)) problems.push(`clip "${name}" asks for more photons than the picture can draw (0 to 12 each second).`);
+      if (ph.volts !== undefined && !e.tube) problems.push(`clip "${name}" changes the supply, and the picture has no tube.`);
+    }
+  }
+  return problems;
+}
+
 /** Problems with a transformer element: coils with no turns, a supply with no voltage, clips that ask for what the supply cannot do. */
 export function checkTransformer(e: TransformerEl): string[] {
   const problems: string[] = [];
@@ -3873,7 +3965,7 @@ export function checkScript(x: Explainer): string[] {
     const ids = new Set<string>();
     const diagrams = new Map<string, Set<string>>();
     const screens = new Set<string>();
-    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | CircleEl>();
+    const motions = new Map<string, MotionEl | ParticlesEl | AtomsEl | MoleculesEl | ScatterEl | WaveEl | RipplesEl | RaysEl | CircuitEl | FlightEl | RampEl | ForcesEl | GravityEl | ChargesEl | MagnetsEl | InductionEl | TransformerEl | PowerlineEl | LightEl | OpticsEl | PhotonsEl | CircleEl>();
     for (const e of sceneElements(s)) {
       if (ids.has(e.id)) problems.push(`Scene ${si + 1}: the id "${e.id}" is used twice.`);
       ids.add(e.id);
@@ -3955,6 +4047,11 @@ export function checkScript(x: Explainer): string[] {
         diagrams.set(e.id, new Set<string>(OPTICS_PARTS));
         motions.set(e.id, e);
         problems.push(...checkOptics(e).map((p) => `Scene ${si + 1}: optics "${e.id}": ${p}`));
+      }
+      if (e.kind === 'photons') {
+        diagrams.set(e.id, new Set<string>(PHOTONS_PARTS));
+        motions.set(e.id, e);
+        problems.push(...checkPhotons(e).map((p) => `Scene ${si + 1}: photons "${e.id}": ${p}`));
       }
       if (e.kind === 'circle') {
         diagrams.set(e.id, new Set<string>([...CIRCLE_PARTS, ...e.bodies.map((b) => b.id)]));

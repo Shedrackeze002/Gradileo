@@ -709,6 +709,28 @@ See `src/video/script.ts` for every element and option. In short:
   readouts. Light runs along the rays only while a clip plays. With two lines of maths under
   it, give it a `height` of about 330.
 
+- `photons` (`src/video/photons.ts`) is light as a stream of photons, with the lessons'
+  constants (h = 6.63 × 10⁻³⁴ J·s, c = 3.00 × 10⁸ m/s, 1 eV = 1.60 × 10⁻¹⁹ J). Give it the
+  wavelength `nm` and the `rate`, the photons it sends in each second of video (up to 12). Each
+  photon is a short packet of waves in the colour of its wavelength (pale violet for
+  ultraviolet), and a phase slides `nm`, `rate` and, in a tube, `volts`. With nothing else, the
+  photons cross from a lamp to a detector; parts: `names`, `values` (λ and f), `energy` (one
+  photon, in joules and electronvolts), `bars` (that energy on a scale of electronvolts) and
+  `count` (the photons each second: the number drawn, or with `watts` the real number). With a
+  `metal` (`{ name, work }`, the work function in electronvolts) the light lands on a plate:
+  a photon with more energy than W frees one electron at once, the fastest leave with hf − W
+  and the rest with a share of it, and speed goes with the square root of the kinetic energy.
+  With a `tube` (`{ volts }`) a collecting plate faces the metal and the supply makes it
+  negative: each electron slows steadily, and crosses only if its kinetic energy is more than
+  eV, so the current falls to nothing at the stopping voltage. Parts: `names`, `values`,
+  `energy`, `bars` (hf beside W and the kinetic energy left over), `count` (electrons freed each
+  second), `fastest` (the fastest electrons marked), `meter` (the supply and the electrons
+  collected each second), `graph` (Ek max against f, with a dot that follows the light) and
+  `slope`. The readouts sit on the right, from x = 770 of 1136: with no tube the electrons fly
+  on across the picture unless `bars` or `graph` is shown. A tube with its meter needs a
+  `height` of 360 or more, and the graph about 470. Photons move only while a clip plays, so
+  give every line of a scene a clip.
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as
