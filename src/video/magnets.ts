@@ -35,6 +35,10 @@ export interface MagnetsState {
   v: Record<string, Point>;
   /** The coil: the angle of its first side in degrees, and how fast it turns in radians per second (anticlockwise is positive). */
   spin: { angle: number; omega: number } | null;
+  /** Seconds of the model that have passed while clips played. */
+  model: number;
+  /** The emf at the brushes of a generator during the present sweep of its trace: [seconds into the sweep, volts]. */
+  trace: Array<[number, number]>;
 }
 
 /** Steps of the model for each second of video, while a wire or a coil moves. */
@@ -65,7 +69,9 @@ export function magnetsAt(el: MagnetsEl, plays: MagnetPlays = []): MagnetsState 
     amps: Object.fromEntries((el.wires ?? []).map((w) => [w.id, w.amps])),
     order: Object.fromEntries((el.iron ?? []).map((b) => [b.id, b.order ?? 0])),
     v: Object.fromEntries((el.wires ?? []).filter((w) => w.mass !== undefined).map((w) => [w.id, [0, 0] as Point])),
-    spin: el.coil ? { angle: el.coil.angle ?? 0, omega: 0 } : null,
+    spin: el.coil ? { angle: el.coil.angle ?? 0, omega: 2 * Math.PI * (el.coil.drive ?? 0) } : null,
+    model: 0,
+    trace: [],
   };
   if (el.coil) {
     state.at[el.coil.id] = [el.coil.at[0], el.coil.at[1]];
@@ -78,13 +84,14 @@ export function magnetsAt(el: MagnetsEl, plays: MagnetPlays = []): MagnetsState 
     let left = seconds;
     for (const ph of clip.phases) {
       if (left <= 0) break;
-      const from = { at: { ...state.at }, angle: { ...state.angle }, amps: { ...state.amps }, order: { ...state.order } };
+      const from = { at: { ...state.at }, angle: { ...state.angle }, amps: { ...state.amps }, order: { ...state.order }, omega: state.spin?.omega ?? 0 };
       /** Everything the phase carries, turns or changes, this far through it. */
       const ease = (f: number) => {
         for (const [id, [x, y]] of Object.entries(ph.to ?? {})) if (id in from.at) state.at[id] = [from.at[id][0] + (x - from.at[id][0]) * f, from.at[id][1] + (y - from.at[id][1]) * f];
         for (const [id, a] of Object.entries(ph.turn ?? {})) if (id in from.angle) state.angle[id] = from.angle[id] + (a - from.angle[id]) * f;
         for (const [id, i] of Object.entries(ph.amps ?? {})) if (id in from.amps) state.amps[id] = from.amps[id] + (i - from.amps[id]) * f;
         for (const [id, o] of Object.entries(ph.order ?? {})) if (id in from.order) state.order[id] = from.order[id] + (o - from.order[id]) * f;
+        if (ph.drive !== undefined && state.spin && el.coil?.drive !== undefined) state.spin.omega = from.omega + (2 * Math.PI * ph.drive - from.omega) * f;
       };
       const played = Math.min(left, ph.dur);
       if (moving) {
@@ -93,6 +100,12 @@ export function magnetsAt(el: MagnetsEl, plays: MagnetPlays = []): MagnetsState 
         for (let k = 0; k < steps; k++) {
           ease(smooth(clamp01(((k + 0.5) * h) / ph.dur)));
           advance(el, state, h * (el.rate ?? 1));
+          // The trace of a generator: a point every few steps, and a new sweep each time the last one reaches the right-hand side.
+          if (el.trace && k % 4 === 0) {
+            const into = state.model % el.trace.seconds;
+            if (state.trace.length && into < state.trace[state.trace.length - 1][0]) state.trace = [];
+            state.trace.push([into, coilOutput(el, state)]);
+          }
         }
       }
       ease(smooth(clamp01(left / ph.dur)));
@@ -136,10 +149,14 @@ function advance(el: MagnetsEl, state: MagnetsState, dt: number): void {
     }
     state.at[w.id] = [x, y];
   }
+  state.model += dt;
   if (el.coil && state.spin) {
-    // Friction is taken at the end of the step, so that a large friction cannot make the coil overshoot.
-    const drag = ((el.coil.friction ?? 0) * dt) / el.coil.inertia;
-    state.spin.omega = (state.spin.omega + (coilTorque(el, state) / el.coil.inertia) * dt) / (1 + drag);
+    if (el.coil.drive === undefined && el.coil.inertia !== undefined) {
+      // Friction is taken at the end of the step, so that a large friction cannot make the coil overshoot.
+      const drag = ((el.coil.friction ?? 0) * dt) / el.coil.inertia;
+      state.spin.omega = (state.spin.omega + (coilTorque(el, state) / el.coil.inertia) * dt) / (1 + drag);
+    }
+    // A coil that is driven keeps the speed it is turned at, whatever the forces on it.
     state.spin.angle += deg(state.spin.omega * dt);
   }
 }
@@ -309,14 +326,50 @@ export function coilSides(el: MagnetsEl, state: MagnetsState): CoilSide[] {
   const a = rad(state.spin.angle);
   const [cx, cy] = state.at[c.id];
   const [ax, ay] = fieldAt(el, state, cx, cy);
-  const swapped = c.commutator === true && Math.cos(a) * ax + Math.sin(a) * ay < 0;
+  const swapped = c.drive === undefined && c.commutator === true && Math.cos(a) * ax + Math.sin(a) * ay < 0;
+  // In a generator the only current is the induced one, ε ÷ R, which comes out of the page in the first side when the emf is positive.
+  const current = c.drive !== undefined ? (c.load ? coilEmf(el, state) / c.load : 0) : state.amps[c.id];
   return ([1, -1] as const).map((side) => {
     const at: Point = [cx + side * c.radius * Math.cos(a), cy + side * c.radius * Math.sin(a)];
-    const amps = side * (swapped ? -1 : 1) * state.amps[c.id];
+    const amps = side * (swapped ? -1 : 1) * current;
     const [bx, by] = fieldAt(el, state, at[0], at[1]);
     const k = amps * (c.turns ?? 1) * c.metres;
     return { at, amps, force: [-by * k, bx * k] as Point };
   });
+}
+
+/**
+ * The emf induced in the coil as it turns, in volts: each side is a conductor of length L that
+ * moves across the field, so it has the emf BLv for the part of its velocity that is across the
+ * field, and the two sides and all N turns add. It is positive when it drives a current out of
+ * the page in the first side. It is greatest when the plane of the coil lies along the field (the
+ * sides are then cutting straight across it), and zero when the plane is at right angles to it.
+ */
+export function coilEmf(el: MagnetsEl, state: MagnetsState): number {
+  const c = el.coil;
+  if (!c || !state.spin) return 0;
+  const metres = el.length?.metres ?? 1;
+  const a = rad(state.spin.angle);
+  const [cx, cy] = state.at[c.id];
+  let emf = 0;
+  for (const side of [1, -1] as const) {
+    const [x, y] = [cx + side * c.radius * Math.cos(a), cy + side * c.radius * Math.sin(a)];
+    const [bx, by] = fieldAt(el, state, x, y);
+    // The side moves round the axle at ωr; the emf along it, out of the page, is (v × B) L.
+    const [vx, vy] = [-side * c.radius * metres * state.spin.omega * Math.sin(a), side * c.radius * metres * state.spin.omega * Math.cos(a)];
+    emf += side * (vx * by - vy * bx) * c.metres;
+  }
+  return emf * (c.turns ?? 1) || 0;
+}
+
+/**
+ * The emf at the brushes of a generator, in volts. Through slip rings it is the emf of the coil,
+ * which alternates. A split-ring commutator swaps the connections every half turn, just as the
+ * emf reverses, so the output rises and falls but always has the same sign.
+ */
+export function coilOutput(el: MagnetsEl, state: MagnetsState): number {
+  const emf = coilEmf(el, state);
+  return el.coil?.commutator ? Math.abs(emf) : emf;
 }
 
 /** The turning effect of the two forces about the axle of the coil, in newton metres (anticlockwise is positive). */

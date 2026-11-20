@@ -548,6 +548,22 @@ See `src/video/script.ts` for every element and option. In short:
   coil on the magnet, always against its motion: Lenz's law). `posterAt` catches the poster
   clip part way through for the thumbnail, while the needle is swung over.
 
+  For the generator, give the `coil` a `drive` (the turns it is made to make each second) and no
+  `amps`: it is then turned from outside at that rate, and the emf induced in it,
+  2NBLv for the part of the velocity of its sides that is across the field, is worked out as
+  it turns. A phase with a `drive` brings the coil steadily up (or down) to a new rate, so start
+  it at `drive: 0` to show it at rest first. `slip: true` draws two slip rings (one inside the
+  other) and the output alternates; `commutator: true` draws the split ring, and the output
+  rises and falls but keeps one sign. `trace: { at, span, volts, seconds }` is a graph of the
+  emf at the brushes that draws itself beside the coil (part `trace`): `at` and `span` are its
+  place in the view, `volts` the voltage at its top line, and `seconds` one sweep. The brushes
+  show + and − as the emf changes. With a `load` (the ohms of a lamp across the brushes) the
+  induced current ε ÷ R flows in the coil, the lamp glows, and the part `force` shows the push
+  NBIL on each side, which always opposes the turning (Lenz's law). A sweep starts again when
+  the time of the model passes a whole number of sweeps, so choose clip lengths that bring the
+  coil up to speed a whole number of sweeps before the next line (bringing it up to speed
+  shifts where in its cycle the emf is).
+
 - `induction` (`src/video/induction.ts`) is a circuit in a magnetic field that points through
   the page, seen face on: `tesla` is the field (negative goes into the page, drawn as crosses;
   positive comes out, drawn as dots; `region` keeps it to part of the picture). Give it a
@@ -564,6 +580,33 @@ See `src/video/script.ts` for every element and option. In short:
   clip with `reset: true` starts from the first picture again, so the rod can cross once in
   each line of narration. The meter of a coil shows the sign of the emf (positive drives a
   current anticlockwise). Leave room to the right of a coil for its meter (about 200 pixels).
+
+- `transformer` (`src/video/transformer.ts`) is two coils on one iron core, with a screen
+  beside each coil that draws its voltage. Give it its `turns` (`[primary, secondary]`), the
+  `volts` of its supply and, for a lamp across the secondary, a `load` in ohms. The supply
+  alternates at `hertz` (50 unless told otherwise), the flux in the core is a quarter of a
+  cycle behind it, and the secondary voltage Vs = Vp × Ns ÷ Np, the current Is = Vs ÷ R, the
+  power VsIs and the primary current (from VpIp = VsIs) are all worked out. Parts: `flux` (the
+  loop of flux in the core, whose arrows turn round as it alternates), `turns` (the turns of
+  each coil), `voltage` (the two screens, with Vp and Vs), `current` (Ip and Is) and `power`
+  (Pp and Ps). A phase can wind the secondary steadily up or down to a new number of turns
+  (`secondary`), and close or open a switch (`on`). With `dc: true` the supply is a battery
+  with a switch, open at first: closing it gives the secondary one short kick while the flux
+  rises (it `settle`s in 4 ms), then nothing while the current is steady, and opening it gives
+  a kick the other way. `rate` is the seconds of the model for each second of video (0.005, so
+  a cycle of 50 Hz takes four seconds), and time passes only while a clip plays, so give each
+  line a clip a little longer than the line. `figures` is the significant figures of the
+  readouts (2). The picture fills the width of a `center` scene; a `height` of 380 to 420
+  leaves room for a line of maths under it.
+
+- `powerline` (also in `src/video/transformer.ts`) is a power station joined to a town by a
+  long line on pylons, with a transformer at each end. Give it the power sent (`watts`), the
+  resistance of the line (`ohms`) and its voltage (`volts`): the current I = P ÷ V and the
+  power wasted as heat, I²R, are worked out. Parts: `voltage`, `current` (dots that move along
+  the line, faster for a larger current) and `loss` (the glow of the line, the watts wasted
+  and a bar of the share wasted). A phase steps the voltage up or down to a new value
+  (`volts`), by the same factor in each moment, so the current and the loss fall as it rises.
+  The check stops a line that would waste all the power it is sent.
 
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`

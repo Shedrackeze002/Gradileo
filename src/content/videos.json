@@ -128519,5 +128519,115 @@
         "working": "The wings cut across the vertical field: $\\varepsilon = BLv = 5.0 \\times 10^{-5} \\times 40 \\times 250 = 0.50$ V."
       }
     ]
+  },
+  "p30-2-10-c": {
+    "lessonId": "p30-2-10",
+    "title": "The Generator",
+    "duration": 319,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "A coil that is turned",
+        "t": 20.034
+      },
+      {
+        "title": "Slip rings",
+        "t": 89.394
+      },
+      {
+        "title": "Direct current",
+        "t": 159.994
+      },
+      {
+        "title": "Where the energy comes from",
+        "t": 193.094
+      },
+      {
+        "title": "Your turn",
+        "t": 236.594
+      },
+      {
+        "title": "Summary",
+        "t": 281.367
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-10-c:q",
+        "t": 254.94,
+        "prompt": "The generator on a bicycle gives a greatest emf of 6.0 V, at a frequency of 30 Hz. The wheel then turns its coil three times as fast. What are the greatest emf and the frequency now?",
+        "choices": [
+          "2.0 V and 10 Hz",
+          "6.0 V and 90 Hz",
+          "18 V and 30 Hz",
+          "18 V and 90 Hz"
+        ],
+        "answer": 3,
+        "working": "The sides of the coil cut the field three times as fast, so the greatest emf is $3 \\times 6.0 = 18$ V. The coil makes three times as many turns each second, so the frequency is $3 \\times 30 = 90$ Hz."
+      }
+    ]
+  },
+  "p30-2-10-d": {
+    "lessonId": "p30-2-10",
+    "title": "Transformers",
+    "duration": 363,
+    "voice": "af_heart",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "t": 0
+      },
+      {
+        "title": "Two coils on one core",
+        "t": 18.626
+      },
+      {
+        "title": "The turns rule",
+        "t": 65.109
+      },
+      {
+        "title": "A worked example",
+        "t": 109.809
+      },
+      {
+        "title": "Power in, power out",
+        "t": 139.577
+      },
+      {
+        "title": "Why not a battery?",
+        "t": 190.04
+      },
+      {
+        "title": "Sending power a long way",
+        "t": 225.775
+      },
+      {
+        "title": "Your turn",
+        "t": 289.226
+      },
+      {
+        "title": "Summary",
+        "t": 328.214
+      }
+    ],
+    "cues": [
+      {
+        "id": "p30-2-10-d:q",
+        "t": 307.48,
+        "prompt": "A transformer has 200 turns on its primary coil and 4000 turns on its secondary coil. Its primary is joined to a 12 V alternating supply. What is the secondary voltage?",
+        "choices": [
+          "240 V",
+          "24 V",
+          "0.60 V",
+          "2400 V"
+        ],
+        "answer": 0,
+        "working": "$V_s = V_p \\times \\dfrac{N_s}{N_p} = 12 \\times \\dfrac{4000}{200} = 240$ V. The secondary has 20 times the turns, so it has 20 times the voltage."
+      }
+    ]
   }
 }
