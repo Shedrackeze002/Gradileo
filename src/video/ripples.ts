@@ -8,6 +8,11 @@
  * What reaches a place now left its source a little earlier: at the time the wave needed to cover
  * the distance between them. For a source that moves, that distance is measured from where the
  * source was then, not from where it is now.
+ *
+ * A `barrier` makes the sources openings in a wall that straight waves arrive at, and a `screen`
+ * is where the waves of two openings make fringes: bright where the two paths differ by a whole
+ * number of wavelengths. A clip can change the wavelength, the distance between two sources, the
+ * width of the openings and the place of the screen; `settled` gives the picture as it then is.
  */
 import type { RippleSource, RipplesEl } from './script.ts';
 
@@ -109,12 +114,84 @@ export function loudness(el: RipplesEl, p: Point, time: number): number {
   return el.sources.length ? Math.hypot(re, im) / el.sources.length : 0;
 }
 
+/** The wavelength of the first source's waves, in metres. */
+export const wavelengthOf = (el: RipplesEl) => el.speed / el.sources[0].frequency;
+
+/**
+ * The straight crests that arrive at a barrier from the left: the x of each one in the picture,
+ * nearest the wall first. They keep step with the first source, so a crest reaches the wall as
+ * the opening sends one on.
+ */
+export function arriving(el: RipplesEl, time: number): number[] {
+  const out: number[] = [];
+  const s = el.sources[0];
+  if (!el.barrier || !s || !(s.frequency > 0)) return out;
+  const every = Math.max(1, Math.round(el.every ?? 1));
+  for (let n = newest(s, time) + 1, tries = 0; tries < 4000; n++, tries++) {
+    const x = el.barrier.x - el.speed * ((n + 0.25) / s.frequency - time);
+    if (x < el.view[0]) break;
+    if (((n % every) + every) % every === 0) out.push(x);
+  }
+  return out;
+}
+
+/**
+ * Where on the screen the waves of two sources arrive `n` wavelengths apart: the y of that place.
+ * A whole number is a bright fringe (0 at the centre), and a number that ends in a half is a dark
+ * one. A positive n is on the first source's side of the centre. There is no such place when the
+ * sources are less than n wavelengths apart.
+ */
+export function fringeAt(el: RipplesEl, n: number): number | undefined {
+  const [a, b] = el.sources;
+  if (el.screen === undefined || !a || !b || el.sources.length !== 2) return undefined;
+  const want = n * wavelengthOf(el);
+  const apart = Math.hypot(a.at[0] - b.at[0], a.at[1] - b.at[1]);
+  if (!(Math.abs(want) < apart - 1e-9)) return undefined;
+  const x = el.screen;
+  const up = a.at[1] >= b.at[1] ? 1 : -1;
+  // The farther up the screen, the longer the path from the lower source against the path from the upper one.
+  const diff = (y: number) => up * (Math.hypot(x - b.at[0], y - b.at[1]) - Math.hypot(x - a.at[0], y - a.at[1]));
+  const mid = (a.at[1] + b.at[1]) / 2;
+  let [lo, hi] = [mid - 1e6, mid + 1e6];
+  for (let i = 0; i < 80; i++) {
+    const y = (lo + hi) / 2;
+    if (diff(y) < up * want) lo = y;
+    else hi = y;
+  }
+  return (lo + hi) / 2;
+}
+
 export interface RipplesState {
   /** Seconds of the waves' own time played so far. */
   time: number;
   note?: string;
   /** Where each listener is now. */
   listeners: Record<string, Point>;
+  /** The wavelength now, in metres. */
+  wavelength: number;
+  /** How far apart two sources are now. */
+  apart?: number;
+  /** The width of the barrier's openings now. */
+  gap?: number;
+  /** Where the screen is now. */
+  screen?: number;
+}
+
+/** The picture as it stands after its clips: the same element with the wavelength, the sources, the openings and the screen that the clips have brought it to. */
+export function settled(el: RipplesEl, state: RipplesState): RipplesEl {
+  const k = state.wavelength / wavelengthOf(el);
+  let sources = el.sources;
+  if (state.apart !== undefined && sources.length === 2) {
+    const [a, b] = sources;
+    const was = Math.hypot(a.at[0] - b.at[0], a.at[1] - b.at[1]) || 1;
+    const mid: Point = [(a.at[0] + b.at[0]) / 2, (a.at[1] + b.at[1]) / 2];
+    const moved = (s: RippleSource): RippleSource => ({ ...s, at: [mid[0] + ((s.at[0] - mid[0]) * state.apart!) / was, mid[1] + ((s.at[1] - mid[1]) * state.apart!) / was] });
+    if (Math.abs(state.apart - was) > 1e-12) sources = [moved(a), moved(b)];
+  }
+  const same = Math.abs(k - 1) < 1e-12 && sources === el.sources && state.gap === el.barrier?.gap && state.screen === el.screen;
+  if (same) return el;
+  // A longer wavelength at the same frequency: the crests keep time, and stand farther apart.
+  return { ...el, speed: el.speed * k, sources, barrier: el.barrier && { ...el.barrier, gap: state.gap }, screen: state.screen, light: el.light === undefined ? undefined : el.light * k };
 }
 
 /**
@@ -123,15 +200,24 @@ export interface RipplesState {
  */
 export function ripplesAt(el: RipplesEl, plays: Array<[clip: string, seconds: number]> = []): RipplesState {
   const start = (): Record<string, Point> => Object.fromEntries((el.listeners ?? []).map((l) => [l.id, [l.at[0], l.at[1]] as Point]));
+  const first = el.sources.length === 2 ? Math.hypot(el.sources[0].at[0] - el.sources[1].at[0], el.sources[0].at[1] - el.sources[1].at[1]) : undefined;
   let listeners = start();
   let time = 0;
   let note: string | undefined;
+  let wavelength = el.sources.length ? wavelengthOf(el) : 0;
+  let apart = first;
+  let gap = el.barrier?.gap;
+  let screen = el.screen;
   for (const [name, seconds] of plays) {
     const clip = el.clips[name];
     if (!clip) continue;
     if (clip.reset) {
       listeners = start();
       time = 0;
+      wavelength = el.sources.length ? wavelengthOf(el) : 0;
+      apart = first;
+      gap = el.barrier?.gap;
+      screen = el.screen;
     }
     let left = seconds;
     note = undefined;
@@ -148,11 +234,15 @@ export function ripplesAt(el: RipplesEl, plays: Array<[clip: string, seconds: nu
         const from = listeners[id];
         if (from) listeners[id] = [from[0] + (to[0] - from[0]) * eased, from[1] + (to[1] - from[1]) * eased];
       }
+      if (ph.wavelength !== undefined) wavelength += (ph.wavelength - wavelength) * eased;
+      if (ph.apart !== undefined && apart !== undefined) apart += (ph.apart - apart) * eased;
+      if (ph.gap !== undefined && gap !== undefined) gap += (ph.gap - gap) * eased;
+      if (ph.screen !== undefined && screen !== undefined) screen += (ph.screen - screen) * eased;
       // The note of the phase that is playing; it goes when the clip has finished (to within the
       // thousandth of a second that the times of a video are kept to).
       note = left < video - 0.002 ? ph.note : undefined;
       left -= video;
     }
   }
-  return { time, note, listeners };
+  return { time, note, listeners, wavelength, apart, gap, screen };
 }

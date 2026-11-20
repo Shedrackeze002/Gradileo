@@ -556,3 +556,66 @@ export function fibrePath(el: LightEl, angle: number): FibrePath {
   points.push({ at: p, strength });
   return { points, bounces, length, through: p[0] >= FIBRE.length ? strength : 0 };
 }
+
+// ── A diffraction grating ─────────────────────────────────────────────────────────────────────
+
+/** The wavelengths that white light is drawn in at a grating, in nanometres, from red to violet. */
+export const GRATING_COLOURS = Array.from({ length: 31 }, (_, i) => 700 - 10 * i);
+
+export interface GratingState {
+  /** Seconds of video played. */
+  time: number;
+  /** The wavelength of the light now, in nanometres. */
+  nm: number;
+  /** The lines in each millimetre now. */
+  lines: number;
+  /** The slits the light falls on now (none given: so many that every bright line is sharp). */
+  slits?: number;
+}
+
+/** A grating after its clips: a phase can slide the wavelength, change the lines in each millimetre, or light more slits. */
+export function gratingAt(el: LightEl, plays: Plays = []): GratingState {
+  const g = el.grating!;
+  let [time, nm, lines] = [0, g.nm, g.lines];
+  let slits = g.slits;
+  for (const [name, seconds] of plays) {
+    const clip = el.clips[name];
+    if (!clip) continue;
+    let left = seconds;
+    for (const ph of clip.phases) {
+      if (left <= 0) break;
+      const run = Math.min(left, ph.dur);
+      time += run;
+      if (ph.nm !== undefined) nm += (ph.nm - nm) * ease(run / ph.dur);
+      if (ph.lines !== undefined) lines += (ph.lines - lines) * ease(run / ph.dur);
+      // Slits are lit one at a time, at a steady rate.
+      if (ph.slits !== undefined && slits !== undefined) slits += ((ph.slits - slits) * run) / ph.dur;
+      left -= ph.dur;
+    }
+  }
+  return { time, nm, lines, slits: slits === undefined ? undefined : Math.round(slits) };
+}
+
+/** The distance between neighbouring slits of a grating with so many lines in each millimetre, in metres: d = 1 ÷ N. */
+export const gratingSpacing = (lines: number) => 1e-3 / lines;
+
+/** The highest order of bright line that a grating gives: sin θ cannot be more than 1, so n is at most d ÷ λ. */
+export const gratingOrders = (lines: number, nm: number) => Math.floor(gratingSpacing(lines) / (nm * 1e-9) + 1e-9);
+
+/** The angle of the bright line of order n, in degrees from straight through, from d sin θ = n λ (undefined when there is no such line). */
+export function gratingAngle(lines: number, nm: number, n: number): number | undefined {
+  const sine = (n * nm * 1e-9) / gratingSpacing(lines);
+  return Math.abs(sine) <= 1 + 1e-9 ? Math.asin(Math.max(-1, Math.min(1, sine))) / RAD : undefined;
+}
+
+/**
+ * How bright the light from `slits` slits is in a direction, in degrees from straight through:
+ * from 0 to 1, and 1 at each bright line. The waves of neighbouring slits arrive d sin θ apart,
+ * and the more slits there are, the smaller the range of angles in which they do not cancel.
+ */
+export function gratingBrightness(lines: number, nm: number, slits: number, degrees: number): number {
+  const half = (Math.PI * gratingSpacing(lines) * Math.sin(degrees * RAD)) / (nm * 1e-9);
+  const under = Math.sin(half);
+  if (Math.abs(under) < 1e-6) return 1;
+  return (Math.sin(slits * half) / (slits * under)) ** 2;
+}

@@ -281,11 +281,11 @@ function PowerlineThumb({ el, w, h }: { el: PowerlineEl; w: number; h: number })
   return <PowerlineView el={{ ...el, label: undefined }} st={{ ...FULL, parts: Object.fromEntries((el.thumb ?? ['voltage', 'current', 'loss']).map((part) => [part, 1])) }} w={w} h={h} plays={posterPlays(el)} />;
 }
 
-/** Light on a thumbnail: part way through the poster clip, with the parts the element asks for (the two fields of a wave, the wave over a spectrum, the clock of a trip, the rate of a spinning mirror, the names on a prism or a fibre, otherwise). A wave fills the room it is given; the other pictures are drawn whole, with room to spare at the sides. */
+/** Light on a thumbnail: part way through the poster clip, with the parts the element asks for (the two fields of a wave, the wave over a spectrum, the clock of a trip, the rate of a spinning mirror, the names on a prism or a fibre, the orders of a grating, otherwise). A wave fills the room it is given; the other pictures are drawn whole, with room to spare at the sides. */
 function LightThumb({ el, w, h }: { el: LightEl; w: number; h: number }) {
   const names = Object.keys(el.clips);
   const plays: Array<[string, number]> = el.poster ? [...names.slice(0, names.indexOf(el.poster)).map((name): [string, number] => [name, clipSeconds(el, name)]), [el.poster, clipSeconds(el, el.poster) * (el.posterAt ?? 0.7)]] : [];
-  const parts = el.thumb ?? (el.wave ? ['electric', 'magnetic'] : el.spectrum ? ['wave', 'scale', 'visible'] : el.trip ? ['clock', 'distance'] : el.spin ? ['rate'] : ['names']);
+  const parts = el.thumb ?? (el.wave ? ['electric', 'magnetic'] : el.spectrum ? ['wave', 'scale', 'visible'] : el.trip ? ['clock', 'distance'] : el.spin ? ['rate'] : el.grating ? ['orders'] : ['names']);
   return <LightView el={{ ...el, label: undefined }} st={{ ...FULL, parts: Object.fromEntries(parts.map((part) => [part, 1])) }} w={w} h={h} plays={plays} fit={el.wave ? undefined : (el.height ?? 420)} />;
 }
 
@@ -444,10 +444,10 @@ export function Thumbnail({ x, label }: { x: Explainer; label: string }) {
           ) : fig.kind === 'circle' ? (
             <CircleThumb el={fig} w={500} h={470} />
           ) : fig.kind === 'ripples' ? (
-            // Ripples are caught part way through their poster clip (after the clips before it), with the paths to the listener and no notes.
+            // Ripples are caught part way through their poster clip (after the clips before it), with the paths to the listener (or the parts the element asks for) and no notes.
             <RipplesView
               el={{ ...fig, clips: Object.fromEntries(Object.entries(fig.clips).map(([name, clip]) => [name, { ...clip, phases: clip.phases.map((ph) => ({ ...ph, note: undefined })) }])) }}
-              st={{ ...FULL, parts: { paths: 1, velocity: 1 } }}
+              st={{ ...FULL, parts: Object.fromEntries((fig.thumb ?? ['paths', 'velocity']).map((part) => [part, 1])) }}
               w={500}
               h={470}
               plays={fig.poster ? [...Object.keys(fig.clips).slice(0, Object.keys(fig.clips).indexOf(fig.poster)).map((name): [string, number] => [name, clipSeconds(fig, name)]), [fig.poster, clipSeconds(fig, fig.poster) * 0.7]] : []}
