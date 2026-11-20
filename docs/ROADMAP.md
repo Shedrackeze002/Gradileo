@@ -1629,7 +1629,13 @@ items ship or decisions change.
      Unit 1 (Momentum and Impulse) is complete with five, `xq-p30-1-1` to `xq-p30-1-5`: a football
      player's momentum (8.1), the force of Venus Williams' serve (8.1), a goalie catching a puck
      (8.3), two steel carts bouncing apart (8.3) and a collision in a dark room (8.3); the motion
-     element gained `momentumDecimals` for small momenta. Next: Physics 30 Units 2 to 4. Still to
+     element gained `momentumDecimals` for small momenta. Unit 2 (Forces and Fields) is complete
+     with ten, `xq-p30-2-1` to `xq-p30-2-10`: charging ink droplets (18.1), Coulomb's torsion
+     balance (18.2), the field near a doorknob (18.3), the field between plates and an electron
+     through 100 V (College Physics 2e 19.2 and 19.1), a battery's terminal voltage (College
+     Physics 2e 21.2), the field near a wire, the force on an electron and on a wire (20.1) and
+     the emf of a falling flux (20.3). College Physics 2e is CC BY-NC-SA, which Gradileo may use
+     because it is non-commercial. Next: Physics 30 Units 3 and 4. Still to
      do: an exam panel on each lesson
      page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
