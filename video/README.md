@@ -608,6 +608,45 @@ See `src/video/script.ts` for every element and option. In short:
   (`volts`), by the same factor in each moment, so the current and the loss fall as it rises.
   The check stops a line that would waste all the power it is sent.
 
+- `light` (`src/video/light.ts`) is light as an electromagnetic wave. One element is one of
+  four pictures, and time passes only while a clip plays.
+  - `wave` is the wave an electron sends out when it is driven up and down an aerial, at `hertz`
+    cycles for each second of video, taking `cross` seconds to cross the picture (3). The
+    electric field is drawn up and down in yellow, and the magnetic field towards you and away in
+    violet, in step and at right angles. With `on: false` the electron starts at rest, and a
+    phase starts or stops it (`on`): the wave already sent goes on travelling. `full: true`
+    fills the picture from the first moment. A phase can change the frequency steadily
+    (`hertz`), and the wavelength follows, because the speed across the picture is fixed. A
+    `filter` (`{ at, angle }`, a share of the path and degrees from upright) is a polarizing
+    filter, which a phase turns (`filter`): beyond it only the part of the field along its
+    direction is left. `real` is the real frequency in hertz that the first `hertz` stands for,
+    so the readouts are true values. Parts: `electric`, `magnetic`, `wavelength` (a measure
+    between two crests, written with `real`), `speed` (c) and `values` (f).
+  - `spectrum` (`{ at }`, a wavelength in metres) is the electromagnetic spectrum from 10 km to
+    0.1 pm, with a pointer and a sample of the wave at the pointer. A phase slides the pointer
+    to a wavelength (`to`), by equal steps of the scale. Parts: `scale`, `wave`, `values` (λ
+    and f at the pointer), `made`, `use`, `visible` (the band of colours opened out), `arrows`
+    (longer wavelength, higher frequency) and `ionizing`. Show `arrows` or `ionizing`, not both:
+    they share a row. It needs a `height` of 430.
+  - `trip` is a flash that travels from one thing to another at 3.00 × 10⁸ m/s (`from` and `to`
+    each have a `shape`: `sun`, `earth`, `moon`, `dish`, `plane`, `lamp` or `mirror`, and a
+    `label`), over `metres`, and back again with `echo: true`. A phase with `send: true` sends
+    the flash. `rate` is the seconds of the model for each second of video (one way takes 2.5 s
+    otherwise). `clock` and `length` give the units of the readouts (`{ unit: 'μs', seconds:
+    1e-6 }`). Parts: `clock`, `distance` (a bracket with d) and `travelled` (the distance the
+    flash has covered so far).
+  - `spin` (`{ metres }`) is Michelson's mirror with eight faces, and a fixed mirror `metres`
+    away. At rest the beam grows along the path to the detector, taking one round trip. A phase
+    brings the mirror steadily to `hertz` turns each second; a flash then leaves each time a
+    face comes into place, and when it is back it is sent on at twice the angle the nearest
+    face is out of place, so it reaches the detector only when the mirror makes a whole number
+    of eighths of a turn during the round trip (536 turns each second for 35 km). A round trip
+    takes 2.5 s of video unless a `rate` is given. Parts: `rate` (the turns each second),
+    `turn` (the share of a turn made during the round trip), `clock` (the time of the round
+    trip) and `distance`.
+  `poster` names the clip the thumbnail is taken from, `posterAt` the share of it that has
+  played (0.7), and `thumb` the parts the thumbnail shows.
+
 - `circle` (`src/video/circle.ts`) is for uniform circular motion: bodies that go round a circle,
   seen from above on a level surface, where each keeps a steady speed, or with `vertical: true`
   on a circle that stands upright, where gravity slows a body as it climbs and speeds it up as
