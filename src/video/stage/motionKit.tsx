@@ -71,12 +71,12 @@ export function Text({ x, y, children, color = INK, size = 21, anchor = 'middle'
 }
 
 /** The clock of a motion, at the top right of its view. */
-export function Clock({ w, time, opacity, unit = 's' }: { w: number; time: number; opacity: number; unit?: string }) {
+export function Clock({ w, time, opacity, unit = 's', decimals = 1 }: { w: number; time: number; opacity: number; unit?: string; decimals?: number }) {
   return (
     <g opacity={opacity}>
       <rect x={w - 170} y={0} width={170} height={38} rx={19} fill="rgb(255 255 255 / 0.07)" stroke="rgb(255 255 255 / 0.14)" />
       <Text x={w - 85} y={19.5} size={19} color={INK2}>
-        {`t = ${time.toFixed(1)} ${unit}`}
+        {`t = ${time.toFixed(decimals)} ${unit}`}
       </Text>
     </g>
   );
