@@ -425,6 +425,8 @@ export interface MotionEl {
   cm?: boolean;
   /** Decimal places of the velocities written over the bodies (1 by default); from 10 m/s up they keep one place. */
   velocityDecimals?: number;
+  /** Decimal places of the clock (1 by default): 2 for a motion that lasts under a second, timed to the hundredth. */
+  clockDecimals?: number;
   /** Say "speed" instead of "v =" beside the velocity arrow, for videos that come before velocity is taught. */
   speedWord?: boolean;
   /**

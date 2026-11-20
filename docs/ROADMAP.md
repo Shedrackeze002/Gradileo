@@ -1610,8 +1610,11 @@ items ship or decisions change.
      falling apple (9.2) and the runner's power (9.1). Unit 4 (Oscillations and Waves) is complete
      with seven, `xq-p20-4-1` to `xq-p20-4-7`: a car's springs (5.5), what sets the period of a
      mass on a spring (5.5), g from a pendulum (5.5), the boat on a wave (13.2), two waves meeting
-     (13.3), the length of a closed tube (14.4) and the passing train horn (14.3). Next: Physics 10,
-     then Physics 30. Still to do: an exam panel on each lesson
+     (13.3), the length of a closed tube (14.4) and the passing train horn (14.3). Physics 10
+     Unit 1 (Describing Motion) is complete with five, `xq-p10-1-1` to `xq-p10-1-5`: the 10 km
+     drive home in km/h and m/s (OpenStax 1.3), the fastball (2.2), the impossible displacement
+     (2.2), the subway train speeding up (3.1) and the jet car's position-time graph (2.3). Next:
+     Physics 10 Units 2 to 5, then Physics 30. Still to do: an exam panel on each lesson
      page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
 ## Hosting
