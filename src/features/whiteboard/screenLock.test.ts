@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { HAND_SPAN, PALM_MS, PALM_RADII, PalmGuard, REST_MS } from './screenLock.ts';
+import { HAND_SPAN, PALM_MS, PALM_RADII, PalmGuard, REST_MS, STUCK_MS, TAP_MS } from './screenLock.ts';
 
 describe('PalmGuard', () => {
-  it('takes a touch while the pencil writes, or just after it lifts, for a palm', () => {
+  it('takes a touch while the pencil writes for a palm, and just after it lifts lets only a quick tap press', () => {
     const g = new PalmGuard();
     expect(g.start(1, 0)).toBe(false); // no pencil yet: a finger
     expect(g.end(1)).toBe(false);
@@ -10,11 +10,54 @@ describe('PalmGuard', () => {
     expect(g.start(2, 1010)).toBe(true);
     g.pen('pointermove', 120, 100, 1200);
     g.pen('pointerup', 130, 100, 1300);
-    expect(g.start(3, 1300 + PALM_MS - 1)).toBe(true);
+    // Just after the lift a touch is not blocked outright: a quick tap presses, a longer touch does not.
+    expect(g.start(3, 1300 + PALM_MS - 1)).toBe(false);
+    expect(g.start(5, 1400)).toBe(false);
     expect(g.start(4, 1300 + PALM_MS + 1)).toBe(false); // the hand has had time to move away
-    expect(g.end(2)).toBe(true);
-    expect(g.end(3)).toBe(true);
-    expect(g.end(4)).toBe(false);
+    expect(g.end(2, 1500)).toBe(true);
+    expect(g.end(3, 1300 + PALM_MS - 1 + TAP_MS - 50)).toBe(false);
+    expect(g.end(5, 1400 + TAP_MS + 50)).toBe(true);
+    expect(g.end(4, 1300 + PALM_MS + 1 + TAP_MS + 50)).toBe(false);
+  });
+
+  it('does not take a pencil hovering above the glass for writing', () => {
+    const g = new PalmGuard();
+    g.pen('pointerdown', 100, 100, 0);
+    g.pen('pointerup', 100, 100, 100);
+    // The pencil hovers near the toolbar while a finger taps a tool, long after the last stroke.
+    for (let t = 200; t <= 5000; t += 50) g.pen('pointermove', 400, 700, t, false);
+    expect(g.start(1, 5000, 20 * 20, 420, 720)).toBe(false);
+    expect(g.end(1, 5100)).toBe(false);
+  });
+
+  it('lets a hovering pencil end a stroke whose pointerup was lost', () => {
+    const g = new PalmGuard();
+    g.pen('pointerdown', 100, 100, 0);
+    g.pen('pointermove', 110, 100, 50);
+    // The pointerup never comes; the pencil is next seen hovering.
+    g.pen('pointermove', 115, 100, 80, false);
+    expect(g.start(1, 80 + PALM_MS + 1)).toBe(false);
+    expect(g.end(1, 80 + PALM_MS + 100)).toBe(false);
+  });
+
+  it('does not block every touch forever when the pencil’s pointerup is lost', () => {
+    const g = new PalmGuard();
+    g.pen('pointerdown', 100, 100, 0);
+    expect(g.start(1, 500)).toBe(true);
+    g.end(1, 600);
+    expect(g.start(2, STUCK_MS + PALM_MS + 10)).toBe(false);
+    expect(g.end(2, STUCK_MS + PALM_MS + 100)).toBe(false);
+  });
+
+  it('forgets a touch whose end never came, so it cannot block taps beside it', () => {
+    const g = new PalmGuard();
+    g.pen('pointerdown', 0, 0, 0);
+    g.pen('pointerup', 0, 0, 10);
+    const later = 10 + PALM_MS + 1;
+    expect(g.start(1, later, 0, 400, 700)).toBe(false); // its touchend is lost
+    g.keepOnly([2]);
+    expect(g.start(2, later + 5000, 0, 420, 700)).toBe(false);
+    expect(g.end(2, later + 5100)).toBe(false);
   });
 
   it('counts a hand already resting on the screen when the pencil lands', () => {
@@ -30,6 +73,7 @@ describe('PalmGuard', () => {
     expect(g.start(9, 10)).toBe(true); // its end never arrives
     g.pen('pointerup', 0, 0, 20);
     expect(g.start(9, 10_000)).toBe(false);
+    expect(g.end(9, 10_100)).toBe(false);
   });
 
   it('once a pencil is in use, takes a broad contact, touches side by side and a long rest for a hand', () => {

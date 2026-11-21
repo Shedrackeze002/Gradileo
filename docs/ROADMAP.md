@@ -37,6 +37,13 @@ items ship or decisions change.
   to add Gradileo to the Home Screen, where it opens as its own app with no browser bars (the
   full screen that stays put); the app has a proper icon now, and opened that way present mode has
   no full-screen button.
+  On 21 November 2026 the owner found that buttons in present mode (Pen, Clear and others) needed
+  three or four taps. The palm guard was taking deliberate finger taps for a palm: a Pencil
+  hovering just above the glass counted as writing, so every tap near it was blocked; a Pencil
+  lift that Safari never reported blocked every tap until the Pencil touched again; and for 1.5
+  seconds after writing no tap pressed anything. Now only the Pencil on the glass counts as
+  writing, a lost lift ends on the next hover or after 2.5 seconds of silence, and just after
+  writing a quick fingertip tap presses while a lingering or broad touch still does not.
 - Live class questions: from a "Your turn" slide the teacher sends the question to every
   student's device; answers arrive in real time and the slide shows how many answered, how many
   were right, each choice's share or the common wrong answers, without names. Students see
