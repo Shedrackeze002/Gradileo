@@ -118,6 +118,12 @@ async function fetchFiles(id: string, names: string[]): Promise<Array<{ from: st
 let lists: Playlist[] | undefined;
 /** YouTube id to video id, for the videos on the channel. */
 const scriptOfYoutube = new Map<string, string>();
+/**
+ * Set once YouTube refuses to make a playlist (429: it limits how many a channel makes a day).
+ * Each refusal is retried and costs quota, so the rest of the run makes no more; later runs add the
+ * videos left out to their playlists.
+ */
+let newPlaylistsRefused = false;
 /** The playlists this run has looked at, by playlist id, with their units. */
 const touched = new Map<string, { list: Playlist; unit: UnitMeta }>();
 
@@ -153,7 +159,13 @@ async function intoPlaylist(id: string, youtubeId: string, dryRun: boolean): Pro
   if (list?.videos.includes(youtubeId)) return `in "${list.title}"${old ? ` (renamed from "${old}")` : ''}`;
   if (!list) {
     const about = `${unit.title}: ${unit.description}\n\nExplainer videos in lesson order, each with a "Your turn" question to try.\nPractise this topic with instant feedback on Gradileo: https://gradileo.com/`;
-    list = await createPlaylist(title, about);
+    if (newPlaylistsRefused) throw new Error(`no new playlist: YouTube refused one earlier this run, so "${title}" is made on a later run`);
+    try {
+      list = await createPlaylist(title, about);
+    } catch (e) {
+      if (/ 429 /.test((e as Error).message)) newPlaylistsRefused = true;
+      throw e;
+    }
     lists!.push(list);
     touched.set(list.id, { list, unit });
   }
