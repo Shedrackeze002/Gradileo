@@ -1000,7 +1000,9 @@ select _assert(not has_function_privilege('anon', 'public.class_forum(uuid)', 'e
 select set_config('request.jwt.claims', '{"role":"anon"}', false);
 set role anon;
 select _fails($$select count(*) from classes$$, 'anon has no table access');
-select _fails($$select count(*) from video_links$$, 'anon cannot read video links');
+select _assert((select count(video_id) from video_links) >= 0, 'anon reads the video links (the public lesson pages show the videos)');
+select _fails($$select updated_by from video_links$$, 'anon cannot see who linked a video');
+select _fails($$insert into video_links (video_id, youtube_id) values ('m10c-9-9', 'dQw4w9WgXcQ')$$, 'anon cannot add video links');
 select _fails($$select send_due_reminders()$$, 'anon cannot run the scheduler');
 reset role;
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000000a1","role":"authenticated"}', false);

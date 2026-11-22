@@ -21,6 +21,7 @@ import { useAuth } from '@/features/auth/AuthProvider.tsx';
 import { Button, Tabs } from '@/components/ui/index.ts';
 import { Logo } from '@/components/layout/Logo.tsx';
 import { LegalLinks } from '@/features/legal/LegalLayout.tsx';
+import { coursePath, COURSES_PATH } from '@/seo/paths.ts';
 import { DEMO_PASSWORD, DEMO_STUDENT_EMAIL, DEMO_TEACHER_EMAIL } from '@/data/demo/constants.ts';
 import { Tex } from '@/components/math/Markdown.tsx';
 
@@ -94,6 +95,10 @@ export default function LandingPage() {
             </a>
             <a href="#curriculum" className="hidden rounded-lg px-3 py-2 text-sm font-medium text-ink-2 hover:text-ink sm:block">
               Curriculum
+            </a>
+            {/* The public lesson pages are plain pages, not part of the app, so this is an ordinary link. */}
+            <a href={COURSES_PATH} className="hidden rounded-lg px-3 py-2 text-sm font-medium text-ink-2 hover:text-ink sm:block">
+              Lessons
             </a>
             <Button variant="ghost" size="sm" to="/login">
               Sign in
@@ -193,7 +198,12 @@ export default function LandingPage() {
           For learners everywhere: tell Gradileo where you go to school and your year there, such as Year 11 in England, SS 1 in Nigeria, Form 3 in Kenya or MYP 5 in the IB, and it finds the course at your level. Schools in the US, the UK, Canada, Nigeria, Ghana, Kenya, South Africa, India, Australia, Ireland and New Zealand, the IB and Cambridge are all listed.
         </p>
         <Tabs className="mt-8 flex-wrap" value={courseId} onChange={setCourseId} items={COURSES.map((c) => ({ value: c.id, label: c.shortTitle }))} />
-        <p className="mt-3 text-sm text-ink-3">{course.description}</p>
+        <p className="mt-3 text-sm text-ink-3">
+          {course.description}{' '}
+          <a href={coursePath(course)} className="font-medium text-brand hover:underline">
+            Read every lesson of {course.title} free
+          </a>
+        </p>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {course.units.map((u) => (
             <div key={u.id} className="card flex gap-4 p-5">
@@ -239,6 +249,9 @@ export default function LandingPage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-ink-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <Logo compact />
           <p>Mastery-based mathematics, chemistry, physics and English for teachers and students.</p>
+          <a href={COURSES_PATH} className="text-ink-3 hover:text-ink hover:underline">
+            All lessons
+          </a>
           <SocialLinks />
           <LegalLinks />
         </div>
