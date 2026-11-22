@@ -129,3 +129,21 @@ export function youtubeText(x: Video, chapters: Array<{ title: string; t: number
     'Upload the captions (captions.srt, English) and the thumbnail (thumbnail.png) with the video.',
   ].join('\n');
 }
+
+/**
+ * The YouTube title, description and tags written in a video's youtube.txt (youtubeText writes
+ * it). An exam question video has no record in videos.json, so its YouTube text is read
+ * back from the file made when it was rendered.
+ */
+export function fieldsFromText(text: string): YoutubeFields {
+  const lines = text.replace(/\r\n/g, '\n').split('\n');
+  const titleAt = lines.findIndex((l) => /^TITLE \(\d+\/100 characters\)$/.test(l));
+  const descAt = lines.indexOf('DESCRIPTION');
+  const tagsAt = lines.lastIndexOf('TAGS');
+  if (titleAt < 0 || descAt < 0 || tagsAt < descAt) throw new Error('youtube.txt has no TITLE, DESCRIPTION and TAGS');
+  const title = lines[titleAt + 1].trim();
+  const description = lines.slice(descAt + 1, tagsAt).join('\n').trim();
+  const tags = lines[tagsAt + 1].split(',').map((t) => t.trim()).filter(Boolean);
+  if (!title || !description) throw new Error('youtube.txt has an empty title or description');
+  return { title, description, tags };
+}

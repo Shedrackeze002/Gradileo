@@ -21,10 +21,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { courseOfLesson, lessonById, unitById } from '../../engine/curriculum/index.ts';
-import type { Explainer } from '../../src/video/script.ts';
 import { MANIFEST, SCRIPT_FILES, youtubeTextFor } from '../lib/catalog.ts';
-import { courseFolder, find, FOLDER, google, place, ROOT_FOLDER, unitFolder, videoIds } from '../lib/google.ts';
+import { courseFolder, examPlace, find, FOLDER, google, place, ROOT_FOLDER, unitFolder, videoIds } from '../lib/google.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const OUT = path.join(ROOT, 'video/out');
@@ -127,29 +125,14 @@ interface Planned {
 
 /** The folder for videos about Gradileo itself, which belong to no course. */
 const ABOUT = 'About Gradileo';
-/** The folder for exam question videos, by course and unit of the lesson each one practises. */
-const EXAMS = 'Exam Questions';
-
-/** An exam question video's folders: Exam Questions/<course>/<unit>/<id>, or none for any other video. */
-async function examFolders(id: string): Promise<string[] | undefined> {
-  const file = SCRIPT_FILES.get(id);
-  if (!file) return undefined;
-  const exam = ((await import(file)).default as Explainer).exam;
-  if (!exam) return undefined;
-  const course = courseOfLesson(exam.lesson);
-  const lesson = lessonById(exam.lesson);
-  const unit = lesson ? unitById(lesson.unitId) : undefined;
-  if (!course || !unit) throw new Error(`${id}: the exam's lesson ${exam.lesson} is in no course`);
-  return [EXAMS, courseFolder(course), unitFolder(unit), id];
-}
 
 let failed = 0;
 const planned: Planned[] = [];
 for (const id of ids) {
   try {
-    const exam = await examFolders(id);
+    const exam = await examPlace(id);
     if (exam) {
-      planned.push({ id, folders: exam });
+      planned.push({ id, folders: exam.folders });
       continue;
     }
     const p = place(id);

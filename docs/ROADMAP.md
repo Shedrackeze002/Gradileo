@@ -1675,9 +1675,10 @@ items ship or decisions change.
      bending a TV's cathode ray (22.5), an alpha particle's closest approach to gold (19.3), and,
      with the new optics animation, a concave mirror's image (16.1) and a lens's apparent image
      distance (16.3). Next: lessons 3.6 and 3.7 once the photon animation is on main, and 4.3 to
-     4.7 once their animations are built. Still to
-     do: an exam panel on each lesson
-     page, a YouTube playlist per course, and bringing exam videos into the upload queue.
+     4.7 once their animations are built. The owner approved the
+     exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
+     `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
+     panel on each lesson page.
 
 ## Hosting
 
