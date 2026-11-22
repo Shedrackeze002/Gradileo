@@ -56,7 +56,9 @@ export function renderMarkdown(md: string, opts: { inline?: boolean; sanitize?: 
   html = html.replace(/\u0000M(\d+)\u0000/g, (_, i: string) => maths[Number(i)]).replace(/\u0000DOLLAR\u0000/g, '$');
   // Wrap tables for horizontal scrolling on small screens.
   html = html.replace(/<table>/g, '<div class="table-wrap"><table>').replace(/<\/table>/g, '</table></div>');
-  html = DOMPurify.sanitize(html, { ADD_ATTR: ['target'] });
+  // DOMPurify needs a browser. The only rendering without one is the build's public lesson pages
+  // (scripts/prerender.mjs), which render the lesson files in the repository, never teacher edits.
+  if (typeof DOMPurify.sanitize === 'function') html = DOMPurify.sanitize(html, { ADD_ATTR: ['target'] });
   if (cache.size > MAX_CACHE) cache.clear();
   cache.set(key, html);
   return html;

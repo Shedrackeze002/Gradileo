@@ -1,0 +1,17 @@
+# Search engines may read the public pages (the home page, lessons, privacy and terms). The
+# signed-in parts of Gradileo, class join links and shared report cards are private, so they are
+# kept out. "$" ends a path, so /t and /s block the dashboards without blocking /terms or /signup.
+User-agent: *
+Disallow: /t$
+Disallow: /t/
+Disallow: /s$
+Disallow: /s/
+Disallow: /admin
+Disallow: /present/
+Disallow: /report/
+Disallow: /join/
+Disallow: /settings
+Disallow: /notifications
+Disallow: /reset-password
+
+Sitemap: https://gradileo.com/sitemap.xml

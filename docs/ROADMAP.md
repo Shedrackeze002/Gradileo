@@ -37,6 +37,13 @@ items ship or decisions change.
   to add Gradileo to the Home Screen, where it opens as its own app with no browser bars (the
   full screen that stays put); the app has a proper icon now, and opened that way present mode has
   no full-screen button.
+  On 21 November 2026 the owner found that buttons in present mode (Pen, Clear and others) needed
+  three or four taps. The palm guard was taking deliberate finger taps for a palm: a Pencil
+  hovering just above the glass counted as writing, so every tap near it was blocked; a Pencil
+  lift that Safari never reported blocked every tap until the Pencil touched again; and for 1.5
+  seconds after writing no tap pressed anything. Now only the Pencil on the glass counts as
+  writing, a lost lift ends on the next hover or after 2.5 seconds of silence, and just after
+  writing a quick fingertip tap presses while a lingering or broad touch still does not.
 - Live class questions: from a "Your turn" slide the teacher sends the question to every
   student's device; answers arrive in real time and the slide shows how many answered, how many
   were right, each choice's share or the common wrong answers, without names. Students see
@@ -1662,7 +1669,13 @@ items ship or decisions change.
      through 100 V (College Physics 2e 19.2 and 19.1), a battery's terminal voltage (College
      Physics 2e 21.2), the field near a wire, the force on an electron and on a wire (20.1) and
      the emf of a falling flux (20.3). College Physics 2e is CC BY-NC-SA, which Gradileo may use
-     because it is non-commercial. Next: Physics 30 Units 3 and 4. Still to
+     because it is non-commercial. Units 3 and 4 so far: Sunlight reaching Saturn (15.2; the light
+     element gained a `saturn` shape), Snell's law for carbon tetrachloride (16.2), the double-slit
+     wavelength (17.1), an electron's de Broglie wavelength (College Physics 2e 29.6), a magnet
+     bending a TV's cathode ray (22.5), an alpha particle's closest approach to gold (19.3), and,
+     with the new optics animation, a concave mirror's image (16.1) and a lens's apparent image
+     distance (16.3). Next: lessons 3.6 and 3.7 once the photon animation is on main, and 4.3 to
+     4.7 once their animations are built. Still to
      do: an exam panel on each lesson
      page, a YouTube playlist per course, and bringing exam videos into the upload queue.
 
@@ -1728,6 +1741,30 @@ items ship or decisions change.
   with Google's Limited Use statement), and the YouTube Data API connection to Gradileo's own
   channel (updated 4 November 2026 for all three subjects). Keep both pages in step with new features. The owner may
   want a lawyer to review them, and to add a governing-law clause.
+
+- Search engines (22 November 2026, the owner's request after two SEO posts on X). Found: no
+  `robots.txt` or sitemap (both addresses returned the app), no link preview tags, no structured
+  data, and every lesson behind sign-in, so Google could index only the landing, privacy and terms
+  pages. Built in PR #247: `robots.txt` (dashboards, join links and shared reports kept out),
+  preview tags and image (`public/og-image.jpg`), Organization structured data with the YouTube,
+  Facebook and Instagram accounts, a title naming all four subjects, and footer links to the
+  accounts. Built in PR #248: public lesson pages. The build (`scripts/prerender.mjs`,
+  `src/seo/pages.tsx`) writes a plain HTML page for every lesson of every listed course at
+  `/lessons/<id>-<title>`, one per course at `/courses/<course>` and a list at `/courses/`, plus the
+  sitemap. A lesson page has the whole lesson (worked examples with every step, diagrams, one
+  version of each practice question with its solution folded away), its explainer videos from
+  YouTube with chapter links, links to the lessons before and after it, and LearningResource,
+  VideoObject (each chapter a Clip) and BreadcrumbList structured data. Anyone may now read
+  `video_links` without the private `updated_by` column, so the build reads the videos with the
+  public key; the deploy also runs daily so newly uploaded videos appear. New courses and lessons
+  get pages with no extra work (PR #248). Built next: the monthly *Search Console report* workflow
+  (docs/SETUP.md 3.5) opens an issue with the queries where a page sits on page 2 and those seen but
+  rarely clicked, and `src/seo/overrides.json` holds a lesson's own search title and description
+  for the review to change. Owner-side: the service account and its secret `GSC_SERVICE_ACCOUNT_KEY`
+  (docs/SETUP.md 3.5), and adding the site to Bing Webmaster Tools (it imports the Google
+  property and also feeds ChatGPT search). Not adopted from the posts: Google Business Profile and local citation work, paid
+  backlinks, competitor comparison pages and paid rank trackers, since Gradileo is a free online
+  platform with no local customers.
 
 ## Technical follow-ups
 

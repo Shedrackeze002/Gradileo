@@ -78,20 +78,30 @@ test('on a touch screen the presentation stays put, panels still scroll, and a p
   await expect(page.locator('[aria-roledescription="slide"]')).toBeVisible();
   await expect(page.locator('html')).toHaveClass(/screen-lock/);
 
-  /** Sends a one-finger touch to the element at a point; true when the page cancelled it. */
+  /**
+   * Sends a touch to the element at a point; true when the page cancelled it. Like a real screen,
+   * every event lists all the touches still down.
+   */
   const touch = (type: 'touchstart' | 'touchmove' | 'touchend', x: number, y: number, id = 1, radius = 12) =>
     page.evaluate(
       ([type, x, y, id, radius]) => {
+        const w = window as unknown as { __down?: Map<number, Touch> };
+        const down = (w.__down ??= new Map());
         const target = document.elementFromPoint(x as number, y as number)!;
         const t = new Touch({ identifier: id as number, target, clientX: x as number, clientY: y as number, radiusX: radius as number, radiusY: radius as number });
-        const e = new TouchEvent(type as string, { touches: type === 'touchend' ? [] : [t], changedTouches: [t], bubbles: true, cancelable: true });
+        if (type === 'touchend') down.delete(id as number);
+        else down.set(id as number, t);
+        const e = new TouchEvent(type as string, { touches: [...down.values()], changedTouches: [t], bubbles: true, cancelable: true });
         target.dispatchEvent(e);
         return e.defaultPrevented;
       },
       [type, x, y, id, radius] as const,
     );
-  const pen = (type: 'pointerdown' | 'pointerup', x: number, y: number) =>
-    page.evaluate(([type, x, y]) => document.elementFromPoint(x as number, y as number)!.dispatchEvent(new PointerEvent(type as string, { pointerType: 'pen', clientX: x as number, clientY: y as number, bubbles: true })), [type, x, y] as const);
+  const pen = (type: 'pointerdown' | 'pointermove' | 'pointerup', x: number, y: number, buttons = type === 'pointerup' ? 0 : 1) =>
+    page.evaluate(
+      ([type, x, y, buttons]) => document.elementFromPoint(x as number, y as number)!.dispatchEvent(new PointerEvent(type as string, { pointerType: 'pen', clientX: x as number, clientY: y as number, buttons: buttons as number, bubbles: true })),
+      [type, x, y, buttons] as const,
+    );
 
   // A finger dragging over the slide does not move the page.
   const slide = (await page.locator('[aria-roledescription="slide"]').boundingBox())!;
@@ -107,8 +117,17 @@ test('on a touch screen the presentation stays put, panels still scroll, and a p
   expect(await touch('touchstart', nx, ny, 2)).toBe(true);
   expect(await touch('touchend', nx, ny, 2)).toBe(true);
   await pen('pointerup', sx + 30, sy);
+  // Just after the pencil lifts, a quick fingertip tap presses; a touch that lingers does not.
+  expect(await touch('touchstart', nx, ny, 10)).toBe(false);
+  expect(await touch('touchend', nx, ny, 10)).toBe(false);
+  expect(await touch('touchstart', nx, ny, 11)).toBe(false);
+  await page.waitForTimeout(400);
+  expect(await touch('touchend', nx, ny, 11)).toBe(true);
+  // A pencil hovering above the glass is not writing, so a finger tap beside it presses.
   await page.waitForTimeout(1600);
+  for (let i = 0; i < 5; i++) await pen('pointermove', nx + 40, ny - 40 + i * 4, 0);
   expect(await touch('touchstart', nx, ny, 3)).toBe(false);
+  await page.waitForTimeout(400);
   expect(await touch('touchend', nx, ny, 3)).toBe(false);
 
   // With the pencil lifted, a hand moving on can still brush a button. The broad side of a hand
