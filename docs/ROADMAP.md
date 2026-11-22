@@ -1729,9 +1729,11 @@ items ship or decisions change.
      y = −2x − 4 and 4x + 2y = 9 have). Math 10 is complete: 42 exam videos, one per lesson. Math 20-1 (`xq-m201-*`) is under way:
      Unit 1 (Sequences and Series) with five, from OpenStax College Algebra 2e 9.2 to 9.4 (the
      daily run that grows by 4 minutes a week, twelve weeks of pay rising by \$12.50, website hits
-     growing 2.6% a week, eight years of salary with a 2% raise, and the pendulum's total distance). The
-     owner approved the
-     exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
+     growing 2.6% a week, eight years of salary with a 2% raise, and the pendulum's total distance), and
+     Unit 2 (Trigonometry) with five, from OpenStax Algebra and Trigonometry 2e 7.1, 7.3, 10.1 and 10.2
+     (the angle coterminal with 870°, sin t from cos t = 24/25 in quadrant IV, a building's height
+     from two angles of elevation, the two triangles from α = 80°, a = 120, b = 121, and two airplanes
+     25° apart). The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
 
