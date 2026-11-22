@@ -1734,6 +1734,28 @@ items ship or decisions change.
   channel (updated 4 November 2026 for all three subjects). Keep both pages in step with new features. The owner may
   want a lawyer to review them, and to add a governing-law clause.
 
+- Search engines (22 November 2026, the owner's request after two SEO posts on X). Found: no
+  `robots.txt` or sitemap (both addresses returned the app), no link preview tags, no structured
+  data, and every lesson behind sign-in, so Google could index only the landing, privacy and terms
+  pages. Built in PR #247: `robots.txt` (dashboards, join links and shared reports kept out),
+  preview tags and image (`public/og-image.jpg`), Organization structured data with the YouTube,
+  Facebook and Instagram accounts, a title naming all four subjects, and footer links to the
+  accounts. Built next: public lesson pages. The build (`scripts/prerender.mjs`,
+  `src/seo/pages.tsx`) writes a plain HTML page for every lesson of every listed course at
+  `/lessons/<id>-<title>`, one per course at `/courses/<course>` and a list at `/courses/`, plus the
+  sitemap. A lesson page has the whole lesson (worked examples with every step, diagrams, one
+  version of each practice question with its solution folded away), its explainer videos from
+  YouTube with chapter links, links to the lessons before and after it, and LearningResource,
+  VideoObject (each chapter a Clip) and BreadcrumbList structured data. Anyone may now read
+  `video_links` without the private `updated_by` column, so the build reads the videos with the
+  public key; the deploy also runs daily so newly uploaded videos appear. New courses and lessons
+  get pages with no extra work. Next: a monthly Search Console review that finds queries where a
+  page sits on page 2 and improves those pages (needs a Search Console API connection), and adding
+  the site to Bing Webmaster Tools (it can import the Google property), which also feeds ChatGPT
+  search. Not adopted from the posts: Google Business Profile and local citation work, paid
+  backlinks, competitor comparison pages and paid rank trackers, since Gradileo is a free online
+  platform with no local customers.
+
 ## Technical follow-ups
 
 - Security follow-ups from the 7 November 2026 audit (the Content-Security-Policy is enforced
