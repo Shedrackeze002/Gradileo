@@ -46,7 +46,7 @@ export default englishExam({
       { say: 'Step one. Pause and read it aloud. Where would you naturally take a breath?', show: 'p', wait: 3 },
       { say: 'After heavily. It was raining heavily is one complete idea. She had lost her umbrella the week before is another.', focus: 'p.0' },
     ]),
-    scene('Step 2: Check both sides', [table('t', ['Side', 'Subject + verb', 'Stands alone?'], [['It was raining heavily', '**It** + **was raining**', '[[good:✓]]'], ['she had lost her umbrella the week before', '**she** + **had lost**', '[[good:✓]]']]), text('a', 'It was raining heavily**;** she had lost her umbrella the week before.', 'lg')], [
+    scene('Step 2: Check both sides', [table('t', ['Side', 'Subject + verb', 'Stands alone?'], [['It was raining heavily', '**It** + **was raining**', '[[good:✓]]'], ['she had lost her umbrella the week before', '**she** + **had lost**', '[[good:✓]]']]), text('a', 'It was raining heavily[[good:;]] she had lost her umbrella the week before.', 'lg')], [
       { say: 'Step two. Each side has its own subject and verb, and each makes sense alone. They are two main clauses.', show: ['t.0', 't.1'] },
       { say: 'And they are closely linked: the rain is a problem because she has no umbrella. So the semi-colon goes after heavily.', show: 'a' },
     ]),
