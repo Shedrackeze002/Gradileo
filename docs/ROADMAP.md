@@ -1759,6 +1759,18 @@ items ship or decisions change.
      shows), and Unit 3 (Acute Triangle Trigonometry) with three from OpenStax Precalculus 2e 8.1
      and 8.2 (solving a triangle with the sine law, a guy-wire on a hill with the cosine law, and the
      height of a blimp over a stadium).
+     Chemistry (`xq-c*`) is going course by course in the order Chem 10, 20, 30, then 7, 8 and 9,
+     then More Chemistry Topics, each video built on the animated particle scenes of its lesson.
+     Chem 10 has all 23 (#256) and Chem 20 all 31 (#260, #262, #263), from OpenStax Chemistry 2e
+     end-of-chapter exercises or questions we wrote in the style of a unit test. Chem 30 Unit 1
+     (Thermochemical Changes) has seven, `xq-c30-1-1` to `xq-c30-1-7`: the cold pack, coffee and the
+     silver spoon (OpenStax 5.2), methane's molar enthalpy (5.3), propane's enthalpy diagram, Hess's
+     law for propane, ethanol from enthalpies of formation, and a potential energy diagram with a
+     catalyst. Unit 2 (Electrochemical Changes) has eight, `xq-c30-2-1` to `xq-c30-2-8`: aluminium
+     meeting oxygen, oxidation numbers in burning ethene, which metal corrodes (OpenStax 17.6),
+     permanganate and oxalic acid, an iron(II) titration, the copper and silver cell, the cadmium and
+     aluminum cell that is not spontaneous (17.3), and copper plating a key. Chem 10 is rendered and
+     on Drive, and Chem 20 is rendering.
      English has an exam video for every lesson of all nine
      courses, 243 in all: Grades 5 to 9 in #257 and Grades 10 to 12 and More English Topics in
      #258. They are questions we wrote in the style of each grade's tests (GCSE for More English
