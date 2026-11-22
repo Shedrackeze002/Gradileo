@@ -1737,7 +1737,9 @@ items ship or decisions change.
      domain and range of 2(x − 4/7)² + 8/11, the parabola with vertex (2, 3) through (5, 12), the
      minimum of 2x² − 10x + 4, and the biggest dog park split into 2 pens), and Unit 4 (Factoring and
      Quadratic Equations) with four, from 2.5 (12x² + 11x + 2 = 0 by grouping, the 119 ft² garden,
-     x² − 6x = 13 by completing the square, and the walkway around a garden, with the discriminant).
+     x² − 6x = 13 by completing the square, and the walkway around a garden, with the discriminant),
+     and Unit 5 (Radical Expressions and Equations) with three, from 1.3 and 2.6 (3√(80x) − 4√(45x) = 0,
+     7/(2 + √3) rationalized with the conjugate, and √(x + 3) = 3x − 1 with its extraneous root).
      The owner approved the exam videos for YouTube on 22 November 2026: the upload tool takes them (`exams`, or
      `exams:<course>`), each course in its own "Exam Questions" playlist. Still to do: an exam
      panel on each lesson page.
